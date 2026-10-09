@@ -946,6 +946,202 @@ class IfuRecord {
   final String analyteId;
 }
 
+/// Shifokor qo'llanmasidagi organ tizimi (ro'yxat shu bo'yicha guruhlanadi).
+enum ConditionSystem {
+  endocrine('endocrine'),
+  kidney('kidney'),
+  liver('liver'),
+  digestive('digestive'),
+  cardio('cardio'),
+  blood('blood'),
+  infection('infection'),
+  rheumatology('rheumatology'),
+  bone('bone'),
+  pregnancy('pregnancy'),
+  prostate('prostate');
+
+  const ConditionSystem(this.key);
+  final String key;
+
+  static ConditionSystem parse(String raw) => values.firstWhere(
+    (s) => s.key == raw,
+    orElse: () => throw FormatException('unknown condition system: $raw'),
+  );
+}
+
+/// Tahlilning holatdagi o'rni: birinchi navbatda, qo'shimcha yoki kuzatuv.
+enum PanelTier {
+  firstLine('first_line'),
+  additional('additional'),
+  monitoring('monitoring');
+
+  const PanelTier(this.key);
+  final String key;
+
+  static PanelTier parse(String raw) => values.firstWhere(
+    (t) => t.key == raw,
+    orElse: () => throw FormatException('unknown panel tier: $raw'),
+  );
+}
+
+/// Manbaga bog'langan matn (qisqa tavsif, ogohlantirish).
+@immutable
+class SourcedText {
+  const SourcedText({required this.text, required this.refs});
+
+  factory SourcedText.fromJson(Map<String, Object?> json) => SourcedText(
+    text: LocalizedText.fromJson(json['text']),
+    refs: SourceRef.listFromJson(json),
+  );
+
+  final LocalizedText text;
+  final List<SourceRef> refs;
+}
+
+/// Holat panelidagi bitta tahlil. [analyteId] — kanonik analit id si
+/// (karta hali paketda bo'lmasligi mumkin: UI unda faqat nomni ko'rsatadi);
+/// kanonik id si yo'q tekshiruvlar (masalan, siydik ekmasi) uchun `null`.
+@immutable
+class PanelTest {
+  const PanelTest({
+    required this.names,
+    required this.why,
+    required this.tier,
+    required this.refs,
+    this.analyteId,
+  });
+
+  factory PanelTest.fromJson(Map<String, Object?> json) => PanelTest(
+    analyteId: json['analyte_id'] as String?,
+    names: LocalizedText.fromJson(json['names']),
+    why: LocalizedText.fromJson(json['why']),
+    tier: PanelTier.parse(json['tier']! as String),
+    refs: SourceRef.listFromJson(json),
+  );
+
+  final String? analyteId;
+  final LocalizedText names;
+
+  /// Nima uchun buyuriladi (manbali da'vo).
+  final LocalizedText why;
+  final PanelTier tier;
+  final List<SourceRef> refs;
+}
+
+/// “Mana bu chiqsa — mana bu ehtimoli bor”: natijalar naqshi va uning
+/// ehtimoliy ma'nosi. Har doim manbali; yakuniy xulosa shifokorda.
+@immutable
+class ResultPattern {
+  const ResultPattern({
+    required this.finding,
+    required this.meaning,
+    required this.refs,
+  });
+
+  factory ResultPattern.fromJson(Map<String, Object?> json) => ResultPattern(
+    finding: LocalizedText.fromJson(json['finding']),
+    meaning: LocalizedText.fromJson(json['meaning']),
+    refs: SourceRef.listFromJson(json),
+  );
+
+  final LocalizedText finding;
+  final LocalizedText meaning;
+  final List<SourceRef> refs;
+}
+
+/// Kasallik (holat) bo'yicha tahlillar qo'llanmasi yozuvi.
+@immutable
+class ClinicalCondition {
+  const ClinicalCondition({
+    required this.id,
+    required this.status,
+    required this.system,
+    required this.names,
+    required this.synonyms,
+    required this.summary,
+    required this.panel,
+    required this.patterns,
+    required this.reviewState,
+    required this.translationReview,
+    this.cautions = const [],
+    this.reviewerId,
+    this.reviewedAt,
+  });
+
+  factory ClinicalCondition.fromJson(Map<String, Object?> json) {
+    final review = (json['review'] as Map?)?.cast<String, Object?>() ?? {};
+    List<Map<String, Object?>> maps(String key) => [
+      for (final m in json[key] as List? ?? const [])
+        (m as Map).cast<String, Object?>(),
+    ];
+    return ClinicalCondition(
+      id: json['id']! as String,
+      status: ContentStatus.parse(json['status']! as String),
+      system: ConditionSystem.parse(json['system']! as String),
+      names: LocalizedText.fromJson(json['names']),
+      synonyms: _strings(json['synonyms'], 'synonyms'),
+      summary: SourcedText.fromJson(
+        (json['summary']! as Map).cast<String, Object?>(),
+      ),
+      panel: [for (final m in maps('panel')) PanelTest.fromJson(m)],
+      patterns: [for (final m in maps('patterns')) ResultPattern.fromJson(m)],
+      cautions: [for (final m in maps('cautions')) SourcedText.fromJson(m)],
+      reviewState: ReviewState.parse(review['state'] as String? ?? 'pending'),
+      reviewerId: review['reviewer_id'] as String?,
+      reviewedAt: review['reviewed_at'] as String?,
+      translationReview: {
+        for (final e
+            in ((json['translation_review'] as Map?) ?? const {}).entries)
+          e.key as String: e.value as String,
+      },
+    );
+  }
+
+  final String id;
+  final ContentStatus status;
+  final ConditionSystem system;
+  final LocalizedText names;
+
+  /// So'zlashuv nomlari va qisqartmalar (qidiruv uchun), istalgan tilda.
+  final List<String> synonyms;
+  final SourcedText summary;
+  final List<PanelTest> panel;
+  final List<ResultPattern> patterns;
+
+  /// Cheklovlar va ehtiyot choralari (masalan, PSA skriningi).
+  final List<SourcedText> cautions;
+  final ReviewState reviewState;
+  final String? reviewerId;
+  final String? reviewedAt;
+  final Map<String, String> translationReview;
+
+  List<PanelTest> panelFor(PanelTier tier) =>
+      panel.where((t) => t.tier == tier).toList(growable: false);
+
+  /// Barcha iqtiboslar (tavsif → panel → naqshlar → ogohlantirishlar)
+  /// birinchi uchragan tartibda — kartadagi [1], [2]… raqamlari shu.
+  List<String> get sourceIds {
+    final seen = <String>{};
+    return [
+      for (final r in [
+        ...summary.refs,
+        for (final t in panel) ...t.refs,
+        for (final p in patterns) ...p.refs,
+        for (final c in cautions) ...c.refs,
+      ])
+        if (seen.add(r.sourceId)) r.sourceId,
+    ];
+  }
+
+  /// Panelda havola qilingan analit id lari (takrorsiz).
+  Set<String> get analyteIds => {
+    for (final t in panel) ?t.analyteId,
+  };
+
+  bool get isReviewerApproved =>
+      reviewState == ReviewState.approved && reviewerId != null;
+}
+
 @immutable
 class ContentPack {
   const ContentPack({
@@ -960,6 +1156,7 @@ class ContentPack {
     this.library = const [],
     this.lessons = const [],
     this.discrepancies = const [],
+    this.conditions = const [],
   });
 
   factory ContentPack.fromJson(Map<String, Object?> json) {
@@ -999,6 +1196,10 @@ class ContentPack {
         for (final i in json['discrepancies'] as List? ?? const [])
           Discrepancy.fromJson((i as Map).cast<String, Object?>()),
       ],
+      conditions: [
+        for (final i in json['conditions'] as List? ?? const [])
+          ClinicalCondition.fromJson((i as Map).cast<String, Object?>()),
+      ],
     );
     pack._validateReferences();
     return pack;
@@ -1021,6 +1222,19 @@ class ContentPack {
 
   /// Manbalar orasidagi farqlar — tekshiruvchi uchun navbat.
   final List<Discrepancy> discrepancies;
+
+  /// Shifokor qo'llanmasi: kasallik bo'yicha tahlillar.
+  final List<ClinicalCondition> conditions;
+
+  ClinicalCondition? condition(String id) =>
+      conditions.where((c) => c.id == id).firstOrNull;
+
+  /// Teskari indeks: shu analitni panelida keltirgan holatlar (paket
+  /// tartibida).
+  List<ClinicalCondition> conditionsForAnalyte(String analyteId) => [
+    for (final c in conditions)
+      if (c.analyteIds.contains(analyteId)) c,
+  ];
 
   LibraryItem? libraryItem(String id) =>
       library.where((i) => i.id == id).firstOrNull;
@@ -1150,6 +1364,63 @@ class ContentPack {
       groupIds: groupIds,
       analyteIds: analyteIds,
     );
+    _validateConditions(sourceIds);
+  }
+
+  static final _slug = RegExp(r'^[a-z0-9]+(-[a-z0-9]+)*$');
+
+  /// Shifokor qo'llanmasi: har bir tavsif, tahlil sababi, naqsh va
+  /// ogohlantirish mavjud manbaga aniq joy (bo'lim yoki sahifa) bilan
+  /// bog'langan; birinchi navbatdagi tahlilsiz holat bo'lmaydi;
+  /// tekshirilmagan yozuv “published” emas. Uch til [LocalizedText] da.
+  void _validateConditions(Set<String> sourceIds) {
+    final ids = <String>{};
+    for (final c in conditions) {
+      if (!ids.add(c.id)) throw FormatException('duplicate condition ${c.id}');
+      if (!_slug.hasMatch(c.id)) {
+        throw FormatException('condition id is not a slug: ${c.id}');
+      }
+      void cite(List<SourceRef> refs, String what) {
+        if (refs.isEmpty) throw FormatException('${c.id}: $what without source');
+        for (final r in refs) {
+          if (!sourceIds.contains(r.sourceId)) {
+            throw FormatException('${c.id}: $what cites unknown ${r.sourceId}');
+          }
+          if ((r.locator ?? r.pages ?? '').trim().isEmpty) {
+            throw FormatException('${c.id}: $what ref without locator');
+          }
+        }
+      }
+
+      cite(c.summary.refs, 'summary');
+      if (c.panel.isEmpty) throw FormatException('${c.id}: empty panel');
+      if (c.panelFor(PanelTier.firstLine).isEmpty) {
+        throw FormatException('${c.id}: no first-line test');
+      }
+      for (final t in c.panel) {
+        cite(t.refs, 'panel test');
+        final id = t.analyteId;
+        if (id != null && !_slug.hasMatch(id)) {
+          throw FormatException('${c.id}: bad analyte id "$id"');
+        }
+      }
+      for (final p in c.patterns) {
+        cite(p.refs, 'pattern');
+      }
+      for (final w in c.cautions) {
+        cite(w.refs, 'caution');
+      }
+      if (c.synonyms.any((s) => s.trim().isEmpty)) {
+        throw FormatException('${c.id}: empty synonym');
+      }
+      if (c.reviewState == ReviewState.approved &&
+          (c.reviewedAt == null || c.reviewerId == null)) {
+        throw FormatException('${c.id}: approved without reviewer');
+      }
+      if (c.status != ContentStatus.draft && !c.isReviewerApproved) {
+        throw FormatException('${c.id}: ${c.status.name} without review');
+      }
+    }
   }
 
   static void _checkBounds(String id, double? low, double? high) {

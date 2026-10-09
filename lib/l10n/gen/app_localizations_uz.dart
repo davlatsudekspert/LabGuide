@@ -249,6 +249,156 @@ class AppLocalizationsUz extends AppLocalizations {
   String get homeHeroDoctorCta => 'Tahlillarni ochish';
 
   @override
+  String get condGuideTitle => 'Kasallik bo‘yicha tahlillar';
+
+  @override
+  String get condGuideEyebrow => 'Shifokor qo‘llanmasi';
+
+  @override
+  String get condGuideBody =>
+      'Har bir holat uchun: avval qaysi tahlil, keyin qaysi — va natija nimaga ishora qilishi mumkin.';
+
+  @override
+  String get condGuideSearch => 'Kasallik yoki tahlilni qidiring…';
+
+  @override
+  String get condGuideAll => 'Barcha holatlar';
+
+  @override
+  String condCount(int count) {
+    return '$count ta holat';
+  }
+
+  @override
+  String condSystemCount(int count) {
+    return '$count ta tizim';
+  }
+
+  @override
+  String get condListSubtitle =>
+      'Qaysi holatda qaysi tahlil — va natija nimaga ishora qilishi mumkin';
+
+  @override
+  String get condSearchLabel => 'Holatlarni qidirish';
+
+  @override
+  String get condSearchHint => 'Diabet, anemiya, qalqonsimon bez, TSH…';
+
+  @override
+  String get condEmptyTitle => 'Holat topilmadi';
+
+  @override
+  String get condEmptyBody =>
+      'Boshqa nom, so‘zlashuv nomi yoki tahlil nomi bilan qidiring (masalan, «qand kasalligi»).';
+
+  @override
+  String get condTierFirstLine => 'Birinchi navbatda';
+
+  @override
+  String get condTierAdditional => 'Qo‘shimcha';
+
+  @override
+  String get condTierMonitoring => 'Kuzatuv';
+
+  @override
+  String get condTierFirstLineHint =>
+      'Holat shubha qilinganda avval buyuriladi';
+
+  @override
+  String get condTierAdditionalHint =>
+      'Aniqlashtirish, sababni izlash yoki farqlash uchun';
+
+  @override
+  String get condTierMonitoringHint =>
+      'Tashxisdan keyin yoki davolash davomida';
+
+  @override
+  String get condPatternsTitle => 'Natija naqshlari';
+
+  @override
+  String get condPatternsHint =>
+      '«Mana bu chiqsa — mana bu ehtimoli bor». Talqin ehtimoliy: yakuniy xulosani shifokor klinik ma’lumotlar bilan birga chiqaradi.';
+
+  @override
+  String get condNotDiagnosticTitle => 'Tashxis qo‘yish vositasi emas';
+
+  @override
+  String get condNotDiagnosticBody =>
+      'Qo‘llanma tahlillarni rejalashtirishga yordam beradi. Klinik baholash va yakuniy qaror — shifokorda. Matn manbalarga asoslangan qoralama, mustaqil ekspert tekshiruvi kutilmoqda.';
+
+  @override
+  String get condCautionsTitle => 'E’tibor bering';
+
+  @override
+  String get condNoCard => 'Karta hali yo‘q';
+
+  @override
+  String get condCopyList => 'Tahlillar ro‘yxatini nusxalash';
+
+  @override
+  String get condCopyListSub => 'Yo‘llanma yoki xabar uchun tayyor matn';
+
+  @override
+  String get condCopied => 'Ro‘yxat nusxalandi';
+
+  @override
+  String condReferralTitle(String name) {
+    return '$name — tahlillar';
+  }
+
+  @override
+  String get condReferralFooter =>
+      'LabGuide qo‘llanmasi (qoralama). Tashxis vositasi emas — yakuniy qaror shifokorda.';
+
+  @override
+  String get condAnalyteSection => 'Qaysi holatlarda tekshiriladi';
+
+  @override
+  String get condTestsEntrySub =>
+      'Holatni tanlang — kerakli tahlillar va natija naqshlari';
+
+  @override
+  String get condSearchSection => 'Holatlar';
+
+  @override
+  String condRowFirstLine(String tests) {
+    return 'Avval: $tests';
+  }
+
+  @override
+  String get condSysEndocrine => 'Endokrin tizim';
+
+  @override
+  String get condSysKidney => 'Buyrak va siydik yo‘llari';
+
+  @override
+  String get condSysLiver => 'Jigar va o‘t yo‘llari';
+
+  @override
+  String get condSysDigestive => 'Oshqozon osti bezi va ichak';
+
+  @override
+  String get condSysCardio => 'Yurak va qon tomirlar';
+
+  @override
+  String get condSysBlood => 'Qon va qon ivishi';
+
+  @override
+  String get condSysInfection => 'Infeksiyalar';
+
+  @override
+  String get condSysRheumatology => 'Revmatologiya';
+
+  @override
+  String get condSysBone => 'Suyak va kalsiy almashinuvi';
+
+  @override
+  String get condSysPregnancy => 'Homiladorlik va reproduktiv salomatlik';
+
+  @override
+  String get condSysProstate => 'Prostata';
+
+  @override
   String get homeHeroLabTitle => 'Ishonchli laboratoriya amaliyoti';
 
   @override

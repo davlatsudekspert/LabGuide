@@ -6,6 +6,7 @@ import '../features/auth/ui/auth_screens.dart';
 import '../features/auth/ui/role_screen.dart';
 import '../features/auth/ui/welcome_screen.dart';
 import '../features/content/ui/analyte_screen.dart';
+import '../features/content/ui/conditions_screens.dart';
 import '../features/content/ui/tests_screen.dart';
 import '../features/home/home_screen.dart';
 import '../features/instruments/calibration_screens.dart';
@@ -51,6 +52,24 @@ GoRouter buildRouter(
           path: 'quiz',
           builder: (context, state) =>
               QuizScreen(analyteId: state.pathParameters['id']),
+        ),
+      ],
+    ),
+  ];
+
+  // Shifokor qo'llanmasi: holatlar ro'yxati → holat → analit kartasi.
+  List<RouteBase> conditionRoutes() => [
+    GoRoute(
+      path: 'conditions',
+      builder: (context, state) => ConditionsScreen(
+        autofocus: state.uri.queryParameters['search'] == '1',
+      ),
+      routes: [
+        GoRoute(
+          path: ':cid',
+          builder: (context, state) =>
+              ConditionScreen(conditionId: state.pathParameters['cid']!),
+          routes: analyteRoutes(),
         ),
       ],
     ),
@@ -175,7 +194,7 @@ GoRouter buildRouter(
               GoRoute(
                 path: '/home',
                 builder: (context, state) => const HomeScreen(),
-                routes: analyteRoutes(),
+                routes: [...analyteRoutes(), ...conditionRoutes()],
               ),
             ],
           ),
@@ -185,7 +204,7 @@ GoRouter buildRouter(
               GoRoute(
                 path: '/tests',
                 builder: (context, state) => const TestsScreen(),
-                routes: analyteRoutes(),
+                routes: [...analyteRoutes(), ...conditionRoutes()],
               ),
             ],
           ),
@@ -314,7 +333,7 @@ GoRouter buildRouter(
                   GoRoute(
                     path: 'saved',
                     builder: (context, state) => const SavedScreen(),
-                    routes: analyteRoutes(),
+                    routes: [...analyteRoutes(), ...conditionRoutes()],
                   ),
                   GoRoute(
                     path: 'packs',

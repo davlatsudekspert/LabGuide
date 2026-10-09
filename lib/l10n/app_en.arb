@@ -114,6 +114,78 @@
   "homeHeroDoctorTitle": "Understand the result in context",
   "homeHeroDoctorBody": "Tests, influencing factors and related investigations.",
   "homeHeroDoctorCta": "Explore tests",
+  "condGuideTitle": "Tests by condition",
+  "condGuideEyebrow": "Clinician’s guide",
+  "condGuideBody": "For each condition: which tests come first, which follow — and what a result may point to.",
+  "condGuideSearch": "Search a condition or test…",
+  "condGuideAll": "All conditions",
+  "condCount": "{count, plural, one{{count} condition} other{{count} conditions}}",
+  "@condCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "condSystemCount": "{count, plural, one{{count} body system} other{{count} body systems}}",
+  "@condSystemCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "condListSubtitle": "Which tests for which condition — and what results may point to",
+  "condSearchLabel": "Search conditions",
+  "condSearchHint": "Diabetes, anemia, thyroid, TSH…",
+  "condEmptyTitle": "No conditions found",
+  "condEmptyBody": "Try another name, a common name or a test name (for example, “high cholesterol”).",
+  "condTierFirstLine": "First-line",
+  "condTierAdditional": "Additional",
+  "condTierMonitoring": "Monitoring",
+  "condTierFirstLineHint": "Ordered first when the condition is suspected",
+  "condTierAdditionalHint": "To clarify, find the cause or tell conditions apart",
+  "condTierMonitoringHint": "After diagnosis or during treatment",
+  "condPatternsTitle": "Result patterns",
+  "condPatternsHint": "“If you see this — this may be likely.” Interpretations are probabilistic: the clinician draws the final conclusion with the clinical picture.",
+  "condNotDiagnosticTitle": "Not a diagnostic tool",
+  "condNotDiagnosticBody": "The guide helps plan testing. Clinical assessment and the final decision rest with the clinician. The text is a sourced draft awaiting independent expert review.",
+  "condCautionsTitle": "Keep in mind",
+  "condNoCard": "No card yet",
+  "condCopyList": "Copy test list",
+  "condCopyListSub": "Ready text for a referral or message",
+  "condCopied": "List copied",
+  "condReferralTitle": "{name} — tests",
+  "@condReferralTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "condReferralFooter": "LabGuide guide (draft). Not a diagnostic tool — the final decision rests with the clinician.",
+  "condAnalyteSection": "Conditions where it is ordered",
+  "condTestsEntrySub": "Pick a condition — the tests and result patterns",
+  "condSearchSection": "Conditions",
+  "condRowFirstLine": "First: {tests}",
+  "@condRowFirstLine": {
+    "placeholders": {
+      "tests": {
+        "type": "String"
+      }
+    }
+  },
+  "condSysEndocrine": "Endocrine system",
+  "condSysKidney": "Kidney and urinary tract",
+  "condSysLiver": "Liver and bile ducts",
+  "condSysDigestive": "Pancreas and bowel",
+  "condSysCardio": "Heart and blood vessels",
+  "condSysBlood": "Blood and clotting",
+  "condSysInfection": "Infections",
+  "condSysRheumatology": "Rheumatology",
+  "condSysBone": "Bone and calcium",
+  "condSysPregnancy": "Pregnancy and reproductive health",
+  "condSysProstate": "Prostate",
   "homeHeroLabTitle": "Confidence at the bench",
   "homeHeroLabBody": "Samples, methods and quality control in one place.",
   "homeHeroLabCta": "Open quality control",

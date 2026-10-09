@@ -532,6 +532,270 @@ abstract class AppLocalizations {
   /// **'Explore tests'**
   String get homeHeroDoctorCta;
 
+  /// No description provided for @condGuideTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Tests by condition'**
+  String get condGuideTitle;
+
+  /// No description provided for @condGuideEyebrow.
+  ///
+  /// In en, this message translates to:
+  /// **'Clinician’s guide'**
+  String get condGuideEyebrow;
+
+  /// No description provided for @condGuideBody.
+  ///
+  /// In en, this message translates to:
+  /// **'For each condition: which tests come first, which follow — and what a result may point to.'**
+  String get condGuideBody;
+
+  /// No description provided for @condGuideSearch.
+  ///
+  /// In en, this message translates to:
+  /// **'Search a condition or test…'**
+  String get condGuideSearch;
+
+  /// No description provided for @condGuideAll.
+  ///
+  /// In en, this message translates to:
+  /// **'All conditions'**
+  String get condGuideAll;
+
+  /// No description provided for @condCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, one{{count} condition} other{{count} conditions}}'**
+  String condCount(int count);
+
+  /// No description provided for @condSystemCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, one{{count} body system} other{{count} body systems}}'**
+  String condSystemCount(int count);
+
+  /// No description provided for @condListSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Which tests for which condition — and what results may point to'**
+  String get condListSubtitle;
+
+  /// No description provided for @condSearchLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Search conditions'**
+  String get condSearchLabel;
+
+  /// No description provided for @condSearchHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Diabetes, anemia, thyroid, TSH…'**
+  String get condSearchHint;
+
+  /// No description provided for @condEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No conditions found'**
+  String get condEmptyTitle;
+
+  /// No description provided for @condEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Try another name, a common name or a test name (for example, “high cholesterol”).'**
+  String get condEmptyBody;
+
+  /// No description provided for @condTierFirstLine.
+  ///
+  /// In en, this message translates to:
+  /// **'First-line'**
+  String get condTierFirstLine;
+
+  /// No description provided for @condTierAdditional.
+  ///
+  /// In en, this message translates to:
+  /// **'Additional'**
+  String get condTierAdditional;
+
+  /// No description provided for @condTierMonitoring.
+  ///
+  /// In en, this message translates to:
+  /// **'Monitoring'**
+  String get condTierMonitoring;
+
+  /// No description provided for @condTierFirstLineHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Ordered first when the condition is suspected'**
+  String get condTierFirstLineHint;
+
+  /// No description provided for @condTierAdditionalHint.
+  ///
+  /// In en, this message translates to:
+  /// **'To clarify, find the cause or tell conditions apart'**
+  String get condTierAdditionalHint;
+
+  /// No description provided for @condTierMonitoringHint.
+  ///
+  /// In en, this message translates to:
+  /// **'After diagnosis or during treatment'**
+  String get condTierMonitoringHint;
+
+  /// No description provided for @condPatternsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Result patterns'**
+  String get condPatternsTitle;
+
+  /// No description provided for @condPatternsHint.
+  ///
+  /// In en, this message translates to:
+  /// **'“If you see this — this may be likely.” Interpretations are probabilistic: the clinician draws the final conclusion with the clinical picture.'**
+  String get condPatternsHint;
+
+  /// No description provided for @condNotDiagnosticTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Not a diagnostic tool'**
+  String get condNotDiagnosticTitle;
+
+  /// No description provided for @condNotDiagnosticBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The guide helps plan testing. Clinical assessment and the final decision rest with the clinician. The text is a sourced draft awaiting independent expert review.'**
+  String get condNotDiagnosticBody;
+
+  /// No description provided for @condCautionsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep in mind'**
+  String get condCautionsTitle;
+
+  /// No description provided for @condNoCard.
+  ///
+  /// In en, this message translates to:
+  /// **'No card yet'**
+  String get condNoCard;
+
+  /// No description provided for @condCopyList.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy test list'**
+  String get condCopyList;
+
+  /// No description provided for @condCopyListSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Ready text for a referral or message'**
+  String get condCopyListSub;
+
+  /// No description provided for @condCopied.
+  ///
+  /// In en, this message translates to:
+  /// **'List copied'**
+  String get condCopied;
+
+  /// No description provided for @condReferralTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} — tests'**
+  String condReferralTitle(String name);
+
+  /// No description provided for @condReferralFooter.
+  ///
+  /// In en, this message translates to:
+  /// **'LabGuide guide (draft). Not a diagnostic tool — the final decision rests with the clinician.'**
+  String get condReferralFooter;
+
+  /// No description provided for @condAnalyteSection.
+  ///
+  /// In en, this message translates to:
+  /// **'Conditions where it is ordered'**
+  String get condAnalyteSection;
+
+  /// No description provided for @condTestsEntrySub.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick a condition — the tests and result patterns'**
+  String get condTestsEntrySub;
+
+  /// No description provided for @condSearchSection.
+  ///
+  /// In en, this message translates to:
+  /// **'Conditions'**
+  String get condSearchSection;
+
+  /// No description provided for @condRowFirstLine.
+  ///
+  /// In en, this message translates to:
+  /// **'First: {tests}'**
+  String condRowFirstLine(String tests);
+
+  /// No description provided for @condSysEndocrine.
+  ///
+  /// In en, this message translates to:
+  /// **'Endocrine system'**
+  String get condSysEndocrine;
+
+  /// No description provided for @condSysKidney.
+  ///
+  /// In en, this message translates to:
+  /// **'Kidney and urinary tract'**
+  String get condSysKidney;
+
+  /// No description provided for @condSysLiver.
+  ///
+  /// In en, this message translates to:
+  /// **'Liver and bile ducts'**
+  String get condSysLiver;
+
+  /// No description provided for @condSysDigestive.
+  ///
+  /// In en, this message translates to:
+  /// **'Pancreas and bowel'**
+  String get condSysDigestive;
+
+  /// No description provided for @condSysCardio.
+  ///
+  /// In en, this message translates to:
+  /// **'Heart and blood vessels'**
+  String get condSysCardio;
+
+  /// No description provided for @condSysBlood.
+  ///
+  /// In en, this message translates to:
+  /// **'Blood and clotting'**
+  String get condSysBlood;
+
+  /// No description provided for @condSysInfection.
+  ///
+  /// In en, this message translates to:
+  /// **'Infections'**
+  String get condSysInfection;
+
+  /// No description provided for @condSysRheumatology.
+  ///
+  /// In en, this message translates to:
+  /// **'Rheumatology'**
+  String get condSysRheumatology;
+
+  /// No description provided for @condSysBone.
+  ///
+  /// In en, this message translates to:
+  /// **'Bone and calcium'**
+  String get condSysBone;
+
+  /// No description provided for @condSysPregnancy.
+  ///
+  /// In en, this message translates to:
+  /// **'Pregnancy and reproductive health'**
+  String get condSysPregnancy;
+
+  /// No description provided for @condSysProstate.
+  ///
+  /// In en, this message translates to:
+  /// **'Prostate'**
+  String get condSysProstate;
+
   /// No description provided for @homeHeroLabTitle.
   ///
   /// In en, this message translates to:

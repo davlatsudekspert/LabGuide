@@ -14,6 +14,7 @@ import '../../tools/clinical_calc_screens.dart';
 import '../../tools/clinical_calculators.dart';
 import '../../tools/tool_screens.dart';
 import '../content_model.dart';
+import 'conditions_screens.dart';
 import 'content_widgets.dart';
 
 String sectionTitle(String id, AppLocalizations l) => switch (id) {
@@ -179,6 +180,7 @@ class _AnalyteBody {
         if (analyte.decisionLimits.isNotEmpty) _decisionLimits(context, l),
       ],
       LgNotice(l.analyteNoInterpretation, kind: NoticeKind.info),
+      AnalyteConditionsSection(pack: pack, analyteId: analyte.id),
       if (analyte.related.isNotEmpty) ...[
         LgSectionTitle(l.analyteRelated),
         for (final id in analyte.related)
