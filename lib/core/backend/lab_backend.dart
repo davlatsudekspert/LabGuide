@@ -91,11 +91,19 @@ abstract interface class LabBackend implements OtpAuthAdapter {
   Future<void> adminSetReviewer(String userId, {required bool enabled});
   Future<List<AuditEntry>> adminAudit({int limit = 50});
 
-  // --- guruhlar
+  // --- guruhlar (ustoz — guruhni yaratgan hisob; huquqlar serverda)
   Future<List<StudyGroup>> myGroups();
-  Future<StudyGroup> createGroup(String name);
-  Future<void> joinGroup(String code, {String? displayName});
+  Future<StudyGroup> createGroup(String name, {String? displayName});
+
+  /// Qo'shilgan guruh id si.
+  Future<String> joinGroup(String code, {String? displayName});
   Future<void> leaveGroup(String groupId);
+
+  /// Guruh a'zolari (faqat a'zo ko'radi).
+  Future<List<GroupMember>> groupMembers(String groupId);
+
+  /// Ustoz talabani guruhdan chiqaradi (ustozni emas).
+  Future<void> removeMember(String groupId, String userId);
   Future<List<GroupAssignment>> assignments(String groupId);
   Future<String> createAssignment({
     required String groupId,
@@ -105,11 +113,22 @@ abstract interface class LabBackend implements OtpAuthAdapter {
     DateTime? dueAt,
     int? timeLimitMinutes,
   });
-  Future<({int score, int total})> submitAssignment(
+
+  /// Talaba topshiriqni boshlaydi (qayta chaqirilsa — o'sha vaqt qaytadi).
+  Future<AssignmentStart> startAssignment(String assignmentId);
+
+  /// Javoblar (topshiriq tartibida, javobsiz — -1). Ball serverda.
+  Future<GroupSubmission> submitAssignment(
     String assignmentId,
     List<int> answers,
   );
+
+  /// Talaba — faqat o'zini, ustoz — guruhdagi hammani ko'radi.
   Future<List<GroupSubmission>> submissions(String assignmentId);
+  Future<List<GroupSubmission>> groupSubmissions(String groupId);
+
+  /// To'g'ri javoblar kaliti — faqat ustozga (talabaga `forbidden`).
+  Future<List<int>> assignmentKey(String assignmentId);
 }
 
 /// Backend sozlanmagan build (masalan, hozirgi TestFlight): hamma amal
@@ -214,11 +233,16 @@ class UnconfiguredBackend implements LabBackend {
   @override
   Future<List<StudyGroup>> myGroups() async => _no();
   @override
-  Future<StudyGroup> createGroup(String name) async => _no();
+  Future<StudyGroup> createGroup(String name, {String? displayName}) async =>
+      _no();
   @override
-  Future<void> joinGroup(String code, {String? displayName}) async => _no();
+  Future<String> joinGroup(String code, {String? displayName}) async => _no();
   @override
   Future<void> leaveGroup(String groupId) async => _no();
+  @override
+  Future<List<GroupMember>> groupMembers(String groupId) async => _no();
+  @override
+  Future<void> removeMember(String groupId, String userId) async => _no();
   @override
   Future<List<GroupAssignment>> assignments(String groupId) async => _no();
   @override
@@ -231,10 +255,16 @@ class UnconfiguredBackend implements LabBackend {
     int? timeLimitMinutes,
   }) async => _no();
   @override
-  Future<({int score, int total})> submitAssignment(
+  Future<AssignmentStart> startAssignment(String assignmentId) async => _no();
+  @override
+  Future<GroupSubmission> submitAssignment(
     String assignmentId,
     List<int> answers,
   ) async => _no();
   @override
   Future<List<GroupSubmission>> submissions(String assignmentId) async => _no();
+  @override
+  Future<List<GroupSubmission>> groupSubmissions(String groupId) async => _no();
+  @override
+  Future<List<int>> assignmentKey(String assignmentId) async => _no();
 }

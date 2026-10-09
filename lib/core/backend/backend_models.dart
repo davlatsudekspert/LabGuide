@@ -349,6 +349,8 @@ class GroupSubmission {
     required this.score,
     required this.total,
     required this.submittedAt,
+    this.answers = const [],
+    this.correct,
   });
 
   factory GroupSubmission.fromJson(Map<String, Object?> j) => GroupSubmission(
@@ -357,6 +359,11 @@ class GroupSubmission {
     score: (j['score']! as num).toInt(),
     total: (j['total']! as num).toInt(),
     submittedAt: DateTime.parse(j['submitted_at']! as String),
+    answers: [
+      for (final a in (j['answers'] as List? ?? const []))
+        (a as num?)?.toInt() ?? -1,
+    ],
+    correct: (j['correct'] as List?)?.map((c) => c == true).toList(),
   );
 
   final String assignmentId;
@@ -364,6 +371,53 @@ class GroupSubmission {
   final int score;
   final int total;
   final DateTime submittedAt;
+
+  /// Talaba javoblari topshiriq tartibida (javobsiz — -1).
+  final List<int> answers;
+
+  /// Har savol bo'yicha server hisoblagan natija (eski yozuvlarda yo'q).
+  final List<bool>? correct;
+
+  int get percent => total == 0 ? 0 : (score * 100 / total).round();
+}
+
+/// Guruh a'zosi: guruh ichida ko'rinadigan ism (email ko'rsatilmaydi).
+@immutable
+class GroupMember {
+  const GroupMember({
+    required this.userId,
+    required this.displayName,
+    required this.isTeacher,
+    required this.joinedAt,
+  });
+
+  factory GroupMember.fromJson(Map<String, Object?> j) => GroupMember(
+    userId: j['user_id']! as String,
+    displayName: j['display_name']! as String,
+    isTeacher: j['member_role'] == 'teacher',
+    joinedAt: DateTime.parse(j['joined_at']! as String),
+  );
+
+  final String userId;
+  final String displayName;
+  final bool isTeacher;
+  final DateTime joinedAt;
+}
+
+/// Topshiriq boshlangan vaqt (server soati) — vaqt chegarasi shundan.
+@immutable
+class AssignmentStart {
+  const AssignmentStart({required this.startedAt, required this.serverNow});
+
+  factory AssignmentStart.fromJson(Map<String, Object?> j) => AssignmentStart(
+    startedAt: DateTime.parse(j['started_at']! as String),
+    serverNow: DateTime.parse(j['server_now']! as String),
+  );
+
+  final DateTime startedAt;
+
+  /// Server hozirgi vaqti: qurilma soati farq qilsa ham taymer to'g'ri.
+  final DateTime serverNow;
 }
 
 DateTime? _date(Object? raw) =>

@@ -429,8 +429,11 @@ void main() {
   ) async {
     final s = await makeServices(tester);
     await pumpApp(tester, s);
+    // Sozlanmagan build: server ulanmagan — guruh amallari ko'rsatilmaydi.
     await goTo(tester, '/learn/classes');
-    expect(find.text(uz.classesSignInTitle), findsOneWidget);
+    expect(find.text(uz.classesUnavailableTitle), findsOneWidget);
+    expect(find.text(uz.classesCreate), findsNothing);
+    expect(find.text(uz.classesJoin), findsNothing);
     await goTo(tester, '/profile/purchase');
     expect(find.text(uz.purchaseNotice), findsOneWidget);
     final buttons = find.textContaining(uz.notAvailableYet);

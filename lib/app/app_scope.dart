@@ -8,6 +8,7 @@ import '../core/storage/kv_store.dart';
 import '../features/auth/auth_controller.dart';
 import '../features/content/content_controller.dart';
 import '../features/instruments/instruments_controller.dart';
+import '../features/learn/exam_controller.dart';
 import '../features/learn/quiz_progress.dart';
 import '../features/packs/packs_controller.dart';
 import '../features/qc/qc_controller.dart';
@@ -51,6 +52,7 @@ class AppServices {
     required this.bookmarks,
     required this.qc,
     required this.quizProgress,
+    required this.exams,
     required this.packs,
     required this.instruments,
     required this.backend,
@@ -65,6 +67,9 @@ class AppServices {
   final BookmarksController bookmarks;
   final QcController qc;
   final QuizProgressController quizProgress;
+
+  /// Imtihon rejimi: davom etayotgan imtihon va natijalar tarixi.
+  final ExamController exams;
   final PacksController packs;
 
   /// Apparatlar katalogi, “Mening apparatlarim” va kalibrlash jurnali.
@@ -113,6 +118,7 @@ class AppServices {
     bookmarks.resetInMemory();
     qc.resetInMemory();
     quizProgress.resetInMemory();
+    exams.resetInMemory();
     instruments.resetInMemory();
     await packs.removeAll();
     settings.resetToDefaults(systemLocales);
