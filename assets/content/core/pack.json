@@ -6268,7 +6268,7 @@
    "status": "draft",
    "content_state": "sourced_sample",
    "names": {
-    "uz": "Siydikning kimyoviy tahlili",
+    "uz": "Siydik (peshob) kimyoviy tahlili",
     "ru": "Химическое исследование мочи",
     "en": "Urine chemistry (dipstick)"
    },
@@ -6278,7 +6278,10 @@
     "тест-полоски",
     "ОАМ",
     "umumiy siydik tahlili",
-    "urinalysis"
+    "urinalysis",
+    "peshob",
+    "peshob tahlili",
+    "пешоб"
    ],
    "group": "urine",
    "sections": [
@@ -6642,7 +6645,7 @@
    "status": "draft",
    "content_state": "sourced_sample",
    "names": {
-    "uz": "Siydik cho‘kmasi mikroskopiyasi",
+    "uz": "Siydik (peshob) cho‘kmasi mikroskopiyasi",
     "ru": "Микроскопия осадка мочи",
     "en": "Urine sediment microscopy"
    },
@@ -6650,7 +6653,10 @@
     "sediment",
     "осадок мочи",
     "cho‘kma",
-    "microscopy"
+    "microscopy",
+    "peshob",
+    "peshob tahlili",
+    "пешоб"
    ],
    "group": "urine",
    "sections": [
@@ -6943,7 +6949,7 @@
    "status": "draft",
    "content_state": "sourced_sample",
    "names": {
-    "uz": "Albumin/kreatinin nisbati (siydik)",
+    "uz": "Albumin/kreatinin nisbati (siydik, peshob)",
     "ru": "Альбумин-креатининовое соотношение (моча)",
     "en": "Urine albumin-to-creatinine ratio (ACR)"
    },
@@ -6953,7 +6959,10 @@
     "АКС",
     "microalbumin",
     "микроальбумин",
-    "mikroalbumin"
+    "mikroalbumin",
+    "peshob",
+    "peshob tahlili",
+    "пешоб"
    ],
    "group": "urine",
    "sections": [
