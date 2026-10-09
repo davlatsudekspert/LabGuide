@@ -77,6 +77,19 @@ jobs:
           tail -1 "$RUNNER_TEMP/test.log"
           echo "- Linux testlar: $(tail -1 "$RUNNER_TEMP/test.log")" >> "$GITHUB_STEP_SUMMARY"
 
+  # Supabase migratsiyalari va RLS qabul testlari lokal PostgreSQL'da
+  # (2 oddiy hisob + admin; statistika, murojaatlar, ruxsatlar, guruhlar).
+  backend:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+      - name: Backend qabul testlari
+        run: |
+          set -euo pipefail
+          tool/backend_test.sh | tail -3
+          echo "- Backend (SQL/RLS) qabul testlari: o'tdi" >> "$GITHUB_STEP_SUMMARY"
+
   android:
     needs: tests
     runs-on: ubuntu-latest
