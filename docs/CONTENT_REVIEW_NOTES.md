@@ -54,3 +54,27 @@ Manbalar va qoidalar: [DECISIONS.md](DECISIONS.md) D-19.
   belgilangan va izoh bor — reviewer yaxlitlashni (1 kasr) tasdiqlashi kerak.
 - Fruktozamin (`niddk-a1c`) va ALT (`medline-ast`) kartalaridan hech bir da’voda
   keltirilmagan manbalar olib tashlandi.
+
+## Gormonlar (16 karta, `content_src/additions/endocrine.json`) — reviewer uchun
+- **Manbada yo‘q, kartada ham yo‘q:** TSH uchun kun vaqti talabi (MedlinePlus TSH
+  sahifasida yo‘q); birliklar (mIU/L, pmol/L va h.k.) — sahifalarda ko‘rsatilmagan;
+  referens oraliqlar va D vitamini toifalarining raqamlari; anti-TPO uchun “musbat”
+  chegarasi. NIH ODS D vitamini sahifasi (25(OH)D jadvali bilan) avtomatik so‘rovga 403
+  qaytardi — ishlatilmadi.
+- **FT3:** MedlinePlus’ga ko‘ra mutaxassislar *umumiy* T3 ni aniqroq deb hisoblaydi — kartada
+  ochiq yozilgan; karta nomi topshiriqdagidek “erkin T3”.
+- **hCG:** MedlinePlus’da miqdoriy hCG uchun alohida public-domain lab-test sahifasi yo‘q
+  (`/lab-tests/hcg-blood-test-quantitative/` — 404; ensiklopediya maqolasi A.D.A.M.
+  mualliflik huquqida) — karta “Pregnancy Test” sahifasi va NICHD’dan.
+- **Biotin:** FDA qo‘llanmasi umumiy (“hormone tests”); qaysi reagent ta’sirlanishi IFU’da —
+  13 ta gormon kartasida bir xil da’vo. Anti-TPO, C-peptid va D vitaminida yo‘q (manba
+  ularni nomlamaydi).
+- **Tarjima atamalari tekshirilsin:** “Lyuteinlovchi gormon”, “Follikulani stimullovchi
+  gormon”, “tireoperoksidazaga antitanalar”, “pufakli ko‘chish” (molyar homiladorlik),
+  “buyrak usti bezining tug‘ma giperplaziyasi (BUTG)”, “alkogolga ruju”, “Greyvs/Xashimoto
+  kasalligi”.
+- **Bog‘lanishlar:** TSH↔FT4/FT3/anti-TPO, PTG→kalsiy/fosfat/D vitamini, D vitamini→PTG/kalsiy, insulin↔C-peptid/
+  glyukoza/HbA1c, prolaktin→TSH (gipotireoz prolaktinni oshiradi), hCG→TSH/FT4 (NIDDK:
+  homiladorlikda o‘lchanadigan qalqonsimon bez gormonlari oshadi), kortizol→glyukoza/insulin/
+  C-peptid (Kushing sindromi). Mavjud kartalardan gormonlarga teskari havola qo‘shilmadi
+  (mavjud yozuvlar o‘zgartirilmadi).

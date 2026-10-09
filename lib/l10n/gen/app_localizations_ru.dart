@@ -537,6 +537,12 @@ class AppLocalizationsRu extends AppLocalizations {
   String get sectionLowResult => 'Пониженный результат';
 
   @override
+  String get sectionPositiveResult => 'Положительный результат';
+
+  @override
+  String get sectionNegativeResult => 'Отрицательный результат';
+
+  @override
   String get sectionPreanalytics => 'Образец и преаналитика';
 
   @override
@@ -1947,6 +1953,442 @@ class AppLocalizationsRu extends AppLocalizations {
   String get instOpenCard => 'Карточка прибора';
 
   @override
+  String get partnerAdLabel => 'Реклама';
+
+  @override
+  String get partnerLabel => 'Партнёр';
+
+  @override
+  String get partnerOfficialTitle => 'Официальные партнёры';
+
+  @override
+  String get partnerSectionNote =>
+      'Сведения предоставлены компаниями-партнёрами. Данные каталога выше, их порядок и статус проверки от партнёрства не зависят.';
+
+  @override
+  String get partnerKindManufacturer => 'Производитель';
+
+  @override
+  String get partnerKindDistributor => 'Официальный дистрибьютор';
+
+  @override
+  String get partnerKindService => 'Сервисный центр';
+
+  @override
+  String get partnerCall => 'Позвонить';
+
+  @override
+  String get partnerTelegram => 'Telegram';
+
+  @override
+  String get partnerWebsite => 'Сайт';
+
+  @override
+  String get partnerEmail => 'Email';
+
+  @override
+  String get partnerBrochure => 'Буклет';
+
+  @override
+  String get partnerMore => 'Подробнее';
+
+  @override
+  String partnerRegions(String regions) {
+    return 'Регионы: $regions';
+  }
+
+  @override
+  String partnerRegistration(String number) {
+    return 'Регистрационное удостоверение в Узбекистане: $number';
+  }
+
+  @override
+  String get partnerRegistrationNote => 'Номер предоставлен партнёром.';
+
+  @override
+  String get partnerBecome => 'Стать партнёром';
+
+  @override
+  String get partnerBecomeSub => 'Для компаний: ваши анализаторы в LabGuide';
+
+  @override
+  String get partnerNotFoundTitle => 'Партнёр не найден';
+
+  @override
+  String get partnerNotFoundBody =>
+      'Возможно, срок размещения истёк или оно приостановлено.';
+
+  @override
+  String get partnerContacts => 'Контакты';
+
+  @override
+  String get partnerAbout => 'О компании';
+
+  @override
+  String get partnerInstruments => 'Связанные анализаторы';
+
+  @override
+  String partnerAllModels(String maker) {
+    return '$maker: все модели';
+  }
+
+  @override
+  String get partnerPageNote =>
+      'Эта страница — реклама. LabGuide не рекомендует продукцию партнёров; данные каталога и статус проверки от партнёрства не зависят.';
+
+  @override
+  String get partnerOfferTitle => 'Ваши контакты — в карточке анализатора';
+
+  @override
+  String get partnerOfferBody =>
+      'Специалист лаборатории читает об анализаторе — и в одно касание звонит официальному дистрибьютору или в сервисный центр. Для производителей, официальных дистрибьюторов и сервисных центров.';
+
+  @override
+  String get partnerWhatTitle => 'Что вы получаете';
+
+  @override
+  String get partnerWhatCard =>
+      'Раздел «Официальные партнёры» в карточке анализатора: логотип, краткое описание, регионы, кнопки звонка и Telegram.';
+
+  @override
+  String get partnerWhatCategory =>
+      'Компактная карточка «Партнёр» внутри направления (например, «Биохимия»).';
+
+  @override
+  String get partnerWhatLabHome =>
+      'Одна рекламная карточка на главной странице раздела «Лаб» (по очереди).';
+
+  @override
+  String get partnerWhatPage =>
+      'Страница партнёра: связанные модели, номера удостоверений, буклет.';
+
+  @override
+  String get partnerWhatReport =>
+      'Отчёт: показы и нажатия «связаться» по дням и местам размещения (без персональных данных).';
+
+  @override
+  String get partnerAudienceTitle => 'Аудитория';
+
+  @override
+  String get partnerAudienceBody =>
+      'LabGuide — для специалистов лабораторий, врачей, студентов и преподавателей, на узбекском, русском и английском. Число пользователей и распределение по ролям покажем при переговорах по серверной статистике; оценочных цифр не называем.';
+
+  @override
+  String get partnerRulesTitle => 'Правила';
+
+  @override
+  String get partnerRule1 =>
+      'Везде стоит чёткая пометка «Реклама» или «Партнёр».';
+
+  @override
+  String get partnerRule2 =>
+      'Факты каталога, их порядок и статус проверки от партнёрства не зависят и за деньги не меняются.';
+
+  @override
+  String get partnerRule3 =>
+      'Реклама медицинских изделий: анализатор должен быть зарегистрирован в Узбекистане; номер удостоверения показывается в карточке.';
+
+  @override
+  String get partnerRule4 =>
+      'Только проверяемые сведения: недоказанные утверждения вроде «лучший» или «точность 100%» не принимаются.';
+
+  @override
+  String get partnerRule5 =>
+      'Персональные данные пользователей партнёрам не передаются.';
+
+  @override
+  String get partnerPriceTitle => 'Стоимость';
+
+  @override
+  String get partnerPriceBody =>
+      'Стоимость обсуждается — в зависимости от мест размещения, срока и регионов.';
+
+  @override
+  String get partnerHowTitle => 'Как подключиться';
+
+  @override
+  String get partnerHow1 => 'Отправьте заявку через форму ниже.';
+
+  @override
+  String get partnerHow2 => 'Мы свяжемся с вами и согласуем условия.';
+
+  @override
+  String get partnerHow3 =>
+      'Вы присылаете логотип, описание (uz/ru/en), контакты и номера удостоверений.';
+
+  @override
+  String get partnerHow4 =>
+      'После проверки размещение публикуется; отчёт присылаем регулярно.';
+
+  @override
+  String get partnerFormTitle => 'Заявка';
+
+  @override
+  String get partnerFormCompany => 'Компания';
+
+  @override
+  String get partnerFormContact => 'Контактное лицо';
+
+  @override
+  String get partnerFormPhone => 'Телефон';
+
+  @override
+  String get partnerFormEmail => 'Email';
+
+  @override
+  String get partnerFormProducts => 'Продукция (анализаторы, модели)';
+
+  @override
+  String get partnerFormMessage => 'Сообщение';
+
+  @override
+  String get partnerFormHint => 'Нужен телефон или email (хотя бы одно).';
+
+  @override
+  String get partnerFormSend => 'Отправить заявку';
+
+  @override
+  String get partnerFormInvalid =>
+      'Укажите компанию и контактное лицо, правильно введите телефон или email.';
+
+  @override
+  String get partnerSentTitle => 'Заявка отправлена';
+
+  @override
+  String get partnerSentBody =>
+      'Ответ появится на этой странице в разделе «Ваши заявки». При необходимости свяжемся по указанному телефону или email.';
+
+  @override
+  String get partnerSendAnother => 'Отправить ещё заявку';
+
+  @override
+  String get partnerFormSignIn =>
+      'Чтобы отправить заявку, войдите по email — ответ придёт в этот аккаунт.';
+
+  @override
+  String get partnerFormUnavailable =>
+      'Отправка заявок пока не подключена: в этой сборке сервер не настроен.';
+
+  @override
+  String get partnerMyRequests => 'Ваши заявки';
+
+  @override
+  String get partnerReqStatusNew => 'Новая';
+
+  @override
+  String get partnerReqStatusInReview => 'На рассмотрении';
+
+  @override
+  String get partnerReqStatusAccepted => 'Принята';
+
+  @override
+  String get partnerReqStatusDeclined => 'Отклонена';
+
+  @override
+  String partnerReqReply(String text) {
+    return 'Ответ LabGuide: $text';
+  }
+
+  @override
+  String get partnerPlacementCard => 'Карточка анализатора';
+
+  @override
+  String get partnerPlacementCategory => 'Направление';
+
+  @override
+  String get partnerPlacementLabHome => 'Главная «Лаб»';
+
+  @override
+  String get partnerPlacementPage => 'Страница партнёра';
+
+  @override
+  String get adminPartners => 'Партнёры';
+
+  @override
+  String get adminPartnersSub => 'Реклама: создание, публикация, статистика';
+
+  @override
+  String get adminPartnerRequests => 'Заявки на партнёрство';
+
+  @override
+  String adminPartnerRequestsNew(int count) {
+    return 'Новых заявок: $count';
+  }
+
+  @override
+  String get adminPartnerNew => 'Новый партнёр';
+
+  @override
+  String get adminPartnersEmpty => 'Партнёров пока нет';
+
+  @override
+  String get adminPartnerStatusDraft => 'Черновик';
+
+  @override
+  String get adminPartnerStatusLive => 'Опубликован';
+
+  @override
+  String get adminPartnerStatusPaused => 'Приостановлен';
+
+  @override
+  String get adminPartnerExpired => 'Срок истёк';
+
+  @override
+  String get adminPartnerUpcoming => 'Ещё не начался';
+
+  @override
+  String get adminPartnerName => 'Название компании';
+
+  @override
+  String get adminPartnerKind => 'Тип';
+
+  @override
+  String get adminPartnerLogo => 'Ссылка на логотип (https://…)';
+
+  @override
+  String get adminPartnerLogoUpload => 'Загрузить логотип (PNG/JPEG, ≤ 1 МБ)';
+
+  @override
+  String get adminPartnerLogoTooLarge => 'Логотип больше 1 МБ или не PNG/JPEG.';
+
+  @override
+  String adminPartnerSummary(String lang) {
+    return 'Краткое описание ($lang)';
+  }
+
+  @override
+  String get adminPartnerRegions => 'Регионы';
+
+  @override
+  String get adminPartnerTelegram => 'Telegram (username)';
+
+  @override
+  String get adminPartnerWebsite => 'Сайт (https://…)';
+
+  @override
+  String get adminPartnerBrochure => 'Ссылка на буклет (https://…)';
+
+  @override
+  String get adminPartnerLinks => 'Привязка к каталогу';
+
+  @override
+  String get adminPartnerMakers => 'Производители (все модели)';
+
+  @override
+  String get adminPartnerModels => 'Модели';
+
+  @override
+  String get adminPartnerAddModel => 'Добавить модель';
+
+  @override
+  String get adminPartnerRegNo => 'Номер удостоверения (необязательно)';
+
+  @override
+  String get adminPartnerUnlink => 'Убрать';
+
+  @override
+  String get adminPartnerPeriodTitle => 'Период размещения';
+
+  @override
+  String get adminPartnerStarts => 'Начало';
+
+  @override
+  String get adminPartnerEnds => 'Окончание';
+
+  @override
+  String get adminPartnerSave => 'Сохранить';
+
+  @override
+  String get adminPartnerSaved => 'Сохранено';
+
+  @override
+  String get adminPartnerPublish => 'Опубликовать';
+
+  @override
+  String get adminPartnerPause => 'Приостановить';
+
+  @override
+  String get adminPartnerPublished => 'Опубликовано';
+
+  @override
+  String get adminPartnerPausedMsg => 'Приостановлено';
+
+  @override
+  String get adminPartnerPublishRules =>
+      'Для публикации нужны описание, хотя бы один контакт и хотя бы одна привязка. Реклама везде идёт с пометкой «Реклама» и не влияет на данные каталога.';
+
+  @override
+  String get adminPartnerInvalid =>
+      'Проверьте данные: название (2–120 символов), телефон, Telegram (5–32 символа), ссылки https, email, даты; для публикации — описание, контакт и привязка.';
+
+  @override
+  String get adminPartnerStats => 'Статистика';
+
+  @override
+  String get adminStatsImpressions => 'Показы';
+
+  @override
+  String get adminStatsContacts => 'Нажатия «связаться»';
+
+  @override
+  String get adminStatsCtr => 'Доля нажатий (CTR)';
+
+  @override
+  String get adminStats7 => 'Последние 7 дней';
+
+  @override
+  String get adminStats30 => 'Последние 30 дней';
+
+  @override
+  String get adminStatsAll => 'За всё время';
+
+  @override
+  String get adminStatsPeriods => 'По периодам';
+
+  @override
+  String get adminStatsByPlacement => 'По местам размещения (30 дней)';
+
+  @override
+  String get adminStatsDaily => 'По дням';
+
+  @override
+  String get adminStatsEmpty => 'Событий пока нет';
+
+  @override
+  String get adminStatsNote =>
+      'Как считается: показ — блок партнёра отрисован на экране; с одного устройства — не чаще раза в день на каждое место. Учитываются только вошедшие пользователи (гости и админ — нет). Персональные данные не хранятся, только дневные счётчики (время Ташкента).';
+
+  @override
+  String get adminStatsCopy => 'Скопировать отчёт';
+
+  @override
+  String get adminRequestsEmpty => 'Заявок нет';
+
+  @override
+  String get adminRequestReply => 'Ответ (увидит заявитель)';
+
+  @override
+  String get adminRequestSave => 'Сохранить статус и ответ';
+
+  @override
+  String get adminActionPartnerCreated => 'Партнёр создан';
+
+  @override
+  String get adminActionPartnerUpdated => 'Партнёр изменён';
+
+  @override
+  String get adminActionPartnerPublished => 'Партнёр опубликован';
+
+  @override
+  String get adminActionPartnerPaused => 'Партнёр приостановлен';
+
+  @override
+  String get adminActionPartnerDraft => 'Партнёр возвращён в черновик';
+
+  @override
+  String get adminActionPartnerRequest => 'Заявка на партнёрство обработана';
+
+  @override
   String get calStepInstrument => '1. Прибор';
 
   @override
@@ -2147,7 +2589,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get libBooks => 'Книги и руководства';
 
   @override
-  String get libBooksSub => 'PDF · язык · версия · размер';
+  String get libBooksSub => 'Каталог книг, пособий и сайтов';
 
   @override
   String get libPacks => 'Офлайн-пакеты';
@@ -3005,7 +3447,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get privacyBody =>
-      'Эта версия приложения не отправляет данные на сервер. Настройки, закладки, черновики, записи контроля качества и результаты тренировок хранятся на этом устройстве и могут попадать в резервную копию самого устройства (iCloud или Google).';
+      'В гостевом режиме приложение ничего не отправляет на сервер: настройки, закладки, записи QC, ваши приборы и результаты тренировок хранятся на этом устройстве (могут попадать в системную резервную копию). При входе по email на сервере хранятся email, роль, язык, день последней активности, ваши обращения и результаты в группах; без рекламного отслеживания. Аккаунт можно удалить в любой момент.';
 
   @override
   String get privacyTerms => 'Условия использования';
@@ -3124,6 +3566,422 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
+  String get libForYou => 'Для вас';
+
+  @override
+  String get libMoreSections => 'Другие разделы';
+
+  @override
+  String get libSearchEntry => 'Поиск: книга, автор, тема';
+
+  @override
+  String libBooksCount(int count) {
+    return 'Источников: $count · поиск и фильтры';
+  }
+
+  @override
+  String get libIntake => 'Как добавляются материалы';
+
+  @override
+  String get libIntakeSub =>
+      'Для преподавателя и редактора: что прислать, права, проверка';
+
+  @override
+  String get libContinueReading => 'Продолжить чтение';
+
+  @override
+  String get libSearchLabel => 'Поиск в библиотеке';
+
+  @override
+  String get libSearchHint => 'Название, автор, тема…';
+
+  @override
+  String get libFilterLanguage => 'Язык';
+
+  @override
+  String get libFilterTopic => 'Тема';
+
+  @override
+  String get libFilterType => 'Тип';
+
+  @override
+  String get libFilterSectionField => 'Направление';
+
+  @override
+  String get libFilterSectionGroup => 'Группа анализов';
+
+  @override
+  String get libFilterSectionKind => 'Вид материала';
+
+  @override
+  String get libFilterSectionOpen => 'Как открывается';
+
+  @override
+  String libFilterChoose(String filter) {
+    return '$filter: выберите';
+  }
+
+  @override
+  String libResultCount(int shown, int total) {
+    return 'Материалов: $shown из $total';
+  }
+
+  @override
+  String get libClearFilters => 'Сбросить';
+
+  @override
+  String get libFilteredEmptyTitle => 'По этим фильтрам материалов нет';
+
+  @override
+  String get libFilteredEmptyBody =>
+      'Уберите один фильтр или попробуйте другое слово — например, фамилию автора или «моча».';
+
+  @override
+  String get libOpenLink => 'Ссылка · внешний сайт';
+
+  @override
+  String libOpenLinkHint(String host) {
+    return 'Откроется в браузере: $host';
+  }
+
+  @override
+  String get libOpenInApp => 'Файл в приложении';
+
+  @override
+  String get libOpenInAppHint => 'Читается в приложении — интернет не нужен';
+
+  @override
+  String get libOpenDownload => 'Книга для загрузки';
+
+  @override
+  String libOpenDownloadHint(String size) {
+    return 'После загрузки читается в приложении · $size';
+  }
+
+  @override
+  String get libOpenPending => 'Ожидается';
+
+  @override
+  String get libOpenPendingHint => 'Материал ещё не получен — открыть нельзя';
+
+  @override
+  String get libOpenReceivedHint =>
+      'Файл получен и проверяется — пока не открывается';
+
+  @override
+  String get libOpenRecordHint =>
+      'Право на распространение файла не зафиксировано — в приложении не открывается';
+
+  @override
+  String get libOpenLinkShort => 'Ссылка';
+
+  @override
+  String get libOpenInAppShort => 'В приложении';
+
+  @override
+  String get libOpenDownloadShort => 'Для загрузки';
+
+  @override
+  String get libOpenRecordShort => 'Только запись';
+
+  @override
+  String get libItemRead => 'Читать';
+
+  @override
+  String libItemContinue(int page) {
+    return 'Продолжить со стр. $page';
+  }
+
+  @override
+  String get libItemCannotOpen => 'Открыть нельзя';
+
+  @override
+  String get libDownloadUnavailable =>
+      'Сервер загрузки ещё не подключён — книгу пока нельзя скачать.';
+
+  @override
+  String get libDetailsTitle => 'Сведения';
+
+  @override
+  String get libFieldAuthors => 'Автор';
+
+  @override
+  String get libFieldYear => 'Год';
+
+  @override
+  String get libFieldEdition => 'Издание';
+
+  @override
+  String get libFieldPublisher => 'Издательство';
+
+  @override
+  String get libFieldAccess => 'Доступ';
+
+  @override
+  String get libFieldStatus => 'Статус';
+
+  @override
+  String get libFieldRights => 'Право на распространение';
+
+  @override
+  String libFieldRightsRecorded(String date, String by) {
+    return 'Зафиксировано: $date · $by';
+  }
+
+  @override
+  String get libFieldTopics => 'Темы';
+
+  @override
+  String get libFieldPages => 'Страниц';
+
+  @override
+  String get libStateNotReceived => 'Ещё не получен';
+
+  @override
+  String get libStateReceived => 'Получен, проверяется';
+
+  @override
+  String get libStateCataloged => 'Каталогизирован';
+
+  @override
+  String get libStateLinked => 'Связан с карточками';
+
+  @override
+  String get libStateReviewed => 'Подтверждён преподавателем';
+
+  @override
+  String get libProvidedByTeacher => 'Материал от преподавателя';
+
+  @override
+  String get libItemNotFound => 'Материал не найден';
+
+  @override
+  String get libItemNotFoundBody =>
+      'Возможно, пакет контента обновился. Вернитесь в каталог.';
+
+  @override
+  String get libBackToCatalog => 'Вернуться в каталог';
+
+  @override
+  String get readerTitle => 'Чтение';
+
+  @override
+  String readerPageOf(int page, int total) {
+    return '$page из $total';
+  }
+
+  @override
+  String get readerToc => 'Оглавление';
+
+  @override
+  String get readerTocEmpty => 'В этом файле нет оглавления';
+
+  @override
+  String get readerTocEmptyBody =>
+      'Перейдите на страницу или поставьте закладку в нужном месте.';
+
+  @override
+  String get readerBookmarks => 'Закладки';
+
+  @override
+  String get readerAddBookmark => 'Добавить закладку';
+
+  @override
+  String get readerBookmarkName => 'Название закладки';
+
+  @override
+  String get readerBookmarkNameHint => 'Например: важная таблица';
+
+  @override
+  String readerBookmarkSaved(int page) {
+    return 'Закладка сохранена: стр. $page';
+  }
+
+  @override
+  String get readerBookmarkRemoved => 'Закладка удалена';
+
+  @override
+  String get readerBookmarkRemove => 'Удалить закладку';
+
+  @override
+  String get readerBookmarksEmpty => 'Закладок пока нет';
+
+  @override
+  String get readerBookmarksEmptyBody =>
+      'На нужной странице нажмите «Добавить закладку» — потом вернётесь одним касанием.';
+
+  @override
+  String readerPageLabel(int page) {
+    return 'Стр. $page';
+  }
+
+  @override
+  String get readerGoTo => 'Перейти на страницу';
+
+  @override
+  String get readerGoToShort => 'Страница';
+
+  @override
+  String readerGoToHint(int total) {
+    return 'От 1 до $total';
+  }
+
+  @override
+  String readerGoToError(int total) {
+    return 'Введите число от 1 до $total';
+  }
+
+  @override
+  String get readerGo => 'Перейти';
+
+  @override
+  String get readerSave => 'Сохранить';
+
+  @override
+  String get readerRenameBookmark => 'Переименовать закладку';
+
+  @override
+  String get libFieldProvidedBy => 'От кого';
+
+  @override
+  String get libQueryEmptyBody =>
+      'Попробуйте другое слово — например, фамилию автора, «моча» или «биохимия».';
+
+  @override
+  String get readerZoomIn => 'Увеличить';
+
+  @override
+  String get readerZoomOut => 'Уменьшить';
+
+  @override
+  String readerResumed(int page) {
+    return 'Вы остановились на стр. $page';
+  }
+
+  @override
+  String get readerFromStart => 'С начала';
+
+  @override
+  String get readerLoading => 'Открываем файл…';
+
+  @override
+  String get readerFileMissing => 'Файл не найден';
+
+  @override
+  String get readerFileMissingBody =>
+      'Этого файла нет в приложении. Попробуйте обновить приложение.';
+
+  @override
+  String get readerFileCorrupted => 'Файл не прошёл проверку';
+
+  @override
+  String get readerFileCorruptedBody =>
+      'Размер файла или контрольная сумма не совпадают с каталогом — файл мог быть повреждён или подменён, поэтому он не открыт.';
+
+  @override
+  String get readerOpenFailed => 'Не удалось открыть PDF';
+
+  @override
+  String get readerBlockedTitle => 'Не открывается в приложении';
+
+  @override
+  String get readerBlockedRights =>
+      'В приложении открываются только файлы с полностью зафиксированным правом на распространение. Для этого материала такого файла нет.';
+
+  @override
+  String get readerBookmarkedPage => 'Эта страница в закладках';
+
+  @override
+  String get intakeTitle => 'Добавление материалов';
+
+  @override
+  String get intakeSubtitle => 'Краткий порядок для преподавателя и редактора';
+
+  @override
+  String intakeStatus(int count) {
+    return 'Материалов от преподавателей: $count. Список пополняется по мере поступления.';
+  }
+
+  @override
+  String get intakeWhatTitle => '1. Что прислать';
+
+  @override
+  String get intakeWhat1 =>
+      'Файл книги, пособия, методики или IFU (PDF) и его данные: название, автор, год и издание, издательство, ISBN, язык.';
+
+  @override
+  String get intakeWhat2 =>
+      'Тестовые вопросы: вопрос, варианты, верный ответ, пояснение к каждому варианту и страница источника.';
+
+  @override
+  String get intakeWhat3 =>
+      'Если есть старое и новое издание — оба: расхождения рассматриваются отдельно.';
+
+  @override
+  String get intakeRightsTitle => '2. Право на распространение';
+
+  @override
+  String get intakeRights1 =>
+      'Переданный PDF сам по себе не означает права раздавать его всем.';
+
+  @override
+  String get intakeRights2 =>
+      'Чтобы файл открывался в приложении у всех, право фиксируется полностью: кто разрешил (автор или издательство), когда, кто зафиксировал и доказательство — письмо-разрешение или ссылка на лицензию.';
+
+  @override
+  String get intakeRights3 =>
+      'Без такой записи материал остаётся только записью в каталоге или для личного использования.';
+
+  @override
+  String get intakeReviewTitle => '3. Как проверяется';
+
+  @override
+  String get intakeStep1 => 'Ожидается — материал ещё не пришёл.';
+
+  @override
+  String get intakeStep2 => 'Получен — файл пришёл и внесён в список.';
+
+  @override
+  String get intakeStep3 =>
+      'Каталогизирован — проверены название, автор и издание. Только после этого его можно цитировать.';
+
+  @override
+  String get intakeStep4 =>
+      'Связан — привязан к карточкам анализов и урокам с номером страницы.';
+
+  @override
+  String get intakeStep5 =>
+      'Подтверждён — преподаватель проверил. До этого вопросы остаются «Черновиком».';
+
+  @override
+  String get intakeConflict =>
+      'Если старый и новый источник расходятся, ни один не записывается как факт — обе позиции показываются проверяющему.';
+
+  @override
+  String get intakeNeverTitle => 'Чего мы не делаем';
+
+  @override
+  String get intakeNever1 =>
+      'Показывать неполученный материал как «доступный».';
+
+  @override
+  String get intakeNever2 =>
+      'Угадывать номер страницы или писать то, чего нет в источнике.';
+
+  @override
+  String get intakeNever3 => 'Раздавать всем книгу без зафиксированного права.';
+
+  @override
+  String get intakeContactTitle => '4. Связь';
+
+  @override
+  String get intakeContactBody =>
+      'Напишите команде LabGuide о материале: название, автор, издание и правообладатель. Способ передачи файла согласуется с командой — загрузить PDF через приложение нельзя.';
+
+  @override
+  String get intakeContactAction => 'Написать команде LabGuide';
+
+  @override
   String get libReview => 'Очередь проверки';
 
   @override
@@ -3131,6 +3989,110 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get reviewDiscrepancies => 'Расхождения между источниками';
+
+  @override
+  String get rvGateTitle => 'Только для рецензентов';
+
+  @override
+  String get rvGateBody =>
+      'Права рецензента выдаёт администратор. Роль в приложении (например, «Преподаватель») их не даёт.';
+
+  @override
+  String get rvSignInTitle => 'Войдите, чтобы рецензировать';
+
+  @override
+  String get rvAdminReadOnly =>
+      'Как администратор вы видите решения. Чтобы рецензировать, выдайте своему аккаунту права рецензента (Админ → Пользователи).';
+
+  @override
+  String get rvTabCards => 'Карточки';
+
+  @override
+  String get rvTabQuestions => 'Вопросы';
+
+  @override
+  String get rvTabDiscrepancies => 'Расхождения';
+
+  @override
+  String rvMine(String decision) {
+    return 'Ваше решение: $decision';
+  }
+
+  @override
+  String get rvNotSeen => 'Вы ещё не смотрели';
+
+  @override
+  String rvCount(int count) {
+    return 'Решений: $count';
+  }
+
+  @override
+  String get rvApprove => 'Утверждаю';
+
+  @override
+  String get rvChanges => 'Нужны правки';
+
+  @override
+  String get rvDecisionApprove => 'утверждено';
+
+  @override
+  String get rvDecisionChanges => 'запрошены правки';
+
+  @override
+  String get rvComment => 'Комментарий';
+
+  @override
+  String get rvCommentHint =>
+      'Что неверно или что проверить (источник, страница)';
+
+  @override
+  String get rvCommentRequired => 'Для «Нужны правки» напишите комментарий.';
+
+  @override
+  String get rvSubmit => 'Отправить решение';
+
+  @override
+  String get rvSubmitted => 'Решение записано';
+
+  @override
+  String get rvNotAuto =>
+      'Решение само не меняет статус карточки: после редакции она станет «Проверено» в следующем пакете контента.';
+
+  @override
+  String get rvHistory => 'История решений';
+
+  @override
+  String get rvYou => 'Вы';
+
+  @override
+  String get rvReviewer => 'Рецензент';
+
+  @override
+  String get rvNoHistory => 'Решений пока нет';
+
+  @override
+  String get rvOpenCard => 'Открыть карточку';
+
+  @override
+  String get rvCorrect => 'Правильный ответ';
+
+  @override
+  String get rvBasis => 'Обоснование';
+
+  @override
+  String get rvYourDecision => 'Ваше решение';
+
+  @override
+  String get rvAllDone => 'Всё просмотрено';
+
+  @override
+  String get analytePreparedBy => 'Подготовил';
+
+  @override
+  String get analyteEditorial => 'Редакция LabGuide';
+
+  @override
+  String get analyteSourcesChecked => 'Источники просмотрены';
 
   @override
   String get reviewDiscrepanciesBody =>

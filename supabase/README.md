@@ -18,6 +18,7 @@ mehmon rejimi va oflayn kontent to‘liq ishlaydi.
 | `migrations/…0300_admin_panel.sql` | `admin_stats`, `admin_list_users` (niqoblangan email), `admin_reveal_email` (jurnalga yoziladi), `admin_set_reviewer` |
 | `migrations/…0400_groups.sql` | guruh, taklif kodi, topshiriq, javob (ball serverda hisoblanadi) |
 | `migrations/…0900_privileges.sql` | jadvallarga to‘g‘ridan-to‘g‘ri yozish yopiq; yozish faqat RPC orqali |
+| `migrations/…1000_partners.sql` | hamkorlar (reklama): profil, katalogga bog‘lanish, arizalar, kunlik hisoblagich, ochiq `partner-logos` bucket — qarang `docs/PARTNERS.md` |
 | `functions/delete-account` | foydalanuvchi o‘z hisobini o‘chiradi (fayllari bilan) |
 | `tests/` | lokal Postgres'da qabul testlari (`tool/backend_test.sh`) |
 

@@ -3,6 +3,7 @@ import 'dart:typed_data';
 
 import 'package:labguide/core/backend/backend_models.dart';
 import 'package:labguide/core/backend/lab_backend.dart';
+import 'package:labguide/core/backend/partner_models.dart';
 import 'package:labguide/features/auth/otp_auth.dart';
 
 class _User {
@@ -488,6 +489,48 @@ class FakeLabBackend implements LabBackend {
     return audit.reversed.take(limit).toList();
   }
 
+  // Kontent tekshiruvi — SQL bilan bir xil: faqat reviewer yozadi/o'qiydi.
+  final List<ContentReview> _reviews = [];
+
+  /// Testlar uchun: admin panelidan o'tmasdan reviewer qilish.
+  void grantReviewer(String email) =>
+      _users[normalizeEmail(email)]!.reviewer = true;
+
+  @override
+  Future<void> submitReview({
+    required String kind,
+    required String itemId,
+    required String contentVersion,
+    required ReviewDecision decision,
+    String? comment,
+  }) async {
+    final u = _require();
+    if (!u.reviewer) throw const BackendException(BackendFailure.forbidden);
+    final note = comment?.trim();
+    if (decision == ReviewDecision.changes && (note == null || note.isEmpty)) {
+      throw const BackendException(BackendFailure.invalid);
+    }
+    _reviews.insert(
+      0,
+      ContentReview(
+        id: _id('review'),
+        itemKind: kind,
+        itemId: itemId,
+        contentVersion: contentVersion,
+        reviewerId: u.id,
+        decision: decision,
+        comment: note == null || note.isEmpty ? null : note,
+        createdAt: _now(),
+      ),
+    );
+  }
+
+  @override
+  Future<List<ContentReview>> contentReviews() async {
+    final u = _require();
+    return u.reviewer || _isAdminAccount ? List.of(_reviews) : const [];
+  }
+
   // Guruhlar — UI testlari uchun minimal.
   final List<StudyGroup> _groups = [];
 
@@ -544,4 +587,316 @@ class FakeLabBackend implements LabBackend {
   @override
   Future<List<GroupSubmission>> submissions(String assignmentId) async =>
       const [];
+
+  // ----------------------------------------------------------- Hamkorlar
+  // `supabase/migrations/20261009001000_partners.sql` qoidalari: hamma faqat
+  // e'lon qilingan va bugun faol hamkorni ko'radi; yozish — admin (aal2);
+  // hodisa: ≤ 20 bir chaqiruvda, hisobga kuniga ≤ 100, admin sanalmaydi.
+
+  /// Hamkor faolligini tekshirish soati (testda sanani surish uchun).
+  DateTime Function() partnerClock = DateTime.now;
+
+  final List<Partner> _partners = [];
+  final List<PartnerRequest> _partnerRequests = [];
+
+  /// (hamkor, kun, joy) → [ko'rsatilish, bog'lanish].
+  final Map<(String, DateTime, PartnerPlacement), List<int>> _partnerEvents =
+      {};
+  final Map<String, (DateTime, int)> _eventQuota = {};
+
+  /// Server so'rovlari soni (kesh va tejamkorlikni tekshirish uchun).
+  int partnerFeedCalls = 0;
+  int partnerTrackCalls = 0;
+
+  /// Server ishlamay qolganini taqlid qilish (internet yo'q).
+  bool partnersOffline = false;
+
+  /// Test uchun to'g'ridan-to'g'ri hamkor qo'yish (admin oqimisiz).
+  void seedPartner(Partner p) => _partners.add(p);
+
+  DateTime get _today => tashkentToday(partnerClock());
+
+  ({int impressions, int contacts}) partnerTotals(String id) {
+    var i = 0;
+    var c = 0;
+    for (final e in _partnerEvents.entries) {
+      if (e.key.$1 != id) continue;
+      i += e.value[0];
+      c += e.value[1];
+    }
+    return (impressions: i, contacts: c);
+  }
+
+  @override
+  Future<List<Partner>> partners() async {
+    partnerFeedCalls++;
+    if (partnersOffline) {
+      throw const BackendException(BackendFailure.network);
+    }
+    return _partners.where((p) => p.isLiveOn(_today)).toList()
+      ..sort((a, b) => a.name.compareTo(b.name));
+  }
+
+  @override
+  Future<int> trackPartnerEvents(List<PartnerEvent> events) async {
+    final u = _current;
+    if (u == null || events.isEmpty) return 0;
+    var accepted = 0;
+    for (var i = 0; i < events.length; i += 20) {
+      final batch = events.skip(i).take(20).toList();
+      partnerTrackCalls++;
+      if (_isAdminAccount) continue;
+      final today = _today;
+      final q = _eventQuota[u.id];
+      final used = (q != null && q.$1 == today ? q.$2 : 0) + batch.length;
+      if (used > 100) throw const BackendException(BackendFailure.rateLimited);
+      _eventQuota[u.id] = (today, used);
+      for (final e in batch) {
+        final live = _partners.any(
+          (p) => p.id == e.partnerId && p.isLiveOn(today),
+        );
+        if (!live) continue;
+        final row = _partnerEvents.putIfAbsent((
+          e.partnerId,
+          today,
+          e.placement,
+        ), () => [0, 0]);
+        row[e.kind == PartnerEventKind.impression ? 0 : 1]++;
+        accepted++;
+      }
+    }
+    return accepted;
+  }
+
+  @override
+  Future<String> createPartnerRequest(PartnerRequestDraft draft) async {
+    final u = _require();
+    if (!draft.isValid) throw const BackendException(BackendFailure.invalid);
+    final dayAgo = _now().subtract(const Duration(days: 1));
+    final recent = _partnerRequests.where(
+      (r) => r.userId == u.id && r.createdAt.isAfter(dayAgo),
+    );
+    if (recent.length >= 3) {
+      throw const BackendException(BackendFailure.rateLimited);
+    }
+    String? clean(String? v) =>
+        (v == null || v.trim().isEmpty) ? null : v.trim();
+    final r = PartnerRequest(
+      id: _id('preq'),
+      userId: u.id,
+      company: draft.company.trim(),
+      contactName: draft.contactName.trim(),
+      phone: clean(draft.phone),
+      email: clean(draft.email)?.toLowerCase(),
+      products: draft.products.trim(),
+      message: draft.message.trim(),
+      status: PartnerRequestStatus.newRequest,
+      adminReply: null,
+      createdAt: _now(),
+      repliedAt: null,
+    );
+    _partnerRequests.add(r);
+    return r.id;
+  }
+
+  @override
+  Future<List<PartnerRequest>> myPartnerRequests() async {
+    final u = _require();
+    return _partnerRequests
+        .where((r) => r.userId == u.id)
+        .toList()
+        .reversed
+        .toList();
+  }
+
+  @override
+  Future<List<Partner>> adminPartners() async {
+    _requireAdmin();
+    return _partners.reversed.toList();
+  }
+
+  void _validatePartner(PartnerDraft d) {
+    bool bad(String? v, bool Function(String) ok) => v != null && !ok(v);
+    final name = d.name.trim().length;
+    if (name < 2 ||
+        name > 120 ||
+        d.summary.keys.any((k) => !const {'uz', 'ru', 'en'}.contains(k)) ||
+        d.summary.values.any((v) => v.trim().length > 300) ||
+        d.regions.any((r) => !uzRegionCodes.contains(r)) ||
+        d.endsOn.isBefore(d.startsOn) ||
+        bad(d.phone, isValidPartnerPhone) ||
+        bad(d.telegram, isValidTelegram) ||
+        bad(d.website, isValidHttpsUrl) ||
+        bad(d.email, isValidPartnerEmail) ||
+        bad(d.brochureUrl, isValidHttpsUrl) ||
+        bad(d.logoUrl, isValidHttpsUrl) ||
+        d.links.length > 200 ||
+        d.links.any(
+          (l) =>
+              !isValidCatalogId(l.catalogId) ||
+              (l.registrationNo != null &&
+                  (l.target != PartnerLinkTarget.model ||
+                      l.registrationNo!.trim().length < 3 ||
+                      l.registrationNo!.trim().length > 60)),
+        )) {
+      throw const BackendException(BackendFailure.invalid);
+    }
+  }
+
+  void _checkPublishable(Partner p) {
+    if (p.summary.values.every((v) => v.trim().isEmpty) ||
+        !p.hasContact ||
+        p.links.isEmpty) {
+      throw const BackendException(BackendFailure.invalid);
+    }
+  }
+
+  @override
+  Future<String> adminSavePartner(PartnerDraft draft, {String? id}) async {
+    _requireAdmin();
+    _validatePartner(draft);
+    final index = id == null ? -1 : _partners.indexWhere((p) => p.id == id);
+    if (id != null && index < 0) {
+      throw const BackendException(BackendFailure.notFound);
+    }
+    final p = Partner(
+      id: id ?? _id('partner'),
+      name: draft.name.trim(),
+      kind: draft.kind,
+      logoUrl: draft.logoUrl,
+      summary: {
+        for (final e in draft.summary.entries)
+          if (e.value.trim().isNotEmpty) e.key: e.value.trim(),
+      },
+      regions: draft.regions.toSet().toList(),
+      phone: draft.phone,
+      telegram: draft.telegram,
+      website: draft.website,
+      email: draft.email,
+      brochureUrl: draft.brochureUrl,
+      startsOn: draft.startsOn,
+      endsOn: draft.endsOn,
+      status: index < 0 ? PartnerStatus.draft : _partners[index].status,
+      links: draft.links,
+    );
+    if (p.status == PartnerStatus.published) _checkPublishable(p);
+    if (index < 0) {
+      _partners.add(p);
+    } else {
+      _partners
+        ..removeAt(index)
+        ..add(p);
+    }
+    audit.add(
+      AuditEntry(
+        at: _now(),
+        action: index < 0 ? 'partner_created' : 'partner_updated',
+        target: p.id,
+        details: {'name': p.name, 'links': p.links.length},
+      ),
+    );
+    return p.id;
+  }
+
+  @override
+  Future<void> adminSetPartnerStatus(String id, PartnerStatus status) async {
+    _requireAdmin();
+    final index = _partners.indexWhere((p) => p.id == id);
+    if (index < 0) throw const BackendException(BackendFailure.notFound);
+    final old = _partners[index];
+    if (status == PartnerStatus.published) _checkPublishable(old);
+    _partners[index] = Partner.fromJson({
+      ...old.toJson(),
+      'status': status.name,
+    });
+    audit.add(
+      AuditEntry(
+        at: _now(),
+        action: switch (status) {
+          PartnerStatus.published => 'partner_published',
+          PartnerStatus.paused => 'partner_paused',
+          PartnerStatus.draft => 'partner_draft',
+        },
+        target: id,
+        details: {'from': old.status.name, 'to': status.name},
+      ),
+    );
+  }
+
+  @override
+  Future<String> adminUploadPartnerLogo(
+    Uint8List bytes,
+    String mimeType,
+  ) async {
+    _requireAdmin();
+    if (bytes.length > 1024 * 1024 ||
+        !SupportAttachment.allowedTypes.contains(mimeType)) {
+      throw const BackendException(BackendFailure.invalid);
+    }
+    return 'https://example.supabase.co/storage/v1/object/public/'
+        'partner-logos/${_id('logo')}.png';
+  }
+
+  @override
+  Future<List<PartnerDayStat>> adminPartnerStats(String id) async {
+    _requireAdmin();
+    return [
+      for (final e in _partnerEvents.entries)
+        if (e.key.$1 == id)
+          PartnerDayStat(
+            day: e.key.$2,
+            placement: e.key.$3,
+            impressions: e.value[0],
+            contacts: e.value[1],
+          ),
+    ]..sort((a, b) => b.day.compareTo(a.day));
+  }
+
+  @override
+  Future<List<PartnerRequest>> adminPartnerRequests({
+    PartnerRequestStatus? status,
+  }) async {
+    _requireAdmin();
+    return _partnerRequests
+        .where((r) => status == null || r.status == status)
+        .toList()
+        .reversed
+        .toList();
+  }
+
+  @override
+  Future<void> adminUpdatePartnerRequest(
+    String id, {
+    required PartnerRequestStatus status,
+    String? reply,
+  }) async {
+    _requireAdmin();
+    final index = _partnerRequests.indexWhere((r) => r.id == id);
+    if (index < 0) throw const BackendException(BackendFailure.notFound);
+    final old = _partnerRequests[index];
+    final text = reply?.trim();
+    final hasReply = text != null && text.isNotEmpty;
+    _partnerRequests[index] = PartnerRequest(
+      id: old.id,
+      userId: old.userId,
+      company: old.company,
+      contactName: old.contactName,
+      phone: old.phone,
+      email: old.email,
+      products: old.products,
+      message: old.message,
+      status: status,
+      adminReply: hasReply ? text : old.adminReply,
+      createdAt: old.createdAt,
+      repliedAt: hasReply ? _now() : old.repliedAt,
+    );
+    audit.add(
+      AuditEntry(
+        at: _now(),
+        action: 'partner_request',
+        target: id,
+        details: {'from': old.status.wire, 'to': status.wire},
+      ),
+    );
+  }
 }

@@ -238,6 +238,8 @@
   "sectionPhysiology": "Physiology",
   "sectionHighResult": "High result",
   "sectionLowResult": "Low result",
+  "sectionPositiveResult": "Positive result",
+  "sectionNegativeResult": "Negative result",
   "sectionPreanalytics": "Specimen and preanalytics",
   "sectionInterference": "Interference",
   "sectionLimitations": "Limitations",
@@ -1117,6 +1119,181 @@
   "instCustomRequired": "Enter the manufacturer and model.",
   "instCatalogError": "Could not read the instrument catalog",
   "instOpenCard": "Instrument card",
+  "partnerAdLabel": "Ad",
+  "partnerLabel": "Partner",
+  "partnerOfficialTitle": "Official partners",
+  "partnerSectionNote": "Information provided by the partner companies. The catalogue data above, its order and review status do not depend on partnerships.",
+  "partnerKindManufacturer": "Manufacturer",
+  "partnerKindDistributor": "Official distributor",
+  "partnerKindService": "Service centre",
+  "partnerCall": "Call",
+  "partnerTelegram": "Telegram",
+  "partnerWebsite": "Website",
+  "partnerEmail": "Email",
+  "partnerBrochure": "Brochure",
+  "partnerMore": "Details",
+  "partnerRegions": "Regions: {regions}",
+  "@partnerRegions": {
+    "placeholders": {
+      "regions": {
+        "type": "String"
+      }
+    }
+  },
+  "partnerRegistration": "Registration certificate in Uzbekistan: {number}",
+  "@partnerRegistration": {
+    "placeholders": {
+      "number": {
+        "type": "String"
+      }
+    }
+  },
+  "partnerRegistrationNote": "Number provided by the partner.",
+  "partnerBecome": "Become a partner",
+  "partnerBecomeSub": "For companies: your instruments in LabGuide",
+  "partnerNotFoundTitle": "Partner not found",
+  "partnerNotFoundBody": "The listing may have ended or been paused.",
+  "partnerContacts": "Contacts",
+  "partnerAbout": "About the company",
+  "partnerInstruments": "Related instruments",
+  "partnerAllModels": "{maker}: all models",
+  "@partnerAllModels": {
+    "placeholders": {
+      "maker": {
+        "type": "String"
+      }
+    }
+  },
+  "partnerPageNote": "This page is an advertisement. LabGuide does not endorse partner products; catalogue data and review status do not depend on partnerships.",
+  "partnerOfferTitle": "Your contacts, right on the instrument card",
+  "partnerOfferBody": "A lab specialist reading about an instrument can call its official distributor or service centre in one tap. For manufacturers, official distributors and service centres.",
+  "partnerWhatTitle": "What you get",
+  "partnerWhatCard": "An “Official partners” section on the instrument card: logo, short description, regions, call and Telegram buttons.",
+  "partnerWhatCategory": "A compact “Partner” card inside the instrument category (e.g. Chemistry).",
+  "partnerWhatLabHome": "One ad card on the Lab tab home, shown in rotation.",
+  "partnerWhatPage": "A partner page: related models, registration numbers, brochure.",
+  "partnerWhatReport": "A report: impressions and contact taps by day and placement (no personal data).",
+  "partnerAudienceTitle": "Audience",
+  "partnerAudienceBody": "LabGuide serves laboratory specialists, doctors, students and teachers in Uzbek, Russian and English. We show user numbers and the role breakdown from server statistics during negotiation; we don’t quote estimates.",
+  "partnerRulesTitle": "Rules",
+  "partnerRule1": "Every placement carries a clear “Ad” or “Partner” label.",
+  "partnerRule2": "Catalogue facts, their order and review status do not depend on partnerships and cannot be bought.",
+  "partnerRule3": "Medical device ads: the instrument must be registered in Uzbekistan; the certificate number is shown on the card.",
+  "partnerRule4": "Verifiable information only: unproven claims such as “the best” or “100% accurate” are not accepted.",
+  "partnerRule5": "Users’ personal data is never shared with partners.",
+  "partnerPriceTitle": "Price",
+  "partnerPriceBody": "Price is agreed individually, depending on placements, period and regions.",
+  "partnerHowTitle": "How it works",
+  "partnerHow1": "Send an application using the form below.",
+  "partnerHow2": "We contact you and agree the terms.",
+  "partnerHow3": "You send the logo, description (uz/ru/en), contacts and registration numbers.",
+  "partnerHow4": "After review the listing goes live; we send reports regularly.",
+  "partnerFormTitle": "Application",
+  "partnerFormCompany": "Company",
+  "partnerFormContact": "Contact person",
+  "partnerFormPhone": "Phone",
+  "partnerFormEmail": "Email",
+  "partnerFormProducts": "Products (instruments, models)",
+  "partnerFormMessage": "Message",
+  "partnerFormHint": "A phone number or an email is required.",
+  "partnerFormSend": "Send application",
+  "partnerFormInvalid": "Enter the company and contact person, and a valid phone or email.",
+  "partnerSentTitle": "Application sent",
+  "partnerSentBody": "The reply will appear on this page under “Your applications”. If needed, we will contact you by the phone or email you gave.",
+  "partnerSendAnother": "Send another application",
+  "partnerFormSignIn": "Sign in with email to send an application — the reply comes to that account.",
+  "partnerFormUnavailable": "Applications are not connected yet: this build has no server.",
+  "partnerMyRequests": "Your applications",
+  "partnerReqStatusNew": "New",
+  "partnerReqStatusInReview": "In review",
+  "partnerReqStatusAccepted": "Accepted",
+  "partnerReqStatusDeclined": "Declined",
+  "partnerReqReply": "LabGuide reply: {text}",
+  "@partnerReqReply": {
+    "placeholders": {
+      "text": {
+        "type": "String"
+      }
+    }
+  },
+  "partnerPlacementCard": "Instrument card",
+  "partnerPlacementCategory": "Category",
+  "partnerPlacementLabHome": "Lab home",
+  "partnerPlacementPage": "Partner page",
+  "adminPartners": "Partners",
+  "adminPartnersSub": "Ads: create, publish, statistics",
+  "adminPartnerRequests": "Partnership applications",
+  "adminPartnerRequestsNew": "New applications: {count}",
+  "@adminPartnerRequestsNew": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "adminPartnerNew": "New partner",
+  "adminPartnersEmpty": "No partners yet",
+  "adminPartnerStatusDraft": "Draft",
+  "adminPartnerStatusLive": "Published",
+  "adminPartnerStatusPaused": "Paused",
+  "adminPartnerExpired": "Expired",
+  "adminPartnerUpcoming": "Not started yet",
+  "adminPartnerName": "Company name",
+  "adminPartnerKind": "Type",
+  "adminPartnerLogo": "Logo link (https://…)",
+  "adminPartnerLogoUpload": "Upload logo (PNG/JPEG, ≤ 1 MB)",
+  "adminPartnerLogoTooLarge": "The logo is larger than 1 MB or not PNG/JPEG.",
+  "adminPartnerSummary": "Short description ({lang})",
+  "@adminPartnerSummary": {
+    "placeholders": {
+      "lang": {
+        "type": "String"
+      }
+    }
+  },
+  "adminPartnerRegions": "Regions",
+  "adminPartnerTelegram": "Telegram (username)",
+  "adminPartnerWebsite": "Website (https://…)",
+  "adminPartnerBrochure": "Brochure link (https://…)",
+  "adminPartnerLinks": "Catalogue links",
+  "adminPartnerMakers": "Manufacturers (all models)",
+  "adminPartnerModels": "Models",
+  "adminPartnerAddModel": "Add a model",
+  "adminPartnerRegNo": "Certificate number (optional)",
+  "adminPartnerUnlink": "Remove",
+  "adminPartnerPeriodTitle": "Active period",
+  "adminPartnerStarts": "Starts",
+  "adminPartnerEnds": "Ends",
+  "adminPartnerSave": "Save",
+  "adminPartnerSaved": "Saved",
+  "adminPartnerPublish": "Publish",
+  "adminPartnerPause": "Pause",
+  "adminPartnerPublished": "Published",
+  "adminPartnerPausedMsg": "Paused",
+  "adminPartnerPublishRules": "To publish: a description, at least one contact and at least one link. The ad always carries an “Ad” label and never changes catalogue data.",
+  "adminPartnerInvalid": "Check the data: name (2–120 characters), phone, Telegram (5–32 characters), https links, email, dates; to publish — description, contact and a link.",
+  "adminPartnerStats": "Statistics",
+  "adminStatsImpressions": "Impressions",
+  "adminStatsContacts": "Contact taps",
+  "adminStatsCtr": "Click-through rate",
+  "adminStats7": "Last 7 days",
+  "adminStats30": "Last 30 days",
+  "adminStatsAll": "All time",
+  "adminStatsPeriods": "By period",
+  "adminStatsByPlacement": "By placement (30 days)",
+  "adminStatsDaily": "By day",
+  "adminStatsEmpty": "No events yet",
+  "adminStatsNote": "How it is counted: an impression means the partner block was drawn on screen; once per device per day per placement. Only signed-in users are counted (not guests or the admin). No personal data is stored, only daily counters (Tashkent time).",
+  "adminStatsCopy": "Copy report",
+  "adminRequestsEmpty": "No applications",
+  "adminRequestReply": "Reply (the applicant sees it)",
+  "adminRequestSave": "Save status and reply",
+  "adminActionPartnerCreated": "Partner created",
+  "adminActionPartnerUpdated": "Partner edited",
+  "adminActionPartnerPublished": "Partner published",
+  "adminActionPartnerPaused": "Partner paused",
+  "adminActionPartnerDraft": "Partner moved to draft",
+  "adminActionPartnerRequest": "Partnership application handled",
   "calStepInstrument": "1. Instrument",
   "calStepAnalyte": "2. Analyte",
   "calStepReagent": "3. Reagent",
@@ -1192,7 +1369,7 @@
   "libTitle": "Library",
   "libSubtitle": "Your knowledge in one place.",
   "libBooks": "Books and guides",
-  "libBooksSub": "PDF · language · revision · size",
+  "libBooksSub": "Catalog of books, manuals and websites",
   "libPacks": "Offline packs",
   "libPacksSub": "Installed and upcoming packs",
   "libSavedSub": "Bookmarked tests",
@@ -1633,7 +1810,7 @@
   "purchaseSubscribe": "Subscribe",
   "purchaseRestore": "Restore purchases",
   "privacyTitle": "Privacy and help",
-  "privacyBody": "This version of the app sends no data to a server. Settings, bookmarks, drafts, QC records and practice progress are stored on this device and may be included in the device’s own backup (iCloud or Google).",
+  "privacyBody": "In guest mode the app sends nothing to a server: settings, bookmarks, QC records, your instruments and practice results stay on this device (they may be included in the device backup). If you sign in with email, the server stores your email, role, language, last active day, your support requests and group results; no ad tracking. You can delete your account at any time.",
   "privacyTerms": "Terms of use",
   "privacyTermsSub": "Final text to be prepared",
   "privacyDeleteLocal": "Delete local data",
@@ -1703,9 +1880,283 @@
       }
     }
   },
+  "libForYou": "For you",
+  "libMoreSections": "More sections",
+  "libSearchEntry": "Search books, authors, topics",
+  "libBooksCount": "{count} sources · search and filters",
+  "@libBooksCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "libIntake": "How materials are added",
+  "libIntakeSub": "For teachers and editors: what to send, rights, review",
+  "libContinueReading": "Continue reading",
+  "libSearchLabel": "Search the library",
+  "libSearchHint": "Title, author, topic…",
+  "libFilterLanguage": "Language",
+  "libFilterTopic": "Topic",
+  "libFilterType": "Type",
+  "libFilterSectionField": "Field",
+  "libFilterSectionGroup": "Test group",
+  "libFilterSectionKind": "Material type",
+  "libFilterSectionOpen": "How it opens",
+  "libFilterChoose": "{filter}: choose",
+  "@libFilterChoose": {
+    "placeholders": {
+      "filter": {
+        "type": "String"
+      }
+    }
+  },
+  "libResultCount": "{shown} of {total} materials",
+  "@libResultCount": {
+    "placeholders": {
+      "shown": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "libClearFilters": "Clear",
+  "libFilteredEmptyTitle": "No materials match these filters",
+  "libFilteredEmptyBody": "Remove one filter or try another word — for example an author’s surname or “urine”.",
+  "libOpenLink": "Link · external website",
+  "libOpenLinkHint": "Opens in your browser: {host}",
+  "@libOpenLinkHint": {
+    "placeholders": {
+      "host": {
+        "type": "String"
+      }
+    }
+  },
+  "libOpenInApp": "In-app file",
+  "libOpenInAppHint": "Read inside the app — no internet needed",
+  "libOpenDownload": "Downloadable book",
+  "libOpenDownloadHint": "Read in the app after download · {size}",
+  "@libOpenDownloadHint": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "libOpenPending": "Pending",
+  "libOpenPendingHint": "Not received yet — cannot be opened",
+  "libOpenReceivedHint": "File received and being checked — not available yet",
+  "libOpenRecordHint": "No distribution rights recorded — not opened in the app",
+  "libOpenLinkShort": "Link",
+  "libOpenInAppShort": "In the app",
+  "libOpenDownloadShort": "Download",
+  "libOpenRecordShort": "Record only",
+  "libItemRead": "Read",
+  "libItemContinue": "Continue from page {page}",
+  "@libItemContinue": {
+    "placeholders": {
+      "page": {
+        "type": "int"
+      }
+    }
+  },
+  "libItemCannotOpen": "Cannot be opened",
+  "libDownloadUnavailable": "The download server is not connected yet — the book can’t be downloaded for now.",
+  "libDetailsTitle": "Details",
+  "libFieldAuthors": "Author",
+  "libFieldYear": "Year",
+  "libFieldEdition": "Edition",
+  "libFieldPublisher": "Publisher",
+  "libFieldAccess": "Access",
+  "libFieldStatus": "Status",
+  "libFieldRights": "Distribution rights",
+  "libFieldRightsRecorded": "Recorded: {date} · {by}",
+  "@libFieldRightsRecorded": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "by": {
+        "type": "String"
+      }
+    }
+  },
+  "libFieldTopics": "Topics",
+  "libFieldPages": "Pages",
+  "libStateNotReceived": "Not received yet",
+  "libStateReceived": "Received, being checked",
+  "libStateCataloged": "Catalogued",
+  "libStateLinked": "Linked to cards",
+  "libStateReviewed": "Approved by a teacher",
+  "libProvidedByTeacher": "Provided by a teacher",
+  "libItemNotFound": "Material not found",
+  "libItemNotFoundBody": "The content pack may have been updated. Go back to the catalog.",
+  "libBackToCatalog": "Back to catalog",
+  "readerTitle": "Reader",
+  "readerPageOf": "{page} of {total}",
+  "@readerPageOf": {
+    "placeholders": {
+      "page": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "readerToc": "Contents",
+  "readerTocEmpty": "This file has no table of contents",
+  "readerTocEmptyBody": "Go to a page or bookmark the place you need.",
+  "readerBookmarks": "Bookmarks",
+  "readerAddBookmark": "Bookmark this page",
+  "readerBookmarkName": "Bookmark name",
+  "readerBookmarkNameHint": "For example: key table",
+  "readerBookmarkSaved": "Bookmark saved: page {page}",
+  "@readerBookmarkSaved": {
+    "placeholders": {
+      "page": {
+        "type": "int"
+      }
+    }
+  },
+  "readerBookmarkRemoved": "Bookmark removed",
+  "readerBookmarkRemove": "Remove bookmark",
+  "readerBookmarksEmpty": "No bookmarks yet",
+  "readerBookmarksEmptyBody": "On the page you need, tap “Bookmark this page” — then return with one tap.",
+  "readerPageLabel": "Page {page}",
+  "@readerPageLabel": {
+    "placeholders": {
+      "page": {
+        "type": "int"
+      }
+    }
+  },
+  "readerGoTo": "Go to page",
+  "readerGoToShort": "Page",
+  "readerGoToHint": "1 to {total}",
+  "@readerGoToHint": {
+    "placeholders": {
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "readerGoToError": "Enter a number from 1 to {total}",
+  "@readerGoToError": {
+    "placeholders": {
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "readerGo": "Go",
+  "readerSave": "Save",
+  "readerRenameBookmark": "Rename bookmark",
+  "libFieldProvidedBy": "Provided by",
+  "libQueryEmptyBody": "Try another word — for example an author’s surname, “urine” or “biochemistry”.",
+  "readerZoomIn": "Zoom in",
+  "readerZoomOut": "Zoom out",
+  "readerResumed": "Resumed at page {page}",
+  "@readerResumed": {
+    "placeholders": {
+      "page": {
+        "type": "int"
+      }
+    }
+  },
+  "readerFromStart": "From start",
+  "readerLoading": "Opening the file…",
+  "readerFileMissing": "File not found",
+  "readerFileMissingBody": "This file isn’t in the app. Try updating the app.",
+  "readerFileCorrupted": "The file failed verification",
+  "readerFileCorruptedBody": "The file size or checksum doesn’t match the catalog — it may be damaged or replaced, so it wasn’t opened.",
+  "readerOpenFailed": "Couldn’t open the PDF",
+  "readerBlockedTitle": "Not available in the app",
+  "readerBlockedRights": "Only files with fully recorded distribution rights open in the app. This material has no such file.",
+  "readerBookmarkedPage": "This page is bookmarked",
+  "intakeTitle": "Adding materials",
+  "intakeSubtitle": "A short guide for teachers and editors",
+  "intakeStatus": "Materials from teachers: {count}. The list grows as materials arrive.",
+  "@intakeStatus": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "intakeWhatTitle": "1. What to send",
+  "intakeWhat1": "The book, manual, method or IFU file (PDF) and its details: title, author, year and edition, publisher, ISBN, language.",
+  "intakeWhat2": "Test questions: the question, options, the correct answer, an explanation for each option and the source page.",
+  "intakeWhat3": "If there is an old and a new edition — both: differences are reviewed separately.",
+  "intakeRightsTitle": "2. Distribution rights",
+  "intakeRights1": "A shared PDF does not by itself mean it may be distributed to everyone.",
+  "intakeRights2": "For a file to open in the app for everyone, the rights are fully recorded: who granted them (author or publisher), when, who recorded it, and the evidence — a permission letter or a licence link.",
+  "intakeRights3": "Without that record, the material stays a catalog entry only or for personal use.",
+  "intakeReviewTitle": "3. How it is checked",
+  "intakeStep1": "Pending — the material hasn’t arrived yet.",
+  "intakeStep2": "Received — the file arrived and was logged.",
+  "intakeStep3": "Catalogued — title, author and edition were checked. Only then can it be cited.",
+  "intakeStep4": "Linked — tied to test cards and lessons with page numbers.",
+  "intakeStep5": "Approved — a teacher reviewed it. Until then questions stay as “Draft”.",
+  "intakeConflict": "If an old and a new source disagree, neither is written as fact — both positions go to a reviewer.",
+  "intakeNeverTitle": "What we never do",
+  "intakeNever1": "Show a material that hasn’t arrived as “available”.",
+  "intakeNever2": "Guess a page number or write anything the source doesn’t say.",
+  "intakeNever3": "Distribute a book to everyone without recorded rights.",
+  "intakeContactTitle": "4. Contact",
+  "intakeContactBody": "Write to the LabGuide team about the material: title, author, edition and rights holder. How to hand over the file is agreed with the team — PDFs can’t be uploaded through the app.",
+  "intakeContactAction": "Write to the LabGuide team",
   "libReview": "Review queue",
   "libReviewSub": "Source discrepancies and drafts",
   "reviewDiscrepancies": "Source discrepancies",
+  "rvGateTitle": "Reviewers only",
+  "rvGateBody": "Reviewer rights are granted by an admin. An in-app role (for example, “Teacher”) does not grant them.",
+  "rvSignInTitle": "Sign in to review",
+  "rvAdminReadOnly": "As an admin you can see decisions. To review, grant your account reviewer rights (Admin → Users).",
+  "rvTabCards": "Cards",
+  "rvTabQuestions": "Questions",
+  "rvTabDiscrepancies": "Discrepancies",
+  "rvMine": "Your decision: {decision}",
+  "@rvMine": {
+    "placeholders": {
+      "decision": {
+        "type": "String"
+      }
+    }
+  },
+  "rvNotSeen": "Not reviewed by you yet",
+  "rvCount": "Decisions: {count}",
+  "@rvCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "rvApprove": "Approve",
+  "rvChanges": "Changes needed",
+  "rvDecisionApprove": "approved",
+  "rvDecisionChanges": "changes requested",
+  "rvComment": "Comment",
+  "rvCommentHint": "What is wrong or what to check (source, page)",
+  "rvCommentRequired": "Write a comment for “Changes needed”.",
+  "rvSubmit": "Submit decision",
+  "rvSubmitted": "Decision recorded",
+  "rvNotAuto": "A decision does not change the card status by itself: after editorial review it becomes “Reviewed” in the next content pack.",
+  "rvHistory": "Decision history",
+  "rvYou": "You",
+  "rvReviewer": "Reviewer",
+  "rvNoHistory": "No decisions yet",
+  "rvOpenCard": "Open card",
+  "rvCorrect": "Correct answer",
+  "rvBasis": "Basis",
+  "rvYourDecision": "Your decision",
+  "rvAllDone": "All reviewed",
+  "analytePreparedBy": "Prepared by",
+  "analyteEditorial": "LabGuide editorial team",
+  "analyteSourcesChecked": "Sources accessed",
   "reviewDiscrepanciesBody": "When older and newer sources disagree, both positions are listed here for expert review. Neither is published as fact until resolved.",
   "reviewNoDiscrepancies": "No open discrepancies.",
   "reviewDraftQuestions": "Draft questions: {count}",
