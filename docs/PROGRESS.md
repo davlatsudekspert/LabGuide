@@ -129,7 +129,7 @@ andijonforensic.uz saytida ishlatiladi, pauza qilinmadi).
 | Yangi testlar | Har bir tuzatilgan xato uchun test tuzatishsiz **yiqilishi** tekshirildi (TalkBack, past ekran, sarlavha, tab xotirasi, klaviatura, vergulli son, QC zaxira, paket ro‘yxatlari, guruh savollari) |
 | Kontrast | Matn ≥ 4.5:1, boshqaruv chegaralari ≥ 3:1 (light va dark) |
 | GitHub Actions run #2, #5 (build) | ✓ testlar, Android release APK (sinov), **imzosiz iOS release build (macOS, Xcode)** |
-| TestFlight (LabGuide repo, run #5) | `0.1.0 (1)` bulut imzo bilan yuklandi, processingState **VALID**; egasi telefonda TestFlight orqali ochdi (2026-10-09) |
+| TestFlight (LabGuide repo) | `0.1.0 (1)` run #5 (2026-10-09, egasi telefonda ochdi); `0.1.0 (2)` run #10 — logo + apparatlar katalogi; **`0.1.0 (3)` run #12** — o‘z sxematik rasmlar va foydalanuvchi sifatida tekshiruv tuzatishlari. Hammasi processingState **VALID**, faqat ichki test (App Store review’ga yuborilmagan) |
 | Vizual tekshiruv | `tool/screenshots` — 37 ta ekran rasmi, yangi ekranlar (SI chegaralar, birlik eslatmasi, AG, landshaft, kirillcha qidiruv, QC) ko‘rib chiqildi |
 
 **Bajarilmagan tekshiruvlar** (o‘tdi deb hisoblanmaydi):

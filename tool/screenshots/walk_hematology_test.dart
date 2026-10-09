@@ -54,7 +54,7 @@ void main() {
     await w.scroll(-5000);
     await scrollAndTap(w, name('hematocrit'));
     await w.snap('gematokrit');
-    await tester.binding.handlePopRoute();
+    routerOf(tester).pop();
     await w.snap('orqaga_gemoglobin');
     await scrollAndTap(w, l.analytePractice);
     await w.snap('mashq');

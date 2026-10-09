@@ -32,6 +32,10 @@ dependencies:
   flutter_secure_storage: ^11.2.0
   supabase: ^2.16.2
   image_picker: ^1.2.4
+  # Kutubxonadagi PDF o'quvchi (mundarija/outline, sahifaga o'tish, zoom).
+  # MIT; PDFium (BSD-3/Apache-2.0). iOS'da pdfium_flutter SwiftPM paketi
+  # (Package.swift) orqali ulanadi — CocoaPods kerak emas.
+  pdfrx: ^2.6.5
 
 dev_dependencies:
   flutter_test:

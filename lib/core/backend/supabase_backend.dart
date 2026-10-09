@@ -11,6 +11,7 @@ import 'package:supabase/supabase.dart';
 import '../../features/auth/otp_auth.dart';
 import 'backend_models.dart';
 import 'lab_backend.dart';
+import 'partner_models.dart';
 
 /// Sessiya tokenlari saqlanadigan joy. Ilovada — Keychain/Keystore
 /// ([SecureSessionStore]); testlarda — xotira.
@@ -765,6 +766,147 @@ class SupabaseLabBackend implements LabBackend {
     );
     return _rows(data).map(GroupSubmission.fromJson).toList();
   }
+
+  // ----------------------------------------------------------- partners
+  static const _logoBucket = 'partner-logos';
+  static const _logoMaxBytes = 1024 * 1024;
+
+  @override
+  Future<List<Partner>> partners() async {
+    final data = await _guard(() => client.rpc<Object?>('partners_feed'));
+    return _rows(data).map(Partner.fromJson).toList();
+  }
+
+  @override
+  Future<int> trackPartnerEvents(List<PartnerEvent> events) async {
+    // Mehmon hodisasi sanalmaydi (server ham rad etadi).
+    if (!hasSession || events.isEmpty) return 0;
+    var accepted = 0;
+    for (var i = 0; i < events.length; i += 20) {
+      final batch = events.skip(i).take(20).map((e) => e.toJson()).toList();
+      final n = await _guard(
+        () => client.rpc<Object?>('partner_track', params: {'p_events': batch}),
+      );
+      accepted += (n as num?)?.toInt() ?? 0;
+    }
+    return accepted;
+  }
+
+  @override
+  Future<String> createPartnerRequest(PartnerRequestDraft draft) async {
+    _requireUser();
+    final id = await _guard(
+      () => client.rpc<Object?>(
+        'partner_request_create',
+        params: {
+          'p_company': draft.company,
+          'p_contact': draft.contactName,
+          'p_phone': draft.phone,
+          'p_email': draft.email,
+          'p_products': draft.products,
+          'p_message': draft.message,
+        },
+      ),
+    );
+    return id! as String;
+  }
+
+  @override
+  Future<List<PartnerRequest>> myPartnerRequests() async {
+    final uid = _requireUser();
+    final data = await _guard(
+      () => client
+          .from('partner_requests')
+          .select()
+          .eq('user_id', uid)
+          .order('created_at', ascending: false),
+    );
+    return _rows(data).map(PartnerRequest.fromJson).toList();
+  }
+
+  @override
+  Future<List<Partner>> adminPartners() async {
+    final data = await _guard(() => client.rpc<Object?>('admin_partners'));
+    return _rows(data).map(Partner.fromJson).toList();
+  }
+
+  @override
+  Future<String> adminSavePartner(PartnerDraft draft, {String? id}) async {
+    final saved = await _guard(
+      () => client.rpc<Object?>(
+        'admin_partner_save',
+        params: {'p_id': id, 'p': draft.toJson()},
+      ),
+    );
+    return saved! as String;
+  }
+
+  @override
+  Future<void> adminSetPartnerStatus(String id, PartnerStatus status) => _guard(
+    () => client.rpc<Object?>(
+      'admin_partner_set_status',
+      params: {'p_id': id, 'p_status': status.name},
+    ),
+  );
+
+  @override
+  Future<String> adminUploadPartnerLogo(
+    Uint8List bytes,
+    String mimeType,
+  ) async {
+    if (bytes.length > _logoMaxBytes ||
+        !SupportAttachment.allowedTypes.contains(mimeType)) {
+      throw const BackendException(BackendFailure.invalid, 'logo');
+    }
+    final path = '${_randomName()}.${mimeType == 'image/png' ? 'png' : 'jpg'}';
+    await _guard(
+      () => client.storage
+          .from(_logoBucket)
+          .uploadBinary(
+            path,
+            bytes,
+            fileOptions: FileOptions(contentType: mimeType),
+          ),
+    );
+    return client.storage.from(_logoBucket).getPublicUrl(path);
+  }
+
+  @override
+  Future<List<PartnerDayStat>> adminPartnerStats(String id) async {
+    final data = await _guard(
+      () => client
+          .from('partner_events')
+          .select('day, placement, impressions, contacts')
+          .eq('partner_id', id)
+          .order('day', ascending: false)
+          .limit(2000),
+    );
+    return _rows(data).map(PartnerDayStat.fromJson).toList();
+  }
+
+  @override
+  Future<List<PartnerRequest>> adminPartnerRequests({
+    PartnerRequestStatus? status,
+  }) async {
+    final data = await _guard(() {
+      var q = client.from('partner_requests').select();
+      if (status != null) q = q.eq('status', status.wire);
+      return q.order('created_at', ascending: false).limit(100);
+    });
+    return _rows(data).map(PartnerRequest.fromJson).toList();
+  }
+
+  @override
+  Future<void> adminUpdatePartnerRequest(
+    String id, {
+    required PartnerRequestStatus status,
+    String? reply,
+  }) => _guard(
+    () => client.rpc<Object?>(
+      'admin_partner_request_update',
+      params: {'p_id': id, 'p_status': status.wire, 'p_reply': reply},
+    ),
+  );
 
   Future<void> dispose() async {
     await _authSub.cancel();
