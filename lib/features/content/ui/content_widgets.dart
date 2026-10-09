@@ -15,6 +15,8 @@ IconData groupIcon(String groupId) => switch (groupId) {
   'electrolytes' => Icons.bolt_outlined,
   'enzymes' => Icons.auto_awesome_outlined,
   'urine' => Icons.science_outlined,
+  'cardiac' => Icons.monitor_heart_outlined,
+  'iron-vitamins' => Icons.medication_outlined,
   _ => Icons.biotech_outlined,
 };
 
