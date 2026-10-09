@@ -1198,7 +1198,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get preNotice =>
-      'Цвет пробирки, время и температура привязаны к конкретной пробирке, методу и инструкции. Универсальные параметры не приводятся.';
+      'Цвет пробирки, время и температура зависят от конкретной пробирки, метода и инструкции. Сроки выше — общий ориентир по таблице ВОЗ; правила вашей лаборатории важнее.';
 
   @override
   String get diffTitle => 'Лейкоформула';
@@ -1864,6 +1864,47 @@ class AppLocalizationsRu extends AppLocalizations {
   String get preIdTitle => 'Идентификация пациента и маркировка';
 
   @override
+  String get prePatientTitle => 'Подготовка пациента';
+
+  @override
+  String get preTubeForTestTitle => 'Какая пробирка для какого анализа';
+
+  @override
+  String get preTubeForTestSub =>
+      'Цвет и место — из порядка ВОЗ выше. Пробирки в лабораториях могут отличаться.';
+
+  @override
+  String preTubeSlot(String tube, int n) {
+    return '$tube · $n-я в порядке взятия';
+  }
+
+  @override
+  String get preTubeNone => 'Отдельная пробирка — нет в порядке ВОЗ';
+
+  @override
+  String get preMixTitle => 'Перемешивание пробирки';
+
+  @override
+  String get preStabilityTitle => 'Стабильность образца';
+
+  @override
+  String get preStabilitySub =>
+      'Сколько хранится отделённая сыворотка или плазма (ВОЗ, WHO/DIL/LAB/99.1). Указания вашей лаборатории и инструкция к реагенту важнее.';
+
+  @override
+  String get preStabilityRoom => '20–25 °C (комн.)';
+
+  @override
+  String get preStorageTitle => 'Правила хранения';
+
+  @override
+  String get preUrgentTitle => 'Не хранят — исследуют сразу';
+
+  @override
+  String get preBooksNote =>
+      'Учебники (Селиванов 2005, Арипова 2007, Любина 1984) — дополнительный источник. Числа показаны, только если их подтверждают ВОЗ или MedlinePlus.';
+
+  @override
   String get calcTitle => 'Калькуляторы';
 
   @override
@@ -1913,6 +1954,35 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get mcColourSub => 'Почему приложение рекомендует MCH и MCHC';
+
+  @override
+  String get mcNechiporenko => 'Метод Нечипоренко';
+
+  @override
+  String get mcNechiporenkoSub =>
+      'Лейкоциты, эритроциты и цилиндры в 1 мл мочи';
+
+  @override
+  String get mcAddis => 'Метод Каковского — Аддиса';
+
+  @override
+  String get mcAddisSub => 'Форменные элементы, выделяемые с мочой за сутки';
+
+  @override
+  String get mcZimnitsky => 'Проба Зимницкого';
+
+  @override
+  String get mcZimnitskySub => 'Дневной и ночной диурез, амплитуда плотности';
+
+  @override
+  String get mcClassicTag => 'Классический метод СССР';
+
+  @override
+  String get mcClassicTitle => 'Классические интервалы из учебников';
+
+  @override
+  String get mcClassicNote =>
+      'Это референсный интервал, а не диагностический порог. Главный — интервал на бланке вашей лаборатории; результат с ним автоматически не сравнивается.';
 
   @override
   String get mfCells => 'Подсчитано клеток';
@@ -1990,6 +2060,58 @@ class AppLocalizationsRu extends AppLocalizations {
   String get mfLdhUln => 'Верхняя граница нормы ЛДГ сыворотки';
 
   @override
+  String get mfLeukoCounted => 'Лейкоциты (A, подсчитано)';
+
+  @override
+  String get mfEryCounted => 'Эритроциты (A, подсчитано)';
+
+  @override
+  String get mfCastsCounted => 'Цилиндры (A, подсчитано)';
+
+  @override
+  String get mfUrineCentrifuged => 'Центрифугированная моча, мл';
+
+  @override
+  String get mfCountedVolume => 'Подсчитанная сетка';
+
+  @override
+  String get mfGoryaevWhole => 'Горяев, вся сетка — 0,9 мкл';
+
+  @override
+  String get mfGoryaev100 => 'Горяев, 100 больших квадратов — 0,4 мкл';
+
+  @override
+  String get mfFuchsWhole => 'Фукс — Розенталь, вся сетка — 3,2 мкл';
+
+  @override
+  String get mfSediment => 'Оставленный осадок';
+
+  @override
+  String get mfCollected => 'Собранная моча, мл';
+
+  @override
+  String get mfCollectHours => 'Время сбора, ч';
+
+  @override
+  String mfPortion(int n, String time) {
+    return '$n-я порция ($time), мл';
+  }
+
+  @override
+  String mfPortionSg(int n) {
+    return '$n-я порция, плотность';
+  }
+
+  @override
+  String get mfFluidIntake => 'Выпито жидкости за сутки, мл';
+
+  @override
+  String get mfZimDay => 'Дневные порции (1–4)';
+
+  @override
+  String get mfZimNight => 'Ночные порции (5–8)';
+
+  @override
   String get mfSameUnit =>
       'Оба значения в паре — в одних единицах (например, оба г/л, оба Ед/л).';
 
@@ -2046,6 +2168,51 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get mrIncomplete =>
       'Два критерия не выполнены; для третьего введите верхнюю границу ЛДГ';
+
+  @override
+  String get mrPerMlUrine => 'в 1 мл мочи';
+
+  @override
+  String get mrPerDay => 'За сутки';
+
+  @override
+  String mrPerUlSediment(String value) {
+    return 'в 1 мкл осадка: $value';
+  }
+
+  @override
+  String get mrPortion12 => 'Моча за 12 минут для центрифугирования';
+
+  @override
+  String get mrDiuresisTotal => 'Суточный диурез';
+
+  @override
+  String get mrDiuresisDay => 'Дневной диурез (1–4)';
+
+  @override
+  String get mrDiuresisNight => 'Ночной диурез (5–8)';
+
+  @override
+  String get mrDayNightRatio => 'Дневной : ночной';
+
+  @override
+  String get mrIntakePercent => 'От выпитой жидкости';
+
+  @override
+  String get mrSgRange => 'Плотность: мин. – макс.';
+
+  @override
+  String get mrSgAmplitude => 'Амплитуда плотности';
+
+  @override
+  String get mrNotGiven => 'не введено';
+
+  @override
+  String get mErrNoUrine => 'Нужны объём и плотность хотя бы одной порции.';
+
+  @override
+  String get mErrSediment =>
+      'Объём осадка должен быть меньше объёма центрифугированной мочи.';
 
   @override
   String get mrProteinRatio => 'Белок: жидкость ÷ сыворотка (> 0,5)';

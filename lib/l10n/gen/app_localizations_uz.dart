@@ -1167,7 +1167,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get preNotice =>
-      'Probirka rangi, vaqt va harorat aniq probirka, metod va yo‘riqnomaga bog‘lanadi. Universal parametrlar berilmaydi.';
+      'Probirka rangi, vaqt va harorat aniq probirka, metod va yo‘riqnomaga bog‘lanadi. Yuqoridagi muddatlar — JSST jadvalidan umumiy yo‘naltirish; laboratoriyangiz qoidasi ustun.';
 
   @override
   String get diffTitle => 'Leykoformula';
@@ -1832,6 +1832,47 @@ class AppLocalizationsUz extends AppLocalizations {
   String get preIdTitle => 'Bemorni aniqlash va yorliq';
 
   @override
+  String get prePatientTitle => 'Bemor tayyorgarligi';
+
+  @override
+  String get preTubeForTestTitle => 'Qaysi tahlilga qaysi probirka';
+
+  @override
+  String get preTubeForTestSub =>
+      'Rang va o‘rin — yuqoridagi JSST tartibidan. Probirka turlari laboratoriyada farq qilishi mumkin.';
+
+  @override
+  String preTubeSlot(String tube, int n) {
+    return '$tube · tartibda $n-o‘rin';
+  }
+
+  @override
+  String get preTubeNone => 'Alohida probirka — JSST tartibida yo‘q';
+
+  @override
+  String get preMixTitle => 'Probirkani aralashtirish';
+
+  @override
+  String get preStabilityTitle => 'Namuna barqarorligi';
+
+  @override
+  String get preStabilitySub =>
+      'Ajratilgan zardob yoki plazma qancha saqlanadi (JSST, WHO/DIL/LAB/99.1). Laboratoriyangiz va reagent yo‘riqnomasi ustun.';
+
+  @override
+  String get preStabilityRoom => '20–25 °C (xona)';
+
+  @override
+  String get preStorageTitle => 'Saqlash qoidalari';
+
+  @override
+  String get preUrgentTitle => 'Saqlab bo‘lmaydi — darhol tekshiriladi';
+
+  @override
+  String get preBooksNote =>
+      'Darsliklar (Selivanov 2005, Aripova 2007, Lyubina 1984) — qo‘shimcha manba. Raqamlar faqat JSST yoki MedlinePlus tasdiqlaganda ko‘rsatiladi.';
+
+  @override
   String get calcTitle => 'Kalkulyatorlar';
 
   @override
@@ -1881,6 +1922,35 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get mcColourSub => 'Nega ilova MCH va MCHC ni tavsiya qiladi';
+
+  @override
+  String get mcNechiporenko => 'Nechiporenko usuli';
+
+  @override
+  String get mcNechiporenkoSub =>
+      '1 ml siydikdagi leykotsit, eritrotsit va silindrlar';
+
+  @override
+  String get mcAddis => 'Kakovskiy–Addis usuli';
+
+  @override
+  String get mcAddisSub => 'Sutkada siydik bilan chiqadigan shaklli elementlar';
+
+  @override
+  String get mcZimnitsky => 'Zimnitskiy sinamasi';
+
+  @override
+  String get mcZimnitskySub => 'Kunduzgi va tungi diurez, zichlik amplitudasi';
+
+  @override
+  String get mcClassicTag => 'MDH klassik usuli';
+
+  @override
+  String get mcClassicTitle => 'Klassik darslik oraliqlari';
+
+  @override
+  String get mcClassicNote =>
+      'Bu referens interval, diagnostik chegara emas. Laboratoriyangiz blankasidagi oraliq asosiy; natija bu oraliq bilan avtomatik solishtirilmaydi.';
 
   @override
   String get mfCells => 'Sanalgan hujayralar';
@@ -1958,6 +2028,58 @@ class AppLocalizationsUz extends AppLocalizations {
   String get mfLdhUln => 'Zardob LDH ning yuqori chegarasi';
 
   @override
+  String get mfLeukoCounted => 'Leykotsitlar (A, sanalgan)';
+
+  @override
+  String get mfEryCounted => 'Eritrotsitlar (A, sanalgan)';
+
+  @override
+  String get mfCastsCounted => 'Silindrlar (A, sanalgan)';
+
+  @override
+  String get mfUrineCentrifuged => 'Sentrifugalangan siydik, ml';
+
+  @override
+  String get mfCountedVolume => 'Sanalgan to‘r';
+
+  @override
+  String get mfGoryaevWhole => 'Goryaev, butun to‘r — 0,9 µL';
+
+  @override
+  String get mfGoryaev100 => 'Goryaev, 100 katta kvadrat — 0,4 µL';
+
+  @override
+  String get mfFuchsWhole => 'Fuchs–Rosenthal, butun to‘r — 3,2 µL';
+
+  @override
+  String get mfSediment => 'Qoldirilgan cho‘kma';
+
+  @override
+  String get mfCollected => 'Yig‘ilgan siydik, ml';
+
+  @override
+  String get mfCollectHours => 'Yig‘ish vaqti, soat';
+
+  @override
+  String mfPortion(int n, String time) {
+    return '$n-porsiya ($time), ml';
+  }
+
+  @override
+  String mfPortionSg(int n) {
+    return '$n-porsiya, zichlik';
+  }
+
+  @override
+  String get mfFluidIntake => 'Sutkada ichilgan suyuqlik, ml';
+
+  @override
+  String get mfZimDay => 'Kunduzgi porsiyalar (1–4)';
+
+  @override
+  String get mfZimNight => 'Tungi porsiyalar (5–8)';
+
+  @override
   String get mfSameUnit =>
       'Juftlikdagi ikki qiymat bir xil birlikda bo‘lsin (masalan, ikkalasi g/L, ikkalasi U/L).';
 
@@ -2014,6 +2136,52 @@ class AppLocalizationsUz extends AppLocalizations {
   @override
   String get mrIncomplete =>
       'Ikki mezon bajarilmadi; uchinchisi uchun LDH yuqori chegarasini kiriting';
+
+  @override
+  String get mrPerMlUrine => '1 ml siydikda';
+
+  @override
+  String get mrPerDay => 'Sutkada';
+
+  @override
+  String mrPerUlSediment(String value) {
+    return '1 µL cho‘kmada: $value';
+  }
+
+  @override
+  String get mrPortion12 => 'Sentrifugaga olinadigan 12 daqiqalik siydik';
+
+  @override
+  String get mrDiuresisTotal => 'Sutkalik diurez';
+
+  @override
+  String get mrDiuresisDay => 'Kunduzgi diurez (1–4)';
+
+  @override
+  String get mrDiuresisNight => 'Tungi diurez (5–8)';
+
+  @override
+  String get mrDayNightRatio => 'Kunduzgi : tungi';
+
+  @override
+  String get mrIntakePercent => 'Ichilgan suyuqlikka nisbatan';
+
+  @override
+  String get mrSgRange => 'Zichlik: eng past – eng yuqori';
+
+  @override
+  String get mrSgAmplitude => 'Zichlik amplitudasi';
+
+  @override
+  String get mrNotGiven => 'kiritilmagan';
+
+  @override
+  String get mErrNoUrine =>
+      'Kamida bitta porsiyada siydik hajmi va zichligi kerak.';
+
+  @override
+  String get mErrSediment =>
+      'Cho‘kma hajmi sentrifugalangan siydikdan kam bo‘lishi kerak.';
 
   @override
   String get mrProteinRatio => 'Oqsil: suyuqlik ÷ zardob (> 0,5)';

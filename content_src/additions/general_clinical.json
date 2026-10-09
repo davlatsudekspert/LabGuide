@@ -1064,6 +1064,11 @@
       "date": "2026-10-09",
       "scope": "Kitoblar (Dolgov 2009, Lyubina 1984, Najmitdinov 1998, Sobirova 2006, Aripova 2007, Dadayev 2004) bilimi rasmiy/ochiq manbalar bilan solishtirildi; matn ko‘chirilmagan",
       "report": "scratchpad/books/B_01..B_06, A_02, A_04 (agent tahlili)"
+     },
+     {
+      "date": "2026-10-09",
+      "scope": "book-derived claims (Aripova 2007, Selivanov 2005, Lyubina 1984) checked against WHO/DIL/LAB/99.1, WHO 2003/2010, MedlinePlus, NCI; pages and numbers; uz/ru/en",
+      "report": "docs/BOOKS_PREANALYTICS_2026-10-09.md"
      }
     ]
    },
@@ -1211,6 +1216,29 @@
       "ru": "Бензидиновая проба (Грегерсена) из старых учебников не применяется: ВОЗ не рекомендует бензидин, так как доказана его канцерогенность. Из химических методов остались амидопириновый и гваяковый тесты, им нужна диета (ВОЗ для амидопириновой пробы — 1 день без мяса и препаратов железа; в старых учебниках — 2–3 дня); иммунохимический тест (FIT) специфичен к гемоглобину человека и диеты не требует.",
       "en": "The benzidine (Gregersen) test of old textbooks is no longer used: WHO does not recommend benzidine because it has been shown to be carcinogenic. Remaining chemical tests are the aminopyrine and guaiac tests, which need a diet (WHO, aminopyrine test: 1 day without meat or iron tablets; older textbooks: 2–3 days); the immunochemical test (FIT) is specific for human haemoglobin and needs no diet."
      }
+    },
+    {
+     "section": "preanalytics",
+     "refs": [
+      {
+       "source_id": "nci-crc-screening-tests",
+       "locator": "What methods are used to screen people for colorectal cancer? — Stool tests"
+      },
+      {
+       "source_id": "medline-fobt",
+       "locator": "Will I need to do anything to prepare for the test?"
+      },
+      {
+       "source_id": "book-selivanov-2005",
+       "locator": "5.2 Кал на скрытую кровь"
+      }
+     ],
+     "text": {
+      "uz": "Parhez test turiga bog‘liq: immunokimyoviy test (FIT) gemoglobin oqsiliga xos antitelolar bilan ishlaydi va odatda parhez yoki dori o‘zgartirishni talab qilmaydi. Gvayak testi (gFOBT) esa ovqatdagi gemni ham sezadi — undan oldin qizil go‘sht, ayrim sabzavot va dorilar cheklanishi mumkin. Darslikdagi 3–5 kunlik parhez faqat kimyoviy (gvayak, benzidin tipidagi) sinamalarga tegishli.",
+      "ru": "Диета зависит от типа теста: иммунохимический тест (FIT) выявляет антителами именно белок гемоглобина и обычно не требует изменений диеты или лекарств. Гваяковый тест (gFOBT) реагирует и на гем из пищи — перед ним могут ограничить красное мясо, некоторые овощи и лекарства. Диета на 3–5 дней из учебника относится только к химическим (гваяковым, бензидиновым) пробам.",
+      "en": "Diet depends on the test type: the immunochemical test (FIT) uses antibodies specific to haemoglobin protein and typically needs no diet or medicine changes. The guaiac test (gFOBT) also detects haem from food, so red meat, some vegetables and medicines may be restricted beforehand. The 3–5-day diet in the textbook applies only to chemical (guaiac or benzidine-type) tests."
+     },
+     "origin": "books-preanalytics"
     }
    ],
    "decision_limits": [],
@@ -1218,7 +1246,9 @@
     "medline-fobt",
     "who-basic-lab-techniques-2003",
     "book-lyubina-1984",
-    "book-aripova-2007"
+    "book-aripova-2007",
+    "nci-crc-screening-tests",
+    "book-selivanov-2005"
    ],
    "related": [
     "stool-analysis",
@@ -2152,6 +2182,11 @@
       "date": "2026-10-09",
       "scope": "Kontent auditi B: sonlar, birliklar, namuna, mezonlar, manba locator",
       "report": "docs/CONTENT_AUDIT_2026-10-09_B.md"
+     },
+     {
+      "date": "2026-10-09",
+      "scope": "book-derived claims (Aripova 2007, Selivanov 2005, Lyubina 1984) checked against WHO/DIL/LAB/99.1, WHO 2003/2010, MedlinePlus, NCI; pages and numbers; uz/ru/en",
+      "report": "docs/BOOKS_PREANALYTICS_2026-10-09.md"
      }
     ]
    },
@@ -2356,13 +2391,44 @@
       "ru": "Положительный анализ крови на туберкулёз (IGRA) или кожная проба обычно означает инфицирование, но не активную болезнь — для этого нужны рентген и бактериологическое исследование. У некоторых больных активным туберкулёзом эти тесты отрицательны. При предполагаемом туберкулёзе, особенно у тяжёлого пациента, лечение не откладывают в ожидании бактериологии.",
       "en": "A positive TB blood test (IGRA) or skin test usually means TB infection but does not show active disease — chest x-ray and bacteriology are needed. Some people with TB disease test negative on these. When TB is the presumptive diagnosis, especially in a very ill patient, treatment is not delayed while waiting for bacteriology."
      }
+    },
+    {
+     "section": "preanalytics",
+     "refs": [
+      {
+       "source_id": "medline-sputum-culture",
+       "locator": "What happens during a sputum culture?"
+      },
+      {
+       "source_id": "medline-sputum-culture",
+       "locator": "Will I need to do anything to prepare for the test?"
+      },
+      {
+       "source_id": "book-aripova-2007",
+       "locator": "13.1 Balg‘am yig‘ish uslubi",
+       "pages": "173–174"
+      },
+      {
+       "source_id": "book-selivanov-2005",
+       "locator": "7.14 Мокрота"
+      }
+     ],
+     "text": {
+      "uz": "Balg‘am odatda ertalab olinadi; olishdan oldin og‘izni suv bilan chayish so‘ralishi mumkin. Namuna — o‘pkadan yo‘talib chiqarilgan quyuq balg‘am, so‘lak emas; darsliklar so‘lak yoki suvsimon namunani yaroqsiz deb hisoblaydi.",
+      "ru": "Мокроту обычно собирают утром; перед сбором могут попросить прополоскать рот водой. Образец — густая мокрота, откашлянная из лёгких, а не слюна; учебники считают слюну или водянистый образец непригодными.",
+      "en": "Sputum is usually collected in the morning, and you may be asked to rinse your mouth with water first. The sample is thick sputum coughed up from the lungs, not saliva; the textbooks treat saliva or watery samples as unsuitable."
+     },
+     "origin": "books-preanalytics"
     }
    ],
    "decision_limits": [],
    "source_ids": [
     "medline-afb-tests",
     "cdc-tb-clinical-lab-diagnosis",
-    "who-tb-fact-sheet"
+    "who-tb-fact-sheet",
+    "medline-sputum-culture",
+    "book-aripova-2007",
+    "book-selivanov-2005"
    ],
    "related": [
     "sputum-culture",
@@ -2626,6 +2692,11 @@
       "date": "2026-10-09",
       "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
       "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     },
+     {
+      "date": "2026-10-09",
+      "scope": "book-derived claims (Aripova 2007, Selivanov 2005, Lyubina 1984) checked against WHO/DIL/LAB/99.1, WHO 2003/2010, MedlinePlus, NCI; pages and numbers; uz/ru/en",
+      "report": "docs/BOOKS_PREANALYTICS_2026-10-09.md"
      }
     ]
    },
@@ -2763,12 +2834,40 @@
       "ru": "Чтобы обойтись без суточного сбора, врач может назначить вместо него соотношение белок/креатинин в одной (разовой) порции мочи. Это другой анализ: он даёт не количество за 24 часа, а отношение белка к креатинину. Нормы различаются между лабораториями — обсудите результат с врачом.",
       "en": "To avoid a 24-hour collection, the provider may order a protein-to-creatinine ratio on a single (random) urine sample instead. This is a different test: it gives the ratio of protein to creatinine, not the amount passed in 24 hours. Normal ranges vary between laboratories — discuss your result with your provider."
      }
+    },
+    {
+     "section": "preanalytics",
+     "refs": [
+      {
+       "source_id": "who-basic-lab-techniques-2003",
+       "locator": "7.1.1 Types of urine specimen; 7.2.5 Collection of specimens",
+       "pages": "233, 238"
+      },
+      {
+       "source_id": "book-lyubina-1984",
+       "locator": "§ 6. Правила сбора",
+       "pages": "28"
+      },
+      {
+       "source_id": "book-selivanov-2005",
+       "locator": "2.5 — суточная моча (объём измеряют и записывают)"
+      }
+     ],
+     "text": {
+      "uz": "Sutkalik siydik kamida 2 litrlik toza idishga yig‘iladi: birinchi ertalabki porsiya to‘kiladi, ertasi kungi ertalabki porsiya qo‘shiladi. Yig‘ish davomida idish 4–8 °C da saqlanadi; tahlil 24 soatdan ko‘proq kechiksa, namuna −20 °C da saqlanadi. Laboratoriyada umumiy hajm o‘lchanib yoziladi.",
+      "ru": "Суточную мочу собирают в чистую ёмкость не менее 2 литров: первую утреннюю порцию выливают, утреннюю порцию следующего дня добавляют. Во время сбора ёмкость хранят при 4–8 °C; если анализ откладывается более чем на 24 часа, образец хранят при −20 °C. В лаборатории измеряют и записывают общий объём.",
+      "en": "Collect 24-hour urine into a clean container of at least 2 litres: discard the first morning void and include the next morning’s first void. Keep the container at 4–8 °C during collection; if analysis is delayed beyond 24 hours, store the specimen at −20 °C. The laboratory measures and records the total volume."
+     },
+     "origin": "books-preanalytics"
     }
    ],
    "decision_limits": [],
    "source_ids": [
     "medline-ency-urine-24h-volume",
-    "medline-ency-urine-24h-protein"
+    "medline-ency-urine-24h-protein",
+    "who-basic-lab-techniques-2003",
+    "book-lyubina-1984",
+    "book-selivanov-2005"
    ],
    "related": [
     "urine-acr",
@@ -2839,6 +2938,11 @@
       "date": "2026-10-09",
       "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
       "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     },
+     {
+      "date": "2026-10-09",
+      "scope": "book-derived claims (Aripova 2007, Selivanov 2005, Lyubina 1984) checked against WHO/DIL/LAB/99.1, WHO 2003/2010, MedlinePlus, NCI; pages and numbers; uz/ru/en",
+      "report": "docs/BOOKS_PREANALYTICS_2026-10-09.md"
      }
     ]
    },
@@ -2987,13 +3091,39 @@
       "ru": "Нормальные значения могут немного различаться между лабораториями; некоторые лаборатории используют другие единицы измерения или исследуют другие образцы. Иногда в посеве находят более одного вида бактерий или лишь небольшое их количество; что означает конкретный результат, объясняет врач.",
       "en": "Normal value ranges may vary slightly between laboratories, and some labs use different measurements or test different samples. Sometimes more than one type of bacteria, or only a small amount, is found in the culture; the provider explains what a specific result means."
      }
+    },
+    {
+     "section": "preanalytics",
+     "refs": [
+      {
+       "source_id": "who-dil-lab-99-1",
+       "locator": "5.2 Urine — sediment: bacteria",
+       "pages": "48"
+      },
+      {
+       "source_id": "book-selivanov-2005",
+       "locator": "2.7 и 6.1 — моча для бактериологических исследований"
+      },
+      {
+       "source_id": "medline-ency-urine-culture",
+       "locator": "Considerations"
+      }
+     ],
+     "text": {
+      "uz": "Ekma uchun siydik steril idishda, iloji bo‘lsa antibiotik boshlanishidan oldin olinadi va tez yetkaziladi: JSST jadvaliga ko‘ra bakteriyalar xona haroratida 1–2 soatda ko‘payib ketadi, 4–8 °C da esa taxminan 24 soat barqaror. Darslik ham 1–2 soat ichida yoki sovitgichda 24 soatgacha saqlashni ko‘rsatadi.",
+      "ru": "Мочу на посев собирают в стерильный контейнер, по возможности до начала антибиотиков, и быстро доставляют: по таблице ВОЗ бактерии при комнатной температуре размножаются за 1–2 часа, а при 4–8 °C число их стабильно около 24 часов. Учебник также указывает 1–2 часа или хранение в холодильнике до 24 часов.",
+      "en": "Collect urine for culture into a sterile container, if possible before antibiotics start, and deliver it quickly: per the WHO table bacteria multiply within 1–2 hours at room temperature but stay stable for about 24 hours at 4–8 °C. The textbook likewise gives 1–2 hours, or up to 24 hours refrigerated."
+     },
+     "origin": "books-preanalytics"
     }
    ],
    "decision_limits": [],
    "source_ids": [
     "medline-ency-urine-culture",
     "medline-antibiotic-sensitivity",
-    "medline-ency-clean-catch"
+    "medline-ency-clean-catch",
+    "who-dil-lab-99-1",
+    "book-selivanov-2005"
    ],
    "related": [
     "urine-chemistry",
@@ -3323,6 +3453,11 @@
       "date": "2026-10-09",
       "scope": "Kontent auditi B: sonlar, birliklar, namuna, mezonlar, manba locator",
       "report": "docs/CONTENT_AUDIT_2026-10-09_B.md"
+     },
+     {
+      "date": "2026-10-09",
+      "scope": "book-derived claims (Aripova 2007, Selivanov 2005, Lyubina 1984) checked against WHO/DIL/LAB/99.1, WHO 2003/2010, MedlinePlus, NCI; pages and numbers; uz/ru/en",
+      "report": "docs/BOOKS_PREANALYTICS_2026-10-09.md"
      }
     ]
    },
@@ -3469,6 +3604,29 @@
       "ru": "Самостоятельный забор для теста на ВПЧ может расширить доступ к скринингу; но в объединённом анализе исследований в Китае чувствительность самостоятельно взятых образцов (около 86 % для CIN 2+) была ниже, чем взятых врачом (около 97 %).",
       "en": "Self-collected HPV testing may improve access to screening; in a pooled analysis of studies in China, however, self-collected samples were less sensitive for CIN 2+ (about 86%) than physician-collected samples (about 97%)."
      }
+    },
+    {
+     "section": "preanalytics",
+     "refs": [
+      {
+       "source_id": "medline-pap-smear",
+       "locator": "Will I need to do anything to prepare for the test?"
+      },
+      {
+       "source_id": "medline-hpv-test",
+       "locator": "Will I need to do anything to prepare for the test?"
+      },
+      {
+       "source_id": "book-selivanov-2005",
+       "locator": "7 — рекомендации женщинам по подготовке к сдаче мазка"
+      }
+     ],
+     "text": {
+      "uz": "Pap-surtma (birgalikdagi test) hayz paytida olinmaydi — eng qulay vaqt hayz tugaganidan taxminan 5 kun keyin; 2 kun oldin tampon, qin kremlari va dorilari, chayish va jinsiy aloqadan saqlaniladi. Faqat HPV testi uchun tayyorgarlik shart emas; hayz bo‘lsa, shifokorga aytiladi. Darslikda qin shamchalarini 2–3 kun oldin to‘xtatish tavsiya etilgan.",
+      "ru": "Мазок Папаниколау (совместный тест) не берут во время менструации — удобнее примерно через 5 дней после её окончания; за 2 дня избегают тампонов, вагинальных кремов и препаратов, спринцевания и половых контактов. Для одного теста на ВПЧ подготовка не нужна; о менструации сообщают врачу. В учебнике рекомендовано отменить вагинальные свечи за 2–3 дня.",
+      "en": "A Pap smear (cotest) is not done during a period — about 5 days after it ends is a good time; for 2 days before, avoid tampons, vaginal creams and medicines, douching and vaginal sex. An HPV test alone needs no preparation; tell the provider if you have your period. The textbook advises stopping vaginal suppositories 2–3 days before."
+     },
+     "origin": "books-preanalytics"
     }
    ],
    "decision_limits": [],
@@ -3476,7 +3634,9 @@
     "medline-hpv-test",
     "nci-abnormal-hpv-pap",
     "nci-cervical-screening",
-    "nci-pdq-cervical-screening"
+    "nci-pdq-cervical-screening",
+    "medline-pap-smear",
+    "book-selivanov-2005"
    ],
    "related": [
     "pap-test",
@@ -3552,6 +3712,11 @@
       "date": "2026-10-09",
       "scope": "Kontent auditi B: sonlar, birliklar, namuna, mezonlar, manba locator",
       "report": "docs/CONTENT_AUDIT_2026-10-09_B.md"
+     },
+     {
+      "date": "2026-10-09",
+      "scope": "book-derived claims (Aripova 2007, Selivanov 2005, Lyubina 1984) checked against WHO/DIL/LAB/99.1, WHO 2003/2010, MedlinePlus, NCI; pages and numbers; uz/ru/en",
+      "report": "docs/BOOKS_PREANALYTICS_2026-10-09.md"
      }
     ]
    },
@@ -3684,6 +3849,25 @@
       "ru": "Один только pH-тест не ставит диагноз бактериального вагиноза (pH здорового влагалища 3,8–4,5). ПАП-тест для бактериального вагиноза непригоден; посев на Gardnerella vaginalis тоже не рекомендуется, так как он неспецифичен. NAAT на бактериальный вагиноз применяют только у женщин с симптомами.",
       "en": "A pH test alone cannot diagnose BV (healthy vaginal pH is 3.8–4.5). Pap tests are of no use for BV, and culture of Gardnerella vaginalis is not recommended because it is not specific. BV NAATs are for symptomatic women only."
      }
+    },
+    {
+     "section": "preanalytics",
+     "refs": [
+      {
+       "source_id": "medline-bv-test",
+       "locator": "Will I need to do anything to prepare for the test?"
+      },
+      {
+       "source_id": "book-selivanov-2005",
+       "locator": "7 — рекомендации женщинам по подготовке к сдаче мазка"
+      }
+     ],
+     "text": {
+      "uz": "Rasmiy manbaga ko‘ra namuna olishdan 24 soat oldin tampon, qin kremlari va dorilari hamda jinsiy aloqadan saqlaniladi. Darslik qattiqroq tartibni beradi: hayz paytida va tugaganidan keyin 1–2 kun surtma olinmaydi, qin shamchalari va tabletkalari 2–3 kun oldin to‘xtatiladi — laboratoriyangiz ko‘rsatmasiga amal qiling.",
+      "ru": "По официальному источнику за 24 часа до взятия избегают тампонов, вагинальных кремов и препаратов и половых контактов. Учебник даёт более строгий порядок: мазок не берут во время менструации и 1–2 дня после неё, вагинальные свечи и таблетки отменяют за 2–3 дня — следуйте указаниям вашей лаборатории.",
+      "en": "Per the official source, avoid tampons, vaginal creams and medicines, and vaginal sex for 24 hours before sampling. The textbook is stricter: no swab during a period or for 1–2 days after it, and vaginal suppositories and tablets stopped 2–3 days before — follow your laboratory’s instructions."
+     },
+     "origin": "books-preanalytics"
     }
    ],
    "decision_limits": [],
@@ -3692,7 +3876,8 @@
     "cdc-std-bv",
     "medline-trichomoniasis-test",
     "cdc-std-trichomoniasis",
-    "medline-bv-test"
+    "medline-bv-test",
+    "book-selivanov-2005"
    ],
    "related": [
     "pap-test",

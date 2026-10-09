@@ -1,0 +1,184 @@
+{
+ "sources": [
+  {
+   "id": "book-selivanov-2005",
+   "kind": "book",
+   "title": "Правила взятия материала для лабораторных исследований",
+   "publisher": "Селиванов Е.В., Звягинцев Е.Н. · Барнаул: Printexpress, 2005",
+   "source_date": "2005",
+   "jurisdiction": "RU",
+   "note": "Citation only: copyrighted brochure (24 pp., no ISBN); no text or tables reproduced — facts restated in our own words, cited by section number. Its numbers are used only where WHO documents confirm them.",
+   "reuse_rights": "citation_only"
+  },
+  {
+   "id": "who-dil-lab-99-1",
+   "kind": "web",
+   "title": "Use of anticoagulants in diagnostic laboratory investigations (WHO/DIL/LAB/99.1 Rev.2)",
+   "publisher": "World Health Organization",
+   "url": "https://iris.who.int/handle/10665/65957",
+   "accessed": "2026-10-09",
+   "source_date": "2002",
+   "jurisdiction": "INT",
+   "note": "Pages are the document’s own page numbers (“Page 48”). © WHO — facts restated in our own words; the stability tables are not reproduced.",
+   "reuse_rights": "verify_before_distribution"
+  },
+  {
+   "id": "nci-crc-screening-tests",
+   "kind": "web",
+   "title": "Screening Tests to Detect Colorectal Cancer and Polyps",
+   "publisher": "National Cancer Institute (NCI)",
+   "url": "https://www.cancer.gov/types/colorectal/screening-fact-sheet",
+   "accessed": "2026-10-09",
+   "source_date": "2024-10-29",
+   "jurisdiction": "US",
+   "note": "Page reviewed 2024-10-29.",
+   "reuse_rights": "verify_before_distribution"
+  }
+ ],
+ "library": [
+  {
+   "id": "lib-book-aripova-2007",
+   "kind": "book",
+   "title": "Klinik va biokimyoviy tekshiruv usullari",
+   "authors": [
+    "G.S. Aripova",
+    "F.G. Po‘latova",
+    "N.S. Nazarova",
+    "Z.S. Toirova"
+   ],
+   "year": 2007,
+   "publisher": "G‘afur G‘ulom nomidagi nashriyot-matbaa ijodiy uyi (Toshkent)",
+   "isbn": "978-9943-03-034-3",
+   "language": "uz",
+   "categories": [
+    "clinical_lab",
+    "methods",
+    "biochemistry"
+   ],
+   "topics": [
+    "urine",
+    "urine-chemistry",
+    "urine-microscopy"
+   ],
+   "provided_by": "teacher",
+   "import_state": "cataloged",
+   "access": "catalog_only",
+   "accessed": "2026-10-09",
+   "rights": {
+    "distribution": "denied",
+    "note": "Copyright applies; no open licence found. Catalogue record only: facts may be cited with author, year and page; text, tables and figures are not reproduced and no PDF is bundled."
+   },
+   "note": {
+    "uz": "Tibbiyot kollejlari uchun o‘quv qo‘llanma: siydik, axlat, qon va balg‘amni qo‘lda tekshirish usullari (Nechiporenko, Kakovskiy–Addis, Zimnitskiy). Faqat katalog yozuvi — matn va jadvallar ko‘chirilmaydi.",
+    "ru": "Учебное пособие для медицинских колледжей: ручные методы исследования мочи, кала, крови и мокроты (Нечипоренко, Каковский–Аддис, Зимницкий). Только запись в каталоге — текст и таблицы не воспроизводятся.",
+    "en": "Textbook for medical colleges: manual methods for urine, stool, blood and sputum (Nechiporenko, Kakovsky–Addis, Zimnitsky). Catalogue record only — text and tables are not reproduced."
+   },
+   "review_note": "Copy seen: ziyouz.com electronic library scan (personal reading only per site terms)."
+  },
+  {
+   "id": "lib-book-selivanov-2005",
+   "kind": "manual",
+   "title": "Правила взятия материала для лабораторных исследований",
+   "authors": [
+    "Е.В. Селиванов",
+    "Е.Н. Звягинцев"
+   ],
+   "year": 2005,
+   "publisher": "Printexpress (Барнаул)",
+   "language": "ru",
+   "categories": [
+    "clinical_lab",
+    "methods"
+   ],
+   "topics": [
+    "urine"
+   ],
+   "provided_by": "teacher",
+   "import_state": "cataloged",
+   "access": "catalog_only",
+   "accessed": "2026-10-09",
+   "rights": {
+    "distribution": "denied",
+    "note": "Copyright applies; no open licence found. Catalogue record only: facts may be cited with author, year and page; text, tables and figures are not reproduced and no PDF is bundled."
+   },
+   "note": {
+    "uz": "Laboratoriya tahlillari uchun material olish qoidalari bo‘yicha qisqa qo‘llanma (qon, siydik, surtmalar, PZR). Raqamlar ilovada faqat JSST manbalari bilan tasdiqlangan holda ishlatiladi.",
+    "ru": "Краткое руководство по правилам взятия материала (кровь, моча, мазки, ПЦР). Числа используются в приложении только после сверки с документами ВОЗ.",
+    "en": "Short guide to specimen collection rules (blood, urine, swabs, PCR). Its numbers are used in the app only where WHO documents confirm them."
+   }
+  },
+  {
+   "id": "lib-book-sobirova-2006",
+   "kind": "book",
+   "title": "Biologik kimyo",
+   "authors": [
+    "R.A. Sobirova",
+    "O.A. Abrorov",
+    "F.X. Inoyatova",
+    "A.N. Aripov"
+   ],
+   "year": 2006,
+   "publisher": "Yangi asr avlodi (Toshkent)",
+   "isbn": "978-9943-08-010-2",
+   "language": "uz",
+   "categories": [
+    "biochemistry"
+   ],
+   "topics": [
+    "urine"
+   ],
+   "provided_by": "teacher",
+   "import_state": "cataloged",
+   "access": "free_to_read",
+   "url": "https://biochem.medprof.tma.uz/wp-content/uploads/2018/06/Sobirova-R.A-biokimyo.pdf",
+   "accessed": "2026-10-09",
+   "rights": {
+    "distribution": "denied",
+    "note": "Copyright applies; no open licence found. Catalogue record only: facts may be cited with author, year and page; text, tables and figures are not reproduced and no PDF is bundled."
+   },
+   "note": {
+    "uz": "Tibbiyot OTMlari uchun biokimyo darsligi. TTA kafedrasi saytida bepul o‘qish mumkin — faqat o‘qish uchun havola, ochiq litsenziya yo‘q.",
+    "ru": "Учебник биохимии для медицинских вузов. На сайте кафедры ТМА доступен для бесплатного чтения — только ссылка для чтения, открытой лицензии нет.",
+    "en": "Biochemistry textbook for medical universities. Free to read on the Tashkent Medical Academy department site — read-only link, no open licence."
+   },
+   "licence_quote": [
+    "Copyright. All rights reserved"
+   ]
+  },
+  {
+   "id": "lib-book-lyubina-1984",
+   "kind": "book",
+   "title": "Клинические лабораторные исследования",
+   "authors": [
+    "А.Я. Любина",
+    "Л.П. Ильичева",
+    "Т.В. Катасонова",
+    "С.А. Петросова"
+   ],
+   "year": 1984,
+   "publisher": "Медицина (Москва)",
+   "language": "ru",
+   "categories": [
+    "clinical_lab",
+    "methods"
+   ],
+   "topics": [
+    "urine",
+    "urine-microscopy"
+   ],
+   "provided_by": "teacher",
+   "import_state": "cataloged",
+   "access": "catalog_only",
+   "accessed": "2026-10-09",
+   "rights": {
+    "distribution": "denied",
+    "note": "Copyright applies; no open licence found. Catalogue record only: facts may be cited with author, year and page; text, tables and figures are not reproduced and no PDF is bundled."
+   },
+   "note": {
+    "uz": "Tibbiyot bilim yurtlari uchun klassik darslik (MDH maktabi usullari). Ayrim usullar eskirgan — ilovada zamonaviy manbalar bilan solishtiriladi.",
+    "ru": "Классический учебник для медицинских училищ (методы школы СССР). Часть методов устарела — в приложении сверяется с современными источниками.",
+    "en": "Classic textbook for medical schools (Soviet-era methods). Some methods are outdated — the app checks them against current sources."
+   }
+  }
+ ]
+}

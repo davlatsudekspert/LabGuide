@@ -61,8 +61,13 @@ void main() {
       expect(s.reuseRights, 'citation_only', reason: id);
       expect(s.note, contains('no text'), reason: id);
     }
-    // Kitoblar kutubxona katalogiga qo'shilmagan.
-    expect(pack.library.where((i) => i.id.contains('lyubina')), isEmpty);
+    // Katalogda kitob faqat bibliografik yozuv (yoki o'qish havolasi):
+    // fayl ham, oflayn paket ham yo'q; manba katalogga bog'lanmagan.
+    for (final i in pack.library.where((i) => i.id.contains('lyubina'))) {
+      expect(i.access, LibraryAccess.catalogOnly, reason: i.id);
+      expect(i.file, isNull, reason: i.id);
+      expect(i.filePack, isNull, reason: i.id);
+    }
   });
 
   test('a citation-only book must not carry a URL', () {

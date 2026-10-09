@@ -244,6 +244,65 @@ abstract final class CalcSources {
     url: 'https://medlineplus.gov/lab-tests/red-blood-cell-rbc-indices/',
   );
 
+  /// Preanalitika: antikoagulyantlar va namuna barqarorligi (JSST).
+  static const whoDilLab99 = CalcSource(
+    id: 'who-dil-lab-99-1',
+    citation:
+        'WHO. Use of anticoagulants in diagnostic laboratory investigations. '
+        'WHO/DIL/LAB/99.1 Rev.2. World Health Organization, 2002',
+    url: 'https://iris.who.int/handle/10665/65957',
+  );
+  static const medlinePlusLabPrep = CalcSource(
+    id: 'medlineplus-lab-prep',
+    citation:
+        'MedlinePlus. How to Prepare for a Lab Test. U.S. National Library '
+        'of Medicine',
+    url: 'https://medlineplus.gov/lab-tests/how-to-prepare-for-a-lab-test/',
+  );
+  static const medlinePlusFsh = CalcSource(
+    id: 'medlineplus-fsh',
+    citation:
+        'MedlinePlus. Follicle-stimulating Hormone (FSH) Levels Test. U.S. '
+        'National Library of Medicine',
+    url:
+        'https://medlineplus.gov/lab-tests/'
+        'follicle-stimulating-hormone-fsh-levels-test/',
+  );
+
+  /// Domla bergan darsliklar — qo'shimcha manba (faqat iqtibos, katalog
+  /// yozuvi; matn ko'chirilmaydi).
+  static const aripova2007 = CalcSource(
+    id: 'book-aripova-2007',
+    citation:
+        'Aripova G.S., Po‘latova F.G., Nazarova N.S., Toirova Z.S. Klinik va '
+        'biokimyoviy tekshiruv usullari. Toshkent: G‘afur G‘ulom NMIU, 2007. '
+        'ISBN 978-9943-03-034-3',
+    url: null,
+  );
+  static const lyubina1984 = CalcSource(
+    id: 'book-lyubina-1984',
+    citation:
+        'Любина А.Я., Ильичева Л.П., Катасонова Т.В., Петросова С.А. '
+        'Клинические лабораторные исследования. М.: Медицина, 1984',
+    url: null,
+  );
+  static const selivanov2005 = CalcSource(
+    id: 'book-selivanov-2005',
+    citation:
+        'Селиванов Е.В., Звягинцев Е.Н. Правила взятия материала для '
+        'лабораторных исследований. Барнаул, 2005',
+    url: null,
+  );
+  static const sobirova2006 = CalcSource(
+    id: 'book-sobirova-2006',
+    citation:
+        'Sobirova R.A., Abrorov O.A., Inoyatova F.X., Aripov A.N. Biologik '
+        'kimyo. Toshkent: Yangi asr avlodi, 2006. ISBN 978-9943-08-010-2',
+    url:
+        'https://biochem.medprof.tma.uz/wp-content/uploads/2018/06/'
+        'Sobirova-R.A-biokimyo.pdf',
+  );
+
   /// QC yo'riqnomalari (lib/features/qc/qc_guides_info.dart).
   static const whoLqms2011 = CalcSource(
     id: 'who-lqms-2011',
@@ -284,6 +343,13 @@ abstract final class CalcSources {
     whoLqms2011,
     campbell2012,
     imoh2023,
+    whoDilLab99,
+    medlinePlusLabPrep,
+    medlinePlusFsh,
+    aripova2007,
+    lyubina1984,
+    selivanov2005,
+    sobirova2006,
   ];
 
   static const all = [

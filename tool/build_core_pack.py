@@ -5,7 +5,7 @@
 `content_src/additions/*.json` — har biri bitta yo'nalish (masalan,
 `hematology.json`), tuzilmasi pack.json bo'limlari bilan bir xil:
     {"groups": [...], "analytes": [...], "sources": [...], "quiz": [...],
-     "conditions": [...]}
+     "conditions": [...], "library": [...]}
 Yozuvlar `id` bo'yicha **upsert** qilinadi (bor bo'lsa — almashtiriladi,
 yo'q bo'lsa — oxiriga qo'shiladi). Skript qayta-qayta ishga tushirilsa natija
 bir xil. Keyin manifest qayta quriladi (`tool/build_content_manifest.dart`).
@@ -22,7 +22,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 PACK = ROOT / 'assets/content/core/pack.json'
 ADDITIONS = ROOT / 'content_src/additions'
-SECTIONS = ('groups', 'analytes', 'sources', 'quiz', 'conditions')
+SECTIONS = ('groups', 'analytes', 'sources', 'quiz', 'conditions', 'library')
 
 
 def main() -> None:
