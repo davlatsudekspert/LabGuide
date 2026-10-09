@@ -148,7 +148,10 @@ class _Entry {
         best = _max(best, 60 + bonus);
       } else if (_words(term).any((w) => w.startsWith(q))) {
         best = _max(best, 40 + bonus);
-      } else if (term.contains(q) || termCompact.contains(compact)) {
+      } else if (term.contains(q) ||
+          // So'zlar chegarasidan o'tuvchi qisqa moslik shovqin beradi:
+          // “АЛТ” → “partiAL Thromboplastin”. Shuning uchun ≥ 4 belgi.
+          (compact.length >= 4 && termCompact.contains(compact))) {
         best = _max(best, 20 + bonus);
       }
     }
