@@ -2015,8 +2015,8 @@
       }
      ],
      "text": {
-      "uz": "Homilador bo‘lmaganda yuqori progesteron tuxumdon kistasi, tuxumdon saratoni yoki buyrak usti bezi muammolari — jumladan buyrak usti bezi saratoni yoki tug‘ma giperplaziyasi (BUTG) bilan bog‘liq bo‘lishi mumkin; buyrak usti bezi kasalligi erkaklarda ham progesteronni oshiradi. Homiladorlikda kutilganidan yuqori daraja egizak yoki undan ko‘p homilani bildirishi mumkin. Yuqori progesteron pufakli ko‘chish (molyar homiladorlik) belgisi ham bo‘lishi mumkin.",
-      "ru": "Вне беременности высокий прогестерон может быть связан с кистой яичника, раком яичника или проблемами надпочечников — включая рак надпочечника или врождённую гиперплазию коры надпочечников (ВГКН); болезнь надпочечников повышает прогестерон и у мужчин. При беременности уровень выше ожидаемого может означать двойню или больше. Высокий прогестерон может быть и признаком пузырного заноса.",
+      "uz": "Homilador bo‘lmaganda yuqori progesteron tuxumdon kistasi, tuxumdon saratoni yoki buyrak usti bezi muammolari — jumladan buyrak usti bezi saratoni yoki tug‘ma giperplaziyasi (BUTG) bilan bog‘liq bo‘lishi mumkin; buyrak usti bezi kasalligi erkaklarda ham progesteronni oshirishi mumkin. Homiladorlikda kutilganidan yuqori daraja egizak yoki undan ko‘p homilani bildirishi mumkin. Yuqori progesteron pufakli ko‘chish (molyar homiladorlik) belgisi ham bo‘lishi mumkin.",
+      "ru": "Вне беременности высокий прогестерон может быть связан с кистой яичника, раком яичника или проблемами надпочечников — включая рак надпочечника или врождённую гиперплазию коры надпочечников (ВГКН); болезнь надпочечников может повышать прогестерон и у мужчин. При беременности уровень выше ожидаемого может означать двойню или больше. Высокий прогестерон может быть и признаком пузырного заноса.",
       "en": "When not pregnant, high progesterone may be linked to an ovarian cyst, ovarian cancer or adrenal problems, including adrenal cancer or congenital adrenal hyperplasia (CAH); an adrenal disorder can raise progesterone in males too. In pregnancy, a higher-than-expected level may mean two or more babies. High progesterone may also be a sign of a molar pregnancy."
      }
     },
@@ -2783,9 +2783,9 @@
       }
      ],
      "text": {
-      "uz": "Buyrak usti bezi yetishmovchiligini aniqlashda eng ko‘p AKTG bilan stimulyatsiya testi qo‘llanadi: sun’iy AKTG vena ichiga yuborilib, kortizol yuborishdan oldin va 30 yoki 60 daqiqadan keyin o‘lchanadi. Normal holatda kortizol ko‘tariladi; Addison kasalligida va uzoq davom etgan ikkilamchi yetishmovchilikda deyarli ko‘tarilmaydi.",
-      "ru": "Для диагностики надпочечниковой недостаточности чаще всего применяют пробу со стимуляцией АКТГ: синтетический АКТГ вводят внутривенно, кортизол измеряют до и через 30 или 60 минут после введения. В норме кортизол повышается; при болезни Аддисона и длительной вторичной недостаточности — почти не повышается.",
-      "en": "The ACTH stimulation test is the test used most often to diagnose adrenal insufficiency: synthetic ACTH is injected into a vein and cortisol is measured before and 30 or 60 minutes after. Normally cortisol rises; in Addison's disease and long-standing secondary adrenal insufficiency there is little or no increase."
+      "uz": "Buyrak usti bezi yetishmovchiligini aniqlashda eng ko‘p AKTG bilan stimulyatsiya testi qo‘llanadi: sun’iy AKTG vena ichiga yuborilib, kortizol yuborishdan oldin va 30 yoki 60 daqiqadan keyin o‘lchanadi. Normal holatda kortizol ko‘tariladi; Addison kasalligida va uzoq davom etgan ikkilamchi yetishmovchiligi bor ko‘pchilik odamlarda deyarli ko‘tarilmaydi. Ikkilamchi yetishmovchilik qisqa muddatli bo‘lsa, test noaniq bo‘lishi mumkin, chunki buyrak usti bezlari hali AKTG ga javob bera oladi.",
+      "ru": "Для диагностики надпочечниковой недостаточности чаще всего применяют пробу со стимуляцией АКТГ: синтетический АКТГ вводят внутривенно, кортизол измеряют до и через 30 или 60 минут после введения. В норме кортизол повышается; при болезни Аддисона и у большинства людей с длительной вторичной недостаточностью — почти не повышается. Если вторичная недостаточность возникла недавно, проба может быть неточной: надпочечники ещё способны отвечать на АКТГ.",
+      "en": "The ACTH stimulation test is the test used most often to diagnose adrenal insufficiency: synthetic ACTH is injected into a vein and cortisol is measured before and 30 or 60 minutes after. Normally cortisol rises; in Addison's disease and in most people with long-standing secondary adrenal insufficiency there is little or no increase. The test may not be accurate when secondary adrenal insufficiency has lasted a shorter time, because the adrenal glands can still respond to ACTH."
      }
     },
     {
@@ -3057,6 +3057,10 @@
       {
        "source_id": "niddk-insulin-resistance",
        "locator": "How do health care professionals diagnose insulin resistance and prediabetes?"
+      },
+      {
+       "source_id": "niddk-insulin-resistance",
+       "locator": "Blood tests"
       }
      ],
      "text": {
@@ -3425,8 +3429,8 @@
       }
      ],
      "text": {
-      "uz": "Me’yordan yuqori PTG — giperparatireoz. Kalsiy ham yuqori bo‘lsa — birlamchi giperparatireoz: ko‘pincha bezning xavfsiz o‘smasi (paratireoid adenoma; PTG oshishining eng ko‘p sababi), bezlar giperplaziyasi, kam uchraydigan irsiy holatlar yoki juda kam uchraydigan saraton. Kalsiy past bo‘lsa — ikkilamchi giperparatireoz: bezlar to‘g‘ri ishlaydi, sabab tashqarida — D vitamini, fosfat va/yoki magniy kamligi, kalsiyni kam iste’mol qilish, so‘rilish buzilishi, buyrak yetishmovchiligi.",
-      "ru": "ПТГ выше нормы — гиперпаратиреоз. Если кальций тоже высокий — первичный гиперпаратиреоз: чаще всего доброкачественная опухоль железы (аденома паращитовидной железы; самая частая причина высокого ПТГ), гиперплазия желёз, редкие наследственные состояния или очень редкий рак. Если кальций низкий — вторичный гиперпаратиреоз: железы работают правильно, причина вне их — недостаток витамина D, фосфата и/или магния, недостаточное потребление кальция, мальабсорбция, почечная недостаточность.",
+      "uz": "Me’yordan yuqori PTG — giperparatireoz. Kalsiy ham yuqori bo‘lsa — birlamchi giperparatireoz: ko‘pincha bezning xavfsiz o‘smasi (paratireoid adenoma; PTG oshishining eng ko‘p sababi), bezlar giperplaziyasi, kam uchraydigan irsiy holatlar yoki kam uchraydigan paratireoid saraton. Kalsiy past bo‘lsa — ikkilamchi giperparatireoz: bezlar to‘g‘ri ishlaydi, sabab tashqarida — D vitamini, fosfat va/yoki magniy kamligi, kalsiyni kam iste’mol qilish, so‘rilish buzilishi, buyrak yetishmovchiligi.",
+      "ru": "ПТГ выше нормы — гиперпаратиреоз. Если кальций тоже высокий — первичный гиперпаратиреоз: чаще всего доброкачественная опухоль железы (аденома паращитовидной железы; самая частая причина высокого ПТГ), гиперплазия желёз, редкие наследственные состояния или редкий рак паращитовидной железы. Если кальций низкий — вторичный гиперпаратиреоз: железы работают правильно, причина вне их — недостаток витамина D, фосфата и/или магния, недостаточное потребление кальция, мальабсорбция, почечная недостаточность.",
       "en": "Higher-than-normal PTH is called hyperparathyroidism. With high blood calcium it is primary hyperparathyroidism — most often a benign parathyroid adenoma (the most common cause of high PTH), or hyperplasia of the glands, a rare inherited condition or rare parathyroid cancer. With low calcium it is secondary: the glands are working correctly and the cause lies outside them — low vitamin D, phosphate and/or magnesium, not getting enough calcium, malabsorption or kidney failure."
      }
     },
