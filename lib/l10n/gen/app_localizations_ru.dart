@@ -1445,6 +1445,282 @@ class AppLocalizationsRu extends AppLocalizations {
   String get diffDecrementAction => 'Убавить на один';
 
   @override
+  String get diffEfEntry => 'Режим микроскопа: подсчёт вслепую';
+
+  @override
+  String get diffEfEntrySub =>
+      'Экран делится на крупные зоны; звук и вибрация при каждом нажатии';
+
+  @override
+  String get diffEfTitle => 'Подсчёт вслепую';
+
+  @override
+  String get diffEfExit => 'Выйти';
+
+  @override
+  String get diffEfUndoZone => 'Отменить';
+
+  @override
+  String get diffEfUndoHint => 'или нажмите двумя пальцами';
+
+  @override
+  String diffEfZoneSemantics(String cell, int count, int total, int target) {
+    return '$cell: $count. Всего $total / $target.';
+  }
+
+  @override
+  String diffEfAnnounce(String cell, int count, int total) {
+    return '$cell $count. Всего $total';
+  }
+
+  @override
+  String diffEfUndone(String cell, int total) {
+    return 'Отменено: $cell. Всего $total';
+  }
+
+  @override
+  String get diffEfNothingToUndo => 'Нечего отменять';
+
+  @override
+  String get diffEfShowResult => 'Посмотреть результат';
+
+  @override
+  String get diffEfVoiceOn => 'Включить голосовые команды';
+
+  @override
+  String get diffEfVoiceOff => 'Остановить голосовые команды';
+
+  @override
+  String get diffEfSettingsTitle => 'Режим микроскопа';
+
+  @override
+  String get diffEfSettingsSub => 'Чтобы считать, не отрываясь от микроскопа';
+
+  @override
+  String get diffEfStart => 'Начать подсчёт';
+
+  @override
+  String get diffEfHowTitle => 'Как это работает';
+
+  @override
+  String get diffEfHowBody =>
+      'Положите телефон на стол и нажимайте зоны, не отрываясь от микроскопа. При каждом нажатии — короткий звук и вибрация, своя для каждого типа клеток; каждые 10 клеток — двухтональный сигнал и длинная вибрация; при достижении цели (100 или 200) — сигнал из трёх нот, подсчёт останавливается. Подсчёт общий с обычным счётчиком.';
+
+  @override
+  String get diffEfZonesTitle => 'Зоны';
+
+  @override
+  String get diffEfHandLabel => 'Какой рукой нажимаете';
+
+  @override
+  String get diffEfHandRight => 'Правая';
+
+  @override
+  String get diffEfHandLeft => 'Левая';
+
+  @override
+  String get diffEfHandHint =>
+      'Зона 1 ближе всего к большому пальцу — в нижнем углу.';
+
+  @override
+  String get diffEfOtherZone => 'Зона «Другие (бласты…)»';
+
+  @override
+  String get diffEfOtherZoneSub => 'Если выключить — 6 зон, каждая крупнее';
+
+  @override
+  String get diffEfUndoSwitch => 'Большая зона «Отменить» сверху';
+
+  @override
+  String get diffEfUndoSwitchSub =>
+      'Нажатие двумя пальцами всегда отменяет последнее нажатие';
+
+  @override
+  String get diffEfOrderTitle => 'Порядок зон';
+
+  @override
+  String get diffEfOrderHint =>
+      '1 — зона ближе всего к большому пальцу. Частые клетки ставьте выше.';
+
+  @override
+  String diffEfMoveUp(String cell) {
+    return 'Выше: $cell';
+  }
+
+  @override
+  String diffEfMoveDown(String cell) {
+    return 'Ниже: $cell';
+  }
+
+  @override
+  String get diffEfSignalsTitle => 'Сигналы';
+
+  @override
+  String get diffEfSound => 'Звук';
+
+  @override
+  String get diffEfSoundSub => 'Громкость — кнопками громкости телефона';
+
+  @override
+  String get diffEfHaptics => 'Вибрация';
+
+  @override
+  String get diffEfHapticsSub =>
+      'Не ощущается, если вибрация выключена в настройках телефона';
+
+  @override
+  String get diffEfPatternsTitle => 'Рисунки вибрации';
+
+  @override
+  String get diffEfPatternsHint =>
+      'Нажмите строку, чтобы попробовать. Ощущение зависит от модели телефона.';
+
+  @override
+  String diffEfPattern(int count, String strength) {
+    return '$count × $strength';
+  }
+
+  @override
+  String get diffEfPulseLight => 'лёгкая';
+
+  @override
+  String get diffEfPulseMedium => 'средняя';
+
+  @override
+  String get diffEfPulseHeavy => 'сильная';
+
+  @override
+  String get diffEfPatternTen => 'Каждые 10 клеток';
+
+  @override
+  String get diffEfPatternTenDesc => '+ длинная вибрация';
+
+  @override
+  String get diffEfPatternDone => 'Цель достигнута';
+
+  @override
+  String get diffEfPatternDoneDesc => '2 × сильная + длинная';
+
+  @override
+  String get diffEfPatternUndoDesc => 'сильная + короткая';
+
+  @override
+  String get diffEfScreenTitle => 'Экран';
+
+  @override
+  String get diffEfAwake => 'Не выключать экран';
+
+  @override
+  String get diffEfAwakeSub =>
+      'Экран не гаснет во время подсчёта — батарея расходуется быстрее';
+
+  @override
+  String get diffVoiceTitle => 'Подсчёт голосом';
+
+  @override
+  String get diffVoiceExperimental => 'Экспериментально';
+
+  @override
+  String get diffVoiceSwitch => 'Голосовые команды';
+
+  @override
+  String get diffVoiceSwitchSub =>
+      'Назовите клетку — +1; «отмена» — отменить последнее';
+
+  @override
+  String get diffVoiceLangLabel => 'Язык команд';
+
+  @override
+  String get diffVoiceLangAuto => 'Авто';
+
+  @override
+  String get diffVoiceLangUz => 'Узбекский';
+
+  @override
+  String get diffVoiceLangRu => 'Русский';
+
+  @override
+  String get diffVoiceLangEn => 'Английский';
+
+  @override
+  String get diffVoiceLangHint =>
+      'Авто: если язык приложения недоступен на устройстве — русский, затем английский. Узбекского нет в списке языков диктовки Apple; на Android зависит от устройства.';
+
+  @override
+  String get diffVoiceWordsTitle => 'Какие слова говорить';
+
+  @override
+  String get diffVoicePrivacyTitle => 'Где обрабатывается голос';
+
+  @override
+  String get diffVoicePrivacyIos =>
+      'iOS: требуется распознавание только на устройстве. Если для языка его нет, режим не работает — голос на сервер не отправляется. LabGuide не сохраняет и никуда не отправляет голос.';
+
+  @override
+  String get diffVoicePrivacyAndroid =>
+      'Android: речь распознаёт системная служба телефона (обычно Google). LabGuide запрашивает офлайн-распознавание, но не может его гарантировать — служба может отправить голос на свой сервер. LabGuide не сохраняет голос и сам никуда его не отправляет.';
+
+  @override
+  String get diffVoiceNoNames =>
+      'Говорите только названия клеток — не называйте пациента и другие данные.';
+
+  @override
+  String get diffVoiceAccuracy =>
+      'Точность зависит от шума, произношения и устройства. Слушайте сигнал после каждой команды; при ошибке скажите «отмена». Проверяйте результат перед сохранением.';
+
+  @override
+  String get diffVoiceConsentTitle => 'Включить голосовые команды?';
+
+  @override
+  String get diffVoiceConsentAction => 'Понятно, включить';
+
+  @override
+  String get diffVoiceStarting => 'Запуск микрофона…';
+
+  @override
+  String diffVoiceListening(String lang) {
+    return 'Слушаю · $lang';
+  }
+
+  @override
+  String diffVoiceFallback(String lang) {
+    return 'Для языка приложения распознавание на устройстве не найдено — говорите слова на языке: $lang.';
+  }
+
+  @override
+  String diffVoiceHeard(String text) {
+    return 'Услышано: «$text»';
+  }
+
+  @override
+  String diffVoiceNotUnderstood(String text) {
+    return 'Команда не распознана: «$text»';
+  }
+
+  @override
+  String get diffVoicePermissionDenied =>
+      'Нет разрешения на микрофон или распознавание речи, поэтому голосовые команды не работают. Разрешение можно дать LabGuide в настройках телефона. Подсчёт зонами продолжает работать.';
+
+  @override
+  String get diffVoiceUnavailable =>
+      'На этом устройстве нет службы распознавания речи. Подсчёт зонами продолжает работать.';
+
+  @override
+  String get diffVoiceLanguageUnavailable =>
+      'Для выбранного языка распознавания на устройстве нет. Выберите другой язык в настройках.';
+
+  @override
+  String get diffVoiceOnDeviceUnavailable =>
+      'Для этого языка нет распознавания на устройстве. Чтобы голос не уходил на сервер, голосовые команды отключены.';
+
+  @override
+  String get diffVoiceFailed =>
+      'Распознавание остановилось. Попробуйте ещё раз.';
+
+  @override
+  String get diffVoiceRetry => 'Повторить';
+
+  @override
   String get diffHistoryEmptyTitle => 'Сохранённых результатов пока нет';
 
   @override

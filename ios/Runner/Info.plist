@@ -32,6 +32,10 @@
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>LabGuide only opens your photos when you choose to attach a screenshot to a feedback request.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>LabGuide uses the microphone only when you turn on voice commands in the differential counter. Audio is not stored.</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>LabGuide recognises cell names you say during a differential count. Recognition is required to run on this device; audio is not stored.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>LabGuide uses the camera only if you choose to take a photo for a feedback request.</string>
 	<key>ITSAppUsesNonExemptEncryption</key>

@@ -1430,6 +1430,282 @@ class AppLocalizationsEn extends AppLocalizations {
   String get diffDecrementAction => 'Subtract one';
 
   @override
+  String get diffEfEntry => 'Microscope mode: eyes-free counting';
+
+  @override
+  String get diffEfEntrySub =>
+      'Large screen zones; a sound and vibration on every tap';
+
+  @override
+  String get diffEfTitle => 'Eyes-free counting';
+
+  @override
+  String get diffEfExit => 'Exit';
+
+  @override
+  String get diffEfUndoZone => 'Undo';
+
+  @override
+  String get diffEfUndoHint => 'or tap with two fingers';
+
+  @override
+  String diffEfZoneSemantics(String cell, int count, int total, int target) {
+    return '$cell: $count. Total $total / $target.';
+  }
+
+  @override
+  String diffEfAnnounce(String cell, int count, int total) {
+    return '$cell $count. Total $total';
+  }
+
+  @override
+  String diffEfUndone(String cell, int total) {
+    return 'Undone: $cell. Total $total';
+  }
+
+  @override
+  String get diffEfNothingToUndo => 'Nothing to undo';
+
+  @override
+  String get diffEfShowResult => 'View result';
+
+  @override
+  String get diffEfVoiceOn => 'Turn on voice commands';
+
+  @override
+  String get diffEfVoiceOff => 'Stop voice commands';
+
+  @override
+  String get diffEfSettingsTitle => 'Microscope mode';
+
+  @override
+  String get diffEfSettingsSub =>
+      'Count without looking away from the microscope';
+
+  @override
+  String get diffEfStart => 'Start counting';
+
+  @override
+  String get diffEfHowTitle => 'How it works';
+
+  @override
+  String get diffEfHowBody =>
+      'Put the phone on the bench and tap the zones without looking away from the microscope. Every tap gives a short sound and a vibration pattern specific to the cell type; every 10th cell — a two-tone signal and a long vibration; at the target (100 or 200) — a three-note signal and counting stops. The count is shared with the regular counter.';
+
+  @override
+  String get diffEfZonesTitle => 'Zones';
+
+  @override
+  String get diffEfHandLabel => 'Which hand do you tap with';
+
+  @override
+  String get diffEfHandRight => 'Right hand';
+
+  @override
+  String get diffEfHandLeft => 'Left hand';
+
+  @override
+  String get diffEfHandHint =>
+      'Zone 1 is closest to your thumb — in the bottom corner.';
+
+  @override
+  String get diffEfOtherZone => '“Other (blasts…)” zone';
+
+  @override
+  String get diffEfOtherZoneSub => 'Turn off for 6 larger zones';
+
+  @override
+  String get diffEfUndoSwitch => 'Large “Undo” zone at the top';
+
+  @override
+  String get diffEfUndoSwitchSub =>
+      'A two-finger tap always undoes the last tap';
+
+  @override
+  String get diffEfOrderTitle => 'Zone order';
+
+  @override
+  String get diffEfOrderHint =>
+      '1 is the zone closest to your thumb. Put the most frequent cells first.';
+
+  @override
+  String diffEfMoveUp(String cell) {
+    return 'Move up: $cell';
+  }
+
+  @override
+  String diffEfMoveDown(String cell) {
+    return 'Move down: $cell';
+  }
+
+  @override
+  String get diffEfSignalsTitle => 'Signals';
+
+  @override
+  String get diffEfSound => 'Sound';
+
+  @override
+  String get diffEfSoundSub => 'Volume follows the phone’s volume buttons';
+
+  @override
+  String get diffEfHaptics => 'Vibration';
+
+  @override
+  String get diffEfHapticsSub =>
+      'Not felt if vibration is turned off in phone settings';
+
+  @override
+  String get diffEfPatternsTitle => 'Vibration patterns';
+
+  @override
+  String get diffEfPatternsHint =>
+      'Tap a row to try it. How it feels depends on the phone model.';
+
+  @override
+  String diffEfPattern(int count, String strength) {
+    return '$count × $strength';
+  }
+
+  @override
+  String get diffEfPulseLight => 'light';
+
+  @override
+  String get diffEfPulseMedium => 'medium';
+
+  @override
+  String get diffEfPulseHeavy => 'strong';
+
+  @override
+  String get diffEfPatternTen => 'Every 10th cell';
+
+  @override
+  String get diffEfPatternTenDesc => '+ long vibration';
+
+  @override
+  String get diffEfPatternDone => 'Target reached';
+
+  @override
+  String get diffEfPatternDoneDesc => '2 × strong + long';
+
+  @override
+  String get diffEfPatternUndoDesc => 'strong + short';
+
+  @override
+  String get diffEfScreenTitle => 'Screen';
+
+  @override
+  String get diffEfAwake => 'Keep screen on';
+
+  @override
+  String get diffEfAwakeSub =>
+      'The screen stays on while counting — uses more battery';
+
+  @override
+  String get diffVoiceTitle => 'Voice counting';
+
+  @override
+  String get diffVoiceExperimental => 'Experimental';
+
+  @override
+  String get diffVoiceSwitch => 'Voice commands';
+
+  @override
+  String get diffVoiceSwitchSub =>
+      'Say a cell name — +1; “undo” — undo the last one';
+
+  @override
+  String get diffVoiceLangLabel => 'Command language';
+
+  @override
+  String get diffVoiceLangAuto => 'Auto';
+
+  @override
+  String get diffVoiceLangUz => 'Uzbek';
+
+  @override
+  String get diffVoiceLangRu => 'Russian';
+
+  @override
+  String get diffVoiceLangEn => 'English';
+
+  @override
+  String get diffVoiceLangHint =>
+      'Auto: if the app language isn’t available on the device — Russian, then English. Uzbek is not in Apple’s dictation language list; on Android it depends on the device.';
+
+  @override
+  String get diffVoiceWordsTitle => 'Words to say';
+
+  @override
+  String get diffVoicePrivacyTitle => 'Where your voice is processed';
+
+  @override
+  String get diffVoicePrivacyIos =>
+      'iOS: on-device recognition is required. If it isn’t available for the language, the mode won’t work — audio is not sent to a server. LabGuide does not store or send your voice anywhere.';
+
+  @override
+  String get diffVoicePrivacyAndroid =>
+      'Android: speech is recognised by the phone’s system service (usually Google). LabGuide asks for offline recognition but cannot guarantee it — the service may send audio to its server. LabGuide does not store your voice or send it anywhere itself.';
+
+  @override
+  String get diffVoiceNoNames =>
+      'Say only cell names — never patient names or other details.';
+
+  @override
+  String get diffVoiceAccuracy =>
+      'Accuracy depends on noise, pronunciation and the device. Listen for the signal after each command; say “undo” if it’s wrong. Check the result before saving.';
+
+  @override
+  String get diffVoiceConsentTitle => 'Turn on voice commands?';
+
+  @override
+  String get diffVoiceConsentAction => 'I understand, turn on';
+
+  @override
+  String get diffVoiceStarting => 'Starting microphone…';
+
+  @override
+  String diffVoiceListening(String lang) {
+    return 'Listening · $lang';
+  }
+
+  @override
+  String diffVoiceFallback(String lang) {
+    return 'No speech recognition for the app language on this device — say the words in $lang.';
+  }
+
+  @override
+  String diffVoiceHeard(String text) {
+    return 'Heard: “$text”';
+  }
+
+  @override
+  String diffVoiceNotUnderstood(String text) {
+    return 'No command found: “$text”';
+  }
+
+  @override
+  String get diffVoicePermissionDenied =>
+      'Microphone or speech recognition permission was not granted, so voice commands don’t work. You can allow it for LabGuide in phone settings. Counting with zones keeps working.';
+
+  @override
+  String get diffVoiceUnavailable =>
+      'Speech recognition isn’t available on this device. Counting with zones keeps working.';
+
+  @override
+  String get diffVoiceLanguageUnavailable =>
+      'Speech recognition isn’t available for the chosen language on this device. Choose another language in settings.';
+
+  @override
+  String get diffVoiceOnDeviceUnavailable =>
+      'On-device recognition isn’t available for this language. Voice commands are off so audio is not sent to a server.';
+
+  @override
+  String get diffVoiceFailed => 'Speech recognition stopped. Please try again.';
+
+  @override
+  String get diffVoiceRetry => 'Try again';
+
+  @override
   String get diffHistoryEmptyTitle => 'No saved results yet';
 
   @override

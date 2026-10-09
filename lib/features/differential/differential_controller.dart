@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 
 import '../../core/storage/kv_store.dart';
+import 'diff_eyes_free_settings.dart';
 import 'differential_content.dart';
 
 /// Sanash natijasi (tarixdagi bitta yozuv yoki joriy sanash).
@@ -88,6 +89,7 @@ class DifferentialController extends ChangeNotifier {
   int _target = 100;
   double? _wbc;
   final List<DiffRecord> _history = [];
+  EyesFreeSettings _eyesFree = const EyesFreeSettings();
 
   int get target => _target;
   double? get wbc => _wbc;
@@ -97,6 +99,15 @@ class DifferentialController extends ChangeNotifier {
   bool get canUndo => _undo.isNotEmpty;
   bool get isEmpty => total == 0;
   List<DiffRecord> get history => List.unmodifiable(_history);
+
+  /// "Ko'rmasdan sanash" rejimi sozlamalari.
+  EyesFreeSettings get eyesFree => _eyesFree;
+
+  Future<void> setEyesFree(EyesFreeSettings s) async {
+    _eyesFree = s;
+    notifyListeners();
+    await _store.setString(StoreKeys.differentialEyesFree, encodeEyesFree(s));
+  }
 
   /// Joriy sanash yozuv ko'rinishida (natija jadvali, nusxalash).
   DiffRecord get current => DiffRecord(
@@ -205,6 +216,7 @@ class DifferentialController extends ChangeNotifier {
     _history.clear();
     _target = 100;
     _wbc = null;
+    _eyesFree = const EyesFreeSettings();
     notifyListeners();
   }
 
@@ -226,6 +238,9 @@ class DifferentialController extends ChangeNotifier {
   );
 
   void _load() {
+    _eyesFree = decodeEyesFree(
+      _store.getString(StoreKeys.differentialEyesFree),
+    );
     try {
       final raw = _store.getString(StoreKeys.differentialDraft);
       if (raw != null) {

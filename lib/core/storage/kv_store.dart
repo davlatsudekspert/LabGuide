@@ -58,6 +58,9 @@ abstract final class StoreKeys {
   static const differentialDraft = 'differential.draft';
   static const differentialHistory = 'differential.history';
 
+  /// Leykoformula: "ko'rmasdan sanash" rejimi sozlamalari.
+  static const differentialEyesFree = 'differential.eyesFree';
+
   static const all = <String>{
     language,
     themeMode,
@@ -87,6 +90,7 @@ abstract final class StoreKeys {
     toifaTestSettings,
     differentialDraft,
     differentialHistory,
+    differentialEyesFree,
   };
 }
 

@@ -61,6 +61,8 @@ const appRoutes = [
   '/lab/differential/cells/smudge_cell',
   '/lab/differential/confusions',
   '/lab/differential/count',
+  '/lab/differential/count/eyes-free',
+  '/lab/differential/count/eyes-free/run',
   '/lab/differential/history',
   '/lab/differential/interpret',
   '/lab/differential/technique',

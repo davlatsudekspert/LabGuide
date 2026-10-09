@@ -36,6 +36,14 @@ dependencies:
   # MIT; PDFium (BSD-3/Apache-2.0). iOS'da pdfium_flutter SwiftPM paketi
   # (Package.swift) orqali ulanadi — CocoaPods kerak emas.
   pdfrx: ^2.6.5
+  # Leykoformula "ko'rmasdan sanash" rejimi (hammasi SwiftPM'ni qo'llaydi):
+  # qisqa signal tovushlari — MIT;
+  audioplayers: ^6.8.1
+  # sanash paytida ekranni yoqiq ushlash (ixtiyoriy) — BSD-3. Linux uchun
+  # tranzitiv `dbus` (MPL-2.0) keladi — faqat Linux implementatsiyasida;
+  wakelock_plus: ^1.8.1
+  # ovozli buyruqlar (eksperimental) — BSD-3; iOS'da CwlCatchException (ISC).
+  speech_to_text: ^7.5.0
 
 dev_dependencies:
   flutter_test:
@@ -52,6 +60,7 @@ flutter:
     - assets/instruments/
     - assets/instruments/img/
     - assets/differential/
+    - assets/differential/sounds/
     - assets/microscopy/
     - assets/microscopy/img/
     - assets/toifa/
