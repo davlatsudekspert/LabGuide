@@ -43089,9 +43089,9 @@
       "en": "Type 2 diabetes testing after delivery"
      },
      "why": {
-      "uz": "Homiladorlik diabetidan keyin 2-tip diabetga tekshirish tavsiya etiladi — odatda tug‘ruqdan taxminan 12 hafta keyin.",
-      "ru": "После гестационного диабета рекомендуется проверка на диабет 2 типа — обычно примерно через 12 недель после родов.",
-      "en": "After gestational diabetes, testing for type 2 diabetes is recommended — usually about 12 weeks after delivery."
+      "uz": "Homiladorlik diabetidan keyin 2-tip diabetga tekshirish tavsiya etiladi — odatda tug‘ruqdan keyingi 12 hafta ichida.",
+      "ru": "После гестационного диабета рекомендуется проверка на диабет 2 типа — обычно в течение 12 недель после родов.",
+      "en": "After gestational diabetes, testing for type 2 diabetes is recommended — usually within 12 weeks after delivery."
      },
      "tier": "monitoring",
      "refs": [
@@ -47404,9 +47404,9 @@
       "en": "Procalcitonin slightly ↑"
      },
      "meaning": {
-      "uz": "Sepsis ehtimoli past: mahalliy bakterial infeksiya (masalan, SYI), virusli infeksiya yoki endi boshlanayotgan tizimli infeksiya.",
-      "ru": "Сепсис маловероятен: местная бактериальная инфекция (например, ИМП), вирусная инфекция или начинающаяся системная инфекция.",
-      "en": "Sepsis is unlikely: a local bacterial infection (such as a UTI), a viral infection, or a systemic infection just beginning."
+      "uz": "Sepsis ehtimoli past; mahalliy bakterial infeksiya (masalan, SYI) yoki boshqa sababli (masalan, virusli) infeksiya belgisi bo‘lishi mumkin. O‘rtacha yoki biroz yuqori darajalar esa tizimli bakterial infeksiyaning erta bosqichida ham uchraydi.",
+      "ru": "Сепсис маловероятен; возможна местная бактериальная инфекция (например, ИМП) или инфекция другой природы (например, вирусная). Умеренно или слегка повышенные уровни встречаются и на ранних стадиях системной бактериальной инфекции.",
+      "en": "Sepsis is unlikely; it may be a sign of a local bacterial infection (such as a UTI) or an infection from another cause, such as a virus. Moderate to mildly high levels can also be seen in the early stages of a systemic bacterial infection."
      },
      "refs": [
       {
@@ -47466,7 +47466,11 @@
       },
       {
        "source_id": "medline-lactate-test",
-       "locator": "Is there anything else I need to know about a lactate test?"
+       "locator": "What happens during a lactate test?"
+      },
+      {
+       "source_id": "medline-lactate-test",
+       "locator": "Will I need to do anything to prepare for the test?"
       }
      ]
     }
@@ -50092,9 +50096,9 @@
     },
     {
      "finding": {
-      "uz": "Bosim ≥ 160/110 yoki oqsil ≥ 5 g/sutka yoki trombotsitlar ↓ / jigar fermentlari ↑",
-      "ru": "Давление ≥ 160/110, или белок ≥ 5 г/сут, или тромбоциты ↓ / печёночные ферменты ↑",
-      "en": "BP ≥ 160/110, or protein ≥ 5 g/24 h, or low platelets / high liver enzymes"
+      "uz": "Bosim ≥ 160/110 (kamida 4 soat oraliqda ikki marta), yoki oqsil ≥ 5 g/sutka, yoki trombotsitlar ↓ / jigar fermentlari ↑",
+      "ru": "Давление ≥ 160/110 (дважды с интервалом не менее 4 ч), или белок ≥ 5 г/сут, или тромбоциты ↓ / печёночные ферменты ↑",
+      "en": "BP ≥ 160/110 (on two occasions at least 4 hours apart), or protein ≥ 5 g/24 h, or low platelets / high liver enzymes"
      },
      "meaning": {
       "uz": "Og‘ir preeklampsiya belgilari.",
@@ -50776,14 +50780,14 @@
     },
     {
      "finding": {
-      "uz": "PSA doimiy ↑ yoki tez o‘smoqda",
-      "ru": "ПСА стойко ↑ или быстро растёт",
-      "en": "PSA stays high or rises quickly"
+      "uz": "PSA oshishda davom etmoqda (ayniqsa tez) yoki to‘g‘ri ichak orqali tekshiruvda tugun topildi",
+      "ru": "ПСА продолжает расти (особенно быстро) или при ректальном исследовании найден узел",
+      "en": "PSA keeps rising (especially quickly) or a lump is found on DRE"
      },
      "meaning": {
-      "uz": "Qo‘shimcha testlar (MRT va boshqalar) va biopsiya tavsiya etilishi mumkin.",
-      "ru": "Могут рекомендоваться дополнительные тесты (МРТ и др.) и биопсия.",
-      "en": "Additional tests (MRI and others) and a biopsy may be recommended."
+      "uz": "Qo‘shimcha testlar (MRT va boshqalar) yoki biopsiya tavsiya etilishi mumkin. PSA yuqoriligicha qolsa (lekin oshmasa) — odatda takroriy PSA va to‘g‘ri ichak orqali tekshiruv bilan kuzatiladi.",
+      "ru": "Могут рекомендоваться дополнительные тесты (МРТ и др.) или биопсия. Если ПСА остаётся повышенным (но не растёт) — обычно наблюдение с повторными ПСА и ректальным исследованием.",
+      "en": "Additional tests (MRI and others) or a biopsy may be recommended. If PSA stays high (but is not rising), observation with repeat PSA tests and digital rectal exams is usual."
      },
      "refs": [
       {
