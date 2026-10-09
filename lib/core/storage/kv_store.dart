@@ -45,6 +45,13 @@ abstract final class StoreKeys {
   /// Kutubxona PDF lari: oxirgi sahifa va xatcho'plar.
   static const libraryReading = 'library.reading';
 
+  /// Toifa imtihoniga tayyorgarlik: toifa, og'zaki baholar, bilet, test
+  /// sozlamalari.
+  static const toifaCategory = 'toifa.category';
+  static const toifaOral = 'toifa.oral';
+  static const toifaTicket = 'toifa.ticket';
+  static const toifaTestSettings = 'toifa.testSettings';
+
   static const all = <String>{
     language,
     themeMode,
@@ -67,6 +74,10 @@ abstract final class StoreKeys {
     microscopyQuiz,
     partnersCache,
     libraryReading,
+    toifaCategory,
+    toifaOral,
+    toifaTicket,
+    toifaTestSettings,
   };
 }
 

@@ -76,6 +76,7 @@ Future<AppServices> makeServices(
   await tester.runAsync(services.content.load);
   await tester.runAsync(services.instruments.ensureCatalog);
   await tester.runAsync(services.microscopy.ensureAtlas);
+  await tester.runAsync(services.toifa.ensureLoaded);
   return services;
 }
 

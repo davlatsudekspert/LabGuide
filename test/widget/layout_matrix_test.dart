@@ -98,6 +98,17 @@ const appRoutes = [
   '/learn/exam',
   '/learn/exam/run',
   '/learn/exam/result/missing',
+  // Toifa bo'limi: uz da ochiladi, ru/en (mintaqa UZ emas) — /learn ga
+  // qaytariladi.
+  '/learn/toifa',
+  '/learn/toifa/test',
+  '/learn/toifa/test/result/missing',
+  '/learn/toifa/practice',
+  '/learn/toifa/practice/hemostasis',
+  '/learn/toifa/oral',
+  '/learn/toifa/oral/q/kdl-o-001',
+  '/learn/toifa/mistakes',
+  '/learn/toifa/progress',
   '/learn/classes',
   '/learn/classes/new',
   '/learn/classes/join',

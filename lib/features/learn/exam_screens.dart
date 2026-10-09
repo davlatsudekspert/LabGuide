@@ -9,6 +9,7 @@ import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
 import '../support/support_screens.dart' show formatWhen;
+import '../toifa/toifa_bank.dart';
 import 'exam_controller.dart';
 import 'exam_question.dart';
 import 'exam_session.dart';
@@ -64,7 +65,8 @@ class _ExamSetupScreenState extends State<ExamSetupScreen> {
           content: Text(l.examSettled),
           action: SnackBarAction(
             label: l.examOpenResult,
-            onPressed: () => context.push('/learn/exam/result/${done.id}'),
+            onPressed: () =>
+                context.push('${examBase(done.sourceId)}/result/${done.id}'),
           ),
         ),
       );
@@ -125,14 +127,15 @@ class _ExamSetupScreenState extends State<ExamSetupScreen> {
           listenable: exams,
           builder: (context, _) => exams.active == null
               ? const SizedBox.shrink()
-              : _ActiveExamCard(session: exams.active!),
+              : ActiveExamCard(session: exams.active!),
         ),
         // Hozircha — kontent paketi savollari; boshqa bank (masalan, toifa
         // imtihoni) shu ekranga manba sifatida beriladi.
         ExamSourceGate(sourceId: widget.sourceId, builder: _setup),
         ListenableBuilder(
           listenable: exams,
-          builder: (context, _) => _History(exams: exams),
+          builder: (context, _) =>
+              ExamHistory(exams: exams, sourceId: widget.sourceId),
         ),
       ],
     );
@@ -195,8 +198,9 @@ class _ExamSetupScreenState extends State<ExamSetupScreen> {
   }
 }
 
-class _ActiveExamCard extends StatelessWidget {
-  const _ActiveExamCard({required this.session});
+/// Davom etayotgan imtihon: qaysi bankdan bo'lsa, o'sha bo'limda ochiladi.
+class ActiveExamCard extends StatelessWidget {
+  const ActiveExamCard({super.key, required this.session});
 
   final ExamSession session;
 
@@ -237,7 +241,7 @@ class _ActiveExamCard extends StatelessWidget {
           LgButton(
             label: l.examResume,
             icon: Icons.play_arrow_rounded,
-            onPressed: () => context.push('/learn/exam/run'),
+            onPressed: () => context.push('${examBase(session.sourceId)}/run'),
           ),
           const SizedBox(height: 4),
           LgButton.link(
@@ -258,17 +262,28 @@ class _ActiveExamCard extends StatelessWidget {
   }
 }
 
-class _History extends StatelessWidget {
-  const _History({required this.exams});
+/// Natijalar tarixi — faqat shu bankdagi imtihonlar.
+class ExamHistory extends StatelessWidget {
+  const ExamHistory({super.key, required this.exams, required this.sourceId});
 
   final ExamController exams;
+  final String sourceId;
 
   @override
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context);
     final text = Theme.of(context).textTheme;
     final lang = Localizations.localeOf(context).languageCode;
-    final history = exams.history;
+    final all = [
+      for (final s in exams.history)
+        if (s.sourceId == sourceId) s,
+    ];
+    // Toifa: cheklanmagan tarix — keyin Pro bo'lishi mumkin (hozir ochiq).
+    final history =
+        sourceId == ToifaQuestionSource.sourceId &&
+            !toifaAllows(ToifaFeature.unlimitedHistory)
+        ? all.take(ToifaFreeProposal.historySize).toList()
+        : all;
     final recent = history.take(10).toList();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -309,10 +324,13 @@ class _History extends StatelessWidget {
                   : Icons.timer_outlined,
               trailing: LgTag(
                 '${s.percent}%',
-                tone: s.percent >= 50 ? LgTone.brand : LgTone.warning,
+                tone: (s.passed ?? s.percent >= 50)
+                    ? LgTone.brand
+                    : LgTone.warning,
               ),
               divider: i < history.length - 1,
-              onTap: () => context.push('/learn/exam/result/${s.id}'),
+              onTap: () =>
+                  context.push('${examBase(s.sourceId)}/result/${s.id}'),
             ),
           const SizedBox(height: 8),
           LgButton.link(
@@ -324,7 +342,7 @@ class _History extends StatelessWidget {
                 body: l.examHistoryClearBody,
                 action: l.actionDelete,
               );
-              if (ok) await exams.clearHistory();
+              if (ok) await exams.clearHistory(sourceId: sourceId);
             },
           ),
         ],
@@ -407,7 +425,10 @@ class _ProgressStrip extends StatelessWidget {
 /// Imtihonni yechish (to'liq ekran). Sahifa yopilsa ham imtihon saqlanadi
 /// va vaqt davom etadi — “Imtihon rejimi” ekranidan qaytiladi.
 class ExamRunScreen extends StatefulWidget {
-  const ExamRunScreen({super.key});
+  const ExamRunScreen({super.key, this.base = '/learn/exam'});
+
+  /// Faol imtihon bo'lmasa — shu bo'limga qaytiladi.
+  final String base;
 
   @override
   State<ExamRunScreen> createState() => _ExamRunScreenState();
@@ -422,7 +443,7 @@ class _ExamRunScreenState extends State<ExamRunScreen> {
     final done = await services.exams.finishActive(timedOut: timedOut);
     if (done == null) return;
     await recordExamProgress(services, done);
-    if (mounted) context.go('/learn/exam/result/${done.id}');
+    if (mounted) context.go('${examBase(done.sourceId)}/result/${done.id}');
   }
 
   @override
@@ -448,7 +469,7 @@ class _ExamRunScreenState extends State<ExamRunScreen> {
               title: l.examNoActive,
               message: l.examNoActiveBody,
               actionLabel: l.examNew,
-              onAction: () => context.go('/learn/exam'),
+              onAction: () => context.go(widget.base),
             ),
           );
         }
@@ -468,9 +489,16 @@ class _ExamRunScreenState extends State<ExamRunScreen> {
 }
 
 class ExamResultScreen extends StatefulWidget {
-  const ExamResultScreen({super.key, required this.resultId});
+  const ExamResultScreen({
+    super.key,
+    required this.resultId,
+    this.base = '/learn/exam',
+  });
 
   final String resultId;
+
+  /// Natija topilmasa — shu bo'limga qaytiladi.
+  final String base;
 
   @override
   State<ExamResultScreen> createState() => _ExamResultScreenState();
@@ -506,7 +534,7 @@ class _ExamResultScreenState extends State<ExamResultScreen> {
         topicIds: s.topicIds,
       ),
     );
-    if (mounted) await context.push('/learn/exam/run');
+    if (mounted) await context.push('${examBase(source.id)}/run');
   }
 
   /// Shu mavzulardagi oldingi urinish (taqqoslash uchun).
@@ -519,6 +547,7 @@ class _ExamResultScreenState extends State<ExamResultScreen> {
         .where(
           (h) =>
               h.mode == s.mode &&
+              h.sourceId == s.sourceId &&
               h.topicIds.length == s.topicIds.length &&
               h.topicIds.every(s.topicIds.contains),
         )
@@ -540,7 +569,7 @@ class _ExamResultScreenState extends State<ExamResultScreen> {
               kind: StateKind.empty,
               title: l.examResultMissing,
               actionLabel: l.examNew,
-              onAction: () => context.go('/learn/exam'),
+              onAction: () => context.go(widget.base),
             ),
           );
         }
@@ -574,6 +603,14 @@ class _ExamResultScreenState extends State<ExamResultScreen> {
           spent: s.spent(s.finishedAt ?? s.startedAt),
           limit: s.limit,
           badges: [
+            if (s.passed case final passed?)
+              LgTag(
+                passed
+                    ? l.examPassMet(s.passPercent!)
+                    : l.examPassMissed(s.passPercent!),
+                tone: passed ? LgTone.brand : LgTone.warning,
+                icon: passed ? Icons.verified_rounded : Icons.flag_outlined,
+              ),
             if (s.timedOut)
               LgTag(l.examTimedOut, tone: LgTone.warning, icon: Icons.alarm),
             if (delta != null)
@@ -604,7 +641,7 @@ class _ExamResultScreenState extends State<ExamResultScreen> {
         LgButton.secondary(
           label: l.examNew,
           icon: Icons.add_rounded,
-          onPressed: () => context.go('/learn/exam'),
+          onPressed: () => context.go(examBase(s.sourceId)),
         ),
         TopicBreakdown(session: s, source: source),
         LgSectionTitle(l.examAnalysis),
@@ -636,7 +673,9 @@ class _ExamResultScreenState extends State<ExamResultScreen> {
               correct: s.items[i].correct,
             ),
         const SizedBox(height: 8),
-        Text(l.quizReviewNote, style: Theme.of(context).textTheme.bodySmall),
+        // Rasmiy ro'yxat savollari — LabGuide qoralamasi emas.
+        if (s.sourceId != ToifaQuestionSource.sourceId)
+          Text(l.quizReviewNote, style: Theme.of(context).textTheme.bodySmall),
       ],
     );
   }

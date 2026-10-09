@@ -16,6 +16,7 @@ import '../features/library/reading_controller.dart';
 import '../features/packs/packs_controller.dart';
 import '../features/qc/qc_controller.dart';
 import '../features/settings/settings_controller.dart';
+import '../features/toifa/toifa_controller.dart';
 
 /// Build va siyosat sozlamalari. Biznes qarorlari (masalan, qurilmalar
 /// soni) kodga qotirilmaydi — shu yerda, keyin remote config'dan keladi.
@@ -63,6 +64,7 @@ class AppServices {
     required this.backend,
     required this.access,
     required this.partners,
+    required this.toifa,
   });
 
   final AppConfig config;
@@ -93,6 +95,9 @@ class AppServices {
 
   /// Hamkorlar (reklama) — faqat server ulangan buildda.
   final PartnersController partners;
+
+  /// Toifa imtihoniga tayyorgarlik (faqat O'zbekiston foydalanuvchilariga).
+  final ToifaController toifa;
 
   /// Server vakolatlari va o'qilmagan javoblarni yangilash. Rol hali
   /// tanlanmagan bo'lsa profil yozilmaydi (taxminiy rol sanalmasin).
@@ -138,6 +143,7 @@ class AppServices {
     microscopy.resetInMemory();
     partners.resetInMemory();
     reading.resetInMemory();
+    toifa.resetInMemory();
     await packs.removeAll();
     settings.resetToDefaults(systemLocales);
   }

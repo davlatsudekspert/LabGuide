@@ -26,6 +26,7 @@ import 'features/packs/packs_controller.dart';
 import 'features/partners/partners_controller.dart';
 import 'features/qc/qc_controller.dart';
 import 'features/settings/settings_controller.dart';
+import 'features/toifa/toifa_controller.dart';
 
 const _appVersion = '0.1.0';
 
@@ -90,6 +91,7 @@ AppServices createServices({
     backend: server,
     access: AccessController(server),
     partners: PartnersController(store, server),
+    toifa: ToifaController(store, bundle: bundle),
   )..watchAccess();
 }
 

@@ -3305,6 +3305,506 @@ class AppLocalizationsRu extends AppLocalizations {
   String get learnExamSub => 'Время, тема и вопросы';
 
   @override
+  String toifaTopic(String topic) {
+    String _temp0 = intl.Intl.selectLogic(topic, {
+      'safety_ethics': 'Безопасность и этика',
+      'qc_lab_management': 'Контроль качества и управление',
+      'preanalytics': 'Преаналитика',
+      'hematology_cells': 'Клетки крови',
+      'hemopoiesis_leukemia': 'Кроветворение и лейкозы',
+      'anemias': 'Анемии',
+      'hemostasis': 'Гемостаз',
+      'biochemistry_proteins_enzymes': 'Белки и ферменты',
+      'carbohydrates_diabetes': 'Углеводы и диабет',
+      'lipids': 'Липиды',
+      'liver_pigments': 'Печень и пигменты',
+      'kidney_nitrogen': 'Почки и азотистый обмен',
+      'water_electrolytes_acid_base':
+          'Водно-электролитный и кислотно-основный баланс',
+      'minerals_vitamins': 'Минералы и витамины',
+      'hormones': 'Гормоны',
+      'urinalysis': 'Анализ мочи',
+      'stool_coprology': 'Копрология',
+      'csf_body_fluids': 'Ликвор и биологические жидкости',
+      'sputum_tb': 'Мокрота и туберкулёз',
+      'cytology_gyn': 'Цитология',
+      'std_microscopy': 'Микроскопия при ИППП',
+      'parasitology': 'Паразитология',
+      'immunology_serology': 'Иммунология и серология',
+      'molecular_pcr': 'Молекулярная диагностика (ПЦР)',
+      'tumor_markers': 'Онкомаркеры',
+      'cardiac_markers': 'Кардиомаркеры',
+      'orphan_screening': 'Скрининг и орфанные болезни',
+      'other': 'Другие темы',
+    });
+    return '$_temp0';
+  }
+
+  @override
+  String get toifaTitle => 'Подготовка к экзамену на категорию';
+
+  @override
+  String get toifaSubtitle => 'Клиническая лабораторная диагностика (КЛД)';
+
+  @override
+  String get toifaEyebrow => 'КЛД · категория';
+
+  @override
+  String get toifaEntryBody =>
+      'Вопросы из официального списка аттестации: тест из 50 вопросов, практика по темам, устный билет и работа над ошибками.';
+
+  @override
+  String get toifaEntryBodyShort =>
+      'Тест, устный билет и работа над ошибками — по официальному списку.';
+
+  @override
+  String get toifaEntryTagTest => 'Тест · 50 вопросов';
+
+  @override
+  String get toifaEntryTagOral => 'Устно · 5 вопросов';
+
+  @override
+  String toifaEntryTestActive(int done, int total) {
+    return 'Тест продолжается: $done / $total ответов';
+  }
+
+  @override
+  String toifaEntryTicketActive(int done, int total) {
+    return 'Устный билет продолжается: $done / $total';
+  }
+
+  @override
+  String get toifaOpen => 'Начать подготовку';
+
+  @override
+  String get toifaContinue => 'Продолжить';
+
+  @override
+  String get toifaUzbekOnly => 'Вопросы на узбекском языке';
+
+  @override
+  String get toifaUzbekNotice =>
+      'Вопросы аттестации показаны на узбекском, как в официальном списке; кнопки и подсказки — на языке интерфейса.';
+
+  @override
+  String get toifaLoadError => 'Не удалось открыть банк вопросов';
+
+  @override
+  String get toifaYourCategory => 'Ваша категория';
+
+  @override
+  String get toifaCatSecond => '3–2 категория';
+
+  @override
+  String get toifaCatFirst => '1 категория';
+
+  @override
+  String get toifaCatHighest => 'Высшая категория';
+
+  @override
+  String get toifaCategoryHint =>
+      'Устный билет составляется из списка этой категории. Тестовые вопросы общие для всех категорий.';
+
+  @override
+  String get toifaReadyTest => 'Тест';
+
+  @override
+  String get toifaReadyOral => 'Устно';
+
+  @override
+  String get toifaPrepare => 'Подготовка';
+
+  @override
+  String get toifaTestTitle => 'Тест на категорию';
+
+  @override
+  String toifaTestRowSub(int count, int bank) {
+    return '$count случайных вопросов · в банке $bank';
+  }
+
+  @override
+  String get toifaPracticeTitle => 'Практика по темам';
+
+  @override
+  String toifaPracticeRowSub(int count) {
+    return '$count тем · ключ и пояснение сразу после ответа';
+  }
+
+  @override
+  String get toifaOralTitle => 'Устный билет';
+
+  @override
+  String toifaOralRowSub(String category, int count) {
+    return '$category: 5 из $count вопросов';
+  }
+
+  @override
+  String get toifaOralRowPick => 'Сначала выберите категорию';
+
+  @override
+  String toifaOralRowActive(int done, int total) {
+    return 'Продолжается: оценено $done / $total';
+  }
+
+  @override
+  String get toifaMistakesTitle => 'Работа над ошибками';
+
+  @override
+  String toifaMistakesRowSub(int tests, int oral) {
+    return 'Ошибки в тесте: $tests · устно «не знал»: $oral';
+  }
+
+  @override
+  String get toifaMistakesRowEmpty => 'Пока ошибок нет';
+
+  @override
+  String get toifaProgressTitle => 'Прогресс';
+
+  @override
+  String get toifaProgressRowSub => 'Результаты по темам и готовность';
+
+  @override
+  String get toifaAboutTitle => 'Источник и проверка';
+
+  @override
+  String get toifaListSource =>
+      'Источник: официальный список вопросов аттестации (КЛД, 119)';
+
+  @override
+  String toifaAboutList(int tests, int oral) {
+    return 'В списке $tests тестовых и $oral устных вопросов (повторы между категориями объединены).';
+  }
+
+  @override
+  String toifaAboutKeys(int disputed, int ambiguous) {
+    return 'Ключ — ответ, отмеченный в списке; баллы считаются по нему. LabGuide считает ключ спорным в $disputed вопросах и неоднозначным в $ambiguous — там показаны пояснение и источник.';
+  }
+
+  @override
+  String toifaAboutKeyless(int count) {
+    return 'В $count вопросах ключ в списке не отмечен — они не включены в тест и практику.';
+  }
+
+  @override
+  String toifaAboutOral(int ready, int total) {
+    return 'Планы устных ответов подготовлены LabGuide и ждут проверки специалистом ($ready / $total планов с источниками).';
+  }
+
+  @override
+  String toifaTestSubtitle(int count) {
+    return '$count вопросов · случайно из официального списка';
+  }
+
+  @override
+  String get toifaFormatTitle => 'Формат';
+
+  @override
+  String toifaFormatStep1(int count, int bank) {
+    return 'Случайные $count из $bank вопросов банка.';
+  }
+
+  @override
+  String get toifaFormatStep2 =>
+      'В каждом вопросе один ответ; варианты в порядке списка.';
+
+  @override
+  String get toifaFormatStep3 =>
+      'В конце разбор ошибок: официальный ключ и пояснение LabGuide.';
+
+  @override
+  String get toifaTimeLabel => 'Время, минут';
+
+  @override
+  String get toifaNoTime => 'Без времени';
+
+  @override
+  String get toifaTimeHelper =>
+      'Официальный лимит времени в приложении не задан — выберите сами или оставьте пустым.';
+
+  @override
+  String get toifaTimeError => 'Введите от 1 до 240 минут или оставьте пустым';
+
+  @override
+  String get toifaPassLabel => 'Проходной порог, %';
+
+  @override
+  String get toifaNoPass => 'Не задан';
+
+  @override
+  String get toifaPassHelper =>
+      'Это выбранный вами порог, а не официальный проходной балл.';
+
+  @override
+  String get toifaPassError => 'Введите от 1 до 100 % или оставьте пустым';
+
+  @override
+  String get toifaScoringNotice =>
+      'Баллы считаются по официальному ключу — на экзамене требуется именно он. Для спорных ключей в результатах есть пояснение LabGuide.';
+
+  @override
+  String get toifaTestStart => 'Начать тест';
+
+  @override
+  String get toifaPracticeSubtitle => 'Ключ сразу после ответа';
+
+  @override
+  String toifaPracticeMixed(int count) {
+    return 'Вперемешку: $count вопросов';
+  }
+
+  @override
+  String get toifaPracticeMistakes => 'Повторить ошибки';
+
+  @override
+  String get toifaBackToTopics => 'Темы';
+
+  @override
+  String get toifaPracticeRight => 'Ваш ответ совпадает с официальным ключом.';
+
+  @override
+  String get toifaPracticeWrong =>
+      'Ваш ответ не совпадает с официальным ключом.';
+
+  @override
+  String toifaListNumber(int number) {
+    return '№ $number';
+  }
+
+  @override
+  String get toifaOfficialKey => 'Официальный ключ';
+
+  @override
+  String get toifaLabGuideNote => 'Пояснение LabGuide';
+
+  @override
+  String get toifaVerdictDisputed => 'Ключ спорный';
+
+  @override
+  String get toifaVerdictAmbiguous => 'Вопрос неоднозначный';
+
+  @override
+  String toifaSuggested(String options) {
+    return 'По мнению LabGuide: $options';
+  }
+
+  @override
+  String get toifaScoredByOfficial =>
+      'Баллы считаются по официальному ключу — на экзамене требуется именно этот ответ.';
+
+  @override
+  String get toifaNoOfficialKey =>
+      'Ключ в списке не отмечен — вопрос не оценивается.';
+
+  @override
+  String get toifaNoteNoSource =>
+      'Источник для пояснения не указан (не проверено).';
+
+  @override
+  String get toifaRelatedCards => 'Связанные карточки';
+
+  @override
+  String toifaOralSubtitle(int count) {
+    return '$count вопросов · подготовка и самооценка';
+  }
+
+  @override
+  String toifaOralPool(String category, int count) {
+    return '$category: в списке $count вопросов';
+  }
+
+  @override
+  String get toifaOralHowTitle => 'Как это работает';
+
+  @override
+  String toifaOralStep1(int count) {
+    return 'Случайные $count вопросов из списка вашей категории.';
+  }
+
+  @override
+  String get toifaOralStep2 => 'Подготовьте ответы — мысленно или письменно.';
+
+  @override
+  String get toifaOralStep3 =>
+      'Посмотрите план ответа и оцените себя: знал, частично или не знал.';
+
+  @override
+  String get toifaPlanDisclaimer =>
+      'Планы ответов подготовлены LabGuide и ждут проверки специалистом. Это не официальные ответы.';
+
+  @override
+  String get toifaPickCategoryFirst => 'Сначала выберите категорию';
+
+  @override
+  String get toifaDrawTicket => 'Взять билет';
+
+  @override
+  String get toifaTicketTitle => 'Ваш билет';
+
+  @override
+  String get toifaPrepHint =>
+      'Подготовьте ответ на каждый вопрос. Затем откройте планы ответов по одному и оцените себя.';
+
+  @override
+  String get toifaShowPlans => 'Посмотреть план ответа';
+
+  @override
+  String get toifaShowPlan => 'Посмотреть план ответа';
+
+  @override
+  String get toifaNewTicket => 'Новый билет';
+
+  @override
+  String get toifaNewTicketBody =>
+      'Вместо текущего билета будет взято 5 новых вопросов. Поставленные оценки сохранятся.';
+
+  @override
+  String get toifaRevealHint =>
+      'Сначала вспомните или запишите ответ, затем откройте план.';
+
+  @override
+  String get toifaPlanTitle => 'План ответа';
+
+  @override
+  String get toifaPlanPending =>
+      'Подготовлено LabGuide, ждёт проверки специалистом';
+
+  @override
+  String get toifaPlanMissing => 'План для этого вопроса ещё не подготовлен.';
+
+  @override
+  String get toifaPlanNotChecked => 'План не полностью проверен по источникам.';
+
+  @override
+  String get toifaReferenceTitle => 'Референсный интервал';
+
+  @override
+  String get toifaCutoffTitle => 'Диагностический порог';
+
+  @override
+  String get toifaPitfallsTitle => 'Устаревшее / частая ошибка';
+
+  @override
+  String get toifaRateTitle => 'Оцените себя';
+
+  @override
+  String get toifaRateHint =>
+      'Оценка хранится только на этом устройстве и видна в «Работе над ошибками».';
+
+  @override
+  String get toifaRateKnew => 'Знал';
+
+  @override
+  String get toifaRatePartial => 'Частично';
+
+  @override
+  String get toifaRateUnknown => 'Не знал';
+
+  @override
+  String get toifaTicketDone => 'Билет завершён';
+
+  @override
+  String toifaTicketSummary(int knew, int partial, int unknown) {
+    return 'Знал: $knew · частично: $partial · не знал: $unknown';
+  }
+
+  @override
+  String get toifaRatingsSaved =>
+      'Оценки сохранены. Нажмите вопрос, чтобы снова открыть план и изменить оценку.';
+
+  @override
+  String get toifaRatingSaved => 'Оценка сохранена';
+
+  @override
+  String get toifaMistakesSubtitle => 'Ошибки теста и устные вопросы';
+
+  @override
+  String get toifaMistakesEmpty => 'Пока ошибок нет';
+
+  @override
+  String get toifaMistakesEmptyBody =>
+      'Здесь собираются вопросы с ошибками из теста и практики, а также устные вопросы с оценкой «не знал».';
+
+  @override
+  String toifaMistakesTests(int count) {
+    return 'Ошибки теста · $count';
+  }
+
+  @override
+  String toifaMistakesOralUnknown(int count) {
+    return 'Устно: не знал · $count';
+  }
+
+  @override
+  String toifaMistakesOralPartial(int count) {
+    return 'Устно: частично · $count';
+  }
+
+  @override
+  String toifaMoreMistakes(int count) {
+    return 'Ещё $count ошибок — отработайте их через «Повторить ошибки».';
+  }
+
+  @override
+  String get toifaNothingHere => 'Здесь пока ничего нет.';
+
+  @override
+  String get toifaProgressSubtitle => 'Результаты по темам и готовность';
+
+  @override
+  String get toifaReadyTitle => 'Примерная готовность';
+
+  @override
+  String get toifaReadyCaption =>
+      'Среднее теста и устной части. Расчёт LabGuide — не официальная оценка.';
+
+  @override
+  String toifaReadyTestDetail(int done, int total) {
+    return 'Тест: освоено $done / $total вопросов';
+  }
+
+  @override
+  String toifaReadyOralDetail(int done, int total) {
+    return 'Устно: $done / $total «знал»';
+  }
+
+  @override
+  String get toifaProgressPickCategory =>
+      'Устный результат считается по списку вашей категории — выберите категорию:';
+
+  @override
+  String get toifaRecentTests => 'Последние тесты';
+
+  @override
+  String get toifaPassedShort => 'Порог пройден';
+
+  @override
+  String get toifaNotPassedShort => 'Порог не пройден';
+
+  @override
+  String get toifaByTopicNote =>
+      'Сначала самые слабые темы. Тест — вопросы с последним верным ответом; устно — с оценкой «знал».';
+
+  @override
+  String toifaBarTest(int done, int total) {
+    return 'Тест: $done / $total';
+  }
+
+  @override
+  String toifaBarOral(int done, int total) {
+    return 'Устно: $done / $total';
+  }
+
+  @override
+  String examPassMet(int percent) {
+    return 'Порог пройден (≥$percent%)';
+  }
+
+  @override
+  String examPassMissed(int percent) {
+    return 'Порог не достигнут ($percent%)';
+  }
+
+  @override
   String get learnLessonPlan => 'План занятия';
 
   @override

@@ -11,6 +11,7 @@ import '../../l10n/gen/app_localizations.dart';
 import '../auth/ui/welcome_screen.dart';
 import '../content/content_model.dart';
 import '../content/ui/content_widgets.dart';
+import '../toifa/toifa_screens.dart';
 import 'exam_screens.dart';
 import 'quiz_session.dart';
 
@@ -23,7 +24,11 @@ class LearnScreen extends StatelessWidget {
     final content = context.services.content;
     // Paket yuklangach savollar soni yangilanadi (avval 0 bo'lib qolardi).
     return ListenableBuilder(
-      listenable: Listenable.merge([content, context.services.exams]),
+      listenable: Listenable.merge([
+        content,
+        context.services.exams,
+        context.services.settings,
+      ]),
       builder: (context, _) =>
           _page(context, l, content.pack?.quiz.length ?? 0),
     );
@@ -44,6 +49,8 @@ class LearnScreen extends StatelessWidget {
             onPressed: () => openInTab(context, '/tests'),
           ),
         ),
+        // Faqat O'zbekiston foydalanuvchilariga (til uz yoki mintaqa UZ).
+        if (toifaVisible(context)) const ToifaEntryCard(),
         // Dars mavzulari kontent paketidan keladi (hozircha bo'sh — domla
         // materiallari kelib, tekshirilgach qo'shiladi).
         ContentGate(
