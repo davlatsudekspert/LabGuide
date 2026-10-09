@@ -19,6 +19,10 @@ Qoidalar:
 - ``note`` — LabGuide'ning qisqa tushuntirishi: **draft**, mutaxassis
   tekshiruvi kutilmoqda; manbasiz raqam yo'q.
 - Litsenziyali rasm topilmagan tur (``gap``) halol ko'rsatiladi.
+- ``label_note`` — mustaqil tekshiruvda (2026-10-09, docs/MICROSCOPY_AUDIT_
+  2026-10-09.md) nomi faqat manba izohiga tayanadigan, ko'rinishi namunaviy
+  bo'lmagan rasm: ilova “nomi manba izohi bo'yicha” deb ko'rsatadi va bunday
+  rasm “Bu nima?” mashqiga kirmaydi.
 """
 import hashlib
 import json
@@ -470,14 +474,20 @@ ENTITIES = [
 ]
 
 
-def commons(title, author, license_, original, date, credit="Own work"):
-    """Wikimedia Commons fayli (metama'lumot Commons API'dan)."""
+def commons(title, author, license_, original, date, credit="Own work",
+            author_url=None):
+    """Wikimedia Commons fayli (metama'lumot Commons API'dan).
+
+    ``author_url`` — muallif sahifasi: Commons foydalanuvchi sahifasi (sahifa
+    yaratilmagan bo'lsa — uning yuklagan fayllari ro'yxati) yoki jurnal
+    maqolasi (DOI)."""
     name = title.removeprefix("File:").replace(" ", "_")
     return {
         "provider": "commons",
         "source_title": title,
         "source_page": "https://commons.wikimedia.org/wiki/File:" + name,
         "author": author,
+        "author_url": author_url,
         "credit": credit,
         "license": license_,
         "license_url": LICENSES[license_],
@@ -493,6 +503,8 @@ def phil(pid, provider, date, original, lores):
         "source_title": f"CDC PHIL ID#{pid}",
         "source_page": f"https://wwwn.cdc.gov/phil/Details.aspx?pid={pid}",
         "author": provider,
+        # CDC PHIL fotografi uchun alohida muallif sahifasi yo'q.
+        "author_url": None,
         "credit": "CDC Public Health Image Library (PHIL)",
         "license": "CDC PHIL",
         "license_url": LICENSES["CDC PHIL"],
@@ -501,6 +513,11 @@ def phil(pid, provider, date, original, lores):
         "original_size": list(original),
         "lores_url": lores,
     }
+
+
+def per_source(uz, ru, en):
+    """``label_note``: nom manba izohi bo'yicha — nega shubhali."""
+    return t(uz, ru, en)
 
 
 def cap(lang, text, uz, ru, en):
@@ -517,7 +534,8 @@ IMAGES = [
     {
         "id": "u-rbc-1", "entity": "urine-rbc", "quiz": "field",
         **commons("File:MicroHematuria.JPG", "Bobjgalindo", "CC BY-SA 4.0",
-                  (1743, 1501), "2005-02-19"),
+                  (1743, 1501), "2005-02-19",
+                  author_url="https://commons.wikimedia.org/wiki/User:Bobjgalindo"),
         "file_url": "https://upload.wikimedia.org/wikipedia/commons/2/28/MicroHematuria.JPG",
         # Asl fayl (Commons API sha1 bilan bir xil nusxa) → 1600 px.
         "fetch": "original",
@@ -536,7 +554,8 @@ IMAGES = [
     {
         "id": "u-rbc-2", "entity": "urine-rbc", "quiz": "field",
         **commons("File:Haematuria.jpg", "J3D3", "CC BY-SA 3.0",
-                  (1532, 1336), "2010-07-08"),
+                  (1532, 1336), "2010-07-08",
+                  author_url="https://commons.wikimedia.org/wiki/User:J3D3"),
         "file_url": "https://upload.wikimedia.org/wikipedia/commons/0/0c/Haematuria.jpg",
         "caption": cap(
             "en",
@@ -551,7 +570,8 @@ IMAGES = [
         "id": "u-wbc-1", "entity": "urine-wbc", "quiz": "field",
         **commons("File:Plenty of pus cells in Urine Microscopy.jpg",
                   "Ajay Kumar Chaurasiya", "CC BY-SA 4.0", (4000, 2250),
-                  "2021-12-08"),
+                  "2021-12-08",
+                  author_url="https://commons.wikimedia.org/wiki/User:Ajay_Kumar_Chaurasiya"),
         "file_url": "https://upload.wikimedia.org/wikipedia/commons/2/20/Plenty_of_pus_cells_in_Urine_Microscopy.jpg",
         "magnification": "400X",
         "caption": cap(
@@ -567,7 +587,8 @@ IMAGES = [
         "id": "u-wbc-2", "entity": "urine-wbc", "quiz": "field",
         **commons("File:Pus cells (dead leukocytes) in urine microscopy.jpg",
                   "Ajay Kumar Chaurasiya", "CC BY-SA 4.0", (3264, 2448),
-                  "2017-09-30"),
+                  "2017-09-30",
+                  author_url="https://commons.wikimedia.org/wiki/User:Ajay_Kumar_Chaurasiya"),
         "file_url": "https://upload.wikimedia.org/wikipedia/commons/d/da/Pus_cells_%28dead_leukocytes%29_in_urine_microscopy.jpg",
         "caption": cap(
             "en",
@@ -599,7 +620,8 @@ IMAGES = [
             "File:Pus cells, Epithelial cells, RBCs and Bacteria in Urine "
             "Microscopy.jpg",
             "Ajay Kumar Chaurasiya", "CC BY-SA 4.0", (4000, 2250),
-            "2021-12-08"),
+            "2021-12-08",
+                  author_url="https://commons.wikimedia.org/wiki/User:Ajay_Kumar_Chaurasiya"),
         "file_url": "https://upload.wikimedia.org/wikipedia/commons/7/74/Pus_cells%2C_Epithelial_cells%2C_RBCs_and_Bacteria_in_Urine_Microscopy.jpg",
         "magnification": "800X",
         "caption": cap(
@@ -618,7 +640,8 @@ IMAGES = [
     {
         "id": "u-epi-2", "entity": "urine-epi-mixed", "quiz": None,
         **commons("File:UrinaryInfection.jpg", "J3D3", "CC BY-SA 3.0",
-                  (1561, 1371), "2010-10-12"),
+                  (1561, 1371), "2010-10-12",
+                  author_url="https://commons.wikimedia.org/wiki/User:J3D3"),
         "file_url": "https://upload.wikimedia.org/wikipedia/commons/c/c6/UrinaryInfection.jpg",
         "caption": cap(
             "en",
@@ -636,9 +659,30 @@ IMAGES = [
         ),
     },
     {
-        "id": "u-rte-1", "entity": "urine-rte", "quiz": "field",
+        "id": "u-rte-1", "entity": "urine-rte", "quiz": None,
+        # Audit 2026-10-09: hujayralar yirik, burmali, yadrosi aniq emas;
+        # “poorly collected sample” izohi kanalcha (buyrak) emas, ifloslanish
+        # epiteliysiga ishora qilishi mumkin → mashqdan chiqarildi.
+        "label_note": per_source(
+            "Nomi manba izohi bo‘yicha. Hujayralar ko‘rinishi buyrak "
+            "kanalchalari epiteliysi uchun namunaviy emas (yirik, burmali, "
+            "yadrosi aniq ko‘rinmaydi), izohdagi «noto‘g‘ri yig‘ilgan namuna» "
+            "esa yassi yoki o‘tuvchi epiteliy bilan ifloslanishni ham "
+            "anglatishi mumkin. Mashqqa kiritilmagan.",
+            "Название — по подписи источника. Вид клеток нетипичен для "
+            "почечного канальцевого эпителия (крупные, складчатые, ядро "
+            "плохо различимо), а «неправильно собранная проба» может "
+            "означать и примесь плоского или переходного эпителия. В "
+            "упражнение не включено.",
+            "Named per the source caption. The cells do not look typical of "
+            "renal tubular epithelium (large, folded, nucleus not clearly "
+            "seen), and a “poorly collected sample” may also mean "
+            "contamination by squamous or transitional cells. Not used in "
+            "the quiz.",
+        ),
         **commons("File:RTcells.JPG", "Bobjgalindo", "CC BY-SA 4.0",
-                  (1443, 1230), "2005-02-17"),
+                  (1443, 1230), "2005-02-17",
+                  author_url="https://commons.wikimedia.org/wiki/User:Bobjgalindo"),
         "file_url": "https://upload.wikimedia.org/wikipedia/commons/8/85/RTcells.JPG",
         "caption": cap(
             "en",
@@ -657,7 +701,8 @@ IMAGES = [
         "id": "u-cast-hyaline-1", "entity": "cast-hyaline", "quiz": "field",
         **commons("File:Hyaline Cast in Urine Microscopy.jpg",
                   "Ajay Kumar Chaurasiya", "CC BY-SA 4.0", (3264, 2448),
-                  "2017-08-16"),
+                  "2017-08-16",
+                  author_url="https://commons.wikimedia.org/wiki/User:Ajay_Kumar_Chaurasiya"),
         "file_url": "https://upload.wikimedia.org/wikipedia/commons/b/b6/Hyaline_Cast_in_Urine_Microscopy.jpg",
         "caption": cap(
             "en",
@@ -682,7 +727,8 @@ IMAGES = [
         "id": "u-cast-granular-1", "entity": "cast-granular", "quiz": "field",
         **commons("File:Granular Casts in Urine Microscopy.jpg",
                   "Ajay Kumar Chaurasiya", "CC BY 4.0", (4000, 2250),
-                  "2023-12-20"),
+                  "2023-12-20",
+                  author_url="https://commons.wikimedia.org/wiki/User:Ajay_Kumar_Chaurasiya"),
         "file_url": "https://upload.wikimedia.org/wikipedia/commons/b/b5/Granular_Casts_in_Urine_Microscopy.jpg",
         "caption": cap(
             "en",
@@ -712,7 +758,8 @@ IMAGES = [
             credit="Mohsenin V. Practical approach to detection and "
             "management of acute kidney injury in critically ill patient. "
             "J Intensive Care. 2017;5:57. doi:10.1186/s40560-017-0251-y "
-            "(PMC5603084)"),
+            "(PMC5603084)",
+                  author_url="https://doi.org/10.1186/s40560-017-0251-y"),
         "file_url": "https://upload.wikimedia.org/wikipedia/commons/8/87/RTE_cast%2C_muddy_granular_cast%2C_WBC_cast_and_RBC_cast_in_urine.jpg",
         "caption": cap(
             "en",
@@ -751,12 +798,33 @@ IMAGES = [
     },
     # ---------------------------------------------------- siydik: kristallar
     {
-        "id": "u-cryst-caox-1", "entity": "crystal-caox", "quiz": "field",
+        "id": "u-cryst-caox-1", "entity": "crystal-caox", "quiz": None,
+        # Audit 2026-10-09: yirik, to'da bo'lib yotgan, qatlamli oval
+        # tanachalar — monogidratning kam uchraydigan ko'rinishi; “gantel” /
+        # “konvert” shakli yo'q → mashqdan chiqarildi.
+        "label_note": per_source(
+            "Nomi manba izohi bo‘yicha (kalsiy oksalat monogidrat). Bu yerda "
+            "kristallar yirik, to‘da bo‘lib yotgan, qatlamli oval tanachalar "
+            "ko‘rinishida — odatiy «gantel» yoki «konvert» shakli yo‘q; "
+            "polyarizatsiyasiz boshqa ovoid tuzilmalardan ajratish qiyin. "
+            "Mashqqa kiritilmagan.",
+            "Название — по подписи источника (моногидрат оксалата кальция). "
+            "Здесь кристаллы — крупные слоистые овальные тельца, лежащие "
+            "скоплением, без типичной формы «гантели» или «конверта»; без "
+            "поляризации их трудно отличить от других овоидных структур. В "
+            "упражнение не включено.",
+            "Named per the source caption (calcium oxalate monohydrate). The "
+            "crystals here are large, clustered, layered ovals rather than "
+            "the usual dumbbell or envelope forms; without polarisation they "
+            "are hard to tell from other ovoid structures. Not used in the "
+            "quiz.",
+        ),
         **commons(
             "File:Calcium Oxalate Monohydrate Crystals in Urine "
             "Microscopy.jpg",
             "Ajay Kumar Chaurasiya", "CC BY-SA 4.0", (4000, 3000),
-            "2021-12-13"),
+            "2021-12-13",
+                  author_url="https://commons.wikimedia.org/wiki/User:Ajay_Kumar_Chaurasiya"),
         "file_url": "https://upload.wikimedia.org/wikipedia/commons/8/86/Calcium_Oxalate_Monohydrate_Crystals_in_Urine_Microscopy.jpg",
         "magnification": "1600X",
         "caption": cap(
@@ -774,7 +842,8 @@ IMAGES = [
     {
         "id": "u-cryst-uric-1", "entity": "crystal-uric", "quiz": "field",
         **commons("File:UricAcid.jpg", "J3D3", "CC BY-SA 3.0", (1597, 1536),
-                  "2010-10-11"),
+                  "2010-10-11",
+                  author_url="https://commons.wikimedia.org/wiki/User:J3D3"),
         "file_url": "https://upload.wikimedia.org/wikipedia/commons/f/f8/UricAcid.jpg",
         "caption": cap(
             "en",
@@ -793,7 +862,8 @@ IMAGES = [
             "File:Кристаллы трипельфосфата в форме гробовых крышек и призм "
             "на фоне аморфных фосфатов. Осадок мочи. Нативный препарат. "
             "x400.jpg",
-            "Vladimir064", "CC BY 4.0", (1810, 1741), "2017-10-30"),
+            "Vladimir064", "CC BY 4.0", (1810, 1741), "2017-10-30",
+                  author_url="https://commons.wikimedia.org/wiki/Special:ListFiles/Vladimir064"),
         "file_url": "https://upload.wikimedia.org/wikipedia/commons/3/32/%D0%9A%D1%80%D0%B8%D1%81%D1%82%D0%B0%D0%BB%D0%BB%D1%8B_%D1%82%D1%80%D0%B8%D0%BF%D0%B5%D0%BB%D1%8C%D1%84%D0%BE%D1%81%D1%84%D0%B0%D1%82%D0%B0_%D0%B2_%D1%84%D0%BE%D1%80%D0%BC%D0%B5_%D0%B3%D1%80%D0%BE%D0%B1%D0%BE%D0%B2%D1%8B%D1%85_%D0%BA%D1%80%D1%8B%D1%88%D0%B5%D0%BA_%D0%B8_%D0%BF%D1%80%D0%B8%D0%B7%D0%BC_%D0%BD%D0%B0_%D1%84%D0%BE%D0%BD%D0%B5_%D0%B0%D0%BC%D0%BE%D1%80%D1%84%D0%BD%D1%8B%D1%85_%D1%84%D0%BE%D1%81%D1%84%D0%B0%D1%82%D0%BE%D0%B2._%D0%9E%D1%81%D0%B0%D0%B4%D0%BE%D0%BA_%D0%BC%D0%BE%D1%87%D0%B8._%D0%9D%D0%B0%D1%82%D0%B8%D0%B2%D0%BD%D1%8B%D0%B9_%D0%BF%D1%80%D0%B5%D0%BF%D0%B0%D1%80%D0%B0%D1%82._x400.jpg",
         "magnification": "x400",
         "stain": stain("Native preparation",
@@ -820,7 +890,8 @@ IMAGES = [
         "id": "u-cryst-cystine-1", "entity": "crystal-cystine",
         "quiz": "field",
         **commons("File:Cystine in Urine.jpg", "J3D3", "CC BY-SA 4.0",
-                  (2592, 1944), "2019-04-17"),
+                  (2592, 1944), "2019-04-17",
+                  author_url="https://commons.wikimedia.org/wiki/User:J3D3"),
         "file_url": "https://upload.wikimedia.org/wikipedia/commons/a/aa/Cystine_in_Urine.jpg",
         "caption": cap(
             "es",
@@ -838,7 +909,8 @@ IMAGES = [
             "platelets (dot like bodies) in Wright's stained peripheral blood "
             "smear (PBS) microscopy.jpg",
             "Ajay Kumar Chaurasiya", "CC BY-SA 4.0", (3264, 2448),
-            "2017-08-02"),
+            "2017-08-02",
+                  author_url="https://commons.wikimedia.org/wiki/User:Ajay_Kumar_Chaurasiya"),
         "file_url": "https://upload.wikimedia.org/wikipedia/commons/0/0b/WBC_%28neutrophil%29_at_centre%2C_numerous_erythrocytes_and_platelets_%28dot_like_bodies%29_in_Wright%27s_stained_peripheral_blood_smear_%28PBS%29_microscopy.jpg",
         # Bo'yoq fayl nomida: “…in Wright's stained peripheral blood smear”.
         "stain": stain("Wright's stain", "Rayt bo‘yog‘i", "Окраска по Райту",
@@ -980,7 +1052,24 @@ IMAGES = [
         ),
     },
     {
-        "id": "b-eos-1", "entity": "eosinophil", "quiz": "arrowhead",
+        "id": "b-eos-1", "entity": "eosinophil", "quiz": None,
+        # Audit 2026-10-09: strelkadagi hujayra donachalari bu (1972-yil)
+        # slaydda to'q sariq-qizil emas, binafsha ko'rinadi — bazofil bilan
+        # adashtirish mumkin → mashqdan chiqarildi.
+        "label_note": per_source(
+            "Nomi manba (CDC) izohi bo‘yicha. Bu eski slaydda strelkadagi "
+            "hujayra donachalari eozinofilga xos to‘q sariq-qizil emas, "
+            "binafsha rangda ko‘rinadi — bazofil bilan adashtirish oson. "
+            "Mashqqa kiritilmagan.",
+            "Название — по подписи источника (CDC). На этом старом препарате "
+            "гранулы клетки у стрелки выглядят не оранжево-красными, как "
+            "типично для эозинофила, а фиолетовыми — её легко спутать с "
+            "базофилом. В упражнение не включено.",
+            "Named per the source (CDC) caption. On this old slide the "
+            "granules of the cell at the arrowhead look purple rather than "
+            "the typical eosinophil orange-red, so it is easily confused "
+            "with a basophil. Not used in the quiz.",
+        ),
         **phil("18907", "CDC/ Dr. F. Gilbert", "1972", (3045, 2005),
                "https://wwwn.cdc.gov/phil///PHIL_Images/18907/18907_lores.jpg"),
         "file_url": "https://wwwn.cdc.gov/phil///PHIL_Images/18907/18907.tif",
@@ -1061,7 +1150,8 @@ IMAGES = [
             "CC BY 2.0", (902, 671), "2008-07-08",
             credit="Abetalipoproteinemia: two case reports and literature "
             "review. Orphanet Journal of Rare Diseases 2008, 3:19. "
-            "doi:10.1186/1750-1172-3-19"),
+            "doi:10.1186/1750-1172-3-19",
+                  author_url="https://doi.org/10.1186/1750-1172-3-19"),
         "file_url": "https://upload.wikimedia.org/wikipedia/commons/e/e5/Acanthocytosis.jpg",
         "caption": cap(
             "en",
@@ -1079,7 +1169,8 @@ IMAGES = [
         "id": "b-acanth-2", "entity": "acanthocyte", "quiz": "centre",
         **commons("File:Acanthocyte smear 2009-10-08.JPG",
                   "Paulo Henrique Orlandi Mourao", "CC BY-SA 3.0",
-                  (3072, 2304), "2009-10-08"),
+                  (3072, 2304), "2009-10-08",
+                  author_url="https://commons.wikimedia.org/wiki/Special:ListFiles/Paulo_Mourao"),
         "file_url": "https://upload.wikimedia.org/wikipedia/commons/c/cc/Acanthocyte_smear_2009-10-08.JPG",
         # Sahifa matni: “Peripheral Blood / May-Grunwald Giemsa (MGG) stain”.
         "stain": stain("May-Grunwald Giemsa (MGG) stain",
@@ -1222,6 +1313,11 @@ def check():
             errors.append(f"{i['id']}: CDC credit")
         if not i["caption"]["text"].strip():
             errors.append(f"{i['id']}: caption")
+        url = i.get("author_url")
+        if i["provider"] == "commons" and not (url or "").startswith("https://"):
+            errors.append(f"{i['id']}: author_url")
+        if i.get("label_note") and i["quiz"] is not None:
+            errors.append(f"{i['id']}: label_note image in quiz")
     if errors:
         sys.exit("\n".join(errors))
 
@@ -1249,6 +1345,7 @@ def build():
         rec["sha256"] = sha256(path)
         rec.setdefault("magnification", None)
         rec.setdefault("stain", None)
+        rec.setdefault("label_note", None)
         images.append(rec)
     if total > 6_300_000:
         sys.exit(f"images too large: {total} bytes")

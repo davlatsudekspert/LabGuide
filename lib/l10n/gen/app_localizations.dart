@@ -3412,6 +3412,24 @@ abstract class AppLocalizations {
   /// **'Author'**
   String get micAuthor;
 
+  /// No description provided for @micAuthorPage.
+  ///
+  /// In en, this message translates to:
+  /// **'Author page'**
+  String get micAuthorPage;
+
+  /// No description provided for @micLabelBySource.
+  ///
+  /// In en, this message translates to:
+  /// **'Named per the source caption'**
+  String get micLabelBySource;
+
+  /// No description provided for @micLabelNoQuiz.
+  ///
+  /// In en, this message translates to:
+  /// **'Not used in the quiz'**
+  String get micLabelNoQuiz;
+
   /// No description provided for @micCredit.
   ///
   /// In en, this message translates to:

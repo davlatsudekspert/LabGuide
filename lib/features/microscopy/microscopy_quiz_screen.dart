@@ -166,7 +166,7 @@ class _QuizSetup extends StatelessWidget {
     final available = atlas.quizImages(sectionId: scope).length;
     final count = math.min(available, MicroQuizSession.defaultLength);
     final mosaic = [
-      for (final id in const ['b-eos-1', 'u-cryst-caox-1', 'p-mal-thick-1'])
+      for (final id in const ['b-baso-1', 'u-cryst-uric-1', 'p-mal-thick-1'])
         ?atlas.image(id),
     ];
     return ListenableBuilder(

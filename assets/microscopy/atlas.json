@@ -700,6 +700,7 @@
    "source_title": "File:MicroHematuria.JPG",
    "source_page": "https://commons.wikimedia.org/wiki/File:MicroHematuria.JPG",
    "author": "Bobjgalindo",
+   "author_url": "https://commons.wikimedia.org/wiki/User:Bobjgalindo",
    "credit": "Own work",
    "license": "CC BY-SA 4.0",
    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -726,7 +727,8 @@
    "bytes": 111691,
    "sha256": "0e8921daccf025456910a994ecb06dfb04716c905f8e46446e21d3297d1fda72",
    "magnification": null,
-   "stain": null
+   "stain": null,
+   "label_note": null
   },
   {
    "id": "u-rbc-2",
@@ -736,6 +738,7 @@
    "source_title": "File:Haematuria.jpg",
    "source_page": "https://commons.wikimedia.org/wiki/File:Haematuria.jpg",
    "author": "J3D3",
+   "author_url": "https://commons.wikimedia.org/wiki/User:J3D3",
    "credit": "Own work",
    "license": "CC BY-SA 3.0",
    "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
@@ -762,7 +765,8 @@
    "bytes": 344963,
    "sha256": "1cb3c78f428a44446f9b88b0b21c0ac1e6cbd9db67a4ccb9657723b1818478f8",
    "magnification": null,
-   "stain": null
+   "stain": null,
+   "label_note": null
   },
   {
    "id": "u-wbc-1",
@@ -772,6 +776,7 @@
    "source_title": "File:Plenty of pus cells in Urine Microscopy.jpg",
    "source_page": "https://commons.wikimedia.org/wiki/File:Plenty_of_pus_cells_in_Urine_Microscopy.jpg",
    "author": "Ajay Kumar Chaurasiya",
+   "author_url": "https://commons.wikimedia.org/wiki/User:Ajay_Kumar_Chaurasiya",
    "credit": "Own work",
    "license": "CC BY-SA 4.0",
    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -798,7 +803,8 @@
    ],
    "bytes": 138846,
    "sha256": "2bb8639157b6a9c57fce774f8b34aa69224a85ee88ac8fe5f637d5b70e624cbf",
-   "stain": null
+   "stain": null,
+   "label_note": null
   },
   {
    "id": "u-wbc-2",
@@ -808,6 +814,7 @@
    "source_title": "File:Pus cells (dead leukocytes) in urine microscopy.jpg",
    "source_page": "https://commons.wikimedia.org/wiki/File:Pus_cells_(dead_leukocytes)_in_urine_microscopy.jpg",
    "author": "Ajay Kumar Chaurasiya",
+   "author_url": "https://commons.wikimedia.org/wiki/User:Ajay_Kumar_Chaurasiya",
    "credit": "Own work",
    "license": "CC BY-SA 4.0",
    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -834,7 +841,8 @@
    "bytes": 139038,
    "sha256": "af82ae400bd15e7554d7d1ba01104d9621686cd25fac5680322653ca8c3e4484",
    "magnification": null,
-   "stain": null
+   "stain": null,
+   "label_note": null
   },
   {
    "id": "u-epi-1",
@@ -844,6 +852,7 @@
    "source_title": "File:Pus cells, Epithelial cells, RBCs and Bacteria in Urine Microscopy.jpg",
    "source_page": "https://commons.wikimedia.org/wiki/File:Pus_cells,_Epithelial_cells,_RBCs_and_Bacteria_in_Urine_Microscopy.jpg",
    "author": "Ajay Kumar Chaurasiya",
+   "author_url": "https://commons.wikimedia.org/wiki/User:Ajay_Kumar_Chaurasiya",
    "credit": "Own work",
    "license": "CC BY-SA 4.0",
    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -870,7 +879,8 @@
    ],
    "bytes": 182184,
    "sha256": "cd11c8f02ecd3e887fb25fedbe20019a6144f28b7550414c7bcb84c2999489bb",
-   "stain": null
+   "stain": null,
+   "label_note": null
   },
   {
    "id": "u-epi-2",
@@ -880,6 +890,7 @@
    "source_title": "File:UrinaryInfection.jpg",
    "source_page": "https://commons.wikimedia.org/wiki/File:UrinaryInfection.jpg",
    "author": "J3D3",
+   "author_url": "https://commons.wikimedia.org/wiki/User:J3D3",
    "credit": "Own work",
    "license": "CC BY-SA 3.0",
    "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
@@ -906,16 +917,23 @@
    "bytes": 312649,
    "sha256": "1d7a6fa6e2ef4dc84099744cbed75562268de1a824f7c14fe720065860dedeb3",
    "magnification": null,
-   "stain": null
+   "stain": null,
+   "label_note": null
   },
   {
    "id": "u-rte-1",
    "entity": "urine-rte",
-   "quiz": "field",
+   "quiz": null,
+   "label_note": {
+    "uz": "Nomi manba izohi bo‘yicha. Hujayralar ko‘rinishi buyrak kanalchalari epiteliysi uchun namunaviy emas (yirik, burmali, yadrosi aniq ko‘rinmaydi), izohdagi «noto‘g‘ri yig‘ilgan namuna» esa yassi yoki o‘tuvchi epiteliy bilan ifloslanishni ham anglatishi mumkin. Mashqqa kiritilmagan.",
+    "ru": "Название — по подписи источника. Вид клеток нетипичен для почечного канальцевого эпителия (крупные, складчатые, ядро плохо различимо), а «неправильно собранная проба» может означать и примесь плоского или переходного эпителия. В упражнение не включено.",
+    "en": "Named per the source caption. The cells do not look typical of renal tubular epithelium (large, folded, nucleus not clearly seen), and a “poorly collected sample” may also mean contamination by squamous or transitional cells. Not used in the quiz."
+   },
    "provider": "commons",
    "source_title": "File:RTcells.JPG",
    "source_page": "https://commons.wikimedia.org/wiki/File:RTcells.JPG",
    "author": "Bobjgalindo",
+   "author_url": "https://commons.wikimedia.org/wiki/User:Bobjgalindo",
    "credit": "Own work",
    "license": "CC BY-SA 4.0",
    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -952,6 +970,7 @@
    "source_title": "File:Hyaline Cast in Urine Microscopy.jpg",
    "source_page": "https://commons.wikimedia.org/wiki/File:Hyaline_Cast_in_Urine_Microscopy.jpg",
    "author": "Ajay Kumar Chaurasiya",
+   "author_url": "https://commons.wikimedia.org/wiki/User:Ajay_Kumar_Chaurasiya",
    "credit": "Own work",
    "license": "CC BY-SA 4.0",
    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -978,7 +997,8 @@
    "bytes": 102011,
    "sha256": "018f7c82d613cc588e22b401f84f665507510626179d775c206cfe1f6682c4e3",
    "magnification": null,
-   "stain": null
+   "stain": null,
+   "label_note": null
   },
   {
    "id": "u-cast-granular-1",
@@ -988,6 +1008,7 @@
    "source_title": "File:Granular Casts in Urine Microscopy.jpg",
    "source_page": "https://commons.wikimedia.org/wiki/File:Granular_Casts_in_Urine_Microscopy.jpg",
    "author": "Ajay Kumar Chaurasiya",
+   "author_url": "https://commons.wikimedia.org/wiki/User:Ajay_Kumar_Chaurasiya",
    "credit": "Own work",
    "license": "CC BY 4.0",
    "license_url": "https://creativecommons.org/licenses/by/4.0/",
@@ -1014,7 +1035,8 @@
    "bytes": 118577,
    "sha256": "126ce0aae9155569ad12ac7be1cd45cbe30cd68d113e57b3508dce4fa0f1f154",
    "magnification": null,
-   "stain": null
+   "stain": null,
+   "label_note": null
   },
   {
    "id": "u-cast-panel-1",
@@ -1024,6 +1046,7 @@
    "source_title": "File:RTE cast, muddy granular cast, WBC cast and RBC cast in urine.jpg",
    "source_page": "https://commons.wikimedia.org/wiki/File:RTE_cast,_muddy_granular_cast,_WBC_cast_and_RBC_cast_in_urine.jpg",
    "author": "Mohsenin V.",
+   "author_url": "https://doi.org/10.1186/s40560-017-0251-y",
    "credit": "Mohsenin V. Practical approach to detection and management of acute kidney injury in critically ill patient. J Intensive Care. 2017;5:57. doi:10.1186/s40560-017-0251-y (PMC5603084)",
    "license": "CC BY 4.0",
    "license_url": "https://creativecommons.org/licenses/by/4.0/",
@@ -1050,16 +1073,23 @@
    "bytes": 30912,
    "sha256": "aceeb4e48e0ea52a61a27c8cc381e6f1e3552b8dfc15ee62199f6591e1fac6f4",
    "magnification": null,
-   "stain": null
+   "stain": null,
+   "label_note": null
   },
   {
    "id": "u-cryst-caox-1",
    "entity": "crystal-caox",
-   "quiz": "field",
+   "quiz": null,
+   "label_note": {
+    "uz": "Nomi manba izohi bo‘yicha (kalsiy oksalat monogidrat). Bu yerda kristallar yirik, to‘da bo‘lib yotgan, qatlamli oval tanachalar ko‘rinishida — odatiy «gantel» yoki «konvert» shakli yo‘q; polyarizatsiyasiz boshqa ovoid tuzilmalardan ajratish qiyin. Mashqqa kiritilmagan.",
+    "ru": "Название — по подписи источника (моногидрат оксалата кальция). Здесь кристаллы — крупные слоистые овальные тельца, лежащие скоплением, без типичной формы «гантели» или «конверта»; без поляризации их трудно отличить от других овоидных структур. В упражнение не включено.",
+    "en": "Named per the source caption (calcium oxalate monohydrate). The crystals here are large, clustered, layered ovals rather than the usual dumbbell or envelope forms; without polarisation they are hard to tell from other ovoid structures. Not used in the quiz."
+   },
    "provider": "commons",
    "source_title": "File:Calcium Oxalate Monohydrate Crystals in Urine Microscopy.jpg",
    "source_page": "https://commons.wikimedia.org/wiki/File:Calcium_Oxalate_Monohydrate_Crystals_in_Urine_Microscopy.jpg",
    "author": "Ajay Kumar Chaurasiya",
+   "author_url": "https://commons.wikimedia.org/wiki/User:Ajay_Kumar_Chaurasiya",
    "credit": "Own work",
    "license": "CC BY-SA 4.0",
    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -1096,6 +1126,7 @@
    "source_title": "File:UricAcid.jpg",
    "source_page": "https://commons.wikimedia.org/wiki/File:UricAcid.jpg",
    "author": "J3D3",
+   "author_url": "https://commons.wikimedia.org/wiki/User:J3D3",
    "credit": "Own work",
    "license": "CC BY-SA 3.0",
    "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
@@ -1122,7 +1153,8 @@
    "bytes": 220001,
    "sha256": "a2688410147a435d1460a0bc980c86f8d4b5a4fc0ae4035e3863f05346feb743",
    "magnification": null,
-   "stain": null
+   "stain": null,
+   "label_note": null
   },
   {
    "id": "u-cryst-triple-1",
@@ -1132,6 +1164,7 @@
    "source_title": "File:Кристаллы трипельфосфата в форме гробовых крышек и призм на фоне аморфных фосфатов. Осадок мочи. Нативный препарат. x400.jpg",
    "source_page": "https://commons.wikimedia.org/wiki/File:Кристаллы_трипельфосфата_в_форме_гробовых_крышек_и_призм_на_фоне_аморфных_фосфатов._Осадок_мочи._Нативный_препарат._x400.jpg",
    "author": "Vladimir064",
+   "author_url": "https://commons.wikimedia.org/wiki/Special:ListFiles/Vladimir064",
    "credit": "Own work",
    "license": "CC BY 4.0",
    "license_url": "https://creativecommons.org/licenses/by/4.0/",
@@ -1165,7 +1198,8 @@
     1231
    ],
    "bytes": 536602,
-   "sha256": "6f4328e9be84e4dac36f26ca66fb7f820c4c0cf7f23ebeeda644ec1ade08cc61"
+   "sha256": "6f4328e9be84e4dac36f26ca66fb7f820c4c0cf7f23ebeeda644ec1ade08cc61",
+   "label_note": null
   },
   {
    "id": "u-cryst-cystine-1",
@@ -1175,6 +1209,7 @@
    "source_title": "File:Cystine in Urine.jpg",
    "source_page": "https://commons.wikimedia.org/wiki/File:Cystine_in_Urine.jpg",
    "author": "J3D3",
+   "author_url": "https://commons.wikimedia.org/wiki/User:J3D3",
    "credit": "Own work",
    "license": "CC BY-SA 4.0",
    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -1201,7 +1236,8 @@
    "bytes": 94496,
    "sha256": "0c4baa12660254e1f854ba560a2297710d2de20fb9a14d943de91474aa9e2d79",
    "magnification": null,
-   "stain": null
+   "stain": null,
+   "label_note": null
   },
   {
    "id": "b-neut-1",
@@ -1211,6 +1247,7 @@
    "source_title": "File:WBC (neutrophil) at centre, numerous erythrocytes and platelets (dot like bodies) in Wright's stained peripheral blood smear (PBS) microscopy.jpg",
    "source_page": "https://commons.wikimedia.org/wiki/File:WBC_(neutrophil)_at_centre,_numerous_erythrocytes_and_platelets_(dot_like_bodies)_in_Wright's_stained_peripheral_blood_smear_(PBS)_microscopy.jpg",
    "author": "Ajay Kumar Chaurasiya",
+   "author_url": "https://commons.wikimedia.org/wiki/User:Ajay_Kumar_Chaurasiya",
    "credit": "Own work",
    "license": "CC BY-SA 4.0",
    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -1244,7 +1281,8 @@
    ],
    "bytes": 119365,
    "sha256": "a89685fff3a9e2a3df85e514cdbeb1dfd11a65e37b438188ee0c8336ea2626a3",
-   "magnification": null
+   "magnification": null,
+   "label_note": null
   },
   {
    "id": "b-neut-2",
@@ -1254,6 +1292,7 @@
    "source_title": "CDC PHIL ID#18910",
    "source_page": "https://wwwn.cdc.gov/phil/Details.aspx?pid=18910",
    "author": "CDC/ Dr. F. Gilbert",
+   "author_url": null,
    "credit": "CDC Public Health Image Library (PHIL)",
    "license": "CDC PHIL",
    "license_url": "https://www.cdc.gov/other/agencymaterials.html",
@@ -1281,7 +1320,8 @@
    ],
    "bytes": 118534,
    "sha256": "7924d8cb3b806c152af47864ff368ec65cd86dd3d38cb3ac6bcb336363bbe38a",
-   "stain": null
+   "stain": null,
+   "label_note": null
   },
   {
    "id": "b-lymph-1",
@@ -1291,6 +1331,7 @@
    "source_title": "CDC PHIL ID#18909",
    "source_page": "https://wwwn.cdc.gov/phil/Details.aspx?pid=18909",
    "author": "CDC/ Dr. F. Gilbert",
+   "author_url": null,
    "credit": "CDC Public Health Image Library (PHIL)",
    "license": "CDC PHIL",
    "license_url": "https://www.cdc.gov/other/agencymaterials.html",
@@ -1318,7 +1359,8 @@
    ],
    "bytes": 126546,
    "sha256": "5c06f0a72d5844091069b11901fea24ac83f49e2468a4a80bc2f8fa385f1f90a",
-   "stain": null
+   "stain": null,
+   "label_note": null
   },
   {
    "id": "b-mono-1",
@@ -1328,6 +1370,7 @@
    "source_title": "CDC PHIL ID#30136",
    "source_page": "https://wwwn.cdc.gov/phil/Details.aspx?pid=30136",
    "author": "CDC/ Dr. Candler Ballard",
+   "author_url": null,
    "credit": "CDC Public Health Image Library (PHIL)",
    "license": "CDC PHIL",
    "license_url": "https://www.cdc.gov/other/agencymaterials.html",
@@ -1355,16 +1398,23 @@
    "bytes": 164257,
    "sha256": "eccbd0328d6fe97f8408dd8c1495843aa09cb444440bceef9142d7dfc78d68da",
    "magnification": null,
-   "stain": null
+   "stain": null,
+   "label_note": null
   },
   {
    "id": "b-eos-1",
    "entity": "eosinophil",
-   "quiz": "arrowhead",
+   "quiz": null,
+   "label_note": {
+    "uz": "Nomi manba (CDC) izohi bo‘yicha. Bu eski slaydda strelkadagi hujayra donachalari eozinofilga xos to‘q sariq-qizil emas, binafsha rangda ko‘rinadi — bazofil bilan adashtirish oson. Mashqqa kiritilmagan.",
+    "ru": "Название — по подписи источника (CDC). На этом старом препарате гранулы клетки у стрелки выглядят не оранжево-красными, как типично для эозинофила, а фиолетовыми — её легко спутать с базофилом. В упражнение не включено.",
+    "en": "Named per the source (CDC) caption. On this old slide the granules of the cell at the arrowhead look purple rather than the typical eosinophil orange-red, so it is easily confused with a basophil. Not used in the quiz."
+   },
    "provider": "cdc_phil",
    "source_title": "CDC PHIL ID#18907",
    "source_page": "https://wwwn.cdc.gov/phil/Details.aspx?pid=18907",
    "author": "CDC/ Dr. F. Gilbert",
+   "author_url": null,
    "credit": "CDC Public Health Image Library (PHIL)",
    "license": "CDC PHIL",
    "license_url": "https://www.cdc.gov/other/agencymaterials.html",
@@ -1402,6 +1452,7 @@
    "source_title": "CDC PHIL ID#18908",
    "source_page": "https://wwwn.cdc.gov/phil/Details.aspx?pid=18908",
    "author": "CDC/ Dr. F. Gilbert",
+   "author_url": null,
    "credit": "CDC Public Health Image Library (PHIL)",
    "license": "CDC PHIL",
    "license_url": "https://www.cdc.gov/other/agencymaterials.html",
@@ -1429,7 +1480,8 @@
    ],
    "bytes": 153325,
    "sha256": "b717b9734c4d88f6e21e43223b9bd169baf4835f3103dd3163a65979febe93e7",
-   "stain": null
+   "stain": null,
+   "label_note": null
   },
   {
    "id": "b-acanth-1",
@@ -1439,6 +1491,7 @@
    "source_title": "File:Acanthocytosis.jpg",
    "source_page": "https://commons.wikimedia.org/wiki/File:Acanthocytosis.jpg",
    "author": "Rola Zamel, Razi Khan, Rebecca L Pollex and Robert A Hegele",
+   "author_url": "https://doi.org/10.1186/1750-1172-3-19",
    "credit": "Abetalipoproteinemia: two case reports and literature review. Orphanet Journal of Rare Diseases 2008, 3:19. doi:10.1186/1750-1172-3-19",
    "license": "CC BY 2.0",
    "license_url": "https://creativecommons.org/licenses/by/2.0/",
@@ -1465,7 +1518,8 @@
    "bytes": 53819,
    "sha256": "d79ebe402f934fb5ebf39bdc3f589f77435f9f898f48a8afa32d6a648b61c160",
    "magnification": null,
-   "stain": null
+   "stain": null,
+   "label_note": null
   },
   {
    "id": "b-acanth-2",
@@ -1475,6 +1529,7 @@
    "source_title": "File:Acanthocyte smear 2009-10-08.JPG",
    "source_page": "https://commons.wikimedia.org/wiki/File:Acanthocyte_smear_2009-10-08.JPG",
    "author": "Paulo Henrique Orlandi Mourao",
+   "author_url": "https://commons.wikimedia.org/wiki/Special:ListFiles/Paulo_Mourao",
    "credit": "Own work",
    "license": "CC BY-SA 3.0",
    "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
@@ -1508,7 +1563,8 @@
    ],
    "bytes": 251081,
    "sha256": "57ea52d7e2ec9646126e83dd2c714fbdc383ef38852667328520dd6dad530c1b",
-   "magnification": null
+   "magnification": null,
+   "label_note": null
   },
   {
    "id": "p-mal-thin-1",
@@ -1518,6 +1574,7 @@
    "source_title": "CDC PHIL ID#5861",
    "source_page": "https://wwwn.cdc.gov/phil/Details.aspx?pid=5861",
    "author": "CDC/ Steven Glenn, Laboratory & Consultation Division",
+   "author_url": null,
    "credit": "CDC Public Health Image Library (PHIL)",
    "license": "CDC PHIL",
    "license_url": "https://www.cdc.gov/other/agencymaterials.html",
@@ -1552,7 +1609,8 @@
    ],
    "bytes": 150280,
    "sha256": "eda784ab1ea13ba9d740ed42ab1bd465f56c7c60d04f9896fbb43176fc91ecad",
-   "magnification": null
+   "magnification": null,
+   "label_note": null
   },
   {
    "id": "p-mal-thick-1",
@@ -1562,6 +1620,7 @@
    "source_title": "CDC PHIL ID#22817",
    "source_page": "https://wwwn.cdc.gov/phil/Details.aspx?pid=22817",
    "author": "CDC/ Dr. Mae Mellvin",
+   "author_url": null,
    "credit": "CDC Public Health Image Library (PHIL)",
    "license": "CDC PHIL",
    "license_url": "https://www.cdc.gov/other/agencymaterials.html",
@@ -1596,7 +1655,8 @@
     1054
    ],
    "bytes": 107342,
-   "sha256": "7be7276b13047ca9422e9ad0c67853ee2a3604fad188127f47962987cf591c1c"
+   "sha256": "7be7276b13047ca9422e9ad0c67853ee2a3604fad188127f47962987cf591c1c",
+   "label_note": null
   }
  ]
 }

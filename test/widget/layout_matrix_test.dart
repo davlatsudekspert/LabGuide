@@ -59,6 +59,8 @@ const appRoutes = [
   '/lab/microscopy/s/parasites',
   '/lab/microscopy/i/b-neut-1',
   '/lab/microscopy/i/b-baso-1',
+  // “Nomi manba izohi bo‘yicha” bloki bilan.
+  '/lab/microscopy/i/b-eos-1',
   '/lab/microscopy/i/u-cryst-cystine-1',
   '/lab/microscopy/i/u-cast-panel-1',
   '/lab/microscopy/quiz',

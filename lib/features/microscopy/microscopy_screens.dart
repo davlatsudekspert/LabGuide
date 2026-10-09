@@ -17,8 +17,8 @@ import 'microscopy_widgets.dart';
 
 /// Bo'lim kartasi muqovasi (bo'lsa) — aks holda bo'limning birinchi rasmi.
 const _sectionCovers = {
-  'urine': 'u-cryst-caox-1',
-  'blood': 'b-eos-1',
+  'urine': 'u-cryst-uric-1',
+  'blood': 'b-baso-1',
   'parasites': 'p-mal-thin-1',
 };
 
@@ -485,6 +485,10 @@ class MicroImageScreen extends StatelessWidget {
             ),
             const SizedBox(height: 8),
             _NamesPanel(entity: entity),
+            if (image.labelNote != null) ...[
+              const SizedBox(height: 12),
+              _LabelNote(note: image.labelNote!.of(lang)),
+            ],
             LgSectionTitle(l.micOriginalCaption),
             _CaptionPanel(image: image),
             LgSectionTitle(l.micPreparation),
@@ -673,6 +677,51 @@ class _CaptionPanel extends StatelessWidget {
   }
 }
 
+/// Nom faqat manba izohiga tayanadi (mustaqil tekshiruv izohi).
+class _LabelNote extends StatelessWidget {
+  const _LabelNote({required this.note});
+
+  final String note;
+
+  @override
+  Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context);
+    final p = LgPalette.of(context);
+    final text = Theme.of(context).textTheme;
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(LgRadius.card),
+        border: Border.all(color: p.amber.withValues(alpha: 0.45)),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Icon(Icons.help_outline_rounded, color: p.ink, size: 20),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Text(l.micLabelBySource, style: text.titleMedium),
+                ),
+              ],
+            ),
+            const SizedBox(height: 8),
+            LgTag(
+              l.micLabelNoQuiz,
+              tone: LgTone.warning,
+              icon: Icons.quiz_outlined,
+            ),
+            const SizedBox(height: 10),
+            Text(note, style: text.bodyMedium),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 class _DraftNote extends StatelessWidget {
   const _DraftNote({required this.note});
 
@@ -738,6 +787,13 @@ class _CreditPanel extends StatelessWidget {
         if (image.date != null)
           LgMetric(label: l.micSourceDate, value: image.date!),
         const SizedBox(height: 4),
+        if (image.authorUrl case final url?)
+          LgRow(
+            title: l.micAuthorPage,
+            subtitle: Uri.parse(url).host,
+            icon: Icons.person_outline_rounded,
+            onTap: () => openExternalLink(context, url),
+          ),
         LgRow(
           title: l.micSourcePage,
           subtitle: image.sourceTitle,
