@@ -219,8 +219,8 @@ Future<(SupportAttachment?, String?)> pickSupportImage(
   if (file == null) return (null, null);
   final bytes = await file.readAsBytes();
   final lower = file.name.toLowerCase();
-  final mime = file.mimeType ??
-      (lower.endsWith('.png') ? 'image/png' : 'image/jpeg');
+  final mime =
+      file.mimeType ?? (lower.endsWith('.png') ? 'image/png' : 'image/jpeg');
   if (!SupportAttachment.allowedTypes.contains(mime)) {
     return (null, l.supportAttachType);
   }
@@ -321,9 +321,7 @@ class _NewSupportThreadScreenState extends State<NewSupportThreadScreen> {
   Future<void> _send() async {
     FocusScope.of(context).unfocus();
     if (_subject.text.trim().length < 3 || _body.text.trim().isEmpty) {
-      setState(
-        () => _error = const BackendException(BackendFailure.invalid),
-      );
+      setState(() => _error = const BackendException(BackendFailure.invalid));
       return;
     }
     setState(() {

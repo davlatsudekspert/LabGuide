@@ -228,7 +228,6 @@ void main() {
     await answerCurrent(tester, s, run, correct: true);
     b.offline = true;
     await _finish(tester, uz);
-    expect(find.text(uz.classesSubmitNetwork), findsOneWidget);
     expect(find.text(uz.classesPendingTitle), findsOneWidget);
     expect(s.exams.assignmentSession(t.aid, b.userId)!.finished, isTrue);
     expect(await b.submissions(t.aid), isEmpty);

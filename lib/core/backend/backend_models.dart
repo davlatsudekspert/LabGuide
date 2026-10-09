@@ -268,6 +268,45 @@ class AuditEntry {
   final Map<String, Object?> details;
 }
 
+enum ReviewDecision { approve, changes }
+
+/// Tekshiruvchining karta/savol bo'yicha qarori. Kontent holatini o'zi
+/// o'zgartirmaydi — tahririyat keyingi paketda hisobga oladi.
+@immutable
+class ContentReview {
+  const ContentReview({
+    required this.id,
+    required this.itemKind,
+    required this.itemId,
+    required this.contentVersion,
+    required this.reviewerId,
+    required this.decision,
+    required this.createdAt,
+    this.comment,
+  });
+
+  factory ContentReview.fromJson(Map<String, Object?> j) => ContentReview(
+    id: j['id']! as String,
+    itemKind: j['item_kind']! as String,
+    itemId: j['item_id']! as String,
+    contentVersion: j['content_version']! as String,
+    reviewerId: j['reviewer_id']! as String,
+    decision: ReviewDecision.values.byName(j['decision']! as String),
+    comment: j['comment'] as String?,
+    createdAt: DateTime.parse(j['created_at']! as String),
+  );
+
+  /// `analyte` yoki `quiz`.
+  final String itemKind;
+  final String id;
+  final String itemId;
+  final String contentVersion;
+  final String reviewerId;
+  final ReviewDecision decision;
+  final String? comment;
+  final DateTime createdAt;
+}
+
 @immutable
 class TotpEnrollment {
   const TotpEnrollment({

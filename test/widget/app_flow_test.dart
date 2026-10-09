@@ -213,7 +213,9 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.text(ru.testsEmptyTitle), findsOneWidget);
     await tapText(tester, ru.testsClearSearch);
-    expect(find.text(ru.testsResultCount(35)), findsOneWidget);
+    // Hamma kartalar (yo'nalish bo'laklari qo'shilsa ham to'g'ri).
+    final total = s.content.pack!.analytes.length;
+    expect(find.text(ru.testsResultCount(total)), findsOneWidget);
     // Guruh filtri.
     await tapText(tester, 'Печень');
     expect(find.text(ru.testsResultCount(6)), findsOneWidget);
@@ -623,43 +625,49 @@ void main() {
     expect(find.text('Och qoringa plazma glyukozasi'), findsNothing);
   });
 
-  testWidgets('library catalog: licence-aware records, language filter', (
+  testWidgets(
+    'library catalog: how each item opens, licence, language filter',
+    (tester) async {
+      final s = await makeServices(tester);
+      await pumpApp(tester, s, size: const Size(390, 30000));
+      await goTo(tester, '/library/books');
+      final library = s.content.pack!.library;
+      expect(library, isNotEmpty);
+      expect(find.text(uz.booksEmptyTitle), findsNothing);
+      // Har yozuv qanday ochilishini aytadi. Fayllar hali kelmagan: ilova
+      // ichidagi yoki yuklab olinadigan deb ko'rsatilgan material yo'q.
+      expect(
+        find.text(uz.libOpenLink),
+        findsNWidgets(library.where((i) => i.url != null).length),
+      );
+      expect(find.text(uz.libOpenInApp), findsNothing);
+      expect(find.text(uz.libOpenDownload), findsNothing);
+      // Til filtri: faqat o'zbekcha yozuvlar, tanlov tugmada ko'rinadi.
+      await tapText(tester, uz.libFilterLanguage);
+      await tapText(tester, 'O‘zbekcha');
+      expect(
+        find.byType(LibraryItemCard),
+        findsNWidgets(library.where((i) => i.language == 'uz').length),
+      );
+      expect(find.text('${uz.libFilterLanguage}: O‘zbekcha'), findsOneWidget);
+      // Material sahifasi: ochiq litsenziya nomi va rasmiy sahifa havolasi.
+      await goTo(tester, '/library/books/item/lib-openstax-biology-2e');
+      // Litsenziya: tugma yonida (qisqa) va ma'lumotlarda.
+      expect(find.text(uz.libAccessOpen('CC BY-NC-SA 4.0')), findsNWidgets(2));
+      expect(find.text(uz.libOpenSource), findsOneWidget);
+      expect(find.text(uz.libOpenLinkHint('openstax.org')), findsOneWidget);
+    },
+  );
+
+  testWidgets('review queue is closed without a server reviewer', (
     tester,
   ) async {
     final s = await makeServices(tester);
-    await pumpApp(tester, s, size: const Size(390, 30000));
-    await goTo(tester, '/library/books');
-    final library = s.content.pack!.library;
-    expect(library, isNotEmpty);
-    expect(find.text(uz.booksEmptyTitle), findsNothing);
-    // Har yozuvda rasmiy sahifa havolasi; ochiq litsenziya nomi bilan.
-    expect(
-      find.text(uz.libOpenSource),
-      findsNWidgets(library.where((i) => i.url != null).length),
-    );
-    expect(find.text(uz.libAccessOpen('CC BY-NC-SA 4.0')), findsWidgets);
-    // Til filtri: faqat o'zbekcha yozuvlar.
-    await tester.tap(find.text('O‘zbekcha'));
-    await tester.pumpAndSettle();
-    expect(
-      find.byType(LibraryItemCard),
-      findsNWidgets(library.where((i) => i.language == 'uz').length),
-    );
-  });
-
-  testWidgets('review queue has honest counts', (tester) async {
-    final s = await makeServices(tester);
     await pumpApp(tester, s);
+    // Tekshiruv navbati faqat server tekshiruvchisi uchun (review_test.dart).
     await goTo(tester, '/library/review');
-    expect(find.text(uz.reviewNoDiscrepancies), findsOneWidget);
-    expect(
-      find.text(uz.reviewCatalog(s.content.pack!.library.length)),
-      findsOneWidget,
-    );
-    expect(
-      find.text(uz.reviewDraftQuestions(s.content.pack!.quiz.length)),
-      findsOneWidget,
-    );
+    expect(find.text(uz.supportUnavailableTitle), findsOneWidget);
+    expect(find.text(uz.rvTabCards), findsNothing);
     await goTo(tester, '/library/packs');
     expect(find.text(uz.packsVerified), findsOneWidget);
   });

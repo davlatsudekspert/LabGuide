@@ -530,6 +530,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sectionLowResult => 'Low result';
 
   @override
+  String get sectionPositiveResult => 'Positive result';
+
+  @override
+  String get sectionNegativeResult => 'Negative result';
+
+  @override
   String get sectionPreanalytics => 'Specimen and preanalytics';
 
   @override
@@ -1634,6 +1640,443 @@ class AppLocalizationsEn extends AppLocalizations {
   String get instOpenCard => 'Instrument card';
 
   @override
+  String get partnerAdLabel => 'Ad';
+
+  @override
+  String get partnerLabel => 'Partner';
+
+  @override
+  String get partnerOfficialTitle => 'Official partners';
+
+  @override
+  String get partnerSectionNote =>
+      'Information provided by the partner companies. The catalogue data above, its order and review status do not depend on partnerships.';
+
+  @override
+  String get partnerKindManufacturer => 'Manufacturer';
+
+  @override
+  String get partnerKindDistributor => 'Official distributor';
+
+  @override
+  String get partnerKindService => 'Service centre';
+
+  @override
+  String get partnerCall => 'Call';
+
+  @override
+  String get partnerTelegram => 'Telegram';
+
+  @override
+  String get partnerWebsite => 'Website';
+
+  @override
+  String get partnerEmail => 'Email';
+
+  @override
+  String get partnerBrochure => 'Brochure';
+
+  @override
+  String get partnerMore => 'Details';
+
+  @override
+  String partnerRegions(String regions) {
+    return 'Regions: $regions';
+  }
+
+  @override
+  String partnerRegistration(String number) {
+    return 'Registration certificate in Uzbekistan: $number';
+  }
+
+  @override
+  String get partnerRegistrationNote => 'Number provided by the partner.';
+
+  @override
+  String get partnerBecome => 'Become a partner';
+
+  @override
+  String get partnerBecomeSub => 'For companies: your instruments in LabGuide';
+
+  @override
+  String get partnerNotFoundTitle => 'Partner not found';
+
+  @override
+  String get partnerNotFoundBody =>
+      'The listing may have ended or been paused.';
+
+  @override
+  String get partnerContacts => 'Contacts';
+
+  @override
+  String get partnerAbout => 'About the company';
+
+  @override
+  String get partnerInstruments => 'Related instruments';
+
+  @override
+  String partnerAllModels(String maker) {
+    return '$maker: all models';
+  }
+
+  @override
+  String get partnerPageNote =>
+      'This page is an advertisement. LabGuide does not endorse partner products; catalogue data and review status do not depend on partnerships.';
+
+  @override
+  String get partnerOfferTitle => 'Your contacts, right on the instrument card';
+
+  @override
+  String get partnerOfferBody =>
+      'A lab specialist reading about an instrument can call its official distributor or service centre in one tap. For manufacturers, official distributors and service centres.';
+
+  @override
+  String get partnerWhatTitle => 'What you get';
+
+  @override
+  String get partnerWhatCard =>
+      'An “Official partners” section on the instrument card: logo, short description, regions, call and Telegram buttons.';
+
+  @override
+  String get partnerWhatCategory =>
+      'A compact “Partner” card inside the instrument category (e.g. Chemistry).';
+
+  @override
+  String get partnerWhatLabHome =>
+      'One ad card on the Lab tab home, shown in rotation.';
+
+  @override
+  String get partnerWhatPage =>
+      'A partner page: related models, registration numbers, brochure.';
+
+  @override
+  String get partnerWhatReport =>
+      'A report: impressions and contact taps by day and placement (no personal data).';
+
+  @override
+  String get partnerAudienceTitle => 'Audience';
+
+  @override
+  String get partnerAudienceBody =>
+      'LabGuide serves laboratory specialists, doctors, students and teachers in Uzbek, Russian and English. We show user numbers and the role breakdown from server statistics during negotiation; we don’t quote estimates.';
+
+  @override
+  String get partnerRulesTitle => 'Rules';
+
+  @override
+  String get partnerRule1 =>
+      'Every placement carries a clear “Ad” or “Partner” label.';
+
+  @override
+  String get partnerRule2 =>
+      'Catalogue facts, their order and review status do not depend on partnerships and cannot be bought.';
+
+  @override
+  String get partnerRule3 =>
+      'Medical device ads: the instrument must be registered in Uzbekistan; the certificate number is shown on the card.';
+
+  @override
+  String get partnerRule4 =>
+      'Verifiable information only: unproven claims such as “the best” or “100% accurate” are not accepted.';
+
+  @override
+  String get partnerRule5 =>
+      'Users’ personal data is never shared with partners.';
+
+  @override
+  String get partnerPriceTitle => 'Price';
+
+  @override
+  String get partnerPriceBody =>
+      'Price is agreed individually, depending on placements, period and regions.';
+
+  @override
+  String get partnerHowTitle => 'How it works';
+
+  @override
+  String get partnerHow1 => 'Send an application using the form below.';
+
+  @override
+  String get partnerHow2 => 'We contact you and agree the terms.';
+
+  @override
+  String get partnerHow3 =>
+      'You send the logo, description (uz/ru/en), contacts and registration numbers.';
+
+  @override
+  String get partnerHow4 =>
+      'After review the listing goes live; we send reports regularly.';
+
+  @override
+  String get partnerFormTitle => 'Application';
+
+  @override
+  String get partnerFormCompany => 'Company';
+
+  @override
+  String get partnerFormContact => 'Contact person';
+
+  @override
+  String get partnerFormPhone => 'Phone';
+
+  @override
+  String get partnerFormEmail => 'Email';
+
+  @override
+  String get partnerFormProducts => 'Products (instruments, models)';
+
+  @override
+  String get partnerFormMessage => 'Message';
+
+  @override
+  String get partnerFormHint => 'A phone number or an email is required.';
+
+  @override
+  String get partnerFormSend => 'Send application';
+
+  @override
+  String get partnerFormInvalid =>
+      'Enter the company and contact person, and a valid phone or email.';
+
+  @override
+  String get partnerSentTitle => 'Application sent';
+
+  @override
+  String get partnerSentBody =>
+      'The reply will appear on this page under “Your applications”. If needed, we will contact you by the phone or email you gave.';
+
+  @override
+  String get partnerSendAnother => 'Send another application';
+
+  @override
+  String get partnerFormSignIn =>
+      'Sign in with email to send an application — the reply comes to that account.';
+
+  @override
+  String get partnerFormUnavailable =>
+      'Applications are not connected yet: this build has no server.';
+
+  @override
+  String get partnerMyRequests => 'Your applications';
+
+  @override
+  String get partnerReqStatusNew => 'New';
+
+  @override
+  String get partnerReqStatusInReview => 'In review';
+
+  @override
+  String get partnerReqStatusAccepted => 'Accepted';
+
+  @override
+  String get partnerReqStatusDeclined => 'Declined';
+
+  @override
+  String partnerReqReply(String text) {
+    return 'LabGuide reply: $text';
+  }
+
+  @override
+  String get partnerPlacementCard => 'Instrument card';
+
+  @override
+  String get partnerPlacementCategory => 'Category';
+
+  @override
+  String get partnerPlacementLabHome => 'Lab home';
+
+  @override
+  String get partnerPlacementPage => 'Partner page';
+
+  @override
+  String get adminPartners => 'Partners';
+
+  @override
+  String get adminPartnersSub => 'Ads: create, publish, statistics';
+
+  @override
+  String get adminPartnerRequests => 'Partnership applications';
+
+  @override
+  String adminPartnerRequestsNew(int count) {
+    return 'New applications: $count';
+  }
+
+  @override
+  String get adminPartnerNew => 'New partner';
+
+  @override
+  String get adminPartnersEmpty => 'No partners yet';
+
+  @override
+  String get adminPartnerStatusDraft => 'Draft';
+
+  @override
+  String get adminPartnerStatusLive => 'Published';
+
+  @override
+  String get adminPartnerStatusPaused => 'Paused';
+
+  @override
+  String get adminPartnerExpired => 'Expired';
+
+  @override
+  String get adminPartnerUpcoming => 'Not started yet';
+
+  @override
+  String get adminPartnerName => 'Company name';
+
+  @override
+  String get adminPartnerKind => 'Type';
+
+  @override
+  String get adminPartnerLogo => 'Logo link (https://…)';
+
+  @override
+  String get adminPartnerLogoUpload => 'Upload logo (PNG/JPEG, ≤ 1 MB)';
+
+  @override
+  String get adminPartnerLogoTooLarge =>
+      'The logo is larger than 1 MB or not PNG/JPEG.';
+
+  @override
+  String adminPartnerSummary(String lang) {
+    return 'Short description ($lang)';
+  }
+
+  @override
+  String get adminPartnerRegions => 'Regions';
+
+  @override
+  String get adminPartnerTelegram => 'Telegram (username)';
+
+  @override
+  String get adminPartnerWebsite => 'Website (https://…)';
+
+  @override
+  String get adminPartnerBrochure => 'Brochure link (https://…)';
+
+  @override
+  String get adminPartnerLinks => 'Catalogue links';
+
+  @override
+  String get adminPartnerMakers => 'Manufacturers (all models)';
+
+  @override
+  String get adminPartnerModels => 'Models';
+
+  @override
+  String get adminPartnerAddModel => 'Add a model';
+
+  @override
+  String get adminPartnerRegNo => 'Certificate number (optional)';
+
+  @override
+  String get adminPartnerUnlink => 'Remove';
+
+  @override
+  String get adminPartnerPeriodTitle => 'Active period';
+
+  @override
+  String get adminPartnerStarts => 'Starts';
+
+  @override
+  String get adminPartnerEnds => 'Ends';
+
+  @override
+  String get adminPartnerSave => 'Save';
+
+  @override
+  String get adminPartnerSaved => 'Saved';
+
+  @override
+  String get adminPartnerPublish => 'Publish';
+
+  @override
+  String get adminPartnerPause => 'Pause';
+
+  @override
+  String get adminPartnerPublished => 'Published';
+
+  @override
+  String get adminPartnerPausedMsg => 'Paused';
+
+  @override
+  String get adminPartnerPublishRules =>
+      'To publish: a description, at least one contact and at least one link. The ad always carries an “Ad” label and never changes catalogue data.';
+
+  @override
+  String get adminPartnerInvalid =>
+      'Check the data: name (2–120 characters), phone, Telegram (5–32 characters), https links, email, dates; to publish — description, contact and a link.';
+
+  @override
+  String get adminPartnerStats => 'Statistics';
+
+  @override
+  String get adminStatsImpressions => 'Impressions';
+
+  @override
+  String get adminStatsContacts => 'Contact taps';
+
+  @override
+  String get adminStatsCtr => 'Click-through rate';
+
+  @override
+  String get adminStats7 => 'Last 7 days';
+
+  @override
+  String get adminStats30 => 'Last 30 days';
+
+  @override
+  String get adminStatsAll => 'All time';
+
+  @override
+  String get adminStatsPeriods => 'By period';
+
+  @override
+  String get adminStatsByPlacement => 'By placement (30 days)';
+
+  @override
+  String get adminStatsDaily => 'By day';
+
+  @override
+  String get adminStatsEmpty => 'No events yet';
+
+  @override
+  String get adminStatsNote =>
+      'How it is counted: an impression means the partner block was drawn on screen; once per device per day per placement. Only signed-in users are counted (not guests or the admin). No personal data is stored, only daily counters (Tashkent time).';
+
+  @override
+  String get adminStatsCopy => 'Copy report';
+
+  @override
+  String get adminRequestsEmpty => 'No applications';
+
+  @override
+  String get adminRequestReply => 'Reply (the applicant sees it)';
+
+  @override
+  String get adminRequestSave => 'Save status and reply';
+
+  @override
+  String get adminActionPartnerCreated => 'Partner created';
+
+  @override
+  String get adminActionPartnerUpdated => 'Partner edited';
+
+  @override
+  String get adminActionPartnerPublished => 'Partner published';
+
+  @override
+  String get adminActionPartnerPaused => 'Partner paused';
+
+  @override
+  String get adminActionPartnerDraft => 'Partner moved to draft';
+
+  @override
+  String get adminActionPartnerRequest => 'Partnership application handled';
+
+  @override
   String get calStepInstrument => '1. Instrument';
 
   @override
@@ -1833,7 +2276,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get libBooks => 'Books and guides';
 
   @override
-  String get libBooksSub => 'PDF · language · revision · size';
+  String get libBooksSub => 'Catalog of books, manuals and websites';
 
   @override
   String get libPacks => 'Offline packs';
@@ -3447,7 +3890,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get privacyBody =>
-      'This version of the app sends no data to a server. Settings, bookmarks, drafts, QC records and practice progress are stored on this device and may be included in the device’s own backup (iCloud or Google).';
+      'In guest mode the app sends nothing to a server: settings, bookmarks, QC records, your instruments and practice results stay on this device (they may be included in the device backup). If you sign in with email, the server stores your email, role, language, last active day, your support requests and group results; no ad tracking. You can delete your account at any time.';
 
   @override
   String get privacyTerms => 'Terms of use';
@@ -3565,6 +4008,423 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get libForYou => 'For you';
+
+  @override
+  String get libMoreSections => 'More sections';
+
+  @override
+  String get libSearchEntry => 'Search books, authors, topics';
+
+  @override
+  String libBooksCount(int count) {
+    return '$count sources · search and filters';
+  }
+
+  @override
+  String get libIntake => 'How materials are added';
+
+  @override
+  String get libIntakeSub =>
+      'For teachers and editors: what to send, rights, review';
+
+  @override
+  String get libContinueReading => 'Continue reading';
+
+  @override
+  String get libSearchLabel => 'Search the library';
+
+  @override
+  String get libSearchHint => 'Title, author, topic…';
+
+  @override
+  String get libFilterLanguage => 'Language';
+
+  @override
+  String get libFilterTopic => 'Topic';
+
+  @override
+  String get libFilterType => 'Type';
+
+  @override
+  String get libFilterSectionField => 'Field';
+
+  @override
+  String get libFilterSectionGroup => 'Test group';
+
+  @override
+  String get libFilterSectionKind => 'Material type';
+
+  @override
+  String get libFilterSectionOpen => 'How it opens';
+
+  @override
+  String libFilterChoose(String filter) {
+    return '$filter: choose';
+  }
+
+  @override
+  String libResultCount(int shown, int total) {
+    return '$shown of $total materials';
+  }
+
+  @override
+  String get libClearFilters => 'Clear';
+
+  @override
+  String get libFilteredEmptyTitle => 'No materials match these filters';
+
+  @override
+  String get libFilteredEmptyBody =>
+      'Remove one filter or try another word — for example an author’s surname or “urine”.';
+
+  @override
+  String get libOpenLink => 'Link · external website';
+
+  @override
+  String libOpenLinkHint(String host) {
+    return 'Opens in your browser: $host';
+  }
+
+  @override
+  String get libOpenInApp => 'In-app file';
+
+  @override
+  String get libOpenInAppHint => 'Read inside the app — no internet needed';
+
+  @override
+  String get libOpenDownload => 'Downloadable book';
+
+  @override
+  String libOpenDownloadHint(String size) {
+    return 'Read in the app after download · $size';
+  }
+
+  @override
+  String get libOpenPending => 'Pending';
+
+  @override
+  String get libOpenPendingHint => 'Not received yet — cannot be opened';
+
+  @override
+  String get libOpenReceivedHint =>
+      'File received and being checked — not available yet';
+
+  @override
+  String get libOpenRecordHint =>
+      'No distribution rights recorded — not opened in the app';
+
+  @override
+  String get libOpenLinkShort => 'Link';
+
+  @override
+  String get libOpenInAppShort => 'In the app';
+
+  @override
+  String get libOpenDownloadShort => 'Download';
+
+  @override
+  String get libOpenRecordShort => 'Record only';
+
+  @override
+  String get libItemRead => 'Read';
+
+  @override
+  String libItemContinue(int page) {
+    return 'Continue from page $page';
+  }
+
+  @override
+  String get libItemCannotOpen => 'Cannot be opened';
+
+  @override
+  String get libDownloadUnavailable =>
+      'The download server is not connected yet — the book can’t be downloaded for now.';
+
+  @override
+  String get libDetailsTitle => 'Details';
+
+  @override
+  String get libFieldAuthors => 'Author';
+
+  @override
+  String get libFieldYear => 'Year';
+
+  @override
+  String get libFieldEdition => 'Edition';
+
+  @override
+  String get libFieldPublisher => 'Publisher';
+
+  @override
+  String get libFieldAccess => 'Access';
+
+  @override
+  String get libFieldStatus => 'Status';
+
+  @override
+  String get libFieldRights => 'Distribution rights';
+
+  @override
+  String libFieldRightsRecorded(String date, String by) {
+    return 'Recorded: $date · $by';
+  }
+
+  @override
+  String get libFieldTopics => 'Topics';
+
+  @override
+  String get libFieldPages => 'Pages';
+
+  @override
+  String get libStateNotReceived => 'Not received yet';
+
+  @override
+  String get libStateReceived => 'Received, being checked';
+
+  @override
+  String get libStateCataloged => 'Catalogued';
+
+  @override
+  String get libStateLinked => 'Linked to cards';
+
+  @override
+  String get libStateReviewed => 'Approved by a teacher';
+
+  @override
+  String get libProvidedByTeacher => 'Provided by a teacher';
+
+  @override
+  String get libItemNotFound => 'Material not found';
+
+  @override
+  String get libItemNotFoundBody =>
+      'The content pack may have been updated. Go back to the catalog.';
+
+  @override
+  String get libBackToCatalog => 'Back to catalog';
+
+  @override
+  String get readerTitle => 'Reader';
+
+  @override
+  String readerPageOf(int page, int total) {
+    return '$page of $total';
+  }
+
+  @override
+  String get readerToc => 'Contents';
+
+  @override
+  String get readerTocEmpty => 'This file has no table of contents';
+
+  @override
+  String get readerTocEmptyBody =>
+      'Go to a page or bookmark the place you need.';
+
+  @override
+  String get readerBookmarks => 'Bookmarks';
+
+  @override
+  String get readerAddBookmark => 'Bookmark this page';
+
+  @override
+  String get readerBookmarkName => 'Bookmark name';
+
+  @override
+  String get readerBookmarkNameHint => 'For example: key table';
+
+  @override
+  String readerBookmarkSaved(int page) {
+    return 'Bookmark saved: page $page';
+  }
+
+  @override
+  String get readerBookmarkRemoved => 'Bookmark removed';
+
+  @override
+  String get readerBookmarkRemove => 'Remove bookmark';
+
+  @override
+  String get readerBookmarksEmpty => 'No bookmarks yet';
+
+  @override
+  String get readerBookmarksEmptyBody =>
+      'On the page you need, tap “Bookmark this page” — then return with one tap.';
+
+  @override
+  String readerPageLabel(int page) {
+    return 'Page $page';
+  }
+
+  @override
+  String get readerGoTo => 'Go to page';
+
+  @override
+  String get readerGoToShort => 'Page';
+
+  @override
+  String readerGoToHint(int total) {
+    return '1 to $total';
+  }
+
+  @override
+  String readerGoToError(int total) {
+    return 'Enter a number from 1 to $total';
+  }
+
+  @override
+  String get readerGo => 'Go';
+
+  @override
+  String get readerSave => 'Save';
+
+  @override
+  String get readerRenameBookmark => 'Rename bookmark';
+
+  @override
+  String get libFieldProvidedBy => 'Provided by';
+
+  @override
+  String get libQueryEmptyBody =>
+      'Try another word — for example an author’s surname, “urine” or “biochemistry”.';
+
+  @override
+  String get readerZoomIn => 'Zoom in';
+
+  @override
+  String get readerZoomOut => 'Zoom out';
+
+  @override
+  String readerResumed(int page) {
+    return 'Resumed at page $page';
+  }
+
+  @override
+  String get readerFromStart => 'From start';
+
+  @override
+  String get readerLoading => 'Opening the file…';
+
+  @override
+  String get readerFileMissing => 'File not found';
+
+  @override
+  String get readerFileMissingBody =>
+      'This file isn’t in the app. Try updating the app.';
+
+  @override
+  String get readerFileCorrupted => 'The file failed verification';
+
+  @override
+  String get readerFileCorruptedBody =>
+      'The file size or checksum doesn’t match the catalog — it may be damaged or replaced, so it wasn’t opened.';
+
+  @override
+  String get readerOpenFailed => 'Couldn’t open the PDF';
+
+  @override
+  String get readerBlockedTitle => 'Not available in the app';
+
+  @override
+  String get readerBlockedRights =>
+      'Only files with fully recorded distribution rights open in the app. This material has no such file.';
+
+  @override
+  String get readerBookmarkedPage => 'This page is bookmarked';
+
+  @override
+  String get intakeTitle => 'Adding materials';
+
+  @override
+  String get intakeSubtitle => 'A short guide for teachers and editors';
+
+  @override
+  String intakeStatus(int count) {
+    return 'Materials from teachers: $count. The list grows as materials arrive.';
+  }
+
+  @override
+  String get intakeWhatTitle => '1. What to send';
+
+  @override
+  String get intakeWhat1 =>
+      'The book, manual, method or IFU file (PDF) and its details: title, author, year and edition, publisher, ISBN, language.';
+
+  @override
+  String get intakeWhat2 =>
+      'Test questions: the question, options, the correct answer, an explanation for each option and the source page.';
+
+  @override
+  String get intakeWhat3 =>
+      'If there is an old and a new edition — both: differences are reviewed separately.';
+
+  @override
+  String get intakeRightsTitle => '2. Distribution rights';
+
+  @override
+  String get intakeRights1 =>
+      'A shared PDF does not by itself mean it may be distributed to everyone.';
+
+  @override
+  String get intakeRights2 =>
+      'For a file to open in the app for everyone, the rights are fully recorded: who granted them (author or publisher), when, who recorded it, and the evidence — a permission letter or a licence link.';
+
+  @override
+  String get intakeRights3 =>
+      'Without that record, the material stays a catalog entry only or for personal use.';
+
+  @override
+  String get intakeReviewTitle => '3. How it is checked';
+
+  @override
+  String get intakeStep1 => 'Pending — the material hasn’t arrived yet.';
+
+  @override
+  String get intakeStep2 => 'Received — the file arrived and was logged.';
+
+  @override
+  String get intakeStep3 =>
+      'Catalogued — title, author and edition were checked. Only then can it be cited.';
+
+  @override
+  String get intakeStep4 =>
+      'Linked — tied to test cards and lessons with page numbers.';
+
+  @override
+  String get intakeStep5 =>
+      'Approved — a teacher reviewed it. Until then questions stay as “Draft”.';
+
+  @override
+  String get intakeConflict =>
+      'If an old and a new source disagree, neither is written as fact — both positions go to a reviewer.';
+
+  @override
+  String get intakeNeverTitle => 'What we never do';
+
+  @override
+  String get intakeNever1 =>
+      'Show a material that hasn’t arrived as “available”.';
+
+  @override
+  String get intakeNever2 =>
+      'Guess a page number or write anything the source doesn’t say.';
+
+  @override
+  String get intakeNever3 =>
+      'Distribute a book to everyone without recorded rights.';
+
+  @override
+  String get intakeContactTitle => '4. Contact';
+
+  @override
+  String get intakeContactBody =>
+      'Write to the LabGuide team about the material: title, author, edition and rights holder. How to hand over the file is agreed with the team — PDFs can’t be uploaded through the app.';
+
+  @override
+  String get intakeContactAction => 'Write to the LabGuide team';
+
+  @override
   String get libReview => 'Review queue';
 
   @override
@@ -3572,6 +4432,109 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get reviewDiscrepancies => 'Source discrepancies';
+
+  @override
+  String get rvGateTitle => 'Reviewers only';
+
+  @override
+  String get rvGateBody =>
+      'Reviewer rights are granted by an admin. An in-app role (for example, “Teacher”) does not grant them.';
+
+  @override
+  String get rvSignInTitle => 'Sign in to review';
+
+  @override
+  String get rvAdminReadOnly =>
+      'As an admin you can see decisions. To review, grant your account reviewer rights (Admin → Users).';
+
+  @override
+  String get rvTabCards => 'Cards';
+
+  @override
+  String get rvTabQuestions => 'Questions';
+
+  @override
+  String get rvTabDiscrepancies => 'Discrepancies';
+
+  @override
+  String rvMine(String decision) {
+    return 'Your decision: $decision';
+  }
+
+  @override
+  String get rvNotSeen => 'Not reviewed by you yet';
+
+  @override
+  String rvCount(int count) {
+    return 'Decisions: $count';
+  }
+
+  @override
+  String get rvApprove => 'Approve';
+
+  @override
+  String get rvChanges => 'Changes needed';
+
+  @override
+  String get rvDecisionApprove => 'approved';
+
+  @override
+  String get rvDecisionChanges => 'changes requested';
+
+  @override
+  String get rvComment => 'Comment';
+
+  @override
+  String get rvCommentHint => 'What is wrong or what to check (source, page)';
+
+  @override
+  String get rvCommentRequired => 'Write a comment for “Changes needed”.';
+
+  @override
+  String get rvSubmit => 'Submit decision';
+
+  @override
+  String get rvSubmitted => 'Decision recorded';
+
+  @override
+  String get rvNotAuto =>
+      'A decision does not change the card status by itself: after editorial review it becomes “Reviewed” in the next content pack.';
+
+  @override
+  String get rvHistory => 'Decision history';
+
+  @override
+  String get rvYou => 'You';
+
+  @override
+  String get rvReviewer => 'Reviewer';
+
+  @override
+  String get rvNoHistory => 'No decisions yet';
+
+  @override
+  String get rvOpenCard => 'Open card';
+
+  @override
+  String get rvCorrect => 'Correct answer';
+
+  @override
+  String get rvBasis => 'Basis';
+
+  @override
+  String get rvYourDecision => 'Your decision';
+
+  @override
+  String get rvAllDone => 'All reviewed';
+
+  @override
+  String get analytePreparedBy => 'Prepared by';
+
+  @override
+  String get analyteEditorial => 'LabGuide editorial team';
+
+  @override
+  String get analyteSourcesChecked => 'Sources accessed';
 
   @override
   String get reviewDiscrepanciesBody =>

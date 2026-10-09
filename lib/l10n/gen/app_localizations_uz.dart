@@ -532,6 +532,12 @@ class AppLocalizationsUz extends AppLocalizations {
   String get sectionLowResult => 'Past natija';
 
   @override
+  String get sectionPositiveResult => 'Musbat natija';
+
+  @override
+  String get sectionNegativeResult => 'Manfiy natija';
+
+  @override
   String get sectionPreanalytics => 'Namuna va preanalitika';
 
   @override
@@ -1623,6 +1629,443 @@ class AppLocalizationsUz extends AppLocalizations {
   String get instOpenCard => 'Apparat kartasi';
 
   @override
+  String get partnerAdLabel => 'Reklama';
+
+  @override
+  String get partnerLabel => 'Hamkor';
+
+  @override
+  String get partnerOfficialTitle => 'Rasmiy hamkorlar';
+
+  @override
+  String get partnerSectionNote =>
+      'Hamkor kompaniyalar o‘zi bergan ma’lumot. Yuqoridagi katalog ma’lumotlari, tartibi va tekshiruv holati hamkorlikka bog‘liq emas.';
+
+  @override
+  String get partnerKindManufacturer => 'Ishlab chiqaruvchi';
+
+  @override
+  String get partnerKindDistributor => 'Rasmiy distribyutor';
+
+  @override
+  String get partnerKindService => 'Servis markazi';
+
+  @override
+  String get partnerCall => 'Qo‘ng‘iroq';
+
+  @override
+  String get partnerTelegram => 'Telegram';
+
+  @override
+  String get partnerWebsite => 'Sayt';
+
+  @override
+  String get partnerEmail => 'Email';
+
+  @override
+  String get partnerBrochure => 'Buklet';
+
+  @override
+  String get partnerMore => 'Batafsil';
+
+  @override
+  String partnerRegions(String regions) {
+    return 'Hududlar: $regions';
+  }
+
+  @override
+  String partnerRegistration(String number) {
+    return 'O‘zbekistonda ro‘yxatdan o‘tganlik guvohnomasi: $number';
+  }
+
+  @override
+  String get partnerRegistrationNote => 'Raqamni hamkor taqdim etgan.';
+
+  @override
+  String get partnerBecome => 'Hamkor bo‘lish';
+
+  @override
+  String get partnerBecomeSub => 'Firmalar uchun: apparatlaringiz LabGuide’da';
+
+  @override
+  String get partnerNotFoundTitle => 'Hamkor topilmadi';
+
+  @override
+  String get partnerNotFoundBody =>
+      'E’lon muddati tugagan yoki to‘xtatilgan bo‘lishi mumkin.';
+
+  @override
+  String get partnerContacts => 'Aloqa';
+
+  @override
+  String get partnerAbout => 'Kompaniya haqida';
+
+  @override
+  String get partnerInstruments => 'Bog‘liq apparatlar';
+
+  @override
+  String partnerAllModels(String maker) {
+    return '$maker: barcha modellar';
+  }
+
+  @override
+  String get partnerPageNote =>
+      'Bu sahifa — reklama. LabGuide hamkor mahsulotini tavsiya qilmaydi; katalog ma’lumotlari va tekshiruv holati hamkorlikka bog‘liq emas.';
+
+  @override
+  String get partnerOfferTitle => 'Rasmiy aloqangiz — apparat kartasida';
+
+  @override
+  String get partnerOfferBody =>
+      'Laboratoriya mutaxassisi apparat haqida o‘qiyotganda rasmiy distribyutor yoki servis markaziga bir bosishda qo‘ng‘iroq qila oladi. Ishlab chiqaruvchilar, rasmiy distribyutorlar va servis markazlari uchun.';
+
+  @override
+  String get partnerWhatTitle => 'Nima beriladi';
+
+  @override
+  String get partnerWhatCard =>
+      'Apparat kartasida “Rasmiy hamkorlar” bo‘limi: logo, qisqa tavsif, hududlar, telefon va Telegram tugmalari.';
+
+  @override
+  String get partnerWhatCategory =>
+      'Yo‘nalish ichida (masalan, Biokimyo) ixcham “Hamkor” kartasi.';
+
+  @override
+  String get partnerWhatLabHome =>
+      'Lab bo‘limi bosh sahifasida navbat bilan bitta reklama kartasi.';
+
+  @override
+  String get partnerWhatPage =>
+      'Hamkor sahifasi: bog‘liq modellar, guvohnoma raqamlari, buklet.';
+
+  @override
+  String get partnerWhatReport =>
+      'Hisobot: kun va joy bo‘yicha ko‘rsatilishlar va “bog‘lanish” bosilishlari (shaxsiy ma’lumotsiz).';
+
+  @override
+  String get partnerAudienceTitle => 'Auditoriya';
+
+  @override
+  String get partnerAudienceBody =>
+      'LabGuide laboratoriya mutaxassislari, shifokorlar, talabalar va ustozlar uchun — o‘zbek, rus va ingliz tillarida. Foydalanuvchilar soni va rollar taqsimotini kelishuv paytida server statistikasidan ko‘rsatamiz; taxminiy raqam aytmaymiz.';
+
+  @override
+  String get partnerRulesTitle => 'Qoidalar';
+
+  @override
+  String get partnerRule1 =>
+      'Har bir joyda aniq “Reklama” yoki “Hamkor” yorlig‘i turadi.';
+
+  @override
+  String get partnerRule2 =>
+      'Katalog faktlari, tartibi va tekshiruv holati hamkorlikka bog‘liq emas — pul evaziga o‘zgarmaydi.';
+
+  @override
+  String get partnerRule3 =>
+      'Tibbiy buyum reklamasi: apparat O‘zbekistonda ro‘yxatdan o‘tgan bo‘lishi kerak; guvohnoma raqami kartada ko‘rsatiladi.';
+
+  @override
+  String get partnerRule4 =>
+      'Faqat tekshirsa bo‘ladigan ma’lumot: “eng yaxshi”, “100% aniq” kabi isbotsiz da’volar qabul qilinmaydi.';
+
+  @override
+  String get partnerRule5 =>
+      'Foydalanuvchilarning shaxsiy ma’lumotlari hamkorga berilmaydi.';
+
+  @override
+  String get partnerPriceTitle => 'Narx';
+
+  @override
+  String get partnerPriceBody =>
+      'Narx kelishiladi — joylar, muddat va hududlarga qarab.';
+
+  @override
+  String get partnerHowTitle => 'Qanday ulanadi';
+
+  @override
+  String get partnerHow1 => 'Pastdagi forma orqali ariza yuboring.';
+
+  @override
+  String get partnerHow2 => 'Biz bog‘lanamiz va shartlarni kelishamiz.';
+
+  @override
+  String get partnerHow3 =>
+      'Logo, tavsif (uz/ru/en), aloqa va guvohnoma raqamlarini yuborasiz.';
+
+  @override
+  String get partnerHow4 =>
+      'Tekshirilgach e’lon qilinadi; hisobotni muntazam yuboramiz.';
+
+  @override
+  String get partnerFormTitle => 'Ariza';
+
+  @override
+  String get partnerFormCompany => 'Kompaniya';
+
+  @override
+  String get partnerFormContact => 'Mas’ul shaxs';
+
+  @override
+  String get partnerFormPhone => 'Telefon';
+
+  @override
+  String get partnerFormEmail => 'Email';
+
+  @override
+  String get partnerFormProducts => 'Mahsulotlar (apparatlar, modellar)';
+
+  @override
+  String get partnerFormMessage => 'Xabar';
+
+  @override
+  String get partnerFormHint => 'Telefon yoki emaildan kamida bittasi kerak.';
+
+  @override
+  String get partnerFormSend => 'Arizani yuborish';
+
+  @override
+  String get partnerFormInvalid =>
+      'Kompaniya va mas’ul shaxsni kiriting, telefon yoki emailni to‘g‘ri yozing.';
+
+  @override
+  String get partnerSentTitle => 'Ariza yuborildi';
+
+  @override
+  String get partnerSentBody =>
+      'Javob shu sahifada, “Arizalaringiz” bo‘limida ko‘rinadi. Kerak bo‘lsa, ko‘rsatgan telefon yoki emailingiz orqali bog‘lanamiz.';
+
+  @override
+  String get partnerSendAnother => 'Yana ariza yuborish';
+
+  @override
+  String get partnerFormSignIn =>
+      'Ariza yuborish uchun email bilan kiring — javob shu hisobga keladi.';
+
+  @override
+  String get partnerFormUnavailable =>
+      'Ariza yuborish hali ulanmagan: bu buildda server sozlanmagan.';
+
+  @override
+  String get partnerMyRequests => 'Arizalaringiz';
+
+  @override
+  String get partnerReqStatusNew => 'Yangi';
+
+  @override
+  String get partnerReqStatusInReview => 'Ko‘rib chiqilmoqda';
+
+  @override
+  String get partnerReqStatusAccepted => 'Qabul qilindi';
+
+  @override
+  String get partnerReqStatusDeclined => 'Rad etildi';
+
+  @override
+  String partnerReqReply(String text) {
+    return 'LabGuide javobi: $text';
+  }
+
+  @override
+  String get partnerPlacementCard => 'Apparat kartasi';
+
+  @override
+  String get partnerPlacementCategory => 'Yo‘nalish';
+
+  @override
+  String get partnerPlacementLabHome => 'Lab bosh sahifasi';
+
+  @override
+  String get partnerPlacementPage => 'Hamkor sahifasi';
+
+  @override
+  String get adminPartners => 'Hamkorlar';
+
+  @override
+  String get adminPartnersSub => 'Reklama: yaratish, e’lon, statistika';
+
+  @override
+  String get adminPartnerRequests => 'Hamkorlik arizalari';
+
+  @override
+  String adminPartnerRequestsNew(int count) {
+    return 'Yangi arizalar: $count';
+  }
+
+  @override
+  String get adminPartnerNew => 'Yangi hamkor';
+
+  @override
+  String get adminPartnersEmpty => 'Hali hamkor yo‘q';
+
+  @override
+  String get adminPartnerStatusDraft => 'Qoralama';
+
+  @override
+  String get adminPartnerStatusLive => 'E’lon qilingan';
+
+  @override
+  String get adminPartnerStatusPaused => 'To‘xtatilgan';
+
+  @override
+  String get adminPartnerExpired => 'Muddati tugagan';
+
+  @override
+  String get adminPartnerUpcoming => 'Hali boshlanmagan';
+
+  @override
+  String get adminPartnerName => 'Kompaniya nomi';
+
+  @override
+  String get adminPartnerKind => 'Turi';
+
+  @override
+  String get adminPartnerLogo => 'Logo havolasi (https://…)';
+
+  @override
+  String get adminPartnerLogoUpload => 'Logoni yuklash (PNG/JPEG, ≤ 1 MB)';
+
+  @override
+  String get adminPartnerLogoTooLarge =>
+      'Logo 1 MB dan katta yoki PNG/JPEG emas.';
+
+  @override
+  String adminPartnerSummary(String lang) {
+    return 'Qisqa tavsif ($lang)';
+  }
+
+  @override
+  String get adminPartnerRegions => 'Hududlar';
+
+  @override
+  String get adminPartnerTelegram => 'Telegram (username)';
+
+  @override
+  String get adminPartnerWebsite => 'Sayt (https://…)';
+
+  @override
+  String get adminPartnerBrochure => 'Buklet havolasi (https://…)';
+
+  @override
+  String get adminPartnerLinks => 'Katalogga bog‘lash';
+
+  @override
+  String get adminPartnerMakers => 'Ishlab chiqaruvchilar (barcha modellari)';
+
+  @override
+  String get adminPartnerModels => 'Modellar';
+
+  @override
+  String get adminPartnerAddModel => 'Model qo‘shish';
+
+  @override
+  String get adminPartnerRegNo => 'Guvohnoma raqami (ixtiyoriy)';
+
+  @override
+  String get adminPartnerUnlink => 'Olib tashlash';
+
+  @override
+  String get adminPartnerPeriodTitle => 'Faollik davri';
+
+  @override
+  String get adminPartnerStarts => 'Boshlanish';
+
+  @override
+  String get adminPartnerEnds => 'Tugash';
+
+  @override
+  String get adminPartnerSave => 'Saqlash';
+
+  @override
+  String get adminPartnerSaved => 'Saqlandi';
+
+  @override
+  String get adminPartnerPublish => 'E’lon qilish';
+
+  @override
+  String get adminPartnerPause => 'To‘xtatish';
+
+  @override
+  String get adminPartnerPublished => 'E’lon qilindi';
+
+  @override
+  String get adminPartnerPausedMsg => 'To‘xtatildi';
+
+  @override
+  String get adminPartnerPublishRules =>
+      'E’lon uchun: tavsif, kamida bitta aloqa va kamida bitta bog‘lanish kerak. Reklama har joyda “Reklama” yorlig‘i bilan chiqadi va katalog ma’lumotiga ta’sir qilmaydi.';
+
+  @override
+  String get adminPartnerInvalid =>
+      'Ma’lumotni tekshiring: nom (2–120 belgi), telefon, Telegram (5–32 belgi), https havolalar, email, sanalar; e’lon uchun — tavsif, aloqa va bog‘lanish.';
+
+  @override
+  String get adminPartnerStats => 'Statistika';
+
+  @override
+  String get adminStatsImpressions => 'Ko‘rsatilish';
+
+  @override
+  String get adminStatsContacts => '“Bog‘lanish” bosilishi';
+
+  @override
+  String get adminStatsCtr => 'Bosilish ulushi';
+
+  @override
+  String get adminStats7 => 'Oxirgi 7 kun';
+
+  @override
+  String get adminStats30 => 'Oxirgi 30 kun';
+
+  @override
+  String get adminStatsAll => 'Butun davr';
+
+  @override
+  String get adminStatsPeriods => 'Davrlar bo‘yicha';
+
+  @override
+  String get adminStatsByPlacement => 'Joylar bo‘yicha (30 kun)';
+
+  @override
+  String get adminStatsDaily => 'Kunlar bo‘yicha';
+
+  @override
+  String get adminStatsEmpty => 'Hali hodisa yo‘q';
+
+  @override
+  String get adminStatsNote =>
+      'Hisoblash: ko‘rsatilish — hamkor bloki ekranda chizilgan; bitta qurilmada kuniga har joy uchun bir marta. Faqat hisobga kirgan foydalanuvchilar sanaladi (mehmon va admin — yo‘q). Shaxsiy ma’lumot saqlanmaydi, faqat kunlik hisoblagich (Toshkent vaqti).';
+
+  @override
+  String get adminStatsCopy => 'Hisobotni nusxalash';
+
+  @override
+  String get adminRequestsEmpty => 'Ariza yo‘q';
+
+  @override
+  String get adminRequestReply => 'Javob (arizachi ko‘radi)';
+
+  @override
+  String get adminRequestSave => 'Holat va javobni saqlash';
+
+  @override
+  String get adminActionPartnerCreated => 'Hamkor yaratildi';
+
+  @override
+  String get adminActionPartnerUpdated => 'Hamkor tahrirlandi';
+
+  @override
+  String get adminActionPartnerPublished => 'Hamkor e’lon qilindi';
+
+  @override
+  String get adminActionPartnerPaused => 'Hamkor to‘xtatildi';
+
+  @override
+  String get adminActionPartnerDraft => 'Hamkor qoralamaga qaytdi';
+
+  @override
+  String get adminActionPartnerRequest => 'Hamkorlik arizasi ko‘rib chiqildi';
+
+  @override
   String get calStepInstrument => '1. Apparat';
 
   @override
@@ -1823,7 +2266,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get libBooks => 'Kitob va qo‘llanmalar';
 
   @override
-  String get libBooksSub => 'PDF · til · versiya · hajm';
+  String get libBooksSub => 'Kitob, qo‘llanma va saytlar katalogi';
 
   @override
   String get libPacks => 'Oflayn paketlar';
@@ -3368,7 +3811,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get privacyBody =>
-      'Ilovaning bu versiyasi serverga ma’lumot yubormaydi. Sozlamalar, xatcho‘plar, qoralamalar, QC qaydlari va mashq natijalari shu qurilmada saqlanadi; ular qurilmangizning o‘z zaxira nusxasiga (iCloud yoki Google) kirishi mumkin.';
+      'Mehmon rejimida ilova serverga hech narsa yubormaydi: sozlamalar, xatcho‘plar, QC qaydlari, apparatlaringiz va mashq natijalari shu qurilmada saqlanadi (qurilmaning o‘z zaxira nusxasiga kirishi mumkin). Email bilan kirsangiz — email, rol, til, oxirgi faol kun, murojaatlaringiz va guruh natijalari serverda saqlanadi; reklama va kuzatuv yo‘q. Hisobni istalgan vaqtda o‘chirishingiz mumkin.';
 
   @override
   String get privacyTerms => 'Foydalanish shartlari';
@@ -3486,6 +3929,421 @@ class AppLocalizationsUz extends AppLocalizations {
   }
 
   @override
+  String get libForYou => 'Siz uchun';
+
+  @override
+  String get libMoreSections => 'Boshqa bo‘limlar';
+
+  @override
+  String get libSearchEntry => 'Kitob, muallif, mavzu qidirish';
+
+  @override
+  String libBooksCount(int count) {
+    return '$count ta manba · qidiruv va filtrlar';
+  }
+
+  @override
+  String get libIntake => 'Materiallarni qo‘shish tartibi';
+
+  @override
+  String get libIntakeSub =>
+      'Domla va muharrir uchun: nima yuboriladi, huquq, tekshiruv';
+
+  @override
+  String get libContinueReading => 'O‘qishni davom ettirish';
+
+  @override
+  String get libSearchLabel => 'Kutubxonadan qidirish';
+
+  @override
+  String get libSearchHint => 'Nomi, muallif, mavzu…';
+
+  @override
+  String get libFilterLanguage => 'Til';
+
+  @override
+  String get libFilterTopic => 'Mavzu';
+
+  @override
+  String get libFilterType => 'Turi';
+
+  @override
+  String get libFilterSectionField => 'Yo‘nalish';
+
+  @override
+  String get libFilterSectionGroup => 'Tahlillar guruhi';
+
+  @override
+  String get libFilterSectionKind => 'Material turi';
+
+  @override
+  String get libFilterSectionOpen => 'Qanday ochiladi';
+
+  @override
+  String libFilterChoose(String filter) {
+    return '$filter: tanlang';
+  }
+
+  @override
+  String libResultCount(int shown, int total) {
+    return '$total ta materialdan $shown tasi';
+  }
+
+  @override
+  String get libClearFilters => 'Tozalash';
+
+  @override
+  String get libFilteredEmptyTitle => 'Bu filtrlar bo‘yicha material yo‘q';
+
+  @override
+  String get libFilteredEmptyBody =>
+      'Bitta filtrni olib tashlang yoki boshqa so‘z bilan qidiring — masalan, muallif familiyasi yoki “siydik”.';
+
+  @override
+  String get libOpenLink => 'Havola · tashqi sayt';
+
+  @override
+  String libOpenLinkHint(String host) {
+    return 'Brauzerda ochiladi: $host';
+  }
+
+  @override
+  String get libOpenInApp => 'Ilova ichidagi fayl';
+
+  @override
+  String get libOpenInAppHint => 'Ilova ichida o‘qiladi — internet shart emas';
+
+  @override
+  String get libOpenDownload => 'Yuklab olinadigan kitob';
+
+  @override
+  String libOpenDownloadHint(String size) {
+    return 'Yuklab olingach ilova ichida o‘qiladi · $size';
+  }
+
+  @override
+  String get libOpenPending => 'Kutilmoqda';
+
+  @override
+  String get libOpenPendingHint => 'Material hali olinmagan — ochib bo‘lmaydi';
+
+  @override
+  String get libOpenReceivedHint =>
+      'Fayl qabul qilindi va tekshirilmoqda — hali ochilmaydi';
+
+  @override
+  String get libOpenRecordHint =>
+      'Faylni tarqatish huquqi qayd etilmagan — ilovada ochilmaydi';
+
+  @override
+  String get libOpenLinkShort => 'Havola';
+
+  @override
+  String get libOpenInAppShort => 'Ilova ichida';
+
+  @override
+  String get libOpenDownloadShort => 'Yuklab olinadigan';
+
+  @override
+  String get libOpenRecordShort => 'Faqat yozuv';
+
+  @override
+  String get libItemRead => 'O‘qish';
+
+  @override
+  String libItemContinue(int page) {
+    return '$page-sahifadan davom etish';
+  }
+
+  @override
+  String get libItemCannotOpen => 'Ochib bo‘lmaydi';
+
+  @override
+  String get libDownloadUnavailable =>
+      'Yuklab olish serveri hali ulanmagan — kitobni hozircha yuklab bo‘lmaydi.';
+
+  @override
+  String get libDetailsTitle => 'Ma’lumotlar';
+
+  @override
+  String get libFieldAuthors => 'Muallif';
+
+  @override
+  String get libFieldYear => 'Yil';
+
+  @override
+  String get libFieldEdition => 'Nashr';
+
+  @override
+  String get libFieldPublisher => 'Nashriyot';
+
+  @override
+  String get libFieldAccess => 'Kirish';
+
+  @override
+  String get libFieldStatus => 'Holat';
+
+  @override
+  String get libFieldRights => 'Tarqatish huquqi';
+
+  @override
+  String libFieldRightsRecorded(String date, String by) {
+    return 'Qayd etilgan: $date · $by';
+  }
+
+  @override
+  String get libFieldTopics => 'Mavzular';
+
+  @override
+  String get libFieldPages => 'Sahifalar';
+
+  @override
+  String get libStateNotReceived => 'Hali olinmagan';
+
+  @override
+  String get libStateReceived => 'Qabul qilindi, tekshirilmoqda';
+
+  @override
+  String get libStateCataloged => 'Kataloglangan';
+
+  @override
+  String get libStateLinked => 'Kartalarga bog‘langan';
+
+  @override
+  String get libStateReviewed => 'Domla tasdiqlagan';
+
+  @override
+  String get libProvidedByTeacher => 'Domla bergan material';
+
+  @override
+  String get libItemNotFound => 'Material topilmadi';
+
+  @override
+  String get libItemNotFoundBody =>
+      'Kontent paketi yangilangan bo‘lishi mumkin. Katalogga qayting.';
+
+  @override
+  String get libBackToCatalog => 'Katalogga qaytish';
+
+  @override
+  String get readerTitle => 'O‘quvchi';
+
+  @override
+  String readerPageOf(int page, int total) {
+    return '$page / $total';
+  }
+
+  @override
+  String get readerToc => 'Mundarija';
+
+  @override
+  String get readerTocEmpty => 'Bu faylda mundarija yo‘q';
+
+  @override
+  String get readerTocEmptyBody =>
+      'Sahifaga o‘ting yoki kerakli joyga xatcho‘p qo‘ying.';
+
+  @override
+  String get readerBookmarks => 'Xatcho‘plar';
+
+  @override
+  String get readerAddBookmark => 'Shu sahifani belgilash';
+
+  @override
+  String get readerBookmarkName => 'Xatcho‘p nomi';
+
+  @override
+  String get readerBookmarkNameHint => 'Masalan: muhim jadval';
+
+  @override
+  String readerBookmarkSaved(int page) {
+    return 'Xatcho‘p saqlandi: $page-sahifa';
+  }
+
+  @override
+  String get readerBookmarkRemoved => 'Xatcho‘p o‘chirildi';
+
+  @override
+  String get readerBookmarkRemove => 'Xatcho‘pni o‘chirish';
+
+  @override
+  String get readerBookmarksEmpty => 'Hali xatcho‘p yo‘q';
+
+  @override
+  String get readerBookmarksEmptyBody =>
+      'Kerakli sahifada “Shu sahifani belgilash”ni bosing — keyin bir bosishda qaytasiz.';
+
+  @override
+  String readerPageLabel(int page) {
+    return '$page-sahifa';
+  }
+
+  @override
+  String get readerGoTo => 'Sahifaga o‘tish';
+
+  @override
+  String get readerGoToShort => 'Sahifa';
+
+  @override
+  String readerGoToHint(int total) {
+    return '1 dan $total gacha';
+  }
+
+  @override
+  String readerGoToError(int total) {
+    return '1 dan $total gacha raqam kiriting';
+  }
+
+  @override
+  String get readerGo => 'O‘tish';
+
+  @override
+  String get readerSave => 'Saqlash';
+
+  @override
+  String get readerRenameBookmark => 'Xatcho‘p nomini o‘zgartirish';
+
+  @override
+  String get libFieldProvidedBy => 'Kimdan';
+
+  @override
+  String get libQueryEmptyBody =>
+      'Boshqa so‘z bilan qidiring — masalan, muallif familiyasi, “siydik” yoki “biokimyo”.';
+
+  @override
+  String get readerZoomIn => 'Kattalashtirish';
+
+  @override
+  String get readerZoomOut => 'Kichiklashtirish';
+
+  @override
+  String readerResumed(int page) {
+    return 'Oxirgi o‘qilgan joy: $page-sahifa';
+  }
+
+  @override
+  String get readerFromStart => 'Boshidan';
+
+  @override
+  String get readerLoading => 'Fayl ochilmoqda…';
+
+  @override
+  String get readerFileMissing => 'Fayl topilmadi';
+
+  @override
+  String get readerFileMissingBody =>
+      'Bu fayl ilova ichida yo‘q. Ilovani yangilab ko‘ring.';
+
+  @override
+  String get readerFileCorrupted => 'Fayl tekshiruvdan o‘tmadi';
+
+  @override
+  String get readerFileCorruptedBody =>
+      'Fayl hajmi yoki nazorat yig‘indisi katalogdagiga mos emas — u buzilgan yoki almashtirilgan bo‘lishi mumkin, shuning uchun ochilmadi.';
+
+  @override
+  String get readerOpenFailed => 'PDF ochilmadi';
+
+  @override
+  String get readerBlockedTitle => 'Ilova ichida ochilmaydi';
+
+  @override
+  String get readerBlockedRights =>
+      'Ilovada faqat to‘liq tarqatish huquqi qayd etilgan fayllar ochiladi. Bu material uchun bunday fayl yo‘q.';
+
+  @override
+  String get readerBookmarkedPage => 'Bu sahifa belgilangan';
+
+  @override
+  String get intakeTitle => 'Materiallarni qo‘shish';
+
+  @override
+  String get intakeSubtitle => 'Domla va muharrir uchun qisqa tartib';
+
+  @override
+  String intakeStatus(int count) {
+    return 'Domlalardan kelgan materiallar: $count. Ro‘yxat material kelishi bilan to‘ldiriladi.';
+  }
+
+  @override
+  String get intakeWhatTitle => '1. Nima yuboriladi';
+
+  @override
+  String get intakeWhat1 =>
+      'Kitob, qo‘llanma, metodika yoki IFU fayli (PDF) va uning ma’lumotlari: nomi, muallif, yil va nashr, nashriyot, ISBN, til.';
+
+  @override
+  String get intakeWhat2 =>
+      'Test savollari: savol, variantlar, to‘g‘ri javob, har variant uchun izoh va manba sahifasi.';
+
+  @override
+  String get intakeWhat3 =>
+      'Eski va yangi nashr bo‘lsa — ikkalasi ham: farqlar alohida ko‘rib chiqiladi.';
+
+  @override
+  String get intakeRightsTitle => '2. Tarqatish huquqi';
+
+  @override
+  String get intakeRights1 =>
+      'Berilgan PDF o‘z-o‘zidan hammaga tarqatish huquqi degani emas.';
+
+  @override
+  String get intakeRights2 =>
+      'Fayl ilovada hammaga ochilishi uchun to‘liq huquq qayd etiladi: kim ruxsat bergan (muallif yoki nashriyot), qachon, kim qayd etgan va dalil — ruxsat xati yoki litsenziya havolasi.';
+
+  @override
+  String get intakeRights3 =>
+      'Qayd bo‘lmasa, material faqat katalog yozuvi yoki shaxsiy foydalanish uchun qoladi.';
+
+  @override
+  String get intakeReviewTitle => '3. Qanday tekshiriladi';
+
+  @override
+  String get intakeStep1 => 'Kutilmoqda — material hali kelmagan.';
+
+  @override
+  String get intakeStep2 => 'Qabul qilindi — fayl keldi va ro‘yxatga yozildi.';
+
+  @override
+  String get intakeStep3 =>
+      'Kataloglandi — nomi, muallif va nashr tekshirildi. Shundan keyingina undan iqtibos keltiriladi.';
+
+  @override
+  String get intakeStep4 =>
+      'Bog‘landi — tahlil kartalari va darslarga sahifa raqami bilan bog‘landi.';
+
+  @override
+  String get intakeStep5 =>
+      'Tasdiqlandi — domla ko‘rib chiqdi. Savollar shungacha “Qoralama” bo‘lib turadi.';
+
+  @override
+  String get intakeConflict =>
+      'Eski va yangi manba zid bo‘lsa, hech biri fakt sifatida yozilmaydi — ikkala pozitsiya tekshiruvchiga ko‘rsatiladi.';
+
+  @override
+  String get intakeNeverTitle => 'Nima qilinmaydi';
+
+  @override
+  String get intakeNever1 => 'Kelmagan materialni “mavjud” deb ko‘rsatish.';
+
+  @override
+  String get intakeNever2 =>
+      'Sahifa raqamini taxmin qilish yoki manbada yo‘q gapni yozish.';
+
+  @override
+  String get intakeNever3 => 'Huquqi qayd etilmagan kitobni hammaga tarqatish.';
+
+  @override
+  String get intakeContactTitle => '4. Bog‘lanish';
+
+  @override
+  String get intakeContactBody =>
+      'Material haqida LabGuide jamoasiga yozing: nomi, muallif, nashr va huquq egasi. Faylni topshirish usuli jamoa bilan kelishiladi — ilova orqali PDF yuklab bo‘lmaydi.';
+
+  @override
+  String get intakeContactAction => 'LabGuide jamoasiga yozish';
+
+  @override
   String get libReview => 'Tekshiruv navbati';
 
   @override
@@ -3493,6 +4351,110 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get reviewDiscrepancies => 'Manbalar orasidagi farqlar';
+
+  @override
+  String get rvGateTitle => 'Faqat tekshiruvchilar uchun';
+
+  @override
+  String get rvGateBody =>
+      'Tekshiruvchi vakolatini admin beradi. Ilovadagi rol (masalan, “Ustoz”) bu huquqni bermaydi.';
+
+  @override
+  String get rvSignInTitle => 'Tekshiruv uchun hisobga kiring';
+
+  @override
+  String get rvAdminReadOnly =>
+      'Admin sifatida qarorlarni ko‘rasiz. Qaror yozish uchun hisobingizga tekshiruvchi vakolatini bering (Admin → Foydalanuvchilar).';
+
+  @override
+  String get rvTabCards => 'Kartalar';
+
+  @override
+  String get rvTabQuestions => 'Savollar';
+
+  @override
+  String get rvTabDiscrepancies => 'Nomuvofiqliklar';
+
+  @override
+  String rvMine(String decision) {
+    return 'Sizning qaroringiz: $decision';
+  }
+
+  @override
+  String get rvNotSeen => 'Siz hali ko‘rmagansiz';
+
+  @override
+  String rvCount(int count) {
+    return 'Qarorlar: $count';
+  }
+
+  @override
+  String get rvApprove => 'Tasdiqlayman';
+
+  @override
+  String get rvChanges => 'O‘zgartirish kerak';
+
+  @override
+  String get rvDecisionApprove => 'tasdiqlagan';
+
+  @override
+  String get rvDecisionChanges => 'o‘zgartirish so‘ragan';
+
+  @override
+  String get rvComment => 'Izoh';
+
+  @override
+  String get rvCommentHint =>
+      'Nima noto‘g‘ri yoki nimani tekshirish kerak (manba, sahifa)';
+
+  @override
+  String get rvCommentRequired => '“O‘zgartirish kerak” uchun izoh yozing.';
+
+  @override
+  String get rvSubmit => 'Qarorni yuborish';
+
+  @override
+  String get rvSubmitted => 'Qaror yozildi';
+
+  @override
+  String get rvNotAuto =>
+      'Qaror kartaning holatini o‘zi o‘zgartirmaydi: tahririyat ko‘rib chiqqach, keyingi kontent paketida “Tekshirilgan” bo‘ladi.';
+
+  @override
+  String get rvHistory => 'Qarorlar tarixi';
+
+  @override
+  String get rvYou => 'Siz';
+
+  @override
+  String get rvReviewer => 'Tekshiruvchi';
+
+  @override
+  String get rvNoHistory => 'Hali qaror yo‘q';
+
+  @override
+  String get rvOpenCard => 'Kartani ochish';
+
+  @override
+  String get rvCorrect => 'To‘g‘ri javob';
+
+  @override
+  String get rvBasis => 'Asos';
+
+  @override
+  String get rvYourDecision => 'Qaroringiz';
+
+  @override
+  String get rvAllDone => 'Hammasi ko‘rib chiqilgan';
+
+  @override
+  String get analytePreparedBy => 'Tayyorlagan';
+
+  @override
+  String get analyteEditorial => 'LabGuide tahririyati';
+
+  @override
+  String get analyteSourcesChecked => 'Manbalar ko‘rilgan';
 
   @override
   String get reviewDiscrepanciesBody =>

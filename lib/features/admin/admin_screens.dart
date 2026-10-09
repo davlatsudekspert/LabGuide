@@ -12,6 +12,7 @@ import '../../core/backend/backend_models.dart';
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
+import '../partners/partner_admin_screens.dart' show AdminPartnerRequestsRow;
 import '../support/support_screens.dart';
 
 /// Admin bo'limlariga kirish: server admin hisobi deb tasdiqlagan bo'lishi
@@ -266,7 +267,10 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
                     );
                   }
                   if (s == null) {
-                    return const LgStateView(kind: StateKind.loading, title: '');
+                    return const LgStateView(
+                      kind: StateKind.loading,
+                      title: '',
+                    );
                   }
                   String roleName(String r) => switch (r) {
                     'doctor' => l.roleDoctor,
@@ -286,14 +290,20 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
                               label: l.adminRegistered,
                               value: '${s.registered}',
                             ),
-                            LgMetric(label: l.adminNewToday, value: '${s.newToday}'),
+                            LgMetric(
+                              label: l.adminNewToday,
+                              value: '${s.newToday}',
+                            ),
                             LgMetric(label: l.adminNew7, value: '${s.new7d}'),
                             LgMetric(label: l.adminNew30, value: '${s.new30d}'),
                             LgMetric(
                               label: l.adminActiveToday,
                               value: '${s.activeToday}',
                             ),
-                            LgMetric(label: l.adminActive7, value: '${s.active7d}'),
+                            LgMetric(
+                              label: l.adminActive7,
+                              value: '${s.active7d}',
+                            ),
                             LgMetric(
                               label: l.adminActive30,
                               value: '${s.active30d}',
@@ -307,7 +317,10 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
                         child: Column(
                           children: [
                             for (final e in s.byRole.entries)
-                              LgMetric(label: roleName(e.key), value: '${e.value}'),
+                              LgMetric(
+                                label: roleName(e.key),
+                                value: '${e.value}',
+                              ),
                             if (s.withoutProfile > 0)
                               LgMetric(
                                 label: l.adminNoProfile(s.withoutProfile),
@@ -332,13 +345,22 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
                       const SizedBox(height: 8),
                       LgRow(
                         title: l.adminInbox,
-                        subtitle: l.adminAwaiting(s.support['awaiting_reply'] ?? 0),
+                        subtitle: l.adminAwaiting(
+                          s.support['awaiting_reply'] ?? 0,
+                        ),
                         icon: Icons.inbox_outlined,
                         onTap: () async {
                           await context.push('/profile/admin/inbox');
                           await _load();
                         },
                       ),
+                      LgRow(
+                        title: l.adminPartners,
+                        subtitle: l.adminPartnersSub,
+                        icon: Icons.storefront_outlined,
+                        onTap: () => context.push('/profile/admin/partners'),
+                      ),
+                      const AdminPartnerRequestsRow(),
                       LgRow(
                         title: l.adminUsers,
                         icon: Icons.people_outline_rounded,
@@ -443,11 +465,17 @@ class _AdminInboxScreenState extends State<AdminInboxScreen> {
                   ),
                   const SizedBox(height: 8),
                   if (_error != null)
-                    LgNotice(backendErrorText(_error!, l), kind: NoticeKind.error)
+                    LgNotice(
+                      backendErrorText(_error!, l),
+                      kind: NoticeKind.error,
+                    )
                   else if (threads == null)
                     const LgStateView(kind: StateKind.loading, title: '')
                   else if (threads.isEmpty)
-                    LgStateView(kind: StateKind.empty, title: l.supportEmptyTitle)
+                    LgStateView(
+                      kind: StateKind.empty,
+                      title: l.supportEmptyTitle,
+                    )
                   else
                     for (final (i, t) in threads.indexed)
                       LgRow(
@@ -586,7 +614,10 @@ class _AdminThreadScreenState extends State<AdminThreadScreen> {
                   if (messages != null)
                     SupportConversation(messages: messages, asAdmin: true),
                   if (_error != null)
-                    LgNotice(backendErrorText(_error!, l), kind: NoticeKind.error),
+                    LgNotice(
+                      backendErrorText(_error!, l),
+                      kind: NoticeKind.error,
+                    ),
                   if (messages != null) ...[
                     LgField(
                       label: l.adminSendReply,
@@ -684,8 +715,10 @@ class _AdminUsersScreenState extends State<AdminUsersScreen> {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Text(email ?? u.emailMasked,
-                  style: Theme.of(context).textTheme.titleMedium),
+              Text(
+                email ?? u.emailMasked,
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
               const SizedBox(height: 12),
               if (email == null)
                 LgButton.secondary(
@@ -748,7 +781,13 @@ class _AdminUsersScreenState extends State<AdminUsersScreen> {
                     spacing: 6,
                     runSpacing: 6,
                     children: [
-                      for (final r in [null, 'doctor', 'lab', 'student', 'teacher'])
+                      for (final r in [
+                        null,
+                        'doctor',
+                        'lab',
+                        'student',
+                        'teacher',
+                      ])
                         LgChoiceChip(
                           label: r == null ? l.adminAllRoles : roleName(r),
                           selected: _role == r,
@@ -779,7 +818,10 @@ class _AdminUsersScreenState extends State<AdminUsersScreen> {
                   ),
                   const SizedBox(height: 8),
                   if (_error != null)
-                    LgNotice(backendErrorText(_error!, l), kind: NoticeKind.error)
+                    LgNotice(
+                      backendErrorText(_error!, l),
+                      kind: NoticeKind.error,
+                    )
                   else if (page == null)
                     const LgStateView(kind: StateKind.loading, title: '')
                   else if (page.rows.isEmpty)
@@ -853,6 +895,12 @@ String auditActionLabel(String action, AppLocalizations l) => switch (action) {
   'reviewer_revoked' => l.adminActionReviewerRevoked,
   'admin_granted' => l.adminActionAdminGranted,
   'admin_revoked' => l.adminActionAdminRevoked,
+  'partner_created' => l.adminActionPartnerCreated,
+  'partner_updated' => l.adminActionPartnerUpdated,
+  'partner_published' => l.adminActionPartnerPublished,
+  'partner_paused' => l.adminActionPartnerPaused,
+  'partner_draft' => l.adminActionPartnerDraft,
+  'partner_request' => l.adminActionPartnerRequest,
   _ => action,
 };
 
@@ -892,7 +940,10 @@ class _AdminAuditScreenState extends State<AdminAuditScreen> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   if (_error != null)
-                    LgNotice(backendErrorText(_error!, l), kind: NoticeKind.error)
+                    LgNotice(
+                      backendErrorText(_error!, l),
+                      kind: NoticeKind.error,
+                    )
                   else if (entries == null)
                     const LgStateView(kind: StateKind.loading, title: '')
                   else if (entries.isEmpty)
@@ -914,4 +965,3 @@ class _AdminAuditScreenState extends State<AdminAuditScreen> {
     );
   }
 }
-

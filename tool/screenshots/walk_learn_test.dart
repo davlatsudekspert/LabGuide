@@ -330,7 +330,7 @@ void main() {
     final w = Walk(tester, 'learn_en');
     await goTo(tester, '/learn/exam');
     await w.snap('exam_setup');
-    await w.tapScroll(l.examCountAll(71));
+    await w.tapScroll(l.examCountAll(s.content.pack!.quiz.length));
     await w.tapScroll(l.examMinutes(10));
     await w.tapScroll(l.examStart);
     await w.snap('exam_run');

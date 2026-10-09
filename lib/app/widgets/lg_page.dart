@@ -272,13 +272,13 @@ class _LargeTitle extends StatelessWidget {
     // ortiq kattalashmaydi, qolgan matn to'liq masshtablanadi.
     final scaler = MediaQuery.textScalerOf(context).clamp(maxScaleFactor: 1.3);
     return Padding(
-      padding: const EdgeInsets.only(top: 6, bottom: 14),
+      padding: const EdgeInsets.only(top: 2, bottom: 10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           if (eyebrow != null)
             Padding(
-              padding: const EdgeInsets.only(bottom: 8),
+              padding: const EdgeInsets.only(bottom: 6),
               child: Text(
                 eyebrow!.toUpperCase(),
                 style: text.labelSmall!.copyWith(
@@ -294,11 +294,12 @@ class _LargeTitle extends StatelessWidget {
               title,
               textScaler: scaler,
               minFontSize: 24,
-              style: text.displaySmall!.copyWith(fontSize: narrow ? 33 : 39),
+              // Telefonda ixcham: sarlavha ekranning katta qismini egallamaydi.
+              style: text.displaySmall!.copyWith(fontSize: narrow ? 28 : 32),
             ),
           ),
           if (subtitle != null) ...[
-            const SizedBox(height: 10),
+            const SizedBox(height: 6),
             Text(subtitle!, style: text.bodyMedium),
           ],
         ],
