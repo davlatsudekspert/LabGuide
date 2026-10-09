@@ -9,7 +9,9 @@ import '../features/auth/auth_controller.dart';
 import '../features/content/content_controller.dart';
 import '../features/differential/differential_controller.dart';
 import '../features/instruments/instruments_controller.dart';
+import '../features/learn/exam_controller.dart';
 import '../features/learn/quiz_progress.dart';
+import '../features/microscopy/microscopy_controller.dart';
 import '../features/partners/partners_controller.dart';
 import '../features/library/reading_controller.dart';
 import '../features/packs/packs_controller.dart';
@@ -54,8 +56,10 @@ class AppServices {
     required this.bookmarks,
     required this.qc,
     required this.quizProgress,
+    required this.exams,
     required this.packs,
     required this.instruments,
+    required this.microscopy,
     required this.reading,
     required this.backend,
     required this.access,
@@ -71,10 +75,16 @@ class AppServices {
   final BookmarksController bookmarks;
   final QcController qc;
   final QuizProgressController quizProgress;
+
+  /// Imtihon rejimi: davom etayotgan imtihon va natijalar tarixi.
+  final ExamController exams;
   final PacksController packs;
 
   /// Apparatlar katalogi, “Mening apparatlarim” va kalibrlash jurnali.
   final InstrumentsController instruments;
+
+  /// Mikroskopiya atlasi va “Bu nima?” mashqi natijalari.
+  final MicroscopyController microscopy;
 
   /// Kutubxona PDF lari: oxirgi sahifa, xatcho'plar, faylni tekshirib ochish.
   final ReadingController reading;
@@ -128,7 +138,9 @@ class AppServices {
     bookmarks.resetInMemory();
     qc.resetInMemory();
     quizProgress.resetInMemory();
+    exams.resetInMemory();
     instruments.resetInMemory();
+    microscopy.resetInMemory();
     partners.resetInMemory();
     reading.resetInMemory();
     differential.resetInMemory();

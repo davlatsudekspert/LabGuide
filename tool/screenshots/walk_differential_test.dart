@@ -3,8 +3,10 @@
 //
 //   flutter test tool/screenshots/walk_differential_test.dart --update-goldens
 import 'package:flutter_test/flutter_test.dart';
+import 'package:labguide/app/app_scope.dart';
 import 'package:labguide/core/storage/kv_store.dart';
 import 'package:labguide/features/differential/differential_content.dart';
+import 'package:labguide/features/microscopy/microscopy_widgets.dart';
 import 'package:labguide/features/settings/settings_controller.dart';
 import 'package:labguide/l10n/gen/app_localizations.dart';
 import 'package:material_ui/material_ui.dart';
@@ -51,6 +53,16 @@ Future<void> precacheCells(WidgetTester tester) async {
   });
 }
 
+/// Atlasdagi qon rasmlarini oldindan dekod qilish.
+Future<void> precacheAtlas(WidgetTester tester, AppServices s) async {
+  await tester.runAsync(() async {
+    final ctx = tester.element(find.byType(Scaffold).first);
+    for (final i in s.microscopy.atlas!.imagesInSection('blood')) {
+      await precacheImage(microThumb(i), ctx);
+    }
+  });
+}
+
 /// Taqsimot bo'yicha bosish (tez: har bosishdan keyin faqat pump).
 Future<void> tapMany(WidgetTester tester, Map<DiffCell, int> plan) async {
   for (final MapEntry(key: c, value: n) in plan.entries) {
@@ -91,6 +103,15 @@ void main() {
     await w.snap('blast_tepa');
     await w.scroll(700);
     await w.snap('blast_belgilar');
+    await back(tester);
+    await w.scroll(-3000);
+    await w.tap(find.text('Segment yadroli neytrofil').last);
+    await tester.runAsync(s.microscopy.ensureAtlas);
+    await precacheAtlas(tester, s);
+    await w.scroll(1500);
+    await w.snap('segment_haqiqiy_surtma');
+    await w.scroll(900);
+    await w.snap('segment_tahlil_kartasi');
     await back(tester);
     await w.scroll(-3000);
     await w.tap(find.text('Tayoqcha yadroli neytrofil').last);

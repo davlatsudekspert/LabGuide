@@ -62,7 +62,9 @@ void main() {
     await tapText(tester, uz.actionContinue);
     expect(s.settings.onboarded, isTrue);
     expect(s.settings.role, AppRole.doctor);
-    expect(find.text(uz.homeHeroDoctorTitle), findsOneWidget);
+    // Shifokor bosh sahifasi “Kasallik bo'yicha tahlillar” qo'llanmasidan
+    // boshlanadi.
+    expect(find.text(uz.condGuideTitle), findsOneWidget);
     // Besh tab.
     for (final t in [
       uz.navHome,
@@ -79,7 +81,7 @@ void main() {
     final s = await makeServices(tester);
     await pumpApp(tester, s);
     final expectations = {
-      AppRole.doctor: (uz.homeHeroDoctorTitle, uz.featureSampleFactors),
+      AppRole.doctor: (uz.condGuideTitle, uz.condGuideAll),
       AppRole.lab: (uz.homeHeroLabTitle, uz.featureCalibration),
       AppRole.student: (uz.homeHeroStudentTitle, uz.featureExam),
       AppRole.teacher: (uz.homeHeroTeacherTitle, uz.featureClasses),
@@ -92,7 +94,7 @@ void main() {
       expect(find.text(action), findsWidgets, reason: '$role');
       expect(
         find.text(
-          role == AppRole.doctor ? uz.homeHeroLabTitle : uz.homeHeroDoctorTitle,
+          role == AppRole.doctor ? uz.homeHeroLabTitle : uz.condGuideTitle,
         ),
         findsNothing,
       );
@@ -431,8 +433,11 @@ void main() {
   ) async {
     final s = await makeServices(tester);
     await pumpApp(tester, s);
+    // Sozlanmagan build: server ulanmagan — guruh amallari ko'rsatilmaydi.
     await goTo(tester, '/learn/classes');
-    expect(find.text(uz.classesSignInTitle), findsOneWidget);
+    expect(find.text(uz.classesUnavailableTitle), findsOneWidget);
+    expect(find.text(uz.classesCreate), findsNothing);
+    expect(find.text(uz.classesJoin), findsNothing);
     await goTo(tester, '/profile/purchase');
     expect(find.text(uz.purchaseNotice), findsOneWidget);
     final buttons = find.textContaining(uz.notAvailableYet);

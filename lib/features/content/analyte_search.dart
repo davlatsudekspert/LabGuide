@@ -73,12 +73,21 @@ String uzCyrillicToLatin(String input) {
 
 final _cyrillic = RegExp('[а-яёўқғҳ]');
 
+/// Normallashtirilgan so'rovning variantlari: kirillcha so'rov ruscha
+/// nomlar bilan o'zicha, o'zbekcha (lotin) nomlar bilan esa lotinga
+/// o'girilgan holda solishtiriladi.
+Set<String> searchVariants(String normalized) => {
+  normalized,
+  if (_cyrillic.hasMatch(normalized))
+    normalizeForSearch(uzCyrillicToLatin(normalized)),
+};
+
 class AnalyteSearch {
   AnalyteSearch(this.pack)
-    : _index = {for (final a in pack.analytes) a.id: _Entry.of(a)};
+    : _index = {for (final a in pack.analytes) a.id: SearchEntry.of(a)};
 
   final ContentPack pack;
-  final Map<String, _Entry> _index;
+  final Map<String, SearchEntry> _index;
 
   /// [query] bo'sh bo'lsa — guruh bo'yicha filtrlangan to'liq ro'yxat
   /// (paketdagi tartibda). Aks holda moslik darajasi bo'yicha tartiblanadi:
@@ -90,25 +99,10 @@ class AnalyteSearch {
     );
     if (q.isEmpty) return candidates.toList();
 
-    // Kirillcha so'rov: ruscha nomlar bilan o'zicha, o'zbekcha (lotin)
-    // nomlar bilan esa lotinga o'girilgan holda solishtiriladi.
-    final queries = {
-      q,
-      if (_cyrillic.hasMatch(q)) normalizeForSearch(uzCyrillicToLatin(q)),
-    };
+    final queries = searchVariants(q);
     final scored = <(Analyte, int)>[];
     for (final a in candidates) {
-      final e = _index[a.id]!;
-      var score = 0;
-      for (final query in queries) {
-        final s = e.score(
-          query,
-          query.replaceAll(' ', ''),
-          query.split(' '),
-          lang,
-        );
-        if (s > score) score = s;
-      }
+      final score = _index[a.id]!.bestScore(queries, lang);
       if (score > 0) scored.add((a, score));
     }
     scored.sort((x, y) {
@@ -120,10 +114,12 @@ class AnalyteSearch {
   }
 }
 
-class _Entry {
-  _Entry(this.termsByLang, this.synonyms);
+/// Bitta yozuvning qidiruv atamalari (nomlar tillar bo'yicha + sinonimlar)
+/// va moslik bahosi. Analitlar va shifokor qo'llanmasi holatlari uchun.
+class SearchEntry {
+  SearchEntry(this.termsByLang, this.synonyms);
 
-  factory _Entry.of(Analyte a) => _Entry(
+  factory SearchEntry.of(Analyte a) => SearchEntry(
     {
       for (final e in a.names.values.entries)
         e.key: normalizeForSearch(e.value),
@@ -135,6 +131,16 @@ class _Entry {
   final List<String> synonyms;
 
   Iterable<String> get _allTerms => [...termsByLang.values, ...synonyms];
+
+  /// [searchVariants] ichidagi eng yaxshi baho.
+  int bestScore(Set<String> queries, String lang) {
+    var best = 0;
+    for (final q in queries) {
+      final s = score(q, q.replaceAll(' ', ''), q.split(' '), lang);
+      if (s > best) best = s;
+    }
+    return best;
+  }
 
   int score(String q, String compact, List<String> tokens, String lang) {
     var best = 0;
@@ -148,7 +154,10 @@ class _Entry {
         best = _max(best, 60 + bonus);
       } else if (_words(term).any((w) => w.startsWith(q))) {
         best = _max(best, 40 + bonus);
-      } else if (term.contains(q) || termCompact.contains(compact)) {
+      } else if (term.contains(q) ||
+          // So'zlar chegarasidan o'tuvchi qisqa moslik shovqin beradi:
+          // “АЛТ” → “partiAL Thromboplastin”. Shuning uchun ≥ 4 belgi.
+          (compact.length >= 4 && termCompact.contains(compact))) {
         best = _max(best, 20 + bonus);
       }
     }

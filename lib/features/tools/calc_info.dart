@@ -186,8 +186,103 @@ abstract final class CalcSources {
     url: 'https://iris.who.int/handle/10665/44294',
   );
 
+  /// Qo'lda usullar (manual_calculators.dart) — matni tekshirilgan.
+  static const whoBasicLab2003 = CalcSource(
+    id: 'who-basic-lab-2003',
+    citation:
+        'WHO. Manual of basic techniques for a health laboratory, 2nd ed. '
+        'World Health Organization, 2003. ISBN 92 4 154530 5',
+    url: 'https://iris.who.int/handle/10665/42295',
+  );
+  static const chueh2022 = CalcSource(
+    id: 'calc-chueh-2022',
+    citation:
+        'Chueh HW, et al. Korean clinical practice guidelines for the '
+        'diagnosis of hereditary hemolytic anemia. Blood Res. 2022. '
+        'doi:10.5045/br.2022.2021224',
+    url: 'https://doi.org/10.5045/br.2022.2021224',
+  );
+  static const kroll2015 = CalcSource(
+    id: 'calc-kroll-2015',
+    citation:
+        'Kroll M. Hematology. In: Hui D, Leung AA, Padwal R, eds. Approach '
+        'to Internal Medicine. Springer, 2015. '
+        'doi:10.1007/978-3-319-11821-5_6',
+    url: 'https://doi.org/10.1007/978-3-319-11821-5_6',
+  );
+  static const hillman1969 = CalcSource(
+    id: 'calc-hillman-1969',
+    citation:
+        'Hillman RS. Characteristics of marrow production and reticulocyte '
+        'maturation in normal man in response to anemia. J Clin Invest. '
+        '1969. doi:10.1172/JCI106001',
+    url: 'https://doi.org/10.1172/JCI106001',
+  );
+  static const light1972 = CalcSource(
+    id: 'calc-light-1972',
+    citation:
+        'Light RW, Macgregor MI, Luchsinger PC, Ball WC. Pleural effusions: '
+        'the diagnostic separation of transudates and exudates. Ann Intern '
+        'Med. 1972. doi:10.7326/0003-4819-77-4-507',
+    url: 'https://doi.org/10.7326/0003-4819-77-4-507',
+  );
+  static const harding2025 = CalcSource(
+    id: 'calc-harding-2025',
+    citation:
+        'Harding WC, et al. Pleural effusion: shedding light on pleural '
+        'disease beyond infection and malignancy. Medicina (Kaunas). 2025. '
+        'doi:10.3390/medicina61030443',
+    url: 'https://doi.org/10.3390/medicina61030443',
+  );
+  static const medlinePlusRbcIndices = CalcSource(
+    id: 'medlineplus-rbc-indices',
+    citation:
+        'MedlinePlus. Red Blood Cell (RBC) Indices. U.S. National Library '
+        'of Medicine',
+    url: 'https://medlineplus.gov/lab-tests/red-blood-cell-rbc-indices/',
+  );
+
+  /// QC yo'riqnomalari (lib/features/qc/qc_guides_info.dart).
+  static const whoLqms2011 = CalcSource(
+    id: 'who-lqms-2011',
+    citation:
+        'WHO. Laboratory quality management system: handbook. World Health '
+        'Organization, 2011. ISBN 978 92 4 154827 4',
+    url: 'https://iris.who.int/handle/10665/44665',
+  );
+  static const campbell2012 = CalcSource(
+    id: 'qc-campbell-2012',
+    citation:
+        'Campbell CA, Horvath AR. Towards harmonisation of critical '
+        'laboratory result management — review of the literature and survey '
+        'of Australasian practices. Clin Biochem Rev. 2012. PMID 23267247',
+    url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC3529552/',
+  );
+  static const imoh2023 = CalcSource(
+    id: 'qc-imoh-2023',
+    citation:
+        'Imoh LC, et al. Critical values notification: a nationwide survey '
+        'of practices among clinical laboratories across Nigeria. Afr J Lab '
+        'Med. 2023. doi:10.4102/ajlm.v12i1.2249',
+    url: 'https://doi.org/10.4102/ajlm.v12i1.2249',
+  );
+
   /// Kalkulyatorlar, QC va preanalitika manbalari (“Manbalar” ekrani uchun).
-  static const methods = [...all, westgard1981, whoPhlebotomy2010];
+  static const methods = [
+    ...all,
+    westgard1981,
+    whoPhlebotomy2010,
+    whoBasicLab2003,
+    chueh2022,
+    kroll2015,
+    hillman1969,
+    light1972,
+    harding2025,
+    medlinePlusRbcIndices,
+    whoLqms2011,
+    campbell2012,
+    imoh2023,
+  ];
 
   static const all = [
     inker2021,

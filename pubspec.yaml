@@ -52,6 +52,8 @@ flutter:
     - assets/instruments/
     - assets/instruments/img/
     - assets/differential/
+    - assets/microscopy/
+    - assets/microscopy/img/
 
   fonts:
     - family: Inter

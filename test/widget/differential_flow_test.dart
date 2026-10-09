@@ -157,6 +157,14 @@ void main() {
     expect(find.text(en.diffSchematicCaption), findsWidgets);
     await goTo(tester, '/lab/differential/cells/monocyte');
     expect(find.text(en.diffReferTitle), findsNothing);
+    // Sxema yonida atlasdagi litsenziyali haqiqiy mikrofoto.
+    await goTo(tester, '/lab/differential/cells/basophil');
+    expect(find.text(en.diffRealSmear), findsOneWidget);
+    expect(find.text('CDC PHIL'), findsOneWidget);
+    // Kontent paketidagi bazofil kartasiga havola.
+    expect(find.text(en.diffRelatedCards), findsOneWidget);
+    await goTo(tester, '/lab/differential/cells/blast');
+    expect(find.text(en.diffRealSmear), findsNothing);
   });
 
   testWidgets('mashq: javob, izoh, natija', (tester) async {

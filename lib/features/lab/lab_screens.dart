@@ -1,13 +1,11 @@
 import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
-import '../../app/shell.dart';
 import '../../app/widgets/lg_page.dart';
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
 import '../content/content_model.dart';
-import '../content/ui/content_widgets.dart';
 import '../differential/differential_screens.dart';
 import '../partners/partner_widgets.dart';
 import '../tools/calc_info.dart';
@@ -189,52 +187,6 @@ class _TubeRow extends StatelessWidget {
           ],
         ),
       ),
-    );
-  }
-}
-
-class MicroscopyScreen extends StatelessWidget {
-  const MicroscopyScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final l = AppLocalizations.of(context);
-    final items = [
-      l.micRedCells,
-      l.micWhiteCells,
-      l.micEpithelium,
-      l.micCasts,
-      l.micCrystals,
-    ];
-    return LgPage(
-      title: l.micTitle,
-      children: [
-        LgNotice(l.micNotice),
-        for (var i = 0; i < items.length; i++)
-          LgRow(
-            title: items[i],
-            subtitle: '${l.micItemSub}\n${l.micImagePending}',
-            icon: Icons.hide_image_outlined,
-            divider: i < items.length - 1,
-          ),
-        const SizedBox(height: 12),
-        Center(child: LgTag(l.plannedStage('C'), tone: LgTone.neutral)),
-        // Siydik mikroskopiyasi kartasi tuzilmasi bilan bog'lanish.
-        ContentGate(
-          builder: (context, pack) {
-            final card = pack.analyte('urine-microscopy');
-            if (card == null) return const SizedBox.shrink();
-            return Padding(
-              padding: const EdgeInsets.only(top: 12),
-              child: AnalyteRow(
-                analyte: card,
-                divider: false,
-                onTap: () => openInTab(context, '/tests/analyte/${card.id}'),
-              ),
-            );
-          },
-        ),
-      ],
     );
   }
 }

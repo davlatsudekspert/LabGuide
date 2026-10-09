@@ -11,6 +11,7 @@ import '../../l10n/gen/app_localizations.dart';
 import '../auth/ui/welcome_screen.dart';
 import '../content/content_model.dart';
 import '../content/ui/content_widgets.dart';
+import 'exam_screens.dart';
 import 'quiz_session.dart';
 
 class LearnScreen extends StatelessWidget {
@@ -22,7 +23,7 @@ class LearnScreen extends StatelessWidget {
     final content = context.services.content;
     // Paket yuklangach savollar soni yangilanadi (avval 0 bo'lib qolardi).
     return ListenableBuilder(
-      listenable: content,
+      listenable: Listenable.merge([content, context.services.exams]),
       builder: (context, _) =>
           _page(context, l, content.pack?.quiz.length ?? 0),
     );
@@ -79,7 +80,8 @@ class LearnScreen extends StatelessWidget {
         ),
         LgRow(
           title: l.learnExam,
-          subtitle: l.learnExamSub,
+          // Tugallanmagan imtihon bo'lsa — javoblar va qolgan vaqt.
+          subtitle: examRowSubtitle(context, l),
           icon: Icons.timer_outlined,
           onTap: () => context.push('/learn/exam'),
         ),
@@ -609,59 +611,6 @@ class _QuizResult extends StatelessWidget {
           const SizedBox(height: 10),
           LgButton.secondary(label: l.quizOtherTopic, onPressed: onOtherTopic),
         ],
-      ],
-    );
-  }
-}
-
-class ExamScreen extends StatelessWidget {
-  const ExamScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final l = AppLocalizations.of(context);
-    return LgPage(
-      title: l.examTitle,
-      children: [
-        LgStateView(
-          kind: StateKind.unavailable,
-          title: l.plannedStage('D'),
-          message: l.examBody,
-          actionLabel: l.examOpenPractice,
-          onAction: () => context.push('/learn/quiz'),
-        ),
-      ],
-    );
-  }
-}
-
-class ClassesScreen extends StatelessWidget {
-  const ClassesScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final l = AppLocalizations.of(context);
-    final auth = context.services.auth;
-    return LgPage(
-      title: l.classesTitle,
-      children: [
-        ListenableBuilder(
-          listenable: auth,
-          builder: (context, _) => auth.hasAccount
-              ? LgStateView(
-                  kind: StateKind.unavailable,
-                  title: l.classesUnavailableTitle,
-                  message: l.classesUnavailableBody,
-                )
-              : LgStateView(
-                  kind: StateKind.empty,
-                  title: l.classesSignInTitle,
-                  message: l.classesSignInBody,
-                  actionLabel: l.classesSignIn,
-                  onAction: () => context.push('/profile/auth'),
-                ),
-        ),
-        Center(child: LgTag(l.plannedStage('D'), tone: LgTone.neutral)),
       ],
     );
   }

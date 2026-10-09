@@ -31,9 +31,13 @@ abstract final class StoreKeys {
   static const lessonNotes = 'lesson.notes';
   static const qcData = 'qc.data';
   static const quizProgress = 'quiz.progress';
+  static const examActive = 'exam.active';
+  static const examHistory = 'exam.history';
+  static const examAssignments = 'exam.assignments';
   static const packsCatalog = 'packs.catalog';
   static const myInstruments = 'instruments.mine';
   static const calibrationLog = 'instruments.calibrations';
+  static const microscopyQuiz = 'microscopy.quiz';
 
   /// Hamkorlar ro'yxati keshi (internetsiz ham oxirgisi ko'rinadi).
   static const partnersCache = 'partners.cache';
@@ -58,9 +62,13 @@ abstract final class StoreKeys {
     lessonNotes,
     qcData,
     quizProgress,
+    examActive,
+    examHistory,
+    examAssignments,
     packsCatalog,
     myInstruments,
     calibrationLog,
+    microscopyQuiz,
     partnersCache,
     libraryReading,
     differentialDraft,

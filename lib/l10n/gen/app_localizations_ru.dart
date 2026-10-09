@@ -249,6 +249,171 @@ class AppLocalizationsRu extends AppLocalizations {
   String get homeHeroDoctorCta => 'Открыть анализы';
 
   @override
+  String get condGuideTitle => 'Анализы по заболеваниям';
+
+  @override
+  String get condGuideEyebrow => 'Справочник врача';
+
+  @override
+  String get condGuideBody =>
+      'Для каждого состояния: какие анализы в первую очередь, какие затем — и на что может указывать результат.';
+
+  @override
+  String get condGuideSearch => 'Найти болезнь или анализ…';
+
+  @override
+  String get condGuideAll => 'Все состояния';
+
+  @override
+  String condCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count состояния',
+      many: '$count состояний',
+      few: '$count состояния',
+      one: '$count состояние',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String condSystemCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count системы',
+      many: '$count систем',
+      few: '$count системы',
+      one: '$count система',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get condListSubtitle =>
+      'Какие анализы при каком состоянии — и о чём может говорить результат';
+
+  @override
+  String get condSearchLabel => 'Поиск состояний';
+
+  @override
+  String get condSearchHint => 'Диабет, анемия, щитовидная железа, ТТГ…';
+
+  @override
+  String get condEmptyTitle => 'Ничего не найдено';
+
+  @override
+  String get condEmptyBody =>
+      'Попробуйте другое название, разговорное название или название анализа (например, «сахарный диабет»).';
+
+  @override
+  String get condTierFirstLine => 'В первую очередь';
+
+  @override
+  String get condTierAdditional => 'Дополнительно';
+
+  @override
+  String get condTierMonitoring => 'Наблюдение';
+
+  @override
+  String get condTierFirstLineHint =>
+      'Назначают в первую очередь при подозрении';
+
+  @override
+  String get condTierAdditionalHint =>
+      'Для уточнения, поиска причины или дифференциации';
+
+  @override
+  String get condTierMonitoringHint => 'После диагноза или во время лечения';
+
+  @override
+  String get condPatternsTitle => 'Типичные сочетания результатов';
+
+  @override
+  String get condPatternsHint =>
+      '«Если получилось так — вероятно вот это». Трактовка вероятностная: окончательный вывод делает врач с учётом клинической картины.';
+
+  @override
+  String get condNotDiagnosticTitle => 'Не инструмент для постановки диагноза';
+
+  @override
+  String get condNotDiagnosticBody =>
+      'Справочник помогает планировать обследование. Клиническая оценка и окончательное решение — за врачом. Текст — черновик на основе источников, ожидает независимой экспертной проверки.';
+
+  @override
+  String get condCautionsTitle => 'Важно учитывать';
+
+  @override
+  String get condNoCard => 'Карточки пока нет';
+
+  @override
+  String get condCopyList => 'Скопировать список анализов';
+
+  @override
+  String get condCopyListSub => 'Готовый текст для направления или сообщения';
+
+  @override
+  String get condCopied => 'Список скопирован';
+
+  @override
+  String condReferralTitle(String name) {
+    return '$name — анализы';
+  }
+
+  @override
+  String get condReferralFooter =>
+      'Справочник LabGuide (черновик). Не инструмент диагностики — окончательное решение за врачом.';
+
+  @override
+  String get condAnalyteSection => 'При каких состояниях назначают';
+
+  @override
+  String get condTestsEntrySub =>
+      'Выберите состояние — нужные анализы и сочетания результатов';
+
+  @override
+  String get condSearchSection => 'Состояния';
+
+  @override
+  String condRowFirstLine(String tests) {
+    return 'Сначала: $tests';
+  }
+
+  @override
+  String get condSysEndocrine => 'Эндокринная система';
+
+  @override
+  String get condSysKidney => 'Почки и мочевые пути';
+
+  @override
+  String get condSysLiver => 'Печень и желчные пути';
+
+  @override
+  String get condSysDigestive => 'Поджелудочная железа и кишечник';
+
+  @override
+  String get condSysCardio => 'Сердце и сосуды';
+
+  @override
+  String get condSysBlood => 'Кровь и свёртывание';
+
+  @override
+  String get condSysInfection => 'Инфекции';
+
+  @override
+  String get condSysRheumatology => 'Ревматология';
+
+  @override
+  String get condSysBone => 'Кости и обмен кальция';
+
+  @override
+  String get condSysPregnancy => 'Беременность и репродуктивное здоровье';
+
+  @override
+  String get condSysProstate => 'Простата';
+
+  @override
   String get homeHeroLabTitle => 'Уверенная работа в лаборатории';
 
   @override
@@ -874,6 +1039,30 @@ class AppLocalizationsRu extends AppLocalizations {
       'Правила: мультиправило Вестгарда (Westgard JO и соавт., Clin Chem 1981; doi:10.1093/clinchem/27.3.493). Средство обучения и проверки — не заменяет процедуру контроля качества вашей лаборатории.';
 
   @override
+  String get qcGuidesTitle => 'Памятки';
+
+  @override
+  String get qgRejected => 'Что делать, если QC отклонён';
+
+  @override
+  String get qgRejectedSub => 'Остановить, найти причину, перепроверить';
+
+  @override
+  String get qgEqa => 'Внешний контроль качества (EQA)';
+
+  @override
+  String get qgEqaSub => 'Что это, как работает, если результат плохой';
+
+  @override
+  String get qgCritical => 'Критические значения';
+
+  @override
+  String get qgCriticalSub => 'Кто составляет список и как сообщать';
+
+  @override
+  String get qgWhatToDo => 'Что делать?';
+
+  @override
   String get qcErrSave => 'Не удалось сохранить. Попробуйте ещё раз.';
 
   @override
@@ -1312,6 +1501,20 @@ class AppLocalizationsRu extends AppLocalizations {
   String get diffQuizStart => 'Начать тренировку';
 
   @override
+  String get diffRealSmear => 'Настоящий мазок';
+
+  @override
+  String get diffRealSmearNote =>
+      'Лицензированное микрофото из атласа микроскопии. Автор и лицензия — при открытии снимка.';
+
+  @override
+  String get diffAtlasRow => 'Настоящие мазки крови';
+
+  @override
+  String get diffAtlasRowSub =>
+      'Лицензированные микрофото из атласа микроскопии';
+
+  @override
   String get preOrderTitle => 'Порядок взятия пробирок (венепункция)';
 
   @override
@@ -1349,6 +1552,225 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get calcUnitsSub => 'Для конкретного вещества';
+
+  @override
+  String get calcSectionManual => 'Ручные методы';
+
+  @override
+  String get mcChamber => 'Счётная камера';
+
+  @override
+  String get mcChamberSub => 'Горяев, Нейбауэр: клеток/мкл и ×10⁹/л';
+
+  @override
+  String get mcDiff => 'Лейкоформула: абсолютные числа';
+
+  @override
+  String get mcDiffSub => 'WBC × %, поправка на нормобласты';
+
+  @override
+  String get mcRetic => 'Ретикулоциты';
+
+  @override
+  String get mcReticSub => '%, исправленный % и RPI';
+
+  @override
+  String get mcLight => 'Критерии Лайта';
+
+  @override
+  String get mcLightSub => 'Плевральная жидкость: экссудат или транссудат';
+
+  @override
+  String get mcColour => 'Цветовой показатель';
+
+  @override
+  String get mcColourSub => 'Почему приложение рекомендует MCH и MCHC';
+
+  @override
+  String get mfCells => 'Подсчитано клеток';
+
+  @override
+  String get mfSquares => 'Число подсчитанных квадратов';
+
+  @override
+  String get mfSquareArea => 'Площадь одного квадрата';
+
+  @override
+  String get mfDepth => 'Глубина камеры';
+
+  @override
+  String get mfDilution => 'Степень разведения (для 1:20 — 20)';
+
+  @override
+  String get mfWbc => 'Лейкоциты (WBC)';
+
+  @override
+  String get mfSeg => 'Сегментоядерные нейтрофилы';
+
+  @override
+  String get mfBand => 'Палочкоядерные нейтрофилы';
+
+  @override
+  String get mfEos => 'Эозинофилы';
+
+  @override
+  String get mfBaso => 'Базофилы';
+
+  @override
+  String get mfLymph => 'Лимфоциты';
+
+  @override
+  String get mfMono => 'Моноциты';
+
+  @override
+  String get mfOther => 'Другие клетки';
+
+  @override
+  String get mfNrbc => 'Нормобласты на 100 лейкоцитов';
+
+  @override
+  String get mfReticCounted => 'Подсчитано ретикулоцитов';
+
+  @override
+  String get mfRbcExamined => 'Просмотрено эритроцитов';
+
+  @override
+  String get mfHct => 'Гематокрит (Ht)';
+
+  @override
+  String get mfRbc => 'Эритроциты (RBC)';
+
+  @override
+  String get mfMaturation => 'Поправка на созревание';
+
+  @override
+  String get mfMaturationAuto => 'Авто';
+
+  @override
+  String get mfPfProtein => 'Жидкость: общий белок';
+
+  @override
+  String get mfSerumProtein => 'Сыворотка: общий белок';
+
+  @override
+  String get mfPfLdh => 'Жидкость: ЛДГ';
+
+  @override
+  String get mfSerumLdh => 'Сыворотка: ЛДГ';
+
+  @override
+  String get mfLdhUln => 'Верхняя граница нормы ЛДГ сыворотки';
+
+  @override
+  String get mfSameUnit =>
+      'Оба значения в паре — в одних единицах (например, оба г/л, оба Ед/л).';
+
+  @override
+  String get mrCellsPerUl => 'клеток/мкл';
+
+  @override
+  String get mrVolume => 'Подсчитанный объём';
+
+  @override
+  String get mrWbcUsed => 'Исправленный WBC';
+
+  @override
+  String get mrNrbc => 'Нормобласты';
+
+  @override
+  String get mrPercentSum => 'Сумма процентов';
+
+  @override
+  String get mrAbsolute => 'Абсолютные числа';
+
+  @override
+  String get mrNoCorrection => 'Нормобласты не введены — WBC не исправлен.';
+
+  @override
+  String get mrReticAbs => 'Абсолютное число';
+
+  @override
+  String get mrReticCorrected => 'Исправленный %';
+
+  @override
+  String get mrRpi => 'Индекс продукции ретикулоцитов (RPI)';
+
+  @override
+  String mrMaturationAuto(String factor, String hct) {
+    return 'Поправка $factor: ближайшая к Ht $hct % точка таблицы (правило приложения).';
+  }
+
+  @override
+  String mrMaturationChosen(String factor) {
+    return 'Поправка $factor: выбрана вами.';
+  }
+
+  @override
+  String get mrNoRbc => 'Для абсолютного числа введите RBC.';
+
+  @override
+  String get mrExudate => 'Соответствует критериям экссудата';
+
+  @override
+  String get mrTransudate =>
+      'Ни один критерий не выполнен — соответствует транссудату';
+
+  @override
+  String get mrIncomplete =>
+      'Два критерия не выполнены; для третьего введите верхнюю границу ЛДГ';
+
+  @override
+  String get mrProteinRatio => 'Белок: жидкость ÷ сыворотка (> 0,5)';
+
+  @override
+  String get mrLdhRatio => 'ЛДГ: жидкость ÷ сыворотка (> 0,6)';
+
+  @override
+  String get mrLdhUln => 'ЛДГ жидкости ÷ верхняя граница (> 2/3)';
+
+  @override
+  String get mrMet => 'выполнен';
+
+  @override
+  String get mrNotMet => 'не выполнен';
+
+  @override
+  String get mrNotAssessed => 'не оценён';
+
+  @override
+  String mErrSum(String sum) {
+    return 'Сумма процентов $sum — должна быть 100. Проверьте строки.';
+  }
+
+  @override
+  String get mErrReticGtExamined =>
+      'Ретикулоцитов не может быть больше, чем просмотренных эритроцитов.';
+
+  @override
+  String mErrWhole(String field, String min, String max) {
+    return '$field: введите целое число ($min–$max).';
+  }
+
+  @override
+  String get ciWhatTitle => 'Что это?';
+
+  @override
+  String get ciWhat =>
+      'Цветовой показатель — относительный показатель, традиционно применяемый в лабораториях СНГ: оценивает содержание гемоглобина в одном эритроците относительно «нормы». Используется для обозначения гипо-, нормо- или гиперхромии эритроцитов.';
+
+  @override
+  String get ciWhyTitle => 'Почему приложение его не рассчитывает';
+
+  @override
+  String get ciWhy =>
+      'Для формулы не найден первичный открытый источник, который мы могли бы проверить. Приложение не даёт чисел и формул без источника.';
+
+  @override
+  String get ciUseTitle => 'Что использовать вместо него';
+
+  @override
+  String get ciUse =>
+      'Гемоглобин в одном эритроците прямо выражает MCH (среднее содержание гемоглобина, пг), а концентрацию гемоглобина в эритроците — MCHC. Гематологический анализатор выдаёт оба. Гипо-/гиперхромию оценивайте по ним и референсным интервалам вашей лаборатории.';
 
   @override
   String get dilC1 => 'C₁ · Исходная концентрация';
@@ -1668,29 +2090,338 @@ class AppLocalizationsRu extends AppLocalizations {
   String get micTitle => 'Атлас микроскопии';
 
   @override
-  String get micNotice =>
-      'Место для изображения. Настоящие микрофотографии добавляются только после проверки прав и подписей.';
+  String get micSubtitle =>
+      'Моча, кровь и паразиты — лицензированные микрофотографии';
 
   @override
-  String get micRedCells => 'Эритроциты';
+  String get micAtlasError => 'Не удалось открыть атлас';
 
   @override
-  String get micWhiteCells => 'Лейкоциты';
+  String get micNotFound => 'Такое изображение или раздел не найдены';
 
   @override
-  String get micEpithelium => 'Эпителий';
+  String micImagesCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count снимка',
+      many: '$count снимков',
+      few: '$count снимка',
+      one: '$count снимок',
+    );
+    return '$_temp0';
+  }
 
   @override
-  String get micCasts => 'Цилиндры';
+  String micGapsCount(int count) {
+    return 'Без снимка пока: $count';
+  }
 
   @override
-  String get micCrystals => 'Кристаллы';
+  String micResultsCount(int count) {
+    return 'Найдено: $count';
+  }
 
   @override
-  String get micItemSub => 'Вид · различия · ограничения';
+  String get micSearchLabel => 'Поиск по атласу';
 
   @override
-  String get micImagePending => 'Права на изображение проверяются';
+  String get micSearchHint => 'Например: нейтрофил, oxalate, bezgak';
+
+  @override
+  String get micNoResultsTitle => 'Ничего не найдено';
+
+  @override
+  String get micNoResultsBody =>
+      'Попробуйте другое название или другой язык (uz, ru, en).';
+
+  @override
+  String get micSections => 'Разделы';
+
+  @override
+  String get micEduNotice =>
+      'Учебные изображения — не для диагностики. У каждого снимка указаны автор, лицензия и исходная подпись. Пояснения LabGuide — черновик, ожидают проверки специалиста.';
+
+  @override
+  String get micEduTag => 'Учебный снимок — не для диагностики';
+
+  @override
+  String get micNoImageYet => 'Лицензированного снимка пока нет';
+
+  @override
+  String get micGapWhy => 'Почему нет?';
+
+  @override
+  String get micAllGroups => 'Все';
+
+  @override
+  String get micSectionQuiz => 'Тренировка по этому разделу';
+
+  @override
+  String get micZoom => 'Увеличить';
+
+  @override
+  String micOpenFull(String name) {
+    return '$name — открыть на весь экран';
+  }
+
+  @override
+  String micImageSemantics(String name) {
+    return 'Микрофотография: $name';
+  }
+
+  @override
+  String get micNames => 'Название на трёх языках';
+
+  @override
+  String get micOriginalCaption => 'Исходная подпись';
+
+  @override
+  String micCaptionLang(String lang) {
+    return 'На языке источника, дословно · $lang';
+  }
+
+  @override
+  String get micTranslation => 'Перевод (LabGuide)';
+
+  @override
+  String get micLangEn => 'английский';
+
+  @override
+  String get micLangEs => 'испанский';
+
+  @override
+  String get micLangRu => 'русский';
+
+  @override
+  String get micPreparation => 'Препарат';
+
+  @override
+  String get micMagnification => 'Увеличение';
+
+  @override
+  String get micStain => 'Окраска';
+
+  @override
+  String get micNotStated => 'в источнике не указано';
+
+  @override
+  String get micOnlySource => 'Показано только то, что указано в источнике.';
+
+  @override
+  String get micDraftTitle => 'На что обратить внимание';
+
+  @override
+  String get micDraftTag => 'Черновик · ожидает проверки специалиста';
+
+  @override
+  String get micCreditTitle => 'Автор и лицензия';
+
+  @override
+  String get micAuthor => 'Автор';
+
+  @override
+  String get micCredit => 'Источник';
+
+  @override
+  String get micOwnWork => 'Собственная работа автора (Own work)';
+
+  @override
+  String get micLicense => 'Лицензия';
+
+  @override
+  String get micSourceDate => 'Дата в источнике';
+
+  @override
+  String micLicenseText(String license) {
+    return 'Текст лицензии: $license';
+  }
+
+  @override
+  String get micSourcePage => 'Страница источника';
+
+  @override
+  String get micOriginalFile => 'Исходный файл';
+
+  @override
+  String micResized(int width, int height, int origWidth, int origHeight) {
+    return 'Копия в приложении: $width×$height px (оригинал $origWidth×$origHeight px, только уменьшено). Без обрезки и надписей.';
+  }
+
+  @override
+  String micNotResized(int width, int height) {
+    return 'Копия в приложении: $width×$height px, в исходном размере. Без обрезки и надписей.';
+  }
+
+  @override
+  String get micShareAlike =>
+      'CC BY-SA: производные версии этого снимка распространяются под той же лицензией.';
+
+  @override
+  String get micCdcTerms =>
+      'Условия использования (со страницы CDC PHIL, дословно)';
+
+  @override
+  String get micCdcFree =>
+      'Бесплатный источник: CDC Public Health Image Library (PHIL), wwwn.cdc.gov/phil';
+
+  @override
+  String get micSameEntity => 'Другие снимки этого типа';
+
+  @override
+  String get micCreditsTitle => 'Авторы снимков';
+
+  @override
+  String get micCreditsSub => 'Лицензии и источники';
+
+  @override
+  String micCreditsIntro(String date) {
+    return 'Лицензия, автор и исходная подпись каждого снимка перепроверены на странице источника ($date). Снимки только уменьшены: без обрезки и надписей, EXIF удалён. Берутся только снимки CC0, CC BY, CC BY-SA, public domain и CDC PHIL.';
+  }
+
+  @override
+  String get micLicenseTexts => 'Тексты лицензий';
+
+  @override
+  String get micCreditsRow => 'Авторы и лицензии';
+
+  @override
+  String get micCreditsRowSub =>
+      'Источник и условия использования каждого снимка';
+
+  @override
+  String get micClose => 'Закрыть';
+
+  @override
+  String get micZoomIn => 'Увеличить';
+
+  @override
+  String get micZoomOut => 'Уменьшить';
+
+  @override
+  String get micZoomReset => 'Исходный вид';
+
+  @override
+  String get micViewerHint =>
+      'Увеличивайте двумя пальцами или двойным касанием';
+
+  @override
+  String get micHeroEyebrow => 'Тренировка';
+
+  @override
+  String get micQuizTitle => 'Что это?';
+
+  @override
+  String get micQuizSubtitle => 'Тренировка по микроскопии';
+
+  @override
+  String get micQuizHeroBody =>
+      'Посмотрите на снимок и выберите верное название: 4 варианта, все из атласа. Ответ — сразу.';
+
+  @override
+  String get micQuizCta => 'Начать тренировку';
+
+  @override
+  String get micQuizScope => 'Из какого раздела?';
+
+  @override
+  String micQuizScopeChip(String name, int count) {
+    return '$name · $count';
+  }
+
+  @override
+  String micQuizStart(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Начать · $count вопроса',
+      many: 'Начать · $count вопросов',
+      few: 'Начать · $count вопроса',
+      one: 'Начать · $count вопрос',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String micQuizBest(int correct, int total) {
+    return 'Лучший результат: $correct/$total';
+  }
+
+  @override
+  String get micQuizNoBest => 'Результата пока нет — начните первый раунд';
+
+  @override
+  String get micQuizRules =>
+      'Варианты берутся только из названий атласа. Смешанные поля и панели из журналов в тренировку не входят. Результат хранится только на этом устройстве.';
+
+  @override
+  String micQuizProgress(int current, int total) {
+    return '$current / $total';
+  }
+
+  @override
+  String micQuizStreak(int count) {
+    return '$count подряд';
+  }
+
+  @override
+  String get micQuizPromptArrow => 'Какая клетка отмечена стрелкой?';
+
+  @override
+  String get micQuizPromptCentre => 'Какая клетка в центре?';
+
+  @override
+  String get micQuizPromptField => 'Что в основном видно в этом поле?';
+
+  @override
+  String get micQuizCorrect => 'Верно!';
+
+  @override
+  String micQuizWrong(String answer) {
+    return 'Неверно. Правильный ответ: $answer';
+  }
+
+  @override
+  String get micQuizOpenCard => 'Открыть карточку снимка';
+
+  @override
+  String get micQuizTapToZoom => 'Нажмите на снимок, чтобы увеличить';
+
+  @override
+  String get micQuizResultGreat => 'Отличный результат!';
+
+  @override
+  String get micQuizResultGood => 'Хороший результат';
+
+  @override
+  String get micQuizResultKeep => 'Продолжайте тренироваться';
+
+  @override
+  String micQuizScore(int correct, int total) {
+    return 'Верно $correct из $total';
+  }
+
+  @override
+  String micQuizBestStreak(int count) {
+    return 'Лучшая серия: $count';
+  }
+
+  @override
+  String get micQuizNewRecord => 'Новый рекорд';
+
+  @override
+  String micQuizRetryMistakes(int count) {
+    return 'Повторить ошибки ($count)';
+  }
+
+  @override
+  String get micQuizNewRound => 'Новый раунд';
+
+  @override
+  String get micQuizChangeScope => 'Другой раздел';
+
+  @override
+  String get micQuizBackToAtlas => 'Вернуться в атлас';
 
   @override
   String get insTitle => 'Приборы';
@@ -2991,13 +3722,6 @@ class AppLocalizationsRu extends AppLocalizations {
   String get examTitle => 'Режим экзамена';
 
   @override
-  String get examBody =>
-      'Экзамены с таймером и история результатов появятся вместе с учебным модулем. Учебные вопросы доступны уже сейчас.';
-
-  @override
-  String get examOpenPractice => 'Открыть учебные вопросы';
-
-  @override
   String get classesTitle => 'Группы и задания';
 
   @override
@@ -3016,6 +3740,760 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get classesUnavailableBody =>
       'Ничего не отправляется и не сохраняется. После подключения преподаватель видит только свои группы, а студент — только свои результаты; это проверяется на сервере.';
+
+  @override
+  String get examSubtitle =>
+      'Экзамен на время: выберите темы, число вопросов и время. Работает без интернета.';
+
+  @override
+  String get examActiveTitle => 'Незавершённый экзамен';
+
+  @override
+  String examActiveBody(int answered, int total, String time) {
+    return 'Ответов: $answered/$total · осталось $time';
+  }
+
+  @override
+  String get examResume => 'Продолжить';
+
+  @override
+  String get examDiscard => 'Прервать экзамен';
+
+  @override
+  String get examDiscardTitle => 'Прервать экзамен?';
+
+  @override
+  String get examDiscardBody =>
+      'Ответы удалятся, результат не попадёт в историю.';
+
+  @override
+  String get examDiscardAction => 'Прервать';
+
+  @override
+  String get examTopics => 'Темы';
+
+  @override
+  String get examAllTopics => 'Все';
+
+  @override
+  String examPoolCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'В выбранных темах $count вопроса',
+      many: 'В выбранных темах $count вопросов',
+      few: 'В выбранных темах $count вопроса',
+      one: 'В выбранных темах $count вопрос',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get examSettings => 'Параметры';
+
+  @override
+  String get examCount => 'Число вопросов';
+
+  @override
+  String examCountHint(int max) {
+    return 'От 1 до $max';
+  }
+
+  @override
+  String examCountError(int max) {
+    return 'Введите число от 1 до $max';
+  }
+
+  @override
+  String examCountAll(int count) {
+    return 'Все $count';
+  }
+
+  @override
+  String get examTime => 'Время, мин';
+
+  @override
+  String get examTimeHint => '1–180 мин · обычно 1 мин на вопрос';
+
+  @override
+  String get examTimeError => 'Введите от 1 до 180 минут';
+
+  @override
+  String examMinutes(int count) {
+    return '$count мин';
+  }
+
+  @override
+  String get examDraftNotice =>
+      'Вопросы ещё не проверены специалистом (черновик). Результат — для внутренней проверки, это не официальная оценка.';
+
+  @override
+  String get examRulesNotice =>
+      'Вопросы и варианты — в случайном порядке. До завершения можно менять ответы и отмечать вопросы, чтобы вернуться к ним. Время идёт, даже если приложение закрыто; когда оно истечёт, экзамен завершится сам.';
+
+  @override
+  String get examStart => 'Начать экзамен';
+
+  @override
+  String get examReplaceTitle => 'Есть незавершённый экзамен';
+
+  @override
+  String get examReplaceBody =>
+      'Если начать новый, предыдущий удалится вместе с ответами.';
+
+  @override
+  String get examHistory => 'История результатов';
+
+  @override
+  String get examHistoryEmpty =>
+      'Экзаменов пока не было. Первый результат появится здесь — он хранится только на этом устройстве.';
+
+  @override
+  String examHistoryStats(int count, int avg, int best) {
+    return 'Последние $count: в среднем $avg% · лучший $best%';
+  }
+
+  @override
+  String examHistoryRow(String date, int correct, int total, String time) {
+    return '$date · $correct/$total · $time';
+  }
+
+  @override
+  String get examHistoryClear => 'Очистить историю';
+
+  @override
+  String get examHistoryClearBody =>
+      'Все результаты экзаменов будут удалены с этого устройства.';
+
+  @override
+  String examProgressLabel(String values) {
+    return 'Последние результаты: $values';
+  }
+
+  @override
+  String get examProgressOld => 'Раньше → сейчас';
+
+  @override
+  String get examProgressLast => 'Последний';
+
+  @override
+  String get examSettled => 'Предыдущий экзамен завершён: время истекло';
+
+  @override
+  String get examOpenResult => 'Результат';
+
+  @override
+  String get examTitleAll => 'Все темы';
+
+  @override
+  String examTitleTopics(String first, int more) {
+    return '$first и ещё $more';
+  }
+
+  @override
+  String get examReworkTitle => 'Работа над ошибками';
+
+  @override
+  String get examQuestionMissing =>
+      'Этого вопроса нет в текущем пакете контента.';
+
+  @override
+  String get examMap => 'Карта вопросов';
+
+  @override
+  String get examFinish => 'Завершить';
+
+  @override
+  String get examFinishTitle => 'Завершить экзамен?';
+
+  @override
+  String examFinishBody(int unanswered, int flagged) {
+    return 'Без ответа: $unanswered, отмечено: $flagged. После завершения ответы изменить нельзя.';
+  }
+
+  @override
+  String get examFinishBodyAll =>
+      'На все вопросы есть ответ. После завершения ответы изменить нельзя.';
+
+  @override
+  String get examFlag => 'Отметить';
+
+  @override
+  String get examFlagged => 'Отмечен';
+
+  @override
+  String get examLegendAnswered => 'Есть ответ';
+
+  @override
+  String get examLegendEmpty => 'Без ответа';
+
+  @override
+  String get examLegendFlagged => 'Отмечен';
+
+  @override
+  String examQuestionN(int n) {
+    return 'Вопрос $n';
+  }
+
+  @override
+  String examAnsweredOf(int answered, int total) {
+    return 'Ответов: $answered/$total';
+  }
+
+  @override
+  String get examPrev => 'Назад';
+
+  @override
+  String get examNext => 'Далее';
+
+  @override
+  String examTimeLeft(String time) {
+    return 'Осталось: $time';
+  }
+
+  @override
+  String examElapsed(String time) {
+    return 'Прошло: $time';
+  }
+
+  @override
+  String get examNoActive => 'Нет активного экзамена';
+
+  @override
+  String get examNoActiveBody =>
+      'Он завершён или прерван. Настройте и начните новый.';
+
+  @override
+  String get examNew => 'Новый экзамен';
+
+  @override
+  String get examSaving => 'Сохраняем результат…';
+
+  @override
+  String get examResultTitle => 'Результат';
+
+  @override
+  String get examResultMissing => 'Результат не найден';
+
+  @override
+  String get examBand90 => 'Отличный результат!';
+
+  @override
+  String get examBand70 => 'Хороший результат!';
+
+  @override
+  String get examBand50 => 'Неплохо — разберите ошибки';
+
+  @override
+  String get examBand0 => 'Нужна практика — у вас получится';
+
+  @override
+  String get examCorrectN => 'Верно';
+
+  @override
+  String get examWrongN => 'Ошибки';
+
+  @override
+  String get examSkippedN => 'Без ответа';
+
+  @override
+  String get examSpent => 'Время';
+
+  @override
+  String get examTimedOut => 'Время вышло — завершено автоматически';
+
+  @override
+  String examDeltaUp(int n) {
+    return '+$n% к прошлой попытке';
+  }
+
+  @override
+  String examDeltaDown(int n) {
+    return '−$n% к прошлой попытке';
+  }
+
+  @override
+  String get examDeltaSame => 'Как в прошлой попытке';
+
+  @override
+  String examReworkMistakes(int count) {
+    return 'Работа над ошибками · $count';
+  }
+
+  @override
+  String get examAnalysis => 'Разбор ошибок';
+
+  @override
+  String examFilterMistakes(int count) {
+    return 'Ошибки · $count';
+  }
+
+  @override
+  String examFilterAll(int count) {
+    return 'Все · $count';
+  }
+
+  @override
+  String get examNoAnswer => 'Нет ответа';
+
+  @override
+  String get examWrongTag => 'Ошибка';
+
+  @override
+  String get examWhyWrong => 'Почему не этот ответ';
+
+  @override
+  String get examNoSource => 'Источник не указан — вопрос ещё не проверен.';
+
+  @override
+  String get examSourceMissing =>
+      'Банк вопросов этого экзамена не найден в приложении';
+
+  @override
+  String get examMultiHint => 'Несколько верных ответов — отметьте все';
+
+  @override
+  String get examNoExplanation => 'Пояснение к этому вопросу ещё не написано.';
+
+  @override
+  String get examByTopic => 'По темам';
+
+  @override
+  String get examByTopicNote =>
+      'Сначала — тема с самым низким результатом: начните с неё.';
+
+  @override
+  String get classesSubtitle =>
+      'Преподаватель создаёт группу и даёт задания, студенты вступают по коду и решают.';
+
+  @override
+  String get classesTryExam => 'Открыть экзамен без интернета';
+
+  @override
+  String get classesLoading => 'Загрузка…';
+
+  @override
+  String get classesInvalid => 'Сервер не принял данные — проверьте поля.';
+
+  @override
+  String get classesCodeNotFound =>
+      'Группа с таким кодом не найдена. Уточните код у преподавателя.';
+
+  @override
+  String get classesCreate => 'Создать группу';
+
+  @override
+  String get classesCreateSub =>
+      'Для преподавателя: получите код и давайте задания';
+
+  @override
+  String get classesJoin => 'Вступить по коду';
+
+  @override
+  String get classesJoinSub => 'Для студента: 8-значный код от преподавателя';
+
+  @override
+  String get classesRoleNote =>
+      'Роль в приложении не даёт прав на сервере: преподаватель группы — тот, кто её создал.';
+
+  @override
+  String get classesMine => 'Мои группы';
+
+  @override
+  String get classesEmpty => 'Групп пока нет';
+
+  @override
+  String get classesEmptyBody =>
+      'Создайте группу или вступите по коду от преподавателя.';
+
+  @override
+  String get classesRoleTeacher => 'Преподаватель';
+
+  @override
+  String get classesRoleStudent => 'Студент';
+
+  @override
+  String classesMembers(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count участника',
+      many: '$count участников',
+      few: '$count участника',
+      one: '$count участник',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get classesCreateIntro =>
+      'Аккаунт, создавший группу, становится её преподавателем. Студенты вступают по вашему коду.';
+
+  @override
+  String get classesGroupName => 'Название группы';
+
+  @override
+  String get classesGroupNameHint => 'Например, Биохимия 2 курс';
+
+  @override
+  String classesLengthError(int min, int max) {
+    return 'Введите от $min до $max символов';
+  }
+
+  @override
+  String get classesDisplayName => 'Ваше имя в группе';
+
+  @override
+  String get classesDisplayNameHint => 'Например, Алиев Анвар';
+
+  @override
+  String get classesDisplayNameHintTeacher => 'Например, Каримова Н.А.';
+
+  @override
+  String get classesDisplayNameNote =>
+      'Email не показывается — участники видят только это имя.';
+
+  @override
+  String get classesCreateAction => 'Создать группу';
+
+  @override
+  String get classesCreated => 'Группа создана — отправьте код студентам';
+
+  @override
+  String get classesJoinIntro => 'Введите код, который дал преподаватель.';
+
+  @override
+  String get classesCode => 'Код приглашения';
+
+  @override
+  String get classesCodeError => 'Код состоит из 8 букв и цифр';
+
+  @override
+  String get classesJoinNote =>
+      'Преподаватель увидит указанное имя и результаты ваших заданий. Email не показывается.';
+
+  @override
+  String get classesJoinAction => 'Вступить';
+
+  @override
+  String get classesJoined => 'Вы вступили в группу';
+
+  @override
+  String classesYouTeacher(int count) {
+    return 'Вы — преподаватель · участников: $count';
+  }
+
+  @override
+  String get classesYouStudent => 'Вы — студент';
+
+  @override
+  String get classesGroupMissing =>
+      'Группа не найдена или вы больше не участник';
+
+  @override
+  String get classesBackToList => 'К списку групп';
+
+  @override
+  String get classesAssignments => 'Задания';
+
+  @override
+  String get classesNewAssignment => 'Новое задание';
+
+  @override
+  String get classesNoAssignmentsTeacher =>
+      'Заданий пока нет. Выберите темы и число вопросов из банка и дайте задание.';
+
+  @override
+  String get classesNoAssignmentsStudent => 'Пока заданий нет';
+
+  @override
+  String get classesNoAssignmentsStudentBody =>
+      'Когда преподаватель даст задание, оно появится здесь.';
+
+  @override
+  String get classesNoDue => 'без срока';
+
+  @override
+  String classesDue(String date) {
+    return 'срок $date';
+  }
+
+  @override
+  String classesSubmittedOf(int done, int total) {
+    return 'сдали $done/$total';
+  }
+
+  @override
+  String classesMembersTitle(int count) {
+    return 'Студенты · $count';
+  }
+
+  @override
+  String get classesNoStudents => 'Студентов пока нет — отправьте код.';
+
+  @override
+  String get classesMemberNoWork => 'Пока ничего не сдано';
+
+  @override
+  String classesMemberSummary(int done, int total, int avg) {
+    return 'Заданий: $done/$total · в среднем $avg%';
+  }
+
+  @override
+  String get classesRemove => 'Исключить из группы';
+
+  @override
+  String classesRemoveTitle(String name) {
+    return 'Исключить $name из группы?';
+  }
+
+  @override
+  String get classesRemoveBody =>
+      'Студент больше не увидит группу и новые задания. Сданные результаты сохранятся.';
+
+  @override
+  String get classesRemoveAction => 'Исключить';
+
+  @override
+  String classesStatusDone(int score, int total) {
+    return 'Сдано · $score/$total';
+  }
+
+  @override
+  String get classesStatusInProgress => 'В процессе';
+
+  @override
+  String get classesStatusPending => 'Не отправлено';
+
+  @override
+  String get classesStatusOverdue => 'Срок истёк';
+
+  @override
+  String get classesStatusNew => 'Новое';
+
+  @override
+  String get classesStudentNote =>
+      'Преподаватель видит только ваше имя в группе и результаты заданий.';
+
+  @override
+  String get classesLeave => 'Выйти из группы';
+
+  @override
+  String get classesLeaveTitle => 'Выйти из группы?';
+
+  @override
+  String get classesLeaveBody =>
+      'Чтобы вернуться, понадобится код преподавателя. Сданные результаты останутся у преподавателя.';
+
+  @override
+  String get classesLeaveAction => 'Выйти';
+
+  @override
+  String get classesInviteTitle => 'Код приглашения';
+
+  @override
+  String get classesInviteBody =>
+      'Студентам: Обучение → Группы и задания → Вступить по коду.';
+
+  @override
+  String get classesCopyCode => 'Скопировать код';
+
+  @override
+  String get classesCopyInvite => 'Скопировать приглашение';
+
+  @override
+  String get classesCopied => 'Скопировано';
+
+  @override
+  String classesInviteText(String name, String code) {
+    return 'Вступите в группу «$name» в приложении LabGuide: Обучение → Группы и задания → Вступить по коду. Код: $code';
+  }
+
+  @override
+  String get classesNewAssignmentIntro =>
+      'Выберите темы и число вопросов — они берутся из банка случайно.';
+
+  @override
+  String get classesAssignmentTitle => 'Название задания';
+
+  @override
+  String get classesAssignmentTitleHint => 'Например, Тема 1';
+
+  @override
+  String get classesTimeLimit => 'Ограничение времени, мин';
+
+  @override
+  String get classesTimeLimitHint =>
+      'Необязательно, 1–180. Время идёт с момента начала и проверяется на сервере.';
+
+  @override
+  String get classesNoLimit => 'Без ограничения';
+
+  @override
+  String get classesDueTitle => 'Срок сдачи';
+
+  @override
+  String get classesDueNone => 'Без срока';
+
+  @override
+  String classesDueDays(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count дня',
+      many: '$count дней',
+      few: '$count дня',
+      one: '$count день',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get classesDuePick => 'Выбрать дату';
+
+  @override
+  String get classesDueNoneBody => 'Без срока — студенты сдают в любое время.';
+
+  @override
+  String classesDueAt(String date) {
+    return 'Срок: до $date';
+  }
+
+  @override
+  String classesPreview(int count) {
+    return 'Выбранные вопросы · $count';
+  }
+
+  @override
+  String get classesReshuffle => 'Другие вопросы';
+
+  @override
+  String get classesKeyNotice =>
+      'Студенты не видят ключ заранее — баллы считает сервер. Каждый сдаёт один раз.';
+
+  @override
+  String get classesSendAssignment => 'Дать задание';
+
+  @override
+  String get classesAssignmentCreated => 'Задание отправлено';
+
+  @override
+  String get classesSubmitted => 'Ответы отправлены';
+
+  @override
+  String get classesSubmitNetwork =>
+      'Нет интернета — ответы сохранены на устройстве. Отправьте позже.';
+
+  @override
+  String get classesSubmitRejected =>
+      'Сервер не принял ответы: время или срок истекли, либо задание уже сдано.';
+
+  @override
+  String get classesAssignmentMissing => 'Задание не найдено';
+
+  @override
+  String get classesMetricQuestions => 'Вопросов';
+
+  @override
+  String get classesMetricLimit => 'Ограничение времени';
+
+  @override
+  String get classesMetricDue => 'Срок';
+
+  @override
+  String get classesMetricSubmitted => 'Сдали';
+
+  @override
+  String get classesMetricAverage => 'Средний балл';
+
+  @override
+  String get classesPendingTitle => 'Ответы ещё не отправлены';
+
+  @override
+  String get classesPendingBody =>
+      'Они сохранены на устройстве. Отправьте, когда появится интернет, — сервер примет их в пределах лимита времени.';
+
+  @override
+  String get classesResend => 'Отправить снова';
+
+  @override
+  String get classesOverdueTitle => 'Срок истёк';
+
+  @override
+  String get classesOverdueBody => 'Это задание больше нельзя сдать.';
+
+  @override
+  String classesOutdatedPack(int count) {
+    return 'В вашей версии приложения нет вопросов из этого задания: $count. Обновите приложение.';
+  }
+
+  @override
+  String classesStartNotice(int minutes) {
+    return 'После начала даётся $minutes мин — время не останавливается, по окончании ответы отправятся сами. Сдать можно один раз; для отправки нужен интернет.';
+  }
+
+  @override
+  String get classesStartNoticeNoLimit =>
+      'Без ограничения времени. Ответы отправляются один раз, пересдать нельзя; для отправки нужен интернет.';
+
+  @override
+  String get classesStart => 'Начать';
+
+  @override
+  String classesSubmittedAt(String date) {
+    return 'Сдано: $date';
+  }
+
+  @override
+  String get classesServerScore => 'Балл посчитан сервером';
+
+  @override
+  String get classesResults => 'Результаты';
+
+  @override
+  String get classesColStudent => 'Студент';
+
+  @override
+  String get classesColScore => 'Балл · %';
+
+  @override
+  String get classesNotSubmitted => 'Не сдано';
+
+  @override
+  String get classesByQuestion => 'По вопросам';
+
+  @override
+  String get classesByQuestionEmpty => 'Пока никто не сдал.';
+
+  @override
+  String classesWrongOf(int wrong, int total) {
+    return 'ошибок $wrong/$total';
+  }
+
+  @override
+  String get classesSending => 'Отправка ответов…';
+
+  @override
+  String get classesMyProgress => 'Мой прогресс';
+
+  @override
+  String classesDoneOf(int done, int total) {
+    return 'Выполнено заданий: $done/$total';
+  }
+
+  @override
+  String classesAverage(int avg) {
+    return 'Средний балл: $avg%';
+  }
+
+  @override
+  String get classesStudentResultTitle => 'Результат студента';
+
+  @override
+  String get classesStudentAnswer => 'Ответ студента';
+
+  @override
+  String get classesInviteMore => 'Пригласить ещё студентов';
 
   @override
   String get profileTitle => 'Профиль и настройки';

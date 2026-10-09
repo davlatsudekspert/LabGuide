@@ -96,7 +96,10 @@ void main() {
       expect(DifferentialController(store).history, hasLength(1));
       await reloaded.clearHistory();
       expect(DifferentialController(store).history, isEmpty);
-      expect(store.snapshot.containsKey(StoreKeys.differentialHistory), isFalse);
+      expect(
+        store.snapshot.containsKey(StoreKeys.differentialHistory),
+        isFalse,
+      );
     });
 
     test('buzilgan yozuv ilovani yiqitmaydi', () async {
@@ -117,8 +120,14 @@ void main() {
   group('kontent', () {
     Iterable<Map<String, String>> allTexts() sync* {
       for (final g in cellGuides) {
-        yield* [g.name, g.size, g.nucleus, g.cytoplasm, g.granules, g.key]
-            .map((t) => t.values);
+        yield* [
+          g.name,
+          g.size,
+          g.nucleus,
+          g.cytoplasm,
+          g.granules,
+          g.key,
+        ].map((t) => t.values);
         if (g.seenIn != null) yield g.seenIn!.values;
       }
       for (final c in confusions) {

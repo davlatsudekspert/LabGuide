@@ -531,42 +531,153 @@ class FakeLabBackend implements LabBackend {
     return u.reviewer || _isAdminAccount ? List.of(_reviews) : const [];
   }
 
-  // Guruhlar — UI testlari uchun minimal.
-  final List<StudyGroup> _groups = [];
+  // ------------------------------------------------------------ guruhlar
+  // Qoidalar `supabase/migrations/*groups*.sql` bilan bir xil: guruhni
+  // yaratgan hisob — ustoz; talaba faqat kod bilan qo'shiladi; a'zo bo'lmagan
+  // hech narsa ko'rmaydi; kalit faqat ustozga; ball serverda; bir marta
+  // topshiriladi; muddat va vaqt chegarasi serverda tekshiriladi.
+
+  /// Server soati (muddat/vaqt chegarasi) — testlarda suriladi.
+  DateTime Function() groupClock = DateTime.now;
+
+  /// Vaqt chegarasi tugagach tarmoq kechikishi uchun qo'shimcha vaqt.
+  static const submitGrace = Duration(minutes: 2);
+  static const _codeAlphabet = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+
+  final List<_Group> _groups = [];
+  final List<_Member> _members = [];
+  final List<_Assignment> _assignments = [];
+  final Map<(String, String), DateTime> _attempts = {};
+  final List<GroupSubmission> _submissions = [];
+
+  _Member? _membership(String groupId) => _members
+      .where((m) => m.groupId == groupId && m.userId == _current?.id)
+      .firstOrNull;
+  bool _isMember(String groupId) => _membership(groupId) != null;
+  bool _isTeacher(String groupId) => _membership(groupId)?.teacher ?? false;
+
+  String _nameOr(String? displayName) =>
+      (displayName == null || displayName.trim().length < 2)
+      ? _require().email.split('@').first
+      : displayName.trim();
+
+  void _checkLength(String value, int min, int max) {
+    final n = value.trim().length;
+    if (n < min || n > max) {
+      throw const BackendException(BackendFailure.invalid);
+    }
+  }
+
+  String _newCode() {
+    String code;
+    do {
+      final n = ++_seq * 7919 + _groups.length * 104729;
+      code = [
+        for (var i = 0; i < 8; i++)
+          _codeAlphabet[(n ~/ (i + 1) + i * 13) % _codeAlphabet.length],
+      ].join();
+    } while (_groups.any((g) => g.code == code));
+    return code;
+  }
 
   @override
   Future<List<StudyGroup>> myGroups() async {
     _require();
-    return List.of(_groups);
+    return [
+      for (final g in _groups.reversed)
+        if (_membership(g.id) case final m?)
+          StudyGroup(
+            id: g.id,
+            name: g.name,
+            joinCode: m.teacher ? g.code : null,
+            isTeacher: m.teacher,
+            memberCount: _members.where((x) => x.groupId == g.id).length,
+          ),
+    ];
   }
 
   @override
-  Future<StudyGroup> createGroup(String name) async {
-    _require();
-    final g = StudyGroup(
-      id: _id('group'),
-      name: name.trim(),
-      joinCode: 'ABCD2345',
+  Future<StudyGroup> createGroup(String name, {String? displayName}) async {
+    final u = _require();
+    _checkLength(name, 3, 80);
+    final shown = _nameOr(displayName);
+    _checkLength(shown, 2, 60);
+    if (_groups.where((g) => g.ownerId == u.id).length >= 10) {
+      throw const BackendException(BackendFailure.rateLimited);
+    }
+    final g = _Group(_id('group'), u.id, name.trim(), _newCode());
+    _groups.add(g);
+    _members.add(_Member(g.id, u.id, shown, teacher: true, joinedAt: _now()));
+    return StudyGroup(
+      id: g.id,
+      name: g.name,
+      joinCode: g.code,
       isTeacher: true,
       memberCount: 1,
     );
-    _groups.add(g);
-    return g;
   }
 
   @override
-  Future<void> joinGroup(String code, {String? displayName}) async {
-    _require();
-    if (code.toUpperCase() != 'ABCD2345') {
-      throw const BackendException(BackendFailure.notFound);
+  Future<String> joinGroup(String code, {String? displayName}) async {
+    final u = _require();
+    final g = _groups
+        .where((g) => g.code == code.trim().toUpperCase())
+        .firstOrNull;
+    if (g == null) throw const BackendException(BackendFailure.notFound);
+    final shown = _nameOr(displayName);
+    _checkLength(shown, 2, 60);
+    if (_isMember(g.id)) return g.id;
+    if (_members.where((m) => m.groupId == g.id).length >= 200) {
+      throw const BackendException(BackendFailure.rateLimited);
     }
+    _members.add(_Member(g.id, u.id, shown, teacher: false, joinedAt: _now()));
+    return g.id;
   }
 
   @override
-  Future<void> leaveGroup(String groupId) async {}
+  Future<void> leaveGroup(String groupId) async {
+    final u = _require();
+    _members.removeWhere(
+      (m) => m.groupId == groupId && m.userId == u.id && !m.teacher,
+    );
+  }
 
   @override
-  Future<List<GroupAssignment>> assignments(String groupId) async => const [];
+  Future<List<GroupMember>> groupMembers(String groupId) async {
+    _require();
+    if (!_isMember(groupId)) return const []; // RLS: begona — bo'sh
+    return [
+      for (final m in _members)
+        if (m.groupId == groupId)
+          GroupMember(
+            userId: m.userId,
+            displayName: m.displayName,
+            isTeacher: m.teacher,
+            joinedAt: m.joinedAt,
+          ),
+    ];
+  }
+
+  @override
+  Future<void> removeMember(String groupId, String userId) async {
+    _require();
+    if (!_isTeacher(groupId)) {
+      throw const BackendException(BackendFailure.forbidden);
+    }
+    _members.removeWhere(
+      (m) => m.groupId == groupId && m.userId == userId && !m.teacher,
+    );
+  }
+
+  @override
+  Future<List<GroupAssignment>> assignments(String groupId) async {
+    _require();
+    if (!_isMember(groupId)) return const [];
+    return [
+      for (final a in _assignments.reversed)
+        if (a.info.groupId == groupId) a.info,
+    ];
+  }
 
   @override
   Future<String> createAssignment({
@@ -576,17 +687,141 @@ class FakeLabBackend implements LabBackend {
     required List<int> correctIndexes,
     DateTime? dueAt,
     int? timeLimitMinutes,
-  }) async => _id('assignment');
+  }) async {
+    _require();
+    if (!_isTeacher(groupId)) {
+      throw const BackendException(BackendFailure.forbidden);
+    }
+    _checkLength(title, 3, 120);
+    if (questionIds.isEmpty ||
+        questionIds.length > 50 ||
+        questionIds.length != correctIndexes.length ||
+        correctIndexes.any((i) => i < 0) ||
+        (timeLimitMinutes != null &&
+            (timeLimitMinutes < 1 || timeLimitMinutes > 180)) ||
+        (dueAt != null && !dueAt.isAfter(groupClock()))) {
+      throw const BackendException(BackendFailure.invalid);
+    }
+    final a = GroupAssignment(
+      id: _id('assignment'),
+      groupId: groupId,
+      title: title.trim(),
+      questionIds: List.unmodifiable(questionIds),
+      dueAt: dueAt?.toUtc(),
+      timeLimitMinutes: timeLimitMinutes,
+      createdAt: _now(),
+    );
+    _assignments.add(_Assignment(a, List.unmodifiable(correctIndexes)));
+    return a.id;
+  }
+
+  /// Faqat shu guruhning talabasi (SQL dagi kabi; ustoz yecha olmaydi).
+  _Assignment _forStudent(String assignmentId) {
+    final u = _require();
+    final a = _assignments.where((a) => a.info.id == assignmentId).firstOrNull;
+    if (a == null ||
+        !_members.any(
+          (m) => m.groupId == a.info.groupId && m.userId == u.id && !m.teacher,
+        )) {
+      throw const BackendException(BackendFailure.forbidden);
+    }
+    return a;
+  }
 
   @override
-  Future<({int score, int total})> submitAssignment(
+  Future<AssignmentStart> startAssignment(String assignmentId) async {
+    final a = _forStudent(assignmentId);
+    final now = groupClock();
+    final key = (assignmentId, _current!.id);
+    final due = a.info.dueAt;
+    if (!_attempts.containsKey(key) && due != null && now.isAfter(due)) {
+      throw const BackendException(BackendFailure.invalid, 'past due');
+    }
+    final started = _attempts.putIfAbsent(key, () => now);
+    return AssignmentStart(startedAt: started, serverNow: now);
+  }
+
+  @override
+  Future<GroupSubmission> submitAssignment(
     String assignmentId,
     List<int> answers,
-  ) async => (score: 0, total: answers.length);
+  ) async {
+    final a = _forStudent(assignmentId);
+    final u = _current!;
+    final now = groupClock();
+    final started = _attempts[(assignmentId, u.id)];
+    final due = a.info.dueAt;
+    if (due != null) {
+      final grace = started != null && !started.isAfter(due)
+          ? submitGrace
+          : Duration.zero;
+      if (now.isAfter(due.add(grace))) {
+        throw const BackendException(BackendFailure.invalid, 'past due');
+      }
+    }
+    final limit = a.info.timeLimitMinutes;
+    if (limit != null &&
+        (started == null ||
+            now.isAfter(started.add(Duration(minutes: limit) + submitGrace)))) {
+      throw const BackendException(BackendFailure.invalid, 'time over');
+    }
+    if (answers.length != a.key.length) {
+      throw const BackendException(BackendFailure.invalid);
+    }
+    if (_submissions.any(
+      (s) => s.assignmentId == assignmentId && s.userId == u.id,
+    )) {
+      throw const BackendException(BackendFailure.invalid, 'already');
+    }
+    final correct = [
+      for (var i = 0; i < a.key.length; i++) answers[i] == a.key[i],
+    ];
+    final s = GroupSubmission(
+      assignmentId: assignmentId,
+      userId: u.id,
+      score: correct.where((c) => c).length,
+      total: a.key.length,
+      submittedAt: now.toUtc(),
+      answers: List.unmodifiable(answers),
+      correct: List.unmodifiable(correct),
+    );
+    _submissions.add(s);
+    return s;
+  }
+
+  /// RLS: o'z natijasi yoki ustoz bo'lgan guruhniki.
+  bool _canSee(GroupSubmission s) {
+    final a = _assignments.firstWhere((a) => a.info.id == s.assignmentId);
+    return s.userId == _current?.id || _isTeacher(a.info.groupId);
+  }
 
   @override
-  Future<List<GroupSubmission>> submissions(String assignmentId) async =>
-      const [];
+  Future<List<GroupSubmission>> submissions(String assignmentId) async {
+    _require();
+    return [
+      for (final s in _submissions)
+        if (s.assignmentId == assignmentId && _canSee(s)) s,
+    ];
+  }
+
+  @override
+  Future<List<GroupSubmission>> groupSubmissions(String groupId) async {
+    final ids = {for (final a in await assignments(groupId)) a.id};
+    return [
+      for (final s in _submissions)
+        if (ids.contains(s.assignmentId) && _canSee(s)) s,
+    ];
+  }
+
+  @override
+  Future<List<int>> assignmentKey(String assignmentId) async {
+    _require();
+    final a = _assignments.where((a) => a.info.id == assignmentId).firstOrNull;
+    if (a == null || !_isTeacher(a.info.groupId)) {
+      throw const BackendException(BackendFailure.forbidden);
+    }
+    return a.key;
+  }
 
   // ----------------------------------------------------------- Hamkorlar
   // `supabase/migrations/20261009001000_partners.sql` qoidalari: hamma faqat
@@ -899,4 +1134,33 @@ class FakeLabBackend implements LabBackend {
       ),
     );
   }
+}
+
+class _Group {
+  _Group(this.id, this.ownerId, this.name, this.code);
+  final String id;
+  final String ownerId;
+  final String name;
+  final String code;
+}
+
+class _Member {
+  _Member(
+    this.groupId,
+    this.userId,
+    this.displayName, {
+    required this.teacher,
+    required this.joinedAt,
+  });
+  final String groupId;
+  final String userId;
+  final String displayName;
+  final bool teacher;
+  final DateTime joinedAt;
+}
+
+class _Assignment {
+  _Assignment(this.info, this.key);
+  final GroupAssignment info;
+  final List<int> key;
 }

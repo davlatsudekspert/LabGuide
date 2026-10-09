@@ -147,7 +147,11 @@ class _LgPageState extends State<LgPage> {
     final duration = LgMotion.of(context, LgMotion.header);
     final media = MediaQuery.of(context);
     final insideShell = StatefulNavigationShell.maybeOf(context) != null;
-    final canPop = Navigator.of(context).canPop();
+    // Sahifaning o'z marshruti bo'yicha (ModalRoute — o'zgarsa qayta
+    // chiziladi). Navigator.canPop yopiq sahifa ustida boshqa sahifa
+    // turganda qayta chizilsa, keyin ham “orqaga” tugmasi qolib ketardi.
+    final canPop =
+        ModalRoute.of(context)?.canPop ?? Navigator.of(context).canPop();
 
     final largeTitle = _LargeTitle(
       eyebrow: widget.eyebrow,

@@ -11,6 +11,7 @@ import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
 import '../content/ui/content_widgets.dart';
+import '../microscopy/microscopy_widgets.dart';
 import '../tools/calc_info.dart';
 import '../tools/clinical_calc_screens.dart';
 import '../tools/tool_screens.dart';
@@ -24,12 +25,24 @@ const _base = '/lab/differential';
 /// Hujayra kartalari id lari (asosiy beshta tur). Kontent paketida bo'lsa
 /// "Tahlil kartalari" bo'limida ko'rsatiladi; bo'lmasa — hech narsa.
 const diffAnalyteIds = [
+  'wbc-count',
   'neutrophils',
   'lymphocytes',
   'monocytes',
   'eosinophils',
   'basophils',
+  'blood-smear',
 ];
+
+/// Sxema → mikroskopiya atlasidagi tur (litsenziyali haqiqiy rasmlar).
+const _atlasEntity = {
+  'neutrophil_segmented': 'neutrophil',
+  'lymphocyte_small': 'lymphocyte',
+  'lymphocyte_large': 'lymphocyte',
+  'monocyte': 'monocyte',
+  'eosinophil': 'eosinophil',
+  'basophil': 'basophil',
+};
 
 /// Lab tabining eng yuqorisidagi alohida karta.
 class DifferentialEntryCard extends StatelessWidget {
@@ -120,6 +133,12 @@ class DifferentialScreen extends StatelessWidget {
             subtitle: l.diffCellsSub(cellGuides.length),
             icon: Icons.biotech_outlined,
             onTap: () => context.push('$_base/cells'),
+          ),
+          LgRow(
+            title: l.diffAtlasRow,
+            subtitle: l.diffAtlasRowSub,
+            icon: Icons.photo_library_outlined,
+            onTap: () => context.push(microSectionRoute('blood')),
           ),
           LgRow(
             title: l.diffConfusionsTitle,
@@ -490,9 +509,59 @@ class DiffCellScreen extends StatelessWidget {
             style: Theme.of(context).textTheme.bodyMedium,
           ),
         ],
+        if (_atlasEntity[g.id] case final entity?) _RealSmear(entity: entity),
         if (g.analyteId != null) _RelatedCards(ids: [g.analyteId!]),
         _Sources(g.refs),
       ],
+    );
+  }
+}
+
+/// Mikroskopiya atlasidagi litsenziyali mikrofotolar (bo'lsa). Atlas
+/// yuklanmagan yoki rasm yo'q bo'lsa — hech narsa ko'rsatilmaydi.
+class _RealSmear extends StatefulWidget {
+  const _RealSmear({required this.entity});
+
+  final String entity;
+
+  @override
+  State<_RealSmear> createState() => _RealSmearState();
+}
+
+class _RealSmearState extends State<_RealSmear> {
+  @override
+  void initState() {
+    super.initState();
+    context.services.microscopy.ensureAtlas();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context);
+    final micro = context.services.microscopy;
+    return ListenableBuilder(
+      listenable: micro,
+      builder: (context, _) {
+        final atlas = micro.atlas;
+        final images = atlas?.imagesOf(widget.entity) ?? const [];
+        if (atlas == null || images.isEmpty) return const SizedBox.shrink();
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            LgSectionTitle(l.diffRealSmear),
+            Text(
+              l.diffRealSmearNote,
+              style: Theme.of(context).textTheme.bodySmall,
+            ),
+            const SizedBox(height: 8),
+            for (final i in images.take(2))
+              Padding(
+                padding: const EdgeInsets.only(bottom: 10),
+                child: MicroImageCard(atlas: atlas, image: i),
+              ),
+          ],
+        );
+      },
     );
   }
 }
