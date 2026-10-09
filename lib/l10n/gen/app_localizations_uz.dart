@@ -1170,6 +1170,323 @@ class AppLocalizationsUz extends AppLocalizations {
       'Probirka rangi, vaqt va harorat aniq probirka, metod va yo‘riqnomaga bog‘lanadi. Universal parametrlar berilmaydi.';
 
   @override
+  String get diffTitle => 'Leykoformula';
+
+  @override
+  String get diffSubtitle => 'Hujayralarni tanish, sanash, talqin';
+
+  @override
+  String get diffLabCardBody =>
+      'Qo‘lda sanash hisoblagichi, hujayralar atlasi va talqin';
+
+  @override
+  String get diffHeroTitle => 'Leykoformulani ishonch bilan o‘qing';
+
+  @override
+  String get diffHeroBody =>
+      'Hujayralar sxemasi, katta tugmali hisoblagich, talqin va surtma texnikasi — bir joyda.';
+
+  @override
+  String get diffStartCount => 'Sanashni boshlash';
+
+  @override
+  String diffResumeCount(int count, int target) {
+    return 'Sanashni davom ettirish ($count/$target)';
+  }
+
+  @override
+  String get diffCellsTitle => 'Hujayralarni tanish';
+
+  @override
+  String diffCellsSub(int count) {
+    return '$count ta hujayra: o‘lcham, yadro, sitoplazma, donachalar';
+  }
+
+  @override
+  String get diffConfusionsTitle => 'Ko‘p adashtiriladiganlar';
+
+  @override
+  String get diffConfusionsSub =>
+      'Reaktiv limfotsit yoki monotsit? Tayoqcha yoki segment?';
+
+  @override
+  String get diffCounterTitle => 'Sanash hisoblagichi';
+
+  @override
+  String get diffCounterSub =>
+      'Bosish +1, uzoq bosish −1; 100 yoki 200 hujayra';
+
+  @override
+  String get diffHistoryTitle => 'Saqlangan natijalar';
+
+  @override
+  String diffHistorySub(int count) {
+    return '$count ta natija — faqat shu qurilmada';
+  }
+
+  @override
+  String get diffInterpretTitle => 'Talqin';
+
+  @override
+  String get diffInterpretSub =>
+      'Chapga siljish, neytrofiliya, limfotsitoz va boshqalar';
+
+  @override
+  String get diffTechniqueTitle => 'Surtma texnikasi va xatolar';
+
+  @override
+  String get diffTechniqueSub => 'Tayyorlash, bo‘yash, qayerda sanash';
+
+  @override
+  String get diffQuizTitle => '“Bu qaysi hujayra?” mashqi';
+
+  @override
+  String diffQuizSub(int count) {
+    return '$count ta savol, sxematik rasmlar bilan';
+  }
+
+  @override
+  String get diffLearnSub =>
+      'Hujayralar atlasi, hisoblagich va “Bu qaysi hujayra?” mashqi';
+
+  @override
+  String get diffSourcesTitle => 'Manbalar';
+
+  @override
+  String get diffDraftTag => 'Draft · mutaxassis tekshiruvida';
+
+  @override
+  String get diffDraftNote =>
+      'Bo‘lim mutaxassis tekshiruvidan o‘tmagan. Natija tashxis emas; referens oraliqlar — laboratoriyangiz blankasida.';
+
+  @override
+  String get diffSchematicCaption =>
+      'Sxematik rasm (LabGuide chizgan) — mikrofoto emas';
+
+  @override
+  String get diffScaleNote =>
+      'Barcha sxemalar bir xil masshtabda; atrofdagi eritrotsitlar (~7,5 mkm) o‘lchamni taqqoslash uchun.';
+
+  @override
+  String get diffRelatedCards => 'Tahlil kartalari';
+
+  @override
+  String get diffSize => 'O‘lcham';
+
+  @override
+  String get diffNucleus => 'Yadro';
+
+  @override
+  String get diffCytoplasm => 'Sitoplazma';
+
+  @override
+  String get diffGranules => 'Donachalar';
+
+  @override
+  String get diffKeySign => 'Asosiy belgi';
+
+  @override
+  String get diffSeenIn => 'Qachon uchraydi';
+
+  @override
+  String get diffReferTitle => 'Shifokor yoki gematologga yuboring';
+
+  @override
+  String get diffReferBody =>
+      'Blast yoki aniqlab bo‘lmagan hujayra ko‘rsangiz — o‘zingiz talqin qilmang. Surtmani laboratoriyangiz tartibiga ko‘ra gematolog yoki shifokor ko‘rib chiqsin.';
+
+  @override
+  String get diffCompareA => 'Chapda';
+
+  @override
+  String get diffCompareB => 'O‘ngda';
+
+  @override
+  String get diffFeature => 'Belgi';
+
+  @override
+  String get diffTip => 'Maslahat';
+
+  @override
+  String get diffOpenCell => 'Batafsil';
+
+  @override
+  String get diffTargetLabel => 'Nechta hujayra sanaladi';
+
+  @override
+  String get diffWbcLabel => 'Leykotsitlar (WBC), ×10⁹/L — ixtiyoriy';
+
+  @override
+  String get diffWbcHint => 'masalan, 7,5';
+
+  @override
+  String get diffWbcInvalid => 'Musbat son kiriting (masalan, 7,5)';
+
+  @override
+  String get diffTapHint => 'Bosish: +1 · Uzoq bosish: −1';
+
+  @override
+  String get diffUndo => 'Oxirgisini bekor qilish';
+
+  @override
+  String get diffReset => 'Qaytadan';
+
+  @override
+  String get diffResetTitle => 'Sanash tozalansinmi?';
+
+  @override
+  String diffResetBody(int count) {
+    return '$count ta sanalgan hujayra o‘chadi.';
+  }
+
+  @override
+  String get diffResetConfirm => 'Tozalash';
+
+  @override
+  String diffDoneTitle(int target) {
+    return '$target ta hujayra sanaldi';
+  }
+
+  @override
+  String get diffDoneBody =>
+      'Sanash to‘xtatildi. Natijani tekshiring, saqlang yoki nusxalang.';
+
+  @override
+  String get diffBlocked => 'Maqsadga yetildi — bosish qo‘shilmadi';
+
+  @override
+  String get diffResultTitle => 'Natija';
+
+  @override
+  String get diffColCell => 'Hujayra';
+
+  @override
+  String get diffColCount => 'Soni';
+
+  @override
+  String get diffColAbs => '×10⁹/L';
+
+  @override
+  String get diffAbsNeedWbc => 'Mutlaq sonlar uchun WBC ni kiriting.';
+
+  @override
+  String get diffOtherWarning =>
+      '“Boshqa” hujayralar sanaldi. Blast yoki noma’lum hujayra bo‘lsa — surtmani gematolog yoki shifokor ko‘rsin.';
+
+  @override
+  String get diffSave => 'Tarixga saqlash';
+
+  @override
+  String get diffSaved => 'Natija saqlandi (faqat shu qurilmada)';
+
+  @override
+  String get diffLabelField => 'Namuna belgisi (ixtiyoriy, bemor ismisiz)';
+
+  @override
+  String get diffLabelHint => 'masalan, 12-namuna';
+
+  @override
+  String get diffCopy => 'Nusxalash';
+
+  @override
+  String get diffCopied => 'Natija nusxalandi';
+
+  @override
+  String diffCopyHeader(int total) {
+    return 'Leykoformula ($total ta hujayra)';
+  }
+
+  @override
+  String get diffCopyFooter =>
+      'LabGuide · qo‘lda sanash. Referens — laboratoriya blankasida.';
+
+  @override
+  String diffWbcLine(String value) {
+    return 'WBC: $value ×10⁹/L';
+  }
+
+  @override
+  String diffButtonSemantics(String cell, int count) {
+    return '$cell: $count. Bosing — qo‘shish, uzoq bosing — ayirish.';
+  }
+
+  @override
+  String get diffDecrementAction => 'Bittaga kamaytirish';
+
+  @override
+  String get diffHistoryEmptyTitle => 'Hali saqlangan natija yo‘q';
+
+  @override
+  String get diffHistoryEmptyBody =>
+      'Sanashni tugatib, “Tarixga saqlash” ni bosing.';
+
+  @override
+  String get diffHistoryClear => 'Hammasini o‘chirish';
+
+  @override
+  String get diffHistoryClearTitle => 'Tarix o‘chirilsinmi?';
+
+  @override
+  String diffHistoryClearBody(int count) {
+    return '$count ta natija shu qurilmadan o‘chadi.';
+  }
+
+  @override
+  String get diffDeleted => 'Natija o‘chirildi';
+
+  @override
+  String get diffHistoryLocalNote =>
+      'Natijalar faqat shu qurilmada saqlanadi va serverga yuborilmaydi. Profil → “Lokal ma’lumotlarni o‘chirish” ularni ham o‘chiradi.';
+
+  @override
+  String get diffInterpretIntro =>
+      'Talqin doim referens oraliq va klinik holat bilan birga qilinadi. Referens — laboratoriyangiz blankasida; quyidagi sabablar faqat ehtimoliy, tashxis emas.';
+
+  @override
+  String get diffPossibleCauses => 'Ehtimoliy sabablar';
+
+  @override
+  String get diffAbsNote =>
+      'Bitta tur keskin ko‘paysa, boshqalarning foizi kamayadi. Shuning uchun mutlaq sonlarga (ulush × WBC) qarang.';
+
+  @override
+  String get diffRangesTitle => 'Nega ilova “me’yor” bermaydi?';
+
+  @override
+  String get diffRangesBody =>
+      'Ikki ochiq manbada kattalar uchun misol oraliqlar (%) ham turlicha. Hisobotda faqat laboratoriyangiz blankasidagi referens ishlatiladi; bolalar uchun oraliqlar yoshga qarab boshqacha.';
+
+  @override
+  String get diffRangesWho => 'JSST 2003';
+
+  @override
+  String get diffRangesMedline => 'MedlinePlus';
+
+  @override
+  String get diffQuizPrompt => 'Bu qaysi hujayra?';
+
+  @override
+  String get diffQuizIntro =>
+      'Sxematik rasmga qarab hujayrani tanlang. Savollar har safar aralashtiriladi; javobdan keyin farqlovchi belgi ko‘rsatiladi.';
+
+  @override
+  String get diffQuizStart => 'Mashqni boshlash';
+
+  @override
+  String get diffRealSmear => 'Haqiqiy surtma';
+
+  @override
+  String get diffRealSmearNote =>
+      'Mikroskopiya atlasidagi litsenziyali mikrofoto. Muallif va litsenziya — rasmni ochganda.';
+
+  @override
+  String get diffAtlasRow => 'Haqiqiy qon surtmalari';
+
+  @override
+  String get diffAtlasRowSub =>
+      'Mikroskopiya atlasidagi litsenziyali mikrofotolar';
+
+  @override
   String get preOrderTitle => 'Probirkalar tartibi (venepunksiya)';
 
   @override
