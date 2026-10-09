@@ -1644,7 +1644,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get diffVoicePrivacyAndroid =>
-      'Android: speech is recognised by the phone’s system service (usually Google). LabGuide asks for offline recognition but cannot guarantee it — the service may send audio to its server. LabGuide does not store your voice or send it anywhere itself.';
+      'Android: works only with speech recognition on the phone itself (offline) — Android 12+ with on-device recognition is required. Otherwise the mode stays off and audio is not sent to a server. LabGuide does not store or send your voice anywhere.';
 
   @override
   String get diffVoiceNoNames =>
@@ -1697,7 +1697,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get diffVoiceOnDeviceUnavailable =>
-      'On-device recognition isn’t available for this language. Voice commands are off so audio is not sent to a server.';
+      'On-device (offline) speech recognition isn’t available. Voice commands are off so audio is not sent to a server.';
 
   @override
   String get diffVoiceFailed => 'Speech recognition stopped. Please try again.';

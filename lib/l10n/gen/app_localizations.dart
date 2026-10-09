@@ -2965,7 +2965,7 @@ abstract class AppLocalizations {
   /// No description provided for @diffVoicePrivacyAndroid.
   ///
   /// In en, this message translates to:
-  /// **'Android: speech is recognised by the phone’s system service (usually Google). LabGuide asks for offline recognition but cannot guarantee it — the service may send audio to its server. LabGuide does not store your voice or send it anywhere itself.'**
+  /// **'Android: works only with speech recognition on the phone itself (offline) — Android 12+ with on-device recognition is required. Otherwise the mode stays off and audio is not sent to a server. LabGuide does not store or send your voice anywhere.'**
   String get diffVoicePrivacyAndroid;
 
   /// No description provided for @diffVoiceNoNames.
@@ -3043,7 +3043,7 @@ abstract class AppLocalizations {
   /// No description provided for @diffVoiceOnDeviceUnavailable.
   ///
   /// In en, this message translates to:
-  /// **'On-device recognition isn’t available for this language. Voice commands are off so audio is not sent to a server.'**
+  /// **'On-device (offline) speech recognition isn’t available. Voice commands are off so audio is not sent to a server.'**
   String get diffVoiceOnDeviceUnavailable;
 
   /// No description provided for @diffVoiceFailed.

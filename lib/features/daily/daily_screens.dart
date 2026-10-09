@@ -77,7 +77,8 @@ DailyPool dailyPoolFor(ExamQuestionSource source, AppRole role) {
   return DailyPool(sourceId: source.id, priority: priority, others: others);
 }
 
-/// Savollar manbasi: O'zbekiston foydalanuvchisiga toifa banki, qolganlarga
+/// Savollar manbasi: O'zbekiston foydalanuvchisiga (shifokordan tashqari)
+/// toifa banki, qolganlarga
 /// kontent paketi mashq savollari.
 class _DailySourceGate extends StatelessWidget {
   const _DailySourceGate({required this.builder});

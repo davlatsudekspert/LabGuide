@@ -515,3 +515,13 @@ ranglari (yashil palitra) o‘zgarmadi — logo faqat belgi sifatida.
   (rasmdagi yozuv takrorlanmaydi). Welcome — 120 pt belgi (molekula rasmi o'rniga); kirish
   ekrani — 88 pt (ekran balandligi ≥ 700 pt bo'lsa; past ekranda joy forma/klaviaturaga).
   Sun'iy kutish yo'q. Palitra o'zgarmadi; splash foni kunduzgi #F3F3EC, tungi #0D1919.
+
+## D-40. Toifa — shifokorga emas; eslatma 20:00; Android ovozi faqat oflayn (2026-10-09)
+- Egasi: "Toifa shifokorlarga kk emas". KDL malaka toifasi bo'limi (bosh sahifa, O'rganish,
+  `/learn/toifa` manzili) va kunlik savolning toifa manbasi shifokor roliga ko'rsatilmaydi;
+  shifokor kunlik savolni kontent paketi mashq savollaridan oladi. Laborant, talaba, ustoz —
+  avvalgidek (til uz yoki mintaqa UZ).
+- Kunlik eslatmaning standart vaqti 20:00 (egasi tasdiqladi).
+- Leykoformula ovozli buyruqlari Android'da faqat qurilmada oflayn tanish bo'lsa yoqiladi
+  (Android 12+, `isOnDeviceRecognitionAvailable`); aks holda "oflayn tanish yo'q" xabari.
+  Ovoz hech qachon tizim xizmati serveriga ketmaydi — Play Data safety'da audio yo'q.

@@ -610,7 +610,8 @@ GoRouter buildRouter(
                     ],
                   ),
                   // Toifa imtihoniga tayyorgarlik — faqat O'zbekiston
-                  // foydalanuvchilariga (til uz yoki mintaqa UZ); boshqalar
+                  // foydalanuvchilariga (til uz yoki mintaqa UZ), shifokor
+                  // rolidan tashqari; boshqalar
                   // to'g'ridan-to'g'ri manzil bilan ham kira olmaydi.
                   GoRoute(
                     path: 'toifa',
@@ -618,6 +619,7 @@ GoRouter buildRouter(
                         toifaAvailable(
                           settings.language,
                           SchedulerBinding.instance.platformDispatcher.locales,
+                          role: settings.role,
                         )
                         ? null
                         : '/learn',

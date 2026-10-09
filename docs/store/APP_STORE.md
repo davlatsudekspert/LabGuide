@@ -249,14 +249,12 @@ ulanmaguncha e’lon ko‘rsatmaydi — yoqilganda Yes). Server ulangan birinchi
 | App activity → Other user-generated content | To‘planadi; ixtiyoriy; guruh javoblari, tekshiruv izohlari |
 | Location, Contacts, Financial, Health, Device IDs | To‘planmaydi |
 
-**Ovozli buyruqlar (RECORD_AUDIO, ixtiyoriy, eksperimental):** Android’da plagin oflayn tanishni
-faqat “afzal” deb so‘raydi; qurilmada tanish bo‘lmasa tizim xizmati (odatda Google) ovozni o‘z
-serverida qayta ishlashi mumkin. Ilova ovozni o‘zi yubormaydi va saqlamaydi, lekin so‘rov
-ilovadan boshlangani uchun **ehtiyotkor javob tavsiya etiladi**: Data safety → *Audio → Voice or
-sound recordings* — Collected: **Yes**, **Processed ephemerally**, **Optional**, maqsad: App
-functionality; Shared: No. Shu holda “Does your app collect…” savoli **Yes** bo‘ladi (server
-ulanmagan buildda ham). Muqobil — Android’da ovozli rejimni faqat oflayn tanish mavjud bo‘lganda
-yoqish; qaror egasida. Kunlik eslatma (`POST_NOTIFICATIONS`) va ulashish ma’lumot to‘plamaydi.
+**Ovozli buyruqlar (RECORD_AUDIO, ixtiyoriy, eksperimental):** Android’da rejim faqat
+qurilmada oflayn tanish mavjud bo‘lsa yoqiladi (`MainActivity` →
+`SpeechRecognizer.isOnDeviceRecognitionAvailable`, Android 12+; speech_to_text `onDevice: true`
+shu holda `createOnDeviceSpeechRecognizer` ishlatadi). Ovoz qurilmadan chiqmaydi, ilova uni
+saqlamaydi — Data safety’da **Audio qo‘shilmaydi** (egasi qarori, 2026-10-09). Kunlik eslatma
+(`POST_NOTIFICATIONS`) va ulashish ma’lumot to‘plamaydi.
 
 Reklama: ilovada hamkor e’lonlari bo‘lsa, Play Console → App content → **Ads: Yes**.
 Hisobni o‘chirish havolasi (Play talabi): siyosat sahifasi + ilovadagi tugma.

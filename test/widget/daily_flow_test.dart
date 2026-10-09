@@ -143,6 +143,17 @@ void main() {
     expect(again.daily.streak.current, 1);
   });
 
+  testWidgets('uz shifokor: toifa emas, kontent paketi savollari', (
+    tester,
+  ) async {
+    tester.platformDispatcher.localesTestValue = const [Locale('uz', 'UZ')];
+    final s = await makeServices(tester, role: AppRole.doctor);
+    await pumpApp(tester, s, size: const Size(390, 1400));
+    await goTo(tester, kDailyLocation);
+    expect(s.daily.todaySet!.sourceId, isNot(ToifaQuestionSource.sourceId));
+    expect(find.text(uz.dailySourceToifa), findsNothing);
+  });
+
   testWidgets('ruxsat rad etilsa — halol xabar, eslatma o‘chiq', (
     tester,
   ) async {

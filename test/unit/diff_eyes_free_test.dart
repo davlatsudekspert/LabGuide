@@ -167,20 +167,20 @@ void main() {
         pickVoiceLocale(['en-US', 'uz-UZ', 'ru-RU'], VoiceLanguage.auto, 'uz'),
         (localeId: 'uz-UZ', lang: 'uz'),
       );
-      expect(
-        pickVoiceLocale(['en-US', 'ru-RU'], VoiceLanguage.auto, 'uz'),
-        (localeId: 'ru-RU', lang: 'ru'),
-      );
-      expect(
-        pickVoiceLocale(['en_GB', 'en_US'], VoiceLanguage.auto, 'uz'),
-        (localeId: 'en_US', lang: 'en'),
-      );
+      expect(pickVoiceLocale(['en-US', 'ru-RU'], VoiceLanguage.auto, 'uz'), (
+        localeId: 'ru-RU',
+        lang: 'ru',
+      ));
+      expect(pickVoiceLocale(['en_GB', 'en_US'], VoiceLanguage.auto, 'uz'), (
+        localeId: 'en_US',
+        lang: 'en',
+      ));
       expect(pickVoiceLocale(['de-DE'], VoiceLanguage.auto, 'uz'), isNull);
       expect(pickVoiceLocale(['ru-RU'], VoiceLanguage.uz, 'ru'), isNull);
-      expect(
-        pickVoiceLocale(['ru-KZ'], VoiceLanguage.ru, 'en'),
-        (localeId: 'ru-KZ', lang: 'ru'),
-      );
+      expect(pickVoiceLocale(['ru-KZ'], VoiceLanguage.ru, 'en'), (
+        localeId: 'ru-KZ',
+        lang: 'ru',
+      ));
     });
   });
 
@@ -241,6 +241,16 @@ void main() {
       expect(v.state, VoiceState.onDeviceUnavailable);
       expect(engine.listens, 1);
     });
+
+    test(
+      'oflayn tanish yo\'q (Android) — tinglash umuman boshlanmaydi',
+      () async {
+        final engine = FakeSpeechEngine(onDevice: false);
+        final v = await started(engine, []);
+        expect(v.state, VoiceState.onDeviceUnavailable);
+        expect(engine.listens, 0);
+      },
+    );
 
     test('jimlik — qayta tinglanadi; ruxsat xatosi — to\'xtaydi', () async {
       final engine = FakeSpeechEngine();

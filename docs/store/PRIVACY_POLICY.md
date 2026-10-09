@@ -39,9 +39,8 @@ Kirish sessiyasi qurilmaning xavfsiz omborida (Keychain / Android Keystore) saql
 
 **Mikrofon va ovozli buyruqlar (ixtiyoriy, eksperimental).** Leykoformula sanashda ovozli
 buyruqlarni o‘zingiz yoqsangizgina mikrofonga ruxsat so‘raladi. Nutq tizimning nutqni tanish
-xizmati orqali matnga aylantiriladi: iPhone’da faqat qurilmaning o‘zida (qurilmada imkoni
-bo‘lmasa rejim yoqilmaydi); Android’da qurilmada tanish bo‘lmasa, tizim xizmati (odatda Google)
-ovozni o‘z serveriga yuborishi mumkin — bu holda shu xizmat qoidalari amal qiladi. LabGuide
+xizmati orqali faqat qurilmaning o‘zida (oflayn) matnga aylantiriladi — iPhone’da ham,
+Android’da ham (Android 12+); qurilmada oflayn tanish bo‘lmasa rejim yoqilmaydi. LabGuide
 ovozni yozib olmaydi, saqlamaydi va o‘z serveriga yubormaydi; faqat tanilgan hujayra nomi
 sanaladi. Ovoz bilan bemor ismini aytmang.
 
@@ -102,9 +101,8 @@ Google).
 
 **Микрофон и голосовые команды (по желанию, экспериментально).** Доступ к микрофону
 запрашивается, только если вы сами включите голосовые команды при подсчёте лейкоформулы. Речь
-распознаётся системной службой: на iPhone — только на самом устройстве (если это невозможно,
-режим не включается); на Android, если распознавание на устройстве недоступно, системная служба
-(обычно Google) может отправить звук на свой сервер — тогда действуют её правила. LabGuide не
+распознаётся системной службой только на самом устройстве (офлайн) — и на iPhone, и на Android
+(Android 12+); если офлайн-распознавания нет, режим не включается. LabGuide не
 записывает, не хранит и не отправляет звук на свой сервер; учитывается только распознанное
 название клетки. Не называйте вслух имя пациента.
 
@@ -165,9 +163,8 @@ tracking. Your data is not sold or shared for advertising.
 
 **Microphone and voice commands (optional, experimental).** Microphone access is requested only
 if you turn on voice commands in the differential counter. Speech is recognised by the system
-speech service: on iPhone only on the device itself (if that is not possible, the mode stays
-off); on Android, if on-device recognition is unavailable, the system service (usually Google)
-may send the audio to its own servers, under that service’s terms. LabGuide does not record,
+speech service on the device itself only (offline) — on iPhone and on Android 12+; if on-device
+recognition is unavailable, the mode stays off. LabGuide does not record,
 store or send audio to its own server; only the recognised cell name is counted. Do not say a
 patient’s name aloud.
 

@@ -212,16 +212,35 @@ abstract class SpeechEngine {
 
   Future<void> stop();
 
-  /// Ovoz qurilmadan chiqmasligi kafolatlanganmi (iOS — ha, Android — yo'q).
-  bool get onDeviceGuaranteed;
+  /// Qurilmada (oflayn) tanish mavjudmi. Yo'q bo'lsa rejim yoqilmaydi —
+  /// ovoz hech qachon tizim xizmati serveriga yuborilmasin.
+  Future<bool> onDeviceAvailable();
 }
 
 /// `speech_to_text` orqali haqiqiy dvigatel.
 class PluginSpeechEngine implements SpeechEngine {
   final _stt = SpeechToText();
 
+  static const _channel = MethodChannel('uz.labguide.app/speech');
+
   @override
-  bool get onDeviceGuaranteed => defaultTargetPlatform == TargetPlatform.iOS;
+  Future<bool> onDeviceAvailable() async {
+    switch (defaultTargetPlatform) {
+      // iOS: `requiresOnDeviceRecognition` — mavjud bo'lmasa `onDeviceError`.
+      case TargetPlatform.iOS:
+        return true;
+      // Android 12+: SpeechRecognizer.isOnDeviceRecognitionAvailable.
+      case TargetPlatform.android:
+        try {
+          return await _channel.invokeMethod<bool>('onDeviceAvailable') ??
+              false;
+        } on Object {
+          return false;
+        }
+      default:
+        return false;
+    }
+  }
 
   @override
   Future<VoiceInit> init({
@@ -380,6 +399,11 @@ class VoiceCounter extends ChangeNotifier {
       }
       _initDone = true;
     }
+    if (!await engine.onDeviceAvailable()) {
+      if (!_active) return;
+      return _fail(VoiceState.onDeviceUnavailable);
+    }
+    if (!_active) return;
     final picked = pickVoiceLocale(await engine.localeIds(), pref, appLang);
     if (!_active) return;
     if (picked == null) return _fail(VoiceState.languageUnavailable);

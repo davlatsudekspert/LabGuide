@@ -1627,7 +1627,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get diffVoicePrivacyAndroid =>
-      'Android: nutqni telefonning tizim xizmati (odatda Google) taniydi. LabGuide oflayn tanishni so‘raydi, lekin buni kafolatlay olmaydi — xizmat ovozni o‘z serveriga yuborishi mumkin. LabGuide ovozni saqlamaydi va o‘zi hech qayerga yubormaydi.';
+      'Android: nutq faqat telefonning o‘zida (oflayn) tanilganda ishlaydi — Android 12+ va qurilmada oflayn tanish kerak. Bo‘lmasa rejim yoqilmaydi, ovoz serverga yuborilmaydi. LabGuide ovozni saqlamaydi va hech qayerga yubormaydi.';
 
   @override
   String get diffVoiceNoNames =>
@@ -1680,7 +1680,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get diffVoiceOnDeviceUnavailable =>
-      'Bu til uchun qurilmada (oflayn) tanish yo‘q. Ovoz serverga yuborilmasligi uchun ovozli buyruqlar o‘chirildi.';
+      'Qurilmada (oflayn) nutqni tanish yo‘q. Ovoz serverga yuborilmasligi uchun ovozli buyruqlar o‘chirildi.';
 
   @override
   String get diffVoiceFailed => 'Nutqni tanish to‘xtadi. Qayta urinib ko‘ring.';

@@ -1658,7 +1658,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get diffVoicePrivacyAndroid =>
-      'Android: речь распознаёт системная служба телефона (обычно Google). LabGuide запрашивает офлайн-распознавание, но не может его гарантировать — служба может отправить голос на свой сервер. LabGuide не сохраняет голос и сам никуда его не отправляет.';
+      'Android: работает только при распознавании речи на самом телефоне (офлайн) — нужен Android 12+ и офлайн-распознавание на устройстве. Иначе режим не включается, голос на сервер не отправляется. LabGuide не сохраняет и никуда не отправляет голос.';
 
   @override
   String get diffVoiceNoNames =>
@@ -1711,7 +1711,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get diffVoiceOnDeviceUnavailable =>
-      'Для этого языка нет распознавания на устройстве. Чтобы голос не уходил на сервер, голосовые команды отключены.';
+      'На устройстве нет распознавания речи (офлайн). Чтобы голос не уходил на сервер, голосовые команды отключены.';
 
   @override
   String get diffVoiceFailed =>

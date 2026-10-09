@@ -86,7 +86,7 @@ class FakeSpeechEngine implements SpeechEngine {
   int stops = 0;
 
   @override
-  bool get onDeviceGuaranteed => onDevice;
+  Future<bool> onDeviceAvailable() async => onDevice;
 
   @override
   Future<VoiceInit> init({

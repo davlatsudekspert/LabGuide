@@ -23,10 +23,11 @@ import 'toifa_controller.dart';
 const toifaBase = '/learn/toifa';
 
 /// Bo'lim shu foydalanuvchiga ko'rinadimi: ilova tili o'zbekcha yoki
-/// qurilma mintaqasi UZ.
+/// qurilma mintaqasi UZ; shifokor roliga emas.
 bool toifaVisible(BuildContext context) => toifaAvailable(
   context.services.settings.language,
   SchedulerBinding.instance.platformDispatcher.locales,
+  role: context.services.settings.role,
 );
 
 String _lang(BuildContext context) =>
