@@ -110,6 +110,8 @@ void main() {
         for (final r in c.refs) {
           expect(r.locator, isNotEmpty, reason: '$id ${c.section}');
           final s = pack.source(r.sourceId)!;
+          // Kitob — faqat iqtibos: havolasiz, lekin bob/sahifa bilan.
+          if (s.isCitationOnlyBook) continue;
           expect(s.url, startsWith('https://'), reason: s.id);
         }
         for (final lang in ['uz', 'ru', 'en']) {

@@ -666,8 +666,9 @@ class CalcSourceTile extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4),
       child: InkWell(
-        onTap: () => openExternalLink(context, url),
-        onLongPress: () => copyLink(context, url),
+        // Bosma kitob — havolasiz, faqat bibliografiya.
+        onTap: url == null ? null : () => openExternalLink(context, url),
+        onLongPress: url == null ? null : () => copyLink(context, url),
         borderRadius: BorderRadius.circular(8),
         child: ConstrainedBox(
           constraints: const BoxConstraints(minHeight: kMinTap),
@@ -682,11 +683,13 @@ class CalcSourceTile extends StatelessWidget {
                     children: [
                       Text(
                         '[$index] ${ref.source.citation}',
-                        style: text.titleSmall!.copyWith(
-                          color: p.brand,
-                          decoration: TextDecoration.underline,
-                          decorationColor: p.brand.withValues(alpha: 0.5),
-                        ),
+                        style: url == null
+                            ? text.titleSmall
+                            : text.titleSmall!.copyWith(
+                                color: p.brand,
+                                decoration: TextDecoration.underline,
+                                decorationColor: p.brand.withValues(alpha: 0.5),
+                              ),
                       ),
                       if (ref.locator.isNotEmpty)
                         Text(ref.locator, style: text.bodySmall),
@@ -694,7 +697,10 @@ class CalcSourceTile extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 6),
-                Icon(Icons.open_in_new_rounded, size: 18, color: p.brand),
+                if (url != null)
+                  Icon(Icons.open_in_new_rounded, size: 18, color: p.brand)
+                else
+                  Icon(Icons.menu_book_outlined, size: 18, color: p.sub),
               ],
             ),
           ),

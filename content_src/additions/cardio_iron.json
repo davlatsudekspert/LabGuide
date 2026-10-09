@@ -1242,7 +1242,10 @@
     "temir zaxirasi",
     "запасы железа",
     "iron stores",
-    "FER"
+    "FER",
+    "temir ombori",
+    "sideropeniya",
+    "сидеропения"
    ],
    "group": "iron-vitamins",
    "sections": [
@@ -1264,6 +1267,11 @@
       "date": "2026-10-09",
       "scope": "Kontent auditi B: sonlar, birliklar, namuna, mezonlar, manba locator",
       "report": "docs/CONTENT_AUDIT_2026-10-09_B.md"
+     },
+     {
+      "date": "2026-10-09",
+      "scope": "Kitoblar (Dolgov 2009, Lyubina 1984, Najmitdinov 1998, Sobirova 2006, Aripova 2007, Dadayev 2004) bilimi rasmiy/ochiq manbalar bilan solishtirildi; matn ko‘chirilmagan",
+      "report": "scratchpad/books/B_01..B_06, A_02, A_04 (agent tahlili)"
      }
     ]
    },
@@ -1467,6 +1475,43 @@
       "ru": "Анемию хронических заболеваний (анемию воспаления) диагностировать трудно: хотя низкий ферритин указывает на дефицит железа, при инфекции или воспалении ферритин обычно выше. При такой анемии воспалительные цитокины повышают гепсидин, и железо перенаправляется из крови в места хранения.",
       "en": "Anemia of chronic disease (anemia of inflammation) can be difficult to diagnose: although low serum ferritin indicates iron deficiency, ferritin tends to be higher with infection or inflammation. In this anemia, inflammatory cytokines raise hepcidin and iron is diverted from the circulation to storage sites."
      }
+    },
+    {
+     "section": "interference",
+     "refs": [
+      {
+       "source_id": "who-ferritin-2020",
+       "locator": "Executive summary: recommendations 4.1–4.2"
+      }
+     ],
+     "text": {
+      "uz": "JSST (2020) infeksiya yoki yallig‘lanish keng tarqalgan joylarda ferritinni ikki o‘tkir faza oqsili — CRP va AGP bilan birga baholashni tavsiya qiladi; yallig‘lanishda temir tanqisligi chegarasi ko‘tariladi (kattalarda <70 µg/L, 5 yoshgacha bolalarda <30 µg/L).",
+      "ru": "ВОЗ (2020) рекомендует в условиях широкой распространённости инфекций и воспаления оценивать ферритин вместе с двумя белками острой фазы — CRP и AGP; при воспалении порог дефицита железа повышают (у взрослых <70 мкг/л, у детей до 5 лет <30 мкг/л).",
+      "en": "WHO (2020) recommends assessing ferritin together with two acute-phase proteins, CRP and AGP, where infection or inflammation is widespread; with inflammation the iron-deficiency cut-off is raised (adults <70 µg/L, children under 5 <30 µg/L)."
+     }
+    },
+    {
+     "section": "limitations",
+     "refs": [
+      {
+       "source_id": "takami-2026-cbc",
+       "locator": "Table 3. Integrated Interpretation of Anemia Using MCV and RDW"
+      },
+      {
+       "source_id": "medline-mcv",
+       "locator": "What do the results mean?"
+      },
+      {
+       "source_id": "book-dolgov-2009",
+       "locator": "Обмен железа; лабораторная диагностика ЖДА",
+       "pages": "43–68"
+      }
+     ],
+     "text": {
+      "uz": "Anemiya algoritmida ferritin mikrotsitar (MCV past) anemiyada birinchi tekshiriladi: past ferritin temir tanqisligini tasdiqlaydi; ferritin me’yorda yoki yuqori bo‘lsa — surunkali kasallik (yallig‘lanish) anemiyasi, talassemiya va boshqa sabablar ko‘rib chiqiladi. To‘liq yo‘l: O‘rganish → Jadvallar va algoritmlar → Anemiya.",
+      "ru": "В алгоритме анемии ферритин проверяют первым при микроцитарной (низкий MCV) анемии: низкий ферритин подтверждает дефицит железа; при нормальном или высоком ферритине рассматривают анемию хронических заболеваний (воспаления), талассемию и другие причины. Полная схема: Обучение → Таблицы и алгоритмы → Анемия.",
+      "en": "In the anaemia algorithm ferritin is the first test in microcytic (low MCV) anaemia: a low ferritin confirms iron deficiency; with normal or high ferritin, anaemia of chronic disease (inflammation), thalassaemia and other causes are considered. Full path: Learn → Tables and algorithms → Anaemia."
+     }
     }
    ],
    "decision_limits": [
@@ -1544,6 +1589,60 @@
        "locator": "Tests Used to Assess Iron Status: Serum Ferritin Concentration"
       }
      ]
+    },
+    {
+     "label": {
+      "uz": "Temir tanqisligi (JSST 2020)",
+      "ru": "Дефицит железа (ВОЗ 2020)",
+      "en": "Iron deficiency (WHO 2020)"
+     },
+     "unit": "µg/L",
+     "low": null,
+     "high": 15,
+     "high_exclusive": true,
+     "population": {
+      "uz": "Sog‘lom ko‘rinadigan kattalar va 5 yoshdan katta bolalar (homiladorlikda — I trimestr)",
+      "ru": "Внешне здоровые взрослые и дети старше 5 лет (при беременности — I триместр)",
+      "en": "Apparently healthy adults and children aged 5 and over (pregnancy: first trimester)"
+     },
+     "note": {
+      "uz": "5 yoshgacha bolalarda chegara <12 µg/L.",
+      "ru": "У детей до 5 лет порог <12 мкг/л.",
+      "en": "Under 5 years the cut-off is <12 µg/L."
+     },
+     "refs": [
+      {
+       "source_id": "who-ferritin-2020",
+       "locator": "Executive summary: Table 1"
+      }
+     ]
+    },
+    {
+     "label": {
+      "uz": "Infeksiya/yallig‘lanishda temir tanqisligi (JSST 2020)",
+      "ru": "Дефицит железа при инфекции/воспалении (ВОЗ 2020)",
+      "en": "Iron deficiency with infection/inflammation (WHO 2020)"
+     },
+     "unit": "µg/L",
+     "low": null,
+     "high": 70,
+     "high_exclusive": true,
+     "population": {
+      "uz": "Infeksiya yoki yallig‘lanishi bor kattalar va 5 yoshdan katta bolalar",
+      "ru": "Взрослые и дети старше 5 лет с инфекцией или воспалением",
+      "en": "Adults and children aged 5 and over with infection or inflammation"
+     },
+     "note": {
+      "uz": "5 yoshgacha bolalarda chegara <30 µg/L. Shartli tavsiya, dalillar ishonchliligi past.",
+      "ru": "У детей до 5 лет порог <30 мкг/л. Условная рекомендация, низкая достоверность доказательств.",
+      "en": "Under 5 years the cut-off is <30 µg/L. Conditional recommendation, low-certainty evidence."
+     },
+     "refs": [
+      {
+       "source_id": "who-ferritin-2020",
+       "locator": "Executive summary: recommendation 1.2; Table 1"
+      }
+     ]
     }
    ],
    "reference_intervals": [],
@@ -1551,7 +1650,11 @@
     "medline-ferritin",
     "cdc-mmwr-iron-1998",
     "ods-iron",
-    "niddk-hemochromatosis-diagnosis"
+    "niddk-hemochromatosis-diagnosis",
+    "who-ferritin-2020",
+    "takami-2026-cbc",
+    "medline-mcv",
+    "book-dolgov-2009"
    ],
    "related": [
     "iron",
@@ -1591,7 +1694,10 @@
     "железосвязывающая способность",
     "umumiy temir bog‘lash qobiliyati",
     "temir bog‘lash qobiliyati",
-    "transferrin to‘yinishi"
+    "transferrin to‘yinishi",
+    "eruvchan transferrin retseptori",
+    "sTfR",
+    "растворимый рецептор трансферрина"
    ],
    "group": "iron-vitamins",
    "sections": [
@@ -1613,6 +1719,11 @@
       "date": "2026-10-09",
       "scope": "Kontent auditi B: sonlar, birliklar, namuna, mezonlar, manba locator",
       "report": "docs/CONTENT_AUDIT_2026-10-09_B.md"
+     },
+     {
+      "date": "2026-10-09",
+      "scope": "Kitoblar (Dolgov 2009, Lyubina 1984, Najmitdinov 1998, Sobirova 2006, Aripova 2007, Dadayev 2004) bilimi rasmiy/ochiq manbalar bilan solishtirildi; matn ko‘chirilmagan",
+      "report": "scratchpad/books/B_01..B_06, A_02, A_04 (agent tahlili)"
      }
     ]
    },
@@ -1790,6 +1901,29 @@
       "ru": "ОЖСС менее чувствительна к дефициту железа, чем ферритин, так как меняется только после истощения запасов.",
       "en": "TIBC is less sensitive to iron deficiency than serum ferritin, because changes in TIBC occur only after iron stores are depleted."
      }
+    },
+    {
+     "section": "limitations",
+     "refs": [
+      {
+       "source_id": "cdc-mmwr-iron-1998",
+       "locator": "Tests Used to Assess Iron Status: Transferrin Saturation"
+      },
+      {
+       "source_id": "takami-2026-cbc",
+       "locator": "Table 3. Integrated Interpretation of Anemia Using MCV and RDW"
+      },
+      {
+       "source_id": "book-dolgov-2009",
+       "locator": "Обмен железа; лабораторная диагностика ЖДА",
+       "pages": "43–68"
+      }
+     ],
+     "text": {
+      "uz": "Temir ko‘rsatkichlari birga o‘qiladi: temir tanqisligida zardob temiri va transferrin to‘yinishi past, TIBC odatda yuqori, ferritin past; yallig‘lanish (surunkali kasallik) anemiyasida temir va TIBC past, ferritin esa me’yorda yoki yuqori bo‘lishi mumkin. Dolgov va hammualliflari eruvchan transferrin retseptori (sTfR) yallig‘lanishda deyarli o‘zgarmasligini ikki holatni farqlash uchun keltiradi.",
+      "ru": "Показатели железа читают вместе: при дефиците железа сывороточное железо и насыщение трансферрина низкие, ОЖСС обычно высокая, ферритин низкий; при анемии воспаления (хронических заболеваний) железо и ОЖСС низкие, а ферритин может быть нормальным или высоким. Долгов и соавт. приводят растворимый рецептор трансферрина (sTfR), почти не меняющийся при воспалении, для различения этих состояний.",
+      "en": "Read iron tests together: in iron deficiency serum iron and transferrin saturation are low, TIBC is usually high and ferritin is low; in anaemia of inflammation (chronic disease) iron and TIBC are low while ferritin may be normal or high. Dolgov et al. cite the soluble transferrin receptor (sTfR), which changes little with inflammation, to tell the two apart."
+     }
     }
    ],
    "decision_limits": [
@@ -1826,7 +1960,9 @@
     "medline-iron-tests",
     "cdc-mmwr-iron-1998",
     "niddk-hemochromatosis-diagnosis",
-    "ods-iron"
+    "ods-iron",
+    "takami-2026-cbc",
+    "book-dolgov-2009"
    ],
    "related": [
     "iron",

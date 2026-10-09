@@ -21,7 +21,9 @@ class CalcSource {
   /// Bibliografik yozuv (tilga bog'liq emas). Jild/sahifa yozilmaydi —
   /// faqat tekshirilgan maydonlar: mualliflar, sarlavha, jurnal, yil, DOI.
   final String citation;
-  final String url;
+
+  /// Onlayn manzil; bosma kitob uchun `null` (faqat bibliografiya).
+  final String? url;
 }
 
 class CalcRef {

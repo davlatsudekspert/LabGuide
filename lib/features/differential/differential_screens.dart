@@ -1518,9 +1518,12 @@ class DiffInterpretScreen extends StatelessWidget {
         Text(l.diffRangesBody, style: text.bodyMedium),
         const SizedBox(height: 8),
         _RangesTable(lang: lang),
+        // Klassik (MDH) ustun — faqat solishtirish uchun; asosiysi blanka.
+        LgNotice(l.diffRangesClassicNote, kind: NoticeKind.info),
         _Sources(const [
           whoCount,
           CalcRef(DiffSources.medlineEncyDiff, 'Normal results'),
+          lyubinaTable6,
         ]),
       ],
     );
@@ -1570,6 +1573,10 @@ class _RangesTable extends StatelessWidget {
                         ),
                         Text(
                           '${l.diffRangesMedline}: ${r.medline}',
+                          style: text.bodyMedium,
+                        ),
+                        Text(
+                          '${l.diffRangesClassic}: ${r.classic.of(lang)}',
                           style: text.bodyMedium,
                         ),
                       ],

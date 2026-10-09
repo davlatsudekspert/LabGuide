@@ -2653,7 +2653,7 @@ abstract class AppLocalizations {
   /// No description provided for @diffRangesBody.
   ///
   /// In en, this message translates to:
-  /// **'Even two open sources give different example adult ranges (%). Reports use only the reference on your laboratory’s form; children’s ranges depend on age.'**
+  /// **'Open sources and a former-USSR textbook give different example adult ranges (%). Reports use only the reference on your laboratory’s form; children’s ranges depend on age.'**
   String get diffRangesBody;
 
   /// No description provided for @diffRangesWho.
@@ -2667,6 +2667,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'MedlinePlus'**
   String get diffRangesMedline;
+
+  /// No description provided for @diffRangesClassic.
+  ///
+  /// In en, this message translates to:
+  /// **'Former-USSR textbook (1984)'**
+  String get diffRangesClassic;
+
+  /// No description provided for @diffRangesClassicNote.
+  ///
+  /// In en, this message translates to:
+  /// **'The classic (former-USSR textbook) ranges are shown for comparison only: many local report forms still use them, but sources differ. Your laboratory’s report form is what counts.'**
+  String get diffRangesClassicNote;
+
+  /// No description provided for @refTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Tables and algorithms'**
+  String get refTitle;
+
+  /// No description provided for @refSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Anaemia, jaundice, liver patterns, parasites, obsolete methods'**
+  String get refSub;
+
+  /// No description provided for @refIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Short tables based on textbooks and official sources. Sources are listed under each section.'**
+  String get refIntro;
+
+  /// No description provided for @refDraftNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Draft: not yet expert-reviewed. Books are cited as sources only — no text or figures were copied. The conclusion is the doctor’s.'**
+  String get refDraftNote;
+
+  /// No description provided for @refOpenSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Table and algorithm'**
+  String get refOpenSub;
+
+  /// No description provided for @refNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'This table was not found.'**
+  String get refNotFound;
+
+  /// No description provided for @analyteReuseCitationOnly.
+  ///
+  /// In en, this message translates to:
+  /// **'Book: cited as a source only, no text copied'**
+  String get analyteReuseCitationOnly;
 
   /// No description provided for @diffQuizPrompt.
   ///

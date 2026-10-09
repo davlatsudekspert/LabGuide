@@ -103,6 +103,11 @@ void main() {
     final cited = {for (final id in allCards) ...pack.analyte(id)!.sourceIds};
     for (final id in cited) {
       final s = pack.source(id)!;
+      // Kitob — faqat iqtibos (havolasiz, kutubxonaga qo'yilmaydi).
+      if (s.kind == 'book') {
+        expect(s.isCitationOnlyBook, isTrue, reason: id);
+        continue;
+      }
       expect(s.kind, 'web', reason: id);
       expect(s.url, startsWith('https://'), reason: id);
       expect(s.accessed, isNotNull, reason: id);
@@ -115,6 +120,8 @@ void main() {
           'www.niddk.nih.gov',
           'ods.od.nih.gov',
           'www.cdc.gov',
+          'www.who.int',
+          'doi.org',
         ),
         reason: id,
       );
@@ -129,6 +136,8 @@ void main() {
       (null, 30, false, true), // ODS: < 30 µg/L
       (null, 10, false, true), // ODS: < 10 µg/L
       (null, 15, false, false), // CDC 1998: ≤ 15 µg/L
+      (null, 15, false, true), // JSST 2020: sog'lom kattalar < 15 µg/L
+      (null, 70, false, true), // JSST 2020: yallig'lanishda < 70 µg/L
     ]);
     expect(ferritin.every((d) => d.unit == 'µg/L'), isTrue);
     expect(pack.analyte('transferrin-tibc')!.decisionLimits.map(b), [

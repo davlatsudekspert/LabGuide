@@ -1485,13 +1485,45 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get diffRangesBody =>
-      'Даже в двух открытых источниках примерные интервалы для взрослых (%) различаются. В отчёте используется только референс с бланка вашей лаборатории; у детей интервалы зависят от возраста.';
+      'В открытых источниках и учебнике СНГ примерные интервалы для взрослых (%) различаются. В отчёте используется только референс с бланка вашей лаборатории; у детей интервалы зависят от возраста.';
 
   @override
   String get diffRangesWho => 'ВОЗ 2003';
 
   @override
   String get diffRangesMedline => 'MedlinePlus';
+
+  @override
+  String get diffRangesClassic => 'Учебник СНГ (1984)';
+
+  @override
+  String get diffRangesClassicNote =>
+      'Классические интервалы (учебники СНГ) даны только для сравнения: они ещё встречаются во многих бланках, но источники расходятся. Главное — референс на бланке вашей лаборатории.';
+
+  @override
+  String get refTitle => 'Таблицы и алгоритмы';
+
+  @override
+  String get refSub =>
+      'Анемия, желтуха, синдромы печени, паразиты, устаревшие методы';
+
+  @override
+  String get refIntro =>
+      'Краткие таблицы по книгам и официальным источникам. Под каждым разделом указаны источники.';
+
+  @override
+  String get refDraftNote =>
+      'Черновик: экспертная проверка не пройдена. Книги приведены только как источники — текст и рисунки не копировались. Заключение — за врачом.';
+
+  @override
+  String get refOpenSub => 'Таблица и алгоритм';
+
+  @override
+  String get refNotFound => 'Такая таблица не найдена.';
+
+  @override
+  String get analyteReuseCitationOnly =>
+      'Книга: приведена только как источник, текст не копировался';
 
   @override
   String get diffQuizPrompt => 'Что это за клетка?';

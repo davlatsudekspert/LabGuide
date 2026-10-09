@@ -85,6 +85,17 @@ abstract final class DiffSources {
     url: 'https://doi.org/10.1038/s41598-024-65427-0',
   );
 
+  /// Любина А.Я. и др. Клинические лабораторные исследования. М.: Медицина,
+  /// 1984 — §50 (jadval 6) va §61. Mualliflik huquqi amal qiladi: faqat
+  /// iqtibos, matn va rasm ko'chirilmagan; onlayn manzil yo'q.
+  static const lyubina1984 = CalcSource(
+    id: 'book-lyubina-1984',
+    citation:
+        'Любина А.Я., Ильичева Л.П., Катасонова Т.В., Петросова С.А. '
+        'Клинические лабораторные исследования. Москва: Медицина; 1984',
+    url: null,
+  );
+
   static const all = [
     who2003,
     medlineDiff,
@@ -94,6 +105,7 @@ abstract final class DiffSources {
     susman2021,
     oskarsson2022,
     zhao2024,
+    lyubina1984,
   ];
 }
 
@@ -101,3 +113,15 @@ abstract final class DiffSources {
 const whoCells = CalcRef(DiffSources.who2003, '9.10.4, Table 9.10');
 const whoFilm = CalcRef(DiffSources.who2003, '9.10.3');
 const whoCount = CalcRef(DiffSources.who2003, '9.13, Table 9.12');
+const whoTally = CalcRef(
+  DiffSources.who2003,
+  '9.13.3 Microscopic examination (Fig. 9.111)',
+);
+const lyubinaCount = CalcRef(
+  DiffSources.lyubina1984,
+  '§61 Подсчёт лейкоцитарной формулы',
+);
+const lyubinaTable6 = CalcRef(
+  DiffSources.lyubina1984,
+  '§50, табл. 6 (нормы для взрослых)',
+);

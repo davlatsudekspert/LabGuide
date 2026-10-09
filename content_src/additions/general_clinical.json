@@ -367,7 +367,24 @@
     "Giardia",
     "Cryptosporidium",
     "Entamoeba histolytica",
-    "DPDx"
+    "DPDx",
+    "gijja tahlili",
+    "axlat tahlili parazitga",
+    "ichburug‘ amyobasi",
+    "lyambliya sistasi",
+    "askarida",
+    "qilbosh",
+    "tasmasimon chuvalchang",
+    "Kato surtmasi",
+    "flotatsiya",
+    "sedimentatsiya",
+    "formalin-efir usuli",
+    "толстый мазок по Като",
+    "флотация",
+    "метод обогащения",
+    "Kato-Katz",
+    "formalin-ethyl acetate",
+    "concentration technique"
    ],
    "group": "stool-parasitology",
    "sections": [
@@ -389,6 +406,11 @@
       "date": "2026-10-09",
       "scope": "Kontent auditi B: sonlar, birliklar, namuna, mezonlar, manba locator",
       "report": "docs/CONTENT_AUDIT_2026-10-09_B.md"
+     },
+     {
+      "date": "2026-10-09",
+      "scope": "Kitoblar (Dolgov 2009, Lyubina 1984, Najmitdinov 1998, Sobirova 2006, Aripova 2007, Dadayev 2004) bilimi rasmiy/ochiq manbalar bilan solishtirildi; matn ko‘chirilmagan",
+      "report": "scratchpad/books/B_01..B_06, A_02, A_04 (agent tahlili)"
      }
     ]
    },
@@ -545,6 +567,140 @@
       "ru": "Для энтеробиоза (острицы) анализ кала обычно не подходит — яиц в кале мало; для этого делают перианальный тест с липкой лентой.",
       "en": "For pinworm, a stool test is usually not useful — stool rarely contains enough eggs; the perianal tape test is used instead."
      }
+    },
+    {
+     "section": "physiology",
+     "refs": [
+      {
+       "source_id": "who-basic-lab-techniques-2003",
+       "locator": "4.2.3 Microscopic examination",
+       "pages": "107–109"
+      },
+      {
+       "source_id": "book-lyubina-1984",
+       "locator": "§24 Методы обнаружения яиц гельминтов"
+      },
+      {
+       "source_id": "book-aripova-2007",
+       "locator": "11.1.7–11.1.11 Axlat va perianal namunalar, parazitlar"
+      }
+     ],
+     "text": {
+      "uz": "To‘g‘ridan-to‘g‘ri (nativ) mikroskopiya ikki tomchida qilinadi: fiziologik eritmada (37 °C gacha iliq) harakatlanuvchi trofozoitlar, Lugol yodi (yod–sirka kislota) eritmasida esa sistalar yadrolari yaxshi ko‘rinadi — yod trofozoitlarni harakatsiz qiladi. Suyuq yoki shilliqli najasdan trofozoit uchun, shakllangan najasdan tuxum uchun namuna olinadi.",
+      "ru": "Прямую (нативную) микроскопию делают в двух каплях: в физрастворе (подогретом до 37 °C) видны подвижные трофозоиты, в растворе Люголя (йод–уксусная кислота) хорошо видны ядра цист — йод обездвиживает трофозоиты. Для трофозоитов берут жидкий или слизистый кал, для яиц — оформленный.",
+      "en": "Direct (wet) microscopy is done in two drops: saline (warmed to 37 °C) shows motile trophozoites, Lugol’s iodine (iodine–acetic acid) shows cyst nuclei clearly — iodine immobilises trophozoites. Use liquid or mucoid stool for trophozoites and formed stool for eggs."
+     }
+    },
+    {
+     "section": "limitations",
+     "refs": [
+      {
+       "source_id": "who-basic-lab-techniques-2003",
+       "locator": "4.5 Techniques for concentrating parasites",
+       "pages": "152–156"
+      },
+      {
+       "source_id": "cdc-dpdx-stool-processing",
+       "locator": "Concentration Procedures"
+      },
+      {
+       "source_id": "book-lyubina-1984",
+       "locator": "§24 Методы обнаружения яиц гельминтов"
+      }
+     ],
+     "text": {
+      "uz": "Parazit kam bo‘lsa, boyitish (konsentratsiya) usuli kerak. Flotatsiyada (masalan, Uillis — to‘yingan NaCl; rux sulfat) tuxumlar og‘ir eritmada yuzaga suzib chiqadi: ankilostoma, askarida, gimenolepis, tenia va qilbosh tuxumlari uchun yaxshi, lekin so‘rg‘ichlilar (trematodalar) va shistosoma tuxumlari, strongiloid lichinkalari va sodda jonivorlar uchun yaramaydi — ayrim tuxumlar suzmaydi, sista va tuxum devori bujmayishi mumkin. Cho‘ktirish (formalin–efir yoki formalin–etilatsetat) ko‘p turni topadi, oddiyroq va CDC umumiy laboratoriyalarga shuni tavsiya qiladi; etilatsetat efirdan kamroq yonuvchan.",
+      "ru": "При малом числе паразитов нужен метод обогащения. При флотации (например, по Уиллису — насыщенный NaCl; сульфат цинка) яйца всплывают в тяжёлом растворе: хорошо для яиц анкилостом, аскарид, карликового цепня, тениид и власоглава, но не подходит для яиц сосальщиков (трематод) и шистосом, личинок стронгилоид и простейших — часть яиц не всплывает, стенки цист и яиц могут спадаться. Осаждение (формалин–эфир или формалин–этилацетат) выявляет больше видов, проще, и CDC рекомендует его для общих лабораторий; этилацетат менее огнеопасен, чем эфир.",
+      "en": "Concentration is needed when parasites are few. In flotation (e.g., Willis saturated NaCl; zinc sulfate) eggs rise in a dense solution: good for hookworm, Ascaris, Hymenolepis, Taenia and Trichuris eggs, but not for fluke and schistosome eggs, Strongyloides larvae or protozoa — some eggs do not float and cyst and egg walls may collapse. Sedimentation (formalin–ether or formalin–ethyl acetate) recovers more species, is easier, and CDC recommends it for general laboratories; ethyl acetate is less flammable than ether."
+     }
+    },
+    {
+     "section": "limitations",
+     "refs": [
+      {
+       "source_id": "who-basic-lab-techniques-2003",
+       "locator": "4.4.1 Kato–Katz technique",
+       "pages": "141–143"
+      },
+      {
+       "source_id": "book-lyubina-1984",
+       "locator": "§24 Методы обнаружения яиц гельминтов"
+      }
+     ],
+     "text": {
+      "uz": "Kato (Kato–Kats) qalin surtmasida taxminan 0,5 g elakdan o‘tkazilgan najas glitserin (malaxit yashili yoki metilen ko‘ki) shimdirilgan sellofan ostida tiniqlashtiriladi; usul gijja tuxumlarini, ayniqsa shistosomani topish va sanash uchun, surtmalarni saqlab boshqa laboratoriyaga yuborish mumkin. Strongiloidoz, enterobioz va sodda jonivorlar uchun yaramaydi.",
+      "ru": "В толстом мазке по Като (Като–Катцу) около 0,5 г просеянного кала просветляют под целлофаном, пропитанным глицерином (с малахитовым зелёным или метиленовым синим); метод выявляет и позволяет считать яйца гельминтов, особенно шистосом, мазки можно хранить и пересылать. Для стронгилоидоза, энтеробиоза и простейших не подходит.",
+      "en": "In the Kato (Kato–Katz) thick smear about 0.5 g of sieved stool is cleared under glycerol-soaked cellophane (with malachite green or methylene blue); it detects and counts helminth eggs, especially Schistosoma, and slides can be stored and shipped. It is unsuitable for strongyloidiasis, enterobiasis and protozoa."
+     }
+    },
+    {
+     "section": "preanalytics",
+     "refs": [
+      {
+       "source_id": "who-basic-lab-techniques-2003",
+       "locator": "4.2.1 Collection of specimens",
+       "pages": "107"
+      },
+      {
+       "source_id": "book-lyubina-1984",
+       "locator": "§21 Сбор и обезвреживание кала"
+      },
+      {
+       "source_id": "book-aripova-2007",
+       "locator": "11.1.7–11.1.11 Axlat va perianal namunalar, parazitlar"
+      }
+     ],
+     "text": {
+      "uz": "Najas toza, quruq, qopqoqli idishga, konservantsiz olinadi; siydik aralashmasligi kerak (tuvakdan olinmaydi), chiqqan qurt yoki bo‘g‘imlar ham qo‘shiladi. JSST namunani 1–4 soat ichida tekshirishni, bir vaqtda kelganda avval suyuq va qon-shilliqli najasni ko‘rishni tavsiya qiladi — harakatlanuvchi amyobalar tez nobud bo‘ladi. Lyubina (1984) va Aripova (2007) ham gugurt qutisi yoki qog‘ozda olib kelishni yaroqsiz deb biladi.",
+      "ru": "Кал собирают в чистый сухой контейнер с крышкой, без консерванта; моча не должна попадать (не из судна), выделившиеся гельминты или членики добавляют. ВОЗ рекомендует исследовать пробу в течение 1–4 часов, а при одновременном поступлении сначала смотреть жидкий и кал со слизью и кровью — подвижные амёбы быстро погибают. Любина (1984) и Арипова (2007) также считают непригодной доставку в спичечном коробке или бумаге.",
+      "en": "Collect stool in a clean, dry, lidded container without preservative; no urine (not from a bedpan), and include any worms or segments passed. WHO advises examining it within 1–4 hours and, if several arrive together, looking first at liquid and blood- or mucus-stained stools — motile amoebae die quickly. Lyubina (1984) and Aripova (2007) also reject matchboxes or paper."
+     }
+    },
+    {
+     "section": "preanalytics",
+     "refs": [
+      {
+       "source_id": "who-basic-lab-techniques-2003",
+       "locator": "4.2.4 Dispatch of stools for detection of parasites",
+       "pages": "109"
+      },
+      {
+       "source_id": "cdc-dpdx-stool-collection",
+       "locator": "Stool Specimens – Specimen Collection"
+      },
+      {
+       "source_id": "cdc-dpdx-stool-processing",
+       "locator": "Concentration Procedures"
+      },
+      {
+       "source_id": "book-dadayev-2004",
+       "locator": "Bir hujayrali parazitlar: lyambliya, ichburug‘ amyobasi"
+      }
+     ],
+     "text": {
+      "uz": "Uzoq laboratoriyaga yuborishda konservant qo‘shiladi: 10% formalin (nam preparat va cho‘ktirish uchun), PVA (doimiy, masalan trixrom bo‘yash uchun), MIF yoki SAF/TIF aralashmalari. Dadayev (2004) amyobiaz tashxisi uchun ham najasni konservantga yig‘ish (yoki tez yetkazish) zarurligini qayd etadi.",
+      "ru": "Для пересылки в удалённую лабораторию добавляют консервант: 10% формалин (для нативных препаратов и осаждения), ПВС (PVA — для постоянной окраски, например трихромом), смеси MIF или SAF/TIF. Дадаев (2004) также отмечает необходимость консервирования (или быстрой доставки) кала при диагностике амёбиаза.",
+      "en": "For shipping to a distant laboratory a preservative is added: 10% formalin (for wet mounts and sedimentation), PVA (for permanent stains such as trichrome), MIF or SAF/TIF mixtures. Dadayev (2004) also notes that stool for amoebiasis must be preserved (or delivered quickly)."
+     }
+    },
+    {
+     "section": "limitations",
+     "refs": [
+      {
+       "source_id": "who-basic-lab-techniques-2003",
+       "locator": "4.5 Techniques for concentrating parasites",
+       "pages": "152–156"
+      },
+      {
+       "source_id": "medline-ova-parasite",
+       "locator": "What do the results mean?"
+      }
+     ],
+     "text": {
+      "uz": "Bitta usul hamma parazitni topmaydi: konsentratsiyadan oldin doim to‘g‘ridan-to‘g‘ri mikroskopiya qilinadi (boyitilgan preparatda harakatlanuvchi shakllar ko‘rinmaydi). Natija manfiy bo‘lsa, shifokor tekshiruvni boshqa kunlarda takrorlashni so‘rashi mumkin.",
+      "ru": "Ни один метод не выявляет всех паразитов: перед обогащением всегда делают прямую микроскопию (в обогащённом препарате подвижных форм не видно). При отрицательном результате врач может назначить повтор в другие дни.",
+      "en": "No single method finds every parasite: always do direct microscopy before concentration (motile forms are not seen in concentrated preparations). If the result is negative, the doctor may request repeat samples on other days."
+     }
     }
    ],
    "decision_limits": [],
@@ -552,7 +708,12 @@
     "medline-ova-parasite",
     "cdc-dpdx-stool-microscopy",
     "cdc-dpdx-stool-collection",
-    "cdc-pinworm-clinical"
+    "cdc-pinworm-clinical",
+    "who-basic-lab-techniques-2003",
+    "book-lyubina-1984",
+    "book-aripova-2007",
+    "cdc-dpdx-stool-processing",
+    "book-dadayev-2004"
    ],
    "related": [
     "pinworm-test",
@@ -592,7 +753,13 @@
     "scotch tape test",
     "cellulose tape test",
     "perianal swab",
-    "oxyuriasis"
+    "oxyuriasis",
+    "ostritsaga qirma",
+    "gijja qirmasi",
+    "perianal yuvindi",
+    "соскоб на яйца остриц",
+    "Enterobius",
+    "tape test"
    ],
    "group": "stool-parasitology",
    "sections": [
@@ -613,6 +780,11 @@
       "date": "2026-10-09",
       "scope": "Kontent auditi B: sonlar, birliklar, namuna, mezonlar, manba locator",
       "report": "docs/CONTENT_AUDIT_2026-10-09_B.md"
+     },
+     {
+      "date": "2026-10-09",
+      "scope": "Kitoblar (Dolgov 2009, Lyubina 1984, Najmitdinov 1998, Sobirova 2006, Aripova 2007, Dadayev 2004) bilimi rasmiy/ochiq manbalar bilan solishtirildi; matn ko‘chirilmagan",
+      "report": "scratchpad/books/B_01..B_06, A_02, A_04 (agent tahlili)"
      }
     ]
    },
@@ -785,6 +957,29 @@
       "ru": "В кале, моче, вагинальных или аноректальных мазках яиц обычно недостаточно, поэтому их обычно не берут; анализа крови на энтеробиоз нет. Яйца иногда случайно находят в кале, моче или в ПАП-мазке шейки матки.",
       "en": "Stool, urine, vaginal or anorectal swabs usually do not contain enough eggs and are generally not collected; there is no blood test for pinworm. Eggs are occasionally found incidentally in stool, urine or cervical Pap smears."
      }
+    },
+    {
+     "section": "preanalytics",
+     "refs": [
+      {
+       "source_id": "who-basic-lab-techniques-2003",
+       "locator": "4.4.1 Enterobius vermicularis: collection and examination of eggs",
+       "pages": "135–136"
+      },
+      {
+       "source_id": "book-lyubina-1984",
+       "locator": "§24 Энтеробиоз: липкая лента и перианальный соскоб"
+      },
+      {
+       "source_id": "book-aripova-2007",
+       "locator": "11.1.7–11.1.11 Axlat va perianal namunalar, parazitlar"
+      }
+     ],
+     "text": {
+      "uz": "Ostritsa tuxumlari najasda kam uchraydi, ular anus atrofidagi teri burmalaridan olinadi — ayniqsa bolalarda. JSST usulida shaffof yopishqoq lenta buyum oynasiga yopishtiriladi, qoshiq dastasiga o‘ralib anus atrofiga bir necha joyda bosiladi va yana oynaga tekis yopishtiriladi. MDH darsliklarida tamponli qirma yoki yuvindi ham beriladi; namuna ertalab, yuvinish va hojatxonadan oldin olinadi va bir necha marta takrorlanadi.",
+      "ru": "Яйца остриц редко бывают в кале, их берут с кожных складок вокруг ануса — особенно у детей. По методу ВОЗ прозрачную липкую ленту наклеивают на стекло, накручивают на ручку ложки, прикладывают в нескольких местах вокруг ануса и снова ровно наклеивают на стекло. В учебниках СНГ описаны также соскоб тампоном или смыв; пробу берут утром до умывания и туалета и повторяют несколько раз.",
+      "en": "Pinworm eggs are rarely found in stool; they are collected from the skin folds around the anus — especially in children. In the WHO method clear adhesive tape is stuck to a slide, looped over a spoon handle, pressed around the anus in several places and stuck back flat on the slide. Former-USSR textbooks also describe a swab scraping or wash; the sample is taken in the morning before washing or using the toilet and repeated several times."
+     }
     }
    ],
    "decision_limits": [],
@@ -792,7 +987,10 @@
     "cdc-pinworm-about",
     "cdc-pinworm-clinical",
     "cdc-dpdx-enterobiasis",
-    "cdc-pinworm-diagnosing"
+    "cdc-pinworm-diagnosing",
+    "who-basic-lab-techniques-2003",
+    "book-lyubina-1984",
+    "book-aripova-2007"
    ],
    "related": [
     "stool-ova-parasites",
@@ -835,7 +1033,12 @@
     "guaiac",
     "Hemoccult",
     "occult blood",
-    "colorectal cancer screening"
+    "colorectal cancer screening",
+    "benzidin sinamasi",
+    "бензидиновая проба",
+    "Gregersen",
+    "Грегерсен",
+    "amidopirin sinamasi"
    ],
    "group": "stool-parasitology",
    "sections": [
@@ -856,6 +1059,11 @@
       "date": "2026-10-09",
       "scope": "Kontent auditi B: sonlar, birliklar, namuna, mezonlar, manba locator",
       "report": "docs/CONTENT_AUDIT_2026-10-09_B.md"
+     },
+     {
+      "date": "2026-10-09",
+      "scope": "Kitoblar (Dolgov 2009, Lyubina 1984, Najmitdinov 1998, Sobirova 2006, Aripova 2007, Dadayev 2004) bilimi rasmiy/ochiq manbalar bilan solishtirildi; matn ko‘chirilmagan",
+      "report": "scratchpad/books/B_01..B_06, A_02, A_04 (agent tahlili)"
      }
     ]
    },
@@ -976,11 +1184,41 @@
       "ru": "Сам тест не ставит диагноз: если в кале найдена кровь, для поиска причины нужны другие исследования. Если этот тест выбран для скрининга, его нужно повторять ежегодно. Есть и другие методы скрининга: ДНК-тест кала (FIT-DNA), колоноскопия, сигмоидоскопия, КТ-колонография.",
       "en": "The test alone cannot diagnose any condition: if blood is found, other tests are needed to find the cause. When used for screening, it must be repeated every year. Other screening options include the stool DNA test (FIT-DNA), colonoscopy, sigmoidoscopy and CT colonography."
      }
+    },
+    {
+     "section": "limitations",
+     "refs": [
+      {
+       "source_id": "who-basic-lab-techniques-2003",
+       "locator": "4.6 Chemical test for occult blood in stools",
+       "pages": "157"
+      },
+      {
+       "source_id": "book-lyubina-1984",
+       "locator": "§22 Химическое исследование кала"
+      },
+      {
+       "source_id": "book-aripova-2007",
+       "locator": "XI bob: yashirin qon (benzidin, amidopirin)"
+      },
+      {
+       "source_id": "medline-fobt",
+       "locator": "What happens during a fecal occult blood test?"
+      }
+     ],
+     "text": {
+      "uz": "Eski darsliklardagi benzidin (Gregersen) sinamasi ishlatilmaydi: JSST benzidin kanserogenligi isbotlangani uchun uni tavsiya etmaydi. Kimyoviy usullardan amidopirin yoki gvayak testi qolgan, ular parhez talab qiladi (JSST amidopirin testi uchun — 1 kun go‘sht va temir preparatlarisiz; eski darsliklarda 2–3 kun); immunokimyoviy test (FIT) inson gemoglobiniga xos va parhez talab qilmaydi.",
+      "ru": "Бензидиновая проба (Грегерсена) из старых учебников не применяется: ВОЗ не рекомендует бензидин, так как доказана его канцерогенность. Из химических методов остались амидопириновый и гваяковый тесты, им нужна диета (ВОЗ для амидопириновой пробы — 1 день без мяса и препаратов железа; в старых учебниках — 2–3 дня); иммунохимический тест (FIT) специфичен к гемоглобину человека и диеты не требует.",
+      "en": "The benzidine (Gregersen) test of old textbooks is no longer used: WHO does not recommend benzidine because it has been shown to be carcinogenic. Remaining chemical tests are the aminopyrine and guaiac tests, which need a diet (WHO, aminopyrine test: 1 day without meat or iron tablets; older textbooks: 2–3 days); the immunochemical test (FIT) is specific for human haemoglobin and needs no diet."
+     }
     }
    ],
    "decision_limits": [],
    "source_ids": [
-    "medline-fobt"
+    "medline-fobt",
+    "who-basic-lab-techniques-2003",
+    "book-lyubina-1984",
+    "book-aripova-2007"
    ],
    "related": [
     "stool-analysis",
