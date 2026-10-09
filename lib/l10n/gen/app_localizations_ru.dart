@@ -2997,13 +2997,6 @@ class AppLocalizationsRu extends AppLocalizations {
   String get examTitle => 'Режим экзамена';
 
   @override
-  String get examBody =>
-      'Экзамены с таймером и история результатов появятся вместе с учебным модулем. Учебные вопросы доступны уже сейчас.';
-
-  @override
-  String get examOpenPractice => 'Открыть учебные вопросы';
-
-  @override
   String get classesTitle => 'Группы и задания';
 
   @override
@@ -3022,6 +3015,760 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get classesUnavailableBody =>
       'Ничего не отправляется и не сохраняется. После подключения преподаватель видит только свои группы, а студент — только свои результаты; это проверяется на сервере.';
+
+  @override
+  String get examSubtitle =>
+      'Экзамен на время: выберите темы, число вопросов и время. Работает без интернета.';
+
+  @override
+  String get examActiveTitle => 'Незавершённый экзамен';
+
+  @override
+  String examActiveBody(int answered, int total, String time) {
+    return 'Ответов: $answered/$total · осталось $time';
+  }
+
+  @override
+  String get examResume => 'Продолжить';
+
+  @override
+  String get examDiscard => 'Прервать экзамен';
+
+  @override
+  String get examDiscardTitle => 'Прервать экзамен?';
+
+  @override
+  String get examDiscardBody =>
+      'Ответы удалятся, результат не попадёт в историю.';
+
+  @override
+  String get examDiscardAction => 'Прервать';
+
+  @override
+  String get examTopics => 'Темы';
+
+  @override
+  String get examAllTopics => 'Все';
+
+  @override
+  String examPoolCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'В выбранных темах $count вопроса',
+      many: 'В выбранных темах $count вопросов',
+      few: 'В выбранных темах $count вопроса',
+      one: 'В выбранных темах $count вопрос',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get examSettings => 'Параметры';
+
+  @override
+  String get examCount => 'Число вопросов';
+
+  @override
+  String examCountHint(int max) {
+    return 'От 1 до $max';
+  }
+
+  @override
+  String examCountError(int max) {
+    return 'Введите число от 1 до $max';
+  }
+
+  @override
+  String examCountAll(int count) {
+    return 'Все $count';
+  }
+
+  @override
+  String get examTime => 'Время, мин';
+
+  @override
+  String get examTimeHint => '1–180 мин · обычно 1 мин на вопрос';
+
+  @override
+  String get examTimeError => 'Введите от 1 до 180 минут';
+
+  @override
+  String examMinutes(int count) {
+    return '$count мин';
+  }
+
+  @override
+  String get examDraftNotice =>
+      'Вопросы ещё не проверены специалистом (черновик). Результат — для внутренней проверки, это не официальная оценка.';
+
+  @override
+  String get examRulesNotice =>
+      'Вопросы и варианты — в случайном порядке. До завершения можно менять ответы и отмечать вопросы, чтобы вернуться к ним. Время идёт, даже если приложение закрыто; когда оно истечёт, экзамен завершится сам.';
+
+  @override
+  String get examStart => 'Начать экзамен';
+
+  @override
+  String get examReplaceTitle => 'Есть незавершённый экзамен';
+
+  @override
+  String get examReplaceBody =>
+      'Если начать новый, предыдущий удалится вместе с ответами.';
+
+  @override
+  String get examHistory => 'История результатов';
+
+  @override
+  String get examHistoryEmpty =>
+      'Экзаменов пока не было. Первый результат появится здесь — он хранится только на этом устройстве.';
+
+  @override
+  String examHistoryStats(int count, int avg, int best) {
+    return 'Последние $count: в среднем $avg% · лучший $best%';
+  }
+
+  @override
+  String examHistoryRow(String date, int correct, int total, String time) {
+    return '$date · $correct/$total · $time';
+  }
+
+  @override
+  String get examHistoryClear => 'Очистить историю';
+
+  @override
+  String get examHistoryClearBody =>
+      'Все результаты экзаменов будут удалены с этого устройства.';
+
+  @override
+  String examProgressLabel(String values) {
+    return 'Последние результаты: $values';
+  }
+
+  @override
+  String get examProgressOld => 'Раньше → сейчас';
+
+  @override
+  String get examProgressLast => 'Последний';
+
+  @override
+  String get examSettled => 'Предыдущий экзамен завершён: время истекло';
+
+  @override
+  String get examOpenResult => 'Результат';
+
+  @override
+  String get examTitleAll => 'Все темы';
+
+  @override
+  String examTitleTopics(String first, int more) {
+    return '$first и ещё $more';
+  }
+
+  @override
+  String get examReworkTitle => 'Работа над ошибками';
+
+  @override
+  String get examQuestionMissing =>
+      'Этого вопроса нет в текущем пакете контента.';
+
+  @override
+  String get examMap => 'Карта вопросов';
+
+  @override
+  String get examFinish => 'Завершить';
+
+  @override
+  String get examFinishTitle => 'Завершить экзамен?';
+
+  @override
+  String examFinishBody(int unanswered, int flagged) {
+    return 'Без ответа: $unanswered, отмечено: $flagged. После завершения ответы изменить нельзя.';
+  }
+
+  @override
+  String get examFinishBodyAll =>
+      'На все вопросы есть ответ. После завершения ответы изменить нельзя.';
+
+  @override
+  String get examFlag => 'Отметить';
+
+  @override
+  String get examFlagged => 'Отмечен';
+
+  @override
+  String get examLegendAnswered => 'Есть ответ';
+
+  @override
+  String get examLegendEmpty => 'Без ответа';
+
+  @override
+  String get examLegendFlagged => 'Отмечен';
+
+  @override
+  String examQuestionN(int n) {
+    return 'Вопрос $n';
+  }
+
+  @override
+  String examAnsweredOf(int answered, int total) {
+    return 'Ответов: $answered/$total';
+  }
+
+  @override
+  String get examPrev => 'Назад';
+
+  @override
+  String get examNext => 'Далее';
+
+  @override
+  String examTimeLeft(String time) {
+    return 'Осталось: $time';
+  }
+
+  @override
+  String examElapsed(String time) {
+    return 'Прошло: $time';
+  }
+
+  @override
+  String get examNoActive => 'Нет активного экзамена';
+
+  @override
+  String get examNoActiveBody =>
+      'Он завершён или прерван. Настройте и начните новый.';
+
+  @override
+  String get examNew => 'Новый экзамен';
+
+  @override
+  String get examSaving => 'Сохраняем результат…';
+
+  @override
+  String get examResultTitle => 'Результат';
+
+  @override
+  String get examResultMissing => 'Результат не найден';
+
+  @override
+  String get examBand90 => 'Отличный результат!';
+
+  @override
+  String get examBand70 => 'Хороший результат!';
+
+  @override
+  String get examBand50 => 'Неплохо — разберите ошибки';
+
+  @override
+  String get examBand0 => 'Нужна практика — у вас получится';
+
+  @override
+  String get examCorrectN => 'Верно';
+
+  @override
+  String get examWrongN => 'Ошибки';
+
+  @override
+  String get examSkippedN => 'Без ответа';
+
+  @override
+  String get examSpent => 'Время';
+
+  @override
+  String get examTimedOut => 'Время вышло — завершено автоматически';
+
+  @override
+  String examDeltaUp(int n) {
+    return '+$n% к прошлой попытке';
+  }
+
+  @override
+  String examDeltaDown(int n) {
+    return '−$n% к прошлой попытке';
+  }
+
+  @override
+  String get examDeltaSame => 'Как в прошлой попытке';
+
+  @override
+  String examReworkMistakes(int count) {
+    return 'Работа над ошибками · $count';
+  }
+
+  @override
+  String get examAnalysis => 'Разбор ошибок';
+
+  @override
+  String examFilterMistakes(int count) {
+    return 'Ошибки · $count';
+  }
+
+  @override
+  String examFilterAll(int count) {
+    return 'Все · $count';
+  }
+
+  @override
+  String get examNoAnswer => 'Нет ответа';
+
+  @override
+  String get examWrongTag => 'Ошибка';
+
+  @override
+  String get examWhyWrong => 'Почему не этот ответ';
+
+  @override
+  String get examNoSource => 'Источник не указан — вопрос ещё не проверен.';
+
+  @override
+  String get examSourceMissing =>
+      'Банк вопросов этого экзамена не найден в приложении';
+
+  @override
+  String get examMultiHint => 'Несколько верных ответов — отметьте все';
+
+  @override
+  String get examNoExplanation => 'Пояснение к этому вопросу ещё не написано.';
+
+  @override
+  String get examByTopic => 'По темам';
+
+  @override
+  String get examByTopicNote =>
+      'Сначала — тема с самым низким результатом: начните с неё.';
+
+  @override
+  String get classesSubtitle =>
+      'Преподаватель создаёт группу и даёт задания, студенты вступают по коду и решают.';
+
+  @override
+  String get classesTryExam => 'Открыть экзамен без интернета';
+
+  @override
+  String get classesLoading => 'Загрузка…';
+
+  @override
+  String get classesInvalid => 'Сервер не принял данные — проверьте поля.';
+
+  @override
+  String get classesCodeNotFound =>
+      'Группа с таким кодом не найдена. Уточните код у преподавателя.';
+
+  @override
+  String get classesCreate => 'Создать группу';
+
+  @override
+  String get classesCreateSub =>
+      'Для преподавателя: получите код и давайте задания';
+
+  @override
+  String get classesJoin => 'Вступить по коду';
+
+  @override
+  String get classesJoinSub => 'Для студента: 8-значный код от преподавателя';
+
+  @override
+  String get classesRoleNote =>
+      'Роль в приложении не даёт прав на сервере: преподаватель группы — тот, кто её создал.';
+
+  @override
+  String get classesMine => 'Мои группы';
+
+  @override
+  String get classesEmpty => 'Групп пока нет';
+
+  @override
+  String get classesEmptyBody =>
+      'Создайте группу или вступите по коду от преподавателя.';
+
+  @override
+  String get classesRoleTeacher => 'Преподаватель';
+
+  @override
+  String get classesRoleStudent => 'Студент';
+
+  @override
+  String classesMembers(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count участника',
+      many: '$count участников',
+      few: '$count участника',
+      one: '$count участник',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get classesCreateIntro =>
+      'Аккаунт, создавший группу, становится её преподавателем. Студенты вступают по вашему коду.';
+
+  @override
+  String get classesGroupName => 'Название группы';
+
+  @override
+  String get classesGroupNameHint => 'Например, Биохимия 2 курс';
+
+  @override
+  String classesLengthError(int min, int max) {
+    return 'Введите от $min до $max символов';
+  }
+
+  @override
+  String get classesDisplayName => 'Ваше имя в группе';
+
+  @override
+  String get classesDisplayNameHint => 'Например, Алиев Анвар';
+
+  @override
+  String get classesDisplayNameHintTeacher => 'Например, Каримова Н.А.';
+
+  @override
+  String get classesDisplayNameNote =>
+      'Email не показывается — участники видят только это имя.';
+
+  @override
+  String get classesCreateAction => 'Создать группу';
+
+  @override
+  String get classesCreated => 'Группа создана — отправьте код студентам';
+
+  @override
+  String get classesJoinIntro => 'Введите код, который дал преподаватель.';
+
+  @override
+  String get classesCode => 'Код приглашения';
+
+  @override
+  String get classesCodeError => 'Код состоит из 8 букв и цифр';
+
+  @override
+  String get classesJoinNote =>
+      'Преподаватель увидит указанное имя и результаты ваших заданий. Email не показывается.';
+
+  @override
+  String get classesJoinAction => 'Вступить';
+
+  @override
+  String get classesJoined => 'Вы вступили в группу';
+
+  @override
+  String classesYouTeacher(int count) {
+    return 'Вы — преподаватель · участников: $count';
+  }
+
+  @override
+  String get classesYouStudent => 'Вы — студент';
+
+  @override
+  String get classesGroupMissing =>
+      'Группа не найдена или вы больше не участник';
+
+  @override
+  String get classesBackToList => 'К списку групп';
+
+  @override
+  String get classesAssignments => 'Задания';
+
+  @override
+  String get classesNewAssignment => 'Новое задание';
+
+  @override
+  String get classesNoAssignmentsTeacher =>
+      'Заданий пока нет. Выберите темы и число вопросов из банка и дайте задание.';
+
+  @override
+  String get classesNoAssignmentsStudent => 'Пока заданий нет';
+
+  @override
+  String get classesNoAssignmentsStudentBody =>
+      'Когда преподаватель даст задание, оно появится здесь.';
+
+  @override
+  String get classesNoDue => 'без срока';
+
+  @override
+  String classesDue(String date) {
+    return 'срок $date';
+  }
+
+  @override
+  String classesSubmittedOf(int done, int total) {
+    return 'сдали $done/$total';
+  }
+
+  @override
+  String classesMembersTitle(int count) {
+    return 'Студенты · $count';
+  }
+
+  @override
+  String get classesNoStudents => 'Студентов пока нет — отправьте код.';
+
+  @override
+  String get classesMemberNoWork => 'Пока ничего не сдано';
+
+  @override
+  String classesMemberSummary(int done, int total, int avg) {
+    return 'Заданий: $done/$total · в среднем $avg%';
+  }
+
+  @override
+  String get classesRemove => 'Исключить из группы';
+
+  @override
+  String classesRemoveTitle(String name) {
+    return 'Исключить $name из группы?';
+  }
+
+  @override
+  String get classesRemoveBody =>
+      'Студент больше не увидит группу и новые задания. Сданные результаты сохранятся.';
+
+  @override
+  String get classesRemoveAction => 'Исключить';
+
+  @override
+  String classesStatusDone(int score, int total) {
+    return 'Сдано · $score/$total';
+  }
+
+  @override
+  String get classesStatusInProgress => 'В процессе';
+
+  @override
+  String get classesStatusPending => 'Не отправлено';
+
+  @override
+  String get classesStatusOverdue => 'Срок истёк';
+
+  @override
+  String get classesStatusNew => 'Новое';
+
+  @override
+  String get classesStudentNote =>
+      'Преподаватель видит только ваше имя в группе и результаты заданий.';
+
+  @override
+  String get classesLeave => 'Выйти из группы';
+
+  @override
+  String get classesLeaveTitle => 'Выйти из группы?';
+
+  @override
+  String get classesLeaveBody =>
+      'Чтобы вернуться, понадобится код преподавателя. Сданные результаты останутся у преподавателя.';
+
+  @override
+  String get classesLeaveAction => 'Выйти';
+
+  @override
+  String get classesInviteTitle => 'Код приглашения';
+
+  @override
+  String get classesInviteBody =>
+      'Студентам: Обучение → Группы и задания → Вступить по коду.';
+
+  @override
+  String get classesCopyCode => 'Скопировать код';
+
+  @override
+  String get classesCopyInvite => 'Скопировать приглашение';
+
+  @override
+  String get classesCopied => 'Скопировано';
+
+  @override
+  String classesInviteText(String name, String code) {
+    return 'Вступите в группу «$name» в приложении LabGuide: Обучение → Группы и задания → Вступить по коду. Код: $code';
+  }
+
+  @override
+  String get classesNewAssignmentIntro =>
+      'Выберите темы и число вопросов — они берутся из банка случайно.';
+
+  @override
+  String get classesAssignmentTitle => 'Название задания';
+
+  @override
+  String get classesAssignmentTitleHint => 'Например, Тема 1';
+
+  @override
+  String get classesTimeLimit => 'Ограничение времени, мин';
+
+  @override
+  String get classesTimeLimitHint =>
+      'Необязательно, 1–180. Время идёт с момента начала и проверяется на сервере.';
+
+  @override
+  String get classesNoLimit => 'Без ограничения';
+
+  @override
+  String get classesDueTitle => 'Срок сдачи';
+
+  @override
+  String get classesDueNone => 'Без срока';
+
+  @override
+  String classesDueDays(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count дня',
+      many: '$count дней',
+      few: '$count дня',
+      one: '$count день',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get classesDuePick => 'Выбрать дату';
+
+  @override
+  String get classesDueNoneBody => 'Без срока — студенты сдают в любое время.';
+
+  @override
+  String classesDueAt(String date) {
+    return 'Срок: до $date';
+  }
+
+  @override
+  String classesPreview(int count) {
+    return 'Выбранные вопросы · $count';
+  }
+
+  @override
+  String get classesReshuffle => 'Другие вопросы';
+
+  @override
+  String get classesKeyNotice =>
+      'Студенты не видят ключ заранее — баллы считает сервер. Каждый сдаёт один раз.';
+
+  @override
+  String get classesSendAssignment => 'Дать задание';
+
+  @override
+  String get classesAssignmentCreated => 'Задание отправлено';
+
+  @override
+  String get classesSubmitted => 'Ответы отправлены';
+
+  @override
+  String get classesSubmitNetwork =>
+      'Нет интернета — ответы сохранены на устройстве. Отправьте позже.';
+
+  @override
+  String get classesSubmitRejected =>
+      'Сервер не принял ответы: время или срок истекли, либо задание уже сдано.';
+
+  @override
+  String get classesAssignmentMissing => 'Задание не найдено';
+
+  @override
+  String get classesMetricQuestions => 'Вопросов';
+
+  @override
+  String get classesMetricLimit => 'Ограничение времени';
+
+  @override
+  String get classesMetricDue => 'Срок';
+
+  @override
+  String get classesMetricSubmitted => 'Сдали';
+
+  @override
+  String get classesMetricAverage => 'Средний балл';
+
+  @override
+  String get classesPendingTitle => 'Ответы ещё не отправлены';
+
+  @override
+  String get classesPendingBody =>
+      'Они сохранены на устройстве. Отправьте, когда появится интернет, — сервер примет их в пределах лимита времени.';
+
+  @override
+  String get classesResend => 'Отправить снова';
+
+  @override
+  String get classesOverdueTitle => 'Срок истёк';
+
+  @override
+  String get classesOverdueBody => 'Это задание больше нельзя сдать.';
+
+  @override
+  String classesOutdatedPack(int count) {
+    return 'В вашей версии приложения нет вопросов из этого задания: $count. Обновите приложение.';
+  }
+
+  @override
+  String classesStartNotice(int minutes) {
+    return 'После начала даётся $minutes мин — время не останавливается, по окончании ответы отправятся сами. Сдать можно один раз; для отправки нужен интернет.';
+  }
+
+  @override
+  String get classesStartNoticeNoLimit =>
+      'Без ограничения времени. Ответы отправляются один раз, пересдать нельзя; для отправки нужен интернет.';
+
+  @override
+  String get classesStart => 'Начать';
+
+  @override
+  String classesSubmittedAt(String date) {
+    return 'Сдано: $date';
+  }
+
+  @override
+  String get classesServerScore => 'Балл посчитан сервером';
+
+  @override
+  String get classesResults => 'Результаты';
+
+  @override
+  String get classesColStudent => 'Студент';
+
+  @override
+  String get classesColScore => 'Балл · %';
+
+  @override
+  String get classesNotSubmitted => 'Не сдано';
+
+  @override
+  String get classesByQuestion => 'По вопросам';
+
+  @override
+  String get classesByQuestionEmpty => 'Пока никто не сдал.';
+
+  @override
+  String classesWrongOf(int wrong, int total) {
+    return 'ошибок $wrong/$total';
+  }
+
+  @override
+  String get classesSending => 'Отправка ответов…';
+
+  @override
+  String get classesMyProgress => 'Мой прогресс';
+
+  @override
+  String classesDoneOf(int done, int total) {
+    return 'Выполнено заданий: $done/$total';
+  }
+
+  @override
+  String classesAverage(int avg) {
+    return 'Средний балл: $avg%';
+  }
+
+  @override
+  String get classesStudentResultTitle => 'Результат студента';
+
+  @override
+  String get classesStudentAnswer => 'Ответ студента';
+
+  @override
+  String get classesInviteMore => 'Пригласить ещё студентов';
 
   @override
   String get profileTitle => 'Профиль и настройки';

@@ -16,6 +16,7 @@ import 'core/storage/kv_store.dart';
 import 'features/auth/auth_controller.dart';
 import 'features/auth/otp_auth.dart';
 import 'features/content/content_controller.dart';
+import 'features/learn/exam_controller.dart';
 import 'features/learn/quiz_progress.dart';
 import 'features/library/reading_controller.dart';
 import 'features/instruments/instruments_controller.dart';
@@ -76,6 +77,7 @@ AppServices createServices({
     bookmarks: BookmarksController(store),
     qc: QcController(store),
     quizProgress: QuizProgressController(store),
+    exams: ExamController(store),
     packs: PacksController(
       store: store,
       downloader: PackDownloader(httpClient ?? http.Client()),

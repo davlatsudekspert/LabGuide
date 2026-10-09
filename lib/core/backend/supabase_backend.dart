@@ -661,11 +661,11 @@ class SupabaseLabBackend implements LabBackend {
   }
 
   @override
-  Future<StudyGroup> createGroup(String name) async {
+  Future<StudyGroup> createGroup(String name, {String? displayName}) async {
     final data = await _guard(
       () => client.rpc<Object?>(
         'create_group',
-        params: {'p_name': name, 'p_display_name': _displayName()},
+        params: {'p_name': name, 'p_display_name': _nameOr(displayName)},
       ),
     );
     final m = (data! as Map).cast<String, Object?>();
@@ -678,26 +678,47 @@ class SupabaseLabBackend implements LabBackend {
     );
   }
 
-  /// Guruhda ko'rinadigan ism: hozircha emailning @ gacha qismi (foydalanuvchi
-  /// guruhga qo'shilishda o'zgartira oladi).
-  String _displayName() => (sessionEmail ?? 'user').split('@').first;
+  /// Guruhda ko'rinadigan ism: foydalanuvchi kiritgani, bo'lmasa emailning
+  /// @ gacha qismi.
+  String _nameOr(String? displayName) =>
+      (displayName == null || displayName.trim().length < 2)
+      ? (sessionEmail ?? 'user').split('@').first
+      : displayName.trim();
 
   @override
-  Future<void> joinGroup(String code, {String? displayName}) => _guard(
-    () => client.rpc<Object?>(
-      'join_group',
-      params: {
-        'p_code': code,
-        'p_display_name': (displayName == null || displayName.trim().length < 2)
-            ? _displayName()
-            : displayName.trim(),
-      },
-    ),
-  );
+  Future<String> joinGroup(String code, {String? displayName}) async {
+    final id = await _guard(
+      () => client.rpc<Object?>(
+        'join_group',
+        params: {'p_code': code, 'p_display_name': _nameOr(displayName)},
+      ),
+    );
+    return id! as String;
+  }
 
   @override
   Future<void> leaveGroup(String groupId) => _guard(
     () => client.rpc<Object?>('leave_group', params: {'p_group': groupId}),
+  );
+
+  @override
+  Future<List<GroupMember>> groupMembers(String groupId) async {
+    final data = await _guard(
+      () => client
+          .from('group_members')
+          .select('user_id, display_name, member_role, joined_at')
+          .eq('group_id', groupId)
+          .order('joined_at'),
+    );
+    return _rows(data).map(GroupMember.fromJson).toList();
+  }
+
+  @override
+  Future<void> removeMember(String groupId, String userId) => _guard(
+    () => client.rpc<Object?>(
+      'remove_member',
+      params: {'p_group': groupId, 'p_user': userId},
+    ),
   );
 
   @override
@@ -738,7 +759,18 @@ class SupabaseLabBackend implements LabBackend {
   }
 
   @override
-  Future<({int score, int total})> submitAssignment(
+  Future<AssignmentStart> startAssignment(String assignmentId) async {
+    final data = await _guard(
+      () => client.rpc<Object?>(
+        'start_assignment',
+        params: {'p_assignment': assignmentId},
+      ),
+    );
+    return AssignmentStart.fromJson((data! as Map).cast<String, Object?>());
+  }
+
+  @override
+  Future<GroupSubmission> submitAssignment(
     String assignmentId,
     List<int> answers,
   ) async {
@@ -749,22 +781,62 @@ class SupabaseLabBackend implements LabBackend {
       ),
     );
     final m = (data! as Map).cast<String, Object?>();
-    return (
+    return GroupSubmission(
+      assignmentId: assignmentId,
+      userId: userId ?? '',
       score: (m['score']! as num).toInt(),
       total: (m['total']! as num).toInt(),
+      submittedAt: _clock().toUtc(),
+      answers: answers,
+      correct: (m['correct'] as List?)?.map((c) => c == true).toList(),
     );
   }
+
+  static const _submissionColumns =
+      'assignment_id, user_id, score, total, answers, correct, submitted_at';
 
   @override
   Future<List<GroupSubmission>> submissions(String assignmentId) async {
     final data = await _guard(
       () => client
           .from('submissions')
-          .select('assignment_id, user_id, score, total, submitted_at')
+          .select(_submissionColumns)
           .eq('assignment_id', assignmentId)
           .order('submitted_at'),
     );
     return _rows(data).map(GroupSubmission.fromJson).toList();
+  }
+
+  @override
+  Future<List<GroupSubmission>> groupSubmissions(String groupId) async {
+    final ids = [for (final a in await assignments(groupId)) a.id];
+    if (ids.isEmpty) return const [];
+    final data = await _guard(
+      () => client
+          .from('submissions')
+          .select(_submissionColumns)
+          .inFilter('assignment_id', ids)
+          .order('submitted_at'),
+    );
+    return _rows(data).map(GroupSubmission.fromJson).toList();
+  }
+
+  @override
+  Future<List<int>> assignmentKey(String assignmentId) async {
+    final rows = _rows(
+      await _guard(
+        () => client
+            .from('assignment_keys')
+            .select('correct_indexes')
+            .eq('assignment_id', assignmentId),
+      ),
+    );
+    // RLS: ustoz bo'lmasa qator qaytmaydi.
+    if (rows.isEmpty) throw const BackendException(BackendFailure.forbidden);
+    return [
+      for (final i in rows.single['correct_indexes']! as List)
+        (i! as num).toInt(),
+    ];
   }
 
   // ----------------------------------------------------------- partners
