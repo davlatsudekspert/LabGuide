@@ -1352,29 +1352,322 @@ class AppLocalizationsUz extends AppLocalizations {
   String get micTitle => 'Mikroskopiya atlasi';
 
   @override
-  String get micNotice =>
-      'Tasvir joyi. Haqiqiy mikrofotolar foydalanish huquqi va belgilari tekshirilgandan keyingina qo‘shiladi.';
+  String get micSubtitle =>
+      'Siydik, qon va parazitlar — litsenziyali mikrofotolar';
 
   @override
-  String get micRedCells => 'Eritrotsitlar';
+  String get micAtlasError => 'Atlasni ochib bo‘lmadi';
 
   @override
-  String get micWhiteCells => 'Leykotsitlar';
+  String get micNotFound => 'Bunday rasm yoki bo‘lim topilmadi';
 
   @override
-  String get micEpithelium => 'Epiteliy hujayralari';
+  String micImagesCount(int count) {
+    return '$count ta rasm';
+  }
 
   @override
-  String get micCasts => 'Silindrlar';
+  String micGapsCount(int count) {
+    return '$count tasi uchun rasm hali yo‘q';
+  }
 
   @override
-  String get micCrystals => 'Kristallar';
+  String micResultsCount(int count) {
+    return 'Topildi: $count';
+  }
 
   @override
-  String get micItemSub => 'Ko‘rinish · farqlash · cheklov';
+  String get micSearchLabel => 'Atlasdan qidirish';
 
   @override
-  String get micImagePending => 'Tasvir huquqi tekshirilmoqda';
+  String get micSearchHint => 'Masalan: neytrofil, оксалат, malaria';
+
+  @override
+  String get micNoResultsTitle => 'Hech narsa topilmadi';
+
+  @override
+  String get micNoResultsBody =>
+      'Boshqa nom bilan yoki boshqa tilda yozib ko‘ring (uz, ru, en).';
+
+  @override
+  String get micSections => 'Bo‘limlar';
+
+  @override
+  String get micEduNotice =>
+      'O‘quv rasmlari — tashxis uchun emas. Har rasmda muallif, litsenziya va asl izoh bor. LabGuide tushuntirishlari — draft, mutaxassis tekshiruvi kutilmoqda.';
+
+  @override
+  String get micEduTag => 'O‘quv rasmi — tashxis uchun emas';
+
+  @override
+  String get micNoImageYet => 'Litsenziyali rasm hali yo‘q';
+
+  @override
+  String get micGapWhy => 'Nega yo‘q?';
+
+  @override
+  String get micAllGroups => 'Hammasi';
+
+  @override
+  String get micSectionQuiz => 'Shu bo‘lim bo‘yicha mashq';
+
+  @override
+  String get micZoom => 'Kattalashtirish';
+
+  @override
+  String micOpenFull(String name) {
+    return '$name — to‘liq ekranda ochish';
+  }
+
+  @override
+  String micImageSemantics(String name) {
+    return 'Mikrofoto: $name';
+  }
+
+  @override
+  String get micNames => 'Nomi uch tilda';
+
+  @override
+  String get micOriginalCaption => 'Asl izoh';
+
+  @override
+  String micCaptionLang(String lang) {
+    return 'Manba tilida, so‘zma-so‘z · $lang';
+  }
+
+  @override
+  String get micTranslation => 'Tarjima (LabGuide)';
+
+  @override
+  String get micLangEn => 'inglizcha';
+
+  @override
+  String get micLangEs => 'ispancha';
+
+  @override
+  String get micLangRu => 'ruscha';
+
+  @override
+  String get micPreparation => 'Preparat';
+
+  @override
+  String get micMagnification => 'Kattalashtirish';
+
+  @override
+  String get micStain => 'Bo‘yash';
+
+  @override
+  String get micNotStated => 'manbada ko‘rsatilmagan';
+
+  @override
+  String get micOnlySource => 'Faqat manbada yozilgan ma’lumot ko‘rsatiladi.';
+
+  @override
+  String get micDraftTitle => 'Nimaga e’tibor berish';
+
+  @override
+  String get micDraftTag => 'Draft · mutaxassis tekshiruvi kutilmoqda';
+
+  @override
+  String get micCreditTitle => 'Muallif va litsenziya';
+
+  @override
+  String get micAuthor => 'Muallif';
+
+  @override
+  String get micCredit => 'Manba';
+
+  @override
+  String get micOwnWork => 'Muallifning o‘z ishi (Own work)';
+
+  @override
+  String get micLicense => 'Litsenziya';
+
+  @override
+  String get micSourceDate => 'Manbadagi sana';
+
+  @override
+  String micLicenseText(String license) {
+    return 'Litsenziya matni: $license';
+  }
+
+  @override
+  String get micSourcePage => 'Manba sahifasi';
+
+  @override
+  String get micOriginalFile => 'Asl fayl';
+
+  @override
+  String micResized(int width, int height, int origWidth, int origHeight) {
+    return 'Ilovadagi nusxa: $width×$height px (asli $origWidth×$origHeight px, faqat kichraytirilgan). Kesilmagan, yozuv qo‘shilmagan.';
+  }
+
+  @override
+  String micNotResized(int width, int height) {
+    return 'Ilovadagi nusxa: $width×$height px, asl o‘lchamda. Kesilmagan, yozuv qo‘shilmagan.';
+  }
+
+  @override
+  String get micShareAlike =>
+      'CC BY-SA: bu rasmdan olingan moslashtirilgan nusxalar ham shu litsenziya ostida tarqatiladi.';
+
+  @override
+  String get micCdcTerms =>
+      'Foydalanish shartlari (CDC PHIL sahifasidan, so‘zma-so‘z)';
+
+  @override
+  String get micCdcFree =>
+      'Bepul manba: CDC Public Health Image Library (PHIL), wwwn.cdc.gov/phil';
+
+  @override
+  String get micSameEntity => 'Shu turdagi boshqa rasmlar';
+
+  @override
+  String get micCreditsTitle => 'Rasmlar mualliflari';
+
+  @override
+  String get micCreditsSub => 'Litsenziyalar va manbalar';
+
+  @override
+  String micCreditsIntro(String date) {
+    return 'Har rasmning litsenziyasi, muallifi va asl izohi manba sahifasidan qayta tekshirilgan ($date). Rasmlar faqat kichraytirilgan: kesilmagan, yozuv qo‘shilmagan, EXIF olib tashlangan. Faqat CC0, CC BY, CC BY-SA, public domain va CDC PHIL rasmlari olinadi.';
+  }
+
+  @override
+  String get micLicenseTexts => 'Litsenziya matnlari';
+
+  @override
+  String get micCreditsRow => 'Mualliflar va litsenziyalar';
+
+  @override
+  String get micCreditsRowSub =>
+      'Har rasmning manbasi va foydalanish shartlari';
+
+  @override
+  String get micClose => 'Yopish';
+
+  @override
+  String get micZoomIn => 'Kattalashtirish';
+
+  @override
+  String get micZoomOut => 'Kichraytirish';
+
+  @override
+  String get micZoomReset => 'Asl ko‘rinish';
+
+  @override
+  String get micViewerHint =>
+      'Ikki barmoq bilan yoki ikki marta bosib kattalashtiring';
+
+  @override
+  String get micHeroEyebrow => 'Mashq';
+
+  @override
+  String get micQuizTitle => 'Bu nima?';
+
+  @override
+  String get micQuizSubtitle => 'Mikroskopiya mashqi';
+
+  @override
+  String get micQuizHeroBody =>
+      'Rasmga qarang va to‘g‘ri nomni tanlang: 4 variant, hammasi atlasdan. Javob darhol ko‘rinadi.';
+
+  @override
+  String get micQuizCta => 'Mashqni boshlash';
+
+  @override
+  String get micQuizScope => 'Qaysi bo‘limdan?';
+
+  @override
+  String micQuizScopeChip(String name, int count) {
+    return '$name · $count';
+  }
+
+  @override
+  String micQuizStart(int count) {
+    return 'Boshlash · $count ta savol';
+  }
+
+  @override
+  String micQuizBest(int correct, int total) {
+    return 'Eng yaxshi natija: $correct/$total';
+  }
+
+  @override
+  String get micQuizNoBest => 'Hali natija yo‘q — birinchi raundni boshlang';
+
+  @override
+  String get micQuizRules =>
+      'Variantlar faqat atlasdagi nomlardan olinadi. Aralash maydon va jurnal panellari mashqqa kirmaydi. Natija faqat shu qurilmada saqlanadi.';
+
+  @override
+  String micQuizProgress(int current, int total) {
+    return '$current / $total';
+  }
+
+  @override
+  String micQuizStreak(int count) {
+    return '$count ketma-ket';
+  }
+
+  @override
+  String get micQuizPromptArrow => 'Strelka ko‘rsatgan hujayra nima?';
+
+  @override
+  String get micQuizPromptCentre => 'Markazdagi hujayra nima?';
+
+  @override
+  String get micQuizPromptField => 'Bu maydonda asosan nima ko‘rinadi?';
+
+  @override
+  String get micQuizCorrect => 'To‘g‘ri!';
+
+  @override
+  String micQuizWrong(String answer) {
+    return 'Noto‘g‘ri. To‘g‘ri javob: $answer';
+  }
+
+  @override
+  String get micQuizOpenCard => 'Rasm kartasini ochish';
+
+  @override
+  String get micQuizTapToZoom => 'Kattalashtirish uchun rasmni bosing';
+
+  @override
+  String get micQuizResultGreat => 'A’lo natija!';
+
+  @override
+  String get micQuizResultGood => 'Yaxshi natija';
+
+  @override
+  String get micQuizResultKeep => 'Mashqni davom ettiring';
+
+  @override
+  String micQuizScore(int correct, int total) {
+    return '$total tadan $correct tasi to‘g‘ri';
+  }
+
+  @override
+  String micQuizBestStreak(int count) {
+    return 'Eng uzun seriya: $count';
+  }
+
+  @override
+  String get micQuizNewRecord => 'Yangi rekord';
+
+  @override
+  String micQuizRetryMistakes(int count) {
+    return 'Xatolarni qayta ishlash ($count)';
+  }
+
+  @override
+  String get micQuizNewRound => 'Yangi raund';
+
+  @override
+  String get micQuizChangeScope => 'Boshqa bo‘lim';
+
+  @override
+  String get micQuizBackToAtlas => 'Atlasga qaytish';
 
   @override
   String get insTitle => 'Apparatlar';
@@ -2639,13 +2932,6 @@ class AppLocalizationsUz extends AppLocalizations {
   String get examTitle => 'Imtihon rejimi';
 
   @override
-  String get examBody =>
-      'Vaqtli imtihon va natijalar tarixi o‘rganish moduli bilan qo‘shiladi. Mashq savollari hozir ochiq.';
-
-  @override
-  String get examOpenPractice => 'Mashq savollarini ochish';
-
-  @override
   String get classesTitle => 'Guruh va topshiriqlar';
 
   @override
@@ -2664,6 +2950,737 @@ class AppLocalizationsUz extends AppLocalizations {
   @override
   String get classesUnavailableBody =>
       'Hech narsa yuborilmaydi va saqlanmaydi. Ulanganda ustoz faqat o‘z guruhini, talaba faqat o‘z natijasini ko‘radi — bu serverda tekshiriladi.';
+
+  @override
+  String get examSubtitle =>
+      'Vaqtli sinov: mavzular, savollar soni va vaqtni tanlang. Internetsiz ishlaydi.';
+
+  @override
+  String get examActiveTitle => 'Tugallanmagan imtihon';
+
+  @override
+  String examActiveBody(int answered, int total, String time) {
+    return '$answered/$total javob · $time qoldi';
+  }
+
+  @override
+  String get examResume => 'Davom ettirish';
+
+  @override
+  String get examDiscard => 'Imtihonni to‘xtatish';
+
+  @override
+  String get examDiscardTitle => 'Imtihon to‘xtatilsinmi?';
+
+  @override
+  String get examDiscardBody =>
+      'Javoblar o‘chadi va natija tarixga yozilmaydi.';
+
+  @override
+  String get examDiscardAction => 'To‘xtatish';
+
+  @override
+  String get examTopics => 'Mavzular';
+
+  @override
+  String get examAllTopics => 'Hammasi';
+
+  @override
+  String examPoolCount(int count) {
+    return 'Tanlangan mavzularda $count ta savol';
+  }
+
+  @override
+  String get examSettings => 'Sozlamalar';
+
+  @override
+  String get examCount => 'Savollar soni';
+
+  @override
+  String examCountHint(int max) {
+    return '1 dan $max gacha';
+  }
+
+  @override
+  String examCountError(int max) {
+    return '1 dan $max gacha son kiriting';
+  }
+
+  @override
+  String examCountAll(int count) {
+    return 'Barcha $count ta';
+  }
+
+  @override
+  String get examTime => 'Vaqt, daqiqa';
+
+  @override
+  String get examTimeHint => '1–180 daqiqa · odatda 1 daqiqa / savol';
+
+  @override
+  String get examTimeError => '1 dan 180 gacha daqiqa kiriting';
+
+  @override
+  String examMinutes(int count) {
+    return '$count daq';
+  }
+
+  @override
+  String get examDraftNotice =>
+      'Savollar hali mutaxassis tekshiruvidan o‘tmagan (qoralama). Natija — ichki sinov uchun, rasmiy baho emas.';
+
+  @override
+  String get examRulesNotice =>
+      'Savollar va variantlar tasodifiy tartibda. Yakunlashgacha javobni o‘zgartirish, savolni belgilab keyin qaytish mumkin. Vaqt ilova yopiq bo‘lsa ham davom etadi; tugasa, imtihon o‘zi yakunlanadi.';
+
+  @override
+  String get examStart => 'Imtihonni boshlash';
+
+  @override
+  String get examReplaceTitle => 'Tugallanmagan imtihon bor';
+
+  @override
+  String get examReplaceBody =>
+      'Yangisini boshlasangiz, oldingisi javoblari bilan o‘chadi.';
+
+  @override
+  String get examHistory => 'Natijalar tarixi';
+
+  @override
+  String get examHistoryEmpty =>
+      'Hali imtihon topshirilmagan. Birinchi natijangiz shu yerda chiqadi — u faqat shu qurilmada saqlanadi.';
+
+  @override
+  String examHistoryStats(int count, int avg, int best) {
+    return 'So‘nggi $count ta: o‘rtacha $avg% · eng yaxshi $best%';
+  }
+
+  @override
+  String examHistoryRow(String date, int correct, int total, String time) {
+    return '$date · $correct/$total · $time';
+  }
+
+  @override
+  String get examHistoryClear => 'Tarixni tozalash';
+
+  @override
+  String get examHistoryClearBody =>
+      'Barcha imtihon natijalari shu qurilmadan o‘chiriladi.';
+
+  @override
+  String examProgressLabel(String values) {
+    return 'So‘nggi natijalar: $values';
+  }
+
+  @override
+  String get examProgressOld => 'Eskiroq → yangi';
+
+  @override
+  String get examProgressLast => 'Oxirgisi';
+
+  @override
+  String get examSettled => 'Oldingi imtihon vaqti tugagani uchun yakunlandi';
+
+  @override
+  String get examOpenResult => 'Natija';
+
+  @override
+  String get examTitleAll => 'Barcha mavzular';
+
+  @override
+  String examTitleTopics(String first, int more) {
+    return '$first va yana $more ta';
+  }
+
+  @override
+  String get examReworkTitle => 'Xatolar ustida ishlash';
+
+  @override
+  String get examQuestionMissing => 'Bu savol joriy kontent to‘plamida yo‘q.';
+
+  @override
+  String get examMap => 'Savollar xaritasi';
+
+  @override
+  String get examFinish => 'Yakunlash';
+
+  @override
+  String get examFinishTitle => 'Imtihon yakunlansinmi?';
+
+  @override
+  String examFinishBody(int unanswered, int flagged) {
+    return 'Javobsiz: $unanswered ta, belgilangan: $flagged ta. Yakunlangach javoblarni o‘zgartirib bo‘lmaydi.';
+  }
+
+  @override
+  String get examFinishBodyAll =>
+      'Barcha savollarga javob berildi. Yakunlangach javoblarni o‘zgartirib bo‘lmaydi.';
+
+  @override
+  String get examFlag => 'Belgilash';
+
+  @override
+  String get examFlagged => 'Belgilangan';
+
+  @override
+  String get examLegendAnswered => 'Javob berilgan';
+
+  @override
+  String get examLegendEmpty => 'Javobsiz';
+
+  @override
+  String get examLegendFlagged => 'Belgilangan';
+
+  @override
+  String examQuestionN(int n) {
+    return '$n-savol';
+  }
+
+  @override
+  String examAnsweredOf(int answered, int total) {
+    return '$answered/$total javob berildi';
+  }
+
+  @override
+  String get examPrev => 'Oldingi';
+
+  @override
+  String get examNext => 'Keyingi';
+
+  @override
+  String examTimeLeft(String time) {
+    return 'Qolgan vaqt: $time';
+  }
+
+  @override
+  String examElapsed(String time) {
+    return 'O‘tgan vaqt: $time';
+  }
+
+  @override
+  String get examNoActive => 'Faol imtihon yo‘q';
+
+  @override
+  String get examNoActiveBody =>
+      'U yakunlangan yoki to‘xtatilgan. Yangi imtihonni sozlab boshlang.';
+
+  @override
+  String get examNew => 'Yangi imtihon';
+
+  @override
+  String get examSaving => 'Natija saqlanmoqda…';
+
+  @override
+  String get examResultTitle => 'Natija';
+
+  @override
+  String get examResultMissing => 'Natija topilmadi';
+
+  @override
+  String get examBand90 => 'A’lo natija!';
+
+  @override
+  String get examBand70 => 'Yaxshi natija!';
+
+  @override
+  String get examBand50 => 'Yomon emas — xatolarni ko‘rib chiqing';
+
+  @override
+  String get examBand0 => 'Mashq qiling — siz uddalaysiz';
+
+  @override
+  String get examCorrectN => 'To‘g‘ri';
+
+  @override
+  String get examWrongN => 'Xato';
+
+  @override
+  String get examSkippedN => 'Javobsiz';
+
+  @override
+  String get examSpent => 'Vaqt';
+
+  @override
+  String get examTimedOut => 'Vaqt tugadi — avtomatik yakunlandi';
+
+  @override
+  String examDeltaUp(int n) {
+    return 'Oldingi urinishdan +$n%';
+  }
+
+  @override
+  String examDeltaDown(int n) {
+    return 'Oldingi urinishdan −$n%';
+  }
+
+  @override
+  String get examDeltaSame => 'Oldingi urinish bilan bir xil';
+
+  @override
+  String examReworkMistakes(int count) {
+    return 'Xatolarni qayta ishlash · $count';
+  }
+
+  @override
+  String get examAnalysis => 'Xatolar tahlili';
+
+  @override
+  String examFilterMistakes(int count) {
+    return 'Xatolar · $count';
+  }
+
+  @override
+  String examFilterAll(int count) {
+    return 'Hammasi · $count';
+  }
+
+  @override
+  String get examNoAnswer => 'Javob berilmagan';
+
+  @override
+  String get examWrongTag => 'Xato';
+
+  @override
+  String get examWhyWrong => 'Nega bu javob emas';
+
+  @override
+  String get examNoSource =>
+      'Manba ko‘rsatilmagan — savol hali tekshirilmagan.';
+
+  @override
+  String get examSourceMissing =>
+      'Bu imtihonning savollar banki ilovada topilmadi';
+
+  @override
+  String get examMultiHint => 'Bir nechta to‘g‘ri javob — hammasini belgilang';
+
+  @override
+  String get examNoExplanation => 'Bu savolga izoh hali yozilmagan.';
+
+  @override
+  String get examByTopic => 'Mavzular bo‘yicha';
+
+  @override
+  String get examByTopicNote =>
+      'Eng past natijali mavzu birinchi — shundan boshlang.';
+
+  @override
+  String get classesSubtitle =>
+      'Ustoz guruh ochadi va topshiriq beradi, talabalar kod bilan qo‘shilib yechadi.';
+
+  @override
+  String get classesTryExam => 'Internetsiz imtihonni ochish';
+
+  @override
+  String get classesLoading => 'Yuklanmoqda…';
+
+  @override
+  String get classesInvalid =>
+      'Server ma’lumotni qabul qilmadi — maydonlarni tekshiring.';
+
+  @override
+  String get classesCodeNotFound =>
+      'Bu kod bilan guruh topilmadi. Kodni ustozdan qayta tekshirib oling.';
+
+  @override
+  String get classesCreate => 'Guruh yaratish';
+
+  @override
+  String get classesCreateSub => 'Ustoz uchun: kod oling va topshiriq bering';
+
+  @override
+  String get classesJoin => 'Kod bilan qo‘shilish';
+
+  @override
+  String get classesJoinSub => 'Talaba uchun: ustoz bergan 8 belgili kod';
+
+  @override
+  String get classesRoleNote =>
+      'Ilovadagi rol server huquqi bermaydi: guruhni kim yaratsa — o‘sha guruhning ustozi.';
+
+  @override
+  String get classesMine => 'Mening guruhlarim';
+
+  @override
+  String get classesEmpty => 'Hali guruh yo‘q';
+
+  @override
+  String get classesEmptyBody =>
+      'Guruh yarating yoki ustozingiz bergan kod bilan qo‘shiling.';
+
+  @override
+  String get classesRoleTeacher => 'Ustoz';
+
+  @override
+  String get classesRoleStudent => 'Talaba';
+
+  @override
+  String classesMembers(int count) {
+    return '$count a’zo';
+  }
+
+  @override
+  String get classesCreateIntro =>
+      'Guruhni yaratgan hisob shu guruhning ustozi bo‘ladi. Talabalar siz bergan kod bilan qo‘shiladi.';
+
+  @override
+  String get classesGroupName => 'Guruh nomi';
+
+  @override
+  String get classesGroupNameHint => 'Masalan, Biokimyo 2-kurs';
+
+  @override
+  String classesLengthError(int min, int max) {
+    return '$min–$max belgi kiriting';
+  }
+
+  @override
+  String get classesDisplayName => 'Guruhda ko‘rinadigan ismingiz';
+
+  @override
+  String get classesDisplayNameHint => 'Masalan, Aliyev Anvar';
+
+  @override
+  String get classesDisplayNameHintTeacher => 'Masalan, Karimova N.A.';
+
+  @override
+  String get classesDisplayNameNote =>
+      'Email ko‘rsatilmaydi — a’zolar faqat shu ismni ko‘radi.';
+
+  @override
+  String get classesCreateAction => 'Guruhni yaratish';
+
+  @override
+  String get classesCreated => 'Guruh yaratildi — kodni talabalarga yuboring';
+
+  @override
+  String get classesJoinIntro => 'Ustozingiz bergan kodni kiriting.';
+
+  @override
+  String get classesCode => 'Taklif kodi';
+
+  @override
+  String get classesCodeError => 'Kod 8 ta harf va raqamdan iborat';
+
+  @override
+  String get classesJoinNote =>
+      'Ustoz siz yozgan ismni va topshiriq natijalaringizni ko‘radi. Emailingiz ko‘rsatilmaydi.';
+
+  @override
+  String get classesJoinAction => 'Qo‘shilish';
+
+  @override
+  String get classesJoined => 'Guruhga qo‘shildingiz';
+
+  @override
+  String classesYouTeacher(int count) {
+    return 'Siz — ustoz · $count a’zo';
+  }
+
+  @override
+  String get classesYouStudent => 'Siz — talaba';
+
+  @override
+  String get classesGroupMissing =>
+      'Guruh topilmadi yoki siz endi a’zo emassiz';
+
+  @override
+  String get classesBackToList => 'Guruhlar ro‘yxatiga';
+
+  @override
+  String get classesAssignments => 'Topshiriqlar';
+
+  @override
+  String get classesNewAssignment => 'Yangi topshiriq';
+
+  @override
+  String get classesNoAssignmentsTeacher =>
+      'Hali topshiriq yo‘q. Savol bankidan mavzu va sonni tanlab topshiriq bering.';
+
+  @override
+  String get classesNoAssignmentsStudent => 'Hozircha topshiriq yo‘q';
+
+  @override
+  String get classesNoAssignmentsStudentBody =>
+      'Ustoz topshiriq berganda shu yerda paydo bo‘ladi.';
+
+  @override
+  String get classesNoDue => 'muddatsiz';
+
+  @override
+  String classesDue(String date) {
+    return 'muddat $date';
+  }
+
+  @override
+  String classesSubmittedOf(int done, int total) {
+    return '$done/$total topshirdi';
+  }
+
+  @override
+  String classesMembersTitle(int count) {
+    return 'Talabalar · $count';
+  }
+
+  @override
+  String get classesNoStudents => 'Hali talaba qo‘shilmagan — kodni yuboring.';
+
+  @override
+  String get classesMemberNoWork => 'Hali topshirmagan';
+
+  @override
+  String classesMemberSummary(int done, int total, int avg) {
+    return '$done/$total topshiriq · o‘rtacha $avg%';
+  }
+
+  @override
+  String get classesRemove => 'Guruhdan chiqarish';
+
+  @override
+  String classesRemoveTitle(String name) {
+    return '$name guruhdan chiqarilsinmi?';
+  }
+
+  @override
+  String get classesRemoveBody =>
+      'U guruhni va yangi topshiriqlarni ko‘rmaydi. Topshirgan natijalari o‘chmaydi.';
+
+  @override
+  String get classesRemoveAction => 'Chiqarish';
+
+  @override
+  String classesStatusDone(int score, int total) {
+    return 'Topshirildi · $score/$total';
+  }
+
+  @override
+  String get classesStatusInProgress => 'Davom etmoqda';
+
+  @override
+  String get classesStatusPending => 'Yuborilmagan';
+
+  @override
+  String get classesStatusOverdue => 'Muddat o‘tgan';
+
+  @override
+  String get classesStatusNew => 'Yangi';
+
+  @override
+  String get classesStudentNote =>
+      'Ustoz faqat siz yozgan ismni va topshiriq natijalaringizni ko‘radi.';
+
+  @override
+  String get classesLeave => 'Guruhdan chiqish';
+
+  @override
+  String get classesLeaveTitle => 'Guruhdan chiqasizmi?';
+
+  @override
+  String get classesLeaveBody =>
+      'Qayta qo‘shilish uchun ustozdan kod kerak bo‘ladi. Topshirgan natijalaringiz ustozda qoladi.';
+
+  @override
+  String get classesLeaveAction => 'Chiqish';
+
+  @override
+  String get classesInviteTitle => 'Taklif kodi';
+
+  @override
+  String get classesInviteBody =>
+      'Talabalar: O‘rganish → Guruh va topshiriqlar → Kod bilan qo‘shilish.';
+
+  @override
+  String get classesCopyCode => 'Kodni nusxalash';
+
+  @override
+  String get classesCopyInvite => 'Taklif matnini nusxalash';
+
+  @override
+  String get classesCopied => 'Nusxalandi';
+
+  @override
+  String classesInviteText(String name, String code) {
+    return 'LabGuide ilovasidagi “$name” guruhiga qo‘shiling: O‘rganish → Guruh va topshiriqlar → Kod bilan qo‘shilish. Kod: $code';
+  }
+
+  @override
+  String get classesNewAssignmentIntro =>
+      'Mavzu va sonni tanlang — savollar bankdan tasodifiy olinadi.';
+
+  @override
+  String get classesAssignmentTitle => 'Topshiriq nomi';
+
+  @override
+  String get classesAssignmentTitleHint => 'Masalan, 1-mavzu';
+
+  @override
+  String get classesTimeLimit => 'Vaqt chegarasi, daqiqa';
+
+  @override
+  String get classesTimeLimitHint =>
+      'Ixtiyoriy, 1–180. Vaqt talaba boshlagan paytdan hisoblanadi va serverda tekshiriladi.';
+
+  @override
+  String get classesNoLimit => 'Vaqtsiz';
+
+  @override
+  String get classesDueTitle => 'Topshirish muddati';
+
+  @override
+  String get classesDueNone => 'Muddatsiz';
+
+  @override
+  String classesDueDays(int count) {
+    return '$count kun';
+  }
+
+  @override
+  String get classesDuePick => 'Sana tanlash';
+
+  @override
+  String get classesDueNoneBody =>
+      'Muddat yo‘q — talabalar istalgan vaqtda topshiradi.';
+
+  @override
+  String classesDueAt(String date) {
+    return 'Muddat: $date gacha';
+  }
+
+  @override
+  String classesPreview(int count) {
+    return 'Tanlangan savollar · $count';
+  }
+
+  @override
+  String get classesReshuffle => 'Boshqa savollar';
+
+  @override
+  String get classesKeyNotice =>
+      'Talabalar to‘g‘ri javoblarni oldindan ko‘rmaydi — ball serverda hisoblanadi. Har talaba bir marta topshiradi.';
+
+  @override
+  String get classesSendAssignment => 'Topshiriqni berish';
+
+  @override
+  String get classesAssignmentCreated => 'Topshiriq berildi';
+
+  @override
+  String get classesSubmitted => 'Javoblar yuborildi';
+
+  @override
+  String get classesSubmitNetwork =>
+      'Internet yo‘q — javoblar qurilmada saqlandi. Keyin qayta yuboring.';
+
+  @override
+  String get classesSubmitRejected =>
+      'Server javoblarni qabul qilmadi: vaqt yoki muddat tugagan, yoki topshiriq avval topshirilgan.';
+
+  @override
+  String get classesAssignmentMissing => 'Topshiriq topilmadi';
+
+  @override
+  String get classesMetricQuestions => 'Savollar';
+
+  @override
+  String get classesMetricLimit => 'Vaqt chegarasi';
+
+  @override
+  String get classesMetricDue => 'Muddat';
+
+  @override
+  String get classesMetricSubmitted => 'Topshirdi';
+
+  @override
+  String get classesMetricAverage => 'O‘rtacha ball';
+
+  @override
+  String get classesPendingTitle => 'Javoblar hali yuborilmagan';
+
+  @override
+  String get classesPendingBody =>
+      'Ular qurilmada saqlangan. Internet ulanganda qayta yuboring — server vaqt chegarasi ichida qabul qiladi.';
+
+  @override
+  String get classesResend => 'Qayta yuborish';
+
+  @override
+  String get classesOverdueTitle => 'Muddat o‘tgan';
+
+  @override
+  String get classesOverdueBody => 'Bu topshiriqni endi topshirib bo‘lmaydi.';
+
+  @override
+  String classesOutdatedPack(int count) {
+    return 'Bu topshiriqdagi $count ta savol ilovangizdagi to‘plamda yo‘q. Ilovani yangilang.';
+  }
+
+  @override
+  String classesStartNotice(int minutes) {
+    return 'Boshlaganingizdan so‘ng $minutes daqiqa beriladi — vaqt to‘xtamaydi, tugaganda javoblar o‘zi yuboriladi. Bir marta topshiriladi; yuborish uchun internet kerak.';
+  }
+
+  @override
+  String get classesStartNoticeNoLimit =>
+      'Vaqt chegarasi yo‘q. Javoblar bir marta yuboriladi, qayta topshirib bo‘lmaydi; yuborish uchun internet kerak.';
+
+  @override
+  String get classesStart => 'Boshlash';
+
+  @override
+  String classesSubmittedAt(String date) {
+    return 'Topshirildi: $date';
+  }
+
+  @override
+  String get classesServerScore => 'Ball serverda hisoblandi';
+
+  @override
+  String get classesResults => 'Natijalar';
+
+  @override
+  String get classesColStudent => 'Talaba';
+
+  @override
+  String get classesColScore => 'Ball · %';
+
+  @override
+  String get classesNotSubmitted => 'Topshirmagan';
+
+  @override
+  String get classesByQuestion => 'Savollar bo‘yicha';
+
+  @override
+  String get classesByQuestionEmpty => 'Hali hech kim topshirmagan.';
+
+  @override
+  String classesWrongOf(int wrong, int total) {
+    return '$wrong/$total xato';
+  }
+
+  @override
+  String get classesSending => 'Javoblar yuborilmoqda…';
+
+  @override
+  String get classesMyProgress => 'Mening natijalarim';
+
+  @override
+  String classesDoneOf(int done, int total) {
+    return '$done/$total topshiriq bajarildi';
+  }
+
+  @override
+  String classesAverage(int avg) {
+    return 'O‘rtacha ball: $avg%';
+  }
+
+  @override
+  String get classesStudentResultTitle => 'Talaba natijasi';
+
+  @override
+  String get classesStudentAnswer => 'Talaba javobi';
+
+  @override
+  String get classesInviteMore => 'Yana talaba taklif qilish';
 
   @override
   String get profileTitle => 'Profil va sozlamalar';

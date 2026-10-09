@@ -16,9 +16,11 @@ import 'core/storage/kv_store.dart';
 import 'features/auth/auth_controller.dart';
 import 'features/auth/otp_auth.dart';
 import 'features/content/content_controller.dart';
+import 'features/learn/exam_controller.dart';
 import 'features/learn/quiz_progress.dart';
 import 'features/library/reading_controller.dart';
 import 'features/instruments/instruments_controller.dart';
+import 'features/microscopy/microscopy_controller.dart';
 import 'features/packs/pack_downloader.dart';
 import 'features/packs/packs_controller.dart';
 import 'features/partners/partners_controller.dart';
@@ -75,6 +77,7 @@ AppServices createServices({
     bookmarks: BookmarksController(store),
     qc: QcController(store),
     quizProgress: QuizProgressController(store),
+    exams: ExamController(store),
     packs: PacksController(
       store: store,
       downloader: PackDownloader(httpClient ?? http.Client()),
@@ -82,6 +85,7 @@ AppServices createServices({
       root: packsRoot ?? _defaultPacksRoot,
     ),
     instruments: InstrumentsController(store, bundle: bundle),
+    microscopy: MicroscopyController(store, bundle: bundle),
     reading: ReadingController(store, bundle: bundle),
     backend: server,
     access: AccessController(server),
