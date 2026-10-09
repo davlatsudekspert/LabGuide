@@ -131,7 +131,7 @@ class _ExamSetupScreenState extends State<ExamSetupScreen> {
         // imtihoni) shu ekranga manba sifatida beriladi.
         ExamSourceGate(sourceId: widget.sourceId, builder: _setup),
         ListenableBuilder(
-          listenable: exams,
+          listenable: Listenable.merge([exams, context.services.entitlements]),
           builder: (context, _) => _History(exams: exams),
         ),
       ],
@@ -268,7 +268,14 @@ class _History extends StatelessWidget {
     final l = AppLocalizations.of(context);
     final text = Theme.of(context).textTheme;
     final lang = Localizations.localeOf(context).languageCode;
-    final history = exams.history;
+    // Pro namunasi: bepul rejimda oxirgi 3 ta + Pro davrida saqlanganlar
+    // ko'rinadi; eskilari O'CHIRILMAYDI, faqat soni aytiladi.
+    final entitlements = context.services.entitlements;
+    final view = entitlements.historyView(
+      exams.history,
+      (s) => s.finishedAt ?? s.startedAt,
+    );
+    final history = view.visible;
     final recent = history.take(10).toList();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -314,6 +321,16 @@ class _History extends StatelessWidget {
               divider: i < history.length - 1,
               onTap: () => context.push('/learn/exam/result/${s.id}'),
             ),
+          if (view.hiddenCount > 0) ...[
+            const SizedBox(height: 8),
+            Text(
+              l.examHistoryHidden(
+                view.hiddenCount,
+                entitlements.historyVisibleLimit() ?? 0,
+              ),
+              style: text.bodySmall,
+            ),
+          ],
           const SizedBox(height: 8),
           LgButton.link(
             label: l.examHistoryClear,

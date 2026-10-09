@@ -45,6 +45,9 @@ abstract final class StoreKeys {
   /// Kutubxona PDF lari: oxirgi sahifa va xatcho'plar.
   static const libraryReading = 'library.reading';
 
+  /// Pro huquqlari: server javobining imzolangan, muddatli nusxasi.
+  static const entitlementsCache = 'entitlements.cache';
+
   /// Leykoformula: joriy sanash (qoralama) va saqlangan natijalar.
   static const differentialDraft = 'differential.draft';
   static const differentialHistory = 'differential.history';
@@ -71,6 +74,7 @@ abstract final class StoreKeys {
     microscopyQuiz,
     partnersCache,
     libraryReading,
+    entitlementsCache,
     differentialDraft,
     differentialHistory,
   };

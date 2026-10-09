@@ -75,6 +75,7 @@ Future<AppServices> start(
   AppRole role = AppRole.lab,
   Size size = const Size(390, 844),
   LabBackend? backend,
+  bool? allFeaturesOpen,
 }) async {
   final s = await makeServices(
     tester,
@@ -82,6 +83,7 @@ Future<AppServices> start(
     themeMode: theme,
     role: role,
     backend: backend,
+    allFeaturesOpen: allFeaturesOpen,
   );
   await pumpApp(tester, s, textScale: textScale, size: size);
   // Rasmlarni oldindan dekod qilish (testda real async kerak).

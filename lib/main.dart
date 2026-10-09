@@ -12,6 +12,9 @@ import 'app/app_scope.dart';
 import 'core/backend/access_controller.dart';
 import 'core/backend/lab_backend.dart';
 import 'core/backend/supabase_backend.dart';
+import 'core/entitlements/entitlement_cache.dart';
+import 'core/entitlements/entitlement_service.dart';
+import 'core/entitlements/entitlement_source.dart';
 import 'core/storage/kv_store.dart';
 import 'features/auth/auth_controller.dart';
 import 'features/auth/otp_auth.dart';
@@ -44,6 +47,10 @@ Future<void> main() async {
   );
   await services.auth.reconcileWithBackend();
   unawaited(services.refreshAccess());
+  // Pro: avval imzolangan kesh (oflayn ham), keyin serverdan.
+  unawaited(
+    services.entitlements.load().then((_) => services.entitlements.refresh()),
+  );
   // Kontent fonda yuklanadi; ekranlar loading/error holatini ko'rsatadi.
   unawaited(services.content.load());
   // Hamkorlar keshdan darhol; serverdan fonda (sozlanmagan buildda — yo'q).
@@ -60,6 +67,8 @@ AppServices createServices({
   http.Client? httpClient,
   Future<Directory> Function()? packsRoot,
   LabBackend? backend,
+  EntitlementKeyStore? entitlementKeys,
+  bool? allFeaturesOpen,
 }) {
   const config = AppConfig(appVersion: _appVersion, showDebugBadge: kDebugMode);
   final server = backend ?? _defaultBackend();
@@ -91,6 +100,20 @@ AppServices createServices({
     backend: server,
     access: AccessController(server),
     partners: PartnersController(store, server),
+    // To'lov hali yoqilmagan: PurchaseAdapter — Unavailable (standart).
+    // TestFlight/CI va debug buildda hamma imkoniyat ochiq.
+    entitlements: EntitlementService(
+      source: server is SupabaseLabBackend
+          ? SupabaseEntitlementSource(server)
+          : const UnavailableEntitlementSource(),
+      cache: EntitlementCacheStore(
+        store,
+        entitlementKeys ?? const SecureEntitlementKeyStore(),
+      ),
+      allFeaturesOpen:
+          allFeaturesOpen ??
+          (kDebugMode || EntitlementService.buildAllFeaturesOpen),
+    ),
     differential: DifferentialController(store),
   )..watchAccess();
 }

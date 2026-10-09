@@ -2106,6 +2106,17 @@
   },
   "examHistoryClear": "Clear history",
   "examHistoryClearBody": "All exam results will be deleted from this device.",
+  "examHistoryHidden": "{count, plural, =1{1 older result is saved} other{{count} older results are saved}} — the free plan shows the last {limit}. Nothing has been deleted.",
+  "@examHistoryHidden": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "limit": {
+        "type": "int"
+      }
+    }
+  },
   "examProgressLabel": "Recent results: {values}",
   "@examProgressLabel": {
     "placeholders": {
@@ -2710,11 +2721,32 @@
     }
   },
   "purchaseTitle": "LabGuide Pro",
-  "purchaseFree": "Free: demo and basic cards.",
-  "purchasePro": "Pro, monthly or yearly: complete published packs, extended learning and laboratory tools.",
+  "purchaseFree": "Free: leukocyte differential counter, percentages and absolute counts, core guides, the last 3 results in history.",
+  "purchasePro": "Pro (monthly or yearly): unlimited results history, PDF export, extended practice, full preparation for the qualification category exam.",
   "purchaseNotice": "Store products aren't connected. Prices will come from the App Store / Google Play in your currency. Nothing is charged here, and features that aren't built yet are not sold.",
   "purchaseSubscribe": "Subscribe",
   "purchaseRestore": "Restore purchases",
+  "purchaseStatusTitle": "Status",
+  "purchaseStatusAllOpen": "Payments aren’t enabled yet; every feature is open in TestFlight.",
+  "purchaseStatusBillingOff": "Payments aren’t enabled yet. Free features work fully; Pro will be switched on once the price is approved.",
+  "purchaseStatusPro": "Pro is active · until {date}",
+  "@purchaseStatusPro": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "purchaseStatusProNoEnd": "Pro is active",
+  "purchaseStatusOffline": "Offline: last checked {date}",
+  "@purchaseStatusOffline": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "purchaseStatusFree": "Current plan: free",
   "privacyTitle": "Privacy and help",
   "privacyBody": "In guest mode the app sends nothing to a server: settings, bookmarks, QC records, your instruments and practice results stay on this device (they may be included in the device backup). If you sign in with email, the server stores your email, role, language, last active day, your support requests and group results; no ad tracking. You can delete your account at any time.",
   "privacyTerms": "Terms of use",

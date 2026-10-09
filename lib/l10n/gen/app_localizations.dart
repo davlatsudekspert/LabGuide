@@ -6802,6 +6802,12 @@ abstract class AppLocalizations {
   /// **'All exam results will be deleted from this device.'**
   String get examHistoryClearBody;
 
+  /// No description provided for @examHistoryHidden.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 older result is saved} other{{count} older results are saved}} — the free plan shows the last {limit}. Nothing has been deleted.'**
+  String examHistoryHidden(int count, int limit);
+
   /// No description provided for @examProgressLabel.
   ///
   /// In en, this message translates to:
@@ -8599,13 +8605,13 @@ abstract class AppLocalizations {
   /// No description provided for @purchaseFree.
   ///
   /// In en, this message translates to:
-  /// **'Free: demo and basic cards.'**
+  /// **'Free: leukocyte differential counter, percentages and absolute counts, core guides, the last 3 results in history.'**
   String get purchaseFree;
 
   /// No description provided for @purchasePro.
   ///
   /// In en, this message translates to:
-  /// **'Pro, monthly or yearly: complete published packs, extended learning and laboratory tools.'**
+  /// **'Pro (monthly or yearly): unlimited results history, PDF export, extended practice, full preparation for the qualification category exam.'**
   String get purchasePro;
 
   /// No description provided for @purchaseNotice.
@@ -8625,6 +8631,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Restore purchases'**
   String get purchaseRestore;
+
+  /// No description provided for @purchaseStatusTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Status'**
+  String get purchaseStatusTitle;
+
+  /// No description provided for @purchaseStatusAllOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'Payments aren’t enabled yet; every feature is open in TestFlight.'**
+  String get purchaseStatusAllOpen;
+
+  /// No description provided for @purchaseStatusBillingOff.
+  ///
+  /// In en, this message translates to:
+  /// **'Payments aren’t enabled yet. Free features work fully; Pro will be switched on once the price is approved.'**
+  String get purchaseStatusBillingOff;
+
+  /// No description provided for @purchaseStatusPro.
+  ///
+  /// In en, this message translates to:
+  /// **'Pro is active · until {date}'**
+  String purchaseStatusPro(String date);
+
+  /// No description provided for @purchaseStatusProNoEnd.
+  ///
+  /// In en, this message translates to:
+  /// **'Pro is active'**
+  String get purchaseStatusProNoEnd;
+
+  /// No description provided for @purchaseStatusOffline.
+  ///
+  /// In en, this message translates to:
+  /// **'Offline: last checked {date}'**
+  String purchaseStatusOffline(String date);
+
+  /// No description provided for @purchaseStatusFree.
+  ///
+  /// In en, this message translates to:
+  /// **'Current plan: free'**
+  String get purchaseStatusFree;
 
   /// No description provided for @privacyTitle.
   ///

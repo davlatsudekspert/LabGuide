@@ -58,6 +58,10 @@ env:
   # Bo'sh bo'lsa build “server ulanmagan” rejimida chiqadi (mehmon ishlaydi).
   LG_SUPABASE_URL: ${{ secrets.LG_SUPABASE_URL }}
   LG_SUPABASE_KEY: ${{ secrets.LG_SUPABASE_KEY }}
+  # Pro huquqlari: sinov buildlari (build va testflight rejimlari, sinov
+  # APK'lari) hamma imkoniyatni ochadi — to'lov hali yoqilmagan. Kelajakdagi
+  # do'kon (store/release) rejimida false bo'ladi (docs/PRO_BILLING_PLAN.md).
+  LG_ALL_FEATURES_OPEN: ${{ (inputs.mode || 'build') == 'build' || inputs.mode == 'testflight' }}
 
 jobs:
   tests:
@@ -140,10 +144,12 @@ jobs:
           flutter pub get --enforce-lockfile
           flutter build apk --release --split-per-abi \
             --build-number="${{ github.run_number }}" \
-            --dart-define=LG_SUPABASE_URL="$LG_SUPABASE_URL" --dart-define=LG_SUPABASE_KEY="$LG_SUPABASE_KEY"
+            --dart-define=LG_SUPABASE_URL="$LG_SUPABASE_URL" --dart-define=LG_SUPABASE_KEY="$LG_SUPABASE_KEY" \
+            --dart-define=LG_ALL_FEATURES_OPEN="$LG_ALL_FEATURES_OPEN"
           if [ "$ANDROID_SIGNED" = true ]; then
             flutter build appbundle --release --build-number="${{ github.run_number }}" \
-              --dart-define=LG_SUPABASE_URL="$LG_SUPABASE_URL" --dart-define=LG_SUPABASE_KEY="$LG_SUPABASE_KEY"
+              --dart-define=LG_SUPABASE_URL="$LG_SUPABASE_URL" --dart-define=LG_SUPABASE_KEY="$LG_SUPABASE_KEY" \
+              --dart-define=LG_ALL_FEATURES_OPEN="$LG_ALL_FEATURES_OPEN"
           fi
           cd build/app/outputs/flutter-apk
           VERSION=$(grep '^version:' "$GITHUB_WORKSPACE/pubspec.yaml" | sed 's/version: *//; s/+.*//')
@@ -217,7 +223,8 @@ jobs:
           set -euo pipefail
           flutter build ios --release --no-codesign \
             --build-name="$IOS_VERSION" --build-number="$IOS_BUILD_NUMBER" \
-            --dart-define=LG_SUPABASE_URL="$LG_SUPABASE_URL" --dart-define=LG_SUPABASE_KEY="$LG_SUPABASE_KEY"
+            --dart-define=LG_SUPABASE_URL="$LG_SUPABASE_URL" --dart-define=LG_SUPABASE_KEY="$LG_SUPABASE_KEY" \
+            --dart-define=LG_ALL_FEATURES_OPEN="$LG_ALL_FEATURES_OPEN"
           APP=build/ios/iphoneos/Runner.app
           PB=/usr/libexec/PlistBuddy
           ID=$($PB -c 'Print :CFBundleIdentifier' "$APP/Info.plist")
@@ -522,13 +529,15 @@ jobs:
             flutter build ipa --release \
               --build-name="$IOS_VERSION" --build-number="$IOS_BUILD_NUMBER" \
               --dart-define=LG_SUPABASE_URL="$LG_SUPABASE_URL" --dart-define=LG_SUPABASE_KEY="$LG_SUPABASE_KEY" \
+              --dart-define=LG_ALL_FEATURES_OPEN="$LG_ALL_FEATURES_OPEN" \
               --export-options-plist="$SIGN_DIR/ExportOptions.plist"
           else
             # Arxiv imzosiz; eksportda Xcode bulut sertifikati va avtomatik
             # App Store profili bilan imzolaydi (-allowProvisioningUpdates).
             flutter build ios --release --config-only \
               --build-name="$IOS_VERSION" --build-number="$IOS_BUILD_NUMBER" \
-              --dart-define=LG_SUPABASE_URL="$LG_SUPABASE_URL" --dart-define=LG_SUPABASE_KEY="$LG_SUPABASE_KEY"
+              --dart-define=LG_SUPABASE_URL="$LG_SUPABASE_URL" --dart-define=LG_SUPABASE_KEY="$LG_SUPABASE_KEY" \
+              --dart-define=LG_ALL_FEATURES_OPEN="$LG_ALL_FEATURES_OPEN"
             xcodebuild -workspace ios/Runner.xcworkspace -scheme Runner \
               -configuration Release -destination 'generic/platform=iOS' \
               -archivePath build/ios/archive/Runner.xcarchive \

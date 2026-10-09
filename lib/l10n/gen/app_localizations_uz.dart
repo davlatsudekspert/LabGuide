@@ -3804,6 +3804,16 @@ class AppLocalizationsUz extends AppLocalizations {
       'Barcha imtihon natijalari shu qurilmadan o‘chiriladi.';
 
   @override
+  String examHistoryHidden(int count, int limit) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Yana $count ta eski natija saqlangan',
+    );
+    return '$_temp0 — bepul rejimda oxirgi $limit tasi ko‘rinadi. Hech narsa o‘chirilmagan.';
+  }
+
+  @override
   String examProgressLabel(String values) {
     return 'So‘nggi natijalar: $values';
   }
@@ -4822,11 +4832,12 @@ class AppLocalizationsUz extends AppLocalizations {
   String get purchaseTitle => 'LabGuide Pro';
 
   @override
-  String get purchaseFree => 'Free: demo va bazaviy kartalar.';
+  String get purchaseFree =>
+      'Bepul: leykoformula hisoblagichi, foiz va mutlaq sonlar, asosiy qo‘llanmalar, tarixda oxirgi 3 natija.';
 
   @override
   String get purchasePro =>
-      'Pro, oylik yoki yillik: to‘liq nashr etilgan paketlar, kengaytirilgan o‘rganish va laboratoriya vositalari.';
+      'Pro (oylik yoki yillik): cheksiz natijalar tarixi, PDF eksport, kengaytirilgan mashqlar, toifa imtihoniga to‘liq tayyorgarlik.';
 
   @override
   String get purchaseNotice =>
@@ -4837,6 +4848,33 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get purchaseRestore => 'Xaridni tiklash';
+
+  @override
+  String get purchaseStatusTitle => 'Holat';
+
+  @override
+  String get purchaseStatusAllOpen =>
+      'To‘lov hali yoqilmagan; TestFlight’da hamma imkoniyat ochiq.';
+
+  @override
+  String get purchaseStatusBillingOff =>
+      'To‘lov hali yoqilmagan. Bepul imkoniyatlar to‘liq ishlaydi; Pro narxi tasdiqlangach yoqiladi.';
+
+  @override
+  String purchaseStatusPro(String date) {
+    return 'Pro faol · $date gacha';
+  }
+
+  @override
+  String get purchaseStatusProNoEnd => 'Pro faol';
+
+  @override
+  String purchaseStatusOffline(String date) {
+    return 'Internetsiz: oxirgi tekshiruv $date';
+  }
+
+  @override
+  String get purchaseStatusFree => 'Hozir: bepul rejim';
 
   @override
   String get privacyTitle => 'Maxfiylik va yordam';

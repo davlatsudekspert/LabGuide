@@ -4,6 +4,7 @@ import 'package:material_ui/material_ui.dart';
 
 import '../core/backend/access_controller.dart';
 import '../core/backend/lab_backend.dart';
+import '../core/entitlements/entitlement_service.dart';
 import '../core/storage/kv_store.dart';
 import '../features/auth/auth_controller.dart';
 import '../features/content/content_controller.dart';
@@ -64,6 +65,7 @@ class AppServices {
     required this.backend,
     required this.access,
     required this.partners,
+    required this.entitlements,
     required this.differential,
   });
 
@@ -96,6 +98,9 @@ class AppServices {
   /// Hamkorlar (reklama) — faqat server ulangan buildda.
   final PartnersController partners;
 
+  /// Pro huquqlari (build rejimi, server, imzolangan oflayn kesh).
+  final EntitlementService entitlements;
+
   /// Leykoformula hisoblagichi va natijalar tarixi (faqat qurilmada).
   final DifferentialController differential;
 
@@ -119,6 +124,7 @@ class AppServices {
       } else {
         access.clear();
       }
+      unawaited(entitlements.refresh());
     });
     settings.addListener(() {
       if (settings.role == role && settings.language == language) return;
@@ -143,6 +149,7 @@ class AppServices {
     microscopy.resetInMemory();
     partners.resetInMemory();
     reading.resetInMemory();
+    entitlements.resetInMemory();
     differential.resetInMemory();
     await packs.removeAll();
     settings.resetToDefaults(systemLocales);
