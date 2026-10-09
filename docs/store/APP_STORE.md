@@ -148,6 +148,13 @@ maqsad: App Functionality. “Hamkor bo‘lish” arizasi: **Contact Info** (ema
 Linked, maqsad: App Functionality.
 Mehmon rejimida va server ulanmagan buildda hech narsa yuborilmaydi.
 
+**Mikrofon / nutqni tanish (leykoformula ovozli buyruqlari, ixtiyoriy, eksperimental):** iOS’da
+`requiresOnDeviceRecognition` majburiy — ovoz qurilmadan chiqmaydi, ilova ovozni saqlamaydi va
+yubormaydi, shuning uchun App Privacy’da **Audio Data qo‘shilmaydi** (“Data Not Collected” to‘g‘ri
+qoladi). Info.plist: `NSMicrophoneUsageDescription`, `NSSpeechRecognitionUsageDescription`
+(uz/ru/en `InfoPlist.strings`). Kunlik eslatma — lokal bildirishnoma (push server yo‘q);
+ulashish — tizim oynasi, `NSPhotoLibraryAddUsageDescription` faqat “Save Image” uchun.
+
 **Privacy Policy URL** — majburiy. Matn: [PRIVACY_POLICY.md](PRIVACY_POLICY.md). Joylash: GitHub
 → repo Settings → Pages → “Deploy from a branch”, `main` / `docs` — manzil
 `https://davlatsudekspert.github.io/LabGuide/store/PRIVACY_POLICY` (yoki o‘z saytingiz).
@@ -241,6 +248,15 @@ ulanmaguncha e’lon ko‘rsatmaydi — yoqilganda Yes). Server ulangan birinchi
 | App activity → App interactions | To‘planadi; oxirgi faol kun; Analytics |
 | App activity → Other user-generated content | To‘planadi; ixtiyoriy; guruh javoblari, tekshiruv izohlari |
 | Location, Contacts, Financial, Health, Device IDs | To‘planmaydi |
+
+**Ovozli buyruqlar (RECORD_AUDIO, ixtiyoriy, eksperimental):** Android’da plagin oflayn tanishni
+faqat “afzal” deb so‘raydi; qurilmada tanish bo‘lmasa tizim xizmati (odatda Google) ovozni o‘z
+serverida qayta ishlashi mumkin. Ilova ovozni o‘zi yubormaydi va saqlamaydi, lekin so‘rov
+ilovadan boshlangani uchun **ehtiyotkor javob tavsiya etiladi**: Data safety → *Audio → Voice or
+sound recordings* — Collected: **Yes**, **Processed ephemerally**, **Optional**, maqsad: App
+functionality; Shared: No. Shu holda “Does your app collect…” savoli **Yes** bo‘ladi (server
+ulanmagan buildda ham). Muqobil — Android’da ovozli rejimni faqat oflayn tanish mavjud bo‘lganda
+yoqish; qaror egasida. Kunlik eslatma (`POST_NOTIFICATIONS`) va ulashish ma’lumot to‘plamaydi.
 
 Reklama: ilovada hamkor e’lonlari bo‘lsa, Play Console → App content → **Ads: Yes**.
 Hisobni o‘chirish havolasi (Play talabi): siyosat sahifasi + ilovadagi tugma.

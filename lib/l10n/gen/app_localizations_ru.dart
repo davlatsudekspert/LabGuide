@@ -1445,6 +1445,282 @@ class AppLocalizationsRu extends AppLocalizations {
   String get diffDecrementAction => 'Убавить на один';
 
   @override
+  String get diffEfEntry => 'Режим микроскопа: подсчёт вслепую';
+
+  @override
+  String get diffEfEntrySub =>
+      'Экран делится на крупные зоны; звук и вибрация при каждом нажатии';
+
+  @override
+  String get diffEfTitle => 'Подсчёт вслепую';
+
+  @override
+  String get diffEfExit => 'Выйти';
+
+  @override
+  String get diffEfUndoZone => 'Отменить';
+
+  @override
+  String get diffEfUndoHint => 'или нажмите двумя пальцами';
+
+  @override
+  String diffEfZoneSemantics(String cell, int count, int total, int target) {
+    return '$cell: $count. Всего $total / $target.';
+  }
+
+  @override
+  String diffEfAnnounce(String cell, int count, int total) {
+    return '$cell $count. Всего $total';
+  }
+
+  @override
+  String diffEfUndone(String cell, int total) {
+    return 'Отменено: $cell. Всего $total';
+  }
+
+  @override
+  String get diffEfNothingToUndo => 'Нечего отменять';
+
+  @override
+  String get diffEfShowResult => 'Посмотреть результат';
+
+  @override
+  String get diffEfVoiceOn => 'Включить голосовые команды';
+
+  @override
+  String get diffEfVoiceOff => 'Остановить голосовые команды';
+
+  @override
+  String get diffEfSettingsTitle => 'Режим микроскопа';
+
+  @override
+  String get diffEfSettingsSub => 'Чтобы считать, не отрываясь от микроскопа';
+
+  @override
+  String get diffEfStart => 'Начать подсчёт';
+
+  @override
+  String get diffEfHowTitle => 'Как это работает';
+
+  @override
+  String get diffEfHowBody =>
+      'Положите телефон на стол и нажимайте зоны, не отрываясь от микроскопа. При каждом нажатии — короткий звук и вибрация, своя для каждого типа клеток; каждые 10 клеток — двухтональный сигнал и длинная вибрация; при достижении цели (100 или 200) — сигнал из трёх нот, подсчёт останавливается. Подсчёт общий с обычным счётчиком.';
+
+  @override
+  String get diffEfZonesTitle => 'Зоны';
+
+  @override
+  String get diffEfHandLabel => 'Какой рукой нажимаете';
+
+  @override
+  String get diffEfHandRight => 'Правая';
+
+  @override
+  String get diffEfHandLeft => 'Левая';
+
+  @override
+  String get diffEfHandHint =>
+      'Зона 1 ближе всего к большому пальцу — в нижнем углу.';
+
+  @override
+  String get diffEfOtherZone => 'Зона «Другие (бласты…)»';
+
+  @override
+  String get diffEfOtherZoneSub => 'Если выключить — 6 зон, каждая крупнее';
+
+  @override
+  String get diffEfUndoSwitch => 'Большая зона «Отменить» сверху';
+
+  @override
+  String get diffEfUndoSwitchSub =>
+      'Нажатие двумя пальцами всегда отменяет последнее нажатие';
+
+  @override
+  String get diffEfOrderTitle => 'Порядок зон';
+
+  @override
+  String get diffEfOrderHint =>
+      '1 — зона ближе всего к большому пальцу. Частые клетки ставьте выше.';
+
+  @override
+  String diffEfMoveUp(String cell) {
+    return 'Выше: $cell';
+  }
+
+  @override
+  String diffEfMoveDown(String cell) {
+    return 'Ниже: $cell';
+  }
+
+  @override
+  String get diffEfSignalsTitle => 'Сигналы';
+
+  @override
+  String get diffEfSound => 'Звук';
+
+  @override
+  String get diffEfSoundSub => 'Громкость — кнопками громкости телефона';
+
+  @override
+  String get diffEfHaptics => 'Вибрация';
+
+  @override
+  String get diffEfHapticsSub =>
+      'Не ощущается, если вибрация выключена в настройках телефона';
+
+  @override
+  String get diffEfPatternsTitle => 'Рисунки вибрации';
+
+  @override
+  String get diffEfPatternsHint =>
+      'Нажмите строку, чтобы попробовать. Ощущение зависит от модели телефона.';
+
+  @override
+  String diffEfPattern(int count, String strength) {
+    return '$count × $strength';
+  }
+
+  @override
+  String get diffEfPulseLight => 'лёгкая';
+
+  @override
+  String get diffEfPulseMedium => 'средняя';
+
+  @override
+  String get diffEfPulseHeavy => 'сильная';
+
+  @override
+  String get diffEfPatternTen => 'Каждые 10 клеток';
+
+  @override
+  String get diffEfPatternTenDesc => '+ длинная вибрация';
+
+  @override
+  String get diffEfPatternDone => 'Цель достигнута';
+
+  @override
+  String get diffEfPatternDoneDesc => '2 × сильная + длинная';
+
+  @override
+  String get diffEfPatternUndoDesc => 'сильная + короткая';
+
+  @override
+  String get diffEfScreenTitle => 'Экран';
+
+  @override
+  String get diffEfAwake => 'Не выключать экран';
+
+  @override
+  String get diffEfAwakeSub =>
+      'Экран не гаснет во время подсчёта — батарея расходуется быстрее';
+
+  @override
+  String get diffVoiceTitle => 'Подсчёт голосом';
+
+  @override
+  String get diffVoiceExperimental => 'Экспериментально';
+
+  @override
+  String get diffVoiceSwitch => 'Голосовые команды';
+
+  @override
+  String get diffVoiceSwitchSub =>
+      'Назовите клетку — +1; «отмена» — отменить последнее';
+
+  @override
+  String get diffVoiceLangLabel => 'Язык команд';
+
+  @override
+  String get diffVoiceLangAuto => 'Авто';
+
+  @override
+  String get diffVoiceLangUz => 'Узбекский';
+
+  @override
+  String get diffVoiceLangRu => 'Русский';
+
+  @override
+  String get diffVoiceLangEn => 'Английский';
+
+  @override
+  String get diffVoiceLangHint =>
+      'Авто: если язык приложения недоступен на устройстве — русский, затем английский. Узбекского нет в списке языков диктовки Apple; на Android зависит от устройства.';
+
+  @override
+  String get diffVoiceWordsTitle => 'Какие слова говорить';
+
+  @override
+  String get diffVoicePrivacyTitle => 'Где обрабатывается голос';
+
+  @override
+  String get diffVoicePrivacyIos =>
+      'iOS: требуется распознавание только на устройстве. Если для языка его нет, режим не работает — голос на сервер не отправляется. LabGuide не сохраняет и никуда не отправляет голос.';
+
+  @override
+  String get diffVoicePrivacyAndroid =>
+      'Android: речь распознаёт системная служба телефона (обычно Google). LabGuide запрашивает офлайн-распознавание, но не может его гарантировать — служба может отправить голос на свой сервер. LabGuide не сохраняет голос и сам никуда его не отправляет.';
+
+  @override
+  String get diffVoiceNoNames =>
+      'Говорите только названия клеток — не называйте пациента и другие данные.';
+
+  @override
+  String get diffVoiceAccuracy =>
+      'Точность зависит от шума, произношения и устройства. Слушайте сигнал после каждой команды; при ошибке скажите «отмена». Проверяйте результат перед сохранением.';
+
+  @override
+  String get diffVoiceConsentTitle => 'Включить голосовые команды?';
+
+  @override
+  String get diffVoiceConsentAction => 'Понятно, включить';
+
+  @override
+  String get diffVoiceStarting => 'Запуск микрофона…';
+
+  @override
+  String diffVoiceListening(String lang) {
+    return 'Слушаю · $lang';
+  }
+
+  @override
+  String diffVoiceFallback(String lang) {
+    return 'Для языка приложения распознавание на устройстве не найдено — говорите слова на языке: $lang.';
+  }
+
+  @override
+  String diffVoiceHeard(String text) {
+    return 'Услышано: «$text»';
+  }
+
+  @override
+  String diffVoiceNotUnderstood(String text) {
+    return 'Команда не распознана: «$text»';
+  }
+
+  @override
+  String get diffVoicePermissionDenied =>
+      'Нет разрешения на микрофон или распознавание речи, поэтому голосовые команды не работают. Разрешение можно дать LabGuide в настройках телефона. Подсчёт зонами продолжает работать.';
+
+  @override
+  String get diffVoiceUnavailable =>
+      'На этом устройстве нет службы распознавания речи. Подсчёт зонами продолжает работать.';
+
+  @override
+  String get diffVoiceLanguageUnavailable =>
+      'Для выбранного языка распознавания на устройстве нет. Выберите другой язык в настройках.';
+
+  @override
+  String get diffVoiceOnDeviceUnavailable =>
+      'Для этого языка нет распознавания на устройстве. Чтобы голос не уходил на сервер, голосовые команды отключены.';
+
+  @override
+  String get diffVoiceFailed =>
+      'Распознавание остановилось. Попробуйте ещё раз.';
+
+  @override
+  String get diffVoiceRetry => 'Повторить';
+
+  @override
   String get diffHistoryEmptyTitle => 'Сохранённых результатов пока нет';
 
   @override
@@ -2665,7 +2941,30 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get instIllustration =>
-      'Схематичное изображение (нарисовано LabGuide) — не внешний вид конкретной модели.';
+      'Схематичное изображение (нарисовано LabGuide) — для оформления раздела, не внешний вид конкретного прибора.';
+
+  @override
+  String get instImageMissing => 'Изображение модели пока недоступно';
+
+  @override
+  String get instImageMissingSub =>
+      'Разрешённое к использованию изображение именно этой модели не найдено. Внешний вид — на странице производителя.';
+
+  @override
+  String get instMakerSource => 'Источник производителя';
+
+  @override
+  String get instImageTapToZoom => 'Нажмите на фото, чтобы увеличить';
+
+  @override
+  String instImageRightsChecked(String date) {
+    return 'Права проверены: $date';
+  }
+
+  @override
+  String instImageSemantics(String model) {
+    return 'Фото $model';
+  }
 
   @override
   String get instSources => 'Источники';
@@ -4301,6 +4600,197 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get quizOtherTopic => 'Другая тема';
+
+  @override
+  String get dailyTitle => 'Вопросы дня';
+
+  @override
+  String get dailyCardStart => '5 вопросов на сегодня';
+
+  @override
+  String get dailyCardStartSub =>
+      '2–3 минуты. Каждый день новые вопросы, после ответа — пояснение и источник.';
+
+  @override
+  String dailyCardProgress(int count, int total) {
+    return 'Отвечено: $count из $total';
+  }
+
+  @override
+  String dailyCardDone(int correct, int total) {
+    return 'Сегодня выполнено: верно $correct из $total';
+  }
+
+  @override
+  String get dailyCardDoneSub => 'Завтра будут новые 5 вопросов.';
+
+  @override
+  String get dailyStart => 'Начать';
+
+  @override
+  String get dailyContinue => 'Продолжить';
+
+  @override
+  String get dailyShowResult => 'Посмотреть результат';
+
+  @override
+  String dailyStreakDays(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count дня подряд',
+      many: '$count дней подряд',
+      few: '$count дня подряд',
+      one: '$count день подряд',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get dailyStreakTitle => 'Серия';
+
+  @override
+  String get dailyStreakCurrent => 'Текущая серия';
+
+  @override
+  String get dailyStreakBest => 'Самая длинная';
+
+  @override
+  String dailyDaysShort(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count дня',
+      many: '$count дней',
+      few: '$count дня',
+      one: '$count день',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get dailyFreezeAvailable => 'Заморозка на этой неделе доступна';
+
+  @override
+  String get dailyFreezeUsed => 'Заморозка на этой неделе использована';
+
+  @override
+  String get dailyFreezeRule =>
+      'Если пропустить один день, серия не прервётся — раз в неделю (заморозка). Замороженный день в серию не засчитывается; если пропустить два дня подряд, серия начнётся заново.';
+
+  @override
+  String get dailyFreezeSaved =>
+      'Вчера был пропуск — заморозка сохранила серию.';
+
+  @override
+  String get dailyStreakStart =>
+      'Ответьте на сегодняшние вопросы — серия начнётся с этого дня.';
+
+  @override
+  String get dailyKeepStreak =>
+      'Ответьте на сегодняшние вопросы, чтобы сохранить серию.';
+
+  @override
+  String get dailyEmpty => 'Вопросов на сегодня не найдено';
+
+  @override
+  String get dailyReviewTitle => 'Сегодняшние вопросы';
+
+  @override
+  String get dailySourceToifa =>
+      'Вопросы берутся из официального списка аттестации — только те, чей ключ прошёл проверку LabGuide.';
+
+  @override
+  String get dailyReminderTitle => 'LabGuide: вопросы дня';
+
+  @override
+  String get dailyReminderBody => '5 вопросов на сегодня готовы — 2–3 минуты.';
+
+  @override
+  String get dailyReminderChannel => 'Ежедневное напоминание';
+
+  @override
+  String get dailyReminderSetting => 'Ежедневное напоминание';
+
+  @override
+  String dailyReminderAt(String time) {
+    return 'Каждый день в $time';
+  }
+
+  @override
+  String get dailyReminderOff => 'Выключено';
+
+  @override
+  String get dailyReminderTime => 'Время напоминания';
+
+  @override
+  String get dailyOfferTitle => 'Напоминать каждый день?';
+
+  @override
+  String get dailyOfferBody =>
+      'Одно уведомление в выбранное время. В дни, когда вы уже ответили, напоминания не будет. Отключить можно в любой момент.';
+
+  @override
+  String get dailyOfferYes => 'Включить напоминание';
+
+  @override
+  String get dailyOfferNo => 'Не нужно';
+
+  @override
+  String get dailyReminderDenied =>
+      'Разрешение на уведомления не дано, напоминание выключено. Включите уведомления для LabGuide в настройках телефона и попробуйте снова.';
+
+  @override
+  String get dailyReminderUnavailable =>
+      'На этом устройстве не удалось включить напоминание.';
+
+  @override
+  String dailyReminderOnSnack(String time) {
+    return 'Напоминание включено: каждый день в $time';
+  }
+
+  @override
+  String get dailyReminderNote =>
+      'Напоминание планируется только на этом устройстве (без сервера). Телефон может задержать его на несколько минут для экономии заряда. Если не открывать приложение 7 дней, напоминания прекратятся.';
+
+  @override
+  String get shareResult => 'Поделиться результатом';
+
+  @override
+  String get shareSheetTitle => 'Карточка результата';
+
+  @override
+  String get shareSheetBody =>
+      'На картинке нет вашего имени и других личных данных.';
+
+  @override
+  String get shareFailed =>
+      'Не удалось открыть окно «Поделиться». Попробуйте ещё раз.';
+
+  @override
+  String get shareKindDaily => 'Вопросы дня';
+
+  @override
+  String get shareKindExam => 'Тренировочный экзамен';
+
+  @override
+  String get shareKindToifa => 'Тренировка теста на категорию';
+
+  @override
+  String get shareCorrectCaption => 'верных ответов';
+
+  @override
+  String get shareFooter =>
+      'Справочник и тренировки по лабораторной диагностике';
+
+  @override
+  String get shareToifaNote =>
+      'Не официально — результат тренировки в LabGuide';
+
+  @override
+  String shareText(String kind, int correct, int total, int percent) {
+    return 'LabGuide · $kind: $correct/$total ($percent%)';
+  }
 
   @override
   String get quizTopicMistakes => 'Работа над ошибками';

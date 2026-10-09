@@ -69,7 +69,7 @@ void main() {
       }
     });
 
-    test('har yo‘nalishda o‘z sxematik chizmasi bor; begona foto yo‘q', () {
+    test('har yo‘nalishda o‘z sxematik chizmasi bor (faqat bezak)', () {
       for (final c in catalog.categories) {
         expect(
           File(c.illustration).existsSync(),
@@ -78,10 +78,81 @@ void main() {
         );
         expect(c.illustration, startsWith('assets/instruments/img/'));
       }
-      // Model fotosi faqat erkin litsenziya va muallif bilan qo'yiladi;
-      // hozir hech biri yo'q (sifatsiz foto olib tashlandi).
-      expect(catalog.models.where((m) => m.image != null), isEmpty);
     });
+
+    test('model rasmi: aynan shu model, to‘liq metadata, asset bor', () {
+      for (final m in catalog.models) {
+        final img = m.image;
+        if (img == null) continue;
+        expect(img.manufacturer, catalog.maker(m.makerId).name);
+        expect(img.model, m.model);
+        expect(img.checkedAt, '2026-10-09');
+        expect(InstrumentImage.allowedLicenses, contains(img.license));
+        for (final a in [img.asset, img.assetLarge]) {
+          expect(File(a).existsSync(), isTrue, reason: a);
+          expect(a, startsWith('assets/instruments/img/models/'));
+        }
+        // Sxematik chizma model rasmi sifatida ishlatilmaydi.
+        expect(
+          catalog.categories.map((c) => c.illustration),
+          isNot(contains(img.asset)),
+        );
+      }
+      // Rasmiy sahifa havolasi faqat ma'lum manbaga.
+      for (final m in catalog.models) {
+        if (m.officialPage != null) {
+          expect(catalog.sources, contains(m.officialPage), reason: m.id);
+        }
+      }
+    });
+
+    test(
+      'rasm metadatasi to‘liq bo‘lmasa yoki boshqa modelniki bo‘lsa — rad',
+      () {
+        final good = <String, Object?>{
+          'asset': 'assets/instruments/img/models/x_480.jpg',
+          'asset_large': 'assets/instruments/img/models/x_1600.jpg',
+          'manufacturer': 'Roche Diagnostics',
+          'model': 'cobas u 411',
+          'source_url': 'https://commons.wikimedia.org/wiki/File:X.jpg',
+          'license': 'CC BY-SA 4.0',
+          'license_url': 'https://creativecommons.org/licenses/by-sa/4.0/',
+          'rights': 'CC BY-SA 4.0',
+          'checked_at': '2026-10-09',
+          'author': 'X',
+          'caption': {'uz': 'a', 'ru': 'b', 'en': 'c'},
+        };
+        expect(InstrumentImage.fromJson(good).model, 'cobas u 411');
+        for (final k in [
+          'source_url',
+          'rights',
+          'checked_at',
+          'manufacturer',
+        ]) {
+          expect(
+            () => InstrumentImage.fromJson({...good}..remove(k)),
+            throwsFormatException,
+            reason: k,
+          );
+        }
+        expect(
+          () => InstrumentImage.fromJson({...good, 'license': 'CC BY-NC 4.0'}),
+          throwsFormatException,
+        );
+        // Katalogda boshqa modelning rasmi — katalog yuklanmaydi.
+        final raw = _raw();
+        final models = [
+          for (final m in raw['models']! as List)
+            {...(m as Map).cast<String, Object?>()},
+        ];
+        final i = models.indexWhere((m) => m['id'] == 'roche-cobas-c-311');
+        models[i]['image'] = good;
+        expect(
+          () => InstrumentCatalog.fromJson({...raw, 'models': models}),
+          throwsFormatException,
+        );
+      },
+    );
 
     test(
       'HumaLyzer 4000: reagent REF ro‘yxati flayerdan, analitlar mavjud',

@@ -14,9 +14,13 @@ import 'package:labguide/core/backend/lab_backend.dart';
 import 'package:labguide/core/entitlements/entitlement_cache.dart';
 import 'package:labguide/core/storage/kv_store.dart';
 import 'package:labguide/features/auth/otp_auth.dart';
+import 'package:labguide/features/daily/daily_reminder.dart';
 import 'package:labguide/features/settings/settings_controller.dart';
+import 'package:labguide/features/share/result_share.dart';
 import 'package:labguide/main.dart';
 import 'package:material_ui/material_ui.dart';
+
+import 'daily_fakes.dart';
 
 /// Haqiqiy Inter va Material Icons shriftlarini yuklaydi: overflow
 /// tekshiruvi test shriftida (har harf = kvadrat) emas, ilovadagi kabi
@@ -47,6 +51,9 @@ Future<AppServices> makeServices(
   http.Client? httpClient,
   LabBackend? backend,
   bool? allFeaturesOpen,
+  ReminderScheduler? reminderScheduler,
+  ResultSharer? sharer,
+  DateTime Function()? clock,
 }) async {
   final s = store ?? MemoryKeyValueStore();
   // Har test o'z (hali yaratilmagan) paketlar papkasi bilan.
@@ -69,6 +76,10 @@ Future<AppServices> makeServices(
     backend: backend,
     entitlementKeys: MemoryEntitlementKeyStore(),
     allFeaturesOpen: allFeaturesOpen,
+    // Haqiqiy bildirishnoma/ulashish plaginlari testda yo'q.
+    reminderScheduler: reminderScheduler ?? FakeReminderScheduler(),
+    sharer: sharer ?? FakeResultSharer(),
+    clock: clock,
   );
   await services.settings.setLanguage(language);
   await services.settings.setThemeMode(themeMode);
@@ -116,9 +127,16 @@ Future<void> pumpApp(
   await tester.pumpAndSettle();
 }
 
-/// Joriy routerni olish (ko'rinib turgan sahifa orqali).
-GoRouter routerOf(WidgetTester tester) =>
-    GoRouter.of(tester.element(find.byType(LgPage).first));
+/// Joriy routerni olish (ko'rinib turgan sahifa orqali). To'liq ekranli
+/// sahifalarda (LgPage'siz, masalan leykoformula zonalari) — Scaffold orqali.
+GoRouter routerOf(WidgetTester tester) {
+  final page = find.byType(LgPage);
+  return GoRouter.of(
+    tester.element(
+      page.evaluate().isNotEmpty ? page.first : find.byType(Scaffold).last,
+    ),
+  );
+}
 
 Future<void> goTo(WidgetTester tester, String location) async {
   routerOf(tester).go(location);

@@ -1,6 +1,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- Oflayn paketlar katalogi va yuklash (HTTPS). -->
     <uses-permission android:name="android.permission.INTERNET"/>
+    <!-- Leykoformula: ovozli buyruqlar (eksperimental, faqat foydalanuvchi
+         yoqqanda so'raladi). -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <!-- Kunlik eslatma (lokal bildirishnoma, standart o'chiq). Android 13+
+         da ruxsat faqat foydalanuvchi eslatmani yoqqanda so'raladi. Aniq
+         signal (SCHEDULE_EXACT_ALARM) kerak emas — inexact rejalashtiriladi. -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    <!-- Qurilma qayta yoqilganda rejalashtirilgan eslatmalarni tiklash. -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <application
         android:label="LabGuide"
         android:enableOnBackInvokedCallback="true"
@@ -28,6 +37,17 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <!-- flutter_local_notifications: rejalashtirilgan eslatmani ko'rsatish
+             va qayta yoqilgandan/yangilangandan keyin tiklash. -->
+        <receiver android:exported="false" android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationReceiver" />
+        <receiver android:exported="false" android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationBootReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED"/>
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+                <action android:name="com.htc.intent.action.QUICKBOOT_POWERON"/>
+            </intent-filter>
+        </receiver>
         <!-- Don't delete the meta-data below.
              This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->
         <meta-data
@@ -57,6 +77,10 @@
         <intent>
             <action android:name="android.intent.action.VIEW" />
             <data android:scheme="mailto" />
+        </intent>
+        <!-- Nutqni tanish xizmatini topish (speech_to_text, Android 11+). -->
+        <intent>
+            <action android:name="android.speech.RecognitionService" />
         </intent>
     </queries>
 </manifest>

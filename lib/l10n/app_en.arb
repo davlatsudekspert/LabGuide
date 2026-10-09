@@ -740,6 +740,176 @@
     }
   },
   "diffDecrementAction": "Subtract one",
+  "diffEfEntry": "Microscope mode: eyes-free counting",
+  "diffEfEntrySub": "Large screen zones; a sound and vibration on every tap",
+  "diffEfTitle": "Eyes-free counting",
+  "diffEfExit": "Exit",
+  "diffEfUndoZone": "Undo",
+  "diffEfUndoHint": "or tap with two fingers",
+  "diffEfZoneSemantics": "{cell}: {count}. Total {total} / {target}.",
+  "@diffEfZoneSemantics": {
+    "placeholders": {
+      "cell": {
+        "type": "String"
+      },
+      "count": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      },
+      "target": {
+        "type": "int"
+      }
+    }
+  },
+  "diffEfAnnounce": "{cell} {count}. Total {total}",
+  "@diffEfAnnounce": {
+    "placeholders": {
+      "cell": {
+        "type": "String"
+      },
+      "count": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "diffEfUndone": "Undone: {cell}. Total {total}",
+  "@diffEfUndone": {
+    "placeholders": {
+      "cell": {
+        "type": "String"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "diffEfNothingToUndo": "Nothing to undo",
+  "diffEfShowResult": "View result",
+  "diffEfVoiceOn": "Turn on voice commands",
+  "diffEfVoiceOff": "Stop voice commands",
+  "diffEfSettingsTitle": "Microscope mode",
+  "diffEfSettingsSub": "Count without looking away from the microscope",
+  "diffEfStart": "Start counting",
+  "diffEfHowTitle": "How it works",
+  "diffEfHowBody": "Put the phone on the bench and tap the zones without looking away from the microscope. Every tap gives a short sound and a vibration pattern specific to the cell type; every 10th cell — a two-tone signal and a long vibration; at the target (100 or 200) — a three-note signal and counting stops. The count is shared with the regular counter.",
+  "diffEfZonesTitle": "Zones",
+  "diffEfHandLabel": "Which hand do you tap with",
+  "diffEfHandRight": "Right hand",
+  "diffEfHandLeft": "Left hand",
+  "diffEfHandHint": "Zone 1 is closest to your thumb — in the bottom corner.",
+  "diffEfOtherZone": "“Other (blasts…)” zone",
+  "diffEfOtherZoneSub": "Turn off for 6 larger zones",
+  "diffEfUndoSwitch": "Large “Undo” zone at the top",
+  "diffEfUndoSwitchSub": "A two-finger tap always undoes the last tap",
+  "diffEfOrderTitle": "Zone order",
+  "diffEfOrderHint": "1 is the zone closest to your thumb. Put the most frequent cells first.",
+  "diffEfMoveUp": "Move up: {cell}",
+  "@diffEfMoveUp": {
+    "placeholders": {
+      "cell": {
+        "type": "String"
+      }
+    }
+  },
+  "diffEfMoveDown": "Move down: {cell}",
+  "@diffEfMoveDown": {
+    "placeholders": {
+      "cell": {
+        "type": "String"
+      }
+    }
+  },
+  "diffEfSignalsTitle": "Signals",
+  "diffEfSound": "Sound",
+  "diffEfSoundSub": "Volume follows the phone’s volume buttons",
+  "diffEfHaptics": "Vibration",
+  "diffEfHapticsSub": "Not felt if vibration is turned off in phone settings",
+  "diffEfPatternsTitle": "Vibration patterns",
+  "diffEfPatternsHint": "Tap a row to try it. How it feels depends on the phone model.",
+  "diffEfPattern": "{count} × {strength}",
+  "@diffEfPattern": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "strength": {
+        "type": "String"
+      }
+    }
+  },
+  "diffEfPulseLight": "light",
+  "diffEfPulseMedium": "medium",
+  "diffEfPulseHeavy": "strong",
+  "diffEfPatternTen": "Every 10th cell",
+  "diffEfPatternTenDesc": "+ long vibration",
+  "diffEfPatternDone": "Target reached",
+  "diffEfPatternDoneDesc": "2 × strong + long",
+  "diffEfPatternUndoDesc": "strong + short",
+  "diffEfScreenTitle": "Screen",
+  "diffEfAwake": "Keep screen on",
+  "diffEfAwakeSub": "The screen stays on while counting — uses more battery",
+  "diffVoiceTitle": "Voice counting",
+  "diffVoiceExperimental": "Experimental",
+  "diffVoiceSwitch": "Voice commands",
+  "diffVoiceSwitchSub": "Say a cell name — +1; “undo” — undo the last one",
+  "diffVoiceLangLabel": "Command language",
+  "diffVoiceLangAuto": "Auto",
+  "diffVoiceLangUz": "Uzbek",
+  "diffVoiceLangRu": "Russian",
+  "diffVoiceLangEn": "English",
+  "diffVoiceLangHint": "Auto: if the app language isn’t available on the device — Russian, then English. Uzbek is not in Apple’s dictation language list; on Android it depends on the device.",
+  "diffVoiceWordsTitle": "Words to say",
+  "diffVoicePrivacyTitle": "Where your voice is processed",
+  "diffVoicePrivacyIos": "iOS: on-device recognition is required. If it isn’t available for the language, the mode won’t work — audio is not sent to a server. LabGuide does not store or send your voice anywhere.",
+  "diffVoicePrivacyAndroid": "Android: speech is recognised by the phone’s system service (usually Google). LabGuide asks for offline recognition but cannot guarantee it — the service may send audio to its server. LabGuide does not store your voice or send it anywhere itself.",
+  "diffVoiceNoNames": "Say only cell names — never patient names or other details.",
+  "diffVoiceAccuracy": "Accuracy depends on noise, pronunciation and the device. Listen for the signal after each command; say “undo” if it’s wrong. Check the result before saving.",
+  "diffVoiceConsentTitle": "Turn on voice commands?",
+  "diffVoiceConsentAction": "I understand, turn on",
+  "diffVoiceStarting": "Starting microphone…",
+  "diffVoiceListening": "Listening · {lang}",
+  "@diffVoiceListening": {
+    "placeholders": {
+      "lang": {
+        "type": "String"
+      }
+    }
+  },
+  "diffVoiceFallback": "No speech recognition for the app language on this device — say the words in {lang}.",
+  "@diffVoiceFallback": {
+    "placeholders": {
+      "lang": {
+        "type": "String"
+      }
+    }
+  },
+  "diffVoiceHeard": "Heard: “{text}”",
+  "@diffVoiceHeard": {
+    "placeholders": {
+      "text": {
+        "type": "String"
+      }
+    }
+  },
+  "diffVoiceNotUnderstood": "No command found: “{text}”",
+  "@diffVoiceNotUnderstood": {
+    "placeholders": {
+      "text": {
+        "type": "String"
+      }
+    }
+  },
+  "diffVoicePermissionDenied": "Microphone or speech recognition permission was not granted, so voice commands don’t work. You can allow it for LabGuide in phone settings. Counting with zones keeps working.",
+  "diffVoiceUnavailable": "Speech recognition isn’t available on this device. Counting with zones keeps working.",
+  "diffVoiceLanguageUnavailable": "Speech recognition isn’t available for the chosen language on this device. Choose another language in settings.",
+  "diffVoiceOnDeviceUnavailable": "On-device recognition isn’t available for this language. Voice commands are off so audio is not sent to a server.",
+  "diffVoiceFailed": "Speech recognition stopped. Please try again.",
+  "diffVoiceRetry": "Try again",
   "diffHistoryEmptyTitle": "No saved results yet",
   "diffHistoryEmptyBody": "Finish a count and tap “Save to history”.",
   "diffHistoryClear": "Delete all",
@@ -1466,7 +1636,27 @@
       }
     }
   },
-  "instIllustration": "Schematic illustration (drawn by LabGuide) — not the actual appearance of this model.",
+  "instIllustration": "Schematic illustration (drawn by LabGuide) — decorative, not the actual appearance of any instrument.",
+  "instImageMissing": "Model image not available yet",
+  "instImageMissingSub": "No reusable image of this exact model was found. See its appearance on the manufacturer’s page.",
+  "instMakerSource": "Manufacturer source",
+  "instImageTapToZoom": "Tap the photo to enlarge",
+  "instImageRightsChecked": "Rights checked: {date}",
+  "@instImageRightsChecked": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "instImageSemantics": "Photo of {model}",
+  "@instImageSemantics": {
+    "placeholders": {
+      "model": {
+        "type": "String"
+      }
+    }
+  },
   "instSources": "Sources",
   "instAccessed": "accessed {date}",
   "@instAccessed": {
@@ -2405,6 +2595,119 @@
     }
   },
   "quizOtherTopic": "Another topic",
+  "dailyTitle": "Daily questions",
+  "dailyCardStart": "Today’s 5 questions",
+  "dailyCardStartSub": "2–3 minutes. New questions every day, with an explanation and source after each answer.",
+  "dailyCardProgress": "{count} of {total} answered",
+  "@dailyCardProgress": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "dailyCardDone": "Done for today: {correct} of {total} correct",
+  "@dailyCardDone": {
+    "placeholders": {
+      "correct": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "dailyCardDoneSub": "Five new questions tomorrow.",
+  "dailyStart": "Start",
+  "dailyContinue": "Continue",
+  "dailyShowResult": "See result",
+  "dailyStreakDays": "{count, plural, one{{count} day in a row} other{{count} days in a row}}",
+  "@dailyStreakDays": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dailyStreakTitle": "Streak",
+  "dailyStreakCurrent": "Current streak",
+  "dailyStreakBest": "Longest streak",
+  "dailyDaysShort": "{count, plural, one{{count} day} other{{count} days}}",
+  "@dailyDaysShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dailyFreezeAvailable": "This week’s freeze is available",
+  "dailyFreezeUsed": "This week’s freeze is used",
+  "dailyFreezeRule": "Miss one day and your streak survives — once a week (a freeze). The frozen day doesn’t count towards the streak; miss two days in a row and it starts over.",
+  "dailyFreezeSaved": "You missed yesterday — a freeze kept your streak.",
+  "dailyStreakStart": "Answer today’s questions to start a streak.",
+  "dailyKeepStreak": "Answer today’s questions to keep your streak.",
+  "dailyEmpty": "No questions for today",
+  "dailyReviewTitle": "Today’s questions",
+  "dailySourceToifa": "Questions come from the official certification list — only those whose key passed the LabGuide check.",
+  "dailyReminderTitle": "LabGuide: daily questions",
+  "dailyReminderBody": "Today’s 5 questions are ready — 2–3 minutes.",
+  "dailyReminderChannel": "Daily reminder",
+  "dailyReminderSetting": "Daily reminder",
+  "dailyReminderAt": "Every day at {time}",
+  "@dailyReminderAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "dailyReminderOff": "Off",
+  "dailyReminderTime": "Reminder time",
+  "dailyOfferTitle": "Want a daily reminder?",
+  "dailyOfferBody": "One notification at the time you choose. No reminder on days you’ve already answered. Turn it off any time.",
+  "dailyOfferYes": "Turn on reminder",
+  "dailyOfferNo": "No thanks",
+  "dailyReminderDenied": "Notification permission wasn’t granted, so the reminder stays off. Allow notifications for LabGuide in your phone settings and try again.",
+  "dailyReminderUnavailable": "Couldn’t turn on reminders on this device.",
+  "dailyReminderOnSnack": "Reminder on: every day at {time}",
+  "@dailyReminderOnSnack": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "dailyReminderNote": "The reminder is scheduled on this device only (no server). Your phone may delay it by a few minutes to save battery. If you don’t open the app for 7 days, reminders stop.",
+  "shareResult": "Share result",
+  "shareSheetTitle": "Result card",
+  "shareSheetBody": "The image has no name or other personal data.",
+  "shareFailed": "Couldn’t open the share sheet. Please try again.",
+  "shareKindDaily": "Daily questions",
+  "shareKindExam": "Practice exam",
+  "shareKindToifa": "Category test practice",
+  "shareCorrectCaption": "correct answers",
+  "shareFooter": "Lab reference and practice",
+  "shareToifaNote": "Not official — LabGuide practice result",
+  "shareText": "LabGuide · {kind}: {correct}/{total} ({percent}%)",
+  "@shareText": {
+    "placeholders": {
+      "kind": {
+        "type": "String"
+      },
+      "correct": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      },
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
   "quizTopicMistakes": "Review my mistakes",
   "quizMastered": "{correct} of {total} correct last time",
   "@quizMastered": {

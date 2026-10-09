@@ -9,6 +9,8 @@ import '../features/auth/ui/welcome_screen.dart';
 import '../features/content/ui/analyte_screen.dart';
 import '../features/content/ui/conditions_screens.dart';
 import '../features/content/ui/tests_screen.dart';
+import '../features/differential/diff_eyes_free_screens.dart';
+import '../features/daily/daily_screens.dart';
 import '../features/differential/differential_entry_points.dart';
 import '../features/differential/differential_quiz.dart';
 import '../features/differential/differential_screens.dart';
@@ -327,6 +329,23 @@ GoRouter buildRouter(
                       GoRoute(
                         path: 'count',
                         builder: (context, state) => const DiffCounterScreen(),
+                        routes: [
+                          // Mikroskop rejimi: sozlamalar va to'liq ekranli
+                          // zonalar (pastki tablarsiz).
+                          GoRoute(
+                            path: 'eyes-free',
+                            builder: (context, state) =>
+                                const DiffEyesFreeSettingsScreen(),
+                            routes: [
+                              GoRoute(
+                                path: 'run',
+                                parentNavigatorKey: rootKey,
+                                builder: (context, state) =>
+                                    const DiffEyesFreeScreen(),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
                       GoRoute(
                         path: 'history',
@@ -581,6 +600,11 @@ GoRouter buildRouter(
                         ),
                       ),
                     ],
+                  ),
+                  // Kunlik 5 ta savol (bosh sahifa kartasi va eslatmadan).
+                  GoRoute(
+                    path: 'daily',
+                    builder: (context, state) => const DailyScreen(),
                   ),
                   // Imtihon: yechish — to'liq ekran (tablar yashiringan).
                   GoRoute(

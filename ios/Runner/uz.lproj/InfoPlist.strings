@@ -1,0 +1,5 @@
+/* Ruxsat so'rovlari matnlari (Info.plist kalitlari). */
+"NSMicrophoneUsageDescription" = "LabGuide mikrofondan faqat leykoformula hisoblagichida ovozli buyruqlarni yoqqaningizda foydalanadi. Ovoz saqlanmaydi.";
+"NSSpeechRecognitionUsageDescription" = "LabGuide leykoformula sanashda aytgan hujayra nomlaringizni taniydi. Tanish faqat qurilmada bajarilishi talab qilinadi; ovoz saqlanmaydi.";
+"NSCameraUsageDescription" = "LabGuide kameradan faqat murojaat uchun surat olishni tanlasangiz foydalanadi.";
+"NSPhotoLibraryUsageDescription" = "LabGuide rasmlaringizni faqat murojaatga ekran rasmini biriktirganingizda ochadi.";

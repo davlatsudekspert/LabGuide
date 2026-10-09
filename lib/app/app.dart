@@ -2,6 +2,7 @@ import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
 import '../design/theme.dart';
+import '../features/daily/daily_screens.dart';
 import '../features/settings/settings_controller.dart';
 import '../l10n/gen/app_localizations.dart';
 import 'app_scope.dart';
@@ -35,6 +36,16 @@ class _LabGuideAppState extends State<LabGuideApp> {
     _router.routeInformationProvider.addListener(_onRoute);
     _wasOnboarded = _settings.onboarded;
     _settings.addListener(_onSettings);
+    widget.services.reminders.addListener(_onReminder);
+    WidgetsBinding.instance.addPostFrameCallback((_) => _onReminder());
+  }
+
+  /// Eslatma bildirishnomasi bosilgan — kunlik savol ochiladi.
+  void _onReminder() {
+    if (!mounted || !_settings.onboarded) return;
+    if (widget.services.reminders.takeOpenRequest()) {
+      openDailyFromReminder(_router);
+    }
   }
 
   /// Chiqish yoki lokal ma'lumotlar o'chirilganda tab stacklari ham
@@ -62,6 +73,7 @@ class _LabGuideAppState extends State<LabGuideApp> {
   void dispose() {
     _router.routeInformationProvider.removeListener(_onRoute);
     _settings.removeListener(_onSettings);
+    widget.services.reminders.removeListener(_onReminder);
     _router.dispose();
     _routerRefresh.dispose();
     super.dispose();

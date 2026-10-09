@@ -914,6 +914,14 @@ class _DiffCounterScreenState extends State<DiffCounterScreen> {
                 ),
               ],
             ),
+            LgRow(
+              key: const ValueKey('diff-eyes-free'),
+              title: l.diffEfEntry,
+              subtitle: l.diffEfEntrySub,
+              icon: Icons.visibility_off_outlined,
+              onTap: () => context.push('$_base/count/eyes-free'),
+              divider: false,
+            ),
             LgField(
               label: l.diffWbcLabel,
               hint: l.diffWbcHint,

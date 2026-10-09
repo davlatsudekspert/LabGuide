@@ -8,6 +8,7 @@ import '../../app/widgets/lg_page.dart';
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
+import '../share/result_share.dart';
 import '../support/support_screens.dart' show formatWhen;
 import '../toifa/toifa_bank.dart';
 import 'exam_controller.dart';
@@ -655,6 +656,21 @@ class _ExamResultScreenState extends State<ExamResultScreen> {
           label: l.examNew,
           icon: Icons.add_rounded,
           onPressed: () => context.go(examBase(s.sourceId)),
+        ),
+        const SizedBox(height: 10),
+        // Topshiriq nomi (ustoz yozgan) rasmga chiqmaydi — faqat mavzu.
+        ShareResultButton(
+          data: ShareData(
+            kind: s.sourceId == ToifaQuestionSource.sourceId
+                ? ShareKind.toifa
+                : ShareKind.exam,
+            correct: s.correctCount,
+            total: s.length,
+            date: s.finishedAt ?? s.startedAt,
+            topic: s.title == null
+                ? examSessionTitle(s, source, l, lang)
+                : null,
+          ),
         ),
         TopicBreakdown(session: s, source: source),
         LgSectionTitle(l.examAnalysis),

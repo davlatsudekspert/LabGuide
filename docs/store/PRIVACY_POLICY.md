@@ -37,6 +37,19 @@ Kirish sessiyasi qurilmaning xavfsiz omborida (Keychain / Android Keystore) saql
 **Nima to‘planmaydi.** Analitika SDK, reklama identifikatori, joylashuv, kontaktlar, kuzatuv
 (tracking) yo‘q. Ma’lumotlaringiz sotilmaydi va reklama uchun boshqalarga berilmaydi.
 
+**Mikrofon va ovozli buyruqlar (ixtiyoriy, eksperimental).** Leykoformula sanashda ovozli
+buyruqlarni o‘zingiz yoqsangizgina mikrofonga ruxsat so‘raladi. Nutq tizimning nutqni tanish
+xizmati orqali matnga aylantiriladi: iPhone’da faqat qurilmaning o‘zida (qurilmada imkoni
+bo‘lmasa rejim yoqilmaydi); Android’da qurilmada tanish bo‘lmasa, tizim xizmati (odatda Google)
+ovozni o‘z serveriga yuborishi mumkin — bu holda shu xizmat qoidalari amal qiladi. LabGuide
+ovozni yozib olmaydi, saqlamaydi va o‘z serveriga yubormaydi; faqat tanilgan hujayra nomi
+sanaladi. Ovoz bilan bemor ismini aytmang.
+
+**Eslatmalar va ulashish.** Kunlik savol eslatmasi standart o‘chiq; yoqsangiz, u qurilmada
+rejalashtiriladigan lokal bildirishnoma (push server yo‘q). Natija kartochkasini ulashish
+tizimning ulashish oynasi orqali faqat siz tanlagan joyga yuboriladi; rasmda shaxsiy
+ma’lumot yo‘q. “Rasmni saqlash” tanlansa, foto kutubxonasiga faqat shu rasm qo‘shiladi.
+
 **Kim ko‘radi.** Murojaatlaringizni faqat LabGuide administratori (ikki bosqichli himoya bilan)
 ko‘radi; administrator foydalanuvchilar ro‘yxatida emailni yashirilgan holda ko‘radi, to‘liq
 email ochilishi jurnalga yoziladi. Javoblarni inson yozadi — avtomatik (AI) javob yuborilmaydi.
@@ -87,6 +100,20 @@ Google).
 **Что не собирается.** Нет SDK аналитики, рекламного идентификатора, геолокации, контактов и
 отслеживания. Данные не продаются и не передаются для рекламы.
 
+**Микрофон и голосовые команды (по желанию, экспериментально).** Доступ к микрофону
+запрашивается, только если вы сами включите голосовые команды при подсчёте лейкоформулы. Речь
+распознаётся системной службой: на iPhone — только на самом устройстве (если это невозможно,
+режим не включается); на Android, если распознавание на устройстве недоступно, системная служба
+(обычно Google) может отправить звук на свой сервер — тогда действуют её правила. LabGuide не
+записывает, не хранит и не отправляет звук на свой сервер; учитывается только распознанное
+название клетки. Не называйте вслух имя пациента.
+
+**Напоминания и «Поделиться».** Напоминание о вопросах дня по умолчанию выключено; если его
+включить, это локальное уведомление, запланированное на устройстве (push-сервера нет).
+Карточка результата отправляется через системное окно «Поделиться» только туда, куда выберете
+вы; персональных данных в ней нет. При выборе «Сохранить изображение» в фотоальбом добавляется
+только эта картинка.
+
 **Кто видит.** Обращения видит только администратор LabGuide (с двухфакторной защитой); в
 списке пользователей email скрыт, раскрытие полного email записывается в журнал. Ответы пишет
 человек — автоматические (ИИ) ответы не отправляются.
@@ -135,6 +162,19 @@ Your sign-in session is kept in the device’s secure storage (Keychain / Androi
 
 **What is not collected.** No analytics SDK, advertising identifier, location, contacts or
 tracking. Your data is not sold or shared for advertising.
+
+**Microphone and voice commands (optional, experimental).** Microphone access is requested only
+if you turn on voice commands in the differential counter. Speech is recognised by the system
+speech service: on iPhone only on the device itself (if that is not possible, the mode stays
+off); on Android, if on-device recognition is unavailable, the system service (usually Google)
+may send the audio to its own servers, under that service’s terms. LabGuide does not record,
+store or send audio to its own server; only the recognised cell name is counted. Do not say a
+patient’s name aloud.
+
+**Reminders and sharing.** The daily question reminder is off by default; if you turn it on, it
+is a local notification scheduled on the device (no push server). A result card is shared
+through the system share sheet only to the destination you choose; it contains no personal
+data. If you choose “Save Image”, only that image is added to your photo library.
 
 **Who can see it.** Only the LabGuide administrator (protected by two-factor authentication) can
 read your requests; in the user list emails are masked and revealing a full email is logged.
