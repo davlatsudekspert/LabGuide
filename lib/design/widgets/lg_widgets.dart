@@ -183,6 +183,10 @@ class LgButton extends StatelessWidget {
       onTap: enabled ? onPressed : null,
       color: bg,
       borderRadius: BorderRadius.circular(LgRadius.button),
+      // Chegara oldingi qatlamda: fon ostida qolib ketmaydi (panel ichida ham ko'rinadi).
+      border: kind == LgButtonKind.secondary
+          ? Border.all(color: p.outline.withValues(alpha: 0.55))
+          : null,
       child: ConstrainedBox(
         constraints: const BoxConstraints(minHeight: kMinTap),
         child: Padding(
@@ -191,15 +195,7 @@ class LgButton extends StatelessWidget {
         ),
       ),
     );
-    if (kind == LgButtonKind.secondary) {
-      button = DecoratedBox(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(LgRadius.button),
-          border: Border.all(color: p.outline),
-        ),
-        child: button,
-      );
-    } else if (kind == LgButtonKind.primary && enabled) {
+    if (kind == LgButtonKind.primary && enabled) {
       button = DecoratedBox(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(LgRadius.button),
