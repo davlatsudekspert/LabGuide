@@ -1638,6 +1638,442 @@ class AppLocalizationsRu extends AppLocalizations {
   String get instOpenCard => 'Карточка прибора';
 
   @override
+  String get partnerAdLabel => 'Реклама';
+
+  @override
+  String get partnerLabel => 'Партнёр';
+
+  @override
+  String get partnerOfficialTitle => 'Официальные партнёры';
+
+  @override
+  String get partnerSectionNote =>
+      'Сведения предоставлены компаниями-партнёрами. Данные каталога выше, их порядок и статус проверки от партнёрства не зависят.';
+
+  @override
+  String get partnerKindManufacturer => 'Производитель';
+
+  @override
+  String get partnerKindDistributor => 'Официальный дистрибьютор';
+
+  @override
+  String get partnerKindService => 'Сервисный центр';
+
+  @override
+  String get partnerCall => 'Позвонить';
+
+  @override
+  String get partnerTelegram => 'Telegram';
+
+  @override
+  String get partnerWebsite => 'Сайт';
+
+  @override
+  String get partnerEmail => 'Email';
+
+  @override
+  String get partnerBrochure => 'Буклет';
+
+  @override
+  String get partnerMore => 'Подробнее';
+
+  @override
+  String partnerRegions(String regions) {
+    return 'Регионы: $regions';
+  }
+
+  @override
+  String partnerRegistration(String number) {
+    return 'Регистрационное удостоверение в Узбекистане: $number';
+  }
+
+  @override
+  String get partnerRegistrationNote => 'Номер предоставлен партнёром.';
+
+  @override
+  String get partnerBecome => 'Стать партнёром';
+
+  @override
+  String get partnerBecomeSub => 'Для компаний: ваши анализаторы в LabGuide';
+
+  @override
+  String get partnerNotFoundTitle => 'Партнёр не найден';
+
+  @override
+  String get partnerNotFoundBody =>
+      'Возможно, срок размещения истёк или оно приостановлено.';
+
+  @override
+  String get partnerContacts => 'Контакты';
+
+  @override
+  String get partnerAbout => 'О компании';
+
+  @override
+  String get partnerInstruments => 'Связанные анализаторы';
+
+  @override
+  String partnerAllModels(String maker) {
+    return '$maker: все модели';
+  }
+
+  @override
+  String get partnerPageNote =>
+      'Эта страница — реклама. LabGuide не рекомендует продукцию партнёров; данные каталога и статус проверки от партнёрства не зависят.';
+
+  @override
+  String get partnerOfferTitle => 'Ваши контакты — в карточке анализатора';
+
+  @override
+  String get partnerOfferBody =>
+      'Специалист лаборатории читает об анализаторе — и в одно касание звонит официальному дистрибьютору или в сервисный центр. Для производителей, официальных дистрибьюторов и сервисных центров.';
+
+  @override
+  String get partnerWhatTitle => 'Что вы получаете';
+
+  @override
+  String get partnerWhatCard =>
+      'Раздел «Официальные партнёры» в карточке анализатора: логотип, краткое описание, регионы, кнопки звонка и Telegram.';
+
+  @override
+  String get partnerWhatCategory =>
+      'Компактная карточка «Партнёр» внутри направления (например, «Биохимия»).';
+
+  @override
+  String get partnerWhatLabHome =>
+      'Одна рекламная карточка на главной странице раздела «Лаб» (по очереди).';
+
+  @override
+  String get partnerWhatPage =>
+      'Страница партнёра: связанные модели, номера удостоверений, буклет.';
+
+  @override
+  String get partnerWhatReport =>
+      'Отчёт: показы и нажатия «связаться» по дням и местам размещения (без персональных данных).';
+
+  @override
+  String get partnerAudienceTitle => 'Аудитория';
+
+  @override
+  String get partnerAudienceBody =>
+      'LabGuide — для специалистов лабораторий, врачей, студентов и преподавателей, на узбекском, русском и английском. Число пользователей и распределение по ролям покажем при переговорах по серверной статистике; оценочных цифр не называем.';
+
+  @override
+  String get partnerRulesTitle => 'Правила';
+
+  @override
+  String get partnerRule1 =>
+      'Везде стоит чёткая пометка «Реклама» или «Партнёр».';
+
+  @override
+  String get partnerRule2 =>
+      'Факты каталога, их порядок и статус проверки от партнёрства не зависят и за деньги не меняются.';
+
+  @override
+  String get partnerRule3 =>
+      'Реклама медицинских изделий: анализатор должен быть зарегистрирован в Узбекистане; номер удостоверения показывается в карточке.';
+
+  @override
+  String get partnerRule4 =>
+      'Только проверяемые сведения: недоказанные утверждения вроде «лучший» или «точность 100%» не принимаются.';
+
+  @override
+  String get partnerRule5 =>
+      'Персональные данные пользователей партнёрам не передаются.';
+
+  @override
+  String get partnerPriceTitle => 'Стоимость';
+
+  @override
+  String get partnerPriceBody =>
+      'Стоимость обсуждается — в зависимости от мест размещения, срока и регионов.';
+
+  @override
+  String get partnerHowTitle => 'Как подключиться';
+
+  @override
+  String get partnerHow1 => 'Отправьте заявку через форму ниже.';
+
+  @override
+  String get partnerHow2 => 'Мы свяжемся с вами и согласуем условия.';
+
+  @override
+  String get partnerHow3 =>
+      'Вы присылаете логотип, описание (uz/ru/en), контакты и номера удостоверений.';
+
+  @override
+  String get partnerHow4 =>
+      'После проверки размещение публикуется; отчёт присылаем регулярно.';
+
+  @override
+  String get partnerFormTitle => 'Заявка';
+
+  @override
+  String get partnerFormCompany => 'Компания';
+
+  @override
+  String get partnerFormContact => 'Контактное лицо';
+
+  @override
+  String get partnerFormPhone => 'Телефон';
+
+  @override
+  String get partnerFormEmail => 'Email';
+
+  @override
+  String get partnerFormProducts => 'Продукция (анализаторы, модели)';
+
+  @override
+  String get partnerFormMessage => 'Сообщение';
+
+  @override
+  String get partnerFormHint => 'Нужен телефон или email (хотя бы одно).';
+
+  @override
+  String get partnerFormSend => 'Отправить заявку';
+
+  @override
+  String get partnerFormInvalid =>
+      'Укажите компанию и контактное лицо, правильно введите телефон или email.';
+
+  @override
+  String get partnerSentTitle => 'Заявка отправлена';
+
+  @override
+  String get partnerSentBody =>
+      'Ответ появится на этой странице в разделе «Ваши заявки». При необходимости свяжемся по указанному телефону или email.';
+
+  @override
+  String get partnerSendAnother => 'Отправить ещё заявку';
+
+  @override
+  String get partnerFormSignIn =>
+      'Чтобы отправить заявку, войдите по email — ответ придёт в этот аккаунт.';
+
+  @override
+  String get partnerFormUnavailable =>
+      'Отправка заявок пока не подключена: в этой сборке сервер не настроен.';
+
+  @override
+  String get partnerMyRequests => 'Ваши заявки';
+
+  @override
+  String get partnerReqStatusNew => 'Новая';
+
+  @override
+  String get partnerReqStatusInReview => 'На рассмотрении';
+
+  @override
+  String get partnerReqStatusAccepted => 'Принята';
+
+  @override
+  String get partnerReqStatusDeclined => 'Отклонена';
+
+  @override
+  String partnerReqReply(String text) {
+    return 'Ответ LabGuide: $text';
+  }
+
+  @override
+  String get partnerPlacementCard => 'Карточка анализатора';
+
+  @override
+  String get partnerPlacementCategory => 'Направление';
+
+  @override
+  String get partnerPlacementLabHome => 'Главная «Лаб»';
+
+  @override
+  String get partnerPlacementPage => 'Страница партнёра';
+
+  @override
+  String get adminPartners => 'Партнёры';
+
+  @override
+  String get adminPartnersSub => 'Реклама: создание, публикация, статистика';
+
+  @override
+  String get adminPartnerRequests => 'Заявки на партнёрство';
+
+  @override
+  String adminPartnerRequestsNew(int count) {
+    return 'Новых заявок: $count';
+  }
+
+  @override
+  String get adminPartnerNew => 'Новый партнёр';
+
+  @override
+  String get adminPartnersEmpty => 'Партнёров пока нет';
+
+  @override
+  String get adminPartnerStatusDraft => 'Черновик';
+
+  @override
+  String get adminPartnerStatusLive => 'Опубликован';
+
+  @override
+  String get adminPartnerStatusPaused => 'Приостановлен';
+
+  @override
+  String get adminPartnerExpired => 'Срок истёк';
+
+  @override
+  String get adminPartnerUpcoming => 'Ещё не начался';
+
+  @override
+  String get adminPartnerName => 'Название компании';
+
+  @override
+  String get adminPartnerKind => 'Тип';
+
+  @override
+  String get adminPartnerLogo => 'Ссылка на логотип (https://…)';
+
+  @override
+  String get adminPartnerLogoUpload => 'Загрузить логотип (PNG/JPEG, ≤ 1 МБ)';
+
+  @override
+  String get adminPartnerLogoTooLarge => 'Логотип больше 1 МБ или не PNG/JPEG.';
+
+  @override
+  String adminPartnerSummary(String lang) {
+    return 'Краткое описание ($lang)';
+  }
+
+  @override
+  String get adminPartnerRegions => 'Регионы';
+
+  @override
+  String get adminPartnerTelegram => 'Telegram (username)';
+
+  @override
+  String get adminPartnerWebsite => 'Сайт (https://…)';
+
+  @override
+  String get adminPartnerBrochure => 'Ссылка на буклет (https://…)';
+
+  @override
+  String get adminPartnerLinks => 'Привязка к каталогу';
+
+  @override
+  String get adminPartnerMakers => 'Производители (все модели)';
+
+  @override
+  String get adminPartnerModels => 'Модели';
+
+  @override
+  String get adminPartnerAddModel => 'Добавить модель';
+
+  @override
+  String get adminPartnerRegNo => 'Номер удостоверения (необязательно)';
+
+  @override
+  String get adminPartnerUnlink => 'Убрать';
+
+  @override
+  String get adminPartnerPeriodTitle => 'Период размещения';
+
+  @override
+  String get adminPartnerStarts => 'Начало';
+
+  @override
+  String get adminPartnerEnds => 'Окончание';
+
+  @override
+  String get adminPartnerSave => 'Сохранить';
+
+  @override
+  String get adminPartnerSaved => 'Сохранено';
+
+  @override
+  String get adminPartnerPublish => 'Опубликовать';
+
+  @override
+  String get adminPartnerPause => 'Приостановить';
+
+  @override
+  String get adminPartnerPublished => 'Опубликовано';
+
+  @override
+  String get adminPartnerPausedMsg => 'Приостановлено';
+
+  @override
+  String get adminPartnerPublishRules =>
+      'Для публикации нужны описание, хотя бы один контакт и хотя бы одна привязка. Реклама везде идёт с пометкой «Реклама» и не влияет на данные каталога.';
+
+  @override
+  String get adminPartnerInvalid =>
+      'Проверьте данные: название (2–120 символов), телефон, Telegram (5–32 символа), ссылки https, email, даты; для публикации — описание, контакт и привязка.';
+
+  @override
+  String get adminPartnerStats => 'Статистика';
+
+  @override
+  String get adminStatsImpressions => 'Показы';
+
+  @override
+  String get adminStatsContacts => 'Нажатия «связаться»';
+
+  @override
+  String get adminStatsCtr => 'Доля нажатий (CTR)';
+
+  @override
+  String get adminStats7 => 'Последние 7 дней';
+
+  @override
+  String get adminStats30 => 'Последние 30 дней';
+
+  @override
+  String get adminStatsAll => 'За всё время';
+
+  @override
+  String get adminStatsPeriods => 'По периодам';
+
+  @override
+  String get adminStatsByPlacement => 'По местам размещения (30 дней)';
+
+  @override
+  String get adminStatsDaily => 'По дням';
+
+  @override
+  String get adminStatsEmpty => 'Событий пока нет';
+
+  @override
+  String get adminStatsNote =>
+      'Как считается: показ — блок партнёра отрисован на экране; с одного устройства — не чаще раза в день на каждое место. Учитываются только вошедшие пользователи (гости и админ — нет). Персональные данные не хранятся, только дневные счётчики (время Ташкента).';
+
+  @override
+  String get adminStatsCopy => 'Скопировать отчёт';
+
+  @override
+  String get adminRequestsEmpty => 'Заявок нет';
+
+  @override
+  String get adminRequestReply => 'Ответ (увидит заявитель)';
+
+  @override
+  String get adminRequestSave => 'Сохранить статус и ответ';
+
+  @override
+  String get adminActionPartnerCreated => 'Партнёр создан';
+
+  @override
+  String get adminActionPartnerUpdated => 'Партнёр изменён';
+
+  @override
+  String get adminActionPartnerPublished => 'Партнёр опубликован';
+
+  @override
+  String get adminActionPartnerPaused => 'Партнёр приостановлен';
+
+  @override
+  String get adminActionPartnerDraft => 'Партнёр возвращён в черновик';
+
+  @override
+  String get adminActionPartnerRequest => 'Заявка на партнёрство обработана';
+
+  @override
   String get calStepInstrument => '1. Прибор';
 
   @override

@@ -20,6 +20,7 @@ import 'features/learn/quiz_progress.dart';
 import 'features/instruments/instruments_controller.dart';
 import 'features/packs/pack_downloader.dart';
 import 'features/packs/packs_controller.dart';
+import 'features/partners/partners_controller.dart';
 import 'features/qc/qc_controller.dart';
 import 'features/settings/settings_controller.dart';
 
@@ -41,6 +42,8 @@ Future<void> main() async {
   unawaited(services.refreshAccess());
   // Kontent fonda yuklanadi; ekranlar loading/error holatini ko'rsatadi.
   unawaited(services.content.load());
+  // Hamkorlar keshdan darhol; serverdan fonda (sozlanmagan buildda — yo'q).
+  unawaited(services.partners.refresh(force: true));
   runApp(LabGuideApp(services: services));
 }
 
@@ -80,6 +83,7 @@ AppServices createServices({
     instruments: InstrumentsController(store, bundle: bundle),
     backend: server,
     access: AccessController(server),
+    partners: PartnersController(store, server),
   )..watchAccess();
 }
 

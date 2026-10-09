@@ -878,6 +878,181 @@
   "instCustomRequired": "Enter the manufacturer and model.",
   "instCatalogError": "Could not read the instrument catalog",
   "instOpenCard": "Instrument card",
+  "partnerAdLabel": "Ad",
+  "partnerLabel": "Partner",
+  "partnerOfficialTitle": "Official partners",
+  "partnerSectionNote": "Information provided by the partner companies. The catalogue data above, its order and review status do not depend on partnerships.",
+  "partnerKindManufacturer": "Manufacturer",
+  "partnerKindDistributor": "Official distributor",
+  "partnerKindService": "Service centre",
+  "partnerCall": "Call",
+  "partnerTelegram": "Telegram",
+  "partnerWebsite": "Website",
+  "partnerEmail": "Email",
+  "partnerBrochure": "Brochure",
+  "partnerMore": "Details",
+  "partnerRegions": "Regions: {regions}",
+  "@partnerRegions": {
+    "placeholders": {
+      "regions": {
+        "type": "String"
+      }
+    }
+  },
+  "partnerRegistration": "Registration certificate in Uzbekistan: {number}",
+  "@partnerRegistration": {
+    "placeholders": {
+      "number": {
+        "type": "String"
+      }
+    }
+  },
+  "partnerRegistrationNote": "Number provided by the partner.",
+  "partnerBecome": "Become a partner",
+  "partnerBecomeSub": "For companies: your instruments in LabGuide",
+  "partnerNotFoundTitle": "Partner not found",
+  "partnerNotFoundBody": "The listing may have ended or been paused.",
+  "partnerContacts": "Contacts",
+  "partnerAbout": "About the company",
+  "partnerInstruments": "Related instruments",
+  "partnerAllModels": "{maker}: all models",
+  "@partnerAllModels": {
+    "placeholders": {
+      "maker": {
+        "type": "String"
+      }
+    }
+  },
+  "partnerPageNote": "This page is an advertisement. LabGuide does not endorse partner products; catalogue data and review status do not depend on partnerships.",
+  "partnerOfferTitle": "Your contacts, right on the instrument card",
+  "partnerOfferBody": "A lab specialist reading about an instrument can call its official distributor or service centre in one tap. For manufacturers, official distributors and service centres.",
+  "partnerWhatTitle": "What you get",
+  "partnerWhatCard": "An “Official partners” section on the instrument card: logo, short description, regions, call and Telegram buttons.",
+  "partnerWhatCategory": "A compact “Partner” card inside the instrument category (e.g. Chemistry).",
+  "partnerWhatLabHome": "One ad card on the Lab tab home, shown in rotation.",
+  "partnerWhatPage": "A partner page: related models, registration numbers, brochure.",
+  "partnerWhatReport": "A report: impressions and contact taps by day and placement (no personal data).",
+  "partnerAudienceTitle": "Audience",
+  "partnerAudienceBody": "LabGuide serves laboratory specialists, doctors, students and teachers in Uzbek, Russian and English. We show user numbers and the role breakdown from server statistics during negotiation; we don’t quote estimates.",
+  "partnerRulesTitle": "Rules",
+  "partnerRule1": "Every placement carries a clear “Ad” or “Partner” label.",
+  "partnerRule2": "Catalogue facts, their order and review status do not depend on partnerships and cannot be bought.",
+  "partnerRule3": "Medical device ads: the instrument must be registered in Uzbekistan; the certificate number is shown on the card.",
+  "partnerRule4": "Verifiable information only: unproven claims such as “the best” or “100% accurate” are not accepted.",
+  "partnerRule5": "Users’ personal data is never shared with partners.",
+  "partnerPriceTitle": "Price",
+  "partnerPriceBody": "Price is agreed individually, depending on placements, period and regions.",
+  "partnerHowTitle": "How it works",
+  "partnerHow1": "Send an application using the form below.",
+  "partnerHow2": "We contact you and agree the terms.",
+  "partnerHow3": "You send the logo, description (uz/ru/en), contacts and registration numbers.",
+  "partnerHow4": "After review the listing goes live; we send reports regularly.",
+  "partnerFormTitle": "Application",
+  "partnerFormCompany": "Company",
+  "partnerFormContact": "Contact person",
+  "partnerFormPhone": "Phone",
+  "partnerFormEmail": "Email",
+  "partnerFormProducts": "Products (instruments, models)",
+  "partnerFormMessage": "Message",
+  "partnerFormHint": "A phone number or an email is required.",
+  "partnerFormSend": "Send application",
+  "partnerFormInvalid": "Enter the company and contact person, and a valid phone or email.",
+  "partnerSentTitle": "Application sent",
+  "partnerSentBody": "The reply will appear on this page under “Your applications”. If needed, we will contact you by the phone or email you gave.",
+  "partnerSendAnother": "Send another application",
+  "partnerFormSignIn": "Sign in with email to send an application — the reply comes to that account.",
+  "partnerFormUnavailable": "Applications are not connected yet: this build has no server.",
+  "partnerMyRequests": "Your applications",
+  "partnerReqStatusNew": "New",
+  "partnerReqStatusInReview": "In review",
+  "partnerReqStatusAccepted": "Accepted",
+  "partnerReqStatusDeclined": "Declined",
+  "partnerReqReply": "LabGuide reply: {text}",
+  "@partnerReqReply": {
+    "placeholders": {
+      "text": {
+        "type": "String"
+      }
+    }
+  },
+  "partnerPlacementCard": "Instrument card",
+  "partnerPlacementCategory": "Category",
+  "partnerPlacementLabHome": "Lab home",
+  "partnerPlacementPage": "Partner page",
+  "adminPartners": "Partners",
+  "adminPartnersSub": "Ads: create, publish, statistics",
+  "adminPartnerRequests": "Partnership applications",
+  "adminPartnerRequestsNew": "New applications: {count}",
+  "@adminPartnerRequestsNew": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "adminPartnerNew": "New partner",
+  "adminPartnersEmpty": "No partners yet",
+  "adminPartnerStatusDraft": "Draft",
+  "adminPartnerStatusLive": "Published",
+  "adminPartnerStatusPaused": "Paused",
+  "adminPartnerExpired": "Expired",
+  "adminPartnerUpcoming": "Not started yet",
+  "adminPartnerName": "Company name",
+  "adminPartnerKind": "Type",
+  "adminPartnerLogo": "Logo link (https://…)",
+  "adminPartnerLogoUpload": "Upload logo (PNG/JPEG, ≤ 1 MB)",
+  "adminPartnerLogoTooLarge": "The logo is larger than 1 MB or not PNG/JPEG.",
+  "adminPartnerSummary": "Short description ({lang})",
+  "@adminPartnerSummary": {
+    "placeholders": {
+      "lang": {
+        "type": "String"
+      }
+    }
+  },
+  "adminPartnerRegions": "Regions",
+  "adminPartnerTelegram": "Telegram (username)",
+  "adminPartnerWebsite": "Website (https://…)",
+  "adminPartnerBrochure": "Brochure link (https://…)",
+  "adminPartnerLinks": "Catalogue links",
+  "adminPartnerMakers": "Manufacturers (all models)",
+  "adminPartnerModels": "Models",
+  "adminPartnerAddModel": "Add a model",
+  "adminPartnerRegNo": "Certificate number (optional)",
+  "adminPartnerUnlink": "Remove",
+  "adminPartnerPeriodTitle": "Active period",
+  "adminPartnerStarts": "Starts",
+  "adminPartnerEnds": "Ends",
+  "adminPartnerSave": "Save",
+  "adminPartnerSaved": "Saved",
+  "adminPartnerPublish": "Publish",
+  "adminPartnerPause": "Pause",
+  "adminPartnerPublished": "Published",
+  "adminPartnerPausedMsg": "Paused",
+  "adminPartnerPublishRules": "To publish: a description, at least one contact and at least one link. The ad always carries an “Ad” label and never changes catalogue data.",
+  "adminPartnerInvalid": "Check the data: name (2–120 characters), phone, Telegram (5–32 characters), https links, email, dates; to publish — description, contact and a link.",
+  "adminPartnerStats": "Statistics",
+  "adminStatsImpressions": "Impressions",
+  "adminStatsContacts": "Contact taps",
+  "adminStatsCtr": "Click-through rate",
+  "adminStats7": "Last 7 days",
+  "adminStats30": "Last 30 days",
+  "adminStatsAll": "All time",
+  "adminStatsPeriods": "By period",
+  "adminStatsByPlacement": "By placement (30 days)",
+  "adminStatsDaily": "By day",
+  "adminStatsEmpty": "No events yet",
+  "adminStatsNote": "How it is counted: an impression means the partner block was drawn on screen; once per device per day per placement. Only signed-in users are counted (not guests or the admin). No personal data is stored, only daily counters (Tashkent time).",
+  "adminStatsCopy": "Copy report",
+  "adminRequestsEmpty": "No applications",
+  "adminRequestReply": "Reply (the applicant sees it)",
+  "adminRequestSave": "Save status and reply",
+  "adminActionPartnerCreated": "Partner created",
+  "adminActionPartnerUpdated": "Partner edited",
+  "adminActionPartnerPublished": "Partner published",
+  "adminActionPartnerPaused": "Partner paused",
+  "adminActionPartnerDraft": "Partner moved to draft",
+  "adminActionPartnerRequest": "Partnership application handled",
   "calStepInstrument": "1. Instrument",
   "calStepAnalyte": "2. Analyte",
   "calStepReagent": "3. Reagent",

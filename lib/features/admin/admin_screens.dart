@@ -12,6 +12,7 @@ import '../../core/backend/backend_models.dart';
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
+import '../partners/partner_admin_screens.dart' show AdminPartnerRequestsRow;
 import '../support/support_screens.dart';
 
 /// Admin bo'limlariga kirish: server admin hisobi deb tasdiqlagan bo'lishi
@@ -339,6 +340,13 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
                           await _load();
                         },
                       ),
+                      LgRow(
+                        title: l.adminPartners,
+                        subtitle: l.adminPartnersSub,
+                        icon: Icons.storefront_outlined,
+                        onTap: () => context.push('/profile/admin/partners'),
+                      ),
+                      const AdminPartnerRequestsRow(),
                       LgRow(
                         title: l.adminUsers,
                         icon: Icons.people_outline_rounded,
@@ -853,6 +861,12 @@ String auditActionLabel(String action, AppLocalizations l) => switch (action) {
   'reviewer_revoked' => l.adminActionReviewerRevoked,
   'admin_granted' => l.adminActionAdminGranted,
   'admin_revoked' => l.adminActionAdminRevoked,
+  'partner_created' => l.adminActionPartnerCreated,
+  'partner_updated' => l.adminActionPartnerUpdated,
+  'partner_published' => l.adminActionPartnerPublished,
+  'partner_paused' => l.adminActionPartnerPaused,
+  'partner_draft' => l.adminActionPartnerDraft,
+  'partner_request' => l.adminActionPartnerRequest,
   _ => action,
 };
 

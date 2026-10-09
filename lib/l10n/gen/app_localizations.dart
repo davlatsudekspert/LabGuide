@@ -2962,6 +2962,804 @@ abstract class AppLocalizations {
   /// **'Instrument card'**
   String get instOpenCard;
 
+  /// No description provided for @partnerAdLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Ad'**
+  String get partnerAdLabel;
+
+  /// No description provided for @partnerLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Partner'**
+  String get partnerLabel;
+
+  /// No description provided for @partnerOfficialTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Official partners'**
+  String get partnerOfficialTitle;
+
+  /// No description provided for @partnerSectionNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Information provided by the partner companies. The catalogue data above, its order and review status do not depend on partnerships.'**
+  String get partnerSectionNote;
+
+  /// No description provided for @partnerKindManufacturer.
+  ///
+  /// In en, this message translates to:
+  /// **'Manufacturer'**
+  String get partnerKindManufacturer;
+
+  /// No description provided for @partnerKindDistributor.
+  ///
+  /// In en, this message translates to:
+  /// **'Official distributor'**
+  String get partnerKindDistributor;
+
+  /// No description provided for @partnerKindService.
+  ///
+  /// In en, this message translates to:
+  /// **'Service centre'**
+  String get partnerKindService;
+
+  /// No description provided for @partnerCall.
+  ///
+  /// In en, this message translates to:
+  /// **'Call'**
+  String get partnerCall;
+
+  /// No description provided for @partnerTelegram.
+  ///
+  /// In en, this message translates to:
+  /// **'Telegram'**
+  String get partnerTelegram;
+
+  /// No description provided for @partnerWebsite.
+  ///
+  /// In en, this message translates to:
+  /// **'Website'**
+  String get partnerWebsite;
+
+  /// No description provided for @partnerEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Email'**
+  String get partnerEmail;
+
+  /// No description provided for @partnerBrochure.
+  ///
+  /// In en, this message translates to:
+  /// **'Brochure'**
+  String get partnerBrochure;
+
+  /// No description provided for @partnerMore.
+  ///
+  /// In en, this message translates to:
+  /// **'Details'**
+  String get partnerMore;
+
+  /// No description provided for @partnerRegions.
+  ///
+  /// In en, this message translates to:
+  /// **'Regions: {regions}'**
+  String partnerRegions(String regions);
+
+  /// No description provided for @partnerRegistration.
+  ///
+  /// In en, this message translates to:
+  /// **'Registration certificate in Uzbekistan: {number}'**
+  String partnerRegistration(String number);
+
+  /// No description provided for @partnerRegistrationNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Number provided by the partner.'**
+  String get partnerRegistrationNote;
+
+  /// No description provided for @partnerBecome.
+  ///
+  /// In en, this message translates to:
+  /// **'Become a partner'**
+  String get partnerBecome;
+
+  /// No description provided for @partnerBecomeSub.
+  ///
+  /// In en, this message translates to:
+  /// **'For companies: your instruments in LabGuide'**
+  String get partnerBecomeSub;
+
+  /// No description provided for @partnerNotFoundTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Partner not found'**
+  String get partnerNotFoundTitle;
+
+  /// No description provided for @partnerNotFoundBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The listing may have ended or been paused.'**
+  String get partnerNotFoundBody;
+
+  /// No description provided for @partnerContacts.
+  ///
+  /// In en, this message translates to:
+  /// **'Contacts'**
+  String get partnerContacts;
+
+  /// No description provided for @partnerAbout.
+  ///
+  /// In en, this message translates to:
+  /// **'About the company'**
+  String get partnerAbout;
+
+  /// No description provided for @partnerInstruments.
+  ///
+  /// In en, this message translates to:
+  /// **'Related instruments'**
+  String get partnerInstruments;
+
+  /// No description provided for @partnerAllModels.
+  ///
+  /// In en, this message translates to:
+  /// **'{maker}: all models'**
+  String partnerAllModels(String maker);
+
+  /// No description provided for @partnerPageNote.
+  ///
+  /// In en, this message translates to:
+  /// **'This page is an advertisement. LabGuide does not endorse partner products; catalogue data and review status do not depend on partnerships.'**
+  String get partnerPageNote;
+
+  /// No description provided for @partnerOfferTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your contacts, right on the instrument card'**
+  String get partnerOfferTitle;
+
+  /// No description provided for @partnerOfferBody.
+  ///
+  /// In en, this message translates to:
+  /// **'A lab specialist reading about an instrument can call its official distributor or service centre in one tap. For manufacturers, official distributors and service centres.'**
+  String get partnerOfferBody;
+
+  /// No description provided for @partnerWhatTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'What you get'**
+  String get partnerWhatTitle;
+
+  /// No description provided for @partnerWhatCard.
+  ///
+  /// In en, this message translates to:
+  /// **'An “Official partners” section on the instrument card: logo, short description, regions, call and Telegram buttons.'**
+  String get partnerWhatCard;
+
+  /// No description provided for @partnerWhatCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'A compact “Partner” card inside the instrument category (e.g. Chemistry).'**
+  String get partnerWhatCategory;
+
+  /// No description provided for @partnerWhatLabHome.
+  ///
+  /// In en, this message translates to:
+  /// **'One ad card on the Lab tab home, shown in rotation.'**
+  String get partnerWhatLabHome;
+
+  /// No description provided for @partnerWhatPage.
+  ///
+  /// In en, this message translates to:
+  /// **'A partner page: related models, registration numbers, brochure.'**
+  String get partnerWhatPage;
+
+  /// No description provided for @partnerWhatReport.
+  ///
+  /// In en, this message translates to:
+  /// **'A report: impressions and contact taps by day and placement (no personal data).'**
+  String get partnerWhatReport;
+
+  /// No description provided for @partnerAudienceTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Audience'**
+  String get partnerAudienceTitle;
+
+  /// No description provided for @partnerAudienceBody.
+  ///
+  /// In en, this message translates to:
+  /// **'LabGuide serves laboratory specialists, doctors, students and teachers in Uzbek, Russian and English. We show user numbers and the role breakdown from server statistics during negotiation; we don’t quote estimates.'**
+  String get partnerAudienceBody;
+
+  /// No description provided for @partnerRulesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Rules'**
+  String get partnerRulesTitle;
+
+  /// No description provided for @partnerRule1.
+  ///
+  /// In en, this message translates to:
+  /// **'Every placement carries a clear “Ad” or “Partner” label.'**
+  String get partnerRule1;
+
+  /// No description provided for @partnerRule2.
+  ///
+  /// In en, this message translates to:
+  /// **'Catalogue facts, their order and review status do not depend on partnerships and cannot be bought.'**
+  String get partnerRule2;
+
+  /// No description provided for @partnerRule3.
+  ///
+  /// In en, this message translates to:
+  /// **'Medical device ads: the instrument must be registered in Uzbekistan; the certificate number is shown on the card.'**
+  String get partnerRule3;
+
+  /// No description provided for @partnerRule4.
+  ///
+  /// In en, this message translates to:
+  /// **'Verifiable information only: unproven claims such as “the best” or “100% accurate” are not accepted.'**
+  String get partnerRule4;
+
+  /// No description provided for @partnerRule5.
+  ///
+  /// In en, this message translates to:
+  /// **'Users’ personal data is never shared with partners.'**
+  String get partnerRule5;
+
+  /// No description provided for @partnerPriceTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Price'**
+  String get partnerPriceTitle;
+
+  /// No description provided for @partnerPriceBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Price is agreed individually, depending on placements, period and regions.'**
+  String get partnerPriceBody;
+
+  /// No description provided for @partnerHowTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'How it works'**
+  String get partnerHowTitle;
+
+  /// No description provided for @partnerHow1.
+  ///
+  /// In en, this message translates to:
+  /// **'Send an application using the form below.'**
+  String get partnerHow1;
+
+  /// No description provided for @partnerHow2.
+  ///
+  /// In en, this message translates to:
+  /// **'We contact you and agree the terms.'**
+  String get partnerHow2;
+
+  /// No description provided for @partnerHow3.
+  ///
+  /// In en, this message translates to:
+  /// **'You send the logo, description (uz/ru/en), contacts and registration numbers.'**
+  String get partnerHow3;
+
+  /// No description provided for @partnerHow4.
+  ///
+  /// In en, this message translates to:
+  /// **'After review the listing goes live; we send reports regularly.'**
+  String get partnerHow4;
+
+  /// No description provided for @partnerFormTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Application'**
+  String get partnerFormTitle;
+
+  /// No description provided for @partnerFormCompany.
+  ///
+  /// In en, this message translates to:
+  /// **'Company'**
+  String get partnerFormCompany;
+
+  /// No description provided for @partnerFormContact.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact person'**
+  String get partnerFormContact;
+
+  /// No description provided for @partnerFormPhone.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone'**
+  String get partnerFormPhone;
+
+  /// No description provided for @partnerFormEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Email'**
+  String get partnerFormEmail;
+
+  /// No description provided for @partnerFormProducts.
+  ///
+  /// In en, this message translates to:
+  /// **'Products (instruments, models)'**
+  String get partnerFormProducts;
+
+  /// No description provided for @partnerFormMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Message'**
+  String get partnerFormMessage;
+
+  /// No description provided for @partnerFormHint.
+  ///
+  /// In en, this message translates to:
+  /// **'A phone number or an email is required.'**
+  String get partnerFormHint;
+
+  /// No description provided for @partnerFormSend.
+  ///
+  /// In en, this message translates to:
+  /// **'Send application'**
+  String get partnerFormSend;
+
+  /// No description provided for @partnerFormInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the company and contact person, and a valid phone or email.'**
+  String get partnerFormInvalid;
+
+  /// No description provided for @partnerSentTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Application sent'**
+  String get partnerSentTitle;
+
+  /// No description provided for @partnerSentBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The reply will appear on this page under “Your applications”. If needed, we will contact you by the phone or email you gave.'**
+  String get partnerSentBody;
+
+  /// No description provided for @partnerSendAnother.
+  ///
+  /// In en, this message translates to:
+  /// **'Send another application'**
+  String get partnerSendAnother;
+
+  /// No description provided for @partnerFormSignIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in with email to send an application — the reply comes to that account.'**
+  String get partnerFormSignIn;
+
+  /// No description provided for @partnerFormUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Applications are not connected yet: this build has no server.'**
+  String get partnerFormUnavailable;
+
+  /// No description provided for @partnerMyRequests.
+  ///
+  /// In en, this message translates to:
+  /// **'Your applications'**
+  String get partnerMyRequests;
+
+  /// No description provided for @partnerReqStatusNew.
+  ///
+  /// In en, this message translates to:
+  /// **'New'**
+  String get partnerReqStatusNew;
+
+  /// No description provided for @partnerReqStatusInReview.
+  ///
+  /// In en, this message translates to:
+  /// **'In review'**
+  String get partnerReqStatusInReview;
+
+  /// No description provided for @partnerReqStatusAccepted.
+  ///
+  /// In en, this message translates to:
+  /// **'Accepted'**
+  String get partnerReqStatusAccepted;
+
+  /// No description provided for @partnerReqStatusDeclined.
+  ///
+  /// In en, this message translates to:
+  /// **'Declined'**
+  String get partnerReqStatusDeclined;
+
+  /// No description provided for @partnerReqReply.
+  ///
+  /// In en, this message translates to:
+  /// **'LabGuide reply: {text}'**
+  String partnerReqReply(String text);
+
+  /// No description provided for @partnerPlacementCard.
+  ///
+  /// In en, this message translates to:
+  /// **'Instrument card'**
+  String get partnerPlacementCard;
+
+  /// No description provided for @partnerPlacementCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'Category'**
+  String get partnerPlacementCategory;
+
+  /// No description provided for @partnerPlacementLabHome.
+  ///
+  /// In en, this message translates to:
+  /// **'Lab home'**
+  String get partnerPlacementLabHome;
+
+  /// No description provided for @partnerPlacementPage.
+  ///
+  /// In en, this message translates to:
+  /// **'Partner page'**
+  String get partnerPlacementPage;
+
+  /// No description provided for @adminPartners.
+  ///
+  /// In en, this message translates to:
+  /// **'Partners'**
+  String get adminPartners;
+
+  /// No description provided for @adminPartnersSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Ads: create, publish, statistics'**
+  String get adminPartnersSub;
+
+  /// No description provided for @adminPartnerRequests.
+  ///
+  /// In en, this message translates to:
+  /// **'Partnership applications'**
+  String get adminPartnerRequests;
+
+  /// No description provided for @adminPartnerRequestsNew.
+  ///
+  /// In en, this message translates to:
+  /// **'New applications: {count}'**
+  String adminPartnerRequestsNew(int count);
+
+  /// No description provided for @adminPartnerNew.
+  ///
+  /// In en, this message translates to:
+  /// **'New partner'**
+  String get adminPartnerNew;
+
+  /// No description provided for @adminPartnersEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No partners yet'**
+  String get adminPartnersEmpty;
+
+  /// No description provided for @adminPartnerStatusDraft.
+  ///
+  /// In en, this message translates to:
+  /// **'Draft'**
+  String get adminPartnerStatusDraft;
+
+  /// No description provided for @adminPartnerStatusLive.
+  ///
+  /// In en, this message translates to:
+  /// **'Published'**
+  String get adminPartnerStatusLive;
+
+  /// No description provided for @adminPartnerStatusPaused.
+  ///
+  /// In en, this message translates to:
+  /// **'Paused'**
+  String get adminPartnerStatusPaused;
+
+  /// No description provided for @adminPartnerExpired.
+  ///
+  /// In en, this message translates to:
+  /// **'Expired'**
+  String get adminPartnerExpired;
+
+  /// No description provided for @adminPartnerUpcoming.
+  ///
+  /// In en, this message translates to:
+  /// **'Not started yet'**
+  String get adminPartnerUpcoming;
+
+  /// No description provided for @adminPartnerName.
+  ///
+  /// In en, this message translates to:
+  /// **'Company name'**
+  String get adminPartnerName;
+
+  /// No description provided for @adminPartnerKind.
+  ///
+  /// In en, this message translates to:
+  /// **'Type'**
+  String get adminPartnerKind;
+
+  /// No description provided for @adminPartnerLogo.
+  ///
+  /// In en, this message translates to:
+  /// **'Logo link (https://…)'**
+  String get adminPartnerLogo;
+
+  /// No description provided for @adminPartnerLogoUpload.
+  ///
+  /// In en, this message translates to:
+  /// **'Upload logo (PNG/JPEG, ≤ 1 MB)'**
+  String get adminPartnerLogoUpload;
+
+  /// No description provided for @adminPartnerLogoTooLarge.
+  ///
+  /// In en, this message translates to:
+  /// **'The logo is larger than 1 MB or not PNG/JPEG.'**
+  String get adminPartnerLogoTooLarge;
+
+  /// No description provided for @adminPartnerSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Short description ({lang})'**
+  String adminPartnerSummary(String lang);
+
+  /// No description provided for @adminPartnerRegions.
+  ///
+  /// In en, this message translates to:
+  /// **'Regions'**
+  String get adminPartnerRegions;
+
+  /// No description provided for @adminPartnerTelegram.
+  ///
+  /// In en, this message translates to:
+  /// **'Telegram (username)'**
+  String get adminPartnerTelegram;
+
+  /// No description provided for @adminPartnerWebsite.
+  ///
+  /// In en, this message translates to:
+  /// **'Website (https://…)'**
+  String get adminPartnerWebsite;
+
+  /// No description provided for @adminPartnerBrochure.
+  ///
+  /// In en, this message translates to:
+  /// **'Brochure link (https://…)'**
+  String get adminPartnerBrochure;
+
+  /// No description provided for @adminPartnerLinks.
+  ///
+  /// In en, this message translates to:
+  /// **'Catalogue links'**
+  String get adminPartnerLinks;
+
+  /// No description provided for @adminPartnerMakers.
+  ///
+  /// In en, this message translates to:
+  /// **'Manufacturers (all models)'**
+  String get adminPartnerMakers;
+
+  /// No description provided for @adminPartnerModels.
+  ///
+  /// In en, this message translates to:
+  /// **'Models'**
+  String get adminPartnerModels;
+
+  /// No description provided for @adminPartnerAddModel.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a model'**
+  String get adminPartnerAddModel;
+
+  /// No description provided for @adminPartnerRegNo.
+  ///
+  /// In en, this message translates to:
+  /// **'Certificate number (optional)'**
+  String get adminPartnerRegNo;
+
+  /// No description provided for @adminPartnerUnlink.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove'**
+  String get adminPartnerUnlink;
+
+  /// No description provided for @adminPartnerPeriodTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Active period'**
+  String get adminPartnerPeriodTitle;
+
+  /// No description provided for @adminPartnerStarts.
+  ///
+  /// In en, this message translates to:
+  /// **'Starts'**
+  String get adminPartnerStarts;
+
+  /// No description provided for @adminPartnerEnds.
+  ///
+  /// In en, this message translates to:
+  /// **'Ends'**
+  String get adminPartnerEnds;
+
+  /// No description provided for @adminPartnerSave.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get adminPartnerSave;
+
+  /// No description provided for @adminPartnerSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Saved'**
+  String get adminPartnerSaved;
+
+  /// No description provided for @adminPartnerPublish.
+  ///
+  /// In en, this message translates to:
+  /// **'Publish'**
+  String get adminPartnerPublish;
+
+  /// No description provided for @adminPartnerPause.
+  ///
+  /// In en, this message translates to:
+  /// **'Pause'**
+  String get adminPartnerPause;
+
+  /// No description provided for @adminPartnerPublished.
+  ///
+  /// In en, this message translates to:
+  /// **'Published'**
+  String get adminPartnerPublished;
+
+  /// No description provided for @adminPartnerPausedMsg.
+  ///
+  /// In en, this message translates to:
+  /// **'Paused'**
+  String get adminPartnerPausedMsg;
+
+  /// No description provided for @adminPartnerPublishRules.
+  ///
+  /// In en, this message translates to:
+  /// **'To publish: a description, at least one contact and at least one link. The ad always carries an “Ad” label and never changes catalogue data.'**
+  String get adminPartnerPublishRules;
+
+  /// No description provided for @adminPartnerInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Check the data: name (2–120 characters), phone, Telegram (5–32 characters), https links, email, dates; to publish — description, contact and a link.'**
+  String get adminPartnerInvalid;
+
+  /// No description provided for @adminPartnerStats.
+  ///
+  /// In en, this message translates to:
+  /// **'Statistics'**
+  String get adminPartnerStats;
+
+  /// No description provided for @adminStatsImpressions.
+  ///
+  /// In en, this message translates to:
+  /// **'Impressions'**
+  String get adminStatsImpressions;
+
+  /// No description provided for @adminStatsContacts.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact taps'**
+  String get adminStatsContacts;
+
+  /// No description provided for @adminStatsCtr.
+  ///
+  /// In en, this message translates to:
+  /// **'Click-through rate'**
+  String get adminStatsCtr;
+
+  /// No description provided for @adminStats7.
+  ///
+  /// In en, this message translates to:
+  /// **'Last 7 days'**
+  String get adminStats7;
+
+  /// No description provided for @adminStats30.
+  ///
+  /// In en, this message translates to:
+  /// **'Last 30 days'**
+  String get adminStats30;
+
+  /// No description provided for @adminStatsAll.
+  ///
+  /// In en, this message translates to:
+  /// **'All time'**
+  String get adminStatsAll;
+
+  /// No description provided for @adminStatsPeriods.
+  ///
+  /// In en, this message translates to:
+  /// **'By period'**
+  String get adminStatsPeriods;
+
+  /// No description provided for @adminStatsByPlacement.
+  ///
+  /// In en, this message translates to:
+  /// **'By placement (30 days)'**
+  String get adminStatsByPlacement;
+
+  /// No description provided for @adminStatsDaily.
+  ///
+  /// In en, this message translates to:
+  /// **'By day'**
+  String get adminStatsDaily;
+
+  /// No description provided for @adminStatsEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No events yet'**
+  String get adminStatsEmpty;
+
+  /// No description provided for @adminStatsNote.
+  ///
+  /// In en, this message translates to:
+  /// **'How it is counted: an impression means the partner block was drawn on screen; once per device per day per placement. Only signed-in users are counted (not guests or the admin). No personal data is stored, only daily counters (Tashkent time).'**
+  String get adminStatsNote;
+
+  /// No description provided for @adminStatsCopy.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy report'**
+  String get adminStatsCopy;
+
+  /// No description provided for @adminRequestsEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No applications'**
+  String get adminRequestsEmpty;
+
+  /// No description provided for @adminRequestReply.
+  ///
+  /// In en, this message translates to:
+  /// **'Reply (the applicant sees it)'**
+  String get adminRequestReply;
+
+  /// No description provided for @adminRequestSave.
+  ///
+  /// In en, this message translates to:
+  /// **'Save status and reply'**
+  String get adminRequestSave;
+
+  /// No description provided for @adminActionPartnerCreated.
+  ///
+  /// In en, this message translates to:
+  /// **'Partner created'**
+  String get adminActionPartnerCreated;
+
+  /// No description provided for @adminActionPartnerUpdated.
+  ///
+  /// In en, this message translates to:
+  /// **'Partner edited'**
+  String get adminActionPartnerUpdated;
+
+  /// No description provided for @adminActionPartnerPublished.
+  ///
+  /// In en, this message translates to:
+  /// **'Partner published'**
+  String get adminActionPartnerPublished;
+
+  /// No description provided for @adminActionPartnerPaused.
+  ///
+  /// In en, this message translates to:
+  /// **'Partner paused'**
+  String get adminActionPartnerPaused;
+
+  /// No description provided for @adminActionPartnerDraft.
+  ///
+  /// In en, this message translates to:
+  /// **'Partner moved to draft'**
+  String get adminActionPartnerDraft;
+
+  /// No description provided for @adminActionPartnerRequest.
+  ///
+  /// In en, this message translates to:
+  /// **'Partnership application handled'**
+  String get adminActionPartnerRequest;
+
   /// No description provided for @calStepInstrument.
   ///
   /// In en, this message translates to:
