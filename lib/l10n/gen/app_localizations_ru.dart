@@ -1365,29 +1365,338 @@ class AppLocalizationsRu extends AppLocalizations {
   String get micTitle => 'Атлас микроскопии';
 
   @override
-  String get micNotice =>
-      'Место для изображения. Настоящие микрофотографии добавляются только после проверки прав и подписей.';
+  String get micSubtitle =>
+      'Моча, кровь и паразиты — лицензированные микрофотографии';
 
   @override
-  String get micRedCells => 'Эритроциты';
+  String get micAtlasError => 'Не удалось открыть атлас';
 
   @override
-  String get micWhiteCells => 'Лейкоциты';
+  String get micNotFound => 'Такое изображение или раздел не найдены';
 
   @override
-  String get micEpithelium => 'Эпителий';
+  String micImagesCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count снимка',
+      many: '$count снимков',
+      few: '$count снимка',
+      one: '$count снимок',
+    );
+    return '$_temp0';
+  }
 
   @override
-  String get micCasts => 'Цилиндры';
+  String micGapsCount(int count) {
+    return 'Без снимка пока: $count';
+  }
 
   @override
-  String get micCrystals => 'Кристаллы';
+  String micResultsCount(int count) {
+    return 'Найдено: $count';
+  }
 
   @override
-  String get micItemSub => 'Вид · различия · ограничения';
+  String get micSearchLabel => 'Поиск по атласу';
 
   @override
-  String get micImagePending => 'Права на изображение проверяются';
+  String get micSearchHint => 'Например: нейтрофил, oxalate, bezgak';
+
+  @override
+  String get micNoResultsTitle => 'Ничего не найдено';
+
+  @override
+  String get micNoResultsBody =>
+      'Попробуйте другое название или другой язык (uz, ru, en).';
+
+  @override
+  String get micSections => 'Разделы';
+
+  @override
+  String get micEduNotice =>
+      'Учебные изображения — не для диагностики. У каждого снимка указаны автор, лицензия и исходная подпись. Пояснения LabGuide — черновик, ожидают проверки специалиста.';
+
+  @override
+  String get micEduTag => 'Учебный снимок — не для диагностики';
+
+  @override
+  String get micNoImageYet => 'Лицензированного снимка пока нет';
+
+  @override
+  String get micGapWhy => 'Почему нет?';
+
+  @override
+  String get micAllGroups => 'Все';
+
+  @override
+  String get micSectionQuiz => 'Тренировка по этому разделу';
+
+  @override
+  String get micZoom => 'Увеличить';
+
+  @override
+  String micOpenFull(String name) {
+    return '$name — открыть на весь экран';
+  }
+
+  @override
+  String micImageSemantics(String name) {
+    return 'Микрофотография: $name';
+  }
+
+  @override
+  String get micNames => 'Название на трёх языках';
+
+  @override
+  String get micOriginalCaption => 'Исходная подпись';
+
+  @override
+  String micCaptionLang(String lang) {
+    return 'На языке источника, дословно · $lang';
+  }
+
+  @override
+  String get micTranslation => 'Перевод (LabGuide)';
+
+  @override
+  String get micLangEn => 'английский';
+
+  @override
+  String get micLangEs => 'испанский';
+
+  @override
+  String get micLangRu => 'русский';
+
+  @override
+  String get micPreparation => 'Препарат';
+
+  @override
+  String get micMagnification => 'Увеличение';
+
+  @override
+  String get micStain => 'Окраска';
+
+  @override
+  String get micNotStated => 'в источнике не указано';
+
+  @override
+  String get micOnlySource => 'Показано только то, что указано в источнике.';
+
+  @override
+  String get micDraftTitle => 'На что обратить внимание';
+
+  @override
+  String get micDraftTag => 'Черновик · ожидает проверки специалиста';
+
+  @override
+  String get micCreditTitle => 'Автор и лицензия';
+
+  @override
+  String get micAuthor => 'Автор';
+
+  @override
+  String get micCredit => 'Источник';
+
+  @override
+  String get micOwnWork => 'Собственная работа автора (Own work)';
+
+  @override
+  String get micLicense => 'Лицензия';
+
+  @override
+  String get micSourceDate => 'Дата в источнике';
+
+  @override
+  String micLicenseText(String license) {
+    return 'Текст лицензии: $license';
+  }
+
+  @override
+  String get micSourcePage => 'Страница источника';
+
+  @override
+  String get micOriginalFile => 'Исходный файл';
+
+  @override
+  String micResized(int width, int height, int origWidth, int origHeight) {
+    return 'Копия в приложении: $width×$height px (оригинал $origWidth×$origHeight px, только уменьшено). Без обрезки и надписей.';
+  }
+
+  @override
+  String micNotResized(int width, int height) {
+    return 'Копия в приложении: $width×$height px, в исходном размере. Без обрезки и надписей.';
+  }
+
+  @override
+  String get micShareAlike =>
+      'CC BY-SA: производные версии этого снимка распространяются под той же лицензией.';
+
+  @override
+  String get micCdcTerms =>
+      'Условия использования (со страницы CDC PHIL, дословно)';
+
+  @override
+  String get micCdcFree =>
+      'Бесплатный источник: CDC Public Health Image Library (PHIL), wwwn.cdc.gov/phil';
+
+  @override
+  String get micSameEntity => 'Другие снимки этого типа';
+
+  @override
+  String get micCreditsTitle => 'Авторы снимков';
+
+  @override
+  String get micCreditsSub => 'Лицензии и источники';
+
+  @override
+  String micCreditsIntro(String date) {
+    return 'Лицензия, автор и исходная подпись каждого снимка перепроверены на странице источника ($date). Снимки только уменьшены: без обрезки и надписей, EXIF удалён. Берутся только снимки CC0, CC BY, CC BY-SA, public domain и CDC PHIL.';
+  }
+
+  @override
+  String get micLicenseTexts => 'Тексты лицензий';
+
+  @override
+  String get micCreditsRow => 'Авторы и лицензии';
+
+  @override
+  String get micCreditsRowSub =>
+      'Источник и условия использования каждого снимка';
+
+  @override
+  String get micClose => 'Закрыть';
+
+  @override
+  String get micZoomIn => 'Увеличить';
+
+  @override
+  String get micZoomOut => 'Уменьшить';
+
+  @override
+  String get micZoomReset => 'Исходный вид';
+
+  @override
+  String get micViewerHint =>
+      'Увеличивайте двумя пальцами или двойным касанием';
+
+  @override
+  String get micHeroEyebrow => 'Тренировка';
+
+  @override
+  String get micQuizTitle => 'Что это?';
+
+  @override
+  String get micQuizSubtitle => 'Тренировка по микроскопии';
+
+  @override
+  String get micQuizHeroBody =>
+      'Посмотрите на снимок и выберите верное название: 4 варианта, все из атласа. Ответ — сразу.';
+
+  @override
+  String get micQuizCta => 'Начать тренировку';
+
+  @override
+  String get micQuizScope => 'Из какого раздела?';
+
+  @override
+  String micQuizScopeChip(String name, int count) {
+    return '$name · $count';
+  }
+
+  @override
+  String micQuizStart(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Начать · $count вопроса',
+      many: 'Начать · $count вопросов',
+      few: 'Начать · $count вопроса',
+      one: 'Начать · $count вопрос',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String micQuizBest(int correct, int total) {
+    return 'Лучший результат: $correct/$total';
+  }
+
+  @override
+  String get micQuizNoBest => 'Результата пока нет — начните первый раунд';
+
+  @override
+  String get micQuizRules =>
+      'Варианты берутся только из названий атласа. Смешанные поля и панели из журналов в тренировку не входят. Результат хранится только на этом устройстве.';
+
+  @override
+  String micQuizProgress(int current, int total) {
+    return '$current / $total';
+  }
+
+  @override
+  String micQuizStreak(int count) {
+    return '$count подряд';
+  }
+
+  @override
+  String get micQuizPromptArrow => 'Какая клетка отмечена стрелкой?';
+
+  @override
+  String get micQuizPromptCentre => 'Какая клетка в центре?';
+
+  @override
+  String get micQuizPromptField => 'Что в основном видно в этом поле?';
+
+  @override
+  String get micQuizCorrect => 'Верно!';
+
+  @override
+  String micQuizWrong(String answer) {
+    return 'Неверно. Правильный ответ: $answer';
+  }
+
+  @override
+  String get micQuizOpenCard => 'Открыть карточку снимка';
+
+  @override
+  String get micQuizTapToZoom => 'Нажмите на снимок, чтобы увеличить';
+
+  @override
+  String get micQuizResultGreat => 'Отличный результат!';
+
+  @override
+  String get micQuizResultGood => 'Хороший результат';
+
+  @override
+  String get micQuizResultKeep => 'Продолжайте тренироваться';
+
+  @override
+  String micQuizScore(int correct, int total) {
+    return 'Верно $correct из $total';
+  }
+
+  @override
+  String micQuizBestStreak(int count) {
+    return 'Лучшая серия: $count';
+  }
+
+  @override
+  String get micQuizNewRecord => 'Новый рекорд';
+
+  @override
+  String micQuizRetryMistakes(int count) {
+    return 'Повторить ошибки ($count)';
+  }
+
+  @override
+  String get micQuizNewRound => 'Новый раунд';
+
+  @override
+  String get micQuizChangeScope => 'Другой раздел';
+
+  @override
+  String get micQuizBackToAtlas => 'Вернуться в атлас';
 
   @override
   String get insTitle => 'Приборы';

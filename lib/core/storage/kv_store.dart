@@ -34,6 +34,7 @@ abstract final class StoreKeys {
   static const packsCatalog = 'packs.catalog';
   static const myInstruments = 'instruments.mine';
   static const calibrationLog = 'instruments.calibrations';
+  static const microscopyQuiz = 'microscopy.quiz';
 
   /// Hamkorlar ro'yxati keshi (internetsiz ham oxirgisi ko'rinadi).
   static const partnersCache = 'partners.cache';
@@ -57,6 +58,7 @@ abstract final class StoreKeys {
     packsCatalog,
     myInstruments,
     calibrationLog,
+    microscopyQuiz,
     partnersCache,
     libraryReading,
   };
