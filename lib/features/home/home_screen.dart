@@ -73,8 +73,6 @@ class RoleHome {
         'iron-deficiency-anemia',
         'hypothyroidism',
         'chronic-kidney-disease',
-        'myocardial-infarction',
-        'urinary-tract-infection',
       ],
     ),
     AppRole.lab => RoleHome(

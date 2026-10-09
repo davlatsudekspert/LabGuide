@@ -435,7 +435,10 @@ class _ConditionBody {
       LgPanel(
         child: Text(
           '${c.summary.text.of(lang)} ${cite(c.summary.refs)}',
-          style: text.bodyLarge,
+          style: text.bodyMedium!.copyWith(
+            color: LgPalette.of(context).ink,
+            height: 1.5,
+          ),
         ),
       ),
       for (final tier in PanelTier.values)
@@ -926,6 +929,8 @@ class _FakeSearchField extends StatelessWidget {
                 child: ExcludeSemantics(
                   child: Text(
                     hint,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                     style: text.bodyLarge!.copyWith(color: p.sub),
                   ),
                 ),
