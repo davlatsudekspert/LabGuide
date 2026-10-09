@@ -54,6 +54,7 @@ flutter:
     - assets/differential/
     - assets/microscopy/
     - assets/microscopy/img/
+    - assets/toifa/
 
   fonts:
     - family: Inter

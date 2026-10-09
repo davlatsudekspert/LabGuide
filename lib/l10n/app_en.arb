@@ -1916,6 +1916,423 @@
   },
   "learnExam": "Exam mode",
   "learnExamSub": "Time, topic and questions",
+  "toifaTopic": "{topic, select, safety_ethics{Safety and ethics} qc_lab_management{Quality control and management} preanalytics{Preanalytics} hematology_cells{Blood cells} hemopoiesis_leukemia{Haematopoiesis and leukaemia} anemias{Anaemias} hemostasis{Haemostasis} biochemistry_proteins_enzymes{Proteins and enzymes} carbohydrates_diabetes{Carbohydrates and diabetes} lipids{Lipids} liver_pigments{Liver and pigments} kidney_nitrogen{Kidney and nitrogen metabolism} water_electrolytes_acid_base{Water, electrolytes and acid–base} minerals_vitamins{Minerals and vitamins} hormones{Hormones} urinalysis{Urinalysis} stool_coprology{Stool examination} csf_body_fluids{CSF and body fluids} sputum_tb{Sputum and tuberculosis} cytology_gyn{Cytology} std_microscopy{STI microscopy} parasitology{Parasitology} immunology_serology{Immunology and serology} molecular_pcr{Molecular diagnostics (PCR)} tumor_markers{Tumour markers} cardiac_markers{Cardiac markers} orphan_screening{Screening and rare diseases} other{Other topics}}",
+  "@toifaTopic": {
+    "placeholders": {
+      "topic": {
+        "type": "String"
+      }
+    }
+  },
+  "toifaTitle": "Qualification category exam prep",
+  "toifaSubtitle": "Clinical laboratory diagnostics (CLD)",
+  "toifaEyebrow": "CLD · category",
+  "toifaEntryBody": "Questions from the official certification list: a 50-question test, topic practice, oral ticket and mistake review.",
+  "toifaEntryBodyShort": "Test, oral ticket and mistake review — based on the official list.",
+  "toifaEntryTagTest": "Test · 50 questions",
+  "toifaEntryTagOral": "Oral · 5 questions",
+  "toifaEntryTestActive": "Test in progress: {done} / {total} answered",
+  "@toifaEntryTestActive": {
+    "placeholders": {
+      "done": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "toifaEntryTicketActive": "Oral ticket in progress: {done} / {total}",
+  "@toifaEntryTicketActive": {
+    "placeholders": {
+      "done": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "toifaOpen": "Start preparing",
+  "toifaContinue": "Continue",
+  "toifaUzbekOnly": "Questions are in Uzbek",
+  "toifaUzbekNotice": "Certification questions are shown in Uzbek, as in the official list; buttons and hints use the interface language.",
+  "toifaLoadError": "Could not open the question bank",
+  "toifaYourCategory": "Your category",
+  "toifaCatSecond": "Category 3–2",
+  "toifaCatFirst": "First category",
+  "toifaCatHighest": "Highest category",
+  "toifaCategoryHint": "The oral ticket is drawn from this category’s list. Test questions are shared by all categories.",
+  "toifaReadyTest": "Test",
+  "toifaReadyOral": "Oral",
+  "toifaPrepare": "Preparation",
+  "toifaTestTitle": "Category test",
+  "toifaTestRowSub": "{count} random questions · {bank} in the bank",
+  "@toifaTestRowSub": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "bank": {
+        "type": "int"
+      }
+    }
+  },
+  "toifaPracticeTitle": "Topic practice",
+  "toifaPracticeRowSub": "{count} topics · key and note right after answering",
+  "@toifaPracticeRowSub": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "toifaOralTitle": "Oral ticket",
+  "toifaOralRowSub": "{category}: 5 of {count} questions",
+  "@toifaOralRowSub": {
+    "placeholders": {
+      "category": {
+        "type": "String"
+      },
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "toifaOralRowPick": "Choose your category first",
+  "toifaOralRowActive": "In progress: {done} / {total} rated",
+  "@toifaOralRowActive": {
+    "placeholders": {
+      "done": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "toifaMistakesTitle": "Mistake review",
+  "toifaMistakesRowSub": "Test mistakes: {tests} · oral “didn’t know”: {oral}",
+  "@toifaMistakesRowSub": {
+    "placeholders": {
+      "tests": {
+        "type": "int"
+      },
+      "oral": {
+        "type": "int"
+      }
+    }
+  },
+  "toifaMistakesRowEmpty": "No mistakes yet",
+  "toifaProgressTitle": "Progress",
+  "toifaProgressRowSub": "Results by topic and readiness",
+  "toifaAboutTitle": "Source and review",
+  "toifaListSource": "Source: official certification question list (CLD, 119)",
+  "toifaAboutList": "The list has {tests} test and {oral} oral questions (duplicates across categories merged).",
+  "@toifaAboutList": {
+    "placeholders": {
+      "tests": {
+        "type": "int"
+      },
+      "oral": {
+        "type": "int"
+      }
+    }
+  },
+  "toifaAboutKeys": "The key is the answer marked in the list, and scoring follows it. LabGuide found the key disputed in {disputed} questions and ambiguous in {ambiguous} — those show a note and source.",
+  "@toifaAboutKeys": {
+    "placeholders": {
+      "disputed": {
+        "type": "int"
+      },
+      "ambiguous": {
+        "type": "int"
+      }
+    }
+  },
+  "toifaAboutKeyless": "{count} questions have no key marked in the list — they are left out of tests and practice.",
+  "@toifaAboutKeyless": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "toifaAboutOral": "Oral answer plans are prepared by LabGuide and await expert review ({ready} / {total} plans with sources).",
+  "@toifaAboutOral": {
+    "placeholders": {
+      "ready": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "toifaTestSubtitle": "{count} questions · drawn from the official list",
+  "@toifaTestSubtitle": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "toifaFormatTitle": "Format",
+  "toifaFormatStep1": "{count} random questions out of {bank} in the bank.",
+  "@toifaFormatStep1": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "bank": {
+        "type": "int"
+      }
+    }
+  },
+  "toifaFormatStep2": "One answer per question; options in list order.",
+  "toifaFormatStep3": "At the end: mistake review with the official key and LabGuide note.",
+  "toifaTimeLabel": "Time, minutes",
+  "toifaNoTime": "No time limit",
+  "toifaTimeHelper": "No official time limit is set in the app — choose your own or leave empty.",
+  "toifaTimeError": "Enter 1 to 240 minutes or leave empty",
+  "toifaPassLabel": "Pass mark, %",
+  "toifaNoPass": "Not set",
+  "toifaPassHelper": "This is your own threshold, not the official pass mark.",
+  "toifaPassError": "Enter 1 to 100 % or leave empty",
+  "toifaScoringNotice": "Scoring follows the official key — that is what the exam expects. Where the key is disputed, the results also show a LabGuide note.",
+  "toifaTestStart": "Start test",
+  "toifaPracticeSubtitle": "Key right after each answer",
+  "toifaPracticeMixed": "Mixed: {count} questions",
+  "@toifaPracticeMixed": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "toifaPracticeMistakes": "Redo mistakes",
+  "toifaBackToTopics": "Topics",
+  "toifaPracticeRight": "Your answer matches the official key.",
+  "toifaPracticeWrong": "Your answer does not match the official key.",
+  "toifaListNumber": "No. {number}",
+  "@toifaListNumber": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      }
+    }
+  },
+  "toifaOfficialKey": "Official key",
+  "toifaLabGuideNote": "LabGuide note",
+  "toifaVerdictDisputed": "Key disputed",
+  "toifaVerdictAmbiguous": "Ambiguous question",
+  "toifaSuggested": "LabGuide suggests: {options}",
+  "@toifaSuggested": {
+    "placeholders": {
+      "options": {
+        "type": "String"
+      }
+    }
+  },
+  "toifaScoredByOfficial": "Scoring follows the official key — that answer is what the exam expects.",
+  "toifaNoOfficialKey": "No key is marked in the list — this question is not scored.",
+  "toifaNoteNoSource": "No source for this note (not verified).",
+  "toifaRelatedCards": "Related cards",
+  "toifaOralSubtitle": "{count} questions · prepare and self-assess",
+  "@toifaOralSubtitle": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "toifaOralPool": "{category}: {count} questions in the list",
+  "@toifaOralPool": {
+    "placeholders": {
+      "category": {
+        "type": "String"
+      },
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "toifaOralHowTitle": "How it works",
+  "toifaOralStep1": "{count} random questions from your category list.",
+  "@toifaOralStep1": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "toifaOralStep2": "Prepare your answers — in your head or on paper.",
+  "toifaOralStep3": "Check the answer plan and rate yourself: knew, partly or didn’t know.",
+  "toifaPlanDisclaimer": "Answer plans are prepared by LabGuide and await expert review. They are not official answers.",
+  "toifaPickCategoryFirst": "Choose a category first",
+  "toifaDrawTicket": "Draw a ticket",
+  "toifaTicketTitle": "Your ticket",
+  "toifaPrepHint": "Prepare an answer to each question. Then open the answer plans one by one and rate yourself.",
+  "toifaShowPlans": "View answer plan",
+  "toifaShowPlan": "View answer plan",
+  "toifaNewTicket": "New ticket",
+  "toifaNewTicketBody": "Five new questions replace the current ticket. Ratings you gave are kept.",
+  "toifaRevealHint": "First recall or write down your answer, then open the plan.",
+  "toifaPlanTitle": "Answer plan",
+  "toifaPlanPending": "Prepared by LabGuide, awaiting expert review",
+  "toifaPlanMissing": "The plan for this question is not ready yet.",
+  "toifaPlanNotChecked": "The plan is not fully checked against sources.",
+  "toifaReferenceTitle": "Reference interval (specimen, lab-specific)",
+  "toifaCutoffTitle": "Diagnostic cut-off (guideline)",
+  "toifaWrongLabel": "Wrong",
+  "toifaRightLabel": "Right",
+  "toifaNeedsSource": "Source needed — being checked with a teacher",
+  "toifaUnverifiedNote": "The note is not confirmed by a source — no answer is suggested.",
+  "toifaAgentChecked": "Agent review: {date} (not expert-approved)",
+  "@toifaAgentChecked": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "toifaHeld": "Being clarified",
+  "toifaHeldBody": "Until the wording is clarified, this question is left out of tickets and scoring.",
+  "toifaAboutHeld": "{count} question(s) are left out of tickets and tests until clarified.",
+  "@toifaAboutHeld": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "toifaPitfallsTitle": "Outdated / common mistake",
+  "toifaRateTitle": "Rate yourself",
+  "toifaRateHint": "The rating stays on this device and appears in Mistake review.",
+  "toifaRateKnew": "Knew it",
+  "toifaRatePartial": "Partly",
+  "toifaRateUnknown": "Didn’t know",
+  "toifaTicketDone": "Ticket complete",
+  "toifaTicketSummary": "Knew: {knew} · partly: {partial} · didn’t know: {unknown}",
+  "@toifaTicketSummary": {
+    "placeholders": {
+      "knew": {
+        "type": "int"
+      },
+      "partial": {
+        "type": "int"
+      },
+      "unknown": {
+        "type": "int"
+      }
+    }
+  },
+  "toifaRatingsSaved": "Ratings saved. Tap a question to reopen the plan and change the rating.",
+  "toifaRatingSaved": "Rating saved",
+  "toifaMistakesSubtitle": "Test mistakes and oral questions",
+  "toifaMistakesEmpty": "No mistakes yet",
+  "toifaMistakesEmptyBody": "Questions you got wrong in tests or practice and oral questions rated “didn’t know” collect here.",
+  "toifaMistakesTests": "Test mistakes · {count}",
+  "@toifaMistakesTests": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "toifaMistakesOralUnknown": "Oral: didn’t know · {count}",
+  "@toifaMistakesOralUnknown": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "toifaMistakesOralPartial": "Oral: partly · {count}",
+  "@toifaMistakesOralPartial": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "toifaMoreMistakes": "{count} more mistakes — practise them via Redo mistakes.",
+  "@toifaMoreMistakes": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "toifaNothingHere": "Nothing here yet.",
+  "toifaProgressSubtitle": "Results by topic and readiness",
+  "toifaReadyTitle": "Estimated readiness",
+  "toifaReadyCaption": "Average of test and oral results. A LabGuide estimate, not an official grade.",
+  "toifaReadyTestDetail": "Test: {done} / {total} questions mastered",
+  "@toifaReadyTestDetail": {
+    "placeholders": {
+      "done": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "toifaReadyOralDetail": "Oral: {done} / {total} “knew it”",
+  "@toifaReadyOralDetail": {
+    "placeholders": {
+      "done": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "toifaProgressPickCategory": "Oral results use your category list — choose a category:",
+  "toifaRecentTests": "Recent tests",
+  "toifaPassedShort": "Passed",
+  "toifaNotPassedShort": "Below mark",
+  "toifaByTopicNote": "Weakest topics first. Test — questions last answered correctly; oral — rated “knew it”.",
+  "toifaBarTest": "Test: {done} / {total}",
+  "@toifaBarTest": {
+    "placeholders": {
+      "done": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "toifaBarOral": "Oral: {done} / {total}",
+  "@toifaBarOral": {
+    "placeholders": {
+      "done": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "examPassMet": "Mark reached (≥{percent}%)",
+  "@examPassMet": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "examPassMissed": "Below your mark ({percent}%)",
+  "@examPassMissed": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
   "learnLessonPlan": "Lesson plan",
   "learnLessonPlanSub": "Teacher workspace",
   "quizProgress": "Question {current} of {total}",

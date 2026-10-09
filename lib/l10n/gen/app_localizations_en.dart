@@ -3624,6 +3624,536 @@ class AppLocalizationsEn extends AppLocalizations {
   String get learnExamSub => 'Time, topic and questions';
 
   @override
+  String toifaTopic(String topic) {
+    String _temp0 = intl.Intl.selectLogic(topic, {
+      'safety_ethics': 'Safety and ethics',
+      'qc_lab_management': 'Quality control and management',
+      'preanalytics': 'Preanalytics',
+      'hematology_cells': 'Blood cells',
+      'hemopoiesis_leukemia': 'Haematopoiesis and leukaemia',
+      'anemias': 'Anaemias',
+      'hemostasis': 'Haemostasis',
+      'biochemistry_proteins_enzymes': 'Proteins and enzymes',
+      'carbohydrates_diabetes': 'Carbohydrates and diabetes',
+      'lipids': 'Lipids',
+      'liver_pigments': 'Liver and pigments',
+      'kidney_nitrogen': 'Kidney and nitrogen metabolism',
+      'water_electrolytes_acid_base': 'Water, electrolytes and acid–base',
+      'minerals_vitamins': 'Minerals and vitamins',
+      'hormones': 'Hormones',
+      'urinalysis': 'Urinalysis',
+      'stool_coprology': 'Stool examination',
+      'csf_body_fluids': 'CSF and body fluids',
+      'sputum_tb': 'Sputum and tuberculosis',
+      'cytology_gyn': 'Cytology',
+      'std_microscopy': 'STI microscopy',
+      'parasitology': 'Parasitology',
+      'immunology_serology': 'Immunology and serology',
+      'molecular_pcr': 'Molecular diagnostics (PCR)',
+      'tumor_markers': 'Tumour markers',
+      'cardiac_markers': 'Cardiac markers',
+      'orphan_screening': 'Screening and rare diseases',
+      'other': 'Other topics',
+    });
+    return '$_temp0';
+  }
+
+  @override
+  String get toifaTitle => 'Qualification category exam prep';
+
+  @override
+  String get toifaSubtitle => 'Clinical laboratory diagnostics (CLD)';
+
+  @override
+  String get toifaEyebrow => 'CLD · category';
+
+  @override
+  String get toifaEntryBody =>
+      'Questions from the official certification list: a 50-question test, topic practice, oral ticket and mistake review.';
+
+  @override
+  String get toifaEntryBodyShort =>
+      'Test, oral ticket and mistake review — based on the official list.';
+
+  @override
+  String get toifaEntryTagTest => 'Test · 50 questions';
+
+  @override
+  String get toifaEntryTagOral => 'Oral · 5 questions';
+
+  @override
+  String toifaEntryTestActive(int done, int total) {
+    return 'Test in progress: $done / $total answered';
+  }
+
+  @override
+  String toifaEntryTicketActive(int done, int total) {
+    return 'Oral ticket in progress: $done / $total';
+  }
+
+  @override
+  String get toifaOpen => 'Start preparing';
+
+  @override
+  String get toifaContinue => 'Continue';
+
+  @override
+  String get toifaUzbekOnly => 'Questions are in Uzbek';
+
+  @override
+  String get toifaUzbekNotice =>
+      'Certification questions are shown in Uzbek, as in the official list; buttons and hints use the interface language.';
+
+  @override
+  String get toifaLoadError => 'Could not open the question bank';
+
+  @override
+  String get toifaYourCategory => 'Your category';
+
+  @override
+  String get toifaCatSecond => 'Category 3–2';
+
+  @override
+  String get toifaCatFirst => 'First category';
+
+  @override
+  String get toifaCatHighest => 'Highest category';
+
+  @override
+  String get toifaCategoryHint =>
+      'The oral ticket is drawn from this category’s list. Test questions are shared by all categories.';
+
+  @override
+  String get toifaReadyTest => 'Test';
+
+  @override
+  String get toifaReadyOral => 'Oral';
+
+  @override
+  String get toifaPrepare => 'Preparation';
+
+  @override
+  String get toifaTestTitle => 'Category test';
+
+  @override
+  String toifaTestRowSub(int count, int bank) {
+    return '$count random questions · $bank in the bank';
+  }
+
+  @override
+  String get toifaPracticeTitle => 'Topic practice';
+
+  @override
+  String toifaPracticeRowSub(int count) {
+    return '$count topics · key and note right after answering';
+  }
+
+  @override
+  String get toifaOralTitle => 'Oral ticket';
+
+  @override
+  String toifaOralRowSub(String category, int count) {
+    return '$category: 5 of $count questions';
+  }
+
+  @override
+  String get toifaOralRowPick => 'Choose your category first';
+
+  @override
+  String toifaOralRowActive(int done, int total) {
+    return 'In progress: $done / $total rated';
+  }
+
+  @override
+  String get toifaMistakesTitle => 'Mistake review';
+
+  @override
+  String toifaMistakesRowSub(int tests, int oral) {
+    return 'Test mistakes: $tests · oral “didn’t know”: $oral';
+  }
+
+  @override
+  String get toifaMistakesRowEmpty => 'No mistakes yet';
+
+  @override
+  String get toifaProgressTitle => 'Progress';
+
+  @override
+  String get toifaProgressRowSub => 'Results by topic and readiness';
+
+  @override
+  String get toifaAboutTitle => 'Source and review';
+
+  @override
+  String get toifaListSource =>
+      'Source: official certification question list (CLD, 119)';
+
+  @override
+  String toifaAboutList(int tests, int oral) {
+    return 'The list has $tests test and $oral oral questions (duplicates across categories merged).';
+  }
+
+  @override
+  String toifaAboutKeys(int disputed, int ambiguous) {
+    return 'The key is the answer marked in the list, and scoring follows it. LabGuide found the key disputed in $disputed questions and ambiguous in $ambiguous — those show a note and source.';
+  }
+
+  @override
+  String toifaAboutKeyless(int count) {
+    return '$count questions have no key marked in the list — they are left out of tests and practice.';
+  }
+
+  @override
+  String toifaAboutOral(int ready, int total) {
+    return 'Oral answer plans are prepared by LabGuide and await expert review ($ready / $total plans with sources).';
+  }
+
+  @override
+  String toifaTestSubtitle(int count) {
+    return '$count questions · drawn from the official list';
+  }
+
+  @override
+  String get toifaFormatTitle => 'Format';
+
+  @override
+  String toifaFormatStep1(int count, int bank) {
+    return '$count random questions out of $bank in the bank.';
+  }
+
+  @override
+  String get toifaFormatStep2 =>
+      'One answer per question; options in list order.';
+
+  @override
+  String get toifaFormatStep3 =>
+      'At the end: mistake review with the official key and LabGuide note.';
+
+  @override
+  String get toifaTimeLabel => 'Time, minutes';
+
+  @override
+  String get toifaNoTime => 'No time limit';
+
+  @override
+  String get toifaTimeHelper =>
+      'No official time limit is set in the app — choose your own or leave empty.';
+
+  @override
+  String get toifaTimeError => 'Enter 1 to 240 minutes or leave empty';
+
+  @override
+  String get toifaPassLabel => 'Pass mark, %';
+
+  @override
+  String get toifaNoPass => 'Not set';
+
+  @override
+  String get toifaPassHelper =>
+      'This is your own threshold, not the official pass mark.';
+
+  @override
+  String get toifaPassError => 'Enter 1 to 100 % or leave empty';
+
+  @override
+  String get toifaScoringNotice =>
+      'Scoring follows the official key — that is what the exam expects. Where the key is disputed, the results also show a LabGuide note.';
+
+  @override
+  String get toifaTestStart => 'Start test';
+
+  @override
+  String get toifaPracticeSubtitle => 'Key right after each answer';
+
+  @override
+  String toifaPracticeMixed(int count) {
+    return 'Mixed: $count questions';
+  }
+
+  @override
+  String get toifaPracticeMistakes => 'Redo mistakes';
+
+  @override
+  String get toifaBackToTopics => 'Topics';
+
+  @override
+  String get toifaPracticeRight => 'Your answer matches the official key.';
+
+  @override
+  String get toifaPracticeWrong =>
+      'Your answer does not match the official key.';
+
+  @override
+  String toifaListNumber(int number) {
+    return 'No. $number';
+  }
+
+  @override
+  String get toifaOfficialKey => 'Official key';
+
+  @override
+  String get toifaLabGuideNote => 'LabGuide note';
+
+  @override
+  String get toifaVerdictDisputed => 'Key disputed';
+
+  @override
+  String get toifaVerdictAmbiguous => 'Ambiguous question';
+
+  @override
+  String toifaSuggested(String options) {
+    return 'LabGuide suggests: $options';
+  }
+
+  @override
+  String get toifaScoredByOfficial =>
+      'Scoring follows the official key — that answer is what the exam expects.';
+
+  @override
+  String get toifaNoOfficialKey =>
+      'No key is marked in the list — this question is not scored.';
+
+  @override
+  String get toifaNoteNoSource => 'No source for this note (not verified).';
+
+  @override
+  String get toifaRelatedCards => 'Related cards';
+
+  @override
+  String toifaOralSubtitle(int count) {
+    return '$count questions · prepare and self-assess';
+  }
+
+  @override
+  String toifaOralPool(String category, int count) {
+    return '$category: $count questions in the list';
+  }
+
+  @override
+  String get toifaOralHowTitle => 'How it works';
+
+  @override
+  String toifaOralStep1(int count) {
+    return '$count random questions from your category list.';
+  }
+
+  @override
+  String get toifaOralStep2 =>
+      'Prepare your answers — in your head or on paper.';
+
+  @override
+  String get toifaOralStep3 =>
+      'Check the answer plan and rate yourself: knew, partly or didn’t know.';
+
+  @override
+  String get toifaPlanDisclaimer =>
+      'Answer plans are prepared by LabGuide and await expert review. They are not official answers.';
+
+  @override
+  String get toifaPickCategoryFirst => 'Choose a category first';
+
+  @override
+  String get toifaDrawTicket => 'Draw a ticket';
+
+  @override
+  String get toifaTicketTitle => 'Your ticket';
+
+  @override
+  String get toifaPrepHint =>
+      'Prepare an answer to each question. Then open the answer plans one by one and rate yourself.';
+
+  @override
+  String get toifaShowPlans => 'View answer plan';
+
+  @override
+  String get toifaShowPlan => 'View answer plan';
+
+  @override
+  String get toifaNewTicket => 'New ticket';
+
+  @override
+  String get toifaNewTicketBody =>
+      'Five new questions replace the current ticket. Ratings you gave are kept.';
+
+  @override
+  String get toifaRevealHint =>
+      'First recall or write down your answer, then open the plan.';
+
+  @override
+  String get toifaPlanTitle => 'Answer plan';
+
+  @override
+  String get toifaPlanPending => 'Prepared by LabGuide, awaiting expert review';
+
+  @override
+  String get toifaPlanMissing => 'The plan for this question is not ready yet.';
+
+  @override
+  String get toifaPlanNotChecked =>
+      'The plan is not fully checked against sources.';
+
+  @override
+  String get toifaReferenceTitle =>
+      'Reference interval (specimen, lab-specific)';
+
+  @override
+  String get toifaCutoffTitle => 'Diagnostic cut-off (guideline)';
+
+  @override
+  String get toifaWrongLabel => 'Wrong';
+
+  @override
+  String get toifaRightLabel => 'Right';
+
+  @override
+  String get toifaNeedsSource => 'Source needed — being checked with a teacher';
+
+  @override
+  String get toifaUnverifiedNote =>
+      'The note is not confirmed by a source — no answer is suggested.';
+
+  @override
+  String toifaAgentChecked(String date) {
+    return 'Agent review: $date (not expert-approved)';
+  }
+
+  @override
+  String get toifaHeld => 'Being clarified';
+
+  @override
+  String get toifaHeldBody =>
+      'Until the wording is clarified, this question is left out of tickets and scoring.';
+
+  @override
+  String toifaAboutHeld(int count) {
+    return '$count question(s) are left out of tickets and tests until clarified.';
+  }
+
+  @override
+  String get toifaPitfallsTitle => 'Outdated / common mistake';
+
+  @override
+  String get toifaRateTitle => 'Rate yourself';
+
+  @override
+  String get toifaRateHint =>
+      'The rating stays on this device and appears in Mistake review.';
+
+  @override
+  String get toifaRateKnew => 'Knew it';
+
+  @override
+  String get toifaRatePartial => 'Partly';
+
+  @override
+  String get toifaRateUnknown => 'Didn’t know';
+
+  @override
+  String get toifaTicketDone => 'Ticket complete';
+
+  @override
+  String toifaTicketSummary(int knew, int partial, int unknown) {
+    return 'Knew: $knew · partly: $partial · didn’t know: $unknown';
+  }
+
+  @override
+  String get toifaRatingsSaved =>
+      'Ratings saved. Tap a question to reopen the plan and change the rating.';
+
+  @override
+  String get toifaRatingSaved => 'Rating saved';
+
+  @override
+  String get toifaMistakesSubtitle => 'Test mistakes and oral questions';
+
+  @override
+  String get toifaMistakesEmpty => 'No mistakes yet';
+
+  @override
+  String get toifaMistakesEmptyBody =>
+      'Questions you got wrong in tests or practice and oral questions rated “didn’t know” collect here.';
+
+  @override
+  String toifaMistakesTests(int count) {
+    return 'Test mistakes · $count';
+  }
+
+  @override
+  String toifaMistakesOralUnknown(int count) {
+    return 'Oral: didn’t know · $count';
+  }
+
+  @override
+  String toifaMistakesOralPartial(int count) {
+    return 'Oral: partly · $count';
+  }
+
+  @override
+  String toifaMoreMistakes(int count) {
+    return '$count more mistakes — practise them via Redo mistakes.';
+  }
+
+  @override
+  String get toifaNothingHere => 'Nothing here yet.';
+
+  @override
+  String get toifaProgressSubtitle => 'Results by topic and readiness';
+
+  @override
+  String get toifaReadyTitle => 'Estimated readiness';
+
+  @override
+  String get toifaReadyCaption =>
+      'Average of test and oral results. A LabGuide estimate, not an official grade.';
+
+  @override
+  String toifaReadyTestDetail(int done, int total) {
+    return 'Test: $done / $total questions mastered';
+  }
+
+  @override
+  String toifaReadyOralDetail(int done, int total) {
+    return 'Oral: $done / $total “knew it”';
+  }
+
+  @override
+  String get toifaProgressPickCategory =>
+      'Oral results use your category list — choose a category:';
+
+  @override
+  String get toifaRecentTests => 'Recent tests';
+
+  @override
+  String get toifaPassedShort => 'Passed';
+
+  @override
+  String get toifaNotPassedShort => 'Below mark';
+
+  @override
+  String get toifaByTopicNote =>
+      'Weakest topics first. Test — questions last answered correctly; oral — rated “knew it”.';
+
+  @override
+  String toifaBarTest(int done, int total) {
+    return 'Test: $done / $total';
+  }
+
+  @override
+  String toifaBarOral(int done, int total) {
+    return 'Oral: $done / $total';
+  }
+
+  @override
+  String examPassMet(int percent) {
+    return 'Mark reached (≥$percent%)';
+  }
+
+  @override
+  String examPassMissed(int percent) {
+    return 'Below your mark ($percent%)';
+  }
+
+  @override
   String get learnLessonPlan => 'Lesson plan';
 
   @override

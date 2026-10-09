@@ -93,6 +93,7 @@ class ExamSession {
     this.assignmentId,
     this.groupId,
     this.userId,
+    this.passPercent,
     List<List<int>?>? answers,
     Set<int>? flags,
     this._index = 0,
@@ -116,12 +117,18 @@ class ExamSession {
     String? assignmentId,
     String? groupId,
     String? userId,
+    int? passPercent,
+    bool shuffleOptions = true,
   }) {
     final items = [
       for (final (i, q) in questions.indexed)
         ExamItem(
           questionId: q.id,
-          order: List.generate(q.optionCount, (k) => k)..shuffle(random),
+          // Rasmiy savollarda variantlar tartibi saqlanadi (“Hammasi
+          // to'g'ri” kabi variantlar o'z o'rnida bo'lishi kerak).
+          order: shuffleOptions
+              ? (List.generate(q.optionCount, (k) => k)..shuffle(random))
+              : List.generate(q.optionCount, (k) => k),
           correct: q.correct.toList()..sort(),
           position: i,
           topicIds: q.topicIds,
@@ -145,6 +152,7 @@ class ExamSession {
       assignmentId: assignmentId,
       groupId: groupId,
       userId: userId,
+      passPercent: passPercent,
     );
   }
 
@@ -182,6 +190,7 @@ class ExamSession {
       assignmentId: j['assignment'] as String?,
       groupId: j['group'] as String?,
       userId: j['user'] as String?,
+      passPercent: j['pass'] as int?,
       answers: answers,
       flags: (j['flags'] as List? ?? const []).cast<int>().toSet(),
       index: (j['index'] as int? ?? 0).clamp(0, max(0, items.length - 1)),
@@ -214,6 +223,12 @@ class ExamSession {
 
   /// Topshiriqni boshlagan hisob (boshqa hisobga ko'rsatilmaydi).
   final String? userId;
+
+  /// Foydalanuvchi tanlagan o'tish chegarasi, % (bo'lmasa — null).
+  final int? passPercent;
+
+  /// Chegaraga yetdimi (chegara tanlanmagan bo'lsa — null).
+  bool? get passed => passPercent == null ? null : percent >= passPercent!;
 
   /// Har savolga tanlangan asl variant(lar), o'sish tartibida (javobsiz —
   /// null).
@@ -371,6 +386,7 @@ class ExamSession {
     'assignment': assignmentId,
     'group': groupId,
     'user': userId,
+    'pass': passPercent,
     'answers': _answers,
     'flags': flags.toList()..sort(),
     'index': _index,

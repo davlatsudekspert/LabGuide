@@ -18,6 +18,7 @@ import '../features/library/reading_controller.dart';
 import '../features/packs/packs_controller.dart';
 import '../features/qc/qc_controller.dart';
 import '../features/settings/settings_controller.dart';
+import '../features/toifa/toifa_controller.dart';
 
 /// Build va siyosat sozlamalari. Biznes qarorlari (masalan, qurilmalar
 /// soni) kodga qotirilmaydi — shu yerda, keyin remote config'dan keladi.
@@ -66,6 +67,7 @@ class AppServices {
     required this.access,
     required this.partners,
     required this.entitlements,
+    required this.toifa,
     required this.differential,
   });
 
@@ -100,6 +102,8 @@ class AppServices {
 
   /// Pro huquqlari (build rejimi, server, imzolangan oflayn kesh).
   final EntitlementService entitlements;
+  /// Toifa imtihoniga tayyorgarlik (faqat O'zbekiston foydalanuvchilariga).
+  final ToifaController toifa;
 
   /// Leykoformula hisoblagichi va natijalar tarixi (faqat qurilmada).
   final DifferentialController differential;
@@ -150,6 +154,7 @@ class AppServices {
     partners.resetInMemory();
     reading.resetInMemory();
     entitlements.resetInMemory();
+    toifa.resetInMemory();
     differential.resetInMemory();
     await packs.removeAll();
     settings.resetToDefaults(systemLocales);

@@ -159,8 +159,13 @@ class ExamController extends ChangeNotifier {
     await _saveActive();
   }
 
-  Future<void> clearHistory() async {
-    _history.clear();
+  /// Tarixni tozalash ([sourceId] berilsa — faqat shu bank natijalari).
+  Future<void> clearHistory({String? sourceId}) async {
+    if (sourceId == null) {
+      _history.clear();
+    } else {
+      _history.removeWhere((s) => s.sourceId == sourceId);
+    }
     notifyListeners();
     await _saveHistory();
   }

@@ -11,6 +11,7 @@ import '../auth/ui/welcome_screen.dart';
 import '../content/ui/conditions_screens.dart';
 import '../content/ui/content_widgets.dart';
 import '../settings/settings_controller.dart';
+import '../toifa/toifa_screens.dart';
 
 /// Bosh sahifadagi bitta tezkor amal.
 class HomeAction {
@@ -202,6 +203,10 @@ class HomeScreen extends StatelessWidget {
                   ),
               ],
             ),
+            // Laborant uchun tezkor amal: toifa imtihoniga tayyorgarlik
+            // (faqat O'zbekiston foydalanuvchilariga).
+            if (role == AppRole.lab && toifaVisible(context))
+              const ToifaEntryCard(compact: true),
             LgSectionTitle(l.homeUsefulTests),
             ContentGate(
               builder: (context, pack) {

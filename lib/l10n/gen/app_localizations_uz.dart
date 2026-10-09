@@ -3580,6 +3580,538 @@ class AppLocalizationsUz extends AppLocalizations {
   String get learnExamSub => 'Vaqt, mavzu va savollar';
 
   @override
+  String toifaTopic(String topic) {
+    String _temp0 = intl.Intl.selectLogic(topic, {
+      'safety_ethics': 'Xavfsizlik va etika',
+      'qc_lab_management': 'Sifat nazorati va boshqaruv',
+      'preanalytics': 'Preanalitika',
+      'hematology_cells': 'Qon hujayralari',
+      'hemopoiesis_leukemia': 'Qon yaratilishi va leykozlar',
+      'anemias': 'Anemiyalar',
+      'hemostasis': 'Gemostaz',
+      'biochemistry_proteins_enzymes': 'Oqsillar va fermentlar',
+      'carbohydrates_diabetes': 'Uglevodlar va diabet',
+      'lipids': 'Lipidlar',
+      'liver_pigments': 'Jigar va pigmentlar',
+      'kidney_nitrogen': 'Buyrak va azot almashinuvi',
+      'water_electrolytes_acid_base': 'Suv-elektrolit va kislota-asos',
+      'minerals_vitamins': 'Minerallar va vitaminlar',
+      'hormones': 'Gormonlar',
+      'urinalysis': 'Siydik tahlili',
+      'stool_coprology': 'Koprologiya',
+      'csf_body_fluids': 'Likvor va biologik suyuqliklar',
+      'sputum_tb': 'Balg‘am va sil',
+      'cytology_gyn': 'Sitologiya',
+      'std_microscopy': 'JYYI mikroskopiyasi',
+      'parasitology': 'Parazitologiya',
+      'immunology_serology': 'Immunologiya va serologiya',
+      'molecular_pcr': 'Molekulyar diagnostika (PZR)',
+      'tumor_markers': 'O‘sma markerlari',
+      'cardiac_markers': 'Kardiomarkerlar',
+      'orphan_screening': 'Skrining va orfan kasalliklar',
+      'other': 'Boshqa mavzular',
+    });
+    return '$_temp0';
+  }
+
+  @override
+  String get toifaTitle => 'Toifa imtihoniga tayyorgarlik';
+
+  @override
+  String get toifaSubtitle => 'Klinik laboratoriya diagnostikasi (KDL)';
+
+  @override
+  String get toifaEyebrow => 'KDL · malaka toifasi';
+
+  @override
+  String get toifaEntryBody =>
+      'Rasmiy attestatsiya ro‘yxatidagi savollar: 50 savollik test, mavzu bo‘yicha mashq, og‘zaki bilet va xatolar ustida ishlash.';
+
+  @override
+  String get toifaEntryBodyShort =>
+      'Test, og‘zaki bilet va xatolar ustida ishlash — rasmiy ro‘yxat asosida.';
+
+  @override
+  String get toifaEntryTagTest => 'Test · 50 savol';
+
+  @override
+  String get toifaEntryTagOral => 'Og‘zaki · 5 savol';
+
+  @override
+  String toifaEntryTestActive(int done, int total) {
+    return 'Test davom etmoqda: $done / $total javob';
+  }
+
+  @override
+  String toifaEntryTicketActive(int done, int total) {
+    return 'Og‘zaki bilet davom etmoqda: $done / $total';
+  }
+
+  @override
+  String get toifaOpen => 'Tayyorgarlikni boshlash';
+
+  @override
+  String get toifaContinue => 'Davom ettirish';
+
+  @override
+  String get toifaUzbekOnly => 'Savollar o‘zbek tilida';
+
+  @override
+  String get toifaUzbekNotice =>
+      'Attestatsiya savollari rasmiy ro‘yxatdagidek o‘zbek tilida ko‘rsatiladi; tugmalar va izohlar interfeys tilida.';
+
+  @override
+  String get toifaLoadError => 'Savollar bankini ochib bo‘lmadi';
+
+  @override
+  String get toifaYourCategory => 'Toifangiz';
+
+  @override
+  String get toifaCatSecond => '3–2-toifa';
+
+  @override
+  String get toifaCatFirst => '1-toifa';
+
+  @override
+  String get toifaCatHighest => 'Oliy toifa';
+
+  @override
+  String get toifaCategoryHint =>
+      'Og‘zaki bilet shu toifa ro‘yxatidan tuziladi. Test savollari barcha toifalar uchun umumiy.';
+
+  @override
+  String get toifaReadyTest => 'Test';
+
+  @override
+  String get toifaReadyOral => 'Og‘zaki';
+
+  @override
+  String get toifaPrepare => 'Tayyorgarlik';
+
+  @override
+  String get toifaTestTitle => 'Toifa testi';
+
+  @override
+  String toifaTestRowSub(int count, int bank) {
+    return '$count ta tasodifiy savol · bankda $bank ta';
+  }
+
+  @override
+  String get toifaPracticeTitle => 'Mavzu bo‘yicha mashq';
+
+  @override
+  String toifaPracticeRowSub(int count) {
+    return '$count ta mavzu · javobdan keyin kalit va izoh';
+  }
+
+  @override
+  String get toifaOralTitle => 'Og‘zaki bilet';
+
+  @override
+  String toifaOralRowSub(String category, int count) {
+    return '$category: $count ta savoldan 5 tasi';
+  }
+
+  @override
+  String get toifaOralRowPick => 'Avval toifangizni tanlang';
+
+  @override
+  String toifaOralRowActive(int done, int total) {
+    return 'Davom etmoqda: $done / $total baholandi';
+  }
+
+  @override
+  String get toifaMistakesTitle => 'Xatolar ustida ishlash';
+
+  @override
+  String toifaMistakesRowSub(int tests, int oral) {
+    return 'Test xatolari: $tests · og‘zaki “bilmadim”: $oral';
+  }
+
+  @override
+  String get toifaMistakesRowEmpty => 'Hozircha xato yo‘q';
+
+  @override
+  String get toifaProgressTitle => 'Rivojlanish';
+
+  @override
+  String get toifaProgressRowSub => 'Mavzular bo‘yicha natija va tayyorlik';
+
+  @override
+  String get toifaAboutTitle => 'Manba va tekshiruv';
+
+  @override
+  String get toifaListSource =>
+      'Manba: Rasmiy attestatsiya savollari ro‘yxati (KDL, 119)';
+
+  @override
+  String toifaAboutList(int tests, int oral) {
+    return 'Ro‘yxatda $tests ta test va $oral ta og‘zaki savol (toifalar bo‘yicha takrorlar birlashtirilgan).';
+  }
+
+  @override
+  String toifaAboutKeys(int disputed, int ambiguous) {
+    return 'Kalit — ro‘yxatda belgilangan javob, ball shu bo‘yicha hisoblanadi. LabGuide $disputed ta savolda kalitni bahsli, $ambiguous tasida noaniq deb topdi — ularda izoh va manba ko‘rsatiladi.';
+  }
+
+  @override
+  String toifaAboutKeyless(int count) {
+    return '$count ta savolda ro‘yxatda kalit belgilanmagan — ular test va mashqqa kiritilmadi.';
+  }
+
+  @override
+  String toifaAboutOral(int ready, int total) {
+    return 'Og‘zaki javob rejalari — LabGuide tayyorlagan, mutaxassis tekshiruvi kutilmoqda ($ready / $total ta reja manbalar bilan).';
+  }
+
+  @override
+  String toifaTestSubtitle(int count) {
+    return '$count ta savol · rasmiy ro‘yxatdan tasodifiy';
+  }
+
+  @override
+  String get toifaFormatTitle => 'Format';
+
+  @override
+  String toifaFormatStep1(int count, int bank) {
+    return 'Bankdagi $bank ta savoldan tasodifiy $count tasi.';
+  }
+
+  @override
+  String get toifaFormatStep2 =>
+      'Har savolda bitta javob; variantlar ro‘yxatdagi tartibda.';
+
+  @override
+  String get toifaFormatStep3 =>
+      'Yakunda xatolar tahlili: rasmiy kalit va LabGuide izohi.';
+
+  @override
+  String get toifaTimeLabel => 'Vaqt, daqiqa';
+
+  @override
+  String get toifaNoTime => 'Vaqtsiz';
+
+  @override
+  String get toifaTimeHelper =>
+      'Rasmiy vaqt chegarasi ilovada belgilanmagan — o‘zingiz tanlang yoki bo‘sh qoldiring.';
+
+  @override
+  String get toifaTimeError =>
+      '1 dan 240 gacha daqiqa kiriting yoki bo‘sh qoldiring';
+
+  @override
+  String get toifaPassLabel => 'O‘tish chegarasi, %';
+
+  @override
+  String get toifaNoPass => 'Belgilanmagan';
+
+  @override
+  String get toifaPassHelper =>
+      'Bu siz tanlagan chegara, rasmiy o‘tish bali emas.';
+
+  @override
+  String get toifaPassError =>
+      '1 dan 100 gacha foiz kiriting yoki bo‘sh qoldiring';
+
+  @override
+  String get toifaScoringNotice =>
+      'Ball rasmiy kalit bo‘yicha hisoblanadi — imtihonda shu javob talab qilinadi. Kalit bahsli savollarda natijada LabGuide izohi ham ko‘rsatiladi.';
+
+  @override
+  String get toifaTestStart => 'Testni boshlash';
+
+  @override
+  String get toifaPracticeSubtitle => 'Javobdan keyin darhol kalit';
+
+  @override
+  String toifaPracticeMixed(int count) {
+    return 'Aralash: $count ta savol';
+  }
+
+  @override
+  String get toifaPracticeMistakes => 'Xatolarni qayta ishlash';
+
+  @override
+  String get toifaBackToTopics => 'Mavzular';
+
+  @override
+  String get toifaPracticeRight => 'Javobingiz rasmiy kalitga mos.';
+
+  @override
+  String get toifaPracticeWrong => 'Javobingiz rasmiy kalitga mos emas.';
+
+  @override
+  String toifaListNumber(int number) {
+    return '№ $number';
+  }
+
+  @override
+  String get toifaOfficialKey => 'Rasmiy kalit';
+
+  @override
+  String get toifaLabGuideNote => 'LabGuide izohi';
+
+  @override
+  String get toifaVerdictDisputed => 'Kalit bahsli';
+
+  @override
+  String get toifaVerdictAmbiguous => 'Savol noaniq';
+
+  @override
+  String toifaSuggested(String options) {
+    return 'LabGuide fikricha: $options';
+  }
+
+  @override
+  String get toifaScoredByOfficial =>
+      'Ball rasmiy kalit bo‘yicha hisoblanadi — imtihonda shu javob talab qilinadi.';
+
+  @override
+  String get toifaNoOfficialKey =>
+      'Ro‘yxatda kalit belgilanmagan — bu savol baholanmaydi.';
+
+  @override
+  String get toifaNoteNoSource =>
+      'Izoh uchun manba ko‘rsatilmagan (tekshirilmadi).';
+
+  @override
+  String get toifaRelatedCards => 'Bog‘liq kartalar';
+
+  @override
+  String toifaOralSubtitle(int count) {
+    return '$count ta savol · tayyorlanish va o‘zini baholash';
+  }
+
+  @override
+  String toifaOralPool(String category, int count) {
+    return '$category: ro‘yxatda $count ta savol';
+  }
+
+  @override
+  String get toifaOralHowTitle => 'Qanday ishlaydi';
+
+  @override
+  String toifaOralStep1(int count) {
+    return 'Toifangiz ro‘yxatidan tasodifiy $count ta savol.';
+  }
+
+  @override
+  String get toifaOralStep2 => 'Javoblarni o‘ylab yoki yozib tayyorlaning.';
+
+  @override
+  String get toifaOralStep3 =>
+      'Javob rejasini ko‘rib, o‘zingizni baholang: bildim, qisman yoki bilmadim.';
+
+  @override
+  String get toifaPlanDisclaimer =>
+      'Javob rejalari LabGuide tayyorlagan, mutaxassis tekshiruvi kutilmoqda. Ular rasmiy javob emas.';
+
+  @override
+  String get toifaPickCategoryFirst => 'Avval toifani tanlang';
+
+  @override
+  String get toifaDrawTicket => 'Bilet olish';
+
+  @override
+  String get toifaTicketTitle => 'Biletingiz';
+
+  @override
+  String get toifaPrepHint =>
+      'Har savolga javobingizni tayyorlang. Tayyor bo‘lgach, javob rejalarini birma-bir ko‘rib, o‘zingizni baholaysiz.';
+
+  @override
+  String get toifaShowPlans => 'Javob rejasini ko‘rish';
+
+  @override
+  String get toifaShowPlan => 'Javob rejasini ko‘rish';
+
+  @override
+  String get toifaNewTicket => 'Yangi bilet';
+
+  @override
+  String get toifaNewTicketBody =>
+      'Joriy bilet o‘rniga yangi 5 ta savol olinadi. Berilgan baholar saqlanib qoladi.';
+
+  @override
+  String get toifaRevealHint =>
+      'Avval javobingizni eslang yoki yozib oling, so‘ng rejani oching.';
+
+  @override
+  String get toifaPlanTitle => 'Javob rejasi';
+
+  @override
+  String get toifaPlanPending =>
+      'LabGuide tayyorlagan, mutaxassis tekshiruvi kutilmoqda';
+
+  @override
+  String get toifaPlanMissing => 'Bu savol uchun reja hali tayyorlanmagan.';
+
+  @override
+  String get toifaPlanNotChecked =>
+      'Reja manbalar bilan to‘liq tekshirilmagan.';
+
+  @override
+  String get toifaReferenceTitle =>
+      'Referens interval (namuna, laboratoriyaga qarab)';
+
+  @override
+  String get toifaCutoffTitle => 'Diagnostik chegara (qo‘llanma)';
+
+  @override
+  String get toifaWrongLabel => 'Noto‘g‘ri';
+
+  @override
+  String get toifaRightLabel => 'To‘g‘ri';
+
+  @override
+  String get toifaNeedsSource => 'Manba kerak — ustozdan aniqlashtirilmoqda';
+
+  @override
+  String get toifaUnverifiedNote =>
+      'Izoh manba bilan tasdiqlanmagan — taklif berilmaydi.';
+
+  @override
+  String toifaAgentChecked(String date) {
+    return 'Agent tekshiruvi: $date (mutaxassis tasdig‘i emas)';
+  }
+
+  @override
+  String get toifaHeld => 'Aniqlashtirilmoqda';
+
+  @override
+  String get toifaHeldBody =>
+      'Savol matni aniqlashtirilguncha biletga va baholashga kirmaydi.';
+
+  @override
+  String toifaAboutHeld(int count) {
+    return '$count ta savol aniqlashtirilguncha bilet va testdan chiqarilgan.';
+  }
+
+  @override
+  String get toifaPitfallsTitle => 'Eskirgan / ko‘p uchraydigan xato';
+
+  @override
+  String get toifaRateTitle => 'O‘zingizni baholang';
+
+  @override
+  String get toifaRateHint =>
+      'Baho faqat shu qurilmada saqlanadi va “Xatolar ustida ishlash”da ko‘rinadi.';
+
+  @override
+  String get toifaRateKnew => 'Bildim';
+
+  @override
+  String get toifaRatePartial => 'Qisman';
+
+  @override
+  String get toifaRateUnknown => 'Bilmadim';
+
+  @override
+  String get toifaTicketDone => 'Bilet yakunlandi';
+
+  @override
+  String toifaTicketSummary(int knew, int partial, int unknown) {
+    return 'Bildim: $knew · qisman: $partial · bilmadim: $unknown';
+  }
+
+  @override
+  String get toifaRatingsSaved =>
+      'Baholar saqlandi. Savolni bosib rejani qayta ko‘rish va bahoni o‘zgartirish mumkin.';
+
+  @override
+  String get toifaRatingSaved => 'Baho saqlandi';
+
+  @override
+  String get toifaMistakesSubtitle => 'Test xatolari va og‘zaki savollar';
+
+  @override
+  String get toifaMistakesEmpty => 'Hozircha xato yo‘q';
+
+  @override
+  String get toifaMistakesEmptyBody =>
+      'Test yoki mashqda xato qilgan savollaringiz va og‘zaki biletda “bilmadim” degan savollaringiz shu yerda yig‘iladi.';
+
+  @override
+  String toifaMistakesTests(int count) {
+    return 'Test xatolari · $count';
+  }
+
+  @override
+  String toifaMistakesOralUnknown(int count) {
+    return 'Og‘zaki: bilmadim · $count';
+  }
+
+  @override
+  String toifaMistakesOralPartial(int count) {
+    return 'Og‘zaki: qisman · $count';
+  }
+
+  @override
+  String toifaMoreMistakes(int count) {
+    return 'Yana $count ta xato — “Xatolarni qayta ishlash” orqali mashq qiling.';
+  }
+
+  @override
+  String get toifaNothingHere => 'Bu yerda hozircha hech narsa yo‘q.';
+
+  @override
+  String get toifaProgressSubtitle => 'Mavzular bo‘yicha natija va tayyorlik';
+
+  @override
+  String get toifaReadyTitle => 'Taxminiy tayyorlik';
+
+  @override
+  String get toifaReadyCaption =>
+      'Test va og‘zaki natijalar o‘rtachasi. LabGuide hisobi — rasmiy baho emas.';
+
+  @override
+  String toifaReadyTestDetail(int done, int total) {
+    return 'Test: $done / $total savol o‘zlashtirildi';
+  }
+
+  @override
+  String toifaReadyOralDetail(int done, int total) {
+    return 'Og‘zaki: $done / $total “bildim”';
+  }
+
+  @override
+  String get toifaProgressPickCategory =>
+      'Og‘zaki natija toifangiz ro‘yxati bo‘yicha hisoblanadi — toifani tanlang:';
+
+  @override
+  String get toifaRecentTests => 'So‘nggi testlar';
+
+  @override
+  String get toifaPassedShort => 'Chegaradan o‘tdi';
+
+  @override
+  String get toifaNotPassedShort => 'Chegaraga yetmadi';
+
+  @override
+  String get toifaByTopicNote =>
+      'Eng zaif mavzular birinchi. Test — oxirgi javobi to‘g‘ri savollar; og‘zaki — “bildim” deb baholanganlar.';
+
+  @override
+  String toifaBarTest(int done, int total) {
+    return 'Test: $done / $total';
+  }
+
+  @override
+  String toifaBarOral(int done, int total) {
+    return 'Og‘zaki: $done / $total';
+  }
+
+  @override
+  String examPassMet(int percent) {
+    return 'Chegaradan o‘tdi (≥$percent%)';
+  }
+
+  @override
+  String examPassMissed(int percent) {
+    return 'Chegaraga yetmadi ($percent%)';
+  }
+
+  @override
   String get learnLessonPlan => 'Dars rejasi';
 
   @override

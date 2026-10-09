@@ -6430,6 +6430,816 @@ abstract class AppLocalizations {
   /// **'Time, topic and questions'**
   String get learnExamSub;
 
+  /// No description provided for @toifaTopic.
+  ///
+  /// In en, this message translates to:
+  /// **'{topic, select, safety_ethics{Safety and ethics} qc_lab_management{Quality control and management} preanalytics{Preanalytics} hematology_cells{Blood cells} hemopoiesis_leukemia{Haematopoiesis and leukaemia} anemias{Anaemias} hemostasis{Haemostasis} biochemistry_proteins_enzymes{Proteins and enzymes} carbohydrates_diabetes{Carbohydrates and diabetes} lipids{Lipids} liver_pigments{Liver and pigments} kidney_nitrogen{Kidney and nitrogen metabolism} water_electrolytes_acid_base{Water, electrolytes and acid–base} minerals_vitamins{Minerals and vitamins} hormones{Hormones} urinalysis{Urinalysis} stool_coprology{Stool examination} csf_body_fluids{CSF and body fluids} sputum_tb{Sputum and tuberculosis} cytology_gyn{Cytology} std_microscopy{STI microscopy} parasitology{Parasitology} immunology_serology{Immunology and serology} molecular_pcr{Molecular diagnostics (PCR)} tumor_markers{Tumour markers} cardiac_markers{Cardiac markers} orphan_screening{Screening and rare diseases} other{Other topics}}'**
+  String toifaTopic(String topic);
+
+  /// No description provided for @toifaTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Qualification category exam prep'**
+  String get toifaTitle;
+
+  /// No description provided for @toifaSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Clinical laboratory diagnostics (CLD)'**
+  String get toifaSubtitle;
+
+  /// No description provided for @toifaEyebrow.
+  ///
+  /// In en, this message translates to:
+  /// **'CLD · category'**
+  String get toifaEyebrow;
+
+  /// No description provided for @toifaEntryBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Questions from the official certification list: a 50-question test, topic practice, oral ticket and mistake review.'**
+  String get toifaEntryBody;
+
+  /// No description provided for @toifaEntryBodyShort.
+  ///
+  /// In en, this message translates to:
+  /// **'Test, oral ticket and mistake review — based on the official list.'**
+  String get toifaEntryBodyShort;
+
+  /// No description provided for @toifaEntryTagTest.
+  ///
+  /// In en, this message translates to:
+  /// **'Test · 50 questions'**
+  String get toifaEntryTagTest;
+
+  /// No description provided for @toifaEntryTagOral.
+  ///
+  /// In en, this message translates to:
+  /// **'Oral · 5 questions'**
+  String get toifaEntryTagOral;
+
+  /// No description provided for @toifaEntryTestActive.
+  ///
+  /// In en, this message translates to:
+  /// **'Test in progress: {done} / {total} answered'**
+  String toifaEntryTestActive(int done, int total);
+
+  /// No description provided for @toifaEntryTicketActive.
+  ///
+  /// In en, this message translates to:
+  /// **'Oral ticket in progress: {done} / {total}'**
+  String toifaEntryTicketActive(int done, int total);
+
+  /// No description provided for @toifaOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'Start preparing'**
+  String get toifaOpen;
+
+  /// No description provided for @toifaContinue.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get toifaContinue;
+
+  /// No description provided for @toifaUzbekOnly.
+  ///
+  /// In en, this message translates to:
+  /// **'Questions are in Uzbek'**
+  String get toifaUzbekOnly;
+
+  /// No description provided for @toifaUzbekNotice.
+  ///
+  /// In en, this message translates to:
+  /// **'Certification questions are shown in Uzbek, as in the official list; buttons and hints use the interface language.'**
+  String get toifaUzbekNotice;
+
+  /// No description provided for @toifaLoadError.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not open the question bank'**
+  String get toifaLoadError;
+
+  /// No description provided for @toifaYourCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'Your category'**
+  String get toifaYourCategory;
+
+  /// No description provided for @toifaCatSecond.
+  ///
+  /// In en, this message translates to:
+  /// **'Category 3–2'**
+  String get toifaCatSecond;
+
+  /// No description provided for @toifaCatFirst.
+  ///
+  /// In en, this message translates to:
+  /// **'First category'**
+  String get toifaCatFirst;
+
+  /// No description provided for @toifaCatHighest.
+  ///
+  /// In en, this message translates to:
+  /// **'Highest category'**
+  String get toifaCatHighest;
+
+  /// No description provided for @toifaCategoryHint.
+  ///
+  /// In en, this message translates to:
+  /// **'The oral ticket is drawn from this category’s list. Test questions are shared by all categories.'**
+  String get toifaCategoryHint;
+
+  /// No description provided for @toifaReadyTest.
+  ///
+  /// In en, this message translates to:
+  /// **'Test'**
+  String get toifaReadyTest;
+
+  /// No description provided for @toifaReadyOral.
+  ///
+  /// In en, this message translates to:
+  /// **'Oral'**
+  String get toifaReadyOral;
+
+  /// No description provided for @toifaPrepare.
+  ///
+  /// In en, this message translates to:
+  /// **'Preparation'**
+  String get toifaPrepare;
+
+  /// No description provided for @toifaTestTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Category test'**
+  String get toifaTestTitle;
+
+  /// No description provided for @toifaTestRowSub.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} random questions · {bank} in the bank'**
+  String toifaTestRowSub(int count, int bank);
+
+  /// No description provided for @toifaPracticeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Topic practice'**
+  String get toifaPracticeTitle;
+
+  /// No description provided for @toifaPracticeRowSub.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} topics · key and note right after answering'**
+  String toifaPracticeRowSub(int count);
+
+  /// No description provided for @toifaOralTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Oral ticket'**
+  String get toifaOralTitle;
+
+  /// No description provided for @toifaOralRowSub.
+  ///
+  /// In en, this message translates to:
+  /// **'{category}: 5 of {count} questions'**
+  String toifaOralRowSub(String category, int count);
+
+  /// No description provided for @toifaOralRowPick.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose your category first'**
+  String get toifaOralRowPick;
+
+  /// No description provided for @toifaOralRowActive.
+  ///
+  /// In en, this message translates to:
+  /// **'In progress: {done} / {total} rated'**
+  String toifaOralRowActive(int done, int total);
+
+  /// No description provided for @toifaMistakesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Mistake review'**
+  String get toifaMistakesTitle;
+
+  /// No description provided for @toifaMistakesRowSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Test mistakes: {tests} · oral “didn’t know”: {oral}'**
+  String toifaMistakesRowSub(int tests, int oral);
+
+  /// No description provided for @toifaMistakesRowEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No mistakes yet'**
+  String get toifaMistakesRowEmpty;
+
+  /// No description provided for @toifaProgressTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Progress'**
+  String get toifaProgressTitle;
+
+  /// No description provided for @toifaProgressRowSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Results by topic and readiness'**
+  String get toifaProgressRowSub;
+
+  /// No description provided for @toifaAboutTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Source and review'**
+  String get toifaAboutTitle;
+
+  /// No description provided for @toifaListSource.
+  ///
+  /// In en, this message translates to:
+  /// **'Source: official certification question list (CLD, 119)'**
+  String get toifaListSource;
+
+  /// No description provided for @toifaAboutList.
+  ///
+  /// In en, this message translates to:
+  /// **'The list has {tests} test and {oral} oral questions (duplicates across categories merged).'**
+  String toifaAboutList(int tests, int oral);
+
+  /// No description provided for @toifaAboutKeys.
+  ///
+  /// In en, this message translates to:
+  /// **'The key is the answer marked in the list, and scoring follows it. LabGuide found the key disputed in {disputed} questions and ambiguous in {ambiguous} — those show a note and source.'**
+  String toifaAboutKeys(int disputed, int ambiguous);
+
+  /// No description provided for @toifaAboutKeyless.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} questions have no key marked in the list — they are left out of tests and practice.'**
+  String toifaAboutKeyless(int count);
+
+  /// No description provided for @toifaAboutOral.
+  ///
+  /// In en, this message translates to:
+  /// **'Oral answer plans are prepared by LabGuide and await expert review ({ready} / {total} plans with sources).'**
+  String toifaAboutOral(int ready, int total);
+
+  /// No description provided for @toifaTestSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} questions · drawn from the official list'**
+  String toifaTestSubtitle(int count);
+
+  /// No description provided for @toifaFormatTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Format'**
+  String get toifaFormatTitle;
+
+  /// No description provided for @toifaFormatStep1.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} random questions out of {bank} in the bank.'**
+  String toifaFormatStep1(int count, int bank);
+
+  /// No description provided for @toifaFormatStep2.
+  ///
+  /// In en, this message translates to:
+  /// **'One answer per question; options in list order.'**
+  String get toifaFormatStep2;
+
+  /// No description provided for @toifaFormatStep3.
+  ///
+  /// In en, this message translates to:
+  /// **'At the end: mistake review with the official key and LabGuide note.'**
+  String get toifaFormatStep3;
+
+  /// No description provided for @toifaTimeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Time, minutes'**
+  String get toifaTimeLabel;
+
+  /// No description provided for @toifaNoTime.
+  ///
+  /// In en, this message translates to:
+  /// **'No time limit'**
+  String get toifaNoTime;
+
+  /// No description provided for @toifaTimeHelper.
+  ///
+  /// In en, this message translates to:
+  /// **'No official time limit is set in the app — choose your own or leave empty.'**
+  String get toifaTimeHelper;
+
+  /// No description provided for @toifaTimeError.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter 1 to 240 minutes or leave empty'**
+  String get toifaTimeError;
+
+  /// No description provided for @toifaPassLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Pass mark, %'**
+  String get toifaPassLabel;
+
+  /// No description provided for @toifaNoPass.
+  ///
+  /// In en, this message translates to:
+  /// **'Not set'**
+  String get toifaNoPass;
+
+  /// No description provided for @toifaPassHelper.
+  ///
+  /// In en, this message translates to:
+  /// **'This is your own threshold, not the official pass mark.'**
+  String get toifaPassHelper;
+
+  /// No description provided for @toifaPassError.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter 1 to 100 % or leave empty'**
+  String get toifaPassError;
+
+  /// No description provided for @toifaScoringNotice.
+  ///
+  /// In en, this message translates to:
+  /// **'Scoring follows the official key — that is what the exam expects. Where the key is disputed, the results also show a LabGuide note.'**
+  String get toifaScoringNotice;
+
+  /// No description provided for @toifaTestStart.
+  ///
+  /// In en, this message translates to:
+  /// **'Start test'**
+  String get toifaTestStart;
+
+  /// No description provided for @toifaPracticeSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Key right after each answer'**
+  String get toifaPracticeSubtitle;
+
+  /// No description provided for @toifaPracticeMixed.
+  ///
+  /// In en, this message translates to:
+  /// **'Mixed: {count} questions'**
+  String toifaPracticeMixed(int count);
+
+  /// No description provided for @toifaPracticeMistakes.
+  ///
+  /// In en, this message translates to:
+  /// **'Redo mistakes'**
+  String get toifaPracticeMistakes;
+
+  /// No description provided for @toifaBackToTopics.
+  ///
+  /// In en, this message translates to:
+  /// **'Topics'**
+  String get toifaBackToTopics;
+
+  /// No description provided for @toifaPracticeRight.
+  ///
+  /// In en, this message translates to:
+  /// **'Your answer matches the official key.'**
+  String get toifaPracticeRight;
+
+  /// No description provided for @toifaPracticeWrong.
+  ///
+  /// In en, this message translates to:
+  /// **'Your answer does not match the official key.'**
+  String get toifaPracticeWrong;
+
+  /// No description provided for @toifaListNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'No. {number}'**
+  String toifaListNumber(int number);
+
+  /// No description provided for @toifaOfficialKey.
+  ///
+  /// In en, this message translates to:
+  /// **'Official key'**
+  String get toifaOfficialKey;
+
+  /// No description provided for @toifaLabGuideNote.
+  ///
+  /// In en, this message translates to:
+  /// **'LabGuide note'**
+  String get toifaLabGuideNote;
+
+  /// No description provided for @toifaVerdictDisputed.
+  ///
+  /// In en, this message translates to:
+  /// **'Key disputed'**
+  String get toifaVerdictDisputed;
+
+  /// No description provided for @toifaVerdictAmbiguous.
+  ///
+  /// In en, this message translates to:
+  /// **'Ambiguous question'**
+  String get toifaVerdictAmbiguous;
+
+  /// No description provided for @toifaSuggested.
+  ///
+  /// In en, this message translates to:
+  /// **'LabGuide suggests: {options}'**
+  String toifaSuggested(String options);
+
+  /// No description provided for @toifaScoredByOfficial.
+  ///
+  /// In en, this message translates to:
+  /// **'Scoring follows the official key — that answer is what the exam expects.'**
+  String get toifaScoredByOfficial;
+
+  /// No description provided for @toifaNoOfficialKey.
+  ///
+  /// In en, this message translates to:
+  /// **'No key is marked in the list — this question is not scored.'**
+  String get toifaNoOfficialKey;
+
+  /// No description provided for @toifaNoteNoSource.
+  ///
+  /// In en, this message translates to:
+  /// **'No source for this note (not verified).'**
+  String get toifaNoteNoSource;
+
+  /// No description provided for @toifaRelatedCards.
+  ///
+  /// In en, this message translates to:
+  /// **'Related cards'**
+  String get toifaRelatedCards;
+
+  /// No description provided for @toifaOralSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} questions · prepare and self-assess'**
+  String toifaOralSubtitle(int count);
+
+  /// No description provided for @toifaOralPool.
+  ///
+  /// In en, this message translates to:
+  /// **'{category}: {count} questions in the list'**
+  String toifaOralPool(String category, int count);
+
+  /// No description provided for @toifaOralHowTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'How it works'**
+  String get toifaOralHowTitle;
+
+  /// No description provided for @toifaOralStep1.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} random questions from your category list.'**
+  String toifaOralStep1(int count);
+
+  /// No description provided for @toifaOralStep2.
+  ///
+  /// In en, this message translates to:
+  /// **'Prepare your answers — in your head or on paper.'**
+  String get toifaOralStep2;
+
+  /// No description provided for @toifaOralStep3.
+  ///
+  /// In en, this message translates to:
+  /// **'Check the answer plan and rate yourself: knew, partly or didn’t know.'**
+  String get toifaOralStep3;
+
+  /// No description provided for @toifaPlanDisclaimer.
+  ///
+  /// In en, this message translates to:
+  /// **'Answer plans are prepared by LabGuide and await expert review. They are not official answers.'**
+  String get toifaPlanDisclaimer;
+
+  /// No description provided for @toifaPickCategoryFirst.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a category first'**
+  String get toifaPickCategoryFirst;
+
+  /// No description provided for @toifaDrawTicket.
+  ///
+  /// In en, this message translates to:
+  /// **'Draw a ticket'**
+  String get toifaDrawTicket;
+
+  /// No description provided for @toifaTicketTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your ticket'**
+  String get toifaTicketTitle;
+
+  /// No description provided for @toifaPrepHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Prepare an answer to each question. Then open the answer plans one by one and rate yourself.'**
+  String get toifaPrepHint;
+
+  /// No description provided for @toifaShowPlans.
+  ///
+  /// In en, this message translates to:
+  /// **'View answer plan'**
+  String get toifaShowPlans;
+
+  /// No description provided for @toifaShowPlan.
+  ///
+  /// In en, this message translates to:
+  /// **'View answer plan'**
+  String get toifaShowPlan;
+
+  /// No description provided for @toifaNewTicket.
+  ///
+  /// In en, this message translates to:
+  /// **'New ticket'**
+  String get toifaNewTicket;
+
+  /// No description provided for @toifaNewTicketBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Five new questions replace the current ticket. Ratings you gave are kept.'**
+  String get toifaNewTicketBody;
+
+  /// No description provided for @toifaRevealHint.
+  ///
+  /// In en, this message translates to:
+  /// **'First recall or write down your answer, then open the plan.'**
+  String get toifaRevealHint;
+
+  /// No description provided for @toifaPlanTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Answer plan'**
+  String get toifaPlanTitle;
+
+  /// No description provided for @toifaPlanPending.
+  ///
+  /// In en, this message translates to:
+  /// **'Prepared by LabGuide, awaiting expert review'**
+  String get toifaPlanPending;
+
+  /// No description provided for @toifaPlanMissing.
+  ///
+  /// In en, this message translates to:
+  /// **'The plan for this question is not ready yet.'**
+  String get toifaPlanMissing;
+
+  /// No description provided for @toifaPlanNotChecked.
+  ///
+  /// In en, this message translates to:
+  /// **'The plan is not fully checked against sources.'**
+  String get toifaPlanNotChecked;
+
+  /// No description provided for @toifaReferenceTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Reference interval (specimen, lab-specific)'**
+  String get toifaReferenceTitle;
+
+  /// No description provided for @toifaCutoffTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Diagnostic cut-off (guideline)'**
+  String get toifaCutoffTitle;
+
+  /// No description provided for @toifaWrongLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Wrong'**
+  String get toifaWrongLabel;
+
+  /// No description provided for @toifaRightLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Right'**
+  String get toifaRightLabel;
+
+  /// No description provided for @toifaNeedsSource.
+  ///
+  /// In en, this message translates to:
+  /// **'Source needed — being checked with a teacher'**
+  String get toifaNeedsSource;
+
+  /// No description provided for @toifaUnverifiedNote.
+  ///
+  /// In en, this message translates to:
+  /// **'The note is not confirmed by a source — no answer is suggested.'**
+  String get toifaUnverifiedNote;
+
+  /// No description provided for @toifaAgentChecked.
+  ///
+  /// In en, this message translates to:
+  /// **'Agent review: {date} (not expert-approved)'**
+  String toifaAgentChecked(String date);
+
+  /// No description provided for @toifaHeld.
+  ///
+  /// In en, this message translates to:
+  /// **'Being clarified'**
+  String get toifaHeld;
+
+  /// No description provided for @toifaHeldBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Until the wording is clarified, this question is left out of tickets and scoring.'**
+  String get toifaHeldBody;
+
+  /// No description provided for @toifaAboutHeld.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} question(s) are left out of tickets and tests until clarified.'**
+  String toifaAboutHeld(int count);
+
+  /// No description provided for @toifaPitfallsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Outdated / common mistake'**
+  String get toifaPitfallsTitle;
+
+  /// No description provided for @toifaRateTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Rate yourself'**
+  String get toifaRateTitle;
+
+  /// No description provided for @toifaRateHint.
+  ///
+  /// In en, this message translates to:
+  /// **'The rating stays on this device and appears in Mistake review.'**
+  String get toifaRateHint;
+
+  /// No description provided for @toifaRateKnew.
+  ///
+  /// In en, this message translates to:
+  /// **'Knew it'**
+  String get toifaRateKnew;
+
+  /// No description provided for @toifaRatePartial.
+  ///
+  /// In en, this message translates to:
+  /// **'Partly'**
+  String get toifaRatePartial;
+
+  /// No description provided for @toifaRateUnknown.
+  ///
+  /// In en, this message translates to:
+  /// **'Didn’t know'**
+  String get toifaRateUnknown;
+
+  /// No description provided for @toifaTicketDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Ticket complete'**
+  String get toifaTicketDone;
+
+  /// No description provided for @toifaTicketSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Knew: {knew} · partly: {partial} · didn’t know: {unknown}'**
+  String toifaTicketSummary(int knew, int partial, int unknown);
+
+  /// No description provided for @toifaRatingsSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Ratings saved. Tap a question to reopen the plan and change the rating.'**
+  String get toifaRatingsSaved;
+
+  /// No description provided for @toifaRatingSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Rating saved'**
+  String get toifaRatingSaved;
+
+  /// No description provided for @toifaMistakesSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Test mistakes and oral questions'**
+  String get toifaMistakesSubtitle;
+
+  /// No description provided for @toifaMistakesEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No mistakes yet'**
+  String get toifaMistakesEmpty;
+
+  /// No description provided for @toifaMistakesEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Questions you got wrong in tests or practice and oral questions rated “didn’t know” collect here.'**
+  String get toifaMistakesEmptyBody;
+
+  /// No description provided for @toifaMistakesTests.
+  ///
+  /// In en, this message translates to:
+  /// **'Test mistakes · {count}'**
+  String toifaMistakesTests(int count);
+
+  /// No description provided for @toifaMistakesOralUnknown.
+  ///
+  /// In en, this message translates to:
+  /// **'Oral: didn’t know · {count}'**
+  String toifaMistakesOralUnknown(int count);
+
+  /// No description provided for @toifaMistakesOralPartial.
+  ///
+  /// In en, this message translates to:
+  /// **'Oral: partly · {count}'**
+  String toifaMistakesOralPartial(int count);
+
+  /// No description provided for @toifaMoreMistakes.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} more mistakes — practise them via Redo mistakes.'**
+  String toifaMoreMistakes(int count);
+
+  /// No description provided for @toifaNothingHere.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing here yet.'**
+  String get toifaNothingHere;
+
+  /// No description provided for @toifaProgressSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Results by topic and readiness'**
+  String get toifaProgressSubtitle;
+
+  /// No description provided for @toifaReadyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Estimated readiness'**
+  String get toifaReadyTitle;
+
+  /// No description provided for @toifaReadyCaption.
+  ///
+  /// In en, this message translates to:
+  /// **'Average of test and oral results. A LabGuide estimate, not an official grade.'**
+  String get toifaReadyCaption;
+
+  /// No description provided for @toifaReadyTestDetail.
+  ///
+  /// In en, this message translates to:
+  /// **'Test: {done} / {total} questions mastered'**
+  String toifaReadyTestDetail(int done, int total);
+
+  /// No description provided for @toifaReadyOralDetail.
+  ///
+  /// In en, this message translates to:
+  /// **'Oral: {done} / {total} “knew it”'**
+  String toifaReadyOralDetail(int done, int total);
+
+  /// No description provided for @toifaProgressPickCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'Oral results use your category list — choose a category:'**
+  String get toifaProgressPickCategory;
+
+  /// No description provided for @toifaRecentTests.
+  ///
+  /// In en, this message translates to:
+  /// **'Recent tests'**
+  String get toifaRecentTests;
+
+  /// No description provided for @toifaPassedShort.
+  ///
+  /// In en, this message translates to:
+  /// **'Passed'**
+  String get toifaPassedShort;
+
+  /// No description provided for @toifaNotPassedShort.
+  ///
+  /// In en, this message translates to:
+  /// **'Below mark'**
+  String get toifaNotPassedShort;
+
+  /// No description provided for @toifaByTopicNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Weakest topics first. Test — questions last answered correctly; oral — rated “knew it”.'**
+  String get toifaByTopicNote;
+
+  /// No description provided for @toifaBarTest.
+  ///
+  /// In en, this message translates to:
+  /// **'Test: {done} / {total}'**
+  String toifaBarTest(int done, int total);
+
+  /// No description provided for @toifaBarOral.
+  ///
+  /// In en, this message translates to:
+  /// **'Oral: {done} / {total}'**
+  String toifaBarOral(int done, int total);
+
+  /// No description provided for @examPassMet.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark reached (≥{percent}%)'**
+  String examPassMet(int percent);
+
+  /// No description provided for @examPassMissed.
+  ///
+  /// In en, this message translates to:
+  /// **'Below your mark ({percent}%)'**
+  String examPassMissed(int percent);
+
   /// No description provided for @learnLessonPlan.
   ///
   /// In en, this message translates to:

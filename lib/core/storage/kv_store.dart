@@ -47,6 +47,12 @@ abstract final class StoreKeys {
 
   /// Pro huquqlari: server javobining imzolangan, muddatli nusxasi.
   static const entitlementsCache = 'entitlements.cache';
+  /// Toifa imtihoniga tayyorgarlik: toifa, og'zaki baholar, bilet, test
+  /// sozlamalari.
+  static const toifaCategory = 'toifa.category';
+  static const toifaOral = 'toifa.oral';
+  static const toifaTicket = 'toifa.ticket';
+  static const toifaTestSettings = 'toifa.testSettings';
 
   /// Leykoformula: joriy sanash (qoralama) va saqlangan natijalar.
   static const differentialDraft = 'differential.draft';
@@ -75,6 +81,10 @@ abstract final class StoreKeys {
     partnersCache,
     libraryReading,
     entitlementsCache,
+    toifaCategory,
+    toifaOral,
+    toifaTicket,
+    toifaTestSettings,
     differentialDraft,
     differentialHistory,
   };

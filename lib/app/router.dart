@@ -1,3 +1,4 @@
+import 'package:flutter/scheduler.dart';
 import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
@@ -34,6 +35,8 @@ import '../features/qc/qc_screens.dart';
 import '../features/review/review_screens.dart';
 import '../features/settings/settings_controller.dart';
 import '../features/support/support_screens.dart';
+import '../features/toifa/toifa_bank.dart';
+import '../features/toifa/toifa_screens.dart';
 import '../features/tools/calc_info.dart';
 import '../features/tools/clinical_calc_screens.dart';
 import '../features/tools/manual_calc_info.dart';
@@ -580,6 +583,78 @@ GoRouter buildRouter(
                           resultId: state.pathParameters['id']!,
                         ),
                       ),
+                    ],
+                  ),
+                  // Toifa imtihoniga tayyorgarlik — faqat O'zbekiston
+                  // foydalanuvchilariga (til uz yoki mintaqa UZ); boshqalar
+                  // to'g'ridan-to'g'ri manzil bilan ham kira olmaydi.
+                  GoRoute(
+                    path: 'toifa',
+                    redirect: (context, state) =>
+                        toifaAvailable(
+                          settings.language,
+                          SchedulerBinding.instance.platformDispatcher.locales,
+                        )
+                        ? null
+                        : '/learn',
+                    builder: (context, state) => const ToifaHubScreen(),
+                    routes: [
+                      GoRoute(
+                        path: 'test',
+                        builder: (context, state) => const ToifaTestScreen(),
+                        routes: [
+                          GoRoute(
+                            path: 'run',
+                            parentNavigatorKey: rootKey,
+                            builder: (context, state) =>
+                                const ExamRunScreen(base: '$toifaBase/test'),
+                          ),
+                          GoRoute(
+                            path: 'result/:id',
+                            builder: (context, state) => ExamResultScreen(
+                              resultId: state.pathParameters['id']!,
+                              base: '$toifaBase/test',
+                            ),
+                          ),
+                        ],
+                      ),
+                      GoRoute(
+                        path: 'practice',
+                        builder: (context, state) =>
+                            const ToifaPracticeListScreen(),
+                        routes: [
+                          GoRoute(
+                            path: ':scope',
+                            builder: (context, state) => ToifaPracticeScreen(
+                              scope: state.pathParameters['scope']!,
+                            ),
+                          ),
+                        ],
+                      ),
+                      GoRoute(
+                        path: 'oral',
+                        builder: (context, state) => const ToifaOralScreen(),
+                        routes: [
+                          GoRoute(
+                            path: 'q/:id',
+                            builder: (context, state) =>
+                                ToifaOralQuestionScreen(
+                                  id: state.pathParameters['id']!,
+                                ),
+                          ),
+                        ],
+                      ),
+                      GoRoute(
+                        path: 'mistakes',
+                        builder: (context, state) =>
+                            const ToifaMistakesScreen(),
+                      ),
+                      GoRoute(
+                        path: 'progress',
+                        builder: (context, state) =>
+                            const ToifaProgressScreen(),
+                      ),
+                      ...analyteRoutes(),
                     ],
                   ),
                   // Guruhlar: har ekran ClassesGate bilan (server/hisob).

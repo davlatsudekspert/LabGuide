@@ -32,6 +32,71 @@ abstract interface class ExamQuestion {
   List<SourceRef> get refs;
 }
 
+/// Tashqi manba havolasi (kontent paketida bo'lmagan banklar uchun).
+@immutable
+class ExamLink {
+  const ExamLink(this.url, [this.locator]);
+
+  final String url;
+
+  /// Manbaning qaysi joyi (bo'lim, jadval) — bo'lmasa null.
+  final String? locator;
+}
+
+/// Rasmiy kalitni LabGuide tekshirgani: `ok` — kalit to'g'ri; `disputed` —
+/// kalit tibbiy jihatdan noto'g'ri yoki belgilanmagan; `ambiguous` — savol
+/// noaniq yoki bir nechta javob to'g'ri.
+enum KeyVerdict { ok, disputed, ambiguous }
+
+/// Kalit tekshiruvi: ball baribir rasmiy kalit bo'yicha hisoblanadi
+/// (imtihonda shu talab qilinadi), izoh esa alohida ko'rsatiladi.
+@immutable
+class KeyCheck {
+  const KeyCheck({
+    required this.verdict,
+    this.note,
+    this.suggested = const [],
+    this.links = const [],
+    this.unverified = false,
+  });
+
+  final KeyVerdict verdict;
+
+  /// Izoh manba bilan tasdiqlanmagan — belgilanadi, taklif javob sifatida
+  /// ko'rsatilmaydi.
+  final bool unverified;
+
+  /// LabGuide izohi (bo'lmasa — null).
+  final String? note;
+
+  /// LabGuide fikricha to'g'ri variant(lar) (asl indekslar; bo'sh — taklif
+  /// yo'q).
+  final List<int> suggested;
+
+  /// Izoh tayangan manbalar.
+  final List<ExamLink> links;
+
+  /// Kalit bahsli yoki noaniq — rasmiy kalit va izoh ikkalasi ko'rsatiladi.
+  bool get flagged => verdict != KeyVerdict.ok;
+}
+
+/// Ixtiyoriy imkoniyat: rasmiy ro'yxatdan olingan savol. [ExamQuestion.correct]
+/// — ro'yxatdagi kalit; [keyCheck] — LabGuide tekshiruvi.
+abstract interface class OfficialKeyQuestion implements ExamQuestion {
+  KeyCheck get keyCheck;
+
+  /// Ro'yxatdagi tartib raqami (izohlarda “212-savol” kabi havola uchun).
+  int get number;
+}
+
+extension ExamQuestionKeyX on ExamQuestion {
+  /// Rasmiy kalitli savol bo'lsa — tekshiruv, aks holda null.
+  KeyCheck? get officialKeyCheck => switch (this) {
+    final OfficialKeyQuestion q => q.keyCheck,
+    _ => null,
+  };
+}
+
 /// Mavzu: tanlash chiplari va mavzu bo'yicha natija tahlili uchun.
 @immutable
 class ExamTopic {

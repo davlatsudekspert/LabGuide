@@ -12,6 +12,8 @@ import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
 import '../content/ui/content_widgets.dart';
+import '../toifa/toifa_bank.dart';
+import '../toifa/toifa_controller.dart';
 import 'exam_question.dart';
 import 'exam_session.dart';
 
@@ -26,8 +28,7 @@ String formatClock(Duration d) {
       : '$m:$sec'.padLeft(5, '0');
 }
 
-/// Sessiya savollari banki. Hozircha — kontent paketi; yangi bank (masalan,
-/// toifa imtihoni) qo'shilganda shu yerga ulanadi.
+/// Sessiya savollari banki: kontent paketi yoki toifa imtihoni banki.
 class ExamSourceGate extends StatelessWidget {
   const ExamSourceGate({
     super.key,
@@ -47,17 +48,71 @@ class ExamSourceGate extends StatelessWidget {
             builder(context, PackQuestionSource.of(pack)),
       );
     }
+    if (sourceId == ToifaQuestionSource.sourceId) {
+      return ToifaBankGate(
+        builder: (context, bank) => builder(context, bank.source),
+      );
+    }
     final l = AppLocalizations.of(context);
     return LgStateView(kind: StateKind.error, title: l.examSourceMissing);
   }
 }
 
+/// Toifa banki yuklanguncha — holat bloki; buzilgan bo'lsa — xato va qayta
+/// urinish.
+class ToifaBankGate extends StatefulWidget {
+  const ToifaBankGate({super.key, required this.builder});
+
+  final Widget Function(BuildContext context, ToifaBank bank) builder;
+
+  @override
+  State<ToifaBankGate> createState() => _ToifaBankGateState();
+}
+
+class _ToifaBankGateState extends State<ToifaBankGate> {
+  @override
+  void initState() {
+    super.initState();
+    context.services.toifa.ensureLoaded();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context);
+    final c = context.services.toifa;
+    return ListenableBuilder(
+      listenable: c,
+      builder: (context, _) {
+        final bank = c.bank;
+        if (bank != null) return widget.builder(context, bank);
+        if (c.state == ToifaLoadState.failed) {
+          return LgStateView(
+            kind: StateKind.error,
+            title: l.toifaLoadError,
+            actionLabel: l.actionRetry,
+            onAction: c.retry,
+          );
+        }
+        return const LgStateView(kind: StateKind.loading, title: '');
+      },
+    );
+  }
+}
+
 /// Joriy savollar manbasi (yuklanmagan bo'lsa — null).
 ExamQuestionSource? examSourceOf(BuildContext context, String sourceId) {
+  if (sourceId == ToifaQuestionSource.sourceId) {
+    return context.services.toifa.bank?.source;
+  }
   if (sourceId != PackQuestionSource.sourceId) return null;
   final pack = context.services.content.pack;
   return pack == null ? null : PackQuestionSource.of(pack);
 }
+
+/// Imtihon bo'limi manzili: toifa testi o'z bo'limida ochiladi va yakunlanadi.
+String examBase(String sourceId) => sourceId == ToifaQuestionSource.sourceId
+    ? '/learn/toifa/test'
+    : '/learn/exam';
 
 /// Sessiya sarlavhasi: topshiriq nomi yoki tanlangan mavzular.
 String examSessionTitle(
@@ -68,6 +123,9 @@ String examSessionTitle(
 ) {
   if (s.title != null) return s.title!;
   if (s.mode == ExamMode.rework) return l.examReworkTitle;
+  if (s.sourceId == ToifaQuestionSource.sourceId && s.topicIds.isEmpty) {
+    return l.toifaTestTitle;
+  }
   if (s.topicIds.isEmpty || source == null) return l.examTitleAll;
   final topics = {for (final t in source.topics) t.id: t};
   final names = [
@@ -116,7 +174,10 @@ void showSnack(BuildContext context, String message) {
 /// Imtihon javoblari “xatolar ustida ishlash” uchun mashq tarixiga ham
 /// yoziladi (faqat javob berilganlari).
 Future<void> recordExamProgress(AppServices services, ExamSession s) async {
-  if (s.sourceId != PackQuestionSource.sourceId) return;
+  if (s.sourceId != PackQuestionSource.sourceId &&
+      s.sourceId != ToifaQuestionSource.sourceId) {
+    return;
+  }
   for (var i = 0; i < s.items.length; i++) {
     if (!s.isAnswered(i)) continue;
     await services.quizProgress.record(
@@ -375,6 +436,12 @@ class _ExamRunnerState extends State<ExamRunner> {
                                       LgTag(
                                         l.quizDraftTag,
                                         tone: LgTone.warning,
+                                      ),
+                                    // Rasmiy ro'yxatdagi raqam.
+                                    if (q is OfficialKeyQuestion)
+                                      LgTag(
+                                        l.toifaListNumber(q.number),
+                                        tone: LgTone.neutral,
                                       ),
                                   ],
                                 ),
@@ -960,6 +1027,7 @@ class ScoreHero extends StatelessWidget {
     this.badges = const [],
     this.caption,
     this.title,
+    this.ringLabel,
   });
 
   final int correct;
@@ -970,6 +1038,9 @@ class ScoreHero extends StatelessWidget {
   final Duration? limit;
   final List<Widget> badges;
   final String? caption;
+
+  /// Halqa ichidagi izoh (berilmasa — “to'g'ri / jami”; bo'sh — izohsiz).
+  final String? ringLabel;
 
   /// Sarlavha (berilmasa — natijaga qarab motivatsion jumla; ustoz
   /// talaba natijasini ko'rganda — neytral sarlavha).
@@ -1007,11 +1078,13 @@ class ScoreHero extends StatelessWidget {
           child: Column(
             children: [
               Semantics(
-                label: '$percent%. ${l.quizScore(correct, total)}',
+                label: ringLabel == null
+                    ? '$percent%. ${l.quizScore(correct, total)}'
+                    : '$percent%',
                 child: ExcludeSemantics(
                   child: _ScoreRing(
                     percent: percent,
-                    label: '$correct / $total',
+                    label: ringLabel ?? '$correct / $total',
                   ),
                 ),
               ),
@@ -1106,7 +1179,7 @@ class _ScoreRing extends StatelessWidget {
                       fontFeatures: const [FontFeature.tabularFigures()],
                     ),
                   ),
-                  Text(label, style: text.bodySmall),
+                  if (label.isNotEmpty) Text(label, style: text.bodySmall),
                 ],
               ),
             ),
@@ -1218,6 +1291,7 @@ class ExamReviewCard extends StatelessWidget {
     required this.chosen,
     required this.correct,
     this.chosenLabel,
+    this.showChosen = true,
   });
 
   final int number;
@@ -1232,6 +1306,10 @@ class ExamReviewCard extends StatelessWidget {
   /// “Sizning javobingiz” o'rniga (ustoz ko'rinishida — “Talaba javobi”).
   final String? chosenLabel;
 
+  /// Berilgan javob ma'lum emas (masalan, xatolar ro'yxati) — holat va
+  /// javob qatori ko'rsatilmaydi, faqat kalit.
+  final bool showChosen;
+
   @override
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context);
@@ -1239,13 +1317,19 @@ class ExamReviewCard extends StatelessWidget {
     final text = Theme.of(context).textTheme;
     final lang = Localizations.localeOf(context).languageCode;
     final q = question;
+    final check = q?.officialKeyCheck;
     final picked = [...?chosen]..sort();
     final right = [...correct]..sort();
     final ok = listEquals(picked, right);
     final none = picked.isEmpty;
+    // Rasmiy ro'yxat savollarida variantlar aralashtirilmaydi — izohlar
+    // A–D harflariga tayanadi, shuning uchun harf bilan ko'rsatiladi.
     String options(List<int> idx) => [
       for (final i in idx)
-        if (q != null && i >= 0 && i < q.optionCount) q.option(i, lang),
+        if (q != null && i >= 0 && i < q.optionCount)
+          check == null
+              ? q.option(i, lang)
+              : '${optionLetter(i)}) ${q.option(i, lang)}',
     ].join('; ');
     final status = ok
         ? LgTag(l.examCorrectN, icon: Icons.check_rounded)
@@ -1268,9 +1352,11 @@ class ExamReviewCard extends StatelessWidget {
             crossAxisAlignment: WrapCrossAlignment.center,
             children: [
               LgEyebrow(l.examQuestionN(number)),
-              status,
+              if (showChosen) status,
               if (q?.isDraft ?? false)
                 LgTag(l.quizDraftTag, tone: LgTone.neutral),
+              if (check != null && check.flagged)
+                KeyVerdictTag(verdict: check.verdict),
             ],
           ),
           const SizedBox(height: 8),
@@ -1279,7 +1365,7 @@ class ExamReviewCard extends StatelessWidget {
           else ...[
             Text(q.prompt(lang), style: text.titleMedium),
             const SizedBox(height: 12),
-            if (!ok)
+            if (!ok && showChosen)
               _AnswerLine(
                 icon: none
                     ? Icons.remove_circle_outline_rounded
@@ -1291,40 +1377,205 @@ class ExamReviewCard extends StatelessWidget {
             _AnswerLine(
               icon: Icons.check_circle_rounded,
               color: p.brand,
-              label: l.quizCorrectAnswer,
+              label: check != null && check.flagged
+                  ? l.toifaOfficialKey
+                  : l.quizCorrectAnswer,
               value: options(right),
             ),
-            const SizedBox(height: 8),
-            for (final i in right)
-              if (q.explanation(i, lang) case final e?)
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 6),
-                  child: Text(e, style: text.bodyMedium),
-                ),
-            if (!ok)
-              for (final i in wrongPicked)
+            if (q is OfficialKeyQuestion) ...[
+              KeyCheckNote(question: q),
+              const OfficialListSource(),
+            ] else ...[
+              const SizedBox(height: 8),
+              for (final i in right)
                 if (q.explanation(i, lang) case final e?)
                   Padding(
                     padding: const EdgeInsets.only(bottom: 6),
-                    child: Text(
-                      '${l.examWhyWrong}: $e',
-                      style: text.bodyMedium!.copyWith(color: p.sub),
-                    ),
+                    child: Text(e, style: text.bodyMedium),
                   ),
-            if (right.every((i) => q.explanation(i, lang) == null))
-              Text(
-                l.examNoExplanation,
-                style: text.bodySmall!.copyWith(color: p.amber),
-              ),
-            if (q.basis(lang) case final b?) ...[
-              const SizedBox(height: 4),
-              Text(
-                l.quizBasis(b),
-                style: text.bodySmall!.copyWith(color: p.sub),
-              ),
+              if (!ok)
+                for (final i in wrongPicked)
+                  if (q.explanation(i, lang) case final e?)
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 6),
+                      child: Text(
+                        '${l.examWhyWrong}: $e',
+                        style: text.bodyMedium!.copyWith(color: p.sub),
+                      ),
+                    ),
+              if (right.every((i) => q.explanation(i, lang) == null))
+                Text(
+                  l.examNoExplanation,
+                  style: text.bodySmall!.copyWith(color: p.amber),
+                ),
+              if (q.basis(lang) case final b?) ...[
+                const SizedBox(height: 4),
+                Text(
+                  l.quizBasis(b),
+                  style: text.bodySmall!.copyWith(color: p.sub),
+                ),
+              ],
+              _Sources(question: q),
             ],
-            _Sources(question: q),
           ],
+        ],
+      ),
+    );
+  }
+}
+
+/// Variant harfi (asl indeks bo'yicha): 0 → A.
+String optionLetter(int index) => String.fromCharCode(65 + index);
+
+/// Kalit holati belgisi: bahsli yoki noaniq.
+class KeyVerdictTag extends StatelessWidget {
+  const KeyVerdictTag({super.key, required this.verdict});
+
+  final KeyVerdict verdict;
+
+  @override
+  Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context);
+    return LgTag(
+      verdict == KeyVerdict.disputed
+          ? l.toifaVerdictDisputed
+          : l.toifaVerdictAmbiguous,
+      tone: LgTone.warning,
+      icon: Icons.rate_review_outlined,
+    );
+  }
+}
+
+/// LabGuide izohi rasmiy kalit yonida: kalit bahsli/noaniq bo'lsa — izoh,
+/// LabGuide fikricha to'g'ri variant, manbalar va ball qoidasi; kalit to'g'ri
+/// bo'lsa — faqat qo'shimcha izoh (bo'lsa).
+class KeyCheckNote extends StatelessWidget {
+  const KeyCheckNote({super.key, required this.question});
+
+  final OfficialKeyQuestion question;
+
+  @override
+  Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context);
+    final p = LgPalette.of(context);
+    final text = Theme.of(context).textTheme;
+    final lang = Localizations.localeOf(context).languageCode;
+    final check = question.keyCheck;
+    final note = check.note;
+    // Manba bilan tasdiqlanmagan izoh — belgi bilan, taklifsiz.
+    final unverifiedTag = check.unverified
+        ? Padding(
+            padding: const EdgeInsets.only(bottom: 4),
+            child: Text(
+              l.toifaUnverifiedNote,
+              style: text.bodySmall!.copyWith(color: p.amber),
+            ),
+          )
+        : null;
+    if (!check.flagged) {
+      if (note == null) return const SizedBox.shrink();
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          LgNotice(note, title: l.toifaLabGuideNote, kind: NoticeKind.info),
+          ?unverifiedTag,
+        ],
+      );
+    }
+    final suggested = [
+      if (!check.unverified)
+        for (final i in check.suggested)
+          if (i >= 0 && i < question.optionCount)
+            '${optionLetter(i)}) ${question.option(i, lang)}',
+    ];
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        LgNotice(
+          [
+            ?note,
+            if (suggested.isNotEmpty) l.toifaSuggested(suggested.join('; ')),
+            if (question.correct.isEmpty)
+              l.toifaNoOfficialKey
+            else
+              l.toifaScoredByOfficial,
+          ].join('\n\n'),
+          title: l.toifaLabGuideNote,
+        ),
+        ?unverifiedTag,
+        if (check.links.isEmpty && !check.unverified)
+          Text(
+            l.toifaNoteNoSource,
+            style: text.bodySmall!.copyWith(color: p.amber),
+          )
+        else
+          for (final link in check.links) ExamLinkRow(link: link),
+      ],
+    );
+  }
+}
+
+/// Tashqi manba qatori (bosilsa — brauzerda ochiladi).
+class ExamLinkRow extends StatelessWidget {
+  const ExamLinkRow({super.key, required this.link});
+
+  final ExamLink link;
+
+  @override
+  Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context);
+    final p = LgPalette.of(context);
+    final text = Theme.of(context).textTheme;
+    final host = Uri.tryParse(link.url)?.host ?? link.url;
+    return InkWell(
+      onTap: () => openExternalLink(context, link.url),
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(minHeight: kMinTap),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 6),
+          child: Row(
+            children: [
+              Expanded(
+                child: Text(
+                  '${l.quizSources}: $host'
+                  '${link.locator == null ? '' : ' · ${link.locator}'}',
+                  style: text.bodySmall!.copyWith(color: p.brand),
+                ),
+              ),
+              const SizedBox(width: 6),
+              Icon(Icons.open_in_new_rounded, size: 16, color: p.brand),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// Savol manbasi: rasmiy attestatsiya savollari ro'yxati.
+class OfficialListSource extends StatelessWidget {
+  const OfficialListSource({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context);
+    final p = LgPalette.of(context);
+    return Padding(
+      padding: const EdgeInsets.only(top: 6),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(top: 1),
+            child: Icon(Icons.verified_outlined, size: 16, color: p.sub),
+          ),
+          const SizedBox(width: 6),
+          Expanded(
+            child: Text(
+              l.toifaListSource,
+              style: Theme.of(context).textTheme.bodySmall,
+            ),
+          ),
         ],
       ),
     );
