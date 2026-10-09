@@ -1623,6 +1623,443 @@ class AppLocalizationsUz extends AppLocalizations {
   String get instOpenCard => 'Apparat kartasi';
 
   @override
+  String get partnerAdLabel => 'Reklama';
+
+  @override
+  String get partnerLabel => 'Hamkor';
+
+  @override
+  String get partnerOfficialTitle => 'Rasmiy hamkorlar';
+
+  @override
+  String get partnerSectionNote =>
+      'Hamkor kompaniyalar o‘zi bergan ma’lumot. Yuqoridagi katalog ma’lumotlari, tartibi va tekshiruv holati hamkorlikka bog‘liq emas.';
+
+  @override
+  String get partnerKindManufacturer => 'Ishlab chiqaruvchi';
+
+  @override
+  String get partnerKindDistributor => 'Rasmiy distribyutor';
+
+  @override
+  String get partnerKindService => 'Servis markazi';
+
+  @override
+  String get partnerCall => 'Qo‘ng‘iroq';
+
+  @override
+  String get partnerTelegram => 'Telegram';
+
+  @override
+  String get partnerWebsite => 'Sayt';
+
+  @override
+  String get partnerEmail => 'Email';
+
+  @override
+  String get partnerBrochure => 'Buklet';
+
+  @override
+  String get partnerMore => 'Batafsil';
+
+  @override
+  String partnerRegions(String regions) {
+    return 'Hududlar: $regions';
+  }
+
+  @override
+  String partnerRegistration(String number) {
+    return 'O‘zbekistonda ro‘yxatdan o‘tganlik guvohnomasi: $number';
+  }
+
+  @override
+  String get partnerRegistrationNote => 'Raqamni hamkor taqdim etgan.';
+
+  @override
+  String get partnerBecome => 'Hamkor bo‘lish';
+
+  @override
+  String get partnerBecomeSub => 'Firmalar uchun: apparatlaringiz LabGuide’da';
+
+  @override
+  String get partnerNotFoundTitle => 'Hamkor topilmadi';
+
+  @override
+  String get partnerNotFoundBody =>
+      'E’lon muddati tugagan yoki to‘xtatilgan bo‘lishi mumkin.';
+
+  @override
+  String get partnerContacts => 'Aloqa';
+
+  @override
+  String get partnerAbout => 'Kompaniya haqida';
+
+  @override
+  String get partnerInstruments => 'Bog‘liq apparatlar';
+
+  @override
+  String partnerAllModels(String maker) {
+    return '$maker: barcha modellar';
+  }
+
+  @override
+  String get partnerPageNote =>
+      'Bu sahifa — reklama. LabGuide hamkor mahsulotini tavsiya qilmaydi; katalog ma’lumotlari va tekshiruv holati hamkorlikka bog‘liq emas.';
+
+  @override
+  String get partnerOfferTitle => 'Rasmiy aloqangiz — apparat kartasida';
+
+  @override
+  String get partnerOfferBody =>
+      'Laboratoriya mutaxassisi apparat haqida o‘qiyotganda rasmiy distribyutor yoki servis markaziga bir bosishda qo‘ng‘iroq qila oladi. Ishlab chiqaruvchilar, rasmiy distribyutorlar va servis markazlari uchun.';
+
+  @override
+  String get partnerWhatTitle => 'Nima beriladi';
+
+  @override
+  String get partnerWhatCard =>
+      'Apparat kartasida “Rasmiy hamkorlar” bo‘limi: logo, qisqa tavsif, hududlar, telefon va Telegram tugmalari.';
+
+  @override
+  String get partnerWhatCategory =>
+      'Yo‘nalish ichida (masalan, Biokimyo) ixcham “Hamkor” kartasi.';
+
+  @override
+  String get partnerWhatLabHome =>
+      'Lab bo‘limi bosh sahifasida navbat bilan bitta reklama kartasi.';
+
+  @override
+  String get partnerWhatPage =>
+      'Hamkor sahifasi: bog‘liq modellar, guvohnoma raqamlari, buklet.';
+
+  @override
+  String get partnerWhatReport =>
+      'Hisobot: kun va joy bo‘yicha ko‘rsatilishlar va “bog‘lanish” bosilishlari (shaxsiy ma’lumotsiz).';
+
+  @override
+  String get partnerAudienceTitle => 'Auditoriya';
+
+  @override
+  String get partnerAudienceBody =>
+      'LabGuide laboratoriya mutaxassislari, shifokorlar, talabalar va ustozlar uchun — o‘zbek, rus va ingliz tillarida. Foydalanuvchilar soni va rollar taqsimotini kelishuv paytida server statistikasidan ko‘rsatamiz; taxminiy raqam aytmaymiz.';
+
+  @override
+  String get partnerRulesTitle => 'Qoidalar';
+
+  @override
+  String get partnerRule1 =>
+      'Har bir joyda aniq “Reklama” yoki “Hamkor” yorlig‘i turadi.';
+
+  @override
+  String get partnerRule2 =>
+      'Katalog faktlari, tartibi va tekshiruv holati hamkorlikka bog‘liq emas — pul evaziga o‘zgarmaydi.';
+
+  @override
+  String get partnerRule3 =>
+      'Tibbiy buyum reklamasi: apparat O‘zbekistonda ro‘yxatdan o‘tgan bo‘lishi kerak; guvohnoma raqami kartada ko‘rsatiladi.';
+
+  @override
+  String get partnerRule4 =>
+      'Faqat tekshirsa bo‘ladigan ma’lumot: “eng yaxshi”, “100% aniq” kabi isbotsiz da’volar qabul qilinmaydi.';
+
+  @override
+  String get partnerRule5 =>
+      'Foydalanuvchilarning shaxsiy ma’lumotlari hamkorga berilmaydi.';
+
+  @override
+  String get partnerPriceTitle => 'Narx';
+
+  @override
+  String get partnerPriceBody =>
+      'Narx kelishiladi — joylar, muddat va hududlarga qarab.';
+
+  @override
+  String get partnerHowTitle => 'Qanday ulanadi';
+
+  @override
+  String get partnerHow1 => 'Pastdagi forma orqali ariza yuboring.';
+
+  @override
+  String get partnerHow2 => 'Biz bog‘lanamiz va shartlarni kelishamiz.';
+
+  @override
+  String get partnerHow3 =>
+      'Logo, tavsif (uz/ru/en), aloqa va guvohnoma raqamlarini yuborasiz.';
+
+  @override
+  String get partnerHow4 =>
+      'Tekshirilgach e’lon qilinadi; hisobotni muntazam yuboramiz.';
+
+  @override
+  String get partnerFormTitle => 'Ariza';
+
+  @override
+  String get partnerFormCompany => 'Kompaniya';
+
+  @override
+  String get partnerFormContact => 'Mas’ul shaxs';
+
+  @override
+  String get partnerFormPhone => 'Telefon';
+
+  @override
+  String get partnerFormEmail => 'Email';
+
+  @override
+  String get partnerFormProducts => 'Mahsulotlar (apparatlar, modellar)';
+
+  @override
+  String get partnerFormMessage => 'Xabar';
+
+  @override
+  String get partnerFormHint => 'Telefon yoki emaildan kamida bittasi kerak.';
+
+  @override
+  String get partnerFormSend => 'Arizani yuborish';
+
+  @override
+  String get partnerFormInvalid =>
+      'Kompaniya va mas’ul shaxsni kiriting, telefon yoki emailni to‘g‘ri yozing.';
+
+  @override
+  String get partnerSentTitle => 'Ariza yuborildi';
+
+  @override
+  String get partnerSentBody =>
+      'Javob shu sahifada, “Arizalaringiz” bo‘limida ko‘rinadi. Kerak bo‘lsa, ko‘rsatgan telefon yoki emailingiz orqali bog‘lanamiz.';
+
+  @override
+  String get partnerSendAnother => 'Yana ariza yuborish';
+
+  @override
+  String get partnerFormSignIn =>
+      'Ariza yuborish uchun email bilan kiring — javob shu hisobga keladi.';
+
+  @override
+  String get partnerFormUnavailable =>
+      'Ariza yuborish hali ulanmagan: bu buildda server sozlanmagan.';
+
+  @override
+  String get partnerMyRequests => 'Arizalaringiz';
+
+  @override
+  String get partnerReqStatusNew => 'Yangi';
+
+  @override
+  String get partnerReqStatusInReview => 'Ko‘rib chiqilmoqda';
+
+  @override
+  String get partnerReqStatusAccepted => 'Qabul qilindi';
+
+  @override
+  String get partnerReqStatusDeclined => 'Rad etildi';
+
+  @override
+  String partnerReqReply(String text) {
+    return 'LabGuide javobi: $text';
+  }
+
+  @override
+  String get partnerPlacementCard => 'Apparat kartasi';
+
+  @override
+  String get partnerPlacementCategory => 'Yo‘nalish';
+
+  @override
+  String get partnerPlacementLabHome => 'Lab bosh sahifasi';
+
+  @override
+  String get partnerPlacementPage => 'Hamkor sahifasi';
+
+  @override
+  String get adminPartners => 'Hamkorlar';
+
+  @override
+  String get adminPartnersSub => 'Reklama: yaratish, e’lon, statistika';
+
+  @override
+  String get adminPartnerRequests => 'Hamkorlik arizalari';
+
+  @override
+  String adminPartnerRequestsNew(int count) {
+    return 'Yangi arizalar: $count';
+  }
+
+  @override
+  String get adminPartnerNew => 'Yangi hamkor';
+
+  @override
+  String get adminPartnersEmpty => 'Hali hamkor yo‘q';
+
+  @override
+  String get adminPartnerStatusDraft => 'Qoralama';
+
+  @override
+  String get adminPartnerStatusLive => 'E’lon qilingan';
+
+  @override
+  String get adminPartnerStatusPaused => 'To‘xtatilgan';
+
+  @override
+  String get adminPartnerExpired => 'Muddati tugagan';
+
+  @override
+  String get adminPartnerUpcoming => 'Hali boshlanmagan';
+
+  @override
+  String get adminPartnerName => 'Kompaniya nomi';
+
+  @override
+  String get adminPartnerKind => 'Turi';
+
+  @override
+  String get adminPartnerLogo => 'Logo havolasi (https://…)';
+
+  @override
+  String get adminPartnerLogoUpload => 'Logoni yuklash (PNG/JPEG, ≤ 1 MB)';
+
+  @override
+  String get adminPartnerLogoTooLarge =>
+      'Logo 1 MB dan katta yoki PNG/JPEG emas.';
+
+  @override
+  String adminPartnerSummary(String lang) {
+    return 'Qisqa tavsif ($lang)';
+  }
+
+  @override
+  String get adminPartnerRegions => 'Hududlar';
+
+  @override
+  String get adminPartnerTelegram => 'Telegram (username)';
+
+  @override
+  String get adminPartnerWebsite => 'Sayt (https://…)';
+
+  @override
+  String get adminPartnerBrochure => 'Buklet havolasi (https://…)';
+
+  @override
+  String get adminPartnerLinks => 'Katalogga bog‘lash';
+
+  @override
+  String get adminPartnerMakers => 'Ishlab chiqaruvchilar (barcha modellari)';
+
+  @override
+  String get adminPartnerModels => 'Modellar';
+
+  @override
+  String get adminPartnerAddModel => 'Model qo‘shish';
+
+  @override
+  String get adminPartnerRegNo => 'Guvohnoma raqami (ixtiyoriy)';
+
+  @override
+  String get adminPartnerUnlink => 'Olib tashlash';
+
+  @override
+  String get adminPartnerPeriodTitle => 'Faollik davri';
+
+  @override
+  String get adminPartnerStarts => 'Boshlanish';
+
+  @override
+  String get adminPartnerEnds => 'Tugash';
+
+  @override
+  String get adminPartnerSave => 'Saqlash';
+
+  @override
+  String get adminPartnerSaved => 'Saqlandi';
+
+  @override
+  String get adminPartnerPublish => 'E’lon qilish';
+
+  @override
+  String get adminPartnerPause => 'To‘xtatish';
+
+  @override
+  String get adminPartnerPublished => 'E’lon qilindi';
+
+  @override
+  String get adminPartnerPausedMsg => 'To‘xtatildi';
+
+  @override
+  String get adminPartnerPublishRules =>
+      'E’lon uchun: tavsif, kamida bitta aloqa va kamida bitta bog‘lanish kerak. Reklama har joyda “Reklama” yorlig‘i bilan chiqadi va katalog ma’lumotiga ta’sir qilmaydi.';
+
+  @override
+  String get adminPartnerInvalid =>
+      'Ma’lumotni tekshiring: nom (2–120 belgi), telefon, Telegram (5–32 belgi), https havolalar, email, sanalar; e’lon uchun — tavsif, aloqa va bog‘lanish.';
+
+  @override
+  String get adminPartnerStats => 'Statistika';
+
+  @override
+  String get adminStatsImpressions => 'Ko‘rsatilish';
+
+  @override
+  String get adminStatsContacts => '“Bog‘lanish” bosilishi';
+
+  @override
+  String get adminStatsCtr => 'Bosilish ulushi';
+
+  @override
+  String get adminStats7 => 'Oxirgi 7 kun';
+
+  @override
+  String get adminStats30 => 'Oxirgi 30 kun';
+
+  @override
+  String get adminStatsAll => 'Butun davr';
+
+  @override
+  String get adminStatsPeriods => 'Davrlar bo‘yicha';
+
+  @override
+  String get adminStatsByPlacement => 'Joylar bo‘yicha (30 kun)';
+
+  @override
+  String get adminStatsDaily => 'Kunlar bo‘yicha';
+
+  @override
+  String get adminStatsEmpty => 'Hali hodisa yo‘q';
+
+  @override
+  String get adminStatsNote =>
+      'Hisoblash: ko‘rsatilish — hamkor bloki ekranda chizilgan; bitta qurilmada kuniga har joy uchun bir marta. Faqat hisobga kirgan foydalanuvchilar sanaladi (mehmon va admin — yo‘q). Shaxsiy ma’lumot saqlanmaydi, faqat kunlik hisoblagich (Toshkent vaqti).';
+
+  @override
+  String get adminStatsCopy => 'Hisobotni nusxalash';
+
+  @override
+  String get adminRequestsEmpty => 'Ariza yo‘q';
+
+  @override
+  String get adminRequestReply => 'Javob (arizachi ko‘radi)';
+
+  @override
+  String get adminRequestSave => 'Holat va javobni saqlash';
+
+  @override
+  String get adminActionPartnerCreated => 'Hamkor yaratildi';
+
+  @override
+  String get adminActionPartnerUpdated => 'Hamkor tahrirlandi';
+
+  @override
+  String get adminActionPartnerPublished => 'Hamkor e’lon qilindi';
+
+  @override
+  String get adminActionPartnerPaused => 'Hamkor to‘xtatildi';
+
+  @override
+  String get adminActionPartnerDraft => 'Hamkor qoralamaga qaytdi';
+
+  @override
+  String get adminActionPartnerRequest => 'Hamkorlik arizasi ko‘rib chiqildi';
+
+  @override
   String get calStepInstrument => '1. Apparat';
 
   @override

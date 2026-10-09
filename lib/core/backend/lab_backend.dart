@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 
 import '../../features/auth/otp_auth.dart';
 import 'backend_models.dart';
+import 'partner_models.dart';
 
 /// Build vaqtida beriladigan backend sozlamasi (repoda yo'q):
 ///
@@ -110,6 +111,34 @@ abstract interface class LabBackend implements OtpAuthAdapter {
     List<int> answers,
   );
   Future<List<GroupSubmission>> submissions(String assignmentId);
+
+  // --- Hamkorlar (reklama)
+
+  /// E'lon qilingan va bugun faol hamkorlar (mehmon ham o'qiydi).
+  Future<List<Partner>> partners();
+
+  /// Ko'rsatilish/bog'lanish hisoblagichlari (≤ 20 ta bir chaqiruvda;
+  /// faqat hisobli foydalanuvchi). Sanalganlar sonini qaytaradi.
+  Future<int> trackPartnerEvents(List<PartnerEvent> events);
+  Future<String> createPartnerRequest(PartnerRequestDraft draft);
+  Future<List<PartnerRequest>> myPartnerRequests();
+  Future<List<Partner>> adminPartners();
+
+  /// [id] `null` — yangi hamkor (qoralama). Hamkor id sini qaytaradi.
+  Future<String> adminSavePartner(PartnerDraft draft, {String? id});
+  Future<void> adminSetPartnerStatus(String id, PartnerStatus status);
+
+  /// Logoni ochiq `partner-logos` bucket'iga yuklaydi, URL qaytaradi.
+  Future<String> adminUploadPartnerLogo(Uint8List bytes, String mimeType);
+  Future<List<PartnerDayStat>> adminPartnerStats(String id);
+  Future<List<PartnerRequest>> adminPartnerRequests({
+    PartnerRequestStatus? status,
+  });
+  Future<void> adminUpdatePartnerRequest(
+    String id, {
+    required PartnerRequestStatus status,
+    String? reply,
+  });
 }
 
 /// Backend sozlanmagan build (masalan, hozirgi TestFlight): hamma amal
@@ -237,4 +266,39 @@ class UnconfiguredBackend implements LabBackend {
   ) async => _no();
   @override
   Future<List<GroupSubmission>> submissions(String assignmentId) async => _no();
+
+  // --- Hamkorlar: server yo'q — reklama joylari umuman chiqmaydi.
+  @override
+  Future<List<Partner>> partners() async => const [];
+  @override
+  Future<int> trackPartnerEvents(List<PartnerEvent> events) async => 0;
+  @override
+  Future<String> createPartnerRequest(PartnerRequestDraft draft) async => _no();
+  @override
+  Future<List<PartnerRequest>> myPartnerRequests() async => _no();
+  @override
+  Future<List<Partner>> adminPartners() async => _no();
+  @override
+  Future<String> adminSavePartner(PartnerDraft draft, {String? id}) async =>
+      _no();
+  @override
+  Future<void> adminSetPartnerStatus(String id, PartnerStatus status) async =>
+      _no();
+  @override
+  Future<String> adminUploadPartnerLogo(
+    Uint8List bytes,
+    String mimeType,
+  ) async => _no();
+  @override
+  Future<List<PartnerDayStat>> adminPartnerStats(String id) async => _no();
+  @override
+  Future<List<PartnerRequest>> adminPartnerRequests({
+    PartnerRequestStatus? status,
+  }) async => _no();
+  @override
+  Future<void> adminUpdatePartnerRequest(
+    String id, {
+    required PartnerRequestStatus status,
+    String? reply,
+  }) async => _no();
 }

@@ -34,6 +34,7 @@ const appRoutes = [
   '/lab/instruments/m/human-humalyzer-4000',
   '/lab/instruments/m/roche-cobas-u-411',
   '/lab/microscopy',
+  '/lab/partners/partner-test-1',
   '/lab/calculators',
   '/lab/calculators/dilution',
   '/lab/calculators/units',
@@ -62,6 +63,10 @@ const appRoutes = [
   '/profile/privacy',
   '/profile/support',
   '/profile/admin',
+  '/profile/admin/partners',
+  '/profile/admin/partners/new',
+  '/profile/admin/partner-requests',
+  '/profile/partnership',
   '/profile/auth',
   '/terms',
 ];

@@ -35,6 +35,9 @@ abstract final class StoreKeys {
   static const myInstruments = 'instruments.mine';
   static const calibrationLog = 'instruments.calibrations';
 
+  /// Hamkorlar ro'yxati keshi (internetsiz ham oxirgisi ko'rinadi).
+  static const partnersCache = 'partners.cache';
+
   static const all = <String>{
     language,
     themeMode,
@@ -51,6 +54,7 @@ abstract final class StoreKeys {
     packsCatalog,
     myInstruments,
     calibrationLog,
+    partnersCache,
   };
 }
 

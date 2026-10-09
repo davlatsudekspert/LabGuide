@@ -1634,6 +1634,443 @@ class AppLocalizationsEn extends AppLocalizations {
   String get instOpenCard => 'Instrument card';
 
   @override
+  String get partnerAdLabel => 'Ad';
+
+  @override
+  String get partnerLabel => 'Partner';
+
+  @override
+  String get partnerOfficialTitle => 'Official partners';
+
+  @override
+  String get partnerSectionNote =>
+      'Information provided by the partner companies. The catalogue data above, its order and review status do not depend on partnerships.';
+
+  @override
+  String get partnerKindManufacturer => 'Manufacturer';
+
+  @override
+  String get partnerKindDistributor => 'Official distributor';
+
+  @override
+  String get partnerKindService => 'Service centre';
+
+  @override
+  String get partnerCall => 'Call';
+
+  @override
+  String get partnerTelegram => 'Telegram';
+
+  @override
+  String get partnerWebsite => 'Website';
+
+  @override
+  String get partnerEmail => 'Email';
+
+  @override
+  String get partnerBrochure => 'Brochure';
+
+  @override
+  String get partnerMore => 'Details';
+
+  @override
+  String partnerRegions(String regions) {
+    return 'Regions: $regions';
+  }
+
+  @override
+  String partnerRegistration(String number) {
+    return 'Registration certificate in Uzbekistan: $number';
+  }
+
+  @override
+  String get partnerRegistrationNote => 'Number provided by the partner.';
+
+  @override
+  String get partnerBecome => 'Become a partner';
+
+  @override
+  String get partnerBecomeSub => 'For companies: your instruments in LabGuide';
+
+  @override
+  String get partnerNotFoundTitle => 'Partner not found';
+
+  @override
+  String get partnerNotFoundBody =>
+      'The listing may have ended or been paused.';
+
+  @override
+  String get partnerContacts => 'Contacts';
+
+  @override
+  String get partnerAbout => 'About the company';
+
+  @override
+  String get partnerInstruments => 'Related instruments';
+
+  @override
+  String partnerAllModels(String maker) {
+    return '$maker: all models';
+  }
+
+  @override
+  String get partnerPageNote =>
+      'This page is an advertisement. LabGuide does not endorse partner products; catalogue data and review status do not depend on partnerships.';
+
+  @override
+  String get partnerOfferTitle => 'Your contacts, right on the instrument card';
+
+  @override
+  String get partnerOfferBody =>
+      'A lab specialist reading about an instrument can call its official distributor or service centre in one tap. For manufacturers, official distributors and service centres.';
+
+  @override
+  String get partnerWhatTitle => 'What you get';
+
+  @override
+  String get partnerWhatCard =>
+      'An “Official partners” section on the instrument card: logo, short description, regions, call and Telegram buttons.';
+
+  @override
+  String get partnerWhatCategory =>
+      'A compact “Partner” card inside the instrument category (e.g. Chemistry).';
+
+  @override
+  String get partnerWhatLabHome =>
+      'One ad card on the Lab tab home, shown in rotation.';
+
+  @override
+  String get partnerWhatPage =>
+      'A partner page: related models, registration numbers, brochure.';
+
+  @override
+  String get partnerWhatReport =>
+      'A report: impressions and contact taps by day and placement (no personal data).';
+
+  @override
+  String get partnerAudienceTitle => 'Audience';
+
+  @override
+  String get partnerAudienceBody =>
+      'LabGuide serves laboratory specialists, doctors, students and teachers in Uzbek, Russian and English. We show user numbers and the role breakdown from server statistics during negotiation; we don’t quote estimates.';
+
+  @override
+  String get partnerRulesTitle => 'Rules';
+
+  @override
+  String get partnerRule1 =>
+      'Every placement carries a clear “Ad” or “Partner” label.';
+
+  @override
+  String get partnerRule2 =>
+      'Catalogue facts, their order and review status do not depend on partnerships and cannot be bought.';
+
+  @override
+  String get partnerRule3 =>
+      'Medical device ads: the instrument must be registered in Uzbekistan; the certificate number is shown on the card.';
+
+  @override
+  String get partnerRule4 =>
+      'Verifiable information only: unproven claims such as “the best” or “100% accurate” are not accepted.';
+
+  @override
+  String get partnerRule5 =>
+      'Users’ personal data is never shared with partners.';
+
+  @override
+  String get partnerPriceTitle => 'Price';
+
+  @override
+  String get partnerPriceBody =>
+      'Price is agreed individually, depending on placements, period and regions.';
+
+  @override
+  String get partnerHowTitle => 'How it works';
+
+  @override
+  String get partnerHow1 => 'Send an application using the form below.';
+
+  @override
+  String get partnerHow2 => 'We contact you and agree the terms.';
+
+  @override
+  String get partnerHow3 =>
+      'You send the logo, description (uz/ru/en), contacts and registration numbers.';
+
+  @override
+  String get partnerHow4 =>
+      'After review the listing goes live; we send reports regularly.';
+
+  @override
+  String get partnerFormTitle => 'Application';
+
+  @override
+  String get partnerFormCompany => 'Company';
+
+  @override
+  String get partnerFormContact => 'Contact person';
+
+  @override
+  String get partnerFormPhone => 'Phone';
+
+  @override
+  String get partnerFormEmail => 'Email';
+
+  @override
+  String get partnerFormProducts => 'Products (instruments, models)';
+
+  @override
+  String get partnerFormMessage => 'Message';
+
+  @override
+  String get partnerFormHint => 'A phone number or an email is required.';
+
+  @override
+  String get partnerFormSend => 'Send application';
+
+  @override
+  String get partnerFormInvalid =>
+      'Enter the company and contact person, and a valid phone or email.';
+
+  @override
+  String get partnerSentTitle => 'Application sent';
+
+  @override
+  String get partnerSentBody =>
+      'The reply will appear on this page under “Your applications”. If needed, we will contact you by the phone or email you gave.';
+
+  @override
+  String get partnerSendAnother => 'Send another application';
+
+  @override
+  String get partnerFormSignIn =>
+      'Sign in with email to send an application — the reply comes to that account.';
+
+  @override
+  String get partnerFormUnavailable =>
+      'Applications are not connected yet: this build has no server.';
+
+  @override
+  String get partnerMyRequests => 'Your applications';
+
+  @override
+  String get partnerReqStatusNew => 'New';
+
+  @override
+  String get partnerReqStatusInReview => 'In review';
+
+  @override
+  String get partnerReqStatusAccepted => 'Accepted';
+
+  @override
+  String get partnerReqStatusDeclined => 'Declined';
+
+  @override
+  String partnerReqReply(String text) {
+    return 'LabGuide reply: $text';
+  }
+
+  @override
+  String get partnerPlacementCard => 'Instrument card';
+
+  @override
+  String get partnerPlacementCategory => 'Category';
+
+  @override
+  String get partnerPlacementLabHome => 'Lab home';
+
+  @override
+  String get partnerPlacementPage => 'Partner page';
+
+  @override
+  String get adminPartners => 'Partners';
+
+  @override
+  String get adminPartnersSub => 'Ads: create, publish, statistics';
+
+  @override
+  String get adminPartnerRequests => 'Partnership applications';
+
+  @override
+  String adminPartnerRequestsNew(int count) {
+    return 'New applications: $count';
+  }
+
+  @override
+  String get adminPartnerNew => 'New partner';
+
+  @override
+  String get adminPartnersEmpty => 'No partners yet';
+
+  @override
+  String get adminPartnerStatusDraft => 'Draft';
+
+  @override
+  String get adminPartnerStatusLive => 'Published';
+
+  @override
+  String get adminPartnerStatusPaused => 'Paused';
+
+  @override
+  String get adminPartnerExpired => 'Expired';
+
+  @override
+  String get adminPartnerUpcoming => 'Not started yet';
+
+  @override
+  String get adminPartnerName => 'Company name';
+
+  @override
+  String get adminPartnerKind => 'Type';
+
+  @override
+  String get adminPartnerLogo => 'Logo link (https://…)';
+
+  @override
+  String get adminPartnerLogoUpload => 'Upload logo (PNG/JPEG, ≤ 1 MB)';
+
+  @override
+  String get adminPartnerLogoTooLarge =>
+      'The logo is larger than 1 MB or not PNG/JPEG.';
+
+  @override
+  String adminPartnerSummary(String lang) {
+    return 'Short description ($lang)';
+  }
+
+  @override
+  String get adminPartnerRegions => 'Regions';
+
+  @override
+  String get adminPartnerTelegram => 'Telegram (username)';
+
+  @override
+  String get adminPartnerWebsite => 'Website (https://…)';
+
+  @override
+  String get adminPartnerBrochure => 'Brochure link (https://…)';
+
+  @override
+  String get adminPartnerLinks => 'Catalogue links';
+
+  @override
+  String get adminPartnerMakers => 'Manufacturers (all models)';
+
+  @override
+  String get adminPartnerModels => 'Models';
+
+  @override
+  String get adminPartnerAddModel => 'Add a model';
+
+  @override
+  String get adminPartnerRegNo => 'Certificate number (optional)';
+
+  @override
+  String get adminPartnerUnlink => 'Remove';
+
+  @override
+  String get adminPartnerPeriodTitle => 'Active period';
+
+  @override
+  String get adminPartnerStarts => 'Starts';
+
+  @override
+  String get adminPartnerEnds => 'Ends';
+
+  @override
+  String get adminPartnerSave => 'Save';
+
+  @override
+  String get adminPartnerSaved => 'Saved';
+
+  @override
+  String get adminPartnerPublish => 'Publish';
+
+  @override
+  String get adminPartnerPause => 'Pause';
+
+  @override
+  String get adminPartnerPublished => 'Published';
+
+  @override
+  String get adminPartnerPausedMsg => 'Paused';
+
+  @override
+  String get adminPartnerPublishRules =>
+      'To publish: a description, at least one contact and at least one link. The ad always carries an “Ad” label and never changes catalogue data.';
+
+  @override
+  String get adminPartnerInvalid =>
+      'Check the data: name (2–120 characters), phone, Telegram (5–32 characters), https links, email, dates; to publish — description, contact and a link.';
+
+  @override
+  String get adminPartnerStats => 'Statistics';
+
+  @override
+  String get adminStatsImpressions => 'Impressions';
+
+  @override
+  String get adminStatsContacts => 'Contact taps';
+
+  @override
+  String get adminStatsCtr => 'Click-through rate';
+
+  @override
+  String get adminStats7 => 'Last 7 days';
+
+  @override
+  String get adminStats30 => 'Last 30 days';
+
+  @override
+  String get adminStatsAll => 'All time';
+
+  @override
+  String get adminStatsPeriods => 'By period';
+
+  @override
+  String get adminStatsByPlacement => 'By placement (30 days)';
+
+  @override
+  String get adminStatsDaily => 'By day';
+
+  @override
+  String get adminStatsEmpty => 'No events yet';
+
+  @override
+  String get adminStatsNote =>
+      'How it is counted: an impression means the partner block was drawn on screen; once per device per day per placement. Only signed-in users are counted (not guests or the admin). No personal data is stored, only daily counters (Tashkent time).';
+
+  @override
+  String get adminStatsCopy => 'Copy report';
+
+  @override
+  String get adminRequestsEmpty => 'No applications';
+
+  @override
+  String get adminRequestReply => 'Reply (the applicant sees it)';
+
+  @override
+  String get adminRequestSave => 'Save status and reply';
+
+  @override
+  String get adminActionPartnerCreated => 'Partner created';
+
+  @override
+  String get adminActionPartnerUpdated => 'Partner edited';
+
+  @override
+  String get adminActionPartnerPublished => 'Partner published';
+
+  @override
+  String get adminActionPartnerPaused => 'Partner paused';
+
+  @override
+  String get adminActionPartnerDraft => 'Partner moved to draft';
+
+  @override
+  String get adminActionPartnerRequest => 'Partnership application handled';
+
+  @override
   String get calStepInstrument => '1. Instrument';
 
   @override

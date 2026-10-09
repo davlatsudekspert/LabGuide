@@ -178,6 +178,14 @@ class ProfileScreen extends StatelessWidget {
                   : null,
               onTap: () => context.push('/profile/support'),
             ),
+            LgRow(
+              title: l.partnerBecome,
+              subtitle: services.backend.isConfigured
+                  ? l.partnerBecomeSub
+                  : '${l.partnerBecomeSub} · ${l.notAvailableYet}',
+              icon: Icons.handshake_outlined,
+              onTap: () => context.push('/profile/partnership'),
+            ),
             // Faqat server admin hisobi deb tasdiqlagan foydalanuvchiga
             // ko'rinadi; ichkarida yana 2FA va har RPC'da tekshiruv bor.
             if (access.access.adminAccount)
