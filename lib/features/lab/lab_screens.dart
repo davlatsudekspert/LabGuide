@@ -8,6 +8,7 @@ import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
 import '../content/content_model.dart';
 import '../content/ui/content_widgets.dart';
+import '../partners/partner_widgets.dart';
 import '../tools/calc_info.dart';
 import '../tools/clinical_calc_screens.dart';
 import 'preanalytics_info.dart';
@@ -63,6 +64,8 @@ class LabScreen extends StatelessWidget {
           onTap: () => context.push('/lab/microscopy'),
           divider: false,
         ),
+        // Faqat haqiqiy faol hamkor bo'lsa — bitta “Reklama” kartasi.
+        const LabPartnerCard(),
       ],
     );
   }

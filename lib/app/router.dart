@@ -13,7 +13,13 @@ import '../features/instruments/calibration_screens.dart';
 import '../features/instruments/instrument_screens.dart';
 import '../features/lab/lab_screens.dart';
 import '../features/learn/learn_screens.dart';
+import '../features/library/intake_screen.dart';
+import '../features/library/library_item_screen.dart';
 import '../features/library/library_screens.dart';
+import '../features/partners/become_partner_screen.dart';
+import '../features/partners/partner_admin_screens.dart';
+import '../features/partners/partner_widgets.dart';
+import '../features/library/pdf_reader_screen.dart';
 import '../features/profile/profile_screens.dart';
 import '../features/qc/qc_screens.dart';
 import '../features/review/review_screens.dart';
@@ -169,7 +175,49 @@ GoRouter buildRouter(
                 path: 'audit',
                 builder: (context, state) => const AdminAuditScreen(),
               ),
+              // Hamkorlar (reklama) va hamkorlik arizalari.
+              GoRoute(
+                path: 'partners',
+                builder: (context, state) => const AdminPartnersScreen(),
+                routes: [
+                  GoRoute(
+                    path: 'new',
+                    builder: (context, state) => const AdminPartnerEditScreen(),
+                  ),
+                  GoRoute(
+                    path: ':id',
+                    builder: (context, state) => AdminPartnerEditScreen(
+                      partnerId: state.pathParameters['id'],
+                    ),
+                    routes: [
+                      GoRoute(
+                        path: 'stats',
+                        builder: (context, state) => AdminPartnerStatsScreen(
+                          partnerId: state.pathParameters['id']!,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              GoRoute(
+                path: 'partner-requests',
+                builder: (context, state) => const AdminPartnerRequestsScreen(),
+                routes: [
+                  GoRoute(
+                    path: ':id',
+                    builder: (context, state) => AdminPartnerRequestScreen(
+                      requestId: state.pathParameters['id']!,
+                    ),
+                  ),
+                ],
+              ),
             ],
+          ),
+          // Firmalar uchun: taklif, qoidalar va ariza.
+          GoRoute(
+            path: 'partnership',
+            builder: (context, state) => const BecomePartnerScreen(),
           ),
           GoRoute(
             path: 'auth',
@@ -294,6 +342,12 @@ GoRouter buildRouter(
                       ),
                     ],
                   ),
+                  // Hamkor (reklama) sahifasi.
+                  GoRoute(
+                    path: 'partners/:id',
+                    builder: (context, state) =>
+                        PartnerScreen(partnerId: state.pathParameters['id']!),
+                  ),
                   GoRoute(
                     path: 'microscopy',
                     builder: (context, state) => const MicroscopyScreen(),
@@ -341,7 +395,31 @@ GoRouter buildRouter(
                   ),
                   GoRoute(
                     path: 'books',
-                    builder: (context, state) => const BooksScreen(),
+                    builder: (context, state) => BooksScreen(
+                      focusSearch: state.uri.queryParameters['search'] == '1',
+                    ),
+                    routes: [
+                      GoRoute(
+                        path: 'item/:id',
+                        builder: (context, state) => LibraryItemScreen(
+                          itemId: state.pathParameters['id']!,
+                        ),
+                        routes: [
+                          // O'quvchi to'liq ekranda (pastki tablarsiz).
+                          GoRoute(
+                            path: 'read',
+                            parentNavigatorKey: rootKey,
+                            builder: (context, state) => PdfReaderScreen(
+                              itemId: state.pathParameters['id']!,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  GoRoute(
+                    path: 'intake',
+                    builder: (context, state) => const IntakeGuideScreen(),
                   ),
                   GoRoute(
                     path: 'sources',
