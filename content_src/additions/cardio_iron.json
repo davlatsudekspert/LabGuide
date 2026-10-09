@@ -60,7 +60,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "Kontent auditi B: sonlar, birliklar, namuna, mezonlar, manba locator",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_B.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -297,7 +304,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "Kontent auditi B: sonlar, birliklar, namuna, mezonlar, manba locator",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_B.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -537,7 +551,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "Kontent auditi B: sonlar, birliklar, namuna, mezonlar, manba locator",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_B.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -719,7 +740,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "Kontent auditi B: sonlar, birliklar, namuna, mezonlar, manba locator",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_B.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -963,7 +991,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "Kontent auditi B: sonlar, birliklar, namuna, mezonlar, manba locator",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_B.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -1223,7 +1258,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "Kontent auditi B: sonlar, birliklar, namuna, mezonlar, manba locator",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_B.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -1565,7 +1607,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "Kontent auditi B: sonlar, birliklar, namuna, mezonlar, manba locator",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_B.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -1826,7 +1875,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "Kontent auditi B: sonlar, birliklar, namuna, mezonlar, manba locator",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_B.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -2158,7 +2214,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "Kontent auditi B: sonlar, birliklar, namuna, mezonlar, manba locator",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_B.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -2452,7 +2515,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "Kontent auditi B: sonlar, birliklar, namuna, mezonlar, manba locator",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_B.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -2651,7 +2721,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "Kontent auditi B: sonlar, birliklar, namuna, mezonlar, manba locator",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_B.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -2890,7 +2967,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "Kontent auditi B: sonlar, birliklar, namuna, mezonlar, manba locator",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_B.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
