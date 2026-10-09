@@ -76,7 +76,26 @@ izohlarni domla bilan kelishish.
   ruxsat xati yoki litsenziya havolasi). Busiz `file_pack` bo‘lgan yozuv rad etiladi.
 - Kitob alohida oflayn paket: `pack_id: book-<id>`, o‘z `manifest.json` (version, size,
   sha256, til, litsenziya, min_schema), `PackInstaller` atomar o‘rnatadi; yuklashdan oldin
-  haqiqiy hajm ko‘rsatiladi. Yuklash serveri — C bosqich.
+  haqiqiy hajm ko‘rsatiladi. Yuklash serveri — C bosqich. Ungacha ilovada “Yuklab
+  olinadigan kitob” tugmasi o‘chiq va sababi yoziladi (“server hali ulanmagan”).
+- **Ilova ichidagi fayl** (ilova bilan birga keladigan PDF, Kutubxonadagi o‘quvchida
+  ochiladi — mundarija, xatcho‘p, oxirgi sahifadan davom etish):
+  1. Fayl `assets/books/<id>.pdf` ga qo‘yiladi va `pubspec.yaml` → `flutter: assets:` ga
+     `- assets/books/` qo‘shiladi (birinchi fayl kelganda).
+  2. `library[]` yozuviga:
+     ```json
+     "file": {"path": "assets/books/<id>.pdf", "format": "pdf",
+              "size": <bayt>, "sha256": "<sha256sum>", "pages": <sahifalar soni>}
+     ```
+     `size` va `sha256`: `stat -c %s` va `sha256sum` bilan. Ilova ochishdan oldin ikkalasini
+     tekshiradi — mos kelmasa fayl ochilmaydi.
+  3. Validator `file` ni faqat to‘liq huquq qaydi (`permitted` + `recorded_at` +
+     `recorded_by` + `evidence`) va `cataloged` yoki keyingi holat bilan qabul qiladi;
+     `test/unit/library_catalog_test.dart` faylning repoda borligi va hajmini tekshiradi.
+- Kutubxona katalogida har material turi bilan ko‘rsatiladi: **havola** (brauzerda
+  ochiladi), **ilova ichidagi fayl**, **yuklab olinadigan kitob**, **kutilmoqda**
+  (`not_received`/`received` — ochish tugmasi yo‘q) yoki **faqat katalog yozuvi**.
+  Ilovadagi qisqa yo‘riqnoma: Kutubxona → “Materiallarni qo‘shish tartibi”.
 
 ## Ish tartibi (har material kelganda)
 

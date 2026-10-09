@@ -1823,7 +1823,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get libBooks => 'Kitob va qo‘llanmalar';
 
   @override
-  String get libBooksSub => 'PDF · til · versiya · hajm';
+  String get libBooksSub => 'Kitob, qo‘llanma va saytlar katalogi';
 
   @override
   String get libPacks => 'Oflayn paketlar';
@@ -2760,6 +2760,421 @@ class AppLocalizationsUz extends AppLocalizations {
   String libItemSupersedes(String title) {
     return 'Yangi nashr. Oldingisi: $title';
   }
+
+  @override
+  String get libForYou => 'Siz uchun';
+
+  @override
+  String get libMoreSections => 'Boshqa bo‘limlar';
+
+  @override
+  String get libSearchEntry => 'Kitob, muallif, mavzu qidirish';
+
+  @override
+  String libBooksCount(int count) {
+    return '$count ta manba · qidiruv va filtrlar';
+  }
+
+  @override
+  String get libIntake => 'Materiallarni qo‘shish tartibi';
+
+  @override
+  String get libIntakeSub =>
+      'Domla va muharrir uchun: nima yuboriladi, huquq, tekshiruv';
+
+  @override
+  String get libContinueReading => 'O‘qishni davom ettirish';
+
+  @override
+  String get libSearchLabel => 'Kutubxonadan qidirish';
+
+  @override
+  String get libSearchHint => 'Nomi, muallif, mavzu…';
+
+  @override
+  String get libFilterLanguage => 'Til';
+
+  @override
+  String get libFilterTopic => 'Mavzu';
+
+  @override
+  String get libFilterType => 'Turi';
+
+  @override
+  String get libFilterSectionField => 'Yo‘nalish';
+
+  @override
+  String get libFilterSectionGroup => 'Tahlillar guruhi';
+
+  @override
+  String get libFilterSectionKind => 'Material turi';
+
+  @override
+  String get libFilterSectionOpen => 'Qanday ochiladi';
+
+  @override
+  String libFilterChoose(String filter) {
+    return '$filter: tanlang';
+  }
+
+  @override
+  String libResultCount(int shown, int total) {
+    return '$total ta materialdan $shown tasi';
+  }
+
+  @override
+  String get libClearFilters => 'Tozalash';
+
+  @override
+  String get libFilteredEmptyTitle => 'Bu filtrlar bo‘yicha material yo‘q';
+
+  @override
+  String get libFilteredEmptyBody =>
+      'Bitta filtrni olib tashlang yoki boshqa so‘z bilan qidiring — masalan, muallif familiyasi yoki “siydik”.';
+
+  @override
+  String get libOpenLink => 'Havola · tashqi sayt';
+
+  @override
+  String libOpenLinkHint(String host) {
+    return 'Brauzerda ochiladi: $host';
+  }
+
+  @override
+  String get libOpenInApp => 'Ilova ichidagi fayl';
+
+  @override
+  String get libOpenInAppHint => 'Ilova ichida o‘qiladi — internet shart emas';
+
+  @override
+  String get libOpenDownload => 'Yuklab olinadigan kitob';
+
+  @override
+  String libOpenDownloadHint(String size) {
+    return 'Yuklab olingach ilova ichida o‘qiladi · $size';
+  }
+
+  @override
+  String get libOpenPending => 'Kutilmoqda';
+
+  @override
+  String get libOpenPendingHint => 'Material hali olinmagan — ochib bo‘lmaydi';
+
+  @override
+  String get libOpenReceivedHint =>
+      'Fayl qabul qilindi va tekshirilmoqda — hali ochilmaydi';
+
+  @override
+  String get libOpenRecordHint =>
+      'Faylni tarqatish huquqi qayd etilmagan — ilovada ochilmaydi';
+
+  @override
+  String get libOpenLinkShort => 'Havola';
+
+  @override
+  String get libOpenInAppShort => 'Ilova ichida';
+
+  @override
+  String get libOpenDownloadShort => 'Yuklab olinadigan';
+
+  @override
+  String get libOpenRecordShort => 'Faqat yozuv';
+
+  @override
+  String get libItemRead => 'O‘qish';
+
+  @override
+  String libItemContinue(int page) {
+    return '$page-sahifadan davom etish';
+  }
+
+  @override
+  String get libItemCannotOpen => 'Ochib bo‘lmaydi';
+
+  @override
+  String get libDownloadUnavailable =>
+      'Yuklab olish serveri hali ulanmagan — kitobni hozircha yuklab bo‘lmaydi.';
+
+  @override
+  String get libDetailsTitle => 'Ma’lumotlar';
+
+  @override
+  String get libFieldAuthors => 'Muallif';
+
+  @override
+  String get libFieldYear => 'Yil';
+
+  @override
+  String get libFieldEdition => 'Nashr';
+
+  @override
+  String get libFieldPublisher => 'Nashriyot';
+
+  @override
+  String get libFieldAccess => 'Kirish';
+
+  @override
+  String get libFieldStatus => 'Holat';
+
+  @override
+  String get libFieldRights => 'Tarqatish huquqi';
+
+  @override
+  String libFieldRightsRecorded(String date, String by) {
+    return 'Qayd etilgan: $date · $by';
+  }
+
+  @override
+  String get libFieldTopics => 'Mavzular';
+
+  @override
+  String get libFieldPages => 'Sahifalar';
+
+  @override
+  String get libStateNotReceived => 'Hali olinmagan';
+
+  @override
+  String get libStateReceived => 'Qabul qilindi, tekshirilmoqda';
+
+  @override
+  String get libStateCataloged => 'Kataloglangan';
+
+  @override
+  String get libStateLinked => 'Kartalarga bog‘langan';
+
+  @override
+  String get libStateReviewed => 'Domla tasdiqlagan';
+
+  @override
+  String get libProvidedByTeacher => 'Domla bergan material';
+
+  @override
+  String get libItemNotFound => 'Material topilmadi';
+
+  @override
+  String get libItemNotFoundBody =>
+      'Kontent paketi yangilangan bo‘lishi mumkin. Katalogga qayting.';
+
+  @override
+  String get libBackToCatalog => 'Katalogga qaytish';
+
+  @override
+  String get readerTitle => 'O‘quvchi';
+
+  @override
+  String readerPageOf(int page, int total) {
+    return '$page / $total';
+  }
+
+  @override
+  String get readerToc => 'Mundarija';
+
+  @override
+  String get readerTocEmpty => 'Bu faylda mundarija yo‘q';
+
+  @override
+  String get readerTocEmptyBody =>
+      'Sahifaga o‘ting yoki kerakli joyga xatcho‘p qo‘ying.';
+
+  @override
+  String get readerBookmarks => 'Xatcho‘plar';
+
+  @override
+  String get readerAddBookmark => 'Shu sahifani belgilash';
+
+  @override
+  String get readerBookmarkName => 'Xatcho‘p nomi';
+
+  @override
+  String get readerBookmarkNameHint => 'Masalan: muhim jadval';
+
+  @override
+  String readerBookmarkSaved(int page) {
+    return 'Xatcho‘p saqlandi: $page-sahifa';
+  }
+
+  @override
+  String get readerBookmarkRemoved => 'Xatcho‘p o‘chirildi';
+
+  @override
+  String get readerBookmarkRemove => 'Xatcho‘pni o‘chirish';
+
+  @override
+  String get readerBookmarksEmpty => 'Hali xatcho‘p yo‘q';
+
+  @override
+  String get readerBookmarksEmptyBody =>
+      'Kerakli sahifada “Shu sahifani belgilash”ni bosing — keyin bir bosishda qaytasiz.';
+
+  @override
+  String readerPageLabel(int page) {
+    return '$page-sahifa';
+  }
+
+  @override
+  String get readerGoTo => 'Sahifaga o‘tish';
+
+  @override
+  String get readerGoToShort => 'Sahifa';
+
+  @override
+  String readerGoToHint(int total) {
+    return '1 dan $total gacha';
+  }
+
+  @override
+  String readerGoToError(int total) {
+    return '1 dan $total gacha raqam kiriting';
+  }
+
+  @override
+  String get readerGo => 'O‘tish';
+
+  @override
+  String get readerSave => 'Saqlash';
+
+  @override
+  String get readerRenameBookmark => 'Xatcho‘p nomini o‘zgartirish';
+
+  @override
+  String get libFieldProvidedBy => 'Kimdan';
+
+  @override
+  String get libQueryEmptyBody =>
+      'Boshqa so‘z bilan qidiring — masalan, muallif familiyasi, “siydik” yoki “biokimyo”.';
+
+  @override
+  String get readerZoomIn => 'Kattalashtirish';
+
+  @override
+  String get readerZoomOut => 'Kichiklashtirish';
+
+  @override
+  String readerResumed(int page) {
+    return 'Oxirgi o‘qilgan joy: $page-sahifa';
+  }
+
+  @override
+  String get readerFromStart => 'Boshidan';
+
+  @override
+  String get readerLoading => 'Fayl ochilmoqda…';
+
+  @override
+  String get readerFileMissing => 'Fayl topilmadi';
+
+  @override
+  String get readerFileMissingBody =>
+      'Bu fayl ilova ichida yo‘q. Ilovani yangilab ko‘ring.';
+
+  @override
+  String get readerFileCorrupted => 'Fayl tekshiruvdan o‘tmadi';
+
+  @override
+  String get readerFileCorruptedBody =>
+      'Fayl hajmi yoki nazorat yig‘indisi katalogdagiga mos emas — u buzilgan yoki almashtirilgan bo‘lishi mumkin, shuning uchun ochilmadi.';
+
+  @override
+  String get readerOpenFailed => 'PDF ochilmadi';
+
+  @override
+  String get readerBlockedTitle => 'Ilova ichida ochilmaydi';
+
+  @override
+  String get readerBlockedRights =>
+      'Ilovada faqat to‘liq tarqatish huquqi qayd etilgan fayllar ochiladi. Bu material uchun bunday fayl yo‘q.';
+
+  @override
+  String get readerBookmarkedPage => 'Bu sahifa belgilangan';
+
+  @override
+  String get intakeTitle => 'Materiallarni qo‘shish';
+
+  @override
+  String get intakeSubtitle => 'Domla va muharrir uchun qisqa tartib';
+
+  @override
+  String intakeStatus(int count) {
+    return 'Domlalardan kelgan materiallar: $count. Ro‘yxat material kelishi bilan to‘ldiriladi.';
+  }
+
+  @override
+  String get intakeWhatTitle => '1. Nima yuboriladi';
+
+  @override
+  String get intakeWhat1 =>
+      'Kitob, qo‘llanma, metodika yoki IFU fayli (PDF) va uning ma’lumotlari: nomi, muallif, yil va nashr, nashriyot, ISBN, til.';
+
+  @override
+  String get intakeWhat2 =>
+      'Test savollari: savol, variantlar, to‘g‘ri javob, har variant uchun izoh va manba sahifasi.';
+
+  @override
+  String get intakeWhat3 =>
+      'Eski va yangi nashr bo‘lsa — ikkalasi ham: farqlar alohida ko‘rib chiqiladi.';
+
+  @override
+  String get intakeRightsTitle => '2. Tarqatish huquqi';
+
+  @override
+  String get intakeRights1 =>
+      'Berilgan PDF o‘z-o‘zidan hammaga tarqatish huquqi degani emas.';
+
+  @override
+  String get intakeRights2 =>
+      'Fayl ilovada hammaga ochilishi uchun to‘liq huquq qayd etiladi: kim ruxsat bergan (muallif yoki nashriyot), qachon, kim qayd etgan va dalil — ruxsat xati yoki litsenziya havolasi.';
+
+  @override
+  String get intakeRights3 =>
+      'Qayd bo‘lmasa, material faqat katalog yozuvi yoki shaxsiy foydalanish uchun qoladi.';
+
+  @override
+  String get intakeReviewTitle => '3. Qanday tekshiriladi';
+
+  @override
+  String get intakeStep1 => 'Kutilmoqda — material hali kelmagan.';
+
+  @override
+  String get intakeStep2 => 'Qabul qilindi — fayl keldi va ro‘yxatga yozildi.';
+
+  @override
+  String get intakeStep3 =>
+      'Kataloglandi — nomi, muallif va nashr tekshirildi. Shundan keyingina undan iqtibos keltiriladi.';
+
+  @override
+  String get intakeStep4 =>
+      'Bog‘landi — tahlil kartalari va darslarga sahifa raqami bilan bog‘landi.';
+
+  @override
+  String get intakeStep5 =>
+      'Tasdiqlandi — domla ko‘rib chiqdi. Savollar shungacha “Qoralama” bo‘lib turadi.';
+
+  @override
+  String get intakeConflict =>
+      'Eski va yangi manba zid bo‘lsa, hech biri fakt sifatida yozilmaydi — ikkala pozitsiya tekshiruvchiga ko‘rsatiladi.';
+
+  @override
+  String get intakeNeverTitle => 'Nima qilinmaydi';
+
+  @override
+  String get intakeNever1 => 'Kelmagan materialni “mavjud” deb ko‘rsatish.';
+
+  @override
+  String get intakeNever2 =>
+      'Sahifa raqamini taxmin qilish yoki manbada yo‘q gapni yozish.';
+
+  @override
+  String get intakeNever3 => 'Huquqi qayd etilmagan kitobni hammaga tarqatish.';
+
+  @override
+  String get intakeContactTitle => '4. Bog‘lanish';
+
+  @override
+  String get intakeContactBody =>
+      'Material haqida LabGuide jamoasiga yozing: nomi, muallif, nashr va huquq egasi. Faylni topshirish usuli jamoa bilan kelishiladi — ilova orqali PDF yuklab bo‘lmaydi.';
+
+  @override
+  String get intakeContactAction => 'LabGuide jamoasiga yozish';
 
   @override
   String get libReview => 'Tekshiruv navbati';

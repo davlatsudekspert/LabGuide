@@ -6,69 +6,272 @@ import 'package:material_ui/material_ui.dart';
 import '../../app/app_scope.dart';
 import '../../app/shell.dart';
 import '../../app/widgets/lg_page.dart';
-import '../../app/widgets/links.dart';
 import '../../core/storage/kv_store.dart';
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
 import '../content/content_model.dart';
-import '../content/ui/analyte_screen.dart' show SourceTile, rightsLabel;
+import '../content/ui/analyte_screen.dart' show SourceTile;
 import '../content/ui/content_widgets.dart';
 import '../packs/pack_catalog.dart';
 import '../packs/pack_downloader.dart';
 import '../packs/packs_controller.dart';
+import '../settings/settings_controller.dart';
 import '../tools/calc_info.dart';
 import '../tools/clinical_calc_screens.dart';
+import 'library_catalog.dart';
+import 'library_filters.dart';
+import 'library_widgets.dart';
+
+/// Kutubxona bo'limlari. Rol faqat tartibni o'zgartiradi (eng foydalilari
+/// “Siz uchun”da yuqorida) — barcha bo'limlar hamma uchun ochiq.
+enum LibrarySection { books, saved, research, sources, packs, intake, review }
+
+/// Rol bo'yicha: “Siz uchun” (yuqorida) va qolgan bo'limlar. Tekshiruv
+/// navbati bu yerda yo'q — u faqat server vakolati bilan qo'shiladi.
+(List<LibrarySection>, List<LibrarySection>) librarySectionsFor(AppRole role) {
+  final top = switch (role) {
+    AppRole.student => const [
+      LibrarySection.books,
+      LibrarySection.saved,
+      LibrarySection.research,
+    ],
+    AppRole.teacher => const [
+      LibrarySection.books,
+      LibrarySection.intake,
+      LibrarySection.sources,
+    ],
+    AppRole.doctor => const [
+      LibrarySection.saved,
+      LibrarySection.books,
+      LibrarySection.sources,
+    ],
+    AppRole.lab => const [
+      LibrarySection.books,
+      LibrarySection.packs,
+      LibrarySection.saved,
+    ],
+  };
+  return (
+    top,
+    [
+      for (final x in LibrarySection.values)
+        if (!top.contains(x) && x != LibrarySection.review) x,
+    ],
+  );
+}
 
 class LibraryScreen extends StatelessWidget {
   const LibraryScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final services = context.services;
+    return ListenableBuilder(
+      listenable: Listenable.merge([
+        services.settings,
+        services.access,
+        services.content,
+      ]),
+      builder: (context, _) {
+        final l = AppLocalizations.of(context);
+        final (top, rest) = librarySectionsFor(services.settings.effectiveRole);
+        // Tekshiruv navbati — faqat server tekshiruvchi yoki admin deb
+        // tasdiqlagan foydalanuvchiga (“Ustoz” roli uni ochmaydi).
+        final access = services.access.access;
+        final first = [
+          ...top,
+          if (access.reviewer || access.adminAccount) LibrarySection.review,
+        ];
+        final count = services.content.pack?.library.length;
+        return LgPage(
+          title: l.libTitle,
+          subtitle: l.libSubtitle,
+          showBrand: true,
+          children: [
+            const _ContinueReadingCard(),
+            _SearchEntry(
+              label: l.libSearchEntry,
+              onTap: () => context.push('/library/books?search=1'),
+            ),
+            LgSectionTitle(l.libForYou),
+            for (final (i, s) in first.indexed)
+              _SectionRow(
+                section: s,
+                count: count,
+                last: i == first.length - 1,
+              ),
+            LgSectionTitle(l.libMoreSections),
+            for (final (i, s) in rest.indexed)
+              _SectionRow(section: s, count: count, last: i == rest.length - 1),
+          ],
+        );
+      },
+    );
+  }
+}
+
+class _SectionRow extends StatelessWidget {
+  const _SectionRow({
+    required this.section,
+    required this.count,
+    required this.last,
+  });
+
+  final LibrarySection section;
+
+  /// Katalogdagi materiallar soni (paket yuklangan bo'lsa).
+  final int? count;
+  final bool last;
+
+  @override
+  Widget build(BuildContext context) {
     final l = AppLocalizations.of(context);
-    return LgPage(
-      title: l.libTitle,
-      subtitle: l.libSubtitle,
-      showBrand: true,
-      children: [
-        LgRow(
-          title: l.libBooks,
-          subtitle: l.libBooksSub,
-          icon: Icons.menu_book_outlined,
-          onTap: () => context.push('/library/books'),
+    final (
+      String title,
+      String sub,
+      IconData icon,
+      String path,
+    ) = switch (section) {
+      LibrarySection.books => (
+        l.libBooks,
+        count == null ? l.libBooksSub : l.libBooksCount(count!),
+        Icons.menu_book_outlined,
+        '/library/books',
+      ),
+      LibrarySection.saved => (
+        l.featureSaved,
+        l.libSavedSub,
+        Icons.bookmark_outline,
+        '/library/saved',
+      ),
+      LibrarySection.research => (
+        l.featureResearch,
+        l.libResearchSub,
+        Icons.edit_note_rounded,
+        '/library/research',
+      ),
+      LibrarySection.sources => (
+        l.libSources,
+        l.libSourcesSub,
+        Icons.fact_check_outlined,
+        '/library/sources',
+      ),
+      LibrarySection.packs => (
+        l.libPacks,
+        l.libPacksSub,
+        Icons.download_for_offline_outlined,
+        '/library/packs',
+      ),
+      LibrarySection.intake => (
+        l.libIntake,
+        l.libIntakeSub,
+        Icons.move_to_inbox_outlined,
+        '/library/intake',
+      ),
+      LibrarySection.review => (
+        l.libReview,
+        l.libReviewSub,
+        Icons.rule_rounded,
+        '/library/review',
+      ),
+    };
+    return LgRow(
+      title: title,
+      subtitle: sub,
+      icon: icon,
+      onTap: () => context.push(path),
+      divider: !last,
+    );
+  }
+}
+
+/// Qidiruv maydoniga o'xshash tugma: katalogni qidiruv fokusida ochadi.
+class _SearchEntry extends StatelessWidget {
+  const _SearchEntry({required this.label, required this.onTap});
+
+  final String label;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final p = LgPalette.of(context);
+    final text = Theme.of(context).textTheme;
+    return Padding(
+      padding: const EdgeInsets.only(top: 4, bottom: 4),
+      child: LgPressable(
+        onTap: onTap,
+        color: p.paper,
+        semanticLabel: label,
+        borderRadius: BorderRadius.circular(LgRadius.button),
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(minHeight: 54),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+            child: Row(
+              children: [
+                ExcludeSemantics(
+                  child: Icon(Icons.search_rounded, color: p.sub),
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: ExcludeSemantics(
+                    child: Text(
+                      label,
+                      style: text.bodyLarge!.copyWith(color: p.sub),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
         ),
-        LgRow(
-          title: l.libPacks,
-          subtitle: l.libPacksSub,
-          icon: Icons.download_for_offline_outlined,
-          onTap: () => context.push('/library/packs'),
-        ),
-        LgRow(
-          title: l.featureSaved,
-          subtitle: l.libSavedSub,
-          icon: Icons.bookmark_outline,
-          onTap: () => context.push('/library/saved'),
-        ),
-        LgRow(
-          title: l.featureResearch,
-          subtitle: l.libResearchSub,
-          icon: Icons.edit_note_rounded,
-          onTap: () => context.push('/library/research'),
-        ),
-        LgRow(
-          title: l.libSources,
-          subtitle: l.libSourcesSub,
-          icon: Icons.fact_check_outlined,
-          onTap: () => context.push('/library/sources'),
-        ),
-        LgRow(
-          title: l.libReview,
-          subtitle: l.libReviewSub,
-          icon: Icons.rule_rounded,
-          onTap: () => context.push('/library/review'),
-          divider: false,
-        ),
-      ],
+      ),
+    );
+  }
+}
+
+/// Oxirgi ochilgan ilova ichidagi kitob (bo'lsa): bir bosishda o'sha
+/// sahifadan davom etiladi.
+class _ContinueReadingCard extends StatelessWidget {
+  const _ContinueReadingCard();
+
+  @override
+  Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context);
+    final services = context.services;
+    return ListenableBuilder(
+      listenable: Listenable.merge([services.reading, services.content]),
+      builder: (context, _) {
+        final pack = services.content.pack;
+        // Eng oxirgi o'qilgan va hali ham ilovada ochiladigan fayl.
+        final match = pack == null
+            ? null
+            : services.reading.recent
+                  .map((e) => (e, pack.libraryItem(e.key)))
+                  .where(
+                    (x) =>
+                        x.$2 != null &&
+                        canReadInApp(x.$2!) &&
+                        x.$2!.file!.sha256 == x.$1.value.fileSha,
+                  )
+                  .firstOrNull;
+        if (match == null) return const SizedBox.shrink();
+        final (last, item!) = match;
+        return LgPanel(
+          soft: true,
+          padding: const EdgeInsets.symmetric(horizontal: 14),
+          child: LgRow(
+            title: l.libContinueReading,
+            subtitle:
+                '${libraryShortTitle(item, max: 70)} · '
+                '${l.readerPageLabel(last.value.lastPage)}',
+            icon: Icons.auto_stories_outlined,
+            divider: false,
+            onTap: () => context.push('/library/books/item/${item.id}/read'),
+          ),
+        );
+      },
     );
   }
 }
@@ -472,32 +675,78 @@ String kindLabel(LibraryItemKind k, AppLocalizations l) => switch (k) {
   LibraryItemKind.website => l.kindWebsite,
 };
 
-/// Kitoblar, qo'llanmalar, metodikalar katalogi. Yangi adabiyot kontent
-/// paketiga `library` yozuvi sifatida qo'shiladi — ilova kodi o'zgarmaydi.
+/// Kitoblar, qo'llanmalar, metodikalar katalogi: qidiruv va til / mavzu /
+/// tur filtrlari. Yangi adabiyot kontent paketiga `library` yozuvi sifatida
+/// qo'shiladi — ilova kodi o'zgarmaydi.
 class BooksScreen extends StatefulWidget {
-  const BooksScreen({super.key});
+  const BooksScreen({super.key, this.focusSearch = false});
+
+  /// Kutubxona bosh sahifasidagi qidiruvdan kelinganda — klaviatura ochiq.
+  final bool focusSearch;
 
   @override
   State<BooksScreen> createState() => _BooksScreenState();
 }
 
-/// Katalog tillari — o'z nomi bilan (til tanlagichdagi kabi).
-const _catalogLanguages = [
-  ('uz', 'O‘zbekcha'),
-  ('ru', 'Русский'),
-  ('en', 'English'),
-];
-
 class _BooksScreenState extends State<BooksScreen> {
-  LibraryCategory? _category;
-  String? _language;
+  final _query = TextEditingController();
+  final _focus = FocusNode();
+  final _searchKey = GlobalKey();
+  LibraryFilter _filter = LibraryFilter.none;
+  LibraryCatalog? _catalog;
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.focusSearch) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) _focus.requestFocus();
+      });
+    }
+  }
+
+  @override
+  void dispose() {
+    _query.dispose();
+    _focus.dispose();
+    super.dispose();
+  }
+
+  void _set(LibraryFilter f) => setState(() => _filter = f);
+
+  void _clearAll() {
+    _query.clear();
+    _set(LibraryFilter.none);
+    // Ro'yxat boshiga — qidiruv va filtrlar yana ko'rinsin.
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final target = _searchKey.currentContext;
+      if (target != null && target.mounted) {
+        unawaited(
+          Scrollable.ensureVisible(
+            target,
+            duration: LgMotion.of(context, LgMotion.page),
+          ),
+        );
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context);
+    final text = Theme.of(context).textTheme;
+    final lang = Localizations.localeOf(context).languageCode;
     return LgPage(
       title: l.libBooks,
       children: [
+        LibrarySearchField(
+          key: _searchKey,
+          controller: _query,
+          focusNode: _focus,
+          label: l.libSearchLabel,
+          hint: l.libSearchHint,
+          onChanged: (v) => _set(_filter.copyWith(query: v)),
+        ),
         ContentGate(
           builder: (context, pack) {
             if (pack.library.isEmpty) {
@@ -507,77 +756,63 @@ class _BooksScreenState extends State<BooksScreen> {
                 message: l.booksEmptyBody,
               );
             }
-            final items = pack.library
-                .where(
-                  (i) =>
-                      (_category == null || i.categories.contains(_category)) &&
-                      (_language == null || i.language == _language),
-                )
-                .toList();
-            // Interfeys tilidagi materiallar birinchi (tartib saqlanadi).
-            final lang = Localizations.localeOf(context).languageCode;
-            final ordered = [
-              ...items.where((i) => i.language == lang),
-              ...items.where((i) => i.language != lang),
-            ];
-            final languages = {for (final i in pack.library) i.language};
+            final catalog = _catalog?.pack == pack
+                ? _catalog!
+                : _catalog = LibraryCatalog(pack);
+            final results = catalog.apply(_filter, lang: lang);
             return Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  clipBehavior: Clip.none,
+                LibraryFilterBar(
+                  catalog: catalog,
+                  filter: _filter,
+                  // Varaq tanlovi + maydondagi joriy so'z (varaq ochiq paytda
+                  // o'zgargan bo'lsa ham eskisi qaytmaydi).
+                  onChanged: (f) => _set(f.copyWith(query: _query.text)),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 6, bottom: 4),
                   child: Row(
                     children: [
-                      LgChoiceChip(
-                        label: l.testsFilterAll,
-                        selected: _category == null,
-                        onTap: () => setState(() => _category = null),
-                      ),
-                      for (final c in LibraryCategory.values) ...[
-                        const SizedBox(width: 6),
-                        LgChoiceChip(
-                          label: categoryLabel(c, l),
-                          selected: _category == c,
-                          onTap: () => setState(
-                            () => _category = _category == c ? null : c,
+                      Expanded(
+                        child: Semantics(
+                          liveRegion: true,
+                          child: Text(
+                            l.libResultCount(
+                              results.length,
+                              pack.library.length,
+                            ),
+                            style: text.bodySmall,
                           ),
                         ),
-                      ],
+                      ),
+                      if (_filter.isActive)
+                        LgButton.link(
+                          label: l.libClearFilters,
+                          icon: Icons.close_rounded,
+                          expand: false,
+                          onPressed: _clearAll,
+                        ),
                     ],
                   ),
                 ),
-                if (languages.length > 1) ...[
-                  const SizedBox(height: 8),
-                  Wrap(
-                    spacing: 6,
-                    runSpacing: 6,
-                    children: [
-                      for (final (code, name) in _catalogLanguages)
-                        if (languages.contains(code))
-                          LgChoiceChip(
-                            label: name,
-                            selected: _language == code,
-                            onTap: () => setState(
-                              () => _language = _language == code ? null : code,
-                            ),
-                          ),
-                    ],
-                  ),
-                ],
-                const SizedBox(height: 8),
-                if (items.isEmpty)
+                if (results.isEmpty)
                   LgStateView(
                     kind: StateKind.empty,
-                    title: l.testsEmptyTitle,
-                    actionLabel: l.booksResetFilters,
-                    onAction: () => setState(() {
-                      _category = null;
-                      _language = null;
-                    }),
+                    title: _filter.hasSelections
+                        ? l.libFilteredEmptyTitle
+                        : l.testsEmptyTitle,
+                    message: _filter.hasSelections
+                        ? l.libFilteredEmptyBody
+                        : l.libQueryEmptyBody,
+                    actionLabel: _filter.hasSelections
+                        ? l.booksResetFilters
+                        : l.testsClearSearch,
+                    onAction: _clearAll,
                   )
                 else
-                  for (final item in ordered) LibraryItemCard(item: item),
+                  for (final item in results) LibraryItemCard(item: item),
+                const SizedBox(height: 8),
                 LgNotice(l.booksCatalogNote, kind: NoticeKind.info),
               ],
             );
@@ -588,6 +823,8 @@ class _BooksScreenState extends State<BooksScreen> {
   }
 }
 
+/// Katalog qatori: nomi, qisqa ma'lumot va “qanday ochiladi” belgisi.
+/// Bosilganda material sahifasi ochiladi.
 class LibraryItemCard extends StatelessWidget {
   const LibraryItemCard({super.key, required this.item});
 
@@ -596,101 +833,47 @@ class LibraryItemCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context);
+    final p = LgPalette.of(context);
     final text = Theme.of(context).textTheme;
-    final pack = context.services.content.pack;
-    final older = item.supersedes == null
-        ? null
-        : pack?.libraryItem(item.supersedes!);
+    final authors = item.authors.length > 2
+        ? '${item.authors.take(2).join(', ')} …'
+        : item.authors.join(', ');
     final meta = [
       kindLabel(item.kind, l),
-      if (item.authors.isNotEmpty) item.authors.join(', '),
+      if (authors.isNotEmpty) authors,
       if (item.year != null) '${item.year}',
-      if (item.edition != null) item.edition!,
       item.language.toUpperCase(),
     ].join(' · ');
-    final shared = item.filePack != null && item.rights.allowsSharedPack;
-    final lang = Localizations.localeOf(context).languageCode;
-    // Domla/foydalanuvchi bergan material — tarqatish huquqi va paket holati
-    // muhim; ochiq katalog yozuvida esa kirish turi va litsenziya.
-    final provided = item.providedBy != null || item.filePack != null;
-    final url = item.url;
-    return LgPanel(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(item.title, style: text.titleMedium),
-          const SizedBox(height: 4),
-          Text(meta, style: text.bodySmall),
-          if (item.publisher != null)
-            Text(item.publisher!, style: text.bodySmall),
-          if (item.note != null)
-            Padding(
-              padding: const EdgeInsets.only(top: 8),
-              child: Text(item.note!.of(lang), style: text.bodyMedium),
-            ),
-          if (older != null)
-            Padding(
-              padding: const EdgeInsets.only(top: 4),
-              child: Text(
-                l.libItemSupersedes(older.title),
-                style: text.bodySmall,
-              ),
-            ),
-          const SizedBox(height: 10),
-          Wrap(
-            spacing: 6,
-            runSpacing: 6,
+    final title = libraryShortTitle(item, max: 140);
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 5),
+      child: LgPressable(
+        onTap: () => context.push('/library/books/item/${item.id}'),
+        color: p.paper,
+        borderRadius: BorderRadius.circular(LgRadius.card),
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(18, 16, 12, 16),
+          child: Row(
             children: [
-              for (final c in item.categories)
-                LgTag(categoryLabel(c, l), tone: LgTone.neutral),
-              if (provided)
-                LgTag(
-                  rightsLabel(item.rights.distribution, l),
-                  tone: item.rights.allowsSharedPack
-                      ? LgTone.brand
-                      : LgTone.warning,
-                )
-              else
-                LgTag(
-                  switch (item.access) {
-                    LibraryAccess.openLicence => l.libAccessOpen(
-                      item.licence ?? '',
-                    ),
-                    LibraryAccess.freeToRead => l.libAccessFree,
-                    LibraryAccess.catalogOnly => l.libAccessCatalog,
-                  },
-                  tone: item.access == LibraryAccess.openLicence
-                      ? LgTone.brand
-                      : LgTone.neutral,
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(title, style: text.titleMedium),
+                    const SizedBox(height: 4),
+                    Text(meta, style: text.bodySmall),
+                    const SizedBox(height: 12),
+                    OpenKindLine(item: item),
+                  ],
                 ),
+              ),
+              const SizedBox(width: 6),
+              ExcludeSemantics(
+                child: Icon(Icons.chevron_right_rounded, color: p.sub),
+              ),
             ],
           ),
-          if (item.accessed != null && !provided)
-            Padding(
-              padding: const EdgeInsets.only(top: 8),
-              child: Text(l.libChecked(item.accessed!), style: text.bodySmall),
-            ),
-          const SizedBox(height: 12),
-          if (url != null)
-            LgButton.secondary(
-              label: l.libOpenSource,
-              icon: Icons.open_in_new_rounded,
-              onPressed: () => openExternalLink(context, url),
-            ),
-          if (provided) ...[
-            if (url != null) const SizedBox(height: 8),
-            // Paket yuklash infratuzilmasi (C bosqich) ulanmaguncha tugma
-            // o'chirilgan — muvaffaqiyat ko'rsatilmaydi.
-            LgButton.secondary(
-              label: shared
-                  ? '${l.libItemPack(formatBytes(item.filePack!.size))} · '
-                        '${l.notAvailableYet}'
-                  : l.libItemNoPack,
-              icon: Icons.download_rounded,
-              onPressed: null,
-            ),
-          ],
-        ],
+        ),
       ),
     );
   }
