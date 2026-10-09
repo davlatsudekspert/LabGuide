@@ -245,6 +245,167 @@ class AppLocalizationsEn extends AppLocalizations {
   String get homeHeroDoctorCta => 'Explore tests';
 
   @override
+  String get condGuideTitle => 'Tests by condition';
+
+  @override
+  String get condGuideEyebrow => 'Clinician’s guide';
+
+  @override
+  String get condGuideBody =>
+      'For each condition: which tests come first, which follow — and what a result may point to.';
+
+  @override
+  String get condGuideSearch => 'Search a condition or test…';
+
+  @override
+  String get condGuideAll => 'All conditions';
+
+  @override
+  String condCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count conditions',
+      one: '$count condition',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String condSystemCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count body systems',
+      one: '$count body system',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get condListSubtitle =>
+      'Which tests for which condition — and what results may point to';
+
+  @override
+  String get condSearchLabel => 'Search conditions';
+
+  @override
+  String get condSearchHint => 'Diabetes, anemia, thyroid, TSH…';
+
+  @override
+  String get condEmptyTitle => 'No conditions found';
+
+  @override
+  String get condEmptyBody =>
+      'Try another name, a common name or a test name (for example, “high cholesterol”).';
+
+  @override
+  String get condTierFirstLine => 'First-line';
+
+  @override
+  String get condTierAdditional => 'Additional';
+
+  @override
+  String get condTierMonitoring => 'Monitoring';
+
+  @override
+  String get condTierFirstLineHint =>
+      'Ordered first when the condition is suspected';
+
+  @override
+  String get condTierAdditionalHint =>
+      'To clarify, find the cause or tell conditions apart';
+
+  @override
+  String get condTierMonitoringHint => 'After diagnosis or during treatment';
+
+  @override
+  String get condPatternsTitle => 'Result patterns';
+
+  @override
+  String get condPatternsHint =>
+      '“If you see this — this may be likely.” Interpretations are probabilistic: the clinician draws the final conclusion with the clinical picture.';
+
+  @override
+  String get condNotDiagnosticTitle => 'Not a diagnostic tool';
+
+  @override
+  String get condNotDiagnosticBody =>
+      'The guide helps plan testing. Clinical assessment and the final decision rest with the clinician. The text is a sourced draft awaiting independent expert review.';
+
+  @override
+  String get condCautionsTitle => 'Keep in mind';
+
+  @override
+  String get condNoCard => 'No card yet';
+
+  @override
+  String get condCopyList => 'Copy test list';
+
+  @override
+  String get condCopyListSub => 'Ready text for a referral or message';
+
+  @override
+  String get condCopied => 'List copied';
+
+  @override
+  String condReferralTitle(String name) {
+    return '$name — tests';
+  }
+
+  @override
+  String get condReferralFooter =>
+      'LabGuide guide (draft). Not a diagnostic tool — the final decision rests with the clinician.';
+
+  @override
+  String get condAnalyteSection => 'Conditions where it is ordered';
+
+  @override
+  String get condTestsEntrySub =>
+      'Pick a condition — the tests and result patterns';
+
+  @override
+  String get condSearchSection => 'Conditions';
+
+  @override
+  String condRowFirstLine(String tests) {
+    return 'First: $tests';
+  }
+
+  @override
+  String get condSysEndocrine => 'Endocrine system';
+
+  @override
+  String get condSysKidney => 'Kidney and urinary tract';
+
+  @override
+  String get condSysLiver => 'Liver and bile ducts';
+
+  @override
+  String get condSysDigestive => 'Pancreas and bowel';
+
+  @override
+  String get condSysCardio => 'Heart and blood vessels';
+
+  @override
+  String get condSysBlood => 'Blood and clotting';
+
+  @override
+  String get condSysInfection => 'Infections';
+
+  @override
+  String get condSysRheumatology => 'Rheumatology';
+
+  @override
+  String get condSysBone => 'Bone and calcium';
+
+  @override
+  String get condSysPregnancy => 'Pregnancy and reproductive health';
+
+  @override
+  String get condSysProstate => 'Prostate';
+
+  @override
   String get homeHeroLabTitle => 'Confidence at the bench';
 
   @override

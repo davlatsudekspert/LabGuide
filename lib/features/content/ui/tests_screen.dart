@@ -6,7 +6,9 @@ import '../../../design/tokens.dart';
 import '../../../design/widgets/lg_widgets.dart';
 import '../../../l10n/gen/app_localizations.dart';
 import '../analyte_search.dart';
+import '../condition_search.dart';
 import '../content_model.dart';
+import 'conditions_screens.dart';
 import 'content_widgets.dart';
 
 class TestsScreen extends StatefulWidget {
@@ -20,6 +22,7 @@ class _TestsScreenState extends State<TestsScreen> {
   final _query = TextEditingController();
   String? _group;
   AnalyteSearch? _search;
+  ConditionSearch? _conditionSearch;
 
   @override
   void dispose() {
@@ -41,6 +44,7 @@ class _TestsScreenState extends State<TestsScreen> {
       subtitle: l.testsSubtitle,
       showBrand: true,
       children: [
+        const ConditionsEntryRow(base: '/tests'),
         SearchBox(
           controller: _query,
           label: l.testsSearchLabel,
@@ -57,9 +61,32 @@ class _TestsScreenState extends State<TestsScreen> {
               groupId: _group,
               lang: lang,
             );
+            // Qidiruv kasallik nomiga ham mos kelsa — eng yaqin holatlar
+            // tahlillardan oldin (masalan, “diabet”, “anemiya”).
+            final conditionSearch = _conditionSearch?.pack == pack
+                ? _conditionSearch!
+                : _conditionSearch = ConditionSearch(pack);
+            final conditions = _query.text.trim().isEmpty
+                ? const <ClinicalCondition>[]
+                : conditionSearch
+                      .search(_query.text, lang: lang)
+                      .take(3)
+                      .toList();
             return Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
+                if (conditions.isNotEmpty) ...[
+                  LgSectionTitle(l.condSearchSection),
+                  for (var i = 0; i < conditions.length; i++)
+                    ConditionRow(
+                      condition: conditions[i],
+                      divider: i < conditions.length - 1,
+                      onTap: () => context.push(
+                        '/tests/conditions/${conditions[i].id}',
+                      ),
+                    ),
+                  LgSectionTitle(l.featureTests),
+                ],
                 _GroupFilter(
                   groups: pack.groups,
                   selected: _group,
@@ -109,12 +136,14 @@ class SearchBox extends StatelessWidget {
     required this.label,
     required this.hint,
     required this.onChanged,
+    this.autofocus = false,
   });
 
   final TextEditingController controller;
   final String label;
   final String hint;
   final ValueChanged<String> onChanged;
+  final bool autofocus;
 
   @override
   Widget build(BuildContext context) {
@@ -128,6 +157,7 @@ class SearchBox extends StatelessWidget {
         child: TextField(
           controller: controller,
           onChanged: onChanged,
+          autofocus: autofocus,
           textInputAction: TextInputAction.search,
           style: text.bodyLarge,
           decoration: InputDecoration(

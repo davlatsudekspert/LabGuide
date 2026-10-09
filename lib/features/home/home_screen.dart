@@ -8,6 +8,7 @@ import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
 import '../auth/ui/role_screen.dart';
 import '../auth/ui/welcome_screen.dart';
+import '../content/ui/conditions_screens.dart';
 import '../content/ui/content_widgets.dart';
 import '../settings/settings_controller.dart';
 
@@ -32,6 +33,7 @@ class RoleHome {
     required this.heroLocation,
     required this.actions,
     required this.usefulAnalytes,
+    this.featuredConditions = const [],
   });
 
   final String heroTitle;
@@ -40,6 +42,10 @@ class RoleHome {
   final String heroLocation;
   final List<HomeAction> actions;
   final List<String> usefulAnalytes;
+
+  /// Bo'sh bo'lmasa — bosh sahifada “Kasallik bo'yicha tahlillar”
+  /// qo'llanmasi kartasi (shu holatlar bir bosishda ochiladi).
+  final List<String> featuredConditions;
 
   static RoleHome of(AppRole role, AppLocalizations l) => switch (role) {
     AppRole.doctor => RoleHome(
@@ -62,6 +68,12 @@ class RoleHome {
         HomeAction(l.featureSaved, Icons.bookmark_outline, '/library/saved'),
       ],
       usefulAnalytes: const ['glucose-plasma-fasting', 'creatinine', 'alt'],
+      featuredConditions: const [
+        'type-2-diabetes',
+        'iron-deficiency-anemia',
+        'hypothyroidism',
+        'chronic-kidney-disease',
+      ],
     ),
     AppRole.lab => RoleHome(
       heroTitle: l.homeHeroLabTitle,
@@ -152,6 +164,11 @@ class HomeScreen extends StatelessWidget {
           eyebrow: role.title(l),
           showBrand: true,
           children: [
+            if (config.featuredConditions.isNotEmpty)
+              ConditionGuideCard(
+                base: '/home',
+                featured: config.featuredConditions,
+              ),
             LgHeroCard(
               image: kHeroImage,
               tag: l.homeFocusTag,

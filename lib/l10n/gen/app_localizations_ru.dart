@@ -249,6 +249,171 @@ class AppLocalizationsRu extends AppLocalizations {
   String get homeHeroDoctorCta => 'Открыть анализы';
 
   @override
+  String get condGuideTitle => 'Анализы по заболеваниям';
+
+  @override
+  String get condGuideEyebrow => 'Справочник врача';
+
+  @override
+  String get condGuideBody =>
+      'Для каждого состояния: какие анализы в первую очередь, какие затем — и на что может указывать результат.';
+
+  @override
+  String get condGuideSearch => 'Найти болезнь или анализ…';
+
+  @override
+  String get condGuideAll => 'Все состояния';
+
+  @override
+  String condCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count состояния',
+      many: '$count состояний',
+      few: '$count состояния',
+      one: '$count состояние',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String condSystemCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count системы',
+      many: '$count систем',
+      few: '$count системы',
+      one: '$count система',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get condListSubtitle =>
+      'Какие анализы при каком состоянии — и о чём может говорить результат';
+
+  @override
+  String get condSearchLabel => 'Поиск состояний';
+
+  @override
+  String get condSearchHint => 'Диабет, анемия, щитовидная железа, ТТГ…';
+
+  @override
+  String get condEmptyTitle => 'Ничего не найдено';
+
+  @override
+  String get condEmptyBody =>
+      'Попробуйте другое название, разговорное название или название анализа (например, «сахарный диабет»).';
+
+  @override
+  String get condTierFirstLine => 'В первую очередь';
+
+  @override
+  String get condTierAdditional => 'Дополнительно';
+
+  @override
+  String get condTierMonitoring => 'Наблюдение';
+
+  @override
+  String get condTierFirstLineHint =>
+      'Назначают в первую очередь при подозрении';
+
+  @override
+  String get condTierAdditionalHint =>
+      'Для уточнения, поиска причины или дифференциации';
+
+  @override
+  String get condTierMonitoringHint => 'После диагноза или во время лечения';
+
+  @override
+  String get condPatternsTitle => 'Типичные сочетания результатов';
+
+  @override
+  String get condPatternsHint =>
+      '«Если получилось так — вероятно вот это». Трактовка вероятностная: окончательный вывод делает врач с учётом клинической картины.';
+
+  @override
+  String get condNotDiagnosticTitle => 'Не инструмент для постановки диагноза';
+
+  @override
+  String get condNotDiagnosticBody =>
+      'Справочник помогает планировать обследование. Клиническая оценка и окончательное решение — за врачом. Текст — черновик на основе источников, ожидает независимой экспертной проверки.';
+
+  @override
+  String get condCautionsTitle => 'Важно учитывать';
+
+  @override
+  String get condNoCard => 'Карточки пока нет';
+
+  @override
+  String get condCopyList => 'Скопировать список анализов';
+
+  @override
+  String get condCopyListSub => 'Готовый текст для направления или сообщения';
+
+  @override
+  String get condCopied => 'Список скопирован';
+
+  @override
+  String condReferralTitle(String name) {
+    return '$name — анализы';
+  }
+
+  @override
+  String get condReferralFooter =>
+      'Справочник LabGuide (черновик). Не инструмент диагностики — окончательное решение за врачом.';
+
+  @override
+  String get condAnalyteSection => 'При каких состояниях назначают';
+
+  @override
+  String get condTestsEntrySub =>
+      'Выберите состояние — нужные анализы и сочетания результатов';
+
+  @override
+  String get condSearchSection => 'Состояния';
+
+  @override
+  String condRowFirstLine(String tests) {
+    return 'Сначала: $tests';
+  }
+
+  @override
+  String get condSysEndocrine => 'Эндокринная система';
+
+  @override
+  String get condSysKidney => 'Почки и мочевые пути';
+
+  @override
+  String get condSysLiver => 'Печень и желчные пути';
+
+  @override
+  String get condSysDigestive => 'Поджелудочная железа и кишечник';
+
+  @override
+  String get condSysCardio => 'Сердце и сосуды';
+
+  @override
+  String get condSysBlood => 'Кровь и свёртывание';
+
+  @override
+  String get condSysInfection => 'Инфекции';
+
+  @override
+  String get condSysRheumatology => 'Ревматология';
+
+  @override
+  String get condSysBone => 'Кости и обмен кальция';
+
+  @override
+  String get condSysPregnancy => 'Беременность и репродуктивное здоровье';
+
+  @override
+  String get condSysProstate => 'Простата';
+
+  @override
   String get homeHeroLabTitle => 'Уверенная работа в лаборатории';
 
   @override
