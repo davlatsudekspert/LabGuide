@@ -2816,6 +2816,109 @@ class AppLocalizationsEn extends AppLocalizations {
   String get reviewDiscrepancies => 'Source discrepancies';
 
   @override
+  String get rvGateTitle => 'Reviewers only';
+
+  @override
+  String get rvGateBody =>
+      'Reviewer rights are granted by an admin. An in-app role (for example, “Teacher”) does not grant them.';
+
+  @override
+  String get rvSignInTitle => 'Sign in to review';
+
+  @override
+  String get rvAdminReadOnly =>
+      'As an admin you can see decisions. To review, grant your account reviewer rights (Admin → Users).';
+
+  @override
+  String get rvTabCards => 'Cards';
+
+  @override
+  String get rvTabQuestions => 'Questions';
+
+  @override
+  String get rvTabDiscrepancies => 'Discrepancies';
+
+  @override
+  String rvMine(String decision) {
+    return 'Your decision: $decision';
+  }
+
+  @override
+  String get rvNotSeen => 'Not reviewed by you yet';
+
+  @override
+  String rvCount(int count) {
+    return 'Decisions: $count';
+  }
+
+  @override
+  String get rvApprove => 'Approve';
+
+  @override
+  String get rvChanges => 'Changes needed';
+
+  @override
+  String get rvDecisionApprove => 'approved';
+
+  @override
+  String get rvDecisionChanges => 'changes requested';
+
+  @override
+  String get rvComment => 'Comment';
+
+  @override
+  String get rvCommentHint => 'What is wrong or what to check (source, page)';
+
+  @override
+  String get rvCommentRequired => 'Write a comment for “Changes needed”.';
+
+  @override
+  String get rvSubmit => 'Submit decision';
+
+  @override
+  String get rvSubmitted => 'Decision recorded';
+
+  @override
+  String get rvNotAuto =>
+      'A decision does not change the card status by itself: after editorial review it becomes “Reviewed” in the next content pack.';
+
+  @override
+  String get rvHistory => 'Decision history';
+
+  @override
+  String get rvYou => 'You';
+
+  @override
+  String get rvReviewer => 'Reviewer';
+
+  @override
+  String get rvNoHistory => 'No decisions yet';
+
+  @override
+  String get rvOpenCard => 'Open card';
+
+  @override
+  String get rvCorrect => 'Correct answer';
+
+  @override
+  String get rvBasis => 'Basis';
+
+  @override
+  String get rvYourDecision => 'Your decision';
+
+  @override
+  String get rvAllDone => 'All reviewed';
+
+  @override
+  String get analytePreparedBy => 'Prepared by';
+
+  @override
+  String get analyteEditorial => 'LabGuide editorial team';
+
+  @override
+  String get analyteSourcesChecked => 'Sources accessed';
+
+  @override
   String get reviewDiscrepanciesBody =>
       'When older and newer sources disagree, both positions are listed here for expert review. Neither is published as fact until resolved.';
 

@@ -488,6 +488,48 @@ class FakeLabBackend implements LabBackend {
     return audit.reversed.take(limit).toList();
   }
 
+  // Kontent tekshiruvi — SQL bilan bir xil: faqat reviewer yozadi/o'qiydi.
+  final List<ContentReview> _reviews = [];
+
+  /// Testlar uchun: admin panelidan o'tmasdan reviewer qilish.
+  void grantReviewer(String email) =>
+      _users[normalizeEmail(email)]!.reviewer = true;
+
+  @override
+  Future<void> submitReview({
+    required String kind,
+    required String itemId,
+    required String contentVersion,
+    required ReviewDecision decision,
+    String? comment,
+  }) async {
+    final u = _require();
+    if (!u.reviewer) throw const BackendException(BackendFailure.forbidden);
+    final note = comment?.trim();
+    if (decision == ReviewDecision.changes && (note == null || note.isEmpty)) {
+      throw const BackendException(BackendFailure.invalid);
+    }
+    _reviews.insert(
+      0,
+      ContentReview(
+        id: _id('review'),
+        itemKind: kind,
+        itemId: itemId,
+        contentVersion: contentVersion,
+        reviewerId: u.id,
+        decision: decision,
+        comment: note == null || note.isEmpty ? null : note,
+        createdAt: _now(),
+      ),
+    );
+  }
+
+  @override
+  Future<List<ContentReview>> contentReviews() async {
+    final u = _require();
+    return u.reviewer || _isAdminAccount ? List.of(_reviews) : const [];
+  }
+
   // Guruhlar — UI testlari uchun minimal.
   final List<StudyGroup> _groups = [];
 

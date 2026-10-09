@@ -466,6 +466,14 @@ class _AnalyteBody {
     );
   }
 
+  /// Karta manbalari ko'rilgan eng so'nggi sana (`accessed`).
+  String? _lastAccessed() {
+    final dates = [
+      for (final id in analyte.sourceIds) ?pack.source(id)?.accessed,
+    ]..sort();
+    return dates.isEmpty ? null : dates.last;
+  }
+
   Widget _review(BuildContext context, AppLocalizations l, TextTheme text) {
     final approved = analyte.isReviewerApproved;
     final translationsPending = analyte.translationReview.values.any(
@@ -483,6 +491,10 @@ class _AnalyteBody {
           ),
           if (!approved)
             LgMetric(label: '—', value: l.analyteReviewerNotAssigned),
+          // Kelib chiqishi: kim tayyorlagan va manbalar qachon ko'rilgan.
+          LgMetric(label: l.analytePreparedBy, value: l.analyteEditorial),
+          if (_lastAccessed() case final date?)
+            LgMetric(label: l.analyteSourcesChecked, value: date),
           if (translationsPending)
             LgMetric(label: 'UZ · RU · EN', value: l.analyteTranslationPending),
           Padding(

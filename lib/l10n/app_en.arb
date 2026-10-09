@@ -1467,6 +1467,52 @@
   "libReview": "Review queue",
   "libReviewSub": "Source discrepancies and drafts",
   "reviewDiscrepancies": "Source discrepancies",
+  "rvGateTitle": "Reviewers only",
+  "rvGateBody": "Reviewer rights are granted by an admin. An in-app role (for example, “Teacher”) does not grant them.",
+  "rvSignInTitle": "Sign in to review",
+  "rvAdminReadOnly": "As an admin you can see decisions. To review, grant your account reviewer rights (Admin → Users).",
+  "rvTabCards": "Cards",
+  "rvTabQuestions": "Questions",
+  "rvTabDiscrepancies": "Discrepancies",
+  "rvMine": "Your decision: {decision}",
+  "@rvMine": {
+    "placeholders": {
+      "decision": {
+        "type": "String"
+      }
+    }
+  },
+  "rvNotSeen": "Not reviewed by you yet",
+  "rvCount": "Decisions: {count}",
+  "@rvCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "rvApprove": "Approve",
+  "rvChanges": "Changes needed",
+  "rvDecisionApprove": "approved",
+  "rvDecisionChanges": "changes requested",
+  "rvComment": "Comment",
+  "rvCommentHint": "What is wrong or what to check (source, page)",
+  "rvCommentRequired": "Write a comment for “Changes needed”.",
+  "rvSubmit": "Submit decision",
+  "rvSubmitted": "Decision recorded",
+  "rvNotAuto": "A decision does not change the card status by itself: after editorial review it becomes “Reviewed” in the next content pack.",
+  "rvHistory": "Decision history",
+  "rvYou": "You",
+  "rvReviewer": "Reviewer",
+  "rvNoHistory": "No decisions yet",
+  "rvOpenCard": "Open card",
+  "rvCorrect": "Correct answer",
+  "rvBasis": "Basis",
+  "rvYourDecision": "Your decision",
+  "rvAllDone": "All reviewed",
+  "analytePreparedBy": "Prepared by",
+  "analyteEditorial": "LabGuide editorial team",
+  "analyteSourcesChecked": "Sources accessed",
   "reviewDiscrepanciesBody": "When older and newer sources disagree, both positions are listed here for expert review. Neither is published as fact until resolved.",
   "reviewNoDiscrepancies": "No open discrepancies.",
   "reviewDraftQuestions": "Draft questions: {count}",

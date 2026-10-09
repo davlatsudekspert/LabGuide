@@ -91,6 +91,18 @@ abstract interface class LabBackend implements OtpAuthAdapter {
   Future<void> adminSetReviewer(String userId, {required bool enabled});
   Future<List<AuditEntry>> adminAudit({int limit = 50});
 
+  // --- kontent tekshiruvi (faqat admin bergan reviewer; server tekshiradi)
+  Future<void> submitReview({
+    required String kind,
+    required String itemId,
+    required String contentVersion,
+    required ReviewDecision decision,
+    String? comment,
+  });
+
+  /// Tekshiruvchi bo'lmasa — bo'sh ro'yxat (RLS).
+  Future<List<ContentReview>> contentReviews();
+
   // --- guruhlar
   Future<List<StudyGroup>> myGroups();
   Future<StudyGroup> createGroup(String name);
@@ -211,6 +223,16 @@ class UnconfiguredBackend implements LabBackend {
       _no();
   @override
   Future<List<AuditEntry>> adminAudit({int limit = 50}) async => _no();
+  @override
+  Future<void> submitReview({
+    required String kind,
+    required String itemId,
+    required String contentVersion,
+    required ReviewDecision decision,
+    String? comment,
+  }) async => _no();
+  @override
+  Future<List<ContentReview>> contentReviews() async => _no();
   @override
   Future<List<StudyGroup>> myGroups() async => _no();
   @override

@@ -15,6 +15,7 @@ import '../features/learn/learn_screens.dart';
 import '../features/library/library_screens.dart';
 import '../features/profile/profile_screens.dart';
 import '../features/qc/qc_screens.dart';
+import '../features/review/review_screens.dart';
 import '../features/settings/settings_controller.dart';
 import '../features/support/support_screens.dart';
 import '../features/tools/calc_info.dart';
@@ -331,9 +332,19 @@ GoRouter buildRouter(
                     path: 'research',
                     builder: (context, state) => const ResearchScreen(),
                   ),
+                  // Faqat server tekshiruvchisi (ReviewerGate ichida).
                   GoRoute(
                     path: 'review',
                     builder: (context, state) => const ReviewQueueScreen(),
+                    routes: [
+                      GoRoute(
+                        path: ':kind/:id',
+                        builder: (context, state) => ReviewItemScreen(
+                          kind: state.pathParameters['kind']!,
+                          itemId: state.pathParameters['id']!,
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),

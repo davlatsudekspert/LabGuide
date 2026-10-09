@@ -8,6 +8,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:labguide/app/app.dart';
 import 'package:labguide/app/app_scope.dart';
+import 'package:labguide/core/backend/lab_backend.dart';
 import 'package:labguide/features/settings/settings_controller.dart';
 import 'package:material_ui/material_ui.dart';
 
@@ -73,12 +74,14 @@ Future<AppServices> start(
   double textScale = 1,
   AppRole role = AppRole.lab,
   Size size = const Size(390, 844),
+  LabBackend? backend,
 }) async {
   final s = await makeServices(
     tester,
     language: lang,
     themeMode: theme,
     role: role,
+    backend: backend,
   );
   await pumpApp(tester, s, textScale: textScale, size: size);
   // Rasmlarni oldindan dekod qilish (testda real async kerak).

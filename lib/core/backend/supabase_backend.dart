@@ -584,6 +584,42 @@ class SupabaseLabBackend implements LabBackend {
     return _rows(data).map(AuditEntry.fromJson).toList();
   }
 
+  // --------------------------------------------------- content review
+  @override
+  Future<void> submitReview({
+    required String kind,
+    required String itemId,
+    required String contentVersion,
+    required ReviewDecision decision,
+    String? comment,
+  }) => _guard(
+    () => client.rpc(
+      'review_submit',
+      params: {
+        'p_kind': kind,
+        'p_item': itemId,
+        'p_version': contentVersion,
+        'p_decision': decision.name,
+        'p_comment': comment,
+      },
+    ),
+  );
+
+  @override
+  Future<List<ContentReview>> contentReviews() async {
+    final data = await _guard(
+      () => client
+          .from('content_reviews')
+          .select(
+            'id, item_kind, item_id, content_version, reviewer_id, decision, '
+            'comment, created_at',
+          )
+          .order('created_at', ascending: false)
+          .limit(1000),
+    );
+    return _rows(data).map(ContentReview.fromJson).toList();
+  }
+
   // ------------------------------------------------------------- groups
   @override
   Future<List<StudyGroup>> myGroups() async {

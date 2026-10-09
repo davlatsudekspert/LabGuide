@@ -19,6 +19,11 @@ class LabGuideApp extends StatefulWidget {
 class _LabGuideAppState extends State<LabGuideApp> {
   late GoRouter _router;
   late bool _wasOnboarded;
+
+  /// Sahifa almashganda oldingi sahifaning xabari (SnackBar) yangi sahifani
+  /// yopib turmasin.
+  final _messenger = GlobalKey<ScaffoldMessengerState>();
+  String? _location;
   late final OnboardingChanges _routerRefresh = OnboardingChanges(_settings);
 
   SettingsController get _settings => widget.services.settings;
@@ -27,6 +32,7 @@ class _LabGuideAppState extends State<LabGuideApp> {
   void initState() {
     super.initState();
     _router = buildRouter(_settings, refresh: _routerRefresh);
+    _router.routeInformationProvider.addListener(_onRoute);
     _wasOnboarded = _settings.onboarded;
     _settings.addListener(_onSettings);
   }
@@ -36,15 +42,25 @@ class _LabGuideAppState extends State<LabGuideApp> {
   void _onSettings() {
     final onboarded = _settings.onboarded;
     if (_wasOnboarded && !onboarded) {
-      final old = _router;
+      final old = _router..routeInformationProvider.removeListener(_onRoute);
       setState(() => _router = buildRouter(_settings, refresh: _routerRefresh));
+      _router.routeInformationProvider.addListener(_onRoute);
       WidgetsBinding.instance.addPostFrameCallback((_) => old.dispose());
     }
     _wasOnboarded = onboarded;
   }
 
+  void _onRoute() {
+    final location = _router.routeInformationProvider.value.uri.path;
+    if (_location != null && location != _location) {
+      _messenger.currentState?.hideCurrentSnackBar();
+    }
+    _location = location;
+  }
+
   @override
   void dispose() {
+    _router.routeInformationProvider.removeListener(_onRoute);
     _settings.removeListener(_onSettings);
     _router.dispose();
     _routerRefresh.dispose();
@@ -62,6 +78,7 @@ class _LabGuideAppState extends State<LabGuideApp> {
           onGenerateTitle: (_) => 'LabGuide',
           debugShowCheckedModeBanner: false,
           routerConfig: _router,
+          scaffoldMessengerKey: _messenger,
           theme: buildLgTheme(Brightness.light),
           darkTheme: buildLgTheme(Brightness.dark),
           themeMode: _settings.themeMode,

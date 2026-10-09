@@ -2824,6 +2824,110 @@ class AppLocalizationsRu extends AppLocalizations {
   String get reviewDiscrepancies => 'Расхождения между источниками';
 
   @override
+  String get rvGateTitle => 'Только для рецензентов';
+
+  @override
+  String get rvGateBody =>
+      'Права рецензента выдаёт администратор. Роль в приложении (например, «Преподаватель») их не даёт.';
+
+  @override
+  String get rvSignInTitle => 'Войдите, чтобы рецензировать';
+
+  @override
+  String get rvAdminReadOnly =>
+      'Как администратор вы видите решения. Чтобы рецензировать, выдайте своему аккаунту права рецензента (Админ → Пользователи).';
+
+  @override
+  String get rvTabCards => 'Карточки';
+
+  @override
+  String get rvTabQuestions => 'Вопросы';
+
+  @override
+  String get rvTabDiscrepancies => 'Расхождения';
+
+  @override
+  String rvMine(String decision) {
+    return 'Ваше решение: $decision';
+  }
+
+  @override
+  String get rvNotSeen => 'Вы ещё не смотрели';
+
+  @override
+  String rvCount(int count) {
+    return 'Решений: $count';
+  }
+
+  @override
+  String get rvApprove => 'Утверждаю';
+
+  @override
+  String get rvChanges => 'Нужны правки';
+
+  @override
+  String get rvDecisionApprove => 'утверждено';
+
+  @override
+  String get rvDecisionChanges => 'запрошены правки';
+
+  @override
+  String get rvComment => 'Комментарий';
+
+  @override
+  String get rvCommentHint =>
+      'Что неверно или что проверить (источник, страница)';
+
+  @override
+  String get rvCommentRequired => 'Для «Нужны правки» напишите комментарий.';
+
+  @override
+  String get rvSubmit => 'Отправить решение';
+
+  @override
+  String get rvSubmitted => 'Решение записано';
+
+  @override
+  String get rvNotAuto =>
+      'Решение само не меняет статус карточки: после редакции она станет «Проверено» в следующем пакете контента.';
+
+  @override
+  String get rvHistory => 'История решений';
+
+  @override
+  String get rvYou => 'Вы';
+
+  @override
+  String get rvReviewer => 'Рецензент';
+
+  @override
+  String get rvNoHistory => 'Решений пока нет';
+
+  @override
+  String get rvOpenCard => 'Открыть карточку';
+
+  @override
+  String get rvCorrect => 'Правильный ответ';
+
+  @override
+  String get rvBasis => 'Обоснование';
+
+  @override
+  String get rvYourDecision => 'Ваше решение';
+
+  @override
+  String get rvAllDone => 'Всё просмотрено';
+
+  @override
+  String get analytePreparedBy => 'Подготовил';
+
+  @override
+  String get analyteEditorial => 'Редакция LabGuide';
+
+  @override
+  String get analyteSourcesChecked => 'Источники просмотрены';
+
+  @override
   String get reviewDiscrepanciesBody =>
       'Если старые и новые источники расходятся, обе позиции показываются здесь для экспертной проверки. До решения ни одна не публикуется как факт.';
 

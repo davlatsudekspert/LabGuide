@@ -644,19 +644,15 @@ void main() {
     );
   });
 
-  testWidgets('review queue has honest counts', (tester) async {
+  testWidgets('review queue is closed without a server reviewer', (
+    tester,
+  ) async {
     final s = await makeServices(tester);
     await pumpApp(tester, s);
+    // Tekshiruv navbati faqat server tekshiruvchisi uchun (review_test.dart).
     await goTo(tester, '/library/review');
-    expect(find.text(uz.reviewNoDiscrepancies), findsOneWidget);
-    expect(
-      find.text(uz.reviewCatalog(s.content.pack!.library.length)),
-      findsOneWidget,
-    );
-    expect(
-      find.text(uz.reviewDraftQuestions(s.content.pack!.quiz.length)),
-      findsOneWidget,
-    );
+    expect(find.text(uz.supportUnavailableTitle), findsOneWidget);
+    expect(find.text(uz.rvTabCards), findsNothing);
     await goTo(tester, '/library/packs');
     expect(find.text(uz.packsVerified), findsOneWidget);
   });

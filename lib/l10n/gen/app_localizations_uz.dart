@@ -2771,6 +2771,110 @@ class AppLocalizationsUz extends AppLocalizations {
   String get reviewDiscrepancies => 'Manbalar orasidagi farqlar';
 
   @override
+  String get rvGateTitle => 'Faqat tekshiruvchilar uchun';
+
+  @override
+  String get rvGateBody =>
+      'Tekshiruvchi vakolatini admin beradi. Ilovadagi rol (masalan, “Ustoz”) bu huquqni bermaydi.';
+
+  @override
+  String get rvSignInTitle => 'Tekshiruv uchun hisobga kiring';
+
+  @override
+  String get rvAdminReadOnly =>
+      'Admin sifatida qarorlarni ko‘rasiz. Qaror yozish uchun hisobingizga tekshiruvchi vakolatini bering (Admin → Foydalanuvchilar).';
+
+  @override
+  String get rvTabCards => 'Kartalar';
+
+  @override
+  String get rvTabQuestions => 'Savollar';
+
+  @override
+  String get rvTabDiscrepancies => 'Nomuvofiqliklar';
+
+  @override
+  String rvMine(String decision) {
+    return 'Sizning qaroringiz: $decision';
+  }
+
+  @override
+  String get rvNotSeen => 'Siz hali ko‘rmagansiz';
+
+  @override
+  String rvCount(int count) {
+    return 'Qarorlar: $count';
+  }
+
+  @override
+  String get rvApprove => 'Tasdiqlayman';
+
+  @override
+  String get rvChanges => 'O‘zgartirish kerak';
+
+  @override
+  String get rvDecisionApprove => 'tasdiqlagan';
+
+  @override
+  String get rvDecisionChanges => 'o‘zgartirish so‘ragan';
+
+  @override
+  String get rvComment => 'Izoh';
+
+  @override
+  String get rvCommentHint =>
+      'Nima noto‘g‘ri yoki nimani tekshirish kerak (manba, sahifa)';
+
+  @override
+  String get rvCommentRequired => '“O‘zgartirish kerak” uchun izoh yozing.';
+
+  @override
+  String get rvSubmit => 'Qarorni yuborish';
+
+  @override
+  String get rvSubmitted => 'Qaror yozildi';
+
+  @override
+  String get rvNotAuto =>
+      'Qaror kartaning holatini o‘zi o‘zgartirmaydi: tahririyat ko‘rib chiqqach, keyingi kontent paketida “Tekshirilgan” bo‘ladi.';
+
+  @override
+  String get rvHistory => 'Qarorlar tarixi';
+
+  @override
+  String get rvYou => 'Siz';
+
+  @override
+  String get rvReviewer => 'Tekshiruvchi';
+
+  @override
+  String get rvNoHistory => 'Hali qaror yo‘q';
+
+  @override
+  String get rvOpenCard => 'Kartani ochish';
+
+  @override
+  String get rvCorrect => 'To‘g‘ri javob';
+
+  @override
+  String get rvBasis => 'Asos';
+
+  @override
+  String get rvYourDecision => 'Qaroringiz';
+
+  @override
+  String get rvAllDone => 'Hammasi ko‘rib chiqilgan';
+
+  @override
+  String get analytePreparedBy => 'Tayyorlagan';
+
+  @override
+  String get analyteEditorial => 'LabGuide tahririyati';
+
+  @override
+  String get analyteSourcesChecked => 'Manbalar ko‘rilgan';
+
+  @override
   String get reviewDiscrepanciesBody =>
       'Eski va yangi manbalar bir-biriga zid bo‘lsa, ikkala pozitsiya mutaxassis tekshiruvi uchun shu yerda ko‘rsatiladi. Hal qilinmaguncha hech biri fakt sifatida nashr etilmaydi.';
 

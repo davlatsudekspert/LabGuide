@@ -5014,6 +5014,198 @@ abstract class AppLocalizations {
   /// **'Source discrepancies'**
   String get reviewDiscrepancies;
 
+  /// No description provided for @rvGateTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Reviewers only'**
+  String get rvGateTitle;
+
+  /// No description provided for @rvGateBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Reviewer rights are granted by an admin. An in-app role (for example, “Teacher”) does not grant them.'**
+  String get rvGateBody;
+
+  /// No description provided for @rvSignInTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in to review'**
+  String get rvSignInTitle;
+
+  /// No description provided for @rvAdminReadOnly.
+  ///
+  /// In en, this message translates to:
+  /// **'As an admin you can see decisions. To review, grant your account reviewer rights (Admin → Users).'**
+  String get rvAdminReadOnly;
+
+  /// No description provided for @rvTabCards.
+  ///
+  /// In en, this message translates to:
+  /// **'Cards'**
+  String get rvTabCards;
+
+  /// No description provided for @rvTabQuestions.
+  ///
+  /// In en, this message translates to:
+  /// **'Questions'**
+  String get rvTabQuestions;
+
+  /// No description provided for @rvTabDiscrepancies.
+  ///
+  /// In en, this message translates to:
+  /// **'Discrepancies'**
+  String get rvTabDiscrepancies;
+
+  /// No description provided for @rvMine.
+  ///
+  /// In en, this message translates to:
+  /// **'Your decision: {decision}'**
+  String rvMine(String decision);
+
+  /// No description provided for @rvNotSeen.
+  ///
+  /// In en, this message translates to:
+  /// **'Not reviewed by you yet'**
+  String get rvNotSeen;
+
+  /// No description provided for @rvCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Decisions: {count}'**
+  String rvCount(int count);
+
+  /// No description provided for @rvApprove.
+  ///
+  /// In en, this message translates to:
+  /// **'Approve'**
+  String get rvApprove;
+
+  /// No description provided for @rvChanges.
+  ///
+  /// In en, this message translates to:
+  /// **'Changes needed'**
+  String get rvChanges;
+
+  /// No description provided for @rvDecisionApprove.
+  ///
+  /// In en, this message translates to:
+  /// **'approved'**
+  String get rvDecisionApprove;
+
+  /// No description provided for @rvDecisionChanges.
+  ///
+  /// In en, this message translates to:
+  /// **'changes requested'**
+  String get rvDecisionChanges;
+
+  /// No description provided for @rvComment.
+  ///
+  /// In en, this message translates to:
+  /// **'Comment'**
+  String get rvComment;
+
+  /// No description provided for @rvCommentHint.
+  ///
+  /// In en, this message translates to:
+  /// **'What is wrong or what to check (source, page)'**
+  String get rvCommentHint;
+
+  /// No description provided for @rvCommentRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Write a comment for “Changes needed”.'**
+  String get rvCommentRequired;
+
+  /// No description provided for @rvSubmit.
+  ///
+  /// In en, this message translates to:
+  /// **'Submit decision'**
+  String get rvSubmit;
+
+  /// No description provided for @rvSubmitted.
+  ///
+  /// In en, this message translates to:
+  /// **'Decision recorded'**
+  String get rvSubmitted;
+
+  /// No description provided for @rvNotAuto.
+  ///
+  /// In en, this message translates to:
+  /// **'A decision does not change the card status by itself: after editorial review it becomes “Reviewed” in the next content pack.'**
+  String get rvNotAuto;
+
+  /// No description provided for @rvHistory.
+  ///
+  /// In en, this message translates to:
+  /// **'Decision history'**
+  String get rvHistory;
+
+  /// No description provided for @rvYou.
+  ///
+  /// In en, this message translates to:
+  /// **'You'**
+  String get rvYou;
+
+  /// No description provided for @rvReviewer.
+  ///
+  /// In en, this message translates to:
+  /// **'Reviewer'**
+  String get rvReviewer;
+
+  /// No description provided for @rvNoHistory.
+  ///
+  /// In en, this message translates to:
+  /// **'No decisions yet'**
+  String get rvNoHistory;
+
+  /// No description provided for @rvOpenCard.
+  ///
+  /// In en, this message translates to:
+  /// **'Open card'**
+  String get rvOpenCard;
+
+  /// No description provided for @rvCorrect.
+  ///
+  /// In en, this message translates to:
+  /// **'Correct answer'**
+  String get rvCorrect;
+
+  /// No description provided for @rvBasis.
+  ///
+  /// In en, this message translates to:
+  /// **'Basis'**
+  String get rvBasis;
+
+  /// No description provided for @rvYourDecision.
+  ///
+  /// In en, this message translates to:
+  /// **'Your decision'**
+  String get rvYourDecision;
+
+  /// No description provided for @rvAllDone.
+  ///
+  /// In en, this message translates to:
+  /// **'All reviewed'**
+  String get rvAllDone;
+
+  /// No description provided for @analytePreparedBy.
+  ///
+  /// In en, this message translates to:
+  /// **'Prepared by'**
+  String get analytePreparedBy;
+
+  /// No description provided for @analyteEditorial.
+  ///
+  /// In en, this message translates to:
+  /// **'LabGuide editorial team'**
+  String get analyteEditorial;
+
+  /// No description provided for @analyteSourcesChecked.
+  ///
+  /// In en, this message translates to:
+  /// **'Sources accessed'**
+  String get analyteSourcesChecked;
+
   /// No description provided for @reviewDiscrepanciesBody.
   ///
   /// In en, this message translates to:
