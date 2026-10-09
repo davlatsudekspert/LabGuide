@@ -1503,6 +1503,23 @@ class AppLocalizationsEn extends AppLocalizations {
       'Licensed micrographs from the microscopy atlas';
 
   @override
+  String diffQuizExtended(int count) {
+    return 'Extended practice ($count questions)';
+  }
+
+  @override
+  String get diffQuizExtendedIntro =>
+      'On top of the picture questions: identify the cell from a description of its nucleus, cytoplasm and granules.';
+
+  @override
+  String get diffQuizDescribed => 'Which cell matches this description?';
+
+  @override
+  String diffHistoryMore(int count) {
+    return '$count more results are stored on this device';
+  }
+
+  @override
   String get preOrderTitle => 'Order of draw (venepuncture)';
 
   @override

@@ -1301,8 +1301,20 @@ String _summary(BuildContext context, DiffRecord r) {
   ].join(' · ');
 }
 
+/// Ko'rsatiladigan yozuvlar va yashirilganlar soni (`limit == null` —
+/// hammasi). Ma'lumotga tegmaydi.
+(List<DiffRecord>, int) visibleHistory(List<DiffRecord> all, int? limit) {
+  if (limit == null || limit >= all.length) return (all, 0);
+  final n = limit < 0 ? 0 : limit;
+  return (all.sublist(0, n), all.length - n);
+}
+
 class DiffHistoryScreen extends StatelessWidget {
-  const DiffHistoryScreen({super.key});
+  const DiffHistoryScreen({super.key, this.visibleLimit});
+
+  /// Ro'yxatda nechta yozuv chiziladi (`null` — hammasi). Yozuvlar baribir
+  /// qurilmada to'liq saqlanadi; bu faqat ko'rsatish chegarasi.
+  final int? visibleLimit;
 
   Future<void> _clear(BuildContext context) async {
     final l = AppLocalizations.of(context);
@@ -1334,12 +1346,13 @@ class DiffHistoryScreen extends StatelessWidget {
     return ListenableBuilder(
       listenable: diff,
       builder: (context, _) {
-        final items = diff.history;
+        final all = diff.history;
+        final (items, hidden) = visibleHistory(all, visibleLimit);
         return LgPage(
           title: l.diffHistoryTitle,
-          subtitle: l.diffHistorySub(items.length),
+          subtitle: l.diffHistorySub(all.length),
           children: [
-            if (items.isEmpty)
+            if (all.isEmpty)
               LgStateView(
                 kind: StateKind.empty,
                 title: l.diffHistoryEmptyTitle,
@@ -1358,6 +1371,14 @@ class DiffHistoryScreen extends StatelessWidget {
                   icon: Icons.assignment_outlined,
                   onTap: () => context.push('$_base/history/${r.id}'),
                   divider: i < items.length - 1,
+                ),
+              if (hidden > 0)
+                Padding(
+                  padding: const EdgeInsets.only(top: 10),
+                  child: Text(
+                    l.diffHistoryMore(hidden),
+                    style: Theme.of(context).textTheme.bodySmall,
+                  ),
                 ),
               const SizedBox(height: 14),
               LgButton.secondary(

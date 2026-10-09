@@ -65,6 +65,7 @@ const appRoutes = [
   '/lab/differential/interpret',
   '/lab/differential/technique',
   '/lab/differential/quiz',
+  '/lab/differential/quiz?mode=extended',
   '/lab/microscopy/s/urine',
   '/lab/microscopy/s/blood',
   '/lab/microscopy/s/parasites',

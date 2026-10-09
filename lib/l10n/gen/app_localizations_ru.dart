@@ -1518,6 +1518,23 @@ class AppLocalizationsRu extends AppLocalizations {
       'Лицензированные микрофото из атласа микроскопии';
 
   @override
+  String diffQuizExtended(int count) {
+    return 'Расширенная тренировка ($count вопросов)';
+  }
+
+  @override
+  String get diffQuizExtendedIntro =>
+      'В дополнение к вопросам по схемам: узнайте клетку по описанию ядра, цитоплазмы и гранул.';
+
+  @override
+  String get diffQuizDescribed => 'Какая клетка соответствует описанию?';
+
+  @override
+  String diffHistoryMore(int count) {
+    return 'Ещё результатов на устройстве: $count';
+  }
+
+  @override
   String get preOrderTitle => 'Порядок взятия пробирок (венепункция)';
 
   @override

@@ -8,6 +8,7 @@ import '../features/auth/ui/welcome_screen.dart';
 import '../features/content/ui/analyte_screen.dart';
 import '../features/content/ui/conditions_screens.dart';
 import '../features/content/ui/tests_screen.dart';
+import '../features/differential/differential_entry_points.dart';
 import '../features/differential/differential_quiz.dart';
 import '../features/differential/differential_screens.dart';
 import '../features/home/home_screen.dart';
@@ -325,7 +326,11 @@ GoRouter buildRouter(
                       ),
                       GoRoute(
                         path: 'history',
-                        builder: (context, state) => const DiffHistoryScreen(),
+                        builder: (context, state) => DiffHistoryScreen(
+                          visibleLimit: DiffEntryPoints.historyVisibleLimit(
+                            context,
+                          ),
+                        ),
                         routes: [
                           GoRoute(
                             path: ':id',
@@ -347,7 +352,10 @@ GoRouter buildRouter(
                       ),
                       GoRoute(
                         path: 'quiz',
-                        builder: (context, state) => const DiffQuizScreen(),
+                        builder: (context, state) => DiffQuizScreen(
+                          extended:
+                              state.uri.queryParameters['mode'] == 'extended',
+                        ),
                       ),
                     ],
                   ),

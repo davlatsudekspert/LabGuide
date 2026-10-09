@@ -1487,6 +1487,23 @@ class AppLocalizationsUz extends AppLocalizations {
       'Mikroskopiya atlasidagi litsenziyali mikrofotolar';
 
   @override
+  String diffQuizExtended(int count) {
+    return 'Kengaytirilgan mashq ($count ta savol)';
+  }
+
+  @override
+  String get diffQuizExtendedIntro =>
+      'Rasmli savollarga qo‘shimcha: yadro, sitoplazma va donachalar tavsifidan hujayrani toping.';
+
+  @override
+  String get diffQuizDescribed => 'Tavsifga ko‘ra bu qaysi hujayra?';
+
+  @override
+  String diffHistoryMore(int count) {
+    return 'Yana $count ta natija qurilmada saqlangan';
+  }
+
+  @override
   String get preOrderTitle => 'Probirkalar tartibi (venepunksiya)';
 
   @override

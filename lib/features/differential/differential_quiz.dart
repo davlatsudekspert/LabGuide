@@ -9,6 +9,7 @@ import '../../l10n/gen/app_localizations.dart';
 import '../content/content_model.dart';
 import '../learn/quiz_session.dart';
 import 'differential_content.dart';
+import 'differential_entry_points.dart';
 import 'differential_screens.dart';
 
 /// "Bu qaysi hujayra?" savollari: rasm id → chalg'ituvchi variantlar
@@ -42,12 +43,42 @@ const _distractors = <String, List<String>>{
 
 int get diffQuizSize => _distractors.length;
 
+/// Kengaytirilgan mashq: rasmli + tavsifli savollar.
+int get diffExtendedQuizSize => _distractors.length * 2;
+
 /// Savol: rasm + QuizQuestion (mavjud mashq modeli va sessiyasi).
 class DiffQuizItem {
-  const DiffQuizItem(this.image, this.question);
+  const DiffQuizItem(this.image, this.question, {this.showImage = true});
+
+  /// To'g'ri javob hujayrasining sxemasi (natijada ham ko'rsatiladi).
   final String image;
   final QuizQuestion question;
+
+  /// Tavsifli savolda rasm javobni oshkor qiladi — ko'rsatilmaydi.
+  final bool showImage;
 }
+
+const _described = LocalizedText({
+  'uz': 'Tavsifga ko‘ra bu qaysi hujayra?',
+  'ru': 'Какая клетка соответствует описанию?',
+  'en': 'Which cell matches this description?',
+});
+
+const _labels = {
+  'uz': ('Yadro', 'Sitoplazma', 'Donachalar'),
+  'ru': ('Ядро', 'Цитоплазма', 'Гранулы'),
+  'en': ('Nucleus', 'Cytoplasm', 'Granules'),
+};
+
+/// Tavsif matni: yadro, sitoplazma, donachalar (atlasdagi manbali matn).
+LocalizedText _description(CellGuide g) => LocalizedText({
+  for (final MapEntry(key: lang, value: (n, c, gr)) in _labels.entries)
+    lang:
+        '${_described.of(lang)}\n\n'
+        '$n: ${g.nucleus.of(lang)}\n'
+        '$c: ${g.cytoplasm.of(lang)}\n'
+        '$gr: ${g.granules.of(lang)}',
+});
 
 const _prompt = LocalizedText({
   'uz': 'Bu qaysi hujayra?',
@@ -55,10 +86,36 @@ const _prompt = LocalizedText({
   'en': 'Which cell is this?',
 });
 
-/// Har safar savollar va variantlar tartibi aralashtiriladi.
-List<DiffQuizItem> buildDiffQuiz(Random rnd) {
+/// Har safar savollar va variantlar tartibi aralashtiriladi. [extended] —
+/// har hujayra uchun qo'shimcha tavsifli savol.
+List<DiffQuizItem> buildDiffQuiz(Random rnd, {bool extended = false}) {
   final items = <DiffQuizItem>[];
   for (final MapEntry(key: id, value: others) in _distractors.entries) {
+    if (extended) {
+      final ids = [id, ...others]..shuffle(rnd);
+      final g = cellGuide(id)!;
+      items.add(
+        DiffQuizItem(
+          id,
+          QuizQuestion(
+            id: 'diff-desc-$id',
+            prompt: _description(g),
+            options: [
+              for (final o in ids)
+                QuizOption(
+                  text: cellGuide(o)!.name,
+                  explanation: cellGuide(o)!.key,
+                ),
+            ],
+            correctIndex: ids.indexOf(id),
+            basis: g.key,
+            refs: const [],
+            reviewState: ReviewState.pending,
+          ),
+          showImage: false,
+        ),
+      );
+    }
     final ids = [id, ...others]..shuffle(rnd);
     final options = [
       for (final o in ids)
@@ -84,10 +141,13 @@ List<DiffQuizItem> buildDiffQuiz(Random rnd) {
 }
 
 class DiffQuizScreen extends StatefulWidget {
-  const DiffQuizScreen({super.key, this.random});
+  const DiffQuizScreen({super.key, this.random, this.extended = false});
 
   /// Testlarda — oldindan ma'lum tartib.
   final Random? random;
+
+  /// Kengaytirilgan mashq (DiffEntryPoints.openExtendedQuiz orqali).
+  final bool extended;
 
   @override
   State<DiffQuizScreen> createState() => _DiffQuizScreenState();
@@ -98,7 +158,10 @@ class _DiffQuizScreenState extends State<DiffQuizScreen> {
   QuizSession? _session;
 
   void _start() => setState(() {
-    _items = buildDiffQuiz(widget.random ?? Random());
+    _items = buildDiffQuiz(
+      widget.random ?? Random(),
+      extended: widget.extended,
+    );
     _session = QuizSession([for (final i in _items!) i.question]);
   });
 
@@ -108,15 +171,31 @@ class _DiffQuizScreenState extends State<DiffQuizScreen> {
     final s = _session;
     return LgPage(
       key: ValueKey((s == null, s?.index, s?.finished)),
-      title: l.diffQuizTitle,
+      title: widget.extended
+          ? l.diffQuizExtended(diffExtendedQuizSize)
+          : l.diffQuizTitle,
       subtitle: l.diffTitle,
       children: [
         if (s == null) ...[
           const CellPicture(id: 'lymphocyte_reactive', maxSize: 240),
           const SizedBox(height: 12),
           Text(l.diffQuizIntro, style: Theme.of(context).textTheme.bodyLarge),
+          if (widget.extended) ...[
+            const SizedBox(height: 8),
+            Text(
+              l.diffQuizExtendedIntro,
+              style: Theme.of(context).textTheme.bodyLarge,
+            ),
+          ],
           const SizedBox(height: 16),
           LgButton(label: l.diffQuizStart, onPressed: _start),
+          if (!widget.extended) ...[
+            const SizedBox(height: 10),
+            LgButton.secondary(
+              label: l.diffQuizExtended(diffExtendedQuizSize),
+              onPressed: () => DiffEntryPoints.openExtendedQuiz(context),
+            ),
+          ],
           const SizedBox(height: 14),
           Text(l.quizReviewNote, style: Theme.of(context).textTheme.bodySmall),
         ] else if (s.finished)
@@ -124,7 +203,7 @@ class _DiffQuizScreenState extends State<DiffQuizScreen> {
         else
           _Question(
             session: s,
-            image: _items![s.index].image,
+            image: _items![s.index].showImage ? _items![s.index].image : null,
             onChanged: () => setState(() {}),
           ),
       ],
@@ -140,7 +219,7 @@ class _Question extends StatelessWidget {
   });
 
   final QuizSession session;
-  final String image;
+  final String? image;
   final VoidCallback onChanged;
 
   @override
@@ -175,8 +254,10 @@ class _Question extends StatelessWidget {
             ),
           ),
         ),
-        CellPicture(id: image, maxSize: 220),
-        const SizedBox(height: 10),
+        if (image != null) ...[
+          CellPicture(id: image!, maxSize: 220),
+          const SizedBox(height: 10),
+        ],
         Semantics(
           header: true,
           child: Text(q.prompt.of(lang), style: text.headlineSmall),

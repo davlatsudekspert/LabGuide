@@ -68,7 +68,8 @@ class DiffRecord {
 enum TapOutcome { added, completed, blocked }
 
 /// Qo'lda leykoformula sanash: joriy sanash (qoralama) va tarix — faqat
-/// qurilmada ([StoreKeys.differentialDraft], [StoreKeys.differentialHistory]).
+/// qurilmada. Sanash, foiz va mutlaq sonlar doim bepul: bu yerda hech
+/// qanday to'lov tekshiruvi yo'q va bo'lmasligi kerak ([StoreKeys.differentialDraft], [StoreKeys.differentialHistory]).
 class DifferentialController extends ChangeNotifier {
   DifferentialController(this._store, {DateTime Function()? clock})
     : _clock = clock ?? DateTime.now {
@@ -76,9 +77,6 @@ class DifferentialController extends ChangeNotifier {
   }
 
   static const targets = [100, 200];
-
-  /// Tarixda saqlanadigan eng ko'p yozuv (eskilari o'chadi).
-  static const maxHistory = 200;
 
   final KeyValueStore _store;
   final DateTime Function() _clock;
@@ -173,10 +171,9 @@ class DifferentialController extends ChangeNotifier {
       wbc: _wbc,
       label: label.trim(),
     );
+    // Tarix hech qachon yashirincha qisqartirilmaydi — faqat foydalanuvchi
+    // o'chiradi. Ko'rsatish chegarasi (bo'lsa) UI'da: DiffEntryPoints.
     _history.insert(0, record);
-    if (_history.length > maxHistory) {
-      _history.removeRange(maxHistory, _history.length);
-    }
     notifyListeners();
     await _persistHistory();
     return record;

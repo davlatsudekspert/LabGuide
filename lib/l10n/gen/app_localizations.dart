@@ -2710,6 +2710,30 @@ abstract class AppLocalizations {
   /// **'Licensed micrographs from the microscopy atlas'**
   String get diffAtlasRowSub;
 
+  /// No description provided for @diffQuizExtended.
+  ///
+  /// In en, this message translates to:
+  /// **'Extended practice ({count} questions)'**
+  String diffQuizExtended(int count);
+
+  /// No description provided for @diffQuizExtendedIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'On top of the picture questions: identify the cell from a description of its nucleus, cytoplasm and granules.'**
+  String get diffQuizExtendedIntro;
+
+  /// No description provided for @diffQuizDescribed.
+  ///
+  /// In en, this message translates to:
+  /// **'Which cell matches this description?'**
+  String get diffQuizDescribed;
+
+  /// No description provided for @diffHistoryMore.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} more results are stored on this device'**
+  String diffHistoryMore(int count);
+
   /// No description provided for @preOrderTitle.
   ///
   /// In en, this message translates to:
