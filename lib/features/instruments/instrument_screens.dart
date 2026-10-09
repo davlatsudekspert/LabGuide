@@ -10,6 +10,7 @@ import '../../l10n/gen/app_localizations.dart';
 import '../content/ui/tests_screen.dart' show SearchBox;
 import '../partners/partner_widgets.dart';
 import 'instrument_catalog.dart';
+import 'instrument_image.dart';
 import 'instruments_controller.dart';
 
 IconData categoryIcon(InstrumentCategory c) => switch (c) {
@@ -556,6 +557,10 @@ class InstrumentMakersScreen extends StatelessWidget {
                 onTap: () =>
                     context.push('/lab/instruments/c/${cat.name}/${mk.id}'),
               ),
+            // Yo'nalishning bezak chizmasi — ro'yxatdan keyin, “sxematik”
+            // izohi bilan (model kartasida ishlatilmaydi).
+            const SizedBox(height: 16),
+            CategoryIllustration(asset: catalog.category(cat).illustration),
             // Reklama: ro'yxatdan keyin, alohida va “Hamkor” yorlig'i bilan.
             CategoryPartnerCards(catalog: catalog, category: cat),
           ],
@@ -656,9 +661,11 @@ class _InstrumentCard extends StatelessWidget {
       eyebrow: maker.name,
       subtitle: model.kind.of(lang),
       children: [
-        _ImageBlock(
-          image: model.image,
-          illustration: catalog.category(model.category).illustration,
+        InstrumentImageBlock(
+          model: model,
+          officialPage: model.officialPage == null
+              ? null
+              : catalog.sources[model.officialPage!],
         ),
         const SizedBox(height: 12),
         ListenableBuilder(
@@ -805,60 +812,6 @@ class _InstrumentCard extends StatelessWidget {
             ),
         // Reklama: barcha katalog ma'lumotidan keyin, alohida bo'lim.
         InstrumentPartnersSection(model: model),
-      ],
-    );
-  }
-}
-
-/// Model fotosi (erkin litsenziyali bo'lsa) yoki yo'nalishning sxematik
-/// chizmasi — chizma aniq model deb ko'rsatilmaydi.
-class _ImageBlock extends StatelessWidget {
-  const _ImageBlock({required this.image, required this.illustration});
-
-  final InstrumentImage? image;
-  final String illustration;
-
-  @override
-  Widget build(BuildContext context) {
-    final l = AppLocalizations.of(context);
-    final lang = Localizations.localeOf(context).languageCode;
-    final text = Theme.of(context).textTheme;
-    final p = LgPalette.of(context);
-    final img = image;
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        ClipRRect(
-          borderRadius: BorderRadius.circular(LgRadius.card),
-          child: AspectRatio(
-            aspectRatio: 16 / 9,
-            child: Image.asset(
-              img?.asset ?? illustration,
-              fit: BoxFit.cover,
-              alignment: const Alignment(0, 0.45),
-              semanticLabel: img?.caption.of(lang) ?? l.instIllustration,
-            ),
-          ),
-        ),
-        const SizedBox(height: 6),
-        Text(
-          img?.caption.of(lang) ?? l.instIllustration,
-          style: text.bodySmall,
-        ),
-        if (img != null)
-          InkWell(
-            onTap: () => openExternalLink(context, img.sourcePage),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 6),
-              child: Text(
-                l.instImageCredit(img.author, img.license),
-                style: text.bodySmall!.copyWith(
-                  color: p.brand,
-                  decoration: TextDecoration.underline,
-                ),
-              ),
-            ),
-          ),
       ],
     );
   }

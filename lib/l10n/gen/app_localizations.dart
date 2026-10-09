@@ -4651,8 +4651,44 @@ abstract class AppLocalizations {
   /// No description provided for @instIllustration.
   ///
   /// In en, this message translates to:
-  /// **'Schematic illustration (drawn by LabGuide) — not the actual appearance of this model.'**
+  /// **'Schematic illustration (drawn by LabGuide) — decorative, not the actual appearance of any instrument.'**
   String get instIllustration;
+
+  /// No description provided for @instImageMissing.
+  ///
+  /// In en, this message translates to:
+  /// **'Model image not available yet'**
+  String get instImageMissing;
+
+  /// No description provided for @instImageMissingSub.
+  ///
+  /// In en, this message translates to:
+  /// **'No reusable image of this exact model was found. See its appearance on the manufacturer’s page.'**
+  String get instImageMissingSub;
+
+  /// No description provided for @instMakerSource.
+  ///
+  /// In en, this message translates to:
+  /// **'Manufacturer source'**
+  String get instMakerSource;
+
+  /// No description provided for @instImageTapToZoom.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap the photo to enlarge'**
+  String get instImageTapToZoom;
+
+  /// No description provided for @instImageRightsChecked.
+  ///
+  /// In en, this message translates to:
+  /// **'Rights checked: {date}'**
+  String instImageRightsChecked(String date);
+
+  /// No description provided for @instImageSemantics.
+  ///
+  /// In en, this message translates to:
+  /// **'Photo of {model}'**
+  String instImageSemantics(String model);
 
   /// No description provided for @instSources.
   ///

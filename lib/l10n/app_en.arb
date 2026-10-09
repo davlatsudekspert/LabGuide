@@ -1457,7 +1457,27 @@
       }
     }
   },
-  "instIllustration": "Schematic illustration (drawn by LabGuide) — not the actual appearance of this model.",
+  "instIllustration": "Schematic illustration (drawn by LabGuide) — decorative, not the actual appearance of any instrument.",
+  "instImageMissing": "Model image not available yet",
+  "instImageMissingSub": "No reusable image of this exact model was found. See its appearance on the manufacturer’s page.",
+  "instMakerSource": "Manufacturer source",
+  "instImageTapToZoom": "Tap the photo to enlarge",
+  "instImageRightsChecked": "Rights checked: {date}",
+  "@instImageRightsChecked": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "instImageSemantics": "Photo of {model}",
+  "@instImageSemantics": {
+    "placeholders": {
+      "model": {
+        "type": "String"
+      }
+    }
+  },
   "instSources": "Sources",
   "instAccessed": "accessed {date}",
   "@instAccessed": {

@@ -8,9 +8,12 @@ Qoidalar (docs/DECISIONS.md, D-36):
   yozilmaydi (``null``) — ilova “manbada ko'rsatilmagan” deydi.
 - Kundalik parvarish bosqichlari faqat rasmiy hujjatda ochiq bo'lsa.
   Hozircha birorta Phase 1 ishlab chiqaruvchi ularni ochiq e'lon qilmagan.
-- Rasm: har yo'nalish uchun LabGuide'ning o'z sxematik chizmasi
-  (tool/illustrations/*.svg) — aniq model ko'rinishi deb ko'rsatilmaydi.
-  Model fotosi faqat erkin litsenziyali va sifatli bo'lsa (muallif, manba bilan).
+- Rasm (D-36a): model kartasida faqat AYNAN shu modelning fotosi — erkin
+  litsenziyali (CC/PD), modeli aniq yozilgan manbadan; ishlab chiqaruvchi
+  saytida ochiq turgan rasm ruxsat emas (Terms of Use o'qiladi). Topilmasa
+  ``image=None`` — ilova neytral belgi va “rasm hozircha mavjud emas” deydi.
+  Ruxsat kutilayotganlar: docs/INSTRUMENT_IMAGES.md. Yo'nalish chizmalari
+  (tool/illustrations/*.svg) faqat yo'nalish sahifasida, “sxematik” izohi bilan.
 - Holat: ``device_info`` (apparat ma'lumoti), ``ifu_available`` (rasmiy
   qo'llanma versiyasi bilan qo'lda), ``expert_reviewed`` (mutaxassis
   tekshirgan). Oxirgi ikkisi dalilsiz qo'yilmaydi (validator tekshiradi).
@@ -925,6 +928,42 @@ MODELS = [
 ]
 
 
+# Ishlab chiqaruvchining rasmiy mahsulot sahifasi (manba id). Karta rasmi
+# o'rnida “Ishlab chiqaruvchi manbasi” havolasi. Boshqa model sahifasi
+# qo'yilmaydi (CELL-DYN Emerald uchun faqat 22 AL sahifasi bor — None).
+OFFICIAL_PAGES = {
+    "mindray-bs-240": "mr-bs240",
+    "mindray-bs-480": "mr-bs480",
+    "human-humastar-600": "hu-hs600",
+    "human-humalyzer-4000": "hu-hl4000",
+    "roche-cobas-c-311": "ro-c311",
+    "roche-cobas-c-303": "ro-c303",
+    "abbott-architect-c4000": "ab-c4000",
+    "abbott-alinity-c": "ab-alinity-ci",
+    "mindray-bc-5390": "mr-bc5390",
+    "mindray-bc-30s": "mr-bc30s",
+    "mindray-bc-6200": "mr-bc6200",
+    "human-humacount-5d": "hu-hc5d",
+    "human-humacount-30ts": "hu-hc30ts",
+    "abbott-cell-dyn-emerald-22-al": "ab-emerald",
+    "abbott-cell-dyn-emerald": None,
+    "abbott-alinity-hq": "ab-hq",
+    "mindray-cl-900i": "mr-cl900i",
+    "mindray-cl-1200i": "mr-cl1200i",
+    "human-humaclia-150": "hu-clia150",
+    "roche-cobas-e-411": "ro-e411",
+    "roche-cobas-e-402": "ro-e402",
+    "abbott-architect-i1000sr": "ab-i1000",
+    "abbott-alinity-i": "ab-alinity-ci",
+    "roche-cobas-u-411": "ro-u411",
+    "roche-cobas-6500": "ro-6500",
+    "mindray-eu-5600-pro": "mr-eu5600",
+}
+
+IMAGE_KEYS = ("asset", "asset_large", "manufacturer", "model", "source_url",
+              "license", "license_url", "rights", "checked_at", "author", "caption")
+
+
 def build():
     sources = [
         {"id": k, "title": v[0], "url": v[1], "doc_ref": v[2], "accessed": ACCESSED}
@@ -945,6 +984,20 @@ def build():
             used.add(r["source"])
     unknown = used - set(SOURCES)
     assert not unknown, unknown
+    makers = {mk["id"]: mk["name"] for mk in MAKERS}
+    assert set(OFFICIAL_PAGES) == {m["id"] for m in MODELS}
+    for m in MODELS:
+        page = OFFICIAL_PAGES[m["id"]]
+        assert page is None or page in SOURCES, page
+        m["official_page"] = page
+        img = m["image"]
+        if img is not None:
+            # Rasm metadatasi to'liq va aynan shu modelniki bo'lishi shart.
+            assert set(img) == set(IMAGE_KEYS), (m["id"], set(img) ^ set(IMAGE_KEYS))
+            assert img["manufacturer"] == makers[m["maker"]], m["id"]
+            assert img["model"] == m["model"], m["id"]
+            for k in ("asset", "asset_large"):
+                assert (OUT.parent.parent.parent / img[k]).exists(), img[k]
     return {
         "schema_version": 1,
         "catalog_version": "2026.10.09-1",

@@ -174,46 +174,90 @@ class ValidatedReagent {
   final String sourceId;
 }
 
+/// Aynan shu modelning fotosi (D-36a). Faqat erkin litsenziyali va modeli
+/// aniq ko'rsatilgan manbadan: ishlab chiqaruvchi saytida ochiq turgan rasm
+/// qayta tarqatish ruxsati emas. Har maydon majburiy — biri yo'q bo'lsa
+/// katalog yuklanmaydi.
 @immutable
 class InstrumentImage {
   const InstrumentImage({
     required this.asset,
+    required this.assetLarge,
+    required this.manufacturer,
+    required this.model,
+    required this.sourceUrl,
     required this.license,
     required this.licenseUrl,
+    required this.rights,
+    required this.checkedAt,
     required this.author,
-    required this.sourcePage,
     required this.caption,
   });
 
+  /// Faqat erkin litsenziyalar (NC/ND emas).
+  static const allowedLicenses = {
+    'CC0',
+    'CC BY 4.0',
+    'CC BY-SA 4.0',
+    'CC BY 2.0',
+    'CC BY-SA 3.0',
+    'Public domain',
+  };
+
   factory InstrumentImage.fromJson(Map<String, Object?> j) {
-    final license = j['license']! as String;
-    // Faqat erkin litsenziyalar (NC/ND emas).
-    const allowed = {
-      'CC0',
-      'CC BY 4.0',
-      'CC BY-SA 4.0',
-      'CC BY 2.0',
-      'CC BY-SA 3.0',
-      'Public domain',
-    };
-    if (!allowed.contains(license)) {
+    String req(String k) {
+      final v = j[k];
+      if (v is! String || v.trim().isEmpty) {
+        throw FormatException('image: $k is required');
+      }
+      return v;
+    }
+
+    final license = req('license');
+    if (!allowedLicenses.contains(license)) {
       throw FormatException('image licence not allowed: $license');
     }
+    final checkedAt = req('checked_at');
+    if (DateTime.tryParse(checkedAt) == null) {
+      throw FormatException('image: bad checked_at $checkedAt');
+    }
+    for (final k in ['source_url', 'license_url']) {
+      if (!req(k).startsWith('https://')) {
+        throw FormatException('image: $k must be https');
+      }
+    }
     return InstrumentImage(
-      asset: j['asset']! as String,
+      asset: req('asset'),
+      assetLarge: req('asset_large'),
+      manufacturer: req('manufacturer'),
+      model: req('model'),
+      sourceUrl: req('source_url'),
       license: license,
-      licenseUrl: j['license_url']! as String,
-      author: j['author']! as String,
-      sourcePage: j['source_page']! as String,
+      licenseUrl: req('license_url'),
+      rights: req('rights'),
+      checkedAt: checkedAt,
+      author: req('author'),
       caption: LocalizedText.fromJson(j['caption']),
     );
   }
 
+  /// Karta uchun kichik nusxa (~480 px).
   final String asset;
+
+  /// To'liq ekran uchun katta nusxa (≤1600 px).
+  final String assetLarge;
+  final String manufacturer;
+  final String model;
+
+  /// Rasm olingan sahifa.
+  final String sourceUrl;
   final String license;
   final String licenseUrl;
+
+  /// Litsenziya yoki ruxsat matni.
+  final String rights;
+  final String checkedAt;
   final String author;
-  final String sourcePage;
   final LocalizedText caption;
 }
 
@@ -319,6 +363,7 @@ class InstrumentModel {
     required this.reagentSystemQuote,
     required this.validatedReagents,
     required this.image,
+    required this.officialPage,
     required this.status,
   });
 
@@ -364,6 +409,7 @@ class InstrumentModel {
       image: map('image') == null
           ? null
           : InstrumentImage.fromJson(map('image')!),
+      officialPage: j['official_page'] as String?,
       status: InstrumentStatus.parse(j['status']! as String),
     );
   }
@@ -390,6 +436,10 @@ class InstrumentModel {
   final SourcedQuote? reagentSystemQuote;
   final List<ValidatedReagent> validatedReagents;
   final InstrumentImage? image;
+
+  /// Ishlab chiqaruvchining rasmiy mahsulot sahifasi (manba id) — rasm
+  /// bo'lmasa, foydalanuvchi tashqi ko'rinishni shu yerda ko'radi.
+  final String? officialPage;
   final InstrumentStatus status;
 
   Iterable<SourcedQuote> get _allQuotes => [
@@ -472,6 +522,16 @@ class InstrumentCatalog {
         if (!sources.containsKey(s)) {
           throw FormatException('${m.id}: unknown source $s');
         }
+      }
+      final page = m.officialPage;
+      if (page != null && !sources.containsKey(page)) {
+        throw FormatException('${m.id}: unknown official page $page');
+      }
+      // Rasm aynan shu ishlab chiqaruvchi va modelniki bo'lishi shart.
+      final img = m.image;
+      if (img != null &&
+          (img.manufacturer != maker(m.makerId).name || img.model != m.model)) {
+        throw FormatException('${m.id}: image is of ${img.model}');
       }
       if (m.purpose == null && m.principle == null && m.facts.isEmpty) {
         throw FormatException('${m.id}: empty card');
