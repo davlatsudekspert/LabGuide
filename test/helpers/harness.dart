@@ -11,6 +11,7 @@ import 'package:labguide/app/app.dart';
 import 'package:labguide/app/app_scope.dart';
 import 'package:labguide/app/widgets/lg_page.dart';
 import 'package:labguide/core/backend/lab_backend.dart';
+import 'package:labguide/core/entitlements/entitlement_cache.dart';
 import 'package:labguide/core/storage/kv_store.dart';
 import 'package:labguide/features/auth/otp_auth.dart';
 import 'package:labguide/features/settings/settings_controller.dart';
@@ -45,6 +46,7 @@ Future<AppServices> makeServices(
   AssetBundle? bundle,
   http.Client? httpClient,
   LabBackend? backend,
+  bool? allFeaturesOpen,
 }) async {
   final s = store ?? MemoryKeyValueStore();
   // Har test o'z (hali yaratilmagan) paketlar papkasi bilan.
@@ -65,6 +67,8 @@ Future<AppServices> makeServices(
     httpClient: httpClient ?? localPacksServer(),
     packsRoot: () async => packsRoot,
     backend: backend,
+    entitlementKeys: MemoryEntitlementKeyStore(),
+    allFeaturesOpen: allFeaturesOpen,
   );
   await services.settings.setLanguage(language);
   await services.settings.setThemeMode(themeMode);

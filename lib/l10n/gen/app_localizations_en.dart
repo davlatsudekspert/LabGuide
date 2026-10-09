@@ -3523,6 +3523,17 @@ class AppLocalizationsEn extends AppLocalizations {
       'All exam results will be deleted from this device.';
 
   @override
+  String examHistoryHidden(int count, int limit) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count older results are saved',
+      one: '1 older result is saved',
+    );
+    return '$_temp0 — the free plan shows the last $limit. Nothing has been deleted.';
+  }
+
+  @override
   String examProgressLabel(String values) {
     return 'Recent results: $values';
   }
@@ -4576,11 +4587,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get purchaseTitle => 'LabGuide Pro';
 
   @override
-  String get purchaseFree => 'Free: demo and basic cards.';
+  String get purchaseFree =>
+      'Free: leukocyte differential counter, percentages and absolute counts, core guides, the last 3 results in history.';
 
   @override
   String get purchasePro =>
-      'Pro, monthly or yearly: complete published packs, extended learning and laboratory tools.';
+      'Pro (monthly or yearly): unlimited results history, PDF export, extended practice, full preparation for the qualification category exam.';
 
   @override
   String get purchaseNotice =>
@@ -4591,6 +4603,33 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get purchaseRestore => 'Restore purchases';
+
+  @override
+  String get purchaseStatusTitle => 'Status';
+
+  @override
+  String get purchaseStatusAllOpen =>
+      'Payments aren’t enabled yet; every feature is open in TestFlight.';
+
+  @override
+  String get purchaseStatusBillingOff =>
+      'Payments aren’t enabled yet. Free features work fully; Pro will be switched on once the price is approved.';
+
+  @override
+  String purchaseStatusPro(String date) {
+    return 'Pro is active · until $date';
+  }
+
+  @override
+  String get purchaseStatusProNoEnd => 'Pro is active';
+
+  @override
+  String purchaseStatusOffline(String date) {
+    return 'Offline: last checked $date';
+  }
+
+  @override
+  String get purchaseStatusFree => 'Current plan: free';
 
   @override
   String get privacyTitle => 'Privacy and help';

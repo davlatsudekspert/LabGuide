@@ -6,6 +6,7 @@ import 'package:material_ui/material_ui.dart';
 import '../../app/app_scope.dart';
 import '../../app/shell.dart';
 import '../../app/widgets/lg_page.dart';
+import '../../core/entitlements/entitlement_service.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
 import '../auth/auth_controller.dart';
@@ -234,14 +235,73 @@ class ProfileScreen extends StatelessWidget {
 class PurchaseScreen extends StatelessWidget {
   const PurchaseScreen({super.key});
 
+  /// Halol holat: qaysi manbadan Pro (yoki yo'q) — to'lov oynasi yo'q.
+  static List<Widget> _status(BuildContext context, EntitlementService ent) {
+    final l = AppLocalizations.of(context);
+    final text = Theme.of(context).textTheme;
+    final active = ent.activeEntitlement;
+    final cache = ent.cached;
+    final (String line, LgTone tone) = switch (ent.proSource) {
+      ProSource.buildOpen => (l.purchaseStatusAllOpen, LgTone.brand),
+      ProSource.server || ProSource.offlineCache =>
+        active?.expiresAt == null
+            ? (l.purchaseStatusProNoEnd, LgTone.brand)
+            : (
+                l.purchaseStatusPro(formatWhen(active!.expiresAt!, context)),
+                LgTone.brand,
+              ),
+      ProSource.none => (l.purchaseStatusFree, LgTone.neutral),
+    };
+    if (ent.proSource == ProSource.buildOpen) {
+      return [LgNotice(line, kind: NoticeKind.info), const SizedBox(height: 6)];
+    }
+    return [
+      LgSectionTitle(l.purchaseStatusTitle),
+      if (ent.isPro) ...[
+        Align(
+          alignment: AlignmentDirectional.centerStart,
+          child: LgTag('Pro', tone: tone),
+        ),
+        const SizedBox(height: 8),
+      ],
+      Text(line, style: text.bodyLarge),
+      if (ent.proSource == ProSource.offlineCache && cache != null) ...[
+        const SizedBox(height: 4),
+        Text(
+          l.purchaseStatusOffline(formatWhen(cache.receivedAt, context)),
+          style: text.bodySmall,
+        ),
+      ],
+      if (!ent.purchasesEnabled && ent.proSource != ProSource.buildOpen) ...[
+        const SizedBox(height: 8),
+        Text(l.purchaseStatusBillingOff, style: text.bodyMedium),
+      ],
+      const SizedBox(height: 14),
+    ];
+  }
+
   @override
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context);
     final text = Theme.of(context).textTheme;
+    final ent = context.services.entitlements;
+    return ListenableBuilder(
+      listenable: ent,
+      builder: (context, _) => _build(context, l, text, ent),
+    );
+  }
+
+  Widget _build(
+    BuildContext context,
+    AppLocalizations l,
+    TextTheme text,
+    EntitlementService ent,
+  ) {
     return LgPage(
       title: l.purchaseTitle,
       showProfile: false,
       children: [
+        ..._status(context, ent),
         LgPanel(
           soft: true,
           child: Column(

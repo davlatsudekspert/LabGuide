@@ -45,6 +45,9 @@ abstract final class StoreKeys {
   /// Kutubxona PDF lari: oxirgi sahifa va xatcho'plar.
   static const libraryReading = 'library.reading';
 
+  /// Pro huquqlari: server javobining imzolangan, muddatli nusxasi.
+  static const entitlementsCache = 'entitlements.cache';
+
   static const all = <String>{
     language,
     themeMode,
@@ -67,6 +70,7 @@ abstract final class StoreKeys {
     microscopyQuiz,
     partnersCache,
     libraryReading,
+    entitlementsCache,
   };
 }
 
