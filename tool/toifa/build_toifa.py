@@ -37,7 +37,15 @@ TOPICS = [
 ]
 CATEGORIES = ['3-2', '1', 'oliy']
 VERDICTS = {'ok', 'disputed', 'ambiguous'}
-ORAL_STATUS = {'draft', 'todo'}
+ORAL_STATUS = {'draft', 'todo', 'needs_expert'}
+TEST_STATUS = {None, 'draft', 'ok', 'needs_expert'}
+
+# Egasining qarori bilan aniqlashtirilguncha baholanadigan bilet/imtihon
+# tanlovidan chiqarilgan yozuvlar (asl matn o'zgarmaydi, ro'yxatda
+# "aniqlashtirilmoqda" bilan ko'rinadi). `status: needs_expert` ham shunday.
+HELD = {
+    'kdl-o-283': "savol matni aniqlashtirilmoqda (ehtimol 'qin disbakteriozi')",
+}
 ID_T = re.compile(r'^kdl-t-\d{3}$')
 ID_O = re.compile(r'^kdl-o-\d{3}$')
 ANALYTE = re.compile(r'^[a-z0-9]+(-[a-z0-9]+)*$')
@@ -116,6 +124,9 @@ def build_tests(src: list) -> list:
         for k in key:
             if not isinstance(k, int) or not 0 <= k < len(options):
                 err(f"{qid}: kalit indeksi {k} variantlar oralig'idan tashqarida")
+        status = x.get('status')
+        if status not in TEST_STATUS:
+            err(f'{qid}: holat {status!r}')
         verdict = x.get('verdict')
         if verdict not in VERDICTS:
             err(f'{qid}: verdict {verdict!r}')
@@ -147,6 +158,11 @@ def build_tests(src: list) -> list:
         }
         if note:
             item['note'] = note
+        # Manba bilan tasdiqlanmagan izoh: belgilanadi, taklif esa javob
+        # sifatida ko'rsatilmaydi (ilova ham tekshiradi).
+        unverified = bool(x.get('note_unverified'))
+        if unverified:
+            item['unverified'] = True
         if suggested and verdict != 'ok':
             item['suggested'] = sorted(suggested)
         refs = refs_of(x.get('refs'), qid)
@@ -154,6 +170,11 @@ def build_tests(src: list) -> list:
             item['refs'] = refs
         if analytes:
             item['analytes'] = analytes
+        if status == 'needs_expert':
+            item['held'] = 'mutaxassis tekshiruvi kerak'
+        checked = (x.get('audit') or {}).get('checked_at')
+        if checked:
+            item['checked'] = checked
         out.append(item)
     out.sort(key=lambda i: i['n'])
     return out
@@ -163,11 +184,8 @@ def build_tests(src: list) -> list:
 # ilovada alohida bloklarda ko'rsatiladi. Qabul qilinadigan shakllar:
 #  - alohida maydonlar: `reference_uz` / `cutoffs_uz` (satrlar ro'yxati);
 #  - `plan_uz` bandi obyekt: {"kind": "reference"|"cutoff", "text": "..."};
-#  - `plan_uz` bandi prefiks bilan: "Referens interval: ..." /
-#    "Diagnostik chegara: ...".
-# Hozirgi (ajratilmagan) format ham o'qiladi — barcha bandlar rejada qoladi.
-REF_PREFIX = re.compile(r'^\s*(referens (interval|oraliq)\w*)\s*[:–-]\s*', re.I)
-CUT_PREFIX = re.compile(r'^\s*(diagnostik chegara\w*)\s*[:–-]\s*', re.I)
+#  - tuzilgan `reference_intervals[]` / `decision_limits[]` (manba bilan).
+# Eski (ajratilmagan) format ham o'qiladi — barcha bandlar rejada qoladi.
 
 
 def split_plan(x: dict, oid: str):
@@ -185,17 +203,89 @@ def split_plan(x: dict, oid: str):
             else:
                 err(f'{oid}: reja bandi turi {kind!r}')
             continue
-        t = text(p, f'{oid} reja')
-        if m := REF_PREFIX.match(t):
-            reference.append(t[m.end():])
-        elif m := CUT_PREFIX.match(t):
-            cutoffs.append(t[m.end():])
-        else:
-            plan.append(t)
+        # Matnli bandlar rejada qoladi: manbasiz ajratib olinmaydi (referens
+        # va chegaralar `reference_intervals` / `decision_limits` dan keladi).
+        plan.append(text(p, f'{oid} reja'))
     for field, target in (('reference_uz', reference), ('cutoffs_uz', cutoffs)):
         for t in x.get(field) or []:
             target.append(text(t, f'{oid} {field}'))
     return plan, reference, cutoffs
+
+
+def ref_one(r, where: str):
+    if not r:
+        return None
+    got = refs_of([r], where)
+    return got[0] if got else None
+
+
+def opt(d: dict, key: str):
+    v = d.get(key)
+    return v.strip() if isinstance(v, str) and v.strip() else None
+
+
+def build_reference(x: dict, oid: str) -> list:
+    out = []
+    for r in x.get('reference_intervals') or []:
+        item = {
+            'analyte': text(r.get('analyte'), f'{oid} RI analit'),
+            'value': text(r.get('value_text'), f'{oid} RI qiymat'),
+        }
+        for k_in, k_out in (('unit', 'unit'), ('population', 'population'),
+                            ('specimen', 'specimen'), ('note', 'note')):
+            if v := opt(r, k_in):
+                item[k_out] = v
+        link = ref_one(r.get('ref'), f'{oid} RI')
+        if link is None:
+            err(f"{oid}: referens interval manbasiz")
+        else:
+            item['ref'] = link
+        out.append(item)
+    return out
+
+
+def build_cutoffs(x: dict, oid: str) -> list:
+    out = []
+    for r in x.get('decision_limits') or []:
+        item = {
+            'criterion': text(r.get('criterion'), f'{oid} DL mezon'),
+            'value': text(r.get('value_text'), f'{oid} DL qiymat'),
+        }
+        for k in ('unit', 'guideline'):
+            if v := opt(r, k):
+                item[k] = v
+        if 'guideline' not in item:
+            err(f"{oid}: diagnostik chegara qo'llanmasiz")
+        link = ref_one(r.get('ref'), f'{oid} DL')
+        if link is None:
+            err(f"{oid}: diagnostik chegara manbasiz")
+        else:
+            item['ref'] = link
+        out.append(item)
+    return out
+
+
+def build_pitfalls(x: dict, oid: str) -> list:
+    structured = x.get('pitfalls')
+    if structured:
+        out = []
+        for p in structured:
+            refs = refs_of(p.get('refs'), f'{oid} xato')
+            verified = bool(p.get('verified')) and bool(refs)
+            item = {
+                'wrong': text(p.get('wrong_uz'), f'{oid} xato'),
+                'right': text(p.get('right_uz'), f'{oid} xato'),
+                'verified': verified,
+            }
+            if refs:
+                item['refs'] = refs
+            out.append(item)
+        return out
+    # Eski format: tuzilmagan matn (manba bilan tasdiqlanmagan deb olinadi).
+    return [
+        {'text': text(p, f'{oid} xato'), 'verified': False}
+        for p in x.get('pitfalls_uz') or []
+    ]
 
 
 def build_oral(src: list) -> list:
@@ -228,13 +318,23 @@ def build_oral(src: list) -> list:
             'status': status,
             'plan': plan,
         }
+        # Eski matnli bandlar ham obyektga aylantiriladi.
+        reference = [{'value': t} for t in reference] + build_reference(x, oid)
+        cutoffs = [{'value': t} for t in cutoffs] + build_cutoffs(x, oid)
         if reference:
             item['reference'] = reference
         if cutoffs:
             item['cutoffs'] = cutoffs
-        pitfalls = [text(p, f'{oid} xato') for p in x.get('pitfalls_uz') or []]
+        pitfalls = build_pitfalls(x, oid)
         if pitfalls:
             item['pitfalls'] = pitfalls
+        held = HELD.get(oid) or (
+            'mutaxassis tekshiruvi kerak' if status == 'needs_expert' else None)
+        if held:
+            item['held'] = held
+        checked = (x.get('audit') or {}).get('checked_at')
+        if checked:
+            item['checked'] = checked
         if refs:
             item['refs'] = refs
         note = (x.get('note') or '').strip()
@@ -249,7 +349,7 @@ def build_oral(src: list) -> list:
         out.append(item)
     out.sort(key=lambda i: i['id'])
     for c in CATEGORIES:
-        n = sum(1 for i in out if c in i['categories'])
+        n = sum(1 for i in out if c in i['categories'] and 'held' not in i)
         if n < 5:
             err(f'toifa {c}: biletga {n} ta savol (kamida 5 kerak)')
     return out
@@ -269,14 +369,18 @@ def main() -> int:
         print('\n'.join(errors), file=sys.stderr)
         print(f"{len(errors)} ta xato — fayllar yozilmadi", file=sys.stderr)
         return 1
+    # Kelib chiqish: agent tekshiruvi sanasi (mutaxassis tasdig'i emas).
+    checked = max(
+        [i['checked'] for i in tests + oral if 'checked' in i], default=None)
+    meta = {'version': 1, 'topics': TOPICS, 'audit_checked_at': checked}
     OUT.mkdir(parents=True, exist_ok=True)
-    (OUT / 'kdl_tests.json').write_text(
-        dump({'version': 1, 'topics': TOPICS, 'questions': tests}))
+    (OUT / 'kdl_tests.json').write_text(dump({**meta, 'questions': tests}))
     (OUT / 'kdl_oral.json').write_text(
-        dump({'version': 1, 'topics': TOPICS, 'categories': CATEGORIES,
-              'questions': oral}))
+        dump({**meta, 'categories': CATEGORIES, 'questions': oral}))
     keyless = sum(1 for t in tests if not t['key'])
-    print(f"test: {len(tests)} (kalitsiz {keyless}), og'zaki: {len(oral)}")
+    held = [i['id'] for i in tests + oral if 'held' in i]
+    print(f"test: {len(tests)} (kalitsiz {keyless}), og'zaki: {len(oral)}, "
+          f"tekshiruv: {checked}, chiqarilgan: {held}")
     for c in CATEGORIES:
         print(f"  toifa {c}: {sum(1 for i in oral if c in i['categories'])}")
     return 0

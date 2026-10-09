@@ -52,6 +52,10 @@ abstract final class StoreKeys {
   static const toifaTicket = 'toifa.ticket';
   static const toifaTestSettings = 'toifa.testSettings';
 
+  /// Leykoformula: joriy sanash (qoralama) va saqlangan natijalar.
+  static const differentialDraft = 'differential.draft';
+  static const differentialHistory = 'differential.history';
+
   static const all = <String>{
     language,
     themeMode,
@@ -78,6 +82,8 @@ abstract final class StoreKeys {
     toifaOral,
     toifaTicket,
     toifaTestSettings,
+    differentialDraft,
+    differentialHistory,
   };
 }
 

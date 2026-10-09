@@ -276,6 +276,159 @@ void main() {
     expect(s.toifa.category, isNull);
   });
 
+  group('audit qoidalari', () {
+    test('ilova yangi (audit qilingan) asset versiyasini o‘qiydi', () async {
+      final bank = await _bank();
+      // Asset kelib chiqishi: agent tekshiruvi sanasi bor.
+      expect(bank.auditCheckedAt, isNotNull);
+      expect(DateTime.tryParse(bank.auditCheckedAt!), isNotNull);
+      // Har diagnostik chegara — qo'llanma va manba bilan; har referens
+      // interval — manba bilan (raqam emas, bog'lanish tekshiriladi).
+      for (final q in bank.oral) {
+        for (final c in q.cutoffs) {
+          expect(c.context, isNotEmpty, reason: '${q.id}: qo‘llanma');
+          expect(c.link, isNotNull, reason: '${q.id}: manba');
+        }
+        for (final r in q.reference) {
+          expect(r.link, isNotNull, reason: '${q.id}: manba');
+        }
+      }
+      // Aniq savol: diabet mezoni — birlik, qo'llanma + yil, manba.
+      final q = bank.oralQuestion('kdl-o-079')!;
+      final dm = q.cutoffs.firstWhere((c) => c.label!.contains('ADA'));
+      expect(dm.unit, contains('mmol/L'));
+      expect(dm.context.single, matches(RegExp(r'ADA.*20\d\d')));
+      expect(Uri.parse(dm.link!.url).host, 'pmc.ncbi.nlm.nih.gov');
+      expect(q.checked, isNotNull);
+    });
+
+    test('aniqlashtirilayotgan savol biletga kirmaydi', () async {
+      final bank = await _bank();
+      final held = bank.oral.where((q) => q.held != null).toList();
+      expect(held.map((q) => q.id), contains('kdl-o-283'));
+      for (final c in ToifaCategory.values) {
+        final pool = bank.ticketPool(c).map((q) => q.id).toSet();
+        for (final q in held) {
+          expect(pool.contains(q.id), false, reason: '${q.id} ${c.id}');
+        }
+      }
+      // Ro'yxatda ko'rinadi (asl matn o'zgarmagan).
+      expect(
+        bank.oralFor(ToifaCategory.highest).map((q) => q.id),
+        contains('kdl-o-283'),
+      );
+      final c = ToifaController(MemoryKeyValueStore(), bundle: rootBundle)
+        ..random = Random(1);
+      await c.ensureLoaded();
+      for (var i = 0; i < 60; i++) {
+        final t = await c.drawTicket(ToifaCategory.highest);
+        expect(t!.ids, isNot(contains('kdl-o-283')));
+      }
+      // Testdan chiqarilgan savol ham baholanmaydi.
+      final q = ToifaTestQuestion(
+        id: 'x',
+        number: 1,
+        text: 'x',
+        options: const ['a', 'b', 'c', 'd'],
+        key: const {1},
+        topic: 'other',
+        keyCheck: const KeyCheck(verdict: KeyVerdict.ok),
+        held: 'mutaxassis tekshiruvi kerak',
+      );
+      expect(q.scorable, false);
+      expect(bank.scorable.every((q) => q.held == null), true);
+    });
+
+    test('manbasiz izoh kalit sifatida ishlatilmaydi', () async {
+      final bank = await _bank();
+      final unverified = bank.tests.where((q) => q.keyCheck.unverified);
+      expect(unverified, isNotEmpty);
+      for (final q in unverified.where((q) => q.scorable)) {
+        // Ball — faqat rasmiy kalit (LabGuide taklifi emas).
+        expect(q.correct, q.key);
+      }
+      // Manbasiz tuzatish (093) “to'g'ri” deb belgilanmagan.
+      final p = bank.oralQuestion('kdl-o-093')!.pitfalls;
+      expect(p.where((f) => !f.verified), isNotEmpty);
+      for (final f in p) {
+        if (f.verified) expect(f.links, isNotEmpty);
+      }
+    });
+  });
+
+  testWidgets('og‘zaki reja: referens va chegara alohida, xato → to‘g‘ri, '
+      'manbasiz tuzatish belgilangan', (tester) async {
+    final s = await makeServices(tester);
+    await pumpApp(tester, s, size: const Size(390, 6000));
+    await goTo(tester, '/learn/toifa/oral/q/kdl-o-079');
+    await tapScroll(tester, uz.toifaShowPlan);
+    expect(find.text(uz.toifaCutoffTitle), findsOne);
+    expect(
+      find.textContaining('Qandli diabet (ADA): ', findRichText: true),
+      findsWidgets,
+    );
+    expect(find.textContaining('ADA Standards of Care 2023'), findsWidgets);
+    expect(
+      find.text(
+        uz.toifaAgentChecked(s.toifa.bank!.oralQuestion('kdl-o-079')!.checked!),
+      ),
+      findsOne,
+    );
+
+    await goTo(tester, '/learn/toifa/oral/q/kdl-o-001');
+    await tapScroll(tester, uz.toifaShowPlan);
+    expect(find.text(uz.toifaReferenceTitle), findsOne);
+    expect(
+      find.textContaining('${uz.toifaWrongLabel}: ', findRichText: true),
+      findsWidgets,
+    );
+    expect(
+      find.textContaining('${uz.toifaRightLabel}: ', findRichText: true),
+      findsWidgets,
+    );
+
+    await goTo(tester, '/learn/toifa/oral/q/kdl-o-093');
+    await tapScroll(tester, uz.toifaShowPlan);
+    expect(
+      find.textContaining('${uz.toifaNeedsSource}: ', findRichText: true),
+      findsOne,
+    );
+    expect(
+      find.textContaining('${uz.toifaRightLabel}: ', findRichText: true),
+      findsNothing,
+    );
+
+    await goTo(tester, '/learn/toifa/oral/q/kdl-o-283');
+    expect(find.text(uz.toifaHeld), findsOne);
+  });
+
+  testWidgets('manbasiz LabGuide izohi: taklif ko‘rsatilmaydi, belgilanadi', (
+    tester,
+  ) async {
+    final s = await makeServices(tester);
+    await pumpApp(tester, s, size: _tall);
+    final q = s.toifa.bank!.test('kdl-t-010')!;
+    expect(q.keyCheck.unverified, true);
+    expect(q.keyCheck.suggested, isNotEmpty);
+    final session = ExamSession.build(
+      id: 'u1',
+      mode: ExamMode.exam,
+      questions: [q],
+      random: Random(1),
+      startedAt: s.exams.now(),
+      sourceId: ToifaQuestionSource.sourceId,
+      shuffleOptions: false,
+    );
+    final other = q.keyCheck.suggested.firstWhere((i) => !q.key.contains(i));
+    session.choose(other);
+    await s.exams.start(session);
+    await s.exams.finishActive();
+    expect(session.correctCount, 0, reason: 'ball rasmiy kalit bo‘yicha');
+    await goTo(tester, '/learn/toifa/test/result/u1');
+    expect(find.textContaining(uz.toifaUnverifiedNote), findsOne);
+    expect(find.textContaining('LabGuide fikricha'), findsNothing);
+  });
+
   // 320 px: uz yorug' va ru interfeys + UZ mintaqa, qorong'i, katta shrift.
   for (final (lang, locale, scale, theme) in [
     (AppLanguage.uz, const Locale('uz', 'UZ'), 1.0, ThemeMode.light),
@@ -304,6 +457,14 @@ void main() {
         await goTo(tester, route);
         expect(tester.takeException(), isNull, reason: route);
       }
+      // Ochilgan rejalar: chegara, referens interval, xatolar, aniqlashtirish.
+      final l = lookupAppLocalizations(Locale(lang.name));
+      for (final id in ['kdl-o-079', 'kdl-o-001', 'kdl-o-093', 'kdl-o-283']) {
+        await goTo(tester, '/learn/toifa/oral/q/$id');
+        await tapScroll(tester, l.toifaShowPlan);
+        expect(tester.takeException(), isNull, reason: id);
+      }
+
       // Bilet holatlari: tayyorlanish, reja ochilgan, yakun.
       await s.toifa.drawTicket(ToifaCategory.first);
       await goTo(tester, '/learn/toifa/oral');

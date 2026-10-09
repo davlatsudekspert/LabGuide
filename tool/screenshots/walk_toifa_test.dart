@@ -139,6 +139,35 @@ void main() {
     // Orqaga: hub — holatlar yangilangan.
     await goTo(tester, '/learn/toifa');
     await w.snap('hub_yakunda');
+    // Audit qilingan reja: referens interval, diagnostik chegara, xatolar.
+    await goTo(tester, '/learn/toifa/oral/q/kdl-o-001');
+    await tapScroll(tester, l.toifaShowPlan);
+    await tester.scrollUntilVisible(
+      find.text(l.toifaReferenceTitle),
+      300,
+      scrollable: find.byType(Scrollable).hitTestable().first,
+    );
+    await w.snap('reja_referens');
+    await w.scroll(500);
+    await w.snap('reja_xato_togri');
+    await goTo(tester, '/learn/toifa/oral/q/kdl-o-079');
+    await tapScroll(tester, l.toifaShowPlan);
+    await tester.scrollUntilVisible(
+      find.text(l.toifaCutoffTitle),
+      300,
+      scrollable: find.byType(Scrollable).hitTestable().first,
+    );
+    await w.snap('reja_chegara');
+    await goTo(tester, '/learn/toifa/oral/q/kdl-o-093');
+    await tapScroll(tester, l.toifaShowPlan);
+    await tester.scrollUntilVisible(
+      find.text(l.toifaPitfallsTitle),
+      300,
+      scrollable: find.byType(Scrollable).hitTestable().first,
+    );
+    await w.snap('reja_manba_kerak');
+    await goTo(tester, '/learn/toifa/oral/q/kdl-o-283');
+    await w.snap('aniqlashtirilmoqda');
     await goTo(tester, '/learn');
     await w.snap('organish_tab');
   });

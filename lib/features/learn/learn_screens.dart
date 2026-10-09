@@ -93,6 +93,12 @@ class LearnScreen extends StatelessWidget {
           onTap: () => context.push('/learn/exam'),
         ),
         LgRow(
+          title: l.diffTitle,
+          subtitle: l.diffLearnSub,
+          icon: Icons.bubble_chart_outlined,
+          onTap: () => openInTab(context, '/lab/differential'),
+        ),
+        LgRow(
           title: l.micTitle,
           subtitle: l.labMicroscopySub,
           icon: Icons.biotech_outlined,

@@ -7,10 +7,9 @@ import 'package:labguide/features/content/content_model.dart';
 import 'package:labguide/l10n/gen/app_localizations_uz.dart';
 import 'package:labguide/features/content/ui/conditions_screens.dart';
 
-Map<String, Object?> packJson() =>
-    (jsonDecode(File('assets/content/core/pack.json').readAsStringSync())
-            as Map)
-        .cast<String, Object?>();
+Map<String, Object?> packJson() => (jsonDecode(
+  File('assets/content/core/pack.json').readAsStringSync(),
+) as Map).cast<String, Object?>();
 
 /// `content_src/README.md` jadvalidagi kanonik analit id lari.
 Set<String> canonicalIds() {
@@ -233,15 +232,22 @@ void main() {
 
   group('search', () {
     final search = ConditionSearch(pack);
-    List<String> ids(String q, String lang) =>
-        [for (final c in search.search(q, lang: lang)) c.id];
+    List<String> ids(String q, String lang) => [
+      for (final c in search.search(q, lang: lang)) c.id,
+    ];
 
     test('colloquial and multilingual names', () {
       expect(ids('qand', 'uz').first, 'type-2-diabetes');
       expect(ids('qand', 'uz'), contains('gestational-diabetes'));
       expect(ids('диабет', 'ru'), contains('type-2-diabetes'));
-      expect(ids('anemia', 'en'), containsAll(['iron-deficiency-anemia', 'b12-folate-deficiency']));
-      expect(ids('щитовид', 'ru').take(2), containsAll(['hypothyroidism', 'hyperthyroidism']));
+      expect(
+        ids('anemia', 'en'),
+        containsAll(['iron-deficiency-anemia', 'b12-folate-deficiency']),
+      );
+      expect(
+        ids('щитовид', 'ru').take(2),
+        containsAll(['hypothyroidism', 'hyperthyroidism']),
+      );
       expect(ids('kamqonlik', 'uz'), contains('iron-deficiency-anemia'));
       // Kirill yozuvidagi o'zbekcha so'rov.
       expect(ids('қанд', 'uz'), contains('type-2-diabetes'));
@@ -249,13 +255,20 @@ void main() {
 
     test('test names find conditions, but below name matches', () {
       final tsh = ids('TSH', 'en');
-      expect(tsh, containsAll(['hypothyroidism', 'hyperthyroidism', 'infertility']));
+      expect(
+        tsh,
+        containsAll(['hypothyroidism', 'hyperthyroidism', 'infertility']),
+      );
       expect(ids('psa', 'en').first, 'prostate-psa');
     });
 
     test('system filter and empty query', () {
       expect(search.search('', lang: 'uz'), hasLength(pack.conditions.length));
-      final liver = search.search('', system: ConditionSystem.liver, lang: 'uz');
+      final liver = search.search(
+        '',
+        system: ConditionSystem.liver,
+        lang: 'uz',
+      );
       expect(liver, isNotEmpty);
       expect(liver.every((c) => c.system == ConditionSystem.liver), isTrue);
       expect(ids('zzzqqq', 'uz'), isEmpty);

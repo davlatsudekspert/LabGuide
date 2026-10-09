@@ -1462,14 +1462,31 @@ class KeyCheckNote extends StatelessWidget {
     final lang = Localizations.localeOf(context).languageCode;
     final check = question.keyCheck;
     final note = check.note;
+    // Manba bilan tasdiqlanmagan izoh — belgi bilan, taklifsiz.
+    final unverifiedTag = check.unverified
+        ? Padding(
+            padding: const EdgeInsets.only(bottom: 4),
+            child: Text(
+              l.toifaUnverifiedNote,
+              style: text.bodySmall!.copyWith(color: p.amber),
+            ),
+          )
+        : null;
     if (!check.flagged) {
       if (note == null) return const SizedBox.shrink();
-      return LgNotice(note, title: l.toifaLabGuideNote, kind: NoticeKind.info);
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          LgNotice(note, title: l.toifaLabGuideNote, kind: NoticeKind.info),
+          ?unverifiedTag,
+        ],
+      );
     }
     final suggested = [
-      for (final i in check.suggested)
-        if (i >= 0 && i < question.optionCount)
-          '${optionLetter(i)}) ${question.option(i, lang)}',
+      if (!check.unverified)
+        for (final i in check.suggested)
+          if (i >= 0 && i < question.optionCount)
+            '${optionLetter(i)}) ${question.option(i, lang)}',
     ];
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -1485,7 +1502,8 @@ class KeyCheckNote extends StatelessWidget {
           ].join('\n\n'),
           title: l.toifaLabGuideNote,
         ),
-        if (check.links.isEmpty)
+        ?unverifiedTag,
+        if (check.links.isEmpty && !check.unverified)
           Text(
             l.toifaNoteNoSource,
             style: text.bodySmall!.copyWith(color: p.amber),

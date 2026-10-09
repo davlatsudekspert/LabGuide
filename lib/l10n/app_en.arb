@@ -600,6 +600,192 @@
   "preStep4": "Separate and store",
   "preStep5": "Transport and receive",
   "preNotice": "Tube color, time and temperature are tied to the specific tube, method and instructions. No universal parameters are given.",
+  "diffTitle": "Differential count",
+  "diffSubtitle": "Identify, count and interpret white cells",
+  "diffLabCardBody": "Manual count tally, cell atlas and interpretation",
+  "diffHeroTitle": "Read a differential with confidence",
+  "diffHeroBody": "Cell schematics, a big-button tally counter, interpretation and smear technique in one place.",
+  "diffStartCount": "Start counting",
+  "diffResumeCount": "Continue counting ({count}/{target})",
+  "@diffResumeCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "target": {
+        "type": "int"
+      }
+    }
+  },
+  "diffCellsTitle": "Cell identification",
+  "diffCellsSub": "{count} cells: size, nucleus, cytoplasm, granules",
+  "@diffCellsSub": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "diffConfusionsTitle": "Common mix-ups",
+  "diffConfusionsSub": "Reactive lymphocyte or monocyte? Band or segmented?",
+  "diffCounterTitle": "Tally counter",
+  "diffCounterSub": "Tap +1, long-press −1; 100 or 200 cells",
+  "diffHistoryTitle": "Saved results",
+  "diffHistorySub": "{count} results — on this device only",
+  "@diffHistorySub": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "diffInterpretTitle": "Interpretation",
+  "diffInterpretSub": "Left shift, neutrophilia, lymphocytosis and more",
+  "diffTechniqueTitle": "Smear technique and errors",
+  "diffTechniqueSub": "Making, staining, where to count",
+  "diffQuizTitle": "“Which cell is this?” practice",
+  "diffQuizSub": "{count} questions with schematic images",
+  "@diffQuizSub": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "diffLearnSub": "Cell atlas, tally counter and “Which cell is this?” practice",
+  "diffSourcesTitle": "Sources",
+  "diffDraftTag": "Draft · awaiting expert review",
+  "diffDraftNote": "This section has not been expert-reviewed. A result is not a diagnosis; reference intervals are on your laboratory’s report form.",
+  "diffSchematicCaption": "Schematic drawing (made by LabGuide) — not a micrograph",
+  "diffScaleNote": "All schematics share one scale; the surrounding red cells (~7.5 µm) help compare size.",
+  "diffRelatedCards": "Test cards",
+  "diffSize": "Size",
+  "diffNucleus": "Nucleus",
+  "diffCytoplasm": "Cytoplasm",
+  "diffGranules": "Granules",
+  "diffKeySign": "Key sign",
+  "diffSeenIn": "When it is seen",
+  "diffReferTitle": "Refer to a physician or haematologist",
+  "diffReferBody": "If you see a blast or a cell you cannot identify, do not interpret it yourself. Have a haematologist or physician review the smear according to your laboratory’s procedure.",
+  "diffCompareA": "Left",
+  "diffCompareB": "Right",
+  "diffFeature": "Feature",
+  "diffTip": "Tip",
+  "diffOpenCell": "Details",
+  "diffTargetLabel": "Cells to count",
+  "diffWbcLabel": "White cell count (WBC), ×10⁹/L — optional",
+  "diffWbcHint": "e.g. 7.5",
+  "diffWbcInvalid": "Enter a positive number (e.g. 7.5)",
+  "diffTapHint": "Tap: +1 · Long-press: −1",
+  "diffUndo": "Undo last",
+  "diffReset": "Start over",
+  "diffResetTitle": "Clear the count?",
+  "diffResetBody": "{count} counted cells will be cleared.",
+  "@diffResetBody": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "diffResetConfirm": "Clear",
+  "diffDoneTitle": "{target} cells counted",
+  "@diffDoneTitle": {
+    "placeholders": {
+      "target": {
+        "type": "int"
+      }
+    }
+  },
+  "diffDoneBody": "Counting has stopped. Check the result, then save or copy it.",
+  "diffBlocked": "Target reached — tap not added",
+  "diffResultTitle": "Result",
+  "diffColCell": "Cell",
+  "diffColCount": "Count",
+  "diffColAbs": "×10⁹/L",
+  "diffAbsNeedWbc": "Enter the WBC to see absolute counts.",
+  "diffOtherWarning": "“Other” cells were counted. If they are blasts or unidentified cells, have a haematologist or physician review the smear.",
+  "diffSave": "Save to history",
+  "diffSaved": "Result saved (on this device only)",
+  "diffLabelField": "Sample label (optional, no patient names)",
+  "diffLabelHint": "e.g. sample 12",
+  "diffCopy": "Copy",
+  "diffCopied": "Result copied",
+  "diffCopyHeader": "Differential count ({total} cells)",
+  "@diffCopyHeader": {
+    "placeholders": {
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "diffCopyFooter": "LabGuide · manual count. Reference intervals: see the laboratory report form.",
+  "diffWbcLine": "WBC: {value} ×10⁹/L",
+  "@diffWbcLine": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "diffButtonSemantics": "{cell}: {count}. Tap to add, long-press to subtract.",
+  "@diffButtonSemantics": {
+    "placeholders": {
+      "cell": {
+        "type": "String"
+      },
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "diffDecrementAction": "Subtract one",
+  "diffHistoryEmptyTitle": "No saved results yet",
+  "diffHistoryEmptyBody": "Finish a count and tap “Save to history”.",
+  "diffHistoryClear": "Delete all",
+  "diffHistoryClearTitle": "Delete history?",
+  "diffHistoryClearBody": "{count} results will be deleted from this device.",
+  "@diffHistoryClearBody": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "diffDeleted": "Result deleted",
+  "diffHistoryLocalNote": "Results stay on this device and are not sent to a server. “Delete local data” in Profile removes them too.",
+  "diffInterpretIntro": "Interpretation always goes with the reference interval and the clinical picture. The reference is on your laboratory’s report form; the causes below are only possibilities, not a diagnosis.",
+  "diffPossibleCauses": "Possible causes",
+  "diffAbsNote": "A big rise in one cell type lowers the percentages of the others, so look at absolute counts (fraction × WBC).",
+  "diffRangesTitle": "Why doesn’t the app give a “normal range”?",
+  "diffRangesBody": "Even two open sources give different example adult ranges (%). Reports use only the reference on your laboratory’s form; children’s ranges depend on age.",
+  "diffRangesWho": "WHO 2003",
+  "diffRangesMedline": "MedlinePlus",
+  "diffQuizPrompt": "Which cell is this?",
+  "diffQuizIntro": "Pick the cell from the schematic. Questions are shuffled each time; after answering you see the distinguishing sign.",
+  "diffQuizStart": "Start practice",
+  "diffRealSmear": "Real smear",
+  "diffRealSmearNote": "A licensed micrograph from the microscopy atlas. Author and licence are shown when you open it.",
+  "diffAtlasRow": "Real blood smears",
+  "diffAtlasRowSub": "Licensed micrographs from the microscopy atlas",
+  "diffQuizExtended": "Extended practice ({count} questions)",
+  "@diffQuizExtended": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "diffQuizExtendedIntro": "On top of the picture questions: identify the cell from a description of its nucleus, cytoplasm and granules.",
+  "diffQuizDescribed": "Which cell matches this description?",
+  "diffHistoryMore": "{count} more results are stored on this device",
+  "@diffHistoryMore": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "preOrderTitle": "Order of draw (venepuncture)",
   "preOrderSub": "WHO 2010, Table 2.3 (based on the NCCLS 2003 consensus). Check your laboratory’s current procedure.",
   "preCap": "Cap: {cap}",
@@ -1993,8 +2179,30 @@
   "toifaPlanPending": "Prepared by LabGuide, awaiting expert review",
   "toifaPlanMissing": "The plan for this question is not ready yet.",
   "toifaPlanNotChecked": "The plan is not fully checked against sources.",
-  "toifaReferenceTitle": "Reference interval",
-  "toifaCutoffTitle": "Diagnostic cut-off",
+  "toifaReferenceTitle": "Reference interval (specimen, lab-specific)",
+  "toifaCutoffTitle": "Diagnostic cut-off (guideline)",
+  "toifaWrongLabel": "Wrong",
+  "toifaRightLabel": "Right",
+  "toifaNeedsSource": "Source needed — being checked with a teacher",
+  "toifaUnverifiedNote": "The note is not confirmed by a source — no answer is suggested.",
+  "toifaAgentChecked": "Agent review: {date} (not expert-approved)",
+  "@toifaAgentChecked": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "toifaHeld": "Being clarified",
+  "toifaHeldBody": "Until the wording is clarified, this question is left out of tickets and scoring.",
+  "toifaAboutHeld": "{count} question(s) are left out of tickets and tests until clarified.",
+  "@toifaAboutHeld": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "toifaPitfallsTitle": "Outdated / common mistake",
   "toifaRateTitle": "Rate yourself",
   "toifaRateHint": "The rating stays on this device and appears in Mistake review.",

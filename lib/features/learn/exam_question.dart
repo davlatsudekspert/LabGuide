@@ -57,9 +57,14 @@ class KeyCheck {
     this.note,
     this.suggested = const [],
     this.links = const [],
+    this.unverified = false,
   });
 
   final KeyVerdict verdict;
+
+  /// Izoh manba bilan tasdiqlanmagan — belgilanadi, taklif javob sifatida
+  /// ko'rsatilmaydi.
+  final bool unverified;
 
   /// LabGuide izohi (bo'lmasa — null).
   final String? note;

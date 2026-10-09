@@ -76,6 +76,7 @@ class ToifaTestQuestion implements OfficialKeyQuestion {
     required this.topic,
     required this.keyCheck,
     this.analytes = const [],
+    this.held,
   });
 
   factory ToifaTestQuestion.fromJson(Map<String, Object?> j) {
@@ -92,8 +93,10 @@ class ToifaTestQuestion implements OfficialKeyQuestion {
         note: j['note'] as String?,
         suggested: (j['suggested'] as List? ?? const []).cast<int>(),
         links: _links(j['refs']),
+        unverified: j['unverified'] == true,
       ),
       analytes: _strings(j['analytes']),
+      held: j['held'] as String?,
     );
   }
 
@@ -113,8 +116,11 @@ class ToifaTestQuestion implements OfficialKeyQuestion {
   /// Bog'liq analit kartalari (paketda bo'lmasa — ko'rsatilmaydi).
   final List<String> analytes;
 
-  /// Rasmiy kalit bor — ball hisoblanadigan savol.
-  bool get scorable => key.isNotEmpty;
+  /// Aniqlashtirilguncha baholanadigan tanlovdan chiqarilgan (sabab).
+  final String? held;
+
+  /// Rasmiy kalit bor va chiqarilmagan — ball hisoblanadigan savol.
+  bool get scorable => key.isNotEmpty && held == null;
 
   @override
   String prompt(String lang) => text;
@@ -138,6 +144,84 @@ class ToifaTestQuestion implements OfficialKeyQuestion {
   List<SourceRef> get refs => const [];
 }
 
+ExamLink? _link(Object? raw) => raw is Map
+    ? ExamLink(raw['url']! as String, raw['locator'] as String?)
+    : null;
+
+/// Referens interval yoki diagnostik chegara: nomi, qiymati, birligi,
+/// sharoiti (namuna/populyatsiya yoki qo'llanma), izoh va manba.
+@immutable
+class OralFact {
+  const OralFact({
+    required this.value,
+    this.label,
+    this.unit,
+    this.context = const [],
+    this.note,
+    this.link,
+  });
+
+  /// `reference` bandi: analit, qiymat, birlik, populyatsiya, namuna.
+  factory OralFact.reference(Map<String, Object?> j) => OralFact(
+    label: j['analyte'] as String?,
+    value: j['value']! as String,
+    unit: j['unit'] as String?,
+    context: [
+      for (final k in ['specimen', 'population'])
+        if (j[k] case final String v) v,
+    ],
+    note: j['note'] as String?,
+    link: _link(j['ref']),
+  );
+
+  /// `cutoffs` bandi: mezon, qiymat, birlik, qo'llanma.
+  factory OralFact.cutoff(Map<String, Object?> j) => OralFact(
+    label: j['criterion'] as String?,
+    value: j['value']! as String,
+    unit: j['unit'] as String?,
+    context: [if (j['guideline'] case final String g) g],
+    link: _link(j['ref']),
+  );
+
+  final String? label;
+  final String value;
+  final String? unit;
+
+  /// Namuna va populyatsiya (referens) yoki qo'llanma (chegara).
+  final List<String> context;
+  final String? note;
+  final ExamLink? link;
+}
+
+/// Tarqalgan javoblardagi eskirgan/xato ma'lumot: noto'g'ri → to'g'ri
+/// (manba). Manba bilan tasdiqlanmagan tuzatish “to'g'ri” deb ko'rsatilmaydi.
+@immutable
+class OralPitfall {
+  const OralPitfall({
+    this.wrong,
+    this.right,
+    this.text,
+    this.links = const [],
+    this.verified = false,
+  });
+
+  factory OralPitfall.fromJson(Map<String, Object?> j) => OralPitfall(
+    wrong: j['wrong'] as String?,
+    right: j['right'] as String?,
+    text: j['text'] as String?,
+    links: _links(j['refs']),
+    verified: j['verified'] == true,
+  );
+
+  final String? wrong;
+  final String? right;
+
+  /// Eski (tuzilmagan) format matni.
+  final String? text;
+  final List<ExamLink> links;
+  final bool verified;
+}
+
 /// Og'zaki savol va LabGuide tayyorlagan javob rejasi (mutaxassis
 /// tekshiruvi kutilmoqda).
 @immutable
@@ -155,25 +239,34 @@ class ToifaOralQuestion {
     this.links = const [],
     this.note,
     this.analytes = const [],
+    this.held,
+    this.checked,
   });
 
-  factory ToifaOralQuestion.fromJson(Map<String, Object?> j) =>
-      ToifaOralQuestion(
-        id: j['id']! as String,
-        text: j['q']! as String,
-        categories: {
-          for (final c in _strings(j['categories'])) ?ToifaCategory.tryParse(c),
-        },
-        topic: j['topic']! as String,
-        planReady: j['status'] == 'draft',
-        plan: _strings(j['plan']),
-        reference: _strings(j['reference']),
-        cutoffs: _strings(j['cutoffs']),
-        pitfalls: _strings(j['pitfalls']),
-        links: _links(j['refs']),
-        note: j['note'] as String?,
-        analytes: _strings(j['analytes']),
-      );
+  factory ToifaOralQuestion.fromJson(Map<String, Object?> j) {
+    List<Map<String, Object?>> maps(String k) => [
+      for (final e in (j[k] as List? ?? const []))
+        (e as Map).cast<String, Object?>(),
+    ];
+    return ToifaOralQuestion(
+      id: j['id']! as String,
+      text: j['q']! as String,
+      categories: {
+        for (final c in _strings(j['categories'])) ?ToifaCategory.tryParse(c),
+      },
+      topic: j['topic']! as String,
+      planReady: j['status'] == 'draft',
+      plan: _strings(j['plan']),
+      reference: [for (final m in maps('reference')) OralFact.reference(m)],
+      cutoffs: [for (final m in maps('cutoffs')) OralFact.cutoff(m)],
+      pitfalls: [for (final m in maps('pitfalls')) OralPitfall.fromJson(m)],
+      links: _links(j['refs']),
+      note: j['note'] as String?,
+      analytes: _strings(j['analytes']),
+      held: j['held'] as String?,
+      checked: j['checked'] as String?,
+    );
+  }
 
   final String id;
   final String text;
@@ -185,20 +278,25 @@ class ToifaOralQuestion {
   final bool planReady;
   final List<String> plan;
 
-  /// Referens interval(lar) — ma'lumotda ajratilgan bo'lsa (aks holda bo'sh,
-  /// qiymatlar rejaning o'zida).
-  final List<String> reference;
+  /// Referens intervallar (namuna, populyatsiya; laboratoriyaga qarab).
+  final List<OralFact> reference;
 
-  /// Diagnostik chegara(lar) — ma'lumotda ajratilgan bo'lsa.
-  final List<String> cutoffs;
+  /// Diagnostik chegaralar (qo'llanma bilan).
+  final List<OralFact> cutoffs;
 
   /// Tarqalgan javoblarda uchraydigan eskirgan yoki xato ma'lumotlar.
-  final List<String> pitfalls;
+  final List<OralPitfall> pitfalls;
   final List<ExamLink> links;
 
   /// Rejaning qaysi qismi alohida tekshirilmagani.
   final String? note;
   final List<String> analytes;
+
+  /// Aniqlashtirilguncha biletga kirmaydi (sabab).
+  final String? held;
+
+  /// Agent tekshiruvi sanasi (mutaxassis tasdig'i emas).
+  final String? checked;
 }
 
 /// Ikkala bank: test va og'zaki savollar.
@@ -207,6 +305,7 @@ class ToifaBank {
     required this.topicOrder,
     required this.tests,
     required this.oral,
+    this.auditCheckedAt,
   });
 
   factory ToifaBank.fromJson(
@@ -218,6 +317,7 @@ class ToifaBank {
     }
     final bank = ToifaBank(
       topicOrder: _strings(tests['topics']),
+      auditCheckedAt: oral['audit_checked_at'] as String?,
       tests: [
         for (final q in tests['questions']! as List)
           ToifaTestQuestion.fromJson((q as Map).cast<String, Object?>()),
@@ -232,6 +332,9 @@ class ToifaBank {
   }
 
   final List<String> topicOrder;
+
+  /// Kontent agent tekshiruvi sanasi (asset versiyasi; mutaxassis emas).
+  final String? auditCheckedAt;
   final List<ToifaTestQuestion> tests;
   final List<ToifaOralQuestion> oral;
 
@@ -256,7 +359,7 @@ class ToifaBank {
       throw const FormatException('duplicate id');
     }
     for (final c in ToifaCategory.values) {
-      if (oralFor(c).length < ToifaFormat.ticketSize) {
+      if (ticketPool(c).length < ToifaFormat.ticketSize) {
         throw FormatException('category ${c.id}');
       }
     }
@@ -272,7 +375,10 @@ class ToifaBank {
   ];
 
   /// Ro'yxatda kalit belgilanmagan savollar soni (testga kirmaydi).
-  int get keyless => tests.length - scorable.length;
+  int get keyless => tests.where((q) => q.key.isEmpty).length;
+
+  /// Aniqlashtirilguncha testdan chiqarilgan savollar soni.
+  int get heldTests => tests.where((q) => q.held != null).length;
 
   int verdictCount(KeyVerdict v) =>
       scorable.where((q) => q.keyCheck.verdict == v).length;
@@ -280,6 +386,12 @@ class ToifaBank {
   List<ToifaOralQuestion> oralFor(ToifaCategory c) => [
     for (final q in oral)
       if (q.categories.contains(c)) q,
+  ];
+
+  /// Biletga kiradigan savollar: aniqlashtirilayotganlari chiqarilgan.
+  List<ToifaOralQuestion> ticketPool(ToifaCategory c) => [
+    for (final q in oralFor(c))
+      if (q.held == null) q,
   ];
 
   late final ToifaQuestionSource source = ToifaQuestionSource(this);

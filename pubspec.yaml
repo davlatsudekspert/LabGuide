@@ -51,6 +51,7 @@ flutter:
     - assets/content/core/
     - assets/instruments/
     - assets/instruments/img/
+    - assets/differential/
     - assets/microscopy/
     - assets/microscopy/img/
     - assets/toifa/

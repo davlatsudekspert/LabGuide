@@ -288,7 +288,9 @@ class ToifaHubScreen extends StatelessWidget {
         ? exams.active
         : null;
     final (tm, tt) = _testMastery(context, bank.scorable);
-    final oralPool = cat == null ? bank.oral : bank.oralFor(cat);
+    final oralPool = cat == null
+        ? bank.oral.where((q) => q.held == null)
+        : bank.ticketPool(cat);
     final (ok, ot) = _oralMastery(toifa, oralPool);
     final mistakes = _testMistakes(context, bank).length;
     final oralUnknown = toifa.oralWith(OralRating.unknown).length;
@@ -330,7 +332,7 @@ class ToifaHubScreen extends StatelessWidget {
             ? l.toifaOralRowActive(ticket.ratings.length, ticket.ids.length)
             : cat == null
             ? l.toifaOralRowPick
-            : l.toifaOralRowSub(cat.label(l), bank.oralFor(cat).length),
+            : l.toifaOralRowSub(cat.label(l), bank.ticketPool(cat).length),
         icon: Icons.record_voice_over_outlined,
         onTap: () => context.push('$toifaBase/oral'),
       ),
@@ -443,6 +445,10 @@ class _AboutPanel extends StatelessWidget {
       ),
       if (bank.keyless > 0) l.toifaAboutKeyless(bank.keyless),
       l.toifaAboutOral(ready, bank.oral.length),
+      if (bank.oral.where((q) => q.held != null).length + bank.heldTests
+          case final held when held > 0)
+        l.toifaAboutHeld(held),
+      if (bank.auditCheckedAt case final date?) l.toifaAgentChecked(date),
     ];
     return LgPanel(
       child: Column(
@@ -1044,7 +1050,7 @@ class ToifaOralScreen extends StatelessWidget {
       if (cat != null) ...[
         const SizedBox(height: 8),
         Text(
-          l.toifaOralPool(cat.label(l), bank.oralFor(cat).length),
+          l.toifaOralPool(cat.label(l), bank.ticketPool(cat).length),
           style: text.bodySmall,
         ),
       ],
@@ -1320,8 +1326,21 @@ class _OralQuestionView extends StatelessWidget {
           children: [
             if (number != null) LgEyebrow(l.quizProgress(number!, total!)),
             LgTag(l.toifaTopic(q.topic), tone: LgTone.neutral),
+            if (q.held != null)
+              LgTag(
+                l.toifaHeld,
+                tone: LgTone.warning,
+                icon: Icons.pending_outlined,
+              ),
           ],
         ),
+        if (q.held != null) ...[
+          const SizedBox(height: 6),
+          Text(
+            l.toifaHeldBody,
+            style: text.bodySmall!.copyWith(color: p.amber),
+          ),
+        ],
         const SizedBox(height: 8),
         Semantics(header: true, child: Text(q.text, style: text.headlineSmall)),
         const SizedBox(height: 14),
@@ -1358,18 +1377,6 @@ class _OralQuestionView extends StatelessWidget {
                   )
                 else
                   LgSteps(q.plan),
-                if (q.reference.isNotEmpty)
-                  _LabeledList(
-                    title: l.toifaReferenceTitle,
-                    items: q.reference,
-                    icon: Icons.straighten_rounded,
-                  ),
-                if (q.cutoffs.isNotEmpty)
-                  _LabeledList(
-                    title: l.toifaCutoffTitle,
-                    items: q.cutoffs,
-                    icon: Icons.rule_rounded,
-                  ),
                 if (!q.planReady || q.note != null)
                   Padding(
                     padding: const EdgeInsets.only(top: 6),
@@ -1381,11 +1388,31 @@ class _OralQuestionView extends StatelessWidget {
                       style: text.bodySmall!.copyWith(color: p.amber),
                     ),
                   ),
+                if (q.checked case final date?)
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8),
+                    child: Text(
+                      l.toifaAgentChecked(date),
+                      style: text.bodySmall,
+                    ),
+                  ),
               ],
             ),
           ),
-          if (q.pitfalls.isNotEmpty)
-            LgNotice(q.pitfalls.join('\n\n'), title: l.toifaPitfallsTitle),
+          // Referens interval va diagnostik chegara — alohida bloklarda.
+          if (q.reference.isNotEmpty)
+            _FactBlock(
+              title: l.toifaReferenceTitle,
+              facts: q.reference,
+              icon: Icons.straighten_rounded,
+            ),
+          if (q.cutoffs.isNotEmpty)
+            _FactBlock(
+              title: l.toifaCutoffTitle,
+              facts: q.cutoffs,
+              icon: Icons.rule_rounded,
+            ),
+          if (q.pitfalls.isNotEmpty) _PitfallBlock(pitfalls: q.pitfalls),
           if (q.links.isNotEmpty) ...[
             LgSectionTitle(l.quizSources),
             for (final link in q.links) ExamLinkRow(link: link),
@@ -1415,52 +1442,178 @@ class _OralQuestionView extends StatelessWidget {
   }
 }
 
-class _LabeledList extends StatelessWidget {
-  const _LabeledList({
+/// Referens intervallar yoki diagnostik chegaralar: har biri — nomi va
+/// qiymati (birlik bilan), sharoiti (namuna/populyatsiya yoki qo'llanma),
+/// izoh va manba.
+class _FactBlock extends StatelessWidget {
+  const _FactBlock({
     required this.title,
-    required this.items,
+    required this.facts,
     required this.icon,
   });
 
   final String title;
-  final List<String> items;
+  final List<OralFact> facts;
   final IconData icon;
 
   @override
   Widget build(BuildContext context) {
     final p = LgPalette.of(context);
     final text = Theme.of(context).textTheme;
-    return Padding(
-      padding: const EdgeInsets.only(top: 10),
-      child: DecoratedBox(
-        decoration: BoxDecoration(
-          color: p.soft,
-          borderRadius: BorderRadius.circular(14),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(12),
-          child: Column(
+    return LgPanel(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
+              Padding(
+                padding: const EdgeInsets.only(top: 2),
+                child: Icon(icon, size: 18, color: p.brand),
+              ),
+              const SizedBox(width: 8),
+              Expanded(
+                child: Semantics(
+                  header: true,
+                  child: Text(
+                    title,
+                    style: text.titleSmall!.copyWith(color: p.brand),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          for (final (i, f) in facts.indexed) ...[
+            if (i > 0) Divider(height: 18, color: p.line),
+            if (i == 0) const SizedBox(height: 8),
+            Text.rich(
+              TextSpan(
                 children: [
-                  Icon(icon, size: 18, color: p.brand),
-                  const SizedBox(width: 6),
-                  Expanded(
-                    child: Text(
-                      title,
-                      style: text.titleSmall!.copyWith(color: p.brand),
-                    ),
+                  if (f.label != null)
+                    TextSpan(text: '${f.label}: ', style: text.bodyMedium),
+                  TextSpan(
+                    text: f.unit == null ? f.value : '${f.value} ${f.unit}',
+                    style: text.titleSmall,
                   ),
                 ],
               ),
-              for (final item in items)
-                Padding(
-                  padding: const EdgeInsets.only(top: 6),
-                  child: Text(item, style: text.bodyMedium),
+            ),
+            if (f.context.isNotEmpty)
+              Padding(
+                padding: const EdgeInsets.only(top: 2),
+                child: Text(f.context.join(' · '), style: text.bodySmall),
+              ),
+            if (f.note != null)
+              Padding(
+                padding: const EdgeInsets.only(top: 2),
+                child: Text(
+                  f.note!,
+                  style: text.bodySmall!.copyWith(color: p.sub),
                 ),
+              ),
+            if (f.link != null) ExamLinkRow(link: f.link!),
+          ],
+        ],
+      ),
+    );
+  }
+}
+
+/// Eskirgan / ko'p uchraydigan xato: “Noto'g'ri → To'g'ri (manba)”. Manba
+/// bilan tasdiqlanmagan tuzatish “to'g'ri” deb ko'rsatilmaydi.
+class _PitfallBlock extends StatelessWidget {
+  const _PitfallBlock({required this.pitfalls});
+
+  final List<OralPitfall> pitfalls;
+
+  @override
+  Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context);
+    final p = LgPalette.of(context);
+    final text = Theme.of(context).textTheme;
+    Widget line(IconData icon, Color color, String label, String value) =>
+        Padding(
+          padding: const EdgeInsets.only(top: 6),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 1),
+                child: Icon(icon, size: 18, color: color),
+              ),
+              const SizedBox(width: 8),
+              Expanded(
+                child: Text.rich(
+                  TextSpan(
+                    children: [
+                      TextSpan(
+                        text: '$label: ',
+                        style: text.titleSmall!.copyWith(color: color),
+                      ),
+                      TextSpan(text: value, style: text.bodyMedium),
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
+        );
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        color: p.amberBg,
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(14, 12, 14, 8),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Row(
+              children: [
+                Icon(Icons.history_edu_outlined, size: 18, color: p.amber),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Text(
+                    l.toifaPitfallsTitle,
+                    style: text.titleSmall!.copyWith(color: p.amber),
+                  ),
+                ),
+              ],
+            ),
+            for (final (i, f) in pitfalls.indexed) ...[
+              if (i > 0) Divider(height: 18, color: p.line),
+              if (f.wrong != null)
+                line(
+                  Icons.cancel_outlined,
+                  p.amber,
+                  l.toifaWrongLabel,
+                  f.wrong!,
+                ),
+              if (f.right != null)
+                f.verified
+                    ? line(
+                        Icons.check_circle_outline_rounded,
+                        p.brand,
+                        l.toifaRightLabel,
+                        f.right!,
+                      )
+                    : line(
+                        Icons.help_outline_rounded,
+                        p.sub,
+                        l.toifaNeedsSource,
+                        f.right!,
+                      ),
+              if (f.text != null)
+                line(
+                  Icons.info_outline_rounded,
+                  p.amber,
+                  f.verified ? l.toifaPitfallsTitle : l.toifaNeedsSource,
+                  f.text!,
+                ),
+              if (f.verified)
+                for (final link in f.links) ExamLinkRow(link: link),
+            ],
+          ],
         ),
       ),
     );
@@ -1480,6 +1633,13 @@ class ToifaOralQuestionScreen extends StatefulWidget {
 
 class _ToifaOralQuestionScreenState extends State<ToifaOralQuestionScreen> {
   bool _revealed = false;
+
+  // Boshqa savolga o'tilganda State qayta ishlatiladi — reja yopiladi.
+  @override
+  void didUpdateWidget(ToifaOralQuestionScreen old) {
+    super.didUpdateWidget(old);
+    if (old.id != widget.id) _revealed = false;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -1544,7 +1704,10 @@ class ToifaMistakesScreen extends StatelessWidget {
         }
         Widget oralRow(String id, int i, int n) => LgRow(
           title: bank.oralQuestion(id)?.text ?? id,
-          subtitle: l.toifaTopic(bank.oralQuestion(id)?.topic ?? 'other'),
+          subtitle: [
+            l.toifaTopic(bank.oralQuestion(id)?.topic ?? 'other'),
+            if (bank.oralQuestion(id)?.held != null) l.toifaHeld,
+          ].join(' · '),
           icon: _ratingIcon(toifa.mark(id)?.rating),
           onTap: () => context.push('$toifaBase/oral/q/$id'),
           divider: i < n - 1,
@@ -1612,7 +1775,12 @@ class ToifaProgressScreen extends StatelessWidget {
     final toifa = context.services.toifa;
     final exams = context.services.exams;
     final cat = toifa.category;
-    final oral = cat == null ? bank.oral : bank.oralFor(cat);
+    final oral = cat == null
+        ? [
+            for (final q in bank.oral)
+              if (q.held == null) q,
+          ]
+        : bank.ticketPool(cat);
     final (tm, tt) = _testMastery(context, bank.scorable);
     final (ok, ot) = _oralMastery(toifa, oral);
     final testPct = _pct(tm, tt);

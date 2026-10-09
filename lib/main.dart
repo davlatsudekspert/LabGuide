@@ -16,6 +16,7 @@ import 'core/storage/kv_store.dart';
 import 'features/auth/auth_controller.dart';
 import 'features/auth/otp_auth.dart';
 import 'features/content/content_controller.dart';
+import 'features/differential/differential_controller.dart';
 import 'features/learn/exam_controller.dart';
 import 'features/learn/quiz_progress.dart';
 import 'features/library/reading_controller.dart';
@@ -92,6 +93,7 @@ AppServices createServices({
     access: AccessController(server),
     partners: PartnersController(store, server),
     toifa: ToifaController(store, bundle: bundle),
+    differential: DifferentialController(store),
   )..watchAccess();
 }
 

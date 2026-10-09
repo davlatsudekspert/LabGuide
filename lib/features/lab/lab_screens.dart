@@ -6,6 +6,7 @@ import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
 import '../content/content_model.dart';
+import '../differential/differential_screens.dart';
 import '../partners/partner_widgets.dart';
 import '../tools/calc_info.dart';
 import '../tools/clinical_calc_screens.dart';
@@ -22,6 +23,8 @@ class LabScreen extends StatelessWidget {
       subtitle: l.labSubtitle,
       showBrand: true,
       children: [
+        // Leykoformula — eng ko'p so'raladigan bo'lim, eng yuqorida.
+        const DifferentialEntryCard(),
         LgHeroCard(
           eyebrow: l.labHeroEyebrow,
           title: l.labHeroTitle,

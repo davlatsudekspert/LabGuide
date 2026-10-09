@@ -177,12 +177,9 @@ class ToifaController extends ChangeNotifier {
 
   Future<void> _load() async {
     try {
-      final tests = await bundle.loadString(testsAsset);
-      final oral = await bundle.loadString(oralAsset);
-      _bank = ToifaBank.fromJson(
-        (jsonDecode(tests) as Map).cast<String, Object?>(),
-        (jsonDecode(oral) as Map).cast<String, Object?>(),
-      );
+      _bank = _shared != null && identical(_sharedBundle, bundle)
+          ? _shared
+          : await _parse();
       _state = ToifaLoadState.ready;
       // Bankda yo'q savolli bilet (yangilangan asset) — tashlanadi.
       final t = _ticket;
@@ -196,6 +193,23 @@ class ToifaController extends ChangeNotifier {
       _loading = null;
     }
     notifyListeners();
+  }
+
+  /// Bank o'zgarmas — bir xil asset bundle uchun bir marta o'qiladi
+  /// (masalan, “lokal ma'lumotlarni o'chirish”dan keyin yoki testlarda).
+  static ToifaBank? _shared;
+  static AssetBundle? _sharedBundle;
+
+  Future<ToifaBank> _parse() async {
+    final tests = await bundle.loadString(testsAsset, cache: false);
+    final oral = await bundle.loadString(oralAsset, cache: false);
+    final bank = ToifaBank.fromJson(
+      (jsonDecode(tests) as Map).cast<String, Object?>(),
+      (jsonDecode(oral) as Map).cast<String, Object?>(),
+    );
+    _shared = bank;
+    _sharedBundle = bundle;
+    return bank;
   }
 
   Future<void> retry() {
@@ -240,7 +254,8 @@ class ToifaController extends ChangeNotifier {
   Future<OralTicket?> drawTicket(ToifaCategory category) async {
     final b = _bank;
     if (b == null) return null;
-    final pool = b.oralFor(category)..shuffle(random);
+    // Aniqlashtirilayotgan savollar biletga kirmaydi.
+    final pool = b.ticketPool(category)..shuffle(random);
     _ticket = OralTicket(
       category: category,
       ids: [for (final q in pool.take(ToifaFormat.ticketSize)) q.id],

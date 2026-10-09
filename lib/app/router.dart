@@ -9,6 +9,9 @@ import '../features/auth/ui/welcome_screen.dart';
 import '../features/content/ui/analyte_screen.dart';
 import '../features/content/ui/conditions_screens.dart';
 import '../features/content/ui/tests_screen.dart';
+import '../features/differential/differential_entry_points.dart';
+import '../features/differential/differential_quiz.dart';
+import '../features/differential/differential_screens.dart';
 import '../features/home/home_screen.dart';
 import '../features/instruments/calibration_screens.dart';
 import '../features/instruments/instrument_screens.dart';
@@ -295,6 +298,67 @@ GoRouter buildRouter(
                                 ),
                           ),
                         ],
+                      ),
+                    ],
+                  ),
+                  // Leykoformula: atlas, hisoblagich, tarix, talqin, mashq.
+                  GoRoute(
+                    path: 'differential',
+                    builder: (context, state) => const DifferentialScreen(),
+                    routes: [
+                      GoRoute(
+                        path: 'cells',
+                        builder: (context, state) => const DiffCellsScreen(),
+                        routes: [
+                          GoRoute(
+                            path: ':id',
+                            builder: (context, state) => DiffCellScreen(
+                              cellId: state.pathParameters['id']!,
+                            ),
+                          ),
+                        ],
+                      ),
+                      GoRoute(
+                        path: 'confusions',
+                        builder: (context, state) =>
+                            const DiffConfusionsScreen(),
+                      ),
+                      GoRoute(
+                        path: 'count',
+                        builder: (context, state) => const DiffCounterScreen(),
+                      ),
+                      GoRoute(
+                        path: 'history',
+                        builder: (context, state) => DiffHistoryScreen(
+                          visibleLimit: DiffEntryPoints.historyVisibleLimit(
+                            context,
+                          ),
+                        ),
+                        routes: [
+                          GoRoute(
+                            path: ':id',
+                            builder: (context, state) => DiffRecordScreen(
+                              recordId: state.pathParameters['id']!,
+                            ),
+                          ),
+                        ],
+                      ),
+                      GoRoute(
+                        path: 'interpret',
+                        builder: (context, state) =>
+                            const DiffInterpretScreen(),
+                      ),
+                      GoRoute(
+                        path: 'technique',
+                        builder: (context, state) =>
+                            const DiffTechniqueScreen(),
+                      ),
+                      GoRoute(
+                        path: 'quiz',
+                        builder: (context, state) => DiffQuizScreen(
+                          extended:
+                              state.uri.queryParameters['mode'] == 'extended',
+                        ),
                       ),
                     ],
                   ),
