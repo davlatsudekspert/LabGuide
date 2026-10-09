@@ -471,3 +471,26 @@ Play ~20 %, Android doira) toza qismni ko‘rsatadi. Adaptive ikonkada rasm ko�
 bitta rang siluetida kvadrat bo‘lib qolardi. Manba 476 px belgidan 1024 ga kattalashtirildi;
 yuqoriroq o‘lchamli asl fayl (≥ 1024 px) kelsa skript qayta ishga tushiriladi. Ilova
 ranglari (yashil palitra) o‘zgarmadi — logo faqat belgi sifatida.
+
+## D-38. Gormon tahlillari — 16 karta, “Gormonlar” guruhi (2026-10-09)
+- Bo‘lak fayl: `content_src/additions/endocrine.json` → `python3 tool/build_core_pack.py`.
+  Guruh `endocrine` (“Gormonlar”); kichik bo‘limlar o‘rniga sinonim-teglar (“qalqonsimon
+  bez”, “reproduktiv gormonlar”, “jinsiy gormonlar”). Kanonik id lar — `content_src/README.md`.
+- Manbalar faqat ochiq davlat sahifalari: MedlinePlus lab-test sahifalari (NLM o‘zi
+  ularni public domain deb belgilaydi — `usingcontent` sahifasi, 2026-10-09 tekshirildi),
+  NIDDK, NICHD va FDA biotin qo‘llanmasi (2020, PDF). Lab Tests Online kabi mualliflik
+  huquqi bor saytlar va MedlinePlus’ning A.D.A.M. ensiklopediyasi ishlatilmadi.
+  `reuse_rights` baribir konservativ (`verify_before_distribution`), izoh `review_note` da.
+- 165 da’vo; har biri uchun manbadan so‘zma-so‘z inglizcha iqtiboslar (814 ta) yig‘ilib,
+  yuklab olingan sahifada **aynan `locator` bo‘limi ichida** avtomatik tekshirildi (ilovaga
+  kirmaydi). Biotin interferensiyasi FDA’ning umumiy bayonoti (“biotin is used in hormone
+  tests”) sifatida berildi — muayyan reagent nomlanmaydi; insulin kartasida esa MedlinePlus’ning
+  aniq talabi (kamida bir kun oldin to‘xtatish).
+- Referens interval va qaror chegarasi yo‘q: MedlinePlus “How to Understand Your Lab Results”
+  sahifasi laboratoriyalar turli metod va oraliq ishlatishini aytadi — bu har kartada
+  manbali “Cheklovlar” da’vosi. D vitamini toifalari (tanqis/yetarli emas/…) raqamsiz.
+- 16 mashq savoli (qalqonsimon 4, reproduktiv 4, kortizol 2, insulin/C-peptid 3,
+  PTG/D vitamini 3), hammasi draft, manba va bo‘lim bilan.
+- UX tuzatish: mashqda ro‘yxat pastidagi mavzu (“Gormonlar”) tanlanganda eski scroll
+  tufayli savol boshi yashirinib qolardi — `QuizScreen` sahifasi bosqich/savol bo‘yicha
+  kalitlanadi va tepadan ochiladi (regressiya testi `hormones_flow_test.dart`).
