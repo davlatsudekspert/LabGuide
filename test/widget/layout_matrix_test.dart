@@ -20,6 +20,8 @@ const appRoutes = [
   '/tests/analyte/urine-acr',
   '/tests/analyte/urine-chemistry',
   '/tests/analyte/egfr',
+  '/tests/analyte/vitamin-b12',
+  '/tests/analyte/lactate/units',
   '/tests/analyte/creatinine/quiz',
   '/tests/analyte/tsh',
   '/tests/analyte/fsh',
