@@ -213,7 +213,8 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.text(ru.testsEmptyTitle), findsOneWidget);
     await tapText(tester, ru.testsClearSearch);
-    expect(find.text(ru.testsResultCount(35)), findsOneWidget);
+    final total = s.content.pack!.analytes.length;
+    expect(find.text(ru.testsResultCount(total)), findsOneWidget);
     // Guruh filtri.
     await tapText(tester, 'Печень');
     expect(find.text(ru.testsResultCount(6)), findsOneWidget);
