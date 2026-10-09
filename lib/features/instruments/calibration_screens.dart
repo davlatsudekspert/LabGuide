@@ -533,7 +533,11 @@ class _Chosen extends StatelessWidget {
               ),
             ),
           ),
-          TextButton(onPressed: onChange, child: Text(l.calChange)),
+          IconButton(
+            tooltip: l.calChange,
+            onPressed: onChange,
+            icon: const Icon(Icons.edit_outlined),
+          ),
         ],
       ),
     );
@@ -900,7 +904,7 @@ class _RecordFormState extends State<_RecordForm> {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   SizedBox(
-                    width: 64,
+                    width: 56,
                     child: LgField(label: l.calLevelName, controller: f.name),
                   ),
                   const SizedBox(width: 8),
@@ -915,7 +919,7 @@ class _RecordFormState extends State<_RecordForm> {
                   ),
                   const SizedBox(width: 8),
                   Expanded(
-                    flex: 2,
+                    flex: 3,
                     child: LgField(
                       label: l.calLevelUnit,
                       controller: f.unit,
@@ -1111,18 +1115,21 @@ class CalibrationRecordScreen extends StatelessWidget {
         LgPanel(
           child: Column(
             children: [
-              LgMetric(label: l.calStepInstrument, value: r.instrumentName),
+              LgMetric(label: l.calDetailInstrument, value: r.instrumentName),
               if (r.manualVersion != null)
-                LgMetric(label: l.instManualVersion, value: r.manualVersion!),
+                LgMetric(label: l.calDetailManual, value: r.manualVersion!),
               LgMetric(label: l.calReagentMaker, value: r.reagent.maker),
               LgMetric(label: l.calReagentRef, value: r.reagent.ref),
               LgMetric(label: l.calIfuRevision, value: r.reagent.ifuVersion),
               if (r.calibratorName != null)
-                LgMetric(label: l.calCalibratorName, value: r.calibratorName!),
+                LgMetric(
+                  label: l.calDetailCalibrator,
+                  value: r.calibratorName!,
+                ),
               LgMetric(label: l.calCalibratorLot, value: r.calibratorLot),
               if (r.lotExpiry != null)
                 LgMetric(
-                  label: l.calLotExpiry,
+                  label: l.calDetailLotExpiry,
                   value: date.format(r.lotExpiry!),
                 ),
             ],

@@ -2545,7 +2545,7 @@ abstract class AppLocalizations {
   /// No description provided for @instSearchHint.
   ///
   /// In en, this message translates to:
-  /// **'Model, manufacturer or section'**
+  /// **'Model or manufacturer'**
   String get instSearchHint;
 
   /// No description provided for @instNoResultsTitle.
@@ -2824,6 +2824,12 @@ abstract class AppLocalizations {
   /// **'Image: {author} · {license}'**
   String instImageCredit(String author, String license);
 
+  /// No description provided for @instIllustration.
+  ///
+  /// In en, this message translates to:
+  /// **'Schematic illustration (drawn by LabGuide) — not the actual appearance of this model.'**
+  String get instIllustration;
+
   /// No description provided for @instSources.
   ///
   /// In en, this message translates to:
@@ -2995,7 +3001,7 @@ abstract class AppLocalizations {
   /// No description provided for @calAnalyteHint.
   ///
   /// In en, this message translates to:
-  /// **'Analyte name (e.g. glucose)'**
+  /// **'e.g. glucose'**
   String get calAnalyteHint;
 
   /// No description provided for @calReagentMaker.
@@ -3267,6 +3273,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Values entered by the user.'**
   String get calUserEntered;
+
+  /// No description provided for @calDetailInstrument.
+  ///
+  /// In en, this message translates to:
+  /// **'Instrument'**
+  String get calDetailInstrument;
+
+  /// No description provided for @calDetailManual.
+  ///
+  /// In en, this message translates to:
+  /// **'Manual version'**
+  String get calDetailManual;
+
+  /// No description provided for @calDetailCalibrator.
+  ///
+  /// In en, this message translates to:
+  /// **'Calibrator'**
+  String get calDetailCalibrator;
+
+  /// No description provided for @calDetailLotExpiry.
+  ///
+  /// In en, this message translates to:
+  /// **'Lot expiry'**
+  String get calDetailLotExpiry;
 
   /// No description provided for @calLot.
   ///

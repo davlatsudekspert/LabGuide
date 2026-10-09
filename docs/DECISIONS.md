@@ -445,8 +445,18 @@ ham qo‘shilib ketgan edi. Endi:
 - **Qayta kiritmaslik:** “Mening apparatim” (nom, seriya, qo‘llanma versiyasi) va analit
   bo‘yicha oxirgi reagent tanlovi qurilmada saqlanadi; yozuv yaratilganda katalog modeli
   avtomatik saqlanadi.
-- **Rasm:** faqat erkin litsenziyali (muallif, litsenziya, manba sahifasi bilan); topilmasa
-  “litsenziyali rasm yo‘q” — ishlab chiqaruvchi fotosi ruxsatsiz qo‘yilmaydi.
+- **Rasm:** har yo‘nalish uchun LabGuide’ning o‘z sxematik chizmasi (`tool/illustrations/*.svg`
+  → PNG, `render.cjs`), qurilmada “LabGuide” yozuvi; kartada “sxematik rasm — aniq model
+  ko‘rinishi emas” deb yoziladi. Chizmaga ishlab chiqaruvchi nomi yoki logosi qo‘yilmaydi
+  (rasm rasmiy apparat ko‘rinishi deb tushunilmasin). Egasining talabi bilan Wikimedia’dagi
+  xira cobas u 411 fotosi olib tashlandi. Model fotosi faqat erkin litsenziyali va sifatli
+  bo‘lsa qo‘shiladi.
+- **Foydalanuvchi sifatida tekshiruv:** `tool/screenshots/walkthrough_test.dart` — mutaxassis
+  yo‘li 23 qadam (uz), ru/qorong‘i/katta shrift, en; har qadam rasmi ko‘rib chiqildi. Topilgan
+  va tuzatilgan: qirqilgan qidiruv matnlari, keyingi sahifaga o‘tib qolgan “Saqlandi”
+  xabari, tor birlik maydoni, tafsilotdagi forma yorliqlari, katta shriftda siqilgan
+  apparat nomi (matnli tugma → qalam belgisi), kartada tugmalar ekrandan pastda
+  (rasm 16:9 banner, amallar holatdan oldin).
 - **UX:** yozuv saqlangach forma yopiladi va foydalanuvchi sahifa pastida qoladi — “Saqlandi”
   xabarida “Kalibrlash jurnali” tugmasi bor (test shu bo‘shliqni topdi).
 

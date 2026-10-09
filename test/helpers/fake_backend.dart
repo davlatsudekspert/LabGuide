@@ -300,7 +300,8 @@ class FakeLabBackend implements LabBackend {
         t,
         lastUser: now,
         userRead: now,
-        status: t.status == SupportStatus.answered ||
+        status:
+            t.status == SupportStatus.answered ||
                 t.status == SupportStatus.closed
             ? SupportStatus.newThread
             : null,
@@ -391,7 +392,12 @@ class FakeLabBackend implements LabBackend {
       _copy(t, lastAdmin: now, adminRead: now, status: SupportStatus.answered),
     );
     audit.add(
-      AuditEntry(at: now, action: 'support_reply', target: threadId, details: const {}),
+      AuditEntry(
+        at: now,
+        action: 'support_reply',
+        target: threadId,
+        details: const {},
+      ),
     );
   }
 
@@ -438,7 +444,8 @@ class FakeLabBackend implements LabBackend {
       for (final u in page)
         AdminUserRow(
           userId: u.id,
-          emailMasked: '${u.email.substring(0, 2)}***@${u.email.split('@').last}',
+          emailMasked:
+              '${u.email.substring(0, 2)}***@${u.email.split('@').last}',
           role: u.role,
           language: u.language,
           registeredOn: DateTime.utc(2026, 10, 9),
@@ -451,7 +458,12 @@ class FakeLabBackend implements LabBackend {
   Future<String> adminRevealEmail(String userId) async {
     _requireAdmin();
     audit.add(
-      AuditEntry(at: _now(), action: 'reveal_email', target: userId, details: const {}),
+      AuditEntry(
+        at: _now(),
+        action: 'reveal_email',
+        target: userId,
+        details: const {},
+      ),
     );
     return _users.values.firstWhere((u) => u.id == userId).email;
   }

@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#EEF3EC"/><stop offset="1" stop-color="#DCE7DD"/>
+    </linearGradient>
+    <linearGradient id="body" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E3E8E4"/>
+    </linearGradient>
+    <linearGradient id="side" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#D3DAD5"/><stop offset="1" stop-color="#BCC6BF"/>
+    </linearGradient>
+    <linearGradient id="screen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1F5A4C"/><stop offset="1" stop-color="#143C33"/>
+    </linearGradient>
+    <linearGradient id="tray" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2B3330"/><stop offset="1" stop-color="#151A18"/>
+    </linearGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="160%">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <g transform="translate(-90,-60) scale(1.15)">
+  <!-- bench -->
+  <rect x="-200" y="690" width="1600" height="400" fill="#D2DED3"/>
+  <rect x="-200" y="690" width="1600" height="6" fill="#C2D0C4"/>
+  <ellipse cx="600" cy="712" rx="430" ry="30" fill="#7E9184" opacity="0.45" filter="url(#soft)"/>
+
+  <!-- main body -->
+  <path d="M220 470 Q220 440 250 440 L930 440 Q960 440 960 470 L960 690 L220 690 Z" fill="url(#body)" stroke="#C3CCC6" stroke-width="3"/>
+  <rect x="220" y="660" width="740" height="30" fill="url(#side)"/>
+  <!-- strip tray (front-left) -->
+  <rect x="270" y="560" width="400" height="74" rx="14" fill="url(#tray)"/>
+  <rect x="282" y="572" width="376" height="16" rx="6" fill="#3B4642"/>
+  <!-- test strip -->
+  <g transform="translate(300,598)">
+    <rect width="340" height="22" rx="4" fill="#F7F7F2" stroke="#CFCFC6" stroke-width="2"/>
+    <rect x="70"  y="4" width="20" height="14" rx="2" fill="#F2D35B"/>
+    <rect x="98"  y="4" width="20" height="14" rx="2" fill="#E8A54B"/>
+    <rect x="126" y="4" width="20" height="14" rx="2" fill="#8CC07A"/>
+    <rect x="154" y="4" width="20" height="14" rx="2" fill="#D98BA6"/>
+    <rect x="182" y="4" width="20" height="14" rx="2" fill="#9A86C9"/>
+    <rect x="210" y="4" width="20" height="14" rx="2" fill="#E6D9B0"/>
+    <rect x="238" y="4" width="20" height="14" rx="2" fill="#7FB3C8"/>
+    <rect x="266" y="4" width="20" height="14" rx="2" fill="#C9C36A"/>
+    <rect x="294" y="4" width="20" height="14" rx="2" fill="#E3B5C9"/>
+  </g>
+  <!-- strip guide arrow -->
+  <path d="M640 545 L668 545" stroke="#9AA59F" stroke-width="5" stroke-linecap="round"/>
+  <!-- front panel -->
+  <rect x="700" y="520" width="230" height="128" rx="16" fill="#F3F6F3" stroke="#D2D9D4" stroke-width="2"/>
+  <text x="722" y="595" font-family="Inter, Helvetica, Arial, sans-serif" font-size="34" font-weight="700" fill="#194C40" letter-spacing="-0.5">LabGuide</text>
+  <circle cx="905" cy="626" r="8" fill="#6FCF7F"/>
+  <!-- print paper slot -->
+  <rect x="250" y="462" width="160" height="14" rx="5" fill="#C7D0CA"/>
+  <rect x="270" y="436" width="120" height="30" rx="3" fill="#FFFFFF" stroke="#D5DBD6" stroke-width="2"/>
+
+  <!-- tilted screen unit -->
+  <path d="M600 440 L640 300 Q646 282 666 282 L912 282 Q934 282 930 304 L900 440 Z" fill="url(#body)" stroke="#C3CCC6" stroke-width="3"/>
+  <path d="M640 306 Q644 296 656 296 L900 296 Q914 296 911 310 L888 420 L618 420 Z" fill="#2A332F"/>
+  <path d="M652 312 Q655 306 664 306 L892 306 Q900 306 898 314 L878 408 L630 408 Z" fill="url(#screen)"/>
+  <!-- screen UI -->
+  <rect x="664" y="324" width="96" height="14" rx="7" fill="#C5E8A1"/>
+  <rect x="664" y="350" width="200" height="10" rx="5" fill="#5E8C7E"/>
+  <rect x="660" y="370" width="170" height="10" rx="5" fill="#5E8C7E"/>
+  <g fill="#C5E8A1">
+    <rect x="770" y="324" width="16" height="16" rx="3" opacity="0.9"/>
+    <rect x="792" y="324" width="16" height="16" rx="3" opacity="0.6"/>
+    <rect x="814" y="324" width="16" height="16" rx="3" opacity="0.35"/>
+  </g>
+  <rect x="650" y="388" width="70" height="12" rx="6" fill="#8FC9A0"/>
+
+  <!-- sample cup -->
+  <g transform="translate(1000,560)">
+    <ellipse cx="50" cy="130" rx="54" ry="10" fill="#7E9184" opacity="0.35" filter="url(#soft)"/>
+    <path d="M8 20 L92 20 L84 128 L16 128 Z" fill="#FFFFFFCC" stroke="#C8D0CA" stroke-width="3"/>
+    <path d="M12 62 L88 62 L84 126 L16 126 Z" fill="#F4D96B" opacity="0.85"/>
+    <rect x="2" y="6" width="96" height="18" rx="6" fill="#E9EEEA" stroke="#C8D0CA" stroke-width="3"/>
+  </g>
+  <!-- strip container -->
+  <g transform="translate(110,520)">
+    <rect x="0" y="20" width="70" height="150" rx="12" fill="#F4F6F4" stroke="#C8D0CA" stroke-width="3"/>
+    <rect x="-4" y="0" width="78" height="30" rx="8" fill="#194C40"/>
+    <rect x="12" y="70" width="46" height="60" rx="6" fill="#C5E8A1"/>
+    <g transform="translate(18,82)">
+      <rect width="34" height="5" rx="2" fill="#194C40" opacity="0.7"/>
+      <rect y="12" width="26" height="5" rx="2" fill="#194C40" opacity="0.5"/>
+      <rect y="24" width="30" height="5" rx="2" fill="#194C40" opacity="0.5"/>
+    </g>
+  </g>
+  </g>
+</svg>

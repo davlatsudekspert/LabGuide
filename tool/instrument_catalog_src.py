@@ -8,7 +8,9 @@ Qoidalar (docs/DECISIONS.md, D-36):
   yozilmaydi (``null``) — ilova “manbada ko'rsatilmagan” deydi.
 - Kundalik parvarish bosqichlari faqat rasmiy hujjatda ochiq bo'lsa.
   Hozircha birorta Phase 1 ishlab chiqaruvchi ularni ochiq e'lon qilmagan.
-- Rasm faqat erkin litsenziyali (muallif, litsenziya, manba sahifasi bilan).
+- Rasm: har yo'nalish uchun LabGuide'ning o'z sxematik chizmasi
+  (tool/illustrations/*.svg) — aniq model ko'rinishi deb ko'rsatilmaydi.
+  Model fotosi faqat erkin litsenziyali va sifatli bo'lsa (muallif, manba bilan).
 - Holat: ``device_info`` (apparat ma'lumoti), ``ifu_available`` (rasmiy
   qo'llanma versiyasi bilan qo'lda), ``expert_reviewed`` (mutaxassis
   tekshirgan). Oxirgi ikkisi dalilsiz qo'yilmaydi (validator tekshiradi).
@@ -47,6 +49,7 @@ L_TEMP = t("Ish harorati", "Рабочая температура", "Operating t
 CATEGORIES = [
     {
         "id": "chemistry",
+        "illustration": "assets/instruments/img/chemistry.png",
         "name": t("Biokimyo", "Биохимия", "Clinical chemistry"),
         "sub": t(
             "Fotometrik va ISE analizatorlar",
@@ -58,6 +61,7 @@ CATEGORIES = [
     },
     {
         "id": "hematology",
+        "illustration": "assets/instruments/img/hematology.png",
         "name": t("Gematologiya", "Гематология", "Hematology"),
         "sub": t(
             "Qon hujayralari sanagichlari (3 va 5 qismli)",
@@ -69,6 +73,7 @@ CATEGORIES = [
     },
     {
         "id": "immunoassay",
+        "illustration": "assets/instruments/img/immunoassay.png",
         "name": t("Immunokimyo", "Иммунохимия", "Immunochemistry"),
         "sub": t(
             "Xemilyuminessent immunoanalizatorlar",
@@ -80,6 +85,7 @@ CATEGORIES = [
     },
     {
         "id": "urinalysis",
+        "illustration": "assets/instruments/img/urinalysis.png",
         "name": t("Siydik tahlili", "Анализ мочи", "Urinalysis"),
         "sub": t(
             "Test-chiziq o'quvchilar va cho'kma mikroskopiyasi",
@@ -863,18 +869,6 @@ MODELS = [
             fact(t("Yorug'lik manbai", "Источник света", "Light source"), "LEDs: 470 nm, 555 nm, 620 nm", "ro-u411"),
             fact(L_CAL, "Recommended calibration with calibration strip: once a month", "ro-u411"),
         ],
-        image={
-            "asset": "assets/instruments/img/cobas_u_411.jpg",
-            "license": "CC BY-SA 4.0",
-            "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
-            "author": "Roto2esdios",
-            "source_page": "https://commons.wikimedia.org/wiki/File:Cobas_u_411.JPG",
-            "caption": t(
-                "cobas u 411 laboratoriyada (Wikimedia Commons; o'lchami kichraytirilgan).",
-                "cobas u 411 в лаборатории (Wikimedia Commons; уменьшено).",
-                "cobas u 411 in a laboratory (Wikimedia Commons; resized).",
-            ),
-        },
         manual=manual_login("Roche"),
     ),
     model(

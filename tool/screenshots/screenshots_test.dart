@@ -305,7 +305,7 @@ final shots = <Shot>[
       await t.runAsync(() async {
         final ctx = t.element(find.byType(Scaffold).first);
         await precacheImage(
-          const AssetImage('assets/instruments/img/cobas_u_411.jpg'),
+          const AssetImage('assets/instruments/img/urinalysis.png'),
           ctx,
         );
       });

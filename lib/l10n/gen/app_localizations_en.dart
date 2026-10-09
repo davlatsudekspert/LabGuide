@@ -1392,7 +1392,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get instSearchLabel => 'Search instruments';
 
   @override
-  String get instSearchHint => 'Model, manufacturer or section';
+  String get instSearchHint => 'Model or manufacturer';
 
   @override
   String get instNoResultsTitle => 'No model found';
@@ -1559,6 +1559,10 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get instIllustration =>
+      'Schematic illustration (drawn by LabGuide) — not the actual appearance of this model.';
+
+  @override
   String get instSources => 'Sources';
 
   @override
@@ -1649,7 +1653,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get calFromCatalog => 'Choose from catalog';
 
   @override
-  String get calAnalyteHint => 'Analyte name (e.g. glucose)';
+  String get calAnalyteHint => 'e.g. glucose';
 
   @override
   String get calReagentMaker => 'Reagent manufacturer';
@@ -1798,6 +1802,18 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get calUserEntered => 'Values entered by the user.';
+
+  @override
+  String get calDetailInstrument => 'Instrument';
+
+  @override
+  String get calDetailManual => 'Manual version';
+
+  @override
+  String get calDetailCalibrator => 'Calibrator';
+
+  @override
+  String get calDetailLotExpiry => 'Lot expiry';
 
   @override
   String get calLot => 'Lot';

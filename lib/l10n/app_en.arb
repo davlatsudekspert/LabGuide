@@ -756,7 +756,7 @@
   "insOther": "Other manufacturer",
   "insOtherSub": "Match by exact model and IFU",
   "instSearchLabel": "Search instruments",
-  "instSearchHint": "Model, manufacturer or section",
+  "instSearchHint": "Model or manufacturer",
   "instNoResultsTitle": "No model found",
   "instNoResultsBody": "You can add an instrument that is not in the catalog with the button below.",
   "instMine": "My instruments",
@@ -841,6 +841,7 @@
       }
     }
   },
+  "instIllustration": "Schematic illustration (drawn by LabGuide) — not the actual appearance of this model.",
   "instSources": "Sources",
   "instAccessed": "accessed {date}",
   "@instAccessed": {
@@ -883,7 +884,7 @@
   "calChooseInstrument": "First choose the instrument: from saved ones or the catalog.",
   "calChange": "Change",
   "calFromCatalog": "Choose from catalog",
-  "calAnalyteHint": "Analyte name (e.g. glucose)",
+  "calAnalyteHint": "e.g. glucose",
   "calReagentMaker": "Reagent manufacturer",
   "calReagentMakerName": "Manufacturer name",
   "calDifferentMaker": "The reagent manufacturer differs from the instrument’s. Check compatibility separately: the instrument list (applications) in the reagent IFU and the instrument’s reagent system.",
@@ -936,6 +937,10 @@
   "calDeleteRecord": "Delete record",
   "calDeleteRecordConfirm": "Delete this calibration record?",
   "calUserEntered": "Values entered by the user.",
+  "calDetailInstrument": "Instrument",
+  "calDetailManual": "Manual version",
+  "calDetailCalibrator": "Calibrator",
+  "calDetailLotExpiry": "Lot expiry",
   "calLot": "Lot",
   "calAnalyteSelected": "Analyte: {name}",
   "@calAnalyteSelected": {

@@ -5,6 +5,7 @@
  "categories": [
   {
    "id": "chemistry",
+   "illustration": "assets/instruments/img/chemistry.png",
    "name": {
     "uz": "Biokimyo",
     "ru": "Биохимия",
@@ -28,6 +29,7 @@
   },
   {
    "id": "hematology",
+   "illustration": "assets/instruments/img/hematology.png",
    "name": {
     "uz": "Gematologiya",
     "ru": "Гематология",
@@ -54,6 +56,7 @@
   },
   {
    "id": "immunoassay",
+   "illustration": "assets/instruments/img/immunoassay.png",
    "name": {
     "uz": "Immunokimyo",
     "ru": "Иммунохимия",
@@ -78,6 +81,7 @@
   },
   {
    "id": "urinalysis",
+   "illustration": "assets/instruments/img/urinalysis.png",
    "name": {
     "uz": "Siydik tahlili",
     "ru": "Анализ мочи",
@@ -2720,18 +2724,6 @@
      "source": "ro-u411"
     }
    ],
-   "image": {
-    "asset": "assets/instruments/img/cobas_u_411.jpg",
-    "license": "CC BY-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
-    "author": "Roto2esdios",
-    "source_page": "https://commons.wikimedia.org/wiki/File:Cobas_u_411.JPG",
-    "caption": {
-     "uz": "cobas u 411 laboratoriyada (Wikimedia Commons; o'lchami kichraytirilgan).",
-     "ru": "cobas u 411 в лаборатории (Wikimedia Commons; уменьшено).",
-     "en": "cobas u 411 in a laboratory (Wikimedia Commons; resized)."
-    }
-   },
    "manual": {
     "access": "login",
     "note": {
@@ -2747,6 +2739,7 @@
     "quote": null
    },
    "validated_reagents": [],
+   "image": null,
    "market_note": null,
    "status": "device_info"
   },

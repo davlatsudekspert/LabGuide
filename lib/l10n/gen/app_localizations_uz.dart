@@ -1386,7 +1386,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get instSearchLabel => 'Apparat qidirish';
 
   @override
-  String get instSearchHint => 'Model, ishlab chiqaruvchi yoki yo‘nalish';
+  String get instSearchHint => 'Model yoki kompaniya';
 
   @override
   String get instNoResultsTitle => 'Model topilmadi';
@@ -1547,6 +1547,10 @@ class AppLocalizationsUz extends AppLocalizations {
   }
 
   @override
+  String get instIllustration =>
+      'Sxematik rasm (LabGuide chizgan) — aniq modelning tashqi ko‘rinishi emas.';
+
+  @override
   String get instSources => 'Manbalar';
 
   @override
@@ -1638,7 +1642,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get calFromCatalog => 'Katalogdan tanlash';
 
   @override
-  String get calAnalyteHint => 'Analit nomi (masalan, glyukoza)';
+  String get calAnalyteHint => 'Masalan, glyukoza';
 
   @override
   String get calReagentMaker => 'Reagent ishlab chiqaruvchisi';
@@ -1788,6 +1792,18 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get calUserEntered => 'Qiymatlar foydalanuvchi tomonidan kiritilgan.';
+
+  @override
+  String get calDetailInstrument => 'Apparat';
+
+  @override
+  String get calDetailManual => 'Qo‘llanma versiyasi';
+
+  @override
+  String get calDetailCalibrator => 'Kalibrator';
+
+  @override
+  String get calDetailLotExpiry => 'Lot yaroqlilik muddati';
 
   @override
   String get calLot => 'Lot';

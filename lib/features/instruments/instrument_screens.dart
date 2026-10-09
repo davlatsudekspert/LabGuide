@@ -653,9 +653,10 @@ class _InstrumentCard extends StatelessWidget {
       eyebrow: maker.name,
       subtitle: model.kind.of(lang),
       children: [
-        _ImageBlock(image: model.image),
-        LgSectionTitle(l.instStatusTitle),
-        _StatusLadder(status: model.status),
+        _ImageBlock(
+          image: model.image,
+          illustration: catalog.category(model.category).illustration,
+        ),
         const SizedBox(height: 12),
         ListenableBuilder(
           listenable: instruments,
@@ -690,22 +691,31 @@ class _InstrumentCard extends StatelessWidget {
                 LgButton.secondary(
                   label: l.instCalibrate,
                   icon: Icons.tune_rounded,
-                  onPressed: () => context.push(
-                    saved.length == 1
-                        ? '/lab/calibration?mine=${saved.single.id}'
-                        : '/lab/calibration?model=${model.id}',
-                  ),
+                  onPressed: () {
+                    // Oldingi “Saqlandi” xabari keyingi sahifani yopmasin.
+                    ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                    context.push(
+                      saved.length == 1
+                          ? '/lab/calibration?mine=${saved.single.id}'
+                          : '/lab/calibration?model=${model.id}',
+                    );
+                  },
                 ),
                 const SizedBox(height: 8),
                 LgButton.secondary(
                   label: l.instQc,
                   icon: Icons.show_chart_rounded,
-                  onPressed: () => context.push('/lab/qc'),
+                  onPressed: () {
+                    ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                    context.push('/lab/qc');
+                  },
                 ),
               ],
             );
           },
         ),
+        LgSectionTitle(l.instStatusTitle),
+        _StatusLadder(status: model.status),
         _Explained(
           title: l.instPurpose,
           value: model.purpose,
@@ -795,10 +805,13 @@ class _InstrumentCard extends StatelessWidget {
   }
 }
 
+/// Model fotosi (erkin litsenziyali bo'lsa) yoki yo'nalishning sxematik
+/// chizmasi — chizma aniq model deb ko'rsatilmaydi.
 class _ImageBlock extends StatelessWidget {
-  const _ImageBlock({required this.image});
+  const _ImageBlock({required this.image, required this.illustration});
 
   final InstrumentImage? image;
+  final String illustration;
 
   @override
   Widget build(BuildContext context) {
@@ -807,47 +820,40 @@ class _ImageBlock extends StatelessWidget {
     final text = Theme.of(context).textTheme;
     final p = LgPalette.of(context);
     final img = image;
-    if (img == null) {
-      return Padding(
-        padding: const EdgeInsets.only(top: 4),
-        child: Row(
-          children: [
-            Icon(Icons.image_not_supported_outlined, color: p.sub, size: 20),
-            const SizedBox(width: 8),
-            Expanded(child: Text(l.instImageNone, style: text.bodySmall)),
-          ],
-        ),
-      );
-    }
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         ClipRRect(
           borderRadius: BorderRadius.circular(LgRadius.card),
           child: AspectRatio(
-            aspectRatio: 4 / 3,
+            aspectRatio: 16 / 9,
             child: Image.asset(
-              img.asset,
+              img?.asset ?? illustration,
               fit: BoxFit.cover,
-              semanticLabel: img.caption.of(lang),
+              alignment: const Alignment(0, 0.45),
+              semanticLabel: img?.caption.of(lang) ?? l.instIllustration,
             ),
           ),
         ),
         const SizedBox(height: 6),
-        Text(img.caption.of(lang), style: text.bodySmall),
-        InkWell(
-          onTap: () => openExternalLink(context, img.sourcePage),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 6),
-            child: Text(
-              l.instImageCredit(img.author, img.license),
-              style: text.bodySmall!.copyWith(
-                color: p.brand,
-                decoration: TextDecoration.underline,
+        Text(
+          img?.caption.of(lang) ?? l.instIllustration,
+          style: text.bodySmall,
+        ),
+        if (img != null)
+          InkWell(
+            onTap: () => openExternalLink(context, img.sourcePage),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 6),
+              child: Text(
+                l.instImageCredit(img.author, img.license),
+                style: text.bodySmall!.copyWith(
+                  color: p.brand,
+                  decoration: TextDecoration.underline,
+                ),
               ),
             ),
           ),
-        ),
       ],
     );
   }

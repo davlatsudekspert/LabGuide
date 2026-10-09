@@ -69,16 +69,18 @@ void main() {
       }
     });
 
-    test('rasm faqat litsenziyali va fayli mavjud', () {
-      final withImage = catalog.models.where((m) => m.image != null).toList();
-      expect(withImage, isNotEmpty);
-      for (final m in withImage) {
-        final img = m.image!;
-        expect(File(img.asset).existsSync(), isTrue, reason: img.asset);
-        expect(img.license, 'CC BY-SA 4.0');
-        expect(img.author, isNotEmpty);
-        expect(img.sourcePage, startsWith('https://commons.wikimedia.org/'));
+    test('har yo‘nalishda o‘z sxematik chizmasi bor; begona foto yo‘q', () {
+      for (final c in catalog.categories) {
+        expect(
+          File(c.illustration).existsSync(),
+          isTrue,
+          reason: c.illustration,
+        );
+        expect(c.illustration, startsWith('assets/instruments/img/'));
       }
+      // Model fotosi faqat erkin litsenziya va muallif bilan qo'yiladi;
+      // hozir hech biri yo'q (sifatsiz foto olib tashlandi).
+      expect(catalog.models.where((m) => m.image != null), isEmpty);
     });
 
     test(

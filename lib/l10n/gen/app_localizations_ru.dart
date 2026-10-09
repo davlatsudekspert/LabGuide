@@ -1402,7 +1402,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get instSearchLabel => 'Поиск прибора';
 
   @override
-  String get instSearchHint => 'Модель, производитель или направление';
+  String get instSearchHint => 'Модель или компания';
 
   @override
   String get instNoResultsTitle => 'Модель не найдена';
@@ -1563,6 +1563,10 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
+  String get instIllustration =>
+      'Схематичное изображение (нарисовано LabGuide) — не внешний вид конкретной модели.';
+
+  @override
   String get instSources => 'Источники';
 
   @override
@@ -1653,7 +1657,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get calFromCatalog => 'Выбрать из каталога';
 
   @override
-  String get calAnalyteHint => 'Название аналита (например, глюкоза)';
+  String get calAnalyteHint => 'Например, глюкоза';
 
   @override
   String get calReagentMaker => 'Производитель реагента';
@@ -1803,6 +1807,18 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get calUserEntered => 'Значения введены пользователем.';
+
+  @override
+  String get calDetailInstrument => 'Прибор';
+
+  @override
+  String get calDetailManual => 'Версия руководства';
+
+  @override
+  String get calDetailCalibrator => 'Калибратор';
+
+  @override
+  String get calDetailLotExpiry => 'Срок годности лота';
 
   @override
   String get calLot => 'Лот';

@@ -277,6 +277,7 @@ class CategoryInfo {
     required this.name,
     required this.subtitle,
     required this.terms,
+    required this.illustration,
   });
 
   factory CategoryInfo.fromJson(Map<String, Object?> j) => CategoryInfo(
@@ -284,6 +285,7 @@ class CategoryInfo {
     name: LocalizedText.fromJson(j['name']),
     subtitle: LocalizedText.fromJson(j['sub']),
     terms: (j['terms']! as List).cast<String>(),
+    illustration: j['illustration']! as String,
   );
 
   final InstrumentCategory category;
@@ -292,6 +294,9 @@ class CategoryInfo {
 
   /// Qidiruv sinonimlari (uz/ru/en).
   final List<String> terms;
+
+  /// LabGuide'ning o'z sxematik chizmasi (aniq model fotosi emas).
+  final String illustration;
 }
 
 @immutable

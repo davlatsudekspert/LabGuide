@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#EEF3EC"/><stop offset="1" stop-color="#DCE7DD"/></linearGradient>
+    <linearGradient id="body" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E3E8E4"/></linearGradient>
+    <linearGradient id="top" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F4F7F5"/><stop offset="1" stop-color="#E1E7E3"/></linearGradient>
+    <linearGradient id="side" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#D3DAD5"/><stop offset="1" stop-color="#BCC6BF"/></linearGradient>
+    <linearGradient id="screen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1F5A4C"/><stop offset="1" stop-color="#143C33"/></linearGradient>
+    <linearGradient id="dark" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2B3330"/><stop offset="1" stop-color="#151A18"/></linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#CFE9D9" stop-opacity="0.85"/><stop offset="1" stop-color="#A9CDBB" stop-opacity="0.75"/></linearGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="160%"><feGaussianBlur stdDeviation="18"/></filter>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <rect x="0" y="700" width="1200" height="200" fill="#D2DED3"/>
+  <rect x="0" y="700" width="1200" height="6" fill="#C2D0C4"/>
+  <ellipse cx="600" cy="720" rx="470" ry="30" fill="#7E9184" opacity="0.45" filter="url(#soft)"/>
+  <!-- top surface with carousel -->
+  <path d="M190 400 L1010 400 L1040 450 L160 450 Z" fill="url(#top)" stroke="#C3CCC6" stroke-width="3"/>
+  <ellipse cx="430" cy="425" rx="190" ry="20" fill="#D5DED8" stroke="#BFC9C2" stroke-width="2"/>
+  <g>
+<rect x="581.0" y="411.0" width="18" height="16" rx="4" fill="#194C40"/>
+<rect x="559.6" y="418.5" width="18" height="16" rx="4" fill="#C5E8A1"/>
+<rect x="501.0" y="424.0" width="18" height="16" rx="4" fill="#E8A54B"/>
+<rect x="421.0" y="426.0" width="18" height="16" rx="4" fill="#7FB3C8"/>
+<rect x="341.0" y="424.0" width="18" height="16" rx="4" fill="#194C40"/>
+<rect x="282.4" y="418.5" width="18" height="16" rx="4" fill="#C5E8A1"/>
+<rect x="261.0" y="411.0" width="18" height="16" rx="4" fill="#E8A54B"/>
+<rect x="282.4" y="403.5" width="18" height="16" rx="4" fill="#7FB3C8"/>
+<rect x="341.0" y="398.0" width="18" height="16" rx="4" fill="#194C40"/>
+<rect x="421.0" y="396.0" width="18" height="16" rx="4" fill="#C5E8A1"/>
+<rect x="501.0" y="398.0" width="18" height="16" rx="4" fill="#E8A54B"/>
+<rect x="559.6" y="403.5" width="18" height="16" rx="4" fill="#7FB3C8"/>
+  </g>
+  <!-- probe arm -->
+  <rect x="640" y="300" width="16" height="125" rx="6" fill="#B8C2BB"/>
+  <rect x="560" y="296" width="110" height="22" rx="10" fill="#DDE3DF" stroke="#BFC9C2" stroke-width="2"/>
+  <rect x="566" y="318" width="6" height="70" rx="3" fill="#8F9A94"/>
+  <!-- main body -->
+  <rect x="160" y="450" width="880" height="250" rx="22" fill="url(#body)" stroke="#C3CCC6" stroke-width="3"/>
+  <rect x="160" y="672" width="880" height="28" fill="url(#side)"/>
+  <!-- front panel -->
+  <rect x="200" y="490" width="300" height="140" rx="18" fill="#F3F6F3" stroke="#D2D9D4" stroke-width="2"/>
+  <text x="226" y="575" font-family="Inter, Helvetica, Arial, sans-serif" font-size="44" font-weight="700" fill="#194C40" letter-spacing="-0.5">LabGuide</text>
+  <circle cx="470" cy="606" r="9" fill="#6FCF7F"/>
+  <!-- drawer and vents -->
+  <rect x="540" y="500" width="460" height="110" rx="14" fill="none" stroke="#C9D1CB" stroke-width="3"/>
+  <rect x="720" y="545" width="100" height="12" rx="6" fill="#C9D1CB"/>
+  <rect x="560" y="632" width="40" height="8" rx="4" fill="#D3DAD5"/>
+<rect x="622" y="632" width="40" height="8" rx="4" fill="#D3DAD5"/>
+<rect x="684" y="632" width="40" height="8" rx="4" fill="#D3DAD5"/>
+<rect x="746" y="632" width="40" height="8" rx="4" fill="#D3DAD5"/>
+<rect x="808" y="632" width="40" height="8" rx="4" fill="#D3DAD5"/>
+<rect x="870" y="632" width="40" height="8" rx="4" fill="#D3DAD5"/>
+<rect x="932" y="632" width="40" height="8" rx="4" fill="#D3DAD5"/>
+  <!-- monitor -->
+  <rect x="880" y="380" width="22" height="24" fill="#B8C2BB"/>
+  <rect x="800" y="210" width="290" height="180" rx="16" fill="#2A332F"/>
+  <rect x="814" y="224" width="262" height="152" rx="8" fill="url(#screen)"/>
+  <polyline points="832,340 868,318 900,328 936,284 970,296 1004,258 1052,270" fill="none" stroke="#C5E8A1" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="832" y="242" width="90" height="12" rx="6" fill="#8FC9A0"/>
+  <!-- sample rack -->
+  <rect x="40" y="640" width="150" height="62" rx="10" fill="#DDE5DF" stroke="#BFC9C2" stroke-width="3"/>
+  <g transform="translate(56,548)"><rect x="0" y="16" width="26" height="96" rx="12" fill="#FFFFFFD9" stroke="#C3CCC6" stroke-width="3"/><rect x="3" y="58" width="20" height="50" rx="9" fill="#E8C26B"/><rect x="-3" y="0" width="32" height="24" rx="6" fill="#D9534F"/></g> <g transform="translate(100,548)"><rect x="0" y="16" width="26" height="96" rx="12" fill="#FFFFFFD9" stroke="#C3CCC6" stroke-width="3"/><rect x="3" y="58" width="20" height="50" rx="9" fill="#C9473F"/><rect x="-3" y="0" width="32" height="24" rx="6" fill="#9A86C9"/></g> <g transform="translate(144,548)"><rect x="0" y="16" width="26" height="96" rx="12" fill="#FFFFFFD9" stroke="#C3CCC6" stroke-width="3"/><rect x="3" y="58" width="20" height="50" rx="9" fill="#E8C26B"/><rect x="-3" y="0" width="32" height="24" rx="6" fill="#F2D35B"/></g>
+</svg>
