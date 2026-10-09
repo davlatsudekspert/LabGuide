@@ -19,6 +19,10 @@ IconData groupIcon(String groupId) => switch (groupId) {
   'infection-serology' => Icons.coronavirus_outlined,
   'autoimmune' => Icons.shield_outlined,
   'tumor-markers' => Icons.insights_outlined,
+  // Umumklinik tekshiruvlar.
+  'stool-parasitology' => Icons.pest_control_outlined,
+  'body-fluids' => Icons.colorize_outlined,
+  'cytology' => Icons.grain_outlined,
   _ => Icons.biotech_outlined,
 };
 

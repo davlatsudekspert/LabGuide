@@ -1060,6 +1060,12 @@ abstract class AppLocalizations {
   /// **'Negative result'**
   String get sectionNegativeResult;
 
+  /// No description provided for @sectionResults.
+  ///
+  /// In en, this message translates to:
+  /// **'What the results mean'**
+  String get sectionResults;
+
   /// No description provided for @sectionPreanalytics.
   ///
   /// In en, this message translates to:

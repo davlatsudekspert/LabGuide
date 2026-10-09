@@ -543,6 +543,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String get sectionNegativeResult => 'Отрицательный результат';
 
   @override
+  String get sectionResults => 'Что означает результат';
+
+  @override
   String get sectionPreanalytics => 'Образец и преаналитика';
 
   @override
