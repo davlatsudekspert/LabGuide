@@ -527,7 +527,8 @@
    "image": null,
    "market_note": null,
    "status": "device_info",
-   "principle": null
+   "principle": null,
+   "official_page": "mr-bs240"
   },
   {
    "id": "mindray-bs-480",
@@ -617,7 +618,8 @@
    "validated_reagents": [],
    "image": null,
    "market_note": null,
-   "status": "device_info"
+   "status": "device_info",
+   "official_page": "mr-bs480"
   },
   {
    "id": "human-humastar-600",
@@ -723,7 +725,8 @@
    "validated_reagents": [],
    "image": null,
    "market_note": null,
-   "status": "device_info"
+   "status": "device_info",
+   "official_page": "hu-hs600"
   },
   {
    "id": "human-humalyzer-4000",
@@ -1080,7 +1083,8 @@
    "local_names": {},
    "image": null,
    "market_note": null,
-   "status": "device_info"
+   "status": "device_info",
+   "official_page": "hu-hl4000"
   },
   {
    "id": "roche-cobas-c-311",
@@ -1175,7 +1179,8 @@
    "validated_reagents": [],
    "image": null,
    "market_note": null,
-   "status": "device_info"
+   "status": "device_info",
+   "official_page": "ro-c311"
   },
   {
    "id": "roche-cobas-c-303",
@@ -1270,7 +1275,8 @@
    "validated_reagents": [],
    "image": null,
    "market_note": null,
-   "status": "device_info"
+   "status": "device_info",
+   "official_page": "ro-c303"
   },
   {
    "id": "abbott-architect-c4000",
@@ -1359,7 +1365,8 @@
    "validated_reagents": [],
    "image": null,
    "market_note": null,
-   "status": "device_info"
+   "status": "device_info",
+   "official_page": "ab-c4000"
   },
   {
    "id": "abbott-alinity-c",
@@ -1426,7 +1433,8 @@
    "image": null,
    "market_note": null,
    "status": "device_info",
-   "purpose": null
+   "purpose": null,
+   "official_page": "ab-alinity-ci"
   },
   {
    "id": "mindray-bc-5390",
@@ -1505,7 +1513,8 @@
    "validated_reagents": [],
    "image": null,
    "market_note": null,
-   "status": "device_info"
+   "status": "device_info",
+   "official_page": "mr-bc5390"
   },
   {
    "id": "mindray-bc-30s",
@@ -1576,7 +1585,8 @@
    "image": null,
    "market_note": null,
    "status": "device_info",
-   "principle": null
+   "principle": null,
+   "official_page": "mr-bc30s"
   },
   {
    "id": "mindray-bc-6200",
@@ -1643,7 +1653,8 @@
    "image": null,
    "market_note": null,
    "status": "device_info",
-   "purpose": null
+   "purpose": null,
+   "official_page": "mr-bc6200"
   },
   {
    "id": "human-humacount-5d",
@@ -1735,7 +1746,8 @@
    "validated_reagents": [],
    "image": null,
    "market_note": null,
-   "status": "device_info"
+   "status": "device_info",
+   "official_page": "hu-hc5d"
   },
   {
    "id": "human-humacount-30ts",
@@ -1827,7 +1839,8 @@
    "validated_reagents": [],
    "image": null,
    "market_note": null,
-   "status": "device_info"
+   "status": "device_info",
+   "official_page": "hu-hc30ts"
   },
   {
    "id": "abbott-cell-dyn-emerald-22-al",
@@ -1906,7 +1919,8 @@
    "validated_reagents": [],
    "image": null,
    "market_note": null,
-   "status": "device_info"
+   "status": "device_info",
+   "official_page": "ab-emerald"
   },
   {
    "id": "abbott-cell-dyn-emerald",
@@ -1980,7 +1994,8 @@
    "validated_reagents": [],
    "image": null,
    "market_note": null,
-   "status": "device_info"
+   "status": "device_info",
+   "official_page": null
   },
   {
    "id": "abbott-alinity-hq",
@@ -2059,7 +2074,8 @@
    "validated_reagents": [],
    "image": null,
    "market_note": null,
-   "status": "device_info"
+   "status": "device_info",
+   "official_page": "ab-hq"
   },
   {
    "id": "mindray-cl-900i",
@@ -2156,7 +2172,8 @@
    "validated_reagents": [],
    "image": null,
    "market_note": null,
-   "status": "device_info"
+   "status": "device_info",
+   "official_page": "mr-cl900i"
   },
   {
    "id": "mindray-cl-1200i",
@@ -2246,7 +2263,8 @@
    "validated_reagents": [],
    "image": null,
    "market_note": null,
-   "status": "device_info"
+   "status": "device_info",
+   "official_page": "mr-cl1200i"
   },
   {
    "id": "human-humaclia-150",
@@ -2334,7 +2352,8 @@
    "validated_reagents": [],
    "image": null,
    "market_note": null,
-   "status": "device_info"
+   "status": "device_info",
+   "official_page": "hu-clia150"
   },
   {
    "id": "roche-cobas-e-411",
@@ -2415,7 +2434,8 @@
    "validated_reagents": [],
    "image": null,
    "market_note": null,
-   "status": "device_info"
+   "status": "device_info",
+   "official_page": "ro-e411"
   },
   {
    "id": "roche-cobas-e-402",
@@ -2500,7 +2520,8 @@
    "validated_reagents": [],
    "image": null,
    "market_note": null,
-   "status": "device_info"
+   "status": "device_info",
+   "official_page": "ro-e402"
   },
   {
    "id": "abbott-architect-i1000sr",
@@ -2584,7 +2605,8 @@
    "validated_reagents": [],
    "image": null,
    "market_note": null,
-   "status": "device_info"
+   "status": "device_info",
+   "official_page": "ab-i1000"
   },
   {
    "id": "abbott-alinity-i",
@@ -2651,7 +2673,8 @@
    "image": null,
    "market_note": null,
    "status": "device_info",
-   "purpose": null
+   "purpose": null,
+   "official_page": "ab-alinity-ci"
   },
   {
    "id": "roche-cobas-u-411",
@@ -2741,7 +2764,8 @@
    "validated_reagents": [],
    "image": null,
    "market_note": null,
-   "status": "device_info"
+   "status": "device_info",
+   "official_page": "ro-u411"
   },
   {
    "id": "roche-cobas-6500",
@@ -2832,7 +2856,8 @@
    "validated_reagents": [],
    "image": null,
    "market_note": null,
-   "status": "device_info"
+   "status": "device_info",
+   "official_page": "ro-6500"
   },
   {
    "id": "mindray-eu-5600-pro",
@@ -2898,7 +2923,8 @@
    "validated_reagents": [],
    "image": null,
    "market_note": null,
-   "status": "device_info"
+   "status": "device_info",
+   "official_page": "mr-eu5600"
   }
  ]
 }
