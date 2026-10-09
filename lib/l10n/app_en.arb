@@ -1394,7 +1394,7 @@
   "purchaseSubscribe": "Subscribe",
   "purchaseRestore": "Restore purchases",
   "privacyTitle": "Privacy and help",
-  "privacyBody": "This version of the app sends no data to a server. Settings, bookmarks, drafts, QC records and practice progress are stored on this device and may be included in the device’s own backup (iCloud or Google).",
+  "privacyBody": "In guest mode the app sends nothing to a server: settings, bookmarks, QC records, your instruments and practice results stay on this device (they may be included in the device backup). If you sign in with email, the server stores your email, role, language, last active day, your support requests and group results; no ad tracking. You can delete your account at any time.",
   "privacyTerms": "Terms of use",
   "privacyTermsSub": "Final text to be prepared",
   "privacyDeleteLocal": "Delete local data",

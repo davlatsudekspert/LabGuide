@@ -781,7 +781,7 @@
   "purchaseSubscribe": "Obuna bo‘lish",
   "purchaseRestore": "Xaridni tiklash",
   "privacyTitle": "Maxfiylik va yordam",
-  "privacyBody": "Ilovaning bu versiyasi serverga ma’lumot yubormaydi. Sozlamalar, xatcho‘plar, qoralamalar, QC qaydlari va mashq natijalari shu qurilmada saqlanadi; ular qurilmangizning o‘z zaxira nusxasiga (iCloud yoki Google) kirishi mumkin.",
+  "privacyBody": "Mehmon rejimida ilova serverga hech narsa yubormaydi: sozlamalar, xatcho‘plar, QC qaydlari, apparatlaringiz va mashq natijalari shu qurilmada saqlanadi (qurilmaning o‘z zaxira nusxasiga kirishi mumkin). Email bilan kirsangiz — email, rol, til, oxirgi faol kun, murojaatlaringiz va guruh natijalari serverda saqlanadi; reklama va kuzatuv yo‘q. Hisobni istalgan vaqtda o‘chirishingiz mumkin.",
   "privacyTerms": "Foydalanish shartlari",
   "privacyTermsSub": "Yakuniy matn tayyorlanadi",
   "privacyDeleteLocal": "Lokal ma’lumotlarni o‘chirish",

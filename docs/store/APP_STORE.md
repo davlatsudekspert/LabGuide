@@ -118,15 +118,30 @@ undergoing independent expert review.
 
 ## 6. App Privacy (Ma’lumotlar)
 
-**Data Not Collected** — ilova hech qanday ma’lumot to‘plamaydi va serverga yubormaydi:
-analitika, reklama, kuzatuv yo‘q. Sozlamalar, xatcho‘plar, QC qaydlari va mashq natijalari
-faqat qurilmada (qurilmaning o‘z zaxira nusxasiga kirishi mumkin). Release build’da email
-kirish o‘chirilgan (“hali ulanmagan”). Email kirish yoki sinxronlash ulanganda bu javob
-o‘zgaradi.
+Server (Supabase) ulangan build uchun javoblar. **Tracking: No** (boshqa kompaniyalar ma’lumoti
+bilan birlashtirilmaydi, reklama identifikatori yo‘q). Hamma toifalar — **Linked to the user**,
+**not used for tracking**.
 
-**Privacy Policy URL** — App Store’da (va TestFlight tashqi testida) talab qilinadi. Matn:
-[PRIVACY_POLICY.md](PRIVACY_POLICY.md). Uni ochiq sahifa sifatida joylash kerak (masalan,
-sayt yoki GitHub Pages) — egasi tanlaydi.
+| App Store toifasi | Nima | Maqsad |
+|---|---|---|
+| Contact Info → Email Address | kirish emaili | App Functionality |
+| Identifiers → User ID | ichki hisob id si | App Functionality |
+| User Content → Customer Support | “Taklif va yordam” xabarlari | App Functionality |
+| User Content → Photos or Videos | murojaatga biriktirilgan skrinshot (ixtiyoriy) | App Functionality |
+| User Content → Other User Content | guruh javoblari, tekshiruvchi izohlari | App Functionality |
+| Usage Data → Product Interaction | oxirgi foydalanilgan kun, rol, til | Analytics, App Functionality |
+
+Hamkorlar (reklama) yoqilsa qo‘shiladi: **Usage Data → Advertising Data** — e’lon ko‘rsatilishi
+va bosilishi, **Not linked** (faqat kunlik umumiy son), maqsad: Third-Party Advertising.
+Mehmon rejimida va server ulanmagan buildda hech narsa yuborilmaydi.
+
+**Privacy Policy URL** — majburiy. Matn: [PRIVACY_POLICY.md](PRIVACY_POLICY.md). Joylash: GitHub
+→ repo Settings → Pages → “Deploy from a branch”, `main` / `docs` — manzil
+`https://davlatsudekspert.github.io/LabGuide/store/PRIVACY_POLICY` (yoki o‘z saytingiz).
+E’lon qilishdan oldin sana, aloqa, hosting mintaqasi va email xizmatini to‘ldiring.
+
+**Hisobni o‘chirish** (App Store 5.1.1(v)): ilovada Profil → Maxfiylik → “Hisobni o‘chirish”
+(server: `delete-account` Edge Function).
 
 ## 7. Age rating
 
@@ -182,4 +197,22 @@ Hammasi egasining logosidan (`python3 tool/icons/make_icons.py`, D-37):
 | `docs/store/app_store_icon_1024.png` | App Store (buildning AppIcon ichida ham bor — alohida yuklash shart emas) |
 | `docs/store/google_play_icon_512.png` | Google Play Console → Store listing → App icon (512×512, shaffofsiz) |
 | `docs/store/google_play_feature_graphic.png` | Google Play → Feature graphic (1024×500) |
+
+## 12. Google Play — Data safety
+
+| Savol | Javob |
+|---|---|
+| Ma’lumot to‘planadimi? | Ha (faqat hisob ochilganda) |
+| Uchinchi tomonga beriladimi (sharing)? | Yo‘q (Supabase va email xizmati — xizmat ko‘rsatuvchi, sharing emas) |
+| Uzatishda shifrlanganmi? | Ha (HTTPS) |
+| O‘chirishni so‘rash mumkinmi? | Ha — ilovada “Hisobni o‘chirish” va siyosatdagi aloqa manzili |
+| Personal info → Email address | To‘planadi; majburiy (hisob uchun); App functionality, Account management |
+| Messages → Other in-app messages | To‘planadi; ixtiyoriy; App functionality (yordam) |
+| Photos and videos → Photos | To‘planadi; ixtiyoriy; App functionality (murojaatga skrinshot) |
+| App activity → App interactions | To‘planadi; oxirgi faol kun; Analytics |
+| App activity → Other user-generated content | To‘planadi; ixtiyoriy; guruh javoblari, tekshiruv izohlari |
+| Location, Contacts, Financial, Health, Device IDs | To‘planmaydi |
+
+Reklama: ilovada hamkor e’lonlari bo‘lsa, Play Console → App content → **Ads: Yes**.
+Hisobni o‘chirish havolasi (Play talabi): siyosat sahifasi + ilovadagi tugma.
 
