@@ -96,3 +96,15 @@ Namuna (sxema testida tekshiriladi): [content_templates/teacher_material_example
 - Domla ko‘rmagan kontentni `reviewed`/`approved` deb belgilash.
 - Tarqatish ruxsati qayd etilmagan to‘liq kitobni umumiy paketga qo‘yish.
 - Apparat parametrlari, servis kodlari, kalibrlash qiymatlarini aniq IFU siz kiritish.
+
+## Word materiallarni tez qabul qilish (2026-10-09)
+
+1. Egasi papkani Google Drive’ga yuklaydi (bemor ma’lumotlari olib tashlangan).
+2. Fayllar Drive ulanishi orqali repodan **tashqari** vaqtinchalik papkaga olinadi.
+3. `python3 tool/intake/docs_to_outline.py <papka> <natija>` — mavzular, matn, jadvallar
+   (`*.md`), `outline.json` (fayl → sarlavhalar, topilgan analit kartalari) va
+   `phi_report.md` (ism, tug‘ilgan sana, pasport/JShShIR, telefon shablonlari).
+4. Muallif ruxsati yo‘q bo‘lsa: faqat mavzular ro‘yxati va kartalarni darslik tartibiga
+   moslash, o‘z so‘zimiz bilan savollar — matn ko‘chirilmaydi. Yozma ruxsat kelgach:
+   Kutubxonada “Domla materiali” (muallif, nashr yili, `RightsRecord` — to‘liq tarqatish).
+
