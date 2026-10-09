@@ -1888,6 +1888,336 @@ class AppLocalizationsRu extends AppLocalizations {
   String get profilePrivacySub => 'Данные и управление аккаунтом';
 
   @override
+  String get supportTitle => 'Предложения и помощь';
+
+  @override
+  String get supportSub => 'Предложение, ошибка или вопрос — ответ придёт сюда';
+
+  @override
+  String get supportNew => 'Новое обращение';
+
+  @override
+  String get supportEmptyTitle => 'Обращений пока нет';
+
+  @override
+  String get supportEmptyBody =>
+      'Напишите предложение, сообщите об ошибке или задайте вопрос — ответ появится здесь.';
+
+  @override
+  String get supportKind => 'Тип';
+
+  @override
+  String get supportKindSuggestion => 'Предложение';
+
+  @override
+  String get supportKindBug => 'Ошибка';
+
+  @override
+  String get supportKindQuestion => 'Вопрос';
+
+  @override
+  String get supportSubject => 'Тема';
+
+  @override
+  String get supportSubjectHint => 'Коротко: о чём?';
+
+  @override
+  String get supportMessage => 'Сообщение';
+
+  @override
+  String get supportMessageHint =>
+      'Подробно: на каком экране, что вы сделали и что ожидали';
+
+  @override
+  String get supportAttach => 'Прикрепить скриншот (необязательно)';
+
+  @override
+  String get supportAttachRemove => 'Убрать изображение';
+
+  @override
+  String get supportAttachTooLarge =>
+      'Изображение больше 5 МБ. Выберите изображение поменьше.';
+
+  @override
+  String get supportAttachType => 'Только PNG или JPEG.';
+
+  @override
+  String get supportPhiNotice =>
+      'На скриншоте не должно быть имени пациента, даты рождения, номера карты и других персональных данных.';
+
+  @override
+  String get supportSend => 'Отправить';
+
+  @override
+  String get supportSent => 'Обращение отправлено';
+
+  @override
+  String get supportReplyHint => 'Напишите ответ…';
+
+  @override
+  String get supportTeam => 'Команда LabGuide';
+
+  @override
+  String get supportYou => 'Вы';
+
+  @override
+  String get supportUser => 'Пользователь';
+
+  @override
+  String get supportHumanReplies =>
+      'Ответы пишет команда LabGuide; автоматических ответов нет.';
+
+  @override
+  String get supportStatusNew => 'Новое';
+
+  @override
+  String get supportStatusInReview => 'На рассмотрении';
+
+  @override
+  String get supportStatusAnswered => 'Отвечено';
+
+  @override
+  String get supportStatusClosed => 'Закрыто';
+
+  @override
+  String get supportUnread => 'Новый ответ';
+
+  @override
+  String supportUnreadCount(int count) {
+    return 'Новых ответов: $count';
+  }
+
+  @override
+  String get supportSignInTitle => 'Войдите, чтобы отправить обращение';
+
+  @override
+  String get supportSignInBody =>
+      'Чтобы ответ дошёл до вас, нужно войти по email. Данные на устройстве не изменятся.';
+
+  @override
+  String get supportUnavailableTitle => 'Сервер ещё не подключён';
+
+  @override
+  String get supportUnavailableBody =>
+      'В этой сборке сервер аккаунтов, обращений и групп не подключён. После подключения всё заработает здесь.';
+
+  @override
+  String get errNetwork => 'Нет соединения с интернетом. Попробуйте снова.';
+
+  @override
+  String get errRateLimited => 'Слишком много запросов. Попробуйте чуть позже.';
+
+  @override
+  String get errInvalidSupport =>
+      'Тема — не короче 3 символов, сообщение не должно быть пустым.';
+
+  @override
+  String get errForbidden => 'Нет доступа к этому действию.';
+
+  @override
+  String get errSessionExpired => 'Сессия истекла. Войдите снова.';
+
+  @override
+  String get errGeneric => 'Не получилось. Попробуйте снова.';
+
+  @override
+  String get accountDelete => 'Удалить аккаунт';
+
+  @override
+  String get accountDeleteSub =>
+      'Удалятся аккаунт на сервере, обращения и участие в группах';
+
+  @override
+  String get accountDeleteTitle => 'Удалить аккаунт?';
+
+  @override
+  String get accountDeleteBody =>
+      'Аккаунт, обращения, вложения и результаты в группах будут полностью удалены с сервера. Отменить это нельзя. Записи КК и закладки на устройстве удаляются отдельно.';
+
+  @override
+  String get accountDeleted => 'Аккаунт удалён';
+
+  @override
+  String get adminTitle => 'Админ-панель';
+
+  @override
+  String get adminSub => 'Статистика, обращения, пользователи';
+
+  @override
+  String get adminMfaTitle => 'Двухфакторная защита';
+
+  @override
+  String get adminMfaEnrollBody =>
+      'Для админ-панели нужно приложение-аутентификатор (Google Authenticator, Microsoft Authenticator, 1Password…). Добавьте ключ в приложение и введите показанный 6-значный код.';
+
+  @override
+  String get adminMfaVerifyBody =>
+      'Введите 6-значный код из приложения-аутентификатора.';
+
+  @override
+  String get adminMfaSecret => 'Ключ';
+
+  @override
+  String get adminMfaCopy => 'Скопировать ключ';
+
+  @override
+  String get adminMfaOpen => 'Открыть в аутентификаторе';
+
+  @override
+  String get adminMfaCode => '6-значный код';
+
+  @override
+  String get adminMfaVerify => 'Подтвердить';
+
+  @override
+  String get adminMfaWrong =>
+      'Код неверный или устарел. Введите новый код из приложения.';
+
+  @override
+  String get adminCopied => 'Скопировано';
+
+  @override
+  String get adminForbiddenTitle => 'Только для администратора';
+
+  @override
+  String get adminForbiddenBody =>
+      'Права администратора выдаёт сервер — роль или email в приложении на это не влияют.';
+
+  @override
+  String get adminStats => 'Статистика';
+
+  @override
+  String get adminRegistered => 'Зарегистрировано';
+
+  @override
+  String get adminNewToday => 'Новых сегодня';
+
+  @override
+  String get adminNew7 => 'Новых за 7 дней';
+
+  @override
+  String get adminNew30 => 'Новых за 30 дней';
+
+  @override
+  String get adminActiveToday => 'Активны сегодня';
+
+  @override
+  String get adminActive7 => 'Активны за 7 дней';
+
+  @override
+  String get adminActive30 => 'Активны за 30 дней';
+
+  @override
+  String get adminDefinitions =>
+      'Зарегистрирован — аккаунт с email, подтверждённым кодом; гости и неподтвердившие не считаются. Новый — день первого подтверждения email. Активный — хотя бы раз открыл приложение, будучи в аккаунте, за период. Дни по ташкентскому времени; «7 дней» включая сегодня.';
+
+  @override
+  String get adminByRole => 'По ролям';
+
+  @override
+  String get adminByLanguage => 'По языкам';
+
+  @override
+  String adminNoProfile(int count) {
+    return 'Профиль ещё не создан: $count';
+  }
+
+  @override
+  String get adminBilling => 'Free / Pro: биллинг не подключён — данных нет';
+
+  @override
+  String get adminInbox => 'Обращения';
+
+  @override
+  String adminAwaiting(int count) {
+    return 'Ждут ответа: $count';
+  }
+
+  @override
+  String get adminAllStatuses => 'Все';
+
+  @override
+  String get adminUsers => 'Пользователи';
+
+  @override
+  String get adminAudit => 'Журнал действий';
+
+  @override
+  String get adminAuditEmpty => 'Действий пока нет';
+
+  @override
+  String get adminSearchHint => 'Поиск по email';
+
+  @override
+  String get adminAllRoles => 'Все роли';
+
+  @override
+  String get adminAllLanguages => 'Все языки';
+
+  @override
+  String get adminShowEmail => 'Показать email (запишется в журнал)';
+
+  @override
+  String get adminReviewer => 'Рецензент контента';
+
+  @override
+  String adminPage(int from, int to, int total) {
+    return '$from–$to из $total';
+  }
+
+  @override
+  String get adminPrev => 'Назад';
+
+  @override
+  String get adminNext => 'Далее';
+
+  @override
+  String adminRegisteredOn(String date) {
+    return 'Регистрация: $date';
+  }
+
+  @override
+  String adminLastSeen(String date) {
+    return 'Последняя активность: $date';
+  }
+
+  @override
+  String get adminNoUsers => 'Пользователи не найдены';
+
+  @override
+  String get adminReplyHint => 'Напишите ответ сами';
+
+  @override
+  String get adminSendReply => 'Отправить ответ';
+
+  @override
+  String get adminStatus => 'Статус';
+
+  @override
+  String get adminRefresh => 'Обновить';
+
+  @override
+  String get adminActionSupportReply => 'Ответ на обращение';
+
+  @override
+  String get adminActionSupportStatus => 'Изменён статус обращения';
+
+  @override
+  String get adminActionRevealEmail => 'Просмотрен email';
+
+  @override
+  String get adminActionReviewerGranted => 'Выданы права рецензента';
+
+  @override
+  String get adminActionReviewerRevoked => 'Отозваны права рецензента';
+
+  @override
+  String get adminActionAdminGranted => 'Выданы права администратора';
+
+  @override
+  String get adminActionAdminRevoked => 'Отозваны права администратора';
+
+  @override
   String get profileSignIn => 'Войти по email';
 
   @override

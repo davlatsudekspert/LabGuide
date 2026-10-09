@@ -1,0 +1,240 @@
+import 'dart:async';
+
+import 'package:flutter/foundation.dart';
+
+import '../../features/auth/otp_auth.dart';
+import 'backend_models.dart';
+
+/// Build vaqtida beriladigan backend sozlamasi (repoda yo'q):
+///
+///   flutter build ipa --dart-define=LG_SUPABASE_URL=https://xxx.supabase.co \
+///                     --dart-define=LG_SUPABASE_KEY=PUBLISHABLE_KEY
+///
+/// Publishable (anon) kalit ilova ichida bo'lishi uchun mo'ljallangan: u
+/// sir emas, himoya serverdagi RLS va funksiyalarda. Service role kaliti
+/// hech qachon ilovaga berilmaydi (faqat Edge Function ichida).
+@immutable
+class BackendConfig {
+  const BackendConfig({required this.url, required this.publishableKey});
+
+  static const fromEnvironment = BackendConfig(
+    url: String.fromEnvironment('LG_SUPABASE_URL'),
+    publishableKey: String.fromEnvironment('LG_SUPABASE_KEY'),
+  );
+
+  final String url;
+  final String publishableKey;
+
+  bool get isConfigured =>
+      url.startsWith('https://') && publishableKey.isNotEmpty;
+}
+
+/// Ilova serveri: email OTP sessiyasi, vakolatlar, “Taklif va yordam”,
+/// admin panel, guruhlar va hisobni o'chirish. Testlar va sozlanmagan
+/// buildlar uchun boshqa implementatsiyalar bor.
+abstract interface class LabBackend implements OtpAuthAdapter {
+  bool get isConfigured;
+
+  /// Sessiya bormi (token qurilmada, server tasdiqlagan).
+  bool get hasSession;
+  String? get sessionEmail;
+  String? get userId;
+
+  /// Ishga tushishda qurilmadagi sessiyani tiklaydi.
+  Future<void> restoreSession();
+
+  /// Server sessiyani bekor qildi (masalan, refresh token yaroqsiz).
+  Stream<void> get sessionLost;
+
+  Future<void> signOut();
+  Future<void> deleteAccount();
+
+  Future<AccessInfo> myAccess();
+  Future<void> touchProfile({required String role, required String language});
+
+  // --- admin 2FA
+  Future<MfaStatus> mfaStatus();
+  Future<TotpEnrollment> mfaEnroll();
+  Future<void> mfaVerify({required String factorId, required String code});
+
+  // --- Taklif va yordam
+  Future<List<SupportThread>> myThreads();
+  Future<List<SupportMessage>> messages(String threadId);
+  Future<String> createThread({
+    required SupportKind kind,
+    required String subject,
+    required String body,
+    SupportAttachment? attachment,
+  });
+  Future<void> postMessage(
+    String threadId,
+    String body, {
+    SupportAttachment? attachment,
+  });
+  Future<void> markRead(String threadId);
+  Future<Uint8List> attachment(String path);
+
+  // --- admin
+  Future<AdminStats> adminStats();
+  Future<List<SupportThread>> adminThreads({SupportStatus? status});
+  Future<void> adminReply(String threadId, String body);
+  Future<void> adminSetStatus(String threadId, SupportStatus status);
+  Future<void> adminMarkRead(String threadId);
+  Future<AdminUserPage> adminUsers({
+    String? query,
+    String? role,
+    String? language,
+    int limit = 20,
+    int offset = 0,
+  });
+  Future<String> adminRevealEmail(String userId);
+  Future<void> adminSetReviewer(String userId, {required bool enabled});
+  Future<List<AuditEntry>> adminAudit({int limit = 50});
+
+  // --- guruhlar
+  Future<List<StudyGroup>> myGroups();
+  Future<StudyGroup> createGroup(String name);
+  Future<void> joinGroup(String code, {String? displayName});
+  Future<void> leaveGroup(String groupId);
+  Future<List<GroupAssignment>> assignments(String groupId);
+  Future<String> createAssignment({
+    required String groupId,
+    required String title,
+    required List<String> questionIds,
+    required List<int> correctIndexes,
+    DateTime? dueAt,
+    int? timeLimitMinutes,
+  });
+  Future<({int score, int total})> submitAssignment(
+    String assignmentId,
+    List<int> answers,
+  );
+  Future<List<GroupSubmission>> submissions(String assignmentId);
+}
+
+/// Backend sozlanmagan build (masalan, hozirgi TestFlight): hamma amal
+/// “ulanmagan” deb javob beradi, hech narsa ishlayotgandek ko'rsatilmaydi.
+class UnconfiguredBackend implements LabBackend {
+  const UnconfiguredBackend();
+
+  Never _no() => throw const BackendException(BackendFailure.unavailable);
+
+  @override
+  bool get isConfigured => false;
+  @override
+  bool get isAvailable => false;
+  @override
+  bool get isDemo => false;
+  @override
+  bool get hasSession => false;
+  @override
+  String? get sessionEmail => null;
+  @override
+  String? get userId => null;
+  @override
+  Stream<void> get sessionLost => const Stream.empty();
+
+  @override
+  Future<OtpRequestResult> requestCode(String email) async =>
+      const OtpRequestResult(OtpRequestStatus.unavailable);
+  @override
+  Future<OtpVerifyResult> verifyCode(String email, String code) async =>
+      const OtpVerifyResult(OtpVerifyStatus.unavailable);
+
+  @override
+  Future<void> restoreSession() async {}
+  @override
+  Future<void> signOut() async {}
+  @override
+  Future<void> deleteAccount() async => _no();
+  @override
+  Future<AccessInfo> myAccess() async => AccessInfo.none;
+  @override
+  Future<void> touchProfile({
+    required String role,
+    required String language,
+  }) async {}
+  @override
+  Future<MfaStatus> mfaStatus() async => _no();
+  @override
+  Future<TotpEnrollment> mfaEnroll() async => _no();
+  @override
+  Future<void> mfaVerify({
+    required String factorId,
+    required String code,
+  }) async => _no();
+  @override
+  Future<List<SupportThread>> myThreads() async => _no();
+  @override
+  Future<List<SupportMessage>> messages(String threadId) async => _no();
+  @override
+  Future<String> createThread({
+    required SupportKind kind,
+    required String subject,
+    required String body,
+    SupportAttachment? attachment,
+  }) async => _no();
+  @override
+  Future<void> postMessage(
+    String threadId,
+    String body, {
+    SupportAttachment? attachment,
+  }) async => _no();
+  @override
+  Future<void> markRead(String threadId) async => _no();
+  @override
+  Future<Uint8List> attachment(String path) async => _no();
+  @override
+  Future<AdminStats> adminStats() async => _no();
+  @override
+  Future<List<SupportThread>> adminThreads({SupportStatus? status}) async =>
+      _no();
+  @override
+  Future<void> adminReply(String threadId, String body) async => _no();
+  @override
+  Future<void> adminSetStatus(String threadId, SupportStatus status) async =>
+      _no();
+  @override
+  Future<void> adminMarkRead(String threadId) async => _no();
+  @override
+  Future<AdminUserPage> adminUsers({
+    String? query,
+    String? role,
+    String? language,
+    int limit = 20,
+    int offset = 0,
+  }) async => _no();
+  @override
+  Future<String> adminRevealEmail(String userId) async => _no();
+  @override
+  Future<void> adminSetReviewer(String userId, {required bool enabled}) async =>
+      _no();
+  @override
+  Future<List<AuditEntry>> adminAudit({int limit = 50}) async => _no();
+  @override
+  Future<List<StudyGroup>> myGroups() async => _no();
+  @override
+  Future<StudyGroup> createGroup(String name) async => _no();
+  @override
+  Future<void> joinGroup(String code, {String? displayName}) async => _no();
+  @override
+  Future<void> leaveGroup(String groupId) async => _no();
+  @override
+  Future<List<GroupAssignment>> assignments(String groupId) async => _no();
+  @override
+  Future<String> createAssignment({
+    required String groupId,
+    required String title,
+    required List<String> questionIds,
+    required List<int> correctIndexes,
+    DateTime? dueAt,
+    int? timeLimitMinutes,
+  }) async => _no();
+  @override
+  Future<({int score, int total})> submitAssignment(
+    String assignmentId,
+    List<int> answers,
+  ) async => _no();
+  @override
+  Future<List<GroupSubmission>> submissions(String assignmentId) async => _no();
+}

@@ -1,5 +1,9 @@
+import 'dart:async';
+
 import 'package:material_ui/material_ui.dart';
 
+import '../core/backend/access_controller.dart';
+import '../core/backend/lab_backend.dart';
 import '../core/storage/kv_store.dart';
 import '../features/auth/auth_controller.dart';
 import '../features/content/content_controller.dart';
@@ -47,6 +51,8 @@ class AppServices {
     required this.qc,
     required this.quizProgress,
     required this.packs,
+    required this.backend,
+    required this.access,
   });
 
   final AppConfig config;
@@ -59,11 +65,46 @@ class AppServices {
   final QuizProgressController quizProgress;
   final PacksController packs;
 
+  /// Server (sozlanmagan buildda — [UnconfiguredBackend]).
+  final LabBackend backend;
+  final AccessController access;
+
+  /// Server vakolatlari va o'qilmagan javoblarni yangilash. Rol hali
+  /// tanlanmagan bo'lsa profil yozilmaydi (taxminiy rol sanalmasin).
+  Future<void> refreshAccess() => access.refresh(
+    role: settings.role?.name,
+    language: settings.language.name,
+  );
+
+  /// Kirish/chiqish va rol/til o'zgarishini kuzatadi.
+  void watchAccess() {
+    var signedIn = auth.hasAccount;
+    var role = settings.role;
+    var language = settings.language;
+    auth.addListener(() {
+      if (auth.hasAccount == signedIn) return;
+      signedIn = auth.hasAccount;
+      if (signedIn) {
+        unawaited(refreshAccess());
+      } else {
+        access.clear();
+      }
+    });
+    settings.addListener(() {
+      if (settings.role == role && settings.language == language) return;
+      role = settings.role;
+      language = settings.language;
+      access.profileChanged();
+      if (auth.hasAccount) unawaited(refreshAccess());
+    });
+  }
+
   /// "Lokal ma'lumotlarni o'chirish": omborni tozalaydi va xotiradagi
   /// holatni boshlang'ichga qaytaradi.
   Future<void> deleteLocalData(Iterable<Locale> systemLocales) async {
     await store.clear();
     await auth.signOut();
+    access.clear();
     bookmarks.resetInMemory();
     qc.resetInMemory();
     quizProgress.resetInMemory();

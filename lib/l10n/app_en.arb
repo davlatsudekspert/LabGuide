@@ -1029,6 +1029,155 @@
   "profilePurchaseSub": "Free · Pro",
   "profilePrivacy": "Privacy and help",
   "profilePrivacySub": "Data and account controls",
+  "supportTitle": "Feedback & help",
+  "supportSub": "Suggestion, bug or question — replies arrive here",
+  "supportNew": "New request",
+  "supportEmptyTitle": "No requests yet",
+  "supportEmptyBody": "Send a suggestion, report a bug or ask a question — the reply appears here.",
+  "supportKind": "Type",
+  "supportKindSuggestion": "Suggestion",
+  "supportKindBug": "Bug",
+  "supportKindQuestion": "Question",
+  "supportSubject": "Subject",
+  "supportSubjectHint": "In short: what is it about?",
+  "supportMessage": "Message",
+  "supportMessageHint": "Details: which screen, what you did and what you expected",
+  "supportAttach": "Attach a screenshot (optional)",
+  "supportAttachRemove": "Remove image",
+  "supportAttachTooLarge": "The image is larger than 5 MB. Choose a smaller one.",
+  "supportAttachType": "PNG or JPEG only.",
+  "supportPhiNotice": "Make sure the screenshot shows no patient name, date of birth, record number or other personal data.",
+  "supportSend": "Send",
+  "supportSent": "Request sent",
+  "supportReplyHint": "Write a reply…",
+  "supportTeam": "LabGuide team",
+  "supportYou": "You",
+  "supportUser": "User",
+  "supportHumanReplies": "Replies are written by the LabGuide team; nothing is sent automatically.",
+  "supportStatusNew": "New",
+  "supportStatusInReview": "In review",
+  "supportStatusAnswered": "Answered",
+  "supportStatusClosed": "Closed",
+  "supportUnread": "New reply",
+  "supportUnreadCount": "{count} new {count, plural, =1{reply} other{replies}}",
+  "@supportUnreadCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "supportSignInTitle": "Sign in to send a request",
+  "supportSignInBody": "Signing in with email lets us deliver the reply to you. Data on this device stays as it is.",
+  "supportUnavailableTitle": "Server not connected yet",
+  "supportUnavailableBody": "This build has no account, feedback or groups server yet. Once connected, it works right here.",
+  "errNetwork": "Couldn’t connect. Check the internet and try again.",
+  "errRateLimited": "Too many requests. Try again a bit later.",
+  "errInvalidSupport": "The subject needs at least 3 characters and the message can’t be empty.",
+  "errForbidden": "You don’t have access to this.",
+  "errSessionExpired": "Your session has expired. Please sign in again.",
+  "errGeneric": "That didn’t work. Please try again.",
+  "accountDelete": "Delete account",
+  "accountDeleteSub": "Removes your server account, requests and group memberships",
+  "accountDeleteTitle": "Delete your account?",
+  "accountDeleteBody": "Your account, requests, attachments and group results are permanently removed from the server. This can’t be undone. QC records and bookmarks on this device are deleted separately.",
+  "accountDeleted": "Account deleted",
+  "adminTitle": "Admin panel",
+  "adminSub": "Statistics, requests, users",
+  "adminMfaTitle": "Two-step protection",
+  "adminMfaEnrollBody": "The admin panel needs an authenticator app (Google Authenticator, Microsoft Authenticator, 1Password…). Add the key to the app and enter the 6-digit code it shows.",
+  "adminMfaVerifyBody": "Enter the 6-digit code from your authenticator app.",
+  "adminMfaSecret": "Key",
+  "adminMfaCopy": "Copy key",
+  "adminMfaOpen": "Open in authenticator",
+  "adminMfaCode": "6-digit code",
+  "adminMfaVerify": "Verify",
+  "adminMfaWrong": "The code is wrong or expired. Enter the current code from the app.",
+  "adminCopied": "Copied",
+  "adminForbiddenTitle": "Admins only",
+  "adminForbiddenBody": "Admin access is granted by the server — the role or email in the app can’t change that.",
+  "adminStats": "Statistics",
+  "adminRegistered": "Registered",
+  "adminNewToday": "New today",
+  "adminNew7": "New, 7 days",
+  "adminNew30": "New, 30 days",
+  "adminActiveToday": "Active today",
+  "adminActive7": "Active, 7 days",
+  "adminActive30": "Active, 30 days",
+  "adminDefinitions": "Registered — an account whose email was confirmed with a code; guests and unconfirmed sign-ups aren’t counted. New — the day the email was first confirmed. Active — opened the app while signed in at least once in the period. Days use Tashkent time; “7 days” includes today.",
+  "adminByRole": "By role",
+  "adminByLanguage": "By language",
+  "adminNoProfile": "No profile yet: {count}",
+  "@adminNoProfile": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "adminBilling": "Free / Pro: billing not connected — no data",
+  "adminInbox": "Requests",
+  "adminAwaiting": "Awaiting reply: {count}",
+  "@adminAwaiting": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "adminAllStatuses": "All",
+  "adminUsers": "Users",
+  "adminAudit": "Action log",
+  "adminAuditEmpty": "No actions yet",
+  "adminSearchHint": "Search by email",
+  "adminAllRoles": "All roles",
+  "adminAllLanguages": "All languages",
+  "adminShowEmail": "Show email (logged)",
+  "adminReviewer": "Content reviewer",
+  "adminPage": "{from}–{to} of {total}",
+  "@adminPage": {
+    "placeholders": {
+      "from": {
+        "type": "int"
+      },
+      "to": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "adminPrev": "Previous",
+  "adminNext": "Next",
+  "adminRegisteredOn": "Registered: {date}",
+  "@adminRegisteredOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "adminLastSeen": "Last active: {date}",
+  "@adminLastSeen": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "adminNoUsers": "No users found",
+  "adminReplyHint": "Write your reply",
+  "adminSendReply": "Send reply",
+  "adminStatus": "Status",
+  "adminRefresh": "Refresh",
+  "adminActionSupportReply": "Replied to request",
+  "adminActionSupportStatus": "Request status changed",
+  "adminActionRevealEmail": "Email viewed",
+  "adminActionReviewerGranted": "Reviewer access granted",
+  "adminActionReviewerRevoked": "Reviewer access revoked",
+  "adminActionAdminGranted": "Admin access granted",
+  "adminActionAdminRevoked": "Admin access revoked",
   "profileSignIn": "Sign in with email",
   "profileSignOut": "Sign out",
   "profileRestartSetup": "Restart setup",

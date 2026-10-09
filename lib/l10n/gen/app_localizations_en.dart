@@ -1867,6 +1867,344 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profilePrivacySub => 'Data and account controls';
 
   @override
+  String get supportTitle => 'Feedback & help';
+
+  @override
+  String get supportSub => 'Suggestion, bug or question — replies arrive here';
+
+  @override
+  String get supportNew => 'New request';
+
+  @override
+  String get supportEmptyTitle => 'No requests yet';
+
+  @override
+  String get supportEmptyBody =>
+      'Send a suggestion, report a bug or ask a question — the reply appears here.';
+
+  @override
+  String get supportKind => 'Type';
+
+  @override
+  String get supportKindSuggestion => 'Suggestion';
+
+  @override
+  String get supportKindBug => 'Bug';
+
+  @override
+  String get supportKindQuestion => 'Question';
+
+  @override
+  String get supportSubject => 'Subject';
+
+  @override
+  String get supportSubjectHint => 'In short: what is it about?';
+
+  @override
+  String get supportMessage => 'Message';
+
+  @override
+  String get supportMessageHint =>
+      'Details: which screen, what you did and what you expected';
+
+  @override
+  String get supportAttach => 'Attach a screenshot (optional)';
+
+  @override
+  String get supportAttachRemove => 'Remove image';
+
+  @override
+  String get supportAttachTooLarge =>
+      'The image is larger than 5 MB. Choose a smaller one.';
+
+  @override
+  String get supportAttachType => 'PNG or JPEG only.';
+
+  @override
+  String get supportPhiNotice =>
+      'Make sure the screenshot shows no patient name, date of birth, record number or other personal data.';
+
+  @override
+  String get supportSend => 'Send';
+
+  @override
+  String get supportSent => 'Request sent';
+
+  @override
+  String get supportReplyHint => 'Write a reply…';
+
+  @override
+  String get supportTeam => 'LabGuide team';
+
+  @override
+  String get supportYou => 'You';
+
+  @override
+  String get supportUser => 'User';
+
+  @override
+  String get supportHumanReplies =>
+      'Replies are written by the LabGuide team; nothing is sent automatically.';
+
+  @override
+  String get supportStatusNew => 'New';
+
+  @override
+  String get supportStatusInReview => 'In review';
+
+  @override
+  String get supportStatusAnswered => 'Answered';
+
+  @override
+  String get supportStatusClosed => 'Closed';
+
+  @override
+  String get supportUnread => 'New reply';
+
+  @override
+  String supportUnreadCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'replies',
+      one: 'reply',
+    );
+    return '$count new $_temp0';
+  }
+
+  @override
+  String get supportSignInTitle => 'Sign in to send a request';
+
+  @override
+  String get supportSignInBody =>
+      'Signing in with email lets us deliver the reply to you. Data on this device stays as it is.';
+
+  @override
+  String get supportUnavailableTitle => 'Server not connected yet';
+
+  @override
+  String get supportUnavailableBody =>
+      'This build has no account, feedback or groups server yet. Once connected, it works right here.';
+
+  @override
+  String get errNetwork =>
+      'Couldn’t connect. Check the internet and try again.';
+
+  @override
+  String get errRateLimited => 'Too many requests. Try again a bit later.';
+
+  @override
+  String get errInvalidSupport =>
+      'The subject needs at least 3 characters and the message can’t be empty.';
+
+  @override
+  String get errForbidden => 'You don’t have access to this.';
+
+  @override
+  String get errSessionExpired =>
+      'Your session has expired. Please sign in again.';
+
+  @override
+  String get errGeneric => 'That didn’t work. Please try again.';
+
+  @override
+  String get accountDelete => 'Delete account';
+
+  @override
+  String get accountDeleteSub =>
+      'Removes your server account, requests and group memberships';
+
+  @override
+  String get accountDeleteTitle => 'Delete your account?';
+
+  @override
+  String get accountDeleteBody =>
+      'Your account, requests, attachments and group results are permanently removed from the server. This can’t be undone. QC records and bookmarks on this device are deleted separately.';
+
+  @override
+  String get accountDeleted => 'Account deleted';
+
+  @override
+  String get adminTitle => 'Admin panel';
+
+  @override
+  String get adminSub => 'Statistics, requests, users';
+
+  @override
+  String get adminMfaTitle => 'Two-step protection';
+
+  @override
+  String get adminMfaEnrollBody =>
+      'The admin panel needs an authenticator app (Google Authenticator, Microsoft Authenticator, 1Password…). Add the key to the app and enter the 6-digit code it shows.';
+
+  @override
+  String get adminMfaVerifyBody =>
+      'Enter the 6-digit code from your authenticator app.';
+
+  @override
+  String get adminMfaSecret => 'Key';
+
+  @override
+  String get adminMfaCopy => 'Copy key';
+
+  @override
+  String get adminMfaOpen => 'Open in authenticator';
+
+  @override
+  String get adminMfaCode => '6-digit code';
+
+  @override
+  String get adminMfaVerify => 'Verify';
+
+  @override
+  String get adminMfaWrong =>
+      'The code is wrong or expired. Enter the current code from the app.';
+
+  @override
+  String get adminCopied => 'Copied';
+
+  @override
+  String get adminForbiddenTitle => 'Admins only';
+
+  @override
+  String get adminForbiddenBody =>
+      'Admin access is granted by the server — the role or email in the app can’t change that.';
+
+  @override
+  String get adminStats => 'Statistics';
+
+  @override
+  String get adminRegistered => 'Registered';
+
+  @override
+  String get adminNewToday => 'New today';
+
+  @override
+  String get adminNew7 => 'New, 7 days';
+
+  @override
+  String get adminNew30 => 'New, 30 days';
+
+  @override
+  String get adminActiveToday => 'Active today';
+
+  @override
+  String get adminActive7 => 'Active, 7 days';
+
+  @override
+  String get adminActive30 => 'Active, 30 days';
+
+  @override
+  String get adminDefinitions =>
+      'Registered — an account whose email was confirmed with a code; guests and unconfirmed sign-ups aren’t counted. New — the day the email was first confirmed. Active — opened the app while signed in at least once in the period. Days use Tashkent time; “7 days” includes today.';
+
+  @override
+  String get adminByRole => 'By role';
+
+  @override
+  String get adminByLanguage => 'By language';
+
+  @override
+  String adminNoProfile(int count) {
+    return 'No profile yet: $count';
+  }
+
+  @override
+  String get adminBilling => 'Free / Pro: billing not connected — no data';
+
+  @override
+  String get adminInbox => 'Requests';
+
+  @override
+  String adminAwaiting(int count) {
+    return 'Awaiting reply: $count';
+  }
+
+  @override
+  String get adminAllStatuses => 'All';
+
+  @override
+  String get adminUsers => 'Users';
+
+  @override
+  String get adminAudit => 'Action log';
+
+  @override
+  String get adminAuditEmpty => 'No actions yet';
+
+  @override
+  String get adminSearchHint => 'Search by email';
+
+  @override
+  String get adminAllRoles => 'All roles';
+
+  @override
+  String get adminAllLanguages => 'All languages';
+
+  @override
+  String get adminShowEmail => 'Show email (logged)';
+
+  @override
+  String get adminReviewer => 'Content reviewer';
+
+  @override
+  String adminPage(int from, int to, int total) {
+    return '$from–$to of $total';
+  }
+
+  @override
+  String get adminPrev => 'Previous';
+
+  @override
+  String get adminNext => 'Next';
+
+  @override
+  String adminRegisteredOn(String date) {
+    return 'Registered: $date';
+  }
+
+  @override
+  String adminLastSeen(String date) {
+    return 'Last active: $date';
+  }
+
+  @override
+  String get adminNoUsers => 'No users found';
+
+  @override
+  String get adminReplyHint => 'Write your reply';
+
+  @override
+  String get adminSendReply => 'Send reply';
+
+  @override
+  String get adminStatus => 'Status';
+
+  @override
+  String get adminRefresh => 'Refresh';
+
+  @override
+  String get adminActionSupportReply => 'Replied to request';
+
+  @override
+  String get adminActionSupportStatus => 'Request status changed';
+
+  @override
+  String get adminActionRevealEmail => 'Email viewed';
+
+  @override
+  String get adminActionReviewerGranted => 'Reviewer access granted';
+
+  @override
+  String get adminActionReviewerRevoked => 'Reviewer access revoked';
+
+  @override
+  String get adminActionAdminGranted => 'Admin access granted';
+
+  @override
+  String get adminActionAdminRevoked => 'Admin access revoked';
+
+  @override
   String get profileSignIn => 'Sign in with email';
 
   @override

@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 
+import '../../core/backend/lab_backend.dart';
 import '../../core/storage/kv_store.dart';
 import 'otp_auth.dart';
 
@@ -24,13 +27,27 @@ class EmailSession extends AuthSession {
 }
 
 class AuthController extends ChangeNotifier {
-  AuthController(this._store, this.adapter, {DateTime Function()? clock})
-    : _session = _restore(_store),
-      _clock = clock ?? DateTime.now;
+  AuthController(
+    this._store,
+    this.adapter, {
+    DateTime Function()? clock,
+    this.backend,
+  }) : _session = _restore(_store),
+       _clock = clock ?? DateTime.now {
+    // Server sessiyani bekor qildi (token yaroqsiz, hisob o'chirilgan):
+    // qurilmada ham hisobdan chiqiladi, mehmon rejimi qoladi.
+    _lost = backend?.sessionLost.listen((_) {
+      if (_session is EmailSession) unawaited(_clearSession());
+    });
+  }
 
   final KeyValueStore _store;
   final OtpAuthAdapter adapter;
   final DateTime Function() _clock;
+
+  /// Sozlangan bo'lsa — haqiqiy server (sessiya tokeni shu yerda).
+  final LabBackend? backend;
+  StreamSubscription<void>? _lost;
 
   AuthSession? _session;
   String? _pendingEmail;
@@ -90,12 +107,39 @@ class AuthController extends ChangeNotifier {
     return result;
   }
 
+  /// Ilova ochilganda, server sessiyasi tiklangandan keyin: qurilmadagi
+  /// belgi va server sessiyasi bir-biriga mos bo'lishi kerak. Token
+  /// eskirgan bo'lsa — hisobdan chiqiladi (soxta “kirgan” holat qolmaydi);
+  /// qayta o'rnatishdan keyin Keychain'da qolgan begona sessiya o'chiriladi.
+  Future<void> reconcileWithBackend() async {
+    final b = backend;
+    if (b == null || !b.isConfigured) return;
+    final s = _session;
+    if (s is EmailSession && !s.isDemo && !b.hasSession) {
+      await _clearSession();
+    } else if (s is! EmailSession && b.hasSession) {
+      await b.signOut();
+    }
+  }
+
   Future<void> signOut() async {
+    final b = backend;
+    if (b != null && b.isConfigured && b.hasSession) await b.signOut();
+    await _clearSession();
+  }
+
+  Future<void> _clearSession() async {
     _session = null;
     _pendingEmail = null;
     _lastRequest = null;
     notifyListeners();
     await _store.remove(StoreKeys.session);
+  }
+
+  @override
+  void dispose() {
+    unawaited(_lost?.cancel());
+    super.dispose();
   }
 
   static AuthSession? _restore(KeyValueStore store) {

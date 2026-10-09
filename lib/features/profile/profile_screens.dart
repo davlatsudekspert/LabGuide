@@ -11,6 +11,7 @@ import '../../l10n/gen/app_localizations.dart';
 import '../auth/auth_controller.dart';
 import '../auth/ui/role_screen.dart';
 import '../settings/settings_controller.dart';
+import '../support/support_screens.dart';
 
 enum _SignOut { keepData, deleteData }
 
@@ -68,8 +69,9 @@ class ProfileScreen extends StatelessWidget {
     final services = context.services;
     final settings = services.settings;
     final auth = services.auth;
+    final access = services.access;
     return ListenableBuilder(
-      listenable: Listenable.merge([settings, auth]),
+      listenable: Listenable.merge([settings, auth, access]),
       builder: (context, _) {
         final l = AppLocalizations.of(context);
         final text = Theme.of(context).textTheme;
@@ -162,6 +164,29 @@ class ProfileScreen extends StatelessWidget {
               icon: Icons.workspace_premium_outlined,
               onTap: () => context.push('/profile/purchase'),
             ),
+            LgRow(
+              title: l.supportTitle,
+              subtitle: services.backend.isConfigured
+                  ? l.supportSub
+                  : '${l.supportSub} · ${l.notAvailableYet}',
+              icon: Icons.forum_outlined,
+              trailing: access.unreadReplies > 0
+                  ? LgTag(
+                      l.supportUnreadCount(access.unreadReplies),
+                      tone: LgTone.brand,
+                    )
+                  : null,
+              onTap: () => context.push('/profile/support'),
+            ),
+            // Faqat server admin hisobi deb tasdiqlagan foydalanuvchiga
+            // ko'rinadi; ichkarida yana 2FA va har RPC'da tekshiruv bor.
+            if (access.access.adminAccount)
+              LgRow(
+                title: l.adminTitle,
+                subtitle: l.adminSub,
+                icon: Icons.admin_panel_settings_outlined,
+                onTap: () => context.push('/profile/admin'),
+              ),
             LgRow(
               title: l.profilePrivacy,
               subtitle: l.profilePrivacySub,
@@ -268,10 +293,48 @@ class PrivacyScreen extends StatelessWidget {
     messenger.showSnackBar(SnackBar(content: Text(l.privacyDeleted)));
   }
 
+  /// Serverdagi hisobni o'chirish (Edge Function, service role faqat
+  /// serverda). Muvaffaqiyatdan keyin qurilmadagi ma'lumot ham tozalanadi.
+  Future<void> _confirmDeleteAccount(BuildContext context) async {
+    final l = AppLocalizations.of(context);
+    final services = context.services;
+    final messenger = ScaffoldMessenger.of(context);
+    final ok = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(l.accountDeleteTitle),
+        content: Text(l.accountDeleteBody),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(false),
+            child: Text(l.actionCancel),
+          ),
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(true),
+            child: Text(l.actionDelete),
+          ),
+        ],
+      ),
+    );
+    if (ok != true) return;
+    try {
+      await services.backend.deleteAccount();
+    } on Object catch (e) {
+      messenger.showSnackBar(SnackBar(content: Text(backendErrorText(e, l))));
+      return;
+    }
+    await services.deleteLocalData(PlatformDispatcher.instance.locales);
+    await services.settings.resetOnboarding();
+    messenger.showSnackBar(SnackBar(content: Text(l.accountDeleted)));
+  }
+
   @override
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context);
     final text = Theme.of(context).textTheme;
+    final services = context.services;
+    final hasServerAccount =
+        services.backend.isConfigured && services.backend.hasSession;
     return LgPage(
       title: l.privacyTitle,
       showProfile: false,
@@ -289,8 +352,16 @@ class PrivacyScreen extends StatelessWidget {
           subtitle: l.privacyDeleteLocalSub,
           icon: Icons.delete_outline_rounded,
           onTap: () => _confirmDelete(context),
-          divider: false,
+          divider: hasServerAccount,
         ),
+        if (hasServerAccount)
+          LgRow(
+            title: l.accountDelete,
+            subtitle: l.accountDeleteSub,
+            icon: Icons.person_remove_outlined,
+            onTap: () => _confirmDeleteAccount(context),
+            divider: false,
+          ),
       ],
     );
   }

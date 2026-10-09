@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
+import '../features/admin/admin_screens.dart';
 import '../features/auth/ui/auth_screens.dart';
 import '../features/auth/ui/role_screen.dart';
 import '../features/auth/ui/welcome_screen.dart';
@@ -13,6 +14,7 @@ import '../features/library/library_screens.dart';
 import '../features/profile/profile_screens.dart';
 import '../features/qc/qc_screens.dart';
 import '../features/settings/settings_controller.dart';
+import '../features/support/support_screens.dart';
 import '../features/tools/calc_info.dart';
 import '../features/tools/clinical_calc_screens.dart';
 import '../features/tools/tool_screens.dart';
@@ -106,6 +108,46 @@ GoRouter buildRouter(
           GoRoute(
             path: 'privacy',
             builder: (context, state) => const PrivacyScreen(),
+          ),
+          GoRoute(
+            path: 'support',
+            builder: (context, state) => const SupportListScreen(),
+            routes: [
+              GoRoute(
+                path: 'new',
+                builder: (context, state) => const NewSupportThreadScreen(),
+              ),
+              GoRoute(
+                path: 'thread/:id',
+                builder: (context, state) =>
+                    SupportThreadScreen(threadId: state.pathParameters['id']!),
+              ),
+            ],
+          ),
+          // Har admin ekrani o'zini AdminGate bilan o'raydi (my_access + aal2);
+          // yo'lni bilish hech narsa bermaydi — RPC'lar serverda tekshiradi.
+          GoRoute(
+            path: 'admin',
+            builder: (context, state) => const AdminHomeScreen(),
+            routes: [
+              GoRoute(
+                path: 'inbox',
+                builder: (context, state) => const AdminInboxScreen(),
+              ),
+              GoRoute(
+                path: 'thread/:id',
+                builder: (context, state) =>
+                    AdminThreadScreen(threadId: state.pathParameters['id']!),
+              ),
+              GoRoute(
+                path: 'users',
+                builder: (context, state) => const AdminUsersScreen(),
+              ),
+              GoRoute(
+                path: 'audit',
+                builder: (context, state) => const AdminAuditScreen(),
+              ),
+            ],
           ),
           GoRoute(
             path: 'auth',

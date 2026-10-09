@@ -24,6 +24,9 @@ create table public.group_members (
   group_id uuid not null references public.study_groups (id) on delete cascade,
   user_id uuid not null references auth.users (id) on delete cascade,
   member_role text not null check (member_role in ('teacher', 'student')),
+  -- Guruh ichida ko'rinadigan ism (masalan, “Aliyev A.”) — foydalanuvchi
+  -- o'zi kiritadi; emaili ustozga ko'rsatilmaydi.
+  display_name text not null check (char_length(btrim(display_name)) between 2 and 60),
   joined_at timestamptz not null default now(),
   primary key (group_id, user_id)
 );
@@ -94,7 +97,7 @@ create policy "submissions: own or teacher read" on public.submissions
     or exists (select 1 from public.assignments a
                where a.id = assignment_id and public._is_teacher(a.group_id)));
 
-create function public.create_group(p_name text) returns jsonb
+create function public.create_group(p_name text, p_display_name text) returns jsonb
 language plpgsql security definer set search_path = '' as $$
 declare
   uid uuid := auth.uid();
@@ -117,13 +120,13 @@ begin
   end loop;
   insert into public.study_groups (owner_id, name, join_code)
   values (uid, btrim(p_name), code) returning id into gid;
-  insert into public.group_members (group_id, user_id, member_role)
-  values (gid, uid, 'teacher');
+  insert into public.group_members (group_id, user_id, member_role, display_name)
+  values (gid, uid, 'teacher', btrim(p_display_name));
   return jsonb_build_object('id', gid, 'join_code', code);
 end;
 $$;
 
-create function public.join_group(p_code text) returns uuid
+create function public.join_group(p_code text, p_display_name text) returns uuid
 language plpgsql security definer set search_path = '' as $$
 declare
   uid uuid := auth.uid();
@@ -140,8 +143,8 @@ begin
   if (select count(*) from public.group_members where group_id = gid) >= 200 then
     raise exception 'group full' using errcode = '54000';
   end if;
-  insert into public.group_members (group_id, user_id, member_role)
-  values (gid, uid, 'student')
+  insert into public.group_members (group_id, user_id, member_role, display_name)
+  values (gid, uid, 'student', btrim(p_display_name))
   on conflict (group_id, user_id) do nothing;
   return gid;
 end;
@@ -215,12 +218,12 @@ end;
 $$;
 
 revoke all on function
-  public.create_group(text), public.join_group(text), public.leave_group(uuid),
+  public.create_group(text, text), public.join_group(text, text), public.leave_group(uuid),
   public.create_assignment(uuid, text, text[], int[], timestamptz, int),
   public.submit_assignment(uuid, int[])
   from public, anon;
 grant execute on function
-  public.create_group(text), public.join_group(text), public.leave_group(uuid),
+  public.create_group(text, text), public.join_group(text, text), public.leave_group(uuid),
   public.create_assignment(uuid, text, text[], int[], timestamptz, int),
   public.submit_assignment(uuid, int[])
   to authenticated;

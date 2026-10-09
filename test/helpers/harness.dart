@@ -10,6 +10,7 @@ import 'package:go_router/go_router.dart';
 import 'package:labguide/app/app.dart';
 import 'package:labguide/app/app_scope.dart';
 import 'package:labguide/app/widgets/lg_page.dart';
+import 'package:labguide/core/backend/lab_backend.dart';
 import 'package:labguide/core/storage/kv_store.dart';
 import 'package:labguide/features/auth/otp_auth.dart';
 import 'package:labguide/features/settings/settings_controller.dart';
@@ -43,6 +44,7 @@ Future<AppServices> makeServices(
   ThemeMode themeMode = ThemeMode.light,
   AssetBundle? bundle,
   http.Client? httpClient,
+  LabBackend? backend,
 }) async {
   final s = store ?? MemoryKeyValueStore();
   // Har test o'z (hali yaratilmagan) paketlar papkasi bilan.
@@ -56,9 +58,13 @@ Future<AppServices> makeServices(
     store: s,
     bundle: bundle ?? rootBundle,
     systemLocales: [language.locale],
-    otpAdapter: otpAdapter ?? DemoOtpAdapter(releaseBuild: false),
+    // Server berilsa — kirish uning OTP'si orqali (haqiqiy oqim kabi).
+    otpAdapter:
+        otpAdapter ??
+        (backend == null ? DemoOtpAdapter(releaseBuild: false) : null),
     httpClient: httpClient ?? localPacksServer(),
     packsRoot: () async => packsRoot,
+    backend: backend,
   );
   await services.settings.setLanguage(language);
   await services.settings.setThemeMode(themeMode);

@@ -304,18 +304,20 @@ update auth.users set email = 'davlatsudekspert@gmail.com'
 -- ================================================================ guruhlar
 set role authenticated;
 select t.login('00000000-0000-0000-0000-0000000000a1');
-insert into t.vars select 'group_code', public.create_group('Biokimyo 2-kurs') ->> 'join_code';
+insert into t.vars select 'group_code', public.create_group('Biokimyo 2-kurs', 'Ustoz Alisa') ->> 'join_code';
 insert into t.vars select 'group', id::text from public.study_groups;
 select t.login('00000000-0000-0000-0000-0000000000b1');
 do $$ begin
   assert (select count(*) from public.study_groups) = 0, 'not a member yet';
-  perform public.join_group('wrong-code');
+  perform public.join_group('wrong-code', 'Bob B.');
   raise exception 'joined with a wrong code';
 exception when no_data_found then null;
 end $$;
-select public.join_group(lower((select v from t.vars where k = 'group_code')));
+select public.join_group(lower((select v from t.vars where k = 'group_code')), 'Bob B.');
 do $$ begin
   assert (select count(*) from public.study_groups) = 1, 'member sees group';
+  assert (select display_name from public.group_members
+          where user_id = '00000000-0000-0000-0000-0000000000b1') = 'Bob B.', 'display name';
   perform public.create_assignment((select v::uuid from t.vars where k = 'group'),
     'Hack', array['q1'], array[0]);
   raise exception 'student created an assignment';

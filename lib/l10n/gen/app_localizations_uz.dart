@@ -1833,6 +1833,337 @@ class AppLocalizationsUz extends AppLocalizations {
   String get profilePrivacySub => 'Ma’lumotlar va hisob boshqaruvi';
 
   @override
+  String get supportTitle => 'Taklif va yordam';
+
+  @override
+  String get supportSub => 'Taklif, xatolik yoki savol — javob shu yerda';
+
+  @override
+  String get supportNew => 'Yangi murojaat';
+
+  @override
+  String get supportEmptyTitle => 'Hali murojaat yo‘q';
+
+  @override
+  String get supportEmptyBody =>
+      'Taklif, xatolik yoki savolingizni yozing — javob shu yerda ko‘rinadi.';
+
+  @override
+  String get supportKind => 'Turi';
+
+  @override
+  String get supportKindSuggestion => 'Taklif';
+
+  @override
+  String get supportKindBug => 'Xatolik';
+
+  @override
+  String get supportKindQuestion => 'Savol';
+
+  @override
+  String get supportSubject => 'Mavzu';
+
+  @override
+  String get supportSubjectHint => 'Qisqacha: nima haqida?';
+
+  @override
+  String get supportMessage => 'Xabar';
+
+  @override
+  String get supportMessageHint =>
+      'Batafsil yozing: qaysi ekranda, nima qildingiz, nima kutgan edingiz';
+
+  @override
+  String get supportAttach => 'Skrinshot biriktirish (ixtiyoriy)';
+
+  @override
+  String get supportAttachRemove => 'Rasmni olib tashlash';
+
+  @override
+  String get supportAttachTooLarge =>
+      'Rasm 5 MB dan katta. Kichikroq rasm tanlang.';
+
+  @override
+  String get supportAttachType => 'Faqat PNG yoki JPEG rasm.';
+
+  @override
+  String get supportPhiNotice =>
+      'Skrinshotda bemorning ismi, tug‘ilgan sanasi, karta raqami yoki boshqa shaxsiy ma’lumoti bo‘lmasin.';
+
+  @override
+  String get supportSend => 'Yuborish';
+
+  @override
+  String get supportSent => 'Murojaat yuborildi';
+
+  @override
+  String get supportReplyHint => 'Javob yozing…';
+
+  @override
+  String get supportTeam => 'LabGuide jamoasi';
+
+  @override
+  String get supportYou => 'Siz';
+
+  @override
+  String get supportUser => 'Foydalanuvchi';
+
+  @override
+  String get supportHumanReplies =>
+      'Javoblarni LabGuide jamoasi o‘zi yozadi; avtomatik javob yuborilmaydi.';
+
+  @override
+  String get supportStatusNew => 'Yangi';
+
+  @override
+  String get supportStatusInReview => 'Ko‘rib chiqilmoqda';
+
+  @override
+  String get supportStatusAnswered => 'Javob berildi';
+
+  @override
+  String get supportStatusClosed => 'Yopildi';
+
+  @override
+  String get supportUnread => 'Yangi javob';
+
+  @override
+  String supportUnreadCount(int count) {
+    return '$count ta yangi javob';
+  }
+
+  @override
+  String get supportSignInTitle => 'Murojaat uchun hisobga kiring';
+
+  @override
+  String get supportSignInBody =>
+      'Javobni sizga yetkazish uchun email bilan kirish kerak. Qurilmadagi ma’lumotlaringiz o‘zgarmaydi.';
+
+  @override
+  String get supportUnavailableTitle => 'Server hali ulanmagan';
+
+  @override
+  String get supportUnavailableBody =>
+      'Bu buildda hisoblar, murojaatlar va guruhlar serveri ulanmagan. Ulangach shu yerda ishlaydi.';
+
+  @override
+  String get errNetwork => 'Internetga ulanib bo‘lmadi. Qayta urinib ko‘ring.';
+
+  @override
+  String get errRateLimited =>
+      'Juda ko‘p so‘rov. Birozdan keyin urinib ko‘ring.';
+
+  @override
+  String get errInvalidSupport =>
+      'Mavzu kamida 3 belgi bo‘lsin, xabar bo‘sh bo‘lmasin.';
+
+  @override
+  String get errForbidden => 'Bu amal uchun ruxsat yo‘q.';
+
+  @override
+  String get errSessionExpired => 'Sessiya tugagan. Qaytadan kiring.';
+
+  @override
+  String get errGeneric => 'Bajarib bo‘lmadi. Qayta urinib ko‘ring.';
+
+  @override
+  String get accountDelete => 'Hisobni o‘chirish';
+
+  @override
+  String get accountDeleteSub =>
+      'Serverdagi hisob, murojaatlar va guruh a’zoligi o‘chadi';
+
+  @override
+  String get accountDeleteTitle => 'Hisob o‘chirilsinmi?';
+
+  @override
+  String get accountDeleteBody =>
+      'Hisobingiz, murojaatlaringiz, biriktirilgan rasmlar va guruh natijalari serverdan butunlay o‘chiriladi. Buni qaytarib bo‘lmaydi. Qurilmadagi QC qaydlari va xatcho‘plar alohida o‘chiriladi.';
+
+  @override
+  String get accountDeleted => 'Hisob o‘chirildi';
+
+  @override
+  String get adminTitle => 'Admin panel';
+
+  @override
+  String get adminSub => 'Statistika, murojaatlar, foydalanuvchilar';
+
+  @override
+  String get adminMfaTitle => 'Ikki bosqichli himoya';
+
+  @override
+  String get adminMfaEnrollBody =>
+      'Admin panel uchun autentifikator ilovasi kerak (Google Authenticator, Microsoft Authenticator, 1Password…). Kalitni ilovaga qo‘shing va u ko‘rsatgan 6 xonali kodni kiriting.';
+
+  @override
+  String get adminMfaVerifyBody =>
+      'Autentifikator ilovasidagi 6 xonali kodni kiriting.';
+
+  @override
+  String get adminMfaSecret => 'Kalit';
+
+  @override
+  String get adminMfaCopy => 'Kalitni nusxalash';
+
+  @override
+  String get adminMfaOpen => 'Autentifikatorda ochish';
+
+  @override
+  String get adminMfaCode => '6 xonali kod';
+
+  @override
+  String get adminMfaVerify => 'Tasdiqlash';
+
+  @override
+  String get adminMfaWrong =>
+      'Kod noto‘g‘ri yoki eskirgan. Ilovadagi yangi kodni kiriting.';
+
+  @override
+  String get adminCopied => 'Nusxalandi';
+
+  @override
+  String get adminForbiddenTitle => 'Faqat admin uchun';
+
+  @override
+  String get adminForbiddenBody =>
+      'Admin vakolatini server beradi — ilovadagi rol yoki email buni o‘zgartirmaydi.';
+
+  @override
+  String get adminStats => 'Statistika';
+
+  @override
+  String get adminRegistered => 'Ro‘yxatdan o‘tgan';
+
+  @override
+  String get adminNewToday => 'Bugun yangi';
+
+  @override
+  String get adminNew7 => '7 kunda yangi';
+
+  @override
+  String get adminNew30 => '30 kunda yangi';
+
+  @override
+  String get adminActiveToday => 'Bugun faol';
+
+  @override
+  String get adminActive7 => '7 kunda faol';
+
+  @override
+  String get adminActive30 => '30 kunda faol';
+
+  @override
+  String get adminDefinitions =>
+      'Ro‘yxatdan o‘tgan — emailini kod bilan tasdiqlagan hisob; mehmonlar va kodni tasdiqlamaganlar sanalmaydi. Yangi — email birinchi tasdiqlangan kun. Faol — davr ichida ilovani hisobiga kirgan holda kamida bir marta ochgan. Kunlar Toshkent vaqti bo‘yicha; “7 kun” bugun bilan birga.';
+
+  @override
+  String get adminByRole => 'Rollar bo‘yicha';
+
+  @override
+  String get adminByLanguage => 'Tillar bo‘yicha';
+
+  @override
+  String adminNoProfile(int count) {
+    return 'Profil hali yaratilmagan: $count';
+  }
+
+  @override
+  String get adminBilling => 'Free / Pro: billing ulanmagan — ma’lumot yo‘q';
+
+  @override
+  String get adminInbox => 'Murojaatlar';
+
+  @override
+  String adminAwaiting(int count) {
+    return 'Javob kutmoqda: $count';
+  }
+
+  @override
+  String get adminAllStatuses => 'Hammasi';
+
+  @override
+  String get adminUsers => 'Foydalanuvchilar';
+
+  @override
+  String get adminAudit => 'Amallar tarixi';
+
+  @override
+  String get adminAuditEmpty => 'Hali amal yo‘q';
+
+  @override
+  String get adminSearchHint => 'Email bo‘yicha qidirish';
+
+  @override
+  String get adminAllRoles => 'Barcha rollar';
+
+  @override
+  String get adminAllLanguages => 'Barcha tillar';
+
+  @override
+  String get adminShowEmail => 'Emailni ko‘rsatish (jurnalga yoziladi)';
+
+  @override
+  String get adminReviewer => 'Kontent tekshiruvchisi (reviewer)';
+
+  @override
+  String adminPage(int from, int to, int total) {
+    return '$from–$to / $total';
+  }
+
+  @override
+  String get adminPrev => 'Oldingi';
+
+  @override
+  String get adminNext => 'Keyingi';
+
+  @override
+  String adminRegisteredOn(String date) {
+    return 'Ro‘yxatdan: $date';
+  }
+
+  @override
+  String adminLastSeen(String date) {
+    return 'Oxirgi faollik: $date';
+  }
+
+  @override
+  String get adminNoUsers => 'Foydalanuvchi topilmadi';
+
+  @override
+  String get adminReplyHint => 'Javob matnini o‘zingiz yozing';
+
+  @override
+  String get adminSendReply => 'Javob yuborish';
+
+  @override
+  String get adminStatus => 'Holat';
+
+  @override
+  String get adminRefresh => 'Yangilash';
+
+  @override
+  String get adminActionSupportReply => 'Murojaatga javob';
+
+  @override
+  String get adminActionSupportStatus => 'Murojaat holati o‘zgardi';
+
+  @override
+  String get adminActionRevealEmail => 'Email ko‘rildi';
+
+  @override
+  String get adminActionReviewerGranted => 'Reviewer vakolati berildi';
+
+  @override
+  String get adminActionReviewerRevoked => 'Reviewer vakolati olindi';
+
+  @override
+  String get adminActionAdminGranted => 'Admin vakolati berildi';
+
+  @override
+  String get adminActionAdminRevoked => 'Admin vakolati olindi';
+
+  @override
   String get profileSignIn => 'Email orqali kirish';
 
   @override

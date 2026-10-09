@@ -3322,6 +3322,612 @@ abstract class AppLocalizations {
   /// **'Data and account controls'**
   String get profilePrivacySub;
 
+  /// No description provided for @supportTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Feedback & help'**
+  String get supportTitle;
+
+  /// No description provided for @supportSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Suggestion, bug or question — replies arrive here'**
+  String get supportSub;
+
+  /// No description provided for @supportNew.
+  ///
+  /// In en, this message translates to:
+  /// **'New request'**
+  String get supportNew;
+
+  /// No description provided for @supportEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No requests yet'**
+  String get supportEmptyTitle;
+
+  /// No description provided for @supportEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Send a suggestion, report a bug or ask a question — the reply appears here.'**
+  String get supportEmptyBody;
+
+  /// No description provided for @supportKind.
+  ///
+  /// In en, this message translates to:
+  /// **'Type'**
+  String get supportKind;
+
+  /// No description provided for @supportKindSuggestion.
+  ///
+  /// In en, this message translates to:
+  /// **'Suggestion'**
+  String get supportKindSuggestion;
+
+  /// No description provided for @supportKindBug.
+  ///
+  /// In en, this message translates to:
+  /// **'Bug'**
+  String get supportKindBug;
+
+  /// No description provided for @supportKindQuestion.
+  ///
+  /// In en, this message translates to:
+  /// **'Question'**
+  String get supportKindQuestion;
+
+  /// No description provided for @supportSubject.
+  ///
+  /// In en, this message translates to:
+  /// **'Subject'**
+  String get supportSubject;
+
+  /// No description provided for @supportSubjectHint.
+  ///
+  /// In en, this message translates to:
+  /// **'In short: what is it about?'**
+  String get supportSubjectHint;
+
+  /// No description provided for @supportMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Message'**
+  String get supportMessage;
+
+  /// No description provided for @supportMessageHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Details: which screen, what you did and what you expected'**
+  String get supportMessageHint;
+
+  /// No description provided for @supportAttach.
+  ///
+  /// In en, this message translates to:
+  /// **'Attach a screenshot (optional)'**
+  String get supportAttach;
+
+  /// No description provided for @supportAttachRemove.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove image'**
+  String get supportAttachRemove;
+
+  /// No description provided for @supportAttachTooLarge.
+  ///
+  /// In en, this message translates to:
+  /// **'The image is larger than 5 MB. Choose a smaller one.'**
+  String get supportAttachTooLarge;
+
+  /// No description provided for @supportAttachType.
+  ///
+  /// In en, this message translates to:
+  /// **'PNG or JPEG only.'**
+  String get supportAttachType;
+
+  /// No description provided for @supportPhiNotice.
+  ///
+  /// In en, this message translates to:
+  /// **'Make sure the screenshot shows no patient name, date of birth, record number or other personal data.'**
+  String get supportPhiNotice;
+
+  /// No description provided for @supportSend.
+  ///
+  /// In en, this message translates to:
+  /// **'Send'**
+  String get supportSend;
+
+  /// No description provided for @supportSent.
+  ///
+  /// In en, this message translates to:
+  /// **'Request sent'**
+  String get supportSent;
+
+  /// No description provided for @supportReplyHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Write a reply…'**
+  String get supportReplyHint;
+
+  /// No description provided for @supportTeam.
+  ///
+  /// In en, this message translates to:
+  /// **'LabGuide team'**
+  String get supportTeam;
+
+  /// No description provided for @supportYou.
+  ///
+  /// In en, this message translates to:
+  /// **'You'**
+  String get supportYou;
+
+  /// No description provided for @supportUser.
+  ///
+  /// In en, this message translates to:
+  /// **'User'**
+  String get supportUser;
+
+  /// No description provided for @supportHumanReplies.
+  ///
+  /// In en, this message translates to:
+  /// **'Replies are written by the LabGuide team; nothing is sent automatically.'**
+  String get supportHumanReplies;
+
+  /// No description provided for @supportStatusNew.
+  ///
+  /// In en, this message translates to:
+  /// **'New'**
+  String get supportStatusNew;
+
+  /// No description provided for @supportStatusInReview.
+  ///
+  /// In en, this message translates to:
+  /// **'In review'**
+  String get supportStatusInReview;
+
+  /// No description provided for @supportStatusAnswered.
+  ///
+  /// In en, this message translates to:
+  /// **'Answered'**
+  String get supportStatusAnswered;
+
+  /// No description provided for @supportStatusClosed.
+  ///
+  /// In en, this message translates to:
+  /// **'Closed'**
+  String get supportStatusClosed;
+
+  /// No description provided for @supportUnread.
+  ///
+  /// In en, this message translates to:
+  /// **'New reply'**
+  String get supportUnread;
+
+  /// No description provided for @supportUnreadCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} new {count, plural, =1{reply} other{replies}}'**
+  String supportUnreadCount(int count);
+
+  /// No description provided for @supportSignInTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in to send a request'**
+  String get supportSignInTitle;
+
+  /// No description provided for @supportSignInBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Signing in with email lets us deliver the reply to you. Data on this device stays as it is.'**
+  String get supportSignInBody;
+
+  /// No description provided for @supportUnavailableTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Server not connected yet'**
+  String get supportUnavailableTitle;
+
+  /// No description provided for @supportUnavailableBody.
+  ///
+  /// In en, this message translates to:
+  /// **'This build has no account, feedback or groups server yet. Once connected, it works right here.'**
+  String get supportUnavailableBody;
+
+  /// No description provided for @errNetwork.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn’t connect. Check the internet and try again.'**
+  String get errNetwork;
+
+  /// No description provided for @errRateLimited.
+  ///
+  /// In en, this message translates to:
+  /// **'Too many requests. Try again a bit later.'**
+  String get errRateLimited;
+
+  /// No description provided for @errInvalidSupport.
+  ///
+  /// In en, this message translates to:
+  /// **'The subject needs at least 3 characters and the message can’t be empty.'**
+  String get errInvalidSupport;
+
+  /// No description provided for @errForbidden.
+  ///
+  /// In en, this message translates to:
+  /// **'You don’t have access to this.'**
+  String get errForbidden;
+
+  /// No description provided for @errSessionExpired.
+  ///
+  /// In en, this message translates to:
+  /// **'Your session has expired. Please sign in again.'**
+  String get errSessionExpired;
+
+  /// No description provided for @errGeneric.
+  ///
+  /// In en, this message translates to:
+  /// **'That didn’t work. Please try again.'**
+  String get errGeneric;
+
+  /// No description provided for @accountDelete.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete account'**
+  String get accountDelete;
+
+  /// No description provided for @accountDeleteSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Removes your server account, requests and group memberships'**
+  String get accountDeleteSub;
+
+  /// No description provided for @accountDeleteTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete your account?'**
+  String get accountDeleteTitle;
+
+  /// No description provided for @accountDeleteBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Your account, requests, attachments and group results are permanently removed from the server. This can’t be undone. QC records and bookmarks on this device are deleted separately.'**
+  String get accountDeleteBody;
+
+  /// No description provided for @accountDeleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Account deleted'**
+  String get accountDeleted;
+
+  /// No description provided for @adminTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Admin panel'**
+  String get adminTitle;
+
+  /// No description provided for @adminSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Statistics, requests, users'**
+  String get adminSub;
+
+  /// No description provided for @adminMfaTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Two-step protection'**
+  String get adminMfaTitle;
+
+  /// No description provided for @adminMfaEnrollBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The admin panel needs an authenticator app (Google Authenticator, Microsoft Authenticator, 1Password…). Add the key to the app and enter the 6-digit code it shows.'**
+  String get adminMfaEnrollBody;
+
+  /// No description provided for @adminMfaVerifyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the 6-digit code from your authenticator app.'**
+  String get adminMfaVerifyBody;
+
+  /// No description provided for @adminMfaSecret.
+  ///
+  /// In en, this message translates to:
+  /// **'Key'**
+  String get adminMfaSecret;
+
+  /// No description provided for @adminMfaCopy.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy key'**
+  String get adminMfaCopy;
+
+  /// No description provided for @adminMfaOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'Open in authenticator'**
+  String get adminMfaOpen;
+
+  /// No description provided for @adminMfaCode.
+  ///
+  /// In en, this message translates to:
+  /// **'6-digit code'**
+  String get adminMfaCode;
+
+  /// No description provided for @adminMfaVerify.
+  ///
+  /// In en, this message translates to:
+  /// **'Verify'**
+  String get adminMfaVerify;
+
+  /// No description provided for @adminMfaWrong.
+  ///
+  /// In en, this message translates to:
+  /// **'The code is wrong or expired. Enter the current code from the app.'**
+  String get adminMfaWrong;
+
+  /// No description provided for @adminCopied.
+  ///
+  /// In en, this message translates to:
+  /// **'Copied'**
+  String get adminCopied;
+
+  /// No description provided for @adminForbiddenTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Admins only'**
+  String get adminForbiddenTitle;
+
+  /// No description provided for @adminForbiddenBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Admin access is granted by the server — the role or email in the app can’t change that.'**
+  String get adminForbiddenBody;
+
+  /// No description provided for @adminStats.
+  ///
+  /// In en, this message translates to:
+  /// **'Statistics'**
+  String get adminStats;
+
+  /// No description provided for @adminRegistered.
+  ///
+  /// In en, this message translates to:
+  /// **'Registered'**
+  String get adminRegistered;
+
+  /// No description provided for @adminNewToday.
+  ///
+  /// In en, this message translates to:
+  /// **'New today'**
+  String get adminNewToday;
+
+  /// No description provided for @adminNew7.
+  ///
+  /// In en, this message translates to:
+  /// **'New, 7 days'**
+  String get adminNew7;
+
+  /// No description provided for @adminNew30.
+  ///
+  /// In en, this message translates to:
+  /// **'New, 30 days'**
+  String get adminNew30;
+
+  /// No description provided for @adminActiveToday.
+  ///
+  /// In en, this message translates to:
+  /// **'Active today'**
+  String get adminActiveToday;
+
+  /// No description provided for @adminActive7.
+  ///
+  /// In en, this message translates to:
+  /// **'Active, 7 days'**
+  String get adminActive7;
+
+  /// No description provided for @adminActive30.
+  ///
+  /// In en, this message translates to:
+  /// **'Active, 30 days'**
+  String get adminActive30;
+
+  /// No description provided for @adminDefinitions.
+  ///
+  /// In en, this message translates to:
+  /// **'Registered — an account whose email was confirmed with a code; guests and unconfirmed sign-ups aren’t counted. New — the day the email was first confirmed. Active — opened the app while signed in at least once in the period. Days use Tashkent time; “7 days” includes today.'**
+  String get adminDefinitions;
+
+  /// No description provided for @adminByRole.
+  ///
+  /// In en, this message translates to:
+  /// **'By role'**
+  String get adminByRole;
+
+  /// No description provided for @adminByLanguage.
+  ///
+  /// In en, this message translates to:
+  /// **'By language'**
+  String get adminByLanguage;
+
+  /// No description provided for @adminNoProfile.
+  ///
+  /// In en, this message translates to:
+  /// **'No profile yet: {count}'**
+  String adminNoProfile(int count);
+
+  /// No description provided for @adminBilling.
+  ///
+  /// In en, this message translates to:
+  /// **'Free / Pro: billing not connected — no data'**
+  String get adminBilling;
+
+  /// No description provided for @adminInbox.
+  ///
+  /// In en, this message translates to:
+  /// **'Requests'**
+  String get adminInbox;
+
+  /// No description provided for @adminAwaiting.
+  ///
+  /// In en, this message translates to:
+  /// **'Awaiting reply: {count}'**
+  String adminAwaiting(int count);
+
+  /// No description provided for @adminAllStatuses.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get adminAllStatuses;
+
+  /// No description provided for @adminUsers.
+  ///
+  /// In en, this message translates to:
+  /// **'Users'**
+  String get adminUsers;
+
+  /// No description provided for @adminAudit.
+  ///
+  /// In en, this message translates to:
+  /// **'Action log'**
+  String get adminAudit;
+
+  /// No description provided for @adminAuditEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No actions yet'**
+  String get adminAuditEmpty;
+
+  /// No description provided for @adminSearchHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search by email'**
+  String get adminSearchHint;
+
+  /// No description provided for @adminAllRoles.
+  ///
+  /// In en, this message translates to:
+  /// **'All roles'**
+  String get adminAllRoles;
+
+  /// No description provided for @adminAllLanguages.
+  ///
+  /// In en, this message translates to:
+  /// **'All languages'**
+  String get adminAllLanguages;
+
+  /// No description provided for @adminShowEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Show email (logged)'**
+  String get adminShowEmail;
+
+  /// No description provided for @adminReviewer.
+  ///
+  /// In en, this message translates to:
+  /// **'Content reviewer'**
+  String get adminReviewer;
+
+  /// No description provided for @adminPage.
+  ///
+  /// In en, this message translates to:
+  /// **'{from}–{to} of {total}'**
+  String adminPage(int from, int to, int total);
+
+  /// No description provided for @adminPrev.
+  ///
+  /// In en, this message translates to:
+  /// **'Previous'**
+  String get adminPrev;
+
+  /// No description provided for @adminNext.
+  ///
+  /// In en, this message translates to:
+  /// **'Next'**
+  String get adminNext;
+
+  /// No description provided for @adminRegisteredOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Registered: {date}'**
+  String adminRegisteredOn(String date);
+
+  /// No description provided for @adminLastSeen.
+  ///
+  /// In en, this message translates to:
+  /// **'Last active: {date}'**
+  String adminLastSeen(String date);
+
+  /// No description provided for @adminNoUsers.
+  ///
+  /// In en, this message translates to:
+  /// **'No users found'**
+  String get adminNoUsers;
+
+  /// No description provided for @adminReplyHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Write your reply'**
+  String get adminReplyHint;
+
+  /// No description provided for @adminSendReply.
+  ///
+  /// In en, this message translates to:
+  /// **'Send reply'**
+  String get adminSendReply;
+
+  /// No description provided for @adminStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Status'**
+  String get adminStatus;
+
+  /// No description provided for @adminRefresh.
+  ///
+  /// In en, this message translates to:
+  /// **'Refresh'**
+  String get adminRefresh;
+
+  /// No description provided for @adminActionSupportReply.
+  ///
+  /// In en, this message translates to:
+  /// **'Replied to request'**
+  String get adminActionSupportReply;
+
+  /// No description provided for @adminActionSupportStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Request status changed'**
+  String get adminActionSupportStatus;
+
+  /// No description provided for @adminActionRevealEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Email viewed'**
+  String get adminActionRevealEmail;
+
+  /// No description provided for @adminActionReviewerGranted.
+  ///
+  /// In en, this message translates to:
+  /// **'Reviewer access granted'**
+  String get adminActionReviewerGranted;
+
+  /// No description provided for @adminActionReviewerRevoked.
+  ///
+  /// In en, this message translates to:
+  /// **'Reviewer access revoked'**
+  String get adminActionReviewerRevoked;
+
+  /// No description provided for @adminActionAdminGranted.
+  ///
+  /// In en, this message translates to:
+  /// **'Admin access granted'**
+  String get adminActionAdminGranted;
+
+  /// No description provided for @adminActionAdminRevoked.
+  ///
+  /// In en, this message translates to:
+  /// **'Admin access revoked'**
+  String get adminActionAdminRevoked;
+
   /// No description provided for @profileSignIn.
   ///
   /// In en, this message translates to:
