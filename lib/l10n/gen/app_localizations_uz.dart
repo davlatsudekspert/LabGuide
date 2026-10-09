@@ -2861,7 +2861,30 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get instIllustration =>
-      'Sxematik rasm (LabGuide chizgan) — aniq modelning tashqi ko‘rinishi emas.';
+      'Sxematik rasm (LabGuide chizgan) — yo‘nalishni bezash uchun, aniq apparat ko‘rinishi emas.';
+
+  @override
+  String get instImageMissing => 'Model rasmi hozircha mavjud emas';
+
+  @override
+  String get instImageMissingSub =>
+      'Aynan shu modelning ruxsatli rasmi topilmadi. Tashqi ko‘rinishini ishlab chiqaruvchi sahifasida ko‘ring.';
+
+  @override
+  String get instMakerSource => 'Ishlab chiqaruvchi manbasi';
+
+  @override
+  String get instImageTapToZoom => 'Kattalashtirish uchun rasmni bosing';
+
+  @override
+  String instImageRightsChecked(String date) {
+    return 'Huquq tekshirilgan: $date';
+  }
+
+  @override
+  String instImageSemantics(String model) {
+    return '$model fotosi';
+  }
 
   @override
   String get instSources => 'Manbalar';

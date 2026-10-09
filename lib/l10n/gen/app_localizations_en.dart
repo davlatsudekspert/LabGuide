@@ -2891,7 +2891,30 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get instIllustration =>
-      'Schematic illustration (drawn by LabGuide) — not the actual appearance of this model.';
+      'Schematic illustration (drawn by LabGuide) — decorative, not the actual appearance of any instrument.';
+
+  @override
+  String get instImageMissing => 'Model image not available yet';
+
+  @override
+  String get instImageMissingSub =>
+      'No reusable image of this exact model was found. See its appearance on the manufacturer’s page.';
+
+  @override
+  String get instMakerSource => 'Manufacturer source';
+
+  @override
+  String get instImageTapToZoom => 'Tap the photo to enlarge';
+
+  @override
+  String instImageRightsChecked(String date) {
+    return 'Rights checked: $date';
+  }
+
+  @override
+  String instImageSemantics(String model) {
+    return 'Photo of $model';
+  }
 
   @override
   String get instSources => 'Sources';

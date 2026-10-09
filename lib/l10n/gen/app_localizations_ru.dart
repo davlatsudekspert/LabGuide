@@ -2909,7 +2909,30 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get instIllustration =>
-      'Схематичное изображение (нарисовано LabGuide) — не внешний вид конкретной модели.';
+      'Схематичное изображение (нарисовано LabGuide) — для оформления раздела, не внешний вид конкретного прибора.';
+
+  @override
+  String get instImageMissing => 'Изображение модели пока недоступно';
+
+  @override
+  String get instImageMissingSub =>
+      'Разрешённое к использованию изображение именно этой модели не найдено. Внешний вид — на странице производителя.';
+
+  @override
+  String get instMakerSource => 'Источник производителя';
+
+  @override
+  String get instImageTapToZoom => 'Нажмите на фото, чтобы увеличить';
+
+  @override
+  String instImageRightsChecked(String date) {
+    return 'Права проверены: $date';
+  }
+
+  @override
+  String instImageSemantics(String model) {
+    return 'Фото $model';
+  }
 
   @override
   String get instSources => 'Источники';

@@ -445,12 +445,17 @@ ham qo‘shilib ketgan edi. Endi:
 - **Qayta kiritmaslik:** “Mening apparatim” (nom, seriya, qo‘llanma versiyasi) va analit
   bo‘yicha oxirgi reagent tanlovi qurilmada saqlanadi; yozuv yaratilganda katalog modeli
   avtomatik saqlanadi.
-- **Rasm:** har yo‘nalish uchun LabGuide’ning o‘z sxematik chizmasi (`tool/illustrations/*.svg`
-  → PNG, `render.cjs`), qurilmada “LabGuide” yozuvi; kartada “sxematik rasm — aniq model
-  ko‘rinishi emas” deb yoziladi. Chizmaga ishlab chiqaruvchi nomi yoki logosi qo‘yilmaydi
-  (rasm rasmiy apparat ko‘rinishi deb tushunilmasin). Egasining talabi bilan Wikimedia’dagi
-  xira cobas u 411 fotosi olib tashlandi. Model fotosi faqat erkin litsenziyali va sifatli
-  bo‘lsa qo‘shiladi.
+- **Rasm (D-36a, 2026-10-09 yangilandi):** model kartasida faqat **aynan shu modelning**
+  fotosi — ishlab chiqaruvchidan yozma ruxsat bilan yoki modeli aniq yozilgan erkin
+  litsenziyali manbadan; saytda ochiq turishi ruxsat emas (Mindray, Roche, Abbott
+  Terms of Use tijoriy/qayta foydalanishni yozma ruxsatsiz taqiqlaydi). Metadata majburiy:
+  manufacturer, model, source_url, license/rights, checked_at, author; validator boshqa
+  modelning rasmini rad etadi. Ikki o‘lcham (≈480 / ≤1600 px), maydonda `BoxFit.contain`,
+  bosilganda to‘liq ekran (InteractiveViewer). Rasm yo‘q bo‘lsa — neytral belgi va
+  “Model rasmi hozircha mavjud emas” + “Ishlab chiqaruvchi manbasi” havolasi. Yo‘nalish
+  sxematik chizmalari (`tool/illustrations/*.svg`) endi faqat yo‘nalish sahifasida, “sxematik”
+  izohi bilan. Hozir 26 modeldan hech birida ruxsatli rasm yo‘q; ruxsat so‘rash ro‘yxati —
+  `docs/INSTRUMENT_IMAGES.md`. Wikimedia’dagi cobas u 411 fotosi xira va kesilgan — qo‘yilmaydi.
 - **Foydalanuvchi sifatida tekshiruv:** `tool/screenshots/walkthrough_test.dart` — mutaxassis
   yo‘li 23 qadam (uz), ru/qorong‘i/katta shrift, en; har qadam rasmi ko‘rib chiqildi. Topilgan
   va tuzatilgan: qirqilgan qidiruv matnlari, keyingi sahifaga o‘tib qolgan “Saqlandi”
