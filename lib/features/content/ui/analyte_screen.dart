@@ -9,6 +9,8 @@ import '../../../app/widgets/links.dart';
 import '../../../design/tokens.dart';
 import '../../../design/widgets/lg_widgets.dart';
 import '../../../l10n/gen/app_localizations.dart';
+import '../../reference/reference_content.dart';
+import '../../reference/reference_screens.dart';
 import '../../tools/calc_info.dart';
 import '../../tools/clinical_calc_screens.dart';
 import '../../tools/clinical_calculators.dart';
@@ -223,6 +225,14 @@ class _AnalyteBody {
           subtitle: l.analyteCalculatorSub,
           icon: calcIcon(c),
           onTap: () => openInTab(context, '/lab/calculators/${calcRoute(c)}'),
+        ),
+      // Kitob/rasmiy manbalarga asoslangan jadval va algoritmlar.
+      for (final t in refTopicsForAnalyte(analyte.id))
+        LgRow(
+          title: t.title.of(lang),
+          subtitle: l.refOpenSub,
+          icon: Icons.table_chart_outlined,
+          onTap: () => openInTab(context, refRoute(t.id)),
         ),
       LgRow(
         title: l.analyteMethodCalibration,
@@ -711,7 +721,9 @@ class SourceTile extends StatelessWidget {
           if (meta.isNotEmpty) Text(meta, style: text.bodySmall),
           if (source.note != null) Text(source.note!, style: text.bodySmall),
           Text(
-            item == null
+            source.isCitationOnlyBook
+                ? l.analyteReuseCitationOnly
+                : item == null
                 ? l.analyteReuseRightsVerify
                 : rightsLabel(item.rights.distribution, l),
             style: text.bodySmall,

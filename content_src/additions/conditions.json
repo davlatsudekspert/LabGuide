@@ -3386,7 +3386,19 @@
     "jaundice",
     "cholestasis",
     "bile duct obstruction",
-    "hyperbilirubinemia"
+    "hyperbilirubinemia",
+    "jigar usti sariqligi",
+    "jigar osti sariqligi",
+    "parenximatoz sariqlik",
+    "gemolitik sariqlik",
+    "надпечёночная желтуха",
+    "подпечёночная желтуха",
+    "паренхиматозная желтуха",
+    "prehepatic jaundice",
+    "posthepatic jaundice",
+    "sitoliz sindromi",
+    "xolestaz sindromi",
+    "de Ritis"
    ],
    "summary": {
     "text": {
@@ -3557,6 +3569,170 @@
        "locator": "What do the results mean?"
       }
      ]
+    },
+    {
+     "finding": {
+      "uz": "Jigar usti (gemolitik): bevosita bo‘lmagan bilirubin ↑, siydikda bilirubin yo‘q, urobilinogen ↑, najas to‘q",
+      "ru": "Надпечёночная (гемолитическая): непрямой билирубин ↑, билирубина в моче нет, уробилиноген ↑, кал тёмный",
+      "en": "Prehepatic (haemolytic): indirect bilirubin ↑, no urine bilirubin, urobilinogen ↑, dark stool"
+     },
+     "meaning": {
+      "uz": "Gemoliz yoki Jilber sindromi kabi konyugatsiya buzilishi; gemoliz belgilari tekshiriladi.",
+      "ru": "Гемолиз или нарушение конъюгации, например синдром Жильбера; проверяют признаки гемолиза.",
+      "en": "Haemolysis or impaired conjugation such as Gilbert syndrome; check haemolysis markers."
+     },
+     "refs": [
+      {
+       "source_id": "fargo-2017-jaundice",
+       "locator": "Abstract"
+      },
+      {
+       "source_id": "medline-urobilinogen-urine",
+       "locator": "What do the results mean?"
+      },
+      {
+       "source_id": "book-sobirova-2006",
+       "locator": "XVII bob. Jigar biokimyosi: sariqliklar"
+      }
+     ]
+    },
+    {
+     "finding": {
+      "uz": "Jigar (parenximatoz): ikkala fraksiya ↑, siydikda bilirubin bor, urobilinogen ko‘pincha ↑, ALT/AST ustun",
+      "ru": "Печёночная (паренхиматозная): обе фракции ↑, билирубин в моче есть, уробилиноген часто ↑, преобладают АЛТ/АСТ",
+      "en": "Hepatic: both fractions ↑, urine bilirubin present, urobilinogen often ↑, ALT/AST predominate"
+     },
+     "meaning": {
+      "uz": "Gepatotsellyulyar shikastlanish (masalan, virusli yoki alkogolli gepatit, sirroz).",
+      "ru": "Гепатоцеллюлярное поражение (например, вирусный или алкогольный гепатит, цирроз).",
+      "en": "Hepatocellular injury (e.g., viral or alcoholic hepatitis, cirrhosis)."
+     },
+     "refs": [
+      {
+       "source_id": "kwo-2017-acg-liver",
+       "locator": "Abstract"
+      },
+      {
+       "source_id": "fargo-2017-jaundice",
+       "locator": "Abstract"
+      },
+      {
+       "source_id": "medline-bilirubin-urine",
+       "locator": "What do the results mean?"
+      },
+      {
+       "source_id": "medline-urobilinogen-urine",
+       "locator": "What do the results mean?"
+      },
+      {
+       "source_id": "book-sobirova-2006",
+       "locator": "XVII bob. Jigar biokimyosi: sariqliklar"
+      }
+     ]
+    },
+    {
+     "finding": {
+      "uz": "Jigar osti (mexanik): bevosita bilirubin ↑, siydikda bilirubin bor, urobilinogen ↓ yoki yo‘q, najas oqargan; ALP va GGT ustun",
+      "ru": "Подпечёночная (механическая): прямой билирубин ↑, билирубин в моче есть, уробилиноген ↓ или нет, кал светлый; преобладают ЩФ и ГГТ",
+      "en": "Posthepatic (obstructive): direct bilirubin ↑, urine bilirubin present, urobilinogen ↓ or absent, pale stool; ALP and GGT predominate"
+     },
+     "meaning": {
+      "uz": "O‘t yo‘llari tiqilishi (tosh, o‘sma, torayish) ehtimoli — tasvirlash tekshiruvi kerak.",
+      "ru": "Вероятна закупорка желчных путей (камень, опухоль, стриктура) — нужна визуализация.",
+      "en": "Bile-duct obstruction (stone, tumour, stricture) likely — imaging is needed."
+     },
+     "refs": [
+      {
+       "source_id": "kwo-2017-acg-liver",
+       "locator": "Abstract"
+      },
+      {
+       "source_id": "medline-urobilinogen-urine",
+       "locator": "What do the results mean?"
+      },
+      {
+       "source_id": "medline-ency-pale-stools",
+       "locator": "Stools - pale or clay-colored"
+      },
+      {
+       "source_id": "fargo-2017-jaundice",
+       "locator": "Abstract"
+      },
+      {
+       "source_id": "book-sobirova-2006",
+       "locator": "XVII bob. Jigar biokimyosi: sariqliklar"
+      }
+     ]
+    },
+    {
+     "finding": {
+      "uz": "ALT/AST ALP dan nomutanosib ko‘p oshgan (sitoliz)",
+      "ru": "АЛТ/АСТ повышены непропорционально больше ЩФ (цитолиз)",
+      "en": "ALT/AST raised out of proportion to ALP (cytolysis)"
+     },
+     "meaning": {
+      "uz": "Gepatotsellyulyar shikastlanish naqshi.",
+      "ru": "Паттерн гепатоцеллюлярного повреждения.",
+      "en": "Hepatocellular injury pattern."
+     },
+     "refs": [
+      {
+       "source_id": "kwo-2017-acg-liver",
+       "locator": "Abstract"
+      },
+      {
+       "source_id": "book-sobirova-2006",
+       "locator": "XVII bob. Jigar xastaliklarida biokimyoviy o‘zgarishlar (sindromlar)"
+      }
+     ]
+    },
+    {
+     "finding": {
+      "uz": "AST/ALT (de Ritis) > 2",
+      "ru": "АСТ/АЛТ (де Ритис) > 2",
+      "en": "AST/ALT (De Ritis) > 2"
+     },
+     "meaning": {
+      "uz": "Alkogolli jigar kasalligiga xos; alkogolsiz kasallikda 1 dan oshishi sirrozga ishora qilishi mumkin.",
+      "ru": "Характерно для алкогольной болезни печени; при неалкогольной болезни рост выше 1 может указывать на цирроз.",
+      "en": "Typical of alcoholic liver disease; in non-alcoholic disease a ratio above 1 may suggest cirrhosis."
+     },
+     "refs": [
+      {
+       "source_id": "williams-1988-ast-alt",
+       "locator": "Abstract"
+      },
+      {
+       "source_id": "book-sobirova-2006",
+       "locator": "XVII bob. Jigar xastaliklarida biokimyoviy o‘zgarishlar (sindromlar)"
+      }
+     ]
+    },
+    {
+     "finding": {
+      "uz": "Albumin ↓ + PT/INR uzaygan",
+      "ru": "Альбумин ↓ + ПВ/МНО удлинено",
+      "en": "Albumin ↓ + prolonged PT/INR"
+     },
+     "meaning": {
+      "uz": "Jigarning sintetik funksiyasi pasaygan (gepatotsitar yetishmovchilik) ehtimoli.",
+      "ru": "Вероятно снижение синтетической функции печени (печёночно-клеточная недостаточность).",
+      "en": "Reduced liver synthetic function (hepatocellular failure) likely."
+     },
+     "refs": [
+      {
+       "source_id": "medline-liver-function",
+       "locator": "What are liver function tests?"
+      },
+      {
+       "source_id": "kwo-2017-acg-liver",
+       "locator": "Abstract"
+      },
+      {
+       "source_id": "book-sobirova-2006",
+       "locator": "XVII bob. Jigar xastaliklarida biokimyoviy o‘zgarishlar (sindromlar)"
+      }
+     ]
     }
    ],
    "cautions": [
@@ -3581,7 +3757,14 @@
    "review": {
     "state": "pending",
     "reviewer_id": null,
-    "reviewed_at": null
+    "reviewed_at": null,
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "Kitoblar (Dolgov 2009, Lyubina 1984, Najmitdinov 1998, Sobirova 2006, Aripova 2007, Dadayev 2004) bilimi rasmiy/ochiq manbalar bilan solishtirildi; matn ko‘chirilmagan",
+      "report": "scratchpad/books/B_01..B_06, A_02, A_04 (agent tahlili)"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -5283,6 +5466,46 @@
        "locator": "What do the results mean?"
       }
      ]
+    },
+    {
+     "finding": {
+      "uz": "Ferritin <15 µg/L (sog‘lom kattalar) yoki <70 µg/L (yallig‘lanish bor)",
+      "ru": "Ферритин <15 мкг/л (здоровые взрослые) или <70 мкг/л (при воспалении)",
+      "en": "Ferritin <15 µg/L (healthy adults) or <70 µg/L (with inflammation)"
+     },
+     "meaning": {
+      "uz": "JSST (2020) bo‘yicha temir tanqisligi; yallig‘lanishni baholash uchun CRP (va AGP) birga o‘lchanadi.",
+      "ru": "Дефицит железа по ВОЗ (2020); для оценки воспаления одновременно измеряют CRP (и AGP).",
+      "en": "Iron deficiency per WHO (2020); CRP (and AGP) are measured to assess inflammation."
+     },
+     "refs": [
+      {
+       "source_id": "who-ferritin-2020",
+       "locator": "Executive summary: Table 1"
+      },
+      {
+       "source_id": "who-ferritin-2020",
+       "locator": "Executive summary: recommendations 4.1–4.2"
+      }
+     ]
+    },
+    {
+     "finding": {
+      "uz": "MCV past + RDW yuqori",
+      "ru": "MCV низкий + RDW высокий",
+      "en": "Low MCV + high RDW"
+     },
+     "meaning": {
+      "uz": "Temir tanqisligiga xos turli o‘lchamli mikrotsitoz; ferritin va transferrin to‘yinishi bilan tasdiqlanadi.",
+      "ru": "Разнородный микроцитоз, типичный для дефицита железа; подтверждают ферритином и насыщением трансферрина.",
+      "en": "Heterogeneous microcytosis typical of iron deficiency; confirm with ferritin and transferrin saturation."
+     },
+     "refs": [
+      {
+       "source_id": "takami-2026-cbc",
+       "locator": "Table 3. Integrated Interpretation of Anemia Using MCV and RDW"
+      }
+     ]
     }
    ],
    "cautions": [
@@ -5303,7 +5526,14 @@
    "review": {
     "state": "pending",
     "reviewer_id": null,
-    "reviewed_at": null
+    "reviewed_at": null,
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "Kitoblar (Dolgov 2009, Lyubina 1984, Najmitdinov 1998, Sobirova 2006, Aripova 2007, Dadayev 2004) bilimi rasmiy/ochiq manbalar bilan solishtirildi; matn ko‘chirilmagan",
+      "report": "scratchpad/books/B_01..B_06, A_02, A_04 (agent tahlili)"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -5523,6 +5753,28 @@
        "locator": "What do the results mean?"
       }
      ]
+    },
+    {
+     "finding": {
+      "uz": "MCV >100 fL + RDW yuqori",
+      "ru": "MCV >100 фл + RDW высокий",
+      "en": "MCV >100 fL + high RDW"
+     },
+     "meaning": {
+      "uz": "Turli o‘lchamli makrotsitoz — B12 yoki folat tanqisligi, miyelodisplaziya ehtimoli.",
+      "ru": "Разнородный макроцитоз — вероятен дефицит B12 или фолата, миелодисплазия.",
+      "en": "Heterogeneous macrocytosis — B12 or folate deficiency, myelodysplasia possible."
+     },
+     "refs": [
+      {
+       "source_id": "takami-2026-cbc",
+       "locator": "Table 3. Integrated Interpretation of Anemia Using MCV and RDW"
+      },
+      {
+       "source_id": "medline-mcv",
+       "locator": "What do the results mean?"
+      }
+     ]
     }
    ],
    "cautions": [
@@ -5543,7 +5795,14 @@
    "review": {
     "state": "pending",
     "reviewer_id": null,
-    "reviewed_at": null
+    "reviewed_at": null,
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "Kitoblar (Dolgov 2009, Lyubina 1984, Najmitdinov 1998, Sobirova 2006, Aripova 2007, Dadayev 2004) bilimi rasmiy/ochiq manbalar bilan solishtirildi; matn ko‘chirilmagan",
+      "report": "scratchpad/books/B_01..B_06, A_02, A_04 (agent tahlili)"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",

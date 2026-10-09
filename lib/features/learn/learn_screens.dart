@@ -12,6 +12,7 @@ import '../auth/ui/welcome_screen.dart';
 import '../content/content_model.dart';
 import '../content/ui/content_widgets.dart';
 import '../daily/daily_screens.dart';
+import '../reference/reference_screens.dart';
 import '../toifa/toifa_screens.dart';
 import 'exam_screens.dart';
 import 'quiz_session.dart';
@@ -94,6 +95,12 @@ class LearnScreen extends StatelessWidget {
           subtitle: examRowSubtitle(context, l),
           icon: Icons.timer_outlined,
           onTap: () => context.push('/learn/exam'),
+        ),
+        LgRow(
+          title: l.refTitle,
+          subtitle: l.refSub,
+          icon: Icons.table_chart_outlined,
+          onTap: () => context.push(refBase),
         ),
         LgRow(
           title: l.diffTitle,

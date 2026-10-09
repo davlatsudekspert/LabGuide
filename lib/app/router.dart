@@ -34,6 +34,7 @@ import '../features/profile/profile_screens.dart';
 import '../features/qc/qc_guides.dart';
 import '../features/qc/qc_guides_info.dart';
 import '../features/qc/qc_screens.dart';
+import '../features/reference/reference_screens.dart';
 import '../features/review/review_screens.dart';
 import '../features/settings/settings_controller.dart';
 import '../features/support/support_screens.dart';
@@ -585,6 +586,20 @@ GoRouter buildRouter(
                   GoRoute(
                     path: 'quiz',
                     builder: (context, state) => const QuizScreen(),
+                  ),
+                  // Jadvallar va algoritmlar (anemiya, sariqlik, eskirgan
+                  // usullar...).
+                  GoRoute(
+                    path: 'reference',
+                    builder: (context, state) => const RefListScreen(),
+                    routes: [
+                      GoRoute(
+                        path: ':id',
+                        builder: (context, state) => RefTopicScreen(
+                          topicId: state.pathParameters['id']!,
+                        ),
+                      ),
+                    ],
                   ),
                   // Kunlik 5 ta savol (bosh sahifa kartasi va eslatmadan).
                   GoRoute(

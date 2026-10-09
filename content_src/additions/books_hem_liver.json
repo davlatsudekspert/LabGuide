@@ -1,0 +1,2948 @@
+{
+ "sources": [
+  {
+   "id": "book-najmitdinov-1998",
+   "kind": "book",
+   "title": "Клиник гематология асослари",
+   "publisher": "Наджимитдинов С.Т. · Тошкент: Абу Али ибн Сино номидаги тиббиёт нашриёти, 1998 · ISBN 5-638-01210-9",
+   "source_date": "1998",
+   "jurisdiction": "UZ",
+   "note": "Citation only: copyrighted book; no text, tables or figures reproduced — facts restated in our own words. Read partially (text cut in the leukaemia chapter). Figures belong to E. Undritz/Sandoz — not used.",
+   "reuse_rights": "citation_only"
+  },
+  {
+   "id": "book-dolgov-2009",
+   "kind": "book",
+   "title": "Лабораторная диагностика анемий (2-е изд.)",
+   "publisher": "Долгов В.В., Луговская С.А., Морозова В.Т., Почтарь М.Е. · Москва–Тверь: Триада, 2009 · ISBN 978-5-94789-340-3",
+   "source_date": "2009",
+   "jurisdiction": "RU",
+   "note": "Citation only: copyrighted book; no text, tables or figures reproduced — facts restated in our own words. Read partially (OCR of the whole book; analyser, iron and classification chapters read in depth).",
+   "reuse_rights": "citation_only"
+  },
+  {
+   "id": "book-lyubina-1984",
+   "kind": "book",
+   "title": "Клинические лабораторные исследования",
+   "publisher": "Любина А.Я., Ильичева Л.П., Катасонова Т.В., Петросова С.А. · Москва: Медицина, 1984",
+   "source_date": "1984",
+   "jurisdiction": "RU",
+   "note": "Citation only: copyrighted book; no text, tables or figures reproduced — facts restated in our own words. Textbook for medical schools; several methods are obsolete (marked in the app).",
+   "reuse_rights": "citation_only"
+  },
+  {
+   "id": "book-dadayev-2004",
+   "kind": "book",
+   "title": "Паразитология",
+   "publisher": "Дадаев С. · Тошкент: Низомий номидаги ТДПУ, 2004",
+   "source_date": "2004",
+   "jurisdiction": "UZ",
+   "note": "Citation only: copyrighted book; no text, tables or figures reproduced — facts restated in our own words. Read partially (text ends at the nematode introduction). Used for Uzbek terms only.",
+   "reuse_rights": "citation_only"
+  },
+  {
+   "id": "book-sobirova-2006",
+   "kind": "book",
+   "title": "Biologik kimyo",
+   "publisher": "Sobirova R.A., Abrorov O.A., Inoyatova F.X., Aripov A.N. · Toshkent: Yangi asr avlodi, 2006 · ISBN 978-9943-08-010-2",
+   "source_date": "2006",
+   "jurisdiction": "UZ",
+   "note": "Citation only: copyrighted book; no text, tables or figures reproduced — facts restated in our own words. Free to read on the TMA biochemistry department site, no open licence. Chapter XVII (liver) read in full.",
+   "reuse_rights": "citation_only"
+  },
+  {
+   "id": "book-aripova-2007",
+   "kind": "book",
+   "title": "Klinik va biokimyoviy tekshiruv usullari",
+   "publisher": "Aripova G.S., Po‘latova F.G., Nazarova N.S., Toirova Z.S. · Toshkent: G‘afur G‘ulom nomidagi NMIU, 2007 · ISBN 978-9943-03-034-3",
+   "source_date": "2007",
+   "jurisdiction": "UZ",
+   "note": "Citation only: copyrighted book; no text, tables or figures reproduced — facts restated in our own words. Read in full. Chapters 10–13 are a translation of a WHO-style primary-care lab manual.",
+   "reuse_rights": "citation_only"
+  },
+  {
+   "id": "who-ferritin-2020",
+   "kind": "web",
+   "title": "WHO guideline on use of ferritin concentrations to assess iron status in individuals and populations",
+   "publisher": "World Health Organization",
+   "url": "https://www.who.int/publications/i/item/9789240000124",
+   "accessed": "2026-10-09",
+   "source_date": "2020-04-21",
+   "jurisdiction": "WHO",
+   "note": "Executive summary read (recommendations 1.1–1.4, 4.1–4.2; Table 1).",
+   "reuse_rights": "verify_before_distribution"
+  },
+  {
+   "id": "who-basic-lab-techniques-2003",
+   "kind": "web",
+   "title": "Manual of basic techniques for a health laboratory, 2nd ed.",
+   "publisher": "World Health Organization",
+   "url": "https://www.who.int/publications/i/item/9241545305",
+   "accessed": "2026-10-09",
+   "source_date": "2003",
+   "jurisdiction": "WHO",
+   "note": "Sections 4.2–4.6 (stool parasitology, occult blood), 9.3 (haemoglobin), 9.7 (ESR), 9.13 (differential) read.",
+   "reuse_rights": "verify_before_distribution"
+  },
+  {
+   "id": "who-mercury-health",
+   "kind": "web",
+   "title": "Mercury and health (fact sheet)",
+   "publisher": "World Health Organization",
+   "url": "https://www.who.int/news-room/fact-sheets/detail/mercury-and-health",
+   "accessed": "2026-10-09",
+   "source_date": "2024-10-24",
+   "jurisdiction": "WHO",
+   "note": null,
+   "reuse_rights": "verify_before_distribution"
+  },
+  {
+   "id": "medline-haptoglobin",
+   "kind": "web",
+   "title": "Haptoglobin (HP) Test",
+   "publisher": "MedlinePlus · U.S. National Library of Medicine",
+   "url": "https://medlineplus.gov/lab-tests/haptoglobin-hp-test/",
+   "accessed": "2026-10-09",
+   "source_date": "2024-06-10",
+   "jurisdiction": "US",
+   "note": null,
+   "reuse_rights": "verify_before_distribution"
+  },
+  {
+   "id": "medline-ency-bilirubin",
+   "kind": "web",
+   "title": "Bilirubin blood test (Medical Encyclopedia)",
+   "publisher": "MedlinePlus · A.D.A.M.",
+   "url": "https://medlineplus.gov/ency/article/003479.htm",
+   "accessed": "2026-10-09",
+   "source_date": "2025-02-13",
+   "jurisdiction": "US",
+   "note": null,
+   "reuse_rights": "verify_before_distribution"
+  },
+  {
+   "id": "medline-ency-jaundice-causes",
+   "kind": "web",
+   "title": "Jaundice causes (Medical Encyclopedia)",
+   "publisher": "MedlinePlus · A.D.A.M.",
+   "url": "https://medlineplus.gov/ency/article/007491.htm",
+   "accessed": "2026-10-09",
+   "source_date": "2025-07-22",
+   "jurisdiction": "US",
+   "note": null,
+   "reuse_rights": "verify_before_distribution"
+  },
+  {
+   "id": "cdc-dpdx-stool-processing",
+   "kind": "web",
+   "title": "Stool Specimens – Specimen Processing (DPDx)",
+   "publisher": "CDC · DPDx",
+   "url": "https://www.cdc.gov/dpdx/diagnosticprocedures/stool/specimenproc.html",
+   "accessed": "2026-10-09",
+   "source_date": "2016-05-03",
+   "jurisdiction": "US",
+   "note": null,
+   "reuse_rights": "verify_before_distribution"
+  },
+  {
+   "id": "takami-2026-cbc",
+   "kind": "web",
+   "title": "Takami A. How to Interpret the Complete Blood Count in Daily Practice: A Practical Framework for Clinical Decision-making. JMA J. 2026;9(5):1084-93",
+   "publisher": "JMA Journal (PMC13639491)",
+   "url": "https://doi.org/10.31662/jmaj.2026-0173",
+   "accessed": "2026-10-09",
+   "source_date": "2026-08-07",
+   "jurisdiction": "JP",
+   "note": "Full text read (Tables 2–4). Copyright Japan Medical Association — facts only.",
+   "reuse_rights": "verify_before_distribution"
+  },
+  {
+   "id": "barcellini-2015-hemolysis",
+   "kind": "web",
+   "title": "Barcellini W, Fattizzo B. Clinical Applications of Hemolytic Markers in the Differential Diagnosis and Management of Hemolytic Anemia. Dis Markers. 2015;2015:635670",
+   "publisher": "Disease Markers (PMC4706896, CC BY 4.0)",
+   "url": "https://doi.org/10.1155/2015/635670",
+   "accessed": "2026-10-09",
+   "source_date": "2015-12-27",
+   "jurisdiction": "IT",
+   "note": "Abstract read.",
+   "reuse_rights": "verify_before_distribution"
+  },
+  {
+   "id": "piva-2010-reticulocytes",
+   "kind": "web",
+   "title": "Piva E, Brugnara C, Chiandetti L, Plebani M. Automated reticulocyte counting: state of the art and clinical applications in the evaluation of erythropoiesis. Clin Chem Lab Med. 2010;48(10):1369-80",
+   "publisher": "Clinical Chemistry and Laboratory Medicine",
+   "url": "https://doi.org/10.1515/CCLM.2010.292",
+   "accessed": "2026-10-09",
+   "source_date": "2010-07-29",
+   "jurisdiction": "IT",
+   "note": "Abstract read.",
+   "reuse_rights": "verify_before_distribution"
+  },
+  {
+   "id": "wu-2021-hs-mscv",
+   "kind": "web",
+   "title": "Wu Y, Liao L, Lin F. The diagnostic protocol for hereditary spherocytosis — 2021 update. J Clin Lab Anal. 2021;35(12):e24034",
+   "publisher": "Journal of Clinical Laboratory Analysis (PMC8649336)",
+   "url": "https://doi.org/10.1002/jcla.24034",
+   "accessed": "2026-10-09",
+   "source_date": "2021-10-24",
+   "jurisdiction": "CN",
+   "note": "Full text read (Laboratory tests for HS: routine blood test).",
+   "reuse_rights": "verify_before_distribution"
+  },
+  {
+   "id": "kwo-2017-acg-liver",
+   "kind": "web",
+   "title": "Kwo PY, Cohen SM, Lim JK. ACG Clinical Guideline: Evaluation of Abnormal Liver Chemistries. Am J Gastroenterol. 2017;112(1):18-35",
+   "publisher": "American Journal of Gastroenterology",
+   "url": "https://doi.org/10.1038/ajg.2016.517",
+   "accessed": "2026-10-09",
+   "source_date": "2016-12-20",
+   "jurisdiction": "US",
+   "note": "Abstract read.",
+   "reuse_rights": "verify_before_distribution"
+  },
+  {
+   "id": "fargo-2017-jaundice",
+   "kind": "web",
+   "title": "Fargo MV, Grogan SP, Saguil A. Evaluation of Jaundice in Adults. Am Fam Physician. 2017;95(3):164-8",
+   "publisher": "American Family Physician (PubMed 28145671)",
+   "url": "https://pubmed.ncbi.nlm.nih.gov/28145671/",
+   "accessed": "2026-10-09",
+   "source_date": "2017-02-01",
+   "jurisdiction": "US",
+   "note": "Abstract read.",
+   "reuse_rights": "verify_before_distribution"
+  },
+  {
+   "id": "williams-1988-ast-alt",
+   "kind": "web",
+   "title": "Williams AL, Hoofnagle JH. Ratio of serum aspartate to alanine aminotransferase in chronic hepatitis. Relationship to cirrhosis. Gastroenterology. 1988;95(3):734-9",
+   "publisher": "Gastroenterology (NIDDK authors)",
+   "url": "https://doi.org/10.1016/s0016-5085(88)80022-2",
+   "accessed": "2026-10-09",
+   "source_date": "1988-09",
+   "jurisdiction": "US",
+   "note": "Abstract read.",
+   "reuse_rights": "verify_before_distribution"
+  },
+  {
+   "id": "kratz-2017-icsh-esr",
+   "kind": "web",
+   "title": "Kratz A, Plebani M, Peng M, et al. ICSH recommendations for modified and alternate methods measuring the erythrocyte sedimentation rate. Int J Lab Hematol. 2017;39(5):448-57",
+   "publisher": "International Journal of Laboratory Hematology",
+   "url": "https://doi.org/10.1111/ijlh.12693",
+   "accessed": "2026-10-09",
+   "source_date": "2017-05-12",
+   "jurisdiction": "INT",
+   "note": "Abstract read.",
+   "reuse_rights": "verify_before_distribution"
+  },
+  {
+   "id": "ifcc-2002-enzymes",
+   "kind": "web",
+   "title": "Siekmann L, et al. IFCC primary reference procedures for the measurement of catalytic activity concentrations of enzymes at 37 °C. Part 7. Clin Chem Lab Med. 2002;40(7):739-45",
+   "publisher": "Clinical Chemistry and Laboratory Medicine (IFCC)",
+   "url": "https://doi.org/10.1515/CCLM.2002.127",
+   "accessed": "2026-10-09",
+   "source_date": "2002-07",
+   "jurisdiction": "INT",
+   "note": "Abstract read; it lists the series (Part 4 ALT, Part 5 AST, Part 6 GGT).",
+   "reuse_rights": "verify_before_distribution"
+  }
+ ],
+ "quiz": [
+  {
+   "id": "books-mchc-artefact",
+   "review_state": "pending",
+   "refs": [
+    {
+     "source_id": "takami-2026-cbc",
+     "locator": "Table 2. Clinical Interpretation of Key CBC Parameters"
+    },
+    {
+     "source_id": "takami-2026-cbc",
+     "locator": "Table 4. Common Causes of Spurious Results in Automated Blood Cell Analysis"
+    },
+    {
+     "source_id": "book-dolgov-2009",
+     "locator": "Гематологические анализаторы: основные показатели эритропоэза",
+     "pages": "25–35"
+    }
+   ],
+   "topic_ids": [
+    "mchc"
+   ],
+   "correct_index": 0,
+   "prompt": {
+    "uz": "Analizator MCHC = 39 g/dL ko‘rsatdi, RBC past, MCV yuqori. Birinchi navbatda nima qilinadi?",
+    "ru": "Анализатор показал MCHC = 39 г/дл, RBC низкий, MCV высокий. Что делают в первую очередь?",
+    "en": "The analyser shows MCHC 39 g/dL, low RBC and high MCV. What comes first?"
+   },
+   "basis": {
+    "uz": "MCHC 36–38 g/dL dan yuqori bo‘lishi o‘lchash xatosi belgisi; RBC↓ + MCV↑ sovuq agglyutininlarga xos — namuna isitilib qayta o‘lchanadi, surtma ko‘riladi.",
+    "ru": "MCHC выше 36–38 г/дл — признак ошибки измерения; RBC↓ + MCV↑ типичны для холодовых агглютининов — пробу согревают и измеряют повторно, смотрят мазок.",
+    "en": "MCHC above 36–38 g/dL signals measurement error; low RBC with high MCV suggests cold agglutinins — warm and re-run the sample and check the smear."
+   },
+   "options": [
+    {
+     "text": {
+      "uz": "Soxta natijani istisno qilish: namunani 37 °C da isitib qayta o‘lchash, surtma",
+      "ru": "Исключить ложный результат: согреть пробу до 37 °C, повторить, мазок",
+      "en": "Exclude a spurious result: warm to 37 °C, re-run, check the smear"
+     },
+     "explanation": {
+      "uz": "To‘g‘ri: bunday MCHC fiziologik emas, avval artefakt istisno qilinadi.",
+      "ru": "Верно: такой MCHC нефизиологичен, сначала исключают артефакт.",
+      "en": "Correct: such an MCHC is not physiological; rule out artefact first."
+     }
+    },
+    {
+     "text": {
+      "uz": "Darhol sferotsitoz tashxisini qo‘yish",
+      "ru": "Сразу ставить диагноз сфероцитоза",
+      "en": "Diagnose spherocytosis straight away"
+     },
+     "explanation": {
+      "uz": "Sferotsitozda MCHC oshadi, lekin bu darajada va RBC↓/MCV↑ bilan avval xato tekshiriladi.",
+      "ru": "При сфероцитозе MCHC растёт, но при таком уровне и RBC↓/MCV↑ сначала проверяют ошибку.",
+      "en": "Spherocytosis raises MCHC, but at this level with low RBC/high MCV an error is checked first."
+     }
+    },
+    {
+     "text": {
+      "uz": "Natijani o‘zgarishsiz chiqarish",
+      "ru": "Выдать результат без изменений",
+      "en": "Release the result unchanged"
+     },
+     "explanation": {
+      "uz": "Noto‘g‘ri: MCHC xato belgisi bo‘lganda natija tekshiriladi.",
+      "ru": "Неверно: при признаке ошибки результат перепроверяют.",
+      "en": "Wrong: with an error flag the result must be checked."
+     }
+    }
+   ]
+  },
+  {
+   "id": "books-irf",
+   "review_state": "pending",
+   "refs": [
+    {
+     "source_id": "piva-2010-reticulocytes",
+     "locator": "Abstract"
+    }
+   ],
+   "topic_ids": [
+    "reticulocytes"
+   ],
+   "correct_index": 0,
+   "prompt": {
+    "uz": "Ildiz hujayra ko‘chirib o‘tkazilgandan keyin eritropoez tiklanishini qaysi ko‘rsatkich eng erta ko‘rsatadi?",
+    "ru": "Какой показатель раньше всего показывает восстановление эритропоэза после трансплантации стволовых клеток?",
+    "en": "Which parameter shows erythroid recovery earliest after stem-cell transplantation?"
+   },
+   "basis": {
+    "uz": "IRF (yetilmagan retikulotsitlar ulushi) — ko‘mik tiklanishining erta belgisi.",
+    "ru": "IRF (фракция незрелых ретикулоцитов) — ранний признак восстановления костного мозга.",
+    "en": "IRF (immature reticulocyte fraction) is an early marker of marrow recovery."
+   },
+   "options": [
+    {
+     "text": {
+      "uz": "IRF",
+      "ru": "IRF",
+      "en": "IRF"
+     },
+     "explanation": {
+      "uz": "To‘g‘ri.",
+      "ru": "Верно.",
+      "en": "Correct."
+     }
+    },
+    {
+     "text": {
+      "uz": "MCV",
+      "ru": "MCV",
+      "en": "MCV"
+     },
+     "explanation": {
+      "uz": "MCV sekin o‘zgaradi.",
+      "ru": "MCV меняется медленно.",
+      "en": "MCV changes slowly."
+     }
+    },
+    {
+     "text": {
+      "uz": "Gemoglobin",
+      "ru": "Гемоглобин",
+      "en": "Haemoglobin"
+     },
+     "explanation": {
+      "uz": "Gemoglobin kechroq ko‘tariladi.",
+      "ru": "Гемоглобин растёт позже.",
+      "en": "Haemoglobin rises later."
+     }
+    }
+   ]
+  },
+  {
+   "id": "books-anemia-mcv",
+   "review_state": "pending",
+   "refs": [
+    {
+     "source_id": "takami-2026-cbc",
+     "locator": "Table 3. Integrated Interpretation of Anemia Using MCV and RDW"
+    },
+    {
+     "source_id": "medline-mcv",
+     "locator": "What do the results mean?"
+    }
+   ],
+   "topic_ids": [
+    "mcv"
+   ],
+   "correct_index": 0,
+   "prompt": {
+    "uz": "MCV 72 fL, RDW yuqori. Anemiya algoritmida keyingi eng mos tahlil qaysi?",
+    "ru": "MCV 72 фл, RDW высокий. Какой следующий анализ по алгоритму анемии?",
+    "en": "MCV 72 fL with a high RDW. Which test comes next in the anaemia algorithm?"
+   },
+   "basis": {
+    "uz": "Turli o‘lchamli mikrotsitoz temir tanqisligiga xos — ferritin va transferrin to‘yinishi.",
+    "ru": "Разнородный микроцитоз типичен для дефицита железа — ферритин и насыщение трансферрина.",
+    "en": "Heterogeneous microcytosis suggests iron deficiency — ferritin and transferrin saturation."
+   },
+   "options": [
+    {
+     "text": {
+      "uz": "Ferritin (va transferrin to‘yinishi)",
+      "ru": "Ферритин (и насыщение трансферрина)",
+      "en": "Ferritin (and transferrin saturation)"
+     },
+     "explanation": {
+      "uz": "To‘g‘ri.",
+      "ru": "Верно.",
+      "en": "Correct."
+     }
+    },
+    {
+     "text": {
+      "uz": "Vitamin B12",
+      "ru": "Витамин B12",
+      "en": "Vitamin B12"
+     },
+     "explanation": {
+      "uz": "B12 makrotsitozda tekshiriladi.",
+      "ru": "B12 проверяют при макроцитозе.",
+      "en": "B12 is checked in macrocytosis."
+     }
+    },
+    {
+     "text": {
+      "uz": "Gaptoglobin",
+      "ru": "Гаптоглобин",
+      "en": "Haptoglobin"
+     },
+     "explanation": {
+      "uz": "Gemoliz belgisi; mikrotsitozda birinchi emas.",
+      "ru": "Маркер гемолиза; при микроцитозе не первый.",
+      "en": "A haemolysis marker; not first in microcytosis."
+     }
+    }
+   ]
+  },
+  {
+   "id": "books-jaundice-urine",
+   "review_state": "pending",
+   "refs": [
+    {
+     "source_id": "book-sobirova-2006",
+     "locator": "XVII bob. Jigar biokimyosi: sariqliklar"
+    },
+    {
+     "source_id": "medline-bilirubin-urine",
+     "locator": "What do the results mean?"
+    },
+    {
+     "source_id": "medline-urobilinogen-urine",
+     "locator": "What do the results mean?"
+    },
+    {
+     "source_id": "medline-ency-pale-stools",
+     "locator": "Stools - pale or clay-colored"
+    }
+   ],
+   "topic_ids": [
+    "bilirubin-total"
+   ],
+   "correct_index": 0,
+   "prompt": {
+    "uz": "Bemorda sariqlik, siydikda bilirubin bor, urobilinogen yo‘q, najas oqargan. Qaysi sariqlik turi ehtimoli ko‘proq?",
+    "ru": "Желтуха, в моче билирубин есть, уробилиногена нет, кал светлый. Какой тип желтухи вероятнее?",
+    "en": "Jaundice, bilirubin in urine, no urobilinogen, pale stool. Which type is most likely?"
+   },
+   "basis": {
+    "uz": "O‘t ichakka tushmasa urobilinogen hosil bo‘lmaydi va najas oqaradi; konyugatsiyalangan bilirubin siydikka o‘tadi — jigar osti (mexanik).",
+    "ru": "Без поступления желчи в кишечник уробилиноген не образуется и кал светлеет; конъюгированный билирубин уходит в мочу — подпечёночная (механическая).",
+    "en": "Without bile reaching the gut no urobilinogen forms and stool is pale; conjugated bilirubin enters urine — posthepatic (obstructive)."
+   },
+   "options": [
+    {
+     "text": {
+      "uz": "Jigar osti (mexanik)",
+      "ru": "Подпечёночная (механическая)",
+      "en": "Posthepatic (obstructive)"
+     },
+     "explanation": {
+      "uz": "To‘g‘ri.",
+      "ru": "Верно.",
+      "en": "Correct."
+     }
+    },
+    {
+     "text": {
+      "uz": "Jigar usti (gemolitik)",
+      "ru": "Надпечёночная (гемолитическая)",
+      "en": "Prehepatic (haemolytic)"
+     },
+     "explanation": {
+      "uz": "Gemolizda siydikda bilirubin yo‘q, urobilinogen ko‘p.",
+      "ru": "При гемолизе билирубина в моче нет, уробилиногена много.",
+      "en": "In haemolysis there is no urine bilirubin and much urobilinogen."
+     }
+    },
+    {
+     "text": {
+      "uz": "Me’yoriy holat",
+      "ru": "Норма",
+      "en": "Normal"
+     },
+     "explanation": {
+      "uz": "Sog‘lom siydikda bilirubin bo‘lmaydi.",
+      "ru": "В здоровой моче билирубина нет.",
+      "en": "Healthy urine has no bilirubin."
+     }
+    }
+   ]
+  },
+  {
+   "id": "books-de-ritis",
+   "review_state": "pending",
+   "refs": [
+    {
+     "source_id": "williams-1988-ast-alt",
+     "locator": "Abstract"
+    }
+   ],
+   "topic_ids": [
+    "ast"
+   ],
+   "correct_index": 0,
+   "prompt": {
+    "uz": "AST/ALT (de Ritis) nisbati 2 dan katta bo‘lishi klassik ravishda qaysi holatga xos?",
+    "ru": "Для какого состояния классически характерно отношение АСТ/АЛТ (де Ритиса) больше 2?",
+    "en": "An AST/ALT (De Ritis) ratio above 2 is classically typical of which condition?"
+   },
+   "basis": {
+    "uz": "Williams va Hoofnagle (1988): alkogolli jigar kasalligida odatda >2, surunkali virusli gepatit va xolestazda <1.",
+    "ru": "Williams и Hoofnagle (1988): при алкогольной болезни печени обычно >2, при хроническом вирусном гепатите и холестазе <1.",
+    "en": "Williams and Hoofnagle (1988): usually >2 in alcoholic liver disease, <1 in chronic viral hepatitis and cholestasis."
+   },
+   "options": [
+    {
+     "text": {
+      "uz": "Alkogolli jigar kasalligi",
+      "ru": "Алкогольная болезнь печени",
+      "en": "Alcoholic liver disease"
+     },
+     "explanation": {
+      "uz": "To‘g‘ri.",
+      "ru": "Верно.",
+      "en": "Correct."
+     }
+    },
+    {
+     "text": {
+      "uz": "Surunkali virusli gepatit (sirrozsiz)",
+      "ru": "Хронический вирусный гепатит (без цирроза)",
+      "en": "Chronic viral hepatitis (no cirrhosis)"
+     },
+     "explanation": {
+      "uz": "Unda nisbat odatda 1 dan kichik.",
+      "ru": "Там отношение обычно меньше 1.",
+      "en": "There the ratio is usually below 1."
+     }
+    },
+    {
+     "text": {
+      "uz": "Surunkali xolestaz",
+      "ru": "Хронический холестаз",
+      "en": "Chronic cholestasis"
+     },
+     "explanation": {
+      "uz": "Unda ham odatda 1 dan kichik.",
+      "ru": "Там тоже обычно меньше 1.",
+      "en": "Also usually below 1."
+     }
+    }
+   ]
+  },
+  {
+   "id": "books-cholestasis",
+   "review_state": "pending",
+   "refs": [
+    {
+     "source_id": "kwo-2017-acg-liver",
+     "locator": "Abstract"
+    },
+    {
+     "source_id": "book-sobirova-2006",
+     "locator": "XVII bob. Jigar xastaliklarida biokimyoviy o‘zgarishlar (sindromlar)"
+    },
+    {
+     "source_id": "medline-ggt",
+     "locator": "What do the results mean?"
+    }
+   ],
+   "topic_ids": [
+    "alp"
+   ],
+   "correct_index": 0,
+   "prompt": {
+    "uz": "ALP ALT va AST dan nomutanosib ko‘p oshgan, GGT ham yuqori. Bu qaysi laborator sindrom?",
+    "ru": "ЩФ повышена непропорционально сильнее АЛТ и АСТ, ГГТ тоже высокая. Какой это лабораторный синдром?",
+    "en": "ALP is raised out of proportion to ALT and AST, and GGT is high too. Which laboratory pattern is this?"
+   },
+   "basis": {
+    "uz": "ALP ustunligi — xolestaz; GGT ALP ning jigar manbasini tasdiqlaydi.",
+    "ru": "Преобладание ЩФ — холестаз; ГГТ подтверждает печёночный источник ЩФ.",
+    "en": "ALP predominance is cholestatic; GGT confirms a liver source of ALP."
+   },
+   "options": [
+    {
+     "text": {
+      "uz": "Xolestaz",
+      "ru": "Холестаз",
+      "en": "Cholestasis"
+     },
+     "explanation": {
+      "uz": "To‘g‘ri.",
+      "ru": "Верно.",
+      "en": "Correct."
+     }
+    },
+    {
+     "text": {
+      "uz": "Sitoliz",
+      "ru": "Цитолиз",
+      "en": "Cytolysis"
+     },
+     "explanation": {
+      "uz": "Sitolizda ALT/AST ustun.",
+      "ru": "При цитолизе преобладают АЛТ/АСТ.",
+      "en": "In cytolysis ALT/AST predominate."
+     }
+    },
+    {
+     "text": {
+      "uz": "Suyak kasalligi",
+      "ru": "Болезнь костей",
+      "en": "Bone disease"
+     },
+     "explanation": {
+      "uz": "Suyakda GGT odatda me’yorda.",
+      "ru": "При костной причине ГГТ обычно в норме.",
+      "en": "With bone disease GGT is usually normal."
+     }
+    }
+   ]
+  }
+ ],
+ "analytes": [
+  {
+   "id": "alt",
+   "status": "draft",
+   "content_state": "sourced_sample",
+   "names": {
+    "uz": "Alaninaminotransferaza (ALT)",
+    "ru": "Аланинаминотрансфераза (АЛТ)",
+    "en": "Alanine aminotransferase (ALT)"
+   },
+   "synonyms": [
+    "ALT",
+    "ALAT",
+    "АЛТ",
+    "АлАТ",
+    "GPT",
+    "SGPT",
+    "alaninaminotransferaza",
+    "аланинаминотрансфераза",
+    "jigar fermentlari",
+    "печёночные пробы",
+    "sitoliz",
+    "цитолиз",
+    "transaminazalar",
+    "трансаминазы",
+    "liver enzymes"
+   ],
+   "group": "liver",
+   "sections": [
+    "purpose",
+    "physiology",
+    "high_result",
+    "low_result",
+    "preanalytics",
+    "interference",
+    "related_tests",
+    "limitations"
+   ],
+   "review": {
+    "reviewer_id": null,
+    "reviewed_at": null,
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     },
+     {
+      "date": "2026-10-09",
+      "scope": "Kitoblar (Dolgov 2009, Lyubina 1984, Najmitdinov 1998, Sobirova 2006, Aripova 2007, Dadayev 2004) bilimi rasmiy/ochiq manbalar bilan solishtirildi; matn ko‘chirilmagan",
+      "report": "scratchpad/books/B_01..B_06, A_02, A_04 (agent tahlili)"
+     }
+    ]
+   },
+   "translation_review": {
+    "uz": "pending",
+    "ru": "pending",
+    "en": "pending"
+   },
+   "tagline": {
+    "uz": "Jigar hujayralari shikastlanishi fermenti",
+    "ru": "Фермент повреждения клеток печени",
+    "en": "Liver cell damage enzyme"
+   },
+   "units": [],
+   "claims": [
+    {
+     "section": "physiology",
+     "refs": [
+      {
+       "source_id": "medline-alt",
+       "locator": "What is an ALT Blood Test?"
+      }
+     ],
+     "text": {
+      "uz": "ALT (alanintransaminaza) — asosan jigarda joylashgan ferment, qondagi miqdori odatda past bo‘ladi. Jigar hujayralari shikastlanganda ALT qonga chiqadi.",
+      "ru": "АЛТ (аланинтрансаминаза) — фермент, который находится главным образом в печени; в крови его уровень обычно низкий. При повреждении клеток печени АЛТ выходит в кровоток.",
+      "en": "ALT (alanine transaminase) is an enzyme found mainly in the liver, and its blood level is usually low. When liver cells are damaged, they release ALT into the bloodstream."
+     }
+    },
+    {
+     "section": "purpose",
+     "refs": [
+      {
+       "source_id": "medline-alt",
+       "locator": "What is it used for?"
+      },
+      {
+       "source_id": "medline-alt",
+       "locator": "What is an ALT Blood Test?"
+      }
+     ],
+     "text": {
+      "uz": "Jigar holatini muntazam skrining qilish hamda jigar kasalliklarini aniqlash va kuzatishda, odatda jigar funksiyasi testlari tarkibida qo‘llaniladi. Ayrim jigar kasalliklarida ALT belgilar paydo bo‘lishidan oldin oshadi, shuning uchun test ularni erta aniqlashga yordam berishi mumkin.",
+      "ru": "Применяется для планового скрининга состояния печени, а также для диагностики заболеваний печени и наблюдения за ними, обычно в составе печёночных проб. При некоторых болезнях печени АЛТ повышается ещё до появления симптомов, поэтому тест может помочь выявить их рано.",
+      "en": "Used in routine screening of liver health and to help diagnose or monitor liver problems, usually as part of a liver function panel. Some liver diseases raise ALT before symptoms appear, so the test may help detect them early."
+     }
+    },
+    {
+     "section": "purpose",
+     "refs": [
+      {
+       "source_id": "medline-alt",
+       "locator": "Why do I need an ALT blood test?"
+      }
+     ],
+     "text": {
+      "uz": "Jigar shikastlanishi belgilari (masalan, sariqlik, to‘q rangli siydik yoki och rangli najas, qorinning shishishi yoki og‘rig‘i, tez-tez qichishish) yoki jigar shikastlanishi xavfi yuqori bo‘lganda buyuriladi: oilada jigar kasalligi, alkogolga qaramlik, semizlik, diabet, jigarga zarar yetkazishi mumkin bo‘lgan dorilar, gepatit yoki u bilan kontakt.",
+      "ru": "Назначается при симптомах поражения печени (например, желтуха, тёмная моча или светлый стул, отёк или боль в животе, частый зуд) или при высоком риске поражения печени: заболевания печени в семье, расстройство, связанное с употреблением алкоголя, ожирение, диабет, приём лекарств, способных повредить печень, гепатит или контакт с ним.",
+      "en": "Ordered when there are symptoms of liver damage (for example jaundice, dark urine or light-colored stool, abdominal swelling or pain, frequent itching) or a high risk of liver damage: family history of liver disease, alcohol use disorder, obesity, diabetes, medicines that can harm the liver, or hepatitis or exposure to it."
+     }
+    },
+    {
+     "section": "high_result",
+     "refs": [
+      {
+       "source_id": "medline-alt",
+       "locator": "What do the results mean?"
+      }
+     ],
+     "text": {
+      "uz": "ALT yuqori bo‘lganda jigar shikastlanishining mumkin bo‘lgan sabablari: gepatit, infeksiya, sirroz, jigar saratoni, boshqa jigar kasalliklari, jigarga qon oqimining yetishmasligi, ayrim dorilar (masalan, xolesterinni pasaytiruvchi yoki og‘riq qoldiruvchi dorilar) va zaharlar.",
+      "ru": "Возможные причины повреждения печени при повышенной АЛТ: гепатит, инфекция, цирроз, рак печени, другие болезни печени, недостаточный приток крови к печени, некоторые лекарства (например, для снижения холестерина или обезболивающие) и яды.",
+      "en": "Possible causes of liver damage with a high ALT: hepatitis, infection, cirrhosis, liver cancer, other liver diseases, a lack of blood flow to the liver, certain medicines (such as cholesterol or pain medicines) and poisons."
+     }
+    },
+    {
+     "section": "low_result",
+     "refs": [
+      {
+       "source_id": "medline-alt",
+       "locator": "What do the results mean?"
+      }
+     ],
+     "text": {
+      "uz": "Past ALT kam uchraydi va qo‘shimcha tekshiruvlarni talab qilishi mumkin. Mumkin bo‘lgan sabablar: B6 vitamini yetishmovchiligi va surunkali buyrak kasalligi.",
+      "ru": "Низкая АЛТ встречается нечасто и может потребовать дополнительного обследования. Возможные причины: дефицит витамина B6 и хроническая болезнь почек.",
+      "en": "Low ALT is not common and may lead to further testing. Possible causes include vitamin B6 deficiency and chronic kidney disease."
+     }
+    },
+    {
+     "section": "interference",
+     "refs": [
+      {
+       "source_id": "medline-alt",
+       "locator": "What do the results mean?"
+      }
+     ],
+     "text": {
+      "uz": "ALT yuqoriligi har doim ham davolashni talab qiladigan kasallikni bildirmaydi. Natijaga yosh, jins, tana vazni, ayrim dorilar va parhez qo‘shimchalari, jadal jismoniy mashqlar hamda hayz siklining bosqichi ta’sir qilishi mumkin.",
+      "ru": "Повышенная АЛТ не всегда означает заболевание, требующее лечения. На результат могут влиять возраст, пол, масса тела, некоторые лекарства и пищевые добавки, интенсивная физическая нагрузка и фаза менструального цикла.",
+      "en": "A high ALT does not always mean a condition that needs treatment. Age, sex, weight, certain medicines and dietary supplements, intense exercise and the phase of the menstrual cycle can affect the result."
+     }
+    },
+    {
+     "section": "preanalytics",
+     "refs": [
+      {
+       "source_id": "medline-alt",
+       "locator": "Will I need to do anything to prepare for the test?"
+      }
+     ],
+     "text": {
+      "uz": "Qabul qilinayotgan barcha dorilar haqida shifokorga aytish kerak; ayrimlarini to‘xtatish kerak bo‘lishi mumkin, lekin faqat shifokor ko‘rsatmasi bilan. ALT odatda boshqa qon tahlillari bilan birga buyurilgani uchun ko‘pincha bir necha soat och qolish talab qilinadi.",
+      "ru": "Нужно сообщить врачу обо всех принимаемых лекарствах; некоторые может потребоваться временно отменить, но только по указанию врача. Поскольку АЛТ обычно назначают вместе с другими анализами, часто требуется голодание в течение нескольких часов.",
+      "en": "Tell the provider about all medicines taken; some may need to be paused, but only on the provider's advice. Because ALT is usually ordered with other blood tests, fasting for several hours is often required."
+     }
+    },
+    {
+     "section": "limitations",
+     "refs": [
+      {
+       "source_id": "medline-alt",
+       "locator": "What do the results mean?"
+      },
+      {
+       "source_id": "medline-alt",
+       "locator": "Is there anything else I need to know about an ALT blood test?"
+      }
+     ],
+     "text": {
+      "uz": "ALT boshqa jigar testlari bilan birga baholanadi. U o‘tkir va surunkali jigar muammolarini farqlashga yordam berishi mumkin, ammo ALT darajasi jigar qanchalik shikastlanganini ko‘rsatmaydi.",
+      "ru": "АЛТ оценивают вместе с другими печёночными пробами. Она может помочь отличить острое поражение печени от хронического, но уровень АЛТ не отражает степень повреждения печени.",
+      "en": "ALT is interpreted together with the other liver tests. It may help tell acute from chronic liver problems, but the ALT level does not reflect how much of the liver is damaged."
+     }
+    },
+    {
+     "section": "purpose",
+     "refs": [
+      {
+       "source_id": "medline-alt",
+       "locator": "Is there anything else I need to know about an ALT blood test?"
+      }
+     ],
+     "text": {
+      "uz": "ALT odatda jigar panelida AST bilan birga aniqlanadi. ALT asosan jigarda bo‘lgani uchun bu test jigar shikastlanishini o‘ziga xosroq ko‘rsatadi.",
+      "ru": "АЛТ обычно определяют вместе с АСТ в составе печёночных проб. Поскольку АЛТ находится преимущественно в печени, этот тест более специфичен для повреждения печени.",
+      "en": "ALT is usually measured together with AST in a liver function panel. Because ALT is found mostly in the liver, it checks more specifically for liver damage."
+     }
+    },
+    {
+     "section": "limitations",
+     "refs": [
+      {
+       "source_id": "medline-liver-function",
+       "locator": "What do the results mean?"
+      },
+      {
+       "source_id": "medline-liver-function",
+       "locator": "What are liver function tests?"
+      }
+     ],
+     "text": {
+      "uz": "Jigar testlarida o‘zgarish bo‘lsa, shifokor turli jigar kasalliklariga xos uyg‘unliklarni topish uchun barcha o‘lchangan ko‘rsatkichlarni solishtiradi. Jigar funksiyasi testlarining o‘zi odatda aniq tashxis qo‘yishga imkon bermaydi.",
+      "ru": "При отклонениях в печёночных пробах врач сопоставляет все измеренные показатели, чтобы найти сочетания, характерные для разных заболеваний печени. Сами по себе печёночные пробы обычно не позволяют поставить конкретный диагноз.",
+      "en": "When liver test results are abnormal, the provider compares all the measured substances to look for patterns that suggest different types of liver conditions. Liver function tests alone usually cannot diagnose a specific disease."
+     }
+    },
+    {
+     "section": "high_result",
+     "refs": [
+      {
+       "source_id": "kwo-2017-acg-liver",
+       "locator": "Abstract"
+      },
+      {
+       "source_id": "book-sobirova-2006",
+       "locator": "XVII bob. Jigar xastaliklarida biokimyoviy o‘zgarishlar (sindromlar)"
+      }
+     ],
+     "text": {
+      "uz": "Sitoliz (gepatotsellyulyar shikastlanish) sindromi: ALT va AST ishqoriy fosfatazaga nisbatan nomutanosib ravishda ko‘proq oshadi. Bu jigar hujayralari zararlanganini ko‘rsatadi; sababini aniqlash uchun virusli gepatitlar, yog‘li jigar, alkogol, dorilar va boshqa sabablar tekshiriladi.",
+      "ru": "Синдром цитолиза (гепатоцеллюлярного повреждения): АЛТ и АСТ повышены непропорционально сильнее щелочной фосфатазы. Это указывает на повреждение клеток печени; для поиска причины проверяют вирусные гепатиты, жировую болезнь печени, алкоголь, лекарства и другие причины.",
+      "en": "Cytolytic (hepatocellular) pattern: ALT and AST are raised disproportionately to alkaline phosphatase. It points to liver-cell injury; the work-up looks for viral hepatitis, fatty liver disease, alcohol, medicines and other causes."
+     }
+    },
+    {
+     "section": "limitations",
+     "refs": [
+      {
+       "source_id": "medline-liver-function",
+       "locator": "What are liver function tests?"
+      },
+      {
+       "source_id": "kwo-2017-acg-liver",
+       "locator": "Abstract"
+      },
+      {
+       "source_id": "book-sobirova-2006",
+       "locator": "XVII bob. Jigar xastaliklarida biokimyoviy o‘zgarishlar (sindromlar)"
+      }
+     ],
+     "text": {
+      "uz": "Jigarning sintetik funksiyasi (gepatotsitar yetishmovchilik sindromi) fermentlar bilan emas, jigar ishlab chiqaradigan oqsillar bilan baholanadi: albumin va protrombin vaqti (PT/INR); bilirubin ham jigarning tozalash ishini aks ettiradi. Yuqori ALT o‘zi jigar yetishmovchiligini bildirmaydi.",
+      "ru": "Синтетическую функцию печени (синдром печёночно-клеточной недостаточности) оценивают не ферментами, а белками, которые вырабатывает печень: альбумином и протромбиновым временем (ПВ/МНО); билирубин тоже отражает очистительную работу печени. Высокая АЛТ сама по себе не означает печёночной недостаточности.",
+      "en": "The liver’s synthetic function (hepatocellular failure pattern) is judged not by enzymes but by proteins the liver makes: albumin and prothrombin time (PT/INR); bilirubin also reflects the liver’s clearing work. A high ALT by itself does not mean liver failure."
+     }
+    }
+   ],
+   "decision_limits": [],
+   "source_ids": [
+    "medline-alt",
+    "medline-liver-function",
+    "kwo-2017-acg-liver",
+    "book-sobirova-2006"
+   ],
+   "related": [
+    "ast",
+    "alp",
+    "ggt",
+    "bilirubin-total"
+   ],
+   "specimen": {
+    "uz": "Venoz qon",
+    "ru": "Венозная кровь",
+    "en": "Venous blood"
+   }
+  },
+  {
+   "id": "ast",
+   "status": "draft",
+   "content_state": "sourced_sample",
+   "names": {
+    "uz": "Aspartataminotransferaza (AST)",
+    "ru": "Аспартатаминотрансфераза (АСТ)",
+    "en": "Aspartate aminotransferase (AST)"
+   },
+   "synonyms": [
+    "AST",
+    "ASAT",
+    "АСТ",
+    "АсАТ",
+    "GOT",
+    "SGOT",
+    "aspartataminotransferaza",
+    "аспартатаминотрансфераза",
+    "de Ritis",
+    "de Ritis koeffitsiyenti",
+    "коэффициент де Ритиса",
+    "De Ritis ratio"
+   ],
+   "group": "liver",
+   "sections": [
+    "purpose",
+    "physiology",
+    "high_result",
+    "low_result",
+    "preanalytics",
+    "interference",
+    "related_tests",
+    "limitations"
+   ],
+   "review": {
+    "reviewer_id": null,
+    "reviewed_at": null,
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     },
+     {
+      "date": "2026-10-09",
+      "scope": "Kitoblar (Dolgov 2009, Lyubina 1984, Najmitdinov 1998, Sobirova 2006, Aripova 2007, Dadayev 2004) bilimi rasmiy/ochiq manbalar bilan solishtirildi; matn ko‘chirilmagan",
+      "report": "scratchpad/books/B_01..B_06, A_02, A_04 (agent tahlili)"
+     }
+    ]
+   },
+   "translation_review": {
+    "uz": "pending",
+    "ru": "pending",
+    "en": "pending"
+   },
+   "tagline": {
+    "uz": "Jigar va to‘qimalar shikastlanishi fermenti",
+    "ru": "Фермент повреждения печени и тканей",
+    "en": "Liver and tissue damage enzyme"
+   },
+   "units": [],
+   "claims": [
+    {
+     "section": "physiology",
+     "refs": [
+      {
+       "source_id": "medline-ast",
+       "locator": "What is an AST test?"
+      }
+     ],
+     "text": {
+      "uz": "AST (aspartataminotransferaza) — asosan jigarda, shuningdek yurak, mushaklar va boshqa to‘qimalarda bo‘ladigan ferment. Qondagi miqdori odatda past; jigar yoki AST saqlovchi boshqa hujayralar shikastlanganda u qonga chiqadi.",
+      "ru": "АСТ (аспартатаминотрансфераза) — фермент, который находится главным образом в печени, а также в сердце, мышцах и других тканях. В крови его обычно мало; при повреждении печени или других клеток, содержащих АСТ, фермент выходит в кровь.",
+      "en": "AST (aspartate aminotransferase) is an enzyme found mainly in the liver, but also in the heart, muscles and other tissues. Its blood level is usually low; when the liver or other AST-containing cells are damaged, AST is released into the blood."
+     }
+    },
+    {
+     "section": "purpose",
+     "refs": [
+      {
+       "source_id": "medline-ast",
+       "locator": "What is it used for?"
+      },
+      {
+       "source_id": "medline-ast",
+       "locator": "What is an AST test?"
+      }
+     ],
+     "text": {
+      "uz": "Jigar holatini muntazam skrining qilishda qo‘llaniladi; jigar kasalliklarini aniqlash va kuzatishga, shuningdek boshqa kasalliklarni aniqlashga yordam berishi mumkin. Alohida buyurilishi mumkin, lekin ko‘pincha jigar funksiyasi testlari tarkibida tekshiriladi.",
+      "ru": "Входит в плановый скрининг состояния печени; помогает диагностировать заболевания печени и наблюдать за ними, а также может помочь в диагностике других состояний. Может назначаться отдельно, но чаще — в составе печёночных проб.",
+      "en": "Part of routine screening of liver health; helps diagnose or monitor liver problems and may help diagnose other conditions. It may be ordered alone but is often part of a liver function panel."
+     }
+    },
+    {
+     "section": "purpose",
+     "refs": [
+      {
+       "source_id": "medline-ast",
+       "locator": "Why do I need an AST blood test?"
+      }
+     ],
+     "text": {
+      "uz": "Muntazam tibbiy ko‘rikda, jigar kasalligini davolashni kuzatishda, jigar shikastlanishi belgilari (sariqlik, ko‘ngil aynishi, qorinning shishishi yoki og‘rig‘i, to‘q rangli siydik) bo‘lganda yoki belgilar bo‘lmasa ham jigar kasalligi xavfi yuqori bo‘lganda (oilada jigar kasalligi, alkogolga qaramlik, semizlik, diabet, jigarga zararli dorilar, gepatit yoki u bilan kontakt) buyuriladi.",
+      "ru": "Назначается при плановых осмотрах, для контроля лечения болезни печени, при симптомах поражения печени (желтуха, тошнота, отёк или боль в животе, тёмная моча) или без симптомов при повышенном риске болезней печени (заболевания печени в семье, расстройство, связанное с употреблением алкоголя, ожирение, диабет, лекарства, способные повредить печень, гепатит или контакт с ним).",
+      "en": "Ordered at routine checkups, to monitor treatment of a liver problem, with symptoms of liver damage (such as jaundice, nausea, abdominal swelling or pain, dark urine), or without symptoms when liver disease risk is higher (family history, alcohol use disorder, obesity, diabetes, medicines that can harm the liver, hepatitis or exposure to it)."
+     }
+    },
+    {
+     "section": "high_result",
+     "refs": [
+      {
+       "source_id": "medline-ast",
+       "locator": "What do the results mean?"
+      }
+     ],
+     "text": {
+      "uz": "AST yuqoriligi jigar kasalligi yoki boshqa jigar muammolari bilan bog‘liq bo‘lishi mumkin. Boshqa mumkin bo‘lgan sabablar: gepatit, sirroz, mononukleoz, yurakdagi muolajalar yoki yurak kasalliklari, pankreatit, gemoxromatoz (organizmda temirning ortiqchaligi), chuqur kuyishlar, tutqanoq xurujlari, jigarga zaharli moddalar (ayniqsa alkogol) iste’moli va jarrohlik amaliyoti.",
+      "ru": "Повышение АСТ может быть связано с болезнями или другими нарушениями печени. Другие возможные причины: гепатит, цирроз, мононуклеоз, вмешательства на сердце или болезни сердца, панкреатит, гемохроматоз (избыток железа), глубокие ожоги, судороги, употребление токсичных для печени веществ (особенно алкоголя) и хирургические операции.",
+      "en": "High AST may be due to liver disease or other liver problems. Other possible causes: hepatitis, cirrhosis, mononucleosis, heart procedures or problems, pancreatitis, hemochromatosis (too much iron), deep burns, seizures, use of drugs toxic to the liver (especially alcohol) and surgery."
+     }
+    },
+    {
+     "section": "high_result",
+     "refs": [
+      {
+       "source_id": "medline-ast",
+       "locator": "Is there anything else I need to know about an AST blood test?"
+      }
+     ],
+     "text": {
+      "uz": "AST bilan birga ko‘pincha ALT ham buyuriladi. AST va/yoki ALT yuqoriligi jigarning qandaydir shikastlanishini ko‘rsatishi mumkin.",
+      "ru": "Вместе с АСТ часто назначают АЛТ. Повышение АСТ и/или АЛТ может указывать на какое-либо повреждение печени.",
+      "en": "ALT is often ordered together with AST. High AST and/or ALT may mean some type of liver damage."
+     }
+    },
+    {
+     "section": "low_result",
+     "refs": [
+      {
+       "source_id": "medline-ast",
+       "locator": "What do the results mean?"
+      }
+     ],
+     "text": {
+      "uz": "Qonda AST darajasining pastligi odatda me’yor hisoblanadi.",
+      "ru": "Низкий уровень АСТ в крови обычно считается нормой.",
+      "en": "Low AST levels in the blood are usually considered normal."
+     }
+    },
+    {
+     "section": "interference",
+     "refs": [
+      {
+       "source_id": "medline-ast",
+       "locator": "What do the results mean?"
+      }
+     ],
+     "text": {
+      "uz": "Me’yordan tashqari natija har doim ham davolashni talab qiladigan kasallikni bildirmaydi. Natijaga homiladorlik, jismoniy mashqlar, ayrim dorilar, yosh va jins ta’sir qilishi mumkin.",
+      "ru": "Результат вне нормы не всегда означает заболевание, требующее лечения. На него могут влиять беременность, физическая нагрузка, некоторые лекарства, возраст и пол.",
+      "en": "A result outside the normal range does not always mean a condition that needs treatment. Pregnancy, exercise, certain medicines, age and sex can affect the result."
+     }
+    },
+    {
+     "section": "preanalytics",
+     "refs": [
+      {
+       "source_id": "medline-ast",
+       "locator": "Will I need to do anything to prepare for the test?"
+      }
+     ],
+     "text": {
+      "uz": "Qabul qilinayotgan barcha dorilar haqida shifokorga aytish kerak; ularni faqat shifokor ko‘rsatmasi bilan to‘xtatish mumkin. AST odatda boshqa qon tahlillari bilan birga buyuriladi, ular uchun ko‘pincha 12 soatgacha och qolish talab qilinadi.",
+      "ru": "Нужно сообщить врачу обо всех принимаемых лекарствах; отменять их можно только по указанию врача. АСТ обычно назначают вместе с другими анализами, для которых часто требуется голодание до 12 часов.",
+      "en": "Tell the provider about all medicines taken; stop any only if the provider says so. AST is usually ordered with other blood tests, which often require fasting for up to 12 hours."
+     }
+    },
+    {
+     "section": "limitations",
+     "refs": [
+      {
+       "source_id": "medline-liver-function",
+       "locator": "What do the results mean?"
+      },
+      {
+       "source_id": "medline-liver-function",
+       "locator": "What are liver function tests?"
+      }
+     ],
+     "text": {
+      "uz": "Jigar testlarida o‘zgarish bo‘lsa, shifokor turli jigar kasalliklariga xos uyg‘unliklarni topish uchun barcha o‘lchangan ko‘rsatkichlarni solishtiradi. Jigar funksiyasi testlarining o‘zi odatda aniq tashxis qo‘yishga imkon bermaydi.",
+      "ru": "При отклонениях в печёночных пробах врач сопоставляет все измеренные показатели, чтобы найти сочетания, характерные для разных заболеваний печени. Сами по себе печёночные пробы обычно не позволяют поставить конкретный диагноз.",
+      "en": "When liver test results are abnormal, the provider compares all the measured substances to look for patterns that suggest different types of liver conditions. Liver function tests alone usually cannot diagnose a specific disease."
+     }
+    },
+    {
+     "section": "limitations",
+     "refs": [
+      {
+       "source_id": "williams-1988-ast-alt",
+       "locator": "Abstract"
+      },
+      {
+       "source_id": "book-sobirova-2006",
+       "locator": "XVII bob. Jigar xastaliklarida biokimyoviy o‘zgarishlar (sindromlar)"
+      },
+      {
+       "source_id": "medline-ast",
+       "locator": "What is an AST test?"
+      }
+     ],
+     "text": {
+      "uz": "De Ritis koeffitsiyenti — AST/ALT nisbati. Klassik kuzatuvga ko‘ra u alkogolli jigar kasalligida odatda 2 dan katta, surunkali virusli gepatit va surunkali xolestazda 1 dan kichik bo‘ladi; alkogolsiz jigar kasalligida 1 dan oshishi sirrozga ishora qilishi mumkin. Sirrozda nisbat alkogolli va alkogolsiz sabablarni yomonroq ajratadi. AST yurak va mushakda ham bor, shuning uchun nisbat faqat jigar holatida ma’noga ega.",
+      "ru": "Коэффициент де Ритиса — отношение АСТ/АЛТ. По классическим наблюдениям при алкогольной болезни печени он обычно больше 2, при хроническом вирусном гепатите и хроническом холестазе — меньше 1; при неалкогольной болезни печени рост выше 1 может указывать на цирроз. При циррозе отношение хуже разделяет алкогольные и неалкогольные причины. АСТ есть и в сердце, и в мышцах, поэтому отношение имеет смысл только при поражении печени.",
+      "en": "The De Ritis ratio is AST/ALT. Classically it is usually above 2 in alcoholic liver disease and below 1 in chronic viral hepatitis and chronic cholestasis; in non-alcoholic liver disease a ratio above 1 may suggest cirrhosis. With cirrhosis the ratio separates alcoholic from non-alcoholic causes less well. AST is also found in heart and muscle, so the ratio is meaningful only for liver conditions."
+     }
+    },
+    {
+     "section": "high_result",
+     "refs": [
+      {
+       "source_id": "kwo-2017-acg-liver",
+       "locator": "Abstract"
+      },
+      {
+       "source_id": "book-sobirova-2006",
+       "locator": "XVII bob. Jigar xastaliklarida biokimyoviy o‘zgarishlar (sindromlar)"
+      }
+     ],
+     "text": {
+      "uz": "AST ALT bilan birga ishqoriy fosfatazadan nomutanosib ko‘p oshsa — sitoliz (gepatotsellyulyar) sindromi; ALP ustunlik qilsa — xolestaz sindromi.",
+      "ru": "Если АСТ вместе с АЛТ повышены непропорционально сильнее щелочной фосфатазы — синдром цитолиза (гепатоцеллюлярный); если преобладает ЩФ — синдром холестаза.",
+      "en": "AST rising with ALT out of proportion to alkaline phosphatase indicates a cytolytic (hepatocellular) pattern; if ALP predominates, a cholestatic pattern."
+     }
+    }
+   ],
+   "decision_limits": [],
+   "source_ids": [
+    "medline-ast",
+    "medline-liver-function",
+    "williams-1988-ast-alt",
+    "book-sobirova-2006",
+    "kwo-2017-acg-liver"
+   ],
+   "related": [
+    "alt",
+    "alp",
+    "ggt",
+    "bilirubin-total"
+   ],
+   "specimen": {
+    "uz": "Venoz qon",
+    "ru": "Венозная кровь",
+    "en": "Venous blood"
+   }
+  },
+  {
+   "id": "alp",
+   "status": "draft",
+   "content_state": "sourced_sample",
+   "names": {
+    "uz": "Ishqoriy fosfataza (ALP)",
+    "ru": "Щелочная фосфатаза (ЩФ)",
+    "en": "Alkaline phosphatase (ALP)"
+   },
+   "synonyms": [
+    "ALP",
+    "ALKP",
+    "ЩФ",
+    "щелочная фосфатаза",
+    "ishqoriy fosfataza",
+    "xolestaz",
+    "холестаз",
+    "cholestasis",
+    "o‘t dimlanishi"
+   ],
+   "group": "liver",
+   "sections": [
+    "purpose",
+    "physiology",
+    "high_result",
+    "low_result",
+    "preanalytics",
+    "interference",
+    "related_tests",
+    "limitations"
+   ],
+   "review": {
+    "reviewer_id": null,
+    "reviewed_at": null,
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     },
+     {
+      "date": "2026-10-09",
+      "scope": "Kitoblar (Dolgov 2009, Lyubina 1984, Najmitdinov 1998, Sobirova 2006, Aripova 2007, Dadayev 2004) bilimi rasmiy/ochiq manbalar bilan solishtirildi; matn ko‘chirilmagan",
+      "report": "scratchpad/books/B_01..B_06, A_02, A_04 (agent tahlili)"
+     }
+    ]
+   },
+   "translation_review": {
+    "uz": "pending",
+    "ru": "pending",
+    "en": "pending"
+   },
+   "tagline": {
+    "uz": "Jigar va suyak fermenti",
+    "ru": "Фермент печени и костей",
+    "en": "Liver and bone enzyme"
+   },
+   "units": [],
+   "claims": [
+    {
+     "section": "physiology",
+     "refs": [
+      {
+       "source_id": "medline-alp",
+       "locator": "What is an alkaline phosphatase test?"
+      }
+     ],
+     "text": {
+      "uz": "ALP — organizmning barcha to‘qimalarida bo‘ladigan ferment; uning ko‘p miqdori jigar, o‘t yo‘llari va suyaklarda uchraydi. Tananing har bir qismi ALPning o‘ziga xos turini hosil qiladi.",
+      "ru": "ЩФ — фермент, присутствующий во всех тканях организма; больше всего его в печени, желчных протоках и костях. Каждая часть тела вырабатывает свой тип ЩФ.",
+      "en": "ALP is an enzyme present in all body tissues, with higher amounts in the liver, bile ducts and bones. Each part of the body makes a different type of ALP."
+     }
+    },
+    {
+     "section": "purpose",
+     "refs": [
+      {
+       "source_id": "medline-alp",
+       "locator": "What is it used for?"
+      },
+      {
+       "source_id": "medline-alp",
+       "locator": "Why do I need an alkaline phosphatase test?"
+      }
+     ],
+     "text": {
+      "uz": "Jigar va suyak kasalliklarini skrining qilish yoki aniqlashda, shuningdek boshqa kasalliklarni aniqlash va kuzatishda qo‘llaniladi. Ko‘pincha kompleks metabolik panel (CMP) yoki jigar funksiyasi testlari bilan birga, yoxud jigar shikastlanishi yoki suyak kasalligi belgilari (suyak og‘rig‘i, bo‘g‘imlar yallig‘lanishi, suyaklarning g‘ayrioddiy shakli yoki kattalashishi, sinishlar) bo‘lganda bajariladi.",
+      "ru": "Применяется для скрининга и диагностики болезней печени и костей, а также для диагностики и наблюдения при других состояниях. Часто выполняется вместе с комплексной метаболической панелью (CMP) или печёночными пробами, а также при симптомах поражения печени или болезни костей (боль в костях, воспаление суставов, необычная форма или увеличение костей, переломы).",
+      "en": "Used to screen for or help diagnose liver and bone diseases and to help diagnose or monitor other conditions. Often done with a comprehensive metabolic panel (CMP) or liver function tests, or when there are symptoms of liver damage or a bone disorder (bone pain, joint inflammation, unusually shaped or enlarged bones, broken bones)."
+     }
+    },
+    {
+     "section": "limitations",
+     "refs": [
+      {
+       "source_id": "medline-alp",
+       "locator": "What is an alkaline phosphatase test?"
+      },
+      {
+       "source_id": "medline-alp",
+       "locator": "What do the results mean?"
+      }
+     ],
+     "text": {
+      "uz": "ALP testining o‘zi fermentning qaysi to‘qimadan kelayotganini ko‘rsatmaydi, shuning uchun odatda boshqa tahlillar kerak bo‘ladi. ALP izofermentlari testi manbani aniqlay oladi (hamma joyda mavjud emas); jigar testlari ham yuqori bo‘lsa, ALP jigardan kelib chiqqan bo‘lishi ehtimoli katta.",
+      "ru": "Сам по себе тест на ЩФ не показывает, из какой ткани она поступает, поэтому обычно нужны другие анализы. Тест на изоферменты ЩФ позволяет определить источник (доступен не везде); если печёночные пробы тоже повышены, ЩФ, вероятно, печёночного происхождения.",
+      "en": "The ALP test alone cannot tell which tissue the ALP comes from, so other tests are usually needed. An ALP isoenzyme test can show its source (not available everywhere); if liver function tests are also high, the ALP is likely of liver origin."
+     }
+    },
+    {
+     "section": "high_result",
+     "refs": [
+      {
+       "source_id": "medline-alp",
+       "locator": "What do the results mean?"
+      }
+     ],
+     "text": {
+      "uz": "Jigardan kelib chiqqan ALP yuqoriligi o‘t yo‘llarining tiqilishi, sirroz, gepatit yoki mononukleoz (ba’zan jigarning shishishiga sabab bo‘ladi) belgisi bo‘lishi mumkin.",
+      "ru": "Повышение ЩФ печёночного происхождения может указывать на закупорку желчных протоков, цирроз, гепатит или мононуклеоз (который иногда вызывает увеличение печени).",
+      "en": "High ALP from the liver may be a sign of bile duct blockage, cirrhosis, hepatitis or mononucleosis (which can sometimes cause swelling in the liver)."
+     }
+    },
+    {
+     "section": "high_result",
+     "refs": [
+      {
+       "source_id": "medline-alp",
+       "locator": "What do the results mean?"
+      }
+     ],
+     "text": {
+      "uz": "ALP yuqori, jigar testlari esa me’yorda bo‘lsa, suyak kasalligi, masalan, Paget suyak kasalligi bo‘lishi mumkin. ALPning o‘rtacha oshishi ko‘plab holatlarda, jumladan Xodjkin limfomasi, yurak yetishmovchiligi va ayrim infeksiyalarda kuzatiladi; ALP yuqori bo‘lsa-da, davolashni talab qiladigan kasallik bo‘lmasligi ham mumkin.",
+      "ru": "Если ЩФ повышена, а печёночные пробы в норме, возможна болезнь костей, например болезнь Педжета. Умеренное повышение ЩФ бывает при многих состояниях, включая лимфому Ходжкина, сердечную недостаточность и некоторые инфекции; повышенная ЩФ возможна и без заболевания, требующего лечения.",
+      "en": "If ALP is high and liver tests are normal, a bone disorder such as Paget's disease of bone is possible. Moderately high ALP may occur with many conditions, including Hodgkin lymphoma, heart failure and certain infections; a high ALP may also occur without a condition that needs treatment."
+     }
+    },
+    {
+     "section": "low_result",
+     "refs": [
+      {
+       "source_id": "medline-alp",
+       "locator": "What do the results mean?"
+      }
+     ],
+     "text": {
+      "uz": "Past ALP kamroq uchraydi. Mumkin bo‘lgan sabablar: rux yetishmovchiligi, oqsil yetishmovchiligi, to‘yib ovqatlanmaslik, pernitsioz anemiya, qalqonsimon bez kasalliklari, Vilson kasalligi va gipofosfataziya (suyak va tishlarga ta’sir qiluvchi kam uchraydigan irsiy kasallik).",
+      "ru": "Низкая ЩФ встречается реже. Возможные причины: дефицит цинка, дефицит белка, истощение, пернициозная анемия, болезни щитовидной железы, болезнь Вильсона и гипофосфатазия (редкое генетическое заболевание, поражающее кости и зубы).",
+      "en": "Low ALP is less common. Possible causes: zinc deficiency, protein deficiency, malnutrition, pernicious anemia, thyroid disease, Wilson disease and hypophosphatasia (a rare genetic disease affecting bones and teeth)."
+     }
+    },
+    {
+     "section": "interference",
+     "refs": [
+      {
+       "source_id": "medline-alp",
+       "locator": "Is there anything else I need to know about the alkaline phosphatase test?"
+      }
+     ],
+     "text": {
+      "uz": "Homiladorlik ALPni oshirishi mumkin, bolalar va o‘smirlarda esa suyaklar o‘sayotgani sababli ALP yuqori bo‘lishi mumkin. Kontratseptiv tabletkalar va ayrim dorilar ALPni pasaytirishi, boshqalari esa oshirishi mumkin; tahlildan oldin yog‘li ovqat iste’mol qilish uni biroz oshirishi mumkin.",
+      "ru": "Беременность может повышать ЩФ, а у детей и подростков она может быть высокой из-за роста костей. Противозачаточные таблетки и некоторые лекарства могут снижать ЩФ, другие — повышать, а жирная пища перед анализом может вызвать небольшое повышение.",
+      "en": "Pregnancy can raise ALP, and children and teens may have high ALP because their bones are growing. Birth control pills and some medicines may lower ALP while others raise it, and a fatty meal before the test may cause a small increase."
+     }
+    },
+    {
+     "section": "preanalytics",
+     "refs": [
+      {
+       "source_id": "medline-alp",
+       "locator": "Will I need to do anything to prepare for the test?"
+      }
+     ],
+     "text": {
+      "uz": "Qabul qilinayotgan barcha dorilar haqida shifokorga aytish kerak; ayrimlarini to‘xtatish kerak bo‘lishi mumkin, lekin faqat shifokor ko‘rsatmasi bilan. ALP odatda boshqa qon tahlillari bilan birga buyurilgani uchun ko‘pincha bir necha soat och qolish talab qilinadi.",
+      "ru": "Нужно сообщить врачу обо всех принимаемых лекарствах; некоторые может потребоваться временно отменить, но только по указанию врача. Поскольку ЩФ обычно назначают вместе с другими анализами, часто требуется голодание в течение нескольких часов.",
+      "en": "Tell the provider about all medicines taken; some may need to be paused, but only on the provider's advice. Because ALP is usually ordered with other blood tests, fasting for several hours is often required."
+     }
+    },
+    {
+     "section": "limitations",
+     "refs": [
+      {
+       "source_id": "medline-liver-function",
+       "locator": "What do the results mean?"
+      }
+     ],
+     "text": {
+      "uz": "Jigar testlaridagi o‘zgarish har doim ham jigar muammosini bildirmaydi: masalan, ALP yuqoriligi jigar kasalligi bilan bir qatorda suyak kasalligi belgisi ham bo‘lishi mumkin. Shifokor belgilar, kasallik tarixi, jigar kasalligi xavfi va qabul qilinayotgan dorilarni ham hisobga oladi.",
+      "ru": "Отклонения печёночных проб не всегда означают проблему с печенью: например, высокая ЩФ может быть признаком как болезни печени, так и болезни костей. Врач учитывает также симптомы, анамнез, риск болезней печени и принимаемые лекарства.",
+      "en": "Abnormal liver test results don't always mean a liver problem: high ALP, for example, can be a sign of bone disease as well as liver disease. The provider also considers symptoms, medical history, liver disease risk and medicines taken."
+     }
+    },
+    {
+     "section": "high_result",
+     "refs": [
+      {
+       "source_id": "kwo-2017-acg-liver",
+       "locator": "Abstract"
+      },
+      {
+       "source_id": "book-sobirova-2006",
+       "locator": "XVII bob. Jigar xastaliklarida biokimyoviy o‘zgarishlar (sindromlar)"
+      },
+      {
+       "source_id": "medline-ggt",
+       "locator": "What do the results mean?"
+      }
+     ],
+     "text": {
+      "uz": "Xolestaz sindromi: ishqoriy fosfataza ALT va AST ga nisbatan nomutanosib ravishda ko‘proq oshadi. ALP jigardan ekanini GGT tasdiqlaydi (ikkalasi ham yuqori). Bilirubin bilan birga oshsa, o‘t yo‘llari tiqilishi ehtimoli ko‘rib chiqiladi.",
+      "ru": "Синдром холестаза: щелочная фосфатаза повышена непропорционально сильнее АЛТ и АСТ. Печёночное происхождение ЩФ подтверждает ГГТ (обе повышены). При одновременном росте билирубина рассматривают закупорку желчных путей.",
+      "en": "Cholestatic pattern: alkaline phosphatase is raised out of proportion to ALT and AST. GGT confirms a liver source (both high). If bilirubin rises too, bile-duct obstruction is considered."
+     }
+    }
+   ],
+   "decision_limits": [],
+   "source_ids": [
+    "medline-alp",
+    "medline-liver-function",
+    "kwo-2017-acg-liver",
+    "book-sobirova-2006",
+    "medline-ggt"
+   ],
+   "related": [
+    "ggt",
+    "alt",
+    "ast",
+    "bilirubin-total"
+   ],
+   "specimen": {
+    "uz": "Venoz qon",
+    "ru": "Венозная кровь",
+    "en": "Venous blood"
+   }
+  },
+  {
+   "id": "ggt",
+   "status": "draft",
+   "content_state": "sourced_sample",
+   "names": {
+    "uz": "Gamma-glutamiltransferaza (GGT)",
+    "ru": "Гамма-глутамилтрансфераза (ГГТ)",
+    "en": "Gamma-glutamyl transferase (GGT)"
+   },
+   "synonyms": [
+    "GGT",
+    "GGTP",
+    "ГГТ",
+    "ГГТП",
+    "γ-GT",
+    "gamma GT",
+    "gamma-glutamiltransferaza",
+    "гамма-глутамилтрансфераза",
+    "xolestaz",
+    "холестаз"
+   ],
+   "group": "liver",
+   "sections": [
+    "purpose",
+    "physiology",
+    "high_result",
+    "low_result",
+    "preanalytics",
+    "interference",
+    "related_tests",
+    "limitations"
+   ],
+   "review": {
+    "reviewer_id": null,
+    "reviewed_at": null,
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     },
+     {
+      "date": "2026-10-09",
+      "scope": "Kitoblar (Dolgov 2009, Lyubina 1984, Najmitdinov 1998, Sobirova 2006, Aripova 2007, Dadayev 2004) bilimi rasmiy/ochiq manbalar bilan solishtirildi; matn ko‘chirilmagan",
+      "report": "scratchpad/books/B_01..B_06, A_02, A_04 (agent tahlili)"
+     }
+    ]
+   },
+   "translation_review": {
+    "uz": "pending",
+    "ru": "pending",
+    "en": "pending"
+   },
+   "tagline": {
+    "uz": "Jigar va o‘t yo‘llari fermenti",
+    "ru": "Фермент печени и желчных протоков",
+    "en": "Liver and bile duct enzyme"
+   },
+   "units": [],
+   "claims": [
+    {
+     "section": "physiology",
+     "refs": [
+      {
+       "source_id": "medline-ggt",
+       "locator": "What is a gamma-glutamyl transferase (GGT) test?"
+      }
+     ],
+     "text": {
+      "uz": "GGT — butun organizmda, lekin asosan jigarda bo‘ladigan ferment. Jigar yoki o‘t yo‘llari shikastlanganda GGT qonga o‘tishi mumkin.",
+      "ru": "ГГТ — фермент, который есть во всём организме, но главным образом в печени. При повреждении печени или желчных протоков ГГТ может поступать в кровь.",
+      "en": "GGT is an enzyme found throughout the body but mainly in the liver. If the liver or bile ducts are damaged, GGT may leak into the bloodstream."
+     }
+    },
+    {
+     "section": "purpose",
+     "refs": [
+      {
+       "source_id": "medline-ggt",
+       "locator": "What is it used for?"
+      }
+     ],
+     "text": {
+      "uz": "Jigar kasalliklarini aniqlash, jigar kasalligini suyak kasalligidan farqlash, o‘t yo‘llari tiqilishini tekshirish hamda alkogolga qaramlikni skrining qilish yoki kuzatishda qo‘llaniladi. Alkogol ichish GGTni oshiradi va alkogolga qaram odamlarning ko‘pchiligida GGT yuqori bo‘ladi.",
+      "ru": "Применяется для диагностики болезней печени, чтобы отличить болезнь печени от болезни костей, для выявления закупорки желчных протоков, а также для скрининга и контроля расстройства, связанного с употреблением алкоголя. Алкоголь повышает ГГТ, и у большинства людей с этим расстройством ГГТ высокая.",
+      "en": "Used to help diagnose liver disease, to tell liver disease from a bone disorder, to check for bile duct blockage, and to screen for or monitor alcohol use disorder. Drinking alcohol raises GGT, and most people with alcohol use disorder have high GGT."
+     }
+    },
+    {
+     "section": "purpose",
+     "refs": [
+      {
+       "source_id": "medline-ggt",
+       "locator": "What is a gamma-glutamyl transferase (GGT) test?"
+      }
+     ],
+     "text": {
+      "uz": "Odatda boshqa jigar testlari, ko‘pincha ALP bilan birga yoki ulardan keyin bajariladi. Jigar va o‘t yo‘llari kasalliklarida GGT ham, ALP ham oshishi mumkin, suyak kasalliklarida esa faqat ALP oshadi.",
+      "ru": "Обычно выполняется вместе с другими печёночными пробами или после них, чаще всего с ЩФ. При болезнях печени и желчных протоков могут повышаться и ГГТ, и ЩФ, а при болезнях костей — только ЩФ.",
+      "en": "Usually done with or after other liver tests, most often ALP. Both GGT and ALP may rise in diseases of the liver and bile ducts, but only ALP rises in bone disease."
+     }
+    },
+    {
+     "section": "high_result",
+     "refs": [
+      {
+       "source_id": "medline-ggt",
+       "locator": "What do the results mean?"
+      }
+     ],
+     "text": {
+      "uz": "GGT yuqoriligi jigar shikastlanishi belgisi bo‘lishi mumkin. Mumkin bo‘lgan sabablar: gepatit, sirroz, alkogolga qaramlik, pankreatit, diabet, yurak yetishmovchiligi va dorilarning nojo‘ya ta’siri. Natija qaysi kasallik sabab bo‘lganini ko‘rsatmaydi, ammo odatda GGT qanchalik yuqori bo‘lsa, jigar shikastlanishi shunchalik kuchli bo‘ladi.",
+      "ru": "Повышение ГГТ может указывать на повреждение печени. Возможные причины: гепатит, цирроз, расстройство, связанное с употреблением алкоголя, панкреатит, диабет, сердечная недостаточность и побочное действие лекарств. Результат не показывает, какое именно состояние вызвало повреждение, но обычно чем выше ГГТ, тем сильнее повреждение печени.",
+      "en": "High GGT may be a sign of liver damage. Possible causes include hepatitis, cirrhosis, alcohol use disorder, pancreatitis, diabetes, heart failure and medicine side effects. The result cannot show which condition is responsible, but usually the higher the GGT, the more liver damage."
+     }
+    },
+    {
+     "section": "high_result",
+     "refs": [
+      {
+       "source_id": "medline-ggt",
+       "locator": "What do the results mean?"
+      }
+     ],
+     "text": {
+      "uz": "ALP bilan solishtirilganda: ALP va GGT birga yuqori bo‘lsa, bu suyak emas, balki jigar kasalligiga ishora qiladi; ALP yuqori, GGT esa past yoki me’yorda bo‘lsa, suyak kasalligi ehtimoli kattaroq.",
+      "ru": "В сопоставлении с ЩФ: высокая ЩФ при высокой ГГТ указывает скорее на болезнь печени, чем костей, а высокая ЩФ при низкой или нормальной ГГТ делает болезнь костей более вероятной.",
+      "en": "Compared with ALP: high ALP with high GGT points to a liver disorder rather than a bone disorder, while high ALP with low or normal GGT makes a bone disorder more likely."
+     }
+    },
+    {
+     "section": "low_result",
+     "refs": [
+      {
+       "source_id": "medline-ggt",
+       "locator": "What do the results mean?"
+      }
+     ],
+     "text": {
+      "uz": "GGT past yoki me’yorda bo‘lsa, jigar kasalligi bo‘lishi ehtimoli kam.",
+      "ru": "Низкая или нормальная ГГТ означает, что болезнь печени маловероятна.",
+      "en": "A low or normal GGT means liver disease is unlikely."
+     }
+    },
+    {
+     "section": "limitations",
+     "refs": [
+      {
+       "source_id": "medline-ggt",
+       "locator": "What is a gamma-glutamyl transferase (GGT) test?"
+      },
+      {
+       "source_id": "medline-ggt",
+       "locator": "What do the results mean?"
+      }
+     ],
+     "text": {
+      "uz": "GGT jigar kasalligining aniq sababini aniqlay olmaydi — u faqat jigar shikastlanayotganini ko‘rsatadi. Shifokor natijani belgilar, kasallik tarixi va boshqa qon tahlillari bilan birga baholaydi.",
+      "ru": "ГГТ не позволяет установить конкретную причину болезни печени — она лишь указывает на повреждение печени. Врач оценивает результат с учётом симптомов, анамнеза и других анализов крови.",
+      "en": "GGT cannot identify the specific cause of liver disease; it only indicates that the liver is being damaged. The provider interprets it with symptoms, medical history and other blood tests."
+     }
+    },
+    {
+     "section": "interference",
+     "refs": [
+      {
+       "source_id": "medline-ggt",
+       "locator": "Will I need to do anything to prepare for the test?"
+      }
+     ],
+     "text": {
+      "uz": "Natijaga ayrim dorilar yoki qo‘shimchalar, alkogol ichish va sigaret chekish ta’sir qilishi mumkin. Ovqatdan keyin GGT darajasi pasayadi.",
+      "ru": "На результат могут влиять некоторые лекарства или добавки, употребление алкоголя и курение. После еды уровень ГГТ снижается.",
+      "en": "Results may be affected by certain medicines or supplements, drinking alcohol and smoking cigarettes. GGT levels go down after meals."
+     }
+    },
+    {
+     "section": "preanalytics",
+     "refs": [
+      {
+       "source_id": "medline-ggt",
+       "locator": "Will I need to do anything to prepare for the test?"
+      }
+     ],
+     "text": {
+      "uz": "Maxsus ko‘rsatmalarni shifokordan aniqlash kerak; tahlildan oldin ma’lum vaqt och qolish so‘ralishi mumkin.",
+      "ru": "Особые указания следует уточнить у врача; перед анализом может потребоваться голодание в течение определённого времени.",
+      "en": "Ask the provider about specific instructions; fasting for a set time before the test may be requested."
+     }
+    },
+    {
+     "section": "limitations",
+     "refs": [
+      {
+       "source_id": "medline-ggt",
+       "locator": "What do the results mean?"
+      },
+      {
+       "source_id": "book-sobirova-2006",
+       "locator": "XVII bob. Jigar xastaliklarida biokimyoviy o‘zgarishlar (sindromlar)"
+      },
+      {
+       "source_id": "kwo-2017-acg-liver",
+       "locator": "Abstract"
+      }
+     ],
+     "text": {
+      "uz": "Jigar laborator sindromlarida GGT xolestaz guruhiga kiradi: ALP bilan birga oshishi o‘t yo‘llari yoki jigar sababini, ALP yuqori va GGT me’yorda bo‘lishi esa suyak sababini qo‘llab-quvvatlaydi. GGT alkogol va ayrim dorilar ta’sirida ham oshadi, shuning uchun yolg‘iz o‘zi xolestazni isbotlamaydi.",
+      "ru": "В лабораторных синдромах печени ГГТ входит в группу холестаза: одновременный рост с ЩФ поддерживает печёночно-желчную причину, высокая ЩФ при нормальной ГГТ — костную. ГГТ повышается и от алкоголя и некоторых лекарств, поэтому сама по себе холестаз не доказывает.",
+      "en": "Among liver laboratory patterns GGT belongs to the cholestatic group: rising with ALP supports a hepatobiliary cause, while a high ALP with normal GGT supports bone. GGT also rises with alcohol and some medicines, so alone it does not prove cholestasis."
+     }
+    }
+   ],
+   "decision_limits": [],
+   "source_ids": [
+    "medline-ggt",
+    "book-sobirova-2006",
+    "kwo-2017-acg-liver"
+   ],
+   "related": [
+    "alp",
+    "alt",
+    "ast",
+    "ldh"
+   ],
+   "specimen": {
+    "uz": "Venoz qon",
+    "ru": "Венозная кровь",
+    "en": "Venous blood"
+   }
+  },
+  {
+   "id": "bilirubin-total",
+   "status": "draft",
+   "content_state": "sourced_sample",
+   "names": {
+    "uz": "Umumiy bilirubin",
+    "ru": "Общий билирубин",
+    "en": "Total bilirubin"
+   },
+   "synonyms": [
+    "bilirubin",
+    "билирубин",
+    "TBIL",
+    "sariqlik",
+    "umumiy bilirubin",
+    "jigar usti sariqligi",
+    "jigar osti sariqligi",
+    "mexanik sariqlik",
+    "gemolitik sariqlik",
+    "parenximatoz sariqlik",
+    "giperbilirubinemiya",
+    "желтуха",
+    "надпечёночная желтуха",
+    "подпечёночная желтуха",
+    "общий билирубин",
+    "jaundice",
+    "prehepatic jaundice",
+    "posthepatic jaundice"
+   ],
+   "group": "liver",
+   "sections": [
+    "purpose",
+    "physiology",
+    "high_result",
+    "low_result",
+    "preanalytics",
+    "interference",
+    "related_tests",
+    "limitations"
+   ],
+   "review": {
+    "reviewer_id": null,
+    "reviewed_at": null,
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     },
+     {
+      "date": "2026-10-09",
+      "scope": "Kitoblar (Dolgov 2009, Lyubina 1984, Najmitdinov 1998, Sobirova 2006, Aripova 2007, Dadayev 2004) bilimi rasmiy/ochiq manbalar bilan solishtirildi; matn ko‘chirilmagan",
+      "report": "scratchpad/books/B_01..B_06, A_02, A_04 (agent tahlili)"
+     }
+    ]
+   },
+   "translation_review": {
+    "uz": "pending",
+    "ru": "pending",
+    "en": "pending"
+   },
+   "tagline": {
+    "uz": "Eritrotsitlar parchalanishi mahsuloti",
+    "ru": "Продукт распада эритроцитов",
+    "en": "Red blood cell breakdown product"
+   },
+   "units": [],
+   "claims": [
+    {
+     "section": "physiology",
+     "refs": [
+      {
+       "source_id": "medline-bilirubin",
+       "locator": "What is a bilirubin blood test?"
+      }
+     ],
+     "text": {
+      "uz": "Bilirubin — eski eritrotsitlarning odatiy parchalanishida hosil bo‘ladigan sarg‘ish modda bo‘lib, o‘t tarkibida bo‘ladi. Sog‘lom jigar uning ko‘p qismini o‘t yo‘llari orqali chiqaradi; jigar shikastlansa yoki yo‘llar tiqilsa, bilirubin qonga o‘tishi mumkin, uning ortiqchaligi esa sariqlikka olib keladi.",
+      "ru": "Билирубин — желтоватое вещество, образующееся при нормальном распаде старых эритроцитов; он содержится в жёлчи. Здоровая печень выводит большую его часть через желчные протоки; при повреждении печени или закупорке протоков билирубин может поступать в кровь, а его избыток вызывает желтуху.",
+      "en": "Bilirubin is a yellowish substance formed during the normal breakdown of old red blood cells and is found in bile. A healthy liver removes most of it through the bile ducts; if the liver is damaged or the ducts are blocked, bilirubin can leak into the blood, and too much can cause jaundice."
+     }
+    },
+    {
+     "section": "purpose",
+     "refs": [
+      {
+       "source_id": "medline-bilirubin",
+       "locator": "What is it used for?"
+      },
+      {
+       "source_id": "medline-bilirubin",
+       "locator": "Why do I need a bilirubin blood test?"
+      }
+     ],
+     "text": {
+      "uz": "Jigar holatini tekshirish, sariqlik sababini izlash, o‘t yo‘llari tiqilishini aniqlash, mavjud jigar kasalligini kuzatish va davolash samaradorligini baholash uchun qo‘llaniladi. Shuningdek, eritrotsitlar juda tez parchalanadigan holatlarni, masalan, gemolitik anemiyani aniqlashga yordam beradi.",
+      "ru": "Применяется для оценки состояния печени, поиска причины желтухи, выявления закупорки желчных протоков, наблюдения за имеющейся болезнью печени и оценки эффективности лечения. Также помогает диагностировать состояния с ускоренным разрушением эритроцитов, например гемолитическую анемию.",
+      "en": "Used to check liver health, look for the cause of jaundice, find a bile duct blockage, monitor existing liver disease and check how well treatment works. It also helps diagnose disorders in which red blood cells break down too quickly, such as hemolytic anemia."
+     }
+    },
+    {
+     "section": "purpose",
+     "refs": [
+      {
+       "source_id": "medline-bilirubin",
+       "locator": "What is it used for?"
+      }
+     ],
+     "text": {
+      "uz": "Chaqaloqlar sariqligini aniqlashda keng qo‘llaniladi. U ko‘plab sog‘lom chaqaloqlarda jigari hali yetarlicha rivojlanmagani uchun uchraydi; odatda zararsiz va bir necha haftada o‘tib ketadi, ammo ba’zi hollarda yuqori bilirubin miya shikastlanishiga olib kelishi mumkin, shuning uchun chaqaloqlar ehtiyot chorasi sifatida tekshiriladi.",
+      "ru": "Широко используется для диагностики желтухи новорождённых. Она бывает у многих здоровых детей, потому что их печень ещё недостаточно развита; обычно она безвредна и проходит за несколько недель, но в некоторых случаях высокий билирубин может вызвать повреждение мозга, поэтому младенцев часто обследуют для предосторожности.",
+      "en": "Commonly used to help diagnose newborn jaundice. Many healthy babies get it because their liver is not yet mature enough; it is usually harmless and clears within a few weeks, but in some cases high bilirubin can lead to brain damage, so infants are often tested as a precaution."
+     }
+    },
+    {
+     "section": "high_result",
+     "refs": [
+      {
+       "source_id": "medline-bilirubin",
+       "locator": "What do the results mean?"
+      }
+     ],
+     "text": {
+      "uz": "Bilirubin yuqoriligining (giperbilirubinemiya) mumkin bo‘lgan sabablari: gemolitik anemiya, jigar kasalliklari va o‘t yo‘llarining tiqilishi.",
+      "ru": "Возможные причины повышенного билирубина (гипербилирубинемии): гемолитическая анемия, болезни печени и закупорка желчных протоков.",
+      "en": "Possible causes of high bilirubin (hyperbilirubinemia): hemolytic anemia, liver disease and blockage of the bile ducts."
+     }
+    },
+    {
+     "section": "low_result",
+     "refs": [
+      {
+       "source_id": "medline-bilirubin",
+       "locator": "What do the results mean?"
+      }
+     ],
+     "text": {
+      "uz": "Past bilirubin (gipobilirubinemiya) odatda xavotirga sabab bo‘lmaydi; u antibiotiklar, kontratseptiv tabletkalar, uyqu dorilari va tutqanoqqa qarshi dorilar kabi dorilar bilan bog‘liq bo‘lishi mumkin.",
+      "ru": "Низкий билирубин (гипобилирубинемия) обычно не вызывает беспокойства; он может быть связан с приёмом лекарств, например антибиотиков, противозачаточных таблеток, снотворных и противосудорожных средств.",
+      "en": "Low bilirubin (hypobilirubinemia) is not usually a cause for concern; it may be due to medicines such as antibiotics, birth control pills, sleeping pills and seizure medicines."
+     }
+    },
+    {
+     "section": "interference",
+     "refs": [
+      {
+       "source_id": "medline-bilirubin",
+       "locator": "What do the results mean?"
+      }
+     ],
+     "text": {
+      "uz": "Me’yordan chetlanish har doim ham davolashni talab qiladigan kasallikni bildirmaydi: ayrim dorilar, ba’zi oziq-ovqatlar va og‘ir jismoniy zo‘riqish ham bilirubinni oshirishi mumkin.",
+      "ru": "Отклонение не всегда означает заболевание, требующее лечения: некоторые лекарства, определённые продукты и интенсивная физическая нагрузка также могут повышать билирубин.",
+      "en": "An abnormal result does not always mean a condition that needs treatment: some medicines, certain foods and strenuous exercise can also raise bilirubin."
+     }
+    },
+    {
+     "section": "limitations",
+     "refs": [
+      {
+       "source_id": "medline-bilirubin",
+       "locator": "What do the results mean?"
+      },
+      {
+       "source_id": "medline-bilirubin",
+       "locator": "Is there anything else I need to know about a bilirubin blood test?"
+      }
+     ],
+     "text": {
+      "uz": "Me’yoriy qiymatlar laboratoriyalar orasida farq qiladi hamda jins va yoshga (chaqaloq yoki bola) bog‘liq. Bilirubin jigar holatining faqat bitta ko‘rsatkichi; jigar funksiyasi testlari, jigar oqsillari testlari, siydik tahlillari, ultratovush tekshiruvi yoki jigar biopsiyasi ham kerak bo‘lishi mumkin.",
+      "ru": "Нормальные значения различаются между лабораториями и зависят от пола и возраста (младенец или ребёнок). Билирубин — лишь один из показателей состояния печени; могут потребоваться печёночные пробы, тесты на белки печени, анализы мочи, УЗИ или биопсия печени.",
+      "en": "Normal ranges vary between laboratories and with sex and age (infant or child). Bilirubin is only one measure of liver health; liver function tests, liver protein tests, urine tests, an ultrasound or a liver biopsy may also be needed."
+     }
+    },
+    {
+     "section": "preanalytics",
+     "refs": [
+      {
+       "source_id": "medline-bilirubin",
+       "locator": "Will I need to do anything to prepare for the test?"
+      }
+     ],
+     "text": {
+      "uz": "Shifokor tahlildan oldin bir necha soat och qolishni so‘rashi mumkin. Qabul qilinayotgan barcha dorilar haqida aytish kerak; ularni faqat shifokor ko‘rsatmasi bilan to‘xtatish mumkin.",
+      "ru": "Врач может попросить сдавать анализ натощак, после голодания в течение нескольких часов. Нужно сообщить обо всех принимаемых лекарствах; отменять их можно только по указанию врача.",
+      "en": "The provider may ask for fasting for several hours before the test. Tell the provider about all medicines taken; stop any only if the provider says so."
+     }
+    },
+    {
+     "section": "limitations",
+     "refs": [
+      {
+       "source_id": "medline-liver-function",
+       "locator": "What do the results mean?"
+      },
+      {
+       "source_id": "medline-liver-function",
+       "locator": "What are liver function tests?"
+      }
+     ],
+     "text": {
+      "uz": "Jigar testlarida o‘zgarish bo‘lsa, shifokor turli jigar kasalliklariga xos uyg‘unliklarni topish uchun barcha o‘lchangan ko‘rsatkichlarni solishtiradi. Jigar funksiyasi testlarining o‘zi odatda aniq tashxis qo‘yishga imkon bermaydi.",
+      "ru": "При отклонениях в печёночных пробах врач сопоставляет все измеренные показатели, чтобы найти сочетания, характерные для разных заболеваний печени. Сами по себе печёночные пробы обычно не позволяют поставить конкретный диагноз.",
+      "en": "When liver test results are abnormal, the provider compares all the measured substances to look for patterns that suggest different types of liver conditions. Liver function tests alone usually cannot diagnose a specific disease."
+     }
+    },
+    {
+     "section": "physiology",
+     "refs": [
+      {
+       "source_id": "medline-ency-jaundice-causes",
+       "locator": "Jaundice causes"
+      },
+      {
+       "source_id": "book-sobirova-2006",
+       "locator": "XVII bob. Jigar biokimyosi: sariqliklar"
+      }
+     ],
+     "text": {
+      "uz": "Sariqlik uch yo‘l bilan yuzaga keladi: eritrotsitlar haddan tashqari ko‘p parchalanadi (jigar usti, gemolitik); jigar shikastlangan yoki bilirubinni qayta ishlay olmaydi (jigar, parenximatoz); jigardan chiqqan bilirubin ichakka o‘ta olmaydi (jigar osti, mexanik — o‘t yo‘llari tiqilishi).",
+      "ru": "Желтуха возникает тремя путями: эритроциты разрушаются слишком быстро (надпечёночная, гемолитическая); печень повреждена или не перерабатывает билирубин (печёночная, паренхиматозная); билирубин из печени не может попасть в кишечник (подпечёночная, механическая — закупорка желчных путей).",
+      "en": "Jaundice arises in three ways: too many red cells break down (prehepatic, haemolytic); the liver is damaged or cannot process bilirubin (hepatic); bilirubin from the liver cannot reach the gut (posthepatic, obstructive — blocked bile ducts)."
+     }
+    },
+    {
+     "section": "high_result",
+     "refs": [
+      {
+       "source_id": "fargo-2017-jaundice",
+       "locator": "Abstract"
+      },
+      {
+       "source_id": "kwo-2017-acg-liver",
+       "locator": "Abstract"
+      },
+      {
+       "source_id": "book-sobirova-2006",
+       "locator": "XVII bob. Jigar biokimyosi: sariqliklar"
+      }
+     ],
+     "text": {
+      "uz": "Shuning uchun yuqori umumiy bilirubin fraksiyalarga ajratiladi. Asosan bevosita bo‘lmagan (konyugatsiyalanmagan) bilirubin oshishi — gemoliz yoki Jilber sindromi kabi konyugatsiya buzilishi; bevosita (konyugatsiyalangan) bilirubin oshishi — gepatotsellyulyar kasallik (masalan, virusli yoki alkogolli gepatit) yoki xolestaz/o‘t yo‘llari tiqilishi.",
+      "ru": "Поэтому повышенный общий билирубин разделяют на фракции. Преобладание непрямого (неконъюгированного) — гемолиз или нарушение конъюгации, например синдром Жильбера; прямого (конъюгированного) — гепатоцеллюлярное поражение (например, вирусный или алкогольный гепатит) или холестаз/закупорка желчных путей.",
+      "en": "So a raised total bilirubin is fractionated. Mainly indirect (unconjugated) — haemolysis or impaired conjugation such as Gilbert syndrome; direct (conjugated) — hepatocellular disease (e.g., viral or alcoholic hepatitis) or cholestasis/bile-duct obstruction."
+     }
+    },
+    {
+     "section": "limitations",
+     "refs": [
+      {
+       "source_id": "book-sobirova-2006",
+       "locator": "XVII bob. Jigar biokimyosi: sariqliklar"
+      },
+      {
+       "source_id": "medline-bilirubin-urine",
+       "locator": "What do the results mean?"
+      },
+      {
+       "source_id": "medline-urobilinogen-urine",
+       "locator": "What do the results mean?"
+      },
+      {
+       "source_id": "medline-ency-pale-stools",
+       "locator": "Stools - pale or clay-colored"
+      }
+     ],
+     "text": {
+      "uz": "Sariqlik turini siydik va najas yordamida ham farqlash mumkin. Jigar usti: siydikda bilirubin yo‘q (konyugatsiyalanmagan bilirubin siydikka o‘tmaydi), urobilinogen ko‘p, najas to‘q. Jigar: siydikda bilirubin bor, urobilinogen ko‘pincha oshgan. Jigar osti: siydikda bilirubin bor (to‘q siydik), urobilinogen kam yoki yo‘q, najas oqargan, loysimon. Bu umumiy naqsh — tashxis klinik va boshqa tekshiruvlar bilan qo‘yiladi.",
+      "ru": "Тип желтухи помогают различить моча и кал. Надпечёночная: билирубина в моче нет (неконъюгированный в мочу не проходит), уробилиногена много, кал тёмный. Печёночная: билирубин в моче есть, уробилиноген часто повышен. Подпечёночная: билирубин в моче есть (тёмная моча), уробилиногена мало или нет, кал светлый, глинистый. Это общая схема — диагноз ставят с учётом клиники и других исследований.",
+      "en": "Urine and stool help tell the types apart. Prehepatic: no bilirubin in urine (unconjugated bilirubin does not pass into urine), much urobilinogen, dark stool. Hepatic: bilirubin in urine, urobilinogen often raised. Posthepatic: bilirubin in urine (dark urine), little or no urobilinogen, pale clay-coloured stool. This is a general pattern — diagnosis relies on the clinical picture and other tests."
+     }
+    }
+   ],
+   "decision_limits": [],
+   "source_ids": [
+    "medline-bilirubin",
+    "medline-liver-function",
+    "medline-ency-jaundice-causes",
+    "book-sobirova-2006",
+    "fargo-2017-jaundice",
+    "kwo-2017-acg-liver",
+    "medline-bilirubin-urine",
+    "medline-urobilinogen-urine",
+    "medline-ency-pale-stools"
+   ],
+   "related": [
+    "bilirubin-direct",
+    "alt",
+    "ast",
+    "alp"
+   ],
+   "specimen": {
+    "uz": "Venoz qon; chaqaloqlarda tovondan olingan qon",
+    "ru": "Венозная кровь; у новорождённых — кровь из пятки",
+    "en": "Venous blood; heel-stick blood in newborns"
+   },
+   "conversion": {
+    "molar_mass_g_per_mol": 584.673,
+    "basis": "C33H36N4O6 (bilirubin); IUPAC standard atomic weights (abridged): C 12.011, H 1.008, N 14.007, O 15.999",
+    "si_unit": "µmol/L"
+   }
+  },
+  {
+   "id": "bilirubin-direct",
+   "status": "draft",
+   "content_state": "sourced_sample",
+   "names": {
+    "uz": "Bevosita (bog‘langan) bilirubin",
+    "ru": "Прямой (связанный) билирубин",
+    "en": "Direct (conjugated) bilirubin"
+   },
+   "synonyms": [
+    "direct bilirubin",
+    "conjugated bilirubin",
+    "прямой билирубин",
+    "DBIL",
+    "to‘g‘ri bilirubin",
+    "bevosita bilirubin",
+    "bog‘langan bilirubin",
+    "konyugatsiyalangan bilirubin",
+    "связанный билирубин",
+    "конъюгированный билирубин",
+    "bevosita bo‘lmagan bilirubin",
+    "непрямой билирубин",
+    "indirect bilirubin"
+   ],
+   "group": "liver",
+   "sections": [
+    "purpose",
+    "physiology",
+    "preanalytics",
+    "high_result",
+    "related_tests",
+    "limitations"
+   ],
+   "review": {
+    "reviewer_id": null,
+    "reviewed_at": null,
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     },
+     {
+      "date": "2026-10-09",
+      "scope": "Kitoblar (Dolgov 2009, Lyubina 1984, Najmitdinov 1998, Sobirova 2006, Aripova 2007, Dadayev 2004) bilimi rasmiy/ochiq manbalar bilan solishtirildi; matn ko‘chirilmagan",
+      "report": "scratchpad/books/B_01..B_06, A_02, A_04 (agent tahlili)"
+     }
+    ]
+   },
+   "translation_review": {
+    "uz": "pending",
+    "ru": "pending",
+    "en": "pending"
+   },
+   "tagline": {
+    "uz": "Bilirubin tahlilining bir qismi",
+    "ru": "Часть исследования билирубина",
+    "en": "Part of bilirubin testing"
+   },
+   "units": [],
+   "claims": [
+    {
+     "section": "purpose",
+     "refs": [
+      {
+       "source_id": "medline-bilirubin",
+       "locator": "What is a bilirubin blood test?"
+      }
+     ],
+     "text": {
+      "uz": "Bevosita (bog‘langan) bilirubin qondagi bilirubin tahlilida umumiy va bilvosita (bog‘lanmagan) bilirubin bilan bir qatorda qayd etiladigan nomlardan biridir.",
+      "ru": "Прямой (связанный) билирубин — одно из названий, под которыми проводится исследование билирубина в крови, наряду с общим и непрямым (несвязанным) билирубином.",
+      "en": "Direct (conjugated) bilirubin is one of the names under which bilirubin blood testing is done, alongside total and indirect (unconjugated) bilirubin."
+     }
+    },
+    {
+     "section": "physiology",
+     "refs": [
+      {
+       "source_id": "medline-bilirubin",
+       "locator": "What is a bilirubin blood test?"
+      }
+     ],
+     "text": {
+      "uz": "Bilirubin eski eritrotsitlarning odatiy parchalanishida hosil bo‘ladi va o‘t tarkibida bo‘ladi. Sog‘lom jigar uning ko‘p qismini o‘t yo‘llari orqali chiqaradi; jigar shikastlansa yoki o‘t yo‘llari tiqilsa, bilirubin qonga o‘tishi mumkin.",
+      "ru": "Билирубин образуется при нормальном распаде старых эритроцитов и содержится в жёлчи. Здоровая печень выводит большую его часть через желчные протоки; при повреждении печени или закупорке протоков билирубин может поступать в кровь.",
+      "en": "Bilirubin forms during the normal breakdown of old red blood cells and is found in bile. A healthy liver removes most of it through the bile ducts; if the liver is damaged or the bile ducts are blocked, bilirubin can leak into the blood."
+     }
+    },
+    {
+     "section": "purpose",
+     "refs": [
+      {
+       "source_id": "medline-bilirubin",
+       "locator": "What is it used for?"
+      },
+      {
+       "source_id": "medline-bilirubin",
+       "locator": "Why do I need a bilirubin blood test?"
+      }
+     ],
+     "text": {
+      "uz": "Bilirubin tahlili jigar holatini tekshirish, sariqlik sababini izlash, o‘t yo‘llari tiqilishini aniqlash va mavjud jigar kasalligini kuzatishda qo‘llaniladi.",
+      "ru": "Исследование билирубина применяется для оценки состояния печени, поиска причины желтухи, выявления закупорки желчных протоков и наблюдения за имеющейся болезнью печени.",
+      "en": "Bilirubin blood testing is used to check liver health, look for the cause of jaundice, find out whether the bile ducts are blocked and monitor existing liver disease."
+     }
+    },
+    {
+     "section": "limitations",
+     "refs": [
+      {
+       "source_id": "medline-bilirubin",
+       "locator": "What do the results mean?"
+      },
+      {
+       "source_id": "medline-bilirubin",
+       "locator": "Is there anything else I need to know about a bilirubin blood test?"
+      }
+     ],
+     "text": {
+      "uz": "Bilirubin natijalari jigar holatining faqat bitta ko‘rsatkichi; me’yoriy qiymatlar laboratoriya, jins va yoshga (chaqaloq yoki bola) qarab farq qiladi. Jigar funksiyasi testlari, siydik tahlillari yoki ultratovush kabi boshqa tekshiruvlar kerak bo‘lishi mumkin.",
+      "ru": "Результаты билирубина — лишь один из показателей состояния печени; нормальные значения зависят от лаборатории, пола и возраста (младенец или ребёнок). Могут потребоваться другие исследования: печёночные пробы, анализы мочи или УЗИ.",
+      "en": "Bilirubin results are only one measure of liver health, and normal values vary by laboratory, sex and age (infant or child). Other tests, such as liver function tests, urine tests or an ultrasound, may be needed."
+     }
+    },
+    {
+     "section": "preanalytics",
+     "refs": [
+      {
+       "source_id": "medline-bilirubin",
+       "locator": "Will I need to do anything to prepare for the test?"
+      }
+     ],
+     "text": {
+      "uz": "Shifokor tahlildan oldin bir necha soat och qolishni so‘rashi mumkin. Qabul qilinayotgan barcha dorilar haqida aytish kerak; ularni faqat shifokor ko‘rsatmasi bilan to‘xtatish mumkin.",
+      "ru": "Врач может попросить сдавать анализ натощак, после голодания в течение нескольких часов. Нужно сообщить обо всех принимаемых лекарствах; отменять их можно только по указанию врача.",
+      "en": "The provider may ask for fasting for several hours before the test. Tell the provider about all medicines taken; stop any only if the provider says so."
+     }
+    },
+    {
+     "section": "high_result",
+     "refs": [
+      {
+       "source_id": "kwo-2017-acg-liver",
+       "locator": "Abstract"
+      },
+      {
+       "source_id": "fargo-2017-jaundice",
+       "locator": "Abstract"
+      },
+      {
+       "source_id": "book-sobirova-2006",
+       "locator": "XVII bob. Jigar biokimyosi: sariqliklar"
+      }
+     ],
+     "text": {
+      "uz": "Bilirubinning ko‘p qismi qonda konyugatsiyalanmagan holda aylanadi. Konyugatsiyalangan (bevosita) bilirubin oshishi ko‘pchilik hollarda gepatotsellyulyar kasallik yoki o‘t yo‘llari tiqilishi/xolestazni bildiradi; bu fraksiya suvda eriydi va siydikka o‘tadi, shuning uchun siydikda bilirubin paydo bo‘ladi.",
+      "ru": "Большая часть билирубина циркулирует в неконъюгированном виде. Повышение конъюгированного (прямого) билирубина в большинстве случаев означает гепатоцеллюлярное поражение или закупорку желчных путей/холестаз; эта фракция водорастворима и проходит в мочу, поэтому в моче появляется билирубин.",
+      "en": "Most bilirubin circulates unconjugated. A raised conjugated (direct) bilirubin in most settings implies hepatocellular disease or biliary obstruction/cholestasis; this fraction is water-soluble and passes into urine, so bilirubin appears in urine."
+     }
+    },
+    {
+     "section": "limitations",
+     "refs": [
+      {
+       "source_id": "medline-ency-bilirubin",
+       "locator": "Normal Results"
+      },
+      {
+       "source_id": "medline-bilirubin-urine",
+       "locator": "What is a bilirubin in urine test?"
+      }
+     ],
+     "text": {
+      "uz": "MedlinePlus ensiklopediyasi misol sifatida bevosita bilirubin uchun 0,3 mg/dL (5,1 µmol/L) dan kam qiymatni keltiradi, lekin referens laboratoriya va usulga bog‘liq — natija varaqasidagi oraliqqa qarang. Sog‘lom odam siydigida bilirubin odatda bo‘lmaydi.",
+      "ru": "Энциклопедия MedlinePlus в качестве примера приводит для прямого билирубина значение меньше 0,3 мг/дл (5,1 мкмоль/л), но референс зависит от лаборатории и метода — смотрите интервал на бланке. В моче здорового человека билирубина обычно нет.",
+      "en": "The MedlinePlus encyclopedia gives less than 0.3 mg/dL (5.1 µmol/L) as an example normal for direct bilirubin, but the reference depends on the laboratory and method — use the range on the report. Healthy urine normally contains no bilirubin."
+     }
+    }
+   ],
+   "decision_limits": [],
+   "source_ids": [
+    "medline-bilirubin",
+    "kwo-2017-acg-liver",
+    "fargo-2017-jaundice",
+    "book-sobirova-2006",
+    "medline-ency-bilirubin",
+    "medline-bilirubin-urine"
+   ],
+   "related": [
+    "bilirubin-total"
+   ],
+   "specimen": {
+    "uz": "Venoz qon",
+    "ru": "Венозная кровь",
+    "en": "Venous blood"
+   },
+   "conversion": {
+    "molar_mass_g_per_mol": 584.673,
+    "basis": "C33H36N4O6 (bilirubin); IUPAC standard atomic weights (abridged): C 12.011, H 1.008, N 14.007, O 15.999",
+    "si_unit": "µmol/L"
+   }
+  }
+ ],
+ "conditions": [
+  {
+   "id": "anemia-workup",
+   "status": "draft",
+   "system": "blood",
+   "names": {
+    "uz": "Anemiya: bosqichma-bosqich tekshiruv",
+    "ru": "Анемия: пошаговое обследование",
+    "en": "Anaemia: step-by-step work-up"
+   },
+   "synonyms": [
+    "kamqonlik",
+    "kam qonlik",
+    "anemiya",
+    "anemiya algoritmi",
+    "mikrotsitar anemiya",
+    "makrotsitar anemiya",
+    "normotsitar anemiya",
+    "анемия",
+    "малокровие",
+    "алгоритм анемии",
+    "микроцитарная анемия",
+    "макроцитарная анемия",
+    "anemia",
+    "anaemia",
+    "anemia work-up",
+    "microcytic anemia",
+    "macrocytic anemia"
+   ],
+   "summary": {
+    "text": {
+     "uz": "Anemiya — tashxis emas, belgi: avval gemoglobin bo‘yicha aniqlanadi, so‘ng MCV (eritrotsit o‘lchami) bo‘yicha mikrotsitar, normotsitar yoki makrotsitar turga ajratiladi, retikulotsitlar esa suyak ko‘migi javobini ko‘rsatadi. Keyingi tahlillar shu ikki qadamga qarab tanlanadi: temir ko‘rsatkichlari, B12/folat yoki gemoliz belgilari.",
+     "ru": "Анемия — не диагноз, а признак: её выявляют по гемоглобину, затем по MCV (размеру эритроцитов) делят на микро-, нормо- и макроцитарную, а ретикулоциты показывают ответ костного мозга. Дальнейшие анализы выбирают по этим двум шагам: показатели железа, B12/фолат или признаки гемолиза.",
+     "en": "Anaemia is a sign, not a diagnosis: it is detected by haemoglobin, then MCV (red cell size) classifies it as microcytic, normocytic or macrocytic, and reticulocytes show the marrow response. Further tests follow from these two steps: iron studies, B12/folate or markers of haemolysis."
+    },
+    "refs": [
+     {
+      "source_id": "nhlbi-anemia-dx",
+      "locator": "Blood tests"
+     },
+     {
+      "source_id": "takami-2026-cbc",
+      "locator": "Step 2: Evaluate the RBC lineage"
+     },
+     {
+      "source_id": "book-dolgov-2009",
+      "locator": "Определение и классификация анемий",
+      "pages": "36–38"
+     }
+    ]
+   },
+   "panel": [
+    {
+     "analyte_id": "hemoglobin",
+     "names": {
+      "uz": "Gemoglobin (umumiy qon tahlili)",
+      "ru": "Гемоглобин (общий анализ крови)",
+      "en": "Haemoglobin (complete blood count)"
+     },
+     "why": {
+      "uz": "Anemiyani aniqlaydi va og‘irligini baholaydi; JSST chegaralari yosh, jins va homiladorlikka bog‘liq.",
+      "ru": "Выявляет анемию и оценивает её тяжесть; пороги ВОЗ зависят от возраста, пола и беременности.",
+      "en": "Detects anaemia and grades severity; WHO cut-offs depend on age, sex and pregnancy."
+     },
+     "tier": "first_line",
+     "refs": [
+      {
+       "source_id": "nhlbi-anemia-dx",
+       "locator": "Blood tests"
+      },
+      {
+       "source_id": "who-hb-cutoffs-2024",
+       "locator": "Table 2. Haemoglobin cutoffs to define anaemia in individuals and populations",
+       "pages": "9"
+      }
+     ]
+    },
+    {
+     "analyte_id": "mcv",
+     "names": {
+      "uz": "MCV va RDW",
+      "ru": "MCV и RDW",
+      "en": "MCV and RDW"
+     },
+     "why": {
+      "uz": "MCV anemiyani o‘lcham bo‘yicha ajratadi; RDW aralash populyatsiyani ko‘rsatadi.",
+      "ru": "MCV классифицирует анемию по размеру клеток; RDW выявляет смешанную популяцию.",
+      "en": "MCV classifies anaemia by cell size; RDW reveals mixed populations."
+     },
+     "tier": "first_line",
+     "refs": [
+      {
+       "source_id": "nhlbi-anemia-dx",
+       "locator": "Blood tests"
+      },
+      {
+       "source_id": "takami-2026-cbc",
+       "locator": "Table 3. Integrated Interpretation of Anemia Using MCV and RDW"
+      }
+     ]
+    },
+    {
+     "analyte_id": "reticulocytes",
+     "names": {
+      "uz": "Retikulotsitlar (absolyut son)",
+      "ru": "Ретикулоциты (абсолютное число)",
+      "en": "Reticulocytes (absolute count)"
+     },
+     "why": {
+      "uz": "Suyak ko‘migi javobi: yuqori — qon ketishi yoki gemoliz, past — ishlab chiqarish yetishmovchiligi.",
+      "ru": "Ответ костного мозга: высокий — кровотечение или гемолиз, низкий — недостаточная продукция.",
+      "en": "Marrow response: high — bleeding or haemolysis; low — impaired production."
+     },
+     "tier": "first_line",
+     "refs": [
+      {
+       "source_id": "medline-reticulocyte",
+       "locator": "What do the results mean?"
+      },
+      {
+       "source_id": "takami-2026-cbc",
+       "locator": "Step 2: Evaluate the RBC lineage"
+      }
+     ]
+    },
+    {
+     "analyte_id": "ferritin",
+     "names": {
+      "uz": "Ferritin",
+      "ru": "Ферритин",
+      "en": "Ferritin"
+     },
+     "why": {
+      "uz": "Mikrotsitar anemiyada birinchi: past ferritin temir tanqisligini tasdiqlaydi.",
+      "ru": "Первый тест при микроцитарной анемии: низкий ферритин подтверждает дефицит железа.",
+      "en": "First test in microcytic anaemia: a low ferritin confirms iron deficiency."
+     },
+     "tier": "additional",
+     "refs": [
+      {
+       "source_id": "who-ferritin-2020",
+       "locator": "Executive summary: Table 1"
+      },
+      {
+       "source_id": "medline-mcv",
+       "locator": "What do the results mean?"
+      }
+     ]
+    },
+    {
+     "analyte_id": "transferrin-tibc",
+     "names": {
+      "uz": "Temir, TIBC, transferrin to‘yinishi",
+      "ru": "Железо, ОЖСС, насыщение трансферрина",
+      "en": "Iron, TIBC, transferrin saturation"
+     },
+     "why": {
+      "uz": "Temir tanqisligini yallig‘lanish anemiyasidan farqlashga yordam beradi.",
+      "ru": "Помогают отличить дефицит железа от анемии воспаления.",
+      "en": "Help separate iron deficiency from anaemia of inflammation."
+     },
+     "tier": "additional",
+     "refs": [
+      {
+       "source_id": "book-dolgov-2009",
+       "locator": "Обмен железа; лабораторная диагностика ЖДА",
+       "pages": "43–68"
+      },
+      {
+       "source_id": "takami-2026-cbc",
+       "locator": "Table 3. Integrated Interpretation of Anemia Using MCV and RDW"
+      }
+     ]
+    },
+    {
+     "analyte_id": "vitamin-b12",
+     "names": {
+      "uz": "Vitamin B12 va folat",
+      "ru": "Витамин B12 и фолат",
+      "en": "Vitamin B12 and folate"
+     },
+     "why": {
+      "uz": "Makrotsitar anemiyada megaloblast sabablarni tekshirish uchun.",
+      "ru": "При макроцитарной анемии — для поиска мегалобластных причин.",
+      "en": "In macrocytic anaemia, to look for megaloblastic causes."
+     },
+     "tier": "additional",
+     "refs": [
+      {
+       "source_id": "medline-mcv",
+       "locator": "What do the results mean?"
+      },
+      {
+       "source_id": "takami-2026-cbc",
+       "locator": "Table 3. Integrated Interpretation of Anemia Using MCV and RDW"
+      }
+     ]
+    },
+    {
+     "analyte_id": "ldh",
+     "names": {
+      "uz": "Gemoliz belgilari: LDG, bevosita bo‘lmagan bilirubin, gaptoglobin",
+      "ru": "Признаки гемолиза: ЛДГ, непрямой билирубин, гаптоглобин",
+      "en": "Haemolysis markers: LDH, indirect bilirubin, haptoglobin"
+     },
+     "why": {
+      "uz": "Retikulotsitlar yuqori va qon ketishi bo‘lmasa — gemolizni tasdiqlash uchun.",
+      "ru": "При высоких ретикулоцитах без кровотечения — для подтверждения гемолиза.",
+      "en": "With high reticulocytes and no bleeding — to confirm haemolysis."
+     },
+     "tier": "additional",
+     "refs": [
+      {
+       "source_id": "barcellini-2015-hemolysis",
+       "locator": "Abstract"
+      },
+      {
+       "source_id": "medline-haptoglobin",
+       "locator": "What is it used for?"
+      }
+     ]
+    },
+    {
+     "analyte_id": "blood-smear",
+     "names": {
+      "uz": "Periferik qon surtmasi",
+      "ru": "Мазок периферической крови",
+      "en": "Peripheral blood smear"
+     },
+     "why": {
+      "uz": "Eritrotsit shakli (sferotsit, shizotsit, nishonsimon) sababga ishora qiladi.",
+      "ru": "Форма эритроцитов (сфероциты, шизоциты, мишеневидные) подсказывает причину.",
+      "en": "Red cell shape (spherocytes, schistocytes, target cells) points to the cause."
+     },
+     "tier": "additional",
+     "refs": [
+      {
+       "source_id": "barcellini-2015-hemolysis",
+       "locator": "Abstract"
+      },
+      {
+       "source_id": "takami-2026-cbc",
+       "locator": "Table 2. Clinical Interpretation of Key CBC Parameters"
+      }
+     ]
+    }
+   ],
+   "patterns": [
+    {
+     "finding": {
+      "uz": "1-qadam: MCV past (taxminan <80 fL)",
+      "ru": "Шаг 1: MCV низкий (примерно <80 фл)",
+      "en": "Step 1: low MCV (about <80 fL)"
+     },
+     "meaning": {
+      "uz": "Mikrotsitar anemiya: eng ko‘p — temir tanqisligi, shuningdek talassemiya. Ferritin va temir ko‘rsatkichlari tekshiriladi.",
+      "ru": "Микроцитарная анемия: чаще всего — дефицит железа, а также талассемия. Проверяют ферритин и показатели железа.",
+      "en": "Microcytic anaemia: most often iron deficiency, also thalassaemia. Check ferritin and iron studies."
+     },
+     "refs": [
+      {
+       "source_id": "medline-mcv",
+       "locator": "What do the results mean?"
+      },
+      {
+       "source_id": "takami-2026-cbc",
+       "locator": "Table 3. Integrated Interpretation of Anemia Using MCV and RDW"
+      }
+     ]
+    },
+    {
+     "finding": {
+      "uz": "Mikrotsitoz + ferritin past",
+      "ru": "Микроцитоз + ферритин низкий",
+      "en": "Microcytosis + low ferritin"
+     },
+     "meaning": {
+      "uz": "Temir tanqisligi anemiyasi ehtimoli; sababi (qon yo‘qotish va b.) izlanadi. JSST (2020): sog‘lom kattalarda ferritin <15 µg/L, yallig‘lanishda <70 µg/L temir tanqisligiga ishora.",
+      "ru": "Вероятна железодефицитная анемия; ищут причину (кровопотеря и др.). ВОЗ (2020): у здоровых взрослых ферритин <15 мкг/л, при воспалении <70 мкг/л указывает на дефицит железа.",
+      "en": "Iron-deficiency anaemia likely; the cause (blood loss etc.) is sought. WHO (2020): ferritin <15 µg/L in healthy adults or <70 µg/L with inflammation indicates iron deficiency."
+     },
+     "refs": [
+      {
+       "source_id": "who-ferritin-2020",
+       "locator": "Executive summary: Table 1"
+      },
+      {
+       "source_id": "nhlbi-ida",
+       "locator": "How is iron-deficiency anemia diagnosed?"
+      }
+     ]
+    },
+    {
+     "finding": {
+      "uz": "Mikrotsitoz, ferritin me’yorda, RDW me’yorda, eritrotsitlar soni nisbatan saqlangan",
+      "ru": "Микроцитоз, ферритин в норме, RDW в норме, число эритроцитов относительно сохранено",
+      "en": "Microcytosis, normal ferritin, normal RDW, relatively preserved RBC count"
+     },
+     "meaning": {
+      "uz": "Talassemiya tashuvchanligi ehtimoli — gemoglobin turlari tahlili.",
+      "ru": "Вероятно носительство талассемии — исследование типов гемоглобина.",
+      "en": "Thalassaemia trait possible — haemoglobin variant testing."
+     },
+     "refs": [
+      {
+       "source_id": "takami-2026-cbc",
+       "locator": "Table 3. Integrated Interpretation of Anemia Using MCV and RDW"
+      },
+      {
+       "source_id": "nhlbi-thalassemia-dx",
+       "locator": "Thalassemia Diagnosis"
+      }
+     ]
+    },
+    {
+     "finding": {
+      "uz": "2-qadam: MCV me’yorda, retikulotsitlar yuqori",
+      "ru": "Шаг 2: MCV в норме, ретикулоциты высокие",
+      "en": "Step 2: normal MCV, high reticulocytes"
+     },
+     "meaning": {
+      "uz": "Suyak ko‘migi faol: yaqinda qon ketishi yoki gemoliz. Gemoliz belgilari (LDG, bilirubin, gaptoglobin) va surtma tekshiriladi.",
+      "ru": "Костный мозг активен: недавнее кровотечение или гемолиз. Проверяют признаки гемолиза (ЛДГ, билирубин, гаптоглобин) и мазок.",
+      "en": "Active marrow: recent bleeding or haemolysis. Check haemolysis markers (LDH, bilirubin, haptoglobin) and the smear."
+     },
+     "refs": [
+      {
+       "source_id": "medline-reticulocyte",
+       "locator": "What do the results mean?"
+      },
+      {
+       "source_id": "takami-2026-cbc",
+       "locator": "Step 2: Evaluate the RBC lineage"
+      },
+      {
+       "source_id": "barcellini-2015-hemolysis",
+       "locator": "Abstract"
+      }
+     ]
+    },
+    {
+     "finding": {
+      "uz": "MCV me’yorda, retikulotsitlar past yoki me’yorda",
+      "ru": "MCV в норме, ретикулоциты низкие или нормальные",
+      "en": "Normal MCV, low or normal reticulocytes"
+     },
+     "meaning": {
+      "uz": "Ishlab chiqarish kamaygan: surunkali kasallik (yallig‘lanish) anemiyasi, buyrak kasalligi, suyak ko‘migi kasalligi yoki erta aralash tanqislik. Og‘ir anemiya va juda past retikulotsitlarda ko‘mik yetishmovchiligi istisno qilinadi.",
+      "ru": "Сниженная продукция: анемия хронических заболеваний (воспаления), болезнь почек, болезнь костного мозга или ранний смешанный дефицит. При тяжёлой анемии и очень низких ретикулоцитах исключают недостаточность костного мозга.",
+      "en": "Reduced production: anaemia of chronic disease (inflammation), kidney disease, marrow disease or early mixed deficiency. With severe anaemia and very low reticulocytes, marrow failure is ruled out."
+     },
+     "refs": [
+      {
+       "source_id": "medline-mcv",
+       "locator": "What do the results mean?"
+      },
+      {
+       "source_id": "medline-reticulocyte",
+       "locator": "What do the results mean?"
+      },
+      {
+       "source_id": "takami-2026-cbc",
+       "locator": "Table 3. Integrated Interpretation of Anemia Using MCV and RDW"
+      },
+      {
+       "source_id": "takami-2026-cbc",
+       "locator": "Step 2: Evaluate the RBC lineage"
+      }
+     ]
+    },
+    {
+     "finding": {
+      "uz": "3-qadam: MCV yuqori (taxminan >100 fL)",
+      "ru": "Шаг 3: MCV высокий (примерно >100 фл)",
+      "en": "Step 3: high MCV (about >100 fL)"
+     },
+     "meaning": {
+      "uz": "Makrotsitar anemiya: B12 yoki folat tanqisligi (RDW ko‘pincha yuqori), shuningdek alkogol, jigar kasalligi, gipotireoz, ayrim dorilar, miyelodisplaziya. B12 va folat tekshiriladi.",
+      "ru": "Макроцитарная анемия: дефицит B12 или фолата (RDW часто высокий), а также алкоголь, болезнь печени, гипотиреоз, некоторые лекарства, миелодисплазия. Проверяют B12 и фолат.",
+      "en": "Macrocytic anaemia: B12 or folate deficiency (RDW often high), also alcohol, liver disease, hypothyroidism, some medicines, myelodysplasia. Check B12 and folate."
+     },
+     "refs": [
+      {
+       "source_id": "medline-mcv",
+       "locator": "What do the results mean?"
+      },
+      {
+       "source_id": "takami-2026-cbc",
+       "locator": "Table 3. Integrated Interpretation of Anemia Using MCV and RDW"
+      }
+     ]
+    }
+   ],
+   "cautions": [
+    {
+     "text": {
+      "uz": "Algoritm — yo‘naltiruvchi sxema: tanqisliklar aralash bo‘lsa MCV me’yorda chiqishi mumkin, raqamli chegaralar taxminiy va laboratoriyaga bog‘liq. Avval natija haqiqiyligini tekshiring (soxta natijalar: Lab → Jadvallar va algoritmlar). Yakuniy xulosa — shifokorda.",
+      "ru": "Алгоритм — ориентировочная схема: при смешанных дефицитах MCV может быть нормальным, числовые пороги приблизительны и зависят от лаборатории. Сначала убедитесь, что результат достоверен (ложные результаты: Обучение → Таблицы и алгоритмы). Окончательное заключение — за врачом.",
+      "en": "The algorithm is a guide: with mixed deficiencies MCV can be normal, and numeric cut-offs are approximate and laboratory-dependent. First make sure the result is genuine (spurious results: Learn → Tables and algorithms). The final judgement is the doctor’s."
+     },
+     "refs": [
+      {
+       "source_id": "takami-2026-cbc",
+       "locator": "Table 3. Integrated Interpretation of Anemia Using MCV and RDW"
+      },
+      {
+       "source_id": "takami-2026-cbc",
+       "locator": "Step 5: Always consider spurious results"
+      }
+     ]
+    }
+   ],
+   "review": {
+    "state": "pending",
+    "reviewer_id": null,
+    "reviewed_at": null,
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "Kitob bilimlari (Dolgov 2009, Sobirova 2006) NHLBI/MedlinePlus/JSST va ochiq maqolalar bilan solishtirildi",
+      "report": "scratchpad/books (agent tahlili)"
+     }
+    ]
+   },
+   "translation_review": {
+    "uz": "pending",
+    "ru": "pending",
+    "en": "pending"
+   }
+  },
+  {
+   "id": "hemolytic-anemia",
+   "status": "draft",
+   "system": "blood",
+   "names": {
+    "uz": "Gemolitik anemiya",
+    "ru": "Гемолитическая анемия",
+    "en": "Haemolytic anaemia"
+   },
+   "synonyms": [
+    "gemoliz",
+    "gemolitik sariqlik",
+    "sferotsitoz",
+    "Minkovskiy–Shoffar",
+    "G6FD tanqisligi",
+    "гемолиз",
+    "гемолитическая анемия",
+    "сфероцитоз",
+    "болезнь Минковского–Шоффара",
+    "hemolysis",
+    "hemolytic anemia",
+    "hereditary spherocytosis",
+    "AIHA"
+   ],
+   "summary": {
+    "text": {
+     "uz": "Eritrotsitlar suyak ko‘migi tiklay olganidan tezroq parchalanadi. Gemolizni retikulotsitlar ko‘payishi, LDG va bevosita bo‘lmagan bilirubin oshishi hamda gaptoglobin kamayishi tasdiqlaydi; to‘g‘ridan-to‘g‘ri antiglobulin (Kumbs) testi autoimmun shakllarni ajratadi, surtma esa membrana nuqsonlari va trombotik mikroangiopatiyani ko‘rsatadi.",
+     "ru": "Эритроциты разрушаются быстрее, чем костный мозг их восполняет. Гемолиз подтверждают рост ретикулоцитов, ЛДГ и непрямого билирубина и снижение гаптоглобина; прямой антиглобулиновый тест (Кумбса) выделяет аутоиммунные формы, а мазок — дефекты мембраны и тромботическую микроангиопатию.",
+     "en": "Red cells are destroyed faster than the marrow can replace them. Haemolysis is supported by raised reticulocytes, LDH and unconjugated bilirubin and low haptoglobin; the direct antiglobulin (Coombs) test identifies autoimmune forms, and the smear shows membrane defects and thrombotic microangiopathy."
+    },
+    "refs": [
+     {
+      "source_id": "barcellini-2015-hemolysis",
+      "locator": "Abstract"
+     },
+     {
+      "source_id": "medline-reticulocyte",
+      "locator": "What do the results mean?"
+     },
+     {
+      "source_id": "medline-haptoglobin",
+      "locator": "What is it used for?"
+     }
+    ]
+   },
+   "panel": [
+    {
+     "analyte_id": "reticulocytes",
+     "names": {
+      "uz": "Retikulotsitlar",
+      "ru": "Ретикулоциты",
+      "en": "Reticulocytes"
+     },
+     "why": {
+      "uz": "Ko‘mikning kompensator javobi; temir/vitamin tanqisligi, infeksiya yoki ko‘mik zararlanishida yetarli oshmasligi mumkin.",
+      "ru": "Компенсаторный ответ костного мозга; может не расти при дефиците железа/витаминов, инфекции или поражении костного мозга.",
+      "en": "Compensatory marrow response; may fail to rise with iron/vitamin deficiency, infection or marrow involvement."
+     },
+     "tier": "first_line",
+     "refs": [
+      {
+       "source_id": "barcellini-2015-hemolysis",
+       "locator": "Abstract"
+      }
+     ]
+    },
+    {
+     "analyte_id": "ldh",
+     "names": {
+      "uz": "LDG",
+      "ru": "ЛДГ",
+      "en": "LDH"
+     },
+     "why": {
+      "uz": "Ayniqsa tomir ichi gemolizida keskin oshadi.",
+      "ru": "Резко повышается особенно при внутрисосудистом гемолизе.",
+      "en": "Rises markedly, especially with intravascular haemolysis."
+     },
+     "tier": "first_line",
+     "refs": [
+      {
+       "source_id": "barcellini-2015-hemolysis",
+       "locator": "Abstract"
+      }
+     ]
+    },
+    {
+     "analyte_id": "bilirubin-total",
+     "names": {
+      "uz": "Bilirubin (fraksiyalar bilan)",
+      "ru": "Билирубин (по фракциям)",
+      "en": "Bilirubin (fractionated)"
+     },
+     "why": {
+      "uz": "Konyugatsiyalanmagan (bevosita bo‘lmagan) bilirubin oshadi.",
+      "ru": "Повышается неконъюгированный (непрямой) билирубин.",
+      "en": "Unconjugated (indirect) bilirubin rises."
+     },
+     "tier": "first_line",
+     "refs": [
+      {
+       "source_id": "barcellini-2015-hemolysis",
+       "locator": "Abstract"
+      },
+      {
+       "source_id": "fargo-2017-jaundice",
+       "locator": "Abstract"
+      }
+     ]
+    },
+    {
+     "names": {
+      "uz": "Gaptoglobin",
+      "ru": "Гаптоглобин",
+      "en": "Haptoglobin"
+     },
+     "why": {
+      "uz": "Gemolitik anemiyani tashxislashda eng ko‘p ishlatiladi; gemolizda kamayadi.",
+      "ru": "Чаще всего применяется для диагностики гемолитической анемии; при гемолизе снижается.",
+      "en": "Most often used to diagnose haemolytic anaemia; falls with haemolysis."
+     },
+     "tier": "first_line",
+     "refs": [
+      {
+       "source_id": "medline-haptoglobin",
+       "locator": "What is it used for?"
+      },
+      {
+       "source_id": "medline-haptoglobin",
+       "locator": "What do the results mean?"
+      }
+     ]
+    },
+    {
+     "names": {
+      "uz": "To‘g‘ridan-to‘g‘ri antiglobulin (Kumbs) testi",
+      "ru": "Прямой антиглобулиновый тест (Кумбса)",
+      "en": "Direct antiglobulin (Coombs) test"
+     },
+     "why": {
+      "uz": "Autoimmun gemolitik anemiyaning asosiy testi.",
+      "ru": "Основной тест при аутоиммунной гемолитической анемии.",
+      "en": "The cornerstone test for autoimmune haemolytic anaemia."
+     },
+     "tier": "additional",
+     "refs": [
+      {
+       "source_id": "barcellini-2015-hemolysis",
+       "locator": "Abstract"
+      },
+      {
+       "source_id": "medline-haptoglobin",
+       "locator": "What is it used for?"
+      }
+     ]
+    },
+    {
+     "analyte_id": "blood-smear",
+     "names": {
+      "uz": "Periferik qon surtmasi",
+      "ru": "Мазок периферической крови",
+      "en": "Peripheral blood smear"
+     },
+     "why": {
+      "uz": "Sferotsitlar, elliptotsitlar (membrana nuqsonlari), shizotsitlar (trombotik mikroangiopatiya).",
+      "ru": "Сфероциты, эллиптоциты (дефекты мембраны), шизоциты (тромботическая микроангиопатия).",
+      "en": "Spherocytes, elliptocytes (membrane defects), schistocytes (thrombotic microangiopathy)."
+     },
+     "tier": "additional",
+     "refs": [
+      {
+       "source_id": "barcellini-2015-hemolysis",
+       "locator": "Abstract"
+      }
+     ]
+    },
+    {
+     "analyte_id": "g6pd",
+     "names": {
+      "uz": "G6FD",
+      "ru": "Г6ФД",
+      "en": "G6PD"
+     },
+     "why": {
+      "uz": "Fermentopatiyaga shubhada.",
+      "ru": "При подозрении на ферментопатию.",
+      "en": "When an enzyme defect is suspected."
+     },
+     "tier": "additional",
+     "refs": [
+      {
+       "source_id": "book-dolgov-2009",
+       "locator": "Гемолитические анемии: внутриклеточный и внутрисосудистый гемолиз",
+       "pages": "100–104"
+      }
+     ]
+    }
+   ],
+   "patterns": [
+    {
+     "finding": {
+      "uz": "Retikulotsitlar ↑ + LDG ↑ + bevosita bo‘lmagan bilirubin ↑ + gaptoglobin ↓",
+      "ru": "Ретикулоциты ↑ + ЛДГ ↑ + непрямой билирубин ↑ + гаптоглобин ↓",
+      "en": "Reticulocytes ↑ + LDH ↑ + indirect bilirubin ↑ + haptoglobin ↓"
+     },
+     "meaning": {
+      "uz": "Gemoliz ehtimoli yuqori; keyin Kumbs testi va surtma bilan sababi aniqlanadi.",
+      "ru": "Гемолиз весьма вероятен; далее причину уточняют пробой Кумбса и мазком.",
+      "en": "Haemolysis likely; the cause is then sought with the Coombs test and smear."
+     },
+     "refs": [
+      {
+       "source_id": "barcellini-2015-hemolysis",
+       "locator": "Abstract"
+      }
+     ]
+    },
+    {
+     "finding": {
+      "uz": "LDG keskin ↑ + gemosiderinuriya / gemoglobinuriya",
+      "ru": "ЛДГ резко ↑ + гемосидеринурия / гемоглобинурия",
+      "en": "LDH markedly ↑ + haemosiderinuria / haemoglobinuria"
+     },
+     "meaning": {
+      "uz": "Tomir ichi gemolizi (masalan, paroksizmal tungi gemoglobinuriya, sun’iy klapan).",
+      "ru": "Внутрисосудистый гемолиз (например, пароксизмальная ночная гемоглобинурия, искусственный клапан).",
+      "en": "Intravascular haemolysis (e.g., paroxysmal nocturnal haemoglobinuria, prosthetic valve)."
+     },
+     "refs": [
+      {
+       "source_id": "barcellini-2015-hemolysis",
+       "locator": "Abstract"
+      },
+      {
+       "source_id": "book-dolgov-2009",
+       "locator": "Гемолитические анемии: внутриклеточный и внутрисосудистый гемолиз",
+       "pages": "100–104"
+      }
+     ]
+    },
+    {
+     "finding": {
+      "uz": "Kumbs testi musbat",
+      "ru": "Проба Кумбса положительная",
+      "en": "Positive Coombs test"
+     },
+     "meaning": {
+      "uz": "Antitelo bilan bog‘liq (immun) gemoliz ehtimoli.",
+      "ru": "Вероятен антителоопосредованный (иммунный) гемолиз.",
+      "en": "Antibody-mediated (immune) haemolysis likely."
+     },
+     "refs": [
+      {
+       "source_id": "barcellini-2015-hemolysis",
+       "locator": "Abstract"
+      }
+     ]
+    },
+    {
+     "finding": {
+      "uz": "Anemiya + trombotsitopeniya + gemoliz belgilari, surtmada shizotsitlar",
+      "ru": "Анемия + тромбоцитопения + признаки гемолиза, шизоциты в мазке",
+      "en": "Anaemia + thrombocytopenia + haemolysis markers, schistocytes on smear"
+     },
+     "meaning": {
+      "uz": "Trombotik mikroangiopatiya yoki DVS ehtimoli — shoshilinch baholash.",
+      "ru": "Возможна тромботическая микроангиопатия или ДВС — срочная оценка.",
+      "en": "Possible thrombotic microangiopathy or DIC — urgent evaluation."
+     },
+     "refs": [
+      {
+       "source_id": "takami-2026-cbc",
+       "locator": "Table 5. Red Flag Patterns in CBC Interpretation"
+      },
+      {
+       "source_id": "barcellini-2015-hemolysis",
+       "locator": "Abstract"
+      }
+     ]
+    },
+    {
+     "finding": {
+      "uz": "Irsiy sferotsitozga shubha: MCHC yuqori, MSCV < MCV, surtmada sferotsitlar",
+      "ru": "Подозрение на наследственный сфероцитоз: MCHC высокий, MSCV < MCV, сфероциты в мазке",
+      "en": "Suspected hereditary spherocytosis: high MCHC, MSCV < MCV, spherocytes on smear"
+     },
+     "meaning": {
+      "uz": "Oila tekshiruvi va maxsus testlar bilan tasdiqlanadi.",
+      "ru": "Подтверждают обследованием семьи и специальными тестами.",
+      "en": "Confirmed with family studies and specific tests."
+     },
+     "refs": [
+      {
+       "source_id": "wu-2021-hs-mscv",
+       "locator": "Laboratory tests for HS: Routine blood test"
+      },
+      {
+       "source_id": "medline-rbc-indices",
+       "locator": "What do the results mean?"
+      }
+     ]
+    }
+   ],
+   "cautions": [
+    {
+     "text": {
+      "uz": "Retikulotsitlar, LDG, bilirubin va gaptoglobin gemolizdan boshqa holatlarda ham o‘zgaradi (masalan, gaptoglobin jigar kasalligida past, chaqaloqlarda me’yorda past); autoimmun gemolitik anemiyaning bir qismida retikulotsitlar past bo‘ladi.",
+      "ru": "Ретикулоциты, ЛДГ, билирубин и гаптоглобин меняются и вне гемолиза (например, гаптоглобин низкий при болезни печени и в норме низкий у младенцев); в части случаев аутоиммунной гемолитической анемии ретикулоциты низкие.",
+      "en": "Reticulocytes, LDH, bilirubin and haptoglobin also change outside haemolysis (e.g., haptoglobin is low in liver disease and normally low in infants); in some autoimmune haemolytic anaemia reticulocytes are low."
+     },
+     "refs": [
+      {
+       "source_id": "barcellini-2015-hemolysis",
+       "locator": "Abstract"
+      },
+      {
+       "source_id": "medline-haptoglobin",
+       "locator": "What do the results mean?"
+      }
+     ]
+    }
+   ],
+   "review": {
+    "state": "pending",
+    "reviewer_id": null,
+    "reviewed_at": null,
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "Kitob bilimlari (Dolgov 2009, Sobirova 2006) NHLBI/MedlinePlus/JSST va ochiq maqolalar bilan solishtirildi",
+      "report": "scratchpad/books (agent tahlili)"
+     }
+    ]
+   },
+   "translation_review": {
+    "uz": "pending",
+    "ru": "pending",
+    "en": "pending"
+   }
+  }
+ ]
+}

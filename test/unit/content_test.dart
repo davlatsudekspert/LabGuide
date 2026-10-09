@@ -195,7 +195,11 @@ void main() {
       }
       expect(pack.lessons, isEmpty);
       expect(pack.discrepancies, isEmpty);
-      expect(pack.sources.every((s) => s.kind == 'web'), isTrue);
+      // Veb-manba yoki faqat iqtibos qilinadigan kitob (kutubxonasiz).
+      expect(
+        pack.sources.every((s) => s.kind == 'web' || s.isCitationOnlyBook),
+        isTrue,
+      );
       expect(pack.quiz.every((q) => q.isDraft), isTrue);
     });
   });

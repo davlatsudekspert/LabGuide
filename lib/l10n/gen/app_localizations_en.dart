@@ -1746,13 +1746,45 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get diffRangesBody =>
-      'Even two open sources give different example adult ranges (%). Reports use only the reference on your laboratory’s form; children’s ranges depend on age.';
+      'Open sources and a former-USSR textbook give different example adult ranges (%). Reports use only the reference on your laboratory’s form; children’s ranges depend on age.';
 
   @override
   String get diffRangesWho => 'WHO 2003';
 
   @override
   String get diffRangesMedline => 'MedlinePlus';
+
+  @override
+  String get diffRangesClassic => 'Former-USSR textbook (1984)';
+
+  @override
+  String get diffRangesClassicNote =>
+      'The classic (former-USSR textbook) ranges are shown for comparison only: many local report forms still use them, but sources differ. Your laboratory’s report form is what counts.';
+
+  @override
+  String get refTitle => 'Tables and algorithms';
+
+  @override
+  String get refSub =>
+      'Anaemia, jaundice, liver patterns, parasites, obsolete methods';
+
+  @override
+  String get refIntro =>
+      'Short tables based on textbooks and official sources. Sources are listed under each section.';
+
+  @override
+  String get refDraftNote =>
+      'Draft: not yet expert-reviewed. Books are cited as sources only — no text or figures were copied. The conclusion is the doctor’s.';
+
+  @override
+  String get refOpenSub => 'Table and algorithm';
+
+  @override
+  String get refNotFound => 'This table was not found.';
+
+  @override
+  String get analyteReuseCitationOnly =>
+      'Book: cited as a source only, no text copied';
 
   @override
   String get diffQuizPrompt => 'Which cell is this?';

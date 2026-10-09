@@ -1729,13 +1729,45 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get diffRangesBody =>
-      'Ikki ochiq manbada kattalar uchun misol oraliqlar (%) ham turlicha. Hisobotda faqat laboratoriyangiz blankasidagi referens ishlatiladi; bolalar uchun oraliqlar yoshga qarab boshqacha.';
+      'Ochiq manbalar va MDH darsligida kattalar uchun misol oraliqlar (%) turlicha. Hisobotda faqat laboratoriyangiz blankasidagi referens ishlatiladi; bolalar uchun oraliqlar yoshga qarab boshqacha.';
 
   @override
   String get diffRangesWho => 'JSST 2003';
 
   @override
   String get diffRangesMedline => 'MedlinePlus';
+
+  @override
+  String get diffRangesClassic => 'MDH darsligi (1984)';
+
+  @override
+  String get diffRangesClassicNote =>
+      'Klassik (MDH darsliklari) oraliqlar faqat solishtirish uchun berilgan: ular hanuz ko‘p blankalarda uchraydi, lekin manbalar bir-biridan farq qiladi. Asosiy mezon — laboratoriyangiz blankasidagi referens.';
+
+  @override
+  String get refTitle => 'Jadvallar va algoritmlar';
+
+  @override
+  String get refSub =>
+      'Anemiya, sariqlik, jigar sindromlari, parazitlar, eskirgan usullar';
+
+  @override
+  String get refIntro =>
+      'Kitoblar va rasmiy manbalarga asoslangan qisqa jadvallar. Har bo‘lim ostida manbalar ko‘rsatilgan.';
+
+  @override
+  String get refDraftNote =>
+      'Qoralama: mutaxassis tekshiruvidan o‘tmagan. Kitoblar faqat manba sifatida keltirilgan — matn va rasmlar ko‘chirilmagan. Xulosa — shifokorda.';
+
+  @override
+  String get refOpenSub => 'Jadval va algoritm';
+
+  @override
+  String get refNotFound => 'Bunday jadval topilmadi.';
+
+  @override
+  String get analyteReuseCitationOnly =>
+      'Kitob: faqat manba sifatida keltirilgan, matn ko‘chirilmagan';
 
   @override
   String get diffQuizPrompt => 'Bu qaysi hujayra?';

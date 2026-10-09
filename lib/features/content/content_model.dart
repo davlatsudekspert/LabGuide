@@ -121,11 +121,24 @@ class ContentSource {
         (source.url == null || source.accessed == null)) {
       throw FormatException('${source.id}: web source needs url and accessed');
     }
+    // Faqat iqtibos qilinadigan kitob (mualliflik huquqi amal qiladi):
+    // kutubxonaga qo'yilmaydi, shuning uchun kutubxona elementi shart emas,
+    // lekin bibliografiya (sarlavha, nashriyot) va izoh majburiy.
+    if (source.isCitationOnlyBook) {
+      if ((source.note ?? '').trim().isEmpty || source.url != null) {
+        throw FormatException('${source.id}: citation-only book needs note');
+      }
+      return source;
+    }
     if (source.kind != 'web' && source.libraryItemId == null) {
       throw FormatException('${source.id}: ${source.kind} needs library item');
     }
     return source;
   }
+
+  /// Kitob faqat manba sifatida keltiriladi (matn/rasm ko'chirilmaydi).
+  bool get isCitationOnlyBook =>
+      kind == 'book' && reuseRights == 'citation_only' && libraryItemId == null;
 
   final String id;
 
