@@ -47,7 +47,8 @@ void main() {
     tester,
   ) async {
     final s = await makeServices(tester, language: AppLanguage.en);
-    await pumpApp(tester, s, size: const Size(390, 3200));
+    // Zimnitskiy sahifasi uzun (17 maydon) — manbalar ham qurilsin.
+    await pumpApp(tester, s, size: const Size(390, 7000));
     await goTo(tester, '/lab/calculators');
     expect(find.text(en.calcSectionManual), findsOneWidget);
     for (final c in ManualCalc.values) {

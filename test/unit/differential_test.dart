@@ -188,7 +188,7 @@ void main() {
         expect(f.refs, isNotEmpty, reason: f.id);
       }
       for (final s in DiffSources.all) {
-        expect(Uri.parse(s.url).isScheme('https'), isTrue);
+        expect(Uri.parse(s.url!).isScheme('https'), isTrue);
       }
       // Blast — "shifokorga yuboring" ogohlantirishi bilan.
       expect(cellGuide('blast')!.refer, isTrue);

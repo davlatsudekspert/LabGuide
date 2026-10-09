@@ -6,6 +6,7 @@ import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
 import 'clinical_calc_screens.dart';
+import 'calc_info.dart' show CalcRef;
 import 'clinical_calculators.dart' show roundHalfUp;
 import 'manual_calc_info.dart';
 import 'manual_calculators.dart';
@@ -19,6 +20,9 @@ String manualCalcTitle(ManualCalc c, AppLocalizations l) => switch (c) {
   ManualCalc.reticulocytes => l.mcRetic,
   ManualCalc.light => l.mcLight,
   ManualCalc.colourIndex => l.mcColour,
+  ManualCalc.nechiporenko => l.mcNechiporenko,
+  ManualCalc.addis => l.mcAddis,
+  ManualCalc.zimnitsky => l.mcZimnitsky,
 };
 
 String manualCalcSubtitle(ManualCalc c, AppLocalizations l) => switch (c) {
@@ -27,6 +31,9 @@ String manualCalcSubtitle(ManualCalc c, AppLocalizations l) => switch (c) {
   ManualCalc.reticulocytes => l.mcReticSub,
   ManualCalc.light => l.mcLightSub,
   ManualCalc.colourIndex => l.mcColourSub,
+  ManualCalc.nechiporenko => l.mcNechiporenkoSub,
+  ManualCalc.addis => l.mcAddisSub,
+  ManualCalc.zimnitsky => l.mcZimnitskySub,
 };
 
 IconData manualCalcIcon(ManualCalc c) => switch (c) {
@@ -35,6 +42,9 @@ IconData manualCalcIcon(ManualCalc c) => switch (c) {
   ManualCalc.reticulocytes => Icons.bubble_chart_outlined,
   ManualCalc.light => Icons.science_outlined,
   ManualCalc.colourIndex => Icons.palette_outlined,
+  ManualCalc.nechiporenko => Icons.water_drop_outlined,
+  ManualCalc.addis => Icons.nights_stay_outlined,
+  ManualCalc.zimnitsky => Icons.schedule_rounded,
 };
 
 String manualCalcRoute(ManualCalc c) => switch (c) {
@@ -43,6 +53,9 @@ String manualCalcRoute(ManualCalc c) => switch (c) {
   ManualCalc.reticulocytes => 'reticulocytes',
   ManualCalc.light => 'light',
   ManualCalc.colourIndex => 'colour-index',
+  ManualCalc.nechiporenko => 'nechiporenko',
+  ManualCalc.addis => 'addis-kakovsky',
+  ManualCalc.zimnitsky => 'zimnitsky',
 };
 
 Widget manualCalcScreen(ManualCalc c) => switch (c) {
@@ -51,6 +64,9 @@ Widget manualCalcScreen(ManualCalc c) => switch (c) {
   ManualCalc.reticulocytes => const ReticCalcScreen(),
   ManualCalc.light => const LightCalcScreen(),
   ManualCalc.colourIndex => const ColourIndexScreen(),
+  ManualCalc.nechiporenko => const NechiporenkoScreen(),
+  ManualCalc.addis => const AddisScreen(),
+  ManualCalc.zimnitsky => const ZimnitskyScreen(),
 };
 
 /// Maydon nomi (birligi bilan) — xato matni va kiritmalar ro'yxati uchun.
@@ -78,7 +94,38 @@ String manualFieldName(ManualField f, AppLocalizations l) => switch (f) {
   ManualField.pfLdh => l.mfPfLdh,
   ManualField.serumLdh => l.mfSerumLdh,
   ManualField.ldhUln => l.mfLdhUln,
+  ManualField.urineLeuko => l.mfLeukoCounted,
+  ManualField.urineEry => l.mfEryCounted,
+  ManualField.urineCasts => l.mfCastsCounted,
+  ManualField.urineCentrifuged => l.mfUrineCentrifuged,
+  ManualField.collectedVolume => l.mfCollected,
+  ManualField.collectionHours => l.mfCollectHours,
+  ManualField.fluidIntake => l.mfFluidIntake,
+  ManualField.portion1 ||
+  ManualField.portion2 ||
+  ManualField.portion3 ||
+  ManualField.portion4 ||
+  ManualField.portion5 ||
+  ManualField.portion6 ||
+  ManualField.portion7 ||
+  ManualField.portion8 => _portionName(f, l),
+  ManualField.sg1 ||
+  ManualField.sg2 ||
+  ManualField.sg3 ||
+  ManualField.sg4 ||
+  ManualField.sg5 ||
+  ManualField.sg6 ||
+  ManualField.sg7 ||
+  ManualField.sg8 => l.mfPortionSg(zimnitskySgFields.indexOf(f) + 1),
 };
+
+/// “1-porsiya (06–09), ml”.
+String _portionName(ManualField f, AppLocalizations l) {
+  final i = zimnitskyVolumeFields.indexOf(f);
+  String hh(int h) => h.toString().padLeft(2, '0');
+  final start = zimnitskyStartHours[i];
+  return l.mfPortion(i + 1, '${hh(start)}–${hh((start + 3) % 24)}');
+}
 
 String _n(double v, String locale, int d) =>
     formatResult(roundHalfUp(v, d), locale, maxDecimals: d);
@@ -108,6 +155,8 @@ String manualErrorText(
       return l.errCalcImplausible(name, num(f.min), num(f.max), '');
     case ManualIssue.inconsistent:
       if (f.sum != null) return l.mErrSum(_n(f.sum!, locale, 1));
+      if (field == ManualField.portion1) return l.mErrNoUrine;
+      if (field == ManualField.urineCentrifuged) return l.mErrSediment;
       return l.mErrReticGtExamined;
   }
 }
@@ -140,7 +189,9 @@ class _ManualPage extends StatelessWidget {
       children: [
         Align(
           alignment: Alignment.centerLeft,
-          child: LgTag(l.calcFormulaTag, icon: Icons.menu_book_outlined),
+          child: classicManualCalcs.contains(calc)
+              ? LgTag(l.mcClassicTag, icon: Icons.history_edu_outlined)
+              : LgTag(l.calcFormulaTag, icon: Icons.menu_book_outlined),
         ),
         ...inputs,
         const SizedBox(height: 18),
@@ -171,6 +222,10 @@ List<Widget> _infoSections(BuildContext context, ManualCalc calc) {
         padding: const EdgeInsets.only(bottom: 6),
         child: Text(f.of(lang), style: text.bodyMedium),
       ),
+    if (classicRanges[calc] case final ranges?) ...[
+      LgSectionTitle(l.mcClassicTitle),
+      _ClassicRangesPanel(ranges: ranges, refs: info.refs),
+    ],
     LgSectionTitle(l.calcLimitations),
     for (final x in info.limitations) _Bullet(x.of(lang)),
     LgSectionTitle(l.calcSources),
@@ -736,6 +791,337 @@ class ColourIndexScreen extends StatelessWidget {
         for (final (i, r) in info.refs.indexed)
           CalcSourceTile(index: i + 1, ref: r),
       ],
+    );
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Klassik darslik oraliqlari paneli: referens interval, diagnostik chegara
+// emas. Natija bilan rangda solishtirilmaydi.
+// ---------------------------------------------------------------------------
+
+class _ClassicRangesPanel extends StatelessWidget {
+  const _ClassicRangesPanel({required this.ranges, required this.refs});
+
+  final List<ClassicRange> ranges;
+  final List<CalcRef> refs;
+
+  @override
+  Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context);
+    final text = Theme.of(context).textTheme;
+    final lang = Localizations.localeOf(context).languageCode;
+    String cite(CalcRef r) {
+      final n = refs.indexWhere((x) => x.source.id == r.source.id) + 1;
+      return '[$n, ${l.citePage(r.locator)}]';
+    }
+
+    return LgPanel(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(l.mcClassicNote, style: text.bodySmall),
+          for (final r in ranges)
+            Padding(
+              padding: const EdgeInsets.only(top: 10),
+              child: MergeSemantics(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(r.label.of(lang), style: text.titleSmall),
+                    Text(
+                      '${r.value.of(lang)} ${cite(r.ref)}',
+                      style: text.bodyMedium,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+        ],
+      ),
+    );
+  }
+}
+
+/// Siydik hisobi uchun umumiy: sanalgan to'r va cho'kma tanlovi.
+mixin _UrineCount<W extends StatefulWidget> on _Fields<W> {
+  double chamber = urineChamberVolumes.first;
+  double sediment = sedimentVolumes.first;
+
+  Map<ManualField, double> counts() => {
+    for (final f in urineCellFields) f: ?read(f),
+  };
+
+  String chamberLabel(double v, AppLocalizations l) => switch (v) {
+    0.9 => l.mfGoryaevWhole,
+    0.4 => l.mfGoryaev100,
+    _ => l.mfFuchsWhole,
+  };
+
+  List<Widget> countInputs(AppLocalizations l, String locale) => [
+    for (final f in urineCellFields)
+      field(f, optional: f != urineCellFields[0]),
+    _ChipGroup<double>(
+      label: l.mfCountedVolume,
+      options: urineChamberVolumes,
+      selected: chamber,
+      labelOf: (v) => chamberLabel(v, l),
+      onSelect: (v) => setState(() {
+        chamber = v;
+        outcome = null;
+      }),
+    ),
+    _ChipGroup<double>(
+      label: l.mfSediment,
+      options: sedimentVolumes,
+      selected: sediment,
+      labelOf: (v) => '${_n(v, locale, 1)} ml',
+      onSelect: (v) => setState(() {
+        sediment = v;
+        outcome = null;
+      }),
+    ),
+  ];
+
+  /// Har hujayra turi: asosiy son va 1 µL cho'kmadagi oraliq qiymat.
+  List<Widget> countRows(
+    UrineCountResult r,
+    AppLocalizations l,
+    String locale,
+  ) => [
+    for (final e in r.values.entries)
+      LgMetric(
+        label: manualFieldName(e.key, l).split(' (').first,
+        value: _n(e.value, locale, 0),
+      ),
+    _note(
+      context,
+      [
+        for (final e in r.perMicroLitre.entries)
+          '${manualFieldName(e.key, l).split(' (').first}: '
+              '${l.mrPerUlSediment(_n(e.value, locale, 2))}',
+      ].join('\n'),
+    ),
+  ];
+}
+
+// ---------------------------------------------------------------------------
+// Nechiporenko
+// ---------------------------------------------------------------------------
+
+class NechiporenkoScreen extends StatefulWidget {
+  const NechiporenkoScreen({super.key});
+
+  @override
+  State<NechiporenkoScreen> createState() => _NechiporenkoScreenState();
+}
+
+class _NechiporenkoScreenState extends State<NechiporenkoScreen>
+    with _Fields<NechiporenkoScreen>, _UrineCount<NechiporenkoScreen> {
+  @override
+  void initState() {
+    super.initState();
+    // Ikkala darslikdagi odatiy hajm — 10 ml (foydalanuvchi o'zgartiradi).
+    c(ManualField.urineCentrifuged).text = '10';
+  }
+
+  void _calculate() => run(
+    () => nechiporenko(
+      counts: counts(),
+      chamberVolume: chamber,
+      sedimentMl: sediment,
+      urineMl: read(ManualField.urineCentrifuged),
+    ),
+  );
+
+  @override
+  Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context);
+    final locale = Localizations.localeOf(context).toLanguageTag();
+    final o = outcome;
+    return _ManualPage(
+      calc: ManualCalc.nechiporenko,
+      inputs: [
+        ...countInputs(l, locale),
+        field(ManualField.urineCentrifuged, last: true, onDone: _calculate),
+      ],
+      onCalculate: _calculate,
+      resultKey: resultKey,
+      result: switch (o) {
+        null => null,
+        final ManualFail<Object?> f => LgNotice(
+          manualErrorText(l, f, locale),
+          kind: NoticeKind.error,
+        ),
+        ManualOk(value: final UrineCountResult r) => _ResultPanel(
+          title: l.mcNechiporenko,
+          headline: l.mrPerMlUrine,
+          children: countRows(r, l, locale),
+        ),
+        _ => null,
+      },
+    );
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Kakovskiy–Addis
+// ---------------------------------------------------------------------------
+
+class AddisScreen extends StatefulWidget {
+  const AddisScreen({super.key});
+
+  @override
+  State<AddisScreen> createState() => _AddisScreenState();
+}
+
+class _AddisScreenState extends State<AddisScreen>
+    with _Fields<AddisScreen>, _UrineCount<AddisScreen> {
+  void _calculate() => run(
+    () => addisKakovsky(
+      counts: counts(),
+      chamberVolume: chamber,
+      sedimentMl: sediment,
+      collectedMl: read(ManualField.collectedVolume),
+      hours: read(ManualField.collectionHours),
+    ),
+  );
+
+  @override
+  Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context);
+    final locale = Localizations.localeOf(context).toLanguageTag();
+    final o = outcome;
+    return _ManualPage(
+      calc: ManualCalc.addis,
+      inputs: [
+        field(ManualField.collectedVolume, optional: true),
+        field(ManualField.collectionHours, optional: true),
+        ...countInputs(l, locale),
+      ],
+      onCalculate: _calculate,
+      resultKey: resultKey,
+      result: switch (o) {
+        null => null,
+        final ManualFail<Object?> f => LgNotice(
+          manualErrorText(l, f, locale),
+          kind: NoticeKind.error,
+        ),
+        ManualOk(value: final AddisResult r) => _ResultPanel(
+          title: l.mcAddis,
+          headline: l.mrPerDay,
+          children: [
+            LgMetric(
+              label: l.mrPortion12,
+              value: r.portionMl == null
+                  ? l.mrNotGiven
+                  : '${_n(r.portionMl!, locale, 1)} ml',
+            ),
+            ...countRows(r, l, locale),
+          ],
+        ),
+        _ => null,
+      },
+    );
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Zimnitskiy
+// ---------------------------------------------------------------------------
+
+class ZimnitskyScreen extends StatefulWidget {
+  const ZimnitskyScreen({super.key});
+
+  @override
+  State<ZimnitskyScreen> createState() => _ZimnitskyScreenState();
+}
+
+class _ZimnitskyScreenState extends State<ZimnitskyScreen>
+    with _Fields<ZimnitskyScreen> {
+  void _calculate() => run(
+    () => zimnitsky(
+      volumes: [for (final f in zimnitskyVolumeFields) read(f)],
+      sgs: [for (final f in zimnitskySgFields) read(f)],
+      intake: read(ManualField.fluidIntake),
+    ),
+  );
+
+  List<Widget> _portions(int from, int to) => [
+    for (var i = from; i < to; i++) ...[
+      field(zimnitskyVolumeFields[i]),
+      field(zimnitskySgFields[i]),
+    ],
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context);
+    final text = Theme.of(context).textTheme;
+    final locale = Localizations.localeOf(context).toLanguageTag();
+    final o = outcome;
+    String sg(double v) => _n(v, locale, 3);
+    return _ManualPage(
+      calc: ManualCalc.zimnitsky,
+      inputs: [
+        Padding(
+          padding: const EdgeInsets.only(top: 12),
+          child: Text(l.mfZimDay, style: text.titleSmall),
+        ),
+        ..._portions(0, 4),
+        Padding(
+          padding: const EdgeInsets.only(top: 12),
+          child: Text(l.mfZimNight, style: text.titleSmall),
+        ),
+        ..._portions(4, 8),
+        field(
+          ManualField.fluidIntake,
+          optional: true,
+          last: true,
+          onDone: _calculate,
+        ),
+      ],
+      onCalculate: _calculate,
+      resultKey: resultKey,
+      result: switch (o) {
+        null => null,
+        final ManualFail<Object?> f => LgNotice(
+          manualErrorText(l, f, locale),
+          kind: NoticeKind.error,
+        ),
+        ManualOk(value: final ZimnitskyResult r) => _ResultPanel(
+          title: l.mrDiuresisTotal,
+          headline: '${_n(r.total, locale, 0)} ml',
+          children: [
+            LgMetric(
+              label: l.mrDiuresisDay,
+              value: '${_n(r.day, locale, 0)} ml',
+            ),
+            LgMetric(
+              label: l.mrDiuresisNight,
+              value: '${_n(r.night, locale, 0)} ml',
+            ),
+            LgMetric(
+              label: l.mrDayNightRatio,
+              value: r.dayNightRatio == null
+                  ? '—'
+                  : '${_n(r.dayNightRatio!, locale, 2)} : 1',
+            ),
+            LgMetric(
+              label: l.mrIntakePercent,
+              value: r.intakePercent == null
+                  ? l.mrNotGiven
+                  : '${_n(r.intakePercent!, locale, 0)} %',
+            ),
+            LgMetric(
+              label: l.mrSgRange,
+              value: '${sg(r.sgMinValue)} – ${sg(r.sgMaxValue)}',
+            ),
+            LgMetric(label: l.mrSgAmplitude, value: sg(r.sgAmplitude)),
+          ],
+        ),
+        _ => null,
+      },
     );
   }
 }

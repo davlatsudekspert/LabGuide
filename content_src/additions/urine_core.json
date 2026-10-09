@@ -1,0 +1,878 @@
+{
+ "analytes": [
+  {
+   "id": "urine-chemistry",
+   "status": "draft",
+   "content_state": "sourced_sample",
+   "names": {
+    "uz": "Siydik (peshob) kimyoviy tahlili",
+    "ru": "Химическое исследование мочи",
+    "en": "Urine chemistry (dipstick)"
+   },
+   "synonyms": [
+    "dipstick",
+    "test poloska",
+    "тест-полоски",
+    "ОАМ",
+    "umumiy siydik tahlili",
+    "urinalysis",
+    "peshob",
+    "peshob tahlili",
+    "пешоб"
+   ],
+   "group": "urine",
+   "sections": [
+    "purpose",
+    "physiology",
+    "high_result",
+    "low_result",
+    "preanalytics",
+    "interference",
+    "related_tests",
+    "limitations"
+   ],
+   "review": {
+    "reviewer_id": null,
+    "reviewed_at": null,
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     },
+     {
+      "date": "2026-10-09",
+      "scope": "book-derived claims (Aripova 2007, Selivanov 2005, Lyubina 1984) checked against WHO/DIL/LAB/99.1, WHO 2003/2010, MedlinePlus, NCI; pages and numbers; uz/ru/en",
+      "report": "docs/BOOKS_PREANALYTICS_2026-10-09.md"
+     }
+    ]
+   },
+   "translation_review": {
+    "uz": "pending",
+    "ru": "pending",
+    "en": "pending"
+   },
+   "tagline": {
+    "uz": "Siydikning kimyoviy (test-poloska) tekshiruvi",
+    "ru": "Химическое исследование мочи (тест-полоски)",
+    "en": "Chemical (dipstick) urine screening"
+   },
+   "units": [],
+   "claims": [
+    {
+     "section": "purpose",
+     "refs": [
+      {
+       "source_id": "medline-protein-urine",
+       "locator": "What is it used for?"
+      },
+      {
+       "source_id": "medline-bilirubin-urine",
+       "locator": "What is it used for?"
+      },
+      {
+       "source_id": "medline-nitrites-urine",
+       "locator": "Is there anything else I need to know about a nitrites in urine test?"
+      }
+     ],
+     "text": {
+      "uz": "Siydik tahlili vizual ko‘rik, ayrim kimyoviy moddalarni aniqlash va mikroskopik tekshiruvni o‘z ichiga olishi mumkin; kimyoviy qismida oqsil, glyukoza, ketonlar, bilirubin, urobilinogen va nitritlar kabi moddalar tekshiriladi, bunda test-poloskalar (dipstik) qo‘llanishi mumkin. Siydik tahlili umumiy sog‘liqni, jumladan siydik yo‘llari va buyraklarni tekshirish uchun ishlatiladi hamda buyrak va jigar muammolarini aniqlashga yordam beradi.",
+      "ru": "Общий анализ мочи может включать визуальный осмотр, химические тесты и микроскопию; в химической части определяют такие вещества, как белок, глюкоза, кетоны, билирубин, уробилиноген и нитриты, для чего могут применяться тест-полоски. Анализ мочи используется для оценки общего состояния здоровья, в том числе мочевыводящих путей и почек, и помогает выявлять проблемы с почками и печенью.",
+      "en": "A urinalysis may include a visual check, tests for certain chemicals and a microscopic exam; the chemical part checks substances such as protein, glucose, ketones, bilirubin, urobilinogen and nitrites, and dipstick (test strip) methods can be used. Urinalysis is used to check general health, including the urinary tract and kidneys, and helps diagnose kidney and liver problems."
+     }
+    },
+    {
+     "section": "physiology",
+     "refs": [
+      {
+       "source_id": "medline-protein-urine",
+       "locator": "What is a protein in urine test?"
+      }
+     ],
+     "text": {
+      "uz": "Odatda siydikda oqsil juda kam bo‘ladi, chunki buyrakdagi mayda filtrlar yirik oqsil molekulalarining siydikka o‘tishiga yo‘l qo‘ymaydi. Siydikda oqsilning uzoq vaqt yuqori bo‘lishi buyrak kasalligi yoki boshqa holat bu filtrlarni shikastlaganining birinchi belgisi bo‘lishi mumkin, shuning uchun tahlil buyrak shikastlanishini erta aniqlashga yordam beradi.",
+      "ru": "В норме в моче очень мало белка, так как мелкие почечные фильтры не пропускают крупные молекулы белка в мочу. Длительно повышенный белок в моче может быть первым признаком того, что болезнь почек или другое состояние повредили эти фильтры, поэтому анализ помогает рано выявить поражение почек.",
+      "en": "Normally urine contains very little protein, because tiny kidney filters stop large protein molecules from passing into urine. High urine protein over time may be the first sign that kidney disease or another condition has damaged these filters, so the test can help find kidney damage early."
+     }
+    },
+    {
+     "section": "high_result",
+     "refs": [
+      {
+       "source_id": "medline-protein-urine",
+       "locator": "What do the results mean?"
+      }
+     ],
+     "text": {
+      "uz": "Siydikda oqsilning yuqoriligi vaqtinchalik bo‘lishi mumkin — masalan, og‘ir jismoniy mashqlar, suvsizlanish, ovqatlanish, stress yoki homiladorlik tufayli, shuning uchun takroriy tahlil kerak bo‘lishi mumkin. Doimiy yuqori bo‘lib qolayotgan oqsil, ehtimol, buyrak kasalligi yoki buyrak shikastlanishi belgisi; sababini aniqlash uchun qo‘shimcha tahlillar kerak.",
+      "ru": "Повышенный белок в моче может быть временным — например, из-за интенсивной физической нагрузки, обезвоживания, питания, стресса или беременности, поэтому может понадобиться повторный анализ. Стойко повышенный белок, вероятно, указывает на болезнь или повреждение почек; для выяснения причины нужны дополнительные исследования.",
+      "en": "High urine protein can be temporary, for example due to strenuous exercise, dehydration, diet, stress or pregnancy, so repeat testing may be needed. Protein that stays high is likely a sign of kidney disease or kidney damage, and more tests are needed to find the cause."
+     }
+    },
+    {
+     "section": "preanalytics",
+     "refs": [
+      {
+       "source_id": "medline-protein-urine",
+       "locator": "What happens during a protein in urine test?"
+      }
+     ],
+     "text": {
+      "uz": "Siydikdagi oqsil va boshqa moddalar miqdori kun davomida o‘zgargani uchun 24 soatlik siydik yig‘ish to‘liqroq natija berishi mumkin.",
+      "ru": "Поскольку количество белка и других веществ в моче меняется в течение дня, сбор суточной мочи может дать более полный результат.",
+      "en": "Because the amount of protein and other substances in urine varies during the day, a 24-hour urine collection may give more complete results."
+     }
+    },
+    {
+     "section": "high_result",
+     "refs": [
+      {
+       "source_id": "medline-glucose-urine",
+       "locator": "What is a glucose in urine test?"
+      },
+      {
+       "source_id": "medline-glucose-urine",
+       "locator": "What do the results mean?"
+      }
+     ],
+     "text": {
+      "uz": "Odatda siydikda glyukoza juda kam bo‘ladi yoki umuman bo‘lmaydi, chunki buyraklar uni qonga qaytaradi. Me’yordan ko‘p glyukoza qonda glyukoza yuqoriligini aks ettirishi mumkin (eng ko‘p uchraydigan sabab — diabet) yoki kamdan-kam hollarda qondagi glyukoza me’yorda bo‘lsa ham buyrak uni chiqarib yuboradigan holat — renal glyukozuriya yoki Fankoni sindromi bilan bog‘liq bo‘ladi. Homiladorlik va gestatsion diabet ham sabablar qatorida keltirilgan.",
+      "ru": "В норме глюкозы в моче очень мало или нет, так как почки возвращают её в кровь. Повышенное содержание глюкозы может отражать высокую глюкозу крови (самая частая причина — диабет) либо, редко, болезнь почек, при которой глюкоза выводится при нормальном её уровне в крови, — почечную глюкозурию или синдром Фанкони. В числе причин указаны также беременность и гестационный диабет.",
+      "en": "Normally urine contains little or no glucose because the kidneys return it to the blood. More glucose than normal may reflect high blood glucose (diabetes is the most common cause) or, rarely, a kidney condition such as renal glycosuria or Fanconi syndrome, in which glucose is removed even when blood glucose is normal. Pregnancy and gestational diabetes are also listed."
+     }
+    },
+    {
+     "section": "limitations",
+     "refs": [
+      {
+       "source_id": "medline-glucose-urine",
+       "locator": "What is it used for?"
+      },
+      {
+       "source_id": "medline-glucose-urine",
+       "locator": "What do the results mean?"
+      }
+     ],
+     "text": {
+      "uz": "Siydikdagi glyukoza tahlili qondagi glyukoza tahliliga qaraganda kamroq aniq, shu sababli diabetni aniqlash va kuzatishda hozir ko‘proq qon tahlillari qo‘llaniladi. Siydikda glyukoza me’yorda bo‘lishi diabetni istisno qilmaydi, chunki qondagi glyukoza yuqori bo‘lganda ham siydikdagisi me’yorda bo‘lishi mumkin; siydikdagi glyukoza tahlilining o‘zi hech qanday kasallikka tashxis qo‘ya olmaydi.",
+      "ru": "Анализ глюкозы в моче менее точен, чем анализ глюкозы крови, поэтому для диагностики и контроля диабета сейчас чаще используют анализы крови. Нормальная глюкоза в моче не исключает диабет, поскольку она может быть нормальной при высокой глюкозе крови; один лишь анализ глюкозы в моче не позволяет поставить диагноз.",
+      "en": "Urine glucose testing is less accurate than blood glucose testing, so blood tests are now more commonly used to diagnose and monitor diabetes. A normal urine glucose does not exclude diabetes, because urine glucose can be normal while blood glucose is high, and a urine glucose test alone cannot diagnose any condition."
+     }
+    },
+    {
+     "section": "interference",
+     "refs": [
+      {
+       "source_id": "medline-glucose-urine",
+       "locator": "What do the results mean?"
+      }
+     ],
+     "text": {
+      "uz": "Ayrim dorilar, C vitamini va ko‘p ovqat yeyish siydikdagi glyukoza natijasiga ta’sir qilishi mumkin.",
+      "ru": "На результат определения глюкозы в моче могут влиять некоторые лекарства, витамин C и обильный приём пищи.",
+      "en": "Certain medicines, vitamin C and eating a large meal may affect urine glucose results."
+     }
+    },
+    {
+     "section": "high_result",
+     "refs": [
+      {
+       "source_id": "medline-nitrites-urine",
+       "locator": "What is a nitrites in urine test?"
+      }
+     ],
+     "text": {
+      "uz": "Siydik yo‘llari infeksiyasini (SYI) keltirib chiqaradigan ko‘plab bakteriyalar siydikdagi odatiy kimyoviy modda — nitratlarni nitritlarga aylantiradi, shuning uchun siydikda nitritlar topilishi odatda SYI borligini bildiradi.",
+      "ru": "Многие бактерии, вызывающие инфекции мочевыводящих путей (ИМП), превращают нитраты — обычное вещество мочи — в нитриты, поэтому нитриты в моче обычно указывают на ИМП.",
+      "en": "Many bacteria that cause urinary tract infections (UTIs) change nitrates, a normal chemical in urine, into nitrites, so nitrites in urine usually mean a UTI."
+     }
+    },
+    {
+     "section": "limitations",
+     "refs": [
+      {
+       "source_id": "medline-nitrites-urine",
+       "locator": "What do the results mean?"
+      },
+      {
+       "source_id": "medline-nitrites-urine",
+       "locator": "Is there anything else I need to know about a nitrites in urine test?"
+      }
+     ],
+     "text": {
+      "uz": "Nitrit testining manfiy bo‘lishi infeksiyani istisno qilmaydi, chunki ayrim bakteriyalar nitratlarni nitritlarga aylantirmaydi; siydikdagi leykotsitlar natijalari ham hisobga olinadi. Uy sharoitidagi SYI test-poloskalari infeksiyani o‘tkazib yuborishi mumkin; siydikni bakteriologik ekish (urokultura) bakteriyalar miqdori va turini aniqlaydi.",
+      "ru": "Отрицательный тест на нитриты не исключает инфекцию, так как некоторые бактерии не превращают нитраты в нитриты; учитываются также результаты на лейкоциты в моче. Домашние тест-полоски на ИМП могут пропустить инфекцию; бактериологический посев мочи определяет количество и вид бактерий.",
+      "en": "A negative nitrite test does not exclude infection, because some bacteria do not change nitrates into nitrites; results for white blood cells in urine are also considered. Home UTI test strips may miss an infection, and a urine culture shows how much and what type of bacteria are present."
+     }
+    },
+    {
+     "section": "high_result",
+     "refs": [
+      {
+       "source_id": "medline-ketones-urine",
+       "locator": "What is a ketones in urine test?"
+      }
+     ],
+     "text": {
+      "uz": "Hujayralar yetarli glyukoza ololmaganda organizm energiya uchun yog‘larni parchalaydi va ketonlar hosil bo‘ladi. Siydikda biroz keton bo‘lishi me’yoriy holat, ammo yuqori darajasi ketoatsidozni, ko‘pincha diabetik ketoatsidozni (DKA) — tez rivojlanadigan va hayot uchun xavfli shoshilinch holatni ko‘rsatishi mumkin.",
+      "ru": "Когда клеткам не хватает глюкозы, организм расщепляет жиры для получения энергии и образуются кетоны. Небольшое количество кетонов в моче — норма, но высокий уровень может указывать на кетоацидоз, чаще всего диабетический (ДКА), — быстро развивающееся, опасное для жизни неотложное состояние.",
+      "en": "When cells cannot get enough glucose, the body breaks down fat for energy, producing ketones. Some ketones in urine are normal, but high levels may indicate ketoacidosis, most commonly diabetic ketoacidosis (DKA), a medical emergency that often develops quickly and can be life-threatening."
+     }
+    },
+    {
+     "section": "purpose",
+     "refs": [
+      {
+       "source_id": "medline-ketones-urine",
+       "locator": "What is it used for?"
+      }
+     ],
+     "text": {
+      "uz": "Siydikdagi ketonlar keton darajasi oshish xavfi yuqori bo‘lganlarni kuzatish uchun tekshiriladi: diabet, uzoq davom etgan qusish yoki diareya, alkogolga qaramlik, ovqatlanish buzilishlari yoki ochlik, ayrim hazm tizimi kasalliklari, uglevodlari kam («keto») parhez, uzoq vaqt haddan tashqari og‘ir jismoniy mashqlar va homiladorlik.",
+      "ru": "Кетоны в моче определяют для наблюдения за людьми с повышенным риском высокого уровня кетонов: при диабете, длительной рвоте или диарее, расстройстве, связанном с алкоголем, расстройствах пищевого поведения или голодании, некоторых болезнях пищеварения, низкоуглеводной («кето») диете, длительных чрезмерных нагрузках и беременности.",
+      "en": "Urine ketones are used to monitor people more likely to develop high ketone levels, such as those with diabetes, long-lasting vomiting or diarrhea, alcohol use disorder, eating disorders or starvation, certain digestive diseases, a low-carbohydrate (“keto”) diet, prolonged very hard exercise, or pregnancy."
+     }
+    },
+    {
+     "section": "limitations",
+     "refs": [
+      {
+       "source_id": "medline-ketones-urine",
+       "locator": "What do the results mean?"
+      }
+     ],
+     "text": {
+      "uz": "Keton natijasi son ko‘rinishida yoki «oz», «o‘rtacha», «ko‘p» deb berilishi mumkin; me’yor ovqatlanish, jismoniy faollik va boshqa omillarga qarab farqlanadi.",
+      "ru": "Результат по кетонам может быть числовым или в виде «небольшое», «умеренное», «большое» количество; норма зависит от питания, физической активности и других факторов.",
+      "en": "Ketone results may be a number or reported as a “small”, “moderate” or “large” amount, and normal results can vary with diet, activity level and other factors."
+     }
+    },
+    {
+     "section": "high_result",
+     "refs": [
+      {
+       "source_id": "medline-bilirubin-urine",
+       "locator": "What is a bilirubin in urine test?"
+      },
+      {
+       "source_id": "medline-bilirubin-urine",
+       "locator": "Why do I need a bilirubin in urine test?"
+      },
+      {
+       "source_id": "medline-bilirubin-urine",
+       "locator": "What do the results mean?"
+      }
+     ],
+     "text": {
+      "uz": "Odatda siydikda bilirubin bo‘lmaydi. Uning topilishi (bilirubinuriya) gepatit yoki sirroz kabi jigar kasalligi yoki o‘t yo‘llari to‘silishi belgisi bo‘lishi mumkin; bu jigar shikastlanishining erta belgisi bo‘lishi va belgilar paydo bo‘lishidan oldin ham aniqlanishi mumkin.",
+      "ru": "В норме билирубина в моче нет. Его появление (билирубинурия) может быть признаком заболевания печени, например гепатита или цирроза, или закупорки желчных протоков; это может быть ранним признаком поражения печени и выявляться ещё до появления симптомов.",
+      "en": "Bilirubin is normally not found in urine. Its presence (bilirubinuria) may be a sign of liver disease, such as hepatitis or cirrhosis, or of a blockage in the bile ducts; it can be an early sign of liver damage and may appear before symptoms do."
+     }
+    },
+    {
+     "section": "high_result",
+     "refs": [
+      {
+       "source_id": "medline-urobilinogen-urine",
+       "locator": "What is a urobilinogen in urine test?"
+      },
+      {
+       "source_id": "medline-urobilinogen-urine",
+       "locator": "What do the results mean?"
+      }
+     ],
+     "text": {
+      "uz": "Me’yoriy siydikda biroz urobilinogen bo‘ladi — uni ichakdagi foydali bakteriyalar o‘t tarkibidagi bilirubindan hosil qiladi. Me’yordan yuqori daraja gepatit, sirroz, dorilar tufayli jigar shikastlanishi yoki gemolitik anemiya belgisi bo‘lishi mumkin.",
+      "ru": "В нормальной моче есть немного уробилиногена, который образуется из билирубина желчи под действием полезных кишечных бактерий. Уровень выше нормы может быть признаком гепатита, цирроза, лекарственного поражения печени или гемолитической анемии.",
+      "en": "Normal urine contains some urobilinogen, which helpful gut bacteria make from bilirubin in bile. A higher-than-normal level may be a sign of hepatitis, cirrhosis, liver damage due to medicines or hemolytic anemia."
+     }
+    },
+    {
+     "section": "low_result",
+     "refs": [
+      {
+       "source_id": "medline-urobilinogen-urine",
+       "locator": "What do the results mean?"
+      }
+     ],
+     "text": {
+      "uz": "Urobilinogenning juda kam bo‘lishi yoki umuman bo‘lmasligi o‘tni jigar yoki o‘t pufagidan ichakka olib boruvchi yo‘llarning to‘silishi, jigar orqali qon oqimining to‘silishi yoki jigar faoliyati buzilishi belgisi bo‘lishi mumkin.",
+      "ru": "Очень низкий уровень или отсутствие уробилиногена может быть признаком закупорки протоков, по которым желчь поступает из печени или желчного пузыря в кишечник, нарушения кровотока через печень или нарушения функции печени.",
+      "en": "Too little or no urobilinogen may be a sign of a blockage in the ducts that carry bile from the liver or gallbladder to the intestines, a blockage of blood flow through the liver, or a problem with liver function."
+     }
+    },
+    {
+     "section": "interference",
+     "refs": [
+      {
+       "source_id": "medline-bilirubin-urine",
+       "locator": "Will I need to do anything to prepare for the test?"
+      },
+      {
+       "source_id": "medline-urobilinogen-urine",
+       "locator": "What do the results mean?"
+      }
+     ],
+     "text": {
+      "uz": "Ayrim dorilar va qo‘shimchalar siydikdagi bilirubin va urobilinogen natijalariga ta’sir qilishi mumkin, shuning uchun qabul qilinayotgan barcha vositalar haqida ma’lum qilish kerak.",
+      "ru": "Некоторые лекарства и добавки могут влиять на результаты определения билирубина и уробилиногена в моче, поэтому следует сообщать обо всех принимаемых средствах.",
+      "en": "Certain medicines and supplements can affect urine bilirubin and urobilinogen results, so everything being taken should be reported."
+     }
+    },
+    {
+     "section": "limitations",
+     "refs": [
+      {
+       "source_id": "medline-bilirubin-urine",
+       "locator": "Is there anything else I should know about a bilirubin in urine test?"
+      },
+      {
+       "source_id": "medline-urobilinogen-urine",
+       "locator": "Is there anything else I need to know about a urobilinogen in urine test?"
+      }
+     ],
+     "text": {
+      "uz": "Siydikdagi bilirubin jigar sog‘lig‘ining faqat bitta ko‘rsatkichi, urobilinogen tahlilining o‘zi esa aniq kasallikka tashxis qo‘ya olmaydi; me’yordan tashqari natijada jigar paneli kabi qo‘shimcha tahlillar buyurilishi mumkin.",
+      "ru": "Билирубин в моче — лишь один из показателей состояния печени, а анализ на уробилиноген сам по себе не позволяет диагностировать конкретное заболевание; при отклонениях могут назначить дополнительные исследования, например печёночную панель.",
+      "en": "Urine bilirubin is only one measure of liver health, and a urobilinogen test alone cannot diagnose a specific condition; abnormal results may lead to further tests such as a liver panel."
+     }
+    },
+    {
+     "section": "preanalytics",
+     "refs": [
+      {
+       "source_id": "medline-protein-urine",
+       "locator": "What happens during a protein in urine test?"
+      }
+     ],
+     "text": {
+      "uz": "Namuna odatda «toza yig‘ish» usulida olinadi: qo‘l yuvilib, jinsiy a’zolar sohasi tozalangach, siydikning dastlabki qismi unitazga chiqariladi, keyingi qismi esa ichki yuzasiga tegmasdan idishga yig‘iladi — bu teridagi mikroblar namunaga tushmasligi uchun kerak. Qon ketayotgan gemorroy yoki hayz davri bo‘lsa, bu haqda tahlildan oldin aytish lozim.",
+      "ru": "Образец обычно собирают методом «чистого сбора»: после мытья рук и обработки области половых органов первую порцию мочи выпускают в унитаз, а следующую собирают в контейнер, не касаясь его внутренней поверхности, — чтобы микробы с кожи не попали в образец. О кровоточащем геморрое или менструации нужно сообщить до анализа.",
+      "en": "The sample is usually collected by the clean-catch method: after washing hands and cleaning the genital area, the first few seconds of urine go into the toilet and the rest is collected in the container without touching its inside, so that germs from the skin do not get into the sample. Bleeding hemorrhoids or a menstrual period should be reported before the test."
+     }
+    },
+    {
+     "section": "preanalytics",
+     "refs": [
+      {
+       "source_id": "medline-ketones-urine",
+       "locator": "Will I need to do anything to prepare for the test?"
+      },
+      {
+       "source_id": "medline-nitrites-urine",
+       "locator": "Will I need to do anything to prepare for the test?"
+      }
+     ],
+     "text": {
+      "uz": "Siydikdagi ketonlarni aniqlashdan oldin yoki boshqa siydik va qon tahlillari buyurilgan bo‘lsa, och qolish talab qilinishi mumkin. Ayrim dorilarni to‘xtatish kerak bo‘lishi mumkin, ammo faqat shifokor ko‘rsatmasi bilan; qabul qilinayotgan barcha dorilar haqida aytish lozim.",
+      "ru": "Перед анализом мочи на кетоны или при назначении других анализов мочи и крови может потребоваться голодание. Некоторые лекарства может понадобиться отменить, но только по указанию врача; сообщите обо всех принимаемых препаратах.",
+      "en": "Fasting may be required before a urine ketone test or when other urine or blood tests are ordered. Some medicines may need to be stopped, but only on the provider’s instruction; all medicines being taken should be reported."
+     }
+    },
+    {
+     "section": "preanalytics",
+     "refs": [
+      {
+       "source_id": "who-basic-lab-manual-2003",
+       "locator": "7.2.3 Measuring the pH",
+       "pages": "235"
+      },
+      {
+       "source_id": "book-aripova-2007",
+       "locator": "10.1.3 Siydikni yig‘ish (Namunalarni saqlash)",
+       "pages": "83–84"
+      }
+     ],
+     "text": {
+      "uz": "Umumiy tahlil uchun siydik yig‘ilgandan keyin 1 soat ichida tekshiriladi; pH ham 1 soat ichida o‘lchanishi kerak. Tekshirish kechiksa, namuna tekshiruvgacha sovitgichda saqlanadi.",
+      "ru": "Мочу для общего анализа исследуют в течение 1 часа после сбора; pH тоже нужно измерить в течение 1 часа. Если исследование откладывается, образец до анализа хранят в холодильнике.",
+      "en": "Urine for routine analysis is examined within 1 hour of collection, and the pH must also be tested within 1 hour. If testing is delayed, keep the sample refrigerated until it is analysed."
+     },
+     "origin": "books-preanalytics"
+    },
+    {
+     "section": "preanalytics",
+     "refs": [
+      {
+       "source_id": "who-dil-lab-99-1",
+       "locator": "5.2 Urine — glucose, pH",
+       "pages": "47"
+      },
+      {
+       "source_id": "book-aripova-2007",
+       "locator": "10.1.3 Siydikni yig‘ish (Namunalarni saqlash)",
+       "pages": "84"
+      }
+     ],
+     "text": {
+      "uz": "Siydik turib qolsa nima o‘zgaradi: JSST jadvaliga ko‘ra glyukoza xona haroratida ham, 4–8 °C da ham taxminan 2 soatda kamayadi (bakteriyalar uni sarflaydi); pH ammoniy hosil bo‘lishi hisobiga ko‘tariladi — siydik ishqoriy tomonga siljiydi. Darslik ham shu o‘zgarishlarni sanab, kechikishda glyukoza noto‘g‘ri past chiqishini ta’kidlaydi.",
+      "ru": "Что меняется при стоянии мочи: по таблице ВОЗ глюкоза снижается примерно за 2 часа и при комнатной температуре, и при 4–8 °C (её расходуют бактерии); pH повышается из‑за образования аммония — моча сдвигается в щелочную сторону. Учебник перечисляет те же изменения и подчёркивает ложно низкую глюкозу при задержке.",
+      "en": "What changes when urine stands: per the WHO table, glucose falls within about 2 hours both at room temperature and at 4–8 °C (bacteria consume it), and pH rises as ammonium forms, so the urine turns alkaline. The textbook lists the same changes and stresses falsely low glucose after a delay."
+     },
+     "origin": "books-preanalytics"
+    },
+    {
+     "section": "preanalytics",
+     "refs": [
+      {
+       "source_id": "who-dil-lab-99-1",
+       "locator": "5.2 Urine — protein",
+       "pages": "48"
+      }
+     ],
+     "text": {
+      "uz": "Siydikdagi oqsil nisbatan barqarorroq: JSST jadvalida xona haroratida 1 sutka, 4–8 °C da 7 sutka, −20 °C da 1 oy deb ko‘rsatilgan.",
+      "ru": "Белок в моче более устойчив: в таблице ВОЗ указано 1 сутки при комнатной температуре, 7 суток при 4–8 °C и 1 месяц при −20 °C.",
+      "en": "Urine protein is more stable: the WHO table gives 1 day at room temperature, 7 days at 4–8 °C and 1 month at −20 °C."
+     },
+     "origin": "books-preanalytics"
+    },
+    {
+     "section": "interference",
+     "refs": [
+      {
+       "source_id": "book-aripova-2007",
+       "locator": "Bilirubinni ekspress test-tilimchalar yordamida aniqlash",
+       "pages": "92"
+      },
+      {
+       "source_id": "who-dil-lab-99-1",
+       "locator": "5.1 Blood — bilirubin (darkness required when stored > 8 h)",
+       "pages": "24"
+      }
+     ],
+     "text": {
+      "uz": "Bilirubin yorug‘likda parchalanadi: darslikka ko‘ra yangi siydikni quyosh va lyuminessent nurdan saqlash kerak, chunki bilirubin biliverdinga oksidlanadi va test-tilimcha uni aniqlamaydi (soxta manfiy). JSST hujjati ham bilirubin uchun zardobni 8 soatdan uzoq saqlashda qorong‘ilikni talab qiladi; siydik uchun alohida muddat bermaydi.",
+      "ru": "Билирубин разрушается на свету: по учебнику свежую мочу нужно защищать от солнечного и люминесцентного света, так как билирубин окисляется в биливердин, который тест‑полоска не определяет (ложноотрицательно). Документ ВОЗ для билирубина сыворотки при хранении дольше 8 часов также требует темноты; отдельного срока для мочи он не даёт.",
+      "en": "Bilirubin breaks down in light: the textbook says fresh urine must be shielded from sunlight and fluorescent light, because bilirubin oxidises to biliverdin, which the strip does not detect (false negative). The WHO document likewise requires darkness for serum bilirubin stored over 8 hours; it gives no separate time for urine."
+     },
+     "origin": "books-preanalytics"
+    },
+    {
+     "section": "interference",
+     "refs": [
+      {
+       "source_id": "medline-glucose-urine",
+       "locator": "What do the results mean?"
+      },
+      {
+       "source_id": "book-aripova-2007",
+       "locator": "Siydikdagi glyukozani ekspress tilimchalar yordamida aniqlash",
+       "pages": "91"
+      }
+     ],
+     "text": {
+      "uz": "C vitamini (askorbin kislota) siydikdagi glyukoza natijasiga ta’sir qilishi mumkin; darslikda u test-tilimcha sezgirligini pasaytirib, soxta manfiy natija beradigan modda sifatida keltirilgan.",
+      "ru": "Витамин C (аскорбиновая кислота) может влиять на результат глюкозы в моче; в учебнике он приведён как вещество, снижающее чувствительность тест‑полоски и дающее ложноотрицательный результат.",
+      "en": "Vitamin C (ascorbic acid) can affect the urine glucose result; the textbook lists it as a substance that lowers strip sensitivity and gives a false-negative result."
+     },
+     "origin": "books-preanalytics"
+    }
+   ],
+   "decision_limits": [],
+   "source_ids": [
+    "medline-protein-urine",
+    "medline-bilirubin-urine",
+    "medline-nitrites-urine",
+    "medline-glucose-urine",
+    "medline-ketones-urine",
+    "medline-urobilinogen-urine",
+    "who-basic-lab-manual-2003",
+    "book-aripova-2007",
+    "who-dil-lab-99-1"
+   ],
+   "related": [
+    "urine-microscopy"
+   ],
+   "specimen": {
+    "uz": "Siydik («toza yig‘ish» usulida olingan namuna; ayrim hollarda 24 soatlik siydik)",
+    "ru": "Моча (проба, собранная методом «чистого сбора»; в некоторых случаях суточная моча)",
+    "en": "Urine (clean-catch sample; 24-hour collection in some cases)"
+   }
+  },
+  {
+   "id": "urine-microscopy",
+   "status": "draft",
+   "content_state": "sourced_sample",
+   "names": {
+    "uz": "Siydik (peshob) cho‘kmasi mikroskopiyasi",
+    "ru": "Микроскопия осадка мочи",
+    "en": "Urine sediment microscopy"
+   },
+   "synonyms": [
+    "sediment",
+    "осадок мочи",
+    "cho‘kma",
+    "microscopy",
+    "peshob",
+    "peshob tahlili",
+    "пешоб"
+   ],
+   "group": "urine",
+   "sections": [
+    "purpose",
+    "physiology",
+    "high_result",
+    "preanalytics",
+    "interference",
+    "related_tests",
+    "limitations"
+   ],
+   "review": {
+    "reviewer_id": null,
+    "reviewed_at": null,
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     },
+     {
+      "date": "2026-10-09",
+      "scope": "book-derived claims (Aripova 2007, Selivanov 2005, Lyubina 1984) checked against WHO/DIL/LAB/99.1, WHO 2003/2010, MedlinePlus, NCI; pages and numbers; uz/ru/en",
+      "report": "docs/BOOKS_PREANALYTICS_2026-10-09.md"
+     }
+    ]
+   },
+   "translation_review": {
+    "uz": "pending",
+    "ru": "pending",
+    "en": "pending"
+   },
+   "tagline": {
+    "uz": "Mikroskop ostida hujayra va kristallar",
+    "ru": "Клетки и кристаллы под микроскопом",
+    "en": "Cells and crystals under microscope"
+   },
+   "units": [],
+   "claims": [
+    {
+     "section": "purpose",
+     "refs": [
+      {
+       "source_id": "medline-epithelial-urine",
+       "locator": "What is it used for?"
+      },
+      {
+       "source_id": "medline-epithelial-urine",
+       "locator": "Why do I need an epithelial cells in urine test?"
+      },
+      {
+       "source_id": "medline-crystals-urine",
+       "locator": "What is it used for?"
+      },
+      {
+       "source_id": "medline-mucus-urine",
+       "locator": "What is it used for?"
+      }
+     ],
+     "text": {
+      "uz": "Mikroskopik tekshiruv — siydik tahlilining bir qismi bo‘lib, unda siydik mikroskop ostida ko‘rilib, ayrim turdagi hujayralar, kristallar va shilliq qidiriladi. U muntazam ko‘rik doirasida yoki siydikning vizual yoki kimyoviy tekshiruv natijalari me’yordan tashqari bo‘lganda, shuningdek siydik yo‘llari yoki buyrak kasalligi belgilari bo‘lganda buyuriladi.",
+      "ru": "Микроскопическое исследование — часть общего анализа мочи, при которой мочу изучают под микроскопом в поиске определённых клеток, кристаллов и слизи. Его выполняют при плановом обследовании, а также при отклонениях визуального или химического исследования мочи или при симптомах заболеваний мочевых путей или почек.",
+      "en": "The microscopic exam is the part of a urinalysis in which urine is examined under a microscope for certain types of cells, crystals and mucus. It may be part of a routine checkup or be ordered when visual or chemical urine results are abnormal or there are symptoms of a urinary or kidney disorder."
+     }
+    },
+    {
+     "section": "high_result",
+     "refs": [
+      {
+       "source_id": "medline-blood-urine",
+       "locator": "How Do You Test for Blood in Urine?"
+      },
+      {
+       "source_id": "medline-blood-urine",
+       "locator": "What do the results mean?"
+      }
+     ],
+     "text": {
+      "uz": "Siydikda qon (gematuriya) ko‘z bilan ko‘rinadigan (makrogematuriya) yoki faqat mikroskop ostida yoki siydik tahlilida aniqlanadigan (mikrogematuriya) bo‘lishi mumkin. Sabablarning aksariyati jiddiy emas: ayrim dorilar, kuchli jismoniy zo‘riqish, jinsiy faollik yoki hayz.",
+      "ru": "Кровь в моче (гематурия) может быть видна глазом (макрогематурия) или выявляться только под микроскопом либо при анализе мочи (микрогематурия). Большинство причин несерьёзны: некоторые лекарства, интенсивная физическая нагрузка, половая активность или менструация.",
+      "en": "Blood in urine (hematuria) may be visible (gross hematuria) or seen only under a microscope or found by urinalysis (microscopic hematuria). Most causes are not serious, such as certain medicines, intense exercise, sexual activity or menstruation."
+     }
+    },
+    {
+     "section": "high_result",
+     "refs": [
+      {
+       "source_id": "medline-blood-urine",
+       "locator": "What do the results mean?"
+      }
+     ],
+     "text": {
+      "uz": "Ba’zan siydikdagi qon jiddiyroq muammo belgisi bo‘ladi: qovuq, buyrak yoki prostata bezi infeksiyasi; qovuq yoki buyrak toshlari; buyrak jarohati; gepatit kabi virusli infeksiya; qovuq, buyrak yoki prostata saratoni; prostata bezining xavfsiz giperplaziyasi (kattalashuvi); buyrak, siydik chiqarish kanali yoki qovuq yallig‘lanishi; qon kasalligi; buyrak polikistozi yoki siydik naylari kasalliklari. Sababini aniqlash uchun qo‘shimcha tahlillar kerak bo‘lishi mumkin.",
+      "ru": "Иногда кровь в моче указывает на более серьёзную проблему: инфекцию мочевого пузыря, почки или предстательной железы; камни мочевого пузыря или почек; травму почки; вирусную инфекцию, например гепатит; рак мочевого пузыря, почки или предстательной железы; доброкачественное увеличение предстательной железы; воспаление почки, уретры или мочевого пузыря; заболевание крови; поликистоз почек или заболевания мочеточников. Для выяснения причины могут потребоваться дополнительные исследования.",
+      "en": "Sometimes blood in urine signals a more serious problem: infection of the bladder, kidney or prostate; bladder or kidney stones; kidney injury; a viral infection such as hepatitis; cancer of the bladder, kidney or prostate; enlarged prostate (BPH); inflammation of the kidney, urethra or bladder; a blood disorder; polycystic kidney disease; or disorders of the ureters. More tests may be needed to find the cause."
+     }
+    },
+    {
+     "section": "high_result",
+     "refs": [
+      {
+       "source_id": "medline-blood-urine",
+       "locator": "How Do You Test for Blood in Urine?"
+      }
+     ],
+     "text": {
+      "uz": "Siydikdagi eritrotsitlar yoki leykotsitlar ba’zi hollarda davolashni talab qiluvchi holatni — siydik yo‘llari infeksiyasi, buyrak yoki jigar kasalligini ko‘rsatishi mumkin.",
+      "ru": "Эритроциты или лейкоциты в моче в ряде случаев могут указывать на состояние, требующее лечения, например на инфекцию мочевыводящих путей, болезнь почек или печени.",
+      "en": "Red or white blood cells in urine may in some cases mean a condition that needs treatment, such as a urinary tract infection, kidney disease or liver disease."
+     }
+    },
+    {
+     "section": "interference",
+     "refs": [
+      {
+       "source_id": "medline-blood-urine",
+       "locator": "How Do You Test for Blood in Urine?"
+      },
+      {
+       "source_id": "medline-blood-urine",
+       "locator": "What happens during a blood in urine test?"
+      }
+     ],
+     "text": {
+      "uz": "Ayrim dorilar va lavlagi yoki ravoch kabi oziq-ovqatlar ham siydikni qizil rangga bo‘yashi mumkin. Qon ketayotgan gemorroy yoki hayzdagi qon namunaga tushib, natijaga ta’sir qilishi mumkin, shuning uchun bu haqda tahlildan oldin aytish kerak.",
+      "ru": "Некоторые лекарства и продукты, например свёкла или ревень, тоже могут окрашивать мочу в красный цвет. Кровь при кровоточащем геморрое или менструации может попасть в образец и повлиять на результат, поэтому об этом нужно сообщить до анализа.",
+      "en": "Some medicines and certain foods, such as beets or rhubarb, can also turn urine red. Blood from bleeding hemorrhoids or a menstrual period can get into the sample and affect results, so these should be reported before the test."
+     }
+    },
+    {
+     "section": "physiology",
+     "refs": [
+      {
+       "source_id": "medline-epithelial-urine",
+       "locator": "What is an epithelial cells in urine test?"
+      },
+      {
+       "source_id": "medline-epithelial-urine",
+       "locator": "Is there anything else I need to know about an epithelial cells in urine test?"
+      }
+     ],
+     "text": {
+      "uz": "Epiteliy hujayralari organizm yuzalarini, jumladan siydik yo‘llarini qoplaydi. Siydik yo‘llarini uch turdagi epiteliy qoplaydi: o‘tuvchi (tranzitor) hujayralar, buyrak kanalchalari hujayralari va yassi hujayralar; siydikda ayrim turdagi epiteliy hujayralarining oz miqdori me’yoriy holat.",
+      "ru": "Эпителиальные клетки покрывают поверхности организма, в том числе мочевыводящие пути. Мочевые пути выстилают клетки трёх типов: переходные, почечные канальцевые и плоские; небольшое количество эпителиальных клеток некоторых типов в моче — норма.",
+      "en": "Epithelial cells cover body surfaces, including the urinary tract. Three types line the urinary tract: transitional cells, renal (kidney) tubular cells and squamous cells; a small number of certain types in urine is normal."
+     }
+    },
+    {
+     "section": "high_result",
+     "refs": [
+      {
+       "source_id": "medline-epithelial-urine",
+       "locator": "What do the results mean?"
+      }
+     ],
+     "text": {
+      "uz": "Epiteliy hujayralari ko‘pincha «kam», «o‘rtacha» yoki «ko‘p» deb baholanadi; odatda «kam» me’yoriy natija hisoblanadi. «O‘rtacha» yoki «ko‘p» hujayralar siydik yo‘llari infeksiyasi, zamburug‘ (achitqi) infeksiyasi, buyrak kasalligi, jigar kasalligi yoki ayrim saraton turlari belgisi bo‘lishi mumkin.",
+      "ru": "Эпителиальные клетки часто оценивают как «мало», «умеренно» или «много»; нормой обычно считается «мало». «Умеренное» или «большое» количество может быть признаком инфекции мочевыводящих путей, дрожжевой инфекции, болезни почек, болезни печени или некоторых видов рака.",
+      "en": "Epithelial cells are often reported as “few”, “moderate” or “many”; “few” is typically normal. Moderate or many cells may be a sign of a urinary tract infection, yeast infection, kidney disease, liver disease or certain cancers."
+     }
+    },
+    {
+     "section": "interference",
+     "refs": [
+      {
+       "source_id": "medline-epithelial-urine",
+       "locator": "Is there anything else I need to know about an epithelial cells in urine test?"
+      }
+     ],
+     "text": {
+      "uz": "Siydikda yassi epiteliy hujayralari bo‘lishi namunaning organizmning boshqa qismidan tushgan hujayralar bilan ifloslanganini bildirishi mumkin; bu «toza yig‘ish» usulida jinsiy a’zolar sohasi yaxshi tozalanmaganda yuz berishi mumkin.",
+      "ru": "Плоские эпителиальные клетки в моче могут означать, что образец загрязнён клетками из другой части тела; это бывает, если при «чистом сборе» недостаточно обработана область половых органов.",
+      "en": "Squamous epithelial cells in urine may mean the sample was contaminated with cells from another part of the body, which can happen if the genital area is not cleaned well enough during clean-catch collection."
+     }
+    },
+    {
+     "section": "physiology",
+     "refs": [
+      {
+       "source_id": "medline-crystals-urine",
+       "locator": "What is a crystals in urine test?"
+      }
+     ],
+     "text": {
+      "uz": "Siydik kristallari buyraklarda ayrim minerallar boshqa moddalar bilan birikib to‘planganda hosil bo‘ladi — odatda siydikda bu minerallar ko‘p bo‘lganda yoki kislota juda ko‘p yoki juda kam bo‘lganda. Bir nechta mayda kristallar me’yoriy; ayrim turdagi kristallarning ko‘p miqdori davolashni talab qiluvchi holat belgisi bo‘lishi mumkin, ba’zi kristallar esa birikib buyrak toshlarini hosil qilishi mumkin.",
+      "ru": "Кристаллы мочи образуются в почках, когда определённые минералы слипаются с другими веществами, обычно при высоком содержании этих минералов в моче или при слишком высокой либо низкой её кислотности. Немного мелких кристаллов — норма; большое количество некоторых типов может указывать на состояние, требующее лечения, а некоторые кристаллы могут слипаться в камни почек.",
+      "en": "Urine crystals form in the kidneys when certain minerals clump together with other substances, usually when urine has high levels of those minerals or too much or too little acid. A few small crystals are normal; large amounts of certain types may signal a condition needing treatment, and some crystals can stick together to form kidney stones."
+     }
+    },
+    {
+     "section": "high_result",
+     "refs": [
+      {
+       "source_id": "medline-crystals-urine",
+       "locator": "What do the results mean?"
+      }
+     ],
+     "text": {
+      "uz": "Javobda odatda kristallar bor-yo‘qligi, miqdori va tarkibi ko‘rsatiladi. Kalsiy oksalat va kalsiy fosfat kristallari buyrak toshlarining eng ko‘p uchraydigan sababi; podagra yoki 2-tip diabet kabi metabolik muammolar siydikni haddan tashqari kislotali qilganda siydik kislotasi va urat kristallari ko‘p hosil bo‘lishi mumkin; takroriy siydik yo‘llari infeksiyalari struvit kristallarining ko‘payishiga sabab bo‘lishi mumkin.",
+      "ru": "В заключении обычно указывают наличие кристаллов, их количество и состав. Кристаллы оксалата и фосфата кальция — самая частая причина камней в почках; кристаллы мочевой кислоты и уратов в большом количестве могут образовываться, когда нарушения обмена веществ, например подагра или диабет 2 типа, делают мочу слишком кислой; повторные ИМП могут вызывать большое количество кристаллов струвита.",
+      "en": "Reports usually state whether crystals are present, their amount and what they are made of. Calcium oxalate and calcium phosphate crystals are the most common cause of kidney stones; large amounts of uric acid and urate crystals may form when metabolic problems such as gout or type 2 diabetes make urine too acidic; repeated urinary tract infections may cause large amounts of struvite crystals."
+     }
+    },
+    {
+     "section": "interference",
+     "refs": [
+      {
+       "source_id": "medline-crystals-urine",
+       "locator": "What do the results mean?"
+      }
+     ],
+     "text": {
+      "uz": "Kristallar har doim ham davolashni talab qiluvchi kasallikni anglatmaydi: ayrim turlarining ko‘p bo‘lishiga ayrim dorilar (kalsiy asosidagi antatsidlar, ayrim antibiotiklar, diuretiklar, virusga qarshi dorilar), hayvon oqsiliga boy ovqatlanish (baliq, dengiz mahsulotlari, ichki a’zolar go‘shti) yoki yetarli suyuqlik ichmaslik sabab bo‘lishi mumkin.",
+      "ru": "Кристаллы не всегда означают заболевание, требующее лечения: большое количество некоторых их типов может быть вызвано некоторыми лекарствами (антациды на основе кальция, некоторые антибиотики, диуретики, противовирусные препараты), рационом с избытком животного белка (рыба, моллюски, субпродукты) или недостаточным питьём.",
+      "en": "Crystals do not always mean a condition that needs treatment: large amounts of some types may be caused by certain medicines (calcium-based antacids, some antibiotics, diuretics, antiviral medicines), a diet with too much animal protein (fish, shellfish, organ meats) or not drinking enough fluids."
+     }
+    },
+    {
+     "section": "preanalytics",
+     "refs": [
+      {
+       "source_id": "medline-crystals-urine",
+       "locator": "What happens during a crystals in urine test?"
+      }
+     ],
+     "text": {
+      "uz": "Kristallarni aniqlash uchun «toza yig‘ish» usulidagi namuna yoki 24 soatlik siydik ishlatilishi mumkin; kristallar miqdori kun davomida o‘zgargani uchun 24 soatlik tahlil aniqroq bo‘lishi mumkin. Yig‘ish davomida idish muzlatkichda yoki muzli sovutgich qutisida saqlanadi.",
+      "ru": "Для выявления кристаллов используют пробу, собранную методом «чистого сбора», или суточную мочу; суточный анализ может быть точнее, так как количество кристаллов меняется в течение дня. Во время сбора контейнер хранят в холодильнике или в сумке-холодильнике со льдом.",
+      "en": "For crystals, a clean-catch sample or a 24-hour collection may be used; the 24-hour test may be more accurate because the amount of crystals varies during the day. During collection the container is stored in a refrigerator or a cooler with ice."
+     }
+    },
+    {
+     "section": "preanalytics",
+     "refs": [
+      {
+       "source_id": "medline-epithelial-urine",
+       "locator": "What happens during an epithelial cells in urine test?"
+      },
+      {
+       "source_id": "medline-crystals-urine",
+       "locator": "Will I need to do anything to prepare for the test?"
+      }
+     ],
+     "text": {
+      "uz": "Namuna odatda teridagi mikroblar tushmasligi uchun «toza yig‘ish» usulida olinadi; natija aniq bo‘lishi uchun namuna topshirish bo‘yicha barcha ko‘rsatmalarga diqqat bilan amal qilish kerak.",
+      "ru": "Образец обычно собирают методом «чистого сбора», чтобы в него не попали микробы с кожи; для точности результата нужно тщательно соблюдать все инструкции по сбору мочи.",
+      "en": "Samples are usually collected by the clean-catch method so that germs from the skin do not get into the sample; following all collection instructions carefully helps make results accurate."
+     }
+    },
+    {
+     "section": "high_result",
+     "refs": [
+      {
+       "source_id": "medline-mucus-urine",
+       "locator": "What is a mucus in urine test?"
+      },
+      {
+       "source_id": "medline-mucus-urine",
+       "locator": "What do the results mean?"
+      }
+     ],
+     "text": {
+      "uz": "Siydikda oz yoki o‘rtacha miqdorda shilliq bo‘lishi me’yoriy natija. Ko‘p miqdordagi shilliq siydik yo‘llari infeksiyasi, jinsiy yo‘l bilan yuqadigan infeksiya, buyrak toshlari, ta’sirlangan ichak sindromi yoki qovuq saratoni belgisi bo‘lishi mumkin; sababini aniqlash uchun qo‘shimcha tahlillar kerak bo‘lishi mumkin.",
+      "ru": "Небольшое или умеренное количество слизи в моче — нормальная находка. Большое количество может быть признаком инфекции мочевыводящих путей, инфекции, передающейся половым путём, камней в почках, синдрома раздражённого кишечника или рака мочевого пузыря; для выяснения причины могут понадобиться дополнительные исследования.",
+      "en": "A small or moderate amount of mucus in urine is a normal finding. A large amount may be a sign of a urinary tract infection, a sexually transmitted infection, kidney stones, irritable bowel syndrome or bladder cancer, and more tests may be needed to find out why."
+     }
+    },
+    {
+     "section": "limitations",
+     "refs": [
+      {
+       "source_id": "medline-epithelial-urine",
+       "locator": "What do the results mean?"
+      }
+     ],
+     "text": {
+      "uz": "Mikroskopik tekshiruvdagi me’yordan tashqari topilma har doim ham davolashni talab qiluvchi kasallikni anglatmaydi; tashxis qo‘yishdan oldin qo‘shimcha tahlillar kerak bo‘lishi mumkin.",
+      "ru": "Отклонение при микроскопии мочи не всегда означает заболевание, требующее лечения; до постановки диагноза могут понадобиться дополнительные исследования.",
+      "en": "An abnormal microscopic finding does not always mean a condition that needs treatment; more tests may be needed before a diagnosis can be made."
+     }
+    },
+    {
+     "section": "preanalytics",
+     "refs": [
+      {
+       "source_id": "who-dil-lab-99-1",
+       "locator": "5.2 Urine — sediment",
+       "pages": "48"
+      },
+      {
+       "source_id": "book-aripova-2007",
+       "locator": "10.1.2 Siydikni klinik tekshirish (mikroskopiya)",
+       "pages": "83"
+      }
+     ],
+     "text": {
+      "uz": "Cho‘kma uchun siydik tez tekshiriladi: JSST jadvalida cho‘kma xona haroratida 1–2 soat, 4–8 °C da 1–8 soat barqaror deb ko‘rsatilgan va uni muzlatmaslik kerak. Darslik ham mikroskopiyani yig‘ilgandan boshlab 1 soat ichida qilishni talab qiladi.",
+      "ru": "Мочу для микроскопии осадка исследуют быстро: в таблице ВОЗ осадок стабилен 1–2 часа при комнатной температуре и 1–8 часов при 4–8 °C, замораживать его нельзя. Учебник также требует микроскопии в течение 1 часа после сбора.",
+      "en": "Examine urine for sediment promptly: the WHO table gives sediment stability of 1–2 hours at room temperature and 1–8 hours at 4–8 °C, and it must not be frozen. The textbook likewise requires microscopy within 1 hour of collection."
+     },
+     "origin": "books-preanalytics"
+    },
+    {
+     "section": "preanalytics",
+     "refs": [
+      {
+       "source_id": "who-dil-lab-99-1",
+       "locator": "5.2 Urine — sediment: erythrocytes, casts",
+       "pages": "48"
+      },
+      {
+       "source_id": "book-aripova-2007",
+       "locator": "10.1.3 Siydikni yig‘ish (Namunalarni saqlash)",
+       "pages": "84"
+      },
+      {
+       "source_id": "book-lyubina-1984",
+       "locator": "Метод Нечипоренко",
+       "pages": "43"
+      }
+     ],
+     "text": {
+      "uz": "Kechikishda shaklli elementlar buziladi: JSST jadvalida eritrotsitlar xona haroratida taxminan 1 soat barqaror (konsentrlangan siydikda uzoqroq), silindrlar uchun 2 sutka faqat konsentrlangan siydik (osmolyallik >300 mosmol/kg) uchun berilgan. Darsliklar eritrotsitlar lizlanishi, silindrlar yemirilishi va ishqoriy siydikda hujayralar qisman parchalanishini qayd etadi.",
+      "ru": "При задержке форменные элементы разрушаются: в таблице ВОЗ эритроциты стабильны около 1 часа при комнатной температуре (дольше в концентрированной моче), а 2 суток для цилиндров указаны только для концентрированной мочи (осмоляльность >300 мосмоль/кг). Учебники отмечают лизис эритроцитов, разрушение цилиндров и частичный распад клеток в щелочной моче.",
+      "en": "Formed elements deteriorate with delay: the WHO table gives erythrocytes about 1 hour at room temperature (longer in concentrated urine), and the 2 days listed for casts apply only to concentrated urine (osmolality >300 mosmol/kg). The textbooks note lysis of red cells, breakdown of casts and partial destruction of cells in alkaline urine."
+     },
+     "origin": "books-preanalytics"
+    },
+    {
+     "section": "limitations",
+     "refs": [
+      {
+       "source_id": "who-basic-lab-manual-2003",
+       "locator": "7.2.7 Detection of abnormal elements — collection of specimens",
+       "pages": "241"
+      }
+     ],
+     "text": {
+      "uz": "Sovitgichda saqlangan siydikda tuzlar ko‘p cho‘kib qolishi mumkin va u mikroskopiyaga yaramaydi. Mikroskopiya uchun siydikni 10% formaldegid bilan (300 ml ga 8–10 tomchi) konservatsiya qilish mumkin, lekin bunday siydik boshqa tahlillarga yaramaydi.",
+      "ru": "В моче из холодильника может выпасть много солей, и она становится непригодной для микроскопии. Для микроскопии мочу можно законсервировать 10% формальдегидом (8–10 капель на 300 мл), но такая моча непригодна для других анализов.",
+      "en": "Refrigerated urine may contain excess precipitated salts and be unsuitable for microscopy. For microscopy, urine can be preserved with 10% formaldehyde (8–10 drops per 300 ml), but it is then unsuitable for other tests."
+     },
+     "origin": "books-preanalytics"
+    }
+   ],
+   "decision_limits": [],
+   "source_ids": [
+    "medline-epithelial-urine",
+    "medline-crystals-urine",
+    "medline-mucus-urine",
+    "medline-blood-urine",
+    "who-dil-lab-99-1",
+    "book-aripova-2007",
+    "book-lyubina-1984",
+    "who-basic-lab-manual-2003"
+   ],
+   "related": [
+    "urine-chemistry"
+   ],
+   "specimen": {
+    "uz": "Siydik («toza yig‘ish» usulida olingan namuna; ayrim hollarda 24 soatlik siydik)",
+    "ru": "Моча (проба, собранная методом «чистого сбора»; в некоторых случаях суточная моча)",
+    "en": "Urine (clean-catch sample; 24-hour collection in some cases)"
+   }
+  }
+ ]
+}

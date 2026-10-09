@@ -599,7 +599,7 @@
   "preStep3": "Collect and identify",
   "preStep4": "Separate and store",
   "preStep5": "Transport and receive",
-  "preNotice": "Tube color, time and temperature are tied to the specific tube, method and instructions. No universal parameters are given.",
+  "preNotice": "Tube colour, time and temperature depend on the specific tube, method and instructions. The times above are general guidance from the WHO table; your laboratory’s rules take priority.",
   "diffTitle": "Differential count",
   "diffSubtitle": "Identify, count and interpret white cells",
   "diffLabCardBody": "Manual count tally, cell atlas and interpretation",
@@ -799,6 +799,28 @@
   "preHaemolysisTitle": "Causes of hemolysis",
   "preTourniquetTitle": "Tourniquet",
   "preIdTitle": "Patient identification and labelling",
+  "prePatientTitle": "Patient preparation",
+  "preTubeForTestTitle": "Which tube for which test",
+  "preTubeForTestSub": "Colour and position follow the WHO order above. Tubes may differ between laboratories.",
+  "preTubeSlot": "{tube} · no. {n} in the order of draw",
+  "@preTubeSlot": {
+    "placeholders": {
+      "tube": {
+        "type": "String"
+      },
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "preTubeNone": "Separate tube — not in the WHO order",
+  "preMixTitle": "Mixing the tube",
+  "preStabilityTitle": "Sample stability",
+  "preStabilitySub": "How long separated serum or plasma keeps (WHO, WHO/DIL/LAB/99.1). Your laboratory’s rules and the reagent insert take priority.",
+  "preStabilityRoom": "20–25 °C (room)",
+  "preStorageTitle": "Storage rules",
+  "preUrgentTitle": "Cannot be stored — test at once",
+  "preBooksNote": "Textbooks (Selivanov 2005, Aripova 2007, Lyubina 1984) are a supporting source. Numbers are shown only where WHO or MedlinePlus confirm them.",
   "calcTitle": "Calculators",
   "calcLearningTag": "Learning calculator",
   "calcDilution": "Dilution",
@@ -816,6 +838,15 @@
   "mcLightSub": "Pleural fluid: exudate or transudate",
   "mcColour": "Colour index",
   "mcColourSub": "Why the app recommends MCH and MCHC",
+  "mcNechiporenko": "Nechiporenko count",
+  "mcNechiporenkoSub": "Leukocytes, erythrocytes and casts per 1 ml of urine",
+  "mcAddis": "Kakovsky–Addis count",
+  "mcAddisSub": "Formed elements passed in urine per day",
+  "mcZimnitsky": "Zimnitsky test",
+  "mcZimnitskySub": "Day and night diuresis, specific-gravity range",
+  "mcClassicTag": "Classic Soviet-school method",
+  "mcClassicTitle": "Classic textbook intervals",
+  "mcClassicNote": "This is a reference interval, not a diagnostic cut-off. The interval on your laboratory’s form comes first; the result is not compared with it automatically.",
   "mfCells": "Cells counted",
   "mfSquares": "Squares counted",
   "mfSquareArea": "Area of one square",
@@ -841,6 +872,39 @@
   "mfPfLdh": "Fluid: LDH",
   "mfSerumLdh": "Serum: LDH",
   "mfLdhUln": "Serum LDH upper limit of normal",
+  "mfLeukoCounted": "Leukocytes (A, counted)",
+  "mfEryCounted": "Erythrocytes (A, counted)",
+  "mfCastsCounted": "Casts (A, counted)",
+  "mfUrineCentrifuged": "Urine centrifuged, ml",
+  "mfCountedVolume": "Ruling counted",
+  "mfGoryaevWhole": "Goryaev, whole ruling — 0.9 µL",
+  "mfGoryaev100": "Goryaev, 100 large squares — 0.4 µL",
+  "mfFuchsWhole": "Fuchs–Rosenthal, whole ruling — 3.2 µL",
+  "mfSediment": "Sediment left",
+  "mfCollected": "Urine collected, ml",
+  "mfCollectHours": "Collection time, h",
+  "mfPortion": "Portion {n} ({time}), ml",
+  "@mfPortion": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "mfPortionSg": "Portion {n}, specific gravity",
+  "@mfPortionSg": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "mfFluidIntake": "Fluid drunk in 24 h, ml",
+  "mfZimDay": "Daytime portions (1–4)",
+  "mfZimNight": "Night-time portions (5–8)",
   "mfSameUnit": "Both values in a pair must use the same unit (e.g. both g/L, both U/L).",
   "mrCellsPerUl": "cells/µL",
   "mrVolume": "Volume counted",
@@ -875,6 +939,27 @@
   "mrExudate": "Meets exudate criteria",
   "mrTransudate": "No criterion met — consistent with a transudate",
   "mrIncomplete": "Two criteria not met; enter the LDH upper limit for the third",
+  "mrPerMlUrine": "per 1 ml of urine",
+  "mrPerDay": "Per day",
+  "mrPerUlSediment": "per 1 µL of sediment: {value}",
+  "@mrPerUlSediment": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "mrPortion12": "12-minute urine to centrifuge",
+  "mrDiuresisTotal": "24-hour diuresis",
+  "mrDiuresisDay": "Daytime diuresis (1–4)",
+  "mrDiuresisNight": "Night-time diuresis (5–8)",
+  "mrDayNightRatio": "Day : night",
+  "mrIntakePercent": "Of fluid drunk",
+  "mrSgRange": "Specific gravity: lowest – highest",
+  "mrSgAmplitude": "Specific-gravity amplitude",
+  "mrNotGiven": "not entered",
+  "mErrNoUrine": "At least one portion needs a volume and specific gravity.",
+  "mErrSediment": "The sediment volume must be less than the urine centrifuged.",
   "mrProteinRatio": "Protein: fluid ÷ serum (> 0.5)",
   "mrLdhRatio": "LDH: fluid ÷ serum (> 0.6)",
   "mrLdhUln": "Fluid LDH ÷ upper limit (> 2/3)",

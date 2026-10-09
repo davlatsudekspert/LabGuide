@@ -31,11 +31,19 @@ void main() {
   group(
     'open kind (havola / ilova ichida / yuklab olinadigan / kutilmoqda)',
     () {
-      test('real catalog: every item is an external link, none is in-app', () {
+      test('real catalog: links or catalogue records, none is in-app', () {
         final pack = _realPack();
-        expect(pack.library, hasLength(25));
+        expect(pack.library, hasLength(29));
         for (final item in pack.library) {
-          expect(openKindOf(item), LibraryOpenKind.link, reason: item.id);
+          // Havolasiz yozuv faqat “faqat katalog” kitob (domla kitoblari).
+          expect(
+            openKindOf(item),
+            item.url == null ? LibraryOpenKind.record : LibraryOpenKind.link,
+            reason: item.id,
+          );
+          if (item.url == null) {
+            expect(item.access, LibraryAccess.catalogOnly, reason: item.id);
+          }
           expect(canReadInApp(item), isFalse, reason: item.id);
         }
       });
@@ -190,7 +198,7 @@ void main() {
       );
       expect(
         catalog.count(const LibraryFilter(open: LibraryOpenKind.link)),
-        pack.library.length,
+        pack.library.where((i) => i.url != null).length,
       );
     });
 
@@ -217,7 +225,7 @@ void main() {
 
     test('option lists only show what the catalog has', () {
       expect(catalog.languages, ['uz', 'ru', 'en']);
-      expect(catalog.openKinds, [LibraryOpenKind.link]);
+      expect(catalog.openKinds, [LibraryOpenKind.link, LibraryOpenKind.record]);
       expect(catalog.kinds, isNot(contains(LibraryItemKind.ifu)));
       expect(catalog.groups.map((g) => g.id), contains('urine'));
     });
@@ -226,7 +234,8 @@ void main() {
   group('in-app file schema', () {
     Map<String, Object?> withItem(Map<String, Object?> item) {
       final json = _packJson();
-      json['library'] = [item];
+      // Haqiqiy katalog qoladi (kitob manbalari unga tayanadi).
+      json['library'] = [...(json['library']! as List), item];
       return json;
     }
 
@@ -235,7 +244,7 @@ void main() {
 
     test('a fully recorded file parses', () {
       final pack = ContentPack.fromJson(withItem(base));
-      final file = pack.library.single.file!;
+      final file = pack.libraryItem(base['id']! as String)!.file!;
       expect(file.size, pdf.length);
       expect(file.pages, 10);
     });

@@ -1184,7 +1184,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get preNotice =>
-      'Tube color, time and temperature are tied to the specific tube, method and instructions. No universal parameters are given.';
+      'Tube colour, time and temperature depend on the specific tube, method and instructions. The times above are general guidance from the WHO table; your laboratory’s rules take priority.';
 
   @override
   String get diffTitle => 'Differential count';
@@ -1541,6 +1541,47 @@ class AppLocalizationsEn extends AppLocalizations {
   String get preIdTitle => 'Patient identification and labelling';
 
   @override
+  String get prePatientTitle => 'Patient preparation';
+
+  @override
+  String get preTubeForTestTitle => 'Which tube for which test';
+
+  @override
+  String get preTubeForTestSub =>
+      'Colour and position follow the WHO order above. Tubes may differ between laboratories.';
+
+  @override
+  String preTubeSlot(String tube, int n) {
+    return '$tube · no. $n in the order of draw';
+  }
+
+  @override
+  String get preTubeNone => 'Separate tube — not in the WHO order';
+
+  @override
+  String get preMixTitle => 'Mixing the tube';
+
+  @override
+  String get preStabilityTitle => 'Sample stability';
+
+  @override
+  String get preStabilitySub =>
+      'How long separated serum or plasma keeps (WHO, WHO/DIL/LAB/99.1). Your laboratory’s rules and the reagent insert take priority.';
+
+  @override
+  String get preStabilityRoom => '20–25 °C (room)';
+
+  @override
+  String get preStorageTitle => 'Storage rules';
+
+  @override
+  String get preUrgentTitle => 'Cannot be stored — test at once';
+
+  @override
+  String get preBooksNote =>
+      'Textbooks (Selivanov 2005, Aripova 2007, Lyubina 1984) are a supporting source. Numbers are shown only where WHO or MedlinePlus confirm them.';
+
+  @override
   String get calcTitle => 'Calculators';
 
   @override
@@ -1590,6 +1631,35 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get mcColourSub => 'Why the app recommends MCH and MCHC';
+
+  @override
+  String get mcNechiporenko => 'Nechiporenko count';
+
+  @override
+  String get mcNechiporenkoSub =>
+      'Leukocytes, erythrocytes and casts per 1 ml of urine';
+
+  @override
+  String get mcAddis => 'Kakovsky–Addis count';
+
+  @override
+  String get mcAddisSub => 'Formed elements passed in urine per day';
+
+  @override
+  String get mcZimnitsky => 'Zimnitsky test';
+
+  @override
+  String get mcZimnitskySub => 'Day and night diuresis, specific-gravity range';
+
+  @override
+  String get mcClassicTag => 'Classic Soviet-school method';
+
+  @override
+  String get mcClassicTitle => 'Classic textbook intervals';
+
+  @override
+  String get mcClassicNote =>
+      'This is a reference interval, not a diagnostic cut-off. The interval on your laboratory’s form comes first; the result is not compared with it automatically.';
 
   @override
   String get mfCells => 'Cells counted';
@@ -1667,6 +1737,58 @@ class AppLocalizationsEn extends AppLocalizations {
   String get mfLdhUln => 'Serum LDH upper limit of normal';
 
   @override
+  String get mfLeukoCounted => 'Leukocytes (A, counted)';
+
+  @override
+  String get mfEryCounted => 'Erythrocytes (A, counted)';
+
+  @override
+  String get mfCastsCounted => 'Casts (A, counted)';
+
+  @override
+  String get mfUrineCentrifuged => 'Urine centrifuged, ml';
+
+  @override
+  String get mfCountedVolume => 'Ruling counted';
+
+  @override
+  String get mfGoryaevWhole => 'Goryaev, whole ruling — 0.9 µL';
+
+  @override
+  String get mfGoryaev100 => 'Goryaev, 100 large squares — 0.4 µL';
+
+  @override
+  String get mfFuchsWhole => 'Fuchs–Rosenthal, whole ruling — 3.2 µL';
+
+  @override
+  String get mfSediment => 'Sediment left';
+
+  @override
+  String get mfCollected => 'Urine collected, ml';
+
+  @override
+  String get mfCollectHours => 'Collection time, h';
+
+  @override
+  String mfPortion(int n, String time) {
+    return 'Portion $n ($time), ml';
+  }
+
+  @override
+  String mfPortionSg(int n) {
+    return 'Portion $n, specific gravity';
+  }
+
+  @override
+  String get mfFluidIntake => 'Fluid drunk in 24 h, ml';
+
+  @override
+  String get mfZimDay => 'Daytime portions (1–4)';
+
+  @override
+  String get mfZimNight => 'Night-time portions (5–8)';
+
+  @override
   String get mfSameUnit =>
       'Both values in a pair must use the same unit (e.g. both g/L, both U/L).';
 
@@ -1722,6 +1844,52 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get mrIncomplete =>
       'Two criteria not met; enter the LDH upper limit for the third';
+
+  @override
+  String get mrPerMlUrine => 'per 1 ml of urine';
+
+  @override
+  String get mrPerDay => 'Per day';
+
+  @override
+  String mrPerUlSediment(String value) {
+    return 'per 1 µL of sediment: $value';
+  }
+
+  @override
+  String get mrPortion12 => '12-minute urine to centrifuge';
+
+  @override
+  String get mrDiuresisTotal => '24-hour diuresis';
+
+  @override
+  String get mrDiuresisDay => 'Daytime diuresis (1–4)';
+
+  @override
+  String get mrDiuresisNight => 'Night-time diuresis (5–8)';
+
+  @override
+  String get mrDayNightRatio => 'Day : night';
+
+  @override
+  String get mrIntakePercent => 'Of fluid drunk';
+
+  @override
+  String get mrSgRange => 'Specific gravity: lowest – highest';
+
+  @override
+  String get mrSgAmplitude => 'Specific-gravity amplitude';
+
+  @override
+  String get mrNotGiven => 'not entered';
+
+  @override
+  String get mErrNoUrine =>
+      'At least one portion needs a volume and specific gravity.';
+
+  @override
+  String get mErrSediment =>
+      'The sediment volume must be less than the urine centrifuged.';
 
   @override
   String get mrProteinRatio => 'Protein: fluid ÷ serum (> 0.5)';

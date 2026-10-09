@@ -2155,7 +2155,7 @@ abstract class AppLocalizations {
   /// No description provided for @preNotice.
   ///
   /// In en, this message translates to:
-  /// **'Tube color, time and temperature are tied to the specific tube, method and instructions. No universal parameters are given.'**
+  /// **'Tube colour, time and temperature depend on the specific tube, method and instructions. The times above are general guidance from the WHO table; your laboratory’s rules take priority.'**
   String get preNotice;
 
   /// No description provided for @diffTitle.
@@ -2770,6 +2770,78 @@ abstract class AppLocalizations {
   /// **'Patient identification and labelling'**
   String get preIdTitle;
 
+  /// No description provided for @prePatientTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Patient preparation'**
+  String get prePatientTitle;
+
+  /// No description provided for @preTubeForTestTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Which tube for which test'**
+  String get preTubeForTestTitle;
+
+  /// No description provided for @preTubeForTestSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Colour and position follow the WHO order above. Tubes may differ between laboratories.'**
+  String get preTubeForTestSub;
+
+  /// No description provided for @preTubeSlot.
+  ///
+  /// In en, this message translates to:
+  /// **'{tube} · no. {n} in the order of draw'**
+  String preTubeSlot(String tube, int n);
+
+  /// No description provided for @preTubeNone.
+  ///
+  /// In en, this message translates to:
+  /// **'Separate tube — not in the WHO order'**
+  String get preTubeNone;
+
+  /// No description provided for @preMixTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Mixing the tube'**
+  String get preMixTitle;
+
+  /// No description provided for @preStabilityTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Sample stability'**
+  String get preStabilityTitle;
+
+  /// No description provided for @preStabilitySub.
+  ///
+  /// In en, this message translates to:
+  /// **'How long separated serum or plasma keeps (WHO, WHO/DIL/LAB/99.1). Your laboratory’s rules and the reagent insert take priority.'**
+  String get preStabilitySub;
+
+  /// No description provided for @preStabilityRoom.
+  ///
+  /// In en, this message translates to:
+  /// **'20–25 °C (room)'**
+  String get preStabilityRoom;
+
+  /// No description provided for @preStorageTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Storage rules'**
+  String get preStorageTitle;
+
+  /// No description provided for @preUrgentTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Cannot be stored — test at once'**
+  String get preUrgentTitle;
+
+  /// No description provided for @preBooksNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Textbooks (Selivanov 2005, Aripova 2007, Lyubina 1984) are a supporting source. Numbers are shown only where WHO or MedlinePlus confirm them.'**
+  String get preBooksNote;
+
   /// No description provided for @calcTitle.
   ///
   /// In en, this message translates to:
@@ -2871,6 +2943,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Why the app recommends MCH and MCHC'**
   String get mcColourSub;
+
+  /// No description provided for @mcNechiporenko.
+  ///
+  /// In en, this message translates to:
+  /// **'Nechiporenko count'**
+  String get mcNechiporenko;
+
+  /// No description provided for @mcNechiporenkoSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Leukocytes, erythrocytes and casts per 1 ml of urine'**
+  String get mcNechiporenkoSub;
+
+  /// No description provided for @mcAddis.
+  ///
+  /// In en, this message translates to:
+  /// **'Kakovsky–Addis count'**
+  String get mcAddis;
+
+  /// No description provided for @mcAddisSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Formed elements passed in urine per day'**
+  String get mcAddisSub;
+
+  /// No description provided for @mcZimnitsky.
+  ///
+  /// In en, this message translates to:
+  /// **'Zimnitsky test'**
+  String get mcZimnitsky;
+
+  /// No description provided for @mcZimnitskySub.
+  ///
+  /// In en, this message translates to:
+  /// **'Day and night diuresis, specific-gravity range'**
+  String get mcZimnitskySub;
+
+  /// No description provided for @mcClassicTag.
+  ///
+  /// In en, this message translates to:
+  /// **'Classic Soviet-school method'**
+  String get mcClassicTag;
+
+  /// No description provided for @mcClassicTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Classic textbook intervals'**
+  String get mcClassicTitle;
+
+  /// No description provided for @mcClassicNote.
+  ///
+  /// In en, this message translates to:
+  /// **'This is a reference interval, not a diagnostic cut-off. The interval on your laboratory’s form comes first; the result is not compared with it automatically.'**
+  String get mcClassicNote;
 
   /// No description provided for @mfCells.
   ///
@@ -3022,6 +3148,102 @@ abstract class AppLocalizations {
   /// **'Serum LDH upper limit of normal'**
   String get mfLdhUln;
 
+  /// No description provided for @mfLeukoCounted.
+  ///
+  /// In en, this message translates to:
+  /// **'Leukocytes (A, counted)'**
+  String get mfLeukoCounted;
+
+  /// No description provided for @mfEryCounted.
+  ///
+  /// In en, this message translates to:
+  /// **'Erythrocytes (A, counted)'**
+  String get mfEryCounted;
+
+  /// No description provided for @mfCastsCounted.
+  ///
+  /// In en, this message translates to:
+  /// **'Casts (A, counted)'**
+  String get mfCastsCounted;
+
+  /// No description provided for @mfUrineCentrifuged.
+  ///
+  /// In en, this message translates to:
+  /// **'Urine centrifuged, ml'**
+  String get mfUrineCentrifuged;
+
+  /// No description provided for @mfCountedVolume.
+  ///
+  /// In en, this message translates to:
+  /// **'Ruling counted'**
+  String get mfCountedVolume;
+
+  /// No description provided for @mfGoryaevWhole.
+  ///
+  /// In en, this message translates to:
+  /// **'Goryaev, whole ruling — 0.9 µL'**
+  String get mfGoryaevWhole;
+
+  /// No description provided for @mfGoryaev100.
+  ///
+  /// In en, this message translates to:
+  /// **'Goryaev, 100 large squares — 0.4 µL'**
+  String get mfGoryaev100;
+
+  /// No description provided for @mfFuchsWhole.
+  ///
+  /// In en, this message translates to:
+  /// **'Fuchs–Rosenthal, whole ruling — 3.2 µL'**
+  String get mfFuchsWhole;
+
+  /// No description provided for @mfSediment.
+  ///
+  /// In en, this message translates to:
+  /// **'Sediment left'**
+  String get mfSediment;
+
+  /// No description provided for @mfCollected.
+  ///
+  /// In en, this message translates to:
+  /// **'Urine collected, ml'**
+  String get mfCollected;
+
+  /// No description provided for @mfCollectHours.
+  ///
+  /// In en, this message translates to:
+  /// **'Collection time, h'**
+  String get mfCollectHours;
+
+  /// No description provided for @mfPortion.
+  ///
+  /// In en, this message translates to:
+  /// **'Portion {n} ({time}), ml'**
+  String mfPortion(int n, String time);
+
+  /// No description provided for @mfPortionSg.
+  ///
+  /// In en, this message translates to:
+  /// **'Portion {n}, specific gravity'**
+  String mfPortionSg(int n);
+
+  /// No description provided for @mfFluidIntake.
+  ///
+  /// In en, this message translates to:
+  /// **'Fluid drunk in 24 h, ml'**
+  String get mfFluidIntake;
+
+  /// No description provided for @mfZimDay.
+  ///
+  /// In en, this message translates to:
+  /// **'Daytime portions (1–4)'**
+  String get mfZimDay;
+
+  /// No description provided for @mfZimNight.
+  ///
+  /// In en, this message translates to:
+  /// **'Night-time portions (5–8)'**
+  String get mfZimNight;
+
   /// No description provided for @mfSameUnit.
   ///
   /// In en, this message translates to:
@@ -3123,6 +3345,90 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Two criteria not met; enter the LDH upper limit for the third'**
   String get mrIncomplete;
+
+  /// No description provided for @mrPerMlUrine.
+  ///
+  /// In en, this message translates to:
+  /// **'per 1 ml of urine'**
+  String get mrPerMlUrine;
+
+  /// No description provided for @mrPerDay.
+  ///
+  /// In en, this message translates to:
+  /// **'Per day'**
+  String get mrPerDay;
+
+  /// No description provided for @mrPerUlSediment.
+  ///
+  /// In en, this message translates to:
+  /// **'per 1 µL of sediment: {value}'**
+  String mrPerUlSediment(String value);
+
+  /// No description provided for @mrPortion12.
+  ///
+  /// In en, this message translates to:
+  /// **'12-minute urine to centrifuge'**
+  String get mrPortion12;
+
+  /// No description provided for @mrDiuresisTotal.
+  ///
+  /// In en, this message translates to:
+  /// **'24-hour diuresis'**
+  String get mrDiuresisTotal;
+
+  /// No description provided for @mrDiuresisDay.
+  ///
+  /// In en, this message translates to:
+  /// **'Daytime diuresis (1–4)'**
+  String get mrDiuresisDay;
+
+  /// No description provided for @mrDiuresisNight.
+  ///
+  /// In en, this message translates to:
+  /// **'Night-time diuresis (5–8)'**
+  String get mrDiuresisNight;
+
+  /// No description provided for @mrDayNightRatio.
+  ///
+  /// In en, this message translates to:
+  /// **'Day : night'**
+  String get mrDayNightRatio;
+
+  /// No description provided for @mrIntakePercent.
+  ///
+  /// In en, this message translates to:
+  /// **'Of fluid drunk'**
+  String get mrIntakePercent;
+
+  /// No description provided for @mrSgRange.
+  ///
+  /// In en, this message translates to:
+  /// **'Specific gravity: lowest – highest'**
+  String get mrSgRange;
+
+  /// No description provided for @mrSgAmplitude.
+  ///
+  /// In en, this message translates to:
+  /// **'Specific-gravity amplitude'**
+  String get mrSgAmplitude;
+
+  /// No description provided for @mrNotGiven.
+  ///
+  /// In en, this message translates to:
+  /// **'not entered'**
+  String get mrNotGiven;
+
+  /// No description provided for @mErrNoUrine.
+  ///
+  /// In en, this message translates to:
+  /// **'At least one portion needs a volume and specific gravity.'**
+  String get mErrNoUrine;
+
+  /// No description provided for @mErrSediment.
+  ///
+  /// In en, this message translates to:
+  /// **'The sediment volume must be less than the urine centrifuged.'**
+  String get mErrSediment;
 
   /// No description provided for @mrProteinRatio.
   ///

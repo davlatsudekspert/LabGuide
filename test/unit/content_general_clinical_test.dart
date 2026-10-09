@@ -139,7 +139,12 @@ void main() {
     expect(ids.length, greaterThanOrEqualTo(40));
     for (final id in ids) {
       final s = pack.source(id)!;
-      expect(s.kind, 'web', reason: id);
+      // Darsliklar — qo'shimcha manba (katalog yozuvi, faqat iqtibos).
+      if (s.kind != 'web') {
+        expect(s.libraryItemId, isNotNull, reason: id);
+        expect(s.reuseRights, 'citation_only', reason: id);
+        continue;
+      }
       expect(s.url, startsWith('https://'), reason: id);
       expect(s.accessed, '2026-10-09', reason: id);
       expect(s.sourceDate, isNotNull, reason: id);
@@ -152,6 +157,7 @@ void main() {
           'www.cancer.gov',
           'www.niddk.nih.gov',
           'www.who.int',
+          'iris.who.int',
         ),
         reason: id,
       );

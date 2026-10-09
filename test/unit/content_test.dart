@@ -181,21 +181,33 @@ void main() {
       expect(g.conversion!.molarMass, closeTo(180.156, 1e-9));
     });
 
-    test('teacher materials are not marked as received or imported', () {
+    test('teacher materials are catalogue records only, never files', () {
       final pack = parse(packJson());
-      // Katalogda faqat ochiq manbalardan tekshirilgan bibliografik yozuvlar:
-      // domla bergan material yo'q, to'liq matn paketi yo'q.
+      // Katalogda faqat bibliografik yozuvlar: domla bergan kitoblar ham
+      // faqat katalog yoki o'qish havolasi; to'liq matn paketi va ilova
+      // ichidagi fayl yo'q.
       for (final item in pack.library) {
-        expect(item.providedBy, isNull, reason: item.id);
         expect(item.filePack, isNull, reason: item.id);
+        expect(item.file, isNull, reason: item.id);
         expect(item.importState, ImportState.cataloged, reason: item.id);
-        expect(item.url, isNotNull, reason: item.id);
         expect(item.accessed, isNotNull, reason: item.id);
         expect(item.note?.values.keys, containsAll(['uz', 'ru', 'en']));
+        if (item.url == null) {
+          expect(item.access, LibraryAccess.catalogOnly, reason: item.id);
+        }
+        if (item.providedBy != null) {
+          expect(item.providedBy, 'teacher', reason: item.id);
+          expect(item.rights.allowsSharedPack, isFalse, reason: item.id);
+        }
       }
       expect(pack.lessons, isEmpty);
       expect(pack.discrepancies, isEmpty);
-      expect(pack.sources.every((s) => s.kind == 'web'), isTrue);
+      // Veb-manbalar yoki katalogdagi kitob (faqat iqtibos).
+      for (final s in pack.sources) {
+        if (s.kind == 'web') continue;
+        expect(s.libraryItemId, isNotNull, reason: s.id);
+        expect(s.reuseRights, 'citation_only', reason: s.id);
+      }
       expect(pack.quiz.every((q) => q.isDraft), isTrue);
     });
   });
@@ -494,7 +506,9 @@ void main() {
       List<Map<String, Object?>> discrepancies = const [],
     }) {
       final json = packJson();
-      json['library'] = items;
+      // Haqiqiy katalog qoladi (kitob manbalari unga tayanadi), sinov
+      // elementlari qo'shiladi.
+      json['library'] = [...(json['library']! as List), ...items];
       json['sources'] = [...(json['sources']! as List), ...extraSources];
       json['discrepancies'] = discrepancies;
       return json;
@@ -629,7 +643,7 @@ void main() {
           ),
         ]),
       );
-      expect(ok.library.single.rights.allowsSharedPack, isTrue);
+      expect(ok.libraryItem('book-1')!.rights.allowsSharedPack, isTrue);
     });
 
     test('unknown topic or category is rejected', () {
@@ -691,9 +705,13 @@ void main() {
             .readAsStringSync(),
       ) as Map).cast<String, Object?>();
       final json = packJson();
-      for (final key in ['library', 'lessons', 'discrepancies']) {
+      for (final key in ['lessons', 'discrepancies']) {
         json[key] = example[key];
       }
+      json['library'] = [
+        ...(json['library']! as List),
+        ...(example['library']! as List),
+      ];
       json['sources'] = [
         ...(json['sources']! as List),
         ...(example['sources']! as List),

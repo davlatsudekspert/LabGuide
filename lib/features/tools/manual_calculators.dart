@@ -5,7 +5,10 @@
 ///   mutlaq sonlar, retikulotsit % — WHO “Manual of basic techniques for a
 ///   health laboratory” (2003), 9.6, 9.12, 9.13 bo'limlari;
 /// - tuzatilgan retikulotsit va RPI — Chueh 2022 (Blood Res), Kroll 2015;
-/// - Light mezonlari — Light 1972, Harding 2025.
+/// - Light mezonlari — Light 1972, Harding 2025;
+/// - Nechiporenko, Kakovskiy–Addis, Zimnitskiy — MDH klassik usullari:
+///   Lyubina va boshq. 1984 (42–44, 16–17-betlar), Aripova va boshq. 2007
+///   (98–100-betlar). Rasmiy (JSST) manbasi yo'q — “MDH klassik usuli”.
 ///
 /// Klinik me'yor/chegara bu yerda yo'q: natija rang bilan “norma/patologiya”
 /// deb belgilanmaydi. Kirish oraliqlari faqat yozish xatosini ushlash uchun.
@@ -35,6 +38,30 @@ enum ManualField {
   pfLdh,
   serumLdh,
   ldhUln,
+  // Siydik: Nechiporenko, Kakovskiy–Addis, Zimnitskiy.
+  urineLeuko,
+  urineEry,
+  urineCasts,
+  urineCentrifuged,
+  collectedVolume,
+  collectionHours,
+  portion1,
+  portion2,
+  portion3,
+  portion4,
+  portion5,
+  portion6,
+  portion7,
+  portion8,
+  sg1,
+  sg2,
+  sg3,
+  sg4,
+  sg5,
+  sg6,
+  sg7,
+  sg8,
+  fluidIntake,
 }
 
 enum ManualIssue {
@@ -440,6 +467,275 @@ ManualOutcome<LightResult> lightCriteria({
       verdict: met
           ? LightVerdict.exudate
           : (ofUln == null ? LightVerdict.incomplete : LightVerdict.transudate),
+    ),
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Siydik cho'kmasini miqdoriy sanash (MDH klassik usullari).
+// Lyubina 1984, 42–44-betlar: 1 µL cho'kmadagi hujayralar x = A ÷ V_kamera;
+// Nechiporenko: N (1 ml siydikda) = x × cho'kma (µL) ÷ sentrifugalangan
+// siydik (ml); Kakovskiy–Addis: sutkada = x × cho'kma (µL) × 5 × 24, bunda
+// sentrifugaga 12 daqiqalik siydik olinadi: v ÷ (t × 5).
+// Aripova 2007, 99-bet: x = A × 250 — Goryaev 100 katta kvadrati (0,4 µL),
+// 1 ml cho'kma, 10 ml siydik bo'lganda. Kitobda bu “1 litrda” deb yozilgan;
+// birliklar bo'yicha natija 1 ml siydikka to'g'ri keladi.
+// ---------------------------------------------------------------------------
+
+/// Sanalgan to'r hajmi, µL: Goryaev butun to'r (0,9), Goryaev 100 katta
+/// kvadrat (100 × 1/25 mm² × 0,1 mm = 0,4), Fuchs–Rosenthal butun to'r (3,2).
+const urineChamberVolumes = <double>[0.9, 0.4, 3.2];
+
+/// Cho'kma qoldiriladigan hajm, ml (ikkala darslikda 0,5 yoki 1 ml).
+const sedimentVolumes = <double>[0.5, 1.0];
+
+/// Kakovskiy–Addis: sutkaga qayta hisoblash (12 daqiqa × 5 × 24 = sutka).
+const addisDayFactor = 5 * 24;
+
+/// Siydik hujayralari: leykotsit, eritrotsit, silindr (kamida bittasi).
+const urineCellFields = [
+  ManualField.urineLeuko,
+  ManualField.urineEry,
+  ManualField.urineCasts,
+];
+
+class UrineCountResult {
+  const UrineCountResult({required this.values, required this.perMicroLitre});
+
+  /// Natija: Nechiporenko — 1 ml siydikda, Addis — sutkada.
+  final Map<ManualField, double> values;
+
+  /// Cho'kmaning 1 µL dagi soni (oraliq qiymat).
+  final Map<ManualField, double> perMicroLitre;
+}
+
+ManualFail<T>? _cells<T>(Map<ManualField, double> counts) {
+  if (counts.isEmpty) {
+    return const ManualFail(ManualIssue.missing, field: ManualField.urineLeuko);
+  }
+  for (final e in counts.entries) {
+    final f = _check<T>(e.key, e.value, 0, 100000);
+    if (f != null) return f;
+    if (e.value != e.value.roundToDouble()) {
+      return ManualFail(
+        ManualIssue.implausible,
+        field: e.key,
+        min: 0,
+        max: 100000,
+      );
+    }
+  }
+  return null;
+}
+
+/// Nechiporenko: 1 ml siydikdagi shaklli elementlar.
+ManualOutcome<UrineCountResult> nechiporenko({
+  required Map<ManualField, double> counts,
+  required double chamberVolume,
+  required double sedimentMl,
+  required double? urineMl,
+}) {
+  final fail =
+      _cells<UrineCountResult>(counts) ??
+      _check<UrineCountResult>(ManualField.urineCentrifuged, urineMl, 1, 100);
+  if (fail != null) return fail;
+  if (sedimentMl >= urineMl!) {
+    return const ManualFail(
+      ManualIssue.inconsistent,
+      field: ManualField.urineCentrifuged,
+    );
+  }
+  final perUl = {
+    for (final e in counts.entries) e.key: e.value / chamberVolume,
+  };
+  return ManualOk(
+    UrineCountResult(
+      perMicroLitre: perUl,
+      values: {
+        for (final e in perUl.entries)
+          e.key: e.value * sedimentMl * 1000 / urineMl,
+      },
+    ),
+  );
+}
+
+class AddisResult extends UrineCountResult {
+  const AddisResult({
+    required super.values,
+    required super.perMicroLitre,
+    required this.portionMl,
+  });
+
+  /// Sentrifugaga olinadigan 12 daqiqalik siydik hajmi, ml (kiritilgan
+  /// bo'lsa).
+  final double? portionMl;
+}
+
+/// 12 daqiqalik siydik hajmi: v ÷ (t × 5), t — soat.
+ManualOutcome<double> addisPortion({
+  required double? collectedMl,
+  required double? hours,
+}) {
+  final fail =
+      _check<double>(ManualField.collectedVolume, collectedMl, 10, 5000) ??
+      _check<double>(ManualField.collectionHours, hours, 1, 24);
+  if (fail != null) return fail;
+  return ManualOk(collectedMl! / (hours! * 5));
+}
+
+/// Kakovskiy–Addis: sutkada chiqarilgan shaklli elementlar. Hajm va vaqt
+/// ixtiyoriy — berilsa, 12 daqiqalik ulush ham ko'rsatiladi.
+ManualOutcome<AddisResult> addisKakovsky({
+  required Map<ManualField, double> counts,
+  required double chamberVolume,
+  required double sedimentMl,
+  double? collectedMl,
+  double? hours,
+}) {
+  final fail = _cells<AddisResult>(counts);
+  if (fail != null) return fail;
+  double? portion;
+  if (collectedMl != null || hours != null) {
+    switch (addisPortion(collectedMl: collectedMl, hours: hours)) {
+      case ManualOk(:final value):
+        portion = value;
+      case ManualFail(:final issue, :final field, :final min, :final max):
+        return ManualFail(issue, field: field, min: min, max: max);
+    }
+  }
+  final perUl = {
+    for (final e in counts.entries) e.key: e.value / chamberVolume,
+  };
+  return ManualOk(
+    AddisResult(
+      perMicroLitre: perUl,
+      portionMl: portion,
+      values: {
+        for (final e in perUl.entries)
+          e.key: e.value * sedimentMl * 1000 * addisDayFactor,
+      },
+    ),
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Zimnitskiy sinamasi: 8 porsiya, har 3 soatda (06:00 dan). 1–4 — kunduzgi,
+// 5–8 — tungi diurez (Lyubina 1984, 16-bet; Aripova 2007, 98-bet).
+// ---------------------------------------------------------------------------
+
+const zimnitskyVolumeFields = [
+  ManualField.portion1,
+  ManualField.portion2,
+  ManualField.portion3,
+  ManualField.portion4,
+  ManualField.portion5,
+  ManualField.portion6,
+  ManualField.portion7,
+  ManualField.portion8,
+];
+
+const zimnitskySgFields = [
+  ManualField.sg1,
+  ManualField.sg2,
+  ManualField.sg3,
+  ManualField.sg4,
+  ManualField.sg5,
+  ManualField.sg6,
+  ManualField.sg7,
+  ManualField.sg8,
+];
+
+/// Porsiya vaqtlari (boshlanish soati): 6, 9, 12, 15, 18, 21, 24, 3.
+const zimnitskyStartHours = [6, 9, 12, 15, 18, 21, 0, 3];
+
+/// Urometr shkalasi (Aripova 2007, 10.1.4: 1,000–1,060). “1015” ham
+/// qabul qilinadi (= 1,015).
+const sgMin = 1.0;
+const sgMax = 1.06;
+
+/// “1015” → 1,015; “1.015” o'zgarmaydi; boshqa qiymat — o'zgarmaydi (keyin
+/// oraliq tekshiruvi ushlaydi).
+double normalizeSg(double v) => v >= 1000 && v <= 1060 ? v / 1000 : v;
+
+class ZimnitskyResult {
+  const ZimnitskyResult({
+    required this.day,
+    required this.night,
+    required this.sgMinValue,
+    required this.sgMaxValue,
+    required this.sgCount,
+    this.intake,
+  });
+
+  final double day;
+  final double night;
+  final double sgMinValue;
+  final double sgMaxValue;
+
+  /// Zichligi o'lchangan porsiyalar soni.
+  final int sgCount;
+  final double? intake;
+
+  double get total => day + night;
+
+  /// Kunduzgi ÷ tungi (tungi 0 bo'lsa `null`).
+  double? get dayNightRatio => night > 0 ? day / night : null;
+
+  /// Sutkalik diurez ichilgan suyuqlikning necha foizi.
+  double? get intakePercent =>
+      intake == null || intake == 0 ? null : total / intake! * 100;
+
+  double get sgAmplitude => sgMaxValue - sgMinValue;
+}
+
+/// [volumes] — 8 ta (bo'sh porsiya — 0); [sgs] — 8 ta, hajm 0 bo'lsa
+/// `null` bo'lishi mumkin.
+ManualOutcome<ZimnitskyResult> zimnitsky({
+  required List<double?> volumes,
+  required List<double?> sgs,
+  double? intake,
+}) {
+  assert(volumes.length == 8 && sgs.length == 8);
+  final sgOk = <double>[];
+  for (var i = 0; i < 8; i++) {
+    final f = _check<ZimnitskyResult>(
+      zimnitskyVolumeFields[i],
+      volumes[i],
+      0,
+      2000,
+    );
+    if (f != null) return f;
+    if (volumes[i]! == 0) continue;
+    final raw = sgs[i];
+    final sg = raw == null ? null : normalizeSg(raw);
+    final g = _check<ZimnitskyResult>(zimnitskySgFields[i], sg, sgMin, sgMax);
+    if (g != null) return g;
+    sgOk.add(sg!);
+  }
+  if (intake != null) {
+    final f = _check<ZimnitskyResult>(
+      ManualField.fluidIntake,
+      intake,
+      0,
+      20000,
+    );
+    if (f != null) return f;
+  }
+  if (sgOk.isEmpty) {
+    return const ManualFail(
+      ManualIssue.inconsistent,
+      field: ManualField.portion1,
+    );
+  }
+  double sum(Iterable<double?> xs) => xs.fold(0, (a, b) => a + b!);
+  return ManualOk(
+    ZimnitskyResult(
+      day: sum(volumes.take(4)),
+      night: sum(volumes.skip(4)),
+      sgMinValue: sgOk.reduce((a, b) => a < b ? a : b),
+      sgMaxValue: sgOk.reduce((a, b) => a > b ? a : b),
+      sgCount: sgOk.length,
+      intake: intake,
     ),
   );
 }

@@ -7168,6 +7168,11 @@
       "date": "2026-10-09",
       "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
       "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     },
+     {
+      "date": "2026-10-09",
+      "scope": "book-derived claims (Aripova 2007, Selivanov 2005, Lyubina 1984) checked against WHO/DIL/LAB/99.1, WHO 2003/2010, MedlinePlus, NCI; pages and numbers; uz/ru/en",
+      "report": "docs/BOOKS_PREANALYTICS_2026-10-09.md"
      }
     ]
    },
@@ -7492,6 +7497,105 @@
       "ru": "Перед анализом мочи на кетоны или при назначении других анализов мочи и крови может потребоваться голодание. Некоторые лекарства может понадобиться отменить, но только по указанию врача; сообщите обо всех принимаемых препаратах.",
       "en": "Fasting may be required before a urine ketone test or when other urine or blood tests are ordered. Some medicines may need to be stopped, but only on the provider’s instruction; all medicines being taken should be reported."
      }
+    },
+    {
+     "section": "preanalytics",
+     "refs": [
+      {
+       "source_id": "who-basic-lab-manual-2003",
+       "locator": "7.2.3 Measuring the pH",
+       "pages": "235"
+      },
+      {
+       "source_id": "book-aripova-2007",
+       "locator": "10.1.3 Siydikni yig‘ish (Namunalarni saqlash)",
+       "pages": "83–84"
+      }
+     ],
+     "text": {
+      "uz": "Umumiy tahlil uchun siydik yig‘ilgandan keyin 1 soat ichida tekshiriladi; pH ham 1 soat ichida o‘lchanishi kerak. Tekshirish kechiksa, namuna tekshiruvgacha sovitgichda saqlanadi.",
+      "ru": "Мочу для общего анализа исследуют в течение 1 часа после сбора; pH тоже нужно измерить в течение 1 часа. Если исследование откладывается, образец до анализа хранят в холодильнике.",
+      "en": "Urine for routine analysis is examined within 1 hour of collection, and the pH must also be tested within 1 hour. If testing is delayed, keep the sample refrigerated until it is analysed."
+     },
+     "origin": "books-preanalytics"
+    },
+    {
+     "section": "preanalytics",
+     "refs": [
+      {
+       "source_id": "who-dil-lab-99-1",
+       "locator": "5.2 Urine — glucose, pH",
+       "pages": "47"
+      },
+      {
+       "source_id": "book-aripova-2007",
+       "locator": "10.1.3 Siydikni yig‘ish (Namunalarni saqlash)",
+       "pages": "84"
+      }
+     ],
+     "text": {
+      "uz": "Siydik turib qolsa nima o‘zgaradi: JSST jadvaliga ko‘ra glyukoza xona haroratida ham, 4–8 °C da ham taxminan 2 soatda kamayadi (bakteriyalar uni sarflaydi); pH ammoniy hosil bo‘lishi hisobiga ko‘tariladi — siydik ishqoriy tomonga siljiydi. Darslik ham shu o‘zgarishlarni sanab, kechikishda glyukoza noto‘g‘ri past chiqishini ta’kidlaydi.",
+      "ru": "Что меняется при стоянии мочи: по таблице ВОЗ глюкоза снижается примерно за 2 часа и при комнатной температуре, и при 4–8 °C (её расходуют бактерии); pH повышается из‑за образования аммония — моча сдвигается в щелочную сторону. Учебник перечисляет те же изменения и подчёркивает ложно низкую глюкозу при задержке.",
+      "en": "What changes when urine stands: per the WHO table, glucose falls within about 2 hours both at room temperature and at 4–8 °C (bacteria consume it), and pH rises as ammonium forms, so the urine turns alkaline. The textbook lists the same changes and stresses falsely low glucose after a delay."
+     },
+     "origin": "books-preanalytics"
+    },
+    {
+     "section": "preanalytics",
+     "refs": [
+      {
+       "source_id": "who-dil-lab-99-1",
+       "locator": "5.2 Urine — protein",
+       "pages": "48"
+      }
+     ],
+     "text": {
+      "uz": "Siydikdagi oqsil nisbatan barqarorroq: JSST jadvalida xona haroratida 1 sutka, 4–8 °C da 7 sutka, −20 °C da 1 oy deb ko‘rsatilgan.",
+      "ru": "Белок в моче более устойчив: в таблице ВОЗ указано 1 сутки при комнатной температуре, 7 суток при 4–8 °C и 1 месяц при −20 °C.",
+      "en": "Urine protein is more stable: the WHO table gives 1 day at room temperature, 7 days at 4–8 °C and 1 month at −20 °C."
+     },
+     "origin": "books-preanalytics"
+    },
+    {
+     "section": "interference",
+     "refs": [
+      {
+       "source_id": "book-aripova-2007",
+       "locator": "Bilirubinni ekspress test-tilimchalar yordamida aniqlash",
+       "pages": "92"
+      },
+      {
+       "source_id": "who-dil-lab-99-1",
+       "locator": "5.1 Blood — bilirubin (darkness required when stored > 8 h)",
+       "pages": "24"
+      }
+     ],
+     "text": {
+      "uz": "Bilirubin yorug‘likda parchalanadi: darslikka ko‘ra yangi siydikni quyosh va lyuminessent nurdan saqlash kerak, chunki bilirubin biliverdinga oksidlanadi va test-tilimcha uni aniqlamaydi (soxta manfiy). JSST hujjati ham bilirubin uchun zardobni 8 soatdan uzoq saqlashda qorong‘ilikni talab qiladi; siydik uchun alohida muddat bermaydi.",
+      "ru": "Билирубин разрушается на свету: по учебнику свежую мочу нужно защищать от солнечного и люминесцентного света, так как билирубин окисляется в биливердин, который тест‑полоска не определяет (ложноотрицательно). Документ ВОЗ для билирубина сыворотки при хранении дольше 8 часов также требует темноты; отдельного срока для мочи он не даёт.",
+      "en": "Bilirubin breaks down in light: the textbook says fresh urine must be shielded from sunlight and fluorescent light, because bilirubin oxidises to biliverdin, which the strip does not detect (false negative). The WHO document likewise requires darkness for serum bilirubin stored over 8 hours; it gives no separate time for urine."
+     },
+     "origin": "books-preanalytics"
+    },
+    {
+     "section": "interference",
+     "refs": [
+      {
+       "source_id": "medline-glucose-urine",
+       "locator": "What do the results mean?"
+      },
+      {
+       "source_id": "book-aripova-2007",
+       "locator": "Siydikdagi glyukozani ekspress tilimchalar yordamida aniqlash",
+       "pages": "91"
+      }
+     ],
+     "text": {
+      "uz": "C vitamini (askorbin kislota) siydikdagi glyukoza natijasiga ta’sir qilishi mumkin; darslikda u test-tilimcha sezgirligini pasaytirib, soxta manfiy natija beradigan modda sifatida keltirilgan.",
+      "ru": "Витамин C (аскорбиновая кислота) может влиять на результат глюкозы в моче; в учебнике он приведён как вещество, снижающее чувствительность тест‑полоски и дающее ложноотрицательный результат.",
+      "en": "Vitamin C (ascorbic acid) can affect the urine glucose result; the textbook lists it as a substance that lowers strip sensitivity and gives a false-negative result."
+     },
+     "origin": "books-preanalytics"
     }
    ],
    "decision_limits": [],
@@ -7501,7 +7605,10 @@
     "medline-nitrites-urine",
     "medline-glucose-urine",
     "medline-ketones-urine",
-    "medline-urobilinogen-urine"
+    "medline-urobilinogen-urine",
+    "who-basic-lab-manual-2003",
+    "book-aripova-2007",
+    "who-dil-lab-99-1"
    ],
    "related": [
     "urine-microscopy"
@@ -7549,6 +7656,11 @@
       "date": "2026-10-09",
       "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
       "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     },
+     {
+      "date": "2026-10-09",
+      "scope": "book-derived claims (Aripova 2007, Selivanov 2005, Lyubina 1984) checked against WHO/DIL/LAB/99.1, WHO 2003/2010, MedlinePlus, NCI; pages and numbers; uz/ru/en",
+      "report": "docs/BOOKS_PREANALYTICS_2026-10-09.md"
      }
     ]
    },
@@ -7805,6 +7917,69 @@
       "ru": "Отклонение при микроскопии мочи не всегда означает заболевание, требующее лечения; до постановки диагноза могут понадобиться дополнительные исследования.",
       "en": "An abnormal microscopic finding does not always mean a condition that needs treatment; more tests may be needed before a diagnosis can be made."
      }
+    },
+    {
+     "section": "preanalytics",
+     "refs": [
+      {
+       "source_id": "who-dil-lab-99-1",
+       "locator": "5.2 Urine — sediment",
+       "pages": "48"
+      },
+      {
+       "source_id": "book-aripova-2007",
+       "locator": "10.1.2 Siydikni klinik tekshirish (mikroskopiya)",
+       "pages": "83"
+      }
+     ],
+     "text": {
+      "uz": "Cho‘kma uchun siydik tez tekshiriladi: JSST jadvalida cho‘kma xona haroratida 1–2 soat, 4–8 °C da 1–8 soat barqaror deb ko‘rsatilgan va uni muzlatmaslik kerak. Darslik ham mikroskopiyani yig‘ilgandan boshlab 1 soat ichida qilishni talab qiladi.",
+      "ru": "Мочу для микроскопии осадка исследуют быстро: в таблице ВОЗ осадок стабилен 1–2 часа при комнатной температуре и 1–8 часов при 4–8 °C, замораживать его нельзя. Учебник также требует микроскопии в течение 1 часа после сбора.",
+      "en": "Examine urine for sediment promptly: the WHO table gives sediment stability of 1–2 hours at room temperature and 1–8 hours at 4–8 °C, and it must not be frozen. The textbook likewise requires microscopy within 1 hour of collection."
+     },
+     "origin": "books-preanalytics"
+    },
+    {
+     "section": "preanalytics",
+     "refs": [
+      {
+       "source_id": "who-dil-lab-99-1",
+       "locator": "5.2 Urine — sediment: erythrocytes, casts",
+       "pages": "48"
+      },
+      {
+       "source_id": "book-aripova-2007",
+       "locator": "10.1.3 Siydikni yig‘ish (Namunalarni saqlash)",
+       "pages": "84"
+      },
+      {
+       "source_id": "book-lyubina-1984",
+       "locator": "Метод Нечипоренко",
+       "pages": "43"
+      }
+     ],
+     "text": {
+      "uz": "Kechikishda shaklli elementlar buziladi: JSST jadvalida eritrotsitlar xona haroratida taxminan 1 soat barqaror (konsentrlangan siydikda uzoqroq), silindrlar uchun 2 sutka faqat konsentrlangan siydik (osmolyallik >300 mosmol/kg) uchun berilgan. Darsliklar eritrotsitlar lizlanishi, silindrlar yemirilishi va ishqoriy siydikda hujayralar qisman parchalanishini qayd etadi.",
+      "ru": "При задержке форменные элементы разрушаются: в таблице ВОЗ эритроциты стабильны около 1 часа при комнатной температуре (дольше в концентрированной моче), а 2 суток для цилиндров указаны только для концентрированной мочи (осмоляльность >300 мосмоль/кг). Учебники отмечают лизис эритроцитов, разрушение цилиндров и частичный распад клеток в щелочной моче.",
+      "en": "Formed elements deteriorate with delay: the WHO table gives erythrocytes about 1 hour at room temperature (longer in concentrated urine), and the 2 days listed for casts apply only to concentrated urine (osmolality >300 mosmol/kg). The textbooks note lysis of red cells, breakdown of casts and partial destruction of cells in alkaline urine."
+     },
+     "origin": "books-preanalytics"
+    },
+    {
+     "section": "limitations",
+     "refs": [
+      {
+       "source_id": "who-basic-lab-manual-2003",
+       "locator": "7.2.7 Detection of abnormal elements — collection of specimens",
+       "pages": "241"
+      }
+     ],
+     "text": {
+      "uz": "Sovitgichda saqlangan siydikda tuzlar ko‘p cho‘kib qolishi mumkin va u mikroskopiyaga yaramaydi. Mikroskopiya uchun siydikni 10% formaldegid bilan (300 ml ga 8–10 tomchi) konservatsiya qilish mumkin, lekin bunday siydik boshqa tahlillarga yaramaydi.",
+      "ru": "В моче из холодильника может выпасть много солей, и она становится непригодной для микроскопии. Для микроскопии мочу можно законсервировать 10% формальдегидом (8–10 капель на 300 мл), но такая моча непригодна для других анализов.",
+      "en": "Refrigerated urine may contain excess precipitated salts and be unsuitable for microscopy. For microscopy, urine can be preserved with 10% formaldehyde (8–10 drops per 300 ml), but it is then unsuitable for other tests."
+     },
+     "origin": "books-preanalytics"
     }
    ],
    "decision_limits": [],
@@ -7812,7 +7987,11 @@
     "medline-epithelial-urine",
     "medline-crystals-urine",
     "medline-mucus-urine",
-    "medline-blood-urine"
+    "medline-blood-urine",
+    "who-dil-lab-99-1",
+    "book-aripova-2007",
+    "book-lyubina-1984",
+    "who-basic-lab-manual-2003"
    ],
    "related": [
     "urine-chemistry"
@@ -25890,6 +26069,11 @@
       "date": "2026-10-09",
       "scope": "Kontent auditi B: sonlar, birliklar, namuna, mezonlar, manba locator",
       "report": "docs/CONTENT_AUDIT_2026-10-09_B.md"
+     },
+     {
+      "date": "2026-10-09",
+      "scope": "book-derived claims (Aripova 2007, Selivanov 2005, Lyubina 1984) checked against WHO/DIL/LAB/99.1, WHO 2003/2010, MedlinePlus, NCI; pages and numbers; uz/ru/en",
+      "report": "docs/BOOKS_PREANALYTICS_2026-10-09.md"
      }
     ]
    },
@@ -26010,11 +26194,36 @@
       "ru": "Сам тест не ставит диагноз: если в кале найдена кровь, для поиска причины нужны другие исследования. Если этот тест выбран для скрининга, его нужно повторять ежегодно. Есть и другие методы скрининга: ДНК-тест кала (FIT-DNA), колоноскопия, сигмоидоскопия, КТ-колонография.",
       "en": "The test alone cannot diagnose any condition: if blood is found, other tests are needed to find the cause. When used for screening, it must be repeated every year. Other screening options include the stool DNA test (FIT-DNA), colonoscopy, sigmoidoscopy and CT colonography."
      }
+    },
+    {
+     "section": "preanalytics",
+     "refs": [
+      {
+       "source_id": "nci-crc-screening-tests",
+       "locator": "What methods are used to screen people for colorectal cancer? — Stool tests"
+      },
+      {
+       "source_id": "medline-fobt",
+       "locator": "Will I need to do anything to prepare for the test?"
+      },
+      {
+       "source_id": "book-selivanov-2005",
+       "locator": "5.2 Кал на скрытую кровь"
+      }
+     ],
+     "text": {
+      "uz": "Parhez test turiga bog‘liq: immunokimyoviy test (FIT) gemoglobin oqsiliga xos antitelolar bilan ishlaydi va odatda parhez yoki dori o‘zgartirishni talab qilmaydi. Gvayak testi (gFOBT) esa ovqatdagi gemni ham sezadi — undan oldin qizil go‘sht, ayrim sabzavot va dorilar cheklanishi mumkin. Darslikdagi 3–5 kunlik parhez faqat kimyoviy (gvayak, benzidin tipidagi) sinamalarga tegishli.",
+      "ru": "Диета зависит от типа теста: иммунохимический тест (FIT) выявляет антителами именно белок гемоглобина и обычно не требует изменений диеты или лекарств. Гваяковый тест (gFOBT) реагирует и на гем из пищи — перед ним могут ограничить красное мясо, некоторые овощи и лекарства. Диета на 3–5 дней из учебника относится только к химическим (гваяковым, бензидиновым) пробам.",
+      "en": "Diet depends on the test type: the immunochemical test (FIT) uses antibodies specific to haemoglobin protein and typically needs no diet or medicine changes. The guaiac test (gFOBT) also detects haem from food, so red meat, some vegetables and medicines may be restricted beforehand. The 3–5-day diet in the textbook applies only to chemical (guaiac or benzidine-type) tests."
+     },
+     "origin": "books-preanalytics"
     }
    ],
    "decision_limits": [],
    "source_ids": [
-    "medline-fobt"
+    "medline-fobt",
+    "nci-crc-screening-tests",
+    "book-selivanov-2005"
    ],
    "related": [
     "stool-analysis",
@@ -26948,6 +27157,11 @@
       "date": "2026-10-09",
       "scope": "Kontent auditi B: sonlar, birliklar, namuna, mezonlar, manba locator",
       "report": "docs/CONTENT_AUDIT_2026-10-09_B.md"
+     },
+     {
+      "date": "2026-10-09",
+      "scope": "book-derived claims (Aripova 2007, Selivanov 2005, Lyubina 1984) checked against WHO/DIL/LAB/99.1, WHO 2003/2010, MedlinePlus, NCI; pages and numbers; uz/ru/en",
+      "report": "docs/BOOKS_PREANALYTICS_2026-10-09.md"
      }
     ]
    },
@@ -27152,13 +27366,44 @@
       "ru": "Положительный анализ крови на туберкулёз (IGRA) или кожная проба обычно означает инфицирование, но не активную болезнь — для этого нужны рентген и бактериологическое исследование. У некоторых больных активным туберкулёзом эти тесты отрицательны. При предполагаемом туберкулёзе, особенно у тяжёлого пациента, лечение не откладывают в ожидании бактериологии.",
       "en": "A positive TB blood test (IGRA) or skin test usually means TB infection but does not show active disease — chest x-ray and bacteriology are needed. Some people with TB disease test negative on these. When TB is the presumptive diagnosis, especially in a very ill patient, treatment is not delayed while waiting for bacteriology."
      }
+    },
+    {
+     "section": "preanalytics",
+     "refs": [
+      {
+       "source_id": "medline-sputum-culture",
+       "locator": "What happens during a sputum culture?"
+      },
+      {
+       "source_id": "medline-sputum-culture",
+       "locator": "Will I need to do anything to prepare for the test?"
+      },
+      {
+       "source_id": "book-aripova-2007",
+       "locator": "13.1 Balg‘am yig‘ish uslubi",
+       "pages": "173–174"
+      },
+      {
+       "source_id": "book-selivanov-2005",
+       "locator": "7.14 Мокрота"
+      }
+     ],
+     "text": {
+      "uz": "Balg‘am odatda ertalab olinadi; olishdan oldin og‘izni suv bilan chayish so‘ralishi mumkin. Namuna — o‘pkadan yo‘talib chiqarilgan quyuq balg‘am, so‘lak emas; darsliklar so‘lak yoki suvsimon namunani yaroqsiz deb hisoblaydi.",
+      "ru": "Мокроту обычно собирают утром; перед сбором могут попросить прополоскать рот водой. Образец — густая мокрота, откашлянная из лёгких, а не слюна; учебники считают слюну или водянистый образец непригодными.",
+      "en": "Sputum is usually collected in the morning, and you may be asked to rinse your mouth with water first. The sample is thick sputum coughed up from the lungs, not saliva; the textbooks treat saliva or watery samples as unsuitable."
+     },
+     "origin": "books-preanalytics"
     }
    ],
    "decision_limits": [],
    "source_ids": [
     "medline-afb-tests",
     "cdc-tb-clinical-lab-diagnosis",
-    "who-tb-fact-sheet"
+    "who-tb-fact-sheet",
+    "medline-sputum-culture",
+    "book-aripova-2007",
+    "book-selivanov-2005"
    ],
    "related": [
     "sputum-culture",
@@ -27422,6 +27667,11 @@
       "date": "2026-10-09",
       "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
       "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     },
+     {
+      "date": "2026-10-09",
+      "scope": "book-derived claims (Aripova 2007, Selivanov 2005, Lyubina 1984) checked against WHO/DIL/LAB/99.1, WHO 2003/2010, MedlinePlus, NCI; pages and numbers; uz/ru/en",
+      "report": "docs/BOOKS_PREANALYTICS_2026-10-09.md"
      }
     ]
    },
@@ -27559,12 +27809,40 @@
       "ru": "Чтобы обойтись без суточного сбора, врач может назначить вместо него соотношение белок/креатинин в одной (разовой) порции мочи. Это другой анализ: он даёт не количество за 24 часа, а отношение белка к креатинину. Нормы различаются между лабораториями — обсудите результат с врачом.",
       "en": "To avoid a 24-hour collection, the provider may order a protein-to-creatinine ratio on a single (random) urine sample instead. This is a different test: it gives the ratio of protein to creatinine, not the amount passed in 24 hours. Normal ranges vary between laboratories — discuss your result with your provider."
      }
+    },
+    {
+     "section": "preanalytics",
+     "refs": [
+      {
+       "source_id": "who-basic-lab-manual-2003",
+       "locator": "7.1.1 Types of urine specimen; 7.2.5 Collection of specimens",
+       "pages": "233, 238"
+      },
+      {
+       "source_id": "book-lyubina-1984",
+       "locator": "§ 6. Правила сбора",
+       "pages": "28"
+      },
+      {
+       "source_id": "book-selivanov-2005",
+       "locator": "2.5 — суточная моча (объём измеряют и записывают)"
+      }
+     ],
+     "text": {
+      "uz": "Sutkalik siydik kamida 2 litrlik toza idishga yig‘iladi: birinchi ertalabki porsiya to‘kiladi, ertasi kungi ertalabki porsiya qo‘shiladi. Yig‘ish davomida idish 4–8 °C da saqlanadi; tahlil 24 soatdan ko‘proq kechiksa, namuna −20 °C da saqlanadi. Laboratoriyada umumiy hajm o‘lchanib yoziladi.",
+      "ru": "Суточную мочу собирают в чистую ёмкость не менее 2 литров: первую утреннюю порцию выливают, утреннюю порцию следующего дня добавляют. Во время сбора ёмкость хранят при 4–8 °C; если анализ откладывается более чем на 24 часа, образец хранят при −20 °C. В лаборатории измеряют и записывают общий объём.",
+      "en": "Collect 24-hour urine into a clean container of at least 2 litres: discard the first morning void and include the next morning’s first void. Keep the container at 4–8 °C during collection; if analysis is delayed beyond 24 hours, store the specimen at −20 °C. The laboratory measures and records the total volume."
+     },
+     "origin": "books-preanalytics"
     }
    ],
    "decision_limits": [],
    "source_ids": [
     "medline-ency-urine-24h-volume",
-    "medline-ency-urine-24h-protein"
+    "medline-ency-urine-24h-protein",
+    "who-basic-lab-manual-2003",
+    "book-lyubina-1984",
+    "book-selivanov-2005"
    ],
    "related": [
     "urine-acr",
@@ -27635,6 +27913,11 @@
       "date": "2026-10-09",
       "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
       "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     },
+     {
+      "date": "2026-10-09",
+      "scope": "book-derived claims (Aripova 2007, Selivanov 2005, Lyubina 1984) checked against WHO/DIL/LAB/99.1, WHO 2003/2010, MedlinePlus, NCI; pages and numbers; uz/ru/en",
+      "report": "docs/BOOKS_PREANALYTICS_2026-10-09.md"
      }
     ]
    },
@@ -27783,13 +28066,39 @@
       "ru": "Нормальные значения могут немного различаться между лабораториями; некоторые лаборатории используют другие единицы измерения или исследуют другие образцы. Иногда в посеве находят более одного вида бактерий или лишь небольшое их количество; что означает конкретный результат, объясняет врач.",
       "en": "Normal value ranges may vary slightly between laboratories, and some labs use different measurements or test different samples. Sometimes more than one type of bacteria, or only a small amount, is found in the culture; the provider explains what a specific result means."
      }
+    },
+    {
+     "section": "preanalytics",
+     "refs": [
+      {
+       "source_id": "who-dil-lab-99-1",
+       "locator": "5.2 Urine — sediment: bacteria",
+       "pages": "48"
+      },
+      {
+       "source_id": "book-selivanov-2005",
+       "locator": "2.7 и 6.1 — моча для бактериологических исследований"
+      },
+      {
+       "source_id": "medline-ency-urine-culture",
+       "locator": "Considerations"
+      }
+     ],
+     "text": {
+      "uz": "Ekma uchun siydik steril idishda, iloji bo‘lsa antibiotik boshlanishidan oldin olinadi va tez yetkaziladi: JSST jadvaliga ko‘ra bakteriyalar xona haroratida 1–2 soatda ko‘payib ketadi, 4–8 °C da esa taxminan 24 soat barqaror. Darslik ham 1–2 soat ichida yoki sovitgichda 24 soatgacha saqlashni ko‘rsatadi.",
+      "ru": "Мочу на посев собирают в стерильный контейнер, по возможности до начала антибиотиков, и быстро доставляют: по таблице ВОЗ бактерии при комнатной температуре размножаются за 1–2 часа, а при 4–8 °C число их стабильно около 24 часов. Учебник также указывает 1–2 часа или хранение в холодильнике до 24 часов.",
+      "en": "Collect urine for culture into a sterile container, if possible before antibiotics start, and deliver it quickly: per the WHO table bacteria multiply within 1–2 hours at room temperature but stay stable for about 24 hours at 4–8 °C. The textbook likewise gives 1–2 hours, or up to 24 hours refrigerated."
+     },
+     "origin": "books-preanalytics"
     }
    ],
    "decision_limits": [],
    "source_ids": [
     "medline-ency-urine-culture",
     "medline-antibiotic-sensitivity",
-    "medline-ency-clean-catch"
+    "medline-ency-clean-catch",
+    "who-dil-lab-99-1",
+    "book-selivanov-2005"
    ],
    "related": [
     "urine-chemistry",
@@ -28119,6 +28428,11 @@
       "date": "2026-10-09",
       "scope": "Kontent auditi B: sonlar, birliklar, namuna, mezonlar, manba locator",
       "report": "docs/CONTENT_AUDIT_2026-10-09_B.md"
+     },
+     {
+      "date": "2026-10-09",
+      "scope": "book-derived claims (Aripova 2007, Selivanov 2005, Lyubina 1984) checked against WHO/DIL/LAB/99.1, WHO 2003/2010, MedlinePlus, NCI; pages and numbers; uz/ru/en",
+      "report": "docs/BOOKS_PREANALYTICS_2026-10-09.md"
      }
     ]
    },
@@ -28265,6 +28579,29 @@
       "ru": "Самостоятельный забор для теста на ВПЧ может расширить доступ к скринингу; но в объединённом анализе исследований в Китае чувствительность самостоятельно взятых образцов (около 86 % для CIN 2+) была ниже, чем взятых врачом (около 97 %).",
       "en": "Self-collected HPV testing may improve access to screening; in a pooled analysis of studies in China, however, self-collected samples were less sensitive for CIN 2+ (about 86%) than physician-collected samples (about 97%)."
      }
+    },
+    {
+     "section": "preanalytics",
+     "refs": [
+      {
+       "source_id": "medline-pap-smear",
+       "locator": "Will I need to do anything to prepare for the test?"
+      },
+      {
+       "source_id": "medline-hpv-test",
+       "locator": "Will I need to do anything to prepare for the test?"
+      },
+      {
+       "source_id": "book-selivanov-2005",
+       "locator": "7 — рекомендации женщинам по подготовке к сдаче мазка"
+      }
+     ],
+     "text": {
+      "uz": "Pap-surtma (birgalikdagi test) hayz paytida olinmaydi — eng qulay vaqt hayz tugaganidan taxminan 5 kun keyin; 2 kun oldin tampon, qin kremlari va dorilari, chayish va jinsiy aloqadan saqlaniladi. Faqat HPV testi uchun tayyorgarlik shart emas; hayz bo‘lsa, shifokorga aytiladi. Darslikda qin shamchalarini 2–3 kun oldin to‘xtatish tavsiya etilgan.",
+      "ru": "Мазок Папаниколау (совместный тест) не берут во время менструации — удобнее примерно через 5 дней после её окончания; за 2 дня избегают тампонов, вагинальных кремов и препаратов, спринцевания и половых контактов. Для одного теста на ВПЧ подготовка не нужна; о менструации сообщают врачу. В учебнике рекомендовано отменить вагинальные свечи за 2–3 дня.",
+      "en": "A Pap smear (cotest) is not done during a period — about 5 days after it ends is a good time; for 2 days before, avoid tampons, vaginal creams and medicines, douching and vaginal sex. An HPV test alone needs no preparation; tell the provider if you have your period. The textbook advises stopping vaginal suppositories 2–3 days before."
+     },
+     "origin": "books-preanalytics"
     }
    ],
    "decision_limits": [],
@@ -28272,7 +28609,9 @@
     "medline-hpv-test",
     "nci-abnormal-hpv-pap",
     "nci-cervical-screening",
-    "nci-pdq-cervical-screening"
+    "nci-pdq-cervical-screening",
+    "medline-pap-smear",
+    "book-selivanov-2005"
    ],
    "related": [
     "pap-test",
@@ -28348,6 +28687,11 @@
       "date": "2026-10-09",
       "scope": "Kontent auditi B: sonlar, birliklar, namuna, mezonlar, manba locator",
       "report": "docs/CONTENT_AUDIT_2026-10-09_B.md"
+     },
+     {
+      "date": "2026-10-09",
+      "scope": "book-derived claims (Aripova 2007, Selivanov 2005, Lyubina 1984) checked against WHO/DIL/LAB/99.1, WHO 2003/2010, MedlinePlus, NCI; pages and numbers; uz/ru/en",
+      "report": "docs/BOOKS_PREANALYTICS_2026-10-09.md"
      }
     ]
    },
@@ -28480,6 +28824,25 @@
       "ru": "Один только pH-тест не ставит диагноз бактериального вагиноза (pH здорового влагалища 3,8–4,5). ПАП-тест для бактериального вагиноза непригоден; посев на Gardnerella vaginalis тоже не рекомендуется, так как он неспецифичен. NAAT на бактериальный вагиноз применяют только у женщин с симптомами.",
       "en": "A pH test alone cannot diagnose BV (healthy vaginal pH is 3.8–4.5). Pap tests are of no use for BV, and culture of Gardnerella vaginalis is not recommended because it is not specific. BV NAATs are for symptomatic women only."
      }
+    },
+    {
+     "section": "preanalytics",
+     "refs": [
+      {
+       "source_id": "medline-bv-test",
+       "locator": "Will I need to do anything to prepare for the test?"
+      },
+      {
+       "source_id": "book-selivanov-2005",
+       "locator": "7 — рекомендации женщинам по подготовке к сдаче мазка"
+      }
+     ],
+     "text": {
+      "uz": "Rasmiy manbaga ko‘ra namuna olishdan 24 soat oldin tampon, qin kremlari va dorilari hamda jinsiy aloqadan saqlaniladi. Darslik qattiqroq tartibni beradi: hayz paytida va tugaganidan keyin 1–2 kun surtma olinmaydi, qin shamchalari va tabletkalari 2–3 kun oldin to‘xtatiladi — laboratoriyangiz ko‘rsatmasiga amal qiling.",
+      "ru": "По официальному источнику за 24 часа до взятия избегают тампонов, вагинальных кремов и препаратов и половых контактов. Учебник даёт более строгий порядок: мазок не берут во время менструации и 1–2 дня после неё, вагинальные свечи и таблетки отменяют за 2–3 дня — следуйте указаниям вашей лаборатории.",
+      "en": "Per the official source, avoid tampons, vaginal creams and medicines, and vaginal sex for 24 hours before sampling. The textbook is stricter: no swab during a period or for 1–2 days after it, and vaginal suppositories and tablets stopped 2–3 days before — follow your laboratory’s instructions."
+     },
+     "origin": "books-preanalytics"
     }
    ],
    "decision_limits": [],
@@ -28488,7 +28851,8 @@
     "cdc-std-bv",
     "medline-trichomoniasis-test",
     "cdc-std-trichomoniasis",
-    "medline-bv-test"
+    "medline-bv-test",
+    "book-selivanov-2005"
    ],
    "related": [
     "pap-test",
@@ -31658,6 +32022,116 @@
    "note": "The guideline defines response by percentage LDL-C reduction from baseline and uses LDL-C thresholds, not fixed goals for every group.",
    "reuse_rights": "verify_before_distribution",
    "review_note": "Copyrighted (ACC/AHA). Only numerical thresholds and percentage reductions from the Top 10 Take-Home Messages (2, 3, 7) and Table 3 restated in our own words."
+  },
+  {
+   "id": "book-aripova-2007",
+   "kind": "book",
+   "library_item_id": "lib-book-aripova-2007",
+   "title": "Klinik va biokimyoviy tekshiruv usullari",
+   "publisher": "Aripova G.S., Po‘latova F.G., Nazarova N.S., Toirova Z.S. · G‘afur G‘ulom NMIU, 2007",
+   "doc_type": "textbook",
+   "authors": [
+    "G.S. Aripova",
+    "F.G. Po‘latova",
+    "N.S. Nazarova",
+    "Z.S. Toirova"
+   ],
+   "year": 2007,
+   "isbn": "978-9943-03-034-3",
+   "jurisdiction": "UZ",
+   "note": "Textbook (darslik) cited as a supporting source by chapter and page; copyright applies — knowledge restated in our own words, no text, tables or images reproduced (citation only).",
+   "reuse_rights": "citation_only"
+  },
+  {
+   "id": "book-selivanov-2005",
+   "kind": "manual",
+   "library_item_id": "lib-book-selivanov-2005",
+   "title": "Правила взятия материала для лабораторных исследований",
+   "publisher": "Селиванов Е.В., Звягинцев Е.Н. · Барнаул, 2005",
+   "doc_type": "textbook",
+   "authors": [
+    "Е.В. Селиванов",
+    "Е.Н. Звягинцев"
+   ],
+   "year": 2005,
+   "jurisdiction": "RU",
+   "note": "Textbook (darslik) cited as a supporting source by chapter and page; copyright applies — knowledge restated in our own words, no text, tables or images reproduced (citation only). No ISBN printed.",
+   "reuse_rights": "citation_only"
+  },
+  {
+   "id": "book-sobirova-2006",
+   "kind": "book",
+   "library_item_id": "lib-book-sobirova-2006",
+   "title": "Biologik kimyo",
+   "publisher": "Sobirova R.A., Abrorov O.A., Inoyatova F.X., Aripov A.N. · Yangi asr avlodi, 2006",
+   "url": "https://biochem.medprof.tma.uz/wp-content/uploads/2018/06/Sobirova-R.A-biokimyo.pdf",
+   "accessed": "2026-10-09",
+   "doc_type": "textbook",
+   "authors": [
+    "R.A. Sobirova",
+    "O.A. Abrorov",
+    "F.X. Inoyatova",
+    "A.N. Aripov"
+   ],
+   "year": 2006,
+   "isbn": "978-9943-08-010-2",
+   "jurisdiction": "UZ",
+   "note": "Textbook (darslik) cited as a supporting source by chapter and page; copyright applies — knowledge restated in our own words, no text, tables or images reproduced (citation only). Open copy on the TMA department site is free to read only (read-only link).",
+   "reuse_rights": "citation_only"
+  },
+  {
+   "id": "book-lyubina-1984",
+   "kind": "book",
+   "library_item_id": "lib-book-lyubina-1984",
+   "title": "Клинические лабораторные исследования",
+   "publisher": "Любина А.Я., Ильичева Л.П., Катасонова Т.В., Петросова С.А. · Медицина, 1984",
+   "doc_type": "textbook",
+   "authors": [
+    "А.Я. Любина",
+    "Л.П. Ильичева",
+    "Т.В. Катасонова",
+    "С.А. Петросова"
+   ],
+   "year": 1984,
+   "jurisdiction": "SU",
+   "note": "Textbook (darslik) cited as a supporting source by chapter and page; copyright applies — knowledge restated in our own words, no text, tables or images reproduced (citation only).",
+   "reuse_rights": "citation_only"
+  },
+  {
+   "id": "who-dil-lab-99-1",
+   "kind": "web",
+   "title": "Use of anticoagulants in diagnostic laboratory investigations (WHO/DIL/LAB/99.1 Rev.2)",
+   "publisher": "World Health Organization",
+   "url": "https://iris.who.int/handle/10665/65957",
+   "accessed": "2026-10-09",
+   "source_date": "2002",
+   "jurisdiction": "INT",
+   "note": "Pages are the document’s own page numbers (“Page 48”). © WHO — facts restated in our own words; the stability tables are not reproduced.",
+   "reuse_rights": "verify_before_distribution"
+  },
+  {
+   "id": "who-basic-lab-manual-2003",
+   "kind": "web",
+   "title": "Manual of basic techniques for a health laboratory, 2nd edition",
+   "publisher": "World Health Organization",
+   "url": "https://www.who.int/publications/i/item/9241545305",
+   "accessed": "2026-10-09",
+   "source_date": "2003",
+   "jurisdiction": "INT",
+   "note": "ISBN 92 4 154530 5. Facts restated in our own words with section and printed page.",
+   "reuse_rights": "verify_before_distribution"
+  },
+  {
+   "id": "nci-crc-screening-tests",
+   "kind": "web",
+   "title": "Screening Tests to Detect Colorectal Cancer and Polyps",
+   "publisher": "National Cancer Institute (NCI)",
+   "url": "https://www.cancer.gov/types/colorectal/screening-fact-sheet",
+   "accessed": "2026-10-09",
+   "source_date": "2024-10-29",
+   "jurisdiction": "US",
+   "note": "Page reviewed 2024-10-29.",
+   "reuse_rights": "verify_before_distribution"
   }
  ],
  "quiz": [
@@ -43143,6 +43617,150 @@
     "Original Price €157.99",
     "Stock Status IN STOCK"
    ]
+  },
+  {
+   "id": "lib-book-aripova-2007",
+   "kind": "book",
+   "title": "Klinik va biokimyoviy tekshiruv usullari",
+   "authors": [
+    "G.S. Aripova",
+    "F.G. Po‘latova",
+    "N.S. Nazarova",
+    "Z.S. Toirova"
+   ],
+   "year": 2007,
+   "publisher": "G‘afur G‘ulom nomidagi nashriyot-matbaa ijodiy uyi (Toshkent)",
+   "isbn": "978-9943-03-034-3",
+   "language": "uz",
+   "categories": [
+    "clinical_lab",
+    "methods",
+    "biochemistry"
+   ],
+   "topics": [
+    "urine",
+    "urine-chemistry",
+    "urine-microscopy"
+   ],
+   "provided_by": "teacher",
+   "import_state": "cataloged",
+   "access": "catalog_only",
+   "accessed": "2026-10-09",
+   "rights": {
+    "distribution": "denied",
+    "note": "Copyright applies; no open licence found. Catalogue record only: facts may be cited with author, year and page; text, tables and figures are not reproduced and no PDF is bundled."
+   },
+   "note": {
+    "uz": "Tibbiyot kollejlari uchun o‘quv qo‘llanma: siydik, axlat, qon va balg‘amni qo‘lda tekshirish usullari (Nechiporenko, Kakovskiy–Addis, Zimnitskiy). Faqat katalog yozuvi — matn va jadvallar ko‘chirilmaydi.",
+    "ru": "Учебное пособие для медицинских колледжей: ручные методы исследования мочи, кала, крови и мокроты (Нечипоренко, Каковский–Аддис, Зимницкий). Только запись в каталоге — текст и таблицы не воспроизводятся.",
+    "en": "Textbook for medical colleges: manual methods for urine, stool, blood and sputum (Nechiporenko, Kakovsky–Addis, Zimnitsky). Catalogue record only — text and tables are not reproduced."
+   },
+   "review_note": "Copy seen: ziyouz.com electronic library scan (personal reading only per site terms)."
+  },
+  {
+   "id": "lib-book-selivanov-2005",
+   "kind": "manual",
+   "title": "Правила взятия материала для лабораторных исследований",
+   "authors": [
+    "Е.В. Селиванов",
+    "Е.Н. Звягинцев"
+   ],
+   "year": 2005,
+   "publisher": "Printexpress (Барнаул)",
+   "language": "ru",
+   "categories": [
+    "clinical_lab",
+    "methods"
+   ],
+   "topics": [
+    "urine"
+   ],
+   "provided_by": "teacher",
+   "import_state": "cataloged",
+   "access": "catalog_only",
+   "accessed": "2026-10-09",
+   "rights": {
+    "distribution": "denied",
+    "note": "Copyright applies; no open licence found. Catalogue record only: facts may be cited with author, year and page; text, tables and figures are not reproduced and no PDF is bundled."
+   },
+   "note": {
+    "uz": "Laboratoriya tahlillari uchun material olish qoidalari bo‘yicha qisqa qo‘llanma (qon, siydik, surtmalar, PZR). Raqamlar ilovada faqat JSST manbalari bilan tasdiqlangan holda ishlatiladi.",
+    "ru": "Краткое руководство по правилам взятия материала (кровь, моча, мазки, ПЦР). Числа используются в приложении только после сверки с документами ВОЗ.",
+    "en": "Short guide to specimen collection rules (blood, urine, swabs, PCR). Its numbers are used in the app only where WHO documents confirm them."
+   }
+  },
+  {
+   "id": "lib-book-sobirova-2006",
+   "kind": "book",
+   "title": "Biologik kimyo",
+   "authors": [
+    "R.A. Sobirova",
+    "O.A. Abrorov",
+    "F.X. Inoyatova",
+    "A.N. Aripov"
+   ],
+   "year": 2006,
+   "publisher": "Yangi asr avlodi (Toshkent)",
+   "isbn": "978-9943-08-010-2",
+   "language": "uz",
+   "categories": [
+    "biochemistry"
+   ],
+   "topics": [
+    "urine"
+   ],
+   "provided_by": "teacher",
+   "import_state": "cataloged",
+   "access": "free_to_read",
+   "url": "https://biochem.medprof.tma.uz/wp-content/uploads/2018/06/Sobirova-R.A-biokimyo.pdf",
+   "accessed": "2026-10-09",
+   "rights": {
+    "distribution": "denied",
+    "note": "Copyright applies; no open licence found. Catalogue record only: facts may be cited with author, year and page; text, tables and figures are not reproduced and no PDF is bundled."
+   },
+   "note": {
+    "uz": "Tibbiyot OTMlari uchun biokimyo darsligi. TTA kafedrasi saytida bepul o‘qish mumkin — faqat o‘qish uchun havola, ochiq litsenziya yo‘q.",
+    "ru": "Учебник биохимии для медицинских вузов. На сайте кафедры ТМА доступен для бесплатного чтения — только ссылка для чтения, открытой лицензии нет.",
+    "en": "Biochemistry textbook for medical universities. Free to read on the Tashkent Medical Academy department site — read-only link, no open licence."
+   },
+   "licence_quote": [
+    "Copyright. All rights reserved"
+   ]
+  },
+  {
+   "id": "lib-book-lyubina-1984",
+   "kind": "book",
+   "title": "Клинические лабораторные исследования",
+   "authors": [
+    "А.Я. Любина",
+    "Л.П. Ильичева",
+    "Т.В. Катасонова",
+    "С.А. Петросова"
+   ],
+   "year": 1984,
+   "publisher": "Медицина (Москва)",
+   "language": "ru",
+   "categories": [
+    "clinical_lab",
+    "methods"
+   ],
+   "topics": [
+    "urine",
+    "urine-microscopy"
+   ],
+   "provided_by": "teacher",
+   "import_state": "cataloged",
+   "access": "catalog_only",
+   "accessed": "2026-10-09",
+   "rights": {
+    "distribution": "denied",
+    "note": "Copyright applies; no open licence found. Catalogue record only: facts may be cited with author, year and page; text, tables and figures are not reproduced and no PDF is bundled."
+   },
+   "note": {
+    "uz": "Tibbiyot bilim yurtlari uchun klassik darslik (MDH maktabi usullari). Ayrim usullar eskirgan — ilovada zamonaviy manbalar bilan solishtiriladi.",
+    "ru": "Классический учебник для медицинских училищ (методы школы СССР). Часть методов устарела — в приложении сверяется с современными источниками.",
+    "en": "Classic textbook for medical schools (Soviet-era methods). Some methods are outdated — the app checks them against current sources."
+   }
   }
  ],
  "lessons": [],
