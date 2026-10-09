@@ -865,6 +865,30 @@ class AppLocalizationsEn extends AppLocalizations {
       'Rules: Westgard multirule procedure (Westgard JO et al., Clin Chem 1981; doi:10.1093/clinchem/27.3.493). A learning and checking aid — it does not replace your laboratory’s QC procedure.';
 
   @override
+  String get qcGuidesTitle => 'Guides';
+
+  @override
+  String get qgRejected => 'What to do when QC is rejected';
+
+  @override
+  String get qgRejectedSub => 'Stop, find the cause, recheck';
+
+  @override
+  String get qgEqa => 'External quality assessment (EQA)';
+
+  @override
+  String get qgEqaSub => 'What it is, how it works, poor results';
+
+  @override
+  String get qgCritical => 'Critical values';
+
+  @override
+  String get qgCriticalSub => 'Who sets the list and how to notify';
+
+  @override
+  String get qgWhatToDo => 'What to do?';
+
+  @override
   String get qcErrSave => 'Couldn’t save. Please try again.';
 
   @override
@@ -1036,6 +1060,224 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get calcUnitsSub => 'Analyte-specific';
+
+  @override
+  String get calcSectionManual => 'Manual methods';
+
+  @override
+  String get mcChamber => 'Counting chamber';
+
+  @override
+  String get mcChamberSub => 'Goryaev, Neubauer: cells/µL and ×10⁹/L';
+
+  @override
+  String get mcDiff => 'Differential: absolute counts';
+
+  @override
+  String get mcDiffSub => 'WBC × %, nucleated RBC correction';
+
+  @override
+  String get mcRetic => 'Reticulocytes';
+
+  @override
+  String get mcReticSub => '%, corrected % and RPI';
+
+  @override
+  String get mcLight => 'Light’s criteria';
+
+  @override
+  String get mcLightSub => 'Pleural fluid: exudate or transudate';
+
+  @override
+  String get mcColour => 'Colour index';
+
+  @override
+  String get mcColourSub => 'Why the app recommends MCH and MCHC';
+
+  @override
+  String get mfCells => 'Cells counted';
+
+  @override
+  String get mfSquares => 'Squares counted';
+
+  @override
+  String get mfSquareArea => 'Area of one square';
+
+  @override
+  String get mfDepth => 'Chamber depth';
+
+  @override
+  String get mfDilution => 'Dilution factor (20 for 1 in 20)';
+
+  @override
+  String get mfWbc => 'Leukocytes (WBC)';
+
+  @override
+  String get mfSeg => 'Segmented neutrophils';
+
+  @override
+  String get mfBand => 'Band neutrophils';
+
+  @override
+  String get mfEos => 'Eosinophils';
+
+  @override
+  String get mfBaso => 'Basophils';
+
+  @override
+  String get mfLymph => 'Lymphocytes';
+
+  @override
+  String get mfMono => 'Monocytes';
+
+  @override
+  String get mfOther => 'Other cells';
+
+  @override
+  String get mfNrbc => 'Nucleated RBCs per 100 leukocytes';
+
+  @override
+  String get mfReticCounted => 'Reticulocytes counted';
+
+  @override
+  String get mfRbcExamined => 'Erythrocytes examined';
+
+  @override
+  String get mfHct => 'Haematocrit (Hct)';
+
+  @override
+  String get mfRbc => 'Erythrocytes (RBC)';
+
+  @override
+  String get mfMaturation => 'Maturation factor';
+
+  @override
+  String get mfMaturationAuto => 'Auto';
+
+  @override
+  String get mfPfProtein => 'Fluid: total protein';
+
+  @override
+  String get mfSerumProtein => 'Serum: total protein';
+
+  @override
+  String get mfPfLdh => 'Fluid: LDH';
+
+  @override
+  String get mfSerumLdh => 'Serum: LDH';
+
+  @override
+  String get mfLdhUln => 'Serum LDH upper limit of normal';
+
+  @override
+  String get mfSameUnit =>
+      'Both values in a pair must use the same unit (e.g. both g/L, both U/L).';
+
+  @override
+  String get mrCellsPerUl => 'cells/µL';
+
+  @override
+  String get mrVolume => 'Volume counted';
+
+  @override
+  String get mrWbcUsed => 'Corrected WBC';
+
+  @override
+  String get mrNrbc => 'Nucleated RBCs';
+
+  @override
+  String get mrPercentSum => 'Sum of percentages';
+
+  @override
+  String get mrAbsolute => 'Absolute counts';
+
+  @override
+  String get mrNoCorrection => 'No nucleated RBCs entered — WBC not corrected.';
+
+  @override
+  String get mrReticAbs => 'Absolute count';
+
+  @override
+  String get mrReticCorrected => 'Corrected %';
+
+  @override
+  String get mrRpi => 'Reticulocyte production index (RPI)';
+
+  @override
+  String mrMaturationAuto(String factor, String hct) {
+    return 'Factor $factor: the table point nearest to Hct $hct% (app rule).';
+  }
+
+  @override
+  String mrMaturationChosen(String factor) {
+    return 'Factor $factor: chosen by you.';
+  }
+
+  @override
+  String get mrNoRbc => 'Enter the RBC for the absolute count.';
+
+  @override
+  String get mrExudate => 'Meets exudate criteria';
+
+  @override
+  String get mrTransudate => 'No criterion met — consistent with a transudate';
+
+  @override
+  String get mrIncomplete =>
+      'Two criteria not met; enter the LDH upper limit for the third';
+
+  @override
+  String get mrProteinRatio => 'Protein: fluid ÷ serum (> 0.5)';
+
+  @override
+  String get mrLdhRatio => 'LDH: fluid ÷ serum (> 0.6)';
+
+  @override
+  String get mrLdhUln => 'Fluid LDH ÷ upper limit (> 2/3)';
+
+  @override
+  String get mrMet => 'met';
+
+  @override
+  String get mrNotMet => 'not met';
+
+  @override
+  String get mrNotAssessed => 'not assessed';
+
+  @override
+  String mErrSum(String sum) {
+    return 'Percentages add up to $sum — they must total 100. Check the rows.';
+  }
+
+  @override
+  String get mErrReticGtExamined =>
+      'Reticulocytes cannot exceed the erythrocytes examined.';
+
+  @override
+  String mErrWhole(String field, String min, String max) {
+    return '$field: enter a whole number ($min–$max).';
+  }
+
+  @override
+  String get ciWhatTitle => 'What is it?';
+
+  @override
+  String get ciWhat =>
+      'The colour index is a relative measure traditionally used in CIS laboratories: it rates the haemoglobin content of one red cell against a “normal” value. It is used to describe hypo-, normo- or hyperchromia.';
+
+  @override
+  String get ciWhyTitle => 'Why the app does not calculate it';
+
+  @override
+  String get ciWhy =>
+      'We found no primary open source for its formula that we could verify. The app gives no numbers or formulas without a source.';
+
+  @override
+  String get ciUseTitle => 'What to use instead';
+
+  @override
+  String get ciUse =>
+      'The haemoglobin in one red cell is expressed directly by the MCH (mean cell haemoglobin, pg), and its concentration in the cell by the MCHC. Haematology analysers report both. Judge hypo-/hyperchromia by these and your laboratory’s reference intervals.';
 
   @override
   String get dilC1 => 'C₁ · Stock concentration';

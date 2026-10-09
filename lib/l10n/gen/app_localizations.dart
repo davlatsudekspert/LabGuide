@@ -1618,6 +1618,54 @@ abstract class AppLocalizations {
   /// **'Rules: Westgard multirule procedure (Westgard JO et al., Clin Chem 1981; doi:10.1093/clinchem/27.3.493). A learning and checking aid — it does not replace your laboratory’s QC procedure.'**
   String get qcRulesSource;
 
+  /// No description provided for @qcGuidesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Guides'**
+  String get qcGuidesTitle;
+
+  /// No description provided for @qgRejected.
+  ///
+  /// In en, this message translates to:
+  /// **'What to do when QC is rejected'**
+  String get qgRejected;
+
+  /// No description provided for @qgRejectedSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Stop, find the cause, recheck'**
+  String get qgRejectedSub;
+
+  /// No description provided for @qgEqa.
+  ///
+  /// In en, this message translates to:
+  /// **'External quality assessment (EQA)'**
+  String get qgEqa;
+
+  /// No description provided for @qgEqaSub.
+  ///
+  /// In en, this message translates to:
+  /// **'What it is, how it works, poor results'**
+  String get qgEqaSub;
+
+  /// No description provided for @qgCritical.
+  ///
+  /// In en, this message translates to:
+  /// **'Critical values'**
+  String get qgCritical;
+
+  /// No description provided for @qgCriticalSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Who sets the list and how to notify'**
+  String get qgCriticalSub;
+
+  /// No description provided for @qgWhatToDo.
+  ///
+  /// In en, this message translates to:
+  /// **'What to do?'**
+  String get qgWhatToDo;
+
   /// No description provided for @qcErrSave.
   ///
   /// In en, this message translates to:
@@ -1911,6 +1959,414 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Analyte-specific'**
   String get calcUnitsSub;
+
+  /// No description provided for @calcSectionManual.
+  ///
+  /// In en, this message translates to:
+  /// **'Manual methods'**
+  String get calcSectionManual;
+
+  /// No description provided for @mcChamber.
+  ///
+  /// In en, this message translates to:
+  /// **'Counting chamber'**
+  String get mcChamber;
+
+  /// No description provided for @mcChamberSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Goryaev, Neubauer: cells/µL and ×10⁹/L'**
+  String get mcChamberSub;
+
+  /// No description provided for @mcDiff.
+  ///
+  /// In en, this message translates to:
+  /// **'Differential: absolute counts'**
+  String get mcDiff;
+
+  /// No description provided for @mcDiffSub.
+  ///
+  /// In en, this message translates to:
+  /// **'WBC × %, nucleated RBC correction'**
+  String get mcDiffSub;
+
+  /// No description provided for @mcRetic.
+  ///
+  /// In en, this message translates to:
+  /// **'Reticulocytes'**
+  String get mcRetic;
+
+  /// No description provided for @mcReticSub.
+  ///
+  /// In en, this message translates to:
+  /// **'%, corrected % and RPI'**
+  String get mcReticSub;
+
+  /// No description provided for @mcLight.
+  ///
+  /// In en, this message translates to:
+  /// **'Light’s criteria'**
+  String get mcLight;
+
+  /// No description provided for @mcLightSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Pleural fluid: exudate or transudate'**
+  String get mcLightSub;
+
+  /// No description provided for @mcColour.
+  ///
+  /// In en, this message translates to:
+  /// **'Colour index'**
+  String get mcColour;
+
+  /// No description provided for @mcColourSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Why the app recommends MCH and MCHC'**
+  String get mcColourSub;
+
+  /// No description provided for @mfCells.
+  ///
+  /// In en, this message translates to:
+  /// **'Cells counted'**
+  String get mfCells;
+
+  /// No description provided for @mfSquares.
+  ///
+  /// In en, this message translates to:
+  /// **'Squares counted'**
+  String get mfSquares;
+
+  /// No description provided for @mfSquareArea.
+  ///
+  /// In en, this message translates to:
+  /// **'Area of one square'**
+  String get mfSquareArea;
+
+  /// No description provided for @mfDepth.
+  ///
+  /// In en, this message translates to:
+  /// **'Chamber depth'**
+  String get mfDepth;
+
+  /// No description provided for @mfDilution.
+  ///
+  /// In en, this message translates to:
+  /// **'Dilution factor (20 for 1 in 20)'**
+  String get mfDilution;
+
+  /// No description provided for @mfWbc.
+  ///
+  /// In en, this message translates to:
+  /// **'Leukocytes (WBC)'**
+  String get mfWbc;
+
+  /// No description provided for @mfSeg.
+  ///
+  /// In en, this message translates to:
+  /// **'Segmented neutrophils'**
+  String get mfSeg;
+
+  /// No description provided for @mfBand.
+  ///
+  /// In en, this message translates to:
+  /// **'Band neutrophils'**
+  String get mfBand;
+
+  /// No description provided for @mfEos.
+  ///
+  /// In en, this message translates to:
+  /// **'Eosinophils'**
+  String get mfEos;
+
+  /// No description provided for @mfBaso.
+  ///
+  /// In en, this message translates to:
+  /// **'Basophils'**
+  String get mfBaso;
+
+  /// No description provided for @mfLymph.
+  ///
+  /// In en, this message translates to:
+  /// **'Lymphocytes'**
+  String get mfLymph;
+
+  /// No description provided for @mfMono.
+  ///
+  /// In en, this message translates to:
+  /// **'Monocytes'**
+  String get mfMono;
+
+  /// No description provided for @mfOther.
+  ///
+  /// In en, this message translates to:
+  /// **'Other cells'**
+  String get mfOther;
+
+  /// No description provided for @mfNrbc.
+  ///
+  /// In en, this message translates to:
+  /// **'Nucleated RBCs per 100 leukocytes'**
+  String get mfNrbc;
+
+  /// No description provided for @mfReticCounted.
+  ///
+  /// In en, this message translates to:
+  /// **'Reticulocytes counted'**
+  String get mfReticCounted;
+
+  /// No description provided for @mfRbcExamined.
+  ///
+  /// In en, this message translates to:
+  /// **'Erythrocytes examined'**
+  String get mfRbcExamined;
+
+  /// No description provided for @mfHct.
+  ///
+  /// In en, this message translates to:
+  /// **'Haematocrit (Hct)'**
+  String get mfHct;
+
+  /// No description provided for @mfRbc.
+  ///
+  /// In en, this message translates to:
+  /// **'Erythrocytes (RBC)'**
+  String get mfRbc;
+
+  /// No description provided for @mfMaturation.
+  ///
+  /// In en, this message translates to:
+  /// **'Maturation factor'**
+  String get mfMaturation;
+
+  /// No description provided for @mfMaturationAuto.
+  ///
+  /// In en, this message translates to:
+  /// **'Auto'**
+  String get mfMaturationAuto;
+
+  /// No description provided for @mfPfProtein.
+  ///
+  /// In en, this message translates to:
+  /// **'Fluid: total protein'**
+  String get mfPfProtein;
+
+  /// No description provided for @mfSerumProtein.
+  ///
+  /// In en, this message translates to:
+  /// **'Serum: total protein'**
+  String get mfSerumProtein;
+
+  /// No description provided for @mfPfLdh.
+  ///
+  /// In en, this message translates to:
+  /// **'Fluid: LDH'**
+  String get mfPfLdh;
+
+  /// No description provided for @mfSerumLdh.
+  ///
+  /// In en, this message translates to:
+  /// **'Serum: LDH'**
+  String get mfSerumLdh;
+
+  /// No description provided for @mfLdhUln.
+  ///
+  /// In en, this message translates to:
+  /// **'Serum LDH upper limit of normal'**
+  String get mfLdhUln;
+
+  /// No description provided for @mfSameUnit.
+  ///
+  /// In en, this message translates to:
+  /// **'Both values in a pair must use the same unit (e.g. both g/L, both U/L).'**
+  String get mfSameUnit;
+
+  /// No description provided for @mrCellsPerUl.
+  ///
+  /// In en, this message translates to:
+  /// **'cells/µL'**
+  String get mrCellsPerUl;
+
+  /// No description provided for @mrVolume.
+  ///
+  /// In en, this message translates to:
+  /// **'Volume counted'**
+  String get mrVolume;
+
+  /// No description provided for @mrWbcUsed.
+  ///
+  /// In en, this message translates to:
+  /// **'Corrected WBC'**
+  String get mrWbcUsed;
+
+  /// No description provided for @mrNrbc.
+  ///
+  /// In en, this message translates to:
+  /// **'Nucleated RBCs'**
+  String get mrNrbc;
+
+  /// No description provided for @mrPercentSum.
+  ///
+  /// In en, this message translates to:
+  /// **'Sum of percentages'**
+  String get mrPercentSum;
+
+  /// No description provided for @mrAbsolute.
+  ///
+  /// In en, this message translates to:
+  /// **'Absolute counts'**
+  String get mrAbsolute;
+
+  /// No description provided for @mrNoCorrection.
+  ///
+  /// In en, this message translates to:
+  /// **'No nucleated RBCs entered — WBC not corrected.'**
+  String get mrNoCorrection;
+
+  /// No description provided for @mrReticAbs.
+  ///
+  /// In en, this message translates to:
+  /// **'Absolute count'**
+  String get mrReticAbs;
+
+  /// No description provided for @mrReticCorrected.
+  ///
+  /// In en, this message translates to:
+  /// **'Corrected %'**
+  String get mrReticCorrected;
+
+  /// No description provided for @mrRpi.
+  ///
+  /// In en, this message translates to:
+  /// **'Reticulocyte production index (RPI)'**
+  String get mrRpi;
+
+  /// No description provided for @mrMaturationAuto.
+  ///
+  /// In en, this message translates to:
+  /// **'Factor {factor}: the table point nearest to Hct {hct}% (app rule).'**
+  String mrMaturationAuto(String factor, String hct);
+
+  /// No description provided for @mrMaturationChosen.
+  ///
+  /// In en, this message translates to:
+  /// **'Factor {factor}: chosen by you.'**
+  String mrMaturationChosen(String factor);
+
+  /// No description provided for @mrNoRbc.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the RBC for the absolute count.'**
+  String get mrNoRbc;
+
+  /// No description provided for @mrExudate.
+  ///
+  /// In en, this message translates to:
+  /// **'Meets exudate criteria'**
+  String get mrExudate;
+
+  /// No description provided for @mrTransudate.
+  ///
+  /// In en, this message translates to:
+  /// **'No criterion met — consistent with a transudate'**
+  String get mrTransudate;
+
+  /// No description provided for @mrIncomplete.
+  ///
+  /// In en, this message translates to:
+  /// **'Two criteria not met; enter the LDH upper limit for the third'**
+  String get mrIncomplete;
+
+  /// No description provided for @mrProteinRatio.
+  ///
+  /// In en, this message translates to:
+  /// **'Protein: fluid ÷ serum (> 0.5)'**
+  String get mrProteinRatio;
+
+  /// No description provided for @mrLdhRatio.
+  ///
+  /// In en, this message translates to:
+  /// **'LDH: fluid ÷ serum (> 0.6)'**
+  String get mrLdhRatio;
+
+  /// No description provided for @mrLdhUln.
+  ///
+  /// In en, this message translates to:
+  /// **'Fluid LDH ÷ upper limit (> 2/3)'**
+  String get mrLdhUln;
+
+  /// No description provided for @mrMet.
+  ///
+  /// In en, this message translates to:
+  /// **'met'**
+  String get mrMet;
+
+  /// No description provided for @mrNotMet.
+  ///
+  /// In en, this message translates to:
+  /// **'not met'**
+  String get mrNotMet;
+
+  /// No description provided for @mrNotAssessed.
+  ///
+  /// In en, this message translates to:
+  /// **'not assessed'**
+  String get mrNotAssessed;
+
+  /// No description provided for @mErrSum.
+  ///
+  /// In en, this message translates to:
+  /// **'Percentages add up to {sum} — they must total 100. Check the rows.'**
+  String mErrSum(String sum);
+
+  /// No description provided for @mErrReticGtExamined.
+  ///
+  /// In en, this message translates to:
+  /// **'Reticulocytes cannot exceed the erythrocytes examined.'**
+  String get mErrReticGtExamined;
+
+  /// No description provided for @mErrWhole.
+  ///
+  /// In en, this message translates to:
+  /// **'{field}: enter a whole number ({min}–{max}).'**
+  String mErrWhole(String field, String min, String max);
+
+  /// No description provided for @ciWhatTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'What is it?'**
+  String get ciWhatTitle;
+
+  /// No description provided for @ciWhat.
+  ///
+  /// In en, this message translates to:
+  /// **'The colour index is a relative measure traditionally used in CIS laboratories: it rates the haemoglobin content of one red cell against a “normal” value. It is used to describe hypo-, normo- or hyperchromia.'**
+  String get ciWhat;
+
+  /// No description provided for @ciWhyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Why the app does not calculate it'**
+  String get ciWhyTitle;
+
+  /// No description provided for @ciWhy.
+  ///
+  /// In en, this message translates to:
+  /// **'We found no primary open source for its formula that we could verify. The app gives no numbers or formulas without a source.'**
+  String get ciWhy;
+
+  /// No description provided for @ciUseTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'What to use instead'**
+  String get ciUseTitle;
+
+  /// No description provided for @ciUse.
+  ///
+  /// In en, this message translates to:
+  /// **'The haemoglobin in one red cell is expressed directly by the MCH (mean cell haemoglobin, pg), and its concentration in the cell by the MCHC. Haematology analysers report both. Judge hypo-/hyperchromia by these and your laboratory’s reference intervals.'**
+  String get ciUse;
 
   /// No description provided for @dilC1.
   ///

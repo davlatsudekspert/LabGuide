@@ -11,6 +11,8 @@ import '../content/ui/content_widgets.dart';
 import 'calc_info.dart';
 import 'calculators.dart';
 import 'clinical_calc_screens.dart';
+import 'manual_calc_info.dart';
+import 'manual_calc_screens.dart';
 
 /// Natijani lokal formatda ko'rsatish; juda kichik/katta qiymatlar
 /// eksponensial ko'rinishda (0 ga yaxlitlanib "yo'qolmasligi" uchun).
@@ -50,6 +52,15 @@ class CalculatorsScreen extends StatelessWidget {
             icon: calcIcon(c),
             onTap: () => context.push('/lab/calculators/${calcRoute(c)}'),
             divider: i < ClinicalCalc.values.length - 1,
+          ),
+        LgSectionTitle(l.calcSectionManual),
+        for (final (i, c) in ManualCalc.values.indexed)
+          LgRow(
+            title: manualCalcTitle(c, l),
+            subtitle: manualCalcSubtitle(c, l),
+            icon: manualCalcIcon(c),
+            onTap: () => context.push('/lab/calculators/${manualCalcRoute(c)}'),
+            divider: i < ManualCalc.values.length - 1,
           ),
         LgSectionTitle(l.calcSectionLab),
         LgRow(

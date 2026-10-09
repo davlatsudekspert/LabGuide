@@ -12,6 +12,8 @@ import '../tools/clinical_calculators.dart';
 import '../tools/tool_screens.dart';
 import 'levey_jennings_chart.dart';
 import 'qc_controller.dart';
+import 'qc_guides.dart';
+import 'qc_guides_info.dart';
 import 'qc_export.dart';
 import 'qc_model.dart';
 import 'qc_rules.dart';
@@ -241,6 +243,15 @@ class QcScreen extends StatelessWidget {
                 onPressed: () => _restoreFromClipboard(context),
               ),
             ],
+            LgSectionTitle(l.qcGuidesTitle),
+            for (final (i, g) in QcGuide.values.indexed)
+              LgRow(
+                title: qcGuideTitle(g, l),
+                subtitle: qcGuideSubtitle(g, l),
+                icon: qcGuideIcon(g),
+                onTap: () => context.push('/lab/qc/${qcGuideRoute(g)}'),
+                divider: i < QcGuide.values.length - 1,
+              ),
             const SizedBox(height: 14),
             Text(l.qcRulesSource, style: text.bodySmall),
           ],
@@ -678,6 +689,18 @@ class _QcSetScreenState extends State<QcSetScreen> {
             },
           ),
         ),
+      if (last?.verdict == QcVerdict.reject) ...[
+        const SizedBox(height: 10),
+        Align(
+          alignment: Alignment.centerLeft,
+          child: LgButton.secondary(
+            label: l.qgWhatToDo,
+            icon: Icons.checklist_rounded,
+            expand: false,
+            onPressed: () => context.push('/lab/qc/rejected'),
+          ),
+        ),
+      ],
 
       // Levey–Jennings: har bir daraja alohida, amaldagi maqsad davri uchun
       // (lot yoki x̄/SD o'zgargan bo'lsa, eski seriyalar o'z maqsadi bilan
