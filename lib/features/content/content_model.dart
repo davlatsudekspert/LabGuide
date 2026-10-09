@@ -696,11 +696,46 @@ class RightsRecord {
   final String? evidence;
   final String? note;
 
-  /// Umumiy kutubxonaga (hammaga yuklanadigan paket) qo'yish mumkinmi.
+  /// Umumiy kutubxonaga (hammaga yuklanadigan paket yoki ilova ichidagi
+  /// fayl) qo'yish mumkinmi: to'liq qayd — ruxsat, sana, kim qayd etgani va
+  /// dalil.
   bool get allowsSharedPack =>
       distribution == DistributionRights.permitted &&
       recordedAt != null &&
+      recordedBy != null &&
       evidence != null;
+}
+
+/// Ilova bilan birga keladigan fayl (masalan, to'liq kitob PDF). Ochishdan
+/// oldin hajmi va sha256 tekshiriladi.
+@immutable
+class LibraryFileRef {
+  const LibraryFileRef({
+    required this.path,
+    required this.size,
+    required this.sha256,
+    this.format = 'pdf',
+    this.pages,
+  });
+
+  factory LibraryFileRef.fromJson(Map<String, Object?> json) => LibraryFileRef(
+    path: json['path']! as String,
+    size: json['size']! as int,
+    sha256: json['sha256']! as String,
+    format: json['format'] as String? ?? 'pdf',
+    pages: json['pages'] as int?,
+  );
+
+  /// Asset kaliti, masalan `assets/books/<id>.pdf`.
+  final String path;
+  final int size;
+  final String sha256;
+
+  /// Hozircha faqat `pdf`.
+  final String format;
+
+  /// Sahifalar soni (ma'lum bo'lsa — katalogda ko'rsatish uchun).
+  final int? pages;
 }
 
 /// Alohida yuklanadigan oflayn paket (masalan, to'liq kitob).
@@ -747,6 +782,7 @@ class LibraryItem {
     this.receivedAt,
     this.supersedes,
     this.filePack,
+    this.file,
     this.url,
     this.licence,
     this.access = LibraryAccess.catalogOnly,
@@ -780,6 +816,11 @@ class LibraryItem {
         ? null
         : FilePackRef.fromJson(
             (json['file_pack']! as Map).cast<String, Object?>(),
+          ),
+    file: json['file'] == null
+        ? null
+        : LibraryFileRef.fromJson(
+            (json['file']! as Map).cast<String, Object?>(),
           ),
     url: json['url'] as String?,
     licence: json['licence'] as String?,
@@ -816,6 +857,10 @@ class LibraryItem {
   /// To'liq matn alohida oflayn paket sifatida (faqat ruxsat qayd etilgan
   /// bo'lsa).
   final FilePackRef? filePack;
+
+  /// Ilova ichidagi fayl (ilova bilan birga keladi, o'quvchida ochiladi).
+  /// Faqat to'liq tarqatish huquqi qayd etilgan bo'lsa.
+  final LibraryFileRef? file;
 
   /// Rasmiy sahifa (o'qish yoki yozuvni ko'rish uchun).
   final String? url;
@@ -1196,6 +1241,27 @@ class ContentPack {
       }
       if (item.filePack != null && !item.importState.citable) {
         throw FormatException('${item.id}: file pack for unprocessed item');
+      }
+      // Ilova ichidagi fayl ham faqat to'liq qayd etilgan huquq bilan.
+      final file = item.file;
+      if (file != null) {
+        if (!item.rights.allowsSharedPack) {
+          throw FormatException('${item.id}: in-app file without rights');
+        }
+        if (!item.importState.citable) {
+          throw FormatException('${item.id}: in-app file for unprocessed item');
+        }
+        if (file.format != 'pdf') {
+          throw FormatException(
+            '${item.id}: unsupported format ${file.format}',
+          );
+        }
+        if (!file.path.startsWith('assets/') ||
+            file.path.contains('..') ||
+            file.size <= 0 ||
+            !RegExp(r'^[0-9a-f]{64}$').hasMatch(file.sha256)) {
+          throw FormatException('${item.id}: bad in-app file reference');
+        }
       }
       // Ochiq litsenziya — litsenziya nomi va sahifa bilan; bepul o'qish —
       // sahifa havolasi bilan.

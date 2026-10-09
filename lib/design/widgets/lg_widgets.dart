@@ -183,6 +183,10 @@ class LgButton extends StatelessWidget {
       onTap: enabled ? onPressed : null,
       color: bg,
       borderRadius: BorderRadius.circular(LgRadius.button),
+      // Chegara oldingi qatlamda: fon ostida qolib ketmaydi (panel ichida ham ko'rinadi).
+      border: kind == LgButtonKind.secondary
+          ? Border.all(color: p.outline.withValues(alpha: 0.55))
+          : null,
       child: ConstrainedBox(
         constraints: const BoxConstraints(minHeight: kMinTap),
         child: Padding(
@@ -191,15 +195,7 @@ class LgButton extends StatelessWidget {
         ),
       ),
     );
-    if (kind == LgButtonKind.secondary) {
-      button = DecoratedBox(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(LgRadius.button),
-          border: Border.all(color: p.outline),
-        ),
-        child: button,
-      );
-    } else if (kind == LgButtonKind.primary && enabled) {
+    if (kind == LgButtonKind.primary && enabled) {
       button = DecoratedBox(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(LgRadius.button),
@@ -223,7 +219,7 @@ class LgPanel extends StatelessWidget {
   const LgPanel({
     super.key,
     required this.child,
-    this.padding = const EdgeInsets.all(20),
+    this.padding = const EdgeInsets.all(16),
     this.soft = false,
     this.margin = const EdgeInsets.symmetric(vertical: 6),
   });
@@ -529,18 +525,18 @@ class LgRow extends StatelessWidget {
     final p = LgPalette.of(context);
     final text = Theme.of(context).textTheme;
     final row = Padding(
-      padding: const EdgeInsets.symmetric(vertical: 14),
+      padding: const EdgeInsets.symmetric(vertical: 12),
       child: Row(
         children: [
           ExcludeSemantics(
             child: Container(
-              width: 46,
-              height: 46,
+              width: 42,
+              height: 42,
               decoration: BoxDecoration(color: p.soft, shape: BoxShape.circle),
-              child: Icon(icon, size: 21, color: p.brand),
+              child: Icon(icon, size: 20, color: p.brand),
             ),
           ),
-          const SizedBox(width: 14),
+          const SizedBox(width: 12),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -692,7 +688,7 @@ class LgSectionTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 22, bottom: 8),
+      padding: const EdgeInsets.only(top: 18, bottom: 6),
       child: Row(
         children: [
           Expanded(

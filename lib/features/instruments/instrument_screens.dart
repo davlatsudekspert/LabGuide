@@ -8,6 +8,7 @@ import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
 import '../content/ui/tests_screen.dart' show SearchBox;
+import '../partners/partner_widgets.dart';
 import 'instrument_catalog.dart';
 import 'instruments_controller.dart';
 
@@ -555,6 +556,8 @@ class InstrumentMakersScreen extends StatelessWidget {
                 onTap: () =>
                     context.push('/lab/instruments/c/${cat.name}/${mk.id}'),
               ),
+            // Reklama: ro'yxatdan keyin, alohida va “Hamkor” yorlig'i bilan.
+            CategoryPartnerCards(catalog: catalog, category: cat),
           ],
         );
       },
@@ -800,6 +803,8 @@ class _InstrumentCard extends StatelessWidget {
               divider: i < model.sourceIds.length - 1,
               onTap: () => openExternalLink(context, s.url),
             ),
+        // Reklama: barcha katalog ma'lumotidan keyin, alohida bo'lim.
+        InstrumentPartnersSection(model: model),
       ],
     );
   }

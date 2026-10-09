@@ -17,6 +17,10 @@ IconData groupIcon(String groupId) => switch (groupId) {
   'urine' => Icons.science_outlined,
   'cardiac' => Icons.monitor_heart_outlined,
   'iron-vitamins' => Icons.medication_outlined,
+  'endocrine' => Icons.balance_outlined,
+  'infection-serology' => Icons.coronavirus_outlined,
+  'autoimmune' => Icons.shield_outlined,
+  'tumor-markers' => Icons.insights_outlined,
   _ => Icons.biotech_outlined,
 };
 

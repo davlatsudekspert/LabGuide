@@ -63,19 +63,19 @@ void main() {
 
     test('covers every PRODUCT_PLAN group in three languages', () {
       final pack = parse(packJson());
-      expect(
-        pack.groups.map((g) => g.id),
-        containsAllInOrder([
-          'carbohydrate',
-          'kidney',
-          'liver',
-          'lipids',
-          'proteins',
-          'electrolytes',
-          'enzymes',
-          'urine',
-        ]),
-      );
+      // Asosiy 8 guruh boshida; yo'nalish bo'laklari (content_src/additions)
+      // o'z guruhlarini oxiriga qo'shadi va o'z testlarida tekshiradi.
+      expect(pack.groups.map((g) => g.id).take(8), [
+        'carbohydrate',
+        'kidney',
+        'liver',
+        'lipids',
+        'proteins',
+        'electrolytes',
+        'enzymes',
+        'urine',
+      ]);
+      expect(pack.groups.map((g) => g.id), contains('endocrine'));
       for (final a in pack.analytes) {
         for (final lang in ['uz', 'ru', 'en']) {
           expect(a.names.values[lang], isNotEmpty, reason: '${a.id} $lang');
@@ -85,7 +85,7 @@ void main() {
 
     test('every card is a sourced draft; nothing is reviewer-approved', () {
       final pack = parse(packJson());
-      expect(pack.analytes.length, greaterThanOrEqualTo(35));
+      expect(pack.analytes, hasLength(greaterThanOrEqualTo(35)));
       for (final a in pack.analytes) {
         // Manbali o'quv namunasi — mustaqil review hali yo'q.
         expect(a.contentState, ContentState.sourcedSample, reason: a.id);
