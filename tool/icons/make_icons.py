@@ -3,8 +3,12 @@
 Ishlatish (repo ildizida, Pillow kerak):
     python3 tool/icons/make_icons.py
 
-Manba: tool/icons/logo_source.jpg (1376×768: yumaloq kvadrat belgi + “LabGuide”
-yozuvi, och kulrang fonda). Skript:
+Manba: tool/icons/logo_source_green.webp — egasi 2026-10-09 da tasdiqlagan yashil
+logo (1679×937: yumaloq kvadrat belgi + “LabGuide” yozuvi, sutrang fonda). Asl fayl
+o'zgartirilmaydi. Belgi manbada ~611×611 px — 1024 px do'kon ikonkasi shundan
+**kattalashtirilgan** (interpolatsiya), haqiqiy yuqori aniqlik yoki vektor emas;
+dizayner ≥1024 px yoki SVG manba bersa, shu skript qayta ishga tushiriladi.
+Eski ko'k-firuza manba (logo_source.jpg) tarix uchun saqlanadi, ishlatilmaydi. Skript:
 - belgini kesib oladi va burchaklarini ichki ranglar bilan to'ldiradi
   (App Store/Google Play ikonkasi kvadrat, shaffofsiz; niqobni platforma
   o'zi qo'yadi);
@@ -20,11 +24,13 @@ from pathlib import Path
 from PIL import Image, ImageDraw, ImageFilter
 
 ROOT = Path(__file__).resolve().parents[2]
-SOURCE = ROOT / 'tool/icons/logo_source.jpg'
+SOURCE = ROOT / 'tool/icons/logo_source_green.webp'
 
 # Belgi joylashuvi manbada (o'lchab topilgan): kvadrat va burchak radiusi.
-ICON_BOX = (450, 95, 926, 571)
-CORNER_RADIUS = 100
+# Yashil manbada: kvadrat x 532–1144, y 83–692; burchak radiusi ~125 px.
+ICON_BOX = (533, 83, 1144, 694)
+CORNER_RADIUS = 125
+INSET = 22  # plitkaning 3D qirrasi (yorug' hoshiya ~20 px) va sutrang fon bilan aralashgan chet
 
 
 def full_bleed() -> Image.Image:
@@ -35,13 +41,13 @@ def full_bleed() -> Image.Image:
     — platforma niqobi (iOS ~22 %, Google Play ~20 %) faqat toza qismni ko'rsatadi.
     """
     x0, y0, x1, y1 = ICON_BOX
-    inset = 18
+    inset = INSET
     src = Image.open(SOURCE).convert('RGB').crop(
         (x0 + inset, y0 + inset, x1 - inset, y1 - inset))
     n = src.width
     # Plitka burchak markazi yangi koordinatalarda va qirradan ichkari radius.
     c = CORNER_RADIUS - inset
-    inner = CORNER_RADIUS - 22
+    inner = CORNER_RADIUS - inset - 8
     px = src.load()
     out = src.copy()
     opx = out.load()
@@ -135,6 +141,9 @@ def main() -> None:
     # Ilova ichidagi brend belgisi.
     rounded(big.resize((256, 256), Image.LANCZOS)).save(
         ROOT / 'assets/images/logo_mark.png', optimize=True)
+    # Kirish/welcome ekranlaridagi katta belgi (yozuvsiz; yozuv ilovada matn).
+    rounded(big.resize((512, 512), Image.LANCZOS)).save(
+        ROOT / 'assets/images/logo_mark_large.png', optimize=True)
 
     # Do'kon fayllari.
     store = ROOT / 'docs/store'
@@ -144,7 +153,7 @@ def main() -> None:
     # Feature graphic 1024×500: belgi va yozuv (manba nisbati 2.048 ga kesiladi).
     src = Image.open(SOURCE).convert('RGB')
     h = round(src.width / 2.048)
-    top = 40
+    top = 50
     src.crop((0, top, src.width, top + h)).resize((1024, 500), Image.LANCZOS).save(
         store / 'google_play_feature_graphic.png', optimize=True)
     big.save(ROOT / 'tool/icons/icon_1024.png', optimize=True)

@@ -9,6 +9,7 @@ import '../../../app/widgets/lg_page.dart';
 import '../../../design/tokens.dart';
 import '../../../design/widgets/lg_widgets.dart';
 import '../../../l10n/gen/app_localizations.dart';
+import 'welcome_screen.dart';
 import '../otp_auth.dart';
 
 /// Profil ichidan ochilganmi (aks holda onboarding oqimi).
@@ -108,6 +109,13 @@ class _EmailScreenState extends State<EmailScreen> {
       subtitle: l.authSubtitle,
       showProfile: false,
       children: [
+        // Kontent ichida (leadingHero emas): sarlavha joylashuvi o'zgarmaydi.
+        // Past ekranda (< 700 pt) joy forma va klaviaturaga qoldiriladi.
+        if (MediaQuery.sizeOf(context).height >= 700)
+          const Padding(
+            padding: EdgeInsets.only(bottom: 12),
+            child: LgLogoHero(size: 88),
+          ),
         if (unavailable)
           LgStateView(
             kind: StateKind.unavailable,

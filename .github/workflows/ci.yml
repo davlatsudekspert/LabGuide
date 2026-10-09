@@ -260,10 +260,14 @@ jobs:
           set -euo pipefail
           XCODE=$(printf '%s\n' /Applications/Xcode_*.app | grep -vi beta | sort -V | tail -1)
           sudo xcode-select -s "$XCODE/Contents/Developer"
-          xcodebuild -version
-          MAJOR=$(xcodebuild -version | head -1 | awk '{print $2}' | cut -d. -f1)
+          # Bir marta o'qiladi: `xcodebuild -version | head` SIGPIPE bilan
+          # qulashi mumkin (pipefail, run #15).
+          XCODE_VERSION="$(xcodebuild -version)"
+          echo "$XCODE_VERSION"
+          XCODE_LINE="$(printf '%s\n' "$XCODE_VERSION" | sed -n 1p)"
+          MAJOR=$(printf '%s\n' "$XCODE_LINE" | awk '{print $2}' | cut -d. -f1)
           [ "$MAJOR" -ge 26 ] || echo "::warning::Xcode $MAJOR — App Store Connect Xcode 26+ talab qilishi mumkin"
-          echo "- Xcode: $(xcodebuild -version | head -1)" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Xcode: $XCODE_LINE" >> "$GITHUB_STEP_SUMMARY"
 
       - uses: subosito/flutter-action@v2
         with:

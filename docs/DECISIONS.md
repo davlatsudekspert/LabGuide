@@ -494,3 +494,19 @@ ranglari (yashil palitra) o‘zgarmadi — logo faqat belgi sifatida.
 - UX tuzatish: mashqda ro‘yxat pastidagi mavzu (“Gormonlar”) tanlanganda eski scroll
   tufayli savol boshi yashirinib qolardi — `QuizScreen` sahifasi bosqich/savol bo‘yicha
   kalitlanadi va tepadan ochiladi (regressiya testi `hormones_flow_test.dart`).
+
+## D-39. Yangi yashil logo (2026-10-09)
+- Egasi tasdiqlagan yashil logo (`tool/icons/logo_source_green.webp`, asl fayl o'zgartirilmaydi)
+  eski ko'k-firuza belgining o'rnini oldi. Belgi qayta chizilmagan: kvadrat plitka manbadan
+  kesiladi (yozuv va tashqi sutrang maydon olinmaydi), 3D yorug' hoshiya (~20 px) olib
+  tashlanadi, burchaklar ichki ranglar bilan to'ldiriladi (iOS/Play ikonkasi shaffofsiz,
+  chekkagacha; niqobni platforma qo'yadi).
+- Manbadagi plitka ~611 px: 1024 px ikonka **kattalashtirilgan** (LANCZOS + yengil keskinlik),
+  yuqori aniqlikdagi asl yoki vektor emas. Dizayner ≥1024 px / SVG bersa `make_icons.py`
+  qayta ishga tushiriladi.
+- 32 px da DNK va kompas detallari yo'qoladi (probirka + tishli halqa silueti qoladi); dizayn
+  o'zgartirilmadi.
+- Ilova: sarlavhada kichik belgi + "LabGuide" + tarjima qilinadigan "Biokimyo · Laboratoriya"
+  (rasmdagi yozuv takrorlanmaydi). Welcome — 120 pt belgi (molekula rasmi o'rniga); kirish
+  ekrani — 88 pt (ekran balandligi ≥ 700 pt bo'lsa; past ekranda joy forma/klaviaturaga).
+  Sun'iy kutish yo'q. Palitra o'zgarmadi; splash foni kunduzgi #F3F3EC, tungi #0D1919.

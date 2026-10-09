@@ -9,6 +9,46 @@ import '../../../l10n/gen/app_localizations.dart';
 
 const kHeroImage = AssetImage('assets/images/molecular_hero.webp');
 
+/// Kirish va welcome ekranlaridagi katta brend belgisi (yozuvsiz — yozuv
+/// sahifada matn sifatida; `tool/icons/make_icons.py`). Shaffof yumaloq
+/// burchakli, tashqi oq maydon yo'q; kunduzgi rejimda yumshoq soya.
+class LgLogoHero extends StatelessWidget {
+  const LgLogoHero({super.key, this.size = 120});
+
+  final double size;
+
+  @override
+  Widget build(BuildContext context) {
+    final dark = Theme.of(context).brightness == Brightness.dark;
+    final radius = BorderRadius.circular(size * 0.22);
+    return ExcludeSemantics(
+      child: Center(
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+            borderRadius: radius,
+            boxShadow: dark
+                ? null
+                : [
+                    BoxShadow(
+                      color: LgPalette.of(context).shadow
+                          .withValues(alpha: 0.18),
+                      blurRadius: 24,
+                      offset: const Offset(0, 10),
+                    ),
+                  ],
+          ),
+          child: Image(
+            image: const AssetImage('assets/images/logo_mark_large.png'),
+            width: size,
+            height: size,
+            filterQuality: FilterQuality.medium,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
 
@@ -24,8 +64,8 @@ class WelcomeScreen extends StatelessWidget {
       showBrand: true,
       showProfile: false,
       leadingHero: const Padding(
-        padding: EdgeInsets.only(bottom: 22, top: 4),
-        child: LgDecorativeImage(image: kHeroImage, height: 210),
+        padding: EdgeInsets.only(bottom: 22, top: 8),
+        child: LgLogoHero(),
       ),
       children: [
         LgPanel(

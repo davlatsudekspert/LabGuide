@@ -93,6 +93,10 @@ Future<AppServices> start(
       await precacheImage(AssetImage('assets/instruments/img/$n.png'), ctx);
     }
     await precacheImage(const AssetImage('assets/images/logo_mark.png'), ctx);
+    await precacheImage(
+      const AssetImage('assets/images/logo_mark_large.png'),
+      ctx,
+    );
   });
   return s;
 }
