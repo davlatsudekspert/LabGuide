@@ -1128,7 +1128,7 @@
   "libTitle": "Library",
   "libSubtitle": "Your knowledge in one place.",
   "libBooks": "Books and guides",
-  "libBooksSub": "PDF · language · revision · size",
+  "libBooksSub": "Catalog of books, manuals and websites",
   "libPacks": "Offline packs",
   "libPacksSub": "Installed and upcoming packs",
   "libSavedSub": "Bookmarked tests",
@@ -1639,6 +1639,234 @@
       }
     }
   },
+  "libForYou": "For you",
+  "libMoreSections": "More sections",
+  "libSearchEntry": "Search books, authors, topics",
+  "libBooksCount": "{count} sources · search and filters",
+  "@libBooksCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "libIntake": "How materials are added",
+  "libIntakeSub": "For teachers and editors: what to send, rights, review",
+  "libContinueReading": "Continue reading",
+  "libSearchLabel": "Search the library",
+  "libSearchHint": "Title, author, topic…",
+  "libFilterLanguage": "Language",
+  "libFilterTopic": "Topic",
+  "libFilterType": "Type",
+  "libFilterSectionField": "Field",
+  "libFilterSectionGroup": "Test group",
+  "libFilterSectionKind": "Material type",
+  "libFilterSectionOpen": "How it opens",
+  "libFilterChoose": "{filter}: choose",
+  "@libFilterChoose": {
+    "placeholders": {
+      "filter": {
+        "type": "String"
+      }
+    }
+  },
+  "libResultCount": "{shown} of {total} materials",
+  "@libResultCount": {
+    "placeholders": {
+      "shown": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "libClearFilters": "Clear",
+  "libFilteredEmptyTitle": "No materials match these filters",
+  "libFilteredEmptyBody": "Remove one filter or try another word — for example an author’s surname or “urine”.",
+  "libOpenLink": "Link · external website",
+  "libOpenLinkHint": "Opens in your browser: {host}",
+  "@libOpenLinkHint": {
+    "placeholders": {
+      "host": {
+        "type": "String"
+      }
+    }
+  },
+  "libOpenInApp": "In-app file",
+  "libOpenInAppHint": "Read inside the app — no internet needed",
+  "libOpenDownload": "Downloadable book",
+  "libOpenDownloadHint": "Read in the app after download · {size}",
+  "@libOpenDownloadHint": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "libOpenPending": "Pending",
+  "libOpenPendingHint": "Not received yet — cannot be opened",
+  "libOpenReceivedHint": "File received and being checked — not available yet",
+  "libOpenRecordHint": "No distribution rights recorded — not opened in the app",
+  "libOpenLinkShort": "Link",
+  "libOpenInAppShort": "In the app",
+  "libOpenDownloadShort": "Download",
+  "libOpenRecordShort": "Record only",
+  "libItemRead": "Read",
+  "libItemContinue": "Continue from page {page}",
+  "@libItemContinue": {
+    "placeholders": {
+      "page": {
+        "type": "int"
+      }
+    }
+  },
+  "libItemCannotOpen": "Cannot be opened",
+  "libDownloadUnavailable": "The download server is not connected yet — the book can’t be downloaded for now.",
+  "libDetailsTitle": "Details",
+  "libFieldAuthors": "Author",
+  "libFieldYear": "Year",
+  "libFieldEdition": "Edition",
+  "libFieldPublisher": "Publisher",
+  "libFieldAccess": "Access",
+  "libFieldStatus": "Status",
+  "libFieldRights": "Distribution rights",
+  "libFieldRightsRecorded": "Recorded: {date} · {by}",
+  "@libFieldRightsRecorded": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "by": {
+        "type": "String"
+      }
+    }
+  },
+  "libFieldTopics": "Topics",
+  "libFieldPages": "Pages",
+  "libStateNotReceived": "Not received yet",
+  "libStateReceived": "Received, being checked",
+  "libStateCataloged": "Catalogued",
+  "libStateLinked": "Linked to cards",
+  "libStateReviewed": "Approved by a teacher",
+  "libProvidedByTeacher": "Provided by a teacher",
+  "libItemNotFound": "Material not found",
+  "libItemNotFoundBody": "The content pack may have been updated. Go back to the catalog.",
+  "libBackToCatalog": "Back to catalog",
+  "readerTitle": "Reader",
+  "readerPageOf": "{page} of {total}",
+  "@readerPageOf": {
+    "placeholders": {
+      "page": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "readerToc": "Contents",
+  "readerTocEmpty": "This file has no table of contents",
+  "readerTocEmptyBody": "Go to a page or bookmark the place you need.",
+  "readerBookmarks": "Bookmarks",
+  "readerAddBookmark": "Bookmark this page",
+  "readerBookmarkName": "Bookmark name",
+  "readerBookmarkNameHint": "For example: key table",
+  "readerBookmarkSaved": "Bookmark saved: page {page}",
+  "@readerBookmarkSaved": {
+    "placeholders": {
+      "page": {
+        "type": "int"
+      }
+    }
+  },
+  "readerBookmarkRemoved": "Bookmark removed",
+  "readerBookmarkRemove": "Remove bookmark",
+  "readerBookmarksEmpty": "No bookmarks yet",
+  "readerBookmarksEmptyBody": "On the page you need, tap “Bookmark this page” — then return with one tap.",
+  "readerPageLabel": "Page {page}",
+  "@readerPageLabel": {
+    "placeholders": {
+      "page": {
+        "type": "int"
+      }
+    }
+  },
+  "readerGoTo": "Go to page",
+  "readerGoToShort": "Page",
+  "readerGoToHint": "1 to {total}",
+  "@readerGoToHint": {
+    "placeholders": {
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "readerGoToError": "Enter a number from 1 to {total}",
+  "@readerGoToError": {
+    "placeholders": {
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "readerGo": "Go",
+  "readerSave": "Save",
+  "readerRenameBookmark": "Rename bookmark",
+  "libFieldProvidedBy": "Provided by",
+  "libQueryEmptyBody": "Try another word — for example an author’s surname, “urine” or “biochemistry”.",
+  "readerZoomIn": "Zoom in",
+  "readerZoomOut": "Zoom out",
+  "readerResumed": "Resumed at page {page}",
+  "@readerResumed": {
+    "placeholders": {
+      "page": {
+        "type": "int"
+      }
+    }
+  },
+  "readerFromStart": "From start",
+  "readerLoading": "Opening the file…",
+  "readerFileMissing": "File not found",
+  "readerFileMissingBody": "This file isn’t in the app. Try updating the app.",
+  "readerFileCorrupted": "The file failed verification",
+  "readerFileCorruptedBody": "The file size or checksum doesn’t match the catalog — it may be damaged or replaced, so it wasn’t opened.",
+  "readerOpenFailed": "Couldn’t open the PDF",
+  "readerBlockedTitle": "Not available in the app",
+  "readerBlockedRights": "Only files with fully recorded distribution rights open in the app. This material has no such file.",
+  "readerBookmarkedPage": "This page is bookmarked",
+  "intakeTitle": "Adding materials",
+  "intakeSubtitle": "A short guide for teachers and editors",
+  "intakeStatus": "Materials from teachers: {count}. The list grows as materials arrive.",
+  "@intakeStatus": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "intakeWhatTitle": "1. What to send",
+  "intakeWhat1": "The book, manual, method or IFU file (PDF) and its details: title, author, year and edition, publisher, ISBN, language.",
+  "intakeWhat2": "Test questions: the question, options, the correct answer, an explanation for each option and the source page.",
+  "intakeWhat3": "If there is an old and a new edition — both: differences are reviewed separately.",
+  "intakeRightsTitle": "2. Distribution rights",
+  "intakeRights1": "A shared PDF does not by itself mean it may be distributed to everyone.",
+  "intakeRights2": "For a file to open in the app for everyone, the rights are fully recorded: who granted them (author or publisher), when, who recorded it, and the evidence — a permission letter or a licence link.",
+  "intakeRights3": "Without that record, the material stays a catalog entry only or for personal use.",
+  "intakeReviewTitle": "3. How it is checked",
+  "intakeStep1": "Pending — the material hasn’t arrived yet.",
+  "intakeStep2": "Received — the file arrived and was logged.",
+  "intakeStep3": "Catalogued — title, author and edition were checked. Only then can it be cited.",
+  "intakeStep4": "Linked — tied to test cards and lessons with page numbers.",
+  "intakeStep5": "Approved — a teacher reviewed it. Until then questions stay as “Draft”.",
+  "intakeConflict": "If an old and a new source disagree, neither is written as fact — both positions go to a reviewer.",
+  "intakeNeverTitle": "What we never do",
+  "intakeNever1": "Show a material that hasn’t arrived as “available”.",
+  "intakeNever2": "Guess a page number or write anything the source doesn’t say.",
+  "intakeNever3": "Distribute a book to everyone without recorded rights.",
+  "intakeContactTitle": "4. Contact",
+  "intakeContactBody": "Write to the LabGuide team about the material: title, author, edition and rights holder. How to hand over the file is agreed with the team — PDFs can’t be uploaded through the app.",
+  "intakeContactAction": "Write to the LabGuide team",
   "libReview": "Review queue",
   "libReviewSub": "Source discrepancies and drafts",
   "reviewDiscrepancies": "Source discrepancies",

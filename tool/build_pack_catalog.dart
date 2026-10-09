@@ -24,9 +24,9 @@ const _sampleVersion = '2026.10.09-test.1';
 const _sampleAnalyte = 'glucose-plasma-fasting';
 
 void main() {
-  final core =
-      jsonDecode(File('assets/content/core/pack.json').readAsStringSync())
-          as Map<String, dynamic>;
+  final core = jsonDecode(
+    File('assets/content/core/pack.json').readAsStringSync(),
+  ) as Map<String, dynamic>;
   final analytes = (core['analytes'] as List).cast<Map<String, dynamic>>();
   final card = Map<String, dynamic>.from(
     analytes.singleWhere((a) => a['id'] == _sampleAnalyte),
@@ -39,9 +39,9 @@ void main() {
       .cast<Map<String, dynamic>>()
       .where((s) => sourceIds.contains(s['id']))
       .toList();
-  final group = (core['groups'] as List).cast<Map<String, dynamic>>().singleWhere(
-    (g) => g['id'] == card['group'],
-  );
+  final group = (core['groups'] as List)
+      .cast<Map<String, dynamic>>()
+      .singleWhere((g) => g['id'] == card['group']);
   final pack = {
     'pack_id': _sampleId,
     'schema_version': core['schema_version'],
@@ -108,9 +108,9 @@ void main() {
       },
     ],
   };
-  File('packs/index.json').writeAsStringSync(
-    '${const JsonEncoder.withIndent('  ').convert(index)}\n',
-  );
+  File(
+    'packs/index.json',
+  ).writeAsStringSync('${const JsonEncoder.withIndent('  ').convert(index)}\n');
   stdout.writeln(
     'packs/index.json + $_sampleId $_sampleVersion: ${packBytes.length} bytes',
   );

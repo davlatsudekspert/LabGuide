@@ -4129,7 +4129,7 @@ abstract class AppLocalizations {
   /// No description provided for @libBooksSub.
   ///
   /// In en, this message translates to:
-  /// **'PDF · language · revision · size'**
+  /// **'Catalog of books, manuals and websites'**
   String get libBooksSub;
 
   /// No description provided for @libPacks.
@@ -5793,6 +5793,732 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Newer edition of: {title}'**
   String libItemSupersedes(String title);
+
+  /// No description provided for @libForYou.
+  ///
+  /// In en, this message translates to:
+  /// **'For you'**
+  String get libForYou;
+
+  /// No description provided for @libMoreSections.
+  ///
+  /// In en, this message translates to:
+  /// **'More sections'**
+  String get libMoreSections;
+
+  /// No description provided for @libSearchEntry.
+  ///
+  /// In en, this message translates to:
+  /// **'Search books, authors, topics'**
+  String get libSearchEntry;
+
+  /// No description provided for @libBooksCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} sources · search and filters'**
+  String libBooksCount(int count);
+
+  /// No description provided for @libIntake.
+  ///
+  /// In en, this message translates to:
+  /// **'How materials are added'**
+  String get libIntake;
+
+  /// No description provided for @libIntakeSub.
+  ///
+  /// In en, this message translates to:
+  /// **'For teachers and editors: what to send, rights, review'**
+  String get libIntakeSub;
+
+  /// No description provided for @libContinueReading.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue reading'**
+  String get libContinueReading;
+
+  /// No description provided for @libSearchLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Search the library'**
+  String get libSearchLabel;
+
+  /// No description provided for @libSearchHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Title, author, topic…'**
+  String get libSearchHint;
+
+  /// No description provided for @libFilterLanguage.
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get libFilterLanguage;
+
+  /// No description provided for @libFilterTopic.
+  ///
+  /// In en, this message translates to:
+  /// **'Topic'**
+  String get libFilterTopic;
+
+  /// No description provided for @libFilterType.
+  ///
+  /// In en, this message translates to:
+  /// **'Type'**
+  String get libFilterType;
+
+  /// No description provided for @libFilterSectionField.
+  ///
+  /// In en, this message translates to:
+  /// **'Field'**
+  String get libFilterSectionField;
+
+  /// No description provided for @libFilterSectionGroup.
+  ///
+  /// In en, this message translates to:
+  /// **'Test group'**
+  String get libFilterSectionGroup;
+
+  /// No description provided for @libFilterSectionKind.
+  ///
+  /// In en, this message translates to:
+  /// **'Material type'**
+  String get libFilterSectionKind;
+
+  /// No description provided for @libFilterSectionOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'How it opens'**
+  String get libFilterSectionOpen;
+
+  /// No description provided for @libFilterChoose.
+  ///
+  /// In en, this message translates to:
+  /// **'{filter}: choose'**
+  String libFilterChoose(String filter);
+
+  /// No description provided for @libResultCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{shown} of {total} materials'**
+  String libResultCount(int shown, int total);
+
+  /// No description provided for @libClearFilters.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear'**
+  String get libClearFilters;
+
+  /// No description provided for @libFilteredEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No materials match these filters'**
+  String get libFilteredEmptyTitle;
+
+  /// No description provided for @libFilteredEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove one filter or try another word — for example an author’s surname or “urine”.'**
+  String get libFilteredEmptyBody;
+
+  /// No description provided for @libOpenLink.
+  ///
+  /// In en, this message translates to:
+  /// **'Link · external website'**
+  String get libOpenLink;
+
+  /// No description provided for @libOpenLinkHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Opens in your browser: {host}'**
+  String libOpenLinkHint(String host);
+
+  /// No description provided for @libOpenInApp.
+  ///
+  /// In en, this message translates to:
+  /// **'In-app file'**
+  String get libOpenInApp;
+
+  /// No description provided for @libOpenInAppHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Read inside the app — no internet needed'**
+  String get libOpenInAppHint;
+
+  /// No description provided for @libOpenDownload.
+  ///
+  /// In en, this message translates to:
+  /// **'Downloadable book'**
+  String get libOpenDownload;
+
+  /// No description provided for @libOpenDownloadHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Read in the app after download · {size}'**
+  String libOpenDownloadHint(String size);
+
+  /// No description provided for @libOpenPending.
+  ///
+  /// In en, this message translates to:
+  /// **'Pending'**
+  String get libOpenPending;
+
+  /// No description provided for @libOpenPendingHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Not received yet — cannot be opened'**
+  String get libOpenPendingHint;
+
+  /// No description provided for @libOpenReceivedHint.
+  ///
+  /// In en, this message translates to:
+  /// **'File received and being checked — not available yet'**
+  String get libOpenReceivedHint;
+
+  /// No description provided for @libOpenRecordHint.
+  ///
+  /// In en, this message translates to:
+  /// **'No distribution rights recorded — not opened in the app'**
+  String get libOpenRecordHint;
+
+  /// No description provided for @libOpenLinkShort.
+  ///
+  /// In en, this message translates to:
+  /// **'Link'**
+  String get libOpenLinkShort;
+
+  /// No description provided for @libOpenInAppShort.
+  ///
+  /// In en, this message translates to:
+  /// **'In the app'**
+  String get libOpenInAppShort;
+
+  /// No description provided for @libOpenDownloadShort.
+  ///
+  /// In en, this message translates to:
+  /// **'Download'**
+  String get libOpenDownloadShort;
+
+  /// No description provided for @libOpenRecordShort.
+  ///
+  /// In en, this message translates to:
+  /// **'Record only'**
+  String get libOpenRecordShort;
+
+  /// No description provided for @libItemRead.
+  ///
+  /// In en, this message translates to:
+  /// **'Read'**
+  String get libItemRead;
+
+  /// No description provided for @libItemContinue.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue from page {page}'**
+  String libItemContinue(int page);
+
+  /// No description provided for @libItemCannotOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'Cannot be opened'**
+  String get libItemCannotOpen;
+
+  /// No description provided for @libDownloadUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'The download server is not connected yet — the book can’t be downloaded for now.'**
+  String get libDownloadUnavailable;
+
+  /// No description provided for @libDetailsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Details'**
+  String get libDetailsTitle;
+
+  /// No description provided for @libFieldAuthors.
+  ///
+  /// In en, this message translates to:
+  /// **'Author'**
+  String get libFieldAuthors;
+
+  /// No description provided for @libFieldYear.
+  ///
+  /// In en, this message translates to:
+  /// **'Year'**
+  String get libFieldYear;
+
+  /// No description provided for @libFieldEdition.
+  ///
+  /// In en, this message translates to:
+  /// **'Edition'**
+  String get libFieldEdition;
+
+  /// No description provided for @libFieldPublisher.
+  ///
+  /// In en, this message translates to:
+  /// **'Publisher'**
+  String get libFieldPublisher;
+
+  /// No description provided for @libFieldAccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Access'**
+  String get libFieldAccess;
+
+  /// No description provided for @libFieldStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Status'**
+  String get libFieldStatus;
+
+  /// No description provided for @libFieldRights.
+  ///
+  /// In en, this message translates to:
+  /// **'Distribution rights'**
+  String get libFieldRights;
+
+  /// No description provided for @libFieldRightsRecorded.
+  ///
+  /// In en, this message translates to:
+  /// **'Recorded: {date} · {by}'**
+  String libFieldRightsRecorded(String date, String by);
+
+  /// No description provided for @libFieldTopics.
+  ///
+  /// In en, this message translates to:
+  /// **'Topics'**
+  String get libFieldTopics;
+
+  /// No description provided for @libFieldPages.
+  ///
+  /// In en, this message translates to:
+  /// **'Pages'**
+  String get libFieldPages;
+
+  /// No description provided for @libStateNotReceived.
+  ///
+  /// In en, this message translates to:
+  /// **'Not received yet'**
+  String get libStateNotReceived;
+
+  /// No description provided for @libStateReceived.
+  ///
+  /// In en, this message translates to:
+  /// **'Received, being checked'**
+  String get libStateReceived;
+
+  /// No description provided for @libStateCataloged.
+  ///
+  /// In en, this message translates to:
+  /// **'Catalogued'**
+  String get libStateCataloged;
+
+  /// No description provided for @libStateLinked.
+  ///
+  /// In en, this message translates to:
+  /// **'Linked to cards'**
+  String get libStateLinked;
+
+  /// No description provided for @libStateReviewed.
+  ///
+  /// In en, this message translates to:
+  /// **'Approved by a teacher'**
+  String get libStateReviewed;
+
+  /// No description provided for @libProvidedByTeacher.
+  ///
+  /// In en, this message translates to:
+  /// **'Provided by a teacher'**
+  String get libProvidedByTeacher;
+
+  /// No description provided for @libItemNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'Material not found'**
+  String get libItemNotFound;
+
+  /// No description provided for @libItemNotFoundBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The content pack may have been updated. Go back to the catalog.'**
+  String get libItemNotFoundBody;
+
+  /// No description provided for @libBackToCatalog.
+  ///
+  /// In en, this message translates to:
+  /// **'Back to catalog'**
+  String get libBackToCatalog;
+
+  /// No description provided for @readerTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Reader'**
+  String get readerTitle;
+
+  /// No description provided for @readerPageOf.
+  ///
+  /// In en, this message translates to:
+  /// **'{page} of {total}'**
+  String readerPageOf(int page, int total);
+
+  /// No description provided for @readerToc.
+  ///
+  /// In en, this message translates to:
+  /// **'Contents'**
+  String get readerToc;
+
+  /// No description provided for @readerTocEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'This file has no table of contents'**
+  String get readerTocEmpty;
+
+  /// No description provided for @readerTocEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Go to a page or bookmark the place you need.'**
+  String get readerTocEmptyBody;
+
+  /// No description provided for @readerBookmarks.
+  ///
+  /// In en, this message translates to:
+  /// **'Bookmarks'**
+  String get readerBookmarks;
+
+  /// No description provided for @readerAddBookmark.
+  ///
+  /// In en, this message translates to:
+  /// **'Bookmark this page'**
+  String get readerAddBookmark;
+
+  /// No description provided for @readerBookmarkName.
+  ///
+  /// In en, this message translates to:
+  /// **'Bookmark name'**
+  String get readerBookmarkName;
+
+  /// No description provided for @readerBookmarkNameHint.
+  ///
+  /// In en, this message translates to:
+  /// **'For example: key table'**
+  String get readerBookmarkNameHint;
+
+  /// No description provided for @readerBookmarkSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Bookmark saved: page {page}'**
+  String readerBookmarkSaved(int page);
+
+  /// No description provided for @readerBookmarkRemoved.
+  ///
+  /// In en, this message translates to:
+  /// **'Bookmark removed'**
+  String get readerBookmarkRemoved;
+
+  /// No description provided for @readerBookmarkRemove.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove bookmark'**
+  String get readerBookmarkRemove;
+
+  /// No description provided for @readerBookmarksEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No bookmarks yet'**
+  String get readerBookmarksEmpty;
+
+  /// No description provided for @readerBookmarksEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'On the page you need, tap “Bookmark this page” — then return with one tap.'**
+  String get readerBookmarksEmptyBody;
+
+  /// No description provided for @readerPageLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Page {page}'**
+  String readerPageLabel(int page);
+
+  /// No description provided for @readerGoTo.
+  ///
+  /// In en, this message translates to:
+  /// **'Go to page'**
+  String get readerGoTo;
+
+  /// No description provided for @readerGoToShort.
+  ///
+  /// In en, this message translates to:
+  /// **'Page'**
+  String get readerGoToShort;
+
+  /// No description provided for @readerGoToHint.
+  ///
+  /// In en, this message translates to:
+  /// **'1 to {total}'**
+  String readerGoToHint(int total);
+
+  /// No description provided for @readerGoToError.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a number from 1 to {total}'**
+  String readerGoToError(int total);
+
+  /// No description provided for @readerGo.
+  ///
+  /// In en, this message translates to:
+  /// **'Go'**
+  String get readerGo;
+
+  /// No description provided for @readerSave.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get readerSave;
+
+  /// No description provided for @readerRenameBookmark.
+  ///
+  /// In en, this message translates to:
+  /// **'Rename bookmark'**
+  String get readerRenameBookmark;
+
+  /// No description provided for @libFieldProvidedBy.
+  ///
+  /// In en, this message translates to:
+  /// **'Provided by'**
+  String get libFieldProvidedBy;
+
+  /// No description provided for @libQueryEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Try another word — for example an author’s surname, “urine” or “biochemistry”.'**
+  String get libQueryEmptyBody;
+
+  /// No description provided for @readerZoomIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Zoom in'**
+  String get readerZoomIn;
+
+  /// No description provided for @readerZoomOut.
+  ///
+  /// In en, this message translates to:
+  /// **'Zoom out'**
+  String get readerZoomOut;
+
+  /// No description provided for @readerResumed.
+  ///
+  /// In en, this message translates to:
+  /// **'Resumed at page {page}'**
+  String readerResumed(int page);
+
+  /// No description provided for @readerFromStart.
+  ///
+  /// In en, this message translates to:
+  /// **'From start'**
+  String get readerFromStart;
+
+  /// No description provided for @readerLoading.
+  ///
+  /// In en, this message translates to:
+  /// **'Opening the file…'**
+  String get readerLoading;
+
+  /// No description provided for @readerFileMissing.
+  ///
+  /// In en, this message translates to:
+  /// **'File not found'**
+  String get readerFileMissing;
+
+  /// No description provided for @readerFileMissingBody.
+  ///
+  /// In en, this message translates to:
+  /// **'This file isn’t in the app. Try updating the app.'**
+  String get readerFileMissingBody;
+
+  /// No description provided for @readerFileCorrupted.
+  ///
+  /// In en, this message translates to:
+  /// **'The file failed verification'**
+  String get readerFileCorrupted;
+
+  /// No description provided for @readerFileCorruptedBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The file size or checksum doesn’t match the catalog — it may be damaged or replaced, so it wasn’t opened.'**
+  String get readerFileCorruptedBody;
+
+  /// No description provided for @readerOpenFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn’t open the PDF'**
+  String get readerOpenFailed;
+
+  /// No description provided for @readerBlockedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Not available in the app'**
+  String get readerBlockedTitle;
+
+  /// No description provided for @readerBlockedRights.
+  ///
+  /// In en, this message translates to:
+  /// **'Only files with fully recorded distribution rights open in the app. This material has no such file.'**
+  String get readerBlockedRights;
+
+  /// No description provided for @readerBookmarkedPage.
+  ///
+  /// In en, this message translates to:
+  /// **'This page is bookmarked'**
+  String get readerBookmarkedPage;
+
+  /// No description provided for @intakeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Adding materials'**
+  String get intakeTitle;
+
+  /// No description provided for @intakeSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'A short guide for teachers and editors'**
+  String get intakeSubtitle;
+
+  /// No description provided for @intakeStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Materials from teachers: {count}. The list grows as materials arrive.'**
+  String intakeStatus(int count);
+
+  /// No description provided for @intakeWhatTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'1. What to send'**
+  String get intakeWhatTitle;
+
+  /// No description provided for @intakeWhat1.
+  ///
+  /// In en, this message translates to:
+  /// **'The book, manual, method or IFU file (PDF) and its details: title, author, year and edition, publisher, ISBN, language.'**
+  String get intakeWhat1;
+
+  /// No description provided for @intakeWhat2.
+  ///
+  /// In en, this message translates to:
+  /// **'Test questions: the question, options, the correct answer, an explanation for each option and the source page.'**
+  String get intakeWhat2;
+
+  /// No description provided for @intakeWhat3.
+  ///
+  /// In en, this message translates to:
+  /// **'If there is an old and a new edition — both: differences are reviewed separately.'**
+  String get intakeWhat3;
+
+  /// No description provided for @intakeRightsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'2. Distribution rights'**
+  String get intakeRightsTitle;
+
+  /// No description provided for @intakeRights1.
+  ///
+  /// In en, this message translates to:
+  /// **'A shared PDF does not by itself mean it may be distributed to everyone.'**
+  String get intakeRights1;
+
+  /// No description provided for @intakeRights2.
+  ///
+  /// In en, this message translates to:
+  /// **'For a file to open in the app for everyone, the rights are fully recorded: who granted them (author or publisher), when, who recorded it, and the evidence — a permission letter or a licence link.'**
+  String get intakeRights2;
+
+  /// No description provided for @intakeRights3.
+  ///
+  /// In en, this message translates to:
+  /// **'Without that record, the material stays a catalog entry only or for personal use.'**
+  String get intakeRights3;
+
+  /// No description provided for @intakeReviewTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'3. How it is checked'**
+  String get intakeReviewTitle;
+
+  /// No description provided for @intakeStep1.
+  ///
+  /// In en, this message translates to:
+  /// **'Pending — the material hasn’t arrived yet.'**
+  String get intakeStep1;
+
+  /// No description provided for @intakeStep2.
+  ///
+  /// In en, this message translates to:
+  /// **'Received — the file arrived and was logged.'**
+  String get intakeStep2;
+
+  /// No description provided for @intakeStep3.
+  ///
+  /// In en, this message translates to:
+  /// **'Catalogued — title, author and edition were checked. Only then can it be cited.'**
+  String get intakeStep3;
+
+  /// No description provided for @intakeStep4.
+  ///
+  /// In en, this message translates to:
+  /// **'Linked — tied to test cards and lessons with page numbers.'**
+  String get intakeStep4;
+
+  /// No description provided for @intakeStep5.
+  ///
+  /// In en, this message translates to:
+  /// **'Approved — a teacher reviewed it. Until then questions stay as “Draft”.'**
+  String get intakeStep5;
+
+  /// No description provided for @intakeConflict.
+  ///
+  /// In en, this message translates to:
+  /// **'If an old and a new source disagree, neither is written as fact — both positions go to a reviewer.'**
+  String get intakeConflict;
+
+  /// No description provided for @intakeNeverTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'What we never do'**
+  String get intakeNeverTitle;
+
+  /// No description provided for @intakeNever1.
+  ///
+  /// In en, this message translates to:
+  /// **'Show a material that hasn’t arrived as “available”.'**
+  String get intakeNever1;
+
+  /// No description provided for @intakeNever2.
+  ///
+  /// In en, this message translates to:
+  /// **'Guess a page number or write anything the source doesn’t say.'**
+  String get intakeNever2;
+
+  /// No description provided for @intakeNever3.
+  ///
+  /// In en, this message translates to:
+  /// **'Distribute a book to everyone without recorded rights.'**
+  String get intakeNever3;
+
+  /// No description provided for @intakeContactTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'4. Contact'**
+  String get intakeContactTitle;
+
+  /// No description provided for @intakeContactBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Write to the LabGuide team about the material: title, author, edition and rights holder. How to hand over the file is agreed with the team — PDFs can’t be uploaded through the app.'**
+  String get intakeContactBody;
+
+  /// No description provided for @intakeContactAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Write to the LabGuide team'**
+  String get intakeContactAction;
 
   /// No description provided for @libReview.
   ///

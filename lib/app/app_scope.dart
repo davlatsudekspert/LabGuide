@@ -10,6 +10,7 @@ import '../features/content/content_controller.dart';
 import '../features/instruments/instruments_controller.dart';
 import '../features/learn/quiz_progress.dart';
 import '../features/partners/partners_controller.dart';
+import '../features/library/reading_controller.dart';
 import '../features/packs/packs_controller.dart';
 import '../features/qc/qc_controller.dart';
 import '../features/settings/settings_controller.dart';
@@ -54,6 +55,7 @@ class AppServices {
     required this.quizProgress,
     required this.packs,
     required this.instruments,
+    required this.reading,
     required this.backend,
     required this.access,
     required this.partners,
@@ -71,6 +73,9 @@ class AppServices {
 
   /// Apparatlar katalogi, “Mening apparatlarim” va kalibrlash jurnali.
   final InstrumentsController instruments;
+
+  /// Kutubxona PDF lari: oxirgi sahifa, xatcho'plar, faylni tekshirib ochish.
+  final ReadingController reading;
 
   /// Server (sozlanmagan buildda — [UnconfiguredBackend]).
   final LabBackend backend;
@@ -120,6 +125,7 @@ class AppServices {
     quizProgress.resetInMemory();
     instruments.resetInMemory();
     partners.resetInMemory();
+    reading.resetInMemory();
     await packs.removeAll();
     settings.resetToDefaults(systemLocales);
   }

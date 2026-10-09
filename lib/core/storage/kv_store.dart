@@ -38,6 +38,9 @@ abstract final class StoreKeys {
   /// Hamkorlar ro'yxati keshi (internetsiz ham oxirgisi ko'rinadi).
   static const partnersCache = 'partners.cache';
 
+  /// Kutubxona PDF lari: oxirgi sahifa va xatcho'plar.
+  static const libraryReading = 'library.reading';
+
   static const all = <String>{
     language,
     themeMode,
@@ -55,6 +58,7 @@ abstract final class StoreKeys {
     myInstruments,
     calibrationLog,
     partnersCache,
+    libraryReading,
   };
 }
 

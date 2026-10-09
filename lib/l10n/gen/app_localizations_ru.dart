@@ -2274,7 +2274,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get libBooks => 'Книги и руководства';
 
   @override
-  String get libBooksSub => 'PDF · язык · версия · размер';
+  String get libBooksSub => 'Каталог книг, пособий и сайтов';
 
   @override
   String get libPacks => 'Офлайн-пакеты';
@@ -3249,6 +3249,422 @@ class AppLocalizationsRu extends AppLocalizations {
   String libItemSupersedes(String title) {
     return 'Новое издание. Предыдущее: $title';
   }
+
+  @override
+  String get libForYou => 'Для вас';
+
+  @override
+  String get libMoreSections => 'Другие разделы';
+
+  @override
+  String get libSearchEntry => 'Поиск: книга, автор, тема';
+
+  @override
+  String libBooksCount(int count) {
+    return 'Источников: $count · поиск и фильтры';
+  }
+
+  @override
+  String get libIntake => 'Как добавляются материалы';
+
+  @override
+  String get libIntakeSub =>
+      'Для преподавателя и редактора: что прислать, права, проверка';
+
+  @override
+  String get libContinueReading => 'Продолжить чтение';
+
+  @override
+  String get libSearchLabel => 'Поиск в библиотеке';
+
+  @override
+  String get libSearchHint => 'Название, автор, тема…';
+
+  @override
+  String get libFilterLanguage => 'Язык';
+
+  @override
+  String get libFilterTopic => 'Тема';
+
+  @override
+  String get libFilterType => 'Тип';
+
+  @override
+  String get libFilterSectionField => 'Направление';
+
+  @override
+  String get libFilterSectionGroup => 'Группа анализов';
+
+  @override
+  String get libFilterSectionKind => 'Вид материала';
+
+  @override
+  String get libFilterSectionOpen => 'Как открывается';
+
+  @override
+  String libFilterChoose(String filter) {
+    return '$filter: выберите';
+  }
+
+  @override
+  String libResultCount(int shown, int total) {
+    return 'Материалов: $shown из $total';
+  }
+
+  @override
+  String get libClearFilters => 'Сбросить';
+
+  @override
+  String get libFilteredEmptyTitle => 'По этим фильтрам материалов нет';
+
+  @override
+  String get libFilteredEmptyBody =>
+      'Уберите один фильтр или попробуйте другое слово — например, фамилию автора или «моча».';
+
+  @override
+  String get libOpenLink => 'Ссылка · внешний сайт';
+
+  @override
+  String libOpenLinkHint(String host) {
+    return 'Откроется в браузере: $host';
+  }
+
+  @override
+  String get libOpenInApp => 'Файл в приложении';
+
+  @override
+  String get libOpenInAppHint => 'Читается в приложении — интернет не нужен';
+
+  @override
+  String get libOpenDownload => 'Книга для загрузки';
+
+  @override
+  String libOpenDownloadHint(String size) {
+    return 'После загрузки читается в приложении · $size';
+  }
+
+  @override
+  String get libOpenPending => 'Ожидается';
+
+  @override
+  String get libOpenPendingHint => 'Материал ещё не получен — открыть нельзя';
+
+  @override
+  String get libOpenReceivedHint =>
+      'Файл получен и проверяется — пока не открывается';
+
+  @override
+  String get libOpenRecordHint =>
+      'Право на распространение файла не зафиксировано — в приложении не открывается';
+
+  @override
+  String get libOpenLinkShort => 'Ссылка';
+
+  @override
+  String get libOpenInAppShort => 'В приложении';
+
+  @override
+  String get libOpenDownloadShort => 'Для загрузки';
+
+  @override
+  String get libOpenRecordShort => 'Только запись';
+
+  @override
+  String get libItemRead => 'Читать';
+
+  @override
+  String libItemContinue(int page) {
+    return 'Продолжить со стр. $page';
+  }
+
+  @override
+  String get libItemCannotOpen => 'Открыть нельзя';
+
+  @override
+  String get libDownloadUnavailable =>
+      'Сервер загрузки ещё не подключён — книгу пока нельзя скачать.';
+
+  @override
+  String get libDetailsTitle => 'Сведения';
+
+  @override
+  String get libFieldAuthors => 'Автор';
+
+  @override
+  String get libFieldYear => 'Год';
+
+  @override
+  String get libFieldEdition => 'Издание';
+
+  @override
+  String get libFieldPublisher => 'Издательство';
+
+  @override
+  String get libFieldAccess => 'Доступ';
+
+  @override
+  String get libFieldStatus => 'Статус';
+
+  @override
+  String get libFieldRights => 'Право на распространение';
+
+  @override
+  String libFieldRightsRecorded(String date, String by) {
+    return 'Зафиксировано: $date · $by';
+  }
+
+  @override
+  String get libFieldTopics => 'Темы';
+
+  @override
+  String get libFieldPages => 'Страниц';
+
+  @override
+  String get libStateNotReceived => 'Ещё не получен';
+
+  @override
+  String get libStateReceived => 'Получен, проверяется';
+
+  @override
+  String get libStateCataloged => 'Каталогизирован';
+
+  @override
+  String get libStateLinked => 'Связан с карточками';
+
+  @override
+  String get libStateReviewed => 'Подтверждён преподавателем';
+
+  @override
+  String get libProvidedByTeacher => 'Материал от преподавателя';
+
+  @override
+  String get libItemNotFound => 'Материал не найден';
+
+  @override
+  String get libItemNotFoundBody =>
+      'Возможно, пакет контента обновился. Вернитесь в каталог.';
+
+  @override
+  String get libBackToCatalog => 'Вернуться в каталог';
+
+  @override
+  String get readerTitle => 'Чтение';
+
+  @override
+  String readerPageOf(int page, int total) {
+    return '$page из $total';
+  }
+
+  @override
+  String get readerToc => 'Оглавление';
+
+  @override
+  String get readerTocEmpty => 'В этом файле нет оглавления';
+
+  @override
+  String get readerTocEmptyBody =>
+      'Перейдите на страницу или поставьте закладку в нужном месте.';
+
+  @override
+  String get readerBookmarks => 'Закладки';
+
+  @override
+  String get readerAddBookmark => 'Добавить закладку';
+
+  @override
+  String get readerBookmarkName => 'Название закладки';
+
+  @override
+  String get readerBookmarkNameHint => 'Например: важная таблица';
+
+  @override
+  String readerBookmarkSaved(int page) {
+    return 'Закладка сохранена: стр. $page';
+  }
+
+  @override
+  String get readerBookmarkRemoved => 'Закладка удалена';
+
+  @override
+  String get readerBookmarkRemove => 'Удалить закладку';
+
+  @override
+  String get readerBookmarksEmpty => 'Закладок пока нет';
+
+  @override
+  String get readerBookmarksEmptyBody =>
+      'На нужной странице нажмите «Добавить закладку» — потом вернётесь одним касанием.';
+
+  @override
+  String readerPageLabel(int page) {
+    return 'Стр. $page';
+  }
+
+  @override
+  String get readerGoTo => 'Перейти на страницу';
+
+  @override
+  String get readerGoToShort => 'Страница';
+
+  @override
+  String readerGoToHint(int total) {
+    return 'От 1 до $total';
+  }
+
+  @override
+  String readerGoToError(int total) {
+    return 'Введите число от 1 до $total';
+  }
+
+  @override
+  String get readerGo => 'Перейти';
+
+  @override
+  String get readerSave => 'Сохранить';
+
+  @override
+  String get readerRenameBookmark => 'Переименовать закладку';
+
+  @override
+  String get libFieldProvidedBy => 'От кого';
+
+  @override
+  String get libQueryEmptyBody =>
+      'Попробуйте другое слово — например, фамилию автора, «моча» или «биохимия».';
+
+  @override
+  String get readerZoomIn => 'Увеличить';
+
+  @override
+  String get readerZoomOut => 'Уменьшить';
+
+  @override
+  String readerResumed(int page) {
+    return 'Вы остановились на стр. $page';
+  }
+
+  @override
+  String get readerFromStart => 'С начала';
+
+  @override
+  String get readerLoading => 'Открываем файл…';
+
+  @override
+  String get readerFileMissing => 'Файл не найден';
+
+  @override
+  String get readerFileMissingBody =>
+      'Этого файла нет в приложении. Попробуйте обновить приложение.';
+
+  @override
+  String get readerFileCorrupted => 'Файл не прошёл проверку';
+
+  @override
+  String get readerFileCorruptedBody =>
+      'Размер файла или контрольная сумма не совпадают с каталогом — файл мог быть повреждён или подменён, поэтому он не открыт.';
+
+  @override
+  String get readerOpenFailed => 'Не удалось открыть PDF';
+
+  @override
+  String get readerBlockedTitle => 'Не открывается в приложении';
+
+  @override
+  String get readerBlockedRights =>
+      'В приложении открываются только файлы с полностью зафиксированным правом на распространение. Для этого материала такого файла нет.';
+
+  @override
+  String get readerBookmarkedPage => 'Эта страница в закладках';
+
+  @override
+  String get intakeTitle => 'Добавление материалов';
+
+  @override
+  String get intakeSubtitle => 'Краткий порядок для преподавателя и редактора';
+
+  @override
+  String intakeStatus(int count) {
+    return 'Материалов от преподавателей: $count. Список пополняется по мере поступления.';
+  }
+
+  @override
+  String get intakeWhatTitle => '1. Что прислать';
+
+  @override
+  String get intakeWhat1 =>
+      'Файл книги, пособия, методики или IFU (PDF) и его данные: название, автор, год и издание, издательство, ISBN, язык.';
+
+  @override
+  String get intakeWhat2 =>
+      'Тестовые вопросы: вопрос, варианты, верный ответ, пояснение к каждому варианту и страница источника.';
+
+  @override
+  String get intakeWhat3 =>
+      'Если есть старое и новое издание — оба: расхождения рассматриваются отдельно.';
+
+  @override
+  String get intakeRightsTitle => '2. Право на распространение';
+
+  @override
+  String get intakeRights1 =>
+      'Переданный PDF сам по себе не означает права раздавать его всем.';
+
+  @override
+  String get intakeRights2 =>
+      'Чтобы файл открывался в приложении у всех, право фиксируется полностью: кто разрешил (автор или издательство), когда, кто зафиксировал и доказательство — письмо-разрешение или ссылка на лицензию.';
+
+  @override
+  String get intakeRights3 =>
+      'Без такой записи материал остаётся только записью в каталоге или для личного использования.';
+
+  @override
+  String get intakeReviewTitle => '3. Как проверяется';
+
+  @override
+  String get intakeStep1 => 'Ожидается — материал ещё не пришёл.';
+
+  @override
+  String get intakeStep2 => 'Получен — файл пришёл и внесён в список.';
+
+  @override
+  String get intakeStep3 =>
+      'Каталогизирован — проверены название, автор и издание. Только после этого его можно цитировать.';
+
+  @override
+  String get intakeStep4 =>
+      'Связан — привязан к карточкам анализов и урокам с номером страницы.';
+
+  @override
+  String get intakeStep5 =>
+      'Подтверждён — преподаватель проверил. До этого вопросы остаются «Черновиком».';
+
+  @override
+  String get intakeConflict =>
+      'Если старый и новый источник расходятся, ни один не записывается как факт — обе позиции показываются проверяющему.';
+
+  @override
+  String get intakeNeverTitle => 'Чего мы не делаем';
+
+  @override
+  String get intakeNever1 =>
+      'Показывать неполученный материал как «доступный».';
+
+  @override
+  String get intakeNever2 =>
+      'Угадывать номер страницы или писать то, чего нет в источнике.';
+
+  @override
+  String get intakeNever3 => 'Раздавать всем книгу без зафиксированного права.';
+
+  @override
+  String get intakeContactTitle => '4. Связь';
+
+  @override
+  String get intakeContactBody =>
+      'Напишите команде LabGuide о материале: название, автор, издание и правообладатель. Способ передачи файла согласуется с командой — загрузить PDF через приложение нельзя.';
+
+  @override
+  String get intakeContactAction => 'Написать команде LabGuide';
 
   @override
   String get libReview => 'Очередь проверки';

@@ -2270,7 +2270,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get libBooks => 'Books and guides';
 
   @override
-  String get libBooksSub => 'PDF · language · revision · size';
+  String get libBooksSub => 'Catalog of books, manuals and websites';
 
   @override
   String get libPacks => 'Offline packs';
@@ -3242,6 +3242,423 @@ class AppLocalizationsEn extends AppLocalizations {
   String libItemSupersedes(String title) {
     return 'Newer edition of: $title';
   }
+
+  @override
+  String get libForYou => 'For you';
+
+  @override
+  String get libMoreSections => 'More sections';
+
+  @override
+  String get libSearchEntry => 'Search books, authors, topics';
+
+  @override
+  String libBooksCount(int count) {
+    return '$count sources · search and filters';
+  }
+
+  @override
+  String get libIntake => 'How materials are added';
+
+  @override
+  String get libIntakeSub =>
+      'For teachers and editors: what to send, rights, review';
+
+  @override
+  String get libContinueReading => 'Continue reading';
+
+  @override
+  String get libSearchLabel => 'Search the library';
+
+  @override
+  String get libSearchHint => 'Title, author, topic…';
+
+  @override
+  String get libFilterLanguage => 'Language';
+
+  @override
+  String get libFilterTopic => 'Topic';
+
+  @override
+  String get libFilterType => 'Type';
+
+  @override
+  String get libFilterSectionField => 'Field';
+
+  @override
+  String get libFilterSectionGroup => 'Test group';
+
+  @override
+  String get libFilterSectionKind => 'Material type';
+
+  @override
+  String get libFilterSectionOpen => 'How it opens';
+
+  @override
+  String libFilterChoose(String filter) {
+    return '$filter: choose';
+  }
+
+  @override
+  String libResultCount(int shown, int total) {
+    return '$shown of $total materials';
+  }
+
+  @override
+  String get libClearFilters => 'Clear';
+
+  @override
+  String get libFilteredEmptyTitle => 'No materials match these filters';
+
+  @override
+  String get libFilteredEmptyBody =>
+      'Remove one filter or try another word — for example an author’s surname or “urine”.';
+
+  @override
+  String get libOpenLink => 'Link · external website';
+
+  @override
+  String libOpenLinkHint(String host) {
+    return 'Opens in your browser: $host';
+  }
+
+  @override
+  String get libOpenInApp => 'In-app file';
+
+  @override
+  String get libOpenInAppHint => 'Read inside the app — no internet needed';
+
+  @override
+  String get libOpenDownload => 'Downloadable book';
+
+  @override
+  String libOpenDownloadHint(String size) {
+    return 'Read in the app after download · $size';
+  }
+
+  @override
+  String get libOpenPending => 'Pending';
+
+  @override
+  String get libOpenPendingHint => 'Not received yet — cannot be opened';
+
+  @override
+  String get libOpenReceivedHint =>
+      'File received and being checked — not available yet';
+
+  @override
+  String get libOpenRecordHint =>
+      'No distribution rights recorded — not opened in the app';
+
+  @override
+  String get libOpenLinkShort => 'Link';
+
+  @override
+  String get libOpenInAppShort => 'In the app';
+
+  @override
+  String get libOpenDownloadShort => 'Download';
+
+  @override
+  String get libOpenRecordShort => 'Record only';
+
+  @override
+  String get libItemRead => 'Read';
+
+  @override
+  String libItemContinue(int page) {
+    return 'Continue from page $page';
+  }
+
+  @override
+  String get libItemCannotOpen => 'Cannot be opened';
+
+  @override
+  String get libDownloadUnavailable =>
+      'The download server is not connected yet — the book can’t be downloaded for now.';
+
+  @override
+  String get libDetailsTitle => 'Details';
+
+  @override
+  String get libFieldAuthors => 'Author';
+
+  @override
+  String get libFieldYear => 'Year';
+
+  @override
+  String get libFieldEdition => 'Edition';
+
+  @override
+  String get libFieldPublisher => 'Publisher';
+
+  @override
+  String get libFieldAccess => 'Access';
+
+  @override
+  String get libFieldStatus => 'Status';
+
+  @override
+  String get libFieldRights => 'Distribution rights';
+
+  @override
+  String libFieldRightsRecorded(String date, String by) {
+    return 'Recorded: $date · $by';
+  }
+
+  @override
+  String get libFieldTopics => 'Topics';
+
+  @override
+  String get libFieldPages => 'Pages';
+
+  @override
+  String get libStateNotReceived => 'Not received yet';
+
+  @override
+  String get libStateReceived => 'Received, being checked';
+
+  @override
+  String get libStateCataloged => 'Catalogued';
+
+  @override
+  String get libStateLinked => 'Linked to cards';
+
+  @override
+  String get libStateReviewed => 'Approved by a teacher';
+
+  @override
+  String get libProvidedByTeacher => 'Provided by a teacher';
+
+  @override
+  String get libItemNotFound => 'Material not found';
+
+  @override
+  String get libItemNotFoundBody =>
+      'The content pack may have been updated. Go back to the catalog.';
+
+  @override
+  String get libBackToCatalog => 'Back to catalog';
+
+  @override
+  String get readerTitle => 'Reader';
+
+  @override
+  String readerPageOf(int page, int total) {
+    return '$page of $total';
+  }
+
+  @override
+  String get readerToc => 'Contents';
+
+  @override
+  String get readerTocEmpty => 'This file has no table of contents';
+
+  @override
+  String get readerTocEmptyBody =>
+      'Go to a page or bookmark the place you need.';
+
+  @override
+  String get readerBookmarks => 'Bookmarks';
+
+  @override
+  String get readerAddBookmark => 'Bookmark this page';
+
+  @override
+  String get readerBookmarkName => 'Bookmark name';
+
+  @override
+  String get readerBookmarkNameHint => 'For example: key table';
+
+  @override
+  String readerBookmarkSaved(int page) {
+    return 'Bookmark saved: page $page';
+  }
+
+  @override
+  String get readerBookmarkRemoved => 'Bookmark removed';
+
+  @override
+  String get readerBookmarkRemove => 'Remove bookmark';
+
+  @override
+  String get readerBookmarksEmpty => 'No bookmarks yet';
+
+  @override
+  String get readerBookmarksEmptyBody =>
+      'On the page you need, tap “Bookmark this page” — then return with one tap.';
+
+  @override
+  String readerPageLabel(int page) {
+    return 'Page $page';
+  }
+
+  @override
+  String get readerGoTo => 'Go to page';
+
+  @override
+  String get readerGoToShort => 'Page';
+
+  @override
+  String readerGoToHint(int total) {
+    return '1 to $total';
+  }
+
+  @override
+  String readerGoToError(int total) {
+    return 'Enter a number from 1 to $total';
+  }
+
+  @override
+  String get readerGo => 'Go';
+
+  @override
+  String get readerSave => 'Save';
+
+  @override
+  String get readerRenameBookmark => 'Rename bookmark';
+
+  @override
+  String get libFieldProvidedBy => 'Provided by';
+
+  @override
+  String get libQueryEmptyBody =>
+      'Try another word — for example an author’s surname, “urine” or “biochemistry”.';
+
+  @override
+  String get readerZoomIn => 'Zoom in';
+
+  @override
+  String get readerZoomOut => 'Zoom out';
+
+  @override
+  String readerResumed(int page) {
+    return 'Resumed at page $page';
+  }
+
+  @override
+  String get readerFromStart => 'From start';
+
+  @override
+  String get readerLoading => 'Opening the file…';
+
+  @override
+  String get readerFileMissing => 'File not found';
+
+  @override
+  String get readerFileMissingBody =>
+      'This file isn’t in the app. Try updating the app.';
+
+  @override
+  String get readerFileCorrupted => 'The file failed verification';
+
+  @override
+  String get readerFileCorruptedBody =>
+      'The file size or checksum doesn’t match the catalog — it may be damaged or replaced, so it wasn’t opened.';
+
+  @override
+  String get readerOpenFailed => 'Couldn’t open the PDF';
+
+  @override
+  String get readerBlockedTitle => 'Not available in the app';
+
+  @override
+  String get readerBlockedRights =>
+      'Only files with fully recorded distribution rights open in the app. This material has no such file.';
+
+  @override
+  String get readerBookmarkedPage => 'This page is bookmarked';
+
+  @override
+  String get intakeTitle => 'Adding materials';
+
+  @override
+  String get intakeSubtitle => 'A short guide for teachers and editors';
+
+  @override
+  String intakeStatus(int count) {
+    return 'Materials from teachers: $count. The list grows as materials arrive.';
+  }
+
+  @override
+  String get intakeWhatTitle => '1. What to send';
+
+  @override
+  String get intakeWhat1 =>
+      'The book, manual, method or IFU file (PDF) and its details: title, author, year and edition, publisher, ISBN, language.';
+
+  @override
+  String get intakeWhat2 =>
+      'Test questions: the question, options, the correct answer, an explanation for each option and the source page.';
+
+  @override
+  String get intakeWhat3 =>
+      'If there is an old and a new edition — both: differences are reviewed separately.';
+
+  @override
+  String get intakeRightsTitle => '2. Distribution rights';
+
+  @override
+  String get intakeRights1 =>
+      'A shared PDF does not by itself mean it may be distributed to everyone.';
+
+  @override
+  String get intakeRights2 =>
+      'For a file to open in the app for everyone, the rights are fully recorded: who granted them (author or publisher), when, who recorded it, and the evidence — a permission letter or a licence link.';
+
+  @override
+  String get intakeRights3 =>
+      'Without that record, the material stays a catalog entry only or for personal use.';
+
+  @override
+  String get intakeReviewTitle => '3. How it is checked';
+
+  @override
+  String get intakeStep1 => 'Pending — the material hasn’t arrived yet.';
+
+  @override
+  String get intakeStep2 => 'Received — the file arrived and was logged.';
+
+  @override
+  String get intakeStep3 =>
+      'Catalogued — title, author and edition were checked. Only then can it be cited.';
+
+  @override
+  String get intakeStep4 =>
+      'Linked — tied to test cards and lessons with page numbers.';
+
+  @override
+  String get intakeStep5 =>
+      'Approved — a teacher reviewed it. Until then questions stay as “Draft”.';
+
+  @override
+  String get intakeConflict =>
+      'If an old and a new source disagree, neither is written as fact — both positions go to a reviewer.';
+
+  @override
+  String get intakeNeverTitle => 'What we never do';
+
+  @override
+  String get intakeNever1 =>
+      'Show a material that hasn’t arrived as “available”.';
+
+  @override
+  String get intakeNever2 =>
+      'Guess a page number or write anything the source doesn’t say.';
+
+  @override
+  String get intakeNever3 =>
+      'Distribute a book to everyone without recorded rights.';
+
+  @override
+  String get intakeContactTitle => '4. Contact';
+
+  @override
+  String get intakeContactBody =>
+      'Write to the LabGuide team about the material: title, author, edition and rights holder. How to hand over the file is agreed with the team — PDFs can’t be uploaded through the app.';
+
+  @override
+  String get intakeContactAction => 'Write to the LabGuide team';
 
   @override
   String get libReview => 'Review queue';
