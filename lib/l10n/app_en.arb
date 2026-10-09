@@ -238,6 +238,8 @@
   "sectionPhysiology": "Physiology",
   "sectionHighResult": "High result",
   "sectionLowResult": "Low result",
+  "sectionPositiveResult": "Positive result",
+  "sectionNegativeResult": "Negative result",
   "sectionPreanalytics": "Specimen and preanalytics",
   "sectionInterference": "Interference",
   "sectionLimitations": "Limitations",

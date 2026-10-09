@@ -158,6 +158,8 @@
   "sectionPhysiology": "Fiziologiya",
   "sectionHighResult": "Yuqori natija",
   "sectionLowResult": "Past natija",
+  "sectionPositiveResult": "Musbat natija",
+  "sectionNegativeResult": "Manfiy natija",
   "sectionPreanalytics": "Namuna va preanalitika",
   "sectionInterference": "Interferensiya",
   "sectionLimitations": "Cheklovlar",

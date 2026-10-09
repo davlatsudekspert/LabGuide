@@ -21,6 +21,9 @@ String sectionTitle(String id, AppLocalizations l) => switch (id) {
   'physiology' => l.sectionPhysiology,
   'high_result' => l.sectionHighResult,
   'low_result' => l.sectionLowResult,
+  // Sifat (musbat/manfiy) testlar: serologiya, autoantitelolar.
+  'positive_result' => l.sectionPositiveResult,
+  'negative_result' => l.sectionNegativeResult,
   'preanalytics' => l.sectionPreanalytics,
   'interference' => l.sectionInterference,
   'related_tests' => l.analyteRelated,

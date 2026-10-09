@@ -21,6 +21,8 @@ const appRoutes = [
   '/tests/analyte/urine-chemistry',
   '/tests/analyte/egfr',
   '/tests/analyte/creatinine/quiz',
+  // Uzun nomli sifat test: musbat/manfiy natija bo'limlari bilan.
+  '/tests/analyte/anti-ccp',
   '/lab',
   '/lab/calibration',
   '/lab/calibration?model=human-humalyzer-4000&analyte=glucose-plasma-fasting',
