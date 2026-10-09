@@ -1,0 +1,5 @@
+/* Ruxsat so'rovlari matnlari (Info.plist kalitlari). */
+"NSMicrophoneUsageDescription" = "LabGuide использует микрофон, только когда вы включаете голосовые команды в счётчике лейкоформулы. Запись не сохраняется.";
+"NSSpeechRecognitionUsageDescription" = "LabGuide распознаёт названия клеток, которые вы произносите при подсчёте лейкоформулы. Требуется распознавание на устройстве; запись не сохраняется.";
+"NSCameraUsageDescription" = "LabGuide использует камеру, только если вы решите сделать фото для обращения.";
+"NSPhotoLibraryUsageDescription" = "LabGuide открывает фото, только когда вы прикрепляете снимок экрана к обращению.";

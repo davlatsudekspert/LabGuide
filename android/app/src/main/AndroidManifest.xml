@@ -1,6 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- Oflayn paketlar katalogi va yuklash (HTTPS). -->
     <uses-permission android:name="android.permission.INTERNET"/>
+    <!-- Leykoformula: ovozli buyruqlar (eksperimental, faqat foydalanuvchi
+         yoqqanda so'raladi). -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
     <application
         android:label="LabGuide"
         android:enableOnBackInvokedCallback="true"
@@ -57,6 +60,10 @@
         <intent>
             <action android:name="android.intent.action.VIEW" />
             <data android:scheme="mailto" />
+        </intent>
+        <!-- Nutqni tanish xizmatini topish (speech_to_text, Android 11+). -->
+        <intent>
+            <action android:name="android.speech.RecognitionService" />
         </intent>
     </queries>
 </manifest>

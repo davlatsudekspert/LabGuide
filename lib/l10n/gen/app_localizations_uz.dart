@@ -1414,6 +1414,281 @@ class AppLocalizationsUz extends AppLocalizations {
   String get diffDecrementAction => 'Bittaga kamaytirish';
 
   @override
+  String get diffEfEntry => 'Mikroskop rejimi: ko‘rmasdan sanash';
+
+  @override
+  String get diffEfEntrySub =>
+      'Ekran katta zonalarga bo‘linadi; har bosishda tovush va tebranish';
+
+  @override
+  String get diffEfTitle => 'Ko‘rmasdan sanash';
+
+  @override
+  String get diffEfExit => 'Chiqish';
+
+  @override
+  String get diffEfUndoZone => 'Bekor qilish';
+
+  @override
+  String get diffEfUndoHint => 'yoki ikki barmoq bilan bosing';
+
+  @override
+  String diffEfZoneSemantics(String cell, int count, int total, int target) {
+    return '$cell: $count. Jami $total / $target.';
+  }
+
+  @override
+  String diffEfAnnounce(String cell, int count, int total) {
+    return '$cell $count. Jami $total';
+  }
+
+  @override
+  String diffEfUndone(String cell, int total) {
+    return 'Bekor qilindi: $cell. Jami $total';
+  }
+
+  @override
+  String get diffEfNothingToUndo => 'Bekor qiladigan bosish yo‘q';
+
+  @override
+  String get diffEfShowResult => 'Natijani ko‘rish';
+
+  @override
+  String get diffEfVoiceOn => 'Ovozli buyruqlarni yoqish';
+
+  @override
+  String get diffEfVoiceOff => 'Ovozli buyruqlarni to‘xtatish';
+
+  @override
+  String get diffEfSettingsTitle => 'Mikroskop rejimi';
+
+  @override
+  String get diffEfSettingsSub => 'Mikroskopdan ko‘z uzmasdan sanash uchun';
+
+  @override
+  String get diffEfStart => 'Sanashni boshlash';
+
+  @override
+  String get diffEfHowTitle => 'Qanday ishlaydi';
+
+  @override
+  String get diffEfHowBody =>
+      'Telefonni stolga qo‘ying va mikroskopdan ko‘z uzmasdan zonalarni bosing. Har bosishda qisqa tovush va hujayra turiga xos tebranish; har 10-hujayrada — ikki tonli signal va uzun tebranish; maqsadga (100 yoki 200) yetganda — uch notali signal va sanash to‘xtaydi. Sanash oddiy hisoblagich bilan umumiy.';
+
+  @override
+  String get diffEfZonesTitle => 'Zonalar';
+
+  @override
+  String get diffEfHandLabel => 'Qaysi qo‘l bilan bosasiz';
+
+  @override
+  String get diffEfHandRight => 'O‘ng qo‘l';
+
+  @override
+  String get diffEfHandLeft => 'Chap qo‘l';
+
+  @override
+  String get diffEfHandHint =>
+      '1-zona bosh barmoqqa eng yaqin — pastki burchakda.';
+
+  @override
+  String get diffEfOtherZone => '“Boshqa (blast…)” zonasi';
+
+  @override
+  String get diffEfOtherZoneSub => 'O‘chirilsa — 6 ta zona, har biri kattaroq';
+
+  @override
+  String get diffEfUndoSwitch => 'Tepada katta “Bekor” zonasi';
+
+  @override
+  String get diffEfUndoSwitchSub =>
+      'Ikki barmoq bilan bosish har doim oxirgi bosishni bekor qiladi';
+
+  @override
+  String get diffEfOrderTitle => 'Zonalar tartibi';
+
+  @override
+  String get diffEfOrderHint =>
+      '1 — bosh barmoqqa eng yaqin zona. Ko‘p uchraydigan hujayralarni yuqoriga qo‘ying.';
+
+  @override
+  String diffEfMoveUp(String cell) {
+    return 'Yuqoriga: $cell';
+  }
+
+  @override
+  String diffEfMoveDown(String cell) {
+    return 'Pastga: $cell';
+  }
+
+  @override
+  String get diffEfSignalsTitle => 'Signallar';
+
+  @override
+  String get diffEfSound => 'Tovush';
+
+  @override
+  String get diffEfSoundSub => 'Balandligi telefon ovozi bilan boshqariladi';
+
+  @override
+  String get diffEfHaptics => 'Tebranish';
+
+  @override
+  String get diffEfHapticsSub =>
+      'Telefon sozlamalarida tebranish o‘chirilgan bo‘lsa sezilmaydi';
+
+  @override
+  String get diffEfPatternsTitle => 'Tebranish naqshlari';
+
+  @override
+  String get diffEfPatternsHint =>
+      'Qatorni bosib sinab ko‘ring. Sezilishi telefon modeliga bog‘liq.';
+
+  @override
+  String diffEfPattern(int count, String strength) {
+    return '$count × $strength';
+  }
+
+  @override
+  String get diffEfPulseLight => 'yengil';
+
+  @override
+  String get diffEfPulseMedium => 'o‘rtacha';
+
+  @override
+  String get diffEfPulseHeavy => 'kuchli';
+
+  @override
+  String get diffEfPatternTen => 'Har 10-hujayra';
+
+  @override
+  String get diffEfPatternTenDesc => '+ uzun tebranish';
+
+  @override
+  String get diffEfPatternDone => 'Maqsadga yetildi';
+
+  @override
+  String get diffEfPatternDoneDesc => '2 × kuchli + uzun';
+
+  @override
+  String get diffEfPatternUndoDesc => 'kuchli + qisqa';
+
+  @override
+  String get diffEfScreenTitle => 'Ekran';
+
+  @override
+  String get diffEfAwake => 'Ekranni yoqiq ushlash';
+
+  @override
+  String get diffEfAwakeSub =>
+      'Sanash paytida ekran o‘chmaydi — batareya tezroq sarflanadi';
+
+  @override
+  String get diffVoiceTitle => 'Ovoz bilan sanash';
+
+  @override
+  String get diffVoiceExperimental => 'Eksperimental';
+
+  @override
+  String get diffVoiceSwitch => 'Ovozli buyruqlar';
+
+  @override
+  String get diffVoiceSwitchSub =>
+      'Hujayra nomini ayting — +1; “bekor” — oxirgi bosishni bekor qiladi';
+
+  @override
+  String get diffVoiceLangLabel => 'Buyruqlar tili';
+
+  @override
+  String get diffVoiceLangAuto => 'Avtomatik';
+
+  @override
+  String get diffVoiceLangUz => 'O‘zbekcha';
+
+  @override
+  String get diffVoiceLangRu => 'Ruscha';
+
+  @override
+  String get diffVoiceLangEn => 'Inglizcha';
+
+  @override
+  String get diffVoiceLangHint =>
+      'Avtomatik: ilova tili qurilmada mavjud bo‘lmasa — rus, keyin ingliz tili. O‘zbek tili Apple diktovka tillari ro‘yxatida yo‘q; Android’da qurilmaga bog‘liq.';
+
+  @override
+  String get diffVoiceWordsTitle => 'Qaysi so‘zlarni aytish kerak';
+
+  @override
+  String get diffVoicePrivacyTitle => 'Ovoz qayerda qayta ishlanadi';
+
+  @override
+  String get diffVoicePrivacyIos =>
+      'iOS: nutq faqat qurilmada tanilishi talab qilinadi. Bu til uchun qurilmada tanish bo‘lmasa, rejim ishlamaydi — ovoz serverga yuborilmaydi. LabGuide ovozni saqlamaydi va hech qayerga yubormaydi.';
+
+  @override
+  String get diffVoicePrivacyAndroid =>
+      'Android: nutqni telefonning tizim xizmati (odatda Google) taniydi. LabGuide oflayn tanishni so‘raydi, lekin buni kafolatlay olmaydi — xizmat ovozni o‘z serveriga yuborishi mumkin. LabGuide ovozni saqlamaydi va o‘zi hech qayerga yubormaydi.';
+
+  @override
+  String get diffVoiceNoNames =>
+      'Faqat hujayra nomlarini ayting — bemor ismi yoki boshqa ma’lumotlarni aytmang.';
+
+  @override
+  String get diffVoiceAccuracy =>
+      'Tanish aniqligi shovqin, talaffuz va qurilmaga bog‘liq. Har buyruqdan keyin signalni tinglang; xato bo‘lsa “bekor” deng. Natijani saqlashdan oldin tekshiring.';
+
+  @override
+  String get diffVoiceConsentTitle => 'Ovozli buyruqlarni yoqasizmi?';
+
+  @override
+  String get diffVoiceConsentAction => 'Tushundim, yoqish';
+
+  @override
+  String get diffVoiceStarting => 'Mikrofon ishga tushmoqda…';
+
+  @override
+  String diffVoiceListening(String lang) {
+    return 'Tinglanmoqda · $lang';
+  }
+
+  @override
+  String diffVoiceFallback(String lang) {
+    return 'Ilova tili uchun qurilmada nutqni tanish topilmadi — so‘zlarni shu tilda ayting: $lang.';
+  }
+
+  @override
+  String diffVoiceHeard(String text) {
+    return 'Eshitildi: «$text»';
+  }
+
+  @override
+  String diffVoiceNotUnderstood(String text) {
+    return 'Buyruq topilmadi: «$text»';
+  }
+
+  @override
+  String get diffVoicePermissionDenied =>
+      'Mikrofon yoki nutqni tanishga ruxsat berilmagan, shuning uchun ovozli buyruqlar ishlamaydi. Ruxsatni telefon sozlamalarida LabGuide uchun berish mumkin. Zonalar bilan sanash ishlayveradi.';
+
+  @override
+  String get diffVoiceUnavailable =>
+      'Bu qurilmada nutqni tanish xizmati mavjud emas. Zonalar bilan sanash ishlayveradi.';
+
+  @override
+  String get diffVoiceLanguageUnavailable =>
+      'Tanlangan til uchun qurilmada nutqni tanish yo‘q. Sozlamalarda boshqa tilni tanlang.';
+
+  @override
+  String get diffVoiceOnDeviceUnavailable =>
+      'Bu til uchun qurilmada (oflayn) tanish yo‘q. Ovoz serverga yuborilmasligi uchun ovozli buyruqlar o‘chirildi.';
+
+  @override
+  String get diffVoiceFailed => 'Nutqni tanish to‘xtadi. Qayta urinib ko‘ring.';
+
+  @override
+  String get diffVoiceRetry => 'Qayta urinish';
+
+  @override
   String get diffHistoryEmptyTitle => 'Hali saqlangan natija yo‘q';
 
   @override

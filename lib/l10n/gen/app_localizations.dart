@@ -2584,6 +2584,480 @@ abstract class AppLocalizations {
   /// **'Subtract one'**
   String get diffDecrementAction;
 
+  /// No description provided for @diffEfEntry.
+  ///
+  /// In en, this message translates to:
+  /// **'Microscope mode: eyes-free counting'**
+  String get diffEfEntry;
+
+  /// No description provided for @diffEfEntrySub.
+  ///
+  /// In en, this message translates to:
+  /// **'Large screen zones; a sound and vibration on every tap'**
+  String get diffEfEntrySub;
+
+  /// No description provided for @diffEfTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Eyes-free counting'**
+  String get diffEfTitle;
+
+  /// No description provided for @diffEfExit.
+  ///
+  /// In en, this message translates to:
+  /// **'Exit'**
+  String get diffEfExit;
+
+  /// No description provided for @diffEfUndoZone.
+  ///
+  /// In en, this message translates to:
+  /// **'Undo'**
+  String get diffEfUndoZone;
+
+  /// No description provided for @diffEfUndoHint.
+  ///
+  /// In en, this message translates to:
+  /// **'or tap with two fingers'**
+  String get diffEfUndoHint;
+
+  /// No description provided for @diffEfZoneSemantics.
+  ///
+  /// In en, this message translates to:
+  /// **'{cell}: {count}. Total {total} / {target}.'**
+  String diffEfZoneSemantics(String cell, int count, int total, int target);
+
+  /// No description provided for @diffEfAnnounce.
+  ///
+  /// In en, this message translates to:
+  /// **'{cell} {count}. Total {total}'**
+  String diffEfAnnounce(String cell, int count, int total);
+
+  /// No description provided for @diffEfUndone.
+  ///
+  /// In en, this message translates to:
+  /// **'Undone: {cell}. Total {total}'**
+  String diffEfUndone(String cell, int total);
+
+  /// No description provided for @diffEfNothingToUndo.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing to undo'**
+  String get diffEfNothingToUndo;
+
+  /// No description provided for @diffEfShowResult.
+  ///
+  /// In en, this message translates to:
+  /// **'View result'**
+  String get diffEfShowResult;
+
+  /// No description provided for @diffEfVoiceOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Turn on voice commands'**
+  String get diffEfVoiceOn;
+
+  /// No description provided for @diffEfVoiceOff.
+  ///
+  /// In en, this message translates to:
+  /// **'Stop voice commands'**
+  String get diffEfVoiceOff;
+
+  /// No description provided for @diffEfSettingsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Microscope mode'**
+  String get diffEfSettingsTitle;
+
+  /// No description provided for @diffEfSettingsSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Count without looking away from the microscope'**
+  String get diffEfSettingsSub;
+
+  /// No description provided for @diffEfStart.
+  ///
+  /// In en, this message translates to:
+  /// **'Start counting'**
+  String get diffEfStart;
+
+  /// No description provided for @diffEfHowTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'How it works'**
+  String get diffEfHowTitle;
+
+  /// No description provided for @diffEfHowBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Put the phone on the bench and tap the zones without looking away from the microscope. Every tap gives a short sound and a vibration pattern specific to the cell type; every 10th cell — a two-tone signal and a long vibration; at the target (100 or 200) — a three-note signal and counting stops. The count is shared with the regular counter.'**
+  String get diffEfHowBody;
+
+  /// No description provided for @diffEfZonesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Zones'**
+  String get diffEfZonesTitle;
+
+  /// No description provided for @diffEfHandLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Which hand do you tap with'**
+  String get diffEfHandLabel;
+
+  /// No description provided for @diffEfHandRight.
+  ///
+  /// In en, this message translates to:
+  /// **'Right hand'**
+  String get diffEfHandRight;
+
+  /// No description provided for @diffEfHandLeft.
+  ///
+  /// In en, this message translates to:
+  /// **'Left hand'**
+  String get diffEfHandLeft;
+
+  /// No description provided for @diffEfHandHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Zone 1 is closest to your thumb — in the bottom corner.'**
+  String get diffEfHandHint;
+
+  /// No description provided for @diffEfOtherZone.
+  ///
+  /// In en, this message translates to:
+  /// **'“Other (blasts…)” zone'**
+  String get diffEfOtherZone;
+
+  /// No description provided for @diffEfOtherZoneSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Turn off for 6 larger zones'**
+  String get diffEfOtherZoneSub;
+
+  /// No description provided for @diffEfUndoSwitch.
+  ///
+  /// In en, this message translates to:
+  /// **'Large “Undo” zone at the top'**
+  String get diffEfUndoSwitch;
+
+  /// No description provided for @diffEfUndoSwitchSub.
+  ///
+  /// In en, this message translates to:
+  /// **'A two-finger tap always undoes the last tap'**
+  String get diffEfUndoSwitchSub;
+
+  /// No description provided for @diffEfOrderTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Zone order'**
+  String get diffEfOrderTitle;
+
+  /// No description provided for @diffEfOrderHint.
+  ///
+  /// In en, this message translates to:
+  /// **'1 is the zone closest to your thumb. Put the most frequent cells first.'**
+  String get diffEfOrderHint;
+
+  /// No description provided for @diffEfMoveUp.
+  ///
+  /// In en, this message translates to:
+  /// **'Move up: {cell}'**
+  String diffEfMoveUp(String cell);
+
+  /// No description provided for @diffEfMoveDown.
+  ///
+  /// In en, this message translates to:
+  /// **'Move down: {cell}'**
+  String diffEfMoveDown(String cell);
+
+  /// No description provided for @diffEfSignalsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Signals'**
+  String get diffEfSignalsTitle;
+
+  /// No description provided for @diffEfSound.
+  ///
+  /// In en, this message translates to:
+  /// **'Sound'**
+  String get diffEfSound;
+
+  /// No description provided for @diffEfSoundSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Volume follows the phone’s volume buttons'**
+  String get diffEfSoundSub;
+
+  /// No description provided for @diffEfHaptics.
+  ///
+  /// In en, this message translates to:
+  /// **'Vibration'**
+  String get diffEfHaptics;
+
+  /// No description provided for @diffEfHapticsSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Not felt if vibration is turned off in phone settings'**
+  String get diffEfHapticsSub;
+
+  /// No description provided for @diffEfPatternsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Vibration patterns'**
+  String get diffEfPatternsTitle;
+
+  /// No description provided for @diffEfPatternsHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap a row to try it. How it feels depends on the phone model.'**
+  String get diffEfPatternsHint;
+
+  /// No description provided for @diffEfPattern.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} × {strength}'**
+  String diffEfPattern(int count, String strength);
+
+  /// No description provided for @diffEfPulseLight.
+  ///
+  /// In en, this message translates to:
+  /// **'light'**
+  String get diffEfPulseLight;
+
+  /// No description provided for @diffEfPulseMedium.
+  ///
+  /// In en, this message translates to:
+  /// **'medium'**
+  String get diffEfPulseMedium;
+
+  /// No description provided for @diffEfPulseHeavy.
+  ///
+  /// In en, this message translates to:
+  /// **'strong'**
+  String get diffEfPulseHeavy;
+
+  /// No description provided for @diffEfPatternTen.
+  ///
+  /// In en, this message translates to:
+  /// **'Every 10th cell'**
+  String get diffEfPatternTen;
+
+  /// No description provided for @diffEfPatternTenDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'+ long vibration'**
+  String get diffEfPatternTenDesc;
+
+  /// No description provided for @diffEfPatternDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Target reached'**
+  String get diffEfPatternDone;
+
+  /// No description provided for @diffEfPatternDoneDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'2 × strong + long'**
+  String get diffEfPatternDoneDesc;
+
+  /// No description provided for @diffEfPatternUndoDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'strong + short'**
+  String get diffEfPatternUndoDesc;
+
+  /// No description provided for @diffEfScreenTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Screen'**
+  String get diffEfScreenTitle;
+
+  /// No description provided for @diffEfAwake.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep screen on'**
+  String get diffEfAwake;
+
+  /// No description provided for @diffEfAwakeSub.
+  ///
+  /// In en, this message translates to:
+  /// **'The screen stays on while counting — uses more battery'**
+  String get diffEfAwakeSub;
+
+  /// No description provided for @diffVoiceTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Voice counting'**
+  String get diffVoiceTitle;
+
+  /// No description provided for @diffVoiceExperimental.
+  ///
+  /// In en, this message translates to:
+  /// **'Experimental'**
+  String get diffVoiceExperimental;
+
+  /// No description provided for @diffVoiceSwitch.
+  ///
+  /// In en, this message translates to:
+  /// **'Voice commands'**
+  String get diffVoiceSwitch;
+
+  /// No description provided for @diffVoiceSwitchSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Say a cell name — +1; “undo” — undo the last one'**
+  String get diffVoiceSwitchSub;
+
+  /// No description provided for @diffVoiceLangLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Command language'**
+  String get diffVoiceLangLabel;
+
+  /// No description provided for @diffVoiceLangAuto.
+  ///
+  /// In en, this message translates to:
+  /// **'Auto'**
+  String get diffVoiceLangAuto;
+
+  /// No description provided for @diffVoiceLangUz.
+  ///
+  /// In en, this message translates to:
+  /// **'Uzbek'**
+  String get diffVoiceLangUz;
+
+  /// No description provided for @diffVoiceLangRu.
+  ///
+  /// In en, this message translates to:
+  /// **'Russian'**
+  String get diffVoiceLangRu;
+
+  /// No description provided for @diffVoiceLangEn.
+  ///
+  /// In en, this message translates to:
+  /// **'English'**
+  String get diffVoiceLangEn;
+
+  /// No description provided for @diffVoiceLangHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Auto: if the app language isn’t available on the device — Russian, then English. Uzbek is not in Apple’s dictation language list; on Android it depends on the device.'**
+  String get diffVoiceLangHint;
+
+  /// No description provided for @diffVoiceWordsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Words to say'**
+  String get diffVoiceWordsTitle;
+
+  /// No description provided for @diffVoicePrivacyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Where your voice is processed'**
+  String get diffVoicePrivacyTitle;
+
+  /// No description provided for @diffVoicePrivacyIos.
+  ///
+  /// In en, this message translates to:
+  /// **'iOS: on-device recognition is required. If it isn’t available for the language, the mode won’t work — audio is not sent to a server. LabGuide does not store or send your voice anywhere.'**
+  String get diffVoicePrivacyIos;
+
+  /// No description provided for @diffVoicePrivacyAndroid.
+  ///
+  /// In en, this message translates to:
+  /// **'Android: speech is recognised by the phone’s system service (usually Google). LabGuide asks for offline recognition but cannot guarantee it — the service may send audio to its server. LabGuide does not store your voice or send it anywhere itself.'**
+  String get diffVoicePrivacyAndroid;
+
+  /// No description provided for @diffVoiceNoNames.
+  ///
+  /// In en, this message translates to:
+  /// **'Say only cell names — never patient names or other details.'**
+  String get diffVoiceNoNames;
+
+  /// No description provided for @diffVoiceAccuracy.
+  ///
+  /// In en, this message translates to:
+  /// **'Accuracy depends on noise, pronunciation and the device. Listen for the signal after each command; say “undo” if it’s wrong. Check the result before saving.'**
+  String get diffVoiceAccuracy;
+
+  /// No description provided for @diffVoiceConsentTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Turn on voice commands?'**
+  String get diffVoiceConsentTitle;
+
+  /// No description provided for @diffVoiceConsentAction.
+  ///
+  /// In en, this message translates to:
+  /// **'I understand, turn on'**
+  String get diffVoiceConsentAction;
+
+  /// No description provided for @diffVoiceStarting.
+  ///
+  /// In en, this message translates to:
+  /// **'Starting microphone…'**
+  String get diffVoiceStarting;
+
+  /// No description provided for @diffVoiceListening.
+  ///
+  /// In en, this message translates to:
+  /// **'Listening · {lang}'**
+  String diffVoiceListening(String lang);
+
+  /// No description provided for @diffVoiceFallback.
+  ///
+  /// In en, this message translates to:
+  /// **'No speech recognition for the app language on this device — say the words in {lang}.'**
+  String diffVoiceFallback(String lang);
+
+  /// No description provided for @diffVoiceHeard.
+  ///
+  /// In en, this message translates to:
+  /// **'Heard: “{text}”'**
+  String diffVoiceHeard(String text);
+
+  /// No description provided for @diffVoiceNotUnderstood.
+  ///
+  /// In en, this message translates to:
+  /// **'No command found: “{text}”'**
+  String diffVoiceNotUnderstood(String text);
+
+  /// No description provided for @diffVoicePermissionDenied.
+  ///
+  /// In en, this message translates to:
+  /// **'Microphone or speech recognition permission was not granted, so voice commands don’t work. You can allow it for LabGuide in phone settings. Counting with zones keeps working.'**
+  String get diffVoicePermissionDenied;
+
+  /// No description provided for @diffVoiceUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Speech recognition isn’t available on this device. Counting with zones keeps working.'**
+  String get diffVoiceUnavailable;
+
+  /// No description provided for @diffVoiceLanguageUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Speech recognition isn’t available for the chosen language on this device. Choose another language in settings.'**
+  String get diffVoiceLanguageUnavailable;
+
+  /// No description provided for @diffVoiceOnDeviceUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'On-device recognition isn’t available for this language. Voice commands are off so audio is not sent to a server.'**
+  String get diffVoiceOnDeviceUnavailable;
+
+  /// No description provided for @diffVoiceFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Speech recognition stopped. Please try again.'**
+  String get diffVoiceFailed;
+
+  /// No description provided for @diffVoiceRetry.
+  ///
+  /// In en, this message translates to:
+  /// **'Try again'**
+  String get diffVoiceRetry;
+
   /// No description provided for @diffHistoryEmptyTitle.
   ///
   /// In en, this message translates to:

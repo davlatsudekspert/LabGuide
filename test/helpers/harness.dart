@@ -116,9 +116,16 @@ Future<void> pumpApp(
   await tester.pumpAndSettle();
 }
 
-/// Joriy routerni olish (ko'rinib turgan sahifa orqali).
-GoRouter routerOf(WidgetTester tester) =>
-    GoRouter.of(tester.element(find.byType(LgPage).first));
+/// Joriy routerni olish (ko'rinib turgan sahifa orqali). To'liq ekranli
+/// sahifalarda (LgPage'siz, masalan leykoformula zonalari) — Scaffold orqali.
+GoRouter routerOf(WidgetTester tester) {
+  final page = find.byType(LgPage);
+  return GoRouter.of(
+    tester.element(
+      page.evaluate().isNotEmpty ? page.first : find.byType(Scaffold).last,
+    ),
+  );
+}
 
 Future<void> goTo(WidgetTester tester, String location) async {
   routerOf(tester).go(location);
