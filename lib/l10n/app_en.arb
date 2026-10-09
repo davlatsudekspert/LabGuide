@@ -810,6 +810,89 @@
   "packsSpecimensQc": "Specimens and QC",
   "packsMicroscopy": "Microscopy atlas",
   "packsNotPublished": "Not published yet",
+  "packsBuiltIn": "Built into the app",
+  "packsOffline": "Works offline",
+  "packsCoreState": "Status: draft — sourced learning material, not yet independently reviewed",
+  "packsContents": "Contents: {cards, plural, =1{1 card} other{{cards} cards}}, {questions, plural, =1{1 question} other{{questions} questions}}, {sources, plural, =1{1 source} other{{sources} sources}}",
+  "@packsContents": {
+    "placeholders": {
+      "cards": {
+        "type": "int"
+      },
+      "questions": {
+        "type": "int"
+      },
+      "sources": {
+        "type": "int"
+      }
+    }
+  },
+  "packsDownloadable": "Packs to download",
+  "packsCatalogLoading": "Loading catalogue…",
+  "packsCatalogCached": "Showing the last saved catalogue",
+  "packsCatalogEmpty": "No packs to download yet",
+  "packsStatusTest": "Test pack · not a clinical pack",
+  "packsStatusDraft": "Draft · not expert-reviewed",
+  "packsStatusReviewed": "Expert-reviewed",
+  "packsMeta": "Version {version} · {size} · {languages}",
+  "@packsMeta": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      },
+      "size": {
+        "type": "String"
+      },
+      "languages": {
+        "type": "String"
+      }
+    }
+  },
+  "packsDownload": "Download · {size}",
+  "@packsDownload": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "packsDownloading": "Downloading… {percent}%",
+  "@packsDownloading": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "packsInstalledVersion": "Installed: {version} · {size}",
+  "@packsInstalledVersion": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "packsUpdate": "Update to {version}",
+  "@packsUpdate": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "packsRemove": "Remove",
+  "packsRemoveTitle": "Remove this pack?",
+  "packsRemoveBody": "The pack is removed from this device. You can download it again later.",
+  "packsFailNetwork": "Couldn’t connect to the internet. Check your connection and try again.",
+  "packsFailServer": "The server didn’t respond. Try again later.",
+  "packsFailIntegrity": "The pack failed verification (size or SHA-256 mismatch) and wasn’t installed. Nothing else changed.",
+  "packsFailIncompatible": "This pack needs a newer version of the app.",
+  "packsFailStorage": "Couldn’t save to this device. Check free storage.",
+  "packsPlanned": "Planned",
+  "packsPlannedBody": "Published after independent review; the size is shown before download.",
   "savedEmptyTitle": "No bookmarks yet",
   "savedEmptyBody": "Select Save on a test card to keep it here.",
   "sourcesTitle": "Sources and licences",

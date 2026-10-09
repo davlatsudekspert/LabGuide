@@ -4,6 +4,7 @@ import '../core/storage/kv_store.dart';
 import '../features/auth/auth_controller.dart';
 import '../features/content/content_controller.dart';
 import '../features/learn/quiz_progress.dart';
+import '../features/packs/packs_controller.dart';
 import '../features/qc/qc_controller.dart';
 import '../features/settings/settings_controller.dart';
 
@@ -15,7 +16,12 @@ class AppConfig {
     required this.appVersion,
     required this.showDebugBadge,
     this.maxActiveDevicesProposal = 2,
+    this.packsIndexUrl = defaultPacksIndexUrl,
   });
+
+  /// Yuklab olinadigan paketlar katalogi (statik JSON, public repo).
+  static const defaultPacksIndexUrl =
+      'https://raw.githubusercontent.com/davlatsudekspert/LabGuide/main/packs/index.json';
 
   final String appVersion;
 
@@ -24,6 +30,8 @@ class AppConfig {
 
   /// Taklif: 1 hisob / 2 faol qurilma. Hali qat'iy qaror emas.
   final int maxActiveDevicesProposal;
+
+  final String packsIndexUrl;
 }
 
 /// Ilova bo'ylab umumiy servislar. Har biri o'z holatini ChangeNotifier
@@ -38,6 +46,7 @@ class AppServices {
     required this.bookmarks,
     required this.qc,
     required this.quizProgress,
+    required this.packs,
   });
 
   final AppConfig config;
@@ -48,6 +57,7 @@ class AppServices {
   final BookmarksController bookmarks;
   final QcController qc;
   final QuizProgressController quizProgress;
+  final PacksController packs;
 
   /// "Lokal ma'lumotlarni o'chirish": omborni tozalaydi va xotiradagi
   /// holatni boshlang'ichga qaytaradi.
@@ -57,6 +67,7 @@ class AppServices {
     bookmarks.resetInMemory();
     qc.resetInMemory();
     quizProgress.resetInMemory();
+    await packs.removeAll();
     settings.resetToDefaults(systemLocales);
   }
 }

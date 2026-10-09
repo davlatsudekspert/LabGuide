@@ -2698,6 +2698,162 @@ abstract class AppLocalizations {
   /// **'Not published yet'**
   String get packsNotPublished;
 
+  /// No description provided for @packsBuiltIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Built into the app'**
+  String get packsBuiltIn;
+
+  /// No description provided for @packsOffline.
+  ///
+  /// In en, this message translates to:
+  /// **'Works offline'**
+  String get packsOffline;
+
+  /// No description provided for @packsCoreState.
+  ///
+  /// In en, this message translates to:
+  /// **'Status: draft — sourced learning material, not yet independently reviewed'**
+  String get packsCoreState;
+
+  /// No description provided for @packsContents.
+  ///
+  /// In en, this message translates to:
+  /// **'Contents: {cards, plural, =1{1 card} other{{cards} cards}}, {questions, plural, =1{1 question} other{{questions} questions}}, {sources, plural, =1{1 source} other{{sources} sources}}'**
+  String packsContents(int cards, int questions, int sources);
+
+  /// No description provided for @packsDownloadable.
+  ///
+  /// In en, this message translates to:
+  /// **'Packs to download'**
+  String get packsDownloadable;
+
+  /// No description provided for @packsCatalogLoading.
+  ///
+  /// In en, this message translates to:
+  /// **'Loading catalogue…'**
+  String get packsCatalogLoading;
+
+  /// No description provided for @packsCatalogCached.
+  ///
+  /// In en, this message translates to:
+  /// **'Showing the last saved catalogue'**
+  String get packsCatalogCached;
+
+  /// No description provided for @packsCatalogEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No packs to download yet'**
+  String get packsCatalogEmpty;
+
+  /// No description provided for @packsStatusTest.
+  ///
+  /// In en, this message translates to:
+  /// **'Test pack · not a clinical pack'**
+  String get packsStatusTest;
+
+  /// No description provided for @packsStatusDraft.
+  ///
+  /// In en, this message translates to:
+  /// **'Draft · not expert-reviewed'**
+  String get packsStatusDraft;
+
+  /// No description provided for @packsStatusReviewed.
+  ///
+  /// In en, this message translates to:
+  /// **'Expert-reviewed'**
+  String get packsStatusReviewed;
+
+  /// No description provided for @packsMeta.
+  ///
+  /// In en, this message translates to:
+  /// **'Version {version} · {size} · {languages}'**
+  String packsMeta(String version, String size, String languages);
+
+  /// No description provided for @packsDownload.
+  ///
+  /// In en, this message translates to:
+  /// **'Download · {size}'**
+  String packsDownload(String size);
+
+  /// No description provided for @packsDownloading.
+  ///
+  /// In en, this message translates to:
+  /// **'Downloading… {percent}%'**
+  String packsDownloading(int percent);
+
+  /// No description provided for @packsInstalledVersion.
+  ///
+  /// In en, this message translates to:
+  /// **'Installed: {version} · {size}'**
+  String packsInstalledVersion(String version, String size);
+
+  /// No description provided for @packsUpdate.
+  ///
+  /// In en, this message translates to:
+  /// **'Update to {version}'**
+  String packsUpdate(String version);
+
+  /// No description provided for @packsRemove.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove'**
+  String get packsRemove;
+
+  /// No description provided for @packsRemoveTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove this pack?'**
+  String get packsRemoveTitle;
+
+  /// No description provided for @packsRemoveBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The pack is removed from this device. You can download it again later.'**
+  String get packsRemoveBody;
+
+  /// No description provided for @packsFailNetwork.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn’t connect to the internet. Check your connection and try again.'**
+  String get packsFailNetwork;
+
+  /// No description provided for @packsFailServer.
+  ///
+  /// In en, this message translates to:
+  /// **'The server didn’t respond. Try again later.'**
+  String get packsFailServer;
+
+  /// No description provided for @packsFailIntegrity.
+  ///
+  /// In en, this message translates to:
+  /// **'The pack failed verification (size or SHA-256 mismatch) and wasn’t installed. Nothing else changed.'**
+  String get packsFailIntegrity;
+
+  /// No description provided for @packsFailIncompatible.
+  ///
+  /// In en, this message translates to:
+  /// **'This pack needs a newer version of the app.'**
+  String get packsFailIncompatible;
+
+  /// No description provided for @packsFailStorage.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn’t save to this device. Check free storage.'**
+  String get packsFailStorage;
+
+  /// No description provided for @packsPlanned.
+  ///
+  /// In en, this message translates to:
+  /// **'Planned'**
+  String get packsPlanned;
+
+  /// No description provided for @packsPlannedBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Published after independent review; the size is shown before download.'**
+  String get packsPlannedBody;
+
   /// No description provided for @savedEmptyTitle.
   ///
   /// In en, this message translates to:

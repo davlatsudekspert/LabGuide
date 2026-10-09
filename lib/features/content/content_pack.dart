@@ -204,6 +204,12 @@ class PackInstaller {
     }
   }
 
+  /// Paketni (barcha versiyalari va faol ko'rsatkichi bilan) o'chiradi.
+  Future<void> remove(String packId) async {
+    final dir = _packDir(packId);
+    if (await dir.exists()) await dir.delete(recursive: true);
+  }
+
   Future<VerifiedPack> install({
     required String packId,
     required Uint8List manifestBytes,

@@ -14,6 +14,9 @@ import '../../l10n/gen/app_localizations.dart';
 import '../content/content_model.dart';
 import '../content/ui/analyte_screen.dart' show SourceTile, rightsLabel;
 import '../content/ui/content_widgets.dart';
+import '../packs/pack_catalog.dart';
+import '../packs/pack_downloader.dart';
+import '../packs/packs_controller.dart';
 import '../tools/calc_info.dart';
 import '../tools/clinical_calc_screens.dart';
 
@@ -122,8 +125,126 @@ String formatBytes(int bytes) {
   return '${(kb / 1024).toStringAsFixed(1)} MB';
 }
 
-class PacksScreen extends StatelessWidget {
+/// Oflayn paketlar: avval ilova ichidagi asosiy paket (haqiqiy versiya,
+/// hajm, tillar), keyin katalogdan yuklanadiganlar, oxirida ixcham
+/// “Rejalashtirilgan” bo'limi.
+class PacksScreen extends StatefulWidget {
   const PacksScreen({super.key});
+
+  @override
+  State<PacksScreen> createState() => _PacksScreenState();
+}
+
+class _PacksScreenState extends State<PacksScreen> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) unawaited(context.services.packs.open());
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context);
+    final text = Theme.of(context).textTheme;
+    final packs = context.services.packs;
+    return LgPage(
+      title: l.libPacks,
+      children: [
+        LgSectionTitle(l.packsBuiltIn),
+        ContentGate(builder: (context, pack) => const _CorePackCard()),
+        LgSectionTitle(l.packsDownloadable),
+        ListenableBuilder(
+          listenable: packs,
+          builder: (context, _) {
+            final catalog = packs.catalog;
+            final loading = packs.catalogState == CatalogState.loading;
+            final failure = packs.catalogState == CatalogState.failed
+                ? packs.catalogError
+                : null;
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                if (catalog == null && loading)
+                  LgStateView(
+                    kind: StateKind.loading,
+                    title: l.packsCatalogLoading,
+                  )
+                else if (catalog == null && failure != null)
+                  LgStateView(
+                    kind: failure == PackDownloadFailure.network
+                        ? StateKind.offline
+                        : StateKind.error,
+                    title: packFailureText(failure, l),
+                    actionLabel: l.actionRetry,
+                    onAction: packs.refresh,
+                  )
+                else if (catalog != null) ...[
+                  if (failure != null || packs.catalogFromCache)
+                    LgNotice(
+                      failure == null
+                          ? l.packsCatalogCached
+                          : '${packFailureText(failure, l)} '
+                                '${l.packsCatalogCached}',
+                      kind: NoticeKind.info,
+                    ),
+                  if (catalog.entries.isEmpty)
+                    Text(l.packsCatalogEmpty, style: text.bodyMedium)
+                  else
+                    for (final e in catalog.entries) _CatalogPackCard(entry: e),
+                ],
+              ],
+            );
+          },
+        ),
+        LgSectionTitle(l.packsPlanned),
+        LgPanel(
+          soft: true,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              for (final title in [
+                l.packsBiochem,
+                l.packsSpecimensQc,
+                l.packsMicroscopy,
+              ])
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 6),
+                  child: Row(
+                    children: [
+                      const Icon(Icons.schedule_rounded, size: 18),
+                      const SizedBox(width: 8),
+                      Expanded(child: Text(title, style: text.titleSmall)),
+                    ],
+                  ),
+                ),
+              const SizedBox(height: 4),
+              Text(l.packsPlannedBody, style: text.bodySmall),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+String packFailureText(PackDownloadFailure f, AppLocalizations l) =>
+    switch (f) {
+      PackDownloadFailure.network => l.packsFailNetwork,
+      PackDownloadFailure.server => l.packsFailServer,
+      PackDownloadFailure.integrity => l.packsFailIntegrity,
+      PackDownloadFailure.incompatible => l.packsFailIncompatible,
+      PackDownloadFailure.storage => l.packsFailStorage,
+      // Bekor qilish xato sifatida ko'rsatilmaydi.
+      PackDownloadFailure.cancelled => '',
+    };
+
+String _languagesLabel(List<String> codes) =>
+    codes.map((e) => e.toUpperCase()).join(' · ');
+
+class _CorePackCard extends StatelessWidget {
+  const _CorePackCard();
 
   @override
   Widget build(BuildContext context) {
@@ -131,90 +252,204 @@ class PacksScreen extends StatelessWidget {
     final text = Theme.of(context).textTheme;
     final p = LgPalette.of(context);
     final content = context.services.content;
-    return LgPage(
-      title: l.libPacks,
-      children: [
-        ContentGate(
-          builder: (context, pack) {
-            final m = content.manifest!;
-            return LgPanel(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Text(l.packsCoreTitle, style: text.titleMedium),
-                      ),
-                      LgTag(l.packsInstalled, icon: Icons.check_rounded),
-                    ],
-                  ),
-                  const SizedBox(height: 8),
-                  for (final line in [
-                    l.packsVersion(m.version),
-                    l.packsSize(formatBytes(m.totalSize)),
-                    l.packsLanguages(
-                      m.languages.map((e) => e.toUpperCase()).join(' · '),
-                    ),
-                  ])
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 4),
-                      child: Text(line, style: text.bodyMedium),
-                    ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 6),
-                    child: Text(
-                      l.packsLicence(m.licence),
-                      style: text.bodySmall,
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  Row(
-                    children: [
-                      Icon(Icons.verified_rounded, size: 18, color: p.brand),
-                      const SizedBox(width: 6),
-                      Expanded(
-                        child: Text(
-                          l.packsVerified,
-                          style: text.bodySmall!.copyWith(color: p.brand),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
+    final m = content.manifest!;
+    final pack = content.pack!;
+    Widget check(IconData icon, String label, {Color? color}) => Padding(
+      padding: const EdgeInsets.only(top: 6),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Icon(icon, size: 18, color: color ?? p.brand),
+          const SizedBox(width: 8),
+          Expanded(child: Text(label, style: text.bodyMedium)),
+        ],
+      ),
+    );
+    return LgPanel(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Expanded(child: Text(l.packsCoreTitle, style: text.titleMedium)),
+              LgTag(l.packsInstalled, icon: Icons.check_rounded),
+            ],
+          ),
+          const SizedBox(height: 6),
+          Text(
+            l.packsMeta(
+              m.version,
+              formatBytes(m.totalSize),
+              _languagesLabel(m.languages),
+            ),
+            style: text.bodySmall,
+          ),
+          check(Icons.wifi_off_rounded, l.packsOffline),
+          check(Icons.verified_rounded, l.packsVerified),
+          check(Icons.rule_rounded, l.packsCoreState, color: p.amber),
+          const SizedBox(height: 8),
+          Text(
+            l.packsContents(
+              pack.analytes.length,
+              pack.quiz.length,
+              pack.sources.length,
+            ),
+            style: text.bodySmall,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _CatalogPackCard extends StatelessWidget {
+  const _CatalogPackCard({required this.entry});
+
+  final PackCatalogEntry entry;
+
+  Future<void> _confirmRemove(BuildContext context) async {
+    final l = AppLocalizations.of(context);
+    final packs = context.services.packs;
+    final ok = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(l.packsRemoveTitle),
+        content: Text(l.packsRemoveBody),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(false),
+            child: Text(l.actionCancel),
+          ),
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(true),
+            child: Text(l.packsRemove),
+          ),
+        ],
+      ),
+    );
+    if (ok == true) await packs.remove(entry.packId);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context);
+    final text = Theme.of(context).textTheme;
+    final p = LgPalette.of(context);
+    final lang = Localizations.localeOf(context).languageCode;
+    final packs = context.services.packs;
+    final installed = packs.installed(entry.packId);
+    final job = packs.job(entry.packId);
+    final (String status, LgTone tone) = switch (entry.status) {
+      PackStatus.test => (l.packsStatusTest, LgTone.warning),
+      PackStatus.draft => (l.packsStatusDraft, LgTone.warning),
+      PackStatus.reviewed => (l.packsStatusReviewed, LgTone.brand),
+    };
+    final Widget action;
+    if (job != null && job.isRunning) {
+      final percent = ((job.fraction ?? 0) * 100).floor();
+      action = Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Semantics(
+            label: l.packsDownloading(percent),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(4),
+              child: LinearProgressIndicator(
+                value: job.fraction,
+                minHeight: 6,
+                color: p.brand,
+                backgroundColor: p.soft,
               ),
-            );
-          },
-        ),
-        LgSectionTitle(l.packsUpcoming),
-        Text(l.packsUpcomingBody, style: text.bodyMedium),
-        const SizedBox(height: 8),
-        for (final title in [
-          l.packsBiochem,
-          l.packsSpecimensQc,
-          l.packsMicroscopy,
-        ])
-          LgPanel(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            ),
+          ),
+          const SizedBox(height: 6),
+          ExcludeSemantics(
+            child: Text(l.packsDownloading(percent), style: text.bodySmall),
+          ),
+          const SizedBox(height: 8),
+          LgButton.secondary(
+            label: l.actionCancel,
+            icon: Icons.close_rounded,
+            onPressed: () => packs.cancel(entry.packId),
+          ),
+        ],
+      );
+    } else {
+      final failure = job?.failure;
+      action = Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          if (failure != null)
+            LgNotice(packFailureText(failure, l), kind: NoticeKind.error),
+          if (installed == null)
+            LgButton(
+              label: failure != null
+                  ? l.actionRetry
+                  : l.packsDownload(formatBytes(entry.size)),
+              icon: failure != null
+                  ? Icons.refresh_rounded
+                  : Icons.download_rounded,
+              onPressed: () => packs.install(entry),
+            )
+          else ...[
+            if (packs.updateAvailable(entry))
+              LgButton(
+                label: failure != null
+                    ? l.actionRetry
+                    : l.packsUpdate(entry.version),
+                icon: Icons.system_update_alt_rounded,
+                onPressed: () => packs.install(entry),
+              ),
+            if (packs.updateAvailable(entry)) const SizedBox(height: 8),
+            LgButton.secondary(
+              label: l.packsRemove,
+              icon: Icons.delete_outline_rounded,
+              onPressed: () => _confirmRemove(context),
+            ),
+          ],
+        ],
+      );
+    }
+    return LgPanel(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(entry.title.of(lang), style: text.titleMedium),
+          const SizedBox(height: 6),
+          LgTag(status, tone: tone, icon: Icons.science_outlined),
+          const SizedBox(height: 8),
+          Text(entry.summary.of(lang), style: text.bodyMedium),
+          const SizedBox(height: 6),
+          Text(
+            l.packsMeta(
+              entry.version,
+              formatBytes(entry.size),
+              _languagesLabel(entry.languages),
+            ),
+            style: text.bodySmall,
+          ),
+          if (installed != null) ...[
+            const SizedBox(height: 6),
+            Row(
               children: [
-                Text(title, style: text.titleMedium),
-                const SizedBox(height: 4),
-                Text('UZ · RU · EN', style: text.bodySmall),
-                const SizedBox(height: 10),
-                LgTag(l.packsNotPublished, tone: LgTone.neutral),
-                const SizedBox(height: 12),
-                // Yuklab bo'lmaydigan tugma muvaffaqiyat ko'rsatmaydi:
-                // u o'chirilgan va sababi yozilgan.
-                LgButton.secondary(
-                  label: l.notAvailableYet,
-                  icon: Icons.download_rounded,
-                  onPressed: null,
+                Icon(Icons.check_circle_rounded, size: 18, color: p.brand),
+                const SizedBox(width: 6),
+                Expanded(
+                  child: Text(
+                    l.packsInstalledVersion(
+                      installed.version,
+                      formatBytes(installed.size),
+                    ),
+                    style: text.bodySmall,
+                  ),
                 ),
               ],
             ),
-          ),
-      ],
+          ],
+          const SizedBox(height: 12),
+          action,
+        ],
+      ),
     );
   }
 }

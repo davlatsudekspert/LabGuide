@@ -1480,6 +1480,121 @@ class AppLocalizationsEn extends AppLocalizations {
   String get packsNotPublished => 'Not published yet';
 
   @override
+  String get packsBuiltIn => 'Built into the app';
+
+  @override
+  String get packsOffline => 'Works offline';
+
+  @override
+  String get packsCoreState =>
+      'Status: draft — sourced learning material, not yet independently reviewed';
+
+  @override
+  String packsContents(int cards, int questions, int sources) {
+    String _temp0 = intl.Intl.pluralLogic(
+      cards,
+      locale: localeName,
+      other: '$cards cards',
+      one: '1 card',
+    );
+    String _temp1 = intl.Intl.pluralLogic(
+      questions,
+      locale: localeName,
+      other: '$questions questions',
+      one: '1 question',
+    );
+    String _temp2 = intl.Intl.pluralLogic(
+      sources,
+      locale: localeName,
+      other: '$sources sources',
+      one: '1 source',
+    );
+    return 'Contents: $_temp0, $_temp1, $_temp2';
+  }
+
+  @override
+  String get packsDownloadable => 'Packs to download';
+
+  @override
+  String get packsCatalogLoading => 'Loading catalogue…';
+
+  @override
+  String get packsCatalogCached => 'Showing the last saved catalogue';
+
+  @override
+  String get packsCatalogEmpty => 'No packs to download yet';
+
+  @override
+  String get packsStatusTest => 'Test pack · not a clinical pack';
+
+  @override
+  String get packsStatusDraft => 'Draft · not expert-reviewed';
+
+  @override
+  String get packsStatusReviewed => 'Expert-reviewed';
+
+  @override
+  String packsMeta(String version, String size, String languages) {
+    return 'Version $version · $size · $languages';
+  }
+
+  @override
+  String packsDownload(String size) {
+    return 'Download · $size';
+  }
+
+  @override
+  String packsDownloading(int percent) {
+    return 'Downloading… $percent%';
+  }
+
+  @override
+  String packsInstalledVersion(String version, String size) {
+    return 'Installed: $version · $size';
+  }
+
+  @override
+  String packsUpdate(String version) {
+    return 'Update to $version';
+  }
+
+  @override
+  String get packsRemove => 'Remove';
+
+  @override
+  String get packsRemoveTitle => 'Remove this pack?';
+
+  @override
+  String get packsRemoveBody =>
+      'The pack is removed from this device. You can download it again later.';
+
+  @override
+  String get packsFailNetwork =>
+      'Couldn’t connect to the internet. Check your connection and try again.';
+
+  @override
+  String get packsFailServer => 'The server didn’t respond. Try again later.';
+
+  @override
+  String get packsFailIntegrity =>
+      'The pack failed verification (size or SHA-256 mismatch) and wasn’t installed. Nothing else changed.';
+
+  @override
+  String get packsFailIncompatible =>
+      'This pack needs a newer version of the app.';
+
+  @override
+  String get packsFailStorage =>
+      'Couldn’t save to this device. Check free storage.';
+
+  @override
+  String get packsPlanned => 'Planned';
+
+  @override
+  String get packsPlannedBody =>
+      'Published after independent review; the size is shown before download.';
+
+  @override
   String get savedEmptyTitle => 'No bookmarks yet';
 
   @override

@@ -1491,6 +1491,124 @@ class AppLocalizationsRu extends AppLocalizations {
   String get packsNotPublished => 'Ещё не опубликован';
 
   @override
+  String get packsBuiltIn => 'Встроено в приложение';
+
+  @override
+  String get packsOffline => 'Работает без интернета';
+
+  @override
+  String get packsCoreState =>
+      'Статус: черновик — учебный материал с источниками, ещё не прошёл независимую экспертную проверку';
+
+  @override
+  String packsContents(int cards, int questions, int sources) {
+    String _temp0 = intl.Intl.pluralLogic(
+      cards,
+      locale: localeName,
+      other: '$cards карточек',
+      few: '$cards карточки',
+      one: '$cards карточка',
+    );
+    String _temp1 = intl.Intl.pluralLogic(
+      questions,
+      locale: localeName,
+      other: '$questions вопросов',
+      few: '$questions вопроса',
+      one: '$questions вопрос',
+    );
+    String _temp2 = intl.Intl.pluralLogic(
+      sources,
+      locale: localeName,
+      other: '$sources источников',
+      few: '$sources источника',
+      one: '$sources источник',
+    );
+    return 'Состав: $_temp0, $_temp1, $_temp2';
+  }
+
+  @override
+  String get packsDownloadable => 'Пакеты для загрузки';
+
+  @override
+  String get packsCatalogLoading => 'Загрузка каталога…';
+
+  @override
+  String get packsCatalogCached => 'Показан последний сохранённый каталог';
+
+  @override
+  String get packsCatalogEmpty => 'Пока нет пакетов для загрузки';
+
+  @override
+  String get packsStatusTest => 'Тестовый пакет · не клинический';
+
+  @override
+  String get packsStatusDraft => 'Черновик · не проверен экспертом';
+
+  @override
+  String get packsStatusReviewed => 'Проверен экспертом';
+
+  @override
+  String packsMeta(String version, String size, String languages) {
+    return 'Версия $version · $size · $languages';
+  }
+
+  @override
+  String packsDownload(String size) {
+    return 'Загрузить · $size';
+  }
+
+  @override
+  String packsDownloading(int percent) {
+    return 'Загрузка… $percent %';
+  }
+
+  @override
+  String packsInstalledVersion(String version, String size) {
+    return 'Установлено: $version · $size';
+  }
+
+  @override
+  String packsUpdate(String version) {
+    return 'Обновить до $version';
+  }
+
+  @override
+  String get packsRemove => 'Удалить';
+
+  @override
+  String get packsRemoveTitle => 'Удалить пакет?';
+
+  @override
+  String get packsRemoveBody =>
+      'Пакет будет удалён с устройства. Его можно загрузить снова.';
+
+  @override
+  String get packsFailNetwork =>
+      'Нет соединения с интернетом. Проверьте связь и попробуйте снова.';
+
+  @override
+  String get packsFailServer => 'Сервер не ответил. Попробуйте позже.';
+
+  @override
+  String get packsFailIntegrity =>
+      'Пакет не прошёл проверку (размер или SHA-256 не совпали) и не установлен. Прежнее состояние не изменилось.';
+
+  @override
+  String get packsFailIncompatible =>
+      'Для этого пакета нужна более новая версия приложения.';
+
+  @override
+  String get packsFailStorage =>
+      'Не удалось записать на устройство. Проверьте свободное место.';
+
+  @override
+  String get packsPlanned => 'Запланировано';
+
+  @override
+  String get packsPlannedBody =>
+      'Будут опубликованы после независимой проверки; размер показывается до загрузки.';
+
+  @override
   String get savedEmptyTitle => 'Закладок пока нет';
 
   @override

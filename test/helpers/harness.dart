@@ -4,6 +4,8 @@ import 'dart:io';
 import 'package:crypto/crypto.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:http/http.dart' as http;
+import 'package:http/testing.dart';
 import 'package:go_router/go_router.dart';
 import 'package:labguide/app/app.dart';
 import 'package:labguide/app/app_scope.dart';
@@ -40,13 +42,23 @@ Future<AppServices> makeServices(
   bool onboarded = true,
   ThemeMode themeMode = ThemeMode.light,
   AssetBundle? bundle,
+  http.Client? httpClient,
 }) async {
   final s = store ?? MemoryKeyValueStore();
+  // Har test o'z (hali yaratilmagan) paketlar papkasi bilan.
+  final packsRoot = Directory(
+    '${Directory.systemTemp.path}/lg-packs-${DateTime.now().microsecondsSinceEpoch}',
+  );
+  addTearDown(() {
+    if (packsRoot.existsSync()) packsRoot.deleteSync(recursive: true);
+  });
   final services = createServices(
     store: s,
     bundle: bundle ?? rootBundle,
     systemLocales: [language.locale],
     otpAdapter: otpAdapter ?? DemoOtpAdapter(releaseBuild: false),
+    httpClient: httpClient ?? localPacksServer(),
+    packsRoot: () async => packsRoot,
   );
   await services.settings.setLanguage(language);
   await services.settings.setThemeMode(themeMode);
@@ -163,3 +175,15 @@ class PatchedPackBundle extends CachingAssetBundle {
     return _inner.load(key);
   }
 }
+
+/// Tarmoq o'rniga repo ichidagi `packs/` papkasi (nashr qilinadigan aynan
+/// shu fayllar). Boshqa manzillar — 404. Sinxron o'qiladi: widget testning
+/// soxta vaqtida ham javob darhol keladi.
+http.Client localPacksServer() => MockClient((req) async {
+  const prefix = '/davlatsudekspert/LabGuide/main/';
+  final path = req.url.path;
+  if (!path.startsWith(prefix)) return http.Response('not found', 404);
+  final file = File(path.substring(prefix.length));
+  if (!file.existsSync()) return http.Response('not found', 404);
+  return http.Response.bytes(file.readAsBytesSync(), 200);
+});

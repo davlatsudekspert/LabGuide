@@ -73,6 +73,33 @@ kelmagan**.
   hisoblangan mmol/L; kirillcha qidiruv; savol manbasi; to‘g‘ri javob uzunligi bo‘yicha
   bilinmaydi (61/71 → 21/71).
 
+## Bo‘sh joylar auditi (2026-10-09, 3-sessiya boshi)
+
+Barcha ekranlar ko‘rib chiqildi. Uch tur:
+
+**A. Funksiyasi yozilmagan**
+- Oflayn paket yuklovchisi (o‘rnatuvchi bor; HTTP, progress, bekor qilish, yangilash yo‘q).
+- Imtihon rejimi (ekran “rejalashtirilgan” holatda).
+- Kutubxona: matn qidiruvi, material turi filtri, “havola / ilovadagi fayl / yuklanadigan
+  kitob” farqi, PDF o‘quvchi.
+- Tekshiruv navbati hamma foydalanuvchiga ochiq (vakolat tekshiruvi yo‘q).
+- Mikroskopiya: faqat sarlavhalar, rasmli atlas yo‘q.
+- Sessiya tokenini xavfsiz saqlash, yangilash va serverdan chiqish.
+
+**B. Xizmatga ulanmagan**
+- Email OTP (release’da `UnconfiguredOtpAdapter`); LabGuide uchun backend loyihasi yo‘q.
+- Ustoz–talaba guruhlari, topshiriqlar, server ruxsatlari.
+- Reviewer/admin vakolati (server tomonida beriladi).
+- StoreKit / Google Play Billing (bu sessiya doirasidan tashqarida, halol o‘chirilgan).
+- Paketlar serveri (sinov paketi uchun repo ichidagi statik hosting yetadi).
+
+**C. Kontenti kutilayotgan**
+- IFU katalogi (0 yozuv): aniq model + reagent REF + IFU versiyasi kerak.
+- Litsenziyali mikrofotolar.
+- Domla adabiyotlari va darslar (`lessons` bo‘sh).
+- Rejalashtirilgan paketlar (biokimyo kengaytmasi, namunalar/QC, mikroskopiya).
+- Mustaqil tibbiy review (hamma kontent draft).
+
 ## Haqiqiy tekshiruv natijalari (2026-10-09, shu konteynerda va GitHub Actions’da)
 
 | Tekshiruv | Natija |
@@ -83,12 +110,10 @@ kelmagan**.
 | Yangi testlar | Har bir tuzatilgan xato uchun test tuzatishsiz **yiqilishi** tekshirildi (TalkBack, past ekran, sarlavha, tab xotirasi, klaviatura, vergulli son, QC zaxira, paket ro‘yxatlari, guruh savollari) |
 | Kontrast | Matn ≥ 4.5:1, boshqaruv chegaralari ≥ 3:1 (light va dark) |
 | GitHub Actions run #2, #5 (build) | ✓ testlar, Android release APK (sinov), **imzosiz iOS release build (macOS, Xcode)** |
-| GitHub Actions run #3 (testflight, nfcx’da) | Sertifikat va API kalit o‘qildi, bundle ID/profil bosqichi o‘tdi; **App Store Connect’da ilova yozuvi yo‘qligi sababli to‘xtadi** |
-| GitHub Actions run #4 | 1 test yiqildi (kalkulyator yorlig‘i o‘zgargan, test keyingi commit’da yangilangan) — run #5 da tuzalgan |
+| TestFlight (LabGuide repo, run #5) | `0.1.0 (1)` bulut imzo bilan yuklandi, processingState **VALID**; egasi telefonda TestFlight orqali ochdi (2026-10-09) |
 | Vizual tekshiruv | `tool/screenshots` — 37 ta ekran rasmi, yangi ekranlar (SI chegaralar, birlik eslatmasi, AG, landshaft, kirillcha qidiruv, QC) ko‘rib chiqildi |
 
 **Bajarilmagan tekshiruvlar** (o‘tdi deb hisoblanmaydi):
-- TestFlight’ga yuklash — App Store Connect ilova yozuvi kutilmoqda (pastda).
 - Android emulator yoki haqiqiy qurilmada ishga tushirish — konteynerda KVM yo‘q.
 - Screen reader (TalkBack/VoiceOver) bilan qo‘lda tekshiruv (avtomatik semantik testlar bor).
 - Mustaqil tibbiy ekspert review’i — hech bir karta va savol tasdiqlanmagan.
@@ -112,12 +137,8 @@ kelmagan**.
 
 ## Blockerlar va foydalanuvchidan kerak bo‘ladigan narsalar
 
-- **TestFlight:** App Store Connect → Apps → + → New App, Bundle ID `uz.labguide.app`,
-  SKU `labguide-ios`. Yangi repo uchun yangi API kalit (Admin) va uchta secret: `ASC_KEY_ID`,
-  `ASC_ISSUER_ID`, `ASC_KEY_P8_BASE64` (`.p12` shart emas — bulut imzo). Shundan keyin
-  workflow `mode: testflight` bilan yuklaydi — [IOS_TESTFLIGHT.md](IOS_TESTFLIGHT.md).
-  **2026-10-09: birinchi build TestFlight’da** — run #5, `0.1.0 (1)`, bulut imzo,
-  altool bilan yuklandi, processingState **VALID**.
+- **TestFlight:** ishlaydi — `mode: testflight` keyingi bo‘sh build raqami bilan yuklaydi
+  ([IOS_TESTFLIGHT.md](IOS_TESTFLIGHT.md)). Ilova yozuvi va API kalit (Admin) sozlangan.
 - **Google Play:** upload kaliti (`ANDROID_KEYSTORE_*`, `ANDROID_KEY_*` secretlari) — bo‘lmasa APK
   faqat sinov uchun (debug kalit).
 - **Domla materiallari** (kitob, qo‘llanma, metodika, testlar) — hali kelmagan; kelganda

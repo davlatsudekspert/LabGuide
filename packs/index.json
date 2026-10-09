@@ -1,0 +1,28 @@
+{
+  "catalog_version": 1,
+  "packs": [
+    {
+      "pack_id": "sample-test",
+      "status": "test",
+      "version": "2026.10.09-test.1",
+      "manifest": "sample-test/2026.10.09-test.1/manifest.json",
+      "size": 10759,
+      "languages": [
+        "uz",
+        "ru",
+        "en"
+      ],
+      "min_schema": 1,
+      "title": {
+        "uz": "Sinov paketi",
+        "ru": "Тестовый пакет",
+        "en": "Test pack"
+      },
+      "summary": {
+        "uz": "Yuklab olish, tekshirish va yangilashni sinash uchun. Ichida asosiy paketdagi bitta draft kartaning nusxasi bor — klinik paket emas.",
+        "ru": "Для проверки загрузки, контроля целостности и обновления. Внутри — копия одной черновой карточки из основного пакета; это не клинический пакет.",
+        "en": "For testing download, integrity checks and updates. Contains a copy of one draft card from the core pack — not a clinical pack."
+      }
+    }
+  ]
+}

@@ -1474,6 +1474,104 @@ class AppLocalizationsUz extends AppLocalizations {
   String get packsNotPublished => 'Hali nashr etilmagan';
 
   @override
+  String get packsBuiltIn => 'Ilovaga o‘rnatilgan';
+
+  @override
+  String get packsOffline => 'Internetsiz ishlaydi';
+
+  @override
+  String get packsCoreState =>
+      'Holat: draft — manbali o‘quv namunasi, mustaqil mutaxassis tekshiruvidan hali o‘tmagan';
+
+  @override
+  String packsContents(int cards, int questions, int sources) {
+    return 'Tarkib: $cards ta karta, $questions ta savol, $sources ta manba';
+  }
+
+  @override
+  String get packsDownloadable => 'Yuklab olinadigan paketlar';
+
+  @override
+  String get packsCatalogLoading => 'Katalog yuklanmoqda…';
+
+  @override
+  String get packsCatalogCached => 'Oxirgi saqlangan katalog ko‘rsatilmoqda';
+
+  @override
+  String get packsCatalogEmpty => 'Hozircha yuklab olinadigan paket yo‘q';
+
+  @override
+  String get packsStatusTest => 'Sinov paketi · klinik paket emas';
+
+  @override
+  String get packsStatusDraft => 'Draft · mutaxassis tekshirmagan';
+
+  @override
+  String get packsStatusReviewed => 'Mutaxassis tekshirgan';
+
+  @override
+  String packsMeta(String version, String size, String languages) {
+    return 'Versiya $version · $size · $languages';
+  }
+
+  @override
+  String packsDownload(String size) {
+    return 'Yuklab olish · $size';
+  }
+
+  @override
+  String packsDownloading(int percent) {
+    return 'Yuklanmoqda… $percent %';
+  }
+
+  @override
+  String packsInstalledVersion(String version, String size) {
+    return 'O‘rnatilgan: $version · $size';
+  }
+
+  @override
+  String packsUpdate(String version) {
+    return 'Yangilash: $version';
+  }
+
+  @override
+  String get packsRemove => 'O‘chirish';
+
+  @override
+  String get packsRemoveTitle => 'Paketni o‘chirasizmi?';
+
+  @override
+  String get packsRemoveBody =>
+      'Paket qurilmadan o‘chiriladi. Keyin uni qayta yuklab olish mumkin.';
+
+  @override
+  String get packsFailNetwork =>
+      'Internetga ulanib bo‘lmadi. Aloqani tekshirib, qayta urinib ko‘ring.';
+
+  @override
+  String get packsFailServer =>
+      'Server javob bermadi. Birozdan keyin qayta urinib ko‘ring.';
+
+  @override
+  String get packsFailIntegrity =>
+      'Paket tekshiruvdan o‘tmadi (hajm yoki SHA-256 mos emas) va o‘rnatilmadi. Avvalgi holat o‘zgarmadi.';
+
+  @override
+  String get packsFailIncompatible =>
+      'Bu paket ilovaning yangiroq versiyasini talab qiladi.';
+
+  @override
+  String get packsFailStorage =>
+      'Qurilmaga yozib bo‘lmadi. Bo‘sh joyni tekshiring.';
+
+  @override
+  String get packsPlanned => 'Rejalashtirilgan';
+
+  @override
+  String get packsPlannedBody =>
+      'Kontent mustaqil tekshiruvdan o‘tgach nashr etiladi; hajmi yuklashdan oldin ko‘rsatiladi.';
+
+  @override
   String get savedEmptyTitle => 'Hali xatcho‘p yo‘q';
 
   @override

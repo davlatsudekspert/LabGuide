@@ -1,0 +1,18 @@
+{
+  "pack_id": "sample-test",
+  "version": "2026.10.09-test.1",
+  "min_schema": 1,
+  "languages": [
+    "uz",
+    "ru",
+    "en"
+  ],
+  "licence": "TEST PACK — a copy of one LabGuide draft card, for testing downloads only; not a clinical pack",
+  "files": [
+    {
+      "path": "pack.json",
+      "size": 10759,
+      "sha256": "7fe81a3a2f11dde90dcce254aa61c499729005d5eb3ecfcd69a935de07da4343"
+    }
+  ]
+}

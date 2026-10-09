@@ -1,8 +1,11 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
+import 'package:http/http.dart' as http;
 import 'package:material_ui/material_ui.dart';
+import 'package:path_provider/path_provider.dart';
 
 import 'app/app.dart';
 import 'app/app_scope.dart';
@@ -11,6 +14,8 @@ import 'features/auth/auth_controller.dart';
 import 'features/auth/otp_auth.dart';
 import 'features/content/content_controller.dart';
 import 'features/learn/quiz_progress.dart';
+import 'features/packs/pack_downloader.dart';
+import 'features/packs/packs_controller.dart';
 import 'features/qc/qc_controller.dart';
 import 'features/settings/settings_controller.dart';
 
@@ -34,12 +39,12 @@ AppServices createServices({
   required AssetBundle bundle,
   required Iterable<Locale> systemLocales,
   OtpAuthAdapter? otpAdapter,
+  http.Client? httpClient,
+  Future<Directory> Function()? packsRoot,
 }) {
+  const config = AppConfig(appVersion: _appVersion, showDebugBadge: kDebugMode);
   return AppServices(
-    config: const AppConfig(
-      appVersion: _appVersion,
-      showDebugBadge: kDebugMode,
-    ),
+    config: config,
     store: store,
     settings: SettingsController(store, systemLocales: systemLocales),
     auth: AuthController(store, otpAdapter ?? createOtpAdapter()),
@@ -47,5 +52,14 @@ AppServices createServices({
     bookmarks: BookmarksController(store),
     qc: QcController(store),
     quizProgress: QuizProgressController(store),
+    packs: PacksController(
+      store: store,
+      downloader: PackDownloader(httpClient ?? http.Client()),
+      indexUri: Uri.parse(config.packsIndexUrl),
+      root: packsRoot ?? _defaultPacksRoot,
+    ),
   );
 }
+
+Future<Directory> _defaultPacksRoot() async =>
+    Directory('${(await getApplicationSupportDirectory()).path}/packs');

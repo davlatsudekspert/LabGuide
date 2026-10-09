@@ -1,0 +1,221 @@
+{
+  "pack_id": "sample-test",
+  "schema_version": 1,
+  "content_version": "2026.10.09-test.1",
+  "groups": [
+    {
+      "id": "carbohydrate",
+      "names": {
+        "uz": "Uglevod almashinuvi",
+        "ru": "Углеводный обмен",
+        "en": "Carbohydrate metabolism"
+      }
+    }
+  ],
+  "analytes": [
+    {
+      "id": "glucose-plasma-fasting",
+      "status": "draft",
+      "content_state": "sourced_sample",
+      "names": {
+        "uz": "Och qoringa plazma glyukozasi",
+        "ru": "Глюкоза плазмы натощак",
+        "en": "Fasting plasma glucose"
+      },
+      "tagline": {
+        "uz": "Natija → kontekst → tushuncha",
+        "ru": "Результат → контекст → понимание",
+        "en": "Result → context → understanding"
+      },
+      "synonyms": [
+        "FPG",
+        "glucose",
+        "glyukoza",
+        "глюкоза",
+        "qand",
+        "сахар крови",
+        "blood sugar",
+        "ГПН"
+      ],
+      "group": "carbohydrate",
+      "specimen": {
+        "uz": "Plazma",
+        "ru": "Плазма",
+        "en": "Plasma"
+      },
+      "population": {
+        "uz": "Homilador bo‘lmagan odamlar",
+        "ru": "Небеременные",
+        "en": "Not pregnant"
+      },
+      "method": null,
+      "units": [
+        "mg/dL",
+        "mmol/L"
+      ],
+      "sections": [
+        "purpose",
+        "physiology",
+        "high_result",
+        "low_result",
+        "preanalytics",
+        "interference",
+        "related_tests",
+        "limitations"
+      ],
+      "claims": [
+        {
+          "section": "purpose",
+          "source_ids": [
+            "medline-glucose"
+          ],
+          "locator": "What is it used for?",
+          "text": {
+            "uz": "Prediabet va diabetni skrining qilish, glyukoza yuqori yoki pastligini ko‘rsatuvchi belgilar sababini aniqlash va glyukozaga ta’sir qiluvchi ayrim uzoq muddatli dorilarning nojo‘ya ta’sirini kuzatish uchun.",
+            "ru": "Скрининг предиабета и диабета, выяснение причины симптомов повышенной или пониженной глюкозы и контроль побочных эффектов некоторых длительно принимаемых лекарств, влияющих на глюкозу.",
+            "en": "Screening for prediabetes and diabetes, finding the cause of symptoms of high or low glucose, and monitoring side effects of some long-term medicines that affect glucose."
+          }
+        },
+        {
+          "section": "high_result",
+          "source_ids": [
+            "medline-glucose"
+          ],
+          "locator": "What do the results mean?",
+          "text": {
+            "uz": "Eng ko‘p uchraydigan sabablar — prediabet va diabet. Boshqa mumkin bo‘lgan sabablar: qalqonsimon bez faolligining oshishi (gipertireoz), oshqozonosti bezi muammolari (jumladan pankreatit), jarrohlik, juda og‘ir kasallik yoki jarohat stressi, buyrak usti bezi muammolari va ayrim dorilar.",
+            "ru": "Самые частые причины — предиабет и диабет. Другие возможные причины: повышенная функция щитовидной железы (гипертиреоз), болезни поджелудочной железы (включая панкреатит), стресс при операции, очень тяжёлой болезни или травме, болезни надпочечников и некоторые лекарства.",
+            "en": "Prediabetes and diabetes are the most common causes. Other possible causes include an overactive thyroid gland (hyperthyroidism), pancreatic problems including pancreatitis, stress from surgery, very serious illness or trauma, adrenal gland problems and certain medicines."
+          }
+        },
+        {
+          "section": "low_result",
+          "source_ids": [
+            "medline-glucose"
+          ],
+          "locator": "What do the results mean?",
+          "text": {
+            "uz": "Diabeti bor odamlarda: ayrim diabet dorilari va glyukozani pasaytiruvchi boshqa dorilar, yetarli ovqatlanmaslik (ayniqsa diabet dorisidan keyin), odatdagidan ko‘proq jismoniy faollik. Diabet bo‘lmasa, past glyukoza kam uchraydi; mumkin bo‘lgan sabablar: jigar yoki buyrak kasalligi, buyrak usti bezi yetishmovchiligi, ayrim gipofiz kasalliklari, qalqonsimon bez faolligining pasayishi (gipotireoz), to‘yib ovqatlanmaslik, ayrim dorilar va alkogolga qaramlik.",
+            "ru": "При диабете: некоторые лекарства от диабета и другие препараты, снижающие глюкозу, недостаточное питание (особенно после приёма лекарства от диабета), физическая нагрузка больше обычной. Без диабета низкая глюкоза встречается редко; возможные причины: болезни печени или почек, недостаточность надпочечников, некоторые заболевания гипофиза, сниженная функция щитовидной железы (гипотиреоз), истощение, некоторые лекарства и расстройство, связанное с употреблением алкоголя.",
+            "en": "With diabetes: some diabetes medicines and other glucose-lowering medicines, not eating enough (especially after taking diabetes medicine) and more physical activity than usual. Without diabetes, low glucose is uncommon; possible causes include liver or kidney disease, underactive adrenal glands, some pituitary disorders, an underactive thyroid gland (hypothyroidism), malnutrition, certain medicines and alcohol use disorder."
+          }
+        },
+        {
+          "section": "limitations",
+          "source_ids": [
+            "medline-glucose"
+          ],
+          "locator": "What do the results mean?",
+          "text": {
+            "uz": "Natijaning ma’nosi qaysi test qilingani, boshqa tahlillar natijalari va kasallik tarixiga bog‘liq.",
+            "ru": "Значение результата зависит от вида теста, результатов других анализов и анамнеза.",
+            "en": "What a result means depends on which test was done, other test results and the medical history."
+          }
+        }
+      ],
+      "notes": {
+        "preanalytics": {
+          "uz": "Probirka, saqlash va ajratish shartlari aniq reagent IFU va mahalliy SOP ga bog‘lanadi. Bu yerda universal vaqt, harorat yoki apparat parametrlari berilmaydi.",
+          "ru": "Пробирка, хранение и отделение образца привязываются к конкретной IFU реагента и локальной SOP. Универсальные время, температура и параметры прибора здесь не задаются.",
+          "en": "Tube, storage and separation conditions are tied to the exact reagent IFU and local SOP. No universal times, temperatures or instrument settings are given here."
+        }
+      },
+      "reference_intervals": [],
+      "decision_limits": [
+        {
+          "label": {
+            "uz": "Prediabet oralig‘i",
+            "ru": "Диапазон предиабета",
+            "en": "Prediabetes range"
+          },
+          "unit": "mg/dL",
+          "low": 100,
+          "high": 125,
+          "population": {
+            "uz": "Homilador bo‘lmagan odamlar, kamida 8 soat och qolgandan keyin",
+            "ru": "Небеременные, после голодания не менее 8 часов",
+            "en": "People who are not pregnant, after fasting for at least 8 hours"
+          },
+          "source_ids": [
+            "niddk-diagnosis"
+          ]
+        },
+        {
+          "label": {
+            "uz": "Diabet chegarasi",
+            "ru": "Порог диабета",
+            "en": "Diabetes threshold"
+          },
+          "unit": "mg/dL",
+          "low": 126,
+          "high": null,
+          "population": {
+            "uz": "Homilador bo‘lmagan odamlar, kamida 8 soat och qolgandan keyin",
+            "ru": "Небеременные, после голодания не менее 8 часов",
+            "en": "People who are not pregnant, after fasting for at least 8 hours"
+          },
+          "note": {
+            "uz": "Tashxis odatda takroriy test bilan tasdiqlanadi. Homiladorlikda mezonlar boshqacha.",
+            "ru": "Диагноз обычно подтверждают повторным тестом. При беременности критерии другие.",
+            "en": "Diagnosis usually requires a repeat test. Pregnancy uses different criteria."
+          },
+          "source_ids": [
+            "niddk-diagnosis"
+          ]
+        }
+      ],
+      "source_ids": [
+        "medline-glucose",
+        "niddk-diagnosis"
+      ],
+      "related": [],
+      "conversion": {
+        "molar_mass_g_per_mol": 180.156,
+        "basis": "C6H12O6; IUPAC standard atomic weights C 12.011, H 1.008, O 15.999"
+      },
+      "review": {
+        "reviewer_id": null,
+        "reviewed_at": null,
+        "state": "pending"
+      },
+      "translation_review": {
+        "uz": "pending",
+        "ru": "pending",
+        "en": "pending"
+      },
+      "instrument_binding": {
+        "manufacturer": null,
+        "model": null,
+        "reagent_ref": null,
+        "ifu_revision": null,
+        "calibrator_lot": null
+      }
+    }
+  ],
+  "sources": [
+    {
+      "id": "medline-glucose",
+      "kind": "web",
+      "title": "Blood Glucose Test",
+      "publisher": "MedlinePlus · U.S. National Library of Medicine",
+      "url": "https://medlineplus.gov/lab-tests/blood-glucose-test/",
+      "accessed": "2026-10-08",
+      "source_date": "2023-07-17",
+      "jurisdiction": "US",
+      "note": "Page updated 2023-07-17.",
+      "reuse_rights": "verify_before_distribution"
+    },
+    {
+      "id": "niddk-diagnosis",
+      "kind": "web",
+      "title": "Diabetes Tests & Diagnosis",
+      "publisher": "NIDDK · National Institutes of Health",
+      "url": "https://www.niddk.nih.gov/health-information/diabetes/overview/tests-diagnosis",
+      "accessed": "2026-10-08",
+      "source_date": "2022-07-01",
+      "jurisdiction": "US",
+      "note": "Last reviewed July 2022; the threshold table cites the American Diabetes Association.",
+      "reuse_rights": "verify_before_distribution"
+    }
+  ]
+}
