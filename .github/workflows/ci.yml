@@ -7,8 +7,17 @@
 #   build      — Linux'da analyze + test, macOS'da imzosiz iOS release build
 #                (loyiha iOS SDK bilan kompilyatsiya bo'lishini tekshiradi).
 #                main'ga har push va PR'da ham shu rejim ishlaydi.
-#   testflight — yuqoridagi + imzolangan IPA va TestFlight'ga YUKLASH.
+#   testflight — yuqoridagi + imzolangan IPA va TestFlight'ga YUKLASH,
+#                ichki (Internal) guruhlarga biriktirish va "What to Test".
 #                App Store review'ga YUBORILMAYDI, reliz QILINMAYDI.
+#   play_internal — testlar + release imzoli AAB va Google Play'ning
+#                `internal` trekiga yuklash (play_status: draft|completed).
+#                iOS job ishlamaydi. Production/yopiq trekka TEGMAYDI.
+#                Secret GOOGLE_PLAY_SERVICE_ACCOUNT_JSON yoki ANDROID_* imzo
+#                kaliti bo'lmasa — xatosiz, aniq xabar bilan o'tkaziladi.
+#                Play Console'da ilova bo'lmasa / birinchi AAB qo'lda
+#                yuklanmagan bo'lsa — yuklash ogohlantirish bilan o'tadi.
+#                Versiya kodi = run_number (har ishga tushishda oshadi).
 #
 # apple_setup=true (faqat testflight bilan): App Store Connect API orqali
 #   bundle ID ro'yxatdan o'tkaziladi (yo'q bo'lsa) va shu jamoa
@@ -28,10 +37,15 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: "build — imzosiz tekshiruv; testflight — imzo + TestFlight'ga yuklash"
+        description: "build — imzosiz tekshiruv; testflight — imzo + TestFlight'ga yuklash; play_internal — imzoli AAB + Google Play ichki test"
         type: choice
-        options: [build, testflight]
+        options: [build, testflight, play_internal]
         default: build
+      play_status:
+        description: "play_internal uchun reliz holati: draft (yangi/qoralama ilova uchun shart) yoki completed"
+        type: choice
+        options: [draft, completed]
+        default: draft
       apple_setup:
         description: "testflight uchun: bundle ID va App Store profilini API orqali yaratish (yo'q bo'lsa)"
         type: boolean
@@ -162,6 +176,11 @@ jobs:
               echo "## Android: sinov APK'lari (debug kalit bilan imzolangan)"
             fi
             ls -la LabGuide-*.apk | awk '{print "- " $9 " — " $5 " bayt"}'
+            if [ "$ANDROID_SIGNED" = true ]; then
+              echo "- AAB: \`app-release.aab\` · versionCode **${{ github.run_number }}** (artifact ichida)"
+            else
+              echo "- AAB yasalmadi: ANDROID_KEYSTORE_BASE64 va boshqa ANDROID_* secretlari yo'q"
+            fi
           } >> "$GITHUB_STEP_SUMMARY"
       - uses: actions/upload-artifact@v4
         with:
@@ -173,8 +192,59 @@ jobs:
           if-no-files-found: warn
           retention-days: 30
 
+      # ---------- GOOGLE PLAY: FAQAT ICHKI TEST ----------
+      - name: Google Play — tayyorlik
+        if: env.MODE == 'play_internal'
+        env:
+          PLAY_JSON: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}
+        run: |
+          set -euo pipefail
+          WHY=""
+          [ "$ANDROID_SIGNED" = true ] || WHY="$WHY ANDROID_KEYSTORE_BASE64/ANDROID_KEYSTORE_PASSWORD/ANDROID_KEY_ALIAS/ANDROID_KEY_PASSWORD (release imzo);"
+          [ -n "$PLAY_JSON" ] || WHY="$WHY GOOGLE_PLAY_SERVICE_ACCOUNT_JSON (Play Console API);"
+          if [ -n "$WHY" ]; then
+            echo "PLAY_READY=false" >> "$GITHUB_ENV"
+            echo "::notice::Google Play'ga yuklash o'tkazib yuborildi — secret(lar) yo'q:$WHY"
+            {
+              echo "## Google Play: yuklash o'tkazib yuborildi"
+              echo "- Yetishmaydi:$WHY"
+              echo "- Egasi uchun ro'yxat: docs/store/APP_STORE.md (13-bo'lim)"
+            } >> "$GITHUB_STEP_SUMMARY"
+          else
+            test -f build/app/outputs/bundle/release/app-release.aab
+            echo "PLAY_READY=true" >> "$GITHUB_ENV"
+          fi
+
+      - name: Google Play — internal trekka yuklash
+        id: play
+        if: env.MODE == 'play_internal' && env.PLAY_READY == 'true'
+        continue-on-error: true
+        uses: r0adkll/upload-google-play@v1
+        with:
+          serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}
+          packageName: uz.labguide.app
+          releaseFiles: build/app/outputs/bundle/release/app-release.aab
+          tracks: internal
+          status: ${{ inputs.play_status || 'draft' }}
+          releaseName: "${{ github.run_number }} (draft kontent)"
+
+      - name: Google Play — natija
+        if: env.MODE == 'play_internal' && env.PLAY_READY == 'true'
+        run: |
+          if [ "${{ steps.play.outcome }}" = success ]; then
+            echo "## Google Play: internal trekka yuklandi · versionCode ${{ github.run_number }} · holat ${{ inputs.play_status || 'draft' }}" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "::warning::Google Play'ga yuklab bo'lmadi. Ko'p sabab: Play Console'da uz.labguide.app ilovasi yo'q, birinchi AAB hali qo'lda yuklanmagan, service account'ga ilova ruxsati berilmagan yoki qoralama ilova uchun play_status=completed tanlangan. AAB artifact ichida — qo'lda yuklash mumkin."
+            {
+              echo "## Google Play: yuklash amalga oshmadi (build muvaffaqiyatli)"
+              echo "- AAB artifact \`labguide-android-${{ github.run_number }}\` ichida — Play Console -> Testing -> Internal testing -> Create new release orqali qo'lda yuklang"
+              echo "- Tekshiring: ilova yaratilganmi, birinchi AAB qo'lda yuklanganmi, service account ruxsatlari, play_status=draft"
+            } >> "$GITHUB_STEP_SUMMARY"
+          fi
+
   ios:
     needs: tests
+    if: inputs.mode != 'play_internal'
     runs-on: macos-15
     timeout-minutes: 75
     defaults:
@@ -312,7 +382,7 @@ jobs:
               return jwt.encode({'iss': os.environ['API_ISSUER_ID'], 'iat': now, 'exp': now + 1100,
                                  'aud': 'appstoreconnect-v1'}, PKEY, algorithm='ES256',
                                 headers={'kid': os.environ['API_KEY_ID'], 'typ': 'JWT'})
-          def call(method, path, params=None, body=None):
+          def call(method, path, params=None, body=None, soft=False):
               url = 'https://api.appstoreconnect.apple.com' + path
               if params:
                   url += '?' + urllib.parse.urlencode(params)
@@ -324,7 +394,10 @@ jobs:
                       raw = r.read()
                       return json.loads(raw) if raw else {}
               except urllib.error.HTTPError as e:
-                  print(f'::error::App Store Connect {method} {path} -> {e.code}: {e.read().decode()[:500]}')
+                  level = 'warning' if soft else 'error'
+                  print(f'::{level}::App Store Connect {method} {path} -> {e.code}: {e.read().decode()[:500]}')
+                  if soft:
+                      return None
                   sys.exit(1)
           def env_out(**kv):
               with open(os.environ['GITHUB_ENV'], 'a') as f:
@@ -430,6 +503,65 @@ jobs:
               summary(f'- TestFlight build {ver} ({num}): processingState **{state}**')
               if state in ('INVALID', 'FAILED'):
                   sys.exit(1)
+          elif cmd == 'beta':
+              # Faqat ICHKI test: eksport javobi, "What to Test", ichki guruhlarga
+              # biriktirish. Tashqi guruh / Beta App Review / reliz — YO'Q.
+              app, num, ver = os.environ['ASC_APP_ID'], os.environ['IOS_BUILD_NUMBER'], os.environ['IOS_VERSION']
+              data = call('GET', '/v1/builds', {'filter[app]': app, 'filter[version]': num,
+                                                'filter[preReleaseVersion.version]': ver})['data']
+              if not data:
+                  print('::warning::Build hali ko\'rinmayapti — guruhga biriktirish o\'tkazib yuborildi'); sys.exit(0)
+              build = data[0]; bid = build['id']
+              enc = build['attributes'].get('usesNonExemptEncryption')
+              if enc is None:
+                  r = call('PATCH', f'/v1/builds/{bid}', body={'data': {'type': 'builds', 'id': bid,
+                           'attributes': {'usesNonExemptEncryption': False}}}, soft=True)
+                  enc = False if r is not None else None
+              summary(f'- Eksport muvofiqligi (usesNonExemptEncryption): **{enc}**')
+              notes = {
+                  'en-US': ("DRAFT build for internal testing. Content is source-based learning material that has NOT yet "
+                            "passed independent expert review - do not use it for patient care.\n"
+                            "Please check: open the app -> continue as guest -> pick role and language -> lab tests atlas "
+                            "(search in Latin and Cyrillic) -> calculators (try wrong units on purpose) -> differential "
+                            "(leukocyte) count -> practice exam. Switch language and theme. Send any error, crash or unclear "
+                            "text with a screenshot."),
+                  'ru': ("ЧЕРНОВАЯ сборка для внутреннего тестирования. Материалы основаны на источниках, но ещё НЕ прошли "
+                         "независимую экспертную проверку — не используйте их для работы с пациентами.\n"
+                         "Проверьте: открыть приложение -> войти как гость -> выбрать роль и язык -> атлас анализов (поиск "
+                         "латиницей и кириллицей) -> калькуляторы (намеренно перепутайте единицы) -> лейкоцитарная формула "
+                         "-> тренировочный экзамен. Смените язык и тему. Ошибки, сбои и неточности присылайте со скриншотом."),
+              }
+              existing = {l['attributes']['locale']: l['id'] for l in
+                          (call('GET', f'/v1/builds/{bid}/betaBuildLocalizations', soft=True) or {'data': []})['data']}
+              for loc, text in notes.items():
+                  if loc in existing:
+                      call('PATCH', f'/v1/betaBuildLocalizations/{existing[loc]}', body={'data': {
+                          'type': 'betaBuildLocalizations', 'id': existing[loc], 'attributes': {'whatsNew': text}}}, soft=True)
+                  else:
+                      call('POST', '/v1/betaBuildLocalizations', body={'data': {
+                          'type': 'betaBuildLocalizations', 'attributes': {'locale': loc, 'whatsNew': text},
+                          'relationships': {'build': {'data': {'type': 'builds', 'id': bid}}}}}, soft=True)
+              groups = (call('GET', f'/v1/apps/{app}/betaGroups', {'limit': 50}, soft=True) or {'data': []})['data']
+              internal = [g for g in groups if g['attributes'].get('isInternalGroup')]
+              if not internal:
+                  summary('- Ichki test guruhi **yo\'q**: App Store Connect -> TestFlight -> Internal Testing -> "+" '
+                          '(guruh yarating, testerlarni qo\'shing, "Automatic distribution" yoqing)')
+                  print('::warning::Ichki (Internal) TestFlight guruhi topilmadi')
+              for g in internal:
+                  a = g['attributes']
+                  if a.get('hasAccessToAllBuilds'):
+                      summary(f"- Ichki guruh **{a['name']}**: barcha buildlar avtomatik (Automatic distribution)")
+                      continue
+                  r = call('POST', f"/v1/betaGroups/{g['id']}/relationships/builds",
+                           body={'data': [{'type': 'builds', 'id': bid}]}, soft=True)
+                  summary(f"- Ichki guruh **{a['name']}**: build {num} " + ("**biriktirildi**" if r is not None
+                          else "biriktirib bo'lmadi — App Store Connect'da qo'lda qo'shing"))
+              ext = [g['attributes']['name'] for g in groups if not g['attributes'].get('isInternalGroup')]
+              if ext:
+                  summary(f"- Tashqi guruhlar ({', '.join(ext)}): tegilmadi (Beta App Review talab qiladi)")
+              d = call('GET', f'/v1/builds/{bid}/buildBetaDetail', soft=True)
+              if d:
+                  summary(f"- Ichki test holati (internalBuildState): **{d['data']['attributes'].get('internalBuildState')}**")
           PY
           echo "ASC_SCRIPT=$W/asc.py" >> "$GITHUB_ENV"
 
@@ -626,6 +758,17 @@ jobs:
           API_KEY_ID: ${{ secrets.ASC_KEY_ID }}
           API_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
         run: '"$ASC_PY" "$ASC_SCRIPT" status'
+
+      # Ichki testerlar telefonda yangilay olishi uchun: eksport javobi,
+      # "What to Test" (en-US, ru) va ichki guruh(lar)ga biriktirish.
+      # Xato bo'lsa ogohlantirish — yuklangan build yaroqli qoladi.
+      - name: TestFlight — ichki guruh va "What to Test"
+        if: env.MODE == 'testflight'
+        continue-on-error: true
+        env:
+          API_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          API_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+        run: '"$ASC_PY" "$ASC_SCRIPT" beta'
 
       - name: Tozalash
         if: always()
