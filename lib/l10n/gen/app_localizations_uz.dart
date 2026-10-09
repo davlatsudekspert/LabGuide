@@ -4189,6 +4189,179 @@ class AppLocalizationsUz extends AppLocalizations {
   String get quizOtherTopic => 'Boshqa mavzu';
 
   @override
+  String get dailyTitle => 'Kunlik savol';
+
+  @override
+  String get dailyCardStart => 'Bugungi 5 ta savol';
+
+  @override
+  String get dailyCardStartSub =>
+      '2–3 daqiqa. Har kuni yangi savollar, javobdan keyin izoh va manba.';
+
+  @override
+  String dailyCardProgress(int count, int total) {
+    return '$total tadan $count tasiga javob berildi';
+  }
+
+  @override
+  String dailyCardDone(int correct, int total) {
+    return 'Bugun bajarildi: $total tadan $correct ta to‘g‘ri';
+  }
+
+  @override
+  String get dailyCardDoneSub => 'Ertaga yangi 5 ta savol bo‘ladi.';
+
+  @override
+  String get dailyStart => 'Boshlash';
+
+  @override
+  String get dailyContinue => 'Davom etish';
+
+  @override
+  String get dailyShowResult => 'Natijani ko‘rish';
+
+  @override
+  String dailyStreakDays(int count) {
+    return '$count kun ketma-ket';
+  }
+
+  @override
+  String get dailyStreakTitle => 'Ketma-ketlik';
+
+  @override
+  String get dailyStreakCurrent => 'Joriy seriya';
+
+  @override
+  String get dailyStreakBest => 'Eng uzun seriya';
+
+  @override
+  String dailyDaysShort(int count) {
+    return '$count kun';
+  }
+
+  @override
+  String get dailyFreezeAvailable => 'Bu haftalik muzlatish bor';
+
+  @override
+  String get dailyFreezeUsed => 'Bu haftalik muzlatish ishlatildi';
+
+  @override
+  String get dailyFreezeRule =>
+      'Bir kunni o‘tkazib yuborsangiz, seriya uzilmaydi — haftasiga bir marta (muzlatish). Muzlatilgan kun seriyaga qo‘shilmaydi; ketma-ket ikki kun o‘tkazilsa, seriya qaytadan boshlanadi.';
+
+  @override
+  String get dailyFreezeSaved =>
+      'Kecha o‘tkazib yuborildi — muzlatish seriyani saqlab qoldi.';
+
+  @override
+  String get dailyStreakStart =>
+      'Bugungi savollarni bajaring — seriya shu kundan boshlanadi.';
+
+  @override
+  String get dailyKeepStreak =>
+      'Seriyani saqlash uchun bugungi savollarni bajaring.';
+
+  @override
+  String get dailyEmpty => 'Bugun uchun savol topilmadi';
+
+  @override
+  String get dailyReviewTitle => 'Bugungi savollar';
+
+  @override
+  String get dailySourceToifa =>
+      'Savollar toifa imtihonining rasmiy ro‘yxatidan olinadi — faqat kaliti LabGuide tekshiruvidan o‘tganlari.';
+
+  @override
+  String get dailyReminderTitle => 'LabGuide: kunlik savol';
+
+  @override
+  String get dailyReminderBody => 'Bugungi 5 ta savol tayyor — 2–3 daqiqa.';
+
+  @override
+  String get dailyReminderChannel => 'Kunlik eslatma';
+
+  @override
+  String get dailyReminderSetting => 'Kunlik eslatma';
+
+  @override
+  String dailyReminderAt(String time) {
+    return 'Har kuni soat $time da';
+  }
+
+  @override
+  String get dailyReminderOff => 'O‘chiq';
+
+  @override
+  String get dailyReminderTime => 'Eslatma vaqti';
+
+  @override
+  String get dailyOfferTitle => 'Har kuni eslatib turaymi?';
+
+  @override
+  String get dailyOfferBody =>
+      'Tanlagan vaqtingizda bitta bildirishnoma. Savollarni bajargan kuningiz eslatma kelmaydi. Istalgan payt o‘chirib qo‘yasiz.';
+
+  @override
+  String get dailyOfferYes => 'Eslatmani yoqish';
+
+  @override
+  String get dailyOfferNo => 'Kerak emas';
+
+  @override
+  String get dailyReminderDenied =>
+      'Bildirishnomaga ruxsat berilmadi, eslatma o‘chiq qoldi. Telefon sozlamalarida LabGuide uchun bildirishnomalarni yoqib, qayta urinib ko‘ring.';
+
+  @override
+  String get dailyReminderUnavailable =>
+      'Bu qurilmada eslatmani yoqib bo‘lmadi.';
+
+  @override
+  String dailyReminderOnSnack(String time) {
+    return 'Eslatma yoqildi: har kuni soat $time da';
+  }
+
+  @override
+  String get dailyReminderNote =>
+      'Eslatma faqat shu qurilmada rejalashtiriladi (server yo‘q). Telefon quvvatni tejash uchun uni bir necha daqiqa kechiktirishi mumkin. Ilova 7 kun ochilmasa, eslatmalar to‘xtaydi.';
+
+  @override
+  String get shareResult => 'Natijani ulashish';
+
+  @override
+  String get shareSheetTitle => 'Natija kartochkasi';
+
+  @override
+  String get shareSheetBody =>
+      'Rasmda ismingiz yoki boshqa shaxsiy ma’lumot yo‘q.';
+
+  @override
+  String get shareFailed =>
+      'Ulashish oynasini ochib bo‘lmadi. Qayta urinib ko‘ring.';
+
+  @override
+  String get shareKindDaily => 'Kunlik savol';
+
+  @override
+  String get shareKindExam => 'Mashq imtihoni';
+
+  @override
+  String get shareKindToifa => 'Toifa testi mashqi';
+
+  @override
+  String get shareCorrectCaption => 'to‘g‘ri javob';
+
+  @override
+  String get shareFooter => 'Laboratoriya bo‘yicha qo‘llanma va mashqlar';
+
+  @override
+  String get shareToifaNote => 'Rasmiy emas, LabGuide mashq natijasi';
+
+  @override
+  String shareText(String kind, int correct, int total, int percent) {
+    return 'LabGuide · $kind: $correct/$total ($percent%)';
+  }
+
+  @override
   String get quizTopicMistakes => 'Xatolarim ustida ishlash';
 
   @override

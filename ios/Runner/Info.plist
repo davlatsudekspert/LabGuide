@@ -32,6 +32,8 @@
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>LabGuide only opens your photos when you choose to attach a screenshot to a feedback request.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>LabGuide saves a result card to your photos only when you choose “Save Image” in the share sheet.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>LabGuide uses the camera only if you choose to take a photo for a feedback request.</string>
 	<key>ITSAppUsesNonExemptEncryption</key>

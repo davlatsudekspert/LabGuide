@@ -11,6 +11,7 @@ import '../../l10n/gen/app_localizations.dart';
 import '../auth/ui/welcome_screen.dart';
 import '../content/content_model.dart';
 import '../content/ui/content_widgets.dart';
+import '../daily/daily_screens.dart';
 import '../toifa/toifa_screens.dart';
 import 'exam_screens.dart';
 import 'quiz_session.dart';
@@ -49,6 +50,8 @@ class LearnScreen extends StatelessWidget {
             onPressed: () => openInTab(context, '/tests'),
           ),
         ),
+        // Har kuni qaytish uchun: 5 ta savol va ketma-ketlik.
+        const DailyCard(),
         // Faqat O'zbekiston foydalanuvchilariga (til uz yoki mintaqa UZ).
         if (toifaVisible(context)) const ToifaEntryCard(),
         // Dars mavzulari kontent paketidan keladi (hozircha bo'sh — domla

@@ -19,6 +19,8 @@ import 'core/storage/kv_store.dart';
 import 'features/auth/auth_controller.dart';
 import 'features/auth/otp_auth.dart';
 import 'features/content/content_controller.dart';
+import 'features/daily/daily_controller.dart';
+import 'features/daily/daily_reminder.dart';
 import 'features/differential/differential_controller.dart';
 import 'features/learn/exam_controller.dart';
 import 'features/learn/quiz_progress.dart';
@@ -30,6 +32,7 @@ import 'features/packs/packs_controller.dart';
 import 'features/partners/partners_controller.dart';
 import 'features/qc/qc_controller.dart';
 import 'features/settings/settings_controller.dart';
+import 'features/share/result_share.dart';
 import 'features/toifa/toifa_controller.dart';
 
 const _appVersion = '0.1.0';
@@ -56,6 +59,8 @@ Future<void> main() async {
   unawaited(services.content.load());
   // Hamkorlar keshdan darhol; serverdan fonda (sozlanmagan buildda — yo'q).
   unawaited(services.partners.refresh(force: true));
+  // Kunlik eslatma yoqilgan bo'lsa — keyingi kunlar rejasi yangilanadi.
+  unawaited(services.reminders.sync());
   runApp(LabGuideApp(services: services));
 }
 
@@ -70,13 +75,18 @@ AppServices createServices({
   LabBackend? backend,
   EntitlementKeyStore? entitlementKeys,
   bool? allFeaturesOpen,
+  ReminderScheduler? reminderScheduler,
+  ResultSharer? sharer,
+  DateTime Function()? clock,
 }) {
   const config = AppConfig(appVersion: _appVersion, showDebugBadge: kDebugMode);
   final server = backend ?? _defaultBackend();
+  final settings = SettingsController(store, systemLocales: systemLocales);
+  final daily = DailyController(store, clock: clock);
   return AppServices(
     config: config,
     store: store,
-    settings: SettingsController(store, systemLocales: systemLocales),
+    settings: settings,
     // Server sozlangan bo'lsa — haqiqiy email OTP; aks holda debug'da demo,
     // release'da “ulanmagan”.
     auth: AuthController(
@@ -117,6 +127,14 @@ AppServices createServices({
     ),
     toifa: ToifaController(store, bundle: bundle),
     differential: DifferentialController(store),
+    daily: daily,
+    reminders: ReminderController(
+      store,
+      reminderScheduler ?? LocalReminderScheduler(),
+      daily: daily,
+      settings: settings,
+    ),
+    sharer: sharer ?? const SystemResultSharer(),
   )..watchAccess();
 }
 

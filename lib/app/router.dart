@@ -9,6 +9,7 @@ import '../features/auth/ui/welcome_screen.dart';
 import '../features/content/ui/analyte_screen.dart';
 import '../features/content/ui/conditions_screens.dart';
 import '../features/content/ui/tests_screen.dart';
+import '../features/daily/daily_screens.dart';
 import '../features/differential/differential_entry_points.dart';
 import '../features/differential/differential_quiz.dart';
 import '../features/differential/differential_screens.dart';
@@ -566,6 +567,11 @@ GoRouter buildRouter(
                   GoRoute(
                     path: 'quiz',
                     builder: (context, state) => const QuizScreen(),
+                  ),
+                  // Kunlik 5 ta savol (bosh sahifa kartasi va eslatmadan).
+                  GoRoute(
+                    path: 'daily',
+                    builder: (context, state) => const DailyScreen(),
                   ),
                   // Imtihon: yechish — to'liq ekran (tablar yashiringan).
                   GoRoute(

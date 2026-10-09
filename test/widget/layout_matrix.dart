@@ -109,6 +109,7 @@ const appRoutes = [
   '/library/review',
   '/learn',
   '/learn/quiz',
+  '/learn/daily',
   '/learn/exam',
   '/learn/exam/run',
   '/learn/exam/result/missing',

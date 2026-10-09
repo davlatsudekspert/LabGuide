@@ -36,6 +36,12 @@ dependencies:
   # MIT; PDFium (BSD-3/Apache-2.0). iOS'da pdfium_flutter SwiftPM paketi
   # (Package.swift) orqali ulanadi — CocoaPods kerak emas.
   pdfrx: ^2.6.5
+  # Kunlik savol eslatmasi — faqat lokal bildirishnoma, server/push yo'q.
+  # BSD-3 (timezone ham BSD-3).
+  flutter_local_notifications: ^22.3.1
+  timezone: ^0.11.1
+  # Natija kartochkasini tizim ulashish oynasi orqali yuborish. BSD-3.
+  share_plus: ^13.3.1
 
 dev_dependencies:
   flutter_test:

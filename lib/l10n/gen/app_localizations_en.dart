@@ -4242,6 +4242,188 @@ class AppLocalizationsEn extends AppLocalizations {
   String get quizOtherTopic => 'Another topic';
 
   @override
+  String get dailyTitle => 'Daily questions';
+
+  @override
+  String get dailyCardStart => 'Today’s 5 questions';
+
+  @override
+  String get dailyCardStartSub =>
+      '2–3 minutes. New questions every day, with an explanation and source after each answer.';
+
+  @override
+  String dailyCardProgress(int count, int total) {
+    return '$count of $total answered';
+  }
+
+  @override
+  String dailyCardDone(int correct, int total) {
+    return 'Done for today: $correct of $total correct';
+  }
+
+  @override
+  String get dailyCardDoneSub => 'Five new questions tomorrow.';
+
+  @override
+  String get dailyStart => 'Start';
+
+  @override
+  String get dailyContinue => 'Continue';
+
+  @override
+  String get dailyShowResult => 'See result';
+
+  @override
+  String dailyStreakDays(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count days in a row',
+      one: '$count day in a row',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get dailyStreakTitle => 'Streak';
+
+  @override
+  String get dailyStreakCurrent => 'Current streak';
+
+  @override
+  String get dailyStreakBest => 'Longest streak';
+
+  @override
+  String dailyDaysShort(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count days',
+      one: '$count day',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get dailyFreezeAvailable => 'This week’s freeze is available';
+
+  @override
+  String get dailyFreezeUsed => 'This week’s freeze is used';
+
+  @override
+  String get dailyFreezeRule =>
+      'Miss one day and your streak survives — once a week (a freeze). The frozen day doesn’t count towards the streak; miss two days in a row and it starts over.';
+
+  @override
+  String get dailyFreezeSaved =>
+      'You missed yesterday — a freeze kept your streak.';
+
+  @override
+  String get dailyStreakStart => 'Answer today’s questions to start a streak.';
+
+  @override
+  String get dailyKeepStreak => 'Answer today’s questions to keep your streak.';
+
+  @override
+  String get dailyEmpty => 'No questions for today';
+
+  @override
+  String get dailyReviewTitle => 'Today’s questions';
+
+  @override
+  String get dailySourceToifa =>
+      'Questions come from the official certification list — only those whose key passed the LabGuide check.';
+
+  @override
+  String get dailyReminderTitle => 'LabGuide: daily questions';
+
+  @override
+  String get dailyReminderBody =>
+      'Today’s 5 questions are ready — 2–3 minutes.';
+
+  @override
+  String get dailyReminderChannel => 'Daily reminder';
+
+  @override
+  String get dailyReminderSetting => 'Daily reminder';
+
+  @override
+  String dailyReminderAt(String time) {
+    return 'Every day at $time';
+  }
+
+  @override
+  String get dailyReminderOff => 'Off';
+
+  @override
+  String get dailyReminderTime => 'Reminder time';
+
+  @override
+  String get dailyOfferTitle => 'Want a daily reminder?';
+
+  @override
+  String get dailyOfferBody =>
+      'One notification at the time you choose. No reminder on days you’ve already answered. Turn it off any time.';
+
+  @override
+  String get dailyOfferYes => 'Turn on reminder';
+
+  @override
+  String get dailyOfferNo => 'No thanks';
+
+  @override
+  String get dailyReminderDenied =>
+      'Notification permission wasn’t granted, so the reminder stays off. Allow notifications for LabGuide in your phone settings and try again.';
+
+  @override
+  String get dailyReminderUnavailable =>
+      'Couldn’t turn on reminders on this device.';
+
+  @override
+  String dailyReminderOnSnack(String time) {
+    return 'Reminder on: every day at $time';
+  }
+
+  @override
+  String get dailyReminderNote =>
+      'The reminder is scheduled on this device only (no server). Your phone may delay it by a few minutes to save battery. If you don’t open the app for 7 days, reminders stop.';
+
+  @override
+  String get shareResult => 'Share result';
+
+  @override
+  String get shareSheetTitle => 'Result card';
+
+  @override
+  String get shareSheetBody => 'The image has no name or other personal data.';
+
+  @override
+  String get shareFailed => 'Couldn’t open the share sheet. Please try again.';
+
+  @override
+  String get shareKindDaily => 'Daily questions';
+
+  @override
+  String get shareKindExam => 'Practice exam';
+
+  @override
+  String get shareKindToifa => 'Category test practice';
+
+  @override
+  String get shareCorrectCaption => 'correct answers';
+
+  @override
+  String get shareFooter => 'Lab reference and practice';
+
+  @override
+  String get shareToifaNote => 'Not official — LabGuide practice result';
+
+  @override
+  String shareText(String kind, int correct, int total, int percent) {
+    return 'LabGuide · $kind: $correct/$total ($percent%)';
+  }
+
+  @override
   String get quizTopicMistakes => 'Review my mistakes';
 
   @override
