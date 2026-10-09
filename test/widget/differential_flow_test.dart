@@ -2,6 +2,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:labguide/core/storage/kv_store.dart';
 import 'package:labguide/features/differential/differential_content.dart';
+import 'package:labguide/features/differential/differential_entry_points.dart';
+import 'package:labguide/features/differential/differential_quiz.dart';
+import 'package:labguide/features/differential/differential_screens.dart';
 import 'package:labguide/features/settings/settings_controller.dart';
 import 'package:labguide/l10n/gen/app_localizations_en.dart';
 import 'package:labguide/l10n/gen/app_localizations_uz.dart';
@@ -109,6 +112,36 @@ void main() {
     expect(s.differential.history, isEmpty);
     expect(s.differential.total, 0);
     expect(s.store.getString(StoreKeys.differentialDraft), isNull);
+  });
+
+  testWidgets('tarix: visibleLimit faqat ko\'rsatishni cheklaydi', (
+    tester,
+  ) async {
+    final s = await makeServices(tester, language: AppLanguage.en);
+    s.differential.tap(DiffCell.lymphocyte);
+    for (var i = 0; i < 5; i++) {
+      await s.differential.save(label: 'S$i');
+    }
+    final (shown, hidden) = visibleHistory(s.differential.history, 2);
+    expect(shown, hasLength(2));
+    expect(hidden, 3);
+    expect(visibleHistory(s.differential.history, null).$2, 0);
+    // Ma'lumot to'liq saqlangan.
+    expect(s.differential.history, hasLength(5));
+    // Odatiy yo'l: cheklov yo'q (hozir hamma narsa ochiq).
+    await pumpApp(tester, s, size: const Size(390, 2400));
+    await goTo(tester, '/lab/differential/history');
+    expect(find.textContaining('· S'), findsNWidgets(5));
+    expect(find.textContaining('more results'), findsNothing);
+  });
+
+  testWidgets('kengaytirilgan mashqqa kirish nuqtasi', (tester) async {
+    final s = await makeServices(tester, language: AppLanguage.en);
+    await pumpApp(tester, s, size: const Size(390, 2400));
+    await goTo(tester, '/lab/differential/quiz');
+    await _tap(tester, find.text(en.diffQuizExtended(diffExtendedQuizSize)));
+    expect(find.text(en.diffQuizExtendedIntro), findsOneWidget);
+    expect(DiffEntryPoints.pdfExportAvailable, isFalse);
   });
 
   testWidgets('tarixni tozalash tasdiq bilan', (tester) async {

@@ -767,6 +767,24 @@
   "diffRealSmearNote": "A licensed micrograph from the microscopy atlas. Author and licence are shown when you open it.",
   "diffAtlasRow": "Real blood smears",
   "diffAtlasRowSub": "Licensed micrographs from the microscopy atlas",
+  "diffQuizExtended": "Extended practice ({count} questions)",
+  "@diffQuizExtended": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "diffQuizExtendedIntro": "On top of the picture questions: identify the cell from a description of its nucleus, cytoplasm and granules.",
+  "diffQuizDescribed": "Which cell matches this description?",
+  "diffHistoryMore": "{count} more results are stored on this device",
+  "@diffHistoryMore": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "preOrderTitle": "Order of draw (venepuncture)",
   "preOrderSub": "WHO 2010, Table 2.3 (based on the NCCLS 2003 consensus). Check your laboratory’s current procedure.",
   "preCap": "Cap: {cap}",

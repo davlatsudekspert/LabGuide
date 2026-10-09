@@ -102,6 +102,20 @@ void main() {
       );
     });
 
+    test('tarix hech qachon yashirincha qisqartirilmaydi', () async {
+      final store = MemoryKeyValueStore();
+      var t = DateTime(2026);
+      final c = DifferentialController(
+        store,
+        clock: () => t = t.add(const Duration(seconds: 1)),
+      )..tap(DiffCell.basophil);
+      for (var i = 0; i < 260; i++) {
+        await c.save();
+      }
+      expect(c.history, hasLength(260));
+      expect(DifferentialController(store).history, hasLength(260));
+    });
+
     test('buzilgan yozuv ilovani yiqitmaydi', () async {
       final store = MemoryKeyValueStore();
       await store.setString(StoreKeys.differentialDraft, '{oops');
@@ -178,6 +192,23 @@ void main() {
       }
       // Blast — "shifokorga yuboring" ogohlantirishi bilan.
       expect(cellGuide('blast')!.refer, isTrue);
+    });
+
+    test('kengaytirilgan mashq: rasmli + tavsifli savollar', () {
+      final items = buildDiffQuiz(Random(2), extended: true);
+      expect(items, hasLength(diffExtendedQuizSize));
+      final described = items.where((i) => !i.showImage).toList();
+      expect(described, hasLength(diffQuizSize));
+      for (final i in described) {
+        final q = i.question;
+        expect(q.options[q.correctIndex].text, cellGuide(i.image)!.name);
+        for (final lang in ['uz', 'ru', 'en']) {
+          expect(
+            q.prompt.of(lang),
+            contains(cellGuide(i.image)!.nucleus.of(lang)),
+          );
+        }
+      }
     });
 
     test('"Bu qaysi hujayra?" — 10+ savol, to\'g\'ri javob rasmga mos', () {
