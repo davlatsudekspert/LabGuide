@@ -532,6 +532,12 @@ class AppLocalizationsUz extends AppLocalizations {
   String get sectionLowResult => 'Past natija';
 
   @override
+  String get sectionPositiveResult => 'Musbat natija';
+
+  @override
+  String get sectionNegativeResult => 'Manfiy natija';
+
+  @override
   String get sectionPreanalytics => 'Namuna va preanalitika';
 
   @override

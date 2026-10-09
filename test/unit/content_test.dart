@@ -63,8 +63,8 @@ void main() {
 
     test('covers every PRODUCT_PLAN group in three languages', () {
       final pack = parse(packJson());
-      // Asosiy 8 guruh tartibi o'zgarmaydi; yo'nalish bo'laklari
-      // (content_src/additions) o'z guruhlarini oxiriga qo'shadi.
+      // Asosiy 8 guruh boshida; yo'nalish bo'laklari (content_src/additions)
+      // o'z guruhlarini oxiriga qo'shadi va o'z testlarida tekshiradi.
       expect(pack.groups.map((g) => g.id).take(8), [
         'carbohydrate',
         'kidney',
@@ -85,7 +85,7 @@ void main() {
 
     test('every card is a sourced draft; nothing is reviewer-approved', () {
       final pack = parse(packJson());
-      expect(pack.analytes.length, greaterThanOrEqualTo(51));
+      expect(pack.analytes, hasLength(greaterThanOrEqualTo(35)));
       for (final a in pack.analytes) {
         // Manbali o'quv namunasi — mustaqil review hali yo'q.
         expect(a.contentState, ContentState.sourcedSample, reason: a.id);
@@ -116,7 +116,7 @@ void main() {
       }
       // Analit savollari: har birida manba va aniq bir analit mavzusi.
       final analyteQuestions = pack.quiz.where((q) => q.topicIds.isNotEmpty);
-      expect(analyteQuestions.length, greaterThanOrEqualTo(84));
+      expect(analyteQuestions.length, greaterThanOrEqualTo(68));
       for (final q in analyteQuestions) {
         expect(q.refs, isNotEmpty, reason: q.id);
       }

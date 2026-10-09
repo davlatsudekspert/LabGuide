@@ -158,6 +158,8 @@
   "sectionPhysiology": "Физиология",
   "sectionHighResult": "Повышенный результат",
   "sectionLowResult": "Пониженный результат",
+  "sectionPositiveResult": "Положительный результат",
+  "sectionNegativeResult": "Отрицательный результат",
   "sectionPreanalytics": "Образец и преаналитика",
   "sectionInterference": "Интерференции",
   "sectionLimitations": "Ограничения",
