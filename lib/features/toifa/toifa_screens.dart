@@ -15,6 +15,7 @@ import '../learn/exam_question.dart';
 import '../learn/exam_screens.dart';
 import '../learn/exam_session.dart';
 import '../learn/exam_widgets.dart';
+import '../share/result_share.dart';
 import 'toifa_bank.dart';
 import 'toifa_controller.dart';
 
@@ -22,10 +23,11 @@ import 'toifa_controller.dart';
 const toifaBase = '/learn/toifa';
 
 /// Bo'lim shu foydalanuvchiga ko'rinadimi: ilova tili o'zbekcha yoki
-/// qurilma mintaqasi UZ.
+/// qurilma mintaqasi UZ; shifokor roliga emas.
 bool toifaVisible(BuildContext context) => toifaAvailable(
   context.services.settings.language,
   SchedulerBinding.instance.platformDispatcher.locales,
+  role: context.services.settings.role,
 );
 
 String _lang(BuildContext context) =>
@@ -866,6 +868,16 @@ class _ToifaPracticeScreenState extends State<ToifaPracticeScreen> {
       LgButton.secondary(
         label: l.toifaBackToTopics,
         onPressed: () => context.pop(),
+      ),
+      const SizedBox(height: 10),
+      ShareResultButton(
+        data: ShareData(
+          kind: ShareKind.toifa,
+          correct: right,
+          total: round.length,
+          date: context.services.toifa.now(),
+          topic: _title(l, bank),
+        ),
       ),
       LgSectionTitle(l.quizMistakes),
       if (wrong.isEmpty)

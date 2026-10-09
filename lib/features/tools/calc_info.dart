@@ -22,7 +22,7 @@ class CalcSource {
   /// faqat tekshirilgan maydonlar: mualliflar, sarlavha, jurnal, yil, DOI.
   final String citation;
 
-  /// `null` — erkin onlayn nusxasi yo'q kitob (faqat katalog yozuvi).
+  /// Onlayn manzil; bosma kitob uchun `null` (faqat bibliografiya).
   final String? url;
 }
 

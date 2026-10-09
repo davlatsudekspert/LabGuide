@@ -374,7 +374,7 @@
      "section": "preanalytics",
      "refs": [
       {
-       "source_id": "who-basic-lab-manual-2003",
+       "source_id": "who-basic-lab-techniques-2003",
        "locator": "7.2.3 Measuring the pH",
        "pages": "235"
       },
@@ -478,7 +478,7 @@
     "medline-glucose-urine",
     "medline-ketones-urine",
     "medline-urobilinogen-urine",
-    "who-basic-lab-manual-2003",
+    "who-basic-lab-techniques-2003",
     "book-aripova-2007",
     "who-dil-lab-99-1"
    ],
@@ -841,7 +841,7 @@
      "section": "limitations",
      "refs": [
       {
-       "source_id": "who-basic-lab-manual-2003",
+       "source_id": "who-basic-lab-techniques-2003",
        "locator": "7.2.7 Detection of abnormal elements — collection of specimens",
        "pages": "241"
       }
@@ -863,7 +863,7 @@
     "who-dil-lab-99-1",
     "book-aripova-2007",
     "book-lyubina-1984",
-    "who-basic-lab-manual-2003"
+    "who-basic-lab-techniques-2003"
    ],
    "related": [
     "urine-chemistry"

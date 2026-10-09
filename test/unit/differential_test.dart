@@ -188,7 +188,12 @@ void main() {
         expect(f.refs, isNotEmpty, reason: f.id);
       }
       for (final s in DiffSources.all) {
-        expect(Uri.parse(s.url!).isScheme('https'), isTrue);
+        // Bosma kitob (faqat iqtibos) — havolasiz.
+        if (s.url case final url?) {
+          expect(Uri.parse(url).isScheme('https'), isTrue);
+        } else {
+          expect(s.id, startsWith('book-'));
+        }
       }
       // Blast — "shifokorga yuboring" ogohlantirishi bilan.
       expect(cellGuide('blast')!.refer, isTrue);

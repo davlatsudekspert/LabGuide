@@ -91,12 +91,15 @@ void main() {
     await _tapText(tester, 'HUMAN');
     expect(find.text('HumaCount 5D'), findsOneWidget);
     await _tapText(tester, 'HumaCount 5D');
-    // Karta: yo'nalishning sxematik chizmasi (aniq model emas deb yozilgan),
-    // holat zinapoyasi, vazifa va rasmiy matn, yopiq reagent tizimi, parvarish.
-    expect(find.text(l.instIllustration), findsOneWidget);
+    // Karta: ruxsatli model fotosi yo'q — neytral belgi (sxematik chizma
+    // emas), holat zinapoyasi, vazifa va rasmiy matn, reagent, parvarish.
+    expect(find.text(l.instImageMissing), findsOneWidget);
+    expect(find.text(l.instIllustration), findsNothing);
     expect(
       tester.widgetList<Image>(find.byType(Image)).map((i) => i.image),
-      contains(const AssetImage('assets/instruments/img/hematology.png')),
+      isNot(
+        contains(const AssetImage('assets/instruments/img/hematology.png')),
+      ),
     );
     expect(find.text(l.instStatusDevice), findsOneWidget);
     expect(
@@ -120,7 +123,7 @@ void main() {
     expect(find.text('HumaCount 30TS'), findsOneWidget);
   });
 
-  testWidgets('siydik apparati kartasida o‘z chizmamiz, foto emas', (
+  testWidgets('siydik apparati kartasida chizma ham, begona foto ham yo‘q', (
     tester,
   ) async {
     final l = lookupAppLocalizations(const Locale('uz'));
@@ -130,9 +133,13 @@ void main() {
     await goTo(tester, '/lab/instruments/m/roche-cobas-u-411');
     expect(
       tester.widgetList<Image>(find.byType(Image)).map((i) => i.image),
-      contains(const AssetImage('assets/instruments/img/urinalysis.png')),
+      isNot(
+        contains(const AssetImage('assets/instruments/img/urinalysis.png')),
+      ),
     );
-    expect(find.text(l.instIllustration), findsOneWidget);
+    expect(find.text(l.instImageMissing), findsOneWidget);
+    expect(find.text(l.instMakerSource), findsOneWidget);
+    expect(find.text(l.instIllustration), findsNothing);
     expect(find.textContaining('CC BY-SA'), findsNothing);
   });
 

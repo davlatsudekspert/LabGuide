@@ -44,7 +44,13 @@
     "общий анализ крови",
     "complete blood count",
     "full blood count",
-    "клинический анализ крови"
+    "клинический анализ крови",
+    "qon rangi",
+    "gemoglobinsianid",
+    "HiCN",
+    "Sali usuli",
+    "метод Сали",
+    "гемиглобинцианид"
    ],
    "group": "hematology",
    "sections": [
@@ -66,6 +72,11 @@
       "date": "2026-10-09",
       "scope": "Kontent auditi B: sonlar, birliklar, namuna, mezonlar, manba locator",
       "report": "docs/CONTENT_AUDIT_2026-10-09_B.md"
+     },
+     {
+      "date": "2026-10-09",
+      "scope": "Kitoblar (Dolgov 2009, Lyubina 1984, Najmitdinov 1998, Sobirova 2006, Aripova 2007, Dadayev 2004) bilimi rasmiy/ochiq manbalar bilan solishtirildi; matn ko‘chirilmagan",
+      "report": "scratchpad/books/B_01..B_06, A_02, A_04 (agent tahlili)"
      }
     ]
    },
@@ -289,6 +300,48 @@
       "ru": "Анализ на гемоглобин не следует путать с гликированным гемоглобином (HbA1c): HbA1c отражает средний уровень глюкозы в крови.",
       "en": "A hemoglobin test is not the same as a hemoglobin A1C test, which checks average blood glucose."
      }
+    },
+    {
+     "section": "interference",
+     "refs": [
+      {
+       "source_id": "takami-2026-cbc",
+       "locator": "Table 4. Common Causes of Spurious Results in Automated Blood Cell Analysis"
+      },
+      {
+       "source_id": "book-dolgov-2009",
+       "locator": "Гемоглобин: причины ошибок измерения",
+       "pages": "25–35"
+      }
+     ],
+     "text": {
+      "uz": "Analizatorda gemoglobin soxta yuqori chiqishi mumkin: lipemiya (xilyoz qon), juda yuqori leykotsitoz, paraproteinemiya — ular eritmani loyqalantiradi. Gemoglobin RBC va MCV bilan mos kelmasa, natija tekshiriladi.",
+      "ru": "Гемоглобин на анализаторе может быть ложно повышен при липемии (хилёзная кровь), выраженном лейкоцитозе, парапротеинемии — они вызывают мутность. Если гемоглобин не согласуется с RBC и MCV, результат перепроверяют.",
+      "en": "On analysers haemoglobin can be falsely high with lipaemia, marked leukocytosis or paraproteinaemia, which make the lysate turbid. If haemoglobin does not fit the RBC and MCV, the result is checked."
+     }
+    },
+    {
+     "section": "limitations",
+     "refs": [
+      {
+       "source_id": "who-basic-lab-techniques-2003",
+       "locator": "9.3.1 Haemiglobincyanide photometric method",
+       "pages": "271"
+      },
+      {
+       "source_id": "book-lyubina-1984",
+       "locator": "§54 Определение гемоглобина"
+      },
+      {
+       "source_id": "book-aripova-2007",
+       "locator": "12.1.4 Gemoglobinni aniqlash"
+      }
+     ],
+     "text": {
+      "uz": "Sali (gematin, ko‘z bilan solishtirish) usuli eskirgan: JSST qo‘llanmasi gemiglobinsianid fotometrik usulini eng aniq deb, imkon bo‘lgan joyda uni qo‘llashni tavsiya qiladi. Aripova va hammualliflari (2007) ham Sali usuli standartlanmaganini qayd etadi.",
+      "ru": "Метод Сали (гематиновый, визуальное сравнение) устарел: руководство ВОЗ называет гемиглобинцианидный фотометрический метод наиболее точным и рекомендует применять его везде, где возможно. Арипова и соавт. (2007) также отмечают, что метод Сали не стандартизован.",
+      "en": "The Sahli (acid haematin, visual comparison) method is obsolete: the WHO manual calls the haemiglobincyanide photometric method the most accurate and recommends it wherever possible. Aripova et al. (2007) also note that Sahli is not standardised."
+     }
     }
    ],
    "decision_limits": [
@@ -504,7 +557,12 @@
    "source_ids": [
     "medline-hemoglobin",
     "who-hb-cutoffs-2024",
-    "who-phlebotomy-2010"
+    "who-phlebotomy-2010",
+    "takami-2026-cbc",
+    "book-dolgov-2009",
+    "who-basic-lab-techniques-2003",
+    "book-lyubina-1984",
+    "book-aripova-2007"
    ],
    "related": [
     "hematocrit",
@@ -552,7 +610,9 @@
     "общий анализ крови",
     "complete blood count",
     "full blood count",
-    "клинический анализ крови"
+    "клинический анализ крови",
+    "gematokrit soni",
+    "Ht%"
    ],
    "group": "hematology",
    "sections": [
@@ -561,6 +621,7 @@
     "high_result",
     "low_result",
     "preanalytics",
+    "interference",
     "related_tests",
     "limitations"
    ],
@@ -573,6 +634,11 @@
       "date": "2026-10-09",
       "scope": "Kontent auditi B: sonlar, birliklar, namuna, mezonlar, manba locator",
       "report": "docs/CONTENT_AUDIT_2026-10-09_B.md"
+     },
+     {
+      "date": "2026-10-09",
+      "scope": "Kitoblar (Dolgov 2009, Lyubina 1984, Najmitdinov 1998, Sobirova 2006, Aripova 2007, Dadayev 2004) bilimi rasmiy/ochiq manbalar bilan solishtirildi; matn ko‘chirilmagan",
+      "report": "scratchpad/books/B_01..B_06, A_02, A_04 (agent tahlili)"
      }
     ]
    },
@@ -706,12 +772,31 @@
       "ru": "Нормальный гематокрит зависит от пола, возраста, курения и высоты места проживания — результат сравнивают с интервалом в бланке лаборатории и обсуждают с врачом. Отклонение не всегда означает болезнь, требующую лечения.",
       "en": "Normal hematocrit varies with sex, age, smoking and the altitude where one lives — compare with the interval on the lab report and discuss with the provider. A result outside the range does not always mean a condition that needs treatment."
      }
+    },
+    {
+     "section": "interference",
+     "refs": [
+      {
+       "source_id": "takami-2026-cbc",
+       "locator": "Understanding CBC parameters"
+      },
+      {
+       "source_id": "takami-2026-cbc",
+       "locator": "Table 4. Common Causes of Spurious Results in Automated Blood Cell Analysis"
+      }
+     ],
+     "text": {
+      "uz": "Analizatorda gematokrit ko‘pincha bevosita o‘lchanmaydi — taxminan eritrotsitlar soni va MCV ko‘paytmasidan hisoblanadi. Shuning uchun RBC yoki MCV xatosi (masalan, sovuq agglyutininlar, giperglikemiya, uzoq saqlash) gematokritga ham o‘tadi.",
+      "ru": "На анализаторе гематокрит часто не измеряется напрямую — он примерно равен произведению числа эритроцитов на MCV. Поэтому ошибка RBC или MCV (например, холодовые агглютинины, гипергликемия, долгое хранение) переходит и на гематокрит.",
+      "en": "On analysers haematocrit is often not measured directly — it approximates the product of the red cell count and MCV. So an error in RBC or MCV (e.g., cold agglutinins, hyperglycaemia, prolonged storage) carries over to the haematocrit."
+     }
     }
    ],
    "decision_limits": [],
    "source_ids": [
     "medline-hematocrit",
-    "who-phlebotomy-2010"
+    "who-phlebotomy-2010",
+    "takami-2026-cbc"
    ],
    "related": [
     "hemoglobin",
@@ -755,7 +840,10 @@
     "общий анализ крови",
     "complete blood count",
     "full blood count",
-    "клинический анализ крови"
+    "клинический анализ крови",
+    "qizil qon tanachalari",
+    "sovuq agglyutininlar",
+    "холодовые агглютинины"
    ],
    "group": "hematology",
    "sections": [
@@ -777,6 +865,11 @@
       "date": "2026-10-09",
       "scope": "Kontent auditi B: sonlar, birliklar, namuna, mezonlar, manba locator",
       "report": "docs/CONTENT_AUDIT_2026-10-09_B.md"
+     },
+     {
+      "date": "2026-10-09",
+      "scope": "Kitoblar (Dolgov 2009, Lyubina 1984, Najmitdinov 1998, Sobirova 2006, Aripova 2007, Dadayev 2004) bilimi rasmiy/ochiq manbalar bilan solishtirildi; matn ko‘chirilmagan",
+      "report": "scratchpad/books/B_01..B_06, A_02, A_04 (agent tahlili)"
      }
     ]
    },
@@ -953,6 +1046,29 @@
       "ru": "По данным NHLBI, нормальные интервалы у мужчин и женщин различаются, на них могут влиять также возраст, высокогорье и раса — поэтому результат сравнивают с интервалом в бланке лаборатории.",
       "en": "NHLBI notes that some normal ranges differ between men and women, and that age, high altitude and race may also affect them — so the result is compared with the range on the lab report."
      }
+    },
+    {
+     "section": "interference",
+     "refs": [
+      {
+       "source_id": "takami-2026-cbc",
+       "locator": "Table 4. Common Causes of Spurious Results in Automated Blood Cell Analysis"
+      },
+      {
+       "source_id": "takami-2026-cbc",
+       "locator": "Step 5: Always consider spurious results"
+      },
+      {
+       "source_id": "book-dolgov-2009",
+       "locator": "Эритроциты: ложные результаты на анализаторе",
+       "pages": "25–35"
+      }
+     ],
+     "text": {
+      "uz": "Analizator xatolari: RBC juda yuqori leykotsitoz va giperlipidemiyada soxta oshishi, sovuq agglyutininlar va probirkadagi gemolizda soxta kamayishi mumkin. Sovuq agglyutinatsiyada eritrotsitlar to‘da bo‘lib sanaladi — RBC past, MCV va MCHC esa soxta yuqori chiqadi. Dolgov va hammualliflari bunday namunani 37 °C da isitib qayta o‘lchashni maslahat beradi. Natija klinikaga mos kelmasa — flaglar, surtma va qayta tahlil.",
+      "ru": "Ошибки анализатора: RBC может быть ложно повышен при выраженном лейкоцитозе и гиперлипидемии и ложно снижен при холодовых агглютининах и гемолизе в пробирке. При холодовой агглютинации эритроциты считаются конгломератами — RBC низкий, а MCV и MCHC ложно высокие. Долгов и соавт. советуют согреть такую пробу до 37 °C и измерить повторно. Если результат не согласуется с клиникой — флаги, мазок и повтор.",
+      "en": "Analyser errors: RBC can be falsely high with marked leukocytosis or hyperlipidaemia and falsely low with cold agglutinins or in-tube haemolysis. In cold agglutination red cells are counted as clumps — RBC is low while MCV and MCHC are falsely high. Dolgov et al. advise warming such a sample to 37 °C and re-measuring. If the result does not fit the clinical picture — flags, smear and repeat."
+     }
     }
    ],
    "decision_limits": [],
@@ -960,7 +1076,9 @@
     "medline-rbc-count",
     "who-phlebotomy-2010",
     "medline-cbc",
-    "nhlbi-blood-tests"
+    "nhlbi-blood-tests",
+    "takami-2026-cbc",
+    "book-dolgov-2009"
    ],
    "related": [
     "hemoglobin",
@@ -2813,7 +2931,10 @@
     "общий анализ крови",
     "complete blood count",
     "full blood count",
-    "клинический анализ крови"
+    "клинический анализ крови",
+    "eritrotsit o‘lchami",
+    "normotsitoz",
+    "нормоцитоз"
    ],
    "group": "hematology",
    "sections": [
@@ -2835,6 +2956,11 @@
       "date": "2026-10-09",
       "scope": "Kontent auditi B: sonlar, birliklar, namuna, mezonlar, manba locator",
       "report": "docs/CONTENT_AUDIT_2026-10-09_B.md"
+     },
+     {
+      "date": "2026-10-09",
+      "scope": "Kitoblar (Dolgov 2009, Lyubina 1984, Najmitdinov 1998, Sobirova 2006, Aripova 2007, Dadayev 2004) bilimi rasmiy/ochiq manbalar bilan solishtirildi; matn ko‘chirilmagan",
+      "report": "scratchpad/books/B_01..B_06, A_02, A_04 (agent tahlili)"
      }
     ]
    },
@@ -2978,13 +3104,52 @@
       "ru": "MCV сам по себе не позволяет поставить диагноз. Анемия возможна и при нормальном MCV — например, при внезапной кровопотере, почечной недостаточности или апластической анемии.",
       "en": "MCV alone cannot diagnose a disease. Anemia can occur with a normal MCV — for example, after sudden blood loss, in kidney failure or in aplastic anemia."
      }
+    },
+    {
+     "section": "interference",
+     "refs": [
+      {
+       "source_id": "takami-2026-cbc",
+       "locator": "Table 4. Common Causes of Spurious Results in Automated Blood Cell Analysis"
+      },
+      {
+       "source_id": "book-dolgov-2009",
+       "locator": "MCV: влияние хранения пробы",
+       "pages": "25–35"
+      }
+     ],
+     "text": {
+      "uz": "MCV soxta oshishi mumkin: sovuq agglyutininlar, giperglikemiya va namunaning uzoq saqlanishi (eritrotsitlar shishadi; Dolgov va hammualliflari 8 soatdan ortiq saqlashni sabab sifatida keltiradi). Og‘ir giponatriyemiyada soxta pasayishi mumkin. Avvalgi natijalarga mos kelmaydigan to‘satdan o‘zgarish — xato belgisi.",
+      "ru": "MCV может быть ложно повышен при холодовых агглютининах, гипергликемии и долгом хранении пробы (эритроциты набухают; Долгов и соавт. называют хранение более 8 часов). При тяжёлой гипонатриемии возможно ложное снижение. Внезапное изменение, не согласующееся с прошлыми результатами, — признак ошибки.",
+      "en": "MCV can be falsely high with cold agglutinins, hyperglycaemia and prolonged sample storage (red cells swell; Dolgov et al. cite storage longer than 8 hours). Severe hyponatraemia can falsely lower it. A sudden change that does not fit previous results suggests an error."
+     }
+    },
+    {
+     "section": "limitations",
+     "refs": [
+      {
+       "source_id": "takami-2026-cbc",
+       "locator": "Table 3. Integrated Interpretation of Anemia Using MCV and RDW"
+      },
+      {
+       "source_id": "takami-2026-cbc",
+       "locator": "Step 2: Evaluate the RBC lineage"
+      }
+     ],
+     "text": {
+      "uz": "MCV ni RDW bilan birga o‘qish foydali: past MCV va me’yoriy RDW — bir xil mikrotsitoz (talassemiya tashuvchanligi, ayrim surunkali kasallik anemiyasi); past MCV va yuqori RDW — temir tanqisligi ehtimoli (ferritin va transferrin to‘yinishi tekshiriladi); me’yoriy MCV va yuqori RDW — aralash populyatsiya (erta temir tanqisligi, temir + B12/folat tanqisligi, transfuziyadan keyin). Retikulotsitlar soni ishlab chiqarish kamligini yo‘qotish yoki parchalanishdan ajratadi.",
+      "ru": "MCV полезно читать вместе с RDW: низкий MCV и нормальный RDW — однородный микроцитоз (носительство талассемии, часть анемий хронических заболеваний); низкий MCV и высокий RDW — вероятен дефицит железа (проверяют ферритин и насыщение трансферрина); нормальный MCV и высокий RDW — смешанная популяция (ранний дефицит железа, дефицит железа + B12/фолата, после трансфузии). Число ретикулоцитов отличает недостаточную продукцию от потери или разрушения.",
+      "en": "Read MCV together with RDW: low MCV with normal RDW — uniform microcytosis (thalassaemia trait, some anaemia of chronic disease); low MCV with high RDW — iron deficiency likely (check ferritin and transferrin saturation); normal MCV with high RDW — mixed populations (early iron deficiency, combined iron + B12/folate deficiency, after transfusion). The reticulocyte count separates poor production from loss or destruction."
+     }
     }
    ],
    "decision_limits": [],
    "source_ids": [
     "medline-mcv",
     "nhlbi-blood-tests",
-    "who-phlebotomy-2010"
+    "who-phlebotomy-2010",
+    "takami-2026-cbc",
+    "book-dolgov-2009"
    ],
    "related": [
     "mch",
@@ -3217,7 +3382,12 @@
     "общий анализ крови",
     "complete blood count",
     "full blood count",
-    "клинический анализ крови"
+    "клинический анализ крови",
+    "gipoxromiya",
+    "гипохромия",
+    "giperxromiya",
+    "rang ko‘rsatkichi",
+    "цветовой показатель"
    ],
    "group": "hematology",
    "sections": [
@@ -3226,6 +3396,7 @@
     "high_result",
     "low_result",
     "preanalytics",
+    "interference",
     "related_tests",
     "limitations"
    ],
@@ -3238,6 +3409,11 @@
       "date": "2026-10-09",
       "scope": "Kontent auditi B: sonlar, birliklar, namuna, mezonlar, manba locator",
       "report": "docs/CONTENT_AUDIT_2026-10-09_B.md"
+     },
+     {
+      "date": "2026-10-09",
+      "scope": "Kitoblar (Dolgov 2009, Lyubina 1984, Najmitdinov 1998, Sobirova 2006, Aripova 2007, Dadayev 2004) bilimi rasmiy/ochiq manbalar bilan solishtirildi; matn ko‘chirilmagan",
+      "report": "scratchpad/books/B_01..B_06, A_02, A_04 (agent tahlili)"
      }
     ]
    },
@@ -3355,12 +3531,61 @@
       "ru": "Результат индекса оценивают вместе с симптомами, анамнезом и другими анализами крови; отклонение одного или нескольких индексов может указывать на какой-либо вид анемии, но диагноз ставит врач.",
       "en": "Index results are interpreted with symptoms, medical history and other blood tests; abnormal indices may point to some type of anemia, but the diagnosis is made by the provider."
      }
+    },
+    {
+     "section": "interference",
+     "refs": [
+      {
+       "source_id": "takami-2026-cbc",
+       "locator": "Table 2. Clinical Interpretation of Key CBC Parameters"
+      },
+      {
+       "source_id": "takami-2026-cbc",
+       "locator": "Table 4. Common Causes of Spurious Results in Automated Blood Cell Analysis"
+      },
+      {
+       "source_id": "book-dolgov-2009",
+       "locator": "MCHC как индикатор ошибки измерения",
+       "pages": "25–35"
+      }
+     ],
+     "text": {
+      "uz": "MCHC fiziologik jihatdan juda kam o‘zgaradi, shuning uchun u o‘lchash xatosining sezgir belgisi. Takami (2026) 36 g/dL (360 g/L) dan yuqori MCHC ni artefakt belgisi deb hisoblaydi, Dolgov va hammualliflari 37–38 g/dL chegarasini keltiradi. Sabablar: Hb soxta yuqori (lipemiya, leykotsitoz) yoki RBC soxta past (sovuq agglyutininlar). Haqiqiy yuqori MCHC sferotsitozda uchraydi. Soxta pasayish — giperglikemiya va uzoq saqlash.",
+      "ru": "MCHC физиологически меняется очень мало, поэтому он чувствительный индикатор ошибки измерения. Takami (2026) считает MCHC выше 36 г/дл (360 г/л) признаком артефакта, Долгов и соавт. приводят порог 37–38 г/дл. Причины: ложно высокий Hb (липемия, лейкоцитоз) или ложно низкий RBC (холодовые агглютинины). Истинно высокий MCHC бывает при сфероцитозе. Ложное снижение — гипергликемия и долгое хранение.",
+      "en": "MCHC changes very little physiologically, so it is a sensitive marker of measurement error. Takami (2026) treats MCHC above 36 g/dL (360 g/L) as suggesting artefact; Dolgov et al. give 37–38 g/dL. Causes: falsely high Hb (lipaemia, leukocytosis) or falsely low RBC (cold agglutinins). A truly high MCHC occurs in spherocytosis. False lowering: hyperglycaemia and prolonged storage."
+     }
+    },
+    {
+     "section": "limitations",
+     "refs": [
+      {
+       "source_id": "takami-2026-cbc",
+       "locator": "Understanding CBC parameters"
+      },
+      {
+       "source_id": "book-dolgov-2009",
+       "locator": "Цветовой показатель и MCH",
+       "pages": "25–35"
+      },
+      {
+       "source_id": "book-najmitdinov-1998",
+       "locator": "Кириш: ранг кўрсаткичи"
+      }
+     ],
+     "text": {
+      "uz": "MDH darsliklaridagi «rang ko‘rsatkichi» MCH (eritrotsitdagi o‘rtacha gemoglobin) ning eski, qo‘lda hisoblanadigan muqobili; Dolgov va hammualliflari uni eskirgan deb hisoblaydi. Analizator MCH, MCHC va MCV ni bevosita beradi.",
+      "ru": "«Цветовой показатель» из учебников СНГ — старый, рассчитываемый вручную аналог MCH (среднего содержания гемоглобина в эритроците); Долгов и соавт. считают его устаревшим. Анализатор выдаёт MCH, MCHC и MCV напрямую.",
+      "en": "The “colour index” of former-USSR textbooks is an old, hand-calculated counterpart of MCH (mean cell haemoglobin); Dolgov et al. consider it obsolete. Analysers report MCH, MCHC and MCV directly."
+     }
     }
    ],
    "decision_limits": [],
    "source_ids": [
     "medline-rbc-indices",
-    "who-phlebotomy-2010"
+    "who-phlebotomy-2010",
+    "takami-2026-cbc",
+    "book-dolgov-2009",
+    "book-najmitdinov-1998"
    ],
    "related": [
     "mcv",
@@ -3615,7 +3840,19 @@
     "reticulocyte index",
     "RPI",
     "retikulotsitoz",
-    "ретикулоцитоз"
+    "ретикулоцитоз",
+    "IRF",
+    "RET-He",
+    "CHr",
+    "MSCV",
+    "MRV",
+    "CRC",
+    "retikulotsitar indeks",
+    "retikulotsitogramma",
+    "ретикулоцитарный индекс",
+    "фракция незрелых ретикулоцитов",
+    "immature reticulocyte fraction",
+    "reticulocyte hemoglobin"
    ],
    "group": "hematology",
    "sections": [
@@ -3637,6 +3874,11 @@
       "date": "2026-10-09",
       "scope": "Kontent auditi B: sonlar, birliklar, namuna, mezonlar, manba locator",
       "report": "docs/CONTENT_AUDIT_2026-10-09_B.md"
+     },
+     {
+      "date": "2026-10-09",
+      "scope": "Kitoblar (Dolgov 2009, Lyubina 1984, Najmitdinov 1998, Sobirova 2006, Aripova 2007, Dadayev 2004) bilimi rasmiy/ochiq manbalar bilan solishtirildi; matn ko‘chirilmagan",
+      "report": "scratchpad/books/B_01..B_06, A_02, A_04 (agent tahlili)"
      }
     ]
    },
@@ -3780,12 +4022,148 @@
       "ru": "Для понимания результата врач учитывает симптомы, анамнез и другие анализы крови; отклонение не всегда означает анемию или другое заболевание.",
       "en": "To understand the result, the provider considers symptoms, history and other blood tests; an abnormal count does not always mean anemia or another condition."
      }
+    },
+    {
+     "section": "physiology",
+     "refs": [
+      {
+       "source_id": "piva-2010-reticulocytes",
+       "locator": "Abstract"
+      },
+      {
+       "source_id": "book-dolgov-2009",
+       "locator": "Гематологические анализаторы: основные показатели эритропоэза",
+       "pages": "25–35"
+      }
+     ],
+     "text": {
+      "uz": "Zamonaviy analizatorlar retikulotsitlarni faqat sanamaydi: ulardagi RNK miqdori bo‘yicha yetuklik darajasini (eng yosh retikulotsitlar ulushi — IRF), hajmini va gemoglobin miqdorini (RET-He yoki CHr) ham o‘lchaydi. Bu parametrlarning nomi, usuli va referensi analizator turiga bog‘liq.",
+      "ru": "Современные анализаторы не только считают ретикулоциты: они измеряют их зрелость по содержанию РНК (доля самых молодых ретикулоцитов — IRF), объём и содержание гемоглобина (RET-He или CHr). Названия, метод и референсы этих параметров зависят от типа анализатора.",
+      "en": "Modern analysers do more than count reticulocytes: they measure maturity by RNA content (the fraction of the youngest cells — IRF), cell volume and haemoglobin content (RET-He or CHr). Names, method and reference ranges depend on the analyser."
+     }
+    },
+    {
+     "section": "high_result",
+     "refs": [
+      {
+       "source_id": "piva-2010-reticulocytes",
+       "locator": "Abstract"
+      },
+      {
+       "source_id": "book-dolgov-2009",
+       "locator": "Гематологические анализаторы: основные показатели эритропоэза",
+       "pages": "25–35"
+      }
+     ],
+     "text": {
+      "uz": "IRF suyak ko‘migi faolligining erta belgisi: ildiz hujayra ko‘chirib o‘tkazilgandan keyin eritropoez tiklanishini umumiy retikulotsitlar sonidan oldinroq ko‘rsatadi; Dolgov va hammualliflari uni anemiya davosi samarasining erta belgisi sifatida ham keltiradi.",
+      "ru": "IRF — ранний признак активности костного мозга: после трансплантации стволовых клеток он показывает восстановление эритропоэза раньше общего числа ретикулоцитов; Долгов и соавт. приводят его и как ранний признак эффекта лечения анемии.",
+      "en": "IRF is an early marker of marrow activity: after stem-cell transplantation it shows erythroid recovery before the total reticulocyte count does; Dolgov et al. also cite it as an early sign of response to anaemia treatment."
+     }
+    },
+    {
+     "section": "low_result",
+     "refs": [
+      {
+       "source_id": "piva-2010-reticulocytes",
+       "locator": "Abstract"
+      },
+      {
+       "source_id": "book-dolgov-2009",
+       "locator": "Обмен железа; лабораторная диагностика ЖДА",
+       "pages": "43–68"
+      }
+     ],
+     "text": {
+      "uz": "Retikulotsitlardagi gemoglobin (RET-He, CHr) oxirgi 3–4 kunda eritrotsit hosil qilish uchun mavjud bo‘lgan funksional temirni bilvosita aks ettiradi; pasayishi temir tanqis eritropoezga ishora qiladi. Aniq chegara analizator va laboratoriyaga bog‘liq — natija varaqasidagi referensga qarang.",
+      "ru": "Содержание гемоглобина в ретикулоцитах (RET-He, CHr) косвенно отражает функциональное железо, доступное для эритропоэза за последние 3–4 дня; снижение указывает на железодефицитный эритропоэз. Порог зависит от анализатора и лаборатории — смотрите референс на бланке.",
+      "en": "Reticulocyte haemoglobin content (RET-He, CHr) indirectly reflects the functional iron available for red cell production over the previous 3–4 days; a low value points to iron-restricted erythropoiesis. The cut-off depends on the analyser and laboratory — use the reference on the report."
+     }
+    },
+    {
+     "section": "limitations",
+     "refs": [
+      {
+       "source_id": "takami-2026-cbc",
+       "locator": "Table 2. Clinical Interpretation of Key CBC Parameters"
+      },
+      {
+       "source_id": "takami-2026-cbc",
+       "locator": "Step 2: Evaluate the RBC lineage"
+      },
+      {
+       "source_id": "book-dolgov-2009",
+       "locator": "Гематологические анализаторы: основные показатели эритропоэза",
+       "pages": "25–35"
+      }
+     ],
+     "text": {
+      "uz": "Anemiyada ulush (%) o‘rniga absolyut son yoki gematokrit bo‘yicha tuzatilgan ko‘rsatkich (CRC, RPI) qo‘llanadi. Takami (2026) kattalar uchun taxminiy mo‘ljal beradi: absolyut son taxminan 80×10⁹/L dan yuqori — ko‘mik javobi kuchaygan (qon ketishi, gemoliz, tiklanish); og‘ir anemiyada taxminan 20×10⁹/L dan past — eritropoez keskin pasaygan. Bu qat’iy tashxis chegaralari emas.",
+      "ru": "При анемии вместо доли (%) используют абсолютное число или показатель, скорректированный по гематокриту (CRC, RPI). Takami (2026) даёт ориентиры для взрослых: абсолютное число выше примерно 80×10⁹/л — усиленный ответ костного мозга (кровотечение, гемолиз, восстановление); при тяжёлой анемии ниже примерно 20×10⁹/л — резко сниженный эритропоэз. Это не строгие диагностические пороги.",
+      "en": "In anaemia the absolute count or a haematocrit-corrected index (CRC, RPI) is used instead of the percentage. Takami (2026) gives approximate adult guides: above about 80×10⁹/L suggests an increased marrow response (bleeding, haemolysis, recovery); below about 20×10⁹/L with severe anaemia suggests markedly impaired erythropoiesis. These are not rigid diagnostic cut-offs."
+     }
+    },
+    {
+     "section": "limitations",
+     "refs": [
+      {
+       "source_id": "wu-2021-hs-mscv",
+       "locator": "Laboratory tests for HS: Routine blood test"
+      },
+      {
+       "source_id": "book-dolgov-2009",
+       "locator": "Гематологические анализаторы: основные показатели эритропоэза",
+       "pages": "25–35"
+      }
+     ],
+     "text": {
+      "uz": "MSCV (sferiklashtirilgan hujayralar o‘rtacha hajmi) faqat ayrim analizatorlarda (manbaga ko‘ra Beckman Coulter) beriladi. Irsiy sferotsitozda MSCV odatda MCV dan kichik bo‘ladi va bu belgi uni talassemiyadan farqlashga yordam beradi; tashxis surtma, oila tekshiruvi va boshqa testlar bilan tasdiqlanadi.",
+      "ru": "MSCV (средний объём сферизованных клеток) выдают лишь некоторые анализаторы (по источнику — Beckman Coulter). При наследственном сфероцитозе MSCV обычно меньше MCV, что помогает отличить его от талассемии; диагноз подтверждают мазком, обследованием семьи и другими тестами.",
+      "en": "MSCV (mean sphered cell volume) is reported only by some analysers (per the source, Beckman Coulter). In hereditary spherocytosis MSCV is usually lower than MCV, which helps separate it from thalassaemia; the diagnosis is confirmed with the smear, family studies and other tests."
+     }
+    },
+    {
+     "section": "limitations",
+     "refs": [
+      {
+       "source_id": "piva-2010-reticulocytes",
+       "locator": "Abstract"
+      },
+      {
+       "source_id": "book-lyubina-1984",
+       "locator": "§63 Подсчёт ретикулоцитов"
+      }
+     ],
+     "text": {
+      "uz": "Qo‘lda sanashda retikulotsitlar supravital bo‘yoq (masalan, brilliant krezil ko‘k) bilan bo‘yalib, eritrotsitlarga nisbatan (an’anaviy ravishda 1000 taga) hisoblanadi. 1990-yillardan avtomatik (oqim sitometriyasi) sanash mikroskopiyani almashtirdi: u aniqroq va takrorlanuvchan, lekin laboratoriyalar orasida natijalar to‘liq standartlashmagan.",
+      "ru": "При ручном подсчёте ретикулоциты окрашивают суправитально (например, бриллиантовым крезиловым синим) и считают на эритроциты (традиционно на 1000). С 1990-х автоматический подсчёт (проточная цитометрия) вытеснил микроскопию: он точнее и воспроизводимее, но результаты между лабораториями стандартизованы не полностью.",
+      "en": "Manual counting uses a supravital stain (e.g., brilliant cresyl blue) and relates reticulocytes to red cells (traditionally per 1000). Since the 1990s automated flow-cytometric counting has replaced microscopy: it is more accurate and precise, but results are not fully standardised between laboratories."
+     }
+    },
+    {
+     "section": "interference",
+     "refs": [
+      {
+       "source_id": "takami-2026-cbc",
+       "locator": "Table 4. Common Causes of Spurious Results in Automated Blood Cell Analysis"
+      }
+     ],
+     "text": {
+      "uz": "Analizatorda retikulotsitlar yadroli eritrotsitlar (NRBC), eritrotsit ichidagi kiritmalar va fluoressent xalaqitlar tufayli soxta yuqori chiqishi mumkin; analizator belgisi (flag) bo‘lsa yoki natija klinik holatga mos kelmasa, surtma ko‘riladi.",
+      "ru": "На анализаторе ретикулоциты могут быть ложно повышены из-за ядросодержащих эритроцитов (NRBC), включений в эритроцитах и флуоресцентных помех; при флаге анализатора или несоответствии клинике смотрят мазок.",
+      "en": "On analysers reticulocytes can be falsely high because of nucleated red cells (NRBCs), red-cell inclusions or fluorescent interference; with an analyser flag or a result that does not fit the clinical picture, check the smear."
+     }
     }
    ],
    "decision_limits": [],
    "source_ids": [
     "medline-reticulocyte",
-    "who-phlebotomy-2010"
+    "who-phlebotomy-2010",
+    "piva-2010-reticulocytes",
+    "book-dolgov-2009",
+    "takami-2026-cbc",
+    "wu-2021-hs-mscv",
+    "book-lyubina-1984"
    ],
    "related": [
     "hemoglobin",

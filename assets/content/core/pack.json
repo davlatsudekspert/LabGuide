@@ -2095,7 +2095,16 @@
     "АЛТ",
     "АлАТ",
     "GPT",
-    "SGPT"
+    "SGPT",
+    "alaninaminotransferaza",
+    "аланинаминотрансфераза",
+    "jigar fermentlari",
+    "печёночные пробы",
+    "sitoliz",
+    "цитолиз",
+    "transaminazalar",
+    "трансаминазы",
+    "liver enzymes"
    ],
    "group": "liver",
    "sections": [
@@ -2117,6 +2126,11 @@
       "date": "2026-10-09",
       "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
       "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     },
+     {
+      "date": "2026-10-09",
+      "scope": "Kitoblar (Dolgov 2009, Lyubina 1984, Najmitdinov 1998, Sobirova 2006, Aripova 2007, Dadayev 2004) bilimi rasmiy/ochiq manbalar bilan solishtirildi; matn ko‘chirilmagan",
+      "report": "scratchpad/books/B_01..B_06, A_02, A_04 (agent tahlili)"
      }
     ]
    },
@@ -2283,12 +2297,54 @@
       "ru": "При отклонениях в печёночных пробах врач сопоставляет все измеренные показатели, чтобы найти сочетания, характерные для разных заболеваний печени. Сами по себе печёночные пробы обычно не позволяют поставить конкретный диагноз.",
       "en": "When liver test results are abnormal, the provider compares all the measured substances to look for patterns that suggest different types of liver conditions. Liver function tests alone usually cannot diagnose a specific disease."
      }
+    },
+    {
+     "section": "high_result",
+     "refs": [
+      {
+       "source_id": "kwo-2017-acg-liver",
+       "locator": "Abstract"
+      },
+      {
+       "source_id": "book-sobirova-2006",
+       "locator": "XVII bob. Jigar xastaliklarida biokimyoviy o‘zgarishlar (sindromlar)"
+      }
+     ],
+     "text": {
+      "uz": "Sitoliz (gepatotsellyulyar shikastlanish) sindromi: ALT va AST ishqoriy fosfatazaga nisbatan nomutanosib ravishda ko‘proq oshadi. Bu jigar hujayralari zararlanganini ko‘rsatadi; sababini aniqlash uchun virusli gepatitlar, yog‘li jigar, alkogol, dorilar va boshqa sabablar tekshiriladi.",
+      "ru": "Синдром цитолиза (гепатоцеллюлярного повреждения): АЛТ и АСТ повышены непропорционально сильнее щелочной фосфатазы. Это указывает на повреждение клеток печени; для поиска причины проверяют вирусные гепатиты, жировую болезнь печени, алкоголь, лекарства и другие причины.",
+      "en": "Cytolytic (hepatocellular) pattern: ALT and AST are raised disproportionately to alkaline phosphatase. It points to liver-cell injury; the work-up looks for viral hepatitis, fatty liver disease, alcohol, medicines and other causes."
+     }
+    },
+    {
+     "section": "limitations",
+     "refs": [
+      {
+       "source_id": "medline-liver-function",
+       "locator": "What are liver function tests?"
+      },
+      {
+       "source_id": "kwo-2017-acg-liver",
+       "locator": "Abstract"
+      },
+      {
+       "source_id": "book-sobirova-2006",
+       "locator": "XVII bob. Jigar xastaliklarida biokimyoviy o‘zgarishlar (sindromlar)"
+      }
+     ],
+     "text": {
+      "uz": "Jigarning sintetik funksiyasi (gepatotsitar yetishmovchilik sindromi) fermentlar bilan emas, jigar ishlab chiqaradigan oqsillar bilan baholanadi: albumin va protrombin vaqti (PT/INR); bilirubin ham jigarning tozalash ishini aks ettiradi. Yuqori ALT o‘zi jigar yetishmovchiligini bildirmaydi.",
+      "ru": "Синтетическую функцию печени (синдром печёночно-клеточной недостаточности) оценивают не ферментами, а белками, которые вырабатывает печень: альбумином и протромбиновым временем (ПВ/МНО); билирубин тоже отражает очистительную работу печени. Высокая АЛТ сама по себе не означает печёночной недостаточности.",
+      "en": "The liver’s synthetic function (hepatocellular failure pattern) is judged not by enzymes but by proteins the liver makes: albumin and prothrombin time (PT/INR); bilirubin also reflects the liver’s clearing work. A high ALT by itself does not mean liver failure."
+     }
     }
    ],
    "decision_limits": [],
    "source_ids": [
     "medline-alt",
-    "medline-liver-function"
+    "medline-liver-function",
+    "kwo-2017-acg-liver",
+    "book-sobirova-2006"
    ],
    "related": [
     "ast",
@@ -2317,7 +2373,13 @@
     "АСТ",
     "АсАТ",
     "GOT",
-    "SGOT"
+    "SGOT",
+    "aspartataminotransferaza",
+    "аспартатаминотрансфераза",
+    "de Ritis",
+    "de Ritis koeffitsiyenti",
+    "коэффициент де Ритиса",
+    "De Ritis ratio"
    ],
    "group": "liver",
    "sections": [
@@ -2339,6 +2401,11 @@
       "date": "2026-10-09",
       "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
       "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     },
+     {
+      "date": "2026-10-09",
+      "scope": "Kitoblar (Dolgov 2009, Lyubina 1984, Najmitdinov 1998, Sobirova 2006, Aripova 2007, Dadayev 2004) bilimi rasmiy/ochiq manbalar bilan solishtirildi; matn ko‘chirilmagan",
+      "report": "scratchpad/books/B_01..B_06, A_02, A_04 (agent tahlili)"
      }
     ]
    },
@@ -2487,12 +2554,55 @@
       "ru": "При отклонениях в печёночных пробах врач сопоставляет все измеренные показатели, чтобы найти сочетания, характерные для разных заболеваний печени. Сами по себе печёночные пробы обычно не позволяют поставить конкретный диагноз.",
       "en": "When liver test results are abnormal, the provider compares all the measured substances to look for patterns that suggest different types of liver conditions. Liver function tests alone usually cannot diagnose a specific disease."
      }
+    },
+    {
+     "section": "limitations",
+     "refs": [
+      {
+       "source_id": "williams-1988-ast-alt",
+       "locator": "Abstract"
+      },
+      {
+       "source_id": "book-sobirova-2006",
+       "locator": "XVII bob. Jigar xastaliklarida biokimyoviy o‘zgarishlar (sindromlar)"
+      },
+      {
+       "source_id": "medline-ast",
+       "locator": "What is an AST test?"
+      }
+     ],
+     "text": {
+      "uz": "De Ritis koeffitsiyenti — AST/ALT nisbati. Klassik kuzatuvga ko‘ra u alkogolli jigar kasalligida odatda 2 dan katta, surunkali virusli gepatit va surunkali xolestazda 1 dan kichik bo‘ladi; alkogolsiz jigar kasalligida 1 dan oshishi sirrozga ishora qilishi mumkin. Sirrozda nisbat alkogolli va alkogolsiz sabablarni yomonroq ajratadi. AST yurak va mushakda ham bor, shuning uchun nisbat faqat jigar holatida ma’noga ega.",
+      "ru": "Коэффициент де Ритиса — отношение АСТ/АЛТ. По классическим наблюдениям при алкогольной болезни печени он обычно больше 2, при хроническом вирусном гепатите и хроническом холестазе — меньше 1; при неалкогольной болезни печени рост выше 1 может указывать на цирроз. При циррозе отношение хуже разделяет алкогольные и неалкогольные причины. АСТ есть и в сердце, и в мышцах, поэтому отношение имеет смысл только при поражении печени.",
+      "en": "The De Ritis ratio is AST/ALT. Classically it is usually above 2 in alcoholic liver disease and below 1 in chronic viral hepatitis and chronic cholestasis; in non-alcoholic liver disease a ratio above 1 may suggest cirrhosis. With cirrhosis the ratio separates alcoholic from non-alcoholic causes less well. AST is also found in heart and muscle, so the ratio is meaningful only for liver conditions."
+     }
+    },
+    {
+     "section": "high_result",
+     "refs": [
+      {
+       "source_id": "kwo-2017-acg-liver",
+       "locator": "Abstract"
+      },
+      {
+       "source_id": "book-sobirova-2006",
+       "locator": "XVII bob. Jigar xastaliklarida biokimyoviy o‘zgarishlar (sindromlar)"
+      }
+     ],
+     "text": {
+      "uz": "AST ALT bilan birga ishqoriy fosfatazadan nomutanosib ko‘p oshsa — sitoliz (gepatotsellyulyar) sindromi; ALP ustunlik qilsa — xolestaz sindromi.",
+      "ru": "Если АСТ вместе с АЛТ повышены непропорционально сильнее щелочной фосфатазы — синдром цитолиза (гепатоцеллюлярный); если преобладает ЩФ — синдром холестаза.",
+      "en": "AST rising with ALT out of proportion to alkaline phosphatase indicates a cytolytic (hepatocellular) pattern; if ALP predominates, a cholestatic pattern."
+     }
     }
    ],
    "decision_limits": [],
    "source_ids": [
     "medline-ast",
-    "medline-liver-function"
+    "medline-liver-function",
+    "williams-1988-ast-alt",
+    "book-sobirova-2006",
+    "kwo-2017-acg-liver"
    ],
    "related": [
     "alt",
@@ -2519,7 +2629,12 @@
     "ALP",
     "ALKP",
     "ЩФ",
-    "щелочная фосфатаза"
+    "щелочная фосфатаза",
+    "ishqoriy fosfataza",
+    "xolestaz",
+    "холестаз",
+    "cholestasis",
+    "o‘t dimlanishi"
    ],
    "group": "liver",
    "sections": [
@@ -2541,6 +2656,11 @@
       "date": "2026-10-09",
       "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
       "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     },
+     {
+      "date": "2026-10-09",
+      "scope": "Kitoblar (Dolgov 2009, Lyubina 1984, Najmitdinov 1998, Sobirova 2006, Aripova 2007, Dadayev 2004) bilimi rasmiy/ochiq manbalar bilan solishtirildi; matn ko‘chirilmagan",
+      "report": "scratchpad/books/B_01..B_06, A_02, A_04 (agent tahlili)"
      }
     ]
    },
@@ -2689,12 +2809,37 @@
       "ru": "Отклонения печёночных проб не всегда означают проблему с печенью: например, высокая ЩФ может быть признаком как болезни печени, так и болезни костей. Врач учитывает также симптомы, анамнез, риск болезней печени и принимаемые лекарства.",
       "en": "Abnormal liver test results don't always mean a liver problem: high ALP, for example, can be a sign of bone disease as well as liver disease. The provider also considers symptoms, medical history, liver disease risk and medicines taken."
      }
+    },
+    {
+     "section": "high_result",
+     "refs": [
+      {
+       "source_id": "kwo-2017-acg-liver",
+       "locator": "Abstract"
+      },
+      {
+       "source_id": "book-sobirova-2006",
+       "locator": "XVII bob. Jigar xastaliklarida biokimyoviy o‘zgarishlar (sindromlar)"
+      },
+      {
+       "source_id": "medline-ggt",
+       "locator": "What do the results mean?"
+      }
+     ],
+     "text": {
+      "uz": "Xolestaz sindromi: ishqoriy fosfataza ALT va AST ga nisbatan nomutanosib ravishda ko‘proq oshadi. ALP jigardan ekanini GGT tasdiqlaydi (ikkalasi ham yuqori). Bilirubin bilan birga oshsa, o‘t yo‘llari tiqilishi ehtimoli ko‘rib chiqiladi.",
+      "ru": "Синдром холестаза: щелочная фосфатаза повышена непропорционально сильнее АЛТ и АСТ. Печёночное происхождение ЩФ подтверждает ГГТ (обе повышены). При одновременном росте билирубина рассматривают закупорку желчных путей.",
+      "en": "Cholestatic pattern: alkaline phosphatase is raised out of proportion to ALT and AST. GGT confirms a liver source (both high). If bilirubin rises too, bile-duct obstruction is considered."
+     }
     }
    ],
    "decision_limits": [],
    "source_ids": [
     "medline-alp",
-    "medline-liver-function"
+    "medline-liver-function",
+    "kwo-2017-acg-liver",
+    "book-sobirova-2006",
+    "medline-ggt"
    ],
    "related": [
     "ggt",
@@ -2723,7 +2868,11 @@
     "ГГТ",
     "ГГТП",
     "γ-GT",
-    "gamma GT"
+    "gamma GT",
+    "gamma-glutamiltransferaza",
+    "гамма-глутамилтрансфераза",
+    "xolestaz",
+    "холестаз"
    ],
    "group": "liver",
    "sections": [
@@ -2745,6 +2894,11 @@
       "date": "2026-10-09",
       "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
       "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     },
+     {
+      "date": "2026-10-09",
+      "scope": "Kitoblar (Dolgov 2009, Lyubina 1984, Najmitdinov 1998, Sobirova 2006, Aripova 2007, Dadayev 2004) bilimi rasmiy/ochiq manbalar bilan solishtirildi; matn ko‘chirilmagan",
+      "report": "scratchpad/books/B_01..B_06, A_02, A_04 (agent tahlili)"
      }
     ]
    },
@@ -2889,11 +3043,35 @@
       "ru": "Особые указания следует уточнить у врача; перед анализом может потребоваться голодание в течение определённого времени.",
       "en": "Ask the provider about specific instructions; fasting for a set time before the test may be requested."
      }
+    },
+    {
+     "section": "limitations",
+     "refs": [
+      {
+       "source_id": "medline-ggt",
+       "locator": "What do the results mean?"
+      },
+      {
+       "source_id": "book-sobirova-2006",
+       "locator": "XVII bob. Jigar xastaliklarida biokimyoviy o‘zgarishlar (sindromlar)"
+      },
+      {
+       "source_id": "kwo-2017-acg-liver",
+       "locator": "Abstract"
+      }
+     ],
+     "text": {
+      "uz": "Jigar laborator sindromlarida GGT xolestaz guruhiga kiradi: ALP bilan birga oshishi o‘t yo‘llari yoki jigar sababini, ALP yuqori va GGT me’yorda bo‘lishi esa suyak sababini qo‘llab-quvvatlaydi. GGT alkogol va ayrim dorilar ta’sirida ham oshadi, shuning uchun yolg‘iz o‘zi xolestazni isbotlamaydi.",
+      "ru": "В лабораторных синдромах печени ГГТ входит в группу холестаза: одновременный рост с ЩФ поддерживает печёночно-желчную причину, высокая ЩФ при нормальной ГГТ — костную. ГГТ повышается и от алкоголя и некоторых лекарств, поэтому сама по себе холестаз не доказывает.",
+      "en": "Among liver laboratory patterns GGT belongs to the cholestatic group: rising with ALP supports a hepatobiliary cause, while a high ALP with normal GGT supports bone. GGT also rises with alcohol and some medicines, so alone it does not prove cholestasis."
+     }
     }
    ],
    "decision_limits": [],
    "source_ids": [
-    "medline-ggt"
+    "medline-ggt",
+    "book-sobirova-2006",
+    "kwo-2017-acg-liver"
    ],
    "related": [
     "alp",
@@ -2919,7 +3097,22 @@
    "synonyms": [
     "bilirubin",
     "билирубин",
-    "TBIL"
+    "TBIL",
+    "sariqlik",
+    "umumiy bilirubin",
+    "jigar usti sariqligi",
+    "jigar osti sariqligi",
+    "mexanik sariqlik",
+    "gemolitik sariqlik",
+    "parenximatoz sariqlik",
+    "giperbilirubinemiya",
+    "желтуха",
+    "надпечёночная желтуха",
+    "подпечёночная желтуха",
+    "общий билирубин",
+    "jaundice",
+    "prehepatic jaundice",
+    "posthepatic jaundice"
    ],
    "group": "liver",
    "sections": [
@@ -2941,6 +3134,11 @@
       "date": "2026-10-09",
       "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
       "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     },
+     {
+      "date": "2026-10-09",
+      "scope": "Kitoblar (Dolgov 2009, Lyubina 1984, Najmitdinov 1998, Sobirova 2006, Aripova 2007, Dadayev 2004) bilimi rasmiy/ochiq manbalar bilan solishtirildi; matn ko‘chirilmagan",
+      "report": "scratchpad/books/B_01..B_06, A_02, A_04 (agent tahlili)"
      }
     ]
    },
@@ -3093,12 +3291,85 @@
       "ru": "При отклонениях в печёночных пробах врач сопоставляет все измеренные показатели, чтобы найти сочетания, характерные для разных заболеваний печени. Сами по себе печёночные пробы обычно не позволяют поставить конкретный диагноз.",
       "en": "When liver test results are abnormal, the provider compares all the measured substances to look for patterns that suggest different types of liver conditions. Liver function tests alone usually cannot diagnose a specific disease."
      }
+    },
+    {
+     "section": "physiology",
+     "refs": [
+      {
+       "source_id": "medline-ency-jaundice-causes",
+       "locator": "Jaundice causes"
+      },
+      {
+       "source_id": "book-sobirova-2006",
+       "locator": "XVII bob. Jigar biokimyosi: sariqliklar"
+      }
+     ],
+     "text": {
+      "uz": "Sariqlik uch yo‘l bilan yuzaga keladi: eritrotsitlar haddan tashqari ko‘p parchalanadi (jigar usti, gemolitik); jigar shikastlangan yoki bilirubinni qayta ishlay olmaydi (jigar, parenximatoz); jigardan chiqqan bilirubin ichakka o‘ta olmaydi (jigar osti, mexanik — o‘t yo‘llari tiqilishi).",
+      "ru": "Желтуха возникает тремя путями: эритроциты разрушаются слишком быстро (надпечёночная, гемолитическая); печень повреждена или не перерабатывает билирубин (печёночная, паренхиматозная); билирубин из печени не может попасть в кишечник (подпечёночная, механическая — закупорка желчных путей).",
+      "en": "Jaundice arises in three ways: too many red cells break down (prehepatic, haemolytic); the liver is damaged or cannot process bilirubin (hepatic); bilirubin from the liver cannot reach the gut (posthepatic, obstructive — blocked bile ducts)."
+     }
+    },
+    {
+     "section": "high_result",
+     "refs": [
+      {
+       "source_id": "fargo-2017-jaundice",
+       "locator": "Abstract"
+      },
+      {
+       "source_id": "kwo-2017-acg-liver",
+       "locator": "Abstract"
+      },
+      {
+       "source_id": "book-sobirova-2006",
+       "locator": "XVII bob. Jigar biokimyosi: sariqliklar"
+      }
+     ],
+     "text": {
+      "uz": "Shuning uchun yuqori umumiy bilirubin fraksiyalarga ajratiladi. Asosan bevosita bo‘lmagan (konyugatsiyalanmagan) bilirubin oshishi — gemoliz yoki Jilber sindromi kabi konyugatsiya buzilishi; bevosita (konyugatsiyalangan) bilirubin oshishi — gepatotsellyulyar kasallik (masalan, virusli yoki alkogolli gepatit) yoki xolestaz/o‘t yo‘llari tiqilishi.",
+      "ru": "Поэтому повышенный общий билирубин разделяют на фракции. Преобладание непрямого (неконъюгированного) — гемолиз или нарушение конъюгации, например синдром Жильбера; прямого (конъюгированного) — гепатоцеллюлярное поражение (например, вирусный или алкогольный гепатит) или холестаз/закупорка желчных путей.",
+      "en": "So a raised total bilirubin is fractionated. Mainly indirect (unconjugated) — haemolysis or impaired conjugation such as Gilbert syndrome; direct (conjugated) — hepatocellular disease (e.g., viral or alcoholic hepatitis) or cholestasis/bile-duct obstruction."
+     }
+    },
+    {
+     "section": "limitations",
+     "refs": [
+      {
+       "source_id": "book-sobirova-2006",
+       "locator": "XVII bob. Jigar biokimyosi: sariqliklar"
+      },
+      {
+       "source_id": "medline-bilirubin-urine",
+       "locator": "What do the results mean?"
+      },
+      {
+       "source_id": "medline-urobilinogen-urine",
+       "locator": "What do the results mean?"
+      },
+      {
+       "source_id": "medline-ency-pale-stools",
+       "locator": "Stools - pale or clay-colored"
+      }
+     ],
+     "text": {
+      "uz": "Sariqlik turini siydik va najas yordamida ham farqlash mumkin. Jigar usti: siydikda bilirubin yo‘q (konyugatsiyalanmagan bilirubin siydikka o‘tmaydi), urobilinogen ko‘p, najas to‘q. Jigar: siydikda bilirubin bor, urobilinogen ko‘pincha oshgan. Jigar osti: siydikda bilirubin bor (to‘q siydik), urobilinogen kam yoki yo‘q, najas oqargan, loysimon. Bu umumiy naqsh — tashxis klinik va boshqa tekshiruvlar bilan qo‘yiladi.",
+      "ru": "Тип желтухи помогают различить моча и кал. Надпечёночная: билирубина в моче нет (неконъюгированный в мочу не проходит), уробилиногена много, кал тёмный. Печёночная: билирубин в моче есть, уробилиноген часто повышен. Подпечёночная: билирубин в моче есть (тёмная моча), уробилиногена мало или нет, кал светлый, глинистый. Это общая схема — диагноз ставят с учётом клиники и других исследований.",
+      "en": "Urine and stool help tell the types apart. Prehepatic: no bilirubin in urine (unconjugated bilirubin does not pass into urine), much urobilinogen, dark stool. Hepatic: bilirubin in urine, urobilinogen often raised. Posthepatic: bilirubin in urine (dark urine), little or no urobilinogen, pale clay-coloured stool. This is a general pattern — diagnosis relies on the clinical picture and other tests."
+     }
     }
    ],
    "decision_limits": [],
    "source_ids": [
     "medline-bilirubin",
-    "medline-liver-function"
+    "medline-liver-function",
+    "medline-ency-jaundice-causes",
+    "book-sobirova-2006",
+    "fargo-2017-jaundice",
+    "kwo-2017-acg-liver",
+    "medline-bilirubin-urine",
+    "medline-urobilinogen-urine",
+    "medline-ency-pale-stools"
    ],
    "related": [
     "bilirubin-direct",
@@ -3132,13 +3403,21 @@
     "прямой билирубин",
     "DBIL",
     "to‘g‘ri bilirubin",
-    "bevosita bilirubin"
+    "bevosita bilirubin",
+    "bog‘langan bilirubin",
+    "konyugatsiyalangan bilirubin",
+    "связанный билирубин",
+    "конъюгированный билирубин",
+    "bevosita bo‘lmagan bilirubin",
+    "непрямой билирубин",
+    "indirect bilirubin"
    ],
    "group": "liver",
    "sections": [
     "purpose",
     "physiology",
     "preanalytics",
+    "high_result",
     "related_tests",
     "limitations"
    ],
@@ -3151,6 +3430,11 @@
       "date": "2026-10-09",
       "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
       "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     },
+     {
+      "date": "2026-10-09",
+      "scope": "Kitoblar (Dolgov 2009, Lyubina 1984, Najmitdinov 1998, Sobirova 2006, Aripova 2007, Dadayev 2004) bilimi rasmiy/ochiq manbalar bilan solishtirildi; matn ko‘chirilmagan",
+      "report": "scratchpad/books/B_01..B_06, A_02, A_04 (agent tahlili)"
      }
     ]
    },
@@ -3243,11 +3527,56 @@
       "ru": "Врач может попросить сдавать анализ натощак, после голодания в течение нескольких часов. Нужно сообщить обо всех принимаемых лекарствах; отменять их можно только по указанию врача.",
       "en": "The provider may ask for fasting for several hours before the test. Tell the provider about all medicines taken; stop any only if the provider says so."
      }
+    },
+    {
+     "section": "high_result",
+     "refs": [
+      {
+       "source_id": "kwo-2017-acg-liver",
+       "locator": "Abstract"
+      },
+      {
+       "source_id": "fargo-2017-jaundice",
+       "locator": "Abstract"
+      },
+      {
+       "source_id": "book-sobirova-2006",
+       "locator": "XVII bob. Jigar biokimyosi: sariqliklar"
+      }
+     ],
+     "text": {
+      "uz": "Bilirubinning ko‘p qismi qonda konyugatsiyalanmagan holda aylanadi. Konyugatsiyalangan (bevosita) bilirubin oshishi ko‘pchilik hollarda gepatotsellyulyar kasallik yoki o‘t yo‘llari tiqilishi/xolestazni bildiradi; bu fraksiya suvda eriydi va siydikka o‘tadi, shuning uchun siydikda bilirubin paydo bo‘ladi.",
+      "ru": "Большая часть билирубина циркулирует в неконъюгированном виде. Повышение конъюгированного (прямого) билирубина в большинстве случаев означает гепатоцеллюлярное поражение или закупорку желчных путей/холестаз; эта фракция водорастворима и проходит в мочу, поэтому в моче появляется билирубин.",
+      "en": "Most bilirubin circulates unconjugated. A raised conjugated (direct) bilirubin in most settings implies hepatocellular disease or biliary obstruction/cholestasis; this fraction is water-soluble and passes into urine, so bilirubin appears in urine."
+     }
+    },
+    {
+     "section": "limitations",
+     "refs": [
+      {
+       "source_id": "medline-ency-bilirubin",
+       "locator": "Normal Results"
+      },
+      {
+       "source_id": "medline-bilirubin-urine",
+       "locator": "What is a bilirubin in urine test?"
+      }
+     ],
+     "text": {
+      "uz": "MedlinePlus ensiklopediyasi misol sifatida bevosita bilirubin uchun 0,3 mg/dL (5,1 µmol/L) dan kam qiymatni keltiradi, lekin referens laboratoriya va usulga bog‘liq — natija varaqasidagi oraliqqa qarang. Sog‘lom odam siydigida bilirubin odatda bo‘lmaydi.",
+      "ru": "Энциклопедия MedlinePlus в качестве примера приводит для прямого билирубина значение меньше 0,3 мг/дл (5,1 мкмоль/л), но референс зависит от лаборатории и метода — смотрите интервал на бланке. В моче здорового человека билирубина обычно нет.",
+      "en": "The MedlinePlus encyclopedia gives less than 0.3 mg/dL (5.1 µmol/L) as an example normal for direct bilirubin, but the reference depends on the laboratory and method — use the range on the report. Healthy urine normally contains no bilirubin."
+     }
     }
    ],
    "decision_limits": [],
    "source_ids": [
-    "medline-bilirubin"
+    "medline-bilirubin",
+    "kwo-2017-acg-liver",
+    "fargo-2017-jaundice",
+    "book-sobirova-2006",
+    "medline-ency-bilirubin",
+    "medline-bilirubin-urine"
    ],
    "related": [
     "bilirubin-total"
@@ -7502,7 +7831,7 @@
      "section": "preanalytics",
      "refs": [
       {
-       "source_id": "who-basic-lab-manual-2003",
+       "source_id": "who-basic-lab-techniques-2003",
        "locator": "7.2.3 Measuring the pH",
        "pages": "235"
       },
@@ -7606,7 +7935,7 @@
     "medline-glucose-urine",
     "medline-ketones-urine",
     "medline-urobilinogen-urine",
-    "who-basic-lab-manual-2003",
+    "who-basic-lab-techniques-2003",
     "book-aripova-2007",
     "who-dil-lab-99-1"
    ],
@@ -7969,7 +8298,7 @@
      "section": "limitations",
      "refs": [
       {
-       "source_id": "who-basic-lab-manual-2003",
+       "source_id": "who-basic-lab-techniques-2003",
        "locator": "7.2.7 Detection of abnormal elements — collection of specimens",
        "pages": "241"
       }
@@ -7991,7 +8320,7 @@
     "who-dil-lab-99-1",
     "book-aripova-2007",
     "book-lyubina-1984",
-    "who-basic-lab-manual-2003"
+    "who-basic-lab-techniques-2003"
    ],
    "related": [
     "urine-chemistry"
@@ -16662,7 +16991,10 @@
     "temir zaxirasi",
     "запасы железа",
     "iron stores",
-    "FER"
+    "FER",
+    "temir ombori",
+    "sideropeniya",
+    "сидеропения"
    ],
    "group": "iron-vitamins",
    "sections": [
@@ -16684,6 +17016,11 @@
       "date": "2026-10-09",
       "scope": "Kontent auditi B: sonlar, birliklar, namuna, mezonlar, manba locator",
       "report": "docs/CONTENT_AUDIT_2026-10-09_B.md"
+     },
+     {
+      "date": "2026-10-09",
+      "scope": "Kitoblar (Dolgov 2009, Lyubina 1984, Najmitdinov 1998, Sobirova 2006, Aripova 2007, Dadayev 2004) bilimi rasmiy/ochiq manbalar bilan solishtirildi; matn ko‘chirilmagan",
+      "report": "scratchpad/books/B_01..B_06, A_02, A_04 (agent tahlili)"
      }
     ]
    },
@@ -16887,6 +17224,43 @@
       "ru": "Анемию хронических заболеваний (анемию воспаления) диагностировать трудно: хотя низкий ферритин указывает на дефицит железа, при инфекции или воспалении ферритин обычно выше. При такой анемии воспалительные цитокины повышают гепсидин, и железо перенаправляется из крови в места хранения.",
       "en": "Anemia of chronic disease (anemia of inflammation) can be difficult to diagnose: although low serum ferritin indicates iron deficiency, ferritin tends to be higher with infection or inflammation. In this anemia, inflammatory cytokines raise hepcidin and iron is diverted from the circulation to storage sites."
      }
+    },
+    {
+     "section": "interference",
+     "refs": [
+      {
+       "source_id": "who-ferritin-2020",
+       "locator": "Executive summary: recommendations 4.1–4.2"
+      }
+     ],
+     "text": {
+      "uz": "JSST (2020) infeksiya yoki yallig‘lanish keng tarqalgan joylarda ferritinni ikki o‘tkir faza oqsili — CRP va AGP bilan birga baholashni tavsiya qiladi; yallig‘lanishda temir tanqisligi chegarasi ko‘tariladi (kattalarda <70 µg/L, 5 yoshgacha bolalarda <30 µg/L).",
+      "ru": "ВОЗ (2020) рекомендует в условиях широкой распространённости инфекций и воспаления оценивать ферритин вместе с двумя белками острой фазы — CRP и AGP; при воспалении порог дефицита железа повышают (у взрослых <70 мкг/л, у детей до 5 лет <30 мкг/л).",
+      "en": "WHO (2020) recommends assessing ferritin together with two acute-phase proteins, CRP and AGP, where infection or inflammation is widespread; with inflammation the iron-deficiency cut-off is raised (adults <70 µg/L, children under 5 <30 µg/L)."
+     }
+    },
+    {
+     "section": "limitations",
+     "refs": [
+      {
+       "source_id": "takami-2026-cbc",
+       "locator": "Table 3. Integrated Interpretation of Anemia Using MCV and RDW"
+      },
+      {
+       "source_id": "medline-mcv",
+       "locator": "What do the results mean?"
+      },
+      {
+       "source_id": "book-dolgov-2009",
+       "locator": "Обмен железа; лабораторная диагностика ЖДА",
+       "pages": "43–68"
+      }
+     ],
+     "text": {
+      "uz": "Anemiya algoritmida ferritin mikrotsitar (MCV past) anemiyada birinchi tekshiriladi: past ferritin temir tanqisligini tasdiqlaydi; ferritin me’yorda yoki yuqori bo‘lsa — surunkali kasallik (yallig‘lanish) anemiyasi, talassemiya va boshqa sabablar ko‘rib chiqiladi. To‘liq yo‘l: O‘rganish → Jadvallar va algoritmlar → Anemiya.",
+      "ru": "В алгоритме анемии ферритин проверяют первым при микроцитарной (низкий MCV) анемии: низкий ферритин подтверждает дефицит железа; при нормальном или высоком ферритине рассматривают анемию хронических заболеваний (воспаления), талассемию и другие причины. Полная схема: Обучение → Таблицы и алгоритмы → Анемия.",
+      "en": "In the anaemia algorithm ferritin is the first test in microcytic (low MCV) anaemia: a low ferritin confirms iron deficiency; with normal or high ferritin, anaemia of chronic disease (inflammation), thalassaemia and other causes are considered. Full path: Learn → Tables and algorithms → Anaemia."
+     }
     }
    ],
    "decision_limits": [
@@ -16964,6 +17338,60 @@
        "locator": "Tests Used to Assess Iron Status: Serum Ferritin Concentration"
       }
      ]
+    },
+    {
+     "label": {
+      "uz": "Temir tanqisligi (JSST 2020)",
+      "ru": "Дефицит железа (ВОЗ 2020)",
+      "en": "Iron deficiency (WHO 2020)"
+     },
+     "unit": "µg/L",
+     "low": null,
+     "high": 15,
+     "high_exclusive": true,
+     "population": {
+      "uz": "Sog‘lom ko‘rinadigan kattalar va 5 yoshdan katta bolalar (homiladorlikda — I trimestr)",
+      "ru": "Внешне здоровые взрослые и дети старше 5 лет (при беременности — I триместр)",
+      "en": "Apparently healthy adults and children aged 5 and over (pregnancy: first trimester)"
+     },
+     "note": {
+      "uz": "5 yoshgacha bolalarda chegara <12 µg/L.",
+      "ru": "У детей до 5 лет порог <12 мкг/л.",
+      "en": "Under 5 years the cut-off is <12 µg/L."
+     },
+     "refs": [
+      {
+       "source_id": "who-ferritin-2020",
+       "locator": "Executive summary: Table 1"
+      }
+     ]
+    },
+    {
+     "label": {
+      "uz": "Infeksiya/yallig‘lanishda temir tanqisligi (JSST 2020)",
+      "ru": "Дефицит железа при инфекции/воспалении (ВОЗ 2020)",
+      "en": "Iron deficiency with infection/inflammation (WHO 2020)"
+     },
+     "unit": "µg/L",
+     "low": null,
+     "high": 70,
+     "high_exclusive": true,
+     "population": {
+      "uz": "Infeksiya yoki yallig‘lanishi bor kattalar va 5 yoshdan katta bolalar",
+      "ru": "Взрослые и дети старше 5 лет с инфекцией или воспалением",
+      "en": "Adults and children aged 5 and over with infection or inflammation"
+     },
+     "note": {
+      "uz": "5 yoshgacha bolalarda chegara <30 µg/L. Shartli tavsiya, dalillar ishonchliligi past.",
+      "ru": "У детей до 5 лет порог <30 мкг/л. Условная рекомендация, низкая достоверность доказательств.",
+      "en": "Under 5 years the cut-off is <30 µg/L. Conditional recommendation, low-certainty evidence."
+     },
+     "refs": [
+      {
+       "source_id": "who-ferritin-2020",
+       "locator": "Executive summary: recommendation 1.2; Table 1"
+      }
+     ]
     }
    ],
    "reference_intervals": [],
@@ -16971,7 +17399,11 @@
     "medline-ferritin",
     "cdc-mmwr-iron-1998",
     "ods-iron",
-    "niddk-hemochromatosis-diagnosis"
+    "niddk-hemochromatosis-diagnosis",
+    "who-ferritin-2020",
+    "takami-2026-cbc",
+    "medline-mcv",
+    "book-dolgov-2009"
    ],
    "related": [
     "iron",
@@ -17011,7 +17443,10 @@
     "железосвязывающая способность",
     "umumiy temir bog‘lash qobiliyati",
     "temir bog‘lash qobiliyati",
-    "transferrin to‘yinishi"
+    "transferrin to‘yinishi",
+    "eruvchan transferrin retseptori",
+    "sTfR",
+    "растворимый рецептор трансферрина"
    ],
    "group": "iron-vitamins",
    "sections": [
@@ -17033,6 +17468,11 @@
       "date": "2026-10-09",
       "scope": "Kontent auditi B: sonlar, birliklar, namuna, mezonlar, manba locator",
       "report": "docs/CONTENT_AUDIT_2026-10-09_B.md"
+     },
+     {
+      "date": "2026-10-09",
+      "scope": "Kitoblar (Dolgov 2009, Lyubina 1984, Najmitdinov 1998, Sobirova 2006, Aripova 2007, Dadayev 2004) bilimi rasmiy/ochiq manbalar bilan solishtirildi; matn ko‘chirilmagan",
+      "report": "scratchpad/books/B_01..B_06, A_02, A_04 (agent tahlili)"
      }
     ]
    },
@@ -17210,6 +17650,29 @@
       "ru": "ОЖСС менее чувствительна к дефициту железа, чем ферритин, так как меняется только после истощения запасов.",
       "en": "TIBC is less sensitive to iron deficiency than serum ferritin, because changes in TIBC occur only after iron stores are depleted."
      }
+    },
+    {
+     "section": "limitations",
+     "refs": [
+      {
+       "source_id": "cdc-mmwr-iron-1998",
+       "locator": "Tests Used to Assess Iron Status: Transferrin Saturation"
+      },
+      {
+       "source_id": "takami-2026-cbc",
+       "locator": "Table 3. Integrated Interpretation of Anemia Using MCV and RDW"
+      },
+      {
+       "source_id": "book-dolgov-2009",
+       "locator": "Обмен железа; лабораторная диагностика ЖДА",
+       "pages": "43–68"
+      }
+     ],
+     "text": {
+      "uz": "Temir ko‘rsatkichlari birga o‘qiladi: temir tanqisligida zardob temiri va transferrin to‘yinishi past, TIBC odatda yuqori, ferritin past; yallig‘lanish (surunkali kasallik) anemiyasida temir va TIBC past, ferritin esa me’yorda yoki yuqori bo‘lishi mumkin. Dolgov va hammualliflari eruvchan transferrin retseptori (sTfR) yallig‘lanishda deyarli o‘zgarmasligini ikki holatni farqlash uchun keltiradi.",
+      "ru": "Показатели железа читают вместе: при дефиците железа сывороточное железо и насыщение трансферрина низкие, ОЖСС обычно высокая, ферритин низкий; при анемии воспаления (хронических заболеваний) железо и ОЖСС низкие, а ферритин может быть нормальным или высоким. Долгов и соавт. приводят растворимый рецептор трансферрина (sTfR), почти не меняющийся при воспалении, для различения этих состояний.",
+      "en": "Read iron tests together: in iron deficiency serum iron and transferrin saturation are low, TIBC is usually high and ferritin is low; in anaemia of inflammation (chronic disease) iron and TIBC are low while ferritin may be normal or high. Dolgov et al. cite the soluble transferrin receptor (sTfR), which changes little with inflammation, to tell the two apart."
+     }
     }
    ],
    "decision_limits": [
@@ -17246,7 +17709,9 @@
     "medline-iron-tests",
     "cdc-mmwr-iron-1998",
     "niddk-hemochromatosis-diagnosis",
-    "ods-iron"
+    "ods-iron",
+    "takami-2026-cbc",
+    "book-dolgov-2009"
    ],
    "related": [
     "iron",
@@ -18809,7 +19274,13 @@
     "общий анализ крови",
     "complete blood count",
     "full blood count",
-    "клинический анализ крови"
+    "клинический анализ крови",
+    "qon rangi",
+    "gemoglobinsianid",
+    "HiCN",
+    "Sali usuli",
+    "метод Сали",
+    "гемиглобинцианид"
    ],
    "group": "hematology",
    "sections": [
@@ -18831,6 +19302,11 @@
       "date": "2026-10-09",
       "scope": "Kontent auditi B: sonlar, birliklar, namuna, mezonlar, manba locator",
       "report": "docs/CONTENT_AUDIT_2026-10-09_B.md"
+     },
+     {
+      "date": "2026-10-09",
+      "scope": "Kitoblar (Dolgov 2009, Lyubina 1984, Najmitdinov 1998, Sobirova 2006, Aripova 2007, Dadayev 2004) bilimi rasmiy/ochiq manbalar bilan solishtirildi; matn ko‘chirilmagan",
+      "report": "scratchpad/books/B_01..B_06, A_02, A_04 (agent tahlili)"
      }
     ]
    },
@@ -19054,6 +19530,48 @@
       "ru": "Анализ на гемоглобин не следует путать с гликированным гемоглобином (HbA1c): HbA1c отражает средний уровень глюкозы в крови.",
       "en": "A hemoglobin test is not the same as a hemoglobin A1C test, which checks average blood glucose."
      }
+    },
+    {
+     "section": "interference",
+     "refs": [
+      {
+       "source_id": "takami-2026-cbc",
+       "locator": "Table 4. Common Causes of Spurious Results in Automated Blood Cell Analysis"
+      },
+      {
+       "source_id": "book-dolgov-2009",
+       "locator": "Гемоглобин: причины ошибок измерения",
+       "pages": "25–35"
+      }
+     ],
+     "text": {
+      "uz": "Analizatorda gemoglobin soxta yuqori chiqishi mumkin: lipemiya (xilyoz qon), juda yuqori leykotsitoz, paraproteinemiya — ular eritmani loyqalantiradi. Gemoglobin RBC va MCV bilan mos kelmasa, natija tekshiriladi.",
+      "ru": "Гемоглобин на анализаторе может быть ложно повышен при липемии (хилёзная кровь), выраженном лейкоцитозе, парапротеинемии — они вызывают мутность. Если гемоглобин не согласуется с RBC и MCV, результат перепроверяют.",
+      "en": "On analysers haemoglobin can be falsely high with lipaemia, marked leukocytosis or paraproteinaemia, which make the lysate turbid. If haemoglobin does not fit the RBC and MCV, the result is checked."
+     }
+    },
+    {
+     "section": "limitations",
+     "refs": [
+      {
+       "source_id": "who-basic-lab-techniques-2003",
+       "locator": "9.3.1 Haemiglobincyanide photometric method",
+       "pages": "271"
+      },
+      {
+       "source_id": "book-lyubina-1984",
+       "locator": "§54 Определение гемоглобина"
+      },
+      {
+       "source_id": "book-aripova-2007",
+       "locator": "12.1.4 Gemoglobinni aniqlash"
+      }
+     ],
+     "text": {
+      "uz": "Sali (gematin, ko‘z bilan solishtirish) usuli eskirgan: JSST qo‘llanmasi gemiglobinsianid fotometrik usulini eng aniq deb, imkon bo‘lgan joyda uni qo‘llashni tavsiya qiladi. Aripova va hammualliflari (2007) ham Sali usuli standartlanmaganini qayd etadi.",
+      "ru": "Метод Сали (гематиновый, визуальное сравнение) устарел: руководство ВОЗ называет гемиглобинцианидный фотометрический метод наиболее точным и рекомендует применять его везде, где возможно. Арипова и соавт. (2007) также отмечают, что метод Сали не стандартизован.",
+      "en": "The Sahli (acid haematin, visual comparison) method is obsolete: the WHO manual calls the haemiglobincyanide photometric method the most accurate and recommends it wherever possible. Aripova et al. (2007) also note that Sahli is not standardised."
+     }
     }
    ],
    "decision_limits": [
@@ -19269,7 +19787,12 @@
    "source_ids": [
     "medline-hemoglobin",
     "who-hb-cutoffs-2024",
-    "who-phlebotomy-2010"
+    "who-phlebotomy-2010",
+    "takami-2026-cbc",
+    "book-dolgov-2009",
+    "who-basic-lab-techniques-2003",
+    "book-lyubina-1984",
+    "book-aripova-2007"
    ],
    "related": [
     "hematocrit",
@@ -19317,7 +19840,9 @@
     "общий анализ крови",
     "complete blood count",
     "full blood count",
-    "клинический анализ крови"
+    "клинический анализ крови",
+    "gematokrit soni",
+    "Ht%"
    ],
    "group": "hematology",
    "sections": [
@@ -19326,6 +19851,7 @@
     "high_result",
     "low_result",
     "preanalytics",
+    "interference",
     "related_tests",
     "limitations"
    ],
@@ -19338,6 +19864,11 @@
       "date": "2026-10-09",
       "scope": "Kontent auditi B: sonlar, birliklar, namuna, mezonlar, manba locator",
       "report": "docs/CONTENT_AUDIT_2026-10-09_B.md"
+     },
+     {
+      "date": "2026-10-09",
+      "scope": "Kitoblar (Dolgov 2009, Lyubina 1984, Najmitdinov 1998, Sobirova 2006, Aripova 2007, Dadayev 2004) bilimi rasmiy/ochiq manbalar bilan solishtirildi; matn ko‘chirilmagan",
+      "report": "scratchpad/books/B_01..B_06, A_02, A_04 (agent tahlili)"
      }
     ]
    },
@@ -19471,12 +20002,31 @@
       "ru": "Нормальный гематокрит зависит от пола, возраста, курения и высоты места проживания — результат сравнивают с интервалом в бланке лаборатории и обсуждают с врачом. Отклонение не всегда означает болезнь, требующую лечения.",
       "en": "Normal hematocrit varies with sex, age, smoking and the altitude where one lives — compare with the interval on the lab report and discuss with the provider. A result outside the range does not always mean a condition that needs treatment."
      }
+    },
+    {
+     "section": "interference",
+     "refs": [
+      {
+       "source_id": "takami-2026-cbc",
+       "locator": "Understanding CBC parameters"
+      },
+      {
+       "source_id": "takami-2026-cbc",
+       "locator": "Table 4. Common Causes of Spurious Results in Automated Blood Cell Analysis"
+      }
+     ],
+     "text": {
+      "uz": "Analizatorda gematokrit ko‘pincha bevosita o‘lchanmaydi — taxminan eritrotsitlar soni va MCV ko‘paytmasidan hisoblanadi. Shuning uchun RBC yoki MCV xatosi (masalan, sovuq agglyutininlar, giperglikemiya, uzoq saqlash) gematokritga ham o‘tadi.",
+      "ru": "На анализаторе гематокрит часто не измеряется напрямую — он примерно равен произведению числа эритроцитов на MCV. Поэтому ошибка RBC или MCV (например, холодовые агглютинины, гипергликемия, долгое хранение) переходит и на гематокрит.",
+      "en": "On analysers haematocrit is often not measured directly — it approximates the product of the red cell count and MCV. So an error in RBC or MCV (e.g., cold agglutinins, hyperglycaemia, prolonged storage) carries over to the haematocrit."
+     }
     }
    ],
    "decision_limits": [],
    "source_ids": [
     "medline-hematocrit",
-    "who-phlebotomy-2010"
+    "who-phlebotomy-2010",
+    "takami-2026-cbc"
    ],
    "related": [
     "hemoglobin",
@@ -19520,7 +20070,10 @@
     "общий анализ крови",
     "complete blood count",
     "full blood count",
-    "клинический анализ крови"
+    "клинический анализ крови",
+    "qizil qon tanachalari",
+    "sovuq agglyutininlar",
+    "холодовые агглютинины"
    ],
    "group": "hematology",
    "sections": [
@@ -19542,6 +20095,11 @@
       "date": "2026-10-09",
       "scope": "Kontent auditi B: sonlar, birliklar, namuna, mezonlar, manba locator",
       "report": "docs/CONTENT_AUDIT_2026-10-09_B.md"
+     },
+     {
+      "date": "2026-10-09",
+      "scope": "Kitoblar (Dolgov 2009, Lyubina 1984, Najmitdinov 1998, Sobirova 2006, Aripova 2007, Dadayev 2004) bilimi rasmiy/ochiq manbalar bilan solishtirildi; matn ko‘chirilmagan",
+      "report": "scratchpad/books/B_01..B_06, A_02, A_04 (agent tahlili)"
      }
     ]
    },
@@ -19718,6 +20276,29 @@
       "ru": "По данным NHLBI, нормальные интервалы у мужчин и женщин различаются, на них могут влиять также возраст, высокогорье и раса — поэтому результат сравнивают с интервалом в бланке лаборатории.",
       "en": "NHLBI notes that some normal ranges differ between men and women, and that age, high altitude and race may also affect them — so the result is compared with the range on the lab report."
      }
+    },
+    {
+     "section": "interference",
+     "refs": [
+      {
+       "source_id": "takami-2026-cbc",
+       "locator": "Table 4. Common Causes of Spurious Results in Automated Blood Cell Analysis"
+      },
+      {
+       "source_id": "takami-2026-cbc",
+       "locator": "Step 5: Always consider spurious results"
+      },
+      {
+       "source_id": "book-dolgov-2009",
+       "locator": "Эритроциты: ложные результаты на анализаторе",
+       "pages": "25–35"
+      }
+     ],
+     "text": {
+      "uz": "Analizator xatolari: RBC juda yuqori leykotsitoz va giperlipidemiyada soxta oshishi, sovuq agglyutininlar va probirkadagi gemolizda soxta kamayishi mumkin. Sovuq agglyutinatsiyada eritrotsitlar to‘da bo‘lib sanaladi — RBC past, MCV va MCHC esa soxta yuqori chiqadi. Dolgov va hammualliflari bunday namunani 37 °C da isitib qayta o‘lchashni maslahat beradi. Natija klinikaga mos kelmasa — flaglar, surtma va qayta tahlil.",
+      "ru": "Ошибки анализатора: RBC может быть ложно повышен при выраженном лейкоцитозе и гиперлипидемии и ложно снижен при холодовых агглютининах и гемолизе в пробирке. При холодовой агглютинации эритроциты считаются конгломератами — RBC низкий, а MCV и MCHC ложно высокие. Долгов и соавт. советуют согреть такую пробу до 37 °C и измерить повторно. Если результат не согласуется с клиникой — флаги, мазок и повтор.",
+      "en": "Analyser errors: RBC can be falsely high with marked leukocytosis or hyperlipidaemia and falsely low with cold agglutinins or in-tube haemolysis. In cold agglutination red cells are counted as clumps — RBC is low while MCV and MCHC are falsely high. Dolgov et al. advise warming such a sample to 37 °C and re-measuring. If the result does not fit the clinical picture — flags, smear and repeat."
+     }
     }
    ],
    "decision_limits": [],
@@ -19725,7 +20306,9 @@
     "medline-rbc-count",
     "who-phlebotomy-2010",
     "medline-cbc",
-    "nhlbi-blood-tests"
+    "nhlbi-blood-tests",
+    "takami-2026-cbc",
+    "book-dolgov-2009"
    ],
    "related": [
     "hemoglobin",
@@ -21578,7 +22161,10 @@
     "общий анализ крови",
     "complete blood count",
     "full blood count",
-    "клинический анализ крови"
+    "клинический анализ крови",
+    "eritrotsit o‘lchami",
+    "normotsitoz",
+    "нормоцитоз"
    ],
    "group": "hematology",
    "sections": [
@@ -21600,6 +22186,11 @@
       "date": "2026-10-09",
       "scope": "Kontent auditi B: sonlar, birliklar, namuna, mezonlar, manba locator",
       "report": "docs/CONTENT_AUDIT_2026-10-09_B.md"
+     },
+     {
+      "date": "2026-10-09",
+      "scope": "Kitoblar (Dolgov 2009, Lyubina 1984, Najmitdinov 1998, Sobirova 2006, Aripova 2007, Dadayev 2004) bilimi rasmiy/ochiq manbalar bilan solishtirildi; matn ko‘chirilmagan",
+      "report": "scratchpad/books/B_01..B_06, A_02, A_04 (agent tahlili)"
      }
     ]
    },
@@ -21743,13 +22334,52 @@
       "ru": "MCV сам по себе не позволяет поставить диагноз. Анемия возможна и при нормальном MCV — например, при внезапной кровопотере, почечной недостаточности или апластической анемии.",
       "en": "MCV alone cannot diagnose a disease. Anemia can occur with a normal MCV — for example, after sudden blood loss, in kidney failure or in aplastic anemia."
      }
+    },
+    {
+     "section": "interference",
+     "refs": [
+      {
+       "source_id": "takami-2026-cbc",
+       "locator": "Table 4. Common Causes of Spurious Results in Automated Blood Cell Analysis"
+      },
+      {
+       "source_id": "book-dolgov-2009",
+       "locator": "MCV: влияние хранения пробы",
+       "pages": "25–35"
+      }
+     ],
+     "text": {
+      "uz": "MCV soxta oshishi mumkin: sovuq agglyutininlar, giperglikemiya va namunaning uzoq saqlanishi (eritrotsitlar shishadi; Dolgov va hammualliflari 8 soatdan ortiq saqlashni sabab sifatida keltiradi). Og‘ir giponatriyemiyada soxta pasayishi mumkin. Avvalgi natijalarga mos kelmaydigan to‘satdan o‘zgarish — xato belgisi.",
+      "ru": "MCV может быть ложно повышен при холодовых агглютининах, гипергликемии и долгом хранении пробы (эритроциты набухают; Долгов и соавт. называют хранение более 8 часов). При тяжёлой гипонатриемии возможно ложное снижение. Внезапное изменение, не согласующееся с прошлыми результатами, — признак ошибки.",
+      "en": "MCV can be falsely high with cold agglutinins, hyperglycaemia and prolonged sample storage (red cells swell; Dolgov et al. cite storage longer than 8 hours). Severe hyponatraemia can falsely lower it. A sudden change that does not fit previous results suggests an error."
+     }
+    },
+    {
+     "section": "limitations",
+     "refs": [
+      {
+       "source_id": "takami-2026-cbc",
+       "locator": "Table 3. Integrated Interpretation of Anemia Using MCV and RDW"
+      },
+      {
+       "source_id": "takami-2026-cbc",
+       "locator": "Step 2: Evaluate the RBC lineage"
+      }
+     ],
+     "text": {
+      "uz": "MCV ni RDW bilan birga o‘qish foydali: past MCV va me’yoriy RDW — bir xil mikrotsitoz (talassemiya tashuvchanligi, ayrim surunkali kasallik anemiyasi); past MCV va yuqori RDW — temir tanqisligi ehtimoli (ferritin va transferrin to‘yinishi tekshiriladi); me’yoriy MCV va yuqori RDW — aralash populyatsiya (erta temir tanqisligi, temir + B12/folat tanqisligi, transfuziyadan keyin). Retikulotsitlar soni ishlab chiqarish kamligini yo‘qotish yoki parchalanishdan ajratadi.",
+      "ru": "MCV полезно читать вместе с RDW: низкий MCV и нормальный RDW — однородный микроцитоз (носительство талассемии, часть анемий хронических заболеваний); низкий MCV и высокий RDW — вероятен дефицит железа (проверяют ферритин и насыщение трансферрина); нормальный MCV и высокий RDW — смешанная популяция (ранний дефицит железа, дефицит железа + B12/фолата, после трансфузии). Число ретикулоцитов отличает недостаточную продукцию от потери или разрушения.",
+      "en": "Read MCV together with RDW: low MCV with normal RDW — uniform microcytosis (thalassaemia trait, some anaemia of chronic disease); low MCV with high RDW — iron deficiency likely (check ferritin and transferrin saturation); normal MCV with high RDW — mixed populations (early iron deficiency, combined iron + B12/folate deficiency, after transfusion). The reticulocyte count separates poor production from loss or destruction."
+     }
     }
    ],
    "decision_limits": [],
    "source_ids": [
     "medline-mcv",
     "nhlbi-blood-tests",
-    "who-phlebotomy-2010"
+    "who-phlebotomy-2010",
+    "takami-2026-cbc",
+    "book-dolgov-2009"
    ],
    "related": [
     "mch",
@@ -21982,7 +22612,12 @@
     "общий анализ крови",
     "complete blood count",
     "full blood count",
-    "клинический анализ крови"
+    "клинический анализ крови",
+    "gipoxromiya",
+    "гипохромия",
+    "giperxromiya",
+    "rang ko‘rsatkichi",
+    "цветовой показатель"
    ],
    "group": "hematology",
    "sections": [
@@ -21991,6 +22626,7 @@
     "high_result",
     "low_result",
     "preanalytics",
+    "interference",
     "related_tests",
     "limitations"
    ],
@@ -22003,6 +22639,11 @@
       "date": "2026-10-09",
       "scope": "Kontent auditi B: sonlar, birliklar, namuna, mezonlar, manba locator",
       "report": "docs/CONTENT_AUDIT_2026-10-09_B.md"
+     },
+     {
+      "date": "2026-10-09",
+      "scope": "Kitoblar (Dolgov 2009, Lyubina 1984, Najmitdinov 1998, Sobirova 2006, Aripova 2007, Dadayev 2004) bilimi rasmiy/ochiq manbalar bilan solishtirildi; matn ko‘chirilmagan",
+      "report": "scratchpad/books/B_01..B_06, A_02, A_04 (agent tahlili)"
      }
     ]
    },
@@ -22120,12 +22761,61 @@
       "ru": "Результат индекса оценивают вместе с симптомами, анамнезом и другими анализами крови; отклонение одного или нескольких индексов может указывать на какой-либо вид анемии, но диагноз ставит врач.",
       "en": "Index results are interpreted with symptoms, medical history and other blood tests; abnormal indices may point to some type of anemia, but the diagnosis is made by the provider."
      }
+    },
+    {
+     "section": "interference",
+     "refs": [
+      {
+       "source_id": "takami-2026-cbc",
+       "locator": "Table 2. Clinical Interpretation of Key CBC Parameters"
+      },
+      {
+       "source_id": "takami-2026-cbc",
+       "locator": "Table 4. Common Causes of Spurious Results in Automated Blood Cell Analysis"
+      },
+      {
+       "source_id": "book-dolgov-2009",
+       "locator": "MCHC как индикатор ошибки измерения",
+       "pages": "25–35"
+      }
+     ],
+     "text": {
+      "uz": "MCHC fiziologik jihatdan juda kam o‘zgaradi, shuning uchun u o‘lchash xatosining sezgir belgisi. Takami (2026) 36 g/dL (360 g/L) dan yuqori MCHC ni artefakt belgisi deb hisoblaydi, Dolgov va hammualliflari 37–38 g/dL chegarasini keltiradi. Sabablar: Hb soxta yuqori (lipemiya, leykotsitoz) yoki RBC soxta past (sovuq agglyutininlar). Haqiqiy yuqori MCHC sferotsitozda uchraydi. Soxta pasayish — giperglikemiya va uzoq saqlash.",
+      "ru": "MCHC физиологически меняется очень мало, поэтому он чувствительный индикатор ошибки измерения. Takami (2026) считает MCHC выше 36 г/дл (360 г/л) признаком артефакта, Долгов и соавт. приводят порог 37–38 г/дл. Причины: ложно высокий Hb (липемия, лейкоцитоз) или ложно низкий RBC (холодовые агглютинины). Истинно высокий MCHC бывает при сфероцитозе. Ложное снижение — гипергликемия и долгое хранение.",
+      "en": "MCHC changes very little physiologically, so it is a sensitive marker of measurement error. Takami (2026) treats MCHC above 36 g/dL (360 g/L) as suggesting artefact; Dolgov et al. give 37–38 g/dL. Causes: falsely high Hb (lipaemia, leukocytosis) or falsely low RBC (cold agglutinins). A truly high MCHC occurs in spherocytosis. False lowering: hyperglycaemia and prolonged storage."
+     }
+    },
+    {
+     "section": "limitations",
+     "refs": [
+      {
+       "source_id": "takami-2026-cbc",
+       "locator": "Understanding CBC parameters"
+      },
+      {
+       "source_id": "book-dolgov-2009",
+       "locator": "Цветовой показатель и MCH",
+       "pages": "25–35"
+      },
+      {
+       "source_id": "book-najmitdinov-1998",
+       "locator": "Кириш: ранг кўрсаткичи"
+      }
+     ],
+     "text": {
+      "uz": "MDH darsliklaridagi «rang ko‘rsatkichi» MCH (eritrotsitdagi o‘rtacha gemoglobin) ning eski, qo‘lda hisoblanadigan muqobili; Dolgov va hammualliflari uni eskirgan deb hisoblaydi. Analizator MCH, MCHC va MCV ni bevosita beradi.",
+      "ru": "«Цветовой показатель» из учебников СНГ — старый, рассчитываемый вручную аналог MCH (среднего содержания гемоглобина в эритроците); Долгов и соавт. считают его устаревшим. Анализатор выдаёт MCH, MCHC и MCV напрямую.",
+      "en": "The “colour index” of former-USSR textbooks is an old, hand-calculated counterpart of MCH (mean cell haemoglobin); Dolgov et al. consider it obsolete. Analysers report MCH, MCHC and MCV directly."
+     }
     }
    ],
    "decision_limits": [],
    "source_ids": [
     "medline-rbc-indices",
-    "who-phlebotomy-2010"
+    "who-phlebotomy-2010",
+    "takami-2026-cbc",
+    "book-dolgov-2009",
+    "book-najmitdinov-1998"
    ],
    "related": [
     "mcv",
@@ -22380,7 +23070,19 @@
     "reticulocyte index",
     "RPI",
     "retikulotsitoz",
-    "ретикулоцитоз"
+    "ретикулоцитоз",
+    "IRF",
+    "RET-He",
+    "CHr",
+    "MSCV",
+    "MRV",
+    "CRC",
+    "retikulotsitar indeks",
+    "retikulotsitogramma",
+    "ретикулоцитарный индекс",
+    "фракция незрелых ретикулоцитов",
+    "immature reticulocyte fraction",
+    "reticulocyte hemoglobin"
    ],
    "group": "hematology",
    "sections": [
@@ -22402,6 +23104,11 @@
       "date": "2026-10-09",
       "scope": "Kontent auditi B: sonlar, birliklar, namuna, mezonlar, manba locator",
       "report": "docs/CONTENT_AUDIT_2026-10-09_B.md"
+     },
+     {
+      "date": "2026-10-09",
+      "scope": "Kitoblar (Dolgov 2009, Lyubina 1984, Najmitdinov 1998, Sobirova 2006, Aripova 2007, Dadayev 2004) bilimi rasmiy/ochiq manbalar bilan solishtirildi; matn ko‘chirilmagan",
+      "report": "scratchpad/books/B_01..B_06, A_02, A_04 (agent tahlili)"
      }
     ]
    },
@@ -22545,12 +23252,148 @@
       "ru": "Для понимания результата врач учитывает симптомы, анамнез и другие анализы крови; отклонение не всегда означает анемию или другое заболевание.",
       "en": "To understand the result, the provider considers symptoms, history and other blood tests; an abnormal count does not always mean anemia or another condition."
      }
+    },
+    {
+     "section": "physiology",
+     "refs": [
+      {
+       "source_id": "piva-2010-reticulocytes",
+       "locator": "Abstract"
+      },
+      {
+       "source_id": "book-dolgov-2009",
+       "locator": "Гематологические анализаторы: основные показатели эритропоэза",
+       "pages": "25–35"
+      }
+     ],
+     "text": {
+      "uz": "Zamonaviy analizatorlar retikulotsitlarni faqat sanamaydi: ulardagi RNK miqdori bo‘yicha yetuklik darajasini (eng yosh retikulotsitlar ulushi — IRF), hajmini va gemoglobin miqdorini (RET-He yoki CHr) ham o‘lchaydi. Bu parametrlarning nomi, usuli va referensi analizator turiga bog‘liq.",
+      "ru": "Современные анализаторы не только считают ретикулоциты: они измеряют их зрелость по содержанию РНК (доля самых молодых ретикулоцитов — IRF), объём и содержание гемоглобина (RET-He или CHr). Названия, метод и референсы этих параметров зависят от типа анализатора.",
+      "en": "Modern analysers do more than count reticulocytes: they measure maturity by RNA content (the fraction of the youngest cells — IRF), cell volume and haemoglobin content (RET-He or CHr). Names, method and reference ranges depend on the analyser."
+     }
+    },
+    {
+     "section": "high_result",
+     "refs": [
+      {
+       "source_id": "piva-2010-reticulocytes",
+       "locator": "Abstract"
+      },
+      {
+       "source_id": "book-dolgov-2009",
+       "locator": "Гематологические анализаторы: основные показатели эритропоэза",
+       "pages": "25–35"
+      }
+     ],
+     "text": {
+      "uz": "IRF suyak ko‘migi faolligining erta belgisi: ildiz hujayra ko‘chirib o‘tkazilgandan keyin eritropoez tiklanishini umumiy retikulotsitlar sonidan oldinroq ko‘rsatadi; Dolgov va hammualliflari uni anemiya davosi samarasining erta belgisi sifatida ham keltiradi.",
+      "ru": "IRF — ранний признак активности костного мозга: после трансплантации стволовых клеток он показывает восстановление эритропоэза раньше общего числа ретикулоцитов; Долгов и соавт. приводят его и как ранний признак эффекта лечения анемии.",
+      "en": "IRF is an early marker of marrow activity: after stem-cell transplantation it shows erythroid recovery before the total reticulocyte count does; Dolgov et al. also cite it as an early sign of response to anaemia treatment."
+     }
+    },
+    {
+     "section": "low_result",
+     "refs": [
+      {
+       "source_id": "piva-2010-reticulocytes",
+       "locator": "Abstract"
+      },
+      {
+       "source_id": "book-dolgov-2009",
+       "locator": "Обмен железа; лабораторная диагностика ЖДА",
+       "pages": "43–68"
+      }
+     ],
+     "text": {
+      "uz": "Retikulotsitlardagi gemoglobin (RET-He, CHr) oxirgi 3–4 kunda eritrotsit hosil qilish uchun mavjud bo‘lgan funksional temirni bilvosita aks ettiradi; pasayishi temir tanqis eritropoezga ishora qiladi. Aniq chegara analizator va laboratoriyaga bog‘liq — natija varaqasidagi referensga qarang.",
+      "ru": "Содержание гемоглобина в ретикулоцитах (RET-He, CHr) косвенно отражает функциональное железо, доступное для эритропоэза за последние 3–4 дня; снижение указывает на железодефицитный эритропоэз. Порог зависит от анализатора и лаборатории — смотрите референс на бланке.",
+      "en": "Reticulocyte haemoglobin content (RET-He, CHr) indirectly reflects the functional iron available for red cell production over the previous 3–4 days; a low value points to iron-restricted erythropoiesis. The cut-off depends on the analyser and laboratory — use the reference on the report."
+     }
+    },
+    {
+     "section": "limitations",
+     "refs": [
+      {
+       "source_id": "takami-2026-cbc",
+       "locator": "Table 2. Clinical Interpretation of Key CBC Parameters"
+      },
+      {
+       "source_id": "takami-2026-cbc",
+       "locator": "Step 2: Evaluate the RBC lineage"
+      },
+      {
+       "source_id": "book-dolgov-2009",
+       "locator": "Гематологические анализаторы: основные показатели эритропоэза",
+       "pages": "25–35"
+      }
+     ],
+     "text": {
+      "uz": "Anemiyada ulush (%) o‘rniga absolyut son yoki gematokrit bo‘yicha tuzatilgan ko‘rsatkich (CRC, RPI) qo‘llanadi. Takami (2026) kattalar uchun taxminiy mo‘ljal beradi: absolyut son taxminan 80×10⁹/L dan yuqori — ko‘mik javobi kuchaygan (qon ketishi, gemoliz, tiklanish); og‘ir anemiyada taxminan 20×10⁹/L dan past — eritropoez keskin pasaygan. Bu qat’iy tashxis chegaralari emas.",
+      "ru": "При анемии вместо доли (%) используют абсолютное число или показатель, скорректированный по гематокриту (CRC, RPI). Takami (2026) даёт ориентиры для взрослых: абсолютное число выше примерно 80×10⁹/л — усиленный ответ костного мозга (кровотечение, гемолиз, восстановление); при тяжёлой анемии ниже примерно 20×10⁹/л — резко сниженный эритропоэз. Это не строгие диагностические пороги.",
+      "en": "In anaemia the absolute count or a haematocrit-corrected index (CRC, RPI) is used instead of the percentage. Takami (2026) gives approximate adult guides: above about 80×10⁹/L suggests an increased marrow response (bleeding, haemolysis, recovery); below about 20×10⁹/L with severe anaemia suggests markedly impaired erythropoiesis. These are not rigid diagnostic cut-offs."
+     }
+    },
+    {
+     "section": "limitations",
+     "refs": [
+      {
+       "source_id": "wu-2021-hs-mscv",
+       "locator": "Laboratory tests for HS: Routine blood test"
+      },
+      {
+       "source_id": "book-dolgov-2009",
+       "locator": "Гематологические анализаторы: основные показатели эритропоэза",
+       "pages": "25–35"
+      }
+     ],
+     "text": {
+      "uz": "MSCV (sferiklashtirilgan hujayralar o‘rtacha hajmi) faqat ayrim analizatorlarda (manbaga ko‘ra Beckman Coulter) beriladi. Irsiy sferotsitozda MSCV odatda MCV dan kichik bo‘ladi va bu belgi uni talassemiyadan farqlashga yordam beradi; tashxis surtma, oila tekshiruvi va boshqa testlar bilan tasdiqlanadi.",
+      "ru": "MSCV (средний объём сферизованных клеток) выдают лишь некоторые анализаторы (по источнику — Beckman Coulter). При наследственном сфероцитозе MSCV обычно меньше MCV, что помогает отличить его от талассемии; диагноз подтверждают мазком, обследованием семьи и другими тестами.",
+      "en": "MSCV (mean sphered cell volume) is reported only by some analysers (per the source, Beckman Coulter). In hereditary spherocytosis MSCV is usually lower than MCV, which helps separate it from thalassaemia; the diagnosis is confirmed with the smear, family studies and other tests."
+     }
+    },
+    {
+     "section": "limitations",
+     "refs": [
+      {
+       "source_id": "piva-2010-reticulocytes",
+       "locator": "Abstract"
+      },
+      {
+       "source_id": "book-lyubina-1984",
+       "locator": "§63 Подсчёт ретикулоцитов"
+      }
+     ],
+     "text": {
+      "uz": "Qo‘lda sanashda retikulotsitlar supravital bo‘yoq (masalan, brilliant krezil ko‘k) bilan bo‘yalib, eritrotsitlarga nisbatan (an’anaviy ravishda 1000 taga) hisoblanadi. 1990-yillardan avtomatik (oqim sitometriyasi) sanash mikroskopiyani almashtirdi: u aniqroq va takrorlanuvchan, lekin laboratoriyalar orasida natijalar to‘liq standartlashmagan.",
+      "ru": "При ручном подсчёте ретикулоциты окрашивают суправитально (например, бриллиантовым крезиловым синим) и считают на эритроциты (традиционно на 1000). С 1990-х автоматический подсчёт (проточная цитометрия) вытеснил микроскопию: он точнее и воспроизводимее, но результаты между лабораториями стандартизованы не полностью.",
+      "en": "Manual counting uses a supravital stain (e.g., brilliant cresyl blue) and relates reticulocytes to red cells (traditionally per 1000). Since the 1990s automated flow-cytometric counting has replaced microscopy: it is more accurate and precise, but results are not fully standardised between laboratories."
+     }
+    },
+    {
+     "section": "interference",
+     "refs": [
+      {
+       "source_id": "takami-2026-cbc",
+       "locator": "Table 4. Common Causes of Spurious Results in Automated Blood Cell Analysis"
+      }
+     ],
+     "text": {
+      "uz": "Analizatorda retikulotsitlar yadroli eritrotsitlar (NRBC), eritrotsit ichidagi kiritmalar va fluoressent xalaqitlar tufayli soxta yuqori chiqishi mumkin; analizator belgisi (flag) bo‘lsa yoki natija klinik holatga mos kelmasa, surtma ko‘riladi.",
+      "ru": "На анализаторе ретикулоциты могут быть ложно повышены из-за ядросодержащих эритроцитов (NRBC), включений в эритроцитах и флуоресцентных помех; при флаге анализатора или несоответствии клинике смотрят мазок.",
+      "en": "On analysers reticulocytes can be falsely high because of nucleated red cells (NRBCs), red-cell inclusions or fluorescent interference; with an analyser flag or a result that does not fit the clinical picture, check the smear."
+     }
     }
    ],
    "decision_limits": [],
    "source_ids": [
     "medline-reticulocyte",
-    "who-phlebotomy-2010"
+    "who-phlebotomy-2010",
+    "piva-2010-reticulocytes",
+    "book-dolgov-2009",
+    "takami-2026-cbc",
+    "wu-2021-hs-mscv",
+    "book-lyubina-1984"
    ],
    "related": [
     "hemoglobin",
@@ -25580,7 +26423,24 @@
     "Giardia",
     "Cryptosporidium",
     "Entamoeba histolytica",
-    "DPDx"
+    "DPDx",
+    "gijja tahlili",
+    "axlat tahlili parazitga",
+    "ichburug‘ amyobasi",
+    "lyambliya sistasi",
+    "askarida",
+    "qilbosh",
+    "tasmasimon chuvalchang",
+    "Kato surtmasi",
+    "flotatsiya",
+    "sedimentatsiya",
+    "formalin-efir usuli",
+    "толстый мазок по Като",
+    "флотация",
+    "метод обогащения",
+    "Kato-Katz",
+    "formalin-ethyl acetate",
+    "concentration technique"
    ],
    "group": "stool-parasitology",
    "sections": [
@@ -25602,6 +26462,11 @@
       "date": "2026-10-09",
       "scope": "Kontent auditi B: sonlar, birliklar, namuna, mezonlar, manba locator",
       "report": "docs/CONTENT_AUDIT_2026-10-09_B.md"
+     },
+     {
+      "date": "2026-10-09",
+      "scope": "Kitoblar (Dolgov 2009, Lyubina 1984, Najmitdinov 1998, Sobirova 2006, Aripova 2007, Dadayev 2004) bilimi rasmiy/ochiq manbalar bilan solishtirildi; matn ko‘chirilmagan",
+      "report": "scratchpad/books/B_01..B_06, A_02, A_04 (agent tahlili)"
      }
     ]
    },
@@ -25758,6 +26623,140 @@
       "ru": "Для энтеробиоза (острицы) анализ кала обычно не подходит — яиц в кале мало; для этого делают перианальный тест с липкой лентой.",
       "en": "For pinworm, a stool test is usually not useful — stool rarely contains enough eggs; the perianal tape test is used instead."
      }
+    },
+    {
+     "section": "physiology",
+     "refs": [
+      {
+       "source_id": "who-basic-lab-techniques-2003",
+       "locator": "4.2.3 Microscopic examination",
+       "pages": "107–109"
+      },
+      {
+       "source_id": "book-lyubina-1984",
+       "locator": "§24 Методы обнаружения яиц гельминтов"
+      },
+      {
+       "source_id": "book-aripova-2007",
+       "locator": "11.1.7–11.1.11 Axlat va perianal namunalar, parazitlar"
+      }
+     ],
+     "text": {
+      "uz": "To‘g‘ridan-to‘g‘ri (nativ) mikroskopiya ikki tomchida qilinadi: fiziologik eritmada (37 °C gacha iliq) harakatlanuvchi trofozoitlar, Lugol yodi (yod–sirka kislota) eritmasida esa sistalar yadrolari yaxshi ko‘rinadi — yod trofozoitlarni harakatsiz qiladi. Suyuq yoki shilliqli najasdan trofozoit uchun, shakllangan najasdan tuxum uchun namuna olinadi.",
+      "ru": "Прямую (нативную) микроскопию делают в двух каплях: в физрастворе (подогретом до 37 °C) видны подвижные трофозоиты, в растворе Люголя (йод–уксусная кислота) хорошо видны ядра цист — йод обездвиживает трофозоиты. Для трофозоитов берут жидкий или слизистый кал, для яиц — оформленный.",
+      "en": "Direct (wet) microscopy is done in two drops: saline (warmed to 37 °C) shows motile trophozoites, Lugol’s iodine (iodine–acetic acid) shows cyst nuclei clearly — iodine immobilises trophozoites. Use liquid or mucoid stool for trophozoites and formed stool for eggs."
+     }
+    },
+    {
+     "section": "limitations",
+     "refs": [
+      {
+       "source_id": "who-basic-lab-techniques-2003",
+       "locator": "4.5 Techniques for concentrating parasites",
+       "pages": "152–156"
+      },
+      {
+       "source_id": "cdc-dpdx-stool-processing",
+       "locator": "Concentration Procedures"
+      },
+      {
+       "source_id": "book-lyubina-1984",
+       "locator": "§24 Методы обнаружения яиц гельминтов"
+      }
+     ],
+     "text": {
+      "uz": "Parazit kam bo‘lsa, boyitish (konsentratsiya) usuli kerak. Flotatsiyada (masalan, Uillis — to‘yingan NaCl; rux sulfat) tuxumlar og‘ir eritmada yuzaga suzib chiqadi: ankilostoma, askarida, gimenolepis, tenia va qilbosh tuxumlari uchun yaxshi, lekin so‘rg‘ichlilar (trematodalar) va shistosoma tuxumlari, strongiloid lichinkalari va sodda jonivorlar uchun yaramaydi — ayrim tuxumlar suzmaydi, sista va tuxum devori bujmayishi mumkin. Cho‘ktirish (formalin–efir yoki formalin–etilatsetat) ko‘p turni topadi, oddiyroq va CDC umumiy laboratoriyalarga shuni tavsiya qiladi; etilatsetat efirdan kamroq yonuvchan.",
+      "ru": "При малом числе паразитов нужен метод обогащения. При флотации (например, по Уиллису — насыщенный NaCl; сульфат цинка) яйца всплывают в тяжёлом растворе: хорошо для яиц анкилостом, аскарид, карликового цепня, тениид и власоглава, но не подходит для яиц сосальщиков (трематод) и шистосом, личинок стронгилоид и простейших — часть яиц не всплывает, стенки цист и яиц могут спадаться. Осаждение (формалин–эфир или формалин–этилацетат) выявляет больше видов, проще, и CDC рекомендует его для общих лабораторий; этилацетат менее огнеопасен, чем эфир.",
+      "en": "Concentration is needed when parasites are few. In flotation (e.g., Willis saturated NaCl; zinc sulfate) eggs rise in a dense solution: good for hookworm, Ascaris, Hymenolepis, Taenia and Trichuris eggs, but not for fluke and schistosome eggs, Strongyloides larvae or protozoa — some eggs do not float and cyst and egg walls may collapse. Sedimentation (formalin–ether or formalin–ethyl acetate) recovers more species, is easier, and CDC recommends it for general laboratories; ethyl acetate is less flammable than ether."
+     }
+    },
+    {
+     "section": "limitations",
+     "refs": [
+      {
+       "source_id": "who-basic-lab-techniques-2003",
+       "locator": "4.4.1 Kato–Katz technique",
+       "pages": "141–143"
+      },
+      {
+       "source_id": "book-lyubina-1984",
+       "locator": "§24 Методы обнаружения яиц гельминтов"
+      }
+     ],
+     "text": {
+      "uz": "Kato (Kato–Kats) qalin surtmasida taxminan 0,5 g elakdan o‘tkazilgan najas glitserin (malaxit yashili yoki metilen ko‘ki) shimdirilgan sellofan ostida tiniqlashtiriladi; usul gijja tuxumlarini, ayniqsa shistosomani topish va sanash uchun, surtmalarni saqlab boshqa laboratoriyaga yuborish mumkin. Strongiloidoz, enterobioz va sodda jonivorlar uchun yaramaydi.",
+      "ru": "В толстом мазке по Като (Като–Катцу) около 0,5 г просеянного кала просветляют под целлофаном, пропитанным глицерином (с малахитовым зелёным или метиленовым синим); метод выявляет и позволяет считать яйца гельминтов, особенно шистосом, мазки можно хранить и пересылать. Для стронгилоидоза, энтеробиоза и простейших не подходит.",
+      "en": "In the Kato (Kato–Katz) thick smear about 0.5 g of sieved stool is cleared under glycerol-soaked cellophane (with malachite green or methylene blue); it detects and counts helminth eggs, especially Schistosoma, and slides can be stored and shipped. It is unsuitable for strongyloidiasis, enterobiasis and protozoa."
+     }
+    },
+    {
+     "section": "preanalytics",
+     "refs": [
+      {
+       "source_id": "who-basic-lab-techniques-2003",
+       "locator": "4.2.1 Collection of specimens",
+       "pages": "107"
+      },
+      {
+       "source_id": "book-lyubina-1984",
+       "locator": "§21 Сбор и обезвреживание кала"
+      },
+      {
+       "source_id": "book-aripova-2007",
+       "locator": "11.1.7–11.1.11 Axlat va perianal namunalar, parazitlar"
+      }
+     ],
+     "text": {
+      "uz": "Najas toza, quruq, qopqoqli idishga, konservantsiz olinadi; siydik aralashmasligi kerak (tuvakdan olinmaydi), chiqqan qurt yoki bo‘g‘imlar ham qo‘shiladi. JSST namunani 1–4 soat ichida tekshirishni, bir vaqtda kelganda avval suyuq va qon-shilliqli najasni ko‘rishni tavsiya qiladi — harakatlanuvchi amyobalar tez nobud bo‘ladi. Lyubina (1984) va Aripova (2007) ham gugurt qutisi yoki qog‘ozda olib kelishni yaroqsiz deb biladi.",
+      "ru": "Кал собирают в чистый сухой контейнер с крышкой, без консерванта; моча не должна попадать (не из судна), выделившиеся гельминты или членики добавляют. ВОЗ рекомендует исследовать пробу в течение 1–4 часов, а при одновременном поступлении сначала смотреть жидкий и кал со слизью и кровью — подвижные амёбы быстро погибают. Любина (1984) и Арипова (2007) также считают непригодной доставку в спичечном коробке или бумаге.",
+      "en": "Collect stool in a clean, dry, lidded container without preservative; no urine (not from a bedpan), and include any worms or segments passed. WHO advises examining it within 1–4 hours and, if several arrive together, looking first at liquid and blood- or mucus-stained stools — motile amoebae die quickly. Lyubina (1984) and Aripova (2007) also reject matchboxes or paper."
+     }
+    },
+    {
+     "section": "preanalytics",
+     "refs": [
+      {
+       "source_id": "who-basic-lab-techniques-2003",
+       "locator": "4.2.4 Dispatch of stools for detection of parasites",
+       "pages": "109"
+      },
+      {
+       "source_id": "cdc-dpdx-stool-collection",
+       "locator": "Stool Specimens – Specimen Collection"
+      },
+      {
+       "source_id": "cdc-dpdx-stool-processing",
+       "locator": "Concentration Procedures"
+      },
+      {
+       "source_id": "book-dadayev-2004",
+       "locator": "Bir hujayrali parazitlar: lyambliya, ichburug‘ amyobasi"
+      }
+     ],
+     "text": {
+      "uz": "Uzoq laboratoriyaga yuborishda konservant qo‘shiladi: 10% formalin (nam preparat va cho‘ktirish uchun), PVA (doimiy, masalan trixrom bo‘yash uchun), MIF yoki SAF/TIF aralashmalari. Dadayev (2004) amyobiaz tashxisi uchun ham najasni konservantga yig‘ish (yoki tez yetkazish) zarurligini qayd etadi.",
+      "ru": "Для пересылки в удалённую лабораторию добавляют консервант: 10% формалин (для нативных препаратов и осаждения), ПВС (PVA — для постоянной окраски, например трихромом), смеси MIF или SAF/TIF. Дадаев (2004) также отмечает необходимость консервирования (или быстрой доставки) кала при диагностике амёбиаза.",
+      "en": "For shipping to a distant laboratory a preservative is added: 10% formalin (for wet mounts and sedimentation), PVA (for permanent stains such as trichrome), MIF or SAF/TIF mixtures. Dadayev (2004) also notes that stool for amoebiasis must be preserved (or delivered quickly)."
+     }
+    },
+    {
+     "section": "limitations",
+     "refs": [
+      {
+       "source_id": "who-basic-lab-techniques-2003",
+       "locator": "4.5 Techniques for concentrating parasites",
+       "pages": "152–156"
+      },
+      {
+       "source_id": "medline-ova-parasite",
+       "locator": "What do the results mean?"
+      }
+     ],
+     "text": {
+      "uz": "Bitta usul hamma parazitni topmaydi: konsentratsiyadan oldin doim to‘g‘ridan-to‘g‘ri mikroskopiya qilinadi (boyitilgan preparatda harakatlanuvchi shakllar ko‘rinmaydi). Natija manfiy bo‘lsa, shifokor tekshiruvni boshqa kunlarda takrorlashni so‘rashi mumkin.",
+      "ru": "Ни один метод не выявляет всех паразитов: перед обогащением всегда делают прямую микроскопию (в обогащённом препарате подвижных форм не видно). При отрицательном результате врач может назначить повтор в другие дни.",
+      "en": "No single method finds every parasite: always do direct microscopy before concentration (motile forms are not seen in concentrated preparations). If the result is negative, the doctor may request repeat samples on other days."
+     }
     }
    ],
    "decision_limits": [],
@@ -25765,7 +26764,12 @@
     "medline-ova-parasite",
     "cdc-dpdx-stool-microscopy",
     "cdc-dpdx-stool-collection",
-    "cdc-pinworm-clinical"
+    "cdc-pinworm-clinical",
+    "who-basic-lab-techniques-2003",
+    "book-lyubina-1984",
+    "book-aripova-2007",
+    "cdc-dpdx-stool-processing",
+    "book-dadayev-2004"
    ],
    "related": [
     "pinworm-test",
@@ -25805,7 +26809,13 @@
     "scotch tape test",
     "cellulose tape test",
     "perianal swab",
-    "oxyuriasis"
+    "oxyuriasis",
+    "ostritsaga qirma",
+    "gijja qirmasi",
+    "perianal yuvindi",
+    "соскоб на яйца остриц",
+    "Enterobius",
+    "tape test"
    ],
    "group": "stool-parasitology",
    "sections": [
@@ -25826,6 +26836,11 @@
       "date": "2026-10-09",
       "scope": "Kontent auditi B: sonlar, birliklar, namuna, mezonlar, manba locator",
       "report": "docs/CONTENT_AUDIT_2026-10-09_B.md"
+     },
+     {
+      "date": "2026-10-09",
+      "scope": "Kitoblar (Dolgov 2009, Lyubina 1984, Najmitdinov 1998, Sobirova 2006, Aripova 2007, Dadayev 2004) bilimi rasmiy/ochiq manbalar bilan solishtirildi; matn ko‘chirilmagan",
+      "report": "scratchpad/books/B_01..B_06, A_02, A_04 (agent tahlili)"
      }
     ]
    },
@@ -25998,6 +27013,29 @@
       "ru": "В кале, моче, вагинальных или аноректальных мазках яиц обычно недостаточно, поэтому их обычно не берут; анализа крови на энтеробиоз нет. Яйца иногда случайно находят в кале, моче или в ПАП-мазке шейки матки.",
       "en": "Stool, urine, vaginal or anorectal swabs usually do not contain enough eggs and are generally not collected; there is no blood test for pinworm. Eggs are occasionally found incidentally in stool, urine or cervical Pap smears."
      }
+    },
+    {
+     "section": "preanalytics",
+     "refs": [
+      {
+       "source_id": "who-basic-lab-techniques-2003",
+       "locator": "4.4.1 Enterobius vermicularis: collection and examination of eggs",
+       "pages": "135–136"
+      },
+      {
+       "source_id": "book-lyubina-1984",
+       "locator": "§24 Энтеробиоз: липкая лента и перианальный соскоб"
+      },
+      {
+       "source_id": "book-aripova-2007",
+       "locator": "11.1.7–11.1.11 Axlat va perianal namunalar, parazitlar"
+      }
+     ],
+     "text": {
+      "uz": "Ostritsa tuxumlari najasda kam uchraydi, ular anus atrofidagi teri burmalaridan olinadi — ayniqsa bolalarda. JSST usulida shaffof yopishqoq lenta buyum oynasiga yopishtiriladi, qoshiq dastasiga o‘ralib anus atrofiga bir necha joyda bosiladi va yana oynaga tekis yopishtiriladi. MDH darsliklarida tamponli qirma yoki yuvindi ham beriladi; namuna ertalab, yuvinish va hojatxonadan oldin olinadi va bir necha marta takrorlanadi.",
+      "ru": "Яйца остриц редко бывают в кале, их берут с кожных складок вокруг ануса — особенно у детей. По методу ВОЗ прозрачную липкую ленту наклеивают на стекло, накручивают на ручку ложки, прикладывают в нескольких местах вокруг ануса и снова ровно наклеивают на стекло. В учебниках СНГ описаны также соскоб тампоном или смыв; пробу берут утром до умывания и туалета и повторяют несколько раз.",
+      "en": "Pinworm eggs are rarely found in stool; they are collected from the skin folds around the anus — especially in children. In the WHO method clear adhesive tape is stuck to a slide, looped over a spoon handle, pressed around the anus in several places and stuck back flat on the slide. Former-USSR textbooks also describe a swab scraping or wash; the sample is taken in the morning before washing or using the toilet and repeated several times."
+     }
     }
    ],
    "decision_limits": [],
@@ -26005,7 +27043,10 @@
     "cdc-pinworm-about",
     "cdc-pinworm-clinical",
     "cdc-dpdx-enterobiasis",
-    "cdc-pinworm-diagnosing"
+    "cdc-pinworm-diagnosing",
+    "who-basic-lab-techniques-2003",
+    "book-lyubina-1984",
+    "book-aripova-2007"
    ],
    "related": [
     "stool-ova-parasites",
@@ -26048,7 +27089,12 @@
     "guaiac",
     "Hemoccult",
     "occult blood",
-    "colorectal cancer screening"
+    "colorectal cancer screening",
+    "benzidin sinamasi",
+    "бензидиновая проба",
+    "Gregersen",
+    "Грегерсен",
+    "amidopirin sinamasi"
    ],
    "group": "stool-parasitology",
    "sections": [
@@ -26069,6 +27115,11 @@
       "date": "2026-10-09",
       "scope": "Kontent auditi B: sonlar, birliklar, namuna, mezonlar, manba locator",
       "report": "docs/CONTENT_AUDIT_2026-10-09_B.md"
+     },
+     {
+      "date": "2026-10-09",
+      "scope": "Kitoblar (Dolgov 2009, Lyubina 1984, Najmitdinov 1998, Sobirova 2006, Aripova 2007, Dadayev 2004) bilimi rasmiy/ochiq manbalar bilan solishtirildi; matn ko‘chirilmagan",
+      "report": "scratchpad/books/B_01..B_06, A_02, A_04 (agent tahlili)"
      },
      {
       "date": "2026-10-09",
@@ -26196,6 +27247,33 @@
      }
     },
     {
+     "section": "limitations",
+     "refs": [
+      {
+       "source_id": "who-basic-lab-techniques-2003",
+       "locator": "4.6 Chemical test for occult blood in stools",
+       "pages": "157"
+      },
+      {
+       "source_id": "book-lyubina-1984",
+       "locator": "§22 Химическое исследование кала"
+      },
+      {
+       "source_id": "book-aripova-2007",
+       "locator": "XI bob: yashirin qon (benzidin, amidopirin)"
+      },
+      {
+       "source_id": "medline-fobt",
+       "locator": "What happens during a fecal occult blood test?"
+      }
+     ],
+     "text": {
+      "uz": "Eski darsliklardagi benzidin (Gregersen) sinamasi ishlatilmaydi: JSST benzidin kanserogenligi isbotlangani uchun uni tavsiya etmaydi. Kimyoviy usullardan amidopirin yoki gvayak testi qolgan, ular parhez talab qiladi (JSST amidopirin testi uchun — 1 kun go‘sht va temir preparatlarisiz; eski darsliklarda 2–3 kun); immunokimyoviy test (FIT) inson gemoglobiniga xos va parhez talab qilmaydi.",
+      "ru": "Бензидиновая проба (Грегерсена) из старых учебников не применяется: ВОЗ не рекомендует бензидин, так как доказана его канцерогенность. Из химических методов остались амидопириновый и гваяковый тесты, им нужна диета (ВОЗ для амидопириновой пробы — 1 день без мяса и препаратов железа; в старых учебниках — 2–3 дня); иммунохимический тест (FIT) специфичен к гемоглобину человека и диеты не требует.",
+      "en": "The benzidine (Gregersen) test of old textbooks is no longer used: WHO does not recommend benzidine because it has been shown to be carcinogenic. Remaining chemical tests are the aminopyrine and guaiac tests, which need a diet (WHO, aminopyrine test: 1 day without meat or iron tablets; older textbooks: 2–3 days); the immunochemical test (FIT) is specific for human haemoglobin and needs no diet."
+     }
+    },
+    {
      "section": "preanalytics",
      "refs": [
       {
@@ -26222,6 +27300,9 @@
    "decision_limits": [],
    "source_ids": [
     "medline-fobt",
+    "who-basic-lab-techniques-2003",
+    "book-lyubina-1984",
+    "book-aripova-2007",
     "nci-crc-screening-tests",
     "book-selivanov-2005"
    ],
@@ -27814,7 +28895,7 @@
      "section": "preanalytics",
      "refs": [
       {
-       "source_id": "who-basic-lab-manual-2003",
+       "source_id": "who-basic-lab-techniques-2003",
        "locator": "7.1.1 Types of urine specimen; 7.2.5 Collection of specimens",
        "pages": "233, 238"
       },
@@ -27840,7 +28921,7 @@
    "source_ids": [
     "medline-ency-urine-24h-volume",
     "medline-ency-urine-24h-protein",
-    "who-basic-lab-manual-2003",
+    "who-basic-lab-techniques-2003",
     "book-lyubina-1984",
     "book-selivanov-2005"
    ],
@@ -32024,77 +33105,265 @@
    "review_note": "Copyrighted (ACC/AHA). Only numerical thresholds and percentage reductions from the Top 10 Take-Home Messages (2, 3, 7) and Table 3 restated in our own words."
   },
   {
-   "id": "book-aripova-2007",
+   "id": "book-najmitdinov-1998",
    "kind": "book",
-   "library_item_id": "lib-book-aripova-2007",
-   "title": "Klinik va biokimyoviy tekshiruv usullari",
-   "publisher": "Aripova G.S., Po‘latova F.G., Nazarova N.S., Toirova Z.S. · G‘afur G‘ulom NMIU, 2007",
-   "doc_type": "textbook",
-   "authors": [
-    "G.S. Aripova",
-    "F.G. Po‘latova",
-    "N.S. Nazarova",
-    "Z.S. Toirova"
-   ],
-   "year": 2007,
-   "isbn": "978-9943-03-034-3",
+   "title": "Клиник гематология асослари",
+   "publisher": "Наджимитдинов С.Т. · Тошкент: Абу Али ибн Сино номидаги тиббиёт нашриёти, 1998 · ISBN 5-638-01210-9",
+   "source_date": "1998",
    "jurisdiction": "UZ",
-   "note": "Textbook (darslik) cited as a supporting source by chapter and page; copyright applies — knowledge restated in our own words, no text, tables or images reproduced (citation only).",
+   "note": "Citation only: copyrighted book; no text, tables or figures reproduced — facts restated in our own words. Read partially (text cut in the leukaemia chapter). Figures belong to E. Undritz/Sandoz — not used.",
    "reuse_rights": "citation_only"
   },
   {
-   "id": "book-selivanov-2005",
-   "kind": "manual",
-   "library_item_id": "lib-book-selivanov-2005",
-   "title": "Правила взятия материала для лабораторных исследований",
-   "publisher": "Селиванов Е.В., Звягинцев Е.Н. · Барнаул, 2005",
-   "doc_type": "textbook",
-   "authors": [
-    "Е.В. Селиванов",
-    "Е.Н. Звягинцев"
-   ],
-   "year": 2005,
+   "id": "book-dolgov-2009",
+   "kind": "book",
+   "title": "Лабораторная диагностика анемий (2-е изд.)",
+   "publisher": "Долгов В.В., Луговская С.А., Морозова В.Т., Почтарь М.Е. · Москва–Тверь: Триада, 2009 · ISBN 978-5-94789-340-3",
+   "source_date": "2009",
    "jurisdiction": "RU",
-   "note": "Textbook (darslik) cited as a supporting source by chapter and page; copyright applies — knowledge restated in our own words, no text, tables or images reproduced (citation only). No ISBN printed.",
-   "reuse_rights": "citation_only"
-  },
-  {
-   "id": "book-sobirova-2006",
-   "kind": "book",
-   "library_item_id": "lib-book-sobirova-2006",
-   "title": "Biologik kimyo",
-   "publisher": "Sobirova R.A., Abrorov O.A., Inoyatova F.X., Aripov A.N. · Yangi asr avlodi, 2006",
-   "url": "https://biochem.medprof.tma.uz/wp-content/uploads/2018/06/Sobirova-R.A-biokimyo.pdf",
-   "accessed": "2026-10-09",
-   "doc_type": "textbook",
-   "authors": [
-    "R.A. Sobirova",
-    "O.A. Abrorov",
-    "F.X. Inoyatova",
-    "A.N. Aripov"
-   ],
-   "year": 2006,
-   "isbn": "978-9943-08-010-2",
-   "jurisdiction": "UZ",
-   "note": "Textbook (darslik) cited as a supporting source by chapter and page; copyright applies — knowledge restated in our own words, no text, tables or images reproduced (citation only). Open copy on the TMA department site is free to read only (read-only link).",
+   "note": "Citation only: copyrighted book; no text, tables or figures reproduced — facts restated in our own words. Read partially (OCR of the whole book; analyser, iron and classification chapters read in depth).",
    "reuse_rights": "citation_only"
   },
   {
    "id": "book-lyubina-1984",
    "kind": "book",
-   "library_item_id": "lib-book-lyubina-1984",
    "title": "Клинические лабораторные исследования",
-   "publisher": "Любина А.Я., Ильичева Л.П., Катасонова Т.В., Петросова С.А. · Медицина, 1984",
-   "doc_type": "textbook",
-   "authors": [
-    "А.Я. Любина",
-    "Л.П. Ильичева",
-    "Т.В. Катасонова",
-    "С.А. Петросова"
-   ],
-   "year": 1984,
-   "jurisdiction": "SU",
-   "note": "Textbook (darslik) cited as a supporting source by chapter and page; copyright applies — knowledge restated in our own words, no text, tables or images reproduced (citation only).",
+   "publisher": "Любина А.Я., Ильичева Л.П., Катасонова Т.В., Петросова С.А. · Москва: Медицина, 1984",
+   "source_date": "1984",
+   "jurisdiction": "RU",
+   "note": "Citation only: copyrighted book; no text, tables or figures reproduced — facts restated in our own words. Textbook for medical schools; several methods are obsolete (marked in the app).",
+   "reuse_rights": "citation_only"
+  },
+  {
+   "id": "book-dadayev-2004",
+   "kind": "book",
+   "title": "Паразитология",
+   "publisher": "Дадаев С. · Тошкент: Низомий номидаги ТДПУ, 2004",
+   "source_date": "2004",
+   "jurisdiction": "UZ",
+   "note": "Citation only: copyrighted book; no text, tables or figures reproduced — facts restated in our own words. Read partially (text ends at the nematode introduction). Used for Uzbek terms only.",
+   "reuse_rights": "citation_only"
+  },
+  {
+   "id": "book-sobirova-2006",
+   "kind": "book",
+   "title": "Biologik kimyo",
+   "publisher": "Sobirova R.A., Abrorov O.A., Inoyatova F.X., Aripov A.N. · Toshkent: Yangi asr avlodi, 2006 · ISBN 978-9943-08-010-2",
+   "source_date": "2006",
+   "jurisdiction": "UZ",
+   "note": "Citation only: copyrighted book; no text, tables or figures reproduced — facts restated in our own words. Free to read on the TMA biochemistry department site, no open licence. Chapter XVII (liver) read in full.",
+   "reuse_rights": "citation_only"
+  },
+  {
+   "id": "book-aripova-2007",
+   "kind": "book",
+   "title": "Klinik va biokimyoviy tekshiruv usullari",
+   "publisher": "Aripova G.S., Po‘latova F.G., Nazarova N.S., Toirova Z.S. · Toshkent: G‘afur G‘ulom nomidagi NMIU, 2007 · ISBN 978-9943-03-034-3",
+   "source_date": "2007",
+   "jurisdiction": "UZ",
+   "note": "Citation only: copyrighted book; no text, tables or figures reproduced — facts restated in our own words. Read in full. Chapters 10–13 are a translation of a WHO-style primary-care lab manual.",
+   "reuse_rights": "citation_only"
+  },
+  {
+   "id": "who-ferritin-2020",
+   "kind": "web",
+   "title": "WHO guideline on use of ferritin concentrations to assess iron status in individuals and populations",
+   "publisher": "World Health Organization",
+   "url": "https://www.who.int/publications/i/item/9789240000124",
+   "accessed": "2026-10-09",
+   "source_date": "2020-04-21",
+   "jurisdiction": "WHO",
+   "note": "Executive summary read (recommendations 1.1–1.4, 4.1–4.2; Table 1).",
+   "reuse_rights": "verify_before_distribution"
+  },
+  {
+   "id": "who-basic-lab-techniques-2003",
+   "kind": "web",
+   "title": "Manual of basic techniques for a health laboratory, 2nd ed.",
+   "publisher": "World Health Organization",
+   "url": "https://www.who.int/publications/i/item/9241545305",
+   "accessed": "2026-10-09",
+   "source_date": "2003",
+   "jurisdiction": "WHO",
+   "note": "Sections 4.2–4.6 (stool parasitology, occult blood), 9.3 (haemoglobin), 9.7 (ESR), 9.13 (differential) read.",
+   "reuse_rights": "verify_before_distribution"
+  },
+  {
+   "id": "who-mercury-health",
+   "kind": "web",
+   "title": "Mercury and health (fact sheet)",
+   "publisher": "World Health Organization",
+   "url": "https://www.who.int/news-room/fact-sheets/detail/mercury-and-health",
+   "accessed": "2026-10-09",
+   "source_date": "2024-10-24",
+   "jurisdiction": "WHO",
+   "note": null,
+   "reuse_rights": "verify_before_distribution"
+  },
+  {
+   "id": "medline-haptoglobin",
+   "kind": "web",
+   "title": "Haptoglobin (HP) Test",
+   "publisher": "MedlinePlus · U.S. National Library of Medicine",
+   "url": "https://medlineplus.gov/lab-tests/haptoglobin-hp-test/",
+   "accessed": "2026-10-09",
+   "source_date": "2024-06-10",
+   "jurisdiction": "US",
+   "note": null,
+   "reuse_rights": "verify_before_distribution"
+  },
+  {
+   "id": "medline-ency-bilirubin",
+   "kind": "web",
+   "title": "Bilirubin blood test (Medical Encyclopedia)",
+   "publisher": "MedlinePlus · A.D.A.M.",
+   "url": "https://medlineplus.gov/ency/article/003479.htm",
+   "accessed": "2026-10-09",
+   "source_date": "2025-02-13",
+   "jurisdiction": "US",
+   "note": null,
+   "reuse_rights": "verify_before_distribution"
+  },
+  {
+   "id": "medline-ency-jaundice-causes",
+   "kind": "web",
+   "title": "Jaundice causes (Medical Encyclopedia)",
+   "publisher": "MedlinePlus · A.D.A.M.",
+   "url": "https://medlineplus.gov/ency/article/007491.htm",
+   "accessed": "2026-10-09",
+   "source_date": "2025-07-22",
+   "jurisdiction": "US",
+   "note": null,
+   "reuse_rights": "verify_before_distribution"
+  },
+  {
+   "id": "cdc-dpdx-stool-processing",
+   "kind": "web",
+   "title": "Stool Specimens – Specimen Processing (DPDx)",
+   "publisher": "CDC · DPDx",
+   "url": "https://www.cdc.gov/dpdx/diagnosticprocedures/stool/specimenproc.html",
+   "accessed": "2026-10-09",
+   "source_date": "2016-05-03",
+   "jurisdiction": "US",
+   "note": null,
+   "reuse_rights": "verify_before_distribution"
+  },
+  {
+   "id": "takami-2026-cbc",
+   "kind": "web",
+   "title": "Takami A. How to Interpret the Complete Blood Count in Daily Practice: A Practical Framework for Clinical Decision-making. JMA J. 2026;9(5):1084-93",
+   "publisher": "JMA Journal (PMC13639491)",
+   "url": "https://doi.org/10.31662/jmaj.2026-0173",
+   "accessed": "2026-10-09",
+   "source_date": "2026-08-07",
+   "jurisdiction": "JP",
+   "note": "Full text read (Tables 2–4). Copyright Japan Medical Association — facts only.",
+   "reuse_rights": "verify_before_distribution"
+  },
+  {
+   "id": "barcellini-2015-hemolysis",
+   "kind": "web",
+   "title": "Barcellini W, Fattizzo B. Clinical Applications of Hemolytic Markers in the Differential Diagnosis and Management of Hemolytic Anemia. Dis Markers. 2015;2015:635670",
+   "publisher": "Disease Markers (PMC4706896, CC BY 4.0)",
+   "url": "https://doi.org/10.1155/2015/635670",
+   "accessed": "2026-10-09",
+   "source_date": "2015-12-27",
+   "jurisdiction": "IT",
+   "note": "Abstract read.",
+   "reuse_rights": "verify_before_distribution"
+  },
+  {
+   "id": "piva-2010-reticulocytes",
+   "kind": "web",
+   "title": "Piva E, Brugnara C, Chiandetti L, Plebani M. Automated reticulocyte counting: state of the art and clinical applications in the evaluation of erythropoiesis. Clin Chem Lab Med. 2010;48(10):1369-80",
+   "publisher": "Clinical Chemistry and Laboratory Medicine",
+   "url": "https://doi.org/10.1515/CCLM.2010.292",
+   "accessed": "2026-10-09",
+   "source_date": "2010-07-29",
+   "jurisdiction": "IT",
+   "note": "Abstract read.",
+   "reuse_rights": "verify_before_distribution"
+  },
+  {
+   "id": "wu-2021-hs-mscv",
+   "kind": "web",
+   "title": "Wu Y, Liao L, Lin F. The diagnostic protocol for hereditary spherocytosis — 2021 update. J Clin Lab Anal. 2021;35(12):e24034",
+   "publisher": "Journal of Clinical Laboratory Analysis (PMC8649336)",
+   "url": "https://doi.org/10.1002/jcla.24034",
+   "accessed": "2026-10-09",
+   "source_date": "2021-10-24",
+   "jurisdiction": "CN",
+   "note": "Full text read (Laboratory tests for HS: routine blood test).",
+   "reuse_rights": "verify_before_distribution"
+  },
+  {
+   "id": "kwo-2017-acg-liver",
+   "kind": "web",
+   "title": "Kwo PY, Cohen SM, Lim JK. ACG Clinical Guideline: Evaluation of Abnormal Liver Chemistries. Am J Gastroenterol. 2017;112(1):18-35",
+   "publisher": "American Journal of Gastroenterology",
+   "url": "https://doi.org/10.1038/ajg.2016.517",
+   "accessed": "2026-10-09",
+   "source_date": "2016-12-20",
+   "jurisdiction": "US",
+   "note": "Abstract read.",
+   "reuse_rights": "verify_before_distribution"
+  },
+  {
+   "id": "fargo-2017-jaundice",
+   "kind": "web",
+   "title": "Fargo MV, Grogan SP, Saguil A. Evaluation of Jaundice in Adults. Am Fam Physician. 2017;95(3):164-8",
+   "publisher": "American Family Physician (PubMed 28145671)",
+   "url": "https://pubmed.ncbi.nlm.nih.gov/28145671/",
+   "accessed": "2026-10-09",
+   "source_date": "2017-02-01",
+   "jurisdiction": "US",
+   "note": "Abstract read.",
+   "reuse_rights": "verify_before_distribution"
+  },
+  {
+   "id": "williams-1988-ast-alt",
+   "kind": "web",
+   "title": "Williams AL, Hoofnagle JH. Ratio of serum aspartate to alanine aminotransferase in chronic hepatitis. Relationship to cirrhosis. Gastroenterology. 1988;95(3):734-9",
+   "publisher": "Gastroenterology (NIDDK authors)",
+   "url": "https://doi.org/10.1016/s0016-5085(88)80022-2",
+   "accessed": "2026-10-09",
+   "source_date": "1988-09",
+   "jurisdiction": "US",
+   "note": "Abstract read.",
+   "reuse_rights": "verify_before_distribution"
+  },
+  {
+   "id": "kratz-2017-icsh-esr",
+   "kind": "web",
+   "title": "Kratz A, Plebani M, Peng M, et al. ICSH recommendations for modified and alternate methods measuring the erythrocyte sedimentation rate. Int J Lab Hematol. 2017;39(5):448-57",
+   "publisher": "International Journal of Laboratory Hematology",
+   "url": "https://doi.org/10.1111/ijlh.12693",
+   "accessed": "2026-10-09",
+   "source_date": "2017-05-12",
+   "jurisdiction": "INT",
+   "note": "Abstract read.",
+   "reuse_rights": "verify_before_distribution"
+  },
+  {
+   "id": "ifcc-2002-enzymes",
+   "kind": "web",
+   "title": "Siekmann L, et al. IFCC primary reference procedures for the measurement of catalytic activity concentrations of enzymes at 37 °C. Part 7. Clin Chem Lab Med. 2002;40(7):739-45",
+   "publisher": "Clinical Chemistry and Laboratory Medicine (IFCC)",
+   "url": "https://doi.org/10.1515/CCLM.2002.127",
+   "accessed": "2026-10-09",
+   "source_date": "2002-07",
+   "jurisdiction": "INT",
+   "note": "Abstract read; it lists the series (Part 4 ALT, Part 5 AST, Part 6 GGT).",
+   "reuse_rights": "verify_before_distribution"
+  },
+  {
+   "id": "book-selivanov-2005",
+   "kind": "book",
+   "title": "Правила взятия материала для лабораторных исследований",
+   "publisher": "Селиванов Е.В., Звягинцев Е.Н. · Барнаул: Printexpress, 2005",
+   "source_date": "2005",
+   "jurisdiction": "RU",
+   "note": "Citation only: copyrighted brochure (24 pp., no ISBN); no text or tables reproduced — facts restated in our own words, cited by section number. Its numbers are used only where WHO documents confirm them.",
    "reuse_rights": "citation_only"
   },
   {
@@ -32107,18 +33376,6 @@
    "source_date": "2002",
    "jurisdiction": "INT",
    "note": "Pages are the document’s own page numbers (“Page 48”). © WHO — facts restated in our own words; the stability tables are not reproduced.",
-   "reuse_rights": "verify_before_distribution"
-  },
-  {
-   "id": "who-basic-lab-manual-2003",
-   "kind": "web",
-   "title": "Manual of basic techniques for a health laboratory, 2nd edition",
-   "publisher": "World Health Organization",
-   "url": "https://www.who.int/publications/i/item/9241545305",
-   "accessed": "2026-10-09",
-   "source_date": "2003",
-   "jurisdiction": "INT",
-   "note": "ISBN 92 4 154530 5. Facts restated in our own words with section and printed page.",
    "reuse_rights": "verify_before_distribution"
   },
   {
@@ -42780,6 +44037,411 @@
      }
     }
    ]
+  },
+  {
+   "id": "books-mchc-artefact",
+   "review_state": "pending",
+   "refs": [
+    {
+     "source_id": "takami-2026-cbc",
+     "locator": "Table 2. Clinical Interpretation of Key CBC Parameters"
+    },
+    {
+     "source_id": "takami-2026-cbc",
+     "locator": "Table 4. Common Causes of Spurious Results in Automated Blood Cell Analysis"
+    },
+    {
+     "source_id": "book-dolgov-2009",
+     "locator": "Гематологические анализаторы: основные показатели эритропоэза",
+     "pages": "25–35"
+    }
+   ],
+   "topic_ids": [
+    "mchc"
+   ],
+   "correct_index": 0,
+   "prompt": {
+    "uz": "Analizator MCHC = 39 g/dL ko‘rsatdi, RBC past, MCV yuqori. Birinchi navbatda nima qilinadi?",
+    "ru": "Анализатор показал MCHC = 39 г/дл, RBC низкий, MCV высокий. Что делают в первую очередь?",
+    "en": "The analyser shows MCHC 39 g/dL, low RBC and high MCV. What comes first?"
+   },
+   "basis": {
+    "uz": "MCHC 36–38 g/dL dan yuqori bo‘lishi o‘lchash xatosi belgisi; RBC↓ + MCV↑ sovuq agglyutininlarga xos — namuna isitilib qayta o‘lchanadi, surtma ko‘riladi.",
+    "ru": "MCHC выше 36–38 г/дл — признак ошибки измерения; RBC↓ + MCV↑ типичны для холодовых агглютининов — пробу согревают и измеряют повторно, смотрят мазок.",
+    "en": "MCHC above 36–38 g/dL signals measurement error; low RBC with high MCV suggests cold agglutinins — warm and re-run the sample and check the smear."
+   },
+   "options": [
+    {
+     "text": {
+      "uz": "Soxta natijani istisno qilish: namunani 37 °C da isitib qayta o‘lchash, surtma",
+      "ru": "Исключить ложный результат: согреть пробу до 37 °C, повторить, мазок",
+      "en": "Exclude a spurious result: warm to 37 °C, re-run, check the smear"
+     },
+     "explanation": {
+      "uz": "To‘g‘ri: bunday MCHC fiziologik emas, avval artefakt istisno qilinadi.",
+      "ru": "Верно: такой MCHC нефизиологичен, сначала исключают артефакт.",
+      "en": "Correct: such an MCHC is not physiological; rule out artefact first."
+     }
+    },
+    {
+     "text": {
+      "uz": "Darhol sferotsitoz tashxisini qo‘yish",
+      "ru": "Сразу ставить диагноз сфероцитоза",
+      "en": "Diagnose spherocytosis straight away"
+     },
+     "explanation": {
+      "uz": "Sferotsitozda MCHC oshadi, lekin bu darajada va RBC↓/MCV↑ bilan avval xato tekshiriladi.",
+      "ru": "При сфероцитозе MCHC растёт, но при таком уровне и RBC↓/MCV↑ сначала проверяют ошибку.",
+      "en": "Spherocytosis raises MCHC, but at this level with low RBC/high MCV an error is checked first."
+     }
+    },
+    {
+     "text": {
+      "uz": "Natijani o‘zgarishsiz chiqarish",
+      "ru": "Выдать результат без изменений",
+      "en": "Release the result unchanged"
+     },
+     "explanation": {
+      "uz": "Noto‘g‘ri: MCHC xato belgisi bo‘lganda natija tekshiriladi.",
+      "ru": "Неверно: при признаке ошибки результат перепроверяют.",
+      "en": "Wrong: with an error flag the result must be checked."
+     }
+    }
+   ]
+  },
+  {
+   "id": "books-irf",
+   "review_state": "pending",
+   "refs": [
+    {
+     "source_id": "piva-2010-reticulocytes",
+     "locator": "Abstract"
+    }
+   ],
+   "topic_ids": [
+    "reticulocytes"
+   ],
+   "correct_index": 0,
+   "prompt": {
+    "uz": "Ildiz hujayra ko‘chirib o‘tkazilgandan keyin eritropoez tiklanishini qaysi ko‘rsatkich eng erta ko‘rsatadi?",
+    "ru": "Какой показатель раньше всего показывает восстановление эритропоэза после трансплантации стволовых клеток?",
+    "en": "Which parameter shows erythroid recovery earliest after stem-cell transplantation?"
+   },
+   "basis": {
+    "uz": "IRF (yetilmagan retikulotsitlar ulushi) — ko‘mik tiklanishining erta belgisi.",
+    "ru": "IRF (фракция незрелых ретикулоцитов) — ранний признак восстановления костного мозга.",
+    "en": "IRF (immature reticulocyte fraction) is an early marker of marrow recovery."
+   },
+   "options": [
+    {
+     "text": {
+      "uz": "IRF",
+      "ru": "IRF",
+      "en": "IRF"
+     },
+     "explanation": {
+      "uz": "To‘g‘ri.",
+      "ru": "Верно.",
+      "en": "Correct."
+     }
+    },
+    {
+     "text": {
+      "uz": "MCV",
+      "ru": "MCV",
+      "en": "MCV"
+     },
+     "explanation": {
+      "uz": "MCV sekin o‘zgaradi.",
+      "ru": "MCV меняется медленно.",
+      "en": "MCV changes slowly."
+     }
+    },
+    {
+     "text": {
+      "uz": "Gemoglobin",
+      "ru": "Гемоглобин",
+      "en": "Haemoglobin"
+     },
+     "explanation": {
+      "uz": "Gemoglobin kechroq ko‘tariladi.",
+      "ru": "Гемоглобин растёт позже.",
+      "en": "Haemoglobin rises later."
+     }
+    }
+   ]
+  },
+  {
+   "id": "books-anemia-mcv",
+   "review_state": "pending",
+   "refs": [
+    {
+     "source_id": "takami-2026-cbc",
+     "locator": "Table 3. Integrated Interpretation of Anemia Using MCV and RDW"
+    },
+    {
+     "source_id": "medline-mcv",
+     "locator": "What do the results mean?"
+    }
+   ],
+   "topic_ids": [
+    "mcv"
+   ],
+   "correct_index": 0,
+   "prompt": {
+    "uz": "MCV 72 fL, RDW yuqori. Anemiya algoritmida keyingi eng mos tahlil qaysi?",
+    "ru": "MCV 72 фл, RDW высокий. Какой следующий анализ по алгоритму анемии?",
+    "en": "MCV 72 fL with a high RDW. Which test comes next in the anaemia algorithm?"
+   },
+   "basis": {
+    "uz": "Turli o‘lchamli mikrotsitoz temir tanqisligiga xos — ferritin va transferrin to‘yinishi.",
+    "ru": "Разнородный микроцитоз типичен для дефицита железа — ферритин и насыщение трансферрина.",
+    "en": "Heterogeneous microcytosis suggests iron deficiency — ferritin and transferrin saturation."
+   },
+   "options": [
+    {
+     "text": {
+      "uz": "Ferritin (va transferrin to‘yinishi)",
+      "ru": "Ферритин (и насыщение трансферрина)",
+      "en": "Ferritin (and transferrin saturation)"
+     },
+     "explanation": {
+      "uz": "To‘g‘ri.",
+      "ru": "Верно.",
+      "en": "Correct."
+     }
+    },
+    {
+     "text": {
+      "uz": "Vitamin B12",
+      "ru": "Витамин B12",
+      "en": "Vitamin B12"
+     },
+     "explanation": {
+      "uz": "B12 makrotsitozda tekshiriladi.",
+      "ru": "B12 проверяют при макроцитозе.",
+      "en": "B12 is checked in macrocytosis."
+     }
+    },
+    {
+     "text": {
+      "uz": "Gaptoglobin",
+      "ru": "Гаптоглобин",
+      "en": "Haptoglobin"
+     },
+     "explanation": {
+      "uz": "Gemoliz belgisi; mikrotsitozda birinchi emas.",
+      "ru": "Маркер гемолиза; при микроцитозе не первый.",
+      "en": "A haemolysis marker; not first in microcytosis."
+     }
+    }
+   ]
+  },
+  {
+   "id": "books-jaundice-urine",
+   "review_state": "pending",
+   "refs": [
+    {
+     "source_id": "book-sobirova-2006",
+     "locator": "XVII bob. Jigar biokimyosi: sariqliklar"
+    },
+    {
+     "source_id": "medline-bilirubin-urine",
+     "locator": "What do the results mean?"
+    },
+    {
+     "source_id": "medline-urobilinogen-urine",
+     "locator": "What do the results mean?"
+    },
+    {
+     "source_id": "medline-ency-pale-stools",
+     "locator": "Stools - pale or clay-colored"
+    }
+   ],
+   "topic_ids": [
+    "bilirubin-total"
+   ],
+   "correct_index": 0,
+   "prompt": {
+    "uz": "Bemorda sariqlik, siydikda bilirubin bor, urobilinogen yo‘q, najas oqargan. Qaysi sariqlik turi ehtimoli ko‘proq?",
+    "ru": "Желтуха, в моче билирубин есть, уробилиногена нет, кал светлый. Какой тип желтухи вероятнее?",
+    "en": "Jaundice, bilirubin in urine, no urobilinogen, pale stool. Which type is most likely?"
+   },
+   "basis": {
+    "uz": "O‘t ichakka tushmasa urobilinogen hosil bo‘lmaydi va najas oqaradi; konyugatsiyalangan bilirubin siydikka o‘tadi — jigar osti (mexanik).",
+    "ru": "Без поступления желчи в кишечник уробилиноген не образуется и кал светлеет; конъюгированный билирубин уходит в мочу — подпечёночная (механическая).",
+    "en": "Without bile reaching the gut no urobilinogen forms and stool is pale; conjugated bilirubin enters urine — posthepatic (obstructive)."
+   },
+   "options": [
+    {
+     "text": {
+      "uz": "Jigar osti (mexanik)",
+      "ru": "Подпечёночная (механическая)",
+      "en": "Posthepatic (obstructive)"
+     },
+     "explanation": {
+      "uz": "To‘g‘ri.",
+      "ru": "Верно.",
+      "en": "Correct."
+     }
+    },
+    {
+     "text": {
+      "uz": "Jigar usti (gemolitik)",
+      "ru": "Надпечёночная (гемолитическая)",
+      "en": "Prehepatic (haemolytic)"
+     },
+     "explanation": {
+      "uz": "Gemolizda siydikda bilirubin yo‘q, urobilinogen ko‘p.",
+      "ru": "При гемолизе билирубина в моче нет, уробилиногена много.",
+      "en": "In haemolysis there is no urine bilirubin and much urobilinogen."
+     }
+    },
+    {
+     "text": {
+      "uz": "Me’yoriy holat",
+      "ru": "Норма",
+      "en": "Normal"
+     },
+     "explanation": {
+      "uz": "Sog‘lom siydikda bilirubin bo‘lmaydi.",
+      "ru": "В здоровой моче билирубина нет.",
+      "en": "Healthy urine has no bilirubin."
+     }
+    }
+   ]
+  },
+  {
+   "id": "books-de-ritis",
+   "review_state": "pending",
+   "refs": [
+    {
+     "source_id": "williams-1988-ast-alt",
+     "locator": "Abstract"
+    }
+   ],
+   "topic_ids": [
+    "ast"
+   ],
+   "correct_index": 0,
+   "prompt": {
+    "uz": "AST/ALT (de Ritis) nisbati 2 dan katta bo‘lishi klassik ravishda qaysi holatga xos?",
+    "ru": "Для какого состояния классически характерно отношение АСТ/АЛТ (де Ритиса) больше 2?",
+    "en": "An AST/ALT (De Ritis) ratio above 2 is classically typical of which condition?"
+   },
+   "basis": {
+    "uz": "Williams va Hoofnagle (1988): alkogolli jigar kasalligida odatda >2, surunkali virusli gepatit va xolestazda <1.",
+    "ru": "Williams и Hoofnagle (1988): при алкогольной болезни печени обычно >2, при хроническом вирусном гепатите и холестазе <1.",
+    "en": "Williams and Hoofnagle (1988): usually >2 in alcoholic liver disease, <1 in chronic viral hepatitis and cholestasis."
+   },
+   "options": [
+    {
+     "text": {
+      "uz": "Alkogolli jigar kasalligi",
+      "ru": "Алкогольная болезнь печени",
+      "en": "Alcoholic liver disease"
+     },
+     "explanation": {
+      "uz": "To‘g‘ri.",
+      "ru": "Верно.",
+      "en": "Correct."
+     }
+    },
+    {
+     "text": {
+      "uz": "Surunkali virusli gepatit (sirrozsiz)",
+      "ru": "Хронический вирусный гепатит (без цирроза)",
+      "en": "Chronic viral hepatitis (no cirrhosis)"
+     },
+     "explanation": {
+      "uz": "Unda nisbat odatda 1 dan kichik.",
+      "ru": "Там отношение обычно меньше 1.",
+      "en": "There the ratio is usually below 1."
+     }
+    },
+    {
+     "text": {
+      "uz": "Surunkali xolestaz",
+      "ru": "Хронический холестаз",
+      "en": "Chronic cholestasis"
+     },
+     "explanation": {
+      "uz": "Unda ham odatda 1 dan kichik.",
+      "ru": "Там тоже обычно меньше 1.",
+      "en": "Also usually below 1."
+     }
+    }
+   ]
+  },
+  {
+   "id": "books-cholestasis",
+   "review_state": "pending",
+   "refs": [
+    {
+     "source_id": "kwo-2017-acg-liver",
+     "locator": "Abstract"
+    },
+    {
+     "source_id": "book-sobirova-2006",
+     "locator": "XVII bob. Jigar xastaliklarida biokimyoviy o‘zgarishlar (sindromlar)"
+    },
+    {
+     "source_id": "medline-ggt",
+     "locator": "What do the results mean?"
+    }
+   ],
+   "topic_ids": [
+    "alp"
+   ],
+   "correct_index": 0,
+   "prompt": {
+    "uz": "ALP ALT va AST dan nomutanosib ko‘p oshgan, GGT ham yuqori. Bu qaysi laborator sindrom?",
+    "ru": "ЩФ повышена непропорционально сильнее АЛТ и АСТ, ГГТ тоже высокая. Какой это лабораторный синдром?",
+    "en": "ALP is raised out of proportion to ALT and AST, and GGT is high too. Which laboratory pattern is this?"
+   },
+   "basis": {
+    "uz": "ALP ustunligi — xolestaz; GGT ALP ning jigar manbasini tasdiqlaydi.",
+    "ru": "Преобладание ЩФ — холестаз; ГГТ подтверждает печёночный источник ЩФ.",
+    "en": "ALP predominance is cholestatic; GGT confirms a liver source of ALP."
+   },
+   "options": [
+    {
+     "text": {
+      "uz": "Xolestaz",
+      "ru": "Холестаз",
+      "en": "Cholestasis"
+     },
+     "explanation": {
+      "uz": "To‘g‘ri.",
+      "ru": "Верно.",
+      "en": "Correct."
+     }
+    },
+    {
+     "text": {
+      "uz": "Sitoliz",
+      "ru": "Цитолиз",
+      "en": "Cytolysis"
+     },
+     "explanation": {
+      "uz": "Sitolizda ALT/AST ustun.",
+      "ru": "При цитолизе преобладают АЛТ/АСТ.",
+      "en": "In cytolysis ALT/AST predominate."
+     }
+    },
+    {
+     "text": {
+      "uz": "Suyak kasalligi",
+      "ru": "Болезнь костей",
+      "en": "Bone disease"
+     },
+     "explanation": {
+      "uz": "Suyakda GGT odatda me’yorda.",
+      "ru": "При костной причине ГГТ обычно в норме.",
+      "en": "With bone disease GGT is usually normal."
+     }
+    }
+   ]
   }
  ],
  "ifu_records": [],
@@ -46622,7 +48284,19 @@
     "jaundice",
     "cholestasis",
     "bile duct obstruction",
-    "hyperbilirubinemia"
+    "hyperbilirubinemia",
+    "jigar usti sariqligi",
+    "jigar osti sariqligi",
+    "parenximatoz sariqlik",
+    "gemolitik sariqlik",
+    "надпечёночная желтуха",
+    "подпечёночная желтуха",
+    "паренхиматозная желтуха",
+    "prehepatic jaundice",
+    "posthepatic jaundice",
+    "sitoliz sindromi",
+    "xolestaz sindromi",
+    "de Ritis"
    ],
    "summary": {
     "text": {
@@ -46793,6 +48467,170 @@
        "locator": "What do the results mean?"
       }
      ]
+    },
+    {
+     "finding": {
+      "uz": "Jigar usti (gemolitik): bevosita bo‘lmagan bilirubin ↑, siydikda bilirubin yo‘q, urobilinogen ↑, najas to‘q",
+      "ru": "Надпечёночная (гемолитическая): непрямой билирубин ↑, билирубина в моче нет, уробилиноген ↑, кал тёмный",
+      "en": "Prehepatic (haemolytic): indirect bilirubin ↑, no urine bilirubin, urobilinogen ↑, dark stool"
+     },
+     "meaning": {
+      "uz": "Gemoliz yoki Jilber sindromi kabi konyugatsiya buzilishi; gemoliz belgilari tekshiriladi.",
+      "ru": "Гемолиз или нарушение конъюгации, например синдром Жильбера; проверяют признаки гемолиза.",
+      "en": "Haemolysis or impaired conjugation such as Gilbert syndrome; check haemolysis markers."
+     },
+     "refs": [
+      {
+       "source_id": "fargo-2017-jaundice",
+       "locator": "Abstract"
+      },
+      {
+       "source_id": "medline-urobilinogen-urine",
+       "locator": "What do the results mean?"
+      },
+      {
+       "source_id": "book-sobirova-2006",
+       "locator": "XVII bob. Jigar biokimyosi: sariqliklar"
+      }
+     ]
+    },
+    {
+     "finding": {
+      "uz": "Jigar (parenximatoz): ikkala fraksiya ↑, siydikda bilirubin bor, urobilinogen ko‘pincha ↑, ALT/AST ustun",
+      "ru": "Печёночная (паренхиматозная): обе фракции ↑, билирубин в моче есть, уробилиноген часто ↑, преобладают АЛТ/АСТ",
+      "en": "Hepatic: both fractions ↑, urine bilirubin present, urobilinogen often ↑, ALT/AST predominate"
+     },
+     "meaning": {
+      "uz": "Gepatotsellyulyar shikastlanish (masalan, virusli yoki alkogolli gepatit, sirroz).",
+      "ru": "Гепатоцеллюлярное поражение (например, вирусный или алкогольный гепатит, цирроз).",
+      "en": "Hepatocellular injury (e.g., viral or alcoholic hepatitis, cirrhosis)."
+     },
+     "refs": [
+      {
+       "source_id": "kwo-2017-acg-liver",
+       "locator": "Abstract"
+      },
+      {
+       "source_id": "fargo-2017-jaundice",
+       "locator": "Abstract"
+      },
+      {
+       "source_id": "medline-bilirubin-urine",
+       "locator": "What do the results mean?"
+      },
+      {
+       "source_id": "medline-urobilinogen-urine",
+       "locator": "What do the results mean?"
+      },
+      {
+       "source_id": "book-sobirova-2006",
+       "locator": "XVII bob. Jigar biokimyosi: sariqliklar"
+      }
+     ]
+    },
+    {
+     "finding": {
+      "uz": "Jigar osti (mexanik): bevosita bilirubin ↑, siydikda bilirubin bor, urobilinogen ↓ yoki yo‘q, najas oqargan; ALP va GGT ustun",
+      "ru": "Подпечёночная (механическая): прямой билирубин ↑, билирубин в моче есть, уробилиноген ↓ или нет, кал светлый; преобладают ЩФ и ГГТ",
+      "en": "Posthepatic (obstructive): direct bilirubin ↑, urine bilirubin present, urobilinogen ↓ or absent, pale stool; ALP and GGT predominate"
+     },
+     "meaning": {
+      "uz": "O‘t yo‘llari tiqilishi (tosh, o‘sma, torayish) ehtimoli — tasvirlash tekshiruvi kerak.",
+      "ru": "Вероятна закупорка желчных путей (камень, опухоль, стриктура) — нужна визуализация.",
+      "en": "Bile-duct obstruction (stone, tumour, stricture) likely — imaging is needed."
+     },
+     "refs": [
+      {
+       "source_id": "kwo-2017-acg-liver",
+       "locator": "Abstract"
+      },
+      {
+       "source_id": "medline-urobilinogen-urine",
+       "locator": "What do the results mean?"
+      },
+      {
+       "source_id": "medline-ency-pale-stools",
+       "locator": "Stools - pale or clay-colored"
+      },
+      {
+       "source_id": "fargo-2017-jaundice",
+       "locator": "Abstract"
+      },
+      {
+       "source_id": "book-sobirova-2006",
+       "locator": "XVII bob. Jigar biokimyosi: sariqliklar"
+      }
+     ]
+    },
+    {
+     "finding": {
+      "uz": "ALT/AST ALP dan nomutanosib ko‘p oshgan (sitoliz)",
+      "ru": "АЛТ/АСТ повышены непропорционально больше ЩФ (цитолиз)",
+      "en": "ALT/AST raised out of proportion to ALP (cytolysis)"
+     },
+     "meaning": {
+      "uz": "Gepatotsellyulyar shikastlanish naqshi.",
+      "ru": "Паттерн гепатоцеллюлярного повреждения.",
+      "en": "Hepatocellular injury pattern."
+     },
+     "refs": [
+      {
+       "source_id": "kwo-2017-acg-liver",
+       "locator": "Abstract"
+      },
+      {
+       "source_id": "book-sobirova-2006",
+       "locator": "XVII bob. Jigar xastaliklarida biokimyoviy o‘zgarishlar (sindromlar)"
+      }
+     ]
+    },
+    {
+     "finding": {
+      "uz": "AST/ALT (de Ritis) > 2",
+      "ru": "АСТ/АЛТ (де Ритис) > 2",
+      "en": "AST/ALT (De Ritis) > 2"
+     },
+     "meaning": {
+      "uz": "Alkogolli jigar kasalligiga xos; alkogolsiz kasallikda 1 dan oshishi sirrozga ishora qilishi mumkin.",
+      "ru": "Характерно для алкогольной болезни печени; при неалкогольной болезни рост выше 1 может указывать на цирроз.",
+      "en": "Typical of alcoholic liver disease; in non-alcoholic disease a ratio above 1 may suggest cirrhosis."
+     },
+     "refs": [
+      {
+       "source_id": "williams-1988-ast-alt",
+       "locator": "Abstract"
+      },
+      {
+       "source_id": "book-sobirova-2006",
+       "locator": "XVII bob. Jigar xastaliklarida biokimyoviy o‘zgarishlar (sindromlar)"
+      }
+     ]
+    },
+    {
+     "finding": {
+      "uz": "Albumin ↓ + PT/INR uzaygan",
+      "ru": "Альбумин ↓ + ПВ/МНО удлинено",
+      "en": "Albumin ↓ + prolonged PT/INR"
+     },
+     "meaning": {
+      "uz": "Jigarning sintetik funksiyasi pasaygan (gepatotsitar yetishmovchilik) ehtimoli.",
+      "ru": "Вероятно снижение синтетической функции печени (печёночно-клеточная недостаточность).",
+      "en": "Reduced liver synthetic function (hepatocellular failure) likely."
+     },
+     "refs": [
+      {
+       "source_id": "medline-liver-function",
+       "locator": "What are liver function tests?"
+      },
+      {
+       "source_id": "kwo-2017-acg-liver",
+       "locator": "Abstract"
+      },
+      {
+       "source_id": "book-sobirova-2006",
+       "locator": "XVII bob. Jigar xastaliklarida biokimyoviy o‘zgarishlar (sindromlar)"
+      }
+     ]
     }
    ],
    "cautions": [
@@ -46817,7 +48655,14 @@
    "review": {
     "state": "pending",
     "reviewer_id": null,
-    "reviewed_at": null
+    "reviewed_at": null,
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "Kitoblar (Dolgov 2009, Lyubina 1984, Najmitdinov 1998, Sobirova 2006, Aripova 2007, Dadayev 2004) bilimi rasmiy/ochiq manbalar bilan solishtirildi; matn ko‘chirilmagan",
+      "report": "scratchpad/books/B_01..B_06, A_02, A_04 (agent tahlili)"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -48519,6 +50364,46 @@
        "locator": "What do the results mean?"
       }
      ]
+    },
+    {
+     "finding": {
+      "uz": "Ferritin <15 µg/L (sog‘lom kattalar) yoki <70 µg/L (yallig‘lanish bor)",
+      "ru": "Ферритин <15 мкг/л (здоровые взрослые) или <70 мкг/л (при воспалении)",
+      "en": "Ferritin <15 µg/L (healthy adults) or <70 µg/L (with inflammation)"
+     },
+     "meaning": {
+      "uz": "JSST (2020) bo‘yicha temir tanqisligi; yallig‘lanishni baholash uchun CRP (va AGP) birga o‘lchanadi.",
+      "ru": "Дефицит железа по ВОЗ (2020); для оценки воспаления одновременно измеряют CRP (и AGP).",
+      "en": "Iron deficiency per WHO (2020); CRP (and AGP) are measured to assess inflammation."
+     },
+     "refs": [
+      {
+       "source_id": "who-ferritin-2020",
+       "locator": "Executive summary: Table 1"
+      },
+      {
+       "source_id": "who-ferritin-2020",
+       "locator": "Executive summary: recommendations 4.1–4.2"
+      }
+     ]
+    },
+    {
+     "finding": {
+      "uz": "MCV past + RDW yuqori",
+      "ru": "MCV низкий + RDW высокий",
+      "en": "Low MCV + high RDW"
+     },
+     "meaning": {
+      "uz": "Temir tanqisligiga xos turli o‘lchamli mikrotsitoz; ferritin va transferrin to‘yinishi bilan tasdiqlanadi.",
+      "ru": "Разнородный микроцитоз, типичный для дефицита железа; подтверждают ферритином и насыщением трансферрина.",
+      "en": "Heterogeneous microcytosis typical of iron deficiency; confirm with ferritin and transferrin saturation."
+     },
+     "refs": [
+      {
+       "source_id": "takami-2026-cbc",
+       "locator": "Table 3. Integrated Interpretation of Anemia Using MCV and RDW"
+      }
+     ]
     }
    ],
    "cautions": [
@@ -48539,7 +50424,14 @@
    "review": {
     "state": "pending",
     "reviewer_id": null,
-    "reviewed_at": null
+    "reviewed_at": null,
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "Kitoblar (Dolgov 2009, Lyubina 1984, Najmitdinov 1998, Sobirova 2006, Aripova 2007, Dadayev 2004) bilimi rasmiy/ochiq manbalar bilan solishtirildi; matn ko‘chirilmagan",
+      "report": "scratchpad/books/B_01..B_06, A_02, A_04 (agent tahlili)"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -48759,6 +50651,28 @@
        "locator": "What do the results mean?"
       }
      ]
+    },
+    {
+     "finding": {
+      "uz": "MCV >100 fL + RDW yuqori",
+      "ru": "MCV >100 фл + RDW высокий",
+      "en": "MCV >100 fL + high RDW"
+     },
+     "meaning": {
+      "uz": "Turli o‘lchamli makrotsitoz — B12 yoki folat tanqisligi, miyelodisplaziya ehtimoli.",
+      "ru": "Разнородный макроцитоз — вероятен дефицит B12 или фолата, миелодисплазия.",
+      "en": "Heterogeneous macrocytosis — B12 or folate deficiency, myelodysplasia possible."
+     },
+     "refs": [
+      {
+       "source_id": "takami-2026-cbc",
+       "locator": "Table 3. Integrated Interpretation of Anemia Using MCV and RDW"
+      },
+      {
+       "source_id": "medline-mcv",
+       "locator": "What do the results mean?"
+      }
+     ]
     }
    ],
    "cautions": [
@@ -48779,7 +50693,14 @@
    "review": {
     "state": "pending",
     "reviewer_id": null,
-    "reviewed_at": null
+    "reviewed_at": null,
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "Kitoblar (Dolgov 2009, Lyubina 1984, Najmitdinov 1998, Sobirova 2006, Aripova 2007, Dadayev 2004) bilimi rasmiy/ochiq manbalar bilan solishtirildi; matn ko‘chirilmagan",
+      "report": "scratchpad/books/B_01..B_06, A_02, A_04 (agent tahlili)"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -53072,6 +54993,775 @@
     "state": "pending",
     "reviewer_id": null,
     "reviewed_at": null
+   },
+   "translation_review": {
+    "uz": "pending",
+    "ru": "pending",
+    "en": "pending"
+   }
+  },
+  {
+   "id": "anemia-workup",
+   "status": "draft",
+   "system": "blood",
+   "names": {
+    "uz": "Anemiya: bosqichma-bosqich tekshiruv",
+    "ru": "Анемия: пошаговое обследование",
+    "en": "Anaemia: step-by-step work-up"
+   },
+   "synonyms": [
+    "kamqonlik",
+    "kam qonlik",
+    "anemiya",
+    "anemiya algoritmi",
+    "mikrotsitar anemiya",
+    "makrotsitar anemiya",
+    "normotsitar anemiya",
+    "анемия",
+    "малокровие",
+    "алгоритм анемии",
+    "микроцитарная анемия",
+    "макроцитарная анемия",
+    "anemia",
+    "anaemia",
+    "anemia work-up",
+    "microcytic anemia",
+    "macrocytic anemia"
+   ],
+   "summary": {
+    "text": {
+     "uz": "Anemiya — tashxis emas, belgi: avval gemoglobin bo‘yicha aniqlanadi, so‘ng MCV (eritrotsit o‘lchami) bo‘yicha mikrotsitar, normotsitar yoki makrotsitar turga ajratiladi, retikulotsitlar esa suyak ko‘migi javobini ko‘rsatadi. Keyingi tahlillar shu ikki qadamga qarab tanlanadi: temir ko‘rsatkichlari, B12/folat yoki gemoliz belgilari.",
+     "ru": "Анемия — не диагноз, а признак: её выявляют по гемоглобину, затем по MCV (размеру эритроцитов) делят на микро-, нормо- и макроцитарную, а ретикулоциты показывают ответ костного мозга. Дальнейшие анализы выбирают по этим двум шагам: показатели железа, B12/фолат или признаки гемолиза.",
+     "en": "Anaemia is a sign, not a diagnosis: it is detected by haemoglobin, then MCV (red cell size) classifies it as microcytic, normocytic or macrocytic, and reticulocytes show the marrow response. Further tests follow from these two steps: iron studies, B12/folate or markers of haemolysis."
+    },
+    "refs": [
+     {
+      "source_id": "nhlbi-anemia-dx",
+      "locator": "Blood tests"
+     },
+     {
+      "source_id": "takami-2026-cbc",
+      "locator": "Step 2: Evaluate the RBC lineage"
+     },
+     {
+      "source_id": "book-dolgov-2009",
+      "locator": "Определение и классификация анемий",
+      "pages": "36–38"
+     }
+    ]
+   },
+   "panel": [
+    {
+     "analyte_id": "hemoglobin",
+     "names": {
+      "uz": "Gemoglobin (umumiy qon tahlili)",
+      "ru": "Гемоглобин (общий анализ крови)",
+      "en": "Haemoglobin (complete blood count)"
+     },
+     "why": {
+      "uz": "Anemiyani aniqlaydi va og‘irligini baholaydi; JSST chegaralari yosh, jins va homiladorlikka bog‘liq.",
+      "ru": "Выявляет анемию и оценивает её тяжесть; пороги ВОЗ зависят от возраста, пола и беременности.",
+      "en": "Detects anaemia and grades severity; WHO cut-offs depend on age, sex and pregnancy."
+     },
+     "tier": "first_line",
+     "refs": [
+      {
+       "source_id": "nhlbi-anemia-dx",
+       "locator": "Blood tests"
+      },
+      {
+       "source_id": "who-hb-cutoffs-2024",
+       "locator": "Table 2. Haemoglobin cutoffs to define anaemia in individuals and populations",
+       "pages": "9"
+      }
+     ]
+    },
+    {
+     "analyte_id": "mcv",
+     "names": {
+      "uz": "MCV va RDW",
+      "ru": "MCV и RDW",
+      "en": "MCV and RDW"
+     },
+     "why": {
+      "uz": "MCV anemiyani o‘lcham bo‘yicha ajratadi; RDW aralash populyatsiyani ko‘rsatadi.",
+      "ru": "MCV классифицирует анемию по размеру клеток; RDW выявляет смешанную популяцию.",
+      "en": "MCV classifies anaemia by cell size; RDW reveals mixed populations."
+     },
+     "tier": "first_line",
+     "refs": [
+      {
+       "source_id": "nhlbi-anemia-dx",
+       "locator": "Blood tests"
+      },
+      {
+       "source_id": "takami-2026-cbc",
+       "locator": "Table 3. Integrated Interpretation of Anemia Using MCV and RDW"
+      }
+     ]
+    },
+    {
+     "analyte_id": "reticulocytes",
+     "names": {
+      "uz": "Retikulotsitlar (absolyut son)",
+      "ru": "Ретикулоциты (абсолютное число)",
+      "en": "Reticulocytes (absolute count)"
+     },
+     "why": {
+      "uz": "Suyak ko‘migi javobi: yuqori — qon ketishi yoki gemoliz, past — ishlab chiqarish yetishmovchiligi.",
+      "ru": "Ответ костного мозга: высокий — кровотечение или гемолиз, низкий — недостаточная продукция.",
+      "en": "Marrow response: high — bleeding or haemolysis; low — impaired production."
+     },
+     "tier": "first_line",
+     "refs": [
+      {
+       "source_id": "medline-reticulocyte",
+       "locator": "What do the results mean?"
+      },
+      {
+       "source_id": "takami-2026-cbc",
+       "locator": "Step 2: Evaluate the RBC lineage"
+      }
+     ]
+    },
+    {
+     "analyte_id": "ferritin",
+     "names": {
+      "uz": "Ferritin",
+      "ru": "Ферритин",
+      "en": "Ferritin"
+     },
+     "why": {
+      "uz": "Mikrotsitar anemiyada birinchi: past ferritin temir tanqisligini tasdiqlaydi.",
+      "ru": "Первый тест при микроцитарной анемии: низкий ферритин подтверждает дефицит железа.",
+      "en": "First test in microcytic anaemia: a low ferritin confirms iron deficiency."
+     },
+     "tier": "additional",
+     "refs": [
+      {
+       "source_id": "who-ferritin-2020",
+       "locator": "Executive summary: Table 1"
+      },
+      {
+       "source_id": "medline-mcv",
+       "locator": "What do the results mean?"
+      }
+     ]
+    },
+    {
+     "analyte_id": "transferrin-tibc",
+     "names": {
+      "uz": "Temir, TIBC, transferrin to‘yinishi",
+      "ru": "Железо, ОЖСС, насыщение трансферрина",
+      "en": "Iron, TIBC, transferrin saturation"
+     },
+     "why": {
+      "uz": "Temir tanqisligini yallig‘lanish anemiyasidan farqlashga yordam beradi.",
+      "ru": "Помогают отличить дефицит железа от анемии воспаления.",
+      "en": "Help separate iron deficiency from anaemia of inflammation."
+     },
+     "tier": "additional",
+     "refs": [
+      {
+       "source_id": "book-dolgov-2009",
+       "locator": "Обмен железа; лабораторная диагностика ЖДА",
+       "pages": "43–68"
+      },
+      {
+       "source_id": "takami-2026-cbc",
+       "locator": "Table 3. Integrated Interpretation of Anemia Using MCV and RDW"
+      }
+     ]
+    },
+    {
+     "analyte_id": "vitamin-b12",
+     "names": {
+      "uz": "Vitamin B12 va folat",
+      "ru": "Витамин B12 и фолат",
+      "en": "Vitamin B12 and folate"
+     },
+     "why": {
+      "uz": "Makrotsitar anemiyada megaloblast sabablarni tekshirish uchun.",
+      "ru": "При макроцитарной анемии — для поиска мегалобластных причин.",
+      "en": "In macrocytic anaemia, to look for megaloblastic causes."
+     },
+     "tier": "additional",
+     "refs": [
+      {
+       "source_id": "medline-mcv",
+       "locator": "What do the results mean?"
+      },
+      {
+       "source_id": "takami-2026-cbc",
+       "locator": "Table 3. Integrated Interpretation of Anemia Using MCV and RDW"
+      }
+     ]
+    },
+    {
+     "analyte_id": "ldh",
+     "names": {
+      "uz": "Gemoliz belgilari: LDG, bevosita bo‘lmagan bilirubin, gaptoglobin",
+      "ru": "Признаки гемолиза: ЛДГ, непрямой билирубин, гаптоглобин",
+      "en": "Haemolysis markers: LDH, indirect bilirubin, haptoglobin"
+     },
+     "why": {
+      "uz": "Retikulotsitlar yuqori va qon ketishi bo‘lmasa — gemolizni tasdiqlash uchun.",
+      "ru": "При высоких ретикулоцитах без кровотечения — для подтверждения гемолиза.",
+      "en": "With high reticulocytes and no bleeding — to confirm haemolysis."
+     },
+     "tier": "additional",
+     "refs": [
+      {
+       "source_id": "barcellini-2015-hemolysis",
+       "locator": "Abstract"
+      },
+      {
+       "source_id": "medline-haptoglobin",
+       "locator": "What is it used for?"
+      }
+     ]
+    },
+    {
+     "analyte_id": "blood-smear",
+     "names": {
+      "uz": "Periferik qon surtmasi",
+      "ru": "Мазок периферической крови",
+      "en": "Peripheral blood smear"
+     },
+     "why": {
+      "uz": "Eritrotsit shakli (sferotsit, shizotsit, nishonsimon) sababga ishora qiladi.",
+      "ru": "Форма эритроцитов (сфероциты, шизоциты, мишеневидные) подсказывает причину.",
+      "en": "Red cell shape (spherocytes, schistocytes, target cells) points to the cause."
+     },
+     "tier": "additional",
+     "refs": [
+      {
+       "source_id": "barcellini-2015-hemolysis",
+       "locator": "Abstract"
+      },
+      {
+       "source_id": "takami-2026-cbc",
+       "locator": "Table 2. Clinical Interpretation of Key CBC Parameters"
+      }
+     ]
+    }
+   ],
+   "patterns": [
+    {
+     "finding": {
+      "uz": "1-qadam: MCV past (taxminan <80 fL)",
+      "ru": "Шаг 1: MCV низкий (примерно <80 фл)",
+      "en": "Step 1: low MCV (about <80 fL)"
+     },
+     "meaning": {
+      "uz": "Mikrotsitar anemiya: eng ko‘p — temir tanqisligi, shuningdek talassemiya. Ferritin va temir ko‘rsatkichlari tekshiriladi.",
+      "ru": "Микроцитарная анемия: чаще всего — дефицит железа, а также талассемия. Проверяют ферритин и показатели железа.",
+      "en": "Microcytic anaemia: most often iron deficiency, also thalassaemia. Check ferritin and iron studies."
+     },
+     "refs": [
+      {
+       "source_id": "medline-mcv",
+       "locator": "What do the results mean?"
+      },
+      {
+       "source_id": "takami-2026-cbc",
+       "locator": "Table 3. Integrated Interpretation of Anemia Using MCV and RDW"
+      }
+     ]
+    },
+    {
+     "finding": {
+      "uz": "Mikrotsitoz + ferritin past",
+      "ru": "Микроцитоз + ферритин низкий",
+      "en": "Microcytosis + low ferritin"
+     },
+     "meaning": {
+      "uz": "Temir tanqisligi anemiyasi ehtimoli; sababi (qon yo‘qotish va b.) izlanadi. JSST (2020): sog‘lom kattalarda ferritin <15 µg/L, yallig‘lanishda <70 µg/L temir tanqisligiga ishora.",
+      "ru": "Вероятна железодефицитная анемия; ищут причину (кровопотеря и др.). ВОЗ (2020): у здоровых взрослых ферритин <15 мкг/л, при воспалении <70 мкг/л указывает на дефицит железа.",
+      "en": "Iron-deficiency anaemia likely; the cause (blood loss etc.) is sought. WHO (2020): ferritin <15 µg/L in healthy adults or <70 µg/L with inflammation indicates iron deficiency."
+     },
+     "refs": [
+      {
+       "source_id": "who-ferritin-2020",
+       "locator": "Executive summary: Table 1"
+      },
+      {
+       "source_id": "nhlbi-ida",
+       "locator": "How is iron-deficiency anemia diagnosed?"
+      }
+     ]
+    },
+    {
+     "finding": {
+      "uz": "Mikrotsitoz, ferritin me’yorda, RDW me’yorda, eritrotsitlar soni nisbatan saqlangan",
+      "ru": "Микроцитоз, ферритин в норме, RDW в норме, число эритроцитов относительно сохранено",
+      "en": "Microcytosis, normal ferritin, normal RDW, relatively preserved RBC count"
+     },
+     "meaning": {
+      "uz": "Talassemiya tashuvchanligi ehtimoli — gemoglobin turlari tahlili.",
+      "ru": "Вероятно носительство талассемии — исследование типов гемоглобина.",
+      "en": "Thalassaemia trait possible — haemoglobin variant testing."
+     },
+     "refs": [
+      {
+       "source_id": "takami-2026-cbc",
+       "locator": "Table 3. Integrated Interpretation of Anemia Using MCV and RDW"
+      },
+      {
+       "source_id": "nhlbi-thalassemia-dx",
+       "locator": "Thalassemia Diagnosis"
+      }
+     ]
+    },
+    {
+     "finding": {
+      "uz": "2-qadam: MCV me’yorda, retikulotsitlar yuqori",
+      "ru": "Шаг 2: MCV в норме, ретикулоциты высокие",
+      "en": "Step 2: normal MCV, high reticulocytes"
+     },
+     "meaning": {
+      "uz": "Suyak ko‘migi faol: yaqinda qon ketishi yoki gemoliz. Gemoliz belgilari (LDG, bilirubin, gaptoglobin) va surtma tekshiriladi.",
+      "ru": "Костный мозг активен: недавнее кровотечение или гемолиз. Проверяют признаки гемолиза (ЛДГ, билирубин, гаптоглобин) и мазок.",
+      "en": "Active marrow: recent bleeding or haemolysis. Check haemolysis markers (LDH, bilirubin, haptoglobin) and the smear."
+     },
+     "refs": [
+      {
+       "source_id": "medline-reticulocyte",
+       "locator": "What do the results mean?"
+      },
+      {
+       "source_id": "takami-2026-cbc",
+       "locator": "Step 2: Evaluate the RBC lineage"
+      },
+      {
+       "source_id": "barcellini-2015-hemolysis",
+       "locator": "Abstract"
+      }
+     ]
+    },
+    {
+     "finding": {
+      "uz": "MCV me’yorda, retikulotsitlar past yoki me’yorda",
+      "ru": "MCV в норме, ретикулоциты низкие или нормальные",
+      "en": "Normal MCV, low or normal reticulocytes"
+     },
+     "meaning": {
+      "uz": "Ishlab chiqarish kamaygan: surunkali kasallik (yallig‘lanish) anemiyasi, buyrak kasalligi, suyak ko‘migi kasalligi yoki erta aralash tanqislik. Og‘ir anemiya va juda past retikulotsitlarda ko‘mik yetishmovchiligi istisno qilinadi.",
+      "ru": "Сниженная продукция: анемия хронических заболеваний (воспаления), болезнь почек, болезнь костного мозга или ранний смешанный дефицит. При тяжёлой анемии и очень низких ретикулоцитах исключают недостаточность костного мозга.",
+      "en": "Reduced production: anaemia of chronic disease (inflammation), kidney disease, marrow disease or early mixed deficiency. With severe anaemia and very low reticulocytes, marrow failure is ruled out."
+     },
+     "refs": [
+      {
+       "source_id": "medline-mcv",
+       "locator": "What do the results mean?"
+      },
+      {
+       "source_id": "medline-reticulocyte",
+       "locator": "What do the results mean?"
+      },
+      {
+       "source_id": "takami-2026-cbc",
+       "locator": "Table 3. Integrated Interpretation of Anemia Using MCV and RDW"
+      },
+      {
+       "source_id": "takami-2026-cbc",
+       "locator": "Step 2: Evaluate the RBC lineage"
+      }
+     ]
+    },
+    {
+     "finding": {
+      "uz": "3-qadam: MCV yuqori (taxminan >100 fL)",
+      "ru": "Шаг 3: MCV высокий (примерно >100 фл)",
+      "en": "Step 3: high MCV (about >100 fL)"
+     },
+     "meaning": {
+      "uz": "Makrotsitar anemiya: B12 yoki folat tanqisligi (RDW ko‘pincha yuqori), shuningdek alkogol, jigar kasalligi, gipotireoz, ayrim dorilar, miyelodisplaziya. B12 va folat tekshiriladi.",
+      "ru": "Макроцитарная анемия: дефицит B12 или фолата (RDW часто высокий), а также алкоголь, болезнь печени, гипотиреоз, некоторые лекарства, миелодисплазия. Проверяют B12 и фолат.",
+      "en": "Macrocytic anaemia: B12 or folate deficiency (RDW often high), also alcohol, liver disease, hypothyroidism, some medicines, myelodysplasia. Check B12 and folate."
+     },
+     "refs": [
+      {
+       "source_id": "medline-mcv",
+       "locator": "What do the results mean?"
+      },
+      {
+       "source_id": "takami-2026-cbc",
+       "locator": "Table 3. Integrated Interpretation of Anemia Using MCV and RDW"
+      }
+     ]
+    }
+   ],
+   "cautions": [
+    {
+     "text": {
+      "uz": "Algoritm — yo‘naltiruvchi sxema: tanqisliklar aralash bo‘lsa MCV me’yorda chiqishi mumkin, raqamli chegaralar taxminiy va laboratoriyaga bog‘liq. Avval natija haqiqiyligini tekshiring (soxta natijalar: Lab → Jadvallar va algoritmlar). Yakuniy xulosa — shifokorda.",
+      "ru": "Алгоритм — ориентировочная схема: при смешанных дефицитах MCV может быть нормальным, числовые пороги приблизительны и зависят от лаборатории. Сначала убедитесь, что результат достоверен (ложные результаты: Обучение → Таблицы и алгоритмы). Окончательное заключение — за врачом.",
+      "en": "The algorithm is a guide: with mixed deficiencies MCV can be normal, and numeric cut-offs are approximate and laboratory-dependent. First make sure the result is genuine (spurious results: Learn → Tables and algorithms). The final judgement is the doctor’s."
+     },
+     "refs": [
+      {
+       "source_id": "takami-2026-cbc",
+       "locator": "Table 3. Integrated Interpretation of Anemia Using MCV and RDW"
+      },
+      {
+       "source_id": "takami-2026-cbc",
+       "locator": "Step 5: Always consider spurious results"
+      }
+     ]
+    }
+   ],
+   "review": {
+    "state": "pending",
+    "reviewer_id": null,
+    "reviewed_at": null,
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "Kitob bilimlari (Dolgov 2009, Sobirova 2006) NHLBI/MedlinePlus/JSST va ochiq maqolalar bilan solishtirildi",
+      "report": "scratchpad/books (agent tahlili)"
+     }
+    ]
+   },
+   "translation_review": {
+    "uz": "pending",
+    "ru": "pending",
+    "en": "pending"
+   }
+  },
+  {
+   "id": "hemolytic-anemia",
+   "status": "draft",
+   "system": "blood",
+   "names": {
+    "uz": "Gemolitik anemiya",
+    "ru": "Гемолитическая анемия",
+    "en": "Haemolytic anaemia"
+   },
+   "synonyms": [
+    "gemoliz",
+    "gemolitik sariqlik",
+    "sferotsitoz",
+    "Minkovskiy–Shoffar",
+    "G6FD tanqisligi",
+    "гемолиз",
+    "гемолитическая анемия",
+    "сфероцитоз",
+    "болезнь Минковского–Шоффара",
+    "hemolysis",
+    "hemolytic anemia",
+    "hereditary spherocytosis",
+    "AIHA"
+   ],
+   "summary": {
+    "text": {
+     "uz": "Eritrotsitlar suyak ko‘migi tiklay olganidan tezroq parchalanadi. Gemolizni retikulotsitlar ko‘payishi, LDG va bevosita bo‘lmagan bilirubin oshishi hamda gaptoglobin kamayishi tasdiqlaydi; to‘g‘ridan-to‘g‘ri antiglobulin (Kumbs) testi autoimmun shakllarni ajratadi, surtma esa membrana nuqsonlari va trombotik mikroangiopatiyani ko‘rsatadi.",
+     "ru": "Эритроциты разрушаются быстрее, чем костный мозг их восполняет. Гемолиз подтверждают рост ретикулоцитов, ЛДГ и непрямого билирубина и снижение гаптоглобина; прямой антиглобулиновый тест (Кумбса) выделяет аутоиммунные формы, а мазок — дефекты мембраны и тромботическую микроангиопатию.",
+     "en": "Red cells are destroyed faster than the marrow can replace them. Haemolysis is supported by raised reticulocytes, LDH and unconjugated bilirubin and low haptoglobin; the direct antiglobulin (Coombs) test identifies autoimmune forms, and the smear shows membrane defects and thrombotic microangiopathy."
+    },
+    "refs": [
+     {
+      "source_id": "barcellini-2015-hemolysis",
+      "locator": "Abstract"
+     },
+     {
+      "source_id": "medline-reticulocyte",
+      "locator": "What do the results mean?"
+     },
+     {
+      "source_id": "medline-haptoglobin",
+      "locator": "What is it used for?"
+     }
+    ]
+   },
+   "panel": [
+    {
+     "analyte_id": "reticulocytes",
+     "names": {
+      "uz": "Retikulotsitlar",
+      "ru": "Ретикулоциты",
+      "en": "Reticulocytes"
+     },
+     "why": {
+      "uz": "Ko‘mikning kompensator javobi; temir/vitamin tanqisligi, infeksiya yoki ko‘mik zararlanishida yetarli oshmasligi mumkin.",
+      "ru": "Компенсаторный ответ костного мозга; может не расти при дефиците железа/витаминов, инфекции или поражении костного мозга.",
+      "en": "Compensatory marrow response; may fail to rise with iron/vitamin deficiency, infection or marrow involvement."
+     },
+     "tier": "first_line",
+     "refs": [
+      {
+       "source_id": "barcellini-2015-hemolysis",
+       "locator": "Abstract"
+      }
+     ]
+    },
+    {
+     "analyte_id": "ldh",
+     "names": {
+      "uz": "LDG",
+      "ru": "ЛДГ",
+      "en": "LDH"
+     },
+     "why": {
+      "uz": "Ayniqsa tomir ichi gemolizida keskin oshadi.",
+      "ru": "Резко повышается особенно при внутрисосудистом гемолизе.",
+      "en": "Rises markedly, especially with intravascular haemolysis."
+     },
+     "tier": "first_line",
+     "refs": [
+      {
+       "source_id": "barcellini-2015-hemolysis",
+       "locator": "Abstract"
+      }
+     ]
+    },
+    {
+     "analyte_id": "bilirubin-total",
+     "names": {
+      "uz": "Bilirubin (fraksiyalar bilan)",
+      "ru": "Билирубин (по фракциям)",
+      "en": "Bilirubin (fractionated)"
+     },
+     "why": {
+      "uz": "Konyugatsiyalanmagan (bevosita bo‘lmagan) bilirubin oshadi.",
+      "ru": "Повышается неконъюгированный (непрямой) билирубин.",
+      "en": "Unconjugated (indirect) bilirubin rises."
+     },
+     "tier": "first_line",
+     "refs": [
+      {
+       "source_id": "barcellini-2015-hemolysis",
+       "locator": "Abstract"
+      },
+      {
+       "source_id": "fargo-2017-jaundice",
+       "locator": "Abstract"
+      }
+     ]
+    },
+    {
+     "names": {
+      "uz": "Gaptoglobin",
+      "ru": "Гаптоглобин",
+      "en": "Haptoglobin"
+     },
+     "why": {
+      "uz": "Gemolitik anemiyani tashxislashda eng ko‘p ishlatiladi; gemolizda kamayadi.",
+      "ru": "Чаще всего применяется для диагностики гемолитической анемии; при гемолизе снижается.",
+      "en": "Most often used to diagnose haemolytic anaemia; falls with haemolysis."
+     },
+     "tier": "first_line",
+     "refs": [
+      {
+       "source_id": "medline-haptoglobin",
+       "locator": "What is it used for?"
+      },
+      {
+       "source_id": "medline-haptoglobin",
+       "locator": "What do the results mean?"
+      }
+     ]
+    },
+    {
+     "names": {
+      "uz": "To‘g‘ridan-to‘g‘ri antiglobulin (Kumbs) testi",
+      "ru": "Прямой антиглобулиновый тест (Кумбса)",
+      "en": "Direct antiglobulin (Coombs) test"
+     },
+     "why": {
+      "uz": "Autoimmun gemolitik anemiyaning asosiy testi.",
+      "ru": "Основной тест при аутоиммунной гемолитической анемии.",
+      "en": "The cornerstone test for autoimmune haemolytic anaemia."
+     },
+     "tier": "additional",
+     "refs": [
+      {
+       "source_id": "barcellini-2015-hemolysis",
+       "locator": "Abstract"
+      },
+      {
+       "source_id": "medline-haptoglobin",
+       "locator": "What is it used for?"
+      }
+     ]
+    },
+    {
+     "analyte_id": "blood-smear",
+     "names": {
+      "uz": "Periferik qon surtmasi",
+      "ru": "Мазок периферической крови",
+      "en": "Peripheral blood smear"
+     },
+     "why": {
+      "uz": "Sferotsitlar, elliptotsitlar (membrana nuqsonlari), shizotsitlar (trombotik mikroangiopatiya).",
+      "ru": "Сфероциты, эллиптоциты (дефекты мембраны), шизоциты (тромботическая микроангиопатия).",
+      "en": "Spherocytes, elliptocytes (membrane defects), schistocytes (thrombotic microangiopathy)."
+     },
+     "tier": "additional",
+     "refs": [
+      {
+       "source_id": "barcellini-2015-hemolysis",
+       "locator": "Abstract"
+      }
+     ]
+    },
+    {
+     "analyte_id": "g6pd",
+     "names": {
+      "uz": "G6FD",
+      "ru": "Г6ФД",
+      "en": "G6PD"
+     },
+     "why": {
+      "uz": "Fermentopatiyaga shubhada.",
+      "ru": "При подозрении на ферментопатию.",
+      "en": "When an enzyme defect is suspected."
+     },
+     "tier": "additional",
+     "refs": [
+      {
+       "source_id": "book-dolgov-2009",
+       "locator": "Гемолитические анемии: внутриклеточный и внутрисосудистый гемолиз",
+       "pages": "100–104"
+      }
+     ]
+    }
+   ],
+   "patterns": [
+    {
+     "finding": {
+      "uz": "Retikulotsitlar ↑ + LDG ↑ + bevosita bo‘lmagan bilirubin ↑ + gaptoglobin ↓",
+      "ru": "Ретикулоциты ↑ + ЛДГ ↑ + непрямой билирубин ↑ + гаптоглобин ↓",
+      "en": "Reticulocytes ↑ + LDH ↑ + indirect bilirubin ↑ + haptoglobin ↓"
+     },
+     "meaning": {
+      "uz": "Gemoliz ehtimoli yuqori; keyin Kumbs testi va surtma bilan sababi aniqlanadi.",
+      "ru": "Гемолиз весьма вероятен; далее причину уточняют пробой Кумбса и мазком.",
+      "en": "Haemolysis likely; the cause is then sought with the Coombs test and smear."
+     },
+     "refs": [
+      {
+       "source_id": "barcellini-2015-hemolysis",
+       "locator": "Abstract"
+      }
+     ]
+    },
+    {
+     "finding": {
+      "uz": "LDG keskin ↑ + gemosiderinuriya / gemoglobinuriya",
+      "ru": "ЛДГ резко ↑ + гемосидеринурия / гемоглобинурия",
+      "en": "LDH markedly ↑ + haemosiderinuria / haemoglobinuria"
+     },
+     "meaning": {
+      "uz": "Tomir ichi gemolizi (masalan, paroksizmal tungi gemoglobinuriya, sun’iy klapan).",
+      "ru": "Внутрисосудистый гемолиз (например, пароксизмальная ночная гемоглобинурия, искусственный клапан).",
+      "en": "Intravascular haemolysis (e.g., paroxysmal nocturnal haemoglobinuria, prosthetic valve)."
+     },
+     "refs": [
+      {
+       "source_id": "barcellini-2015-hemolysis",
+       "locator": "Abstract"
+      },
+      {
+       "source_id": "book-dolgov-2009",
+       "locator": "Гемолитические анемии: внутриклеточный и внутрисосудистый гемолиз",
+       "pages": "100–104"
+      }
+     ]
+    },
+    {
+     "finding": {
+      "uz": "Kumbs testi musbat",
+      "ru": "Проба Кумбса положительная",
+      "en": "Positive Coombs test"
+     },
+     "meaning": {
+      "uz": "Antitelo bilan bog‘liq (immun) gemoliz ehtimoli.",
+      "ru": "Вероятен антителоопосредованный (иммунный) гемолиз.",
+      "en": "Antibody-mediated (immune) haemolysis likely."
+     },
+     "refs": [
+      {
+       "source_id": "barcellini-2015-hemolysis",
+       "locator": "Abstract"
+      }
+     ]
+    },
+    {
+     "finding": {
+      "uz": "Anemiya + trombotsitopeniya + gemoliz belgilari, surtmada shizotsitlar",
+      "ru": "Анемия + тромбоцитопения + признаки гемолиза, шизоциты в мазке",
+      "en": "Anaemia + thrombocytopenia + haemolysis markers, schistocytes on smear"
+     },
+     "meaning": {
+      "uz": "Trombotik mikroangiopatiya yoki DVS ehtimoli — shoshilinch baholash.",
+      "ru": "Возможна тромботическая микроангиопатия или ДВС — срочная оценка.",
+      "en": "Possible thrombotic microangiopathy or DIC — urgent evaluation."
+     },
+     "refs": [
+      {
+       "source_id": "takami-2026-cbc",
+       "locator": "Table 5. Red Flag Patterns in CBC Interpretation"
+      },
+      {
+       "source_id": "barcellini-2015-hemolysis",
+       "locator": "Abstract"
+      }
+     ]
+    },
+    {
+     "finding": {
+      "uz": "Irsiy sferotsitozga shubha: MCHC yuqori, MSCV < MCV, surtmada sferotsitlar",
+      "ru": "Подозрение на наследственный сфероцитоз: MCHC высокий, MSCV < MCV, сфероциты в мазке",
+      "en": "Suspected hereditary spherocytosis: high MCHC, MSCV < MCV, spherocytes on smear"
+     },
+     "meaning": {
+      "uz": "Oila tekshiruvi va maxsus testlar bilan tasdiqlanadi.",
+      "ru": "Подтверждают обследованием семьи и специальными тестами.",
+      "en": "Confirmed with family studies and specific tests."
+     },
+     "refs": [
+      {
+       "source_id": "wu-2021-hs-mscv",
+       "locator": "Laboratory tests for HS: Routine blood test"
+      },
+      {
+       "source_id": "medline-rbc-indices",
+       "locator": "What do the results mean?"
+      }
+     ]
+    }
+   ],
+   "cautions": [
+    {
+     "text": {
+      "uz": "Retikulotsitlar, LDG, bilirubin va gaptoglobin gemolizdan boshqa holatlarda ham o‘zgaradi (masalan, gaptoglobin jigar kasalligida past, chaqaloqlarda me’yorda past); autoimmun gemolitik anemiyaning bir qismida retikulotsitlar past bo‘ladi.",
+      "ru": "Ретикулоциты, ЛДГ, билирубин и гаптоглобин меняются и вне гемолиза (например, гаптоглобин низкий при болезни печени и в норме низкий у младенцев); в части случаев аутоиммунной гемолитической анемии ретикулоциты низкие.",
+      "en": "Reticulocytes, LDH, bilirubin and haptoglobin also change outside haemolysis (e.g., haptoglobin is low in liver disease and normally low in infants); in some autoimmune haemolytic anaemia reticulocytes are low."
+     },
+     "refs": [
+      {
+       "source_id": "barcellini-2015-hemolysis",
+       "locator": "Abstract"
+      },
+      {
+       "source_id": "medline-haptoglobin",
+       "locator": "What do the results mean?"
+      }
+     ]
+    }
+   ],
+   "review": {
+    "state": "pending",
+    "reviewer_id": null,
+    "reviewed_at": null,
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "Kitob bilimlari (Dolgov 2009, Sobirova 2006) NHLBI/MedlinePlus/JSST va ochiq maqolalar bilan solishtirildi",
+      "report": "scratchpad/books (agent tahlili)"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",

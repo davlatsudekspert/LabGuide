@@ -6,10 +6,17 @@ import '../learn/exam_question.dart';
 import '../settings/settings_controller.dart';
 
 /// Bo'lim faqat O'zbekiston foydalanuvchilariga: ilova tili o'zbekcha yoki
-/// qurilma mintaqasi (locale countryCode) — UZ.
-bool toifaAvailable(AppLanguage language, Iterable<Locale> deviceLocales) =>
-    language == AppLanguage.uz ||
-    deviceLocales.any((l) => l.countryCode?.toUpperCase() == 'UZ');
+/// qurilma mintaqasi (locale countryCode) — UZ. KDL malaka toifasi
+/// laboratoriya mutaxassisligi uchun — shifokor roliga ko'rsatilmaydi
+/// (egasi qarori, 2026-10-09).
+bool toifaAvailable(
+  AppLanguage language,
+  Iterable<Locale> deviceLocales, {
+  AppRole? role,
+}) =>
+    role != AppRole.doctor &&
+    (language == AppLanguage.uz ||
+        deviceLocales.any((l) => l.countryCode?.toUpperCase() == 'UZ'));
 
 /// Malaka toifasi: og'zaki savollar ro'yxati toifa bo'yicha beriladi.
 enum ToifaCategory {

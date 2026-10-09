@@ -9,6 +9,8 @@ import '../features/auth/ui/welcome_screen.dart';
 import '../features/content/ui/analyte_screen.dart';
 import '../features/content/ui/conditions_screens.dart';
 import '../features/content/ui/tests_screen.dart';
+import '../features/differential/diff_eyes_free_screens.dart';
+import '../features/daily/daily_screens.dart';
 import '../features/differential/differential_entry_points.dart';
 import '../features/differential/differential_quiz.dart';
 import '../features/differential/differential_screens.dart';
@@ -32,6 +34,7 @@ import '../features/profile/profile_screens.dart';
 import '../features/qc/qc_guides.dart';
 import '../features/qc/qc_guides_info.dart';
 import '../features/qc/qc_screens.dart';
+import '../features/reference/reference_screens.dart';
 import '../features/review/review_screens.dart';
 import '../features/settings/settings_controller.dart';
 import '../features/support/support_screens.dart';
@@ -326,6 +329,23 @@ GoRouter buildRouter(
                       GoRoute(
                         path: 'count',
                         builder: (context, state) => const DiffCounterScreen(),
+                        routes: [
+                          // Mikroskop rejimi: sozlamalar va to'liq ekranli
+                          // zonalar (pastki tablarsiz).
+                          GoRoute(
+                            path: 'eyes-free',
+                            builder: (context, state) =>
+                                const DiffEyesFreeSettingsScreen(),
+                            routes: [
+                              GoRoute(
+                                path: 'run',
+                                parentNavigatorKey: rootKey,
+                                builder: (context, state) =>
+                                    const DiffEyesFreeScreen(),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
                       GoRoute(
                         path: 'history',
@@ -567,6 +587,25 @@ GoRouter buildRouter(
                     path: 'quiz',
                     builder: (context, state) => const QuizScreen(),
                   ),
+                  // Jadvallar va algoritmlar (anemiya, sariqlik, eskirgan
+                  // usullar...).
+                  GoRoute(
+                    path: 'reference',
+                    builder: (context, state) => const RefListScreen(),
+                    routes: [
+                      GoRoute(
+                        path: ':id',
+                        builder: (context, state) => RefTopicScreen(
+                          topicId: state.pathParameters['id']!,
+                        ),
+                      ),
+                    ],
+                  ),
+                  // Kunlik 5 ta savol (bosh sahifa kartasi va eslatmadan).
+                  GoRoute(
+                    path: 'daily',
+                    builder: (context, state) => const DailyScreen(),
+                  ),
                   // Imtihon: yechish — to'liq ekran (tablar yashiringan).
                   GoRoute(
                     path: 'exam',
@@ -586,7 +625,8 @@ GoRouter buildRouter(
                     ],
                   ),
                   // Toifa imtihoniga tayyorgarlik — faqat O'zbekiston
-                  // foydalanuvchilariga (til uz yoki mintaqa UZ); boshqalar
+                  // foydalanuvchilariga (til uz yoki mintaqa UZ), shifokor
+                  // rolidan tashqari; boshqalar
                   // to'g'ridan-to'g'ri manzil bilan ham kira olmaydi.
                   GoRoute(
                     path: 'toifa',
@@ -594,6 +634,7 @@ GoRouter buildRouter(
                         toifaAvailable(
                           settings.language,
                           SchedulerBinding.instance.platformDispatcher.locales,
+                          role: settings.role,
                         )
                         ? null
                         : '/learn',

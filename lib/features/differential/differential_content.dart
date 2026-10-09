@@ -1117,7 +1117,7 @@ const diffFindings = <DiffFinding>[
 /// Manbalardagi kattalar uchun misol oraliqlari — "referens blankada"
 /// qoidasini ko'rsatish uchun: manbalar bir-biridan farq qiladi.
 class ExampleRange {
-  const ExampleRange(this.cell, this.who, this.medline);
+  const ExampleRange(this.cell, this.who, this.medline, this.classic);
   final LocalizedText cell;
 
   /// WHO 2003, Table 9.12 (kattalar), ulush × 100.
@@ -1125,6 +1125,10 @@ class ExampleRange {
 
   /// MedlinePlus ency 003657, "Normal results".
   final String medline;
+
+  /// MDH darsligi (Lyubina 1984, §50, jadval 6) — O'zbekiston
+  /// laboratoriyalari blankalarida hanuz uchraydigan klassik oraliq.
+  final LocalizedText classic;
 }
 
 const exampleRanges = <ExampleRange>[
@@ -1132,31 +1136,41 @@ const exampleRanges = <ExampleRange>[
     _T({'uz': 'Neytrofillar', 'ru': 'Нейтрофилы', 'en': 'Neutrophils'}),
     '55–65',
     '40–60',
+    _T({
+      'uz': '45–70 (segment yadroli)',
+      'ru': '45–70 (сегментоядерные)',
+      'en': '45–70 (segmented)',
+    }),
   ),
   ExampleRange(
     _T({'uz': 'Tayoqchalar', 'ru': 'Палочкоядерные', 'en': 'Bands'}),
     '—',
     '0–3',
+    _T({'uz': '1–6', 'ru': '1–6', 'en': '1–6'}),
   ),
   ExampleRange(
     _T({'uz': 'Limfotsitlar', 'ru': 'Лимфоциты', 'en': 'Lymphocytes'}),
     '25–35',
     '20–40',
+    _T({'uz': '18–40', 'ru': '18–40', 'en': '18–40'}),
   ),
   ExampleRange(
     _T({'uz': 'Monotsitlar', 'ru': 'Моноциты', 'en': 'Monocytes'}),
     '3–6',
     '2–8',
+    _T({'uz': '2–9', 'ru': '2–9', 'en': '2–9'}),
   ),
   ExampleRange(
     _T({'uz': 'Eozinofillar', 'ru': 'Эозинофилы', 'en': 'Eosinophils'}),
     '2–4',
     '1–4',
+    _T({'uz': '0–5', 'ru': '0–5', 'en': '0–5'}),
   ),
   ExampleRange(
     _T({'uz': 'Bazofillar', 'ru': 'Базофилы', 'en': 'Basophils'}),
     '0–1',
     '0,5–1',
+    _T({'uz': '0–1', 'ru': '0–1', 'en': '0–1'}),
   ),
 ];
 
@@ -1353,6 +1367,64 @@ const techniqueSections = <TechniqueSection>[
       CalcRef(DiffSources.gulati2013, 'Blood smear examination'),
       CalcRef(DiffSources.zhao2024, 'Methods'),
     ],
+  ),
+  // MDH darsligi (Lyubina 1984, §61) + JSST 2003 (9.13.3) — o'z so'zimiz
+  // bilan; kitob matni ko'chirilmagan.
+  TechniqueSection(
+    title: _T({
+      'uz': 'Surtma bo‘ylab yurish: chet va o‘rta',
+      'ru': 'Движение по мазку: края и середина',
+      'en': 'Moving along the film: edges and middle',
+    }),
+    items: [
+      _T({
+        'uz': 'Leykotsitlar surtmada bir tekis tarqalmaydi: yirikroq hujayralar (granulotsitlar, monotsitlar) chetlar va uchga, limfotsitlar o‘rtaga ko‘proq to‘planadi. Faqat o‘rtadan yoki faqat chetdan sanash formulani buzadi.',
+        'ru': 'Лейкоциты распределяются по мазку неравномерно: более крупные клетки (гранулоциты, моноциты) скапливаются у краёв и конца, лимфоциты — ближе к середине. Подсчёт только в середине или только по краю искажает формулу.',
+        'en': 'Leukocytes are not spread evenly: larger cells (granulocytes, monocytes) gather at the edges and tail, lymphocytes nearer the middle. Counting only the middle or only the edge distorts the differential.',
+      }),
+      _T({
+        'uz': 'MDH darsliklaridagi usul: chet va o‘rta qismlarni qamrab oluvchi zigzag (meandr) yo‘l bilan yoki surtmaning bir necha joyida chetdan o‘rtaga ko‘ndalang yuriladi; maydonlar takrorlanmaydi.',
+        'ru': 'Метод учебников СНГ: двигаться зигзагом (меандром), захватывая края и середину, или поперечными дорожками от края к середине в нескольких участках мазка; поля не повторять.',
+        'en': 'The former-USSR textbook method: move in a zigzag (meander) covering edges and middle, or in cross-wise tracks from edge to middle at several places; never repeat a field.',
+      }),
+      _T({
+        'uz': 'MDH darsliklarida odatda 200 leykotsit sanalib, har tur soni 2 ga bo‘linadi va foiz olinadi; JSST qo‘llanmasi 100 hujayra sanaydi. Qaysi biri — laboratoriyangiz SOP’i belgilaydi.',
+        'ru': 'В учебниках СНГ обычно считают 200 лейкоцитов и делят число каждого типа на 2, получая процент; руководство ВОЗ считает 100 клеток. Что именно — определяет СОП вашей лаборатории.',
+        'en': 'Former-USSR textbooks usually count 200 leukocytes and halve each number to get a percentage; the WHO manual counts 100 cells. Your laboratory SOP decides which.',
+      }),
+    ],
+    refs: [lyubinaCount, whoTally],
+  ),
+  TechniqueSection(
+    numbered: true,
+    title: _T({
+      'uz': 'Hisoblagich bo‘lmasa: qog‘oz jadval',
+      'ru': 'Без счётчика: бумажная таблица',
+      'en': 'No counter: a paper tally table',
+    }),
+    items: [
+      _T({
+        'uz': 'Qog‘ozga ustunlar chizing: N, E, B, L, M (tayoqcha va segment alohida yozilsa — ularga alohida ustun) va 10 qator.',
+        'ru': 'Начертите на бумаге столбцы N, E, B, L, M (если палочко- и сегментоядерные пишутся отдельно — отдельные столбцы) и 10 строк.',
+        'en': 'Draw columns N, E, B, L, M on paper (separate columns for bands and segmented cells if your report lists them) and 10 rows.',
+      }),
+      _T({
+        'uz': 'Har bir hujayra uchun tegishli ustunga bitta chiziqcha qo‘ying; qatorda 10 ta chiziqcha bo‘lgach, keyingi qatorga o‘ting.',
+        'ru': 'За каждую клетку ставьте чёрточку в нужный столбец; когда в строке 10 чёрточек — переходите на следующую.',
+        'en': 'Put one stroke in the right column for each cell; after 10 strokes in a row move to the next row.',
+      }),
+      _T({
+        'uz': '10 qator to‘lsa — 100 hujayra sanaldi: har ustun yig‘indisi foizga teng (200 sanalsa — 20 qator va yig‘indini 2 ga bo‘ling).',
+        'ru': 'Заполнены 10 строк — подсчитано 100 клеток: сумма каждого столбца равна проценту (при 200 — 20 строк и сумму делят на 2).',
+        'en': 'Ten rows filled means 100 cells: each column total equals the percentage (for 200 cells use 20 rows and halve the totals).',
+      }),
+      _T({
+        'uz': 'SI tizimida ulush o‘nli kasr bilan yoziladi: 59 → 0,59; mutlaq son = ulush × leykotsitlar soni.',
+        'ru': 'В системе СИ долю пишут десятичной дробью: 59 → 0,59; абсолютное число = доля × число лейкоцитов.',
+        'en': 'In SI units write the fraction as a decimal: 59 → 0.59; absolute count = fraction × WBC.',
+      }),
+    ],
+    refs: [whoTally, lyubinaCount],
   ),
   TechniqueSection(
     title: _T({

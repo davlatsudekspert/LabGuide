@@ -663,34 +663,12 @@ class CalcSourceTile extends StatelessWidget {
     final p = LgPalette.of(context);
     final text = Theme.of(context).textTheme;
     final url = ref.source.url;
-    final body = Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          '[$index] ${ref.source.citation}',
-          style: url == null
-              ? text.titleSmall
-              : text.titleSmall!.copyWith(
-                  color: p.brand,
-                  decoration: TextDecoration.underline,
-                  decorationColor: p.brand.withValues(alpha: 0.5),
-                ),
-        ),
-        if (ref.locator.isNotEmpty) Text(ref.locator, style: text.bodySmall),
-      ],
-    );
-    // Havolasiz kitob — faqat bibliografik yozuv (bosilmaydi).
-    if (url == null) {
-      return Padding(
-        padding: const EdgeInsets.symmetric(vertical: 10),
-        child: body,
-      );
-    }
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4),
       child: InkWell(
-        onTap: () => openExternalLink(context, url),
-        onLongPress: () => copyLink(context, url),
+        // Bosma kitob — havolasiz, faqat bibliografiya.
+        onTap: url == null ? null : () => openExternalLink(context, url),
+        onLongPress: url == null ? null : () => copyLink(context, url),
         borderRadius: BorderRadius.circular(8),
         child: ConstrainedBox(
           constraints: const BoxConstraints(minHeight: kMinTap),
@@ -699,9 +677,30 @@ class CalcSourceTile extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Expanded(child: body),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        '[$index] ${ref.source.citation}',
+                        style: url == null
+                            ? text.titleSmall
+                            : text.titleSmall!.copyWith(
+                                color: p.brand,
+                                decoration: TextDecoration.underline,
+                                decorationColor: p.brand.withValues(alpha: 0.5),
+                              ),
+                      ),
+                      if (ref.locator.isNotEmpty)
+                        Text(ref.locator, style: text.bodySmall),
+                    ],
+                  ),
+                ),
                 const SizedBox(width: 6),
-                Icon(Icons.open_in_new_rounded, size: 18, color: p.brand),
+                if (url != null)
+                  Icon(Icons.open_in_new_rounded, size: 18, color: p.brand)
+                else
+                  Icon(Icons.menu_book_outlined, size: 18, color: p.sub),
               ],
             ),
           ),

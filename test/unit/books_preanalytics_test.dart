@@ -43,12 +43,19 @@ void main() {
   final pack = _pack();
 
   group('kitoblar — manba va katalog', () {
-    test('har kitob: darslik, faqat iqtibos, katalog yozuvi, fayl yo‘q', () {
-      for (final id in _books) {
+    test('har kitob: faqat iqtibos manbasi + alohida katalog yozuvi', () {
+      const catalog = {
+        'book-aripova-2007': 'lib-book-aripova-2007',
+        'book-selivanov-2005': 'lib-book-selivanov-2005',
+        'book-sobirova-2006': 'lib-book-sobirova-2006',
+        'book-lyubina-1984': 'lib-book-lyubina-1984',
+      };
+      for (final MapEntry(key: id, value: itemId) in catalog.entries) {
         final s = pack.source(id)!;
-        expect(s.kind, isNot('web'), reason: id);
-        expect(s.reuseRights, 'citation_only', reason: id);
-        final item = pack.libraryItem(s.libraryItemId!)!;
+        expect(s.kind, 'book', reason: id);
+        expect(s.isCitationOnlyBook, isTrue, reason: id);
+        expect(s.url, isNull, reason: id);
+        final item = pack.libraryItem(itemId)!;
         expect(item.file, isNull, reason: id);
         expect(item.filePack, isNull, reason: id);
         expect(item.rights.allowsSharedPack, isFalse, reason: id);
@@ -122,7 +129,11 @@ void main() {
       );
       expect(says('urine-chemistry', 'who-dil-lab-99-1', 'pH rises'), isTrue);
       expect(
-        says('urine-chemistry', 'who-basic-lab-manual-2003', 'within 1 hour'),
+        says(
+          'urine-chemistry',
+          'who-basic-lab-techniques-2003',
+          'within 1 hour',
+        ),
         isTrue,
       );
       expect(

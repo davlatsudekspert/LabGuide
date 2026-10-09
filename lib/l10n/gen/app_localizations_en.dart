@@ -1430,6 +1430,282 @@ class AppLocalizationsEn extends AppLocalizations {
   String get diffDecrementAction => 'Subtract one';
 
   @override
+  String get diffEfEntry => 'Microscope mode: eyes-free counting';
+
+  @override
+  String get diffEfEntrySub =>
+      'Large screen zones; a sound and vibration on every tap';
+
+  @override
+  String get diffEfTitle => 'Eyes-free counting';
+
+  @override
+  String get diffEfExit => 'Exit';
+
+  @override
+  String get diffEfUndoZone => 'Undo';
+
+  @override
+  String get diffEfUndoHint => 'or tap with two fingers';
+
+  @override
+  String diffEfZoneSemantics(String cell, int count, int total, int target) {
+    return '$cell: $count. Total $total / $target.';
+  }
+
+  @override
+  String diffEfAnnounce(String cell, int count, int total) {
+    return '$cell $count. Total $total';
+  }
+
+  @override
+  String diffEfUndone(String cell, int total) {
+    return 'Undone: $cell. Total $total';
+  }
+
+  @override
+  String get diffEfNothingToUndo => 'Nothing to undo';
+
+  @override
+  String get diffEfShowResult => 'View result';
+
+  @override
+  String get diffEfVoiceOn => 'Turn on voice commands';
+
+  @override
+  String get diffEfVoiceOff => 'Stop voice commands';
+
+  @override
+  String get diffEfSettingsTitle => 'Microscope mode';
+
+  @override
+  String get diffEfSettingsSub =>
+      'Count without looking away from the microscope';
+
+  @override
+  String get diffEfStart => 'Start counting';
+
+  @override
+  String get diffEfHowTitle => 'How it works';
+
+  @override
+  String get diffEfHowBody =>
+      'Put the phone on the bench and tap the zones without looking away from the microscope. Every tap gives a short sound and a vibration pattern specific to the cell type; every 10th cell — a two-tone signal and a long vibration; at the target (100 or 200) — a three-note signal and counting stops. The count is shared with the regular counter.';
+
+  @override
+  String get diffEfZonesTitle => 'Zones';
+
+  @override
+  String get diffEfHandLabel => 'Which hand do you tap with';
+
+  @override
+  String get diffEfHandRight => 'Right hand';
+
+  @override
+  String get diffEfHandLeft => 'Left hand';
+
+  @override
+  String get diffEfHandHint =>
+      'Zone 1 is closest to your thumb — in the bottom corner.';
+
+  @override
+  String get diffEfOtherZone => '“Other (blasts…)” zone';
+
+  @override
+  String get diffEfOtherZoneSub => 'Turn off for 6 larger zones';
+
+  @override
+  String get diffEfUndoSwitch => 'Large “Undo” zone at the top';
+
+  @override
+  String get diffEfUndoSwitchSub =>
+      'A two-finger tap always undoes the last tap';
+
+  @override
+  String get diffEfOrderTitle => 'Zone order';
+
+  @override
+  String get diffEfOrderHint =>
+      '1 is the zone closest to your thumb. Put the most frequent cells first.';
+
+  @override
+  String diffEfMoveUp(String cell) {
+    return 'Move up: $cell';
+  }
+
+  @override
+  String diffEfMoveDown(String cell) {
+    return 'Move down: $cell';
+  }
+
+  @override
+  String get diffEfSignalsTitle => 'Signals';
+
+  @override
+  String get diffEfSound => 'Sound';
+
+  @override
+  String get diffEfSoundSub => 'Volume follows the phone’s volume buttons';
+
+  @override
+  String get diffEfHaptics => 'Vibration';
+
+  @override
+  String get diffEfHapticsSub =>
+      'Not felt if vibration is turned off in phone settings';
+
+  @override
+  String get diffEfPatternsTitle => 'Vibration patterns';
+
+  @override
+  String get diffEfPatternsHint =>
+      'Tap a row to try it. How it feels depends on the phone model.';
+
+  @override
+  String diffEfPattern(int count, String strength) {
+    return '$count × $strength';
+  }
+
+  @override
+  String get diffEfPulseLight => 'light';
+
+  @override
+  String get diffEfPulseMedium => 'medium';
+
+  @override
+  String get diffEfPulseHeavy => 'strong';
+
+  @override
+  String get diffEfPatternTen => 'Every 10th cell';
+
+  @override
+  String get diffEfPatternTenDesc => '+ long vibration';
+
+  @override
+  String get diffEfPatternDone => 'Target reached';
+
+  @override
+  String get diffEfPatternDoneDesc => '2 × strong + long';
+
+  @override
+  String get diffEfPatternUndoDesc => 'strong + short';
+
+  @override
+  String get diffEfScreenTitle => 'Screen';
+
+  @override
+  String get diffEfAwake => 'Keep screen on';
+
+  @override
+  String get diffEfAwakeSub =>
+      'The screen stays on while counting — uses more battery';
+
+  @override
+  String get diffVoiceTitle => 'Voice counting';
+
+  @override
+  String get diffVoiceExperimental => 'Experimental';
+
+  @override
+  String get diffVoiceSwitch => 'Voice commands';
+
+  @override
+  String get diffVoiceSwitchSub =>
+      'Say a cell name — +1; “undo” — undo the last one';
+
+  @override
+  String get diffVoiceLangLabel => 'Command language';
+
+  @override
+  String get diffVoiceLangAuto => 'Auto';
+
+  @override
+  String get diffVoiceLangUz => 'Uzbek';
+
+  @override
+  String get diffVoiceLangRu => 'Russian';
+
+  @override
+  String get diffVoiceLangEn => 'English';
+
+  @override
+  String get diffVoiceLangHint =>
+      'Auto: if the app language isn’t available on the device — Russian, then English. Uzbek is not in Apple’s dictation language list; on Android it depends on the device.';
+
+  @override
+  String get diffVoiceWordsTitle => 'Words to say';
+
+  @override
+  String get diffVoicePrivacyTitle => 'Where your voice is processed';
+
+  @override
+  String get diffVoicePrivacyIos =>
+      'iOS: on-device recognition is required. If it isn’t available for the language, the mode won’t work — audio is not sent to a server. LabGuide does not store or send your voice anywhere.';
+
+  @override
+  String get diffVoicePrivacyAndroid =>
+      'Android: works only with speech recognition on the phone itself (offline) — Android 12+ with on-device recognition is required. Otherwise the mode stays off and audio is not sent to a server. LabGuide does not store or send your voice anywhere.';
+
+  @override
+  String get diffVoiceNoNames =>
+      'Say only cell names — never patient names or other details.';
+
+  @override
+  String get diffVoiceAccuracy =>
+      'Accuracy depends on noise, pronunciation and the device. Listen for the signal after each command; say “undo” if it’s wrong. Check the result before saving.';
+
+  @override
+  String get diffVoiceConsentTitle => 'Turn on voice commands?';
+
+  @override
+  String get diffVoiceConsentAction => 'I understand, turn on';
+
+  @override
+  String get diffVoiceStarting => 'Starting microphone…';
+
+  @override
+  String diffVoiceListening(String lang) {
+    return 'Listening · $lang';
+  }
+
+  @override
+  String diffVoiceFallback(String lang) {
+    return 'No speech recognition for the app language on this device — say the words in $lang.';
+  }
+
+  @override
+  String diffVoiceHeard(String text) {
+    return 'Heard: “$text”';
+  }
+
+  @override
+  String diffVoiceNotUnderstood(String text) {
+    return 'No command found: “$text”';
+  }
+
+  @override
+  String get diffVoicePermissionDenied =>
+      'Microphone or speech recognition permission was not granted, so voice commands don’t work. You can allow it for LabGuide in phone settings. Counting with zones keeps working.';
+
+  @override
+  String get diffVoiceUnavailable =>
+      'Speech recognition isn’t available on this device. Counting with zones keeps working.';
+
+  @override
+  String get diffVoiceLanguageUnavailable =>
+      'Speech recognition isn’t available for the chosen language on this device. Choose another language in settings.';
+
+  @override
+  String get diffVoiceOnDeviceUnavailable =>
+      'On-device (offline) speech recognition isn’t available. Voice commands are off so audio is not sent to a server.';
+
+  @override
+  String get diffVoiceFailed => 'Speech recognition stopped. Please try again.';
+
+  @override
+  String get diffVoiceRetry => 'Try again';
+
+  @override
   String get diffHistoryEmptyTitle => 'No saved results yet';
 
   @override
@@ -1470,13 +1746,45 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get diffRangesBody =>
-      'Even two open sources give different example adult ranges (%). Reports use only the reference on your laboratory’s form; children’s ranges depend on age.';
+      'Open sources and a former-USSR textbook give different example adult ranges (%). Reports use only the reference on your laboratory’s form; children’s ranges depend on age.';
 
   @override
   String get diffRangesWho => 'WHO 2003';
 
   @override
   String get diffRangesMedline => 'MedlinePlus';
+
+  @override
+  String get diffRangesClassic => 'Former-USSR textbook (1984)';
+
+  @override
+  String get diffRangesClassicNote =>
+      'The classic (former-USSR textbook) ranges are shown for comparison only: many local report forms still use them, but sources differ. Your laboratory’s report form is what counts.';
+
+  @override
+  String get refTitle => 'Tables and algorithms';
+
+  @override
+  String get refSub =>
+      'Anaemia, jaundice, liver patterns, parasites, obsolete methods';
+
+  @override
+  String get refIntro =>
+      'Short tables based on textbooks and official sources. Sources are listed under each section.';
+
+  @override
+  String get refDraftNote =>
+      'Draft: not yet expert-reviewed. Books are cited as sources only — no text or figures were copied. The conclusion is the doctor’s.';
+
+  @override
+  String get refOpenSub => 'Table and algorithm';
+
+  @override
+  String get refNotFound => 'This table was not found.';
+
+  @override
+  String get analyteReuseCitationOnly =>
+      'Book: cited as a source only, no text copied';
 
   @override
   String get diffQuizPrompt => 'Which cell is this?';
@@ -2783,7 +3091,30 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get instIllustration =>
-      'Schematic illustration (drawn by LabGuide) — not the actual appearance of this model.';
+      'Schematic illustration (drawn by LabGuide) — decorative, not the actual appearance of any instrument.';
+
+  @override
+  String get instImageMissing => 'Model image not available yet';
+
+  @override
+  String get instImageMissingSub =>
+      'No reusable image of this exact model was found. See its appearance on the manufacturer’s page.';
+
+  @override
+  String get instMakerSource => 'Manufacturer source';
+
+  @override
+  String get instImageTapToZoom => 'Tap the photo to enlarge';
+
+  @override
+  String instImageRightsChecked(String date) {
+    return 'Rights checked: $date';
+  }
+
+  @override
+  String instImageSemantics(String model) {
+    return 'Photo of $model';
+  }
 
   @override
   String get instSources => 'Sources';
@@ -4408,6 +4739,188 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get quizOtherTopic => 'Another topic';
+
+  @override
+  String get dailyTitle => 'Daily questions';
+
+  @override
+  String get dailyCardStart => 'Today’s 5 questions';
+
+  @override
+  String get dailyCardStartSub =>
+      '2–3 minutes. New questions every day, with an explanation and source after each answer.';
+
+  @override
+  String dailyCardProgress(int count, int total) {
+    return '$count of $total answered';
+  }
+
+  @override
+  String dailyCardDone(int correct, int total) {
+    return 'Done for today: $correct of $total correct';
+  }
+
+  @override
+  String get dailyCardDoneSub => 'Five new questions tomorrow.';
+
+  @override
+  String get dailyStart => 'Start';
+
+  @override
+  String get dailyContinue => 'Continue';
+
+  @override
+  String get dailyShowResult => 'See result';
+
+  @override
+  String dailyStreakDays(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count days in a row',
+      one: '$count day in a row',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get dailyStreakTitle => 'Streak';
+
+  @override
+  String get dailyStreakCurrent => 'Current streak';
+
+  @override
+  String get dailyStreakBest => 'Longest streak';
+
+  @override
+  String dailyDaysShort(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count days',
+      one: '$count day',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get dailyFreezeAvailable => 'This week’s freeze is available';
+
+  @override
+  String get dailyFreezeUsed => 'This week’s freeze is used';
+
+  @override
+  String get dailyFreezeRule =>
+      'Miss one day and your streak survives — once a week (a freeze). The frozen day doesn’t count towards the streak; miss two days in a row and it starts over.';
+
+  @override
+  String get dailyFreezeSaved =>
+      'You missed yesterday — a freeze kept your streak.';
+
+  @override
+  String get dailyStreakStart => 'Answer today’s questions to start a streak.';
+
+  @override
+  String get dailyKeepStreak => 'Answer today’s questions to keep your streak.';
+
+  @override
+  String get dailyEmpty => 'No questions for today';
+
+  @override
+  String get dailyReviewTitle => 'Today’s questions';
+
+  @override
+  String get dailySourceToifa =>
+      'Questions come from the official certification list — only those whose key passed the LabGuide check.';
+
+  @override
+  String get dailyReminderTitle => 'LabGuide: daily questions';
+
+  @override
+  String get dailyReminderBody =>
+      'Today’s 5 questions are ready — 2–3 minutes.';
+
+  @override
+  String get dailyReminderChannel => 'Daily reminder';
+
+  @override
+  String get dailyReminderSetting => 'Daily reminder';
+
+  @override
+  String dailyReminderAt(String time) {
+    return 'Every day at $time';
+  }
+
+  @override
+  String get dailyReminderOff => 'Off';
+
+  @override
+  String get dailyReminderTime => 'Reminder time';
+
+  @override
+  String get dailyOfferTitle => 'Want a daily reminder?';
+
+  @override
+  String get dailyOfferBody =>
+      'One notification at the time you choose. No reminder on days you’ve already answered. Turn it off any time.';
+
+  @override
+  String get dailyOfferYes => 'Turn on reminder';
+
+  @override
+  String get dailyOfferNo => 'No thanks';
+
+  @override
+  String get dailyReminderDenied =>
+      'Notification permission wasn’t granted, so the reminder stays off. Allow notifications for LabGuide in your phone settings and try again.';
+
+  @override
+  String get dailyReminderUnavailable =>
+      'Couldn’t turn on reminders on this device.';
+
+  @override
+  String dailyReminderOnSnack(String time) {
+    return 'Reminder on: every day at $time';
+  }
+
+  @override
+  String get dailyReminderNote =>
+      'The reminder is scheduled on this device only (no server). Your phone may delay it by a few minutes to save battery. If you don’t open the app for 7 days, reminders stop.';
+
+  @override
+  String get shareResult => 'Share result';
+
+  @override
+  String get shareSheetTitle => 'Result card';
+
+  @override
+  String get shareSheetBody => 'The image has no name or other personal data.';
+
+  @override
+  String get shareFailed => 'Couldn’t open the share sheet. Please try again.';
+
+  @override
+  String get shareKindDaily => 'Daily questions';
+
+  @override
+  String get shareKindExam => 'Practice exam';
+
+  @override
+  String get shareKindToifa => 'Category test practice';
+
+  @override
+  String get shareCorrectCaption => 'correct answers';
+
+  @override
+  String get shareFooter => 'Lab reference and practice';
+
+  @override
+  String get shareToifaNote => 'Not official — LabGuide practice result';
+
+  @override
+  String shareText(String kind, int correct, int total, int percent) {
+    return 'LabGuide · $kind: $correct/$total ($percent%)';
+  }
 
   @override
   String get quizTopicMistakes => 'Review my mistakes';

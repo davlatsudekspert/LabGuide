@@ -8,6 +8,8 @@ import '../core/entitlements/entitlement_service.dart';
 import '../core/storage/kv_store.dart';
 import '../features/auth/auth_controller.dart';
 import '../features/content/content_controller.dart';
+import '../features/daily/daily_controller.dart';
+import '../features/daily/daily_reminder.dart';
 import '../features/differential/differential_controller.dart';
 import '../features/instruments/instruments_controller.dart';
 import '../features/learn/exam_controller.dart';
@@ -18,6 +20,7 @@ import '../features/library/reading_controller.dart';
 import '../features/packs/packs_controller.dart';
 import '../features/qc/qc_controller.dart';
 import '../features/settings/settings_controller.dart';
+import '../features/share/result_share.dart';
 import '../features/toifa/toifa_controller.dart';
 
 /// Build va siyosat sozlamalari. Biznes qarorlari (masalan, qurilmalar
@@ -69,6 +72,9 @@ class AppServices {
     required this.entitlements,
     required this.toifa,
     required this.differential,
+    required this.daily,
+    required this.reminders,
+    required this.sharer,
   });
 
   final AppConfig config;
@@ -102,11 +108,21 @@ class AppServices {
 
   /// Pro huquqlari (build rejimi, server, imzolangan oflayn kesh).
   final EntitlementService entitlements;
+
   /// Toifa imtihoniga tayyorgarlik (faqat O'zbekiston foydalanuvchilariga).
   final ToifaController toifa;
 
   /// Leykoformula hisoblagichi va natijalar tarixi (faqat qurilmada).
   final DifferentialController differential;
+
+  /// Kunlik 5 ta savol va ketma-ketlik (faqat qurilmada).
+  final DailyController daily;
+
+  /// Kunlik lokal eslatma (standart o'chiq).
+  final ReminderController reminders;
+
+  /// Natija kartochkasini tizim oynasi orqali ulashish.
+  final ResultSharer sharer;
 
   /// Server vakolatlari va o'qilmagan javoblarni yangilash. Rol hali
   /// tanlanmagan bo'lsa profil yozilmaydi (taxminiy rol sanalmasin).
@@ -156,6 +172,8 @@ class AppServices {
     entitlements.resetInMemory();
     toifa.resetInMemory();
     differential.resetInMemory();
+    daily.resetInMemory();
+    await reminders.reset();
     await packs.removeAll();
     settings.resetToDefaults(systemLocales);
   }

@@ -445,12 +445,17 @@ ham qo‘shilib ketgan edi. Endi:
 - **Qayta kiritmaslik:** “Mening apparatim” (nom, seriya, qo‘llanma versiyasi) va analit
   bo‘yicha oxirgi reagent tanlovi qurilmada saqlanadi; yozuv yaratilganda katalog modeli
   avtomatik saqlanadi.
-- **Rasm:** har yo‘nalish uchun LabGuide’ning o‘z sxematik chizmasi (`tool/illustrations/*.svg`
-  → PNG, `render.cjs`), qurilmada “LabGuide” yozuvi; kartada “sxematik rasm — aniq model
-  ko‘rinishi emas” deb yoziladi. Chizmaga ishlab chiqaruvchi nomi yoki logosi qo‘yilmaydi
-  (rasm rasmiy apparat ko‘rinishi deb tushunilmasin). Egasining talabi bilan Wikimedia’dagi
-  xira cobas u 411 fotosi olib tashlandi. Model fotosi faqat erkin litsenziyali va sifatli
-  bo‘lsa qo‘shiladi.
+- **Rasm (D-36a, 2026-10-09 yangilandi):** model kartasida faqat **aynan shu modelning**
+  fotosi — ishlab chiqaruvchidan yozma ruxsat bilan yoki modeli aniq yozilgan erkin
+  litsenziyali manbadan; saytda ochiq turishi ruxsat emas (Mindray, Roche, Abbott
+  Terms of Use tijoriy/qayta foydalanishni yozma ruxsatsiz taqiqlaydi). Metadata majburiy:
+  manufacturer, model, source_url, license/rights, checked_at, author; validator boshqa
+  modelning rasmini rad etadi. Ikki o‘lcham (≈480 / ≤1600 px), maydonda `BoxFit.contain`,
+  bosilganda to‘liq ekran (InteractiveViewer). Rasm yo‘q bo‘lsa — neytral belgi va
+  “Model rasmi hozircha mavjud emas” + “Ishlab chiqaruvchi manbasi” havolasi. Yo‘nalish
+  sxematik chizmalari (`tool/illustrations/*.svg`) endi faqat yo‘nalish sahifasida, “sxematik”
+  izohi bilan. Hozir 26 modeldan hech birida ruxsatli rasm yo‘q; ruxsat so‘rash ro‘yxati —
+  `docs/INSTRUMENT_IMAGES.md`. Wikimedia’dagi cobas u 411 fotosi xira va kesilgan — qo‘yilmaydi.
 - **Foydalanuvchi sifatida tekshiruv:** `tool/screenshots/walkthrough_test.dart` — mutaxassis
   yo‘li 23 qadam (uz), ru/qorong‘i/katta shrift, en; har qadam rasmi ko‘rib chiqildi. Topilgan
   va tuzatilgan: qirqilgan qidiruv matnlari, keyingi sahifaga o‘tib qolgan “Saqlandi”
@@ -510,3 +515,13 @@ ranglari (yashil palitra) o‘zgarmadi — logo faqat belgi sifatida.
   (rasmdagi yozuv takrorlanmaydi). Welcome — 120 pt belgi (molekula rasmi o'rniga); kirish
   ekrani — 88 pt (ekran balandligi ≥ 700 pt bo'lsa; past ekranda joy forma/klaviaturaga).
   Sun'iy kutish yo'q. Palitra o'zgarmadi; splash foni kunduzgi #F3F3EC, tungi #0D1919.
+
+## D-40. Toifa — shifokorga emas; eslatma 20:00; Android ovozi faqat oflayn (2026-10-09)
+- Egasi: "Toifa shifokorlarga kk emas". KDL malaka toifasi bo'limi (bosh sahifa, O'rganish,
+  `/learn/toifa` manzili) va kunlik savolning toifa manbasi shifokor roliga ko'rsatilmaydi;
+  shifokor kunlik savolni kontent paketi mashq savollaridan oladi. Laborant, talaba, ustoz —
+  avvalgidek (til uz yoki mintaqa UZ).
+- Kunlik eslatmaning standart vaqti 20:00 (egasi tasdiqladi).
+- Leykoformula ovozli buyruqlari Android'da faqat qurilmada oflayn tanish bo'lsa yoqiladi
+  (Android 12+, `isOnDeviceRecognitionAvailable`); aks holda "oflayn tanish yo'q" xabari.
+  Ovoz hech qachon tizim xizmati serveriga ketmaydi — Play Data safety'da audio yo'q.

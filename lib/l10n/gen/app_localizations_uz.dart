@@ -1414,6 +1414,281 @@ class AppLocalizationsUz extends AppLocalizations {
   String get diffDecrementAction => 'Bittaga kamaytirish';
 
   @override
+  String get diffEfEntry => 'Mikroskop rejimi: ko‘rmasdan sanash';
+
+  @override
+  String get diffEfEntrySub =>
+      'Ekran katta zonalarga bo‘linadi; har bosishda tovush va tebranish';
+
+  @override
+  String get diffEfTitle => 'Ko‘rmasdan sanash';
+
+  @override
+  String get diffEfExit => 'Chiqish';
+
+  @override
+  String get diffEfUndoZone => 'Bekor qilish';
+
+  @override
+  String get diffEfUndoHint => 'yoki ikki barmoq bilan bosing';
+
+  @override
+  String diffEfZoneSemantics(String cell, int count, int total, int target) {
+    return '$cell: $count. Jami $total / $target.';
+  }
+
+  @override
+  String diffEfAnnounce(String cell, int count, int total) {
+    return '$cell $count. Jami $total';
+  }
+
+  @override
+  String diffEfUndone(String cell, int total) {
+    return 'Bekor qilindi: $cell. Jami $total';
+  }
+
+  @override
+  String get diffEfNothingToUndo => 'Bekor qiladigan bosish yo‘q';
+
+  @override
+  String get diffEfShowResult => 'Natijani ko‘rish';
+
+  @override
+  String get diffEfVoiceOn => 'Ovozli buyruqlarni yoqish';
+
+  @override
+  String get diffEfVoiceOff => 'Ovozli buyruqlarni to‘xtatish';
+
+  @override
+  String get diffEfSettingsTitle => 'Mikroskop rejimi';
+
+  @override
+  String get diffEfSettingsSub => 'Mikroskopdan ko‘z uzmasdan sanash uchun';
+
+  @override
+  String get diffEfStart => 'Sanashni boshlash';
+
+  @override
+  String get diffEfHowTitle => 'Qanday ishlaydi';
+
+  @override
+  String get diffEfHowBody =>
+      'Telefonni stolga qo‘ying va mikroskopdan ko‘z uzmasdan zonalarni bosing. Har bosishda qisqa tovush va hujayra turiga xos tebranish; har 10-hujayrada — ikki tonli signal va uzun tebranish; maqsadga (100 yoki 200) yetganda — uch notali signal va sanash to‘xtaydi. Sanash oddiy hisoblagich bilan umumiy.';
+
+  @override
+  String get diffEfZonesTitle => 'Zonalar';
+
+  @override
+  String get diffEfHandLabel => 'Qaysi qo‘l bilan bosasiz';
+
+  @override
+  String get diffEfHandRight => 'O‘ng qo‘l';
+
+  @override
+  String get diffEfHandLeft => 'Chap qo‘l';
+
+  @override
+  String get diffEfHandHint =>
+      '1-zona bosh barmoqqa eng yaqin — pastki burchakda.';
+
+  @override
+  String get diffEfOtherZone => '“Boshqa (blast…)” zonasi';
+
+  @override
+  String get diffEfOtherZoneSub => 'O‘chirilsa — 6 ta zona, har biri kattaroq';
+
+  @override
+  String get diffEfUndoSwitch => 'Tepada katta “Bekor” zonasi';
+
+  @override
+  String get diffEfUndoSwitchSub =>
+      'Ikki barmoq bilan bosish har doim oxirgi bosishni bekor qiladi';
+
+  @override
+  String get diffEfOrderTitle => 'Zonalar tartibi';
+
+  @override
+  String get diffEfOrderHint =>
+      '1 — bosh barmoqqa eng yaqin zona. Ko‘p uchraydigan hujayralarni yuqoriga qo‘ying.';
+
+  @override
+  String diffEfMoveUp(String cell) {
+    return 'Yuqoriga: $cell';
+  }
+
+  @override
+  String diffEfMoveDown(String cell) {
+    return 'Pastga: $cell';
+  }
+
+  @override
+  String get diffEfSignalsTitle => 'Signallar';
+
+  @override
+  String get diffEfSound => 'Tovush';
+
+  @override
+  String get diffEfSoundSub => 'Balandligi telefon ovozi bilan boshqariladi';
+
+  @override
+  String get diffEfHaptics => 'Tebranish';
+
+  @override
+  String get diffEfHapticsSub =>
+      'Telefon sozlamalarida tebranish o‘chirilgan bo‘lsa sezilmaydi';
+
+  @override
+  String get diffEfPatternsTitle => 'Tebranish naqshlari';
+
+  @override
+  String get diffEfPatternsHint =>
+      'Qatorni bosib sinab ko‘ring. Sezilishi telefon modeliga bog‘liq.';
+
+  @override
+  String diffEfPattern(int count, String strength) {
+    return '$count × $strength';
+  }
+
+  @override
+  String get diffEfPulseLight => 'yengil';
+
+  @override
+  String get diffEfPulseMedium => 'o‘rtacha';
+
+  @override
+  String get diffEfPulseHeavy => 'kuchli';
+
+  @override
+  String get diffEfPatternTen => 'Har 10-hujayra';
+
+  @override
+  String get diffEfPatternTenDesc => '+ uzun tebranish';
+
+  @override
+  String get diffEfPatternDone => 'Maqsadga yetildi';
+
+  @override
+  String get diffEfPatternDoneDesc => '2 × kuchli + uzun';
+
+  @override
+  String get diffEfPatternUndoDesc => 'kuchli + qisqa';
+
+  @override
+  String get diffEfScreenTitle => 'Ekran';
+
+  @override
+  String get diffEfAwake => 'Ekranni yoqiq ushlash';
+
+  @override
+  String get diffEfAwakeSub =>
+      'Sanash paytida ekran o‘chmaydi — batareya tezroq sarflanadi';
+
+  @override
+  String get diffVoiceTitle => 'Ovoz bilan sanash';
+
+  @override
+  String get diffVoiceExperimental => 'Eksperimental';
+
+  @override
+  String get diffVoiceSwitch => 'Ovozli buyruqlar';
+
+  @override
+  String get diffVoiceSwitchSub =>
+      'Hujayra nomini ayting — +1; “bekor” — oxirgi bosishni bekor qiladi';
+
+  @override
+  String get diffVoiceLangLabel => 'Buyruqlar tili';
+
+  @override
+  String get diffVoiceLangAuto => 'Avtomatik';
+
+  @override
+  String get diffVoiceLangUz => 'O‘zbekcha';
+
+  @override
+  String get diffVoiceLangRu => 'Ruscha';
+
+  @override
+  String get diffVoiceLangEn => 'Inglizcha';
+
+  @override
+  String get diffVoiceLangHint =>
+      'Avtomatik: ilova tili qurilmada mavjud bo‘lmasa — rus, keyin ingliz tili. O‘zbek tili Apple diktovka tillari ro‘yxatida yo‘q; Android’da qurilmaga bog‘liq.';
+
+  @override
+  String get diffVoiceWordsTitle => 'Qaysi so‘zlarni aytish kerak';
+
+  @override
+  String get diffVoicePrivacyTitle => 'Ovoz qayerda qayta ishlanadi';
+
+  @override
+  String get diffVoicePrivacyIos =>
+      'iOS: nutq faqat qurilmada tanilishi talab qilinadi. Bu til uchun qurilmada tanish bo‘lmasa, rejim ishlamaydi — ovoz serverga yuborilmaydi. LabGuide ovozni saqlamaydi va hech qayerga yubormaydi.';
+
+  @override
+  String get diffVoicePrivacyAndroid =>
+      'Android: nutq faqat telefonning o‘zida (oflayn) tanilganda ishlaydi — Android 12+ va qurilmada oflayn tanish kerak. Bo‘lmasa rejim yoqilmaydi, ovoz serverga yuborilmaydi. LabGuide ovozni saqlamaydi va hech qayerga yubormaydi.';
+
+  @override
+  String get diffVoiceNoNames =>
+      'Faqat hujayra nomlarini ayting — bemor ismi yoki boshqa ma’lumotlarni aytmang.';
+
+  @override
+  String get diffVoiceAccuracy =>
+      'Tanish aniqligi shovqin, talaffuz va qurilmaga bog‘liq. Har buyruqdan keyin signalni tinglang; xato bo‘lsa “bekor” deng. Natijani saqlashdan oldin tekshiring.';
+
+  @override
+  String get diffVoiceConsentTitle => 'Ovozli buyruqlarni yoqasizmi?';
+
+  @override
+  String get diffVoiceConsentAction => 'Tushundim, yoqish';
+
+  @override
+  String get diffVoiceStarting => 'Mikrofon ishga tushmoqda…';
+
+  @override
+  String diffVoiceListening(String lang) {
+    return 'Tinglanmoqda · $lang';
+  }
+
+  @override
+  String diffVoiceFallback(String lang) {
+    return 'Ilova tili uchun qurilmada nutqni tanish topilmadi — so‘zlarni shu tilda ayting: $lang.';
+  }
+
+  @override
+  String diffVoiceHeard(String text) {
+    return 'Eshitildi: «$text»';
+  }
+
+  @override
+  String diffVoiceNotUnderstood(String text) {
+    return 'Buyruq topilmadi: «$text»';
+  }
+
+  @override
+  String get diffVoicePermissionDenied =>
+      'Mikrofon yoki nutqni tanishga ruxsat berilmagan, shuning uchun ovozli buyruqlar ishlamaydi. Ruxsatni telefon sozlamalarida LabGuide uchun berish mumkin. Zonalar bilan sanash ishlayveradi.';
+
+  @override
+  String get diffVoiceUnavailable =>
+      'Bu qurilmada nutqni tanish xizmati mavjud emas. Zonalar bilan sanash ishlayveradi.';
+
+  @override
+  String get diffVoiceLanguageUnavailable =>
+      'Tanlangan til uchun qurilmada nutqni tanish yo‘q. Sozlamalarda boshqa tilni tanlang.';
+
+  @override
+  String get diffVoiceOnDeviceUnavailable =>
+      'Qurilmada (oflayn) nutqni tanish yo‘q. Ovoz serverga yuborilmasligi uchun ovozli buyruqlar o‘chirildi.';
+
+  @override
+  String get diffVoiceFailed => 'Nutqni tanish to‘xtadi. Qayta urinib ko‘ring.';
+
+  @override
+  String get diffVoiceRetry => 'Qayta urinish';
+
+  @override
   String get diffHistoryEmptyTitle => 'Hali saqlangan natija yo‘q';
 
   @override
@@ -1454,13 +1729,45 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get diffRangesBody =>
-      'Ikki ochiq manbada kattalar uchun misol oraliqlar (%) ham turlicha. Hisobotda faqat laboratoriyangiz blankasidagi referens ishlatiladi; bolalar uchun oraliqlar yoshga qarab boshqacha.';
+      'Ochiq manbalar va MDH darsligida kattalar uchun misol oraliqlar (%) turlicha. Hisobotda faqat laboratoriyangiz blankasidagi referens ishlatiladi; bolalar uchun oraliqlar yoshga qarab boshqacha.';
 
   @override
   String get diffRangesWho => 'JSST 2003';
 
   @override
   String get diffRangesMedline => 'MedlinePlus';
+
+  @override
+  String get diffRangesClassic => 'MDH darsligi (1984)';
+
+  @override
+  String get diffRangesClassicNote =>
+      'Klassik (MDH darsliklari) oraliqlar faqat solishtirish uchun berilgan: ular hanuz ko‘p blankalarda uchraydi, lekin manbalar bir-biridan farq qiladi. Asosiy mezon — laboratoriyangiz blankasidagi referens.';
+
+  @override
+  String get refTitle => 'Jadvallar va algoritmlar';
+
+  @override
+  String get refSub =>
+      'Anemiya, sariqlik, jigar sindromlari, parazitlar, eskirgan usullar';
+
+  @override
+  String get refIntro =>
+      'Kitoblar va rasmiy manbalarga asoslangan qisqa jadvallar. Har bo‘lim ostida manbalar ko‘rsatilgan.';
+
+  @override
+  String get refDraftNote =>
+      'Qoralama: mutaxassis tekshiruvidan o‘tmagan. Kitoblar faqat manba sifatida keltirilgan — matn va rasmlar ko‘chirilmagan. Xulosa — shifokorda.';
+
+  @override
+  String get refOpenSub => 'Jadval va algoritm';
+
+  @override
+  String get refNotFound => 'Bunday jadval topilmadi.';
+
+  @override
+  String get analyteReuseCitationOnly =>
+      'Kitob: faqat manba sifatida keltirilgan, matn ko‘chirilmagan';
 
   @override
   String get diffQuizPrompt => 'Bu qaysi hujayra?';
@@ -2754,7 +3061,30 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get instIllustration =>
-      'Sxematik rasm (LabGuide chizgan) — aniq modelning tashqi ko‘rinishi emas.';
+      'Sxematik rasm (LabGuide chizgan) — yo‘nalishni bezash uchun, aniq apparat ko‘rinishi emas.';
+
+  @override
+  String get instImageMissing => 'Model rasmi hozircha mavjud emas';
+
+  @override
+  String get instImageMissingSub =>
+      'Aynan shu modelning ruxsatli rasmi topilmadi. Tashqi ko‘rinishini ishlab chiqaruvchi sahifasida ko‘ring.';
+
+  @override
+  String get instMakerSource => 'Ishlab chiqaruvchi manbasi';
+
+  @override
+  String get instImageTapToZoom => 'Kattalashtirish uchun rasmni bosing';
+
+  @override
+  String instImageRightsChecked(String date) {
+    return 'Huquq tekshirilgan: $date';
+  }
+
+  @override
+  String instImageSemantics(String model) {
+    return '$model fotosi';
+  }
 
   @override
   String get instSources => 'Manbalar';
@@ -4355,6 +4685,179 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get quizOtherTopic => 'Boshqa mavzu';
+
+  @override
+  String get dailyTitle => 'Kunlik savol';
+
+  @override
+  String get dailyCardStart => 'Bugungi 5 ta savol';
+
+  @override
+  String get dailyCardStartSub =>
+      '2–3 daqiqa. Har kuni yangi savollar, javobdan keyin izoh va manba.';
+
+  @override
+  String dailyCardProgress(int count, int total) {
+    return '$total tadan $count tasiga javob berildi';
+  }
+
+  @override
+  String dailyCardDone(int correct, int total) {
+    return 'Bugun bajarildi: $total tadan $correct ta to‘g‘ri';
+  }
+
+  @override
+  String get dailyCardDoneSub => 'Ertaga yangi 5 ta savol bo‘ladi.';
+
+  @override
+  String get dailyStart => 'Boshlash';
+
+  @override
+  String get dailyContinue => 'Davom etish';
+
+  @override
+  String get dailyShowResult => 'Natijani ko‘rish';
+
+  @override
+  String dailyStreakDays(int count) {
+    return '$count kun ketma-ket';
+  }
+
+  @override
+  String get dailyStreakTitle => 'Ketma-ketlik';
+
+  @override
+  String get dailyStreakCurrent => 'Joriy seriya';
+
+  @override
+  String get dailyStreakBest => 'Eng uzun seriya';
+
+  @override
+  String dailyDaysShort(int count) {
+    return '$count kun';
+  }
+
+  @override
+  String get dailyFreezeAvailable => 'Bu haftalik muzlatish bor';
+
+  @override
+  String get dailyFreezeUsed => 'Bu haftalik muzlatish ishlatildi';
+
+  @override
+  String get dailyFreezeRule =>
+      'Bir kunni o‘tkazib yuborsangiz, seriya uzilmaydi — haftasiga bir marta (muzlatish). Muzlatilgan kun seriyaga qo‘shilmaydi; ketma-ket ikki kun o‘tkazilsa, seriya qaytadan boshlanadi.';
+
+  @override
+  String get dailyFreezeSaved =>
+      'Kecha o‘tkazib yuborildi — muzlatish seriyani saqlab qoldi.';
+
+  @override
+  String get dailyStreakStart =>
+      'Bugungi savollarni bajaring — seriya shu kundan boshlanadi.';
+
+  @override
+  String get dailyKeepStreak =>
+      'Seriyani saqlash uchun bugungi savollarni bajaring.';
+
+  @override
+  String get dailyEmpty => 'Bugun uchun savol topilmadi';
+
+  @override
+  String get dailyReviewTitle => 'Bugungi savollar';
+
+  @override
+  String get dailySourceToifa =>
+      'Savollar toifa imtihonining rasmiy ro‘yxatidan olinadi — faqat kaliti LabGuide tekshiruvidan o‘tganlari.';
+
+  @override
+  String get dailyReminderTitle => 'LabGuide: kunlik savol';
+
+  @override
+  String get dailyReminderBody => 'Bugungi 5 ta savol tayyor — 2–3 daqiqa.';
+
+  @override
+  String get dailyReminderChannel => 'Kunlik eslatma';
+
+  @override
+  String get dailyReminderSetting => 'Kunlik eslatma';
+
+  @override
+  String dailyReminderAt(String time) {
+    return 'Har kuni soat $time da';
+  }
+
+  @override
+  String get dailyReminderOff => 'O‘chiq';
+
+  @override
+  String get dailyReminderTime => 'Eslatma vaqti';
+
+  @override
+  String get dailyOfferTitle => 'Har kuni eslatib turaymi?';
+
+  @override
+  String get dailyOfferBody =>
+      'Tanlagan vaqtingizda bitta bildirishnoma. Savollarni bajargan kuningiz eslatma kelmaydi. Istalgan payt o‘chirib qo‘yasiz.';
+
+  @override
+  String get dailyOfferYes => 'Eslatmani yoqish';
+
+  @override
+  String get dailyOfferNo => 'Kerak emas';
+
+  @override
+  String get dailyReminderDenied =>
+      'Bildirishnomaga ruxsat berilmadi, eslatma o‘chiq qoldi. Telefon sozlamalarida LabGuide uchun bildirishnomalarni yoqib, qayta urinib ko‘ring.';
+
+  @override
+  String get dailyReminderUnavailable =>
+      'Bu qurilmada eslatmani yoqib bo‘lmadi.';
+
+  @override
+  String dailyReminderOnSnack(String time) {
+    return 'Eslatma yoqildi: har kuni soat $time da';
+  }
+
+  @override
+  String get dailyReminderNote =>
+      'Eslatma faqat shu qurilmada rejalashtiriladi (server yo‘q). Telefon quvvatni tejash uchun uni bir necha daqiqa kechiktirishi mumkin. Ilova 7 kun ochilmasa, eslatmalar to‘xtaydi.';
+
+  @override
+  String get shareResult => 'Natijani ulashish';
+
+  @override
+  String get shareSheetTitle => 'Natija kartochkasi';
+
+  @override
+  String get shareSheetBody =>
+      'Rasmda ismingiz yoki boshqa shaxsiy ma’lumot yo‘q.';
+
+  @override
+  String get shareFailed =>
+      'Ulashish oynasini ochib bo‘lmadi. Qayta urinib ko‘ring.';
+
+  @override
+  String get shareKindDaily => 'Kunlik savol';
+
+  @override
+  String get shareKindExam => 'Mashq imtihoni';
+
+  @override
+  String get shareKindToifa => 'Toifa testi mashqi';
+
+  @override
+  String get shareCorrectCaption => 'to‘g‘ri javob';
+
+  @override
+  String get shareFooter => 'Laboratoriya bo‘yicha qo‘llanma va mashqlar';
+
+  @override
+  String get shareToifaNote => 'Rasmiy emas, LabGuide mashq natijasi';
+
+  @override
+  String shareText(String kind, int correct, int total, int percent) {
+    return 'LabGuide · $kind: $correct/$total ($percent%)';
+  }
 
   @override
   String get quizTopicMistakes => 'Xatolarim ustida ishlash';

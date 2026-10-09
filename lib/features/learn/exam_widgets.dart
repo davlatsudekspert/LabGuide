@@ -1415,7 +1415,7 @@ class ExamReviewCard extends StatelessWidget {
                   style: text.bodySmall!.copyWith(color: p.sub),
                 ),
               ],
-              _Sources(question: q),
+              ExamSources(question: q),
             ],
           ],
         ],
@@ -1627,8 +1627,9 @@ class _AnswerLine extends StatelessWidget {
   }
 }
 
-class _Sources extends StatelessWidget {
-  const _Sources({required this.question});
+/// Savol manbalari (kontent paketidan; bo'lmasa — "manba yo'q").
+class ExamSources extends StatelessWidget {
+  const ExamSources({super.key, required this.question});
 
   final ExamQuestion question;
 

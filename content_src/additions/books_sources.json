@@ -1,77 +1,13 @@
 {
  "sources": [
   {
-   "id": "book-aripova-2007",
-   "kind": "book",
-   "library_item_id": "lib-book-aripova-2007",
-   "title": "Klinik va biokimyoviy tekshiruv usullari",
-   "publisher": "Aripova G.S., Po‘latova F.G., Nazarova N.S., Toirova Z.S. · G‘afur G‘ulom NMIU, 2007",
-   "doc_type": "textbook",
-   "authors": [
-    "G.S. Aripova",
-    "F.G. Po‘latova",
-    "N.S. Nazarova",
-    "Z.S. Toirova"
-   ],
-   "year": 2007,
-   "isbn": "978-9943-03-034-3",
-   "jurisdiction": "UZ",
-   "note": "Textbook (darslik) cited as a supporting source by chapter and page; copyright applies — knowledge restated in our own words, no text, tables or images reproduced (citation only).",
-   "reuse_rights": "citation_only"
-  },
-  {
    "id": "book-selivanov-2005",
-   "kind": "manual",
-   "library_item_id": "lib-book-selivanov-2005",
+   "kind": "book",
    "title": "Правила взятия материала для лабораторных исследований",
-   "publisher": "Селиванов Е.В., Звягинцев Е.Н. · Барнаул, 2005",
-   "doc_type": "textbook",
-   "authors": [
-    "Е.В. Селиванов",
-    "Е.Н. Звягинцев"
-   ],
-   "year": 2005,
+   "publisher": "Селиванов Е.В., Звягинцев Е.Н. · Барнаул: Printexpress, 2005",
+   "source_date": "2005",
    "jurisdiction": "RU",
-   "note": "Textbook (darslik) cited as a supporting source by chapter and page; copyright applies — knowledge restated in our own words, no text, tables or images reproduced (citation only). No ISBN printed.",
-   "reuse_rights": "citation_only"
-  },
-  {
-   "id": "book-sobirova-2006",
-   "kind": "book",
-   "library_item_id": "lib-book-sobirova-2006",
-   "title": "Biologik kimyo",
-   "publisher": "Sobirova R.A., Abrorov O.A., Inoyatova F.X., Aripov A.N. · Yangi asr avlodi, 2006",
-   "url": "https://biochem.medprof.tma.uz/wp-content/uploads/2018/06/Sobirova-R.A-biokimyo.pdf",
-   "accessed": "2026-10-09",
-   "doc_type": "textbook",
-   "authors": [
-    "R.A. Sobirova",
-    "O.A. Abrorov",
-    "F.X. Inoyatova",
-    "A.N. Aripov"
-   ],
-   "year": 2006,
-   "isbn": "978-9943-08-010-2",
-   "jurisdiction": "UZ",
-   "note": "Textbook (darslik) cited as a supporting source by chapter and page; copyright applies — knowledge restated in our own words, no text, tables or images reproduced (citation only). Open copy on the TMA department site is free to read only (read-only link).",
-   "reuse_rights": "citation_only"
-  },
-  {
-   "id": "book-lyubina-1984",
-   "kind": "book",
-   "library_item_id": "lib-book-lyubina-1984",
-   "title": "Клинические лабораторные исследования",
-   "publisher": "Любина А.Я., Ильичева Л.П., Катасонова Т.В., Петросова С.А. · Медицина, 1984",
-   "doc_type": "textbook",
-   "authors": [
-    "А.Я. Любина",
-    "Л.П. Ильичева",
-    "Т.В. Катасонова",
-    "С.А. Петросова"
-   ],
-   "year": 1984,
-   "jurisdiction": "SU",
-   "note": "Textbook (darslik) cited as a supporting source by chapter and page; copyright applies — knowledge restated in our own words, no text, tables or images reproduced (citation only).",
+   "note": "Citation only: copyrighted brochure (24 pp., no ISBN); no text or tables reproduced — facts restated in our own words, cited by section number. Its numbers are used only where WHO documents confirm them.",
    "reuse_rights": "citation_only"
   },
   {
@@ -84,18 +20,6 @@
    "source_date": "2002",
    "jurisdiction": "INT",
    "note": "Pages are the document’s own page numbers (“Page 48”). © WHO — facts restated in our own words; the stability tables are not reproduced.",
-   "reuse_rights": "verify_before_distribution"
-  },
-  {
-   "id": "who-basic-lab-manual-2003",
-   "kind": "web",
-   "title": "Manual of basic techniques for a health laboratory, 2nd edition",
-   "publisher": "World Health Organization",
-   "url": "https://www.who.int/publications/i/item/9241545305",
-   "accessed": "2026-10-09",
-   "source_date": "2003",
-   "jurisdiction": "INT",
-   "note": "ISBN 92 4 154530 5. Facts restated in our own words with section and printed page.",
    "reuse_rights": "verify_before_distribution"
   },
   {
