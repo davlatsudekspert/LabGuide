@@ -17,10 +17,11 @@
 #   uni egasi qo'lda yaratadi (docs/IOS_TESTFLIGHT.md).
 #
 # Secretlar (Settings -> Secrets and variables -> Actions):
-#   ASC_KEY_ID, ASC_ISSUER_ID, ASC_KEY_P8_BASE64 — App Store Connect API kaliti;
-#   IOS_CERTIFICATE_P12_BASE64, IOS_CERTIFICATE_PASSWORD — Apple Distribution
-#   sertifikati (.p12); IOS_TEAM_ID (ixtiyoriy) — sertifikat jamoasi bilan
-#   solishtiriladi. Ilova profili secret emas — API'dan olinadi.
+#   ASC_KEY_ID, ASC_ISSUER_ID, ASC_KEY_P8_BASE64 — App Store Connect API kaliti
+#   (Admin). Shu yetarli: imzo Apple'ning bulutdagi Distribution sertifikati
+#   bilan, profilni Xcode o'zi yaratadi. Ixtiyoriy: IOS_CERTIFICATE_P12_BASE64
+#   va IOS_CERTIFICATE_PASSWORD (o'z .p12 sertifikati — qo'lda imzo),
+#   IOS_TEAM_ID (bo'lmasa bundle ID dan olinadi).
 name: LabGuide CI
 
 on:
@@ -223,8 +224,6 @@ jobs:
         run: |
           set -euo pipefail
           MISSING=""
-          [ -n "$CERTIFICATE_BASE64" ]   || MISSING="$MISSING IOS_CERTIFICATE_P12_BASE64"
-          [ -n "$CERTIFICATE_PASSWORD" ] || MISSING="$MISSING IOS_CERTIFICATE_PASSWORD"
           [ -n "$API_KEY_ID" ]           || MISSING="$MISSING ASC_KEY_ID"
           [ -n "$API_ISSUER_ID" ]        || MISSING="$MISSING ASC_ISSUER_ID"
           [ -n "$API_PRIVATE_KEY" ]      || MISSING="$MISSING ASC_KEY_P8_BASE64"
@@ -233,6 +232,16 @@ jobs:
           umask 077
           W="$RUNNER_TEMP/lg-signing"; mkdir -p "$W"
           echo "SIGN_DIR=$W" >> "$GITHUB_ENV"
+          if [ -z "$CERTIFICATE_BASE64" ]; then
+            # .p12 berilmagan: Apple'ning bulutdagi (cloud-managed) Distribution
+            # sertifikati bilan imzolanadi — maxfiy kalit Apple'da qoladi.
+            # API kaliti Admin huquqli bo'lishi kerak.
+            echo "SIGNING=cloud" >> "$GITHUB_ENV"
+            [ -z "$EXPECTED_TEAM" ] || echo "IOS_TEAM_ID=$EXPECTED_TEAM" >> "$GITHUB_ENV"
+            echo "- Imzo: Apple bulut sertifikati (IOS_CERTIFICATE_* secretlari yo'q)" >> "$GITHUB_STEP_SUMMARY"
+          else
+          [ -n "$CERTIFICATE_PASSWORD" ] || { echo "::error::IOS_CERTIFICATE_PASSWORD secret yo'q"; exit 1; }
+          echo "SIGNING=manual" >> "$GITHUB_ENV"
           printf '%s' "$CERTIFICATE_BASE64" | base64 --decode > "$W/distribution.p12"
           CERT_PEM=$( (openssl pkcs12 -in "$W/distribution.p12" -nokeys -clcerts -passin env:CERTIFICATE_PASSWORD 2>/dev/null \
                      || openssl pkcs12 -legacy -in "$W/distribution.p12" -nokeys -clcerts -passin env:CERTIFICATE_PASSWORD) )
@@ -245,6 +254,7 @@ jobs:
           echo "CERT_SERIAL=$SERIAL" >> "$GITHUB_ENV"
           echo "IOS_TEAM_ID=$TEAM" >> "$GITHUB_ENV"
           echo "Team: $TEAM"
+          fi
 
           KEYDIR="$HOME/.appstoreconnect/private_keys"; mkdir -p "$KEYDIR"
           KEYFILE="$KEYDIR/AuthKey_$API_KEY_ID.p8"
@@ -325,6 +335,9 @@ jobs:
                   bid = call('POST', '/v1/bundleIds', body={'data': {'type': 'bundleIds', 'attributes': {
                       'identifier': BUNDLE, 'name': 'LabGuide', 'platform': 'IOS'}}})['data']['id']
                   summary(f'- Bundle ID `{BUNDLE}`: **ro\'yxatdan o\'tkazildi**')
+              if os.environ.get('SIGNING') == 'cloud':
+                  summary('- App Store profili: Xcode avtomatik yaratadi (bulut imzo)')
+                  sys.exit(0)
               cert = our_cert()
               if active_profiles(bid, cert['id']):
                   summary('- App Store profili: allaqachon bor (ACTIVE)')
@@ -349,6 +362,14 @@ jobs:
                         "(docs/IOS_TESTFLIGHT.md).")
                   sys.exit(1)
               app = apps[0]
+              if not os.environ.get('IOS_TEAM_ID'):
+                  ids = bundle_ids()
+                  seed = ids[0]['attributes'].get('seedId') if ids else None
+                  if not seed:
+                      print("::error::Jamoa ID aniqlanmadi: IOS_TEAM_ID secret qo'ying yoki apple_setup=true bilan ishga tushiring")
+                      sys.exit(1)
+                  env_out(IOS_TEAM_ID=seed)
+                  print(f'Jamoa (bundle ID dan): {seed}')
               builds = call('GET', '/v1/builds', {'filter[app]': app['id'], 'limit': 200,
                                                   'sort': '-uploadedDate', 'fields[builds]': 'version'})['data']
               nums = sorted(int(b['attributes']['version']) for b in builds if b['attributes']['version'].isdigit())
@@ -400,10 +421,12 @@ jobs:
         run: |
           set -euo pipefail
           "$ASC_PY" "$ASC_SCRIPT" precheck
-          "$ASC_PY" "$ASC_SCRIPT" profile "$SIGN_DIR/profile.mobileprovision"
+          if [ "$SIGNING" = manual ]; then
+            "$ASC_PY" "$ASC_SCRIPT" profile "$SIGN_DIR/profile.mobileprovision"
+          fi
 
       - name: Keychain va profil o'rnatish
-        if: env.MODE == 'testflight'
+        if: env.MODE == 'testflight' && env.SIGNING == 'manual'
         env:
           CERTIFICATE_PASSWORD: ${{ secrets.IOS_CERTIFICATE_PASSWORD }}
         run: |
@@ -439,32 +462,65 @@ jobs:
           ruby -rxcodeproj - <<'RUBY'
           project = Xcodeproj::Project.open('ios/Runner.xcodeproj')
           target = project.targets.find { |t| t.name == 'Runner' } or raise 'Runner target missing'
+          cloud = ENV.fetch('SIGNING') == 'cloud'
           target.build_configurations.each do |c|
             c.build_settings['DEVELOPMENT_TEAM'] = ENV.fetch('IOS_TEAM_ID')
-            c.build_settings['CODE_SIGN_STYLE'] = 'Manual'
-            c.build_settings['CODE_SIGN_IDENTITY'] = 'Apple Distribution'
-            c.build_settings['CODE_SIGN_IDENTITY[sdk=iphoneos*]'] = 'Apple Distribution'
-            c.build_settings['PROVISIONING_PROFILE_SPECIFIER'] = ENV.fetch('IOS_PROFILE_NAME')
+            if cloud
+              c.build_settings['CODE_SIGN_STYLE'] = 'Automatic'
+              c.build_settings.delete('PROVISIONING_PROFILE_SPECIFIER')
+            else
+              c.build_settings['CODE_SIGN_STYLE'] = 'Manual'
+              c.build_settings['CODE_SIGN_IDENTITY'] = 'Apple Distribution'
+              c.build_settings['CODE_SIGN_IDENTITY[sdk=iphoneos*]'] = 'Apple Distribution'
+              c.build_settings['PROVISIONING_PROFILE_SPECIFIER'] = ENV.fetch('IOS_PROFILE_NAME')
+            end
           end
           project.save
           RUBY
           python3 - <<'PY'
           import os, plistlib
-          plistlib.dump({'method': 'app-store-connect', 'destination': 'export',
-                         'teamID': os.environ['IOS_TEAM_ID'], 'signingStyle': 'manual',
-                         'signingCertificate': 'Apple Distribution',
-                         'provisioningProfiles': {os.environ['IOS_BUNDLE_ID']: os.environ['IOS_PROFILE_NAME']},
-                         'manageAppVersionAndBuildNumber': False, 'uploadSymbols': True},
-                        open(os.environ['SIGN_DIR'] + '/ExportOptions.plist', 'wb'))
+          base = {'method': 'app-store-connect', 'teamID': os.environ['IOS_TEAM_ID'],
+                  'manageAppVersionAndBuildNumber': False, 'uploadSymbols': True}
+          if os.environ['SIGNING'] == 'cloud':
+              sign = {'signingStyle': 'automatic'}
+          else:
+              sign = {'signingStyle': 'manual', 'signingCertificate': 'Apple Distribution',
+                      'provisioningProfiles': {os.environ['IOS_BUNDLE_ID']: os.environ['IOS_PROFILE_NAME']}}
+          for name, dest in (('ExportOptions', 'export'), ('UploadOptions', 'upload')):
+              plistlib.dump({**base, **sign, 'destination': dest},
+                            open(f"{os.environ['SIGN_DIR']}/{name}.plist", 'wb'))
           PY
 
       - name: Imzolangan IPA
         if: env.MODE == 'testflight'
+        env:
+          API_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          API_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
         run: |
           set -euo pipefail
-          flutter build ipa --release \
-            --build-name="$IOS_VERSION" --build-number="$IOS_BUILD_NUMBER" \
-            --export-options-plist="$SIGN_DIR/ExportOptions.plist"
+          if [ "$SIGNING" = manual ]; then
+            flutter build ipa --release \
+              --build-name="$IOS_VERSION" --build-number="$IOS_BUILD_NUMBER" \
+              --export-options-plist="$SIGN_DIR/ExportOptions.plist"
+          else
+            # Arxiv imzosiz; eksportda Xcode bulut sertifikati va avtomatik
+            # App Store profili bilan imzolaydi (-allowProvisioningUpdates).
+            flutter build ios --release --config-only \
+              --build-name="$IOS_VERSION" --build-number="$IOS_BUILD_NUMBER"
+            [ -d ios/Pods ] || (cd ios && pod install)
+            xcodebuild -workspace ios/Runner.xcworkspace -scheme Runner \
+              -configuration Release -destination 'generic/platform=iOS' \
+              -archivePath build/ios/archive/Runner.xcarchive \
+              archive CODE_SIGNING_ALLOWED=NO
+            xcodebuild -exportArchive \
+              -archivePath build/ios/archive/Runner.xcarchive \
+              -exportOptionsPlist "$SIGN_DIR/ExportOptions.plist" \
+              -exportPath build/ios/ipa \
+              -allowProvisioningUpdates \
+              -authenticationKeyPath "$ASC_KEY_FILE" \
+              -authenticationKeyID "$API_KEY_ID" \
+              -authenticationKeyIssuerID "$API_ISSUER_ID"
+          fi
           test "$(find build/ios/ipa -maxdepth 1 -name '*.ipa' | wc -l | tr -d ' ')" = 1
           cp build/ios/ipa/*.ipa LabGuide-iOS.ipa
 
@@ -524,19 +580,11 @@ jobs:
           echo "::warning::altool bilan yuklab bo'lmadi — xcodebuild -exportArchive (upload) bilan urinilmoqda"
           ARCHIVE=build/ios/archive/Runner.xcarchive
           test -d "$ARCHIVE" || { echo "::error::$ARCHIVE topilmadi"; exit 1; }
-          python3 - <<'PY'
-          import os, plistlib
-          plistlib.dump({'method': 'app-store-connect', 'destination': 'upload',
-                         'teamID': os.environ['IOS_TEAM_ID'], 'signingStyle': 'manual',
-                         'signingCertificate': 'Apple Distribution',
-                         'provisioningProfiles': {os.environ['IOS_BUNDLE_ID']: os.environ['IOS_PROFILE_NAME']},
-                         'manageAppVersionAndBuildNumber': False, 'uploadSymbols': True},
-                        open(os.environ['SIGN_DIR'] + '/UploadOptions.plist', 'wb'))
-          PY
           xcodebuild -exportArchive \
             -archivePath "$ARCHIVE" \
             -exportOptionsPlist "$SIGN_DIR/UploadOptions.plist" \
             -exportPath "$RUNNER_TEMP/upload" \
+            -allowProvisioningUpdates \
             -authenticationKeyPath "$ASC_KEY_FILE" \
             -authenticationKeyID "$API_KEY_ID" \
             -authenticationKeyIssuerID "$API_ISSUER_ID"

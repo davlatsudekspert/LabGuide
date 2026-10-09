@@ -113,9 +113,10 @@ kelmagan**.
 ## Blockerlar va foydalanuvchidan kerak bo‘ladigan narsalar
 
 - **TestFlight:** App Store Connect → Apps → + → New App, Bundle ID `uz.labguide.app`,
-  SKU `labguide-ios`. Yangi repoga secretlar qayta kiritiladi (`ASC_*`, `IOS_CERTIFICATE_*`,
-  `IOS_TEAM_ID`). Shundan keyin workflow `mode: testflight` bilan yuklaydi —
-  [IOS_TESTFLIGHT.md](IOS_TESTFLIGHT.md).
+  SKU `labguide-ios`. Yangi repo uchun yangi API kalit (Admin) va uchta secret: `ASC_KEY_ID`,
+  `ASC_ISSUER_ID`, `ASC_KEY_P8_BASE64` (`.p12` shart emas — bulut imzo). Shundan keyin
+  workflow `mode: testflight` bilan yuklaydi — [IOS_TESTFLIGHT.md](IOS_TESTFLIGHT.md).
+  Bulut imzo yo‘li hali haqiqiy kalit bilan sinalmagan — birinchi run natijasi kutiladi.
 - **Google Play:** upload kaliti (`ANDROID_KEYSTORE_*`, `ANDROID_KEY_*` secretlari) — bo‘lmasa APK
   faqat sinov uchun (debug kalit).
 - **Domla materiallari** (kitob, qo‘llanma, metodika, testlar) — hali kelmagan; kelganda

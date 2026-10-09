@@ -385,7 +385,14 @@ ham qo‘shilib ketgan edi. Endi:
   secret yo‘q; secretlar repo sozlamalarida.
 - CI: `.github/workflows/ci.yml` — `main` ga push va PR’da imzosiz tekshiruv, qo‘lda
   `mode: testflight`. Secret nomlari soddalashtirildi: `ASC_*`, `IOS_CERTIFICATE_*`,
-  `IOS_TEAM_ID`, `ANDROID_*` (NFCSTORE’ning `NOVA_*` zaxirasi olib tashlandi). Build raqami
+  `IOS_TEAM_ID`, `ANDROID_*` (NFCSTORE’ning `NOVA_*` zaxirasi olib tashlandi). Egasi yangi
+  repo uchun yangi secretlar qo‘yadi (nfcx’nikidan foydalanilmaydi).
+- Imzo: `.p12` secret bo‘lmasa — **bulut imzo**: arxiv imzosiz (`CODE_SIGNING_ALLOWED=NO`),
+  `xcodebuild -exportArchive -allowProvisioningUpdates` API kalit bilan Apple’ning
+  cloud-managed Distribution sertifikati va avtomatik App Store profilidan foydalanadi.
+  Maxfiy kalit Apple’da qoladi, egasiga Mac va openssl kerak emas; API kalit Admin bo‘lishi
+  shart. `.p12` berilsa — avvalgi qo‘lda imzo yo‘li. Bulut yo‘li birinchi haqiqiy run’da
+  tekshiriladi (o‘tdi deb hisoblanmaydi). Build raqami
   App Store Connect’dagi oxirgisidan hisoblanadi — run raqami qaytadan boshlansa ham
   to‘qnashmaydi.
 - nfcx’dan `labguide/` va `labguide-ios.yml` alohida PR bilan olib tashlanadi (egasi

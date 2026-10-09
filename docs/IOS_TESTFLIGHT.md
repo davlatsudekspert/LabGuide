@@ -17,26 +17,35 @@ macOS’da imzosiz iOS release build.
 ## 2. TestFlight uchun bir martalik sozlash
 
 ### Secretlar
-**Settings → Secrets and variables → Actions → New repository secret**. Secret qiymatlarini
-GitHub boshqa repodan ko‘chirib bermaydi — ular qayta kiritiladi (nfcx’dagilar bilan bir xil
-qiymatlar, bitta Apple jamoasi):
+Yangi repo uchun yangi API kalit (nfcx’dagilardan foydalanilmaydi):
+
+1. App Store Connect → **Users and Access → Integrations → App Store Connect API → Team Keys
+   → +**. Nomi masalan `LabGuide CI`, ruxsat **Admin** (bulut sertifikati bilan imzolash
+   uchun kerak). `AuthKey_XXXX.p8` faylini yuklab oling — u faqat bir marta beriladi.
+2. Shu sahifadan **Issuer ID** va kalitning **Key ID** sini oling.
+3. GitHub → **Settings → Secrets and variables → Actions → New repository secret**:
 
 | Secret | Qiymat |
 |---|---|
-| `ASC_KEY_ID` | App Store Connect API kalit ID |
+| `ASC_KEY_ID` | Key ID |
 | `ASC_ISSUER_ID` | Issuer ID |
-| `ASC_KEY_P8_BASE64` | `AuthKey_….p8` fayl (base64 yoki matnning o‘zi) |
-| `IOS_CERTIFICATE_P12_BASE64` | Apple Distribution sertifikati `.p12` (base64) — nfcx’dagi `NOVA_IOS_CERTIFICATE_BASE64` bilan bir xil |
-| `IOS_CERTIFICATE_PASSWORD` | `.p12` paroli — `NOVA_IOS_CERTIFICATE_PASSWORD` bilan bir xil |
-| `IOS_TEAM_ID` | ixtiyoriy: `5Z9CT2W378` (sertifikat jamoasi bilan solishtiriladi) |
+| `ASC_KEY_P8_BASE64` | `.p8` faylning matni (Notepad’da ochib, hammasini nusxalang) yoki base64 |
+| `IOS_TEAM_ID` | ixtiyoriy: `5Z9CT2W378` |
 
-`.p12` → base64: `base64 -i distribution.p12 | pbcopy` (macOS) yoki
-`base64 -w0 distribution.p12` (Linux). Ilova profili secret emas — API’dan olinadi.
+`.p12` sertifikat **shart emas**: `IOS_CERTIFICATE_*` secretlari bo‘lmasa, workflow arxivni
+imzosiz yig‘adi va eksportda Apple’ning bulutdagi (cloud-managed) Distribution sertifikati
+bilan imzolaydi; App Store profilini Xcode o‘zi yaratadi (`-allowProvisioningUpdates`).
+O‘z sertifikatingiz bilan imzolamoqchi bo‘lsangiz — `IOS_CERTIFICATE_P12_BASE64` va
+`IOS_CERTIFICATE_PASSWORD` qo‘shing (qo‘lda imzo yo‘li).
+
+Kalit public repoda xavfsizmi: secretlar shifrlangan holda saqlanadi, loglarda yashiriladi va
+fork’dan kelgan PR’larga berilmaydi; TestFlight rejimini faqat yozish huquqi borlar ishga
+tushiradi.
 
 ### Bundle ID va profil
 **Run workflow → mode: testflight, apple_setup: ✓**. Workflow App Store Connect API orqali
-`uz.labguide.app` bundle ID ni ro‘yxatdan o‘tkazadi va “LabGuide AppStore CI” profilini
-yaratadi. Ilova yozuvi hali yo‘q bo‘lsa, shu yerda aniq xabar bilan to‘xtaydi — bu kutilgan.
+`uz.labguide.app` bundle ID ni ro‘yxatdan o‘tkazadi (qo‘lda imzo yo‘lida “LabGuide AppStore
+CI” profilini ham yaratadi). Ilova yozuvi hali yo‘q bo‘lsa, shu yerda aniq xabar bilan to‘xtaydi — bu kutilgan.
 
 ### Ilova yozuvi (faqat qo‘lda — API buni qila olmaydi)
 App Store Connect → **Apps → + → New App**: platforma iOS, nomi **LabGuide** (band bo‘lsa,
