@@ -2222,6 +2222,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get micAuthor => 'Author';
 
   @override
+  String get micAuthorPage => 'Author page';
+
+  @override
+  String get micLabelBySource => 'Named per the source caption';
+
+  @override
+  String get micLabelNoQuiz => 'Not used in the quiz';
+
+  @override
   String get micCredit => 'Source';
 
   @override

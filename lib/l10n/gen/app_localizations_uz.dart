@@ -2202,6 +2202,15 @@ class AppLocalizationsUz extends AppLocalizations {
   String get micAuthor => 'Muallif';
 
   @override
+  String get micAuthorPage => 'Muallif sahifasi';
+
+  @override
+  String get micLabelBySource => 'Nomi manba izohi bo‘yicha';
+
+  @override
+  String get micLabelNoQuiz => 'Mashqqa kirmaydi';
+
+  @override
   String get micCredit => 'Manba';
 
   @override

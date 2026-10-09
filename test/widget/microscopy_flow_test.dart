@@ -66,6 +66,24 @@ void main() {
     expect(find.byType(MicroImageScreen), findsOneWidget);
   });
 
+  testWidgets('“manba izohi bo‘yicha” rasm va muallif sahifasi', (
+    tester,
+  ) async {
+    final l = lookupAppLocalizations(const Locale('uz'));
+    final s = await makeServices(tester, role: AppRole.student);
+    await pumpApp(tester, s, size: const Size(390, 3000));
+    await goTo(tester, '/lab/microscopy/i/u-rte-1');
+    expect(find.text(l.micLabelBySource), findsOneWidget);
+    expect(find.text(l.micLabelNoQuiz), findsOneWidget);
+    expect(find.text(l.micAuthorPage), findsOneWidget);
+    expect(find.text('commons.wikimedia.org'), findsWidgets);
+
+    // CDC rasmida muallif sahifasi qatori yo'q; namunaviy rasmda izoh yo'q.
+    await goTo(tester, '/lab/microscopy/i/b-baso-1');
+    expect(find.text(l.micLabelBySource), findsNothing);
+    expect(find.text(l.micAuthorPage), findsNothing);
+  });
+
   testWidgets('qidiruv: rasmsiz tur halol ko‘rsatiladi', (tester) async {
     final l = lookupAppLocalizations(const Locale('en'));
     final s = await makeServices(tester, language: AppLanguage.en);

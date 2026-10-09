@@ -2241,6 +2241,15 @@ class AppLocalizationsRu extends AppLocalizations {
   String get micAuthor => 'Автор';
 
   @override
+  String get micAuthorPage => 'Страница автора';
+
+  @override
+  String get micLabelBySource => 'Название — по подписи источника';
+
+  @override
+  String get micLabelNoQuiz => 'Не входит в упражнение';
+
+  @override
   String get micCredit => 'Источник';
 
   @override
