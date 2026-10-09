@@ -697,6 +697,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sectionNegativeResult => 'Negative result';
 
   @override
+  String get sectionResults => 'What the results mean';
+
+  @override
   String get sectionPreanalytics => 'Specimen and preanalytics';
 
   @override

@@ -25,6 +25,8 @@ String sectionTitle(String id, AppLocalizations l) => switch (id) {
   // Sifat (musbat/manfiy) testlar: serologiya, autoantitelolar.
   'positive_result' => l.sectionPositiveResult,
   'negative_result' => l.sectionNegativeResult,
+  // Tavsifiy tahlillar (likvor, koprogramma, PAP-test): natija talqini.
+  'results' => l.sectionResults,
   'preanalytics' => l.sectionPreanalytics,
   'interference' => l.sectionInterference,
   'related_tests' => l.analyteRelated,

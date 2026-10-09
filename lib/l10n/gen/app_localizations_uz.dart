@@ -688,6 +688,9 @@ class AppLocalizationsUz extends AppLocalizations {
   String get sectionNegativeResult => 'Manfiy natija';
 
   @override
+  String get sectionResults => 'Natija nimani bildiradi';
+
+  @override
   String get sectionPreanalytics => 'Namuna va preanalitika';
 
   @override

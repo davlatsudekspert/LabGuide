@@ -312,6 +312,7 @@
   "sectionLowResult": "Low result",
   "sectionPositiveResult": "Positive result",
   "sectionNegativeResult": "Negative result",
+  "sectionResults": "What the results mean",
   "sectionPreanalytics": "Specimen and preanalytics",
   "sectionInterference": "Interference",
   "sectionLimitations": "Limitations",
