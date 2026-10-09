@@ -1617,5 +1617,13 @@
   "reviewCatalog": "Материалов в каталоге: {count}",
   "reviewField": "Поле: {field}",
   "quizDraftTag": "Черновик · не проверено",
-  "lessonsTitle": "Темы занятий"
+  "lessonsTitle": "Темы занятий",
+  "analyteTreatmentGoals": "Цели лечения",
+  "analyteTreatmentGoalsNotice": "Цель лечения устанавливает врач на основе полной оценки риска пациента; приложение не определяет категорию риска.",
+  "analyteTreatmentGoalsNotRef": "Цели лечения — не референсные интервалы и не диагностические пороги. Рекомендации по-разному определяют группы риска — сравнивайте значения только внутри одной таблицы.",
+  "analyteGoalGuideline": "{name} · {year}",
+  "analyteAgentCheck": "Автоматическая/агентная проверка",
+  "analyteAgentCheckValue": "{date} (не экспертное подтверждение)",
+  "analyteExpertApproval": "Подтверждение эксперта",
+  "analyteExpertApprovalPending": "ожидается"
 }

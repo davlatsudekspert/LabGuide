@@ -137,6 +137,6 @@ void main() {
     );
     expect(find.text(_l.analytePreparedBy), findsOneWidget);
     expect(find.text(_l.analyteSourcesChecked), findsOneWidget);
-    expect(find.text(_l.analyteReviewPending), findsWidgets);
+    expect(find.text(_l.analyteExpertApprovalPending), findsWidgets);
   });
 }

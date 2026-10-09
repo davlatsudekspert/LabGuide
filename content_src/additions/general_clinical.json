@@ -2312,7 +2312,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -2349,16 +2356,26 @@
       {
        "source_id": "medline-ency-urine-24h-volume",
        "locator": "Normal Results"
-      },
+      }
+     ],
+     "text": {
+      "uz": "Manbadagi misol referens interval (laboratoriyangiz intervali emas): 24 soatlik siydik hajmi — 800–2000 mL/24 soat, kuniga taxminan 2 litr suyuqlik ichilganda. MedlinePlus me’yoriy oraliqlar laboratoriyalar orasida farq qilishini aytadi — natijani laboratoriyaning o‘z referens intervali bilan solishtiring.",
+      "ru": "Пример референсного интервала из источника (не интервал вашей лаборатории): объём мочи за 24 часа — 800–2000 mL/24 ч при потреблении около 2 л жидкости в сутки. MedlinePlus указывает, что нормы различаются между лабораториями, — сравнивайте результат с референсным интервалом своей лаборатории.",
+      "en": "Example reference interval from the source (not your laboratory’s interval): 24-hour urine volume — 800–2,000 mL/24 h with a fluid intake of about 2 litres a day. MedlinePlus notes that normal ranges vary between laboratories — compare your result with your laboratory’s own reference interval."
+     }
+    },
+    {
+     "section": "results",
+     "refs": [
       {
        "source_id": "medline-ency-urine-24h-volume",
        "locator": "What Abnormal Results Mean"
       }
      ],
      "text": {
-      "uz": "MedlinePlus misol sifatida kuniga taxminan 2 litr suyuqlik ichilganda sutkalik siydik hajmini 800–2000 ml deb keltiradi (laboratoriyaga qarab farq qiladi). Kamayishi: suvsizlanish, kam suyuqlik ichish, surunkali buyrak kasalligining ayrim turlari. Ko‘payishi: buyrak yoki markaziy qandsiz diabet, qandli diabet, ko‘p suyuqlik ichish, ayrim buyrak kasalliklari, siydik haydovchi dorilar.",
-      "ru": "MedlinePlus приводит в качестве примера суточный объём мочи 800–2000 мл при потреблении около 2 л жидкости в сутки (зависит от лаборатории). Уменьшение: обезвоживание, недостаточное питьё, некоторые формы хронической болезни почек. Увеличение: почечный или центральный несахарный диабет, сахарный диабет, обильное питьё, некоторые болезни почек, мочегонные препараты.",
-      "en": "MedlinePlus gives 800–2,000 mL per day as an example normal range with a fluid intake of about 2 litres a day (ranges vary by lab). Lower volumes: dehydration, low fluid intake, some types of chronic kidney disease. Higher volumes: renal or central diabetes insipidus, diabetes mellitus, high fluid intake, some kidney diseases and diuretic medicines."
+      "uz": "Sutkalik siydik hajmining kamayishi: suvsizlanish, kam suyuqlik ichish, surunkali buyrak kasalligining ayrim turlari. Ko‘payishi: buyrak yoki markaziy qandsiz diabet, qandli diabet, ko‘p suyuqlik ichish, ayrim buyrak kasalliklari, siydik haydovchi dorilar.",
+      "ru": "Уменьшение суточного объёма мочи: обезвоживание, недостаточное питьё, некоторые формы хронической болезни почек. Увеличение: почечный или центральный несахарный диабет, сахарный диабет, обильное питьё, некоторые болезни почек, мочегонные препараты.",
+      "en": "Lower 24-hour urine volume: dehydration, low fluid intake, some types of chronic kidney disease. Higher volume: renal or central diabetes insipidus, diabetes mellitus, high fluid intake, some kidney diseases and diuretic medicines."
      }
     },
     {
@@ -2367,16 +2384,26 @@
       {
        "source_id": "medline-ency-urine-24h-protein",
        "locator": "Normal Results"
-      },
+      }
+     ],
+     "text": {
+      "uz": "Manbadagi misol referens interval (laboratoriyangiz intervali emas): 24 soatlik siydikdagi oqsil — 100 mg/24 soat dan kam (siydikdagi konsentratsiya sifatida — 10 mg/dL dan kam). Laboratoriyalar boshqa o‘lchov yoki boshqa namunadan foydalanishi mumkin — natijani laboratoriyaning o‘z referens intervali bilan solishtiring.",
+      "ru": "Пример референсного интервала из источника (не интервал вашей лаборатории): белок в моче за 24 часа — менее 100 mg/24 ч (как концентрация в моче — менее 10 mg/dL). Лаборатории могут использовать другие измерения или другие образцы — сравнивайте результат с референсным интервалом своей лаборатории.",
+      "en": "Example reference interval from the source (not your laboratory’s interval): 24-hour urine protein — less than 100 mg/24 h (as a urine concentration, less than 10 mg/dL). Laboratories may use different measurements or samples — compare your result with your laboratory’s own reference interval."
+     }
+    },
+    {
+     "section": "results",
+     "refs": [
       {
        "source_id": "medline-ency-urine-24h-protein",
        "locator": "What Abnormal Results Mean"
       }
      ],
      "text": {
-      "uz": "Sutkalik oqsil uchun MedlinePlus misol sifatida sutkasiga 100 mg dan kam (yoki siydikda 10 mg/dL dan kam) qiymatni keltiradi. Oqsil ko‘payishi: amiloidoz, siydik pufagi o‘smasi, yurak yetishmovchiligi, preeklampsiya, qandli diabet, gipertoniya, autoimmun kasalliklar va boshqa sabablar bilan bog‘liq buyrak kasalligi, mieloma kasalligi. Sog‘lom odamda ham og‘ir jismoniy zo‘riqish yoki suvsizlanishdan keyin oqsil ko‘payishi mumkin.",
-      "ru": "Для суточного белка MedlinePlus приводит в качестве примера менее 100 мг в сутки (или менее 10 мг/дл мочи). Повышение белка: амилоидоз, опухоль мочевого пузыря, сердечная недостаточность, преэклампсия, болезни почек при диабете, гипертонии, аутоиммунных и других состояниях, миеломная болезнь. У здоровых белок может повышаться после тяжёлой нагрузки или обезвоживания.",
-      "en": "For 24-hour protein, MedlinePlus gives less than 100 mg per day (or less than 10 mg/dL of urine) as an example normal value. Raised protein: amyloidosis, bladder tumor, heart failure, preeclampsia, kidney disease from diabetes, high blood pressure, autoimmune and other causes, and multiple myeloma. Healthy people may have higher protein after strenuous exercise or dehydration."
+      "uz": "Sutkalik oqsil ko‘payishi: amiloidoz, siydik pufagi o‘smasi, yurak yetishmovchiligi, preeklampsiya, qandli diabet, gipertoniya, autoimmun kasalliklar va boshqa sabablar bilan bog‘liq buyrak kasalligi, mieloma kasalligi. Sog‘lom odamda ham og‘ir jismoniy zo‘riqish yoki suvsizlanishdan keyin oqsil ko‘payishi mumkin.",
+      "ru": "Повышение суточного белка: амилоидоз, опухоль мочевого пузыря, сердечная недостаточность, преэклампсия, болезни почек при диабете, гипертонии, аутоиммунных и других состояниях, миеломная болезнь. У здоровых белок может повышаться после тяжёлой нагрузки или обезвоживания.",
+      "en": "Raised 24-hour protein: amyloidosis, bladder tumor, heart failure, preeclampsia, kidney disease from diabetes, high blood pressure, autoimmune and other causes, and multiple myeloma. Healthy people may have higher protein after strenuous exercise or dehydration."
      }
     },
     {
@@ -2424,9 +2451,9 @@
       }
      ],
      "text": {
-      "uz": "Sutkalik yig‘ishdan qochish uchun shifokor uning o‘rniga bitta siydik namunasida oqsil/kreatinin nisbatini buyurishi mumkin. Me’yoriy oraliqlar laboratoriyalar orasida farq qiladi — natijani shifokor bilan muhokama qiling.",
-      "ru": "Чтобы обойтись без суточного сбора, врач может назначить вместо него соотношение белок/креатинин в одной порции мочи. Нормы различаются между лабораториями — обсудите результат с врачом.",
-      "en": "To avoid a 24-hour collection, the provider may order a protein-to-creatinine ratio on a single urine sample instead. Normal ranges vary between laboratories — discuss your result with your provider."
+      "uz": "Sutkalik yig‘ishdan qochish uchun shifokor uning o‘rniga bitta (tasodifiy) siydik namunasida oqsil/kreatinin nisbatini buyurishi mumkin. Bu boshqa tahlil: u 24 soatlik miqdorni emas, oqsilning kreatininga nisbatini beradi. Me’yoriy oraliqlar laboratoriyalar orasida farq qiladi — natijani shifokor bilan muhokama qiling.",
+      "ru": "Чтобы обойтись без суточного сбора, врач может назначить вместо него соотношение белок/креатинин в одной (разовой) порции мочи. Это другой анализ: он даёт не количество за 24 часа, а отношение белка к креатинину. Нормы различаются между лабораториями — обсудите результат с врачом.",
+      "en": "To avoid a 24-hour collection, the provider may order a protein-to-creatinine ratio on a single (random) urine sample instead. This is a different test: it gives the ratio of protein to creatinine, not the amount passed in 24 hours. Normal ranges vary between laboratories — discuss your result with your provider."
      }
     }
    ],
@@ -2447,6 +2474,13 @@
     "uz": "24 soat davomida yig‘ilgan barcha siydik (sovuq joyda saqlanadi)",
     "ru": "Вся моча за 24 часа (хранится в прохладном месте)",
     "en": "All urine passed over 24 hours (kept cool)"
+   },
+   "notes": {
+    "results": {
+     "uz": "Bu bo‘limdagi raqamlar manbadagi misol bo‘lib, faqat 24 soat davomida yig‘ilgan siydikka tegishli (hajm — mL/24 soat, oqsil — mg/24 soat). Ular asosiy me’yor emas: laboratoriyangiz natija varaqasidagi referens intervalga qarang. Bir martalik (tasodifiy) namunadagi nisbatlar — albumin/kreatinin nisbati (ACR, mg/g) va oqsil/kreatinin nisbati — boshqa ko‘rsatkich va boshqa birlikda; ularni bu qiymatlar bilan solishtirmang.",
+     "ru": "Цифры в этом разделе — пример из источника и относятся только к моче, собранной за 24 часа (объём — mL/24 ч, белок — mg/24 ч). Это не основная норма: ориентируйтесь на референсный интервал в бланке вашей лаборатории. Соотношения в разовой (случайной) порции — альбумин/креатинин (ACR, mg/g) и белок/креатинин — другие показатели в других единицах; не сравнивайте их с этими значениями.",
+     "en": "The numbers in this section are examples from the source and apply only to urine collected over 24 hours (volume in mL/24 h, protein in mg/24 h). They are not the primary norm: use the reference interval on your laboratory’s report. Ratios measured on a single (random) sample — albumin-to-creatinine ratio (ACR, mg/g) and protein-to-creatinine ratio — are different measures in different units; do not compare them with these values."
+    }
    }
   },
   {
@@ -2491,7 +2525,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",

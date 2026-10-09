@@ -259,7 +259,7 @@ void main() {
     expect(find.text(en.analyteDecisionNotRef), findsOneWidget);
     expect(find.textContaining('MedlinePlus'), findsWidgets);
     expect(find.textContaining('NIDDK'), findsWidgets);
-    expect(find.text(en.analyteReviewPending), findsOneWidget);
+    expect(find.text(en.analyteExpertApprovalPending), findsOneWidget);
     expect(find.text(en.analyteReviewApproved), findsNothing);
   });
 

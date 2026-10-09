@@ -87,3 +87,25 @@ qayta qurildi.
    ko‘rib chiqishi tavsiya etiladi.
 8. **Quiz savollari** (shu guruhlar bo‘yicha 91 ta, hammasi `pending`) bu audit
    doirasida tekshirilmadi.
+
+## Egasining qarorlari bo‘yicha bajarilgan ishlar (2026-10-09)
+
+- **Ochiq savol 3 (lipidlar).** `ldl-c` va `non-hdl-c` ga `treatment_goals[]`
+  qo‘shildi — RI va DL dan alohida “Davolash maqsadi” paneli. Har yo‘riqnoma
+  o‘z jadvalida: NCEP ATP III (Executive Summary, 2001: 4, 5, 9-jadvallar),
+  ATP III 2004 yangilanishi (2-jadval va izohlari), ESC/EAS 2019 (6-bo‘lim,
+  7-jadval), ACC/AHA 2018 (Top 10 Take-Home Messages 2, 3, 7; 3-jadval).
+  Manbalar ochildi; mualliflik huquqi bor matnlardan faqat raqamlar o‘z
+  so‘zimiz bilan. `cholesterol-total`, `hdl-c`, `triglycerides` uchun bu
+  yo‘riqnomalarda alohida davolash maqsadi yo‘q — qo‘shilmadi.
+- **Ochiq savol 1 (`urine-24h`).** MedlinePlus qiymatlari manba bilan qayta
+  solishtirildi (003425: 800–2000 mL/kun ~2 L suyuqlikda; 003622: <100 mg/kun
+  yoki <10 mg/dL) — mos. Ular “manbadagi misol referens interval” deb
+  belgilangan alohida da’volarga ajratildi (24 soatlik namuna, mL/24 soat,
+  mg/24 soat, laboratoriya intervali bilan solishtirish); RI paneli “interval
+  berilmagan” bo‘lib qoldi. `results` izohida bir martalik namuna nisbatlari
+  (ACR, oqsil/kreatinin) bilan farqi yozildi.
+- **Kelib chiqishi.** Shu auditdagi 59 kartaga `review.agent_checks`
+  (2026-10-09, shu hisobot) yozildi; karta panelida “Avtomatik/agent
+  tekshiruvi … (mutaxassis tasdig‘i emas)” va “Mutaxassis tasdig‘i:
+  kutilmoqda” alohida. Hech narsa tasdiqlanmadi (`draft`, `pending`).

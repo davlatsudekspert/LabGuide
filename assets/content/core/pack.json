@@ -326,7 +326,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -371,7 +378,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -701,7 +715,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -947,7 +968,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -1076,7 +1104,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -1334,7 +1369,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -1518,7 +1560,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -1825,7 +1874,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -2055,7 +2111,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -2270,7 +2333,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -2465,7 +2535,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -2662,7 +2739,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -2851,7 +2935,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -3054,7 +3145,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -3193,7 +3291,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -3371,7 +3476,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -3549,7 +3661,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -3562,7 +3681,8 @@
     "en": "Main source of arterial buildup"
    },
    "units": [
-    "mg/dL"
+    "mg/dL",
+    "mmol/L"
    ],
    "claims": [
     {
@@ -3695,7 +3815,11 @@
     "medline-ldl",
     "medline-cholesterol",
     "nhlbi-cholesterol-causes",
-    "medline-cholesterol-wyntk"
+    "medline-cholesterol-wyntk",
+    "nhlbi-atp3-xsum",
+    "nhlbi-atp3-update-2004",
+    "esc-eas-dyslipidaemia-2019",
+    "acc-aha-cholesterol-2018"
    ],
    "related": [
     "hdl-c",
@@ -3712,7 +3836,396 @@
     "molar_mass_g_per_mol": 386.664,
     "basis": "C27H46O (cholesterol content of LDL); IUPAC standard atomic weights (abridged): C 12.011, H 1.008, N 14.007, O 15.999",
     "si_unit": "mmol/L"
-   }
+   },
+   "treatment_goals": [
+    {
+     "guideline_id": "ncep-atp3-2001",
+     "guideline_name": "NCEP ATP III (NHLBI)",
+     "year": 2001,
+     "population": {
+      "uz": "Koronar yurak kasalligi (KYuK) yoki unga teng xavfli holatlar (10 yillik KYuK xavfi 20% dan yuqori)",
+      "ru": "ИБС или эквиваленты риска ИБС (10-летний риск ИБС выше 20%)",
+      "en": "Coronary heart disease (CHD) or CHD risk equivalents (10-year CHD risk above 20%)"
+     },
+     "target_text": {
+      "uz": "< 100 mg/dL",
+      "ru": "< 100 mg/dL",
+      "en": "< 100 mg/dL"
+     },
+     "unit": "mg/dL",
+     "refs": [
+      {
+       "source_id": "nhlbi-atp3-xsum",
+       "locator": "Table 4. Three Categories of Risk that Modify LDL Cholesterol Goals",
+       "pages": "4"
+      },
+      {
+       "source_id": "nhlbi-atp3-xsum",
+       "locator": "Table 5: LDL Cholesterol Goals and Cutpoints for Therapeutic Lifestyle Changes (TLC) and Drug Therapy in Different Risk Categories",
+       "pages": "8"
+      }
+     ]
+    },
+    {
+     "guideline_id": "ncep-atp3-2001",
+     "guideline_name": "NCEP ATP III (NHLBI)",
+     "year": 2001,
+     "population": {
+      "uz": "2 va undan ortiq xavf omili (10 yillik xavf 20% yoki undan past)",
+      "ru": "2 и более факторов риска (10-летний риск 20% или ниже)",
+      "en": "2 or more risk factors (10-year risk 20% or lower)"
+     },
+     "target_text": {
+      "uz": "< 130 mg/dL",
+      "ru": "< 130 mg/dL",
+      "en": "< 130 mg/dL"
+     },
+     "unit": "mg/dL",
+     "refs": [
+      {
+       "source_id": "nhlbi-atp3-xsum",
+       "locator": "Table 4. Three Categories of Risk that Modify LDL Cholesterol Goals",
+       "pages": "4"
+      },
+      {
+       "source_id": "nhlbi-atp3-xsum",
+       "locator": "Table 5: LDL Cholesterol Goals and Cutpoints for Therapeutic Lifestyle Changes (TLC) and Drug Therapy in Different Risk Categories",
+       "pages": "8"
+      }
+     ]
+    },
+    {
+     "guideline_id": "ncep-atp3-2001",
+     "guideline_name": "NCEP ATP III (NHLBI)",
+     "year": 2001,
+     "population": {
+      "uz": "0–1 xavf omili",
+      "ru": "0–1 фактор риска",
+      "en": "0–1 risk factor"
+     },
+     "target_text": {
+      "uz": "< 160 mg/dL",
+      "ru": "< 160 mg/dL",
+      "en": "< 160 mg/dL"
+     },
+     "unit": "mg/dL",
+     "refs": [
+      {
+       "source_id": "nhlbi-atp3-xsum",
+       "locator": "Table 4. Three Categories of Risk that Modify LDL Cholesterol Goals",
+       "pages": "4"
+      },
+      {
+       "source_id": "nhlbi-atp3-xsum",
+       "locator": "Table 5: LDL Cholesterol Goals and Cutpoints for Therapeutic Lifestyle Changes (TLC) and Drug Therapy in Different Risk Categories",
+       "pages": "8"
+      }
+     ],
+     "note": {
+      "uz": "Xavf omillari ro‘yxati shu hujjatning 3-jadvalida.",
+      "ru": "Перечень факторов риска — в таблице 3 того же документа.",
+      "en": "The risk factors are listed in Table 3 of the same document."
+     }
+    },
+    {
+     "guideline_id": "ncep-atp3-2004",
+     "guideline_name": "NCEP ATP III — 2004 update",
+     "year": 2004,
+     "population": {
+      "uz": "Yuqori xavf: KYuK yoki unga teng xavfli holatlar (10 yillik xavf 20% dan yuqori)",
+      "ru": "Высокий риск: ИБС или эквиваленты риска ИБС (10-летний риск выше 20%)",
+      "en": "High risk: CHD or CHD risk equivalents (10-year risk above 20%)"
+     },
+     "target_text": {
+      "uz": "< 100 mg/dL; ixtiyoriy maqsad: < 70 mg/dL",
+      "ru": "< 100 mg/dL; факультативная цель: < 70 mg/dL",
+      "en": "< 100 mg/dL; optional goal: < 70 mg/dL"
+     },
+     "unit": "mg/dL",
+     "refs": [
+      {
+       "source_id": "nhlbi-atp3-update-2004",
+       "locator": "Table 2. ATP III LDL-C Goals and Cutpoints for TLC and Drug Therapy in Different Risk Categories and Proposed Modifications Based on Recent Clinical Trial Evidence",
+       "pages": "236"
+      }
+     ],
+     "note": {
+      "uz": "Jadval izohiga ko‘ra, juda yuqori xavf < 70 mg/dL ixtiyoriy maqsadni afzal ko‘rishga asos bo‘ladi.",
+      "ru": "Согласно примечанию к таблице, очень высокий риск говорит в пользу факультативной цели < 70 mg/dL.",
+      "en": "Per the table footnote, very high risk favours the optional goal of < 70 mg/dL."
+     }
+    },
+    {
+     "guideline_id": "ncep-atp3-2004",
+     "guideline_name": "NCEP ATP III — 2004 update",
+     "year": 2004,
+     "population": {
+      "uz": "O‘rtacha yuqori xavf: 2 va undan ortiq xavf omili (10 yillik xavf 10–20%)",
+      "ru": "Умеренно высокий риск: 2 и более факторов риска (10-летний риск 10–20%)",
+      "en": "Moderately high risk: 2 or more risk factors (10-year risk 10–20%)"
+     },
+     "target_text": {
+      "uz": "< 130 mg/dL; ixtiyoriy maqsad: < 100 mg/dL",
+      "ru": "< 130 mg/dL; факультативная цель: < 100 mg/dL",
+      "en": "< 130 mg/dL; optional goal: < 100 mg/dL"
+     },
+     "unit": "mg/dL",
+     "refs": [
+      {
+       "source_id": "nhlbi-atp3-update-2004",
+       "locator": "Table 2. ATP III LDL-C Goals and Cutpoints for TLC and Drug Therapy in Different Risk Categories and Proposed Modifications Based on Recent Clinical Trial Evidence",
+       "pages": "236"
+      }
+     ]
+    },
+    {
+     "guideline_id": "ncep-atp3-2004",
+     "guideline_name": "NCEP ATP III — 2004 update",
+     "year": 2004,
+     "population": {
+      "uz": "O‘rtacha xavf: 2 va undan ortiq xavf omili (10 yillik xavf 10% dan past)",
+      "ru": "Умеренный риск: 2 и более факторов риска (10-летний риск ниже 10%)",
+      "en": "Moderate risk: 2 or more risk factors (10-year risk below 10%)"
+     },
+     "target_text": {
+      "uz": "< 130 mg/dL",
+      "ru": "< 130 mg/dL",
+      "en": "< 130 mg/dL"
+     },
+     "unit": "mg/dL",
+     "refs": [
+      {
+       "source_id": "nhlbi-atp3-update-2004",
+       "locator": "Table 2. ATP III LDL-C Goals and Cutpoints for TLC and Drug Therapy in Different Risk Categories and Proposed Modifications Based on Recent Clinical Trial Evidence",
+       "pages": "236"
+      }
+     ]
+    },
+    {
+     "guideline_id": "ncep-atp3-2004",
+     "guideline_name": "NCEP ATP III — 2004 update",
+     "year": 2004,
+     "population": {
+      "uz": "Pastroq xavf: 0–1 xavf omili",
+      "ru": "Более низкий риск: 0–1 фактор риска",
+      "en": "Lower risk: 0–1 risk factor"
+     },
+     "target_text": {
+      "uz": "< 160 mg/dL",
+      "ru": "< 160 mg/dL",
+      "en": "< 160 mg/dL"
+     },
+     "unit": "mg/dL",
+     "refs": [
+      {
+       "source_id": "nhlbi-atp3-update-2004",
+       "locator": "Table 2. ATP III LDL-C Goals and Cutpoints for TLC and Drug Therapy in Different Risk Categories and Proposed Modifications Based on Recent Clinical Trial Evidence",
+       "pages": "236"
+      }
+     ]
+    },
+    {
+     "guideline_id": "ncep-atp3-2004",
+     "guideline_name": "NCEP ATP III — 2004 update",
+     "year": 2004,
+     "population": {
+      "uz": "Yuqori yoki o‘rtacha yuqori xavf, LDL ni pasaytiruvchi dori qo‘llanganda",
+      "ru": "Высокий или умеренно высокий риск, если применяется препарат, снижающий ЛПНП",
+      "en": "High or moderately high risk, when LDL-lowering drug therapy is used"
+     },
+     "target_text": {
+      "uz": "LDL-C kamida 30–40% ga pasayishi",
+      "ru": "Снижение ХС ЛПНП не менее чем на 30–40%",
+      "en": "LDL-C reduction of at least 30–40%"
+     },
+     "unit": "%",
+     "refs": [
+      {
+       "source_id": "nhlbi-atp3-update-2004",
+       "locator": "Abstract",
+       "pages": "227"
+      },
+      {
+       "source_id": "nhlbi-atp3-update-2004",
+       "locator": "Table 2. ATP III LDL-C Goals and Cutpoints for TLC and Drug Therapy in Different Risk Categories and Proposed Modifications Based on Recent Clinical Trial Evidence",
+       "pages": "236"
+      }
+     ]
+    },
+    {
+     "guideline_id": "esc-eas-2019",
+     "guideline_name": "ESC/EAS",
+     "year": 2019,
+     "population": {
+      "uz": "Juda yuqori xavf (birlamchi yoki ikkilamchi profilaktika)",
+      "ru": "Очень высокий риск (первичная или вторичная профилактика)",
+      "en": "Very high risk (primary or secondary prevention)"
+     },
+     "target_text": {
+      "uz": "Boshlang‘ich qiymatdan ≥ 50% pasayish va < 1.4 mmol/L (< 55 mg/dL)",
+      "ru": "Снижение на ≥ 50% от исходного и < 1.4 mmol/L (< 55 mg/dL)",
+      "en": "≥ 50% reduction from baseline and < 1.4 mmol/L (< 55 mg/dL)"
+     },
+     "unit": "%, mmol/L, mg/dL",
+     "refs": [
+      {
+       "source_id": "esc-eas-dyslipidaemia-2019",
+       "locator": "Section 6 “Treatment targets and goals”, Table 7 “Treatment targets and goals for cardiovascular disease prevention”"
+      }
+     ]
+    },
+    {
+     "guideline_id": "esc-eas-2019",
+     "guideline_name": "ESC/EAS",
+     "year": 2019,
+     "population": {
+      "uz": "Yuqori xavf",
+      "ru": "Высокий риск",
+      "en": "High risk"
+     },
+     "target_text": {
+      "uz": "Boshlang‘ich qiymatdan ≥ 50% pasayish va < 1.8 mmol/L (< 70 mg/dL)",
+      "ru": "Снижение на ≥ 50% от исходного и < 1.8 mmol/L (< 70 mg/dL)",
+      "en": "≥ 50% reduction from baseline and < 1.8 mmol/L (< 70 mg/dL)"
+     },
+     "unit": "%, mmol/L, mg/dL",
+     "refs": [
+      {
+       "source_id": "esc-eas-dyslipidaemia-2019",
+       "locator": "Section 6 “Treatment targets and goals”, Table 7 “Treatment targets and goals for cardiovascular disease prevention”"
+      }
+     ]
+    },
+    {
+     "guideline_id": "esc-eas-2019",
+     "guideline_name": "ESC/EAS",
+     "year": 2019,
+     "population": {
+      "uz": "O‘rtacha xavf",
+      "ru": "Умеренный риск",
+      "en": "Moderate risk"
+     },
+     "target_text": {
+      "uz": "< 2.6 mmol/L (< 100 mg/dL)",
+      "ru": "< 2.6 mmol/L (< 100 mg/dL)",
+      "en": "< 2.6 mmol/L (< 100 mg/dL)"
+     },
+     "unit": "mmol/L, mg/dL",
+     "refs": [
+      {
+       "source_id": "esc-eas-dyslipidaemia-2019",
+       "locator": "Section 6 “Treatment targets and goals”, Table 7 “Treatment targets and goals for cardiovascular disease prevention”"
+      }
+     ]
+    },
+    {
+     "guideline_id": "esc-eas-2019",
+     "guideline_name": "ESC/EAS",
+     "year": 2019,
+     "population": {
+      "uz": "Past xavf",
+      "ru": "Низкий риск",
+      "en": "Low risk"
+     },
+     "target_text": {
+      "uz": "< 3.0 mmol/L (< 116 mg/dL)",
+      "ru": "< 3.0 mmol/L (< 116 mg/dL)",
+      "en": "< 3.0 mmol/L (< 116 mg/dL)"
+     },
+     "unit": "mmol/L, mg/dL",
+     "refs": [
+      {
+       "source_id": "esc-eas-dyslipidaemia-2019",
+       "locator": "Section 6 “Treatment targets and goals”, Table 7 “Treatment targets and goals for cardiovascular disease prevention”"
+      }
+     ],
+     "note": {
+      "uz": "Xavf toifalari ta’rifi shu yo‘riqnomaning 4-jadvalida.",
+      "ru": "Определения категорий риска — в таблице 4 этих рекомендаций.",
+      "en": "The risk categories are defined in Table 4 of this guideline."
+     }
+    },
+    {
+     "guideline_id": "acc-aha-2018",
+     "guideline_name": "ACC/AHA",
+     "year": 2018,
+     "population": {
+      "uz": "Klinik aterosklerotik yurak-qon tomir kasalligi (ASCVD) bor bemorlar",
+      "ru": "Пациенты с клиническим атеросклеротическим сердечно-сосудистым заболеванием (АССЗ)",
+      "en": "Patients with clinical atherosclerotic cardiovascular disease (ASCVD)"
+     },
+     "target_text": {
+      "uz": "LDL-C boshlang‘ich qiymatdan ≥ 50% pasayishi",
+      "ru": "Снижение ХС ЛПНП на ≥ 50% от исходного",
+      "en": "LDL-C reduction of ≥ 50% from baseline"
+     },
+     "unit": "%",
+     "refs": [
+      {
+       "source_id": "acc-aha-cholesterol-2018",
+       "locator": "Top 10 Take-Home Messages, No. 2"
+      },
+      {
+       "source_id": "acc-aha-cholesterol-2018",
+       "locator": "Section 3.1.1 Statin Therapy; Table 3 “High-, Moderate-, and Low-Intensity Statin Therapy”"
+      }
+     ],
+     "note": {
+      "uz": "Yo‘riqnoma javobni boshlang‘ich qiymatga nisbatan foiz pasayish bilan belgilaydi (3-jadval: yuqori intensivlik ≥ 50%, o‘rtacha 30–49%, past < 30%).",
+      "ru": "Рекомендации оценивают ответ по процентному снижению от исходного уровня (таблица 3: высокая интенсивность ≥ 50%, умеренная 30–49%, низкая < 30%).",
+      "en": "The guideline defines response as percentage reduction from baseline (Table 3: high intensity ≥ 50%, moderate 30–49%, low < 30%)."
+     }
+    },
+    {
+     "guideline_id": "acc-aha-2018",
+     "guideline_name": "ACC/AHA",
+     "year": 2018,
+     "population": {
+      "uz": "ASCVD bilan juda yuqori xavf, maksimal statin terapiyasi fonida",
+      "ru": "АССЗ с очень высоким риском, на фоне максимальной терапии статинами",
+      "en": "Very high-risk ASCVD, on maximal statin therapy"
+     },
+     "target_text": {
+      "uz": "Chegara: LDL-C ≥ 70 mg/dL (≥ 1.8 mmol/L)",
+      "ru": "Порог: ХС ЛПНП ≥ 70 mg/dL (≥ 1.8 mmol/L)",
+      "en": "Threshold: LDL-C ≥ 70 mg/dL (≥ 1.8 mmol/L)"
+     },
+     "unit": "mg/dL, mmol/L",
+     "refs": [
+      {
+       "source_id": "acc-aha-cholesterol-2018",
+       "locator": "Top 10 Take-Home Messages, No. 3"
+      }
+     ],
+     "note": {
+      "uz": "Bu maqsad emas, balki yo‘riqnomada qo‘shimcha (statin bo‘lmagan) dorini ko‘rib chiqish uchun belgilangan chegara.",
+      "ru": "Это не цель, а порог, при котором рекомендации предлагают рассмотреть добавление нестатинового препарата.",
+      "en": "This is not a goal but the threshold at which the guideline considers adding a non-statin drug."
+     }
+    },
+    {
+     "guideline_id": "acc-aha-2018",
+     "guideline_name": "ACC/AHA",
+     "year": 2018,
+     "population": {
+      "uz": "Birlamchi profilaktika: 40–75 yosh, qandli diabetsiz, LDL-C ≥ 70 mg/dL, statin buyurilgan holatda",
+      "ru": "Первичная профилактика: 40–75 лет, без сахарного диабета, ХС ЛПНП ≥ 70 mg/dL, если статин назначен",
+      "en": "Primary prevention: age 40–75, no diabetes, LDL-C ≥ 70 mg/dL, when a statin is indicated"
+     },
+     "target_text": {
+      "uz": "LDL-C ≥ 30% pasayishi; 10 yillik xavf ≥ 20% bo‘lsa — ≥ 50%",
+      "ru": "Снижение ХС ЛПНП на ≥ 30%; при 10-летнем риске ≥ 20% — на ≥ 50%",
+      "en": "LDL-C reduction of ≥ 30%; if 10-year risk is ≥ 20%, ≥ 50%"
+     },
+     "unit": "%",
+     "refs": [
+      {
+       "source_id": "acc-aha-cholesterol-2018",
+       "locator": "Top 10 Take-Home Messages, No. 7"
+      }
+     ]
+    }
+   ]
   },
   {
    "id": "triglycerides",
@@ -3742,7 +4255,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -3922,7 +4442,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -3935,7 +4462,8 @@
     "en": "Total minus HDL cholesterol"
    },
    "units": [
-    "mg/dL"
+    "mg/dL",
+    "mmol/L"
    ],
    "claims": [
     {
@@ -3992,7 +4520,10 @@
    "decision_limits": [],
    "source_ids": [
     "medline-cholesterol-wyntk",
-    "nhlbi-cholesterol-diagnosis"
+    "nhlbi-cholesterol-diagnosis",
+    "nhlbi-atp3-xsum",
+    "nhlbi-atp3-update-2004",
+    "esc-eas-dyslipidaemia-2019"
    ],
    "related": [
     "cholesterol-total",
@@ -4009,7 +4540,192 @@
     "molar_mass_g_per_mol": 386.664,
     "basis": "C27H46O (cholesterol); IUPAC standard atomic weights (abridged): C 12.011, H 1.008, N 14.007, O 15.999",
     "si_unit": "mmol/L"
-   }
+   },
+   "treatment_goals": [
+    {
+     "guideline_id": "ncep-atp3-2001",
+     "guideline_name": "NCEP ATP III (NHLBI)",
+     "year": 2001,
+     "population": {
+      "uz": "Koronar yurak kasalligi (KYuK) yoki unga teng xavfli holatlar (10 yillik KYuK xavfi 20% dan yuqori)",
+      "ru": "ИБС или эквиваленты риска ИБС (10-летний риск ИБС выше 20%)",
+      "en": "Coronary heart disease (CHD) or CHD risk equivalents (10-year CHD risk above 20%)"
+     },
+     "target_text": {
+      "uz": "< 130 mg/dL",
+      "ru": "< 130 mg/dL",
+      "en": "< 130 mg/dL"
+     },
+     "unit": "mg/dL",
+     "refs": [
+      {
+       "source_id": "nhlbi-atp3-xsum",
+       "locator": "Table 9. Comparison of LDL Cholesterol and Non-HDL Cholesterol Goals for Three Risk Categories",
+       "pages": "19"
+      },
+      {
+       "source_id": "nhlbi-atp3-xsum",
+       "locator": "Management of Specific Dyslipidemias — Elevated serum triglycerides",
+       "pages": "18"
+      }
+     ]
+    },
+    {
+     "guideline_id": "ncep-atp3-2001",
+     "guideline_name": "NCEP ATP III (NHLBI)",
+     "year": 2001,
+     "population": {
+      "uz": "2 va undan ortiq xavf omili (10 yillik xavf 20% yoki undan past)",
+      "ru": "2 и более факторов риска (10-летний риск 20% или ниже)",
+      "en": "2 or more risk factors (10-year risk 20% or lower)"
+     },
+     "target_text": {
+      "uz": "< 160 mg/dL",
+      "ru": "< 160 mg/dL",
+      "en": "< 160 mg/dL"
+     },
+     "unit": "mg/dL",
+     "refs": [
+      {
+       "source_id": "nhlbi-atp3-xsum",
+       "locator": "Table 9. Comparison of LDL Cholesterol and Non-HDL Cholesterol Goals for Three Risk Categories",
+       "pages": "19"
+      },
+      {
+       "source_id": "nhlbi-atp3-xsum",
+       "locator": "Management of Specific Dyslipidemias — Elevated serum triglycerides",
+       "pages": "18"
+      }
+     ]
+    },
+    {
+     "guideline_id": "ncep-atp3-2001",
+     "guideline_name": "NCEP ATP III (NHLBI)",
+     "year": 2001,
+     "population": {
+      "uz": "0–1 xavf omili",
+      "ru": "0–1 фактор риска",
+      "en": "0–1 risk factor"
+     },
+     "target_text": {
+      "uz": "< 190 mg/dL",
+      "ru": "< 190 mg/dL",
+      "en": "< 190 mg/dL"
+     },
+     "unit": "mg/dL",
+     "refs": [
+      {
+       "source_id": "nhlbi-atp3-xsum",
+       "locator": "Table 9. Comparison of LDL Cholesterol and Non-HDL Cholesterol Goals for Three Risk Categories",
+       "pages": "19"
+      },
+      {
+       "source_id": "nhlbi-atp3-xsum",
+       "locator": "Management of Specific Dyslipidemias — Elevated serum triglycerides",
+       "pages": "18"
+      }
+     ],
+     "note": {
+      "uz": "ATP III da non-HDL xolesterin triglitseridlar yuqori (≥ 200 mg/dL) bo‘lganda ikkinchi darajali maqsad; uning maqsadi LDL maqsadidan 30 mg/dL yuqori.",
+      "ru": "В ATP III холестерин не-ЛПВП — вторичная цель при высоких триглицеридах (≥ 200 mg/dL); его цель на 30 mg/dL выше цели для ЛПНП.",
+      "en": "In ATP III, non-HDL cholesterol is a secondary target when triglycerides are high (≥ 200 mg/dL); its goal is 30 mg/dL above the LDL goal."
+     }
+    },
+    {
+     "guideline_id": "ncep-atp3-2004",
+     "guideline_name": "NCEP ATP III — 2004 update",
+     "year": 2004,
+     "population": {
+      "uz": "Juda yuqori xavf va yuqori triglitseridlar",
+      "ru": "Очень высокий риск и высокие триглицериды",
+      "en": "Very high risk with high triglycerides"
+     },
+     "target_text": {
+      "uz": "Ixtiyoriy maqsad: < 100 mg/dL",
+      "ru": "Факультативная цель: < 100 mg/dL",
+      "en": "Optional goal: < 100 mg/dL"
+     },
+     "unit": "mg/dL",
+     "refs": [
+      {
+       "source_id": "nhlbi-atp3-update-2004",
+       "locator": "Table 2. ATP III LDL-C Goals and Cutpoints for TLC and Drug Therapy in Different Risk Categories and Proposed Modifications Based on Recent Clinical Trial Evidence",
+       "pages": "236"
+      }
+     ]
+    },
+    {
+     "guideline_id": "esc-eas-2019",
+     "guideline_name": "ESC/EAS",
+     "year": 2019,
+     "population": {
+      "uz": "Juda yuqori xavf",
+      "ru": "Очень высокий риск",
+      "en": "Very high risk"
+     },
+     "target_text": {
+      "uz": "< 2.2 mmol/L (< 85 mg/dL)",
+      "ru": "< 2.2 mmol/L (< 85 mg/dL)",
+      "en": "< 2.2 mmol/L (< 85 mg/dL)"
+     },
+     "unit": "mmol/L, mg/dL",
+     "refs": [
+      {
+       "source_id": "esc-eas-dyslipidaemia-2019",
+       "locator": "Section 6 “Treatment targets and goals”, Table 7 “Treatment targets and goals for cardiovascular disease prevention”"
+      }
+     ]
+    },
+    {
+     "guideline_id": "esc-eas-2019",
+     "guideline_name": "ESC/EAS",
+     "year": 2019,
+     "population": {
+      "uz": "Yuqori xavf",
+      "ru": "Высокий риск",
+      "en": "High risk"
+     },
+     "target_text": {
+      "uz": "< 2.6 mmol/L (< 100 mg/dL)",
+      "ru": "< 2.6 mmol/L (< 100 mg/dL)",
+      "en": "< 2.6 mmol/L (< 100 mg/dL)"
+     },
+     "unit": "mmol/L, mg/dL",
+     "refs": [
+      {
+       "source_id": "esc-eas-dyslipidaemia-2019",
+       "locator": "Section 6 “Treatment targets and goals”, Table 7 “Treatment targets and goals for cardiovascular disease prevention”"
+      }
+     ]
+    },
+    {
+     "guideline_id": "esc-eas-2019",
+     "guideline_name": "ESC/EAS",
+     "year": 2019,
+     "population": {
+      "uz": "O‘rtacha xavf",
+      "ru": "Умеренный риск",
+      "en": "Moderate risk"
+     },
+     "target_text": {
+      "uz": "< 3.4 mmol/L (< 130 mg/dL)",
+      "ru": "< 3.4 mmol/L (< 130 mg/dL)",
+      "en": "< 3.4 mmol/L (< 130 mg/dL)"
+     },
+     "unit": "mmol/L, mg/dL",
+     "refs": [
+      {
+       "source_id": "esc-eas-dyslipidaemia-2019",
+       "locator": "Section 6 “Treatment targets and goals”, Table 7 “Treatment targets and goals for cardiovascular disease prevention”"
+      }
+     ],
+     "note": {
+      "uz": "ESC/EAS da non-HDL xolesterin — ikkinchi darajali maqsad; asosiy maqsad LDL-C.",
+      "ru": "В ESC/EAS холестерин не-ЛПВП — вторичная цель; основная цель — ХС ЛПНП.",
+      "en": "In ESC/EAS, non-HDL cholesterol is a secondary goal; LDL-C is the primary goal."
+     }
+    }
+   ]
   },
   {
    "id": "albumin",
@@ -4039,7 +4755,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -4193,7 +4916,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -4380,7 +5110,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -4552,7 +5289,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -4723,7 +5467,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -4900,7 +5651,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -5083,7 +5841,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -5286,7 +6051,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -5480,7 +6252,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -5671,7 +6450,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -5851,7 +6637,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -5991,7 +6784,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -6181,7 +6981,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -6355,7 +7162,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -6729,7 +7543,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -7035,7 +7856,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -7535,7 +8363,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -7776,7 +8611,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -8005,7 +8847,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -8208,7 +9057,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -8466,7 +9322,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -8708,7 +9571,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -8968,7 +9838,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -9186,7 +10063,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -9387,7 +10271,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -9604,7 +10495,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -9875,7 +10773,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -10161,7 +11066,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -10409,7 +11321,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -10589,7 +11508,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -10816,7 +11742,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -11057,7 +11990,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -11110,7 +12050,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -11351,7 +12298,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -11597,7 +12551,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -11885,7 +12846,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -12179,7 +13147,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -17265,7 +18240,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -26035,7 +27017,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -26072,16 +27061,26 @@
       {
        "source_id": "medline-ency-urine-24h-volume",
        "locator": "Normal Results"
-      },
+      }
+     ],
+     "text": {
+      "uz": "Manbadagi misol referens interval (laboratoriyangiz intervali emas): 24 soatlik siydik hajmi — 800–2000 mL/24 soat, kuniga taxminan 2 litr suyuqlik ichilganda. MedlinePlus me’yoriy oraliqlar laboratoriyalar orasida farq qilishini aytadi — natijani laboratoriyaning o‘z referens intervali bilan solishtiring.",
+      "ru": "Пример референсного интервала из источника (не интервал вашей лаборатории): объём мочи за 24 часа — 800–2000 mL/24 ч при потреблении около 2 л жидкости в сутки. MedlinePlus указывает, что нормы различаются между лабораториями, — сравнивайте результат с референсным интервалом своей лаборатории.",
+      "en": "Example reference interval from the source (not your laboratory’s interval): 24-hour urine volume — 800–2,000 mL/24 h with a fluid intake of about 2 litres a day. MedlinePlus notes that normal ranges vary between laboratories — compare your result with your laboratory’s own reference interval."
+     }
+    },
+    {
+     "section": "results",
+     "refs": [
       {
        "source_id": "medline-ency-urine-24h-volume",
        "locator": "What Abnormal Results Mean"
       }
      ],
      "text": {
-      "uz": "MedlinePlus misol sifatida kuniga taxminan 2 litr suyuqlik ichilganda sutkalik siydik hajmini 800–2000 ml deb keltiradi (laboratoriyaga qarab farq qiladi). Kamayishi: suvsizlanish, kam suyuqlik ichish, surunkali buyrak kasalligining ayrim turlari. Ko‘payishi: buyrak yoki markaziy qandsiz diabet, qandli diabet, ko‘p suyuqlik ichish, ayrim buyrak kasalliklari, siydik haydovchi dorilar.",
-      "ru": "MedlinePlus приводит в качестве примера суточный объём мочи 800–2000 мл при потреблении около 2 л жидкости в сутки (зависит от лаборатории). Уменьшение: обезвоживание, недостаточное питьё, некоторые формы хронической болезни почек. Увеличение: почечный или центральный несахарный диабет, сахарный диабет, обильное питьё, некоторые болезни почек, мочегонные препараты.",
-      "en": "MedlinePlus gives 800–2,000 mL per day as an example normal range with a fluid intake of about 2 litres a day (ranges vary by lab). Lower volumes: dehydration, low fluid intake, some types of chronic kidney disease. Higher volumes: renal or central diabetes insipidus, diabetes mellitus, high fluid intake, some kidney diseases and diuretic medicines."
+      "uz": "Sutkalik siydik hajmining kamayishi: suvsizlanish, kam suyuqlik ichish, surunkali buyrak kasalligining ayrim turlari. Ko‘payishi: buyrak yoki markaziy qandsiz diabet, qandli diabet, ko‘p suyuqlik ichish, ayrim buyrak kasalliklari, siydik haydovchi dorilar.",
+      "ru": "Уменьшение суточного объёма мочи: обезвоживание, недостаточное питьё, некоторые формы хронической болезни почек. Увеличение: почечный или центральный несахарный диабет, сахарный диабет, обильное питьё, некоторые болезни почек, мочегонные препараты.",
+      "en": "Lower 24-hour urine volume: dehydration, low fluid intake, some types of chronic kidney disease. Higher volume: renal or central diabetes insipidus, diabetes mellitus, high fluid intake, some kidney diseases and diuretic medicines."
      }
     },
     {
@@ -26090,16 +27089,26 @@
       {
        "source_id": "medline-ency-urine-24h-protein",
        "locator": "Normal Results"
-      },
+      }
+     ],
+     "text": {
+      "uz": "Manbadagi misol referens interval (laboratoriyangiz intervali emas): 24 soatlik siydikdagi oqsil — 100 mg/24 soat dan kam (siydikdagi konsentratsiya sifatida — 10 mg/dL dan kam). Laboratoriyalar boshqa o‘lchov yoki boshqa namunadan foydalanishi mumkin — natijani laboratoriyaning o‘z referens intervali bilan solishtiring.",
+      "ru": "Пример референсного интервала из источника (не интервал вашей лаборатории): белок в моче за 24 часа — менее 100 mg/24 ч (как концентрация в моче — менее 10 mg/dL). Лаборатории могут использовать другие измерения или другие образцы — сравнивайте результат с референсным интервалом своей лаборатории.",
+      "en": "Example reference interval from the source (not your laboratory’s interval): 24-hour urine protein — less than 100 mg/24 h (as a urine concentration, less than 10 mg/dL). Laboratories may use different measurements or samples — compare your result with your laboratory’s own reference interval."
+     }
+    },
+    {
+     "section": "results",
+     "refs": [
       {
        "source_id": "medline-ency-urine-24h-protein",
        "locator": "What Abnormal Results Mean"
       }
      ],
      "text": {
-      "uz": "Sutkalik oqsil uchun MedlinePlus misol sifatida sutkasiga 100 mg dan kam (yoki siydikda 10 mg/dL dan kam) qiymatni keltiradi. Oqsil ko‘payishi: amiloidoz, siydik pufagi o‘smasi, yurak yetishmovchiligi, preeklampsiya, qandli diabet, gipertoniya, autoimmun kasalliklar va boshqa sabablar bilan bog‘liq buyrak kasalligi, mieloma kasalligi. Sog‘lom odamda ham og‘ir jismoniy zo‘riqish yoki suvsizlanishdan keyin oqsil ko‘payishi mumkin.",
-      "ru": "Для суточного белка MedlinePlus приводит в качестве примера менее 100 мг в сутки (или менее 10 мг/дл мочи). Повышение белка: амилоидоз, опухоль мочевого пузыря, сердечная недостаточность, преэклампсия, болезни почек при диабете, гипертонии, аутоиммунных и других состояниях, миеломная болезнь. У здоровых белок может повышаться после тяжёлой нагрузки или обезвоживания.",
-      "en": "For 24-hour protein, MedlinePlus gives less than 100 mg per day (or less than 10 mg/dL of urine) as an example normal value. Raised protein: amyloidosis, bladder tumor, heart failure, preeclampsia, kidney disease from diabetes, high blood pressure, autoimmune and other causes, and multiple myeloma. Healthy people may have higher protein after strenuous exercise or dehydration."
+      "uz": "Sutkalik oqsil ko‘payishi: amiloidoz, siydik pufagi o‘smasi, yurak yetishmovchiligi, preeklampsiya, qandli diabet, gipertoniya, autoimmun kasalliklar va boshqa sabablar bilan bog‘liq buyrak kasalligi, mieloma kasalligi. Sog‘lom odamda ham og‘ir jismoniy zo‘riqish yoki suvsizlanishdan keyin oqsil ko‘payishi mumkin.",
+      "ru": "Повышение суточного белка: амилоидоз, опухоль мочевого пузыря, сердечная недостаточность, преэклампсия, болезни почек при диабете, гипертонии, аутоиммунных и других состояниях, миеломная болезнь. У здоровых белок может повышаться после тяжёлой нагрузки или обезвоживания.",
+      "en": "Raised 24-hour protein: amyloidosis, bladder tumor, heart failure, preeclampsia, kidney disease from diabetes, high blood pressure, autoimmune and other causes, and multiple myeloma. Healthy people may have higher protein after strenuous exercise or dehydration."
      }
     },
     {
@@ -26147,9 +27156,9 @@
       }
      ],
      "text": {
-      "uz": "Sutkalik yig‘ishdan qochish uchun shifokor uning o‘rniga bitta siydik namunasida oqsil/kreatinin nisbatini buyurishi mumkin. Me’yoriy oraliqlar laboratoriyalar orasida farq qiladi — natijani shifokor bilan muhokama qiling.",
-      "ru": "Чтобы обойтись без суточного сбора, врач может назначить вместо него соотношение белок/креатинин в одной порции мочи. Нормы различаются между лабораториями — обсудите результат с врачом.",
-      "en": "To avoid a 24-hour collection, the provider may order a protein-to-creatinine ratio on a single urine sample instead. Normal ranges vary between laboratories — discuss your result with your provider."
+      "uz": "Sutkalik yig‘ishdan qochish uchun shifokor uning o‘rniga bitta (tasodifiy) siydik namunasida oqsil/kreatinin nisbatini buyurishi mumkin. Bu boshqa tahlil: u 24 soatlik miqdorni emas, oqsilning kreatininga nisbatini beradi. Me’yoriy oraliqlar laboratoriyalar orasida farq qiladi — natijani shifokor bilan muhokama qiling.",
+      "ru": "Чтобы обойтись без суточного сбора, врач может назначить вместо него соотношение белок/креатинин в одной (разовой) порции мочи. Это другой анализ: он даёт не количество за 24 часа, а отношение белка к креатинину. Нормы различаются между лабораториями — обсудите результат с врачом.",
+      "en": "To avoid a 24-hour collection, the provider may order a protein-to-creatinine ratio on a single (random) urine sample instead. This is a different test: it gives the ratio of protein to creatinine, not the amount passed in 24 hours. Normal ranges vary between laboratories — discuss your result with your provider."
      }
     }
    ],
@@ -26170,6 +27179,13 @@
     "uz": "24 soat davomida yig‘ilgan barcha siydik (sovuq joyda saqlanadi)",
     "ru": "Вся моча за 24 часа (хранится в прохладном месте)",
     "en": "All urine passed over 24 hours (kept cool)"
+   },
+   "notes": {
+    "results": {
+     "uz": "Bu bo‘limdagi raqamlar manbadagi misol bo‘lib, faqat 24 soat davomida yig‘ilgan siydikka tegishli (hajm — mL/24 soat, oqsil — mg/24 soat). Ular asosiy me’yor emas: laboratoriyangiz natija varaqasidagi referens intervalga qarang. Bir martalik (tasodifiy) namunadagi nisbatlar — albumin/kreatinin nisbati (ACR, mg/g) va oqsil/kreatinin nisbati — boshqa ko‘rsatkich va boshqa birlikda; ularni bu qiymatlar bilan solishtirmang.",
+     "ru": "Цифры в этом разделе — пример из источника и относятся только к моче, собранной за 24 часа (объём — mL/24 ч, белок — mg/24 ч). Это не основная норма: ориентируйтесь на референсный интервал в бланке вашей лаборатории. Соотношения в разовой (случайной) порции — альбумин/креатинин (ACR, mg/g) и белок/креатинин — другие показатели в других единицах; не сравнивайте их с этими значениями.",
+     "en": "The numbers in this section are examples from the source and apply only to urine collected over 24 hours (volume in mL/24 h, protein in mg/24 h). They are not the primary norm: use the reference interval on your laboratory’s report. Ratios measured on a single (random) sample — albumin-to-creatinine ratio (ACR, mg/g) and protein-to-creatinine ratio — are different measures in different units; do not compare them with these values."
+    }
    }
   },
   {
@@ -26214,7 +27230,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -30163,6 +31186,58 @@
    "jurisdiction": "US",
    "note": null,
    "reuse_rights": "verify_before_distribution"
+  },
+  {
+   "id": "nhlbi-atp3-xsum",
+   "kind": "web",
+   "title": "ATP III — Third Report of the NCEP Expert Panel on Detection, Evaluation, and Treatment of High Blood Cholesterol in Adults: Executive Summary (NIH Publication No. 01-3670)",
+   "publisher": "NHLBI · National Cholesterol Education Program (NCEP)",
+   "url": "https://www.nhlbi.nih.gov/files/docs/guidelines/atp3xsum.pdf",
+   "accessed": "2026-10-09",
+   "source_date": "2001-05",
+   "jurisdiction": "US",
+   "note": "Guideline document dated May 2001; later guidelines (see ESC/EAS 2019, ACC/AHA 2018) define goals differently.",
+   "reuse_rights": "verify_before_distribution",
+   "review_note": "US federal (NHLBI/NIH) publication. Only the numerical LDL-C and non-HDL-C goals of Tables 4, 5 and 9 are used, restated in our own words."
+  },
+  {
+   "id": "nhlbi-atp3-update-2004",
+   "kind": "web",
+   "title": "Implications of Recent Clinical Trials for the NCEP ATP III Guidelines (Grundy SM et al., Circulation 2004;110:227–239)",
+   "publisher": "NCEP Coordinating Committee · hosted by NHLBI (endorsed by NHLBI, ACCF, AHA)",
+   "url": "https://www.nhlbi.nih.gov/files/docs/guidelines/atp3upd04.pdf",
+   "accessed": "2026-10-09",
+   "source_date": "2004-07-13",
+   "jurisdiction": "US",
+   "note": null,
+   "reuse_rights": "verify_before_distribution",
+   "review_note": "Journal article (Circulation) hosted on nhlbi.nih.gov; copyright status to be verified. Only numerical goals from Table 2 (with footnotes) and the abstract are used, restated in our own words."
+  },
+  {
+   "id": "esc-eas-dyslipidaemia-2019",
+   "kind": "web",
+   "title": "2019 ESC/EAS Guidelines for the management of dyslipidaemias: lipid modification to reduce cardiovascular risk (Mach F et al., Eur Heart J 2020;41:111–188, doi:10.1093/eurheartj/ehz455)",
+   "publisher": "European Society of Cardiology (ESC) · European Atherosclerosis Society (EAS)",
+   "url": "https://academic.oup.com/eurheartj/article/41/1/111/5556353",
+   "accessed": "2026-10-09",
+   "source_date": "2019",
+   "jurisdiction": "Europe (ESC)",
+   "note": "Risk categories (very high, high, moderate, low) are defined in the guideline’s Table 4.",
+   "reuse_rights": "verify_before_distribution",
+   "review_note": "Copyrighted (ESC). No text copied: only the numerical goals of Table 7 (section 6) restated in our own words. Read via WebFetch; direct download returned 403."
+  },
+  {
+   "id": "acc-aha-cholesterol-2018",
+   "kind": "web",
+   "title": "2018 AHA/ACC/AACVPR/AAPA/ABC/ACPM/ADA/AGS/APhA/ASPC/NLA/PCNA Guideline on the Management of Blood Cholesterol (Grundy SM et al., Circulation 2019;139:e1082–e1143, doi:10.1161/CIR.0000000000000625)",
+   "publisher": "American College of Cardiology · American Heart Association",
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7403606/",
+   "accessed": "2026-10-09",
+   "source_date": "2018-11-10",
+   "jurisdiction": "US",
+   "note": "The guideline defines response by percentage LDL-C reduction from baseline and uses LDL-C thresholds, not fixed goals for every group.",
+   "reuse_rights": "verify_before_distribution",
+   "review_note": "Copyrighted (ACC/AHA). Only numerical thresholds and percentage reductions from the Top 10 Take-Home Messages (2, 3, 7) and Table 3 restated in our own words."
   }
  ],
  "quiz": [

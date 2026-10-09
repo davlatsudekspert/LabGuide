@@ -240,7 +240,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -481,7 +488,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -710,7 +724,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -913,7 +934,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -1171,7 +1199,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -1413,7 +1448,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -1673,7 +1715,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -1891,7 +1940,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -2092,7 +2148,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -2309,7 +2372,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -2580,7 +2650,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -2866,7 +2943,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -3114,7 +3198,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -3294,7 +3385,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -3521,7 +3619,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
@@ -3762,7 +3867,14 @@
    "review": {
     "reviewer_id": null,
     "reviewed_at": null,
-    "state": "pending"
+    "state": "pending",
+    "agent_checks": [
+     {
+      "date": "2026-10-09",
+      "scope": "sources opened and compared with claims; locators; numbers, units, specimen; RI/DL separation; uz/ru/en consistency",
+      "report": "docs/CONTENT_AUDIT_2026-10-09_A.md"
+     }
+    ]
    },
    "translation_review": {
     "uz": "pending",
