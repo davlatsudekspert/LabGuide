@@ -49,3 +49,6 @@ app.*.map.json
 
 # Vizual tekshiruv skrinshotlari (tool/screenshots)
 /tool/screenshots/out/
+
+# Agent ish papkalari (worktree)
+.claude/
