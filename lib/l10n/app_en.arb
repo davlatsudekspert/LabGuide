@@ -742,14 +742,253 @@
   "errNotPositive": "Not calculated: the result is not positive — check the values.",
   "errSexMissing": "Choose sex.",
   "micTitle": "Microscopy atlas",
-  "micNotice": "Image slot. Authentic micrographs are added only after usage rights and labels are verified.",
-  "micRedCells": "Red blood cells",
-  "micWhiteCells": "White blood cells",
-  "micEpithelium": "Epithelial cells",
-  "micCasts": "Casts",
-  "micCrystals": "Crystals",
-  "micItemSub": "Appearance · distinctions · limitations",
-  "micImagePending": "Image pending rights check",
+  "micSubtitle": "Urine, blood and parasites — licensed micrographs",
+  "micAtlasError": "Couldn’t open the atlas",
+  "micNotFound": "This image or section was not found",
+  "micImagesCount": "{count, plural, =1{1 image} other{{count} images}}",
+  "@micImagesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "micGapsCount": "{count} still without an image",
+  "@micGapsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "micResultsCount": "Found: {count}",
+  "@micResultsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "micSearchLabel": "Search the atlas",
+  "micSearchHint": "e.g. neutrophil, оксалат, bezgak",
+  "micNoResultsTitle": "Nothing found",
+  "micNoResultsBody": "Try another name or another language (uz, ru, en).",
+  "micSections": "Sections",
+  "micEduNotice": "Teaching images — not for diagnosis. Every image shows its author, licence and original caption. LabGuide notes are drafts awaiting expert review.",
+  "micEduTag": "Teaching image — not for diagnosis",
+  "micNoImageYet": "No licensed image yet",
+  "micGapWhy": "Why not?",
+  "micAllGroups": "All",
+  "micSectionQuiz": "Practise this section",
+  "micZoom": "Zoom",
+  "micOpenFull": "{name} — open full screen",
+  "@micOpenFull": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "micImageSemantics": "Micrograph: {name}",
+  "@micImageSemantics": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "micNames": "Name in three languages",
+  "micOriginalCaption": "Original caption",
+  "micCaptionLang": "Verbatim, in the source language · {lang}",
+  "@micCaptionLang": {
+    "placeholders": {
+      "lang": {
+        "type": "String"
+      }
+    }
+  },
+  "micTranslation": "Translation (LabGuide)",
+  "micLangEn": "English",
+  "micLangEs": "Spanish",
+  "micLangRu": "Russian",
+  "micPreparation": "Preparation",
+  "micMagnification": "Magnification",
+  "micStain": "Stain",
+  "micNotStated": "not stated in the source",
+  "micOnlySource": "Only what the source states is shown.",
+  "micDraftTitle": "What to look for",
+  "micDraftTag": "Draft · awaiting expert review",
+  "micCreditTitle": "Author and licence",
+  "micAuthor": "Author",
+  "micCredit": "Source",
+  "micOwnWork": "Own work",
+  "micLicense": "Licence",
+  "micSourceDate": "Date in the source",
+  "micLicenseText": "Licence text: {license}",
+  "@micLicenseText": {
+    "placeholders": {
+      "license": {
+        "type": "String"
+      }
+    }
+  },
+  "micSourcePage": "Source page",
+  "micOriginalFile": "Original file",
+  "micResized": "In-app copy: {width}×{height} px (original {origWidth}×{origHeight} px, downscaled only). Not cropped, no text added.",
+  "@micResized": {
+    "placeholders": {
+      "width": {
+        "type": "int"
+      },
+      "height": {
+        "type": "int"
+      },
+      "origWidth": {
+        "type": "int"
+      },
+      "origHeight": {
+        "type": "int"
+      }
+    }
+  },
+  "micNotResized": "In-app copy: {width}×{height} px, original size. Not cropped, no text added.",
+  "@micNotResized": {
+    "placeholders": {
+      "width": {
+        "type": "int"
+      },
+      "height": {
+        "type": "int"
+      }
+    }
+  },
+  "micShareAlike": "CC BY-SA: adapted versions of this image are shared under the same licence.",
+  "micCdcTerms": "Terms of use (from the CDC PHIL page, verbatim)",
+  "micCdcFree": "Free source: CDC Public Health Image Library (PHIL), wwwn.cdc.gov/phil",
+  "micSameEntity": "More images of this type",
+  "micCreditsTitle": "Image credits",
+  "micCreditsSub": "Licences and sources",
+  "micCreditsIntro": "Each image’s licence, author and original caption were re-checked on the source page ({date}). Images are only downscaled: not cropped, no text added, EXIF removed. Only CC0, CC BY, CC BY-SA, public domain and CDC PHIL images are used.",
+  "@micCreditsIntro": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "micLicenseTexts": "Licence texts",
+  "micCreditsRow": "Authors and licences",
+  "micCreditsRowSub": "Source and terms of use for every image",
+  "micClose": "Close",
+  "micZoomIn": "Zoom in",
+  "micZoomOut": "Zoom out",
+  "micZoomReset": "Reset view",
+  "micViewerHint": "Pinch or double-tap to zoom",
+  "micHeroEyebrow": "Practice",
+  "micQuizTitle": "What is it?",
+  "micQuizSubtitle": "Microscopy practice",
+  "micQuizHeroBody": "Look at the image and pick the right name: 4 options, all from the atlas. Instant feedback.",
+  "micQuizCta": "Start practice",
+  "micQuizScope": "Which section?",
+  "micQuizScopeChip": "{name} · {count}",
+  "@micQuizScopeChip": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "micQuizStart": "{count, plural, =1{Start · 1 question} other{Start · {count} questions}}",
+  "@micQuizStart": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "micQuizBest": "Best result: {correct}/{total}",
+  "@micQuizBest": {
+    "placeholders": {
+      "correct": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "micQuizNoBest": "No result yet — start your first round",
+  "micQuizRules": "Options come only from atlas names. Mixed fields and journal panels are left out. Results are stored only on this device.",
+  "micQuizProgress": "{current} / {total}",
+  "@micQuizProgress": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "micQuizStreak": "{count} in a row",
+  "@micQuizStreak": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "micQuizPromptArrow": "What is the cell marked by the arrowhead?",
+  "micQuizPromptCentre": "What is the cell in the centre?",
+  "micQuizPromptField": "What is mainly shown in this field?",
+  "micQuizCorrect": "Correct!",
+  "micQuizWrong": "Not quite. Correct answer: {answer}",
+  "@micQuizWrong": {
+    "placeholders": {
+      "answer": {
+        "type": "String"
+      }
+    }
+  },
+  "micQuizOpenCard": "Open the image card",
+  "micQuizTapToZoom": "Tap the image to zoom",
+  "micQuizResultGreat": "Excellent!",
+  "micQuizResultGood": "Good result",
+  "micQuizResultKeep": "Keep practising",
+  "micQuizScore": "{correct} of {total} correct",
+  "@micQuizScore": {
+    "placeholders": {
+      "correct": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "micQuizBestStreak": "Longest streak: {count}",
+  "@micQuizBestStreak": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "micQuizNewRecord": "New record",
+  "micQuizRetryMistakes": "Retry mistakes ({count})",
+  "@micQuizRetryMistakes": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "micQuizNewRound": "New round",
+  "micQuizChangeScope": "Another section",
+  "micQuizBackToAtlas": "Back to the atlas",
   "insTitle": "Instruments",
   "insMindraySub": "Exact model required",
   "insHumanSub": "Instrument and reagent documents are separate",

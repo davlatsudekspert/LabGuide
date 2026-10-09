@@ -12,6 +12,8 @@ import '../features/instruments/calibration_screens.dart';
 import '../features/instruments/instrument_screens.dart';
 import '../features/lab/lab_screens.dart';
 import '../features/learn/learn_screens.dart';
+import '../features/microscopy/microscopy_quiz_screen.dart';
+import '../features/microscopy/microscopy_screens.dart';
 import '../features/library/library_screens.dart';
 import '../features/profile/profile_screens.dart';
 import '../features/qc/qc_screens.dart';
@@ -277,6 +279,30 @@ GoRouter buildRouter(
                   GoRoute(
                     path: 'microscopy',
                     builder: (context, state) => const MicroscopyScreen(),
+                    routes: [
+                      GoRoute(
+                        path: 's/:section',
+                        builder: (context, state) => MicroSectionScreen(
+                          sectionId: state.pathParameters['section']!,
+                        ),
+                      ),
+                      GoRoute(
+                        path: 'i/:id',
+                        builder: (context, state) => MicroImageScreen(
+                          imageId: state.pathParameters['id']!,
+                        ),
+                      ),
+                      GoRoute(
+                        path: 'quiz',
+                        builder: (context, state) => MicroQuizScreen(
+                          sectionId: state.uri.queryParameters['section'],
+                        ),
+                      ),
+                      GoRoute(
+                        path: 'credits',
+                        builder: (context, state) => const MicroCreditsScreen(),
+                      ),
+                    ],
                   ),
                   GoRoute(
                     path: 'calculators',

@@ -18,6 +18,7 @@ import 'features/auth/otp_auth.dart';
 import 'features/content/content_controller.dart';
 import 'features/learn/quiz_progress.dart';
 import 'features/instruments/instruments_controller.dart';
+import 'features/microscopy/microscopy_controller.dart';
 import 'features/packs/pack_downloader.dart';
 import 'features/packs/packs_controller.dart';
 import 'features/qc/qc_controller.dart';
@@ -78,6 +79,7 @@ AppServices createServices({
       root: packsRoot ?? _defaultPacksRoot,
     ),
     instruments: InstrumentsController(store, bundle: bundle),
+    microscopy: MicroscopyController(store, bundle: bundle),
     backend: server,
     access: AccessController(server),
   )..watchAccess();

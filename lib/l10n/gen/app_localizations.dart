@@ -2458,53 +2458,545 @@ abstract class AppLocalizations {
   /// **'Microscopy atlas'**
   String get micTitle;
 
-  /// No description provided for @micNotice.
+  /// No description provided for @micSubtitle.
   ///
   /// In en, this message translates to:
-  /// **'Image slot. Authentic micrographs are added only after usage rights and labels are verified.'**
-  String get micNotice;
+  /// **'Urine, blood and parasites — licensed micrographs'**
+  String get micSubtitle;
 
-  /// No description provided for @micRedCells.
+  /// No description provided for @micAtlasError.
   ///
   /// In en, this message translates to:
-  /// **'Red blood cells'**
-  String get micRedCells;
+  /// **'Couldn’t open the atlas'**
+  String get micAtlasError;
 
-  /// No description provided for @micWhiteCells.
+  /// No description provided for @micNotFound.
   ///
   /// In en, this message translates to:
-  /// **'White blood cells'**
-  String get micWhiteCells;
+  /// **'This image or section was not found'**
+  String get micNotFound;
 
-  /// No description provided for @micEpithelium.
+  /// No description provided for @micImagesCount.
   ///
   /// In en, this message translates to:
-  /// **'Epithelial cells'**
-  String get micEpithelium;
+  /// **'{count, plural, =1{1 image} other{{count} images}}'**
+  String micImagesCount(int count);
 
-  /// No description provided for @micCasts.
+  /// No description provided for @micGapsCount.
   ///
   /// In en, this message translates to:
-  /// **'Casts'**
-  String get micCasts;
+  /// **'{count} still without an image'**
+  String micGapsCount(int count);
 
-  /// No description provided for @micCrystals.
+  /// No description provided for @micResultsCount.
   ///
   /// In en, this message translates to:
-  /// **'Crystals'**
-  String get micCrystals;
+  /// **'Found: {count}'**
+  String micResultsCount(int count);
 
-  /// No description provided for @micItemSub.
+  /// No description provided for @micSearchLabel.
   ///
   /// In en, this message translates to:
-  /// **'Appearance · distinctions · limitations'**
-  String get micItemSub;
+  /// **'Search the atlas'**
+  String get micSearchLabel;
 
-  /// No description provided for @micImagePending.
+  /// No description provided for @micSearchHint.
   ///
   /// In en, this message translates to:
-  /// **'Image pending rights check'**
-  String get micImagePending;
+  /// **'e.g. neutrophil, оксалат, bezgak'**
+  String get micSearchHint;
+
+  /// No description provided for @micNoResultsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing found'**
+  String get micNoResultsTitle;
+
+  /// No description provided for @micNoResultsBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Try another name or another language (uz, ru, en).'**
+  String get micNoResultsBody;
+
+  /// No description provided for @micSections.
+  ///
+  /// In en, this message translates to:
+  /// **'Sections'**
+  String get micSections;
+
+  /// No description provided for @micEduNotice.
+  ///
+  /// In en, this message translates to:
+  /// **'Teaching images — not for diagnosis. Every image shows its author, licence and original caption. LabGuide notes are drafts awaiting expert review.'**
+  String get micEduNotice;
+
+  /// No description provided for @micEduTag.
+  ///
+  /// In en, this message translates to:
+  /// **'Teaching image — not for diagnosis'**
+  String get micEduTag;
+
+  /// No description provided for @micNoImageYet.
+  ///
+  /// In en, this message translates to:
+  /// **'No licensed image yet'**
+  String get micNoImageYet;
+
+  /// No description provided for @micGapWhy.
+  ///
+  /// In en, this message translates to:
+  /// **'Why not?'**
+  String get micGapWhy;
+
+  /// No description provided for @micAllGroups.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get micAllGroups;
+
+  /// No description provided for @micSectionQuiz.
+  ///
+  /// In en, this message translates to:
+  /// **'Practise this section'**
+  String get micSectionQuiz;
+
+  /// No description provided for @micZoom.
+  ///
+  /// In en, this message translates to:
+  /// **'Zoom'**
+  String get micZoom;
+
+  /// No description provided for @micOpenFull.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} — open full screen'**
+  String micOpenFull(String name);
+
+  /// No description provided for @micImageSemantics.
+  ///
+  /// In en, this message translates to:
+  /// **'Micrograph: {name}'**
+  String micImageSemantics(String name);
+
+  /// No description provided for @micNames.
+  ///
+  /// In en, this message translates to:
+  /// **'Name in three languages'**
+  String get micNames;
+
+  /// No description provided for @micOriginalCaption.
+  ///
+  /// In en, this message translates to:
+  /// **'Original caption'**
+  String get micOriginalCaption;
+
+  /// No description provided for @micCaptionLang.
+  ///
+  /// In en, this message translates to:
+  /// **'Verbatim, in the source language · {lang}'**
+  String micCaptionLang(String lang);
+
+  /// No description provided for @micTranslation.
+  ///
+  /// In en, this message translates to:
+  /// **'Translation (LabGuide)'**
+  String get micTranslation;
+
+  /// No description provided for @micLangEn.
+  ///
+  /// In en, this message translates to:
+  /// **'English'**
+  String get micLangEn;
+
+  /// No description provided for @micLangEs.
+  ///
+  /// In en, this message translates to:
+  /// **'Spanish'**
+  String get micLangEs;
+
+  /// No description provided for @micLangRu.
+  ///
+  /// In en, this message translates to:
+  /// **'Russian'**
+  String get micLangRu;
+
+  /// No description provided for @micPreparation.
+  ///
+  /// In en, this message translates to:
+  /// **'Preparation'**
+  String get micPreparation;
+
+  /// No description provided for @micMagnification.
+  ///
+  /// In en, this message translates to:
+  /// **'Magnification'**
+  String get micMagnification;
+
+  /// No description provided for @micStain.
+  ///
+  /// In en, this message translates to:
+  /// **'Stain'**
+  String get micStain;
+
+  /// No description provided for @micNotStated.
+  ///
+  /// In en, this message translates to:
+  /// **'not stated in the source'**
+  String get micNotStated;
+
+  /// No description provided for @micOnlySource.
+  ///
+  /// In en, this message translates to:
+  /// **'Only what the source states is shown.'**
+  String get micOnlySource;
+
+  /// No description provided for @micDraftTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'What to look for'**
+  String get micDraftTitle;
+
+  /// No description provided for @micDraftTag.
+  ///
+  /// In en, this message translates to:
+  /// **'Draft · awaiting expert review'**
+  String get micDraftTag;
+
+  /// No description provided for @micCreditTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Author and licence'**
+  String get micCreditTitle;
+
+  /// No description provided for @micAuthor.
+  ///
+  /// In en, this message translates to:
+  /// **'Author'**
+  String get micAuthor;
+
+  /// No description provided for @micCredit.
+  ///
+  /// In en, this message translates to:
+  /// **'Source'**
+  String get micCredit;
+
+  /// No description provided for @micOwnWork.
+  ///
+  /// In en, this message translates to:
+  /// **'Own work'**
+  String get micOwnWork;
+
+  /// No description provided for @micLicense.
+  ///
+  /// In en, this message translates to:
+  /// **'Licence'**
+  String get micLicense;
+
+  /// No description provided for @micSourceDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Date in the source'**
+  String get micSourceDate;
+
+  /// No description provided for @micLicenseText.
+  ///
+  /// In en, this message translates to:
+  /// **'Licence text: {license}'**
+  String micLicenseText(String license);
+
+  /// No description provided for @micSourcePage.
+  ///
+  /// In en, this message translates to:
+  /// **'Source page'**
+  String get micSourcePage;
+
+  /// No description provided for @micOriginalFile.
+  ///
+  /// In en, this message translates to:
+  /// **'Original file'**
+  String get micOriginalFile;
+
+  /// No description provided for @micResized.
+  ///
+  /// In en, this message translates to:
+  /// **'In-app copy: {width}×{height} px (original {origWidth}×{origHeight} px, downscaled only). Not cropped, no text added.'**
+  String micResized(int width, int height, int origWidth, int origHeight);
+
+  /// No description provided for @micNotResized.
+  ///
+  /// In en, this message translates to:
+  /// **'In-app copy: {width}×{height} px, original size. Not cropped, no text added.'**
+  String micNotResized(int width, int height);
+
+  /// No description provided for @micShareAlike.
+  ///
+  /// In en, this message translates to:
+  /// **'CC BY-SA: adapted versions of this image are shared under the same licence.'**
+  String get micShareAlike;
+
+  /// No description provided for @micCdcTerms.
+  ///
+  /// In en, this message translates to:
+  /// **'Terms of use (from the CDC PHIL page, verbatim)'**
+  String get micCdcTerms;
+
+  /// No description provided for @micCdcFree.
+  ///
+  /// In en, this message translates to:
+  /// **'Free source: CDC Public Health Image Library (PHIL), wwwn.cdc.gov/phil'**
+  String get micCdcFree;
+
+  /// No description provided for @micSameEntity.
+  ///
+  /// In en, this message translates to:
+  /// **'More images of this type'**
+  String get micSameEntity;
+
+  /// No description provided for @micCreditsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Image credits'**
+  String get micCreditsTitle;
+
+  /// No description provided for @micCreditsSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Licences and sources'**
+  String get micCreditsSub;
+
+  /// No description provided for @micCreditsIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Each image’s licence, author and original caption were re-checked on the source page ({date}). Images are only downscaled: not cropped, no text added, EXIF removed. Only CC0, CC BY, CC BY-SA, public domain and CDC PHIL images are used.'**
+  String micCreditsIntro(String date);
+
+  /// No description provided for @micLicenseTexts.
+  ///
+  /// In en, this message translates to:
+  /// **'Licence texts'**
+  String get micLicenseTexts;
+
+  /// No description provided for @micCreditsRow.
+  ///
+  /// In en, this message translates to:
+  /// **'Authors and licences'**
+  String get micCreditsRow;
+
+  /// No description provided for @micCreditsRowSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Source and terms of use for every image'**
+  String get micCreditsRowSub;
+
+  /// No description provided for @micClose.
+  ///
+  /// In en, this message translates to:
+  /// **'Close'**
+  String get micClose;
+
+  /// No description provided for @micZoomIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Zoom in'**
+  String get micZoomIn;
+
+  /// No description provided for @micZoomOut.
+  ///
+  /// In en, this message translates to:
+  /// **'Zoom out'**
+  String get micZoomOut;
+
+  /// No description provided for @micZoomReset.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset view'**
+  String get micZoomReset;
+
+  /// No description provided for @micViewerHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Pinch or double-tap to zoom'**
+  String get micViewerHint;
+
+  /// No description provided for @micHeroEyebrow.
+  ///
+  /// In en, this message translates to:
+  /// **'Practice'**
+  String get micHeroEyebrow;
+
+  /// No description provided for @micQuizTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'What is it?'**
+  String get micQuizTitle;
+
+  /// No description provided for @micQuizSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Microscopy practice'**
+  String get micQuizSubtitle;
+
+  /// No description provided for @micQuizHeroBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Look at the image and pick the right name: 4 options, all from the atlas. Instant feedback.'**
+  String get micQuizHeroBody;
+
+  /// No description provided for @micQuizCta.
+  ///
+  /// In en, this message translates to:
+  /// **'Start practice'**
+  String get micQuizCta;
+
+  /// No description provided for @micQuizScope.
+  ///
+  /// In en, this message translates to:
+  /// **'Which section?'**
+  String get micQuizScope;
+
+  /// No description provided for @micQuizScopeChip.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} · {count}'**
+  String micQuizScopeChip(String name, int count);
+
+  /// No description provided for @micQuizStart.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{Start · 1 question} other{Start · {count} questions}}'**
+  String micQuizStart(int count);
+
+  /// No description provided for @micQuizBest.
+  ///
+  /// In en, this message translates to:
+  /// **'Best result: {correct}/{total}'**
+  String micQuizBest(int correct, int total);
+
+  /// No description provided for @micQuizNoBest.
+  ///
+  /// In en, this message translates to:
+  /// **'No result yet — start your first round'**
+  String get micQuizNoBest;
+
+  /// No description provided for @micQuizRules.
+  ///
+  /// In en, this message translates to:
+  /// **'Options come only from atlas names. Mixed fields and journal panels are left out. Results are stored only on this device.'**
+  String get micQuizRules;
+
+  /// No description provided for @micQuizProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'{current} / {total}'**
+  String micQuizProgress(int current, int total);
+
+  /// No description provided for @micQuizStreak.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} in a row'**
+  String micQuizStreak(int count);
+
+  /// No description provided for @micQuizPromptArrow.
+  ///
+  /// In en, this message translates to:
+  /// **'What is the cell marked by the arrowhead?'**
+  String get micQuizPromptArrow;
+
+  /// No description provided for @micQuizPromptCentre.
+  ///
+  /// In en, this message translates to:
+  /// **'What is the cell in the centre?'**
+  String get micQuizPromptCentre;
+
+  /// No description provided for @micQuizPromptField.
+  ///
+  /// In en, this message translates to:
+  /// **'What is mainly shown in this field?'**
+  String get micQuizPromptField;
+
+  /// No description provided for @micQuizCorrect.
+  ///
+  /// In en, this message translates to:
+  /// **'Correct!'**
+  String get micQuizCorrect;
+
+  /// No description provided for @micQuizWrong.
+  ///
+  /// In en, this message translates to:
+  /// **'Not quite. Correct answer: {answer}'**
+  String micQuizWrong(String answer);
+
+  /// No description provided for @micQuizOpenCard.
+  ///
+  /// In en, this message translates to:
+  /// **'Open the image card'**
+  String get micQuizOpenCard;
+
+  /// No description provided for @micQuizTapToZoom.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap the image to zoom'**
+  String get micQuizTapToZoom;
+
+  /// No description provided for @micQuizResultGreat.
+  ///
+  /// In en, this message translates to:
+  /// **'Excellent!'**
+  String get micQuizResultGreat;
+
+  /// No description provided for @micQuizResultGood.
+  ///
+  /// In en, this message translates to:
+  /// **'Good result'**
+  String get micQuizResultGood;
+
+  /// No description provided for @micQuizResultKeep.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep practising'**
+  String get micQuizResultKeep;
+
+  /// No description provided for @micQuizScore.
+  ///
+  /// In en, this message translates to:
+  /// **'{correct} of {total} correct'**
+  String micQuizScore(int correct, int total);
+
+  /// No description provided for @micQuizBestStreak.
+  ///
+  /// In en, this message translates to:
+  /// **'Longest streak: {count}'**
+  String micQuizBestStreak(int count);
+
+  /// No description provided for @micQuizNewRecord.
+  ///
+  /// In en, this message translates to:
+  /// **'New record'**
+  String get micQuizNewRecord;
+
+  /// No description provided for @micQuizRetryMistakes.
+  ///
+  /// In en, this message translates to:
+  /// **'Retry mistakes ({count})'**
+  String micQuizRetryMistakes(int count);
+
+  /// No description provided for @micQuizNewRound.
+  ///
+  /// In en, this message translates to:
+  /// **'New round'**
+  String get micQuizNewRound;
+
+  /// No description provided for @micQuizChangeScope.
+  ///
+  /// In en, this message translates to:
+  /// **'Another section'**
+  String get micQuizChangeScope;
+
+  /// No description provided for @micQuizBackToAtlas.
+  ///
+  /// In en, this message translates to:
+  /// **'Back to the atlas'**
+  String get micQuizBackToAtlas;
 
   /// No description provided for @insTitle.
   ///

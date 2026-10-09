@@ -9,6 +9,7 @@ import '../features/auth/auth_controller.dart';
 import '../features/content/content_controller.dart';
 import '../features/instruments/instruments_controller.dart';
 import '../features/learn/quiz_progress.dart';
+import '../features/microscopy/microscopy_controller.dart';
 import '../features/packs/packs_controller.dart';
 import '../features/qc/qc_controller.dart';
 import '../features/settings/settings_controller.dart';
@@ -53,6 +54,7 @@ class AppServices {
     required this.quizProgress,
     required this.packs,
     required this.instruments,
+    required this.microscopy,
     required this.backend,
     required this.access,
   });
@@ -69,6 +71,9 @@ class AppServices {
 
   /// Apparatlar katalogi, “Mening apparatlarim” va kalibrlash jurnali.
   final InstrumentsController instruments;
+
+  /// Mikroskopiya atlasi va “Bu nima?” mashqi natijalari.
+  final MicroscopyController microscopy;
 
   /// Server (sozlanmagan buildda — [UnconfiguredBackend]).
   final LabBackend backend;
@@ -114,6 +119,7 @@ class AppServices {
     qc.resetInMemory();
     quizProgress.resetInMemory();
     instruments.resetInMemory();
+    microscopy.resetInMemory();
     await packs.removeAll();
     settings.resetToDefaults(systemLocales);
   }

@@ -1343,29 +1343,322 @@ class AppLocalizationsUz extends AppLocalizations {
   String get micTitle => 'Mikroskopiya atlasi';
 
   @override
-  String get micNotice =>
-      'Tasvir joyi. Haqiqiy mikrofotolar foydalanish huquqi va belgilari tekshirilgandan keyingina qo‘shiladi.';
+  String get micSubtitle =>
+      'Siydik, qon va parazitlar — litsenziyali mikrofotolar';
 
   @override
-  String get micRedCells => 'Eritrotsitlar';
+  String get micAtlasError => 'Atlasni ochib bo‘lmadi';
 
   @override
-  String get micWhiteCells => 'Leykotsitlar';
+  String get micNotFound => 'Bunday rasm yoki bo‘lim topilmadi';
 
   @override
-  String get micEpithelium => 'Epiteliy hujayralari';
+  String micImagesCount(int count) {
+    return '$count ta rasm';
+  }
 
   @override
-  String get micCasts => 'Silindrlar';
+  String micGapsCount(int count) {
+    return '$count tasi uchun rasm hali yo‘q';
+  }
 
   @override
-  String get micCrystals => 'Kristallar';
+  String micResultsCount(int count) {
+    return 'Topildi: $count';
+  }
 
   @override
-  String get micItemSub => 'Ko‘rinish · farqlash · cheklov';
+  String get micSearchLabel => 'Atlasdan qidirish';
 
   @override
-  String get micImagePending => 'Tasvir huquqi tekshirilmoqda';
+  String get micSearchHint => 'Masalan: neytrofil, оксалат, malaria';
+
+  @override
+  String get micNoResultsTitle => 'Hech narsa topilmadi';
+
+  @override
+  String get micNoResultsBody =>
+      'Boshqa nom bilan yoki boshqa tilda yozib ko‘ring (uz, ru, en).';
+
+  @override
+  String get micSections => 'Bo‘limlar';
+
+  @override
+  String get micEduNotice =>
+      'O‘quv rasmlari — tashxis uchun emas. Har rasmda muallif, litsenziya va asl izoh bor. LabGuide tushuntirishlari — draft, mutaxassis tekshiruvi kutilmoqda.';
+
+  @override
+  String get micEduTag => 'O‘quv rasmi — tashxis uchun emas';
+
+  @override
+  String get micNoImageYet => 'Litsenziyali rasm hali yo‘q';
+
+  @override
+  String get micGapWhy => 'Nega yo‘q?';
+
+  @override
+  String get micAllGroups => 'Hammasi';
+
+  @override
+  String get micSectionQuiz => 'Shu bo‘lim bo‘yicha mashq';
+
+  @override
+  String get micZoom => 'Kattalashtirish';
+
+  @override
+  String micOpenFull(String name) {
+    return '$name — to‘liq ekranda ochish';
+  }
+
+  @override
+  String micImageSemantics(String name) {
+    return 'Mikrofoto: $name';
+  }
+
+  @override
+  String get micNames => 'Nomi uch tilda';
+
+  @override
+  String get micOriginalCaption => 'Asl izoh';
+
+  @override
+  String micCaptionLang(String lang) {
+    return 'Manba tilida, so‘zma-so‘z · $lang';
+  }
+
+  @override
+  String get micTranslation => 'Tarjima (LabGuide)';
+
+  @override
+  String get micLangEn => 'inglizcha';
+
+  @override
+  String get micLangEs => 'ispancha';
+
+  @override
+  String get micLangRu => 'ruscha';
+
+  @override
+  String get micPreparation => 'Preparat';
+
+  @override
+  String get micMagnification => 'Kattalashtirish';
+
+  @override
+  String get micStain => 'Bo‘yash';
+
+  @override
+  String get micNotStated => 'manbada ko‘rsatilmagan';
+
+  @override
+  String get micOnlySource => 'Faqat manbada yozilgan ma’lumot ko‘rsatiladi.';
+
+  @override
+  String get micDraftTitle => 'Nimaga e’tibor berish';
+
+  @override
+  String get micDraftTag => 'Draft · mutaxassis tekshiruvi kutilmoqda';
+
+  @override
+  String get micCreditTitle => 'Muallif va litsenziya';
+
+  @override
+  String get micAuthor => 'Muallif';
+
+  @override
+  String get micCredit => 'Manba';
+
+  @override
+  String get micOwnWork => 'Muallifning o‘z ishi (Own work)';
+
+  @override
+  String get micLicense => 'Litsenziya';
+
+  @override
+  String get micSourceDate => 'Manbadagi sana';
+
+  @override
+  String micLicenseText(String license) {
+    return 'Litsenziya matni: $license';
+  }
+
+  @override
+  String get micSourcePage => 'Manba sahifasi';
+
+  @override
+  String get micOriginalFile => 'Asl fayl';
+
+  @override
+  String micResized(int width, int height, int origWidth, int origHeight) {
+    return 'Ilovadagi nusxa: $width×$height px (asli $origWidth×$origHeight px, faqat kichraytirilgan). Kesilmagan, yozuv qo‘shilmagan.';
+  }
+
+  @override
+  String micNotResized(int width, int height) {
+    return 'Ilovadagi nusxa: $width×$height px, asl o‘lchamda. Kesilmagan, yozuv qo‘shilmagan.';
+  }
+
+  @override
+  String get micShareAlike =>
+      'CC BY-SA: bu rasmdan olingan moslashtirilgan nusxalar ham shu litsenziya ostida tarqatiladi.';
+
+  @override
+  String get micCdcTerms =>
+      'Foydalanish shartlari (CDC PHIL sahifasidan, so‘zma-so‘z)';
+
+  @override
+  String get micCdcFree =>
+      'Bepul manba: CDC Public Health Image Library (PHIL), wwwn.cdc.gov/phil';
+
+  @override
+  String get micSameEntity => 'Shu turdagi boshqa rasmlar';
+
+  @override
+  String get micCreditsTitle => 'Rasmlar mualliflari';
+
+  @override
+  String get micCreditsSub => 'Litsenziyalar va manbalar';
+
+  @override
+  String micCreditsIntro(String date) {
+    return 'Har rasmning litsenziyasi, muallifi va asl izohi manba sahifasidan qayta tekshirilgan ($date). Rasmlar faqat kichraytirilgan: kesilmagan, yozuv qo‘shilmagan, EXIF olib tashlangan. Faqat CC0, CC BY, CC BY-SA, public domain va CDC PHIL rasmlari olinadi.';
+  }
+
+  @override
+  String get micLicenseTexts => 'Litsenziya matnlari';
+
+  @override
+  String get micCreditsRow => 'Mualliflar va litsenziyalar';
+
+  @override
+  String get micCreditsRowSub =>
+      'Har rasmning manbasi va foydalanish shartlari';
+
+  @override
+  String get micClose => 'Yopish';
+
+  @override
+  String get micZoomIn => 'Kattalashtirish';
+
+  @override
+  String get micZoomOut => 'Kichraytirish';
+
+  @override
+  String get micZoomReset => 'Asl ko‘rinish';
+
+  @override
+  String get micViewerHint =>
+      'Ikki barmoq bilan yoki ikki marta bosib kattalashtiring';
+
+  @override
+  String get micHeroEyebrow => 'Mashq';
+
+  @override
+  String get micQuizTitle => 'Bu nima?';
+
+  @override
+  String get micQuizSubtitle => 'Mikroskopiya mashqi';
+
+  @override
+  String get micQuizHeroBody =>
+      'Rasmga qarang va to‘g‘ri nomni tanlang: 4 variant, hammasi atlasdan. Javob darhol ko‘rinadi.';
+
+  @override
+  String get micQuizCta => 'Mashqni boshlash';
+
+  @override
+  String get micQuizScope => 'Qaysi bo‘limdan?';
+
+  @override
+  String micQuizScopeChip(String name, int count) {
+    return '$name · $count';
+  }
+
+  @override
+  String micQuizStart(int count) {
+    return 'Boshlash · $count ta savol';
+  }
+
+  @override
+  String micQuizBest(int correct, int total) {
+    return 'Eng yaxshi natija: $correct/$total';
+  }
+
+  @override
+  String get micQuizNoBest => 'Hali natija yo‘q — birinchi raundni boshlang';
+
+  @override
+  String get micQuizRules =>
+      'Variantlar faqat atlasdagi nomlardan olinadi. Aralash maydon va jurnal panellari mashqqa kirmaydi. Natija faqat shu qurilmada saqlanadi.';
+
+  @override
+  String micQuizProgress(int current, int total) {
+    return '$current / $total';
+  }
+
+  @override
+  String micQuizStreak(int count) {
+    return '$count ketma-ket';
+  }
+
+  @override
+  String get micQuizPromptArrow => 'Strelka ko‘rsatgan hujayra nima?';
+
+  @override
+  String get micQuizPromptCentre => 'Markazdagi hujayra nima?';
+
+  @override
+  String get micQuizPromptField => 'Bu maydonda asosan nima ko‘rinadi?';
+
+  @override
+  String get micQuizCorrect => 'To‘g‘ri!';
+
+  @override
+  String micQuizWrong(String answer) {
+    return 'Noto‘g‘ri. To‘g‘ri javob: $answer';
+  }
+
+  @override
+  String get micQuizOpenCard => 'Rasm kartasini ochish';
+
+  @override
+  String get micQuizTapToZoom => 'Kattalashtirish uchun rasmni bosing';
+
+  @override
+  String get micQuizResultGreat => 'A’lo natija!';
+
+  @override
+  String get micQuizResultGood => 'Yaxshi natija';
+
+  @override
+  String get micQuizResultKeep => 'Mashqni davom ettiring';
+
+  @override
+  String micQuizScore(int correct, int total) {
+    return '$total tadan $correct tasi to‘g‘ri';
+  }
+
+  @override
+  String micQuizBestStreak(int count) {
+    return 'Eng uzun seriya: $count';
+  }
+
+  @override
+  String get micQuizNewRecord => 'Yangi rekord';
+
+  @override
+  String micQuizRetryMistakes(int count) {
+    return 'Xatolarni qayta ishlash ($count)';
+  }
+
+  @override
+  String get micQuizNewRound => 'Yangi raund';
+
+  @override
+  String get micQuizChangeScope => 'Boshqa bo‘lim';
+
+  @override
+  String get micQuizBackToAtlas => 'Atlasga qaytish';
 
   @override
   String get insTitle => 'Apparatlar';

@@ -34,6 +34,7 @@ abstract final class StoreKeys {
   static const packsCatalog = 'packs.catalog';
   static const myInstruments = 'instruments.mine';
   static const calibrationLog = 'instruments.calibrations';
+  static const microscopyQuiz = 'microscopy.quiz';
 
   static const all = <String>{
     language,
@@ -51,6 +52,7 @@ abstract final class StoreKeys {
     packsCatalog,
     myInstruments,
     calibrationLog,
+    microscopyQuiz,
   };
 }
 
