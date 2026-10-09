@@ -1840,6 +1840,534 @@ abstract class AppLocalizations {
   /// **'Tube color, time and temperature are tied to the specific tube, method and instructions. No universal parameters are given.'**
   String get preNotice;
 
+  /// No description provided for @diffTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Differential count'**
+  String get diffTitle;
+
+  /// No description provided for @diffSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Identify, count and interpret white cells'**
+  String get diffSubtitle;
+
+  /// No description provided for @diffLabCardBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Manual count tally, cell atlas and interpretation'**
+  String get diffLabCardBody;
+
+  /// No description provided for @diffHeroTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Read a differential with confidence'**
+  String get diffHeroTitle;
+
+  /// No description provided for @diffHeroBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Cell schematics, a big-button tally counter, interpretation and smear technique in one place.'**
+  String get diffHeroBody;
+
+  /// No description provided for @diffStartCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Start counting'**
+  String get diffStartCount;
+
+  /// No description provided for @diffResumeCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue counting ({count}/{target})'**
+  String diffResumeCount(int count, int target);
+
+  /// No description provided for @diffCellsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Cell identification'**
+  String get diffCellsTitle;
+
+  /// No description provided for @diffCellsSub.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} cells: size, nucleus, cytoplasm, granules'**
+  String diffCellsSub(int count);
+
+  /// No description provided for @diffConfusionsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Common mix-ups'**
+  String get diffConfusionsTitle;
+
+  /// No description provided for @diffConfusionsSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Reactive lymphocyte or monocyte? Band or segmented?'**
+  String get diffConfusionsSub;
+
+  /// No description provided for @diffCounterTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Tally counter'**
+  String get diffCounterTitle;
+
+  /// No description provided for @diffCounterSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap +1, long-press −1; 100 or 200 cells'**
+  String get diffCounterSub;
+
+  /// No description provided for @diffHistoryTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Saved results'**
+  String get diffHistoryTitle;
+
+  /// No description provided for @diffHistorySub.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} results — on this device only'**
+  String diffHistorySub(int count);
+
+  /// No description provided for @diffInterpretTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Interpretation'**
+  String get diffInterpretTitle;
+
+  /// No description provided for @diffInterpretSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Left shift, neutrophilia, lymphocytosis and more'**
+  String get diffInterpretSub;
+
+  /// No description provided for @diffTechniqueTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Smear technique and errors'**
+  String get diffTechniqueTitle;
+
+  /// No description provided for @diffTechniqueSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Making, staining, where to count'**
+  String get diffTechniqueSub;
+
+  /// No description provided for @diffQuizTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'“Which cell is this?” practice'**
+  String get diffQuizTitle;
+
+  /// No description provided for @diffQuizSub.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} questions with schematic images'**
+  String diffQuizSub(int count);
+
+  /// No description provided for @diffLearnSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Cell atlas, tally counter and “Which cell is this?” practice'**
+  String get diffLearnSub;
+
+  /// No description provided for @diffSourcesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Sources'**
+  String get diffSourcesTitle;
+
+  /// No description provided for @diffDraftTag.
+  ///
+  /// In en, this message translates to:
+  /// **'Draft · awaiting expert review'**
+  String get diffDraftTag;
+
+  /// No description provided for @diffDraftNote.
+  ///
+  /// In en, this message translates to:
+  /// **'This section has not been expert-reviewed. A result is not a diagnosis; reference intervals are on your laboratory’s report form.'**
+  String get diffDraftNote;
+
+  /// No description provided for @diffSchematicCaption.
+  ///
+  /// In en, this message translates to:
+  /// **'Schematic drawing (made by LabGuide) — not a micrograph'**
+  String get diffSchematicCaption;
+
+  /// No description provided for @diffScaleNote.
+  ///
+  /// In en, this message translates to:
+  /// **'All schematics share one scale; the surrounding red cells (~7.5 µm) help compare size.'**
+  String get diffScaleNote;
+
+  /// No description provided for @diffRelatedCards.
+  ///
+  /// In en, this message translates to:
+  /// **'Test cards'**
+  String get diffRelatedCards;
+
+  /// No description provided for @diffSize.
+  ///
+  /// In en, this message translates to:
+  /// **'Size'**
+  String get diffSize;
+
+  /// No description provided for @diffNucleus.
+  ///
+  /// In en, this message translates to:
+  /// **'Nucleus'**
+  String get diffNucleus;
+
+  /// No description provided for @diffCytoplasm.
+  ///
+  /// In en, this message translates to:
+  /// **'Cytoplasm'**
+  String get diffCytoplasm;
+
+  /// No description provided for @diffGranules.
+  ///
+  /// In en, this message translates to:
+  /// **'Granules'**
+  String get diffGranules;
+
+  /// No description provided for @diffKeySign.
+  ///
+  /// In en, this message translates to:
+  /// **'Key sign'**
+  String get diffKeySign;
+
+  /// No description provided for @diffSeenIn.
+  ///
+  /// In en, this message translates to:
+  /// **'When it is seen'**
+  String get diffSeenIn;
+
+  /// No description provided for @diffReferTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Refer to a physician or haematologist'**
+  String get diffReferTitle;
+
+  /// No description provided for @diffReferBody.
+  ///
+  /// In en, this message translates to:
+  /// **'If you see a blast or a cell you cannot identify, do not interpret it yourself. Have a haematologist or physician review the smear according to your laboratory’s procedure.'**
+  String get diffReferBody;
+
+  /// No description provided for @diffCompareA.
+  ///
+  /// In en, this message translates to:
+  /// **'Left'**
+  String get diffCompareA;
+
+  /// No description provided for @diffCompareB.
+  ///
+  /// In en, this message translates to:
+  /// **'Right'**
+  String get diffCompareB;
+
+  /// No description provided for @diffFeature.
+  ///
+  /// In en, this message translates to:
+  /// **'Feature'**
+  String get diffFeature;
+
+  /// No description provided for @diffTip.
+  ///
+  /// In en, this message translates to:
+  /// **'Tip'**
+  String get diffTip;
+
+  /// No description provided for @diffOpenCell.
+  ///
+  /// In en, this message translates to:
+  /// **'Details'**
+  String get diffOpenCell;
+
+  /// No description provided for @diffTargetLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cells to count'**
+  String get diffTargetLabel;
+
+  /// No description provided for @diffWbcLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'White cell count (WBC), ×10⁹/L — optional'**
+  String get diffWbcLabel;
+
+  /// No description provided for @diffWbcHint.
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. 7.5'**
+  String get diffWbcHint;
+
+  /// No description provided for @diffWbcInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a positive number (e.g. 7.5)'**
+  String get diffWbcInvalid;
+
+  /// No description provided for @diffTapHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap: +1 · Long-press: −1'**
+  String get diffTapHint;
+
+  /// No description provided for @diffUndo.
+  ///
+  /// In en, this message translates to:
+  /// **'Undo last'**
+  String get diffUndo;
+
+  /// No description provided for @diffReset.
+  ///
+  /// In en, this message translates to:
+  /// **'Start over'**
+  String get diffReset;
+
+  /// No description provided for @diffResetTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear the count?'**
+  String get diffResetTitle;
+
+  /// No description provided for @diffResetBody.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} counted cells will be cleared.'**
+  String diffResetBody(int count);
+
+  /// No description provided for @diffResetConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear'**
+  String get diffResetConfirm;
+
+  /// No description provided for @diffDoneTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'{target} cells counted'**
+  String diffDoneTitle(int target);
+
+  /// No description provided for @diffDoneBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Counting has stopped. Check the result, then save or copy it.'**
+  String get diffDoneBody;
+
+  /// No description provided for @diffBlocked.
+  ///
+  /// In en, this message translates to:
+  /// **'Target reached — tap not added'**
+  String get diffBlocked;
+
+  /// No description provided for @diffResultTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Result'**
+  String get diffResultTitle;
+
+  /// No description provided for @diffColCell.
+  ///
+  /// In en, this message translates to:
+  /// **'Cell'**
+  String get diffColCell;
+
+  /// No description provided for @diffColCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Count'**
+  String get diffColCount;
+
+  /// No description provided for @diffColAbs.
+  ///
+  /// In en, this message translates to:
+  /// **'×10⁹/L'**
+  String get diffColAbs;
+
+  /// No description provided for @diffAbsNeedWbc.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the WBC to see absolute counts.'**
+  String get diffAbsNeedWbc;
+
+  /// No description provided for @diffOtherWarning.
+  ///
+  /// In en, this message translates to:
+  /// **'“Other” cells were counted. If they are blasts or unidentified cells, have a haematologist or physician review the smear.'**
+  String get diffOtherWarning;
+
+  /// No description provided for @diffSave.
+  ///
+  /// In en, this message translates to:
+  /// **'Save to history'**
+  String get diffSave;
+
+  /// No description provided for @diffSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Result saved (on this device only)'**
+  String get diffSaved;
+
+  /// No description provided for @diffLabelField.
+  ///
+  /// In en, this message translates to:
+  /// **'Sample label (optional, no patient names)'**
+  String get diffLabelField;
+
+  /// No description provided for @diffLabelHint.
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. sample 12'**
+  String get diffLabelHint;
+
+  /// No description provided for @diffCopy.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy'**
+  String get diffCopy;
+
+  /// No description provided for @diffCopied.
+  ///
+  /// In en, this message translates to:
+  /// **'Result copied'**
+  String get diffCopied;
+
+  /// No description provided for @diffCopyHeader.
+  ///
+  /// In en, this message translates to:
+  /// **'Differential count ({total} cells)'**
+  String diffCopyHeader(int total);
+
+  /// No description provided for @diffCopyFooter.
+  ///
+  /// In en, this message translates to:
+  /// **'LabGuide · manual count. Reference intervals: see the laboratory report form.'**
+  String get diffCopyFooter;
+
+  /// No description provided for @diffWbcLine.
+  ///
+  /// In en, this message translates to:
+  /// **'WBC: {value} ×10⁹/L'**
+  String diffWbcLine(String value);
+
+  /// No description provided for @diffButtonSemantics.
+  ///
+  /// In en, this message translates to:
+  /// **'{cell}: {count}. Tap to add, long-press to subtract.'**
+  String diffButtonSemantics(String cell, int count);
+
+  /// No description provided for @diffDecrementAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Subtract one'**
+  String get diffDecrementAction;
+
+  /// No description provided for @diffHistoryEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No saved results yet'**
+  String get diffHistoryEmptyTitle;
+
+  /// No description provided for @diffHistoryEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Finish a count and tap “Save to history”.'**
+  String get diffHistoryEmptyBody;
+
+  /// No description provided for @diffHistoryClear.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete all'**
+  String get diffHistoryClear;
+
+  /// No description provided for @diffHistoryClearTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete history?'**
+  String get diffHistoryClearTitle;
+
+  /// No description provided for @diffHistoryClearBody.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} results will be deleted from this device.'**
+  String diffHistoryClearBody(int count);
+
+  /// No description provided for @diffDeleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Result deleted'**
+  String get diffDeleted;
+
+  /// No description provided for @diffHistoryLocalNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Results stay on this device and are not sent to a server. “Delete local data” in Profile removes them too.'**
+  String get diffHistoryLocalNote;
+
+  /// No description provided for @diffInterpretIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Interpretation always goes with the reference interval and the clinical picture. The reference is on your laboratory’s report form; the causes below are only possibilities, not a diagnosis.'**
+  String get diffInterpretIntro;
+
+  /// No description provided for @diffPossibleCauses.
+  ///
+  /// In en, this message translates to:
+  /// **'Possible causes'**
+  String get diffPossibleCauses;
+
+  /// No description provided for @diffAbsNote.
+  ///
+  /// In en, this message translates to:
+  /// **'A big rise in one cell type lowers the percentages of the others, so look at absolute counts (fraction × WBC).'**
+  String get diffAbsNote;
+
+  /// No description provided for @diffRangesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Why doesn’t the app give a “normal range”?'**
+  String get diffRangesTitle;
+
+  /// No description provided for @diffRangesBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Even two open sources give different example adult ranges (%). Reports use only the reference on your laboratory’s form; children’s ranges depend on age.'**
+  String get diffRangesBody;
+
+  /// No description provided for @diffRangesWho.
+  ///
+  /// In en, this message translates to:
+  /// **'WHO 2003'**
+  String get diffRangesWho;
+
+  /// No description provided for @diffRangesMedline.
+  ///
+  /// In en, this message translates to:
+  /// **'MedlinePlus'**
+  String get diffRangesMedline;
+
+  /// No description provided for @diffQuizPrompt.
+  ///
+  /// In en, this message translates to:
+  /// **'Which cell is this?'**
+  String get diffQuizPrompt;
+
+  /// No description provided for @diffQuizIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick the cell from the schematic. Questions are shuffled each time; after answering you see the distinguishing sign.'**
+  String get diffQuizIntro;
+
+  /// No description provided for @diffQuizStart.
+  ///
+  /// In en, this message translates to:
+  /// **'Start practice'**
+  String get diffQuizStart;
+
   /// No description provided for @preOrderTitle.
   ///
   /// In en, this message translates to:

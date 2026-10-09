@@ -1009,6 +1009,309 @@ class AppLocalizationsRu extends AppLocalizations {
       'Цвет пробирки, время и температура привязаны к конкретной пробирке, методу и инструкции. Универсальные параметры не приводятся.';
 
   @override
+  String get diffTitle => 'Лейкоформула';
+
+  @override
+  String get diffSubtitle => 'Узнать клетки, посчитать, интерпретировать';
+
+  @override
+  String get diffLabCardBody =>
+      'Счётчик для ручного подсчёта, атлас клеток и интерпретация';
+
+  @override
+  String get diffHeroTitle => 'Читайте лейкоформулу уверенно';
+
+  @override
+  String get diffHeroBody =>
+      'Схемы клеток, счётчик с крупными кнопками, интерпретация и техника мазка — в одном месте.';
+
+  @override
+  String get diffStartCount => 'Начать подсчёт';
+
+  @override
+  String diffResumeCount(int count, int target) {
+    return 'Продолжить подсчёт ($count/$target)';
+  }
+
+  @override
+  String get diffCellsTitle => 'Как узнать клетку';
+
+  @override
+  String diffCellsSub(int count) {
+    return '$count клеток: размер, ядро, цитоплазма, гранулы';
+  }
+
+  @override
+  String get diffConfusionsTitle => 'Частые ошибки';
+
+  @override
+  String get diffConfusionsSub =>
+      'Реактивный лимфоцит или моноцит? Палочка или сегмент?';
+
+  @override
+  String get diffCounterTitle => 'Счётчик';
+
+  @override
+  String get diffCounterSub =>
+      'Нажатие +1, долгое нажатие −1; 100 или 200 клеток';
+
+  @override
+  String get diffHistoryTitle => 'Сохранённые результаты';
+
+  @override
+  String diffHistorySub(int count) {
+    return 'Результатов: $count — только на этом устройстве';
+  }
+
+  @override
+  String get diffInterpretTitle => 'Интерпретация';
+
+  @override
+  String get diffInterpretSub =>
+      'Сдвиг влево, нейтрофилия, лимфоцитоз и другое';
+
+  @override
+  String get diffTechniqueTitle => 'Техника мазка и ошибки';
+
+  @override
+  String get diffTechniqueSub => 'Приготовление, окраска, где считать';
+
+  @override
+  String get diffQuizTitle => 'Тренажёр «Что это за клетка?»';
+
+  @override
+  String diffQuizSub(int count) {
+    return 'Вопросов: $count, со схемами';
+  }
+
+  @override
+  String get diffLearnSub =>
+      'Атлас клеток, счётчик и тренажёр «Что это за клетка?»';
+
+  @override
+  String get diffSourcesTitle => 'Источники';
+
+  @override
+  String get diffDraftTag => 'Черновик · на проверке у специалиста';
+
+  @override
+  String get diffDraftNote =>
+      'Раздел не прошёл проверку специалиста. Результат — не диагноз; референсы — на бланке вашей лаборатории.';
+
+  @override
+  String get diffSchematicCaption =>
+      'Схематичный рисунок (нарисован LabGuide) — не микрофото';
+
+  @override
+  String get diffScaleNote =>
+      'Все схемы в одном масштабе; эритроциты вокруг (~7,5 мкм) — для сравнения размеров.';
+
+  @override
+  String get diffRelatedCards => 'Карточки анализов';
+
+  @override
+  String get diffSize => 'Размер';
+
+  @override
+  String get diffNucleus => 'Ядро';
+
+  @override
+  String get diffCytoplasm => 'Цитоплазма';
+
+  @override
+  String get diffGranules => 'Гранулы';
+
+  @override
+  String get diffKeySign => 'Главный признак';
+
+  @override
+  String get diffSeenIn => 'Когда встречается';
+
+  @override
+  String get diffReferTitle => 'Направьте врачу или гематологу';
+
+  @override
+  String get diffReferBody =>
+      'Если видите бласт или неопознанную клетку — не интерпретируйте сами. Мазок должен посмотреть гематолог или врач по порядку вашей лаборатории.';
+
+  @override
+  String get diffCompareA => 'Слева';
+
+  @override
+  String get diffCompareB => 'Справа';
+
+  @override
+  String get diffFeature => 'Признак';
+
+  @override
+  String get diffTip => 'Совет';
+
+  @override
+  String get diffOpenCell => 'Подробнее';
+
+  @override
+  String get diffTargetLabel => 'Сколько клеток считать';
+
+  @override
+  String get diffWbcLabel => 'Лейкоциты (WBC), ×10⁹/л — необязательно';
+
+  @override
+  String get diffWbcHint => 'например, 7,5';
+
+  @override
+  String get diffWbcInvalid => 'Введите положительное число (например, 7,5)';
+
+  @override
+  String get diffTapHint => 'Нажатие: +1 · Долгое нажатие: −1';
+
+  @override
+  String get diffUndo => 'Отменить последнее';
+
+  @override
+  String get diffReset => 'Сначала';
+
+  @override
+  String get diffResetTitle => 'Очистить подсчёт?';
+
+  @override
+  String diffResetBody(int count) {
+    return 'Будет удалено подсчитанных клеток: $count.';
+  }
+
+  @override
+  String get diffResetConfirm => 'Очистить';
+
+  @override
+  String diffDoneTitle(int target) {
+    return 'Подсчитано $target клеток';
+  }
+
+  @override
+  String get diffDoneBody =>
+      'Подсчёт остановлен. Проверьте результат, сохраните или скопируйте.';
+
+  @override
+  String get diffBlocked => 'Цель достигнута — нажатие не добавлено';
+
+  @override
+  String get diffResultTitle => 'Результат';
+
+  @override
+  String get diffColCell => 'Клетка';
+
+  @override
+  String get diffColCount => 'Число';
+
+  @override
+  String get diffColAbs => '×10⁹/л';
+
+  @override
+  String get diffAbsNeedWbc => 'Для абсолютных чисел введите WBC.';
+
+  @override
+  String get diffOtherWarning =>
+      'Подсчитаны «другие» клетки. Если это бласты или неопознанные клетки — мазок должен посмотреть гематолог или врач.';
+
+  @override
+  String get diffSave => 'Сохранить в историю';
+
+  @override
+  String get diffSaved => 'Результат сохранён (только на этом устройстве)';
+
+  @override
+  String get diffLabelField => 'Метка образца (необязательно, без ФИО)';
+
+  @override
+  String get diffLabelHint => 'например, образец 12';
+
+  @override
+  String get diffCopy => 'Копировать';
+
+  @override
+  String get diffCopied => 'Результат скопирован';
+
+  @override
+  String diffCopyHeader(int total) {
+    return 'Лейкоформула ($total клеток)';
+  }
+
+  @override
+  String get diffCopyFooter =>
+      'LabGuide · ручной подсчёт. Референс — на бланке лаборатории.';
+
+  @override
+  String diffWbcLine(String value) {
+    return 'WBC: $value ×10⁹/л';
+  }
+
+  @override
+  String diffButtonSemantics(String cell, int count) {
+    return '$cell: $count. Нажмите — добавить, удерживайте — убавить.';
+  }
+
+  @override
+  String get diffDecrementAction => 'Убавить на один';
+
+  @override
+  String get diffHistoryEmptyTitle => 'Сохранённых результатов пока нет';
+
+  @override
+  String get diffHistoryEmptyBody =>
+      'Закончите подсчёт и нажмите «Сохранить в историю».';
+
+  @override
+  String get diffHistoryClear => 'Удалить все';
+
+  @override
+  String get diffHistoryClearTitle => 'Удалить историю?';
+
+  @override
+  String diffHistoryClearBody(int count) {
+    return 'С этого устройства будет удалено результатов: $count.';
+  }
+
+  @override
+  String get diffDeleted => 'Результат удалён';
+
+  @override
+  String get diffHistoryLocalNote =>
+      'Результаты хранятся только на этом устройстве и не отправляются на сервер. «Удалить локальные данные» в профиле удалит и их.';
+
+  @override
+  String get diffInterpretIntro =>
+      'Интерпретация всегда — вместе с референсом и клиникой. Референс — на бланке вашей лаборатории; причины ниже лишь возможные, это не диагноз.';
+
+  @override
+  String get diffPossibleCauses => 'Возможные причины';
+
+  @override
+  String get diffAbsNote =>
+      'Если резко растёт один тип, проценты остальных падают. Поэтому смотрите абсолютные числа (доля × WBC).';
+
+  @override
+  String get diffRangesTitle => 'Почему приложение не даёт «норму»?';
+
+  @override
+  String get diffRangesBody =>
+      'Даже в двух открытых источниках примерные интервалы для взрослых (%) различаются. В отчёте используется только референс с бланка вашей лаборатории; у детей интервалы зависят от возраста.';
+
+  @override
+  String get diffRangesWho => 'ВОЗ 2003';
+
+  @override
+  String get diffRangesMedline => 'MedlinePlus';
+
+  @override
+  String get diffQuizPrompt => 'Что это за клетка?';
+
+  @override
+  String get diffQuizIntro =>
+      'Выберите клетку по схеме. Вопросы каждый раз перемешиваются; после ответа показан отличительный признак.';
+
+  @override
+  String get diffQuizStart => 'Начать тренировку';
+
+  @override
   String get preOrderTitle => 'Порядок взятия пробирок (венепункция)';
 
   @override

@@ -71,6 +71,11 @@ class RoleHome {
       actions: [
         HomeAction(l.featureQc, Icons.show_chart_rounded, '/lab/qc'),
         HomeAction(
+          l.diffTitle,
+          Icons.bubble_chart_outlined,
+          '/lab/differential',
+        ),
+        HomeAction(
           l.featureCalibration,
           Icons.tune_rounded,
           '/lab/calibration',
@@ -84,6 +89,11 @@ class RoleHome {
           l.featureSampling,
           Icons.science_outlined,
           '/lab/preanalytics',
+        ),
+        HomeAction(
+          l.labInstruments,
+          Icons.precision_manufacturing_outlined,
+          '/lab/instruments',
         ),
       ],
       usefulAnalytes: const [

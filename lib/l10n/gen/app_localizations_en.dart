@@ -999,6 +999,308 @@ class AppLocalizationsEn extends AppLocalizations {
       'Tube color, time and temperature are tied to the specific tube, method and instructions. No universal parameters are given.';
 
   @override
+  String get diffTitle => 'Differential count';
+
+  @override
+  String get diffSubtitle => 'Identify, count and interpret white cells';
+
+  @override
+  String get diffLabCardBody =>
+      'Manual count tally, cell atlas and interpretation';
+
+  @override
+  String get diffHeroTitle => 'Read a differential with confidence';
+
+  @override
+  String get diffHeroBody =>
+      'Cell schematics, a big-button tally counter, interpretation and smear technique in one place.';
+
+  @override
+  String get diffStartCount => 'Start counting';
+
+  @override
+  String diffResumeCount(int count, int target) {
+    return 'Continue counting ($count/$target)';
+  }
+
+  @override
+  String get diffCellsTitle => 'Cell identification';
+
+  @override
+  String diffCellsSub(int count) {
+    return '$count cells: size, nucleus, cytoplasm, granules';
+  }
+
+  @override
+  String get diffConfusionsTitle => 'Common mix-ups';
+
+  @override
+  String get diffConfusionsSub =>
+      'Reactive lymphocyte or monocyte? Band or segmented?';
+
+  @override
+  String get diffCounterTitle => 'Tally counter';
+
+  @override
+  String get diffCounterSub => 'Tap +1, long-press −1; 100 or 200 cells';
+
+  @override
+  String get diffHistoryTitle => 'Saved results';
+
+  @override
+  String diffHistorySub(int count) {
+    return '$count results — on this device only';
+  }
+
+  @override
+  String get diffInterpretTitle => 'Interpretation';
+
+  @override
+  String get diffInterpretSub =>
+      'Left shift, neutrophilia, lymphocytosis and more';
+
+  @override
+  String get diffTechniqueTitle => 'Smear technique and errors';
+
+  @override
+  String get diffTechniqueSub => 'Making, staining, where to count';
+
+  @override
+  String get diffQuizTitle => '“Which cell is this?” practice';
+
+  @override
+  String diffQuizSub(int count) {
+    return '$count questions with schematic images';
+  }
+
+  @override
+  String get diffLearnSub =>
+      'Cell atlas, tally counter and “Which cell is this?” practice';
+
+  @override
+  String get diffSourcesTitle => 'Sources';
+
+  @override
+  String get diffDraftTag => 'Draft · awaiting expert review';
+
+  @override
+  String get diffDraftNote =>
+      'This section has not been expert-reviewed. A result is not a diagnosis; reference intervals are on your laboratory’s report form.';
+
+  @override
+  String get diffSchematicCaption =>
+      'Schematic drawing (made by LabGuide) — not a micrograph';
+
+  @override
+  String get diffScaleNote =>
+      'All schematics share one scale; the surrounding red cells (~7.5 µm) help compare size.';
+
+  @override
+  String get diffRelatedCards => 'Test cards';
+
+  @override
+  String get diffSize => 'Size';
+
+  @override
+  String get diffNucleus => 'Nucleus';
+
+  @override
+  String get diffCytoplasm => 'Cytoplasm';
+
+  @override
+  String get diffGranules => 'Granules';
+
+  @override
+  String get diffKeySign => 'Key sign';
+
+  @override
+  String get diffSeenIn => 'When it is seen';
+
+  @override
+  String get diffReferTitle => 'Refer to a physician or haematologist';
+
+  @override
+  String get diffReferBody =>
+      'If you see a blast or a cell you cannot identify, do not interpret it yourself. Have a haematologist or physician review the smear according to your laboratory’s procedure.';
+
+  @override
+  String get diffCompareA => 'Left';
+
+  @override
+  String get diffCompareB => 'Right';
+
+  @override
+  String get diffFeature => 'Feature';
+
+  @override
+  String get diffTip => 'Tip';
+
+  @override
+  String get diffOpenCell => 'Details';
+
+  @override
+  String get diffTargetLabel => 'Cells to count';
+
+  @override
+  String get diffWbcLabel => 'White cell count (WBC), ×10⁹/L — optional';
+
+  @override
+  String get diffWbcHint => 'e.g. 7.5';
+
+  @override
+  String get diffWbcInvalid => 'Enter a positive number (e.g. 7.5)';
+
+  @override
+  String get diffTapHint => 'Tap: +1 · Long-press: −1';
+
+  @override
+  String get diffUndo => 'Undo last';
+
+  @override
+  String get diffReset => 'Start over';
+
+  @override
+  String get diffResetTitle => 'Clear the count?';
+
+  @override
+  String diffResetBody(int count) {
+    return '$count counted cells will be cleared.';
+  }
+
+  @override
+  String get diffResetConfirm => 'Clear';
+
+  @override
+  String diffDoneTitle(int target) {
+    return '$target cells counted';
+  }
+
+  @override
+  String get diffDoneBody =>
+      'Counting has stopped. Check the result, then save or copy it.';
+
+  @override
+  String get diffBlocked => 'Target reached — tap not added';
+
+  @override
+  String get diffResultTitle => 'Result';
+
+  @override
+  String get diffColCell => 'Cell';
+
+  @override
+  String get diffColCount => 'Count';
+
+  @override
+  String get diffColAbs => '×10⁹/L';
+
+  @override
+  String get diffAbsNeedWbc => 'Enter the WBC to see absolute counts.';
+
+  @override
+  String get diffOtherWarning =>
+      '“Other” cells were counted. If they are blasts or unidentified cells, have a haematologist or physician review the smear.';
+
+  @override
+  String get diffSave => 'Save to history';
+
+  @override
+  String get diffSaved => 'Result saved (on this device only)';
+
+  @override
+  String get diffLabelField => 'Sample label (optional, no patient names)';
+
+  @override
+  String get diffLabelHint => 'e.g. sample 12';
+
+  @override
+  String get diffCopy => 'Copy';
+
+  @override
+  String get diffCopied => 'Result copied';
+
+  @override
+  String diffCopyHeader(int total) {
+    return 'Differential count ($total cells)';
+  }
+
+  @override
+  String get diffCopyFooter =>
+      'LabGuide · manual count. Reference intervals: see the laboratory report form.';
+
+  @override
+  String diffWbcLine(String value) {
+    return 'WBC: $value ×10⁹/L';
+  }
+
+  @override
+  String diffButtonSemantics(String cell, int count) {
+    return '$cell: $count. Tap to add, long-press to subtract.';
+  }
+
+  @override
+  String get diffDecrementAction => 'Subtract one';
+
+  @override
+  String get diffHistoryEmptyTitle => 'No saved results yet';
+
+  @override
+  String get diffHistoryEmptyBody =>
+      'Finish a count and tap “Save to history”.';
+
+  @override
+  String get diffHistoryClear => 'Delete all';
+
+  @override
+  String get diffHistoryClearTitle => 'Delete history?';
+
+  @override
+  String diffHistoryClearBody(int count) {
+    return '$count results will be deleted from this device.';
+  }
+
+  @override
+  String get diffDeleted => 'Result deleted';
+
+  @override
+  String get diffHistoryLocalNote =>
+      'Results stay on this device and are not sent to a server. “Delete local data” in Profile removes them too.';
+
+  @override
+  String get diffInterpretIntro =>
+      'Interpretation always goes with the reference interval and the clinical picture. The reference is on your laboratory’s report form; the causes below are only possibilities, not a diagnosis.';
+
+  @override
+  String get diffPossibleCauses => 'Possible causes';
+
+  @override
+  String get diffAbsNote =>
+      'A big rise in one cell type lowers the percentages of the others, so look at absolute counts (fraction × WBC).';
+
+  @override
+  String get diffRangesTitle => 'Why doesn’t the app give a “normal range”?';
+
+  @override
+  String get diffRangesBody =>
+      'Even two open sources give different example adult ranges (%). Reports use only the reference on your laboratory’s form; children’s ranges depend on age.';
+
+  @override
+  String get diffRangesWho => 'WHO 2003';
+
+  @override
+  String get diffRangesMedline => 'MedlinePlus';
+
+  @override
+  String get diffQuizPrompt => 'Which cell is this?';
+
+  @override
+  String get diffQuizIntro =>
+      'Pick the cell from the schematic. Questions are shuffled each time; after answering you see the distinguishing sign.';
+
+  @override
+  String get diffQuizStart => 'Start practice';
+
+  @override
   String get preOrderTitle => 'Order of draw (venepuncture)';
 
   @override

@@ -41,6 +41,10 @@ abstract final class StoreKeys {
   /// Kutubxona PDF lari: oxirgi sahifa va xatcho'plar.
   static const libraryReading = 'library.reading';
 
+  /// Leykoformula: joriy sanash (qoralama) va saqlangan natijalar.
+  static const differentialDraft = 'differential.draft';
+  static const differentialHistory = 'differential.history';
+
   static const all = <String>{
     language,
     themeMode,
@@ -59,6 +63,8 @@ abstract final class StoreKeys {
     calibrationLog,
     partnersCache,
     libraryReading,
+    differentialDraft,
+    differentialHistory,
   };
 }
 

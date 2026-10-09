@@ -7,6 +7,7 @@ import '../core/backend/lab_backend.dart';
 import '../core/storage/kv_store.dart';
 import '../features/auth/auth_controller.dart';
 import '../features/content/content_controller.dart';
+import '../features/differential/differential_controller.dart';
 import '../features/instruments/instruments_controller.dart';
 import '../features/learn/quiz_progress.dart';
 import '../features/partners/partners_controller.dart';
@@ -59,6 +60,7 @@ class AppServices {
     required this.backend,
     required this.access,
     required this.partners,
+    required this.differential,
   });
 
   final AppConfig config;
@@ -83,6 +85,9 @@ class AppServices {
 
   /// Hamkorlar (reklama) — faqat server ulangan buildda.
   final PartnersController partners;
+
+  /// Leykoformula hisoblagichi va natijalar tarixi (faqat qurilmada).
+  final DifferentialController differential;
 
   /// Server vakolatlari va o'qilmagan javoblarni yangilash. Rol hali
   /// tanlanmagan bo'lsa profil yozilmaydi (taxminiy rol sanalmasin).
@@ -126,6 +131,7 @@ class AppServices {
     instruments.resetInMemory();
     partners.resetInMemory();
     reading.resetInMemory();
+    differential.resetInMemory();
     await packs.removeAll();
     settings.resetToDefaults(systemLocales);
   }
