@@ -32,6 +32,8 @@ abstract final class StoreKeys {
   static const qcData = 'qc.data';
   static const quizProgress = 'quiz.progress';
   static const packsCatalog = 'packs.catalog';
+  static const myInstruments = 'instruments.mine';
+  static const calibrationLog = 'instruments.calibrations';
 
   static const all = <String>{
     language,
@@ -47,6 +49,8 @@ abstract final class StoreKeys {
     qcData,
     quizProgress,
     packsCatalog,
+    myInstruments,
+    calibrationLog,
   };
 }
 

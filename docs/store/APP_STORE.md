@@ -172,3 +172,14 @@ Beta App Review, aloqa ma’lumotlari va maxfiylik siyosati havolasi kerak.
 uchun 1290×2796 px, uch tilda 6 tadan: bosh sahifa, tahlillar atlasi, glyukoza qaror
 chegaralari, eGFR natijasi, Levey–Jennings grafigi, izohli test. Natija
 `tool/screenshots/out/store/<til>/` da (repoga kirmaydi).
+
+## 11. Ikonka va grafikalar
+
+Hammasi egasining logosidan (`python3 tool/icons/make_icons.py`, D-37):
+
+| Fayl | Qayerga |
+|---|---|
+| `docs/store/app_store_icon_1024.png` | App Store (buildning AppIcon ichida ham bor — alohida yuklash shart emas) |
+| `docs/store/google_play_icon_512.png` | Google Play Console → Store listing → App icon (512×512, shaffofsiz) |
+| `docs/store/google_play_feature_graphic.png` | Google Play → Feature graphic (1024×500) |
+

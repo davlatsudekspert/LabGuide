@@ -574,7 +574,8 @@ class AppLocalizationsUz extends AppLocalizations {
   String get labInstruments => 'Apparatlar va metodikalar';
 
   @override
-  String get labInstrumentsSub => 'Mindray · HUMAN · boshqa';
+  String get labInstrumentsSub =>
+      'Biokimyo · gematologiya · immunokimyo · siydik';
 
   @override
   String get labMicroscopySub => 'Tasvir va tuzilmalarni solishtirish';
@@ -1380,6 +1381,421 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get insOtherSub => 'Aniq model va IFU bo‘yicha moslash';
+
+  @override
+  String get instSearchLabel => 'Apparat qidirish';
+
+  @override
+  String get instSearchHint => 'Model, ishlab chiqaruvchi yoki yo‘nalish';
+
+  @override
+  String get instNoResultsTitle => 'Model topilmadi';
+
+  @override
+  String get instNoResultsBody =>
+      'Katalogda yo‘q apparatni pastdagi tugma bilan qo‘lda qo‘shishingiz mumkin.';
+
+  @override
+  String get instMine => 'Mening apparatlarim';
+
+  @override
+  String get instDirections => 'Yo‘nalishlar';
+
+  @override
+  String instModelsCount(int count) {
+    return '$count ta model';
+  }
+
+  @override
+  String instPlanned(String names) {
+    return 'Keyingi bosqich: $names';
+  }
+
+  @override
+  String get instPlannedBody =>
+      'Bu ishlab chiqaruvchilarning modellari rasmiy manbalardan tekshirilgach qo‘shiladi.';
+
+  @override
+  String get instAddCustom => 'Ro‘yxatda yo‘q apparatni qo‘shish';
+
+  @override
+  String get instAddCustomSub =>
+      'Ishlab chiqaruvchi va modelni o‘zingiz kiritasiz';
+
+  @override
+  String get instCustomTag => 'Siz kiritgan';
+
+  @override
+  String instCatalogNote(String date) {
+    return 'Katalog ishlab chiqaruvchilarning rasmiy sahifa va hujjatlaridan tuzilgan ($date holatiga). Har ma’lumot yonida manbasi bor.';
+  }
+
+  @override
+  String get instChooseMaker => 'Ishlab chiqaruvchini tanlang';
+
+  @override
+  String get instChooseModel => 'Modelni tanlang';
+
+  @override
+  String get instStatusTitle => 'Ma’lumot holati';
+
+  @override
+  String get instStatusDevice => 'Apparat ma’lumoti mavjud';
+
+  @override
+  String get instStatusDeviceSub =>
+      'Rasmiy sahifa, buklet yoki regulyator hujjatidan';
+
+  @override
+  String get instStatusIfu => 'Yo‘riqnoma mavjud';
+
+  @override
+  String get instStatusIfuSub =>
+      'Rasmiy operator qo‘llanmasi versiyasi bilan solishtirilgan';
+
+  @override
+  String get instStatusExpert => 'Mutaxassis tekshirgan';
+
+  @override
+  String get instStatusExpertSub =>
+      'Mustaqil laboratoriya mutaxassisi ko‘rib chiqqan';
+
+  @override
+  String get instStatusDone => 'bor';
+
+  @override
+  String get instStatusNotYet => 'hali yo‘q';
+
+  @override
+  String get instPurpose => 'Vazifasi';
+
+  @override
+  String get instPrinciple => 'Ishlash prinsipi';
+
+  @override
+  String get instNotStated => 'Rasmiy manbada ko‘rsatilmagan.';
+
+  @override
+  String get instOfficialText => 'Rasmiy matn';
+
+  @override
+  String get instKeyFacts => 'Asosiy ma’lumotlar';
+
+  @override
+  String get instManual => 'Operator qo‘llanmasi';
+
+  @override
+  String get instManualPublic => 'Ochiq e’lon qilingan';
+
+  @override
+  String get instManualLogin => 'Login bilan';
+
+  @override
+  String get instManualNotPublic => 'Ochiq e’lon qilinmagan';
+
+  @override
+  String get instDocsPortal => 'Hujjatlar portali';
+
+  @override
+  String get instLoginYes => 'login kerak';
+
+  @override
+  String get instLoginNo => 'loginsiz';
+
+  @override
+  String get instLoginUnknown => 'login holati tekshirilmagan';
+
+  @override
+  String get instMaintenance => 'Kundalik parvarish';
+
+  @override
+  String get instMaintenanceNone =>
+      'Ishlab chiqaruvchi kundalik parvarish bosqichlarini ochiq e’lon qilmagan. Apparatingiz operator qo‘llanmasidagi “Maintenance” bo‘limiga amal qiling — LabGuide bosqichlarni taxmin qilmaydi.';
+
+  @override
+  String get instMaintenanceQuotes =>
+      'Ishlab chiqaruvchi ochiq manbada aytgani:';
+
+  @override
+  String get instReagentSystem => 'Reagent tizimi';
+
+  @override
+  String get instReagentOpen =>
+      'Ochiq — boshqa ishlab chiqaruvchi reagentlari uchun ham sozlash mumkin';
+
+  @override
+  String get instReagentPartly => 'Qisman ochiq — foydalanuvchi kanallari bor';
+
+  @override
+  String get instReagentClosed => 'Yopiq — faqat tizim reagentlari';
+
+  @override
+  String get instReagentUnknown => 'Ochiqligi rasmiy manbada ko‘rsatilmagan';
+
+  @override
+  String instValidatedReagents(int count) {
+    return 'Sozlamasi apparatda bor reagentlar (rasmiy manba bo‘yicha): $count';
+  }
+
+  @override
+  String get instImageNone =>
+      'Litsenziyasi aniq rasm topilmadi — ishlab chiqaruvchi rasmini ruxsatsiz joylamaymiz.';
+
+  @override
+  String instImageCredit(String author, String license) {
+    return 'Rasm: $author · $license';
+  }
+
+  @override
+  String get instSources => 'Manbalar';
+
+  @override
+  String instAccessed(String date) {
+    return 'ko‘rilgan $date';
+  }
+
+  @override
+  String get instSaveMine => 'Mening apparatim sifatida saqlash';
+
+  @override
+  String instSavedCount(int count) {
+    return 'Mening apparatlarimda: $count';
+  }
+
+  @override
+  String get instCalibrate => 'Kalibrlash';
+
+  @override
+  String get instQc => 'Sifat nazorati (QC)';
+
+  @override
+  String get instSaveTitle => 'Apparatni saqlash';
+
+  @override
+  String get instLabel => 'Nomi (ixtiyoriy)';
+
+  @override
+  String get instLabelHint => 'masalan, 1-xona yoki zaxira';
+
+  @override
+  String get instSerial => 'Seriya raqami (ixtiyoriy)';
+
+  @override
+  String get instManualVersion => 'Qo‘llanma versiyasi (ixtiyoriy)';
+
+  @override
+  String get instManualVersionHint =>
+      'qo‘llanma muqovasidagi versiya yoki sana';
+
+  @override
+  String get instSave => 'Saqlash';
+
+  @override
+  String get instSaved => 'Saqlandi';
+
+  @override
+  String get instRemove => 'Ro‘yxatdan olib tashlash';
+
+  @override
+  String get instRemoveConfirm =>
+      'Apparat ro‘yxatdan olib tashlansinmi? Kalibrlash jurnalidagi yozuvlar qoladi.';
+
+  @override
+  String get instMaker => 'Ishlab chiqaruvchi';
+
+  @override
+  String get instModel => 'Model';
+
+  @override
+  String get instCategory => 'Yo‘nalish';
+
+  @override
+  String get instCustomRequired => 'Ishlab chiqaruvchi va modelni kiriting.';
+
+  @override
+  String get instCatalogError => 'Apparatlar katalogini o‘qib bo‘lmadi';
+
+  @override
+  String get instOpenCard => 'Apparat kartasi';
+
+  @override
+  String get calStepInstrument => '1. Apparat';
+
+  @override
+  String get calStepAnalyte => '2. Analit';
+
+  @override
+  String get calStepReagent => '3. Reagent';
+
+  @override
+  String get calChooseInstrument =>
+      'Avval apparatni tanlang: saqlanganlardan yoki katalogdan.';
+
+  @override
+  String get calChange => 'O‘zgartirish';
+
+  @override
+  String get calFromCatalog => 'Katalogdan tanlash';
+
+  @override
+  String get calAnalyteHint => 'Analit nomi (masalan, glyukoza)';
+
+  @override
+  String get calReagentMaker => 'Reagent ishlab chiqaruvchisi';
+
+  @override
+  String get calReagentMakerName => 'Ishlab chiqaruvchi nomi';
+
+  @override
+  String get calDifferentMaker =>
+      'Reagent ishlab chiqaruvchisi apparatnikidan boshqa. Moslikni reagent IFU’sidagi apparatlar (application) ro‘yxati va apparatning reagent tizimi bo‘yicha alohida tekshiring.';
+
+  @override
+  String calValidated(String doc) {
+    return 'Rasmiy manbada ($doc) bu apparatda sozlamasi bor reagentlar:';
+  }
+
+  @override
+  String get calRefListed => 'Kiritilgan REF shu ro‘yxatda bor.';
+
+  @override
+  String get calRefNotListed =>
+      'Kiritilgan REF bu ro‘yxatda yo‘q — reagent qutisi va IFU’ni qayta tekshiring.';
+
+  @override
+  String get calShowGuide => 'Yo‘riqnomani ko‘rsatish';
+
+  @override
+  String get calGuideNeeds =>
+      'Apparat, analit, reagent REF va IFU versiyasini kiriting. Lot bu bosqichda shart emas.';
+
+  @override
+  String get calGuideFound => 'Tekshirilgan yo‘riqnoma topildi';
+
+  @override
+  String get calGuideNoneTitle => 'Tekshirilgan yo‘riqnoma hali yo‘q';
+
+  @override
+  String get calGuideNoneBody =>
+      'Bu apparat + reagent REF + IFU versiyasi uchun LabGuide’da solishtirilgan yozuv yo‘q. Parametrlarni taxmin qilmaymiz — ularni quyidagi hujjatlardan oling:';
+
+  @override
+  String get calGuide1 =>
+      'Kalibrator nomi va REF — reagent IFU’sining “Calibration” bo‘limida.';
+
+  @override
+  String get calGuide2 =>
+      'Kalibrlash nuqtalari soni va usuli — o‘sha bo‘limda.';
+
+  @override
+  String get calGuide3 =>
+      'Har lotning belgilangan qiymatlari — kalibratorning qiymatlar varag‘ida (lot raqami mos bo‘lsin).';
+
+  @override
+  String get calGuide4 =>
+      'Qachon qayta kalibrlash kerakligi (lot almashganda, QC rad etilganda, muddat) — IFU’da.';
+
+  @override
+  String get calGuide5 =>
+      'Kalibrlashdan keyin QC o‘tkazing va natijani yozuvga kiriting.';
+
+  @override
+  String get calDocsWhere => 'Hujjatlarni qayerdan topish mumkin';
+
+  @override
+  String get calRecordCreate => 'Kalibrlash yozuvini yaratish';
+
+  @override
+  String get calRecordTitle => 'Kalibrlash yozuvi';
+
+  @override
+  String get calCalibratorName => 'Kalibrator nomi yoki REF (ixtiyoriy)';
+
+  @override
+  String get calLotExpiry => 'Lot yaroqlilik muddati (ixtiyoriy)';
+
+  @override
+  String get calLevels => 'Kalibrator darajalari';
+
+  @override
+  String get calLevelName => 'Daraja';
+
+  @override
+  String get calLevelValue => 'Belgilangan qiymat';
+
+  @override
+  String get calLevelUnit => 'Birlik';
+
+  @override
+  String get calAddLevel => 'Daraja qo‘shish';
+
+  @override
+  String get calRemoveLevel => 'Darajani olib tashlash';
+
+  @override
+  String get calValuesFromSheet =>
+      'Qiymatlarni aynan shu lotning qiymatlar varag‘idan ko‘chiring. LabGuide ularni taxmin qilmaydi va tekshirmaydi.';
+
+  @override
+  String get calPerformedOn => 'Bajarilgan sana';
+
+  @override
+  String get calOutcome => 'Natija';
+
+  @override
+  String get calOutcomeAccepted => 'Qabul qilindi';
+
+  @override
+  String get calOutcomeRejected => 'Rad etildi';
+
+  @override
+  String get calOutcomePending => 'Kutilmoqda';
+
+  @override
+  String get calNote => 'Izoh (ixtiyoriy)';
+
+  @override
+  String get calRecordSave => 'Yozuvni saqlash';
+
+  @override
+  String get calRecordSaved => 'Kalibrlash yozuvi saqlandi';
+
+  @override
+  String get calLotRequired => 'Kalibrator lotini kiriting.';
+
+  @override
+  String get calLevelInvalid =>
+      'Har daraja uchun nom, qiymat (son) va birlikni kiriting.';
+
+  @override
+  String get calLog => 'Kalibrlash jurnali';
+
+  @override
+  String get calLogSub => 'Lot, qiymatlar va natija — shu qurilmada';
+
+  @override
+  String get calLogEmpty => 'Hali yozuv yo‘q';
+
+  @override
+  String get calLogEmptyBody =>
+      'Kalibrlashdan keyin yozuv yarating — lot, qiymatlar va natija shu yerda saqlanadi.';
+
+  @override
+  String get calDeleteRecord => 'Yozuvni o‘chirish';
+
+  @override
+  String get calDeleteRecordConfirm => 'Kalibrlash yozuvi o‘chirilsinmi?';
+
+  @override
+  String get calUserEntered => 'Qiymatlar foydalanuvchi tomonidan kiritilgan.';
+
+  @override
+  String get calLot => 'Lot';
+
+  @override
+  String calAnalyteSelected(String name) {
+    return 'Analit: $name';
+  }
 
   @override
   String get libTitle => 'Kutubxona';

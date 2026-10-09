@@ -400,3 +400,64 @@ ham qo‘shilib ketgan edi. Endi:
 - nfcx’dan `labguide/` va `labguide-ios.yml` alohida PR bilan olib tashlanadi (egasi
   merge qiladi). D-21’dagi reja shu bilan amalga oshdi.
 
+
+## D-35. Hisob, “Taklif va yordam” va admin panel — Supabase (2026-10-09)
+- **Server:** Supabase (Auth email OTP, Postgres + RLS, yopiq Storage, Edge Function).
+  Ilova faqat URL va publishable kalitni biladi (`--dart-define`, CI secrets); service role
+  faqat `delete-account` funksiyasida. Sozlanmagan build “server hali ulanmagan” deydi,
+  mehmon rejimi o‘zgarmaydi.
+- **Admin:** vakolatni server beradi — `admin_allowlist` dagi email **kod bilan
+  tasdiqlangandagina** `app_admins` ga yoziladi (trigger). Admin RPC’lari qo‘shimcha
+  `aal2` (TOTP) talab qiladi. Ilovadagi email/rol solishtiruvi hech narsa bermaydi; jadvallarga
+  to‘g‘ridan-to‘g‘ri yozish yopiq. Muhim amallar `admin_audit` ga (faqat qo‘shiladi).
+- **Statistika:** faqat tasdiqlangan, o‘chirilmagan hisoblar; “faol” — kun bo‘yicha
+  `last_seen_on` (Asia/Tashkent), ilova ochilganda bir marta yangilanadi. Free/Pro billing
+  ulanmaguncha “ma’lumot yo‘q” — soxta raqam ko‘rsatilmaydi.
+- **Murojaatlar:** foydalanuvchi faqat o‘z yozishmasini ko‘radi (RLS); javobni admin o‘zi
+  yozadi, avtomatik/AI javob yo‘q. Skrinshot — PNG/JPEG ≤ 5 MB, o‘z papkasi, kuniga 10 ta;
+  biriktirishda PHI eslatmasi doim ko‘rinadi. Push/email shart emas: o‘qilmagan javob
+  profil belgisida.
+- **Sinov:** `tool/backend_test.sh` (haqiqiy Postgres, qabul ssenariysi) + widget testlar
+  (`FakeLabBackend` — xuddi shu qoidalar) + OTP adapteri (MockClient: muddat, urinish,
+  qayta yuborish, chiqish).
+
+## D-36. Apparatlar katalogi va kalibrlash oqimi (2026-10-09)
+- **Oqim:** yo‘nalish (biokimyo, gematologiya, immunokimyo, siydik) → ishlab chiqaruvchi →
+  aniq model → karta → amal (saqlash, kalibrlash, QC). Qidiruv uz/ru/en: model, sinonim,
+  ishlab chiqaruvchi, yo‘nalish nomlari.
+- **Manba qoidasi:** har fakt — rasmiy sahifa/buklet/FDA/Rosstandart hujjatidan so‘zma-so‘z
+  iqtibos va manba id (`tool/instrument_catalog_src.py` → `assets/instruments/catalog.json`).
+  Tadqiqot hisobotidagi iqtiboslar rasmiy sahifalarda qayta tekshirildi; mos kelmaganlari
+  tuzatildi yoki olib tashlandi (masalan, cobas e 411 “Not Available” aksessuarlarga
+  tegishli bo‘lib chiqdi; BS-240 to‘lqin uzunliklari katalog sahifasida ikki modelga
+  tegishli bo‘lgani uchun qo‘yilmadi).
+- **Uch holat:** “Apparat ma’lumoti mavjud” / “Yo‘riqnoma mavjud” / “Mutaxassis tekshirgan”.
+  Validator dalilsiz yuqori holatni rad etadi; hozir hamma model birinchi holatda — Phase 1
+  ishlab chiqaruvchilar operator qo‘llanmasini ochiq e’lon qilmaydi.
+- **Parvarish:** kundalik bosqichlar faqat rasmiy qo‘llanmadan; hozircha faqat
+  ishlab chiqaruvchining ochiq iqtiboslari + “qo‘llanmangizga amal qiling”.
+- **Kalibrlash:** apparat + analit → reagent ishlab chiqaruvchisi (boshqa bo‘lsa — moslik
+  ogohlantirishi) → REF + IFU versiyasi → yo‘riqnoma. **Lot bu bosqichda so‘ralmaydi**;
+  lot va belgilangan qiymatlar faqat kalibrlash yozuvi yaratilganda (foydalanuvchi qiymatlar
+  varag‘idan kiritadi, ilova taxmin qilmaydi). Rasmiy manbada “validated setting” bor
+  reagentlar (HumaLyzer 4000 flayeri 981015/2021-11) REF bo‘yicha ko‘rsatiladi —
+  parametrlar emas.
+- **Qayta kiritmaslik:** “Mening apparatim” (nom, seriya, qo‘llanma versiyasi) va analit
+  bo‘yicha oxirgi reagent tanlovi qurilmada saqlanadi; yozuv yaratilganda katalog modeli
+  avtomatik saqlanadi.
+- **Rasm:** faqat erkin litsenziyali (muallif, litsenziya, manba sahifasi bilan); topilmasa
+  “litsenziyali rasm yo‘q” — ishlab chiqaruvchi fotosi ruxsatsiz qo‘yilmaydi.
+- **UX:** yozuv saqlangach forma yopiladi va foydalanuvchi sahifa pastida qoladi — “Saqlandi”
+  xabarida “Kalibrlash jurnali” tugmasi bor (test shu bo‘shliqni topdi).
+
+## D-37. Ilova ikonkasi — egasining logosi (2026-10-09)
+Egasi bergan logo (`tool/icons/logo_source.jpg`) hamma joyda: iOS AppIcon, Android
+legacy va adaptive ikonka, ishga tushish ekrani, ilova sarlavhasidagi brend belgisi,
+do‘kon fayllari (`docs/store/app_store_icon_1024.png`, `google_play_icon_512.png`,
+`google_play_feature_graphic.png`). `tool/icons/make_icons.py` belgini plitkaning 3D
+qirrasi ichidan kesadi va burchaklarni to‘ldiradi — platforma niqobi (iOS ~22 %, Google
+Play ~20 %, Android doira) toza qismni ko‘rsatadi. Adaptive ikonkada rasm ko‘rinadigan
+72 dp maydonni to‘liq qoplaydi; monoxrom (themed) qatlam olib tashlandi — rangli rasm
+bitta rang siluetida kvadrat bo‘lib qolardi. Manba 476 px belgidan 1024 ga kattalashtirildi;
+yuqoriroq o‘lchamli asl fayl (≥ 1024 px) kelsa skript qayta ishga tushiriladi. Ilova
+ranglari (yashil palitra) o‘zgarmadi — logo faqat belgi sifatida.

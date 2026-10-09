@@ -92,22 +92,7 @@ final shots = <Shot>[
   ),
   shot('12_alt_sourced', '/tests/analyte/alt'),
   shot('13_lab', '/lab'),
-  shot(
-    '14_calibration_nomatch',
-    '/lab/calibration',
-    act: (t) async {
-      final fields = find.byType(TextField);
-      await t.enterText(fields.at(0), 'BS-240');
-      await t.enterText(fields.at(1), 'REF 105-001');
-      await t.enterText(fields.at(2), 'v3.1');
-      await t.drag(
-        find.byType(Scrollable).hitTestable().first,
-        const Offset(0, -380),
-      );
-      await t.pumpAndSettle();
-      await tapFirstText(t, 'Moslikni tekshirish');
-    },
-  ),
+  shot('14_calibration_start', '/lab/calibration'),
   shot(
     '15_dilution_result_ru',
     '/lab/calculators/dilution',
@@ -293,6 +278,61 @@ final shots = <Shot>[
       await t.pumpAndSettle();
     },
   ),
+  // Apparatlar katalogi va kalibrlash (3-sessiya).
+  shot('40_instruments', '/lab/instruments'),
+  shot(
+    '41_instruments_search_ru',
+    '/lab/instruments',
+    lang: AppLanguage.ru,
+    act: (t) async {
+      await t.enterText(find.byType(TextField).first, 'гематолог');
+      await t.pumpAndSettle();
+    },
+  ),
+  shot('42_instr_makers_chem', '/lab/instruments/c/chemistry'),
+  shot('43_instr_card_humalyzer', '/lab/instruments/m/human-humalyzer-4000'),
+  shot(
+    '44_instr_card_humalyzer_long',
+    '/lab/instruments/m/human-humalyzer-4000',
+    size: const Size(390, 3000),
+  ),
+  shot(
+    '45_instr_card_u411_dark_en',
+    '/lab/instruments/m/roche-cobas-u-411',
+    lang: AppLanguage.en,
+    theme: ThemeMode.dark,
+    act: (t) async {
+      await t.runAsync(() async {
+        final ctx = t.element(find.byType(Scaffold).first);
+        await precacheImage(
+          const AssetImage('assets/instruments/img/cobas_u_411.jpg'),
+          ctx,
+        );
+      });
+      await t.pumpAndSettle();
+    },
+  ),
+  shot(
+    '46_calibration_flow',
+    '/lab/calibration?model=human-humalyzer-4000&analyte=glucose-plasma-fasting',
+    size: const Size(390, 2400),
+    act: (t) async {
+      final fields = find.byType(TextField);
+      await t.enterText(fields.at(0), '10121');
+      await t.enterText(fields.at(1), '2024-01');
+      await t.pumpAndSettle();
+      await tapFirstText(t, 'Yo‘riqnomani ko‘rsatish');
+      await tapFirstText(t, 'Kalibrlash yozuvini yaratish');
+    },
+  ),
+  shot(
+    '47_calibration_large_font_ru',
+    '/lab/calibration?model=roche-cobas-c-311',
+    lang: AppLanguage.ru,
+    size: const Size(390, 1800),
+  ),
+  shot('48_support_unconfigured', '/profile/support'),
+  shot('49_profile', '/profile', size: const Size(390, 1400)),
 ];
 
 void main() {

@@ -1135,7 +1135,7 @@ abstract class AppLocalizations {
   /// No description provided for @labInstrumentsSub.
   ///
   /// In en, this message translates to:
-  /// **'Mindray · HUMAN · other'**
+  /// **'Chemistry · hematology · immunochemistry · urine'**
   String get labInstrumentsSub;
 
   /// No description provided for @labMicroscopySub.
@@ -2535,6 +2535,750 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Match by exact model and IFU'**
   String get insOtherSub;
+
+  /// No description provided for @instSearchLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Search instruments'**
+  String get instSearchLabel;
+
+  /// No description provided for @instSearchHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Model, manufacturer or section'**
+  String get instSearchHint;
+
+  /// No description provided for @instNoResultsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No model found'**
+  String get instNoResultsTitle;
+
+  /// No description provided for @instNoResultsBody.
+  ///
+  /// In en, this message translates to:
+  /// **'You can add an instrument that is not in the catalog with the button below.'**
+  String get instNoResultsBody;
+
+  /// No description provided for @instMine.
+  ///
+  /// In en, this message translates to:
+  /// **'My instruments'**
+  String get instMine;
+
+  /// No description provided for @instDirections.
+  ///
+  /// In en, this message translates to:
+  /// **'Sections'**
+  String get instDirections;
+
+  /// No description provided for @instModelsCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 model} other{{count} models}}'**
+  String instModelsCount(int count);
+
+  /// No description provided for @instPlanned.
+  ///
+  /// In en, this message translates to:
+  /// **'Next phase: {names}'**
+  String instPlanned(String names);
+
+  /// No description provided for @instPlannedBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Models from these manufacturers will be added once checked against official sources.'**
+  String get instPlannedBody;
+
+  /// No description provided for @instAddCustom.
+  ///
+  /// In en, this message translates to:
+  /// **'Add an instrument not in the list'**
+  String get instAddCustom;
+
+  /// No description provided for @instAddCustomSub.
+  ///
+  /// In en, this message translates to:
+  /// **'You enter the manufacturer and model yourself'**
+  String get instAddCustomSub;
+
+  /// No description provided for @instCustomTag.
+  ///
+  /// In en, this message translates to:
+  /// **'Entered by you'**
+  String get instCustomTag;
+
+  /// No description provided for @instCatalogNote.
+  ///
+  /// In en, this message translates to:
+  /// **'The catalog is compiled from manufacturers’ official pages and documents (as of {date}). Every fact shows its source.'**
+  String instCatalogNote(String date);
+
+  /// No description provided for @instChooseMaker.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a manufacturer'**
+  String get instChooseMaker;
+
+  /// No description provided for @instChooseModel.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a model'**
+  String get instChooseModel;
+
+  /// No description provided for @instStatusTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Information status'**
+  String get instStatusTitle;
+
+  /// No description provided for @instStatusDevice.
+  ///
+  /// In en, this message translates to:
+  /// **'Instrument information available'**
+  String get instStatusDevice;
+
+  /// No description provided for @instStatusDeviceSub.
+  ///
+  /// In en, this message translates to:
+  /// **'From the official page, brochure or regulatory document'**
+  String get instStatusDeviceSub;
+
+  /// No description provided for @instStatusIfu.
+  ///
+  /// In en, this message translates to:
+  /// **'Manual available'**
+  String get instStatusIfu;
+
+  /// No description provided for @instStatusIfuSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Checked against the official operator’s manual (with version)'**
+  String get instStatusIfuSub;
+
+  /// No description provided for @instStatusExpert.
+  ///
+  /// In en, this message translates to:
+  /// **'Expert reviewed'**
+  String get instStatusExpert;
+
+  /// No description provided for @instStatusExpertSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Reviewed by an independent laboratory specialist'**
+  String get instStatusExpertSub;
+
+  /// No description provided for @instStatusDone.
+  ///
+  /// In en, this message translates to:
+  /// **'yes'**
+  String get instStatusDone;
+
+  /// No description provided for @instStatusNotYet.
+  ///
+  /// In en, this message translates to:
+  /// **'not yet'**
+  String get instStatusNotYet;
+
+  /// No description provided for @instPurpose.
+  ///
+  /// In en, this message translates to:
+  /// **'Purpose'**
+  String get instPurpose;
+
+  /// No description provided for @instPrinciple.
+  ///
+  /// In en, this message translates to:
+  /// **'Principle'**
+  String get instPrinciple;
+
+  /// No description provided for @instNotStated.
+  ///
+  /// In en, this message translates to:
+  /// **'Not stated in the official source.'**
+  String get instNotStated;
+
+  /// No description provided for @instOfficialText.
+  ///
+  /// In en, this message translates to:
+  /// **'Official wording'**
+  String get instOfficialText;
+
+  /// No description provided for @instKeyFacts.
+  ///
+  /// In en, this message translates to:
+  /// **'Key facts'**
+  String get instKeyFacts;
+
+  /// No description provided for @instManual.
+  ///
+  /// In en, this message translates to:
+  /// **'Operator’s manual'**
+  String get instManual;
+
+  /// No description provided for @instManualPublic.
+  ///
+  /// In en, this message translates to:
+  /// **'Publicly available'**
+  String get instManualPublic;
+
+  /// No description provided for @instManualLogin.
+  ///
+  /// In en, this message translates to:
+  /// **'Login required'**
+  String get instManualLogin;
+
+  /// No description provided for @instManualNotPublic.
+  ///
+  /// In en, this message translates to:
+  /// **'Not publicly available'**
+  String get instManualNotPublic;
+
+  /// No description provided for @instDocsPortal.
+  ///
+  /// In en, this message translates to:
+  /// **'Documents portal'**
+  String get instDocsPortal;
+
+  /// No description provided for @instLoginYes.
+  ///
+  /// In en, this message translates to:
+  /// **'login required'**
+  String get instLoginYes;
+
+  /// No description provided for @instLoginNo.
+  ///
+  /// In en, this message translates to:
+  /// **'no login'**
+  String get instLoginNo;
+
+  /// No description provided for @instLoginUnknown.
+  ///
+  /// In en, this message translates to:
+  /// **'login not verified'**
+  String get instLoginUnknown;
+
+  /// No description provided for @instMaintenance.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily maintenance'**
+  String get instMaintenance;
+
+  /// No description provided for @instMaintenanceNone.
+  ///
+  /// In en, this message translates to:
+  /// **'The manufacturer does not publish daily maintenance steps openly. Follow the “Maintenance” section of your instrument’s operator’s manual — LabGuide does not guess the steps.'**
+  String get instMaintenanceNone;
+
+  /// No description provided for @instMaintenanceQuotes.
+  ///
+  /// In en, this message translates to:
+  /// **'What the manufacturer states publicly:'**
+  String get instMaintenanceQuotes;
+
+  /// No description provided for @instReagentSystem.
+  ///
+  /// In en, this message translates to:
+  /// **'Reagent system'**
+  String get instReagentSystem;
+
+  /// No description provided for @instReagentOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'Open — reagents from other manufacturers can be set up'**
+  String get instReagentOpen;
+
+  /// No description provided for @instReagentPartly.
+  ///
+  /// In en, this message translates to:
+  /// **'Partly open — user-defined channels available'**
+  String get instReagentPartly;
+
+  /// No description provided for @instReagentClosed.
+  ///
+  /// In en, this message translates to:
+  /// **'Closed — system reagents only'**
+  String get instReagentClosed;
+
+  /// No description provided for @instReagentUnknown.
+  ///
+  /// In en, this message translates to:
+  /// **'Openness not stated in the official source'**
+  String get instReagentUnknown;
+
+  /// No description provided for @instValidatedReagents.
+  ///
+  /// In en, this message translates to:
+  /// **'Reagents with preinstalled settings (per official source): {count}'**
+  String instValidatedReagents(int count);
+
+  /// No description provided for @instImageNone.
+  ///
+  /// In en, this message translates to:
+  /// **'No clearly licensed image found — we do not reuse manufacturer photos without permission.'**
+  String get instImageNone;
+
+  /// No description provided for @instImageCredit.
+  ///
+  /// In en, this message translates to:
+  /// **'Image: {author} · {license}'**
+  String instImageCredit(String author, String license);
+
+  /// No description provided for @instSources.
+  ///
+  /// In en, this message translates to:
+  /// **'Sources'**
+  String get instSources;
+
+  /// No description provided for @instAccessed.
+  ///
+  /// In en, this message translates to:
+  /// **'accessed {date}'**
+  String instAccessed(String date);
+
+  /// No description provided for @instSaveMine.
+  ///
+  /// In en, this message translates to:
+  /// **'Save as “My instrument”'**
+  String get instSaveMine;
+
+  /// No description provided for @instSavedCount.
+  ///
+  /// In en, this message translates to:
+  /// **'In “My instruments”: {count}'**
+  String instSavedCount(int count);
+
+  /// No description provided for @instCalibrate.
+  ///
+  /// In en, this message translates to:
+  /// **'Calibration'**
+  String get instCalibrate;
+
+  /// No description provided for @instQc.
+  ///
+  /// In en, this message translates to:
+  /// **'Quality control (QC)'**
+  String get instQc;
+
+  /// No description provided for @instSaveTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Save instrument'**
+  String get instSaveTitle;
+
+  /// No description provided for @instLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Name (optional)'**
+  String get instLabel;
+
+  /// No description provided for @instLabelHint.
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. room 1 or back-up'**
+  String get instLabelHint;
+
+  /// No description provided for @instSerial.
+  ///
+  /// In en, this message translates to:
+  /// **'Serial number (optional)'**
+  String get instSerial;
+
+  /// No description provided for @instManualVersion.
+  ///
+  /// In en, this message translates to:
+  /// **'Manual version (optional)'**
+  String get instManualVersion;
+
+  /// No description provided for @instManualVersionHint.
+  ///
+  /// In en, this message translates to:
+  /// **'version or date on the manual cover'**
+  String get instManualVersionHint;
+
+  /// No description provided for @instSave.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get instSave;
+
+  /// No description provided for @instSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Saved'**
+  String get instSaved;
+
+  /// No description provided for @instRemove.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove from list'**
+  String get instRemove;
+
+  /// No description provided for @instRemoveConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove this instrument? Calibration log entries are kept.'**
+  String get instRemoveConfirm;
+
+  /// No description provided for @instMaker.
+  ///
+  /// In en, this message translates to:
+  /// **'Manufacturer'**
+  String get instMaker;
+
+  /// No description provided for @instModel.
+  ///
+  /// In en, this message translates to:
+  /// **'Model'**
+  String get instModel;
+
+  /// No description provided for @instCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'Section'**
+  String get instCategory;
+
+  /// No description provided for @instCustomRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the manufacturer and model.'**
+  String get instCustomRequired;
+
+  /// No description provided for @instCatalogError.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not read the instrument catalog'**
+  String get instCatalogError;
+
+  /// No description provided for @instOpenCard.
+  ///
+  /// In en, this message translates to:
+  /// **'Instrument card'**
+  String get instOpenCard;
+
+  /// No description provided for @calStepInstrument.
+  ///
+  /// In en, this message translates to:
+  /// **'1. Instrument'**
+  String get calStepInstrument;
+
+  /// No description provided for @calStepAnalyte.
+  ///
+  /// In en, this message translates to:
+  /// **'2. Analyte'**
+  String get calStepAnalyte;
+
+  /// No description provided for @calStepReagent.
+  ///
+  /// In en, this message translates to:
+  /// **'3. Reagent'**
+  String get calStepReagent;
+
+  /// No description provided for @calChooseInstrument.
+  ///
+  /// In en, this message translates to:
+  /// **'First choose the instrument: from saved ones or the catalog.'**
+  String get calChooseInstrument;
+
+  /// No description provided for @calChange.
+  ///
+  /// In en, this message translates to:
+  /// **'Change'**
+  String get calChange;
+
+  /// No description provided for @calFromCatalog.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose from catalog'**
+  String get calFromCatalog;
+
+  /// No description provided for @calAnalyteHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Analyte name (e.g. glucose)'**
+  String get calAnalyteHint;
+
+  /// No description provided for @calReagentMaker.
+  ///
+  /// In en, this message translates to:
+  /// **'Reagent manufacturer'**
+  String get calReagentMaker;
+
+  /// No description provided for @calReagentMakerName.
+  ///
+  /// In en, this message translates to:
+  /// **'Manufacturer name'**
+  String get calReagentMakerName;
+
+  /// No description provided for @calDifferentMaker.
+  ///
+  /// In en, this message translates to:
+  /// **'The reagent manufacturer differs from the instrument’s. Check compatibility separately: the instrument list (applications) in the reagent IFU and the instrument’s reagent system.'**
+  String get calDifferentMaker;
+
+  /// No description provided for @calValidated.
+  ///
+  /// In en, this message translates to:
+  /// **'Per the official source ({doc}), this instrument has preinstalled settings for:'**
+  String calValidated(String doc);
+
+  /// No description provided for @calRefListed.
+  ///
+  /// In en, this message translates to:
+  /// **'The entered REF is in this list.'**
+  String get calRefListed;
+
+  /// No description provided for @calRefNotListed.
+  ///
+  /// In en, this message translates to:
+  /// **'The entered REF is not in this list — re-check the reagent box and IFU.'**
+  String get calRefNotListed;
+
+  /// No description provided for @calShowGuide.
+  ///
+  /// In en, this message translates to:
+  /// **'Show guide'**
+  String get calShowGuide;
+
+  /// No description provided for @calGuideNeeds.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the instrument, analyte, reagent REF and IFU version. The lot is not needed at this step.'**
+  String get calGuideNeeds;
+
+  /// No description provided for @calGuideFound.
+  ///
+  /// In en, this message translates to:
+  /// **'Verified guide found'**
+  String get calGuideFound;
+
+  /// No description provided for @calGuideNoneTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No verified guide yet'**
+  String get calGuideNoneTitle;
+
+  /// No description provided for @calGuideNoneBody.
+  ///
+  /// In en, this message translates to:
+  /// **'LabGuide has no checked record for this instrument + reagent REF + IFU version. We do not guess parameters — take them from these documents:'**
+  String get calGuideNoneBody;
+
+  /// No description provided for @calGuide1.
+  ///
+  /// In en, this message translates to:
+  /// **'Calibrator name and REF — in the “Calibration” section of the reagent IFU.'**
+  String get calGuide1;
+
+  /// No description provided for @calGuide2.
+  ///
+  /// In en, this message translates to:
+  /// **'Number of calibration points and method — in the same section.'**
+  String get calGuide2;
+
+  /// No description provided for @calGuide3.
+  ///
+  /// In en, this message translates to:
+  /// **'Assigned values for each lot — on the calibrator value sheet (the lot number must match).'**
+  String get calGuide3;
+
+  /// No description provided for @calGuide4.
+  ///
+  /// In en, this message translates to:
+  /// **'When to recalibrate (new lot, QC failure, interval) — in the IFU.'**
+  String get calGuide4;
+
+  /// No description provided for @calGuide5.
+  ///
+  /// In en, this message translates to:
+  /// **'After calibrating, run QC and record the result.'**
+  String get calGuide5;
+
+  /// No description provided for @calDocsWhere.
+  ///
+  /// In en, this message translates to:
+  /// **'Where to find the documents'**
+  String get calDocsWhere;
+
+  /// No description provided for @calRecordCreate.
+  ///
+  /// In en, this message translates to:
+  /// **'Create a calibration record'**
+  String get calRecordCreate;
+
+  /// No description provided for @calRecordTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Calibration record'**
+  String get calRecordTitle;
+
+  /// No description provided for @calCalibratorName.
+  ///
+  /// In en, this message translates to:
+  /// **'Calibrator name or REF (optional)'**
+  String get calCalibratorName;
+
+  /// No description provided for @calLotExpiry.
+  ///
+  /// In en, this message translates to:
+  /// **'Lot expiry (optional)'**
+  String get calLotExpiry;
+
+  /// No description provided for @calLevels.
+  ///
+  /// In en, this message translates to:
+  /// **'Calibrator levels'**
+  String get calLevels;
+
+  /// No description provided for @calLevelName.
+  ///
+  /// In en, this message translates to:
+  /// **'Level'**
+  String get calLevelName;
+
+  /// No description provided for @calLevelValue.
+  ///
+  /// In en, this message translates to:
+  /// **'Assigned value'**
+  String get calLevelValue;
+
+  /// No description provided for @calLevelUnit.
+  ///
+  /// In en, this message translates to:
+  /// **'Unit'**
+  String get calLevelUnit;
+
+  /// No description provided for @calAddLevel.
+  ///
+  /// In en, this message translates to:
+  /// **'Add level'**
+  String get calAddLevel;
+
+  /// No description provided for @calRemoveLevel.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove level'**
+  String get calRemoveLevel;
+
+  /// No description provided for @calValuesFromSheet.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy the values from the value sheet of this exact lot. LabGuide does not guess or check them.'**
+  String get calValuesFromSheet;
+
+  /// No description provided for @calPerformedOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Date performed'**
+  String get calPerformedOn;
+
+  /// No description provided for @calOutcome.
+  ///
+  /// In en, this message translates to:
+  /// **'Outcome'**
+  String get calOutcome;
+
+  /// No description provided for @calOutcomeAccepted.
+  ///
+  /// In en, this message translates to:
+  /// **'Accepted'**
+  String get calOutcomeAccepted;
+
+  /// No description provided for @calOutcomeRejected.
+  ///
+  /// In en, this message translates to:
+  /// **'Rejected'**
+  String get calOutcomeRejected;
+
+  /// No description provided for @calOutcomePending.
+  ///
+  /// In en, this message translates to:
+  /// **'Pending'**
+  String get calOutcomePending;
+
+  /// No description provided for @calNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Note (optional)'**
+  String get calNote;
+
+  /// No description provided for @calRecordSave.
+  ///
+  /// In en, this message translates to:
+  /// **'Save record'**
+  String get calRecordSave;
+
+  /// No description provided for @calRecordSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Calibration record saved'**
+  String get calRecordSaved;
+
+  /// No description provided for @calLotRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the calibrator lot.'**
+  String get calLotRequired;
+
+  /// No description provided for @calLevelInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a name, a numeric value and a unit for each level.'**
+  String get calLevelInvalid;
+
+  /// No description provided for @calLog.
+  ///
+  /// In en, this message translates to:
+  /// **'Calibration log'**
+  String get calLog;
+
+  /// No description provided for @calLogSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Lot, values and outcome — on this device'**
+  String get calLogSub;
+
+  /// No description provided for @calLogEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No records yet'**
+  String get calLogEmpty;
+
+  /// No description provided for @calLogEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Create a record after calibrating — lot, values and outcome are kept here.'**
+  String get calLogEmptyBody;
+
+  /// No description provided for @calDeleteRecord.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete record'**
+  String get calDeleteRecord;
+
+  /// No description provided for @calDeleteRecordConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete this calibration record?'**
+  String get calDeleteRecordConfirm;
+
+  /// No description provided for @calUserEntered.
+  ///
+  /// In en, this message translates to:
+  /// **'Values entered by the user.'**
+  String get calUserEntered;
+
+  /// No description provided for @calLot.
+  ///
+  /// In en, this message translates to:
+  /// **'Lot'**
+  String get calLot;
+
+  /// No description provided for @calAnalyteSelected.
+  ///
+  /// In en, this message translates to:
+  /// **'Analyte: {name}'**
+  String calAnalyteSelected(String name);
 
   /// No description provided for @libTitle.
   ///

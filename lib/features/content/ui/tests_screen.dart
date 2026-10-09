@@ -41,7 +41,7 @@ class _TestsScreenState extends State<TestsScreen> {
       subtitle: l.testsSubtitle,
       showBrand: true,
       children: [
-        _SearchBox(
+        SearchBox(
           controller: _query,
           label: l.testsSearchLabel,
           hint: l.testsSearchHint,
@@ -102,8 +102,9 @@ class _TestsScreenState extends State<TestsScreen> {
   }
 }
 
-class _SearchBox extends StatelessWidget {
-  const _SearchBox({
+class SearchBox extends StatelessWidget {
+  const SearchBox({
+    super.key,
     required this.controller,
     required this.label,
     required this.hint,

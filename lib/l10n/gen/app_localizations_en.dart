@@ -573,7 +573,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get labInstruments => 'Instruments and methods';
 
   @override
-  String get labInstrumentsSub => 'Mindray · HUMAN · other';
+  String get labInstrumentsSub =>
+      'Chemistry · hematology · immunochemistry · urine';
 
   @override
   String get labMicroscopySub => 'Compare images and structures';
@@ -1386,6 +1387,425 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get insOtherSub => 'Match by exact model and IFU';
+
+  @override
+  String get instSearchLabel => 'Search instruments';
+
+  @override
+  String get instSearchHint => 'Model, manufacturer or section';
+
+  @override
+  String get instNoResultsTitle => 'No model found';
+
+  @override
+  String get instNoResultsBody =>
+      'You can add an instrument that is not in the catalog with the button below.';
+
+  @override
+  String get instMine => 'My instruments';
+
+  @override
+  String get instDirections => 'Sections';
+
+  @override
+  String instModelsCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count models',
+      one: '1 model',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String instPlanned(String names) {
+    return 'Next phase: $names';
+  }
+
+  @override
+  String get instPlannedBody =>
+      'Models from these manufacturers will be added once checked against official sources.';
+
+  @override
+  String get instAddCustom => 'Add an instrument not in the list';
+
+  @override
+  String get instAddCustomSub =>
+      'You enter the manufacturer and model yourself';
+
+  @override
+  String get instCustomTag => 'Entered by you';
+
+  @override
+  String instCatalogNote(String date) {
+    return 'The catalog is compiled from manufacturers’ official pages and documents (as of $date). Every fact shows its source.';
+  }
+
+  @override
+  String get instChooseMaker => 'Choose a manufacturer';
+
+  @override
+  String get instChooseModel => 'Choose a model';
+
+  @override
+  String get instStatusTitle => 'Information status';
+
+  @override
+  String get instStatusDevice => 'Instrument information available';
+
+  @override
+  String get instStatusDeviceSub =>
+      'From the official page, brochure or regulatory document';
+
+  @override
+  String get instStatusIfu => 'Manual available';
+
+  @override
+  String get instStatusIfuSub =>
+      'Checked against the official operator’s manual (with version)';
+
+  @override
+  String get instStatusExpert => 'Expert reviewed';
+
+  @override
+  String get instStatusExpertSub =>
+      'Reviewed by an independent laboratory specialist';
+
+  @override
+  String get instStatusDone => 'yes';
+
+  @override
+  String get instStatusNotYet => 'not yet';
+
+  @override
+  String get instPurpose => 'Purpose';
+
+  @override
+  String get instPrinciple => 'Principle';
+
+  @override
+  String get instNotStated => 'Not stated in the official source.';
+
+  @override
+  String get instOfficialText => 'Official wording';
+
+  @override
+  String get instKeyFacts => 'Key facts';
+
+  @override
+  String get instManual => 'Operator’s manual';
+
+  @override
+  String get instManualPublic => 'Publicly available';
+
+  @override
+  String get instManualLogin => 'Login required';
+
+  @override
+  String get instManualNotPublic => 'Not publicly available';
+
+  @override
+  String get instDocsPortal => 'Documents portal';
+
+  @override
+  String get instLoginYes => 'login required';
+
+  @override
+  String get instLoginNo => 'no login';
+
+  @override
+  String get instLoginUnknown => 'login not verified';
+
+  @override
+  String get instMaintenance => 'Daily maintenance';
+
+  @override
+  String get instMaintenanceNone =>
+      'The manufacturer does not publish daily maintenance steps openly. Follow the “Maintenance” section of your instrument’s operator’s manual — LabGuide does not guess the steps.';
+
+  @override
+  String get instMaintenanceQuotes => 'What the manufacturer states publicly:';
+
+  @override
+  String get instReagentSystem => 'Reagent system';
+
+  @override
+  String get instReagentOpen =>
+      'Open — reagents from other manufacturers can be set up';
+
+  @override
+  String get instReagentPartly =>
+      'Partly open — user-defined channels available';
+
+  @override
+  String get instReagentClosed => 'Closed — system reagents only';
+
+  @override
+  String get instReagentUnknown => 'Openness not stated in the official source';
+
+  @override
+  String instValidatedReagents(int count) {
+    return 'Reagents with preinstalled settings (per official source): $count';
+  }
+
+  @override
+  String get instImageNone =>
+      'No clearly licensed image found — we do not reuse manufacturer photos without permission.';
+
+  @override
+  String instImageCredit(String author, String license) {
+    return 'Image: $author · $license';
+  }
+
+  @override
+  String get instSources => 'Sources';
+
+  @override
+  String instAccessed(String date) {
+    return 'accessed $date';
+  }
+
+  @override
+  String get instSaveMine => 'Save as “My instrument”';
+
+  @override
+  String instSavedCount(int count) {
+    return 'In “My instruments”: $count';
+  }
+
+  @override
+  String get instCalibrate => 'Calibration';
+
+  @override
+  String get instQc => 'Quality control (QC)';
+
+  @override
+  String get instSaveTitle => 'Save instrument';
+
+  @override
+  String get instLabel => 'Name (optional)';
+
+  @override
+  String get instLabelHint => 'e.g. room 1 or back-up';
+
+  @override
+  String get instSerial => 'Serial number (optional)';
+
+  @override
+  String get instManualVersion => 'Manual version (optional)';
+
+  @override
+  String get instManualVersionHint => 'version or date on the manual cover';
+
+  @override
+  String get instSave => 'Save';
+
+  @override
+  String get instSaved => 'Saved';
+
+  @override
+  String get instRemove => 'Remove from list';
+
+  @override
+  String get instRemoveConfirm =>
+      'Remove this instrument? Calibration log entries are kept.';
+
+  @override
+  String get instMaker => 'Manufacturer';
+
+  @override
+  String get instModel => 'Model';
+
+  @override
+  String get instCategory => 'Section';
+
+  @override
+  String get instCustomRequired => 'Enter the manufacturer and model.';
+
+  @override
+  String get instCatalogError => 'Could not read the instrument catalog';
+
+  @override
+  String get instOpenCard => 'Instrument card';
+
+  @override
+  String get calStepInstrument => '1. Instrument';
+
+  @override
+  String get calStepAnalyte => '2. Analyte';
+
+  @override
+  String get calStepReagent => '3. Reagent';
+
+  @override
+  String get calChooseInstrument =>
+      'First choose the instrument: from saved ones or the catalog.';
+
+  @override
+  String get calChange => 'Change';
+
+  @override
+  String get calFromCatalog => 'Choose from catalog';
+
+  @override
+  String get calAnalyteHint => 'Analyte name (e.g. glucose)';
+
+  @override
+  String get calReagentMaker => 'Reagent manufacturer';
+
+  @override
+  String get calReagentMakerName => 'Manufacturer name';
+
+  @override
+  String get calDifferentMaker =>
+      'The reagent manufacturer differs from the instrument’s. Check compatibility separately: the instrument list (applications) in the reagent IFU and the instrument’s reagent system.';
+
+  @override
+  String calValidated(String doc) {
+    return 'Per the official source ($doc), this instrument has preinstalled settings for:';
+  }
+
+  @override
+  String get calRefListed => 'The entered REF is in this list.';
+
+  @override
+  String get calRefNotListed =>
+      'The entered REF is not in this list — re-check the reagent box and IFU.';
+
+  @override
+  String get calShowGuide => 'Show guide';
+
+  @override
+  String get calGuideNeeds =>
+      'Enter the instrument, analyte, reagent REF and IFU version. The lot is not needed at this step.';
+
+  @override
+  String get calGuideFound => 'Verified guide found';
+
+  @override
+  String get calGuideNoneTitle => 'No verified guide yet';
+
+  @override
+  String get calGuideNoneBody =>
+      'LabGuide has no checked record for this instrument + reagent REF + IFU version. We do not guess parameters — take them from these documents:';
+
+  @override
+  String get calGuide1 =>
+      'Calibrator name and REF — in the “Calibration” section of the reagent IFU.';
+
+  @override
+  String get calGuide2 =>
+      'Number of calibration points and method — in the same section.';
+
+  @override
+  String get calGuide3 =>
+      'Assigned values for each lot — on the calibrator value sheet (the lot number must match).';
+
+  @override
+  String get calGuide4 =>
+      'When to recalibrate (new lot, QC failure, interval) — in the IFU.';
+
+  @override
+  String get calGuide5 => 'After calibrating, run QC and record the result.';
+
+  @override
+  String get calDocsWhere => 'Where to find the documents';
+
+  @override
+  String get calRecordCreate => 'Create a calibration record';
+
+  @override
+  String get calRecordTitle => 'Calibration record';
+
+  @override
+  String get calCalibratorName => 'Calibrator name or REF (optional)';
+
+  @override
+  String get calLotExpiry => 'Lot expiry (optional)';
+
+  @override
+  String get calLevels => 'Calibrator levels';
+
+  @override
+  String get calLevelName => 'Level';
+
+  @override
+  String get calLevelValue => 'Assigned value';
+
+  @override
+  String get calLevelUnit => 'Unit';
+
+  @override
+  String get calAddLevel => 'Add level';
+
+  @override
+  String get calRemoveLevel => 'Remove level';
+
+  @override
+  String get calValuesFromSheet =>
+      'Copy the values from the value sheet of this exact lot. LabGuide does not guess or check them.';
+
+  @override
+  String get calPerformedOn => 'Date performed';
+
+  @override
+  String get calOutcome => 'Outcome';
+
+  @override
+  String get calOutcomeAccepted => 'Accepted';
+
+  @override
+  String get calOutcomeRejected => 'Rejected';
+
+  @override
+  String get calOutcomePending => 'Pending';
+
+  @override
+  String get calNote => 'Note (optional)';
+
+  @override
+  String get calRecordSave => 'Save record';
+
+  @override
+  String get calRecordSaved => 'Calibration record saved';
+
+  @override
+  String get calLotRequired => 'Enter the calibrator lot.';
+
+  @override
+  String get calLevelInvalid =>
+      'Enter a name, a numeric value and a unit for each level.';
+
+  @override
+  String get calLog => 'Calibration log';
+
+  @override
+  String get calLogSub => 'Lot, values and outcome — on this device';
+
+  @override
+  String get calLogEmpty => 'No records yet';
+
+  @override
+  String get calLogEmptyBody =>
+      'Create a record after calibrating — lot, values and outcome are kept here.';
+
+  @override
+  String get calDeleteRecord => 'Delete record';
+
+  @override
+  String get calDeleteRecordConfirm => 'Delete this calibration record?';
+
+  @override
+  String get calUserEntered => 'Values entered by the user.';
+
+  @override
+  String get calLot => 'Lot';
+
+  @override
+  String calAnalyteSelected(String name) {
+    return 'Analyte: $name';
+  }
 
   @override
   String get libTitle => 'Library';

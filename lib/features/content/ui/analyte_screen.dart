@@ -208,7 +208,8 @@ class _AnalyteBody {
         title: l.analyteMethodCalibration,
         subtitle: l.analyteMethodCalibrationSub,
         icon: Icons.tune_rounded,
-        onTap: () => openInTab(context, '/lab/calibration'),
+        onTap: () =>
+            openInTab(context, '/lab/calibration?analyte=${analyte.id}'),
       ),
       // Shu analit bo'yicha savollar bo'lsa — o'sha joyning o'zida (tab
       // stacki saqlanadi); bo'lmasa — umumiy mashq bo'limi.

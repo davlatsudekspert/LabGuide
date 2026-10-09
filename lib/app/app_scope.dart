@@ -7,6 +7,7 @@ import '../core/backend/lab_backend.dart';
 import '../core/storage/kv_store.dart';
 import '../features/auth/auth_controller.dart';
 import '../features/content/content_controller.dart';
+import '../features/instruments/instruments_controller.dart';
 import '../features/learn/quiz_progress.dart';
 import '../features/packs/packs_controller.dart';
 import '../features/qc/qc_controller.dart';
@@ -51,6 +52,7 @@ class AppServices {
     required this.qc,
     required this.quizProgress,
     required this.packs,
+    required this.instruments,
     required this.backend,
     required this.access,
   });
@@ -64,6 +66,9 @@ class AppServices {
   final QcController qc;
   final QuizProgressController quizProgress;
   final PacksController packs;
+
+  /// Apparatlar katalogi, “Mening apparatlarim” va kalibrlash jurnali.
+  final InstrumentsController instruments;
 
   /// Server (sozlanmagan buildda — [UnconfiguredBackend]).
   final LabBackend backend;
@@ -108,6 +113,7 @@ class AppServices {
     bookmarks.resetInMemory();
     qc.resetInMemory();
     quizProgress.resetInMemory();
+    instruments.resetInMemory();
     await packs.removeAll();
     settings.resetToDefaults(systemLocales);
   }

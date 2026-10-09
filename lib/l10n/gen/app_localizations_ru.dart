@@ -579,7 +579,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get labInstruments => 'Приборы и методики';
 
   @override
-  String get labInstrumentsSub => 'Mindray · HUMAN · другие';
+  String get labInstrumentsSub => 'Биохимия · гематология · иммунохимия · моча';
 
   @override
   String get labMicroscopySub => 'Сравнение изображений и структур';
@@ -1397,6 +1397,420 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get insOtherSub => 'Подбор по точной модели и IFU';
+
+  @override
+  String get instSearchLabel => 'Поиск прибора';
+
+  @override
+  String get instSearchHint => 'Модель, производитель или направление';
+
+  @override
+  String get instNoResultsTitle => 'Модель не найдена';
+
+  @override
+  String get instNoResultsBody =>
+      'Прибор, которого нет в каталоге, можно добавить вручную кнопкой ниже.';
+
+  @override
+  String get instMine => 'Мои приборы';
+
+  @override
+  String get instDirections => 'Направления';
+
+  @override
+  String instModelsCount(int count) {
+    return 'Моделей: $count';
+  }
+
+  @override
+  String instPlanned(String names) {
+    return 'Следующий этап: $names';
+  }
+
+  @override
+  String get instPlannedBody =>
+      'Модели этих производителей будут добавлены после проверки по официальным источникам.';
+
+  @override
+  String get instAddCustom => 'Добавить прибор не из списка';
+
+  @override
+  String get instAddCustomSub => 'Производителя и модель вводите сами';
+
+  @override
+  String get instCustomTag => 'Введено вами';
+
+  @override
+  String instCatalogNote(String date) {
+    return 'Каталог составлен по официальным страницам и документам производителей (на $date). У каждого факта указан источник.';
+  }
+
+  @override
+  String get instChooseMaker => 'Выберите производителя';
+
+  @override
+  String get instChooseModel => 'Выберите модель';
+
+  @override
+  String get instStatusTitle => 'Статус сведений';
+
+  @override
+  String get instStatusDevice => 'Сведения о приборе есть';
+
+  @override
+  String get instStatusDeviceSub =>
+      'С официальной страницы, буклета или документа регулятора';
+
+  @override
+  String get instStatusIfu => 'Руководство есть';
+
+  @override
+  String get instStatusIfuSub =>
+      'Сверено с официальным руководством оператора (с версией)';
+
+  @override
+  String get instStatusExpert => 'Проверено специалистом';
+
+  @override
+  String get instStatusExpertSub =>
+      'Рассмотрено независимым специалистом лаборатории';
+
+  @override
+  String get instStatusDone => 'есть';
+
+  @override
+  String get instStatusNotYet => 'пока нет';
+
+  @override
+  String get instPurpose => 'Назначение';
+
+  @override
+  String get instPrinciple => 'Принцип работы';
+
+  @override
+  String get instNotStated => 'В официальном источнике не указано.';
+
+  @override
+  String get instOfficialText => 'Официальный текст';
+
+  @override
+  String get instKeyFacts => 'Основные сведения';
+
+  @override
+  String get instManual => 'Руководство оператора';
+
+  @override
+  String get instManualPublic => 'Опубликовано открыто';
+
+  @override
+  String get instManualLogin => 'По логину';
+
+  @override
+  String get instManualNotPublic => 'Открыто не опубликовано';
+
+  @override
+  String get instDocsPortal => 'Портал документов';
+
+  @override
+  String get instLoginYes => 'нужен логин';
+
+  @override
+  String get instLoginNo => 'без логина';
+
+  @override
+  String get instLoginUnknown => 'наличие логина не проверено';
+
+  @override
+  String get instMaintenance => 'Ежедневное обслуживание';
+
+  @override
+  String get instMaintenanceNone =>
+      'Производитель не публикует открыто шаги ежедневного обслуживания. Следуйте разделу «Maintenance» руководства оператора вашего прибора — LabGuide не придумывает шаги.';
+
+  @override
+  String get instMaintenanceQuotes => 'Что производитель сообщает открыто:';
+
+  @override
+  String get instReagentSystem => 'Реагентная система';
+
+  @override
+  String get instReagentOpen =>
+      'Открытая — можно настроить и реагенты других производителей';
+
+  @override
+  String get instReagentPartly =>
+      'Частично открытая — есть пользовательские каналы';
+
+  @override
+  String get instReagentClosed => 'Закрытая — только системные реагенты';
+
+  @override
+  String get instReagentUnknown =>
+      'Открытость в официальном источнике не указана';
+
+  @override
+  String instValidatedReagents(int count) {
+    return 'Реагенты с готовыми настройками на приборе (по официальному источнику): $count';
+  }
+
+  @override
+  String get instImageNone =>
+      'Изображение с ясной лицензией не найдено — фото производителя без разрешения не размещаем.';
+
+  @override
+  String instImageCredit(String author, String license) {
+    return 'Фото: $author · $license';
+  }
+
+  @override
+  String get instSources => 'Источники';
+
+  @override
+  String instAccessed(String date) {
+    return 'просмотрено $date';
+  }
+
+  @override
+  String get instSaveMine => 'Сохранить как «Мой прибор»';
+
+  @override
+  String instSavedCount(int count) {
+    return 'В «Моих приборах»: $count';
+  }
+
+  @override
+  String get instCalibrate => 'Калибровка';
+
+  @override
+  String get instQc => 'Контроль качества (QC)';
+
+  @override
+  String get instSaveTitle => 'Сохранить прибор';
+
+  @override
+  String get instLabel => 'Название (необязательно)';
+
+  @override
+  String get instLabelHint => 'например, кабинет 1 или резервный';
+
+  @override
+  String get instSerial => 'Серийный номер (необязательно)';
+
+  @override
+  String get instManualVersion => 'Версия руководства (необязательно)';
+
+  @override
+  String get instManualVersionHint => 'версия или дата на обложке руководства';
+
+  @override
+  String get instSave => 'Сохранить';
+
+  @override
+  String get instSaved => 'Сохранено';
+
+  @override
+  String get instRemove => 'Удалить из списка';
+
+  @override
+  String get instRemoveConfirm =>
+      'Удалить прибор из списка? Записи журнала калибровки сохранятся.';
+
+  @override
+  String get instMaker => 'Производитель';
+
+  @override
+  String get instModel => 'Модель';
+
+  @override
+  String get instCategory => 'Направление';
+
+  @override
+  String get instCustomRequired => 'Укажите производителя и модель.';
+
+  @override
+  String get instCatalogError => 'Не удалось прочитать каталог приборов';
+
+  @override
+  String get instOpenCard => 'Карточка прибора';
+
+  @override
+  String get calStepInstrument => '1. Прибор';
+
+  @override
+  String get calStepAnalyte => '2. Аналит';
+
+  @override
+  String get calStepReagent => '3. Реагент';
+
+  @override
+  String get calChooseInstrument =>
+      'Сначала выберите прибор: из сохранённых или из каталога.';
+
+  @override
+  String get calChange => 'Изменить';
+
+  @override
+  String get calFromCatalog => 'Выбрать из каталога';
+
+  @override
+  String get calAnalyteHint => 'Название аналита (например, глюкоза)';
+
+  @override
+  String get calReagentMaker => 'Производитель реагента';
+
+  @override
+  String get calReagentMakerName => 'Название производителя';
+
+  @override
+  String get calDifferentMaker =>
+      'Производитель реагента отличается от производителя прибора. Совместимость проверьте отдельно по списку приборов (application) в IFU реагента и по реагентной системе прибора.';
+
+  @override
+  String calValidated(String doc) {
+    return 'По официальному источнику ($doc) на этом приборе есть готовые настройки для реагентов:';
+  }
+
+  @override
+  String get calRefListed => 'Введённый REF есть в этом списке.';
+
+  @override
+  String get calRefNotListed =>
+      'Введённого REF нет в этом списке — перепроверьте упаковку реагента и IFU.';
+
+  @override
+  String get calShowGuide => 'Показать руководство';
+
+  @override
+  String get calGuideNeeds =>
+      'Укажите прибор, аналит, REF реагента и версию IFU. Лот на этом шаге не нужен.';
+
+  @override
+  String get calGuideFound => 'Найдено проверенное руководство';
+
+  @override
+  String get calGuideNoneTitle => 'Проверенного руководства пока нет';
+
+  @override
+  String get calGuideNoneBody =>
+      'Для этой комбинации прибор + REF реагента + версия IFU в LabGuide нет сверенной записи. Параметры не угадываем — возьмите их из документов:';
+
+  @override
+  String get calGuide1 =>
+      'Название и REF калибратора — в разделе «Calibration» IFU реагента.';
+
+  @override
+  String get calGuide2 => 'Число точек и способ калибровки — в том же разделе.';
+
+  @override
+  String get calGuide3 =>
+      'Значения для каждого лота — в листе значений калибратора (номер лота должен совпадать).';
+
+  @override
+  String get calGuide4 =>
+      'Когда нужна повторная калибровка (смена лота, отказ QC, срок) — в IFU.';
+
+  @override
+  String get calGuide5 =>
+      'После калибровки проведите QC и внесите результат в запись.';
+
+  @override
+  String get calDocsWhere => 'Где найти документы';
+
+  @override
+  String get calRecordCreate => 'Создать запись калибровки';
+
+  @override
+  String get calRecordTitle => 'Запись калибровки';
+
+  @override
+  String get calCalibratorName =>
+      'Название или REF калибратора (необязательно)';
+
+  @override
+  String get calLotExpiry => 'Срок годности лота (необязательно)';
+
+  @override
+  String get calLevels => 'Уровни калибратора';
+
+  @override
+  String get calLevelName => 'Уровень';
+
+  @override
+  String get calLevelValue => 'Назначенное значение';
+
+  @override
+  String get calLevelUnit => 'Единица';
+
+  @override
+  String get calAddLevel => 'Добавить уровень';
+
+  @override
+  String get calRemoveLevel => 'Удалить уровень';
+
+  @override
+  String get calValuesFromSheet =>
+      'Переносите значения из листа значений именно этого лота. LabGuide их не угадывает и не проверяет.';
+
+  @override
+  String get calPerformedOn => 'Дата выполнения';
+
+  @override
+  String get calOutcome => 'Результат';
+
+  @override
+  String get calOutcomeAccepted => 'Принята';
+
+  @override
+  String get calOutcomeRejected => 'Отклонена';
+
+  @override
+  String get calOutcomePending => 'Ожидается';
+
+  @override
+  String get calNote => 'Комментарий (необязательно)';
+
+  @override
+  String get calRecordSave => 'Сохранить запись';
+
+  @override
+  String get calRecordSaved => 'Запись калибровки сохранена';
+
+  @override
+  String get calLotRequired => 'Укажите лот калибратора.';
+
+  @override
+  String get calLevelInvalid =>
+      'Для каждого уровня укажите название, значение (число) и единицу.';
+
+  @override
+  String get calLog => 'Журнал калибровок';
+
+  @override
+  String get calLogSub => 'Лот, значения и результат — на этом устройстве';
+
+  @override
+  String get calLogEmpty => 'Записей пока нет';
+
+  @override
+  String get calLogEmptyBody =>
+      'После калибровки создайте запись — лот, значения и результат сохранятся здесь.';
+
+  @override
+  String get calDeleteRecord => 'Удалить запись';
+
+  @override
+  String get calDeleteRecordConfirm => 'Удалить запись калибровки?';
+
+  @override
+  String get calUserEntered => 'Значения введены пользователем.';
+
+  @override
+  String get calLot => 'Лот';
+
+  @override
+  String calAnalyteSelected(String name) {
+    return 'Аналит: $name';
+  }
 
   @override
   String get libTitle => 'Библиотека';

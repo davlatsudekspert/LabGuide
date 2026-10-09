@@ -8,6 +8,8 @@ import '../features/auth/ui/welcome_screen.dart';
 import '../features/content/ui/analyte_screen.dart';
 import '../features/content/ui/tests_screen.dart';
 import '../features/home/home_screen.dart';
+import '../features/instruments/calibration_screens.dart';
+import '../features/instruments/instrument_screens.dart';
 import '../features/lab/lab_screens.dart';
 import '../features/learn/learn_screens.dart';
 import '../features/library/library_screens.dart';
@@ -196,8 +198,26 @@ GoRouter buildRouter(
                   GoRoute(
                     path: 'calibration',
                     builder: (context, state) => CalibrationScreen(
-                      initialManufacturer: state.uri.queryParameters['maker'],
+                      modelId: state.uri.queryParameters['model'],
+                      mineId: state.uri.queryParameters['mine'],
+                      analyteId: state.uri.queryParameters['analyte'],
                     ),
+                    routes: [
+                      GoRoute(
+                        path: 'log',
+                        builder: (context, state) =>
+                            const CalibrationLogScreen(),
+                        routes: [
+                          GoRoute(
+                            path: ':id',
+                            builder: (context, state) =>
+                                CalibrationRecordScreen(
+                                  recordId: state.pathParameters['id']!,
+                                ),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                   GoRoute(
                     path: 'qc',
@@ -230,6 +250,29 @@ GoRouter buildRouter(
                   GoRoute(
                     path: 'instruments',
                     builder: (context, state) => const InstrumentsScreen(),
+                    routes: [
+                      GoRoute(
+                        path: 'c/:category',
+                        builder: (context, state) => InstrumentMakersScreen(
+                          category: state.pathParameters['category']!,
+                        ),
+                        routes: [
+                          GoRoute(
+                            path: ':maker',
+                            builder: (context, state) => InstrumentModelsScreen(
+                              category: state.pathParameters['category']!,
+                              makerId: state.pathParameters['maker']!,
+                            ),
+                          ),
+                        ],
+                      ),
+                      GoRoute(
+                        path: 'm/:id',
+                        builder: (context, state) => InstrumentCardScreen(
+                          modelId: state.pathParameters['id']!,
+                        ),
+                      ),
+                    ],
                   ),
                   GoRoute(
                     path: 'microscopy',

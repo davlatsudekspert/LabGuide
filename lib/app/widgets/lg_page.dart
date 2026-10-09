@@ -459,19 +459,21 @@ class _TopBar extends StatelessWidget {
   }
 }
 
+/// Ilova belgisi (do'kon ikonkasi bilan bir xil; `tool/icons/make_icons.py`).
 class _BrandMark extends StatelessWidget {
   const _BrandMark();
 
   @override
   Widget build(BuildContext context) {
-    final p = LgPalette.of(context);
-    return ExcludeSemantics(
-      child: Container(
-        width: 42,
-        height: 42,
-        margin: const EdgeInsets.only(left: 6),
-        decoration: BoxDecoration(color: p.brand, shape: BoxShape.circle),
-        child: Icon(Icons.science_outlined, color: p.onBrand, size: 21),
+    return const ExcludeSemantics(
+      child: Padding(
+        padding: EdgeInsets.only(left: 6),
+        child: Image(
+          image: AssetImage('assets/images/logo_mark.png'),
+          width: 42,
+          height: 42,
+          filterQuality: FilterQuality.medium,
+        ),
       ),
     );
   }

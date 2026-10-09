@@ -1,6 +1,6 @@
 # LabGuide — progress
 
-Yangi sessiya shu fayldan boshlaydi. Oxirgi yangilanish: **2026-10-08, 2-sessiya (mustaqil sharh tuzatishlari)**.
+Yangi sessiya shu fayldan boshlaydi. Oxirgi yangilanish: **2026-10-09, 3-sessiya (paketlar, server, admin, apparatlar katalogi, logo)**.
 
 ## Qisqacha holat
 
@@ -100,6 +100,25 @@ Barcha ekranlar ko‘rib chiqildi. Uch tur:
 - Rejalashtirilgan paketlar (biokimyo kengaytmasi, namunalar/QC, mikroskopiya).
 - Mustaqil tibbiy review (hamma kontent draft).
 
+## 3-sessiya natijalari (2026-10-09)
+
+| Bo‘lim | Holat | Izoh |
+|---|---|---|
+| Oflayn paketlar | ✅ ishlaydi | Katalog (GitHub raw), progress, bekor qilish, qayta urinish, sha256, yangilash; sinov paketi “test” belgisi bilan |
+| Email OTP + sessiya | ✅ kod tayyor, ⏳ server ulanmagan | Supabase adapteri (10 daq. muddat, 5 urinish, 60 s qayta yuborish), Keychain/Keystore sessiya, chiqish; mehmon rejimi qoldi |
+| Admin panel | ✅ kod + lokal test, ⏳ server | Server bergan vakolat + TOTP 2FA, statistika (mehmonsiz, billing “yo‘q”), murojaatlar, niqoblangan foydalanuvchilar, amallar tarixi |
+| Taklif va yordam | ✅ kod + lokal test, ⏳ server | Taklif/xatolik/savol, skrinshot (PHI eslatmasi), javob/qayta javob, o‘qilmagan belgisi; AI javob yo‘q |
+| Hisobni o‘chirish | ✅ kod, ⏳ server | Edge Function (service role faqat serverda) |
+| Apparatlar katalogi | ✅ ishlaydi | 26 model (Mindray, HUMAN, Roche, Abbott; 4 yo‘nalish), rasmiy iqtiboslar, uz/ru/en qidiruv, uch holat, “Mening apparatim” |
+| Kalibrlash oqimi | ✅ ishlaydi | Apparat → analit → reagent (boshqa ishlab chiqaruvchi ogohlantirishi) → REF/IFU → yo‘riqnoma; lot faqat yozuvda; jurnal |
+| Logo | ✅ | iOS/Android ikonka, splash, ilova ichidagi belgi, Play/App Store fayllari (D-37) |
+| Keyingi bosqich ishlab chiqaruvchilar | ⏳ | Beckman Coulter, Siemens Healthineers, Sysmex, HORIBA, Erba, BioSystems — modellar hali yo‘q (bo‘sh ro‘yxat ko‘rsatilmaydi) |
+
+**Server sozlamalari** (egasidan): [supabase/README.md](../supabase/README.md) — loyiha,
+migratsiyalar, Edge Function, SMTP, OTP 600 s, Magic Link shabloni, GitHub secrets
+`LG_SUPABASE_URL` va `LG_SUPABASE_KEY`. Bepul tarifdagi 2 faol loyiha band (“news” —
+andijonforensic.uz saytida ishlatiladi, pauza qilinmadi).
+
 ## Haqiqiy tekshiruv natijalari (2026-10-09, shu konteynerda va GitHub Actions’da)
 
 | Tekshiruv | Natija |
@@ -129,11 +148,11 @@ Barcha ekranlar ko‘rib chiqildi. Uch tur:
 
 ## Ulanmagan xizmatlar
 
-- Email OTP server (release’da email kirish “hali ulanmagan”; mehmon rejimi to‘liq ishlaydi).
-- Backend: sinxronlash, guruhlar/topshiriqlar, server ruxsatlari.
+- Supabase loyihasi (kod va migratsiyalar tayyor, lokal testlar o‘tadi): email OTP, admin,
+  murojaatlar, guruhlar — URL/kalit secrets’ga qo‘yilmaguncha build “server ulanmagan” deydi.
 - StoreKit / Google Play Billing, server tekshiruvi.
-- Oflayn paketlarni yuklash serveri (o‘rnatuvchi tayyor, yuklovchi yo‘q).
-- Tasdiqlangan IFU katalogi, litsenziyali mikrofotolar.
+- Rasmiy operator qo‘llanmalari (apparatlar “Yo‘riqnoma mavjud” holatiga o‘tishi uchun),
+  tasdiqlangan IFU yozuvlari, litsenziyali mikrofotolar (nomzodlar ro‘yxati tayyor).
 
 ## Blockerlar va foydalanuvchidan kerak bo‘ladigan narsalar
 

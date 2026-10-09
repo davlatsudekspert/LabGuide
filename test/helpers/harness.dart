@@ -74,6 +74,7 @@ Future<AppServices> makeServices(
     await services.settings.completeOnboarding();
   }
   await tester.runAsync(services.content.load);
+  await tester.runAsync(services.instruments.ensureCatalog);
   return services;
 }
 

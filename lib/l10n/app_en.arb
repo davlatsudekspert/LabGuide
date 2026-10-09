@@ -252,7 +252,7 @@
   "labPreanalyticsSub": "Prepare, collect, store, transport",
   "labCalculatorsSub": "Dilution and units",
   "labInstruments": "Instruments and methods",
-  "labInstrumentsSub": "Mindray · HUMAN · other",
+  "labInstrumentsSub": "Chemistry · hematology · immunochemistry · urine",
   "labMicroscopySub": "Compare images and structures",
   "calTitle": "Calibration workflow",
   "calSubtitle": "Exact matching is needed to select the correct instructions.",
@@ -755,6 +755,196 @@
   "insHumanSub": "Instrument and reagent documents are separate",
   "insOther": "Other manufacturer",
   "insOtherSub": "Match by exact model and IFU",
+  "instSearchLabel": "Search instruments",
+  "instSearchHint": "Model, manufacturer or section",
+  "instNoResultsTitle": "No model found",
+  "instNoResultsBody": "You can add an instrument that is not in the catalog with the button below.",
+  "instMine": "My instruments",
+  "instDirections": "Sections",
+  "instModelsCount": "{count, plural, =1{1 model} other{{count} models}}",
+  "@instModelsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "instPlanned": "Next phase: {names}",
+  "@instPlanned": {
+    "placeholders": {
+      "names": {
+        "type": "String"
+      }
+    }
+  },
+  "instPlannedBody": "Models from these manufacturers will be added once checked against official sources.",
+  "instAddCustom": "Add an instrument not in the list",
+  "instAddCustomSub": "You enter the manufacturer and model yourself",
+  "instCustomTag": "Entered by you",
+  "instCatalogNote": "The catalog is compiled from manufacturers’ official pages and documents (as of {date}). Every fact shows its source.",
+  "@instCatalogNote": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "instChooseMaker": "Choose a manufacturer",
+  "instChooseModel": "Choose a model",
+  "instStatusTitle": "Information status",
+  "instStatusDevice": "Instrument information available",
+  "instStatusDeviceSub": "From the official page, brochure or regulatory document",
+  "instStatusIfu": "Manual available",
+  "instStatusIfuSub": "Checked against the official operator’s manual (with version)",
+  "instStatusExpert": "Expert reviewed",
+  "instStatusExpertSub": "Reviewed by an independent laboratory specialist",
+  "instStatusDone": "yes",
+  "instStatusNotYet": "not yet",
+  "instPurpose": "Purpose",
+  "instPrinciple": "Principle",
+  "instNotStated": "Not stated in the official source.",
+  "instOfficialText": "Official wording",
+  "instKeyFacts": "Key facts",
+  "instManual": "Operator’s manual",
+  "instManualPublic": "Publicly available",
+  "instManualLogin": "Login required",
+  "instManualNotPublic": "Not publicly available",
+  "instDocsPortal": "Documents portal",
+  "instLoginYes": "login required",
+  "instLoginNo": "no login",
+  "instLoginUnknown": "login not verified",
+  "instMaintenance": "Daily maintenance",
+  "instMaintenanceNone": "The manufacturer does not publish daily maintenance steps openly. Follow the “Maintenance” section of your instrument’s operator’s manual — LabGuide does not guess the steps.",
+  "instMaintenanceQuotes": "What the manufacturer states publicly:",
+  "instReagentSystem": "Reagent system",
+  "instReagentOpen": "Open — reagents from other manufacturers can be set up",
+  "instReagentPartly": "Partly open — user-defined channels available",
+  "instReagentClosed": "Closed — system reagents only",
+  "instReagentUnknown": "Openness not stated in the official source",
+  "instValidatedReagents": "Reagents with preinstalled settings (per official source): {count}",
+  "@instValidatedReagents": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "instImageNone": "No clearly licensed image found — we do not reuse manufacturer photos without permission.",
+  "instImageCredit": "Image: {author} · {license}",
+  "@instImageCredit": {
+    "placeholders": {
+      "author": {
+        "type": "String"
+      },
+      "license": {
+        "type": "String"
+      }
+    }
+  },
+  "instSources": "Sources",
+  "instAccessed": "accessed {date}",
+  "@instAccessed": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "instSaveMine": "Save as “My instrument”",
+  "instSavedCount": "In “My instruments”: {count}",
+  "@instSavedCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "instCalibrate": "Calibration",
+  "instQc": "Quality control (QC)",
+  "instSaveTitle": "Save instrument",
+  "instLabel": "Name (optional)",
+  "instLabelHint": "e.g. room 1 or back-up",
+  "instSerial": "Serial number (optional)",
+  "instManualVersion": "Manual version (optional)",
+  "instManualVersionHint": "version or date on the manual cover",
+  "instSave": "Save",
+  "instSaved": "Saved",
+  "instRemove": "Remove from list",
+  "instRemoveConfirm": "Remove this instrument? Calibration log entries are kept.",
+  "instMaker": "Manufacturer",
+  "instModel": "Model",
+  "instCategory": "Section",
+  "instCustomRequired": "Enter the manufacturer and model.",
+  "instCatalogError": "Could not read the instrument catalog",
+  "instOpenCard": "Instrument card",
+  "calStepInstrument": "1. Instrument",
+  "calStepAnalyte": "2. Analyte",
+  "calStepReagent": "3. Reagent",
+  "calChooseInstrument": "First choose the instrument: from saved ones or the catalog.",
+  "calChange": "Change",
+  "calFromCatalog": "Choose from catalog",
+  "calAnalyteHint": "Analyte name (e.g. glucose)",
+  "calReagentMaker": "Reagent manufacturer",
+  "calReagentMakerName": "Manufacturer name",
+  "calDifferentMaker": "The reagent manufacturer differs from the instrument’s. Check compatibility separately: the instrument list (applications) in the reagent IFU and the instrument’s reagent system.",
+  "calValidated": "Per the official source ({doc}), this instrument has preinstalled settings for:",
+  "@calValidated": {
+    "placeholders": {
+      "doc": {
+        "type": "String"
+      }
+    }
+  },
+  "calRefListed": "The entered REF is in this list.",
+  "calRefNotListed": "The entered REF is not in this list — re-check the reagent box and IFU.",
+  "calShowGuide": "Show guide",
+  "calGuideNeeds": "Enter the instrument, analyte, reagent REF and IFU version. The lot is not needed at this step.",
+  "calGuideFound": "Verified guide found",
+  "calGuideNoneTitle": "No verified guide yet",
+  "calGuideNoneBody": "LabGuide has no checked record for this instrument + reagent REF + IFU version. We do not guess parameters — take them from these documents:",
+  "calGuide1": "Calibrator name and REF — in the “Calibration” section of the reagent IFU.",
+  "calGuide2": "Number of calibration points and method — in the same section.",
+  "calGuide3": "Assigned values for each lot — on the calibrator value sheet (the lot number must match).",
+  "calGuide4": "When to recalibrate (new lot, QC failure, interval) — in the IFU.",
+  "calGuide5": "After calibrating, run QC and record the result.",
+  "calDocsWhere": "Where to find the documents",
+  "calRecordCreate": "Create a calibration record",
+  "calRecordTitle": "Calibration record",
+  "calCalibratorName": "Calibrator name or REF (optional)",
+  "calLotExpiry": "Lot expiry (optional)",
+  "calLevels": "Calibrator levels",
+  "calLevelName": "Level",
+  "calLevelValue": "Assigned value",
+  "calLevelUnit": "Unit",
+  "calAddLevel": "Add level",
+  "calRemoveLevel": "Remove level",
+  "calValuesFromSheet": "Copy the values from the value sheet of this exact lot. LabGuide does not guess or check them.",
+  "calPerformedOn": "Date performed",
+  "calOutcome": "Outcome",
+  "calOutcomeAccepted": "Accepted",
+  "calOutcomeRejected": "Rejected",
+  "calOutcomePending": "Pending",
+  "calNote": "Note (optional)",
+  "calRecordSave": "Save record",
+  "calRecordSaved": "Calibration record saved",
+  "calLotRequired": "Enter the calibrator lot.",
+  "calLevelInvalid": "Enter a name, a numeric value and a unit for each level.",
+  "calLog": "Calibration log",
+  "calLogSub": "Lot, values and outcome — on this device",
+  "calLogEmpty": "No records yet",
+  "calLogEmptyBody": "Create a record after calibrating — lot, values and outcome are kept here.",
+  "calDeleteRecord": "Delete record",
+  "calDeleteRecordConfirm": "Delete this calibration record?",
+  "calUserEntered": "Values entered by the user.",
+  "calLot": "Lot",
+  "calAnalyteSelected": "Analyte: {name}",
+  "@calAnalyteSelected": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "libTitle": "Library",
   "libSubtitle": "Your knowledge in one place.",
   "libBooks": "Books and guides",

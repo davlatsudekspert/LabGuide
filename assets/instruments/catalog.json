@@ -1,0 +1,2911 @@
+{
+ "schema_version": 1,
+ "catalog_version": "2026.10.09-1",
+ "accessed": "2026-10-09",
+ "categories": [
+  {
+   "id": "chemistry",
+   "name": {
+    "uz": "Biokimyo",
+    "ru": "Биохимия",
+    "en": "Clinical chemistry"
+   },
+   "sub": {
+    "uz": "Fotometrik va ISE analizatorlar",
+    "ru": "Фотометрические анализаторы и ISE",
+    "en": "Photometric analyzers and ISE"
+   },
+   "terms": [
+    "biokimyo",
+    "biokimyoviy",
+    "биохим",
+    "chemistry",
+    "clinical chemistry",
+    "фотометр",
+    "photometer",
+    "fotometr"
+   ]
+  },
+  {
+   "id": "hematology",
+   "name": {
+    "uz": "Gematologiya",
+    "ru": "Гематология",
+    "en": "Hematology"
+   },
+   "sub": {
+    "uz": "Qon hujayralari sanagichlari (3 va 5 qismli)",
+    "ru": "Счётчики клеток крови (3- и 5-diff)",
+    "en": "Blood cell counters (3- and 5-part diff)"
+   },
+   "terms": [
+    "gematologiya",
+    "gematolog",
+    "гематолог",
+    "hematology",
+    "haematology",
+    "cbc",
+    "qon",
+    "кров",
+    "blood",
+    "oak",
+    "оак"
+   ]
+  },
+  {
+   "id": "immunoassay",
+   "name": {
+    "uz": "Immunokimyo",
+    "ru": "Иммунохимия",
+    "en": "Immunochemistry"
+   },
+   "sub": {
+    "uz": "Xemilyuminessent immunoanalizatorlar",
+    "ru": "Хемилюминесцентные иммуноанализаторы",
+    "en": "Chemiluminescence immunoassay analyzers"
+   },
+   "terms": [
+    "immun",
+    "иммун",
+    "immunoassay",
+    "clia",
+    "ecl",
+    "хемилюмин",
+    "gormon",
+    "гормон",
+    "hormone"
+   ]
+  },
+  {
+   "id": "urinalysis",
+   "name": {
+    "uz": "Siydik tahlili",
+    "ru": "Анализ мочи",
+    "en": "Urinalysis"
+   },
+   "sub": {
+    "uz": "Test-chiziq o'quvchilar va cho'kma mikroskopiyasi",
+    "ru": "Анализаторы тест-полосок и осадка",
+    "en": "Strip readers and sediment analyzers"
+   },
+   "terms": [
+    "siydik",
+    "peshob",
+    "моча",
+    "мочи",
+    "urine",
+    "urinalysis",
+    "осадок",
+    "sediment",
+    "cho'kma"
+   ]
+  }
+ ],
+ "makers": [
+  {
+   "id": "mindray",
+   "name": "Mindray",
+   "phase": 1,
+   "website": "https://www.mindray.com/en/products/laboratory-diagnostics",
+   "docs": {
+    "name": "Mindray IVD eDocuments",
+    "url": "https://www.mindray.com/en/resources-center/ivd-edocs",
+    "login": false,
+    "note": {
+     "uz": "Login so'ramaydi. 2026-10-09 holatida faqat gematologiya reagent/nazorat IFU'lari bor (hujjat nomi, versiya, Part Number). Apparat qo'llanmalari bu yerda yo'q.",
+     "ru": "Без входа. На 2026-10-09 только IFU гематологических реагентов/контролей (название, версия, Part Number). Руководств к приборам нет.",
+     "en": "No login. As of 2026-10-09 it lists only hematology reagent/control IFUs (document name, version, part number). Instrument manuals are not there."
+    }
+   }
+  },
+  {
+   "id": "human",
+   "name": "HUMAN",
+   "phase": 1,
+   "website": "https://www.human.de",
+   "docs": {
+    "name": "HUMAN target value sheets",
+    "url": "https://www.human.de/target-value-sheets/",
+    "login": null,
+    "note": {
+     "uz": "Kalibrator/nazorat qiymatlar varaqlari shu sahifada (lot bo'yicha). Sayt avtomatik so'rovlarni bloklagani uchun qolgan bo'limlar tekshirilmadi.",
+     "ru": "Листы целевых значений калибраторов/контролей (по лоту). Остальные разделы не проверены: сайт блокирует автоматический доступ.",
+     "en": "Calibrator/control target value sheets (by lot). Other sections were not verified: the site blocks automated access."
+    }
+   }
+  },
+  {
+   "id": "roche",
+   "name": "Roche Diagnostics",
+   "phase": 1,
+   "website": "https://diagnostics.roche.com",
+   "docs": {
+    "name": "Roche eLabDoc",
+    "url": "https://elabdoc-prod.roche.com/eLD/web/",
+    "login": false,
+    "note": {
+     "uz": "Asosiy qidiruv loginsiz: katalog raqami (REF), lot, hujjat ID yoki nomi bo'yicha. Method Sheet / IFU shu yerda. Operator qo'llanmalari va qiymat varaqlari — mijoz logini bilan.",
+     "ru": "Базовый поиск без входа: по каталожному номеру (REF), лоту, ID или названию документа. Method Sheet / IFU здесь. Руководства оператора и листы значений — с логином клиента.",
+     "en": "Basic search without login: by catalog number (REF), lot, document ID or title. Method sheets / IFUs are here. Operator manuals and value sheets need a customer login."
+    }
+   }
+  },
+  {
+   "id": "abbott",
+   "name": "Abbott",
+   "phase": 1,
+   "website": "https://www.corelaboratory.abbott",
+   "docs": {
+    "name": "Abbott Lab Central",
+    "url": "https://labcentral.corelaboratory.abbott/int/en/faq.html",
+    "login": true,
+    "note": {
+     "uz": "Faqat Abbott Core Laboratory mijozlari uchun: ro'yxatdan o'tish mijoz raqami va apparat seriya raqami bilan. Technical Library'da IFU va COA bor.",
+     "ru": "Только для клиентов Abbott Core Laboratory: регистрация по номеру клиента и серийному номеру прибора. В Technical Library — IFU и COA.",
+     "en": "Abbott Core Laboratory customers only: registration with customer number and instrument serial number. The Technical Library holds IFUs and COAs."
+    }
+   }
+  },
+  {
+   "id": "beckman",
+   "name": "Beckman Coulter",
+   "phase": 2,
+   "website": "https://www.beckmancoulter.com",
+   "docs": {
+    "name": "Beckman Coulter Tech Docs",
+    "url": "https://www.beckmancoulter.com/support/tech-docs",
+    "login": null,
+    "note": null
+   }
+  },
+  {
+   "id": "siemens",
+   "name": "Siemens Healthineers",
+   "phase": 2,
+   "website": "https://www.siemens-healthineers.com",
+   "docs": {
+    "name": "Siemens Healthineers Document Library",
+    "url": "https://www.siemens-healthineers.com/en-uk/services/laboratory-diagnostics/service-and-support/technical-documentation",
+    "login": true,
+    "note": null
+   }
+  },
+  {
+   "id": "sysmex",
+   "name": "Sysmex",
+   "phase": 2,
+   "website": "https://www.sysmex.com",
+   "docs": null
+  },
+  {
+   "id": "horiba",
+   "name": "HORIBA Medical",
+   "phase": 2,
+   "website": "https://www.horiba.com",
+   "docs": null
+  },
+  {
+   "id": "erba",
+   "name": "Erba",
+   "phase": 2,
+   "website": "https://www.erbalachema.com/en/",
+   "docs": {
+    "name": "Erba Lachema — Diagnostic kits instructions",
+    "url": "https://www.erbalachema.com/en/product-support/instructions/instructions-diagnostic-kits/",
+    "login": false,
+    "note": null
+   }
+  },
+  {
+   "id": "biosystems",
+   "name": "BioSystems",
+   "phase": 2,
+   "website": "https://www.biosystems.global",
+   "docs": null
+  }
+ ],
+ "sources": [
+  {
+   "id": "mr-bs240",
+   "title": "Mindray — BS-240 product page",
+   "url": "https://www.mindray.com/en/products/laboratory-diagnostics/chemistry/small-test-volume/bs-240",
+   "doc_ref": null,
+   "accessed": "2026-10-09"
+  },
+  {
+   "id": "mr-bs480",
+   "title": "Mindray — BS-480 product page",
+   "url": "https://www.mindray.com/en/products/laboratory-diagnostics/chemistry/medium-test-volume/bs-480",
+   "doc_ref": null,
+   "accessed": "2026-10-09"
+  },
+  {
+   "id": "mr-bs480-br",
+   "title": "Mindray — BS-480 brochure",
+   "url": "https://www.mindray.com/content/dam/xpace/en_in/resources/brochures/bs-480-product-brochure-en_in.pdf",
+   "doc_ref": "P/N ENG-BS-480-210285x8P-20171017",
+   "accessed": "2026-10-09"
+  },
+  {
+   "id": "mr-bc5390",
+   "title": "Mindray — BC-5390 product page",
+   "url": "https://www.mindray.com/en/products/laboratory-diagnostics/hematology/5-part-differential-analyzers/bc-5390",
+   "doc_ref": null,
+   "accessed": "2026-10-09"
+  },
+  {
+   "id": "fda-k160429",
+   "title": "FDA 510(k) decision summary K160429 (BC-5390)",
+   "url": "https://www.accessdata.fda.gov/cdrh_docs/reviews/K160429.pdf",
+   "doc_ref": "K160429",
+   "accessed": "2026-10-09"
+  },
+  {
+   "id": "mr-bc30s",
+   "title": "Mindray — BC-30s product page",
+   "url": "https://www.mindray.com/en/products/laboratory-diagnostics/hematology/3-part-differential-analyzers/bc-30s",
+   "doc_ref": null,
+   "accessed": "2026-10-09"
+  },
+  {
+   "id": "mr-bc6200",
+   "title": "Mindray — BC-6200 product page",
+   "url": "https://www.mindray.com/en/products/laboratory-diagnostics/hematology/5-part-differential-analyzers/bc-6200",
+   "doc_ref": null,
+   "accessed": "2026-10-09"
+  },
+  {
+   "id": "mr-bc6000-br",
+   "title": "Mindray — BC-6000 series brochure",
+   "url": "https://www.mindray.com/content/dam/xpace/en/resources/brochure/bc-6000-product-brochure.pdf",
+   "doc_ref": "P/N ENG-BC-6000-210285X10P-20190409",
+   "accessed": "2026-10-09"
+  },
+  {
+   "id": "mr-cl900i",
+   "title": "Mindray — CL-900i product page",
+   "url": "https://www.mindray.com/en/products/laboratory-diagnostics/chemiluminescence-immunoassay/small-test-volume/cl-900i",
+   "doc_ref": null,
+   "accessed": "2026-10-09"
+  },
+  {
+   "id": "mr-cl900i-br",
+   "title": "Mindray — CL-900i brochure",
+   "url": "https://www.mindray.com/content/dam/xpace/en/resources/brochure/cl-900i-product-brochure.pdf",
+   "doc_ref": "P/N ENG-CL-900i-210285X6P-20220530",
+   "accessed": "2026-10-09"
+  },
+  {
+   "id": "mr-cl1200i",
+   "title": "Mindray — CL-1200i product page",
+   "url": "https://www.mindray.com/en/products/laboratory-diagnostics/chemiluminescence-immunoassay/medium-test-volume/cl-1200i",
+   "doc_ref": null,
+   "accessed": "2026-10-09"
+  },
+  {
+   "id": "mr-eu5600",
+   "title": "Mindray — EU-5600 Pro / EU-5300 Pro product page",
+   "url": "https://www.mindray.com/en/products/laboratory-diagnostics/urinalysis/urinalysis-automation-line/eu-5600-pro-eu-5300-pro",
+   "doc_ref": null,
+   "accessed": "2026-10-09"
+  },
+  {
+   "id": "hu-hs600",
+   "title": "HUMAN — HumaStar 600 flyer",
+   "url": "https://www.human.de/01_CoreLab_DX/Clinical_Chemistry/HumaStar_Systems/HumaStar_600/Marketing%20Material/981163_Flyer_HumaStar600_EN.PDF",
+   "doc_ref": "981163/2023-09",
+   "accessed": "2026-10-09"
+  },
+  {
+   "id": "hu-hl4000",
+   "title": "HUMAN — HumaLyzer 4000 flyer",
+   "url": "https://www.human.de/01_CoreLab_DX/Clinical_Chemistry/HumaLyzer_Photometers/HumaLyzer_4000/Marketing%20Material/981015_Flyer_HumaLyzer4000_EN.PDF",
+   "doc_ref": "981015/2021-11",
+   "accessed": "2026-10-09"
+  },
+  {
+   "id": "hu-hc5d",
+   "title": "HUMAN — HumaCount 5D flyer",
+   "url": "https://www.human.de/01_CoreLab_DX/Hematology/HumaCount_5-part_Systems/HumaCount_5D/Marketing%20Material/981646_Flyer_HumaCount5D_EN.PDF",
+   "doc_ref": "981646/2021-04",
+   "accessed": "2026-10-09"
+  },
+  {
+   "id": "hu-hc30ts",
+   "title": "HUMAN — HumaCount 80TS / 30TS flyer",
+   "url": "https://www.human.de/01_CoreLab_DX/Hematology/HumaCount_3-part_Systems/HumaCount_80TS_30TS/Marketing%20Material/981642_Flyer_HumaCount80TS_30TS_EN.PDF",
+   "doc_ref": "981642/2024-04",
+   "accessed": "2026-10-09"
+  },
+  {
+   "id": "rst-71783",
+   "title": "Rosstandart type description No. 71783-18 (HumaCount 30TS/80TS), via all-pribors.ru mirror",
+   "url": "https://all-pribors.ru/docs/71783-18.pdf",
+   "doc_ref": "71783-18",
+   "accessed": "2026-10-09"
+  },
+  {
+   "id": "hu-clia150",
+   "title": "HUMAN — HumaCLIA 150 flyer",
+   "url": "https://www.human.de/01_CoreLab_DX/CLIA/HumaCLIA_System/HumaCLIA_150/Marketing%20Material/981022_Flyer_HumaCLIA150_EN.PDF",
+   "doc_ref": "981022/2024-03",
+   "accessed": "2026-10-09"
+  },
+  {
+   "id": "ro-c311",
+   "title": "Roche — cobas c 311 analyzer",
+   "url": "https://diagnostics.roche.com/us/en/products/instruments/cobas-c-311-ins-2043.html",
+   "doc_ref": null,
+   "accessed": "2026-10-09"
+  },
+  {
+   "id": "ro-docs",
+   "title": "Roche — technical documents (eLabDoc)",
+   "url": "https://diagnostics.roche.com/us/en/eservice-overview/technical-documents.html",
+   "doc_ref": null,
+   "accessed": "2026-10-09"
+  },
+  {
+   "id": "ro-c303",
+   "title": "Roche — cobas c 303 analytical unit",
+   "url": "https://diagnostics.roche.com/global/en/products/instruments/cobas-c-303-ins-6347.html",
+   "doc_ref": null,
+   "accessed": "2026-10-09"
+  },
+  {
+   "id": "ro-pure",
+   "title": "Roche — cobas pure integrated solutions",
+   "url": "https://diagnostics.roche.com/global/en/products/systems/cobas-pure-integrated-solutions-sys-351.html",
+   "doc_ref": null,
+   "accessed": "2026-10-09"
+  },
+  {
+   "id": "ro-e411",
+   "title": "Roche — cobas e 411 analyzer",
+   "url": "https://diagnostics.roche.com/global/en/products/instruments/cobas-e-411.html",
+   "doc_ref": null,
+   "accessed": "2026-10-09"
+  },
+  {
+   "id": "ro-e402",
+   "title": "Roche — cobas e 402 analytical unit",
+   "url": "https://diagnostics.roche.com/nl/en/products/instruments/cobas-e-402-ins-6350.html",
+   "doc_ref": null,
+   "accessed": "2026-10-09"
+  },
+  {
+   "id": "ro-u411",
+   "title": "Roche — cobas u 411 urine analyzer",
+   "url": "https://diagnostics.roche.com/se/en/products/instruments/cobas-u-411-ins-2009.html",
+   "doc_ref": null,
+   "accessed": "2026-10-09"
+  },
+  {
+   "id": "ro-6500",
+   "title": "Roche — cobas 6500 urine analyzer series",
+   "url": "https://diagnostics.roche.com/au/en/products/systems/cobas-6500-system-sys-250.html",
+   "doc_ref": null,
+   "accessed": "2026-10-09"
+  },
+  {
+   "id": "ab-c4000",
+   "title": "Abbott — ARCHITECT c4000",
+   "url": "https://www.corelaboratory.abbott/us/en/offerings/brands/architect/architect-c4000",
+   "doc_ref": null,
+   "accessed": "2026-10-09"
+  },
+  {
+   "id": "ab-alinity-ci",
+   "title": "Abbott — Alinity ci-series",
+   "url": "https://www.corelaboratory.abbott/int/en/offerings/brands/alinity/alinity-ci-series.html",
+   "doc_ref": null,
+   "accessed": "2026-10-09"
+  },
+  {
+   "id": "ab-emerald",
+   "title": "Abbott — CELL-DYN Emerald 22 AL",
+   "url": "https://www.corelaboratory.abbott/int/en/offerings/brands/cell-dyn/cell-dyn-emerald-22-al.html",
+   "doc_ref": null,
+   "accessed": "2026-10-09"
+  },
+  {
+   "id": "ab-hq",
+   "title": "Abbott — Alinity h-series",
+   "url": "https://www.corelaboratory.abbott/int/en/offerings/brands/alinity/Alinity-h-hematology-system.html",
+   "doc_ref": null,
+   "accessed": "2026-10-09"
+  },
+  {
+   "id": "ab-i1000",
+   "title": "Abbott — ARCHITECT i1000SR",
+   "url": "https://www.corelaboratory.abbott/int/en/offerings/brands/architect/architect-i1000SR",
+   "doc_ref": null,
+   "accessed": "2026-10-09"
+  },
+  {
+   "id": "fda-k041192",
+   "title": "FDA 510(k) K041192 (ARCHITECT assay)",
+   "url": "https://www.accessdata.fda.gov/cdrh_docs/pdf4/K041192.pdf",
+   "doc_ref": "K041192",
+   "accessed": "2026-10-09"
+  }
+ ],
+ "models": [
+  {
+   "id": "mindray-bs-240",
+   "maker": "mindray",
+   "model": "BS-240",
+   "category": "chemistry",
+   "aliases": [
+    "BS240",
+    "БС-240"
+   ],
+   "local_names": {
+    "ru": "BS-240 Биохимический анализатор"
+   },
+   "kind": {
+    "uz": "Avtomatik biokimyoviy analizator",
+    "ru": "Автоматический биохимический анализатор",
+    "en": "Automated chemistry analyzer"
+   },
+   "purpose": {
+    "text": {
+     "uz": "Ko'p funksiyali, stol ustiga qo'yiladigan biokimyo analizatori.",
+     "ru": "Многофункциональный настольный биохимический анализатор.",
+     "en": "Multi-functional benchtop chemistry analyzer."
+    },
+    "quotes": [
+     {
+      "quote": "multi-functional benchtop chemistry analyzer with a throughput of 200 tests per hour",
+      "source": "mr-bs240"
+     }
+    ]
+   },
+   "facts": [
+    {
+     "label": {
+      "uz": "Unumdorlik",
+      "ru": "Производительность",
+      "en": "Throughput"
+     },
+     "value": "200 tests per hour",
+     "source": "mr-bs240"
+    },
+    {
+     "label": {
+      "uz": "Reagent joylari",
+      "ru": "Позиции реагентов",
+      "en": "Reagent positions"
+     },
+     "value": "40 positions for reagent",
+     "source": "mr-bs240"
+    }
+   ],
+   "maintenance": [
+    {
+     "quote": "Step-by-step maintenance guide for easy operation",
+     "source": "mr-bs240"
+    }
+   ],
+   "manual": {
+    "access": "not_public",
+    "note": {
+     "uz": "Operator qo'llanmasi ishlab chiqaruvchi saytida ochiq e'lon qilinmagan. Apparat bilan kelgan nusxadan yoki rasmiy distribyutor/servisdan foydalaning va versiyasini “Mening apparatim”ga yozib qo'ying.",
+     "ru": "Руководство оператора не опубликовано открыто на сайте производителя. Используйте экземпляр, поставленный с прибором, или запросите у официального дистрибьютора/сервиса и запишите его версию в «Мой прибор».",
+     "en": "The operator's manual is not published openly on the manufacturer's site. Use the copy supplied with the instrument or ask the official distributor/service, and record its version under “My instrument”."
+    }
+   },
+   "reagent_system": {
+    "kind": "unknown",
+    "quote": null
+   },
+   "validated_reagents": [],
+   "image": null,
+   "market_note": null,
+   "status": "device_info",
+   "principle": null
+  },
+  {
+   "id": "mindray-bs-480",
+   "maker": "mindray",
+   "model": "BS-480",
+   "category": "chemistry",
+   "aliases": [
+    "BS480",
+    "БС-480"
+   ],
+   "local_names": {
+    "ru": "BS-480 Биохимический анализатор"
+   },
+   "kind": {
+    "uz": "Avtomatik biokimyoviy analizator (pol ustiga)",
+    "ru": "Автоматический биохимический анализатор (напольный)",
+    "en": "Automated chemistry analyzer (floor-standing)"
+   },
+   "purpose": {
+    "text": {
+     "uz": "Pol ustiga o'rnatiladigan, diskret, random access biokimyo analizatori.",
+     "ru": "Напольный дискретный биохимический анализатор с произвольным доступом.",
+     "en": "Floor-standing, discrete, random-access clinical chemistry analyzer."
+    },
+    "quotes": [
+     {
+      "quote": "A floor-standing, discrete and random access clinical chemistry analyzer offering constant throughput of 400 tests per hour.",
+      "source": "mr-bs480"
+     }
+    ]
+   },
+   "principle": {
+    "text": {
+     "uz": "Yutilish fotometriyasi va turbidimetriya (difraksion panjarali fotometr); elektrolitlar uchun ixtiyoriy ISE (K⁺, Na⁺, Cl⁻).",
+     "ru": "Абсорбционная фотометрия и турбидиметрия (фотометр с дифракционной решёткой); опционально ISE (K⁺, Na⁺, Cl⁻).",
+     "en": "Absorbance photometry and turbidimetry (grating photometer); optional ISE (K⁺, Na⁺, Cl⁻)."
+    },
+    "quotes": [
+     {
+      "quote": "Measuring principles: Absorbance Photometry, Turbidimetry",
+      "source": "mr-bs480-br"
+     },
+     {
+      "quote": "Reversed optics, grating photometry",
+      "source": "mr-bs480-br"
+     }
+    ]
+   },
+   "facts": [
+    {
+     "label": {
+      "uz": "Unumdorlik",
+      "ru": "Производительность",
+      "en": "Throughput"
+     },
+     "value": "400 photometric tests/hour, up to 240 tests/hour for ISE",
+     "source": "mr-bs480-br"
+    },
+    {
+     "label": {
+      "uz": "Ish harorati",
+      "ru": "Рабочая температура",
+      "en": "Operating temperature"
+     },
+     "value": "37°C",
+     "source": "mr-bs480-br"
+    }
+   ],
+   "maintenance": [
+    {
+     "quote": "Built in Step-by-Step maintenance guide",
+     "source": "mr-bs480-br"
+    }
+   ],
+   "manual": {
+    "access": "not_public",
+    "note": {
+     "uz": "Operator qo'llanmasi ishlab chiqaruvchi saytida ochiq e'lon qilinmagan. Apparat bilan kelgan nusxadan yoki rasmiy distribyutor/servisdan foydalaning va versiyasini “Mening apparatim”ga yozib qo'ying.",
+     "ru": "Руководство оператора не опубликовано открыто на сайте производителя. Используйте экземпляр, поставленный с прибором, или запросите у официального дистрибьютора/сервиса и запишите его версию в «Мой прибор».",
+     "en": "The operator's manual is not published openly on the manufacturer's site. Use the copy supplied with the instrument or ask the official distributor/service, and record its version under “My instrument”."
+    }
+   },
+   "reagent_system": {
+    "kind": "unknown",
+    "quote": null
+   },
+   "validated_reagents": [],
+   "image": null,
+   "market_note": null,
+   "status": "device_info"
+  },
+  {
+   "id": "human-humastar-600",
+   "maker": "human",
+   "model": "HumaStar 600",
+   "category": "chemistry",
+   "aliases": [
+    "HumaStar600",
+    "Humastar 600",
+    "REF 16660",
+    "16660"
+   ],
+   "kind": {
+    "uz": "Avtomatik biokimyoviy analizator",
+    "ru": "Автоматический биохимический анализатор",
+    "en": "Automated chemistry analyzer"
+   },
+   "purpose": {
+    "text": {
+     "uz": "O'rta unumdorlikdagi random access biokimyo tizimi.",
+     "ru": "Биохимическая система среднего потока с произвольным доступом.",
+     "en": "Medium-throughput random-access clinical chemistry system."
+    },
+    "quotes": [
+     {
+      "quote": "Medium throughput random access system",
+      "source": "hu-hs600"
+     }
+    ]
+   },
+   "principle": {
+    "text": {
+     "uz": "Avtomatik random access biokimyo tizimi; elektrolitlar uchun ichki ISE moduli. Fotometr turi flayerda ko'rsatilmagan.",
+     "ru": "Автоматическая биохимическая система с произвольным доступом; встроенный модуль ISE для электролитов. Тип фотометра во флаере не указан.",
+     "en": "Automated random-access chemistry system with a built-in ISE module for electrolytes. The photometer type is not stated in the flyer."
+    },
+    "quotes": [
+     {
+      "quote": "Random access clinical chemistry system",
+      "source": "hu-hs600"
+     },
+     {
+      "quote": "built-in ISE Module",
+      "source": "hu-hs600"
+     }
+    ]
+   },
+   "facts": [
+    {
+     "label": {
+      "uz": "Unumdorlik",
+      "ru": "Производительность",
+      "en": "Throughput"
+     },
+     "value": "Up to 600 tests per hour",
+     "source": "hu-hs600"
+    },
+    {
+     "label": {
+      "uz": "ISE (elektrolitlar)",
+      "ru": "ISE (электролиты)",
+      "en": "ISE (electrolytes)"
+     },
+     "value": "Up to 780 tests per hour with ISE",
+     "source": "hu-hs600"
+    },
+    {
+     "label": {
+      "uz": "Joylar",
+      "ru": "Позиции",
+      "en": "Positions"
+     },
+     "value": "95 positions for samples; 48 cooled positions for reagents",
+     "source": "hu-hs600"
+    },
+    {
+     "label": {
+      "uz": "Ochiq kanallar",
+      "ru": "Открытые каналы",
+      "en": "Open channels"
+     },
+     "value": "5 open channels for user defined settings",
+     "source": "hu-hs600"
+    }
+   ],
+   "reagent_system": {
+    "kind": "partly_open",
+    "quote": {
+     "quote": "5 open channels for user defined settings",
+     "source": "hu-hs600"
+    }
+   },
+   "manual": {
+    "access": "not_public",
+    "note": {
+     "uz": "Operator qo'llanmasi ishlab chiqaruvchi saytida ochiq e'lon qilinmagan. Apparat bilan kelgan nusxadan yoki rasmiy distribyutor/servisdan foydalaning va versiyasini “Mening apparatim”ga yozib qo'ying.",
+     "ru": "Руководство оператора не опубликовано открыто на сайте производителя. Используйте экземпляр, поставленный с прибором, или запросите у официального дистрибьютора/сервиса и запишите его версию в «Мой прибор».",
+     "en": "The operator's manual is not published openly on the manufacturer's site. Use the copy supplied with the instrument or ask the official distributor/service, and record its version under “My instrument”."
+    }
+   },
+   "local_names": {},
+   "maintenance": [],
+   "validated_reagents": [],
+   "image": null,
+   "market_note": null,
+   "status": "device_info"
+  },
+  {
+   "id": "human-humalyzer-4000",
+   "maker": "human",
+   "model": "HumaLyzer 4000",
+   "category": "chemistry",
+   "aliases": [
+    "Humalyzer 4000",
+    "HumaLyzer4000",
+    "HL4000",
+    "REF 18250",
+    "18250"
+   ],
+   "kind": {
+    "uz": "Yarim avtomatik fotometr",
+    "ru": "Полуавтоматический фотометр",
+    "en": "Semi-automatic photometer"
+   },
+   "purpose": {
+    "text": {
+     "uz": "Yarim avtomatik biokimyo fotometri: namuna va reagentni laborant qo'shadi, o'lchash va hisoblashni apparat bajaradi.",
+     "ru": "Полуавтоматический биохимический фотометр: пробу и реагент вносит лаборант, измерение и расчёт выполняет прибор.",
+     "en": "Semi-automatic chemistry photometer: the operator pipettes sample and reagent; the instrument measures and calculates."
+    },
+    "quotes": [
+     {
+      "quote": "Semi-automatic photometer",
+      "source": "hu-hl4000"
+     }
+    ]
+   },
+   "principle": {
+    "text": {
+     "uz": "Fotometriya (kolorimetriya, UV-testlar, turbidimetriya); 8 ta interferension filtrli referens kanal optikasi. O'lchash oqim kyuvetasi yoki kvadrat kyuvetada.",
+     "ru": "Фотометрия (колориметрия, УФ-тесты, турбидиметрия); оптика с опорным каналом и 8 интерференционными фильтрами. Измерение в проточной или квадратной кювете.",
+     "en": "Photometry (colorimetry, UV tests, turbidimetry) with reference-channel optics and 8 interference filters; measurement in a flow cell or square cuvette."
+    },
+    "quotes": [
+     {
+      "quote": "Photometry (colorimetry, UV-tests, turbidimetry)",
+      "source": "hu-hl4000"
+     },
+     {
+      "quote": "Reference channel optics with 8 different interference filters",
+      "source": "hu-hl4000"
+     }
+    ]
+   },
+   "facts": [
+    {
+     "label": {
+      "uz": "Reaksiya tizimi",
+      "ru": "Реакционная система",
+      "en": "Reaction system"
+     },
+     "value": "Flow cell or square cuvette",
+     "source": "hu-hl4000"
+    },
+    {
+     "label": {
+      "uz": "Inkubator",
+      "ru": "Инкубатор",
+      "en": "Incubator"
+     },
+     "value": "Built-in: 10 round, 2 square positions",
+     "source": "hu-hl4000"
+    },
+    {
+     "label": {
+      "uz": "Metodlar",
+      "ru": "Методы",
+      "en": "Methods"
+     },
+     "value": "144 method positions; more than 50 validated settings for HUMAN reagents",
+     "source": "hu-hl4000"
+    },
+    {
+     "label": {
+      "uz": "Lampa resursi",
+      "ru": "Ресурс лампы",
+      "en": "Lamp life"
+     },
+     "value": "Lamp life time of > 5000 h",
+     "source": "hu-hl4000"
+    }
+   ],
+   "maintenance": [
+    {
+     "quote": "Automatic maintenance reminders (e.g. cleaning)",
+     "source": "hu-hl4000"
+    },
+    {
+     "quote": "No cleaning of interference filters required (sealed photometer module)",
+     "source": "hu-hl4000"
+    },
+    {
+     "quote": "Basic wear and tear parts can be replaced without special tools by laboratory staff",
+     "source": "hu-hl4000"
+    }
+   ],
+   "reagent_system": {
+    "kind": "open",
+    "quote": {
+     "quote": "Reagent system Open",
+     "source": "hu-hl4000"
+    }
+   },
+   "validated_reagents": [
+    {
+     "analyte": "glucose-plasma-fasting",
+     "name": "GLUCOSE liquicolor",
+     "refs": [
+      "10121",
+      "10260"
+     ],
+     "source": "hu-hl4000"
+    },
+    {
+     "analyte": "glucose-plasma-fasting",
+     "name": "GLUCOSE liquiUV mono",
+     "refs": [
+      "10786"
+     ],
+     "source": "hu-hl4000"
+    },
+    {
+     "analyte": "hba1c",
+     "name": "HbA1c liquidirect",
+     "refs": [
+      "10770"
+     ],
+     "source": "hu-hl4000"
+    },
+    {
+     "analyte": "creatinine",
+     "name": "auto-CREATININE liquicolor",
+     "refs": [
+      "10052"
+     ],
+     "source": "hu-hl4000"
+    },
+    {
+     "analyte": "creatinine",
+     "name": "CREATININE (enzym) liquicolor",
+     "refs": [
+      "10053"
+     ],
+     "source": "hu-hl4000"
+    },
+    {
+     "analyte": "urea",
+     "name": "UREA liquiUV",
+     "refs": [
+      "10521"
+     ],
+     "source": "hu-hl4000"
+    },
+    {
+     "analyte": "uric-acid",
+     "name": "URIC ACID liquicolor",
+     "refs": [
+      "10690",
+      "10691"
+     ],
+     "source": "hu-hl4000"
+    },
+    {
+     "analyte": "uric-acid",
+     "name": "URIC ACID liquicolorplus",
+     "refs": [
+      "10694"
+     ],
+     "source": "hu-hl4000"
+    },
+    {
+     "analyte": "bilirubin-total",
+     "name": "auto-BILIRUBIN-T liquicolor",
+     "refs": [
+      "10742"
+     ],
+     "source": "hu-hl4000"
+    },
+    {
+     "analyte": "bilirubin-direct",
+     "name": "auto-BILIRUBIN-D liquicolor",
+     "refs": [
+      "10741"
+     ],
+     "source": "hu-hl4000"
+    },
+    {
+     "analyte": "cholesterol-total",
+     "name": "CHOLESTEROL liquicolor",
+     "refs": [
+      "10017",
+      "10019",
+      "10028"
+     ],
+     "source": "hu-hl4000"
+    },
+    {
+     "analyte": "hdl-c",
+     "name": "HDL CHOLESTEROL liquicolor",
+     "refs": [
+      "10084",
+      "10284"
+     ],
+     "source": "hu-hl4000"
+    },
+    {
+     "analyte": "ldl-c",
+     "name": "LDL CHOLESTEROL liquicolor",
+     "refs": [
+      "10094",
+      "10294"
+     ],
+     "source": "hu-hl4000"
+    },
+    {
+     "analyte": "triglycerides",
+     "name": "TRIGLYCERIDES liquicolor mono",
+     "refs": [
+      "10720P",
+      "10724",
+      "10725"
+     ],
+     "source": "hu-hl4000"
+    },
+    {
+     "analyte": "albumin",
+     "name": "ALBUMIN liquicolor",
+     "refs": [
+      "10560",
+      "156004"
+     ],
+     "source": "hu-hl4000"
+    },
+    {
+     "analyte": "total-protein",
+     "name": "TOTAL PROTEIN liquicolor",
+     "refs": [
+      "157004",
+      "10570"
+     ],
+     "source": "hu-hl4000"
+    },
+    {
+     "analyte": "crp",
+     "name": "CRP",
+     "refs": [
+      "11241"
+     ],
+     "source": "hu-hl4000"
+    },
+    {
+     "analyte": "sodium",
+     "name": "SODIUM liquicolor",
+     "refs": [
+      "10113"
+     ],
+     "source": "hu-hl4000"
+    },
+    {
+     "analyte": "chloride",
+     "name": "CHLORIDE liquicolor",
+     "refs": [
+      "10115"
+     ],
+     "source": "hu-hl4000"
+    },
+    {
+     "analyte": "calcium",
+     "name": "CALCIUM liquicolor",
+     "refs": [
+      "10011"
+     ],
+     "source": "hu-hl4000"
+    },
+    {
+     "analyte": "magnesium",
+     "name": "MAGNESIUM liquicolor",
+     "refs": [
+      "10010"
+     ],
+     "source": "hu-hl4000"
+    },
+    {
+     "analyte": "phosphate",
+     "name": "PHOSPHORUS liquirapid",
+     "refs": [
+      "10027"
+     ],
+     "source": "hu-hl4000"
+    },
+    {
+     "analyte": "lipase",
+     "name": "LIPASE liquicolor",
+     "refs": [
+      "12006",
+      "12026"
+     ],
+     "source": "hu-hl4000"
+    },
+    {
+     "analyte": "ck",
+     "name": "CK NAC activated liquiUV",
+     "refs": [
+      "12015"
+     ],
+     "source": "hu-hl4000"
+    },
+    {
+     "analyte": "alt",
+     "name": "GPT (ALAT) IFCC mod. liquiUV",
+     "refs": [
+      "12212",
+      "12012",
+      "12022",
+      "12032"
+     ],
+     "source": "hu-hl4000"
+    },
+    {
+     "analyte": "ast",
+     "name": "GOT (ASAT) IFCC mod. liquiUV",
+     "refs": [
+      "12211",
+      "12011",
+      "12021",
+      "12031"
+     ],
+     "source": "hu-hl4000"
+    },
+    {
+     "analyte": "ggt",
+     "name": "gamma-GT liquicolor",
+     "refs": [
+      "12213",
+      "12013",
+      "12023",
+      "12033"
+     ],
+     "source": "hu-hl4000"
+    }
+   ],
+   "manual": {
+    "access": "not_public",
+    "note": {
+     "uz": "Operator qo'llanmasi ishlab chiqaruvchi saytida ochiq e'lon qilinmagan. Apparat bilan kelgan nusxadan yoki rasmiy distribyutor/servisdan foydalaning va versiyasini “Mening apparatim”ga yozib qo'ying.",
+     "ru": "Руководство оператора не опубликовано открыто на сайте производителя. Используйте экземпляр, поставленный с прибором, или запросите у официального дистрибьютора/сервиса и запишите его версию в «Мой прибор».",
+     "en": "The operator's manual is not published openly on the manufacturer's site. Use the copy supplied with the instrument or ask the official distributor/service, and record its version under “My instrument”."
+    }
+   },
+   "local_names": {},
+   "image": null,
+   "market_note": null,
+   "status": "device_info"
+  },
+  {
+   "id": "roche-cobas-c-311",
+   "maker": "roche",
+   "model": "cobas c 311",
+   "category": "chemistry",
+   "aliases": [
+    "c311",
+    "c 311",
+    "cobas c311",
+    "кобас с311"
+   ],
+   "kind": {
+    "uz": "Avtomatik biokimyoviy analizator",
+    "ru": "Автоматический биохимический анализатор",
+    "en": "Automated chemistry analyzer"
+   },
+   "purpose": {
+    "text": {
+     "uz": "To'liq avtomatik, diskret biokimyo analizatori.",
+     "ru": "Полностью автоматический дискретный биохимический анализатор.",
+     "en": "Fully automated, discrete clinical chemistry analyzer."
+    },
+    "quotes": [
+     {
+      "quote": "The cobas c 311 analyzer is a fully automated, discrete clinical chemistry analyzer",
+      "source": "ro-c311"
+     }
+    ]
+   },
+   "principle": {
+    "text": {
+     "uz": "Fotometrik testlar va natriy, kaliy, xlor uchun ion-selektiv elektrod (ISE).",
+     "ru": "Фотометрические тесты и ион-селективный электрод (ISE) для натрия, калия и хлора.",
+     "en": "Photometric tests plus ion-selective electrode (ISE) determination of sodium, potassium and chloride."
+    },
+    "quotes": [
+     {
+      "quote": "ion-selective electrode (ISE) determination of sodium, potassium, and chloride",
+      "source": "ro-c311"
+     }
+    ]
+   },
+   "facts": [
+    {
+     "label": {
+      "uz": "Unumdorlik",
+      "ru": "Производительность",
+      "en": "Throughput"
+     },
+     "value": "Up to 300 tests/hr for photometry tests only",
+     "source": "ro-c311"
+    },
+    {
+     "label": {
+      "uz": "ISE (elektrolitlar)",
+      "ru": "ISE (электролиты)",
+      "en": "ISE (electrolytes)"
+     },
+     "value": "450 tests/hr for only ISE tests",
+     "source": "ro-c311"
+    },
+    {
+     "label": {
+      "uz": "Testlar menyusi",
+      "ru": "Меню тестов",
+      "en": "Assay menu"
+     },
+     "value": "Over 130 assays and applications available",
+     "source": "ro-c311"
+    }
+   ],
+   "maintenance": [
+    {
+     "quote": "Automated maintenance functions",
+     "source": "ro-c311"
+    }
+   ],
+   "manual": {
+    "access": "login",
+    "note": {
+     "uz": "Roche operator qo'llanmasi mijoz logini bilan beriladi (pastdagi hujjatlar portali).",
+     "ru": "Руководство оператора Roche доступно с логином клиента (портал документов ниже).",
+     "en": "The Roche operator's manual is available with a customer login (documents portal below)."
+    }
+   },
+   "local_names": {},
+   "reagent_system": {
+    "kind": "unknown",
+    "quote": null
+   },
+   "validated_reagents": [],
+   "image": null,
+   "market_note": null,
+   "status": "device_info"
+  },
+  {
+   "id": "roche-cobas-c-303",
+   "maker": "roche",
+   "model": "cobas c 303",
+   "category": "chemistry",
+   "aliases": [
+    "c303",
+    "c 303",
+    "cobas pure",
+    "кобас пьюр"
+   ],
+   "kind": {
+    "uz": "Biokimyo moduli (cobas pure)",
+    "ru": "Биохимический модуль (cobas pure)",
+    "en": "Chemistry unit (cobas pure)"
+   },
+   "purpose": {
+    "text": {
+     "uz": "Ko'p turdagi miqdoriy va sifat in vitro testlar uchun to'liq avtomatik analizator (cobas pure tizimi tarkibida).",
+     "ru": "Полностью автоматический анализатор для широкого спектра количественных и качественных тестов in vitro (в составе системы cobas pure).",
+     "en": "Fully automated analyzer for a large array of quantitative and qualitative in vitro tests (part of the cobas pure system)."
+    },
+    "quotes": [
+     {
+      "quote": "a fully automated analyzer for a large array of quantitative and qualitative in vitro tests",
+      "source": "ro-c303"
+     }
+    ]
+   },
+   "principle": {
+    "text": {
+     "uz": "Ko'p to'lqinli spektrofotometr; elektrolitlar uchun alohida ISE bloki.",
+     "ru": "Многоволновой спектрофотометр; отдельный блок ISE для электролитов.",
+     "en": "Multiple-wavelength spectrophotometer; separate ISE unit for electrolytes."
+    },
+    "quotes": [
+     {
+      "quote": "Photometer: Multiple wavelengths spectrophotometer",
+      "source": "ro-c303"
+     }
+    ]
+   },
+   "facts": [
+    {
+     "label": {
+      "uz": "Unumdorlik",
+      "ru": "Производительность",
+      "en": "Throughput"
+     },
+     "value": "Photometric only: 450 tests/hour",
+     "source": "ro-c303"
+    },
+    {
+     "label": {
+      "uz": "Unumdorlik (fotometriya + ISE)",
+      "ru": "Производительность (фотометрия + ISE)",
+      "en": "Throughput (photometric + ISE)"
+     },
+     "value": "750 tests/hour (300 photometric + 450 ISE tests/hour)",
+     "source": "ro-c303"
+    },
+    {
+     "label": {
+      "uz": "Testlar menyusi",
+      "ru": "Меню тестов",
+      "en": "Assay menu"
+     },
+     "value": "over 110 clinical chemistry applications",
+     "source": "ro-c303"
+    }
+   ],
+   "maintenance": [
+    {
+     "quote": "Automated maintenance requiring only 5 minutes of daily operator intervention",
+     "source": "ro-pure"
+    }
+   ],
+   "manual": {
+    "access": "login",
+    "note": {
+     "uz": "Roche operator qo'llanmasi mijoz logini bilan beriladi (pastdagi hujjatlar portali).",
+     "ru": "Руководство оператора Roche доступно с логином клиента (портал документов ниже).",
+     "en": "The Roche operator's manual is available with a customer login (documents portal below)."
+    }
+   },
+   "local_names": {},
+   "reagent_system": {
+    "kind": "unknown",
+    "quote": null
+   },
+   "validated_reagents": [],
+   "image": null,
+   "market_note": null,
+   "status": "device_info"
+  },
+  {
+   "id": "abbott-architect-c4000",
+   "maker": "abbott",
+   "model": "ARCHITECT c4000",
+   "category": "chemistry",
+   "aliases": [
+    "c4000",
+    "Architect c4000",
+    "архитект"
+   ],
+   "kind": {
+    "uz": "Avtomatik biokimyoviy analizator",
+    "ru": "Автоматический биохимический анализатор",
+    "en": "Automated chemistry analyzer"
+   },
+   "purpose": {
+    "text": {
+     "uz": "Inson namunalarida in vitro diagnostik testlar uchun (rasmiy sahifadagi umumiy ta'rif; modelga xos maqsad alohida yozilmagan).",
+     "ru": "Для диагностических тестов in vitro на образцах человека (общая формулировка на официальной странице; отдельной для модели нет).",
+     "en": "For in vitro diagnostic assays on samples of human origin (general statement on the official page; no model-specific purpose)."
+    },
+    "quotes": [
+     {
+      "quote": "intended for performing in vitro diagnostic assays on samples of human origin",
+      "source": "ab-c4000"
+     }
+    ]
+   },
+   "principle": {
+    "text": {
+     "uz": "Fotometrik, potensiometrik va turbidimetrik o'lchash; Na⁺, K⁺, Cl⁻ uchun ISE.",
+     "ru": "Фотометрия, потенциометрия и турбидиметрия; ISE для Na⁺, K⁺, Cl⁻.",
+     "en": "Photometric, potentiometric and turbidimetric measurement; ISE for Na⁺, K⁺, Cl⁻."
+    },
+    "quotes": [
+     {
+      "quote": "Photometric, Potentiometric, Turbidimetric",
+      "source": "ab-c4000"
+     },
+     {
+      "quote": "patented ISE (Na+, K+ and Cl-)",
+      "source": "ab-c4000"
+     }
+    ]
+   },
+   "facts": [
+    {
+     "label": {
+      "uz": "Unumdorlik",
+      "ru": "Производительность",
+      "en": "Throughput"
+     },
+     "value": "Up to 800 tests/hour",
+     "source": "ab-c4000"
+    },
+    {
+     "label": {
+      "uz": "Joylar",
+      "ru": "Позиции",
+      "en": "Positions"
+     },
+     "value": "Up to 90 refrigerated positions",
+     "source": "ab-c4000"
+    }
+   ],
+   "maintenance": [
+    {
+     "quote": "Onboard Maintenance Records: Yes",
+     "source": "ab-c4000"
+    }
+   ],
+   "manual": {
+    "access": "login",
+    "note": {
+     "uz": "Abbott operator qo'llanmasi mijoz logini bilan beriladi (pastdagi hujjatlar portali).",
+     "ru": "Руководство оператора Abbott доступно с логином клиента (портал документов ниже).",
+     "en": "The Abbott operator's manual is available with a customer login (documents portal below)."
+    }
+   },
+   "local_names": {},
+   "reagent_system": {
+    "kind": "unknown",
+    "quote": null
+   },
+   "validated_reagents": [],
+   "image": null,
+   "market_note": null,
+   "status": "device_info"
+  },
+  {
+   "id": "abbott-alinity-c",
+   "maker": "abbott",
+   "model": "Alinity c",
+   "category": "chemistry",
+   "aliases": [
+    "Alinity",
+    "алинити"
+   ],
+   "kind": {
+    "uz": "Avtomatik biokimyoviy analizator",
+    "ru": "Автоматический биохимический анализатор",
+    "en": "Automated chemistry analyzer"
+   },
+   "principle": {
+    "text": {
+     "uz": "Fotometrik va potensiometrik o'lchash.",
+     "ru": "Фотометрическое и потенциометрическое измерение.",
+     "en": "Photometric and potentiometric measurement."
+    },
+    "quotes": [
+     {
+      "quote": "Photometric, Potentiometric",
+      "source": "ab-alinity-ci"
+     }
+    ]
+   },
+   "facts": [
+    {
+     "label": {
+      "uz": "Unumdorlik",
+      "ru": "Производительность",
+      "en": "Throughput"
+     },
+     "value": "Up to 1,350 tests/hour",
+     "source": "ab-alinity-ci"
+    },
+    {
+     "label": {
+      "uz": "Reagent joylari",
+      "ru": "Позиции реагентов",
+      "en": "Reagent capacity"
+     },
+     "value": "Up to 70",
+     "source": "ab-alinity-ci"
+    }
+   ],
+   "manual": {
+    "access": "login",
+    "note": {
+     "uz": "Abbott operator qo'llanmasi mijoz logini bilan beriladi (pastdagi hujjatlar portali).",
+     "ru": "Руководство оператора Abbott доступно с логином клиента (портал документов ниже).",
+     "en": "The Abbott operator's manual is available with a customer login (documents portal below)."
+    }
+   },
+   "local_names": {},
+   "maintenance": [],
+   "reagent_system": {
+    "kind": "unknown",
+    "quote": null
+   },
+   "validated_reagents": [],
+   "image": null,
+   "market_note": null,
+   "status": "device_info",
+   "purpose": null
+  },
+  {
+   "id": "mindray-bc-5390",
+   "maker": "mindray",
+   "model": "BC-5390",
+   "category": "hematology",
+   "aliases": [
+    "BC5390",
+    "БС-5390",
+    "BC-5390 CRP"
+   ],
+   "kind": {
+    "uz": "Gematologik analizator, 5 qismli differensial",
+    "ru": "Гематологический анализатор, 5-diff",
+    "en": "Hematology analyzer, 5-part differential"
+   },
+   "purpose": {
+    "text": {
+     "uz": "Klinik laboratoriyalarda in vitro diagnostika uchun miqdoriy avtomatik gematologik analizator.",
+     "ru": "Количественный автоматический гематологический анализатор для диагностики in vitro в клинических лабораториях.",
+     "en": "Quantitative, automated hematology analyzer for in vitro diagnostic use in clinical laboratories."
+    },
+    "quotes": [
+     {
+      "quote": "a quantitative, automated hematology analyzer for in vitro diagnostic use in clinical laboratories",
+      "source": "fda-k160429"
+     }
+    ]
+   },
+   "principle": {
+    "text": {
+     "uz": "Lazer sochilishi, oqim sitometriyasi va kimyoviy bo'yoq (leykotsitlar differensiali); impedans usuli bilan WBC, RBC, BAS va PLT sanaladi; HGB — kolorimetrik usul.",
+     "ru": "Лазерное светорассеяние, проточная цитометрия и химический краситель (дифференциал лейкоцитов); импедансный метод для подсчёта WBC, RBC, BAS и PLT; HGB — колориметрический метод.",
+     "en": "Laser scatter, flow cytometry and chemical dye (WBC differential); impedance counting of WBC, RBC, BAS and PLT; HGB by colorimetry."
+    },
+    "quotes": [
+     {
+      "quote": "laser scatter, flow cytometry, and chemical dye",
+      "source": "mr-bc5390"
+     },
+     {
+      "quote": "uses the electrical impedance method to count and measure the size of WBC, RBC, BAS, and PLT",
+      "source": "fda-k160429"
+     },
+     {
+      "quote": "HGB is determined by the colorimetric method",
+      "source": "fda-k160429"
+     }
+    ]
+   },
+   "facts": [
+    {
+     "label": {
+      "uz": "Unumdorlik",
+      "ru": "Производительность",
+      "en": "Throughput"
+     },
+     "value": "throughput of 60 samples per hour",
+     "source": "mr-bc5390"
+    }
+   ],
+   "manual": {
+    "access": "not_public",
+    "note": {
+     "uz": "Operator qo'llanmasi ishlab chiqaruvchi saytida ochiq e'lon qilinmagan. Apparat bilan kelgan nusxadan yoki rasmiy distribyutor/servisdan foydalaning va versiyasini “Mening apparatim”ga yozib qo'ying.",
+     "ru": "Руководство оператора не опубликовано открыто на сайте производителя. Используйте экземпляр, поставленный с прибором, или запросите у официального дистрибьютора/сервиса и запишите его версию в «Мой прибор».",
+     "en": "The operator's manual is not published openly on the manufacturer's site. Use the copy supplied with the instrument or ask the official distributor/service, and record its version under “My instrument”."
+    }
+   },
+   "local_names": {},
+   "maintenance": [],
+   "reagent_system": {
+    "kind": "unknown",
+    "quote": null
+   },
+   "validated_reagents": [],
+   "image": null,
+   "market_note": null,
+   "status": "device_info"
+  },
+  {
+   "id": "mindray-bc-30s",
+   "maker": "mindray",
+   "model": "BC-30s",
+   "category": "hematology",
+   "aliases": [
+    "BC30s",
+    "BC-30",
+    "BC-20s/30s",
+    "БС-30"
+   ],
+   "local_names": {
+    "ru": "BC-20s/30s 3diff анализатор"
+   },
+   "kind": {
+    "uz": "Gematologik analizator, 3 qismli differensial",
+    "ru": "Гематологический анализатор, 3-diff",
+    "en": "Hematology analyzer, 3-part differential"
+   },
+   "purpose": {
+    "text": {
+     "uz": "Ixcham gematologik analizator: umumiy qon tahlili (CBC) va leykotsitlarning 3 qismli differensiali.",
+     "ru": "Компактный гематологический анализатор: общий анализ крови (CBC) и 3-частный дифференциал лейкоцитов.",
+     "en": "Compact hematology analyzer: complete blood count (CBC) with 3-part WBC differential."
+    },
+    "quotes": [
+     {
+      "quote": "CBC+3-DIFF, 21 parameters +3 histograms",
+      "source": "mr-bc30s"
+     }
+    ]
+   },
+   "facts": [
+    {
+     "label": {
+      "uz": "Unumdorlik",
+      "ru": "Производительность",
+      "en": "Throughput"
+     },
+     "value": "Throughput:70 samples per hour",
+     "source": "mr-bc30s"
+    },
+    {
+     "label": {
+      "uz": "Parametrlar",
+      "ru": "Параметры",
+      "en": "Parameters"
+     },
+     "value": "CBC+3-DIFF, 21 parameters +3 histograms",
+     "source": "mr-bc30s"
+    }
+   ],
+   "manual": {
+    "access": "not_public",
+    "note": {
+     "uz": "Operator qo'llanmasi ishlab chiqaruvchi saytida ochiq e'lon qilinmagan. Apparat bilan kelgan nusxadan yoki rasmiy distribyutor/servisdan foydalaning va versiyasini “Mening apparatim”ga yozib qo'ying.",
+     "ru": "Руководство оператора не опубликовано открыто на сайте производителя. Используйте экземпляр, поставленный с прибором, или запросите у официального дистрибьютора/сервиса и запишите его версию в «Мой прибор».",
+     "en": "The operator's manual is not published openly on the manufacturer's site. Use the copy supplied with the instrument or ask the official distributor/service, and record its version under “My instrument”."
+    }
+   },
+   "maintenance": [],
+   "reagent_system": {
+    "kind": "unknown",
+    "quote": null
+   },
+   "validated_reagents": [],
+   "image": null,
+   "market_note": null,
+   "status": "device_info",
+   "principle": null
+  },
+  {
+   "id": "mindray-bc-6200",
+   "maker": "mindray",
+   "model": "BC-6200",
+   "category": "hematology",
+   "aliases": [
+    "BC6200",
+    "BC-6000",
+    "БС-6200"
+   ],
+   "kind": {
+    "uz": "Gematologik analizator, 5 qismli differensial",
+    "ru": "Гематологический анализатор, 5-diff",
+    "en": "Hematology analyzer, 5-part differential"
+   },
+   "principle": {
+    "text": {
+     "uz": "BC-6000 seriyasi bukleti: WBC, differensial va NRBC — SF Cube usuli; RBC va PLT — DC impedans; gemoglobin — siyaniddan xoli reagent.",
+     "ru": "Буклет серии BC-6000: WBC, дифференциал и NRBC — метод SF Cube; RBC и PLT — DC-импеданс; гемоглобин — бесцианидный реагент.",
+     "en": "BC-6000 series brochure: WBC, differential and NRBC by SF Cube; RBC and PLT by DC impedance; cyanide-free hemoglobin reagent."
+    },
+    "quotes": [
+     {
+      "quote": "SF Cube* method to count WBC, 6-Part diff and NRBC",
+      "source": "mr-bc6000-br"
+     },
+     {
+      "quote": "DC impedance method for RBC and PLT",
+      "source": "mr-bc6000-br"
+     },
+     {
+      "quote": "Cyanide free reagent for hemoglobin test",
+      "source": "mr-bc6000-br"
+     }
+    ]
+   },
+   "facts": [
+    {
+     "label": {
+      "uz": "Unumdorlik",
+      "ru": "Производительность",
+      "en": "Throughput"
+     },
+     "value": "throughput of up to 110 tests per hour",
+     "source": "mr-bc6200"
+    }
+   ],
+   "manual": {
+    "access": "not_public",
+    "note": {
+     "uz": "Operator qo'llanmasi ishlab chiqaruvchi saytida ochiq e'lon qilinmagan. Apparat bilan kelgan nusxadan yoki rasmiy distribyutor/servisdan foydalaning va versiyasini “Mening apparatim”ga yozib qo'ying.",
+     "ru": "Руководство оператора не опубликовано открыто на сайте производителя. Используйте экземпляр, поставленный с прибором, или запросите у официального дистрибьютора/сервиса и запишите его версию в «Мой прибор».",
+     "en": "The operator's manual is not published openly on the manufacturer's site. Use the copy supplied with the instrument or ask the official distributor/service, and record its version under “My instrument”."
+    }
+   },
+   "local_names": {},
+   "maintenance": [],
+   "reagent_system": {
+    "kind": "unknown",
+    "quote": null
+   },
+   "validated_reagents": [],
+   "image": null,
+   "market_note": null,
+   "status": "device_info",
+   "purpose": null
+  },
+  {
+   "id": "human-humacount-5d",
+   "maker": "human",
+   "model": "HumaCount 5D",
+   "category": "hematology",
+   "aliases": [
+    "Humacount 5D",
+    "HumaCount5D",
+    "HC5D"
+   ],
+   "kind": {
+    "uz": "Gematologik analizator, 5 qismli differensial",
+    "ru": "Гематологический анализатор, 5-diff",
+    "en": "Hematology analyzer, 5-part differential"
+   },
+   "purpose": {
+    "text": {
+     "uz": "5 qismli differensialli gematologik tizim.",
+     "ru": "Гематологическая система с 5-частным дифференциалом.",
+     "en": "5-part differential hematology system."
+    },
+    "quotes": [
+     {
+      "quote": "Outstanding 5-part diff hematology system",
+      "source": "hu-hc5d"
+     }
+    ]
+   },
+   "principle": {
+    "text": {
+     "uz": "Leykotsitlar differensiali 3D lazer sochilishi texnologiyasiga asoslangan. RBC/PLT usuli flayerda ko'rsatilmagan.",
+     "ru": "Дифференциал лейкоцитов основан на технологии 3D-светорассеяния. Метод для RBC/PLT во флаере не указан.",
+     "en": "WBC differential based on 3D scatter technology. The RBC/PLT method is not stated in the flyer."
+    },
+    "quotes": [
+     {
+      "quote": "based on 3D scatter technology",
+      "source": "hu-hc5d"
+     }
+    ]
+   },
+   "facts": [
+    {
+     "label": {
+      "uz": "Unumdorlik",
+      "ru": "Производительность",
+      "en": "Throughput"
+     },
+     "value": "Up to 60 samples / hour",
+     "source": "hu-hc5d"
+    },
+    {
+     "label": {
+      "uz": "Parametrlar",
+      "ru": "Параметры",
+      "en": "Parameters"
+     },
+     "value": "29 parameters with ALY#% & LIC#%",
+     "source": "hu-hc5d"
+    },
+    {
+     "label": {
+      "uz": "Namuna hajmi",
+      "ru": "Объём пробы",
+      "en": "Sample volume"
+     },
+     "value": "Sample volume: 20 μl",
+     "source": "hu-hc5d"
+    }
+   ],
+   "reagent_system": {
+    "kind": "closed",
+    "quote": {
+     "quote": "require RF card",
+     "source": "hu-hc5d"
+    }
+   },
+   "manual": {
+    "access": "not_public",
+    "note": {
+     "uz": "Operator qo'llanmasi ishlab chiqaruvchi saytida ochiq e'lon qilinmagan. Apparat bilan kelgan nusxadan yoki rasmiy distribyutor/servisdan foydalaning va versiyasini “Mening apparatim”ga yozib qo'ying.",
+     "ru": "Руководство оператора не опубликовано открыто на сайте производителя. Используйте экземпляр, поставленный с прибором, или запросите у официального дистрибьютора/сервиса и запишите его версию в «Мой прибор».",
+     "en": "The operator's manual is not published openly on the manufacturer's site. Use the copy supplied with the instrument or ask the official distributor/service, and record its version under “My instrument”."
+    }
+   },
+   "local_names": {},
+   "maintenance": [],
+   "validated_reagents": [],
+   "image": null,
+   "market_note": null,
+   "status": "device_info"
+  },
+  {
+   "id": "human-humacount-30ts",
+   "maker": "human",
+   "model": "HumaCount 30TS",
+   "category": "hematology",
+   "aliases": [
+    "Humacount 30TS",
+    "HumaCount30TS",
+    "HumaCount 80TS",
+    "30TS"
+   ],
+   "local_names": {
+    "ru": "Анализатор гематологический автоматический HumaCount 30TS"
+   },
+   "kind": {
+    "uz": "Gematologik analizator, 3 qismli differensial",
+    "ru": "Гематологический анализатор, 3-diff",
+    "en": "Hematology analyzer, 3-part differential"
+   },
+   "purpose": {
+    "text": {
+     "uz": "Avtomatik 3 qismli differensial tahlil.",
+     "ru": "Автоматический 3-частный дифференциальный анализ.",
+     "en": "Automated 3-part differential analysis."
+    },
+    "quotes": [
+     {
+      "quote": "Automated 3-part differentiation analysis",
+      "source": "hu-hc30ts"
+     }
+    ]
+   },
+   "principle": {
+    "text": {
+     "uz": "Hujayralar Kulter (konduktometrik) usulida sanaladi; gemoglobin — fotometrik usul (Rosstandart tavsifi bo'yicha).",
+     "ru": "Подсчёт клеток методом Коултера (кондуктометрическим); гемоглобин — фотометрическим методом (по описанию типа Росстандарта).",
+     "en": "Cells counted by the Coulter (conductometric) method; hemoglobin photometrically (per the Rosstandart type description)."
+    },
+    "quotes": [
+     {
+      "quote": "методом Культера, или кондуктометрическим методом",
+      "source": "rst-71783"
+     },
+     {
+      "quote": "фотометрическим методом",
+      "source": "rst-71783"
+     }
+    ]
+   },
+   "facts": [
+    {
+     "label": {
+      "uz": "Unumdorlik",
+      "ru": "Производительность",
+      "en": "Throughput"
+     },
+     "value": "1 measuring chamber = 30 samples/hour",
+     "source": "hu-hc30ts"
+    },
+    {
+     "label": {
+      "uz": "Parametrlar",
+      "ru": "Параметры",
+      "en": "Parameters"
+     },
+     "value": "22 parameters using just a 25 µl sample volume",
+     "source": "hu-hc30ts"
+    }
+   ],
+   "maintenance": [
+    {
+     "quote": "Automated requests for hard/enzymatic cleaning",
+     "source": "hu-hc30ts"
+    }
+   ],
+   "manual": {
+    "access": "not_public",
+    "note": {
+     "uz": "Operator qo'llanmasi ishlab chiqaruvchi saytida ochiq e'lon qilinmagan. Apparat bilan kelgan nusxadan yoki rasmiy distribyutor/servisdan foydalaning va versiyasini “Mening apparatim”ga yozib qo'ying.",
+     "ru": "Руководство оператора не опубликовано открыто на сайте производителя. Используйте экземпляр, поставленный с прибором, или запросите у официального дистрибьютора/сервиса и запишите его версию в «Мой прибор».",
+     "en": "The operator's manual is not published openly on the manufacturer's site. Use the copy supplied with the instrument or ask the official distributor/service, and record its version under “My instrument”."
+    }
+   },
+   "reagent_system": {
+    "kind": "unknown",
+    "quote": null
+   },
+   "validated_reagents": [],
+   "image": null,
+   "market_note": null,
+   "status": "device_info"
+  },
+  {
+   "id": "abbott-cell-dyn-emerald-22-al",
+   "maker": "abbott",
+   "model": "CELL-DYN Emerald 22 AL",
+   "category": "hematology",
+   "aliases": [
+    "Emerald 22",
+    "Cell-Dyn Emerald 22",
+    "Селл-Дин"
+   ],
+   "kind": {
+    "uz": "Gematologik analizator, 5 qismli differensial",
+    "ru": "Гематологический анализатор, 5-diff",
+    "en": "Hematology analyzer, 5-part differential"
+   },
+   "purpose": {
+    "text": {
+     "uz": "Kam va o'rta hajmli laboratoriyalar uchun 5 qismli differensialli avtomatik gematologik analizator.",
+     "ru": "Автоматический гематологический анализатор с 5-diff для лабораторий малого и среднего потока.",
+     "en": "Automated 5-part differential hematology analyzer for low- to mid-volume laboratories."
+    },
+    "quotes": [
+     {
+      "quote": "Automated hematology analyzer delivering 5-part differential for low- to mid-volume laboratories.",
+      "source": "ab-emerald"
+     }
+    ]
+   },
+   "principle": {
+    "text": {
+     "uz": "Optik oqim sitometriyasi, elektr impedansi va yutilish spektrofotometriyasi.",
+     "ru": "Оптическая проточная цитометрия, электрический импеданс и абсорбционная спектрофотометрия.",
+     "en": "Optical flow cytometry, electrical impedance and absorption spectrophotometry."
+    },
+    "quotes": [
+     {
+      "quote": "Optical Flow Cytometry technology",
+      "source": "ab-emerald"
+     },
+     {
+      "quote": "Electrical impedance",
+      "source": "ab-emerald"
+     },
+     {
+      "quote": "Absorption spectrophotometry",
+      "source": "ab-emerald"
+     }
+    ]
+   },
+   "facts": [
+    {
+     "label": {
+      "uz": "Unumdorlik",
+      "ru": "Производительность",
+      "en": "Throughput"
+     },
+     "value": "40 samples per hour",
+     "source": "ab-emerald"
+    }
+   ],
+   "manual": {
+    "access": "login",
+    "note": {
+     "uz": "Abbott operator qo'llanmasi mijoz logini bilan beriladi (pastdagi hujjatlar portali).",
+     "ru": "Руководство оператора Abbott доступно с логином клиента (портал документов ниже).",
+     "en": "The Abbott operator's manual is available with a customer login (documents portal below)."
+    }
+   },
+   "local_names": {},
+   "maintenance": [],
+   "reagent_system": {
+    "kind": "unknown",
+    "quote": null
+   },
+   "validated_reagents": [],
+   "image": null,
+   "market_note": null,
+   "status": "device_info"
+  },
+  {
+   "id": "abbott-cell-dyn-emerald",
+   "maker": "abbott",
+   "model": "CELL-DYN Emerald",
+   "category": "hematology",
+   "aliases": [
+    "Emerald",
+    "Cell-Dyn Emerald"
+   ],
+   "kind": {
+    "uz": "Gematologik analizator, 3 qismli differensial",
+    "ru": "Гематологический анализатор, 3-diff",
+    "en": "Hematology analyzer, 3-part differential"
+   },
+   "purpose": {
+    "text": {
+     "uz": "Kam hajmli laboratoriyalar uchun 3 qismli differensialli ixcham gematologik analizator.",
+     "ru": "Компактный гематологический анализатор с 3-diff для лабораторий малого потока.",
+     "en": "Compact 3-part differential hematology analyzer for low-volume laboratories."
+    },
+    "quotes": [
+     {
+      "quote": "Compact hematology analyzer delivering reliable 3-part differentials for low-volume laboratories.",
+      "source": "ab-emerald"
+     }
+    ]
+   },
+   "principle": {
+    "text": {
+     "uz": "Elektr impedansi va yutilish spektrofotometriyasi.",
+     "ru": "Электрический импеданс и абсорбционная спектрофотометрия.",
+     "en": "Electronic impedance and absorption spectrophotometry."
+    },
+    "quotes": [
+     {
+      "quote": "Electronic impedance",
+      "source": "ab-emerald"
+     },
+     {
+      "quote": "Absorption spectrophotometry",
+      "source": "ab-emerald"
+     }
+    ]
+   },
+   "facts": [
+    {
+     "label": {
+      "uz": "Unumdorlik",
+      "ru": "Производительность",
+      "en": "Throughput"
+     },
+     "value": "Up to 57 samples per hour",
+     "source": "ab-emerald"
+    }
+   ],
+   "manual": {
+    "access": "login",
+    "note": {
+     "uz": "Abbott operator qo'llanmasi mijoz logini bilan beriladi (pastdagi hujjatlar portali).",
+     "ru": "Руководство оператора Abbott доступно с логином клиента (портал документов ниже).",
+     "en": "The Abbott operator's manual is available with a customer login (documents portal below)."
+    }
+   },
+   "local_names": {},
+   "maintenance": [],
+   "reagent_system": {
+    "kind": "unknown",
+    "quote": null
+   },
+   "validated_reagents": [],
+   "image": null,
+   "market_note": null,
+   "status": "device_info"
+  },
+  {
+   "id": "abbott-alinity-hq",
+   "maker": "abbott",
+   "model": "Alinity hq",
+   "category": "hematology",
+   "aliases": [
+    "Alinity h",
+    "Alinity hq"
+   ],
+   "kind": {
+    "uz": "Gematologik analizator, 6 qismli differensial",
+    "ru": "Гематологический анализатор, 6-diff",
+    "en": "Hematology analyzer, 6-part differential"
+   },
+   "purpose": {
+    "text": {
+     "uz": "Umumiy qon tahlili (CBC) va leykotsitlarning 6 qismli differensiali.",
+     "ru": "Общий анализ крови (CBC) и 6-частный дифференциал лейкоцитов.",
+     "en": "Complete blood count (CBC) with a 6-part WBC differential."
+    },
+    "quotes": [
+     {
+      "quote": "The Alinity hq analyzer delivers a Complete Blood Count (CBC) with a 6-part White Blood Cell (WBC) differential.",
+      "source": "ab-hq"
+     }
+    ]
+   },
+   "principle": {
+    "text": {
+     "uz": "MAPSS — ko'p burchakli qutblangan yorug'lik sochilishi bo'yicha ajratish texnologiyasi.",
+     "ru": "MAPSS — разделение по многоугловому поляризованному светорассеянию.",
+     "en": "MAPSS (Multi Angle Polarized Scatter Separation) technology."
+    },
+    "quotes": [
+     {
+      "quote": "Advanced MAPSS™ (Multi Angle Polarized Scatter Separation) technology",
+      "source": "ab-hq"
+     }
+    ]
+   },
+   "facts": [
+    {
+     "label": {
+      "uz": "Unumdorlik",
+      "ru": "Производительность",
+      "en": "Throughput"
+     },
+     "value": "119/hr for CBC + Differential",
+     "source": "ab-hq"
+    },
+    {
+     "label": {
+      "uz": "Unumdorlik (+ retikulotsitlar)",
+      "ru": "Производительность (+ ретикулоциты)",
+      "en": "Throughput (+ reticulocytes)"
+     },
+     "value": "70/hr for CBC + Differential + Reticulocyte",
+     "source": "ab-hq"
+    }
+   ],
+   "manual": {
+    "access": "login",
+    "note": {
+     "uz": "Abbott operator qo'llanmasi mijoz logini bilan beriladi (pastdagi hujjatlar portali).",
+     "ru": "Руководство оператора Abbott доступно с логином клиента (портал документов ниже).",
+     "en": "The Abbott operator's manual is available with a customer login (documents portal below)."
+    }
+   },
+   "local_names": {},
+   "maintenance": [],
+   "reagent_system": {
+    "kind": "unknown",
+    "quote": null
+   },
+   "validated_reagents": [],
+   "image": null,
+   "market_note": null,
+   "status": "device_info"
+  },
+  {
+   "id": "mindray-cl-900i",
+   "maker": "mindray",
+   "model": "CL-900i",
+   "category": "immunoassay",
+   "aliases": [
+    "CL900i",
+    "CL-900",
+    "ЦЛ-900"
+   ],
+   "kind": {
+    "uz": "Xemilyuminessent immunoanalizator",
+    "ru": "Хемилюминесцентный иммуноанализатор",
+    "en": "Chemiluminescence immunoassay analyzer"
+   },
+   "purpose": {
+    "text": {
+     "uz": "Ixcham, to'liq avtomatik xemilyuminessent immunoanalizator.",
+     "ru": "Компактный полностью автоматический хемилюминесцентный иммуноанализатор.",
+     "en": "Compact, fully automated chemiluminescence immunoassay analyzer."
+    },
+    "quotes": [
+     {
+      "quote": "one of the world's smallest, fully automated chemiluminescence immunoassay analyzers",
+      "source": "mr-cl900i"
+     }
+    ]
+   },
+   "principle": {
+    "text": {
+     "uz": "Superparamagnit mikrozarrachalar, ishqoriy fosfataza bilan belgilangan reagentlar va AMPPD substrati; signal fotonlarni sanash bilan o'lchanadi.",
+     "ru": "Суперпарамагнитные микрочастицы, реагенты с меткой щелочной фосфатазы и субстрат AMPPD; сигнал измеряется счётом фотонов.",
+     "en": "Superparamagnetic microparticles, ALP-labelled reagents and AMPPD substrate; signal measured by photon counting."
+    },
+    "quotes": [
+     {
+      "quote": "Micron superparamagnetic particles platform",
+      "source": "mr-cl900i-br"
+     },
+     {
+      "quote": "alkaline phosphatase (ALP) labeled reagents",
+      "source": "mr-cl900i-br"
+     },
+     {
+      "quote": "AMPPD substrate",
+      "source": "mr-cl900i-br"
+     },
+     {
+      "quote": "Photon counting",
+      "source": "mr-cl900i-br"
+     }
+    ]
+   },
+   "facts": [
+    {
+     "label": {
+      "uz": "Unumdorlik",
+      "ru": "Производительность",
+      "en": "Throughput"
+     },
+     "value": "Throughput of up to 180 tests/hour",
+     "source": "mr-cl900i"
+    },
+    {
+     "label": {
+      "uz": "Joylar",
+      "ru": "Позиции",
+      "en": "Positions"
+     },
+     "value": "50 sample positions and 15 reagent positions",
+     "source": "mr-cl900i"
+    }
+   ],
+   "maintenance": [
+    {
+     "quote": "User maintenance free",
+     "source": "mr-cl900i-br"
+    }
+   ],
+   "manual": {
+    "access": "not_public",
+    "note": {
+     "uz": "Operator qo'llanmasi ishlab chiqaruvchi saytida ochiq e'lon qilinmagan. Apparat bilan kelgan nusxadan yoki rasmiy distribyutor/servisdan foydalaning va versiyasini “Mening apparatim”ga yozib qo'ying.",
+     "ru": "Руководство оператора не опубликовано открыто на сайте производителя. Используйте экземпляр, поставленный с прибором, или запросите у официального дистрибьютора/сервиса и запишите его версию в «Мой прибор».",
+     "en": "The operator's manual is not published openly on the manufacturer's site. Use the copy supplied with the instrument or ask the official distributor/service, and record its version under “My instrument”."
+    }
+   },
+   "local_names": {},
+   "reagent_system": {
+    "kind": "unknown",
+    "quote": null
+   },
+   "validated_reagents": [],
+   "image": null,
+   "market_note": null,
+   "status": "device_info"
+  },
+  {
+   "id": "mindray-cl-1200i",
+   "maker": "mindray",
+   "model": "CL-1200i",
+   "category": "immunoassay",
+   "aliases": [
+    "CL1200i",
+    "ЦЛ-1200"
+   ],
+   "local_names": {
+    "ru": "CL-1200i Иммунохемилюминесцентный анализатор"
+   },
+   "kind": {
+    "uz": "Xemilyuminessent immunoanalizator",
+    "ru": "Хемилюминесцентный иммуноанализатор",
+    "en": "Chemiluminescence immunoassay analyzer"
+   },
+   "purpose": {
+    "text": {
+     "uz": "Xemilyuminessent immunoanalizator.",
+     "ru": "Хемилюминесцентный иммуноанализатор.",
+     "en": "Chemiluminescence immunoassay analyzer."
+    },
+    "quotes": [
+     {
+      "quote": "a robust and simple-to-use chemiluminescence analyzer",
+      "source": "mr-cl1200i"
+     }
+    ]
+   },
+   "principle": {
+    "text": {
+     "uz": "CLIA texnologiyasi; 4 bosqichli magnit ajratish.",
+     "ru": "Технология CLIA; 4-фазная магнитная сепарация.",
+     "en": "CLIA technology with 4-phase magnetic separation."
+    },
+    "quotes": [
+     {
+      "quote": "CLIA technology",
+      "source": "mr-cl1200i"
+     },
+     {
+      "quote": "4-phase magnetic separation",
+      "source": "mr-cl1200i"
+     }
+    ]
+   },
+   "facts": [
+    {
+     "label": {
+      "uz": "Unumdorlik",
+      "ru": "Производительность",
+      "en": "Throughput"
+     },
+     "value": "up to 180 tests per hour",
+     "source": "mr-cl1200i"
+    },
+    {
+     "label": {
+      "uz": "Joylar",
+      "ru": "Позиции",
+      "en": "Positions"
+     },
+     "value": "25 reagents and 60 samples",
+     "source": "mr-cl1200i"
+    }
+   ],
+   "maintenance": [
+    {
+     "quote": "Programmable enhanced probe wash with detergent",
+     "source": "mr-cl1200i"
+    }
+   ],
+   "manual": {
+    "access": "not_public",
+    "note": {
+     "uz": "Operator qo'llanmasi ishlab chiqaruvchi saytida ochiq e'lon qilinmagan. Apparat bilan kelgan nusxadan yoki rasmiy distribyutor/servisdan foydalaning va versiyasini “Mening apparatim”ga yozib qo'ying.",
+     "ru": "Руководство оператора не опубликовано открыто на сайте производителя. Используйте экземпляр, поставленный с прибором, или запросите у официального дистрибьютора/сервиса и запишите его версию в «Мой прибор».",
+     "en": "The operator's manual is not published openly on the manufacturer's site. Use the copy supplied with the instrument or ask the official distributor/service, and record its version under “My instrument”."
+    }
+   },
+   "reagent_system": {
+    "kind": "unknown",
+    "quote": null
+   },
+   "validated_reagents": [],
+   "image": null,
+   "market_note": null,
+   "status": "device_info"
+  },
+  {
+   "id": "human-humaclia-150",
+   "maker": "human",
+   "model": "HumaCLIA 150",
+   "category": "immunoassay",
+   "aliases": [
+    "Humaclia 150",
+    "HumaCLIA150"
+   ],
+   "kind": {
+    "uz": "Xemilyuminessent immunoanalizator",
+    "ru": "Хемилюминесцентный иммуноанализатор",
+    "en": "Chemiluminescence immunoassay analyzer"
+   },
+   "purpose": {
+    "text": {
+     "uz": "Kam va o'rta hajmli laboratoriyalar uchun immunoanaliz tizimi (tiroid, fertillik gormonlari, o'sma va kardiomarkerlar va boshqalar).",
+     "ru": "Иммуноаналитическая система для лабораторий малого и среднего потока (тиреоидные, гормоны фертильности, онко- и кардиомаркеры и др.).",
+     "en": "Immunoassay system for low- to mid-volume laboratories (thyroid, fertility hormones, tumour and cardiac markers, and more)."
+    },
+    "quotes": [
+     {
+      "quote": "ideal fit for every low to mid-volume diagnostic laboratory",
+      "source": "hu-clia150"
+     }
+    ]
+   },
+   "principle": {
+    "text": {
+     "uz": "Random access xemilyuminessent immunoanaliz; akridiniy efiri texnologiyasi.",
+     "ru": "Хемилюминесцентный иммуноанализ с произвольным доступом; технология акридиниевого эфира.",
+     "en": "Random-access chemiluminescence immunoassay using acridinium ester technology."
+    },
+    "quotes": [
+     {
+      "quote": "Random-access chemiluminescence immunoassay system",
+      "source": "hu-clia150"
+     },
+     {
+      "quote": "Acridinium ester technology",
+      "source": "hu-clia150"
+     }
+    ]
+   },
+   "facts": [
+    {
+     "label": {
+      "uz": "Unumdorlik",
+      "ru": "Производительность",
+      "en": "Throughput"
+     },
+     "value": "Up to 150 tests per hour",
+     "source": "hu-clia150"
+    },
+    {
+     "label": {
+      "uz": "Joylar",
+      "ru": "Позиции",
+      "en": "Positions"
+     },
+     "value": "20 cooled cartridge positions",
+     "source": "hu-clia150"
+    }
+   ],
+   "maintenance": [
+    {
+     "quote": "Onboard maintenance Yes, scheduling and log",
+     "source": "hu-clia150"
+    }
+   ],
+   "manual": {
+    "access": "not_public",
+    "note": {
+     "uz": "Operator qo'llanmasi ishlab chiqaruvchi saytida ochiq e'lon qilinmagan. Apparat bilan kelgan nusxadan yoki rasmiy distribyutor/servisdan foydalaning va versiyasini “Mening apparatim”ga yozib qo'ying.",
+     "ru": "Руководство оператора не опубликовано открыто на сайте производителя. Используйте экземпляр, поставленный с прибором, или запросите у официального дистрибьютора/сервиса и запишите его версию в «Мой прибор».",
+     "en": "The operator's manual is not published openly on the manufacturer's site. Use the copy supplied with the instrument or ask the official distributor/service, and record its version under “My instrument”."
+    }
+   },
+   "local_names": {},
+   "reagent_system": {
+    "kind": "unknown",
+    "quote": null
+   },
+   "validated_reagents": [],
+   "image": null,
+   "market_note": null,
+   "status": "device_info"
+  },
+  {
+   "id": "roche-cobas-e-411",
+   "maker": "roche",
+   "model": "cobas e 411",
+   "category": "immunoassay",
+   "aliases": [
+    "e411",
+    "e 411",
+    "cobas e411",
+    "кобас е411"
+   ],
+   "kind": {
+    "uz": "Elektroxemilyuminessent immunoanalizator",
+    "ru": "Электрохемилюминесцентный иммуноанализатор",
+    "en": "Electrochemiluminescence immunoassay analyzer"
+   },
+   "purpose": {
+    "text": {
+     "uz": "Sifat, yarim miqdoriy va miqdoriy immunokimyoviy tahlillar uchun avtomatik analizator.",
+     "ru": "Автоматический анализатор для качественных, полуколичественных и количественных иммунохимических исследований.",
+     "en": "Automated analyzer for qualitative, semi-quantitative and quantitative immunochemistry assays."
+    },
+    "quotes": [
+     {
+      "quote": "intended for running qualitative, semi- quantitative and quantitative immunochemistry assays.",
+      "source": "ro-e411"
+     }
+    ]
+   },
+   "principle": {
+    "text": {
+     "uz": "Elektroxemilyuminessensiya (ECL), geterogen immunoanaliz.",
+     "ru": "Электрохемилюминесценция (ECL), гетерогенный иммуноанализ.",
+     "en": "Electrochemiluminescence (ECL) for heterogeneous immunoassays."
+    },
+    "quotes": [
+     {
+      "quote": "Electrochemiluminescence (ECL) technology for heterogeneous immunoassays",
+      "source": "ro-e411"
+     }
+    ]
+   },
+   "facts": [
+    {
+     "label": {
+      "uz": "Unumdorlik",
+      "ru": "Производительность",
+      "en": "Throughput"
+     },
+     "value": "Up to 86 tests/h",
+     "source": "ro-e411"
+    },
+    {
+     "label": {
+      "uz": "Joylar",
+      "ru": "Позиции",
+      "en": "Positions"
+     },
+     "value": "18 reagent positions",
+     "source": "ro-e411"
+    }
+   ],
+   "manual": {
+    "access": "login",
+    "note": {
+     "uz": "Roche operator qo'llanmasi mijoz logini bilan beriladi (pastdagi hujjatlar portali).",
+     "ru": "Руководство оператора Roche доступно с логином клиента (портал документов ниже).",
+     "en": "The Roche operator's manual is available with a customer login (documents portal below)."
+    }
+   },
+   "local_names": {},
+   "maintenance": [],
+   "reagent_system": {
+    "kind": "unknown",
+    "quote": null
+   },
+   "validated_reagents": [],
+   "image": null,
+   "market_note": null,
+   "status": "device_info"
+  },
+  {
+   "id": "roche-cobas-e-402",
+   "maker": "roche",
+   "model": "cobas e 402",
+   "category": "immunoassay",
+   "aliases": [
+    "e402",
+    "e 402",
+    "cobas pure"
+   ],
+   "kind": {
+    "uz": "Immunoanaliz moduli (cobas pure)",
+    "ru": "Иммунохимический модуль (cobas pure)",
+    "en": "Immunoassay unit (cobas pure)"
+   },
+   "purpose": {
+    "text": {
+     "uz": "To'liq avtomatik immunologik analizator (cobas pure tizimi tarkibida).",
+     "ru": "Полностью автоматический иммунологический анализатор (в составе системы cobas pure).",
+     "en": "Fully automated immunology analyzer (part of the cobas pure system)."
+    },
+    "quotes": [
+     {
+      "quote": "The e 402 analytical unit is a fully automated immunology analyzer",
+      "source": "ro-e402"
+     }
+    ]
+   },
+   "principle": {
+    "text": {
+     "uz": "Elektroxemilyuminessensiya (ECL).",
+     "ru": "Электрохемилюминесценция (ECL).",
+     "en": "Electrochemiluminescence (ECL)."
+    },
+    "quotes": [
+     {
+      "quote": "using the highly innovative ElectroChemiLuminescence (ECL) technology",
+      "source": "ro-e402"
+     }
+    ]
+   },
+   "facts": [
+    {
+     "label": {
+      "uz": "Unumdorlik",
+      "ru": "Производительность",
+      "en": "Throughput"
+     },
+     "value": "Up to 120 tests per hour",
+     "source": "ro-e402"
+    },
+    {
+     "label": {
+      "uz": "Joylar",
+      "ru": "Позиции",
+      "en": "Positions"
+     },
+     "value": "28 onboard reagent positions",
+     "source": "ro-e402"
+    }
+   ],
+   "maintenance": [
+    {
+     "quote": "Automated maintenance requiring only 5 minutes of daily operator intervention",
+     "source": "ro-pure"
+    }
+   ],
+   "manual": {
+    "access": "login",
+    "note": {
+     "uz": "Roche operator qo'llanmasi mijoz logini bilan beriladi (pastdagi hujjatlar portali).",
+     "ru": "Руководство оператора Roche доступно с логином клиента (портал документов ниже).",
+     "en": "The Roche operator's manual is available with a customer login (documents portal below)."
+    }
+   },
+   "local_names": {},
+   "reagent_system": {
+    "kind": "unknown",
+    "quote": null
+   },
+   "validated_reagents": [],
+   "image": null,
+   "market_note": null,
+   "status": "device_info"
+  },
+  {
+   "id": "abbott-architect-i1000sr",
+   "maker": "abbott",
+   "model": "ARCHITECT i1000SR",
+   "category": "immunoassay",
+   "aliases": [
+    "i1000SR",
+    "i1000",
+    "Architect i1000"
+   ],
+   "kind": {
+    "uz": "Xemilyuminessent immunoanalizator",
+    "ru": "Хемилюминесцентный иммуноанализатор",
+    "en": "Chemiluminescence immunoassay analyzer"
+   },
+   "purpose": {
+    "text": {
+     "uz": "Shoshilinch (STAT) natijalar ham beradigan immunoanalizator.",
+     "ru": "Иммуноанализатор, в том числе для срочных (STAT) результатов.",
+     "en": "Immunoassay analyzer that also delivers STAT results."
+    },
+    "quotes": [
+     {
+      "quote": "meets your laboratory's high standards by delivering STAT results",
+      "source": "ab-i1000"
+     }
+    ]
+   },
+   "principle": {
+    "text": {
+     "uz": "CHEMIFLEX: xemilyuminessent mikrozarrachali immunoanaliz (CMIA), moslashuvchan protokollar bilan.",
+     "ru": "CHEMIFLEX: хемилюминесцентный иммуноанализ на микрочастицах (CMIA) с гибкими протоколами.",
+     "en": "CHEMIFLEX: chemiluminescent microparticle immunoassay (CMIA) with flexible assay protocols."
+    },
+    "quotes": [
+     {
+      "quote": "CHEMIFLEX",
+      "source": "ab-i1000"
+     },
+     {
+      "quote": "Chemiluminescent Microparticle Immunoassay (CMIA) technology with flexible assay protocols, referred to as Chemiflex.",
+      "source": "fda-k041192"
+     }
+    ]
+   },
+   "facts": [
+    {
+     "label": {
+      "uz": "Unumdorlik",
+      "ru": "Производительность",
+      "en": "Throughput"
+     },
+     "value": "Up to 100 tests/hour",
+     "source": "ab-i1000"
+    },
+    {
+     "label": {
+      "uz": "Joylar",
+      "ru": "Позиции",
+      "en": "Positions"
+     },
+     "value": "25 refrigerated positions",
+     "source": "ab-i1000"
+    }
+   ],
+   "manual": {
+    "access": "login",
+    "note": {
+     "uz": "Abbott operator qo'llanmasi mijoz logini bilan beriladi (pastdagi hujjatlar portali).",
+     "ru": "Руководство оператора Abbott доступно с логином клиента (портал документов ниже).",
+     "en": "The Abbott operator's manual is available with a customer login (documents portal below)."
+    }
+   },
+   "local_names": {},
+   "maintenance": [],
+   "reagent_system": {
+    "kind": "unknown",
+    "quote": null
+   },
+   "validated_reagents": [],
+   "image": null,
+   "market_note": null,
+   "status": "device_info"
+  },
+  {
+   "id": "abbott-alinity-i",
+   "maker": "abbott",
+   "model": "Alinity i",
+   "category": "immunoassay",
+   "aliases": [
+    "Alinity",
+    "алинити"
+   ],
+   "kind": {
+    "uz": "Xemilyuminessent immunoanalizator",
+    "ru": "Хемилюминесцентный иммуноанализатор",
+    "en": "Chemiluminescence immunoassay analyzer"
+   },
+   "principle": {
+    "text": {
+     "uz": "CHEMIFLEX xemilyuminessent detektsiya.",
+     "ru": "Хемилюминесцентная детекция CHEMIFLEX.",
+     "en": "CHEMIFLEX chemiluminescent detection."
+    },
+    "quotes": [
+     {
+      "quote": "Utilizes proven CHEMIFLEX chemiluminescent detection technology with an assay design free from biotin interference",
+      "source": "ab-alinity-ci"
+     }
+    ]
+   },
+   "facts": [
+    {
+     "label": {
+      "uz": "Unumdorlik",
+      "ru": "Производительность",
+      "en": "Throughput"
+     },
+     "value": "Up to 200 tests/hour",
+     "source": "ab-alinity-ci"
+    },
+    {
+     "label": {
+      "uz": "Reagent joylari",
+      "ru": "Позиции реагентов",
+      "en": "Reagent capacity"
+     },
+     "value": "Up to 47",
+     "source": "ab-alinity-ci"
+    }
+   ],
+   "manual": {
+    "access": "login",
+    "note": {
+     "uz": "Abbott operator qo'llanmasi mijoz logini bilan beriladi (pastdagi hujjatlar portali).",
+     "ru": "Руководство оператора Abbott доступно с логином клиента (портал документов ниже).",
+     "en": "The Abbott operator's manual is available with a customer login (documents portal below)."
+    }
+   },
+   "local_names": {},
+   "maintenance": [],
+   "reagent_system": {
+    "kind": "unknown",
+    "quote": null
+   },
+   "validated_reagents": [],
+   "image": null,
+   "market_note": null,
+   "status": "device_info",
+   "purpose": null
+  },
+  {
+   "id": "roche-cobas-u-411",
+   "maker": "roche",
+   "model": "cobas u 411",
+   "category": "urinalysis",
+   "aliases": [
+    "u411",
+    "u 411",
+    "cobas u411",
+    "кобас у411"
+   ],
+   "kind": {
+    "uz": "Yarim avtomatik siydik test-chiziq o'quvchisi",
+    "ru": "Полуавтоматический анализатор тест-полосок мочи",
+    "en": "Semi-automated urine strip reader"
+   },
+   "purpose": {
+    "text": {
+     "uz": "Siydik ko'rsatkichlarini sifat yoki yarim miqdoriy aniqlash uchun yarim avtomatik tizim.",
+     "ru": "Полуавтоматическая система для качественного или полуколичественного определения показателей мочи.",
+     "en": "Semi-automated system for qualitative or semi-quantitative determination of urine analytes."
+    },
+    "quotes": [
+     {
+      "quote": "a semiautomated urinalysis system … intended for the in vitro qualitative or semi-quantitative determination of urine analytes",
+      "source": "ro-u411"
+     }
+    ]
+   },
+   "principle": {
+    "text": {
+     "uz": "Combur10 Test M test-chiziqlarini o'qiydi: 470, 555 va 620 nm LEDlar va fotosensorlar.",
+     "ru": "Считывает тест-полоски Combur10 Test M: светодиоды 470, 555 и 620 нм и фотосенсоры.",
+     "en": "Reads Combur10 Test M strips using 470, 555 and 620 nm LEDs and photo sensors."
+    },
+    "quotes": [
+     {
+      "quote": "Combur10 Test M test strips",
+      "source": "ro-u411"
+     }
+    ]
+   },
+   "facts": [
+    {
+     "label": {
+      "uz": "Unumdorlik",
+      "ru": "Производительность",
+      "en": "Throughput"
+     },
+     "value": "600 test strips per hour",
+     "source": "ro-u411"
+    },
+    {
+     "label": {
+      "uz": "Yorug'lik manbai",
+      "ru": "Источник света",
+      "en": "Light source"
+     },
+     "value": "LEDs: 470 nm, 555 nm, 620 nm",
+     "source": "ro-u411"
+    },
+    {
+     "label": {
+      "uz": "Kalibrlash",
+      "ru": "Калибровка",
+      "en": "Calibration"
+     },
+     "value": "Recommended calibration with calibration strip: once a month",
+     "source": "ro-u411"
+    }
+   ],
+   "image": {
+    "asset": "assets/instruments/img/cobas_u_411.jpg",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "author": "Roto2esdios",
+    "source_page": "https://commons.wikimedia.org/wiki/File:Cobas_u_411.JPG",
+    "caption": {
+     "uz": "cobas u 411 laboratoriyada (Wikimedia Commons; o'lchami kichraytirilgan).",
+     "ru": "cobas u 411 в лаборатории (Wikimedia Commons; уменьшено).",
+     "en": "cobas u 411 in a laboratory (Wikimedia Commons; resized)."
+    }
+   },
+   "manual": {
+    "access": "login",
+    "note": {
+     "uz": "Roche operator qo'llanmasi mijoz logini bilan beriladi (pastdagi hujjatlar portali).",
+     "ru": "Руководство оператора Roche доступно с логином клиента (портал документов ниже).",
+     "en": "The Roche operator's manual is available with a customer login (documents portal below)."
+    }
+   },
+   "local_names": {},
+   "maintenance": [],
+   "reagent_system": {
+    "kind": "unknown",
+    "quote": null
+   },
+   "validated_reagents": [],
+   "market_note": null,
+   "status": "device_info"
+  },
+  {
+   "id": "roche-cobas-6500",
+   "maker": "roche",
+   "model": "cobas 6500",
+   "category": "urinalysis",
+   "aliases": [
+    "u 601",
+    "u 701",
+    "cobas u 601",
+    "cobas u 701",
+    "u601",
+    "u701"
+   ],
+   "kind": {
+    "uz": "Avtomatik siydik tahlili liniyasi (u 601 + u 701)",
+    "ru": "Автоматическая линия анализа мочи (u 601 + u 701)",
+    "en": "Automated urinalysis line (u 601 + u 701)"
+   },
+   "purpose": {
+    "text": {
+     "uz": "u 601 — to'liq avtomatik siydik test-chiziq tahlili; u 701 — to'liq avtomatik siydik cho'kmasi mikroskopiyasi.",
+     "ru": "u 601 — полностью автоматический анализ мочи на тест-полосках; u 701 — полностью автоматическая микроскопия осадка мочи.",
+     "en": "u 601: fully automated strip urinalysis; u 701: fully automated urine microscopy."
+    },
+    "quotes": [
+     {
+      "quote": "a fully automated urinalysis system",
+      "source": "ro-6500"
+     },
+     {
+      "quote": "a fully automated urine microscopy system",
+      "source": "ro-6500"
+     }
+    ]
+   },
+   "principle": {
+    "text": {
+     "uz": "u 601: reflektometriya va chiziq maydonchalarining yuqori aniqlikdagi tasvirlari; u 701: har bir namunadan 15 ta raqamli tasvir.",
+     "ru": "u 601: рефлектометрия и снимки высокого разрешения зон полоски; u 701: 15 цифровых изображений каждой пробы.",
+     "en": "u 601: reflectance technology with high-resolution images of the strip pads; u 701: 15 digital images per sample."
+    },
+    "quotes": [
+     {
+      "quote": "uses innovative reflectance technology and takes high-resolution images of the strip pads",
+      "source": "ro-6500"
+     },
+     {
+      "quote": "15 digital images are taken from each sample",
+      "source": "ro-6500"
+     }
+    ]
+   },
+   "facts": [
+    {
+     "label": {
+      "uz": "Unumdorlik (yuqori unumdor konfiguratsiya)",
+      "ru": "Производительность (высокопроизводительная конфигурация)",
+      "en": "Throughput (high-throughput configuration)"
+     },
+     "value": "up to 240 samples per hour",
+     "source": "ro-6500"
+    },
+    {
+     "label": {
+      "uz": "Unumdorlik (butun tizim, avtomatik transport)",
+      "ru": "Производительность (вся система, автотранспорт)",
+      "en": "Throughput (full system, automated transport)"
+     },
+     "value": "up to 116 samples per hour",
+     "source": "ro-6500"
+    }
+   ],
+   "manual": {
+    "access": "login",
+    "note": {
+     "uz": "Roche operator qo'llanmasi mijoz logini bilan beriladi (pastdagi hujjatlar portali).",
+     "ru": "Руководство оператора Roche доступно с логином клиента (портал документов ниже).",
+     "en": "The Roche operator's manual is available with a customer login (documents portal below)."
+    }
+   },
+   "local_names": {},
+   "maintenance": [],
+   "reagent_system": {
+    "kind": "unknown",
+    "quote": null
+   },
+   "validated_reagents": [],
+   "image": null,
+   "market_note": null,
+   "status": "device_info"
+  },
+  {
+   "id": "mindray-eu-5600-pro",
+   "maker": "mindray",
+   "model": "EU-5600 Pro",
+   "category": "urinalysis",
+   "aliases": [
+    "EU-5300 Pro",
+    "EU5600",
+    "EU-5600",
+    "EU-5300"
+   ],
+   "kind": {
+    "uz": "Siydik tahlili tizimi (chiziq + cho'kma)",
+    "ru": "Система анализа мочи (полоски + осадок)",
+    "en": "Urinalysis system (strip + sediment)"
+   },
+   "purpose": {
+    "text": {
+     "uz": "Bitta tizimda quruq kimyo (test-chiziq), shaklli elementlar va eritrotsitlar fazasi tahlili.",
+     "ru": "В одной системе: сухая химия (тест-полоски), форменные элементы и фаза эритроцитов.",
+     "en": "One system for dry chemistry (strips), formed elements and RBC phase analysis."
+    },
+    "quotes": [
+     {
+      "quote": "Three features integrated in a single system",
+      "source": "mr-eu5600"
+     }
+    ]
+   },
+   "principle": {
+    "text": {
+     "uz": "Cho'kma raqamli tasvirlash orqali: namunadan 60 tagacha rangli tasvir olinadi.",
+     "ru": "Осадок — цифровая визуализация: до 60 цветных изображений пробы.",
+     "en": "Sediment by digital imaging: up to 60 full-colour images per sample."
+    },
+    "quotes": [
+     {
+      "quote": "2K full-color clear imaging",
+      "source": "mr-eu5600"
+     },
+     {
+      "quote": "captures up to 60 clear images from the samples",
+      "source": "mr-eu5600"
+     }
+    ]
+   },
+   "manual": {
+    "access": "not_public",
+    "note": {
+     "uz": "Operator qo'llanmasi ishlab chiqaruvchi saytida ochiq e'lon qilinmagan. Apparat bilan kelgan nusxadan yoki rasmiy distribyutor/servisdan foydalaning va versiyasini “Mening apparatim”ga yozib qo'ying.",
+     "ru": "Руководство оператора не опубликовано открыто на сайте производителя. Используйте экземпляр, поставленный с прибором, или запросите у официального дистрибьютора/сервиса и запишите его версию в «Мой прибор».",
+     "en": "The operator's manual is not published openly on the manufacturer's site. Use the copy supplied with the instrument or ask the official distributor/service, and record its version under “My instrument”."
+    }
+   },
+   "local_names": {},
+   "facts": [],
+   "maintenance": [],
+   "reagent_system": {
+    "kind": "unknown",
+    "quote": null
+   },
+   "validated_reagents": [],
+   "image": null,
+   "market_note": null,
+   "status": "device_info"
+  }
+ ]
+}
