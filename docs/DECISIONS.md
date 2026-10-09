@@ -391,8 +391,10 @@ ham qo‘shilib ketgan edi. Endi:
   `xcodebuild -exportArchive -allowProvisioningUpdates` API kalit bilan Apple’ning
   cloud-managed Distribution sertifikati va avtomatik App Store profilidan foydalanadi.
   Maxfiy kalit Apple’da qoladi, egasiga Mac va openssl kerak emas; API kalit Admin bo‘lishi
-  shart. `.p12` berilsa — avvalgi qo‘lda imzo yo‘li. Bulut yo‘li birinchi haqiqiy run’da
-  tekshiriladi (o‘tdi deb hisoblanmaydi). Build raqami
+  shart. `.p12` berilsa — avvalgi qo‘lda imzo yo‘li. **Tekshirildi:** run #5 (2026-10-09)
+  — IPA `uz.labguide.app 0.1.0 (1)`, SDK iphoneos26.2, min iOS 15.0; altool validate +
+  upload o‘tdi, TestFlight processingState VALID. Loyiha CocoaPods emas, SwiftPM
+  ishlatadi (`pod install` kerak emas — run #4 shu sababdan yiqilgan). Build raqami
   App Store Connect’dagi oxirgisidan hisoblanadi — run raqami qaytadan boshlansa ham
   to‘qnashmaydi.
 - nfcx’dan `labguide/` va `labguide-ios.yml` alohida PR bilan olib tashlanadi (egasi

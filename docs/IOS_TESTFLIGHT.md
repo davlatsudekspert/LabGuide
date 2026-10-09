@@ -3,10 +3,12 @@
 Workflow: `.github/workflows/ci.yml` (“LabGuide CI”). `main` ga har push va PR’da imzosiz
 tekshiruv (testlar, Android sinov APK, iOS build) o‘zi ishlaydi.
 
+**Holat (2026-10-09):** birinchi build TestFlight’da — run #5, `0.1.0 (1)`, bulut imzo
+(`.p12` siz), processingState **VALID**. Keyingi build’lar: **Run workflow → mode:
+testflight** (build raqami avtomatik oshadi).
+
 **Tarix:** 2026-10-09 gacha ilova `davlatsudekspert/nfcx` ichidagi `labguide/` papkasida edi
-(D-01, D-34). O‘sha yerdagi run’lar: build — o‘tdi; testflight — sertifikat va API kalit
-o‘qildi (Team 5Z9CT2W378), bundle ID / profil bosqichi o‘tdi, lekin App Store Connect’da
-`uz.labguide.app` uchun ilova yozuvi yo‘qligi sababli to‘xtadi.
+(D-01, D-34).
 
 ## 1. Imzosiz tekshiruv (secret kerak emas)
 
@@ -58,3 +60,11 @@ masalan “LabGuide UZ” — qurilmadagi nom baribir LabGuide), asosiy til, Bun
 versiya, SDK, entitlements), `altool` (ishlamasa `xcodebuild -exportArchive`) bilan TestFlight’ga yuklanadi va processing holati
 kutiladi. Build raqami App Store Connect’dagi oxirgisidan bittaga katta (avtomatik).
 App Store review’ga **yuborilmaydi**, reliz **qilinmaydi**.
+
+## 4. Telefonda ochish (ichki test)
+
+App Store Connect → **Apps → LabGuide → TestFlight → Internal Testing → +** (guruh yarating)
+→ o‘zingizni (App Store Connect foydalanuvchisi) qo‘shing → build’ni guruhga qo‘shing.
+iPhone’da **TestFlight** ilovasini o‘rnating va o‘sha Apple ID bilan kiring — LabGuide
+ro‘yxatda chiqadi. Ichki test uchun Apple review kerak emas. Eksport muvofiqligi so‘ralmaydi
+(`ITSAppUsesNonExemptEncryption = NO`).
