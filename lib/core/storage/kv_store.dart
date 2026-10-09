@@ -47,6 +47,7 @@ abstract final class StoreKeys {
 
   /// Pro huquqlari: server javobining imzolangan, muddatli nusxasi.
   static const entitlementsCache = 'entitlements.cache';
+
   /// Toifa imtihoniga tayyorgarlik: toifa, og'zaki baholar, bilet, test
   /// sozlamalari.
   static const toifaCategory = 'toifa.category';
@@ -60,6 +61,10 @@ abstract final class StoreKeys {
 
   /// Leykoformula: "ko'rmasdan sanash" rejimi sozlamalari.
   static const differentialEyesFree = 'differential.eyesFree';
+  /// Kunlik savol: bugungi to'plam, ketma-ketlik (kunlar, urug'), eslatma.
+  static const dailyToday = 'daily.today';
+  static const dailyStreak = 'daily.streak';
+  static const dailyReminder = 'daily.reminder';
 
   static const all = <String>{
     language,
@@ -91,6 +96,9 @@ abstract final class StoreKeys {
     differentialDraft,
     differentialHistory,
     differentialEyesFree,
+    dailyToday,
+    dailyStreak,
+    dailyReminder,
   };
 }
 

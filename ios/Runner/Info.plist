@@ -36,6 +36,8 @@
 	<string>LabGuide uses the microphone only when you turn on voice commands in the differential counter. Audio is not stored.</string>
 	<key>NSSpeechRecognitionUsageDescription</key>
 	<string>LabGuide recognises cell names you say during a differential count. Recognition is required to run on this device; audio is not stored.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>LabGuide saves a result card to your photos only when you choose “Save Image” in the share sheet.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>LabGuide uses the camera only if you choose to take a photo for a feedback request.</string>
 	<key>ITSAppUsesNonExemptEncryption</key>

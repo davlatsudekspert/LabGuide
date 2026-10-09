@@ -2586,6 +2586,119 @@
     }
   },
   "quizOtherTopic": "Another topic",
+  "dailyTitle": "Daily questions",
+  "dailyCardStart": "Today’s 5 questions",
+  "dailyCardStartSub": "2–3 minutes. New questions every day, with an explanation and source after each answer.",
+  "dailyCardProgress": "{count} of {total} answered",
+  "@dailyCardProgress": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "dailyCardDone": "Done for today: {correct} of {total} correct",
+  "@dailyCardDone": {
+    "placeholders": {
+      "correct": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "dailyCardDoneSub": "Five new questions tomorrow.",
+  "dailyStart": "Start",
+  "dailyContinue": "Continue",
+  "dailyShowResult": "See result",
+  "dailyStreakDays": "{count, plural, one{{count} day in a row} other{{count} days in a row}}",
+  "@dailyStreakDays": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dailyStreakTitle": "Streak",
+  "dailyStreakCurrent": "Current streak",
+  "dailyStreakBest": "Longest streak",
+  "dailyDaysShort": "{count, plural, one{{count} day} other{{count} days}}",
+  "@dailyDaysShort": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dailyFreezeAvailable": "This week’s freeze is available",
+  "dailyFreezeUsed": "This week’s freeze is used",
+  "dailyFreezeRule": "Miss one day and your streak survives — once a week (a freeze). The frozen day doesn’t count towards the streak; miss two days in a row and it starts over.",
+  "dailyFreezeSaved": "You missed yesterday — a freeze kept your streak.",
+  "dailyStreakStart": "Answer today’s questions to start a streak.",
+  "dailyKeepStreak": "Answer today’s questions to keep your streak.",
+  "dailyEmpty": "No questions for today",
+  "dailyReviewTitle": "Today’s questions",
+  "dailySourceToifa": "Questions come from the official certification list — only those whose key passed the LabGuide check.",
+  "dailyReminderTitle": "LabGuide: daily questions",
+  "dailyReminderBody": "Today’s 5 questions are ready — 2–3 minutes.",
+  "dailyReminderChannel": "Daily reminder",
+  "dailyReminderSetting": "Daily reminder",
+  "dailyReminderAt": "Every day at {time}",
+  "@dailyReminderAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "dailyReminderOff": "Off",
+  "dailyReminderTime": "Reminder time",
+  "dailyOfferTitle": "Want a daily reminder?",
+  "dailyOfferBody": "One notification at the time you choose. No reminder on days you’ve already answered. Turn it off any time.",
+  "dailyOfferYes": "Turn on reminder",
+  "dailyOfferNo": "No thanks",
+  "dailyReminderDenied": "Notification permission wasn’t granted, so the reminder stays off. Allow notifications for LabGuide in your phone settings and try again.",
+  "dailyReminderUnavailable": "Couldn’t turn on reminders on this device.",
+  "dailyReminderOnSnack": "Reminder on: every day at {time}",
+  "@dailyReminderOnSnack": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "dailyReminderNote": "The reminder is scheduled on this device only (no server). Your phone may delay it by a few minutes to save battery. If you don’t open the app for 7 days, reminders stop.",
+  "shareResult": "Share result",
+  "shareSheetTitle": "Result card",
+  "shareSheetBody": "The image has no name or other personal data.",
+  "shareFailed": "Couldn’t open the share sheet. Please try again.",
+  "shareKindDaily": "Daily questions",
+  "shareKindExam": "Practice exam",
+  "shareKindToifa": "Category test practice",
+  "shareCorrectCaption": "correct answers",
+  "shareFooter": "Lab reference and practice",
+  "shareToifaNote": "Not official — LabGuide practice result",
+  "shareText": "LabGuide · {kind}: {correct}/{total} ({percent}%)",
+  "@shareText": {
+    "placeholders": {
+      "kind": {
+        "type": "String"
+      },
+      "correct": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      },
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
   "quizTopicMistakes": "Review my mistakes",
   "quizMastered": "{correct} of {total} correct last time",
   "@quizMastered": {

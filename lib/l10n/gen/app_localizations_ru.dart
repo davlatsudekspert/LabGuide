@@ -4570,6 +4570,197 @@ class AppLocalizationsRu extends AppLocalizations {
   String get quizOtherTopic => 'Другая тема';
 
   @override
+  String get dailyTitle => 'Вопросы дня';
+
+  @override
+  String get dailyCardStart => '5 вопросов на сегодня';
+
+  @override
+  String get dailyCardStartSub =>
+      '2–3 минуты. Каждый день новые вопросы, после ответа — пояснение и источник.';
+
+  @override
+  String dailyCardProgress(int count, int total) {
+    return 'Отвечено: $count из $total';
+  }
+
+  @override
+  String dailyCardDone(int correct, int total) {
+    return 'Сегодня выполнено: верно $correct из $total';
+  }
+
+  @override
+  String get dailyCardDoneSub => 'Завтра будут новые 5 вопросов.';
+
+  @override
+  String get dailyStart => 'Начать';
+
+  @override
+  String get dailyContinue => 'Продолжить';
+
+  @override
+  String get dailyShowResult => 'Посмотреть результат';
+
+  @override
+  String dailyStreakDays(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count дня подряд',
+      many: '$count дней подряд',
+      few: '$count дня подряд',
+      one: '$count день подряд',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get dailyStreakTitle => 'Серия';
+
+  @override
+  String get dailyStreakCurrent => 'Текущая серия';
+
+  @override
+  String get dailyStreakBest => 'Самая длинная';
+
+  @override
+  String dailyDaysShort(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count дня',
+      many: '$count дней',
+      few: '$count дня',
+      one: '$count день',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get dailyFreezeAvailable => 'Заморозка на этой неделе доступна';
+
+  @override
+  String get dailyFreezeUsed => 'Заморозка на этой неделе использована';
+
+  @override
+  String get dailyFreezeRule =>
+      'Если пропустить один день, серия не прервётся — раз в неделю (заморозка). Замороженный день в серию не засчитывается; если пропустить два дня подряд, серия начнётся заново.';
+
+  @override
+  String get dailyFreezeSaved =>
+      'Вчера был пропуск — заморозка сохранила серию.';
+
+  @override
+  String get dailyStreakStart =>
+      'Ответьте на сегодняшние вопросы — серия начнётся с этого дня.';
+
+  @override
+  String get dailyKeepStreak =>
+      'Ответьте на сегодняшние вопросы, чтобы сохранить серию.';
+
+  @override
+  String get dailyEmpty => 'Вопросов на сегодня не найдено';
+
+  @override
+  String get dailyReviewTitle => 'Сегодняшние вопросы';
+
+  @override
+  String get dailySourceToifa =>
+      'Вопросы берутся из официального списка аттестации — только те, чей ключ прошёл проверку LabGuide.';
+
+  @override
+  String get dailyReminderTitle => 'LabGuide: вопросы дня';
+
+  @override
+  String get dailyReminderBody => '5 вопросов на сегодня готовы — 2–3 минуты.';
+
+  @override
+  String get dailyReminderChannel => 'Ежедневное напоминание';
+
+  @override
+  String get dailyReminderSetting => 'Ежедневное напоминание';
+
+  @override
+  String dailyReminderAt(String time) {
+    return 'Каждый день в $time';
+  }
+
+  @override
+  String get dailyReminderOff => 'Выключено';
+
+  @override
+  String get dailyReminderTime => 'Время напоминания';
+
+  @override
+  String get dailyOfferTitle => 'Напоминать каждый день?';
+
+  @override
+  String get dailyOfferBody =>
+      'Одно уведомление в выбранное время. В дни, когда вы уже ответили, напоминания не будет. Отключить можно в любой момент.';
+
+  @override
+  String get dailyOfferYes => 'Включить напоминание';
+
+  @override
+  String get dailyOfferNo => 'Не нужно';
+
+  @override
+  String get dailyReminderDenied =>
+      'Разрешение на уведомления не дано, напоминание выключено. Включите уведомления для LabGuide в настройках телефона и попробуйте снова.';
+
+  @override
+  String get dailyReminderUnavailable =>
+      'На этом устройстве не удалось включить напоминание.';
+
+  @override
+  String dailyReminderOnSnack(String time) {
+    return 'Напоминание включено: каждый день в $time';
+  }
+
+  @override
+  String get dailyReminderNote =>
+      'Напоминание планируется только на этом устройстве (без сервера). Телефон может задержать его на несколько минут для экономии заряда. Если не открывать приложение 7 дней, напоминания прекратятся.';
+
+  @override
+  String get shareResult => 'Поделиться результатом';
+
+  @override
+  String get shareSheetTitle => 'Карточка результата';
+
+  @override
+  String get shareSheetBody =>
+      'На картинке нет вашего имени и других личных данных.';
+
+  @override
+  String get shareFailed =>
+      'Не удалось открыть окно «Поделиться». Попробуйте ещё раз.';
+
+  @override
+  String get shareKindDaily => 'Вопросы дня';
+
+  @override
+  String get shareKindExam => 'Тренировочный экзамен';
+
+  @override
+  String get shareKindToifa => 'Тренировка теста на категорию';
+
+  @override
+  String get shareCorrectCaption => 'верных ответов';
+
+  @override
+  String get shareFooter =>
+      'Справочник и тренировки по лабораторной диагностике';
+
+  @override
+  String get shareToifaNote =>
+      'Не официально — результат тренировки в LabGuide';
+
+  @override
+  String shareText(String kind, int correct, int total, int percent) {
+    return 'LabGuide · $kind: $correct/$total ($percent%)';
+  }
+
+  @override
   String get quizTopicMistakes => 'Работа над ошибками';
 
   @override

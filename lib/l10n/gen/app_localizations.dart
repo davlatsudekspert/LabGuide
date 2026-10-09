@@ -7882,6 +7882,300 @@ abstract class AppLocalizations {
   /// **'Another topic'**
   String get quizOtherTopic;
 
+  /// No description provided for @dailyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily questions'**
+  String get dailyTitle;
+
+  /// No description provided for @dailyCardStart.
+  ///
+  /// In en, this message translates to:
+  /// **'Today’s 5 questions'**
+  String get dailyCardStart;
+
+  /// No description provided for @dailyCardStartSub.
+  ///
+  /// In en, this message translates to:
+  /// **'2–3 minutes. New questions every day, with an explanation and source after each answer.'**
+  String get dailyCardStartSub;
+
+  /// No description provided for @dailyCardProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} of {total} answered'**
+  String dailyCardProgress(int count, int total);
+
+  /// No description provided for @dailyCardDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Done for today: {correct} of {total} correct'**
+  String dailyCardDone(int correct, int total);
+
+  /// No description provided for @dailyCardDoneSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Five new questions tomorrow.'**
+  String get dailyCardDoneSub;
+
+  /// No description provided for @dailyStart.
+  ///
+  /// In en, this message translates to:
+  /// **'Start'**
+  String get dailyStart;
+
+  /// No description provided for @dailyContinue.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get dailyContinue;
+
+  /// No description provided for @dailyShowResult.
+  ///
+  /// In en, this message translates to:
+  /// **'See result'**
+  String get dailyShowResult;
+
+  /// No description provided for @dailyStreakDays.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, one{{count} day in a row} other{{count} days in a row}}'**
+  String dailyStreakDays(int count);
+
+  /// No description provided for @dailyStreakTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Streak'**
+  String get dailyStreakTitle;
+
+  /// No description provided for @dailyStreakCurrent.
+  ///
+  /// In en, this message translates to:
+  /// **'Current streak'**
+  String get dailyStreakCurrent;
+
+  /// No description provided for @dailyStreakBest.
+  ///
+  /// In en, this message translates to:
+  /// **'Longest streak'**
+  String get dailyStreakBest;
+
+  /// No description provided for @dailyDaysShort.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, one{{count} day} other{{count} days}}'**
+  String dailyDaysShort(int count);
+
+  /// No description provided for @dailyFreezeAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'This week’s freeze is available'**
+  String get dailyFreezeAvailable;
+
+  /// No description provided for @dailyFreezeUsed.
+  ///
+  /// In en, this message translates to:
+  /// **'This week’s freeze is used'**
+  String get dailyFreezeUsed;
+
+  /// No description provided for @dailyFreezeRule.
+  ///
+  /// In en, this message translates to:
+  /// **'Miss one day and your streak survives — once a week (a freeze). The frozen day doesn’t count towards the streak; miss two days in a row and it starts over.'**
+  String get dailyFreezeRule;
+
+  /// No description provided for @dailyFreezeSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'You missed yesterday — a freeze kept your streak.'**
+  String get dailyFreezeSaved;
+
+  /// No description provided for @dailyStreakStart.
+  ///
+  /// In en, this message translates to:
+  /// **'Answer today’s questions to start a streak.'**
+  String get dailyStreakStart;
+
+  /// No description provided for @dailyKeepStreak.
+  ///
+  /// In en, this message translates to:
+  /// **'Answer today’s questions to keep your streak.'**
+  String get dailyKeepStreak;
+
+  /// No description provided for @dailyEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No questions for today'**
+  String get dailyEmpty;
+
+  /// No description provided for @dailyReviewTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Today’s questions'**
+  String get dailyReviewTitle;
+
+  /// No description provided for @dailySourceToifa.
+  ///
+  /// In en, this message translates to:
+  /// **'Questions come from the official certification list — only those whose key passed the LabGuide check.'**
+  String get dailySourceToifa;
+
+  /// No description provided for @dailyReminderTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'LabGuide: daily questions'**
+  String get dailyReminderTitle;
+
+  /// No description provided for @dailyReminderBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Today’s 5 questions are ready — 2–3 minutes.'**
+  String get dailyReminderBody;
+
+  /// No description provided for @dailyReminderChannel.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily reminder'**
+  String get dailyReminderChannel;
+
+  /// No description provided for @dailyReminderSetting.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily reminder'**
+  String get dailyReminderSetting;
+
+  /// No description provided for @dailyReminderAt.
+  ///
+  /// In en, this message translates to:
+  /// **'Every day at {time}'**
+  String dailyReminderAt(String time);
+
+  /// No description provided for @dailyReminderOff.
+  ///
+  /// In en, this message translates to:
+  /// **'Off'**
+  String get dailyReminderOff;
+
+  /// No description provided for @dailyReminderTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Reminder time'**
+  String get dailyReminderTime;
+
+  /// No description provided for @dailyOfferTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Want a daily reminder?'**
+  String get dailyOfferTitle;
+
+  /// No description provided for @dailyOfferBody.
+  ///
+  /// In en, this message translates to:
+  /// **'One notification at the time you choose. No reminder on days you’ve already answered. Turn it off any time.'**
+  String get dailyOfferBody;
+
+  /// No description provided for @dailyOfferYes.
+  ///
+  /// In en, this message translates to:
+  /// **'Turn on reminder'**
+  String get dailyOfferYes;
+
+  /// No description provided for @dailyOfferNo.
+  ///
+  /// In en, this message translates to:
+  /// **'No thanks'**
+  String get dailyOfferNo;
+
+  /// No description provided for @dailyReminderDenied.
+  ///
+  /// In en, this message translates to:
+  /// **'Notification permission wasn’t granted, so the reminder stays off. Allow notifications for LabGuide in your phone settings and try again.'**
+  String get dailyReminderDenied;
+
+  /// No description provided for @dailyReminderUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn’t turn on reminders on this device.'**
+  String get dailyReminderUnavailable;
+
+  /// No description provided for @dailyReminderOnSnack.
+  ///
+  /// In en, this message translates to:
+  /// **'Reminder on: every day at {time}'**
+  String dailyReminderOnSnack(String time);
+
+  /// No description provided for @dailyReminderNote.
+  ///
+  /// In en, this message translates to:
+  /// **'The reminder is scheduled on this device only (no server). Your phone may delay it by a few minutes to save battery. If you don’t open the app for 7 days, reminders stop.'**
+  String get dailyReminderNote;
+
+  /// No description provided for @shareResult.
+  ///
+  /// In en, this message translates to:
+  /// **'Share result'**
+  String get shareResult;
+
+  /// No description provided for @shareSheetTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Result card'**
+  String get shareSheetTitle;
+
+  /// No description provided for @shareSheetBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The image has no name or other personal data.'**
+  String get shareSheetBody;
+
+  /// No description provided for @shareFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn’t open the share sheet. Please try again.'**
+  String get shareFailed;
+
+  /// No description provided for @shareKindDaily.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily questions'**
+  String get shareKindDaily;
+
+  /// No description provided for @shareKindExam.
+  ///
+  /// In en, this message translates to:
+  /// **'Practice exam'**
+  String get shareKindExam;
+
+  /// No description provided for @shareKindToifa.
+  ///
+  /// In en, this message translates to:
+  /// **'Category test practice'**
+  String get shareKindToifa;
+
+  /// No description provided for @shareCorrectCaption.
+  ///
+  /// In en, this message translates to:
+  /// **'correct answers'**
+  String get shareCorrectCaption;
+
+  /// No description provided for @shareFooter.
+  ///
+  /// In en, this message translates to:
+  /// **'Lab reference and practice'**
+  String get shareFooter;
+
+  /// No description provided for @shareToifaNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Not official — LabGuide practice result'**
+  String get shareToifaNote;
+
+  /// No description provided for @shareText.
+  ///
+  /// In en, this message translates to:
+  /// **'LabGuide · {kind}: {correct}/{total} ({percent}%)'**
+  String shareText(String kind, int correct, int total, int percent);
+
   /// No description provided for @quizTopicMistakes.
   ///
   /// In en, this message translates to:
