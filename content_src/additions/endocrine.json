@@ -4267,6 +4267,10 @@
     {
      "source_id": "medline-t3",
      "locator": "Why do I need a T3 test?"
+    },
+    {
+     "source_id": "medline-t3",
+     "locator": "What is it used for?"
     }
    ],
    "topic_ids": [
@@ -4586,6 +4590,10 @@
     {
      "source_id": "medline-pregnancy-test",
      "locator": "What do the results mean?"
+    },
+    {
+     "source_id": "medline-pregnancy-test",
+     "locator": "Will I need to do anything to prepare for the test?"
     }
    ],
    "topic_ids": [
@@ -4780,6 +4788,10 @@
     {
      "source_id": "niddk-insulin-resistance",
      "locator": "How do health care professionals diagnose insulin resistance and prediabetes?"
+    },
+    {
+     "source_id": "medline-insulin",
+     "locator": "What is an insulin in blood test?"
     }
    ],
    "topic_ids": [
@@ -5032,6 +5044,10 @@
     {
      "source_id": "medline-vitamin-d",
      "locator": "What is a vitamin D test?"
+    },
+    {
+     "source_id": "medline-vitamin-d",
+     "locator": "What do the results mean?"
     }
    ],
    "topic_ids": [
