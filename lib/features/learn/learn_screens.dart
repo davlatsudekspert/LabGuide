@@ -191,7 +191,12 @@ class _QuizScreenState extends State<QuizScreen> {
 
   Widget _page(BuildContext context, AppLocalizations l) {
     final analyteId = widget.analyteId;
+    final current = _session;
     return LgPage(
+      // Mavzu tanlanganda yoki keyingi savolga o'tilganda sahifa tepadan
+      // boshlanadi: aks holda ro'yxat pastidagi mavzu (masalan, "Gormonlar")
+      // tanlansa, eski scroll tufayli savolning boshi ko'rinmay qolardi.
+      key: ValueKey((current == null, current?.index, current?.finished)),
       title: l.learnQuiz,
       subtitle: _scope?.title(l, Localizations.localeOf(context).languageCode),
       children: [

@@ -63,7 +63,9 @@ void main() {
 
     test('covers every PRODUCT_PLAN group in three languages', () {
       final pack = parse(packJson());
-      expect(pack.groups.map((g) => g.id), [
+      // Asosiy 8 guruh tartibi o'zgarmaydi; yo'nalish bo'laklari
+      // (content_src/additions) o'z guruhlarini oxiriga qo'shadi.
+      expect(pack.groups.map((g) => g.id).take(8), [
         'carbohydrate',
         'kidney',
         'liver',
@@ -73,6 +75,7 @@ void main() {
         'enzymes',
         'urine',
       ]);
+      expect(pack.groups.map((g) => g.id), contains('endocrine'));
       for (final a in pack.analytes) {
         for (final lang in ['uz', 'ru', 'en']) {
           expect(a.names.values[lang], isNotEmpty, reason: '${a.id} $lang');
@@ -82,7 +85,7 @@ void main() {
 
     test('every card is a sourced draft; nothing is reviewer-approved', () {
       final pack = parse(packJson());
-      expect(pack.analytes, hasLength(35));
+      expect(pack.analytes.length, greaterThanOrEqualTo(51));
       for (final a in pack.analytes) {
         // Manbali o'quv namunasi — mustaqil review hali yo'q.
         expect(a.contentState, ContentState.sourcedSample, reason: a.id);
@@ -113,7 +116,7 @@ void main() {
       }
       // Analit savollari: har birida manba va aniq bir analit mavzusi.
       final analyteQuestions = pack.quiz.where((q) => q.topicIds.isNotEmpty);
-      expect(analyteQuestions.length, 68);
+      expect(analyteQuestions.length, greaterThanOrEqualTo(84));
       for (final q in analyteQuestions) {
         expect(q.refs, isNotEmpty, reason: q.id);
       }
@@ -835,7 +838,7 @@ void main() {
         'bilirubin-direct',
       ]);
       expect(ids('kreatinin', group: 'liver'), isEmpty);
-      expect(ids('').length, 35);
+      expect(ids('').length, search.pack.analytes.length);
     });
 
     test('no results for unknown terms', () {
