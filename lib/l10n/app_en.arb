@@ -3547,5 +3547,30 @@
     }
   },
   "quizDraftTag": "Draft · not reviewed",
-  "lessonsTitle": "Lesson topics"
+  "lessonsTitle": "Lesson topics",
+  "analyteTreatmentGoals": "Treatment goals",
+  "analyteTreatmentGoalsNotice": "A treatment goal is set by a physician on the basis of the patient’s full risk assessment; the app does not determine a risk category.",
+  "analyteTreatmentGoalsNotRef": "Treatment goals are neither reference intervals nor diagnostic limits. Guidelines define risk groups differently — compare values only within one table.",
+  "analyteGoalGuideline": "{name} · {year}",
+  "@analyteGoalGuideline": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "year": {
+        "type": "String"
+      }
+    }
+  },
+  "analyteAgentCheck": "Automated/agent check",
+  "analyteAgentCheckValue": "{date} (not an expert approval)",
+  "@analyteAgentCheckValue": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "analyteExpertApproval": "Expert approval",
+  "analyteExpertApprovalPending": "pending"
 }

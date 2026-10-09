@@ -294,6 +294,99 @@ class ReferenceInterval {
   List<String> get sourceIds => [for (final r in refs) r.sourceId];
 }
 
+/// Davolash maqsadi (masalan, xavf toifasiga ko'ra LDL-C maqsadi).
+///
+/// Referens interval ham, diagnostik chegara ham EMAS: bemorning to'liq xavf
+/// baholashidan keyin shifokor tanlaydi. Har bir qiymat aniq bitta
+/// yo'riqnomaga (nomi va yili), bitta bemor guruhiga va manbadagi aniq joyga
+/// (bo'lim/jadval) bog'langan. Turli yo'riqnomalar UI da alohida jadvallarda
+/// chiqadi ([guidelineId] bo'yicha) — bir jadvalga aralashtirilmaydi.
+@immutable
+class TreatmentGoal {
+  const TreatmentGoal({
+    required this.guidelineId,
+    required this.guidelineName,
+    required this.year,
+    required this.population,
+    required this.target,
+    required this.unit,
+    required this.refs,
+    this.note,
+  });
+
+  factory TreatmentGoal.fromJson(Map<String, Object?> json) {
+    final year = json['year'];
+    if (year is! int) {
+      throw FormatException('treatment goal: integer year expected: $year');
+    }
+    return TreatmentGoal(
+      guidelineId: json['guideline_id']! as String,
+      guidelineName: json['guideline_name']! as String,
+      year: year,
+      population: LocalizedText.fromJson(json['population']),
+      target: LocalizedText.fromJson(json['target_text']),
+      unit: json['unit']! as String,
+      note: json['note'] == null ? null : LocalizedText.fromJson(json['note']),
+      refs: SourceRef.listFromJson(json),
+    );
+  }
+
+  /// Yo'riqnoma kaliti (slug): bir xil kalitli maqsadlar bitta jadvalda.
+  final String guidelineId;
+
+  /// Yo'riqnoma nomi, masalan "NCEP ATP III (NHLBI)".
+  final String guidelineName;
+
+  /// Yo'riqnoma (yoki uning yangilanishi) e'lon qilingan yil.
+  final int year;
+
+  /// Bemor guruhi / xavf toifasi — yo'riqnomaning o'z ta'rifi bo'yicha.
+  final LocalizedText population;
+
+  /// Maqsad matni (qiymat, belgi va birlik bilan; masalan "< 100 mg/dL").
+  final LocalizedText target;
+
+  /// Maqsaddagi birlik(lar), vergul bilan: "mg/dL", "mmol/L, mg/dL", "%".
+  final String unit;
+  final LocalizedText? note;
+  final List<SourceRef> refs;
+
+  List<String> get units => [
+    for (final u in unit.split(','))
+      if (u.trim().isNotEmpty) u.trim(),
+  ];
+
+  List<String> get sourceIds => [for (final r in refs) r.sourceId];
+}
+
+/// Avtomatik (agent) tekshiruv yozuvi: qachon, nima tekshirilgan va hisobot
+/// fayli. Bu mustaqil mutaxassis tasdig'i EMAS — `review.state` ni
+/// o'zgartirmaydi va karta `draft` bo'lib qoladi.
+@immutable
+class AgentCheck {
+  const AgentCheck({
+    required this.date,
+    required this.scope,
+    required this.report,
+  });
+
+  factory AgentCheck.fromJson(Map<String, Object?> json) => AgentCheck(
+    date: json['date']! as String,
+    scope: json['scope']! as String,
+    report: json['report']! as String,
+  );
+
+  /// ISO sana (YYYY-MM-DD).
+  final String date;
+
+  /// Nima tekshirilgani (masalan, "sources, locators, numbers, RI/DL").
+  final String scope;
+
+  /// Hisobot fayli (repo ichidagi yo'l), masalan
+  /// `docs/CONTENT_AUDIT_2026-10-09_A.md`.
+  final String report;
+}
+
 /// Moddaga xos birlik konversiyasi (mg/dL ↔ mmol/L).
 @immutable
 class UnitConversion {
@@ -383,6 +476,8 @@ class Analyte {
     required this.translationReview,
     required this.related,
     required this.instrumentBinding,
+    this.treatmentGoals = const [],
+    this.agentChecks = const [],
     this.notes = const {},
     this.tagline,
     this.specimen,
@@ -426,6 +521,14 @@ class Analyte {
         for (final r in json['reference_intervals'] as List? ?? const [])
           ReferenceInterval.fromJson((r as Map).cast<String, Object?>()),
       ],
+      treatmentGoals: [
+        for (final g in json['treatment_goals'] as List? ?? const [])
+          TreatmentGoal.fromJson((g as Map).cast<String, Object?>()),
+      ],
+      agentChecks: [
+        for (final c in review['agent_checks'] as List? ?? const [])
+          AgentCheck.fromJson((c as Map).cast<String, Object?>()),
+      ],
       sourceIds: _strings(json['source_ids'], 'source_ids'),
       reviewState: ReviewState.parse(review['state'] as String? ?? 'pending'),
       reviewerId: review['reviewer_id'] as String?,
@@ -466,6 +569,13 @@ class Analyte {
   final List<Claim> claims;
   final List<DecisionLimit> decisionLimits;
   final List<ReferenceInterval> referenceIntervals;
+
+  /// Davolash maqsadlari (yo'riqnoma bo'yicha). RI va DL dan alohida.
+  final List<TreatmentGoal> treatmentGoals;
+
+  /// Avtomatik/agent tekshiruvlari (`review.agent_checks`). Mutaxassis
+  /// tasdig'i emas: [reviewState] ga ta'sir qilmaydi.
+  final List<AgentCheck> agentChecks;
   final List<String> sourceIds;
   final ReviewState reviewState;
   final String? reviewerId;
@@ -1356,6 +1466,8 @@ class ContentPack {
         cite(r.sourceIds, 'reference interval');
         _checkBounds(a.id, r.low, r.high);
       }
+      _validateTreatmentGoals(a, cite);
+      _validateAgentChecks(a);
       final uncited = listed.difference(cited);
       if (a.contentState != ContentState.structureOnly && uncited.isNotEmpty) {
         throw FormatException('${a.id}: listed but never cited: $uncited');
@@ -1368,7 +1480,9 @@ class ContentPack {
         throw FormatException('${a.id}: approved without reviewed_at');
       }
       if (a.contentState == ContentState.structureOnly &&
-          (a.claims.isNotEmpty || a.decisionLimits.isNotEmpty)) {
+          (a.claims.isNotEmpty ||
+              a.decisionLimits.isNotEmpty ||
+              a.treatmentGoals.isNotEmpty)) {
         throw FormatException('${a.id}: structure-only card has claims');
       }
       if (a.contentState == ContentState.reviewed && !a.isReviewerApproved) {
@@ -1464,6 +1578,73 @@ class ContentPack {
       }
       if (c.status != ContentStatus.draft && !c.isReviewerApproved) {
         throw FormatException('${c.id}: ${c.status.name} without review');
+      }
+    }
+  }
+
+  static final _isoDate = RegExp(r'^\d{4}-\d{2}-\d{2}$');
+
+  /// Davolash maqsadi: yo'riqnoma (kalit, nom, yil), bemor guruhi, maqsad
+  /// matni birligi bilan va har bir havolada aniq joy (bo'lim/jadval) —
+  /// majburiy. Bir yo'riqnoma kaliti — bitta nom va bitta yil (aks holda
+  /// ikki xil hujjat bitta jadvalga tushib qolardi).
+  static void _validateTreatmentGoals(
+    Analyte a,
+    void Function(List<String>, String) cite,
+  ) {
+    final guidelines = <String, (String, int)>{};
+    for (final g in a.treatmentGoals) {
+      final where = '${a.id}: treatment goal ${g.guidelineId}';
+      if (!_slug.hasMatch(g.guidelineId)) {
+        throw FormatException('$where: guideline_id must be a slug');
+      }
+      if (g.guidelineName.trim().isEmpty) {
+        throw FormatException('$where: guideline_name required');
+      }
+      if (g.year < 1980 || g.year > 2100) {
+        throw FormatException('$where: implausible year ${g.year}');
+      }
+      final known = guidelines.putIfAbsent(
+        g.guidelineId,
+        () => (g.guidelineName, g.year),
+      );
+      if (known != (g.guidelineName, g.year)) {
+        throw FormatException('$where: one guideline_id, two name/year');
+      }
+      if (g.units.isEmpty) throw FormatException('$where: unit required');
+      for (final lang in LocalizedText.requiredLanguages) {
+        final text = g.target.values[lang]!;
+        if (!text.contains(RegExp(r'\d'))) {
+          throw FormatException('$where: target without a number ($lang)');
+        }
+        for (final u in g.units) {
+          if (!text.contains(u)) {
+            throw FormatException('$where: target ($lang) lacks unit $u');
+          }
+        }
+      }
+      cite(g.sourceIds, 'treatment goal');
+      for (final r in g.refs) {
+        if ((r.locator ?? '').trim().isEmpty) {
+          throw FormatException('$where: ref ${r.sourceId} without locator');
+        }
+      }
+    }
+  }
+
+  /// Agent tekshiruvi: sana (ISO), qamrov va hisobot fayli majburiy.
+  static void _validateAgentChecks(Analyte a) {
+    for (final c in a.agentChecks) {
+      // DateTime.tryParse "2026-13-45" ni ham qabul qiladi (oshib ketgan
+      // qiymatni keyingi oyga suradi) — qayta formatlab solishtiriladi.
+      final parsed = DateTime.tryParse(c.date);
+      if (!_isoDate.hasMatch(c.date) ||
+          parsed == null ||
+          parsed.toIso8601String().substring(0, 10) != c.date) {
+        throw FormatException('${a.id}: agent check date ${c.date}');
+      }
+      if (c.scope.trim().isEmpty || c.report.trim().isEmpty) {
+        throw FormatException('${a.id}: agent check needs scope and report');
       }
     }
   }

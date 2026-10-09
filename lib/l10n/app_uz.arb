@@ -1763,5 +1763,13 @@
   "reviewCatalog": "Kataloglangan materiallar: {count}",
   "reviewField": "Maydon: {field}",
   "quizDraftTag": "Qoralama · tekshirilmagan",
-  "lessonsTitle": "Dars mavzulari"
+  "lessonsTitle": "Dars mavzulari",
+  "analyteTreatmentGoals": "Davolash maqsadi",
+  "analyteTreatmentGoalsNotice": "Davolash maqsadi shifokor tomonidan bemorning to‘liq xavf baholashi asosida belgilanadi; ilova xavf toifasini aniqlamaydi.",
+  "analyteTreatmentGoalsNotRef": "Davolash maqsadi referens interval ham, diagnostik chegara ham emas. Qo‘llanmalar xavf guruhlarini turlicha belgilaydi — qiymatlarni faqat bitta jadval ichida solishtiring.",
+  "analyteGoalGuideline": "{name} · {year}",
+  "analyteAgentCheck": "Avtomatik/agent tekshiruvi",
+  "analyteAgentCheckValue": "{date} (mutaxassis tasdig‘i emas)",
+  "analyteExpertApproval": "Mutaxassis tasdig‘i",
+  "analyteExpertApprovalPending": "kutilmoqda"
 }

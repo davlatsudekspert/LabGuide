@@ -6186,4 +6186,34 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get lessonsTitle => 'Lesson topics';
+
+  @override
+  String get analyteTreatmentGoals => 'Treatment goals';
+
+  @override
+  String get analyteTreatmentGoalsNotice =>
+      'A treatment goal is set by a physician on the basis of the patient’s full risk assessment; the app does not determine a risk category.';
+
+  @override
+  String get analyteTreatmentGoalsNotRef =>
+      'Treatment goals are neither reference intervals nor diagnostic limits. Guidelines define risk groups differently — compare values only within one table.';
+
+  @override
+  String analyteGoalGuideline(String name, String year) {
+    return '$name · $year';
+  }
+
+  @override
+  String get analyteAgentCheck => 'Automated/agent check';
+
+  @override
+  String analyteAgentCheckValue(String date) {
+    return '$date (not an expert approval)';
+  }
+
+  @override
+  String get analyteExpertApproval => 'Expert approval';
+
+  @override
+  String get analyteExpertApprovalPending => 'pending';
 }

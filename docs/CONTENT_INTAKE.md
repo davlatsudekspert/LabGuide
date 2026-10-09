@@ -39,6 +39,17 @@ Har bir da’vo — `claims[]` elementi, `refs` bilan:
 - Sahifa raqami asl nashrdagi bo‘yicha; tarjima qilingan matn bo‘lsa ham manba asl nashr.
 - Diagnostik chegara (`decision_limits`) va referens interval (`reference_intervals`) alohida;
   har birida populyatsiya, metod va manba sahifasi.
+- Davolash maqsadi (`treatment_goals[]`, masalan LDL-C) — RI va DL dan ALOHIDA:
+  `{"guideline_id", "guideline_name", "year", "population": {uz,ru,en},
+  "target_text": {uz,ru,en}, "unit", "refs": [{"source_id", "locator", "pages"?}],
+  "note"?}`. Validator: yo‘riqnoma nomi va yili, bemor guruhi (uch tilda),
+  maqsad matnida son va `unit` dagi har bir birlik, har havolada `locator`
+  majburiy; bir `guideline_id` — bitta nom va yil (UI har yo‘riqnomani o‘z
+  jadvalida chiqaradi). Mualliflik huquqi bor qo‘llanmalardan faqat raqamli
+  fakt, o‘z so‘zimiz bilan. Ilova xavf toifasini aniqlamaydi.
+- Avtomatik/agent tekshiruvi: `review.agent_checks[] = {"date", "scope", "report"}`
+  — mutaxassis tasdig‘i EMAS (`review.state` o‘zgarmaydi). Qo‘shish:
+  `python3 tool/content/mark_agent_check.py <hisobot.md> <id...>`.
 - Dars mavzusi: `lessons[]` (`analyte_ids`, `quiz_ids`, `refs`). Karta yoki dars
   “reviewed”/“published” bo‘lishi uchun tekshiruvchi id si va sanasi shart.
 

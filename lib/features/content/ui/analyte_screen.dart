@@ -71,6 +71,18 @@ String formatRange(double? low, double? high, String unit) {
   return unit;
 }
 
+/// Qiymatni satr bo'linishidan saqlaydi: belgi, son va birlik bir qatorda
+/// qoladi ("< 1.4" va "mmol/L" turli qatorga tushmaydi, "mg/" va "dL" ham
+/// ajralmaydi). Matn mazmuni o'zgarmaydi — faqat bo'linmas bo'shliq
+/// (U+00A0) va so'z bog'lovchi (U+2060) qo'shiladi.
+String keepValuesTogether(String text) => text
+    .replaceAllMapped(RegExp(r'([<>≤≥]) (?=\d)'), (m) => '${m[1]}\u00A0')
+    .replaceAllMapped(RegExp(r'(\d) (?=mg|mmol|mL)'), (m) => '${m[1]}\u00A0')
+    .replaceAllMapped(
+      RegExp(r'\b(mg|mmol|mL)/(dL|L|24)'),
+      (m) => '${m[1]}/\u2060${m[2]}',
+    );
+
 class AnalyteScreen extends StatelessWidget {
   const AnalyteScreen({super.key, required this.analyteId});
 
@@ -183,6 +195,7 @@ class _AnalyteBody {
       if (!structureOnly) ...[
         _referenceIntervals(context, l),
         if (analyte.decisionLimits.isNotEmpty) _decisionLimits(context, l),
+        if (analyte.treatmentGoals.isNotEmpty) _treatmentGoals(context, l),
       ],
       LgNotice(l.analyteNoInterpretation, kind: NoticeKind.info),
       AnalyteConditionsSection(pack: pack, analyteId: analyte.id),
@@ -456,6 +469,109 @@ class _AnalyteBody {
     );
   }
 
+  /// Davolash maqsadlari — RI va DL dan ALOHIDA panel. Har bir yo'riqnoma
+  /// o'z jadvalida (nomi va yili sarlavhada); qatorda — yo'riqnomaning o'z
+  /// bemor guruhi, maqsad va manba. Ilova xavf toifasini aniqlamaydi va
+  /// tavsiya bermaydi: yuqorida shu haqda ogohlantirish turadi.
+  Widget _treatmentGoals(BuildContext context, AppLocalizations l) {
+    final text = Theme.of(context).textTheme;
+    final p = LgPalette.of(context);
+    final byGuideline = <String, List<TreatmentGoal>>{};
+    for (final g in analyte.treatmentGoals) {
+      byGuideline.putIfAbsent(g.guidelineId, () => []).add(g);
+    }
+    return LgPanel(
+      key: const ValueKey('treatment-goals-panel'),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          LgTag(analyte.names.of(lang)),
+          const SizedBox(height: 10),
+          Semantics(
+            header: true,
+            child: Text(l.analyteTreatmentGoals, style: text.titleMedium),
+          ),
+          LgNotice(l.analyteTreatmentGoalsNotice),
+          for (final MapEntry(key: id, value: goals) in byGuideline.entries)
+            Semantics(
+              container: true,
+              child: Container(
+                key: ValueKey('treatment-goals-$id'),
+                width: double.infinity,
+                margin: const EdgeInsets.only(top: 10),
+                padding: const EdgeInsets.fromLTRB(12, 10, 12, 4),
+                decoration: BoxDecoration(
+                  border: Border.all(color: p.line),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Semantics(
+                      header: true,
+                      child: Text(
+                        l.analyteGoalGuideline(
+                          goals.first.guidelineName,
+                          '${goals.first.year}',
+                        ),
+                        style: text.titleSmall,
+                      ),
+                    ),
+                    for (final (i, g) in goals.indexed)
+                      Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.symmetric(vertical: 8),
+                        decoration: BoxDecoration(
+                          border: i == goals.length - 1
+                              ? null
+                              : Border(
+                                  bottom: BorderSide(
+                                    color: p.line.withValues(alpha: 0.7),
+                                  ),
+                                ),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              keepValuesTogether(g.population.of(lang)),
+                              style: text.bodyMedium,
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 2),
+                              child: Text(
+                                '${keepValuesTogether(g.target.of(lang))}'
+                                '\u00A0${cite(g.refs, l)}',
+                                style: text.titleSmall,
+                              ),
+                            ),
+                            if (g.note != null)
+                              Padding(
+                                padding: const EdgeInsets.only(top: 4),
+                                child: Text(
+                                  keepValuesTogether(g.note!.of(lang)),
+                                  style: text.bodySmall,
+                                ),
+                              ),
+                          ],
+                        ),
+                      ),
+                  ],
+                ),
+              ),
+            ),
+          Padding(
+            padding: const EdgeInsets.only(top: 10),
+            child: Text(
+              l.analyteTreatmentGoalsNotRef,
+              style: text.bodySmall!.copyWith(fontWeight: FontWeight.w600),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   Widget _sources(BuildContext context, AppLocalizations l) {
     final text = Theme.of(context).textTheme;
     return LgPanel(
@@ -492,12 +608,21 @@ class _AnalyteBody {
         children: [
           Text(l.analyteReview, style: text.titleMedium),
           const SizedBox(height: 6),
+          // Mustaqil mutaxassis tasdig'i va avtomatik (agent) tekshiruvi —
+          // alohida qatorlar: agent tekshiruvi tasdiq o'rnini bosmaydi.
           LgMetric(
-            label: l.analyteReview,
-            value: approved ? l.analyteReviewApproved : l.analyteReviewPending,
+            label: l.analyteExpertApproval,
+            value: approved
+                ? l.analyteReviewApproved
+                : l.analyteExpertApprovalPending,
           ),
           if (!approved)
             LgMetric(label: '—', value: l.analyteReviewerNotAssigned),
+          for (final c in analyte.agentChecks)
+            LgMetric(
+              label: l.analyteAgentCheck,
+              value: l.analyteAgentCheckValue(c.date),
+            ),
           // Kelib chiqishi: kim tayyorlagan va manbalar qachon ko'rilgan.
           LgMetric(label: l.analytePreparedBy, value: l.analyteEditorial),
           if (_lastAccessed() case final date?)

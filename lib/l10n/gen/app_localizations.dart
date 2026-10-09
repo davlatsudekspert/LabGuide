@@ -10683,6 +10683,54 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Lesson topics'**
   String get lessonsTitle;
+
+  /// No description provided for @analyteTreatmentGoals.
+  ///
+  /// In en, this message translates to:
+  /// **'Treatment goals'**
+  String get analyteTreatmentGoals;
+
+  /// No description provided for @analyteTreatmentGoalsNotice.
+  ///
+  /// In en, this message translates to:
+  /// **'A treatment goal is set by a physician on the basis of the patient’s full risk assessment; the app does not determine a risk category.'**
+  String get analyteTreatmentGoalsNotice;
+
+  /// No description provided for @analyteTreatmentGoalsNotRef.
+  ///
+  /// In en, this message translates to:
+  /// **'Treatment goals are neither reference intervals nor diagnostic limits. Guidelines define risk groups differently — compare values only within one table.'**
+  String get analyteTreatmentGoalsNotRef;
+
+  /// No description provided for @analyteGoalGuideline.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} · {year}'**
+  String analyteGoalGuideline(String name, String year);
+
+  /// No description provided for @analyteAgentCheck.
+  ///
+  /// In en, this message translates to:
+  /// **'Automated/agent check'**
+  String get analyteAgentCheck;
+
+  /// No description provided for @analyteAgentCheckValue.
+  ///
+  /// In en, this message translates to:
+  /// **'{date} (not an expert approval)'**
+  String analyteAgentCheckValue(String date);
+
+  /// No description provided for @analyteExpertApproval.
+  ///
+  /// In en, this message translates to:
+  /// **'Expert approval'**
+  String get analyteExpertApproval;
+
+  /// No description provided for @analyteExpertApprovalPending.
+  ///
+  /// In en, this message translates to:
+  /// **'pending'**
+  String get analyteExpertApprovalPending;
 }
 
 class _AppLocalizationsDelegate

@@ -6199,4 +6199,34 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get lessonsTitle => 'Темы занятий';
+
+  @override
+  String get analyteTreatmentGoals => 'Цели лечения';
+
+  @override
+  String get analyteTreatmentGoalsNotice =>
+      'Цель лечения устанавливает врач на основе полной оценки риска пациента; приложение не определяет категорию риска.';
+
+  @override
+  String get analyteTreatmentGoalsNotRef =>
+      'Цели лечения — не референсные интервалы и не диагностические пороги. Рекомендации по-разному определяют группы риска — сравнивайте значения только внутри одной таблицы.';
+
+  @override
+  String analyteGoalGuideline(String name, String year) {
+    return '$name · $year';
+  }
+
+  @override
+  String get analyteAgentCheck => 'Автоматическая/агентная проверка';
+
+  @override
+  String analyteAgentCheckValue(String date) {
+    return '$date (не экспертное подтверждение)';
+  }
+
+  @override
+  String get analyteExpertApproval => 'Подтверждение эксперта';
+
+  @override
+  String get analyteExpertApprovalPending => 'ожидается';
 }

@@ -6090,4 +6090,34 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get lessonsTitle => 'Dars mavzulari';
+
+  @override
+  String get analyteTreatmentGoals => 'Davolash maqsadi';
+
+  @override
+  String get analyteTreatmentGoalsNotice =>
+      'Davolash maqsadi shifokor tomonidan bemorning to‘liq xavf baholashi asosida belgilanadi; ilova xavf toifasini aniqlamaydi.';
+
+  @override
+  String get analyteTreatmentGoalsNotRef =>
+      'Davolash maqsadi referens interval ham, diagnostik chegara ham emas. Qo‘llanmalar xavf guruhlarini turlicha belgilaydi — qiymatlarni faqat bitta jadval ichida solishtiring.';
+
+  @override
+  String analyteGoalGuideline(String name, String year) {
+    return '$name · $year';
+  }
+
+  @override
+  String get analyteAgentCheck => 'Avtomatik/agent tekshiruvi';
+
+  @override
+  String analyteAgentCheckValue(String date) {
+    return '$date (mutaxassis tasdig‘i emas)';
+  }
+
+  @override
+  String get analyteExpertApproval => 'Mutaxassis tasdig‘i';
+
+  @override
+  String get analyteExpertApprovalPending => 'kutilmoqda';
 }
