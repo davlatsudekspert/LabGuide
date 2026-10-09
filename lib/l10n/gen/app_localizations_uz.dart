@@ -1653,7 +1653,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String diffVoiceFallback(String lang) {
-    return 'Ilova tili uchun qurilmada nutqni tanish topilmadi — so‘zlarni $lang ayting.';
+    return 'Ilova tili uchun qurilmada nutqni tanish topilmadi — so‘zlarni shu tilda ayting: $lang.';
   }
 
   @override
