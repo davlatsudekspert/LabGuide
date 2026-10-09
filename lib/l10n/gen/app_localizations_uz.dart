@@ -1009,6 +1009,30 @@ class AppLocalizationsUz extends AppLocalizations {
       'Qoidalar: Westgard ko‘p qoidali tartibi (Westgard JO va boshq., Clin Chem 1981; doi:10.1093/clinchem/27.3.493). O‘rganish va tekshirish vositasi — laboratoriyangizning QC tartibini almashtirmaydi.';
 
   @override
+  String get qcGuidesTitle => 'Yo‘riqnomalar';
+
+  @override
+  String get qgRejected => 'QC rad etilsa nima qilish';
+
+  @override
+  String get qgRejectedSub => 'To‘xtatish, sabab izlash, qayta tekshirish';
+
+  @override
+  String get qgEqa => 'Tashqi sifat nazorati (EQA)';
+
+  @override
+  String get qgEqaSub => 'Nima u, qanday ishlaydi, natija yomon bo‘lsa';
+
+  @override
+  String get qgCritical => 'Kritik qiymatlar';
+
+  @override
+  String get qgCriticalSub => 'Ro‘yxatni kim tuzadi va qanday xabar beriladi';
+
+  @override
+  String get qgWhatToDo => 'Nima qilish kerak?';
+
+  @override
   String get qcErrSave => 'Saqlab bo‘lmadi. Qayta urinib ko‘ring.';
 
   @override
@@ -1180,6 +1204,225 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get calcUnitsSub => 'Moddaga xos';
+
+  @override
+  String get calcSectionManual => 'Qo‘lda usullar';
+
+  @override
+  String get mcChamber => 'Hisob kamerasi';
+
+  @override
+  String get mcChamberSub => 'Goryayev, Neubauer: hujayra/µL va ×10⁹/L';
+
+  @override
+  String get mcDiff => 'Leykoformula: mutlaq sonlar';
+
+  @override
+  String get mcDiffSub => 'WBC × %, yadroli eritrotsitlar bo‘yicha tuzatish';
+
+  @override
+  String get mcRetic => 'Retikulotsitlar';
+
+  @override
+  String get mcReticSub => '%, tuzatilgan % va RPI';
+
+  @override
+  String get mcLight => 'Light mezonlari';
+
+  @override
+  String get mcLightSub => 'Plevra suyuqligi: ekssudat yoki transsudat';
+
+  @override
+  String get mcColour => 'Rang ko‘rsatkichi';
+
+  @override
+  String get mcColourSub => 'Nega ilova MCH va MCHC ni tavsiya qiladi';
+
+  @override
+  String get mfCells => 'Sanalgan hujayralar';
+
+  @override
+  String get mfSquares => 'Sanalgan kvadratlar soni';
+
+  @override
+  String get mfSquareArea => 'Bitta kvadrat maydoni';
+
+  @override
+  String get mfDepth => 'Kamera chuqurligi';
+
+  @override
+  String get mfDilution => 'Suyultirish darajasi (1:20 uchun — 20)';
+
+  @override
+  String get mfWbc => 'Leykotsitlar (WBC)';
+
+  @override
+  String get mfSeg => 'Segment yadroli neytrofillar';
+
+  @override
+  String get mfBand => 'Tayoqcha yadroli neytrofillar';
+
+  @override
+  String get mfEos => 'Eozinofillar';
+
+  @override
+  String get mfBaso => 'Bazofillar';
+
+  @override
+  String get mfLymph => 'Limfotsitlar';
+
+  @override
+  String get mfMono => 'Monotsitlar';
+
+  @override
+  String get mfOther => 'Boshqa hujayralar';
+
+  @override
+  String get mfNrbc => 'Yadroli eritrotsitlar, 100 leykotsitga';
+
+  @override
+  String get mfReticCounted => 'Sanalgan retikulotsitlar';
+
+  @override
+  String get mfRbcExamined => 'Ko‘rilgan eritrotsitlar';
+
+  @override
+  String get mfHct => 'Gematokrit (Ht)';
+
+  @override
+  String get mfRbc => 'Eritrotsitlar (RBC)';
+
+  @override
+  String get mfMaturation => 'Yetilish koeffitsiyenti';
+
+  @override
+  String get mfMaturationAuto => 'Avto';
+
+  @override
+  String get mfPfProtein => 'Suyuqlik: umumiy oqsil';
+
+  @override
+  String get mfSerumProtein => 'Zardob: umumiy oqsil';
+
+  @override
+  String get mfPfLdh => 'Suyuqlik: LDH';
+
+  @override
+  String get mfSerumLdh => 'Zardob: LDH';
+
+  @override
+  String get mfLdhUln => 'Zardob LDH ning yuqori chegarasi';
+
+  @override
+  String get mfSameUnit =>
+      'Juftlikdagi ikki qiymat bir xil birlikda bo‘lsin (masalan, ikkalasi g/L, ikkalasi U/L).';
+
+  @override
+  String get mrCellsPerUl => 'hujayra/µL';
+
+  @override
+  String get mrVolume => 'Sanalgan hajm';
+
+  @override
+  String get mrWbcUsed => 'Tuzatilgan WBC';
+
+  @override
+  String get mrNrbc => 'Yadroli eritrotsitlar';
+
+  @override
+  String get mrPercentSum => 'Foizlar yig‘indisi';
+
+  @override
+  String get mrAbsolute => 'Mutlaq sonlar';
+
+  @override
+  String get mrNoCorrection =>
+      'Yadroli eritrotsitlar kiritilmagan — WBC tuzatilmadi.';
+
+  @override
+  String get mrReticAbs => 'Mutlaq son';
+
+  @override
+  String get mrReticCorrected => 'Tuzatilgan %';
+
+  @override
+  String get mrRpi => 'Retikulotsit ishlab chiqarish indeksi (RPI)';
+
+  @override
+  String mrMaturationAuto(String factor, String hct) {
+    return 'Koeffitsiyent $factor: Ht $hct % ga eng yaqin jadval nuqtasi (ilova qoidasi).';
+  }
+
+  @override
+  String mrMaturationChosen(String factor) {
+    return 'Koeffitsiyent $factor: siz tanladingiz.';
+  }
+
+  @override
+  String get mrNoRbc => 'Mutlaq son uchun RBC ni kiriting.';
+
+  @override
+  String get mrExudate => 'Ekssudat mezonlariga mos';
+
+  @override
+  String get mrTransudate => 'Hech bir mezon bajarilmadi — transsudatga mos';
+
+  @override
+  String get mrIncomplete =>
+      'Ikki mezon bajarilmadi; uchinchisi uchun LDH yuqori chegarasini kiriting';
+
+  @override
+  String get mrProteinRatio => 'Oqsil: suyuqlik ÷ zardob (> 0,5)';
+
+  @override
+  String get mrLdhRatio => 'LDH: suyuqlik ÷ zardob (> 0,6)';
+
+  @override
+  String get mrLdhUln => 'Suyuqlik LDH ÷ yuqori chegara (> 2/3)';
+
+  @override
+  String get mrMet => 'bajarildi';
+
+  @override
+  String get mrNotMet => 'bajarilmadi';
+
+  @override
+  String get mrNotAssessed => 'baholanmadi';
+
+  @override
+  String mErrSum(String sum) {
+    return 'Foizlar yig‘indisi $sum — 100 bo‘lishi kerak. Qatorlarni tekshiring.';
+  }
+
+  @override
+  String get mErrReticGtExamined =>
+      'Retikulotsitlar ko‘rilgan eritrotsitlardan ko‘p bo‘la olmaydi.';
+
+  @override
+  String mErrWhole(String field, String min, String max) {
+    return '$field: butun son kiriting ($min–$max).';
+  }
+
+  @override
+  String get ciWhatTitle => 'Bu nima?';
+
+  @override
+  String get ciWhat =>
+      'Rang ko‘rsatkichi — MDH laboratoriyalarida an’anaviy ishlatiladigan nisbiy ko‘rsatkich: bitta eritrotsitdagi gemoglobin miqdorini “normaga” nisbatan baholaydi. Eritrotsitlarning gipo-, normo- yoki giperxromligini ko‘rsatish uchun ishlatiladi.';
+
+  @override
+  String get ciWhyTitle => 'Nega ilova uni hisoblamaydi';
+
+  @override
+  String get ciWhy =>
+      'Formulasi uchun biz tekshira oladigan birlamchi ochiq manba topilmadi. Ilova manbasiz raqam yoki formula bermaydi.';
+
+  @override
+  String get ciUseTitle => 'O‘rniga nima ishlatiladi';
+
+  @override
+  String get ciUse =>
+      'Bitta eritrotsitdagi gemoglobinni MCH (o‘rtacha gemoglobin miqdori, pg) to‘g‘ridan-to‘g‘ri ifodalaydi, eritrotsitdagi gemoglobin konsentratsiyasini esa MCHC. Gematologik analizator ikkalasini ham beradi. Gipo-/giperxromiyani shu ko‘rsatkichlar va laboratoriyangiz referens intervallari bo‘yicha baholang.';
 
   @override
   String get dilC1 => 'C₁ · Boshlang‘ich konsentratsiya';

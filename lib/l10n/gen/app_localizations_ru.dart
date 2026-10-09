@@ -1039,6 +1039,30 @@ class AppLocalizationsRu extends AppLocalizations {
       'Правила: мультиправило Вестгарда (Westgard JO и соавт., Clin Chem 1981; doi:10.1093/clinchem/27.3.493). Средство обучения и проверки — не заменяет процедуру контроля качества вашей лаборатории.';
 
   @override
+  String get qcGuidesTitle => 'Памятки';
+
+  @override
+  String get qgRejected => 'Что делать, если QC отклонён';
+
+  @override
+  String get qgRejectedSub => 'Остановить, найти причину, перепроверить';
+
+  @override
+  String get qgEqa => 'Внешний контроль качества (EQA)';
+
+  @override
+  String get qgEqaSub => 'Что это, как работает, если результат плохой';
+
+  @override
+  String get qgCritical => 'Критические значения';
+
+  @override
+  String get qgCriticalSub => 'Кто составляет список и как сообщать';
+
+  @override
+  String get qgWhatToDo => 'Что делать?';
+
+  @override
   String get qcErrSave => 'Не удалось сохранить. Попробуйте ещё раз.';
 
   @override
@@ -1211,6 +1235,225 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get calcUnitsSub => 'Для конкретного вещества';
+
+  @override
+  String get calcSectionManual => 'Ручные методы';
+
+  @override
+  String get mcChamber => 'Счётная камера';
+
+  @override
+  String get mcChamberSub => 'Горяев, Нейбауэр: клеток/мкл и ×10⁹/л';
+
+  @override
+  String get mcDiff => 'Лейкоформула: абсолютные числа';
+
+  @override
+  String get mcDiffSub => 'WBC × %, поправка на нормобласты';
+
+  @override
+  String get mcRetic => 'Ретикулоциты';
+
+  @override
+  String get mcReticSub => '%, исправленный % и RPI';
+
+  @override
+  String get mcLight => 'Критерии Лайта';
+
+  @override
+  String get mcLightSub => 'Плевральная жидкость: экссудат или транссудат';
+
+  @override
+  String get mcColour => 'Цветовой показатель';
+
+  @override
+  String get mcColourSub => 'Почему приложение рекомендует MCH и MCHC';
+
+  @override
+  String get mfCells => 'Подсчитано клеток';
+
+  @override
+  String get mfSquares => 'Число подсчитанных квадратов';
+
+  @override
+  String get mfSquareArea => 'Площадь одного квадрата';
+
+  @override
+  String get mfDepth => 'Глубина камеры';
+
+  @override
+  String get mfDilution => 'Степень разведения (для 1:20 — 20)';
+
+  @override
+  String get mfWbc => 'Лейкоциты (WBC)';
+
+  @override
+  String get mfSeg => 'Сегментоядерные нейтрофилы';
+
+  @override
+  String get mfBand => 'Палочкоядерные нейтрофилы';
+
+  @override
+  String get mfEos => 'Эозинофилы';
+
+  @override
+  String get mfBaso => 'Базофилы';
+
+  @override
+  String get mfLymph => 'Лимфоциты';
+
+  @override
+  String get mfMono => 'Моноциты';
+
+  @override
+  String get mfOther => 'Другие клетки';
+
+  @override
+  String get mfNrbc => 'Нормобласты на 100 лейкоцитов';
+
+  @override
+  String get mfReticCounted => 'Подсчитано ретикулоцитов';
+
+  @override
+  String get mfRbcExamined => 'Просмотрено эритроцитов';
+
+  @override
+  String get mfHct => 'Гематокрит (Ht)';
+
+  @override
+  String get mfRbc => 'Эритроциты (RBC)';
+
+  @override
+  String get mfMaturation => 'Поправка на созревание';
+
+  @override
+  String get mfMaturationAuto => 'Авто';
+
+  @override
+  String get mfPfProtein => 'Жидкость: общий белок';
+
+  @override
+  String get mfSerumProtein => 'Сыворотка: общий белок';
+
+  @override
+  String get mfPfLdh => 'Жидкость: ЛДГ';
+
+  @override
+  String get mfSerumLdh => 'Сыворотка: ЛДГ';
+
+  @override
+  String get mfLdhUln => 'Верхняя граница нормы ЛДГ сыворотки';
+
+  @override
+  String get mfSameUnit =>
+      'Оба значения в паре — в одних единицах (например, оба г/л, оба Ед/л).';
+
+  @override
+  String get mrCellsPerUl => 'клеток/мкл';
+
+  @override
+  String get mrVolume => 'Подсчитанный объём';
+
+  @override
+  String get mrWbcUsed => 'Исправленный WBC';
+
+  @override
+  String get mrNrbc => 'Нормобласты';
+
+  @override
+  String get mrPercentSum => 'Сумма процентов';
+
+  @override
+  String get mrAbsolute => 'Абсолютные числа';
+
+  @override
+  String get mrNoCorrection => 'Нормобласты не введены — WBC не исправлен.';
+
+  @override
+  String get mrReticAbs => 'Абсолютное число';
+
+  @override
+  String get mrReticCorrected => 'Исправленный %';
+
+  @override
+  String get mrRpi => 'Индекс продукции ретикулоцитов (RPI)';
+
+  @override
+  String mrMaturationAuto(String factor, String hct) {
+    return 'Поправка $factor: ближайшая к Ht $hct % точка таблицы (правило приложения).';
+  }
+
+  @override
+  String mrMaturationChosen(String factor) {
+    return 'Поправка $factor: выбрана вами.';
+  }
+
+  @override
+  String get mrNoRbc => 'Для абсолютного числа введите RBC.';
+
+  @override
+  String get mrExudate => 'Соответствует критериям экссудата';
+
+  @override
+  String get mrTransudate =>
+      'Ни один критерий не выполнен — соответствует транссудату';
+
+  @override
+  String get mrIncomplete =>
+      'Два критерия не выполнены; для третьего введите верхнюю границу ЛДГ';
+
+  @override
+  String get mrProteinRatio => 'Белок: жидкость ÷ сыворотка (> 0,5)';
+
+  @override
+  String get mrLdhRatio => 'ЛДГ: жидкость ÷ сыворотка (> 0,6)';
+
+  @override
+  String get mrLdhUln => 'ЛДГ жидкости ÷ верхняя граница (> 2/3)';
+
+  @override
+  String get mrMet => 'выполнен';
+
+  @override
+  String get mrNotMet => 'не выполнен';
+
+  @override
+  String get mrNotAssessed => 'не оценён';
+
+  @override
+  String mErrSum(String sum) {
+    return 'Сумма процентов $sum — должна быть 100. Проверьте строки.';
+  }
+
+  @override
+  String get mErrReticGtExamined =>
+      'Ретикулоцитов не может быть больше, чем просмотренных эритроцитов.';
+
+  @override
+  String mErrWhole(String field, String min, String max) {
+    return '$field: введите целое число ($min–$max).';
+  }
+
+  @override
+  String get ciWhatTitle => 'Что это?';
+
+  @override
+  String get ciWhat =>
+      'Цветовой показатель — относительный показатель, традиционно применяемый в лабораториях СНГ: оценивает содержание гемоглобина в одном эритроците относительно «нормы». Используется для обозначения гипо-, нормо- или гиперхромии эритроцитов.';
+
+  @override
+  String get ciWhyTitle => 'Почему приложение его не рассчитывает';
+
+  @override
+  String get ciWhy =>
+      'Для формулы не найден первичный открытый источник, который мы могли бы проверить. Приложение не даёт чисел и формул без источника.';
+
+  @override
+  String get ciUseTitle => 'Что использовать вместо него';
+
+  @override
+  String get ciUse =>
+      'Гемоглобин в одном эритроците прямо выражает MCH (среднее содержание гемоглобина, пг), а концентрацию гемоглобина в эритроците — MCHC. Гематологический анализатор выдаёт оба. Гипо-/гиперхромию оценивайте по ним и референсным интервалам вашей лаборатории.';
 
   @override
   String get dilC1 => 'C₁ · Исходная концентрация';

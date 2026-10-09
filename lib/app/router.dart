@@ -25,12 +25,16 @@ import '../features/partners/partner_admin_screens.dart';
 import '../features/partners/partner_widgets.dart';
 import '../features/library/pdf_reader_screen.dart';
 import '../features/profile/profile_screens.dart';
+import '../features/qc/qc_guides.dart';
+import '../features/qc/qc_guides_info.dart';
 import '../features/qc/qc_screens.dart';
 import '../features/review/review_screens.dart';
 import '../features/settings/settings_controller.dart';
 import '../features/support/support_screens.dart';
 import '../features/tools/calc_info.dart';
 import '../features/tools/clinical_calc_screens.dart';
+import '../features/tools/manual_calc_info.dart';
+import '../features/tools/manual_calc_screens.dart';
 import '../features/tools/tool_screens.dart';
 import 'shell.dart';
 
@@ -299,6 +303,11 @@ GoRouter buildRouter(
                         path: 'new',
                         builder: (context, state) => const QcNewSetScreen(),
                       ),
+                      for (final g in QcGuide.values)
+                        GoRoute(
+                          path: qcGuideRoute(g),
+                          builder: (context, state) => QcGuideScreen(guide: g),
+                        ),
                       GoRoute(
                         path: 'set/:id',
                         builder: (context, state) =>
@@ -398,6 +407,11 @@ GoRouter buildRouter(
                           path: calcRoute(c),
                           builder: (context, state) =>
                               ClinicalCalcScreen(calc: c),
+                        ),
+                      for (final c in ManualCalc.values)
+                        GoRoute(
+                          path: manualCalcRoute(c),
+                          builder: (context, state) => manualCalcScreen(c),
                         ),
                     ],
                   ),
