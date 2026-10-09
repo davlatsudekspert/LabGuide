@@ -133,6 +133,9 @@ bilan birlashtirilmaydi, reklama identifikatori yo‘q). Hamma toifalar — **Li
 
 Hamkorlar (reklama) yoqilsa qo‘shiladi: **Usage Data → Advertising Data** — e’lon ko‘rsatilishi
 va bosilishi, **Not linked** (faqat kunlik umumiy son), maqsad: Third-Party Advertising.
+Spamga qarshi hisob bo‘yicha faqat bugungi hodisalar soni: **Other Usage Data**, Linked,
+maqsad: App Functionality. “Hamkor bo‘lish” arizasi: **Contact Info** (email, ism, telefon),
+Linked, maqsad: App Functionality.
 Mehmon rejimida va server ulanmagan buildda hech narsa yuborilmaydi.
 
 **Privacy Policy URL** — majburiy. Matn: [PRIVACY_POLICY.md](PRIVACY_POLICY.md). Joylash: GitHub

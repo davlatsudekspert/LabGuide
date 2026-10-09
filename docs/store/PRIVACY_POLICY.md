@@ -49,7 +49,10 @@ sana, karta raqami) kiritmang — skrinshot biriktirishda ilova buni eslatadi.
 
 **Reklama.** Hamkor kompaniyalar e’lonlari “Reklama” belgisi bilan ko‘rsatiladi va ma’lumot
 bo‘limlari tartibiga ta’sir qilmaydi. E’lon ko‘rsatilishi va “bog‘lanish” bosilishi faqat
-kunlik umumiy son sifatida hisoblanadi — kim bosgani saqlanmaydi.
+kunlik umumiy son sifatida hisoblanadi — kim bosgani saqlanmaydi. Suiiste’molga qarshi
+hisobingiz uchun faqat bugungi hodisalar soni saqlanadi (ertasi kuni ustidan yoziladi); mehmon
+rejimida hech narsa hisoblanmaydi. “Hamkor bo‘lish” arizasi (kompaniya, aloqa, xabar) faqat
+administratorga ko‘rinadi.
 
 **O‘chirish.** Profil → Maxfiylik → “Hisobni o‘chirish” — serverdagi hisobingiz, murojaatlar,
 skrinshotlar, guruh a’zoligi va natijalar o‘chiriladi. “Lokal ma’lumotlarni o‘chirish” —
@@ -96,7 +99,10 @@ Google).
 
 **Реклама.** Объявления компаний-партнёров помечены «Реклама» и не влияют на порядок
 справочных разделов. Показы и нажатия «связаться» считаются только как дневное общее число —
-кто нажал, не сохраняется.
+кто нажал, не сохраняется. Для защиты от
+злоупотреблений для вашего аккаунта хранится только число событий за сегодня (перезаписывается на
+следующий день); в гостевом режиме ничего не считается. Заявку «Стать партнёром» (компания,
+контакты, сообщение) видит только администратор.
 
 **Удаление.** Профиль → Конфиденциальность → «Удалить аккаунт» удаляет аккаунт на сервере,
 обращения, скриншоты, участие в группах и результаты. «Удалить локальные данные» — всё на
@@ -142,7 +148,9 @@ record number) in the app or in screenshots — the app reminds you when you att
 
 **Advertising.** Partner companies’ listings are labelled “Ad” and do not change the order of
 reference sections. Impressions and “contact” taps are counted only as daily totals — who
-tapped is not stored.
+tapped is not stored. To prevent abuse, only today’s event count is kept for your account
+(overwritten the next day); nothing is counted in guest mode. A “Become a partner” application
+(company, contacts, message) is visible only to the administrator.
 
 **Deletion.** Profile → Privacy → “Delete account” removes your server account, requests,
 screenshots, group membership and results. “Delete local data” removes everything on the
