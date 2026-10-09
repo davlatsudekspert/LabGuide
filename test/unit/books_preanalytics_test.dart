@@ -262,4 +262,15 @@ void main() {
       }
     });
   });
+
+  test('lokatordagi sahifa interfeys tiliga o‘giriladi', () {
+    String uz(String p) => '$p-bet';
+    expect(localizePages('1.3.1 (Page 7)', uz), '1.3.1 (7-bet)');
+    expect(
+      localizePages('1.3.1–1.3.2 (Pages 7–8)', uz),
+      '1.3.1–1.3.2 (7–8-bet)',
+    );
+    expect(localizePages('Table 2.3 (p. 15)', uz), 'Table 2.3 (15-bet)');
+    expect(localizePages('5.1 Ammonia', uz), '5.1 Ammonia');
+  });
 }

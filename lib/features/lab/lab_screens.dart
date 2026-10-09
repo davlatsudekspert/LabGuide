@@ -146,10 +146,14 @@ class PreanalyticsScreen extends StatelessWidget {
 }
 
 /// Manbalar raqami: “[2] Page 21 · [5] 1.2.1”.
-String _refLine(List<CalcRef> refs, List<CalcSource> sources) => [
+String _refLine(
+  AppLocalizations l,
+  List<CalcRef> refs,
+  List<CalcSource> sources,
+) => [
   for (final r in refs)
     '[${sources.indexWhere((s) => s.id == r.source.id) + 1}]'
-        '${r.locator.isEmpty ? '' : ' ${r.locator}'}',
+        '${r.locator.isEmpty ? '' : ' ${localizePages(r.locator, l.citePage)}'}',
 ].join(' · ');
 
 class _Bullet extends StatelessWidget {
@@ -176,7 +180,7 @@ class _Bullet extends StatelessWidget {
                 Text(text, style: t.bodyMedium),
                 if (refs.isNotEmpty)
                   Text(
-                    _refLine(refs, sources),
+                    _refLine(AppLocalizations.of(context), refs, sources),
                     style: t.bodySmall!.copyWith(color: p.sub),
                   ),
               ],
@@ -228,7 +232,7 @@ class _TubeForTestRow extends StatelessWidget {
                   ),
                   Text(item.note.of(lang), style: text.bodySmall),
                   Text(
-                    _refLine(item.refs, sources),
+                    _refLine(l, item.refs, sources),
                     style: text.bodySmall!.copyWith(color: p.sub),
                   ),
                 ],

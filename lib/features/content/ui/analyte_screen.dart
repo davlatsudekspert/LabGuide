@@ -628,10 +628,11 @@ class _AnalyteBody {
           ),
           if (!approved)
             LgMetric(label: '—', value: l.analyteReviewerNotAssigned),
-          for (final c in analyte.agentChecks)
+          // Bir kunda bir nechta tekshiruv (turli audit) — bitta qator.
+          for (final date in {for (final c in analyte.agentChecks) c.date})
             LgMetric(
               label: l.analyteAgentCheck,
-              value: l.analyteAgentCheckValue(c.date),
+              value: l.analyteAgentCheckValue(date),
             ),
           // Kelib chiqishi: kim tayyorlagan va manbalar qachon ko'rilgan.
           LgMetric(label: l.analytePreparedBy, value: l.analyteEditorial),

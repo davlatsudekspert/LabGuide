@@ -34,6 +34,13 @@ class CalcRef {
   final String locator;
 }
 
+final _pageRe = RegExp(r'\b(?:Pages?|p\.)\s*(\d+(?:\s*[–-]\s*\d+)?)');
+
+/// Lokatordagi "Page 7" / "Pages 7–8" / "p. 15" — interfeys tiliga
+/// (`citePage`: "7-bet", "с. 7", "p. 7"). Bo'lim nomlari manba tilida qoladi.
+String localizePages(String locator, String Function(String page) citePage) =>
+    locator.replaceAllMapped(_pageRe, (m) => citePage(m[1]!));
+
 class CalcInfo {
   const CalcInfo({
     required this.formula,

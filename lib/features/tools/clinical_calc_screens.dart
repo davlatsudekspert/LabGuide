@@ -692,7 +692,13 @@ class CalcSourceTile extends StatelessWidget {
                               ),
                       ),
                       if (ref.locator.isNotEmpty)
-                        Text(ref.locator, style: text.bodySmall),
+                        Text(
+                          localizePages(
+                            ref.locator,
+                            AppLocalizations.of(context).citePage,
+                          ),
+                          style: text.bodySmall,
+                        ),
                     ],
                   ),
                 ),

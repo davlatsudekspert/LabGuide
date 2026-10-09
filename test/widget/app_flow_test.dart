@@ -581,10 +581,10 @@ void main() {
     expect(find.text(en.preOrderTitle), findsOneWidget);
     expect(find.text('Blood culture bottle'), findsOneWidget);
     expect(find.text(en.preCap('purple')), findsOneWidget);
-    expect(
-      find.textContaining('WHO guidelines on drawing blood'),
-      findsOneWidget,
-    );
+    // Sahifa kitob bo'limlari bilan uzaydi — manbalar ro'yxati pastda.
+    final who = find.textContaining('WHO guidelines on drawing blood');
+    await scrollTo(tester, who);
+    expect(who, findsOneWidget);
   });
 
   testWidgets('creatinine card links to the eGFR calculator', (tester) async {
