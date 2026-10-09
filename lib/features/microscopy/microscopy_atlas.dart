@@ -189,6 +189,8 @@ class MicroImage {
     required this.license,
     required this.licenseUrl,
     required this.caption,
+    this.authorUrl,
+    this.labelNote,
     this.termsQuote,
     this.date,
     this.magnification,
@@ -216,6 +218,10 @@ class MicroImage {
       sourcePage: _str(j, 'source_page'),
       fileUrl: _str(j, 'file_url'),
       author: _str(j, 'author'),
+      authorUrl: j['author_url'] as String?,
+      labelNote: j['label_note'] == null
+          ? null
+          : LocalizedText.fromJson(j['label_note']),
       credit: _str(j, 'credit'),
       license: _str(j, 'license'),
       licenseUrl: _str(j, 'license_url'),
@@ -247,6 +253,14 @@ class MicroImage {
   final String sourcePage;
   final String fileUrl;
   final String author;
+
+  /// Muallif sahifasi (Commons foydalanuvchisi yoki maqola DOI); CDC PHIL
+  /// fotografida yo'q.
+  final String? authorUrl;
+
+  /// Nom faqat manba izohiga tayanadi, ko'rinishi namunaviy emas — sababi.
+  /// Bunday rasm mashqqa kirmaydi.
+  final LocalizedText? labelNote;
 
   /// “Own work”, jurnal maqolasi yoki “CDC Public Health Image Library”.
   final String credit;
@@ -390,7 +404,7 @@ class MicroAtlas {
     if (i.licenseUrl != canonical) {
       throw FormatException('${i.id}: licence url mismatch: ${i.licenseUrl}');
     }
-    for (final url in [i.sourcePage, i.fileUrl]) {
+    for (final url in [i.sourcePage, i.fileUrl, ?i.authorUrl]) {
       if (!url.startsWith('https://')) {
         throw FormatException('${i.id}: url must be https: $url');
       }
@@ -398,6 +412,9 @@ class MicroAtlas {
     if (!i.asset.startsWith('assets/microscopy/') ||
         !i.asset.endsWith('.jpg')) {
       throw FormatException('${i.id}: bad asset path ${i.asset}');
+    }
+    if (i.labelNote != null && i.quizCue != null) {
+      throw FormatException('${i.id}: label-by-source image cannot be a quiz');
     }
     // Faqat kichraytirish: tomonlar nisbati saqlanadi (kesilmagan).
     final ratio = i.originalWidth / i.originalHeight;
@@ -413,6 +430,10 @@ class MicroAtlas {
         }
         if (i.license == 'CDC PHIL') {
           throw FormatException('${i.id}: CDC licence on a Commons file');
+        }
+        // CC BY: muallifga havola (Commons sahifasi yoki maqola) majburiy.
+        if (i.authorUrl == null) {
+          throw FormatException('${i.id}: author link missing');
         }
       case MicroProvider.cdcPhil:
         if (i.license != 'CDC PHIL') {

@@ -6855,6 +6855,10 @@
      "source_id": "who-hb-cutoffs-2024",
      "locator": "Normative statement 2.a.1 Elevation of residence; Table 4",
      "pages": "13"
+    },
+    {
+     "source_id": "who-hb-cutoffs-2024",
+     "locator": "Normative statement 3 Haemoglobin measurement"
     }
    ],
    "topic_ids": [
@@ -7227,6 +7231,10 @@
     {
      "source_id": "medline-wbc-count",
      "locator": "What is it used for?"
+    },
+    {
+     "source_id": "medline-wbc-count",
+     "locator": "What do the results mean?"
     }
    ],
    "topic_ids": [
@@ -9092,6 +9100,10 @@
     {
      "source_id": "medline-genetics-fga",
      "locator": "Normal Function"
+    },
+    {
+     "source_id": "medline-d-dimer",
+     "locator": "What is a D-dimer test?"
     }
    ],
    "topic_ids": [
@@ -9464,6 +9476,10 @@
     {
      "source_id": "medline-protein-c-s",
      "locator": "Will I need to do anything to prepare for the test?"
+    },
+    {
+     "source_id": "medline-protein-c-s",
+     "locator": "What are protein C and protein S tests?"
     }
    ],
    "topic_ids": [
@@ -9526,6 +9542,10 @@
     {
      "source_id": "medline-hb-electrophoresis",
      "locator": "What do the results mean?"
+    },
+    {
+     "source_id": "medline-hb-electrophoresis",
+     "locator": "Will I need to do anything to prepare for the test?"
     }
    ],
    "topic_ids": [

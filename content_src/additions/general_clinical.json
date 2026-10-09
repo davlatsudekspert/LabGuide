@@ -4063,6 +4063,10 @@
     {
      "source_id": "medline-fobt",
      "locator": "Will I need to do anything to prepare for the test?"
+    },
+    {
+     "source_id": "medline-fobt",
+     "locator": "What happens during a fecal occult blood test?"
     }
    ],
    "topic_ids": [
@@ -4125,6 +4129,10 @@
     {
      "source_id": "medline-h-pylori",
      "locator": "Is there anything else I need to know about H. pylori testing?"
+    },
+    {
+     "source_id": "medline-h-pylori",
+     "locator": "What are Helicobacter pylori (H. pylori) tests?"
     }
    ],
    "topic_ids": [
@@ -4187,6 +4195,10 @@
     {
      "source_id": "medline-pleural-fluid",
      "locator": "What do the results mean?"
+    },
+    {
+     "source_id": "medline-pleural-fluid",
+     "locator": "What is a pleural fluid analysis?"
     }
    ],
    "topic_ids": [
@@ -4235,9 +4247,9 @@
       "en": "Normal pleural fluid"
      },
      "explanation": {
-      "uz": "Noto‘g‘ri. Me’yorda 20 ml dan kam tiniq sarg‘ish suyuqlik bo‘ladi.",
-      "ru": "Неверно. В норме — менее 20 мл прозрачной желтоватой жидкости.",
-      "en": "Incorrect. Normally there is less than 20 mL of clear yellowish fluid."
+      "uz": "Noto‘g‘ri. Me’yorda plevra bo‘shlig‘ida oz miqdorda suyuqlik bo‘ladi; tahlil to‘planib qolgan g‘ayritabiiy suyuqlikdan olinadi, loyqa va oqsili ko‘p suyuqlik esa ekssudat.",
+      "ru": "Неверно. В норме в плевральной полости лишь небольшое количество жидкости; анализ делают из скопившейся патологической жидкости, а мутная жидкость с высоким белком — экссудат.",
+      "en": "Incorrect. Normally only a small amount of pleural fluid is present; the analysis is done on abnormal fluid that has built up, and cloudy, high-protein fluid is exudate."
      }
     }
    ]
@@ -4429,7 +4441,7 @@
       "en": "TB is not excluded: culture the specimen and consider NAA"
      },
      "explanation": {
-      "uz": "To‘g‘ri. Ekma — oltin standart, smear natijasidan qat’i nazar qilinadi.",
+      "uz": "To‘g‘ri. Ekma — oltin standart, surtma natijasidan qat’i nazar qilinadi.",
       "ru": "Верно. Посев — золотой стандарт, делается независимо от мазка.",
       "en": "Correct. Culture is the gold standard and is done regardless of the smear."
      }
@@ -4441,8 +4453,8 @@
    "review_state": "pending",
    "refs": [
     {
-     "source_id": "medline-ency-urine-24h-protein",
-     "locator": "How the Test is Performed"
+     "source_id": "medline-creatinine",
+     "locator": "What happens during a creatinine test?"
     }
    ],
    "topic_ids": [
@@ -4455,28 +4467,28 @@
     "en": "How should a 24-hour urine collection start?"
    },
    "basis": {
-    "uz": "1-kuni ertalabki birinchi siydik unitazga, keyingi barcha siydik idishga; 2-kuni ertalabki siydik idishga.",
-    "ru": "В 1-й день первая утренняя моча — в унитаз, вся последующая — в контейнер; на 2-й день утренняя — в контейнер.",
-    "en": "Day 1: first morning urine into the toilet, all later urine into the container; day 2: morning urine into the container."
+    "uz": "MedlinePlus: boshlashda siydik odatdagidek unitazga chiqariladi va yig‘ilmaydi, vaqti yozib qo‘yiladi; keyingi 24 soatdagi barcha siydik idishga yig‘iladi; 24 soat o‘tganda iloji bo‘lsa siyiladi — bu oxirgi porsiya.",
+    "ru": "MedlinePlus: в начале помочиться в унитаз, эту порцию не собирать и записать время; следующие 24 часа собирать всю мочу в контейнер; через 24 часа по возможности помочиться — это последняя порция сбора.",
+    "en": "MedlinePlus: to begin, urinate into the toilet, do not collect it and note the time; collect all urine for the next 24 hours; at 24 hours, urinate if you can — this is the last collection."
    },
    "options": [
     {
      "text": {
-      "uz": "Ertalabki birinchi siydikni unitazga chiqarib, shundan keyingi barchasini 24 soat yig‘ish",
-      "ru": "Первую утреннюю мочу выпустить в унитаз, затем собирать всю мочу 24 часа",
-      "en": "Pass the first morning urine into the toilet, then collect everything for 24 hours"
+      "uz": "Birinchi siydikni unitazga chiqarib, vaqtini yozish, keyingi 24 soatdagi barcha siydikni yig‘ish",
+      "ru": "Первую порцию выпустить в унитаз, записать время и затем 24 часа собирать всю мочу",
+      "en": "Pass the first urine into the toilet, note the time, then collect all urine for 24 hours"
      },
      "explanation": {
-      "uz": "To‘g‘ri. Ertasi kuni ertalabki siydik idishga qo‘shiladi.",
-      "ru": "Верно. Утренняя моча следующего дня добавляется в контейнер.",
-      "en": "Correct. The next morning's urine goes into the container."
+      "uz": "To‘g‘ri. 24 soat o‘tganda chiqarilgan siydik ham idishga yig‘iladi — bu oxirgi porsiya.",
+      "ru": "Верно. Порция в конце 24 часов тоже собирается в контейнер — это последняя порция.",
+      "en": "Correct. The urine passed at the 24-hour mark also goes into the container as the last collection."
      }
     },
     {
      "text": {
-      "uz": "Ertalabki birinchi siydikdan boshlab yig‘ish va ertasi ertalabkini to‘kib tashlash",
-      "ru": "Начать с первой утренней мочи, а утреннюю мочу следующего дня вылить",
-      "en": "Start with the first morning urine and discard the next morning's"
+      "uz": "Birinchi siydikdan boshlab yig‘ish va 24 soat o‘tgandagi porsiyani to‘kib tashlash",
+      "ru": "Собрать первую порцию, а порцию в конце 24 часов вылить",
+      "en": "Collect the first urine and discard the one passed at the 24-hour mark"
      },
      "explanation": {
       "uz": "Noto‘g‘ri. Bu yig‘ish vaqtini siljitadi.",
@@ -4507,8 +4519,8 @@
      "locator": "Considerations"
     },
     {
-     "source_id": "medline-ency-clean-catch",
-     "locator": "How the Test is Performed"
+     "source_id": "medline-nitrites-urine",
+     "locator": "What happens during a nitrites in urine test?"
     }
    ],
    "topic_ids": [
@@ -4645,9 +4657,9 @@
     "en": "A Pap smear has too few cells, hidden by mucus. What is this result called?"
    },
    "basis": {
-    "uz": "Bethesda: namuna yaroqsiz (unsatisfactory) — 2–4 oydan keyin qayta olinadi.",
-    "ru": "Бетесда: неудовлетворительный образец — повтор через 2–4 месяца.",
-    "en": "Bethesda: unsatisfactory — repeat in 2–4 months."
+    "uz": "NCI: namuna yaroqsiz (unsatisfactory) — hujayralar yetarli emas yoki qon/shilliq bilan berkilgan; 2–4 oydan keyin qayta olinadi.",
+    "ru": "NCI: неудовлетворительный образец — мало клеток или они скрыты кровью/слизью; повтор через 2–4 месяца.",
+    "en": "NCI: unsatisfactory — too few cells, or cells hidden by blood or mucus; repeat in 2–4 months."
    },
    "options": [
     {

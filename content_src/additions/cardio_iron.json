@@ -3542,6 +3542,10 @@
     {
      "source_id": "medline-troponin",
      "locator": "What do the results mean?"
+    },
+    {
+     "source_id": "medline-ck",
+     "locator": "What is it used for?"
     }
    ],
    "topic_ids": [
@@ -3732,6 +3736,10 @@
     {
      "source_id": "nhlbi-lpa-working-group",
      "locator": "Background"
+    },
+    {
+     "source_id": "medline-lipoprotein-a",
+     "locator": "What is it used for?"
     }
    ],
    "topic_ids": [
@@ -4022,9 +4030,9 @@
       "en": "Folate may hide the anemia but leave the nerve damage"
      },
      "explanation": {
-      "uz": "To‘g‘ri. Shuning uchun B12 tanqisligi nevrologik oqibatlar qaytmas bo‘lgunicha yashirin qolishi mumkin.",
-      "ru": "Верно. Поэтому дефицит B12 может оставаться скрытым, пока неврологические последствия не станут необратимыми.",
-      "en": "Correct. So B12 deficiency could stay hidden until its neurological effects become irreversible."
+      "uz": "To‘g‘ri. Shu sababli ayrim mutaxassislar ko‘p folat B12 tanqisligini nevrologik oqibatlar qaytmas bo‘lgunicha yashirishi mumkinligidan xavotir bildirgan (bu masala hali to‘liq aniqlanmagan).",
+      "ru": "Верно. Поэтому некоторые эксперты опасаются, что большие дозы фолата могут скрывать дефицит B12, пока неврологические последствия не станут необратимыми (вопрос до конца не решён).",
+      "en": "Correct. So some experts have been concerned that large amounts of folate might mask B12 deficiency until its neurological effects become irreversible (the question is not fully settled)."
      }
     },
     {

@@ -2241,6 +2241,15 @@ class AppLocalizationsRu extends AppLocalizations {
   String get micAuthor => 'Автор';
 
   @override
+  String get micAuthorPage => 'Страница автора';
+
+  @override
+  String get micLabelBySource => 'Название — по подписи источника';
+
+  @override
+  String get micLabelNoQuiz => 'Не входит в упражнение';
+
+  @override
   String get micCredit => 'Источник';
 
   @override
@@ -3886,6 +3895,19 @@ class AppLocalizationsRu extends AppLocalizations {
       'Все результаты экзаменов будут удалены с этого устройства.';
 
   @override
+  String examHistoryHidden(int count, int limit) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Ещё $count более старого результата сохранены',
+      many: 'Ещё $count более старых результатов сохранены',
+      few: 'Ещё $count более старых результата сохранены',
+      one: 'Ещё $count более старый результат сохранён',
+    );
+    return '$_temp0 — в бесплатном режиме видны последние $limit. Ничего не удалено.';
+  }
+
+  @override
   String examProgressLabel(String values) {
     return 'Последние результаты: $values';
   }
@@ -4918,11 +4940,12 @@ class AppLocalizationsRu extends AppLocalizations {
   String get purchaseTitle => 'LabGuide Pro';
 
   @override
-  String get purchaseFree => 'Free: демо и базовые карточки.';
+  String get purchaseFree =>
+      'Бесплатно: счётчик лейкоформулы, проценты и абсолютные числа, основные руководства, в истории последние 3 результата.';
 
   @override
   String get purchasePro =>
-      'Pro, помесячно или на год: полные опубликованные пакеты, расширенное обучение и лабораторные инструменты.';
+      'Pro (помесячно или на год): неограниченная история результатов, экспорт в PDF, расширенные упражнения, полная подготовка к экзамену на категорию.';
 
   @override
   String get purchaseNotice =>
@@ -4933,6 +4956,33 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get purchaseRestore => 'Восстановить покупки';
+
+  @override
+  String get purchaseStatusTitle => 'Статус';
+
+  @override
+  String get purchaseStatusAllOpen =>
+      'Оплата ещё не включена; в TestFlight открыты все возможности.';
+
+  @override
+  String get purchaseStatusBillingOff =>
+      'Оплата ещё не включена. Бесплатные возможности работают полностью; Pro включится после утверждения цены.';
+
+  @override
+  String purchaseStatusPro(String date) {
+    return 'Pro активна · до $date';
+  }
+
+  @override
+  String get purchaseStatusProNoEnd => 'Pro активна';
+
+  @override
+  String purchaseStatusOffline(String date) {
+    return 'Без интернета: последняя проверка $date';
+  }
+
+  @override
+  String get purchaseStatusFree => 'Сейчас: бесплатный режим';
 
   @override
   String get privacyTitle => 'Конфиденциальность и помощь';

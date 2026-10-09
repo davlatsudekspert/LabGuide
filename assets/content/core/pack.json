@@ -31410,6 +31410,10 @@
     {
      "source_id": "niddk-hemoglobinopathies",
      "locator": "Effect of hemoglobinopathies on A1C test results"
+    },
+    {
+     "source_id": "niddk-a1c",
+     "locator": "How is the A1C test used to diagnose type 2 diabetes and prediabetes?"
     }
    ],
    "topic_ids": [
@@ -32512,6 +32516,10 @@
     {
      "source_id": "medline-ast",
      "locator": "What is an AST test?"
+    },
+    {
+     "source_id": "medline-alt",
+     "locator": "What do the results mean?"
     }
    ],
    "topic_ids": [
@@ -32578,6 +32586,10 @@
     {
      "source_id": "medline-ast",
      "locator": "What do the results mean?"
+    },
+    {
+     "source_id": "medline-ast",
+     "locator": "Will I need to do anything to prepare for the test?"
     }
    ],
    "topic_ids": [
@@ -32892,6 +32904,10 @@
     {
      "source_id": "medline-ggt",
      "locator": "What is it used for?"
+    },
+    {
+     "source_id": "medline-ggt",
+     "locator": "Will I need to do anything to prepare for the test?"
     }
    ],
    "topic_ids": [
@@ -33458,6 +33474,10 @@
     {
      "source_id": "medline-crp",
      "locator": "What do the results mean?"
+    },
+    {
+     "source_id": "medline-crp",
+     "locator": "What is it used for?"
     }
    ],
    "topic_ids": [
@@ -34028,6 +34048,10 @@
     {
      "source_id": "medline-triglycerides",
      "locator": "What is a triglycerides test?"
+    },
+    {
+     "source_id": "medline-triglycerides",
+     "locator": "Why do I need a triglycerides test?"
     }
    ],
    "topic_ids": [
@@ -34218,6 +34242,10 @@
     {
      "source_id": "medline-amylase",
      "locator": "Is there anything else I need to know about an amylase test?"
+    },
+    {
+     "source_id": "medline-amylase",
+     "locator": "What is it used for?"
     }
    ],
    "topic_ids": [
@@ -34850,6 +34878,10 @@
     {
      "source_id": "medline-potassium",
      "locator": "What do the results mean?"
+    },
+    {
+     "source_id": "medline-potassium",
+     "locator": "Will I need to do anything to prepare for the test?"
     }
    ],
    "topic_ids": [
@@ -34974,6 +35006,10 @@
     {
      "source_id": "medline-chloride",
      "locator": "What do the results mean?"
+    },
+    {
+     "source_id": "medline-chloride",
+     "locator": "What is it used for?"
     }
    ],
    "topic_ids": [
@@ -35098,6 +35134,10 @@
     {
      "source_id": "medline-calcium",
      "locator": "What is it used for?"
+    },
+    {
+     "source_id": "medline-calcium",
+     "locator": "Is there anything else I need to know about a calcium blood test?"
     }
    ],
    "topic_ids": [
@@ -35164,6 +35204,10 @@
     {
      "source_id": "medline-calcium",
      "locator": "What is it used for?"
+    },
+    {
+     "source_id": "medline-calcium",
+     "locator": "Is there anything else I need to know about a calcium blood test?"
     }
    ],
    "topic_ids": [
@@ -35866,6 +35910,10 @@
     {
      "source_id": "medline-t3",
      "locator": "Why do I need a T3 test?"
+    },
+    {
+     "source_id": "medline-t3",
+     "locator": "What is it used for?"
     }
    ],
    "topic_ids": [
@@ -36185,6 +36233,10 @@
     {
      "source_id": "medline-pregnancy-test",
      "locator": "What do the results mean?"
+    },
+    {
+     "source_id": "medline-pregnancy-test",
+     "locator": "Will I need to do anything to prepare for the test?"
     }
    ],
    "topic_ids": [
@@ -36379,6 +36431,10 @@
     {
      "source_id": "niddk-insulin-resistance",
      "locator": "How do health care professionals diagnose insulin resistance and prediabetes?"
+    },
+    {
+     "source_id": "medline-insulin",
+     "locator": "What is an insulin in blood test?"
     }
    ],
    "topic_ids": [
@@ -36631,6 +36687,10 @@
     {
      "source_id": "medline-vitamin-d",
      "locator": "What is a vitamin D test?"
+    },
+    {
+     "source_id": "medline-vitamin-d",
+     "locator": "What do the results mean?"
     }
    ],
    "topic_ids": [
@@ -37207,6 +37267,10 @@
     {
      "source_id": "medline-cea",
      "locator": "What is it used for?"
+    },
+    {
+     "source_id": "medline-cea",
+     "locator": "Will I need to do anything to prepare for the test?"
     }
    ],
    "topic_ids": [
@@ -37339,6 +37403,10 @@
     {
      "source_id": "medline-ca125",
      "locator": "Why do I need a CA-125 blood test?"
+    },
+    {
+     "source_id": "medline-ca125",
+     "locator": "What is it used for?"
     }
    ],
    "topic_ids": [
@@ -37405,6 +37473,10 @@
     {
      "source_id": "medline-afp-tumor-marker",
      "locator": "What is it used for?"
+    },
+    {
+     "source_id": "medline-afp-tumor-marker",
+     "locator": "Is there anything else I need to know about an AFP tumor marker test?"
     }
    ],
    "topic_ids": [
@@ -37467,6 +37539,10 @@
     {
      "source_id": "medline-troponin",
      "locator": "What do the results mean?"
+    },
+    {
+     "source_id": "medline-ck",
+     "locator": "What is it used for?"
     }
    ],
    "topic_ids": [
@@ -37657,6 +37733,10 @@
     {
      "source_id": "nhlbi-lpa-working-group",
      "locator": "Background"
+    },
+    {
+     "source_id": "medline-lipoprotein-a",
+     "locator": "What is it used for?"
     }
    ],
    "topic_ids": [
@@ -37947,9 +38027,9 @@
       "en": "Folate may hide the anemia but leave the nerve damage"
      },
      "explanation": {
-      "uz": "To‘g‘ri. Shuning uchun B12 tanqisligi nevrologik oqibatlar qaytmas bo‘lgunicha yashirin qolishi mumkin.",
-      "ru": "Верно. Поэтому дефицит B12 может оставаться скрытым, пока неврологические последствия не станут необратимыми.",
-      "en": "Correct. So B12 deficiency could stay hidden until its neurological effects become irreversible."
+      "uz": "To‘g‘ri. Shu sababli ayrim mutaxassislar ko‘p folat B12 tanqisligini nevrologik oqibatlar qaytmas bo‘lgunicha yashirishi mumkinligidan xavotir bildirgan (bu masala hali to‘liq aniqlanmagan).",
+      "ru": "Верно. Поэтому некоторые эксперты опасаются, что большие дозы фолата могут скрывать дефицит B12, пока неврологические последствия не станут необратимыми (вопрос до конца не решён).",
+      "en": "Correct. So some experts have been concerned that large amounts of folate might mask B12 deficiency until its neurological effects become irreversible (the question is not fully settled)."
      }
     },
     {
@@ -38103,6 +38183,10 @@
      "source_id": "who-hb-cutoffs-2024",
      "locator": "Normative statement 2.a.1 Elevation of residence; Table 4",
      "pages": "13"
+    },
+    {
+     "source_id": "who-hb-cutoffs-2024",
+     "locator": "Normative statement 3 Haemoglobin measurement"
     }
    ],
    "topic_ids": [
@@ -38475,6 +38559,10 @@
     {
      "source_id": "medline-wbc-count",
      "locator": "What is it used for?"
+    },
+    {
+     "source_id": "medline-wbc-count",
+     "locator": "What do the results mean?"
     }
    ],
    "topic_ids": [
@@ -40340,6 +40428,10 @@
     {
      "source_id": "medline-genetics-fga",
      "locator": "Normal Function"
+    },
+    {
+     "source_id": "medline-d-dimer",
+     "locator": "What is a D-dimer test?"
     }
    ],
    "topic_ids": [
@@ -40712,6 +40804,10 @@
     {
      "source_id": "medline-protein-c-s",
      "locator": "Will I need to do anything to prepare for the test?"
+    },
+    {
+     "source_id": "medline-protein-c-s",
+     "locator": "What are protein C and protein S tests?"
     }
    ],
    "topic_ids": [
@@ -40774,6 +40870,10 @@
     {
      "source_id": "medline-hb-electrophoresis",
      "locator": "What do the results mean?"
+    },
+    {
+     "source_id": "medline-hb-electrophoresis",
+     "locator": "Will I need to do anything to prepare for the test?"
     }
    ],
    "topic_ids": [
@@ -41026,6 +41126,10 @@
     {
      "source_id": "medline-fobt",
      "locator": "Will I need to do anything to prepare for the test?"
+    },
+    {
+     "source_id": "medline-fobt",
+     "locator": "What happens during a fecal occult blood test?"
     }
    ],
    "topic_ids": [
@@ -41088,6 +41192,10 @@
     {
      "source_id": "medline-h-pylori",
      "locator": "Is there anything else I need to know about H. pylori testing?"
+    },
+    {
+     "source_id": "medline-h-pylori",
+     "locator": "What are Helicobacter pylori (H. pylori) tests?"
     }
    ],
    "topic_ids": [
@@ -41150,6 +41258,10 @@
     {
      "source_id": "medline-pleural-fluid",
      "locator": "What do the results mean?"
+    },
+    {
+     "source_id": "medline-pleural-fluid",
+     "locator": "What is a pleural fluid analysis?"
     }
    ],
    "topic_ids": [
@@ -41198,9 +41310,9 @@
       "en": "Normal pleural fluid"
      },
      "explanation": {
-      "uz": "Noto‘g‘ri. Me’yorda 20 ml dan kam tiniq sarg‘ish suyuqlik bo‘ladi.",
-      "ru": "Неверно. В норме — менее 20 мл прозрачной желтоватой жидкости.",
-      "en": "Incorrect. Normally there is less than 20 mL of clear yellowish fluid."
+      "uz": "Noto‘g‘ri. Me’yorda plevra bo‘shlig‘ida oz miqdorda suyuqlik bo‘ladi; tahlil to‘planib qolgan g‘ayritabiiy suyuqlikdan olinadi, loyqa va oqsili ko‘p suyuqlik esa ekssudat.",
+      "ru": "Неверно. В норме в плевральной полости лишь небольшое количество жидкости; анализ делают из скопившейся патологической жидкости, а мутная жидкость с высоким белком — экссудат.",
+      "en": "Incorrect. Normally only a small amount of pleural fluid is present; the analysis is done on abnormal fluid that has built up, and cloudy, high-protein fluid is exudate."
      }
     }
    ]
@@ -41392,7 +41504,7 @@
       "en": "TB is not excluded: culture the specimen and consider NAA"
      },
      "explanation": {
-      "uz": "To‘g‘ri. Ekma — oltin standart, smear natijasidan qat’i nazar qilinadi.",
+      "uz": "To‘g‘ri. Ekma — oltin standart, surtma natijasidan qat’i nazar qilinadi.",
       "ru": "Верно. Посев — золотой стандарт, делается независимо от мазка.",
       "en": "Correct. Culture is the gold standard and is done regardless of the smear."
      }
@@ -41404,8 +41516,8 @@
    "review_state": "pending",
    "refs": [
     {
-     "source_id": "medline-ency-urine-24h-protein",
-     "locator": "How the Test is Performed"
+     "source_id": "medline-creatinine",
+     "locator": "What happens during a creatinine test?"
     }
    ],
    "topic_ids": [
@@ -41418,28 +41530,28 @@
     "en": "How should a 24-hour urine collection start?"
    },
    "basis": {
-    "uz": "1-kuni ertalabki birinchi siydik unitazga, keyingi barcha siydik idishga; 2-kuni ertalabki siydik idishga.",
-    "ru": "В 1-й день первая утренняя моча — в унитаз, вся последующая — в контейнер; на 2-й день утренняя — в контейнер.",
-    "en": "Day 1: first morning urine into the toilet, all later urine into the container; day 2: morning urine into the container."
+    "uz": "MedlinePlus: boshlashda siydik odatdagidek unitazga chiqariladi va yig‘ilmaydi, vaqti yozib qo‘yiladi; keyingi 24 soatdagi barcha siydik idishga yig‘iladi; 24 soat o‘tganda iloji bo‘lsa siyiladi — bu oxirgi porsiya.",
+    "ru": "MedlinePlus: в начале помочиться в унитаз, эту порцию не собирать и записать время; следующие 24 часа собирать всю мочу в контейнер; через 24 часа по возможности помочиться — это последняя порция сбора.",
+    "en": "MedlinePlus: to begin, urinate into the toilet, do not collect it and note the time; collect all urine for the next 24 hours; at 24 hours, urinate if you can — this is the last collection."
    },
    "options": [
     {
      "text": {
-      "uz": "Ertalabki birinchi siydikni unitazga chiqarib, shundan keyingi barchasini 24 soat yig‘ish",
-      "ru": "Первую утреннюю мочу выпустить в унитаз, затем собирать всю мочу 24 часа",
-      "en": "Pass the first morning urine into the toilet, then collect everything for 24 hours"
+      "uz": "Birinchi siydikni unitazga chiqarib, vaqtini yozish, keyingi 24 soatdagi barcha siydikni yig‘ish",
+      "ru": "Первую порцию выпустить в унитаз, записать время и затем 24 часа собирать всю мочу",
+      "en": "Pass the first urine into the toilet, note the time, then collect all urine for 24 hours"
      },
      "explanation": {
-      "uz": "To‘g‘ri. Ertasi kuni ertalabki siydik idishga qo‘shiladi.",
-      "ru": "Верно. Утренняя моча следующего дня добавляется в контейнер.",
-      "en": "Correct. The next morning's urine goes into the container."
+      "uz": "To‘g‘ri. 24 soat o‘tganda chiqarilgan siydik ham idishga yig‘iladi — bu oxirgi porsiya.",
+      "ru": "Верно. Порция в конце 24 часов тоже собирается в контейнер — это последняя порция.",
+      "en": "Correct. The urine passed at the 24-hour mark also goes into the container as the last collection."
      }
     },
     {
      "text": {
-      "uz": "Ertalabki birinchi siydikdan boshlab yig‘ish va ertasi ertalabkini to‘kib tashlash",
-      "ru": "Начать с первой утренней мочи, а утреннюю мочу следующего дня вылить",
-      "en": "Start with the first morning urine and discard the next morning's"
+      "uz": "Birinchi siydikdan boshlab yig‘ish va 24 soat o‘tgandagi porsiyani to‘kib tashlash",
+      "ru": "Собрать первую порцию, а порцию в конце 24 часов вылить",
+      "en": "Collect the first urine and discard the one passed at the 24-hour mark"
      },
      "explanation": {
       "uz": "Noto‘g‘ri. Bu yig‘ish vaqtini siljitadi.",
@@ -41470,8 +41582,8 @@
      "locator": "Considerations"
     },
     {
-     "source_id": "medline-ency-clean-catch",
-     "locator": "How the Test is Performed"
+     "source_id": "medline-nitrites-urine",
+     "locator": "What happens during a nitrites in urine test?"
     }
    ],
    "topic_ids": [
@@ -41608,9 +41720,9 @@
     "en": "A Pap smear has too few cells, hidden by mucus. What is this result called?"
    },
    "basis": {
-    "uz": "Bethesda: namuna yaroqsiz (unsatisfactory) — 2–4 oydan keyin qayta olinadi.",
-    "ru": "Бетесда: неудовлетворительный образец — повтор через 2–4 месяца.",
-    "en": "Bethesda: unsatisfactory — repeat in 2–4 months."
+    "uz": "NCI: namuna yaroqsiz (unsatisfactory) — hujayralar yetarli emas yoki qon/shilliq bilan berkilgan; 2–4 oydan keyin qayta olinadi.",
+    "ru": "NCI: неудовлетворительный образец — мало клеток или они скрыты кровью/слизью; повтор через 2–4 месяца.",
+    "en": "NCI: unsatisfactory — too few cells, or cells hidden by blood or mucus; repeat in 2–4 months."
    },
    "options": [
     {
@@ -44164,9 +44276,9 @@
       "en": "Type 2 diabetes testing after delivery"
      },
      "why": {
-      "uz": "Homiladorlik diabetidan keyin 2-tip diabetga tekshirish tavsiya etiladi — odatda tug‘ruqdan taxminan 12 hafta keyin.",
-      "ru": "После гестационного диабета рекомендуется проверка на диабет 2 типа — обычно примерно через 12 недель после родов.",
-      "en": "After gestational diabetes, testing for type 2 diabetes is recommended — usually about 12 weeks after delivery."
+      "uz": "Homiladorlik diabetidan keyin 2-tip diabetga tekshirish tavsiya etiladi — odatda tug‘ruqdan keyingi 12 hafta ichida.",
+      "ru": "После гестационного диабета рекомендуется проверка на диабет 2 типа — обычно в течение 12 недель после родов.",
+      "en": "After gestational diabetes, testing for type 2 diabetes is recommended — usually within 12 weeks after delivery."
      },
      "tier": "monitoring",
      "refs": [
@@ -48479,9 +48591,9 @@
       "en": "Procalcitonin slightly ↑"
      },
      "meaning": {
-      "uz": "Sepsis ehtimoli past: mahalliy bakterial infeksiya (masalan, SYI), virusli infeksiya yoki endi boshlanayotgan tizimli infeksiya.",
-      "ru": "Сепсис маловероятен: местная бактериальная инфекция (например, ИМП), вирусная инфекция или начинающаяся системная инфекция.",
-      "en": "Sepsis is unlikely: a local bacterial infection (such as a UTI), a viral infection, or a systemic infection just beginning."
+      "uz": "Sepsis ehtimoli past; mahalliy bakterial infeksiya (masalan, SYI) yoki boshqa sababli (masalan, virusli) infeksiya belgisi bo‘lishi mumkin. O‘rtacha yoki biroz yuqori darajalar esa tizimli bakterial infeksiyaning erta bosqichida ham uchraydi.",
+      "ru": "Сепсис маловероятен; возможна местная бактериальная инфекция (например, ИМП) или инфекция другой природы (например, вирусная). Умеренно или слегка повышенные уровни встречаются и на ранних стадиях системной бактериальной инфекции.",
+      "en": "Sepsis is unlikely; it may be a sign of a local bacterial infection (such as a UTI) or an infection from another cause, such as a virus. Moderate to mildly high levels can also be seen in the early stages of a systemic bacterial infection."
      },
      "refs": [
       {
@@ -48541,7 +48653,11 @@
       },
       {
        "source_id": "medline-lactate-test",
-       "locator": "Is there anything else I need to know about a lactate test?"
+       "locator": "What happens during a lactate test?"
+      },
+      {
+       "source_id": "medline-lactate-test",
+       "locator": "Will I need to do anything to prepare for the test?"
       }
      ]
     }
@@ -51167,9 +51283,9 @@
     },
     {
      "finding": {
-      "uz": "Bosim ≥ 160/110 yoki oqsil ≥ 5 g/sutka yoki trombotsitlar ↓ / jigar fermentlari ↑",
-      "ru": "Давление ≥ 160/110, или белок ≥ 5 г/сут, или тромбоциты ↓ / печёночные ферменты ↑",
-      "en": "BP ≥ 160/110, or protein ≥ 5 g/24 h, or low platelets / high liver enzymes"
+      "uz": "Bosim ≥ 160/110 (kamida 4 soat oraliqda ikki marta), yoki oqsil ≥ 5 g/sutka, yoki trombotsitlar ↓ / jigar fermentlari ↑",
+      "ru": "Давление ≥ 160/110 (дважды с интервалом не менее 4 ч), или белок ≥ 5 г/сут, или тромбоциты ↓ / печёночные ферменты ↑",
+      "en": "BP ≥ 160/110 (on two occasions at least 4 hours apart), or protein ≥ 5 g/24 h, or low platelets / high liver enzymes"
      },
      "meaning": {
       "uz": "Og‘ir preeklampsiya belgilari.",
@@ -51851,14 +51967,14 @@
     },
     {
      "finding": {
-      "uz": "PSA doimiy ↑ yoki tez o‘smoqda",
-      "ru": "ПСА стойко ↑ или быстро растёт",
-      "en": "PSA stays high or rises quickly"
+      "uz": "PSA oshishda davom etmoqda (ayniqsa tez) yoki to‘g‘ri ichak orqali tekshiruvda tugun topildi",
+      "ru": "ПСА продолжает расти (особенно быстро) или при ректальном исследовании найден узел",
+      "en": "PSA keeps rising (especially quickly) or a lump is found on DRE"
      },
      "meaning": {
-      "uz": "Qo‘shimcha testlar (MRT va boshqalar) va biopsiya tavsiya etilishi mumkin.",
-      "ru": "Могут рекомендоваться дополнительные тесты (МРТ и др.) и биопсия.",
-      "en": "Additional tests (MRI and others) and a biopsy may be recommended."
+      "uz": "Qo‘shimcha testlar (MRT va boshqalar) yoki biopsiya tavsiya etilishi mumkin. PSA yuqoriligicha qolsa (lekin oshmasa) — odatda takroriy PSA va to‘g‘ri ichak orqali tekshiruv bilan kuzatiladi.",
+      "ru": "Могут рекомендоваться дополнительные тесты (МРТ и др.) или биопсия. Если ПСА остаётся повышенным (но не растёт) — обычно наблюдение с повторными ПСА и ректальным исследованием.",
+      "en": "Additional tests (MRI and others) or a biopsy may be recommended. If PSA stays high (but is not rising), observation with repeat PSA tests and digital rectal exams is usual."
      },
      "refs": [
       {

@@ -1,7 +1,6 @@
 // LDL-C kartasi: "Davolash maqsadi" alohida panelda, har yo'riqnoma o'z
 // jadvalida; RI/DL panellari bilan aralashmaydi. Kelib chiqish panelida agent
 // tekshiruvi va mutaxassis tasdig'i alohida qatorlar.
-import 'package:flutter/foundation.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:labguide/features/content/ui/analyte_screen.dart';
 import 'package:labguide/features/settings/settings_controller.dart';

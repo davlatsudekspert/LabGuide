@@ -71,6 +71,8 @@ const appRoutes = [
   '/lab/microscopy/s/parasites',
   '/lab/microscopy/i/b-neut-1',
   '/lab/microscopy/i/b-baso-1',
+  // “Nomi manba izohi bo‘yicha” bloki bilan.
+  '/lab/microscopy/i/b-eos-1',
   '/lab/microscopy/i/u-cryst-cystine-1',
   '/lab/microscopy/i/u-cast-panel-1',
   '/lab/microscopy/quiz',
@@ -159,10 +161,13 @@ List<Config> configs() {
   return out;
 }
 
-void main() {
+/// Matritsa tillar bo'yicha alohida fayllarda ishga tushiriladi
+/// (`layout_matrix_<til>_test.dart`): bitta jarayonda 30+ konfiguratsiya
+/// Dart xotirasini ~3,5 GB gacha o'stirardi. Qamrov o'zgarmaydi.
+void runLayoutMatrix(AppLanguage lang) {
   setUpAll(loadAppFonts);
 
-  for (final c in configs()) {
+  for (final c in configs().where((c) => c.lang == lang)) {
     final name =
         '${c.lang.name} ${c.width.toInt()}px ×${c.textScale} ${c.theme.name}';
 
@@ -209,6 +214,11 @@ void main() {
       await visitAll(appRoutes);
     });
   }
+}
+
+/// Past ekran va tab nomlari (barcha tillar) — alohida faylda.
+void runLayoutExtras() {
+  setUpAll(loadAppFonts);
 
   // Past ekran: landshaft telefon va kichik telefon + juda katta shrift.
   // Sarlavha joyni egallab, ro'yxat 0 px bo'lib qolmasligi kerak.

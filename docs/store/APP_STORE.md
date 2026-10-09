@@ -118,7 +118,17 @@ undergoing independent expert review.
 
 ## 6. App Privacy (Ma’lumotlar)
 
-Server (Supabase) ulangan build uchun javoblar. **Tracking: No** (boshqa kompaniyalar ma’lumoti
+**Hozirgi holat (2026-10-09, TestFlight 0.1.0 (3) va (4), Android run 13–14):** CI’da
+`LG_SUPABASE_URL`/`LG_SUPABASE_KEY` secretlari **bo‘sh** (jurnalda `LG_SUPABASE_URL:` qiymatsiz) —
+build “server hali ulanmagan” rejimida, email kirish, “Taklif va yordam”, guruhlar va hamkor
+statistikasi serverga hech narsa yubormaydi. Shu buildlar uchun to‘g‘ri javob:
+**“Data Not Collected”** (Tracking: No). Ilova faqat foydalanuvchi o‘zi “Paketlar”da yuklashni
+bossa `raw.githubusercontent.com` dan statik JSON/fayl oladi (so‘rovda shaxsiy ma’lumot yo‘q,
+dasturchi saqlamaydi) va tashqi havolalarni brauzerda ochadi — bu Apple ta’rifi bo‘yicha
+“collection” emas. Analitika/crash SDK yo‘q.
+
+Secret qo‘yilib server ulangan **birinchi** buildgacha App Privacy quyidagi jadvalga
+o‘zgartiriladi (aks holda deklaratsiya noto‘g‘ri bo‘ladi). Server (Supabase) ulangan build uchun javoblar. **Tracking: No** (boshqa kompaniyalar ma’lumoti
 bilan birlashtirilmaydi, reklama identifikatori yo‘q). Hamma toifalar — **Linked to the user**,
 **not used for tracking**.
 
@@ -166,7 +176,17 @@ tizim orqali foydalanadi, o‘z shifrlash algoritmi yo‘q.
 - en: LabGuide — a biochemistry and clinical lab companion: test atlas, calculators, quality
   control (Westgard), preanalytics and explained quizzes. Offline, three languages.
 
-**What to Test**
+**What to Test** — CI (`mode=testflight`) har buildga en-US va ru matnini API orqali yozadi
+(App Store Connect o‘zbek tilini qo‘llamaydi). Har matn boshida ogohlantirish turadi:
+- uz: **QORALAMA build, ichki sinov uchun. Kontent manbalarga asoslangan, lekin mustaqil
+  mutaxassis tekshiruvidan HALI O‘TMAGAN — bemor bilan ishlashda foydalanmang.** Tekshiring:
+  ochish → mehmon → rol va til → tahlillar atlasi → kalkulyatorlar → leykoformula → imtihon.
+- ru: **ЧЕРНОВАЯ сборка для внутреннего тестирования. Материалы ещё НЕ прошли независимую
+  экспертную проверку — не используйте их для работы с пациентами.**
+- en: **DRAFT build for internal testing. Content has NOT yet passed independent expert
+  review — do not use it for patient care.**
+
+Qo‘shimcha (oldingi) yo‘riqnoma:
 - uz: Rolni tanlang va bosh sahifani ko‘ring. Tahlillar atlasida qidiring (lotin va kirill
   yozuvida). Kalkulyatorlarda o‘z qiymatlaringizni kiriting — birlikni ataylab adashtirib
   ko‘ring. Laboratoriya → Sifat nazorati: test qo‘shing, bir necha seriya kiriting va Westgard
@@ -203,6 +223,12 @@ Hammasi egasining logosidan (`python3 tool/icons/make_icons.py`, D-37):
 
 ## 12. Google Play — Data safety
 
+**Hozirgi buildlar (server ulanmagan, `LG_SUPABASE_URL` secret bo‘sh):**
+“Does your app collect or share any of the required user data types?” — **No**.
+Shifrlash/o‘chirish savollari bu holda so‘ralmaydi. Ads: **No** (hamkor bo‘limi server
+ulanmaguncha e’lon ko‘rsatmaydi — yoqilganda Yes). Server ulangan birinchi build yuklanishidan
+**oldin** quyidagi jadvalga almashtiriladi:
+
 | Savol | Javob |
 |---|---|
 | Ma’lumot to‘planadimi? | Ha (faqat hisob ochilganda) |
@@ -219,3 +245,92 @@ Hammasi egasining logosidan (`python3 tool/icons/make_icons.py`, D-37):
 Reklama: ilovada hamkor e’lonlari bo‘lsa, Play Console → App content → **Ads: Yes**.
 Hisobni o‘chirish havolasi (Play talabi): siyosat sahifasi + ilovadagi tugma.
 
+
+## 13. Test tarqatish: holat va egasidan kerakli amallar
+
+Faqat **ichki/yopiq test**. Production, App Store review, Play production — CI’da yo‘q.
+
+### iOS — TestFlight (`mode=testflight`)
+- Build raqami: App Store Connect’dagi eng oxirgi + 1 (run_number emas). Hozirgi: **0.1.0 (4)**,
+  run 14, processingState **VALID**; (3) — run 12, VALID.
+- Eksport muvofiqligi: Info.plist `ITSAppUsesNonExemptEncryption = NO` → buildda avtomatik
+  javob berilgan (CI IPA’da tekshiradi; `beta` qadami ham `usesNonExemptEncryption` ni ko‘rsatadi).
+- `TestFlight — ichki guruh va "What to Test"` qadami (2026-10-09 qo‘shildi): en-US/ru
+  “What to Test”, barcha **Internal** guruhlarga biriktirish (guruhda “Automatic distribution”
+  yoqilgan bo‘lsa — o‘tkazib yuboradi), `internalBuildState` ni summary’ga yozadi. Tashqi
+  guruhlarga tegmaydi. Xato bo‘lsa — faqat ogohlantirish.
+- **Egasi:** App Store Connect → LabGuide → TestFlight → Internal Testing → “+” guruh
+  (masalan “LabGuide ichki”), testerlarni qo‘shing (ular App Store Connect foydalanuvchisi
+  bo‘lishi kerak: Users and Access, istalgan rol), “Automatic distribution” ni yoqing.
+  Testerlar iPhone’da **TestFlight** ilovasini o‘rnatib, emaildagi taklifni qabul qiladi;
+  keyingi buildlar TestFlight’da “Update” bilan yangilanadi. Tashqi testerlar (ommaviy havola)
+  Beta App Review talab qiladi — hozircha kerak emas.
+
+### Android — Google Play ichki test (`mode=play_internal`)
+- versionCode = GitHub run_number (har run’da oshadi). Imzoli AAB faqat `ANDROID_KEYSTORE_BASE64`,
+  `ANDROID_KEYSTORE_PASSWORD`, `ANDROID_KEY_ALIAS`, `ANDROID_KEY_PASSWORD` secretlari bo‘lsa
+  yasaladi va `labguide-android-<run>` artifact’iga qo‘shiladi. **Hozir bu secretlar yo‘q**
+  (run 13/14 jurnalida `ANDROID_SIGNED: false`) — artifact’da faqat debug kalitli sinov APK’lar.
+- `play_internal`: testlar → imzoli AAB → `r0adkll/upload-google-play@v1`, trek `internal`,
+  holat `play_status` (standart `draft`; ilova Play’da hali “draft app” bo‘lsa faqat draft
+  ruxsat etiladi). iOS job ishlamaydi. Secret yo‘q bo‘lsa — xatosiz o‘tkaziladi va summary’da
+  nima yetishmasligi yoziladi; Play API rad etsa (ilova yo‘q, birinchi AAB qo‘lda yuklanmagan,
+  ruxsat yo‘q) — ogohlantirish, AAB artifact’da qoladi.
+- **Egasi bajaradigan amallar (tartib bilan):**
+  1. Upload kaliti: `keytool -genkeypair -v -keystore upload.jks -keyalg RSA -keysize 2048
+     -validity 10000 -alias upload`; `base64 -w0 upload.jks` → GitHub secretlar
+     `ANDROID_KEYSTORE_BASE64`, `ANDROID_KEYSTORE_PASSWORD`, `ANDROID_KEY_ALIAS` (=upload),
+     `ANDROID_KEY_PASSWORD`. Fayl va parollarni xavfsiz joyda saqlang (yo‘qolsa — Play’da
+     upload key reset so‘rash kerak bo‘ladi).
+  2. Play Console → **Create app**: nomi LabGuide, til, App/Free, deklaratsiyalar.
+     Paket nomi `uz.labguide.app` birinchi AAB bilan bog‘lanadi.
+  3. **Birinchi AAB’ni qo‘lda yuklash:** `mode=build` (yoki `play_internal`) run’idan
+     `labguide-android-<run>` artifact’ini yuklab, `app-release.aab` ni Testing → Internal
+     testing → Create new release orqali yuklang; Play App Signing’ni qabul qiling. API yangi
+     ilovaga birinchi yuklashni qila olmaydi (“Package not found”).
+  4. Service account: Google Cloud’da loyiha → Google Play Android Developer API’ni yoqing →
+     service account va JSON kalit yarating. Play Console → **Users and permissions** → Invite
+     new user → service account emaili → LabGuide ilovasiga “Release to testing tracks”
+     (va “View app information”) ruxsati. JSON matnini `GOOGLE_PLAY_SERVICE_ACCOUNT_JSON`
+     secretiga qo‘ying. (Play Console’ning eski “API access” sahifasi endi shart emas.)
+  5. Internal testing → Testers → email ro‘yxati (100 tagacha) yarating, testerlarga
+     **opt-in havolasini** yuboring: `https://play.google.com/apps/internaltest/<ID>`
+     (aniq havola shu sahifadagi “Copy link”da). Tester havolani ochib “Become a tester”ni
+     bosadi, so‘ng Play Store’dan o‘rnatadi/yangilaydi.
+  6. **Shaxsiy dasturchi akkaunti** (2023-11-13 dan keyin yaratilgan) uchun Google’ning joriy
+     talabi (support.google.com/googleplay/android-developer/answer/14151465, 2026-10-09
+     tekshirildi): production’ga ariza berishdan oldin **yopiq test** (Closed testing),
+     **kamida 12 tester**, **ketma-ket kamida 14 kun** opt-in bo‘lib turishi shart. Yopiq test:
+     Testing → Closed testing → Create track (yoki “Alpha”) → Testers: email ro‘yxati yoki
+     Google Group → Countries → release. Opt-in havola formati:
+     `https://play.google.com/apps/testing/uz.labguide.app` (web opt-in sahifasi).
+     Ichki test (internal) bu 12/14 hisobiga **kirmaydi**.
+  7. Store listing, Data safety (12-bo‘lim), Content rating, Target audience (18+ / kattalar),
+     Privacy policy URL (14-bo‘lim) — ichki test uchun ham Play ba’zilarini so‘raydi.
+
+### Release notes / “What’s new” (Play, internal)
+- uz: Qoralama sinov versiyasi. Kontent manbalarga asoslangan, lekin mustaqil mutaxassis
+  tekshiruvidan hali o‘tmagan — bemorlar bilan ishlashda foydalanmang. Tekshiring: mehmon
+  rejimi, rol va til, tahlillar atlasi, kalkulyatorlar, leykoformula, imtihon.
+- ru: Черновая тестовая версия. Материалы основаны на источниках, но ещё не прошли
+  независимую экспертную проверку — не используйте для работы с пациентами. Проверьте:
+  гостевой режим, роль и язык, атлас анализов, калькуляторы, лейкоформула, экзамен.
+- en: Draft test build. Content is source-based but has not yet passed independent expert
+  review — do not use it for patient care. Please check: guest mode, role and language, test
+  atlas, calculators, differential count, exam.
+
+(CI release notes’ni API orqali yozmaydi — Play Console’da release sahifasiga qo‘lda qo‘ying.)
+
+## 14. Maxfiylik siyosatini ochiq havolada joylash
+
+Tekshirildi (2026-10-09): repo **public**; GitHub Pages **yoqilmagan**
+(`davlatsudekspert.github.io/LabGuide/...` → 404).
+- **Tavsiya:** Settings → Pages → Source “Deploy from a branch”, `main` / `/docs`. Bir necha
+  daqiqadan so‘ng: `https://davlatsudekspert.github.io/LabGuide/store/PRIVACY_POLICY` (Jekyll
+  markdown’ni HTML qiladi). Eslatma: `docs/` dagi boshqa fayllar ham sahifa bo‘lib chiqadi
+  (repo baribir public).
+- **Hozir ishlaydigan zaxira:** `https://github.com/davlatsudekspert/LabGuide/blob/main/docs/store/PRIVACY_POLICY.md`
+  (200 qaytaradi). `raw.githubusercontent.com` havolasi ham 200, lekin oddiy matn — do‘kon
+  uchun yaroqsiz ko‘rinadi.
+- E’lon qilishdan oldin `[sana]`, `[email]`, `[hosting mintaqasi]`, `[email yuborish xizmati]`
+  joylarini to‘ldiring va “Eslatma” blokini olib tashlang.

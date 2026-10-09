@@ -3973,6 +3973,10 @@
     {
      "source_id": "medline-cea",
      "locator": "What is it used for?"
+    },
+    {
+     "source_id": "medline-cea",
+     "locator": "Will I need to do anything to prepare for the test?"
     }
    ],
    "topic_ids": [
@@ -4105,6 +4109,10 @@
     {
      "source_id": "medline-ca125",
      "locator": "Why do I need a CA-125 blood test?"
+    },
+    {
+     "source_id": "medline-ca125",
+     "locator": "What is it used for?"
     }
    ],
    "topic_ids": [
@@ -4171,6 +4179,10 @@
     {
      "source_id": "medline-afp-tumor-marker",
      "locator": "What is it used for?"
+    },
+    {
+     "source_id": "medline-afp-tumor-marker",
+     "locator": "Is there anything else I need to know about an AFP tumor marker test?"
     }
    ],
    "topic_ids": [

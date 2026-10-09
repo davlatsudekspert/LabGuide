@@ -149,6 +149,38 @@ void main() {
       expect(() => MicroAtlas.fromJson(raw), throwsFormatException);
     });
 
+    test('Commons rasmida muallif havolasi bor (https)', () {
+      for (final i in atlas.images) {
+        if (i.provider == MicroProvider.commons) {
+          expect(i.authorUrl, startsWith('https://'), reason: i.id);
+        }
+      }
+      expect(
+        () => _patched((i) => i.remove('author_url')),
+        throwsFormatException,
+      );
+    });
+
+    test('audit 2026-10-09: “manba izohi bo‘yicha” rasmlar mashqda yo‘q', () {
+      final bySource = {
+        for (final i in atlas.images)
+          if (i.labelNote != null) i.id,
+      };
+      expect(bySource, {'u-rte-1', 'u-cryst-caox-1', 'b-eos-1'});
+      for (final id in bySource) {
+        expect(atlas.image(id)!.quizCue, isNull, reason: id);
+        expect(atlas.image(id)!.labelNote!.of('uz'), contains('manba'));
+      }
+      final quiz = atlas.quizImages().map((i) => i.id);
+      expect(quiz, isNot(contains('b-eos-1')));
+      final raw = _raw();
+      final eos = (raw['images']! as List)
+          .cast<Map<String, Object?>>()
+          .firstWhere((i) => i['id'] == 'b-eos-1');
+      eos['quiz'] = 'arrowhead';
+      expect(() => MicroAtlas.fromJson(raw), throwsFormatException);
+    });
+
     test('mashqqa yaroqsiz turga mashq rasmi bo‘lmaydi', () {
       final raw = _raw();
       final epi = (raw['images']! as List)
@@ -209,7 +241,7 @@ void main() {
     );
 
     test('chalg‘ituvchilar avval shu bo‘limdan', () {
-      final img = atlas.image('u-cryst-caox-1')!;
+      final img = atlas.image('u-cryst-uric-1')!;
       final q = buildMicroQuestion(atlas, img, math.Random(1));
       for (final o in q.options) {
         expect(atlas.sectionOf(o).id, 'urine');
@@ -254,11 +286,11 @@ void main() {
     test('xatolarni qayta ishlash — faqat berilgan rasmlar', () {
       final s = MicroQuizSession.build(
         atlas,
-        only: ['b-eos-1', 'p-mal-thick-1'],
+        only: ['b-baso-1', 'p-mal-thick-1'],
         random: math.Random(2),
       );
       expect(s.questions.map((q) => q.image.id).toSet(), {
-        'b-eos-1',
+        'b-baso-1',
         'p-mal-thick-1',
       });
     });
