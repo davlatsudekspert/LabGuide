@@ -4044,16 +4044,17 @@ class AppLocalizationsUz extends AppLocalizations {
   String get learnTitle => 'Tushunib o‘rganing';
 
   @override
-  String get learnHeroTag => 'Rasmli biokimyo';
+  String get learnHeroTag => 'Mavzular va mashq';
 
   @override
   String get learnHeroTitle => 'Molekuladan amaliyotgacha';
 
   @override
-  String get learnHeroBody => 'Mavzular, mexanizmlar va bilimni tekshirish.';
+  String get learnHeroBody =>
+      'Mavzu tanlab, savollar bilan bilimingizni tekshiring.';
 
   @override
-  String get learnHeroCta => 'Mavzularni ko‘rish';
+  String get learnHeroCta => 'Mavzuni tanlash';
 
   @override
   String get learnClassesSub => 'Ustoz → topshiriq → talaba → natija';

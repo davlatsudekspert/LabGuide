@@ -4088,16 +4088,17 @@ class AppLocalizationsEn extends AppLocalizations {
   String get learnTitle => 'Learn with understanding';
 
   @override
-  String get learnHeroTag => 'Visual biochemistry';
+  String get learnHeroTag => 'Topics and practice';
 
   @override
   String get learnHeroTitle => 'From molecule to practice';
 
   @override
-  String get learnHeroBody => 'Topics, mechanisms and knowledge checks.';
+  String get learnHeroBody =>
+      'Pick a topic and check your knowledge with questions.';
 
   @override
-  String get learnHeroCta => 'Explore topics';
+  String get learnHeroCta => 'Choose a topic';
 
   @override
   String get learnClassesSub => 'Teacher → assignment → student → results';

@@ -6,6 +6,8 @@ import 'package:labguide/app/widgets/lg_page.dart';
 import 'package:labguide/core/storage/kv_store.dart';
 import 'package:labguide/design/tokens.dart';
 import 'package:labguide/features/auth/otp_auth.dart';
+import 'package:labguide/features/content/ui/analyte_screen.dart';
+import 'package:labguide/features/learn/learn_screens.dart';
 import 'package:labguide/features/library/library_screens.dart';
 import 'package:labguide/features/settings/settings_controller.dart';
 import 'package:labguide/l10n/gen/app_localizations.dart';
@@ -240,6 +242,21 @@ void main() {
     await tapText(tester, uz.navLibrary);
     await tapText(tester, uz.featureSaved);
     expect(find.text('Och qoringa plazma glyukozasi'), findsOneWidget);
+  });
+
+  testWidgets('learn hero opens practice topics inside the Learn tab', (
+    tester,
+  ) async {
+    final s = await makeServices(tester, language: AppLanguage.en);
+    await pumpApp(tester, s, size: const Size(390, 1600));
+    // Tahlillar tabida karta ochiq qolgan bo'lsa ham — hero unga olib
+    // ketmasligi kerak.
+    await goTo(tester, '/tests/analyte/potassium');
+    await goTo(tester, '/learn');
+    await tapText(tester, en.learnHeroCta);
+    expect(find.byType(QuizScreen), findsOneWidget);
+    expect(find.byType(AnalyteScreen), findsNothing);
+    expect(routerOf(tester).state.matchedLocation, '/learn/quiz');
   });
 
   testWidgets('glucose card: sources, thresholds ≠ reference interval', (

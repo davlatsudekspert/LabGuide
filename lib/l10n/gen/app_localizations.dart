@@ -7249,7 +7249,7 @@ abstract class AppLocalizations {
   /// No description provided for @learnHeroTag.
   ///
   /// In en, this message translates to:
-  /// **'Visual biochemistry'**
+  /// **'Topics and practice'**
   String get learnHeroTag;
 
   /// No description provided for @learnHeroTitle.
@@ -7261,13 +7261,13 @@ abstract class AppLocalizations {
   /// No description provided for @learnHeroBody.
   ///
   /// In en, this message translates to:
-  /// **'Topics, mechanisms and knowledge checks.'**
+  /// **'Pick a topic and check your knowledge with questions.'**
   String get learnHeroBody;
 
   /// No description provided for @learnHeroCta.
   ///
   /// In en, this message translates to:
-  /// **'Explore topics'**
+  /// **'Choose a topic'**
   String get learnHeroCta;
 
   /// No description provided for @learnClassesSub.

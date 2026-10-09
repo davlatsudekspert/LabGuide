@@ -48,7 +48,9 @@ class LearnScreen extends StatelessWidget {
           body: l.learnHeroBody,
           action: LgButton(
             label: l.learnHeroCta,
-            onPressed: () => openInTab(context, '/tests'),
+            // Shu tab ichida — mashq mavzulari. Boshqa tabga o'tilsa, o'sha
+            // tabda oxirgi ochiq sahifa (masalan, tahlil kartasi) chiqardi.
+            onPressed: () => context.push('/learn/quiz'),
           ),
         ),
         // Har kuni qaytish uchun: 5 ta savol va ketma-ketlik.

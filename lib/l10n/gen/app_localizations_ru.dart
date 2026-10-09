@@ -4109,16 +4109,16 @@ class AppLocalizationsRu extends AppLocalizations {
   String get learnTitle => 'Учитесь с пониманием';
 
   @override
-  String get learnHeroTag => 'Биохимия в иллюстрациях';
+  String get learnHeroTag => 'Темы и практика';
 
   @override
   String get learnHeroTitle => 'От молекулы к практике';
 
   @override
-  String get learnHeroBody => 'Темы, механизмы и проверка знаний.';
+  String get learnHeroBody => 'Выберите тему и проверьте знания вопросами.';
 
   @override
-  String get learnHeroCta => 'Смотреть темы';
+  String get learnHeroCta => 'Выбрать тему';
 
   @override
   String get learnClassesSub => 'Преподаватель → задание → студент → результат';
