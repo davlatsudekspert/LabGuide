@@ -62,10 +62,7 @@ void main() {
     await _tapText(tester, 'HbA1c (glikirlangan gemoglobin)');
     final hba1c = s.content.pack!.analyte('hba1c')!.names.of('uz');
     expect(_title(tester), hba1c);
-    expect(
-      _path(tester),
-      '/home/conditions/type-2-diabetes/analyte/hba1c',
-    );
+    expect(_path(tester), '/home/conditions/type-2-diabetes/analyte/hba1c');
     // Teskari yo'nalish: karta holatlarni ko'rsatadi.
     await tester.scrollUntilVisible(
       find.text(uz.condAnalyteSection),
@@ -101,10 +98,7 @@ void main() {
       },
     );
     await _tapText(tester, 'Gipotireoz (qalqonsimon bez faoliyati pasayishi)');
-    expect(
-      _path(tester),
-      '/home/conditions/hypothyroidism',
-    );
+    expect(_path(tester), '/home/conditions/hypothyroidism');
     await tester.scrollUntilVisible(
       find.text('TSH ↑ + erkin T4 ↓'),
       300,
@@ -128,10 +122,7 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.text(uz.condSearchSection), findsOneWidget);
     await _tapText(tester, '2-tip qandli diabet');
-    expect(
-      _path(tester),
-      '/tests/conditions/type-2-diabetes',
-    );
+    expect(_path(tester), '/tests/conditions/type-2-diabetes');
   });
 
   testWidgets('conditions search filters by name and system', (tester) async {
@@ -140,7 +131,10 @@ void main() {
     await goTo(tester, '/tests/conditions');
     await tester.enterText(find.byType(TextField).first, 'щитовид');
     await tester.pumpAndSettle();
-    expect(find.text('Гипотиреоз (снижение функции щитовидной железы)'), findsOneWidget);
+    expect(
+      find.text('Гипотиреоз (снижение функции щитовидной железы)'),
+      findsOneWidget,
+    );
     await tester.enterText(find.byType(TextField).first, 'zzzqqq');
     await tester.pumpAndSettle();
     expect(find.text('Ничего не найдено'), findsOneWidget);

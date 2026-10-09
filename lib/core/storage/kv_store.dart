@@ -48,6 +48,10 @@ abstract final class StoreKeys {
   /// Pro huquqlari: server javobining imzolangan, muddatli nusxasi.
   static const entitlementsCache = 'entitlements.cache';
 
+  /// Leykoformula: joriy sanash (qoralama) va saqlangan natijalar.
+  static const differentialDraft = 'differential.draft';
+  static const differentialHistory = 'differential.history';
+
   static const all = <String>{
     language,
     themeMode,
@@ -71,6 +75,8 @@ abstract final class StoreKeys {
     partnersCache,
     libraryReading,
     entitlementsCache,
+    differentialDraft,
+    differentialHistory,
   };
 }
 

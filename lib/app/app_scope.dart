@@ -8,6 +8,7 @@ import '../core/entitlements/entitlement_service.dart';
 import '../core/storage/kv_store.dart';
 import '../features/auth/auth_controller.dart';
 import '../features/content/content_controller.dart';
+import '../features/differential/differential_controller.dart';
 import '../features/instruments/instruments_controller.dart';
 import '../features/learn/exam_controller.dart';
 import '../features/learn/quiz_progress.dart';
@@ -65,6 +66,7 @@ class AppServices {
     required this.access,
     required this.partners,
     required this.entitlements,
+    required this.differential,
   });
 
   final AppConfig config;
@@ -98,6 +100,9 @@ class AppServices {
 
   /// Pro huquqlari (build rejimi, server, imzolangan oflayn kesh).
   final EntitlementService entitlements;
+
+  /// Leykoformula hisoblagichi va natijalar tarixi (faqat qurilmada).
+  final DifferentialController differential;
 
   /// Server vakolatlari va o'qilmagan javoblarni yangilash. Rol hali
   /// tanlanmagan bo'lsa profil yozilmaydi (taxminiy rol sanalmasin).
@@ -145,6 +150,7 @@ class AppServices {
     partners.resetInMemory();
     reading.resetInMemory();
     entitlements.resetInMemory();
+    differential.resetInMemory();
     await packs.removeAll();
     settings.resetToDefaults(systemLocales);
   }

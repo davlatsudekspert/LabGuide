@@ -143,7 +143,10 @@ void main() {
     final hb = pack.analyte('hemoglobin')!.decisionLimits;
     expect(hb, hasLength(9));
     expect(hb.every((d) => d.unit == 'g/L' && d.highExclusive), isTrue);
-    expect(hb.every((d) => d.sourceIds.single == 'who-hb-cutoffs-2024'), isTrue);
+    expect(
+      hb.every((d) => d.sourceIds.single == 'who-hb-cutoffs-2024'),
+      isTrue,
+    );
     double cutoff(String population) =>
         hb.firstWhere((d) => d.population.of('en') == population).high!;
     expect(cutoff('Non-pregnant women 15–65 years'), 120);
@@ -158,11 +161,7 @@ void main() {
     expect(plt.every((d) => d.unit == '/µL'), isTrue);
 
     final factors = pack.analyte('coagulation-factors')!.decisionLimits;
-    expect(factors.map((d) => (d.low, d.high)), [
-      (5, 40),
-      (1, 5),
-      (null, 1),
-    ]);
+    expect(factors.map((d) => (d.low, d.high)), [(5, 40), (1, 5), (null, 1)]);
     // INR, D-dimer va fibrinogen uchun manbada raqam yo'q — chegara ham yo'q.
     for (final id in ['pt-inr', 'd-dimer', 'fibrinogen', 'esr']) {
       expect(pack.analyte(id)!.decisionLimits, isEmpty, reason: id);

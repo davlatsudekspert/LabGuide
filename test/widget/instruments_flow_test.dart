@@ -10,6 +10,22 @@ import '../helpers/harness.dart';
 /// Laboratoriya mutaxassisi sifatida: yo'nalish → ishlab chiqaruvchi →
 /// model → karta → “Mening apparatim” → kalibrlash → yozuv → jurnal →
 /// qayta ochish.
+/// Dangasa ro'yxatda pastdagi qator hali qurilmagan bo'lishi mumkin.
+Future<void> _reveal(WidgetTester tester, Finder f) async {
+  if (f.evaluate().isEmpty) {
+    await tester.scrollUntilVisible(
+      f,
+      250,
+      scrollable: find
+          .byWidgetPredicate(
+            (w) => w is Scrollable && w.axisDirection == AxisDirection.down,
+          )
+          .hitTestable()
+          .first,
+    );
+  }
+}
+
 Future<void> _tap(WidgetTester tester, Finder f) async {
   await tester.ensureVisible(f);
   await tester.pumpAndSettle();
@@ -17,8 +33,10 @@ Future<void> _tap(WidgetTester tester, Finder f) async {
   await tester.pumpAndSettle();
 }
 
-Future<void> _tapText(WidgetTester tester, String text) =>
-    _tap(tester, find.text(text).last);
+Future<void> _tapText(WidgetTester tester, String text) async {
+  await _reveal(tester, find.text(text));
+  await _tap(tester, find.text(text).last);
+}
 
 Future<void> _enterField(
   WidgetTester tester,
