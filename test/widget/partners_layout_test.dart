@@ -8,7 +8,7 @@ import '../helpers/harness.dart';
 import '../helpers/partner_fixtures.dart';
 
 /// Hamkor (reklama) ekranlari to'ldirilgan holatda — layout matritsasi
-/// (`layout_matrix_test.dart`) sozlanmagan buildda ularni bo'sh/halol
+/// (`layout_matrix.dart`) sozlanmagan buildda ularni bo'sh/halol
 /// holatda tekshiradi; bu yerda haqiqiy hamkor, ariza va admin
 /// (aal2) bilan: 3 til × tor/katta shrift/qorong'i/planshet.
 const _routes = [

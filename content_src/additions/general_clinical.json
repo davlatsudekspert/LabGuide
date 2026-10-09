@@ -2634,9 +2634,9 @@
       }
      ],
      "text": {
-      "uz": "Laboratoriyalar natijani turli o‘lchov va namunalar bilan rasmiylashtiradi; aralash yoki juda oz o‘sish holatlarida natijani shifokor belgilar bilan birga baholaydi.",
-      "ru": "Лаборатории оформляют результат с разными единицами и образцами; при смешанном или скудном росте врач оценивает результат вместе с симптомами.",
-      "en": "Labs report results with different measurements and specimens; when growth is mixed or scant, the provider interprets it together with symptoms."
+      "uz": "Me’yoriy qiymatlar laboratoriyalar orasida biroz farq qilishi mumkin; ayrim laboratoriyalar boshqa o‘lchov birliklaridan foydalanadi yoki boshqa namunalarni tekshiradi. Ba’zan ekmada bir nechta turdagi bakteriya yoki ularning ozgina miqdori topiladi; aniq natija nimani anglatishini shifokor tushuntiradi.",
+      "ru": "Нормальные значения могут немного различаться между лабораториями; некоторые лаборатории используют другие единицы измерения или исследуют другие образцы. Иногда в посеве находят более одного вида бактерий или лишь небольшое их количество; что означает конкретный результат, объясняет врач.",
+      "en": "Normal value ranges may vary slightly between laboratories, and some labs use different measurements or test different samples. Sometimes more than one type of bacteria, or only a small amount, is found in the culture; the provider explains what a specific result means."
      }
     }
    ],
