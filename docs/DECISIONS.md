@@ -308,7 +308,8 @@ Mustaqil sharh (review D) natijasida:
   avtomatik saqlanadi.
 - **Android:** ishga tushgandan keyingi oyna foni ilova foniga mos; release imzo
   `android/key.properties` orqali (bo‘lmasa — debug kalit, faqat sinov APK); CI’da ixtiyoriy
-  `LABGUIDE_ANDROID_KEYSTORE_*` secretlari bilan release APK + AAB.
+  `ANDROID_KEYSTORE_*` / `ANDROID_KEY_*` secretlari bilan release APK + AAB (D-34 gacha
+  `LABGUIDE_ANDROID_*`).
 - **Ruscha ko‘plik:** `quizTopicMixed` ICU plural.
 
 ## D-29. Kontent yaxlitligi, qidiruv va mashq (2026-10-08)
@@ -372,3 +373,21 @@ qorong‘i, tizimda yorug‘ bo‘lsa, birinchi kadr yorug‘ fonda chiqadi (pla
   xulosa “qabul” bo‘lib ko‘rinmaydi.
 - **Guruh savollari:** mavzusi guruh id si bo‘lgan savol shu guruh bo‘limida chiqadi; har savol
   mavzu tanlovidan topilishi testlanadi.
+
+## D-34. LabGuide alohida repozitoriyda: `davlatsudekspert/labguide` (2026-10-09)
+Egasining talabi: NFCSTORE bilan aralashib ketmasin. Ilova nfcx’da `labguide/` papkasida edi
+(D-01) va [nfcx#86](https://github.com/davlatsudekspert/nfcx/pull/86) orqali nfcx `main` ga
+ham qo‘shilib ketgan edi. Endi:
+- `git subtree split --prefix=labguide` — LabGuide commitlari tarixi bilan, ilova repo
+  ildizida; NFCSTORE fayllari, tag’lari va obyektlari ko‘chirilmadi (tarixda maxfiy kalit yo‘q —
+  tekshirildi).
+- Repo **public** (egasi tanladi): standart runnerlar, jumladan macOS, bepul. Repoda
+  secret yo‘q; secretlar repo sozlamalarida.
+- CI: `.github/workflows/ci.yml` — `main` ga push va PR’da imzosiz tekshiruv, qo‘lda
+  `mode: testflight`. Secret nomlari soddalashtirildi: `ASC_*`, `IOS_CERTIFICATE_*`,
+  `IOS_TEAM_ID`, `ANDROID_*` (NFCSTORE’ning `NOVA_*` zaxirasi olib tashlandi). Build raqami
+  App Store Connect’dagi oxirgisidan hisoblanadi — run raqami qaytadan boshlansa ham
+  to‘qnashmaydi.
+- nfcx’dan `labguide/` va `labguide-ios.yml` alohida PR bilan olib tashlanadi (egasi
+  merge qiladi). D-21’dagi reja shu bilan amalga oshdi.
+

@@ -10,7 +10,7 @@ import 'package:labguide/features/content/content_pack.dart';
 import 'package:labguide/features/lab/ifu_matching.dart';
 import 'package:labguide/features/learn/learn_screens.dart';
 
-/// Ilova ichidagi haqiqiy paket (testlar repo ildizidan — labguide/ — ishlaydi).
+/// Ilova ichidagi haqiqiy paket (testlar repo ildizidan ishlaydi).
 Uint8List bundled(String name) =>
     File('assets/content/core/$name').readAsBytesSync();
 

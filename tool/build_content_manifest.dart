@@ -1,6 +1,6 @@
 // Kontent paketining manifestini (size + sha256) qayta hisoblaydi.
 //
-// Ishlatish (labguide/ ichida):
+// Ishlatish (repo ildizida):
 //   dart run tool/build_content_manifest.dart [pack_id] [version]
 //
 // pack.json o'zgarganda albatta ishga tushiring: aks holda ilova paketni

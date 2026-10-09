@@ -12,7 +12,8 @@ kelmagan**.
 
 ## Bajarilganlar
 
-- `labguide/` — alohida Flutter loyiha (iOS + Android), NFCSTORE fayllari o‘zgarmagan (D-01).
+- Alohida repozitoriy `davlatsudekspert/labguide` (iOS + Android, Flutter); 2026-10-09 gacha
+  nfcx ichidagi `labguide/` papkasida edi — tarix saqlangan (D-01, D-34).
 - Dizayn tizimi (prototype v5): ranglar, Inter, tipografika, radiuslar, komponentlar,
   light/dark/system, 160 ms press, 200 ms o‘tish, reduced motion.
 - Onboarding: welcome → mehmon / email → OTP → rol. Demo OTP faqat debug’da.
@@ -82,7 +83,7 @@ kelmagan**.
 | Yangi testlar | Har bir tuzatilgan xato uchun test tuzatishsiz **yiqilishi** tekshirildi (TalkBack, past ekran, sarlavha, tab xotirasi, klaviatura, vergulli son, QC zaxira, paket ro‘yxatlari, guruh savollari) |
 | Kontrast | Matn ≥ 4.5:1, boshqaruv chegaralari ≥ 3:1 (light va dark) |
 | GitHub Actions run #2, #5 (build) | ✓ testlar, Android release APK (sinov), **imzosiz iOS release build (macOS, Xcode)** |
-| GitHub Actions run #3 (testflight) | Sertifikat va API kalit (NOVA_*) o‘qildi, bundle ID/profil bosqichi o‘tdi; **App Store Connect’da ilova yozuvi yo‘qligi sababli to‘xtadi** |
+| GitHub Actions run #3 (testflight, nfcx’da) | Sertifikat va API kalit o‘qildi, bundle ID/profil bosqichi o‘tdi; **App Store Connect’da ilova yozuvi yo‘qligi sababli to‘xtadi** |
 | GitHub Actions run #4 | 1 test yiqildi (kalkulyator yorlig‘i o‘zgargan, test keyingi commit’da yangilangan) — run #5 da tuzalgan |
 | Vizual tekshiruv | `tool/screenshots` — 37 ta ekran rasmi, yangi ekranlar (SI chegaralar, birlik eslatmasi, AG, landshaft, kirillcha qidiruv, QC) ko‘rib chiqildi |
 
@@ -112,9 +113,10 @@ kelmagan**.
 ## Blockerlar va foydalanuvchidan kerak bo‘ladigan narsalar
 
 - **TestFlight:** App Store Connect → Apps → + → New App, Bundle ID `uz.labguide.app`,
-  SKU `labguide-ios`. Secretlar tayyor (NOVA_*; ASC_* nomlari ham qabul qilinadi). Shundan
-  keyin workflow `mode: testflight` bilan yuklaydi — [IOS_TESTFLIGHT.md](IOS_TESTFLIGHT.md).
-- **Google Play:** upload kaliti (`LABGUIDE_ANDROID_KEYSTORE_*` secretlari) — bo‘lmasa APK
+  SKU `labguide-ios`. Yangi repoga secretlar qayta kiritiladi (`ASC_*`, `IOS_CERTIFICATE_*`,
+  `IOS_TEAM_ID`). Shundan keyin workflow `mode: testflight` bilan yuklaydi —
+  [IOS_TESTFLIGHT.md](IOS_TESTFLIGHT.md).
+- **Google Play:** upload kaliti (`ANDROID_KEYSTORE_*`, `ANDROID_KEY_*` secretlari) — bo‘lmasa APK
   faqat sinov uchun (debug kalit).
 - **Domla materiallari** (kitob, qo‘llanma, metodika, testlar) — hali kelmagan; kelganda
   tarqatish huquqi haqida ma’lumot ham kerak.
@@ -125,7 +127,6 @@ kelmagan**.
 ## Ishga tushirish
 
 ```bash
-cd labguide
 flutter pub get && flutter test && flutter analyze
 flutter run                                   # debug, demo OTP kodi ekranda
 flutter build apk --release --split-per-abi

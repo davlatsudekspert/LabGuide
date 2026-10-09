@@ -5,8 +5,8 @@ Interfeys tillari: o‘zbekcha, ruscha, inglizcha. Rollar: shifokor, laboratoriy
 talaba, ustoz/tadqiqotchi. Bilim bazasi hamma rol uchun bitta; bosh sahifa va tezkor amallar
 rolga qarab o‘zgaradi.
 
-> Bu papka NFCSTORE repozitoriysi ichida joylashgan, lekin undan butunlay alohida loyiha.
-> NFCSTORE fayllariga tegilmaydi. Sababi: [docs/DECISIONS.md](docs/DECISIONS.md) (D-01).
+> Mustaqil repozitoriy. 2026-10-09 gacha `davlatsudekspert/nfcx` ichidagi `labguide/`
+> papkasida edi; tarix saqlangan holda shu yerga ko‘chirildi ([D-34](docs/DECISIONS.md)).
 
 ## Holat
 
@@ -21,7 +21,6 @@ shu fayldan boshlaydi.
 ## Ishga tushirish
 
 ```bash
-cd labguide
 flutter pub get
 flutter run                      # debug: demo OTP adapter (kod ekranda ko‘rsatiladi)
 flutter test                     # unit + widget + layout matritsa testlari

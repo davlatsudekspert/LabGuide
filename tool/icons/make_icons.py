@@ -1,6 +1,6 @@
 """LabGuide ilova ikonkalarini yaratadi (iOS AppIcon + Android adaptive/legacy).
 
-Ishlatish (labguide/ ichida, Pillow kerak):
+Ishlatish (repo ildizida, Pillow kerak):
     python3 tool/icons/make_icons.py <MaterialIcons-Regular.otf yo'li>
 
 Dizayn: forest yashil fon (dizayn tokeni brand #194C40, yengil gradient),

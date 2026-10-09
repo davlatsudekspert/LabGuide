@@ -1,30 +1,37 @@
-# iOS: Mac'siz build va TestFlight (GitHub Actions, nfcx)
+# iOS: Mac'siz build va TestFlight (GitHub Actions)
 
-Workflow: nfcx ildizidagi `.github/workflows/labguide-ios.yml` (“LabGuide iOS”). Faqat
-`labguide/` ilovasiga tegadi — NFCSTORE workflow’lariga ta’sir qilmaydi.
+Workflow: `.github/workflows/ci.yml` (“LabGuide CI”). `main` ga har push va PR’da imzosiz
+tekshiruv (testlar, Android sinov APK, iOS build) o‘zi ishlaydi.
 
-**Holat (2026-10-08, kechqurun):** GitHub Actions ishlayapti.
-- Run #2 (mode: build): testlar, Android sinov APK va imzosiz iOS release build — **o‘tdi**.
-- Run #3 (mode: testflight, apple_setup): mavjud NOVA_* secretlari bilan sertifikat va API kalit
-  o‘qildi (Team 5Z9CT2W378), bundle ID / App Store profili bosqichi o‘tdi. **To‘xtagan joy:**
-  App Store Connect’da `uz.labguide.app` uchun ilova yozuvi yo‘q — uni faqat egasi qo‘lda
-  yaratadi (pastda, 2-bo‘lim). Yozuv yaratilgach `mode: testflight` qayta ishga tushiriladi.
+**Tarix:** 2026-10-09 gacha ilova `davlatsudekspert/nfcx` ichidagi `labguide/` papkasida edi
+(D-01, D-34). O‘sha yerdagi run’lar: build — o‘tdi; testflight — sertifikat va API kalit
+o‘qildi (Team 5Z9CT2W378), bundle ID / profil bosqichi o‘tdi, lekin App Store Connect’da
+`uz.labguide.app` uchun ilova yozuvi yo‘qligi sababli to‘xtadi.
 
 ## 1. Imzosiz tekshiruv (secret kerak emas)
 
-**Actions → LabGuide iOS → Run workflow** — branch `claude/new-session-xqozot`, **mode: build**.
-Linux’da `flutter analyze` + testlar, Android sinov APK’lari (artefakt) va macOS’da imzosiz iOS
-release build.
+**Actions → LabGuide CI → Run workflow** — branch `main`, **mode: build** (yoki shunchaki
+`main` ga push). Linux’da `flutter analyze` + testlar, Android sinov APK’lari (artefakt) va
+macOS’da imzosiz iOS release build.
 
 ## 2. TestFlight uchun bir martalik sozlash
 
 ### Secretlar
-Yangi secret shart emas: workflow avval `LABGUIDE_*`, bo‘lmasa NFCSTORE’ning mavjud `NOVA_*`
-secretlaridan foydalanadi (bir Apple jamoasi): `IOS_CERTIFICATE_BASE64`,
-`IOS_CERTIFICATE_PASSWORD`, `APPSTORE_KEY_ID`, `APPSTORE_ISSUER_ID`, `APPSTORE_PRIVATE_KEY`.
-API kalit uchun `ASC_KEY_ID`, `ASC_ISSUER_ID`, `ASC_KEY_P8_BASE64` (`.p8` fayl base64 yoki
-matn) nomlari ham qabul qilinadi (zaxira); `IOS_TEAM_ID` berilsa, sertifikat jamoasi bilan
-solishtiriladi. Distribution sertifikati (`*_IOS_CERTIFICATE_*`) baribir kerak — hozir NOVA_*.
+**Settings → Secrets and variables → Actions → New repository secret**. Secret qiymatlarini
+GitHub boshqa repodan ko‘chirib bermaydi — ular qayta kiritiladi (nfcx’dagilar bilan bir xil
+qiymatlar, bitta Apple jamoasi):
+
+| Secret | Qiymat |
+|---|---|
+| `ASC_KEY_ID` | App Store Connect API kalit ID |
+| `ASC_ISSUER_ID` | Issuer ID |
+| `ASC_KEY_P8_BASE64` | `AuthKey_….p8` fayl (base64 yoki matnning o‘zi) |
+| `IOS_CERTIFICATE_P12_BASE64` | Apple Distribution sertifikati `.p12` (base64) — nfcx’dagi `NOVA_IOS_CERTIFICATE_BASE64` bilan bir xil |
+| `IOS_CERTIFICATE_PASSWORD` | `.p12` paroli — `NOVA_IOS_CERTIFICATE_PASSWORD` bilan bir xil |
+| `IOS_TEAM_ID` | ixtiyoriy: `5Z9CT2W378` (sertifikat jamoasi bilan solishtiriladi) |
+
+`.p12` → base64: `base64 -i distribution.p12 | pbcopy` (macOS) yoki
+`base64 -w0 distribution.p12` (Linux). Ilova profili secret emas — API’dan olinadi.
 
 ### Bundle ID va profil
 **Run workflow → mode: testflight, apple_setup: ✓**. Workflow App Store Connect API orqali
@@ -39,6 +46,6 @@ masalan “LabGuide UZ” — qurilmadagi nom baribir LabGuide), asosiy til, Bun
 ## 3. TestFlight’ga yuklash
 
 **Run workflow → mode: testflight**. Imzolangan IPA yasaladi, tekshiriladi (bundle ID,
-versiya, SDK, entitlements), `altool` bilan TestFlight’ga yuklanadi va processing holati
+versiya, SDK, entitlements), `altool` (ishlamasa `xcodebuild -exportArchive`) bilan TestFlight’ga yuklanadi va processing holati
 kutiladi. Build raqami App Store Connect’dagi oxirgisidan bittaga katta (avtomatik).
 App Store review’ga **yuborilmaydi**, reliz **qilinmaydi**.
