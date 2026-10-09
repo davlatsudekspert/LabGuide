@@ -857,14 +857,253 @@
   "errNotPositive": "Not calculated: the result is not positive — check the values.",
   "errSexMissing": "Choose sex.",
   "micTitle": "Microscopy atlas",
-  "micNotice": "Image slot. Authentic micrographs are added only after usage rights and labels are verified.",
-  "micRedCells": "Red blood cells",
-  "micWhiteCells": "White blood cells",
-  "micEpithelium": "Epithelial cells",
-  "micCasts": "Casts",
-  "micCrystals": "Crystals",
-  "micItemSub": "Appearance · distinctions · limitations",
-  "micImagePending": "Image pending rights check",
+  "micSubtitle": "Urine, blood and parasites — licensed micrographs",
+  "micAtlasError": "Couldn’t open the atlas",
+  "micNotFound": "This image or section was not found",
+  "micImagesCount": "{count, plural, =1{1 image} other{{count} images}}",
+  "@micImagesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "micGapsCount": "{count} still without an image",
+  "@micGapsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "micResultsCount": "Found: {count}",
+  "@micResultsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "micSearchLabel": "Search the atlas",
+  "micSearchHint": "e.g. neutrophil, оксалат, bezgak",
+  "micNoResultsTitle": "Nothing found",
+  "micNoResultsBody": "Try another name or another language (uz, ru, en).",
+  "micSections": "Sections",
+  "micEduNotice": "Teaching images — not for diagnosis. Every image shows its author, licence and original caption. LabGuide notes are drafts awaiting expert review.",
+  "micEduTag": "Teaching image — not for diagnosis",
+  "micNoImageYet": "No licensed image yet",
+  "micGapWhy": "Why not?",
+  "micAllGroups": "All",
+  "micSectionQuiz": "Practise this section",
+  "micZoom": "Zoom",
+  "micOpenFull": "{name} — open full screen",
+  "@micOpenFull": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "micImageSemantics": "Micrograph: {name}",
+  "@micImageSemantics": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "micNames": "Name in three languages",
+  "micOriginalCaption": "Original caption",
+  "micCaptionLang": "Verbatim, in the source language · {lang}",
+  "@micCaptionLang": {
+    "placeholders": {
+      "lang": {
+        "type": "String"
+      }
+    }
+  },
+  "micTranslation": "Translation (LabGuide)",
+  "micLangEn": "English",
+  "micLangEs": "Spanish",
+  "micLangRu": "Russian",
+  "micPreparation": "Preparation",
+  "micMagnification": "Magnification",
+  "micStain": "Stain",
+  "micNotStated": "not stated in the source",
+  "micOnlySource": "Only what the source states is shown.",
+  "micDraftTitle": "What to look for",
+  "micDraftTag": "Draft · awaiting expert review",
+  "micCreditTitle": "Author and licence",
+  "micAuthor": "Author",
+  "micCredit": "Source",
+  "micOwnWork": "Own work",
+  "micLicense": "Licence",
+  "micSourceDate": "Date in the source",
+  "micLicenseText": "Licence text: {license}",
+  "@micLicenseText": {
+    "placeholders": {
+      "license": {
+        "type": "String"
+      }
+    }
+  },
+  "micSourcePage": "Source page",
+  "micOriginalFile": "Original file",
+  "micResized": "In-app copy: {width}×{height} px (original {origWidth}×{origHeight} px, downscaled only). Not cropped, no text added.",
+  "@micResized": {
+    "placeholders": {
+      "width": {
+        "type": "int"
+      },
+      "height": {
+        "type": "int"
+      },
+      "origWidth": {
+        "type": "int"
+      },
+      "origHeight": {
+        "type": "int"
+      }
+    }
+  },
+  "micNotResized": "In-app copy: {width}×{height} px, original size. Not cropped, no text added.",
+  "@micNotResized": {
+    "placeholders": {
+      "width": {
+        "type": "int"
+      },
+      "height": {
+        "type": "int"
+      }
+    }
+  },
+  "micShareAlike": "CC BY-SA: adapted versions of this image are shared under the same licence.",
+  "micCdcTerms": "Terms of use (from the CDC PHIL page, verbatim)",
+  "micCdcFree": "Free source: CDC Public Health Image Library (PHIL), wwwn.cdc.gov/phil",
+  "micSameEntity": "More images of this type",
+  "micCreditsTitle": "Image credits",
+  "micCreditsSub": "Licences and sources",
+  "micCreditsIntro": "Each image’s licence, author and original caption were re-checked on the source page ({date}). Images are only downscaled: not cropped, no text added, EXIF removed. Only CC0, CC BY, CC BY-SA, public domain and CDC PHIL images are used.",
+  "@micCreditsIntro": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "micLicenseTexts": "Licence texts",
+  "micCreditsRow": "Authors and licences",
+  "micCreditsRowSub": "Source and terms of use for every image",
+  "micClose": "Close",
+  "micZoomIn": "Zoom in",
+  "micZoomOut": "Zoom out",
+  "micZoomReset": "Reset view",
+  "micViewerHint": "Pinch or double-tap to zoom",
+  "micHeroEyebrow": "Practice",
+  "micQuizTitle": "What is it?",
+  "micQuizSubtitle": "Microscopy practice",
+  "micQuizHeroBody": "Look at the image and pick the right name: 4 options, all from the atlas. Instant feedback.",
+  "micQuizCta": "Start practice",
+  "micQuizScope": "Which section?",
+  "micQuizScopeChip": "{name} · {count}",
+  "@micQuizScopeChip": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "micQuizStart": "{count, plural, =1{Start · 1 question} other{Start · {count} questions}}",
+  "@micQuizStart": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "micQuizBest": "Best result: {correct}/{total}",
+  "@micQuizBest": {
+    "placeholders": {
+      "correct": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "micQuizNoBest": "No result yet — start your first round",
+  "micQuizRules": "Options come only from atlas names. Mixed fields and journal panels are left out. Results are stored only on this device.",
+  "micQuizProgress": "{current} / {total}",
+  "@micQuizProgress": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "micQuizStreak": "{count} in a row",
+  "@micQuizStreak": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "micQuizPromptArrow": "What is the cell marked by the arrowhead?",
+  "micQuizPromptCentre": "What is the cell in the centre?",
+  "micQuizPromptField": "What is mainly shown in this field?",
+  "micQuizCorrect": "Correct!",
+  "micQuizWrong": "Not quite. Correct answer: {answer}",
+  "@micQuizWrong": {
+    "placeholders": {
+      "answer": {
+        "type": "String"
+      }
+    }
+  },
+  "micQuizOpenCard": "Open the image card",
+  "micQuizTapToZoom": "Tap the image to zoom",
+  "micQuizResultGreat": "Excellent!",
+  "micQuizResultGood": "Good result",
+  "micQuizResultKeep": "Keep practising",
+  "micQuizScore": "{correct} of {total} correct",
+  "@micQuizScore": {
+    "placeholders": {
+      "correct": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "micQuizBestStreak": "Longest streak: {count}",
+  "@micQuizBestStreak": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "micQuizNewRecord": "New record",
+  "micQuizRetryMistakes": "Retry mistakes ({count})",
+  "@micQuizRetryMistakes": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "micQuizNewRound": "New round",
+  "micQuizChangeScope": "Another section",
+  "micQuizBackToAtlas": "Back to the atlas",
   "insTitle": "Instruments",
   "insMindraySub": "Exact model required",
   "insHumanSub": "Instrument and reagent documents are separate",
@@ -1491,14 +1730,545 @@
     }
   },
   "examTitle": "Exam mode",
-  "examBody": "Timed exams and result history come with the learning module. The practice questions are available now.",
-  "examOpenPractice": "Open practice questions",
   "classesTitle": "Classes and assignments",
   "classesSignInTitle": "Sign in to use classes",
   "classesSignInBody": "Creating, joining and submitting assignments is tied to an account. Reading content stays open without sign-in.",
   "classesSignIn": "Sign in",
   "classesUnavailableTitle": "The class server isn't connected yet",
   "classesUnavailableBody": "Nothing is sent or stored. When it's connected, teachers see only their own classes and students see only their own results — checked on the server.",
+  "examSubtitle": "A timed test: pick topics, number of questions and time. Works offline.",
+  "examActiveTitle": "Unfinished exam",
+  "examActiveBody": "{answered}/{total} answered · {time} left",
+  "@examActiveBody": {
+    "placeholders": {
+      "answered": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "examResume": "Resume",
+  "examDiscard": "Abandon exam",
+  "examDiscardTitle": "Abandon this exam?",
+  "examDiscardBody": "Your answers will be deleted and no result will be saved.",
+  "examDiscardAction": "Abandon",
+  "examTopics": "Topics",
+  "examAllTopics": "All",
+  "examPoolCount": "{count, plural, =1{1 question in the selected topics} other{{count} questions in the selected topics}}",
+  "@examPoolCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "examSettings": "Settings",
+  "examCount": "Number of questions",
+  "examCountHint": "From 1 to {max}",
+  "@examCountHint": {
+    "placeholders": {
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "examCountError": "Enter a number from 1 to {max}",
+  "@examCountError": {
+    "placeholders": {
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "examCountAll": "All {count}",
+  "@examCountAll": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "examTime": "Time, minutes",
+  "examTimeHint": "1–180 min · usually 1 min per question",
+  "examTimeError": "Enter 1 to 180 minutes",
+  "examMinutes": "{count} min",
+  "@examMinutes": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "examDraftNotice": "These questions haven’t been expert-reviewed yet (draft). The result is for internal testing, not an official grade.",
+  "examRulesNotice": "Questions and options are shuffled. Until you finish you can change answers and bookmark questions to revisit. The clock keeps running even if the app is closed; when time is up, the exam ends by itself.",
+  "examStart": "Start exam",
+  "examReplaceTitle": "You have an unfinished exam",
+  "examReplaceBody": "Starting a new one deletes the previous exam and its answers.",
+  "examHistory": "Result history",
+  "examHistoryEmpty": "No exams yet. Your first result will appear here — it’s stored only on this device.",
+  "examHistoryStats": "Last {count}: average {avg}% · best {best}%",
+  "@examHistoryStats": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "avg": {
+        "type": "int"
+      },
+      "best": {
+        "type": "int"
+      }
+    }
+  },
+  "examHistoryRow": "{date} · {correct}/{total} · {time}",
+  "@examHistoryRow": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "correct": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "examHistoryClear": "Clear history",
+  "examHistoryClearBody": "All exam results will be deleted from this device.",
+  "examProgressLabel": "Recent results: {values}",
+  "@examProgressLabel": {
+    "placeholders": {
+      "values": {
+        "type": "String"
+      }
+    }
+  },
+  "examProgressOld": "Older → newer",
+  "examProgressLast": "Latest",
+  "examSettled": "Your previous exam ended because time ran out",
+  "examOpenResult": "Result",
+  "examTitleAll": "All topics",
+  "examTitleTopics": "{first} + {more} more",
+  "@examTitleTopics": {
+    "placeholders": {
+      "first": {
+        "type": "String"
+      },
+      "more": {
+        "type": "int"
+      }
+    }
+  },
+  "examReworkTitle": "Practise your mistakes",
+  "examQuestionMissing": "This question isn’t in the current content pack.",
+  "examMap": "Question map",
+  "examFinish": "Finish",
+  "examFinishTitle": "Finish the exam?",
+  "examFinishBody": "Unanswered: {unanswered}, bookmarked: {flagged}. You can’t change answers after finishing.",
+  "@examFinishBody": {
+    "placeholders": {
+      "unanswered": {
+        "type": "int"
+      },
+      "flagged": {
+        "type": "int"
+      }
+    }
+  },
+  "examFinishBodyAll": "All questions are answered. You can’t change answers after finishing.",
+  "examFlag": "Bookmark",
+  "examFlagged": "Bookmarked",
+  "examLegendAnswered": "Answered",
+  "examLegendEmpty": "Unanswered",
+  "examLegendFlagged": "Bookmarked",
+  "examQuestionN": "Question {n}",
+  "@examQuestionN": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "examAnsweredOf": "{answered}/{total} answered",
+  "@examAnsweredOf": {
+    "placeholders": {
+      "answered": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "examPrev": "Previous",
+  "examNext": "Next",
+  "examTimeLeft": "Time left: {time}",
+  "@examTimeLeft": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "examElapsed": "Elapsed: {time}",
+  "@examElapsed": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "examNoActive": "No active exam",
+  "examNoActiveBody": "It was finished or abandoned. Set up and start a new one.",
+  "examNew": "New exam",
+  "examSaving": "Saving the result…",
+  "examResultTitle": "Result",
+  "examResultMissing": "Result not found",
+  "examBand90": "Excellent!",
+  "examBand70": "Good result!",
+  "examBand50": "Not bad — review your mistakes",
+  "examBand0": "Keep practising — you’ve got this",
+  "examCorrectN": "Correct",
+  "examWrongN": "Wrong",
+  "examSkippedN": "Unanswered",
+  "examSpent": "Time",
+  "examTimedOut": "Time ran out — finished automatically",
+  "examDeltaUp": "+{n}% vs last attempt",
+  "@examDeltaUp": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "examDeltaDown": "−{n}% vs last attempt",
+  "@examDeltaDown": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "examDeltaSame": "Same as last attempt",
+  "examReworkMistakes": "Practise mistakes · {count}",
+  "@examReworkMistakes": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "examAnalysis": "Mistake analysis",
+  "examFilterMistakes": "Mistakes · {count}",
+  "@examFilterMistakes": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "examFilterAll": "All · {count}",
+  "@examFilterAll": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "examNoAnswer": "Not answered",
+  "examWrongTag": "Wrong",
+  "examWhyWrong": "Why not this answer",
+  "examNoSource": "No source given — the question hasn’t been reviewed yet.",
+  "examSourceMissing": "This exam’s question bank isn’t available in the app",
+  "examMultiHint": "Several correct answers — select all",
+  "examNoExplanation": "No explanation has been written for this question yet.",
+  "examByTopic": "By topic",
+  "examByTopicNote": "Weakest topic first — start there.",
+  "classesSubtitle": "A teacher creates a class and sets assignments; students join with a code and solve them.",
+  "classesTryExam": "Open the offline exam",
+  "classesLoading": "Loading…",
+  "classesInvalid": "The server didn’t accept this — check the fields.",
+  "classesCodeNotFound": "No class found with this code. Check the code with your teacher.",
+  "classesCreate": "Create a class",
+  "classesCreateSub": "For teachers: get a code and set assignments",
+  "classesJoin": "Join with a code",
+  "classesJoinSub": "For students: the 8-character code from your teacher",
+  "classesRoleNote": "Your role in the app grants no server rights: whoever creates a class is its teacher.",
+  "classesMine": "My classes",
+  "classesEmpty": "No classes yet",
+  "classesEmptyBody": "Create a class or join one with the code from your teacher.",
+  "classesRoleTeacher": "Teacher",
+  "classesRoleStudent": "Student",
+  "classesMembers": "{count, plural, =1{1 member} other{{count} members}}",
+  "@classesMembers": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "classesCreateIntro": "The account that creates a class becomes its teacher. Students join with the code you share.",
+  "classesGroupName": "Class name",
+  "classesGroupNameHint": "e.g. Biochemistry year 2",
+  "classesLengthError": "Enter {min}–{max} characters",
+  "@classesLengthError": {
+    "placeholders": {
+      "min": {
+        "type": "int"
+      },
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "classesDisplayName": "Your name in the class",
+  "classesDisplayNameHint": "e.g. Anvar Aliyev",
+  "classesDisplayNameHintTeacher": "e.g. Dr N. Karimova",
+  "classesDisplayNameNote": "Your email isn’t shown — members see only this name.",
+  "classesCreateAction": "Create class",
+  "classesCreated": "Class created — send the code to your students",
+  "classesJoinIntro": "Enter the code your teacher gave you.",
+  "classesCode": "Invite code",
+  "classesCodeError": "The code has 8 letters and digits",
+  "classesJoinNote": "The teacher sees this name and your assignment results. Your email isn’t shown.",
+  "classesJoinAction": "Join",
+  "classesJoined": "You joined the class",
+  "classesYouTeacher": "{count, plural, =1{You’re the teacher · 1 member} other{You’re the teacher · {count} members}}",
+  "@classesYouTeacher": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "classesYouStudent": "You’re a student",
+  "classesGroupMissing": "Class not found, or you’re no longer a member",
+  "classesBackToList": "Back to classes",
+  "classesAssignments": "Assignments",
+  "classesNewAssignment": "New assignment",
+  "classesNoAssignmentsTeacher": "No assignments yet. Pick topics and a number of questions from the bank to set one.",
+  "classesNoAssignmentsStudent": "No assignments yet",
+  "classesNoAssignmentsStudentBody": "When your teacher sets one, it will appear here.",
+  "classesNoDue": "no due date",
+  "classesDue": "due {date}",
+  "@classesDue": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "classesSubmittedOf": "{done}/{total} submitted",
+  "@classesSubmittedOf": {
+    "placeholders": {
+      "done": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "classesMembersTitle": "Students · {count}",
+  "@classesMembersTitle": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "classesNoStudents": "No students yet — share the code.",
+  "classesMemberNoWork": "Nothing submitted yet",
+  "classesMemberSummary": "{done}/{total} assignments · average {avg}%",
+  "@classesMemberSummary": {
+    "placeholders": {
+      "done": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      },
+      "avg": {
+        "type": "int"
+      }
+    }
+  },
+  "classesRemove": "Remove from class",
+  "classesRemoveTitle": "Remove {name} from the class?",
+  "@classesRemoveTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "classesRemoveBody": "They’ll no longer see the class or new assignments. Submitted results are kept.",
+  "classesRemoveAction": "Remove",
+  "classesStatusDone": "Submitted · {score}/{total}",
+  "@classesStatusDone": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "classesStatusInProgress": "In progress",
+  "classesStatusPending": "Not sent",
+  "classesStatusOverdue": "Past due",
+  "classesStatusNew": "New",
+  "classesStudentNote": "Your teacher sees only your name in the class and your assignment results.",
+  "classesLeave": "Leave class",
+  "classesLeaveTitle": "Leave the class?",
+  "classesLeaveBody": "To rejoin you’ll need the teacher’s code. Results you’ve submitted stay with the teacher.",
+  "classesLeaveAction": "Leave",
+  "classesInviteTitle": "Invite code",
+  "classesInviteBody": "Students: Learn → Classes and assignments → Join with a code.",
+  "classesCopyCode": "Copy code",
+  "classesCopyInvite": "Copy invitation text",
+  "classesCopied": "Copied",
+  "classesInviteText": "Join the class “{name}” in the LabGuide app: Learn → Classes and assignments → Join with a code. Code: {code}",
+  "@classesInviteText": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "classesNewAssignmentIntro": "Pick topics and a number — questions are drawn from the bank at random.",
+  "classesAssignmentTitle": "Assignment title",
+  "classesAssignmentTitleHint": "e.g. Topic 1",
+  "classesTimeLimit": "Time limit, minutes",
+  "classesTimeLimitHint": "Optional, 1–180. Time runs from when the student starts and is checked on the server.",
+  "classesNoLimit": "No limit",
+  "classesDueTitle": "Due date",
+  "classesDueNone": "No due date",
+  "classesDueDays": "{count, plural, =1{1 day} other{{count} days}}",
+  "@classesDueDays": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "classesDuePick": "Pick a date",
+  "classesDueNoneBody": "No due date — students can submit any time.",
+  "classesDueAt": "Due by {date}",
+  "@classesDueAt": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "classesPreview": "Selected questions · {count}",
+  "@classesPreview": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "classesReshuffle": "Reshuffle",
+  "classesKeyNotice": "Students can’t see the answer key in advance — the server does the scoring. Each student submits once.",
+  "classesSendAssignment": "Set assignment",
+  "classesAssignmentCreated": "Assignment set",
+  "classesSubmitted": "Answers submitted",
+  "classesSubmitNetwork": "No connection — answers are saved on this device. Send them again later.",
+  "classesSubmitRejected": "The server didn’t accept the answers: time or the due date ran out, or it was already submitted.",
+  "classesAssignmentMissing": "Assignment not found",
+  "classesMetricQuestions": "Questions",
+  "classesMetricLimit": "Time limit",
+  "classesMetricDue": "Due",
+  "classesMetricSubmitted": "Submitted",
+  "classesMetricAverage": "Average score",
+  "classesPendingTitle": "Answers not sent yet",
+  "classesPendingBody": "They’re saved on this device. Send them once you’re online — the server accepts them within the time limit.",
+  "classesResend": "Send again",
+  "classesOverdueTitle": "Past due",
+  "classesOverdueBody": "This assignment can no longer be submitted.",
+  "classesOutdatedPack": "{count, plural, =1{1 question in this assignment isn’t in your app’s content. Update the app.} other{{count} questions in this assignment aren’t in your app’s content. Update the app.}}",
+  "@classesOutdatedPack": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "classesStartNotice": "Once you start you have {minutes} min — the clock doesn’t stop, and answers are sent automatically when time is up. One submission only; sending needs internet.",
+  "@classesStartNotice": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "classesStartNoticeNoLimit": "No time limit. Answers are sent once and can’t be resubmitted; sending needs internet.",
+  "classesStart": "Start",
+  "classesSubmittedAt": "Submitted {date}",
+  "@classesSubmittedAt": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "classesServerScore": "Scored by the server",
+  "classesResults": "Results",
+  "classesColStudent": "Student",
+  "classesColScore": "Score · %",
+  "classesNotSubmitted": "Not submitted",
+  "classesByQuestion": "By question",
+  "classesByQuestionEmpty": "No one has submitted yet.",
+  "classesWrongOf": "{wrong}/{total} wrong",
+  "@classesWrongOf": {
+    "placeholders": {
+      "wrong": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "classesSending": "Sending answers…",
+  "classesMyProgress": "My progress",
+  "classesDoneOf": "{done}/{total} assignments done",
+  "@classesDoneOf": {
+    "placeholders": {
+      "done": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "classesAverage": "Average score: {avg}%",
+  "@classesAverage": {
+    "placeholders": {
+      "avg": {
+        "type": "int"
+      }
+    }
+  },
+  "classesStudentResultTitle": "Student’s result",
+  "classesStudentAnswer": "Student’s answer",
+  "classesInviteMore": "Invite more students",
   "profileTitle": "Profile and settings",
   "profileGuest": "Guest",
   "profileGuestSub": "Content is open without an account",

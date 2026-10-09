@@ -1597,29 +1597,330 @@ class AppLocalizationsEn extends AppLocalizations {
   String get micTitle => 'Microscopy atlas';
 
   @override
-  String get micNotice =>
-      'Image slot. Authentic micrographs are added only after usage rights and labels are verified.';
+  String get micSubtitle => 'Urine, blood and parasites — licensed micrographs';
 
   @override
-  String get micRedCells => 'Red blood cells';
+  String get micAtlasError => 'Couldn’t open the atlas';
 
   @override
-  String get micWhiteCells => 'White blood cells';
+  String get micNotFound => 'This image or section was not found';
 
   @override
-  String get micEpithelium => 'Epithelial cells';
+  String micImagesCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count images',
+      one: '1 image',
+    );
+    return '$_temp0';
+  }
 
   @override
-  String get micCasts => 'Casts';
+  String micGapsCount(int count) {
+    return '$count still without an image';
+  }
 
   @override
-  String get micCrystals => 'Crystals';
+  String micResultsCount(int count) {
+    return 'Found: $count';
+  }
 
   @override
-  String get micItemSub => 'Appearance · distinctions · limitations';
+  String get micSearchLabel => 'Search the atlas';
 
   @override
-  String get micImagePending => 'Image pending rights check';
+  String get micSearchHint => 'e.g. neutrophil, оксалат, bezgak';
+
+  @override
+  String get micNoResultsTitle => 'Nothing found';
+
+  @override
+  String get micNoResultsBody =>
+      'Try another name or another language (uz, ru, en).';
+
+  @override
+  String get micSections => 'Sections';
+
+  @override
+  String get micEduNotice =>
+      'Teaching images — not for diagnosis. Every image shows its author, licence and original caption. LabGuide notes are drafts awaiting expert review.';
+
+  @override
+  String get micEduTag => 'Teaching image — not for diagnosis';
+
+  @override
+  String get micNoImageYet => 'No licensed image yet';
+
+  @override
+  String get micGapWhy => 'Why not?';
+
+  @override
+  String get micAllGroups => 'All';
+
+  @override
+  String get micSectionQuiz => 'Practise this section';
+
+  @override
+  String get micZoom => 'Zoom';
+
+  @override
+  String micOpenFull(String name) {
+    return '$name — open full screen';
+  }
+
+  @override
+  String micImageSemantics(String name) {
+    return 'Micrograph: $name';
+  }
+
+  @override
+  String get micNames => 'Name in three languages';
+
+  @override
+  String get micOriginalCaption => 'Original caption';
+
+  @override
+  String micCaptionLang(String lang) {
+    return 'Verbatim, in the source language · $lang';
+  }
+
+  @override
+  String get micTranslation => 'Translation (LabGuide)';
+
+  @override
+  String get micLangEn => 'English';
+
+  @override
+  String get micLangEs => 'Spanish';
+
+  @override
+  String get micLangRu => 'Russian';
+
+  @override
+  String get micPreparation => 'Preparation';
+
+  @override
+  String get micMagnification => 'Magnification';
+
+  @override
+  String get micStain => 'Stain';
+
+  @override
+  String get micNotStated => 'not stated in the source';
+
+  @override
+  String get micOnlySource => 'Only what the source states is shown.';
+
+  @override
+  String get micDraftTitle => 'What to look for';
+
+  @override
+  String get micDraftTag => 'Draft · awaiting expert review';
+
+  @override
+  String get micCreditTitle => 'Author and licence';
+
+  @override
+  String get micAuthor => 'Author';
+
+  @override
+  String get micCredit => 'Source';
+
+  @override
+  String get micOwnWork => 'Own work';
+
+  @override
+  String get micLicense => 'Licence';
+
+  @override
+  String get micSourceDate => 'Date in the source';
+
+  @override
+  String micLicenseText(String license) {
+    return 'Licence text: $license';
+  }
+
+  @override
+  String get micSourcePage => 'Source page';
+
+  @override
+  String get micOriginalFile => 'Original file';
+
+  @override
+  String micResized(int width, int height, int origWidth, int origHeight) {
+    return 'In-app copy: $width×$height px (original $origWidth×$origHeight px, downscaled only). Not cropped, no text added.';
+  }
+
+  @override
+  String micNotResized(int width, int height) {
+    return 'In-app copy: $width×$height px, original size. Not cropped, no text added.';
+  }
+
+  @override
+  String get micShareAlike =>
+      'CC BY-SA: adapted versions of this image are shared under the same licence.';
+
+  @override
+  String get micCdcTerms => 'Terms of use (from the CDC PHIL page, verbatim)';
+
+  @override
+  String get micCdcFree =>
+      'Free source: CDC Public Health Image Library (PHIL), wwwn.cdc.gov/phil';
+
+  @override
+  String get micSameEntity => 'More images of this type';
+
+  @override
+  String get micCreditsTitle => 'Image credits';
+
+  @override
+  String get micCreditsSub => 'Licences and sources';
+
+  @override
+  String micCreditsIntro(String date) {
+    return 'Each image’s licence, author and original caption were re-checked on the source page ($date). Images are only downscaled: not cropped, no text added, EXIF removed. Only CC0, CC BY, CC BY-SA, public domain and CDC PHIL images are used.';
+  }
+
+  @override
+  String get micLicenseTexts => 'Licence texts';
+
+  @override
+  String get micCreditsRow => 'Authors and licences';
+
+  @override
+  String get micCreditsRowSub => 'Source and terms of use for every image';
+
+  @override
+  String get micClose => 'Close';
+
+  @override
+  String get micZoomIn => 'Zoom in';
+
+  @override
+  String get micZoomOut => 'Zoom out';
+
+  @override
+  String get micZoomReset => 'Reset view';
+
+  @override
+  String get micViewerHint => 'Pinch or double-tap to zoom';
+
+  @override
+  String get micHeroEyebrow => 'Practice';
+
+  @override
+  String get micQuizTitle => 'What is it?';
+
+  @override
+  String get micQuizSubtitle => 'Microscopy practice';
+
+  @override
+  String get micQuizHeroBody =>
+      'Look at the image and pick the right name: 4 options, all from the atlas. Instant feedback.';
+
+  @override
+  String get micQuizCta => 'Start practice';
+
+  @override
+  String get micQuizScope => 'Which section?';
+
+  @override
+  String micQuizScopeChip(String name, int count) {
+    return '$name · $count';
+  }
+
+  @override
+  String micQuizStart(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Start · $count questions',
+      one: 'Start · 1 question',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String micQuizBest(int correct, int total) {
+    return 'Best result: $correct/$total';
+  }
+
+  @override
+  String get micQuizNoBest => 'No result yet — start your first round';
+
+  @override
+  String get micQuizRules =>
+      'Options come only from atlas names. Mixed fields and journal panels are left out. Results are stored only on this device.';
+
+  @override
+  String micQuizProgress(int current, int total) {
+    return '$current / $total';
+  }
+
+  @override
+  String micQuizStreak(int count) {
+    return '$count in a row';
+  }
+
+  @override
+  String get micQuizPromptArrow => 'What is the cell marked by the arrowhead?';
+
+  @override
+  String get micQuizPromptCentre => 'What is the cell in the centre?';
+
+  @override
+  String get micQuizPromptField => 'What is mainly shown in this field?';
+
+  @override
+  String get micQuizCorrect => 'Correct!';
+
+  @override
+  String micQuizWrong(String answer) {
+    return 'Not quite. Correct answer: $answer';
+  }
+
+  @override
+  String get micQuizOpenCard => 'Open the image card';
+
+  @override
+  String get micQuizTapToZoom => 'Tap the image to zoom';
+
+  @override
+  String get micQuizResultGreat => 'Excellent!';
+
+  @override
+  String get micQuizResultGood => 'Good result';
+
+  @override
+  String get micQuizResultKeep => 'Keep practising';
+
+  @override
+  String micQuizScore(int correct, int total) {
+    return '$correct of $total correct';
+  }
+
+  @override
+  String micQuizBestStreak(int count) {
+    return 'Longest streak: $count';
+  }
+
+  @override
+  String get micQuizNewRecord => 'New record';
+
+  @override
+  String micQuizRetryMistakes(int count) {
+    return 'Retry mistakes ($count)';
+  }
+
+  @override
+  String get micQuizNewRound => 'New round';
+
+  @override
+  String get micQuizChangeScope => 'Another section';
+
+  @override
+  String get micQuizBackToAtlas => 'Back to the atlas';
 
   @override
   String get insTitle => 'Instruments';
@@ -2916,13 +3217,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get examTitle => 'Exam mode';
 
   @override
-  String get examBody =>
-      'Timed exams and result history come with the learning module. The practice questions are available now.';
-
-  @override
-  String get examOpenPractice => 'Open practice questions';
-
-  @override
   String get classesTitle => 'Classes and assignments';
 
   @override
@@ -2941,6 +3235,771 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get classesUnavailableBody =>
       'Nothing is sent or stored. When it\'s connected, teachers see only their own classes and students see only their own results — checked on the server.';
+
+  @override
+  String get examSubtitle =>
+      'A timed test: pick topics, number of questions and time. Works offline.';
+
+  @override
+  String get examActiveTitle => 'Unfinished exam';
+
+  @override
+  String examActiveBody(int answered, int total, String time) {
+    return '$answered/$total answered · $time left';
+  }
+
+  @override
+  String get examResume => 'Resume';
+
+  @override
+  String get examDiscard => 'Abandon exam';
+
+  @override
+  String get examDiscardTitle => 'Abandon this exam?';
+
+  @override
+  String get examDiscardBody =>
+      'Your answers will be deleted and no result will be saved.';
+
+  @override
+  String get examDiscardAction => 'Abandon';
+
+  @override
+  String get examTopics => 'Topics';
+
+  @override
+  String get examAllTopics => 'All';
+
+  @override
+  String examPoolCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count questions in the selected topics',
+      one: '1 question in the selected topics',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get examSettings => 'Settings';
+
+  @override
+  String get examCount => 'Number of questions';
+
+  @override
+  String examCountHint(int max) {
+    return 'From 1 to $max';
+  }
+
+  @override
+  String examCountError(int max) {
+    return 'Enter a number from 1 to $max';
+  }
+
+  @override
+  String examCountAll(int count) {
+    return 'All $count';
+  }
+
+  @override
+  String get examTime => 'Time, minutes';
+
+  @override
+  String get examTimeHint => '1–180 min · usually 1 min per question';
+
+  @override
+  String get examTimeError => 'Enter 1 to 180 minutes';
+
+  @override
+  String examMinutes(int count) {
+    return '$count min';
+  }
+
+  @override
+  String get examDraftNotice =>
+      'These questions haven’t been expert-reviewed yet (draft). The result is for internal testing, not an official grade.';
+
+  @override
+  String get examRulesNotice =>
+      'Questions and options are shuffled. Until you finish you can change answers and bookmark questions to revisit. The clock keeps running even if the app is closed; when time is up, the exam ends by itself.';
+
+  @override
+  String get examStart => 'Start exam';
+
+  @override
+  String get examReplaceTitle => 'You have an unfinished exam';
+
+  @override
+  String get examReplaceBody =>
+      'Starting a new one deletes the previous exam and its answers.';
+
+  @override
+  String get examHistory => 'Result history';
+
+  @override
+  String get examHistoryEmpty =>
+      'No exams yet. Your first result will appear here — it’s stored only on this device.';
+
+  @override
+  String examHistoryStats(int count, int avg, int best) {
+    return 'Last $count: average $avg% · best $best%';
+  }
+
+  @override
+  String examHistoryRow(String date, int correct, int total, String time) {
+    return '$date · $correct/$total · $time';
+  }
+
+  @override
+  String get examHistoryClear => 'Clear history';
+
+  @override
+  String get examHistoryClearBody =>
+      'All exam results will be deleted from this device.';
+
+  @override
+  String examProgressLabel(String values) {
+    return 'Recent results: $values';
+  }
+
+  @override
+  String get examProgressOld => 'Older → newer';
+
+  @override
+  String get examProgressLast => 'Latest';
+
+  @override
+  String get examSettled => 'Your previous exam ended because time ran out';
+
+  @override
+  String get examOpenResult => 'Result';
+
+  @override
+  String get examTitleAll => 'All topics';
+
+  @override
+  String examTitleTopics(String first, int more) {
+    return '$first + $more more';
+  }
+
+  @override
+  String get examReworkTitle => 'Practise your mistakes';
+
+  @override
+  String get examQuestionMissing =>
+      'This question isn’t in the current content pack.';
+
+  @override
+  String get examMap => 'Question map';
+
+  @override
+  String get examFinish => 'Finish';
+
+  @override
+  String get examFinishTitle => 'Finish the exam?';
+
+  @override
+  String examFinishBody(int unanswered, int flagged) {
+    return 'Unanswered: $unanswered, bookmarked: $flagged. You can’t change answers after finishing.';
+  }
+
+  @override
+  String get examFinishBodyAll =>
+      'All questions are answered. You can’t change answers after finishing.';
+
+  @override
+  String get examFlag => 'Bookmark';
+
+  @override
+  String get examFlagged => 'Bookmarked';
+
+  @override
+  String get examLegendAnswered => 'Answered';
+
+  @override
+  String get examLegendEmpty => 'Unanswered';
+
+  @override
+  String get examLegendFlagged => 'Bookmarked';
+
+  @override
+  String examQuestionN(int n) {
+    return 'Question $n';
+  }
+
+  @override
+  String examAnsweredOf(int answered, int total) {
+    return '$answered/$total answered';
+  }
+
+  @override
+  String get examPrev => 'Previous';
+
+  @override
+  String get examNext => 'Next';
+
+  @override
+  String examTimeLeft(String time) {
+    return 'Time left: $time';
+  }
+
+  @override
+  String examElapsed(String time) {
+    return 'Elapsed: $time';
+  }
+
+  @override
+  String get examNoActive => 'No active exam';
+
+  @override
+  String get examNoActiveBody =>
+      'It was finished or abandoned. Set up and start a new one.';
+
+  @override
+  String get examNew => 'New exam';
+
+  @override
+  String get examSaving => 'Saving the result…';
+
+  @override
+  String get examResultTitle => 'Result';
+
+  @override
+  String get examResultMissing => 'Result not found';
+
+  @override
+  String get examBand90 => 'Excellent!';
+
+  @override
+  String get examBand70 => 'Good result!';
+
+  @override
+  String get examBand50 => 'Not bad — review your mistakes';
+
+  @override
+  String get examBand0 => 'Keep practising — you’ve got this';
+
+  @override
+  String get examCorrectN => 'Correct';
+
+  @override
+  String get examWrongN => 'Wrong';
+
+  @override
+  String get examSkippedN => 'Unanswered';
+
+  @override
+  String get examSpent => 'Time';
+
+  @override
+  String get examTimedOut => 'Time ran out — finished automatically';
+
+  @override
+  String examDeltaUp(int n) {
+    return '+$n% vs last attempt';
+  }
+
+  @override
+  String examDeltaDown(int n) {
+    return '−$n% vs last attempt';
+  }
+
+  @override
+  String get examDeltaSame => 'Same as last attempt';
+
+  @override
+  String examReworkMistakes(int count) {
+    return 'Practise mistakes · $count';
+  }
+
+  @override
+  String get examAnalysis => 'Mistake analysis';
+
+  @override
+  String examFilterMistakes(int count) {
+    return 'Mistakes · $count';
+  }
+
+  @override
+  String examFilterAll(int count) {
+    return 'All · $count';
+  }
+
+  @override
+  String get examNoAnswer => 'Not answered';
+
+  @override
+  String get examWrongTag => 'Wrong';
+
+  @override
+  String get examWhyWrong => 'Why not this answer';
+
+  @override
+  String get examNoSource =>
+      'No source given — the question hasn’t been reviewed yet.';
+
+  @override
+  String get examSourceMissing =>
+      'This exam’s question bank isn’t available in the app';
+
+  @override
+  String get examMultiHint => 'Several correct answers — select all';
+
+  @override
+  String get examNoExplanation =>
+      'No explanation has been written for this question yet.';
+
+  @override
+  String get examByTopic => 'By topic';
+
+  @override
+  String get examByTopicNote => 'Weakest topic first — start there.';
+
+  @override
+  String get classesSubtitle =>
+      'A teacher creates a class and sets assignments; students join with a code and solve them.';
+
+  @override
+  String get classesTryExam => 'Open the offline exam';
+
+  @override
+  String get classesLoading => 'Loading…';
+
+  @override
+  String get classesInvalid =>
+      'The server didn’t accept this — check the fields.';
+
+  @override
+  String get classesCodeNotFound =>
+      'No class found with this code. Check the code with your teacher.';
+
+  @override
+  String get classesCreate => 'Create a class';
+
+  @override
+  String get classesCreateSub => 'For teachers: get a code and set assignments';
+
+  @override
+  String get classesJoin => 'Join with a code';
+
+  @override
+  String get classesJoinSub =>
+      'For students: the 8-character code from your teacher';
+
+  @override
+  String get classesRoleNote =>
+      'Your role in the app grants no server rights: whoever creates a class is its teacher.';
+
+  @override
+  String get classesMine => 'My classes';
+
+  @override
+  String get classesEmpty => 'No classes yet';
+
+  @override
+  String get classesEmptyBody =>
+      'Create a class or join one with the code from your teacher.';
+
+  @override
+  String get classesRoleTeacher => 'Teacher';
+
+  @override
+  String get classesRoleStudent => 'Student';
+
+  @override
+  String classesMembers(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count members',
+      one: '1 member',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get classesCreateIntro =>
+      'The account that creates a class becomes its teacher. Students join with the code you share.';
+
+  @override
+  String get classesGroupName => 'Class name';
+
+  @override
+  String get classesGroupNameHint => 'e.g. Biochemistry year 2';
+
+  @override
+  String classesLengthError(int min, int max) {
+    return 'Enter $min–$max characters';
+  }
+
+  @override
+  String get classesDisplayName => 'Your name in the class';
+
+  @override
+  String get classesDisplayNameHint => 'e.g. Anvar Aliyev';
+
+  @override
+  String get classesDisplayNameHintTeacher => 'e.g. Dr N. Karimova';
+
+  @override
+  String get classesDisplayNameNote =>
+      'Your email isn’t shown — members see only this name.';
+
+  @override
+  String get classesCreateAction => 'Create class';
+
+  @override
+  String get classesCreated => 'Class created — send the code to your students';
+
+  @override
+  String get classesJoinIntro => 'Enter the code your teacher gave you.';
+
+  @override
+  String get classesCode => 'Invite code';
+
+  @override
+  String get classesCodeError => 'The code has 8 letters and digits';
+
+  @override
+  String get classesJoinNote =>
+      'The teacher sees this name and your assignment results. Your email isn’t shown.';
+
+  @override
+  String get classesJoinAction => 'Join';
+
+  @override
+  String get classesJoined => 'You joined the class';
+
+  @override
+  String classesYouTeacher(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'You’re the teacher · $count members',
+      one: 'You’re the teacher · 1 member',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get classesYouStudent => 'You’re a student';
+
+  @override
+  String get classesGroupMissing =>
+      'Class not found, or you’re no longer a member';
+
+  @override
+  String get classesBackToList => 'Back to classes';
+
+  @override
+  String get classesAssignments => 'Assignments';
+
+  @override
+  String get classesNewAssignment => 'New assignment';
+
+  @override
+  String get classesNoAssignmentsTeacher =>
+      'No assignments yet. Pick topics and a number of questions from the bank to set one.';
+
+  @override
+  String get classesNoAssignmentsStudent => 'No assignments yet';
+
+  @override
+  String get classesNoAssignmentsStudentBody =>
+      'When your teacher sets one, it will appear here.';
+
+  @override
+  String get classesNoDue => 'no due date';
+
+  @override
+  String classesDue(String date) {
+    return 'due $date';
+  }
+
+  @override
+  String classesSubmittedOf(int done, int total) {
+    return '$done/$total submitted';
+  }
+
+  @override
+  String classesMembersTitle(int count) {
+    return 'Students · $count';
+  }
+
+  @override
+  String get classesNoStudents => 'No students yet — share the code.';
+
+  @override
+  String get classesMemberNoWork => 'Nothing submitted yet';
+
+  @override
+  String classesMemberSummary(int done, int total, int avg) {
+    return '$done/$total assignments · average $avg%';
+  }
+
+  @override
+  String get classesRemove => 'Remove from class';
+
+  @override
+  String classesRemoveTitle(String name) {
+    return 'Remove $name from the class?';
+  }
+
+  @override
+  String get classesRemoveBody =>
+      'They’ll no longer see the class or new assignments. Submitted results are kept.';
+
+  @override
+  String get classesRemoveAction => 'Remove';
+
+  @override
+  String classesStatusDone(int score, int total) {
+    return 'Submitted · $score/$total';
+  }
+
+  @override
+  String get classesStatusInProgress => 'In progress';
+
+  @override
+  String get classesStatusPending => 'Not sent';
+
+  @override
+  String get classesStatusOverdue => 'Past due';
+
+  @override
+  String get classesStatusNew => 'New';
+
+  @override
+  String get classesStudentNote =>
+      'Your teacher sees only your name in the class and your assignment results.';
+
+  @override
+  String get classesLeave => 'Leave class';
+
+  @override
+  String get classesLeaveTitle => 'Leave the class?';
+
+  @override
+  String get classesLeaveBody =>
+      'To rejoin you’ll need the teacher’s code. Results you’ve submitted stay with the teacher.';
+
+  @override
+  String get classesLeaveAction => 'Leave';
+
+  @override
+  String get classesInviteTitle => 'Invite code';
+
+  @override
+  String get classesInviteBody =>
+      'Students: Learn → Classes and assignments → Join with a code.';
+
+  @override
+  String get classesCopyCode => 'Copy code';
+
+  @override
+  String get classesCopyInvite => 'Copy invitation text';
+
+  @override
+  String get classesCopied => 'Copied';
+
+  @override
+  String classesInviteText(String name, String code) {
+    return 'Join the class “$name” in the LabGuide app: Learn → Classes and assignments → Join with a code. Code: $code';
+  }
+
+  @override
+  String get classesNewAssignmentIntro =>
+      'Pick topics and a number — questions are drawn from the bank at random.';
+
+  @override
+  String get classesAssignmentTitle => 'Assignment title';
+
+  @override
+  String get classesAssignmentTitleHint => 'e.g. Topic 1';
+
+  @override
+  String get classesTimeLimit => 'Time limit, minutes';
+
+  @override
+  String get classesTimeLimitHint =>
+      'Optional, 1–180. Time runs from when the student starts and is checked on the server.';
+
+  @override
+  String get classesNoLimit => 'No limit';
+
+  @override
+  String get classesDueTitle => 'Due date';
+
+  @override
+  String get classesDueNone => 'No due date';
+
+  @override
+  String classesDueDays(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count days',
+      one: '1 day',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get classesDuePick => 'Pick a date';
+
+  @override
+  String get classesDueNoneBody =>
+      'No due date — students can submit any time.';
+
+  @override
+  String classesDueAt(String date) {
+    return 'Due by $date';
+  }
+
+  @override
+  String classesPreview(int count) {
+    return 'Selected questions · $count';
+  }
+
+  @override
+  String get classesReshuffle => 'Reshuffle';
+
+  @override
+  String get classesKeyNotice =>
+      'Students can’t see the answer key in advance — the server does the scoring. Each student submits once.';
+
+  @override
+  String get classesSendAssignment => 'Set assignment';
+
+  @override
+  String get classesAssignmentCreated => 'Assignment set';
+
+  @override
+  String get classesSubmitted => 'Answers submitted';
+
+  @override
+  String get classesSubmitNetwork =>
+      'No connection — answers are saved on this device. Send them again later.';
+
+  @override
+  String get classesSubmitRejected =>
+      'The server didn’t accept the answers: time or the due date ran out, or it was already submitted.';
+
+  @override
+  String get classesAssignmentMissing => 'Assignment not found';
+
+  @override
+  String get classesMetricQuestions => 'Questions';
+
+  @override
+  String get classesMetricLimit => 'Time limit';
+
+  @override
+  String get classesMetricDue => 'Due';
+
+  @override
+  String get classesMetricSubmitted => 'Submitted';
+
+  @override
+  String get classesMetricAverage => 'Average score';
+
+  @override
+  String get classesPendingTitle => 'Answers not sent yet';
+
+  @override
+  String get classesPendingBody =>
+      'They’re saved on this device. Send them once you’re online — the server accepts them within the time limit.';
+
+  @override
+  String get classesResend => 'Send again';
+
+  @override
+  String get classesOverdueTitle => 'Past due';
+
+  @override
+  String get classesOverdueBody =>
+      'This assignment can no longer be submitted.';
+
+  @override
+  String classesOutdatedPack(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other:
+          '$count questions in this assignment aren’t in your app’s content. Update the app.',
+      one: '1 question in this assignment isn’t in your app’s content. Update the app.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String classesStartNotice(int minutes) {
+    return 'Once you start you have $minutes min — the clock doesn’t stop, and answers are sent automatically when time is up. One submission only; sending needs internet.';
+  }
+
+  @override
+  String get classesStartNoticeNoLimit =>
+      'No time limit. Answers are sent once and can’t be resubmitted; sending needs internet.';
+
+  @override
+  String get classesStart => 'Start';
+
+  @override
+  String classesSubmittedAt(String date) {
+    return 'Submitted $date';
+  }
+
+  @override
+  String get classesServerScore => 'Scored by the server';
+
+  @override
+  String get classesResults => 'Results';
+
+  @override
+  String get classesColStudent => 'Student';
+
+  @override
+  String get classesColScore => 'Score · %';
+
+  @override
+  String get classesNotSubmitted => 'Not submitted';
+
+  @override
+  String get classesByQuestion => 'By question';
+
+  @override
+  String get classesByQuestionEmpty => 'No one has submitted yet.';
+
+  @override
+  String classesWrongOf(int wrong, int total) {
+    return '$wrong/$total wrong';
+  }
+
+  @override
+  String get classesSending => 'Sending answers…';
+
+  @override
+  String get classesMyProgress => 'My progress';
+
+  @override
+  String classesDoneOf(int done, int total) {
+    return '$done/$total assignments done';
+  }
+
+  @override
+  String classesAverage(int avg) {
+    return 'Average score: $avg%';
+  }
+
+  @override
+  String get classesStudentResultTitle => 'Student’s result';
+
+  @override
+  String get classesStudentAnswer => 'Student’s answer';
+
+  @override
+  String get classesInviteMore => 'Invite more students';
 
   @override
   String get profileTitle => 'Profile and settings';

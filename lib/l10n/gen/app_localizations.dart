@@ -2926,53 +2926,545 @@ abstract class AppLocalizations {
   /// **'Microscopy atlas'**
   String get micTitle;
 
-  /// No description provided for @micNotice.
+  /// No description provided for @micSubtitle.
   ///
   /// In en, this message translates to:
-  /// **'Image slot. Authentic micrographs are added only after usage rights and labels are verified.'**
-  String get micNotice;
+  /// **'Urine, blood and parasites — licensed micrographs'**
+  String get micSubtitle;
 
-  /// No description provided for @micRedCells.
+  /// No description provided for @micAtlasError.
   ///
   /// In en, this message translates to:
-  /// **'Red blood cells'**
-  String get micRedCells;
+  /// **'Couldn’t open the atlas'**
+  String get micAtlasError;
 
-  /// No description provided for @micWhiteCells.
+  /// No description provided for @micNotFound.
   ///
   /// In en, this message translates to:
-  /// **'White blood cells'**
-  String get micWhiteCells;
+  /// **'This image or section was not found'**
+  String get micNotFound;
 
-  /// No description provided for @micEpithelium.
+  /// No description provided for @micImagesCount.
   ///
   /// In en, this message translates to:
-  /// **'Epithelial cells'**
-  String get micEpithelium;
+  /// **'{count, plural, =1{1 image} other{{count} images}}'**
+  String micImagesCount(int count);
 
-  /// No description provided for @micCasts.
+  /// No description provided for @micGapsCount.
   ///
   /// In en, this message translates to:
-  /// **'Casts'**
-  String get micCasts;
+  /// **'{count} still without an image'**
+  String micGapsCount(int count);
 
-  /// No description provided for @micCrystals.
+  /// No description provided for @micResultsCount.
   ///
   /// In en, this message translates to:
-  /// **'Crystals'**
-  String get micCrystals;
+  /// **'Found: {count}'**
+  String micResultsCount(int count);
 
-  /// No description provided for @micItemSub.
+  /// No description provided for @micSearchLabel.
   ///
   /// In en, this message translates to:
-  /// **'Appearance · distinctions · limitations'**
-  String get micItemSub;
+  /// **'Search the atlas'**
+  String get micSearchLabel;
 
-  /// No description provided for @micImagePending.
+  /// No description provided for @micSearchHint.
   ///
   /// In en, this message translates to:
-  /// **'Image pending rights check'**
-  String get micImagePending;
+  /// **'e.g. neutrophil, оксалат, bezgak'**
+  String get micSearchHint;
+
+  /// No description provided for @micNoResultsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing found'**
+  String get micNoResultsTitle;
+
+  /// No description provided for @micNoResultsBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Try another name or another language (uz, ru, en).'**
+  String get micNoResultsBody;
+
+  /// No description provided for @micSections.
+  ///
+  /// In en, this message translates to:
+  /// **'Sections'**
+  String get micSections;
+
+  /// No description provided for @micEduNotice.
+  ///
+  /// In en, this message translates to:
+  /// **'Teaching images — not for diagnosis. Every image shows its author, licence and original caption. LabGuide notes are drafts awaiting expert review.'**
+  String get micEduNotice;
+
+  /// No description provided for @micEduTag.
+  ///
+  /// In en, this message translates to:
+  /// **'Teaching image — not for diagnosis'**
+  String get micEduTag;
+
+  /// No description provided for @micNoImageYet.
+  ///
+  /// In en, this message translates to:
+  /// **'No licensed image yet'**
+  String get micNoImageYet;
+
+  /// No description provided for @micGapWhy.
+  ///
+  /// In en, this message translates to:
+  /// **'Why not?'**
+  String get micGapWhy;
+
+  /// No description provided for @micAllGroups.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get micAllGroups;
+
+  /// No description provided for @micSectionQuiz.
+  ///
+  /// In en, this message translates to:
+  /// **'Practise this section'**
+  String get micSectionQuiz;
+
+  /// No description provided for @micZoom.
+  ///
+  /// In en, this message translates to:
+  /// **'Zoom'**
+  String get micZoom;
+
+  /// No description provided for @micOpenFull.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} — open full screen'**
+  String micOpenFull(String name);
+
+  /// No description provided for @micImageSemantics.
+  ///
+  /// In en, this message translates to:
+  /// **'Micrograph: {name}'**
+  String micImageSemantics(String name);
+
+  /// No description provided for @micNames.
+  ///
+  /// In en, this message translates to:
+  /// **'Name in three languages'**
+  String get micNames;
+
+  /// No description provided for @micOriginalCaption.
+  ///
+  /// In en, this message translates to:
+  /// **'Original caption'**
+  String get micOriginalCaption;
+
+  /// No description provided for @micCaptionLang.
+  ///
+  /// In en, this message translates to:
+  /// **'Verbatim, in the source language · {lang}'**
+  String micCaptionLang(String lang);
+
+  /// No description provided for @micTranslation.
+  ///
+  /// In en, this message translates to:
+  /// **'Translation (LabGuide)'**
+  String get micTranslation;
+
+  /// No description provided for @micLangEn.
+  ///
+  /// In en, this message translates to:
+  /// **'English'**
+  String get micLangEn;
+
+  /// No description provided for @micLangEs.
+  ///
+  /// In en, this message translates to:
+  /// **'Spanish'**
+  String get micLangEs;
+
+  /// No description provided for @micLangRu.
+  ///
+  /// In en, this message translates to:
+  /// **'Russian'**
+  String get micLangRu;
+
+  /// No description provided for @micPreparation.
+  ///
+  /// In en, this message translates to:
+  /// **'Preparation'**
+  String get micPreparation;
+
+  /// No description provided for @micMagnification.
+  ///
+  /// In en, this message translates to:
+  /// **'Magnification'**
+  String get micMagnification;
+
+  /// No description provided for @micStain.
+  ///
+  /// In en, this message translates to:
+  /// **'Stain'**
+  String get micStain;
+
+  /// No description provided for @micNotStated.
+  ///
+  /// In en, this message translates to:
+  /// **'not stated in the source'**
+  String get micNotStated;
+
+  /// No description provided for @micOnlySource.
+  ///
+  /// In en, this message translates to:
+  /// **'Only what the source states is shown.'**
+  String get micOnlySource;
+
+  /// No description provided for @micDraftTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'What to look for'**
+  String get micDraftTitle;
+
+  /// No description provided for @micDraftTag.
+  ///
+  /// In en, this message translates to:
+  /// **'Draft · awaiting expert review'**
+  String get micDraftTag;
+
+  /// No description provided for @micCreditTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Author and licence'**
+  String get micCreditTitle;
+
+  /// No description provided for @micAuthor.
+  ///
+  /// In en, this message translates to:
+  /// **'Author'**
+  String get micAuthor;
+
+  /// No description provided for @micCredit.
+  ///
+  /// In en, this message translates to:
+  /// **'Source'**
+  String get micCredit;
+
+  /// No description provided for @micOwnWork.
+  ///
+  /// In en, this message translates to:
+  /// **'Own work'**
+  String get micOwnWork;
+
+  /// No description provided for @micLicense.
+  ///
+  /// In en, this message translates to:
+  /// **'Licence'**
+  String get micLicense;
+
+  /// No description provided for @micSourceDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Date in the source'**
+  String get micSourceDate;
+
+  /// No description provided for @micLicenseText.
+  ///
+  /// In en, this message translates to:
+  /// **'Licence text: {license}'**
+  String micLicenseText(String license);
+
+  /// No description provided for @micSourcePage.
+  ///
+  /// In en, this message translates to:
+  /// **'Source page'**
+  String get micSourcePage;
+
+  /// No description provided for @micOriginalFile.
+  ///
+  /// In en, this message translates to:
+  /// **'Original file'**
+  String get micOriginalFile;
+
+  /// No description provided for @micResized.
+  ///
+  /// In en, this message translates to:
+  /// **'In-app copy: {width}×{height} px (original {origWidth}×{origHeight} px, downscaled only). Not cropped, no text added.'**
+  String micResized(int width, int height, int origWidth, int origHeight);
+
+  /// No description provided for @micNotResized.
+  ///
+  /// In en, this message translates to:
+  /// **'In-app copy: {width}×{height} px, original size. Not cropped, no text added.'**
+  String micNotResized(int width, int height);
+
+  /// No description provided for @micShareAlike.
+  ///
+  /// In en, this message translates to:
+  /// **'CC BY-SA: adapted versions of this image are shared under the same licence.'**
+  String get micShareAlike;
+
+  /// No description provided for @micCdcTerms.
+  ///
+  /// In en, this message translates to:
+  /// **'Terms of use (from the CDC PHIL page, verbatim)'**
+  String get micCdcTerms;
+
+  /// No description provided for @micCdcFree.
+  ///
+  /// In en, this message translates to:
+  /// **'Free source: CDC Public Health Image Library (PHIL), wwwn.cdc.gov/phil'**
+  String get micCdcFree;
+
+  /// No description provided for @micSameEntity.
+  ///
+  /// In en, this message translates to:
+  /// **'More images of this type'**
+  String get micSameEntity;
+
+  /// No description provided for @micCreditsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Image credits'**
+  String get micCreditsTitle;
+
+  /// No description provided for @micCreditsSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Licences and sources'**
+  String get micCreditsSub;
+
+  /// No description provided for @micCreditsIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Each image’s licence, author and original caption were re-checked on the source page ({date}). Images are only downscaled: not cropped, no text added, EXIF removed. Only CC0, CC BY, CC BY-SA, public domain and CDC PHIL images are used.'**
+  String micCreditsIntro(String date);
+
+  /// No description provided for @micLicenseTexts.
+  ///
+  /// In en, this message translates to:
+  /// **'Licence texts'**
+  String get micLicenseTexts;
+
+  /// No description provided for @micCreditsRow.
+  ///
+  /// In en, this message translates to:
+  /// **'Authors and licences'**
+  String get micCreditsRow;
+
+  /// No description provided for @micCreditsRowSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Source and terms of use for every image'**
+  String get micCreditsRowSub;
+
+  /// No description provided for @micClose.
+  ///
+  /// In en, this message translates to:
+  /// **'Close'**
+  String get micClose;
+
+  /// No description provided for @micZoomIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Zoom in'**
+  String get micZoomIn;
+
+  /// No description provided for @micZoomOut.
+  ///
+  /// In en, this message translates to:
+  /// **'Zoom out'**
+  String get micZoomOut;
+
+  /// No description provided for @micZoomReset.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset view'**
+  String get micZoomReset;
+
+  /// No description provided for @micViewerHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Pinch or double-tap to zoom'**
+  String get micViewerHint;
+
+  /// No description provided for @micHeroEyebrow.
+  ///
+  /// In en, this message translates to:
+  /// **'Practice'**
+  String get micHeroEyebrow;
+
+  /// No description provided for @micQuizTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'What is it?'**
+  String get micQuizTitle;
+
+  /// No description provided for @micQuizSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Microscopy practice'**
+  String get micQuizSubtitle;
+
+  /// No description provided for @micQuizHeroBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Look at the image and pick the right name: 4 options, all from the atlas. Instant feedback.'**
+  String get micQuizHeroBody;
+
+  /// No description provided for @micQuizCta.
+  ///
+  /// In en, this message translates to:
+  /// **'Start practice'**
+  String get micQuizCta;
+
+  /// No description provided for @micQuizScope.
+  ///
+  /// In en, this message translates to:
+  /// **'Which section?'**
+  String get micQuizScope;
+
+  /// No description provided for @micQuizScopeChip.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} · {count}'**
+  String micQuizScopeChip(String name, int count);
+
+  /// No description provided for @micQuizStart.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{Start · 1 question} other{Start · {count} questions}}'**
+  String micQuizStart(int count);
+
+  /// No description provided for @micQuizBest.
+  ///
+  /// In en, this message translates to:
+  /// **'Best result: {correct}/{total}'**
+  String micQuizBest(int correct, int total);
+
+  /// No description provided for @micQuizNoBest.
+  ///
+  /// In en, this message translates to:
+  /// **'No result yet — start your first round'**
+  String get micQuizNoBest;
+
+  /// No description provided for @micQuizRules.
+  ///
+  /// In en, this message translates to:
+  /// **'Options come only from atlas names. Mixed fields and journal panels are left out. Results are stored only on this device.'**
+  String get micQuizRules;
+
+  /// No description provided for @micQuizProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'{current} / {total}'**
+  String micQuizProgress(int current, int total);
+
+  /// No description provided for @micQuizStreak.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} in a row'**
+  String micQuizStreak(int count);
+
+  /// No description provided for @micQuizPromptArrow.
+  ///
+  /// In en, this message translates to:
+  /// **'What is the cell marked by the arrowhead?'**
+  String get micQuizPromptArrow;
+
+  /// No description provided for @micQuizPromptCentre.
+  ///
+  /// In en, this message translates to:
+  /// **'What is the cell in the centre?'**
+  String get micQuizPromptCentre;
+
+  /// No description provided for @micQuizPromptField.
+  ///
+  /// In en, this message translates to:
+  /// **'What is mainly shown in this field?'**
+  String get micQuizPromptField;
+
+  /// No description provided for @micQuizCorrect.
+  ///
+  /// In en, this message translates to:
+  /// **'Correct!'**
+  String get micQuizCorrect;
+
+  /// No description provided for @micQuizWrong.
+  ///
+  /// In en, this message translates to:
+  /// **'Not quite. Correct answer: {answer}'**
+  String micQuizWrong(String answer);
+
+  /// No description provided for @micQuizOpenCard.
+  ///
+  /// In en, this message translates to:
+  /// **'Open the image card'**
+  String get micQuizOpenCard;
+
+  /// No description provided for @micQuizTapToZoom.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap the image to zoom'**
+  String get micQuizTapToZoom;
+
+  /// No description provided for @micQuizResultGreat.
+  ///
+  /// In en, this message translates to:
+  /// **'Excellent!'**
+  String get micQuizResultGreat;
+
+  /// No description provided for @micQuizResultGood.
+  ///
+  /// In en, this message translates to:
+  /// **'Good result'**
+  String get micQuizResultGood;
+
+  /// No description provided for @micQuizResultKeep.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep practising'**
+  String get micQuizResultKeep;
+
+  /// No description provided for @micQuizScore.
+  ///
+  /// In en, this message translates to:
+  /// **'{correct} of {total} correct'**
+  String micQuizScore(int correct, int total);
+
+  /// No description provided for @micQuizBestStreak.
+  ///
+  /// In en, this message translates to:
+  /// **'Longest streak: {count}'**
+  String micQuizBestStreak(int count);
+
+  /// No description provided for @micQuizNewRecord.
+  ///
+  /// In en, this message translates to:
+  /// **'New record'**
+  String get micQuizNewRecord;
+
+  /// No description provided for @micQuizRetryMistakes.
+  ///
+  /// In en, this message translates to:
+  /// **'Retry mistakes ({count})'**
+  String micQuizRetryMistakes(int count);
+
+  /// No description provided for @micQuizNewRound.
+  ///
+  /// In en, this message translates to:
+  /// **'New round'**
+  String get micQuizNewRound;
+
+  /// No description provided for @micQuizChangeScope.
+  ///
+  /// In en, this message translates to:
+  /// **'Another section'**
+  String get micQuizChangeScope;
+
+  /// No description provided for @micQuizBackToAtlas.
+  ///
+  /// In en, this message translates to:
+  /// **'Back to the atlas'**
+  String get micQuizBackToAtlas;
 
   /// No description provided for @insTitle.
   ///
@@ -5224,18 +5716,6 @@ abstract class AppLocalizations {
   /// **'Exam mode'**
   String get examTitle;
 
-  /// No description provided for @examBody.
-  ///
-  /// In en, this message translates to:
-  /// **'Timed exams and result history come with the learning module. The practice questions are available now.'**
-  String get examBody;
-
-  /// No description provided for @examOpenPractice.
-  ///
-  /// In en, this message translates to:
-  /// **'Open practice questions'**
-  String get examOpenPractice;
-
   /// No description provided for @classesTitle.
   ///
   /// In en, this message translates to:
@@ -5271,6 +5751,1242 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Nothing is sent or stored. When it\'s connected, teachers see only their own classes and students see only their own results — checked on the server.'**
   String get classesUnavailableBody;
+
+  /// No description provided for @examSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'A timed test: pick topics, number of questions and time. Works offline.'**
+  String get examSubtitle;
+
+  /// No description provided for @examActiveTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Unfinished exam'**
+  String get examActiveTitle;
+
+  /// No description provided for @examActiveBody.
+  ///
+  /// In en, this message translates to:
+  /// **'{answered}/{total} answered · {time} left'**
+  String examActiveBody(int answered, int total, String time);
+
+  /// No description provided for @examResume.
+  ///
+  /// In en, this message translates to:
+  /// **'Resume'**
+  String get examResume;
+
+  /// No description provided for @examDiscard.
+  ///
+  /// In en, this message translates to:
+  /// **'Abandon exam'**
+  String get examDiscard;
+
+  /// No description provided for @examDiscardTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Abandon this exam?'**
+  String get examDiscardTitle;
+
+  /// No description provided for @examDiscardBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Your answers will be deleted and no result will be saved.'**
+  String get examDiscardBody;
+
+  /// No description provided for @examDiscardAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Abandon'**
+  String get examDiscardAction;
+
+  /// No description provided for @examTopics.
+  ///
+  /// In en, this message translates to:
+  /// **'Topics'**
+  String get examTopics;
+
+  /// No description provided for @examAllTopics.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get examAllTopics;
+
+  /// No description provided for @examPoolCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 question in the selected topics} other{{count} questions in the selected topics}}'**
+  String examPoolCount(int count);
+
+  /// No description provided for @examSettings.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get examSettings;
+
+  /// No description provided for @examCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Number of questions'**
+  String get examCount;
+
+  /// No description provided for @examCountHint.
+  ///
+  /// In en, this message translates to:
+  /// **'From 1 to {max}'**
+  String examCountHint(int max);
+
+  /// No description provided for @examCountError.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a number from 1 to {max}'**
+  String examCountError(int max);
+
+  /// No description provided for @examCountAll.
+  ///
+  /// In en, this message translates to:
+  /// **'All {count}'**
+  String examCountAll(int count);
+
+  /// No description provided for @examTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Time, minutes'**
+  String get examTime;
+
+  /// No description provided for @examTimeHint.
+  ///
+  /// In en, this message translates to:
+  /// **'1–180 min · usually 1 min per question'**
+  String get examTimeHint;
+
+  /// No description provided for @examTimeError.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter 1 to 180 minutes'**
+  String get examTimeError;
+
+  /// No description provided for @examMinutes.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} min'**
+  String examMinutes(int count);
+
+  /// No description provided for @examDraftNotice.
+  ///
+  /// In en, this message translates to:
+  /// **'These questions haven’t been expert-reviewed yet (draft). The result is for internal testing, not an official grade.'**
+  String get examDraftNotice;
+
+  /// No description provided for @examRulesNotice.
+  ///
+  /// In en, this message translates to:
+  /// **'Questions and options are shuffled. Until you finish you can change answers and bookmark questions to revisit. The clock keeps running even if the app is closed; when time is up, the exam ends by itself.'**
+  String get examRulesNotice;
+
+  /// No description provided for @examStart.
+  ///
+  /// In en, this message translates to:
+  /// **'Start exam'**
+  String get examStart;
+
+  /// No description provided for @examReplaceTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'You have an unfinished exam'**
+  String get examReplaceTitle;
+
+  /// No description provided for @examReplaceBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Starting a new one deletes the previous exam and its answers.'**
+  String get examReplaceBody;
+
+  /// No description provided for @examHistory.
+  ///
+  /// In en, this message translates to:
+  /// **'Result history'**
+  String get examHistory;
+
+  /// No description provided for @examHistoryEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No exams yet. Your first result will appear here — it’s stored only on this device.'**
+  String get examHistoryEmpty;
+
+  /// No description provided for @examHistoryStats.
+  ///
+  /// In en, this message translates to:
+  /// **'Last {count}: average {avg}% · best {best}%'**
+  String examHistoryStats(int count, int avg, int best);
+
+  /// No description provided for @examHistoryRow.
+  ///
+  /// In en, this message translates to:
+  /// **'{date} · {correct}/{total} · {time}'**
+  String examHistoryRow(String date, int correct, int total, String time);
+
+  /// No description provided for @examHistoryClear.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear history'**
+  String get examHistoryClear;
+
+  /// No description provided for @examHistoryClearBody.
+  ///
+  /// In en, this message translates to:
+  /// **'All exam results will be deleted from this device.'**
+  String get examHistoryClearBody;
+
+  /// No description provided for @examProgressLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Recent results: {values}'**
+  String examProgressLabel(String values);
+
+  /// No description provided for @examProgressOld.
+  ///
+  /// In en, this message translates to:
+  /// **'Older → newer'**
+  String get examProgressOld;
+
+  /// No description provided for @examProgressLast.
+  ///
+  /// In en, this message translates to:
+  /// **'Latest'**
+  String get examProgressLast;
+
+  /// No description provided for @examSettled.
+  ///
+  /// In en, this message translates to:
+  /// **'Your previous exam ended because time ran out'**
+  String get examSettled;
+
+  /// No description provided for @examOpenResult.
+  ///
+  /// In en, this message translates to:
+  /// **'Result'**
+  String get examOpenResult;
+
+  /// No description provided for @examTitleAll.
+  ///
+  /// In en, this message translates to:
+  /// **'All topics'**
+  String get examTitleAll;
+
+  /// No description provided for @examTitleTopics.
+  ///
+  /// In en, this message translates to:
+  /// **'{first} + {more} more'**
+  String examTitleTopics(String first, int more);
+
+  /// No description provided for @examReworkTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Practise your mistakes'**
+  String get examReworkTitle;
+
+  /// No description provided for @examQuestionMissing.
+  ///
+  /// In en, this message translates to:
+  /// **'This question isn’t in the current content pack.'**
+  String get examQuestionMissing;
+
+  /// No description provided for @examMap.
+  ///
+  /// In en, this message translates to:
+  /// **'Question map'**
+  String get examMap;
+
+  /// No description provided for @examFinish.
+  ///
+  /// In en, this message translates to:
+  /// **'Finish'**
+  String get examFinish;
+
+  /// No description provided for @examFinishTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Finish the exam?'**
+  String get examFinishTitle;
+
+  /// No description provided for @examFinishBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Unanswered: {unanswered}, bookmarked: {flagged}. You can’t change answers after finishing.'**
+  String examFinishBody(int unanswered, int flagged);
+
+  /// No description provided for @examFinishBodyAll.
+  ///
+  /// In en, this message translates to:
+  /// **'All questions are answered. You can’t change answers after finishing.'**
+  String get examFinishBodyAll;
+
+  /// No description provided for @examFlag.
+  ///
+  /// In en, this message translates to:
+  /// **'Bookmark'**
+  String get examFlag;
+
+  /// No description provided for @examFlagged.
+  ///
+  /// In en, this message translates to:
+  /// **'Bookmarked'**
+  String get examFlagged;
+
+  /// No description provided for @examLegendAnswered.
+  ///
+  /// In en, this message translates to:
+  /// **'Answered'**
+  String get examLegendAnswered;
+
+  /// No description provided for @examLegendEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Unanswered'**
+  String get examLegendEmpty;
+
+  /// No description provided for @examLegendFlagged.
+  ///
+  /// In en, this message translates to:
+  /// **'Bookmarked'**
+  String get examLegendFlagged;
+
+  /// No description provided for @examQuestionN.
+  ///
+  /// In en, this message translates to:
+  /// **'Question {n}'**
+  String examQuestionN(int n);
+
+  /// No description provided for @examAnsweredOf.
+  ///
+  /// In en, this message translates to:
+  /// **'{answered}/{total} answered'**
+  String examAnsweredOf(int answered, int total);
+
+  /// No description provided for @examPrev.
+  ///
+  /// In en, this message translates to:
+  /// **'Previous'**
+  String get examPrev;
+
+  /// No description provided for @examNext.
+  ///
+  /// In en, this message translates to:
+  /// **'Next'**
+  String get examNext;
+
+  /// No description provided for @examTimeLeft.
+  ///
+  /// In en, this message translates to:
+  /// **'Time left: {time}'**
+  String examTimeLeft(String time);
+
+  /// No description provided for @examElapsed.
+  ///
+  /// In en, this message translates to:
+  /// **'Elapsed: {time}'**
+  String examElapsed(String time);
+
+  /// No description provided for @examNoActive.
+  ///
+  /// In en, this message translates to:
+  /// **'No active exam'**
+  String get examNoActive;
+
+  /// No description provided for @examNoActiveBody.
+  ///
+  /// In en, this message translates to:
+  /// **'It was finished or abandoned. Set up and start a new one.'**
+  String get examNoActiveBody;
+
+  /// No description provided for @examNew.
+  ///
+  /// In en, this message translates to:
+  /// **'New exam'**
+  String get examNew;
+
+  /// No description provided for @examSaving.
+  ///
+  /// In en, this message translates to:
+  /// **'Saving the result…'**
+  String get examSaving;
+
+  /// No description provided for @examResultTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Result'**
+  String get examResultTitle;
+
+  /// No description provided for @examResultMissing.
+  ///
+  /// In en, this message translates to:
+  /// **'Result not found'**
+  String get examResultMissing;
+
+  /// No description provided for @examBand90.
+  ///
+  /// In en, this message translates to:
+  /// **'Excellent!'**
+  String get examBand90;
+
+  /// No description provided for @examBand70.
+  ///
+  /// In en, this message translates to:
+  /// **'Good result!'**
+  String get examBand70;
+
+  /// No description provided for @examBand50.
+  ///
+  /// In en, this message translates to:
+  /// **'Not bad — review your mistakes'**
+  String get examBand50;
+
+  /// No description provided for @examBand0.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep practising — you’ve got this'**
+  String get examBand0;
+
+  /// No description provided for @examCorrectN.
+  ///
+  /// In en, this message translates to:
+  /// **'Correct'**
+  String get examCorrectN;
+
+  /// No description provided for @examWrongN.
+  ///
+  /// In en, this message translates to:
+  /// **'Wrong'**
+  String get examWrongN;
+
+  /// No description provided for @examSkippedN.
+  ///
+  /// In en, this message translates to:
+  /// **'Unanswered'**
+  String get examSkippedN;
+
+  /// No description provided for @examSpent.
+  ///
+  /// In en, this message translates to:
+  /// **'Time'**
+  String get examSpent;
+
+  /// No description provided for @examTimedOut.
+  ///
+  /// In en, this message translates to:
+  /// **'Time ran out — finished automatically'**
+  String get examTimedOut;
+
+  /// No description provided for @examDeltaUp.
+  ///
+  /// In en, this message translates to:
+  /// **'+{n}% vs last attempt'**
+  String examDeltaUp(int n);
+
+  /// No description provided for @examDeltaDown.
+  ///
+  /// In en, this message translates to:
+  /// **'−{n}% vs last attempt'**
+  String examDeltaDown(int n);
+
+  /// No description provided for @examDeltaSame.
+  ///
+  /// In en, this message translates to:
+  /// **'Same as last attempt'**
+  String get examDeltaSame;
+
+  /// No description provided for @examReworkMistakes.
+  ///
+  /// In en, this message translates to:
+  /// **'Practise mistakes · {count}'**
+  String examReworkMistakes(int count);
+
+  /// No description provided for @examAnalysis.
+  ///
+  /// In en, this message translates to:
+  /// **'Mistake analysis'**
+  String get examAnalysis;
+
+  /// No description provided for @examFilterMistakes.
+  ///
+  /// In en, this message translates to:
+  /// **'Mistakes · {count}'**
+  String examFilterMistakes(int count);
+
+  /// No description provided for @examFilterAll.
+  ///
+  /// In en, this message translates to:
+  /// **'All · {count}'**
+  String examFilterAll(int count);
+
+  /// No description provided for @examNoAnswer.
+  ///
+  /// In en, this message translates to:
+  /// **'Not answered'**
+  String get examNoAnswer;
+
+  /// No description provided for @examWrongTag.
+  ///
+  /// In en, this message translates to:
+  /// **'Wrong'**
+  String get examWrongTag;
+
+  /// No description provided for @examWhyWrong.
+  ///
+  /// In en, this message translates to:
+  /// **'Why not this answer'**
+  String get examWhyWrong;
+
+  /// No description provided for @examNoSource.
+  ///
+  /// In en, this message translates to:
+  /// **'No source given — the question hasn’t been reviewed yet.'**
+  String get examNoSource;
+
+  /// No description provided for @examSourceMissing.
+  ///
+  /// In en, this message translates to:
+  /// **'This exam’s question bank isn’t available in the app'**
+  String get examSourceMissing;
+
+  /// No description provided for @examMultiHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Several correct answers — select all'**
+  String get examMultiHint;
+
+  /// No description provided for @examNoExplanation.
+  ///
+  /// In en, this message translates to:
+  /// **'No explanation has been written for this question yet.'**
+  String get examNoExplanation;
+
+  /// No description provided for @examByTopic.
+  ///
+  /// In en, this message translates to:
+  /// **'By topic'**
+  String get examByTopic;
+
+  /// No description provided for @examByTopicNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Weakest topic first — start there.'**
+  String get examByTopicNote;
+
+  /// No description provided for @classesSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'A teacher creates a class and sets assignments; students join with a code and solve them.'**
+  String get classesSubtitle;
+
+  /// No description provided for @classesTryExam.
+  ///
+  /// In en, this message translates to:
+  /// **'Open the offline exam'**
+  String get classesTryExam;
+
+  /// No description provided for @classesLoading.
+  ///
+  /// In en, this message translates to:
+  /// **'Loading…'**
+  String get classesLoading;
+
+  /// No description provided for @classesInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'The server didn’t accept this — check the fields.'**
+  String get classesInvalid;
+
+  /// No description provided for @classesCodeNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No class found with this code. Check the code with your teacher.'**
+  String get classesCodeNotFound;
+
+  /// No description provided for @classesCreate.
+  ///
+  /// In en, this message translates to:
+  /// **'Create a class'**
+  String get classesCreate;
+
+  /// No description provided for @classesCreateSub.
+  ///
+  /// In en, this message translates to:
+  /// **'For teachers: get a code and set assignments'**
+  String get classesCreateSub;
+
+  /// No description provided for @classesJoin.
+  ///
+  /// In en, this message translates to:
+  /// **'Join with a code'**
+  String get classesJoin;
+
+  /// No description provided for @classesJoinSub.
+  ///
+  /// In en, this message translates to:
+  /// **'For students: the 8-character code from your teacher'**
+  String get classesJoinSub;
+
+  /// No description provided for @classesRoleNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Your role in the app grants no server rights: whoever creates a class is its teacher.'**
+  String get classesRoleNote;
+
+  /// No description provided for @classesMine.
+  ///
+  /// In en, this message translates to:
+  /// **'My classes'**
+  String get classesMine;
+
+  /// No description provided for @classesEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No classes yet'**
+  String get classesEmpty;
+
+  /// No description provided for @classesEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Create a class or join one with the code from your teacher.'**
+  String get classesEmptyBody;
+
+  /// No description provided for @classesRoleTeacher.
+  ///
+  /// In en, this message translates to:
+  /// **'Teacher'**
+  String get classesRoleTeacher;
+
+  /// No description provided for @classesRoleStudent.
+  ///
+  /// In en, this message translates to:
+  /// **'Student'**
+  String get classesRoleStudent;
+
+  /// No description provided for @classesMembers.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 member} other{{count} members}}'**
+  String classesMembers(int count);
+
+  /// No description provided for @classesCreateIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'The account that creates a class becomes its teacher. Students join with the code you share.'**
+  String get classesCreateIntro;
+
+  /// No description provided for @classesGroupName.
+  ///
+  /// In en, this message translates to:
+  /// **'Class name'**
+  String get classesGroupName;
+
+  /// No description provided for @classesGroupNameHint.
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. Biochemistry year 2'**
+  String get classesGroupNameHint;
+
+  /// No description provided for @classesLengthError.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter {min}–{max} characters'**
+  String classesLengthError(int min, int max);
+
+  /// No description provided for @classesDisplayName.
+  ///
+  /// In en, this message translates to:
+  /// **'Your name in the class'**
+  String get classesDisplayName;
+
+  /// No description provided for @classesDisplayNameHint.
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. Anvar Aliyev'**
+  String get classesDisplayNameHint;
+
+  /// No description provided for @classesDisplayNameHintTeacher.
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. Dr N. Karimova'**
+  String get classesDisplayNameHintTeacher;
+
+  /// No description provided for @classesDisplayNameNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Your email isn’t shown — members see only this name.'**
+  String get classesDisplayNameNote;
+
+  /// No description provided for @classesCreateAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Create class'**
+  String get classesCreateAction;
+
+  /// No description provided for @classesCreated.
+  ///
+  /// In en, this message translates to:
+  /// **'Class created — send the code to your students'**
+  String get classesCreated;
+
+  /// No description provided for @classesJoinIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the code your teacher gave you.'**
+  String get classesJoinIntro;
+
+  /// No description provided for @classesCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Invite code'**
+  String get classesCode;
+
+  /// No description provided for @classesCodeError.
+  ///
+  /// In en, this message translates to:
+  /// **'The code has 8 letters and digits'**
+  String get classesCodeError;
+
+  /// No description provided for @classesJoinNote.
+  ///
+  /// In en, this message translates to:
+  /// **'The teacher sees this name and your assignment results. Your email isn’t shown.'**
+  String get classesJoinNote;
+
+  /// No description provided for @classesJoinAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Join'**
+  String get classesJoinAction;
+
+  /// No description provided for @classesJoined.
+  ///
+  /// In en, this message translates to:
+  /// **'You joined the class'**
+  String get classesJoined;
+
+  /// No description provided for @classesYouTeacher.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{You’re the teacher · 1 member} other{You’re the teacher · {count} members}}'**
+  String classesYouTeacher(int count);
+
+  /// No description provided for @classesYouStudent.
+  ///
+  /// In en, this message translates to:
+  /// **'You’re a student'**
+  String get classesYouStudent;
+
+  /// No description provided for @classesGroupMissing.
+  ///
+  /// In en, this message translates to:
+  /// **'Class not found, or you’re no longer a member'**
+  String get classesGroupMissing;
+
+  /// No description provided for @classesBackToList.
+  ///
+  /// In en, this message translates to:
+  /// **'Back to classes'**
+  String get classesBackToList;
+
+  /// No description provided for @classesAssignments.
+  ///
+  /// In en, this message translates to:
+  /// **'Assignments'**
+  String get classesAssignments;
+
+  /// No description provided for @classesNewAssignment.
+  ///
+  /// In en, this message translates to:
+  /// **'New assignment'**
+  String get classesNewAssignment;
+
+  /// No description provided for @classesNoAssignmentsTeacher.
+  ///
+  /// In en, this message translates to:
+  /// **'No assignments yet. Pick topics and a number of questions from the bank to set one.'**
+  String get classesNoAssignmentsTeacher;
+
+  /// No description provided for @classesNoAssignmentsStudent.
+  ///
+  /// In en, this message translates to:
+  /// **'No assignments yet'**
+  String get classesNoAssignmentsStudent;
+
+  /// No description provided for @classesNoAssignmentsStudentBody.
+  ///
+  /// In en, this message translates to:
+  /// **'When your teacher sets one, it will appear here.'**
+  String get classesNoAssignmentsStudentBody;
+
+  /// No description provided for @classesNoDue.
+  ///
+  /// In en, this message translates to:
+  /// **'no due date'**
+  String get classesNoDue;
+
+  /// No description provided for @classesDue.
+  ///
+  /// In en, this message translates to:
+  /// **'due {date}'**
+  String classesDue(String date);
+
+  /// No description provided for @classesSubmittedOf.
+  ///
+  /// In en, this message translates to:
+  /// **'{done}/{total} submitted'**
+  String classesSubmittedOf(int done, int total);
+
+  /// No description provided for @classesMembersTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Students · {count}'**
+  String classesMembersTitle(int count);
+
+  /// No description provided for @classesNoStudents.
+  ///
+  /// In en, this message translates to:
+  /// **'No students yet — share the code.'**
+  String get classesNoStudents;
+
+  /// No description provided for @classesMemberNoWork.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing submitted yet'**
+  String get classesMemberNoWork;
+
+  /// No description provided for @classesMemberSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'{done}/{total} assignments · average {avg}%'**
+  String classesMemberSummary(int done, int total, int avg);
+
+  /// No description provided for @classesRemove.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove from class'**
+  String get classesRemove;
+
+  /// No description provided for @classesRemoveTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove {name} from the class?'**
+  String classesRemoveTitle(String name);
+
+  /// No description provided for @classesRemoveBody.
+  ///
+  /// In en, this message translates to:
+  /// **'They’ll no longer see the class or new assignments. Submitted results are kept.'**
+  String get classesRemoveBody;
+
+  /// No description provided for @classesRemoveAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove'**
+  String get classesRemoveAction;
+
+  /// No description provided for @classesStatusDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Submitted · {score}/{total}'**
+  String classesStatusDone(int score, int total);
+
+  /// No description provided for @classesStatusInProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'In progress'**
+  String get classesStatusInProgress;
+
+  /// No description provided for @classesStatusPending.
+  ///
+  /// In en, this message translates to:
+  /// **'Not sent'**
+  String get classesStatusPending;
+
+  /// No description provided for @classesStatusOverdue.
+  ///
+  /// In en, this message translates to:
+  /// **'Past due'**
+  String get classesStatusOverdue;
+
+  /// No description provided for @classesStatusNew.
+  ///
+  /// In en, this message translates to:
+  /// **'New'**
+  String get classesStatusNew;
+
+  /// No description provided for @classesStudentNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Your teacher sees only your name in the class and your assignment results.'**
+  String get classesStudentNote;
+
+  /// No description provided for @classesLeave.
+  ///
+  /// In en, this message translates to:
+  /// **'Leave class'**
+  String get classesLeave;
+
+  /// No description provided for @classesLeaveTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Leave the class?'**
+  String get classesLeaveTitle;
+
+  /// No description provided for @classesLeaveBody.
+  ///
+  /// In en, this message translates to:
+  /// **'To rejoin you’ll need the teacher’s code. Results you’ve submitted stay with the teacher.'**
+  String get classesLeaveBody;
+
+  /// No description provided for @classesLeaveAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Leave'**
+  String get classesLeaveAction;
+
+  /// No description provided for @classesInviteTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Invite code'**
+  String get classesInviteTitle;
+
+  /// No description provided for @classesInviteBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Students: Learn → Classes and assignments → Join with a code.'**
+  String get classesInviteBody;
+
+  /// No description provided for @classesCopyCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy code'**
+  String get classesCopyCode;
+
+  /// No description provided for @classesCopyInvite.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy invitation text'**
+  String get classesCopyInvite;
+
+  /// No description provided for @classesCopied.
+  ///
+  /// In en, this message translates to:
+  /// **'Copied'**
+  String get classesCopied;
+
+  /// No description provided for @classesInviteText.
+  ///
+  /// In en, this message translates to:
+  /// **'Join the class “{name}” in the LabGuide app: Learn → Classes and assignments → Join with a code. Code: {code}'**
+  String classesInviteText(String name, String code);
+
+  /// No description provided for @classesNewAssignmentIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick topics and a number — questions are drawn from the bank at random.'**
+  String get classesNewAssignmentIntro;
+
+  /// No description provided for @classesAssignmentTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Assignment title'**
+  String get classesAssignmentTitle;
+
+  /// No description provided for @classesAssignmentTitleHint.
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. Topic 1'**
+  String get classesAssignmentTitleHint;
+
+  /// No description provided for @classesTimeLimit.
+  ///
+  /// In en, this message translates to:
+  /// **'Time limit, minutes'**
+  String get classesTimeLimit;
+
+  /// No description provided for @classesTimeLimitHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Optional, 1–180. Time runs from when the student starts and is checked on the server.'**
+  String get classesTimeLimitHint;
+
+  /// No description provided for @classesNoLimit.
+  ///
+  /// In en, this message translates to:
+  /// **'No limit'**
+  String get classesNoLimit;
+
+  /// No description provided for @classesDueTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Due date'**
+  String get classesDueTitle;
+
+  /// No description provided for @classesDueNone.
+  ///
+  /// In en, this message translates to:
+  /// **'No due date'**
+  String get classesDueNone;
+
+  /// No description provided for @classesDueDays.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 day} other{{count} days}}'**
+  String classesDueDays(int count);
+
+  /// No description provided for @classesDuePick.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick a date'**
+  String get classesDuePick;
+
+  /// No description provided for @classesDueNoneBody.
+  ///
+  /// In en, this message translates to:
+  /// **'No due date — students can submit any time.'**
+  String get classesDueNoneBody;
+
+  /// No description provided for @classesDueAt.
+  ///
+  /// In en, this message translates to:
+  /// **'Due by {date}'**
+  String classesDueAt(String date);
+
+  /// No description provided for @classesPreview.
+  ///
+  /// In en, this message translates to:
+  /// **'Selected questions · {count}'**
+  String classesPreview(int count);
+
+  /// No description provided for @classesReshuffle.
+  ///
+  /// In en, this message translates to:
+  /// **'Reshuffle'**
+  String get classesReshuffle;
+
+  /// No description provided for @classesKeyNotice.
+  ///
+  /// In en, this message translates to:
+  /// **'Students can’t see the answer key in advance — the server does the scoring. Each student submits once.'**
+  String get classesKeyNotice;
+
+  /// No description provided for @classesSendAssignment.
+  ///
+  /// In en, this message translates to:
+  /// **'Set assignment'**
+  String get classesSendAssignment;
+
+  /// No description provided for @classesAssignmentCreated.
+  ///
+  /// In en, this message translates to:
+  /// **'Assignment set'**
+  String get classesAssignmentCreated;
+
+  /// No description provided for @classesSubmitted.
+  ///
+  /// In en, this message translates to:
+  /// **'Answers submitted'**
+  String get classesSubmitted;
+
+  /// No description provided for @classesSubmitNetwork.
+  ///
+  /// In en, this message translates to:
+  /// **'No connection — answers are saved on this device. Send them again later.'**
+  String get classesSubmitNetwork;
+
+  /// No description provided for @classesSubmitRejected.
+  ///
+  /// In en, this message translates to:
+  /// **'The server didn’t accept the answers: time or the due date ran out, or it was already submitted.'**
+  String get classesSubmitRejected;
+
+  /// No description provided for @classesAssignmentMissing.
+  ///
+  /// In en, this message translates to:
+  /// **'Assignment not found'**
+  String get classesAssignmentMissing;
+
+  /// No description provided for @classesMetricQuestions.
+  ///
+  /// In en, this message translates to:
+  /// **'Questions'**
+  String get classesMetricQuestions;
+
+  /// No description provided for @classesMetricLimit.
+  ///
+  /// In en, this message translates to:
+  /// **'Time limit'**
+  String get classesMetricLimit;
+
+  /// No description provided for @classesMetricDue.
+  ///
+  /// In en, this message translates to:
+  /// **'Due'**
+  String get classesMetricDue;
+
+  /// No description provided for @classesMetricSubmitted.
+  ///
+  /// In en, this message translates to:
+  /// **'Submitted'**
+  String get classesMetricSubmitted;
+
+  /// No description provided for @classesMetricAverage.
+  ///
+  /// In en, this message translates to:
+  /// **'Average score'**
+  String get classesMetricAverage;
+
+  /// No description provided for @classesPendingTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Answers not sent yet'**
+  String get classesPendingTitle;
+
+  /// No description provided for @classesPendingBody.
+  ///
+  /// In en, this message translates to:
+  /// **'They’re saved on this device. Send them once you’re online — the server accepts them within the time limit.'**
+  String get classesPendingBody;
+
+  /// No description provided for @classesResend.
+  ///
+  /// In en, this message translates to:
+  /// **'Send again'**
+  String get classesResend;
+
+  /// No description provided for @classesOverdueTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Past due'**
+  String get classesOverdueTitle;
+
+  /// No description provided for @classesOverdueBody.
+  ///
+  /// In en, this message translates to:
+  /// **'This assignment can no longer be submitted.'**
+  String get classesOverdueBody;
+
+  /// No description provided for @classesOutdatedPack.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 question in this assignment isn’t in your app’s content. Update the app.} other{{count} questions in this assignment aren’t in your app’s content. Update the app.}}'**
+  String classesOutdatedPack(int count);
+
+  /// No description provided for @classesStartNotice.
+  ///
+  /// In en, this message translates to:
+  /// **'Once you start you have {minutes} min — the clock doesn’t stop, and answers are sent automatically when time is up. One submission only; sending needs internet.'**
+  String classesStartNotice(int minutes);
+
+  /// No description provided for @classesStartNoticeNoLimit.
+  ///
+  /// In en, this message translates to:
+  /// **'No time limit. Answers are sent once and can’t be resubmitted; sending needs internet.'**
+  String get classesStartNoticeNoLimit;
+
+  /// No description provided for @classesStart.
+  ///
+  /// In en, this message translates to:
+  /// **'Start'**
+  String get classesStart;
+
+  /// No description provided for @classesSubmittedAt.
+  ///
+  /// In en, this message translates to:
+  /// **'Submitted {date}'**
+  String classesSubmittedAt(String date);
+
+  /// No description provided for @classesServerScore.
+  ///
+  /// In en, this message translates to:
+  /// **'Scored by the server'**
+  String get classesServerScore;
+
+  /// No description provided for @classesResults.
+  ///
+  /// In en, this message translates to:
+  /// **'Results'**
+  String get classesResults;
+
+  /// No description provided for @classesColStudent.
+  ///
+  /// In en, this message translates to:
+  /// **'Student'**
+  String get classesColStudent;
+
+  /// No description provided for @classesColScore.
+  ///
+  /// In en, this message translates to:
+  /// **'Score · %'**
+  String get classesColScore;
+
+  /// No description provided for @classesNotSubmitted.
+  ///
+  /// In en, this message translates to:
+  /// **'Not submitted'**
+  String get classesNotSubmitted;
+
+  /// No description provided for @classesByQuestion.
+  ///
+  /// In en, this message translates to:
+  /// **'By question'**
+  String get classesByQuestion;
+
+  /// No description provided for @classesByQuestionEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No one has submitted yet.'**
+  String get classesByQuestionEmpty;
+
+  /// No description provided for @classesWrongOf.
+  ///
+  /// In en, this message translates to:
+  /// **'{wrong}/{total} wrong'**
+  String classesWrongOf(int wrong, int total);
+
+  /// No description provided for @classesSending.
+  ///
+  /// In en, this message translates to:
+  /// **'Sending answers…'**
+  String get classesSending;
+
+  /// No description provided for @classesMyProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'My progress'**
+  String get classesMyProgress;
+
+  /// No description provided for @classesDoneOf.
+  ///
+  /// In en, this message translates to:
+  /// **'{done}/{total} assignments done'**
+  String classesDoneOf(int done, int total);
+
+  /// No description provided for @classesAverage.
+  ///
+  /// In en, this message translates to:
+  /// **'Average score: {avg}%'**
+  String classesAverage(int avg);
+
+  /// No description provided for @classesStudentResultTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Student’s result'**
+  String get classesStudentResultTitle;
+
+  /// No description provided for @classesStudentAnswer.
+  ///
+  /// In en, this message translates to:
+  /// **'Student’s answer'**
+  String get classesStudentAnswer;
+
+  /// No description provided for @classesInviteMore.
+  ///
+  /// In en, this message translates to:
+  /// **'Invite more students'**
+  String get classesInviteMore;
 
   /// No description provided for @profileTitle.
   ///

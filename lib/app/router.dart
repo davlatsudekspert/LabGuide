@@ -11,7 +11,11 @@ import '../features/home/home_screen.dart';
 import '../features/instruments/calibration_screens.dart';
 import '../features/instruments/instrument_screens.dart';
 import '../features/lab/lab_screens.dart';
+import '../features/learn/classes_screens.dart';
+import '../features/learn/exam_screens.dart';
 import '../features/learn/learn_screens.dart';
+import '../features/microscopy/microscopy_quiz_screen.dart';
+import '../features/microscopy/microscopy_screens.dart';
 import '../features/library/intake_screen.dart';
 import '../features/library/library_item_screen.dart';
 import '../features/library/library_screens.dart';
@@ -341,6 +345,30 @@ GoRouter buildRouter(
                   GoRoute(
                     path: 'microscopy',
                     builder: (context, state) => const MicroscopyScreen(),
+                    routes: [
+                      GoRoute(
+                        path: 's/:section',
+                        builder: (context, state) => MicroSectionScreen(
+                          sectionId: state.pathParameters['section']!,
+                        ),
+                      ),
+                      GoRoute(
+                        path: 'i/:id',
+                        builder: (context, state) => MicroImageScreen(
+                          imageId: state.pathParameters['id']!,
+                        ),
+                      ),
+                      GoRoute(
+                        path: 'quiz',
+                        builder: (context, state) => MicroQuizScreen(
+                          sectionId: state.uri.queryParameters['section'],
+                        ),
+                      ),
+                      GoRoute(
+                        path: 'credits',
+                        builder: (context, state) => const MicroCreditsScreen(),
+                      ),
+                    ],
                   ),
                   GoRoute(
                     path: 'calculators',
@@ -453,13 +481,80 @@ GoRouter buildRouter(
                     path: 'quiz',
                     builder: (context, state) => const QuizScreen(),
                   ),
+                  // Imtihon: yechish — to'liq ekran (tablar yashiringan).
                   GoRoute(
                     path: 'exam',
-                    builder: (context, state) => const ExamScreen(),
+                    builder: (context, state) => const ExamSetupScreen(),
+                    routes: [
+                      GoRoute(
+                        path: 'run',
+                        parentNavigatorKey: rootKey,
+                        builder: (context, state) => const ExamRunScreen(),
+                      ),
+                      GoRoute(
+                        path: 'result/:id',
+                        builder: (context, state) => ExamResultScreen(
+                          resultId: state.pathParameters['id']!,
+                        ),
+                      ),
+                    ],
                   ),
+                  // Guruhlar: har ekran ClassesGate bilan (server/hisob).
                   GoRoute(
                     path: 'classes',
                     builder: (context, state) => const ClassesScreen(),
+                    routes: [
+                      GoRoute(
+                        path: 'new',
+                        builder: (context, state) => const CreateGroupScreen(),
+                      ),
+                      GoRoute(
+                        path: 'join',
+                        builder: (context, state) => const JoinGroupScreen(),
+                      ),
+                      GoRoute(
+                        path: 'g/:gid',
+                        builder: (context, state) =>
+                            GroupScreen(groupId: state.pathParameters['gid']!),
+                        routes: [
+                          GoRoute(
+                            path: 'assign',
+                            builder: (context, state) => NewAssignmentScreen(
+                              groupId: state.pathParameters['gid']!,
+                            ),
+                          ),
+                          GoRoute(
+                            path: 'a/:aid',
+                            builder: (context, state) => AssignmentScreen(
+                              groupId: state.pathParameters['gid']!,
+                              assignmentId: state.pathParameters['aid']!,
+                            ),
+                            routes: [
+                              GoRoute(
+                                path: 'run',
+                                parentNavigatorKey: rootKey,
+                                builder: (context, state) =>
+                                    AssignmentRunScreen(
+                                      groupId: state.pathParameters['gid']!,
+                                      assignmentId:
+                                          state.pathParameters['aid']!,
+                                    ),
+                              ),
+                              GoRoute(
+                                path: 's/:uid',
+                                builder: (context, state) =>
+                                    StudentResultScreen(
+                                      groupId: state.pathParameters['gid']!,
+                                      assignmentId:
+                                          state.pathParameters['aid']!,
+                                      userId: state.pathParameters['uid']!,
+                                    ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                   GoRoute(
                     path: 'lesson',
