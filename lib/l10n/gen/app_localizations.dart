@@ -10705,8 +10705,14 @@ abstract class AppLocalizations {
   /// No description provided for @privacyBody.
   ///
   /// In en, this message translates to:
-  /// **'In guest mode the app sends nothing to a server: settings, bookmarks, QC records, your instruments and practice results stay on this device (they may be included in the device backup). If you sign in with email, the server stores your email, role, language, last active day, your support requests and group results; no ad tracking. You can delete your account at any time.'**
+  /// **'In guest mode the app sends nothing to a server: settings, bookmarks, QC records, your instruments and practice results stay on this device (they may be included in the device backup). If you sign in with email, data is stored on a Cloudflare server (Eastern Europe, outside Uzbekistan): your email only as a hash and a masked form (the sign-in code is sent by the Resend service), role, language, last active day; in a group — the group name, your nickname or sequence number (no name is asked), test answers and scores. A teacher sees only their own group, a student only themselves. No ads or tracking. You can delete your account at any time.'**
   String get privacyBody;
+
+  /// No description provided for @privacyBodyLocal.
+  ///
+  /// In en, this message translates to:
+  /// **'This build has no server connected: the app sends nothing to a server. Settings, bookmarks, QC records, your instruments and practice results stay on this device (they may be included in the device backup). No ads or tracking.'**
+  String get privacyBodyLocal;
 
   /// No description provided for @privacyTerms.
   ///

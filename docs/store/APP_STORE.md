@@ -202,7 +202,7 @@ ulashish — tizim oynasi, `NSPhotoLibraryAddUsageDescription` faqat “Save Ima
 **Privacy Policy URL** — majburiy. Matn: [PRIVACY_POLICY.md](PRIVACY_POLICY.md). Joylash: GitHub
 → repo Settings → Pages → “Deploy from a branch”, `main` / `docs` — manzil
 `https://davlatsudekspert.github.io/LabGuide/store/PRIVACY_POLICY` (yoki o‘z saytingiz).
-Matnda sana (2026-10-10) va aloqa (labguide@alideveloper.uz) taklif qilingan — **egasi
+Matnda sana (2026-10-10) va aloqa (labguide@nfcstore.uz) taklif qilingan — **egasi
 tasdiqlaydi**; hosting (Cloudflare, Sharqiy Yevropa) va email xizmati (Resend) kiritilgan.
 
 **Hisobni o‘chirish** (App Store 5.1.1(v)): ilovada Profil → Maxfiylik → “Hisobni o‘chirish”
@@ -294,7 +294,7 @@ yuklanishidan **oldin** Data safety quyidagicha to‘ldiriladi (manba: `cloudfla
 | Ma’lumot to‘planadimi? | Ha (faqat email bilan kirilganda; mehmon rejimida hech narsa yuborilmaydi) |
 | Uchinchi tomonga beriladimi (sharing)? | **Yo‘q** (Cloudflare — server/baza, Resend — kod xati: xizmat ko‘rsatuvchi, LabGuide nomidan qayta ishlaydi; sharing emas) |
 | Uzatishda shifrlanganmi? | **Ha** (HTTPS) |
-| O‘chirishni so‘rash mumkinmi? | **Ha** — ilovada Profil → Maxfiylik → “Hisobni o‘chirish” va aloqa emaili labguide@alideveloper.uz |
+| O‘chirishni so‘rash mumkinmi? | **Ha** — ilovada Profil → Maxfiylik → “Hisobni o‘chirish” va aloqa emaili labguide@nfcstore.uz |
 | Personal info → Email address | To‘planadi; sinf (guruh) uchun majburiy, umuman ilova uchun **ixtiyoriy** (mehmon rejimida yo‘q); Account management, App functionality (serverda faqat hash + niqoblangan ko‘rinish) |
 | Personal info → User IDs | To‘planadi; ichki hisob id si (tasodifiy); Account management, App functionality |
 | App activity → Other user-generated content | To‘planadi; ixtiyoriy (sinfda); guruh taxallusi, test javoblari va ball; App functionality |

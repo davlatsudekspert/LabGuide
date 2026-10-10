@@ -6111,7 +6111,11 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get privacyBody =>
-      'Mehmon rejimida ilova serverga hech narsa yubormaydi: sozlamalar, xatcho‘plar, QC qaydlari, apparatlaringiz va mashq natijalari shu qurilmada saqlanadi (qurilmaning o‘z zaxira nusxasiga kirishi mumkin). Email bilan kirsangiz — email, rol, til, oxirgi faol kun, murojaatlaringiz va guruh natijalari serverda saqlanadi; reklama va kuzatuv yo‘q. Hisobni istalgan vaqtda o‘chirishingiz mumkin.';
+      'Mehmon rejimida ilova serverga hech narsa yubormaydi: sozlamalar, xatcho‘plar, QC qaydlari, apparatlaringiz va mashq natijalari shu qurilmada saqlanadi (qurilmaning o‘z zaxira nusxasiga kirishi mumkin). Email bilan kirsangiz, ma’lumotlar Cloudflare serverida (Sharqiy Yevropa, O‘zbekistondan tashqarida) saqlanadi: email faqat hash va niqoblangan ko‘rinishda (kirish kodi Resend xizmati orqali yuboriladi), rol, til, oxirgi faol kun; guruhda — guruh nomi, taxallusingiz yoki tartib raqamingiz (ism so‘ralmaydi), test javoblari va ballaringiz. Ustoz faqat o‘z guruhini ko‘radi, talaba faqat o‘zini. Reklama va kuzatuv yo‘q. Hisobni istalgan vaqtda o‘chirishingiz mumkin.';
+
+  @override
+  String get privacyBodyLocal =>
+      'Bu buildda server ulanmagan: ilova serverga hech narsa yubormaydi. Sozlamalar, xatcho‘plar, QC qaydlari, apparatlaringiz va mashq natijalari shu qurilmada saqlanadi (qurilmaning o‘z zaxira nusxasiga kirishi mumkin). Reklama va kuzatuv yo‘q.';
 
   @override
   String get privacyTerms => 'Foydalanish shartlari';

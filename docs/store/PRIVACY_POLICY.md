@@ -1,10 +1,10 @@
 # LabGuide — maxfiylik siyosati / Политика конфиденциальности / Privacy Policy
 
 Kuchga kirgan sana / Дата вступления в силу / Effective date: **2026-10-10**
-Aloqa / Контакт / Contact: **labguide@alideveloper.uz**
+Aloqa / Контакт / Contact: **labguide@nfcstore.uz**
 
 > Eslatma (e’lon qilishdan oldin o‘chiriladi):
-> - **Egasi tasdiqlashi kerak:** sana (2026-10-10) va aloqa (labguide@alideveloper.uz) hozircha
+> - **Egasi tasdiqlashi kerak:** sana (2026-10-10) va aloqa (labguide@nfcstore.uz) (aloqa manzili Cloudflare Email Routing orqali egasining Gmail’iga yo‘naltiriladi) hozircha
 >   taklif qilingan qiymatlar; aloqa manzili haqiqatan ishlashini va xatlarni qabul qilishini
 >   tekshiring.
 > - Matn **Cloudflare serveri** (Workers + D1, Sharqiy Yevropa; D-41, D-42,
@@ -110,7 +110,7 @@ topshiriqlari, javob kalitlari va barcha talabalar natijalari. Faqat xavfsizlik 
 ichki identifikator va “hisob o‘chirildi” yozuvi qoladi (email emas). “Lokal ma’lumotlarni
 o‘chirish” — qurilmadagi hamma narsa. Guruhdan chiqish faqat a’zolikni o‘chiradi, natijalaringiz
 esa hisobingiz yoki guruh o‘chirilguncha ustozda qoladi. Ilovasiz so‘rov uchun:
-labguide@alideveloper.uz.
+labguide@nfcstore.uz.
 
 **Saqlash muddati.** Yuqorida ko‘rsatilganidek: kod 10 daqiqa, sessiya 60 kun, hisoblagichlar
 ~1 sutka; qolgan ma’lumotlar hisob (yoki guruh) o‘chirilguncha. Faol bo‘lmagan hisoblar
@@ -206,7 +206,7 @@ Cloudflare и Resend работают на глобальной инфрастр
 результаты всех студентов. Остаётся только внутренний идентификатор в журнале безопасности и
 запись «аккаунт удалён» (без email). «Удалить локальные данные» — всё на устройстве. Выход из
 группы удаляет только участие, а ваши результаты остаются у преподавателя до удаления аккаунта
-или группы. Запрос без приложения: labguide@alideveloper.uz.
+или группы. Запрос без приложения: labguide@nfcstore.uz.
 
 **Срок хранения.** Как указано выше: код 10 минут, сессия 60 дней, счётчики около суток;
 остальное — до удаления аккаунта (или группы). Неактивные аккаунты автоматически не удаляются.
@@ -300,7 +300,7 @@ groups you created are deleted too**: their members, topics, assignments, answer
 students’ results. Only an internal identifier in the security log and an “account deleted”
 entry remain (no email). “Delete local data” removes everything on the device. Leaving a group
 removes only your membership; your results stay with the teacher until your account or the
-group is deleted. Request without the app: labguide@alideveloper.uz.
+group is deleted. Request without the app: labguide@nfcstore.uz.
 
 **Retention.** As listed above: code 10 minutes, session 60 days, counters about a day; all
 other data until the account (or group) is deleted. Inactive accounts are not deleted
