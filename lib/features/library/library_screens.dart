@@ -82,7 +82,11 @@ class LibraryScreen extends StatelessWidget {
           ...top,
           if (access.reviewer || access.adminAccount) LibrarySection.review,
         ];
-        final count = services.content.pack?.library.length;
+        final uiLang = Localizations.localeOf(context).languageCode;
+        // Faqat interfeys tilida mavjud materiallar sanaladi.
+        final count = services.content.pack?.library
+            .where((i) => libraryItemAvailableIn(i, uiLang))
+            .length;
         return LgPage(
           title: l.libTitle,
           subtitle: l.libSubtitle,
@@ -244,6 +248,7 @@ class _ContinueReadingCard extends StatelessWidget {
       builder: (context, _) {
         final pack = services.content.pack;
         // Eng oxirgi o'qilgan va hali ham ilovada ochiladigan fayl.
+        final uiLang = Localizations.localeOf(context).languageCode;
         final match = pack == null
             ? null
             : services.reading.recent
@@ -251,6 +256,7 @@ class _ContinueReadingCard extends StatelessWidget {
                   .where(
                     (x) =>
                         x.$2 != null &&
+                        libraryItemAvailableIn(x.$2!, uiLang) &&
                         canReadInApp(x.$2!) &&
                         x.$2!.file!.sha256 == x.$1.value.fileSha,
                   )
@@ -757,9 +763,9 @@ class _BooksScreenState extends State<BooksScreen> {
                 message: l.booksEmptyBody,
               );
             }
-            final catalog = _catalog?.pack == pack
+            final catalog = _catalog?.pack == pack && _catalog?.lang == lang
                 ? _catalog!
-                : _catalog = LibraryCatalog(pack);
+                : _catalog = LibraryCatalog(pack, lang: lang);
             final results = catalog.apply(_filter, lang: lang);
             return Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -781,7 +787,7 @@ class _BooksScreenState extends State<BooksScreen> {
                           child: Text(
                             l.libResultCount(
                               results.length,
-                              pack.library.length,
+                              catalog.items.length,
                             ),
                             style: text.bodySmall,
                           ),

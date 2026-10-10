@@ -6514,6 +6514,14 @@ class AppLocalizationsEn extends AppLocalizations {
       'The content pack may have been updated. Go back to the catalog.';
 
   @override
+  String get libItemUnavailable =>
+      'This material is not available in your language';
+
+  @override
+  String get libItemUnavailableBody =>
+      'This material is currently available only in another language. Change the interface language or go back to the catalog.';
+
+  @override
   String get libBackToCatalog => 'Back to catalog';
 
   @override

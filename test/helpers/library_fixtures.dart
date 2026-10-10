@@ -17,14 +17,17 @@ const personalItemId = 'test-personal-method';
 
 /// Sinov materiallari: ilova ichidagi PDF (to'liq huquq qaydi bilan),
 /// hali kelmagan kitob, yuklab olinadigan kitob va faqat shaxsiy material.
-List<Map<String, Object?>> testLibraryItems(Uint8List pdf) => [
+List<Map<String, Object?>> testLibraryItems(
+  Uint8List pdf, {
+  String pdfLanguage = 'uz',
+}) => [
   {
     'id': testPdfItemId,
     'kind': 'manual',
     'title': 'LabGuide sinov hujjati',
     'authors': ['LabGuide'],
     'year': 2026,
-    'language': 'uz',
+    'language': pdfLanguage,
     'categories': ['methods'],
     'topics': ['urine'],
     'provided_by': 'teacher',
@@ -101,12 +104,14 @@ List<Map<String, Object?>> testLibraryItems(Uint8List pdf) => [
 /// Asosiy paketga sinov materiallarini qo'shadigan va sinov PDF'ini
 /// [testPdfAsset] manzilida beradigan bundle.
 class LibraryTestBundle extends CachingAssetBundle {
-  LibraryTestBundle({Uint8List? pdf, this.servedPdf})
+  /// [pdfLanguage]: sinov PDF'ining tili (kutubxona faqat interfeys tilidagi
+  /// materialni ko'rsatadi — ru/en o'quvchi testlari mos tilni beradi).
+  LibraryTestBundle({Uint8List? pdf, this.servedPdf, String pdfLanguage = 'uz'})
     : pdf = pdf ?? buildTestPdf() {
     _inner = PatchedPackBundle(rootBundle, (json) {
       json['library'] = [
         ...(json['library']! as List),
-        ...testLibraryItems(this.pdf),
+        ...testLibraryItems(this.pdf, pdfLanguage: pdfLanguage),
       ];
     });
   }

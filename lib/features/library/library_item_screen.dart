@@ -45,6 +45,23 @@ class LibraryItemScreen extends StatelessWidget {
             ],
           );
         }
+        if (!libraryItemAvailableIn(
+          item,
+          Localizations.localeOf(context).languageCode,
+        )) {
+          return LgPage(
+            title: l.libBooks,
+            children: [
+              LgStateView(
+                kind: StateKind.empty,
+                title: l.libItemUnavailable,
+                message: l.libItemUnavailableBody,
+                actionLabel: l.libBackToCatalog,
+                onAction: () => context.go('/library/books'),
+              ),
+            ],
+          );
+        }
         return _ItemPage(item: item, pack: pack);
       },
     );

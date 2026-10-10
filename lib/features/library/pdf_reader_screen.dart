@@ -93,6 +93,21 @@ class PdfReaderScreen extends StatelessWidget {
             ],
           );
         }
+        if (!libraryItemAvailableIn(
+          item,
+          Localizations.localeOf(context).languageCode,
+        )) {
+          return LgPage(
+            title: l.readerTitle,
+            children: [
+              LgStateView(
+                kind: StateKind.empty,
+                title: l.libItemUnavailable,
+                message: l.libItemUnavailableBody,
+              ),
+            ],
+          );
+        }
         if (!canReadInApp(item)) return _ReaderBlocked(item: item);
         return _ReaderLoader(key: ValueKey(item.file!.sha256), item: item);
       },

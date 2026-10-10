@@ -1856,6 +1856,8 @@
   "libProvidedByTeacher": "Материал от преподавателя",
   "libItemNotFound": "Материал не найден",
   "libItemNotFoundBody": "Возможно, пакет контента обновился. Вернитесь в каталог.",
+  "libItemUnavailable": "Материал недоступен на вашем языке",
+  "libItemUnavailableBody": "Этот материал пока есть только на другом языке. Смените язык интерфейса или вернитесь в каталог.",
   "libBackToCatalog": "Вернуться в каталог",
   "readerTitle": "Чтение",
   "readerPageOf": "{page} из {total}",

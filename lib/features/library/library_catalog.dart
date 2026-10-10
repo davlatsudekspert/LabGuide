@@ -44,6 +44,18 @@ LibraryOpenKind openKindOf(LibraryItem item) {
 bool canReadInApp(LibraryItem item) =>
     openKindOf(item) == LibraryOpenKind.inApp;
 
+/// Material interfeys tilida mavjudmi (“tarjima qilingan bo'lsa ko'rinsin”).
+/// Modelda tarjimalar maydoni yo'q — faqat asl `language`. Material ilova
+/// tilida yozilgan yoki ko'p tilli (`multi`/`mul`, yoki `ru,en` kabi ro'yxat)
+/// bo'lsa ko'rinadi. O'zbek interfeysida (va til noma'lum bo'lsa) hammasi
+/// ko'rinadi.
+bool libraryItemAvailableIn(LibraryItem item, String? lang) {
+  if (lang == null || lang == 'uz') return true;
+  final code = item.language.toLowerCase().trim();
+  if (code == lang || code == 'multi' || code == 'mul') return true;
+  return code.split(RegExp(r'[,;/+\s]+')).contains(lang);
+}
+
 const _keep = Object();
 
 /// Katalog filtri: qidiruv so'zi va til / mavzu / tur bo'yicha tanlovlar.
@@ -118,8 +130,12 @@ class LibraryFilter {
 
 /// Kutubxona katalogi ustida qidiruv va filtr. Paket bir marta indekslanadi.
 class LibraryCatalog {
-  LibraryCatalog(this.pack)
-    : _entries = {
+  LibraryCatalog(this.pack, {this.lang})
+    : items = [
+        for (final i in pack.library)
+          if (libraryItemAvailableIn(i, lang)) i,
+      ],
+      _entries = {
         for (final (i, item) in pack.library.indexed)
           item.id: _Entry.of(item, i, pack),
       };
@@ -127,7 +143,11 @@ class LibraryCatalog {
   final ContentPack pack;
   final Map<String, _Entry> _entries;
 
-  List<LibraryItem> get items => pack.library;
+  /// Interfeys tili: shu tilda mavjud bo'lmagan materiallar katalogda yo'q.
+  final String? lang;
+
+  /// Interfeys tilida ko'rinadigan materiallar (paket tartibida).
+  final List<LibraryItem> items;
 
   /// Element bog'langan tahlillar guruhlari (mavzu analit yoki dars bo'lsa
   /// — uning guruhi).
@@ -174,7 +194,8 @@ class LibraryCatalog {
   /// Filtr va qidiruv natijasi. So'z bo'lmasa — interfeys tilidagi
   /// materiallar birinchi (paket tartibi saqlanadi); so'z bo'lsa — moslik
   /// darajasi bo'yicha (nomida > muallifda > boshqa maydonlarda).
-  List<LibraryItem> apply(LibraryFilter f, {required String lang}) {
+  List<LibraryItem> apply(LibraryFilter f, {String? lang}) {
+    lang ??= this.lang ?? '';
     final candidates = items.where((i) => _matches(i, f));
     final q = normalizeForSearch(f.query);
     int langRank(LibraryItem i) => i.language == lang ? 0 : 1;
