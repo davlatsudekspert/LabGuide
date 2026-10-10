@@ -19,12 +19,16 @@ class TabMemory extends ChangeNotifier {
 
   /// Oxirgi manzili [location] bo'limining ichida turgan tab (bo'lsa).
   /// So'rovli manzil (`?maker=…`) faqat aynan mos kelsa hisoblanadi.
-  int? branchUnder(String location) {
+  ///
+  /// [exact] — faqat aynan shu sahifada turgan tab (ichkaridagi sahifa,
+  /// masalan ochiq hujayra kartasi, hisobga olinmaydi).
+  int? branchUnder(String location, {bool exact = false}) {
     final target = Uri.parse(location);
     for (final MapEntry(key: index, value: last) in _last.entries) {
       final inside = target.hasQuery
           ? last == target
-          : last.path == target.path || last.path.startsWith('${target.path}/');
+          : last.path == target.path ||
+                (!exact && last.path.startsWith('${target.path}/'));
       if (inside) return index;
     }
     return null;
@@ -56,8 +60,15 @@ class TabMemoryScope extends InheritedWidget {
 /// qilingan sahifalar (masalan, ro'yxatdan ochilgan QC to'plami) yangidan
 /// yaratilib, kiritilgan, hali saqlanmagan qiymat yo'qolardi. `goBranch`
 /// tab stekini o'zgarishsiz tiklaydi.
-void openInTab(BuildContext context, String location) {
-  final index = TabMemoryScope.maybeOf(context)?.branchUnder(location);
+///
+/// [exact]: yorliq aynan bo'lim sahifasini va'da qilsa (masalan, O'rganishdagi
+/// "Leykoformula" qatori) — tab o'sha bo'limning ichkarisida (hujayra
+/// kartasi, rasm, tarix) qolgan bo'lsa ham, bo'lim sahifasining o'zi
+/// ochiladi. Bo'lim holati (sanash, saqlangan natijalar) controllerda
+/// turadi — yo'qolmaydi.
+void openInTab(BuildContext context, String location, {bool exact = false}) {
+  final index = TabMemoryScope.maybeOf(context)
+      ?.branchUnder(location, exact: exact);
   final shell = StatefulNavigationShell.maybeOf(context);
   if (index != null && shell != null) {
     shell.goBranch(index);

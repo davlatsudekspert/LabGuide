@@ -154,7 +154,7 @@ class ToifaEntryCard extends StatelessWidget {
                   LgButton(
                     label: status != null ? l.toifaContinue : l.toifaOpen,
                     icon: Icons.arrow_forward_rounded,
-                    onPressed: () => openInTab(context, toifaBase),
+                    onPressed: () => openInTab(context, toifaBase, exact: true),
                   ),
                 ],
               ),
