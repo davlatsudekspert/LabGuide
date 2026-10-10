@@ -156,6 +156,27 @@ void main() {
     expect(routerOf(tester).state.matchedLocation, '/tests');
   });
 
+  testWidgets('home “Calculators” opens the list, not the last calculator', (
+    tester,
+  ) async {
+    final s = await makeServices(
+      tester,
+      language: AppLanguage.en,
+      role: AppRole.doctor,
+    );
+    await pumpApp(tester, s, size: const Size(390, 1600));
+    await goTo(tester, '/lab/calculators/dilution');
+    await goTo(tester, '/home');
+    await tester.tap(
+      find.descendant(
+        of: find.byType(LgTile),
+        matching: find.text(en.featureCalculators),
+      ),
+    );
+    await tester.pumpAndSettle();
+    expect(routerOf(tester).state.matchedLocation, '/lab/calculators');
+  });
+
   testWidgets('student hero opens the Learn root, not its last open page', (
     tester,
   ) async {

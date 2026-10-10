@@ -122,7 +122,7 @@ class RoleHome {
       heroCta: l.homeHeroStudentCta,
       heroLocation: '/learn',
       actions: [
-        HomeAction(l.featureTopics, Icons.menu_book_outlined, '/tests'),
+        HomeAction(l.featureTests, Icons.menu_book_outlined, '/tests'),
         HomeAction(l.featureQuiz, Icons.quiz_outlined, '/learn/quiz'),
         HomeAction(
           l.featureMicroscopy,
@@ -200,7 +200,15 @@ class HomeScreen extends StatelessWidget {
                     caption: l.actionOpen,
                     icon: config.actions[i].icon,
                     highlighted: i == 0,
-                    onTap: () => openInTab(context, config.actions[i].location),
+                    // Yorliq bo'limning o'zini va'da qiladi (masalan,
+                    // "Kalkulyatorlar" — ro'yxat, oxirgi kalkulyator emas).
+                    // QC va kalibrlash — tab steki tiklanadi: kiritilgan,
+                    // hali saqlanmagan qiymatlar yo'qolmasin.
+                    onTap: () => openInTab(
+                      context,
+                      config.actions[i].location,
+                      exact: !_keepsStack(config.actions[i].location),
+                    ),
                   ),
               ],
             ),
@@ -235,3 +243,6 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
+
+bool _keepsStack(String location) =>
+    location == '/lab/qc' || location == '/lab/calibration';
