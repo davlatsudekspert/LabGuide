@@ -525,3 +525,17 @@ ranglari (yashil palitra) o‘zgarmadi — logo faqat belgi sifatida.
 - Leykoformula ovozli buyruqlari Android'da faqat qurilmada oflayn tanish bo'lsa yoqiladi
   (Android 12+, `isOnDeviceRecognitionAvailable`); aks holda "oflayn tanish yo'q" xabari.
   Ovoz hech qachon tizim xizmati serveriga ketmaydi — Play Data safety'da audio yo'q.
+
+## D-41. Server — Cloudflare Workers + D1, email kodi — Brevo (2026-10-10)
+- Egasi qarori: Supabase o'rniga Cloudflare Workers + D1 (bepul tarif), email OTP — Brevo
+  transactional API. Kod `cloudflare/`, ilova adapteri `CloudflareLabBackend`; build'da
+  `LG_API_URL` berilsa u ishlatiladi, bo'sh bo'lsa avvalgi tanlov (Supabase / “ulanmagan”).
+  Batafsil: `docs/BACKEND_CLOUDFLARE.md`.
+- Email serverda ochiq saqlanmaydi (HMAC + niqoblangan ko'rinish); shuning uchun admin
+  “to'liq emailni ochish” bu serverda yo'q. OTP va sessiya tokenlari faqat hash holida.
+- Admin — faqat maxfiy `LG_ADMIN_EMAILS` + OTP tasdig'i yoki qo'lda; admin yo'llari TOTP (aal2).
+  `teacher` roli faqat guruh yaratishga ruxsat; ustoz huquqi — faqat o'z guruhlari.
+- A'zo ismi so'ralmaydi: taxallus yoki “Talaba NN”. Talaba a'zolar ro'yxatida faqat ustozni
+  va o'zini ko'radi (Supabase'dagidan qattiqroq).
+- Murojaatlar, admin panel, tekshiruv, hamkorlar va Pro — hozircha faqat sxema, endpointlar
+  `501`, ilova “ulanmagan” deydi. `LabBackend` interfeysi o'zgarmadi.

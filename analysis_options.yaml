@@ -6,6 +6,7 @@ analyzer:
     - lib/l10n/gen/**
     - android/**
     - ios/**
+    - cloudflare/**
   language:
     strict-casts: true
     strict-raw-types: true
