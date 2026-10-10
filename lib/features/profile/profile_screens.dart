@@ -4,7 +4,6 @@ import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
 import '../../app/app_scope.dart';
-import '../../app/shell.dart';
 import '../../app/widgets/lg_page.dart';
 import '../../core/entitlements/entitlement_service.dart';
 import '../../design/widgets/lg_widgets.dart';
@@ -88,7 +87,7 @@ class ProfileScreen extends StatelessWidget {
             email,
             settings.effectiveRole.title(l),
           ),
-          _ => (l.profileGuest, l.profileGuest, l.profileGuestSub),
+          _ => (l.profileGuest, l.profileGuestLocal, l.profileGuestSub),
         };
         return LgPage(
           title: l.profileTitle,
@@ -157,7 +156,7 @@ class ProfileScreen extends StatelessWidget {
               title: l.libPacks,
               subtitle: l.libPacksSub,
               icon: Icons.download_for_offline_outlined,
-              onTap: () => openInTab(context, '/library/packs'),
+              onTap: () => context.push('/profile/packs'),
             ),
             LgRow(
               title: l.profilePurchase,
@@ -358,7 +357,9 @@ class PrivacyScreen extends StatelessWidget {
     );
     if (ok != true) return;
     await services.deleteLocalData(PlatformDispatcher.instance.locales);
-    messenger.showSnackBar(SnackBar(content: Text(l.privacyDeleted)));
+    // Til tizim tiliga qaytdi: xabar ham shu (yangi) tilda chiqadi.
+    final after = lookupAppLocalizations(services.settings.language.locale);
+    messenger.showSnackBar(SnackBar(content: Text(after.privacyDeleted)));
   }
 
   /// Serverdagi hisobni o'chirish (Edge Function, service role faqat

@@ -257,7 +257,10 @@ class _AnalyteBody {
           title: l.analytePractice,
           subtitle: l.analytePracticeSub,
           icon: Icons.quiz_outlined,
-          onTap: () => openInTab(context, '/learn/quiz'),
+          // O'rganish tabidagi eski mashq holati emas — yangi mavzu tanlash.
+          onTap: () => context.go(
+            '/learn/quiz?fresh=${DateTime.now().microsecondsSinceEpoch}',
+          ),
           divider: false,
         ),
       if (analyte.sourceIds.isNotEmpty) _sources(context, l),

@@ -145,7 +145,7 @@ class _SectionRow extends StatelessWidget {
         '/library/saved',
       ),
       LibrarySection.research => (
-        l.featureResearch,
+        l.researchTitle,
         l.libResearchSub,
         Icons.edit_note_rounded,
         '/library/research',

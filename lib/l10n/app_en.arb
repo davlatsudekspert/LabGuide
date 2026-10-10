@@ -3359,6 +3359,7 @@
   "profileTitle": "Profile and settings",
   "profileGuest": "Guest",
   "profileGuestSub": "Content is open without an account",
+  "profileGuestLocal": "Data stays on this device only",
   "profileDemoSession": "Demo session · debug build",
   "profileRole": "Role",
   "profileRoleSub": "Home adapts to your role",
@@ -3643,7 +3644,7 @@
       }
     }
   },
-  "libIntake": "How materials are added",
+  "libIntake": "Adding materials",
   "libIntakeSub": "For teachers and editors: what to send, rights, review",
   "libContinueReading": "Continue reading",
   "libSearchLabel": "Search the library",

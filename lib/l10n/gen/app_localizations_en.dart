@@ -5740,6 +5740,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profileGuestSub => 'Content is open without an account';
 
   @override
+  String get profileGuestLocal => 'Data stays on this device only';
+
+  @override
   String get profileDemoSession => 'Demo session · debug build';
 
   @override
@@ -6322,7 +6325,7 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get libIntake => 'How materials are added';
+  String get libIntake => 'Adding materials';
 
   @override
   String get libIntakeSub =>

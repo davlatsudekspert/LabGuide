@@ -5767,6 +5767,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String get profileGuestSub => 'Контент доступен без аккаунта';
 
   @override
+  String get profileGuestLocal => 'Данные только на этом устройстве';
+
+  @override
   String get profileDemoSession => 'Демо-сессия · debug-сборка';
 
   @override
@@ -6342,7 +6345,7 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get libIntake => 'Как добавляются материалы';
+  String get libIntake => 'Добавление материалов';
 
   @override
   String get libIntakeSub =>

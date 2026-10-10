@@ -146,6 +146,12 @@ GoRouter buildRouter(
             path: 'role',
             builder: (context, state) => const RoleScreen(onboarding: false),
           ),
+          // Profil ichida (push): orqaga Profilga qaytadi. /library/packs
+          // Kutubxona tabida avvalgidek ishlaydi.
+          GoRoute(
+            path: 'packs',
+            builder: (context, state) => const PacksScreen(),
+          ),
           GoRoute(
             path: 'purchase',
             builder: (context, state) => const PurchaseScreen(),
@@ -585,7 +591,10 @@ GoRouter buildRouter(
                 routes: [
                   GoRoute(
                     path: 'quiz',
-                    builder: (context, state) => const QuizScreen(),
+                    // `fresh` bo'lsa — har safar yangi holat (mavzu tanlash).
+                    builder: (context, state) => QuizScreen(
+                      key: ValueKey(state.uri.queryParameters['fresh']),
+                    ),
                   ),
                   // Jadvallar va algoritmlar (anemiya, sariqlik, eskirgan
                   // usullar...).
