@@ -7375,14 +7375,38 @@ abstract class AppLocalizations {
   /// No description provided for @toifaUzbekOnly.
   ///
   /// In en, this message translates to:
-  /// **'Questions are in Uzbek'**
+  /// **'Official text — Uzbek'**
   String get toifaUzbekOnly;
 
   /// No description provided for @toifaUzbekNotice.
   ///
   /// In en, this message translates to:
-  /// **'Certification questions are shown in Uzbek, as in the official list; buttons and hints use the interface language.'**
+  /// **'The official text of the certification questions is Uzbek. With a Russian or English interface an auxiliary translation is shown; the original can be opened at any time. Scoring follows the official Uzbek text and key.'**
   String get toifaUzbekNotice;
+
+  /// No description provided for @toifaShowOriginal.
+  ///
+  /// In en, this message translates to:
+  /// **'Show original text'**
+  String get toifaShowOriginal;
+
+  /// No description provided for @toifaHideOriginal.
+  ///
+  /// In en, this message translates to:
+  /// **'Hide original text'**
+  String get toifaHideOriginal;
+
+  /// No description provided for @toifaOriginalTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Official text (Uzbek)'**
+  String get toifaOriginalTitle;
+
+  /// No description provided for @toifaTranslationAux.
+  ///
+  /// In en, this message translates to:
+  /// **'The translation is auxiliary; scoring follows the official Uzbek text.'**
+  String get toifaTranslationAux;
 
   /// No description provided for @toifaLoadError.
   ///

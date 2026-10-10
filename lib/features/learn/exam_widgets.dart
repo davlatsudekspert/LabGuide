@@ -625,6 +625,8 @@ class _QuestionBody extends StatelessWidget {
           header: true,
           child: Text(question.prompt(lang), style: text.headlineSmall),
         ),
+        if (question case final OfficialKeyQuestion official)
+          OfficialTextToggle(question: official),
         if (item.multi) ...[
           const SizedBox(height: 8),
           LgTag(
@@ -1379,6 +1381,8 @@ class ExamReviewCard extends StatelessWidget {
             Text(l.examQuestionMissing, style: text.bodyMedium)
           else ...[
             Text(q.prompt(lang), style: text.titleMedium),
+            if (q case final OfficialKeyQuestion official)
+              OfficialTextToggle(question: official),
             const SizedBox(height: 12),
             if (!ok && showChosen)
               _AnswerLine(
@@ -1476,7 +1480,7 @@ class KeyCheckNote extends StatelessWidget {
     final text = Theme.of(context).textTheme;
     final lang = Localizations.localeOf(context).languageCode;
     final check = question.keyCheck;
-    final note = check.note;
+    final note = check.noteFor(lang);
     // Manba bilan tasdiqlanmagan izoh — belgi bilan, taklifsiz.
     final unverifiedTag = check.unverified
         ? Padding(
@@ -1562,6 +1566,114 @@ class ExamLinkRow extends StatelessWidget {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+/// ru/en interfeysda rasmiy savollar yordamchi tarjima bilan ko'rsatilishini
+/// bildiruvchi kichik belgi: “Rasmiy matn — o'zbekcha”. Interfeys o'zbekcha
+/// bo'lsa — hech narsa ko'rsatilmaydi.
+class OfficialTextTag extends StatelessWidget {
+  const OfficialTextTag({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    if (Localizations.localeOf(context).languageCode == 'uz') {
+      return const SizedBox.shrink();
+    }
+    return LgTag(
+      AppLocalizations.of(context).toifaUzbekOnly,
+      tone: LgTone.neutral,
+      icon: Icons.translate_rounded,
+    );
+  }
+}
+
+/// Rasmiy ro'yxat savoli tarjima bilan: “Rasmiy matn — o'zbekcha” belgisi va
+/// “Asl matnni ko'rish” (bosilganda rasmiy o'zbekcha savol va variantlar).
+/// Tarjima faqat yordamchi — baholash asl matn va rasmiy kalit bo'yicha.
+class OfficialTextToggle extends StatefulWidget {
+  const OfficialTextToggle({
+    super.key,
+    required this.question,
+    this.showTag = true,
+  });
+
+  final OfficialKeyQuestion question;
+
+  /// Belgi boshqa joyda ko'rsatilgan bo'lsa — faqat tugma.
+  final bool showTag;
+
+  @override
+  State<OfficialTextToggle> createState() => _OfficialTextToggleState();
+}
+
+class _OfficialTextToggleState extends State<OfficialTextToggle> {
+  bool _open = false;
+
+  @override
+  Widget build(BuildContext context) {
+    final lang = Localizations.localeOf(context).languageCode;
+    if (lang == 'uz') return const SizedBox.shrink();
+    final l = AppLocalizations.of(context);
+    final p = LgPalette.of(context);
+    final text = Theme.of(context).textTheme;
+    final q = widget.question;
+    final translated = q.hasTranslation(lang);
+    return Padding(
+      padding: const EdgeInsets.only(top: 8),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Wrap(
+            spacing: 8,
+            runSpacing: 4,
+            crossAxisAlignment: WrapCrossAlignment.center,
+            children: [
+              if (widget.showTag) const OfficialTextTag(),
+              if (translated)
+                LgButton.link(
+                  key: const ValueKey('toifa-original-toggle'),
+                  label: _open ? l.toifaHideOriginal : l.toifaShowOriginal,
+                  icon: _open
+                      ? Icons.visibility_off_outlined
+                      : Icons.visibility_outlined,
+                  expand: false,
+                  onPressed: () => setState(() => _open = !_open),
+                ),
+            ],
+          ),
+          if (translated && _open)
+            Padding(
+              padding: const EdgeInsets.only(top: 6),
+              child: LgPanel(
+                key: const ValueKey('toifa-original-text'),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    LgEyebrow(l.toifaOriginalTitle),
+                    const SizedBox(height: 6),
+                    Text(q.officialPrompt, style: text.titleSmall),
+                    const SizedBox(height: 8),
+                    for (var i = 0; i < q.optionCount; i++)
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 4),
+                        child: Text(
+                          '${optionLetter(i)}) ${q.officialOption(i)}',
+                          style: text.bodyMedium,
+                        ),
+                      ),
+                    const SizedBox(height: 4),
+                    Text(
+                      l.toifaTranslationAux,
+                      style: text.bodySmall!.copyWith(color: p.sub),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+        ],
       ),
     );
   }

@@ -33,19 +33,13 @@ bool toifaVisible(BuildContext context) => toifaAvailable(
 String _lang(BuildContext context) =>
     Localizations.localeOf(context).languageCode;
 
-/// Interfeys o'zbekcha bo'lmasa — savollar tili haqida izoh.
+/// Interfeys o'zbekcha bo'lmasa — “Rasmiy matn — o'zbekcha”: savollar
+/// yordamchi tarjima (ru/en) bilan ko'rsatiladi, rasmiy matn o'zbekcha.
 class UzbekOnlyTag extends StatelessWidget {
   const UzbekOnlyTag({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    if (_lang(context) == 'uz') return const SizedBox.shrink();
-    return LgTag(
-      AppLocalizations.of(context).toifaUzbekOnly,
-      tone: LgTone.neutral,
-      icon: Icons.translate_rounded,
-    );
-  }
+  Widget build(BuildContext context) => const OfficialTextTag();
 }
 
 /// Katta kirish kartasi: O'rganish tabida va laborant bosh sahifasida.
@@ -790,14 +784,18 @@ class _ToifaPracticeScreenState extends State<ToifaPracticeScreen> {
           ),
         ),
       ),
-      Semantics(header: true, child: Text(q.text, style: text.headlineSmall)),
+      Semantics(
+        header: true,
+        child: Text(q.prompt(_lang(context)), style: text.headlineSmall),
+      ),
+      OfficialTextToggle(question: q),
       const SizedBox(height: 14),
       for (var i = 0; i < q.options.length; i++)
         Padding(
           padding: const EdgeInsets.only(bottom: 10),
           child: _PracticeOption(
             letter: optionLetter(i),
-            label: q.options[i],
+            label: q.option(i, _lang(context)),
             state: !answered
                 ? _Opt.idle
                 : q.key.contains(i)
@@ -1115,7 +1113,7 @@ class ToifaOralScreen extends StatelessWidget {
               const SizedBox(width: 12),
               Expanded(
                 child: Text(
-                  bank.oralQuestion(id)?.text ?? id,
+                  bank.oralQuestion(id)?.localized(_lang(context)).text ?? id,
                   style: text.titleMedium,
                 ),
               ),
@@ -1199,7 +1197,7 @@ class ToifaOralScreen extends StatelessWidget {
       LgSectionTitle(l.toifaTicketTitle),
       for (final (i, id) in ticket.ids.indexed)
         LgRow(
-          title: bank.oralQuestion(id)?.text ?? id,
+          title: bank.oralQuestion(id)?.localized(_lang(context)).text ?? id,
           subtitle: ticket.ratings[id]?.label(l),
           icon: _ratingIcon(ticket.ratings[id]),
           onTap: () => context.push('$toifaBase/oral/q/$id'),
@@ -1326,7 +1324,7 @@ class _OralQuestionView extends StatelessWidget {
     final l = AppLocalizations.of(context);
     final p = LgPalette.of(context);
     final text = Theme.of(context).textTheme;
-    final q = question;
+    final q = question.localized(_lang(context));
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -1355,6 +1353,7 @@ class _OralQuestionView extends StatelessWidget {
         ],
         const SizedBox(height: 8),
         Semantics(header: true, child: Text(q.text, style: text.headlineSmall)),
+        _OralOriginalToggle(question: q, revealed: revealed),
         const SizedBox(height: 14),
         if (!revealed) ...[
           Text(l.toifaRevealHint, style: text.bodyMedium),
@@ -1450,6 +1449,83 @@ class _OralQuestionView extends StatelessWidget {
             ),
         ],
       ],
+    );
+  }
+}
+
+/// Og'zaki savol tarjima bilan ko'rsatilganda: “Asl matnni ko'rish” —
+/// rasmiy o'zbekcha savol (va ochilgan bo'lsa — javob rejasi).
+class _OralOriginalToggle extends StatefulWidget {
+  const _OralOriginalToggle({required this.question, required this.revealed});
+
+  final ToifaOralQuestion question;
+  final bool revealed;
+
+  @override
+  State<_OralOriginalToggle> createState() => _OralOriginalToggleState();
+}
+
+class _OralOriginalToggleState extends State<_OralOriginalToggle> {
+  bool _open = false;
+
+  @override
+  Widget build(BuildContext context) {
+    final lang = _lang(context);
+    if (lang == 'uz') return const SizedBox.shrink();
+    final l = AppLocalizations.of(context);
+    final p = LgPalette.of(context);
+    final text = Theme.of(context).textTheme;
+    final translated = widget.question.isTranslated;
+    final official = widget.question.originalQuestion;
+    return Padding(
+      padding: const EdgeInsets.only(top: 8),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Wrap(
+            spacing: 8,
+            runSpacing: 4,
+            crossAxisAlignment: WrapCrossAlignment.center,
+            children: [
+              const OfficialTextTag(),
+              if (translated)
+                LgButton.link(
+                  key: const ValueKey('toifa-original-toggle'),
+                  label: _open ? l.toifaHideOriginal : l.toifaShowOriginal,
+                  icon: _open
+                      ? Icons.visibility_off_outlined
+                      : Icons.visibility_outlined,
+                  expand: false,
+                  onPressed: () => setState(() => _open = !_open),
+                ),
+            ],
+          ),
+          if (translated && _open)
+            Padding(
+              padding: const EdgeInsets.only(top: 6),
+              child: LgPanel(
+                key: const ValueKey('toifa-original-text'),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    LgEyebrow(l.toifaOriginalTitle),
+                    const SizedBox(height: 6),
+                    Text(official.text, style: text.titleSmall),
+                    if (widget.revealed && official.plan.isNotEmpty) ...[
+                      const SizedBox(height: 8),
+                      LgSteps(official.plan),
+                    ],
+                    const SizedBox(height: 4),
+                    Text(
+                      l.toifaTranslationAux,
+                      style: text.bodySmall!.copyWith(color: p.sub),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+        ],
+      ),
     );
   }
 }
@@ -1715,7 +1791,7 @@ class ToifaMistakesScreen extends StatelessWidget {
           ];
         }
         Widget oralRow(String id, int i, int n) => LgRow(
-          title: bank.oralQuestion(id)?.text ?? id,
+          title: bank.oralQuestion(id)?.localized(_lang(context)).text ?? id,
           subtitle: [
             l.toifaTopic(bank.oralQuestion(id)?.topic ?? 'other'),
             if (bank.oralQuestion(id)?.held != null) l.toifaHeld,

@@ -4153,11 +4153,24 @@ class AppLocalizationsUz extends AppLocalizations {
   String get toifaContinue => 'Davom ettirish';
 
   @override
-  String get toifaUzbekOnly => 'Savollar o‘zbek tilida';
+  String get toifaUzbekOnly => 'Rasmiy matn — o‘zbekcha';
 
   @override
   String get toifaUzbekNotice =>
-      'Attestatsiya savollari rasmiy ro‘yxatdagidek o‘zbek tilida ko‘rsatiladi; tugmalar va izohlar interfeys tilida.';
+      'Attestatsiya savollarining rasmiy matni o‘zbekcha. Interfeys tili rus yoki ingliz bo‘lsa — yordamchi tarjima ko‘rsatiladi, asl matnni istalgan vaqt ko‘rish mumkin. Baholash rasmiy o‘zbekcha matn va kalit bo‘yicha.';
+
+  @override
+  String get toifaShowOriginal => 'Asl matnni ko‘rish';
+
+  @override
+  String get toifaHideOriginal => 'Asl matnni yashirish';
+
+  @override
+  String get toifaOriginalTitle => 'Rasmiy matn (o‘zbekcha)';
+
+  @override
+  String get toifaTranslationAux =>
+      'Tarjima yordamchi; baholash rasmiy o‘zbekcha matn bo‘yicha.';
 
   @override
   String get toifaLoadError => 'Savollar bankini ochib bo‘lmadi';

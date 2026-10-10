@@ -1027,13 +1027,20 @@ class _TopicOralScreenState extends State<TopicOralScreen>
           if (qs.isEmpty)
             LgStateView(kind: StateKind.empty, title: l.classroomOralEmpty)
           else
-            for (final (i, q) in qs.indexed)
+            for (final (i, q) in [
+              for (final o in qs)
+                o.localized(Localizations.localeOf(context).languageCode),
+            ].indexed)
               LgPanel(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     LgEyebrow(l.classroomCandidate(i + 1)),
                     Text(q.text, style: text.titleSmall),
+                    const Align(
+                      alignment: Alignment.centerLeft,
+                      child: OfficialTextTag(),
+                    ),
                     if (q.plan.isNotEmpty) ...[
                       const SizedBox(height: 8),
                       Text(l.classroomOralPlan, style: text.labelMedium),

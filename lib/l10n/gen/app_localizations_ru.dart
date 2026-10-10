@@ -4221,11 +4221,24 @@ class AppLocalizationsRu extends AppLocalizations {
   String get toifaContinue => 'Продолжить';
 
   @override
-  String get toifaUzbekOnly => 'Вопросы на узбекском языке';
+  String get toifaUzbekOnly => 'Официальный текст — на узбекском';
 
   @override
   String get toifaUzbekNotice =>
-      'Вопросы аттестации показаны на узбекском, как в официальном списке; кнопки и подсказки — на языке интерфейса.';
+      'Официальный текст вопросов аттестации — на узбекском. При русском или английском интерфейсе показан вспомогательный перевод; оригинал можно открыть в любой момент. Оценка — по официальному узбекскому тексту и ключу.';
+
+  @override
+  String get toifaShowOriginal => 'Показать оригинал';
+
+  @override
+  String get toifaHideOriginal => 'Скрыть оригинал';
+
+  @override
+  String get toifaOriginalTitle => 'Официальный текст (на узбекском)';
+
+  @override
+  String get toifaTranslationAux =>
+      'Перевод вспомогательный; оценка — по официальному узбекскому тексту.';
 
   @override
   String get toifaLoadError => 'Не удалось открыть банк вопросов';

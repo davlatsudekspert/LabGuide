@@ -4,8 +4,14 @@
 Kirish (tayyorlangan, tekshirilgan ma'lumot; repoga kirmaydi):
   <src>/tests.json — test savollari (rasmiy ro'yxat, kalit + LabGuide tekshiruvi)
   <src>/oral.json  — og'zaki savollar (toifalar, LabGuide javob rejasi)
+  tool/toifa/translations/{tests,oral}_{ru,en}.json — yordamchi tarjimalar
 Chiqish:
   assets/toifa/kdl_tests.json, assets/toifa/kdl_oral.json
+
+Rasmiy o'zbekcha matn (`q`, `options`, `key`) tarjimalar bilan O'ZGARMAYDI:
+tarjimalar har savolda alohida `tr: {ru: {...}, en: {...}}` maydoniga yoziladi
+va baholashga ta'sir qilmaydi. `--merge-only` — manba papkasi bo'lmaganda,
+mavjud assetlarga tarjimalarni qayta qo'shadi.
 
 Faqat ilovaga kerakli maydonlar yoziladi (asl matnlar `q_orig`, `options_orig`,
 javoblar fayllari belgilari va h.k. kirmaydi). Validatsiyada xato bo'lsa —
@@ -355,6 +361,106 @@ def build_oral(src: list) -> list:
     return out
 
 
+LANGS = ('ru', 'en')
+TR_DIR = ROOT / 'tool' / 'toifa' / 'translations'
+FACT_FIELDS = {
+    'reference': ('analyte', 'value', 'unit', 'population', 'specimen', 'note'),
+    'cutoffs': ('criterion', 'value', 'unit', 'guideline'),
+}
+
+
+def load_translations() -> dict:
+    out = {}
+    for kind in ('tests', 'oral'):
+        for lang in LANGS:
+            path = TR_DIR / f'{kind}_{lang}.json'
+            if not path.exists():
+                err(f"tarjima fayli yo'q: {path.name}")
+                out[(kind, lang)] = {}
+                continue
+            out[(kind, lang)] = json.loads(path.read_text(encoding='utf-8'))
+    return out
+
+
+def _s(v, where: str) -> str:
+    if not isinstance(v, str) or not v.strip():
+        err(f"{where}: tarjima bo'sh")
+        return ''
+    return v
+
+
+def attach_translations(tests: list, oral: list, trs: dict) -> None:
+    """Har savolga `tr: {ru: {...}, en: {...}}` qo'shadi va mosligini tekshiradi:
+    variantlar soni, izoh, reja bandlari — asl bilan bir xil bo'lishi shart."""
+    for kind, items in (('tests', tests), ('oral', oral)):
+        for lang in LANGS:
+            have = set(trs[(kind, lang)])
+            want = {i['id'] for i in items}
+            if have != want:
+                err(f"{kind}_{lang}: id'lar mos emas "
+                    f"(yo'q: {sorted(want - have)[:3]}, "
+                    f"ortiqcha: {sorted(have - want)[:3]})")
+    for q in tests:
+        tr = {}
+        for lang in LANGS:
+            t = trs[('tests', lang)].get(q['id'])
+            if t is None:
+                continue
+            w = f"{q['id']}/{lang}"
+            opts = [_s(o, f'{w} variant') for o in t.get('options', [])]
+            if len(opts) != len(q['options']):
+                err(f"{w}: variantlar soni {len(opts)} != {len(q['options'])}")
+            if ('note' in q) != ('note' in t):
+                err(f'{w}: izoh (note) asl bilan mos emas')
+            item = {'q': _s(t.get('q'), f'{w} savol'), 'options': opts}
+            if 'note' in t:
+                item['note'] = _s(t['note'], f'{w} izoh')
+            tr[lang] = item
+        q['tr'] = tr
+    for q in oral:
+        tr = {}
+        for lang in LANGS:
+            t = trs[('oral', lang)].get(q['id'])
+            if t is None:
+                continue
+            w = f"{q['id']}/{lang}"
+            plan = [_s(p, f'{w} reja') for p in t.get('plan', [])]
+            if len(plan) != len(q['plan']):
+                err(f"{w}: reja bandlari {len(plan)} != {len(q['plan'])}")
+            item = {'q': _s(t.get('q'), f'{w} savol'), 'plan': plan}
+            pit = t.get('pitfalls', [])
+            src_pit = q.get('pitfalls', [])
+            if len(pit) != len(src_pit):
+                err(f'{w}: xatolar soni mos emas')
+            else:
+                for p, sp in zip(pit, src_pit):
+                    for k in ('wrong', 'right', 'text'):
+                        if (k in sp) != (k in p):
+                            err(f'{w}: xato maydoni {k} mos emas')
+                if pit:
+                    item['pitfalls'] = pit
+            if ('note' in q) != ('note' in t):
+                err(f'{w}: izoh (note) asl bilan mos emas')
+            if 'note' in t:
+                item['note'] = _s(t['note'], f'{w} izoh')
+            for kind, fields in FACT_FIELDS.items():
+                facts = t.get(kind)
+                src = q.get(kind, [])
+                if facts is None:
+                    continue
+                if len(facts) != len(src):
+                    err(f'{w}: {kind} soni mos emas')
+                    continue
+                for f, sf in zip(facts, src):
+                    for k, v in f.items():
+                        if k not in fields or k not in sf:
+                            err(f'{w}: {kind}.{k} asl bilan mos emas')
+                        _s(v, f'{w} {kind}.{k}')
+                item[kind] = facts
+            tr[lang] = item
+        q['tr'] = tr
+
+
 def dump(obj) -> str:
     return json.dumps(obj, ensure_ascii=False, separators=(',', ':')) + '\n'
 
@@ -362,9 +468,19 @@ def dump(obj) -> str:
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument('--src', type=Path, default=DEFAULT_SRC)
+    ap.add_argument(
+        '--merge-only', action='store_true',
+        help="manba papkasiz: mavjud assetlarni o'qib, tarjimalarni qayta qo'shadi")
     args = ap.parse_args()
-    tests = build_tests(json.loads((args.src / 'tests.json').read_text()))
-    oral = build_oral(json.loads((args.src / 'oral.json').read_text()))
+    if args.merge_only:
+        tests = json.loads((OUT / 'kdl_tests.json').read_text())['questions']
+        oral = json.loads((OUT / 'kdl_oral.json').read_text())['questions']
+        for q in tests + oral:
+            q.pop('tr', None)
+    else:
+        tests = build_tests(json.loads((args.src / 'tests.json').read_text()))
+        oral = build_oral(json.loads((args.src / 'oral.json').read_text()))
+    attach_translations(tests, oral, load_translations())
     if errors:
         print('\n'.join(errors), file=sys.stderr)
         print(f"{len(errors)} ta xato — fayllar yozilmadi", file=sys.stderr)

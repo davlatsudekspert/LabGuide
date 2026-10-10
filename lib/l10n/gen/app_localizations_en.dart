@@ -4198,11 +4198,24 @@ class AppLocalizationsEn extends AppLocalizations {
   String get toifaContinue => 'Continue';
 
   @override
-  String get toifaUzbekOnly => 'Questions are in Uzbek';
+  String get toifaUzbekOnly => 'Official text — Uzbek';
 
   @override
   String get toifaUzbekNotice =>
-      'Certification questions are shown in Uzbek, as in the official list; buttons and hints use the interface language.';
+      'The official text of the certification questions is Uzbek. With a Russian or English interface an auxiliary translation is shown; the original can be opened at any time. Scoring follows the official Uzbek text and key.';
+
+  @override
+  String get toifaShowOriginal => 'Show original text';
+
+  @override
+  String get toifaHideOriginal => 'Hide original text';
+
+  @override
+  String get toifaOriginalTitle => 'Official text (Uzbek)';
+
+  @override
+  String get toifaTranslationAux =>
+      'The translation is auxiliary; scoring follows the official Uzbek text.';
 
   @override
   String get toifaLoadError => 'Could not open the question bank';

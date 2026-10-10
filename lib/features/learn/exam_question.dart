@@ -55,6 +55,7 @@ class KeyCheck {
   const KeyCheck({
     required this.verdict,
     this.note,
+    this.noteTr = const {},
     this.suggested = const [],
     this.links = const [],
     this.unverified = false,
@@ -68,6 +69,12 @@ class KeyCheck {
 
   /// LabGuide izohi (bo'lmasa — null).
   final String? note;
+
+  /// Izohning yordamchi tarjimalari (til → matn); bo'lmasa — asl izoh.
+  final Map<String, String> noteTr;
+
+  /// Interfeys tiliga mos izoh (tarjima bo'lmasa — asl).
+  String? noteFor(String lang) => noteTr[lang] ?? note;
 
   /// LabGuide fikricha to'g'ri variant(lar) (asl indekslar; bo'sh — taklif
   /// yo'q).
@@ -87,6 +94,15 @@ abstract interface class OfficialKeyQuestion implements ExamQuestion {
 
   /// Ro'yxatdagi tartib raqami (izohlarda “212-savol” kabi havola uchun).
   int get number;
+
+  /// Bu til uchun yordamchi tarjima bormi ([prompt]/[option] shuni qaytaradi).
+  bool hasTranslation(String lang);
+
+  /// Rasmiy (o'zbekcha) savol matni — tarjimadan qat'i nazar o'zgarmaydi.
+  String get officialPrompt;
+
+  /// Rasmiy (o'zbekcha) variant matni.
+  String officialOption(int index);
 }
 
 extension ExamQuestionKeyX on ExamQuestion {

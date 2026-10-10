@@ -71,8 +71,38 @@ List<ExamLink> _links(Object? raw) => [
 List<String> _strings(Object? raw) =>
     (raw as List? ?? const []).cast<String>().toList(growable: false);
 
-/// Rasmiy ro'yxatdagi test savoli. Matn faqat o'zbekcha (ro'yxat tili) —
-/// interfeys tilidan qat'i nazar shu matn ko'rsatiladi.
+/// Tarjima tillari (yordamchi; rasmiy matn har doim o'zbekcha).
+const toifaTranslationLangs = ['ru', 'en'];
+
+/// Test savolining yordamchi tarjimasi: savol, variantlar (asl tartibda) va
+/// LabGuide izohi. Kalit va baholashga aloqasi yo'q.
+@immutable
+class TestTranslation {
+  const TestTranslation({required this.text, required this.options, this.note});
+
+  factory TestTranslation.fromJson(Map<String, Object?> j) => TestTranslation(
+    text: j['q']! as String,
+    options: _strings(j['options']),
+    note: j['note'] as String?,
+  );
+
+  final String text;
+  final List<String> options;
+  final String? note;
+}
+
+Map<String, T> _translations<T>(
+  Object? raw,
+  T Function(Map<String, Object?>) parse,
+) => {
+  for (final e in (raw as Map? ?? const {}).entries)
+    if (toifaTranslationLangs.contains(e.key))
+      e.key as String: parse((e.value as Map).cast<String, Object?>()),
+};
+
+/// Rasmiy ro'yxatdagi test savoli. Rasmiy matn o'zbekcha (ro'yxat tili);
+/// interfeys ru/en bo'lsa — yordamchi tarjima ko'rsatiladi (asl matn
+/// o'zgarmaydi, baholash faqat rasmiy kalit bo'yicha).
 class ToifaTestQuestion implements OfficialKeyQuestion {
   ToifaTestQuestion({
     required this.id,
@@ -84,10 +114,12 @@ class ToifaTestQuestion implements OfficialKeyQuestion {
     required this.keyCheck,
     this.analytes = const [],
     this.held,
+    this.translations = const {},
   });
 
   factory ToifaTestQuestion.fromJson(Map<String, Object?> j) {
     final verdict = KeyVerdict.values.byName(j['verdict']! as String);
+    final translations = _translations(j['tr'], TestTranslation.fromJson);
     return ToifaTestQuestion(
       id: j['id']! as String,
       number: j['n']! as int,
@@ -98,12 +130,17 @@ class ToifaTestQuestion implements OfficialKeyQuestion {
       keyCheck: KeyCheck(
         verdict: verdict,
         note: j['note'] as String?,
+        noteTr: {
+          for (final e in translations.entries)
+            if (e.value.note != null) e.key: e.value.note!,
+        },
         suggested: (j['suggested'] as List? ?? const []).cast<int>(),
         links: _links(j['refs']),
         unverified: j['unverified'] == true,
       ),
       analytes: _strings(j['analytes']),
       held: j['held'] as String?,
+      translations: translations,
     );
   }
 
@@ -126,15 +163,27 @@ class ToifaTestQuestion implements OfficialKeyQuestion {
   /// Aniqlashtirilguncha baholanadigan tanlovdan chiqarilgan (sabab).
   final String? held;
 
+  /// Yordamchi tarjimalar (`ru`, `en`); bo'sh bo'lsa — faqat rasmiy matn.
+  final Map<String, TestTranslation> translations;
+
+  @override
+  bool hasTranslation(String lang) => translations.containsKey(lang);
+
+  @override
+  String get officialPrompt => text;
+  @override
+  String officialOption(int index) => options[index];
+
   /// Rasmiy kalit bor va chiqarilmagan — ball hisoblanadigan savol.
   bool get scorable => key.isNotEmpty && held == null;
 
   @override
-  String prompt(String lang) => text;
+  String prompt(String lang) => translations[lang]?.text ?? text;
   @override
   int get optionCount => options.length;
   @override
-  String option(int index, String lang) => options[index];
+  String option(int index, String lang) =>
+      translations[lang]?.options[index] ?? options[index];
   @override
   String? explanation(int index, String lang) => null;
   @override
@@ -229,6 +278,27 @@ class OralPitfall {
   final bool verified;
 }
 
+/// Og'zaki savolning yordamchi tarjimasi (savol, reja, xatolar, referens va
+/// chegaralar, izoh). Raqamlar, birliklar, manbalar asl bilan bir xil.
+@immutable
+class OralTranslation {
+  const OralTranslation({
+    required this.text,
+    required this.plan,
+    this.reference = const [],
+    this.cutoffs = const [],
+    this.pitfalls = const [],
+    this.note,
+  });
+
+  final String text;
+  final List<String> plan;
+  final List<OralFact> reference;
+  final List<OralFact> cutoffs;
+  final List<OralPitfall> pitfalls;
+  final String? note;
+}
+
 /// Og'zaki savol va LabGuide tayyorlagan javob rejasi (mutaxassis
 /// tekshiruvi kutilmoqda).
 @immutable
@@ -248,6 +318,8 @@ class ToifaOralQuestion {
     this.analytes = const [],
     this.held,
     this.checked,
+    this.translations = const {},
+    this.official,
   });
 
   factory ToifaOralQuestion.fromJson(Map<String, Object?> j) {
@@ -255,6 +327,42 @@ class ToifaOralQuestion {
       for (final e in (j[k] as List? ?? const []))
         (e as Map).cast<String, Object?>(),
     ];
+    // Tarjima: asl maydonlar ustiga faqat tarjima qilingan maydonlar
+    // yoziladi (raqam/birlik/manba o'zgarmaydi).
+    List<Map<String, Object?>> merged(
+      List<Map<String, Object?>> base,
+      Object? over,
+    ) {
+      final o = over as List? ?? const [];
+      return [
+        for (var i = 0; i < base.length; i++)
+          {
+            ...base[i],
+            if (i < o.length) ...(o[i] as Map).cast<String, Object?>(),
+          },
+      ];
+    }
+
+    final translations = _translations(
+      j['tr'],
+      (t) => OralTranslation(
+        text: t['q']! as String,
+        plan: _strings(t['plan']),
+        reference: [
+          for (final m in merged(maps('reference'), t['reference']))
+            OralFact.reference(m),
+        ],
+        cutoffs: [
+          for (final m in merged(maps('cutoffs'), t['cutoffs']))
+            OralFact.cutoff(m),
+        ],
+        pitfalls: [
+          for (final m in merged(maps('pitfalls'), t['pitfalls']))
+            OralPitfall.fromJson(m),
+        ],
+        note: t['note'] as String?,
+      ),
+    );
     return ToifaOralQuestion(
       id: j['id']! as String,
       text: j['q']! as String,
@@ -272,6 +380,7 @@ class ToifaOralQuestion {
       analytes: _strings(j['analytes']),
       held: j['held'] as String?,
       checked: j['checked'] as String?,
+      translations: translations,
     );
   }
 
@@ -304,6 +413,47 @@ class ToifaOralQuestion {
 
   /// Agent tekshiruvi sanasi (mutaxassis tasdig'i emas).
   final String? checked;
+
+  /// Yordamchi tarjimalar (`ru`, `en`).
+  final Map<String, OralTranslation> translations;
+
+  /// [localized] natijasida — rasmiy (o'zbekcha) savol; aks holda null.
+  final ToifaOralQuestion? official;
+
+  /// Bu nusxa tarjima ko'rsatyaptimi.
+  bool get isTranslated => official != null;
+
+  /// Rasmiy (o'zbekcha) savol.
+  ToifaOralQuestion get originalQuestion => official ?? this;
+
+  static final _localizedCache = Expando<Map<String, ToifaOralQuestion>>();
+
+  /// Interfeys tili ru/en bo'lsa — tarjima qilingan nusxa (kategoriya, mavzu,
+  /// manba, holat o'sha); tarjima yo'q yoki til `uz` bo'lsa — o'zi.
+  ToifaOralQuestion localized(String lang) {
+    final t = translations[lang];
+    if (official != null || t == null) return this;
+    return (_localizedCache[this] ??= {}).putIfAbsent(
+      lang,
+      () => ToifaOralQuestion(
+        id: id,
+        text: t.text,
+        categories: categories,
+        topic: topic,
+        planReady: planReady,
+        plan: t.plan,
+        reference: t.reference,
+        cutoffs: t.cutoffs,
+        pitfalls: t.pitfalls,
+        links: links,
+        note: t.note ?? note,
+        analytes: analytes,
+        held: held,
+        checked: checked,
+        official: this,
+      ),
+    );
+  }
 }
 
 /// Ikkala bank: test va og'zaki savollar.
@@ -360,6 +510,20 @@ class ToifaBank {
       }
       if (q.key.length > 1 || q.key.any((k) => k < 0 || k >= q.optionCount)) {
         throw FormatException('key ${q.id}');
+      }
+      // Tarjima variantlar soni asl bilan mos bo'lmasa — yuklanmaydi
+      // (variantlar indeksi kalitga bog'liq).
+      for (final t in q.translations.values) {
+        if (t.options.length != q.optionCount) {
+          throw FormatException('translation options ${q.id}');
+        }
+      }
+    }
+    for (final q in oral) {
+      for (final t in q.translations.values) {
+        if (t.plan.length != q.plan.length) {
+          throw FormatException('translation plan ${q.id}');
+        }
       }
     }
     if (_testById.length != tests.length || _oralById.length != oral.length) {
