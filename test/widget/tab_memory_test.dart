@@ -172,4 +172,27 @@ void main() {
     expect(find.byType(LearnScreen), findsOneWidget);
     expect(routerOf(tester).state.matchedLocation, '/learn');
   });
+
+  // Kutubxona → Saqlanganlar (bo'sh) → “Tests”: Tahlillar ro'yxati ochiladi,
+  // Tahlillar tabida oxirgi ochiq qolgan karta (Kaliy) emas.
+  testWidgets('saved empty state opens the tests list, not the last card', (
+    tester,
+  ) async {
+    final s = await makeServices(tester, language: AppLanguage.en);
+    await pumpApp(tester, s, size: const Size(390, 844));
+    await goTo(tester, '/tests');
+    await goTo(tester, '/tests/analyte/potassium');
+    await goTo(tester, '/library/saved');
+    expect(find.text(en.savedEmptyTitle), findsOneWidget);
+    // Bo'sh holat tugmasi (pastki “Tests” tabi emas).
+    await tester.tap(
+      find.descendant(
+        of: find.byType(LgStateView),
+        matching: find.text(en.featureTests),
+      ),
+    );
+    await tester.pumpAndSettle();
+    expect(routerOf(tester).state.matchedLocation, '/tests');
+    expect(find.text(en.testsTitle).hitTestable(), findsWidgets);
+  });
 }

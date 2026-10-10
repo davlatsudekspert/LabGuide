@@ -4,7 +4,6 @@ import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
 import '../../app/app_scope.dart';
-import '../../app/shell.dart';
 import '../../app/widgets/lg_page.dart';
 import '../../core/storage/kv_store.dart';
 import '../../design/tokens.dart';
@@ -299,7 +298,9 @@ class SavedScreen extends StatelessWidget {
                   title: l.savedEmptyTitle,
                   message: l.savedEmptyBody,
                   actionLabel: l.featureTests,
-                  onAction: () => openInTab(context, '/tests'),
+                  // Tahlillar ro'yxati (tab ildizi). openInTab Tahlillar
+                  // tabida oxirgi ochiq kartani (masalan, Kaliy) ko'rsatardi.
+                  onAction: () => context.go('/tests'),
                 );
               }
               return Column(
