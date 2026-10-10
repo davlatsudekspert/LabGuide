@@ -4,6 +4,13 @@ App Store Connect’ga kiritiladigan matnlar va javoblar. Hammasi ilovaning haqi
 mos: ilova serverga ma’lumot yubormaydi, tashxis qo‘ymaydi, kontent manbali o‘quv namunasi.
 Ilova o‘zgarsa (masalan, email kirish ulanganda), shu hujjat ham yangilanadi.
 
+**Va’da qilinmaydigan narsalar (hozir ishlamaydi):** email orqali kirish, guruhlar/sinflar,
+“Taklif va yordam” va hamkor statistikasi (server ulanmagan), pullik obuna/to‘lov (o‘chiq).
+Tavsiflarda ular tilga olinmaydi; “qoralama / mutaxassis tekshiruvi kutilmoqda” holati
+tavsiflarda ochiq yoziladi — buni olib tashlamang. Rus/ingliz tavsifida O‘zbekistonga xos
+bo‘limlar (malaka toifasi) yo‘q: ular faqat o‘zbek tili yoki UZ mintaqasida ko‘rinadi.
+Tavsiflar 2026-10-10 holatiga yangilangan (119 karta, 43 holat).
+
 ## 1. Ilova yozuvi (New App)
 
 | Maydon | Qiymat |
@@ -26,12 +33,12 @@ doza bermaydi (Apple 1.4.1 bo‘yicha tibbiy ilovalarga qo‘shimcha talablar qo
 
 ## 3. Promotional text (≤ 170)
 
-- **uz:** Tahlillar atlasi, klinik kalkulyatorlar, Westgard qoidalari bilan sifat nazorati va izohli
-  testlar — manbalari bilan, internetsiz.
-- **ru:** Атлас анализов, клинические калькуляторы, контроль качества по правилам Вестгарда и
-  тесты с пояснениями — с источниками, без интернета.
-- **en:** Lab test atlas, clinical calculators, Westgard quality control and explained quizzes —
-  with sources, fully offline.
+- **uz:** Tahlillar atlasi (qoralama), klinik kalkulyatorlar, har kuni 5 ta savol, leykoformula va
+  Westgard sifat nazorati — manbalari bilan, internetsiz.
+- **ru:** Атлас анализов (черновик), клинические калькуляторы, 5 вопросов в день, лейкоформула и
+  контроль качества по Вестгарду — с источниками, без интернета.
+- **en:** Lab test atlas (draft), clinical calculators, 5 daily questions, differential count and
+  Westgard QC — with sources, fully offline.
 
 ## 4. Description (≤ 4000)
 
@@ -39,76 +46,109 @@ doza bermaydi (Apple 1.4.1 bo‘yicha tibbiy ilovalarga qo‘shimcha talablar qo
 LabGuide — biokimyo va klinik laboratoriya uchun qo‘llanma: laboratoriya mutaxassisi, shifokor,
 talaba va o‘qituvchi uchun.
 
-• Tahlillar atlasi: 35 ta ko‘rsatkich (glyukoza, HbA1c, kreatinin, eGFR, jigar fermentlari,
-lipidlar, elektrolitlar, siydik tahlili va boshqalar). Har bir da’vo ochiq manbaga bog‘langan
-(MedlinePlus, NIDDK, NHLBI, JSST).
+• Tahlillar atlasi: 119 ta karta (glyukoza, HbA1c, kreatinin, lipidlar, jigar fermentlari,
+elektrolitlar, gormonlar, gematologiya, siydik tahlili va boshqalar) va 43 ta holat. Har bir da’vo
+ochiq manbaga bog‘langan. Barcha kartalar QORALAMA: mustaqil mutaxassis tekshiruvi kutilmoqda
+(har kartada shunday yoziladi).
+• Birliklar: SI (mmol/L, µmol/L) yoki an’anaviy (mg/dL) — Profilda tanlanadi; kalkulyatorlar
+tanlangan tizimda boshlanadi. Moddaga xos birlik konvertori.
 • Klinik kalkulyatorlar: eGFR (CKD-EPI 2021) va KDIGO toifasi, albumin/kreatinin nisbati,
 anion oralig‘i, albumin bo‘yicha tuzatilgan kalsiy, LDL (Friedewald, Sampson) va non-HDL,
 osmolyallik, HbA1c NGSP ↔ IFCC va eAG. Har birida formula, cheklovlar va manba.
-• Moddaga xos birlik konvertori (mg/dL ↔ mmol/L yoki µmol/L).
+• Laboratoriya kalkulyatorlari: hisoblash kamerasi, leykoformula, retikulotsitlar, yorug‘lik
+mikroskopi, rang ko‘rsatkichi, siydik cho‘kmasi (Nechiporenko, Addis, Zimnitskiy — klassik
+usullar, belgi bilan), suyultirish.
+• Leykoformula: qo‘lda sanash va “ko‘rmasdan sanash” (mikroskopdan ko‘z uzmay: tovush va tebranish
+signallari), tarix va morfologiya atlasi.
+• Mikroskopiya atlasi: litsenziyali mikrofotografiyalar, muallif va litsenziya ko‘rsatiladi.
+• Jadvallar va algoritmlar: anemiya, soxta KQT natijalari, sariqlik, jigar sindromlari,
+najas/parazitlar, eskirgan usullar.
+• Kunlik savol: har kuni 5 ta savol, har javobdan keyin izoh va manba, ketma-ket kunlar
+hisobi va ixtiyoriy mahalliy eslatma. Savollar qoralama.
 • Ichki sifat nazorati: Levey–Jennings grafigi, Westgard qoidalari (1-2s, 1-3s, 2-2s, R-4s,
 4-1s, 10x), lot va maqsad tarixi, CSV eksport va zaxira nusxa.
-• Preanalitika: JSST 2010 bo‘yicha probirkalar tartibi, gemoliz sabablari, bemorni aniqlash.
-• Izohli testlar: har bir javob izohi va manbasi, xatolar ustida ishlash.
-• Kutubxona: ochiq litsenziyali va rasmiy manbalar katalogi.
+• Preanalitika, analizator katalogi, izohli testlar, kutubxona (ochiq va rasmiy manbalar).
+• Malaka toifasi imtihoniga tayyorgarlik (o‘zbek tilidagi savollar; qoralama, rasmiy natija emas).
 
-Uch tilda: o‘zbek, rus, ingliz. Internet shart emas. Ilova serverga hech qanday ma’lumot
-yubormaydi.
+Uch tilda: o‘zbek, rus, ingliz. Internet shart emas. Hisobsiz (mehmon) ishlaydi. Ilova hozircha
+serverga ma’lumot yubormaydi.
 
 Muhim: LabGuide o‘quv va ma’lumotnoma vositasi. U natijani talqin qilmaydi, tashxis qo‘ymaydi
 va dori dozasini taklif qilmaydi. Natijalar klinik manzara va laboratoriyangiz referens
-intervallari bilan birga baholanadi. Kontent manbalarga asoslangan o‘quv namunasi bo‘lib,
-mustaqil mutaxassis tekshiruvidan o‘tkazilmoqda.
+intervallari bilan birga baholanadi. Kontent manbalarga asoslangan QORALAMA o‘quv namunasi:
+mustaqil mutaxassis tekshiruvidan hali o‘tmagan.
 
 ### ru
 LabGuide — справочник по биохимии и клинической лабораторной диагностике для специалистов
 лаборатории, врачей, студентов и преподавателей.
 
-• Атлас анализов: 35 показателей (глюкоза, HbA1c, креатинин, рСКФ, печёночные ферменты,
-липиды, электролиты, анализ мочи и др.). Каждое утверждение связано с открытым источником
-(MedlinePlus, NIDDK, NHLBI, ВОЗ).
+• Атлас анализов: 119 карточек (глюкоза, HbA1c, креатинин, липиды, печёночные ферменты,
+электролиты, гормоны, гематология, анализ мочи и др.) и 43 состояния. Каждое утверждение связано
+с открытым источником. Все карточки — ЧЕРНОВИК: независимая экспертная проверка ещё не
+завершена (это указано в каждой карточке).
+• Единицы: СИ (ммоль/л, мкмоль/л) или обычные (мг/дл) — выбор в Профиле; калькуляторы
+открываются в выбранной системе. Конвертер единиц для конкретного вещества.
 • Клинические калькуляторы: рСКФ (CKD-EPI 2021) и категория KDIGO, отношение
 альбумин/креатинин, анионный интервал, кальций с поправкой на альбумин, ЛПНП (Friedewald,
 Sampson) и не-ЛПВП, осмоляльность, HbA1c NGSP ↔ IFCC и eAG. Для каждого — формула,
 ограничения и источник.
-• Конвертер единиц для конкретного вещества (мг/дл ↔ ммоль/л или мкмоль/л).
+• Лабораторные калькуляторы: счётная камера, лейкоформула, ретикулоциты, световая
+микроскопия, цветовой показатель, осадок мочи (Нечипоренко, Аддис, Зимницкий —
+классические методы, с пометкой), разведения.
+• Лейкоформула: ручной подсчёт и режим «считать, не глядя» (не отрываясь от микроскопа: звуки и
+вибрация), история и атлас морфологии.
+• Атлас микроскопии: лицензированные микрофотографии, автор и лицензия указываются.
+• Таблицы и алгоритмы: анемии, ложные результаты ОАК, желтухи, печёночные синдромы,
+кал и паразиты, устаревшие методы.
+• Вопрос дня: 5 вопросов в день, после каждого ответа — пояснение и источник, серия дней и
+необязательное локальное напоминание. Вопросы — черновик.
 • Внутрилабораторный контроль качества: карта Леви–Дженнингса, правила Вестгарда (1-2s, 1-3s,
 2-2s, R-4s, 4-1s, 10x), история лотов и целевых значений, экспорт CSV и резервная копия.
-• Преаналитика: порядок взятия пробирок по ВОЗ 2010, причины гемолиза, идентификация пациента.
-• Тесты с пояснениями: разбор каждого ответа и источник, работа над ошибками.
-• Библиотека: каталог открытых и официальных источников.
+• Преаналитика, каталог анализаторов, тесты с пояснениями, библиотека (открытые и официальные
+источники).
 
-Три языка: узбекский, русский, английский. Работает без интернета. Приложение не отправляет
-данные на сервер.
+Три языка: узбекский, русский, английский. Работает без интернета и без аккаунта (гостевой
+режим). Сейчас приложение не отправляет данные на сервер.
 
 Важно: LabGuide — учебный и справочный инструмент. Он не интерпретирует результаты, не ставит
 диагноз и не предлагает дозы препаратов. Результаты оцениваются с учётом клинической картины и
-референсных интервалов вашей лаборатории. Материалы основаны на источниках и проходят
-независимую экспертную проверку.
+референсных интервалов вашей лаборатории. Материалы основаны на источниках, но это ЧЕРНОВИК:
+независимую экспертную проверку они ещё не прошли.
 
 ### en
 LabGuide is a biochemistry and clinical laboratory companion for lab professionals, physicians,
 students and teachers.
 
-• Lab test atlas: 35 analytes (glucose, HbA1c, creatinine, eGFR, liver enzymes, lipids,
-electrolytes, urinalysis and more). Every claim links to an open source (MedlinePlus, NIDDK,
-NHLBI, WHO).
+• Lab test atlas: 119 cards (glucose, HbA1c, creatinine, lipids, liver enzymes, electrolytes,
+hormones, haematology, urinalysis and more) and 43 conditions. Every claim links to an open
+source. All cards are DRAFTS: independent expert review is still pending (each card says so).
+• Units: SI (mmol/L, µmol/L) or conventional (mg/dL) — chosen in Profile; calculators start in the
+chosen system. Analyte-specific unit converter.
 • Clinical calculators: eGFR (CKD-EPI 2021) with KDIGO category, albumin/creatinine ratio,
 anion gap, albumin-corrected calcium, LDL (Friedewald, Sampson) and non-HDL, osmolality,
 HbA1c NGSP ↔ IFCC and eAG. Each shows its formula, limitations and source.
-• Analyte-specific unit converter (mg/dL ↔ mmol/L or µmol/L).
+• Bench calculators: counting chamber, differential count, reticulocytes, light microscopy,
+colour index, urine sediment counts (Nechiporenko, Addis, Zimnitsky — classic methods, labelled
+as such), dilution.
+• Differential count: manual counting and an “eyes-free” mode (keep your eyes on the microscope:
+sounds and vibration cues), history and a morphology atlas.
+• Microscopy atlas: licensed micrographs with author and licence shown.
+• Tables and algorithms: anaemia, spurious CBC results, jaundice, liver syndromes, stool and
+parasites, obsolete methods.
+• Daily questions: 5 questions a day, an explanation and a source after each answer, a day
+streak and an optional local reminder. The questions are drafts.
 • Internal quality control: Levey–Jennings chart, Westgard rules (1-2s, 1-3s, 2-2s, R-4s, 4-1s,
 10x), lot and target history, CSV export and backup.
-• Preanalytics: WHO 2010 order of draw, causes of hemolysis, patient identification.
-• Explained quizzes: an explanation and a source for every answer, mistake review.
-• Library: a catalog of open and official sources.
+• Preanalytics, an instrument catalogue, explained quizzes and a library of open and official
+sources.
 
-Three languages: Uzbek, Russian, English. Works offline. The app sends no data to a server.
+Three languages: Uzbek, Russian, English. Works offline and without an account (guest mode).
+The app currently sends no data to a server.
 
 Important: LabGuide is a learning and reference tool. It does not interpret results, make a
 diagnosis or suggest drug doses. Results are assessed together with the clinical picture and
-your laboratory’s reference intervals. Content is source-based learning material and is
-undergoing independent expert review.
+your laboratory’s reference intervals. Content is source-based but is a DRAFT: it has not yet
+passed independent expert review.
 
 ## 5. Keywords (≤ 100 belgi, vergul bilan, bo‘shliqsiz)
 

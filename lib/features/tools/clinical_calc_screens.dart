@@ -1,10 +1,12 @@
 import 'package:material_ui/material_ui.dart';
 
+import '../../app/app_scope.dart';
 import '../../app/widgets/lg_page.dart';
 import '../../app/widgets/links.dart';
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
+import '../settings/settings_controller.dart';
 import 'calc_info.dart';
 import 'clinical_calculators.dart';
 import 'tool_screens.dart';
@@ -155,9 +157,16 @@ class _ClinicalCalcScreenState extends State<ClinicalCalcScreen> {
   late final Map<CalcField, TextEditingController> _ctrl = {
     for (final s in _specs) s.field: TextEditingController(),
   };
+  // Boshlang'ich birlik — profildagi birliklar tizimiga ko'ra (SI: ro'yxatdagi
+  // birinchi; konvensional: mg/dL, g/dL bo'lsa shu). Maydon ustidagi tanlov
+  // baribir o'zgartira oladi.
   late final Map<CalcField, LabUnit> _unit = {
     for (final s in _specs)
-      if (s.units.isNotEmpty) s.field: s.units.first,
+      if (s.units.isNotEmpty)
+        s.field: defaultUnitFor(
+          s.units,
+          context.services.settings.unitSystem == UnitSystem.conventional,
+        ),
   };
   Sex? _sex;
   CalcOutcome<Object?>? _outcome;

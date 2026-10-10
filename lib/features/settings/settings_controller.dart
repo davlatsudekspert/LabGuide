@@ -33,11 +33,38 @@ enum AppLanguage {
   }
 }
 
+/// Laboratoriya birliklari tizimi: SI (mmol/L, µmol/L, g/L) yoki
+/// konvensional (mg/dL, g/dL). Faqat ko'rsatish va kalkulyatorlarning
+/// boshlang'ich birligiga ta'sir qiladi; manbadagi raqamlar o'zgarmaydi.
+enum UnitSystem {
+  si,
+  conventional;
+
+  static UnitSystem? tryParse(String? code) {
+    for (final u in values) {
+      if (u.name == code) return u;
+    }
+    return null;
+  }
+
+  /// Qurilma mintaqasi AQSH (konvensional birliklar) bo'lsa — konvensional,
+  /// aks holda SI.
+  static UnitSystem fromSystem(Iterable<Locale> systemLocales) {
+    final country = systemLocales.isEmpty
+        ? null
+        : systemLocales.first.countryCode;
+    return country == 'US' ? UnitSystem.conventional : UnitSystem.si;
+  }
+}
+
 class SettingsController extends ChangeNotifier {
   SettingsController(this._store, {required Iterable<Locale> systemLocales})
     : _language =
           AppLanguage.tryParse(_store.getString(StoreKeys.language)) ??
           AppLanguage.fromSystem(systemLocales),
+      _unitSystem =
+          UnitSystem.tryParse(_store.getString(StoreKeys.unitSystem)) ??
+          UnitSystem.fromSystem(systemLocales),
       _themeMode = _parseTheme(_store.getString(StoreKeys.themeMode)),
       _role = _parseRole(_store.getString(StoreKeys.role)),
       _onboarded = _store.getBool(StoreKeys.onboarded) ?? false;
@@ -45,11 +72,13 @@ class SettingsController extends ChangeNotifier {
   final KeyValueStore _store;
 
   AppLanguage _language;
+  UnitSystem _unitSystem;
   ThemeMode _themeMode;
   AppRole? _role;
   bool _onboarded;
 
   AppLanguage get language => _language;
+  UnitSystem get unitSystem => _unitSystem;
   ThemeMode get themeMode => _themeMode;
 
   /// Onboardingda hali tanlanmagan bo'lsa `null`.
@@ -66,6 +95,13 @@ class SettingsController extends ChangeNotifier {
     _language = value;
     notifyListeners();
     await _store.setString(StoreKeys.language, value.name);
+  }
+
+  Future<void> setUnitSystem(UnitSystem value) async {
+    if (_unitSystem == value) return;
+    _unitSystem = value;
+    notifyListeners();
+    await _store.setString(StoreKeys.unitSystem, value.name);
   }
 
   Future<void> setThemeMode(ThemeMode value) async {
@@ -99,6 +135,7 @@ class SettingsController extends ChangeNotifier {
   /// Lokal ma'lumotlar o'chirilgandan keyin xotiradagi holatni tozalash.
   void resetToDefaults(Iterable<Locale> systemLocales) {
     _language = AppLanguage.fromSystem(systemLocales);
+    _unitSystem = UnitSystem.fromSystem(systemLocales);
     _themeMode = ThemeMode.system;
     _role = null;
     _onboarded = false;
