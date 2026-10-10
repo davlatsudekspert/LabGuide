@@ -92,6 +92,8 @@ Future<AppServices> makeServices(
   await tester.runAsync(services.instruments.ensureCatalog);
   await tester.runAsync(services.microscopy.ensureAtlas);
   await tester.runAsync(services.toifa.ensureLoaded);
+  // O'quv dasturi asset'i (bundle'da bo'lmasa — “qo'shilmagan” holati).
+  await tester.runAsync(services.curriculum.ensureLoaded);
   return services;
 }
 

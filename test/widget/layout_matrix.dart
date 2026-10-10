@@ -154,7 +154,7 @@ const appRoutes = [
   '/learn/classes/g/x/t/y',
   '/learn/classes/g/x/t/y/oral',
   '/learn/classes/g/x/t/y/test',
-  // Ma'ruza rejimi: o'quv dasturi asset'i yo'q — halol holat.
+  // Ma'ruza rejimi: haqiqiy o'quv dasturi; noma'lum mavzu — halol holat.
   '/learn/lecture',
   '/learn/lecture/y',
   '/learn/lesson',
