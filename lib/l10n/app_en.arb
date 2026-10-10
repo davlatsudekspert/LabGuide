@@ -3089,7 +3089,7 @@
   "classesCreateSub": "For teachers: get a code and set assignments",
   "classesJoin": "Join with a code",
   "classesJoinSub": "For students: the 8-character code from your teacher",
-  "classesRoleNote": "Your role in the app grants no server rights: whoever creates a class is its teacher.",
+  "classesRoleNote": "Your role in the app grants no server rights: only an account registered as a teacher can open a class, and only manages its own classes.",
   "classesMine": "My classes",
   "classesEmpty": "No classes yet",
   "classesEmptyBody": "Create a class or join one with the code from your teacher.",
@@ -3103,7 +3103,7 @@
       }
     }
   },
-  "classesCreateIntro": "The account that creates a class becomes its teacher. Students join with the code you share.",
+  "classesCreateIntro": "The teacher who opens a class manages only that class. Students join with your code or QR.",
   "classesGroupName": "Class name",
   "classesGroupNameHint": "e.g. Biochemistry year 2",
   "classesLengthError": "Enter {min}–{max} characters",
@@ -3117,16 +3117,16 @@
       }
     }
   },
-  "classesDisplayName": "Your name in the class",
-  "classesDisplayNameHint": "e.g. Anvar Aliyev",
+  "classesDisplayName": "Nickname (optional)",
+  "classesDisplayNameHint": "e.g. Star — leave empty to use a number",
   "classesDisplayNameHintTeacher": "e.g. Dr N. Karimova",
-  "classesDisplayNameNote": "Your email isn’t shown — members see only this name.",
+  "classesDisplayNameNote": "Names aren’t stored on the server: students appear by nickname or number. You can note a real name only as a label on your own device.",
   "classesCreateAction": "Create class",
   "classesCreated": "Class created — send the code to your students",
   "classesJoinIntro": "Enter the code your teacher gave you.",
   "classesCode": "Invite code",
   "classesCodeError": "The code has 8 letters and digits",
-  "classesJoinNote": "The teacher sees this name and your assignment results. Your email isn’t shown.",
+  "classesJoinNote": "Don’t use your real name. The teacher sees only your nickname (or number) and your results; other students don’t see you. Your email isn’t shown.",
   "classesJoinAction": "Join",
   "classesJoined": "You joined the class",
   "classesYouTeacher": "{count, plural, =1{You’re the teacher · 1 member} other{You’re the teacher · {count} members}}",
@@ -3975,5 +3975,264 @@
     }
   },
   "analyteExpertApproval": "Expert approval",
-  "analyteExpertApprovalPending": "pending"
+  "analyteExpertApprovalPending": "pending",
+  "classesSeat": "Student {n}",
+  "@classesSeat": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "classesQrLabel": "Invite code QR: {code}",
+  "@classesQrLabel": {
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "classesTeacherRegisterEyebrow": "Teacher",
+  "classesTeacherRegisterTitle": "Register as a teacher",
+  "classesTeacherRegisterBody": "A teacher opens their own class and sees only their students’ results. This isn’t admin access and doesn’t affect other classes.",
+  "classesTeacherRegister": "Register as a teacher",
+  "classesLocalNameTitle": "Label (this device only)",
+  "classesLocalNameBody": "For example, the student’s name. It isn’t sent to the server and the student can’t see it.",
+  "classesLocalNameHint": "Empty — remove the label",
+  "classesLocalNameSave": "Save",
+  "classroomPlanTitle": "Course plan",
+  "classroomPlanSub": "Topics by day: lecture, oral questions, test",
+  "classroomTopicsTitle": "Topics",
+  "classroomTopicsSub": "Topics and tests your teacher has opened",
+  "classroomProgramEyebrow": "Curriculum",
+  "classroomPlanProgress": "{done}/{total} topic tests finished",
+  "@classroomPlanProgress": {
+    "placeholders": {
+      "done": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "classroomStartNone": "No start date — the plan is shown by day number",
+  "classroomStartAt": "Day 1: {date}",
+  "@classroomStartAt": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "classroomStartNote": "Dates are approximate (Sundays skipped, holidays not counted) and stored only on this device.",
+  "classroomStartPick": "Set the start date",
+  "classroomDayN": "Day {n}",
+  "@classroomDayN": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "classroomWeekN": "Week {n}",
+  "@classroomWeekN": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "classroomHours": "{n} h",
+  "@classroomHours": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "classroomTypeLecture": "Lecture",
+  "classroomTypePractical": "Practical",
+  "classroomTypeSeminar": "Seminar",
+  "classroomTypeAttestation": "Assessment",
+  "classroomTypeOther": "Session",
+  "classroomStatusClosed": "Not opened",
+  "classroomStatusOpened": "Opened",
+  "classroomStatusLectured": "Taught",
+  "classroomStatusOral": "Oral round done",
+  "classroomStatusTestRunning": "Test in progress",
+  "classroomStatusTestDone": "Test finished",
+  "classroomNoCurriculumTitle": "The curriculum hasn’t been added yet",
+  "classroomNoCurriculumBody": "The course plan (module → topic → materials) will come in a later app version. For now, use class assignments.",
+  "classroomCurriculumError": "Couldn’t read the curriculum",
+  "classroomNoTopicsStudent": "Your teacher hasn’t opened any topics yet",
+  "classroomNoTopicsStudentBody": "When a topic opens, its materials and test will appear here.",
+  "classroomTopicTitle": "Topic",
+  "classroomTopicMissing": "Topic not found in the curriculum",
+  "classroomTopicNotOpened": "This topic isn’t open yet",
+  "classroomOpenNote": "Once opened, students see the topic materials.",
+  "classroomOpenTopic": "Open to students",
+  "classroomStep": "Step {n}",
+  "@classroomStep": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "classroomStageLecture": "Lecture",
+  "classroomStageLectureBody": "Present the topic as slides on a big screen (works offline too).",
+  "classroomStageOral": "Oral questions",
+  "classroomStageOralBody": "Question list with answer outlines. Asked: {count}.",
+  "@classroomStageOralBody": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "classroomStageTest": "Class test",
+  "classroomStageTestBody": "Pick questions and start the test — it opens for students right away.",
+  "classroomStageDone": "Done",
+  "classroomMarkDone": "Mark as done",
+  "classroomOralOpen": "Question list",
+  "classroomTestPrepare": "Prepare the test",
+  "classroomTestResults": "Results panel",
+  "classroomTestFinish": "Finish the test",
+  "classroomTestFinishTitle": "Finish the test?",
+  "classroomTestFinishBody": "No new attempts are accepted. Those who already started get 2 minutes to send their answers.",
+  "classroomTestSubmitted": "{done}/{total} students submitted",
+  "@classroomTestSubmitted": {
+    "placeholders": {
+      "done": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "classroomTestNotStarted": "Your teacher hasn’t started the test yet.",
+  "classroomTestOpenStudent": "Test open — take it",
+  "classroomMaterials": "Topic materials",
+  "classroomNoMaterials": "The app has no linked materials for this topic yet.",
+  "classroomGapNote": "The app has little material on this topic — the teacher adds their own sources.",
+  "classroomKindAnalyte": "Test card",
+  "classroomKindCondition": "Condition",
+  "classroomKindReference": "Table",
+  "classroomKindAtlas": "Microscopy atlas",
+  "classroomKindTool": "Calculator and tool",
+  "classroomToolQc": "Quality control",
+  "classroomToolPreanalytics": "Preanalytics",
+  "classroomToolInstruments": "Instruments",
+  "classroomToolCalibration": "Calibration log",
+  "classroomToolDifferential": "Differential count",
+  "classroomOralNotice": "Questions are auto-picked candidates; answer outlines await expert review. “Asked” marks and grades stay on this device only.",
+  "classroomOralEmpty": "No oral questions for this topic",
+  "classroomCandidate": "Candidate question {n}",
+  "@classroomCandidate": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "classroomOralPlan": "Short answer outline",
+  "classroomOralNoPlan": "No answer outline yet.",
+  "classroomOralAsked": "Asked",
+  "classroomOralGrade": "Grade students ({count})",
+  "@classroomOralGrade": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "classroomOralGradeTitle": "How each student answered",
+  "classroomOralGradeNote": "This device only; not sent to the server.",
+  "classroomGradeKnew": "Knew",
+  "classroomGradePartial": "Partly",
+  "classroomGradeDidNot": "Didn’t know",
+  "classroomCandidatesNotice": "Candidate questions were auto-picked and their keys aren’t verified. Review each one: the score is computed on the server using the key shown.",
+  "classroomCandidatesTitle": "Candidates · picked {picked}/{total}",
+  "@classroomCandidatesTitle": {
+    "placeholders": {
+      "picked": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "classroomPickAll": "All",
+  "classroomPickNone": "None",
+  "classroomKeyShown": "Key: {answer}",
+  "@classroomKeyShown": {
+    "placeholders": {
+      "answer": {
+        "type": "String"
+      }
+    }
+  },
+  "classroomKeyFlagged": "Disputed key",
+  "classroomPickAtLeastOne": "Pick at least one question",
+  "classroomPickMax": "At most 50 questions",
+  "classroomTestStart": "Start the test · {count} questions",
+  "@classroomTestStart": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "classroomTestStarted": "Test started — open for students",
+  "classroomTestTitle": "Test: {topic}",
+  "@classroomTestTitle": {
+    "placeholders": {
+      "topic": {
+        "type": "String"
+      }
+    }
+  },
+  "classroomTestAlready": "This topic’s test has already started",
+  "classroomTestNoCandidates": "No test questions for this topic",
+  "classroomTestNoCandidatesBody": "You can build an assignment by hand (New assignment).",
+  "lectureTitle": "Lecture",
+  "lectureListTitle": "Lecture mode",
+  "lectureListSub": "Pick a topic — slides on a big screen, offline",
+  "lectureStart": "Start the lecture",
+  "lectureClose": "Close the lecture",
+  "lectureCounter": "{current} / {total}",
+  "@lectureCounter": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "lecturePrev": "Back",
+  "lectureNext": "Next",
+  "lectureGoals": "Goals",
+  "lectureKeyPoints": "Key concepts",
+  "lectureConcepts": "Key tests",
+  "lectureConditions": "Clinical conditions",
+  "lectureTables": "Tables and algorithms",
+  "lectureAtlas": "Microscopy",
+  "lectureTools": "Calculations and tools",
+  "lectureQuestionN": "Question {n}",
+  "@lectureQuestionN": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "lectureEndEyebrow": "Next step",
+  "lectureEndTitle": "Questions and test",
+  "lectureEndOral": "Oral questions — asked by the teacher",
+  "lectureEndTest": "Class test — in the app, timed"
 }

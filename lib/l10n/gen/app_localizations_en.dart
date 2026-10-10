@@ -5318,7 +5318,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get classesRoleNote =>
-      'Your role in the app grants no server rights: whoever creates a class is its teacher.';
+      'Your role in the app grants no server rights: only an account registered as a teacher can open a class, and only manages its own classes.';
 
   @override
   String get classesMine => 'My classes';
@@ -5349,7 +5349,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get classesCreateIntro =>
-      'The account that creates a class becomes its teacher. Students join with the code you share.';
+      'The teacher who opens a class manages only that class. Students join with your code or QR.';
 
   @override
   String get classesGroupName => 'Class name';
@@ -5363,17 +5363,18 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get classesDisplayName => 'Your name in the class';
+  String get classesDisplayName => 'Nickname (optional)';
 
   @override
-  String get classesDisplayNameHint => 'e.g. Anvar Aliyev';
+  String get classesDisplayNameHint =>
+      'e.g. Star — leave empty to use a number';
 
   @override
   String get classesDisplayNameHintTeacher => 'e.g. Dr N. Karimova';
 
   @override
   String get classesDisplayNameNote =>
-      'Your email isn’t shown — members see only this name.';
+      'Names aren’t stored on the server: students appear by nickname or number. You can note a real name only as a label on your own device.';
 
   @override
   String get classesCreateAction => 'Create class';
@@ -5392,7 +5393,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get classesJoinNote =>
-      'The teacher sees this name and your assignment results. Your email isn’t shown.';
+      'Don’t use your real name. The teacher sees only your nickname (or number) and your results; other students don’t see you. Your email isn’t shown.';
 
   @override
   String get classesJoinAction => 'Join';
@@ -6918,4 +6919,422 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get analyteExpertApprovalPending => 'pending';
+
+  @override
+  String classesSeat(String n) {
+    return 'Student $n';
+  }
+
+  @override
+  String classesQrLabel(String code) {
+    return 'Invite code QR: $code';
+  }
+
+  @override
+  String get classesTeacherRegisterEyebrow => 'Teacher';
+
+  @override
+  String get classesTeacherRegisterTitle => 'Register as a teacher';
+
+  @override
+  String get classesTeacherRegisterBody =>
+      'A teacher opens their own class and sees only their students’ results. This isn’t admin access and doesn’t affect other classes.';
+
+  @override
+  String get classesTeacherRegister => 'Register as a teacher';
+
+  @override
+  String get classesLocalNameTitle => 'Label (this device only)';
+
+  @override
+  String get classesLocalNameBody =>
+      'For example, the student’s name. It isn’t sent to the server and the student can’t see it.';
+
+  @override
+  String get classesLocalNameHint => 'Empty — remove the label';
+
+  @override
+  String get classesLocalNameSave => 'Save';
+
+  @override
+  String get classroomPlanTitle => 'Course plan';
+
+  @override
+  String get classroomPlanSub => 'Topics by day: lecture, oral questions, test';
+
+  @override
+  String get classroomTopicsTitle => 'Topics';
+
+  @override
+  String get classroomTopicsSub => 'Topics and tests your teacher has opened';
+
+  @override
+  String get classroomProgramEyebrow => 'Curriculum';
+
+  @override
+  String classroomPlanProgress(int done, int total) {
+    return '$done/$total topic tests finished';
+  }
+
+  @override
+  String get classroomStartNone =>
+      'No start date — the plan is shown by day number';
+
+  @override
+  String classroomStartAt(String date) {
+    return 'Day 1: $date';
+  }
+
+  @override
+  String get classroomStartNote =>
+      'Dates are approximate (Sundays skipped, holidays not counted) and stored only on this device.';
+
+  @override
+  String get classroomStartPick => 'Set the start date';
+
+  @override
+  String classroomDayN(int n) {
+    return 'Day $n';
+  }
+
+  @override
+  String classroomWeekN(int n) {
+    return 'Week $n';
+  }
+
+  @override
+  String classroomHours(int n) {
+    return '$n h';
+  }
+
+  @override
+  String get classroomTypeLecture => 'Lecture';
+
+  @override
+  String get classroomTypePractical => 'Practical';
+
+  @override
+  String get classroomTypeSeminar => 'Seminar';
+
+  @override
+  String get classroomTypeAttestation => 'Assessment';
+
+  @override
+  String get classroomTypeOther => 'Session';
+
+  @override
+  String get classroomStatusClosed => 'Not opened';
+
+  @override
+  String get classroomStatusOpened => 'Opened';
+
+  @override
+  String get classroomStatusLectured => 'Taught';
+
+  @override
+  String get classroomStatusOral => 'Oral round done';
+
+  @override
+  String get classroomStatusTestRunning => 'Test in progress';
+
+  @override
+  String get classroomStatusTestDone => 'Test finished';
+
+  @override
+  String get classroomNoCurriculumTitle =>
+      'The curriculum hasn’t been added yet';
+
+  @override
+  String get classroomNoCurriculumBody =>
+      'The course plan (module → topic → materials) will come in a later app version. For now, use class assignments.';
+
+  @override
+  String get classroomCurriculumError => 'Couldn’t read the curriculum';
+
+  @override
+  String get classroomNoTopicsStudent =>
+      'Your teacher hasn’t opened any topics yet';
+
+  @override
+  String get classroomNoTopicsStudentBody =>
+      'When a topic opens, its materials and test will appear here.';
+
+  @override
+  String get classroomTopicTitle => 'Topic';
+
+  @override
+  String get classroomTopicMissing => 'Topic not found in the curriculum';
+
+  @override
+  String get classroomTopicNotOpened => 'This topic isn’t open yet';
+
+  @override
+  String get classroomOpenNote =>
+      'Once opened, students see the topic materials.';
+
+  @override
+  String get classroomOpenTopic => 'Open to students';
+
+  @override
+  String classroomStep(int n) {
+    return 'Step $n';
+  }
+
+  @override
+  String get classroomStageLecture => 'Lecture';
+
+  @override
+  String get classroomStageLectureBody =>
+      'Present the topic as slides on a big screen (works offline too).';
+
+  @override
+  String get classroomStageOral => 'Oral questions';
+
+  @override
+  String classroomStageOralBody(int count) {
+    return 'Question list with answer outlines. Asked: $count.';
+  }
+
+  @override
+  String get classroomStageTest => 'Class test';
+
+  @override
+  String get classroomStageTestBody =>
+      'Pick questions and start the test — it opens for students right away.';
+
+  @override
+  String get classroomStageDone => 'Done';
+
+  @override
+  String get classroomMarkDone => 'Mark as done';
+
+  @override
+  String get classroomOralOpen => 'Question list';
+
+  @override
+  String get classroomTestPrepare => 'Prepare the test';
+
+  @override
+  String get classroomTestResults => 'Results panel';
+
+  @override
+  String get classroomTestFinish => 'Finish the test';
+
+  @override
+  String get classroomTestFinishTitle => 'Finish the test?';
+
+  @override
+  String get classroomTestFinishBody =>
+      'No new attempts are accepted. Those who already started get 2 minutes to send their answers.';
+
+  @override
+  String classroomTestSubmitted(int done, int total) {
+    return '$done/$total students submitted';
+  }
+
+  @override
+  String get classroomTestNotStarted =>
+      'Your teacher hasn’t started the test yet.';
+
+  @override
+  String get classroomTestOpenStudent => 'Test open — take it';
+
+  @override
+  String get classroomMaterials => 'Topic materials';
+
+  @override
+  String get classroomNoMaterials =>
+      'The app has no linked materials for this topic yet.';
+
+  @override
+  String get classroomGapNote =>
+      'The app has little material on this topic — the teacher adds their own sources.';
+
+  @override
+  String get classroomKindAnalyte => 'Test card';
+
+  @override
+  String get classroomKindCondition => 'Condition';
+
+  @override
+  String get classroomKindReference => 'Table';
+
+  @override
+  String get classroomKindAtlas => 'Microscopy atlas';
+
+  @override
+  String get classroomKindTool => 'Calculator and tool';
+
+  @override
+  String get classroomToolQc => 'Quality control';
+
+  @override
+  String get classroomToolPreanalytics => 'Preanalytics';
+
+  @override
+  String get classroomToolInstruments => 'Instruments';
+
+  @override
+  String get classroomToolCalibration => 'Calibration log';
+
+  @override
+  String get classroomToolDifferential => 'Differential count';
+
+  @override
+  String get classroomOralNotice =>
+      'Questions are auto-picked candidates; answer outlines await expert review. “Asked” marks and grades stay on this device only.';
+
+  @override
+  String get classroomOralEmpty => 'No oral questions for this topic';
+
+  @override
+  String classroomCandidate(int n) {
+    return 'Candidate question $n';
+  }
+
+  @override
+  String get classroomOralPlan => 'Short answer outline';
+
+  @override
+  String get classroomOralNoPlan => 'No answer outline yet.';
+
+  @override
+  String get classroomOralAsked => 'Asked';
+
+  @override
+  String classroomOralGrade(int count) {
+    return 'Grade students ($count)';
+  }
+
+  @override
+  String get classroomOralGradeTitle => 'How each student answered';
+
+  @override
+  String get classroomOralGradeNote =>
+      'This device only; not sent to the server.';
+
+  @override
+  String get classroomGradeKnew => 'Knew';
+
+  @override
+  String get classroomGradePartial => 'Partly';
+
+  @override
+  String get classroomGradeDidNot => 'Didn’t know';
+
+  @override
+  String get classroomCandidatesNotice =>
+      'Candidate questions were auto-picked and their keys aren’t verified. Review each one: the score is computed on the server using the key shown.';
+
+  @override
+  String classroomCandidatesTitle(int picked, int total) {
+    return 'Candidates · picked $picked/$total';
+  }
+
+  @override
+  String get classroomPickAll => 'All';
+
+  @override
+  String get classroomPickNone => 'None';
+
+  @override
+  String classroomKeyShown(String answer) {
+    return 'Key: $answer';
+  }
+
+  @override
+  String get classroomKeyFlagged => 'Disputed key';
+
+  @override
+  String get classroomPickAtLeastOne => 'Pick at least one question';
+
+  @override
+  String get classroomPickMax => 'At most 50 questions';
+
+  @override
+  String classroomTestStart(int count) {
+    return 'Start the test · $count questions';
+  }
+
+  @override
+  String get classroomTestStarted => 'Test started — open for students';
+
+  @override
+  String classroomTestTitle(String topic) {
+    return 'Test: $topic';
+  }
+
+  @override
+  String get classroomTestAlready => 'This topic’s test has already started';
+
+  @override
+  String get classroomTestNoCandidates => 'No test questions for this topic';
+
+  @override
+  String get classroomTestNoCandidatesBody =>
+      'You can build an assignment by hand (New assignment).';
+
+  @override
+  String get lectureTitle => 'Lecture';
+
+  @override
+  String get lectureListTitle => 'Lecture mode';
+
+  @override
+  String get lectureListSub => 'Pick a topic — slides on a big screen, offline';
+
+  @override
+  String get lectureStart => 'Start the lecture';
+
+  @override
+  String get lectureClose => 'Close the lecture';
+
+  @override
+  String lectureCounter(int current, int total) {
+    return '$current / $total';
+  }
+
+  @override
+  String get lecturePrev => 'Back';
+
+  @override
+  String get lectureNext => 'Next';
+
+  @override
+  String get lectureGoals => 'Goals';
+
+  @override
+  String get lectureKeyPoints => 'Key concepts';
+
+  @override
+  String get lectureConcepts => 'Key tests';
+
+  @override
+  String get lectureConditions => 'Clinical conditions';
+
+  @override
+  String get lectureTables => 'Tables and algorithms';
+
+  @override
+  String get lectureAtlas => 'Microscopy';
+
+  @override
+  String get lectureTools => 'Calculations and tools';
+
+  @override
+  String lectureQuestionN(int n) {
+    return 'Question $n';
+  }
+
+  @override
+  String get lectureEndEyebrow => 'Next step';
+
+  @override
+  String get lectureEndTitle => 'Questions and test';
+
+  @override
+  String get lectureEndOral => 'Oral questions — asked by the teacher';
+
+  @override
+  String get lectureEndTest => 'Class test — in the app, timed';
 }

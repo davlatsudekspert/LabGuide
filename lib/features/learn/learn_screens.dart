@@ -30,6 +30,7 @@ class LearnScreen extends StatelessWidget {
         content,
         context.services.exams,
         context.services.settings,
+        context.services.curriculum,
       ]),
       builder: (context, _) =>
           _page(context, l, content.pack?.quiz.length ?? 0),
@@ -85,6 +86,14 @@ class LearnScreen extends StatelessWidget {
           icon: Icons.groups_outlined,
           onTap: () => context.push('/learn/classes'),
         ),
+        // Ma'ruza rejimi — faqat o'quv dasturi ilovada bo'lsa (serversiz).
+        if (context.services.curriculum.curriculum != null)
+          LgRow(
+            title: l.lectureListTitle,
+            subtitle: l.lectureListSub,
+            icon: Icons.slideshow_outlined,
+            onTap: () => context.push('/learn/lecture'),
+          ),
         LgRow(
           title: l.learnQuiz,
           subtitle: l.learnQuizSub(quizCount),

@@ -9175,7 +9175,7 @@ abstract class AppLocalizations {
   /// No description provided for @classesRoleNote.
   ///
   /// In en, this message translates to:
-  /// **'Your role in the app grants no server rights: whoever creates a class is its teacher.'**
+  /// **'Your role in the app grants no server rights: only an account registered as a teacher can open a class, and only manages its own classes.'**
   String get classesRoleNote;
 
   /// No description provided for @classesMine.
@@ -9217,7 +9217,7 @@ abstract class AppLocalizations {
   /// No description provided for @classesCreateIntro.
   ///
   /// In en, this message translates to:
-  /// **'The account that creates a class becomes its teacher. Students join with the code you share.'**
+  /// **'The teacher who opens a class manages only that class. Students join with your code or QR.'**
   String get classesCreateIntro;
 
   /// No description provided for @classesGroupName.
@@ -9241,13 +9241,13 @@ abstract class AppLocalizations {
   /// No description provided for @classesDisplayName.
   ///
   /// In en, this message translates to:
-  /// **'Your name in the class'**
+  /// **'Nickname (optional)'**
   String get classesDisplayName;
 
   /// No description provided for @classesDisplayNameHint.
   ///
   /// In en, this message translates to:
-  /// **'e.g. Anvar Aliyev'**
+  /// **'e.g. Star — leave empty to use a number'**
   String get classesDisplayNameHint;
 
   /// No description provided for @classesDisplayNameHintTeacher.
@@ -9259,7 +9259,7 @@ abstract class AppLocalizations {
   /// No description provided for @classesDisplayNameNote.
   ///
   /// In en, this message translates to:
-  /// **'Your email isn’t shown — members see only this name.'**
+  /// **'Names aren’t stored on the server: students appear by nickname or number. You can note a real name only as a label on your own device.'**
   String get classesDisplayNameNote;
 
   /// No description provided for @classesCreateAction.
@@ -9295,7 +9295,7 @@ abstract class AppLocalizations {
   /// No description provided for @classesJoinNote.
   ///
   /// In en, this message translates to:
-  /// **'The teacher sees this name and your assignment results. Your email isn’t shown.'**
+  /// **'Don’t use your real name. The teacher sees only your nickname (or number) and your results; other students don’t see you. Your email isn’t shown.'**
   String get classesJoinNote;
 
   /// No description provided for @classesJoinAction.
@@ -11931,6 +11931,732 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'pending'**
   String get analyteExpertApprovalPending;
+
+  /// No description provided for @classesSeat.
+  ///
+  /// In en, this message translates to:
+  /// **'Student {n}'**
+  String classesSeat(String n);
+
+  /// No description provided for @classesQrLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Invite code QR: {code}'**
+  String classesQrLabel(String code);
+
+  /// No description provided for @classesTeacherRegisterEyebrow.
+  ///
+  /// In en, this message translates to:
+  /// **'Teacher'**
+  String get classesTeacherRegisterEyebrow;
+
+  /// No description provided for @classesTeacherRegisterTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Register as a teacher'**
+  String get classesTeacherRegisterTitle;
+
+  /// No description provided for @classesTeacherRegisterBody.
+  ///
+  /// In en, this message translates to:
+  /// **'A teacher opens their own class and sees only their students’ results. This isn’t admin access and doesn’t affect other classes.'**
+  String get classesTeacherRegisterBody;
+
+  /// No description provided for @classesTeacherRegister.
+  ///
+  /// In en, this message translates to:
+  /// **'Register as a teacher'**
+  String get classesTeacherRegister;
+
+  /// No description provided for @classesLocalNameTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Label (this device only)'**
+  String get classesLocalNameTitle;
+
+  /// No description provided for @classesLocalNameBody.
+  ///
+  /// In en, this message translates to:
+  /// **'For example, the student’s name. It isn’t sent to the server and the student can’t see it.'**
+  String get classesLocalNameBody;
+
+  /// No description provided for @classesLocalNameHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Empty — remove the label'**
+  String get classesLocalNameHint;
+
+  /// No description provided for @classesLocalNameSave.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get classesLocalNameSave;
+
+  /// No description provided for @classroomPlanTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Course plan'**
+  String get classroomPlanTitle;
+
+  /// No description provided for @classroomPlanSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Topics by day: lecture, oral questions, test'**
+  String get classroomPlanSub;
+
+  /// No description provided for @classroomTopicsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Topics'**
+  String get classroomTopicsTitle;
+
+  /// No description provided for @classroomTopicsSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Topics and tests your teacher has opened'**
+  String get classroomTopicsSub;
+
+  /// No description provided for @classroomProgramEyebrow.
+  ///
+  /// In en, this message translates to:
+  /// **'Curriculum'**
+  String get classroomProgramEyebrow;
+
+  /// No description provided for @classroomPlanProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'{done}/{total} topic tests finished'**
+  String classroomPlanProgress(int done, int total);
+
+  /// No description provided for @classroomStartNone.
+  ///
+  /// In en, this message translates to:
+  /// **'No start date — the plan is shown by day number'**
+  String get classroomStartNone;
+
+  /// No description provided for @classroomStartAt.
+  ///
+  /// In en, this message translates to:
+  /// **'Day 1: {date}'**
+  String classroomStartAt(String date);
+
+  /// No description provided for @classroomStartNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Dates are approximate (Sundays skipped, holidays not counted) and stored only on this device.'**
+  String get classroomStartNote;
+
+  /// No description provided for @classroomStartPick.
+  ///
+  /// In en, this message translates to:
+  /// **'Set the start date'**
+  String get classroomStartPick;
+
+  /// No description provided for @classroomDayN.
+  ///
+  /// In en, this message translates to:
+  /// **'Day {n}'**
+  String classroomDayN(int n);
+
+  /// No description provided for @classroomWeekN.
+  ///
+  /// In en, this message translates to:
+  /// **'Week {n}'**
+  String classroomWeekN(int n);
+
+  /// No description provided for @classroomHours.
+  ///
+  /// In en, this message translates to:
+  /// **'{n} h'**
+  String classroomHours(int n);
+
+  /// No description provided for @classroomTypeLecture.
+  ///
+  /// In en, this message translates to:
+  /// **'Lecture'**
+  String get classroomTypeLecture;
+
+  /// No description provided for @classroomTypePractical.
+  ///
+  /// In en, this message translates to:
+  /// **'Practical'**
+  String get classroomTypePractical;
+
+  /// No description provided for @classroomTypeSeminar.
+  ///
+  /// In en, this message translates to:
+  /// **'Seminar'**
+  String get classroomTypeSeminar;
+
+  /// No description provided for @classroomTypeAttestation.
+  ///
+  /// In en, this message translates to:
+  /// **'Assessment'**
+  String get classroomTypeAttestation;
+
+  /// No description provided for @classroomTypeOther.
+  ///
+  /// In en, this message translates to:
+  /// **'Session'**
+  String get classroomTypeOther;
+
+  /// No description provided for @classroomStatusClosed.
+  ///
+  /// In en, this message translates to:
+  /// **'Not opened'**
+  String get classroomStatusClosed;
+
+  /// No description provided for @classroomStatusOpened.
+  ///
+  /// In en, this message translates to:
+  /// **'Opened'**
+  String get classroomStatusOpened;
+
+  /// No description provided for @classroomStatusLectured.
+  ///
+  /// In en, this message translates to:
+  /// **'Taught'**
+  String get classroomStatusLectured;
+
+  /// No description provided for @classroomStatusOral.
+  ///
+  /// In en, this message translates to:
+  /// **'Oral round done'**
+  String get classroomStatusOral;
+
+  /// No description provided for @classroomStatusTestRunning.
+  ///
+  /// In en, this message translates to:
+  /// **'Test in progress'**
+  String get classroomStatusTestRunning;
+
+  /// No description provided for @classroomStatusTestDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Test finished'**
+  String get classroomStatusTestDone;
+
+  /// No description provided for @classroomNoCurriculumTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'The curriculum hasn’t been added yet'**
+  String get classroomNoCurriculumTitle;
+
+  /// No description provided for @classroomNoCurriculumBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The course plan (module → topic → materials) will come in a later app version. For now, use class assignments.'**
+  String get classroomNoCurriculumBody;
+
+  /// No description provided for @classroomCurriculumError.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn’t read the curriculum'**
+  String get classroomCurriculumError;
+
+  /// No description provided for @classroomNoTopicsStudent.
+  ///
+  /// In en, this message translates to:
+  /// **'Your teacher hasn’t opened any topics yet'**
+  String get classroomNoTopicsStudent;
+
+  /// No description provided for @classroomNoTopicsStudentBody.
+  ///
+  /// In en, this message translates to:
+  /// **'When a topic opens, its materials and test will appear here.'**
+  String get classroomNoTopicsStudentBody;
+
+  /// No description provided for @classroomTopicTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Topic'**
+  String get classroomTopicTitle;
+
+  /// No description provided for @classroomTopicMissing.
+  ///
+  /// In en, this message translates to:
+  /// **'Topic not found in the curriculum'**
+  String get classroomTopicMissing;
+
+  /// No description provided for @classroomTopicNotOpened.
+  ///
+  /// In en, this message translates to:
+  /// **'This topic isn’t open yet'**
+  String get classroomTopicNotOpened;
+
+  /// No description provided for @classroomOpenNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Once opened, students see the topic materials.'**
+  String get classroomOpenNote;
+
+  /// No description provided for @classroomOpenTopic.
+  ///
+  /// In en, this message translates to:
+  /// **'Open to students'**
+  String get classroomOpenTopic;
+
+  /// No description provided for @classroomStep.
+  ///
+  /// In en, this message translates to:
+  /// **'Step {n}'**
+  String classroomStep(int n);
+
+  /// No description provided for @classroomStageLecture.
+  ///
+  /// In en, this message translates to:
+  /// **'Lecture'**
+  String get classroomStageLecture;
+
+  /// No description provided for @classroomStageLectureBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Present the topic as slides on a big screen (works offline too).'**
+  String get classroomStageLectureBody;
+
+  /// No description provided for @classroomStageOral.
+  ///
+  /// In en, this message translates to:
+  /// **'Oral questions'**
+  String get classroomStageOral;
+
+  /// No description provided for @classroomStageOralBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Question list with answer outlines. Asked: {count}.'**
+  String classroomStageOralBody(int count);
+
+  /// No description provided for @classroomStageTest.
+  ///
+  /// In en, this message translates to:
+  /// **'Class test'**
+  String get classroomStageTest;
+
+  /// No description provided for @classroomStageTestBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick questions and start the test — it opens for students right away.'**
+  String get classroomStageTestBody;
+
+  /// No description provided for @classroomStageDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Done'**
+  String get classroomStageDone;
+
+  /// No description provided for @classroomMarkDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark as done'**
+  String get classroomMarkDone;
+
+  /// No description provided for @classroomOralOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'Question list'**
+  String get classroomOralOpen;
+
+  /// No description provided for @classroomTestPrepare.
+  ///
+  /// In en, this message translates to:
+  /// **'Prepare the test'**
+  String get classroomTestPrepare;
+
+  /// No description provided for @classroomTestResults.
+  ///
+  /// In en, this message translates to:
+  /// **'Results panel'**
+  String get classroomTestResults;
+
+  /// No description provided for @classroomTestFinish.
+  ///
+  /// In en, this message translates to:
+  /// **'Finish the test'**
+  String get classroomTestFinish;
+
+  /// No description provided for @classroomTestFinishTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Finish the test?'**
+  String get classroomTestFinishTitle;
+
+  /// No description provided for @classroomTestFinishBody.
+  ///
+  /// In en, this message translates to:
+  /// **'No new attempts are accepted. Those who already started get 2 minutes to send their answers.'**
+  String get classroomTestFinishBody;
+
+  /// No description provided for @classroomTestSubmitted.
+  ///
+  /// In en, this message translates to:
+  /// **'{done}/{total} students submitted'**
+  String classroomTestSubmitted(int done, int total);
+
+  /// No description provided for @classroomTestNotStarted.
+  ///
+  /// In en, this message translates to:
+  /// **'Your teacher hasn’t started the test yet.'**
+  String get classroomTestNotStarted;
+
+  /// No description provided for @classroomTestOpenStudent.
+  ///
+  /// In en, this message translates to:
+  /// **'Test open — take it'**
+  String get classroomTestOpenStudent;
+
+  /// No description provided for @classroomMaterials.
+  ///
+  /// In en, this message translates to:
+  /// **'Topic materials'**
+  String get classroomMaterials;
+
+  /// No description provided for @classroomNoMaterials.
+  ///
+  /// In en, this message translates to:
+  /// **'The app has no linked materials for this topic yet.'**
+  String get classroomNoMaterials;
+
+  /// No description provided for @classroomGapNote.
+  ///
+  /// In en, this message translates to:
+  /// **'The app has little material on this topic — the teacher adds their own sources.'**
+  String get classroomGapNote;
+
+  /// No description provided for @classroomKindAnalyte.
+  ///
+  /// In en, this message translates to:
+  /// **'Test card'**
+  String get classroomKindAnalyte;
+
+  /// No description provided for @classroomKindCondition.
+  ///
+  /// In en, this message translates to:
+  /// **'Condition'**
+  String get classroomKindCondition;
+
+  /// No description provided for @classroomKindReference.
+  ///
+  /// In en, this message translates to:
+  /// **'Table'**
+  String get classroomKindReference;
+
+  /// No description provided for @classroomKindAtlas.
+  ///
+  /// In en, this message translates to:
+  /// **'Microscopy atlas'**
+  String get classroomKindAtlas;
+
+  /// No description provided for @classroomKindTool.
+  ///
+  /// In en, this message translates to:
+  /// **'Calculator and tool'**
+  String get classroomKindTool;
+
+  /// No description provided for @classroomToolQc.
+  ///
+  /// In en, this message translates to:
+  /// **'Quality control'**
+  String get classroomToolQc;
+
+  /// No description provided for @classroomToolPreanalytics.
+  ///
+  /// In en, this message translates to:
+  /// **'Preanalytics'**
+  String get classroomToolPreanalytics;
+
+  /// No description provided for @classroomToolInstruments.
+  ///
+  /// In en, this message translates to:
+  /// **'Instruments'**
+  String get classroomToolInstruments;
+
+  /// No description provided for @classroomToolCalibration.
+  ///
+  /// In en, this message translates to:
+  /// **'Calibration log'**
+  String get classroomToolCalibration;
+
+  /// No description provided for @classroomToolDifferential.
+  ///
+  /// In en, this message translates to:
+  /// **'Differential count'**
+  String get classroomToolDifferential;
+
+  /// No description provided for @classroomOralNotice.
+  ///
+  /// In en, this message translates to:
+  /// **'Questions are auto-picked candidates; answer outlines await expert review. “Asked” marks and grades stay on this device only.'**
+  String get classroomOralNotice;
+
+  /// No description provided for @classroomOralEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No oral questions for this topic'**
+  String get classroomOralEmpty;
+
+  /// No description provided for @classroomCandidate.
+  ///
+  /// In en, this message translates to:
+  /// **'Candidate question {n}'**
+  String classroomCandidate(int n);
+
+  /// No description provided for @classroomOralPlan.
+  ///
+  /// In en, this message translates to:
+  /// **'Short answer outline'**
+  String get classroomOralPlan;
+
+  /// No description provided for @classroomOralNoPlan.
+  ///
+  /// In en, this message translates to:
+  /// **'No answer outline yet.'**
+  String get classroomOralNoPlan;
+
+  /// No description provided for @classroomOralAsked.
+  ///
+  /// In en, this message translates to:
+  /// **'Asked'**
+  String get classroomOralAsked;
+
+  /// No description provided for @classroomOralGrade.
+  ///
+  /// In en, this message translates to:
+  /// **'Grade students ({count})'**
+  String classroomOralGrade(int count);
+
+  /// No description provided for @classroomOralGradeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'How each student answered'**
+  String get classroomOralGradeTitle;
+
+  /// No description provided for @classroomOralGradeNote.
+  ///
+  /// In en, this message translates to:
+  /// **'This device only; not sent to the server.'**
+  String get classroomOralGradeNote;
+
+  /// No description provided for @classroomGradeKnew.
+  ///
+  /// In en, this message translates to:
+  /// **'Knew'**
+  String get classroomGradeKnew;
+
+  /// No description provided for @classroomGradePartial.
+  ///
+  /// In en, this message translates to:
+  /// **'Partly'**
+  String get classroomGradePartial;
+
+  /// No description provided for @classroomGradeDidNot.
+  ///
+  /// In en, this message translates to:
+  /// **'Didn’t know'**
+  String get classroomGradeDidNot;
+
+  /// No description provided for @classroomCandidatesNotice.
+  ///
+  /// In en, this message translates to:
+  /// **'Candidate questions were auto-picked and their keys aren’t verified. Review each one: the score is computed on the server using the key shown.'**
+  String get classroomCandidatesNotice;
+
+  /// No description provided for @classroomCandidatesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Candidates · picked {picked}/{total}'**
+  String classroomCandidatesTitle(int picked, int total);
+
+  /// No description provided for @classroomPickAll.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get classroomPickAll;
+
+  /// No description provided for @classroomPickNone.
+  ///
+  /// In en, this message translates to:
+  /// **'None'**
+  String get classroomPickNone;
+
+  /// No description provided for @classroomKeyShown.
+  ///
+  /// In en, this message translates to:
+  /// **'Key: {answer}'**
+  String classroomKeyShown(String answer);
+
+  /// No description provided for @classroomKeyFlagged.
+  ///
+  /// In en, this message translates to:
+  /// **'Disputed key'**
+  String get classroomKeyFlagged;
+
+  /// No description provided for @classroomPickAtLeastOne.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick at least one question'**
+  String get classroomPickAtLeastOne;
+
+  /// No description provided for @classroomPickMax.
+  ///
+  /// In en, this message translates to:
+  /// **'At most 50 questions'**
+  String get classroomPickMax;
+
+  /// No description provided for @classroomTestStart.
+  ///
+  /// In en, this message translates to:
+  /// **'Start the test · {count} questions'**
+  String classroomTestStart(int count);
+
+  /// No description provided for @classroomTestStarted.
+  ///
+  /// In en, this message translates to:
+  /// **'Test started — open for students'**
+  String get classroomTestStarted;
+
+  /// No description provided for @classroomTestTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Test: {topic}'**
+  String classroomTestTitle(String topic);
+
+  /// No description provided for @classroomTestAlready.
+  ///
+  /// In en, this message translates to:
+  /// **'This topic’s test has already started'**
+  String get classroomTestAlready;
+
+  /// No description provided for @classroomTestNoCandidates.
+  ///
+  /// In en, this message translates to:
+  /// **'No test questions for this topic'**
+  String get classroomTestNoCandidates;
+
+  /// No description provided for @classroomTestNoCandidatesBody.
+  ///
+  /// In en, this message translates to:
+  /// **'You can build an assignment by hand (New assignment).'**
+  String get classroomTestNoCandidatesBody;
+
+  /// No description provided for @lectureTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Lecture'**
+  String get lectureTitle;
+
+  /// No description provided for @lectureListTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Lecture mode'**
+  String get lectureListTitle;
+
+  /// No description provided for @lectureListSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick a topic — slides on a big screen, offline'**
+  String get lectureListSub;
+
+  /// No description provided for @lectureStart.
+  ///
+  /// In en, this message translates to:
+  /// **'Start the lecture'**
+  String get lectureStart;
+
+  /// No description provided for @lectureClose.
+  ///
+  /// In en, this message translates to:
+  /// **'Close the lecture'**
+  String get lectureClose;
+
+  /// No description provided for @lectureCounter.
+  ///
+  /// In en, this message translates to:
+  /// **'{current} / {total}'**
+  String lectureCounter(int current, int total);
+
+  /// No description provided for @lecturePrev.
+  ///
+  /// In en, this message translates to:
+  /// **'Back'**
+  String get lecturePrev;
+
+  /// No description provided for @lectureNext.
+  ///
+  /// In en, this message translates to:
+  /// **'Next'**
+  String get lectureNext;
+
+  /// No description provided for @lectureGoals.
+  ///
+  /// In en, this message translates to:
+  /// **'Goals'**
+  String get lectureGoals;
+
+  /// No description provided for @lectureKeyPoints.
+  ///
+  /// In en, this message translates to:
+  /// **'Key concepts'**
+  String get lectureKeyPoints;
+
+  /// No description provided for @lectureConcepts.
+  ///
+  /// In en, this message translates to:
+  /// **'Key tests'**
+  String get lectureConcepts;
+
+  /// No description provided for @lectureConditions.
+  ///
+  /// In en, this message translates to:
+  /// **'Clinical conditions'**
+  String get lectureConditions;
+
+  /// No description provided for @lectureTables.
+  ///
+  /// In en, this message translates to:
+  /// **'Tables and algorithms'**
+  String get lectureTables;
+
+  /// No description provided for @lectureAtlas.
+  ///
+  /// In en, this message translates to:
+  /// **'Microscopy'**
+  String get lectureAtlas;
+
+  /// No description provided for @lectureTools.
+  ///
+  /// In en, this message translates to:
+  /// **'Calculations and tools'**
+  String get lectureTools;
+
+  /// No description provided for @lectureQuestionN.
+  ///
+  /// In en, this message translates to:
+  /// **'Question {n}'**
+  String lectureQuestionN(int n);
+
+  /// No description provided for @lectureEndEyebrow.
+  ///
+  /// In en, this message translates to:
+  /// **'Next step'**
+  String get lectureEndEyebrow;
+
+  /// No description provided for @lectureEndTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Questions and test'**
+  String get lectureEndTitle;
+
+  /// No description provided for @lectureEndOral.
+  ///
+  /// In en, this message translates to:
+  /// **'Oral questions — asked by the teacher'**
+  String get lectureEndOral;
+
+  /// No description provided for @lectureEndTest.
+  ///
+  /// In en, this message translates to:
+  /// **'Class test — in the app, timed'**
+  String get lectureEndTest;
 }
 
 class _AppLocalizationsDelegate

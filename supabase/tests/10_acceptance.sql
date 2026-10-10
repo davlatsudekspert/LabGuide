@@ -304,6 +304,13 @@ update auth.users set email = 'davlatsudekspert@gmail.com'
 -- ================================================================ guruhlar
 set role authenticated;
 select t.login('00000000-0000-0000-0000-0000000000a1');
+-- Guruhni faqat o'zini ustoz sifatida ro'yxatdan o'tkazgan hisob ochadi.
+do $$ begin
+  perform public.create_group('Ro''yxatsiz guruh', null);
+  raise exception 'group created without teacher registration';
+exception when insufficient_privilege then null;
+end $$;
+select public.register_teacher();
 insert into t.vars select 'group_code', public.create_group('Biokimyo 2-kurs', 'Ustoz Alisa') ->> 'join_code';
 insert into t.vars select 'group', id::text from public.study_groups;
 select t.login('00000000-0000-0000-0000-0000000000b1');
