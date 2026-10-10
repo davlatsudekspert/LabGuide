@@ -290,6 +290,39 @@ void main() {
     );
   });
 
+  // Haqiqiy asset: mavzu va modul nomi tanlangan tilda chiqadi.
+  for (final (lang, topic, module) in [
+    (
+      AppLanguage.ru,
+      'Лабораторные показатели при заболеваниях почек и мочевыводящих путей',
+      'Строение и функции внутренних органов человека',
+    ),
+    (
+      AppLanguage.en,
+      'Laboratory markers of kidney and urinary tract diseases',
+      'Structure and functions of human internal organs',
+    ),
+  ]) {
+    testWidgets('mavzu nomi asset’dan ${lang.name} tilida', (tester) async {
+      installDiffFakes();
+      final s = await makeServices(
+        tester,
+        backend: FakeLabBackend(),
+        language: lang,
+        role: AppRole.teacher,
+      );
+      s.curriculum.use(
+        Curriculum.parse(
+          File('assets/curriculum/curriculum.json').readAsStringSync(),
+        ),
+      );
+      await pumpApp(tester, s, size: _tall);
+      await goTo(tester, '/learn/lecture');
+      expect(find.text(topic), findsWidgets);
+      expect(find.text(module), findsWidgets);
+    });
+  }
+
   // Yangi ekranlar: tor ekran / katta shrift / qorong'i, uch tilda.
   for (final lang in AppLanguage.values) {
     for (final (width, scale, theme) in [

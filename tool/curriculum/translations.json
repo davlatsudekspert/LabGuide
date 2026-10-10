@@ -1,0 +1,790 @@
+{
+ "M1": {
+  "ru": "Организация лабораторной службы. Медицинская этика и деонтология",
+  "en": "Organization of laboratory services. Medical ethics and deontology"
+ },
+ "d001-P": {
+  "ru": "Организация лабораторной службы. Медицинская этика и деонтология. Урок духовности",
+  "en": "Organization of laboratory services. Medical ethics and deontology. Spirituality class"
+ },
+ "d001-L": {
+  "ru": "Урок духовности",
+  "en": "Spirituality class"
+ },
+ "d002-P": {
+  "ru": "Организационные вопросы развития клинических биохимических лабораторий в Узбекистане",
+  "en": "Organizational aspects of developing clinical biochemistry laboratories in Uzbekistan"
+ },
+ "d002-L": {
+  "ru": "Организационные вопросы развития клинических биохимических лабораторий в Узбекистане",
+  "en": "Organizational aspects of developing clinical biochemistry laboratories in Uzbekistan"
+ },
+ "d003-P": {
+  "ru": "Внутрилабораторный и межлабораторный контроль качества и его особенности",
+  "en": "Internal and inter-laboratory quality control and its characteristics"
+ },
+ "d003-L": {
+  "ru": "Внутрилабораторный и межлабораторный контроль качества и его особенности",
+  "en": "Internal and inter-laboratory quality control and its characteristics"
+ },
+ "d004-A": {
+  "ru": "Аттестация 1. По модулю «Организация лабораторной службы. Медицинская этика и деонтология»",
+  "en": "Assessment 1. Module: Organization of laboratory services. Medical ethics and deontology"
+ },
+ "M2": {
+  "ru": "Строение и функции внутренних органов человека",
+  "en": "Structure and functions of human internal organs"
+ },
+ "d005-P": {
+  "ru": "Строение и функции внутренних органов человека. Классификация тканей. Морфофункциональная характеристика эпителиальной ткани",
+  "en": "Structure and functions of human internal organs. Classification of tissues. Morphofunctional characteristics of epithelial tissue"
+ },
+ "d005-L": {
+  "ru": "Строение и функции внутренних органов человека. Классификация тканей. Морфофункциональная характеристика эпителиальной ткани",
+  "en": "Structure and functions of human internal organs. Classification of tissues. Morphofunctional characteristics of epithelial tissue"
+ },
+ "d006-P": {
+  "ru": "Морфофункциональная характеристика соединительной ткани",
+  "en": "Morphofunctional characteristics of connective tissue"
+ },
+ "d006-L": {
+  "ru": "Морфофункциональная характеристика соединительной ткани",
+  "en": "Morphofunctional characteristics of connective tissue"
+ },
+ "d007-P": {
+  "ru": "Лабораторные показатели при заболеваниях печени",
+  "en": "Laboratory markers of liver diseases"
+ },
+ "d007-L": {
+  "ru": "Лабораторные показатели при заболеваниях печени",
+  "en": "Laboratory markers of liver diseases"
+ },
+ "d008-P": {
+  "ru": "Лабораторные показатели при заболеваниях почек и мочевыводящих путей",
+  "en": "Laboratory markers of kidney and urinary tract diseases"
+ },
+ "d008-L": {
+  "ru": "Лабораторные показатели при заболеваниях почек и мочевыводящих путей",
+  "en": "Laboratory markers of kidney and urinary tract diseases"
+ },
+ "d009-A": {
+  "ru": "Аттестация 2. По модулю «Строение и функции внутренних органов человека»",
+  "en": "Assessment 2. Module: Structure and functions of human internal organs"
+ },
+ "M3": {
+  "ru": "Гематологические методы исследования",
+  "en": "Hematological testing methods"
+ },
+ "d010-P": {
+  "ru": "Современная теория кроветворения. Эритропоэз, лейкопоэз, тромбоцитопоэз. Лимфоцитопоэз",
+  "en": "Modern theory of hematopoiesis. Erythropoiesis, leukopoiesis, thrombopoiesis. Lymphopoiesis"
+ },
+ "d010-L": {
+  "ru": "Современная теория кроветворения. Эритропоэз, лейкопоэз, тромбоцитопоэз. Лимфоцитопоэз",
+  "en": "Modern theory of hematopoiesis. Erythropoiesis, leukopoiesis, thrombopoiesis. Lymphopoiesis"
+ },
+ "d011-P": {
+  "ru": "Подсчёт форменных элементов крови. Определение гемоглобина",
+  "en": "Counting blood cells. Hemoglobin determination"
+ },
+ "d011-L": {
+  "ru": "Подсчёт форменных элементов крови. Определение гемоглобина",
+  "en": "Counting blood cells. Hemoglobin determination"
+ },
+ "d012-P": {
+  "ru": "Забор материала для лейкоцитарной формулы и подсчёт. Лейкемоидные реакции миелоидного, лимфомоноцитарного и эозинофильного типов",
+  "en": "Sampling for the differential leukocyte count and counting. Leukemoid reactions of myeloid, lymphomonocytic and eosinophilic types"
+ },
+ "d012-L": {
+  "ru": "Забор материала для лейкоцитарной формулы и подсчёт. Лейкемоидные реакции миелоидного, лимфомоноцитарного и эозинофильного типов",
+  "en": "Sampling for the differential leukocyte count and counting. Leukemoid reactions of myeloid, lymphomonocytic and eosinophilic types"
+ },
+ "d013-P": {
+  "ru": "Анемии. Классификация, этиология и патогенез",
+  "en": "Anemias. Classification, etiology and pathogenesis"
+ },
+ "d013-L": {
+  "ru": "Анемии. Классификация, этиология и патогенез",
+  "en": "Anemias. Classification, etiology and pathogenesis"
+ },
+ "d014-P": {
+  "ru": "Железодефицитные анемии. Картина костного мозга и периферической крови",
+  "en": "Iron deficiency anemias. Bone marrow and peripheral blood picture"
+ },
+ "d014-L": {
+  "ru": "Железодефицитные анемии. Картина костного мозга и периферической крови",
+  "en": "Iron deficiency anemias. Bone marrow and peripheral blood picture"
+ },
+ "d015-P": {
+  "ru": "Анемии, связанные с дефицитом витамина B12. Картина костного мозга и периферической крови",
+  "en": "Anemias associated with vitamin B12 deficiency. Bone marrow and peripheral blood picture"
+ },
+ "d015-L": {
+  "ru": "Анемии, связанные с дефицитом витамина B12. Картина костного мозга и периферической крови",
+  "en": "Anemias associated with vitamin B12 deficiency. Bone marrow and peripheral blood picture"
+ },
+ "d016-P": {
+  "ru": "Гемолитические анемии. Клинико-лабораторные показатели. Картина костного мозга и периферической крови",
+  "en": "Hemolytic anemias. Clinical and laboratory findings. Bone marrow and peripheral blood picture"
+ },
+ "d016-L": {
+  "ru": "Гемолитические анемии. Клинико-лабораторные показатели. Картина костного мозга и периферической крови",
+  "en": "Hemolytic anemias. Clinical and laboratory findings. Bone marrow and peripheral blood picture"
+ },
+ "d017-P": {
+  "ru": "Лейкозы: этиология, патогенез и классификация",
+  "en": "Leukemias: etiology, pathogenesis and classification"
+ },
+ "d017-L": {
+  "ru": "Лейкозы: этиология, патогенез и классификация",
+  "en": "Leukemias: etiology, pathogenesis and classification"
+ },
+ "d018-P": {
+  "ru": "Острые лейкозы. Картина костного мозга и периферической крови при острых лейкозах",
+  "en": "Acute leukemias. Bone marrow and peripheral blood picture in acute leukemias"
+ },
+ "d018-L": {
+  "ru": "Острые лейкозы. Картина костного мозга и периферической крови при острых лейкозах",
+  "en": "Acute leukemias. Bone marrow and peripheral blood picture in acute leukemias"
+ },
+ "d019-P": {
+  "ru": "Хронические лейкозы. Картина костного мозга и периферической крови",
+  "en": "Chronic leukemias. Bone marrow and peripheral blood picture"
+ },
+ "d019-L": {
+  "ru": "Хронические лейкозы. Картина костного мозга и периферической крови",
+  "en": "Chronic leukemias. Bone marrow and peripheral blood picture"
+ },
+ "d020-P": {
+  "ru": "Хронический миелолейкоз. Картина костного мозга и периферической крови",
+  "en": "Chronic myeloid leukemia. Bone marrow and peripheral blood picture"
+ },
+ "d020-L": {
+  "ru": "Хронический миелолейкоз. Картина костного мозга и периферической крови",
+  "en": "Chronic myeloid leukemia. Bone marrow and peripheral blood picture"
+ },
+ "d021-P": {
+  "ru": "Хронический лимфолейкоз. Картина костного мозга и периферической крови",
+  "en": "Chronic lymphocytic leukemia. Bone marrow and peripheral blood picture"
+ },
+ "d021-L": {
+  "ru": "Хронический лимфолейкоз. Картина костного мозга и периферической крови",
+  "en": "Chronic lymphocytic leukemia. Bone marrow and peripheral blood picture"
+ },
+ "d022-P": {
+  "ru": "Картина костного мозга и периферической крови при миеломной болезни",
+  "en": "Bone marrow and peripheral blood picture in multiple myeloma"
+ },
+ "d022-L": {
+  "ru": "Картина костного мозга и периферической крови при миеломной болезни",
+  "en": "Bone marrow and peripheral blood picture in multiple myeloma"
+ },
+ "d023-A": {
+  "ru": "Аттестация 3. По модулю «Гематологические методы исследования»",
+  "en": "Assessment 3. Module: Hematological testing methods"
+ },
+ "M4": {
+  "ru": "Общеклинические методы исследования",
+  "en": "General clinical testing methods"
+ },
+ "d024-P": {
+  "ru": "Клинико-лабораторные показатели заболеваний при микроскопическом исследовании желудочного сока и жёлчи",
+  "en": "Clinical laboratory findings in diseases on microscopic examination of gastric juice and bile"
+ },
+ "d024-L": {
+  "ru": "Клинико-лабораторные показатели заболеваний при микроскопическом исследовании желудочного сока и жёлчи",
+  "en": "Clinical laboratory findings in diseases on microscopic examination of gastric juice and bile"
+ },
+ "d025-P": {
+  "ru": "Микроскопическое исследование кала. Клинико-диагностическое значение",
+  "en": "Microscopic examination of stool. Clinical diagnostic significance"
+ },
+ "d025-L": {
+  "ru": "Микроскопическое исследование кала. Клинико-диагностическое значение",
+  "en": "Microscopic examination of stool. Clinical diagnostic significance"
+ },
+ "d026-P": {
+  "ru": "Микроскопическое исследование кала. Клинико-диагностическое значение (2-й день)",
+  "en": "Microscopic examination of stool. Clinical diagnostic significance (day 2)"
+ },
+ "d027-P": {
+  "ru": "Исследование мочи. Клинико-диагностическое значение",
+  "en": "Urine testing. Clinical diagnostic significance"
+ },
+ "d027-L": {
+  "ru": "Исследование мочи. Клинико-диагностическое значение",
+  "en": "Urine testing. Clinical diagnostic significance"
+ },
+ "d028-P": {
+  "ru": "Исследование мочи. Клинико-диагностическое значение (2-й день)",
+  "en": "Urine testing. Clinical diagnostic significance (day 2)"
+ },
+ "d029-P": {
+  "ru": "Исследование мокроты при бронхиальной астме, пневмонии, бронхите и других заболеваниях дыхательных путей",
+  "en": "Sputum examination in bronchial asthma, pneumonia, bronchitis and other respiratory diseases"
+ },
+ "d029-L": {
+  "ru": "Исследование мокроты при бронхиальной астме, пневмонии, бронхите и других заболеваниях дыхательных путей",
+  "en": "Sputum examination in bronchial asthma, pneumonia, bronchitis and other respiratory diseases"
+ },
+ "d030-P": {
+  "ru": "Исследование мокроты при туберкулёзе и его клинико-диагностическое значение",
+  "en": "Sputum examination in tuberculosis and its clinical diagnostic significance"
+ },
+ "d030-L": {
+  "ru": "Исследование мокроты при туберкулёзе и его клинико-диагностическое значение",
+  "en": "Sputum examination in tuberculosis and its clinical diagnostic significance"
+ },
+ "d031-P": {
+  "ru": "Исследование мокроты при туберкулёзе и его клинико-диагностическое значение (2-й день)",
+  "en": "Sputum examination in tuberculosis and its clinical diagnostic significance (day 2)"
+ },
+ "d032-P": {
+  "ru": "Клиническая диагностика при исследовании транссудатов и экссудатов",
+  "en": "Clinical diagnostics of transudate and exudate examination"
+ },
+ "d032-L": {
+  "ru": "Клиническая диагностика при исследовании транссудатов и экссудатов",
+  "en": "Clinical diagnostics of transudate and exudate examination"
+ },
+ "d033-P": {
+  "ru": "Лабораторные показатели спинномозговой жидкости при различных заболеваниях",
+  "en": "Laboratory findings of cerebrospinal fluid in various diseases"
+ },
+ "d033-L": {
+  "ru": "Лабораторные показатели спинномозговой жидкости при различных заболеваниях",
+  "en": "Laboratory findings of cerebrospinal fluid in various diseases"
+ },
+ "d034-A": {
+  "ru": "Аттестация 4. По модулю «Общеклинические методы исследования»",
+  "en": "Assessment 4. Module: General clinical testing methods"
+ },
+ "M5": {
+  "ru": "Цитологические методы исследования",
+  "en": "Cytological testing methods"
+ },
+ "d035-P": {
+  "ru": "Цитологические методы исследования. Микроскопическое исследование выделений женских половых органов. Окраска мазков по Граму, Романовскому и метиленовым синим",
+  "en": "Cytological testing methods. Microscopic examination of female genital discharge. Staining smears with Gram, Romanowsky and methylene blue"
+ },
+ "d036-P": {
+  "ru": "Опухоли. Общие сведения об онкомаркерах. Цитодиагностика злокачественных опухолей",
+  "en": "Tumors. General information on tumor markers. Cytodiagnosis of malignant tumors"
+ },
+ "d036-L": {
+  "ru": "Опухоли. Общие сведения об онкомаркерах. Цитодиагностика злокачественных опухолей",
+  "en": "Tumors. General information on tumor markers. Cytodiagnosis of malignant tumors"
+ },
+ "d037-P": {
+  "ru": "Цитодиагностика злокачественных опухолей шейки матки и матки",
+  "en": "Cytodiagnosis of malignant tumors of the cervix and uterus"
+ },
+ "d038-P": {
+  "ru": "Цитодиагностика опухолей органов дыхания",
+  "en": "Cytodiagnosis of respiratory tract tumors"
+ },
+ "d039-A": {
+  "ru": "Аттестация 5. По модулю «Цитологические методы исследования»",
+  "en": "Assessment 5. Module: Cytological testing methods"
+ },
+ "M6": {
+  "ru": "Общие вопросы клинической биохимии",
+  "en": "General topics in clinical biochemistry"
+ },
+ "d040-P": {
+  "ru": "Общие вопросы клинической биохимии. Физико-химические и химические методы (хроматография, спектрометрия, фотометрия)",
+  "en": "General topics in clinical biochemistry. Physicochemical and chemical methods (chromatography, spectrometry, photometry)"
+ },
+ "d041-P": {
+  "ru": "Принципы работы биохимического полуавтоматического анализатора Mindray BA-88A. Программирование биохимического анализатора",
+  "en": "Operating principles of the Mindray BA-88A semi-automated biochemistry analyzer. Programming the biochemistry analyzer"
+ },
+ "d042-P": {
+  "ru": "Классификация аминокислот. Простые и сложные белки",
+  "en": "Classification of amino acids. Simple and conjugated proteins"
+ },
+ "d042-L": {
+  "ru": "Классификация аминокислот. Простые и сложные белки",
+  "en": "Classification of amino acids. Simple and conjugated proteins"
+ },
+ "d043-P": {
+  "ru": "Обмен пигментов. Образование билирубина",
+  "en": "Pigment metabolism. Bilirubin formation"
+ },
+ "d043-L": {
+  "ru": "Обмен пигментов. Образование билирубина",
+  "en": "Pigment metabolism. Bilirubin formation"
+ },
+ "d044-P": {
+  "ru": "Углеводы: классификация, биологическое значение. Всасывание углеводов в желудочно-кишечном тракте",
+  "en": "Carbohydrates: classification and biological significance. Carbohydrate absorption in the gastrointestinal tract"
+ },
+ "d044-L": {
+  "ru": "Углеводы: классификация, биологическое значение. Всасывание углеводов в желудочно-кишечном тракте",
+  "en": "Carbohydrates: classification and biological significance. Carbohydrate absorption in the gastrointestinal tract"
+ },
+ "d045-P": {
+  "ru": "Диагностика сахарного диабета",
+  "en": "Diagnosis of diabetes mellitus"
+ },
+ "d046-P": {
+  "ru": "Строение, классификация и биологическая роль липидов",
+  "en": "Structure, classification and biological role of lipids"
+ },
+ "d046-L": {
+  "ru": "Строение, классификация и биологическая роль липидов",
+  "en": "Structure, classification and biological role of lipids"
+ },
+ "d047-P": {
+  "ru": "Водно-солевой обмен и его нарушения",
+  "en": "Water-electrolyte metabolism and its disorders"
+ },
+ "d047-L": {
+  "ru": "Водно-солевой обмен и его нарушения",
+  "en": "Water-electrolyte metabolism and its disorders"
+ },
+ "d048-P": {
+  "ru": "Ферменты: строение и классификация",
+  "en": "Enzymes: structure and classification"
+ },
+ "d048-L": {
+  "ru": "Ферменты: строение и классификация",
+  "en": "Enzymes: structure and classification"
+ },
+ "d049-P": {
+  "ru": "Исследование печёночных ферментов",
+  "en": "Testing of liver enzymes"
+ },
+ "d050-P": {
+  "ru": "Исследование ферментов лактатдегидрогеназы и щелочной фосфатазы",
+  "en": "Testing of lactate dehydrogenase and alkaline phosphatase enzymes"
+ },
+ "d051-P": {
+  "ru": "Витамины. Клинико-диагностическое значение исследования витаминов B12 и D",
+  "en": "Vitamins. Clinical diagnostic significance of vitamin B12 and D testing"
+ },
+ "d052-P": {
+  "ru": "Витамины. Клинико-диагностическое значение исследования витаминов B12 и D (2-й день)",
+  "en": "Vitamins. Clinical diagnostic significance of vitamin B12 and D testing (day 2)"
+ },
+ "d053-A": {
+  "ru": "Аттестация 6. По модулю «Общие вопросы клинической биохимии»",
+  "en": "Assessment 6. Module: General topics in clinical biochemistry"
+ },
+ "M7": {
+  "ru": "Клиническая биохимия и биохимические методы исследования",
+  "en": "Clinical biochemistry and biochemical testing methods"
+ },
+ "d054-P": {
+  "ru": "Клиническая биохимия и биохимические методы исследования. Методы определения общего белка и альбумина. Клинико-диагностическое значение",
+  "en": "Clinical biochemistry and biochemical testing methods. Methods for total protein and albumin determination. Clinical diagnostic significance"
+ },
+ "d055-P": {
+  "ru": "Азотемии. Клинико-диагностическое значение",
+  "en": "Azotemias. Clinical diagnostic significance"
+ },
+ "d055-L": {
+  "ru": "Азотемии. Клинико-диагностическое значение",
+  "en": "Azotemias. Clinical diagnostic significance"
+ },
+ "d056-P": {
+  "ru": "Методы определения мочевины. Клинико-диагностическое значение",
+  "en": "Methods for urea determination. Clinical diagnostic significance"
+ },
+ "d057-P": {
+  "ru": "Методы определения креатинина. Клинико-диагностическое значение",
+  "en": "Methods for creatinine determination. Clinical diagnostic significance"
+ },
+ "d058-P": {
+  "ru": "Методы определения билирубина. Клинико-диагностическое значение",
+  "en": "Methods for bilirubin determination. Clinical diagnostic significance"
+ },
+ "d058-L": {
+  "ru": "Методы определения билирубина. Клинико-диагностическое значение",
+  "en": "Methods for bilirubin determination. Clinical diagnostic significance"
+ },
+ "d059-P": {
+  "ru": "Методы определения глюкозы. Глюкозотолерантный тест. Клинико-диагностическое значение",
+  "en": "Methods for glucose determination. Glucose tolerance test. Clinical diagnostic significance"
+ },
+ "d060-P": {
+  "ru": "Определение гликированного гемоглобина. Клинико-диагностическое значение",
+  "en": "Glycated hemoglobin determination. Clinical diagnostic significance"
+ },
+ "d061-P": {
+  "ru": "Методы определения трансаминаз и амилазы. Клинико-диагностическое значение",
+  "en": "Methods for transaminase and amylase determination. Clinical diagnostic significance"
+ },
+ "d061-L": {
+  "ru": "Методы определения трансаминаз и амилазы. Клинико-диагностическое значение",
+  "en": "Methods for transaminase and amylase determination. Clinical diagnostic significance"
+ },
+ "d062-P": {
+  "ru": "Методы определения щелочной фосфатазы и γ-ГТ. Клинико-диагностическое значение исследования",
+  "en": "Methods for alkaline phosphatase and γ-GT determination. Clinical diagnostic significance of testing"
+ },
+ "d063-P": {
+  "ru": "Кислотно-основное равновесие. Буферные системы",
+  "en": "Acid-base balance. Buffer systems"
+ },
+ "d063-L": {
+  "ru": "Кислотно-основное равновесие. Буферные системы",
+  "en": "Acid-base balance. Buffer systems"
+ },
+ "d064-P": {
+  "ru": "Кислотно-основное равновесие. Буферные системы (2-й день)",
+  "en": "Acid-base balance. Buffer systems (day 2)"
+ },
+ "d065-P": {
+  "ru": "Определение общего холестерина. Клинико-диагностическое значение",
+  "en": "Total cholesterol determination. Clinical diagnostic significance"
+ },
+ "d066-P": {
+  "ru": "Методы определения триглицеридов. Клинико-диагностическое значение",
+  "en": "Methods for triglyceride determination. Clinical diagnostic significance"
+ },
+ "d067-P": {
+  "ru": "Методы определения натрия, калия, кальция. Клинико-диагностическое значение",
+  "en": "Methods for sodium, potassium and calcium determination. Clinical diagnostic significance"
+ },
+ "d068-P": {
+  "ru": "Методы определения железа. Клинико-диагностическое значение",
+  "en": "Methods for iron determination. Clinical diagnostic significance"
+ },
+ "d069-P": {
+  "ru": "Белки острой фазы",
+  "en": "Acute-phase proteins"
+ },
+ "d069-L": {
+  "ru": "Белки острой фазы",
+  "en": "Acute-phase proteins"
+ },
+ "d070-P": {
+  "ru": "Определение СРБ, РФ, АСЛО. Клинико-диагностическое значение",
+  "en": "CRP, RF and ASO determination. Clinical diagnostic significance"
+ },
+ "d071-P": {
+  "ru": "Биохимические маркеры инфаркта миокарда и факторы риска",
+  "en": "Biochemical markers of myocardial infarction and risk factors"
+ },
+ "d072-P": {
+  "ru": "Лабораторная диагностика подагры. Определение мочевой кислоты",
+  "en": "Laboratory diagnosis of gout. Uric acid determination"
+ },
+ "d073-P": {
+  "ru": "Современные представления о гемостазе",
+  "en": "Modern concepts of hemostasis"
+ },
+ "d073-L": {
+  "ru": "Современные представления о гемостазе",
+  "en": "Modern concepts of hemostasis"
+ },
+ "d074-A": {
+  "ru": "Аттестация 7. По модулю «Клиническая биохимия и биохимические методы исследования»",
+  "en": "Assessment 7. Module: Clinical biochemistry and biochemical testing methods"
+ },
+ "M8": {
+  "ru": "Лабораторная диагностика различных заболеваний",
+  "en": "Laboratory diagnostics of various diseases"
+ },
+ "d075-P": {
+  "ru": "Лабораторная диагностика различных заболеваний. ДВС-синдром (диссеминированное внутрисосудистое свёртывание крови) и клинико-лабораторные исследования при нём",
+  "en": "Laboratory diagnostics of various diseases. Disseminated intravascular coagulation (DIC) syndrome and related clinical laboratory tests"
+ },
+ "d075-L": {
+  "ru": "Лабораторная диагностика различных заболеваний. ДВС-синдром (диссеминированное внутрисосудистое свёртывание крови) и клинико-лабораторные исследования при нём",
+  "en": "Laboratory diagnostics of various diseases. Disseminated intravascular coagulation (DIC) syndrome and related clinical laboratory tests"
+ },
+ "d076-P": {
+  "ru": "Лабораторная диагностика аллергических заболеваний",
+  "en": "Laboratory diagnostics of allergic diseases"
+ },
+ "d077-P": {
+  "ru": "Лабораторная диагностика инфекций, передаваемых половым путём. Реакция Вассермана",
+  "en": "Laboratory diagnostics of sexually transmitted infections. Wassermann reaction"
+ },
+ "d078-P": {
+  "ru": "Лабораторная диагностика малярии",
+  "en": "Laboratory diagnosis of malaria"
+ },
+ "d078-L": {
+  "ru": "Лабораторная диагностика малярии",
+  "en": "Laboratory diagnosis of malaria"
+ },
+ "d079-P": {
+  "ru": "ВИЧ-инфекция. Клинико-лабораторные методы исследования. Клинико-диагностическое значение",
+  "en": "HIV infection. Clinical laboratory testing methods. Clinical diagnostic significance"
+ },
+ "d079-L": {
+  "ru": "ВИЧ-инфекция. Клинико-лабораторные методы исследования. Клинико-диагностическое значение",
+  "en": "HIV infection. Clinical laboratory testing methods. Clinical diagnostic significance"
+ },
+ "d080-P": {
+  "ru": "Лабораторная диагностика паразитарных заболеваний. Лабораторная диагностика круглых червей (нематод)",
+  "en": "Laboratory diagnostics of parasitic diseases. Laboratory diagnostics of roundworms (nematodes)"
+ },
+ "d080-L": {
+  "ru": "Лабораторная диагностика паразитарных заболеваний. Лабораторная диагностика круглых червей (нематод)",
+  "en": "Laboratory diagnostics of parasitic diseases. Laboratory diagnostics of roundworms (nematodes)"
+ },
+ "d081-P": {
+  "ru": "Лабораторная диагностика ленточных червей (цестод). Клинико-диагностическое значение",
+  "en": "Laboratory diagnostics of tapeworms (cestodes). Clinical diagnostic significance"
+ },
+ "d082-P": {
+  "ru": "Лабораторная диагностика сосальщиков (трематод). Клинико-диагностическое значение",
+  "en": "Laboratory diagnostics of flukes (trematodes). Clinical diagnostic significance"
+ },
+ "d083-P": {
+  "ru": "Лабораторная диагностика TORCH-инфекций. Клинико-диагностическое значение",
+  "en": "Laboratory diagnostics of TORCH infections. Clinical diagnostic significance"
+ },
+ "d083-L": {
+  "ru": "Лабораторная диагностика TORCH-инфекций. Клинико-диагностическое значение",
+  "en": "Laboratory diagnostics of TORCH infections. Clinical diagnostic significance"
+ },
+ "d084-P": {
+  "ru": "Гематологические анализаторы в клинической лабораторной диагностике",
+  "en": "Hematology analyzers in clinical laboratory diagnostics"
+ },
+ "d085-P": {
+  "ru": "Анализаторы СОЭ (скорости оседания эритроцитов) в клинической лабораторной диагностике",
+  "en": "ESR (erythrocyte sedimentation rate) analyzers in clinical laboratory diagnostics"
+ },
+ "d086-P": {
+  "ru": "Биохимические анализаторы в клинической лабораторной диагностике",
+  "en": "Biochemistry analyzers in clinical laboratory diagnostics"
+ },
+ "d087-P": {
+  "ru": "Анализаторы мочи в клинической лабораторной диагностике",
+  "en": "Urine analyzers in clinical laboratory diagnostics"
+ },
+ "d088-P": {
+  "ru": "Коагулометрические анализаторы в клинической лабораторной диагностике",
+  "en": "Coagulation analyzers in clinical laboratory diagnostics"
+ },
+ "d089-A": {
+  "ru": "Аттестация 8. По модулю «Лабораторная диагностика различных заболеваний»",
+  "en": "Assessment 8. Module: Laboratory diagnostics of various diseases"
+ },
+ "M9": {
+  "ru": "Практическое освоение лабораторных методов исследования",
+  "en": "Hands-on practice of laboratory testing methods"
+ },
+ "d090-L": {
+  "ru": "Практическое освоение общего анализа крови",
+  "en": "Hands-on practice of the complete blood count"
+ },
+ "d091-P": {
+  "ru": "Практическое освоение лабораторных методов исследования",
+  "en": "Hands-on practice of laboratory testing methods"
+ },
+ "d092-P": {
+  "ru": "Практическое освоение лабораторных методов исследования",
+  "en": "Hands-on practice of laboratory testing methods"
+ },
+ "d093-P": {
+  "ru": "Практическое освоение лабораторных методов исследования",
+  "en": "Hands-on practice of laboratory testing methods"
+ },
+ "d094-P": {
+  "ru": "Практическое освоение лабораторных методов исследования",
+  "en": "Hands-on practice of laboratory testing methods"
+ },
+ "d095-L": {
+  "ru": "Практическое освоение лейкоцитарной формулы",
+  "en": "Hands-on practice of the differential leukocyte count"
+ },
+ "d096-P": {
+  "ru": "Практическое освоение лабораторных методов исследования",
+  "en": "Hands-on practice of laboratory testing methods"
+ },
+ "d097-P": {
+  "ru": "Практическое освоение лабораторных методов исследования",
+  "en": "Hands-on practice of laboratory testing methods"
+ },
+ "d098-P": {
+  "ru": "Практическое освоение лабораторных методов исследования",
+  "en": "Hands-on practice of laboratory testing methods"
+ },
+ "d099-P": {
+  "ru": "Практическое освоение лабораторных методов исследования",
+  "en": "Hands-on practice of laboratory testing methods"
+ },
+ "d100-P": {
+  "ru": "Практическое освоение лабораторных методов исследования",
+  "en": "Hands-on practice of laboratory testing methods"
+ },
+ "d101-L": {
+  "ru": "Практическое освоение общего анализа мочи",
+  "en": "Hands-on practice of routine urinalysis"
+ },
+ "d102-P": {
+  "ru": "Практическое освоение лабораторных методов исследования",
+  "en": "Hands-on practice of laboratory testing methods"
+ },
+ "d103-P": {
+  "ru": "Практическое освоение лабораторных методов исследования",
+  "en": "Hands-on practice of laboratory testing methods"
+ },
+ "d104-P": {
+  "ru": "Практическое освоение лабораторных методов исследования",
+  "en": "Hands-on practice of laboratory testing methods"
+ },
+ "d105-P": {
+  "ru": "Практическое освоение лабораторных методов исследования",
+  "en": "Hands-on practice of laboratory testing methods"
+ },
+ "d106-L": {
+  "ru": "Практическое освоение общего анализа мокроты",
+  "en": "Hands-on practice of routine sputum analysis"
+ },
+ "d107-P": {
+  "ru": "Практическое освоение лабораторных методов исследования",
+  "en": "Hands-on practice of laboratory testing methods"
+ },
+ "d108-P": {
+  "ru": "Практическое освоение лабораторных методов исследования",
+  "en": "Hands-on practice of laboratory testing methods"
+ },
+ "d109-P": {
+  "ru": "Практическое освоение лабораторных методов исследования",
+  "en": "Hands-on practice of laboratory testing methods"
+ },
+ "d110-P": {
+  "ru": "Практическое освоение лабораторных методов исследования",
+  "en": "Hands-on practice of laboratory testing methods"
+ },
+ "d111-P": {
+  "ru": "Практическое освоение лабораторных методов исследования",
+  "en": "Hands-on practice of laboratory testing methods"
+ },
+ "d112-L": {
+  "ru": "Практическое освоение общего анализа кала (копрограммы)",
+  "en": "Hands-on practice of routine stool analysis (coprogram)"
+ },
+ "d113-P": {
+  "ru": "Практическое освоение лабораторных методов исследования",
+  "en": "Hands-on practice of laboratory testing methods"
+ },
+ "d114-P": {
+  "ru": "Практическое освоение лабораторных методов исследования",
+  "en": "Hands-on practice of laboratory testing methods"
+ },
+ "d115-P": {
+  "ru": "Практическое освоение лабораторных методов исследования",
+  "en": "Hands-on practice of laboratory testing methods"
+ },
+ "d116-L": {
+  "ru": "Практическое освоение принципов работы биохимического полуавтоматического анализатора Mindray BA-88A и его программирования",
+  "en": "Hands-on practice with the operating principles and programming of the Mindray BA-88A semi-automated biochemistry analyzer"
+ },
+ "d117-P": {
+  "ru": "Практическое освоение лабораторных методов исследования",
+  "en": "Hands-on practice of laboratory testing methods"
+ },
+ "d118-P": {
+  "ru": "Практическое освоение лабораторных методов исследования",
+  "en": "Hands-on practice of laboratory testing methods"
+ },
+ "d119-P": {
+  "ru": "Практическое освоение лабораторных методов исследования",
+  "en": "Hands-on practice of laboratory testing methods"
+ },
+ "d120-P": {
+  "ru": "Практическое освоение лабораторных методов исследования",
+  "en": "Hands-on practice of laboratory testing methods"
+ },
+ "d121-L": {
+  "ru": "Практическое освоение исследования лактатдегидрогеназы и щелочной фосфатазы",
+  "en": "Hands-on practice of lactate dehydrogenase and alkaline phosphatase testing"
+ },
+ "d122-P": {
+  "ru": "Практическое освоение лабораторных методов исследования",
+  "en": "Hands-on practice of laboratory testing methods"
+ },
+ "d123-P": {
+  "ru": "Практическое освоение лабораторных методов исследования",
+  "en": "Hands-on practice of laboratory testing methods"
+ },
+ "d124-P": {
+  "ru": "Практическое освоение лабораторных методов исследования",
+  "en": "Hands-on practice of laboratory testing methods"
+ },
+ "d125-P": {
+  "ru": "Практическое освоение лабораторных методов исследования",
+  "en": "Hands-on practice of laboratory testing methods"
+ },
+ "d126-P": {
+  "ru": "Практическое освоение лабораторных методов исследования",
+  "en": "Hands-on practice of laboratory testing methods"
+ },
+ "d127-L": {
+  "ru": "Практическое освоение исследования СРБ, РФ, АСЛО",
+  "en": "Hands-on practice of CRP, RF and ASO testing"
+ },
+ "d128-P": {
+  "ru": "Практическое освоение лабораторных методов исследования",
+  "en": "Hands-on practice of laboratory testing methods"
+ },
+ "d129-P": {
+  "ru": "Практическое освоение лабораторных методов исследования",
+  "en": "Hands-on practice of laboratory testing methods"
+ },
+ "d130-P": {
+  "ru": "Практическое освоение лабораторных методов исследования",
+  "en": "Hands-on practice of laboratory testing methods"
+ },
+ "d131-P": {
+  "ru": "Практическое освоение лабораторных методов исследования",
+  "en": "Hands-on practice of laboratory testing methods"
+ },
+ "d132-P": {
+  "ru": "Практическое освоение лабораторных методов исследования",
+  "en": "Hands-on practice of laboratory testing methods"
+ },
+ "d133-P": {
+  "ru": "Практическое освоение лабораторных методов исследования",
+  "en": "Hands-on practice of laboratory testing methods"
+ },
+ "d134-P": {
+  "ru": "Практическое освоение лабораторных методов исследования",
+  "en": "Hands-on practice of laboratory testing methods"
+ },
+ "d135-P": {
+  "ru": "Практическое освоение лабораторных методов исследования",
+  "en": "Hands-on practice of laboratory testing methods"
+ },
+ "d136-P": {
+  "ru": "Практическое освоение лабораторных методов исследования",
+  "en": "Hands-on practice of laboratory testing methods"
+ },
+ "d137-P": {
+  "ru": "Практическое освоение лабораторных методов исследования",
+  "en": "Hands-on practice of laboratory testing methods"
+ },
+ "d138-P": {
+  "ru": "Практическое освоение лабораторных методов исследования",
+  "en": "Hands-on practice of laboratory testing methods"
+ },
+ "d139-P": {
+  "ru": "Практическое освоение лабораторных методов исследования",
+  "en": "Hands-on practice of laboratory testing methods"
+ },
+ "d140-P": {
+  "ru": "Практическое освоение лабораторных методов исследования",
+  "en": "Hands-on practice of laboratory testing methods"
+ },
+ "d141-P": {
+  "ru": "Практическое освоение лабораторных методов исследования",
+  "en": "Hands-on practice of laboratory testing methods"
+ },
+ "d142-P": {
+  "ru": "Практическое освоение лабораторных методов исследования",
+  "en": "Hands-on practice of laboratory testing methods"
+ },
+ "d143-A": {
+  "ru": "Аттестация. Практическое освоение лабораторных методов исследования (итоговая)",
+  "en": "Assessment. Hands-on practice of laboratory testing methods (final)"
+ }
+}

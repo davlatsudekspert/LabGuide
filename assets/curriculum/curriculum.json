@@ -9,6 +9,8 @@
   {
    "id": "M1",
    "title_uz": "Laborator xizmatni tashkillashtirish. Tibbiy etika va deontologiya",
+   "title_ru": "Организация лабораторной службы. Медицинская этика и деонтология",
+   "title_en": "Organization of laboratory services. Medical ethics and deontology",
    "hours": {
     "lecture": 6,
     "practical": 12,
@@ -50,7 +52,9 @@
       "pack_quiz_count": 0
      },
      "test_gap": true,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Организация лабораторной службы. Медицинская этика и деонтология. Урок духовности",
+     "title_en": "Organization of laboratory services. Medical ethics and deontology. Spirituality class"
     },
     {
      "id": "d001-L",
@@ -83,7 +87,9 @@
       "pack_quiz_count": 0
      },
      "test_gap": true,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Урок духовности",
+     "title_en": "Spirituality class"
     },
     {
      "id": "d002-P",
@@ -114,7 +120,9 @@
       "pack_quiz_count": 0
      },
      "test_gap": true,
-     "oral_gap": true
+     "oral_gap": true,
+     "title_ru": "Организационные вопросы развития клинических биохимических лабораторий в Узбекистане",
+     "title_en": "Organizational aspects of developing clinical biochemistry laboratories in Uzbekistan"
     },
     {
      "id": "d002-L",
@@ -145,7 +153,9 @@
       "pack_quiz_count": 0
      },
      "test_gap": true,
-     "oral_gap": true
+     "oral_gap": true,
+     "title_ru": "Организационные вопросы развития клинических биохимических лабораторий в Узбекистане",
+     "title_en": "Organizational aspects of developing clinical biochemistry laboratories in Uzbekistan"
     },
     {
      "id": "d003-P",
@@ -212,7 +222,9 @@
       "pack_quiz_count": 0
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Внутрилабораторный и межлабораторный контроль качества и его особенности",
+     "title_en": "Internal and inter-laboratory quality control and its characteristics"
     },
     {
      "id": "d003-L",
@@ -279,7 +291,9 @@
       "pack_quiz_count": 0
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Внутрилабораторный и межлабораторный контроль качества и его особенности",
+     "title_en": "Internal and inter-laboratory quality control and its characteristics"
     },
     {
      "id": "d004-A",
@@ -351,13 +365,17 @@
       "pack_quiz_count": 0
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Аттестация 1. По модулю «Организация лабораторной службы. Медицинская этика и деонтология»",
+     "title_en": "Assessment 1. Module: Organization of laboratory services. Medical ethics and deontology"
     }
    ]
   },
   {
    "id": "M2",
    "title_uz": "Odam ichki a’zolari tuzilishi va vazifalari",
+   "title_ru": "Строение и функции внутренних органов человека",
+   "title_en": "Structure and functions of human internal organs",
    "hours": {
     "lecture": 8,
     "practical": 16,
@@ -395,7 +413,9 @@
       "pack_quiz_count": 0
      },
      "test_gap": true,
-     "oral_gap": true
+     "oral_gap": true,
+     "title_ru": "Строение и функции внутренних органов человека. Классификация тканей. Морфофункциональная характеристика эпителиальной ткани",
+     "title_en": "Structure and functions of human internal organs. Classification of tissues. Morphofunctional characteristics of epithelial tissue"
     },
     {
      "id": "d005-L",
@@ -424,7 +444,9 @@
       "pack_quiz_count": 0
      },
      "test_gap": true,
-     "oral_gap": true
+     "oral_gap": true,
+     "title_ru": "Строение и функции внутренних органов человека. Классификация тканей. Морфофункциональная характеристика эпителиальной ткани",
+     "title_en": "Structure and functions of human internal organs. Classification of tissues. Morphofunctional characteristics of epithelial tissue"
     },
     {
      "id": "d006-P",
@@ -453,7 +475,9 @@
       "pack_quiz_count": 0
      },
      "test_gap": true,
-     "oral_gap": true
+     "oral_gap": true,
+     "title_ru": "Морфофункциональная характеристика соединительной ткани",
+     "title_en": "Morphofunctional characteristics of connective tissue"
     },
     {
      "id": "d006-L",
@@ -482,7 +506,9 @@
       "pack_quiz_count": 0
      },
      "test_gap": true,
-     "oral_gap": true
+     "oral_gap": true,
+     "title_ru": "Морфофункциональная характеристика соединительной ткани",
+     "title_en": "Morphofunctional characteristics of connective tissue"
     },
     {
      "id": "d007-P",
@@ -583,7 +609,9 @@
       "pack_quiz_count": 17
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Лабораторные показатели при заболеваниях печени",
+     "title_en": "Laboratory markers of liver diseases"
     },
     {
      "id": "d007-L",
@@ -684,7 +712,9 @@
       "pack_quiz_count": 17
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Лабораторные показатели при заболеваниях печени",
+     "title_en": "Laboratory markers of liver diseases"
     },
     {
      "id": "d008-P",
@@ -774,7 +804,9 @@
       "pack_quiz_count": 14
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Лабораторные показатели при заболеваниях почек и мочевыводящих путей",
+     "title_en": "Laboratory markers of kidney and urinary tract diseases"
     },
     {
      "id": "d008-L",
@@ -864,7 +896,9 @@
       "pack_quiz_count": 14
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Лабораторные показатели при заболеваниях почек и мочевыводящих путей",
+     "title_en": "Laboratory markers of kidney and urinary tract diseases"
     },
     {
      "id": "d009-A",
@@ -926,13 +960,17 @@
       "pack_quiz_count": 0
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Аттестация 2. По модулю «Строение и функции внутренних органов человека»",
+     "title_en": "Assessment 2. Module: Structure and functions of human internal organs"
     }
    ]
   },
   {
    "id": "M3",
    "title_uz": "Gematologik tekshiruv usullari",
+   "title_ru": "Гематологические методы исследования",
+   "title_en": "Hematological testing methods",
    "hours": {
     "lecture": 26,
     "practical": 52,
@@ -983,7 +1021,9 @@
       "pack_quiz_count": 3
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Современная теория кроветворения. Эритропоэз, лейкопоэз, тромбоцитопоэз. Лимфоцитопоэз",
+     "title_en": "Modern theory of hematopoiesis. Erythropoiesis, leukopoiesis, thrombopoiesis. Lymphopoiesis"
     },
     {
      "id": "d010-L",
@@ -1025,7 +1065,9 @@
       "pack_quiz_count": 3
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Современная теория кроветворения. Эритропоэз, лейкопоэз, тромбоцитопоэз. Лимфоцитопоэз",
+     "title_en": "Modern theory of hematopoiesis. Erythropoiesis, leukopoiesis, thrombopoiesis. Lymphopoiesis"
     },
     {
      "id": "d011-P",
@@ -1093,7 +1135,9 @@
       "pack_quiz_count": 10
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Подсчёт форменных элементов крови. Определение гемоглобина",
+     "title_en": "Counting blood cells. Hemoglobin determination"
     },
     {
      "id": "d011-L",
@@ -1161,7 +1205,9 @@
       "pack_quiz_count": 10
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Подсчёт форменных элементов крови. Определение гемоглобина",
+     "title_en": "Counting blood cells. Hemoglobin determination"
     },
     {
      "id": "d012-P",
@@ -1236,7 +1282,9 @@
       "pack_quiz_count": 13
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Забор материала для лейкоцитарной формулы и подсчёт. Лейкемоидные реакции миелоидного, лимфомоноцитарного и эозинофильного типов",
+     "title_en": "Sampling for the differential leukocyte count and counting. Leukemoid reactions of myeloid, lymphomonocytic and eosinophilic types"
     },
     {
      "id": "d012-L",
@@ -1311,7 +1359,9 @@
       "pack_quiz_count": 13
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Забор материала для лейкоцитарной формулы и подсчёт. Лейкемоидные реакции миелоидного, лимфомоноцитарного и эозинофильного типов",
+     "title_en": "Sampling for the differential leukocyte count and counting. Leukemoid reactions of myeloid, lymphomonocytic and eosinophilic types"
     },
     {
      "id": "d013-P",
@@ -1392,7 +1442,9 @@
       "pack_quiz_count": 17
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Анемии. Классификация, этиология и патогенез",
+     "title_en": "Anemias. Classification, etiology and pathogenesis"
     },
     {
      "id": "d013-L",
@@ -1473,7 +1525,9 @@
       "pack_quiz_count": 17
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Анемии. Классификация, этиология и патогенез",
+     "title_en": "Anemias. Classification, etiology and pathogenesis"
     },
     {
      "id": "d014-P",
@@ -1542,7 +1596,9 @@
       "pack_quiz_count": 8
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Железодефицитные анемии. Картина костного мозга и периферической крови",
+     "title_en": "Iron deficiency anemias. Bone marrow and peripheral blood picture"
     },
     {
      "id": "d014-L",
@@ -1611,7 +1667,9 @@
       "pack_quiz_count": 8
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Железодефицитные анемии. Картина костного мозга и периферической крови",
+     "title_en": "Iron deficiency anemias. Bone marrow and peripheral blood picture"
     },
     {
      "id": "d015-P",
@@ -1669,7 +1727,9 @@
       "pack_quiz_count": 5
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Анемии, связанные с дефицитом витамина B12. Картина костного мозга и периферической крови",
+     "title_en": "Anemias associated with vitamin B12 deficiency. Bone marrow and peripheral blood picture"
     },
     {
      "id": "d015-L",
@@ -1727,7 +1787,9 @@
       "pack_quiz_count": 5
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Анемии, связанные с дефицитом витамина B12. Картина костного мозга и периферической крови",
+     "title_en": "Anemias associated with vitamin B12 deficiency. Bone marrow and peripheral blood picture"
     },
     {
      "id": "d016-P",
@@ -1789,7 +1851,9 @@
       "pack_quiz_count": 10
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Гемолитические анемии. Клинико-лабораторные показатели. Картина костного мозга и периферической крови",
+     "title_en": "Hemolytic anemias. Clinical and laboratory findings. Bone marrow and peripheral blood picture"
     },
     {
      "id": "d016-L",
@@ -1851,7 +1915,9 @@
       "pack_quiz_count": 10
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Гемолитические анемии. Клинико-лабораторные показатели. Картина костного мозга и периферической крови",
+     "title_en": "Hemolytic anemias. Clinical and laboratory findings. Bone marrow and peripheral blood picture"
     },
     {
      "id": "d017-P",
@@ -1906,7 +1972,9 @@
       "pack_quiz_count": 3
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Лейкозы: этиология, патогенез и классификация",
+     "title_en": "Leukemias: etiology, pathogenesis and classification"
     },
     {
      "id": "d017-L",
@@ -1961,7 +2029,9 @@
       "pack_quiz_count": 3
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Лейкозы: этиология, патогенез и классификация",
+     "title_en": "Leukemias: etiology, pathogenesis and classification"
     },
     {
      "id": "d018-P",
@@ -2014,7 +2084,9 @@
       "pack_quiz_count": 1
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Острые лейкозы. Картина костного мозга и периферической крови при острых лейкозах",
+     "title_en": "Acute leukemias. Bone marrow and peripheral blood picture in acute leukemias"
     },
     {
      "id": "d018-L",
@@ -2067,7 +2139,9 @@
       "pack_quiz_count": 1
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Острые лейкозы. Картина костного мозга и периферической крови при острых лейкозах",
+     "title_en": "Acute leukemias. Bone marrow and peripheral blood picture in acute leukemias"
     },
     {
      "id": "d019-P",
@@ -2117,7 +2191,9 @@
       "pack_quiz_count": 0
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Хронические лейкозы. Картина костного мозга и периферической крови",
+     "title_en": "Chronic leukemias. Bone marrow and peripheral blood picture"
     },
     {
      "id": "d019-L",
@@ -2167,7 +2243,9 @@
       "pack_quiz_count": 0
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Хронические лейкозы. Картина костного мозга и периферической крови",
+     "title_en": "Chronic leukemias. Bone marrow and peripheral blood picture"
     },
     {
      "id": "d020-P",
@@ -2200,7 +2278,9 @@
       "pack_quiz_count": 0
      },
      "test_gap": true,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Хронический миелолейкоз. Картина костного мозга и периферической крови",
+     "title_en": "Chronic myeloid leukemia. Bone marrow and peripheral blood picture"
     },
     {
      "id": "d020-L",
@@ -2233,7 +2313,9 @@
       "pack_quiz_count": 0
      },
      "test_gap": true,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Хронический миелолейкоз. Картина костного мозга и периферической крови",
+     "title_en": "Chronic myeloid leukemia. Bone marrow and peripheral blood picture"
     },
     {
      "id": "d021-P",
@@ -2271,7 +2353,9 @@
       "pack_quiz_count": 2
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Хронический лимфолейкоз. Картина костного мозга и периферической крови",
+     "title_en": "Chronic lymphocytic leukemia. Bone marrow and peripheral blood picture"
     },
     {
      "id": "d021-L",
@@ -2309,7 +2393,9 @@
       "pack_quiz_count": 2
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Хронический лимфолейкоз. Картина костного мозга и периферической крови",
+     "title_en": "Chronic lymphocytic leukemia. Bone marrow and peripheral blood picture"
     },
     {
      "id": "d022-P",
@@ -2352,7 +2438,9 @@
       "pack_quiz_count": 4
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Картина костного мозга и периферической крови при миеломной болезни",
+     "title_en": "Bone marrow and peripheral blood picture in multiple myeloma"
     },
     {
      "id": "d022-L",
@@ -2395,7 +2483,9 @@
       "pack_quiz_count": 4
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Картина костного мозга и периферической крови при миеломной болезни",
+     "title_en": "Bone marrow and peripheral blood picture in multiple myeloma"
     },
     {
      "id": "d023-A",
@@ -2471,13 +2561,17 @@
       "pack_quiz_count": 2
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Аттестация 3. По модулю «Гематологические методы исследования»",
+     "title_en": "Assessment 3. Module: Hematological testing methods"
     }
    ]
   },
   {
    "id": "M4",
    "title_uz": "Umumklinik tekshiruv usullari",
+   "title_ru": "Общеклинические методы исследования",
+   "title_en": "General clinical testing methods",
    "hours": {
     "lecture": 14,
     "practical": 46,
@@ -2521,7 +2615,9 @@
       "pack_quiz_count": 1
      },
      "test_gap": true,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Клинико-лабораторные показатели заболеваний при микроскопическом исследовании желудочного сока и жёлчи",
+     "title_en": "Clinical laboratory findings in diseases on microscopic examination of gastric juice and bile"
     },
     {
      "id": "d024-L",
@@ -2556,7 +2652,9 @@
       "pack_quiz_count": 1
      },
      "test_gap": true,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Клинико-лабораторные показатели заболеваний при микроскопическом исследовании желудочного сока и жёлчи",
+     "title_en": "Clinical laboratory findings in diseases on microscopic examination of gastric juice and bile"
     },
     {
      "id": "d025-P",
@@ -2609,7 +2707,9 @@
       "pack_quiz_count": 3
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Микроскопическое исследование кала. Клинико-диагностическое значение",
+     "title_en": "Microscopic examination of stool. Clinical diagnostic significance"
     },
     {
      "id": "d025-L",
@@ -2662,7 +2762,9 @@
       "pack_quiz_count": 3
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Микроскопическое исследование кала. Клинико-диагностическое значение",
+     "title_en": "Microscopic examination of stool. Clinical diagnostic significance"
     },
     {
      "id": "d026-P",
@@ -2713,7 +2815,9 @@
       "pack_quiz_count": 2
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Микроскопическое исследование кала. Клинико-диагностическое значение (2-й день)",
+     "title_en": "Microscopic examination of stool. Clinical diagnostic significance (day 2)"
     },
     {
      "id": "d027-P",
@@ -2779,7 +2883,9 @@
       "pack_quiz_count": 8
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Исследование мочи. Клинико-диагностическое значение",
+     "title_en": "Urine testing. Clinical diagnostic significance"
     },
     {
      "id": "d027-L",
@@ -2845,7 +2951,9 @@
       "pack_quiz_count": 8
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Исследование мочи. Клинико-диагностическое значение",
+     "title_en": "Urine testing. Clinical diagnostic significance"
     },
     {
      "id": "d028-P",
@@ -2911,7 +3019,9 @@
       "pack_quiz_count": 8
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Исследование мочи. Клинико-диагностическое значение (2-й день)",
+     "title_en": "Urine testing. Clinical diagnostic significance (day 2)"
     },
     {
      "id": "d029-P",
@@ -2960,7 +3070,9 @@
       "pack_quiz_count": 2
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Исследование мокроты при бронхиальной астме, пневмонии, бронхите и других заболеваниях дыхательных путей",
+     "title_en": "Sputum examination in bronchial asthma, pneumonia, bronchitis and other respiratory diseases"
     },
     {
      "id": "d029-L",
@@ -3009,7 +3121,9 @@
       "pack_quiz_count": 2
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Исследование мокроты при бронхиальной астме, пневмонии, бронхите и других заболеваниях дыхательных путей",
+     "title_en": "Sputum examination in bronchial asthma, pneumonia, bronchitis and other respiratory diseases"
     },
     {
      "id": "d030-P",
@@ -3059,7 +3173,9 @@
       "pack_quiz_count": 2
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Исследование мокроты при туберкулёзе и его клинико-диагностическое значение",
+     "title_en": "Sputum examination in tuberculosis and its clinical diagnostic significance"
     },
     {
      "id": "d030-L",
@@ -3109,7 +3225,9 @@
       "pack_quiz_count": 2
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Исследование мокроты при туберкулёзе и его клинико-диагностическое значение",
+     "title_en": "Sputum examination in tuberculosis and its clinical diagnostic significance"
     },
     {
      "id": "d031-P",
@@ -3159,7 +3277,9 @@
       "pack_quiz_count": 2
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Исследование мокроты при туберкулёзе и его клинико-диагностическое значение (2-й день)",
+     "title_en": "Sputum examination in tuberculosis and its clinical diagnostic significance (day 2)"
     },
     {
      "id": "d032-P",
@@ -3200,7 +3320,9 @@
       "pack_quiz_count": 1
      },
      "test_gap": true,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Клиническая диагностика при исследовании транссудатов и экссудатов",
+     "title_en": "Clinical diagnostics of transudate and exudate examination"
     },
     {
      "id": "d032-L",
@@ -3241,7 +3363,9 @@
       "pack_quiz_count": 1
      },
      "test_gap": true,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Клиническая диагностика при исследовании транссудатов и экссудатов",
+     "title_en": "Clinical diagnostics of transudate and exudate examination"
     },
     {
      "id": "d033-P",
@@ -3278,7 +3402,9 @@
       "pack_quiz_count": 1
      },
      "test_gap": true,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Лабораторные показатели спинномозговой жидкости при различных заболеваниях",
+     "title_en": "Laboratory findings of cerebrospinal fluid in various diseases"
     },
     {
      "id": "d033-L",
@@ -3315,7 +3441,9 @@
       "pack_quiz_count": 1
      },
      "test_gap": true,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Лабораторные показатели спинномозговой жидкости при различных заболеваниях",
+     "title_en": "Laboratory findings of cerebrospinal fluid in various diseases"
     },
     {
      "id": "d034-A",
@@ -3383,13 +3511,17 @@
       "pack_quiz_count": 2
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Аттестация 4. По модулю «Общеклинические методы исследования»",
+     "title_en": "Assessment 4. Module: General clinical testing methods"
     }
    ]
   },
   {
    "id": "M5",
    "title_uz": "Sitologik tekshiruv usullari",
+   "title_ru": "Цитологические методы исследования",
+   "title_en": "Cytological testing methods",
    "hours": {
     "lecture": 2,
     "practical": 22,
@@ -3456,7 +3588,9 @@
       "pack_quiz_count": 4
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Цитологические методы исследования. Микроскопическое исследование выделений женских половых органов. Окраска мазков по Граму, Романовскому и метиленовым синим",
+     "title_en": "Cytological testing methods. Microscopic examination of female genital discharge. Staining smears with Gram, Romanowsky and methylene blue"
     },
     {
      "id": "d036-P",
@@ -3516,7 +3650,9 @@
       "pack_quiz_count": 4
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Опухоли. Общие сведения об онкомаркерах. Цитодиагностика злокачественных опухолей",
+     "title_en": "Tumors. General information on tumor markers. Cytodiagnosis of malignant tumors"
     },
     {
      "id": "d036-L",
@@ -3576,7 +3712,9 @@
       "pack_quiz_count": 4
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Опухоли. Общие сведения об онкомаркерах. Цитодиагностика злокачественных опухолей",
+     "title_en": "Tumors. General information on tumor markers. Cytodiagnosis of malignant tumors"
     },
     {
      "id": "d037-P",
@@ -3634,7 +3772,9 @@
       "pack_quiz_count": 2
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Цитодиагностика злокачественных опухолей шейки матки и матки",
+     "title_en": "Cytodiagnosis of malignant tumors of the cervix and uterus"
     },
     {
      "id": "d038-P",
@@ -3674,7 +3814,9 @@
       "pack_quiz_count": 2
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Цитодиагностика опухолей органов дыхания",
+     "title_en": "Cytodiagnosis of respiratory tract tumors"
     },
     {
      "id": "d039-A",
@@ -3747,13 +3889,17 @@
       "pack_quiz_count": 2
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Аттестация 5. По модулю «Цитологические методы исследования»",
+     "title_en": "Assessment 5. Module: Cytological testing methods"
     }
    ]
   },
   {
    "id": "M6",
    "title_uz": "Klinik biokimyodan umumiy masalalar",
+   "title_ru": "Общие вопросы клинической биохимии",
+   "title_en": "General topics in clinical biochemistry",
    "hours": {
     "lecture": 12,
     "practical": 66,
@@ -3798,7 +3944,9 @@
       "pack_quiz_count": 0
      },
      "test_gap": true,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Общие вопросы клинической биохимии. Физико-химические и химические методы (хроматография, спектрометрия, фотометрия)",
+     "title_en": "General topics in clinical biochemistry. Physicochemical and chemical methods (chromatography, spectrometry, photometry)"
     },
     {
      "id": "d041-P",
@@ -3835,7 +3983,9 @@
       "pack_quiz_count": 0
      },
      "test_gap": true,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Принципы работы биохимического полуавтоматического анализатора Mindray BA-88A. Программирование биохимического анализатора",
+     "title_en": "Operating principles of the Mindray BA-88A semi-automated biochemistry analyzer. Programming the biochemistry analyzer"
     },
     {
      "id": "d042-P",
@@ -3899,7 +4049,9 @@
       "pack_quiz_count": 4
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Классификация аминокислот. Простые и сложные белки",
+     "title_en": "Classification of amino acids. Simple and conjugated proteins"
     },
     {
      "id": "d042-L",
@@ -3963,7 +4115,9 @@
       "pack_quiz_count": 4
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Классификация аминокислот. Простые и сложные белки",
+     "title_en": "Classification of amino acids. Simple and conjugated proteins"
     },
     {
      "id": "d043-P",
@@ -4027,7 +4181,9 @@
       "pack_quiz_count": 5
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Обмен пигментов. Образование билирубина",
+     "title_en": "Pigment metabolism. Bilirubin formation"
     },
     {
      "id": "d043-L",
@@ -4091,7 +4247,9 @@
       "pack_quiz_count": 5
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Обмен пигментов. Образование билирубина",
+     "title_en": "Pigment metabolism. Bilirubin formation"
     },
     {
      "id": "d044-P",
@@ -4159,7 +4317,9 @@
       "pack_quiz_count": 0
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Углеводы: классификация, биологическое значение. Всасывание углеводов в желудочно-кишечном тракте",
+     "title_en": "Carbohydrates: classification and biological significance. Carbohydrate absorption in the gastrointestinal tract"
     },
     {
      "id": "d044-L",
@@ -4227,7 +4387,9 @@
       "pack_quiz_count": 0
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Углеводы: классификация, биологическое значение. Всасывание углеводов в желудочно-кишечном тракте",
+     "title_en": "Carbohydrates: classification and biological significance. Carbohydrate absorption in the gastrointestinal tract"
     },
     {
      "id": "d045-P",
@@ -4320,7 +4482,9 @@
       "pack_quiz_count": 9
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Диагностика сахарного диабета",
+     "title_en": "Diagnosis of diabetes mellitus"
     },
     {
      "id": "d046-P",
@@ -4408,7 +4572,9 @@
       "pack_quiz_count": 11
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Строение, классификация и биологическая роль липидов",
+     "title_en": "Structure, classification and biological role of lipids"
     },
     {
      "id": "d046-L",
@@ -4496,7 +4662,9 @@
       "pack_quiz_count": 11
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Строение, классификация и биологическая роль липидов",
+     "title_en": "Structure, classification and biological role of lipids"
     },
     {
      "id": "d047-P",
@@ -4565,7 +4733,9 @@
       "pack_quiz_count": 12
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Водно-солевой обмен и его нарушения",
+     "title_en": "Water-electrolyte metabolism and its disorders"
     },
     {
      "id": "d047-L",
@@ -4634,7 +4804,9 @@
       "pack_quiz_count": 12
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Водно-солевой обмен и его нарушения",
+     "title_en": "Water-electrolyte metabolism and its disorders"
     },
     {
      "id": "d048-P",
@@ -4724,7 +4896,9 @@
       "pack_quiz_count": 18
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Ферменты: строение и классификация",
+     "title_en": "Enzymes: structure and classification"
     },
     {
      "id": "d048-L",
@@ -4814,7 +4988,9 @@
       "pack_quiz_count": 18
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Ферменты: строение и классификация",
+     "title_en": "Enzymes: structure and classification"
     },
     {
      "id": "d049-P",
@@ -4897,7 +5073,9 @@
       "pack_quiz_count": 10
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Исследование печёночных ферментов",
+     "title_en": "Testing of liver enzymes"
     },
     {
      "id": "d050-P",
@@ -4951,7 +5129,9 @@
       "pack_quiz_count": 5
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Исследование ферментов лактатдегидрогеназы и щелочной фосфатазы",
+     "title_en": "Testing of lactate dehydrogenase and alkaline phosphatase enzymes"
     },
     {
      "id": "d051-P",
@@ -5001,7 +5181,9 @@
       "pack_quiz_count": 4
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Витамины. Клинико-диагностическое значение исследования витаминов B12 и D",
+     "title_en": "Vitamins. Clinical diagnostic significance of vitamin B12 and D testing"
     },
     {
      "id": "d052-P",
@@ -5051,7 +5233,9 @@
       "pack_quiz_count": 4
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Витамины. Клинико-диагностическое значение исследования витаминов B12 и D (2-й день)",
+     "title_en": "Vitamins. Clinical diagnostic significance of vitamin B12 and D testing (day 2)"
     },
     {
      "id": "d053-A",
@@ -5122,13 +5306,17 @@
       "pack_quiz_count": 0
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Аттестация 6. По модулю «Общие вопросы клинической биохимии»",
+     "title_en": "Assessment 6. Module: General topics in clinical biochemistry"
     }
    ]
   },
   {
    "id": "M7",
    "title_uz": "Klinik biokimyo va biokimyoviy tekshirish usullari",
+   "title_ru": "Клиническая биохимия и биохимические методы исследования",
+   "title_en": "Clinical biochemistry and biochemical testing methods",
    "hours": {
     "lecture": 12,
     "practical": 108,
@@ -5197,7 +5385,9 @@
       "pack_quiz_count": 4
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Клиническая биохимия и биохимические методы исследования. Методы определения общего белка и альбумина. Клинико-диагностическое значение",
+     "title_en": "Clinical biochemistry and biochemical testing methods. Methods for total protein and albumin determination. Clinical diagnostic significance"
     },
     {
      "id": "d055-P",
@@ -5259,7 +5449,9 @@
       "pack_quiz_count": 8
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Азотемии. Клинико-диагностическое значение",
+     "title_en": "Azotemias. Clinical diagnostic significance"
     },
     {
      "id": "d055-L",
@@ -5321,7 +5513,9 @@
       "pack_quiz_count": 8
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Азотемии. Клинико-диагностическое значение",
+     "title_en": "Azotemias. Clinical diagnostic significance"
     },
     {
      "id": "d056-P",
@@ -5367,7 +5561,9 @@
       "pack_quiz_count": 2
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Методы определения мочевины. Клинико-диагностическое значение",
+     "title_en": "Methods for urea determination. Clinical diagnostic significance"
     },
     {
      "id": "d057-P",
@@ -5413,7 +5609,9 @@
       "pack_quiz_count": 4
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Методы определения креатинина. Клинико-диагностическое значение",
+     "title_en": "Methods for creatinine determination. Clinical diagnostic significance"
     },
     {
      "id": "d058-P",
@@ -5471,7 +5669,9 @@
       "pack_quiz_count": 5
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Методы определения билирубина. Клинико-диагностическое значение",
+     "title_en": "Methods for bilirubin determination. Clinical diagnostic significance"
     },
     {
      "id": "d058-L",
@@ -5529,7 +5729,9 @@
       "pack_quiz_count": 5
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Методы определения билирубина. Клинико-диагностическое значение",
+     "title_en": "Methods for bilirubin determination. Clinical diagnostic significance"
     },
     {
      "id": "d059-P",
@@ -5603,7 +5805,9 @@
       "pack_quiz_count": 2
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Методы определения глюкозы. Глюкозотолерантный тест. Клинико-диагностическое значение",
+     "title_en": "Methods for glucose determination. Glucose tolerance test. Clinical diagnostic significance"
     },
     {
      "id": "d060-P",
@@ -5651,7 +5855,9 @@
       "pack_quiz_count": 4
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Определение гликированного гемоглобина. Клинико-диагностическое значение",
+     "title_en": "Glycated hemoglobin determination. Clinical diagnostic significance"
     },
     {
      "id": "d061-P",
@@ -5730,7 +5936,9 @@
       "pack_quiz_count": 9
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Методы определения трансаминаз и амилазы. Клинико-диагностическое значение",
+     "title_en": "Methods for transaminase and amylase determination. Clinical diagnostic significance"
     },
     {
      "id": "d061-L",
@@ -5809,7 +6017,9 @@
       "pack_quiz_count": 9
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Методы определения трансаминаз и амилазы. Клинико-диагностическое значение",
+     "title_en": "Methods for transaminase and amylase determination. Clinical diagnostic significance"
     },
     {
      "id": "d062-P",
@@ -5878,7 +6088,9 @@
       "pack_quiz_count": 5
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Методы определения щелочной фосфатазы и γ-ГТ. Клинико-диагностическое значение исследования",
+     "title_en": "Methods for alkaline phosphatase and γ-GT determination. Clinical diagnostic significance of testing"
     },
     {
      "id": "d063-P",
@@ -5920,7 +6132,9 @@
       "pack_quiz_count": 0
      },
      "test_gap": false,
-     "oral_gap": true
+     "oral_gap": true,
+     "title_ru": "Кислотно-основное равновесие. Буферные системы",
+     "title_en": "Acid-base balance. Buffer systems"
     },
     {
      "id": "d063-L",
@@ -5962,7 +6176,9 @@
       "pack_quiz_count": 0
      },
      "test_gap": false,
-     "oral_gap": true
+     "oral_gap": true,
+     "title_ru": "Кислотно-основное равновесие. Буферные системы",
+     "title_en": "Acid-base balance. Buffer systems"
     },
     {
      "id": "d064-P",
@@ -6004,7 +6220,9 @@
       "pack_quiz_count": 0
      },
      "test_gap": false,
-     "oral_gap": true
+     "oral_gap": true,
+     "title_ru": "Кислотно-основное равновесие. Буферные системы (2-й день)",
+     "title_en": "Acid-base balance. Buffer systems (day 2)"
     },
     {
      "id": "d065-P",
@@ -6078,7 +6296,9 @@
       "pack_quiz_count": 8
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Определение общего холестерина. Клинико-диагностическое значение",
+     "title_en": "Total cholesterol determination. Clinical diagnostic significance"
     },
     {
      "id": "d066-P",
@@ -6137,7 +6357,9 @@
       "pack_quiz_count": 4
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Методы определения триглицеридов. Клинико-диагностическое значение",
+     "title_en": "Methods for triglyceride determination. Clinical diagnostic significance"
     },
     {
      "id": "d067-P",
@@ -6193,7 +6415,9 @@
       "pack_quiz_count": 6
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Методы определения натрия, калия, кальция. Клинико-диагностическое значение",
+     "title_en": "Methods for sodium, potassium and calcium determination. Clinical diagnostic significance"
     },
     {
      "id": "d068-P",
@@ -6250,7 +6474,9 @@
       "pack_quiz_count": 2
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Методы определения железа. Клинико-диагностическое значение",
+     "title_en": "Methods for iron determination. Clinical diagnostic significance"
     },
     {
      "id": "d069-P",
@@ -6300,7 +6526,9 @@
       "pack_quiz_count": 5
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Белки острой фазы",
+     "title_en": "Acute-phase proteins"
     },
     {
      "id": "d069-L",
@@ -6350,7 +6578,9 @@
       "pack_quiz_count": 5
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Белки острой фазы",
+     "title_en": "Acute-phase proteins"
     },
     {
      "id": "d070-P",
@@ -6395,7 +6625,9 @@
       "pack_quiz_count": 4
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Определение СРБ, РФ, АСЛО. Клинико-диагностическое значение",
+     "title_en": "CRP, RF and ASO determination. Clinical diagnostic significance"
     },
     {
      "id": "d071-P",
@@ -6460,7 +6692,9 @@
       "pack_quiz_count": 7
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Биохимические маркеры инфаркта миокарда и факторы риска",
+     "title_en": "Biochemical markers of myocardial infarction and risk factors"
     },
     {
      "id": "d072-P",
@@ -6498,7 +6732,9 @@
       "pack_quiz_count": 2
      },
      "test_gap": true,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Лабораторная диагностика подагры. Определение мочевой кислоты",
+     "title_en": "Laboratory diagnosis of gout. Uric acid determination"
     },
     {
      "id": "d073-P",
@@ -6590,7 +6826,9 @@
       "pack_quiz_count": 12
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Современные представления о гемостазе",
+     "title_en": "Modern concepts of hemostasis"
     },
     {
      "id": "d073-L",
@@ -6682,7 +6920,9 @@
       "pack_quiz_count": 12
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Современные представления о гемостазе",
+     "title_en": "Modern concepts of hemostasis"
     },
     {
      "id": "d074-A",
@@ -6762,13 +7002,17 @@
       "pack_quiz_count": 4
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Аттестация 7. По модулю «Клиническая биохимия и биохимические методы исследования»",
+     "title_en": "Assessment 7. Module: Clinical biochemistry and biochemical testing methods"
     }
    ]
   },
   {
    "id": "M8",
    "title_uz": "Turli kasalliklar laborator diagnostikasi",
+   "title_ru": "Лабораторная диагностика различных заболеваний",
+   "title_en": "Laboratory diagnostics of various diseases",
    "hours": {
     "lecture": 10,
     "practical": 74,
@@ -6837,7 +7081,9 @@
       "pack_quiz_count": 10
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Лабораторная диагностика различных заболеваний. ДВС-синдром (диссеминированное внутрисосудистое свёртывание крови) и клинико-лабораторные исследования при нём",
+     "title_en": "Laboratory diagnostics of various diseases. Disseminated intravascular coagulation (DIC) syndrome and related clinical laboratory tests"
     },
     {
      "id": "d075-L",
@@ -6897,7 +7143,9 @@
       "pack_quiz_count": 10
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Лабораторная диагностика различных заболеваний. ДВС-синдром (диссеминированное внутрисосудистое свёртывание крови) и клинико-лабораторные исследования при нём",
+     "title_en": "Laboratory diagnostics of various diseases. Disseminated intravascular coagulation (DIC) syndrome and related clinical laboratory tests"
     },
     {
      "id": "d076-P",
@@ -6934,7 +7182,9 @@
       "pack_quiz_count": 2
      },
      "test_gap": true,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Лабораторная диагностика аллергических заболеваний",
+     "title_en": "Laboratory diagnostics of allergic diseases"
     },
     {
      "id": "d077-P",
@@ -6982,7 +7232,9 @@
       "pack_quiz_count": 3
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Лабораторная диагностика инфекций, передаваемых половым путём. Реакция Вассермана",
+     "title_en": "Laboratory diagnostics of sexually transmitted infections. Wassermann reaction"
     },
     {
      "id": "d078-P",
@@ -7023,7 +7275,9 @@
       "pack_quiz_count": 1
      },
      "test_gap": true,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Лабораторная диагностика малярии",
+     "title_en": "Laboratory diagnosis of malaria"
     },
     {
      "id": "d078-L",
@@ -7064,7 +7318,9 @@
       "pack_quiz_count": 1
      },
      "test_gap": true,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Лабораторная диагностика малярии",
+     "title_en": "Laboratory diagnosis of malaria"
     },
     {
      "id": "d079-P",
@@ -7099,7 +7355,9 @@
       "pack_quiz_count": 1
      },
      "test_gap": true,
-     "oral_gap": true
+     "oral_gap": true,
+     "title_ru": "ВИЧ-инфекция. Клинико-лабораторные методы исследования. Клинико-диагностическое значение",
+     "title_en": "HIV infection. Clinical laboratory testing methods. Clinical diagnostic significance"
     },
     {
      "id": "d079-L",
@@ -7134,7 +7392,9 @@
       "pack_quiz_count": 1
      },
      "test_gap": true,
-     "oral_gap": true
+     "oral_gap": true,
+     "title_ru": "ВИЧ-инфекция. Клинико-лабораторные методы исследования. Клинико-диагностическое значение",
+     "title_en": "HIV infection. Clinical laboratory testing methods. Clinical diagnostic significance"
     },
     {
      "id": "d080-P",
@@ -7181,7 +7441,9 @@
       "pack_quiz_count": 2
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Лабораторная диагностика паразитарных заболеваний. Лабораторная диагностика круглых червей (нематод)",
+     "title_en": "Laboratory diagnostics of parasitic diseases. Laboratory diagnostics of roundworms (nematodes)"
     },
     {
      "id": "d080-L",
@@ -7228,7 +7490,9 @@
       "pack_quiz_count": 2
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Лабораторная диагностика паразитарных заболеваний. Лабораторная диагностика круглых червей (нематод)",
+     "title_en": "Laboratory diagnostics of parasitic diseases. Laboratory diagnostics of roundworms (nematodes)"
     },
     {
      "id": "d081-P",
@@ -7268,7 +7532,9 @@
       "pack_quiz_count": 1
      },
      "test_gap": true,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Лабораторная диагностика ленточных червей (цестод). Клинико-диагностическое значение",
+     "title_en": "Laboratory diagnostics of tapeworms (cestodes). Clinical diagnostic significance"
     },
     {
      "id": "d082-P",
@@ -7306,7 +7572,9 @@
       "pack_quiz_count": 1
      },
      "test_gap": true,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Лабораторная диагностика сосальщиков (трематод). Клинико-диагностическое значение",
+     "title_en": "Laboratory diagnostics of flukes (trematodes). Clinical diagnostic significance"
     },
     {
      "id": "d083-P",
@@ -7342,7 +7610,9 @@
       "pack_quiz_count": 0
      },
      "test_gap": true,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Лабораторная диагностика TORCH-инфекций. Клинико-диагностическое значение",
+     "title_en": "Laboratory diagnostics of TORCH infections. Clinical diagnostic significance"
     },
     {
      "id": "d083-L",
@@ -7378,7 +7648,9 @@
       "pack_quiz_count": 0
      },
      "test_gap": true,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Лабораторная диагностика TORCH-инфекций. Клинико-диагностическое значение",
+     "title_en": "Laboratory diagnostics of TORCH infections. Clinical diagnostic significance"
     },
     {
      "id": "d084-P",
@@ -7436,7 +7708,9 @@
       "pack_quiz_count": 9
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Гематологические анализаторы в клинической лабораторной диагностике",
+     "title_en": "Hematology analyzers in clinical laboratory diagnostics"
     },
     {
      "id": "d085-P",
@@ -7472,7 +7746,9 @@
       "pack_quiz_count": 0
      },
      "test_gap": true,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Анализаторы СОЭ (скорости оседания эритроцитов) в клинической лабораторной диагностике",
+     "title_en": "ESR (erythrocyte sedimentation rate) analyzers in clinical laboratory diagnostics"
     },
     {
      "id": "d086-P",
@@ -7509,7 +7785,9 @@
       "pack_quiz_count": 0
      },
      "test_gap": true,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Биохимические анализаторы в клинической лабораторной диагностике",
+     "title_en": "Biochemistry analyzers in clinical laboratory diagnostics"
     },
     {
      "id": "d087-P",
@@ -7550,7 +7828,9 @@
       "pack_quiz_count": 2
      },
      "test_gap": true,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Анализаторы мочи в клинической лабораторной диагностике",
+     "title_en": "Urine analyzers in clinical laboratory diagnostics"
     },
     {
      "id": "d088-P",
@@ -7599,7 +7879,9 @@
       "pack_quiz_count": 6
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Коагулометрические анализаторы в клинической лабораторной диагностике",
+     "title_en": "Coagulation analyzers in clinical laboratory diagnostics"
     },
     {
      "id": "d089-A",
@@ -7654,13 +7936,17 @@
       "pack_quiz_count": 2
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Аттестация 8. По модулю «Лабораторная диагностика различных заболеваний»",
+     "title_en": "Assessment 8. Module: Laboratory diagnostics of various diseases"
     }
    ]
   },
   {
    "id": "M9",
    "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+   "title_ru": "Практическое освоение лабораторных методов исследования",
+   "title_en": "Hands-on practice of laboratory testing methods",
    "hours": {
     "lecture": 48,
     "practical": 270,
@@ -7752,7 +8038,9 @@
       "pack_quiz_count": 13
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Практическое освоение общего анализа крови",
+     "title_en": "Hands-on practice of the complete blood count"
     },
     {
      "id": "d091-P",
@@ -7771,7 +8059,9 @@
       "gap": false
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Практическое освоение лабораторных методов исследования",
+     "title_en": "Hands-on practice of laboratory testing methods"
     },
     {
      "id": "d092-P",
@@ -7790,7 +8080,9 @@
       "gap": false
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Практическое освоение лабораторных методов исследования",
+     "title_en": "Hands-on practice of laboratory testing methods"
     },
     {
      "id": "d093-P",
@@ -7809,7 +8101,9 @@
       "gap": false
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Практическое освоение лабораторных методов исследования",
+     "title_en": "Hands-on practice of laboratory testing methods"
     },
     {
      "id": "d094-P",
@@ -7828,7 +8122,9 @@
       "gap": false
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Практическое освоение лабораторных методов исследования",
+     "title_en": "Hands-on practice of laboratory testing methods"
     },
     {
      "id": "d095-L",
@@ -7885,7 +8181,9 @@
       "pack_quiz_count": 10
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Практическое освоение лейкоцитарной формулы",
+     "title_en": "Hands-on practice of the differential leukocyte count"
     },
     {
      "id": "d096-P",
@@ -7904,7 +8202,9 @@
       "gap": false
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Практическое освоение лабораторных методов исследования",
+     "title_en": "Hands-on practice of laboratory testing methods"
     },
     {
      "id": "d097-P",
@@ -7923,7 +8223,9 @@
       "gap": false
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Практическое освоение лабораторных методов исследования",
+     "title_en": "Hands-on practice of laboratory testing methods"
     },
     {
      "id": "d098-P",
@@ -7942,7 +8244,9 @@
       "gap": false
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Практическое освоение лабораторных методов исследования",
+     "title_en": "Hands-on practice of laboratory testing methods"
     },
     {
      "id": "d099-P",
@@ -7961,7 +8265,9 @@
       "gap": false
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Практическое освоение лабораторных методов исследования",
+     "title_en": "Hands-on practice of laboratory testing methods"
     },
     {
      "id": "d100-P",
@@ -7980,7 +8286,9 @@
       "gap": false
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Практическое освоение лабораторных методов исследования",
+     "title_en": "Hands-on practice of laboratory testing methods"
     },
     {
      "id": "d101-L",
@@ -8033,7 +8341,9 @@
       "pack_quiz_count": 4
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Практическое освоение общего анализа мочи",
+     "title_en": "Hands-on practice of routine urinalysis"
     },
     {
      "id": "d102-P",
@@ -8052,7 +8362,9 @@
       "gap": false
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Практическое освоение лабораторных методов исследования",
+     "title_en": "Hands-on practice of laboratory testing methods"
     },
     {
      "id": "d103-P",
@@ -8071,7 +8383,9 @@
       "gap": false
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Практическое освоение лабораторных методов исследования",
+     "title_en": "Hands-on practice of laboratory testing methods"
     },
     {
      "id": "d104-P",
@@ -8090,7 +8404,9 @@
       "gap": false
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Практическое освоение лабораторных методов исследования",
+     "title_en": "Hands-on practice of laboratory testing methods"
     },
     {
      "id": "d105-P",
@@ -8109,7 +8425,9 @@
       "gap": false
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Практическое освоение лабораторных методов исследования",
+     "title_en": "Hands-on practice of laboratory testing methods"
     },
     {
      "id": "d106-L",
@@ -8157,7 +8475,9 @@
       "pack_quiz_count": 2
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Практическое освоение общего анализа мокроты",
+     "title_en": "Hands-on practice of routine sputum analysis"
     },
     {
      "id": "d107-P",
@@ -8176,7 +8496,9 @@
       "gap": false
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Практическое освоение лабораторных методов исследования",
+     "title_en": "Hands-on practice of laboratory testing methods"
     },
     {
      "id": "d108-P",
@@ -8195,7 +8517,9 @@
       "gap": false
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Практическое освоение лабораторных методов исследования",
+     "title_en": "Hands-on practice of laboratory testing methods"
     },
     {
      "id": "d109-P",
@@ -8214,7 +8538,9 @@
       "gap": false
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Практическое освоение лабораторных методов исследования",
+     "title_en": "Hands-on practice of laboratory testing methods"
     },
     {
      "id": "d110-P",
@@ -8233,7 +8559,9 @@
       "gap": false
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Практическое освоение лабораторных методов исследования",
+     "title_en": "Hands-on practice of laboratory testing methods"
     },
     {
      "id": "d111-P",
@@ -8252,7 +8580,9 @@
       "gap": false
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Практическое освоение лабораторных методов исследования",
+     "title_en": "Hands-on practice of laboratory testing methods"
     },
     {
      "id": "d112-L",
@@ -8302,7 +8632,9 @@
       "pack_quiz_count": 2
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Практическое освоение общего анализа кала (копрограммы)",
+     "title_en": "Hands-on practice of routine stool analysis (coprogram)"
     },
     {
      "id": "d113-P",
@@ -8321,7 +8653,9 @@
       "gap": false
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Практическое освоение лабораторных методов исследования",
+     "title_en": "Hands-on practice of laboratory testing methods"
     },
     {
      "id": "d114-P",
@@ -8340,7 +8674,9 @@
       "gap": false
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Практическое освоение лабораторных методов исследования",
+     "title_en": "Hands-on practice of laboratory testing methods"
     },
     {
      "id": "d115-P",
@@ -8359,7 +8695,9 @@
       "gap": false
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Практическое освоение лабораторных методов исследования",
+     "title_en": "Hands-on practice of laboratory testing methods"
     },
     {
      "id": "d116-L",
@@ -8396,7 +8734,9 @@
       "pack_quiz_count": 0
      },
      "test_gap": true,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Практическое освоение принципов работы биохимического полуавтоматического анализатора Mindray BA-88A и его программирования",
+     "title_en": "Hands-on practice with the operating principles and programming of the Mindray BA-88A semi-automated biochemistry analyzer"
     },
     {
      "id": "d117-P",
@@ -8415,7 +8755,9 @@
       "gap": false
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Практическое освоение лабораторных методов исследования",
+     "title_en": "Hands-on practice of laboratory testing methods"
     },
     {
      "id": "d118-P",
@@ -8434,7 +8776,9 @@
       "gap": false
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Практическое освоение лабораторных методов исследования",
+     "title_en": "Hands-on practice of laboratory testing methods"
     },
     {
      "id": "d119-P",
@@ -8453,7 +8797,9 @@
       "gap": false
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Практическое освоение лабораторных методов исследования",
+     "title_en": "Hands-on practice of laboratory testing methods"
     },
     {
      "id": "d120-P",
@@ -8472,7 +8818,9 @@
       "gap": false
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Практическое освоение лабораторных методов исследования",
+     "title_en": "Hands-on practice of laboratory testing methods"
     },
     {
      "id": "d121-L",
@@ -8526,7 +8874,9 @@
       "pack_quiz_count": 5
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Практическое освоение исследования лактатдегидрогеназы и щелочной фосфатазы",
+     "title_en": "Hands-on practice of lactate dehydrogenase and alkaline phosphatase testing"
     },
     {
      "id": "d122-P",
@@ -8545,7 +8895,9 @@
       "gap": false
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Практическое освоение лабораторных методов исследования",
+     "title_en": "Hands-on practice of laboratory testing methods"
     },
     {
      "id": "d123-P",
@@ -8564,7 +8916,9 @@
       "gap": false
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Практическое освоение лабораторных методов исследования",
+     "title_en": "Hands-on practice of laboratory testing methods"
     },
     {
      "id": "d124-P",
@@ -8583,7 +8937,9 @@
       "gap": false
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Практическое освоение лабораторных методов исследования",
+     "title_en": "Hands-on practice of laboratory testing methods"
     },
     {
      "id": "d125-P",
@@ -8602,7 +8958,9 @@
       "gap": false
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Практическое освоение лабораторных методов исследования",
+     "title_en": "Hands-on practice of laboratory testing methods"
     },
     {
      "id": "d126-P",
@@ -8621,7 +8979,9 @@
       "gap": false
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Практическое освоение лабораторных методов исследования",
+     "title_en": "Hands-on practice of laboratory testing methods"
     },
     {
      "id": "d127-L",
@@ -8660,7 +9020,9 @@
       "pack_quiz_count": 3
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Практическое освоение исследования СРБ, РФ, АСЛО",
+     "title_en": "Hands-on practice of CRP, RF and ASO testing"
     },
     {
      "id": "d128-P",
@@ -8679,7 +9041,9 @@
       "gap": false
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Практическое освоение лабораторных методов исследования",
+     "title_en": "Hands-on practice of laboratory testing methods"
     },
     {
      "id": "d129-P",
@@ -8698,7 +9062,9 @@
       "gap": false
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Практическое освоение лабораторных методов исследования",
+     "title_en": "Hands-on practice of laboratory testing methods"
     },
     {
      "id": "d130-P",
@@ -8717,7 +9083,9 @@
       "gap": false
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Практическое освоение лабораторных методов исследования",
+     "title_en": "Hands-on practice of laboratory testing methods"
     },
     {
      "id": "d131-P",
@@ -8736,7 +9104,9 @@
       "gap": false
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Практическое освоение лабораторных методов исследования",
+     "title_en": "Hands-on practice of laboratory testing methods"
     },
     {
      "id": "d132-P",
@@ -8755,7 +9125,9 @@
       "gap": false
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Практическое освоение лабораторных методов исследования",
+     "title_en": "Hands-on practice of laboratory testing methods"
     },
     {
      "id": "d133-P",
@@ -8774,7 +9146,9 @@
       "gap": false
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Практическое освоение лабораторных методов исследования",
+     "title_en": "Hands-on practice of laboratory testing methods"
     },
     {
      "id": "d134-P",
@@ -8793,7 +9167,9 @@
       "gap": false
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Практическое освоение лабораторных методов исследования",
+     "title_en": "Hands-on practice of laboratory testing methods"
     },
     {
      "id": "d135-P",
@@ -8812,7 +9188,9 @@
       "gap": false
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Практическое освоение лабораторных методов исследования",
+     "title_en": "Hands-on practice of laboratory testing methods"
     },
     {
      "id": "d136-P",
@@ -8831,7 +9209,9 @@
       "gap": false
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Практическое освоение лабораторных методов исследования",
+     "title_en": "Hands-on practice of laboratory testing methods"
     },
     {
      "id": "d137-P",
@@ -8850,7 +9230,9 @@
       "gap": false
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Практическое освоение лабораторных методов исследования",
+     "title_en": "Hands-on practice of laboratory testing methods"
     },
     {
      "id": "d138-P",
@@ -8869,7 +9251,9 @@
       "gap": false
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Практическое освоение лабораторных методов исследования",
+     "title_en": "Hands-on practice of laboratory testing methods"
     },
     {
      "id": "d139-P",
@@ -8888,7 +9272,9 @@
       "gap": false
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Практическое освоение лабораторных методов исследования",
+     "title_en": "Hands-on practice of laboratory testing methods"
     },
     {
      "id": "d140-P",
@@ -8907,7 +9293,9 @@
       "gap": false
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Практическое освоение лабораторных методов исследования",
+     "title_en": "Hands-on practice of laboratory testing methods"
     },
     {
      "id": "d141-P",
@@ -8926,7 +9314,9 @@
       "gap": false
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Практическое освоение лабораторных методов исследования",
+     "title_en": "Hands-on practice of laboratory testing methods"
     },
     {
      "id": "d142-P",
@@ -8945,7 +9335,9 @@
       "gap": false
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Практическое освоение лабораторных методов исследования",
+     "title_en": "Hands-on practice of laboratory testing methods"
     },
     {
      "id": "d143-A",
@@ -9019,7 +9411,9 @@
       "pack_quiz_count": 0
      },
      "test_gap": false,
-     "oral_gap": false
+     "oral_gap": false,
+     "title_ru": "Аттестация. Практическое освоение лабораторных методов исследования (итоговая)",
+     "title_en": "Assessment. Hands-on practice of laboratory testing methods (final)"
     }
    ]
   }
