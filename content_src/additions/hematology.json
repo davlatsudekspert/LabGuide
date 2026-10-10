@@ -7364,28 +7364,28 @@
     "en": "According to WHO (2024), below which hemoglobin level is a non-pregnant woman aged 15–65 considered anemic?"
    },
    "basis": {
-    "uz": "JSST 2-jadvali: homilador bo‘lmagan ayollar < 120 g/L, erkaklar < 130 g/L, homiladorlik I va III trimestrlari < 110 g/L.",
-    "ru": "Таблица 2 ВОЗ: небеременные женщины < 120 г/л, мужчины < 130 г/л, I и III триместры беременности < 110 г/л.",
-    "en": "WHO Table 2: non-pregnant women < 120 g/L, men < 130 g/L, first and third trimesters < 110 g/L."
+    "uz": "JSST 2-jadvali: homilador bo‘lmagan ayollar < 120 g/L (12,0 g/dL), erkaklar < 130 g/L (13,0 g/dL), homiladorlik I va III trimestrlari < 110 g/L (11,0 g/dL).",
+    "ru": "Таблица 2 ВОЗ: небеременные женщины < 120 г/л (12,0 г/дл), мужчины < 130 г/л (13,0 г/дл), I и III триместры беременности < 110 г/л (11,0 г/дл).",
+    "en": "WHO Table 2: non-pregnant women < 120 g/L (12.0 g/dL), men < 130 g/L (13.0 g/dL), first and third trimesters < 110 g/L (11.0 g/dL)."
    },
    "options": [
     {
      "text": {
-      "uz": "< 120 g/L",
-      "ru": "< 120 г/л",
-      "en": "< 120 g/L"
+      "uz": "< 120 g/L (12,0 g/dL)",
+      "ru": "< 120 г/л (12,0 г/дл)",
+      "en": "< 120 g/L (12.0 g/dL)"
      },
      "explanation": {
-      "uz": "To‘g‘ri: 15–65 yoshli homilador bo‘lmagan ayollar uchun chegara 120 g/L.",
-      "ru": "Верно: для небеременных женщин 15–65 лет порог — 120 г/л.",
-      "en": "Correct: the cutoff for non-pregnant women aged 15–65 is 120 g/L."
+      "uz": "To‘g‘ri: 15–65 yoshli homilador bo‘lmagan ayollar uchun chegara 120 g/L (12,0 g/dL).",
+      "ru": "Верно: для небеременных женщин 15–65 лет порог — 120 г/л (12,0 г/дл).",
+      "en": "Correct: the cutoff for non-pregnant women aged 15–65 is 120 g/L (12.0 g/dL)."
      }
     },
     {
      "text": {
-      "uz": "< 130 g/L",
-      "ru": "< 130 г/л",
-      "en": "< 130 g/L"
+      "uz": "< 130 g/L (13,0 g/dL)",
+      "ru": "< 130 г/л (13,0 г/дл)",
+      "en": "< 130 g/L (13.0 g/dL)"
      },
      "explanation": {
       "uz": "Bu 15–65 yoshli erkaklar uchun chegara.",
@@ -7395,9 +7395,9 @@
     },
     {
      "text": {
-      "uz": "< 110 g/L",
-      "ru": "< 110 г/л",
-      "en": "< 110 g/L"
+      "uz": "< 110 g/L (11,0 g/dL)",
+      "ru": "< 110 г/л (11,0 г/дл)",
+      "en": "< 110 g/L (11.0 g/dL)"
      },
      "explanation": {
       "uz": "Bu homiladorlikning I va III trimestrlari uchun chegara.",
@@ -7405,7 +7405,16 @@
       "en": "That is the cutoff for the first and third trimesters of pregnancy."
      }
     }
-   ]
+   ],
+   "review": {
+    "agent_checks": [
+     {
+      "date": "2026-10-10",
+      "scope": "dual units: SI first, conventional in parentheses; values computed by tool/content/quiz_dual_units.py with analyte-specific factors; source numbers kept; answer key unchanged",
+      "report": "docs/QUIZ_UNITS_2026-10-10.md"
+     }
+    ]
+   }
   },
   {
    "id": "hemoglobin-q2",
@@ -7431,9 +7440,9 @@
     "en": "A patient lives 1,200 m above sea level. What does WHO recommend when assessing anemia?"
    },
    "basis": {
-    "uz": "Balandlik uchun tuzatish (1000–1499 m da 8 g/L) kuzatilgan gemoglobindan ayiriladi yoki anemiya chegarasiga qo‘shiladi.",
-    "ru": "Поправка на высоту (8 г/л для 1000–1499 м) вычитается из гемоглобина пациента или прибавляется к порогу анемии.",
-    "en": "The altitude adjustment (8 g/L for 1000–1499 m) is subtracted from observed hemoglobin or added to the anemia cutoff."
+    "uz": "Balandlik uchun tuzatish — 1000–1499 m da 8 g/L (0,8 g/dL) — kuzatilgan gemoglobindan ayiriladi yoki anemiya chegarasiga qo‘shiladi.",
+    "ru": "Поправка на высоту — 8 г/л (0,8 г/дл) для 1000–1499 м — вычитается из гемоглобина пациента или прибавляется к порогу анемии.",
+    "en": "The altitude adjustment — 8 g/L (0.8 g/dL) for 1000–1499 m — is subtracted from observed hemoglobin or added to the anemia cutoff."
    },
    "options": [
     {
@@ -7450,9 +7459,9 @@
     },
     {
      "text": {
-      "uz": "Tuzatish (8 g/L) chegaraga qo‘shiladi",
-      "ru": "Поправка (8 г/л) добавляется к порогу",
-      "en": "An adjustment (8 g/L) is added to the cutoff"
+      "uz": "Tuzatish — 8 g/L (0,8 g/dL) — chegaraga qo‘shiladi",
+      "ru": "Поправка — 8 г/л (0,8 г/дл) — добавляется к порогу",
+      "en": "An adjustment — 8 g/L (0.8 g/dL) — is added to the cutoff"
      },
      "explanation": {
       "uz": "To‘g‘ri: yoki gemoglobindan ayiriladi — natija bir xil.",
@@ -7472,7 +7481,16 @@
       "en": "Incorrect: WHO recommends venous blood; no adjustment exists for capillary samples."
      }
     }
-   ]
+   ],
+   "review": {
+    "agent_checks": [
+     {
+      "date": "2026-10-10",
+      "scope": "dual units: SI first, conventional in parentheses; values computed by tool/content/quiz_dual_units.py with analyte-specific factors; source numbers kept; answer key unchanged",
+      "report": "docs/QUIZ_UNITS_2026-10-10.md"
+     }
+    ]
+   }
   },
   {
    "id": "hematocrit-q1",
