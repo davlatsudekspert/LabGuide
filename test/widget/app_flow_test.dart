@@ -7,6 +7,8 @@ import 'package:labguide/core/storage/kv_store.dart';
 import 'package:labguide/design/tokens.dart';
 import 'package:labguide/features/auth/otp_auth.dart';
 import 'package:labguide/features/content/ui/analyte_screen.dart';
+import 'package:labguide/features/learn/exam_question.dart'
+    show keepUnitsTogether;
 import 'package:labguide/features/learn/learn_screens.dart';
 import 'package:labguide/features/library/library_screens.dart';
 import 'package:labguide/features/settings/settings_controller.dart';
@@ -292,7 +294,7 @@ void main() {
     // SI ekvivalenti hisoblangan va shunday belgilangan (manbada yo'q).
     expect(find.text(en.analyteSiApprox('5.6–6.9 mmol/L')), findsOneWidget);
     expect(find.text(en.analyteSiApprox('≥ 7.0 mmol/L')), findsOneWidget);
-    expect(find.textContaining('180.156 g/mol'), findsOneWidget);
+    expect(find.textContaining(keepUnitsTogether('180.156 g/mol')), findsOneWidget);
     expect(find.text(en.analyteDecisionNotRef), findsOneWidget);
     expect(find.textContaining('MedlinePlus'), findsWidgets);
     expect(find.textContaining('NIDDK'), findsWidgets);
@@ -551,7 +553,7 @@ void main() {
     await tester.enterText(find.byType(TextField), '126');
     await tapText(tester, en.ucConvert);
     expect(find.text('6.99 mmol/L'), findsOneWidget);
-    expect(find.text(en.ucNote('180.156')), findsOneWidget);
+    expect(find.text(keepUnitsTogether(en.ucNote('180.156'))), findsOneWidget);
     // Kreatinin: laboratoriyalar µmol/L da beradi.
     await goTo(tester, '/tests/analyte/creatinine/units');
     await tester.enterText(find.byType(TextField), '1.2');

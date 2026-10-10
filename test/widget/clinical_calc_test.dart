@@ -209,6 +209,54 @@ void main() {
     expect(find.byType(LgPanel), findsNothing);
   });
 
+  group('profile unit change while a calculator is open', () {
+    // Boshlang'ich birlik ilova ochiq turganda Profil → Birliklar bilan
+    // almashadi; foydalanuvchi kiritgan qiymat/tanlagan birlik buzilmaydi.
+    List<String> chosen(WidgetTester t) => t
+        .widgetList<LgChoiceChip>(find.byType(LgChoiceChip))
+        .where((c) => c.selected)
+        .map((c) => c.label)
+        .toList();
+
+    testWidgets('untouched calculator follows the switch', (tester) async {
+      final s = await makeServices(tester, language: AppLanguage.en);
+      await pumpApp(tester, s, size: const Size(390, 3200));
+      await goTo(tester, '/lab/calculators/osmolality');
+      expect(chosen(tester), ['mmol/L', 'mmol/L']);
+      await s.settings.setUnitSystem(UnitSystem.conventional);
+      await tester.pumpAndSettle();
+      expect(chosen(tester).every((l) => l.startsWith('mg/dL')), isTrue);
+      await s.settings.setUnitSystem(UnitSystem.si);
+      await tester.pumpAndSettle();
+      expect(chosen(tester), ['mmol/L', 'mmol/L']);
+    });
+
+    testWidgets('typed value and picked unit are kept', (tester) async {
+      final s = await makeServices(tester, language: AppLanguage.en);
+      await pumpApp(tester, s, size: const Size(390, 3200));
+      await goTo(tester, '/lab/calculators/osmolality');
+      // Maydonlar: Na, glyukoza, mochevina, o'lchangan. Glyukozaga son kiritildi.
+      await _fill(tester, ['', '5']);
+      await s.settings.setUnitSystem(UnitSystem.conventional);
+      await tester.pumpAndSettle();
+      // Glyukoza (qiymat bor) mmol/L qoldi, mochevina (bo'sh) mg/dL ga o'tdi.
+      final c = chosen(tester);
+      expect(c.first, 'mmol/L');
+      expect(c.last.startsWith('mg/dL'), isTrue);
+      // Foydalanuvchi mochevinani mmol/L ga qaytarib tanladi — keyingi
+      // almashuv unga tegmaydi.
+      final urea = find.text('mmol/L').last;
+      await tester.ensureVisible(urea);
+      await tester.tap(urea);
+      await tester.pumpAndSettle();
+      final afterPick = chosen(tester);
+      await s.settings.setUnitSystem(UnitSystem.si);
+      await s.settings.setUnitSystem(UnitSystem.conventional);
+      await tester.pumpAndSettle();
+      expect(chosen(tester), afterPick);
+    });
+  });
+
   testWidgets('every calculator shows formula, limitations and sources', (
     tester,
   ) async {

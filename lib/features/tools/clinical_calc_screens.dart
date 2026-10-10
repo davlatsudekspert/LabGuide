@@ -162,12 +162,42 @@ class _ClinicalCalcScreenState extends State<ClinicalCalcScreen> {
   // baribir o'zgartira oladi.
   late final Map<CalcField, LabUnit> _unit = {
     for (final s in _specs)
-      if (s.units.isNotEmpty)
-        s.field: defaultUnitFor(
-          s.units,
-          context.services.settings.unitSystem == UnitSystem.conventional,
-        ),
+      if (s.units.isNotEmpty) s.field: _defaultUnit(s),
   };
+
+  /// Foydalanuvchi o'zi birlik tanlagan maydonlar — profil birliklari
+  /// almashganda ularga tegilmaydi.
+  final Set<CalcField> _picked = {};
+  late final SettingsController _settings = context.services.settings;
+
+  LabUnit _defaultUnit(_Spec s) =>
+      defaultUnitFor(s.units, _settings.unitSystem == UnitSystem.conventional);
+
+  @override
+  void initState() {
+    super.initState();
+    _settings.addListener(_onSettings);
+  }
+
+  /// Ilova ochiq turganda Profil → Birliklar almashsa: faqat foydalanuvchi
+  /// tegmagan (birlik tanlamagan va qiymat kiritmagan) maydonlarning
+  /// boshlang'ich birligi yangilanadi.
+  void _onSettings() {
+    var changed = false;
+    for (final s in _specs) {
+      if (s.units.isEmpty || _picked.contains(s.field)) continue;
+      if (_ctrl[s.field]!.text.trim().isNotEmpty) continue;
+      final next = _defaultUnit(s);
+      if (!identical(_unit[s.field], next)) {
+        _unit[s.field] = next;
+        changed = true;
+      }
+    }
+    if (changed && mounted) {
+      setState(() => _outcome = null);
+    }
+  }
+
   Sex? _sex;
   CalcOutcome<Object?>? _outcome;
 
@@ -181,6 +211,7 @@ class _ClinicalCalcScreenState extends State<ClinicalCalcScreen> {
 
   @override
   void dispose() {
+    _settings.removeListener(_onSettings);
     for (final c in _ctrl.values) {
       c.dispose();
     }
@@ -318,6 +349,7 @@ class _ClinicalCalcScreenState extends State<ClinicalCalcScreen> {
                         selected: identical(_unit[s.field], u),
                         onTap: () => setState(() {
                           _unit[s.field] = u;
+                          _picked.add(s.field);
                           _outcome = null;
                         }),
                       ),
