@@ -137,7 +137,7 @@ void main() {
     await s.settings.setRole(AppRole.student);
     await tester.pumpAndSettle();
     expect(y(_uz.libBooks), lessThan(y(_uz.featureSaved)));
-    expect(y(_uz.featureResearch), lessThan(y(_uz.libMoreSections)));
+    expect(y(_uz.researchTitle), lessThan(y(_uz.libMoreSections)));
 
     await s.settings.setRole(AppRole.teacher);
     await tester.pumpAndSettle();
@@ -152,7 +152,7 @@ void main() {
     for (final t in [
       _uz.libBooks,
       _uz.featureSaved,
-      _uz.featureResearch,
+      _uz.researchTitle,
       _uz.libSources,
       _uz.libPacks,
       _uz.libIntake,

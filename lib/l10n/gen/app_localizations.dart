@@ -9850,6 +9850,12 @@ abstract class AppLocalizations {
   /// **'Content is open without an account'**
   String get profileGuestSub;
 
+  /// No description provided for @profileGuestLocal.
+  ///
+  /// In en, this message translates to:
+  /// **'Data stays on this device only'**
+  String get profileGuestLocal;
+
   /// No description provided for @profileDemoSession.
   ///
   /// In en, this message translates to:
@@ -10891,7 +10897,7 @@ abstract class AppLocalizations {
   /// No description provided for @libIntake.
   ///
   /// In en, this message translates to:
-  /// **'How materials are added'**
+  /// **'Adding materials'**
   String get libIntake;
 
   /// No description provided for @libIntakeSub.

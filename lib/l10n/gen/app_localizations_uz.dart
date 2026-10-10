@@ -5642,6 +5642,9 @@ class AppLocalizationsUz extends AppLocalizations {
   String get profileGuestSub => 'Kontent hisobsiz ochiq';
 
   @override
+  String get profileGuestLocal => 'Ma’lumotlar faqat shu qurilmada';
+
+  @override
   String get profileDemoSession => 'Demo sessiya · debug build';
 
   @override
@@ -6217,7 +6220,7 @@ class AppLocalizationsUz extends AppLocalizations {
   }
 
   @override
-  String get libIntake => 'Materiallarni qo‘shish tartibi';
+  String get libIntake => 'Materiallarni qo‘shish';
 
   @override
   String get libIntakeSub =>
