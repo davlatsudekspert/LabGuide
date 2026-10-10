@@ -52,3 +52,6 @@ app.*.map.json
 
 # Agent ish papkalari (worktree)
 .claude/
+
+# Imzolangan AAB (egasi Play Console'ga qo'lda yuklaydi)
+/dist/
