@@ -18,6 +18,12 @@
 #                Play Console'da ilova bo'lmasa / birinchi AAB qo'lda
 #                yuklanmagan bo'lsa — yuklash ogohlantirish bilan o'tadi.
 #                Versiya kodi = run_number (har ishga tushishda oshadi).
+#   deploy_api — FAQAT server: Cloudflare Worker testlari, D1 migratsiyalari
+#                (`labguide-db`), Worker secretlari va `labguide-api` deploy.
+#                Ilova buildlari ishlamaydi. Hisobdagi boshqa Workerlarga
+#                tegilmaydi. CLOUDFLARE_API_TOKEN, CLOUDFLARE_ACCOUNT_ID,
+#                BREVO_API_KEY, LG_SENDER_EMAIL, LG_SERVER_SECRET bo'lmasa —
+#                xatosiz o'tkazib yuboriladi (docs/BACKEND_CLOUDFLARE.md).
 #
 # apple_setup=true (faqat testflight bilan): App Store Connect API orqali
 #   bundle ID ro'yxatdan o'tkaziladi (yo'q bo'lsa) va shu jamoa
@@ -37,9 +43,9 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: "build — imzosiz tekshiruv; testflight — imzo + TestFlight'ga yuklash; play_internal — imzoli AAB + Google Play ichki test"
+        description: "build — imzosiz tekshiruv; testflight — imzo + TestFlight'ga yuklash; play_internal — imzoli AAB + Google Play ichki test; deploy_api — Cloudflare server"
         type: choice
-        options: [build, testflight, play_internal]
+        options: [build, testflight, play_internal, deploy_api]
         default: build
       play_status:
         description: "play_internal uchun reliz holati: draft (yangi/qoralama ilova uchun shart) yoki completed"
@@ -72,6 +78,9 @@ env:
   # Bo'sh bo'lsa build “server ulanmagan” rejimida chiqadi (mehmon ishlaydi).
   LG_SUPABASE_URL: ${{ secrets.LG_SUPABASE_URL }}
   LG_SUPABASE_KEY: ${{ secrets.LG_SUPABASE_KEY }}
+  # Cloudflare Worker API (sir emas; secret yoki repo variable). Berilsa
+  # ilova shu serverga ulanadi (Supabase o'rniga), bo'sh — avvalgi holat.
+  LG_API_URL: ${{ secrets.LG_API_URL || vars.LG_API_URL }}
   # Pro huquqlari: sinov buildlari (build va testflight rejimlari, sinov
   # APK'lari) hamma imkoniyatni ochadi — to'lov hali yoqilmagan. Kelajakdagi
   # do'kon (store/release) rejimida false bo'ladi (docs/PRO_BILLING_PLAN.md).
@@ -79,6 +88,7 @@ env:
 
 jobs:
   tests:
+    if: inputs.mode != 'deploy_api'
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
@@ -102,6 +112,7 @@ jobs:
   # Supabase migratsiyalari va RLS qabul testlari lokal PostgreSQL'da
   # (2 oddiy hisob + admin; statistika, murojaatlar, ruxsatlar, guruhlar).
   backend:
+    if: inputs.mode != 'deploy_api'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -112,8 +123,135 @@ jobs:
           tool/backend_test.sh | tail -3
           echo "- Backend (SQL/RLS) qabul testlari: o'tdi" >> "$GITHUB_STEP_SUMMARY"
 
+  # Cloudflare Worker (cloudflare/): tiplar va vitest (workerd + lokal D1).
+  worker:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: cloudflare
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: cloudflare/package-lock.json
+      - name: Worker testlari
+        run: |
+          set -euo pipefail
+          npm ci --no-audit --no-fund
+          npm run typecheck
+          npm test 2>&1 | tee "$RUNNER_TEMP/worker.log" | tail -15
+          RESULT=$(sed 's/\x1b\[[0-9;]*m//g' "$RUNNER_TEMP/worker.log" | grep -E '^ +Tests ' | tail -1 | xargs)
+          echo "- Worker (Cloudflare) testlari: $RESULT" >> "$GITHUB_STEP_SUMMARY"
+
+  # deploy_api: D1 migratsiyalari + deploy (faqat `labguide-api`) + Worker
+  # secretlari. Secret qiymatlari hech qayerga yozilmaydi va chiqarilmaydi:
+  # wrangler'ga faqat stdin orqali beriladi.
+  deploy_api:
+    needs: worker
+    if: inputs.mode == 'deploy_api'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    concurrency:
+      group: deploy-api
+      cancel-in-progress: false
+    defaults:
+      run:
+        working-directory: cloudflare
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: cloudflare/package-lock.json
+      - name: Tayyorlik (secretlar bormi)
+        id: ready
+        env:
+          BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
+          LG_SENDER_EMAIL: ${{ secrets.LG_SENDER_EMAIL }}
+          LG_SERVER_SECRET: ${{ secrets.LG_SERVER_SECRET }}
+        run: |
+          missing=""
+          for v in CLOUDFLARE_API_TOKEN CLOUDFLARE_ACCOUNT_ID BREVO_API_KEY LG_SENDER_EMAIL LG_SERVER_SECRET; do
+            [ -n "${!v}" ] || missing="$missing $v"
+          done
+          if [ -n "$missing" ]; then
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::deploy_api o'tkazib yuborildi — secret yo'q:$missing"
+            {
+              echo "## Cloudflare API: deploy o'tkazib yuborildi"
+              echo "GitHub secretlari yo'q:$missing (docs/BACKEND_CLOUDFLARE.md, “Egasi uchun qadamlar”)."
+            } >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          if [ "${#LG_SERVER_SECRET}" -lt 32 ]; then
+            echo "::error::LG_SERVER_SECRET kamida 32 belgi bo'lsin (openssl rand -hex 32)"; exit 1
+          fi
+          echo "ready=true" >> "$GITHUB_OUTPUT"
+      - name: D1 migratsiyalari (labguide-db)
+        if: steps.ready.outputs.ready == 'true'
+        env:
+          D1_ID: ${{ secrets.CLOUDFLARE_D1_DATABASE_ID }}
+        run: |
+          set -euo pipefail
+          npm ci --no-audit --no-fund
+          if [ -n "$D1_ID" ]; then
+            sed -i -E "s/^database_id = \".*\"/database_id = \"$D1_ID\"/" wrangler.toml
+          fi
+          npx wrangler d1 migrations apply labguide-db --remote
+      - name: Worker deploy (labguide-api)
+        if: steps.ready.outputs.ready == 'true'
+        run: |
+          set -euo pipefail
+          npx wrangler deploy 2>&1 | tee "$RUNNER_TEMP/deploy.log"
+          URL=$(grep -oE 'https://labguide-api\.[a-z0-9-]+\.workers\.dev' "$RUNNER_TEMP/deploy.log" | head -1 || true)
+          echo "API_URL=$URL" >> "$GITHUB_ENV"
+      - name: Worker secretlari
+        if: steps.ready.outputs.ready == 'true'
+        env:
+          BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
+          LG_SENDER_EMAIL: ${{ secrets.LG_SENDER_EMAIL }}
+          LG_SERVER_SECRET: ${{ secrets.LG_SERVER_SECRET }}
+          LG_ADMIN_EMAILS: ${{ secrets.LG_ADMIN_EMAILS }}
+        run: |
+          set -euo pipefail
+          put() {
+            printf '%s' "${!1}" | npx wrangler secret put "$1" > /dev/null
+            echo "- secret $1: o'rnatildi" >> "$GITHUB_STEP_SUMMARY"
+          }
+          put BREVO_API_KEY
+          put LG_SENDER_EMAIL
+          put LG_SERVER_SECRET
+          if [ -n "$LG_ADMIN_EMAILS" ]; then
+            put LG_ADMIN_EMAILS
+          else
+            echo "- LG_ADMIN_EMAILS berilmagan: admin vakolati hech kimga berilmaydi" >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - name: Tekshiruv (health)
+        if: steps.ready.outputs.ready == 'true'
+        run: |
+          set -euo pipefail
+          if [ -z "${API_URL:-}" ]; then
+            echo "::warning::Worker URL deploy chiqishida topilmadi (workers.dev subdomeni yoqilmaganmi?)"
+            exit 0
+          fi
+          sleep 5
+          curl -fsS --retry 3 "$API_URL/v1/health"
+          {
+            echo "## Cloudflare API deploy qilindi"
+            echo "- URL: $API_URL"
+            echo "- Ilovani ulash: repo variable \`LG_API_URL\` = shu URL (keyingi build'da)."
+          } >> "$GITHUB_STEP_SUMMARY"
+
   android:
     needs: tests
+    if: inputs.mode != 'deploy_api'
     runs-on: ubuntu-latest
     timeout-minutes: 40
     steps:
@@ -158,11 +296,11 @@ jobs:
           flutter pub get --enforce-lockfile
           flutter build apk --release --split-per-abi \
             --build-number="${{ github.run_number }}" \
-            --dart-define=LG_SUPABASE_URL="$LG_SUPABASE_URL" --dart-define=LG_SUPABASE_KEY="$LG_SUPABASE_KEY" \
+            --dart-define=LG_SUPABASE_URL="$LG_SUPABASE_URL" --dart-define=LG_SUPABASE_KEY="$LG_SUPABASE_KEY" --dart-define=LG_API_URL="$LG_API_URL" \
             --dart-define=LG_ALL_FEATURES_OPEN="$LG_ALL_FEATURES_OPEN"
           if [ "$ANDROID_SIGNED" = true ]; then
             flutter build appbundle --release --build-number="${{ github.run_number }}" \
-              --dart-define=LG_SUPABASE_URL="$LG_SUPABASE_URL" --dart-define=LG_SUPABASE_KEY="$LG_SUPABASE_KEY" \
+              --dart-define=LG_SUPABASE_URL="$LG_SUPABASE_URL" --dart-define=LG_SUPABASE_KEY="$LG_SUPABASE_KEY" --dart-define=LG_API_URL="$LG_API_URL" \
               --dart-define=LG_ALL_FEATURES_OPEN="$LG_ALL_FEATURES_OPEN"
           fi
           cd build/app/outputs/flutter-apk
@@ -244,7 +382,7 @@ jobs:
 
   ios:
     needs: tests
-    if: inputs.mode != 'play_internal'
+    if: inputs.mode != 'play_internal' && inputs.mode != 'deploy_api'
     runs-on: macos-15
     timeout-minutes: 75
     defaults:
@@ -297,7 +435,7 @@ jobs:
           set -euo pipefail
           flutter build ios --release --no-codesign \
             --build-name="$IOS_VERSION" --build-number="$IOS_BUILD_NUMBER" \
-            --dart-define=LG_SUPABASE_URL="$LG_SUPABASE_URL" --dart-define=LG_SUPABASE_KEY="$LG_SUPABASE_KEY" \
+            --dart-define=LG_SUPABASE_URL="$LG_SUPABASE_URL" --dart-define=LG_SUPABASE_KEY="$LG_SUPABASE_KEY" --dart-define=LG_API_URL="$LG_API_URL" \
             --dart-define=LG_ALL_FEATURES_OPEN="$LG_ALL_FEATURES_OPEN"
           APP=build/ios/iphoneos/Runner.app
           PB=/usr/libexec/PlistBuddy
@@ -664,7 +802,7 @@ jobs:
           if [ "$SIGNING" = manual ]; then
             flutter build ipa --release \
               --build-name="$IOS_VERSION" --build-number="$IOS_BUILD_NUMBER" \
-              --dart-define=LG_SUPABASE_URL="$LG_SUPABASE_URL" --dart-define=LG_SUPABASE_KEY="$LG_SUPABASE_KEY" \
+              --dart-define=LG_SUPABASE_URL="$LG_SUPABASE_URL" --dart-define=LG_SUPABASE_KEY="$LG_SUPABASE_KEY" --dart-define=LG_API_URL="$LG_API_URL" \
               --dart-define=LG_ALL_FEATURES_OPEN="$LG_ALL_FEATURES_OPEN" \
               --export-options-plist="$SIGN_DIR/ExportOptions.plist"
           else
@@ -672,7 +810,7 @@ jobs:
             # App Store profili bilan imzolaydi (-allowProvisioningUpdates).
             flutter build ios --release --config-only \
               --build-name="$IOS_VERSION" --build-number="$IOS_BUILD_NUMBER" \
-              --dart-define=LG_SUPABASE_URL="$LG_SUPABASE_URL" --dart-define=LG_SUPABASE_KEY="$LG_SUPABASE_KEY" \
+              --dart-define=LG_SUPABASE_URL="$LG_SUPABASE_URL" --dart-define=LG_SUPABASE_KEY="$LG_SUPABASE_KEY" --dart-define=LG_API_URL="$LG_API_URL" \
               --dart-define=LG_ALL_FEATURES_OPEN="$LG_ALL_FEATURES_OPEN"
             xcodebuild -workspace ios/Runner.xcworkspace -scheme Runner \
               -configuration Release -destination 'generic/platform=iOS' \

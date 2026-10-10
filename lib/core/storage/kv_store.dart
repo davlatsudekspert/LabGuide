@@ -68,6 +68,11 @@ abstract final class StoreKeys {
   static const dailyStreak = 'daily.streak';
   static const dailyReminder = 'daily.reminder';
 
+  /// Guruh darslari — FAQAT ustoz qurilmasida (serverga yuborilmaydi):
+  /// boshlanish sanasi, talabalarning lokal belgilari (real ism bo'lishi
+  /// mumkin), og'zaki savol-javob belgilari va baholari.
+  static const classroomLocal = 'classroom.local';
+
   static const all = <String>{
     language,
     themeMode,
@@ -102,6 +107,7 @@ abstract final class StoreKeys {
     dailyToday,
     dailyStreak,
     dailyReminder,
+    classroomLocal,
   };
 }
 

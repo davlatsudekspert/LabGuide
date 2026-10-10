@@ -5356,7 +5356,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get classesRoleNote =>
-      'Роль в приложении не даёт прав на сервере: преподаватель группы — тот, кто её создал.';
+      'Роль в приложении не даёт прав на сервере: группу открывает только аккаунт, зарегистрированный как преподаватель, и он управляет только своими группами.';
 
   @override
   String get classesMine => 'Мои группы';
@@ -5389,7 +5389,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get classesCreateIntro =>
-      'Аккаунт, создавший группу, становится её преподавателем. Студенты вступают по вашему коду.';
+      'Преподаватель, открывший группу, управляет только ею. Студенты вступают по вашему коду или QR.';
 
   @override
   String get classesGroupName => 'Название группы';
@@ -5403,17 +5403,18 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get classesDisplayName => 'Ваше имя в группе';
+  String get classesDisplayName => 'Псевдоним (необязательно)';
 
   @override
-  String get classesDisplayNameHint => 'Например, Алиев Анвар';
+  String get classesDisplayNameHint =>
+      'Например, Звезда — если пусто, порядковый номер';
 
   @override
   String get classesDisplayNameHintTeacher => 'Например, Каримова Н.А.';
 
   @override
   String get classesDisplayNameNote =>
-      'Email не показывается — участники видят только это имя.';
+      'ФИО на сервере не хранятся: студенты видны по псевдониму или порядковому номеру. Настоящее имя можно записать только как метку на своём устройстве.';
 
   @override
   String get classesCreateAction => 'Создать группу';
@@ -5432,7 +5433,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get classesJoinNote =>
-      'Преподаватель увидит указанное имя и результаты ваших заданий. Email не показывается.';
+      'Не указывайте настоящее имя. Преподаватель видит только ваш псевдоним (или номер) и результаты заданий; другие студенты вас не видят. Email не показывается.';
 
   @override
   String get classesJoinAction => 'Вступить';
@@ -6937,4 +6938,422 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get analyteExpertApprovalPending => 'ожидается';
+
+  @override
+  String classesSeat(String n) {
+    return 'Студент $n';
+  }
+
+  @override
+  String classesQrLabel(String code) {
+    return 'QR кода приглашения: $code';
+  }
+
+  @override
+  String get classesTeacherRegisterEyebrow => 'Преподаватель';
+
+  @override
+  String get classesTeacherRegisterTitle =>
+      'Зарегистрируйтесь как преподаватель';
+
+  @override
+  String get classesTeacherRegisterBody =>
+      'Преподаватель открывает свою группу и видит результаты только своих студентов. Это не права администратора и не влияет на другие группы.';
+
+  @override
+  String get classesTeacherRegister => 'Зарегистрироваться как преподаватель';
+
+  @override
+  String get classesLocalNameTitle => 'Метка (только на этом устройстве)';
+
+  @override
+  String get classesLocalNameBody =>
+      'Например, имя студента. Не отправляется на сервер и не видна студенту.';
+
+  @override
+  String get classesLocalNameHint => 'Пусто — удалить метку';
+
+  @override
+  String get classesLocalNameSave => 'Сохранить';
+
+  @override
+  String get classroomPlanTitle => 'Учебный план';
+
+  @override
+  String get classroomPlanSub => 'Темы по дням: лекция, опрос, тест';
+
+  @override
+  String get classroomTopicsTitle => 'Темы';
+
+  @override
+  String get classroomTopicsSub => 'Открытые преподавателем темы и тесты';
+
+  @override
+  String get classroomProgramEyebrow => 'Учебная программа';
+
+  @override
+  String classroomPlanProgress(int done, int total) {
+    return 'Тестов по темам завершено: $done/$total';
+  }
+
+  @override
+  String get classroomStartNone =>
+      'Дата начала не задана — план по порядку дней';
+
+  @override
+  String classroomStartAt(String date) {
+    return '1-й учебный день: $date';
+  }
+
+  @override
+  String get classroomStartNote =>
+      'Даты примерные (воскресенья пропускаются, праздники не учитываются) и хранятся только на этом устройстве.';
+
+  @override
+  String get classroomStartPick => 'Указать дату начала';
+
+  @override
+  String classroomDayN(int n) {
+    return 'День $n';
+  }
+
+  @override
+  String classroomWeekN(int n) {
+    return 'Неделя $n';
+  }
+
+  @override
+  String classroomHours(int n) {
+    return '$n ч';
+  }
+
+  @override
+  String get classroomTypeLecture => 'Лекция';
+
+  @override
+  String get classroomTypePractical => 'Практика';
+
+  @override
+  String get classroomTypeSeminar => 'Семинар';
+
+  @override
+  String get classroomTypeAttestation => 'Аттестация';
+
+  @override
+  String get classroomTypeOther => 'Занятие';
+
+  @override
+  String get classroomStatusClosed => 'Не открыта';
+
+  @override
+  String get classroomStatusOpened => 'Открыта';
+
+  @override
+  String get classroomStatusLectured => 'Пройдена';
+
+  @override
+  String get classroomStatusOral => 'Опрос проведён';
+
+  @override
+  String get classroomStatusTestRunning => 'Идёт тест';
+
+  @override
+  String get classroomStatusTestDone => 'Тест завершён';
+
+  @override
+  String get classroomNoCurriculumTitle => 'Учебная программа ещё не добавлена';
+
+  @override
+  String get classroomNoCurriculumBody =>
+      'План курса (модуль → тема → материалы) появится в следующей версии приложения. Пока используйте задания группы.';
+
+  @override
+  String get classroomCurriculumError =>
+      'Не удалось прочитать учебную программу';
+
+  @override
+  String get classroomNoTopicsStudent => 'Преподаватель ещё не открыл темы';
+
+  @override
+  String get classroomNoTopicsStudentBody =>
+      'Когда тема откроется, материалы и тест появятся здесь.';
+
+  @override
+  String get classroomTopicTitle => 'Тема';
+
+  @override
+  String get classroomTopicMissing => 'Тема не найдена в программе';
+
+  @override
+  String get classroomTopicNotOpened => 'Эта тема ещё не открыта';
+
+  @override
+  String get classroomOpenNote =>
+      'После открытия студенты увидят материалы темы.';
+
+  @override
+  String get classroomOpenTopic => 'Открыть студентам';
+
+  @override
+  String classroomStep(int n) {
+    return 'Этап $n';
+  }
+
+  @override
+  String get classroomStageLecture => 'Лекция';
+
+  @override
+  String get classroomStageLectureBody =>
+      'Покажите тему слайдами на большом экране (работает и без интернета).';
+
+  @override
+  String get classroomStageOral => 'Устный опрос';
+
+  @override
+  String classroomStageOralBody(int count) {
+    return 'Список вопросов и план ответа. Задано: $count.';
+  }
+
+  @override
+  String get classroomStageTest => 'Тест группы';
+
+  @override
+  String get classroomStageTestBody =>
+      'Выберите вопросы и запустите тест — он сразу откроется у студентов.';
+
+  @override
+  String get classroomStageDone => 'Пройдено';
+
+  @override
+  String get classroomMarkDone => 'Отметить как пройденное';
+
+  @override
+  String get classroomOralOpen => 'Список вопросов';
+
+  @override
+  String get classroomTestPrepare => 'Подготовить тест';
+
+  @override
+  String get classroomTestResults => 'Панель результатов';
+
+  @override
+  String get classroomTestFinish => 'Завершить тест';
+
+  @override
+  String get classroomTestFinishTitle => 'Завершить тест?';
+
+  @override
+  String get classroomTestFinishBody =>
+      'Новые попытки не принимаются. Начавшим остаётся 2 минуты, чтобы отправить ответы.';
+
+  @override
+  String classroomTestSubmitted(int done, int total) {
+    return 'Сдали: $done/$total';
+  }
+
+  @override
+  String get classroomTestNotStarted => 'Преподаватель ещё не начал тест.';
+
+  @override
+  String get classroomTestOpenStudent => 'Тест открыт — пройти';
+
+  @override
+  String get classroomMaterials => 'Материалы темы';
+
+  @override
+  String get classroomNoMaterials =>
+      'В приложении пока нет материалов по этой теме.';
+
+  @override
+  String get classroomGapNote =>
+      'Материалов по этой теме в приложении мало — преподаватель дополняет из своих источников.';
+
+  @override
+  String get classroomKindAnalyte => 'Карточка анализа';
+
+  @override
+  String get classroomKindCondition => 'Состояние';
+
+  @override
+  String get classroomKindReference => 'Таблица';
+
+  @override
+  String get classroomKindAtlas => 'Атлас микроскопии';
+
+  @override
+  String get classroomKindTool => 'Калькулятор и инструмент';
+
+  @override
+  String get classroomToolQc => 'Контроль качества';
+
+  @override
+  String get classroomToolPreanalytics => 'Преаналитика';
+
+  @override
+  String get classroomToolInstruments => 'Анализаторы';
+
+  @override
+  String get classroomToolCalibration => 'Журнал калибровки';
+
+  @override
+  String get classroomToolDifferential => 'Лейкоформула';
+
+  @override
+  String get classroomOralNotice =>
+      'Вопросы — автоматически подобранные кандидаты; план ответа ждёт проверки специалистом. Отметки «задан» и оценки хранятся только на этом устройстве.';
+
+  @override
+  String get classroomOralEmpty => 'Для этой темы нет устных вопросов';
+
+  @override
+  String classroomCandidate(int n) {
+    return 'Вопрос-кандидат $n';
+  }
+
+  @override
+  String get classroomOralPlan => 'Краткий план ответа';
+
+  @override
+  String get classroomOralNoPlan => 'План ответа ещё не написан.';
+
+  @override
+  String get classroomOralAsked => 'Задан';
+
+  @override
+  String classroomOralGrade(int count) {
+    return 'Оценить студентов ($count)';
+  }
+
+  @override
+  String get classroomOralGradeTitle => 'Кто как ответил';
+
+  @override
+  String get classroomOralGradeNote =>
+      'Только на этом устройстве; на сервер не отправляется.';
+
+  @override
+  String get classroomGradeKnew => 'Знал';
+
+  @override
+  String get classroomGradePartial => 'Частично';
+
+  @override
+  String get classroomGradeDidNot => 'Не знал';
+
+  @override
+  String get classroomCandidatesNotice =>
+      'Вопросы-кандидаты подобраны автоматически, ключи не проверены. Просмотрите каждый: балл считается на сервере по показанному ключу.';
+
+  @override
+  String classroomCandidatesTitle(int picked, int total) {
+    return 'Кандидаты · выбрано $picked/$total';
+  }
+
+  @override
+  String get classroomPickAll => 'Все';
+
+  @override
+  String get classroomPickNone => 'Снять';
+
+  @override
+  String classroomKeyShown(String answer) {
+    return 'Ключ: $answer';
+  }
+
+  @override
+  String get classroomKeyFlagged => 'Спорный ключ';
+
+  @override
+  String get classroomPickAtLeastOne => 'Выберите хотя бы один вопрос';
+
+  @override
+  String get classroomPickMax => 'Не более 50 вопросов';
+
+  @override
+  String classroomTestStart(int count) {
+    return 'Начать тест · $count вопр.';
+  }
+
+  @override
+  String get classroomTestStarted => 'Тест начат — открыт у студентов';
+
+  @override
+  String classroomTestTitle(String topic) {
+    return 'Тест: $topic';
+  }
+
+  @override
+  String get classroomTestAlready => 'Тест по этой теме уже начат';
+
+  @override
+  String get classroomTestNoCandidates => 'Для этой темы нет тестовых вопросов';
+
+  @override
+  String get classroomTestNoCandidatesBody =>
+      'Можно составить задание вручную (Новое задание).';
+
+  @override
+  String get lectureTitle => 'Лекция';
+
+  @override
+  String get lectureListTitle => 'Режим лекции';
+
+  @override
+  String get lectureListSub =>
+      'Выберите тему — слайды на большом экране, без интернета';
+
+  @override
+  String get lectureStart => 'Начать лекцию';
+
+  @override
+  String get lectureClose => 'Закрыть лекцию';
+
+  @override
+  String lectureCounter(int current, int total) {
+    return '$current / $total';
+  }
+
+  @override
+  String get lecturePrev => 'Назад';
+
+  @override
+  String get lectureNext => 'Далее';
+
+  @override
+  String get lectureGoals => 'Цель';
+
+  @override
+  String get lectureKeyPoints => 'Ключевые понятия';
+
+  @override
+  String get lectureConcepts => 'Основные анализы';
+
+  @override
+  String get lectureConditions => 'Клинические состояния';
+
+  @override
+  String get lectureTables => 'Таблицы и алгоритмы';
+
+  @override
+  String get lectureAtlas => 'Микроскопия';
+
+  @override
+  String get lectureTools => 'Расчёты и инструменты';
+
+  @override
+  String lectureQuestionN(int n) {
+    return 'Вопрос $n';
+  }
+
+  @override
+  String get lectureEndEyebrow => 'Дальше';
+
+  @override
+  String get lectureEndTitle => 'Опрос и тест';
+
+  @override
+  String get lectureEndOral => 'Устный опрос — спрашивает преподаватель';
+
+  @override
+  String get lectureEndTest => 'Тест группы — в приложении, на время';
 }

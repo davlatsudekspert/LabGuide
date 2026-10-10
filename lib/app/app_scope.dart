@@ -7,6 +7,8 @@ import '../core/backend/lab_backend.dart';
 import '../core/entitlements/entitlement_service.dart';
 import '../core/storage/kv_store.dart';
 import '../features/auth/auth_controller.dart';
+import '../features/classroom/classroom_local.dart';
+import '../features/classroom/curriculum.dart';
 import '../features/content/content_controller.dart';
 import '../features/daily/daily_controller.dart';
 import '../features/daily/daily_reminder.dart';
@@ -75,6 +77,8 @@ class AppServices {
     required this.daily,
     required this.reminders,
     required this.sharer,
+    required this.curriculum,
+    required this.classroom,
   });
 
   final AppConfig config;
@@ -123,6 +127,12 @@ class AppServices {
 
   /// Natija kartochkasini tizim oynasi orqali ulashish.
   final ResultSharer sharer;
+
+  /// O'quv dasturi (`curriculum.json`; asset bo'lmasa — “qo'shilmagan”).
+  final CurriculumController curriculum;
+
+  /// Ustoz qurilmasidagi dars ma'lumotlari (serverga yuborilmaydi).
+  final ClassroomLocal classroom;
 
   /// Server vakolatlari va o'qilmagan javoblarni yangilash. Rol hali
   /// tanlanmagan bo'lsa profil yozilmaydi (taxminiy rol sanalmasin).
@@ -173,6 +183,7 @@ class AppServices {
     toifa.resetInMemory();
     differential.resetInMemory();
     daily.resetInMemory();
+    classroom.resetInMemory();
     await reminders.reset();
     await packs.removeAll();
     settings.resetToDefaults(systemLocales);

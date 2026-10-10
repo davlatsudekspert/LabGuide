@@ -1,0 +1,31 @@
+# LabGuide API — Cloudflare Worker + D1 (bepul tarif).
+#
+# Deploy faqat shu nomga (`labguide-api`) bo'ladi — hisobdagi boshqa
+# Workerlarga tegilmaydi. Secretlar bu faylda EMAS: ular `wrangler secret put`
+# bilan (CI `deploy_api` rejimi) o'rnatiladi — docs/BACKEND_CLOUDFLARE.md.
+name = "labguide-api"
+main = "src/index.ts"
+compatibility_date = "2026-08-15"
+workers_dev = true
+# Sinov/oldindan ko'rish URL'lari kerak emas.
+preview_urls = false
+
+[[d1_databases]]
+binding = "DB"
+database_name = "labguide-db"
+database_id = "0e019101-c589-4c12-9e17-8b1edc9a11a5"
+migrations_dir = "migrations"
+
+# Kuniga bir marta: muddati o'tgan kodlar, sessiyalar va limit hisoblagichlari
+# tozalanadi (bepul tarifdagi so'rov/yozish limitini tejash uchun — bitta).
+[triggers]
+crons = ["17 22 * * *"]
+
+[vars]
+LG_SENDER_NAME = "LabGuide"
+# Brauzer (web build) uchun ruxsat etilgan originlar, vergul bilan.
+# Mobil ilova CORS'ga muhtoj emas — bo'sh qoldiring.
+LG_ALLOWED_ORIGINS = ""
+
+[observability]
+enabled = false

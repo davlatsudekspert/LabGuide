@@ -18,6 +18,8 @@ import '../features/home/home_screen.dart';
 import '../features/instruments/calibration_screens.dart';
 import '../features/instruments/instrument_screens.dart';
 import '../features/lab/lab_screens.dart';
+import '../features/classroom/classroom_screens.dart';
+import '../features/classroom/lecture_screens.dart';
 import '../features/learn/classes_screens.dart';
 import '../features/learn/exam_screens.dart';
 import '../features/learn/learn_screens.dart';
@@ -718,13 +720,46 @@ GoRouter buildRouter(
                       ),
                       GoRoute(
                         path: 'join',
-                        builder: (context, state) => const JoinGroupScreen(),
+                        builder: (context, state) => JoinGroupScreen(
+                          initialCode: state.uri.queryParameters['code'],
+                        ),
                       ),
                       GoRoute(
                         path: 'g/:gid',
                         builder: (context, state) =>
                             GroupScreen(groupId: state.pathParameters['gid']!),
                         routes: [
+                          // O'quv dasturi: jadval va mavzu darslari.
+                          GoRoute(
+                            path: 'plan',
+                            builder: (context, state) => GroupPlanScreen(
+                              groupId: state.pathParameters['gid']!,
+                            ),
+                          ),
+                          GoRoute(
+                            path: 't/:tid',
+                            builder: (context, state) => GroupTopicScreen(
+                              groupId: state.pathParameters['gid']!,
+                              topicId: state.pathParameters['tid']!,
+                            ),
+                            routes: [
+                              GoRoute(
+                                path: 'oral',
+                                builder: (context, state) => TopicOralScreen(
+                                  groupId: state.pathParameters['gid']!,
+                                  topicId: state.pathParameters['tid']!,
+                                ),
+                              ),
+                              GoRoute(
+                                path: 'test',
+                                builder: (context, state) =>
+                                    TopicTestSetupScreen(
+                                      groupId: state.pathParameters['gid']!,
+                                      topicId: state.pathParameters['tid']!,
+                                    ),
+                              ),
+                            ],
+                          ),
                           GoRoute(
                             path: 'assign',
                             builder: (context, state) => NewAssignmentScreen(
@@ -761,6 +796,21 @@ GoRouter buildRouter(
                             ],
                           ),
                         ],
+                      ),
+                    ],
+                  ),
+                  // Ma'ruza (taqdimot) rejimi — serversiz; slaydlar to'liq
+                  // ekranda (tablar yashiringan).
+                  GoRoute(
+                    path: 'lecture',
+                    builder: (context, state) => const LectureListScreen(),
+                    routes: [
+                      GoRoute(
+                        path: ':topicId',
+                        parentNavigatorKey: rootKey,
+                        builder: (context, state) => LectureScreen(
+                          topicId: state.pathParameters['topicId']!,
+                        ),
                       ),
                     ],
                   ),

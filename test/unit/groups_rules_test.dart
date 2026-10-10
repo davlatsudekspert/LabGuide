@@ -35,6 +35,15 @@ void main() {
 
   test('to‘liq oqim: ustoz → kod → talaba → topshiriq → ball', () async {
     await _as(b, 'teacher@example.com');
+    // Guruhni faqat ustoz sifatida ro'yxatdan o'tgan hisob ochadi.
+    await expectLater(
+      b.createGroup('Biokimyo 2-kurs'),
+      _fails(BackendFailure.forbidden),
+    );
+    expect((await b.myAccess()).teacher, isFalse);
+    await b.registerTeacher();
+    expect((await b.myAccess()).teacher, isTrue);
+    expect((await b.myAccess()).adminAccount, isFalse, reason: 'ustoz ≠ admin');
     await expectLater(b.createGroup('ab'), _fails(BackendFailure.invalid));
     final g = await b.createGroup('Biokimyo 2-kurs', displayName: 'Ustoz K.');
     expect(g.isTeacher, isTrue);
@@ -115,11 +124,13 @@ void main() {
     expect(subs.single.answers, [1, -1, 0]);
     expect(await b.assignmentKey(aid), [1, 0, 2]);
     final members = await b.groupMembers(g.id);
-    expect(members.map((m) => m.displayName), ['Ustoz K.', 'Aliyev A.']);
+    expect(members.map((m) => m.alias), ['Ustoz K.', 'Aliyev A.']);
+    expect(members.map((m) => m.seatNo), [null, 1]);
   });
 
   test('vaqt chegarasi va muddat serverda tekshiriladi', () async {
     await _as(b, 'teacher@example.com');
+    await b.registerTeacher();
     final g = await b.createGroup('Klinik biokimyo', displayName: 'Ustoz');
     await expectLater(
       b.createAssignment(
@@ -163,6 +174,7 @@ void main() {
 
   test('a’zoni chiqarish va guruhdan chiqish', () async {
     await _as(b, 'teacher@example.com');
+    await b.registerTeacher();
     final g = await b.createGroup('Guruh', displayName: 'Ustoz');
     await _as(b, 's1@example.com');
     await b.joinGroup(g.joinCode!, displayName: 'Talaba 1');

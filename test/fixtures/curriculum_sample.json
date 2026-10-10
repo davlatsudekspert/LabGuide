@@ -1,0 +1,72 @@
+{
+  "program": {"name": "Namuna dastur (test)", "days": 3},
+  "modules": [
+    {
+      "id": "M2",
+      "title_uz": "Buyrak va siydik",
+      "title_ru": "Почки и моча",
+      "topics": [
+        {
+          "id": "d008-L",
+          "n": 8,
+          "title_uz": "Buyrak kasalliklarining laborator ko‘rsatkichlari",
+          "title_en": "Laboratory markers of kidney disease",
+          "type": "lecture",
+          "hours": 2,
+          "week": 2,
+          "links": {
+            "analytes": ["creatinine", "urea", "egfr", "no-such-analyte"],
+            "conditions": ["chronic-kidney-disease"],
+            "reference": [],
+            "tools": ["/lab/calculators/egfr", "https://example.com/x"],
+            "microscopy": [],
+            "toifa_topic": "kidney_nitrogen",
+            "gap": false
+          },
+          "oral_candidates": {"count": 2, "ids": ["kdl-o-042", "kdl-o-043"]},
+          "test_candidates": {
+            "count": 2,
+            "ids": ["kdl-t-031", "kdl-t-063"],
+            "pack_quiz_ids": ["creatinine-q1", "urea-q1"],
+            "pack_quiz_count": 2
+          },
+          "test_gap": false,
+          "oral_gap": false
+        },
+        {
+          "id": "d008-P",
+          "n": 8,
+          "title_uz": "Buyrak: amaliy mashg‘ulot",
+          "type": "practical",
+          "hours": 4,
+          "week": 2,
+          "date": "2026-01-14",
+          "links": {"analytes": ["creatinine"], "toifa_topic": "kidney_nitrogen"},
+          "goals": ["Kreatinin va eGFR ni talqin qilish"],
+          "key_points": ["eGFR yosh va jinsga bog‘liq"]
+        }
+      ]
+    },
+    {"id": "M0", "title_uz": "Bo‘sh modul", "topics": []},
+    {
+      "id": "M4",
+      "title": {"uz": "Siydik tahlili", "en": "Urinalysis"},
+      "topics": [
+        {
+          "id": "d027-L",
+          "n": 27,
+          "title": "Siydikni tekshirish",
+          "type": "lecture",
+          "week": 5,
+          "links": {
+            "analytes": ["urine-chemistry"],
+            "microscopy": ["urine"],
+            "tools": ["/lab/calculators/nechiporenko"],
+            "toifa_topic": "urinalysis",
+            "gap": true
+          }
+        }
+      ]
+    }
+  ]
+}

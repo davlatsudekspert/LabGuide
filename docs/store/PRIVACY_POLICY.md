@@ -14,6 +14,10 @@ Aloqa / Контакт / Contact: **[email — egasi kiritadi]**
 >   reyestrida ro‘yxatdan o‘tkazish talablarini qo‘yadi. Server joylashuvi va ro‘yxatdan o‘tish
 >   bo‘yicha e’lon qilishdan oldin yurist bilan tekshiring (bu huquqiy maslahat emas).
 > - Hamkorlar (reklama) bo‘limi yoqilganda “Reklama” bandi amal qiladi.
+> - Server Cloudflare’ga ko‘chsa (D-41, `docs/BACKEND_CLOUDFLARE.md`): hosting — Cloudflare
+>   (D1, Sharqiy Yevropa), email xizmati — Brevo; email serverda ochiq saqlanmaydi (faqat hash
+>   va niqoblangan ko‘rinish), guruhda ism o‘rniga taxallus yoki “Talaba NN”. Murojaatlar va
+>   hamkorlar bo‘limi u yerda hali yo‘q — e’lon qilishdan oldin matnni shunga moslang.
 
 ## O‘zbekcha
 

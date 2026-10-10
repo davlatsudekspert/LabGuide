@@ -18,6 +18,7 @@ end $$;
 
 set role authenticated;
 select t.login('00000000-0000-0000-0000-0000000000c1');
+select public.register_teacher();
 insert into t.vars select 'g2_code', public.create_group('Klinik biokimyo', 'Karimova N.') ->> 'join_code';
 insert into t.vars select 'g2', id::text from public.study_groups where name = 'Klinik biokimyo';
 select t.login('00000000-0000-0000-0000-0000000000c2');

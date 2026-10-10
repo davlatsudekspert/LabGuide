@@ -39,8 +39,14 @@ class AccessController extends ChangeNotifier {
         _touched = true;
       }
       _access = await backend.myAccess();
-      final threads = await backend.myThreads();
-      _unread = threads.where((t) => t.unreadForUser).length;
+      try {
+        final threads = await backend.myThreads();
+        _unread = threads.where((t) => t.unreadForUser).length;
+      } on BackendException catch (e) {
+        // Murojaatlar bo'limi bu serverda bo'lmasa ham vakolatlar yangilansin.
+        if (e.failure != BackendFailure.unavailable) rethrow;
+        _unread = 0;
+      }
       notifyListeners();
     } on BackendException catch (e) {
       debugPrint('access refresh: $e');

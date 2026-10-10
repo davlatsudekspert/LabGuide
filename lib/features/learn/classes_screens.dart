@@ -10,6 +10,8 @@ import '../../core/backend/backend_models.dart';
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
+import '../classroom/qr_code_view.dart';
+import '../classroom/topic_questions.dart';
 import '../content/content_model.dart';
 import '../content/ui/content_widgets.dart';
 import '../settings/settings_controller.dart';
@@ -104,10 +106,24 @@ Widget _loadState<T>(
   return builder(data);
 }
 
-/// Paket savollari id bo'yicha (topshiriqlar faqat paket savollaridan).
-Map<String, ExamQuestion> _byId(ContentPack pack) => {
-  for (final q in PackQuestionSource.of(pack).questions) q.id: q,
-};
+/// Topshiriq savollari id bo'yicha: kontent paketi va (yuklangan bo'lsa)
+/// toifa banki — mavzu testida ikkalasidan ham savol bo'lishi mumkin.
+Map<String, ExamQuestion> _byId(BuildContext context, ContentPack pack) =>
+    classQuestionIndex(pack, context.services.toifa.bank);
+
+/// Guruhda ko'rinadigan nom: taxallus yoki tartib raqami (“Talaba 07”).
+/// Ustoz qurilmasida o'zi yozgan lokal belgi (masalan, real ism) oldinda —
+/// u serverga yuborilmaydi.
+String memberLabel(BuildContext context, String groupId, GroupMember m) {
+  final l = AppLocalizations.of(context);
+  final base =
+      m.alias ??
+      (m.seatNo == null
+          ? l.classesRoleTeacher
+          : l.classesSeat(m.seatNo!.toString().padLeft(2, '0')));
+  final local = context.services.classroom.localName(groupId, m.userId);
+  return local == null ? base : '$local · $base';
+}
 
 /// Topshiriq uchun savollar: server kaliti har savolga bitta javob saqlaydi.
 List<ExamQuestion> _assignablePool(ContentPack pack, Set<String> topics) => [
@@ -156,6 +172,7 @@ class ClassesScreen extends StatefulWidget {
 
 class _ClassesScreenState extends State<ClassesScreen> {
   final _groups = _Loaded<List<StudyGroup>>();
+
   /// Ro'yxat qaysi hisob uchun yuklangan (hisob almashsa — qayta).
   String? _loadedFor = '';
 
@@ -250,9 +267,10 @@ class _ClassesScreenState extends State<ClassesScreen> {
               for (final (i, g) in groups.indexed)
                 LgRow(
                   title: g.name,
-                  subtitle:
-                      '${g.isTeacher ? l.classesRoleTeacher : l.classesRoleStudent}'
-                      ' · ${l.classesMembers(g.memberCount)}',
+                  // Talaba boshqa a'zolarni ko'rmaydi — son faqat ustozga.
+                  subtitle: g.isTeacher
+                      ? '${l.classesRoleTeacher} · ${l.classesMembers(g.memberCount)}'
+                      : l.classesRoleStudent,
                   icon: g.isTeacher
                       ? Icons.school_outlined
                       : Icons.groups_outlined,
@@ -278,35 +296,56 @@ class CreateGroupScreen extends StatefulWidget {
 
 class _CreateGroupScreenState extends State<CreateGroupScreen> {
   final _name = TextEditingController();
-  final _display = TextEditingController();
   bool _tried = false;
   bool _busy = false;
+  bool _registering = false;
   Object? _error;
+
+  @override
+  void initState() {
+    super.initState();
+    // Ustoz holati serverdan (ilovadagi rol tanlovi huquq bermaydi).
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted && _ready(context)) context.services.refreshAccess();
+    });
+  }
 
   @override
   void dispose() {
     _name.dispose();
-    _display.dispose();
     super.dispose();
   }
 
-  bool _len(TextEditingController c, int min, int max) {
-    final n = c.text.trim().length;
-    return n >= min && n <= max;
+  bool get _nameOk {
+    final n = _name.text.trim().length;
+    return n >= 3 && n <= 80;
+  }
+
+  Future<void> _register() async {
+    setState(() {
+      _registering = true;
+      _error = null;
+    });
+    final services = context.services;
+    try {
+      await services.backend.registerTeacher();
+      await services.refreshAccess();
+    } on Object catch (e) {
+      if (mounted) setState(() => _error = e);
+    } finally {
+      if (mounted) setState(() => _registering = false);
+    }
   }
 
   Future<void> _submit() async {
     setState(() => _tried = true);
-    if (!_len(_name, 3, 80) || !_len(_display, 2, 60)) return;
+    if (!_nameOk) return;
     setState(() {
       _busy = true;
       _error = null;
     });
     try {
-      final g = await context.services.backend.createGroup(
-        _name.text.trim(),
-        displayName: _display.text.trim(),
-      );
+      final g = await context.services.backend.createGroup(_name.text.trim());
       if (!mounted) return;
       showSnack(context, AppLocalizations.of(context).classesCreated);
       context.pushReplacement('/learn/classes/g/${g.id}');
@@ -320,54 +359,80 @@ class _CreateGroupScreenState extends State<CreateGroupScreen> {
   @override
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context);
+    final text = Theme.of(context).textTheme;
+    final access = context.services.access;
     return LgPage(
       title: l.classesCreate,
       subtitle: l.classesCreateIntro,
       showProfile: false,
       children: [
         ClassesGate(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              LgField(
-                label: l.classesGroupName,
-                controller: _name,
-                hint: l.classesGroupNameHint,
-                maxLength: 80,
-                textInputAction: TextInputAction.next,
-                errorText: _tried && !_len(_name, 3, 80)
-                    ? l.classesLengthError(3, 80)
-                    : null,
-                onChanged: (_) => setState(() {}),
-              ),
-              LgField(
-                label: l.classesDisplayName,
-                controller: _display,
-                hint: l.classesDisplayNameHintTeacher,
-                maxLength: 60,
-                autofillHints: const [AutofillHints.name],
-                textInputAction: TextInputAction.done,
-                onSubmitted: (_) => _submit(),
-                errorText: _tried && !_len(_display, 2, 60)
-                    ? l.classesLengthError(2, 60)
-                    : null,
-                onChanged: (_) => setState(() {}),
-              ),
-              const SizedBox(height: 8),
-              Text(
-                l.classesDisplayNameNote,
-                style: Theme.of(context).textTheme.bodySmall,
-              ),
-              if (_error != null)
-                LgNotice(classesErrorText(_error!, l), kind: NoticeKind.error),
-              const SizedBox(height: 16),
-              LgButton(
-                label: l.classesCreateAction,
-                icon: Icons.add_rounded,
-                busy: _busy,
-                onPressed: _submit,
-              ),
-            ],
+          child: ListenableBuilder(
+            listenable: access,
+            builder: (context, _) => Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                if (!access.access.teacher) ...[
+                  LgPanel(
+                    soft: true,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        LgEyebrow(l.classesTeacherRegisterEyebrow),
+                        Text(
+                          l.classesTeacherRegisterTitle,
+                          style: text.titleMedium,
+                        ),
+                        const SizedBox(height: 6),
+                        Text(
+                          l.classesTeacherRegisterBody,
+                          style: text.bodyMedium,
+                        ),
+                        const SizedBox(height: 14),
+                        LgButton(
+                          label: l.classesTeacherRegister,
+                          icon: Icons.school_outlined,
+                          busy: _registering,
+                          onPressed: _register,
+                        ),
+                      ],
+                    ),
+                  ),
+                  if (_error != null)
+                    LgNotice(
+                      classesErrorText(_error!, l),
+                      kind: NoticeKind.error,
+                    ),
+                ] else ...[
+                  LgField(
+                    label: l.classesGroupName,
+                    controller: _name,
+                    hint: l.classesGroupNameHint,
+                    maxLength: 80,
+                    textInputAction: TextInputAction.done,
+                    onSubmitted: (_) => _submit(),
+                    errorText: _tried && !_nameOk
+                        ? l.classesLengthError(3, 80)
+                        : null,
+                    onChanged: (_) => setState(() {}),
+                  ),
+                  const SizedBox(height: 8),
+                  Text(l.classesDisplayNameNote, style: text.bodySmall),
+                  if (_error != null)
+                    LgNotice(
+                      classesErrorText(_error!, l),
+                      kind: NoticeKind.error,
+                    ),
+                  const SizedBox(height: 16),
+                  LgButton(
+                    label: l.classesCreateAction,
+                    icon: Icons.add_rounded,
+                    busy: _busy,
+                    onPressed: _submit,
+                  ),
+                ],
+              ],
+            ),
           ),
         ),
       ],
@@ -395,14 +460,24 @@ class _CodeFormatter extends TextInputFormatter {
 }
 
 class JoinGroupScreen extends StatefulWidget {
-  const JoinGroupScreen({super.key});
+  const JoinGroupScreen({super.key, this.initialCode});
+
+  /// QR yoki havoladan kelgan kod (`/learn/classes/join?code=...`).
+  final String? initialCode;
 
   @override
   State<JoinGroupScreen> createState() => _JoinGroupScreenState();
 }
 
 class _JoinGroupScreenState extends State<JoinGroupScreen> {
-  final _code = TextEditingController();
+  late final _code = TextEditingController(
+    text: _CodeFormatter()
+        .formatEditUpdate(
+          TextEditingValue.empty,
+          TextEditingValue(text: widget.initialCode ?? ''),
+        )
+        .text,
+  );
   final _display = TextEditingController();
   bool _tried = false;
   bool _busy = false;
@@ -416,9 +491,11 @@ class _JoinGroupScreenState extends State<JoinGroupScreen> {
   }
 
   bool get _codeOk => _code.text.length == 8;
+
+  /// Taxallus ixtiyoriy: bo'sh — tartib raqami ko'rinadi.
   bool get _nameOk {
     final n = _display.text.trim().length;
-    return n >= 2 && n <= 60;
+    return n == 0 || (n >= 2 && n <= 24);
   }
 
   Future<void> _submit() async {
@@ -429,9 +506,10 @@ class _JoinGroupScreenState extends State<JoinGroupScreen> {
       _error = null;
     });
     try {
+      final alias = _display.text.trim();
       final id = await context.services.backend.joinGroup(
         _code.text,
-        displayName: _display.text.trim(),
+        displayName: alias.isEmpty ? null : alias,
       );
       if (!mounted) return;
       showSnack(context, AppLocalizations.of(context).classesJoined);
@@ -500,12 +578,11 @@ class _JoinGroupScreenState extends State<JoinGroupScreen> {
                 label: l.classesDisplayName,
                 controller: _display,
                 hint: l.classesDisplayNameHint,
-                maxLength: 60,
-                autofillHints: const [AutofillHints.name],
+                maxLength: 24,
                 textInputAction: TextInputAction.done,
                 onSubmitted: (_) => _submit(),
                 errorText: _tried && !_nameOk
-                    ? l.classesLengthError(2, 60)
+                    ? l.classesLengthError(2, 24)
                     : null,
                 onChanged: (_) => setState(() {}),
               ),
@@ -561,6 +638,24 @@ Future<_GroupData?> _loadGroup(BuildContext context, String groupId) async {
     results[1] as List<GroupSubmission>,
     results[2] as List<GroupMember>,
   );
+}
+
+/// Topshiriq savollari tayyor bo'lguncha holat: kontent paketi va (mavzu
+/// testida toifa savoli bo'lsa) toifa banki.
+Widget _questionsGate(
+  GroupAssignment a,
+  Widget Function(BuildContext context, ContentPack pack) builder,
+) => ContentGate(
+  builder: (context, pack) => _packOnly(pack, a)
+      ? builder(context, pack)
+      : ToifaBankGate(builder: (context, _) => builder(context, pack)),
+);
+
+/// Topshiriq faqat kontent paketi savollaridan (eski topshiriqlar kabi).
+bool _packOnly(ContentPack? pack, GroupAssignment a) {
+  if (pack == null) return false;
+  final source = PackQuestionSource.of(pack);
+  return a.questionIds.every((id) => source.question(id) != null);
 }
 
 enum _StudentStatus { fresh, inProgress, pending, done, overdue }
@@ -684,6 +779,18 @@ class _GroupScreenState extends State<GroupScreen> with _AccountReload {
     );
   }
 
+  /// O'quv rejasi: jadval (ustoz) yoki ochilgan mavzular (talaba).
+  Widget _planRow(StudyGroup g) {
+    final l = AppLocalizations.of(context);
+    return LgRow(
+      title: g.isTeacher ? l.classroomPlanTitle : l.classroomTopicsTitle,
+      subtitle: g.isTeacher ? l.classroomPlanSub : l.classroomTopicsSub,
+      icon: Icons.calendar_month_outlined,
+      divider: false,
+      onTap: () => _open('/learn/classes/g/${g.id}/plan'),
+    );
+  }
+
   Widget _teacher(_GroupData d) {
     final l = AppLocalizations.of(context);
     final text = Theme.of(context).textTheme;
@@ -731,6 +838,7 @@ class _GroupScreenState extends State<GroupScreen> with _AccountReload {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         if (inviteFirst) _InviteCard(group: d.group),
+        _planRow(d.group),
         ...assignments,
         LgSectionTitle(l.classesMembersTitle(students.length)),
         if (students.isEmpty)
@@ -748,7 +856,7 @@ class _GroupScreenState extends State<GroupScreen> with _AccountReload {
                             mine.length)
                         .round();
               return LgRow(
-                title: m.displayName,
+                title: memberLabel(context, d.group.id, m),
                 subtitle: avg == null
                     ? l.classesMemberNoWork
                     : l.classesMemberSummary(
@@ -758,6 +866,7 @@ class _GroupScreenState extends State<GroupScreen> with _AccountReload {
                       ),
                 icon: Icons.person_outline_rounded,
                 divider: i < students.length - 1,
+                onTap: () => _editLocalName(d.group, m),
                 trailing: IconButton(
                   tooltip: l.classesRemove,
                   icon: const Icon(Icons.person_remove_outlined),
@@ -773,11 +882,53 @@ class _GroupScreenState extends State<GroupScreen> with _AccountReload {
     );
   }
 
+  /// Ustoz o'zi uchun belgi yozadi (masalan, real ism) — faqat shu
+  /// qurilmada, serverga yuborilmaydi.
+  Future<void> _editLocalName(StudyGroup g, GroupMember m) async {
+    final l = AppLocalizations.of(context);
+    final local = context.services.classroom;
+    final c = TextEditingController(text: local.localName(g.id, m.userId));
+    final value = await showDialog<String>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(l.classesLocalNameTitle),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text(l.classesLocalNameBody),
+            const SizedBox(height: 8),
+            TextField(
+              controller: c,
+              autofocus: true,
+              maxLength: 60,
+              decoration: InputDecoration(hintText: l.classesLocalNameHint),
+            ),
+          ],
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: Text(l.actionCancel),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pop(context, c.text),
+            child: Text(l.classesLocalNameSave),
+          ),
+        ],
+      ),
+    );
+    c.dispose();
+    if (value == null || !mounted) return;
+    await local.setLocalName(g.id, m.userId, value);
+    if (mounted) setState(() {});
+  }
+
   Future<void> _remove(StudyGroup g, GroupMember m) async {
     final l = AppLocalizations.of(context);
     final ok = await confirmDialog(
       context,
-      title: l.classesRemoveTitle(m.displayName),
+      title: l.classesRemoveTitle(memberLabel(context, g.id, m)),
       body: l.classesRemoveBody,
       action: l.classesRemoveAction,
     );
@@ -806,6 +957,7 @@ class _GroupScreenState extends State<GroupScreen> with _AccountReload {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
+        _planRow(d.group),
         if (d.assignments.isNotEmpty)
           LgPanel(
             soft: true,
@@ -1029,7 +1181,14 @@ class _InviteCard extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(height: 6),
+          const SizedBox(height: 12),
+          Center(
+            child: QrCodeView(
+              data: code,
+              semanticLabel: l.classesQrLabel(code.split('').join(' ')),
+            ),
+          ),
+          const SizedBox(height: 10),
           Text(l.classesInviteBody, style: text.bodyMedium),
           const SizedBox(height: 14),
           LgButton(
@@ -1405,7 +1564,8 @@ Future<_AssignmentData?> _loadAssignment(
   String groupId,
   String assignmentId,
 ) async {
-  final backend = context.services.backend;
+  final services = context.services;
+  final backend = services.backend;
   final group = (await backend.myGroups())
       .where((g) => g.id == groupId)
       .firstOrNull;
@@ -1414,6 +1574,11 @@ Future<_AssignmentData?> _loadAssignment(
       .where((a) => a.id == assignmentId)
       .firstOrNull;
   if (a == null) return null;
+  // Mavzu testida toifa banki savollari ham bo'lishi mumkin (sahifa
+  // [_questionsGate] bilan bank yuklanishini kutadi).
+  if (!_packOnly(services.content.pack, a)) {
+    unawaited(services.toifa.ensureLoaded());
+  }
   return _AssignmentData(
     group: group,
     assignment: a,
@@ -1506,7 +1671,7 @@ class _AssignmentScreenState extends State<AssignmentScreen>
 
   Future<void> _start(GroupAssignment a, ContentPack pack) async {
     final services = context.services;
-    final byId = _byId(pack);
+    final byId = _byId(context, pack);
     setState(() => _busy = true);
     try {
       final start = await services.backend.startAssignment(a.id);
@@ -1525,6 +1690,9 @@ class _AssignmentScreenState extends State<AssignmentScreen>
           id: exams.newId(),
           mode: ExamMode.assignment,
           questions: [for (final id in a.questionIds) byId[id]!],
+          sourceId: _packOnly(pack, a)
+              ? PackQuestionSource.sourceId
+              : ClassQuestionSource.sourceId,
           random: exams.random,
           startedAt: startedAt,
           limit: limit,
@@ -1590,8 +1758,9 @@ class _AssignmentScreenState extends State<AssignmentScreen>
                   context,
                   _data,
                   _load,
-                  (d) => ContentGate(
-                    builder: (context, pack) => ListenableBuilder(
+                  (d) => _questionsGate(
+                    d.assignment,
+                    (context, pack) => ListenableBuilder(
                       listenable: context.services.exams,
                       builder: (context, _) => d.group.isTeacher
                           ? _teacher(d, pack)
@@ -1636,7 +1805,7 @@ class _AssignmentScreenState extends State<AssignmentScreen>
     final me = services.backend.userId;
     final mine = d.submissions.where((s) => s.userId == me).firstOrNull;
     if (mine != null) return _studentResult(a, mine, pack);
-    final byId = _byId(pack);
+    final byId = _byId(context, pack);
     final missing = a.questionIds.where((id) => !byId.containsKey(id)).length;
     final local = services.exams.assignmentSession(a.id, me);
     final status = _statusFor(context, a, mine);
@@ -1718,7 +1887,7 @@ class _AssignmentScreenState extends State<AssignmentScreen>
     ContentPack pack,
   ) {
     final l = AppLocalizations.of(context);
-    final byId = _byId(pack);
+    final byId = _byId(context, pack);
     bool isRight(int i) =>
         mine.correct?[i] ??
         (byId[a.questionIds[i]]?.correct.contains(mine.answers[i]) ?? false);
@@ -1787,7 +1956,7 @@ class _AssignmentScreenState extends State<AssignmentScreen>
     final text = Theme.of(context).textTheme;
     final lang = Localizations.localeOf(context).languageCode;
     final a = d.assignment;
-    final byId = _byId(pack);
+    final byId = _byId(context, pack);
     final students = [
       for (final m in d.members)
         if (!m.isTeacher) m,
@@ -1855,7 +2024,7 @@ class _AssignmentScreenState extends State<AssignmentScreen>
                 ),
                 for (final m in rows)
                   _ResultRow(
-                    name: m.displayName,
+                    name: memberLabel(context, widget.groupId, m),
                     submission: subs[m.userId],
                     onTap: subs[m.userId] == null
                         ? null
@@ -2081,7 +2250,9 @@ class _StudentResultScreenState extends State<StudentResultScreen>
         .where((s) => s.userId == widget.userId)
         .firstOrNull;
     return LgPage(
-      title: member?.displayName ?? l.classesResults,
+      title: member == null
+          ? l.classesResults
+          : memberLabel(context, widget.groupId, member),
       subtitle: d?.assignment.title,
       showProfile: false,
       children: [
@@ -2092,39 +2263,37 @@ class _StudentResultScreenState extends State<StudentResultScreen>
                   context,
                   _data,
                   _load,
-                  (d) => ContentGate(
-                    builder: (context, pack) {
-                      final byId = _byId(pack);
-                      final a = d.assignment;
-                      final unanswered = s!.answers.where((x) => x < 0).length;
-                      return Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          ScoreHero(
-                            title: l.classesStudentResultTitle,
-                            correct: s.score,
-                            total: s.total,
-                            wrong: s.total - s.score - unanswered,
-                            unanswered: unanswered,
-                            caption: l.classesSubmittedAt(
-                              formatWhen(s.submittedAt, context),
-                            ),
+                  (d) => _questionsGate(d.assignment, (context, pack) {
+                    final byId = _byId(context, pack);
+                    final a = d.assignment;
+                    final unanswered = s!.answers.where((x) => x < 0).length;
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        ScoreHero(
+                          title: l.classesStudentResultTitle,
+                          correct: s.score,
+                          total: s.total,
+                          wrong: s.total - s.score - unanswered,
+                          unanswered: unanswered,
+                          caption: l.classesSubmittedAt(
+                            formatWhen(s.submittedAt, context),
                           ),
-                          LgSectionTitle(l.examAnalysis),
-                          for (var i = 0; i < a.questionIds.length; i++)
-                            ExamReviewCard(
-                              number: i + 1,
-                              question: byId[a.questionIds[i]],
-                              chosen: i < s.answers.length && s.answers[i] >= 0
-                                  ? [s.answers[i]]
-                                  : null,
-                              correct: [d.key![i]],
-                              chosenLabel: l.classesStudentAnswer,
-                            ),
-                        ],
-                      );
-                    },
-                  ),
+                        ),
+                        LgSectionTitle(l.examAnalysis),
+                        for (var i = 0; i < a.questionIds.length; i++)
+                          ExamReviewCard(
+                            number: i + 1,
+                            question: byId[a.questionIds[i]],
+                            chosen: i < s.answers.length && s.answers[i] >= 0
+                                ? [s.answers[i]]
+                                : null,
+                            correct: [d.key![i]],
+                            chosenLabel: l.classesStudentAnswer,
+                          ),
+                      ],
+                    );
+                  }),
                 ),
         ),
       ],

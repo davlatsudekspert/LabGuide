@@ -11,6 +11,7 @@ import '../../app/widgets/links.dart';
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
+import '../classroom/topic_questions.dart';
 import '../content/ui/content_widgets.dart';
 import '../toifa/toifa_bank.dart';
 import '../toifa/toifa_controller.dart';
@@ -51,6 +52,14 @@ class ExamSourceGate extends StatelessWidget {
     if (sourceId == ToifaQuestionSource.sourceId) {
       return ToifaBankGate(
         builder: (context, bank) => builder(context, bank.source),
+      );
+    }
+    if (sourceId == ClassQuestionSource.sourceId) {
+      return ContentGate(
+        builder: (context, pack) => ToifaBankGate(
+          builder: (context, bank) =>
+              builder(context, ClassQuestionSource.of(pack, bank)),
+        ),
       );
     }
     final l = AppLocalizations.of(context);
@@ -104,8 +113,14 @@ ExamQuestionSource? examSourceOf(BuildContext context, String sourceId) {
   if (sourceId == ToifaQuestionSource.sourceId) {
     return context.services.toifa.bank?.source;
   }
-  if (sourceId != PackQuestionSource.sourceId) return null;
   final pack = context.services.content.pack;
+  if (sourceId == ClassQuestionSource.sourceId) {
+    final bank = context.services.toifa.bank;
+    return pack == null || bank == null
+        ? null
+        : ClassQuestionSource.of(pack, bank);
+  }
+  if (sourceId != PackQuestionSource.sourceId) return null;
   return pack == null ? null : PackQuestionSource.of(pack);
 }
 

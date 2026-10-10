@@ -10,6 +10,7 @@ import 'package:path_provider/path_provider.dart';
 import 'app/app.dart';
 import 'app/app_scope.dart';
 import 'core/backend/access_controller.dart';
+import 'core/backend/cloudflare_backend.dart';
 import 'core/backend/lab_backend.dart';
 import 'core/backend/supabase_backend.dart';
 import 'core/entitlements/entitlement_cache.dart';
@@ -18,6 +19,8 @@ import 'core/entitlements/entitlement_source.dart';
 import 'core/storage/kv_store.dart';
 import 'features/auth/auth_controller.dart';
 import 'features/auth/otp_auth.dart';
+import 'features/classroom/classroom_local.dart';
+import 'features/classroom/curriculum.dart';
 import 'features/content/content_controller.dart';
 import 'features/daily/daily_controller.dart';
 import 'features/daily/daily_reminder.dart';
@@ -57,6 +60,8 @@ Future<void> main() async {
   );
   // Kontent fonda yuklanadi; ekranlar loading/error holatini ko'rsatadi.
   unawaited(services.content.load());
+  // O'quv dasturi (asset bo'lmasa — “qo'shilmagan”, ma'ruza qatori yo'q).
+  unawaited(services.curriculum.ensureLoaded());
   // Hamkorlar keshdan darhol; serverdan fonda (sozlanmagan buildda — yo'q).
   unawaited(services.partners.refresh(force: true));
   // Kunlik eslatma yoqilgan bo'lsa — keyingi kunlar rejasi yangilanadi.
@@ -78,6 +83,7 @@ AppServices createServices({
   ReminderScheduler? reminderScheduler,
   ResultSharer? sharer,
   DateTime Function()? clock,
+  Curriculum? curriculum,
 }) {
   const config = AppConfig(appVersion: _appVersion, showDebugBadge: kDebugMode);
   final server = backend ?? _defaultBackend();
@@ -135,13 +141,20 @@ AppServices createServices({
       settings: settings,
     ),
     sharer: sharer ?? const SystemResultSharer(),
+    curriculum: CurriculumController(bundle: bundle, curriculum: curriculum),
+    classroom: ClassroomLocal(store),
   )..watchAccess();
 }
 
 Future<Directory> _defaultPacksRoot() async =>
     Directory('${(await getApplicationSupportDirectory()).path}/packs');
 
+/// Server tanlovi (build vaqtidagi `--dart-define`):
+/// `LG_API_URL` (Cloudflare Worker) bo'lsa — u; aks holda Supabase
+/// sozlamalari bo'lsa — Supabase; ikkalasi ham bo'sh — “server ulanmagan”.
 LabBackend _defaultBackend() {
+  const api = ApiConfig.fromEnvironment;
+  if (api.isConfigured) return CloudflareLabBackend(api);
   const config = BackendConfig.fromEnvironment;
   return config.isConfigured
       ? SupabaseLabBackend(config)
