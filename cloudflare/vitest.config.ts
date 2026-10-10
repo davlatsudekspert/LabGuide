@@ -13,6 +13,7 @@ export default defineConfig(async () => {
           bindings: {
             TEST_MIGRATIONS: migrations,
             LG_SERVER_SECRET: 'test-only-secret-0123456789abcdef0123456789',
+            RESEND_API_KEY: 'test-resend-key',
             BREVO_API_KEY: 'test-brevo-key',
             LG_SENDER_EMAIL: 'noreply@example.test',
             LG_ADMIN_EMAILS: 'boss@example.test',

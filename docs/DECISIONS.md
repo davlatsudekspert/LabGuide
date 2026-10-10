@@ -526,9 +526,10 @@ ranglari (yashil palitra) o‘zgarmadi — logo faqat belgi sifatida.
   (Android 12+, `isOnDeviceRecognitionAvailable`); aks holda "oflayn tanish yo'q" xabari.
   Ovoz hech qachon tizim xizmati serveriga ketmaydi — Play Data safety'da audio yo'q.
 
-## D-41. Server — Cloudflare Workers + D1, email kodi — Brevo (2026-10-10)
-- Egasi qarori: Supabase o'rniga Cloudflare Workers + D1 (bepul tarif), email OTP — Brevo
-  transactional API. Kod `cloudflare/`, ilova adapteri `CloudflareLabBackend`; build'da
+## D-41. Server — Cloudflare Workers + D1, email kodi — Resend (2026-10-10)
+- Egasi qarori: Supabase o'rniga Cloudflare Workers + D1 (bepul tarif), email OTP — Resend
+  (`alideveloper.uz` domeni, `LabGuide <labguide@alideveloper.uz>`; Brevo zaxira: `EMAIL_PROVIDER=brevo`).
+  NFCSTORE sozlamalariga tegilmaydi. Kod `cloudflare/`, ilova adapteri `CloudflareLabBackend`; build'da
   `LG_API_URL` berilsa u ishlatiladi, bo'sh bo'lsa avvalgi tanlov (Supabase / “ulanmagan”).
   Batafsil: `docs/BACKEND_CLOUDFLARE.md`.
 - Email serverda ochiq saqlanmaydi (HMAC + niqoblangan ko'rinish); shuning uchun admin
@@ -575,7 +576,7 @@ Egasi qarori (2026-10-10):
   kartalar/jadvallar/atlas/kalkulyatorlar va nomzod savollardan; katta shrift, oldinga/orqaga
   (tugma, surish, klaviatura), ekran o‘chmaydi (mavjud wakelock).
 - **Server:** ilova faqat `LabBackend` interfeysiga tayanadi. Egasi keyinroq serverni
-  Cloudflare Workers + D1 (OTP — Brevo) qilib yozishni tanladi; `supabase/migrations/
+  Cloudflare Workers + D1 (OTP — Resend) qilib yozishni tanladi; `supabase/migrations/
   20261010000100_teacher_topics.sql` va `supabase/tests/30_teacher_topics.sql` qoidalar
   (RLS) uchun ma’lumotnoma va qabul testi sifatida qoladi — Worker API shu kontraktga mos
   bo‘lishi kerak. Server ulanmagan buildda barcha guruh ekranlari “Server hali ulanmagan”.

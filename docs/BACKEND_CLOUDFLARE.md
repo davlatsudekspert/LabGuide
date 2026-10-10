@@ -1,7 +1,7 @@
 # LabGuide server — Cloudflare Workers + D1
 
 Egasi qarori (2026-10-10): server **Cloudflare Workers + D1** bepul tarifida,
-email kodlari **Brevo** transactional API orqali (bepul — kuniga 300 xat).
+email kodlari **Resend** orqali (`alideveloper.uz` domeni; zaxira — Brevo, `EMAIL_PROVIDER=brevo`).
 Supabase kodi (`supabase/`) xavfsizlik qoidalari manbai sifatida qoladi.
 
 > Holat: kod, testlar va CI tayyor. **Deploy qilinmagan** — buning uchun
@@ -12,7 +12,7 @@ Supabase kodi (`supabase/`) xavfsizlik qoidalari manbai sifatida qoladi.
 ```
 Flutter ilova ──HTTPS/JSON──▶ Worker `labguide-api` (cloudflare/src) ──▶ D1 `labguide-db`
    (CloudflareLabBackend)          │                                     (SQLite, EEUR)
-                                   └──▶ Brevo API (faqat kirish kodi xati)
+                                   └──▶ Resend API (faqat kirish kodi xati; ixtiyoriy Brevo)
 ```
 
 | Joy | Nima |
@@ -21,7 +21,7 @@ Flutter ilova ──HTTPS/JSON──▶ Worker `labguide-api` (cloudflare/src) �
 | `cloudflare/src/auth.ts` | email OTP, sessiyalar, profil, admin TOTP, hisobni o‘chirish |
 | `cloudflare/src/groups.ts` | guruhlar, a’zolik, mavzular, savol-javob belgilari, test sessiyalari, natijalar |
 | `cloudflare/src/crypto.ts` | HMAC, SHA-256, AES-GCM, TOTP (faqat WebCrypto) |
-| `cloudflare/src/email.ts` | Brevo yuboruvchi |
+| `cloudflare/src/email.ts` | email yuboruvchi: Resend (standart) / Brevo, uz/ru/en matn |
 | `cloudflare/migrations/` | D1 sxemasi: `0001_auth`, `0002_classroom`, `0003_planned_ports` (faqat sxema), `0004_teacher_topics` (ustoz ro‘yxati, mavzu bosqichlari va testi) |
 | `cloudflare/test/` | vitest + `@cloudflare/vitest-pool-workers` (haqiqiy workerd va lokal D1) |
 | `lib/core/backend/cloudflare_backend.dart` | ilova adapteri `CloudflareLabBackend` |
@@ -51,7 +51,7 @@ borligi ham bildirilmaydi), 409 holatga zid (masalan, ikkinchi topshirish),
 | Metod va yo‘l | Kim | Nima |
 |---|---|---|
 | `GET /v1/health` | hamma | `{ok:true}` |
-| `POST /v1/auth/otp/request` `{email, language?}` | hamma | 6 raqamli kod Brevo orqali; `{retry_after:60, valid_for:600}` |
+| `POST /v1/auth/otp/request` `{email, language?}` | hamma | 6 raqamli kod email orqali (til `language`, standart uz); `{retry_after:60, valid_for:600}` |
 | `POST /v1/auth/otp/verify` `{email, code}` | hamma | `{token, user_id, expires_at}` (sessiya 60 kun) |
 | `POST /v1/auth/logout` | sessiya | joriy tokenni bekor qiladi |
 | `POST /v1/auth/logout-all` | sessiya | hamma qurilmalardan chiqish |
@@ -218,16 +218,20 @@ npm run typecheck
    Token barcha Workerlarni tahrirlay oladi — CI faqat `labguide-api` nomini
    deploy qiladi; tokenni boshqa joyda ishlatmang.
 3. **Account ID:** Dashboard → Workers & Pages → o‘ng panel “Account ID”.
-4. **Brevo:** brevo.com da hisob → *Senders, Domains & Dedicated IPs* →
-   jo‘natuvchi email qo‘shib tasdiqlang (yaxshisi o‘z domeningiz va uning
-   SPF/DKIM yozuvlari — aks holda xatlar spamga tushadi) → *SMTP & API → API
-   Keys* → yangi kalit (`xkeysib-…`).
+4. **Resend:** resend.com da hisob → *Domains* → `alideveloper.uz` qo‘shib,
+   DNS’ga SPF/DKIM yozuvlarini kiriting va tasdiqlang → *API Keys* → yangi
+   kalit (`re_…`). Jo‘natuvchi: `LabGuide <labguide@alideveloper.uz>`
+   (`LG_SENDER_EMAIL` berilmasa shu standart). Zaxira: `EMAIL_PROVIDER=brevo`
+   va `BREVO_API_KEY` + tasdiqlangan `LG_SENDER_EMAIL` (brevo.com → *Senders* →
+   *SMTP & API → API Keys*).
 5. **Server secreti:** `openssl rand -hex 32` — natijani parol menejeriga
    saqlang. U email HMAC kaliti: o‘zgartirilsa yoki yo‘qolsa, mavjud hisoblar
    topilmay qoladi (MyCloud’ga ko‘chirishda ham kerak).
 6. **GitHub → Settings → Secrets and variables → Actions → Secrets:**
    - `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`
-   - `BREVO_API_KEY`, `LG_SENDER_EMAIL` (tasdiqlangan jo‘natuvchi)
+   - `RESEND_API_KEY` **yoki** `BREVO_API_KEY` (biri yetarli); ixtiyoriy
+     `LG_SENDER_EMAIL`; **Variables:** `EMAIL_PROVIDER` (`resend` standart | `brevo`).
+     Qiymatlar `wrangler secret put` orqali stdin’dan o‘tadi, logga chiqmaydi.
    - `LG_SERVER_SECRET` (5-qadam)
    - ixtiyoriy: `LG_ADMIN_EMAILS` (masalan, egasining emaili — vergul bilan),
      `CLOUDFLARE_D1_DATABASE_ID` (boshqa baza ishlatilsa)
@@ -242,7 +246,7 @@ npm run typecheck
    kiring → Admin panel → TOTP. Kalit yo‘qolsa:
    `npx wrangler d1 execute labguide-db --remote --command "DELETE FROM totp_factors WHERE user_id = '<id>'"`.
    Qo‘lda admin berish: `INSERT INTO admins (user_id, granted_at, granted_reason) VALUES ('<id>', <ms>, 'manual')`.
-10. **Maxfiylik siyosati:** server (Cloudflare, EEUR) va email xizmati (Brevo)
+10. **Maxfiylik siyosati:** server (Cloudflare, EEUR) va email xizmati (Resend)
     nomlarini `docs/store/PRIVACY_POLICY.md` ga yozing; email ochiq holda
     saqlanmasligini qo‘shish mumkin.
 

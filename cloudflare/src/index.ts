@@ -1,8 +1,8 @@
 import { createApp } from './app';
-import { brevoSender } from './email';
+import { emailSender } from './email';
 import type { Env } from './http';
 
-const app = createApp({ sendCode: brevoSender, now: () => Date.now() });
+const app = createApp({ sendCode: emailSender, now: () => Date.now() });
 
 export default {
   fetch: (req: Request, env: Env) => app.fetch(req, env),

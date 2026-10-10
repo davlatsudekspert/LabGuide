@@ -22,6 +22,7 @@ migrations_dir = "migrations"
 crons = ["17 22 * * *"]
 
 [vars]
+EMAIL_PROVIDER = "resend"
 LG_SENDER_NAME = "LabGuide"
 # Brauzer (web build) uchun ruxsat etilgan originlar, vergul bilan.
 # Mobil ilova CORS'ga muhtoj emas — bo'sh qoldiring.

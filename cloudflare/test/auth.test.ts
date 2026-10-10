@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { makeServer, uniqueEmail } from './helpers';
 
 describe('email OTP', () => {
-  it('kod 6 raqam, Brevo-sender orqali; javob kodni qaytarmaydi', async () => {
+  it('kod 6 raqam, email-sender orqali; javob kodni qaytarmaydi', async () => {
     const s = makeServer();
     const email = uniqueEmail();
     const r = await s.call('POST', '/v1/auth/otp/request', { body: { email: `  ${email.toUpperCase()} ` } });

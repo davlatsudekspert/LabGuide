@@ -5,6 +5,9 @@ export interface Env {
   DB: D1Database;
   /** >= 32 belgi. Email/IP/OTP HMAC va TOTP shifrlash kalitlari shundan. */
   LG_SERVER_SECRET?: string;
+  /** "resend" (standart) | "brevo". */
+  EMAIL_PROVIDER?: string;
+  RESEND_API_KEY?: string;
   BREVO_API_KEY?: string;
   LG_SENDER_EMAIL?: string;
   LG_SENDER_NAME?: string;
