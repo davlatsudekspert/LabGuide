@@ -52,7 +52,8 @@ Future<({String gid, String aid, String code})> _prepare(
   DateTime? due,
 }) async {
   await _signIn(tester, s, 'teacher@example.com');
-  final g = await b.createGroup('Biokimyo', displayName: 'Ustoz K.');
+  await b.registerTeacher();
+  final g = await b.createGroup('Biokimyo');
   final qs = s.content.pack!.quiz.take(3).toList();
   final aid = await b.createAssignment(
     groupId: g.id,
@@ -95,10 +96,15 @@ void main() {
     expect(find.text(uz.classesEmpty), findsOneWidget);
     expect(find.text(uz.classesRoleNote), findsOneWidget);
     await tapScroll(tester, uz.classesCreate);
+    // Avval o'zini ustoz sifatida ro'yxatdan o'tkazadi (rol tanlovi emas).
+    expect(find.text(uz.classesCreateAction), findsNothing);
+    expect(find.text(uz.classesTeacherRegisterTitle), findsOneWidget);
+    await tapScroll(tester, uz.classesTeacherRegister);
+    expect(s.access.access.teacher, isTrue);
+    expect(s.access.access.admin, isFalse);
     await tapScroll(tester, uz.classesCreateAction);
     expect(find.text(uz.classesLengthError(3, 80)), findsOneWidget);
     await enterField(tester, uz.classesGroupName, 'Biokimyo 2-kurs');
-    await enterField(tester, uz.classesDisplayName, 'Karimova N.A.');
     await tapScroll(tester, uz.classesCreateAction);
     final group = (await b.myGroups()).single;
     expect(group.isTeacher, isTrue);

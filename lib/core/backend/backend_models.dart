@@ -45,12 +45,14 @@ class AccessInfo {
     required this.adminAccount,
     required this.aal2,
     required this.reviewer,
+    this.teacher = false,
   });
 
   factory AccessInfo.fromJson(Map<String, Object?> json) => AccessInfo(
     adminAccount: json['admin_account'] == true,
     aal2: json['aal'] == 'aal2',
     reviewer: json['reviewer'] == true,
+    teacher: json['teacher'] == true,
   );
 
   static const none = AccessInfo(
@@ -62,6 +64,10 @@ class AccessInfo {
   final bool adminAccount;
   final bool aal2;
   final bool reviewer;
+
+  /// O'zini ustoz sifatida ro'yxatdan o'tkazgan (faqat o'z guruhlarini
+  /// ochadi; admin vakolati emas).
+  final bool teacher;
 
   /// Admin panelni ochish mumkin (hisob + ikki bosqichli tasdiq).
   bool get admin => adminAccount && aal2;
@@ -359,6 +365,7 @@ class GroupAssignment {
     required this.dueAt,
     required this.timeLimitMinutes,
     required this.createdAt,
+    this.topicId,
   });
 
   factory GroupAssignment.fromJson(Map<String, Object?> j) => GroupAssignment(
@@ -369,11 +376,15 @@ class GroupAssignment {
     dueAt: _date(j['due_at']),
     timeLimitMinutes: (j['time_limit_minutes'] as num?)?.toInt(),
     createdAt: DateTime.parse(j['created_at']! as String),
+    topicId: j['topic_id'] as String?,
   );
 
   final String id;
   final String groupId;
   final String title;
+
+  /// O'quv dasturi mavzusi testi bo'lsa — mavzu id si.
+  final String? topicId;
   final List<String> questionIds;
   final DateTime? dueAt;
   final int? timeLimitMinutes;
@@ -420,27 +431,90 @@ class GroupSubmission {
   int get percent => total == 0 ? 0 : (score * 100 / total).round();
 }
 
-/// Guruh a'zosi: guruh ichida ko'rinadigan ism (email ko'rsatilmaydi).
+/// Guruh a'zosi. Ism-familiya serverda saqlanmaydi: ko'rinadigan nom —
+/// talaba o'zi tanlagan taxallus ([alias], ixtiyoriy) yoki guruhdagi tartib
+/// raqami ([seatNo], “Talaba 07”). Email ko'rsatilmaydi.
 @immutable
 class GroupMember {
   const GroupMember({
     required this.userId,
-    required this.displayName,
     required this.isTeacher,
     required this.joinedAt,
+    this.alias,
+    this.seatNo,
   });
 
   factory GroupMember.fromJson(Map<String, Object?> j) => GroupMember(
     userId: j['user_id']! as String,
-    displayName: j['display_name']! as String,
+    alias: switch (j['display_name']) {
+      final String s when s.trim().isNotEmpty => s.trim(),
+      _ => null,
+    },
+    seatNo: (j['seat_no'] as num?)?.toInt(),
     isTeacher: j['member_role'] == 'teacher',
     joinedAt: DateTime.parse(j['joined_at']! as String),
   );
 
   final String userId;
-  final String displayName;
+  final String? alias;
+
+  /// Talabaning guruhdagi tartib raqami (ustozda — null).
+  final int? seatNo;
   final bool isTeacher;
   final DateTime joinedAt;
+}
+
+/// Mavzu dars bosqichi: ma'ruza va og'zaki savol-javob (test — alohida).
+enum TopicStage {
+  lecture('lecture'),
+  oral('oral');
+
+  const TopicStage(this.wire);
+  final String wire;
+}
+
+/// Guruhga ochilgan o'quv dasturi mavzusi va dars holati.
+@immutable
+class GroupTopic {
+  const GroupTopic({
+    required this.groupId,
+    required this.topicId,
+    required this.openedAt,
+    this.lectureDoneAt,
+    this.oralDoneAt,
+    this.testAssignmentId,
+  });
+
+  factory GroupTopic.fromJson(Map<String, Object?> j) => GroupTopic(
+    groupId: j['group_id']! as String,
+    topicId: j['topic_id']! as String,
+    openedAt: DateTime.parse(j['opened_at']! as String),
+    lectureDoneAt: _date(j['lecture_done_at']),
+    oralDoneAt: _date(j['oral_done_at']),
+    testAssignmentId: j['test_assignment_id'] as String?,
+  );
+
+  final String groupId;
+  final String topicId;
+  final DateTime openedAt;
+  final DateTime? lectureDoneAt;
+  final DateTime? oralDoneAt;
+
+  /// “Testni boshlash” bosilgan bo'lsa — topshiriq id si.
+  final String? testAssignmentId;
+
+  GroupTopic copyWith({
+    DateTime? lectureDoneAt,
+    DateTime? oralDoneAt,
+    String? testAssignmentId,
+  }) => GroupTopic(
+    groupId: groupId,
+    topicId: topicId,
+    openedAt: openedAt,
+    lectureDoneAt: lectureDoneAt ?? this.lectureDoneAt,
+    oralDoneAt: oralDoneAt ?? this.oralDoneAt,
+    testAssignmentId: testAssignmentId ?? this.testAssignmentId,
+  );
 }
 
 /// Topshiriq boshlangan vaqt (server soati) — vaqt chegarasi shundan.

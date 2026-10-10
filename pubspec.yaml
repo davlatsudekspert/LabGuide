@@ -50,6 +50,8 @@ dependencies:
   timezone: ^0.11.1
   # Natija kartochkasini tizim ulashish oynasi orqali yuborish. BSD-3.
   share_plus: ^13.3.1
+  # Guruh taklif kodi QR ko'rinishida (sof Dart, native kod yo'q). BSD-3.
+  qr: ^4.0.0
 
 dev_dependencies:
   flutter_test:

@@ -661,11 +661,15 @@ class SupabaseLabBackend implements LabBackend {
   }
 
   @override
+  Future<void> registerTeacher() =>
+      _guard(() => client.rpc<Object?>('register_teacher'));
+
+  @override
   Future<StudyGroup> createGroup(String name, {String? displayName}) async {
     final data = await _guard(
       () => client.rpc<Object?>(
         'create_group',
-        params: {'p_name': name, 'p_display_name': _nameOr(displayName)},
+        params: {'p_name': name, 'p_display_name': _aliasOrNull(displayName)},
       ),
     );
     final m = (data! as Map).cast<String, Object?>();
@@ -678,23 +682,29 @@ class SupabaseLabBackend implements LabBackend {
     );
   }
 
-  /// Guruhda ko'rinadigan ism: foydalanuvchi kiritgani, bo'lmasa emailning
-  /// @ gacha qismi.
-  String _nameOr(String? displayName) =>
-      (displayName == null || displayName.trim().length < 2)
-      ? (sessionEmail ?? 'user').split('@').first
-      : displayName.trim();
+  /// Guruhda ko'rinadigan nom: foydalanuvchi kiritgan taxallus yoki null
+  /// (server tartib raqamini ko'rsatadi). Email qismi yuborilmaydi.
+  static String? _aliasOrNull(String? alias) =>
+      (alias == null || alias.trim().isEmpty) ? null : alias.trim();
 
   @override
   Future<String> joinGroup(String code, {String? displayName}) async {
     final id = await _guard(
       () => client.rpc<Object?>(
         'join_group',
-        params: {'p_code': code, 'p_display_name': _nameOr(displayName)},
+        params: {'p_code': code, 'p_display_name': _aliasOrNull(displayName)},
       ),
     );
     return id! as String;
   }
+
+  @override
+  Future<void> setMyAlias(String groupId, String? alias) => _guard(
+    () => client.rpc<Object?>(
+      'set_member_alias',
+      params: {'p_group': groupId, 'p_alias': _aliasOrNull(alias)},
+    ),
+  );
 
   @override
   Future<void> leaveGroup(String groupId) => _guard(
@@ -706,7 +716,7 @@ class SupabaseLabBackend implements LabBackend {
     final data = await _guard(
       () => client
           .from('group_members')
-          .select('user_id, display_name, member_role, joined_at')
+          .select('user_id, display_name, seat_no, member_role, joined_at')
           .eq('group_id', groupId)
           .order('joined_at'),
     );
@@ -838,6 +848,72 @@ class SupabaseLabBackend implements LabBackend {
         (i! as num).toInt(),
     ];
   }
+
+  // ------------------------------------------------------------- mavzular
+  @override
+  Future<List<GroupTopic>> groupTopics(String groupId) async {
+    final data = await _guard(
+      () => client
+          .from('group_topics')
+          .select()
+          .eq('group_id', groupId)
+          .order('opened_at'),
+    );
+    return _rows(data).map(GroupTopic.fromJson).toList();
+  }
+
+  @override
+  Future<void> openTopic(String groupId, String topicId) => _guard(
+    () => client.rpc<Object?>(
+      'open_topic',
+      params: {'p_group': groupId, 'p_topic': topicId},
+    ),
+  );
+
+  @override
+  Future<void> markTopicStage(
+    String groupId,
+    String topicId,
+    TopicStage stage,
+  ) => _guard(
+    () => client.rpc<Object?>(
+      'mark_topic_stage',
+      params: {'p_group': groupId, 'p_topic': topicId, 'p_stage': stage.wire},
+    ),
+  );
+
+  @override
+  Future<String> startTopicTest({
+    required String groupId,
+    required String topicId,
+    required String title,
+    required List<String> questionIds,
+    required List<int> correctIndexes,
+    int? timeLimitMinutes,
+  }) async {
+    final id = await _guard(
+      () => client.rpc<Object?>(
+        'start_topic_test',
+        params: {
+          'p_group': groupId,
+          'p_topic': topicId,
+          'p_title': title,
+          'p_question_ids': questionIds,
+          'p_correct': correctIndexes,
+          'p_time_limit': timeLimitMinutes,
+        },
+      ),
+    );
+    return id! as String;
+  }
+
+  @override
+  Future<void> finishTopicTest(String groupId, String topicId) => _guard(
+    () => client.rpc<Object?>(
+      'finish_topic_test',
+      params: {'p_group': groupId, 'p_topic': topicId},
+    ),
+  );
 
   // ----------------------------------------------------------- partners
   static const _logoBucket = 'partner-logos';

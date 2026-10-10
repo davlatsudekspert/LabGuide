@@ -104,12 +104,23 @@ abstract interface class LabBackend implements OtpAuthAdapter {
   /// Tekshiruvchi bo'lmasa — bo'sh ro'yxat (RLS).
   Future<List<ContentReview>> contentReviews();
 
-  // --- guruhlar (ustoz — guruhni yaratgan hisob; huquqlar serverda)
+  // --- guruhlar (ustoz — o'zini ro'yxatdan o'tkazgan va guruhni yaratgan
+  // hisob; huquqlar serverda)
+
+  /// O'zini ustoz sifatida ro'yxatdan o'tkazish (guruh ochish uchun).
+  /// Admin vakolati bermaydi.
+  Future<void> registerTeacher();
   Future<List<StudyGroup>> myGroups();
+
+  /// [displayName] — ustozning guruhdagi ixtiyoriy nomi (odatda null).
   Future<StudyGroup> createGroup(String name, {String? displayName});
 
-  /// Qo'shilgan guruh id si.
+  /// Qo'shilgan guruh id si. [displayName] — ixtiyoriy taxallus (null —
+  /// tartib raqami ko'rinadi); ism-familiya so'ralmaydi.
   Future<String> joinGroup(String code, {String? displayName});
+
+  /// O'z taxallusini o'zgartirish (null — tartib raqami).
+  Future<void> setMyAlias(String groupId, String? alias);
   Future<void> leaveGroup(String groupId);
 
   /// Guruh a'zolari (faqat a'zo ko'radi).
@@ -142,6 +153,26 @@ abstract interface class LabBackend implements OtpAuthAdapter {
 
   /// To'g'ri javoblar kaliti — faqat ustozga (talabaga `forbidden`).
   Future<List<int>> assignmentKey(String assignmentId);
+
+  // --- o'quv dasturi mavzulari (faqat guruh egasi-ustoz o'zgartiradi)
+
+  /// Guruhga ochilgan mavzular (a'zo ko'radi).
+  Future<List<GroupTopic>> groupTopics(String groupId);
+  Future<void> openTopic(String groupId, String topicId);
+  Future<void> markTopicStage(String groupId, String topicId, TopicStage stage);
+
+  /// “Testni boshlash”: mavzu testi talabalarda ochiladi. Topshiriq id si.
+  Future<String> startTopicTest({
+    required String groupId,
+    required String topicId,
+    required String title,
+    required List<String> questionIds,
+    required List<int> correctIndexes,
+    int? timeLimitMinutes,
+  });
+
+  /// Testni yakunlash (yangi urinish qabul qilinmaydi).
+  Future<void> finishTopicTest(String groupId, String topicId);
 
   // --- Hamkorlar (reklama)
 
@@ -282,12 +313,16 @@ class UnconfiguredBackend implements LabBackend {
   @override
   Future<List<ContentReview>> contentReviews() async => _no();
   @override
+  Future<void> registerTeacher() async => _no();
+  @override
   Future<List<StudyGroup>> myGroups() async => _no();
   @override
   Future<StudyGroup> createGroup(String name, {String? displayName}) async =>
       _no();
   @override
   Future<String> joinGroup(String code, {String? displayName}) async => _no();
+  @override
+  Future<void> setMyAlias(String groupId, String? alias) async => _no();
   @override
   Future<void> leaveGroup(String groupId) async => _no();
   @override
@@ -318,6 +353,27 @@ class UnconfiguredBackend implements LabBackend {
   Future<List<GroupSubmission>> groupSubmissions(String groupId) async => _no();
   @override
   Future<List<int>> assignmentKey(String assignmentId) async => _no();
+  @override
+  Future<List<GroupTopic>> groupTopics(String groupId) async => _no();
+  @override
+  Future<void> openTopic(String groupId, String topicId) async => _no();
+  @override
+  Future<void> markTopicStage(
+    String groupId,
+    String topicId,
+    TopicStage stage,
+  ) async => _no();
+  @override
+  Future<String> startTopicTest({
+    required String groupId,
+    required String topicId,
+    required String title,
+    required List<String> questionIds,
+    required List<int> correctIndexes,
+    int? timeLimitMinutes,
+  }) async => _no();
+  @override
+  Future<void> finishTopicTest(String groupId, String topicId) async => _no();
 
   // --- Hamkorlar: server yo'q — reklama joylari umuman chiqmaydi.
   @override

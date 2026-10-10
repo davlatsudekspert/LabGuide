@@ -13,6 +13,7 @@ class _User {
   String? role;
   String? language;
   bool reviewer = false;
+  bool teacher = false;
   bool totpVerified = false;
 }
 
@@ -133,6 +134,7 @@ class FakeLabBackend implements LabBackend {
           adminAccount: _isAdminAccount,
           aal2: _aal2,
           reviewer: _current!.reviewer,
+          teacher: _current!.teacher,
         );
 
   @override
@@ -556,10 +558,20 @@ class FakeLabBackend implements LabBackend {
   bool _isMember(String groupId) => _membership(groupId) != null;
   bool _isTeacher(String groupId) => _membership(groupId)?.teacher ?? false;
 
-  String _nameOr(String? displayName) =>
-      (displayName == null || displayName.trim().length < 2)
-      ? _require().email.split('@').first
-      : displayName.trim();
+  /// Taxallus: bo'sh — null (tartib raqami ko'rinadi); email ishlatilmaydi.
+  String? _aliasOf(String? alias) {
+    final a = alias?.trim() ?? '';
+    if (a.isEmpty) return null;
+    _checkLength(a, 2, 60);
+    return a;
+  }
+
+  /// Guruh egasi va ro'yxatdan o'tgan ustoz (SQL `_owns_group`).
+  bool _owns(String groupId) {
+    final u = _current;
+    if (u == null || !u.teacher) return false;
+    return _groups.any((g) => g.id == groupId && g.ownerId == u.id);
+  }
 
   void _checkLength(String value, int min, int max) {
     final n = value.trim().length;
@@ -597,11 +609,16 @@ class FakeLabBackend implements LabBackend {
   }
 
   @override
+  Future<void> registerTeacher() async {
+    _require().teacher = true;
+  }
+
+  @override
   Future<StudyGroup> createGroup(String name, {String? displayName}) async {
     final u = _require();
+    if (!u.teacher) throw const BackendException(BackendFailure.forbidden);
     _checkLength(name, 3, 80);
-    final shown = _nameOr(displayName);
-    _checkLength(shown, 2, 60);
+    final shown = _aliasOf(displayName);
     if (_groups.where((g) => g.ownerId == u.id).length >= 10) {
       throw const BackendException(BackendFailure.rateLimited);
     }
@@ -624,14 +641,29 @@ class FakeLabBackend implements LabBackend {
         .where((g) => g.code == code.trim().toUpperCase())
         .firstOrNull;
     if (g == null) throw const BackendException(BackendFailure.notFound);
-    final shown = _nameOr(displayName);
-    _checkLength(shown, 2, 60);
-    if (_isMember(g.id)) return g.id;
+    if (_isMember(g.id)) return g.id; // SQL: qayta qo'shilish o'zgartirmaydi
+    final shown = _aliasOf(displayName);
     if (_members.where((m) => m.groupId == g.id).length >= 200) {
       throw const BackendException(BackendFailure.rateLimited);
     }
-    _members.add(_Member(g.id, u.id, shown, teacher: false, joinedAt: _now()));
+    _members.add(
+      _Member(
+        g.id,
+        u.id,
+        shown,
+        teacher: false,
+        joinedAt: _now(),
+        seatNo: g.nextSeat++,
+      ),
+    );
     return g.id;
+  }
+
+  @override
+  Future<void> setMyAlias(String groupId, String? alias) async {
+    final m = _membership(groupId);
+    if (m == null) throw const BackendException(BackendFailure.forbidden);
+    m.alias = _aliasOf(alias);
   }
 
   @override
@@ -646,12 +678,16 @@ class FakeLabBackend implements LabBackend {
   Future<List<GroupMember>> groupMembers(String groupId) async {
     _require();
     if (!_isMember(groupId)) return const []; // RLS: begona — bo'sh
+    // RLS: talaba — o'zi va ustoz qatori; ustoz — hamma.
+    final all = _isTeacher(groupId);
     return [
       for (final m in _members)
-        if (m.groupId == groupId)
+        if (m.groupId == groupId &&
+            (all || m.teacher || m.userId == _current?.id))
           GroupMember(
             userId: m.userId,
-            displayName: m.displayName,
+            alias: m.alias,
+            seatNo: m.seatNo,
             isTeacher: m.teacher,
             joinedAt: m.joinedAt,
           ),
@@ -687,6 +723,7 @@ class FakeLabBackend implements LabBackend {
     required List<int> correctIndexes,
     DateTime? dueAt,
     int? timeLimitMinutes,
+    String? topicId,
   }) async {
     _require();
     if (!_isTeacher(groupId)) {
@@ -710,6 +747,7 @@ class FakeLabBackend implements LabBackend {
       dueAt: dueAt?.toUtc(),
       timeLimitMinutes: timeLimitMinutes,
       createdAt: _now(),
+      topicId: topicId,
     );
     _assignments.add(_Assignment(a, List.unmodifiable(correctIndexes)));
     return a.id;
@@ -821,6 +859,108 @@ class FakeLabBackend implements LabBackend {
       throw const BackendException(BackendFailure.forbidden);
     }
     return a.key;
+  }
+
+  // ------------------------------------------------------------- mavzular
+  // `20261010000100_teacher_topics.sql`: a'zo ochilgan mavzularni ko'radi;
+  // ochish, bosqich va testni faqat guruh egasi-ustoz o'zgartiradi.
+
+  final Map<(String, String), GroupTopic> _topics = {};
+  static final _topicId = RegExp(r'^[A-Za-z0-9][A-Za-z0-9_.:-]{0,79}$');
+
+  void _requireOwner(String groupId) {
+    _require();
+    if (!_owns(groupId)) throw const BackendException(BackendFailure.forbidden);
+  }
+
+  @override
+  Future<List<GroupTopic>> groupTopics(String groupId) async {
+    _require();
+    if (!_isMember(groupId)) return const [];
+    return [
+      for (final t in _topics.values)
+        if (t.groupId == groupId) t,
+    ];
+  }
+
+  @override
+  Future<void> openTopic(String groupId, String topicId) async {
+    _requireOwner(groupId);
+    if (!_topicId.hasMatch(topicId)) {
+      throw const BackendException(BackendFailure.invalid);
+    }
+    _topics.putIfAbsent(
+      (groupId, topicId),
+      () => GroupTopic(
+        groupId: groupId,
+        topicId: topicId,
+        openedAt: groupClock().toUtc(),
+      ),
+    );
+  }
+
+  @override
+  Future<void> markTopicStage(
+    String groupId,
+    String topicId,
+    TopicStage stage,
+  ) async {
+    await openTopic(groupId, topicId);
+    final t = _topics[(groupId, topicId)]!;
+    final now = groupClock().toUtc();
+    _topics[(groupId, topicId)] = switch (stage) {
+      TopicStage.lecture => t.copyWith(lectureDoneAt: t.lectureDoneAt ?? now),
+      TopicStage.oral => t.copyWith(oralDoneAt: t.oralDoneAt ?? now),
+    };
+  }
+
+  @override
+  Future<String> startTopicTest({
+    required String groupId,
+    required String topicId,
+    required String title,
+    required List<String> questionIds,
+    required List<int> correctIndexes,
+    int? timeLimitMinutes,
+  }) async {
+    await openTopic(groupId, topicId);
+    final t = _topics[(groupId, topicId)]!;
+    if (t.testAssignmentId != null) {
+      throw const BackendException(BackendFailure.invalid, 'already started');
+    }
+    final id = await createAssignment(
+      groupId: groupId,
+      title: title,
+      questionIds: questionIds,
+      correctIndexes: correctIndexes,
+      timeLimitMinutes: timeLimitMinutes,
+      topicId: topicId,
+    );
+    _topics[(groupId, topicId)] = t.copyWith(testAssignmentId: id);
+    return id;
+  }
+
+  @override
+  Future<void> finishTopicTest(String groupId, String topicId) async {
+    _requireOwner(groupId);
+    final id = _topics[(groupId, topicId)]?.testAssignmentId;
+    if (id == null) throw const BackendException(BackendFailure.notFound);
+    final a = _assignments.firstWhere((a) => a.info.id == id);
+    final now = groupClock().toUtc();
+    final due = a.info.dueAt;
+    if (due == null || due.isAfter(now)) {
+      final i = a.info;
+      a.info = GroupAssignment(
+        id: i.id,
+        groupId: i.groupId,
+        title: i.title,
+        questionIds: i.questionIds,
+        dueAt: now,
+        timeLimitMinutes: i.timeLimitMinutes,
+        createdAt: i.createdAt,
+        topicId: i.topicId,
+      );
+    }
   }
 
   // ----------------------------------------------------------- Hamkorlar
@@ -1142,25 +1282,30 @@ class _Group {
   final String ownerId;
   final String name;
   final String code;
+
+  /// Keyingi talabaning tartib raqami (qayta ishlatilmaydi).
+  int nextSeat = 1;
 }
 
 class _Member {
   _Member(
     this.groupId,
     this.userId,
-    this.displayName, {
+    this.alias, {
     required this.teacher,
     required this.joinedAt,
+    this.seatNo,
   });
   final String groupId;
   final String userId;
-  final String displayName;
+  String? alias;
   final bool teacher;
   final DateTime joinedAt;
+  final int? seatNo;
 }
 
 class _Assignment {
   _Assignment(this.info, this.key);
-  final GroupAssignment info;
+  GroupAssignment info;
   final List<int> key;
 }

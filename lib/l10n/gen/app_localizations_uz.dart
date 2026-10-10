@@ -5246,7 +5246,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get classesRoleNote =>
-      'Ilovadagi rol server huquqi bermaydi: guruhni kim yaratsa — o‘sha guruhning ustozi.';
+      'Ilovadagi rol server huquqi bermaydi: guruhni faqat o‘zini ustoz sifatida ro‘yxatdan o‘tkazgan hisob ochadi va faqat o‘z guruhlarini boshqaradi.';
 
   @override
   String get classesMine => 'Mening guruhlarim';
@@ -5271,7 +5271,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get classesCreateIntro =>
-      'Guruhni yaratgan hisob shu guruhning ustozi bo‘ladi. Talabalar siz bergan kod bilan qo‘shiladi.';
+      'Guruhni ochgan ustoz faqat shu guruhni boshqaradi. Talabalar siz bergan kod yoki QR bilan qo‘shiladi.';
 
   @override
   String get classesGroupName => 'Guruh nomi';
@@ -5285,17 +5285,18 @@ class AppLocalizationsUz extends AppLocalizations {
   }
 
   @override
-  String get classesDisplayName => 'Guruhda ko‘rinadigan ismingiz';
+  String get classesDisplayName => 'Taxallus (ixtiyoriy)';
 
   @override
-  String get classesDisplayNameHint => 'Masalan, Aliyev Anvar';
+  String get classesDisplayNameHint =>
+      'Masalan, Yulduz — bo‘sh qoldirsangiz, tartib raqami';
 
   @override
   String get classesDisplayNameHintTeacher => 'Masalan, Karimova N.A.';
 
   @override
   String get classesDisplayNameNote =>
-      'Email ko‘rsatilmaydi — a’zolar faqat shu ismni ko‘radi.';
+      'Ism-familiya serverda saqlanmaydi: talabalar taxallus yoki tartib raqami bilan ko‘rinadi. Real ismni faqat o‘z qurilmangizda belgi sifatida yozishingiz mumkin.';
 
   @override
   String get classesCreateAction => 'Guruhni yaratish';
@@ -5314,7 +5315,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get classesJoinNote =>
-      'Ustoz siz yozgan ismni va topshiriq natijalaringizni ko‘radi. Emailingiz ko‘rsatilmaydi.';
+      'Haqiqiy ismingizni yozmang. Ustoz faqat taxallusingiz (yoki tartib raqamingiz) va topshiriq natijalaringizni ko‘radi; boshqa talabalar sizni ko‘rmaydi. Emailingiz ko‘rsatilmaydi.';
 
   @override
   String get classesJoinAction => 'Qo‘shilish';
@@ -6811,4 +6812,423 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get analyteExpertApprovalPending => 'kutilmoqda';
+
+  @override
+  String classesSeat(String n) {
+    return 'Talaba $n';
+  }
+
+  @override
+  String classesQrLabel(String code) {
+    return 'Taklif kodi QR: $code';
+  }
+
+  @override
+  String get classesTeacherRegisterEyebrow => 'Ustoz';
+
+  @override
+  String get classesTeacherRegisterTitle =>
+      'O‘zingizni ustoz sifatida ro‘yxatdan o‘tkazing';
+
+  @override
+  String get classesTeacherRegisterBody =>
+      'Ustoz o‘z guruhini ochadi va faqat o‘z talabalari natijasini ko‘radi. Bu admin huquqi emas va boshqa guruhlarga ta’sir qilmaydi.';
+
+  @override
+  String get classesTeacherRegister => 'Ustoz sifatida ro‘yxatdan o‘tish';
+
+  @override
+  String get classesLocalNameTitle => 'Belgi (faqat shu qurilmada)';
+
+  @override
+  String get classesLocalNameBody =>
+      'Masalan, talabaning ismi. Serverga yuborilmaydi va talaba ko‘rmaydi.';
+
+  @override
+  String get classesLocalNameHint => 'Bo‘sh — belgini o‘chirish';
+
+  @override
+  String get classesLocalNameSave => 'Saqlash';
+
+  @override
+  String get classroomPlanTitle => 'O‘quv rejasi';
+
+  @override
+  String get classroomPlanSub =>
+      'Kunlar bo‘yicha mavzular: ma’ruza, savol-javob, test';
+
+  @override
+  String get classroomTopicsTitle => 'Mavzular';
+
+  @override
+  String get classroomTopicsSub => 'Ustoz ochgan mavzular va testlar';
+
+  @override
+  String get classroomProgramEyebrow => 'O‘quv dasturi';
+
+  @override
+  String classroomPlanProgress(int done, int total) {
+    return '$done/$total mavzu testi yakunlangan';
+  }
+
+  @override
+  String get classroomStartNone =>
+      'Boshlanish sanasi belgilanmagan — jadval kun tartibi bilan';
+
+  @override
+  String classroomStartAt(String date) {
+    return '1-o‘quv kuni: $date';
+  }
+
+  @override
+  String get classroomStartNote =>
+      'Sanalar taxminiy (yakshanba o‘tkaziladi, bayramlar hisobga olinmaydi) va faqat shu qurilmada saqlanadi.';
+
+  @override
+  String get classroomStartPick => 'Boshlanish sanasini belgilash';
+
+  @override
+  String classroomDayN(int n) {
+    return '$n-kun';
+  }
+
+  @override
+  String classroomWeekN(int n) {
+    return '$n-hafta';
+  }
+
+  @override
+  String classroomHours(int n) {
+    return '$n soat';
+  }
+
+  @override
+  String get classroomTypeLecture => 'Ma’ruza';
+
+  @override
+  String get classroomTypePractical => 'Amaliy';
+
+  @override
+  String get classroomTypeSeminar => 'Seminar';
+
+  @override
+  String get classroomTypeAttestation => 'Attestatsiya';
+
+  @override
+  String get classroomTypeOther => 'Mashg‘ulot';
+
+  @override
+  String get classroomStatusClosed => 'Ochilmagan';
+
+  @override
+  String get classroomStatusOpened => 'Ochildi';
+
+  @override
+  String get classroomStatusLectured => 'O‘tildi';
+
+  @override
+  String get classroomStatusOral => 'Savol-javob o‘tdi';
+
+  @override
+  String get classroomStatusTestRunning => 'Test davom etmoqda';
+
+  @override
+  String get classroomStatusTestDone => 'Test yakunlandi';
+
+  @override
+  String get classroomNoCurriculumTitle => 'O‘quv dasturi hali qo‘shilmagan';
+
+  @override
+  String get classroomNoCurriculumBody =>
+      'Kurs jadvali (modul → mavzu → materiallar) ilovaning keyingi versiyasida keladi. Hozircha guruh topshiriqlaridan foydalaning.';
+
+  @override
+  String get classroomCurriculumError => 'O‘quv dasturini o‘qib bo‘lmadi';
+
+  @override
+  String get classroomNoTopicsStudent => 'Ustoz hali mavzu ochmagan';
+
+  @override
+  String get classroomNoTopicsStudentBody =>
+      'Mavzu ochilganda materiallar va test shu yerda chiqadi.';
+
+  @override
+  String get classroomTopicTitle => 'Mavzu';
+
+  @override
+  String get classroomTopicMissing => 'Mavzu o‘quv dasturida topilmadi';
+
+  @override
+  String get classroomTopicNotOpened => 'Bu mavzu hali ochilmagan';
+
+  @override
+  String get classroomOpenNote =>
+      'Ochilgandan keyin talabalar mavzu materiallarini ko‘radi.';
+
+  @override
+  String get classroomOpenTopic => 'Talabalarga ochish';
+
+  @override
+  String classroomStep(int n) {
+    return '$n-bosqich';
+  }
+
+  @override
+  String get classroomStageLecture => 'Ma’ruza';
+
+  @override
+  String get classroomStageLectureBody =>
+      'Mavzuni katta ekranda slaydlar bilan ko‘rsating (internetsiz ham ishlaydi).';
+
+  @override
+  String get classroomStageOral => 'Og‘zaki savol-javob';
+
+  @override
+  String classroomStageOralBody(int count) {
+    return 'Savollar ro‘yxati va javob rejasi. So‘ralgan: $count.';
+  }
+
+  @override
+  String get classroomStageTest => 'Guruh testi';
+
+  @override
+  String get classroomStageTestBody =>
+      'Savollarni tanlang va testni boshlang — talabalarda darhol ochiladi.';
+
+  @override
+  String get classroomStageDone => 'O‘tildi';
+
+  @override
+  String get classroomMarkDone => 'O‘tildi deb belgilash';
+
+  @override
+  String get classroomOralOpen => 'Savollar ro‘yxati';
+
+  @override
+  String get classroomTestPrepare => 'Testni tayyorlash';
+
+  @override
+  String get classroomTestResults => 'Natijalar paneli';
+
+  @override
+  String get classroomTestFinish => 'Testni yakunlash';
+
+  @override
+  String get classroomTestFinishTitle => 'Test yakunlansinmi?';
+
+  @override
+  String get classroomTestFinishBody =>
+      'Yangi urinish qabul qilinmaydi. Boshlab qo‘yganlar javobini yuborishi uchun 2 daqiqa qoladi.';
+
+  @override
+  String classroomTestSubmitted(int done, int total) {
+    return '$done/$total talaba topshirdi';
+  }
+
+  @override
+  String get classroomTestNotStarted => 'Ustoz hali testni boshlamagan.';
+
+  @override
+  String get classroomTestOpenStudent => 'Test ochiq — yechish';
+
+  @override
+  String get classroomMaterials => 'Mavzu materiallari';
+
+  @override
+  String get classroomNoMaterials =>
+      'Ilovada bu mavzuga bog‘langan material hali yo‘q.';
+
+  @override
+  String get classroomGapNote =>
+      'Ilovada bu mavzu bo‘yicha material kam — ustoz o‘z manbalaridan to‘ldiradi.';
+
+  @override
+  String get classroomKindAnalyte => 'Tahlil kartasi';
+
+  @override
+  String get classroomKindCondition => 'Holat';
+
+  @override
+  String get classroomKindReference => 'Jadval';
+
+  @override
+  String get classroomKindAtlas => 'Mikroskopiya atlasi';
+
+  @override
+  String get classroomKindTool => 'Kalkulyator va asbob';
+
+  @override
+  String get classroomToolQc => 'Sifat nazorati';
+
+  @override
+  String get classroomToolPreanalytics => 'Preanalitika';
+
+  @override
+  String get classroomToolInstruments => 'Apparatlar';
+
+  @override
+  String get classroomToolCalibration => 'Kalibrlash jurnali';
+
+  @override
+  String get classroomToolDifferential => 'Leykoformula';
+
+  @override
+  String get classroomOralNotice =>
+      'Savollar avtomatik tanlangan nomzodlar — javob rejasi mutaxassis tekshiruvini kutmoqda. “So‘raldi” va baholar faqat shu qurilmada saqlanadi.';
+
+  @override
+  String get classroomOralEmpty => 'Bu mavzu uchun og‘zaki savol topilmadi';
+
+  @override
+  String classroomCandidate(int n) {
+    return 'Nomzod savol $n';
+  }
+
+  @override
+  String get classroomOralPlan => 'Qisqa javob rejasi';
+
+  @override
+  String get classroomOralNoPlan => 'Javob rejasi hali yozilmagan.';
+
+  @override
+  String get classroomOralAsked => 'So‘raldi';
+
+  @override
+  String classroomOralGrade(int count) {
+    return 'Talabalarni baholash ($count)';
+  }
+
+  @override
+  String get classroomOralGradeTitle => 'Kim qanday javob berdi';
+
+  @override
+  String get classroomOralGradeNote =>
+      'Faqat shu qurilmada; serverga yuborilmaydi.';
+
+  @override
+  String get classroomGradeKnew => 'Bildi';
+
+  @override
+  String get classroomGradePartial => 'Qisman';
+
+  @override
+  String get classroomGradeDidNot => 'Bilmadi';
+
+  @override
+  String get classroomCandidatesNotice =>
+      'Nomzod savollar avtomatik tanlangan, kalitlari tekshirilmagan. Har birini ko‘rib chiqing: ball ko‘rsatilgan kalit bo‘yicha serverda hisoblanadi.';
+
+  @override
+  String classroomCandidatesTitle(int picked, int total) {
+    return 'Nomzodlar · tanlandi $picked/$total';
+  }
+
+  @override
+  String get classroomPickAll => 'Hammasi';
+
+  @override
+  String get classroomPickNone => 'Bekor qilish';
+
+  @override
+  String classroomKeyShown(String answer) {
+    return 'Kalit: $answer';
+  }
+
+  @override
+  String get classroomKeyFlagged => 'Kalit bahsli';
+
+  @override
+  String get classroomPickAtLeastOne => 'Kamida bitta savol tanlang';
+
+  @override
+  String get classroomPickMax => 'Ko‘pi bilan 50 ta savol';
+
+  @override
+  String classroomTestStart(int count) {
+    return 'Testni boshlash · $count savol';
+  }
+
+  @override
+  String get classroomTestStarted => 'Test boshlandi — talabalarda ochildi';
+
+  @override
+  String classroomTestTitle(String topic) {
+    return 'Test: $topic';
+  }
+
+  @override
+  String get classroomTestAlready => 'Bu mavzu testi allaqachon boshlangan';
+
+  @override
+  String get classroomTestNoCandidates =>
+      'Bu mavzu uchun test savoli topilmadi';
+
+  @override
+  String get classroomTestNoCandidatesBody =>
+      'Guruh topshirig‘ini qo‘lda tuzishingiz mumkin (Yangi topshiriq).';
+
+  @override
+  String get lectureTitle => 'Ma’ruza';
+
+  @override
+  String get lectureListTitle => 'Ma’ruza rejimi';
+
+  @override
+  String get lectureListSub =>
+      'Mavzuni tanlang — slaydlar katta ekranda, internetsiz';
+
+  @override
+  String get lectureStart => 'Ma’ruzani boshlash';
+
+  @override
+  String get lectureClose => 'Ma’ruzani yopish';
+
+  @override
+  String lectureCounter(int current, int total) {
+    return '$current / $total';
+  }
+
+  @override
+  String get lecturePrev => 'Orqaga';
+
+  @override
+  String get lectureNext => 'Oldinga';
+
+  @override
+  String get lectureGoals => 'Maqsad';
+
+  @override
+  String get lectureKeyPoints => 'Asosiy tushunchalar';
+
+  @override
+  String get lectureConcepts => 'Asosiy tahlillar';
+
+  @override
+  String get lectureConditions => 'Klinik holatlar';
+
+  @override
+  String get lectureTables => 'Jadvallar va algoritmlar';
+
+  @override
+  String get lectureAtlas => 'Mikroskopiya';
+
+  @override
+  String get lectureTools => 'Hisoblash va asboblar';
+
+  @override
+  String lectureQuestionN(int n) {
+    return 'Savol $n';
+  }
+
+  @override
+  String get lectureEndEyebrow => 'Keyingi qadam';
+
+  @override
+  String get lectureEndTitle => 'Savol-javob va test';
+
+  @override
+  String get lectureEndOral => 'Og‘zaki savol-javob — ustoz so‘raydi';
+
+  @override
+  String get lectureEndTest => 'Guruh testi — ilovada, vaqt bilan';
 }

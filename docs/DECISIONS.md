@@ -539,3 +539,48 @@ ranglari (yashil palitra) o‘zgarmadi — logo faqat belgi sifatida.
   va o'zini ko'radi (Supabase'dagidan qattiqroq).
 - Murojaatlar, admin panel, tekshiruv, hamkorlar va Pro — hozircha faqat sxema, endpointlar
   `501`, ilova “ulanmagan” deydi. `LabBackend` interfeysi o'zgarmadi.
+## D-42. Ustoz va o‘quv dasturi bo‘yicha guruh darslari (2026-10-10)
+Egasi qarori (2026-10-10):
+- **Ustoz** — email (OTP) bilan kirgan hisob o‘zini “ustoz” sifatida ro‘yxatdan o‘tkazadi
+  (`registerTeacher`). Bu faqat guruh ochish huquqi: ustoz faqat o‘zi yaratgan guruhni
+  boshqaradi va faqat o‘z talabalari natijasini ko‘radi. Ustoz admin EMAS; admin vakolati
+  avvalgidek faqat serverdagi ro‘yxat + tasdiqlangan email (D-35), hech kim o‘zini admin qila
+  olmaydi. Ilovadagi “Ustoz” roli (sozlama) hech qanday huquq bermaydi.
+- **Ism-familiya serverda saqlanmaydi.** Talaba guruhda ixtiyoriy taxallus (2–24 belgi) yoki
+  tartib raqami (“Talaba 07”, qayta ishlatilmaydi) bilan ko‘rinadi; boshqa talabalar uni
+  ko‘rmaydi (a’zolar ro‘yxati — faqat ustozga). Ilova taxallus o‘rniga email qismini endi
+  yubormaydi. Ustoz real ismni faqat o‘z qurilmasida lokal belgi sifatida yozishi mumkin
+  (`ClassroomLocal`, `classroom.local` kaliti) — serverga yuborilmaydi, “Lokal ma’lumotlarni
+  o‘chirish” bilan o‘chadi.
+- **Oqim:** guruh → 8 belgili kod + QR (QR’da faqat kod; `/learn/classes/join?code=` kodni
+  to‘ldiradi) → talaba qo‘shiladi → ustoz mavzuni guruhga ochadi → 3 bosqich: (1) ma’ruza
+  (taqdimot rejimi), (2) og‘zaki savol-javob (toifa og‘zaki bankidan nomzodlar + qisqa javob
+  rejasi; “so‘raldi” va bildi/qisman/bilmadi baholari FAQAT ustoz qurilmasida), (3) guruh testi
+  — ustoz “Testni boshlash” bosganda talabalarda ochiladi, vaqt chegarasi sozlanadi, ball va
+  har savol natijasi serverda; ustoz paneli — talaba bo‘yicha ball, savol bo‘yicha xato
+  ulushi (mavjud topshiriq ekrani). “Testni yakunlash” — yangi urinish yo‘q (boshlaganlarga
+  2 daqiqa).
+- **Nomzod savollar** (`oral_candidates`, `test_candidates`) avtomatik tanlangan, kalitlari
+  tekshirilmagan: ilova ularni oldindan tanlamaydi va “to‘g‘ri” deb belgilamaydi — ustoz har
+  birini kaliti bilan ko‘rib tanlaydi (bahsli kalit belgilanadi). Test paket va toifa
+  savollaridan aralash bo‘lishi mumkin (`ClassQuestionSource`, sessiya manbasi `class`).
+- **O‘quv dasturi** (`curriculum.json`: modul → mavzu → links {analytes, conditions,
+  reference, tools, microscopy, toifa_topic}, kun `n`, hafta, soat, turi) uchun model va
+  o‘quvchi bor (`lib/features/classroom/curriculum.dart`), test fixture bilan. Asset hali
+  QO‘SHILMAGAN — ilova “O‘quv dasturi hali qo‘shilmagan” deb halol ko‘rsatadi. Qo‘shilganda
+  kurator ismi, klinika/baza nomi va guruhga xos sanalar asset’ga kiritilmaydi; sana ustoz
+  belgilagan boshlanish sanasidan hisoblanadi (yakshanba o‘tkaziladi, “taxminiy”, faqat ustoz
+  qurilmasida).
+- **Ma’ruza rejimi** (`/learn/lecture/<topicId>`) serversiz: slaydlar mavzu, bog‘langan
+  kartalar/jadvallar/atlas/kalkulyatorlar va nomzod savollardan; katta shrift, oldinga/orqaga
+  (tugma, surish, klaviatura), ekran o‘chmaydi (mavjud wakelock).
+- **Server:** ilova faqat `LabBackend` interfeysiga tayanadi. Egasi keyinroq serverni
+  Cloudflare Workers + D1 (OTP — Brevo) qilib yozishni tanladi; `supabase/migrations/
+  20261010000100_teacher_topics.sql` va `supabase/tests/30_teacher_topics.sql` qoidalar
+  (RLS) uchun ma’lumotnoma va qabul testi sifatida qoladi — Worker API shu kontraktga mos
+  bo‘lishi kerak. Server ulanmagan buildda barcha guruh ekranlari “Server hali ulanmagan”.
+- **Maxfiylik siyosati va do‘kon deklaratsiyasi hozir o‘zgartirilmadi.** Server ulanganda
+  alohida yangilanadi: email (hisob), ixtiyoriy taxallus, guruh a’zoligi, test javoblari va
+  natijalari, ustoz ro‘yxati; real ism va og‘zaki baholar faqat qurilmada.
+**Qayta ko‘rish:** curriculum asset’i tayyor bo‘lganda (shaxsiy ma’lumotsiz) va server
+ulanganda (siyosat + Data safety / App Privacy).

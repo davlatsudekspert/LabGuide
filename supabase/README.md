@@ -19,6 +19,7 @@ mehmon rejimi va oflayn kontent to‘liq ishlaydi.
 | `migrations/…0400_groups.sql` | guruh, taklif kodi, topshiriq, javob (ball serverda hisoblanadi) |
 | `migrations/…0900_privileges.sql` | jadvallarga to‘g‘ridan-to‘g‘ri yozish yopiq; yozish faqat RPC orqali |
 | `migrations/…1000_partners.sql` | hamkorlar (reklama): profil, katalogga bog‘lanish, arizalar, kunlik hisoblagich, ochiq `partner-logos` bucket — qarang `docs/PARTNERS.md` |
+| `migrations/20261010000100_teacher_topics.sql` | ustoz roli (`register_teacher`, admin emas), taxallus/tartib raqam (ism saqlanmaydi; talaba boshqa talabani ko‘rmaydi), `group_topics` (mavzu ochish, ma’ruza/savol-javob bosqichi), mavzu testi (`start_topic_test`/`finish_topic_test`) — qarang `docs/DECISIONS.md` D-41 |
 | `migrations/…1200_entitlements.sql` | Pro huquqlari: `entitlements` (faqat o‘z qatorini o‘qiydi, yozish faqat service role), `my_entitlements`, `entitlement_apply` — qarang `docs/PRO_BILLING_PLAN.md` |
 | `functions/verify-purchase` | xaridni do‘kon API orqali tekshirish (skelet; to‘lov yoqilmaguncha `503 not_configured`) |
 | `functions/delete-account` | foydalanuvchi o‘z hisobini o‘chiradi (fayllari bilan) |
