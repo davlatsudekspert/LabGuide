@@ -6534,6 +6534,13 @@ class AppLocalizationsRu extends AppLocalizations {
       'Возможно, пакет контента обновился. Вернитесь в каталог.';
 
   @override
+  String get libItemUnavailable => 'Материал недоступен на вашем языке';
+
+  @override
+  String get libItemUnavailableBody =>
+      'Этот материал пока есть только на другом языке. Смените язык интерфейса или вернитесь в каталог.';
+
+  @override
   String get libBackToCatalog => 'Вернуться в каталог';
 
   @override

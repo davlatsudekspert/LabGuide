@@ -3749,6 +3749,8 @@
   "libProvidedByTeacher": "Provided by a teacher",
   "libItemNotFound": "Material not found",
   "libItemNotFoundBody": "The content pack may have been updated. Go back to the catalog.",
+  "libItemUnavailable": "This material is not available in your language",
+  "libItemUnavailableBody": "This material is currently available only in another language. Change the interface language or go back to the catalog.",
   "libBackToCatalog": "Back to catalog",
   "readerTitle": "Reader",
   "readerPageOf": "{page} of {total}",

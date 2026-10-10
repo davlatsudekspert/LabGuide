@@ -1856,6 +1856,8 @@
   "libProvidedByTeacher": "Domla bergan material",
   "libItemNotFound": "Material topilmadi",
   "libItemNotFoundBody": "Kontent paketi yangilangan bo‘lishi mumkin. Katalogga qayting.",
+  "libItemUnavailable": "Material sizning tilingizda mavjud emas",
+  "libItemUnavailableBody": "Bu material hozircha faqat boshqa tilda mavjud. Interfeys tilini o‘zgartiring yoki katalogga qayting.",
   "libBackToCatalog": "Katalogga qaytish",
   "readerTitle": "O‘quvchi",
   "readerPageOf": "{page} / {total}",

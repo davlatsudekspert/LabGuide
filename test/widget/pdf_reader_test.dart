@@ -168,7 +168,8 @@ void main() {
         tester,
         language: lang,
         themeMode: theme,
-        bundle: LibraryTestBundle(),
+        // Kutubxona faqat interfeys tilidagi materialni ko'rsatadi.
+        bundle: LibraryTestBundle(pdfLanguage: lang.name),
       );
       await pumpApp(tester, s, size: Size(width, 760), textScale: scale);
       await _openReader(tester, l, button: l.libItemRead, page: 1);

@@ -6409,6 +6409,13 @@ class AppLocalizationsUz extends AppLocalizations {
       'Kontent paketi yangilangan bo‘lishi mumkin. Katalogga qayting.';
 
   @override
+  String get libItemUnavailable => 'Material sizning tilingizda mavjud emas';
+
+  @override
+  String get libItemUnavailableBody =>
+      'Bu material hozircha faqat boshqa tilda mavjud. Interfeys tilini o‘zgartiring yoki katalogga qayting.';
+
+  @override
   String get libBackToCatalog => 'Katalogga qaytish';
 
   @override

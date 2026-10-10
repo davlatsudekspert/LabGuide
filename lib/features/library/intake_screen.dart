@@ -6,6 +6,7 @@ import '../../app/widgets/lg_page.dart';
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
+import 'library_catalog.dart';
 
 /// Domla/muharrir uchun materiallarni qabul qilish tartibi
 /// (`docs/CONTENT_INTAKE.md` ning qisqa, ilovadagi ko'rinishi).
@@ -28,7 +29,14 @@ class IntakeGuideScreen extends StatelessWidget {
             final pack = content.pack;
             if (pack == null) return const SizedBox.shrink();
             final fromTeachers = pack.library
-                .where((i) => i.providedBy == 'teacher')
+                .where(
+                  (i) =>
+                      i.providedBy == 'teacher' &&
+                      libraryItemAvailableIn(
+                        i,
+                        Localizations.localeOf(context).languageCode,
+                      ),
+                )
                 .length;
             return LgNotice(
               l.intakeStatus(fromTeachers),

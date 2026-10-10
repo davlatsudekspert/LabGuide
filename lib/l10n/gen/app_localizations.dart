@@ -11236,6 +11236,18 @@ abstract class AppLocalizations {
   /// **'The content pack may have been updated. Go back to the catalog.'**
   String get libItemNotFoundBody;
 
+  /// No description provided for @libItemUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'This material is not available in your language'**
+  String get libItemUnavailable;
+
+  /// No description provided for @libItemUnavailableBody.
+  ///
+  /// In en, this message translates to:
+  /// **'This material is currently available only in another language. Change the interface language or go back to the catalog.'**
+  String get libItemUnavailableBody;
+
   /// No description provided for @libBackToCatalog.
   ///
   /// In en, this message translates to:

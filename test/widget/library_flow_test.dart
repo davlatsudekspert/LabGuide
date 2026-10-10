@@ -3,6 +3,7 @@ import 'package:labguide/app/app_scope.dart';
 import 'package:labguide/features/content/content_model.dart';
 import 'package:labguide/features/library/library_catalog.dart';
 import 'package:labguide/features/library/library_screens.dart';
+import 'package:labguide/features/library/library_widgets.dart';
 import 'package:labguide/features/settings/settings_controller.dart';
 import 'package:labguide/l10n/gen/app_localizations.dart';
 import 'package:material_ui/material_ui.dart';
@@ -203,7 +204,7 @@ void main() {
       await goTo(tester, '/library/books');
       final urine = s.content.pack!.group('urine')!.names.of(lang.name);
       for (final (filter, option) in [
-        (l.libFilterLanguage, 'O‘zbekcha'),
+        (l.libFilterLanguage, libraryLanguageName(lang.name)),
         (l.libFilterTopic, urine),
         (l.libFilterType, l.kindManual),
       ]) {
