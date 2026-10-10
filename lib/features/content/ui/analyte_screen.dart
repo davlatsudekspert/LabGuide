@@ -11,6 +11,7 @@ import '../../../design/widgets/lg_widgets.dart';
 import '../../../l10n/gen/app_localizations.dart';
 import '../../reference/reference_content.dart';
 import '../../reference/reference_screens.dart';
+import '../../settings/settings_controller.dart';
 import '../../tools/calc_info.dart';
 import '../../tools/clinical_calc_screens.dart';
 import '../../tools/clinical_calculators.dart';
@@ -37,10 +38,16 @@ String sectionTitle(String id, AppLocalizations l) => switch (id) {
 };
 
 /// Raqamni ortiqcha nolsiz ko'rsatish (100 → "100", 5.55 → "5.55").
-String formatNumber(double v) =>
-    v == v.roundToDouble() ? v.toStringAsFixed(0) : v.toString();
+///
+/// [locale] berilsa — o'nlik belgisi va guruhlash shu til bo'yicha
+/// (ru: "5,55", en: "5.55"); berilmasa — nuqta.
+String formatNumber(double v, [String? locale]) {
+  if (locale != null) return formatResult(v, locale, maxDecimals: 6);
+  return v == v.roundToDouble() ? v.toStringAsFixed(0) : v.toString();
+}
 
-String formatLimit(DecisionLimit d) => formatLimitWith(d, formatNumber, d.unit);
+String formatLimit(DecisionLimit d, [String? locale]) =>
+    formatLimitWith(d, (v) => formatNumber(v, locale), d.unit);
 
 /// Chegarani [number] formatlovchi va [unit] bilan yozish (SI ekvivalenti
 /// uchun ham — belgilar va qamrov bir xil).
@@ -64,12 +71,11 @@ String formatLimitWith(
 
 /// Oraliq: ikkala chegara — “a–b”, bittasi — “≥ a” yoki “≤ b”
 /// (avval bir chegarali oraliq “–5” ko'rinishida chiqardi).
-String formatRange(double? low, double? high, String unit) {
-  if (low != null && high != null) {
-    return '${formatNumber(low)}–${formatNumber(high)} $unit';
-  }
-  if (low != null) return '≥ ${formatNumber(low)} $unit';
-  if (high != null) return '≤ ${formatNumber(high)} $unit';
+String formatRange(double? low, double? high, String unit, [String? locale]) {
+  String n(double v) => formatNumber(v, locale);
+  if (low != null && high != null) return '${n(low)}–${n(high)} $unit';
+  if (low != null) return '≥ ${n(low)} $unit';
+  if (high != null) return '≤ ${n(high)} $unit';
   return unit;
 }
 
@@ -85,6 +91,44 @@ String keepValuesTogether(String text) => text
       (m) => '${m[1]}/\u2060${m[2]}',
     );
 
+/// mg/dL → SI (mmol/L yoki µmol/L) ko'paytuvchisi, moddaning molyar massasi
+/// bo'yicha. Raqamlar manbada yo'q — hisoblanadi va "hisoblangan" deb
+/// belgilanadi.
+double siFactor(UnitConversion c) =>
+    (c.siUnit == 'µmol/L' ? 10000 : 10) / c.molarMass;
+
+/// [value] mg/dL ni SI ga o'girib, [locale] bo'yicha formatlaydi
+/// (µmol/L — butun, mmol/L — bitta kasr xona).
+String siNumber(double value, UnitConversion c, String locale) {
+  final digits = c.siUnit == 'µmol/L' ? 0 : 1;
+  final f = NumberFormat.decimalPatternDigits(
+    locale: locale,
+    decimalDigits: digits,
+  );
+  return f.format(roundHalfUp(value * siFactor(c), digits));
+}
+
+final _mgDlValue = RegExp(r'(\d+(?:\.\d+)?)(\s|\u00A0)*mg/dL');
+
+/// Faqat mg/dL da berilgan maqsad matnidagi har bir "N mg/dL" ni SI
+/// ekvivalentiga almashtiradi ("< 100 mg/dL" → "< 2,6 mmol/L"). Birlik
+/// mg/dL bo'lmasa yoki konversiya yo'q bo'lsa — `null`.
+String? goalTextInSi(
+  TreatmentGoal goal,
+  String text,
+  UnitConversion? conversion,
+  String locale,
+) {
+  if (conversion == null) return null;
+  if (goal.units.length != 1 || goal.units.first != 'mg/dL') return null;
+  if (!_mgDlValue.hasMatch(text)) return null;
+  return text.replaceAllMapped(
+    _mgDlValue,
+    (m) =>
+        '${siNumber(double.parse(m[1]!), conversion, locale)} ${conversion.siUnit}',
+  );
+}
+
 class AnalyteScreen extends StatelessWidget {
   const AnalyteScreen({super.key, required this.analyteId});
 
@@ -94,7 +138,7 @@ class AnalyteScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final content = context.services.content;
     return ListenableBuilder(
-      listenable: content,
+      listenable: Listenable.merge([content, context.services.settings]),
       builder: (context, _) {
         final l = AppLocalizations.of(context);
         final lang = Localizations.localeOf(context).languageCode;
@@ -362,6 +406,7 @@ class _AnalyteBody {
 
   Widget _referenceIntervals(BuildContext context, AppLocalizations l) {
     final text = Theme.of(context).textTheme;
+    final locale = Localizations.localeOf(context).toLanguageTag();
     return LgPanel(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -375,7 +420,7 @@ class _AnalyteBody {
               LgMetric(
                 label: '${r.population.of(lang)} · ${r.method}',
                 value:
-                    '${formatRange(r.low, r.high, r.unit)} ${cite(r.refs, l)}',
+                    '${formatRange(r.low, r.high, r.unit, locale)} ${cite(r.refs, l)}',
               ),
         ],
       ),
@@ -391,19 +436,18 @@ class _AnalyteBody {
     final locale = Localizations.localeOf(context).toLanguageTag();
     final limits = analyte.decisionLimits;
     final conversion = analyte.conversion;
-    // mg/dL chegarasining SI ekvivalenti (O'zbekiston laboratoriyalari
-    // asosan mmol/L beradi). Manbada yo'q — hisoblangan, belgilanadi.
+    // mg/dL chegarasining SI ekvivalenti (SI tanlangan bo'lsa). Manbada yo'q —
+    // hisoblangan, belgilanadi.
+    final siPreferred = context.services.settings.unitSystem == UnitSystem.si;
     String? si(DecisionLimit d) {
-      if (conversion == null || d.unit != 'mg/dL') return null;
-      final micro = conversion.siUnit == 'µmol/L';
-      final factor = (micro ? 10000 : 10) / conversion.molarMass;
-      final digits = micro ? 0 : 1;
-      final f = NumberFormat.decimalPatternDigits(
-        locale: locale,
-        decimalDigits: digits,
+      if (!siPreferred || conversion == null || d.unit != 'mg/dL') return null;
+      return l.analyteSiApprox(
+        formatLimitWith(
+          d,
+          (v) => siNumber(v, conversion, locale),
+          conversion.siUnit,
+        ),
       );
-      String n(double v) => f.format(roundHalfUp(v * factor, digits));
-      return l.analyteSiApprox(formatLimitWith(d, n, conversion.siUnit));
     }
 
     final anySi = limits.any((d) => si(d) != null);
@@ -437,7 +481,7 @@ class _AnalyteBody {
                     children: [
                       Text(d.label.of(lang), style: text.bodyMedium),
                       Text(
-                        '${formatLimit(d)} ${cite(d.refs, l)}',
+                        '${formatLimit(d, locale)} ${cite(d.refs, l)}',
                         style: text.titleSmall,
                       ),
                     ],
@@ -489,6 +533,8 @@ class _AnalyteBody {
   Widget _treatmentGoals(BuildContext context, AppLocalizations l) {
     final text = Theme.of(context).textTheme;
     final p = LgPalette.of(context);
+    final locale = Localizations.localeOf(context).toLanguageTag();
+    final siPreferred = context.services.settings.unitSystem == UnitSystem.si;
     final byGuideline = <String, List<TreatmentGoal>>{};
     for (final g in analyte.treatmentGoals) {
       byGuideline.putIfAbsent(g.guidelineId, () => []).add(g);
@@ -558,6 +604,24 @@ class _AnalyteBody {
                                 style: text.titleSmall,
                               ),
                             ),
+                            if (siPreferred)
+                              if (goalTextInSi(
+                                    g,
+                                    g.target.of(lang),
+                                    analyte.conversion,
+                                    locale,
+                                  )
+                                  case final siText?)
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 2),
+                                  child: Text(
+                                    l.analyteSiApprox(
+                                      keepValuesTogether(siText),
+                                    ),
+                                    key: const ValueKey('goal-si'),
+                                    style: text.bodyMedium,
+                                  ),
+                                ),
                             if (g.note != null)
                               Padding(
                                 padding: const EdgeInsets.only(top: 4),
@@ -571,6 +635,32 @@ class _AnalyteBody {
                       ),
                   ],
                 ),
+              ),
+            ),
+          if (siPreferred &&
+              analyte.conversion != null &&
+              analyte.treatmentGoals.any(
+                (g) =>
+                    goalTextInSi(
+                      g,
+                      g.target.of(lang),
+                      analyte.conversion,
+                      locale,
+                    ) !=
+                    null,
+              ))
+            Padding(
+              padding: const EdgeInsets.only(top: 10),
+              child: Text(
+                l.analyteSiNote(
+                  analyte.conversion!.siUnit,
+                  formatResult(
+                    analyte.conversion!.molarMass,
+                    locale,
+                    maxDecimals: 3,
+                  ),
+                ),
+                style: text.bodySmall,
               ),
             ),
           Padding(

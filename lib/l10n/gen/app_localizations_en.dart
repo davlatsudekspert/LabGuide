@@ -5755,6 +5755,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profileLanguage => 'Language';
 
   @override
+  String get profileUnits => 'Units';
+
+  @override
+  String get profileUnitsSi => 'SI (mmol/L, µmol/L)';
+
+  @override
+  String get profileUnitsConventional => 'Conventional (mg/dL)';
+
+  @override
   String get profileAppearance => 'Appearance';
 
   @override

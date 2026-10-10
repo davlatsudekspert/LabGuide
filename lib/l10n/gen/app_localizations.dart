@@ -9880,6 +9880,24 @@ abstract class AppLocalizations {
   /// **'Language'**
   String get profileLanguage;
 
+  /// No description provided for @profileUnits.
+  ///
+  /// In en, this message translates to:
+  /// **'Units'**
+  String get profileUnits;
+
+  /// No description provided for @profileUnitsSi.
+  ///
+  /// In en, this message translates to:
+  /// **'SI (mmol/L, µmol/L)'**
+  String get profileUnitsSi;
+
+  /// No description provided for @profileUnitsConventional.
+  ///
+  /// In en, this message translates to:
+  /// **'Conventional (mg/dL)'**
+  String get profileUnitsConventional;
+
   /// No description provided for @profileAppearance.
   ///
   /// In en, this message translates to:

@@ -5657,6 +5657,15 @@ class AppLocalizationsUz extends AppLocalizations {
   String get profileLanguage => 'Til';
 
   @override
+  String get profileUnits => 'Birliklar';
+
+  @override
+  String get profileUnitsSi => 'SI (mmol/L, µmol/L)';
+
+  @override
+  String get profileUnitsConventional => 'An’anaviy (mg/dL)';
+
+  @override
   String get profileAppearance => 'Tashqi ko‘rinish';
 
   @override

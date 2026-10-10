@@ -21,6 +21,7 @@ abstract interface class KeyValueStore {
 abstract final class StoreKeys {
   static const language = 'settings.language';
   static const themeMode = 'settings.theme';
+  static const unitSystem = 'settings.unitSystem';
   static const role = 'settings.role';
   static const onboarded = 'settings.onboarded';
   static const session = 'auth.session';
@@ -61,6 +62,7 @@ abstract final class StoreKeys {
 
   /// Leykoformula: "ko'rmasdan sanash" rejimi sozlamalari.
   static const differentialEyesFree = 'differential.eyesFree';
+
   /// Kunlik savol: bugungi to'plam, ketma-ketlik (kunlar, urug'), eslatma.
   static const dailyToday = 'daily.today';
   static const dailyStreak = 'daily.streak';
@@ -69,6 +71,7 @@ abstract final class StoreKeys {
   static const all = <String>{
     language,
     themeMode,
+    unitSystem,
     role,
     onboarded,
     session,

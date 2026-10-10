@@ -5782,6 +5782,15 @@ class AppLocalizationsRu extends AppLocalizations {
   String get profileLanguage => 'Язык';
 
   @override
+  String get profileUnits => 'Единицы измерения';
+
+  @override
+  String get profileUnitsSi => 'СИ (ммоль/л, мкмоль/л)';
+
+  @override
+  String get profileUnitsConventional => 'Обычные (мг/дл)';
+
+  @override
   String get profileAppearance => 'Оформление';
 
   @override

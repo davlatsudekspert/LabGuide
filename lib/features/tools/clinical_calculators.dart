@@ -787,3 +787,14 @@ CalcOutcome<AcrResult> albuminCreatinineRatio({
     ),
   );
 }
+
+/// Maydon uchun boshlang'ich birlik: konvensional tizimda mg/dL yoki g/dL
+/// (bo'lsa), aks holda ro'yxatdagi birinchi (SI) birlik.
+LabUnit defaultUnitFor(List<LabUnit> units, bool conventional) {
+  if (conventional) {
+    for (final u in units) {
+      if (u.label.startsWith('mg/dL') || u.label == 'g/dL') return u;
+    }
+  }
+  return units.first;
+}

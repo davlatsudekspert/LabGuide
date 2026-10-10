@@ -134,6 +134,22 @@ class ProfileScreen extends StatelessWidget {
                   ),
               ],
             ),
+            LgSectionTitle(l.profileUnits),
+            Wrap(
+              spacing: 6,
+              runSpacing: 6,
+              children: [
+                for (final (unit, label) in [
+                  (UnitSystem.si, l.profileUnitsSi),
+                  (UnitSystem.conventional, l.profileUnitsConventional),
+                ])
+                  LgChoiceChip(
+                    label: label,
+                    selected: settings.unitSystem == unit,
+                    onTap: () => settings.setUnitSystem(unit),
+                  ),
+              ],
+            ),
             LgSectionTitle(l.profileAppearance),
             Wrap(
               spacing: 6,
