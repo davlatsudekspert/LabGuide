@@ -5770,7 +5770,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profilePurchaseSub => 'Free · Pro';
 
   @override
-  String get profilePrivacy => 'Privacy and help';
+  String get profilePrivacy => 'Privacy and data';
 
   @override
   String get profilePrivacySub => 'Data and account controls';
@@ -6186,7 +6186,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get purchaseStatusFree => 'Current plan: free';
 
   @override
-  String get privacyTitle => 'Privacy and help';
+  String get privacyTitle => 'Privacy and data';
 
   @override
   String get privacyBody =>

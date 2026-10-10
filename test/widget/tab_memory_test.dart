@@ -1,5 +1,9 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:labguide/app/shell.dart';
+import 'package:labguide/design/widgets/lg_widgets.dart';
+import 'package:labguide/features/content/ui/analyte_screen.dart';
+import 'package:labguide/features/content/ui/tests_screen.dart';
+import 'package:labguide/features/learn/learn_screens.dart';
 import 'package:labguide/features/qc/qc_model.dart';
 import 'package:labguide/features/settings/settings_controller.dart';
 import 'package:labguide/l10n/gen/app_localizations_en.dart';
@@ -118,5 +122,54 @@ void main() {
     await tester.tap(find.text(en.navTests).last);
     await tester.pumpAndSettle();
     expect(offset(), 0);
+  });
+
+  // Tab ildiziga olib boruvchi tugma (“Tahlillar”, “O'rganishni boshlash”)
+  // o'sha tabda oxirgi ochiq qolgan chuqur sahifani ko'rsatmasligi kerak.
+  testWidgets('home shortcut to a tab root opens the root, not its last page', (
+    tester,
+  ) async {
+    final s = await makeServices(
+      tester,
+      language: AppLanguage.en,
+      role: AppRole.doctor,
+    );
+    await pumpApp(tester, s, size: const Size(390, 1600));
+    await goTo(tester, '/tests/analyte/potassium');
+    await goTo(tester, '/home');
+    await tester.tap(find.text(en.homeHeroDoctorCta).first);
+    await tester.pumpAndSettle();
+    expect(find.byType(TestsScreen), findsOneWidget);
+    expect(find.byType(AnalyteScreen), findsNothing);
+    expect(routerOf(tester).state.matchedLocation, '/tests');
+
+    await goTo(tester, '/tests/analyte/potassium');
+    await goTo(tester, '/home');
+    await tester.tap(
+      find.descendant(
+        of: find.byType(LgTile),
+        matching: find.text(en.featureTests),
+      ),
+    );
+    await tester.pumpAndSettle();
+    expect(find.byType(AnalyteScreen), findsNothing);
+    expect(routerOf(tester).state.matchedLocation, '/tests');
+  });
+
+  testWidgets('student hero opens the Learn root, not its last open page', (
+    tester,
+  ) async {
+    final s = await makeServices(
+      tester,
+      language: AppLanguage.en,
+      role: AppRole.student,
+    );
+    await pumpApp(tester, s, size: const Size(390, 1600));
+    await goTo(tester, '/learn/reference');
+    await goTo(tester, '/home');
+    await tester.tap(find.text(en.homeHeroStudentCta).first);
+    await tester.pumpAndSettle();
+    expect(find.byType(LearnScreen), findsOneWidget);
+    expect(routerOf(tester).state.matchedLocation, '/learn');
   });
 }

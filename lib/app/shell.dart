@@ -57,6 +57,14 @@ class TabMemoryScope extends InheritedWidget {
 /// yaratilib, kiritilgan, hali saqlanmagan qiymat yo'qolardi. `goBranch`
 /// tab stekini o'zgarishsiz tiklaydi.
 void openInTab(BuildContext context, String location) {
+  // Tab ildizi (`/tests`, `/learn`) so'ralsa — aynan ildiz ochiladi: aks
+  // holda “Tahlillar” tugmasi shu tabda oxirgi ochiq qolgan sahifani
+  // (masalan, Kaliy kartasini) ko'rsatardi.
+  final target = Uri.parse(location);
+  if (!target.hasQuery && target.pathSegments.length <= 1) {
+    context.go(location);
+    return;
+  }
   final index = TabMemoryScope.maybeOf(context)?.branchUnder(location);
   final shell = StatefulNavigationShell.maybeOf(context);
   if (index != null && shell != null) {

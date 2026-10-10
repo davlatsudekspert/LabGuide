@@ -5672,7 +5672,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get profilePurchaseSub => 'Free · Pro';
 
   @override
-  String get profilePrivacy => 'Maxfiylik va yordam';
+  String get profilePrivacy => 'Maxfiylik va ma’lumotlar';
 
   @override
   String get profilePrivacySub => 'Ma’lumotlar va hisob boshqaruvi';
@@ -6081,7 +6081,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get purchaseStatusFree => 'Hozir: bepul rejim';
 
   @override
-  String get privacyTitle => 'Maxfiylik va yordam';
+  String get privacyTitle => 'Maxfiylik va ma’lumotlar';
 
   @override
   String get privacyBody =>
