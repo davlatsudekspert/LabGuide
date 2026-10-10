@@ -253,10 +253,15 @@ Beta App Review, aloqa ma’lumotlari va maxfiylik siyosati havolasi kerak.
 
 ## 10. Skrinshotlar
 
-`flutter test tool/screenshots/store_screenshots_test.dart --update-goldens` — 6.9" iPhone
-uchun 1290×2796 px, uch tilda 6 tadan: bosh sahifa, tahlillar atlasi, glyukoza qaror
-chegaralari, eGFR natijasi, Levey–Jennings grafigi, izohli test. Natija
-`tool/screenshots/out/store/<til>/` da (repoga kirmaydi).
+Tayyor rasmlar: `docs/store/screenshots/<til>/NN_nom.png` (uz, ru, en; 1290×2796 px = 6.9"
+iPhone, yorug' mavzu, shrift 1.0; uz 8 ta, ru/en 7 tadan): `01_home`, `02_analyte_glucose`
+(manbalar va tekshiruv holati ko'rinadi), `03_leukoformula`, `04_daily_result`,
+`05_reference` (jadvallar va algoritmlar; “qoralama” belgisi saqlangan), `06_egfr`, `07_qc`
+(Levey–Jennings), `08_toifa` (faqat uz).
+
+Qayta yaratish: `flutter test tool/screenshots/store_screenshots_test.dart --update-goldens
+--concurrency=1` — natija `tool/screenshots/out/store/<til>/` ga (gitignore), so'ng PIL
+`optimize=True` bilan `docs/store/screenshots/` ga nusxalanadi.
 
 ## 11. Ikonka va grafikalar
 

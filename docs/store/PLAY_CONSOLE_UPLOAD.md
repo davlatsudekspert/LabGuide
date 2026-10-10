@@ -67,7 +67,7 @@ olib tashlamang.
 |---|---|
 | App icon (512×512) | `docs/store/google_play_icon_512.png` |
 | Feature graphic (1024×500) | `docs/store/google_play_feature_graphic.png` |
-| Skrinshotlar | `tool/screenshots/out/store/<til>/` — hozir bu papka yo'q; yarating: `flutter test tool/screenshots/store_screenshots_test.dart --update-goldens` (1290×2796, har tilda 6 ta). Eski umumiy skrinshotlar `tool/screenshots/out/*.png` da (repoga kirmaydi). Kamida 2 ta telefon skrinshoti kerak. |
+| Skrinshotlar | `docs/store/screenshots/<til>/NN_nom.png` — 1290×2796 px (9:19,5, Play talabiga mos), uz 8 ta, ru/en 7 tadan, tayyor. Qayta yaratish: `flutter test tool/screenshots/store_screenshots_test.dart --update-goldens --concurrency=1` (natija `tool/screenshots/out/store/<til>/`, so'ng `docs/store/screenshots/` ga optimallab nusxalanadi). Kamida 2 ta telefon skrinshoti kerak. |
 
 Kategoriya: **Education** (ixtiyoriy ikkinchisi: Medical emas, Education qoldiring). Aloqa
 email'i — egasining ommaviy emaili.
