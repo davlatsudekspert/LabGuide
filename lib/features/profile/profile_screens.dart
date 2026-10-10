@@ -428,7 +428,10 @@ class PrivacyScreen extends StatelessWidget {
       title: l.privacyTitle,
       showProfile: false,
       children: [
-        Text(l.privacyBody, style: text.bodyLarge),
+        Text(
+          services.backend.isConfigured ? l.privacyBody : l.privacyBodyLocal,
+          style: text.bodyLarge,
+        ),
         const SizedBox(height: 12),
         LgRow(
           title: l.privacyTerms,

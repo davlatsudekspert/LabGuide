@@ -1,42 +1,71 @@
 # LabGuide — maxfiylik siyosati / Политика конфиденциальности / Privacy Policy
 
-Kuchga kirgan sana / Дата вступления в силу / Effective date: **[sana — egasi kiritadi]**
-Aloqa / Контакт / Contact: **[email — egasi kiritadi]**
+Kuchga kirgan sana / Дата вступления в силу / Effective date: **2026-10-10**
+Aloqa / Контакт / Contact: **labguide@alideveloper.uz**
 
 > Eslatma (e’lon qilishdan oldin o‘chiriladi):
-> - Matn ilovaning hisob, “Taklif va yordam”, guruhlar va tekshiruv funksiyalariga mos
->   (server: Supabase). Server ulanmaguncha build hech narsa yubormaydi — matn shunga ham to‘g‘ri.
-> - `[hosting mintaqasi]` va `[email yuborish xizmati]` — Supabase loyihasi va SMTP tanlangach
->   to‘ldiriladi.
-> - **O‘zbekiston qonunchiligi:** “Shaxsga doir ma’lumotlar to‘g‘risida”gi qonun (O‘RQ-547)
->   O‘zbekiston fuqarolarining shaxsiy ma’lumotlarini internet orqali qayta ishlashda ularni
->   O‘zbekiston hududidagi texnik vositalarda saqlash va shaxsiy ma’lumotlar bazalari davlat
->   reyestrida ro‘yxatdan o‘tkazish talablarini qo‘yadi. Server joylashuvi va ro‘yxatdan o‘tish
->   bo‘yicha e’lon qilishdan oldin yurist bilan tekshiring (bu huquqiy maslahat emas).
-> - Hamkorlar (reklama) bo‘limi yoqilganda “Reklama” bandi amal qiladi.
-> - Server Cloudflare’ga ko‘chsa (D-41, `docs/BACKEND_CLOUDFLARE.md`): hosting — Cloudflare
->   (D1, Sharqiy Yevropa), email xizmati — Resend; email serverda ochiq saqlanmaydi (faqat hash
->   va niqoblangan ko‘rinish), guruhda ism o‘rniga taxallus yoki “Talaba NN”. Murojaatlar va
->   hamkorlar bo‘limi u yerda hali yo‘q — e’lon qilishdan oldin matnni shunga moslang.
+> - **Egasi tasdiqlashi kerak:** sana (2026-10-10) va aloqa (labguide@alideveloper.uz) hozircha
+>   taklif qilingan qiymatlar; aloqa manzili haqiqatan ishlashini va xatlarni qabul qilishini
+>   tekshiring.
+> - Matn **Cloudflare serveri** (Workers + D1, Sharqiy Yevropa; D-41, D-42,
+>   `docs/BACKEND_CLOUDFLARE.md`, `cloudflare/src`, `cloudflare/migrations`) kodiga mos va
+>   `LG_API_URL` berilgan build uchun. `LG_API_URL` bo‘sh build serverga hech narsa yubormaydi
+>   (“Hisobsiz” qismi shunga ham to‘g‘ri). Supabase **ishlatilmaydi** — undan eski
+>   ma’lumotlar olib tashlangan.
+> - Murojaatlar (“Taklif va yordam”), tekshiruvchi, hamkorlar (reklama), admin panel va Pro
+>   server tomonida hali yo‘q (endpointlar `501`) — shuning uchun matnda “to‘planmaydi” deyilgan.
+>   Ular ishga tushirilsa, matn va do‘kon deklaratsiyalarini yangilang.
+> - **O‘zbekiston qonunchiligi (muhim):** “Shaxsga doir ma’lumotlar to‘g‘risida”gi qonun
+>   (O‘RQ-547) O‘zbekiston fuqarolarining shaxsiy ma’lumotlarini internet orqali qayta
+>   ishlashda ularni O‘zbekiston hududidagi texnik vositalarda saqlashni va ma’lumotlar bazasini
+>   davlat reyestrida ro‘yxatdan o‘tkazishni talab qiladi. Server hozir Evropa Ittifoqi
+>   (Sharqiy Yevropa) hududida — matnda bu ochiq aytilgan. Muvofiqlik va reyestr bo‘yicha
+>   e’lon qilishdan oldin yurist bilan tekshiring (bu huquqiy maslahat emas).
 
 ## O‘zbekcha
 
-**Hisobsiz foydalanish.** Mehmon sifatida foydalansangiz, LabGuide hech qanday shaxsiy ma’lumotni
-serverga yubormaydi. Sozlamalar, xatcho‘plar, QC qaydlari, apparatlaringiz, kalibrlash jurnali,
-o‘qish holati va mashq natijalari faqat qurilmangizda saqlanadi (qurilmaning o‘z zaxira
-nusxasiga — iCloud yoki Google — tizim sozlamalariga ko‘ra kirishi mumkin).
+**Hisobsiz foydalanish.** Mehmon sifatida (yoki server ulanmagan buildda) LabGuide hech qanday
+shaxsiy ma’lumotni serverga yubormaydi. Sozlamalar, xatcho‘plar, QC qaydlari, apparatlaringiz,
+kalibrlash jurnali, o‘qish holati va mashq natijalari faqat qurilmangizda saqlanadi (qurilmaning
+o‘z zaxira nusxasiga — iCloud yoki Google — tizim sozlamalariga ko‘ra kirishi mumkin). Ustozning
+guruh a’zosiga qo‘ygan real ism belgisi ham faqat ustoz qurilmasida qoladi.
 
-**Hisob bilan nima to‘planadi.** Email orqali kirsangiz, quyidagilar serverda saqlanadi:
-- email manzilingiz (kirish kodi yuborish va hisobni aniqlash uchun);
-- tanlangan rol va til, ro‘yxatdan o‘tgan sana, ilovadan oxirgi foydalangan **kun** (vaqt va
-  joylashuv emas) — faol foydalanuvchilar sonini hisoblash uchun;
-- “Taklif va yordam” murojaatlari: mavzu, xabarlar va o‘zingiz biriktirgan skrinshot
-  (yopiq saqlanadi, faqat siz va LabGuide administratori ko‘radi);
-- guruhlar: guruh nomi, guruhda ko‘rsatiladigan ismingiz, topshiriq javoblari va ballar
-  (guruh ustozi ko‘radi);
-- tekshiruvchilar uchun: karta va savollar bo‘yicha qarorlar va izohlar.
+**Xizmat ko‘rsatuvchilar.** Email bilan kirsangiz, ma’lumot quyidagi xizmatlar orqali
+qayta ishlanadi:
+- **Cloudflare, Inc.** — server (Workers) va ma’lumotlar bazasi (D1, Sharqiy Yevropa);
+- **Resend** — faqat kirish kodi xatini yuborish (email manzilingiz va 6 raqamli kod xat
+  yuborish uchun unga uzatiladi; xizmat o‘z siyosatiga ko‘ra yetkazish jurnalini saqlashi mumkin).
 
-Kirish sessiyasi qurilmaning xavfsiz omborida (Keychain / Android Keystore) saqlanadi.
+Ular ma’lumotni faqat LabGuide nomidan, xizmat ko‘rsatish uchun qayta ishlaydi; reklama uchun
+ishlatmaydi va sotmaydi.
+
+**Hisob bilan serverda nima saqlanadi va qancha vaqt.**
+- **Email:** ochiq holda saqlanmaydi — faqat HMAC-hash (hisobni topish uchun) va niqoblangan
+  ko‘rinish (masalan `da***@gmail.com`). Hisob o‘chirilguncha.
+- **Kirish kodi:** faqat hash ko‘rinishida; 10 daqiqa amal qiladi, 5 urinish; ishlatilgach yoki
+  muddati o‘tgach o‘chadi (muddati o‘tganlarini kunlik tozalash ham o‘chiradi).
+- **Sessiya:** token faqat hash ko‘rinishida (tokenning o‘zi qurilmangizda, Keychain / Android
+  Keystore); 60 kun, so‘ng o‘chadi; “Chiqish” ham o‘chiradi.
+- **Profil:** ichki tasodifiy identifikator, tanlangan rol va til, ro‘yxatdan o‘tgan vaqt,
+  ilovadan oxirgi foydalangan **kun** (vaqt va joylashuv emas). Hisob o‘chirilguncha.
+- **Ustoz:** “ustoz” sifatida ro‘yxatdan o‘tgan vaqt. Hisob o‘chirilguncha.
+- **Guruhlar:** guruh nomi, 8 belgili qo‘shilish kodi, a’zolik (rol, qo‘shilgan vaqt),
+  guruhdagi taxallusingiz (ixtiyoriy) yoki avtomatik tartib raqamingiz (“Talaba 07”).
+  **Ism-familiya so‘ralmaydi va serverga yuborilmaydi.** Guruh yoki hisob o‘chirilguncha.
+- **O‘quv jarayoni:** ustoz ochgan mavzular (id va vaqtlar), test topshiriqlari (nom, savollar
+  id si, vaqt chegarasi, to‘g‘ri javob kaliti — faqat ustozga), testni boshlash vaqti hamda
+  **javoblaringiz, har savol natijasi va ballingiz**. Server og‘zaki savol-javob belgisini
+  (natija, 1–5 baho) ham saqlay oladi, lekin ilova hozir uni yubormaydi. Guruh yoki hisob
+  o‘chirilguncha.
+- **Suiiste’molga qarshi hisoblagichlar:** kod so‘rash/tekshirish urinishlari soni; kalitida
+  email/IP faqat hash ko‘rinishida. Kunlik tozalash bilan taxminan bir sutka ichida o‘chadi.
+- **Xavfsizlik jurnali:** faqat ichki identifikator, vaqt va amal turi (masalan, “hisob
+  o‘chirildi”); email yo‘q. Hisob o‘chirilgandan keyin ham qoladi.
+
+IP manzilingiz LabGuide bazasida saqlanmaydi (faqat suiiste’molga qarshi hash-teg); Cloudflare
+esa tarmoq xizmati sifatida so‘rovlarni o‘z siyosatiga ko‘ra qayta ishlaydi. Murojaatlar
+(“Taklif va yordam”), skrinshotlar, tekshiruvchi qarorlari, hamkorlar va to‘lovlar serverda
+hozircha **to‘planmaydi** (ishlamaydi).
 
 **Nima to‘planmaydi.** Analitika SDK, reklama identifikatori, joylashuv, kontaktlar, kuzatuv
 (tracking) yo‘q. Ma’lumotlaringiz sotilmaydi va reklama uchun boshqalarga berilmaydi.
@@ -53,29 +82,39 @@ rejalashtiriladigan lokal bildirishnoma (push server yo‘q). Natija kartochkasi
 tizimning ulashish oynasi orqali faqat siz tanlagan joyga yuboriladi; rasmda shaxsiy
 ma’lumot yo‘q. “Rasmni saqlash” tanlansa, foto kutubxonasiga faqat shu rasm qo‘shiladi.
 
-**Kim ko‘radi.** Murojaatlaringizni faqat LabGuide administratori (ikki bosqichli himoya bilan)
-ko‘radi; administrator foydalanuvchilar ro‘yxatida emailni yashirilgan holda ko‘radi, to‘liq
-email ochilishi jurnalga yoziladi. Javoblarni inson yozadi — avtomatik (AI) javob yuborilmaydi.
+**Kim ko‘radi.** Ustoz faqat o‘zi yaratgan guruhni, uning a’zolari ro‘yxatini (taxallus yoki
+tartib raqami) va o‘z talabalarining test javoblari va ballarini ko‘radi. Talaba faqat o‘zining
+natijasini va o‘z a’zoligini ko‘radi; boshqa talabalarni va ularning natijalarini ko‘rmaydi.
+Test javob kaliti faqat ustozga ko‘rinadi. Administrator vakolati faqat serverdagi maxfiy
+ro‘yxat + tasdiqlangan email orqali beriladi va ikki bosqichli himoyani (TOTP) talab qiladi;
+LabGuide egasi/administratori baza va uning zaxirasiga texnik kirish huquqiga ega, lekin to‘liq
+emailni tiklay olmaydi (u saqlanmaydi). Cloudflare va Resend xodimlari faqat o‘z xizmat
+shartlari doirasida kirishi mumkin.
 
-**Qayerda saqlanadi.** Server: Supabase ([hosting mintaqasi]). Kirish kodlari email orqali
-[email yuborish xizmati] yordamida yuboriladi. Ma’lumot uzatishda shifrlanadi (HTTPS).
+**Ma’lumot O‘zbekistondan tashqarida saqlanadi.** Cloudflare D1 bazasi Sharqiy Yevropa
+(EI) hududida joylashgan, ya’ni ma’lumotlaringiz **O‘zbekiston hududidan tashqarida**
+saqlanadi va qayta ishlanadi; Cloudflare va Resend global infratuzilmada ishlaydi
+(ma’lumot AQShga ham uzatilishi mumkin). Email bilan kirib, shu shartlarga rozilik bildirasiz;
+rozi bo‘lmasangiz, hisobsiz (mehmon) foydalaning — asosiy imkoniyatlar qurilmada ishlaydi.
+Ma’lumot uzatishda shifrlanadi (HTTPS).
 
-**Bemor ma’lumotlari.** Ilovaga va skrinshotlarga bemorni aniqlaydigan ma’lumot (ism, tug‘ilgan
-sana, karta raqami) kiritmang — skrinshot biriktirishda ilova buni eslatadi.
+**Bemor ma’lumotlari.** Ilovaga (taxallus va guruh nomiga ham) bemorni aniqlaydigan ma’lumot
+(ism, tug‘ilgan sana, karta raqami) kiritmang. Guruhda taxallus sifatida o‘z ismingizni
+ko‘rsatish shart emas.
 
-**Reklama.** Hamkor kompaniyalar e’lonlari “Reklama” belgisi bilan ko‘rsatiladi va ma’lumot
-bo‘limlari tartibiga ta’sir qilmaydi. E’lon ko‘rsatilishi va “bog‘lanish” bosilishi faqat
-kunlik umumiy son sifatida hisoblanadi — kim bosgani saqlanmaydi. Suiiste’molga qarshi
-hisobingiz uchun faqat bugungi hodisalar soni saqlanadi (ertasi kuni ustidan yoziladi); mehmon
-rejimida hech narsa hisoblanmaydi. “Hamkor bo‘lish” arizasi (kompaniya, aloqa, xabar) faqat
-administratorga ko‘rinadi.
+**O‘chirish.** Profil → Maxfiylik → “Hisobni o‘chirish” serverdagi quyidagilarni butunlay
+o‘chiradi: profil, hamma sessiyalar, ustoz va admin yozuvi, guruhlardagi a’zoligingiz va
+taxallusingiz, sizning test javoblaringiz, urinishlaringiz va ballaringiz, ustoz belgilari.
+Agar siz ustoz bo‘lsangiz — **siz yaratgan guruhlar ham o‘chadi**: ularning a’zolari, mavzulari,
+topshiriqlari, javob kalitlari va barcha talabalar natijalari. Faqat xavfsizlik jurnalidagi
+ichki identifikator va “hisob o‘chirildi” yozuvi qoladi (email emas). “Lokal ma’lumotlarni
+o‘chirish” — qurilmadagi hamma narsa. Guruhdan chiqish faqat a’zolikni o‘chiradi, natijalaringiz
+esa hisobingiz yoki guruh o‘chirilguncha ustozda qoladi. Ilovasiz so‘rov uchun:
+labguide@alideveloper.uz.
 
-**O‘chirish.** Profil → Maxfiylik → “Hisobni o‘chirish” — serverdagi hisobingiz, murojaatlar,
-skrinshotlar, guruh a’zoligi va natijalar o‘chiriladi. “Lokal ma’lumotlarni o‘chirish” —
-qurilmadagi hamma narsa. Administrator amallari jurnalida (xavfsizlik uchun) faqat ichki
-identifikator qolishi mumkin, email emas.
-
-**Saqlash muddati.** Ma’lumotlar hisobingiz o‘chirilguncha saqlanadi.
+**Saqlash muddati.** Yuqorida ko‘rsatilganidek: kod 10 daqiqa, sessiya 60 kun, hisoblagichlar
+~1 sutka; qolgan ma’lumotlar hisob (yoki guruh) o‘chirilguncha. Faol bo‘lmagan hisoblar
+avtomatik o‘chirilmaydi.
 
 **Bolalar.** Ilova bolalarga mo‘ljallanmagan va ulardan ataylab ma’lumot to‘plamaydi.
 
@@ -83,22 +122,47 @@ identifikator qolishi mumkin, email emas.
 
 ## Русский
 
-**Без аккаунта.** В гостевом режиме LabGuide не отправляет персональные данные на сервер.
-Настройки, закладки, записи QC, ваши приборы, журнал калибровок, положение чтения и результаты
-тренировок хранятся только на устройстве (могут попадать в системную резервную копию iCloud или
-Google).
+**Без аккаунта.** В гостевом режиме (и в сборке без подключённого сервера) LabGuide не
+отправляет персональные данные на сервер. Настройки, закладки, записи QC, ваши приборы, журнал
+калибровок, положение чтения и результаты тренировок хранятся только на устройстве (могут
+попадать в системную резервную копию iCloud или Google). Реальное имя, которое преподаватель
+ставит участнику группы как метку, тоже остаётся только на устройстве преподавателя.
 
-**Что собирается при входе.** Если вы входите по email, на сервере хранятся:
-- адрес email (для отправки кода входа и идентификации аккаунта);
-- выбранная роль и язык, дата регистрации, **день** последнего использования (не время и не
-  местоположение) — для подсчёта активных пользователей;
-- обращения «Предложения и помощь»: тема, сообщения и приложенный вами скриншот (хранится
-  закрыто, видят только вы и администратор LabGuide);
-- группы: название группы, отображаемое имя, ответы на задания и баллы (видит преподаватель
-  группы);
-- для рецензентов: решения и комментарии по карточкам и вопросам.
+**Поставщики услуг.** При входе по email данные обрабатываются через:
+- **Cloudflare, Inc.** — сервер (Workers) и база данных (D1, Восточная Европа);
+- **Resend** — только отправка письма с кодом входа (ему передаются ваш email и 6-значный код;
+  сервис может хранить журнал доставки по своей политике).
 
-Сессия входа хранится в защищённом хранилище устройства (Keychain / Android Keystore).
+Они обрабатывают данные только от имени LabGuide для оказания услуги; не используют их для
+рекламы и не продают.
+
+**Что хранится на сервере и сколько.**
+- **Email:** в открытом виде не хранится — только HMAC-хеш (для поиска аккаунта) и маскированный
+  вид (например `da***@gmail.com`). До удаления аккаунта.
+- **Код входа:** только хеш; действует 10 минут, 5 попыток; удаляется после использования или
+  по истечении (просроченные также удаляет ежедневная очистка).
+- **Сессия:** токен только в виде хеша (сам токен — на вашем устройстве, Keychain / Android
+  Keystore); 60 дней, затем удаляется; «Выйти» тоже удаляет.
+- **Профиль:** внутренний случайный идентификатор, выбранные роль и язык, время регистрации,
+  **день** последнего использования (не время и не местоположение). До удаления аккаунта.
+- **Преподаватель:** время регистрации в роли преподавателя. До удаления аккаунта.
+- **Группы:** название, 8-значный код присоединения, участие (роль, время), ваш псевдоним
+  (необязательно) или автоматический порядковый номер («Студент 07»). **Имя и фамилия не
+  запрашиваются и не отправляются на сервер.** До удаления группы или аккаунта.
+- **Учебный процесс:** открытые преподавателем темы (id и время), тестовые задания (название, id
+  вопросов, лимит времени, ключ ответов — только для преподавателя), время начала теста и
+  **ваши ответы, результат по каждому вопросу и балл**. Сервер умеет хранить и отметки
+  устного опроса (результат, оценка 1–5), но приложение сейчас их не отправляет. До удаления
+  группы или аккаунта.
+- **Счётчики защиты от злоупотреблений:** число попыток запроса/проверки кода; в ключе email/IP
+  только в виде хеша. Удаляются ежедневной очисткой, примерно в течение суток.
+- **Журнал безопасности:** только внутренний идентификатор, время и тип действия (например,
+  «аккаунт удалён»); email нет. Сохраняется и после удаления аккаунта.
+
+Ваш IP-адрес не сохраняется в базе LabGuide (только хеш-метка для защиты от злоупотреблений);
+Cloudflare как сетевой сервис обрабатывает запросы по своей политике. Обращения («Предложения и
+помощь»), скриншоты, решения рецензентов, партнёры и платежи на сервере пока **не собираются**
+(не работают).
 
 **Что не собирается.** Нет SDK аналитики, рекламного идентификатора, геолокации, контактов и
 отслеживания. Данные не продаются и не передаются для рекламы.
@@ -116,29 +180,36 @@ Google).
 вы; персональных данных в ней нет. При выборе «Сохранить изображение» в фотоальбом добавляется
 только эта картинка.
 
-**Кто видит.** Обращения видит только администратор LabGuide (с двухфакторной защитой); в
-списке пользователей email скрыт, раскрытие полного email записывается в журнал. Ответы пишет
-человек — автоматические (ИИ) ответы не отправляются.
+**Кто видит.** Преподаватель видит только созданную им группу, список её участников
+(псевдоним или номер) и ответы и баллы своих студентов. Студент видит только свой результат и
+своё участие; других студентов и их результаты не видит. Ключ ответов теста виден только
+преподавателю. Права администратора выдаются только по секретному списку на сервере и
+подтверждённому email и требуют двухфакторной защиты (TOTP); владелец/администратор LabGuide
+имеет технический доступ к базе и её копиям, но не может восстановить полный email (он не
+хранится). Сотрудники Cloudflare и Resend могут получать доступ лишь в рамках условий своих
+услуг.
 
-**Где хранится.** Сервер: Supabase ([регион хостинга]). Коды входа отправляются по email через
-[сервис отправки email]. Передача данных шифруется (HTTPS).
+**Данные хранятся за пределами Узбекистана.** База Cloudflare D1 находится в Восточной Европе
+(ЕС), то есть ваши данные хранятся и обрабатываются **за пределами территории Узбекистана**;
+Cloudflare и Resend работают на глобальной инфраструктуре (данные могут передаваться и в США).
+Входя по email, вы соглашаетесь с этим; если не согласны, пользуйтесь без аккаунта (гостевой
+режим) — основные функции работают на устройстве. При передаче данные шифруются (HTTPS).
 
-**Данные пациентов.** Не вводите в приложение и в скриншоты данные, позволяющие
-идентифицировать пациента (ФИО, дату рождения, номер карты) — приложение напоминает об этом.
+**Данные пациентов.** Не вводите в приложение (в том числе в псевдоним и название группы) данные,
+позволяющие идентифицировать пациента (ФИО, дату рождения, номер карты). В группе указывать своё
+имя в качестве псевдонима не обязательно.
 
-**Реклама.** Объявления компаний-партнёров помечены «Реклама» и не влияют на порядок
-справочных разделов. Показы и нажатия «связаться» считаются только как дневное общее число —
-кто нажал, не сохраняется. Для защиты от
-злоупотреблений для вашего аккаунта хранится только число событий за сегодня (перезаписывается на
-следующий день); в гостевом режиме ничего не считается. Заявку «Стать партнёром» (компания,
-контакты, сообщение) видит только администратор.
+**Удаление.** Профиль → Конфиденциальность → «Удалить аккаунт» полностью удаляет на сервере:
+профиль, все сессии, записи преподавателя и администратора, ваше участие и псевдоним в группах,
+ваши ответы на тесты, попытки и баллы, отметки преподавателя. Если вы преподаватель —
+**созданные вами группы тоже удаляются**: их участники, темы, задания, ключи ответов и
+результаты всех студентов. Остаётся только внутренний идентификатор в журнале безопасности и
+запись «аккаунт удалён» (без email). «Удалить локальные данные» — всё на устройстве. Выход из
+группы удаляет только участие, а ваши результаты остаются у преподавателя до удаления аккаунта
+или группы. Запрос без приложения: labguide@alideveloper.uz.
 
-**Удаление.** Профиль → Конфиденциальность → «Удалить аккаунт» удаляет аккаунт на сервере,
-обращения, скриншоты, участие в группах и результаты. «Удалить локальные данные» — всё на
-устройстве. В журнале действий администратора (для безопасности) может остаться только
-внутренний идентификатор, без email.
-
-**Срок хранения.** Данные хранятся до удаления аккаунта.
+**Срок хранения.** Как указано выше: код 10 минут, сессия 60 дней, счётчики около суток;
+остальное — до удаления аккаунта (или группы). Неактивные аккаунты автоматически не удаляются.
 
 **Дети.** Приложение не предназначено для детей и намеренно не собирает их данные.
 
@@ -146,21 +217,47 @@ Google).
 
 ## English
 
-**Without an account.** In guest mode LabGuide sends no personal data to a server. Settings,
-bookmarks, QC records, your instruments, calibration log, reading position and practice
-results stay on your device (they may be included in the system’s iCloud or Google backup).
+**Without an account.** In guest mode (and in a build with no server connected) LabGuide sends
+no personal data to a server. Settings, bookmarks, QC records, your instruments, calibration
+log, reading position and practice results stay on your device (they may be included in the
+system’s iCloud or Google backup). A real-name label a teacher puts on a group member also
+stays only on the teacher’s device.
 
-**What is collected when you sign in.** If you sign in with email, the server stores:
-- your email address (to send sign-in codes and identify your account);
-- your chosen role and language, sign-up date and the **day** you last used the app (not time
-  or location) — to count active users;
-- “Feedback and help” requests: subject, messages and any screenshot you attach (stored
-  privately; only you and the LabGuide administrator can see it);
-- groups: group name, the display name you choose, assignment answers and scores (visible to
-  the group’s teacher);
-- for reviewers: decisions and comments on cards and questions.
+**Service providers.** If you sign in with email, data is processed through:
+- **Cloudflare, Inc.** — the server (Workers) and database (D1, Eastern Europe);
+- **Resend** — only to send the sign-in code email (your email address and the 6-digit code are
+  passed to it; it may keep a delivery log under its own policy).
 
-Your sign-in session is kept in the device’s secure storage (Keychain / Android Keystore).
+They process data only on LabGuide’s behalf to provide the service; they do not use it for
+advertising or sell it.
+
+**What the server stores, and for how long.**
+- **Email:** never stored in the clear — only an HMAC hash (to find your account) and a masked
+  form (e.g. `da***@gmail.com`). Until you delete your account.
+- **Sign-in code:** hash only; valid for 10 minutes, 5 attempts; removed once used or expired
+  (the daily cleanup also removes expired ones).
+- **Session:** the token is stored only as a hash (the token itself lives on your device,
+  Keychain / Android Keystore); 60 days, then removed; “Sign out” also removes it.
+- **Profile:** an internal random identifier, your chosen role and language, sign-up time, and
+  the **day** you last used the app (not time or location). Until account deletion.
+- **Teacher:** the time you registered as a teacher. Until account deletion.
+- **Groups:** group name, 8-character join code, membership (role, join time), your nickname
+  (optional) or an automatic sequence number (“Student 07”). **No first or last name is asked
+  for or sent to the server.** Until the group or account is deleted.
+- **Teaching activity:** topics a teacher opened (ids and times), test assignments (title,
+  question ids, time limit, answer key — teacher only), the time you started a test, and
+  **your answers, per-question result and score**. The server can also store oral Q&A marks
+  (result, 1–5 grade), but the app does not send them at present. Until the group or account is
+  deleted.
+- **Abuse-protection counters:** the number of code request/verify attempts; the key holds an
+  email/IP only as a hash. Removed by the daily cleanup, within roughly a day.
+- **Security log:** only an internal identifier, time and action type (e.g. “account
+  deleted”); no email. It remains after account deletion.
+
+Your IP address is not stored in LabGuide’s database (only a hashed tag for abuse protection);
+Cloudflare, as a network service, handles requests under its own policy. Support requests
+(“Feedback and help”), screenshots, reviewer decisions, partners and payments are **not
+collected** on the server at present (not active).
 
 **What is not collected.** No analytics SDK, advertising identifier, location, contacts or
 tracking. Your data is not sold or shared for advertising.
@@ -177,28 +274,37 @@ is a local notification scheduled on the device (no push server). A result card 
 through the system share sheet only to the destination you choose; it contains no personal
 data. If you choose “Save Image”, only that image is added to your photo library.
 
-**Who can see it.** Only the LabGuide administrator (protected by two-factor authentication) can
-read your requests; in the user list emails are masked and revealing a full email is logged.
-Replies are written by a person — no automatic (AI) replies are sent.
+**Who can see it.** A teacher sees only the group they created, its member list (nickname or
+number) and the answers and scores of their own students. A student sees only their own result
+and membership — not other students or their results. The test answer key is visible only to
+the teacher. Administrator rights are granted only via a secret server-side list plus a
+verified email and require two-factor authentication (TOTP); the LabGuide owner/administrator
+has technical access to the database and its backups but cannot recover a full email address
+(it is not stored). Cloudflare and Resend personnel may access data only as allowed by their
+own service terms.
 
-**Where it is stored.** Server: Supabase ([hosting region]). Sign-in codes are emailed via
-[email delivery service]. Data is encrypted in transit (HTTPS).
+**Data is stored outside Uzbekistan.** The Cloudflare D1 database is located in Eastern Europe
+(EU), so your data is stored and processed **outside the territory of Uzbekistan**; Cloudflare
+and Resend run on global infrastructure (data may also be transferred to the US). By signing in
+with email you accept this; if you do not, use the app without an account (guest mode) — the
+core features work on the device. Data is encrypted in transit (HTTPS).
 
 **Patient data.** Do not enter information that identifies a patient (name, date of birth,
-record number) in the app or in screenshots — the app reminds you when you attach one.
+record number) anywhere in the app, including nicknames and group names. In a group you do not
+have to use your own name as a nickname.
 
-**Advertising.** Partner companies’ listings are labelled “Ad” and do not change the order of
-reference sections. Impressions and “contact” taps are counted only as daily totals — who
-tapped is not stored. To prevent abuse, only today’s event count is kept for your account
-(overwritten the next day); nothing is counted in guest mode. A “Become a partner” application
-(company, contacts, message) is visible only to the administrator.
+**Deletion.** Profile → Privacy → “Delete account” permanently removes from the server: your
+profile, all sessions, teacher and admin records, your group memberships and nicknames, your
+test answers, attempts and scores, and teacher marks about you. If you are a teacher, **the
+groups you created are deleted too**: their members, topics, assignments, answer keys and all
+students’ results. Only an internal identifier in the security log and an “account deleted”
+entry remain (no email). “Delete local data” removes everything on the device. Leaving a group
+removes only your membership; your results stay with the teacher until your account or the
+group is deleted. Request without the app: labguide@alideveloper.uz.
 
-**Deletion.** Profile → Privacy → “Delete account” removes your server account, requests,
-screenshots, group membership and results. “Delete local data” removes everything on the
-device. The administrator action log (kept for security) may retain an internal identifier,
-never your email.
-
-**Retention.** Data is kept until you delete your account.
+**Retention.** As listed above: code 10 minutes, session 60 days, counters about a day; all
+other data until the account (or group) is deleted. Inactive accounts are not deleted
+automatically.
 
 **Children.** The app is not directed to children and does not knowingly collect their data.
 

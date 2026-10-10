@@ -158,34 +158,38 @@ passed independent expert review.
 
 ## 6. App Privacy (Ma’lumotlar)
 
-**Hozirgi holat (2026-10-09, TestFlight 0.1.0 (3) va (4), Android run 13–14):** CI’da
-`LG_SUPABASE_URL`/`LG_SUPABASE_KEY` secretlari **bo‘sh** (jurnalda `LG_SUPABASE_URL:` qiymatsiz) —
-build “server hali ulanmagan” rejimida, email kirish, “Taklif va yordam”, guruhlar va hamkor
-statistikasi serverga hech narsa yubormaydi. Shu buildlar uchun to‘g‘ri javob:
-**“Data Not Collected”** (Tracking: No). Ilova faqat foydalanuvchi o‘zi “Paketlar”da yuklashni
-bossa `raw.githubusercontent.com` dan statik JSON/fayl oladi (so‘rovda shaxsiy ma’lumot yo‘q,
-dasturchi saqlamaydi) va tashqi havolalarni brauzerda ochadi — bu Apple ta’rifi bo‘yicha
-“collection” emas. Analitika/crash SDK yo‘q.
+**Qaysi build qaysi javobga mos.** Server (Cloudflare Worker + D1, D-41/D-42) build vaqtida
+`--dart-define=LG_API_URL=https://…` berilsa ulanadi (CI: secret/variable `LG_API_URL`).
+- **`LG_API_URL` bo‘sh build** (2026-10-09 TestFlight 0.1.0 (3), (4) va Android run 13–14 shunday
+  edi; `LG_SUPABASE_*` ham bo‘sh — Supabase endi ishlatilmaydi) — “server hali ulanmagan”:
+  email kirish, guruhlar serverga hech narsa yubormaydi. Javob: **“Data Not Collected”**
+  (Tracking: No). Ilova faqat foydalanuvchi o‘zi “Paketlar”da yuklashni bossa
+  `raw.githubusercontent.com` dan statik JSON/fayl oladi (so‘rovda shaxsiy ma’lumot yo‘q,
+  dasturchi saqlamaydi) va tashqi havolalarni brauzerda ochadi — bu Apple ta’rifi bo‘yicha
+  “collection” emas. Analitika/crash SDK yo‘q.
+- **`LG_API_URL` berilgan build** — email kirish va guruhlar ishlaydi. Shu build **birinchi**
+  yuklanishidan oldin App Privacy quyidagi jadvalga o‘zgartiriladi (aks holda deklaratsiya
+  noto‘g‘ri bo‘ladi). Provayderlar: Cloudflare (server/baza, Sharqiy Yevropa) va Resend (faqat
+  kirish kodi xati) — ikkalasi xizmat ko‘rsatuvchi, ma’lumot reklama/sotuv uchun berilmaydi.
 
-Secret qo‘yilib server ulangan **birinchi** buildgacha App Privacy quyidagi jadvalga
-o‘zgartiriladi (aks holda deklaratsiya noto‘g‘ri bo‘ladi). Server (Supabase) ulangan build uchun javoblar. **Tracking: No** (boshqa kompaniyalar ma’lumoti
-bilan birlashtirilmaydi, reklama identifikatori yo‘q). Hamma toifalar — **Linked to the user**,
-**not used for tracking**.
+**Tracking: No** (boshqa kompaniyalar ma’lumoti bilan birlashtirilmaydi, reklama identifikatori
+yo‘q). Hamma toifalar — **Linked to the user**, **not used for tracking**. Mazmuni
+`cloudflare/migrations` va `PRIVACY_POLICY.md` bilan bir xil.
 
-| App Store toifasi | Nima | Maqsad |
+| App Store toifasi | Nima (kodda) | Maqsad |
 |---|---|---|
-| Contact Info → Email Address | kirish emaili | App Functionality |
-| Identifiers → User ID | ichki hisob id si | App Functionality |
-| User Content → Customer Support | “Taklif va yordam” xabarlari | App Functionality |
-| User Content → Photos or Videos | murojaatga biriktirilgan skrinshot (ixtiyoriy) | App Functionality |
-| User Content → Other User Content | guruh javoblari, tekshiruvchi izohlari | App Functionality |
-| Usage Data → Product Interaction | oxirgi foydalanilgan kun, rol, til | Analytics, App Functionality |
+| Contact Info → Email Address | kirish emaili (serverda faqat HMAC-hash + niqoblangan ko‘rinish; Resend orqali kod yuboriladi) | App Functionality |
+| Identifiers → User ID | ichki tasodifiy hisob id si (`users.id`) | App Functionality |
+| User Content → Other User Content | guruh taxallusi (yoki “Talaba NN”), test javoblari, har savol natijasi va ball | App Functionality |
+| Usage Data → Product Interaction | ilovadan oxirgi foydalangan **kun** (`last_seen_on`, vaqtsiz) | App Functionality |
 
-Hamkorlar (reklama) yoqilsa qo‘shiladi: **Usage Data → Advertising Data** — e’lon ko‘rsatilishi
-va bosilishi, **Not linked** (faqat kunlik umumiy son), maqsad: Third-Party Advertising.
-Spamga qarshi hisob bo‘yicha faqat bugungi hodisalar soni: **Other Usage Data**, Linked,
-maqsad: App Functionality. “Hamkor bo‘lish” arizasi: **Contact Info** (email, ism, telefon),
-Linked, maqsad: App Functionality.
+Rol va til sozlamasi ham hisobda saqlanadi — alohida App Store toifasi yo‘q, shuning uchun
+yuqoridagilarga kiritilgan (talab bo‘lsa Other Data Types). **Diagnostics** (crash/performance)
+to‘planmaydi: SDK yo‘q, Worker `observability` o‘chiq. IP faqat suiiste’molga qarshi hash-teg
+sifatida ishlatiladi, saqlanmaydi (Location/Device ID yo‘q). **Customer Support**, **Photos or
+Videos**, **Advertising Data** serverda hozir yo‘q (murojaatlar, hamkorlar `501`) — qo‘shilmaydi;
+ular ishga tushirilsa jadval yangilanadi (murojaat: Customer Support + Photos or Videos;
+hamkorlar: Advertising Data, **Not linked**, Third-Party Advertising; ariza: Contact Info).
 Mehmon rejimida va server ulanmagan buildda hech narsa yuborilmaydi.
 
 **Mikrofon / nutqni tanish (leykoformula ovozli buyruqlari, ixtiyoriy, eksperimental):** iOS’da
@@ -198,10 +202,12 @@ ulashish — tizim oynasi, `NSPhotoLibraryAddUsageDescription` faqat “Save Ima
 **Privacy Policy URL** — majburiy. Matn: [PRIVACY_POLICY.md](PRIVACY_POLICY.md). Joylash: GitHub
 → repo Settings → Pages → “Deploy from a branch”, `main` / `docs` — manzil
 `https://davlatsudekspert.github.io/LabGuide/store/PRIVACY_POLICY` (yoki o‘z saytingiz).
-E’lon qilishdan oldin sana, aloqa, hosting mintaqasi va email xizmatini to‘ldiring.
+Matnda sana (2026-10-10) va aloqa (labguide@alideveloper.uz) taklif qilingan — **egasi
+tasdiqlaydi**; hosting (Cloudflare, Sharqiy Yevropa) va email xizmati (Resend) kiritilgan.
 
 **Hisobni o‘chirish** (App Store 5.1.1(v)): ilovada Profil → Maxfiylik → “Hisobni o‘chirish”
-(server: `delete-account` Edge Function).
+(server: `DELETE /v1/me`, `cloudflare/src/auth.ts` `deleteAccount` — profil, sessiyalar,
+a’zolik, javoblar va ball; ustozning guruhlari ham).
 
 ## 7. Age rating
 
@@ -275,24 +281,25 @@ Hammasi egasining logosidan (`python3 tool/icons/make_icons.py`, D-37):
 
 ## 12. Google Play — Data safety
 
-**Hozirgi buildlar (server ulanmagan, `LG_SUPABASE_URL` secret bo‘sh):**
+**`LG_API_URL` bo‘sh build (server ulanmagan; hozirgacha yuklangan buildlar):**
 “Does your app collect or share any of the required user data types?” — **No**.
-Shifrlash/o‘chirish savollari bu holda so‘ralmaydi. Ads: **No** (hamkor bo‘limi server
-ulanmaguncha e’lon ko‘rsatmaydi — yoqilganda Yes). Server ulangan birinchi build yuklanishidan
-**oldin** quyidagi jadvalga almashtiriladi:
+Shifrlash/o‘chirish savollari bu holda so‘ralmaydi. Ads: **No**.
+
+**`LG_API_URL` berilgan build (Cloudflare Worker + D1 ulangan)** — birinchi shunday build
+yuklanishidan **oldin** Data safety quyidagicha to‘ldiriladi (manba: `cloudflare/src`,
+`cloudflare/migrations`; matn `PRIVACY_POLICY.md` bilan bir xil):
 
 | Savol | Javob |
 |---|---|
-| Ma’lumot to‘planadimi? | Ha (faqat hisob ochilganda) |
-| Uchinchi tomonga beriladimi (sharing)? | Yo‘q (Supabase va email xizmati — xizmat ko‘rsatuvchi, sharing emas) |
-| Uzatishda shifrlanganmi? | Ha (HTTPS) |
-| O‘chirishni so‘rash mumkinmi? | Ha — ilovada “Hisobni o‘chirish” va siyosatdagi aloqa manzili |
-| Personal info → Email address | To‘planadi; majburiy (hisob uchun); App functionality, Account management |
-| Messages → Other in-app messages | To‘planadi; ixtiyoriy; App functionality (yordam) |
-| Photos and videos → Photos | To‘planadi; ixtiyoriy; App functionality (murojaatga skrinshot) |
-| App activity → App interactions | To‘planadi; oxirgi faol kun; Analytics |
-| App activity → Other user-generated content | To‘planadi; ixtiyoriy; guruh javoblari, tekshiruv izohlari |
-| Location, Contacts, Financial, Health, Device IDs | To‘planmaydi |
+| Ma’lumot to‘planadimi? | Ha (faqat email bilan kirilganda; mehmon rejimida hech narsa yuborilmaydi) |
+| Uchinchi tomonga beriladimi (sharing)? | **Yo‘q** (Cloudflare — server/baza, Resend — kod xati: xizmat ko‘rsatuvchi, LabGuide nomidan qayta ishlaydi; sharing emas) |
+| Uzatishda shifrlanganmi? | **Ha** (HTTPS) |
+| O‘chirishni so‘rash mumkinmi? | **Ha** — ilovada Profil → Maxfiylik → “Hisobni o‘chirish” va aloqa emaili labguide@alideveloper.uz |
+| Personal info → Email address | To‘planadi; sinf (guruh) uchun majburiy, umuman ilova uchun **ixtiyoriy** (mehmon rejimida yo‘q); Account management, App functionality (serverda faqat hash + niqoblangan ko‘rinish) |
+| Personal info → User IDs | To‘planadi; ichki hisob id si (tasodifiy); Account management, App functionality |
+| App activity → Other user-generated content | To‘planadi; ixtiyoriy (sinfda); guruh taxallusi, test javoblari va ball; App functionality |
+| App activity → App interactions | Faqat oxirgi faol **kun** (`last_seen_on`); App functionality — Play talab qilsa shu qatorni qo‘shing |
+| Messages, Photos and videos, Location, Contacts, Financial, Health, Device or other IDs, Diagnostics | To‘planmaydi (murojaat/skrinshot/hamkorlar serverda hozir yo‘q — `501`) |
 
 **Ovozli buyruqlar (RECORD_AUDIO, ixtiyoriy, eksperimental):** Android’da rejim faqat
 qurilmada oflayn tanish mavjud bo‘lsa yoqiladi (`MainActivity` →

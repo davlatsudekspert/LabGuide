@@ -15,7 +15,7 @@ trekiga qo'lda yuklash. **Production'ga yubormang.** Ommaviy reliz bu hujjatda y
 | minSdk / targetSdk | 24 / 36 (Play talabi: targetSdk >= 35 — bajarilgan) |
 | Imzo | upload kaliti (CN=LabGuide), `jarsigner -verify`: "jar verified" (debug kalit emas) |
 | Upload sertifikati SHA-256 | `19:29:AB:51:9C:FE:61:D5:48:15:93:64:0C:54:C5:B4:B6:C5:A3:C4:38:37:35:3C:9D:B2:57:76:56:E8:FA:24` |
-| Build | server ulanmagan (`LG_SUPABASE_URL/KEY` bo'sh), `LG_ALL_FEATURES_OPEN=true` |
+| Build | server ulanmagan (`LG_API_URL` bo'sh; Supabase endi ishlatilmaydi), `LG_ALL_FEATURES_OPEN=true` |
 
 Faylni tekshirish: `sha256sum LabGuide-0.1.0-20.aab` (yuqoridagi qiymat bilan bir xil bo'lsin).
 
@@ -46,12 +46,12 @@ Dashboard'dagi "Set up your app" ro'yxatidagi bo'limlar:
 
 | Bo'lim | Javob |
 |---|---|
-| Privacy policy | `https://github.com/davlatsudekspert/LabGuide/blob/main/docs/store/PRIVACY_POLICY.md` (GitHub Pages yoqilsa: `https://davlatsudekspert.github.io/LabGuide/store/PRIVACY_POLICY`). Matnda `[sana]`, `[email]` kabi to'ldirilmagan joylar bo'lsa — avval to'ldiring (APP_STORE.md 14-bo'lim). |
+| Privacy policy | `https://github.com/davlatsudekspert/LabGuide/blob/main/docs/store/PRIVACY_POLICY.md` (GitHub Pages yoqilsa: `https://davlatsudekspert.github.io/LabGuide/store/PRIVACY_POLICY`). Matnda sana (2026-10-10) va aloqa (labguide@alideveloper.uz) taklif qilingan — egasi tasdiqlasin va muharrir eslatmasini o'chirsin (APP_STORE.md 14-bo'lim). |
 | App access | "All functionality is available without special access" — hammasi login'siz ochiq (mehmon rejimi). |
 | Ads | **No, my app does not contain ads** (hozirgi buildda e'lon yo'q). |
 | Content rating | Kategoriya: *Reference, News, or Educational*. So'rovnomada zo'ravonlik, jinsiy kontent, qimor, giyohvand moddalar, foydalanuvchi kontenti almashinuvi, joylashuv — hammasiga **No**. Email manzilingizni kiriting, natijani saqlang. |
 | Target audience | **18 va undan katta** (faqat kattalar). Bolalarga yo'naltirilmagan. |
-| Data safety | Server ulanmagan build uchun: "Does your app collect or share any of the required user data types?" → **No**. Ovozli buyruqlar faqat qurilmada oflayn ishlaydi, ovoz qurilmadan chiqmaydi va saqlanmaydi — Audio **qo'shilmaydi**. Data deletion savollari bu holda so'ralmaydi. Server ulangan birinchi build'dan oldin APP_STORE.md 12-bo'lim jadvaliga o'zgartiriladi. |
+| Data safety | **`LG_API_URL` bo'sh build (server ulanmagan):** "Does your app collect or share any of the required user data types?" → **No**; Data deletion savollari so'ralmaydi. **`LG_API_URL` berilgan build (Cloudflare server):** **Yes, collects** — *Personal info → Email address* (Account management, App functionality; sinf uchun majburiy, umuman ixtiyoriy — mehmon rejimida yo'q), *Personal info → User IDs* (Account management, App functionality), *App activity → Other user-generated content* (guruh taxallusi, test javoblari va ball; App functionality); [*App interactions* — faqat oxirgi faol kun, kerak bo'lsa]. **Shared: No** (Cloudflare va Resend — xizmat ko'rsatuvchi). **Encrypted in transit: Yes** (HTTPS). **Deletion: Yes** — ilovada Profil → Maxfiylik → "Hisobni o'chirish" va aloqa emaili labguide@alideveloper.uz (Data deletion URL maydoniga siyosat havolasi). Ovozli buyruqlar faqat qurilmada oflayn ishlaydi — Audio **qo'shilmaydi**. To'liq jadval: APP_STORE.md 12-bo'lim. |
 | Health apps | Ilova tibbiy qurilma emas, tashxis qo'ymaydi, doza bermaydi. Kategoriya: ma'lumotnoma / ta'lim. "Medical device / diagnosis / treatment" variantlarini **tanlamang**; sog'liq bilan bog'liq funksiya sifatida faqat "Educational / reference" ni belgilang. |
 | Government apps, Financial features, News | Mos emas — "No". |
 | Advertising ID | Ishlatilmaydi — "No". |
@@ -137,8 +137,9 @@ BOSQICHLAR (shu tartibda, har birini men bilan tasdiqlab)
 2. App content: Privacy policy URL =
    https://github.com/davlatsudekspert/LabGuide/blob/main/docs/store/PRIVACY_POLICY.md ;
    App access = hammasi login'siz ochiq; Ads = No; Content rating = Reference/Educational,
-   barcha savollarga No; Target audience = 18+; Data safety = hech qanday ma'lumot to'planmaydi
-   va ulashilmaydi (No), ovoz qurilmadan chiqmaydi; Health apps = ma'lumotnoma/ta'lim, tibbiy
+   barcha savollarga No; Target audience = 18+; Data safety = `LG_API_URL` bo'sh buildda hech
+   qanday ma'lumot to'planmaydi va ulashilmaydi (No), `LG_API_URL` berilgan buildda 54-qatordagi
+   (2-bo'lim jadvali) javoblar; ovoz qurilmadan chiqmaydi; Health apps = ma'lumotnoma/ta'lim, tibbiy
    qurilma emas.
 3. Store listing: matnlarni men senga beraman (docs/store/APP_STORE.md). Ikonka 512 px va
    feature graphic 1024x500 fayllarini men o'zim tanlab yuklayman.
