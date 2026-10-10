@@ -259,6 +259,26 @@ void main() {
     expect(routerOf(tester).state.matchedLocation, '/learn/quiz');
   });
 
+  // “Maxfiylik va yordam” deyilgan, lekin ichida yordam yo'q (yordam —
+  // alohida “Taklif va yordam” qatorida): yorliq faqat ichidagini va'da
+  // qiladi.
+  testWidgets('privacy row promises data controls, not help', (tester) async {
+    for (final l in <AppLocalizations>[uz, ru, en]) {
+      expect(
+        l.profilePrivacy.toLowerCase(),
+        isNot(anyOf(contains('yordam'), contains('помощ'), contains('help'))),
+      );
+    }
+    final s = await makeServices(tester, language: AppLanguage.en);
+    await pumpApp(tester, s, size: const Size(390, 1600));
+    await goTo(tester, '/profile');
+    await tapText(tester, en.profilePrivacy);
+    expect(routerOf(tester).state.matchedLocation, '/profile/privacy');
+    expect(find.text(en.privacyTitle), findsWidgets);
+    expect(find.text(en.privacyTerms), findsOneWidget);
+    expect(find.text(en.privacyDeleteLocal), findsOneWidget);
+  });
+
   testWidgets('glucose card: sources, thresholds ≠ reference interval', (
     tester,
   ) async {

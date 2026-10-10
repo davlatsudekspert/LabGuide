@@ -9913,7 +9913,7 @@ abstract class AppLocalizations {
   /// No description provided for @profilePrivacy.
   ///
   /// In en, this message translates to:
-  /// **'Privacy and help'**
+  /// **'Privacy and data'**
   String get profilePrivacy;
 
   /// No description provided for @profilePrivacySub.
@@ -10651,7 +10651,7 @@ abstract class AppLocalizations {
   /// No description provided for @privacyTitle.
   ///
   /// In en, this message translates to:
-  /// **'Privacy and help'**
+  /// **'Privacy and data'**
   String get privacyTitle;
 
   /// No description provided for @privacyBody.

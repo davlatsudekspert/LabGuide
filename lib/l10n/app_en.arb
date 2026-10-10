@@ -3369,7 +3369,7 @@
   "themeDark": "Dark",
   "profilePurchase": "Subscription and restore",
   "profilePurchaseSub": "Free · Pro",
-  "profilePrivacy": "Privacy and help",
+  "profilePrivacy": "Privacy and data",
   "profilePrivacySub": "Data and account controls",
   "supportTitle": "Feedback & help",
   "supportSub": "Suggestion, bug or question — replies arrive here",
@@ -3561,7 +3561,7 @@
     }
   },
   "purchaseStatusFree": "Current plan: free",
-  "privacyTitle": "Privacy and help",
+  "privacyTitle": "Privacy and data",
   "privacyBody": "In guest mode the app sends nothing to a server: settings, bookmarks, QC records, your instruments and practice results stay on this device (they may be included in the device backup). If you sign in with email, the server stores your email, role, language, last active day, your support requests and group results; no ad tracking. You can delete your account at any time.",
   "privacyTerms": "Terms of use",
   "privacyTermsSub": "Final text to be prepared",

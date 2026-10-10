@@ -5797,7 +5797,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get profilePurchaseSub => 'Free · Pro';
 
   @override
-  String get profilePrivacy => 'Конфиденциальность и помощь';
+  String get profilePrivacy => 'Конфиденциальность и данные';
 
   @override
   String get profilePrivacySub => 'Данные и управление аккаунтом';
@@ -6205,7 +6205,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get purchaseStatusFree => 'Сейчас: бесплатный режим';
 
   @override
-  String get privacyTitle => 'Конфиденциальность и помощь';
+  String get privacyTitle => 'Конфиденциальность и данные';
 
   @override
   String get privacyBody =>
