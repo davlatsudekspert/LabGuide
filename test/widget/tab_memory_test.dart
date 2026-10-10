@@ -1,5 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:labguide/app/shell.dart';
+import 'package:labguide/design/widgets/lg_widgets.dart';
 import 'package:labguide/features/qc/qc_model.dart';
 import 'package:labguide/features/settings/settings_controller.dart';
 import 'package:labguide/l10n/gen/app_localizations_en.dart';
@@ -118,5 +119,28 @@ void main() {
     await tester.tap(find.text(en.navTests).last);
     await tester.pumpAndSettle();
     expect(offset(), 0);
+  });
+
+  // Kutubxona → Saqlanganlar (bo'sh) → “Tests”: Tahlillar ro'yxati ochiladi,
+  // Tahlillar tabida oxirgi ochiq qolgan karta (Kaliy) emas.
+  testWidgets('saved empty state opens the tests list, not the last card', (
+    tester,
+  ) async {
+    final s = await makeServices(tester, language: AppLanguage.en);
+    await pumpApp(tester, s, size: const Size(390, 844));
+    await goTo(tester, '/tests');
+    await goTo(tester, '/tests/analyte/potassium');
+    await goTo(tester, '/library/saved');
+    expect(find.text(en.savedEmptyTitle), findsOneWidget);
+    // Bo'sh holat tugmasi (pastki “Tests” tabi emas).
+    await tester.tap(
+      find.descendant(
+        of: find.byType(LgStateView),
+        matching: find.text(en.featureTests),
+      ),
+    );
+    await tester.pumpAndSettle();
+    expect(routerOf(tester).state.matchedLocation, '/tests');
+    expect(find.text(en.testsTitle).hitTestable(), findsWidgets);
   });
 }
