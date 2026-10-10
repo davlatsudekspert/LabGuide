@@ -46,6 +46,8 @@ Future<AppServices> makeServices(
   AppLanguage language = AppLanguage.uz,
   AppRole? role = AppRole.lab,
   bool onboarded = true,
+  // Mavjud testlar /welcome'dan boshlanadi; til tanlash ekrani alohida sinaladi.
+  bool languageChosen = true,
   ThemeMode themeMode = ThemeMode.light,
   AssetBundle? bundle,
   http.Client? httpClient,
@@ -81,7 +83,11 @@ Future<AppServices> makeServices(
     sharer: sharer ?? FakeResultSharer(),
     clock: clock,
   );
-  await services.settings.setLanguage(language);
+  if (languageChosen) {
+    await services.settings.chooseLanguage(language);
+  } else {
+    await services.settings.setLanguage(language);
+  }
   await services.settings.setThemeMode(themeMode);
   if (role != null) await services.settings.setRole(role);
   if (onboarded) {

@@ -5,6 +5,7 @@ import 'package:material_ui/material_ui.dart';
 import '../features/admin/admin_screens.dart';
 import '../features/auth/ui/auth_screens.dart';
 import '../features/auth/ui/role_screen.dart';
+import '../features/auth/ui/language_picker_screen.dart';
 import '../features/auth/ui/welcome_screen.dart';
 import '../features/content/ui/analyte_screen.dart';
 import '../features/content/ui/conditions_screens.dart';
@@ -51,7 +52,7 @@ import 'shell.dart';
 
 /// Yo'llar xaritasi.
 ///
-/// Onboarding: /welcome → /welcome/auth → /welcome/auth/otp → /welcome/role.
+/// Onboarding: (birinchi marta) /welcome/language → /welcome → /welcome/auth → /welcome/auth/otp → /welcome/role.
 /// Tablar: /home, /tests, /lab, /library, /learn — har biri o'z stacki bilan.
 /// Analit kartasi har bir tab ichida ochiladi (`<tab>/analyte/:id`), shunda
 /// "orqaga" foydalanuvchini kelgan joyiga qaytaradi.
@@ -113,6 +114,10 @@ GoRouter buildRouter(
     redirect: (context, state) {
       final loc = state.matchedLocation;
       final inOnboarding = loc.startsWith('/welcome') || loc == '/terms';
+      // Birinchi ishga tushirish: avval til tanlanadi, so'ng welcome.
+      if (!settings.onboarded && !settings.languageChosen) {
+        return loc == '/welcome/language' ? null : '/welcome/language';
+      }
       if (!settings.onboarded && !inOnboarding) return '/welcome';
       if (settings.onboarded && loc.startsWith('/welcome')) return '/home';
       return null;
@@ -122,6 +127,10 @@ GoRouter buildRouter(
         path: '/welcome',
         builder: (context, state) => const WelcomeScreen(),
         routes: [
+          GoRoute(
+            path: 'language',
+            builder: (context, state) => const LanguagePickerScreen(),
+          ),
           GoRoute(
             path: 'auth',
             builder: (context, state) => const EmailScreen(),
@@ -829,18 +838,21 @@ GoRouter buildRouter(
   );
 }
 
-/// [SettingsController] dan faqat `onboarded` o'zgarishini uzatadi.
+/// [SettingsController] dan faqat `onboarded` va `languageChosen`
+/// o'zgarishini uzatadi.
 class OnboardingChanges extends ChangeNotifier {
-  OnboardingChanges(this._settings) : _last = _settings.onboarded {
+  OnboardingChanges(this._settings)
+    : _last = (_settings.onboarded, _settings.languageChosen) {
     _settings.addListener(_onSettings);
   }
 
   final SettingsController _settings;
-  bool _last;
+  (bool, bool) _last;
 
   void _onSettings() {
-    if (_settings.onboarded == _last) return;
-    _last = _settings.onboarded;
+    final now = (_settings.onboarded, _settings.languageChosen);
+    if (now == _last) return;
+    _last = now;
     notifyListeners();
   }
 

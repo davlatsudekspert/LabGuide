@@ -9,7 +9,12 @@ import '../helpers/harness.dart';
 /// layout xatosi (RenderFlex overflow va h.k.) yo'qligini tekshiradi.
 /// Ekran balandligi katta olinadi — ro'yxatning barcha elementlari
 /// quriladi va tekshiriladi (dangasa ro'yxat yashirib qo'ymaydi).
-const onboardingRoutes = ['/welcome', '/welcome/auth', '/welcome/role'];
+const onboardingRoutes = [
+  '/welcome',
+  '/welcome/language',
+  '/welcome/auth',
+  '/welcome/role',
+];
 
 const appRoutes = [
   '/home',

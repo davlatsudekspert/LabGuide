@@ -67,7 +67,12 @@ class SettingsController extends ChangeNotifier {
           UnitSystem.fromSystem(systemLocales),
       _themeMode = _parseTheme(_store.getString(StoreKeys.themeMode)),
       _role = _parseRole(_store.getString(StoreKeys.role)),
-      _onboarded = _store.getBool(StoreKeys.onboarded) ?? false;
+      _onboarded = _store.getBool(StoreKeys.onboarded) ?? false,
+      // Migratsiya: onboarding tugatgan foydalanuvchi tilni tanlagan deb
+      // hisoblanadi — eski o'rnatmalarda til tanlash ekrani chiqmaydi.
+      _languageChosen =
+          (_store.getBool(StoreKeys.languageChosen) ?? false) ||
+          (_store.getBool(StoreKeys.onboarded) ?? false);
 
   final KeyValueStore _store;
 
@@ -76,6 +81,7 @@ class SettingsController extends ChangeNotifier {
   ThemeMode _themeMode;
   AppRole? _role;
   bool _onboarded;
+  bool _languageChosen;
 
   AppLanguage get language => _language;
   UnitSystem get unitSystem => _unitSystem;
@@ -89,6 +95,20 @@ class SettingsController extends ChangeNotifier {
 
   /// Welcome → (mehmon yoki email) → rol oqimi yakunlanganmi.
   bool get onboarded => _onboarded;
+
+  /// Birinchi ishga tushirishdagi til tanlash ekrani yakunlanganmi.
+  bool get languageChosen => _languageChosen;
+
+  /// Til tanlash ekranidan: tilni o'rnatadi va tanlov bajarilganini saqlaydi.
+  Future<void> chooseLanguage(AppLanguage value) async {
+    _languageChosen = true;
+    final saved = setLanguage(value);
+    // setLanguage til o'zgarmagan bo'lsa notify qilmaydi — router baribir
+    // yangilanishi uchun alohida xabar beramiz.
+    notifyListeners();
+    await saved;
+    await _store.setBool(StoreKeys.languageChosen, true);
+  }
 
   Future<void> setLanguage(AppLanguage value) async {
     if (_language == value) return;
@@ -121,6 +141,7 @@ class SettingsController extends ChangeNotifier {
   Future<void> completeOnboarding() async {
     if (_onboarded) return;
     _onboarded = true;
+    _languageChosen = true;
     notifyListeners();
     await _store.setBool(StoreKeys.onboarded, true);
   }
@@ -139,6 +160,7 @@ class SettingsController extends ChangeNotifier {
     _themeMode = ThemeMode.system;
     _role = null;
     _onboarded = false;
+    _languageChosen = false;
     notifyListeners();
   }
 

@@ -24,6 +24,7 @@ abstract final class StoreKeys {
   static const unitSystem = 'settings.unitSystem';
   static const role = 'settings.role';
   static const onboarded = 'settings.onboarded';
+  static const languageChosen = 'settings.languageChosen';
   static const session = 'auth.session';
   static const bookmarks = 'content.bookmarks';
   static const researchQuestion = 'research.question';
@@ -79,6 +80,7 @@ abstract final class StoreKeys {
     unitSystem,
     role,
     onboarded,
+    languageChosen,
     session,
     bookmarks,
     researchQuestion,
