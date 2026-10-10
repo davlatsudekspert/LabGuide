@@ -511,15 +511,15 @@ final Map<ClinicalCalc, CalcInfo> calcInfo = {
       }),
       LocalizedText({
         'uz':
-            'Figge 1998: albumin har 1 g/dL ga kamayganda anion oralig‘i '
+            'Figge 1998: albumin har 10 g/L (1 g/dL) ga kamayganda anion oralig‘i '
             '2,5 mmol/L ga kamayadi. Boshqa tadqiqotlarda bu ko‘rsatkich '
             'taxminan 2,3 yoki 1,5–1,9 mmol/L (Kraut va Madias sharhi).',
         'ru':
-            'Figge 1998: на каждый 1 г/дл снижения альбумина анионный '
+            'Figge 1998: на каждые 10 г/л (1 г/дл) снижения альбумина анионный '
             'интервал снижается на 2,5 ммоль/л. В других работах — около '
             '2,3 или 1,5–1,9 ммоль/л (обзор Kraut и Madias).',
         'en':
-            'Figge 1998: for each 1 g/dL fall in albumin, the anion gap falls '
+            'Figge 1998: for each 10 g/L (1 g/dL) fall in albumin, the anion gap falls '
             'by 2.5 mmol/L. Other studies report about 2.3 or 1.5–1.9 mmol/L '
             '(Kraut and Madias review).',
       }),
@@ -630,15 +630,15 @@ final Map<ClinicalCalc, CalcInfo> calcInfo = {
         'uz':
             'Friedewald: xilomikronli namunalarda qo‘llanmaydi; III tip '
             'giperlipoproteinemiyada noto‘g‘ri yuqori natija beradi; TG '
-            '400 mg/dL (≈ 4,5 mmol/L) dan oshsa ishonchli emas.',
+            '≈ 4,5 mmol/L (400 mg/dL) dan oshsa ishonchli emas.',
         'ru':
             'Фридевальд: не применим к образцам с хиломикронами; при '
             'гиперлипопротеинемии III типа даёт ошибочно высокий результат; '
-            'при ТГ выше 400 мг/дл (≈ 4,5 ммоль/л) ненадёжен.',
+            'при ТГ выше ≈ 4,5 ммоль/л (400 мг/дл) ненадёжен.',
         'en':
             'Friedewald: not applicable to samples containing chylomicrons; '
             'erroneously high in type III hyperlipoproteinemia; not reliable '
-            'when TG exceeds 400 mg/dL (≈ 4.5 mmol/L).',
+            'when TG exceeds ≈ 4.5 mmol/L (400 mg/dL).',
       }),
       LocalizedText({
         'uz':
@@ -651,13 +651,13 @@ final Map<ClinicalCalc, CalcInfo> calcInfo = {
       }),
       LocalizedText({
         'uz':
-            'Sampson: TG 800 mg/dL (≈ 9,0 mmol/L) gacha tekshirilgan; III tip '
+            'Sampson: TG ≈ 9,0 mmol/L (800 mg/dL) gacha tekshirilgan; III tip '
             'giperlipidemiyali bemorlar tadqiqotga kiritilmagan.',
         'ru':
-            'Сэмпсон: проверено при ТГ до 800 мг/дл (≈ 9,0 ммоль/л); пациенты '
+            'Сэмпсон: проверено при ТГ до ≈ 9,0 ммоль/л (800 мг/дл); пациенты '
             'с гиперлипидемией III типа в исследование не включались.',
         'en':
-            'Sampson: validated for TG up to 800 mg/dL (≈ 9.0 mmol/L); '
+            'Sampson: validated for TG up to ≈ 9.0 mmol/L (800 mg/dL); '
             'patients with type III hyperlipidemia were excluded.',
       }),
     ],
@@ -743,14 +743,14 @@ final Map<ClinicalCalc, CalcInfo> calcInfo = {
       }),
       LocalizedText({
         'uz':
-            'eAG — baho: bashorat xatosining standart chetlanishi 15,7 mg/dL '
-            '(0,87 mmol/L).',
+            'eAG — baho: bashorat xatosining standart chetlanishi ≈ 0,87 mmol/L '
+            '(15,7 mg/dL).',
         'ru':
-            'eAG — оценка: стандартное отклонение ошибки прогноза 15,7 мг/дл '
-            '(0,87 ммоль/л).',
+            'eAG — оценка: стандартное отклонение ошибки прогноза ≈ 0,87 ммоль/л '
+            '(15,7 мг/дл).',
         'en':
             'eAG is an estimate: the standard deviation of the prediction '
-            'error was 15.7 mg/dL (0.87 mmol/L).',
+            'error was ≈ 0.87 mmol/L (15.7 mg/dL).',
       }),
       LocalizedText({
         'uz':

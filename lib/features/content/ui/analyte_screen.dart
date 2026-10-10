@@ -9,6 +9,7 @@ import '../../../app/widgets/links.dart';
 import '../../../design/tokens.dart';
 import '../../../design/widgets/lg_widgets.dart';
 import '../../../l10n/gen/app_localizations.dart';
+import '../../learn/exam_question.dart' show keepUnitsTogether;
 import '../../reference/reference_content.dart';
 import '../../reference/reference_screens.dart';
 import '../../settings/settings_controller.dart';
@@ -507,9 +508,11 @@ class _AnalyteBody {
             Padding(
               padding: const EdgeInsets.only(top: 6),
               child: Text(
-                l.analyteSiNote(
-                  conversion!.siUnit,
-                  formatResult(conversion.molarMass, locale, maxDecimals: 3),
+                keepUnitsTogether(
+                  l.analyteSiNote(
+                    conversion!.siUnit,
+                    formatResult(conversion.molarMass, locale, maxDecimals: 3),
+                  ),
                 ),
                 style: text.bodySmall,
               ),
@@ -652,12 +655,14 @@ class _AnalyteBody {
             Padding(
               padding: const EdgeInsets.only(top: 10),
               child: Text(
-                l.analyteSiNote(
-                  analyte.conversion!.siUnit,
-                  formatResult(
-                    analyte.conversion!.molarMass,
-                    locale,
-                    maxDecimals: 3,
+                keepUnitsTogether(
+                  l.analyteSiNote(
+                    analyte.conversion!.siUnit,
+                    formatResult(
+                      analyte.conversion!.molarMass,
+                      locale,
+                      maxDecimals: 3,
+                    ),
                   ),
                 ),
                 style: text.bodySmall,

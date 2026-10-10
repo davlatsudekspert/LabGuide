@@ -5,6 +5,7 @@ import 'package:material_ui/material_ui.dart';
 import '../../app/widgets/lg_page.dart';
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
+import '../learn/exam_question.dart' show keepUnitsTogether;
 import '../../l10n/gen/app_localizations.dart';
 import '../content/content_model.dart';
 import '../content/ui/content_widgets.dart';
@@ -269,7 +270,7 @@ class _UnitConverterScreenState extends State<UnitConverterScreen> {
     final locale = Localizations.localeOf(context).toLanguageTag();
     return LgPage(
       title: l.ucTitle,
-      subtitle: l.ucSubtitle,
+      subtitle: keepUnitsTogether(l.ucSubtitle),
       children: [
         ContentGate(
           builder: (context, pack) {
@@ -367,7 +368,11 @@ class _UnitConverterScreenState extends State<UnitConverterScreen> {
                   },
                 ),
                 Text(
-                  l.ucNote(formatResult(analyte.conversion!.molarMass, locale)),
+                  keepUnitsTogether(
+                    l.ucNote(
+                      formatResult(analyte.conversion!.molarMass, locale),
+                    ),
+                  ),
                   style: text.bodySmall,
                 ),
               ],

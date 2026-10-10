@@ -7,6 +7,7 @@ import '../../app/app_scope.dart';
 import '../../app/widgets/lg_page.dart';
 import '../../core/entitlements/entitlement_service.dart';
 import '../../design/widgets/lg_widgets.dart';
+import '../learn/exam_question.dart' show keepUnitsTogether;
 import '../../l10n/gen/app_localizations.dart';
 import '../auth/auth_controller.dart';
 import '../auth/ui/role_screen.dart';
@@ -140,8 +141,11 @@ class ProfileScreen extends StatelessWidget {
               runSpacing: 6,
               children: [
                 for (final (unit, label) in [
-                  (UnitSystem.si, l.profileUnitsSi),
-                  (UnitSystem.conventional, l.profileUnitsConventional),
+                  (UnitSystem.si, keepUnitsTogether(l.profileUnitsSi)),
+                  (
+                    UnitSystem.conventional,
+                    keepUnitsTogether(l.profileUnitsConventional),
+                  ),
                 ])
                   LgChoiceChip(
                     label: label,
