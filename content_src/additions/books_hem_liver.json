@@ -277,14 +277,14 @@
    ],
    "correct_index": 0,
    "prompt": {
-    "uz": "Analizator MCHC = 39 g/dL ko‘rsatdi, RBC past, MCV yuqori. Birinchi navbatda nima qilinadi?",
-    "ru": "Анализатор показал MCHC = 39 г/дл, RBC низкий, MCV высокий. Что делают в первую очередь?",
-    "en": "The analyser shows MCHC 39 g/dL, low RBC and high MCV. What comes first?"
+    "uz": "Analizator MCHC = 390 g/L (39 g/dL) ko‘rsatdi, RBC past, MCV yuqori. Birinchi navbatda nima qilinadi?",
+    "ru": "Анализатор показал MCHC = 390 г/л (39 г/дл), RBC низкий, MCV высокий. Что делают в первую очередь?",
+    "en": "The analyser shows MCHC 390 g/L (39 g/dL), low RBC and high MCV. What comes first?"
    },
    "basis": {
-    "uz": "MCHC 36–38 g/dL dan yuqori bo‘lishi o‘lchash xatosi belgisi; RBC↓ + MCV↑ sovuq agglyutininlarga xos — namuna isitilib qayta o‘lchanadi, surtma ko‘riladi.",
-    "ru": "MCHC выше 36–38 г/дл — признак ошибки измерения; RBC↓ + MCV↑ типичны для холодовых агглютининов — пробу согревают и измеряют повторно, смотрят мазок.",
-    "en": "MCHC above 36–38 g/dL signals measurement error; low RBC with high MCV suggests cold agglutinins — warm and re-run the sample and check the smear."
+    "uz": "MCHC 360–380 g/L (36–38 g/dL) dan yuqori bo‘lishi o‘lchash xatosi belgisi; RBC↓ + MCV↑ sovuq agglyutininlarga xos — namuna isitilib qayta o‘lchanadi, surtma ko‘riladi.",
+    "ru": "MCHC выше 360–380 г/л (36–38 г/дл) — признак ошибки измерения; RBC↓ + MCV↑ типичны для холодовых агглютининов — пробу согревают и измеряют повторно, смотрят мазок.",
+    "en": "MCHC above 360–380 g/L (36–38 g/dL) signals measurement error; low RBC with high MCV suggests cold agglutinins — warm and re-run the sample and check the smear."
    },
    "options": [
     {
@@ -323,7 +323,16 @@
       "en": "Wrong: with an error flag the result must be checked."
      }
     }
-   ]
+   ],
+   "review": {
+    "agent_checks": [
+     {
+      "date": "2026-10-10",
+      "scope": "dual units: SI first, conventional in parentheses; values computed by tool/content/quiz_dual_units.py with analyte-specific factors; source numbers kept; answer key unchanged",
+      "report": "docs/QUIZ_UNITS_2026-10-10.md"
+     }
+    ]
+   }
   },
   {
    "id": "books-irf",
