@@ -9,6 +9,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:labguide/app/app.dart';
 import 'package:labguide/app/app_scope.dart';
 import 'package:labguide/core/backend/lab_backend.dart';
+import 'package:labguide/core/storage/kv_store.dart';
 import 'package:labguide/features/settings/settings_controller.dart';
 import 'package:material_ui/material_ui.dart';
 
@@ -76,9 +77,11 @@ Future<AppServices> start(
   Size size = const Size(390, 844),
   LabBackend? backend,
   bool? allFeaturesOpen,
+  MemoryKeyValueStore? store,
 }) async {
   final s = await makeServices(
     tester,
+    store: store,
     language: lang,
     themeMode: theme,
     role: role,
