@@ -209,7 +209,8 @@ class _RelatedCards extends StatelessWidget {
               AnalyteRow(
                 analyte: a,
                 divider: i < cards.length - 1,
-                onTap: () => openInTab(context, '/tests/analyte/${a.id}'),
+                onTap: () =>
+                    openInTab(context, '/tests/analyte/${a.id}', exact: true),
               ),
           ],
         );

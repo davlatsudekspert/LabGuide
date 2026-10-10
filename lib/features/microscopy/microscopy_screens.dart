@@ -106,8 +106,11 @@ class _MicroscopyScreenState extends State<MicroscopyScreen> {
                   return AnalyteRow(
                     analyte: card,
                     divider: false,
-                    onTap: () =>
-                        openInTab(context, '/tests/analyte/${card.id}'),
+                    onTap: () => openInTab(
+                      context,
+                      '/tests/analyte/${card.id}',
+                      exact: true,
+                    ),
                   );
                 },
               ),
