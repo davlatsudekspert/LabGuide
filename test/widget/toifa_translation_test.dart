@@ -63,7 +63,8 @@ void main() {
         final snap = jsonDecode(
           File('test/fixtures/toifa_official_snapshot.json').readAsStringSync(),
         ) as Map<String, Object?>;
-        final tests = (snap['tests']! as Map).cast<String, Map<String, Object?>>();
+        final tests = (snap['tests']! as Map)
+            .cast<String, Map<String, Object?>>();
         final oral = (snap['oral']! as Map).cast<String, String>();
         expect(bank.tests.map((q) => q.id).toSet(), tests.keys.toSet());
         expect(bank.oral.map((q) => q.id).toSet(), oral.keys.toSet());
@@ -115,16 +116,27 @@ void main() {
       await pumpApp(tester, s, size: _tall);
       await goTo(tester, '/learn/toifa/practice/hemostasis');
       final bank = s.toifa.bank!;
-      final q = bank.scorable
+      // Bir nechta rasmiy savolning tarjimasi bir xil bo'lishi mumkin
+      // (masalan kdl-t-139 va kdl-t-190), shuning uchun ekrandagi savol
+      // asl matn ochilgandan keyin aniqlanadi.
+      final shown = bank.scorable
           .where((q) => q.topic == 'hemostasis')
-          .firstWhere((q) => find.text(q.prompt(l)).evaluate().isNotEmpty);
-      expect(find.text(q.prompt(l)), findsOne);
-      expect(find.text(q.text), findsNothing);
+          .where((q) => find.text(q.prompt(l)).evaluate().isNotEmpty)
+          .toList();
+      expect(shown, isNotEmpty);
+      expect(find.text(shown.first.prompt(l)), findsOne);
+      for (final c in shown) {
+        expect(find.text(c.text), findsNothing);
+      }
       expect(find.text(loc.toifaUzbekOnly), findsWidgets);
       expect(find.text(loc.toifaShowOriginal), findsOne);
 
       await tapScroll(tester, loc.toifaShowOriginal);
       expect(find.byKey(const ValueKey('toifa-original-text')), findsOne);
+      final q = shown.firstWhere(
+        (c) => find.text(c.text).evaluate().isNotEmpty,
+        orElse: () => shown.first,
+      );
       expect(find.text(q.text), findsOne);
       expect(find.text(loc.toifaHideOriginal), findsOne);
 
