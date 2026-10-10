@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:labguide/app/app_scope.dart';
 import 'package:labguide/core/backend/backend_models.dart';
@@ -125,7 +126,14 @@ void main() {
     tester,
   ) async {
     final b = FakeLabBackend();
-    final s = await makeServices(tester, backend: b, role: AppRole.teacher);
+    // Endi ilovada haqiqiy dastur asset'i bor — bu yerda u yo'q holat
+    // sun'iy yaratiladi (masalan, eski yoki qisqartirilgan build).
+    final s = await makeServices(
+      tester,
+      backend: b,
+      role: AppRole.teacher,
+      bundle: _WithoutCurriculum(),
+    );
     await pumpApp(tester, s, size: _tall);
     await goTo(tester, '/learn/lecture');
     expect(find.text(uz.classroomNoCurriculumTitle), findsOneWidget);
@@ -341,5 +349,16 @@ void main() {
         ]);
       });
     }
+  }
+}
+
+/// Ilova asset'lari, faqat o'quv dasturi fayli yo'q.
+class _WithoutCurriculum extends CachingAssetBundle {
+  @override
+  Future<ByteData> load(String key) {
+    if (key == CurriculumLoader.assetPath) {
+      throw FlutterError('Unable to load asset: $key');
+    }
+    return rootBundle.load(key);
   }
 }

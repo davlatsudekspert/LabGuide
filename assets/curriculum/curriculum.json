@@ -1,0 +1,9027 @@
+{
+ "program": {
+  "name": "Klinik laborator diagnostika — ixtisoslashtirish",
+  "credits": 864,
+  "duration_months": 6,
+  "days": 143
+ },
+ "modules": [
+  {
+   "id": "M1",
+   "title_uz": "Laborator xizmatni tashkillashtirish. Tibbiy etika va deontologiya",
+   "hours": {
+    "lecture": 6,
+    "practical": 12,
+    "lab": null,
+    "seminar": null,
+    "attestation": 6,
+    "extra": 0,
+    "total": 24
+   },
+   "topics": [
+    {
+     "id": "d001-P",
+     "n": 1,
+     "title_uz": "Laborator xizmatni tashkillashtirish. Tibbiy etika va diantologiya. Ma’naviyat darsi",
+     "type": "practical",
+     "hours": 4,
+     "week": 1,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "safety_ethics",
+      "gap": true
+     },
+     "oral_candidates": {
+      "count": 3,
+      "ids": [
+       "kdl-o-006",
+       "kdl-o-007",
+       "kdl-o-037"
+      ]
+     },
+     "test_candidates": {
+      "count": 0,
+      "ids": [],
+      "pack_quiz_ids": [],
+      "pack_quiz_count": 0
+     },
+     "test_gap": true,
+     "oral_gap": false
+    },
+    {
+     "id": "d001-L",
+     "n": 1,
+     "title_uz": "Ma’naviyat darsi",
+     "type": "lecture",
+     "hours": 2,
+     "week": 1,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "safety_ethics",
+      "gap": true
+     },
+     "oral_candidates": {
+      "count": 3,
+      "ids": [
+       "kdl-o-006",
+       "kdl-o-007",
+       "kdl-o-037"
+      ]
+     },
+     "test_candidates": {
+      "count": 0,
+      "ids": [],
+      "pack_quiz_ids": [],
+      "pack_quiz_count": 0
+     },
+     "test_gap": true,
+     "oral_gap": false
+    },
+    {
+     "id": "d002-P",
+     "n": 2,
+     "title_uz": "O‘zbekistonda klinik biokimyoviy laboratoriyalarni rivojlantirishning tashkiliy masalalari",
+     "type": "practical",
+     "hours": 4,
+     "week": 1,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [
+       "/lab/qc"
+      ],
+      "microscopy": [],
+      "toifa_topic": "qc_lab_management",
+      "gap": true
+     },
+     "oral_candidates": {
+      "count": 0,
+      "ids": []
+     },
+     "test_candidates": {
+      "count": 0,
+      "ids": [],
+      "pack_quiz_ids": [],
+      "pack_quiz_count": 0
+     },
+     "test_gap": true,
+     "oral_gap": true
+    },
+    {
+     "id": "d002-L",
+     "n": 2,
+     "title_uz": "O‘zbekistonda klinik biokimyoviy laboratoriyalarni rivojlantirishning tashkiliy masalalari",
+     "type": "lecture",
+     "hours": 2,
+     "week": 1,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [
+       "/lab/qc"
+      ],
+      "microscopy": [],
+      "toifa_topic": "qc_lab_management",
+      "gap": true
+     },
+     "oral_candidates": {
+      "count": 0,
+      "ids": []
+     },
+     "test_candidates": {
+      "count": 0,
+      "ids": [],
+      "pack_quiz_ids": [],
+      "pack_quiz_count": 0
+     },
+     "test_gap": true,
+     "oral_gap": true
+    },
+    {
+     "id": "d003-P",
+     "n": 3,
+     "title_uz": "Laboratoriya ichida va laboratoriyalar oro o‘tkaziladigan sifat nazorati va uning xususiyatlari",
+     "type": "practical",
+     "hours": 4,
+     "week": 1,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [
+       "/lab/qc"
+      ],
+      "microscopy": [],
+      "toifa_topic": "qc_lab_management",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 15,
+      "ids": [
+       "kdl-o-150",
+       "kdl-o-151",
+       "kdl-o-152",
+       "kdl-o-153",
+       "kdl-o-155",
+       "kdl-o-156",
+       "kdl-o-157",
+       "kdl-o-182",
+       "kdl-o-183",
+       "kdl-o-184",
+       "kdl-o-185",
+       "kdl-o-186",
+       "kdl-o-187",
+       "kdl-o-188",
+       "kdl-o-190"
+      ]
+     },
+     "test_candidates": {
+      "count": 19,
+      "ids": [
+       "kdl-t-042",
+       "kdl-t-045",
+       "kdl-t-048",
+       "kdl-t-057",
+       "kdl-t-097",
+       "kdl-t-098",
+       "kdl-t-113",
+       "kdl-t-123",
+       "kdl-t-138",
+       "kdl-t-157",
+       "kdl-t-159",
+       "kdl-t-162",
+       "kdl-t-164",
+       "kdl-t-205",
+       "kdl-t-271",
+       "kdl-t-280",
+       "kdl-t-322",
+       "kdl-t-323",
+       "kdl-t-361"
+      ],
+      "pack_quiz_ids": [],
+      "pack_quiz_count": 0
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d003-L",
+     "n": 3,
+     "title_uz": "Laboratoriya ichida va laboratoriyalar oro o‘tkaziladigan sifat nazorati va uning xususiyatlari",
+     "type": "lecture",
+     "hours": 2,
+     "week": 1,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [
+       "/lab/qc"
+      ],
+      "microscopy": [],
+      "toifa_topic": "qc_lab_management",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 15,
+      "ids": [
+       "kdl-o-150",
+       "kdl-o-151",
+       "kdl-o-152",
+       "kdl-o-153",
+       "kdl-o-155",
+       "kdl-o-156",
+       "kdl-o-157",
+       "kdl-o-182",
+       "kdl-o-183",
+       "kdl-o-184",
+       "kdl-o-185",
+       "kdl-o-186",
+       "kdl-o-187",
+       "kdl-o-188",
+       "kdl-o-190"
+      ]
+     },
+     "test_candidates": {
+      "count": 19,
+      "ids": [
+       "kdl-t-042",
+       "kdl-t-045",
+       "kdl-t-048",
+       "kdl-t-057",
+       "kdl-t-097",
+       "kdl-t-098",
+       "kdl-t-113",
+       "kdl-t-123",
+       "kdl-t-138",
+       "kdl-t-157",
+       "kdl-t-159",
+       "kdl-t-162",
+       "kdl-t-164",
+       "kdl-t-205",
+       "kdl-t-271",
+       "kdl-t-280",
+       "kdl-t-322",
+       "kdl-t-323",
+       "kdl-t-361"
+      ],
+      "pack_quiz_ids": [],
+      "pack_quiz_count": 0
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d004-A",
+     "n": 4,
+     "title_uz": "Attestatsiya 1. Laborator xizmatni tashkillashtirish. Tibbiy etika va diantologiya modulidan",
+     "type": "attestation",
+     "hours": 6,
+     "week": 1,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [
+       "/lab/qc",
+       "/lab/preanalytics"
+      ],
+      "microscopy": [],
+      "toifa_topic": "qc_lab_management",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 20,
+      "ids": [
+       "kdl-o-006",
+       "kdl-o-007",
+       "kdl-o-037",
+       "kdl-o-150",
+       "kdl-o-151",
+       "kdl-o-152",
+       "kdl-o-153",
+       "kdl-o-155",
+       "kdl-o-156",
+       "kdl-o-157",
+       "kdl-o-182",
+       "kdl-o-183",
+       "kdl-o-184",
+       "kdl-o-185",
+       "kdl-o-186"
+      ]
+     },
+     "test_candidates": {
+      "count": 23,
+      "ids": [
+       "kdl-t-002",
+       "kdl-t-042",
+       "kdl-t-045",
+       "kdl-t-048",
+       "kdl-t-057",
+       "kdl-t-097",
+       "kdl-t-098",
+       "kdl-t-113",
+       "kdl-t-123",
+       "kdl-t-138",
+       "kdl-t-157",
+       "kdl-t-158",
+       "kdl-t-159",
+       "kdl-t-162",
+       "kdl-t-163",
+       "kdl-t-164",
+       "kdl-t-205",
+       "kdl-t-271",
+       "kdl-t-280",
+       "kdl-t-287",
+       "kdl-t-322",
+       "kdl-t-323",
+       "kdl-t-361"
+      ],
+      "pack_quiz_ids": [],
+      "pack_quiz_count": 0
+     },
+     "test_gap": false,
+     "oral_gap": false
+    }
+   ]
+  },
+  {
+   "id": "M2",
+   "title_uz": "Odam ichki a’zolari tuzilishi va vazifalari",
+   "hours": {
+    "lecture": 8,
+    "practical": 16,
+    "lab": null,
+    "seminar": null,
+    "attestation": 6,
+    "extra": 0,
+    "total": 30
+   },
+   "topics": [
+    {
+     "id": "d005-P",
+     "n": 5,
+     "title_uz": "Odam ichki a’zolari tuzilishi va vazifalari. To‘qimalar klassifikatsiyasi. Epiteliy to‘qimasining morfofunksional xarakteristikasi",
+     "type": "practical",
+     "hours": 4,
+     "week": 1,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": null,
+      "gap": true
+     },
+     "oral_candidates": {
+      "count": 0,
+      "ids": []
+     },
+     "test_candidates": {
+      "count": 0,
+      "ids": [],
+      "pack_quiz_ids": [],
+      "pack_quiz_count": 0
+     },
+     "test_gap": true,
+     "oral_gap": true
+    },
+    {
+     "id": "d005-L",
+     "n": 5,
+     "title_uz": "Odam ichki a’zolari tuzilishi va vazifalari. To‘qimalar klassifikatsiyasi. Epiteliy to‘qimasining morfofunksional xarakteristikasi",
+     "type": "lecture",
+     "hours": 2,
+     "week": 1,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": null,
+      "gap": true
+     },
+     "oral_candidates": {
+      "count": 0,
+      "ids": []
+     },
+     "test_candidates": {
+      "count": 0,
+      "ids": [],
+      "pack_quiz_ids": [],
+      "pack_quiz_count": 0
+     },
+     "test_gap": true,
+     "oral_gap": true
+    },
+    {
+     "id": "d006-P",
+     "n": 6,
+     "title_uz": "Biriktiruvchi to‘qimaning morfofunksional xarakteristikasi",
+     "type": "practical",
+     "hours": 4,
+     "week": 1,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": null,
+      "gap": true
+     },
+     "oral_candidates": {
+      "count": 0,
+      "ids": []
+     },
+     "test_candidates": {
+      "count": 0,
+      "ids": [],
+      "pack_quiz_ids": [],
+      "pack_quiz_count": 0
+     },
+     "test_gap": true,
+     "oral_gap": true
+    },
+    {
+     "id": "d006-L",
+     "n": 6,
+     "title_uz": "Biriktiruvchi to‘qimaning morfofunksional xarakteristikasi",
+     "type": "lecture",
+     "hours": 2,
+     "week": 1,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": null,
+      "gap": true
+     },
+     "oral_candidates": {
+      "count": 0,
+      "ids": []
+     },
+     "test_candidates": {
+      "count": 0,
+      "ids": [],
+      "pack_quiz_ids": [],
+      "pack_quiz_count": 0
+     },
+     "test_gap": true,
+     "oral_gap": true
+    },
+    {
+     "id": "d007-P",
+     "n": 7,
+     "title_uz": "Jigar kasalliklarining laborator ko‘rsatkichlari",
+     "type": "practical",
+     "hours": 4,
+     "week": 2,
+     "links": {
+      "analytes": [
+       "alt",
+       "ast",
+       "alp",
+       "ggt",
+       "bilirubin-total",
+       "bilirubin-direct",
+       "albumin"
+      ],
+      "conditions": [
+       "hepatitis-b",
+       "hepatitis-c",
+       "fatty-liver-disease",
+       "jaundice-cholestasis"
+      ],
+      "reference": [
+       "liver-syndromes",
+       "jaundice"
+      ],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "liver_pigments",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 11,
+      "ids": [
+       "kdl-o-077",
+       "kdl-o-095",
+       "kdl-o-102",
+       "kdl-o-110",
+       "kdl-o-111",
+       "kdl-o-149",
+       "kdl-o-174",
+       "kdl-o-220",
+       "kdl-o-221",
+       "kdl-o-223",
+       "kdl-o-227"
+      ]
+     },
+     "test_candidates": {
+      "count": 43,
+      "ids": [
+       "kdl-t-056",
+       "kdl-t-067",
+       "kdl-t-083",
+       "kdl-t-090",
+       "kdl-t-091",
+       "kdl-t-106",
+       "kdl-t-165",
+       "kdl-t-169",
+       "kdl-t-170",
+       "kdl-t-171",
+       "kdl-t-178",
+       "kdl-t-181",
+       "kdl-t-199",
+       "kdl-t-201",
+       "kdl-t-217",
+       "kdl-t-218",
+       "kdl-t-296",
+       "kdl-t-299",
+       "kdl-t-301",
+       "kdl-t-303",
+       "kdl-t-315",
+       "kdl-t-318",
+       "kdl-t-333",
+       "kdl-t-369",
+       "kdl-t-376"
+      ],
+      "pack_quiz_ids": [
+       "alt-q1",
+       "alt-q2",
+       "ast-q1",
+       "ast-q2",
+       "alp-q1",
+       "alp-q2",
+       "ggt-q1",
+       "ggt-q2",
+       "bilirubin-total-q1",
+       "bilirubin-total-q2",
+       "bilirubin-direct-q1",
+       "bilirubin-direct-q2",
+       "albumin-q1",
+       "albumin-q2",
+       "books-jaundice-urine",
+       "books-de-ritis",
+       "books-cholestasis"
+      ],
+      "pack_quiz_count": 17
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d007-L",
+     "n": 7,
+     "title_uz": "Jigar kasalliklarining laborator ko‘rsatkichlari",
+     "type": "lecture",
+     "hours": 2,
+     "week": 2,
+     "links": {
+      "analytes": [
+       "alt",
+       "ast",
+       "alp",
+       "ggt",
+       "bilirubin-total",
+       "bilirubin-direct",
+       "albumin"
+      ],
+      "conditions": [
+       "hepatitis-b",
+       "hepatitis-c",
+       "fatty-liver-disease",
+       "jaundice-cholestasis"
+      ],
+      "reference": [
+       "liver-syndromes",
+       "jaundice"
+      ],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "liver_pigments",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 11,
+      "ids": [
+       "kdl-o-077",
+       "kdl-o-095",
+       "kdl-o-102",
+       "kdl-o-110",
+       "kdl-o-111",
+       "kdl-o-149",
+       "kdl-o-174",
+       "kdl-o-220",
+       "kdl-o-221",
+       "kdl-o-223",
+       "kdl-o-227"
+      ]
+     },
+     "test_candidates": {
+      "count": 43,
+      "ids": [
+       "kdl-t-056",
+       "kdl-t-067",
+       "kdl-t-083",
+       "kdl-t-090",
+       "kdl-t-091",
+       "kdl-t-106",
+       "kdl-t-165",
+       "kdl-t-169",
+       "kdl-t-170",
+       "kdl-t-171",
+       "kdl-t-178",
+       "kdl-t-181",
+       "kdl-t-199",
+       "kdl-t-201",
+       "kdl-t-217",
+       "kdl-t-218",
+       "kdl-t-296",
+       "kdl-t-299",
+       "kdl-t-301",
+       "kdl-t-303",
+       "kdl-t-315",
+       "kdl-t-318",
+       "kdl-t-333",
+       "kdl-t-369",
+       "kdl-t-376"
+      ],
+      "pack_quiz_ids": [
+       "alt-q1",
+       "alt-q2",
+       "ast-q1",
+       "ast-q2",
+       "alp-q1",
+       "alp-q2",
+       "ggt-q1",
+       "ggt-q2",
+       "bilirubin-total-q1",
+       "bilirubin-total-q2",
+       "bilirubin-direct-q1",
+       "bilirubin-direct-q2",
+       "albumin-q1",
+       "albumin-q2",
+       "books-jaundice-urine",
+       "books-de-ritis",
+       "books-cholestasis"
+      ],
+      "pack_quiz_count": 17
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d008-P",
+     "n": 8,
+     "title_uz": "Buyrak va siydik yo‘llari kasalliklarining laborator ko‘rsatkichlari",
+     "type": "practical",
+     "hours": 4,
+     "week": 2,
+     "links": {
+      "analytes": [
+       "creatinine",
+       "urea",
+       "egfr",
+       "uric-acid",
+       "urine-acr",
+       "urine-chemistry",
+       "urine-microscopy"
+      ],
+      "conditions": [
+       "chronic-kidney-disease",
+       "urinary-tract-infection",
+       "kidney-stones"
+      ],
+      "reference": [],
+      "tools": [
+       "/lab/calculators/egfr",
+       "/lab/calculators/acr"
+      ],
+      "microscopy": [],
+      "toifa_topic": "kidney_nitrogen",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 12,
+      "ids": [
+       "kdl-o-042",
+       "kdl-o-043",
+       "kdl-o-044",
+       "kdl-o-045",
+       "kdl-o-046",
+       "kdl-o-047",
+       "kdl-o-092",
+       "kdl-o-093",
+       "kdl-o-094",
+       "kdl-o-107",
+       "kdl-o-218",
+       "kdl-o-219"
+      ]
+     },
+     "test_candidates": {
+      "count": 17,
+      "ids": [
+       "kdl-t-031",
+       "kdl-t-051",
+       "kdl-t-063",
+       "kdl-t-102",
+       "kdl-t-103",
+       "kdl-t-180",
+       "kdl-t-200",
+       "kdl-t-207",
+       "kdl-t-241",
+       "kdl-t-250",
+       "kdl-t-265",
+       "kdl-t-284",
+       "kdl-t-312",
+       "kdl-t-313",
+       "kdl-t-320",
+       "kdl-t-426",
+       "kdl-t-427"
+      ],
+      "pack_quiz_ids": [
+       "creatinine-q1",
+       "creatinine-q2",
+       "urea-q1",
+       "urea-q2",
+       "egfr-q1",
+       "egfr-q2",
+       "uric-acid-q1",
+       "uric-acid-q2",
+       "urine-acr-q1",
+       "urine-acr-q2",
+       "urine-chemistry-q1",
+       "urine-chemistry-q2",
+       "urine-microscopy-q1",
+       "urine-microscopy-q2"
+      ],
+      "pack_quiz_count": 14
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d008-L",
+     "n": 8,
+     "title_uz": "Buyrak va siydik yo‘llari kasalliklarining laborator ko‘rsatkichlari",
+     "type": "lecture",
+     "hours": 2,
+     "week": 2,
+     "links": {
+      "analytes": [
+       "creatinine",
+       "urea",
+       "egfr",
+       "uric-acid",
+       "urine-acr",
+       "urine-chemistry",
+       "urine-microscopy"
+      ],
+      "conditions": [
+       "chronic-kidney-disease",
+       "urinary-tract-infection",
+       "kidney-stones"
+      ],
+      "reference": [],
+      "tools": [
+       "/lab/calculators/egfr",
+       "/lab/calculators/acr"
+      ],
+      "microscopy": [],
+      "toifa_topic": "kidney_nitrogen",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 12,
+      "ids": [
+       "kdl-o-042",
+       "kdl-o-043",
+       "kdl-o-044",
+       "kdl-o-045",
+       "kdl-o-046",
+       "kdl-o-047",
+       "kdl-o-092",
+       "kdl-o-093",
+       "kdl-o-094",
+       "kdl-o-107",
+       "kdl-o-218",
+       "kdl-o-219"
+      ]
+     },
+     "test_candidates": {
+      "count": 17,
+      "ids": [
+       "kdl-t-031",
+       "kdl-t-051",
+       "kdl-t-063",
+       "kdl-t-102",
+       "kdl-t-103",
+       "kdl-t-180",
+       "kdl-t-200",
+       "kdl-t-207",
+       "kdl-t-241",
+       "kdl-t-250",
+       "kdl-t-265",
+       "kdl-t-284",
+       "kdl-t-312",
+       "kdl-t-313",
+       "kdl-t-320",
+       "kdl-t-426",
+       "kdl-t-427"
+      ],
+      "pack_quiz_ids": [
+       "creatinine-q1",
+       "creatinine-q2",
+       "urea-q1",
+       "urea-q2",
+       "egfr-q1",
+       "egfr-q2",
+       "uric-acid-q1",
+       "uric-acid-q2",
+       "urine-acr-q1",
+       "urine-acr-q2",
+       "urine-chemistry-q1",
+       "urine-chemistry-q2",
+       "urine-microscopy-q1",
+       "urine-microscopy-q2"
+      ],
+      "pack_quiz_count": 14
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d009-A",
+     "n": 9,
+     "title_uz": "Attestatsiya 2. Odam ichki a’zolari tuzilishi va vazifalari modulidan",
+     "type": "attestation",
+     "hours": 6,
+     "week": 2,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "other",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 13,
+      "ids": [
+       "kdl-o-042",
+       "kdl-o-043",
+       "kdl-o-044",
+       "kdl-o-045",
+       "kdl-o-046",
+       "kdl-o-047",
+       "kdl-o-092",
+       "kdl-o-093",
+       "kdl-o-094",
+       "kdl-o-107",
+       "kdl-o-113",
+       "kdl-o-218",
+       "kdl-o-219"
+      ]
+     },
+     "test_candidates": {
+      "count": 18,
+      "ids": [
+       "kdl-t-031",
+       "kdl-t-051",
+       "kdl-t-063",
+       "kdl-t-102",
+       "kdl-t-103",
+       "kdl-t-180",
+       "kdl-t-200",
+       "kdl-t-207",
+       "kdl-t-241",
+       "kdl-t-250",
+       "kdl-t-265",
+       "kdl-t-278",
+       "kdl-t-284",
+       "kdl-t-312",
+       "kdl-t-313",
+       "kdl-t-320",
+       "kdl-t-426",
+       "kdl-t-427"
+      ],
+      "pack_quiz_ids": [],
+      "pack_quiz_count": 0
+     },
+     "test_gap": false,
+     "oral_gap": false
+    }
+   ]
+  },
+  {
+   "id": "M3",
+   "title_uz": "Gematologik tekshiruv usullari",
+   "hours": {
+    "lecture": 26,
+    "practical": 52,
+    "lab": null,
+    "seminar": null,
+    "attestation": 6,
+    "extra": 0,
+    "total": 84
+   },
+   "topics": [
+    {
+     "id": "d010-P",
+     "n": 10,
+     "title_uz": "Qon ishlab chiqarishning zamonaviy nazariyasi. Eritropoez, leykopoez, trombotsitopoez. Limfositopoez",
+     "type": "practical",
+     "hours": 4,
+     "week": 2,
+     "links": {
+      "analytes": [
+       "reticulocytes"
+      ],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "hemopoiesis_leukemia",
+      "gap": true
+     },
+     "oral_candidates": {
+      "count": 4,
+      "ids": [
+       "kdl-o-001",
+       "kdl-o-014",
+       "kdl-o-016",
+       "kdl-o-021"
+      ]
+     },
+     "test_candidates": {
+      "count": 1,
+      "ids": [
+       "kdl-t-338"
+      ],
+      "pack_quiz_ids": [
+       "reticulocytes-q1",
+       "reticulocytes-q2",
+       "books-irf"
+      ],
+      "pack_quiz_count": 3
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d010-L",
+     "n": 10,
+     "title_uz": "Qon ishlab chiqarishning zamonaviy nazariyasi. Eritropoez, leykopoez, trombotsitopoez. Limfositopoez",
+     "type": "lecture",
+     "hours": 2,
+     "week": 2,
+     "links": {
+      "analytes": [
+       "reticulocytes"
+      ],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "hemopoiesis_leukemia",
+      "gap": true
+     },
+     "oral_candidates": {
+      "count": 4,
+      "ids": [
+       "kdl-o-001",
+       "kdl-o-014",
+       "kdl-o-016",
+       "kdl-o-021"
+      ]
+     },
+     "test_candidates": {
+      "count": 1,
+      "ids": [
+       "kdl-t-338"
+      ],
+      "pack_quiz_ids": [
+       "reticulocytes-q1",
+       "reticulocytes-q2",
+       "books-irf"
+      ],
+      "pack_quiz_count": 3
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d011-P",
+     "n": 11,
+     "title_uz": "Qon shaklli elementlari sonini sanash. Gemoglobinni aniqlash",
+     "type": "practical",
+     "hours": 4,
+     "week": 2,
+     "links": {
+      "analytes": [
+       "hemoglobin",
+       "hematocrit",
+       "rbc-count",
+       "wbc-count",
+       "platelets"
+      ],
+      "conditions": [],
+      "reference": [
+       "spurious-cbc"
+      ],
+      "tools": [
+       "/lab/calculators/chamber"
+      ],
+      "microscopy": [],
+      "toifa_topic": "hematology_cells",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 9,
+      "ids": [
+       "kdl-o-002",
+       "kdl-o-004",
+       "kdl-o-015",
+       "kdl-o-017",
+       "kdl-o-018",
+       "kdl-o-022",
+       "kdl-o-023",
+       "kdl-o-160",
+       "kdl-o-257"
+      ]
+     },
+     "test_candidates": {
+      "count": 7,
+      "ids": [
+       "kdl-t-004",
+       "kdl-t-011",
+       "kdl-t-012",
+       "kdl-t-038",
+       "kdl-t-047",
+       "kdl-t-238",
+       "kdl-t-243"
+      ],
+      "pack_quiz_ids": [
+       "hemoglobin-q1",
+       "hemoglobin-q2",
+       "hematocrit-q1",
+       "hematocrit-q2",
+       "rbc-count-q1",
+       "rbc-count-q2",
+       "wbc-count-q1",
+       "wbc-count-q2",
+       "platelets-q1",
+       "platelets-q2"
+      ],
+      "pack_quiz_count": 10
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d011-L",
+     "n": 11,
+     "title_uz": "Qon shaklli elementlari sonini sanash. Gemoglobinni aniqlash",
+     "type": "lecture",
+     "hours": 2,
+     "week": 2,
+     "links": {
+      "analytes": [
+       "hemoglobin",
+       "hematocrit",
+       "rbc-count",
+       "wbc-count",
+       "platelets"
+      ],
+      "conditions": [],
+      "reference": [
+       "spurious-cbc"
+      ],
+      "tools": [
+       "/lab/calculators/chamber"
+      ],
+      "microscopy": [],
+      "toifa_topic": "hematology_cells",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 9,
+      "ids": [
+       "kdl-o-002",
+       "kdl-o-004",
+       "kdl-o-015",
+       "kdl-o-017",
+       "kdl-o-018",
+       "kdl-o-022",
+       "kdl-o-023",
+       "kdl-o-160",
+       "kdl-o-257"
+      ]
+     },
+     "test_candidates": {
+      "count": 7,
+      "ids": [
+       "kdl-t-004",
+       "kdl-t-011",
+       "kdl-t-012",
+       "kdl-t-038",
+       "kdl-t-047",
+       "kdl-t-238",
+       "kdl-t-243"
+      ],
+      "pack_quiz_ids": [
+       "hemoglobin-q1",
+       "hemoglobin-q2",
+       "hematocrit-q1",
+       "hematocrit-q2",
+       "rbc-count-q1",
+       "rbc-count-q2",
+       "wbc-count-q1",
+       "wbc-count-q2",
+       "platelets-q1",
+       "platelets-q2"
+      ],
+      "pack_quiz_count": 10
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d012-P",
+     "n": 12,
+     "title_uz": "Leykositar formula uchun material olish va ularni sanash. Mieloid, limfomonotsitar va eozinofil tipdagi leykemoid reaksiyalar",
+     "type": "practical",
+     "hours": 4,
+     "week": 2,
+     "links": {
+      "analytes": [
+       "neutrophils",
+       "lymphocytes",
+       "monocytes",
+       "eosinophils",
+       "basophils",
+       "blood-smear",
+       "wbc-count"
+      ],
+      "conditions": [],
+      "reference": [],
+      "tools": [
+       "/lab/calculators/differential"
+      ],
+      "microscopy": [
+       "blood"
+      ],
+      "toifa_topic": "hematology_cells",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 6,
+      "ids": [
+       "kdl-o-018",
+       "kdl-o-020",
+       "kdl-o-173",
+       "kdl-o-275",
+       "kdl-o-276",
+       "kdl-o-278"
+      ]
+     },
+     "test_candidates": {
+      "count": 12,
+      "ids": [
+       "kdl-t-008",
+       "kdl-t-009",
+       "kdl-t-013",
+       "kdl-t-035",
+       "kdl-t-049",
+       "kdl-t-052",
+       "kdl-t-174",
+       "kdl-t-237",
+       "kdl-t-262",
+       "kdl-t-272",
+       "kdl-t-273",
+       "kdl-t-453"
+      ],
+      "pack_quiz_ids": [
+       "wbc-count-q1",
+       "wbc-count-q2",
+       "neutrophils-q1",
+       "neutrophils-q2",
+       "lymphocytes-q1",
+       "lymphocytes-q2",
+       "monocytes-q1",
+       "monocytes-q2",
+       "eosinophils-q1",
+       "eosinophils-q2",
+       "basophils-q1",
+       "basophils-q2",
+       "blood-smear-q1"
+      ],
+      "pack_quiz_count": 13
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d012-L",
+     "n": 12,
+     "title_uz": "Leykositar formula uchun material olish va ularni sanash. Mieloid, limfomonotsitar va eozinofil tipdagi leykemoid reaksiyalar",
+     "type": "lecture",
+     "hours": 2,
+     "week": 2,
+     "links": {
+      "analytes": [
+       "neutrophils",
+       "lymphocytes",
+       "monocytes",
+       "eosinophils",
+       "basophils",
+       "blood-smear",
+       "wbc-count"
+      ],
+      "conditions": [],
+      "reference": [],
+      "tools": [
+       "/lab/calculators/differential"
+      ],
+      "microscopy": [
+       "blood"
+      ],
+      "toifa_topic": "hematology_cells",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 6,
+      "ids": [
+       "kdl-o-018",
+       "kdl-o-020",
+       "kdl-o-173",
+       "kdl-o-275",
+       "kdl-o-276",
+       "kdl-o-278"
+      ]
+     },
+     "test_candidates": {
+      "count": 12,
+      "ids": [
+       "kdl-t-008",
+       "kdl-t-009",
+       "kdl-t-013",
+       "kdl-t-035",
+       "kdl-t-049",
+       "kdl-t-052",
+       "kdl-t-174",
+       "kdl-t-237",
+       "kdl-t-262",
+       "kdl-t-272",
+       "kdl-t-273",
+       "kdl-t-453"
+      ],
+      "pack_quiz_ids": [
+       "wbc-count-q1",
+       "wbc-count-q2",
+       "neutrophils-q1",
+       "neutrophils-q2",
+       "lymphocytes-q1",
+       "lymphocytes-q2",
+       "monocytes-q1",
+       "monocytes-q2",
+       "eosinophils-q1",
+       "eosinophils-q2",
+       "basophils-q1",
+       "basophils-q2",
+       "blood-smear-q1"
+      ],
+      "pack_quiz_count": 13
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d013-P",
+     "n": 13,
+     "title_uz": "Anemiyalar. Klassifikatsiyasi, etiologiyasi va patogenezi",
+     "type": "practical",
+     "hours": 4,
+     "week": 3,
+     "links": {
+      "analytes": [
+       "hemoglobin",
+       "mcv",
+       "mch",
+       "mchc",
+       "rdw",
+       "reticulocytes",
+       "hematocrit"
+      ],
+      "conditions": [
+       "anemia-workup"
+      ],
+      "reference": [
+       "anemia"
+      ],
+      "tools": [
+       "/lab/calculators/colour-index",
+       "/lab/calculators/reticulocytes"
+      ],
+      "microscopy": [],
+      "toifa_topic": "anemias",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 7,
+      "ids": [
+       "kdl-o-025",
+       "kdl-o-026",
+       "kdl-o-027",
+       "kdl-o-258",
+       "kdl-o-259",
+       "kdl-o-260",
+       "kdl-o-261"
+      ]
+     },
+     "test_candidates": {
+      "count": 10,
+      "ids": [
+       "kdl-t-010",
+       "kdl-t-262",
+       "kdl-t-274",
+       "kdl-t-275",
+       "kdl-t-276",
+       "kdl-t-277",
+       "kdl-t-364",
+       "kdl-t-368",
+       "kdl-t-372",
+       "kdl-t-373"
+      ],
+      "pack_quiz_ids": [
+       "hemoglobin-q1",
+       "hemoglobin-q2",
+       "hematocrit-q1",
+       "hematocrit-q2",
+       "mcv-q1",
+       "mcv-q2",
+       "mch-q1",
+       "mch-q2",
+       "mchc-q1",
+       "mchc-q2",
+       "rdw-q1",
+       "rdw-q2",
+       "reticulocytes-q1",
+       "reticulocytes-q2",
+       "books-mchc-artefact",
+       "books-irf",
+       "books-anemia-mcv"
+      ],
+      "pack_quiz_count": 17
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d013-L",
+     "n": 13,
+     "title_uz": "Anemiyalar. Klassifikatsiyasi, etiologiyasi va patogenezi",
+     "type": "lecture",
+     "hours": 2,
+     "week": 3,
+     "links": {
+      "analytes": [
+       "hemoglobin",
+       "mcv",
+       "mch",
+       "mchc",
+       "rdw",
+       "reticulocytes",
+       "hematocrit"
+      ],
+      "conditions": [
+       "anemia-workup"
+      ],
+      "reference": [
+       "anemia"
+      ],
+      "tools": [
+       "/lab/calculators/colour-index",
+       "/lab/calculators/reticulocytes"
+      ],
+      "microscopy": [],
+      "toifa_topic": "anemias",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 7,
+      "ids": [
+       "kdl-o-025",
+       "kdl-o-026",
+       "kdl-o-027",
+       "kdl-o-258",
+       "kdl-o-259",
+       "kdl-o-260",
+       "kdl-o-261"
+      ]
+     },
+     "test_candidates": {
+      "count": 10,
+      "ids": [
+       "kdl-t-010",
+       "kdl-t-262",
+       "kdl-t-274",
+       "kdl-t-275",
+       "kdl-t-276",
+       "kdl-t-277",
+       "kdl-t-364",
+       "kdl-t-368",
+       "kdl-t-372",
+       "kdl-t-373"
+      ],
+      "pack_quiz_ids": [
+       "hemoglobin-q1",
+       "hemoglobin-q2",
+       "hematocrit-q1",
+       "hematocrit-q2",
+       "mcv-q1",
+       "mcv-q2",
+       "mch-q1",
+       "mch-q2",
+       "mchc-q1",
+       "mchc-q2",
+       "rdw-q1",
+       "rdw-q2",
+       "reticulocytes-q1",
+       "reticulocytes-q2",
+       "books-mchc-artefact",
+       "books-irf",
+       "books-anemia-mcv"
+      ],
+      "pack_quiz_count": 17
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d014-P",
+     "n": 14,
+     "title_uz": "Temir tanqisligi bilan kechadigan anemiyalar. Suyak ko‘migi va periferik qon ko‘rinishi",
+     "type": "practical",
+     "hours": 4,
+     "week": 3,
+     "links": {
+      "analytes": [
+       "ferritin",
+       "iron",
+       "transferrin-tibc",
+       "hemoglobin",
+       "mcv",
+       "blood-smear"
+      ],
+      "conditions": [
+       "iron-deficiency-anemia"
+      ],
+      "reference": [
+       "anemia"
+      ],
+      "tools": [],
+      "microscopy": [
+       "blood"
+      ],
+      "toifa_topic": "anemias",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 5,
+      "ids": [
+       "kdl-o-026",
+       "kdl-o-027",
+       "kdl-o-100",
+       "kdl-o-101",
+       "kdl-o-244"
+      ]
+     },
+     "test_candidates": {
+      "count": 11,
+      "ids": [
+       "kdl-t-010",
+       "kdl-t-069",
+       "kdl-t-101",
+       "kdl-t-116",
+       "kdl-t-216",
+       "kdl-t-275",
+       "kdl-t-276",
+       "kdl-t-277",
+       "kdl-t-368",
+       "kdl-t-372",
+       "kdl-t-373"
+      ],
+      "pack_quiz_ids": [
+       "ferritin-q1",
+       "transferrin-tibc-q1",
+       "hemoglobin-q1",
+       "hemoglobin-q2",
+       "mcv-q1",
+       "mcv-q2",
+       "blood-smear-q1",
+       "books-anemia-mcv"
+      ],
+      "pack_quiz_count": 8
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d014-L",
+     "n": 14,
+     "title_uz": "Temir tanqisligi bilan kechadigan anemiyalar. Suyak ko‘migi va periferik qon ko‘rinishi",
+     "type": "lecture",
+     "hours": 2,
+     "week": 3,
+     "links": {
+      "analytes": [
+       "ferritin",
+       "iron",
+       "transferrin-tibc",
+       "hemoglobin",
+       "mcv",
+       "blood-smear"
+      ],
+      "conditions": [
+       "iron-deficiency-anemia"
+      ],
+      "reference": [
+       "anemia"
+      ],
+      "tools": [],
+      "microscopy": [
+       "blood"
+      ],
+      "toifa_topic": "anemias",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 5,
+      "ids": [
+       "kdl-o-026",
+       "kdl-o-027",
+       "kdl-o-100",
+       "kdl-o-101",
+       "kdl-o-244"
+      ]
+     },
+     "test_candidates": {
+      "count": 11,
+      "ids": [
+       "kdl-t-010",
+       "kdl-t-069",
+       "kdl-t-101",
+       "kdl-t-116",
+       "kdl-t-216",
+       "kdl-t-275",
+       "kdl-t-276",
+       "kdl-t-277",
+       "kdl-t-368",
+       "kdl-t-372",
+       "kdl-t-373"
+      ],
+      "pack_quiz_ids": [
+       "ferritin-q1",
+       "transferrin-tibc-q1",
+       "hemoglobin-q1",
+       "hemoglobin-q2",
+       "mcv-q1",
+       "mcv-q2",
+       "blood-smear-q1",
+       "books-anemia-mcv"
+      ],
+      "pack_quiz_count": 8
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d015-P",
+     "n": 15,
+     "title_uz": "Vit. B-12 yetishmasligi bilan bog‘liq kamqonliklar. Suyak ko‘migi va periferik qon ko‘rinishi",
+     "type": "practical",
+     "hours": 4,
+     "week": 3,
+     "links": {
+      "analytes": [
+       "vitamin-b12",
+       "folate",
+       "homocysteine",
+       "methylmalonic-acid",
+       "mcv"
+      ],
+      "conditions": [
+       "b12-folate-deficiency"
+      ],
+      "reference": [
+       "anemia"
+      ],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "anemias",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 3,
+      "ids": [
+       "kdl-o-001",
+       "kdl-o-028",
+       "kdl-o-029"
+      ]
+     },
+     "test_candidates": {
+      "count": 8,
+      "ids": [
+       "kdl-t-087",
+       "kdl-t-183",
+       "kdl-t-268",
+       "kdl-t-274",
+       "kdl-t-275",
+       "kdl-t-276",
+       "kdl-t-277",
+       "kdl-t-396"
+      ],
+      "pack_quiz_ids": [
+       "vitamin-b12-q1",
+       "folate-q1",
+       "mcv-q1",
+       "mcv-q2",
+       "books-anemia-mcv"
+      ],
+      "pack_quiz_count": 5
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d015-L",
+     "n": 15,
+     "title_uz": "Vit. B-12 yetishmasligi bilan bog‘liq kamqonliklar. Suyak ko‘migi va periferik qon ko‘rinishi",
+     "type": "lecture",
+     "hours": 2,
+     "week": 3,
+     "links": {
+      "analytes": [
+       "vitamin-b12",
+       "folate",
+       "homocysteine",
+       "methylmalonic-acid",
+       "mcv"
+      ],
+      "conditions": [
+       "b12-folate-deficiency"
+      ],
+      "reference": [
+       "anemia"
+      ],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "anemias",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 3,
+      "ids": [
+       "kdl-o-001",
+       "kdl-o-028",
+       "kdl-o-029"
+      ]
+     },
+     "test_candidates": {
+      "count": 8,
+      "ids": [
+       "kdl-t-087",
+       "kdl-t-183",
+       "kdl-t-268",
+       "kdl-t-274",
+       "kdl-t-275",
+       "kdl-t-276",
+       "kdl-t-277",
+       "kdl-t-396"
+      ],
+      "pack_quiz_ids": [
+       "vitamin-b12-q1",
+       "folate-q1",
+       "mcv-q1",
+       "mcv-q2",
+       "books-anemia-mcv"
+      ],
+      "pack_quiz_count": 5
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d016-P",
+     "n": 16,
+     "title_uz": "Gemolitik kamqonliklar. Klinik-laborator ko‘rsatkichlari. Suyak ko‘migi va periferik qon ko‘rinishi",
+     "type": "practical",
+     "hours": 4,
+     "week": 3,
+     "links": {
+      "analytes": [
+       "reticulocytes",
+       "ldh",
+       "bilirubin-total",
+       "g6pd",
+       "hemoglobin-electrophoresis"
+      ],
+      "conditions": [
+       "hemolytic-anemia",
+       "thalassemia"
+      ],
+      "reference": [
+       "anemia"
+      ],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "anemias",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 5,
+      "ids": [
+       "kdl-o-004",
+       "kdl-o-015",
+       "kdl-o-030",
+       "kdl-o-031",
+       "kdl-o-257"
+      ]
+     },
+     "test_candidates": {
+      "count": 4,
+      "ids": [
+       "kdl-t-038",
+       "kdl-t-275",
+       "kdl-t-276",
+       "kdl-t-277"
+      ],
+      "pack_quiz_ids": [
+       "bilirubin-total-q1",
+       "bilirubin-total-q2",
+       "ldh-q1",
+       "ldh-q2",
+       "reticulocytes-q1",
+       "reticulocytes-q2",
+       "hemoglobin-electrophoresis-q1",
+       "g6pd-q1",
+       "books-irf",
+       "books-jaundice-urine"
+      ],
+      "pack_quiz_count": 10
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d016-L",
+     "n": 16,
+     "title_uz": "Gemolitik kamqonliklar. Klinik-laborator ko‘rsatkichlari. Suyak ko‘migi va periferik qon ko‘rinishi",
+     "type": "lecture",
+     "hours": 2,
+     "week": 3,
+     "links": {
+      "analytes": [
+       "reticulocytes",
+       "ldh",
+       "bilirubin-total",
+       "g6pd",
+       "hemoglobin-electrophoresis"
+      ],
+      "conditions": [
+       "hemolytic-anemia",
+       "thalassemia"
+      ],
+      "reference": [
+       "anemia"
+      ],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "anemias",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 5,
+      "ids": [
+       "kdl-o-004",
+       "kdl-o-015",
+       "kdl-o-030",
+       "kdl-o-031",
+       "kdl-o-257"
+      ]
+     },
+     "test_candidates": {
+      "count": 4,
+      "ids": [
+       "kdl-t-038",
+       "kdl-t-275",
+       "kdl-t-276",
+       "kdl-t-277"
+      ],
+      "pack_quiz_ids": [
+       "bilirubin-total-q1",
+       "bilirubin-total-q2",
+       "ldh-q1",
+       "ldh-q2",
+       "reticulocytes-q1",
+       "reticulocytes-q2",
+       "hemoglobin-electrophoresis-q1",
+       "g6pd-q1",
+       "books-irf",
+       "books-jaundice-urine"
+      ],
+      "pack_quiz_count": 10
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d017-P",
+     "n": 17,
+     "title_uz": "Leykozlar, etiologiyasi, patogenezi va klassifikatsiya",
+     "type": "practical",
+     "hours": 4,
+     "week": 3,
+     "links": {
+      "analytes": [
+       "wbc-count",
+       "blood-smear"
+      ],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "hemopoiesis_leukemia",
+      "gap": true
+     },
+     "oral_candidates": {
+      "count": 4,
+      "ids": [
+       "kdl-o-032",
+       "kdl-o-033",
+       "kdl-o-266",
+       "kdl-o-267"
+      ]
+     },
+     "test_candidates": {
+      "count": 13,
+      "ids": [
+       "kdl-t-006",
+       "kdl-t-007",
+       "kdl-t-008",
+       "kdl-t-009",
+       "kdl-t-049",
+       "kdl-t-232",
+       "kdl-t-237",
+       "kdl-t-239",
+       "kdl-t-240",
+       "kdl-t-291",
+       "kdl-t-327",
+       "kdl-t-396",
+       "kdl-t-454"
+      ],
+      "pack_quiz_ids": [
+       "wbc-count-q1",
+       "wbc-count-q2",
+       "blood-smear-q1"
+      ],
+      "pack_quiz_count": 3
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d017-L",
+     "n": 17,
+     "title_uz": "Leykozlar, etiologiyasi, patogenezi va klassifikatsiya",
+     "type": "lecture",
+     "hours": 2,
+     "week": 3,
+     "links": {
+      "analytes": [
+       "wbc-count",
+       "blood-smear"
+      ],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "hemopoiesis_leukemia",
+      "gap": true
+     },
+     "oral_candidates": {
+      "count": 4,
+      "ids": [
+       "kdl-o-032",
+       "kdl-o-033",
+       "kdl-o-266",
+       "kdl-o-267"
+      ]
+     },
+     "test_candidates": {
+      "count": 13,
+      "ids": [
+       "kdl-t-006",
+       "kdl-t-007",
+       "kdl-t-008",
+       "kdl-t-009",
+       "kdl-t-049",
+       "kdl-t-232",
+       "kdl-t-237",
+       "kdl-t-239",
+       "kdl-t-240",
+       "kdl-t-291",
+       "kdl-t-327",
+       "kdl-t-396",
+       "kdl-t-454"
+      ],
+      "pack_quiz_ids": [
+       "wbc-count-q1",
+       "wbc-count-q2",
+       "blood-smear-q1"
+      ],
+      "pack_quiz_count": 3
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d018-P",
+     "n": 18,
+     "title_uz": "O‘tkir leykozlar. O‘tkir leykozlarda suyak ko‘migi va periferik qon ko‘rinishi",
+     "type": "practical",
+     "hours": 4,
+     "week": 3,
+     "links": {
+      "analytes": [
+       "blood-smear"
+      ],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "hemopoiesis_leukemia",
+      "gap": true
+     },
+     "oral_candidates": {
+      "count": 4,
+      "ids": [
+       "kdl-o-032",
+       "kdl-o-033",
+       "kdl-o-266",
+       "kdl-o-267"
+      ]
+     },
+     "test_candidates": {
+      "count": 14,
+      "ids": [
+       "kdl-t-006",
+       "kdl-t-007",
+       "kdl-t-008",
+       "kdl-t-009",
+       "kdl-t-049",
+       "kdl-t-232",
+       "kdl-t-237",
+       "kdl-t-239",
+       "kdl-t-240",
+       "kdl-t-291",
+       "kdl-t-327",
+       "kdl-t-396",
+       "kdl-t-445",
+       "kdl-t-454"
+      ],
+      "pack_quiz_ids": [
+       "blood-smear-q1"
+      ],
+      "pack_quiz_count": 1
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d018-L",
+     "n": 18,
+     "title_uz": "O‘tkir leykozlar. O‘tkir leykozlarda suyak ko‘migi va periferik qon ko‘rinishi",
+     "type": "lecture",
+     "hours": 2,
+     "week": 3,
+     "links": {
+      "analytes": [
+       "blood-smear"
+      ],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "hemopoiesis_leukemia",
+      "gap": true
+     },
+     "oral_candidates": {
+      "count": 4,
+      "ids": [
+       "kdl-o-032",
+       "kdl-o-033",
+       "kdl-o-266",
+       "kdl-o-267"
+      ]
+     },
+     "test_candidates": {
+      "count": 14,
+      "ids": [
+       "kdl-t-006",
+       "kdl-t-007",
+       "kdl-t-008",
+       "kdl-t-009",
+       "kdl-t-049",
+       "kdl-t-232",
+       "kdl-t-237",
+       "kdl-t-239",
+       "kdl-t-240",
+       "kdl-t-291",
+       "kdl-t-327",
+       "kdl-t-396",
+       "kdl-t-445",
+       "kdl-t-454"
+      ],
+      "pack_quiz_ids": [
+       "blood-smear-q1"
+      ],
+      "pack_quiz_count": 1
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d019-P",
+     "n": 19,
+     "title_uz": "Surunkali leykozlar. Suyak ko‘migi va periferik qon ko‘rinishi",
+     "type": "practical",
+     "hours": 4,
+     "week": 4,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "hemopoiesis_leukemia",
+      "gap": true
+     },
+     "oral_candidates": {
+      "count": 6,
+      "ids": [
+       "kdl-o-032",
+       "kdl-o-033",
+       "kdl-o-034",
+       "kdl-o-035",
+       "kdl-o-266",
+       "kdl-o-267"
+      ]
+     },
+     "test_candidates": {
+      "count": 13,
+      "ids": [
+       "kdl-t-006",
+       "kdl-t-007",
+       "kdl-t-008",
+       "kdl-t-009",
+       "kdl-t-049",
+       "kdl-t-174",
+       "kdl-t-237",
+       "kdl-t-240",
+       "kdl-t-272",
+       "kdl-t-291",
+       "kdl-t-327",
+       "kdl-t-396",
+       "kdl-t-454"
+      ],
+      "pack_quiz_ids": [],
+      "pack_quiz_count": 0
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d019-L",
+     "n": 19,
+     "title_uz": "Surunkali leykozlar. Suyak ko‘migi va periferik qon ko‘rinishi",
+     "type": "lecture",
+     "hours": 2,
+     "week": 4,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "hemopoiesis_leukemia",
+      "gap": true
+     },
+     "oral_candidates": {
+      "count": 6,
+      "ids": [
+       "kdl-o-032",
+       "kdl-o-033",
+       "kdl-o-034",
+       "kdl-o-035",
+       "kdl-o-266",
+       "kdl-o-267"
+      ]
+     },
+     "test_candidates": {
+      "count": 13,
+      "ids": [
+       "kdl-t-006",
+       "kdl-t-007",
+       "kdl-t-008",
+       "kdl-t-009",
+       "kdl-t-049",
+       "kdl-t-174",
+       "kdl-t-237",
+       "kdl-t-240",
+       "kdl-t-272",
+       "kdl-t-291",
+       "kdl-t-327",
+       "kdl-t-396",
+       "kdl-t-454"
+      ],
+      "pack_quiz_ids": [],
+      "pack_quiz_count": 0
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d020-P",
+     "n": 20,
+     "title_uz": "Surunkali mieloleykoz. Suyak ko‘migi va periferik qon ko‘rinishi",
+     "type": "practical",
+     "hours": 4,
+     "week": 4,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "hemopoiesis_leukemia",
+      "gap": true
+     },
+     "oral_candidates": {
+      "count": 1,
+      "ids": [
+       "kdl-o-034"
+      ]
+     },
+     "test_candidates": {
+      "count": 1,
+      "ids": [
+       "kdl-t-174"
+      ],
+      "pack_quiz_ids": [],
+      "pack_quiz_count": 0
+     },
+     "test_gap": true,
+     "oral_gap": false
+    },
+    {
+     "id": "d020-L",
+     "n": 20,
+     "title_uz": "Surunkali mieloleykoz. Suyak ko‘migi va periferik qon ko‘rinishi",
+     "type": "lecture",
+     "hours": 2,
+     "week": 4,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "hemopoiesis_leukemia",
+      "gap": true
+     },
+     "oral_candidates": {
+      "count": 1,
+      "ids": [
+       "kdl-o-034"
+      ]
+     },
+     "test_candidates": {
+      "count": 1,
+      "ids": [
+       "kdl-t-174"
+      ],
+      "pack_quiz_ids": [],
+      "pack_quiz_count": 0
+     },
+     "test_gap": true,
+     "oral_gap": false
+    },
+    {
+     "id": "d021-P",
+     "n": 21,
+     "title_uz": "Surunkali limfoleykoz. Suyak ko‘migi va periferik qon ko‘rinishi",
+     "type": "practical",
+     "hours": 4,
+     "week": 4,
+     "links": {
+      "analytes": [
+       "lymphocytes"
+      ],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "hemopoiesis_leukemia",
+      "gap": true
+     },
+     "oral_candidates": {
+      "count": 1,
+      "ids": [
+       "kdl-o-035"
+      ]
+     },
+     "test_candidates": {
+      "count": 1,
+      "ids": [
+       "kdl-t-272"
+      ],
+      "pack_quiz_ids": [
+       "lymphocytes-q1",
+       "lymphocytes-q2"
+      ],
+      "pack_quiz_count": 2
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d021-L",
+     "n": 21,
+     "title_uz": "Surunkali limfoleykoz. Suyak ko‘migi va periferik qon ko‘rinishi",
+     "type": "lecture",
+     "hours": 2,
+     "week": 4,
+     "links": {
+      "analytes": [
+       "lymphocytes"
+      ],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "hemopoiesis_leukemia",
+      "gap": true
+     },
+     "oral_candidates": {
+      "count": 1,
+      "ids": [
+       "kdl-o-035"
+      ]
+     },
+     "test_candidates": {
+      "count": 1,
+      "ids": [
+       "kdl-t-272"
+      ],
+      "pack_quiz_ids": [
+       "lymphocytes-q1",
+       "lymphocytes-q2"
+      ],
+      "pack_quiz_count": 2
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d022-P",
+     "n": 22,
+     "title_uz": "Mielom kasalligida suyak ko‘migi va periferik qon ko‘rinishi",
+     "type": "practical",
+     "hours": 4,
+     "week": 4,
+     "links": {
+      "analytes": [
+       "total-protein",
+       "albumin"
+      ],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "hemopoiesis_leukemia",
+      "gap": true
+     },
+     "oral_candidates": {
+      "count": 1,
+      "ids": [
+       "kdl-o-036"
+      ]
+     },
+     "test_candidates": {
+      "count": 3,
+      "ids": [
+       "kdl-t-226",
+       "kdl-t-260",
+       "kdl-t-397"
+      ],
+      "pack_quiz_ids": [
+       "albumin-q1",
+       "albumin-q2",
+       "total-protein-q1",
+       "total-protein-q2"
+      ],
+      "pack_quiz_count": 4
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d022-L",
+     "n": 22,
+     "title_uz": "Mielom kasalligida suyak ko‘migi va periferik qon ko‘rinishi",
+     "type": "lecture",
+     "hours": 2,
+     "week": 4,
+     "links": {
+      "analytes": [
+       "total-protein",
+       "albumin"
+      ],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "hemopoiesis_leukemia",
+      "gap": true
+     },
+     "oral_candidates": {
+      "count": 1,
+      "ids": [
+       "kdl-o-036"
+      ]
+     },
+     "test_candidates": {
+      "count": 3,
+      "ids": [
+       "kdl-t-226",
+       "kdl-t-260",
+       "kdl-t-397"
+      ],
+      "pack_quiz_ids": [
+       "albumin-q1",
+       "albumin-q2",
+       "total-protein-q1",
+       "total-protein-q2"
+      ],
+      "pack_quiz_count": 4
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d023-A",
+     "n": 23,
+     "title_uz": "Attestatsiya 3. Gematologik tekshiruv usullari modulidan",
+     "type": "attestation",
+     "hours": 6,
+     "week": 4,
+     "links": {
+      "analytes": [
+       "hemoglobin"
+      ],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "hematology_cells",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 30,
+      "ids": [
+       "kdl-o-002",
+       "kdl-o-003",
+       "kdl-o-004",
+       "kdl-o-005",
+       "kdl-o-015",
+       "kdl-o-017",
+       "kdl-o-018",
+       "kdl-o-019",
+       "kdl-o-022",
+       "kdl-o-023",
+       "kdl-o-024",
+       "kdl-o-025",
+       "kdl-o-026",
+       "kdl-o-027",
+       "kdl-o-028"
+      ]
+     },
+     "test_candidates": {
+      "count": 32,
+      "ids": [
+       "kdl-t-004",
+       "kdl-t-005",
+       "kdl-t-010",
+       "kdl-t-011",
+       "kdl-t-012",
+       "kdl-t-013",
+       "kdl-t-015",
+       "kdl-t-030",
+       "kdl-t-032",
+       "kdl-t-035",
+       "kdl-t-036",
+       "kdl-t-038",
+       "kdl-t-047",
+       "kdl-t-052",
+       "kdl-t-151",
+       "kdl-t-184",
+       "kdl-t-233",
+       "kdl-t-238",
+       "kdl-t-242",
+       "kdl-t-243",
+       "kdl-t-262",
+       "kdl-t-273",
+       "kdl-t-274",
+       "kdl-t-275",
+       "kdl-t-276"
+      ],
+      "pack_quiz_ids": [
+       "hemoglobin-q1",
+       "hemoglobin-q2"
+      ],
+      "pack_quiz_count": 2
+     },
+     "test_gap": false,
+     "oral_gap": false
+    }
+   ]
+  },
+  {
+   "id": "M4",
+   "title_uz": "Umumklinik tekshiruv usullari",
+   "hours": {
+    "lecture": 14,
+    "practical": 46,
+    "lab": null,
+    "seminar": null,
+    "attestation": 6,
+    "extra": 0,
+    "total": 66
+   },
+   "topics": [
+    {
+     "id": "d024-P",
+     "n": 24,
+     "title_uz": "Oshqozon va o‘t suyuqligini mikroskopik tekshirish kasalliklarining klinik laborator ko‘rsatkichlari",
+     "type": "practical",
+     "hours": 4,
+     "week": 4,
+     "links": {
+      "analytes": [
+       "h-pylori-tests"
+      ],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "other",
+      "gap": true
+     },
+     "oral_candidates": {
+      "count": 1,
+      "ids": [
+       "kdl-o-038"
+      ]
+     },
+     "test_candidates": {
+      "count": 0,
+      "ids": [],
+      "pack_quiz_ids": [
+       "h-pylori-tests-q1"
+      ],
+      "pack_quiz_count": 1
+     },
+     "test_gap": true,
+     "oral_gap": false
+    },
+    {
+     "id": "d024-L",
+     "n": 24,
+     "title_uz": "Oshqozon va o‘t suyuqligini mikroskopik tekshirish kasalliklarining klinik laborator ko‘rsatkichlari",
+     "type": "lecture",
+     "hours": 2,
+     "week": 4,
+     "links": {
+      "analytes": [
+       "h-pylori-tests"
+      ],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "other",
+      "gap": true
+     },
+     "oral_candidates": {
+      "count": 1,
+      "ids": [
+       "kdl-o-038"
+      ]
+     },
+     "test_candidates": {
+      "count": 0,
+      "ids": [],
+      "pack_quiz_ids": [
+       "h-pylori-tests-q1"
+      ],
+      "pack_quiz_count": 1
+     },
+     "test_gap": true,
+     "oral_gap": false
+    },
+    {
+     "id": "d025-P",
+     "n": 25,
+     "title_uz": "Najasni mikroskopik tekshirish. Klinik diagnostik ahamiyati",
+     "type": "practical",
+     "hours": 4,
+     "week": 5,
+     "links": {
+      "analytes": [
+       "stool-analysis",
+       "fecal-occult-blood",
+       "stool-ova-parasites",
+       "h-pylori-tests"
+      ],
+      "conditions": [],
+      "reference": [
+       "stool-parasites"
+      ],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "stool_coprology",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 4,
+      "ids": [
+       "kdl-o-039",
+       "kdl-o-040",
+       "kdl-o-041",
+       "kdl-o-281"
+      ]
+     },
+     "test_candidates": {
+      "count": 7,
+      "ids": [
+       "kdl-t-019",
+       "kdl-t-020",
+       "kdl-t-021",
+       "kdl-t-023",
+       "kdl-t-033",
+       "kdl-t-249",
+       "kdl-t-349"
+      ],
+      "pack_quiz_ids": [
+       "stool-ova-parasites-q1",
+       "fecal-occult-blood-q1",
+       "h-pylori-tests-q1"
+      ],
+      "pack_quiz_count": 3
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d025-L",
+     "n": 25,
+     "title_uz": "Najasni mikroskopik tekshirish. Klinik diagnostik ahamiyati",
+     "type": "lecture",
+     "hours": 2,
+     "week": 5,
+     "links": {
+      "analytes": [
+       "stool-analysis",
+       "fecal-occult-blood",
+       "stool-ova-parasites",
+       "h-pylori-tests"
+      ],
+      "conditions": [],
+      "reference": [
+       "stool-parasites"
+      ],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "stool_coprology",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 4,
+      "ids": [
+       "kdl-o-039",
+       "kdl-o-040",
+       "kdl-o-041",
+       "kdl-o-281"
+      ]
+     },
+     "test_candidates": {
+      "count": 7,
+      "ids": [
+       "kdl-t-019",
+       "kdl-t-020",
+       "kdl-t-021",
+       "kdl-t-023",
+       "kdl-t-033",
+       "kdl-t-249",
+       "kdl-t-349"
+      ],
+      "pack_quiz_ids": [
+       "stool-ova-parasites-q1",
+       "fecal-occult-blood-q1",
+       "h-pylori-tests-q1"
+      ],
+      "pack_quiz_count": 3
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d026-P",
+     "n": 26,
+     "title_uz": "Najasni mikroskopik tekshirish. Klinik diagnostik ahamiyati (2-kun)",
+     "type": "practical",
+     "hours": 6,
+     "week": 5,
+     "links": {
+      "analytes": [
+       "stool-analysis",
+       "fecal-occult-blood",
+       "stool-ova-parasites"
+      ],
+      "conditions": [],
+      "reference": [
+       "stool-parasites"
+      ],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "stool_coprology",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 4,
+      "ids": [
+       "kdl-o-039",
+       "kdl-o-040",
+       "kdl-o-041",
+       "kdl-o-281"
+      ]
+     },
+     "test_candidates": {
+      "count": 7,
+      "ids": [
+       "kdl-t-019",
+       "kdl-t-020",
+       "kdl-t-021",
+       "kdl-t-023",
+       "kdl-t-033",
+       "kdl-t-249",
+       "kdl-t-349"
+      ],
+      "pack_quiz_ids": [
+       "stool-ova-parasites-q1",
+       "fecal-occult-blood-q1"
+      ],
+      "pack_quiz_count": 2
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d027-P",
+     "n": 27,
+     "title_uz": "Siydikni tekshirish. Klinik diagnostik ahamiyati",
+     "type": "practical",
+     "hours": 4,
+     "week": 5,
+     "links": {
+      "analytes": [
+       "urine-chemistry",
+       "urine-microscopy",
+       "urine-culture",
+       "urine-24h",
+       "urine-acr"
+      ],
+      "conditions": [],
+      "reference": [],
+      "tools": [
+       "/lab/calculators/nechiporenko",
+       "/lab/calculators/addis-kakovsky",
+       "/lab/calculators/zimnitsky"
+      ],
+      "microscopy": [
+       "urine"
+      ],
+      "toifa_topic": "urinalysis",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 6,
+      "ids": [
+       "kdl-o-042",
+       "kdl-o-043",
+       "kdl-o-044",
+       "kdl-o-045",
+       "kdl-o-046",
+       "kdl-o-047"
+      ]
+     },
+     "test_candidates": {
+      "count": 8,
+      "ids": [
+       "kdl-t-051",
+       "kdl-t-103",
+       "kdl-t-250",
+       "kdl-t-278",
+       "kdl-t-284",
+       "kdl-t-320",
+       "kdl-t-426",
+       "kdl-t-427"
+      ],
+      "pack_quiz_ids": [
+       "urine-acr-q1",
+       "urine-acr-q2",
+       "urine-chemistry-q1",
+       "urine-chemistry-q2",
+       "urine-microscopy-q1",
+       "urine-microscopy-q2",
+       "urine-24h-q1",
+       "urine-culture-q1"
+      ],
+      "pack_quiz_count": 8
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d027-L",
+     "n": 27,
+     "title_uz": "Siydikni tekshirish. Klinik diagnostik ahamiyati",
+     "type": "lecture",
+     "hours": 2,
+     "week": 5,
+     "links": {
+      "analytes": [
+       "urine-chemistry",
+       "urine-microscopy",
+       "urine-culture",
+       "urine-24h",
+       "urine-acr"
+      ],
+      "conditions": [],
+      "reference": [],
+      "tools": [
+       "/lab/calculators/nechiporenko",
+       "/lab/calculators/addis-kakovsky",
+       "/lab/calculators/zimnitsky"
+      ],
+      "microscopy": [
+       "urine"
+      ],
+      "toifa_topic": "urinalysis",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 6,
+      "ids": [
+       "kdl-o-042",
+       "kdl-o-043",
+       "kdl-o-044",
+       "kdl-o-045",
+       "kdl-o-046",
+       "kdl-o-047"
+      ]
+     },
+     "test_candidates": {
+      "count": 8,
+      "ids": [
+       "kdl-t-051",
+       "kdl-t-103",
+       "kdl-t-250",
+       "kdl-t-278",
+       "kdl-t-284",
+       "kdl-t-320",
+       "kdl-t-426",
+       "kdl-t-427"
+      ],
+      "pack_quiz_ids": [
+       "urine-acr-q1",
+       "urine-acr-q2",
+       "urine-chemistry-q1",
+       "urine-chemistry-q2",
+       "urine-microscopy-q1",
+       "urine-microscopy-q2",
+       "urine-24h-q1",
+       "urine-culture-q1"
+      ],
+      "pack_quiz_count": 8
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d028-P",
+     "n": 28,
+     "title_uz": "Siydikni tekshirish. Klinik diagnostik ahamiyati (2-kun)",
+     "type": "practical",
+     "hours": 6,
+     "week": 5,
+     "links": {
+      "analytes": [
+       "urine-chemistry",
+       "urine-microscopy",
+       "urine-culture",
+       "urine-24h",
+       "urine-acr"
+      ],
+      "conditions": [],
+      "reference": [],
+      "tools": [
+       "/lab/calculators/nechiporenko",
+       "/lab/calculators/addis-kakovsky",
+       "/lab/calculators/zimnitsky"
+      ],
+      "microscopy": [
+       "urine"
+      ],
+      "toifa_topic": "urinalysis",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 6,
+      "ids": [
+       "kdl-o-042",
+       "kdl-o-043",
+       "kdl-o-044",
+       "kdl-o-045",
+       "kdl-o-046",
+       "kdl-o-047"
+      ]
+     },
+     "test_candidates": {
+      "count": 8,
+      "ids": [
+       "kdl-t-051",
+       "kdl-t-103",
+       "kdl-t-250",
+       "kdl-t-278",
+       "kdl-t-284",
+       "kdl-t-320",
+       "kdl-t-426",
+       "kdl-t-427"
+      ],
+      "pack_quiz_ids": [
+       "urine-acr-q1",
+       "urine-acr-q2",
+       "urine-chemistry-q1",
+       "urine-chemistry-q2",
+       "urine-microscopy-q1",
+       "urine-microscopy-q2",
+       "urine-24h-q1",
+       "urine-culture-q1"
+      ],
+      "pack_quiz_count": 8
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d029-P",
+     "n": 29,
+     "title_uz": "Bronxial astma, pnevmoniya, bronxit va boshqa nafas yo‘llari kasalliklarida balg‘amni tekshirish",
+     "type": "practical",
+     "hours": 4,
+     "week": 5,
+     "links": {
+      "analytes": [
+       "sputum-culture",
+       "sputum-afb"
+      ],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "sputum_tb",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 4,
+      "ids": [
+       "kdl-o-051",
+       "kdl-o-052",
+       "kdl-o-175",
+       "kdl-o-270"
+      ]
+     },
+     "test_candidates": {
+      "count": 8,
+      "ids": [
+       "kdl-t-016",
+       "kdl-t-017",
+       "kdl-t-018",
+       "kdl-t-153",
+       "kdl-t-154",
+       "kdl-t-279",
+       "kdl-t-282",
+       "kdl-t-283"
+      ],
+      "pack_quiz_ids": [
+       "sputum-afb-q1",
+       "sputum-afb-q2"
+      ],
+      "pack_quiz_count": 2
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d029-L",
+     "n": 29,
+     "title_uz": "Bronxial astma, pnevmoniya, bronxit va boshqa nafas yo‘llari kasalliklarida balg‘amni tekshirish",
+     "type": "lecture",
+     "hours": 2,
+     "week": 5,
+     "links": {
+      "analytes": [
+       "sputum-culture",
+       "sputum-afb"
+      ],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "sputum_tb",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 4,
+      "ids": [
+       "kdl-o-051",
+       "kdl-o-052",
+       "kdl-o-175",
+       "kdl-o-270"
+      ]
+     },
+     "test_candidates": {
+      "count": 8,
+      "ids": [
+       "kdl-t-016",
+       "kdl-t-017",
+       "kdl-t-018",
+       "kdl-t-153",
+       "kdl-t-154",
+       "kdl-t-279",
+       "kdl-t-282",
+       "kdl-t-283"
+      ],
+      "pack_quiz_ids": [
+       "sputum-afb-q1",
+       "sputum-afb-q2"
+      ],
+      "pack_quiz_count": 2
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d030-P",
+     "n": 30,
+     "title_uz": "Sil kasalligida balg‘amni tekshirish va uning klinik diagnostik ahamiyati",
+     "type": "practical",
+     "hours": 4,
+     "week": 6,
+     "links": {
+      "analytes": [
+       "sputum-afb",
+       "sputum-culture"
+      ],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "sputum_tb",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 5,
+      "ids": [
+       "kdl-o-048",
+       "kdl-o-051",
+       "kdl-o-052",
+       "kdl-o-175",
+       "kdl-o-270"
+      ]
+     },
+     "test_candidates": {
+      "count": 8,
+      "ids": [
+       "kdl-t-016",
+       "kdl-t-017",
+       "kdl-t-018",
+       "kdl-t-153",
+       "kdl-t-154",
+       "kdl-t-279",
+       "kdl-t-283",
+       "kdl-t-329"
+      ],
+      "pack_quiz_ids": [
+       "sputum-afb-q1",
+       "sputum-afb-q2"
+      ],
+      "pack_quiz_count": 2
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d030-L",
+     "n": 30,
+     "title_uz": "Sil kasalligida balg‘amni tekshirish va uning klinik diagnostik ahamiyati",
+     "type": "lecture",
+     "hours": 2,
+     "week": 6,
+     "links": {
+      "analytes": [
+       "sputum-afb",
+       "sputum-culture"
+      ],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "sputum_tb",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 5,
+      "ids": [
+       "kdl-o-048",
+       "kdl-o-051",
+       "kdl-o-052",
+       "kdl-o-175",
+       "kdl-o-270"
+      ]
+     },
+     "test_candidates": {
+      "count": 8,
+      "ids": [
+       "kdl-t-016",
+       "kdl-t-017",
+       "kdl-t-018",
+       "kdl-t-153",
+       "kdl-t-154",
+       "kdl-t-279",
+       "kdl-t-283",
+       "kdl-t-329"
+      ],
+      "pack_quiz_ids": [
+       "sputum-afb-q1",
+       "sputum-afb-q2"
+      ],
+      "pack_quiz_count": 2
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d031-P",
+     "n": 31,
+     "title_uz": "Sil kasalligida balg‘amni tekshirish va uning klinik diagnostik ahamiyati (2-kun)",
+     "type": "practical",
+     "hours": 6,
+     "week": 6,
+     "links": {
+      "analytes": [
+       "sputum-afb",
+       "sputum-culture"
+      ],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "sputum_tb",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 5,
+      "ids": [
+       "kdl-o-048",
+       "kdl-o-051",
+       "kdl-o-052",
+       "kdl-o-175",
+       "kdl-o-270"
+      ]
+     },
+     "test_candidates": {
+      "count": 8,
+      "ids": [
+       "kdl-t-016",
+       "kdl-t-017",
+       "kdl-t-018",
+       "kdl-t-153",
+       "kdl-t-154",
+       "kdl-t-279",
+       "kdl-t-283",
+       "kdl-t-329"
+      ],
+      "pack_quiz_ids": [
+       "sputum-afb-q1",
+       "sputum-afb-q2"
+      ],
+      "pack_quiz_count": 2
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d032-P",
+     "n": 32,
+     "title_uz": "Transsudat va ekssudatlarni tekshirishning klinik diagnostikasi",
+     "type": "practical",
+     "hours": 4,
+     "week": 6,
+     "links": {
+      "analytes": [
+       "pleural-fluid-analysis",
+       "synovial-fluid-analysis"
+      ],
+      "conditions": [],
+      "reference": [],
+      "tools": [
+       "/lab/calculators/light"
+      ],
+      "microscopy": [],
+      "toifa_topic": "csf_body_fluids",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 2,
+      "ids": [
+       "kdl-o-053",
+       "kdl-o-147"
+      ]
+     },
+     "test_candidates": {
+      "count": 1,
+      "ids": [
+       "kdl-t-046"
+      ],
+      "pack_quiz_ids": [
+       "pleural-fluid-analysis-q1"
+      ],
+      "pack_quiz_count": 1
+     },
+     "test_gap": true,
+     "oral_gap": false
+    },
+    {
+     "id": "d032-L",
+     "n": 32,
+     "title_uz": "Transsudat va ekssudatlarni tekshirishning klinik diagnostikasi",
+     "type": "lecture",
+     "hours": 2,
+     "week": 6,
+     "links": {
+      "analytes": [
+       "pleural-fluid-analysis",
+       "synovial-fluid-analysis"
+      ],
+      "conditions": [],
+      "reference": [],
+      "tools": [
+       "/lab/calculators/light"
+      ],
+      "microscopy": [],
+      "toifa_topic": "csf_body_fluids",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 2,
+      "ids": [
+       "kdl-o-053",
+       "kdl-o-147"
+      ]
+     },
+     "test_candidates": {
+      "count": 1,
+      "ids": [
+       "kdl-t-046"
+      ],
+      "pack_quiz_ids": [
+       "pleural-fluid-analysis-q1"
+      ],
+      "pack_quiz_count": 1
+     },
+     "test_gap": true,
+     "oral_gap": false
+    },
+    {
+     "id": "d033-P",
+     "n": 33,
+     "title_uz": "Xar xil kasalliklarda orqa miya suyuqligini laborator ko‘rsatkichlari",
+     "type": "practical",
+     "hours": 4,
+     "week": 6,
+     "links": {
+      "analytes": [
+       "csf-analysis"
+      ],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "csf_body_fluids",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 1,
+      "ids": [
+       "kdl-o-054"
+      ]
+     },
+     "test_candidates": {
+      "count": 1,
+      "ids": [
+       "kdl-t-156"
+      ],
+      "pack_quiz_ids": [
+       "csf-analysis-q1"
+      ],
+      "pack_quiz_count": 1
+     },
+     "test_gap": true,
+     "oral_gap": false
+    },
+    {
+     "id": "d033-L",
+     "n": 33,
+     "title_uz": "Xar xil kasalliklarda orqa miya suyuqligini laborator ko‘rsatkichlari",
+     "type": "lecture",
+     "hours": 2,
+     "week": 6,
+     "links": {
+      "analytes": [
+       "csf-analysis"
+      ],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "csf_body_fluids",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 1,
+      "ids": [
+       "kdl-o-054"
+      ]
+     },
+     "test_candidates": {
+      "count": 1,
+      "ids": [
+       "kdl-t-156"
+      ],
+      "pack_quiz_ids": [
+       "csf-analysis-q1"
+      ],
+      "pack_quiz_count": 1
+     },
+     "test_gap": true,
+     "oral_gap": false
+    },
+    {
+     "id": "d034-A",
+     "n": 34,
+     "title_uz": "Attestatsiya 4. Umumklinik tekshiruv usullari modulidan",
+     "type": "attestation",
+     "hours": 6,
+     "week": 6,
+     "links": {
+      "analytes": [
+       "urine-chemistry",
+       "stool-analysis"
+      ],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "urinalysis",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 13,
+      "ids": [
+       "kdl-o-042",
+       "kdl-o-043",
+       "kdl-o-044",
+       "kdl-o-045",
+       "kdl-o-046",
+       "kdl-o-047",
+       "kdl-o-092",
+       "kdl-o-093",
+       "kdl-o-094",
+       "kdl-o-107",
+       "kdl-o-113",
+       "kdl-o-218",
+       "kdl-o-219"
+      ]
+     },
+     "test_candidates": {
+      "count": 18,
+      "ids": [
+       "kdl-t-031",
+       "kdl-t-051",
+       "kdl-t-063",
+       "kdl-t-102",
+       "kdl-t-103",
+       "kdl-t-180",
+       "kdl-t-200",
+       "kdl-t-207",
+       "kdl-t-241",
+       "kdl-t-250",
+       "kdl-t-265",
+       "kdl-t-278",
+       "kdl-t-284",
+       "kdl-t-312",
+       "kdl-t-313",
+       "kdl-t-320",
+       "kdl-t-426",
+       "kdl-t-427"
+      ],
+      "pack_quiz_ids": [
+       "urine-chemistry-q1",
+       "urine-chemistry-q2"
+      ],
+      "pack_quiz_count": 2
+     },
+     "test_gap": false,
+     "oral_gap": false
+    }
+   ]
+  },
+  {
+   "id": "M5",
+   "title_uz": "Sitologik tekshiruv usullari",
+   "hours": {
+    "lecture": 2,
+    "practical": 22,
+    "lab": null,
+    "seminar": null,
+    "attestation": 6,
+    "extra": 0,
+    "total": 30
+   },
+   "topics": [
+    {
+     "id": "d035-P",
+     "n": 35,
+     "title_uz": "Sitologik tekshiruv usullari. Ayollar jinsiy a’zolari ajralmalarini mikroskopik tekshirish. Surtmalarni Gramm, Romanovskiy va metilen ko‘kida bo‘yash",
+     "type": "practical",
+     "hours": 6,
+     "week": 6,
+     "links": {
+      "analytes": [
+       "vaginal-wet-mount",
+       "pap-test",
+       "hpv-test"
+      ],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "cytology_gyn",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 11,
+      "ids": [
+       "kdl-o-061",
+       "kdl-o-062",
+       "kdl-o-063",
+       "kdl-o-064",
+       "kdl-o-065",
+       "kdl-o-066",
+       "kdl-o-119",
+       "kdl-o-120",
+       "kdl-o-121",
+       "kdl-o-122",
+       "kdl-o-126"
+      ]
+     },
+     "test_candidates": {
+      "count": 7,
+      "ids": [
+       "kdl-t-043",
+       "kdl-t-050",
+       "kdl-t-120",
+       "kdl-t-161",
+       "kdl-t-247",
+       "kdl-t-286",
+       "kdl-t-289"
+      ],
+      "pack_quiz_ids": [
+       "pap-test-q1",
+       "pap-test-q2",
+       "vaginal-wet-mount-q1",
+       "vaginal-wet-mount-q2"
+      ],
+      "pack_quiz_count": 4
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d036-P",
+     "n": 36,
+     "title_uz": "O‘smalar. O‘sma markerlari haqida umumiy ma’lumotlar. Yomon sifatli o‘smalar sitodiagnostikasi",
+     "type": "practical",
+     "hours": 4,
+     "week": 7,
+     "links": {
+      "analytes": [
+       "psa",
+       "cea",
+       "afp",
+       "ca-125",
+       "ca-19-9"
+      ],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "tumor_markers",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 10,
+      "ids": [
+       "kdl-o-055",
+       "kdl-o-056",
+       "kdl-o-057",
+       "kdl-o-058",
+       "kdl-o-059",
+       "kdl-o-268",
+       "kdl-o-269",
+       "kdl-o-272",
+       "kdl-o-273",
+       "kdl-o-274"
+      ]
+     },
+     "test_candidates": {
+      "count": 8,
+      "ids": [
+       "kdl-t-034",
+       "kdl-t-053",
+       "kdl-t-096",
+       "kdl-t-251",
+       "kdl-t-253",
+       "kdl-t-290",
+       "kdl-t-292",
+       "kdl-t-416"
+      ],
+      "pack_quiz_ids": [
+       "cea-q1",
+       "psa-q1",
+       "ca-125-q1",
+       "afp-q1"
+      ],
+      "pack_quiz_count": 4
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d036-L",
+     "n": 36,
+     "title_uz": "O‘smalar. O‘sma markerlari haqida umumiy ma’lumotlar. Yomon sifatli o‘smalar sitodiagnostikasi",
+     "type": "lecture",
+     "hours": 2,
+     "week": 7,
+     "links": {
+      "analytes": [
+       "psa",
+       "cea",
+       "afp",
+       "ca-125",
+       "ca-19-9"
+      ],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "tumor_markers",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 10,
+      "ids": [
+       "kdl-o-055",
+       "kdl-o-056",
+       "kdl-o-057",
+       "kdl-o-058",
+       "kdl-o-059",
+       "kdl-o-268",
+       "kdl-o-269",
+       "kdl-o-272",
+       "kdl-o-273",
+       "kdl-o-274"
+      ]
+     },
+     "test_candidates": {
+      "count": 8,
+      "ids": [
+       "kdl-t-034",
+       "kdl-t-053",
+       "kdl-t-096",
+       "kdl-t-251",
+       "kdl-t-253",
+       "kdl-t-290",
+       "kdl-t-292",
+       "kdl-t-416"
+      ],
+      "pack_quiz_ids": [
+       "cea-q1",
+       "psa-q1",
+       "ca-125-q1",
+       "afp-q1"
+      ],
+      "pack_quiz_count": 4
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d037-P",
+     "n": 37,
+     "title_uz": "Bachadon bo‘yinchasi va bachadon yomon sifatli o‘smalarining sitodiagnostikasi",
+     "type": "practical",
+     "hours": 6,
+     "week": 7,
+     "links": {
+      "analytes": [
+       "pap-test",
+       "hpv-test"
+      ],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "cytology_gyn",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 8,
+      "ids": [
+       "kdl-o-061",
+       "kdl-o-063",
+       "kdl-o-064",
+       "kdl-o-065",
+       "kdl-o-066",
+       "kdl-o-067",
+       "kdl-o-269",
+       "kdl-o-271"
+      ]
+     },
+     "test_candidates": {
+      "count": 13,
+      "ids": [
+       "kdl-t-034",
+       "kdl-t-039",
+       "kdl-t-040",
+       "kdl-t-050",
+       "kdl-t-053",
+       "kdl-t-161",
+       "kdl-t-247",
+       "kdl-t-253",
+       "kdl-t-286",
+       "kdl-t-288",
+       "kdl-t-289",
+       "kdl-t-290",
+       "kdl-t-292"
+      ],
+      "pack_quiz_ids": [
+       "pap-test-q1",
+       "pap-test-q2"
+      ],
+      "pack_quiz_count": 2
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d038-P",
+     "n": 38,
+     "title_uz": "Nafas organlari o‘smalari sitodiagnostikasi",
+     "type": "practical",
+     "hours": 6,
+     "week": 7,
+     "links": {
+      "analytes": [
+       "sputum-afb"
+      ],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "other",
+      "gap": true
+     },
+     "oral_candidates": {
+      "count": 1,
+      "ids": [
+       "kdl-o-057"
+      ]
+     },
+     "test_candidates": {
+      "count": 3,
+      "ids": [
+       "kdl-t-039",
+       "kdl-t-281",
+       "kdl-t-326"
+      ],
+      "pack_quiz_ids": [
+       "sputum-afb-q1",
+       "sputum-afb-q2"
+      ],
+      "pack_quiz_count": 2
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d039-A",
+     "n": 39,
+     "title_uz": "Attestatsiya 5. Sitologik tekshiruv usullari modulidan",
+     "type": "attestation",
+     "hours": 6,
+     "week": 7,
+     "links": {
+      "analytes": [
+       "pap-test",
+       "hpv-test"
+      ],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "cytology_gyn",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 18,
+      "ids": [
+       "kdl-o-055",
+       "kdl-o-056",
+       "kdl-o-057",
+       "kdl-o-058",
+       "kdl-o-059",
+       "kdl-o-060",
+       "kdl-o-061",
+       "kdl-o-062",
+       "kdl-o-063",
+       "kdl-o-064",
+       "kdl-o-065",
+       "kdl-o-066",
+       "kdl-o-067",
+       "kdl-o-119",
+       "kdl-o-268"
+      ]
+     },
+     "test_candidates": {
+      "count": 21,
+      "ids": [
+       "kdl-t-027",
+       "kdl-t-028",
+       "kdl-t-034",
+       "kdl-t-039",
+       "kdl-t-040",
+       "kdl-t-043",
+       "kdl-t-050",
+       "kdl-t-053",
+       "kdl-t-096",
+       "kdl-t-161",
+       "kdl-t-175",
+       "kdl-t-247",
+       "kdl-t-251",
+       "kdl-t-253",
+       "kdl-t-281",
+       "kdl-t-286",
+       "kdl-t-288",
+       "kdl-t-289",
+       "kdl-t-290",
+       "kdl-t-292",
+       "kdl-t-293"
+      ],
+      "pack_quiz_ids": [
+       "pap-test-q1",
+       "pap-test-q2"
+      ],
+      "pack_quiz_count": 2
+     },
+     "test_gap": false,
+     "oral_gap": false
+    }
+   ]
+  },
+  {
+   "id": "M6",
+   "title_uz": "Klinik biokimyodan umumiy masalalar",
+   "hours": {
+    "lecture": 12,
+    "practical": 66,
+    "lab": null,
+    "seminar": null,
+    "attestation": 6,
+    "extra": 0,
+    "total": 84
+   },
+   "topics": [
+    {
+     "id": "d040-P",
+     "n": 40,
+     "title_uz": "Klinik biokimyodan umumiy masalalar. Fizik-kimyoviy va kimyoviy usullar (xromatografiya, spektro-, fotometriya)",
+     "type": "practical",
+     "hours": 6,
+     "week": 7,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [
+       "/lab/instruments",
+       "/lab/calibration"
+      ],
+      "microscopy": [],
+      "toifa_topic": "other",
+      "gap": true
+     },
+     "oral_candidates": {
+      "count": 1,
+      "ids": [
+       "kdl-o-069"
+      ]
+     },
+     "test_candidates": {
+      "count": 1,
+      "ids": [
+       "kdl-t-400"
+      ],
+      "pack_quiz_ids": [],
+      "pack_quiz_count": 0
+     },
+     "test_gap": true,
+     "oral_gap": false
+    },
+    {
+     "id": "d041-P",
+     "n": 41,
+     "title_uz": "Mindray BA-88A bioximik yarim avtomat analizator ishlash prinsiplari. Bioximik analizatorni dasturlash",
+     "type": "practical",
+     "hours": 6,
+     "week": 7,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [
+       "/lab/instruments",
+       "/lab/calibration"
+      ],
+      "microscopy": [],
+      "toifa_topic": "other",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 4,
+      "ids": [
+       "kdl-o-070",
+       "kdl-o-071",
+       "kdl-o-072",
+       "kdl-o-073"
+      ]
+     },
+     "test_candidates": {
+      "count": 0,
+      "ids": [],
+      "pack_quiz_ids": [],
+      "pack_quiz_count": 0
+     },
+     "test_gap": true,
+     "oral_gap": false
+    },
+    {
+     "id": "d042-P",
+     "n": 42,
+     "title_uz": "Aminokislotalar klassifikatsiyasi. Oddiy va murakkab oqsillar",
+     "type": "practical",
+     "hours": 4,
+     "week": 8,
+     "links": {
+      "analytes": [
+       "total-protein",
+       "albumin"
+      ],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "biochemistry_proteins_enzymes",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 8,
+      "ids": [
+       "kdl-o-074",
+       "kdl-o-075",
+       "kdl-o-076",
+       "kdl-o-090",
+       "kdl-o-217",
+       "kdl-o-221",
+       "kdl-o-248",
+       "kdl-o-251"
+      ]
+     },
+     "test_candidates": {
+      "count": 17,
+      "ids": [
+       "kdl-t-001",
+       "kdl-t-026",
+       "kdl-t-059",
+       "kdl-t-060",
+       "kdl-t-061",
+       "kdl-t-062",
+       "kdl-t-064",
+       "kdl-t-092",
+       "kdl-t-099",
+       "kdl-t-100",
+       "kdl-t-170",
+       "kdl-t-182",
+       "kdl-t-263",
+       "kdl-t-297",
+       "kdl-t-298",
+       "kdl-t-308",
+       "kdl-t-316"
+      ],
+      "pack_quiz_ids": [
+       "albumin-q1",
+       "albumin-q2",
+       "total-protein-q1",
+       "total-protein-q2"
+      ],
+      "pack_quiz_count": 4
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d042-L",
+     "n": 42,
+     "title_uz": "Aminokislotalar klassifikatsiyasi. Oddiy va murakkab oqsillar",
+     "type": "lecture",
+     "hours": 2,
+     "week": 8,
+     "links": {
+      "analytes": [
+       "total-protein",
+       "albumin"
+      ],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "biochemistry_proteins_enzymes",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 8,
+      "ids": [
+       "kdl-o-074",
+       "kdl-o-075",
+       "kdl-o-076",
+       "kdl-o-090",
+       "kdl-o-217",
+       "kdl-o-221",
+       "kdl-o-248",
+       "kdl-o-251"
+      ]
+     },
+     "test_candidates": {
+      "count": 17,
+      "ids": [
+       "kdl-t-001",
+       "kdl-t-026",
+       "kdl-t-059",
+       "kdl-t-060",
+       "kdl-t-061",
+       "kdl-t-062",
+       "kdl-t-064",
+       "kdl-t-092",
+       "kdl-t-099",
+       "kdl-t-100",
+       "kdl-t-170",
+       "kdl-t-182",
+       "kdl-t-263",
+       "kdl-t-297",
+       "kdl-t-298",
+       "kdl-t-308",
+       "kdl-t-316"
+      ],
+      "pack_quiz_ids": [
+       "albumin-q1",
+       "albumin-q2",
+       "total-protein-q1",
+       "total-protein-q2"
+      ],
+      "pack_quiz_count": 4
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d043-P",
+     "n": 43,
+     "title_uz": "Pigmentlar almashinuvi. Bilirubin hosil bo‘lishi",
+     "type": "practical",
+     "hours": 4,
+     "week": 8,
+     "links": {
+      "analytes": [
+       "bilirubin-total",
+       "bilirubin-direct"
+      ],
+      "conditions": [
+       "jaundice-cholestasis"
+      ],
+      "reference": [
+       "jaundice"
+      ],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "liver_pigments",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 5,
+      "ids": [
+       "kdl-o-077",
+       "kdl-o-095",
+       "kdl-o-149",
+       "kdl-o-174",
+       "kdl-o-223"
+      ]
+     },
+     "test_candidates": {
+      "count": 15,
+      "ids": [
+       "kdl-t-056",
+       "kdl-t-083",
+       "kdl-t-090",
+       "kdl-t-091",
+       "kdl-t-171",
+       "kdl-t-199",
+       "kdl-t-201",
+       "kdl-t-217",
+       "kdl-t-218",
+       "kdl-t-296",
+       "kdl-t-318",
+       "kdl-t-333",
+       "kdl-t-384",
+       "kdl-t-385",
+       "kdl-t-409"
+      ],
+      "pack_quiz_ids": [
+       "bilirubin-total-q1",
+       "bilirubin-total-q2",
+       "bilirubin-direct-q1",
+       "bilirubin-direct-q2",
+       "books-jaundice-urine"
+      ],
+      "pack_quiz_count": 5
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d043-L",
+     "n": 43,
+     "title_uz": "Pigmentlar almashinuvi. Bilirubin hosil bo‘lishi",
+     "type": "lecture",
+     "hours": 2,
+     "week": 8,
+     "links": {
+      "analytes": [
+       "bilirubin-total",
+       "bilirubin-direct"
+      ],
+      "conditions": [
+       "jaundice-cholestasis"
+      ],
+      "reference": [
+       "jaundice"
+      ],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "liver_pigments",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 5,
+      "ids": [
+       "kdl-o-077",
+       "kdl-o-095",
+       "kdl-o-149",
+       "kdl-o-174",
+       "kdl-o-223"
+      ]
+     },
+     "test_candidates": {
+      "count": 15,
+      "ids": [
+       "kdl-t-056",
+       "kdl-t-083",
+       "kdl-t-090",
+       "kdl-t-091",
+       "kdl-t-171",
+       "kdl-t-199",
+       "kdl-t-201",
+       "kdl-t-217",
+       "kdl-t-218",
+       "kdl-t-296",
+       "kdl-t-318",
+       "kdl-t-333",
+       "kdl-t-384",
+       "kdl-t-385",
+       "kdl-t-409"
+      ],
+      "pack_quiz_ids": [
+       "bilirubin-total-q1",
+       "bilirubin-total-q2",
+       "bilirubin-direct-q1",
+       "bilirubin-direct-q2",
+       "books-jaundice-urine"
+      ],
+      "pack_quiz_count": 5
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d044-P",
+     "n": 44,
+     "title_uz": "Uglevodlar, klassifikatsiyasi, biologik ahamiyati. Uglevodlarni oshqozon-ichak traktida so‘rilishi",
+     "type": "practical",
+     "hours": 4,
+     "week": 8,
+     "links": {
+      "analytes": [
+       "glucose-plasma-fasting"
+      ],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "carbohydrates_diabetes",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 10,
+      "ids": [
+       "kdl-o-078",
+       "kdl-o-079",
+       "kdl-o-096",
+       "kdl-o-171",
+       "kdl-o-178",
+       "kdl-o-206",
+       "kdl-o-208",
+       "kdl-o-237",
+       "kdl-o-238",
+       "kdl-o-289"
+      ]
+     },
+     "test_candidates": {
+      "count": 27,
+      "ids": [
+       "kdl-t-024",
+       "kdl-t-071",
+       "kdl-t-072",
+       "kdl-t-073",
+       "kdl-t-074",
+       "kdl-t-107",
+       "kdl-t-109",
+       "kdl-t-196",
+       "kdl-t-208",
+       "kdl-t-266",
+       "kdl-t-305",
+       "kdl-t-428",
+       "kdl-t-429",
+       "kdl-t-431",
+       "kdl-t-432",
+       "kdl-t-433",
+       "kdl-t-434",
+       "kdl-t-435",
+       "kdl-t-436",
+       "kdl-t-437",
+       "kdl-t-439",
+       "kdl-t-441",
+       "kdl-t-443",
+       "kdl-t-444",
+       "kdl-t-446"
+      ],
+      "pack_quiz_ids": [],
+      "pack_quiz_count": 0
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d044-L",
+     "n": 44,
+     "title_uz": "Uglevodlar, klassifikatsiyasi, biologik ahamiyati. Uglevodlarni oshqozon-ichak traktida so‘rilishi",
+     "type": "lecture",
+     "hours": 2,
+     "week": 8,
+     "links": {
+      "analytes": [
+       "glucose-plasma-fasting"
+      ],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "carbohydrates_diabetes",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 10,
+      "ids": [
+       "kdl-o-078",
+       "kdl-o-079",
+       "kdl-o-096",
+       "kdl-o-171",
+       "kdl-o-178",
+       "kdl-o-206",
+       "kdl-o-208",
+       "kdl-o-237",
+       "kdl-o-238",
+       "kdl-o-289"
+      ]
+     },
+     "test_candidates": {
+      "count": 27,
+      "ids": [
+       "kdl-t-024",
+       "kdl-t-071",
+       "kdl-t-072",
+       "kdl-t-073",
+       "kdl-t-074",
+       "kdl-t-107",
+       "kdl-t-109",
+       "kdl-t-196",
+       "kdl-t-208",
+       "kdl-t-266",
+       "kdl-t-305",
+       "kdl-t-428",
+       "kdl-t-429",
+       "kdl-t-431",
+       "kdl-t-432",
+       "kdl-t-433",
+       "kdl-t-434",
+       "kdl-t-435",
+       "kdl-t-436",
+       "kdl-t-437",
+       "kdl-t-439",
+       "kdl-t-441",
+       "kdl-t-443",
+       "kdl-t-444",
+       "kdl-t-446"
+      ],
+      "pack_quiz_ids": [],
+      "pack_quiz_count": 0
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d045-P",
+     "n": 45,
+     "title_uz": "Qandli diabet diagnostikasi",
+     "type": "practical",
+     "hours": 6,
+     "week": 8,
+     "links": {
+      "analytes": [
+       "glucose-plasma-fasting",
+       "hba1c",
+       "ogtt",
+       "fructosamine",
+       "insulin",
+       "c-peptide"
+      ],
+      "conditions": [
+       "type-2-diabetes",
+       "gestational-diabetes",
+       "metabolic-syndrome"
+      ],
+      "reference": [],
+      "tools": [
+       "/lab/calculators/hba1c"
+      ],
+      "microscopy": [],
+      "toifa_topic": "carbohydrates_diabetes",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 14,
+      "ids": [
+       "kdl-o-079",
+       "kdl-o-080",
+       "kdl-o-081",
+       "kdl-o-096",
+       "kdl-o-097",
+       "kdl-o-171",
+       "kdl-o-178",
+       "kdl-o-206",
+       "kdl-o-208",
+       "kdl-o-236",
+       "kdl-o-237",
+       "kdl-o-238",
+       "kdl-o-254",
+       "kdl-o-289"
+      ]
+     },
+     "test_candidates": {
+      "count": 36,
+      "ids": [
+       "kdl-t-003",
+       "kdl-t-024",
+       "kdl-t-072",
+       "kdl-t-073",
+       "kdl-t-074",
+       "kdl-t-094",
+       "kdl-t-095",
+       "kdl-t-107",
+       "kdl-t-108",
+       "kdl-t-109",
+       "kdl-t-173",
+       "kdl-t-176",
+       "kdl-t-196",
+       "kdl-t-198",
+       "kdl-t-203",
+       "kdl-t-204",
+       "kdl-t-208",
+       "kdl-t-266",
+       "kdl-t-304",
+       "kdl-t-433",
+       "kdl-t-434",
+       "kdl-t-435",
+       "kdl-t-436",
+       "kdl-t-437",
+       "kdl-t-438"
+      ],
+      "pack_quiz_ids": [
+       "hba1c-q1",
+       "hba1c-q2",
+       "ogtt-q1",
+       "ogtt-q2",
+       "fructosamine-q1",
+       "fructosamine-q2",
+       "insulin-q1",
+       "insulin-q2",
+       "c-peptide-q1"
+      ],
+      "pack_quiz_count": 9
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d046-P",
+     "n": 46,
+     "title_uz": "Yog‘larning tuzilishi, klassifikatsiyasi va biologik roli",
+     "type": "practical",
+     "hours": 4,
+     "week": 8,
+     "links": {
+      "analytes": [
+       "cholesterol-total",
+       "hdl-c",
+       "ldl-c",
+       "triglycerides",
+       "non-hdl-c",
+       "lipoprotein-a"
+      ],
+      "conditions": [
+       "dyslipidemia"
+      ],
+      "reference": [],
+      "tools": [
+       "/lab/calculators/ldl"
+      ],
+      "microscopy": [],
+      "toifa_topic": "lipids",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 9,
+      "ids": [
+       "kdl-o-082",
+       "kdl-o-083",
+       "kdl-o-084",
+       "kdl-o-086",
+       "kdl-o-148",
+       "kdl-o-229",
+       "kdl-o-240",
+       "kdl-o-241",
+       "kdl-o-242"
+      ]
+     },
+     "test_candidates": {
+      "count": 37,
+      "ids": [
+       "kdl-t-025",
+       "kdl-t-075",
+       "kdl-t-076",
+       "kdl-t-110",
+       "kdl-t-111",
+       "kdl-t-112",
+       "kdl-t-114",
+       "kdl-t-209",
+       "kdl-t-211",
+       "kdl-t-212",
+       "kdl-t-267",
+       "kdl-t-306",
+       "kdl-t-309",
+       "kdl-t-452",
+       "kdl-t-455",
+       "kdl-t-456",
+       "kdl-t-457",
+       "kdl-t-458",
+       "kdl-t-459",
+       "kdl-t-461",
+       "kdl-t-462",
+       "kdl-t-463",
+       "kdl-t-464",
+       "kdl-t-465",
+       "kdl-t-466"
+      ],
+      "pack_quiz_ids": [
+       "cholesterol-total-q1",
+       "cholesterol-total-q2",
+       "hdl-c-q1",
+       "hdl-c-q2",
+       "ldl-c-q1",
+       "ldl-c-q2",
+       "triglycerides-q1",
+       "triglycerides-q2",
+       "non-hdl-c-q1",
+       "non-hdl-c-q2",
+       "lipoprotein-a-q1"
+      ],
+      "pack_quiz_count": 11
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d046-L",
+     "n": 46,
+     "title_uz": "Yog‘larning tuzilishi, klassifikatsiyasi va biologik roli",
+     "type": "lecture",
+     "hours": 2,
+     "week": 8,
+     "links": {
+      "analytes": [
+       "cholesterol-total",
+       "hdl-c",
+       "ldl-c",
+       "triglycerides",
+       "non-hdl-c",
+       "lipoprotein-a"
+      ],
+      "conditions": [
+       "dyslipidemia"
+      ],
+      "reference": [],
+      "tools": [
+       "/lab/calculators/ldl"
+      ],
+      "microscopy": [],
+      "toifa_topic": "lipids",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 9,
+      "ids": [
+       "kdl-o-082",
+       "kdl-o-083",
+       "kdl-o-084",
+       "kdl-o-086",
+       "kdl-o-148",
+       "kdl-o-229",
+       "kdl-o-240",
+       "kdl-o-241",
+       "kdl-o-242"
+      ]
+     },
+     "test_candidates": {
+      "count": 37,
+      "ids": [
+       "kdl-t-025",
+       "kdl-t-075",
+       "kdl-t-076",
+       "kdl-t-110",
+       "kdl-t-111",
+       "kdl-t-112",
+       "kdl-t-114",
+       "kdl-t-209",
+       "kdl-t-211",
+       "kdl-t-212",
+       "kdl-t-267",
+       "kdl-t-306",
+       "kdl-t-309",
+       "kdl-t-452",
+       "kdl-t-455",
+       "kdl-t-456",
+       "kdl-t-457",
+       "kdl-t-458",
+       "kdl-t-459",
+       "kdl-t-461",
+       "kdl-t-462",
+       "kdl-t-463",
+       "kdl-t-464",
+       "kdl-t-465",
+       "kdl-t-466"
+      ],
+      "pack_quiz_ids": [
+       "cholesterol-total-q1",
+       "cholesterol-total-q2",
+       "hdl-c-q1",
+       "hdl-c-q2",
+       "ldl-c-q1",
+       "ldl-c-q2",
+       "triglycerides-q1",
+       "triglycerides-q2",
+       "non-hdl-c-q1",
+       "non-hdl-c-q2",
+       "lipoprotein-a-q1"
+      ],
+      "pack_quiz_count": 11
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d047-P",
+     "n": 47,
+     "title_uz": "Suv-tuz almashinuvi va uning buzilishi",
+     "type": "practical",
+     "hours": 4,
+     "week": 8,
+     "links": {
+      "analytes": [
+       "sodium",
+       "potassium",
+       "chloride",
+       "calcium",
+       "magnesium",
+       "phosphate"
+      ],
+      "conditions": [],
+      "reference": [],
+      "tools": [
+       "/lab/calculators/anion-gap",
+       "/lab/calculators/osmolality"
+      ],
+      "microscopy": [],
+      "toifa_topic": "water_electrolytes_acid_base",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 7,
+      "ids": [
+       "kdl-o-098",
+       "kdl-o-230",
+       "kdl-o-231",
+       "kdl-o-232",
+       "kdl-o-234",
+       "kdl-o-235",
+       "kdl-o-247"
+      ]
+     },
+     "test_candidates": {
+      "count": 8,
+      "ids": [
+       "kdl-t-077",
+       "kdl-t-078",
+       "kdl-t-079",
+       "kdl-t-080",
+       "kdl-t-101",
+       "kdl-t-115",
+       "kdl-t-183",
+       "kdl-t-214"
+      ],
+      "pack_quiz_ids": [
+       "sodium-q1",
+       "sodium-q2",
+       "potassium-q1",
+       "potassium-q2",
+       "chloride-q1",
+       "chloride-q2",
+       "calcium-q1",
+       "calcium-q2",
+       "magnesium-q1",
+       "magnesium-q2",
+       "phosphate-q1",
+       "phosphate-q2"
+      ],
+      "pack_quiz_count": 12
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d047-L",
+     "n": 47,
+     "title_uz": "Suv-tuz almashinuvi va uning buzilishi",
+     "type": "lecture",
+     "hours": 2,
+     "week": 8,
+     "links": {
+      "analytes": [
+       "sodium",
+       "potassium",
+       "chloride",
+       "calcium",
+       "magnesium",
+       "phosphate"
+      ],
+      "conditions": [],
+      "reference": [],
+      "tools": [
+       "/lab/calculators/anion-gap",
+       "/lab/calculators/osmolality"
+      ],
+      "microscopy": [],
+      "toifa_topic": "water_electrolytes_acid_base",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 7,
+      "ids": [
+       "kdl-o-098",
+       "kdl-o-230",
+       "kdl-o-231",
+       "kdl-o-232",
+       "kdl-o-234",
+       "kdl-o-235",
+       "kdl-o-247"
+      ]
+     },
+     "test_candidates": {
+      "count": 8,
+      "ids": [
+       "kdl-t-077",
+       "kdl-t-078",
+       "kdl-t-079",
+       "kdl-t-080",
+       "kdl-t-101",
+       "kdl-t-115",
+       "kdl-t-183",
+       "kdl-t-214"
+      ],
+      "pack_quiz_ids": [
+       "sodium-q1",
+       "sodium-q2",
+       "potassium-q1",
+       "potassium-q2",
+       "chloride-q1",
+       "chloride-q2",
+       "calcium-q1",
+       "calcium-q2",
+       "magnesium-q1",
+       "magnesium-q2",
+       "phosphate-q1",
+       "phosphate-q2"
+      ],
+      "pack_quiz_count": 12
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d048-P",
+     "n": 48,
+     "title_uz": "Fermentlar, tuzilishi, klassifikatsiyasi",
+     "type": "practical",
+     "hours": 4,
+     "week": 9,
+     "links": {
+      "analytes": [
+       "alt",
+       "ast",
+       "alp",
+       "ggt",
+       "amylase",
+       "lipase",
+       "ldh",
+       "ck"
+      ],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "biochemistry_proteins_enzymes",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 6,
+      "ids": [
+       "kdl-o-087",
+       "kdl-o-088",
+       "kdl-o-104",
+       "kdl-o-105",
+       "kdl-o-220",
+       "kdl-o-224"
+      ]
+     },
+     "test_candidates": {
+      "count": 33,
+      "ids": [
+       "kdl-t-064",
+       "kdl-t-065",
+       "kdl-t-066",
+       "kdl-t-166",
+       "kdl-t-182",
+       "kdl-t-301",
+       "kdl-t-362",
+       "kdl-t-363",
+       "kdl-t-365",
+       "kdl-t-369",
+       "kdl-t-370",
+       "kdl-t-371",
+       "kdl-t-374",
+       "kdl-t-377",
+       "kdl-t-379",
+       "kdl-t-380",
+       "kdl-t-388",
+       "kdl-t-399",
+       "kdl-t-400",
+       "kdl-t-401",
+       "kdl-t-404",
+       "kdl-t-405",
+       "kdl-t-406",
+       "kdl-t-410",
+       "kdl-t-411"
+      ],
+      "pack_quiz_ids": [
+       "alt-q1",
+       "alt-q2",
+       "ast-q1",
+       "ast-q2",
+       "alp-q1",
+       "alp-q2",
+       "ggt-q1",
+       "ggt-q2",
+       "amylase-q1",
+       "amylase-q2",
+       "lipase-q1",
+       "lipase-q2",
+       "ldh-q1",
+       "ldh-q2",
+       "ck-q1",
+       "ck-q2",
+       "books-de-ritis",
+       "books-cholestasis"
+      ],
+      "pack_quiz_count": 18
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d048-L",
+     "n": 48,
+     "title_uz": "Fermentlar, tuzilishi, klassifikatsiyasi",
+     "type": "lecture",
+     "hours": 2,
+     "week": 9,
+     "links": {
+      "analytes": [
+       "alt",
+       "ast",
+       "alp",
+       "ggt",
+       "amylase",
+       "lipase",
+       "ldh",
+       "ck"
+      ],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "biochemistry_proteins_enzymes",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 6,
+      "ids": [
+       "kdl-o-087",
+       "kdl-o-088",
+       "kdl-o-104",
+       "kdl-o-105",
+       "kdl-o-220",
+       "kdl-o-224"
+      ]
+     },
+     "test_candidates": {
+      "count": 33,
+      "ids": [
+       "kdl-t-064",
+       "kdl-t-065",
+       "kdl-t-066",
+       "kdl-t-166",
+       "kdl-t-182",
+       "kdl-t-301",
+       "kdl-t-362",
+       "kdl-t-363",
+       "kdl-t-365",
+       "kdl-t-369",
+       "kdl-t-370",
+       "kdl-t-371",
+       "kdl-t-374",
+       "kdl-t-377",
+       "kdl-t-379",
+       "kdl-t-380",
+       "kdl-t-388",
+       "kdl-t-399",
+       "kdl-t-400",
+       "kdl-t-401",
+       "kdl-t-404",
+       "kdl-t-405",
+       "kdl-t-406",
+       "kdl-t-410",
+       "kdl-t-411"
+      ],
+      "pack_quiz_ids": [
+       "alt-q1",
+       "alt-q2",
+       "ast-q1",
+       "ast-q2",
+       "alp-q1",
+       "alp-q2",
+       "ggt-q1",
+       "ggt-q2",
+       "amylase-q1",
+       "amylase-q2",
+       "lipase-q1",
+       "lipase-q2",
+       "ldh-q1",
+       "ldh-q2",
+       "ck-q1",
+       "ck-q2",
+       "books-de-ritis",
+       "books-cholestasis"
+      ],
+      "pack_quiz_count": 18
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d049-P",
+     "n": 49,
+     "title_uz": "Jigar fermentlarini tekshirish",
+     "type": "practical",
+     "hours": 6,
+     "week": 9,
+     "links": {
+      "analytes": [
+       "alt",
+       "ast",
+       "alp",
+       "ggt"
+      ],
+      "conditions": [
+       "fatty-liver-disease",
+       "hepatitis-b"
+      ],
+      "reference": [
+       "liver-syndromes"
+      ],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "biochemistry_proteins_enzymes",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 6,
+      "ids": [
+       "kdl-o-102",
+       "kdl-o-110",
+       "kdl-o-111",
+       "kdl-o-220",
+       "kdl-o-221",
+       "kdl-o-227"
+      ]
+     },
+     "test_candidates": {
+      "count": 25,
+      "ids": [
+       "kdl-t-067",
+       "kdl-t-106",
+       "kdl-t-169",
+       "kdl-t-170",
+       "kdl-t-181",
+       "kdl-t-218",
+       "kdl-t-299",
+       "kdl-t-301",
+       "kdl-t-303",
+       "kdl-t-315",
+       "kdl-t-318",
+       "kdl-t-333",
+       "kdl-t-369",
+       "kdl-t-376",
+       "kdl-t-377",
+       "kdl-t-378",
+       "kdl-t-382",
+       "kdl-t-386",
+       "kdl-t-387",
+       "kdl-t-392",
+       "kdl-t-408",
+       "kdl-t-411",
+       "kdl-t-413",
+       "kdl-t-417",
+       "kdl-t-424"
+      ],
+      "pack_quiz_ids": [
+       "alt-q1",
+       "alt-q2",
+       "ast-q1",
+       "ast-q2",
+       "alp-q1",
+       "alp-q2",
+       "ggt-q1",
+       "ggt-q2",
+       "books-de-ritis",
+       "books-cholestasis"
+      ],
+      "pack_quiz_count": 10
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d050-P",
+     "n": 50,
+     "title_uz": "Laktatdegidrogenaza, ishqoriy fosfataza fermentlarini tekshirish",
+     "type": "practical",
+     "hours": 6,
+     "week": 9,
+     "links": {
+      "analytes": [
+       "ldh",
+       "alp"
+      ],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "biochemistry_proteins_enzymes",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 1,
+      "ids": [
+       "kdl-o-104"
+      ]
+     },
+     "test_candidates": {
+      "count": 13,
+      "ids": [
+       "kdl-t-301",
+       "kdl-t-369",
+       "kdl-t-379",
+       "kdl-t-380",
+       "kdl-t-388",
+       "kdl-t-401",
+       "kdl-t-403",
+       "kdl-t-411",
+       "kdl-t-413",
+       "kdl-t-414",
+       "kdl-t-418",
+       "kdl-t-419",
+       "kdl-t-422"
+      ],
+      "pack_quiz_ids": [
+       "alp-q1",
+       "alp-q2",
+       "ldh-q1",
+       "ldh-q2",
+       "books-cholestasis"
+      ],
+      "pack_quiz_count": 5
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d051-P",
+     "n": 51,
+     "title_uz": "Vitaminlar. Vitamin B12 va D larni tekshirishning klinik diagnostik ahamiyati",
+     "type": "practical",
+     "hours": 6,
+     "week": 9,
+     "links": {
+      "analytes": [
+       "vitamin-b12",
+       "vitamin-d",
+       "folate"
+      ],
+      "conditions": [
+       "vitamin-d-deficiency",
+       "b12-folate-deficiency"
+      ],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "minerals_vitamins",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 1,
+      "ids": [
+       "kdl-o-106"
+      ]
+     },
+     "test_candidates": {
+      "count": 6,
+      "ids": [
+       "kdl-t-087",
+       "kdl-t-172",
+       "kdl-t-177",
+       "kdl-t-183",
+       "kdl-t-268",
+       "kdl-t-269"
+      ],
+      "pack_quiz_ids": [
+       "vitamin-d-q1",
+       "vitamin-d-q2",
+       "vitamin-b12-q1",
+       "folate-q1"
+      ],
+      "pack_quiz_count": 4
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d052-P",
+     "n": 52,
+     "title_uz": "Vitaminlar. Vitamin B12 va D larni tekshirishning klinik diagnostik ahamiyati (2-kun)",
+     "type": "practical",
+     "hours": 6,
+     "week": 9,
+     "links": {
+      "analytes": [
+       "vitamin-b12",
+       "vitamin-d",
+       "folate"
+      ],
+      "conditions": [
+       "vitamin-d-deficiency",
+       "b12-folate-deficiency"
+      ],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "minerals_vitamins",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 1,
+      "ids": [
+       "kdl-o-106"
+      ]
+     },
+     "test_candidates": {
+      "count": 6,
+      "ids": [
+       "kdl-t-087",
+       "kdl-t-172",
+       "kdl-t-177",
+       "kdl-t-183",
+       "kdl-t-268",
+       "kdl-t-269"
+      ],
+      "pack_quiz_ids": [
+       "vitamin-d-q1",
+       "vitamin-d-q2",
+       "vitamin-b12-q1",
+       "folate-q1"
+      ],
+      "pack_quiz_count": 4
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d053-A",
+     "n": 53,
+     "title_uz": "Attestatsiya 6. Klinik biokimyodan umumiy masalalar modulidan",
+     "type": "attestation",
+     "hours": 6,
+     "week": 9,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "biochemistry_proteins_enzymes",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 16,
+      "ids": [
+       "kdl-o-078",
+       "kdl-o-079",
+       "kdl-o-080",
+       "kdl-o-081",
+       "kdl-o-096",
+       "kdl-o-097",
+       "kdl-o-171",
+       "kdl-o-178",
+       "kdl-o-206",
+       "kdl-o-208",
+       "kdl-o-226",
+       "kdl-o-236",
+       "kdl-o-237",
+       "kdl-o-238",
+       "kdl-o-254"
+      ]
+     },
+     "test_candidates": {
+      "count": 46,
+      "ids": [
+       "kdl-t-003",
+       "kdl-t-024",
+       "kdl-t-071",
+       "kdl-t-072",
+       "kdl-t-073",
+       "kdl-t-074",
+       "kdl-t-094",
+       "kdl-t-095",
+       "kdl-t-107",
+       "kdl-t-108",
+       "kdl-t-109",
+       "kdl-t-173",
+       "kdl-t-176",
+       "kdl-t-196",
+       "kdl-t-198",
+       "kdl-t-203",
+       "kdl-t-204",
+       "kdl-t-208",
+       "kdl-t-266",
+       "kdl-t-304",
+       "kdl-t-305",
+       "kdl-t-307",
+       "kdl-t-428",
+       "kdl-t-429",
+       "kdl-t-430"
+      ],
+      "pack_quiz_ids": [],
+      "pack_quiz_count": 0
+     },
+     "test_gap": false,
+     "oral_gap": false
+    }
+   ]
+  },
+  {
+   "id": "M7",
+   "title_uz": "Klinik biokimyo va biokimyoviy tekshirish usullari",
+   "hours": {
+    "lecture": 12,
+    "practical": 108,
+    "lab": null,
+    "seminar": null,
+    "attestation": 6,
+    "extra": 0,
+    "total": 126
+   },
+   "topics": [
+    {
+     "id": "d054-P",
+     "n": 54,
+     "title_uz": "Klinik biokimyo va biokimyoviy tekshiruv usullari. Umumiy oqsilni va albuminni aniqlash usullari. Klinik diagnostik ahamiyati",
+     "type": "practical",
+     "hours": 6,
+     "week": 10,
+     "links": {
+      "analytes": [
+       "total-protein",
+       "albumin"
+      ],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "biochemistry_proteins_enzymes",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 7,
+      "ids": [
+       "kdl-o-074",
+       "kdl-o-075",
+       "kdl-o-076",
+       "kdl-o-090",
+       "kdl-o-217",
+       "kdl-o-248",
+       "kdl-o-251"
+      ]
+     },
+     "test_candidates": {
+      "count": 14,
+      "ids": [
+       "kdl-t-001",
+       "kdl-t-026",
+       "kdl-t-059",
+       "kdl-t-060",
+       "kdl-t-061",
+       "kdl-t-064",
+       "kdl-t-092",
+       "kdl-t-100",
+       "kdl-t-182",
+       "kdl-t-263",
+       "kdl-t-297",
+       "kdl-t-298",
+       "kdl-t-308",
+       "kdl-t-316"
+      ],
+      "pack_quiz_ids": [
+       "albumin-q1",
+       "albumin-q2",
+       "total-protein-q1",
+       "total-protein-q2"
+      ],
+      "pack_quiz_count": 4
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d055-P",
+     "n": 55,
+     "title_uz": "Azotemiyalar. Klinik diagnostik ahamiyati",
+     "type": "practical",
+     "hours": 4,
+     "week": 10,
+     "links": {
+      "analytes": [
+       "urea",
+       "creatinine",
+       "uric-acid",
+       "egfr"
+      ],
+      "conditions": [
+       "chronic-kidney-disease"
+      ],
+      "reference": [],
+      "tools": [
+       "/lab/calculators/egfr"
+      ],
+      "microscopy": [],
+      "toifa_topic": "kidney_nitrogen",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 5,
+      "ids": [
+       "kdl-o-092",
+       "kdl-o-093",
+       "kdl-o-094",
+       "kdl-o-218",
+       "kdl-o-219"
+      ]
+     },
+     "test_candidates": {
+      "count": 8,
+      "ids": [
+       "kdl-t-063",
+       "kdl-t-102",
+       "kdl-t-103",
+       "kdl-t-180",
+       "kdl-t-207",
+       "kdl-t-265",
+       "kdl-t-312",
+       "kdl-t-313"
+      ],
+      "pack_quiz_ids": [
+       "creatinine-q1",
+       "creatinine-q2",
+       "urea-q1",
+       "urea-q2",
+       "egfr-q1",
+       "egfr-q2",
+       "uric-acid-q1",
+       "uric-acid-q2"
+      ],
+      "pack_quiz_count": 8
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d055-L",
+     "n": 55,
+     "title_uz": "Azotemiyalar. Klinik diagnostik ahamiyati",
+     "type": "lecture",
+     "hours": 2,
+     "week": 10,
+     "links": {
+      "analytes": [
+       "urea",
+       "creatinine",
+       "uric-acid",
+       "egfr"
+      ],
+      "conditions": [
+       "chronic-kidney-disease"
+      ],
+      "reference": [],
+      "tools": [
+       "/lab/calculators/egfr"
+      ],
+      "microscopy": [],
+      "toifa_topic": "kidney_nitrogen",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 5,
+      "ids": [
+       "kdl-o-092",
+       "kdl-o-093",
+       "kdl-o-094",
+       "kdl-o-218",
+       "kdl-o-219"
+      ]
+     },
+     "test_candidates": {
+      "count": 8,
+      "ids": [
+       "kdl-t-063",
+       "kdl-t-102",
+       "kdl-t-103",
+       "kdl-t-180",
+       "kdl-t-207",
+       "kdl-t-265",
+       "kdl-t-312",
+       "kdl-t-313"
+      ],
+      "pack_quiz_ids": [
+       "creatinine-q1",
+       "creatinine-q2",
+       "urea-q1",
+       "urea-q2",
+       "egfr-q1",
+       "egfr-q2",
+       "uric-acid-q1",
+       "uric-acid-q2"
+      ],
+      "pack_quiz_count": 8
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d056-P",
+     "n": 56,
+     "title_uz": "Mochevinani aniqlash usullari. Klinik diagnostik ahamiyati",
+     "type": "practical",
+     "hours": 6,
+     "week": 10,
+     "links": {
+      "analytes": [
+       "urea"
+      ],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "kidney_nitrogen",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 3,
+      "ids": [
+       "kdl-o-092",
+       "kdl-o-093",
+       "kdl-o-218"
+      ]
+     },
+     "test_candidates": {
+      "count": 7,
+      "ids": [
+       "kdl-t-102",
+       "kdl-t-103",
+       "kdl-t-180",
+       "kdl-t-207",
+       "kdl-t-265",
+       "kdl-t-312",
+       "kdl-t-313"
+      ],
+      "pack_quiz_ids": [
+       "urea-q1",
+       "urea-q2"
+      ],
+      "pack_quiz_count": 2
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d057-P",
+     "n": 57,
+     "title_uz": "Kreatininni aniqlash usullari. Klinik diagnostik ahamiyati",
+     "type": "practical",
+     "hours": 6,
+     "week": 10,
+     "links": {
+      "analytes": [
+       "creatinine",
+       "egfr"
+      ],
+      "conditions": [],
+      "reference": [],
+      "tools": [
+       "/lab/calculators/egfr"
+      ],
+      "microscopy": [],
+      "toifa_topic": "kidney_nitrogen",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 2,
+      "ids": [
+       "kdl-o-094",
+       "kdl-o-219"
+      ]
+     },
+     "test_candidates": {
+      "count": 3,
+      "ids": [
+       "kdl-t-063",
+       "kdl-t-103",
+       "kdl-t-207"
+      ],
+      "pack_quiz_ids": [
+       "creatinine-q1",
+       "creatinine-q2",
+       "egfr-q1",
+       "egfr-q2"
+      ],
+      "pack_quiz_count": 4
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d058-P",
+     "n": 58,
+     "title_uz": "Bilirubinni aniqlash usullari. Klinik diagnostik ahamiyati",
+     "type": "practical",
+     "hours": 4,
+     "week": 10,
+     "links": {
+      "analytes": [
+       "bilirubin-total",
+       "bilirubin-direct"
+      ],
+      "conditions": [
+       "jaundice-cholestasis"
+      ],
+      "reference": [
+       "jaundice"
+      ],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "liver_pigments",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 4,
+      "ids": [
+       "kdl-o-077",
+       "kdl-o-095",
+       "kdl-o-174",
+       "kdl-o-223"
+      ]
+     },
+     "test_candidates": {
+      "count": 10,
+      "ids": [
+       "kdl-t-056",
+       "kdl-t-083",
+       "kdl-t-090",
+       "kdl-t-091",
+       "kdl-t-171",
+       "kdl-t-199",
+       "kdl-t-201",
+       "kdl-t-217",
+       "kdl-t-218",
+       "kdl-t-296"
+      ],
+      "pack_quiz_ids": [
+       "bilirubin-total-q1",
+       "bilirubin-total-q2",
+       "bilirubin-direct-q1",
+       "bilirubin-direct-q2",
+       "books-jaundice-urine"
+      ],
+      "pack_quiz_count": 5
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d058-L",
+     "n": 58,
+     "title_uz": "Bilirubinni aniqlash usullari. Klinik diagnostik ahamiyati",
+     "type": "lecture",
+     "hours": 2,
+     "week": 10,
+     "links": {
+      "analytes": [
+       "bilirubin-total",
+       "bilirubin-direct"
+      ],
+      "conditions": [
+       "jaundice-cholestasis"
+      ],
+      "reference": [
+       "jaundice"
+      ],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "liver_pigments",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 4,
+      "ids": [
+       "kdl-o-077",
+       "kdl-o-095",
+       "kdl-o-174",
+       "kdl-o-223"
+      ]
+     },
+     "test_candidates": {
+      "count": 10,
+      "ids": [
+       "kdl-t-056",
+       "kdl-t-083",
+       "kdl-t-090",
+       "kdl-t-091",
+       "kdl-t-171",
+       "kdl-t-199",
+       "kdl-t-201",
+       "kdl-t-217",
+       "kdl-t-218",
+       "kdl-t-296"
+      ],
+      "pack_quiz_ids": [
+       "bilirubin-total-q1",
+       "bilirubin-total-q2",
+       "bilirubin-direct-q1",
+       "bilirubin-direct-q2",
+       "books-jaundice-urine"
+      ],
+      "pack_quiz_count": 5
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d059-P",
+     "n": 59,
+     "title_uz": "Glyukozani aniqlash usullari. Glyukoza tolerant testi. Klinik diagnostik ahamiyati",
+     "type": "practical",
+     "hours": 6,
+     "week": 11,
+     "links": {
+      "analytes": [
+       "glucose-plasma-fasting",
+       "ogtt"
+      ],
+      "conditions": [
+       "type-2-diabetes",
+       "gestational-diabetes"
+      ],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "carbohydrates_diabetes",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 9,
+      "ids": [
+       "kdl-o-096",
+       "kdl-o-097",
+       "kdl-o-171",
+       "kdl-o-178",
+       "kdl-o-206",
+       "kdl-o-237",
+       "kdl-o-238",
+       "kdl-o-254",
+       "kdl-o-289"
+      ]
+     },
+     "test_candidates": {
+      "count": 27,
+      "ids": [
+       "kdl-t-003",
+       "kdl-t-024",
+       "kdl-t-072",
+       "kdl-t-073",
+       "kdl-t-074",
+       "kdl-t-094",
+       "kdl-t-107",
+       "kdl-t-109",
+       "kdl-t-196",
+       "kdl-t-203",
+       "kdl-t-208",
+       "kdl-t-433",
+       "kdl-t-434",
+       "kdl-t-435",
+       "kdl-t-436",
+       "kdl-t-437",
+       "kdl-t-439",
+       "kdl-t-440",
+       "kdl-t-441",
+       "kdl-t-442",
+       "kdl-t-443",
+       "kdl-t-444",
+       "kdl-t-446",
+       "kdl-t-448",
+       "kdl-t-449"
+      ],
+      "pack_quiz_ids": [
+       "ogtt-q1",
+       "ogtt-q2"
+      ],
+      "pack_quiz_count": 2
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d060-P",
+     "n": 60,
+     "title_uz": "Glikozirlangan gemoglobinni aniqlash. Klinik diagnostik ahamiyati",
+     "type": "practical",
+     "hours": 6,
+     "week": 11,
+     "links": {
+      "analytes": [
+       "hba1c",
+       "fructosamine"
+      ],
+      "conditions": [],
+      "reference": [],
+      "tools": [
+       "/lab/calculators/hba1c"
+      ],
+      "microscopy": [],
+      "toifa_topic": "carbohydrates_diabetes",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 4,
+      "ids": [
+       "kdl-o-097",
+       "kdl-o-171",
+       "kdl-o-206",
+       "kdl-o-254"
+      ]
+     },
+     "test_candidates": {
+      "count": 3,
+      "ids": [
+       "kdl-t-003",
+       "kdl-t-024",
+       "kdl-t-451"
+      ],
+      "pack_quiz_ids": [
+       "hba1c-q1",
+       "hba1c-q2",
+       "fructosamine-q1",
+       "fructosamine-q2"
+      ],
+      "pack_quiz_count": 4
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d061-P",
+     "n": 61,
+     "title_uz": "Transaminazalar, amilazani aniqlash usullari. Klinik diagnostik ahamiyati",
+     "type": "practical",
+     "hours": 4,
+     "week": 11,
+     "links": {
+      "analytes": [
+       "alt",
+       "ast",
+       "amylase",
+       "lipase"
+      ],
+      "conditions": [
+       "acute-pancreatitis"
+      ],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "biochemistry_proteins_enzymes",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 6,
+      "ids": [
+       "kdl-o-102",
+       "kdl-o-103",
+       "kdl-o-220",
+       "kdl-o-221",
+       "kdl-o-222",
+       "kdl-o-287"
+      ]
+     },
+     "test_candidates": {
+      "count": 29,
+      "ids": [
+       "kdl-t-067",
+       "kdl-t-068",
+       "kdl-t-070",
+       "kdl-t-106",
+       "kdl-t-165",
+       "kdl-t-169",
+       "kdl-t-178",
+       "kdl-t-299",
+       "kdl-t-301",
+       "kdl-t-303",
+       "kdl-t-315",
+       "kdl-t-318",
+       "kdl-t-319",
+       "kdl-t-333",
+       "kdl-t-369",
+       "kdl-t-376",
+       "kdl-t-377",
+       "kdl-t-378",
+       "kdl-t-379",
+       "kdl-t-380",
+       "kdl-t-383",
+       "kdl-t-392",
+       "kdl-t-407",
+       "kdl-t-411",
+       "kdl-t-415"
+      ],
+      "pack_quiz_ids": [
+       "alt-q1",
+       "alt-q2",
+       "ast-q1",
+       "ast-q2",
+       "amylase-q1",
+       "amylase-q2",
+       "lipase-q1",
+       "lipase-q2",
+       "books-de-ritis"
+      ],
+      "pack_quiz_count": 9
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d061-L",
+     "n": 61,
+     "title_uz": "Transaminazalar, amilazani aniqlash usullari. Klinik diagnostik ahamiyati",
+     "type": "lecture",
+     "hours": 2,
+     "week": 11,
+     "links": {
+      "analytes": [
+       "alt",
+       "ast",
+       "amylase",
+       "lipase"
+      ],
+      "conditions": [
+       "acute-pancreatitis"
+      ],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "biochemistry_proteins_enzymes",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 6,
+      "ids": [
+       "kdl-o-102",
+       "kdl-o-103",
+       "kdl-o-220",
+       "kdl-o-221",
+       "kdl-o-222",
+       "kdl-o-287"
+      ]
+     },
+     "test_candidates": {
+      "count": 29,
+      "ids": [
+       "kdl-t-067",
+       "kdl-t-068",
+       "kdl-t-070",
+       "kdl-t-106",
+       "kdl-t-165",
+       "kdl-t-169",
+       "kdl-t-178",
+       "kdl-t-299",
+       "kdl-t-301",
+       "kdl-t-303",
+       "kdl-t-315",
+       "kdl-t-318",
+       "kdl-t-319",
+       "kdl-t-333",
+       "kdl-t-369",
+       "kdl-t-376",
+       "kdl-t-377",
+       "kdl-t-378",
+       "kdl-t-379",
+       "kdl-t-380",
+       "kdl-t-383",
+       "kdl-t-392",
+       "kdl-t-407",
+       "kdl-t-411",
+       "kdl-t-415"
+      ],
+      "pack_quiz_ids": [
+       "alt-q1",
+       "alt-q2",
+       "ast-q1",
+       "ast-q2",
+       "amylase-q1",
+       "amylase-q2",
+       "lipase-q1",
+       "lipase-q2",
+       "books-de-ritis"
+      ],
+      "pack_quiz_count": 9
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d062-P",
+     "n": 62,
+     "title_uz": "Ishqoriy fosfataza, γ-GT fermentlarini aniqlash usullari. Tekshirishning klinik diagnostik ahamiyati",
+     "type": "practical",
+     "hours": 6,
+     "week": 11,
+     "links": {
+      "analytes": [
+       "alp",
+       "ggt"
+      ],
+      "conditions": [
+       "jaundice-cholestasis"
+      ],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "biochemistry_proteins_enzymes",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 2,
+      "ids": [
+       "kdl-o-104",
+       "kdl-o-105"
+      ]
+     },
+     "test_candidates": {
+      "count": 32,
+      "ids": [
+       "kdl-t-056",
+       "kdl-t-062",
+       "kdl-t-068",
+       "kdl-t-083",
+       "kdl-t-090",
+       "kdl-t-091",
+       "kdl-t-106",
+       "kdl-t-169",
+       "kdl-t-171",
+       "kdl-t-297",
+       "kdl-t-298",
+       "kdl-t-299",
+       "kdl-t-301",
+       "kdl-t-315",
+       "kdl-t-369",
+       "kdl-t-378",
+       "kdl-t-379",
+       "kdl-t-380",
+       "kdl-t-382",
+       "kdl-t-384",
+       "kdl-t-385",
+       "kdl-t-386",
+       "kdl-t-387",
+       "kdl-t-388",
+       "kdl-t-390"
+      ],
+      "pack_quiz_ids": [
+       "alp-q1",
+       "alp-q2",
+       "ggt-q1",
+       "ggt-q2",
+       "books-cholestasis"
+      ],
+      "pack_quiz_count": 5
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d063-P",
+     "n": 63,
+     "title_uz": "Kislota-asos muvozanati. Bufer sistemasi",
+     "type": "practical",
+     "hours": 4,
+     "week": 12,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [
+       "/lab/calculators/anion-gap",
+       "/lab/calculators/osmolality"
+      ],
+      "microscopy": [],
+      "toifa_topic": "water_electrolytes_acid_base",
+      "gap": true
+     },
+     "oral_candidates": {
+      "count": 0,
+      "ids": []
+     },
+     "test_candidates": {
+      "count": 9,
+      "ids": [
+       "kdl-t-078",
+       "kdl-t-079",
+       "kdl-t-080",
+       "kdl-t-081",
+       "kdl-t-117",
+       "kdl-t-118",
+       "kdl-t-119",
+       "kdl-t-193",
+       "kdl-t-194"
+      ],
+      "pack_quiz_ids": [],
+      "pack_quiz_count": 0
+     },
+     "test_gap": false,
+     "oral_gap": true
+    },
+    {
+     "id": "d063-L",
+     "n": 63,
+     "title_uz": "Kislota-asos muvozanati. Bufer sistemasi",
+     "type": "lecture",
+     "hours": 2,
+     "week": 12,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [
+       "/lab/calculators/anion-gap",
+       "/lab/calculators/osmolality"
+      ],
+      "microscopy": [],
+      "toifa_topic": "water_electrolytes_acid_base",
+      "gap": true
+     },
+     "oral_candidates": {
+      "count": 0,
+      "ids": []
+     },
+     "test_candidates": {
+      "count": 9,
+      "ids": [
+       "kdl-t-078",
+       "kdl-t-079",
+       "kdl-t-080",
+       "kdl-t-081",
+       "kdl-t-117",
+       "kdl-t-118",
+       "kdl-t-119",
+       "kdl-t-193",
+       "kdl-t-194"
+      ],
+      "pack_quiz_ids": [],
+      "pack_quiz_count": 0
+     },
+     "test_gap": false,
+     "oral_gap": true
+    },
+    {
+     "id": "d064-P",
+     "n": 64,
+     "title_uz": "Kislota-asos muvozanati. Bufer sistemasi (2-kun)",
+     "type": "practical",
+     "hours": 6,
+     "week": 12,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [
+       "/lab/calculators/anion-gap",
+       "/lab/calculators/osmolality"
+      ],
+      "microscopy": [],
+      "toifa_topic": "water_electrolytes_acid_base",
+      "gap": true
+     },
+     "oral_candidates": {
+      "count": 0,
+      "ids": []
+     },
+     "test_candidates": {
+      "count": 9,
+      "ids": [
+       "kdl-t-078",
+       "kdl-t-079",
+       "kdl-t-080",
+       "kdl-t-081",
+       "kdl-t-117",
+       "kdl-t-118",
+       "kdl-t-119",
+       "kdl-t-193",
+       "kdl-t-194"
+      ],
+      "pack_quiz_ids": [],
+      "pack_quiz_count": 0
+     },
+     "test_gap": false,
+     "oral_gap": true
+    },
+    {
+     "id": "d065-P",
+     "n": 65,
+     "title_uz": "Umumiy xolesterinni aniqlash. Klinik diagnostik ahamiyati",
+     "type": "practical",
+     "hours": 6,
+     "week": 12,
+     "links": {
+      "analytes": [
+       "cholesterol-total",
+       "hdl-c",
+       "ldl-c",
+       "non-hdl-c"
+      ],
+      "conditions": [
+       "dyslipidemia"
+      ],
+      "reference": [],
+      "tools": [
+       "/lab/calculators/ldl"
+      ],
+      "microscopy": [],
+      "toifa_topic": "lipids",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 6,
+      "ids": [
+       "kdl-o-083",
+       "kdl-o-084",
+       "kdl-o-239",
+       "kdl-o-240",
+       "kdl-o-241",
+       "kdl-o-242"
+      ]
+     },
+     "test_candidates": {
+      "count": 19,
+      "ids": [
+       "kdl-t-111",
+       "kdl-t-112",
+       "kdl-t-209",
+       "kdl-t-211",
+       "kdl-t-212",
+       "kdl-t-306",
+       "kdl-t-452",
+       "kdl-t-459",
+       "kdl-t-462",
+       "kdl-t-464",
+       "kdl-t-465",
+       "kdl-t-466",
+       "kdl-t-467",
+       "kdl-t-468",
+       "kdl-t-472",
+       "kdl-t-475",
+       "kdl-t-477",
+       "kdl-t-478",
+       "kdl-t-488"
+      ],
+      "pack_quiz_ids": [
+       "cholesterol-total-q1",
+       "cholesterol-total-q2",
+       "hdl-c-q1",
+       "hdl-c-q2",
+       "ldl-c-q1",
+       "ldl-c-q2",
+       "non-hdl-c-q1",
+       "non-hdl-c-q2"
+      ],
+      "pack_quiz_count": 8
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d066-P",
+     "n": 66,
+     "title_uz": "Triglitseridlarni aniqlash usullari. Klinik diagnostik ahamiyati",
+     "type": "practical",
+     "hours": 6,
+     "week": 12,
+     "links": {
+      "analytes": [
+       "triglycerides",
+       "non-hdl-c"
+      ],
+      "conditions": [
+       "dyslipidemia",
+       "metabolic-syndrome"
+      ],
+      "reference": [],
+      "tools": [
+       "/lab/calculators/ldl"
+      ],
+      "microscopy": [],
+      "toifa_topic": "lipids",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 1,
+      "ids": [
+       "kdl-o-086"
+      ]
+     },
+     "test_candidates": {
+      "count": 14,
+      "ids": [
+       "kdl-t-076",
+       "kdl-t-110",
+       "kdl-t-114",
+       "kdl-t-209",
+       "kdl-t-452",
+       "kdl-t-456",
+       "kdl-t-458",
+       "kdl-t-459",
+       "kdl-t-461",
+       "kdl-t-462",
+       "kdl-t-463",
+       "kdl-t-464",
+       "kdl-t-469",
+       "kdl-t-482"
+      ],
+      "pack_quiz_ids": [
+       "triglycerides-q1",
+       "triglycerides-q2",
+       "non-hdl-c-q1",
+       "non-hdl-c-q2"
+      ],
+      "pack_quiz_count": 4
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d067-P",
+     "n": 67,
+     "title_uz": "Natriy, kaliy, kaltsiyni aniqlash usullari. Klinik diagnostik ahamiyati",
+     "type": "practical",
+     "hours": 6,
+     "week": 12,
+     "links": {
+      "analytes": [
+       "sodium",
+       "potassium",
+       "calcium"
+      ],
+      "conditions": [
+       "calcium-disorders"
+      ],
+      "reference": [],
+      "tools": [
+       "/lab/calculators/calcium"
+      ],
+      "microscopy": [],
+      "toifa_topic": "water_electrolytes_acid_base",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 5,
+      "ids": [
+       "kdl-o-098",
+       "kdl-o-099",
+       "kdl-o-245",
+       "kdl-o-246",
+       "kdl-o-247"
+      ]
+     },
+     "test_candidates": {
+      "count": 5,
+      "ids": [
+       "kdl-t-078",
+       "kdl-t-079",
+       "kdl-t-080",
+       "kdl-t-101",
+       "kdl-t-115"
+      ],
+      "pack_quiz_ids": [
+       "sodium-q1",
+       "sodium-q2",
+       "potassium-q1",
+       "potassium-q2",
+       "calcium-q1",
+       "calcium-q2"
+      ],
+      "pack_quiz_count": 6
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d068-P",
+     "n": 68,
+     "title_uz": "Temirni aniqlash usullari. Klinik diagnostik ahamiyati",
+     "type": "practical",
+     "hours": 6,
+     "week": 13,
+     "links": {
+      "analytes": [
+       "iron",
+       "ferritin",
+       "transferrin-tibc"
+      ],
+      "conditions": [
+       "iron-deficiency-anemia",
+       "hemochromatosis"
+      ],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "minerals_vitamins",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 5,
+      "ids": [
+       "kdl-o-026",
+       "kdl-o-027",
+       "kdl-o-100",
+       "kdl-o-101",
+       "kdl-o-244"
+      ]
+     },
+     "test_candidates": {
+      "count": 11,
+      "ids": [
+       "kdl-t-010",
+       "kdl-t-069",
+       "kdl-t-101",
+       "kdl-t-116",
+       "kdl-t-216",
+       "kdl-t-275",
+       "kdl-t-276",
+       "kdl-t-277",
+       "kdl-t-368",
+       "kdl-t-372",
+       "kdl-t-373"
+      ],
+      "pack_quiz_ids": [
+       "ferritin-q1",
+       "transferrin-tibc-q1"
+      ],
+      "pack_quiz_count": 2
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d069-P",
+     "n": 69,
+     "title_uz": "O‘tkir faza oqsillari",
+     "type": "practical",
+     "hours": 4,
+     "week": 13,
+     "links": {
+      "analytes": [
+       "crp",
+       "procalcitonin",
+       "ferritin",
+       "fibrinogen"
+      ],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "biochemistry_proteins_enzymes",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 4,
+      "ids": [
+       "kdl-o-076",
+       "kdl-o-091",
+       "kdl-o-248",
+       "kdl-o-252"
+      ]
+     },
+     "test_candidates": {
+      "count": 4,
+      "ids": [
+       "kdl-t-059",
+       "kdl-t-092",
+       "kdl-t-316",
+       "kdl-t-371"
+      ],
+      "pack_quiz_ids": [
+       "crp-q1",
+       "crp-q2",
+       "ferritin-q1",
+       "fibrinogen-q1",
+       "fibrinogen-q2"
+      ],
+      "pack_quiz_count": 5
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d069-L",
+     "n": 69,
+     "title_uz": "O‘tkir faza oqsillari",
+     "type": "lecture",
+     "hours": 2,
+     "week": 13,
+     "links": {
+      "analytes": [
+       "crp",
+       "procalcitonin",
+       "ferritin",
+       "fibrinogen"
+      ],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "biochemistry_proteins_enzymes",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 4,
+      "ids": [
+       "kdl-o-076",
+       "kdl-o-091",
+       "kdl-o-248",
+       "kdl-o-252"
+      ]
+     },
+     "test_candidates": {
+      "count": 4,
+      "ids": [
+       "kdl-t-059",
+       "kdl-t-092",
+       "kdl-t-316",
+       "kdl-t-371"
+      ],
+      "pack_quiz_ids": [
+       "crp-q1",
+       "crp-q2",
+       "ferritin-q1",
+       "fibrinogen-q1",
+       "fibrinogen-q2"
+      ],
+      "pack_quiz_count": 5
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d070-P",
+     "n": 70,
+     "title_uz": "SRB, RF, ASLO aniqlash. Klinik diagnostik ahamiyati",
+     "type": "practical",
+     "hours": 6,
+     "week": 13,
+     "links": {
+      "analytes": [
+       "crp",
+       "rheumatoid-factor",
+       "aso",
+       "anti-ccp"
+      ],
+      "conditions": [
+       "rheumatoid-arthritis"
+      ],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "immunology_serology",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 1,
+      "ids": [
+       "kdl-o-091"
+      ]
+     },
+     "test_candidates": {
+      "count": 1,
+      "ids": [
+       "kdl-t-092"
+      ],
+      "pack_quiz_ids": [
+       "crp-q1",
+       "crp-q2",
+       "anti-ccp-q1",
+       "aso-q1"
+      ],
+      "pack_quiz_count": 4
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d071-P",
+     "n": 71,
+     "title_uz": "Miokard infarkti biokimyoviy markerlari va xavf omillari",
+     "type": "practical",
+     "hours": 6,
+     "week": 13,
+     "links": {
+      "analytes": [
+       "troponin",
+       "ck-mb",
+       "natriuretic-peptides",
+       "ck",
+       "ldh"
+      ],
+      "conditions": [
+       "myocardial-infarction",
+       "heart-failure",
+       "dyslipidemia"
+      ],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "cardiac_markers",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 2,
+      "ids": [
+       "kdl-o-108",
+       "kdl-o-205"
+      ]
+     },
+     "test_candidates": {
+      "count": 14,
+      "ids": [
+       "kdl-t-067",
+       "kdl-t-104",
+       "kdl-t-105",
+       "kdl-t-300",
+       "kdl-t-314",
+       "kdl-t-375",
+       "kdl-t-376",
+       "kdl-t-378",
+       "kdl-t-380",
+       "kdl-t-381",
+       "kdl-t-402",
+       "kdl-t-413",
+       "kdl-t-414",
+       "kdl-t-425"
+      ],
+      "pack_quiz_ids": [
+       "ldh-q1",
+       "ldh-q2",
+       "ck-q1",
+       "ck-q2",
+       "troponin-q1",
+       "troponin-q2",
+       "natriuretic-peptides-q1"
+      ],
+      "pack_quiz_count": 7
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d072-P",
+     "n": 72,
+     "title_uz": "Podagra kasalligining laborator diagnostikasi. Siydik kislotasini aniqlash",
+     "type": "practical",
+     "hours": 6,
+     "week": 13,
+     "links": {
+      "analytes": [
+       "uric-acid"
+      ],
+      "conditions": [
+       "gout"
+      ],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "kidney_nitrogen",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 1,
+      "ids": [
+       "kdl-o-113"
+      ]
+     },
+     "test_candidates": {
+      "count": 0,
+      "ids": [],
+      "pack_quiz_ids": [
+       "uric-acid-q1",
+       "uric-acid-q2"
+      ],
+      "pack_quiz_count": 2
+     },
+     "test_gap": true,
+     "oral_gap": false
+    },
+    {
+     "id": "d073-P",
+     "n": 73,
+     "title_uz": "Gemostazning zamonaviy tasavvuri",
+     "type": "practical",
+     "hours": 4,
+     "week": 13,
+     "links": {
+      "analytes": [
+       "pt-inr",
+       "aptt",
+       "fibrinogen",
+       "d-dimer",
+       "coagulation-factors",
+       "protein-c-s",
+       "platelets"
+      ],
+      "conditions": [
+       "bleeding-disorders",
+       "venous-thromboembolism"
+      ],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "hemostasis",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 12,
+      "ids": [
+       "kdl-o-114",
+       "kdl-o-115",
+       "kdl-o-116",
+       "kdl-o-176",
+       "kdl-o-192",
+       "kdl-o-209",
+       "kdl-o-210",
+       "kdl-o-211",
+       "kdl-o-212",
+       "kdl-o-214",
+       "kdl-o-215",
+       "kdl-o-216"
+      ]
+     },
+     "test_candidates": {
+      "count": 39,
+      "ids": [
+       "kdl-t-014",
+       "kdl-t-058",
+       "kdl-t-121",
+       "kdl-t-122",
+       "kdl-t-124",
+       "kdl-t-125",
+       "kdl-t-126",
+       "kdl-t-128",
+       "kdl-t-129",
+       "kdl-t-131",
+       "kdl-t-132",
+       "kdl-t-133",
+       "kdl-t-134",
+       "kdl-t-135",
+       "kdl-t-139",
+       "kdl-t-140",
+       "kdl-t-141",
+       "kdl-t-142",
+       "kdl-t-168",
+       "kdl-t-186",
+       "kdl-t-187",
+       "kdl-t-188",
+       "kdl-t-189",
+       "kdl-t-190",
+       "kdl-t-202"
+      ],
+      "pack_quiz_ids": [
+       "platelets-q1",
+       "platelets-q2",
+       "pt-inr-q1",
+       "pt-inr-q2",
+       "aptt-q1",
+       "aptt-q2",
+       "fibrinogen-q1",
+       "fibrinogen-q2",
+       "d-dimer-q1",
+       "d-dimer-q2",
+       "coagulation-factors-q1",
+       "protein-c-s-q1"
+      ],
+      "pack_quiz_count": 12
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d073-L",
+     "n": 73,
+     "title_uz": "Gemostazning zamonaviy tasavvuri",
+     "type": "lecture",
+     "hours": 2,
+     "week": 13,
+     "links": {
+      "analytes": [
+       "pt-inr",
+       "aptt",
+       "fibrinogen",
+       "d-dimer",
+       "coagulation-factors",
+       "protein-c-s",
+       "platelets"
+      ],
+      "conditions": [
+       "bleeding-disorders",
+       "venous-thromboembolism"
+      ],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "hemostasis",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 12,
+      "ids": [
+       "kdl-o-114",
+       "kdl-o-115",
+       "kdl-o-116",
+       "kdl-o-176",
+       "kdl-o-192",
+       "kdl-o-209",
+       "kdl-o-210",
+       "kdl-o-211",
+       "kdl-o-212",
+       "kdl-o-214",
+       "kdl-o-215",
+       "kdl-o-216"
+      ]
+     },
+     "test_candidates": {
+      "count": 39,
+      "ids": [
+       "kdl-t-014",
+       "kdl-t-058",
+       "kdl-t-121",
+       "kdl-t-122",
+       "kdl-t-124",
+       "kdl-t-125",
+       "kdl-t-126",
+       "kdl-t-128",
+       "kdl-t-129",
+       "kdl-t-131",
+       "kdl-t-132",
+       "kdl-t-133",
+       "kdl-t-134",
+       "kdl-t-135",
+       "kdl-t-139",
+       "kdl-t-140",
+       "kdl-t-141",
+       "kdl-t-142",
+       "kdl-t-168",
+       "kdl-t-186",
+       "kdl-t-187",
+       "kdl-t-188",
+       "kdl-t-189",
+       "kdl-t-190",
+       "kdl-t-202"
+      ],
+      "pack_quiz_ids": [
+       "platelets-q1",
+       "platelets-q2",
+       "pt-inr-q1",
+       "pt-inr-q2",
+       "aptt-q1",
+       "aptt-q2",
+       "fibrinogen-q1",
+       "fibrinogen-q2",
+       "d-dimer-q1",
+       "d-dimer-q2",
+       "coagulation-factors-q1",
+       "protein-c-s-q1"
+      ],
+      "pack_quiz_count": 12
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d074-A",
+     "n": 74,
+     "title_uz": "Attestatsiya 7. Klinik biokimyo va biokimyoviy tekshirish usullari modulidan",
+     "type": "attestation",
+     "hours": 6,
+     "week": 14,
+     "links": {
+      "analytes": [
+       "alt",
+       "creatinine",
+       "glucose-plasma-fasting"
+      ],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "biochemistry_proteins_enzymes",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 31,
+      "ids": [
+       "kdl-o-074",
+       "kdl-o-075",
+       "kdl-o-076",
+       "kdl-o-077",
+       "kdl-o-087",
+       "kdl-o-088",
+       "kdl-o-089",
+       "kdl-o-090",
+       "kdl-o-095",
+       "kdl-o-102",
+       "kdl-o-103",
+       "kdl-o-104",
+       "kdl-o-105",
+       "kdl-o-110",
+       "kdl-o-111"
+      ]
+     },
+     "test_candidates": {
+      "count": 95,
+      "ids": [
+       "kdl-t-001",
+       "kdl-t-026",
+       "kdl-t-056",
+       "kdl-t-059",
+       "kdl-t-060",
+       "kdl-t-061",
+       "kdl-t-062",
+       "kdl-t-064",
+       "kdl-t-065",
+       "kdl-t-066",
+       "kdl-t-067",
+       "kdl-t-068",
+       "kdl-t-070",
+       "kdl-t-083",
+       "kdl-t-090",
+       "kdl-t-091",
+       "kdl-t-092",
+       "kdl-t-099",
+       "kdl-t-100",
+       "kdl-t-106",
+       "kdl-t-165",
+       "kdl-t-166",
+       "kdl-t-169",
+       "kdl-t-170",
+       "kdl-t-171"
+      ],
+      "pack_quiz_ids": [
+       "creatinine-q1",
+       "creatinine-q2",
+       "alt-q1",
+       "alt-q2"
+      ],
+      "pack_quiz_count": 4
+     },
+     "test_gap": false,
+     "oral_gap": false
+    }
+   ]
+  },
+  {
+   "id": "M8",
+   "title_uz": "Turli kasalliklar laborator diagnostikasi",
+   "hours": {
+    "lecture": 10,
+    "practical": 74,
+    "lab": null,
+    "seminar": null,
+    "attestation": 6,
+    "extra": 0,
+    "total": 90
+   },
+   "topics": [
+    {
+     "id": "d075-P",
+     "n": 75,
+     "title_uz": "Turli kasalliklar laborator diagnostikasi. Qonning tomir ichida ivib qolishi (DVS) sindromi va undagi klinik laborator tekshirishlar",
+     "type": "practical",
+     "hours": 4,
+     "week": 14,
+     "links": {
+      "analytes": [
+       "d-dimer",
+       "fibrinogen",
+       "pt-inr",
+       "aptt",
+       "platelets"
+      ],
+      "conditions": [
+       "sepsis"
+      ],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "hemostasis",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 2,
+      "ids": [
+       "kdl-o-115",
+       "kdl-o-214"
+      ]
+     },
+     "test_candidates": {
+      "count": 8,
+      "ids": [
+       "kdl-t-134",
+       "kdl-t-140",
+       "kdl-t-220",
+       "kdl-t-225",
+       "kdl-t-295",
+       "kdl-t-334",
+       "kdl-t-337",
+       "kdl-t-339"
+      ],
+      "pack_quiz_ids": [
+       "platelets-q1",
+       "platelets-q2",
+       "pt-inr-q1",
+       "pt-inr-q2",
+       "aptt-q1",
+       "aptt-q2",
+       "fibrinogen-q1",
+       "fibrinogen-q2",
+       "d-dimer-q1",
+       "d-dimer-q2"
+      ],
+      "pack_quiz_count": 10
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d075-L",
+     "n": 75,
+     "title_uz": "Turli kasalliklar laborator diagnostikasi. Qonning tomir ichida ivib qolishi (DVS) sindromi va undagi klinik laborator tekshirishlar",
+     "type": "lecture",
+     "hours": 2,
+     "week": 14,
+     "links": {
+      "analytes": [
+       "d-dimer",
+       "fibrinogen",
+       "pt-inr",
+       "aptt",
+       "platelets"
+      ],
+      "conditions": [
+       "sepsis"
+      ],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "hemostasis",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 2,
+      "ids": [
+       "kdl-o-115",
+       "kdl-o-214"
+      ]
+     },
+     "test_candidates": {
+      "count": 8,
+      "ids": [
+       "kdl-t-134",
+       "kdl-t-140",
+       "kdl-t-220",
+       "kdl-t-225",
+       "kdl-t-295",
+       "kdl-t-334",
+       "kdl-t-337",
+       "kdl-t-339"
+      ],
+      "pack_quiz_ids": [
+       "platelets-q1",
+       "platelets-q2",
+       "pt-inr-q1",
+       "pt-inr-q2",
+       "aptt-q1",
+       "aptt-q2",
+       "fibrinogen-q1",
+       "fibrinogen-q2",
+       "d-dimer-q1",
+       "d-dimer-q2"
+      ],
+      "pack_quiz_count": 10
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d076-P",
+     "n": 76,
+     "title_uz": "Allergik kasalliklar laborator diagnostikasi",
+     "type": "practical",
+     "hours": 6,
+     "week": 14,
+     "links": {
+      "analytes": [
+       "eosinophils"
+      ],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "immunology_serology",
+      "gap": true
+     },
+     "oral_candidates": {
+      "count": 2,
+      "ids": [
+       "kdl-o-118",
+       "kdl-o-167"
+      ]
+     },
+     "test_candidates": {
+      "count": 0,
+      "ids": [],
+      "pack_quiz_ids": [
+       "eosinophils-q1",
+       "eosinophils-q2"
+      ],
+      "pack_quiz_count": 2
+     },
+     "test_gap": true,
+     "oral_gap": false
+    },
+    {
+     "id": "d077-P",
+     "n": 77,
+     "title_uz": "Jinsiy yo‘l bilan yuqadigan infeksiyalar laborator diagnostikasi. Vasserman reaksiyasi",
+     "type": "practical",
+     "hours": 6,
+     "week": 14,
+     "links": {
+      "analytes": [
+       "syphilis-tests",
+       "vaginal-wet-mount",
+       "hpv-test"
+      ],
+      "conditions": [
+       "syphilis"
+      ],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "std_microscopy",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 5,
+      "ids": [
+       "kdl-o-129",
+       "kdl-o-130",
+       "kdl-o-161",
+       "kdl-o-204",
+       "kdl-o-280"
+      ]
+     },
+     "test_candidates": {
+      "count": 2,
+      "ids": [
+       "kdl-t-120",
+       "kdl-t-321"
+      ],
+      "pack_quiz_ids": [
+       "syphilis-tests-q1",
+       "vaginal-wet-mount-q1",
+       "vaginal-wet-mount-q2"
+      ],
+      "pack_quiz_count": 3
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d078-P",
+     "n": 78,
+     "title_uz": "Bezgak kasalligining laborator diagnostikasi",
+     "type": "practical",
+     "hours": 4,
+     "week": 14,
+     "links": {
+      "analytes": [
+       "blood-smear"
+      ],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [
+       "parasites"
+      ],
+      "toifa_topic": "parasitology",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 3,
+      "ids": [
+       "kdl-o-133",
+       "kdl-o-134",
+       "kdl-o-162"
+      ]
+     },
+     "test_candidates": {
+      "count": 1,
+      "ids": [
+       "kdl-t-152"
+      ],
+      "pack_quiz_ids": [
+       "blood-smear-q1"
+      ],
+      "pack_quiz_count": 1
+     },
+     "test_gap": true,
+     "oral_gap": false
+    },
+    {
+     "id": "d078-L",
+     "n": 78,
+     "title_uz": "Bezgak kasalligining laborator diagnostikasi",
+     "type": "lecture",
+     "hours": 2,
+     "week": 14,
+     "links": {
+      "analytes": [
+       "blood-smear"
+      ],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [
+       "parasites"
+      ],
+      "toifa_topic": "parasitology",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 3,
+      "ids": [
+       "kdl-o-133",
+       "kdl-o-134",
+       "kdl-o-162"
+      ]
+     },
+     "test_candidates": {
+      "count": 1,
+      "ids": [
+       "kdl-t-152"
+      ],
+      "pack_quiz_ids": [
+       "blood-smear-q1"
+      ],
+      "pack_quiz_count": 1
+     },
+     "test_gap": true,
+     "oral_gap": false
+    },
+    {
+     "id": "d079-P",
+     "n": 79,
+     "title_uz": "OIV infeksiyasi. Klinik laborator tekshiruv usullari. Klinik diagnostik ahamiyati",
+     "type": "practical",
+     "hours": 4,
+     "week": 14,
+     "links": {
+      "analytes": [
+       "hiv-test"
+      ],
+      "conditions": [
+       "hiv"
+      ],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "immunology_serology",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 0,
+      "ids": []
+     },
+     "test_candidates": {
+      "count": 0,
+      "ids": [],
+      "pack_quiz_ids": [
+       "hiv-test-q1"
+      ],
+      "pack_quiz_count": 1
+     },
+     "test_gap": true,
+     "oral_gap": true
+    },
+    {
+     "id": "d079-L",
+     "n": 79,
+     "title_uz": "OIV infeksiyasi. Klinik laborator tekshiruv usullari. Klinik diagnostik ahamiyati",
+     "type": "lecture",
+     "hours": 2,
+     "week": 14,
+     "links": {
+      "analytes": [
+       "hiv-test"
+      ],
+      "conditions": [
+       "hiv"
+      ],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "immunology_serology",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 0,
+      "ids": []
+     },
+     "test_candidates": {
+      "count": 0,
+      "ids": [],
+      "pack_quiz_ids": [
+       "hiv-test-q1"
+      ],
+      "pack_quiz_count": 1
+     },
+     "test_gap": true,
+     "oral_gap": true
+    },
+    {
+     "id": "d080-P",
+     "n": 80,
+     "title_uz": "Parazitar kasalliklar laborator diagnostikasi. Dumaloq gijjalar laborator diagnostikasi",
+     "type": "practical",
+     "hours": 4,
+     "week": 15,
+     "links": {
+      "analytes": [
+       "stool-ova-parasites",
+       "pinworm-test"
+      ],
+      "conditions": [],
+      "reference": [
+       "stool-parasites"
+      ],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "parasitology",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 6,
+      "ids": [
+       "kdl-o-135",
+       "kdl-o-136",
+       "kdl-o-137",
+       "kdl-o-138",
+       "kdl-o-139",
+       "kdl-o-140"
+      ]
+     },
+     "test_candidates": {
+      "count": 2,
+      "ids": [
+       "kdl-t-344",
+       "kdl-t-346"
+      ],
+      "pack_quiz_ids": [
+       "pinworm-test-q1",
+       "stool-ova-parasites-q1"
+      ],
+      "pack_quiz_count": 2
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d080-L",
+     "n": 80,
+     "title_uz": "Parazitar kasalliklar laborator diagnostikasi. Dumaloq gijjalar laborator diagnostikasi",
+     "type": "lecture",
+     "hours": 2,
+     "week": 15,
+     "links": {
+      "analytes": [
+       "stool-ova-parasites",
+       "pinworm-test"
+      ],
+      "conditions": [],
+      "reference": [
+       "stool-parasites"
+      ],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "parasitology",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 6,
+      "ids": [
+       "kdl-o-135",
+       "kdl-o-136",
+       "kdl-o-137",
+       "kdl-o-138",
+       "kdl-o-139",
+       "kdl-o-140"
+      ]
+     },
+     "test_candidates": {
+      "count": 2,
+      "ids": [
+       "kdl-t-344",
+       "kdl-t-346"
+      ],
+      "pack_quiz_ids": [
+       "pinworm-test-q1",
+       "stool-ova-parasites-q1"
+      ],
+      "pack_quiz_count": 2
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d081-P",
+     "n": 81,
+     "title_uz": "Lentasimon gijjalar laborator diagnostikasi. Klinik diagnostik ahamiyati",
+     "type": "practical",
+     "hours": 6,
+     "week": 15,
+     "links": {
+      "analytes": [
+       "stool-ova-parasites"
+      ],
+      "conditions": [],
+      "reference": [
+       "stool-parasites"
+      ],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "parasitology",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 2,
+      "ids": [
+       "kdl-o-137",
+       "kdl-o-138"
+      ]
+     },
+     "test_candidates": {
+      "count": 1,
+      "ids": [
+       "kdl-t-346"
+      ],
+      "pack_quiz_ids": [
+       "stool-ova-parasites-q1"
+      ],
+      "pack_quiz_count": 1
+     },
+     "test_gap": true,
+     "oral_gap": false
+    },
+    {
+     "id": "d082-P",
+     "n": 82,
+     "title_uz": "So‘ruvchi gijjalar laborator diagnostikasi. Klinik diagnostik ahamiyati",
+     "type": "practical",
+     "hours": 6,
+     "week": 15,
+     "links": {
+      "analytes": [
+       "stool-ova-parasites"
+      ],
+      "conditions": [],
+      "reference": [
+       "stool-parasites"
+      ],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "parasitology",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 2,
+      "ids": [
+       "kdl-o-139",
+       "kdl-o-140"
+      ]
+     },
+     "test_candidates": {
+      "count": 0,
+      "ids": [],
+      "pack_quiz_ids": [
+       "stool-ova-parasites-q1"
+      ],
+      "pack_quiz_count": 1
+     },
+     "test_gap": true,
+     "oral_gap": false
+    },
+    {
+     "id": "d083-P",
+     "n": 83,
+     "title_uz": "TORCH infeksiyalar laborator diagnostikasi. Klinik diagnostik ahamiyati",
+     "type": "practical",
+     "hours": 4,
+     "week": 15,
+     "links": {
+      "analytes": [],
+      "conditions": [
+       "pregnancy"
+      ],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "immunology_serology",
+      "gap": true
+     },
+     "oral_candidates": {
+      "count": 4,
+      "ids": [
+       "kdl-o-127",
+       "kdl-o-128",
+       "kdl-o-203",
+       "kdl-o-253"
+      ]
+     },
+     "test_candidates": {
+      "count": 0,
+      "ids": [],
+      "pack_quiz_ids": [],
+      "pack_quiz_count": 0
+     },
+     "test_gap": true,
+     "oral_gap": false
+    },
+    {
+     "id": "d083-L",
+     "n": 83,
+     "title_uz": "TORCH infeksiyalar laborator diagnostikasi. Klinik diagnostik ahamiyati",
+     "type": "lecture",
+     "hours": 2,
+     "week": 15,
+     "links": {
+      "analytes": [],
+      "conditions": [
+       "pregnancy"
+      ],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "immunology_serology",
+      "gap": true
+     },
+     "oral_candidates": {
+      "count": 4,
+      "ids": [
+       "kdl-o-127",
+       "kdl-o-128",
+       "kdl-o-203",
+       "kdl-o-253"
+      ]
+     },
+     "test_candidates": {
+      "count": 0,
+      "ids": [],
+      "pack_quiz_ids": [],
+      "pack_quiz_count": 0
+     },
+     "test_gap": true,
+     "oral_gap": false
+    },
+    {
+     "id": "d084-P",
+     "n": 84,
+     "title_uz": "Klinik laborator diagnostikada gematologik analizatorlar",
+     "type": "practical",
+     "hours": 6,
+     "week": 15,
+     "links": {
+      "analytes": [
+       "mcv",
+       "rdw",
+       "wbc-count",
+       "platelets"
+      ],
+      "conditions": [],
+      "reference": [],
+      "tools": [
+       "/lab/instruments"
+      ],
+      "microscopy": [],
+      "toifa_topic": "hematology_cells",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 9,
+      "ids": [
+       "kdl-o-024",
+       "kdl-o-070",
+       "kdl-o-071",
+       "kdl-o-072",
+       "kdl-o-073",
+       "kdl-o-262",
+       "kdl-o-263",
+       "kdl-o-264",
+       "kdl-o-265"
+      ]
+     },
+     "test_candidates": {
+      "count": 1,
+      "ids": [
+       "kdl-t-047"
+      ],
+      "pack_quiz_ids": [
+       "wbc-count-q1",
+       "wbc-count-q2",
+       "platelets-q1",
+       "platelets-q2",
+       "mcv-q1",
+       "mcv-q2",
+       "rdw-q1",
+       "rdw-q2",
+       "books-anemia-mcv"
+      ],
+      "pack_quiz_count": 9
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d085-P",
+     "n": 85,
+     "title_uz": "Klinik laborator diagnostikada ECHT analizatorlar",
+     "type": "practical",
+     "hours": 6,
+     "week": 15,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [
+       "/lab/instruments"
+      ],
+      "microscopy": [],
+      "toifa_topic": "other",
+      "gap": true
+     },
+     "oral_candidates": {
+      "count": 4,
+      "ids": [
+       "kdl-o-070",
+       "kdl-o-071",
+       "kdl-o-072",
+       "kdl-o-073"
+      ]
+     },
+     "test_candidates": {
+      "count": 0,
+      "ids": [],
+      "pack_quiz_ids": [],
+      "pack_quiz_count": 0
+     },
+     "test_gap": true,
+     "oral_gap": false
+    },
+    {
+     "id": "d086-P",
+     "n": 86,
+     "title_uz": "Klinik laborator diagnostikada bioximik analizatorlar",
+     "type": "practical",
+     "hours": 6,
+     "week": 16,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [
+       "/lab/instruments",
+       "/lab/calibration"
+      ],
+      "microscopy": [],
+      "toifa_topic": "other",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 4,
+      "ids": [
+       "kdl-o-070",
+       "kdl-o-071",
+       "kdl-o-072",
+       "kdl-o-073"
+      ]
+     },
+     "test_candidates": {
+      "count": 0,
+      "ids": [],
+      "pack_quiz_ids": [],
+      "pack_quiz_count": 0
+     },
+     "test_gap": true,
+     "oral_gap": false
+    },
+    {
+     "id": "d087-P",
+     "n": 87,
+     "title_uz": "Klinik laborator diagnostikada urino analizatorlar",
+     "type": "practical",
+     "hours": 6,
+     "week": 16,
+     "links": {
+      "analytes": [
+       "urine-chemistry"
+      ],
+      "conditions": [],
+      "reference": [],
+      "tools": [
+       "/lab/instruments"
+      ],
+      "microscopy": [],
+      "toifa_topic": "urinalysis",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 4,
+      "ids": [
+       "kdl-o-070",
+       "kdl-o-071",
+       "kdl-o-072",
+       "kdl-o-073"
+      ]
+     },
+     "test_candidates": {
+      "count": 0,
+      "ids": [],
+      "pack_quiz_ids": [
+       "urine-chemistry-q1",
+       "urine-chemistry-q2"
+      ],
+      "pack_quiz_count": 2
+     },
+     "test_gap": true,
+     "oral_gap": false
+    },
+    {
+     "id": "d088-P",
+     "n": 88,
+     "title_uz": "Klinik laborator diagnostikada koagulometrik analizatorlar",
+     "type": "practical",
+     "hours": 6,
+     "week": 16,
+     "links": {
+      "analytes": [
+       "pt-inr",
+       "aptt",
+       "fibrinogen"
+      ],
+      "conditions": [],
+      "reference": [],
+      "tools": [
+       "/lab/instruments"
+      ],
+      "microscopy": [],
+      "toifa_topic": "hemostasis",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 4,
+      "ids": [
+       "kdl-o-070",
+       "kdl-o-071",
+       "kdl-o-072",
+       "kdl-o-073"
+      ]
+     },
+     "test_candidates": {
+      "count": 1,
+      "ids": [
+       "kdl-t-335"
+      ],
+      "pack_quiz_ids": [
+       "pt-inr-q1",
+       "pt-inr-q2",
+       "aptt-q1",
+       "aptt-q2",
+       "fibrinogen-q1",
+       "fibrinogen-q2"
+      ],
+      "pack_quiz_count": 6
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d089-A",
+     "n": 89,
+     "title_uz": "Attestatsiya 8. Turli kasalliklar laborator diagnostikasi modulidan",
+     "type": "attestation",
+     "hours": 6,
+     "week": 16,
+     "links": {
+      "analytes": [
+       "hiv-test",
+       "syphilis-tests"
+      ],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "immunology_serology",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 29,
+      "ids": [
+       "kdl-o-091",
+       "kdl-o-118",
+       "kdl-o-127",
+       "kdl-o-128",
+       "kdl-o-144",
+       "kdl-o-145",
+       "kdl-o-146",
+       "kdl-o-158",
+       "kdl-o-159",
+       "kdl-o-163",
+       "kdl-o-164",
+       "kdl-o-165",
+       "kdl-o-167",
+       "kdl-o-172",
+       "kdl-o-193"
+      ]
+     },
+     "test_candidates": {
+      "count": 3,
+      "ids": [
+       "kdl-t-086",
+       "kdl-t-093",
+       "kdl-t-167"
+      ],
+      "pack_quiz_ids": [
+       "hiv-test-q1",
+       "syphilis-tests-q1"
+      ],
+      "pack_quiz_count": 2
+     },
+     "test_gap": false,
+     "oral_gap": false
+    }
+   ]
+  },
+  {
+   "id": "M9",
+   "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+   "hours": {
+    "lecture": 48,
+    "practical": 270,
+    "lab": null,
+    "seminar": null,
+    "attestation": 6,
+    "extra": 6,
+    "total": 330
+   },
+   "topics": [
+    {
+     "id": "d090-L",
+     "n": 90,
+     "title_uz": "Umumiy qon tahlilini amaliyotda o‘zlashtirish",
+     "type": "lecture",
+     "hours": 6,
+     "week": 16,
+     "links": {
+      "analytes": [
+       "hemoglobin",
+       "hematocrit",
+       "rbc-count",
+       "wbc-count",
+       "platelets",
+       "mcv"
+      ],
+      "conditions": [],
+      "reference": [
+       "spurious-cbc"
+      ],
+      "tools": [
+       "/lab/calculators/chamber"
+      ],
+      "microscopy": [],
+      "toifa_topic": "hematology_cells",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 12,
+      "ids": [
+       "kdl-o-002",
+       "kdl-o-003",
+       "kdl-o-005",
+       "kdl-o-017",
+       "kdl-o-018",
+       "kdl-o-019",
+       "kdl-o-022",
+       "kdl-o-023",
+       "kdl-o-160",
+       "kdl-o-173",
+       "kdl-o-263",
+       "kdl-o-264"
+      ]
+     },
+     "test_candidates": {
+      "count": 15,
+      "ids": [
+       "kdl-t-004",
+       "kdl-t-011",
+       "kdl-t-012",
+       "kdl-t-013",
+       "kdl-t-030",
+       "kdl-t-032",
+       "kdl-t-047",
+       "kdl-t-052",
+       "kdl-t-233",
+       "kdl-t-238",
+       "kdl-t-242",
+       "kdl-t-243",
+       "kdl-t-273",
+       "kdl-t-330",
+       "kdl-t-331"
+      ],
+      "pack_quiz_ids": [
+       "hemoglobin-q1",
+       "hemoglobin-q2",
+       "hematocrit-q1",
+       "hematocrit-q2",
+       "rbc-count-q1",
+       "rbc-count-q2",
+       "wbc-count-q1",
+       "wbc-count-q2",
+       "platelets-q1",
+       "platelets-q2",
+       "mcv-q1",
+       "mcv-q2",
+       "books-anemia-mcv"
+      ],
+      "pack_quiz_count": 13
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d091-P",
+     "n": 91,
+     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "type": "practical",
+     "hours": 6,
+     "week": 16,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": null,
+      "gap": false
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d092-P",
+     "n": 92,
+     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "type": "practical",
+     "hours": 6,
+     "week": 17,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": null,
+      "gap": false
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d093-P",
+     "n": 93,
+     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "type": "practical",
+     "hours": 6,
+     "week": 17,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": null,
+      "gap": false
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d094-P",
+     "n": 94,
+     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "type": "practical",
+     "hours": 6,
+     "week": 17,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": null,
+      "gap": false
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d095-L",
+     "n": 95,
+     "title_uz": "Leykositar formulani amaliyotda o‘zlashtirish",
+     "type": "lecture",
+     "hours": 6,
+     "week": 17,
+     "links": {
+      "analytes": [
+       "neutrophils",
+       "lymphocytes",
+       "monocytes",
+       "eosinophils",
+       "basophils"
+      ],
+      "conditions": [],
+      "reference": [],
+      "tools": [
+       "/lab/calculators/differential"
+      ],
+      "microscopy": [
+       "blood"
+      ],
+      "toifa_topic": "hematology_cells",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 2,
+      "ids": [
+       "kdl-o-018",
+       "kdl-o-173"
+      ]
+     },
+     "test_candidates": {
+      "count": 3,
+      "ids": [
+       "kdl-t-035",
+       "kdl-t-052",
+       "kdl-t-273"
+      ],
+      "pack_quiz_ids": [
+       "neutrophils-q1",
+       "neutrophils-q2",
+       "lymphocytes-q1",
+       "lymphocytes-q2",
+       "monocytes-q1",
+       "monocytes-q2",
+       "eosinophils-q1",
+       "eosinophils-q2",
+       "basophils-q1",
+       "basophils-q2"
+      ],
+      "pack_quiz_count": 10
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d096-P",
+     "n": 96,
+     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "type": "practical",
+     "hours": 6,
+     "week": 17,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": null,
+      "gap": false
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d097-P",
+     "n": 97,
+     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "type": "practical",
+     "hours": 6,
+     "week": 17,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": null,
+      "gap": false
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d098-P",
+     "n": 98,
+     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "type": "practical",
+     "hours": 6,
+     "week": 18,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": null,
+      "gap": false
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d099-P",
+     "n": 99,
+     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "type": "practical",
+     "hours": 6,
+     "week": 18,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": null,
+      "gap": false
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d100-P",
+     "n": 100,
+     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "type": "practical",
+     "hours": 6,
+     "week": 18,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": null,
+      "gap": false
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d101-L",
+     "n": 101,
+     "title_uz": "Umumiy siydik tahlilini amaliyotda o‘zlashtirish",
+     "type": "lecture",
+     "hours": 6,
+     "week": 18,
+     "links": {
+      "analytes": [
+       "urine-chemistry",
+       "urine-microscopy"
+      ],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [
+       "urine"
+      ],
+      "toifa_topic": "urinalysis",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 6,
+      "ids": [
+       "kdl-o-042",
+       "kdl-o-043",
+       "kdl-o-044",
+       "kdl-o-045",
+       "kdl-o-046",
+       "kdl-o-047"
+      ]
+     },
+     "test_candidates": {
+      "count": 6,
+      "ids": [
+       "kdl-t-051",
+       "kdl-t-250",
+       "kdl-t-284",
+       "kdl-t-320",
+       "kdl-t-426",
+       "kdl-t-427"
+      ],
+      "pack_quiz_ids": [
+       "urine-chemistry-q1",
+       "urine-chemistry-q2",
+       "urine-microscopy-q1",
+       "urine-microscopy-q2"
+      ],
+      "pack_quiz_count": 4
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d102-P",
+     "n": 102,
+     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "type": "practical",
+     "hours": 6,
+     "week": 18,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": null,
+      "gap": false
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d103-P",
+     "n": 103,
+     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "type": "practical",
+     "hours": 6,
+     "week": 19,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": null,
+      "gap": false
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d104-P",
+     "n": 104,
+     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "type": "practical",
+     "hours": 6,
+     "week": 19,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": null,
+      "gap": false
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d105-P",
+     "n": 105,
+     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "type": "practical",
+     "hours": 6,
+     "week": 19,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": null,
+      "gap": false
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d106-L",
+     "n": 106,
+     "title_uz": "Umumiy balg‘am tahlilini amaliyotda o‘zlashtirish",
+     "type": "lecture",
+     "hours": 6,
+     "week": 19,
+     "links": {
+      "analytes": [
+       "sputum-afb",
+       "sputum-culture"
+      ],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "sputum_tb",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 4,
+      "ids": [
+       "kdl-o-051",
+       "kdl-o-052",
+       "kdl-o-175",
+       "kdl-o-270"
+      ]
+     },
+     "test_candidates": {
+      "count": 7,
+      "ids": [
+       "kdl-t-016",
+       "kdl-t-017",
+       "kdl-t-018",
+       "kdl-t-153",
+       "kdl-t-154",
+       "kdl-t-279",
+       "kdl-t-283"
+      ],
+      "pack_quiz_ids": [
+       "sputum-afb-q1",
+       "sputum-afb-q2"
+      ],
+      "pack_quiz_count": 2
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d107-P",
+     "n": 107,
+     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "type": "practical",
+     "hours": 6,
+     "week": 19,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": null,
+      "gap": false
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d108-P",
+     "n": 108,
+     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "type": "practical",
+     "hours": 6,
+     "week": 19,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": null,
+      "gap": false
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d109-P",
+     "n": 109,
+     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "type": "practical",
+     "hours": 6,
+     "week": 20,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": null,
+      "gap": false
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d110-P",
+     "n": 110,
+     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "type": "practical",
+     "hours": 6,
+     "week": 20,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": null,
+      "gap": false
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d111-P",
+     "n": 111,
+     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "type": "practical",
+     "hours": 6,
+     "week": 20,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": null,
+      "gap": false
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d112-L",
+     "n": 112,
+     "title_uz": "Umumiy axlat (najas) tahlilini amaliyotda o‘zlashtirish",
+     "type": "lecture",
+     "hours": 6,
+     "week": 20,
+     "links": {
+      "analytes": [
+       "stool-analysis",
+       "stool-ova-parasites",
+       "fecal-occult-blood"
+      ],
+      "conditions": [],
+      "reference": [
+       "stool-parasites"
+      ],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "stool_coprology",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 4,
+      "ids": [
+       "kdl-o-039",
+       "kdl-o-040",
+       "kdl-o-041",
+       "kdl-o-281"
+      ]
+     },
+     "test_candidates": {
+      "count": 6,
+      "ids": [
+       "kdl-t-019",
+       "kdl-t-020",
+       "kdl-t-021",
+       "kdl-t-033",
+       "kdl-t-249",
+       "kdl-t-349"
+      ],
+      "pack_quiz_ids": [
+       "stool-ova-parasites-q1",
+       "fecal-occult-blood-q1"
+      ],
+      "pack_quiz_count": 2
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d113-P",
+     "n": 113,
+     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "type": "practical",
+     "hours": 6,
+     "week": 20,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": null,
+      "gap": false
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d114-P",
+     "n": 114,
+     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "type": "practical",
+     "hours": 6,
+     "week": 20,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": null,
+      "gap": false
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d115-P",
+     "n": 115,
+     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "type": "practical",
+     "hours": 6,
+     "week": 21,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": null,
+      "gap": false
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d116-L",
+     "n": 116,
+     "title_uz": "Mindray BA-88A bioximik yarim avtomat analizator ishlash prinsiplari. Bioximik analizatorni dasturlashni amaliyotda o‘zlashtirish",
+     "type": "lecture",
+     "hours": 6,
+     "week": 21,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [
+       "/lab/instruments",
+       "/lab/calibration"
+      ],
+      "microscopy": [],
+      "toifa_topic": "other",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 4,
+      "ids": [
+       "kdl-o-070",
+       "kdl-o-071",
+       "kdl-o-072",
+       "kdl-o-073"
+      ]
+     },
+     "test_candidates": {
+      "count": 0,
+      "ids": [],
+      "pack_quiz_ids": [],
+      "pack_quiz_count": 0
+     },
+     "test_gap": true,
+     "oral_gap": false
+    },
+    {
+     "id": "d117-P",
+     "n": 117,
+     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "type": "practical",
+     "hours": 6,
+     "week": 21,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": null,
+      "gap": false
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d118-P",
+     "n": 118,
+     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "type": "practical",
+     "hours": 6,
+     "week": 22,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": null,
+      "gap": false
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d119-P",
+     "n": 119,
+     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "type": "practical",
+     "hours": 6,
+     "week": 22,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": null,
+      "gap": false
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d120-P",
+     "n": 120,
+     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "type": "practical",
+     "hours": 6,
+     "week": 22,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": null,
+      "gap": false
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d121-L",
+     "n": 121,
+     "title_uz": "Laktatdegidrogenaza, ishqoriy fosfataza fermentlar tekshiruvini amaliyotda o‘zlashtirish",
+     "type": "lecture",
+     "hours": 6,
+     "week": 22,
+     "links": {
+      "analytes": [
+       "ldh",
+       "alp"
+      ],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "biochemistry_proteins_enzymes",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 1,
+      "ids": [
+       "kdl-o-104"
+      ]
+     },
+     "test_candidates": {
+      "count": 13,
+      "ids": [
+       "kdl-t-301",
+       "kdl-t-369",
+       "kdl-t-379",
+       "kdl-t-380",
+       "kdl-t-388",
+       "kdl-t-401",
+       "kdl-t-403",
+       "kdl-t-411",
+       "kdl-t-413",
+       "kdl-t-414",
+       "kdl-t-418",
+       "kdl-t-419",
+       "kdl-t-422"
+      ],
+      "pack_quiz_ids": [
+       "alp-q1",
+       "alp-q2",
+       "ldh-q1",
+       "ldh-q2",
+       "books-cholestasis"
+      ],
+      "pack_quiz_count": 5
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d122-P",
+     "n": 122,
+     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "type": "practical",
+     "hours": 6,
+     "week": 22,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": null,
+      "gap": false
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d123-P",
+     "n": 123,
+     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "type": "practical",
+     "hours": 6,
+     "week": 22,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": null,
+      "gap": false
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d124-P",
+     "n": 124,
+     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "type": "practical",
+     "hours": 6,
+     "week": 23,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": null,
+      "gap": false
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d125-P",
+     "n": 125,
+     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "type": "practical",
+     "hours": 6,
+     "week": 23,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": null,
+      "gap": false
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d126-P",
+     "n": 126,
+     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "type": "practical",
+     "hours": 6,
+     "week": 23,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": null,
+      "gap": false
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d127-L",
+     "n": 127,
+     "title_uz": "SRB, RF, ASLO lar tekshiruvini amaliyotda o‘zlashtirish",
+     "type": "lecture",
+     "hours": 6,
+     "week": 23,
+     "links": {
+      "analytes": [
+       "crp",
+       "rheumatoid-factor",
+       "aso"
+      ],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": "immunology_serology",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 1,
+      "ids": [
+       "kdl-o-091"
+      ]
+     },
+     "test_candidates": {
+      "count": 0,
+      "ids": [],
+      "pack_quiz_ids": [
+       "crp-q1",
+       "crp-q2",
+       "aso-q1"
+      ],
+      "pack_quiz_count": 3
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d128-P",
+     "n": 128,
+     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "type": "practical",
+     "hours": 6,
+     "week": 23,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": null,
+      "gap": false
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d129-P",
+     "n": 129,
+     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "type": "practical",
+     "hours": 6,
+     "week": 23,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": null,
+      "gap": false
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d130-P",
+     "n": 130,
+     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "type": "practical",
+     "hours": 6,
+     "week": 24,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": null,
+      "gap": false
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d131-P",
+     "n": 131,
+     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "type": "practical",
+     "hours": 6,
+     "week": 24,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": null,
+      "gap": false
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d132-P",
+     "n": 132,
+     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "type": "practical",
+     "hours": 6,
+     "week": 24,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": null,
+      "gap": false
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d133-P",
+     "n": 133,
+     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "type": "practical",
+     "hours": 6,
+     "week": 24,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": null,
+      "gap": false
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d134-P",
+     "n": 134,
+     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "type": "practical",
+     "hours": 6,
+     "week": 24,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": null,
+      "gap": false
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d135-P",
+     "n": 135,
+     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "type": "practical",
+     "hours": 6,
+     "week": 24,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": null,
+      "gap": false
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d136-P",
+     "n": 136,
+     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "type": "practical",
+     "hours": 6,
+     "week": 25,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": null,
+      "gap": false
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d137-P",
+     "n": 137,
+     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "type": "practical",
+     "hours": 6,
+     "week": 25,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": null,
+      "gap": false
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d138-P",
+     "n": 138,
+     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "type": "practical",
+     "hours": 6,
+     "week": 25,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": null,
+      "gap": false
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d139-P",
+     "n": 139,
+     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "type": "practical",
+     "hours": 6,
+     "week": 25,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": null,
+      "gap": false
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d140-P",
+     "n": 140,
+     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "type": "practical",
+     "hours": 6,
+     "week": 25,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": null,
+      "gap": false
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d141-P",
+     "n": 141,
+     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "type": "practical",
+     "hours": 6,
+     "week": 25,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": null,
+      "gap": false
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d142-P",
+     "n": 142,
+     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "type": "practical",
+     "hours": 6,
+     "week": 26,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [],
+      "microscopy": [],
+      "toifa_topic": null,
+      "gap": false
+     },
+     "test_gap": false,
+     "oral_gap": false
+    },
+    {
+     "id": "d143-A",
+     "n": 143,
+     "title_uz": "Attestatsiya. Laborator tekshiruv usullarini amaliyotda o‘zlashtirish (yakuniy)",
+     "type": "attestation",
+     "hours": 6,
+     "week": 26,
+     "links": {
+      "analytes": [],
+      "conditions": [],
+      "reference": [],
+      "tools": [
+       "/lab/qc",
+       "/lab/preanalytics"
+      ],
+      "microscopy": [],
+      "toifa_topic": "other",
+      "gap": false
+     },
+     "oral_candidates": {
+      "count": 25,
+      "ids": [
+       "kdl-o-008",
+       "kdl-o-009",
+       "kdl-o-010",
+       "kdl-o-011",
+       "kdl-o-012",
+       "kdl-o-013",
+       "kdl-o-150",
+       "kdl-o-151",
+       "kdl-o-152",
+       "kdl-o-153",
+       "kdl-o-154",
+       "kdl-o-155",
+       "kdl-o-156",
+       "kdl-o-157",
+       "kdl-o-182"
+      ]
+     },
+     "test_candidates": {
+      "count": 42,
+      "ids": [
+       "kdl-t-002",
+       "kdl-t-022",
+       "kdl-t-041",
+       "kdl-t-042",
+       "kdl-t-045",
+       "kdl-t-048",
+       "kdl-t-057",
+       "kdl-t-097",
+       "kdl-t-098",
+       "kdl-t-113",
+       "kdl-t-123",
+       "kdl-t-138",
+       "kdl-t-143",
+       "kdl-t-144",
+       "kdl-t-145",
+       "kdl-t-146",
+       "kdl-t-147",
+       "kdl-t-148",
+       "kdl-t-149",
+       "kdl-t-150",
+       "kdl-t-157",
+       "kdl-t-158",
+       "kdl-t-159",
+       "kdl-t-160",
+       "kdl-t-162"
+      ],
+      "pack_quiz_ids": [],
+      "pack_quiz_count": 0
+     },
+     "test_gap": false,
+     "oral_gap": false
+    }
+   ]
+  }
+ ]
+}

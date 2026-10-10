@@ -72,6 +72,7 @@ flutter:
     - assets/microscopy/
     - assets/microscopy/img/
     - assets/toifa/
+    - assets/curriculum/
 
   fonts:
     - family: Inter
