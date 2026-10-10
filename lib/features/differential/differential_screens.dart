@@ -63,31 +63,41 @@ class DifferentialEntryCard extends StatelessWidget {
         child: ExcludeSemantics(
           child: Padding(
             padding: const EdgeInsets.all(14),
-            child: Row(
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(16),
-                  child: Image.asset(
-                    cellImage('neutrophil_segmented'),
-                    width: 64,
-                    height: 64,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                const SizedBox(width: 14),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(l.diffTitle, style: text.titleMedium),
-                      const SizedBox(height: 3),
-                      Text(l.diffLabCardBody, style: text.bodySmall),
-                    ],
-                  ),
-                ),
-                const SizedBox(width: 6),
-                Icon(Icons.chevron_right_rounded, color: p.brand),
-              ],
+            // Tor ekran + katta shrift: rasm kichrayadi, sarlavha so'z
+            // o'rtasidan uzilmasin ("Лейкоформу/ла").
+            child: LayoutBuilder(
+              builder: (context, box) {
+                final tight =
+                    box.maxWidth / MediaQuery.textScalerOf(context).scale(1) <
+                    240;
+                final image = tight ? 40.0 : 64.0;
+                return Row(
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(tight ? 12 : 16),
+                      child: Image.asset(
+                        cellImage('neutrophil_segmented'),
+                        width: image,
+                        height: image,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    SizedBox(width: tight ? 10 : 14),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(l.diffTitle, style: text.titleMedium),
+                          const SizedBox(height: 3),
+                          Text(l.diffLabCardBody, style: text.bodySmall),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(width: 6),
+                    Icon(Icons.chevron_right_rounded, color: p.brand),
+                  ],
+                );
+              },
             ),
           ),
         ),

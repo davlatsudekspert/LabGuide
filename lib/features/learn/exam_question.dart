@@ -135,6 +135,21 @@ List<ExamQuestion> examPool(
   ];
 }
 
+final _unitSlash = RegExp(
+  r'(?<=(?<![\p{L}])(?:mmol|µmol|mg|g|ммоль|мкмоль|мг|г))/(?=(?:L|dL|mol|л|дл|моль)(?![\p{L}]))',
+  unicode: true,
+);
+final _numUnit = RegExp(
+  r'(?<=\d) (?=(?:mmol|µmol|mg|g|ммоль|мкмоль|мг|г)/)',
+  unicode: true,
+);
+
+/// Birlik ("mmol/L", "mg/dL") satr oxirida "mmol/" + "L" ga bo'linib
+/// qolmasligi uchun: "/" dan keyin so'z biriktiruvchi, raqam bilan birlik
+/// orasida bo'linmaydigan bo'shliq. Faqat ko'rsatish uchun.
+String keepUnitsTogether(String s) =>
+    s.replaceAll(_numUnit, '\u00A0').replaceAll(_unitSlash, '/\u2060');
+
 /// Kontent paketidagi mashq savoli (bitta to'g'ri javob).
 class PackExamQuestion implements ExamQuestion {
   PackExamQuestion(this.quiz, this.topicIds);
@@ -146,16 +161,17 @@ class PackExamQuestion implements ExamQuestion {
   @override
   String get id => quiz.id;
   @override
-  String prompt(String lang) => quiz.prompt.of(lang);
+  String prompt(String lang) => keepUnitsTogether(quiz.prompt.of(lang));
   @override
   int get optionCount => quiz.options.length;
   @override
-  String option(int index, String lang) => quiz.options[index].text.of(lang);
+  String option(int index, String lang) =>
+      keepUnitsTogether(quiz.options[index].text.of(lang));
   @override
   String? explanation(int index, String lang) =>
-      quiz.options[index].explanation.of(lang);
+      keepUnitsTogether(quiz.options[index].explanation.of(lang));
   @override
-  String? basis(String lang) => quiz.basis.of(lang);
+  String? basis(String lang) => keepUnitsTogether(quiz.basis.of(lang));
   @override
   Set<int> get correct => {quiz.correctIndex};
   @override
