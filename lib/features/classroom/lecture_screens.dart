@@ -106,7 +106,7 @@ List<LectureSlide> buildLectureSlides(
     slides.add(
       LectureSlide(
         eyebrow: l.lectureQuestionN(i + 1),
-        title: q.text,
+        title: q.localized(lang).text,
         question: true,
       ),
     );

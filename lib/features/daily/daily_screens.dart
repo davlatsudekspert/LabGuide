@@ -390,6 +390,8 @@ class _DailyScreenState extends State<DailyScreen> {
         header: true,
         child: Text(q.prompt(lang), style: text.headlineSmall),
       ),
+      if (official != null)
+        OfficialTextToggle(question: official, showTag: false),
       const SizedBox(height: 14),
       for (var i = 0; i < q.optionCount; i++)
         Padding(
