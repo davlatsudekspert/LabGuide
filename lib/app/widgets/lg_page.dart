@@ -415,12 +415,7 @@ class _TopBar extends StatelessWidget {
     if (showTitle) {
       middle = Semantics(
         header: collapsed,
-        child: Text(
-          title,
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
-          style: text.titleLarge,
-        ),
+        child: _FitTitle(title, style: text.titleLarge!),
       );
     } else if (!showBack && showBrand) {
       middle = const _BrandText();
@@ -695,4 +690,43 @@ class FitLongWordText extends StatelessWidget {
       },
     );
   }
+}
+
+/// Yig'ilgan sarlavha: tor ekranda 80% gacha kichrayib sig'sa — to'liq
+/// ko'rsatiladi; undan uzun bo'lsa "…" bilan qirqiladi.
+class _FitTitle extends StatelessWidget {
+  const _FitTitle(this.title, {required this.style});
+
+  final String title;
+  final TextStyle style;
+
+  static const _minScale = 0.8;
+
+  @override
+  Widget build(BuildContext context) => LayoutBuilder(
+    builder: (context, constraints) {
+      final painter = TextPainter(
+        text: TextSpan(text: title, style: style),
+        textDirection: Directionality.of(context),
+        textScaler: MediaQuery.textScalerOf(context),
+        maxLines: 1,
+      )..layout();
+      final natural = painter.width;
+      painter.dispose();
+      final max = constraints.maxWidth;
+      if (natural > max && natural * _minScale <= max) {
+        return FittedBox(
+          fit: BoxFit.scaleDown,
+          alignment: AlignmentDirectional.centerStart,
+          child: Text(title, maxLines: 1, style: style),
+        );
+      }
+      return Text(
+        title,
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
+        style: style,
+      );
+    },
+  );
 }

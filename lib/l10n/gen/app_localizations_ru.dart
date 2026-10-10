@@ -4106,7 +4106,7 @@ class AppLocalizationsRu extends AppLocalizations {
       'LabGuide не генерирует результаты, данные пациентов или цитаты. Используйте только свои данные и источники.';
 
   @override
-  String get learnTitle => 'Учитесь с пониманием';
+  String get learnTitle => 'Учитесь осознанно';
 
   @override
   String get learnHeroTag => 'Темы и практика';

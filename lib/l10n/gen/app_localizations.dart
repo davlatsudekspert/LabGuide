@@ -7243,7 +7243,7 @@ abstract class AppLocalizations {
   /// No description provided for @learnTitle.
   ///
   /// In en, this message translates to:
-  /// **'Learn with understanding'**
+  /// **'Learn with insight'**
   String get learnTitle;
 
   /// No description provided for @learnHeroTag.

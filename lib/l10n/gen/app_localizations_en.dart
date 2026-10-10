@@ -4085,7 +4085,7 @@ class AppLocalizationsEn extends AppLocalizations {
       'LabGuide never generates results, patient data or citations. Use only your own data and sources.';
 
   @override
-  String get learnTitle => 'Learn with understanding';
+  String get learnTitle => 'Learn with insight';
 
   @override
   String get learnHeroTag => 'Topics and practice';
