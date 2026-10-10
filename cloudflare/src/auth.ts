@@ -254,11 +254,12 @@ async function flags(ctx: Ctx, userId: string) {
   const r = await ctx.db
     .prepare(
       `SELECT EXISTS (SELECT 1 FROM admins WHERE user_id = ?1) AS admin,
-              EXISTS (SELECT 1 FROM reviewers WHERE user_id = ?1) AS reviewer`,
+              EXISTS (SELECT 1 FROM reviewers WHERE user_id = ?1) AS reviewer,
+              EXISTS (SELECT 1 FROM teacher_accounts WHERE user_id = ?1) AS teacher`,
     )
     .bind(userId)
-    .first<{ admin: number; reviewer: number }>();
-  return { admin: r?.admin === 1, reviewer: r?.reviewer === 1 };
+    .first<{ admin: number; reviewer: number; teacher: number }>();
+  return { admin: r?.admin === 1, reviewer: r?.reviewer === 1, teacher: r?.teacher === 1 };
 }
 
 export async function requireAdmin(ctx: Ctx): Promise<Session> {
@@ -279,6 +280,8 @@ export async function me(ctx: Ctx): Promise<Response> {
     aal: s.aal,
     admin: f.admin && s.aal === 'aal2',
     reviewer: f.reviewer,
+    // Ustoz — faqat o'z guruhlari; admin vakolati emas.
+    teacher: f.teacher,
   });
 }
 
@@ -320,6 +323,7 @@ export async function deleteAccount(ctx: Ctx): Promise<Response> {
     `DELETE FROM entitlements WHERE user_id = ?1`,
     `DELETE FROM totp_factors WHERE user_id = ?1`,
     `DELETE FROM reviewers WHERE user_id = ?1`,
+    `DELETE FROM teacher_accounts WHERE user_id = ?1`,
     `DELETE FROM admins WHERE user_id = ?1`,
     `DELETE FROM sessions WHERE user_id = ?1`,
     `DELETE FROM users WHERE id = ?1`,

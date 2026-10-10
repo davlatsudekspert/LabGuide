@@ -21,14 +21,19 @@ import { hit } from './ratelimit';
 // Adashtiradigan 0/O/1/I siz — QR va qo'lda yozish uchun.
 const CODE_ALPHABET = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
 const CODE_RE = /^[A-HJ-NP-Z2-9]{8}$/;
+/** Savol va belgi id lari (qa_marks CHECK: 1–64). */
 const ID_RE = /^[A-Za-z0-9][A-Za-z0-9._:-]{0,63}$/;
+/** O'quv dasturi mavzusi id si — ilova kontrakti bilan bir xil (1–80). */
+export const TOPIC_RE = /^[A-Za-z0-9][A-Za-z0-9_.:-]{0,79}$/;
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
-const NICK_RE = /^[\p{L}\p{N}][\p{L}\p{N} ._'-]{0,28}[\p{L}\p{N}.]$/u;
+/** Taxallus: 2–24 belgi (ilova kontrakti), faqat harf/raqam/bo'shliq/._'- */
+const NICK_RE = /^[\p{L}\p{N}][\p{L}\p{N} ._'-]{0,22}[\p{L}\p{N}.]$/u;
 
 const MAX_GROUPS_PER_TEACHER = 10;
 const MAX_MEMBERS = 200;
-const MAX_TOPICS = 500;
+const MAX_TOPICS = 300;
 const GRACE_MS = 2 * 60_000;
+const STAGES = new Set(['lecture', 'oral']);
 
 type Role = 'teacher' | 'student';
 
@@ -41,6 +46,11 @@ function str(v: unknown, min: number, max: number, code = 'invalid'): string {
 
 function id(v: unknown, code = 'invalid_id'): string {
   if (typeof v !== 'string' || !ID_RE.test(v)) throw badRequest(code);
+  return v;
+}
+
+function topicId(v: unknown): string {
+  if (typeof v !== 'string' || !TOPIC_RE.test(v)) throw badRequest('invalid_topic');
   return v;
 }
 
@@ -97,9 +107,38 @@ async function requireMember(ctx: Ctx, s: Session, gid: string): Promise<Members
   return m;
 }
 
+/**
+ * Guruh egasi va ro'yxatdan o'tgan ustoz (Supabase `_owns_group`).
+ * A'zo bo'lmagan — 404 (guruh borligi bildirilmaydi), a'zo-talaba — 403.
+ */
 async function requireTeacher(ctx: Ctx, s: Session, gid: string): Promise<void> {
   const m = await requireMember(ctx, s, gid);
-  if (!(m.role === 'teacher' && m.owner)) throw forbidden();
+  if (!(m.role === 'teacher' && m.owner) || !(await isTeacherAccount(ctx, s.userId))) throw forbidden();
+}
+
+export async function isTeacherAccount(ctx: Ctx, uid: string): Promise<boolean> {
+  const r = await ctx.db.prepare('SELECT 1 AS x FROM teacher_accounts WHERE user_id = ?1').bind(uid).first();
+  return r != null;
+}
+
+/**
+ * O'zini ustoz sifatida ro'yxatdan o'tkazish. Hisob faqat email kodi
+ * tasdiqlangandan keyin paydo bo'ladi (users qatori OTP verify da yaratiladi),
+ * shuning uchun yaroqli sessiya = tasdiqlangan email. Admin vakolatiga ta'sir
+ * qilmaydi. Qayta chaqirish — xato emas.
+ */
+export async function registerTeacher(ctx: Ctx): Promise<Response> {
+  const s = await requireSession(ctx);
+  const r = await ctx.db
+    .prepare(
+      `INSERT INTO teacher_accounts (user_id, registered_at)
+       SELECT id, ?2 FROM users WHERE id = ?1
+       ON CONFLICT (user_id) DO NOTHING`,
+    )
+    .bind(s.userId, ctx.now)
+    .run();
+  if (r.meta.changes) await audit(ctx, s.userId, 'teacher_registered', s.userId);
+  return json({ teacher: true });
 }
 
 async function uniqueCode(ctx: Ctx): Promise<string> {
@@ -154,7 +193,8 @@ export async function listGroups(ctx: Ctx): Promise<Response> {
 
 export async function createGroup(ctx: Ctx): Promise<Response> {
   const s = await requireSession(ctx);
-  if (s.role !== 'teacher') throw forbidden('teacher_role_required');
+  // Profil roli emas — ro'yxatdan o'tgan ustoz hisobi (POST /v1/me/teacher).
+  if (!(await isTeacherAccount(ctx, s.userId))) throw forbidden('teacher_role_required');
   const body = await readJson(ctx.req);
   const name = str(body.name, 3, 80, 'invalid_name');
   const nick = nickname(body.display_name);
@@ -189,18 +229,19 @@ export async function joinGroup(ctx: Ctx): Promise<Response> {
   const body = await readJson(ctx.req);
   const code = typeof body.code === 'string' ? body.code.toUpperCase().replace(/[\s-]/g, '') : '';
   if (!CODE_RE.test(code)) throw notFound();
-  const nick = nickname(body.display_name);
   const g = await ctx.db
     .prepare('SELECT id FROM study_groups WHERE join_code = ?1')
     .bind(code)
     .first<{ id: string }>();
   if (!g) throw notFound();
+  // Qayta qo'shilish hech narsani o'zgartirmaydi (taxallus ham tekshirilmaydi).
   if (await membership(ctx, g.id, s.userId)) return json({ group_id: g.id });
+  const nick = nickname(body.display_name);
   const n = await ctx.db
     .prepare('SELECT COUNT(*) AS n FROM group_members WHERE group_id = ?1')
     .bind(g.id)
     .first<{ n: number }>();
-  if ((n?.n ?? 0) >= MAX_MEMBERS) throw new ApiError(409, 'group_full');
+  if ((n?.n ?? 0) >= MAX_MEMBERS) throw new ApiError(429, 'group_full');
   // Tartib raqami atomar oshiriladi ("Talaba NN").
   const no = await ctx.db
     .prepare(
@@ -227,6 +268,19 @@ export async function leaveGroup(ctx: Ctx, gid: string): Promise<Response> {
     .bind(gid, s.userId)
     .run();
   return noContent();
+}
+
+/** O'z taxallusi (bo'sh/null — tartib raqami ko'rinadi). Har a'zo uchun. */
+export async function setAlias(ctx: Ctx, gid: string): Promise<Response> {
+  const s = await requireSession(ctx);
+  await requireMember(ctx, s, gid);
+  const body = await readJson(ctx.req);
+  const nick = nickname(body.alias);
+  await ctx.db
+    .prepare('UPDATE group_members SET nickname = ?3 WHERE group_id = ?1 AND user_id = ?2')
+    .bind(gid, s.userId, nick)
+    .run();
+  return json({ alias: nick });
 }
 
 export async function deleteGroup(ctx: Ctx, gid: string): Promise<Response> {
@@ -271,12 +325,15 @@ export async function listMembers(ctx: Ctx, gid: string): Promise<Response> {
     )
     .bind(gid, teacher ? 1 : 0, s.userId)
     .all<{ user_id: string; member_role: Role; member_no: number; nickname: string | null; joined_at: number }>();
+  // Kontrakt (GroupMember.fromJson): display_name — faqat taxallus (yo'q
+  // bo'lsa null), seat_no — talabaning tartib raqami (ustozda null).
   return json(
     rows.results.map((r) => ({
       user_id: r.user_id,
       member_role: r.member_role,
-      member_no: r.member_no,
-      display_name: displayName(r.member_role, r.member_no, r.nickname),
+      display_name: r.nickname,
+      seat_no: r.member_role === 'student' ? r.member_no : null,
+      label: displayName(r.member_role, r.member_no, r.nickname),
       joined_at: iso(r.joined_at),
     })),
   );
@@ -289,32 +346,65 @@ export async function removeMember(ctx: Ctx, gid: string, uid: string): Promise<
     .prepare(`DELETE FROM group_members WHERE group_id = ?1 AND user_id = ?2 AND member_role = 'student'`)
     .bind(gid, uuidParam(uid))
     .run();
-  if (!r.meta.changes) throw notFound();
+  // Alohida kod: ilova buni "allaqachon chiqarilgan" deb tushunadi.
+  if (!r.meta.changes) throw new ApiError(404, 'member_not_found');
   return noContent();
 }
 
 // ---------------------------------------------------------------- topics
+interface TopicRow {
+  group_id: string;
+  topic_id: string;
+  opened_at: number;
+  closed_at: number | null;
+  lecture_done_at: number | null;
+  oral_done_at: number | null;
+  test_assignment_id: string | null;
+}
+
+const topicJson = (t: TopicRow) => ({
+  group_id: t.group_id,
+  topic_id: t.topic_id,
+  /** Eski mijozlar uchun (topic_id bilan bir xil). */
+  day_id: t.topic_id,
+  opened_at: iso(t.opened_at),
+  lecture_done_at: iso(t.lecture_done_at),
+  oral_done_at: iso(t.oral_done_at),
+  test_assignment_id: t.test_assignment_id,
+  closed_at: iso(t.closed_at),
+  open: t.closed_at == null,
+});
+
+/** A'zo ochilgan mavzularni ko'radi (begona — 404). */
 export async function listTopics(ctx: Ctx, gid: string): Promise<Response> {
   const s = await requireSession(ctx);
   await requireMember(ctx, s, gid);
   const rows = await ctx.db
-    .prepare('SELECT day_id, opened_at, closed_at FROM group_topics WHERE group_id = ?1 ORDER BY opened_at')
+    .prepare('SELECT * FROM group_topics WHERE group_id = ?1 ORDER BY opened_at, topic_id')
     .bind(gid)
-    .all<{ day_id: string; opened_at: number; closed_at: number | null }>();
-  return json(
-    rows.results.map((t) => ({
-      day_id: t.day_id,
-      opened_at: iso(t.opened_at),
-      closed_at: iso(t.closed_at),
-      open: t.closed_at == null,
-    })),
-  );
+    .all<TopicRow>();
+  return json(rows.results.map(topicJson));
 }
 
-export async function openTopic(ctx: Ctx, gid: string, dayId: string): Promise<Response> {
-  const s = await requireSession(ctx);
-  await requireTeacher(ctx, s, gid);
-  const day = id(decodeSeg(dayId), 'invalid_day');
+async function topicRow(ctx: Ctx, gid: string, topic: string): Promise<TopicRow | null> {
+  return ctx.db
+    .prepare('SELECT * FROM group_topics WHERE group_id = ?1 AND topic_id = ?2')
+    .bind(gid, topic)
+    .first<TopicRow>();
+}
+
+/** Mavzuni ochadi: qayta chaqirilsa o'zgarmaydi (yopilgan bo'lsa qayta ochiladi). */
+async function ensureTopic(ctx: Ctx, gid: string, topic: string): Promise<void> {
+  const existing = await topicRow(ctx, gid, topic);
+  if (existing) {
+    if (existing.closed_at != null) {
+      await ctx.db
+        .prepare('UPDATE group_topics SET closed_at = NULL WHERE group_id = ?1 AND topic_id = ?2')
+        .bind(gid, topic)
+        .run();
+    }
+    return;
+  }
   const n = await ctx.db
     .prepare('SELECT COUNT(*) AS n FROM group_topics WHERE group_id = ?1')
     .bind(gid)
@@ -322,23 +412,112 @@ export async function openTopic(ctx: Ctx, gid: string, dayId: string): Promise<R
   if ((n?.n ?? 0) >= MAX_TOPICS) throw new ApiError(429, 'limit_topics');
   await ctx.db
     .prepare(
-      `INSERT INTO group_topics (group_id, day_id, opened_at, closed_at) VALUES (?1, ?2, ?3, NULL)
-       ON CONFLICT (group_id, day_id) DO UPDATE SET closed_at = NULL`,
+      `INSERT INTO group_topics (group_id, topic_id, opened_at, closed_at) VALUES (?1, ?2, ?3, NULL)
+       ON CONFLICT (group_id, topic_id) DO UPDATE SET closed_at = NULL`,
     )
-    .bind(gid, day, ctx.now)
+    .bind(gid, topic, ctx.now)
     .run();
-  return json({ day_id: day, open: true });
 }
 
-export async function closeTopic(ctx: Ctx, gid: string, dayId: string): Promise<Response> {
+export async function openTopic(ctx: Ctx, gid: string, raw: string): Promise<Response> {
   const s = await requireSession(ctx);
   await requireTeacher(ctx, s, gid);
-  const day = id(decodeSeg(dayId), 'invalid_day');
+  const topic = topicId(decodeSeg(raw));
+  await ensureTopic(ctx, gid, topic);
+  return json(topicJson((await topicRow(ctx, gid, topic))!));
+}
+
+export async function closeTopic(ctx: Ctx, gid: string, raw: string): Promise<Response> {
+  const s = await requireSession(ctx);
+  await requireTeacher(ctx, s, gid);
+  const topic = topicId(decodeSeg(raw));
   const r = await ctx.db
-    .prepare('UPDATE group_topics SET closed_at = ?3 WHERE group_id = ?1 AND day_id = ?2 AND closed_at IS NULL')
-    .bind(gid, day, ctx.now)
+    .prepare('UPDATE group_topics SET closed_at = ?3 WHERE group_id = ?1 AND topic_id = ?2 AND closed_at IS NULL')
+    .bind(gid, topic, ctx.now)
     .run();
   if (!r.meta.changes) throw notFound();
+  return noContent();
+}
+
+/** Dars bosqichi o'tildi: `lecture` (ma'ruza) yoki `oral` (savol-javob). Mavzu ochiladi. */
+export async function markTopicStage(ctx: Ctx, gid: string, raw: string): Promise<Response> {
+  const s = await requireSession(ctx);
+  await requireTeacher(ctx, s, gid);
+  const topic = topicId(decodeSeg(raw));
+  const body = await readJson(ctx.req);
+  if (typeof body.stage !== 'string' || !STAGES.has(body.stage)) throw badRequest('invalid_stage');
+  await ensureTopic(ctx, gid, topic);
+  await ctx.db
+    .prepare(
+      body.stage === 'lecture'
+        ? 'UPDATE group_topics SET lecture_done_at = COALESCE(lecture_done_at, ?3) WHERE group_id = ?1 AND topic_id = ?2'
+        : 'UPDATE group_topics SET oral_done_at = COALESCE(oral_done_at, ?3) WHERE group_id = ?1 AND topic_id = ?2',
+    )
+    .bind(gid, topic, ctx.now)
+    .run();
+  return json(topicJson((await topicRow(ctx, gid, topic))!));
+}
+
+/**
+ * "Testni boshlash": mavzu bo'yicha topshiriq yaratiladi va darhol ochiladi.
+ * Mavzuga bitta test — tekshiruv va yozish bitta tranzaksiyada (parallel
+ * so'rov ikkinchi test yarata olmaydi).
+ */
+export async function startTopicTest(ctx: Ctx, gid: string, raw: string): Promise<Response> {
+  const s = await requireSession(ctx);
+  await requireTeacher(ctx, s, gid);
+  const topic = topicId(decodeSeg(raw));
+  const body = await readJson(ctx.req);
+  const p = parseAssignment(ctx, body);
+  await ensureTopic(ctx, gid, topic);
+  const aid = crypto.randomUUID();
+  const [ins] = await ctx.db.batch([
+    ctx.db
+      .prepare(
+        `INSERT INTO assignments (id, group_id, title, day_id, question_ids, time_limit_minutes, due_at, status, opened_at, created_at)
+         SELECT ?1, ?2, ?3, ?4, ?5, ?6, ?7, 'open', ?8, ?8
+         WHERE NOT EXISTS (SELECT 1 FROM group_topics
+                           WHERE group_id = ?2 AND topic_id = ?4 AND test_assignment_id IS NOT NULL)`,
+      )
+      .bind(aid, gid, p.title, topic, JSON.stringify(p.questionIds), p.limit, p.due, ctx.now),
+    ctx.db
+      .prepare(
+        `INSERT INTO assignment_keys (assignment_id, correct_indexes)
+         SELECT ?1, ?2 WHERE EXISTS (SELECT 1 FROM assignments WHERE id = ?1)`,
+      )
+      .bind(aid, JSON.stringify(p.key)),
+    ctx.db
+      .prepare(
+        `UPDATE group_topics SET test_assignment_id = ?3
+         WHERE group_id = ?1 AND topic_id = ?2 AND test_assignment_id IS NULL
+           AND EXISTS (SELECT 1 FROM assignments WHERE id = ?3)`,
+      )
+      .bind(gid, topic, aid),
+  ]);
+  if (!ins.meta.changes) throw conflict('test_exists');
+  return json({ id: aid, topic_id: topic, status: 'open' }, 201);
+}
+
+/**
+ * Testni yakunlash: shu daqiqadan yangi urinish yo'q; yakunlanishdan oldin
+ * boshlaganlarga topshirish uchun qisqa (2 daqiqa) tarmoq vaqti qoladi.
+ */
+export async function finishTopicTest(ctx: Ctx, gid: string, raw: string): Promise<Response> {
+  const s = await requireSession(ctx);
+  await requireTeacher(ctx, s, gid);
+  const topic = topicId(decodeSeg(raw));
+  const t = await topicRow(ctx, gid, topic);
+  if (!t?.test_assignment_id) throw new ApiError(404, 'no_test');
+  await ctx.db
+    .prepare(
+      `UPDATE assignments SET
+         status = 'closed',
+         closed_at = COALESCE(closed_at, ?2),
+         due_at = CASE WHEN due_at IS NULL OR due_at > ?2 THEN ?2 ELSE due_at END
+       WHERE id = ?1 AND group_id = ?3`,
+    )
+    .bind(t.test_assignment_id, ctx.now, gid)
+    .run();
   return noContent();
 }
 
@@ -429,6 +608,7 @@ function assignmentJson(a: AssignmentRow) {
     group_id: a.group_id,
     title: a.title,
     day_id: a.day_id,
+    topic_id: a.day_id,
     question_ids: JSON.parse(a.question_ids) as string[],
     time_limit_minutes: a.time_limit_minutes,
     due_at: iso(a.due_at),
@@ -465,10 +645,8 @@ export async function listAssignments(ctx: Ctx, gid: string): Promise<Response> 
   return json(rows.results.map(assignmentJson));
 }
 
-export async function createAssignment(ctx: Ctx, gid: string): Promise<Response> {
-  const s = await requireSession(ctx);
-  await requireTeacher(ctx, s, gid);
-  const body = await readJson(ctx.req);
+/** Topshiriq maydonlari (kontrakt: sarlavha 3–120, savol 1–50, vaqt 1–180). */
+function parseAssignment(ctx: Ctx, body: Record<string, unknown>) {
   const title = str(body.title, 3, 120, 'invalid_title');
   const qs = body.question_ids;
   const key = body.correct_indexes;
@@ -481,7 +659,6 @@ export async function createAssignment(ctx: Ctx, gid: string): Promise<Response>
   ) {
     throw badRequest('invalid_key');
   }
-  const day = body.day_id == null ? null : id(body.day_id, 'invalid_day');
   let limit: number | null = null;
   if (body.time_limit_minutes != null) {
     const t = body.time_limit_minutes;
@@ -495,6 +672,15 @@ export async function createAssignment(ctx: Ctx, gid: string): Promise<Response>
       throw badRequest('invalid_due');
     }
   }
+  return { title, questionIds, key: key as number[], limit, due };
+}
+
+export async function createAssignment(ctx: Ctx, gid: string): Promise<Response> {
+  const s = await requireSession(ctx);
+  await requireTeacher(ctx, s, gid);
+  const body = await readJson(ctx.req);
+  const { title, questionIds, key, limit, due } = parseAssignment(ctx, body);
+  const day = body.day_id == null ? null : topicId(body.day_id);
   // Standart: darhol ochiladi (eski oqim); `start: false` — qoralama.
   const open = body.start !== false;
   const aid = crypto.randomUUID();

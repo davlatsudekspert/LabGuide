@@ -3,8 +3,8 @@ import { makeServer, uniqueEmail } from './helpers';
 
 async function classroom() {
   const s = makeServer();
-  const tA = await s.signIn(uniqueEmail('ta'), { role: 'teacher' });
-  const tB = await s.signIn(uniqueEmail('tb'), { role: 'teacher' });
+  const tA = await s.signInTeacher(uniqueEmail('ta'));
+  const tB = await s.signInTeacher(uniqueEmail('tb'));
   const gA = (await s.call('POST', '/v1/groups', { token: tA.token, body: { name: 'Gematologiya 1' } })).data;
   const gB = (await s.call('POST', '/v1/groups', { token: tB.token, body: { name: 'Biokimyo 2' } })).data;
   const s1 = await s.signIn(uniqueEmail('s1'));
@@ -35,9 +35,12 @@ describe('guruh va a\'zolik', () => {
   it("a'zo ismi: taxallus yoki 'Talaba NN'; email/havola taxallus bo'lolmaydi", async () => {
     const { s, tA, gA, outsider } = await classroom();
     const m = (await s.call('GET', `/v1/groups/${gA.id}/members`, { token: tA.token })).data;
-    expect(m.map((x: any) => x.display_name)).toEqual(['Ustoz', 'Talaba 01', 'Lola']);
+    // display_name — faqat taxallus; seat_no — talaba raqami (ustozda null).
+    expect(m.map((x: any) => x.display_name)).toEqual([null, null, 'Lola']);
+    expect(m.map((x: any) => x.seat_no)).toEqual([null, 1, 2]);
+    expect(m.map((x: any) => x.label)).toEqual(['Ustoz', 'Talaba 01', 'Lola']);
     expect(JSON.stringify(m)).not.toContain('@');
-    for (const bad of ['a@b.uz', 'http://x.uz', '<script>', 'x', 'a'.repeat(31)]) {
+    for (const bad of ['a@b.uz', 'http://x.uz', '<script>', 'x', 'a'.repeat(25), 'a'.repeat(31)]) {
       const r = await s.call('POST', '/v1/groups/join', { token: outsider.token, body: { code: gA.join_code, display_name: bad } });
       expect(r.status, bad).toBe(400);
     }
@@ -276,7 +279,7 @@ describe('mavzular, belgilar, test sessiyasi', () => {
 
   it("ustoz faqat 10 ta guruh ochadi", async () => {
     const s = makeServer();
-    const t = await s.signIn(uniqueEmail('many'), { role: 'teacher' });
+    const t = await s.signInTeacher(uniqueEmail('many'));
     for (let i = 0; i < 10; i++) {
       expect((await s.call('POST', '/v1/groups', { token: t.token, body: { name: `Guruh ${i}` } })).status).toBe(201);
     }

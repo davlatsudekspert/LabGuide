@@ -54,30 +54,6 @@ class SecureApiSessionStore implements SessionStore {
   Future<void> delete() => _storage.delete(key: _key);
 }
 
-/// Ustoz ochgan mavzu (o'quv rejasi kuni).
-@immutable
-class GroupTopic {
-  const GroupTopic({
-    required this.dayId,
-    required this.openedAt,
-    required this.closedAt,
-  });
-
-  factory GroupTopic.fromJson(Map<String, Object?> j) => GroupTopic(
-    dayId: j['day_id']! as String,
-    openedAt: DateTime.parse(j['opened_at']! as String),
-    closedAt: j['closed_at'] == null
-        ? null
-        : DateTime.parse(j['closed_at']! as String),
-  );
-
-  final String dayId;
-  final DateTime openedAt;
-  final DateTime? closedAt;
-
-  bool get isOpen => closedAt == null;
-}
-
 enum QaResult { correct, partial, incorrect, skipped }
 
 /// Savol-javob belgisi: ustoz qo'yadi, baho (1–5) ixtiyoriy.
@@ -215,29 +191,59 @@ class CloudflareLabBackend implements LabBackend {
   }
 
   /// Muvaffaqiyatsiz javobni xato turiga aylantiradi.
+  ///
+  /// [notFound] — server `404` ni shu amal uchun boshqa xato deb bildiradi.
+  /// Worker a'zo bo'lmaganga guruh borligini ham aytmaydi (404); kontraktda
+  /// (FakeLabBackend / Supabase RLS) esa begona guruhga ustoz amali —
+  /// `forbidden`. [codes] — aniq server kodi (`error`) bo'yicha istisno.
   Future<_ApiResponse> _call(
     String method,
     String path, {
     Object? body,
     Map<String, String>? query,
+    BackendFailure? notFound,
+    Map<String, BackendFailure?> codes = const {},
   }) async {
     final r = await _send(method, path, body: body, query: query);
     if (r.ok) return r;
-    throw BackendException(
-      _failure(r.status),
-      '$method $path ${r.status} ${r.error}',
-    );
+    final code = r.error;
+    final BackendFailure? failure;
+    if (code != null && codes.containsKey(code)) {
+      failure = codes[code];
+      // null — kontraktda bu holat xato emas (masalan, allaqachon bajarilgan).
+      if (failure == null) return r;
+    } else if (r.status == 404 && notFound != null) {
+      failure = notFound;
+    } else {
+      failure = _failure(r.status);
+    }
+    throw BackendException(failure, '$method $path ${r.status} $code');
   }
 
   static BackendFailure _failure(int status) => switch (status) {
-    400 || 409 || 413 || 415 => BackendFailure.invalid,
+    400 || 409 || 413 || 415 || 422 => BackendFailure.invalid,
     401 => BackendFailure.unauthorized,
     403 => BackendFailure.forbidden,
     404 => BackendFailure.notFound,
     429 => BackendFailure.rateLimited,
+    502 || 504 => BackendFailure.network,
     501 || 503 => BackendFailure.unavailable,
     _ => BackendFailure.unknown,
   };
+
+  /// Ro'yxat o'qish: a'zo bo'lmagan guruh (404) — bo'sh ro'yxat, xuddi
+  /// Supabase RLS dagi kabi (begona ustoz va admin ham hech narsa ko'rmaydi).
+  Future<List<Map<String, Object?>>> _list(String path) async {
+    final r = await _send('GET', path);
+    if (r.status == 404) return const [];
+    if (!r.ok) {
+      throw BackendException(
+        _failure(r.status),
+        'GET $path ${r.status} ${r.error}',
+      );
+    }
+    return _rows(r.data);
+  }
 
   static List<Map<String, Object?>> _rows(Object? data) => [
     for (final r in (data as List? ?? const []))
@@ -425,6 +431,14 @@ class CloudflareLabBackend implements LabBackend {
   }
 
   // ------------------------------------------------------------ groups
+  // Endpoint ↔ metod jadvali: docs/BACKEND_CLOUDFLARE.md. Xatolar kontraktga
+  // (FakeLabBackend, test/unit/classroom_rules_test.dart) moslanadi.
+
+  /// `POST /v1/me/teacher` — faqat email kodi bilan kirgan hisob (sessiya
+  /// bo'lmasa `unauthorized`). Admin vakolati bermaydi.
+  @override
+  Future<void> registerTeacher() => _call('POST', '/v1/me/teacher');
+
   @override
   Future<List<StudyGroup>> myGroups() async {
     final r = await _call('GET', '/v1/groups');
@@ -440,14 +454,15 @@ class CloudflareLabBackend implements LabBackend {
     ];
   }
 
-  /// Guruhni faqat profil roli “Ustoz” bo'lgan hisob yaratadi (aks holda
-  /// `forbidden`). [displayName] — ixtiyoriy taxallus (ism shart emas).
+  /// Guruhni faqat ro'yxatdan o'tgan ustoz ([registerTeacher]) yaratadi
+  /// (aks holda `forbidden`; 10 tadan ortiq — `rateLimited`).
+  /// [displayName] — ixtiyoriy taxallus (ism shart emas).
   @override
   Future<StudyGroup> createGroup(String name, {String? displayName}) async {
     final m = (await _call(
       'POST',
       '/v1/groups',
-      body: {'name': name.trim(), 'display_name': _nick(displayName)},
+      body: {'name': name.trim(), 'display_name': _alias(displayName)},
     )).map;
     return StudyGroup(
       id: m['id']! as String,
@@ -458,59 +473,146 @@ class CloudflareLabBackend implements LabBackend {
     );
   }
 
-  /// Bo'sh taxallus serverda “Talaba NN” bo'ladi (email ishlatilmaydi).
-  static String? _nick(String? v) {
+  /// Bo'sh taxallus — null (tartib raqami ko'rinadi; email ishlatilmaydi).
+  /// Uzunlik (2–24) va belgilarni server tekshiradi (`invalid`).
+  static String? _alias(String? v) {
     final t = v?.trim() ?? '';
-    return t.length < 2 ? null : t;
+    return t.isEmpty ? null : t;
   }
 
+  /// Noto'g'ri kod — `notFound`; guruh to'la (200) — `rateLimited`.
   @override
   Future<String> joinGroup(String code, {String? displayName}) async {
     final m = (await _call(
       'POST',
       '/v1/groups/join',
-      body: {'code': code.trim(), 'display_name': _nick(displayName)},
+      body: {'code': code.trim(), 'display_name': _alias(displayName)},
     )).map;
     return m['group_id']! as String;
   }
 
   @override
-  Future<void> leaveGroup(String groupId) =>
-      _call('POST', '/v1/groups/${_seg(groupId)}/leave');
+  Future<void> setMyAlias(String groupId, String? alias) => _call(
+    'PUT',
+    '/v1/groups/${_seg(groupId)}/alias',
+    body: {'alias': _alias(alias)},
+    notFound: BackendFailure.forbidden,
+  );
+
+  /// A'zo bo'lmagan guruhdan chiqish — xato emas (kontrakt).
+  @override
+  Future<void> leaveGroup(String groupId) => _call(
+    'POST',
+    '/v1/groups/${_seg(groupId)}/leave',
+    codes: const {'not_found': null},
+  );
+
+  /// Talaba — o'zi va ustoz; ustoz — hamma; begona — bo'sh ro'yxat.
+  @override
+  Future<List<GroupMember>> groupMembers(String groupId) async =>
+      (await _list('/v1/groups/${_seg(groupId)}/members'))
+          .map(GroupMember.fromJson)
+          .toList();
 
   @override
-  Future<List<GroupMember>> groupMembers(String groupId) async {
-    final r = await _call('GET', '/v1/groups/${_seg(groupId)}/members');
-    return _rows(r.data).map(GroupMember.fromJson).toList();
-  }
+  Future<void> removeMember(String groupId, String userId) => _call(
+    'DELETE',
+    '/v1/groups/${_seg(groupId)}/members/${_seg(userId)}',
+    notFound: BackendFailure.forbidden,
+    // Talaba allaqachon guruhda yo'q — kontraktda xato emas.
+    codes: const {'member_not_found': null},
+  );
 
-  @override
-  Future<void> removeMember(String groupId, String userId) =>
-      _call('DELETE', '/v1/groups/${_seg(groupId)}/members/${_seg(userId)}');
+  /// Ustoz guruhni butunlay o'chiradi (ilova hozircha chaqirmaydi).
+  Future<void> deleteGroup(String groupId) => _call(
+    'DELETE',
+    '/v1/groups/${_seg(groupId)}',
+    notFound: BackendFailure.forbidden,
+  );
 
-  /// Ustoz guruhni butunlay o'chiradi.
-  Future<void> deleteGroup(String groupId) =>
-      _call('DELETE', '/v1/groups/${_seg(groupId)}');
-
-  /// Ustoz taklif kodini yangilaydi (eski kod va QR ishlamay qoladi).
+  /// Ustoz taklif kodini yangilaydi (eski kod va QR ishlamay qoladi;
+  /// ilova hozircha chaqirmaydi).
   Future<String> rotateJoinCode(String groupId) async {
-    final m = (await _call('POST', '/v1/groups/${_seg(groupId)}/code')).map;
+    final m = (await _call(
+      'POST',
+      '/v1/groups/${_seg(groupId)}/code',
+      notFound: BackendFailure.forbidden,
+    )).map;
     return m['join_code']! as String;
   }
 
   // ---------------------------------------------------------- topics
-  Future<List<GroupTopic>> topics(String groupId) async {
-    final r = await _call('GET', '/v1/groups/${_seg(groupId)}/topics');
-    return _rows(r.data).map(GroupTopic.fromJson).toList();
+  /// Ochilgan mavzular (a'zo ko'radi; begona — bo'sh). [closeTopic] bilan
+  /// yopilganlar ko'rsatilmaydi.
+  @override
+  Future<List<GroupTopic>> groupTopics(String groupId) async => [
+    for (final t in await _list('/v1/groups/${_seg(groupId)}/topics'))
+      if (t['open'] != false) GroupTopic.fromJson(t),
+  ];
+
+  /// Faqat guruh egasi-ustoz; noto'g'ri id — `invalid`, ≤ 300 mavzu.
+  @override
+  Future<void> openTopic(String groupId, String topicId) => _call(
+    'PUT',
+    _topic(groupId, topicId),
+    notFound: BackendFailure.forbidden,
+  );
+
+  /// Mavzuni talabalardan yashirish (ilova hozircha chaqirmaydi).
+  Future<void> closeTopic(String groupId, String topicId) =>
+      _call('DELETE', _topic(groupId, topicId));
+
+  @override
+  Future<void> markTopicStage(
+    String groupId,
+    String topicId,
+    TopicStage stage,
+  ) => _call(
+    'POST',
+    '${_topic(groupId, topicId)}/stage',
+    body: {'stage': stage.wire},
+    notFound: BackendFailure.forbidden,
+  );
+
+  /// Mavzuga bitta test: ikkinchisi — `invalid` (409 `test_exists`).
+  @override
+  Future<String> startTopicTest({
+    required String groupId,
+    required String topicId,
+    required String title,
+    required List<String> questionIds,
+    required List<int> correctIndexes,
+    int? timeLimitMinutes,
+  }) async {
+    final m = (await _call(
+      'POST',
+      '${_topic(groupId, topicId)}/test',
+      body: {
+        'title': title.trim(),
+        'question_ids': questionIds,
+        'correct_indexes': correctIndexes,
+        'time_limit_minutes': timeLimitMinutes,
+      },
+      notFound: BackendFailure.forbidden,
+    )).map;
+    return m['id']! as String;
   }
 
-  Future<void> openTopic(String groupId, String dayId) =>
-      _call('PUT', '/v1/groups/${_seg(groupId)}/topics/${_seg(dayId)}');
+  /// Mavzuda test yo'q — `notFound`; begona guruh — `forbidden`.
+  @override
+  Future<void> finishTopicTest(String groupId, String topicId) => _call(
+    'POST',
+    '${_topic(groupId, topicId)}/finish',
+    notFound: BackendFailure.forbidden,
+    codes: const {'no_test': BackendFailure.notFound},
+  );
 
-  Future<void> closeTopic(String groupId, String dayId) =>
-      _call('DELETE', '/v1/groups/${_seg(groupId)}/topics/${_seg(dayId)}');
+  String _topic(String groupId, String topicId) =>
+      '/v1/groups/${_seg(groupId)}/topics/${_seg(topicId)}';
 
   // ----------------------------------------------------------- marks
+  // Savol-javob belgilari: Worker'da bor, ilova hozircha chaqirmaydi.
+
   /// Ustoz — guruhdagi hamma belgilar; talaba — faqat o'ziniki.
   Future<List<QaMark>> marks(String groupId, {String? dayId}) async {
     final r = await _call(
@@ -548,10 +650,10 @@ class CloudflareLabBackend implements LabBackend {
 
   // ----------------------------------------------------- assignments
   @override
-  Future<List<GroupAssignment>> assignments(String groupId) async {
-    final r = await _call('GET', '/v1/groups/${_seg(groupId)}/assignments');
-    return _rows(r.data).map(GroupAssignment.fromJson).toList();
-  }
+  Future<List<GroupAssignment>> assignments(String groupId) async =>
+      (await _list('/v1/groups/${_seg(groupId)}/assignments'))
+          .map(GroupAssignment.fromJson)
+          .toList();
 
   /// [start] `false` — qoralama: talabalar ko'rmaydi, ustoz
   /// [openAssignment] bilan boshlaydi. [dayId] — bog'liq mavzu (ixtiyoriy).
@@ -578,27 +680,39 @@ class CloudflareLabBackend implements LabBackend {
         'day_id': dayId,
         'start': start,
       },
+      notFound: BackendFailure.forbidden,
     )).map;
     return m['id']! as String;
   }
 
-  /// Ustoz test sessiyasini boshlaydi.
-  Future<void> openAssignment(String assignmentId) =>
-      _call('POST', '/v1/assignments/${_seg(assignmentId)}/open');
+  /// Ustoz test sessiyasini boshlaydi (ilova hozircha chaqirmaydi).
+  Future<void> openAssignment(String assignmentId) => _call(
+    'POST',
+    '/v1/assignments/${_seg(assignmentId)}/open',
+    notFound: BackendFailure.forbidden,
+  );
 
-  /// Ustoz test sessiyasini yakunlaydi (yangi boshlash/topshirish yopiladi).
-  Future<void> closeAssignment(String assignmentId) =>
-      _call('POST', '/v1/assignments/${_seg(assignmentId)}/close');
+  /// Ustoz test sessiyasini yakunlaydi (ilova [finishTopicTest] ishlatadi).
+  Future<void> closeAssignment(String assignmentId) => _call(
+    'POST',
+    '/v1/assignments/${_seg(assignmentId)}/close',
+    notFound: BackendFailure.forbidden,
+  );
 
+  /// Faqat shu guruh talabasi (aks holda `forbidden`); yakunlangan yoki
+  /// muddati o'tgan test — `invalid`.
   @override
   Future<AssignmentStart> startAssignment(String assignmentId) async {
     final r = await _call(
       'POST',
       '/v1/assignments/${_seg(assignmentId)}/start',
+      notFound: BackendFailure.forbidden,
     );
     return AssignmentStart.fromJson(r.map);
   }
 
+  /// Vaqt chegarasi serverda: boshlangandan limit + 2 daqiqa; kech yoki
+  /// takroriy topshirish — `invalid`.
   @override
   Future<GroupSubmission> submitAssignment(
     String assignmentId,
@@ -608,28 +722,31 @@ class CloudflareLabBackend implements LabBackend {
       'POST',
       '/v1/assignments/${_seg(assignmentId)}/submit',
       body: {'answers': answers},
+      notFound: BackendFailure.forbidden,
     );
     return GroupSubmission.fromJson(r.map);
   }
 
+  /// Talaba — faqat o'zi; ustoz — hamma; begona ustoz va admin — bo'sh.
   @override
-  Future<List<GroupSubmission>> submissions(String assignmentId) async {
-    final r = await _call(
-      'GET',
-      '/v1/assignments/${_seg(assignmentId)}/submissions',
-    );
-    return _rows(r.data).map(GroupSubmission.fromJson).toList();
-  }
+  Future<List<GroupSubmission>> submissions(String assignmentId) async =>
+      (await _list('/v1/assignments/${_seg(assignmentId)}/submissions'))
+          .map(GroupSubmission.fromJson)
+          .toList();
 
   @override
-  Future<List<GroupSubmission>> groupSubmissions(String groupId) async {
-    final r = await _call('GET', '/v1/groups/${_seg(groupId)}/submissions');
-    return _rows(r.data).map(GroupSubmission.fromJson).toList();
-  }
+  Future<List<GroupSubmission>> groupSubmissions(String groupId) async =>
+      (await _list('/v1/groups/${_seg(groupId)}/submissions'))
+          .map(GroupSubmission.fromJson)
+          .toList();
 
   @override
   Future<List<int>> assignmentKey(String assignmentId) async {
-    final r = await _call('GET', '/v1/assignments/${_seg(assignmentId)}/key');
+    final r = await _call(
+      'GET',
+      '/v1/assignments/${_seg(assignmentId)}/key',
+      notFound: BackendFailure.forbidden,
+    );
     return [
       for (final i in (r.map['correct_indexes'] as List? ?? const []))
         (i! as num).toInt(),

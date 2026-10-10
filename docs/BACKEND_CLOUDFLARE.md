@@ -22,10 +22,10 @@ Flutter ilova ──HTTPS/JSON──▶ Worker `labguide-api` (cloudflare/src) �
 | `cloudflare/src/groups.ts` | guruhlar, a’zolik, mavzular, savol-javob belgilari, test sessiyalari, natijalar |
 | `cloudflare/src/crypto.ts` | HMAC, SHA-256, AES-GCM, TOTP (faqat WebCrypto) |
 | `cloudflare/src/email.ts` | Brevo yuboruvchi |
-| `cloudflare/migrations/` | D1 sxemasi: `0001_auth`, `0002_classroom`, `0003_planned_ports` (faqat sxema) |
+| `cloudflare/migrations/` | D1 sxemasi: `0001_auth`, `0002_classroom`, `0003_planned_ports` (faqat sxema), `0004_teacher_topics` (ustoz ro‘yxati, mavzu bosqichlari va testi) |
 | `cloudflare/test/` | vitest + `@cloudflare/vitest-pool-workers` (haqiqiy workerd va lokal D1) |
 | `lib/core/backend/cloudflare_backend.dart` | ilova adapteri `CloudflareLabBackend` |
-| `test/unit/cloudflare_backend_test.dart` | adapter testlari (soxta HTTP) |
+| `test/unit/cloudflare_backend_test.dart` | adapter testlari (soxta HTTP), shu jumladan kontrakt xatolari xaritasi |
 
 Ilova qaysi serverni ishlatishini build vaqtida biladi (`lib/main.dart`):
 `--dart-define=LG_API_URL=https://…` berilsa — Cloudflare; aks holda
@@ -55,47 +55,65 @@ borligi ham bildirilmaydi), 409 holatga zid (masalan, ikkinchi topshirish),
 | `POST /v1/auth/otp/verify` `{email, code}` | hamma | `{token, user_id, expires_at}` (sessiya 60 kun) |
 | `POST /v1/auth/logout` | sessiya | joriy tokenni bekor qiladi |
 | `POST /v1/auth/logout-all` | sessiya | hamma qurilmalardan chiqish |
-| `GET /v1/me` | sessiya | `{user_id, role, language, admin_account, aal, admin, reviewer}` |
+| `GET /v1/me` | sessiya | `{user_id, role, language, admin_account, aal, admin, reviewer, teacher}` |
+| `POST /v1/me/teacher` | sessiya | ustoz sifatida ro‘yxat (`registerTeacher`) |
 | `PUT /v1/me/profile` `{role?, language?}` | sessiya | rol: `doctor/lab/student/teacher` (boshqasi — 400) |
 | `DELETE /v1/me` | sessiya | hisob va unga bog‘liq hamma narsa o‘chadi |
 | `GET /v1/auth/mfa` | admin hisobi | TOTP holati |
 | `POST /v1/auth/mfa/enroll` | admin hisobi, faktor hali yo‘q | TOTP kalit va `otpauth://` URI |
 | `POST /v1/auth/mfa/verify` `{code}` | admin hisobi | sessiya `aal2` bo‘ladi |
 
-### Ustoz–talaba
+### Ustoz–talaba (endpoint ↔ `LabBackend` metodi)
 
-| Metod va yo‘l | Kim | Nima |
+Kontrakt — `lib/core/backend/lab_backend.dart`; uning bajariladigan ta’rifi
+`test/helpers/fake_backend.dart` + `test/unit/classroom_rules_test.dart`
+(va `supabase/tests/30_teacher_topics.sql`). Worker testlari:
+`cloudflare/test/contract.test.ts` (har qoida uchun alohida tekshiruv).
+
+| `LabBackend` metodi | Metod va yo‘l | Kim | Nima / xato → `BackendFailure` |
+|---|---|---|---|
+| `registerTeacher()` | `POST /v1/me/teacher` | sessiya (= email kodi tasdiqlangan hisob) | ustoz sifatida ro‘yxat; qayta chaqirish xato emas; admin bermaydi. Sessiyasiz — `unauthorized` |
+| `myAccess()` | `GET /v1/me` | sessiya | `teacher` maydoni qo‘shildi |
+| `myGroups()` | `GET /v1/groups` | sessiya | mening guruhlarim; kod faqat ustozga |
+| `createGroup(name, displayName:)` | `POST /v1/groups` `{name, display_name?}` | ro‘yxatdan o‘tgan ustoz | nom 3–80; ≤ 10 guruh (`429 limit_groups` → `rateLimited`); ustoz emas — `403` → `forbidden` (profil roli `teacher` yetmaydi) |
+| `joinGroup(code, displayName:)` | `POST /v1/groups/join` `{code, display_name?}` | sessiya | qayta qo‘shilish hech narsani o‘zgartirmaydi (taxallus ham); noto‘g‘ri kod — `notFound`; ≤ 200 a’zo (`429 group_full` → `rateLimited`); kod taxmini limiti → `rateLimited` |
+| `setMyAlias(g, alias)` | `PUT /v1/groups/:g/alias` `{alias}` | a’zo | taxallus 2–24 (bo‘sh/null — tartib raqami); begona guruh `404` → `forbidden` |
+| `leaveGroup(g)` | `POST /v1/groups/:g/leave` | talaba | a’zo emas (`404`) — xato emas; ustoz — `400` → `invalid` |
+| `groupMembers(g)` | `GET /v1/groups/:g/members` | a’zo | `{user_id, member_role, display_name (faqat taxallus yoki null), seat_no (talaba raqami, ustozda null), label, joined_at}`; talaba — o‘zi va ustoz; begona — `404` → `[]` |
+| `removeMember(g, u)` | `DELETE /v1/groups/:g/members/:u` | ustoz | ustozni emas; `404 member_not_found` — xato emas; begona — `forbidden` |
+| `groupTopics(g)` | `GET /v1/groups/:g/topics` | a’zo | `{group_id, topic_id, opened_at, lecture_done_at, oral_done_at, test_assignment_id, open, closed_at}`; yopilgani ilovada ko‘rinmaydi; begona — `[]` |
+| `openTopic(g, t)` | `PUT /v1/groups/:g/topics/:t` | guruh egasi-ustoz | qayta — o‘zgarmaydi; id `^[A-Za-z0-9][A-Za-z0-9_.:-]{0,79}$` (aks holda `invalid`); ≤ 300 mavzu (`429 limit_topics`); talaba `403`, begona `404` → `forbidden` |
+| `markTopicStage(g, t, stage)` | `POST /v1/groups/:g/topics/:t/stage` `{stage: lecture\|oral}` | ustoz | mavzu ochiladi; vaqt bir marta yoziladi; boshqa stage — `invalid` |
+| `startTopicTest(...)` | `POST /v1/groups/:g/topics/:t/test` `{title, question_ids, correct_indexes, time_limit_minutes?}` | ustoz | topshiriq yaratiladi va ochiladi (`topic_id`); mavzuga **bitta** test — ikkinchisi `409 test_exists` → `invalid` (tekshiruv va yozuv bitta tranzaksiyada) |
+| `finishTopicTest(g, t)` | `POST /v1/groups/:g/topics/:t/finish` | ustoz | `status=closed`, `due_at=hozir`; yangi urinish yo‘q; testi yo‘q — `404 no_test` → `notFound`; begona — `forbidden` |
+| `assignments(g)` | `GET /v1/groups/:g/assignments` | a’zo | `topic_id` bilan; kalit yo‘q; qoralamani faqat ustoz ko‘radi; begona — `[]` |
+| `createAssignment(...)` | `POST /v1/groups/:g/assignments` `{title, question_ids, correct_indexes, day_id?, due_at?, time_limit_minutes?, start?}` | ustoz | sarlavha 3–120, savollar 1–50, vaqt 1–180; `start:false` — qoralama |
+| `startAssignment(a)` | `POST /v1/assignments/:a/start` | talaba | boshlanish vaqti (bir marta) + `server_now`; yakunlangan/muddati o‘tgan — `409` → `invalid`; talaba emas — `forbidden` |
+| `submitAssignment(a, answers)` | `POST /v1/assignments/:a/submit` `{answers}` | talaba | ball serverda; bir marta; **boshlangandan limit + 2 daqiqa**; yakunlangan test — yakunlanishdan oldin boshlaganlarga + 2 daqiqa; kech/takror — `409` → `invalid` |
+| `submissions(a)` | `GET /v1/assignments/:a/submissions` | a’zo | ustoz — hamma (har savol `correct`); talaba — faqat o‘zi; begona ustoz va **admin** — `[]` |
+| `groupSubmissions(g)` | `GET /v1/groups/:g/submissions` | a’zo | xuddi shunday, guruh bo‘yicha |
+| `assignmentKey(a)` | `GET /v1/assignments/:a/key` | ustoz | to‘g‘ri javoblar; boshqalar — `forbidden` |
+
+Worker’da qo‘shimcha (ilova hozircha chaqirmaydi; `CloudflareLabBackend`
+ning interfeysdan tashqari metodlari sifatida saqlangan, vakolati o‘sha —
+faqat guruh egasi-ustoz):
+
+| Metod va yo‘l | Adapter metodi | Nima |
 |---|---|---|
-| `GET /v1/groups` | sessiya | mening guruhlarim; kod faqat ustozga |
-| `POST /v1/groups` `{name, display_name?}` | rol `teacher` | guruh (kod 8 belgi, `0/O/1/I` siz), ≤ 10 ta |
-| `POST /v1/groups/join` `{code, display_name?}` | sessiya | taklif kodi (QR) bilan qo‘shilish |
-| `DELETE /v1/groups/:g` | o‘sha guruh ustozi | guruhni o‘chirish |
-| `POST /v1/groups/:g/leave` | talaba | guruhdan chiqish |
-| `POST /v1/groups/:g/code` | ustoz | yangi kod (eski QR ishlamaydi) |
-| `GET /v1/groups/:g/members` | a’zo | ustoz — hammani; talaba — ustozni va o‘zini |
-| `DELETE /v1/groups/:g/members/:u` | ustoz | talabani chiqarish (ustozni emas) |
-| `GET /v1/groups/:g/topics` | a’zo | ochilgan mavzular (o‘quv rejasi kun id) |
-| `PUT /v1/groups/:g/topics/:day` | ustoz | mavzuni ochish |
-| `DELETE /v1/groups/:g/topics/:day` | ustoz | mavzuni yopish |
-| `GET /v1/groups/:g/marks[?day_id=]` | a’zo | ustoz — hammaniki; talaba — faqat o‘ziniki |
-| `PUT /v1/groups/:g/marks` `{user_id, day_id, question_id, result, grade?}` | ustoz | savol-javob belgisi (`correct/partial/incorrect/skipped`, baho 1–5 ixtiyoriy) |
-| `DELETE /v1/groups/:g/marks/:id` | ustoz | belgini o‘chirish |
-| `GET /v1/groups/:g/assignments` | a’zo | test sessiyalari (qoralamani faqat ustoz ko‘radi); kalit yo‘q |
-| `POST /v1/groups/:g/assignments` `{title, question_ids, correct_indexes, day_id?, due_at?, time_limit_minutes?, start?}` | ustoz | sessiya; `start:false` — qoralama |
-| `POST /v1/assignments/:a/open` · `/close` | ustoz | sessiyani boshlash / yakunlash |
-| `POST /v1/assignments/:a/start` | talaba | boshlanish vaqti (bir marta) + `server_now` |
-| `POST /v1/assignments/:a/submit` `{answers}` | talaba | ball serverda; bir marta; vaqt chegarasi + 2 daqiqa |
-| `GET /v1/assignments/:a/submissions` | a’zo | ustoz — hamma; talaba — faqat o‘zi |
-| `GET /v1/groups/:g/submissions` | a’zo | xuddi shunday, guruh bo‘yicha |
-| `GET /v1/assignments/:a/key` | ustoz | to‘g‘ri javoblar kaliti |
+| `DELETE /v1/groups/:g` | `deleteGroup` | guruhni butunlay o‘chirish |
+| `POST /v1/groups/:g/code` | `rotateJoinCode` | yangi kod (eski QR ishlamaydi) |
+| `DELETE /v1/groups/:g/topics/:t` | `closeTopic` | mavzuni talabalardan yashirish (`PUT` qayta ochadi) |
+| `GET/PUT /v1/groups/:g/marks`, `DELETE …/marks/:id` | `marks/putMark/deleteMark` | savol-javob belgilari (`correct/partial/incorrect/skipped`, baho 1–5); talaba faqat o‘ziniki |
+| `POST /v1/assignments/:a/open` · `/close` | `openAssignment/closeAssignment` | qoralama sessiyani boshlash / yakunlash |
 
-Ilovada `LabBackend` interfeysi o‘zgarmadi. Mavzular, belgilar, sessiyani
-boshlash/yakunlash, kodni yangilash va guruhni o‘chirish hozircha faqat
-`CloudflareLabBackend` sinfining qo‘shimcha metodlari
-(`topics/openTopic/closeTopic`, `marks/putMark/deleteMark`,
-`openAssignment/closeAssignment`, `rotateJoinCode`, `deleteGroup`;
-`createAssignment(dayId:, start:)`). Ekranlar ularga ulanganda interfeysga
-ko‘chiriladi.
+**Xatolar xaritasi** (`CloudflareLabBackend._call`): 400/409/413/415 →
+`invalid`, 401 → `unauthorized` (sessiya o‘chadi, `sessionLost`), 403 →
+`forbidden`, 404 → `notFound`, 429 → `rateLimited`, 501/503 → `unavailable`,
+502/504 va tarmoq/timeout → `network`, boshqasi → `unknown`. Worker a’zo
+bo‘lmaganga guruh borligini bildirmaydi (`404`); kontraktda esa (Supabase RLS
+kabi) ro‘yxat o‘qish — bo‘sh ro‘yxat, ustoz/talaba amali — `forbidden`.
+Shuning uchun adapter shu metodlarda `404` ni `[]` yoki `forbidden` ga
+aylantiradi, aniq kodlar (`no_test`, `member_not_found`) alohida.
 
 ### Reja: hali ko‘chirilmagan (501)
 
@@ -127,9 +145,10 @@ Eslatma: to‘liq emailni “ochish” (`adminRevealEmail`) bu serverda **bo‘l
   bo‘lishi mumkin). IP saqlanmaydi — limit kalitida faqat HMAC.
 - **Sessiya:** 32 baytli tasodifiy opaque token; D1 da faqat SHA-256; 60 kun;
   chiqish/hamma qurilmadan chiqish; muddati o‘tgani cron bilan o‘chadi.
-- **Rollar:** `student` standart; `teacher` — foydalanuvchi o‘zi tanlaydi va
-  faqat guruh **yaratishga** ruxsat beradi; ustoz huquqi faqat o‘zi yaratgan
-  guruhlarda. **Admin** — hech bir API bermaydi: faqat maxfiy
+- **Rollar:** profil roli (`student` standart, `teacher` …) faqat ko‘rinish
+  uchun. Guruh ochish huquqi — `POST /v1/me/teacher` bilan ro‘yxatdan o‘tgan
+  ustoz hisobi (`teacher_accounts`; hisob faqat email kodi tasdiqlangach
+  yaratiladi). Ustoz huquqi faqat o‘zi yaratgan guruhlarda; ustoz admin emas. **Admin** — hech bir API bermaydi: faqat maxfiy
   `LG_ADMIN_EMAILS` dagi email kod bilan tasdiqlanganda (ro‘yxatdan chiqsa —
   keyingi kirishda olinadi) yoki egasi qo‘lda (`granted_reason='manual'`).
   Admin yo‘llari qo‘shimcha **TOTP (aal2)** talab qiladi; tasdiqlangan faktor
@@ -137,8 +156,9 @@ Eslatma: to‘liq emailni “ochish” (`adminRevealEmail`) bu serverda **bo‘l
   Muhim amallar `audit_log` ga (faqat qo‘shiladi).
 - **Ustoz–talaba:** a’zo bo‘lmaganga guruh borligi bildirilmaydi (404);
   talaba boshqa talabaning javobi, belgisi va a’zolar ro‘yxatini ko‘rmaydi;
-  kalit faqat ustozga; ball serverda. Taxallus — harf/raqam, `@` va havola
-  emas; bo‘lmasa “Talaba NN”. Guruh kodi taxminiga qarshi: foydalanuvchiga
+  kalit faqat ustozga; ball serverda; admin ham guruh mavzusi/natijasini
+  ko‘rmaydi. Taxallus — 2–24 belgi, harf/raqam, `@` va havola emas; bo‘lmasa
+  tartib raqami (“Talaba NN”, qayta ishlatilmaydi). Guruh kodi taxminiga qarshi: foydalanuvchiga
   15 daqiqada 10, IP ga soatiga 100 urinish.
 - **SQL:** faqat parametrli (`?1`) so‘rovlar; test SQL shablonlarida
   tashqi qiymat interpolatsiyasi yo‘qligini ham tekshiradi.
@@ -151,9 +171,12 @@ Eslatma: to‘liq emailni “ochish” (`adminRevealEmail`) bu serverda **bo‘l
   rejada).
 - **AI:** server hech qanday avtomatik javob yubormaydi.
 
-Testlar (`cd cloudflare && npm test`): 52 ta, shundan avtorizatsiya va
-xavfsizlik — 37 ta (boshqa ustoz guruhi, talaba ↔ talaba, o‘zini admin qilish,
-TOTP, SQL injection, CORS, xato tafsiloti, limitlar, maxfiylik).
+Testlar (`cd cloudflare && npm test`): 74 ta — avvalgi 52 ta (boshqa ustoz
+guruhi, talaba ↔ talaba, o‘zini admin qilish, TOTP, SQL injection, CORS, xato
+tafsiloti, limitlar, maxfiylik) va `contract.test.ts` dagi 22 ta ilova
+kontrakti testi (ustoz ro‘yxati, taxallus/raqam, mavzu bosqichlari, mavzuga
+bitta test — parallel so‘rov bilan ham, yakunlash, vaqt qoidasi limit + 2
+daqiqa, begona ustoz/talaba/admin, barcha uzunlik va son cheklovlari).
 
 ## Lokal ishlash
 
@@ -171,11 +194,27 @@ npm run typecheck
    yoqilganini tekshiring (URL `https://labguide-api.<subdomen>.workers.dev`).
 2. **API token:** dash.cloudflare.com → My Profile → API Tokens → Create
    Token → *Custom token*:
-   - Account → **Workers Scripts: Edit**
-   - Account → **D1: Edit**
+   - Account → **Workers Scripts: Edit** (deploy, cron trigger, `secret put`, workers.dev)
+   - Account → **D1: Edit** (`d1 migrations apply --remote`)
    - Account → **Account Settings: Read**
-   - User → **Memberships: Read**, **User Details: Read**
    - Account Resources: *Include → faqat LabGuide hisobi*. TTL ixtiyoriy.
+
+   **User → Memberships: Read / User Details: Read KERAK EMAS**, agar
+   `CLOUDFLARE_ACCOUNT_ID` berilgan bo‘lsa (CI uni har doim beradi —
+   6-qadam). Wrangler 4.124 kodi bo‘yicha (`wrangler-dist/cli.js`,
+   `getOrSelectAccountId` → `getActiveAccountId`): account id
+   `wrangler.toml` dagi `account_id` yoki `CLOUDFLARE_ACCOUNT_ID` dan olinsa,
+   `/accounts` va `/memberships` so‘ralmaydi; `/memberships` faqat (a) account
+   id noma’lum bo‘lganda hisobni avtomatik tanlashda, (b) `wrangler whoami`
+   da va (c) boshqa autentifikatsiya xatosidan keyingi diagnostik `whoami`
+   chiqishida chaqiriladi. `/user` va `/user/tokens/verify` ham faqat
+   `whoami` uchun. Ya’ni bu ikki ruxsatsiz `wrangler deploy`,
+   `d1 migrations apply --remote` va `secret put` ishlaydi; ular yo‘q bo‘lsa
+   faqat haqiqiy auth xatosida qo‘shimcha “Are you missing the
+   User->Memberships->Read permission?” izohi chiqishi mumkin (asl xato
+   boshqa ruxsatda bo‘ladi). `CLOUDFLARE_ACCOUNT_ID` siz (lokal) ishlatilsa —
+   Memberships: Read kerak bo‘ladi.
+
    Token barcha Workerlarni tahrirlay oladi — CI faqat `labguide-api` nomini
    deploy qiladi; tokenni boshqa joyda ishlatmang.
 3. **Account ID:** Dashboard → Workers & Pages → o‘ng panel “Account ID”.

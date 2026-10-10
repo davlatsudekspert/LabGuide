@@ -562,7 +562,7 @@ class FakeLabBackend implements LabBackend {
   String? _aliasOf(String? alias) {
     final a = alias?.trim() ?? '';
     if (a.isEmpty) return null;
-    _checkLength(a, 2, 60);
+    _checkLength(a, 2, 24); // ilova maydoni va Worker: 2–24
     return a;
   }
 

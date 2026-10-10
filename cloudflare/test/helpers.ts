@@ -73,8 +73,17 @@ export function makeServer(overrides: Partial<Env> = {}) {
     return { token, userId: v.data.user_id as string };
   }
 
+  /** Kirish + `POST /v1/me/teacher` (ustoz sifatida ro'yxatdan o'tish). */
+  async function signInTeacher(email: string) {
+    const u = await signIn(email, { role: 'teacher' });
+    const r = await call('POST', '/v1/me/teacher', { token: u.token });
+    if (r.status !== 200) throw new Error(`teacher ${r.status} ${r.text}`);
+    return u;
+  }
+
   return {
     app,
+    signInTeacher,
     env: testEnv,
     outbox,
     clock,

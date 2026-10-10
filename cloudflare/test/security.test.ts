@@ -6,7 +6,7 @@ import { makeServer, uniqueEmail } from './helpers';
 describe('SQL injection — faqat parametrli so\'rovlar', () => {
   it("zararli qiymatlar matn sifatida saqlanadi yoki rad etiladi, jadvallar butun", async () => {
     const s = makeServer();
-    const t = await s.signIn(uniqueEmail('sqli'), { role: 'teacher' });
+    const t = await s.signInTeacher(uniqueEmail('sqli'));
     const evil = "Robert'); DROP TABLE users;--";
     const g = await s.call('POST', '/v1/groups', { token: t.token, body: { name: evil } });
     expect(g.status).toBe(201);

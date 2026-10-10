@@ -182,7 +182,7 @@ describe('sessiya', () => {
 
   it("hisobni o'chirish: sessiya, profil, a'zolik va natijalar o'chadi", async () => {
     const s = makeServer();
-    const teacher = await s.signIn(uniqueEmail('t'), { role: 'teacher' });
+    const teacher = await s.signInTeacher(uniqueEmail('t'));
     const g = await s.call('POST', '/v1/groups', { token: teacher.token, body: { name: 'Gematologiya' } });
     const student = await s.signIn(uniqueEmail('st'));
     await s.call('POST', '/v1/groups/join', { token: student.token, body: { code: g.data.join_code } });
