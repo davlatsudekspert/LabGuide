@@ -52,10 +52,14 @@ void main() {
     final services = await makeServices(tester);
     await pumpApp(tester, services);
     await goTo(tester, '/profile');
-    expect(
-      find.text('${_l.supportSub} · ${_l.notAvailableYet}'),
-      findsOneWidget,
+    // Profil uzaygan (Birliklar qatori) — qator ro'yxatda pastroqda.
+    final sub = find.text('${_l.supportSub} · ${_l.notAvailableYet}');
+    await tester.scrollUntilVisible(
+      sub,
+      300,
+      scrollable: find.byType(Scrollable).first,
     );
+    expect(sub, findsOneWidget);
     expect(find.text(_l.adminTitle), findsNothing);
     await _tapText(tester, _l.supportTitle);
     expect(find.text(_l.supportUnavailableTitle), findsOneWidget);
