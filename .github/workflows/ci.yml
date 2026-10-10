@@ -82,10 +82,10 @@ env:
   # Cloudflare Worker API (sir emas; secret yoki repo variable). Berilsa
   # ilova shu serverga ulanadi (Supabase o'rniga), bo'sh — avvalgi holat.
   LG_API_URL: ${{ secrets.LG_API_URL || vars.LG_API_URL || 'https://labguide-api.davlatsudekspert.workers.dev' }}
-  # Pro huquqlari: sinov buildlari (build va testflight rejimlari, sinov
+  # Pro huquqlari: sinov buildlari (build, testflight va play_internal rejimlari, sinov
   # APK'lari) hamma imkoniyatni ochadi — to'lov hali yoqilmagan. Kelajakdagi
   # do'kon (store/release) rejimida false bo'ladi (docs/PRO_BILLING_PLAN.md).
-  LG_ALL_FEATURES_OPEN: ${{ (inputs.mode || 'build') == 'build' || inputs.mode == 'testflight' }}
+  LG_ALL_FEATURES_OPEN: ${{ (inputs.mode || 'build') == 'build' || inputs.mode == 'testflight' || inputs.mode == 'play_internal' }}
 
 jobs:
   tests:
