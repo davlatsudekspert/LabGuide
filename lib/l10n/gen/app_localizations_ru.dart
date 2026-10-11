@@ -5191,6 +5191,12 @@ class AppLocalizationsRu extends AppLocalizations {
       'На все вопросы есть ответ. После завершения ответы изменить нельзя.';
 
   @override
+  String get examFinishClassTitle => 'Завершить тест?';
+
+  @override
+  String get examFinishClassBody => 'Ответы будут отправлены преподавателю.';
+
+  @override
   String get examFlag => 'Отметить';
 
   @override

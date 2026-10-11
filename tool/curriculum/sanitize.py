@@ -8,7 +8,7 @@ belgilagan boshlanish kunidan hisoblanadi.
       --translations tool/curriculum/translations.json
 
 Tarjimalar ({modul_yoki_mavzu_id: {ru, en}}) alohida manba faylda saqlanadi
-va title_ru/title_en sifatida qo'shiladi. Har modul/mavzu uchun ikkala til
+va title_ru/title_en sifatida qo'shiladi. Dastur nomi `program` kaliti ostida. Har modul/mavzu uchun ikkala til
 majburiy (yetishmasa — xato).
 """
 import json
@@ -36,6 +36,7 @@ def main(src, dst, translations=None):
     tr = {}
     if translations:
         tr = json.load(open(translations, encoding='utf-8'))
+        prog_tr = tr.pop('program', None)
         ids = {m['id'] for m in d['modules']}
         ids |= {t['id'] for m in d['modules'] for t in m['topics']}
         missing = sorted(ids - tr.keys())
@@ -45,9 +46,13 @@ def main(src, dst, translations=None):
         if extra:
             raise SystemExit(f'translations: ortiqcha id: {extra}')
     p = d['program']
+    prog = _tr({'program': prog_tr}, 'program') if translations else {}
+    if translations and not prog:
+        raise SystemExit("translations: 'program' (ru, en) yo'q")
     out = {
         'program': {
             'name': p['name'],
+            **{k.replace('title', 'name'): v for k, v in prog.items()},
             'credits': p.get('credits'),
             'duration_months': 6,
             'days': p.get('days'),

@@ -5080,6 +5080,12 @@ class AppLocalizationsUz extends AppLocalizations {
       'Barcha savollarga javob berildi. Yakunlangach javoblarni o‘zgartirib bo‘lmaydi.';
 
   @override
+  String get examFinishClassTitle => 'Test yakunlansinmi?';
+
+  @override
+  String get examFinishClassBody => 'Javoblar ustozga yuboriladi.';
+
+  @override
   String get examFlag => 'Belgilash';
 
   @override

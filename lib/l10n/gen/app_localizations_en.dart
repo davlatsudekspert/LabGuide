@@ -5151,6 +5151,13 @@ class AppLocalizationsEn extends AppLocalizations {
       'All questions are answered. You can’t change answers after finishing.';
 
   @override
+  String get examFinishClassTitle => 'Finish the test?';
+
+  @override
+  String get examFinishClassBody =>
+      'Your answers will be sent to your teacher.';
+
+  @override
   String get examFlag => 'Bookmark';
 
   @override

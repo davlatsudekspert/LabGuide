@@ -8890,6 +8890,18 @@ abstract class AppLocalizations {
   /// **'All questions are answered. You can’t change answers after finishing.'**
   String get examFinishBodyAll;
 
+  /// No description provided for @examFinishClassTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Finish the test?'**
+  String get examFinishClassTitle;
+
+  /// No description provided for @examFinishClassBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Your answers will be sent to your teacher.'**
+  String get examFinishClassBody;
+
   /// No description provided for @examFlag.
   ///
   /// In en, this message translates to:

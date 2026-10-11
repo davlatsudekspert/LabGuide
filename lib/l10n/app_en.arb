@@ -2976,6 +2976,8 @@
     }
   },
   "examFinishBodyAll": "All questions are answered. You can’t change answers after finishing.",
+  "examFinishClassTitle": "Finish the test?",
+  "examFinishClassBody": "Your answers will be sent to your teacher.",
   "examFlag": "Bookmark",
   "examFlagged": "Bookmarked",
   "examLegendAnswered": "Answered",

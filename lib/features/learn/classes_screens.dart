@@ -483,6 +483,19 @@ class _JoinGroupScreenState extends State<JoinGroupScreen> {
   bool _busy = false;
   Object? _error;
 
+  /// Ekran ochiq turganda yangi havola/QR kodi kelsa — maydon yangilanadi.
+  @override
+  void didUpdateWidget(JoinGroupScreen old) {
+    super.didUpdateWidget(old);
+    final c = widget.initialCode;
+    if (c != null && c != old.initialCode) {
+      _code.text = _CodeFormatter()
+          .formatEditUpdate(TextEditingValue.empty, TextEditingValue(text: c))
+          .text;
+      _error = null;
+    }
+  }
+
   @override
   void dispose() {
     _code.dispose();

@@ -185,6 +185,22 @@ mixin _PlanLoader<T extends StatefulWidget> on State<T> {
   bool missing = false;
   bool _loading = false;
 
+  /// Hisob almashganda eski so'rov natijasi tashlab yuboriladi.
+  int _gen = 0;
+  String? _uid;
+  bool _uidSeen = false;
+
+  /// Hisob almashsa (chiqib, boshqasi bilan kirilsa) oldingi hisob ma'lumoti
+  /// (guruh kodi, natijalar) ko'rinib qolmasin: tozalab qayta yuklanadi.
+  void _resetForAccount() {
+    _gen++;
+    _loading = false;
+    data = null;
+    error = null;
+    missing = false;
+    WidgetsBinding.instance.addPostFrameCallback((_) => reload());
+  }
+
   @override
   void initState() {
     super.initState();
@@ -199,23 +215,35 @@ mixin _PlanLoader<T extends StatefulWidget> on State<T> {
         !services.auth.hasAccount) {
       return;
     }
+    final gen = _gen;
     _loading = true;
     setState(() => error = null);
     try {
       final d = await _loadPlan(services, groupId);
-      if (!mounted) return;
+      if (!mounted || gen != _gen) return;
       setState(() {
         data = d;
         missing = d == null;
       });
     } on Object catch (e) {
-      if (mounted) setState(() => error = e);
+      if (mounted && gen == _gen) setState(() => error = e);
     } finally {
-      _loading = false;
+      if (gen == _gen) _loading = false;
     }
   }
 
-  Widget loaded(Widget Function(_PlanData d) builder) {
+  Widget loaded(Widget Function(_PlanData d) builder) => ListenableBuilder(
+    listenable: context.services.auth,
+    builder: (context, _) {
+      final uid = context.services.backend.userId;
+      if (_uidSeen && uid != _uid) _resetForAccount();
+      _uidSeen = true;
+      _uid = uid;
+      return _loadedBody(builder);
+    },
+  );
+
+  Widget _loadedBody(Widget Function(_PlanData d) builder) {
     final l = AppLocalizations.of(context);
     if (missing) {
       return LgStateView(
