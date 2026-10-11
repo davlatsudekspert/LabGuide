@@ -24,6 +24,27 @@ Future<void> _tap(WidgetTester tester, Finder f) async {
 void main() {
   setUpAll(loadAppFonts);
 
+  testWidgets('set page: “Add run” shortcut jumps to the entry fields', (
+    tester,
+  ) async {
+    final s = await makeServices(tester, language: AppLanguage.en);
+    await pumpApp(tester, s);
+    await s.qc.addSet(
+      name: 'Glucose',
+      unit: 'mmol/L',
+      targetSource: QcTargetSource.laboratory,
+      levels: [
+        (label: 'L', lot: '', mean: 5.0, sd: 0.2),
+        (label: 'H', lot: '', mean: 15.0, sd: 0.5),
+      ],
+    );
+    await goTo(tester, '/lab/qc/set/${s.qc.data.sets.single.id}');
+    expect(find.text(en.qcSaveRun), findsNothing);
+    await tester.tap(find.text(en.qcAddRun).hitTestable().first);
+    await tester.pumpAndSettle();
+    expect(find.text(en.qcSaveRun).hitTestable(), findsOneWidget);
+  });
+
   testWidgets('create a QC test, add runs, see Westgard verdicts', (
     tester,
   ) async {

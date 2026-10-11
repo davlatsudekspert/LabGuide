@@ -500,6 +500,7 @@ class _QcSetScreenState extends State<QcSetScreen> {
   /// Kechikib kiritilgan seriya uchun haqiqiy o'lchash vaqti (`null` — hozir).
   DateTime? _runAt;
   bool _showAllRuns = false;
+  final _addRunKey = GlobalKey();
 
   @override
   void dispose() {
@@ -508,6 +509,29 @@ class _QcSetScreenState extends State<QcSetScreen> {
     }
     _note.dispose();
     super.dispose();
+  }
+
+  /// Ro'yxat dangasa quriladi: maydonlar hali yo'q bo'lsa, ular paydo
+  /// bo'lguncha pastga suriladi, so'ng ko'rinadigan qilib to'xtatiladi.
+  Future<void> _jumpToAddRun(BuildContext button) async {
+    final position = Scrollable.of(button).position;
+    for (var i = 0; i < 20 && _addRunKey.currentContext == null; i++) {
+      position.jumpTo(
+        (position.pixels + position.viewportDimension * 0.8).clamp(
+          0.0,
+          position.maxScrollExtent,
+        ),
+      );
+      await WidgetsBinding.instance.endOfFrame;
+      if (!mounted) return;
+    }
+    final ctx = _addRunKey.currentContext;
+    if (ctx != null && ctx.mounted) {
+      await Scrollable.ensureVisible(
+        ctx,
+        duration: const Duration(milliseconds: 200),
+      );
+    }
   }
 
   TextEditingController _ctrl(String levelId) =>
@@ -701,6 +725,20 @@ class _QcSetScreenState extends State<QcSetScreen> {
           ),
         ),
       ],
+      // Eng ko'p bajariladigan amal: yangi seriya — grafiklar tagidagi
+      // maydonlarga bir bosishda o'tish.
+      const SizedBox(height: 10),
+      Builder(
+        builder: (btn) => Align(
+          alignment: Alignment.centerLeft,
+          child: LgButton.secondary(
+            label: l.qcAddRun,
+            icon: Icons.arrow_downward_rounded,
+            expand: false,
+            onPressed: () => _jumpToAddRun(btn),
+          ),
+        ),
+      ),
 
       // Levey–Jennings: har bir daraja alohida, amaldagi maqsad davri uchun
       // (lot yoki x̄/SD o'zgargan bo'lsa, eski seriyalar o'z maqsadi bilan
@@ -817,7 +855,7 @@ class _QcSetScreenState extends State<QcSetScreen> {
       ],
 
       // Yangi seriya.
-      LgSectionTitle(l.qcAddRun),
+      KeyedSubtree(key: _addRunKey, child: LgSectionTitle(l.qcAddRun)),
       for (final level in set.levels)
         LgField(
           label: [
