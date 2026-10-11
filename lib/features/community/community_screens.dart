@@ -395,10 +395,14 @@ class _CommunityTopicLinkState extends State<CommunityTopicLink> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) => _load());
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) _load();
+    });
   }
 
   Future<void> _load() async {
+    // Kadr oxirigacha ro'yxat elementni tashlab yuborgan bo'lishi mumkin.
+    if (!mounted) return;
     final c = context.services.community;
     if (!c.available) return;
     try {
@@ -490,7 +494,9 @@ class _CommunityListScreenState extends State<CommunityListScreen> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) => _reload());
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) _reload();
+    });
   }
 
   Future<void> _reload() async {
@@ -742,7 +748,9 @@ class _QuestionScreenState extends State<QuestionScreen> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) => _load());
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) _load();
+    });
   }
 
   @override
@@ -1151,7 +1159,9 @@ class _VerifySpecialistScreenState extends State<VerifySpecialistScreen> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) => _load());
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) _load();
+    });
   }
 
   @override
@@ -1591,7 +1601,9 @@ class _LoaderState extends State<_Loader> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) => widget.onLoad());
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) widget.onLoad();
+    });
   }
 
   @override
