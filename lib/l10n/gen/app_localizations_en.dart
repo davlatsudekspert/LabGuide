@@ -7668,6 +7668,101 @@ class AppLocalizationsEn extends AppLocalizations {
       'Answers are colleagues’ experience, not personal medical advice.';
 
   @override
+  String get cmRulesTitle => 'Community rules';
+
+  @override
+  String get cmRulesIntro =>
+      'The LabGuide community is a place to share experience in clinical laboratory diagnostics.';
+
+  @override
+  String get cmRulesExpand => 'Expand rules';
+
+  @override
+  String get cmRulesCollapse => 'Collapse rules';
+
+  @override
+  String get cmRulesH1 => 'What is discussed';
+
+  @override
+  String get cmRulesA1 =>
+      'interpreting test results (inconsistent results, spurious increases/decreases)';
+
+  @override
+  String get cmRulesA2 =>
+      'pre-analytics: blood collection, tubes, storage, haemolysis';
+
+  @override
+  String get cmRulesA3 => 'quality control (QC, Westgard rules), calibration';
+
+  @override
+  String get cmRulesA4 => 'experience working with analysers and reagents';
+
+  @override
+  String get cmRulesA5 =>
+      'haematology, microscopy, biochemistry, immunology, urinalysis';
+
+  @override
+  String get cmRulesA6 =>
+      'questions about the qualification exam (toifa) and study';
+
+  @override
+  String get cmRulesH2 => 'How to write';
+
+  @override
+  String get cmRulesB1 =>
+      'put the essence of the question in the title (for example: “Potassium high, no haemolysis — what is the cause?”)';
+
+  @override
+  String get cmRulesB2 =>
+      'in the details: which test, the result and its unit, the method or analyser, what you have already tried';
+
+  @override
+  String get cmRulesB3 =>
+      'state units precisely: SI first, conventional in parentheses (for example 7.0 mmol/L (126 mg/dL))';
+
+  @override
+  String get cmRulesB4 => 'one post — one question';
+
+  @override
+  String get cmRulesH3 => 'What is not allowed';
+
+  @override
+  String get cmRulesC1 =>
+      'a patient’s name, phone, address, card number or any data that identifies a person';
+
+  @override
+  String get cmRulesC2 => 'advertising, off-topic posts, abusive language';
+
+  @override
+  String get cmRulesC3 =>
+      'personal treatment advice for a patient — this is colleagues’ experience, not a doctor’s advice';
+
+  @override
+  String get cmRulesH4 => 'Who can write';
+
+  @override
+  String get cmRulesD1 => 'questions — any registered user';
+
+  @override
+  String get cmRulesD2Pre =>
+      'answers — only verified specialists with the “✓ Specialist” badge (';
+
+  @override
+  String get cmRulesD2Link => 'Profile → Specialist verification';
+
+  @override
+  String get cmRulesD2Post =>
+      '; upload a photo of your diploma or certificate; the document is not stored)';
+
+  @override
+  String get cmRulesD3 =>
+      'if you see a post that breaks the rules, tap “Report”';
+
+  @override
+  String get cmRulesOutro =>
+      'To read posts in another language, use the “Translate” button. Respect and accuracy are our main rule.';
+
+  @override
   String get cmAdminTitle => 'Community moderation';
 
   @override
