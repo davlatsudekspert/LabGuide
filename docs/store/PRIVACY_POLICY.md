@@ -88,7 +88,10 @@ ma’lumot yo‘q. “Rasmni saqlash” tanlansa, foto kutubxonasiga faqat shu r
 tartib raqami) va o‘z talabalarining test javoblari va ballarini ko‘radi. Talaba faqat o‘zining
 natijasini va o‘z a’zoligini ko‘radi; boshqa talabalarni va ularning natijalarini ko‘rmaydi.
 Test javob kaliti faqat ustozga ko‘rinadi. Administrator vakolati faqat serverdagi maxfiy
-ro‘yxat + tasdiqlangan email orqali beriladi va ikki bosqichli himoyani (TOTP) talab qiladi;
+ro‘yxat (egasi) yoki egasi ilovada qo‘shgan email + tasdiqlangan email orqali beriladi va ikki
+bosqichli himoyani (TOTP) talab qiladi. Qo‘shilgan admin emaili ham ochiq saqlanmaydi — faqat
+HMAC-hash va niqoblangan ko‘rinish (`ab***@gmail.com`), qo‘shilgan/olib tashlangan sana va kim
+qo‘shgani (ichki hash); olib tashlanganda vakolat darhol tugaydi;
 LabGuide egasi/administratori baza va uning zaxirasiga texnik kirish huquqiga ega, lekin to‘liq
 emailni tiklay olmaydi (u saqlanmaydi). Cloudflare va Resend xodimlari faqat o‘z xizmat
 shartlari doirasida kirishi mumkin.
@@ -203,8 +206,11 @@ Cloudflare как сетевой сервис обрабатывает запр�
 **Кто видит.** Преподаватель видит только созданную им группу, список её участников
 (псевдоним или номер) и ответы и баллы своих студентов. Студент видит только свой результат и
 своё участие; других студентов и их результаты не видит. Ключ ответов теста виден только
-преподавателю. Права администратора выдаются только по секретному списку на сервере и
-подтверждённому email и требуют двухфакторной защиты (TOTP); владелец/администратор LabGuide
+преподавателю. Права администратора выдаются только по секретному списку на сервере (владелец)
+или по email, добавленному владельцем в приложении, после подтверждения email, и требуют
+двухфакторной защиты (TOTP). Email добавленного администратора тоже не хранится в открытом
+виде — только HMAC-хеш и маскированный вид (`ab***@gmail.com`), даты добавления/удаления и кто
+добавил (внутренний хеш); при удалении права прекращаются сразу; владелец/администратор LabGuide
 имеет технический доступ к базе и её копиям, но не может восстановить полный email (он не
 хранится). Сотрудники Cloudflare и Resend могут получать доступ лишь в рамках условий своих
 услуг.
@@ -314,8 +320,11 @@ data. If you choose “Save Image”, only that image is added to your photo lib
 **Who can see it.** A teacher sees only the group they created, its member list (nickname or
 number) and the answers and scores of their own students. A student sees only their own result
 and membership — not other students or their results. The test answer key is visible only to
-the teacher. Administrator rights are granted only via a secret server-side list plus a
-verified email and require two-factor authentication (TOTP); the LabGuide owner/administrator
+the teacher. Administrator rights are granted only via a secret server-side list (the owner) or
+an email the owner adds in the app, plus a verified email, and require two-factor authentication
+(TOTP). An added admin's email is not stored in the clear either — only an HMAC hash and a
+masked form (`ab***@gmail.com`), the date added/removed and who added it (internal hash);
+removal ends the rights immediately; the LabGuide owner/administrator
 has technical access to the database and its backups but cannot recover a full email address
 (it is not stored). Cloudflare and Resend personnel may access data only as allowed by their
 own service terms.
