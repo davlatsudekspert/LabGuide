@@ -305,6 +305,26 @@ VIDEOS += [
         tags='#LabGuide #kalibrovka #preanalitika #laborant #probirka '
              '#laboratoriya #oʻzbekiston #shorts #reels',
     ),
+    dict(
+        n=11, frames='v11', name='LabGuide 11 - Maruza rejimi 1-mavzu',
+        title='Ustoz uchun: Ma’ruza rejimi — taqdimotni ochish',
+        sub='Ustozlar uchun qo‘llanma',
+        caps=[
+            ('home', 'Pastdagi “O‘rganish” bo‘limini bosing'),
+            ('learn', '“Ma’ruza rejimi” ni tanlang'),
+            ('list', 'Mavzuni tanlang: 1-mavzu — laborator xizmat va etika'),
+            ('slide1', 'Slayd katta ekranda ochiladi. “Oldinga” — keyingisi'),
+            ('slide2', 'Mavzu bo‘yicha toifa savollari slaydlarda'),
+            ('slide3', 'Surib yoki tugma bilan o‘ting, internet shart emas'),
+            ('slide4', 'Ekranni televizorga ulashish mumkin (Smart View)'),
+            ('slide5', 'Oxirgi slayd. Yopish — chapdagi × belgisi'),
+        ],
+        desc=('LabGuide ustoz uchun: O‘rganish → Ma’ruza rejimi → mavzu. '
+              'Slaydlar katta ekranda, internetsiz; telefonni televizor yoki '
+              'proyektorga ulab dars o‘tish mumkin.'),
+        tags='#LabGuide #ustoz #maruza #taqdimot #laboratoriya '
+             '#tibbiyotkolleji #oʻzbekiston #shorts #reels',
+    ),
 ]
 
 
