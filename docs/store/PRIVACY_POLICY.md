@@ -12,6 +12,8 @@ Aloqa / Контакт / Contact: **labguide@nfcstore.uz**
 >   `LG_API_URL` berilgan build uchun. `LG_API_URL` bo‘sh build serverga hech narsa yubormaydi
 >   (“Hisobsiz” qismi shunga ham to‘g‘ri). Supabase **ishlatilmaydi** — undan eski
 >   ma’lumotlar olib tashlangan.
+> - **Hamjamiyat (D-43)** — `cloudflare/src/community.ts`, `0005_community.sql`: hujjat surati
+>   saqlanmaydi (testda tekshirilgan), Q&A ilova ichida ommaviy, tarjima — Workers AI.
 > - Murojaatlar (“Taklif va yordam”), tekshiruvchi, hamkorlar (reklama), admin panel va Pro
 >   server tomonida hali yo‘q (endpointlar `501`) — shuning uchun matnda “to‘planmaydi” deyilgan.
 >   Ular ishga tushirilsa, matn va do‘kon deklaratsiyalarini yangilang.
@@ -98,13 +100,31 @@ saqlanadi va qayta ishlanadi; Cloudflare va Resend global infratuzilmada ishlayd
 rozi bo‘lmasangiz, hisobsiz (mehmon) foydalaning — asosiy imkoniyatlar qurilmada ishlaydi.
 Ma’lumot uzatishda shifrlanadi (HTTPS).
 
+**Hamjamiyat (savol-javob, ixtiyoriy).** Server ulangan buildda hisobli foydalanuvchi savol
+beradi, tasdiqlangan mutaxassislar javob yozadi. **Savol va javoblar matni ilova ichida hamma
+uchun ochiq** (mehmonlar ham o‘qiydi); muallif ismsiz ko‘rsatiladi — faqat “Foydalanuvchi” yoki
+mutaxassis belgisi, kasb va mamlakat kodi. Serverda saqlanadi: post matni, tili, mavzusi
+(tahlil/holat id si), vaqti, ovozlar va eng yaxshi javob belgisi; muallif ichki identifikator
+emas, uning maxfiy kalitli hash’i bilan bog‘lanadi. Matnga email/telefon yozib bo‘lmaydi; bemor
+ma’lumotini yozmang. **Mutaxassis tasdig‘i:** yuklagan hujjat surati (diplom, sertifikat, ish
+joyi hujjati) faqat tekshiruv vaqtida Cloudflare Workers AI modeliga uzatiladi va
+**saqlanmaydi** — na bazada, na fayl omborida, na jurnalda; uni inson ko‘rmaydi. Faqat natija
+qoladi: kasb, mamlakat kodi, holat, qisqa texnik sabab kodlari (ism yo‘q) va sana. **Tarjima:**
+“Tarjima qilish” bosilganda post matni Cloudflare Workers AI tarjima modeliga yuboriladi va
+tarjima serverda keshlanadi (post o‘chirilguncha). **Shikoyatlar** (kim, qaysi post, sabab) faqat
+administratorga ko‘rinadi; 3 ta turli foydalanuvchi shikoyati hamjamiyatdagi hisobni admin
+ko‘rib chiqquncha to‘xtatadi. Tasdiq va shikoyat ma’lumotlarini faqat o‘zingiz va administrator
+ko‘radi. Hamjamiyat ma’lumotlari hisob o‘chirilguncha saqlanadi.
+
 **Bemor ma’lumotlari.** Ilovaga (taxallus va guruh nomiga ham) bemorni aniqlaydigan ma’lumot
 (ism, tug‘ilgan sana, karta raqami) kiritmang. Guruhda taxallus sifatida o‘z ismingizni
 ko‘rsatish shart emas.
 
 **O‘chirish.** Profil → Maxfiylik → “Hisobni o‘chirish” serverdagi quyidagilarni butunlay
 o‘chiradi: profil, hamma sessiyalar, ustoz va admin yozuvi, guruhlardagi a’zoligingiz va
-taxallusingiz, sizning test javoblaringiz, urinishlaringiz va ballaringiz, ustoz belgilari.
+taxallusingiz, sizning test javoblaringiz, urinishlaringiz va ballaringiz, ustoz belgilari,
+hamjamiyatdagi savol va javoblaringiz (va ularga yozilgan javoblar), ovozlaringiz, shikoyatlar va
+mutaxassis tasdig‘i holati.
 Agar siz ustoz bo‘lsangiz — **siz yaratgan guruhlar ham o‘chadi**: ularning a’zolari, mavzulari,
 topshiriqlari, javob kalitlari va barcha talabalar natijalari. Faqat xavfsizlik jurnalidagi
 ichki identifikator va “hisob o‘chirildi” yozuvi qoladi (email emas). “Lokal ma’lumotlarni
@@ -195,13 +215,30 @@ Cloudflare и Resend работают на глобальной инфрастр
 Входя по email, вы соглашаетесь с этим; если не согласны, пользуйтесь без аккаунта (гостевой
 режим) — основные функции работают на устройстве. При передаче данные шифруются (HTTPS).
 
+**Сообщество (вопросы и ответы, по желанию).** В сборке с сервером вошедший пользователь может
+задать вопрос, отвечают подтверждённые специалисты. **Тексты вопросов и ответов открыты всем
+внутри приложения** (читают и гости); автор показывается без имени — «Участник» или значок
+специалиста, профессия и код страны. На сервере хранятся: текст, язык, тема (id анализа или
+состояния), время, голоса и отметка лучшего ответа; автор связан не внутренним идентификатором,
+а его хешем с секретным ключом. В тексте нельзя указывать email/телефон; не пишите данные
+пациентов. **Подтверждение специалиста:** фото документа (диплом, сертификат, документ с места
+работы) передаётся модели Cloudflare Workers AI только на время проверки и **не сохраняется** —
+ни в базе, ни в файловом хранилище, ни в журналах; человек его не видит. Остаётся только
+результат: профессия, код страны, статус, короткие технические коды причины (без имени) и дата.
+**Перевод:** по нажатию «Перевести» текст записи отправляется модели перевода Cloudflare Workers AI,
+перевод кешируется на сервере (до удаления записи). **Жалобы** (кто, на какую запись, причина)
+видит только администратор; жалобы 3 разных пользователей приостанавливают аккаунт в сообществе до
+проверки администратором. Данные подтверждения и жалоб видите только вы и администратор. Данные
+сообщества хранятся до удаления аккаунта.
+
 **Данные пациентов.** Не вводите в приложение (в том числе в псевдоним и название группы) данные,
 позволяющие идентифицировать пациента (ФИО, дату рождения, номер карты). В группе указывать своё
 имя в качестве псевдонима не обязательно.
 
 **Удаление.** Профиль → Конфиденциальность → «Удалить аккаунт» полностью удаляет на сервере:
 профиль, все сессии, записи преподавателя и администратора, ваше участие и псевдоним в группах,
-ваши ответы на тесты, попытки и баллы, отметки преподавателя. Если вы преподаватель —
+ваши ответы на тесты, попытки и баллы, отметки преподавателя, ваши вопросы и ответы в сообществе
+(и ответы на ваши вопросы), голоса, жалобы и статус подтверждения специалиста. Если вы преподаватель —
 **созданные вами группы тоже удаляются**: их участники, темы, задания, ключи ответов и
 результаты всех студентов. Остаётся только внутренний идентификатор в журнале безопасности и
 запись «аккаунт удалён» (без email). «Удалить локальные данные» — всё на устройстве. Выход из
@@ -289,13 +326,31 @@ and Resend run on global infrastructure (data may also be transferred to the US)
 with email you accept this; if you do not, use the app without an account (guest mode) — the
 core features work on the device. Data is encrypted in transit (HTTPS).
 
+**Community (Q&A, optional).** In a build connected to the server, a signed-in user can ask a
+question and verified specialists answer. **Question and answer texts are public inside the app**
+(guests can read them too); the author is shown without a name — “Member” or a specialist badge,
+profession and country code. The server stores: the text, its language, topic (test or condition
+id), time, votes and the best-answer mark; the author is linked not by the internal identifier but
+by a keyed hash of it. Email addresses/phone numbers are rejected in posts; do not write patient
+data. **Specialist verification:** the photo of your document (diploma, certificate, employment
+document) is passed to a Cloudflare Workers AI model only for the duration of the check and is
+**not stored** — not in the database, not in file storage, not in logs; no person looks at it.
+Only the result is kept: profession, country code, status, short technical reason codes (no name)
+and date. **Translation:** when you tap “Translate”, the post text is sent to a Cloudflare Workers
+AI translation model and the translation is cached on the server (until the post is deleted).
+**Reports** (who, which post, reason) are visible only to the administrator; reports from 3
+different users suspend the community account until an administrator reviews it. Verification and
+report data are visible only to you and the administrator. Community data is kept until the
+account is deleted.
+
 **Patient data.** Do not enter information that identifies a patient (name, date of birth,
 record number) anywhere in the app, including nicknames and group names. In a group you do not
 have to use your own name as a nickname.
 
 **Deletion.** Profile → Privacy → “Delete account” permanently removes from the server: your
 profile, all sessions, teacher and admin records, your group memberships and nicknames, your
-test answers, attempts and scores, and teacher marks about you. If you are a teacher, **the
+test answers, attempts and scores, teacher marks about you, your community questions and answers
+(and answers to your questions), votes, reports and specialist verification status. If you are a teacher, **the
 groups you created are deleted too**: their members, topics, assignments, answer keys and all
 students’ results. Only an internal identifier in the security log and an “account deleted”
 entry remain (no email). “Delete local data” removes everything on the device. Leaving a group

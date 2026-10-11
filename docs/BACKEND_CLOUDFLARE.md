@@ -12,17 +12,20 @@ Supabase kodi (`supabase/`) xavfsizlik qoidalari manbai sifatida qoladi.
 ```
 Flutter ilova ──HTTPS/JSON──▶ Worker `labguide-api` (cloudflare/src) ──▶ D1 `labguide-db`
    (CloudflareLabBackend)          │                                     (SQLite, EEUR)
-                                   └──▶ Resend API (faqat kirish kodi xati; ixtiyoriy Brevo)
+                                   ├──▶ Resend API (faqat kirish kodi xati; ixtiyoriy Brevo)
+                                   └──▶ Workers AI (binding `AI`: hujjat tekshiruvi, tarjima)
 ```
 
 | Joy | Nima |
 |---|---|
 | `cloudflare/src/app.ts` | marshrutlar, umumiy xato ishlovi (ichki tafsilot chiqmaydi), CORS, kunlik tozalash (cron) |
 | `cloudflare/src/auth.ts` | email OTP, sessiyalar, profil, admin TOTP, hisobni o‘chirish |
+| `cloudflare/src/community.ts` | hamjamiyat (D-43): mutaxassisni AI bilan tasdiqlash, savol-javob, ovoz, shikoyat, tarjima keshi, admin moderatsiyasi, egasi tasdig‘i va seed |
 | `cloudflare/src/groups.ts` | guruhlar, a’zolik, mavzular, savol-javob belgilari, test sessiyalari, natijalar |
 | `cloudflare/src/crypto.ts` | HMAC, SHA-256, AES-GCM, TOTP (faqat WebCrypto) |
 | `cloudflare/src/email.ts` | email yuboruvchi: Resend (standart) / Brevo, uz/ru/en matn |
-| `cloudflare/migrations/` | D1 sxemasi: `0001_auth`, `0002_classroom`, `0003_planned_ports` (faqat sxema), `0004_teacher_topics` (ustoz ro‘yxati, mavzu bosqichlari va testi) |
+| `cloudflare/migrations/` | D1 sxemasi: `0001_auth`, `0002_classroom`, `0003_planned_ports` (faqat sxema), `0004_teacher_topics` (ustoz ro‘yxati, mavzu bosqichlari va testi), `0005_community` (hamjamiyat) |
+| `cloudflare/seed/` | `community_seed.json` (egasi tasdiqlagan 2 ta savol-javob), `community_seed.example.json` (sxema) |
 | `cloudflare/test/` | vitest + `@cloudflare/vitest-pool-workers` (haqiqiy workerd va lokal D1) |
 | `lib/core/backend/cloudflare_backend.dart` | ilova adapteri `CloudflareLabBackend` |
 | `test/unit/cloudflare_backend_test.dart` | adapter testlari (soxta HTTP), shu jumladan kontrakt xatolari xaritasi |
@@ -114,6 +117,41 @@ bo‘lmaganga guruh borligini bildirmaydi (`404`); kontraktda esa (Supabase RLS
 kabi) ro‘yxat o‘qish — bo‘sh ro‘yxat, ustoz/talaba amali — `forbidden`.
 Shuning uchun adapter shu metodlarda `404` ni `[]` yoki `forbidden` ga
 aylantiradi, aniq kodlar (`no_test`, `member_not_found`) alohida.
+
+### Hamjamiyat (D-43) — `cloudflare/src/community.ts`
+
+Ilova: `CommunityBackend` (`lib/core/backend/community_backend.dart`),
+`CloudflareLabBackend` amalga oshiradi; testlarda `FakeCommunityBackend`.
+Hamjamiyat jadvallarida foydalanuvchi `user_hash = HMAC(server kaliti, user_id)`
+bilan saqlanadi. Ommaviy javoblarda hash/email yo‘q — muallif `{kind:
+owner|specialist|member, name (faqat egasi), verified, method, role, country, is_me}`.
+
+| Metod va yo‘l | Kim | Nima |
+|---|---|---|
+| `GET /v1/community/me` | sessiya | `{status: none\|verified\|rejected\|suspended, method: ai_auto\|manual_document_review, role, country, reason, verified_at, institution, specialty_code, credential, year, is_owner, can_ask, can_answer, admin}` |
+| `POST /v1/community/verify?role=&country=` (tana — rasm, `image/jpeg\|png`) | sessiya | ≤ 5 MB, sehrli baytlar tekshiriladi, PDF — `415 pdf_not_supported`; **kuniga 3 urinish** (+ IP 20); Workers AI (`LG_VERIFY_MODEL`) qat’iy JSON → `verified` faqat hujjat + lab/tibbiy soha + muassasa ko‘rinadi + ishonch ≥ 0,7. **Rasm saqlanmaydi**; sabab — faqat kodlar (`doc=diploma;field=ok;…`). Tasdiqlangan — `409`; to‘xtatilgan — `403 suspended`; AI yo‘q/xato — `503 ai_unavailable` |
+| `GET /v1/community/questions?topic=&mine=1&limit=&offset=` | hamma (mehmon ham; `mine` — sessiya) | `{items, total, next_offset}`; qadalganlar birinchi; to‘xtatilgan muallif postlari ko‘rinmaydi |
+| `POST /v1/community/questions` `{title, body, topic?, lang?}` | sessiya (to‘xtatilmagan) | sarlavha 10–200, matn 10–4000; email/telefon — `400 contact_data`; mavzu `analyte:<id>`/`condition:<id>`; til matndan aniqlanadi (kirill → ru; o‘zbekcha belgilar → uz; aks holda `lang`/en); **kuniga 5** |
+| `GET /v1/community/questions/:q` | hamma | savol + javoblar (eng yaxshi, so‘ng ovoz, so‘ng vaqt) + `viewer {can_answer, can_vote, is_author, admin}` |
+| `POST /v1/community/questions/:q/answers` `{body, lang?}` | **tasdiqlangan mutaxassis** | aks holda `403 not_verified`; kuniga 20 |
+| `POST/DELETE /v1/community/answers/:a/vote` | tasdiqlangan mutaxassis | o‘z javobiga emas (`own_answer`); takror sanalmaydi |
+| `POST /v1/community/questions/:q/best` `{answer_id\|null}` | savol muallifi | boshqalar — `403 not_author` |
+| `POST /v1/community/reports` `{kind: question\|answer, id, reason}` | sessiya | o‘z postiga emas; bitta odam bitta postga bir marta; kuniga 20; muallifga **3 ta turli shikoyatchi** (tiklashdan keyingilar) → `suspended` (egasi bundan mustasno); javob `202` (son oshkor qilinmaydi) |
+| `POST /v1/community/translate` `{kind, id, lang}` | hamma | `LG_TRANSLATE_MODEL` (m2m100), qator-baqator; `(post, til)` bo‘yicha D1 keshi — qayta so‘rovda AI chaqirilmaydi; yangi tarjima soatiga 60 (foydalanuvchi) / 30 (IP); bir xil til — `400 same_language` |
+| `POST /v1/community/questions/:q/pin` `{pinned}`, `DELETE /v1/community/questions/:q`, `DELETE /v1/community/answers/:a` | admin (aal2) | qadash / o‘chirish (audit) |
+| `GET /v1/admin/community/members?status=suspended\|verified\|rejected` | admin | holat, kasb, mamlakat, shikoyatchilar soni, oxirgi 10 shikoyat (sabab + parcha) |
+| `POST /v1/admin/community/members/:h/restore` · `/revoke` · `/suspend` | admin | tiklash (oldingi holat), tasdiqni bekor qilish (egasidan tashqari), qo‘lda to‘xtatish |
+| `POST /v1/admin/seed-owner-verification` `{email}` | admin, email **`LG_ADMIN_EMAILS`** da | email serverda HMAC qilinadi; hisob topilmasa `404 user_not_found` (avval ilovaga kiring). Metadata kodda qat’iy (`OWNER_VERIFICATION`): `clinical_lab_diagnostics`, Andijon davlat tibbiyot instituti, 3.03.01 Klinik laborator diagnostika, birlamchi ixtisoslik kursi, 2026, `manual_document_review`; `is_owner=1` — postlari `LG_OWNER_DISPLAY_NAME` nomi bilan |
+| `POST /v1/admin/community/seed` (tana — `cloudflare/seed/community_seed.json`) | admin; egasi tasdiqlangan bo‘lishi shart (`409 owner_not_verified`) | savol va javoblar egasi hisobidan; `seed_id` bo‘yicha **idempotent** (`{created, skipped}`) |
+
+Hisob o‘chirilganda hamjamiyatdagi hamma narsa (savollar va ularga javoblar,
+javoblar, ovozlar, shikoyatlar, tarjimalar, holat) o‘chadi.
+
+**Egasi uchun (deploydan keyin, faqat supervisor/egasi):**
+1. Ilovaga egasi emaili bilan kiring → Admin → TOTP (aal2).
+2. `POST /v1/admin/seed-owner-verification` `{"email":"<LG_ADMIN_EMAILS dagi email>"}`.
+3. `POST /v1/admin/community/seed` — tana `cloudflare/seed/community_seed.json`.
+   (Bearer — ilovadagi aal2 sessiya tokeni; masalan curl bilan.)
 
 ### Reja: hali ko‘chirilmagan (501)
 
@@ -246,7 +284,17 @@ npm run typecheck
    kiring → Admin panel → TOTP. Kalit yo‘qolsa:
    `npx wrangler d1 execute labguide-db --remote --command "DELETE FROM totp_factors WHERE user_id = '<id>'"`.
    Qo‘lda admin berish: `INSERT INTO admins (user_id, granted_at, granted_reason) VALUES ('<id>', <ms>, 'manual')`.
-10. **Maxfiylik siyosati:** server (Cloudflare, EEUR) va email xizmati (Resend)
+10. **Workers AI (hamjamiyat, D-43):** `wrangler.toml` da `[ai] binding = "AI"`
+    va `LG_VERIFY_MODEL` (`@cf/meta/llama-4-scout-17b-16e-instruct`),
+    `LG_TRANSLATE_MODEL` (`@cf/meta/m2m100-1.2b`), `LG_OWNER_DISPLAY_NAME`
+    (`LabGuide`). Dashboard → AI → Workers AI hisobda yoqilganini tekshiring
+    (bepul kunlik “neuron” limiti bor; oshsa `503 ai_unavailable`, ilova halol
+    xabar beradi). API tokenga **Account → Workers AI: Read** qo‘shing (deploy
+    AI binding bilan rad etilsa — `Edit`). Deploydan keyin bir marta haqiqiy
+    sinov: test hujjat surati bilan `/v1/community/verify` va bitta tarjima —
+    model javob formati (`response` obyekt yoki matn) parser bilan mosligini
+    ko‘ring (testlarda AI soxta). Model almashtirish — faqat var.
+11. **Maxfiylik siyosati:** server (Cloudflare, EEUR) va email xizmati (Resend)
     nomlarini `docs/store/PRIVACY_POLICY.md` ga yozing; email ochiq holda
     saqlanmasligini qo‘shish mumkin.
 

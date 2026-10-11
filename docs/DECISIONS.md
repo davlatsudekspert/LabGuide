@@ -585,3 +585,35 @@ Egasi qarori (2026-10-10):
   natijalari, ustoz ro‘yxati; real ism va og‘zaki baholar faqat qurilmada.
 **Qayta ko‘rish:** curriculum asset’i tayyor bo‘lganda (shaxsiy ma’lumotsiz) va server
 ulanganda (siyosat + Data safety / App Privacy).
+
+## D-43. Hamjamiyat: avtomatik mutaxassis tasdig‘i, savol-javob, tarjima (2026-10-11)
+Egasi qarorlari (taklif: `docs/proposals/GLOBAL_COMMUNITY_2026-10-11.md`):
+- **Tasdiqlash avtomatik** (egasi qo‘lda ko‘rmaydi): foydalanuvchi kasb, mamlakat va hujjat
+  suratini (JPEG/PNG ≤ 5 MB; PDF — birinchi sahifa surati) yuklaydi → Workers AI
+  (`LG_VERIFY_MODEL`) qat’iy JSON → darhol belgi. **Fayl hech qayerda saqlanmaydi** (D1, R2,
+  log — testda tekshirilgan); saqlanadi: `user_hash`, kasb, mamlakat, holat, sabab kodlari, sana.
+  Kuniga 3 urinish. Belgi halol: “✓ Mutaxassis (hujjat avtomatik tekshirilgan)” + izoh.
+- **Egasi** hisobi — qo‘lda tekshirilgan (supervisor hujjatni ko‘rgan, hujjat saqlanmaydi):
+  `manual_document_review`, belgi “✓ Tasdiqlangan mutaxassis”, nom `LG_OWNER_DISPLAY_NAME`
+  (“LabGuide”). Faqat admin va faqat `LG_ADMIN_EMAILS` dagi email uchun server endpointi;
+  metadata kodda, ism va hujjat raqami yo‘q.
+- **Shikoyat:** hisobli har kim; 3 ta turli shikoyatchi → `suspended` (postlar yashiriladi,
+  yozolmaydi), admin panelida; admin tiklaydi / tasdiqni bekor qiladi. Admin — faqat server
+  bergan vakolat + TOTP; email mosligi yetarli emas. Mijoz o‘zini tasdiqlay yoki admin qila olmaydi.
+- **Savol-javob:** savol — hisobli har kim (mehmon emas), javob va ovoz — faqat tasdiqlangan
+  mutaxassis, eng yaxshi javob — savol muallifi, qadash/o‘chirish — admin. O‘qish ommaviy
+  (mehmon ham). Joylar: Bosh sahifa kartasi (oxirgi 3 + “Savol berish”), analit va holat kartasi
+  oxirida “Bu tahlil/holat bo‘yicha savollar (N)”, Profil → “Mening savollarim”, “Mutaxassis
+  tasdiqlash”, admin uchun “Hamjamiyat moderatsiyasi”. 6-tab qo‘shilmadi. Limitlar: savol
+  kuniga 5, javob 20, shikoyat 20; uzunlik; email/telefon taqiqlangan.
+- **Tarjima:** post tili ≠ interfeys tili bo‘lsa “Tarjima qilish / Перевести / Translate” →
+  Workers AI m2m100 (`LG_TRANSLATE_MODEL`), D1 keshi `(post, til)`; “Mashina tarjimasi” belgisi
+  va “Asl matn” almashtirgichi (toifa naqshi).
+- **Feature flag:** hamjamiyat UI faqat Cloudflare serveri (`LG_API_URL`) ulanganda; Supabase
+  yoki ulanmagan buildda umuman ko‘rinmaydi.
+- **Seed:** egasi tasdiqlagan 2 ta savol-javob (kaliy, HbA1c; uz) `cloudflare/seed/
+  community_seed.json`; admin endpointi idempotent. Productionga supervisor deploydan keyin qo‘llaydi.
+- **Cheklovlar (ochiq):** AI tasdig‘i aldanishi mumkin (soxta hujjat, rasm ichidagi buyruq) —
+  shikoyat mexanizmi va admin bekor qilishi shu uchun; PDF serverda o‘qilmaydi; model javob
+  formati deploydan keyin bir marta haqiqiy so‘rov bilan tekshirilishi kerak. Maxfiylik
+  siyosati va do‘kon deklaratsiyalari yangilandi (hujjat — ephemeral, Q&A — ilova ichida ommaviy).

@@ -182,6 +182,17 @@ yo‘q). Hamma toifalar — **Linked to the user**, **not used for tracking**. M
 | Identifiers → User ID | ichki tasodifiy hisob id si (`users.id`) | App Functionality |
 | User Content → Other User Content | guruh taxallusi (yoki “Talaba NN”), test javoblari, har savol natijasi va ball | App Functionality |
 | Usage Data → Product Interaction | ilovadan oxirgi foydalangan **kun** (`last_seen_on`, vaqtsiz) | App Functionality |
+| User Content → Other User Content (hamjamiyat, D-43) | savol va javoblar matni (**ilova ichida ommaviy**, muallif ismsiz), ovozlar, shikoyatlar; mutaxassis holati (kasb, mamlakat kodi, sana) | App Functionality |
+
+**Hamjamiyat (D-43) — hujjat surati va tarjima.** Mutaxassis tasdig‘i uchun yuklangan surat
+faqat so‘rov davomida Cloudflare Workers AI ga uzatiladi va **saqlanmaydi** (D1/R2/log —
+`cloudflare/test/community.test.ts` “FAYL SAQLANMAYDI” testi). Apple ta’rifi bo‘yicha real vaqtda
+bir martalik qayta ishlash “collection” emas, shuning uchun **Photos or Videos qo‘shilmaydi**;
+egasi ehtiyotkorlik uchun *Photos → App Functionality, Linked* deb belgilashni tanlashi mumkin
+(qaror egasida). Tarjima uchun post matni Workers AI ga yuboriladi — bu allaqachon e’lon
+qilingan User Content; tarjima keshlanadi. Ilovada kamera/galereya uchun
+`NSCameraUsageDescription` / `NSPhotoLibraryUsageDescription` matnlari (mavjud image_picker)
+hujjat tasdig‘ini ham qamrashini tekshiring.
 
 Rol va til sozlamasi ham hisobda saqlanadi — alohida App Store toifasi yo‘q, shuning uchun
 yuqoridagilarga kiritilgan (talab bo‘lsa Other Data Types). **Diagnostics** (crash/performance)
@@ -299,7 +310,9 @@ yuklanishidan **oldin** Data safety quyidagicha to‘ldiriladi (manba: `cloudfla
 | Personal info → User IDs | To‘planadi; ichki hisob id si (tasodifiy); Account management, App functionality |
 | App activity → Other user-generated content | To‘planadi; ixtiyoriy (sinfda); guruh taxallusi, test javoblari va ball; App functionality |
 | App activity → App interactions | Faqat oxirgi faol **kun** (`last_seen_on`); App functionality — Play talab qilsa shu qatorni qo‘shing |
-| Messages, Photos and videos, Location, Contacts, Financial, Health, Device or other IDs, Diagnostics | To‘planmaydi (murojaat/skrinshot/hamkorlar serverda hozir yo‘q — `501`) |
+| App activity → Other user-generated content (hamjamiyat, D-43) | To‘planadi; ixtiyoriy; savol/javob matni (**ilova ichida hamma ko‘radi**, muallif ismsiz), ovoz, shikoyat; App functionality |
+| Photos and videos → Photos (hamjamiyat, D-43) | Ixtiyoriy; mutaxassis hujjati surati — **ephemeral processing: Yes** (faqat AI tekshiruvi vaqtida, saqlanmaydi); App functionality (hisobni tasdiqlash) |
+| Messages, Location, Contacts, Financial, Health, Device or other IDs, Diagnostics | To‘planmaydi (murojaat/skrinshot/hamkorlar serverda hozir yo‘q — `501`) |
 
 **Ovozli buyruqlar (RECORD_AUDIO, ixtiyoriy, eksperimental):** Android’da rejim faqat
 qurilmada oflayn tanish mavjud bo‘lsa yoqiladi (`MainActivity` →
