@@ -378,12 +378,15 @@ class _ExamRunnerState extends State<ExamRunner> {
   Future<void> _confirmFinish() async {
     final l = AppLocalizations.of(context);
     final s = widget.session;
+    // Sinfxona testi (ustozga yuboriladi) — alohida matn; imtihon rejimi o'zgarmaydi.
+    final isClass = s.assignmentId != null;
+    final base = s.unansweredCount == 0 && s.flags.isEmpty
+        ? l.examFinishBodyAll
+        : l.examFinishBody(s.unansweredCount, s.flags.length);
     final ok = await confirmDialog(
       context,
-      title: l.examFinishTitle,
-      body: s.unansweredCount == 0 && s.flags.isEmpty
-          ? l.examFinishBodyAll
-          : l.examFinishBody(s.unansweredCount, s.flags.length),
+      title: isClass ? l.examFinishClassTitle : l.examFinishTitle,
+      body: isClass ? '$base ${l.examFinishClassBody}' : base,
       action: l.examFinish,
     );
     if (ok && mounted) await _finish(timedOut: false);

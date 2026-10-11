@@ -1465,6 +1465,8 @@
   "examFinishTitle": "Imtihon yakunlansinmi?",
   "examFinishBody": "Javobsiz: {unanswered} ta, belgilangan: {flagged} ta. Yakunlangach javoblarni o‘zgartirib bo‘lmaydi.",
   "examFinishBodyAll": "Barcha savollarga javob berildi. Yakunlangach javoblarni o‘zgartirib bo‘lmaydi.",
+  "examFinishClassTitle": "Test yakunlansinmi?",
+  "examFinishClassBody": "Javoblar ustozga yuboriladi.",
   "examFlag": "Belgilash",
   "examFlagged": "Belgilangan",
   "examLegendAnswered": "Javob berilgan",

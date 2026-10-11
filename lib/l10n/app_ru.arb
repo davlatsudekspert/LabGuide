@@ -1465,6 +1465,8 @@
   "examFinishTitle": "Завершить экзамен?",
   "examFinishBody": "Без ответа: {unanswered}, отмечено: {flagged}. После завершения ответы изменить нельзя.",
   "examFinishBodyAll": "На все вопросы есть ответ. После завершения ответы изменить нельзя.",
+  "examFinishClassTitle": "Завершить тест?",
+  "examFinishClassBody": "Ответы будут отправлены преподавателю.",
   "examFlag": "Отметить",
   "examFlagged": "Отмечен",
   "examLegendAnswered": "Есть ответ",

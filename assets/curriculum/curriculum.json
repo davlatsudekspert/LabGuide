@@ -1,6 +1,8 @@
 {
  "program": {
   "name": "Klinik laborator diagnostika — ixtisoslashtirish",
+  "name_ru": "Клиническая лабораторная диагностика — специализация",
+  "name_en": "Clinical laboratory diagnostics — specialization",
   "credits": 864,
   "duration_months": 6,
   "days": 143

@@ -261,6 +261,9 @@ void main() {
       if (i < run.length - 1) await tapScroll(tester, uz.examNext);
     }
     await tapScroll(tester, uz.examFinish);
+    expect(find.text(uz.examFinishClassTitle), findsOneWidget);
+    expect(find.text(uz.examFinishTitle), findsNothing);
+    expect(find.textContaining(uz.examFinishClassBody), findsOneWidget);
     await tester.tap(find.text(uz.examFinish).hitTestable().last);
     await tester.pumpAndSettle();
     expect(find.text(uz.classesServerScore), findsOneWidget);

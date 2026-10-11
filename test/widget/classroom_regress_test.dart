@@ -83,4 +83,26 @@ void main() {
     await goTo(tester, '/learn/classes/join?code=PVK4D2RW');
     expect(field(), 'PVK4D2RW');
   });
+
+  for (final (lang, name) in [
+    (AppLanguage.ru, 'Клиническая лабораторная диагностика — специализация'),
+    (AppLanguage.en, 'Clinical laboratory diagnostics — specialization'),
+    (AppLanguage.uz, 'Klinik laborator diagnostika — ixtisoslashtirish'),
+  ]) {
+    testWidgets('o‘quv dasturi nomi ${lang.name} tilida', (tester) async {
+      final b = _Backend();
+      final s = await makeServices(
+        tester,
+        backend: b,
+        role: AppRole.teacher,
+        language: lang,
+      );
+      await pumpApp(tester, s, size: const Size(390, 1600));
+      await _signIn(tester, s, 'teacher@example.com');
+      await b.registerTeacher();
+      final g = await b.createGroup('KLD-1');
+      await goTo(tester, '/learn/classes/g/${g.id}/plan');
+      expect(find.text(name), findsOneWidget);
+    });
+  }
 }
