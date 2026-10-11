@@ -325,6 +325,7 @@ class TreatmentGoal {
     required this.unit,
     required this.refs,
     this.note,
+    this.supersededBy = const [],
   });
 
   factory TreatmentGoal.fromJson(Map<String, Object?> json) {
@@ -341,8 +342,19 @@ class TreatmentGoal {
       unit: json['unit']! as String,
       note: json['note'] == null ? null : LocalizedText.fromJson(json['note']),
       refs: SourceRef.listFromJson(json),
+      supersededBy: [
+        for (final id in json['superseded_by'] as List? ?? const [])
+          id as String,
+      ],
     );
   }
+
+  /// Bu yo'riqnomani almashtirgan (amaldagi) yo'riqnomalar kalitlari —
+  /// bo'sh bo'lmasa, maqsad faqat tarixiy kontekst sifatida ko'rsatiladi.
+  final List<String> supersededBy;
+
+  /// Tarixiy (almashtirilgan) yo'riqnoma.
+  bool get historical => supersededBy.isNotEmpty;
 
   /// Yo'riqnoma kaliti (slug): bir xil kalitli maqsadlar bitta jadvalda.
   final String guidelineId;
@@ -1623,6 +1635,24 @@ class ContentPack {
       );
       if (known != (g.guidelineName, g.year)) {
         throw FormatException('$where: one guideline_id, two name/year');
+      }
+      for (final id in g.supersededBy) {
+        final current = a.treatmentGoals.where((o) => o.guidelineId == id);
+        if (id == g.guidelineId ||
+            current.isEmpty ||
+            current.any((o) => o.historical)) {
+          throw FormatException(
+            '$where: superseded_by must name a current guideline: $id',
+          );
+        }
+      }
+      final sameGuideline = a.treatmentGoals.where(
+        (o) => o.guidelineId == g.guidelineId,
+      );
+      if (sameGuideline.any(
+        (o) => o.supersededBy.join(',') != g.supersededBy.join(','),
+      )) {
+        throw FormatException('$where: superseded_by differs within guideline');
       }
       if (g.units.isEmpty) throw FormatException('$where: unit required');
       for (final lang in LocalizedText.requiredLanguages) {

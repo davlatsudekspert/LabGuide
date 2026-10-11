@@ -328,6 +328,36 @@ void main() {
       }
     });
 
+    test('supervisor items: preeclampsia, HFmrEF, TG ≥ 150, A1C in IFCC', () {
+      final pe = patterns('preeclampsia')[1];
+      for (final lang in ['uz', 'ru', 'en']) {
+        expect(text(pe, 'finding', lang), isNot(contains('5 g')), reason: lang);
+        expect(text(pe, 'finding', lang), isNot(contains('5 г')), reason: lang);
+      }
+      expect(text(pe, 'meaning', 'en'), contains('no longer a severe feature'));
+      final hf = patterns('heart-failure')[2];
+      expect(text(hf, 'meaning', 'en'), contains('mildly reduced (HFmrEF)'));
+      expect(text(hf, 'meaning', 'en'), isNot(contains('borderline')));
+      expect(text(hf, 'meaning', 'ru'), contains('умеренно сниженной'));
+      expect(text(hf, 'meaning', 'uz'), contains('HFmrEF'));
+      final tg = patterns('metabolic-syndrome')[0];
+      for (final lang in ['uz', 'ru', 'en']) {
+        expect(text(tg, 'finding', lang), contains('≥ 150'), reason: lang);
+        expect(
+          text(tg, 'finding', lang),
+          contains(lang == 'en' ? '1.7' : '1,7'),
+          reason: lang,
+        );
+      }
+      final dm = patterns('type-2-diabetes');
+      expect(text(dm[0], 'finding', 'en'), contains('≥ 48 mmol/mol'));
+      expect(text(dm[0], 'finding', 'ru'), contains('≥ 48 ммоль/моль'));
+      expect(text(dm[1], 'finding', 'en'), contains('39–47 mmol/mol'));
+      expect(text(dm[1], 'finding', 'en'), contains('WHO: 110–125 mg/dL'));
+      expect(text(dm[1], 'finding', 'uz'), contains('JSST: 110–125 mg/dL'));
+      expect(text(dm[1], 'finding', 'ru'), contains('ВОЗ: 110–125 мг/дл'));
+    });
+
     test('anaemia work-up never says marrow failure is “ruled out”', () {
       final p = patterns(
         'anemia-workup',
