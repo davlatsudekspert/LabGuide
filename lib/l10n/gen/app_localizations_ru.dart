@@ -970,6 +970,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String get qcAddRun => 'Добавить серию';
 
   @override
+  String get qcJumpToAddRun => 'Ввести серию ниже';
+
+  @override
   String get qcNote => 'Примечание (необязательно)';
 
   @override

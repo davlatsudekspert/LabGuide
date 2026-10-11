@@ -940,6 +940,9 @@ class AppLocalizationsUz extends AppLocalizations {
   String get qcAddRun => 'Seriya qo‘shish';
 
   @override
+  String get qcJumpToAddRun => 'Seriya kiritish — pastda';
+
+  @override
   String get qcNote => 'Izoh (ixtiyoriy)';
 
   @override

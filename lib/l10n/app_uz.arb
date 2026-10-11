@@ -278,6 +278,7 @@
   "qcLatestRun": "Oxirgi seriya",
   "qcNoRunsYet": "Hali seriya yo‘q — birinchisini pastda qo‘shing.",
   "qcAddRun": "Seriya qo‘shish",
+  "qcJumpToAddRun": "Seriya kiritish — pastda",
   "qcNote": "Izoh (ixtiyoriy)",
   "qcSaveRun": "Seriyani saqlash",
   "qcErrRunEmpty": "Kamida bitta nazorat qiymatini kiriting.",

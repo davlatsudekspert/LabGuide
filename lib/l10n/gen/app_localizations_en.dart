@@ -957,6 +957,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get qcAddRun => 'Add run';
 
   @override
+  String get qcJumpToAddRun => 'Enter a run below';
+
+  @override
   String get qcNote => 'Note (optional)';
 
   @override

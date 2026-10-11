@@ -428,6 +428,7 @@
   "qcLatestRun": "Latest run",
   "qcNoRunsYet": "No runs yet — add the first one below.",
   "qcAddRun": "Add run",
+  "qcJumpToAddRun": "Enter a run below",
   "qcNote": "Note (optional)",
   "qcSaveRun": "Save run",
   "qcErrRunEmpty": "Enter at least one control value.",

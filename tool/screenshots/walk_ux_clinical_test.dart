@@ -1,7 +1,6 @@
 // UX: shifokor va laborant ekranlari (3 til). Rasmlar: out/walk/ux_<rol>_<til>/
 import 'package:flutter_test/flutter_test.dart';
 import 'package:labguide/features/settings/settings_controller.dart';
-import 'package:material_ui/material_ui.dart';
 
 import '../../test/helpers/harness.dart';
 import 'walk_helper.dart';

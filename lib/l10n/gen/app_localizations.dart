@@ -1768,6 +1768,12 @@ abstract class AppLocalizations {
   /// **'Add run'**
   String get qcAddRun;
 
+  /// No description provided for @qcJumpToAddRun.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a run below'**
+  String get qcJumpToAddRun;
+
   /// No description provided for @qcNote.
   ///
   /// In en, this message translates to:

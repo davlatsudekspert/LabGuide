@@ -1,7 +1,6 @@
 // UX: qidiruv va bo'sh holatlar, mehmon yo'li.
 import 'package:flutter_test/flutter_test.dart';
 import 'package:labguide/features/settings/settings_controller.dart';
-import 'package:labguide/l10n/gen/app_localizations.dart';
 import 'package:material_ui/material_ui.dart';
 
 import '../../test/helpers/harness.dart';

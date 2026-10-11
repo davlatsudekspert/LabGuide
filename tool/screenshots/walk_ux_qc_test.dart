@@ -22,6 +22,7 @@ void main() {
         await tester.pumpAndSettle();
         await tester.enterText(f.at(n), v);
       }
+
       tester.view.physicalSize = const Size(390, 3600) * 3;
       await tester.pumpAndSettle();
       await put(0, 'Glucose');
@@ -44,8 +45,14 @@ void main() {
         tester.view.physicalSize = Size(390, h) * 3;
         await tester.pumpAndSettle();
       }
+
       var i = 0;
-      for (final v in [['5,1', '15,1'], ['5,5', '15,1'], ['5,7', '15,2'], ['5,7', '16,2']]) {
+      for (final v in [
+        ['5,1', '15,1'],
+        ['5,5', '15,1'],
+        ['5,7', '15,2'],
+        ['5,7', '16,2'],
+      ]) {
         await size(3600);
         await tester.enterText(lf.first, v[0]);
         await tester.enterText(lf.at(1), v[1]);

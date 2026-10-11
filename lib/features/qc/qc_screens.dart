@@ -732,7 +732,7 @@ class _QcSetScreenState extends State<QcSetScreen> {
         builder: (btn) => Align(
           alignment: Alignment.centerLeft,
           child: LgButton.secondary(
-            label: l.qcAddRun,
+            label: l.qcJumpToAddRun,
             icon: Icons.arrow_downward_rounded,
             expand: false,
             onPressed: () => _jumpToAddRun(btn),

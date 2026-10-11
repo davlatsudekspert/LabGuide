@@ -40,7 +40,7 @@ void main() {
     );
     await goTo(tester, '/lab/qc/set/${s.qc.data.sets.single.id}');
     expect(find.text(en.qcSaveRun), findsNothing);
-    await tester.tap(find.text(en.qcAddRun).hitTestable().first);
+    await tester.tap(find.text(en.qcJumpToAddRun).hitTestable().first);
     await tester.pumpAndSettle();
     expect(find.text(en.qcSaveRun).hitTestable(), findsOneWidget);
   });
