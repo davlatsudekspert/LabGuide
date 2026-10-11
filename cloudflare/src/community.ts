@@ -11,7 +11,7 @@
 // * Holatni mijoz bera olmaydi: `verified` faqat AI natijasi yoki egasi
 //   uchun admin amali (`seed-owner-verification`) orqali.
 
-import { audit, emailHash, isAdminSession, normalizeEmail, requireAdmin, requireSession } from './auth';
+import { adminAllowlist, audit, emailHash, isAdminSession, normalizeEmail, requireAdmin, requireSession } from './auth';
 import type { Ctx, Session } from './context';
 import { iso } from './context';
 import { hex, hmac } from './crypto';
@@ -939,13 +939,6 @@ export async function adminSeedOwnerVerification(ctx: Ctx): Promise<Response> {
   if (!user) throw new ApiError(404, 'user_not_found');
   await markOwnerVerified(ctx, s.userId, user.id);
   return json({ status: 'verified', method: OWNER_VERIFICATION.method, is_owner: true });
-}
-
-function adminAllowlist(ctx: Ctx): string[] {
-  return (ctx.env.LG_ADMIN_EMAILS ?? '')
-    .split(',')
-    .map((x) => x.trim().toLowerCase())
-    .filter(Boolean);
 }
 
 async function markOwnerVerified(ctx: Ctx, actorId: string, userId: string): Promise<void> {

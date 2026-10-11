@@ -1,5 +1,6 @@
 // Marshrutlar va umumiy so'rov qayta ishlash (xatolar ichki ma'lumotsiz).
 
+import * as admins from './admins';
 import * as auth from './auth';
 import * as community from './community';
 import type { Ctx, Deps } from './context';
@@ -114,6 +115,11 @@ const routes: Route[] = [
   r('POST', '/v1/admin/community/seed', community.adminSeed),
   r('POST', '/v1/admin/community/launch', community.adminCommunityLaunch),
   r('POST', '/v1/admin/seed-owner-verification', community.adminSeedOwnerVerification),
+
+  // Adminlar boshqaruvi (D-44): ro'yxat — har admin, o'zgartirish — super admin.
+  r('GET', '/v1/admin/admins', admins.listAdmins),
+  r('POST', '/v1/admin/admins', admins.addAdmin),
+  r('DELETE', '/v1/admin/admins/:id', admins.removeAdmin),
 
   // TODO(port): Supabase'dan ko'chiriladi — hozircha 501 (docs/BACKEND_CLOUDFLARE.md).
   r('*', '/v1/support(/.*)?', plannedSignedIn),
