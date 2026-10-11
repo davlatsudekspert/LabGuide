@@ -400,7 +400,9 @@ class _TopBar extends StatelessWidget {
     final l = AppLocalizations.of(context);
     final p = LgPalette.of(context);
     final text = Theme.of(context).textTheme;
-    final showTitle = collapsed || (!showBrand && !showBack);
+    // Ildiz sahifada (orqaga tugmasi ham, brend ham yo'q — masalan Profil)
+    // katta sarlavha o'zi ko'rinib turadi: sarlavhani tepada takrorlamaymiz.
+    final showTitle = collapsed;
 
     final Widget leading = showBack
         ? _IconCircle(
@@ -417,7 +419,7 @@ class _TopBar extends StatelessWidget {
         header: collapsed,
         child: _FitTitle(title, style: text.titleLarge!),
       );
-    } else if (!showBack && showBrand) {
+    } else if (!showBack) {
       middle = const _BrandText();
     } else {
       middle = const SizedBox.shrink();

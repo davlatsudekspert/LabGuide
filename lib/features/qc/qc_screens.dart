@@ -40,8 +40,18 @@ String verdictLabel(QcVerdict v, AppLocalizations l) => switch (v) {
   QcVerdict.reject => l.qcReject,
 };
 
-String _num(double v, String locale) =>
-    formatResult(roundHalfUp(v, 3), locale, maxDecimals: 3);
+/// x̄/SD: kamida bitta o'nlik (“5,0”, en: “5.0”), ko'pi bilan uchta.
+String _num(double v, String locale) {
+  final r = roundHalfUp(v, 3);
+  final abs = r.abs();
+  if (abs != 0 && (abs < 0.001 || abs >= 1e9)) {
+    return formatResult(r, locale, maxDecimals: 3);
+  }
+  final f = NumberFormat.decimalPattern(locale)
+    ..maximumFractionDigits = 3
+    ..minimumFractionDigits = 1;
+  return f.format(r);
+}
 
 String _z(double z, String locale) {
   final s = formatResult(roundHalfUp(z, 2), locale, maxDecimals: 2);

@@ -92,9 +92,11 @@ class DilutionScreen extends StatefulWidget {
 }
 
 class _DilutionScreenState extends State<DilutionScreen> {
-  final _c1 = TextEditingController(text: '10');
-  final _c2 = TextEditingController(text: '2');
-  final _v2 = TextEditingController(text: '100');
+  // Boshlang'ich qiymat yo'q: maydonlarda faqat namuna (hint) ko'rinadi,
+  // hisob faqat foydalanuvchi kiritganidan.
+  final _c1 = TextEditingController();
+  final _c2 = TextEditingController();
+  final _v2 = TextEditingController();
   DilutionResult? _result;
 
   /// Maydon o'zgarsa eski natija ko'rinib qolmasin.
@@ -135,6 +137,7 @@ class _DilutionScreenState extends State<DilutionScreen> {
         Align(alignment: Alignment.centerLeft, child: LgTag(l.calcLearningTag)),
         LgField(
           label: l.dilC1,
+          hint: '10',
           controller: _c1,
           keyboardType: _decimalKeyboard,
           textInputAction: TextInputAction.next,
@@ -142,6 +145,7 @@ class _DilutionScreenState extends State<DilutionScreen> {
         ),
         LgField(
           label: l.dilC2,
+          hint: '2',
           controller: _c2,
           keyboardType: _decimalKeyboard,
           textInputAction: TextInputAction.next,
@@ -149,6 +153,7 @@ class _DilutionScreenState extends State<DilutionScreen> {
         ),
         LgField(
           label: l.dilV2,
+          hint: '100',
           controller: _v2,
           keyboardType: _decimalKeyboard,
           textInputAction: TextInputAction.done,

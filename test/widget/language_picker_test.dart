@@ -6,6 +6,7 @@ import 'package:labguide/features/auth/ui/language_picker_screen.dart';
 import 'package:labguide/features/auth/ui/welcome_screen.dart';
 import 'package:labguide/app/app.dart';
 import 'package:labguide/features/settings/settings_controller.dart';
+import 'package:labguide/l10n/gen/app_localizations.dart';
 import 'package:labguide/l10n/gen/app_localizations_ru.dart';
 import 'package:material_ui/material_ui.dart';
 
@@ -93,6 +94,7 @@ void main() {
     const s = LanguagePickerScreen.suggest;
     expect(s(const [Locale('ru', 'RU')]), AppLanguage.ru);
     expect(s(const [Locale('uz')]), AppLanguage.uz);
+    expect(s(const [Locale('uz', 'UZ')]), AppLanguage.uz);
     expect(s(const [Locale('de')]), AppLanguage.en);
     expect(s(const []), AppLanguage.en);
   });
@@ -116,6 +118,37 @@ void main() {
     expect(selected('Русский'), isTrue);
     expect(selected('English'), isFalse);
     expect(selected('O‘zbekcha'), isFalse);
+  });
+
+  testWidgets('device locale uz_UZ pre-highlights O‘zbekcha', (tester) async {
+    tester.platformDispatcher.localesTestValue = const [Locale('uz', 'UZ')];
+    addTearDown(tester.platformDispatcher.clearAllTestValues);
+    final s = await makeServices(
+      tester,
+      onboarded: false,
+      languageChosen: false,
+      role: null,
+    );
+    await pumpApp(tester, s);
+    bool selected(String name) =>
+        tester
+            .getSemantics(find.bySemanticsLabel(RegExp('^$name\\.')))
+            .flagsCollection
+            .isSelected ==
+        Tristate.isTrue;
+    expect(selected('O‘zbekcha'), isTrue);
+    expect(selected('English'), isFalse);
+    expect(selected('Русский'), isFalse);
+  });
+
+  testWidgets('root Profile shows its title once (no header duplicate)', (
+    tester,
+  ) async {
+    final s = await makeServices(tester);
+    await pumpApp(tester, s);
+    await goTo(tester, '/profile');
+    final title = l10n(tester, (c) => AppLocalizations.of(c).profileTitle);
+    expect(find.text(title), findsOneWidget);
   });
 
   testWidgets('reduced motion renders instantly', (tester) async {

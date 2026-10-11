@@ -24,6 +24,27 @@ Future<void> _tap(WidgetTester tester, Finder f) async {
 void main() {
   setUpAll(loadAppFonts);
 
+  for (final (lang, text) in [
+    (AppLanguage.uz, 'x̄ 5,0 · SD 0,2'),
+    (AppLanguage.ru, 'x̄ 5,0 · SD 0,2'),
+    (AppLanguage.en, 'x̄ 5.0 · SD 0.2'),
+  ]) {
+    testWidgets('mean/SD show at least one decimal (${lang.name})', (
+      tester,
+    ) async {
+      final s = await makeServices(tester, language: lang);
+      await pumpApp(tester, s, size: const Size(390, 1600));
+      await s.qc.addSet(
+        name: 'Glucose',
+        unit: 'mmol/L',
+        targetSource: QcTargetSource.laboratory,
+        levels: [(label: 'L', lot: '', mean: 5.0, sd: 0.2)],
+      );
+      await goTo(tester, '/lab/qc/set/${s.qc.data.sets.single.id}');
+      expect(find.textContaining(text), findsWidgets);
+    });
+  }
+
   testWidgets('set page: “Add run” shortcut jumps to the entry fields', (
     tester,
   ) async {
