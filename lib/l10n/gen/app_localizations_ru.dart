@@ -7391,4 +7391,329 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get lectureEndTest => 'Тест группы — в приложении, на время';
+
+  @override
+  String get cmTitle => 'Сообщество · Вопросы и ответы';
+
+  @override
+  String get cmHomeSub => 'Отвечают подтверждённые специалисты лаборатории';
+
+  @override
+  String get cmAsk => 'Задать вопрос';
+
+  @override
+  String get cmAllQuestions => 'Все вопросы';
+
+  @override
+  String get cmEmptyTitle => 'Вопросов пока нет';
+
+  @override
+  String get cmEmptyBody => 'Задайте первый вопрос.';
+
+  @override
+  String cmTopicLinkAnalyte(int count) {
+    return 'Вопросы по этому анализу ($count)';
+  }
+
+  @override
+  String cmTopicLinkCondition(int count) {
+    return 'Вопросы по этому состоянию ($count)';
+  }
+
+  @override
+  String get cmTopicLinkSub => 'Сообщество · ответы специалистов';
+
+  @override
+  String cmTopicLabel(String name) {
+    return 'Тема: $name';
+  }
+
+  @override
+  String get cmMyQuestions => 'Мои вопросы';
+
+  @override
+  String get cmMyQuestionsSub => 'Ваши вопросы и ответы на них';
+
+  @override
+  String get cmVerifyTitle => 'Подтверждение специалиста';
+
+  @override
+  String get cmVerifySub => 'Загрузите документ, чтобы отвечать на вопросы';
+
+  @override
+  String get cmBadgeAi => '✓ Специалист (документ проверен автоматически)';
+
+  @override
+  String get cmBadgeManual => '✓ Подтверждённый специалист';
+
+  @override
+  String get cmBadgeInfo =>
+      '«Документ проверен автоматически» — документ проверял не человек, а модель ИИ. На неверный значок можно пожаловаться.';
+
+  @override
+  String get cmMember => 'Участник';
+
+  @override
+  String get cmYou => 'вы';
+
+  @override
+  String get cmVerifyInfoTitle => 'Автоматическая проверка — файл не хранится';
+
+  @override
+  String get cmVerifyInfo =>
+      'Документ автоматически проверяет модель ИИ (Cloudflare Workers AI) — человек его не видит. Файл нигде не сохраняется и удаляется сразу после проверки. На сервере остаётся только результат: роль, страна, статус и дата. Автоматическая проверка может ошибаться; если другие пользователи пожалуются на неверный значок, он приостанавливается до проверки администратором.';
+
+  @override
+  String get cmVerifyRole => 'Ваша профессия';
+
+  @override
+  String get cmRoleLaborant => 'Лаборант';
+
+  @override
+  String get cmRoleBiochemist => 'Биохимик';
+
+  @override
+  String get cmRoleKdlDoctor => 'Врач КДЛ';
+
+  @override
+  String get cmRoleTeacher => 'Преподаватель';
+
+  @override
+  String get cmRoleOther => 'Другое';
+
+  @override
+  String get cmRoleClinicalLab => 'Клиническая лабораторная диагностика';
+
+  @override
+  String get cmVerifyCountry => 'Страна (код из 2 букв, например UZ)';
+
+  @override
+  String get cmVerifyCountryError => 'Введите код страны из 2 букв';
+
+  @override
+  String get cmVerifyDocHint =>
+      'Диплом, сертификат или документ с места работы. Фото JPEG или PNG до 5 МБ. Для PDF сфотографируйте первую страницу. Закройте данные пациентов.';
+
+  @override
+  String get cmVerifyCamera => 'Сфотографировать';
+
+  @override
+  String get cmVerifyGallery => 'Выбрать из галереи';
+
+  @override
+  String get cmVerifyRemove => 'Выбрать другой';
+
+  @override
+  String get cmVerifySubmit => 'Отправить на автоматическую проверку';
+
+  @override
+  String get cmVerifyAttempts => 'До 3 попыток в день.';
+
+  @override
+  String get cmStatusNone => 'Ещё не подтверждено';
+
+  @override
+  String get cmStatusVerified => 'Подтверждено';
+
+  @override
+  String get cmStatusRejected =>
+      'Документ не принят. Попробуйте ещё раз с более чётким фото, где видны учреждение и специальность.';
+
+  @override
+  String get cmStatusSuspended =>
+      'Ваш аккаунт в сообществе приостановлен после жалоб пользователей. Администратор рассмотрит его.';
+
+  @override
+  String cmVerifiedAt(String date) {
+    return 'Подтверждено: $date';
+  }
+
+  @override
+  String get cmMethodAi => 'Способ: автоматически (ИИ)';
+
+  @override
+  String get cmMethodManual => 'Способ: документ проверен вручную';
+
+  @override
+  String get cmErrTooLarge => 'Файл больше 5 МБ.';
+
+  @override
+  String get cmErrType => 'Только фото JPEG или PNG.';
+
+  @override
+  String get cmErrAi =>
+      'Автоматическая проверка сейчас недоступна. Попробуйте позже.';
+
+  @override
+  String get cmErrNotVerified =>
+      'Отвечать и голосовать могут только подтверждённые специалисты.';
+
+  @override
+  String get cmErrContact =>
+      'Уберите из текста email и номера телефонов (и данные пациентов).';
+
+  @override
+  String get cmErrLength => 'Заголовок 10–200 символов, текст 10–4000.';
+
+  @override
+  String get cmErrAlreadyVerified => 'Вы уже подтверждены.';
+
+  @override
+  String get cmAskTitleField => 'Заголовок вопроса';
+
+  @override
+  String get cmAskBodyField => 'Подробности';
+
+  @override
+  String get cmAskNoPatient =>
+      'Не указывайте имя, телефон и другие личные данные пациента. Ответы — опыт коллег, а не персональная медицинская консультация.';
+
+  @override
+  String get cmAskSend => 'Опубликовать вопрос';
+
+  @override
+  String get cmAskSent => 'Вопрос опубликован';
+
+  @override
+  String get cmSignInTitle => 'Войдите, чтобы участвовать';
+
+  @override
+  String get cmSignInBody =>
+      'Задать вопрос может любой вошедший пользователь. Отвечают подтверждённые специалисты.';
+
+  @override
+  String cmAnswers(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count ответов',
+      few: '$count ответа',
+      one: '$count ответ',
+      zero: 'Нет ответов',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get cmAnswerField => 'Ваш ответ';
+
+  @override
+  String get cmAnswerSend => 'Отправить ответ';
+
+  @override
+  String get cmAnswerOnlySpecialists =>
+      'Ответы пишут только подтверждённые специалисты.';
+
+  @override
+  String get cmBest => 'Лучший ответ';
+
+  @override
+  String get cmMarkBest => 'Отметить как лучший';
+
+  @override
+  String get cmUnmarkBest => 'Снять отметку';
+
+  @override
+  String cmUpvote(int count) {
+    return 'Полезно ($count)';
+  }
+
+  @override
+  String get cmReport => 'Пожаловаться';
+
+  @override
+  String get cmReportTitle => 'Причина жалобы';
+
+  @override
+  String get cmReasonSpam => 'Спам или реклама';
+
+  @override
+  String get cmReasonWrong => 'Неверная или опасная информация';
+
+  @override
+  String get cmReasonAbuse => 'Оскорбление';
+
+  @override
+  String get cmReasonFake => 'Ненастоящий специалист';
+
+  @override
+  String get cmReasonPatient => 'Есть данные пациента';
+
+  @override
+  String get cmReasonOther => 'Другое';
+
+  @override
+  String get cmReportSent => 'Жалоба отправлена. Спасибо.';
+
+  @override
+  String get cmTranslate => 'Перевести';
+
+  @override
+  String get cmMachineTranslation => 'Машинный перевод';
+
+  @override
+  String get cmShowOriginal => 'Исходный текст';
+
+  @override
+  String get cmShowTranslation => 'Перевод';
+
+  @override
+  String get cmPin => 'Закрепить';
+
+  @override
+  String get cmUnpin => 'Открепить';
+
+  @override
+  String get cmPinned => 'Закреплено';
+
+  @override
+  String get cmDelete => 'Удалить';
+
+  @override
+  String get cmDeleteConfirm => 'Удалить эту запись?';
+
+  @override
+  String get cmDeleted => 'Удалено';
+
+  @override
+  String get cmLoadMore => 'Показать ещё';
+
+  @override
+  String get cmNotAdvice =>
+      'Ответы — опыт коллег, а не персональная медицинская консультация.';
+
+  @override
+  String get cmAdminTitle => 'Модерация сообщества';
+
+  @override
+  String get cmAdminSub => 'Пользователи с жалобами: восстановить или отозвать';
+
+  @override
+  String get cmAdminEmpty => 'Список пуст';
+
+  @override
+  String cmAdminReporters(int count) {
+    return 'Жалоб от пользователей: $count';
+  }
+
+  @override
+  String get cmAdminRestore => 'Восстановить';
+
+  @override
+  String get cmAdminRevoke => 'Отозвать подтверждение';
+
+  @override
+  String get cmAdminSuspended => 'Приостановлены';
+
+  @override
+  String get cmAdminVerified => 'Подтверждены';
+
+  @override
+  String get cmAdminRejected => 'Отклонены';
+
+  @override
+  String get cmAdminDone => 'Готово';
+
+  @override
+  String get cmOwnerTag => 'Основатель';
 }

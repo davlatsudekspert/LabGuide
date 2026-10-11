@@ -5,6 +5,10 @@ import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
 import 'package:labguide/core/backend/backend_models.dart';
 import 'package:labguide/core/backend/cloudflare_backend.dart';
+import 'package:labguide/core/backend/community_backend.dart';
+
+import 'dart:typed_data';
+
 import 'package:labguide/core/backend/supabase_backend.dart'
     show MemorySessionStore;
 import 'package:labguide/features/auth/otp_auth.dart';
@@ -750,5 +754,111 @@ void main() {
     await expectLater(backend.adminStats(), throwsA(isA<BackendException>()));
     expect(await backend.partners(), isEmpty);
     expect(await backend.trackPartnerEvents(const []), 0);
+  });
+
+  group('hamjamiyat (D-43)', () {
+    test('mehmon ro\'yxatni tokensiz o\'qiydi; kirgan — token bilan', () async {
+      api.on('GET', '/v1/community/questions', 200, {
+        'items': [
+          {
+            'id': 'q1',
+            'title': 'Kaliy savoli sarlavhasi',
+            'excerpt': 'Matn',
+            'lang': 'uz',
+            'topic': 'analyte:potassium',
+            'pinned': false,
+            'answer_count': 1,
+            'best_answer_id': null,
+            'created_at': '2026-10-11T09:00:00.000Z',
+            'author': {
+              'kind': 'owner',
+              'name': 'LabGuide',
+              'verified': true,
+              'method': 'manual_document_review',
+              'is_me': false,
+            },
+          },
+        ],
+        'total': 1,
+        'next_offset': null,
+      });
+      final page = await backend.questions(topic: 'analyte:potassium');
+      final req = api.last('/v1/community/questions');
+      expect(req.headers.containsKey('authorization'), isFalse);
+      expect(req.url.queryParameters['topic'], 'analyte:potassium');
+      expect(page.total, 1);
+      expect(page.items.single.author.kind, AuthorKind.owner);
+      expect(page.items.single.author.method, VerifyMethod.manual);
+      await signIn();
+      await backend.questions();
+      expect(
+        api.last('/v1/community/questions').headers['authorization'],
+        'Bearer tok-1',
+      );
+      // "Mening savollarim" — sessiyasiz bo'lmaydi.
+      await backend.signOut();
+      expect(
+        () => backend.questions(mine: true),
+        throwsA(isA<BackendException>()),
+      );
+    });
+
+    test('hujjat: rasm baytlari tana sifatida, rol/mamlakat — query', () async {
+      await signIn();
+      api.on('POST', '/v1/community/verify', 200, {'status': 'verified'});
+      api.on('GET', '/v1/community/me', 200, {
+        'status': 'verified',
+        'method': 'ai_auto',
+        'role': 'kdl_doctor',
+        'country': 'UZ',
+        'can_answer': true,
+      });
+      final me = await backend.verifySpecialist(
+        role: SpecialistRole.kdlDoctor,
+        country: 'uz',
+        bytes: Uint8List.fromList([0xff, 0xd8, 0xff, 1]),
+        mimeType: 'image/jpeg',
+      );
+      final req = api.last('/v1/community/verify');
+      expect(req.headers['content-type'], startsWith('image/jpeg'));
+      expect(req.bodyBytes, [0xff, 0xd8, 0xff, 1]);
+      expect(req.url.queryParameters, {'role': 'kdl_doctor', 'country': 'UZ'});
+      expect(me.status, MemberStatus.verified);
+      expect(me.role, SpecialistRole.kdlDoctor);
+      expect(me.canAnswer, isTrue);
+    });
+
+    test('server xato kodi CommunityException.code da', () async {
+      await signIn();
+      api.on('POST', '/v1/community/questions/q1/answers', 403, {
+        'error': 'not_verified',
+      });
+      await expectLater(
+        backend.answer('q1', 'Javob matni uzun', lang: 'uz'),
+        throwsA(
+          isA<CommunityException>()
+              .having((e) => e.code, 'code', 'not_verified')
+              .having((e) => e.failure, 'failure', BackendFailure.forbidden),
+        ),
+      );
+      api.on('POST', '/v1/community/translate', 200, {
+        'title': null,
+        'body': '[ru] matn',
+        'lang': 'ru',
+        'source_lang': 'uz',
+        'machine': true,
+      });
+      final t = await backend.translate(
+        kind: PostKind.answer,
+        id: 'a1',
+        lang: 'ru',
+      );
+      expect(t.body, '[ru] matn');
+      expect(jsonDecode(api.last('/v1/community/translate').body), {
+        'kind': 'answer',
+        'id': 'a1',
+        'lang': 'ru',
+      });
+    });
   });
 }

@@ -8,6 +8,7 @@ import 'package:http/http.dart' as http;
 
 import '../../features/auth/otp_auth.dart';
 import 'backend_models.dart';
+import 'community_backend.dart';
 import 'lab_backend.dart';
 import 'partner_models.dart';
 import 'supabase_backend.dart' show SessionStore;
@@ -105,7 +106,7 @@ class _ApiResponse {
 /// Hali ko'chirilmagan bo'limlar (murojaatlar, admin panel, tekshiruv,
 /// hamkorlar, Pro) `BackendFailure.unavailable` beradi — ishlayotgandek
 /// ko'rsatilmaydi.
-class CloudflareLabBackend implements LabBackend {
+class CloudflareLabBackend implements LabBackend, CommunityBackend {
   CloudflareLabBackend(
     this.config, {
     SessionStore? sessionStore,
@@ -149,15 +150,24 @@ class CloudflareLabBackend implements LabBackend {
     Object? body,
     Map<String, String>? query,
     bool auth = true,
+    bool optionalAuth = false,
+    Uint8List? bytes,
+    String? contentType,
   }) async {
     final req = http.Request(method, config.resolve(path, query));
     req.headers['accept'] = 'application/json';
-    if (auth) {
+    if (optionalAuth) {
+      // Mehmon ham o'qiydi; sessiya bo'lsa — token (ovoz/muallif belgisi).
+      if (_token != null) req.headers['authorization'] = 'Bearer $_token';
+    } else if (auth) {
       final t = _token;
       if (t == null) throw const BackendException(BackendFailure.unauthorized);
       req.headers['authorization'] = 'Bearer $t';
     }
-    if (body != null) {
+    if (bytes != null) {
+      req.headers['content-type'] = contentType ?? 'application/octet-stream';
+      req.bodyBytes = bytes;
+    } else if (body != null) {
       req.headers['content-type'] = 'application/json';
       req.body = jsonEncode(body);
     }
@@ -182,7 +192,7 @@ class CloudflareLabBackend implements LabBackend {
       }
     }
     final out = _ApiResponse(res.statusCode, data);
-    if (auth && res.statusCode == 401) {
+    if ((auth || (optionalAuth && _token != null)) && res.statusCode == 401) {
       // Server sessiyani tan olmadi (muddati o'tgan / boshqa qurilmada chiqilgan).
       await _clearSession();
       _sessionLost.add(null);
@@ -754,6 +764,197 @@ class CloudflareLabBackend implements LabBackend {
   }
 
   static String _seg(String v) => Uri.encodeComponent(v);
+
+  // --------------------------------------------------------- community
+  // Hamjamiyat (D-43): endpointlar — docs/BACKEND_CLOUDFLARE.md.
+
+  /// Server xato kodi bilan ([CommunityException.code]).
+  Future<_ApiResponse> _c(
+    String method,
+    String path, {
+    Object? body,
+    Map<String, String>? query,
+    bool optionalAuth = false,
+    Uint8List? bytes,
+    String? contentType,
+  }) async {
+    final r = await _send(
+      method,
+      path,
+      body: body,
+      query: query,
+      optionalAuth: optionalAuth,
+      bytes: bytes,
+      contentType: contentType,
+    );
+    if (r.ok) return r;
+    throw CommunityException(
+      _failure(r.status),
+      r.error,
+      '$method $path ${r.status} ${r.error}',
+    );
+  }
+
+  @override
+  Future<CommunityMe> communityMe() async =>
+      CommunityMe.fromJson((await _c('GET', '/v1/community/me')).map);
+
+  @override
+  Future<CommunityMe> verifySpecialist({
+    required SpecialistRole role,
+    required String country,
+    required Uint8List bytes,
+    required String mimeType,
+  }) async {
+    await _c(
+      'POST',
+      '/v1/community/verify',
+      query: {'role': role.wire, 'country': country.trim().toUpperCase()},
+      bytes: bytes,
+      contentType: mimeType,
+    );
+    return communityMe();
+  }
+
+  @override
+  Future<QuestionPage> questions({
+    String? topic,
+    bool mine = false,
+    int limit = 20,
+    int offset = 0,
+  }) async {
+    final r = await _c(
+      'GET',
+      '/v1/community/questions',
+      query: {
+        'topic': ?topic,
+        if (mine) 'mine': '1',
+        'limit': '$limit',
+        'offset': '$offset',
+      },
+      optionalAuth: !mine,
+    );
+    return QuestionPage.fromJson(r.map);
+  }
+
+  @override
+  Future<String> askQuestion({
+    required String title,
+    required String body,
+    String? topic,
+    required String lang,
+  }) async {
+    final r = await _c(
+      'POST',
+      '/v1/community/questions',
+      body: {
+        'title': title.trim(),
+        'body': body.trim(),
+        'topic': topic,
+        'lang': lang,
+      },
+    );
+    return r.map['id']! as String;
+  }
+
+  @override
+  Future<QuestionThread> question(String id) async => QuestionThread.fromJson(
+    (await _c(
+      'GET',
+      '/v1/community/questions/${_seg(id)}',
+      optionalAuth: true,
+    )).map,
+  );
+
+  @override
+  Future<String> answer(
+    String questionId,
+    String body, {
+    required String lang,
+  }) async {
+    final r = await _c(
+      'POST',
+      '/v1/community/questions/${_seg(questionId)}/answers',
+      body: {'body': body.trim(), 'lang': lang},
+    );
+    return r.map['id']! as String;
+  }
+
+  @override
+  Future<int> vote(String answerId, {required bool up}) async {
+    final r = await _c(
+      up ? 'POST' : 'DELETE',
+      '/v1/community/answers/${_seg(answerId)}/vote',
+    );
+    return (r.map['upvotes'] as num?)?.toInt() ?? 0;
+  }
+
+  @override
+  Future<void> setBestAnswer(String questionId, String? answerId) => _c(
+    'POST',
+    '/v1/community/questions/${_seg(questionId)}/best',
+    body: {'answer_id': answerId},
+  );
+
+  @override
+  Future<void> report({
+    required PostKind kind,
+    required String id,
+    required ReportReason reason,
+  }) => _c(
+    'POST',
+    '/v1/community/reports',
+    body: {'kind': kind.name, 'id': id, 'reason': reason.wire},
+  );
+
+  @override
+  Future<PostTranslation> translate({
+    required PostKind kind,
+    required String id,
+    required String lang,
+  }) async => PostTranslation.fromJson(
+    (await _c(
+      'POST',
+      '/v1/community/translate',
+      body: {'kind': kind.name, 'id': id, 'lang': lang},
+      optionalAuth: true,
+    )).map,
+  );
+
+  @override
+  Future<void> pinQuestion(String id, {required bool pinned}) => _c(
+    'POST',
+    '/v1/community/questions/${_seg(id)}/pin',
+    body: {'pinned': pinned},
+  );
+
+  @override
+  Future<void> deleteQuestion(String id) =>
+      _c('DELETE', '/v1/community/questions/${_seg(id)}');
+
+  @override
+  Future<void> deleteAnswer(String id) =>
+      _c('DELETE', '/v1/community/answers/${_seg(id)}');
+
+  @override
+  Future<List<CommunityMemberAdmin>> adminMembers({
+    MemberStatus status = MemberStatus.suspended,
+  }) async {
+    final r = await _c(
+      'GET',
+      '/v1/admin/community/members',
+      query: {'status': status.name},
+    );
+    return _rows(r.data).map(CommunityMemberAdmin.fromJson).toList();
+  }
+
+  @override
+  Future<void> adminRestore(String userHash) =>
+      _c('POST', '/v1/admin/community/members/${_seg(userHash)}/restore');
+
+  @override
+  Future<void> adminRevoke(String userHash) =>
+      _c('POST', '/v1/admin/community/members/${_seg(userHash)}/revoke');
 
   // ------------------------------------------------------------------
   // TODO(port): quyidagilar Cloudflare serveriga hali ko'chirilmagan

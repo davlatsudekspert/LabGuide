@@ -12717,6 +12717,588 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Class test — in the app, timed'**
   String get lectureEndTest;
+
+  /// No description provided for @cmTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Community · Q&A'**
+  String get cmTitle;
+
+  /// No description provided for @cmHomeSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Questions answered by verified lab specialists'**
+  String get cmHomeSub;
+
+  /// No description provided for @cmAsk.
+  ///
+  /// In en, this message translates to:
+  /// **'Ask a question'**
+  String get cmAsk;
+
+  /// No description provided for @cmAllQuestions.
+  ///
+  /// In en, this message translates to:
+  /// **'All questions'**
+  String get cmAllQuestions;
+
+  /// No description provided for @cmEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No questions yet'**
+  String get cmEmptyTitle;
+
+  /// No description provided for @cmEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Be the first to ask.'**
+  String get cmEmptyBody;
+
+  /// No description provided for @cmTopicLinkAnalyte.
+  ///
+  /// In en, this message translates to:
+  /// **'Questions about this test ({count})'**
+  String cmTopicLinkAnalyte(int count);
+
+  /// No description provided for @cmTopicLinkCondition.
+  ///
+  /// In en, this message translates to:
+  /// **'Questions about this condition ({count})'**
+  String cmTopicLinkCondition(int count);
+
+  /// No description provided for @cmTopicLinkSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Community · answers from specialists'**
+  String get cmTopicLinkSub;
+
+  /// No description provided for @cmTopicLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Topic: {name}'**
+  String cmTopicLabel(String name);
+
+  /// No description provided for @cmMyQuestions.
+  ///
+  /// In en, this message translates to:
+  /// **'My questions'**
+  String get cmMyQuestions;
+
+  /// No description provided for @cmMyQuestionsSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Your questions and their answers'**
+  String get cmMyQuestionsSub;
+
+  /// No description provided for @cmVerifyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Specialist verification'**
+  String get cmVerifyTitle;
+
+  /// No description provided for @cmVerifySub.
+  ///
+  /// In en, this message translates to:
+  /// **'Upload a document to answer questions'**
+  String get cmVerifySub;
+
+  /// No description provided for @cmBadgeAi.
+  ///
+  /// In en, this message translates to:
+  /// **'✓ Specialist (document checked automatically)'**
+  String get cmBadgeAi;
+
+  /// No description provided for @cmBadgeManual.
+  ///
+  /// In en, this message translates to:
+  /// **'✓ Verified specialist'**
+  String get cmBadgeManual;
+
+  /// No description provided for @cmBadgeInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'“Document checked automatically” means an AI model, not a person, checked the document. Users can report a wrong badge.'**
+  String get cmBadgeInfo;
+
+  /// No description provided for @cmMember.
+  ///
+  /// In en, this message translates to:
+  /// **'Member'**
+  String get cmMember;
+
+  /// No description provided for @cmYou.
+  ///
+  /// In en, this message translates to:
+  /// **'you'**
+  String get cmYou;
+
+  /// No description provided for @cmVerifyInfoTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Automatic check — the file is not stored'**
+  String get cmVerifyInfoTitle;
+
+  /// No description provided for @cmVerifyInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'The document is checked automatically by an AI model (Cloudflare Workers AI); no person looks at it. The file is not saved anywhere and is discarded right after the check. Only the result is kept on the server: role, country, status and date. An automatic check can make mistakes; if other users report a wrong badge, it is suspended until an administrator reviews it.'**
+  String get cmVerifyInfo;
+
+  /// No description provided for @cmVerifyRole.
+  ///
+  /// In en, this message translates to:
+  /// **'Your profession'**
+  String get cmVerifyRole;
+
+  /// No description provided for @cmRoleLaborant.
+  ///
+  /// In en, this message translates to:
+  /// **'Lab technician'**
+  String get cmRoleLaborant;
+
+  /// No description provided for @cmRoleBiochemist.
+  ///
+  /// In en, this message translates to:
+  /// **'Biochemist'**
+  String get cmRoleBiochemist;
+
+  /// No description provided for @cmRoleKdlDoctor.
+  ///
+  /// In en, this message translates to:
+  /// **'Clinical lab physician'**
+  String get cmRoleKdlDoctor;
+
+  /// No description provided for @cmRoleTeacher.
+  ///
+  /// In en, this message translates to:
+  /// **'Teacher'**
+  String get cmRoleTeacher;
+
+  /// No description provided for @cmRoleOther.
+  ///
+  /// In en, this message translates to:
+  /// **'Other'**
+  String get cmRoleOther;
+
+  /// No description provided for @cmRoleClinicalLab.
+  ///
+  /// In en, this message translates to:
+  /// **'Clinical laboratory diagnostics'**
+  String get cmRoleClinicalLab;
+
+  /// No description provided for @cmVerifyCountry.
+  ///
+  /// In en, this message translates to:
+  /// **'Country (2-letter code, e.g. UZ)'**
+  String get cmVerifyCountry;
+
+  /// No description provided for @cmVerifyCountryError.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a 2-letter country code'**
+  String get cmVerifyCountryError;
+
+  /// No description provided for @cmVerifyDocHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Diploma, certificate or a document from your workplace. JPEG or PNG photo, up to 5 MB. For a PDF, take a photo of its first page. Cover any patient data.'**
+  String get cmVerifyDocHint;
+
+  /// No description provided for @cmVerifyCamera.
+  ///
+  /// In en, this message translates to:
+  /// **'Take a photo'**
+  String get cmVerifyCamera;
+
+  /// No description provided for @cmVerifyGallery.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose from gallery'**
+  String get cmVerifyGallery;
+
+  /// No description provided for @cmVerifyRemove.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose another'**
+  String get cmVerifyRemove;
+
+  /// No description provided for @cmVerifySubmit.
+  ///
+  /// In en, this message translates to:
+  /// **'Send for automatic check'**
+  String get cmVerifySubmit;
+
+  /// No description provided for @cmVerifyAttempts.
+  ///
+  /// In en, this message translates to:
+  /// **'Up to 3 attempts per day.'**
+  String get cmVerifyAttempts;
+
+  /// No description provided for @cmStatusNone.
+  ///
+  /// In en, this message translates to:
+  /// **'Not verified yet'**
+  String get cmStatusNone;
+
+  /// No description provided for @cmStatusVerified.
+  ///
+  /// In en, this message translates to:
+  /// **'Verified'**
+  String get cmStatusVerified;
+
+  /// No description provided for @cmStatusRejected.
+  ///
+  /// In en, this message translates to:
+  /// **'The document was not accepted. Try again with a clearer photo where the institution and the field are visible.'**
+  String get cmStatusRejected;
+
+  /// No description provided for @cmStatusSuspended.
+  ///
+  /// In en, this message translates to:
+  /// **'Your community account is suspended after reports from users. An administrator will review it.'**
+  String get cmStatusSuspended;
+
+  /// No description provided for @cmVerifiedAt.
+  ///
+  /// In en, this message translates to:
+  /// **'Verified: {date}'**
+  String cmVerifiedAt(String date);
+
+  /// No description provided for @cmMethodAi.
+  ///
+  /// In en, this message translates to:
+  /// **'Method: automatic (AI)'**
+  String get cmMethodAi;
+
+  /// No description provided for @cmMethodManual.
+  ///
+  /// In en, this message translates to:
+  /// **'Method: document reviewed manually'**
+  String get cmMethodManual;
+
+  /// No description provided for @cmErrTooLarge.
+  ///
+  /// In en, this message translates to:
+  /// **'The file is larger than 5 MB.'**
+  String get cmErrTooLarge;
+
+  /// No description provided for @cmErrType.
+  ///
+  /// In en, this message translates to:
+  /// **'Only a JPEG or PNG photo.'**
+  String get cmErrType;
+
+  /// No description provided for @cmErrAi.
+  ///
+  /// In en, this message translates to:
+  /// **'The automatic check is not available right now. Try again later.'**
+  String get cmErrAi;
+
+  /// No description provided for @cmErrNotVerified.
+  ///
+  /// In en, this message translates to:
+  /// **'Only verified specialists can answer and vote.'**
+  String get cmErrNotVerified;
+
+  /// No description provided for @cmErrContact.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove email addresses and phone numbers (and any patient data) from the text.'**
+  String get cmErrContact;
+
+  /// No description provided for @cmErrLength.
+  ///
+  /// In en, this message translates to:
+  /// **'Title: 10–200 characters, text: 10–4000.'**
+  String get cmErrLength;
+
+  /// No description provided for @cmErrAlreadyVerified.
+  ///
+  /// In en, this message translates to:
+  /// **'You are already verified.'**
+  String get cmErrAlreadyVerified;
+
+  /// No description provided for @cmAskTitleField.
+  ///
+  /// In en, this message translates to:
+  /// **'Question title'**
+  String get cmAskTitleField;
+
+  /// No description provided for @cmAskBodyField.
+  ///
+  /// In en, this message translates to:
+  /// **'Details'**
+  String get cmAskBodyField;
+
+  /// No description provided for @cmAskNoPatient.
+  ///
+  /// In en, this message translates to:
+  /// **'Do not write a patient’s name, phone or other personal data. Answers are colleagues’ experience, not personal medical advice.'**
+  String get cmAskNoPatient;
+
+  /// No description provided for @cmAskSend.
+  ///
+  /// In en, this message translates to:
+  /// **'Post question'**
+  String get cmAskSend;
+
+  /// No description provided for @cmAskSent.
+  ///
+  /// In en, this message translates to:
+  /// **'Question posted'**
+  String get cmAskSent;
+
+  /// No description provided for @cmSignInTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in to take part'**
+  String get cmSignInTitle;
+
+  /// No description provided for @cmSignInBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Anyone signed in can ask. Verified specialists answer.'**
+  String get cmSignInBody;
+
+  /// No description provided for @cmAnswers.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{No answers} =1{1 answer} other{{count} answers}}'**
+  String cmAnswers(int count);
+
+  /// No description provided for @cmAnswerField.
+  ///
+  /// In en, this message translates to:
+  /// **'Your answer'**
+  String get cmAnswerField;
+
+  /// No description provided for @cmAnswerSend.
+  ///
+  /// In en, this message translates to:
+  /// **'Post answer'**
+  String get cmAnswerSend;
+
+  /// No description provided for @cmAnswerOnlySpecialists.
+  ///
+  /// In en, this message translates to:
+  /// **'Answers are written only by verified specialists.'**
+  String get cmAnswerOnlySpecialists;
+
+  /// No description provided for @cmBest.
+  ///
+  /// In en, this message translates to:
+  /// **'Best answer'**
+  String get cmBest;
+
+  /// No description provided for @cmMarkBest.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark as best'**
+  String get cmMarkBest;
+
+  /// No description provided for @cmUnmarkBest.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove mark'**
+  String get cmUnmarkBest;
+
+  /// No description provided for @cmUpvote.
+  ///
+  /// In en, this message translates to:
+  /// **'Helpful ({count})'**
+  String cmUpvote(int count);
+
+  /// No description provided for @cmReport.
+  ///
+  /// In en, this message translates to:
+  /// **'Report'**
+  String get cmReport;
+
+  /// No description provided for @cmReportTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Reason for the report'**
+  String get cmReportTitle;
+
+  /// No description provided for @cmReasonSpam.
+  ///
+  /// In en, this message translates to:
+  /// **'Spam or advertising'**
+  String get cmReasonSpam;
+
+  /// No description provided for @cmReasonWrong.
+  ///
+  /// In en, this message translates to:
+  /// **'Wrong or dangerous information'**
+  String get cmReasonWrong;
+
+  /// No description provided for @cmReasonAbuse.
+  ///
+  /// In en, this message translates to:
+  /// **'Abusive'**
+  String get cmReasonAbuse;
+
+  /// No description provided for @cmReasonFake.
+  ///
+  /// In en, this message translates to:
+  /// **'Fake specialist'**
+  String get cmReasonFake;
+
+  /// No description provided for @cmReasonPatient.
+  ///
+  /// In en, this message translates to:
+  /// **'Contains patient data'**
+  String get cmReasonPatient;
+
+  /// No description provided for @cmReasonOther.
+  ///
+  /// In en, this message translates to:
+  /// **'Other'**
+  String get cmReasonOther;
+
+  /// No description provided for @cmReportSent.
+  ///
+  /// In en, this message translates to:
+  /// **'Report sent. Thank you.'**
+  String get cmReportSent;
+
+  /// No description provided for @cmTranslate.
+  ///
+  /// In en, this message translates to:
+  /// **'Translate'**
+  String get cmTranslate;
+
+  /// No description provided for @cmMachineTranslation.
+  ///
+  /// In en, this message translates to:
+  /// **'Machine translation'**
+  String get cmMachineTranslation;
+
+  /// No description provided for @cmShowOriginal.
+  ///
+  /// In en, this message translates to:
+  /// **'Original text'**
+  String get cmShowOriginal;
+
+  /// No description provided for @cmShowTranslation.
+  ///
+  /// In en, this message translates to:
+  /// **'Translation'**
+  String get cmShowTranslation;
+
+  /// No description provided for @cmPin.
+  ///
+  /// In en, this message translates to:
+  /// **'Pin'**
+  String get cmPin;
+
+  /// No description provided for @cmUnpin.
+  ///
+  /// In en, this message translates to:
+  /// **'Unpin'**
+  String get cmUnpin;
+
+  /// No description provided for @cmPinned.
+  ///
+  /// In en, this message translates to:
+  /// **'Pinned'**
+  String get cmPinned;
+
+  /// No description provided for @cmDelete.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get cmDelete;
+
+  /// No description provided for @cmDeleteConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete this post?'**
+  String get cmDeleteConfirm;
+
+  /// No description provided for @cmDeleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Deleted'**
+  String get cmDeleted;
+
+  /// No description provided for @cmLoadMore.
+  ///
+  /// In en, this message translates to:
+  /// **'Show more'**
+  String get cmLoadMore;
+
+  /// No description provided for @cmNotAdvice.
+  ///
+  /// In en, this message translates to:
+  /// **'Answers are colleagues’ experience, not personal medical advice.'**
+  String get cmNotAdvice;
+
+  /// No description provided for @cmAdminTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Community moderation'**
+  String get cmAdminTitle;
+
+  /// No description provided for @cmAdminSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Reported users: restore or revoke'**
+  String get cmAdminSub;
+
+  /// No description provided for @cmAdminEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Nobody here'**
+  String get cmAdminEmpty;
+
+  /// No description provided for @cmAdminReporters.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} reporters'**
+  String cmAdminReporters(int count);
+
+  /// No description provided for @cmAdminRestore.
+  ///
+  /// In en, this message translates to:
+  /// **'Restore'**
+  String get cmAdminRestore;
+
+  /// No description provided for @cmAdminRevoke.
+  ///
+  /// In en, this message translates to:
+  /// **'Revoke verification'**
+  String get cmAdminRevoke;
+
+  /// No description provided for @cmAdminSuspended.
+  ///
+  /// In en, this message translates to:
+  /// **'Suspended'**
+  String get cmAdminSuspended;
+
+  /// No description provided for @cmAdminVerified.
+  ///
+  /// In en, this message translates to:
+  /// **'Verified'**
+  String get cmAdminVerified;
+
+  /// No description provided for @cmAdminRejected.
+  ///
+  /// In en, this message translates to:
+  /// **'Rejected'**
+  String get cmAdminRejected;
+
+  /// No description provided for @cmAdminDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Done'**
+  String get cmAdminDone;
+
+  /// No description provided for @cmOwnerTag.
+  ///
+  /// In en, this message translates to:
+  /// **'Owner'**
+  String get cmOwnerTag;
 }
 
 class _AppLocalizationsDelegate

@@ -20,6 +20,7 @@ import '../features/instruments/calibration_screens.dart';
 import '../features/instruments/instrument_screens.dart';
 import '../features/lab/lab_screens.dart';
 import '../features/classroom/classroom_screens.dart';
+import '../features/community/community_screens.dart';
 import '../features/classroom/lecture_screens.dart';
 import '../features/learn/classes_screens.dart';
 import '../features/learn/exam_screens.dart';
@@ -209,6 +210,10 @@ GoRouter buildRouter(
                 path: 'audit',
                 builder: (context, state) => const AdminAuditScreen(),
               ),
+              GoRoute(
+                path: 'community',
+                builder: (context, state) => const AdminCommunityScreen(),
+              ),
               // Hamkorlar (reklama) va hamkorlik arizalari.
               GoRoute(
                 path: 'partners',
@@ -245,6 +250,32 @@ GoRouter buildRouter(
                     ),
                   ),
                 ],
+              ),
+            ],
+          ),
+          // Hamjamiyat (D-43): savol-javob, mutaxassis tasdig'i. Server
+          // ulanmagan buildda ekranlar “ulanmagan” holatini ko'rsatadi.
+          GoRoute(
+            path: 'community',
+            builder: (context, state) => CommunityListScreen(
+              topic: state.uri.queryParameters['topic'],
+              mine: state.uri.queryParameters['mine'] == '1',
+            ),
+            routes: [
+              GoRoute(
+                path: 'ask',
+                builder: (context, state) => AskQuestionScreen(
+                  topic: state.uri.queryParameters['topic'],
+                ),
+              ),
+              GoRoute(
+                path: 'q/:id',
+                builder: (context, state) =>
+                    QuestionScreen(questionId: state.pathParameters['id']!),
+              ),
+              GoRoute(
+                path: 'verify',
+                builder: (context, state) => const VerifySpecialistScreen(),
               ),
             ],
           ),

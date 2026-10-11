@@ -4255,5 +4255,151 @@
   "lectureEndEyebrow": "Next step",
   "lectureEndTitle": "Questions and test",
   "lectureEndOral": "Oral questions — asked by the teacher",
-  "lectureEndTest": "Class test — in the app, timed"
+  "lectureEndTest": "Class test — in the app, timed",
+  "cmTitle": "Community · Q&A",
+  "cmHomeSub": "Questions answered by verified lab specialists",
+  "cmAsk": "Ask a question",
+  "cmAllQuestions": "All questions",
+  "cmEmptyTitle": "No questions yet",
+  "cmEmptyBody": "Be the first to ask.",
+  "cmTopicLinkAnalyte": "Questions about this test ({count})",
+  "@cmTopicLinkAnalyte": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "cmTopicLinkCondition": "Questions about this condition ({count})",
+  "@cmTopicLinkCondition": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "cmTopicLinkSub": "Community · answers from specialists",
+  "cmTopicLabel": "Topic: {name}",
+  "@cmTopicLabel": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "cmMyQuestions": "My questions",
+  "cmMyQuestionsSub": "Your questions and their answers",
+  "cmVerifyTitle": "Specialist verification",
+  "cmVerifySub": "Upload a document to answer questions",
+  "cmBadgeAi": "✓ Specialist (document checked automatically)",
+  "cmBadgeManual": "✓ Verified specialist",
+  "cmBadgeInfo": "“Document checked automatically” means an AI model, not a person, checked the document. Users can report a wrong badge.",
+  "cmMember": "Member",
+  "cmYou": "you",
+  "cmVerifyInfoTitle": "Automatic check — the file is not stored",
+  "cmVerifyInfo": "The document is checked automatically by an AI model (Cloudflare Workers AI); no person looks at it. The file is not saved anywhere and is discarded right after the check. Only the result is kept on the server: role, country, status and date. An automatic check can make mistakes; if other users report a wrong badge, it is suspended until an administrator reviews it.",
+  "cmVerifyRole": "Your profession",
+  "cmRoleLaborant": "Lab technician",
+  "cmRoleBiochemist": "Biochemist",
+  "cmRoleKdlDoctor": "Clinical lab physician",
+  "cmRoleTeacher": "Teacher",
+  "cmRoleOther": "Other",
+  "cmRoleClinicalLab": "Clinical laboratory diagnostics",
+  "cmVerifyCountry": "Country (2-letter code, e.g. UZ)",
+  "cmVerifyCountryError": "Enter a 2-letter country code",
+  "cmVerifyDocHint": "Diploma, certificate or a document from your workplace. JPEG or PNG photo, up to 5 MB. For a PDF, take a photo of its first page. Cover any patient data.",
+  "cmVerifyCamera": "Take a photo",
+  "cmVerifyGallery": "Choose from gallery",
+  "cmVerifyRemove": "Choose another",
+  "cmVerifySubmit": "Send for automatic check",
+  "cmVerifyAttempts": "Up to 3 attempts per day.",
+  "cmStatusNone": "Not verified yet",
+  "cmStatusVerified": "Verified",
+  "cmStatusRejected": "The document was not accepted. Try again with a clearer photo where the institution and the field are visible.",
+  "cmStatusSuspended": "Your community account is suspended after reports from users. An administrator will review it.",
+  "cmVerifiedAt": "Verified: {date}",
+  "@cmVerifiedAt": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "cmMethodAi": "Method: automatic (AI)",
+  "cmMethodManual": "Method: document reviewed manually",
+  "cmErrTooLarge": "The file is larger than 5 MB.",
+  "cmErrType": "Only a JPEG or PNG photo.",
+  "cmErrAi": "The automatic check is not available right now. Try again later.",
+  "cmErrNotVerified": "Only verified specialists can answer and vote.",
+  "cmErrContact": "Remove email addresses and phone numbers (and any patient data) from the text.",
+  "cmErrLength": "Title: 10–200 characters, text: 10–4000.",
+  "cmErrAlreadyVerified": "You are already verified.",
+  "cmAskTitleField": "Question title",
+  "cmAskBodyField": "Details",
+  "cmAskNoPatient": "Do not write a patient’s name, phone or other personal data. Answers are colleagues’ experience, not personal medical advice.",
+  "cmAskSend": "Post question",
+  "cmAskSent": "Question posted",
+  "cmSignInTitle": "Sign in to take part",
+  "cmSignInBody": "Anyone signed in can ask. Verified specialists answer.",
+  "cmAnswers": "{count, plural, =0{No answers} =1{1 answer} other{{count} answers}}",
+  "@cmAnswers": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "cmAnswerField": "Your answer",
+  "cmAnswerSend": "Post answer",
+  "cmAnswerOnlySpecialists": "Answers are written only by verified specialists.",
+  "cmBest": "Best answer",
+  "cmMarkBest": "Mark as best",
+  "cmUnmarkBest": "Remove mark",
+  "cmUpvote": "Helpful ({count})",
+  "@cmUpvote": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "cmReport": "Report",
+  "cmReportTitle": "Reason for the report",
+  "cmReasonSpam": "Spam or advertising",
+  "cmReasonWrong": "Wrong or dangerous information",
+  "cmReasonAbuse": "Abusive",
+  "cmReasonFake": "Fake specialist",
+  "cmReasonPatient": "Contains patient data",
+  "cmReasonOther": "Other",
+  "cmReportSent": "Report sent. Thank you.",
+  "cmTranslate": "Translate",
+  "cmMachineTranslation": "Machine translation",
+  "cmShowOriginal": "Original text",
+  "cmShowTranslation": "Translation",
+  "cmPin": "Pin",
+  "cmUnpin": "Unpin",
+  "cmPinned": "Pinned",
+  "cmDelete": "Delete",
+  "cmDeleteConfirm": "Delete this post?",
+  "cmDeleted": "Deleted",
+  "cmLoadMore": "Show more",
+  "cmNotAdvice": "Answers are colleagues’ experience, not personal medical advice.",
+  "cmAdminTitle": "Community moderation",
+  "cmAdminSub": "Reported users: restore or revoke",
+  "cmAdminEmpty": "Nobody here",
+  "cmAdminReporters": "{count} reporters",
+  "@cmAdminReporters": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "cmAdminRestore": "Restore",
+  "cmAdminRevoke": "Revoke verification",
+  "cmAdminSuspended": "Suspended",
+  "cmAdminVerified": "Verified",
+  "cmAdminRejected": "Rejected",
+  "cmAdminDone": "Done",
+  "cmOwnerTag": "Owner"
 }

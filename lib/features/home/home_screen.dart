@@ -8,6 +8,7 @@ import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
 import '../auth/ui/role_screen.dart';
 import '../auth/ui/welcome_screen.dart';
+import '../community/community_screens.dart';
 import '../content/ui/conditions_screens.dart';
 import '../content/ui/content_widgets.dart';
 import '../daily/daily_screens.dart';
@@ -214,6 +215,8 @@ class HomeScreen extends StatelessWidget {
             ),
             // Kunlik 5 ta savol — har kuni qaytish uchun ixcham karta.
             const DailyCard(),
+            // Hamjamiyat (faqat server ulangan buildda; aks holda yo'q).
+            const CommunityHomeCard(),
             // Laborant uchun tezkor amal: toifa imtihoniga tayyorgarlik
             // (faqat O'zbekiston foydalanuvchilariga).
             if (role == AppRole.lab && toifaVisible(context))

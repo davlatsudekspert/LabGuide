@@ -9,6 +9,7 @@ import '../core/storage/kv_store.dart';
 import '../features/auth/auth_controller.dart';
 import '../features/classroom/classroom_local.dart';
 import '../features/classroom/curriculum.dart';
+import '../features/community/community_controller.dart';
 import '../features/content/content_controller.dart';
 import '../features/daily/daily_controller.dart';
 import '../features/daily/daily_reminder.dart';
@@ -79,6 +80,7 @@ class AppServices {
     required this.sharer,
     required this.curriculum,
     required this.classroom,
+    required this.community,
   });
 
   final AppConfig config;
@@ -134,6 +136,10 @@ class AppServices {
   /// Ustoz qurilmasidagi dars ma'lumotlari (serverga yuborilmaydi).
   final ClassroomLocal classroom;
 
+  /// Hamjamiyat (savol-javob, mutaxassis tasdig'i) — faqat Cloudflare
+  /// serveri ulangan buildda ([CommunityController.available]).
+  final CommunityController community;
+
   /// Server vakolatlari va o'qilmagan javoblarni yangilash. Rol hali
   /// tanlanmagan bo'lsa profil yozilmaydi (taxminiy rol sanalmasin).
   Future<void> refreshAccess() => access.refresh(
@@ -154,6 +160,7 @@ class AppServices {
       } else {
         access.clear();
       }
+      community.reset();
       unawaited(entitlements.refresh());
     });
     settings.addListener(() {
@@ -184,6 +191,7 @@ class AppServices {
     differential.resetInMemory();
     daily.resetInMemory();
     classroom.resetInMemory();
+    community.reset();
     await reminders.reset();
     await packs.removeAll();
     settings.resetToDefaults(systemLocales);

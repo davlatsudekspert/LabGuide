@@ -7266,4 +7266,328 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get lectureEndTest => 'Guruh testi — ilovada, vaqt bilan';
+
+  @override
+  String get cmTitle => 'Hamjamiyat · Savol-javob';
+
+  @override
+  String get cmHomeSub =>
+      'Tasdiqlangan laboratoriya mutaxassislari javob beradi';
+
+  @override
+  String get cmAsk => 'Savol berish';
+
+  @override
+  String get cmAllQuestions => 'Barcha savollar';
+
+  @override
+  String get cmEmptyTitle => 'Hali savollar yo‘q';
+
+  @override
+  String get cmEmptyBody => 'Birinchi savolni siz bering.';
+
+  @override
+  String cmTopicLinkAnalyte(int count) {
+    return 'Bu tahlil bo‘yicha savollar ($count)';
+  }
+
+  @override
+  String cmTopicLinkCondition(int count) {
+    return 'Bu holat bo‘yicha savollar ($count)';
+  }
+
+  @override
+  String get cmTopicLinkSub => 'Hamjamiyat · mutaxassislar javoblari';
+
+  @override
+  String cmTopicLabel(String name) {
+    return 'Mavzu: $name';
+  }
+
+  @override
+  String get cmMyQuestions => 'Mening savollarim';
+
+  @override
+  String get cmMyQuestionsSub => 'Bergan savollaringiz va javoblar';
+
+  @override
+  String get cmVerifyTitle => 'Mutaxassis tasdiqlash';
+
+  @override
+  String get cmVerifySub => 'Javob yozish uchun hujjat yuklang';
+
+  @override
+  String get cmBadgeAi => '✓ Mutaxassis (hujjat avtomatik tekshirilgan)';
+
+  @override
+  String get cmBadgeManual => '✓ Tasdiqlangan mutaxassis';
+
+  @override
+  String get cmBadgeInfo =>
+      '“Hujjat avtomatik tekshirilgan” — hujjatni inson emas, sun’iy intellekt modeli tekshirgan. Noto‘g‘ri belgi haqida shikoyat qilish mumkin.';
+
+  @override
+  String get cmMember => 'Foydalanuvchi';
+
+  @override
+  String get cmYou => 'siz';
+
+  @override
+  String get cmVerifyInfoTitle => 'Avtomatik tekshiruv — fayl saqlanmaydi';
+
+  @override
+  String get cmVerifyInfo =>
+      'Hujjatni sun’iy intellekt modeli (Cloudflare Workers AI) avtomatik tekshiradi — uni inson ko‘rmaydi. Fayl hech qayerda saqlanmaydi va tekshiruvdan so‘ng darhol o‘chadi. Serverda faqat natija qoladi: rol, mamlakat, holat va sana. Avtomatik tekshiruv xato qilishi mumkin; boshqa foydalanuvchilar noto‘g‘ri belgi haqida shikoyat qilsa, belgi admin ko‘rib chiqquncha to‘xtatiladi.';
+
+  @override
+  String get cmVerifyRole => 'Kasbingiz';
+
+  @override
+  String get cmRoleLaborant => 'Laborant';
+
+  @override
+  String get cmRoleBiochemist => 'Biokimyogar';
+
+  @override
+  String get cmRoleKdlDoctor => 'KDL shifokori';
+
+  @override
+  String get cmRoleTeacher => 'Ustoz';
+
+  @override
+  String get cmRoleOther => 'Boshqa';
+
+  @override
+  String get cmRoleClinicalLab => 'Klinik laborator diagnostika';
+
+  @override
+  String get cmVerifyCountry => 'Mamlakat (2 harfli kod, masalan UZ)';
+
+  @override
+  String get cmVerifyCountryError => '2 harfli mamlakat kodini kiriting';
+
+  @override
+  String get cmVerifyDocHint =>
+      'Diplom, sertifikat yoki ish joyidan hujjat. JPEG yoki PNG surat, 5 MB gacha. PDF bo‘lsa — birinchi sahifasini suratga oling. Bemor ma’lumotini yoping.';
+
+  @override
+  String get cmVerifyCamera => 'Suratga olish';
+
+  @override
+  String get cmVerifyGallery => 'Galereyadan tanlash';
+
+  @override
+  String get cmVerifyRemove => 'Boshqasini tanlash';
+
+  @override
+  String get cmVerifySubmit => 'Avtomatik tekshiruvga yuborish';
+
+  @override
+  String get cmVerifyAttempts => 'Kuniga 3 tagacha urinish.';
+
+  @override
+  String get cmStatusNone => 'Hali tasdiqlanmagan';
+
+  @override
+  String get cmStatusVerified => 'Tasdiqlangan';
+
+  @override
+  String get cmStatusRejected =>
+      'Hujjat qabul qilinmadi. Muassasa va mutaxassislik aniq ko‘rinadigan suratda qayta urinib ko‘ring.';
+
+  @override
+  String get cmStatusSuspended =>
+      'Foydalanuvchilar shikoyati sababli hamjamiyatdagi hisobingiz to‘xtatilgan. Admin ko‘rib chiqadi.';
+
+  @override
+  String cmVerifiedAt(String date) {
+    return 'Tasdiqlangan: $date';
+  }
+
+  @override
+  String get cmMethodAi => 'Usul: avtomatik (AI)';
+
+  @override
+  String get cmMethodManual => 'Usul: hujjat qo‘lda tekshirilgan';
+
+  @override
+  String get cmErrTooLarge => 'Fayl 5 MB dan katta.';
+
+  @override
+  String get cmErrType => 'Faqat JPEG yoki PNG surat.';
+
+  @override
+  String get cmErrAi =>
+      'Avtomatik tekshiruv hozir ishlamayapti. Keyinroq urinib ko‘ring.';
+
+  @override
+  String get cmErrNotVerified =>
+      'Javob va ovoz faqat tasdiqlangan mutaxassislarga.';
+
+  @override
+  String get cmErrContact =>
+      'Matndan email va telefon raqamini (va bemor ma’lumotini) olib tashlang.';
+
+  @override
+  String get cmErrLength => 'Sarlavha 10–200, matn 10–4000 belgi bo‘lsin.';
+
+  @override
+  String get cmErrAlreadyVerified => 'Siz allaqachon tasdiqlangansiz.';
+
+  @override
+  String get cmAskTitleField => 'Savol sarlavhasi';
+
+  @override
+  String get cmAskBodyField => 'Batafsil';
+
+  @override
+  String get cmAskNoPatient =>
+      'Bemorning ismi, telefoni va boshqa shaxsiy ma’lumotini yozmang. Javoblar — hamkasblar tajribasi, shaxsiy tibbiy maslahat emas.';
+
+  @override
+  String get cmAskSend => 'Savolni joylash';
+
+  @override
+  String get cmAskSent => 'Savol joylandi';
+
+  @override
+  String get cmSignInTitle => 'Ishtirok etish uchun hisobga kiring';
+
+  @override
+  String get cmSignInBody =>
+      'Hisobga kirgan har kim savol beradi. Tasdiqlangan mutaxassislar javob yozadi.';
+
+  @override
+  String cmAnswers(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count ta javob',
+      zero: 'Javob yo‘q',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get cmAnswerField => 'Javobingiz';
+
+  @override
+  String get cmAnswerSend => 'Javobni yuborish';
+
+  @override
+  String get cmAnswerOnlySpecialists =>
+      'Javobni faqat tasdiqlangan mutaxassislar yozadi.';
+
+  @override
+  String get cmBest => 'Eng yaxshi javob';
+
+  @override
+  String get cmMarkBest => 'Eng yaxshi deb belgilash';
+
+  @override
+  String get cmUnmarkBest => 'Belgini olish';
+
+  @override
+  String cmUpvote(int count) {
+    return 'Foydali ($count)';
+  }
+
+  @override
+  String get cmReport => 'Shikoyat';
+
+  @override
+  String get cmReportTitle => 'Shikoyat sababi';
+
+  @override
+  String get cmReasonSpam => 'Spam yoki reklama';
+
+  @override
+  String get cmReasonWrong => 'Noto‘g‘ri yoki xavfli ma’lumot';
+
+  @override
+  String get cmReasonAbuse => 'Haqoratli';
+
+  @override
+  String get cmReasonFake => 'Soxta mutaxassis';
+
+  @override
+  String get cmReasonPatient => 'Bemor ma’lumoti bor';
+
+  @override
+  String get cmReasonOther => 'Boshqa';
+
+  @override
+  String get cmReportSent => 'Shikoyat yuborildi. Rahmat.';
+
+  @override
+  String get cmTranslate => 'Tarjima qilish';
+
+  @override
+  String get cmMachineTranslation => 'Mashina tarjimasi';
+
+  @override
+  String get cmShowOriginal => 'Asl matn';
+
+  @override
+  String get cmShowTranslation => 'Tarjima';
+
+  @override
+  String get cmPin => 'Qadash';
+
+  @override
+  String get cmUnpin => 'Qadashni olish';
+
+  @override
+  String get cmPinned => 'Qadalgan';
+
+  @override
+  String get cmDelete => 'O‘chirish';
+
+  @override
+  String get cmDeleteConfirm => 'Bu post o‘chirilsinmi?';
+
+  @override
+  String get cmDeleted => 'O‘chirildi';
+
+  @override
+  String get cmLoadMore => 'Yana ko‘rsatish';
+
+  @override
+  String get cmNotAdvice =>
+      'Javoblar — hamkasblar tajribasi, shaxsiy tibbiy maslahat emas.';
+
+  @override
+  String get cmAdminTitle => 'Hamjamiyat moderatsiyasi';
+
+  @override
+  String get cmAdminSub => 'Shikoyat qilinganlar: tiklash yoki bekor qilish';
+
+  @override
+  String get cmAdminEmpty => 'Bu ro‘yxat bo‘sh';
+
+  @override
+  String cmAdminReporters(int count) {
+    return '$count ta shikoyatchi';
+  }
+
+  @override
+  String get cmAdminRestore => 'Tiklash';
+
+  @override
+  String get cmAdminRevoke => 'Tasdiqni bekor qilish';
+
+  @override
+  String get cmAdminSuspended => 'To‘xtatilgan';
+
+  @override
+  String get cmAdminVerified => 'Tasdiqlangan';
+
+  @override
+  String get cmAdminRejected => 'Rad etilgan';
+
+  @override
+  String get cmAdminDone => 'Bajarildi';
+
+  @override
+  String get cmOwnerTag => 'Asoschi';
 }

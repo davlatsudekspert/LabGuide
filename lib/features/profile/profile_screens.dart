@@ -12,6 +12,7 @@ import '../../l10n/gen/app_localizations.dart';
 import '../auth/auth_controller.dart';
 import '../auth/ui/role_screen.dart';
 import '../settings/settings_controller.dart';
+import '../community/community_screens.dart';
 import '../support/support_screens.dart';
 
 enum _SignOut { keepData, deleteData }
@@ -198,6 +199,21 @@ class ProfileScreen extends StatelessWidget {
                   : null,
               onTap: () => context.push('/profile/support'),
             ),
+            // Hamjamiyat — faqat server ulangan buildda.
+            if (services.community.available) ...[
+              LgRow(
+                title: l.cmMyQuestions,
+                subtitle: l.cmMyQuestionsSub,
+                icon: Icons.forum_outlined,
+                onTap: () => context.push(CommunityRoutes.mine),
+              ),
+              LgRow(
+                title: l.cmVerifyTitle,
+                subtitle: l.cmVerifySub,
+                icon: Icons.verified_outlined,
+                onTap: () => context.push(CommunityRoutes.verify),
+              ),
+            ],
             LgRow(
               title: l.partnerBecome,
               subtitle: services.backend.isConfigured
@@ -214,6 +230,13 @@ class ProfileScreen extends StatelessWidget {
                 subtitle: l.adminSub,
                 icon: Icons.admin_panel_settings_outlined,
                 onTap: () => context.push('/profile/admin'),
+              ),
+            if (access.access.adminAccount && services.community.available)
+              LgRow(
+                title: l.cmAdminTitle,
+                subtitle: l.cmAdminSub,
+                icon: Icons.shield_moon_outlined,
+                onTap: () => context.push(CommunityRoutes.admin),
               ),
             LgRow(
               title: l.profilePrivacy,
