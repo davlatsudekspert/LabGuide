@@ -4442,5 +4442,9 @@
   "cmLaunchDone": "Done: founder confirmed. Added {questions} questions and {answers} answers.",
   "cmLaunchAlready": "The community is already launched: founder confirmed, nothing new was added.",
   "cmLaunchNotOwner": "This account is not allowed as founder. Sign in with the founder's email.",
-  "cmLaunchMfaHint": "To launch the community, first confirm two-step protection: enter the 6-digit code from your authenticator app. The “Launch the community” button appears after that."
+  "cmLaunchMfaHint": "To launch the community, first confirm two-step protection: enter the 6-digit code from your authenticator app. The “Launch the community” button appears after that.",
+  "diffFbSound": "Sound on tap",
+  "diffFbHaptics": "Vibration on tap",
+  "diffFbOn": "on",
+  "diffFbOff": "off"
 }

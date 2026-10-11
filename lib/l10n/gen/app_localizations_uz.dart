@@ -7715,4 +7715,16 @@ class AppLocalizationsUz extends AppLocalizations {
   @override
   String get cmLaunchMfaHint =>
       'Hamjamiyatni ishga tushirish uchun avval ikki bosqichli himoyani tasdiqlang: autentifikator ilovasidagi 6 xonali kodni kiriting. Shundan keyin “Hamjamiyatni ishga tushirish” tugmasi chiqadi.';
+
+  @override
+  String get diffFbSound => 'Bosishda tovush';
+
+  @override
+  String get diffFbHaptics => 'Bosishda tebranish';
+
+  @override
+  String get diffFbOn => 'yoqilgan';
+
+  @override
+  String get diffFbOff => 'o‘chirilgan';
 }

@@ -13509,6 +13509,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'To launch the community, first confirm two-step protection: enter the 6-digit code from your authenticator app. The “Launch the community” button appears after that.'**
   String get cmLaunchMfaHint;
+
+  /// No description provided for @diffFbSound.
+  ///
+  /// In en, this message translates to:
+  /// **'Sound on tap'**
+  String get diffFbSound;
+
+  /// No description provided for @diffFbHaptics.
+  ///
+  /// In en, this message translates to:
+  /// **'Vibration on tap'**
+  String get diffFbHaptics;
+
+  /// No description provided for @diffFbOn.
+  ///
+  /// In en, this message translates to:
+  /// **'on'**
+  String get diffFbOn;
+
+  /// No description provided for @diffFbOff.
+  ///
+  /// In en, this message translates to:
+  /// **'off'**
+  String get diffFbOff;
 }
 
 class _AppLocalizationsDelegate

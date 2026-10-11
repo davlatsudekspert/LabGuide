@@ -15,6 +15,7 @@ import '../microscopy/microscopy_widgets.dart';
 import '../tools/calc_info.dart';
 import '../tools/clinical_calc_screens.dart';
 import '../tools/tool_screens.dart';
+import 'diff_eyes_free.dart';
 import 'differential_content.dart';
 import 'differential_controller.dart';
 import 'differential_quiz.dart';
@@ -777,6 +778,7 @@ class _DiffCounterScreenState extends State<DiffCounterScreen> {
   void dispose() {
     _wbc.dispose();
     _label.dispose();
+    _feedback.dispose();
     super.dispose();
   }
 
@@ -786,14 +788,18 @@ class _DiffCounterScreenState extends State<DiffCounterScreen> {
       ..showSnackBar(SnackBar(content: Text(msg)));
   }
 
+  final _feedback = CounterFeedback();
+
   void _tap(DiffCell c) {
     final l = AppLocalizations.of(context);
     final diff = context.services.differential;
+    final sound = diff.counterSound;
+    final haptics = diff.counterHaptics;
     switch (diff.tap(c)) {
       case TapOutcome.added:
-        HapticFeedback.selectionClick();
+        _feedback.added(c, sound: sound, haptics: haptics);
       case TapOutcome.completed:
-        HapticFeedback.heavyImpact();
+        _feedback.completed(sound: sound, haptics: haptics);
         SemanticsService.sendAnnouncement(
           View.of(context),
           l.diffDoneTitle(diff.target),
@@ -801,14 +807,15 @@ class _DiffCounterScreenState extends State<DiffCounterScreen> {
         );
         _snack(l.diffDoneTitle(diff.target));
       case TapOutcome.blocked:
-        HapticFeedback.vibrate();
+        _feedback.blocked(sound: sound, haptics: haptics);
         _snack(l.diffBlocked);
     }
   }
 
   void _decrement(DiffCell c) {
-    if (context.services.differential.decrement(c)) {
-      HapticFeedback.mediumImpact();
+    final diff = context.services.differential;
+    if (diff.decrement(c)) {
+      _feedback.removed(sound: diff.counterSound, haptics: diff.counterHaptics);
     }
   }
 
@@ -882,6 +889,7 @@ class _DiffCounterScreenState extends State<DiffCounterScreen> {
           title: l.diffCounterTitle,
           subtitle: l.diffTapHint,
           children: [
+            _FeedbackToggles(diff: diff),
             _ProgressPanel(diff: diff),
             if (diff.isComplete)
               LgNotice(
@@ -994,6 +1002,74 @@ class _DiffCounterScreenState extends State<DiffCounterScreen> {
           ],
         );
       },
+    );
+  }
+}
+
+/// Sarlavha ostida: tebranish va tovush tugmalari (holati qurilmada saqlanadi).
+class _FeedbackToggles extends StatelessWidget {
+  const _FeedbackToggles({required this.diff});
+
+  final DifferentialController diff;
+
+  @override
+  Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context);
+    final p = LgPalette.of(context);
+    Widget toggle({
+      required Key key,
+      required bool on,
+      required IconData onIcon,
+      required IconData offIcon,
+      required String label,
+      required ValueChanged<bool> set,
+    }) {
+      final state = on ? l.diffFbOn : l.diffFbOff;
+      return Semantics(
+        container: true,
+        button: true,
+        toggled: on,
+        label: label,
+        value: state,
+        excludeSemantics: true,
+        onTap: () => set(!on),
+        child: Tooltip(
+          message: '$label: $state',
+          child: IconButton(
+            key: key,
+            onPressed: () => set(!on),
+            isSelected: on,
+            enableFeedback: false,
+            iconSize: 24,
+            constraints: const BoxConstraints(minWidth: 48, minHeight: 48),
+            color: p.sub,
+            selectedIcon: Icon(onIcon),
+            icon: Icon(offIcon),
+          ),
+        ),
+      );
+    }
+
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        toggle(
+          key: const ValueKey('diff-fb-haptics'),
+          on: diff.counterHaptics,
+          onIcon: Icons.vibration_rounded,
+          offIcon: Icons.mobile_off_rounded,
+          label: l.diffFbHaptics,
+          set: (v) => diff.setCounterFeedback(haptics: v),
+        ),
+        toggle(
+          key: const ValueKey('diff-fb-sound'),
+          on: diff.counterSound,
+          onIcon: Icons.volume_up_rounded,
+          offIcon: Icons.volume_off_rounded,
+          label: l.diffFbSound,
+          set: (v) => diff.setCounterFeedback(sound: v),
+        ),
+      ],
     );
   }
 }
@@ -1158,6 +1234,9 @@ class _CountButton extends StatelessWidget {
           clipBehavior: Clip.antiAlias,
           child: InkWell(
             key: ValueKey('diff-count-${cell.name}'),
+            // Tizim bosish tovushi/tebranishi o'chiriladi: tovush va
+            // tebranishni faqat foydalanuvchi tugmalari boshqaradi.
+            enableFeedback: false,
             onTap: onTap,
             onLongPress: onLongPress,
             child: Opacity(

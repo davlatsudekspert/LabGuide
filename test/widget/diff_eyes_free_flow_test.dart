@@ -59,6 +59,9 @@ void main() {
       200,
       scrollable: find.byType(Scrollable).first,
     );
+    // Tugmalar qatori qo'shilgach, yozuv pastki panel ostida qolishi mumkin.
+    await tester.ensureVisible(find.text(en.diffEfEntry));
+    await tester.pumpAndSettle();
     await tester.tap(find.text(en.diffEfEntry));
     await tester.pumpAndSettle();
     expect(find.text(en.diffEfSettingsTitle), findsWidgets);

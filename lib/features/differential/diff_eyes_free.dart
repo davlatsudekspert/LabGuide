@@ -56,7 +56,32 @@ Future<void> _playPulse(Pulse p) => switch (p) {
 
 /// Signal tovushlari (`assets/differential/sounds/*.wav`, o'zimiz sintez
 /// qilganmiz: tool/sounds/gen_diff_sounds.py).
-enum Cue { tap, ten, done, undo, blocked }
+enum Cue {
+  tap,
+  ten,
+  done,
+  undo,
+  blocked,
+  // Oddiy hisoblagich: har hujayra turi uchun o'z toni.
+  cellSegmented,
+  cellBand,
+  cellLymphocyte,
+  cellMonocyte,
+  cellEosinophil,
+  cellBasophil,
+  cellOther,
+}
+
+/// Hujayra turining toni (oddiy hisoblagich, ixtiyoriy tovush).
+Cue cueForCell(DiffCell c) => switch (c) {
+  DiffCell.segmented => Cue.cellSegmented,
+  DiffCell.band => Cue.cellBand,
+  DiffCell.lymphocyte => Cue.cellLymphocyte,
+  DiffCell.monocyte => Cue.cellMonocyte,
+  DiffCell.eosinophil => Cue.cellEosinophil,
+  DiffCell.basophil => Cue.cellBasophil,
+  DiffCell.other => Cue.cellOther,
+};
 
 abstract class CuePlayer {
   Future<void> play(Cue cue);
@@ -65,17 +90,32 @@ abstract class CuePlayer {
 
 /// audioplayers orqali: har signal uchun kichik pul (tez ketma-ket bosish).
 /// Xato bo'lsa jim qoladi — sanash hech qachon to'xtamaydi.
+///
+/// [respectSilence] — iOS'da ambient toifa: telefonning "jim" tugmasi va
+/// qulflangan ekran tovushni o'chiradi, boshqa ilovalar musiqasi uzilmaydi
+/// (Android'da audio fokus olinmaydi).
 class AssetCuePlayer implements CuePlayer {
+  AssetCuePlayer({this.respectSilence = false});
+
+  final bool respectSilence;
   final Map<Cue, Future<AudioPool?>> _pools = {};
 
   Future<AudioPool?> _pool(Cue cue) => _pools[cue] ??= () async {
     try {
       return await AudioPool.create(
         source: AssetSource('differential/sounds/${cue.name}.wav'),
-        maxPlayers: cue == Cue.tap ? 4 : 2,
-        audioContext: AudioContextConfig(
-          focus: AudioContextConfigFocus.mixWithOthers,
-        ).build(),
+        maxPlayers: cue == Cue.tap || cue.name.startsWith('cell') ? 4 : 2,
+        audioContext: respectSilence
+            ? AudioContext(
+                android: const AudioContextAndroid(
+                  contentType: AndroidContentType.sonification,
+                  usageType: AndroidUsageType.assistanceSonification,
+                  audioFocus: AndroidAudioFocus.none,
+                ),
+                iOS: AudioContextIOS(category: AVAudioSessionCategory.ambient),
+              )
+            : AudioContextConfig(focus: AudioContextConfigFocus.mixWithOthers)
+                  .build(),
       );
     } on Object {
       return null;
@@ -133,6 +173,10 @@ class WakelockScreenAwake implements ScreenAwake {
 /// Qurilma bilan bog'liq qismlar — testlarda almashtiriladi.
 abstract final class DiffDevice {
   static CuePlayer Function() cuePlayer = AssetCuePlayer.new;
+
+  /// Oddiy hisoblagich tovushi: iOS "jim" tugmasiga bo'ysunadi.
+  static CuePlayer Function() counterCuePlayer = () =>
+      AssetCuePlayer(respectSilence: true);
   static ScreenAwake screenAwake = const WakelockScreenAwake();
 
   /// Zarbalar orasidagi kutish (testda — darhol).
@@ -201,4 +245,56 @@ class EyesFreeFeedback {
       Future.wait([_cue(Cue.tap), _pattern(cellPatterns[cell]!)]);
 
   Future<void> dispose() => _player.dispose();
+}
+
+/// Oddiy hisoblagich (ekrandagi tugmalar) uchun ixtiyoriy tovush/tebranish.
+/// Tebranish sukut bo'yicha YOQIQ, tovush — O'CHIQ; yoqilmasa hech narsa
+/// chalinmaydi ([sound]/[haptics] har chaqiruvda tekshiriladi).
+class CounterFeedback {
+  CounterFeedback({this._player});
+
+  CuePlayer? _player;
+  CuePlayer get _p => _player ??= DiffDevice.counterCuePlayer();
+
+  Future<void> _cue(bool sound, Cue c) async {
+    if (sound) await _p.play(c);
+  }
+
+  /// +1: yengil tebranish + hujayra toni.
+  Future<void> added(
+    DiffCell cell, {
+    required bool sound,
+    required bool haptics,
+  }) => Future.wait([
+    _cue(sound, cueForCell(cell)),
+    if (haptics) HapticFeedback.selectionClick(),
+  ]);
+
+  /// −1 (uzoq bosish): o'rtacha tebranish + pastga tushuvchi "undo" tovushi.
+  Future<void> removed({required bool sound, required bool haptics}) =>
+      Future.wait([
+        _cue(sound, Cue.undo),
+        if (haptics) HapticFeedback.mediumImpact(),
+      ]);
+
+  /// Maqsadga yetildi: ikki og'ir zarba + "done" tovushi.
+  Future<void> completed({required bool sound, required bool haptics}) =>
+      Future.wait([
+        _cue(sound, Cue.done),
+        if (haptics)
+          () async {
+            await HapticFeedback.heavyImpact();
+            await DiffDevice.wait(pulseGap);
+            await HapticFeedback.heavyImpact();
+          }(),
+      ]);
+
+  /// Sanash tugagan, yangi bosish qabul qilinmadi.
+  Future<void> blocked({required bool sound, required bool haptics}) =>
+      Future.wait([
+        _cue(sound, Cue.blocked),
+        if (haptics) HapticFeedback.vibrate(),
+      ]);
+
+  Future<void> dispose() async => _player?.dispose();
 }

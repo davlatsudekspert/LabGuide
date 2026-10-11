@@ -7843,4 +7843,16 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get cmLaunchMfaHint =>
       'Чтобы запустить сообщество, сначала подтвердите двухэтапную защиту: введите 6-значный код из приложения-аутентификатора. После этого появится кнопка «Запуск сообщества».';
+
+  @override
+  String get diffFbSound => 'Звук при нажатии';
+
+  @override
+  String get diffFbHaptics => 'Вибрация при нажатии';
+
+  @override
+  String get diffFbOn => 'включено';
+
+  @override
+  String get diffFbOff => 'выключено';
 }

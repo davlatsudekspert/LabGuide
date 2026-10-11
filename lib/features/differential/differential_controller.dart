@@ -90,6 +90,24 @@ class DifferentialController extends ChangeNotifier {
   double? _wbc;
   final List<DiffRecord> _history = [];
   EyesFreeSettings _eyesFree = const EyesFreeSettings();
+  bool _counterSound = false;
+  bool _counterHaptics = true;
+
+  /// Oddiy hisoblagich: har bosishda tovush (sukut: o'chiq).
+  bool get counterSound => _counterSound;
+
+  /// Oddiy hisoblagich: har bosishda tebranish (sukut: yoqiq).
+  bool get counterHaptics => _counterHaptics;
+
+  Future<void> setCounterFeedback({bool? sound, bool? haptics}) async {
+    _counterSound = sound ?? _counterSound;
+    _counterHaptics = haptics ?? _counterHaptics;
+    notifyListeners();
+    await _store.setString(
+      StoreKeys.differentialFeedback,
+      jsonEncode({'sound': _counterSound, 'haptics': _counterHaptics}),
+    );
+  }
 
   int get target => _target;
   double? get wbc => _wbc;
@@ -217,6 +235,8 @@ class DifferentialController extends ChangeNotifier {
     _target = 100;
     _wbc = null;
     _eyesFree = const EyesFreeSettings();
+    _counterSound = false;
+    _counterHaptics = true;
     notifyListeners();
   }
 
@@ -241,6 +261,16 @@ class DifferentialController extends ChangeNotifier {
     _eyesFree = decodeEyesFree(
       _store.getString(StoreKeys.differentialEyesFree),
     );
+    try {
+      final raw = _store.getString(StoreKeys.differentialFeedback);
+      if (raw != null) {
+        final json = (jsonDecode(raw) as Map).cast<String, Object?>();
+        _counterSound = json['sound'] as bool? ?? false;
+        _counterHaptics = json['haptics'] as bool? ?? true;
+      }
+    } on Object {
+      // Buzilgan sozlama — sukut qiymatlari.
+    }
     try {
       final raw = _store.getString(StoreKeys.differentialDraft);
       if (raw != null) {
