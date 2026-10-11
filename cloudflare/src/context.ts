@@ -6,6 +6,11 @@ export interface Deps {
   sendCode: CodeSender;
   /** Unix ms (testlarda soat almashtiriladi). */
   now: () => number;
+  /**
+   * Workers AI chaqiruvi (testlarda soxta). Standart: `env.AI.run`.
+   * Kiruvchi ma'lumot (hujjat rasmi) hech qayerga yozilmaydi.
+   */
+  runAi?: (env: Env, model: string, input: Record<string, unknown>) => Promise<unknown>;
 }
 
 export interface Ctx {

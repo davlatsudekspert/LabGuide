@@ -1,0 +1,19 @@
+{
+  "_comment": "Sxema namunasi. questions: 1..50 ta. seed_id: [a-z0-9-]{3,40} (takror yuborilsa — o'tkazib yuboriladi). title 10..200, body 10..4000 belgi. lang: uz|ru|en. topic: null | 'analyte:<id>' | 'condition:<id>' (assets/content/core/pack.json dagi id). pinned: true|false. answers: 0..10 ta, muallif — egasi hisobi.",
+  "questions": [
+    {
+      "seed_id": "example-topic",
+      "title": "Savol sarlavhasi (10–200 belgi)",
+      "body": "Savol matni (10–4000 belgi).",
+      "lang": "uz",
+      "topic": "analyte:glucose-plasma-fasting",
+      "pinned": false,
+      "answers": [
+        {
+          "body": "Egasining javobi (10–4000 belgi).",
+          "lang": "uz"
+        }
+      ]
+    }
+  ]
+}

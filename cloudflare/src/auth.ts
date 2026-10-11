@@ -24,6 +24,7 @@ import {
   readJson,
   unauthorized,
 } from './http';
+import { communityDeleteStatements, userHash } from './community';
 import { hit } from './ratelimit';
 
 export const OTP_TTL_SEC = 600;
@@ -46,7 +47,7 @@ export function maskEmail(email: string): string {
   return `${local.slice(0, 2)}***@${domain}`;
 }
 
-async function emailHash(ctx: Ctx, email: string): Promise<string> {
+export async function emailHash(ctx: Ctx, email: string): Promise<string> {
   return hex(await hmac(ctx.keys.email, email));
 }
 
@@ -262,6 +263,11 @@ async function flags(ctx: Ctx, userId: string) {
   return { admin: r?.admin === 1, reviewer: r?.reviewer === 1, teacher: r?.teacher === 1 };
 }
 
+/** Sessiya admin (server bergan vakolat + TOTP aal2) bo'lsa — true. */
+export async function isAdminSession(ctx: Ctx, s: Session): Promise<boolean> {
+  return s.aal === 'aal2' && (await flags(ctx, s.userId)).admin;
+}
+
 export async function requireAdmin(ctx: Ctx): Promise<Session> {
   const s = await requireSession(ctx);
   const f = await flags(ctx, s.userId);
@@ -329,9 +335,11 @@ export async function deleteAccount(ctx: Ctx): Promise<Response> {
     `DELETE FROM users WHERE id = ?1`,
     `INSERT INTO audit_log (at, actor, action, target, details) VALUES (?2, ?1, 'account_deleted', ?1, '{}')`,
   ];
-  await ctx.db.batch(
-    stmts.map((q) => (q.includes('?2') ? ctx.db.prepare(q).bind(u, ctx.now) : ctx.db.prepare(q).bind(u))),
-  );
+  await ctx.db.batch([
+    // Hamjamiyat: savollar, javoblar, ovozlar, shikoyatlar, tasdiq holati.
+    ...communityDeleteStatements(ctx.db, await userHash(ctx, u)),
+    ...stmts.map((q) => (q.includes('?2') ? ctx.db.prepare(q).bind(u, ctx.now) : ctx.db.prepare(q).bind(u))),
+  ]);
   return noContent();
 }
 

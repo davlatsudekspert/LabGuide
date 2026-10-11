@@ -1,7 +1,26 @@
 import { env } from 'cloudflare:test';
 import { createApp } from '../src/app';
 import type { CodeSender } from '../src/email';
+import { totpAt } from '../src/crypto';
 import type { Env } from '../src/http';
+
+export function unbase32(s: string): Uint8Array {
+  const A = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
+  let bits = 0;
+  let value = 0;
+  const out: number[] = [];
+  for (const c of s) {
+    value = (value << 5) | A.indexOf(c);
+    bits += 5;
+    if (bits >= 8) {
+      out.push((value >>> (bits - 8)) & 255);
+      bits -= 8;
+    }
+  }
+  return new Uint8Array(out);
+}
+
+export type AiFn = (model: string, input: Record<string, unknown>) => Promise<unknown>;
 
 export interface Sent {
   to: string;
@@ -9,6 +28,7 @@ export interface Sent {
 }
 
 let serverSeq = 0;
+const totpSecrets = new Map<string, Uint8Array>();
 
 /** Ilova + soxta pochta qutisi + boshqariladigan soat. */
 export function makeServer(overrides: Partial<Env> = {}) {
@@ -22,21 +42,39 @@ export function makeServer(overrides: Partial<Env> = {}) {
     outbox.push({ to, code });
     return 'sent';
   };
-  const app = createApp({ sendCode: sender, now: () => clock.now });
+  // Workers AI soxtasi: haqiqiy AI hech qachon chaqirilmaydi.
+  const aiCalls: { model: string; input: Record<string, unknown> }[] = [];
+  let aiImpl: AiFn = async () => {
+    throw new Error('AI not mocked in this test');
+  };
+  const app = createApp({
+    sendCode: sender,
+    now: () => clock.now,
+    runAi: async (_env, model, input) => {
+      aiCalls.push({ model, input });
+      return aiImpl(model, input);
+    },
+  });
   const testEnv = { ...env, ...overrides } as Env;
   let ipSeq = 0;
 
   async function call(
     method: string,
     path: string,
-    opts: { token?: string; body?: unknown; ip?: string; headers?: Record<string, string>; raw?: string } = {},
+    opts: {
+      token?: string;
+      body?: unknown;
+      ip?: string;
+      headers?: Record<string, string>;
+      raw?: string | Uint8Array;
+    } = {},
   ) {
     const headers: Record<string, string> = {
       'cf-connecting-ip': opts.ip ?? '203.0.113.7',
       ...(opts.headers ?? {}),
     };
     if (opts.token) headers.authorization = `Bearer ${opts.token}`;
-    let body: string | undefined;
+    let body: string | Uint8Array | undefined;
     if (opts.raw !== undefined) {
       body = opts.raw;
     } else if (opts.body !== undefined) {
@@ -81,8 +119,33 @@ export function makeServer(overrides: Partial<Env> = {}) {
     return u;
   }
 
+  /** Admin: allowlist email + OTP + TOTP (aal2). */
+  async function signInAdmin(email = 'boss@example.test') {
+    const u = await signIn(email);
+    const en = await call('POST', '/v1/auth/mfa/enroll', { token: u.token });
+    let secret: Uint8Array;
+    if (en.status === 200) {
+      secret = unbase32(en.data.secret);
+      totpSecrets.set(email, secret);
+    } else if (en.status === 403 && totpSecrets.has(email)) {
+      secret = totpSecrets.get(email)!;
+      clock.now += 31_000; // TOTP qadami qayta ishlatilmaydi
+    } else {
+      throw new Error(`enroll ${en.status} ${en.text}`);
+    }
+    const code = await totpAt(secret, Math.floor(clock.now / 30_000));
+    const v = await call('POST', '/v1/auth/mfa/verify', { token: u.token, body: { code } });
+    if (v.status !== 200) throw new Error(`mfa ${v.status} ${v.text}`);
+    return u;
+  }
+
   return {
     app,
+    aiCalls,
+    setAi: (fn: AiFn) => {
+      aiImpl = fn;
+    },
+    signInAdmin,
     signInTeacher,
     env: testEnv,
     outbox,

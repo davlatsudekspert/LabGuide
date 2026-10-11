@@ -15,6 +15,14 @@ export interface Env {
   LG_ADMIN_EMAILS?: string;
   /** Web build uchun ruxsat etilgan originlar (vergul bilan). Bo'sh — CORS yo'q. */
   LG_ALLOWED_ORIGINS?: string;
+  /** Workers AI (hujjatni tekshirish va tarjima). Bo'lmasa — 503. */
+  AI?: Ai;
+  /** Rasm+matn modeli (mutaxassis hujjatini tekshirish). */
+  LG_VERIFY_MODEL?: string;
+  /** Tarjima modeli. */
+  LG_TRANSLATE_MODEL?: string;
+  /** Hamjamiyatda egasi hisobining ko'rinadigan nomi. */
+  LG_OWNER_DISPLAY_NAME?: string;
 }
 
 export class ApiError extends Error {
@@ -62,15 +70,15 @@ export function errorResponse(e: ApiError): Response {
 const MAX_BODY = 32 * 1024;
 
 /** JSON obyekt tanasi; o'lcham, turi va sintaksisi tekshiriladi. */
-export async function readJson(req: Request): Promise<Record<string, unknown>> {
+export async function readJson(req: Request, maxBody = MAX_BODY): Promise<Record<string, unknown>> {
   const type = req.headers.get('content-type') ?? '';
   if (!type.toLowerCase().startsWith('application/json')) {
     throw new ApiError(415, 'unsupported_media_type');
   }
   const declared = Number(req.headers.get('content-length') ?? '0');
-  if (declared > MAX_BODY) throw new ApiError(413, 'too_large');
+  if (declared > maxBody) throw new ApiError(413, 'too_large');
   const buf = await req.arrayBuffer();
-  if (buf.byteLength > MAX_BODY) throw new ApiError(413, 'too_large');
+  if (buf.byteLength > maxBody) throw new ApiError(413, 'too_large');
   let parsed: unknown;
   try {
     parsed = JSON.parse(new TextDecoder().decode(buf));

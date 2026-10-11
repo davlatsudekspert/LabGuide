@@ -7,6 +7,9 @@ export default defineConfig(async () => {
     plugins: [
       cloudflareTest({
         main: './src/index.ts',
+        // Workers AI (`[ai]`) testlarda HECH QACHON chaqirilmaydi: masofaviy
+        // bog'lanish o'chiq, AI esa `deps.runAi` soxtasi orqali (test/helpers.ts).
+        remoteBindings: false,
         wrangler: { configPath: './wrangler.toml' },
         miniflare: {
           // Faqat sinov qiymatlari (haqiqiy secretlar emas).
