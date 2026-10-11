@@ -285,7 +285,8 @@ void main() {
     tester,
   ) async {
     final s = await makeServices(tester, language: AppLanguage.en);
-    await pumpApp(tester, s, size: const Size(390, 4000));
+    // JSST IFG chegarasi qo'shilgani uchun karta uzunroq (audit 2026-10-11).
+    await pumpApp(tester, s, size: const Size(390, 5200));
     await goTo(tester, '/tests/analyte/glucose-plasma-fasting');
     expect(find.text(en.analyteSampleNotice), findsOneWidget);
     expect(find.text(en.analyteRefIntervalNone), findsOneWidget);
@@ -294,6 +295,8 @@ void main() {
     // SI ekvivalenti hisoblangan va shunday belgilangan (manbada yo'q).
     expect(find.text(en.analyteSiApprox('5.6–6.9 mmol/L')), findsOneWidget);
     expect(find.text(en.analyteSiApprox('≥ 7.0 mmol/L')), findsOneWidget);
+    expect(find.textContaining('110–125 mg/dL'), findsWidgets);
+    expect(find.text(en.analyteSiApprox('6.1–6.9 mmol/L')), findsOneWidget);
     expect(find.textContaining(keepUnitsTogether('180.156 g/mol')), findsOneWidget);
     expect(find.text(en.analyteDecisionNotRef), findsOneWidget);
     expect(find.textContaining('MedlinePlus'), findsWidgets);
