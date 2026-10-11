@@ -4402,5 +4402,18 @@
   "cmAdminVerified": "Verified",
   "cmAdminRejected": "Rejected",
   "cmAdminDone": "Done",
-  "cmOwnerTag": "Owner"
+  "cmOwnerTag": "Owner",
+  "cmLaunchTitle": "Launch the community",
+  "cmLaunchBody": "Tap once: your account is confirmed as the founder and the starter questions and answers are added. Tapping again adds nothing twice.",
+  "cmLaunchButton": "Launch",
+  "@cmLaunchDone": {
+    "placeholders": {
+      "questions": {"type": "int"},
+      "answers": {"type": "int"}
+    }
+  },
+  "cmLaunchDone": "Done: founder confirmed. Added {questions} questions and {answers} answers.",
+  "cmLaunchAlready": "The community is already launched: founder confirmed, nothing new was added.",
+  "cmLaunchNotOwner": "This account is not allowed as founder. Sign in with the founder's email.",
+  "cmLaunchMfaHint": "To launch the community, first confirm two-step protection: enter the 6-digit code from your authenticator app. The “Launch the community” button appears after that."
 }

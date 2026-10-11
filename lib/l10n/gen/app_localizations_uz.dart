@@ -7594,4 +7594,31 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get cmOwnerTag => 'Asoschi';
+
+  @override
+  String get cmLaunchTitle => 'Hamjamiyatni ishga tushirish';
+
+  @override
+  String get cmLaunchBody =>
+      'Bir marta bosing: hisobingiz asoschi sifatida tasdiqlanadi va boshlang‘ich savol-javoblar qo‘shiladi. Qayta bossangiz, takrorlanmaydi.';
+
+  @override
+  String get cmLaunchButton => 'Ishga tushirish';
+
+  @override
+  String cmLaunchDone(int questions, int answers) {
+    return 'Tayyor: asoschi tasdiqlandi. Qo‘shildi: $questions ta savol, $answers ta javob.';
+  }
+
+  @override
+  String get cmLaunchAlready =>
+      'Hamjamiyat allaqachon ishga tushirilgan: asoschi tasdiqlangan, yangi narsa qo‘shilmadi.';
+
+  @override
+  String get cmLaunchNotOwner =>
+      'Bu hisob asoschi sifatida ruxsat etilmagan. Asoschi emaili bilan kiring.';
+
+  @override
+  String get cmLaunchMfaHint =>
+      'Hamjamiyatni ishga tushirish uchun avval ikki bosqichli himoyani tasdiqlang: autentifikator ilovasidagi 6 xonali kodni kiriting. Shundan keyin “Hamjamiyatni ishga tushirish” tugmasi chiqadi.';
 }

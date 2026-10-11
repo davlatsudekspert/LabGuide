@@ -354,6 +354,57 @@ void main() {
     expect(find.text('Shubhali savol matni bu yerda'), findsOneWidget);
   });
 
+  for (final lang in [AppLanguage.uz, AppLanguage.ru, AppLanguage.en]) {
+    testWidgets(
+      'ishga tushirish kartasi: 2FA yo‘li, bir tugma, takror (${lang.name})',
+      (tester) async {
+        final (s, _, community) = await _setup(tester, language: lang);
+        final l = _l(lang);
+        await pumpApp(tester, s);
+        await _signIn(tester, s, _owner);
+        await goTo(tester, '/profile');
+        await _tap(tester, find.text(l.cmAdminTitle));
+        // aal1: karta yo'q, 2FA yo'li va tushuntirish ko'rinadi.
+        expect(find.byKey(const ValueKey('cm-launch-button')), findsNothing);
+        expect(find.text(l.cmLaunchMfaHint), findsOneWidget);
+        expect(find.text(l.adminMfaVerify), findsOneWidget);
+        await tester.enterText(
+          find.byType(TextField).last,
+          FakeLabBackend.totpCode,
+        );
+        await _tap(tester, find.text(l.adminMfaVerify));
+        // aal2: karta va bitta tugma.
+        expect(find.text(l.cmLaunchTitle), findsOneWidget);
+        expect(find.text(l.cmLaunchBody), findsOneWidget);
+        await _tap(tester, find.byKey(const ValueKey('cm-launch-button')));
+        expect(find.text(l.cmLaunchDone(2, 3)), findsOneWidget);
+        expect(community.launchCalls, 1);
+        await _tap(tester, find.byKey(const ValueKey('cm-launch-button')));
+        expect(find.text(l.cmLaunchAlready), findsOneWidget);
+        expect(find.text(l.cmLaunchDone(2, 3)), findsNothing);
+      },
+    );
+  }
+
+  testWidgets('ishga tushirish: egasi emaili ruxsat etilmagan — xato matni', (
+    tester,
+  ) async {
+    final (s, _, community) = await _setup(tester);
+    final l = _l(AppLanguage.uz);
+    community.launchEmailAllowed = false;
+    await pumpApp(tester, s);
+    await _signIn(tester, s, _owner);
+    await goTo(tester, '/profile');
+    await _tap(tester, find.text(l.cmAdminTitle));
+    await tester.enterText(
+      find.byType(TextField).last,
+      FakeLabBackend.totpCode,
+    );
+    await _tap(tester, find.text(l.adminMfaVerify));
+    await _tap(tester, find.byKey(const ValueKey('cm-launch-button')));
+    expect(find.text(l.cmLaunchNotOwner), findsOneWidget);
+  });
+
   testWidgets('eng yaxshi javob — faqat savol muallifi; ovoz — mutaxassis', (
     tester,
   ) async {

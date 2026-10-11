@@ -7720,4 +7720,31 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get cmOwnerTag => 'Основатель';
+
+  @override
+  String get cmLaunchTitle => 'Запуск сообщества';
+
+  @override
+  String get cmLaunchBody =>
+      'Нажмите один раз: ваш аккаунт будет подтверждён как основатель, а начальные вопросы и ответы добавятся. Повторное нажатие ничего не дублирует.';
+
+  @override
+  String get cmLaunchButton => 'Запустить';
+
+  @override
+  String cmLaunchDone(int questions, int answers) {
+    return 'Готово: основатель подтверждён. Добавлено: вопросов — $questions, ответов — $answers.';
+  }
+
+  @override
+  String get cmLaunchAlready =>
+      'Сообщество уже запущено: основатель подтверждён, ничего нового не добавлено.';
+
+  @override
+  String get cmLaunchNotOwner =>
+      'Этому аккаунту не разрешён статус основателя. Войдите с почтой основателя.';
+
+  @override
+  String get cmLaunchMfaHint =>
+      'Чтобы запустить сообщество, сначала подтвердите двухэтапную защиту: введите 6-значный код из приложения-аутентификатора. После этого появится кнопка «Запуск сообщества».';
 }

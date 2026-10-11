@@ -20,9 +20,12 @@ import '../support/support_screens.dart';
 /// yoki “faqat admin uchun”. Bu faqat ko'rinish: serverdagi har funksiya
 /// vakolatni o'zi qayta tekshiradi.
 class AdminGate extends StatefulWidget {
-  const AdminGate({super.key, required this.child});
+  const AdminGate({super.key, required this.child, this.mfaHint});
 
   final Widget child;
+
+  /// 2FA oynasi tepasida ko'rsatiladigan qisqa yo'l-yo'riq (ixtiyoriy).
+  final String? mfaHint;
 
   @override
   State<AdminGate> createState() => _AdminGateState();
@@ -76,7 +79,17 @@ class _AdminGateState extends State<AdminGate> {
       );
     }
     if (!a.aal2) {
-      return _MfaPanel(onVerified: _check);
+      final hint = widget.mfaHint;
+      final panel = _MfaPanel(onVerified: _check);
+      if (hint == null) return panel;
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          LgNotice(hint, kind: NoticeKind.info),
+          const SizedBox(height: 12),
+          panel,
+        ],
+      );
     }
     return widget.child;
   }

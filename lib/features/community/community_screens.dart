@@ -1496,11 +1496,14 @@ class _AdminCommunityScreenState extends State<AdminCommunityScreen> {
         _CommunityAvailable(
           child: SignedInGate(
             child: AdminGate(
+              mfaHint: l.cmLaunchMfaHint,
               child: _Loader(
                 onLoad: _load,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
+                    const _LaunchCard(),
+                    const SizedBox(height: 12),
                     Wrap(
                       spacing: 6,
                       runSpacing: 6,
@@ -1596,6 +1599,83 @@ class _AdminCommunityScreenState extends State<AdminCommunityScreen> {
           ),
         ),
       ],
+    );
+  }
+}
+
+/// Egasi uchun bir tugma: tasdiq + boshlang'ich savol-javoblar (idempotent).
+class _LaunchCard extends StatefulWidget {
+  const _LaunchCard();
+
+  @override
+  State<_LaunchCard> createState() => _LaunchCardState();
+}
+
+class _LaunchCardState extends State<_LaunchCard> {
+  bool _busy = false;
+  CommunityLaunchResult? _result;
+  String? _error;
+
+  Future<void> _run() async {
+    final api = context.services.community.api;
+    if (api == null) return;
+    final l = AppLocalizations.of(context);
+    setState(() {
+      _busy = true;
+      _error = null;
+    });
+    try {
+      final r = await api.adminCommunityLaunch();
+      if (mounted) setState(() => _result = r);
+    } on Object catch (e) {
+      if (mounted) {
+        setState(
+          () => _error = e is CommunityException && e.code == 'not_allowlisted'
+              ? l.cmLaunchNotOwner
+              : communityErrorText(e, l),
+        );
+      }
+    } finally {
+      if (mounted) setState(() => _busy = false);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context);
+    final text = Theme.of(context).textTheme;
+    final r = _result;
+    return LgPanel(
+      key: const ValueKey('cm-launch-card'),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Text(l.cmLaunchTitle, style: text.titleMedium),
+          const SizedBox(height: 6),
+          Text(l.cmLaunchBody, style: text.bodyMedium),
+          const SizedBox(height: 12),
+          LgButton(
+            key: const ValueKey('cm-launch-button'),
+            label: l.cmLaunchButton,
+            icon: Icons.rocket_launch_outlined,
+            busy: _busy,
+            onPressed: _run,
+          ),
+          if (_error != null) ...[
+            const SizedBox(height: 8),
+            LgNotice(_error!, kind: NoticeKind.error),
+          ],
+          if (r != null) ...[
+            const SizedBox(height: 8),
+            LgNotice(
+              r.questionsAdded == 0 && r.answersAdded == 0
+                  ? l.cmLaunchAlready
+                  : l.cmLaunchDone(r.questionsAdded, r.answersAdded),
+              kind: NoticeKind.info,
+            ),
+          ],
+        ],
+      ),
     );
   }
 }

@@ -7701,4 +7701,31 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get cmOwnerTag => 'Owner';
+
+  @override
+  String get cmLaunchTitle => 'Launch the community';
+
+  @override
+  String get cmLaunchBody =>
+      'Tap once: your account is confirmed as the founder and the starter questions and answers are added. Tapping again adds nothing twice.';
+
+  @override
+  String get cmLaunchButton => 'Launch';
+
+  @override
+  String cmLaunchDone(int questions, int answers) {
+    return 'Done: founder confirmed. Added $questions questions and $answers answers.';
+  }
+
+  @override
+  String get cmLaunchAlready =>
+      'The community is already launched: founder confirmed, nothing new was added.';
+
+  @override
+  String get cmLaunchNotOwner =>
+      'This account is not allowed as founder. Sign in with the founder\'s email.';
+
+  @override
+  String get cmLaunchMfaHint =>
+      'To launch the community, first confirm two-step protection: enter the 6-digit code from your authenticator app. The “Launch the community” button appears after that.';
 }
