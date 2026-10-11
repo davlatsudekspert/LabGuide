@@ -72,4 +72,20 @@ void main() {
       findsOneWidget,
     );
   });
+
+  testWidgets('katta shriftda "Основной контент" so‘z o‘rtasida uzilmaydi', (
+    tester,
+  ) async {
+    final s = await makeServices(tester, language: AppLanguage.ru);
+    await pumpApp(tester, s, size: const Size(320, 2200), textScale: 1.35);
+    await goTo(tester, '/library/packs');
+    final title = find.text('Основной контент');
+    final tag = find.text('Установлено');
+    expect(title, findsOneWidget);
+    // Sarlavha 2 qatordan oshmaydi: "Основно/й" kabi uzilish bo'lsa balandlik 3+ qator.
+    final h = tester.getSize(title).height;
+    final line = tester.getSize(find.text('Установлено')).height;
+    expect(h, lessThan(line * 2.6));
+    expect(tester.getTopLeft(tag).dx, greaterThan(0));
+  });
 }

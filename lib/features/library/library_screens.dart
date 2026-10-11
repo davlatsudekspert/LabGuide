@@ -479,9 +479,14 @@ class _CorePackCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
+          // Wrap: katta shriftda yorliq pastga tushadi, sarlavha so'z o'rtasida
+          // uzilmaydi.
+          Wrap(
+            spacing: 10,
+            runSpacing: 6,
+            crossAxisAlignment: WrapCrossAlignment.center,
             children: [
-              Expanded(child: Text(l.packsCoreTitle, style: text.titleMedium)),
+              Text(l.packsCoreTitle, style: text.titleMedium),
               LgTag(l.packsInstalled, icon: Icons.check_rounded),
             ],
           ),
