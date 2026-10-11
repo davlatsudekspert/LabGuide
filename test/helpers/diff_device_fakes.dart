@@ -49,15 +49,18 @@ List<String> recordHaptics(WidgetTester? tester) {
   final cues = RecordingCuePlayer();
   final awake = RecordingScreenAwake();
   final oldPlayer = DiffDevice.cuePlayer;
+  final oldCounter = DiffDevice.counterCuePlayer;
   final oldAwake = DiffDevice.screenAwake;
   final oldWait = DiffDevice.wait;
   final oldEngine = DiffVoiceDevice.engine;
   DiffDevice.cuePlayer = () => cues;
+  DiffDevice.counterCuePlayer = () => cues;
   DiffDevice.screenAwake = awake;
   DiffDevice.wait = (_) async {};
   if (engine != null) DiffVoiceDevice.engine = () => engine;
   addTearDown(() {
     DiffDevice.cuePlayer = oldPlayer;
+    DiffDevice.counterCuePlayer = oldCounter;
     DiffDevice.screenAwake = oldAwake;
     DiffDevice.wait = oldWait;
     DiffVoiceDevice.engine = oldEngine;

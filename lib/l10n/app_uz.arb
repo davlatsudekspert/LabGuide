@@ -2207,5 +2207,9 @@
   "cmLaunchDone": "Tayyor: asoschi tasdiqlandi. Qo‘shildi: {questions} ta savol, {answers} ta javob.",
   "cmLaunchAlready": "Hamjamiyat allaqachon ishga tushirilgan: asoschi tasdiqlangan, yangi narsa qo‘shilmadi.",
   "cmLaunchNotOwner": "Bu hisob asoschi sifatida ruxsat etilmagan. Asoschi emaili bilan kiring.",
-  "cmLaunchMfaHint": "Hamjamiyatni ishga tushirish uchun avval ikki bosqichli himoyani tasdiqlang: autentifikator ilovasidagi 6 xonali kodni kiriting. Shundan keyin “Hamjamiyatni ishga tushirish” tugmasi chiqadi."
+  "cmLaunchMfaHint": "Hamjamiyatni ishga tushirish uchun avval ikki bosqichli himoyani tasdiqlang: autentifikator ilovasidagi 6 xonali kodni kiriting. Shundan keyin “Hamjamiyatni ishga tushirish” tugmasi chiqadi.",
+  "diffFbSound": "Bosishda tovush",
+  "diffFbHaptics": "Bosishda tebranish",
+  "diffFbOn": "yoqilgan",
+  "diffFbOff": "o‘chirilgan"
 }

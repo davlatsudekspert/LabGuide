@@ -7728,4 +7728,16 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get cmLaunchMfaHint =>
       'To launch the community, first confirm two-step protection: enter the 6-digit code from your authenticator app. The “Launch the community” button appears after that.';
+
+  @override
+  String get diffFbSound => 'Sound on tap';
+
+  @override
+  String get diffFbHaptics => 'Vibration on tap';
+
+  @override
+  String get diffFbOn => 'on';
+
+  @override
+  String get diffFbOff => 'off';
 }

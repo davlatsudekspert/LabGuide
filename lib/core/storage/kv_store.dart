@@ -64,6 +64,9 @@ abstract final class StoreKeys {
   /// Leykoformula: "ko'rmasdan sanash" rejimi sozlamalari.
   static const differentialEyesFree = 'differential.eyesFree';
 
+  /// Leykoformula: oddiy hisoblagichda tovush/tebranish tugmalari.
+  static const differentialFeedback = 'differential.feedback';
+
   /// Kunlik savol: bugungi to'plam, ketma-ketlik (kunlar, urug'), eslatma.
   static const dailyToday = 'daily.today';
   static const dailyStreak = 'daily.streak';
@@ -106,6 +109,7 @@ abstract final class StoreKeys {
     differentialDraft,
     differentialHistory,
     differentialEyesFree,
+    differentialFeedback,
     dailyToday,
     dailyStreak,
     dailyReminder,

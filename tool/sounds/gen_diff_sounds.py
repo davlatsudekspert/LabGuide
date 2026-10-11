@@ -50,3 +50,17 @@ write('done', tone(1047, 120) + silence(30) + tone(1319, 120)
 write('undo', tone(880, 70) + silence(30) + tone(587, 110))
 # Qabul qilinmadi (sanash tugagan) — past, uzunroq ton.
 write('blocked', tone(330, 220, vol=0.5))
+# Hisoblagich ekranidagi har hujayra turi uchun o'z qisqa tonlari
+# (ixtiyoriy tovush yoqilganda). Tonlar bir-biridan aniq farq qiladi:
+# eng ko'p uchraydigan segment — o'rta, kamyob turlar — baland/past.
+CELL_TONES = {
+    'cellSegmented': 1100,
+    'cellBand': 1250,
+    'cellLymphocyte': 1400,
+    'cellMonocyte': 990,
+    'cellEosinophil': 1570,
+    'cellBasophil': 1760,
+    'cellOther': 700,
+}
+for name, hz in CELL_TONES.items():
+    write(name, tone(hz, 55, vol=0.5))
