@@ -221,7 +221,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get roleLabDesc => 'Metodika, apparat va sifat nazorati';
 
   @override
-  String get roleStudent => 'Student';
+  String get roleStudent => 'Talaba';
 
   @override
   String get roleStudentDesc => 'Tushunish, mashq va imtihon';

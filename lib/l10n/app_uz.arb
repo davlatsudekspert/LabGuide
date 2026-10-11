@@ -63,7 +63,7 @@
   "roleDoctorDesc": "Natija va klinik bog‘lanishlar",
   "roleLab": "Laboratoriya mutaxassisi",
   "roleLabDesc": "Metodika, apparat va sifat nazorati",
-  "roleTalaba": "Talaba",
+  "roleStudent": "Talaba",
   "roleStudentDesc": "Tushunish, mashq va imtihon",
   "roleTeacher": "Ustoz / tadqiqotchi",
   "roleTeacherDesc": "Guruh, topshiriq va ilmiy ish",
