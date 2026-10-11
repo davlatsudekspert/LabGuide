@@ -82,10 +82,6 @@ Future<(AppServices, FakeLabBackend)> _boot(WidgetTester tester) async {
   return (s, b);
 }
 
-Future<void> _opened(WidgetTester tester, String route) async {
-  await goTo(tester, route);
-}
-
 /// Ustoz tomoni: ro'yxatdan o'tish, guruh, ikki talaba, mavzu ochish.
 Future<String> _prepareGroup(
   WidgetTester tester,
