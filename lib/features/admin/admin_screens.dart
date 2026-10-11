@@ -417,7 +417,7 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
                 ),
           icon: Icons.rule_rounded,
           divider: false,
-          onTap: () => _open('/library/review'),
+          onTap: () => _open('/profile/admin/review'),
         ),
         if (services.adminTeam != null) ...[
           LgSectionTitle(l.admTeam),

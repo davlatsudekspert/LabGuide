@@ -214,6 +214,22 @@ GoRouter buildRouter(
                 path: 'admins',
                 builder: (context, state) => const AdminTeamScreen(),
               ),
+              // Admin paneldan tekshiruv navbati — profil ichida qoladi
+              // (boshqa tabga o'tib ketmaydi). Kirish ReviewerGate ichida.
+              GoRoute(
+                path: 'review',
+                builder: (context, state) =>
+                    const ReviewQueueScreen(base: '/profile/admin/review'),
+                routes: [
+                  GoRoute(
+                    path: ':kind/:id',
+                    builder: (context, state) => ReviewItemScreen(
+                      kind: state.pathParameters['kind']!,
+                      itemId: state.pathParameters['id']!,
+                    ),
+                  ),
+                ],
+              ),
               GoRoute(
                 path: 'community',
                 builder: (context, state) => const AdminCommunityScreen(),

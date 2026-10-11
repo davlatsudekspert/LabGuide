@@ -82,7 +82,11 @@ enum _Tab { cards, questions, discrepancies }
 /// Tekshiruv navbati: tekshirilmagan kartalar va savollar, manbalar orasidagi
 /// farqlar. Har element yonida — sizning qaroringiz va jami qarorlar.
 class ReviewQueueScreen extends StatefulWidget {
-  const ReviewQueueScreen({super.key});
+  const ReviewQueueScreen({super.key, this.base = '/library/review'});
+
+  /// Karta/savol sahifalari shu yo'l ostida ochiladi (kutubxona yoki
+  /// admin panel — joriy navigatordan chiqib ketmaslik uchun).
+  final String base;
 
   @override
   State<ReviewQueueScreen> createState() => _ReviewQueueScreenState();
@@ -195,7 +199,7 @@ class _ReviewQueueScreenState extends State<ReviewQueueScreen> {
                     icon: Icons.biotech_outlined,
                     divider: i < cards.length - 1,
                     onTap: () async {
-                      await context.push('/library/review/analyte/${a.id}');
+                      await context.push('${widget.base}/analyte/${a.id}');
                       await _load();
                     },
                   ),
@@ -214,7 +218,7 @@ class _ReviewQueueScreenState extends State<ReviewQueueScreen> {
                     icon: Icons.quiz_outlined,
                     divider: i < questions.length - 1,
                     onTap: () async {
-                      await context.push('/library/review/quiz/${q.id}');
+                      await context.push('${widget.base}/quiz/${q.id}');
                       await _load();
                     },
                   ),
