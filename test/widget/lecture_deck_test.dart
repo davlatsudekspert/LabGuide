@@ -37,7 +37,9 @@ void main() {
         expect(value.slides.length, greaterThan(10));
         for (final s in value.slides) {
           expect(s.title.trim(), isNotEmpty);
-          expect(s.bullets.length, lessThanOrEqualTo(6), reason: s.title);
+          // Slayd PPTX ko'rinishida — rasm assets'da bo'lishi shart.
+          expect(s.image, isNotNull, reason: s.title);
+          expect(File(s.image!).existsSync(), isTrue, reason: s.image);
         }
       }
     },
@@ -66,8 +68,11 @@ void main() {
 
       await goTo(tester, '/learn/lecture/d001-P');
       expect(find.text(l.lectureCounter(1, n)), findsOneWidget);
-      expect(find.text(deck.slides.first.title), findsOneWidget);
-      expect(find.textContaining(l.lectureDraftNotice), findsOneWidget);
+      Finder slideImage(int k) => find.byKey(ValueKey(deck.slides[k].image));
+      expect(slideImage(0), findsOneWidget);
+      // "Qoralama" yozuvi slayd rasmining o'zida; alohida ogohlantirish yo'q.
+      expect(deck.draft, isTrue);
+      expect(find.textContaining(l.lectureDraftNotice), findsNothing);
       expect(
         find.textContaining(l.lectureUzOnly),
         lang == AppLanguage.uz ? findsNothing : findsOneWidget,
@@ -81,7 +86,7 @@ void main() {
         await tester.pumpAndSettle();
       }
       final slide = deck.slides[withNote];
-      expect(find.text(slide.title), findsOneWidget);
+      expect(slideImage(withNote), findsOneWidget);
       expect(find.text(slide.note!), findsNothing);
       await tester.tap(find.byTooltip(l.lectureNotesShow));
       await tester.pumpAndSettle();
@@ -97,7 +102,7 @@ void main() {
         await tester.pumpAndSettle();
       }
       expect(find.text(l.lectureCounter(n, n)), findsOneWidget);
-      expect(find.text(deck.slides.last.title), findsOneWidget);
+      expect(slideImage(n - 1), findsOneWidget);
       await tester.tap(find.text(l.lectureNext));
       await tester.pumpAndSettle();
       expect(find.text(l.lectureCounter(n, n)), findsOneWidget);
@@ -113,5 +118,39 @@ void main() {
     expect(find.textContaining(l.lectureDraftNotice), findsNothing);
     expect(find.byTooltip(l.lectureNotesShow), findsNothing);
     expect(find.textContaining(' / '), findsWidgets);
+  });
+
+  testWidgets('yotiq ekran (TV): slayd to‘liq, chetini bosib o‘tish', (
+    tester,
+  ) async {
+    installDiffFakes();
+    final l = lookupAppLocalizations(const Locale('uz'));
+    final deck = (await tester.runAsync(
+      () => LectureDecks.forTopic(rootBundle, 'd001-P'),
+    ))!;
+    final s = await makeServices(tester, role: AppRole.teacher);
+    await pumpApp(tester, s, size: const Size(960, 540));
+    await goTo(tester, '/learn/lecture/d001-P');
+    final img = find.byKey(ValueKey(deck.slides.first.image));
+    expect(img, findsOneWidget);
+    // Rasm deyarli butun balandlikni egallaydi.
+    expect(tester.getSize(img).height, greaterThan(400));
+    expect(find.text(l.lectureNext), findsNothing);
+    await tester.tapAt(const Offset(900, 270));
+    await tester.pumpAndSettle();
+    expect(find.text(l.lectureCounter(2, deck.slides.length)), findsOneWidget);
+    await tester.tapAt(const Offset(60, 270));
+    await tester.pumpAndSettle();
+    expect(find.text(l.lectureCounter(1, deck.slides.length)), findsOneWidget);
+    await tester.tap(find.byTooltip(l.lectureNext));
+    await tester.pumpAndSettle();
+    final withNote = deck.slides.indexWhere((d) => d.note != null);
+    for (var k = 1; k < withNote; k++) {
+      await tester.tap(find.byTooltip(l.lectureNext));
+      await tester.pumpAndSettle();
+    }
+    await tester.tap(find.byTooltip(l.lectureNotesShow));
+    await tester.pumpAndSettle();
+    expect(find.text(deck.slides[withNote].note!), findsOneWidget);
   });
 }

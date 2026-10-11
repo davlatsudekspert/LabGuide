@@ -9,137 +9,219 @@
  "title": "Laborator xizmatni tashkillashtirish. Tibbiy etika va deontologiya",
  "slides": [
   {
-   "eyebrow": "1-modul · 1-mavzu",
    "title": "Laborator xizmatni tashkillashtirish. Tibbiy etika va deontologiya",
    "bullets": [
     "Amaliy mashg‘ulot (4 soat) + Ma’naviyat darsi (2 soat)"
-   ]
+   ],
+   "eyebrow": "1-modul · 1-mavzu",
+   "image": "assets/lectures/d001/01.jpg"
   },
   {
    "title": "Dars maqsadi va rejasi",
    "bullets": [
-    "Laboratoriya xizmati — tuzilishi, vazifalari va tahlil jarayonining bosqichlari",
-    "Sifat tizimi — JSST LQMS ning 12 ta asosiy elementi, ISO 15189",
-    "Xavfsizlik — umumiy, yong‘in, elektr va biologik xavfsizlik",
+    "Laboratoriya xizmati — vazifalari, tuzilmasi, namuna yo‘li",
+    "Sifat tizimi — JSST LQMS ning 12 ta elementi, ISO 15189",
+    "Xavfsizlik — umumiy, yong‘in, biologik; qo‘l gigiyenasi va SHHV",
     "Tibbiy etika va deontologiya — tamoyillar, konfidensiallik, halollik",
     "Ma’naviyat darsi — kasbiy burch, jamoa, bemor oldidagi mas’uliyat",
-    "Yakun — og‘zaki savollar va amaliy vaziyatlar"
+    "Yakun — vaziyatlar, mini-test va og‘zaki savollar"
    ],
-   "note": "Talabalar dars oxirida: tahlil jarayoni bosqichlarini, sifat tizimi elementlarini, asosiy xavfsizlik qoidalarini va etika tamoyillarini aytib bera olishi kerak."
+   "note": "Talabalar dars oxirida: tahlil jarayoni bosqichlarini, sifat tizimi elementlarini, asosiy xavfsizlik qoidalarini va etika tamoyillarini aytib bera olishi kerak.",
+   "image": "assets/lectures/d001/02.jpg"
   },
   {
-   "eyebrow": "1-bo‘lim",
    "title": "Laborator xizmatni tashkillashtirish",
    "bullets": [
     "Laboratoriya — tashxis jarayonining ajralmas qismi"
    ],
-   "section": true
+   "eyebrow": "1-bo‘lim",
+   "section": true,
+   "image": "assets/lectures/d001/03.jpg"
   },
   {
    "title": "Klinik laboratoriyaning vazifalari",
    "bullets": [
-    "Tashxis — Kasallikni aniqlash va tasdiqlash uchun ishonchli natija berish",
+    "Tashxis — Kasallikni aniqlash va tasdiqlash uchun ishonchli natija",
     "Monitoring — Davolash samarasini va kasallik kechishini kuzatish",
-    "Skrining va profilaktika — Yashirin kasalliklarni erta aniqlash, xavf omillarini baholash",
+    "Skrining — Yashirin kasalliklarni erta aniqlash, xavf omillarini baholash",
     "Shoshilinch yordam — Kritik natijalarni o‘z vaqtida shifokorga yetkazish",
-    "Sifat va xavfsizlik — Natijalarning aniqligi, xodim va bemor xavfsizligi",
+    "Sifat va xavfsizlik — Natijalar aniqligi, xodim va bemor xavfsizligi",
     "Ta’lim va ilm — Xodimlarni o‘qitish, yangi metodlarni joriy etish"
    ],
-   "note": "Laboratoriya natijasi ko‘plab klinik qarorlarga asos bo‘ladi — shuning uchun xato narxi yuqori. Misol: kaliy natijasi noto‘g‘ri bo‘lsa (gemoliz), noto‘g‘ri davolash boshlanishi mumkin."
+   "note": "Laboratoriya natijasi ko‘plab klinik qarorlarga asos bo‘ladi — shuning uchun xato narxi yuqori. Misol: kaliy natijasi noto‘g‘ri bo‘lsa (gemoliz), noto‘g‘ri davolash boshlanishi mumkin.",
+   "image": "assets/lectures/d001/04.jpg"
+  },
+  {
+   "title": "Laboratoriya jamoasi: kim nima qiladi",
+   "bullets": [
+    "Laboratoriya mudiri — Ishni tashkil etish, sifat tizimi va xavfsizlik uchun javobgar",
+    "KDL shifokori — Natijani klinik baholash va tasdiqlash, shifokorlar bilan maslahat",
+    "Laborant — Namunani qabul qilish, tahlil bajarish, QC, uskunaga qarash",
+    "Kichik tibbiy xodim — Tozalik, dezinfeksiya, chiqindilarni tartib bilan yig‘ish"
+   ],
+   "note": "Umumiy rollar. Aniq shtat birliklari va lavozim yo‘riqnomalari — muassasa va amaldagi me’yoriy hujjatlar bo‘yicha: ustoz o‘z muassasasidagi tuzilmani misol qilib aytsin.",
+   "image": "assets/lectures/d001/05.jpg"
   },
   {
    "title": "Tahlil jarayoni: uch bosqich",
    "bullets": [
-    "1. Preanalitik — Tahlil buyurtmasi, bemorni tayyorlash, namuna olish, belgilash, tashish, saqlash, qabul qilish",
+    "1. Preanalitik — Buyurtma, bemorni tayyorlash, namuna olish, belgilash, tashish, qabul",
     "2. Analitik — O‘lchash, kalibrlash, ichki sifat nazorati (QC), uskunaga xizmat",
-    "3. Postanalitik — Natijani tekshirish va tasdiqlash, hisobot, kritik qiymatni xabar qilish, namunani saqlash"
+    "3. Postanalitik — Natijani tekshirish va tasdiqlash, hisobot, kritik qiymatni xabar qilish"
    ],
    "note": "Adabiyotda laboratoriya xatolarining eng katta qismi preanalitik bosqichga to‘g‘ri kelishi ko‘rsatilgan (taxminan 60–70 %; Plebani M., Clin Chem Lab Med 2006). Ilovada: Lab → Preanalitika bo‘limi (namuna olish tartibi, JSST).",
-   "source": "Xatolarning katta qismi preanalitik bosqichda yuzaga keladi (Plebani, 2006) — laborant ishi shu yerdan boshlanadi."
+   "source": "Xatolarning katta qismi preanalitik bosqichda yuzaga keladi (Plebani, 2006).",
+   "image": "assets/lectures/d001/06.jpg"
   },
   {
-   "title": "Sifat tizimi — JSST LQMS ning 12 ta elementi (1/2)",
+   "title": "Namuna yo‘li: buyurtmadan natijagacha",
    "bullets": [
-    "Tashkilot — Tuzilma, rahbariyat majburiyati",
-    "Xodimlar — Malaka, o‘qitish, kompetensiya",
-    "Uskunalar — Tanlash, kalibrlash, xizmat",
-    "Xarid va zaxira — Reagentlar, yaroqlilik muddati",
-    "Jarayon nazorati — QC, namuna bilan ishlash",
-    "Axborot — Natija, hisobot, maxfiylik"
+    "1. Buyurtma — Shifokor yo‘llanmasi, tahlil turi",
+    "2. Identifikatsiya — Kamida 2 ta belgi: F.I.Sh., tug‘ilgan sana yoki ID",
+    "3. Namuna olish — To‘g‘ri probirka va tartib",
+    "4. Belgilash — Bemor oldida, darhol",
+    "5. Tashish — Vaqt va harorat sharti",
+    "6. Qabul — Tekshirish, ro‘yxatga olish",
+    "7. Tahlil — QC bilan",
+    "8. Hisobot — Tasdiqlash, kritik qiymat"
    ],
-   "note": "Manba: WHO. Laboratory Quality Management System: Handbook. 2011. Xalqaro standart: ISO 15189:2022 — tibbiy laboratoriyalar sifati va kompetensiyasi.",
-   "source": "Manba: WHO Laboratory Quality Management System Handbook (2011); ISO 15189:2022"
+   "note": "Har bir bosqichda xato bo‘lishi mumkin. Talabalardan har bosqich uchun bitta mumkin bo‘lgan xatoni aytishni so‘rang (masalan: noto‘g‘ri bemor, noto‘g‘ri probirka, uzoq tashish, belgisiz namuna).",
+   "source": "Eng xavfli xato — noto‘g‘ri bemor: identifikatsiya har doim kamida 2 belgi bilan.",
+   "image": "assets/lectures/d001/07.jpg"
   },
   {
-   "title": "Sifat tizimi — JSST LQMS ning 12 ta elementi (2/2)",
+   "title": "Namunani belgilash va qabul qilish",
    "bullets": [
-    "Hujjatlar — SOP, jurnallar, yozuvlar",
-    "Hodisalar — Xatolarni qayd etish, tahlil",
-    "Baholash — Ichki/tashqi audit, EQA",
+    "Belgilash — kamida 2 ta identifikator, namuna olingan sana va vaqt, olgan xodim",
+    "Qachon — probirka bemor oldida, namuna olingandan so‘ng darhol belgilanadi",
+    "Rad etish — belgisiz yoki noto‘g‘ri belgilangan namuna",
+    "Rad etish — noto‘g‘ri probirka, hajm yetarli emas, ivigan (antikoagulyantli probirkada)",
+    "Rad etish — tashish sharti buzilgan (vaqt, harorat); gemoliz — tahlilga qarab",
+    "Qayd etish — har bir rad etish hodisa sifatida yoziladi, bo‘limga xabar beriladi"
+   ],
+   "note": "Rad etish mezonlari laboratoriyaning yozma tartibida (SOP) bo‘lishi kerak. Muhokama: “Belgisiz probirka keldi, lekin hamshira kimniki ekanini biladi” — qabul qilinadimi? (Yo‘q.)",
+   "image": "assets/lectures/d001/08.jpg"
+  },
+  {
+   "title": "Sifat tizimi — JSST LQMS ning 12 ta elementi",
+   "bullets": [
+    "Tashkilot — Tuzilma, rahbariyat",
+    "Xodimlar — Malaka, o‘qitish",
+    "Uskunalar — Kalibrlash, xizmat",
+    "Xarid va zaxira — Reagent, muddat",
+    "Jarayon nazorati — QC, namuna",
+    "Axborot — Natija, maxfiylik",
+    "Hujjatlar — SOP, jurnallar",
+    "Hodisalar — Xatoni qayd etish",
+    "Baholash — Audit, EQA",
     "Yaxshilash — Tuzatuvchi choralar",
-    "Mijozga xizmat — Shifokor va bemor fikri",
+    "Mijozga xizmat — Shifokor, bemor fikri",
     "Bino, xavfsizlik — Joylashuv, himoya"
    ],
    "note": "Manba: WHO. Laboratory Quality Management System: Handbook. 2011. Xalqaro standart: ISO 15189:2022 — tibbiy laboratoriyalar sifati va kompetensiyasi.",
-   "source": "Manba: WHO Laboratory Quality Management System Handbook (2011); ISO 15189:2022"
+   "source": "Manba: WHO LQMS Handbook (2011); ISO 15189:2022",
+   "image": "assets/lectures/d001/09.jpg"
   },
   {
    "title": "Hujjatlar va yozuvlar",
    "bullets": [
-    "SOP (standart operatsion tartib) — har bir tahlil va jarayon uchun yozma, tasdiqlangan, ish joyida mavjud",
-    "Jurnallar — QC natijalari, uskuna xizmati, harorat (muzlatgich/termostat), reagent lotlari",
-    "Kuzatuvchanlik — “kim, qachon, qaysi uskuna va reagent bilan” savoliga javob topilishi kerak",
+    "SOP — har bir tahlil va jarayon uchun yozma, tasdiqlangan, ish joyida mavjud",
+    "Jurnallar — QC natijalari, uskuna xizmati, harorat, reagent lotlari",
+    "Kuzatuvchanlik — “kim, qachon, qaysi uskuna va reagent bilan” savoliga javob",
     "Hodisalar — xato va nomuvofiqliklar yashirilmaydi, qayd etiladi va tahlil qilinadi",
     "Qoida — “Yozilmagan ish — bajarilmagan ish”"
    ],
-   "note": "Amaliy topshiriq: guruh bitta oddiy tahlil (masalan, glyukoza) uchun SOP tuzilmasini yozib chiqsin: maqsad, namuna, reagent, uskuna, QC, hisoblash, referens oraliq, xavfsizlik."
+   "note": "Amaliy topshiriq: guruh bitta oddiy tahlil (masalan, glyukoza) uchun SOP tuzilmasini yozsin: maqsad, namuna, reagent, uskuna, QC, hisoblash, referens oraliq, xavfsizlik.",
+   "image": "assets/lectures/d001/10.jpg"
   },
   {
-   "eyebrow": "2-bo‘lim",
    "title": "Laboratoriya xavfsizligi",
    "bullets": [
     "Xodim, bemor va atrof-muhitni himoya qilish"
    ],
-   "section": true
+   "eyebrow": "2-bo‘lim",
+   "section": true,
+   "image": "assets/lectures/d001/11.jpg"
   },
   {
    "title": "Umumiy xavfsizlik tizimi",
    "bullets": [
     "Tashkiliy — Yozma xavfsizlik rejasi va SOP, mas’ul shaxs, ish boshlashda va davriy o‘qitish, favqulodda vaziyat mashqlari",
-    "Elektr — Shikastlangan rozetka/uskuna belgilanib ishdan chiqariladi; nam qo‘l bilan ulash taqiqlanadi; ta’mirda tokdan ajratish (lockout/tagout)",
+    "Elektr — Shikastlangan rozetka/uskuna belgilanib ishdan chiqariladi; nam qo‘l bilan ulash taqiqlanadi; ta’mirda tokdan ajratish",
     "Yong‘in — Yonuvchi erituvchilar minimal miqdorda, maxsus shkafda; ochiq olov nazoratsiz qoldirilmaydi; yo‘laklar ochiq"
    ],
-   "note": "Toifa og‘zaki savoli kdl-o-006 rejasi asosida. Har bir xodim avariya jihozlari joyini bilishi kerak: o‘t o‘chirgich, signal, chiqish yo‘llari, avariya dushi/ko‘z yuvgich, birinchi yordam qutisi."
+   "note": "Toifa og‘zaki savoli kdl-o-006 rejasi asosida. Har bir xodim avariya jihozlari joyini bilishi kerak: o‘t o‘chirgich, signal, chiqish yo‘llari, avariya dushi/ko‘z yuvgich, birinchi yordam qutisi.",
+   "image": "assets/lectures/d001/12.jpg"
   },
   {
    "title": "Yong‘in chiqqanda: RACE va PASS",
    "bullets": [
-    "RACE — harakat tartibi — Rescue — odamlarni olib chiqish; Alarm — signalni yoqish; Confine — eshiklarni yopib olovni cheklash; Evacuate/Extinguish — evakuatsiya yoki o‘chirish",
-    "PASS — o‘t o‘chirgich — Pull — chekani tortish; Aim — olov asosiga yo‘naltirish; Squeeze — richagni bosish; Sweep — yonma-yon purkash",
-    "O‘t o‘chirgich sinfi — A — qattiq yonuvchilar; B — yonuvchi suyuqlik/gazlar; C — tok ostidagi uskunalar (elektr o‘tkazmaydigan vosita); Kiyim yonsa — “to‘xta, yot, dumala”"
+    "RACE — harakat — Rescue — odamlarni olib chiqish; Alarm — signal; Confine — eshikni yopib cheklash; Evacuate/Extinguish — chiqish yoki o‘chirish",
+    "PASS — o‘t o‘chirgich — Pull — chekani tortish; Aim — olov asosiga; Squeeze — richagni bosish; Sweep — yonma-yon purkash",
+    "O‘t o‘chirgich sinfi — A — qattiq yonuvchilar; B — yonuvchi suyuqlik/gaz; C — tok ostidagi uskuna; Kiyim yonsa — “to‘xta, yot, dumala”"
    ],
-   "note": "kdl-o-006. Amaliy mashq: talabalar laboratoriyadagi o‘t o‘chirgich, avariya dushi va chiqish yo‘lini ko‘rsatib bersin."
+   "note": "kdl-o-006. Amaliy mashq: talabalar laboratoriyadagi o‘t o‘chirgich, avariya dushi va chiqish yo‘lini ko‘rsatib bersin.",
+   "image": "assets/lectures/d001/13.jpg"
   },
   {
-   "title": "Biologik xavfsizlik (1): asoslar",
+   "title": "Biologik xavfsizlik: asoslar",
    "bullets": [
-    "Asos — har bir ish uchun xavfni baholash: ma’lumot → baholash → nazorat strategiyasi → choralar → qayta ko‘rish",
+    "Asos — har bir ish uchun xavfni baholash: ma’lumot → baholash → nazorat → choralar → qayta ko‘rish",
     "BSL darajalari — qon, tana suyuqliklari va to‘qimalar bilan ish odatda BSL-2 sharoitida",
-    "Taqiqlanadi — ovqatlanish, ichish, chekish, kosmetika; og‘iz bilan pipetkalash (faqat mexanik dozator)"
+    "Har bir namuna — potensial yuqumli deb qaraladi (standart ehtiyot choralari)"
    ],
-   "note": "kdl-o-007 rejasi; manba: WHO Laboratory Biosafety Manual, 4th ed. (2020). BSL-1 — sog‘lom kattalarda kasallik chaqirmaydigan agentlar; BSL-2 — HBV, OIV, Salmonella va h.k.; BSL-3/4 — havo orqali yuqadigan og‘ir agentlar.",
-   "source": "Manba: WHO Laboratory Biosafety Manual, 4-nashr (2020)"
+   "note": "kdl-o-007; manba: WHO Laboratory Biosafety Manual, 4th ed. (2020). BSL-1 — sog‘lom kattalarda kasallik chaqirmaydigan agentlar; BSL-2 — HBV, OIV, Salmonella va h.k.; BSL-3/4 — havo orqali yuqadigan og‘ir agentlar.",
+   "source": "Manba: WHO Laboratory Biosafety Manual, 4-nashr (2020)",
+   "image": "assets/lectures/d001/14.jpg"
   },
   {
-   "title": "Biologik xavfsizlik (2): amaliyot",
+   "title": "Laboratoriyada taqiqlanadi",
    "bullets": [
-    "SHHV — xalat, qo‘lqop (lab tashqarisida kiyilmaydi, qayta ishlatilmaydi), sachrash xavfida ko‘z/yuz himoyasi",
+    "Ovqat va ichimlik — Ish zonasida ovqatlanish, ichish, ovqat saqlash",
+    "Chekish — Chekish va kosmetika surtish",
+    "Og‘iz bilan pipetkalash — Faqat mexanik dozator",
+    "Qo‘lqopda “toza” yuza — Qo‘lqop bilan eshik, telefon, klaviatura ushlash",
+    "Xalatda tashqariga — Xalat va qo‘lqop laboratoriyadan tashqarida kiyilmaydi",
+    "Himoyasiz ish — Sachrash xavfida ko‘z va yuz himoyasisiz ishlash"
+   ],
+   "note": "kdl-o-007 rejasi; WHO Laboratory Biosafety Manual (2020) — asosiy mikrobiologik amaliyot. Talabalar laboratoriyadagi ogohlantiruvchi belgilarni topib, ma’nosini aytsin.",
+   "image": "assets/lectures/d001/15.jpg"
+  },
+  {
+   "title": "Qo‘l gigiyenasi",
+   "bullets": [
+    "Spirtli antiseptik — 20–30 soniya, qo‘l quriguncha",
+    "Sovun va suv — 40–60 soniya; qo‘l ko‘rinadigan darajada ifloslanganda",
+    "Qachon — ish boshlashda va laboratoriyadan chiqishda",
+    "Qachon — qo‘lqop kiyishdan oldin va yechgandan keyin",
+    "Qachon — biomaterial bilan ishlagandan keyin, ovqatlanishdan oldin",
+    "Eslatma — qo‘lqop qo‘l gigiyenasini almashtirmaydi"
+   ],
+   "note": "Manba: WHO Guidelines on Hand Hygiene in Health Care (2009). Amaliy mashq: talabalar antiseptik bilan qo‘l ishlov berish texnikasini ko‘rsatsin (kaft, barmoqlar orasi, bosh barmoq, tirnoqlar, bilak).",
+   "source": "Manba: WHO Guidelines on Hand Hygiene in Health Care (2009)",
+   "image": "assets/lectures/d001/16.jpg"
+  },
+  {
+   "title": "Shaxsiy himoya vositalari: kiyish va yechish tartibi",
+   "bullets": [
+    "Kiyish: Qo‘l gigiyenasi → Xalat → Niqob → Ko‘zoynak / yuz himoyasi → Qo‘lqop",
+    "Yechish: Qo‘lqop → Ko‘zoynak / yuz himoyasi → Xalat → Niqob → Qo‘l gigiyenasi"
+   ],
+   "note": "Manba: CDC — Sequence for putting on / removing PPE. Yechishda eng ifloslangan qism (qo‘lqop) birinchi yechiladi; tashqi yuzaga tegmaslik.",
+   "source": "Manba: CDC, Sequence for putting on and removing PPE. Yechish — eng iflosidan boshlab.",
+   "image": "assets/lectures/d001/17.jpg"
+  },
+  {
+   "title": "Biologik xavfsizlik: amaliyot",
+   "bullets": [
     "O‘tkir buyumlar — igna qopqog‘i qayta kiydirilmaydi; darhol teshilmaydigan konteynerga",
     "Aerozol — sentrifugalash va ochish yopiq stakanlarda yoki biologik xavfsizlik shkafida",
-    "Chiqindilar — yuqumli material yo‘q qilishdan oldin zararsizlantiriladi (afzali avtoklav), biohazard belgisi bilan"
+    "To‘kilish — tayyor tartib bo‘yicha: cheklash, dezinfeksiya, yig‘ish",
+    "Ish yuzalari — ish oxirida va har to‘kilishdan keyin dezinfeksiya"
    ],
-   "note": "kdl-o-007. Dekontaminatsiya: ish yuzalari ish oxirida va har to‘kilishdan keyin dezinfeksiya qilinadi.",
-   "source": "Manba: WHO Laboratory Biosafety Manual, 4-nashr (2020)"
+   "note": "kdl-o-007. Dekontaminatsiya: yuqumli material yo‘q qilishdan oldin (afzali avtoklavda) zararsizlantiriladi.",
+   "source": "Manba: WHO Laboratory Biosafety Manual, 4-nashr (2020)",
+   "image": "assets/lectures/d001/18.jpg"
   },
   {
    "title": "Igna sanchilsa yoki qon shilliq qavatga tushsa",
@@ -149,39 +231,55 @@
     "3. Profilaktika — Muassasa tartibi bo‘yicha ekspozitsiyadan keyingi baholash va profilaktika — imkon qadar tezroq"
    ],
    "note": "kdl-o-007: xodimlar salomatligi — kasbiy sog‘liq talablari (jumladan, emlash), ekspozitsiyadan keyingi profilaktika tartibi. Aniq dori va muddatlar muassasa protokoli va amaldagi milliy ko‘rsatmaga ko‘ra — ustoz mahalliy tartibni aytib o‘tsin.",
-   "source": "Har bir laboratoriyada ekspozitsiyadan keyingi tartib yozma bo‘lishi va xodimlarga ma’lum bo‘lishi kerak."
+   "source": "Har bir laboratoriyada ekspozitsiyadan keyingi tartib yozma bo‘lishi va xodimlarga ma’lum bo‘lishi kerak.",
+   "image": "assets/lectures/d001/19.jpg"
   },
   {
-   "eyebrow": "3-bo‘lim",
+   "title": "Tibbiy chiqindilar",
+   "bullets": [
+    "O‘tkir buyumlar — Igna, skarifikator, shisha — teshilmaydigan konteyner; ¾ to‘lganda yopiladi",
+    "Yuqumli — Biohazard belgili qop/idish; yo‘q qilishdan oldin zararsizlantirish (avtoklav)",
+    "Kimyoviy — Reagent qoldiqlari — alohida, yorliq va xavfsizlik varag‘i bo‘yicha",
+    "Milliy talab — Chiqindi sinflari, rangi va tartibi — amaldagi sanitariya qoidalari bo‘yicha"
+   ],
+   "note": "Manba: WHO, Safe management of wastes from health-care activities (2014). Chiqindi sinflari va ranglari mamlakat sanitariya qoidalari bilan belgilanadi — ustoz amaldagi milliy tartibni aytsin.",
+   "source": "Manba: WHO, Safe management of wastes from health-care activities (2014)",
+   "image": "assets/lectures/d001/20.jpg"
+  },
+  {
    "title": "Tibbiy etika va deontologiya",
    "bullets": [
     "Kasbiy burch va xulq-atvor"
    ],
-   "section": true
+   "eyebrow": "3-bo‘lim",
+   "section": true,
+   "image": "assets/lectures/d001/21.jpg"
   },
   {
    "title": "Tushunchalar va asosiy tamoyillar",
    "bullets": [
-    "Tibbiy etika — Tibbiyot xodimining bemor, hamkasblar va jamiyatga munosabatidagi axloqiy tamoyillar",
+    "Tibbiy etika — Bemor, hamkasblar va jamiyatga munosabatdagi axloqiy tamoyillar",
     "Deontologiya — Kasbiy burch va xulq-atvor qoidalari haqidagi ta’limot",
     "Bemor manfaati — Bemor manfaatini ustun qo‘yish, zarar yetkazmaslik",
     "Avtonomiya — Bemor huquqi va ixtiyoriy xabardor rozilik",
-    "Kamsitmaslik — Xizmat faqat tibbiy ehtiyojga qarab ko‘rsatiladi",
+    "Kamsitmaslik — Xizmat faqat tibbiy ehtiyojga qarab",
     "Adolat — Har bir bemorga bir xil sifat va e’tibor"
    ],
-   "note": "kdl-o-037 rejasi asosida."
+   "note": "kdl-o-037 rejasi asosida.",
+   "image": "assets/lectures/d001/22.jpg"
   },
   {
    "title": "Laboratoriyada konfidensiallik",
    "bullets": [
-    "Tibbiy sir — tahlil natijalari va bemor ma’lumotlari faqat vakolatli shaxslarga beriladi",
-    "Muddatsiz — bu majburiyat bemor vafotidan keyin ham saqlanadi",
+    "Tibbiy sir — natijalar va bemor ma’lumotlari faqat vakolatli shaxslarga",
+    "Muddatsiz — majburiyat bemor vafotidan keyin ham saqlanadi",
     "Telefon — natija telefon orqali begonaga aytilmaydi",
     "Blankalar — ochiq qoldirilmaydi, ekranlar qulflanadi",
-    "Elektron tizim — kirish faqat shaxsiy login bilan, parol hech kimga berilmaydi",
-    "Ijtimoiy tarmoq — bemor natijasi yoki namunasi suratini joylash taqiqlanadi"
+    "Elektron tizim — shaxsiy login, parol hech kimga berilmaydi",
+    "Ijtimoiy tarmoq — natija yoki namuna surati joylanmaydi"
    ],
-   "note": "Muhokama: “Qo‘shnim mendan tanishining OIV tahlili natijasini so‘radi” — laborant qanday javob beradi?"
+   "note": "Muhokama: “Qo‘shnim tanishining tahlil natijasini so‘radi” — laborant qanday javob beradi?",
+   "image": "assets/lectures/d001/23.jpg"
   },
   {
    "title": "Kasbiy halollik va javobgarlik",
@@ -189,62 +287,82 @@
     "Kompetensiya — Doimiy o‘qish va malaka oshirish; bilmagan metodni mustaqil bajarmaslik",
     "Halollik — Xato yashirilmaydi — qayd etiladi va tuzatiladi. Natijani “to‘g‘rilab” yozish taqiqlanadi",
     "Kritik natija — Hayot uchun xavfli qiymat darhol shifokorga yetkaziladi va qayd etiladi",
-    "Hamkasblar — Hurmat va aniq kommunikatsiya: laborant–shifokor–hamshira; bemor oldida hamkasb tanqid qilinmaydi"
+    "Hamkasblar — Hurmat va aniq kommunikatsiya; bemor oldida hamkasb tanqid qilinmaydi"
    ],
    "note": "kdl-o-037. O‘zbekistonda tibbiyot xodimlarining odob-axloq kodeksi SSV ning 2022-yil 24-martdagi 88-son buyrug‘i bilan tasdiqlangan — ustoz matnini lex.uz da tekshirib, asosiy talablarini o‘qib bersin.",
-   "source": "O‘zbekiston: tibbiyot xodimlari odob-axloq kodeksi (SSV, 2022, 88-son buyruq) — matnini lex.uz da tekshiring"
+   "source": "Tibbiyot xodimlari odob-axloq kodeksi (SSV, 2022, 88-son buyruq) — matnini lex.uz da tekshiring",
+   "image": "assets/lectures/d001/24.jpg"
   },
   {
-   "eyebrow": "4-bo‘lim",
    "title": "Ma’naviyat darsi",
    "bullets": [
     "Kasb — bu mas’uliyat"
    ],
-   "section": true
+   "eyebrow": "4-bo‘lim",
+   "section": true,
+   "image": "assets/lectures/d001/25.jpg"
   },
   {
    "title": "Laborant — ko‘rinmas, lekin hal qiluvchi",
    "bullets": [
     "Har bir probirka ortida — inson: bola, ona, keksa bemor",
-    "Aniqlik — bu g‘amxo‘rlik: to‘g‘ri belgilangan namuna bemor hayotini saqlaydi",
+    "Aniqlik — g‘amxo‘rlik: to‘g‘ri belgilangan namuna hayotni saqlaydi",
     "Jamoa — laboratoriya, klinika va bemor o‘rtasidagi ishonch",
     "O‘qishdan to‘xtamaslik — tibbiyot har yili yangilanadi",
     "Halollik — “Bilmayman, aniqlab beraman” deyish kasbiy jasorat"
    ],
-   "note": "Ustoz o‘z tajribasidan bitta voqea aytib berishi tavsiya etiladi. Talabalar bilan muhokama: “Nega men bu kasbni tanladim?”"
+   "note": "Ustoz o‘z tajribasidan bitta voqea aytib berishi tavsiya etiladi. Muhokama: “Nega men bu kasbni tanladim?”",
+   "image": "assets/lectures/d001/26.jpg"
   },
   {
    "title": "Amaliy vaziyatlar (muhokama)",
    "bullets": [
     "1 — Namuna belgisiz keldi. Nima qilasiz?",
-    "2 — Kaliy 7,2 mmol/L chiqdi, namuna gemolizlangan. Natijani berasizmi?",
-    "3 — Hamkasbingiz QC “chiqib ketdi”, lekin bemor natijalarini baribir yubormoqchi.",
+    "2 — Kaliy 7,2 mmol/L, namuna gemolizlangan. Natijani berasizmi?",
+    "3 — Hamkasbingiz QC “chiqib ketgan”da ham natija yubormoqchi.",
     "4 — Qo‘lingizga igna sanchildi. Birinchi 3 ta harakatingiz?",
     "5 — Bemorning qarindoshi natijani telefon orqali so‘radi."
    ],
-   "note": "Kutilgan javoblar: 1) qabul qilinmaydi, qayta olish so‘raladi, hodisa qayd etiladi; 2) gemoliz kaliyni soxta oshiradi — natija izoh bilan yoki namuna qayta olinadi, shifokorga xabar; 3) QC talablariga javob bermaguncha bemor natijasi chiqarilmaydi — sabab topiladi, tuzatiladi; 4) yuvish, rahbarga xabar, ekspozitsiyadan keyingi tartib; 5) vakolatsiz shaxsga natija berilmaydi."
+   "note": "Kutilgan javoblar: 1) qabul qilinmaydi, qayta olish so‘raladi, hodisa qayd etiladi; 2) gemoliz kaliyni soxta oshiradi — natija izoh bilan yoki namuna qayta olinadi, shifokorga xabar; 3) QC talablariga javob bermaguncha bemor natijasi chiqarilmaydi — sabab topiladi, tuzatiladi; 4) yuvish, rahbarga xabar, ekspozitsiyadan keyingi tartib; 5) vakolatsiz shaxsga natija berilmaydi.",
+   "image": "assets/lectures/d001/27.jpg"
+  },
+  {
+   "title": "Mini-test",
+   "bullets": [
+    "1. Laboratoriya xatolarining eng ko‘p qismi qaysi bosqichda?",
+    "2. Qon bilan ish odatda qaysi biologik xavfsizlik darajasida?",
+    "3. SHHVni yechishda birinchi nima yechiladi?",
+    "4. Spirtli antiseptik bilan qo‘l ishlovi qancha davom etadi?"
+   ],
+   "note": "Javoblar: 1 — A (preanalitik); 2 — B (BSL-2); 3 — C (qo‘lqop); 4 — B (20–30 soniya). Ilovada guruh testi: O‘rganish → Guruhlar → mavzu → test.",
+   "image": "assets/lectures/d001/28.jpg"
   },
   {
    "title": "Nazorat savollari (toifa — og‘zaki)",
    "bullets": [
-    "kdl-o-006 — Laboratoriyada umumiy xavfsizlik tizimi, elektr va yong‘in xavfsizligi",
+    "kdl-o-006 — Umumiy xavfsizlik, elektr va yong‘in xavfsizligi",
     "kdl-o-007 — Biologik xavfsizlik: xavfni baholash, BSL, SHHV, chiqindilar",
     "kdl-o-037 — Tibbiy etika va deontologiya, konfidensiallik",
     "Ilovada — O‘rganish → Toifa → Og‘zaki savollar: javob rejasi bilan"
    ],
-   "note": "Savollar LabGuide toifa bankidan (rasmiy savollar). Javob rejalari ilovada mavjud."
+   "note": "Savollar LabGuide toifa bankidan (rasmiy savollar). Javob rejalari ilovada mavjud.",
+   "image": "assets/lectures/d001/29.jpg"
   },
   {
    "title": "Manbalar",
    "bullets": [
     "WHO. Laboratory Quality Management System: Handbook. Geneva: WHO; 2011.",
     "WHO. Laboratory Biosafety Manual, 4th edition. Geneva: WHO; 2020.",
+    "WHO. Guidelines on Hand Hygiene in Health Care. Geneva: WHO; 2009.",
+    "WHO. Safe management of wastes from health-care activities, 2nd ed. Geneva: WHO; 2014.",
+    "CDC. Sequence for putting on and removing personal protective equipment (PPE).",
     "ISO 15189:2022. Medical laboratories — Requirements for quality and competence.",
     "Plebani M. Errors in clinical laboratories or errors in laboratory medicine? Clin Chem Lab Med. 2006;44(6):750–759.",
     "O‘zR SSV, 2022-yil 24-mart, 88-son buyruq — tibbiyot xodimlari odob-axloq kodeksi (matni: lex.uz).",
-    "LabGuide toifa banki: kdl-o-006, kdl-o-007, kdl-o-037 (javob rejalari)."
+    "LabGuide toifa banki: kdl-o-006, kdl-o-007, kdl-o-037. Belgilar: Material Icons (Apache 2.0)."
    ],
-   "note": "Taqdimot qoralama: ustoz mazmunni tekshirib, mahalliy tartiblarni (muassasa SOP, ekspozitsiyadan keyingi protokol) qo‘shishi kerak."
+   "note": "Taqdimot qoralama: ustoz mazmunni tekshirib, mahalliy tartiblarni (muassasa SOP, ekspozitsiyadan keyingi protokol, chiqindi sinflari) qo‘shishi kerak.",
+   "image": "assets/lectures/d001/30.jpg"
   }
  ]
 }

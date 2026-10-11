@@ -35,6 +35,7 @@ class LectureSlide {
     this.teacherNote,
     this.source,
     this.section = false,
+    this.image,
   });
 
   final String? eyebrow;
@@ -50,6 +51,9 @@ class LectureSlide {
 
   /// Bo'lim boshi slaydi (sarlavha kattaroq).
   final bool section;
+
+  /// Tayyor dizayndagi slayd rasmi (16:9) — bo'lsa, matn o'rniga ko'rsatiladi.
+  final String? image;
 
   /// Savol slaydi (auditoriyaga beriladi).
   final bool question;
@@ -139,8 +143,10 @@ List<LectureSlide> buildLectureSlides(
 /// (boshqa tilda) "faqat o'zbekcha".
 List<LectureSlide> deckLectureSlides(BuildContext context, LectureDeck deck) {
   final l = AppLocalizations.of(context);
+  // Rasmli slaydlarda "qoralama" yozuvi slaydning o'zida bor.
+  final pictures = deck.slides.every((d) => d.image != null);
   final notice = [
-    if (deck.draft) l.lectureDraftNotice,
+    if (deck.draft && !pictures) l.lectureDraftNotice,
     if (deck.lang != _lang(context)) l.lectureUzOnly,
   ].join('\n');
   return [
@@ -153,6 +159,7 @@ List<LectureSlide> deckLectureSlides(BuildContext context, LectureDeck deck) {
         teacherNote: d.note,
         source: d.source,
         section: d.section,
+        image: d.image,
       ),
   ];
 }
@@ -326,88 +333,246 @@ class _LectureScreenState extends State<LectureScreen> {
         }
         return KeyEventResult.ignored;
       },
-      child: Scaffold(
-        backgroundColor: p.bg,
-        body: SafeArea(
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.fromLTRB(8, 4, 16, 0),
-                child: Row(
+      child:
+          slides[i].image != null &&
+              MediaQuery.sizeOf(context).width >
+                  MediaQuery.sizeOf(context).height
+          ? _stage(context, slides, i)
+          : Scaffold(
+              backgroundColor: p.bg,
+              body: SafeArea(
+                child: Column(
                   children: [
-                    IconButton(
-                      tooltip: l.lectureClose,
-                      icon: const Icon(Icons.close_rounded),
-                      onPressed: () => context.pop(),
-                    ),
-                    const Spacer(),
-                    if (slides[i].teacherNote != null)
-                      IconButton(
-                        key: const ValueKey('lecture-notes'),
-                        tooltip: _notes
-                            ? l.lectureNotesHide
-                            : l.lectureNotesShow,
-                        isSelected: _notes,
-                        icon: const Icon(Icons.speaker_notes_outlined),
-                        selectedIcon: const Icon(Icons.speaker_notes_rounded),
-                        onPressed: () => setState(() => _notes = !_notes),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(8, 4, 16, 0),
+                      child: Row(
+                        children: [
+                          IconButton(
+                            tooltip: l.lectureClose,
+                            icon: const Icon(Icons.close_rounded),
+                            onPressed: () => context.pop(),
+                          ),
+                          const Spacer(),
+                          if (slides[i].teacherNote != null)
+                            IconButton(
+                              key: const ValueKey('lecture-notes'),
+                              tooltip: _notes
+                                  ? l.lectureNotesHide
+                                  : l.lectureNotesShow,
+                              isSelected: _notes,
+                              icon: const Icon(Icons.speaker_notes_outlined),
+                              selectedIcon: const Icon(
+                                Icons.speaker_notes_rounded,
+                              ),
+                              onPressed: () => setState(() => _notes = !_notes),
+                            ),
+                          const SizedBox(width: 8),
+                          Semantics(
+                            liveRegion: true,
+                            child: Text(
+                              l.lectureCounter(i + 1, slides.length),
+                              style: text.labelLarge,
+                            ),
+                          ),
+                        ],
                       ),
-                    const SizedBox(width: 8),
-                    Semantics(
-                      liveRegion: true,
-                      child: Text(
-                        l.lectureCounter(i + 1, slides.length),
-                        style: text.labelLarge,
+                    ),
+                    Expanded(
+                      child: GestureDetector(
+                        behavior: HitTestBehavior.opaque,
+                        onHorizontalDragEnd: (d) {
+                          final v = d.primaryVelocity ?? 0;
+                          if (v < -200) _go(1, slides.length);
+                          if (v > 200) _go(-1, slides.length);
+                        },
+                        child: LayoutBuilder(
+                          builder: (context, box) => _SlideView(
+                            key: ValueKey(i),
+                            slide: slides[i],
+                            width: box.maxWidth,
+                            height: box.maxHeight,
+                            showNotes: _notes,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(16, 8, 16, 12),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: LgButton.secondary(
+                              label: l.lecturePrev,
+                              icon: Icons.chevron_left_rounded,
+                              onPressed: i == 0
+                                  ? null
+                                  : () => _go(-1, slides.length),
+                            ),
+                          ),
+                          const SizedBox(width: 12),
+                          Expanded(
+                            child: LgButton(
+                              label: l.lectureNext,
+                              icon: Icons.chevron_right_rounded,
+                              onPressed: i == slides.length - 1
+                                  ? null
+                                  : () => _go(1, slides.length),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ],
                 ),
               ),
-              Expanded(
-                child: GestureDetector(
-                  behavior: HitTestBehavior.opaque,
-                  onHorizontalDragEnd: (d) {
-                    final v = d.primaryVelocity ?? 0;
-                    if (v < -200) _go(1, slides.length);
-                    if (v > 200) _go(-1, slides.length);
-                  },
-                  child: LayoutBuilder(
-                    builder: (context, box) => _SlideView(
-                      key: ValueKey(i),
-                      slide: slides[i],
-                      width: box.maxWidth,
-                      height: box.maxHeight,
-                      showNotes: _notes,
+            ),
+    );
+  }
+
+  /// Yotiq ekran (TV, proyektor): rasmli slayd butun ekranda, boshqaruv
+  /// kichik va chetlarda; slayd chetini bosish — oldinga/orqaga.
+  Widget _stage(BuildContext context, List<LectureSlide> slides, int i) {
+    final l = AppLocalizations.of(context);
+    final p = LgPalette.of(context);
+    final text = Theme.of(context).textTheme;
+    final slide = slides[i];
+    Widget round(IconData icon, String tip, VoidCallback? onTap, {Key? key}) =>
+        IconButton.filledTonal(
+          key: key,
+          tooltip: tip,
+          onPressed: onTap,
+          icon: Icon(icon),
+        );
+    return Scaffold(
+      backgroundColor: p.bg,
+      body: SafeArea(
+        child: Stack(
+          children: [
+            Positioned.fill(
+              child: GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onHorizontalDragEnd: (d) {
+                  final v = d.primaryVelocity ?? 0;
+                  if (v < -200) _go(1, slides.length);
+                  if (v > 200) _go(-1, slides.length);
+                },
+                onTapUp: (d) {
+                  final w = MediaQuery.sizeOf(context).width;
+                  if (d.localPosition.dx > w * 0.65) _go(1, slides.length);
+                  if (d.localPosition.dx < w * 0.35) _go(-1, slides.length);
+                },
+                child: SizedBox.expand(
+                  child: Semantics(
+                    image: true,
+                    label: [slide.title, ...slide.bullets].join('. '),
+                    child: Image.asset(
+                      slide.image!,
+                      key: ValueKey(slide.image),
+                      width: double.infinity,
+                      height: double.infinity,
+                      fit: BoxFit.contain,
+                      filterQuality: FilterQuality.medium,
+                      excludeFromSemantics: true,
+                      gaplessPlayback: true,
                     ),
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(16, 8, 16, 12),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: LgButton.secondary(
-                        label: l.lecturePrev,
-                        icon: Icons.chevron_left_rounded,
-                        onPressed: i == 0 ? null : () => _go(-1, slides.length),
+            ),
+            Positioned(
+              top: 4,
+              left: 4,
+              child: round(
+                Icons.close_rounded,
+                l.lectureClose,
+                () => context.pop(),
+              ),
+            ),
+            Positioned(
+              top: 4,
+              right: 8,
+              child: Row(
+                children: [
+                  if (slide.teacherNote != null)
+                    round(
+                      _notes
+                          ? Icons.speaker_notes_rounded
+                          : Icons.speaker_notes_outlined,
+                      _notes ? l.lectureNotesHide : l.lectureNotesShow,
+                      () => setState(() => _notes = !_notes),
+                      key: const ValueKey('lecture-notes'),
+                    ),
+                  const SizedBox(width: 8),
+                  Semantics(
+                    liveRegion: true,
+                    child: Text(
+                      l.lectureCounter(i + 1, slides.length),
+                      style: text.labelLarge,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Positioned(
+              left: 4,
+              bottom: 4,
+              child: round(
+                Icons.chevron_left_rounded,
+                l.lecturePrev,
+                i == 0 ? null : () => _go(-1, slides.length),
+              ),
+            ),
+            Positioned(
+              right: 4,
+              bottom: 4,
+              child: round(
+                Icons.chevron_right_rounded,
+                l.lectureNext,
+                i == slides.length - 1 ? null : () => _go(1, slides.length),
+              ),
+            ),
+            if (_notes && slide.teacherNote != null)
+              Positioned(
+                left: 64,
+                right: 64,
+                bottom: 8,
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(
+                    maxHeight: MediaQuery.sizeOf(context).height * 0.4,
+                  ),
+                  child: Material(
+                    color: p.soft,
+                    borderRadius: BorderRadius.circular(12),
+                    elevation: 2,
+                    child: SingleChildScrollView(
+                      padding: const EdgeInsets.all(14),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            l.lectureTeacherNote,
+                            style: text.labelLarge!.copyWith(color: p.brand),
+                          ),
+                          const SizedBox(height: 6),
+                          Text(
+                            slide.teacherNote!,
+                            key: const ValueKey('lecture-teacher-note'),
+                            style: text.bodyMedium!.copyWith(color: p.ink),
+                          ),
+                        ],
                       ),
                     ),
-                    const SizedBox(width: 12),
-                    Expanded(
-                      child: LgButton(
-                        label: l.lectureNext,
-                        icon: Icons.chevron_right_rounded,
-                        onPressed: i == slides.length - 1
-                            ? null
-                            : () => _go(1, slides.length),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
               ),
-            ],
-          ),
+            if (slide.note != null)
+              Positioned(
+                left: 64,
+                right: 64,
+                top: 8,
+                child: LgNotice(slide.note!, kind: NoticeKind.info),
+              ),
+          ],
         ),
       ),
     );
@@ -436,6 +601,7 @@ class _SlideView extends StatelessWidget {
     final text = Theme.of(context).textTheme;
     // Katta ekranda (proyektor, planshet) shrift kattalashadi.
     final base = math.min(width / 22, height / 19).clamp(16.0, 34.0);
+    if (slide.image != null) return _picture(context, base);
     return SingleChildScrollView(
       padding: EdgeInsets.symmetric(
         horizontal: (width * 0.06).clamp(16.0, 64.0),
@@ -513,33 +679,77 @@ class _SlideView extends StatelessWidget {
           ],
           if (showNotes && slide.teacherNote != null) ...[
             const SizedBox(height: 16),
-            Container(
-              key: const ValueKey('lecture-teacher-note'),
-              width: double.infinity,
-              padding: const EdgeInsets.all(14),
-              decoration: BoxDecoration(
-                color: p.soft,
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    AppLocalizations.of(context).lectureTeacherNote,
-                    style: text.labelLarge!.copyWith(color: p.brand),
-                  ),
-                  const SizedBox(height: 6),
-                  Text(
-                    slide.teacherNote!,
-                    style: text.bodyMedium!.copyWith(
-                      fontSize: (base * 0.7).clamp(14.0, 22.0),
-                      height: 1.4,
-                      color: p.ink,
-                    ),
-                  ),
-                ],
+            _notes(context, base),
+          ],
+        ],
+      ),
+    );
+  }
+
+  Widget _notes(BuildContext context, double base) {
+    final p = LgPalette.of(context);
+    final text = Theme.of(context).textTheme;
+    return Container(
+      key: const ValueKey('lecture-teacher-note'),
+      width: double.infinity,
+      padding: const EdgeInsets.all(14),
+      decoration: BoxDecoration(
+        color: p.soft,
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            AppLocalizations.of(context).lectureTeacherNote,
+            style: text.labelLarge!.copyWith(color: p.brand),
+          ),
+          const SizedBox(height: 6),
+          Text(
+            slide.teacherNote!,
+            style: text.bodyMedium!.copyWith(
+              fontSize: (base * 0.7).clamp(14.0, 22.0),
+              height: 1.4,
+              color: p.ink,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  /// Tayyor dizayndagi slayd: ekranga sig'adigan eng katta 16:9 rasm.
+  Widget _picture(BuildContext context, double base) {
+    final pad = width > height ? 8.0 : 16.0;
+    final w = math.min(width - pad * 2, (height - pad * 2) * 16 / 9);
+    return SingleChildScrollView(
+      padding: EdgeInsets.all(pad),
+      child: Column(
+        children: [
+          Semantics(
+            image: true,
+            label: [slide.title, ...slide.bullets].join('. '),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(6),
+              child: Image.asset(
+                slide.image!,
+                key: ValueKey(slide.image),
+                width: w,
+                height: w * 9 / 16,
+                fit: BoxFit.contain,
+                filterQuality: FilterQuality.medium,
+                excludeFromSemantics: true,
+                gaplessPlayback: true,
               ),
             ),
+          ),
+          if (slide.note != null) ...[
+            const SizedBox(height: 12),
+            LgNotice(slide.note!, kind: NoticeKind.info),
+          ],
+          if (showNotes && slide.teacherNote != null) ...[
+            const SizedBox(height: 12),
+            _notes(context, base),
           ],
         ],
       ),

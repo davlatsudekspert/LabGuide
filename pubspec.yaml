@@ -74,6 +74,7 @@ flutter:
     - assets/toifa/
     - assets/curriculum/
     - assets/lectures/
+    - assets/lectures/d001/
 
   fonts:
     - family: Inter

@@ -16,6 +16,7 @@ class DeckSlide {
     this.note,
     this.source,
     this.section = false,
+    this.image,
   });
 
   factory DeckSlide.fromJson(Map<String, Object?> j) => DeckSlide(
@@ -25,6 +26,7 @@ class DeckSlide {
     note: j['note'] as String?,
     source: j['source'] as String?,
     section: j['section'] == true,
+    image: j['image'] as String?,
   );
 
   final String title;
@@ -39,6 +41,10 @@ class DeckSlide {
 
   /// Bo'lim boshi slaydi.
   final bool section;
+
+  /// Tayyor dizayndagi slayd rasmi (PPTX ko'rinishi, 16:9). Matn maydonlari
+  /// ekran o'quvchi uchun saqlanadi.
+  final String? image;
 }
 
 class LectureDeck {
