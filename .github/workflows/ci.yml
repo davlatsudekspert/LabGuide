@@ -46,7 +46,7 @@ on:
       mode:
         description: "build — imzosiz tekshiruv; testflight — imzo + TestFlight'ga yuklash; play_internal — imzoli AAB + Google Play ichki test; deploy_api — Cloudflare server"
         type: choice
-        options: [build, testflight, play_internal, deploy_api]
+        options: [build, testflight, play_internal, deploy_api, play_listing]
         default: build
       play_status:
         description: "play_internal uchun reliz holati: draft (yangi/qoralama ilova uchun shart) yoki completed"
@@ -89,7 +89,7 @@ env:
 
 jobs:
   tests:
-    if: inputs.mode != 'deploy_api'
+    if: inputs.mode != 'deploy_api' && inputs.mode != 'play_listing'
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
@@ -113,7 +113,7 @@ jobs:
   # Supabase migratsiyalari va RLS qabul testlari lokal PostgreSQL'da
   # (2 oddiy hisob + admin; statistika, murojaatlar, ruxsatlar, guruhlar).
   backend:
-    if: inputs.mode != 'deploy_api'
+    if: inputs.mode != 'deploy_api' && inputs.mode != 'play_listing'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -126,6 +126,7 @@ jobs:
 
   # Cloudflare Worker (cloudflare/): tiplar va vitest (workerd + lokal D1).
   worker:
+    if: inputs.mode != 'play_listing'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     defaults:
@@ -146,6 +147,21 @@ jobs:
           npm test 2>&1 | tee "$RUNNER_TEMP/worker.log" | tail -15
           RESULT=$(sed 's/\x1b\[[0-9;]*m//g' "$RUNNER_TEMP/worker.log" | grep -E '^ +Tests ' | tail -1 | xargs)
           echo "- Worker (Cloudflare) testlari: $RESULT" >> "$GITHUB_STEP_SUMMARY"
+
+  # play_listing: faqat do'kon sahifasi RASMLARI (ikonka, feature graphic,
+  # skrinshotlar) — docs/store dan. Matn, reliz va Production'ga tegmaydi.
+  # Service account'ga LabGuide uchun "Ilova sahifasini boshqarish" ruxsati kerak.
+  play_listing:
+    if: inputs.mode == 'play_listing'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+      - run: pip install --quiet google-api-python-client==2.151.0 google-auth==2.35.0
+      - name: Play do'kon sahifasi rasmlari
+        env:
+          GOOGLE_PLAY_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}
+        run: python3 tool/store/play_listing_images.py
 
   # deploy_api: D1 migratsiyalari + deploy (faqat `labguide-api`) + Worker
   # secretlari. Secret qiymatlari hech qayerga yozilmaydi va chiqarilmaydi:
