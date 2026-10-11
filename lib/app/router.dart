@@ -211,6 +211,10 @@ GoRouter buildRouter(
                 builder: (context, state) => const AdminAuditScreen(),
               ),
               GoRoute(
+                path: 'admins',
+                builder: (context, state) => const AdminTeamScreen(),
+              ),
+              GoRoute(
                 path: 'community',
                 builder: (context, state) => const AdminCommunityScreen(),
               ),

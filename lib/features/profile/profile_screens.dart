@@ -224,19 +224,13 @@ class ProfileScreen extends StatelessWidget {
             ),
             // Faqat server admin hisobi deb tasdiqlagan foydalanuvchiga
             // ko'rinadi; ichkarida yana 2FA va har RPC'da tekshiruv bor.
+            // Hamjamiyat moderatsiyasi va adminlar — panel ichida (bitta kirish).
             if (access.access.adminAccount)
               LgRow(
                 title: l.adminTitle,
                 subtitle: l.adminSub,
                 icon: Icons.admin_panel_settings_outlined,
                 onTap: () => context.push('/profile/admin'),
-              ),
-            if (access.access.adminAccount && services.community.available)
-              LgRow(
-                title: l.cmAdminTitle,
-                subtitle: l.cmAdminSub,
-                icon: Icons.shield_moon_outlined,
-                onTap: () => context.push(CommunityRoutes.admin),
               ),
             LgRow(
               title: l.profilePrivacy,

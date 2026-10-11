@@ -5995,7 +5995,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get adminTitle => 'Админ-панель';
 
   @override
-  String get adminSub => 'Статистика, обращения, пользователи';
+  String get adminSub => 'Модерация, обращения, контент, администраторы';
 
   @override
   String get adminMfaTitle => 'Двухфакторная защита';
@@ -7855,4 +7855,180 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get diffFbOff => 'выключено';
+
+  @override
+  String get admYouSuper => 'Вы — владелец (суперадмин)';
+
+  @override
+  String get admYouAdmin => 'Вы — администратор';
+
+  @override
+  String get adm2faOn =>
+      'Двухэтапная защита (2FA) подтверждена. Она требуется для каждого действия администратора.';
+
+  @override
+  String get admReportsQueue => 'Жалобы и участники';
+
+  @override
+  String get admReportsSub =>
+      'Очередь приостановленных, подтверждённые и отклонённые участники';
+
+  @override
+  String get admLaunchRow => 'Запуск сообщества';
+
+  @override
+  String get admLaunchRowSub =>
+      'Подтверждение основателя и стартовые вопросы (один раз)';
+
+  @override
+  String admPending(int count) {
+    return 'Ожидают: $count';
+  }
+
+  @override
+  String get admQueueEmpty => 'Очередь пуста';
+
+  @override
+  String get admNotConnected => 'На этом сервере пока не подключено';
+
+  @override
+  String get admReview => 'Проверка контента';
+
+  @override
+  String admReviewSub(int cards, int questions) {
+    return 'Не проверено: карточек — $cards, вопросов — $questions';
+  }
+
+  @override
+  String get admTeam => 'Управление администраторами';
+
+  @override
+  String admTeamCount(int count) {
+    return 'Администраторов: $count';
+  }
+
+  @override
+  String get admTeamSubManage => 'Добавление по email и удаление';
+
+  @override
+  String get admTeamSubView => 'Список (изменяет только владелец)';
+
+  @override
+  String get admLegacyNote =>
+      'Статистика, пользователи, журнал действий и партнёры ещё не перенесены на этот сервер — они появятся здесь, когда будут готовы.';
+
+  @override
+  String get admOther => 'Другие разделы';
+
+  @override
+  String get admTeamIntro =>
+      'Администратор получает полный доступ ко всем разделам: модерация сообщества, обращения, проверка контента. Права выдаёт только сервер, и для каждого действия нужен код 2FA.';
+
+  @override
+  String get admTeamOwnerOnly =>
+      'Добавлять и удалять администраторов может только владелец (суперадмин).';
+
+  @override
+  String get admAddTitle => 'Добавить администратора';
+
+  @override
+  String get admAddEmail => 'Email (например, Gmail)';
+
+  @override
+  String get admAddHint =>
+      'Права вступят в силу, когда человек войдёт с этим email и включит 2FA; если аккаунт уже есть — сразу.';
+
+  @override
+  String get admAddButton => 'Сделать администратором';
+
+  @override
+  String get admAddConfirmTitle => 'Сделать администратором?';
+
+  @override
+  String admAddConfirmBody(String email) {
+    return '$email получит полный доступ ко всем разделам администратора. Вы можете удалить его в любой момент.';
+  }
+
+  @override
+  String admAdded(String email) {
+    return 'Добавлен: $email';
+  }
+
+  @override
+  String get admInvalidEmail => 'Неверный email. Например: name@gmail.com';
+
+  @override
+  String get admErrAlready => 'Этот email уже администратор.';
+
+  @override
+  String get admErrSuper =>
+      'Это email владельца (суперадмин) — он уже администратор.';
+
+  @override
+  String admErrTooMany(int max) {
+    return 'Лимит администраторов: $max. Сначала удалите кого-нибудь.';
+  }
+
+  @override
+  String admListTitle(int count) {
+    return 'Администраторы ($count)';
+  }
+
+  @override
+  String get admKindSuper => 'Владелец · суперадмин';
+
+  @override
+  String admKindGranted(String date) {
+    return 'Админ · добавлен $date';
+  }
+
+  @override
+  String get admNotSignedIn =>
+      'Ещё не входил(а) — права вступят в силу при первом входе';
+
+  @override
+  String get admYou => 'Вы';
+
+  @override
+  String get admRemove => 'Удалить';
+
+  @override
+  String get admRemoveTitle => 'Удалить администратора?';
+
+  @override
+  String admRemoveBody(String email) {
+    return '$email сразу потеряет права администратора — на всех устройствах. Аккаунт и данные не удаляются.';
+  }
+
+  @override
+  String admRemoved(String email) {
+    return 'Удалён: $email';
+  }
+
+  @override
+  String get admSuperNote =>
+      'Владелец задан в секретной настройке сервера (LG_ADMIN_EMAILS) — из приложения не удаляется.';
+
+  @override
+  String get admNoGranted => 'Добавленных администраторов пока нет.';
+
+  @override
+  String get cmAdminRevokeTitle => 'Отменить подтверждение?';
+
+  @override
+  String get cmAdminRevokeBody =>
+      'Участник потеряет значок специалиста и не сможет снова пройти AI-проверку. Задавать вопросы он сможет.';
+
+  @override
+  String get cmAdminRestoreTitle => 'Восстановить участника?';
+
+  @override
+  String get cmAdminRestoreBody =>
+      'Вернётся статус до приостановки, публикации снова станут видны. Старые жалобы не учитываются повторно.';
+
+  @override
+  String get adminActionGrantAdded => 'Добавлен администратор';
+
+  @override
+  String get adminActionGrantRemoved => 'Администратор удалён';
 }

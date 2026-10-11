@@ -338,17 +338,29 @@ void main() {
     await _signOut(tester, s);
 
     // Admin: email + 2FA (aal2).
+    // Moderatsiya endi admin panel ichida (profilda bitta “Admin panel”).
     await _signIn(tester, s, _owner);
     await goTo(tester, '/profile');
-    await _tap(tester, find.text(l.cmAdminTitle));
+    expect(find.text(l.cmAdminTitle), findsNothing);
+    await _tap(tester, find.text(l.adminTitle));
     await tester.enterText(
       find.byType(TextField).last,
       FakeLabBackend.totpCode,
     );
     await _tap(tester, find.text(l.adminMfaVerify));
+    expect(find.text(l.admPending(1)), findsOneWidget);
+    await _tap(tester, find.text(l.admReportsQueue));
     expect(find.textContaining(l.cmAdminReporters(3)), findsOneWidget);
     expect(find.textContaining('Shubhali savol'), findsOneWidget);
     await _tap(tester, find.text(l.cmAdminRestore));
+    // Tasdiq oynasi: bekor qilinsa hech narsa o'zgarmaydi.
+    expect(find.text(l.cmAdminRestoreTitle), findsOneWidget);
+    await tester.tap(find.text(l.actionCancel));
+    await tester.pumpAndSettle();
+    expect(find.textContaining(l.cmAdminReporters(3)), findsOneWidget);
+    await _tap(tester, find.text(l.cmAdminRestore));
+    await tester.tap(find.text(l.cmAdminRestore).last);
+    await tester.pumpAndSettle();
     expect(find.text(l.cmAdminEmpty), findsOneWidget);
     await goTo(tester, '/home');
     await goTo(tester, '/profile/community');
@@ -363,8 +375,8 @@ void main() {
         final l = _l(lang);
         await pumpApp(tester, s);
         await _signIn(tester, s, _owner);
-        await goTo(tester, '/profile');
-        await _tap(tester, find.text(l.cmAdminTitle));
+        // To'g'ridan-to'g'ri havola (qo'llanmadagi yo'l — panel ichidan).
+        await goTo(tester, CommunityRoutes.admin);
         // aal1: karta yo'q, 2FA yo'li va tushuntirish ko'rinadi.
         expect(find.byKey(const ValueKey('cm-launch-button')), findsNothing);
         expect(find.text(l.cmLaunchMfaHint), findsOneWidget);
@@ -396,12 +408,13 @@ void main() {
     await pumpApp(tester, s);
     await _signIn(tester, s, _owner);
     await goTo(tester, '/profile');
-    await _tap(tester, find.text(l.cmAdminTitle));
+    await _tap(tester, find.text(l.adminTitle));
     await tester.enterText(
       find.byType(TextField).last,
       FakeLabBackend.totpCode,
     );
     await _tap(tester, find.text(l.adminMfaVerify));
+    await _tap(tester, find.text(l.admLaunchRow));
     await _tap(tester, find.byKey(const ValueKey('cm-launch-button')));
     expect(find.text(l.cmLaunchNotOwner), findsOneWidget);
   });

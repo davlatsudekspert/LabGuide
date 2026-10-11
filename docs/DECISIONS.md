@@ -620,3 +620,29 @@ Egasi qarorlari (taklif: `docs/proposals/GLOBAL_COMMUNITY_2026-10-11.md`):
   shikoyat mexanizmi va admin bekor qilishi shu uchun; PDF serverda o‘qilmaydi; model javob
   formati deploydan keyin bir marta haqiqiy so‘rov bilan tekshirilishi kerak. Maxfiylik
   siyosati va do‘kon deklaratsiyalari yangilandi (hujjat — ephemeral, Q&A — ilova ichida ommaviy).
+
+## D-44. Adminlar boshqaruvi: egasi ilovadan admin qo‘shadi/oladi (2026-10-11) — **egasi tasdig‘i kutilmoqda**
+Egasi so‘rovi: boshqa odamlarni Gmail/email bo‘yicha admin qilish va olib tashlash.
+- **Super admin** = maxfiy `LG_ADMIN_EMAILS` dagi email(lar). **Faqat super admin** admin
+  qo‘shadi/oladi; super adminni API orqali olib tashlab bo‘lmaydi (faqat secretni o‘zgartirib).
+  *(Taklif — egasi tasdiqlashi kerak: qo‘shilgan admin boshqa adminni qo‘sha olmaydi.)*
+- Qo‘shilgan admin boshqa barcha admin bo‘limlariga to‘liq kiradi (moderatsiya, hamjamiyat,
+  murojaatlar, kontent tekshiruvi); istisno — adminlarni boshqarish va “Hamjamiyatni ishga
+  tushirish” (egasi tasdig‘i, faqat `LG_ADMIN_EMAILS`).
+- Vakolatni **faqat server** beradi (D-35/D-41 qoidasi o‘zgarmadi): ilovadagi email mosligi hech
+  narsa bermaydi, hech kim o‘zini admin qila olmaydi; email kod bilan tasdiqlanganda (hisob bo‘lsa
+  — darhol) kuchga kiradi va **har admin amali TOTP (aal2)** talab qiladi.
+- D1 `admin_grants` (migratsiya `0006`): email faqat HMAC + niqob, kim qo‘shgan/olgan — HMAC(user_id),
+  sanalar; audit `admin_grant_added/removed`. Olib tashlash mavjud sessiyalarda darhol amal qiladi
+  (sessiyalar aal1 ga tushadi). Limitlar: qo‘shish soatiga 10, olish 20, faol qo‘shilgan admin ≤ 20.
+- Endpointlar: `GET/POST /v1/admin/admins`, `DELETE /v1/admin/admins/:id` (docs/BACKEND_CLOUDFLARE.md).
+- **Admin panel** endi yagona boshqaruv sahifasi (Profil → Admin panel): holat (egasi/admin, 2FA),
+  Hamjamiyat moderatsiyasi (kutilayotganlar soni; ishga tushirish — faqat egasiga), Taklif va yordam,
+  Kontent tekshiruvi (paketdagi haqiqiy tekshirilmagan sonlar), Adminlar boshqaruvi. Serverda hali
+  yo‘q bo‘limlar (murojaatlar, statistika, foydalanuvchilar, jurnal, hamkorlar) “ulanmagan” deb
+  ochiq aytiladi — soxta son yo‘q. Profildagi alohida “Hamjamiyat moderatsiyasi” qatori panelga ko‘chdi.
+  Moderatsiyadagi tiklash/bekor qilish va adminni qo‘shish/olib tashlash — tasdiq oynasi bilan.
+- Maxfiylik siyosati (uz/ru/en) yangilandi: qo‘shilgan admin emaili ham faqat hash + niqob.
+- **Ochiq (egasi hal qiladi):** hisobini o‘chirgan qo‘shilgan admin shu email bilan qayta
+  ro‘yxatdan o‘tsa, grant qolgani uchun yana admin bo‘ladi (egasi ilovada olib tashlaydi).
+  Olib tashlangan adminning TOTP kaliti saqlanib qoladi (qayta qo‘shilsa — o‘sha autentifikator).

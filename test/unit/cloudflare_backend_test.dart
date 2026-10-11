@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
+import 'package:labguide/core/backend/admin_team.dart';
 import 'package:labguide/core/backend/backend_models.dart';
 import 'package:labguide/core/backend/cloudflare_backend.dart';
 import 'package:labguide/core/backend/community_backend.dart';
@@ -859,6 +860,92 @@ void main() {
         'id': 'a1',
         'lang': 'ru',
       });
+    });
+  });
+
+  group('adminlar (D-44)', () {
+    test("ro'yxat, qo'shish, olib tashlash; super_admin /v1/me dan", () async {
+      await signIn();
+      api.on('GET', '/v1/me', 200, {
+        'admin_account': true,
+        'aal': 'aal2',
+        'super_admin': true,
+      });
+      expect((await backend.myAccess()).superAdmin, isTrue);
+      api.on('GET', '/v1/admin/admins', 200, {
+        'can_manage': true,
+        'max_granted': 20,
+        'admins': [
+          {
+            'id': null,
+            'email_masked': 'da***@gmail.com',
+            'kind': 'super',
+            'active': true,
+            'you': true,
+            'created_at': null,
+          },
+          {
+            'id': 'g-1',
+            'email_masked': 'he***@gmail.com',
+            'kind': 'granted',
+            'active': false,
+            'you': false,
+            'created_at': '2026-10-11T08:00:00.000Z',
+          },
+        ],
+      });
+      final team = await backend.adminTeam();
+      expect(team.canManage, isTrue);
+      expect(team.admins.first.removable, isFalse);
+      expect(team.admins.last.removable, isTrue);
+      expect(team.admins.last.kind, AdminKind.granted);
+      expect(team.grantedCount, 1);
+
+      api.on('POST', '/v1/admin/admins', 201, {
+        'id': 'g-2',
+        'email_masked': 'ne***@gmail.com',
+        'kind': 'granted',
+        'active': true,
+        'you': false,
+        'created_at': '2026-10-11T09:00:00.000Z',
+      });
+      final e = await backend.addAdmin('  New@Gmail.com ');
+      expect(e.emailMasked, 'ne***@gmail.com');
+      expect(jsonDecode(api.last('/v1/admin/admins').body), {
+        'email': 'New@Gmail.com',
+      });
+      expect(
+        api.last('/v1/admin/admins').headers['authorization'],
+        'Bearer tok-1',
+      );
+
+      api.on('DELETE', '/v1/admin/admins/g-2', 204);
+      await backend.removeAdmin('g-2');
+      expect(api.last('/v1/admin/admins/g-2').method, 'DELETE');
+    });
+
+    test('server xato kodi AdminTeamException.code da', () async {
+      await signIn();
+      api.on('POST', '/v1/admin/admins', 409, {'error': 'already_admin'});
+      await expectLater(
+        backend.addAdmin('x@gmail.com'),
+        throwsA(
+          isA<AdminTeamException>()
+              .having((e) => e.code, 'code', 'already_admin')
+              .having((e) => e.failure, 'failure', BackendFailure.invalid),
+        ),
+      );
+      api.on('POST', '/v1/admin/admins', 403, {'error': 'not_super_admin'});
+      await expectLater(
+        backend.addAdmin('x@gmail.com'),
+        throwsA(
+          isA<AdminTeamException>().having(
+            (e) => e.failure,
+            'failure',
+            BackendFailure.forbidden,
+          ),
+        ),
+      );
     });
   });
 }

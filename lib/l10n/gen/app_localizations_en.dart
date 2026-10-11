@@ -5977,7 +5977,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get adminTitle => 'Admin panel';
 
   @override
-  String get adminSub => 'Statistics, requests, users';
+  String get adminSub => 'Moderation, support, content, admins';
 
   @override
   String get adminMfaTitle => 'Two-step protection';
@@ -7835,4 +7835,178 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get diffFbOff => 'off';
+
+  @override
+  String get admYouSuper => 'You are the owner (super admin)';
+
+  @override
+  String get admYouAdmin => 'You are an admin';
+
+  @override
+  String get adm2faOn =>
+      'Two-step protection (2FA) is confirmed. It is required for every admin action.';
+
+  @override
+  String get admReportsQueue => 'Reports and members';
+
+  @override
+  String get admReportsSub => 'Suspended queue, verified and rejected members';
+
+  @override
+  String get admLaunchRow => 'Launch the community';
+
+  @override
+  String get admLaunchRowSub => 'Founder confirmation and starter Q&A (once)';
+
+  @override
+  String admPending(int count) {
+    return 'Pending: $count';
+  }
+
+  @override
+  String get admQueueEmpty => 'Queue is empty';
+
+  @override
+  String get admNotConnected => 'Not connected on this server yet';
+
+  @override
+  String get admReview => 'Content review';
+
+  @override
+  String admReviewSub(int cards, int questions) {
+    return 'Not yet reviewed: $cards cards, $questions questions';
+  }
+
+  @override
+  String get admTeam => 'Admin management';
+
+  @override
+  String admTeamCount(int count) {
+    return 'Admins: $count';
+  }
+
+  @override
+  String get admTeamSubManage => 'Add by email and remove';
+
+  @override
+  String get admTeamSubView => 'List (only the owner can change it)';
+
+  @override
+  String get admLegacyNote =>
+      'Statistics, users, action history and partners are not on this server yet — they will appear here when ready.';
+
+  @override
+  String get admOther => 'Other sections';
+
+  @override
+  String get admTeamIntro =>
+      'An admin gets full access to every admin section: community moderation, support threads, content review. Only the server grants this, and every action needs a 2FA code.';
+
+  @override
+  String get admTeamOwnerOnly =>
+      'Only the owner (super admin) can add and remove admins.';
+
+  @override
+  String get admAddTitle => 'Add an admin';
+
+  @override
+  String get admAddEmail => 'Email (e.g. Gmail)';
+
+  @override
+  String get admAddHint =>
+      'Access takes effect once they sign in with this email and set up 2FA; if the account exists — right away.';
+
+  @override
+  String get admAddButton => 'Make admin';
+
+  @override
+  String get admAddConfirmTitle => 'Make this person an admin?';
+
+  @override
+  String admAddConfirmBody(String email) {
+    return '$email will get full access to every admin section. You can remove them at any time.';
+  }
+
+  @override
+  String admAdded(String email) {
+    return 'Added: $email';
+  }
+
+  @override
+  String get admInvalidEmail => 'Invalid email. For example: name@gmail.com';
+
+  @override
+  String get admErrAlready => 'This email is already an admin.';
+
+  @override
+  String get admErrSuper =>
+      'This is the owner’s email (super admin) — already an admin.';
+
+  @override
+  String admErrTooMany(int max) {
+    return 'Admin limit: $max. Remove someone first.';
+  }
+
+  @override
+  String admListTitle(int count) {
+    return 'Admins ($count)';
+  }
+
+  @override
+  String get admKindSuper => 'Owner · super admin';
+
+  @override
+  String admKindGranted(String date) {
+    return 'Admin · added $date';
+  }
+
+  @override
+  String get admNotSignedIn =>
+      'Not signed in yet — access starts at first sign-in';
+
+  @override
+  String get admYou => 'You';
+
+  @override
+  String get admRemove => 'Remove';
+
+  @override
+  String get admRemoveTitle => 'Remove this admin?';
+
+  @override
+  String admRemoveBody(String email) {
+    return '$email loses admin access immediately — on every device. Their account and data are not deleted.';
+  }
+
+  @override
+  String admRemoved(String email) {
+    return 'Removed: $email';
+  }
+
+  @override
+  String get admSuperNote =>
+      'The owner is set in a secret server setting (LG_ADMIN_EMAILS) and cannot be removed from the app.';
+
+  @override
+  String get admNoGranted => 'No admins added yet.';
+
+  @override
+  String get cmAdminRevokeTitle => 'Revoke verification?';
+
+  @override
+  String get cmAdminRevokeBody =>
+      'The member loses the specialist badge and cannot be re-verified by AI. They can still ask questions.';
+
+  @override
+  String get cmAdminRestoreTitle => 'Restore this member?';
+
+  @override
+  String get cmAdminRestoreBody =>
+      'The status before suspension returns and their posts become visible again. Old reports are not counted again.';
+
+  @override
+  String get adminActionGrantAdded => 'Admin added';
+
+  @override
+  String get adminActionGrantRemoved => 'Admin removed';
 }

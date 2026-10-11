@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:material_ui/material_ui.dart';
 
 import '../core/backend/access_controller.dart';
+import '../core/backend/admin_team.dart';
 import '../core/backend/lab_backend.dart';
 import '../core/entitlements/entitlement_service.dart';
 import '../core/storage/kv_store.dart';
@@ -139,6 +140,11 @@ class AppServices {
   /// Hamjamiyat (savol-javob, mutaxassis tasdig'i) — faqat Cloudflare
   /// serveri ulangan buildda ([CommunityController.available]).
   final CommunityController community;
+
+  /// Adminlar boshqaruvi (D-44) — server bu imkoniyatga ega bo'lsa
+  /// (hozircha faqat Cloudflare). Aks holda bo'lim ko'rinmaydi.
+  AdminTeamBackend? get adminTeam =>
+      backend is AdminTeamBackend ? backend as AdminTeamBackend : null;
 
   /// Server vakolatlari va o'qilmagan javoblarni yangilash. Rol hali
   /// tanlanmagan bo'lsa profil yozilmaydi (taxminiy rol sanalmasin).

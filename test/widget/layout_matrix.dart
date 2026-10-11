@@ -174,6 +174,7 @@ const appRoutes = [
   '/profile/privacy',
   '/profile/support',
   '/profile/admin',
+  '/profile/admin/admins',
   '/profile/admin/partners',
   '/profile/admin/partners/new',
   '/profile/admin/partner-requests',
@@ -371,6 +372,7 @@ void runLayoutExtras() {
           '/profile/community/q/missing',
           '/profile/community/verify',
           '/profile/admin/community',
+          '/profile/admin/admins',
         ]) {
           await goTo(tester, route);
           expect(tester.takeException(), isNull, reason: '$lang $route');

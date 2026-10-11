@@ -8,10 +8,13 @@ import 'package:material_ui/material_ui.dart';
 import '../../app/app_scope.dart';
 import '../../app/widgets/lg_page.dart';
 import '../../app/widgets/links.dart';
+import '../../core/backend/admin_team.dart';
 import '../../core/backend/backend_models.dart';
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
+import '../auth/otp_auth.dart' show isValidEmail, normalizeEmail;
+import '../learn/exam_widgets.dart' show confirmDialog;
 import '../partners/partner_admin_screens.dart' show AdminPartnerRequestsRow;
 import '../support/support_screens.dart';
 
@@ -26,6 +29,10 @@ class AdminGate extends StatefulWidget {
 
   /// 2FA oynasi tepasida ko'rsatiladigan qisqa yo'l-yo'riq (ixtiyoriy).
   final String? mfaHint;
+
+  /// Gate ichidagi vakolat (gate tashqarisida — `null`).
+  static AccessInfo? accessOf(BuildContext context) =>
+      context.dependOnInheritedWidgetOfExactType<_AdminAccessScope>()?.access;
 
   @override
   State<AdminGate> createState() => _AdminGateState();
@@ -80,7 +87,15 @@ class _AdminGateState extends State<AdminGate> {
     }
     if (!a.aal2) {
       final hint = widget.mfaHint;
-      final panel = _MfaPanel(onVerified: _check);
+      final panel = _MfaPanel(
+        onVerified: () {
+          // Tasdiqlash tugmasi uchun pastga aylantirilgan bo'lishi mumkin:
+          // panel tepasidan (holat kartasidan) boshlansin.
+          final pos = Scrollable.maybeOf(context)?.position;
+          if (pos != null && pos.hasPixels) pos.jumpTo(pos.minScrollExtent);
+          _check();
+        },
+      );
       if (hint == null) return panel;
       return Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -91,8 +106,19 @@ class _AdminGateState extends State<AdminGate> {
         ],
       );
     }
-    return widget.child;
+    return _AdminAccessScope(access: a, child: widget.child);
   }
+}
+
+/// [AdminGate] o'tgan bolalar uchun server vakolati (masalan, super admin
+/// belgisi) — qayta so'rov yubormasdan.
+class _AdminAccessScope extends InheritedWidget {
+  const _AdminAccessScope({required this.access, required super.child});
+
+  final AccessInfo access;
+
+  @override
+  bool updateShouldNotify(_AdminAccessScope old) => old.access != access;
 }
 
 class _MfaPanel extends StatefulWidget {
@@ -233,6 +259,37 @@ class _MfaPanelState extends State<_MfaPanel> {
   }
 }
 
+/// Bo'lim ma'lumoti: yuklanmoqda / tayyor / bu serverda yo'q / xato.
+@immutable
+class _Slot<T> {
+  const _Slot() : value = null, error = null, unavailable = false;
+  const _Slot.ready(T this.value) : error = null, unavailable = false;
+  const _Slot.unavailable() : value = null, error = null, unavailable = true;
+  const _Slot.failed(Object this.error) : value = null, unavailable = false;
+
+  final T? value;
+  final Object? error;
+
+  /// Server bu bo'limni hali bermaydi (`501`) — ishlayotgandek ko'rsatilmaydi.
+  final bool unavailable;
+}
+
+Future<_Slot<T>> _slot<T>(Future<T> Function() load) async {
+  try {
+    return _Slot.ready(await load());
+  } on BackendException catch (e) {
+    return e.failure == BackendFailure.unavailable
+        ? const _Slot.unavailable()
+        : _Slot.failed(e);
+  } on Object catch (e) {
+    return _Slot.failed(e);
+  }
+}
+
+/// Admin panel — bitta boshqaruv sahifasi: hamjamiyat moderatsiyasi,
+/// murojaatlar, kontent tekshiruvi, adminlar boshqaruvi, 2FA holati.
+/// Faqat serverdan kelgan haqiqiy son ko'rsatiladi; serverda hali yo'q
+/// bo'lim “ulanmagan” deb ochiq aytiladi (bosilmaydi — boshi berk yo'l yo'q).
 class AdminHomeScreen extends StatefulWidget {
   const AdminHomeScreen({super.key});
 
@@ -241,22 +298,39 @@ class AdminHomeScreen extends StatefulWidget {
 }
 
 class _AdminHomeScreenState extends State<AdminHomeScreen> {
-  AdminStats? _stats;
-  Object? _error;
+  _Slot<AdminStats> _stats = const _Slot();
+  _Slot<int> _suspended = const _Slot();
+  _Slot<AdminTeam> _team = const _Slot();
 
   Future<void> _load() async {
-    try {
-      final s = await context.services.backend.adminStats();
-      if (mounted) setState(() => _stats = s);
-    } on Object catch (e) {
-      if (mounted) setState(() => _error = e);
-    }
+    final services = context.services;
+    final backend = services.backend;
+    final community = services.community.api;
+    final team = services.adminTeam;
+    final stats = _slot(backend.adminStats);
+    final suspended = community == null
+        ? null
+        : _slot(() async => (await community.adminMembers()).length);
+    final members = team == null ? null : _slot(team.adminTeam);
+    final st = await stats;
+    final su = await suspended;
+    final tm = await members;
+    if (!mounted) return;
+    setState(() {
+      _stats = st;
+      if (su != null) _suspended = su;
+      if (tm != null) _team = tm;
+    });
+  }
+
+  Future<void> _open(String location) async {
+    await context.push(location);
+    if (mounted) await _load();
   }
 
   @override
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context);
-    final text = Theme.of(context).textTheme;
     return LgPage(
       title: l.adminTitle,
       showProfile: false,
@@ -265,134 +339,231 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
           child: AdminGate(
             child: _AutoLoad(
               onLoad: _load,
-              child: Builder(
-                builder: (context) {
-                  final s = _stats;
-                  if (_error != null) {
-                    return LgStateView(
-                      kind: StateKind.error,
-                      title: backendErrorText(_error!, l),
-                      actionLabel: l.actionRetry,
-                      onAction: () {
-                        setState(() => _error = null);
-                        _load();
-                      },
-                    );
-                  }
-                  if (s == null) {
-                    return const LgStateView(
-                      kind: StateKind.loading,
-                      title: '',
-                    );
-                  }
-                  String roleName(String r) => switch (r) {
-                    'doctor' => l.roleDoctor,
-                    'lab' => l.roleLab,
-                    'student' => l.roleStudent,
-                    'teacher' => l.roleTeacher,
-                    _ => r,
-                  };
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      LgSectionTitle(l.adminStats),
-                      LgPanel(
-                        child: Column(
-                          children: [
-                            LgMetric(
-                              label: l.adminRegistered,
-                              value: '${s.registered}',
-                            ),
-                            LgMetric(
-                              label: l.adminNewToday,
-                              value: '${s.newToday}',
-                            ),
-                            LgMetric(label: l.adminNew7, value: '${s.new7d}'),
-                            LgMetric(label: l.adminNew30, value: '${s.new30d}'),
-                            LgMetric(
-                              label: l.adminActiveToday,
-                              value: '${s.activeToday}',
-                            ),
-                            LgMetric(
-                              label: l.adminActive7,
-                              value: '${s.active7d}',
-                            ),
-                            LgMetric(
-                              label: l.adminActive30,
-                              value: '${s.active30d}',
-                            ),
-                          ],
-                        ),
-                      ),
-                      Text(l.adminDefinitions, style: text.bodySmall),
-                      LgSectionTitle(l.adminByRole),
-                      LgPanel(
-                        child: Column(
-                          children: [
-                            for (final e in s.byRole.entries)
-                              LgMetric(
-                                label: roleName(e.key),
-                                value: '${e.value}',
-                              ),
-                            if (s.withoutProfile > 0)
-                              LgMetric(
-                                label: l.adminNoProfile(s.withoutProfile),
-                                value: '',
-                              ),
-                          ],
-                        ),
-                      ),
-                      LgSectionTitle(l.adminByLanguage),
-                      LgPanel(
-                        child: Column(
-                          children: [
-                            for (final e in s.byLanguage.entries)
-                              LgMetric(
-                                label: e.key.toUpperCase(),
-                                value: '${e.value}',
-                              ),
-                          ],
-                        ),
-                      ),
-                      LgNotice(l.adminBilling, kind: NoticeKind.info),
-                      const SizedBox(height: 8),
-                      LgRow(
-                        title: l.adminInbox,
-                        subtitle: l.adminAwaiting(
-                          s.support['awaiting_reply'] ?? 0,
-                        ),
-                        icon: Icons.inbox_outlined,
-                        onTap: () async {
-                          await context.push('/profile/admin/inbox');
-                          await _load();
-                        },
-                      ),
-                      LgRow(
-                        title: l.adminPartners,
-                        subtitle: l.adminPartnersSub,
-                        icon: Icons.storefront_outlined,
-                        onTap: () => context.push('/profile/admin/partners'),
-                      ),
-                      const AdminPartnerRequestsRow(),
-                      LgRow(
-                        title: l.adminUsers,
-                        icon: Icons.people_outline_rounded,
-                        onTap: () => context.push('/profile/admin/users'),
-                      ),
-                      LgRow(
-                        title: l.adminAudit,
-                        icon: Icons.history_rounded,
-                        onTap: () => context.push('/profile/admin/audit'),
-                        divider: false,
-                      ),
-                    ],
-                  );
-                },
-              ),
+              child: Builder(builder: (context) => _dashboard(context, l)),
             ),
           ),
         ),
       ],
+    );
+  }
+
+  Widget _dashboard(BuildContext context, AppLocalizations l) {
+    final services = context.services;
+    final access = AdminGate.accessOf(context);
+    final stats = _stats.value;
+    final pack = services.content.pack;
+    final team = _team.value;
+    final awaiting = stats?.support['awaiting_reply'] ?? 0;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        _AdminStatusPanel(superAdmin: access?.superAdmin ?? false),
+        if (services.community.available) ...[
+          LgSectionTitle(l.cmAdminTitle),
+          LgRow(
+            key: const ValueKey('admin-row-reports'),
+            title: l.admReportsQueue,
+            subtitle: _suspended.error != null
+                ? backendErrorText(_suspended.error!, l)
+                : _queueText(_suspended.value, l) ?? l.admReportsSub,
+            icon: Icons.flag_outlined,
+            trailing: _badge(_suspended.value),
+            divider: access?.superAdmin ?? false,
+            onTap: () => _open('/profile/admin/community'),
+          ),
+          // Bir tugma faqat egasi uchun (server ham faqat LG_ADMIN_EMAILS).
+          if (access?.superAdmin ?? false)
+            LgRow(
+              key: const ValueKey('admin-row-launch'),
+              title: l.admLaunchRow,
+              subtitle: l.admLaunchRowSub,
+              icon: Icons.rocket_launch_outlined,
+              divider: false,
+              onTap: () => _open('/profile/admin/community'),
+            ),
+        ],
+        LgSectionTitle(l.supportTitle),
+        if (_stats.unavailable)
+          LgRow(
+            key: const ValueKey('admin-row-inbox'),
+            title: l.adminInbox,
+            subtitle: l.admNotConnected,
+            icon: Icons.inbox_outlined,
+            divider: false,
+          )
+        else
+          LgRow(
+            key: const ValueKey('admin-row-inbox'),
+            title: l.adminInbox,
+            subtitle: _stats.error != null
+                ? backendErrorText(_stats.error!, l)
+                : stats == null
+                ? null
+                : l.adminAwaiting(awaiting),
+            icon: Icons.inbox_outlined,
+            trailing: stats == null ? null : _badge(awaiting),
+            divider: false,
+            onTap: () => _open('/profile/admin/inbox'),
+          ),
+        LgSectionTitle(l.admReview),
+        LgRow(
+          key: const ValueKey('admin-row-review'),
+          title: l.libReview,
+          subtitle: pack == null
+              ? l.libReviewSub
+              : l.admReviewSub(
+                  pack.analytes.where((a) => !a.isReviewerApproved).length,
+                  pack.quiz.where((q) => q.isDraft).length,
+                ),
+          icon: Icons.rule_rounded,
+          divider: false,
+          onTap: () => _open('/library/review'),
+        ),
+        if (services.adminTeam != null) ...[
+          LgSectionTitle(l.admTeam),
+          LgRow(
+            key: const ValueKey('admin-row-team'),
+            title: team == null
+                ? l.admTeam
+                : l.admTeamCount(team.admins.length),
+            subtitle: _team.error != null
+                ? backendErrorText(_team.error!, l)
+                : team == null
+                ? null
+                : team.canManage
+                ? l.admTeamSubManage
+                : l.admTeamSubView,
+            icon: Icons.manage_accounts_outlined,
+            divider: false,
+            onTap: () => _open('/profile/admin/admins'),
+          ),
+        ],
+        if (stats != null) ..._legacy(context, l, stats),
+        if (_stats.unavailable) ...[
+          const SizedBox(height: 16),
+          LgNotice(l.admLegacyNote, kind: NoticeKind.info),
+        ],
+      ],
+    );
+  }
+
+  /// Kutilayotganlar soni matni (son hali yo'q — `null`).
+  static String? _queueText(int? n, AppLocalizations l) => n == null
+      ? null
+      : n > 0
+      ? l.admPending(n)
+      : l.admQueueEmpty;
+
+  /// Kutilayotgan ish bo'lsa — ixcham son belgisi (0 da hech narsa).
+  static Widget? _badge(int? n) =>
+      n == null || n == 0 ? null : LgTag('$n', tone: LgTone.warning);
+
+  /// Statistika va boshqa bo'limlar — faqat server ularni bergan bo'lsa.
+  List<Widget> _legacy(BuildContext context, AppLocalizations l, AdminStats s) {
+    final text = Theme.of(context).textTheme;
+    String roleName(String r) => switch (r) {
+      'doctor' => l.roleDoctor,
+      'lab' => l.roleLab,
+      'student' => l.roleStudent,
+      'teacher' => l.roleTeacher,
+      _ => r,
+    };
+    return [
+      LgSectionTitle(l.adminStats),
+      LgPanel(
+        child: Column(
+          children: [
+            LgMetric(label: l.adminRegistered, value: '${s.registered}'),
+            LgMetric(label: l.adminNewToday, value: '${s.newToday}'),
+            LgMetric(label: l.adminNew7, value: '${s.new7d}'),
+            LgMetric(label: l.adminNew30, value: '${s.new30d}'),
+            LgMetric(label: l.adminActiveToday, value: '${s.activeToday}'),
+            LgMetric(label: l.adminActive7, value: '${s.active7d}'),
+            LgMetric(label: l.adminActive30, value: '${s.active30d}'),
+          ],
+        ),
+      ),
+      Text(l.adminDefinitions, style: text.bodySmall),
+      LgSectionTitle(l.adminByRole),
+      LgPanel(
+        child: Column(
+          children: [
+            for (final e in s.byRole.entries)
+              LgMetric(label: roleName(e.key), value: '${e.value}'),
+            if (s.withoutProfile > 0)
+              LgMetric(label: l.adminNoProfile(s.withoutProfile), value: ''),
+          ],
+        ),
+      ),
+      LgSectionTitle(l.adminByLanguage),
+      LgPanel(
+        child: Column(
+          children: [
+            for (final e in s.byLanguage.entries)
+              LgMetric(label: e.key.toUpperCase(), value: '${e.value}'),
+          ],
+        ),
+      ),
+      LgNotice(l.adminBilling, kind: NoticeKind.info),
+      LgSectionTitle(l.admOther),
+      LgRow(
+        title: l.adminPartners,
+        subtitle: l.adminPartnersSub,
+        icon: Icons.storefront_outlined,
+        onTap: () => _open('/profile/admin/partners'),
+      ),
+      const AdminPartnerRequestsRow(),
+      LgRow(
+        title: l.adminUsers,
+        icon: Icons.people_outline_rounded,
+        onTap: () => _open('/profile/admin/users'),
+      ),
+      LgRow(
+        title: l.adminAudit,
+        icon: Icons.history_rounded,
+        onTap: () => _open('/profile/admin/audit'),
+        divider: false,
+      ),
+    ];
+  }
+}
+
+/// Kim ekanligingiz va 2FA holati (panel faqat aal2 dan keyin ochiladi).
+class _AdminStatusPanel extends StatelessWidget {
+  const _AdminStatusPanel({required this.superAdmin});
+
+  final bool superAdmin;
+
+  @override
+  Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context);
+    final p = LgPalette.of(context);
+    final text = Theme.of(context).textTheme;
+    return LgPanel(
+      key: const ValueKey('admin-status'),
+      soft: true,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          ExcludeSemantics(
+            child: Icon(Icons.verified_user_outlined, color: p.brand),
+          ),
+          const SizedBox(width: 12),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  superAdmin ? l.admYouSuper : l.admYouAdmin,
+                  style: text.titleSmall,
+                ),
+                const SizedBox(height: 4),
+                Text(l.adm2faOn, style: text.bodySmall),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -908,6 +1079,8 @@ String auditActionLabel(String action, AppLocalizations l) => switch (action) {
   'reviewer_revoked' => l.adminActionReviewerRevoked,
   'admin_granted' => l.adminActionAdminGranted,
   'admin_revoked' => l.adminActionAdminRevoked,
+  'admin_grant_added' => l.adminActionGrantAdded,
+  'admin_grant_removed' => l.adminActionGrantRemoved,
   'partner_created' => l.adminActionPartnerCreated,
   'partner_updated' => l.adminActionPartnerUpdated,
   'partner_published' => l.adminActionPartnerPublished,
@@ -976,5 +1149,241 @@ class _AdminAuditScreenState extends State<AdminAuditScreen> {
         ),
       ],
     );
+  }
+}
+
+/// Adminlar boshqaruvi (D-44): ro'yxat (niqoblangan email), egasi uchun —
+/// email bo'yicha qo'shish va tasdiq bilan olib tashlash. Vakolatni server
+/// beradi; bu ekran faqat so'rov yuboradi.
+class AdminTeamScreen extends StatefulWidget {
+  const AdminTeamScreen({super.key});
+
+  @override
+  State<AdminTeamScreen> createState() => _AdminTeamScreenState();
+}
+
+class _AdminTeamScreenState extends State<AdminTeamScreen> {
+  final _email = TextEditingController();
+  AdminTeam? _team;
+  Object? _error;
+  String? _emailError;
+  bool _busy = false;
+
+  @override
+  void dispose() {
+    _email.dispose();
+    super.dispose();
+  }
+
+  Future<void> _load() async {
+    final api = context.services.adminTeam;
+    if (api == null) return;
+    try {
+      final t = await api.adminTeam();
+      if (mounted) {
+        setState(() {
+          _team = t;
+          _error = null;
+        });
+      }
+    } on Object catch (e) {
+      if (mounted) setState(() => _error = e);
+    }
+  }
+
+  void _snack(String text) => ScaffoldMessenger.of(context)
+    ..hideCurrentSnackBar()
+    ..showSnackBar(SnackBar(content: Text(text)));
+
+  String _errorText(Object e, AppLocalizations l) => switch (e) {
+    AdminTeamException(code: 'invalid_email') => l.admInvalidEmail,
+    AdminTeamException(code: 'already_admin') => l.admErrAlready,
+    AdminTeamException(code: 'already_super_admin') => l.admErrSuper,
+    AdminTeamException(code: 'too_many_admins') => l.admErrTooMany(
+      _team?.maxGranted ?? 20,
+    ),
+    AdminTeamException(code: 'not_super_admin') => l.admTeamOwnerOnly,
+    _ => backendErrorText(e, l),
+  };
+
+  Future<void> _add() async {
+    final l = AppLocalizations.of(context);
+    final api = context.services.adminTeam;
+    final email = _email.text.trim();
+    if (api == null || _busy) return;
+    if (!isValidEmail(email)) {
+      setState(() => _emailError = l.admInvalidEmail);
+      return;
+    }
+    setState(() => _emailError = null);
+    final ok = await confirmDialog(
+      context,
+      title: l.admAddConfirmTitle,
+      body: l.admAddConfirmBody(normalizeEmail(email)),
+      action: l.admAddButton,
+    );
+    if (!ok || !mounted) return;
+    setState(() => _busy = true);
+    try {
+      final added = await api.addAdmin(email);
+      if (!mounted) return;
+      _email.clear();
+      _snack(l.admAdded(added.emailMasked));
+      await _load();
+    } on Object catch (e) {
+      if (mounted) setState(() => _emailError = _errorText(e, l));
+    } finally {
+      if (mounted) setState(() => _busy = false);
+    }
+  }
+
+  Future<void> _remove(AdminEntry a) async {
+    final l = AppLocalizations.of(context);
+    final api = context.services.adminTeam;
+    final id = a.id;
+    if (api == null || id == null) return;
+    final ok = await confirmDialog(
+      context,
+      title: l.admRemoveTitle,
+      body: l.admRemoveBody(a.emailMasked),
+      action: l.admRemove,
+    );
+    if (!ok || !mounted) return;
+    try {
+      await api.removeAdmin(id);
+      if (!mounted) return;
+      _snack(l.admRemoved(a.emailMasked));
+      await _load();
+    } on Object catch (e) {
+      if (mounted) _snack(_errorText(e, l));
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context);
+    final text = Theme.of(context).textTheme;
+    final available = context.services.adminTeam != null;
+    return LgPage(
+      title: l.admTeam,
+      showProfile: false,
+      children: [
+        if (!available)
+          LgStateView(kind: StateKind.unavailable, title: l.admNotConnected)
+        else
+          SignedInGate(
+            child: AdminGate(
+              child: _AutoLoad(
+                onLoad: _load,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Text(l.admTeamIntro, style: text.bodyMedium),
+                    const SizedBox(height: 14),
+                    ..._body(context, l),
+                  ],
+                ),
+              ),
+            ),
+          ),
+      ],
+    );
+  }
+
+  List<Widget> _body(BuildContext context, AppLocalizations l) {
+    final text = Theme.of(context).textTheme;
+    final team = _team;
+    if (_error != null && team == null) {
+      return [
+        LgStateView(
+          kind: StateKind.error,
+          title: backendErrorText(_error!, l),
+          actionLabel: l.actionRetry,
+          onAction: () {
+            setState(() => _error = null);
+            _load();
+          },
+        ),
+      ];
+    }
+    if (team == null) {
+      return const [LgStateView(kind: StateKind.loading, title: '')];
+    }
+    final date = DateFormat.yMd(
+      Localizations.localeOf(context).toLanguageTag(),
+    );
+    return [
+      if (team.canManage)
+        LgPanel(
+          key: const ValueKey('admin-team-add'),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Text(l.admAddTitle, style: text.titleMedium),
+              const SizedBox(height: 8),
+              LgField(
+                label: l.admAddEmail,
+                controller: _email,
+                hint: 'name@gmail.com',
+                keyboardType: TextInputType.emailAddress,
+                textInputAction: TextInputAction.done,
+                autofillHints: const [AutofillHints.email],
+                errorText: _emailError,
+                onSubmitted: (_) => _add(),
+              ),
+              const SizedBox(height: 6),
+              Text(l.admAddHint, style: text.bodySmall),
+              const SizedBox(height: 12),
+              LgButton(
+                key: const ValueKey('admin-team-add-button'),
+                label: l.admAddButton,
+                icon: Icons.person_add_alt_1_outlined,
+                busy: _busy,
+                onPressed: _add,
+              ),
+            ],
+          ),
+        )
+      else
+        LgNotice(l.admTeamOwnerOnly, kind: NoticeKind.info),
+      LgSectionTitle(l.admListTitle(team.admins.length)),
+      for (final (i, a) in team.admins.indexed)
+        LgRow(
+          key: ValueKey('admin-team-${a.id ?? 'super-$i'}'),
+          title: a.emailMasked,
+          subtitle: [
+            if (a.kind == AdminKind.superAdmin)
+              l.admKindSuper
+            else
+              l.admKindGranted(
+                a.createdAt == null ? '—' : date.format(a.createdAt!.toLocal()),
+              ),
+            if (!a.active) l.admNotSignedIn,
+          ].join('\n'),
+          icon: a.kind == AdminKind.superAdmin
+              ? Icons.workspace_premium_outlined
+              : Icons.admin_panel_settings_outlined,
+          divider: i < team.admins.length - 1,
+          trailing: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              if (a.you) LgTag(l.admYou, tone: LgTone.brand),
+              if (team.canManage && a.removable)
+                IconButton(
+                  key: ValueKey('admin-team-remove-${a.id}'),
+                  tooltip: l.admRemove,
+                  icon: const Icon(Icons.person_remove_outlined),
+                  onPressed: () => _remove(a),
+                ),
+            ],
+          ),
+        ),
+      if (team.grantedCount == 0) ...[
+        const SizedBox(height: 8),
+        Text(l.admNoGranted, style: text.bodyMedium),
+      ],
+      const SizedBox(height: 12),
+      Text(l.admSuperNote, style: text.bodySmall),
+    ];
   }
 }

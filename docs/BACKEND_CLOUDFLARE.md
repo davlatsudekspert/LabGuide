@@ -19,12 +19,13 @@ Flutter ilova ──HTTPS/JSON──▶ Worker `labguide-api` (cloudflare/src) �
 | Joy | Nima |
 |---|---|
 | `cloudflare/src/app.ts` | marshrutlar, umumiy xato ishlovi (ichki tafsilot chiqmaydi), CORS, kunlik tozalash (cron) |
-| `cloudflare/src/auth.ts` | email OTP, sessiyalar, profil, admin TOTP, hisobni o‘chirish |
+| `cloudflare/src/auth.ts` | email OTP, sessiyalar, profil, admin TOTP, super admin tekshiruvi, hisobni o‘chirish |
+| `cloudflare/src/admins.ts` | adminlar boshqaruvi (D-44): super admin email bo‘yicha admin qo‘shadi/olib tashlaydi |
 | `cloudflare/src/community.ts` | hamjamiyat (D-43): mutaxassisni AI bilan tasdiqlash, savol-javob, ovoz, shikoyat, tarjima keshi, admin moderatsiyasi, egasi tasdig‘i va seed |
 | `cloudflare/src/groups.ts` | guruhlar, a’zolik, mavzular, savol-javob belgilari, test sessiyalari, natijalar |
 | `cloudflare/src/crypto.ts` | HMAC, SHA-256, AES-GCM, TOTP (faqat WebCrypto) |
 | `cloudflare/src/email.ts` | email yuboruvchi: Resend (standart) / Brevo, uz/ru/en matn |
-| `cloudflare/migrations/` | D1 sxemasi: `0001_auth`, `0002_classroom`, `0003_planned_ports` (faqat sxema), `0004_teacher_topics` (ustoz ro‘yxati, mavzu bosqichlari va testi), `0005_community` (hamjamiyat) |
+| `cloudflare/migrations/` | D1 sxemasi: `0001_auth`, `0002_classroom`, `0003_planned_ports` (faqat sxema), `0004_teacher_topics` (ustoz ro‘yxati, mavzu bosqichlari va testi), `0005_community` (hamjamiyat), `0006_admin_grants` (qo‘shilgan adminlar, D-44) |
 | `cloudflare/seed/` | `community_seed.json` (egasi tasdiqlagan 2 ta savol-javob), `community_seed.example.json` (sxema) |
 | `cloudflare/test/` | vitest + `@cloudflare/vitest-pool-workers` (haqiqiy workerd va lokal D1) |
 | `lib/core/backend/cloudflare_backend.dart` | ilova adapteri `CloudflareLabBackend` |
@@ -58,7 +59,7 @@ borligi ham bildirilmaydi), 409 holatga zid (masalan, ikkinchi topshirish),
 | `POST /v1/auth/otp/verify` `{email, code}` | hamma | `{token, user_id, expires_at}` (sessiya 60 kun) |
 | `POST /v1/auth/logout` | sessiya | joriy tokenni bekor qiladi |
 | `POST /v1/auth/logout-all` | sessiya | hamma qurilmalardan chiqish |
-| `GET /v1/me` | sessiya | `{user_id, role, language, admin_account, aal, admin, reviewer, teacher}` |
+| `GET /v1/me` | sessiya | `{user_id, role, language, admin_account, aal, admin, super_admin, reviewer, teacher}` (`super_admin` — email `LG_ADMIN_EMAILS` da) |
 | `POST /v1/me/teacher` | sessiya | ustoz sifatida ro‘yxat (`registerTeacher`) |
 | `PUT /v1/me/profile` `{role?, language?}` | sessiya | rol: `doctor/lab/student/teacher` (boshqasi — 400) |
 | `DELETE /v1/me` | sessiya | hisob va unga bog‘liq hamma narsa o‘chadi |
@@ -143,7 +144,7 @@ owner|specialist|member, name (faqat egasi), verified, method, role, country, is
 | `POST /v1/admin/community/members/:h/restore` · `/revoke` · `/suspend` | admin | tiklash (oldingi holat), tasdiqni bekor qilish (egasidan tashqari; to‘xtatilgan bo‘lsa to‘xtatish saqlanadi; bekor qilingan a’zo AI orqali qayta tasdiqlanmaydi — `403 revoked`), qo‘lda to‘xtatish |
 | `POST /v1/admin/seed-owner-verification` `{email}` | admin, email **`LG_ADMIN_EMAILS`** da | email serverda HMAC qilinadi; hisob topilmasa `404 user_not_found` (avval ilovaga kiring). Metadata kodda qat’iy (`OWNER_VERIFICATION`): `clinical_lab_diagnostics`, Andijon davlat tibbiyot instituti, 3.03.01 Klinik laborator diagnostika, birlamchi ixtisoslik kursi, 2026, `manual_document_review`; `is_owner=1` — postlari `LG_OWNER_DISPLAY_NAME` nomi bilan |
 | `POST /v1/admin/community/seed` (tana ixtiyoriy; bo‘sh tana — serverga biriktirilgan `cloudflare/seed/community_seed.json`) | admin; egasi tasdiqlangan bo‘lishi shart (`409 owner_not_verified`) | savol va javoblar egasi hisobidan; `seed_id` bo‘yicha **idempotent** (`{created, skipped}`) |
-| `POST /v1/admin/community/launch` (tana yo‘q) | admin (aal2); chaqiruvchining O‘Z emaili `LG_ADMIN_EMAILS` da | 1) egasi tasdig‘i (chaqiruvchi uchun), 2) biriktirilgan seed. Idempotent: `{owner_verified, questions_added, answers_added}`. Ilovada: Profil → Hamjamiyat moderatsiyasi → “Hamjamiyatni ishga tushirish” |
+| `POST /v1/admin/community/launch` (tana yo‘q) | admin (aal2); chaqiruvchining O‘Z emaili `LG_ADMIN_EMAILS` da | 1) egasi tasdig‘i (chaqiruvchi uchun), 2) biriktirilgan seed. Idempotent: `{owner_verified, questions_added, answers_added}`. Ilovada: Profil → Admin panel → “Hamjamiyatni ishga tushirish” |
 
 Hisob o‘chirilganda hamjamiyatdagi hamma narsa (savollar va ularga javoblar,
 javoblar, ovozlar, shikoyatlar, tarjimalar, holat) o‘chadi.
@@ -153,6 +154,38 @@ javoblar, ovozlar, shikoyatlar, tarjimalar, holat) o‘chadi.
 2. `POST /v1/admin/seed-owner-verification` `{"email":"<LG_ADMIN_EMAILS dagi email>"}`.
 3. `POST /v1/admin/community/seed` — tana `cloudflare/seed/community_seed.json`.
    (Bearer — ilovadagi aal2 sessiya tokeni; masalan curl bilan.)
+
+### Adminlar boshqaruvi (D-44) — `cloudflare/src/admins.ts`
+
+**Super admin** — maxfiy `LG_ADMIN_EMAILS` dagi email(lar) (egasi). Faqat u
+boshqa emailni admin qiladi va olib tashlaydi; super admin API orqali olib
+tashlanmaydi (id si yo‘q). Qo‘shilgan admin boshqa barcha admin yo‘llariga
+(moderatsiya, hamjamiyat, murojaatlar, tekshiruv…) super admin bilan teng kiradi,
+faqat adminlarni boshqarish va “Hamjamiyatni ishga tushirish” (egasi tasdig‘i)
+bundan mustasno. Har admin amali — **TOTP (aal2)**.
+
+| Endpoint | Kim | Natija |
+|---|---|---|
+| `GET /v1/admin/admins` | har admin (aal2); 10 daqiqada 60 | `{can_manage, max_granted, admins: [{id\|null, email_masked, kind: super\|granted, active, you, created_at}]}` — email faqat niqoblangan |
+| `POST /v1/admin/admins` `{email}` | faqat super admin (aal2); soatiga 10 (noto‘g‘ri so‘rov ham sanaladi) | `201` yozuv; `400 invalid_email`, `409 already_admin` / `already_super_admin` / `too_many_admins` (faol ≤ 20), `403 not_super_admin` |
+| `DELETE /v1/admin/admins/:id` | faqat super admin (aal2); soatiga 20 | `204`; `404` (yo‘q, allaqachon olingan yoki super admin) |
+
+Qoidalar:
+- `admin_grants`: `email_hmac` (= `users.email_hash` bilan bir xil HMAC), `email_masked`,
+  `granted_by_hash` / `revoked_by_hash` (HMAC(user_id)), `created_at`, `revoked_at`.
+  Ochiq email hech qayerda yo‘q (vitest tekshiradi).
+- Kuchga kirish: hisob bor bo‘lsa — darhol `admins` ga `granted_reason='admin_grant'`;
+  bo‘lmasa — o‘sha email kod bilan tasdiqlanganda (`syncAdmin`). Baribir aal2 kerak.
+- Olib tashlash: grant `revoked_at`, `admins` dan (faqat `admin_grant`) o‘chadi va
+  o‘sha hisob sessiyalari `aal1` ga tushadi — mavjud sessiyalar darhol vakolatsiz
+  (har so‘rov `admins` ni o‘qiydi). `manual` va super admin tegilmaydi.
+- Audit: `admin_grant_added`, `admin_grant_removed`, `admin_granted`/`admin_revoked`
+  (faqat grant id / user id, email yo‘q).
+- Hisob o‘chirilsa `admins` yozuvi o‘chadi, grant (email bo‘yicha) qoladi — qayta
+  ro‘yxatdan o‘tsa yana admin; kerak bo‘lmasa egasi ilovada olib tashlaydi.
+- Testlar: `cloudflare/test/admins.test.ts` (oddiy admin qo‘sha olmaydi, o‘zini
+  admin qila olmaydi, aal1 rad, olib tashlangan admin darhol vakolatsiz, validatsiya,
+  limitlar, ochiq email saqlanmaydi).
 
 ### Reja: hali ko‘chirilmagan (501)
 
@@ -189,7 +222,8 @@ Eslatma: to‘liq emailni “ochish” (`adminRevealEmail`) bu serverda **bo‘l
   ustoz hisobi (`teacher_accounts`; hisob faqat email kodi tasdiqlangach
   yaratiladi). Ustoz huquqi faqat o‘zi yaratgan guruhlarda; ustoz admin emas. **Admin** — hech bir API bermaydi: faqat maxfiy
   `LG_ADMIN_EMAILS` dagi email kod bilan tasdiqlanganda (ro‘yxatdan chiqsa —
-  keyingi kirishda olinadi) yoki egasi qo‘lda (`granted_reason='manual'`).
+  keyingi kirishda olinadi), super admin ilovada qo‘shgan email (D-44,
+  `admin_grants`; olib tashlansa — darhol) yoki egasi qo‘lda (`granted_reason='manual'`).
   Admin yo‘llari qo‘shimcha **TOTP (aal2)** talab qiladi; tasdiqlangan faktor
   bor bo‘lsa yangisini qo‘shib bo‘lmaydi; kodni qayta ishlatish rad etiladi.
   Muhim amallar `audit_log` ga (faqat qo‘shiladi).

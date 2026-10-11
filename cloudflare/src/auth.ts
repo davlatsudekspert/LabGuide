@@ -178,17 +178,43 @@ export async function verifyCode(ctx: Ctx): Promise<Response> {
   return json({ token, user_id: user.id, expires_at: iso(expires), new_user: created });
 }
 
-/**
- * Admin vakolati faqat serverda: maxfiy LG_ADMIN_EMAILS ro'yxatidagi email
- * kod bilan tasdiqlanganda beriladi; ro'yxatdan chiqsa — olinadi. Qo'lda
- * (`wrangler d1 execute`) berilgan vakolat (`granted_reason = 'manual'`) saqlanadi.
- */
-async function syncAdmin(ctx: Ctx, userId: string, email: string): Promise<void> {
-  const list = (ctx.env.LG_ADMIN_EMAILS ?? '')
+/** Maxfiy LG_ADMIN_EMAILS — super adminlar (egasi). Kichik harf, bo'shsiz. */
+export function adminAllowlist(ctx: Ctx): string[] {
+  return (ctx.env.LG_ADMIN_EMAILS ?? '')
     .split(',')
     .map((s) => s.trim().toLowerCase())
     .filter(Boolean);
-  if (list.includes(email)) {
+}
+
+/**
+ * Hisob super adminmi: uning `email_hash` i LG_ADMIN_EMAILS dagi emaillardan
+ * birining HMAC iga teng. Har so'rovda secretdan hisoblanadi (ro'yxatdan
+ * chiqarilgan email darhol super admin emas).
+ */
+export async function isSuperAdmin(ctx: Ctx, userId: string): Promise<boolean> {
+  const allow = adminAllowlist(ctx);
+  if (allow.length === 0) return false;
+  const row = await ctx.db
+    .prepare('SELECT email_hash FROM users WHERE id = ?1')
+    .bind(userId)
+    .first<{ email_hash: string }>();
+  if (!row) return false;
+  for (const e of allow) {
+    if (safeEqual(await emailHash(ctx, e), row.email_hash)) return true;
+  }
+  return false;
+}
+
+/**
+ * Admin vakolati faqat serverda: maxfiy LG_ADMIN_EMAILS ro'yxatidagi email
+ * kod bilan tasdiqlanganda beriladi; super admin qo'shgan (D-44, faol
+ * `admin_grants`) email ham shu paytda admin bo'ladi. Ro'yxatdan chiqsa —
+ * olinadi. Qo'lda (`wrangler d1 execute`) berilgan vakolat
+ * (`granted_reason = 'manual'`) saqlanadi.
+ */
+async function syncAdmin(ctx: Ctx, userId: string, email: string): Promise<void> {
+  const eh = await emailHash(ctx, email);
+  if (adminAllowlist(ctx).includes(email)) {
     const r = await ctx.db
       .prepare(
         `INSERT INTO admins (user_id, granted_at, granted_reason) VALUES (?1, ?2, 'verified allowlisted email')
@@ -197,13 +223,29 @@ async function syncAdmin(ctx: Ctx, userId: string, email: string): Promise<void>
       .bind(userId, ctx.now)
       .run();
     if (r.meta.changes) await audit(ctx, userId, 'admin_granted', userId, { reason: 'allowlist' });
-  } else {
-    const r = await ctx.db
-      .prepare(`DELETE FROM admins WHERE user_id = ?1 AND granted_reason <> 'manual'`)
-      .bind(userId)
-      .run();
-    if (r.meta.changes) await audit(ctx, userId, 'admin_revoked', userId, { reason: 'not allowlisted' });
+    return;
   }
+  const grant = await ctx.db
+    .prepare('SELECT id FROM admin_grants WHERE email_hmac = ?1 AND revoked_at IS NULL')
+    .bind(eh)
+    .first<{ id: string }>();
+  if (grant) {
+    const r = await ctx.db
+      .prepare(
+        `INSERT INTO admins (user_id, granted_at, granted_reason) VALUES (?1, ?2, 'admin_grant')
+         ON CONFLICT (user_id) DO UPDATE SET granted_reason = 'admin_grant'
+           WHERE admins.granted_reason NOT IN ('manual', 'admin_grant')`,
+      )
+      .bind(userId, ctx.now)
+      .run();
+    if (r.meta.changes) await audit(ctx, userId, 'admin_granted', userId, { reason: 'grant', grant: grant.id });
+    return;
+  }
+  const r = await ctx.db
+    .prepare(`DELETE FROM admins WHERE user_id = ?1 AND granted_reason <> 'manual'`)
+    .bind(userId)
+    .run();
+  if (r.meta.changes) await audit(ctx, userId, 'admin_revoked', userId, { reason: 'not allowlisted' });
 }
 
 export async function audit(
@@ -285,6 +327,8 @@ export async function me(ctx: Ctx): Promise<Response> {
     admin_account: f.admin,
     aal: s.aal,
     admin: f.admin && s.aal === 'aal2',
+    // Faqat LG_ADMIN_EMAILS (egasi): adminlarni qo'shish/olib tashlash (D-44).
+    super_admin: f.admin && (await isSuperAdmin(ctx, s.userId)),
     reviewer: f.reviewer,
     // Ustoz — faqat o'z guruhlari; admin vakolati emas.
     teacher: f.teacher,
