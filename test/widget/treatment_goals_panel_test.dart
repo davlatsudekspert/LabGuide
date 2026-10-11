@@ -85,6 +85,30 @@ void main() {
         findsOneWidget,
       );
 
+      // ATP III — tarixiy belgi bilan va amaldagilardan keyin; ESC/ACC
+      // jadvallarida belgi yo'q (audit 2026-10-11).
+      final historical = en.analyteGoalHistorical(
+        '${en.analyteGoalGuideline('ESC/EAS', '2019')}; '
+        '${en.analyteGoalGuideline('ACC/AHA', '2018')}',
+      );
+      for (final id in ['ncep-atp3-2001', 'ncep-atp3-2004']) {
+        expect(
+          find.byKey(ValueKey('treatment-goals-historical-$id')),
+          findsOneWidget,
+        );
+        expect(inTable(id, find.text(historical)), findsOneWidget);
+      }
+      for (final id in ['esc-eas-2019', 'acc-aha-2018']) {
+        expect(
+          find.byKey(ValueKey('treatment-goals-historical-$id')),
+          findsNothing,
+        );
+      }
+      double top(String id) =>
+          tester.getTopLeft(find.byKey(ValueKey('treatment-goals-$id'))).dy;
+      expect(top('esc-eas-2019'), lessThan(top('ncep-atp3-2001')));
+      expect(top('acc-aha-2018'), lessThan(top('ncep-atp3-2001')));
+
       // RI paneli o'zgarmagan va maqsadlar paneli ichida emas; DL yo'q.
       expect(find.text(en.analyteRefIntervalNone), findsOneWidget);
       expect(inPanel(find.text(en.analyteRefIntervalNone)), findsNothing);

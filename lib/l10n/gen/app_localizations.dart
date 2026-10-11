@@ -4294,6 +4294,12 @@ abstract class AppLocalizations {
   /// **'optional'**
   String get calcOptional;
 
+  /// Always-visible warning on the albumin-corrected calcium calculator.
+  ///
+  /// In en, this message translates to:
+  /// **'Albumin-adjusted calcium often misclassifies calcium status, especially with low albumin or kidney impairment. Where available, measure ionised calcium — it is preferred.'**
+  String get calcCalciumCaution;
+
   /// No description provided for @calcNotDiagnosis.
   ///
   /// In en, this message translates to:
@@ -11949,6 +11955,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Treatment goals are neither reference intervals nor diagnostic limits. Guidelines define risk groups differently — compare values only within one table.'**
   String get analyteTreatmentGoalsNotRef;
+
+  /// Shown under a guideline that has been replaced by newer ones.
+  ///
+  /// In en, this message translates to:
+  /// **'Historical guideline, superseded by {current}. Shown for context only — not for current treatment decisions.'**
+  String analyteGoalHistorical(String current);
 
   /// No description provided for @analyteGoalGuideline.
   ///

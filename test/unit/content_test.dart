@@ -173,12 +173,32 @@ void main() {
     test('glucose: decision limits are separate from reference intervals', () {
       final g = parse(packJson()).analyte('glucose-plasma-fasting')!;
       expect(g.referenceIntervals, isEmpty);
+      // ADA/NIDDK prediabet, JSST IFG (audit 2026-10-11) va diabet chegarasi.
       expect(g.decisionLimits.map((d) => (d.low, d.high)), [
         (100, 125),
+        (110, 125),
         (126, null),
       ]);
+      expect(g.decisionLimits[1].sourceIds, contains('who-idf-2006-diabetes'));
       expect(g.decisionLimits.every((d) => d.sourceIds.isNotEmpty), isTrue);
       expect(g.conversion!.molarMass, closeTo(180.156, 1e-9));
+    });
+
+    test('HbA1c: IFCC beside %; point-of-care per ADA 2.2b', () {
+      final pack = parse(packJson());
+      final h = pack.analyte('hba1c')!;
+      expect(h.decisionLimits[0].note!.of('en'), contains('39–47 mmol/mol'));
+      expect(h.decisionLimits[1].note!.of('en'), contains('≥ 48 mmol/mol'));
+      expect(h.decisionLimits[1].note!.of('ru'), contains('≥ 48 ммоль/моль'));
+      expect(h.decisionLimits[1].note!.of('uz'), contains('≥ 48 mmol/mol'));
+      final poc = h.claims.singleWhere(
+        (c) => c.text.of('en').contains('oint-of-care'),
+      );
+      expect(poc.text.of('en'), contains('approved for diagnosis'));
+      expect(poc.sourceIds, contains('ada-soc-2025-dx'));
+      final q = pack.quiz.singleWhere((q) => q.id == 'hba1c-q2');
+      expect(q.correctIndex, 2);
+      expect(q.options[1].explanation.of('en'), contains('ADA 2.2b'));
     });
 
     test('teacher materials are catalogue records only, never files', () {

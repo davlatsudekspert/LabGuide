@@ -4095,9 +4095,9 @@
    ],
    "correct_index": 1,
    "prompt": {
-    "uz": "Zardob temiri 50 µg/dL, TIBC 400 µg/dL. Transferrin to‘yinishi qancha?",
-    "ru": "Сывороточное железо 50 мкг/дл, ОЖСС 400 мкг/дл. Каково насыщение трансферрина?",
-    "en": "Serum iron is 50 µg/dL and TIBC is 400 µg/dL. What is the transferrin saturation?"
+    "uz": "Zardob temiri 9,0 µmol/L (50 µg/dL), TIBC 71,6 µmol/L (400 µg/dL). Transferrin to‘yinishi qancha?",
+    "ru": "Сывороточное железо 9,0 мкмоль/л (50 мкг/дл), ОЖСС 71,6 мкмоль/л (400 мкг/дл). Каково насыщение трансферрина?",
+    "en": "Serum iron is 9.0 µmol/L (50 µg/dL) and TIBC is 71.6 µmol/L (400 µg/dL). What is the transferrin saturation?"
    },
    "basis": {
     "uz": "Transferrin to‘yinishi (%) = zardob temiri / TIBC × 100 = 50 / 400 × 100 = 12,5%.",
@@ -4141,7 +4141,16 @@
       "en": "Incorrect. The formula was inverted: iron is divided by TIBC, not the other way round."
      }
     }
-   ]
+   ],
+   "review": {
+    "agent_checks": [
+     {
+      "date": "2026-10-11",
+      "scope": "dual units: SI first, conventional in parentheses; values computed by tool/content/quiz_dual_units.py with analyte-specific factors; source numbers kept; answer key unchanged",
+      "report": "docs/QUIZ_UNITS_2026-10-10.md"
+     }
+    ]
+   }
   },
   {
    "id": "vitamin-b12-q1",
@@ -4158,14 +4167,14 @@
    ],
    "correct_index": 2,
    "prompt": {
-    "uz": "Belgilari bor bemorda zardob B12 = 250 pg/mL. ODS bo‘yicha tashxisni tasdiqlash uchun qaysi tahlil tavsiya qilinadi?",
-    "ru": "У пациента с симптомами B12 сыворотки = 250 пг/мл. Какой анализ, по ODS, советуют для подтверждения?",
-    "en": "A symptomatic patient has serum B12 = 250 pg/mL. According to ODS, which test is suggested to confirm the diagnosis?"
+    "uz": "Belgilari bor bemorda zardob B12 = 184 pmol/L (250 pg/mL). ODS bo‘yicha tashxisni tasdiqlash uchun qaysi tahlil tavsiya qilinadi?",
+    "ru": "У пациента с симптомами B12 сыворотки = 184 пмоль/л (250 пг/мл). Какой анализ, по ODS, советуют для подтверждения?",
+    "en": "A symptomatic patient has serum B12 = 184 pmol/L (250 pg/mL). According to ODS, which test is suggested to confirm the diagnosis?"
    },
    "basis": {
-    "uz": "B12 150–399 pg/mL bo‘lsa, mutaxassislar zardob metilmalon kislotasini (MMA) tekshirishni tavsiya qiladi.",
-    "ru": "При B12 150–399 пг/мл эксперты советуют проверить метилмалоновую кислоту (ММК) сыворотки.",
-    "en": "With B12 of 150–399 pg/mL, experts suggest checking serum methylmalonic acid (MMA)."
+    "uz": "B12 111–294 pmol/L (150–399 pg/mL) bo‘lsa, mutaxassislar zardob metilmalon kislotasini (MMA) tekshirishni tavsiya qiladi.",
+    "ru": "При B12 111–294 пмоль/л (150–399 пг/мл) эксперты советуют проверить метилмалоновую кислоту (ММК) сыворотки.",
+    "en": "With B12 of 111–294 pmol/L (150–399 pg/mL), experts suggest checking serum methylmalonic acid (MMA)."
    },
    "options": [
     {
@@ -4204,7 +4213,16 @@
       "en": "Correct. MMA is the most sensitive B12 marker, though it also rises with renal insufficiency."
      }
     }
-   ]
+   ],
+   "review": {
+    "agent_checks": [
+     {
+      "date": "2026-10-11",
+      "scope": "dual units: SI first, conventional in parentheses; values computed by tool/content/quiz_dual_units.py with analyte-specific factors; source numbers kept; answer key unchanged",
+      "report": "docs/QUIZ_UNITS_2026-10-10.md"
+     }
+    ]
+   }
   },
   {
    "id": "folate-q1",

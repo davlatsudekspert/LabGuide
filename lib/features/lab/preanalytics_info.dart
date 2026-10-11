@@ -221,7 +221,7 @@ const haemolysisCauses = <LocalizedText>[
   LocalizedText({
     'uz': 'Juda ingichka (23G va undan ingichka) yoki tomirga nisbatan juda yo‘g‘on igna',
     'ru': 'Слишком тонкая (23G и тоньше) или слишком толстая для вены игла',
-    'en': 'A needle too fine (23 gauge or smaller) or too large for the vessel',
+    'en': 'A needle too fine (23 gauge or finer) or too large for the vessel',
   }),
   LocalizedText({
     'uz': 'Shprits porshenini bosib, qonni probirkaga majburan haydash',

@@ -2402,6 +2402,10 @@ class AppLocalizationsRu extends AppLocalizations {
   String get calcOptional => 'необязательно';
 
   @override
+  String get calcCalciumCaution =>
+      'Кальций, скорректированный по альбумину, часто неверно отражает статус кальция, особенно при низком альбумине и нарушении функции почек. Если доступно, измеряйте ионизированный кальций — он предпочтителен.';
+
+  @override
   String get calcNotDiagnosis =>
       'Вспомогательный расчёт для обучения и проверки. Не ставит диагноз: интерпретируйте результат с учётом клинической картины и референсных интервалов вашей лаборатории.';
 
@@ -6945,6 +6949,11 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get analyteTreatmentGoalsNotRef =>
       'Цели лечения — не референсные интервалы и не диагностические пороги. Рекомендации по-разному определяют группы риска — сравнивайте значения только внутри одной таблицы.';
+
+  @override
+  String analyteGoalHistorical(String current) {
+    return 'Исторические рекомендации, заменены: $current. Приведены только для контекста — не для текущих решений о лечении.';
+  }
 
   @override
   String analyteGoalGuideline(String name, String year) {

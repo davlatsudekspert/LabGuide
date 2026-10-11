@@ -527,6 +527,84 @@
    "jurisdiction": "US",
    "note": null,
    "reuse_rights": "verify_before_distribution"
+  },
+  {
+   "id": "ada-soc-2025-dx",
+   "kind": "web",
+   "title": "2. Diagnosis and Classification of Diabetes: Standards of Care in Diabetes—2025 (American Diabetes Association Professional Practice Committee; Diabetes Care 2025;48(Suppl 1):S27–S49, doi:10.2337/dc25-S002, PMID 39651986)",
+   "publisher": "American Diabetes Association (ADA)",
+   "url": "https://doi.org/10.2337/dc25-S002",
+   "accessed": "2026-10-11",
+   "source_date": "2025-01",
+   "jurisdiction": "US",
+   "note": "Recommendation 2.2b (point-of-care A1C), Tables 2.1–2.2 (A1C in % and mmol/mol), section “Prediabetes” (WHO IFG lower limit 110 mg/dL).",
+   "reuse_rights": "verify_before_distribution",
+   "review_note": "Read via PMC (PMC11635041). Only criteria restated in our own words."
+  },
+  {
+   "id": "who-idf-2006-diabetes",
+   "kind": "web",
+   "title": "Definition and diagnosis of diabetes mellitus and intermediate hyperglycaemia: report of a WHO/IDF consultation (2006)",
+   "publisher": "World Health Organization · International Diabetes Federation",
+   "url": "https://iris.who.int/handle/10665/43588",
+   "accessed": "2026-10-11",
+   "source_date": "2006",
+   "jurisdiction": "International (WHO)",
+   "note": "Summary table: IFG — fasting plasma glucose 6.1–6.9 mmol/L (110–125 mg/dL) and, if measured, 2-h glucose < 7.8 mmol/L.",
+   "reuse_rights": "verify_before_distribution",
+   "review_note": "PDF from WHO IRIS read; only the numeric criteria restated."
+  },
+  {
+   "id": "alberti-2009-mets",
+   "kind": "web",
+   "title": "Harmonizing the metabolic syndrome: a joint interim statement of IDF, NHLBI, AHA, WHF, IAS and IASO (Alberti KGMM et al., Circulation 2009;120:1640–1645, doi:10.1161/CIRCULATIONAHA.109.192644, PMID 19805654)",
+   "publisher": "Circulation · American Heart Association",
+   "url": "https://doi.org/10.1161/CIRCULATIONAHA.109.192644",
+   "accessed": "2026-10-11",
+   "source_date": "2009-10",
+   "jurisdiction": "International",
+   "note": "Three of five criteria; single cut points for all components except waist circumference (Table 1).",
+   "reuse_rights": "verify_before_distribution",
+   "review_note": "Abstract read via PubMed; cut points as widely reproduced (TG ≥ 150 mg/dL, fasting glucose ≥ 100 mg/dL)."
+  },
+  {
+   "id": "acog-pb222-2020",
+   "kind": "web",
+   "title": "Gestational Hypertension and Preeclampsia: ACOG Practice Bulletin No. 222 (Obstet Gynecol 2020;135:e237–e260, doi:10.1097/AOG.0000000000003891, PMID 32443079)",
+   "publisher": "American College of Obstetricians and Gynecologists (ACOG)",
+   "url": "https://doi.org/10.1097/AOG.0000000000003891",
+   "accessed": "2026-10-11",
+   "source_date": "2020-06",
+   "jurisdiction": "US",
+   "note": "Box 3 (preeclampsia with severe features): the amount of proteinuria is no longer a severe feature (since the ACOG 2013 Task Force).",
+   "reuse_rights": "verify_before_distribution",
+   "review_note": "Metadata via PubMed; severe-feature list confirmed from secondary summaries — full Box 3 text not read."
+  },
+  {
+   "id": "bozkurt-2021-hf-universal",
+   "kind": "web",
+   "title": "Universal Definition and Classification of Heart Failure (Bozkurt B et al., J Card Fail 2021;27:387–413, doi:10.1016/j.cardfail.2021.01.022, PMID 33663906)",
+   "publisher": "HFSA · HFA of the ESC · JHFS",
+   "url": "https://doi.org/10.1016/j.cardfail.2021.01.022",
+   "accessed": "2026-10-11",
+   "source_date": "2021-03",
+   "jurisdiction": "International",
+   "note": "HFrEF LVEF ≤ 40%; HFmrEF 41–49%; HFpEF ≥ 50%; HFimpEF.",
+   "reuse_rights": "verify_before_distribution",
+   "review_note": "Abstract read via PubMed (gives the EF categories)."
+  },
+  {
+   "id": "esc-hf-2021",
+   "kind": "web",
+   "title": "2021 ESC Guidelines for the diagnosis and treatment of acute and chronic heart failure (McDonagh TA et al., Eur Heart J 2021;42:3599–3726, doi:10.1093/eurheartj/ehab368, PMID 34447992)",
+   "publisher": "European Society of Cardiology (ESC)",
+   "url": "https://doi.org/10.1093/eurheartj/ehab368",
+   "accessed": "2026-10-11",
+   "source_date": "2021-08",
+   "jurisdiction": "Europe (ESC)",
+   "note": "Uses the term HF with mildly reduced EF (HFmrEF, LVEF 41–49%).",
+   "reuse_rights": "verify_before_distribution",
+   "review_note": "Metadata via PubMed."
   }
  ],
  "conditions": [
@@ -751,9 +829,9 @@
    "patterns": [
     {
      "finding": {
-      "uz": "HbA1c ≥ 6,5% yoki och qoringa glyukoza ≥ 126 mg/dL (≈7,0 mmol/L) yoki OGTT 2-soat ≥ 200 mg/dL (≈11,1 mmol/L)",
-      "ru": "HbA1c ≥ 6,5% или глюкоза натощак ≥ 126 мг/дл (≈7,0 ммоль/л) или ПГТТ через 2 ч ≥ 200 мг/дл (≈11,1 ммоль/л)",
-      "en": "A1C ≥ 6.5%, or fasting glucose ≥ 126 mg/dL (≈7.0 mmol/L), or 2-hour OGTT ≥ 200 mg/dL (≈11.1 mmol/L)"
+      "uz": "HbA1c ≥ 6,5% (≥ 48 mmol/mol) yoki och qoringa glyukoza ≥ 126 mg/dL (≈7,0 mmol/L) yoki OGTT 2-soat ≥ 200 mg/dL (≈11,1 mmol/L)",
+      "ru": "HbA1c ≥ 6,5% (≥ 48 ммоль/моль) или глюкоза натощак ≥ 126 мг/дл (≈7,0 ммоль/л) или ПГТТ через 2 ч ≥ 200 мг/дл (≈11,1 ммоль/л)",
+      "en": "A1C ≥ 6.5% (≥ 48 mmol/mol), or fasting glucose ≥ 126 mg/dL (≈7.0 mmol/L), or 2-hour OGTT ≥ 200 mg/dL (≈11.1 mmol/L)"
      },
      "meaning": {
       "uz": "Diabet ehtimoli. Odatda ikkinchi test bilan tasdiqlanadi.",
@@ -764,19 +842,23 @@
       {
        "source_id": "niddk-diagnosis",
        "locator": "What test results tell me if I have diabetes or prediabetes?"
+      },
+      {
+       "source_id": "ada-soc-2025-dx",
+       "locator": "Table 2.1"
       }
      ]
     },
     {
      "finding": {
-      "uz": "HbA1c 5,7–6,4% yoki och qoringa glyukoza 100–125 mg/dL (≈5,6–6,9 mmol/L) yoki OGTT 140–199 mg/dL (≈7,8–11,0 mmol/L)",
-      "ru": "HbA1c 5,7–6,4% или глюкоза натощак 100–125 мг/дл (≈5,6–6,9 ммоль/л) или ПГТТ 140–199 мг/дл (≈7,8–11,0 ммоль/л)",
-      "en": "A1C 5.7–6.4%, or fasting glucose 100–125 mg/dL (≈5.6–6.9 mmol/L), or OGTT 140–199 mg/dL (≈7.8–11.0 mmol/L)"
+      "uz": "HbA1c 5,7–6,4% (39–47 mmol/mol) yoki och qoringa glyukoza 100–125 mg/dL (≈5,6–6,9 mmol/L; JSST: 110–125 mg/dL, 6,1–6,9 mmol/L) yoki OGTT 140–199 mg/dL (≈7,8–11,0 mmol/L)",
+      "ru": "HbA1c 5,7–6,4% (39–47 ммоль/моль) или глюкоза натощак 100–125 мг/дл (≈5,6–6,9 ммоль/л; ВОЗ: 110–125 мг/дл, 6,1–6,9 ммоль/л) или ПГТТ 140–199 мг/дл (≈7,8–11,0 ммоль/л)",
+      "en": "A1C 5.7–6.4% (39–47 mmol/mol), or fasting glucose 100–125 mg/dL (≈5.6–6.9 mmol/L; WHO: 110–125 mg/dL, 6.1–6.9 mmol/L), or OGTT 140–199 mg/dL (≈7.8–11.0 mmol/L)"
      },
      "meaning": {
-      "uz": "Prediabet ehtimoli; 2-tip diabetga har yili qayta tekshirish tavsiya etiladi.",
-      "ru": "Вероятен преддиабет; рекомендуется ежегодная проверка на диабет 2 типа.",
-      "en": "Prediabetes is likely; yearly testing for type 2 diabetes is recommended."
+      "uz": "Prediabet ehtimoli (ADA mezonlari; JSST faqat glyukoza bo‘yicha «buzilgan och qoringa glikemiya» ni 6,1 mmol/L dan belgilaydi); 2-tip diabetga har yili qayta tekshirish tavsiya etiladi.",
+      "ru": "Вероятен преддиабет (критерии ADA; ВОЗ определяет «нарушенную гликемию натощак» только по глюкозе — от 6,1 ммоль/л); рекомендуется ежегодная проверка на диабет 2 типа.",
+      "en": "Prediabetes is likely (ADA criteria; WHO defines impaired fasting glycaemia by glucose only, from 6.1 mmol/L); yearly testing for type 2 diabetes is recommended."
      },
      "refs": [
       {
@@ -786,6 +868,14 @@
       {
        "source_id": "niddk-diagnosis",
        "locator": "Type 2 diabetes"
+      },
+      {
+       "source_id": "ada-soc-2025-dx",
+       "locator": "Table 2.2; Prediabetes"
+      },
+      {
+       "source_id": "who-idf-2006-diabetes",
+       "locator": "Summary table — Impaired Fasting Glucose (IFG)"
       }
      ]
     },
@@ -4759,14 +4849,22 @@
       "en": "Ejection fraction ≤ 40% / 41–49% / ≥ 50%"
      },
      "meaning": {
-      "uz": "Otilish fraksiyasi pasaygan / chegaraviy / saqlangan yurak yetishmovchiligi.",
-      "ru": "Сердечная недостаточность со сниженной / пограничной / сохранённой фракцией выброса.",
-      "en": "Heart failure with reduced / borderline / preserved ejection fraction."
+      "uz": "Otilish fraksiyasi pasaygan (HFrEF) / biroz pasaygan (HFmrEF) / saqlangan (HFpEF) yurak yetishmovchiligi.",
+      "ru": "Сердечная недостаточность со сниженной (СНнФВ) / умеренно сниженной (СНунФВ) / сохранённой (СНсФВ) фракцией выброса.",
+      "en": "Heart failure with reduced (HFrEF) / mildly reduced (HFmrEF) / preserved (HFpEF) ejection fraction."
      },
      "refs": [
       {
        "source_id": "nhlbi-heart-failure-dx",
        "locator": "Tests to measure your ejection fraction"
+      },
+      {
+       "source_id": "bozkurt-2021-hf-universal",
+       "locator": "Abstract; classification by LVEF"
+      },
+      {
+       "source_id": "esc-hf-2021",
+       "locator": "Section 3.1 (definition and terminology by LVEF)"
       }
      ]
     }
@@ -5148,19 +5246,23 @@
    "patterns": [
     {
      "finding": {
-      "uz": "Triglitseridlar doimiy ravishda > 150 mg/dL (≈1,7 mmol/L)",
-      "ru": "Триглицериды стойко > 150 мг/дл (≈1,7 ммоль/л)",
-      "en": "Triglycerides consistently > 150 mg/dL (≈1.7 mmol/L)"
+      "uz": "Triglitseridlar ≥ 150 mg/dL (≈1,7 mmol/L)",
+      "ru": "Триглицериды ≥ 150 мг/дл (≈1,7 ммоль/л)",
+      "en": "Triglycerides ≥ 150 mg/dL (≈1.7 mmol/L)"
      },
      "meaning": {
-      "uz": "Metabolik sindrom mezonlaridan biri.",
-      "ru": "Один из критериев метаболического синдрома.",
-      "en": "One metabolic syndrome criterion."
+      "uz": "Metabolik sindrom mezonlaridan biri (uyg‘unlashtirilgan mezon ≥ 150 mg/dL; NHLBI sahifasida «doimiy ravishda 150 dan yuqori»).",
+      "ru": "Один из критериев метаболического синдрома (согласованный критерий ≥ 150 мг/дл; на странице NHLBI — «стойко выше 150»).",
+      "en": "One metabolic syndrome criterion (harmonized cut point ≥ 150 mg/dL; the NHLBI page says “consistently more than 150”)."
      },
      "refs": [
       {
        "source_id": "nhlbi-metabolic-syndrome-dx",
        "locator": "Triglyceride levels"
+      },
+      {
+       "source_id": "alberti-2009-mets",
+       "locator": "Table 1"
       }
      ]
     },
@@ -5184,19 +5286,23 @@
     },
     {
      "finding": {
-      "uz": "Och qoringa glyukoza ≥ 126 mg/dL (≈7,0 mmol/L) yoki qand pasaytiruvchi dori ichish",
-      "ru": "Глюкоза натощак ≥ 126 мг/дл (≈7,0 ммоль/л) или приём сахароснижающих препаратов",
-      "en": "Fasting glucose ≥ 126 mg/dL (≈7.0 mmol/L) or taking glucose-lowering medicine"
+      "uz": "Och qoringa glyukoza ≥ 100 mg/dL (≈5,6 mmol/L) yoki qand pasaytiruvchi dori ichish",
+      "ru": "Глюкоза натощак ≥ 100 мг/дл (≈5,6 ммоль/л) или приём сахароснижающих препаратов",
+      "en": "Fasting glucose ≥ 100 mg/dL (≈5.6 mmol/L) or taking glucose-lowering medicine"
      },
      "meaning": {
-      "uz": "Metabolik sindrom mezonlaridan biri (100–125 mg/dL — yuqori qand yoki prediabet).",
-      "ru": "Один из критериев (100–125 мг/дл — повышенный сахар или преддиабет).",
-      "en": "One criterion (100–125 mg/dL indicates high blood sugar or prediabetes)."
+      "uz": "Metabolik sindrom mezonlaridan biri — yuqori qand: 100–125 mg/dL (≈5,6–6,9 mmol/L) — yuqori qand yoki prediabet; ≥ 126 mg/dL (≈7,0 mmol/L) — diabet bo‘lishi mumkin.",
+      "ru": "Один из критериев — повышенный сахар: 100–125 мг/дл (≈5,6–6,9 ммоль/л) — повышенный сахар или преддиабет; ≥ 126 мг/дл (≈7,0 ммоль/л) — возможен диабет.",
+      "en": "One criterion — high blood sugar: 100–125 mg/dL (≈5.6–6.9 mmol/L) means high blood sugar or prediabetes; ≥ 126 mg/dL (≈7.0 mmol/L) may mean diabetes."
      },
      "refs": [
       {
        "source_id": "nhlbi-metabolic-syndrome-dx",
        "locator": "Blood sugar"
+      },
+      {
+       "source_id": "alberti-2009-mets",
+       "locator": "Table 1"
       }
      ]
     },
@@ -9344,19 +9450,23 @@
     },
     {
      "finding": {
-      "uz": "Bosim ≥ 160/110 (kamida 4 soat oraliqda ikki marta), yoki oqsil ≥ 5 g/sutka, yoki trombotsitlar ↓ / jigar fermentlari ↑",
-      "ru": "Давление ≥ 160/110 (дважды с интервалом не менее 4 ч), или белок ≥ 5 г/сут, или тромбоциты ↓ / печёночные ферменты ↑",
-      "en": "BP ≥ 160/110 (on two occasions at least 4 hours apart), or protein ≥ 5 g/24 h, or low platelets / high liver enzymes"
+      "uz": "Bosim ≥ 160/110 (kamida 4 soat oraliqda ikki marta), yoki trombotsitlar ↓ / jigar fermentlari ↑",
+      "ru": "Давление ≥ 160/110 (дважды с интервалом не менее 4 ч), или тромбоциты ↓ / печёночные ферменты ↑",
+      "en": "BP ≥ 160/110 (on two occasions at least 4 hours apart), or low platelets / high liver enzymes"
      },
      "meaning": {
-      "uz": "Og‘ir preeklampsiya belgilari.",
-      "ru": "Признаки тяжёлой преэклампсии.",
-      "en": "Signs of severe preeclampsia."
+      "uz": "Og‘ir preeklampsiya belgilari. Proteinuriya miqdori (masalan ≥ 5 g/sutka) endi og‘irlik belgisi hisoblanmaydi (ACOG 2013/2020).",
+      "ru": "Признаки тяжёлой преэклампсии. Величина протеинурии (например ≥ 5 г/сут) больше не считается признаком тяжести (ACOG 2013/2020).",
+      "en": "Signs of severe preeclampsia. The amount of proteinuria (e.g. ≥ 5 g/24 h) is no longer a severe feature (ACOG 2013/2020)."
      },
      "refs": [
       {
        "source_id": "nichd-preeclampsia-dx",
        "locator": "How do health care providers diagnose preeclampsia, eclampsia, and HELLP syndrome?"
+      },
+      {
+       "source_id": "acog-pb222-2020",
+       "locator": "Box 3. Preeclampsia with severe features"
       }
      ]
     },

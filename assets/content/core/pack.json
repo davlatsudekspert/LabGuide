@@ -287,6 +287,36 @@
     },
     {
      "label": {
+      "uz": "Buzilgan och qoringa glikemiya (JSST)",
+      "ru": "Нарушенная гликемия натощак (ВОЗ)",
+      "en": "Impaired fasting glycaemia (WHO)"
+     },
+     "unit": "mg/dL",
+     "low": 110,
+     "high": 125,
+     "population": {
+      "uz": "Homilador bo‘lmagan odamlar (JSST/IDF mezonlari)",
+      "ru": "Небеременные (критерии ВОЗ/IDF)",
+      "en": "People who are not pregnant (WHO/IDF criteria)"
+     },
+     "note": {
+      "uz": "JSST: 6,1–6,9 mmol/L; 2 soatlik glyukoza o‘lchangan bo‘lsa < 7,8 mmol/L. ADA/NIDDK pastki chegarasi 100 mg/dL (5,6 mmol/L).",
+      "ru": "ВОЗ: 6,1–6,9 ммоль/л; глюкоза через 2 ч, если измерена, < 7,8 ммоль/л. Нижняя граница ADA/NIDDK — 100 мг/дл (5,6 ммоль/л).",
+      "en": "WHO: 6.1–6.9 mmol/L; 2-hour glucose, if measured, < 7.8 mmol/L. The ADA/NIDDK lower limit is 100 mg/dL (5.6 mmol/L)."
+     },
+     "refs": [
+      {
+       "source_id": "who-idf-2006-diabetes",
+       "locator": "Summary table — Impaired Fasting Glucose (IFG)"
+      },
+      {
+       "source_id": "ada-soc-2025-dx",
+       "locator": "Prediabetes"
+      }
+     ]
+    },
+    {
+     "label": {
       "uz": "Diabet chegarasi",
       "ru": "Порог диабета",
       "en": "Diabetes threshold"
@@ -312,7 +342,9 @@
    ],
    "source_ids": [
     "medline-glucose",
-    "niddk-diagnosis"
+    "niddk-diagnosis",
+    "who-idf-2006-diabetes",
+    "ada-soc-2025-dx"
    ],
    "related": [
     "hba1c",
@@ -567,12 +599,16 @@
       {
        "source_id": "niddk-a1c",
        "locator": "A1C results and what the numbers mean"
+      },
+      {
+       "source_id": "ada-soc-2025-dx",
+       "locator": "Recommendation 2.2b"
       }
      ],
      "text": {
-      "uz": "Tashxis qo‘yish uchun venadan olingan qon NGSP tomonidan sertifikatlangan usulni qo‘llaydigan laboratoriyada tekshirilishi kerak. Shifokor xonasi yoki klinikada bemor yonida (point-of-care) bajarilgan tahlillar tashxis uchun ishlatilmasligi kerak.",
-      "ru": "Для диагностики венозную кровь исследуют в лаборатории, использующей метод, сертифицированный NGSP. Анализы, выполненные в кабинете врача или клинике по месту оказания помощи (point-of-care), для диагностики использовать не следует.",
-      "en": "For diagnosis, a venous sample should go to a laboratory using an NGSP-certified method. Point-of-care tests performed in a doctor’s office or clinic should not be used for diagnosis."
+      "uz": "Tashxis uchun venadan olingan qon NGSP sertifikatlangan usulni qo‘llaydigan laboratoriyada tekshiriladi. Bemor yonida (point-of-care) HbA1c tahlili tashxis uchun faqat tashxisga ruxsat etilgan (FDA) qurilmada, o‘rtacha yoki undan yuqori murakkablikdagi testlarni bajaradigan sertifikatlangan (CLIA) laboratoriyada, o‘qitilgan xodim tomonidan bajarilsa ishlatiladi (ADA 2.2b); boshqa point-of-care natijalari tashxis uchun ishlatilmaydi.",
+      "ru": "Для диагностики венозную кровь исследуют в лаборатории, использующей метод, сертифицированный NGSP. Анализ HbA1c по месту оказания помощи (point-of-care) допустим для диагностики только на приборах, одобренных для диагностики (FDA), в сертифицированной (CLIA) лаборатории, выполняющей тесты средней или высокой сложности, обученным персоналом (ADA 2.2b); иные результаты point-of-care для диагностики не используют.",
+      "en": "For diagnosis, a venous sample goes to a laboratory using an NGSP-certified method. Point-of-care A1C may be used for diagnosis only with devices approved for diagnosis (FDA) in certified (CLIA) laboratories performing moderate- or higher-complexity testing, by trained staff (ADA 2.2b); other point-of-care results are not used for diagnosis."
      }
     },
     {
@@ -624,9 +660,9 @@
       "en": "People who are not pregnant"
      },
      "note": {
-      "uz": "Homiladorlikda ayrim testlar uchun boshqa chegaralar qo‘llaniladi.",
-      "ru": "При беременности для некоторых тестов используются другие пороги.",
-      "en": "Pregnancy uses different cutoffs for some tests."
+      "uz": "IFCC: 39–47 mmol/mol (ADA, 2.2-jadval). Homiladorlikda ayrim testlar uchun boshqa chegaralar qo‘llaniladi.",
+      "ru": "IFCC: 39–47 ммоль/моль (ADA, табл. 2.2). При беременности для некоторых тестов используются другие пороги.",
+      "en": "IFCC: 39–47 mmol/mol (ADA, Table 2.2). Pregnancy uses different cutoffs for some tests."
      },
      "refs": [
       {
@@ -636,6 +672,10 @@
       {
        "source_id": "niddk-diagnosis",
        "locator": "What test results tell me if I have diabetes or prediabetes?"
+      },
+      {
+       "source_id": "ada-soc-2025-dx",
+       "locator": "Table 2.2"
       }
      ]
     },
@@ -654,9 +694,9 @@
       "en": "People who are not pregnant"
      },
      "note": {
-      "uz": "6,5% va undan yuqori. Tashxis odatda ikkinchi test bilan tasdiqlanadi. Homiladorlikda ayrim testlar uchun boshqa chegaralar qo‘llaniladi.",
-      "ru": "6,5% и выше. Диагноз обычно подтверждают вторым тестом. При беременности для некоторых тестов используются другие пороги.",
-      "en": "6.5% or above. Diagnosis is usually confirmed with a second test. Pregnancy uses different cutoffs for some tests."
+      "uz": "6,5% va undan yuqori (IFCC: ≥ 48 mmol/mol; ADA, 2.1-jadval). Tashxis odatda ikkinchi test bilan tasdiqlanadi. Homiladorlikda ayrim testlar uchun boshqa chegaralar qo‘llaniladi.",
+      "ru": "6,5% и выше (IFCC: ≥ 48 ммоль/моль; ADA, табл. 2.1). Диагноз обычно подтверждают вторым тестом. При беременности для некоторых тестов используются другие пороги.",
+      "en": "6.5% or above (IFCC: ≥ 48 mmol/mol; ADA, Table 2.1). Diagnosis is usually confirmed with a second test. Pregnancy uses different cutoffs for some tests."
      },
      "refs": [
       {
@@ -666,6 +706,10 @@
       {
        "source_id": "niddk-diagnosis",
        "locator": "What test results tell me if I have diabetes or prediabetes?"
+      },
+      {
+       "source_id": "ada-soc-2025-dx",
+       "locator": "Table 2.1"
       }
      ]
     }
@@ -674,7 +718,8 @@
     "medline-hba1c",
     "niddk-hemoglobinopathies",
     "niddk-a1c",
-    "niddk-diagnosis"
+    "niddk-diagnosis",
+    "ada-soc-2025-dx"
    ],
    "related": [
     "glucose-plasma-fasting",
@@ -4193,6 +4238,10 @@
        "locator": "Table 5: LDL Cholesterol Goals and Cutpoints for Therapeutic Lifestyle Changes (TLC) and Drug Therapy in Different Risk Categories",
        "pages": "8"
       }
+     ],
+     "superseded_by": [
+      "esc-eas-2019",
+      "acc-aha-2018"
      ]
     },
     {
@@ -4221,6 +4270,10 @@
        "locator": "Table 5: LDL Cholesterol Goals and Cutpoints for Therapeutic Lifestyle Changes (TLC) and Drug Therapy in Different Risk Categories",
        "pages": "8"
       }
+     ],
+     "superseded_by": [
+      "esc-eas-2019",
+      "acc-aha-2018"
      ]
     },
     {
@@ -4254,7 +4307,11 @@
       "uz": "Xavf omillari ro‘yxati shu hujjatning 3-jadvalida.",
       "ru": "Перечень факторов риска — в таблице 3 того же документа.",
       "en": "The risk factors are listed in Table 3 of the same document."
-     }
+     },
+     "superseded_by": [
+      "esc-eas-2019",
+      "acc-aha-2018"
+     ]
     },
     {
      "guideline_id": "ncep-atp3-2004",
@@ -4282,7 +4339,11 @@
       "uz": "Jadval izohiga ko‘ra, juda yuqori xavf < 70 mg/dL ixtiyoriy maqsadni afzal ko‘rishga asos bo‘ladi.",
       "ru": "Согласно примечанию к таблице, очень высокий риск говорит в пользу факультативной цели < 70 mg/dL.",
       "en": "Per the table footnote, very high risk favours the optional goal of < 70 mg/dL."
-     }
+     },
+     "superseded_by": [
+      "esc-eas-2019",
+      "acc-aha-2018"
+     ]
     },
     {
      "guideline_id": "ncep-atp3-2004",
@@ -4305,6 +4366,10 @@
        "locator": "Table 2. ATP III LDL-C Goals and Cutpoints for TLC and Drug Therapy in Different Risk Categories and Proposed Modifications Based on Recent Clinical Trial Evidence",
        "pages": "236"
       }
+     ],
+     "superseded_by": [
+      "esc-eas-2019",
+      "acc-aha-2018"
      ]
     },
     {
@@ -4328,6 +4393,10 @@
        "locator": "Table 2. ATP III LDL-C Goals and Cutpoints for TLC and Drug Therapy in Different Risk Categories and Proposed Modifications Based on Recent Clinical Trial Evidence",
        "pages": "236"
       }
+     ],
+     "superseded_by": [
+      "esc-eas-2019",
+      "acc-aha-2018"
      ]
     },
     {
@@ -4351,6 +4420,10 @@
        "locator": "Table 2. ATP III LDL-C Goals and Cutpoints for TLC and Drug Therapy in Different Risk Categories and Proposed Modifications Based on Recent Clinical Trial Evidence",
        "pages": "236"
       }
+     ],
+     "superseded_by": [
+      "esc-eas-2019",
+      "acc-aha-2018"
      ]
     },
     {
@@ -4379,6 +4452,10 @@
        "locator": "Table 2. ATP III LDL-C Goals and Cutpoints for TLC and Drug Therapy in Different Risk Categories and Proposed Modifications Based on Recent Clinical Trial Evidence",
        "pages": "236"
       }
+     ],
+     "superseded_by": [
+      "esc-eas-2019",
+      "acc-aha-2018"
      ]
     },
     {
@@ -4897,6 +4974,9 @@
        "locator": "Management of Specific Dyslipidemias — Elevated serum triglycerides",
        "pages": "18"
       }
+     ],
+     "superseded_by": [
+      "esc-eas-2019"
      ]
     },
     {
@@ -4925,6 +5005,9 @@
        "locator": "Management of Specific Dyslipidemias — Elevated serum triglycerides",
        "pages": "18"
       }
+     ],
+     "superseded_by": [
+      "esc-eas-2019"
      ]
     },
     {
@@ -4958,7 +5041,10 @@
       "uz": "ATP III da non-HDL xolesterin triglitseridlar yuqori (≥ 200 mg/dL) bo‘lganda ikkinchi darajali maqsad; uning maqsadi LDL maqsadidan 30 mg/dL yuqori.",
       "ru": "В ATP III холестерин не-ЛПВП — вторичная цель при высоких триглицеридах (≥ 200 mg/dL); его цель на 30 mg/dL выше цели для ЛПНП.",
       "en": "In ATP III, non-HDL cholesterol is a secondary target when triglycerides are high (≥ 200 mg/dL); its goal is 30 mg/dL above the LDL goal."
-     }
+     },
+     "superseded_by": [
+      "esc-eas-2019"
+     ]
     },
     {
      "guideline_id": "ncep-atp3-2004",
@@ -4981,6 +5067,9 @@
        "locator": "Table 2. ATP III LDL-C Goals and Cutpoints for TLC and Drug Therapy in Different Risk Categories and Proposed Modifications Based on Recent Clinical Trial Evidence",
        "pages": "236"
       }
+     ],
+     "superseded_by": [
+      "esc-eas-2019"
      ]
     },
     {
@@ -33389,6 +33478,84 @@
    "jurisdiction": "US",
    "note": "Page reviewed 2024-10-29.",
    "reuse_rights": "verify_before_distribution"
+  },
+  {
+   "id": "ada-soc-2025-dx",
+   "kind": "web",
+   "title": "2. Diagnosis and Classification of Diabetes: Standards of Care in Diabetes—2025 (American Diabetes Association Professional Practice Committee; Diabetes Care 2025;48(Suppl 1):S27–S49, doi:10.2337/dc25-S002, PMID 39651986)",
+   "publisher": "American Diabetes Association (ADA)",
+   "url": "https://doi.org/10.2337/dc25-S002",
+   "accessed": "2026-10-11",
+   "source_date": "2025-01",
+   "jurisdiction": "US",
+   "note": "Recommendation 2.2b (point-of-care A1C), Tables 2.1–2.2 (A1C in % and mmol/mol), section “Prediabetes” (WHO IFG lower limit 110 mg/dL).",
+   "reuse_rights": "verify_before_distribution",
+   "review_note": "Read via PMC (PMC11635041). Only criteria restated in our own words."
+  },
+  {
+   "id": "who-idf-2006-diabetes",
+   "kind": "web",
+   "title": "Definition and diagnosis of diabetes mellitus and intermediate hyperglycaemia: report of a WHO/IDF consultation (2006)",
+   "publisher": "World Health Organization · International Diabetes Federation",
+   "url": "https://iris.who.int/handle/10665/43588",
+   "accessed": "2026-10-11",
+   "source_date": "2006",
+   "jurisdiction": "International (WHO)",
+   "note": "Summary table: IFG — fasting plasma glucose 6.1–6.9 mmol/L (110–125 mg/dL) and, if measured, 2-h glucose < 7.8 mmol/L.",
+   "reuse_rights": "verify_before_distribution",
+   "review_note": "PDF from WHO IRIS read; only the numeric criteria restated."
+  },
+  {
+   "id": "alberti-2009-mets",
+   "kind": "web",
+   "title": "Harmonizing the metabolic syndrome: a joint interim statement of IDF, NHLBI, AHA, WHF, IAS and IASO (Alberti KGMM et al., Circulation 2009;120:1640–1645, doi:10.1161/CIRCULATIONAHA.109.192644, PMID 19805654)",
+   "publisher": "Circulation · American Heart Association",
+   "url": "https://doi.org/10.1161/CIRCULATIONAHA.109.192644",
+   "accessed": "2026-10-11",
+   "source_date": "2009-10",
+   "jurisdiction": "International",
+   "note": "Three of five criteria; single cut points for all components except waist circumference (Table 1).",
+   "reuse_rights": "verify_before_distribution",
+   "review_note": "Abstract read via PubMed; cut points as widely reproduced (TG ≥ 150 mg/dL, fasting glucose ≥ 100 mg/dL)."
+  },
+  {
+   "id": "acog-pb222-2020",
+   "kind": "web",
+   "title": "Gestational Hypertension and Preeclampsia: ACOG Practice Bulletin No. 222 (Obstet Gynecol 2020;135:e237–e260, doi:10.1097/AOG.0000000000003891, PMID 32443079)",
+   "publisher": "American College of Obstetricians and Gynecologists (ACOG)",
+   "url": "https://doi.org/10.1097/AOG.0000000000003891",
+   "accessed": "2026-10-11",
+   "source_date": "2020-06",
+   "jurisdiction": "US",
+   "note": "Box 3 (preeclampsia with severe features): the amount of proteinuria is no longer a severe feature (since the ACOG 2013 Task Force).",
+   "reuse_rights": "verify_before_distribution",
+   "review_note": "Metadata via PubMed; severe-feature list confirmed from secondary summaries — full Box 3 text not read."
+  },
+  {
+   "id": "bozkurt-2021-hf-universal",
+   "kind": "web",
+   "title": "Universal Definition and Classification of Heart Failure (Bozkurt B et al., J Card Fail 2021;27:387–413, doi:10.1016/j.cardfail.2021.01.022, PMID 33663906)",
+   "publisher": "HFSA · HFA of the ESC · JHFS",
+   "url": "https://doi.org/10.1016/j.cardfail.2021.01.022",
+   "accessed": "2026-10-11",
+   "source_date": "2021-03",
+   "jurisdiction": "International",
+   "note": "HFrEF LVEF ≤ 40%; HFmrEF 41–49%; HFpEF ≥ 50%; HFimpEF.",
+   "reuse_rights": "verify_before_distribution",
+   "review_note": "Abstract read via PubMed (gives the EF categories)."
+  },
+  {
+   "id": "esc-hf-2021",
+   "kind": "web",
+   "title": "2021 ESC Guidelines for the diagnosis and treatment of acute and chronic heart failure (McDonagh TA et al., Eur Heart J 2021;42:3599–3726, doi:10.1093/eurheartj/ehab368, PMID 34447992)",
+   "publisher": "European Society of Cardiology (ESC)",
+   "url": "https://doi.org/10.1093/eurheartj/ehab368",
+   "accessed": "2026-10-11",
+   "source_date": "2021-08",
+   "jurisdiction": "Europe (ESC)",
+   "note": "Uses the term HF with mildly reduced EF (HFmrEF, LVEF 41–49%).",
+   "reuse_rights": "verify_before_distribution",
+   "review_note": "Metadata via PubMed."
   }
  ],
  "quiz": [
@@ -33631,6 +33798,10 @@
     {
      "source_id": "niddk-a1c",
      "locator": "A1C results and what the numbers mean"
+    },
+    {
+     "source_id": "ada-soc-2025-dx",
+     "locator": "Recommendation 2.2b"
     }
    ],
    "topic_ids": [
@@ -33643,9 +33814,9 @@
     "en": "A nonpregnant person without symptoms has an A1C in the diabetes range. What should happen before a diagnosis is made?"
    },
    "basis": {
-    "uz": "NIDDK: belgilarsiz holatda diabet yoki prediabet ko‘rsatgan HbA1c boshqa kuni takroriy test bilan tasdiqlanishi kerak; point-of-care testlar tashxis uchun ishlatilmaydi.",
-    "ru": "NIDDK: при отсутствии симптомов HbA1c, указывающий на диабет или предиабет, подтверждают повторным тестом в другой день; тесты point-of-care для диагностики не используют.",
-    "en": "NIDDK: without symptoms, an A1C showing diabetes or prediabetes should be confirmed by a repeat test on a different day; point-of-care tests are not used for diagnosis."
+    "uz": "NIDDK: belgilarsiz holatda diabet yoki prediabet ko‘rsatgan HbA1c boshqa kuni takroriy test bilan tasdiqlanishi kerak; ADA: point-of-care HbA1c tashxis uchun faqat tashxisga ruxsat etilgan qurilmada, sertifikatlangan laboratoriyada ishlatiladi (2.2b).",
+    "ru": "NIDDK: при отсутствии симптомов HbA1c, указывающий на диабет или предиабет, подтверждают повторным тестом в другой день; ADA: point-of-care HbA1c для диагностики допустим только на приборе, одобренном для диагностики, в сертифицированной лаборатории (2.2b).",
+    "en": "NIDDK: without symptoms, an A1C showing diabetes or prediabetes should be confirmed by a repeat test on a different day; ADA: point-of-care A1C may be used for diagnosis only on a device approved for diagnosis in a certified laboratory (2.2b)."
    },
    "options": [
     {
@@ -33667,9 +33838,9 @@
       "en": "Confirm the result right away with a point-of-care A1C device at the bedside."
      },
      "explanation": {
-      "uz": "Noto‘g‘ri: point-of-care natijalari tashxis uchun ishlatilmasligi kerak.",
-      "ru": "Неверно: результаты point-of-care не следует использовать для диагностики.",
-      "en": "Incorrect: point-of-care results should not be used for diagnosis."
+      "uz": "Noto‘g‘ri: tasdiqlash boshqa kuni takroriy test bilan bo‘ladi. Bemor yonidagi qurilma tashxis uchun faqat tashxisga ruxsat etilgan bo‘lsa va sertifikatlangan laboratoriyada ishlatilsa yaroqli (ADA 2.2b).",
+      "ru": "Неверно: подтверждение — повторным тестом в другой день. Прибор у постели больного пригоден для диагностики, только если он одобрен для диагностики и используется в сертифицированной лаборатории (ADA 2.2b).",
+      "en": "Incorrect: confirmation is a repeat test on a different day. A bedside device is acceptable for diagnosis only if it is approved for diagnosis and used in a certified laboratory (ADA 2.2b)."
      }
     },
     {
@@ -40032,9 +40203,9 @@
    ],
    "correct_index": 1,
    "prompt": {
-    "uz": "Zardob temiri 50 µg/dL, TIBC 400 µg/dL. Transferrin to‘yinishi qancha?",
-    "ru": "Сывороточное железо 50 мкг/дл, ОЖСС 400 мкг/дл. Каково насыщение трансферрина?",
-    "en": "Serum iron is 50 µg/dL and TIBC is 400 µg/dL. What is the transferrin saturation?"
+    "uz": "Zardob temiri 9,0 µmol/L (50 µg/dL), TIBC 71,6 µmol/L (400 µg/dL). Transferrin to‘yinishi qancha?",
+    "ru": "Сывороточное железо 9,0 мкмоль/л (50 мкг/дл), ОЖСС 71,6 мкмоль/л (400 мкг/дл). Каково насыщение трансферрина?",
+    "en": "Serum iron is 9.0 µmol/L (50 µg/dL) and TIBC is 71.6 µmol/L (400 µg/dL). What is the transferrin saturation?"
    },
    "basis": {
     "uz": "Transferrin to‘yinishi (%) = zardob temiri / TIBC × 100 = 50 / 400 × 100 = 12,5%.",
@@ -40078,7 +40249,16 @@
       "en": "Incorrect. The formula was inverted: iron is divided by TIBC, not the other way round."
      }
     }
-   ]
+   ],
+   "review": {
+    "agent_checks": [
+     {
+      "date": "2026-10-11",
+      "scope": "dual units: SI first, conventional in parentheses; values computed by tool/content/quiz_dual_units.py with analyte-specific factors; source numbers kept; answer key unchanged",
+      "report": "docs/QUIZ_UNITS_2026-10-10.md"
+     }
+    ]
+   }
   },
   {
    "id": "vitamin-b12-q1",
@@ -40095,14 +40275,14 @@
    ],
    "correct_index": 2,
    "prompt": {
-    "uz": "Belgilari bor bemorda zardob B12 = 250 pg/mL. ODS bo‘yicha tashxisni tasdiqlash uchun qaysi tahlil tavsiya qilinadi?",
-    "ru": "У пациента с симптомами B12 сыворотки = 250 пг/мл. Какой анализ, по ODS, советуют для подтверждения?",
-    "en": "A symptomatic patient has serum B12 = 250 pg/mL. According to ODS, which test is suggested to confirm the diagnosis?"
+    "uz": "Belgilari bor bemorda zardob B12 = 184 pmol/L (250 pg/mL). ODS bo‘yicha tashxisni tasdiqlash uchun qaysi tahlil tavsiya qilinadi?",
+    "ru": "У пациента с симптомами B12 сыворотки = 184 пмоль/л (250 пг/мл). Какой анализ, по ODS, советуют для подтверждения?",
+    "en": "A symptomatic patient has serum B12 = 184 pmol/L (250 pg/mL). According to ODS, which test is suggested to confirm the diagnosis?"
    },
    "basis": {
-    "uz": "B12 150–399 pg/mL bo‘lsa, mutaxassislar zardob metilmalon kislotasini (MMA) tekshirishni tavsiya qiladi.",
-    "ru": "При B12 150–399 пг/мл эксперты советуют проверить метилмалоновую кислоту (ММК) сыворотки.",
-    "en": "With B12 of 150–399 pg/mL, experts suggest checking serum methylmalonic acid (MMA)."
+    "uz": "B12 111–294 pmol/L (150–399 pg/mL) bo‘lsa, mutaxassislar zardob metilmalon kislotasini (MMA) tekshirishni tavsiya qiladi.",
+    "ru": "При B12 111–294 пмоль/л (150–399 пг/мл) эксперты советуют проверить метилмалоновую кислоту (ММК) сыворотки.",
+    "en": "With B12 of 111–294 pmol/L (150–399 pg/mL), experts suggest checking serum methylmalonic acid (MMA)."
    },
    "options": [
     {
@@ -40141,7 +40321,16 @@
       "en": "Correct. MMA is the most sensitive B12 marker, though it also rises with renal insufficiency."
      }
     }
-   ]
+   ],
+   "review": {
+    "agent_checks": [
+     {
+      "date": "2026-10-11",
+      "scope": "dual units: SI first, conventional in parentheses; values computed by tool/content/quiz_dual_units.py with analyte-specific factors; source numbers kept; answer key unchanged",
+      "report": "docs/QUIZ_UNITS_2026-10-10.md"
+     }
+    ]
+   }
   },
   {
    "id": "folate-q1",
@@ -40434,9 +40623,9 @@
    ],
    "correct_index": 2,
    "prompt": {
-    "uz": "Gematokrit natijasi 42. Bu nimani anglatadi?",
-    "ru": "Гематокрит равен 42. Что это значит?",
-    "en": "A hematocrit result is 42. What does it mean?"
+    "uz": "Gematokrit natijasi 0,42 L/L (42%). Bu nimani anglatadi?",
+    "ru": "Гематокрит равен 0,42 л/л (42%). Что это значит?",
+    "en": "A hematocrit result is 0.42 L/L (42%). What does it mean?"
    },
    "basis": {
     "uz": "Gematokrit — qonning eritrotsitlardan iborat qismi foizda.",
@@ -40480,7 +40669,16 @@
       "en": "Correct: the rest is white cells, platelets and plasma."
      }
     }
-   ]
+   ],
+   "review": {
+    "agent_checks": [
+     {
+      "date": "2026-10-11",
+      "scope": "dual units: SI first, conventional in parentheses; values computed by tool/content/quiz_dual_units.py with analyte-specific factors; source numbers kept; answer key unchanged",
+      "report": "docs/QUIZ_UNITS_2026-10-10.md"
+     }
+    ]
+   }
   },
   {
    "id": "hematocrit-q2",
@@ -41430,14 +41628,14 @@
    ],
    "correct_index": 2,
    "prompt": {
-    "uz": "Trombotsitlar soni 15 000/µL. NHLBI tasnifi bo‘yicha bu qaysi daraja?",
-    "ru": "Тромбоциты 15 000/мкл. Какая это степень по классификации NHLBI?",
-    "en": "The platelet count is 15,000/µL. Which category is this per NHLBI?"
+    "uz": "Trombotsitlar soni 15 ×10⁹/L (15 000/µL). NHLBI tasnifi bo‘yicha bu qaysi daraja?",
+    "ru": "Тромбоциты 15 ×10⁹/л (15 000/мкл). Какая это степень по классификации NHLBI?",
+    "en": "The platelet count is 15 ×10⁹/L (15,000/µL). Which category is this per NHLBI?"
    },
    "basis": {
-    "uz": "< 150 000/µL — past; 100 000–150 000 — yengil; < 20 000 — og‘ir.",
-    "ru": "< 150 000/мкл — низкий; 100 000–150 000 — лёгкая; < 20 000 — тяжёлая.",
-    "en": "< 150,000/µL is low; 100,000–150,000 mild; < 20,000 severe."
+    "uz": "< 150 ×10⁹/L (150 000/µL) — past; 100–150 ×10⁹/L (100 000–150 000/µL) — yengil; < 20 ×10⁹/L (20 000/µL) — og‘ir.",
+    "ru": "< 150 ×10⁹/л (150 000/мкл) — низкий; 100–150 ×10⁹/л (100 000–150 000/мкл) — лёгкая; < 20 ×10⁹/л (20 000/мкл) — тяжёлая.",
+    "en": "< 150 ×10⁹/L (150,000/µL) is low; 100–150 ×10⁹/L (100,000–150,000/µL) mild; < 20 ×10⁹/L (20,000/µL) severe."
    },
    "options": [
     {
@@ -41447,9 +41645,9 @@
       "en": "Normal"
      },
      "explanation": {
-      "uz": "Noto‘g‘ri: 150 000/µL dan kam — past.",
-      "ru": "Неверно: меньше 150 000/мкл — снижение.",
-      "en": "Incorrect: below 150,000/µL is low."
+      "uz": "Noto‘g‘ri: 150 ×10⁹/L (150 000/µL) dan kam — past.",
+      "ru": "Неверно: меньше 150 ×10⁹/л (150 000/мкл) — снижение.",
+      "en": "Incorrect: below 150 ×10⁹/L (150,000/µL) is low."
      }
     },
     {
@@ -41459,9 +41657,9 @@
       "en": "Mild thrombocytopenia"
      },
      "explanation": {
-      "uz": "Noto‘g‘ri: yengil daraja 100 000–150 000/µL.",
-      "ru": "Неверно: лёгкая степень — 100 000–150 000/мкл.",
-      "en": "Incorrect: mild is 100,000–150,000/µL."
+      "uz": "Noto‘g‘ri: yengil daraja 100–150 ×10⁹/L (100 000–150 000/µL).",
+      "ru": "Неверно: лёгкая степень — 100–150 ×10⁹/л (100 000–150 000/мкл).",
+      "en": "Incorrect: mild is 100–150 ×10⁹/L (100,000–150,000/µL)."
      }
     },
     {
@@ -41471,12 +41669,21 @@
       "en": "Severe thrombocytopenia"
      },
      "explanation": {
-      "uz": "To‘g‘ri: 20 000/µL dan kam — og‘ir.",
-      "ru": "Верно: меньше 20 000/мкл — тяжёлая.",
-      "en": "Correct: below 20,000/µL is severe."
+      "uz": "To‘g‘ri: 20 ×10⁹/L (20 000/µL) dan kam — og‘ir.",
+      "ru": "Верно: меньше 20 ×10⁹/л (20 000/мкл) — тяжёлая.",
+      "en": "Correct: below 20 ×10⁹/L (20,000/µL) is severe."
      }
     }
-   ]
+   ],
+   "review": {
+    "agent_checks": [
+     {
+      "date": "2026-10-11",
+      "scope": "dual units: SI first, conventional in parentheses; values computed by tool/content/quiz_dual_units.py with analyte-specific factors; source numbers kept; answer key unchanged",
+      "report": "docs/QUIZ_UNITS_2026-10-10.md"
+     }
+    ]
+   }
   },
   {
    "id": "platelets-q2",
@@ -45685,9 +45892,9 @@
    "patterns": [
     {
      "finding": {
-      "uz": "HbA1c ≥ 6,5% yoki och qoringa glyukoza ≥ 126 mg/dL (≈7,0 mmol/L) yoki OGTT 2-soat ≥ 200 mg/dL (≈11,1 mmol/L)",
-      "ru": "HbA1c ≥ 6,5% или глюкоза натощак ≥ 126 мг/дл (≈7,0 ммоль/л) или ПГТТ через 2 ч ≥ 200 мг/дл (≈11,1 ммоль/л)",
-      "en": "A1C ≥ 6.5%, or fasting glucose ≥ 126 mg/dL (≈7.0 mmol/L), or 2-hour OGTT ≥ 200 mg/dL (≈11.1 mmol/L)"
+      "uz": "HbA1c ≥ 6,5% (≥ 48 mmol/mol) yoki och qoringa glyukoza ≥ 126 mg/dL (≈7,0 mmol/L) yoki OGTT 2-soat ≥ 200 mg/dL (≈11,1 mmol/L)",
+      "ru": "HbA1c ≥ 6,5% (≥ 48 ммоль/моль) или глюкоза натощак ≥ 126 мг/дл (≈7,0 ммоль/л) или ПГТТ через 2 ч ≥ 200 мг/дл (≈11,1 ммоль/л)",
+      "en": "A1C ≥ 6.5% (≥ 48 mmol/mol), or fasting glucose ≥ 126 mg/dL (≈7.0 mmol/L), or 2-hour OGTT ≥ 200 mg/dL (≈11.1 mmol/L)"
      },
      "meaning": {
       "uz": "Diabet ehtimoli. Odatda ikkinchi test bilan tasdiqlanadi.",
@@ -45698,19 +45905,23 @@
       {
        "source_id": "niddk-diagnosis",
        "locator": "What test results tell me if I have diabetes or prediabetes?"
+      },
+      {
+       "source_id": "ada-soc-2025-dx",
+       "locator": "Table 2.1"
       }
      ]
     },
     {
      "finding": {
-      "uz": "HbA1c 5,7–6,4% yoki och qoringa glyukoza 100–125 mg/dL (≈5,6–6,9 mmol/L) yoki OGTT 140–199 mg/dL (≈7,8–11,0 mmol/L)",
-      "ru": "HbA1c 5,7–6,4% или глюкоза натощак 100–125 мг/дл (≈5,6–6,9 ммоль/л) или ПГТТ 140–199 мг/дл (≈7,8–11,0 ммоль/л)",
-      "en": "A1C 5.7–6.4%, or fasting glucose 100–125 mg/dL (≈5.6–6.9 mmol/L), or OGTT 140–199 mg/dL (≈7.8–11.0 mmol/L)"
+      "uz": "HbA1c 5,7–6,4% (39–47 mmol/mol) yoki och qoringa glyukoza 100–125 mg/dL (≈5,6–6,9 mmol/L; JSST: 110–125 mg/dL, 6,1–6,9 mmol/L) yoki OGTT 140–199 mg/dL (≈7,8–11,0 mmol/L)",
+      "ru": "HbA1c 5,7–6,4% (39–47 ммоль/моль) или глюкоза натощак 100–125 мг/дл (≈5,6–6,9 ммоль/л; ВОЗ: 110–125 мг/дл, 6,1–6,9 ммоль/л) или ПГТТ 140–199 мг/дл (≈7,8–11,0 ммоль/л)",
+      "en": "A1C 5.7–6.4% (39–47 mmol/mol), or fasting glucose 100–125 mg/dL (≈5.6–6.9 mmol/L; WHO: 110–125 mg/dL, 6.1–6.9 mmol/L), or OGTT 140–199 mg/dL (≈7.8–11.0 mmol/L)"
      },
      "meaning": {
-      "uz": "Prediabet ehtimoli; 2-tip diabetga har yili qayta tekshirish tavsiya etiladi.",
-      "ru": "Вероятен преддиабет; рекомендуется ежегодная проверка на диабет 2 типа.",
-      "en": "Prediabetes is likely; yearly testing for type 2 diabetes is recommended."
+      "uz": "Prediabet ehtimoli (ADA mezonlari; JSST faqat glyukoza bo‘yicha «buzilgan och qoringa glikemiya» ni 6,1 mmol/L dan belgilaydi); 2-tip diabetga har yili qayta tekshirish tavsiya etiladi.",
+      "ru": "Вероятен преддиабет (критерии ADA; ВОЗ определяет «нарушенную гликемию натощак» только по глюкозе — от 6,1 ммоль/л); рекомендуется ежегодная проверка на диабет 2 типа.",
+      "en": "Prediabetes is likely (ADA criteria; WHO defines impaired fasting glycaemia by glucose only, from 6.1 mmol/L); yearly testing for type 2 diabetes is recommended."
      },
      "refs": [
       {
@@ -45720,6 +45931,14 @@
       {
        "source_id": "niddk-diagnosis",
        "locator": "Type 2 diabetes"
+      },
+      {
+       "source_id": "ada-soc-2025-dx",
+       "locator": "Table 2.2; Prediabetes"
+      },
+      {
+       "source_id": "who-idf-2006-diabetes",
+       "locator": "Summary table — Impaired Fasting Glucose (IFG)"
       }
      ]
     },
@@ -49693,14 +49912,22 @@
       "en": "Ejection fraction ≤ 40% / 41–49% / ≥ 50%"
      },
      "meaning": {
-      "uz": "Otilish fraksiyasi pasaygan / chegaraviy / saqlangan yurak yetishmovchiligi.",
-      "ru": "Сердечная недостаточность со сниженной / пограничной / сохранённой фракцией выброса.",
-      "en": "Heart failure with reduced / borderline / preserved ejection fraction."
+      "uz": "Otilish fraksiyasi pasaygan (HFrEF) / biroz pasaygan (HFmrEF) / saqlangan (HFpEF) yurak yetishmovchiligi.",
+      "ru": "Сердечная недостаточность со сниженной (СНнФВ) / умеренно сниженной (СНунФВ) / сохранённой (СНсФВ) фракцией выброса.",
+      "en": "Heart failure with reduced (HFrEF) / mildly reduced (HFmrEF) / preserved (HFpEF) ejection fraction."
      },
      "refs": [
       {
        "source_id": "nhlbi-heart-failure-dx",
        "locator": "Tests to measure your ejection fraction"
+      },
+      {
+       "source_id": "bozkurt-2021-hf-universal",
+       "locator": "Abstract; classification by LVEF"
+      },
+      {
+       "source_id": "esc-hf-2021",
+       "locator": "Section 3.1 (definition and terminology by LVEF)"
       }
      ]
     }
@@ -50082,19 +50309,23 @@
    "patterns": [
     {
      "finding": {
-      "uz": "Triglitseridlar doimiy ravishda > 150 mg/dL (≈1,7 mmol/L)",
-      "ru": "Триглицериды стойко > 150 мг/дл (≈1,7 ммоль/л)",
-      "en": "Triglycerides consistently > 150 mg/dL (≈1.7 mmol/L)"
+      "uz": "Triglitseridlar ≥ 150 mg/dL (≈1,7 mmol/L)",
+      "ru": "Триглицериды ≥ 150 мг/дл (≈1,7 ммоль/л)",
+      "en": "Triglycerides ≥ 150 mg/dL (≈1.7 mmol/L)"
      },
      "meaning": {
-      "uz": "Metabolik sindrom mezonlaridan biri.",
-      "ru": "Один из критериев метаболического синдрома.",
-      "en": "One metabolic syndrome criterion."
+      "uz": "Metabolik sindrom mezonlaridan biri (uyg‘unlashtirilgan mezon ≥ 150 mg/dL; NHLBI sahifasida «doimiy ravishda 150 dan yuqori»).",
+      "ru": "Один из критериев метаболического синдрома (согласованный критерий ≥ 150 мг/дл; на странице NHLBI — «стойко выше 150»).",
+      "en": "One metabolic syndrome criterion (harmonized cut point ≥ 150 mg/dL; the NHLBI page says “consistently more than 150”)."
      },
      "refs": [
       {
        "source_id": "nhlbi-metabolic-syndrome-dx",
        "locator": "Triglyceride levels"
+      },
+      {
+       "source_id": "alberti-2009-mets",
+       "locator": "Table 1"
       }
      ]
     },
@@ -50118,19 +50349,23 @@
     },
     {
      "finding": {
-      "uz": "Och qoringa glyukoza ≥ 126 mg/dL (≈7,0 mmol/L) yoki qand pasaytiruvchi dori ichish",
-      "ru": "Глюкоза натощак ≥ 126 мг/дл (≈7,0 ммоль/л) или приём сахароснижающих препаратов",
-      "en": "Fasting glucose ≥ 126 mg/dL (≈7.0 mmol/L) or taking glucose-lowering medicine"
+      "uz": "Och qoringa glyukoza ≥ 100 mg/dL (≈5,6 mmol/L) yoki qand pasaytiruvchi dori ichish",
+      "ru": "Глюкоза натощак ≥ 100 мг/дл (≈5,6 ммоль/л) или приём сахароснижающих препаратов",
+      "en": "Fasting glucose ≥ 100 mg/dL (≈5.6 mmol/L) or taking glucose-lowering medicine"
      },
      "meaning": {
-      "uz": "Metabolik sindrom mezonlaridan biri (100–125 mg/dL — yuqori qand yoki prediabet).",
-      "ru": "Один из критериев (100–125 мг/дл — повышенный сахар или преддиабет).",
-      "en": "One criterion (100–125 mg/dL indicates high blood sugar or prediabetes)."
+      "uz": "Metabolik sindrom mezonlaridan biri — yuqori qand: 100–125 mg/dL (≈5,6–6,9 mmol/L) — yuqori qand yoki prediabet; ≥ 126 mg/dL (≈7,0 mmol/L) — diabet bo‘lishi mumkin.",
+      "ru": "Один из критериев — повышенный сахар: 100–125 мг/дл (≈5,6–6,9 ммоль/л) — повышенный сахар или преддиабет; ≥ 126 мг/дл (≈7,0 ммоль/л) — возможен диабет.",
+      "en": "One criterion — high blood sugar: 100–125 mg/dL (≈5.6–6.9 mmol/L) means high blood sugar or prediabetes; ≥ 126 mg/dL (≈7.0 mmol/L) may mean diabetes."
      },
      "refs": [
       {
        "source_id": "nhlbi-metabolic-syndrome-dx",
        "locator": "Blood sugar"
+      },
+      {
+       "source_id": "alberti-2009-mets",
+       "locator": "Table 1"
       }
      ]
     },
@@ -54278,19 +54513,23 @@
     },
     {
      "finding": {
-      "uz": "Bosim ≥ 160/110 (kamida 4 soat oraliqda ikki marta), yoki oqsil ≥ 5 g/sutka, yoki trombotsitlar ↓ / jigar fermentlari ↑",
-      "ru": "Давление ≥ 160/110 (дважды с интервалом не менее 4 ч), или белок ≥ 5 г/сут, или тромбоциты ↓ / печёночные ферменты ↑",
-      "en": "BP ≥ 160/110 (on two occasions at least 4 hours apart), or protein ≥ 5 g/24 h, or low platelets / high liver enzymes"
+      "uz": "Bosim ≥ 160/110 (kamida 4 soat oraliqda ikki marta), yoki trombotsitlar ↓ / jigar fermentlari ↑",
+      "ru": "Давление ≥ 160/110 (дважды с интервалом не менее 4 ч), или тромбоциты ↓ / печёночные ферменты ↑",
+      "en": "BP ≥ 160/110 (on two occasions at least 4 hours apart), or low platelets / high liver enzymes"
      },
      "meaning": {
-      "uz": "Og‘ir preeklampsiya belgilari.",
-      "ru": "Признаки тяжёлой преэклампсии.",
-      "en": "Signs of severe preeclampsia."
+      "uz": "Og‘ir preeklampsiya belgilari. Proteinuriya miqdori (masalan ≥ 5 g/sutka) endi og‘irlik belgisi hisoblanmaydi (ACOG 2013/2020).",
+      "ru": "Признаки тяжёлой преэклампсии. Величина протеинурии (например ≥ 5 г/сут) больше не считается признаком тяжести (ACOG 2013/2020).",
+      "en": "Signs of severe preeclampsia. The amount of proteinuria (e.g. ≥ 5 g/24 h) is no longer a severe feature (ACOG 2013/2020)."
      },
      "refs": [
       {
        "source_id": "nichd-preeclampsia-dx",
        "locator": "How do health care providers diagnose preeclampsia, eclampsia, and HELLP syndrome?"
+      },
+      {
+       "source_id": "acog-pb222-2020",
+       "locator": "Box 3. Preeclampsia with severe features"
       }
      ]
     },
@@ -55382,9 +55621,9 @@
       "en": "Normal MCV, low or normal reticulocytes"
      },
      "meaning": {
-      "uz": "Ishlab chiqarish kamaygan: surunkali kasallik (yallig‘lanish) anemiyasi, buyrak kasalligi, suyak ko‘migi kasalligi yoki erta aralash tanqislik. Og‘ir anemiya va juda past retikulotsitlarda ko‘mik yetishmovchiligi istisno qilinadi.",
-      "ru": "Сниженная продукция: анемия хронических заболеваний (воспаления), болезнь почек, болезнь костного мозга или ранний смешанный дефицит. При тяжёлой анемии и очень низких ретикулоцитах исключают недостаточность костного мозга.",
-      "en": "Reduced production: anaemia of chronic disease (inflammation), kidney disease, marrow disease or early mixed deficiency. With severe anaemia and very low reticulocytes, marrow failure is ruled out."
+      "uz": "Ishlab chiqarish kamaygan: surunkali kasallik (yallig‘lanish) anemiyasi, buyrak kasalligi, suyak ko‘migi kasalligi yoki erta aralash tanqislik. Og‘ir anemiya va juda past retikulotsitlarda ko‘mik yetishmovchiligini istisno qilish (tekshirish) kerak.",
+      "ru": "Сниженная продукция: анемия хронических заболеваний (воспаления), болезнь почек, болезнь костного мозга или ранний смешанный дефицит. При тяжёлой анемии и очень низких ретикулоцитах необходимо исключить (обследовать) недостаточность костного мозга.",
+      "en": "Reduced production: anaemia of chronic disease (inflammation), kidney disease, marrow disease or early mixed deficiency. With severe anaemia and very low reticulocytes, marrow failure must be excluded (investigated)."
      },
      "refs": [
       {

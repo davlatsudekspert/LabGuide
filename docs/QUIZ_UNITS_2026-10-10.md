@@ -69,10 +69,10 @@ ma'no va javob kaliti o'zgarmagan.
 | id | Matndagi qiymat | Sabab |
 |---|---|---|
 | `unit-factor` | "glyukoza ≈ 18,0 mg/dL har 1 mmol/L ga, kreatinin ≈ 11,3 mg/dL" | Koeffitsientning o'zi haqida gap, laboratoriya natijasi emas (testda istisno) |
-| `transferrin-tibc-q1` | temir 50 µg/dL, TIBC 400 µg/dL | Temir koeffitsienti (µmol/L ×0,179) topshiriqdagi ro'yxatda ham, ilovadagi `conversion` ma'lumotida ham yo'q — egasi qaroriga qoldirildi; hisob (50/400×100) birlikka bog'liq emas |
-| `vitamin-b12-q1` | B12 250 pg/mL, 150–399 pg/mL | pg/mL → pmol/L (×0,738) ro'yxatda yo'q (vitamin/gormon toifasi) |
-| `platelets-q1` | 150 000/µL va h.k. | Hujayra soni (/µL ↔ ×10⁹/L) — konsentratsiya konversiyasi ro'yxatida yo'q |
-| `hematocrit-q1`, `coagulation-factors-q1`, `lipoprotein-a-q1`, `vaginal-wet-mount-q2`, `transferrin-tibc-q1` (%) | foiz | Ulush/faollik — birlik konversiyasi tegishli emas |
+| ~~`transferrin-tibc-q1`~~ (2026-10-11 da o‘tkazildi, pastga qarang) | temir 50 µg/dL, TIBC 400 µg/dL | Temir koeffitsienti (µmol/L ×0,179) topshiriqdagi ro'yxatda ham, ilovadagi `conversion` ma'lumotida ham yo'q — egasi qaroriga qoldirildi; hisob (50/400×100) birlikka bog'liq emas |
+| ~~`vitamin-b12-q1`~~ (2026-10-11 da o‘tkazildi, pastga qarang) | B12 250 pg/mL, 150–399 pg/mL | pg/mL → pmol/L (×0,738) ro'yxatda yo'q (vitamin/gormon toifasi) |
+| ~~`platelets-q1`~~ (2026-10-11 da o‘tkazildi, pastga qarang) | 150 000/µL va h.k. | Hujayra soni (/µL ↔ ×10⁹/L) — konsentratsiya konversiyasi ro'yxatida yo'q |
+| `coagulation-factors-q1`, `lipoprotein-a-q1`, `vaginal-wet-mount-q2`, `transferrin-tibc-q1` (%) | foiz | Ulush/faollik — birlik konversiyasi tegishli emas |
 | `csf-analysis-q1` | 2/3 nisbat | Nisbat |
 | Toifa `kdl-t-184` | ×10⁹/L, % | Hujayra soni |
 | Toifa `kdl-t-363` | U, kat | Ferment birliklari — o'zgartirilmaydi |
@@ -81,3 +81,22 @@ ma'no va javob kaliti o'zgarmagan.
 
 Ishonchsiz deb belgilangan qiymat yo'q: barcha o'zgargan raqamlar manbadagi
 asl qiymatdan bitta rasmiy koeffitsient bilan hisoblangan.
+
+## Qo'shimcha (2026-10-11): hujayra soni, gematokrit, temir, B12
+
+Koordinator / Learn QA so'rovi bo'yicha qolgan konvensional-yagona qiymatlar
+xuddi shu uslubda o'tkazildi (`tool/content/quiz_dual_units.py`, test —
+`test/unit/quiz_units_test.dart`; javob kalitlari o'zgarmagan; savollarga
+`review.agent_checks` 2026-10-11 yozuvi).
+
+| id | Joy | Eski → yangi | Koeffitsient |
+|---|---|---|---|
+| `platelets-q1` (hematology.json) | savol, asos, 3 izoh uz/ru/en | 15 000/µL → 15 ×10⁹/L (15 000/µL); 150 000 → 150 ×10⁹/L (150 000/µL); 100 000–150 000 → 100–150 ×10⁹/L (100 000–150 000/µL); 20 000 → 20 ×10⁹/L (20 000/µL) | /µL ÷ 1000 = ×10⁹/L; minglik: uz/ru bo'sh joy, en vergul |
+| `hematocrit-q1` (hematology.json) | savol uz/ru/en | 42 → 0,42 L/L (42%) | % ÷ 100 = L/L |
+| `transferrin-tibc-q1` (cardio_iron.json) | savol uz/ru/en | temir 50 µg/dL → 9,0 µmol/L (50 µg/dL); TIBC 400 µg/dL → 71,6 µmol/L (400 µg/dL) | Fe 55,845 g/mol: ×0,17907 |
+| `vitamin-b12-q1` (cardio_iron.json) | savol, asos uz/ru/en | 250 pg/mL → 184 pmol/L (250 pg/mL); 150–399 pg/mL → 111–294 pmol/L (150–399 pg/mL) | kobalamin 1355,37 g/mol: ×0,7378 |
+
+Transferrin to'yinishi asosidagi hisob (50 / 400 × 100 = 12,5 %) o'zgarmadi:
+nisbat birlikka bog'liq emas (9,0 / 71,6 × 100 ham ≈ 12,5 %).
+O'zgartirilmagan: `coagulation-factors-q1` (faollik %, konsentratsiya emas),
+`books-anemia-mcv` (MCV fL — SI), foiz/nisbatlar.

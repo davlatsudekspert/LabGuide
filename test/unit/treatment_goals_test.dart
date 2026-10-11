@@ -95,6 +95,24 @@ void main() {
       }
     });
 
+    test('NCEP ATP III goals are historical, superseded by current ones', () {
+      // docs/CONTENT_AUDIT_2026-10-11.md: ATP III — faqat kontekst uchun.
+      const current = {
+        'ldl-c': ['esc-eas-2019', 'acc-aha-2018'],
+        'non-hdl-c': ['esc-eas-2019'],
+      };
+      for (final MapEntry(key: id, value: ids) in current.entries) {
+        for (final g in pack.analyte(id)!.treatmentGoals) {
+          if (g.guidelineId.startsWith('ncep-atp3')) {
+            expect(g.historical, isTrue, reason: '$id ${g.guidelineId}');
+            expect(g.supersededBy, ids, reason: id);
+          } else {
+            expect(g.historical, isFalse, reason: '$id ${g.guidelineId}');
+          }
+        }
+      }
+    });
+
     test('goals are kept apart from RI and DL; cards stay draft', () {
       for (final id in ['ldl-c', 'non-hdl-c']) {
         final a = pack.analyte(id)!;
@@ -163,6 +181,18 @@ void main() {
         ];
       });
       rejects('same guideline, other year', (g) => g['year'] = 2002);
+      rejects('superseded by unknown guideline', (g) {
+        g['superseded_by'] = ['no-such-guideline'];
+      });
+      rejects('superseded by itself', (g) {
+        g['superseded_by'] = ['ncep-atp3-2001'];
+      });
+      rejects('superseded by a historical guideline', (g) {
+        g['superseded_by'] = ['ncep-atp3-2004'];
+      });
+      rejects('only part of a guideline superseded', (g) {
+        g['superseded_by'] = ['esc-eas-2019'];
+      });
     });
 
     test('structure-only card cannot carry goals', () {

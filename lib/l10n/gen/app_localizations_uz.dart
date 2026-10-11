@@ -2371,6 +2371,10 @@ class AppLocalizationsUz extends AppLocalizations {
   String get calcOptional => 'ixtiyoriy';
 
   @override
+  String get calcCalciumCaution =>
+      'Albumin bo‘yicha tuzatilgan kalsiy ko‘pincha kalsiy holatini noto‘g‘ri baholaydi, ayniqsa albumin past bo‘lsa yoki buyrak faoliyati buzilganda. Imkon bo‘lsa, ionlashgan kalsiyni o‘lchang — u afzal.';
+
+  @override
   String get calcNotDiagnosis =>
       'O‘rganish va tekshirish uchun hisob vositasi. Tashxis qo‘ymaydi: natijani klinik manzara va laboratoriyangiz referens intervallari bilan birga talqin qiling.';
 
@@ -6819,6 +6823,11 @@ class AppLocalizationsUz extends AppLocalizations {
   @override
   String get analyteTreatmentGoalsNotRef =>
       'Davolash maqsadi referens interval ham, diagnostik chegara ham emas. Qo‘llanmalar xavf guruhlarini turlicha belgilaydi — qiymatlarni faqat bitta jadval ichida solishtiring.';
+
+  @override
+  String analyteGoalHistorical(String current) {
+    return 'Tarixiy yo‘riqnoma, o‘rniga: $current. Faqat kontekst uchun ko‘rsatilgan — hozirgi davolash qarorlari uchun emas.';
+  }
 
   @override
   String analyteGoalGuideline(String name, String year) {

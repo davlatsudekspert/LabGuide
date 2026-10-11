@@ -310,4 +310,70 @@ void main() {
       expect(text, endsWith(l.condReferralFooter));
     });
   });
+
+  // docs/CONTENT_AUDIT_2026-10-11.md — tibbiy mazmun regressiyasi.
+  group('clinical content audit 2026-10-11', () {
+    List<Map<String, Object?>> patterns(String id) =>
+        ((packJson()['conditions']! as List)
+                    .cast<Map<String, Object?>>()
+                    .firstWhere((c) => c['id'] == id)['patterns']!
+                as List)
+            .cast<Map<String, Object?>>();
+    String text(Map<String, Object?> p, String field, String lang) =>
+        (p[field]! as Map)[lang]! as String;
+
+    test('metabolic syndrome: fasting glucose criterion is >= 100 mg/dL', () {
+      // NHLBI: 100–125 mg/dL “high blood sugar” — sindrom mezoni; 126 —
+      // diabet chegarasi, mezon emas (Alberti 2009 bilan mos).
+      final glucose = patterns('metabolic-syndrome')
+          .where((p) => text(p, 'finding', 'en').contains('glucose'));
+      expect(glucose, hasLength(1));
+      for (final lang in ['uz', 'ru', 'en']) {
+        final f = text(glucose.single, 'finding', lang);
+        expect(f, contains('100'), reason: lang);
+        expect(f, isNot(contains('126')), reason: lang);
+        expect(f, anyOf(contains('5,6'), contains('5.6')), reason: lang);
+      }
+    });
+
+    test('supervisor items: preeclampsia, HFmrEF, TG ≥ 150, A1C in IFCC', () {
+      final pe = patterns('preeclampsia')[1];
+      for (final lang in ['uz', 'ru', 'en']) {
+        expect(text(pe, 'finding', lang), isNot(contains('5 g')), reason: lang);
+        expect(text(pe, 'finding', lang), isNot(contains('5 г')), reason: lang);
+      }
+      expect(text(pe, 'meaning', 'en'), contains('no longer a severe feature'));
+      final hf = patterns('heart-failure')[2];
+      expect(text(hf, 'meaning', 'en'), contains('mildly reduced (HFmrEF)'));
+      expect(text(hf, 'meaning', 'en'), isNot(contains('borderline')));
+      expect(text(hf, 'meaning', 'ru'), contains('умеренно сниженной'));
+      expect(text(hf, 'meaning', 'uz'), contains('HFmrEF'));
+      final tg = patterns('metabolic-syndrome')[0];
+      for (final lang in ['uz', 'ru', 'en']) {
+        expect(text(tg, 'finding', lang), contains('≥ 150'), reason: lang);
+        expect(
+          text(tg, 'finding', lang),
+          contains(lang == 'en' ? '1.7' : '1,7'),
+          reason: lang,
+        );
+      }
+      final dm = patterns('type-2-diabetes');
+      expect(text(dm[0], 'finding', 'en'), contains('≥ 48 mmol/mol'));
+      expect(text(dm[0], 'finding', 'ru'), contains('≥ 48 ммоль/моль'));
+      expect(text(dm[1], 'finding', 'en'), contains('39–47 mmol/mol'));
+      expect(text(dm[1], 'finding', 'en'), contains('WHO: 110–125 mg/dL'));
+      expect(text(dm[1], 'finding', 'uz'), contains('JSST: 110–125 mg/dL'));
+      expect(text(dm[1], 'finding', 'ru'), contains('ВОЗ: 110–125 мг/дл'));
+    });
+
+    test('anaemia work-up never says marrow failure is “ruled out”', () {
+      final p = patterns(
+        'anemia-workup',
+      ).firstWhere((p) => text(p, 'meaning', 'en').contains('marrow failure'));
+      expect(text(p, 'meaning', 'en'), contains('must be excluded'));
+      expect(text(p, 'meaning', 'en'), isNot(contains('is ruled out')));
+      expect(text(p, 'meaning', 'ru'), contains('необходимо исключить'));
+      expect(text(p, 'meaning', 'uz'), contains('istisno qilish'));
+    });
+  });
 }

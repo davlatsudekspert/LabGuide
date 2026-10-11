@@ -541,10 +541,20 @@ class _AnalyteBody {
     final p = LgPalette.of(context);
     final locale = Localizations.localeOf(context).toLanguageTag();
     final siPreferred = context.services.settings.unitSystem == UnitSystem.si;
+    // Amaldagi yo'riqnomalar avval, tarixiy (almashtirilgan)lari keyin —
+    // ular faqat kontekst uchun, alohida belgi bilan.
     final byGuideline = <String, List<TreatmentGoal>>{};
-    for (final g in analyte.treatmentGoals) {
-      byGuideline.putIfAbsent(g.guidelineId, () => []).add(g);
+    for (final historical in [false, true]) {
+      for (final g in analyte.treatmentGoals) {
+        if (g.historical != historical) continue;
+        byGuideline.putIfAbsent(g.guidelineId, () => []).add(g);
+      }
     }
+    String currentNames(List<String> ids) => [
+      for (final id in ids)
+        if (byGuideline[id]?.first case final c?)
+          l.analyteGoalGuideline(c.guidelineName, '${c.year}'),
+    ].join('; ');
     return LgPanel(
       key: const ValueKey('treatment-goals-panel'),
       child: Column(
@@ -582,6 +592,19 @@ class _AnalyteBody {
                         style: text.titleSmall,
                       ),
                     ),
+                    if (goals.first.historical)
+                      Padding(
+                        key: ValueKey('treatment-goals-historical-$id'),
+                        padding: const EdgeInsets.only(top: 4),
+                        child: Text(
+                          l.analyteGoalHistorical(
+                            currentNames(goals.first.supersededBy),
+                          ),
+                          style: text.bodySmall!.copyWith(
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
                     for (final (i, g) in goals.indexed)
                       Container(
                         width: double.infinity,
