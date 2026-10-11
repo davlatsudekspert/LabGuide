@@ -89,7 +89,10 @@ class Rec extends Walk {
       find.byType(LabGuideApp),
       matchesGoldenFile('$framesRoot/${dir.uri.pathSegments.where((s) => s.isNotEmpty).last}/$file'),
     );
+    // ignore: avoid_print
+    print('SHOT $id');
     frames.add({'id': id, 'file': file, 'rect': rect, 'kind': target == null ? 'none' : kind});
+    save();
   }
 
   void save() {

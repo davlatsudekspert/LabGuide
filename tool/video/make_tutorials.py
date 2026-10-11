@@ -167,6 +167,146 @@ VIDEOS = [
     ),
 ]
 
+VIDEOS += [
+    dict(
+        n=6, frames='v6', name='LabGuide 6 - Ilova bilan tanishuv',
+        title='LabGuide bilan tanishuv', sub='Ilova qo‘llanmasi',
+        caps=[
+            ('til', 'Tilni tanlang: O‘zbekcha, Русский yoki English'),
+            ('welcome', 'Hisobsiz ham ko‘rish mumkin: “Mehmon sifatida ko‘rish”'),
+            ('role', 'Yo‘nalishni tanlang: shifokor, laborant, talaba, ustoz'),
+            ('role_picked', 'Tanlov faqat bosh sahifani moslaydi'),
+            ('home', 'Bosh sahifa: yo‘nalishingizga mos kartalar va qidiruv'),
+            ('tests', '“Tahlillar”: tahlil kartalari va qidiruv'),
+            ('tests_search', 'Qidiruv: nom yoki qisqartma yozing, masalan “HbA1c”'),
+            ('lab', '“Lab”: leykoformula, QC, kalkulyatorlar, apparatlar'),
+            ('library', '“Kutubxona”: kitoblar, manbalar va saqlanganlar'),
+            ('learn', '“O‘rganish”: mashq, imtihon, guruh va ma’ruza'),
+            ('profile', 'Profil: til va birliklar — SI yoki an’anaviy (mg/dL)'),
+            ('units', 'Tashqi ko‘rinish: Kunduzgi, Tungi yoki Tizim mavzusi'),
+            ('community', 'Bosh sahifada “Hamjamiyat” — savol-javob kartasi'),
+            ('rules', 'Hamjamiyat qoidalari: klinik tajriba almashish joyi'),
+        ],
+        desc=('LabGuide ilovasi bilan tanishuv: til tanlash, yo‘nalish '
+              '(shifokor, laborant, talaba, ustoz), 5 ta asosiy bo‘lim '
+              '(Bosh sahifa, Tahlillar, Lab, Kutubxona, O‘rganish), qidiruv, '
+              'profil sozlamalari (til, SI/an’anaviy birliklar, mavzu) va '
+              'Hamjamiyat savol-javob bo‘limi.'),
+        tags='#LabGuide #laboratoriya #tibbiyot #shifokor #laborant #talaba '
+             '#ustoz #oʻzbekiston #ilova #shorts #reels',
+    ),
+    dict(
+        n=7, frames='v7', name='LabGuide 7 - Shifokor uchun tahlillar va kalkulyatorlar',
+        title='Shifokor uchun: tahlillar va kalkulyatorlar',
+        sub='Shifokorlar uchun qo‘llanma',
+        caps=[
+            ('home', 'Shifokor bosh sahifasi: kasallik yoki tahlilni qidiring'),
+            ('conditions', 'Kasallik nomini yozing, masalan “diabet”'),
+            ('conditions_search', 'Natijadan kerakli kasallikni tanlang'),
+            ('condition', 'Kasallik kartasi: avval qaysi tahlillar kerakligi'),
+            ('tests', '“Tahlillar” bo‘limida ham qidirish mumkin'),
+            ('search', 'Tahlil nomi yoki qisqartmasini yozing: HbA1c'),
+            ('card_top', 'Tahlil kartasi: qisqa mazmun va manbali namuna'),
+            ('card_ref', 'Diagnostik chegaralar: % va mmol/mol birliklarida'),
+            ('card_sources', 'Pastda manbalar: raqamlar qayerdan olingani'),
+            ('card_community', '“Bu tahlil bo‘yicha savollar” — Hamjamiyat havolasi'),
+            ('creat_link', 'Kreatinin kartasidan eGFR kalkulyatoriga o‘ting'),
+            ('egfr', 'Kreatinin (µmol/L) va yoshni kiriting'),
+            ('egfr_sex', 'Jinsni tanlang va “Hisoblash” ni bosing'),
+            ('egfr_result', 'Natija: eGFR 60 mL/min/1.73 m² (namunaviy hisob)'),
+        ],
+        desc=('LabGuide shifokor uchun: kasallik bo‘yicha tahlillar, HbA1c '
+              'tahlil kartasi (diagnostik chegaralar, manbalar), '
+              '“Bu tahlil bo‘yicha savollar” havolasi va eGFR (CKD-EPI 2021) '
+              'kalkulyatori misoli. Natija tashxis emas — laboratoriyangiz '
+              'referens intervali bilan birga talqin qiling.'),
+        tags='#LabGuide #shifokor #tahlillar #HbA1c #eGFR #kreatinin '
+             '#laboratoriya #tibbiyot #oʻzbekiston #shorts #reels',
+    ),
+    dict(
+        n=8, frames='v8', name='LabGuide 8 - Leykoformula sanash',
+        title='Laborant uchun: leykoformula sanash',
+        sub='Laborantlar uchun qo‘llanma',
+        caps=[
+            ('home', 'Laborant bosh sahifasi: “Lab” bo‘limini oching'),
+            ('lab', '“Leykoformula” kartasini oching'),
+            ('diff_home', '“Sanashni boshlash” tugmasini bosing'),
+            ('counter', 'Maqsad: 100 yoki 200 hujayra'),
+            ('counter_sound', 'Tovush va tebranish tugmalari yuqorida'),
+            ('tap', 'Bosish: +1 — hujayra turi tugmasi'),
+            ('count45', 'Xato bosilsa — shu tugmani uzoq bosing'),
+            ('longpress', 'Uzoq bosish: −1 (45 dan 44 ga)'),
+            ('done', '100 ga yetganda sanash to‘xtaydi'),
+            ('result', 'Natija: har hujayra soni va foizi'),
+            ('ef_entry', 'Mikroskop rejimi: ko‘rmasdan sanash'),
+            ('ef_settings', '“Sanashni boshlash” — ekran katta zonalarga bo‘linadi'),
+            ('ef_run', 'Zonani bosing: har bosishda tovush va tebranish'),
+            ('ef_done', '100 ta sanaldi — “Natijani ko‘rish”'),
+            ('ef_result', 'Natijani tarixga saqlash yoki nusxalash mumkin'),
+        ],
+        desc=('LabGuide laboratoriya mutaxassisi uchun: leykoformulani qo‘lda '
+              'sanash hisoblagichi — bosish +1, uzoq bosish −1, 100 yoki 200 '
+              'hujayra, tovush/tebranish, natija foizlari va mikroskopdan ko‘z '
+              'uzmasdan sanash rejimi.'),
+        tags='#LabGuide #laborant #leykoformula #gematologiya #mikroskop '
+             '#laboratoriya #oʻzbekiston #shorts #reels',
+    ),
+    dict(
+        n=9, frames='v9', name='LabGuide 9 - Sifat nazorati QC',
+        title='Laborant uchun: sifat nazorati (QC)',
+        sub='Laborantlar uchun qo‘llanma',
+        caps=[
+            ('lab', '“Lab” bo‘limida “QC” ni oching'),
+            ('qc_empty', '“Test qo‘shish” — masalan, glyukoza'),
+            ('form_filled', 'Test nomi va birligini yozing: Glyukoza, mmol/L'),
+            ('form_levels', 'Har daraja uchun maqsadli o‘rtacha va SD'),
+            ('set_empty', '“Seriya kiritish” — nazorat natijasini qo‘shing'),
+            ('run1', 'Seriya qabul qilindi: hech bir qoida buzilmagan'),
+            ('warn', 'Ogohlantirish: 1-2s — ±2 SD dan tashqarida'),
+            ('reject22', 'Ketma-ket ikkinchisi: 2-2s qoidasi — seriya rad etildi'),
+            ('reject22_low', 'Levey–Jennings grafigida nuqtalar ±2 SD dan chiqdi'),
+            ('reject13', '1-3s qoidasi: ±3 SD dan tashqarida — rad etildi'),
+            ('reject13_low', 'Qizil kvadrat — rad etilgan seriya'),
+            ('guides', 'Yo‘riqnomalar: QC rad etilsa nima qilish'),
+            ('guide', 'Avval to‘xtating, sababni toping, qayta tekshiring'),
+        ],
+        desc=('LabGuide sifat nazorati (QC): test yaratish, maqsadli o‘rtacha '
+              'va SD kiritish, seriyalarni kiritish, Levey–Jennings grafigi va '
+              'Westgard qoidalari (1-2s, 2-2s, 1-3s) natijalari hamda “QC rad '
+              'etilsa nima qilish” yo‘riqnomasi. Qiymatlar — namunaviy.'),
+        tags='#LabGuide #QC #sifatnazorati #Westgard #LeveyJennings '
+             '#laborant #laboratoriya #oʻzbekiston #shorts #reels',
+    ),
+    dict(
+        n=10, frames='v10', name='LabGuide 10 - Kalibrovka va preanalitika',
+        title='Laborant uchun: kalibrovka va preanalitika',
+        sub='Laborantlar uchun qo‘llanma',
+        caps=[
+            ('lab', '“Apparatlar va metodikalar” bo‘limini oching'),
+            ('inst_home', 'Apparat modeli yoki kompaniyasini qidiring'),
+            ('inst_search', 'Masalan: HumaLyzer 4000'),
+            ('inst_card', '“Mening apparatim” sifatida saqlang'),
+            ('inst_save_form', 'Nomi (masalan, 1-xona) va qo‘llanma versiyasi'),
+            ('inst_saved', 'Endi “Kalibrlash” tugmasini bosing'),
+            ('cal_start', 'Analitni qidiring: glyukoza'),
+            ('cal_analyte', 'Ro‘yxatdan analitni tanlang'),
+            ('cal_ref_ok', 'Reagent REF ni kiriting — katalogdagi bilan solishtiriladi'),
+            ('cal_ifu', 'IFU versiyasini kiriting: “Yo‘riqnomani ko‘rsatish”'),
+            ('cal_guide', 'Tasdiqlangan yo‘riqnoma bo‘lmasa, ilova buni aytadi'),
+            ('lab2', '“Preanalitika” bo‘limini oching'),
+            ('pre_order', 'Probirkalar tartibi: gemokultura, sitrat, zardob…'),
+            ('pre_order_low', 'Har probirka uchun qopqoq rangi ko‘rsatilgan'),
+        ],
+        desc=('LabGuide laboratoriya mutaxassisi uchun: apparatlar katalogida '
+              'qidirish, “Mening apparatim”, kalibrlash yo‘li (analit, reagent '
+              'REF, IFU versiyasi) va preanalitika — venepunksiyada probirkalar '
+              'tartibi. Ilova faqat tekshirilgan yo‘riqnomani ko‘rsatadi, '
+              'bo‘lmasa buni ochiq aytadi.'),
+        tags='#LabGuide #kalibrovka #preanalitika #laborant #probirka '
+             '#laboratoriya #oʻzbekiston #shorts #reels',
+    ),
+]
+
 
 # ---------------------------------------------------------------- yordamchi
 def font(size, weight='Bold'):
@@ -423,7 +563,7 @@ def scene_frame(s, tl):
 
 def render_video(video, frames_dir, out_dir):
     scenes, total = build_scenes(video, frames_dir)
-    name = f"{video['n']:02d}_{video['slug']}"
+    name = video.get('name') or f"{video['n']:02d}_{video['slug']}"
     mp4 = os.path.join(out_dir, name + '.mp4')
     nframes = int(round(total * FPS))
     cmd = ['ffmpeg', '-y', '-loglevel', 'error',
@@ -481,8 +621,10 @@ def write_txt(path, video, total):
     txt = (f"{video['title']} | LabGuide\n\n{video['desc']}\n\n"
            'LabGuide — laboratoriya amaliyoti va o‘rganish ilovasi. '
            'Hozir TestFlight / Google Play sinov versiyasida.\n'
-           'Videodagi ma’lumotlar namunaviy (demo): guruh “KDL-1 (namuna)”, '
-           'ustoz@example.com, Talaba 01/02.\n'
+           + ('Videodagi ma’lumotlar namunaviy (demo): guruh “KDL-1 (namuna)”, '
+              'ustoz@example.com, Talaba 01/02.\n' if video['n'] <= 5 else
+              'Videodagi qiymatlar namunaviy (demo) va haqiqiy bemor yoki '
+              'laboratoriya ma’lumoti emas.\n') +
            f'Savollar: {CONTACT}\n\n{video["tags"]}\n')
     open(path, 'w', encoding='utf-8').write(txt)
 
