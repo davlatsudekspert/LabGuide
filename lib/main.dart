@@ -11,6 +11,7 @@ import 'app/app.dart';
 import 'app/app_scope.dart';
 import 'core/backend/access_controller.dart';
 import 'core/backend/cloudflare_backend.dart';
+import 'core/backend/community_backend.dart';
 import 'core/backend/lab_backend.dart';
 import 'core/backend/supabase_backend.dart';
 import 'core/entitlements/entitlement_cache.dart';
@@ -21,6 +22,7 @@ import 'features/auth/auth_controller.dart';
 import 'features/auth/otp_auth.dart';
 import 'features/classroom/classroom_local.dart';
 import 'features/classroom/curriculum.dart';
+import 'features/community/community_controller.dart';
 import 'features/content/content_controller.dart';
 import 'features/daily/daily_controller.dart';
 import 'features/daily/daily_reminder.dart';
@@ -84,6 +86,7 @@ AppServices createServices({
   ResultSharer? sharer,
   DateTime Function()? clock,
   Curriculum? curriculum,
+  CommunityBackend? community,
 }) {
   const config = AppConfig(appVersion: _appVersion, showDebugBadge: kDebugMode);
   final server = backend ?? _defaultBackend();
@@ -143,6 +146,13 @@ AppServices createServices({
     sharer: sharer ?? const SystemResultSharer(),
     curriculum: CurriculumController(bundle: bundle, curriculum: curriculum),
     classroom: ClassroomLocal(store),
+    // Hamjamiyat faqat Cloudflare serveri (LG_API_URL) bilan; aks holda
+    // UI umuman ko'rinmaydi.
+    community: CommunityController(
+      community ??
+          (server is CommunityBackend ? server as CommunityBackend : null),
+      clock: clock,
+    ),
   )..watchAccess();
 }
 

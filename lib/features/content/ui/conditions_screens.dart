@@ -7,6 +7,7 @@ import '../../../app/widgets/lg_page.dart';
 import '../../../design/tokens.dart';
 import '../../../design/widgets/lg_widgets.dart';
 import '../../../l10n/gen/app_localizations.dart';
+import '../../community/community_screens.dart';
 import '../condition_search.dart';
 import '../content_model.dart';
 import 'analyte_screen.dart';
@@ -501,6 +502,8 @@ class _ConditionBody {
       ),
       _sourcesPanel(context, l),
       _reviewPanel(context, l, text),
+      // Hamjamiyat savollari (server ulanmagan buildda — yo'q).
+      CommunityTopicLink(topic: 'condition:${c.id}'),
     ];
   }
 

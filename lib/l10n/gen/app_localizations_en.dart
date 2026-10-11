@@ -7373,4 +7373,332 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get lectureEndTest => 'Class test — in the app, timed';
+
+  @override
+  String get cmTitle => 'Community · Q&A';
+
+  @override
+  String get cmHomeSub => 'Questions answered by verified lab specialists';
+
+  @override
+  String get cmAsk => 'Ask a question';
+
+  @override
+  String get cmAllQuestions => 'All questions';
+
+  @override
+  String get cmEmptyTitle => 'No questions yet';
+
+  @override
+  String get cmEmptyBody => 'Be the first to ask.';
+
+  @override
+  String cmTopicLinkAnalyte(int count) {
+    return 'Questions about this test ($count)';
+  }
+
+  @override
+  String cmTopicLinkCondition(int count) {
+    return 'Questions about this condition ($count)';
+  }
+
+  @override
+  String get cmTopicLinkSub => 'Community · answers from specialists';
+
+  @override
+  String cmTopicLabel(String name) {
+    return 'Topic: $name';
+  }
+
+  @override
+  String get cmMyQuestions => 'My questions';
+
+  @override
+  String get cmMyQuestionsSub => 'Your questions and their answers';
+
+  @override
+  String get cmVerifyTitle => 'Specialist verification';
+
+  @override
+  String get cmVerifySub => 'Upload a document to answer questions';
+
+  @override
+  String get cmBadgeAi => '✓ Specialist (document checked automatically)';
+
+  @override
+  String get cmBadgeManual => '✓ Verified specialist';
+
+  @override
+  String get cmBadgeInfo =>
+      '“Document checked automatically” means an AI model, not a person, checked the document. Users can report a wrong badge.';
+
+  @override
+  String get cmMember => 'Member';
+
+  @override
+  String get cmYou => 'you';
+
+  @override
+  String get cmVerifyInfoTitle => 'Automatic check — the file is not stored';
+
+  @override
+  String get cmVerifyInfo =>
+      'The document is checked automatically by an AI model (Cloudflare Workers AI); no person looks at it. The file is not saved anywhere and is discarded right after the check. Only the result is kept on the server: role, country, status and date. An automatic check can make mistakes; if other users report a wrong badge, it is suspended until an administrator reviews it.';
+
+  @override
+  String get cmVerifyRole => 'Your profession';
+
+  @override
+  String get cmRoleLaborant => 'Lab technician';
+
+  @override
+  String get cmRoleBiochemist => 'Biochemist';
+
+  @override
+  String get cmRoleKdlDoctor => 'Clinical lab physician';
+
+  @override
+  String get cmRoleTeacher => 'Teacher';
+
+  @override
+  String get cmRoleOther => 'Other';
+
+  @override
+  String get cmRoleClinicalLab => 'Clinical laboratory diagnostics';
+
+  @override
+  String get cmVerifyCountry => 'Country (2-letter code, e.g. UZ)';
+
+  @override
+  String get cmVerifyCountryError => 'Enter a 2-letter country code';
+
+  @override
+  String get cmVerifyDocHint =>
+      'Diploma, certificate or a document from your workplace. JPEG or PNG photo, up to 5 MB. For a PDF, take a photo of its first page. Cover any patient data.';
+
+  @override
+  String get cmVerifyCamera => 'Take a photo';
+
+  @override
+  String get cmVerifyGallery => 'Choose from gallery';
+
+  @override
+  String get cmVerifyRemove => 'Choose another';
+
+  @override
+  String get cmVerifySubmit => 'Send for automatic check';
+
+  @override
+  String get cmVerifyAttempts => 'Up to 3 attempts per day.';
+
+  @override
+  String get cmStatusNone => 'Not verified yet';
+
+  @override
+  String get cmStatusVerified => 'Verified';
+
+  @override
+  String get cmStatusRejected =>
+      'The document was not accepted. Try again with a clearer photo where the institution and the field are visible.';
+
+  @override
+  String get cmStatusSuspended =>
+      'Your community account is suspended after reports from users. An administrator will review it.';
+
+  @override
+  String cmVerifiedAt(String date) {
+    return 'Verified: $date';
+  }
+
+  @override
+  String get cmMethodAi => 'Method: automatic (AI)';
+
+  @override
+  String get cmMethodManual => 'Method: document reviewed manually';
+
+  @override
+  String get cmErrTooLarge => 'The file is larger than 5 MB.';
+
+  @override
+  String get cmErrType => 'Only a JPEG or PNG photo.';
+
+  @override
+  String get cmErrAi =>
+      'The automatic check is not available right now. Try again later.';
+
+  @override
+  String get cmErrNotVerified =>
+      'Only verified specialists can answer and vote.';
+
+  @override
+  String get cmErrContact =>
+      'Remove email addresses and phone numbers (and any patient data) from the text.';
+
+  @override
+  String get cmErrLength => 'Title: 10–200 characters, text: 10–4000.';
+
+  @override
+  String get cmErrAlreadyVerified => 'You are already verified.';
+
+  @override
+  String get cmErrRevoked =>
+      'Your specialist status was revoked by an administrator. Automatic re-verification is not available.';
+
+  @override
+  String get cmAskTitleField => 'Question title';
+
+  @override
+  String get cmAskBodyField => 'Details';
+
+  @override
+  String get cmAskNoPatient =>
+      'Do not write a patient’s name, phone or other personal data. Answers are colleagues’ experience, not personal medical advice.';
+
+  @override
+  String get cmAskSend => 'Post question';
+
+  @override
+  String get cmAskSent => 'Question posted';
+
+  @override
+  String get cmSignInTitle => 'Sign in to take part';
+
+  @override
+  String get cmSignInBody =>
+      'Anyone signed in can ask. Verified specialists answer.';
+
+  @override
+  String cmAnswers(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count answers',
+      one: '1 answer',
+      zero: 'No answers',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get cmAnswerField => 'Your answer';
+
+  @override
+  String get cmAnswerSend => 'Post answer';
+
+  @override
+  String get cmAnswerOnlySpecialists =>
+      'Answers are written only by verified specialists.';
+
+  @override
+  String get cmBest => 'Best answer';
+
+  @override
+  String get cmMarkBest => 'Mark as best';
+
+  @override
+  String get cmUnmarkBest => 'Remove mark';
+
+  @override
+  String cmUpvote(int count) {
+    return 'Helpful ($count)';
+  }
+
+  @override
+  String get cmReport => 'Report';
+
+  @override
+  String get cmReportTitle => 'Reason for the report';
+
+  @override
+  String get cmReasonSpam => 'Spam or advertising';
+
+  @override
+  String get cmReasonWrong => 'Wrong or dangerous information';
+
+  @override
+  String get cmReasonAbuse => 'Abusive';
+
+  @override
+  String get cmReasonFake => 'Fake specialist';
+
+  @override
+  String get cmReasonPatient => 'Contains patient data';
+
+  @override
+  String get cmReasonOther => 'Other';
+
+  @override
+  String get cmReportSent => 'Report sent. Thank you.';
+
+  @override
+  String get cmTranslate => 'Translate';
+
+  @override
+  String get cmMachineTranslation => 'Machine translation';
+
+  @override
+  String get cmShowOriginal => 'Original text';
+
+  @override
+  String get cmShowTranslation => 'Translation';
+
+  @override
+  String get cmPin => 'Pin';
+
+  @override
+  String get cmUnpin => 'Unpin';
+
+  @override
+  String get cmPinned => 'Pinned';
+
+  @override
+  String get cmDelete => 'Delete';
+
+  @override
+  String get cmDeleteConfirm => 'Delete this post?';
+
+  @override
+  String get cmDeleted => 'Deleted';
+
+  @override
+  String get cmLoadMore => 'Show more';
+
+  @override
+  String get cmNotAdvice =>
+      'Answers are colleagues’ experience, not personal medical advice.';
+
+  @override
+  String get cmAdminTitle => 'Community moderation';
+
+  @override
+  String get cmAdminSub => 'Reported users: restore or revoke';
+
+  @override
+  String get cmAdminEmpty => 'Nobody here';
+
+  @override
+  String cmAdminReporters(int count) {
+    return '$count reporters';
+  }
+
+  @override
+  String get cmAdminRestore => 'Restore';
+
+  @override
+  String get cmAdminRevoke => 'Revoke verification';
+
+  @override
+  String get cmAdminSuspended => 'Suspended';
+
+  @override
+  String get cmAdminVerified => 'Verified';
+
+  @override
+  String get cmAdminRejected => 'Rejected';
+
+  @override
+  String get cmAdminDone => 'Done';
+
+  @override
+  String get cmOwnerTag => 'Owner';
 }

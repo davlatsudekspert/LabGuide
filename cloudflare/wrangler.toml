@@ -27,6 +27,15 @@ LG_SENDER_NAME = "LabGuide"
 # Brauzer (web build) uchun ruxsat etilgan originlar, vergul bilan.
 # Mobil ilova CORS'ga muhtoj emas — bo'sh qoldiring.
 LG_ALLOWED_ORIGINS = ""
+# Hamjamiyat (D-43). Model id lari — sozlama (o'zgartirish uchun deploy kifoya).
+LG_VERIFY_MODEL = "@cf/meta/llama-4-scout-17b-16e-instruct"
+LG_TRANSLATE_MODEL = "@cf/meta/m2m100-1.2b"
+LG_OWNER_DISPLAY_NAME = "LabGuide"
+
+# Workers AI: mutaxassis hujjatini tekshirish (rasm faqat xotirada, saqlanmaydi)
+# va savol-javob tarjimasi. Bepul kunlik limit bor (docs/BACKEND_CLOUDFLARE.md).
+[ai]
+binding = "AI"
 
 [observability]
 enabled = false

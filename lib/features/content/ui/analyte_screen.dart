@@ -9,6 +9,7 @@ import '../../../app/widgets/links.dart';
 import '../../../design/tokens.dart';
 import '../../../design/widgets/lg_widgets.dart';
 import '../../../l10n/gen/app_localizations.dart';
+import '../../community/community_screens.dart';
 import '../../learn/exam_question.dart' show keepUnitsTogether;
 import '../../reference/reference_content.dart';
 import '../../reference/reference_screens.dart';
@@ -310,6 +311,8 @@ class _AnalyteBody {
         ),
       if (analyte.sourceIds.isNotEmpty) _sources(context, l),
       _review(context, l, text),
+      // Hamjamiyat savollari (server ulanmagan buildda — yo'q).
+      CommunityTopicLink(topic: 'analyte:${analyte.id}'),
     ];
   }
 

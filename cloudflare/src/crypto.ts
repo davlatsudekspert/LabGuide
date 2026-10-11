@@ -75,6 +75,8 @@ export interface Keys {
   ip: CryptoKey;
   otp: CryptoKey;
   totp: CryptoKey; // AES-GCM
+  /** Hamjamiyat jadvallaridagi `user_hash` (HMAC(user_id)). */
+  community: CryptoKey;
 }
 
 const keyCache = new Map<string, Promise<Keys>>();
@@ -90,6 +92,7 @@ export function deriveKeys(secret: string): Promise<Keys> {
         email: await hmacKey(await sub('email')),
         ip: await hmacKey(await sub('ip')),
         otp: await hmacKey(await sub('otp')),
+        community: await hmacKey(await sub('community')),
         totp: await crypto.subtle.importKey('raw', await sub('totp'), 'AES-GCM', false, [
           'encrypt',
           'decrypt',

@@ -10,6 +10,7 @@ import 'package:go_router/go_router.dart';
 import 'package:labguide/app/app.dart';
 import 'package:labguide/app/app_scope.dart';
 import 'package:labguide/app/widgets/lg_page.dart';
+import 'package:labguide/core/backend/community_backend.dart';
 import 'package:labguide/core/backend/lab_backend.dart';
 import 'package:labguide/core/entitlements/entitlement_cache.dart';
 import 'package:labguide/core/storage/kv_store.dart';
@@ -56,6 +57,7 @@ Future<AppServices> makeServices(
   ReminderScheduler? reminderScheduler,
   ResultSharer? sharer,
   DateTime Function()? clock,
+  CommunityBackend? community,
 }) async {
   final s = store ?? MemoryKeyValueStore();
   // Har test o'z (hali yaratilmagan) paketlar papkasi bilan.
@@ -82,6 +84,7 @@ Future<AppServices> makeServices(
     reminderScheduler: reminderScheduler ?? FakeReminderScheduler(),
     sharer: sharer ?? FakeResultSharer(),
     clock: clock,
+    community: community,
   );
   if (languageChosen) {
     await services.settings.chooseLanguage(language);

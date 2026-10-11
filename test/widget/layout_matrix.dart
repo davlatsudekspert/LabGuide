@@ -3,6 +3,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:labguide/features/settings/settings_controller.dart';
 import 'package:material_ui/material_ui.dart';
 
+import '../helpers/fake_backend.dart';
+import '../helpers/fake_community.dart';
 import '../helpers/harness.dart';
 
 /// Har bir ekranni turli o'lcham/til/mavzu/shrift masshtabida ochib,
@@ -296,6 +298,79 @@ void runLayoutExtras() {
             greaterThanOrEqualTo(h * 0.3),
             reason: '$lang $route: list area',
           );
+        }
+        await tester.pumpWidget(const SizedBox());
+      }
+    });
+  }
+
+  // Hamjamiyat ekranlari (server ulangan holat, kirgan mutaxassis, egasi
+  // javobi bilan) — barcha tillar, tor/keng ekran, katta shrift, qorong'i.
+  for (final (width, scale, theme) in [
+    (320.0, 1.0, ThemeMode.light),
+    (320.0, 2.0, ThemeMode.light),
+    (390.0, 1.35, ThemeMode.dark),
+    (820.0, 1.0, ThemeMode.light),
+  ]) {
+    testWidgets('community screens: ${width.toInt()}px ×$scale ${theme.name}', (
+      tester,
+    ) async {
+      for (final lang in AppLanguage.values) {
+        final lab = FakeLabBackend();
+        final community = FakeCommunityBackend(lab);
+        await lab.requestCode('davlatsudekspert@gmail.com');
+        await lab.verifyCode(
+          'davlatsudekspert@gmail.com',
+          FakeLabBackend.otpCode,
+        );
+        community.makeOwner(lab.userId!);
+        final qid = community.seedQuestion(
+          author: lab.userId!,
+          title:
+              'HbA1c 5,4% (36 mmol/mol), lekin och qorindagi glyukoza bir '
+              'necha marta 8–9 mmol/L. Qaysi biriga ishonish kerak?',
+          body:
+              'HbA1c past-normal, ammo och qorindagi glyukoza takroran '
+              'yuqori. Bu nomuvofiqlik nimadan bo‘lishi mumkin?',
+          topic: 'analyte:hba1c',
+          answers: [
+            'Eritrotsitlar umrining qisqarishi: gemoliz, yaqinda qon '
+                    'yo‘qotish yoki qon quyish, homiladorlik. ' *
+                3,
+          ],
+        );
+        await lab.signOut();
+        await lab.requestCode('spec@example.com');
+        await lab.verifyCode('spec@example.com', FakeLabBackend.otpCode);
+        community.makeSpecialist(lab.userId!);
+        await lab.signOut();
+        final s = await makeServices(
+          tester,
+          language: lang,
+          themeMode: theme,
+          backend: lab,
+          community: community,
+        );
+        await pumpApp(tester, s, size: Size(width, 3200), textScale: scale);
+        await s.auth.requestCode('spec@example.com');
+        await s.auth.verifyCode(FakeLabBackend.otpCode);
+        await tester.pumpAndSettle();
+        for (final route in [
+          '/home',
+          '/tests/analyte/hba1c',
+          '/tests/conditions/type-2-diabetes',
+          '/profile',
+          '/profile/community',
+          '/profile/community?topic=analyte%3Ahba1c',
+          '/profile/community?mine=1',
+          '/profile/community/ask?topic=analyte%3Ahba1c',
+          '/profile/community/q/$qid',
+          '/profile/community/q/missing',
+          '/profile/community/verify',
+          '/profile/admin/community',
+        ]) {
+          await goTo(tester, route);
+          expect(tester.takeException(), isNull, reason: '$lang $route');
         }
         await tester.pumpWidget(const SizedBox());
       }

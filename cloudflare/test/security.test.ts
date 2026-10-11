@@ -35,8 +35,9 @@ describe('SQL injection — faqat parametrli so\'rovlar', () => {
       const sqlTemplates = [...src.matchAll(/`([^`]*\b(?:SELECT|DELETE|INSERT|UPDATE)\b[^`]*)`/g)];
       const interpolated = sqlTemplates.flatMap((m) => [...m[1].matchAll(/\$\{([^}]+)\}/g)].map((x) => x[1]));
       for (const expr of interpolated) {
-        // Ruxsat: faqat modul ichidagi doimiy SQL bo'laklari.
-        expect(['owned', 'ownedAssignments', 'a'], `${name}: ${expr}`).toContain(expr.trim());
+        // Ruxsat: faqat modul ichidagi doimiy SQL bo'laklari (hamjamiyat:
+        // community.ts dagi `const` bo'laklar — qiymat emas).
+        expect(['owned', 'ownedAssignments', 'a', 'AUTHOR_SELECT', 'VISIBLE', 'LIST_FROM', 'answers', 'myQuestions', 'affectedAnswers'], `${name}: ${expr}`).toContain(expr.trim());
       }
     }
   });

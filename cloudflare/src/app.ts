@@ -1,6 +1,7 @@
 // Marshrutlar va umumiy so'rov qayta ishlash (xatolar ichki ma'lumotsiz).
 
 import * as auth from './auth';
+import * as community from './community';
 import type { Ctx, Deps } from './context';
 import { deriveKeys, hex, hmac } from './crypto';
 import * as groups from './groups';
@@ -90,6 +91,28 @@ const routes: Route[] = [
   r('POST', '/v1/assignments/:a/submit', groups.submitAssignment),
   r('GET', '/v1/assignments/:a/submissions', groups.listSubmissions),
   r('GET', '/v1/assignments/:a/key', groups.assignmentKey),
+
+  // Hamjamiyat (D-43)
+  r('GET', '/v1/community/me', community.me),
+  r('POST', '/v1/community/verify', community.verify),
+  r('GET', '/v1/community/questions', community.listQuestions),
+  r('POST', '/v1/community/questions', community.createQuestion),
+  r('GET', '/v1/community/questions/:q', community.getQuestion),
+  r('DELETE', '/v1/community/questions/:q', community.deleteQuestion),
+  r('POST', '/v1/community/questions/:q/pin', community.pinQuestion),
+  r('POST', '/v1/community/questions/:q/best', community.setBest),
+  r('POST', '/v1/community/questions/:q/answers', community.createAnswer),
+  r('DELETE', '/v1/community/answers/:a', community.deleteAnswer),
+  r('POST', '/v1/community/answers/:a/vote', (c, a) => community.vote(c, a, true)),
+  r('DELETE', '/v1/community/answers/:a/vote', (c, a) => community.vote(c, a, false)),
+  r('POST', '/v1/community/reports', community.report),
+  r('POST', '/v1/community/translate', community.translate),
+  r('GET', '/v1/admin/community/members', community.adminMembers),
+  r('POST', '/v1/admin/community/members/:h/restore', community.adminRestore),
+  r('POST', '/v1/admin/community/members/:h/revoke', community.adminRevoke),
+  r('POST', '/v1/admin/community/members/:h/suspend', community.adminSuspend),
+  r('POST', '/v1/admin/community/seed', community.adminSeed),
+  r('POST', '/v1/admin/seed-owner-verification', community.adminSeedOwnerVerification),
 
   // TODO(port): Supabase'dan ko'chiriladi — hozircha 501 (docs/BACKEND_CLOUDFLARE.md).
   r('*', '/v1/support(/.*)?', plannedSignedIn),

@@ -1,0 +1,33 @@
+{
+  "_comment": "Egasi tasdiqlagan boshlang'ich savol-javoblar (2026-10-11). Muallif: egasi hisobi (LG_OWNER_DISPLAY_NAME). Qo'llash: admin (aal2) POST /v1/admin/community/seed — idempotent (seed_id). Productionga faqat supervisor deploydan keyin qo'llaydi.",
+  "questions": [
+    {
+      "seed_id": "potassium-false-hyperkalemia",
+      "title": "Kaliy 6,8 mmol/L chiqdi, lekin bemorda hech qanday belgi yo'q. Nima qilish kerak?",
+      "body": "Kaliy 6,8 mmol/L chiqdi, bemorda klinik belgilar yo'q. Natijaga ishonsa bo'ladimi, nimani tekshirish kerak?",
+      "lang": "uz",
+      "topic": "analyte:potassium",
+      "pinned": false,
+      "answers": [
+        {
+          "body": "Avval soxta giperkaliyemiyani istisno qiling, ammo vaqt yo'qotmang.\n\nEng ko'p uchraydigan sabablar:\n- Gemoliz: probirkadagi plazma qizilmi, gemoliz indeksini tekshiring.\n- Qon olishdagi xatolar: jgut uzoq turgan, bemor mushtini qayta-qayta siqqan.\n- EDTA ifloslanishi (probirkalar tartibi buzilgan). Belgisi: kaliy juda yuqori, kalsiy esa keskin past.\n- Namunani kech ajratish yoki muzlatkichda saqlash.\n- Trombotsitoz (>500 ×10⁹/L) yoki leykotsitoz: zardobdagi kaliy oshadi, geparinli plazmada qayta tekshiring.\n\nNima qilish kerak:\n1. Natija kritik qiymat bo'lsa, shifokorga darhol xabar bering: haqiqiy giperkaliyemiya hayot uchun xavfli, EKG kerak bo'lishi mumkin.\n2. Namunani to'g'ri usulda qayta oling: jgutsiz yoki qisqa jgut, musht siqilmagan, litiy-geparinli probirka, tez ajratish.\n3. Ikki natijani solishtiring va xulosada sababini yozing (masalan, \"gemoliz, natija ishonchsiz\").",
+          "lang": "uz"
+        }
+      ]
+    },
+    {
+      "seed_id": "hba1c-glucose-discordance",
+      "title": "HbA1c 5,4% (36 mmol/mol), lekin och qorindagi glyukoza bir necha marta 8–9 mmol/L. Qaysi biriga ishonish kerak?",
+      "body": "HbA1c past-normal, ammo och qorindagi glyukoza takroran yuqori. Bu nomuvofiqlik nimadan bo'lishi mumkin?",
+      "lang": "uz",
+      "topic": "analyte:hba1c",
+      "pinned": false,
+      "answers": [
+        {
+          "body": "Bu holat HbA1c ni noto'g'ri pasaytiradigan sabablarni qidirishni talab qiladi:\n- Eritrotsitlar umrining qisqarishi: gemoliz, yaqinda qon yo'qotish yoki qon quyish, homiladorlik, eritropoetin bilan davolash.\n- Gemoglobin variantlari (HbS, HbC, HbE va boshqalar): natija usulga bog'liq — laboratoriyangiz usuli variantlarga sezgirmi, tekshiring.\n- Teskari holat ham bor: temir tanqisligi anemiyasi HbA1c ni noto'g'ri oshiradi.\n\nNima qilish kerak:\n1. Umumiy qon tahlili, retikulotsitlar, gemoliz belgilarini ko'ring.\n2. Usul NGSP/IFCC bo'yicha standartlashtirilganini tekshiring.\n3. Muqobil ko'rsatkich: fruktozamin yoki glyukozaning uzluksiz monitoringi (CGM).\n4. Tashxisni glyukoza mezonlari bo'yicha qo'ying: och qorindagi glyukoza ≥7,0 mmol/L (126 mg/dL), ikki marta tasdiqlangan.",
+          "lang": "uz"
+        }
+      ]
+    }
+  ]
+}

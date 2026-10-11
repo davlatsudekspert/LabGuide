@@ -1,8 +1,15 @@
 import { createApp } from './app';
 import { emailSender } from './email';
-import type { Env } from './http';
+import { ApiError, type Env } from './http';
 
-const app = createApp({ sendCode: emailSender, now: () => Date.now() });
+const app = createApp({
+  sendCode: emailSender,
+  now: () => Date.now(),
+  runAi: async (env, model, input) => {
+    if (!env.AI) throw new ApiError(503, 'ai_unavailable');
+    return (env.AI as unknown as { run: (m: string, i: unknown) => Promise<unknown> }).run(model, input);
+  },
+});
 
 export default {
   fetch: (req: Request, env: Env) => app.fetch(req, env),
