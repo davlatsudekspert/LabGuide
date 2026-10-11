@@ -7268,6 +7268,27 @@ class AppLocalizationsUz extends AppLocalizations {
   String get lectureEndTest => 'Guruh testi — ilovada, vaqt bilan';
 
   @override
+  String get lectureDraftNotice =>
+      'Ustoz tekshiruvi uchun qoralama — darsdan oldin mazmunni ko‘rib chiqing';
+
+  @override
+  String get lectureUzOnly => 'Bu taqdimot hozircha faqat o‘zbek tilida';
+
+  @override
+  String get lectureNotesShow => 'Ustoz izohini ko‘rsatish';
+
+  @override
+  String get lectureNotesHide => 'Ustoz izohini yashirish';
+
+  @override
+  String get lectureTeacherNote => 'Ustoz uchun izoh';
+
+  @override
+  String lectureDeckReady(int count) {
+    return 'Tayyor taqdimot · $count slayd';
+  }
+
+  @override
   String get cmTitle => 'Hamjamiyat · Savol-javob';
 
   @override

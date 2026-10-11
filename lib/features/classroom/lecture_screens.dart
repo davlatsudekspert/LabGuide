@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math' as math;
 
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
@@ -12,6 +13,7 @@ import '../../l10n/gen/app_localizations.dart';
 import '../differential/diff_eyes_free.dart' show DiffDevice;
 import 'classroom_screens.dart';
 import 'curriculum.dart';
+import 'lecture_decks.dart';
 import 'topic_questions.dart';
 
 // Ma'ruza (taqdimot) rejimi: ustoz mavzuni katta ekranda ko'rsatadi.
@@ -30,12 +32,24 @@ class LectureSlide {
     this.bullets = const [],
     this.note,
     this.question = false,
+    this.teacherNote,
+    this.source,
+    this.section = false,
   });
 
   final String? eyebrow;
   final String title;
   final List<String> bullets;
   final String? note;
+
+  /// Ustoz izohi — faqat tugma bosilganda ko'rinadi.
+  final String? teacherNote;
+
+  /// Manba (slayd pastida kichik yozuv).
+  final String? source;
+
+  /// Bo'lim boshi slaydi (sarlavha kattaroq).
+  final bool section;
 
   /// Savol slaydi (auditoriyaga beriladi).
   final bool question;
@@ -121,6 +135,28 @@ List<LectureSlide> buildLectureSlides(
   return slides;
 }
 
+/// Tayyor taqdimot slaydlari. Birinchi slaydda halol holat: qoralama va
+/// (boshqa tilda) "faqat o'zbekcha".
+List<LectureSlide> deckLectureSlides(BuildContext context, LectureDeck deck) {
+  final l = AppLocalizations.of(context);
+  final notice = [
+    if (deck.draft) l.lectureDraftNotice,
+    if (deck.lang != _lang(context)) l.lectureUzOnly,
+  ].join('\n');
+  return [
+    for (final (i, d) in deck.slides.indexed)
+      LectureSlide(
+        eyebrow: d.eyebrow,
+        title: d.title,
+        bullets: d.bullets,
+        note: i == 0 && notice.isNotEmpty ? notice : null,
+        teacherNote: d.note,
+        source: d.source,
+        section: d.section,
+      ),
+  ];
+}
+
 /// O'quv dasturi mavzulari ro'yxati — ma'ruzani tanlash (serversiz).
 class LectureListScreen extends StatelessWidget {
   const LectureListScreen({super.key});
@@ -128,27 +164,39 @@ class LectureListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context);
+    final bundle = context.services.curriculum.bundle ?? rootBundle;
+    final decks = LectureDecks.all(bundle);
     return LgPage(
       title: l.lectureListTitle,
       subtitle: l.lectureListSub,
       showProfile: false,
       children: [
         CurriculumGate(
-          builder: (context, cur) => Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              for (final m in cur.modules) ...[
-                LgSectionTitle(m.title.of(_lang(context))),
-                for (final (i, t) in m.topics.indexed)
-                  LgRow(
-                    title: t.title.of(_lang(context)),
-                    subtitle: topicMeta(context, t),
-                    icon: Icons.slideshow_outlined,
-                    divider: i < m.topics.length - 1,
-                    onTap: () => context.push('/learn/lecture/${t.id}'),
-                  ),
+          builder: (context, cur) => FutureBuilder(
+            future: decks,
+            initialData: LectureDecks.peek(bundle),
+            builder: (context, snap) => Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                for (final m in cur.modules) ...[
+                  LgSectionTitle(m.title.of(_lang(context))),
+                  for (final (i, t) in m.topics.indexed)
+                    LgRow(
+                      title: t.title.of(_lang(context)),
+                      subtitle: [
+                        topicMeta(context, t),
+                        if (snap.data?[t.id] case final d?)
+                          l.lectureDeckReady(d.slides.length),
+                      ].join('\n'),
+                      icon: snap.data?[t.id] != null
+                          ? Icons.co_present_outlined
+                          : Icons.slideshow_outlined,
+                      divider: i < m.topics.length - 1,
+                      onTap: () => context.push('/learn/lecture/${t.id}'),
+                    ),
+                ],
               ],
-            ],
+            ),
           ),
         ),
       ],
@@ -167,6 +215,9 @@ class LectureScreen extends StatefulWidget {
 
 class _LectureScreenState extends State<LectureScreen> {
   int _index = 0;
+  bool _notes = false;
+  bool _deckLoaded = false;
+  LectureDeck? _authored;
   final _focus = FocusNode(debugLabel: 'lecture');
 
   @override
@@ -177,6 +228,26 @@ class _LectureScreenState extends State<LectureScreen> {
     unawaited(s.curriculum.ensureLoaded());
     unawaited(s.toifa.ensureLoaded());
     unawaited(s.microscopy.ensureAtlas());
+    final bundle = s.curriculum.bundle ?? rootBundle;
+    final ready = LectureDecks.peek(bundle);
+    if (ready != null) {
+      _authored = ready[widget.topicId];
+      _deckLoaded = true;
+    } else {
+      unawaited(
+        LectureDecks.forTopic(
+          bundle,
+          widget.topicId,
+        ).then<LectureDeck?>((d) => d, onError: (Object _) => null).then((d) {
+          if (mounted) {
+            setState(() {
+              _authored = d;
+              _deckLoaded = true;
+            });
+          }
+        }),
+      );
+    }
   }
 
   @override
@@ -219,7 +290,14 @@ class _LectureScreenState extends State<LectureScreen> {
             ],
           );
         }
-        final slides = buildLectureSlides(context, cur, t);
+        if (!_deckLoaded) {
+          return const Scaffold(
+            body: Center(child: CircularProgressIndicator()),
+          );
+        }
+        final slides = _authored != null
+            ? deckLectureSlides(context, _authored!)
+            : buildLectureSlides(context, cur, t);
         final i = _index.clamp(0, slides.length - 1);
         return _deck(context, slides, i);
       },
@@ -263,6 +341,18 @@ class _LectureScreenState extends State<LectureScreen> {
                       onPressed: () => context.pop(),
                     ),
                     const Spacer(),
+                    if (slides[i].teacherNote != null)
+                      IconButton(
+                        key: const ValueKey('lecture-notes'),
+                        tooltip: _notes
+                            ? l.lectureNotesHide
+                            : l.lectureNotesShow,
+                        isSelected: _notes,
+                        icon: const Icon(Icons.speaker_notes_outlined),
+                        selectedIcon: const Icon(Icons.speaker_notes_rounded),
+                        onPressed: () => setState(() => _notes = !_notes),
+                      ),
+                    const SizedBox(width: 8),
                     Semantics(
                       liveRegion: true,
                       child: Text(
@@ -286,6 +376,8 @@ class _LectureScreenState extends State<LectureScreen> {
                       key: ValueKey(i),
                       slide: slides[i],
                       width: box.maxWidth,
+                      height: box.maxHeight,
+                      showNotes: _notes,
                     ),
                   ),
                 ),
@@ -323,17 +415,27 @@ class _LectureScreenState extends State<LectureScreen> {
 }
 
 class _SlideView extends StatelessWidget {
-  const _SlideView({super.key, required this.slide, required this.width});
+  const _SlideView({
+    super.key,
+    required this.slide,
+    required this.width,
+    this.height = double.infinity,
+    this.showNotes = false,
+  });
 
   final LectureSlide slide;
   final double width;
+
+  /// Yotiq ekranda (televizor, proyektor) shrift balandlikka ham moslanadi.
+  final double height;
+  final bool showNotes;
 
   @override
   Widget build(BuildContext context) {
     final p = LgPalette.of(context);
     final text = Theme.of(context).textTheme;
     // Katta ekranda (proyektor, planshet) shrift kattalashadi.
-    final base = (width / 22).clamp(18.0, 34.0);
+    final base = math.min(width / 22, height / 19).clamp(16.0, 34.0);
     return SingleChildScrollView(
       padding: EdgeInsets.symmetric(
         horizontal: (width * 0.06).clamp(16.0, 64.0),
@@ -356,7 +458,11 @@ class _SlideView extends StatelessWidget {
             child: Text(
               slide.title,
               style: text.headlineMedium!.copyWith(
-                fontSize: slide.question ? base * 1.4 : base * 1.6,
+                fontSize: slide.section
+                    ? base * 1.9
+                    : slide.question
+                    ? base * 1.4
+                    : base * 1.6,
                 height: 1.2,
                 color: p.ink,
               ),
@@ -394,6 +500,46 @@ class _SlideView extends StatelessWidget {
           if (slide.note != null) ...[
             const SizedBox(height: 8),
             LgNotice(slide.note!, kind: NoticeKind.info),
+          ],
+          if (slide.source != null) ...[
+            const SizedBox(height: 8),
+            Text(
+              slide.source!,
+              style: text.bodySmall!.copyWith(
+                fontSize: (base * 0.6).clamp(12.0, 18.0),
+                color: p.sub,
+              ),
+            ),
+          ],
+          if (showNotes && slide.teacherNote != null) ...[
+            const SizedBox(height: 16),
+            Container(
+              key: const ValueKey('lecture-teacher-note'),
+              width: double.infinity,
+              padding: const EdgeInsets.all(14),
+              decoration: BoxDecoration(
+                color: p.soft,
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    AppLocalizations.of(context).lectureTeacherNote,
+                    style: text.labelLarge!.copyWith(color: p.brand),
+                  ),
+                  const SizedBox(height: 6),
+                  Text(
+                    slide.teacherNote!,
+                    style: text.bodyMedium!.copyWith(
+                      fontSize: (base * 0.7).clamp(14.0, 22.0),
+                      height: 1.4,
+                      color: p.ink,
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ],
         ],
       ),

@@ -646,3 +646,15 @@ Egasi so‘rovi: boshqa odamlarni Gmail/email bo‘yicha admin qilish va olib ta
 - **Ochiq (egasi hal qiladi):** hisobini o‘chirgan qo‘shilgan admin shu email bilan qayta
   ro‘yxatdan o‘tsa, grant qolgani uchun yana admin bo‘ladi (egasi ilovada olib tashlaydi).
   Olib tashlangan adminning TOTP kaliti saqlanib qoladi (qayta qo‘shilsa — o‘sha autentifikator).
+
+## D-45. Tayyor taqdimotlar Ma'ruza rejimida (2026-10-11)
+- `assets/lectures/index.json` + `dNNN.json`: mavzu (topic id) → tayyor slaydlar
+  (sarlavha, bandlar ≤6, manba, ustoz izohi). Bo'lsa — Ma'ruza rejimi shuni
+  ko'rsatadi, bo'lmasa — avtomatik slaydlar (o'zgarmagan).
+- Birinchi deck: 1-mavzu (d001-P, d001-L), 23 slayd, faqat o'zbekcha.
+  Manba: `tool/slides/make_m1.py` (PPTX va JSON bir joydan). Holati `draft` —
+  ilovada "Ustoz tekshiruvi uchun qoralama" deb ko'rsatiladi; ru/en tilida
+  "faqat o'zbek tilida" ogohlantirishi.
+- Ustoz izohi auditoriyaga ko'rinmaydi — tepadagi tugma bilan ochiladi.
+- Yotiq ekranda (TV/proyektor) shrift balandlikka moslanadi.
+- Qolgan mavzular va PPTX yuklash (Ustoz Pro) — 17-oktabr rejasi.

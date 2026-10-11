@@ -7375,6 +7375,27 @@ class AppLocalizationsEn extends AppLocalizations {
   String get lectureEndTest => 'Class test — in the app, timed';
 
   @override
+  String get lectureDraftNotice =>
+      'Draft for the teacher to review — check the content before class';
+
+  @override
+  String get lectureUzOnly => 'This presentation is in Uzbek only for now';
+
+  @override
+  String get lectureNotesShow => 'Show teacher notes';
+
+  @override
+  String get lectureNotesHide => 'Hide teacher notes';
+
+  @override
+  String get lectureTeacherNote => 'Teacher note';
+
+  @override
+  String lectureDeckReady(int count) {
+    return 'Ready presentation · $count slides';
+  }
+
+  @override
   String get cmTitle => 'Community · Q&A';
 
   @override

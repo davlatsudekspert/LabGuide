@@ -7393,6 +7393,27 @@ class AppLocalizationsRu extends AppLocalizations {
   String get lectureEndTest => 'Тест группы — в приложении, на время';
 
   @override
+  String get lectureDraftNotice =>
+      'Черновик для проверки преподавателем — просмотрите перед занятием';
+
+  @override
+  String get lectureUzOnly => 'Эта презентация пока только на узбекском языке';
+
+  @override
+  String get lectureNotesShow => 'Показать заметки преподавателя';
+
+  @override
+  String get lectureNotesHide => 'Скрыть заметки преподавателя';
+
+  @override
+  String get lectureTeacherNote => 'Заметка для преподавателя';
+
+  @override
+  String lectureDeckReady(int count) {
+    return 'Готовая презентация · $count слайдов';
+  }
+
+  @override
   String get cmTitle => 'Сообщество · Вопросы и ответы';
 
   @override

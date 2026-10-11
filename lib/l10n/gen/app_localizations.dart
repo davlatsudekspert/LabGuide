@@ -12718,6 +12718,42 @@ abstract class AppLocalizations {
   /// **'Class test — in the app, timed'**
   String get lectureEndTest;
 
+  /// No description provided for @lectureDraftNotice.
+  ///
+  /// In en, this message translates to:
+  /// **'Draft for the teacher to review — check the content before class'**
+  String get lectureDraftNotice;
+
+  /// No description provided for @lectureUzOnly.
+  ///
+  /// In en, this message translates to:
+  /// **'This presentation is in Uzbek only for now'**
+  String get lectureUzOnly;
+
+  /// No description provided for @lectureNotesShow.
+  ///
+  /// In en, this message translates to:
+  /// **'Show teacher notes'**
+  String get lectureNotesShow;
+
+  /// No description provided for @lectureNotesHide.
+  ///
+  /// In en, this message translates to:
+  /// **'Hide teacher notes'**
+  String get lectureNotesHide;
+
+  /// No description provided for @lectureTeacherNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Teacher note'**
+  String get lectureTeacherNote;
+
+  /// No description provided for @lectureDeckReady.
+  ///
+  /// In en, this message translates to:
+  /// **'Ready presentation · {count} slides'**
+  String lectureDeckReady(int count);
+
   /// No description provided for @cmTitle.
   ///
   /// In en, this message translates to:

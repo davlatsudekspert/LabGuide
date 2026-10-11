@@ -6,7 +6,6 @@ import 'package:material_ui/material_ui.dart';
 
 import '../helpers/fake_backend.dart';
 
-
 import '../helpers/fake_community.dart';
 import '../helpers/harness.dart';
 

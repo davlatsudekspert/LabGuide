@@ -4256,6 +4256,19 @@
   "lectureEndTitle": "Questions and test",
   "lectureEndOral": "Oral questions — asked by the teacher",
   "lectureEndTest": "Class test — in the app, timed",
+  "lectureDraftNotice": "Draft for the teacher to review — check the content before class",
+  "lectureUzOnly": "This presentation is in Uzbek only for now",
+  "lectureNotesShow": "Show teacher notes",
+  "lectureNotesHide": "Hide teacher notes",
+  "lectureTeacherNote": "Teacher note",
+  "lectureDeckReady": "Ready presentation · {count} slides",
+  "@lectureDeckReady": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "cmTitle": "Community · Q&A",
   "cmHomeSub": "Questions answered by verified lab specialists",
   "cmAsk": "Ask a question",

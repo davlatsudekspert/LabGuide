@@ -24,6 +24,7 @@ prs.slide_width, prs.slide_height = Inches(13.333), Inches(7.5)
 W, H = prs.slide_width, prs.slide_height
 blank = prs.slide_layouts[6]
 total = []
+DATA = []  # ilova uchun (assets/lectures/d001.json)
 
 
 def fill(shape, color):
@@ -73,6 +74,8 @@ def title_slide():
          'Amaliy mashg‘ulot (4 soat) + Ma’naviyat darsi (2 soat)', 20, RGBColor(0xDD, 0xE6, 0xD8))
     text(s, Inches(0.8), Inches(6.8), Inches(11.8), Inches(0.5),
          'Ustoz tekshiruvi uchun qoralama — dars oldidan mazmunni ko‘rib chiqing', 14, RGBColor(0xC9, 0xD8, 0xC2))
+    DATA.append(dict(eyebrow='1-modul · 1-mavzu', title='Laborator xizmatni tashkillashtirish. Tibbiy etika va deontologiya',
+                     bullets=['Amaliy mashg‘ulot (4 soat) + Ma’naviyat darsi (2 soat)']))
     notes(s, 'Kirish. Dars rejasi: laboratoriya xizmati tuzilishi, sifat tizimi, xavfsizlik, etika va deontologiya. '
              'Oxirida og‘zaki savollar (toifa banki: kdl-o-006, kdl-o-007, kdl-o-037).')
 
@@ -83,6 +86,7 @@ def section(n, t, sub):
     text(s, Inches(0.8), Inches(2.3), Inches(3), Inches(1.4), f'{n:02d}', 80, ACC, True)
     text(s, Inches(0.8), Inches(3.75), Inches(11.5), Inches(1.0), t, 38, WHITE, True)
     text(s, Inches(0.8), Inches(4.75), Inches(11.5), Inches(0.8), sub, 20, RGBColor(0xC9, 0xD8, 0xC2))
+    DATA.append(dict(eyebrow=f'{n}-bo‘lim', title=t, bullets=[sub], section=True))
     return s
 
 
@@ -102,6 +106,7 @@ def bullets(t, items, note='', foot=None):
     if foot:
         text(s, Inches(0.6), Inches(6.45), Inches(12.1), Inches(0.4), foot, 12, MUTED)
     notes(s, note)
+    DATA.append(dict(title=t, bullets=list(items), note=note, source=foot))
     return s
 
 
@@ -123,6 +128,7 @@ def cards(t, items, cols=3, note='', foot=None):
     if foot:
         text(s, Inches(0.6), Inches(6.45), Inches(12.1), Inches(0.4), foot, 12, MUTED)
     notes(s, note)
+    DATA.append(dict(title=t, bullets=[f'{h} — {b}'.replace('\n', '; ') for h, b in items], note=note, source=foot))
     return s
 
 
@@ -144,6 +150,7 @@ def flow(t, steps, note='', foot=None):
     if foot:
         text(s, Inches(0.6), Inches(6.2), Inches(12.1), Inches(0.6), foot, 14, MUTED)
     notes(s, note)
+    DATA.append(dict(title=t, bullets=[f'{i + 1}. {h} — {b}' for i, (h, b) in enumerate(steps)], note=note, source=foot))
     return s
 
 
@@ -313,7 +320,39 @@ text(s, Inches(0.6), Inches(2.0), Inches(12.1), Inches(4.3), [
     'O‘zR SSV, 2022-yil 24-mart, 88-son buyruq — tibbiyot xodimlari odob-axloq kodeksi (matni: lex.uz).',
     'LabGuide toifa banki: kdl-o-006, kdl-o-007, kdl-o-037 (javob rejalari).',
 ], 17, INK)
+DATA.append(dict(title='Manbalar', bullets=[
+    'WHO. Laboratory Quality Management System: Handbook. Geneva: WHO; 2011.',
+    'WHO. Laboratory Biosafety Manual, 4th edition. Geneva: WHO; 2020.',
+    'ISO 15189:2022. Medical laboratories — Requirements for quality and competence.',
+    'Plebani M. Errors in clinical laboratories or errors in laboratory medicine? Clin Chem Lab Med. 2006;44(6):750–759.',
+    'O‘zR SSV, 2022-yil 24-mart, 88-son buyruq — tibbiyot xodimlari odob-axloq kodeksi (matni: lex.uz).',
+    'LabGuide toifa banki: kdl-o-006, kdl-o-007, kdl-o-037 (javob rejalari).',
+], note='Taqdimot qoralama: ustoz mazmunni tekshirib, mahalliy tartiblarni (muassasa SOP, ekspozitsiyadan keyingi protokol) qo‘shishi kerak.'))
 notes(s, 'Taqdimot qoralama: ustoz mazmunni tekshirib, mahalliy tartiblarni (muassasa SOP, ekspozitsiyadan keyingi protokol) qo‘shishi kerak.')
 
 prs.save(sys.argv[1] if len(sys.argv) > 1 else 'LabGuide_1-mavzu.pptx')
 print(len(prs.slides), 'slayd')
+import json
+for d in DATA:
+    for k in [k for k, v in d.items() if v in (None, '', False)]:
+        del d[k]
+assert len(DATA) == len(prs.slides), (len(DATA), len(prs.slides))
+# Ilovada katta shrift: bitta slaydda ko'pi bilan 6 band.
+app = []
+for d in DATA:
+    b = d.get('bullets', [])
+    if len(b) <= 6:
+        app.append(d)
+        continue
+    parts = [b[i:i + 6] for i in range(0, len(b), 6)]
+    for k, part in enumerate(parts):
+        app.append({**d, 'title': f"{d['title']} ({k + 1}/{len(parts)})", 'bullets': part})
+out = os.path.join(os.path.dirname(__file__), '..', '..', 'assets', 'lectures', 'd001.json')
+os.makedirs(os.path.dirname(out), exist_ok=True)
+with open(out, 'w', encoding='utf-8') as f:
+    json.dump(dict(
+        schema=1, topics=['d001-P', 'd001-L'], lang='uz', status='draft',
+        title='Laborator xizmatni tashkillashtirish. Tibbiy etika va deontologiya',
+        slides=app), f, ensure_ascii=False, indent=1)
+    f.write('\n')
+print(out)

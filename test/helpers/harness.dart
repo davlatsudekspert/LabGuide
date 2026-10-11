@@ -15,6 +15,7 @@ import 'package:labguide/core/backend/lab_backend.dart';
 import 'package:labguide/core/entitlements/entitlement_cache.dart';
 import 'package:labguide/core/storage/kv_store.dart';
 import 'package:labguide/features/auth/otp_auth.dart';
+import 'package:labguide/features/classroom/lecture_decks.dart';
 import 'package:labguide/features/daily/daily_reminder.dart';
 import 'package:labguide/features/settings/settings_controller.dart';
 import 'package:labguide/features/share/result_share.dart';
@@ -103,6 +104,10 @@ Future<AppServices> makeServices(
   await tester.runAsync(services.toifa.ensureLoaded);
   // O'quv dasturi asset'i (bundle'da bo'lmasa — “qo'shilmagan” holati).
   await tester.runAsync(services.curriculum.ensureLoaded);
+  // Tayyor taqdimotlar (Ma'ruza rejimi) — keshga oldindan.
+  await tester.runAsync(
+    () => LectureDecks.all(services.curriculum.bundle ?? rootBundle),
+  );
   return services;
 }
 
