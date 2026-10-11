@@ -5871,7 +5871,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get adminTitle => 'Admin panel';
 
   @override
-  String get adminSub => 'Statistika, murojaatlar, foydalanuvchilar';
+  String get adminSub => 'Moderatsiya, murojaatlar, kontent, adminlar';
 
   @override
   String get adminMfaTitle => 'Ikki bosqichli himoya';
@@ -7621,4 +7621,180 @@ class AppLocalizationsUz extends AppLocalizations {
   @override
   String get cmLaunchMfaHint =>
       'Hamjamiyatni ishga tushirish uchun avval ikki bosqichli himoyani tasdiqlang: autentifikator ilovasidagi 6 xonali kodni kiriting. Shundan keyin “Hamjamiyatni ishga tushirish” tugmasi chiqadi.';
+
+  @override
+  String get admYouSuper => 'Siz — egasi (super admin)';
+
+  @override
+  String get admYouAdmin => 'Siz — admin';
+
+  @override
+  String get adm2faOn =>
+      'Ikki bosqichli himoya (2FA) tasdiqlangan. Har bir admin amali uchun so‘raladi.';
+
+  @override
+  String get admReportsQueue => 'Shikoyatlar va a’zolar';
+
+  @override
+  String get admReportsSub =>
+      'To‘xtatilganlar navbati, tasdiqlangan va rad etilgan a’zolar';
+
+  @override
+  String get admLaunchRow => 'Hamjamiyatni ishga tushirish';
+
+  @override
+  String get admLaunchRowSub =>
+      'Asoschi tasdig‘i va boshlang‘ich savol-javoblar (bir marta)';
+
+  @override
+  String admPending(int count) {
+    return 'Kutmoqda: $count';
+  }
+
+  @override
+  String get admQueueEmpty => 'Navbat bo‘sh';
+
+  @override
+  String get admNotConnected => 'Bu serverda hali ulanmagan';
+
+  @override
+  String get admReview => 'Kontent tekshiruvi';
+
+  @override
+  String admReviewSub(int cards, int questions) {
+    return 'Tekshirilmagan: $cards ta karta, $questions ta savol';
+  }
+
+  @override
+  String get admTeam => 'Adminlar boshqaruvi';
+
+  @override
+  String admTeamCount(int count) {
+    return 'Adminlar: $count';
+  }
+
+  @override
+  String get admTeamSubManage => 'Email bo‘yicha qo‘shish va olib tashlash';
+
+  @override
+  String get admTeamSubView => 'Ro‘yxat (o‘zgartirish — faqat egasi)';
+
+  @override
+  String get admLegacyNote =>
+      'Statistika, foydalanuvchilar, amallar tarixi va hamkorlar bo‘limlari bu serverga hali ko‘chirilmagan — tayyor bo‘lganda shu yerda chiqadi.';
+
+  @override
+  String get admOther => 'Boshqa bo‘limlar';
+
+  @override
+  String get admTeamIntro =>
+      'Admin barcha admin bo‘limlariga to‘liq kiradi: hamjamiyat moderatsiyasi, murojaatlar, kontent tekshiruvi. Vakolatni faqat server beradi va har amal uchun 2FA kodi so‘raladi.';
+
+  @override
+  String get admTeamOwnerOnly =>
+      'Adminlarni faqat egasi (super admin) qo‘shadi va olib tashlaydi.';
+
+  @override
+  String get admAddTitle => 'Admin qo‘shish';
+
+  @override
+  String get admAddEmail => 'Email (masalan, Gmail)';
+
+  @override
+  String get admAddHint =>
+      'Vakolat shu email bilan kirib, 2FA ni yoqqanda kuchga kiradi; hisobi bo‘lsa — darhol.';
+
+  @override
+  String get admAddButton => 'Admin qilish';
+
+  @override
+  String get admAddConfirmTitle => 'Admin qilinsinmi?';
+
+  @override
+  String admAddConfirmBody(String email) {
+    return '$email barcha admin bo‘limlariga to‘liq kiradi. Istalgan vaqtda olib tashlashingiz mumkin.';
+  }
+
+  @override
+  String admAdded(String email) {
+    return 'Qo‘shildi: $email';
+  }
+
+  @override
+  String get admInvalidEmail => 'Email noto‘g‘ri. Masalan: ism@gmail.com';
+
+  @override
+  String get admErrAlready => 'Bu email allaqachon admin.';
+
+  @override
+  String get admErrSuper =>
+      'Bu email — egasi (super admin), u allaqachon admin.';
+
+  @override
+  String admErrTooMany(int max) {
+    return 'Adminlar chegarasi: $max ta. Avval birini olib tashlang.';
+  }
+
+  @override
+  String admListTitle(int count) {
+    return 'Adminlar ($count)';
+  }
+
+  @override
+  String get admKindSuper => 'Egasi · super admin';
+
+  @override
+  String admKindGranted(String date) {
+    return 'Admin · qo‘shilgan $date';
+  }
+
+  @override
+  String get admNotSignedIn =>
+      'Hali kirmagan — vakolat birinchi kirishda kuchga kiradi';
+
+  @override
+  String get admYou => 'Siz';
+
+  @override
+  String get admRemove => 'Olib tashlash';
+
+  @override
+  String get admRemoveTitle => 'Admin olib tashlansinmi?';
+
+  @override
+  String admRemoveBody(String email) {
+    return '$email admin vakolatini darhol yo‘qotadi — barcha qurilmalarda. Hisobi va boshqa ma’lumotlari o‘chmaydi.';
+  }
+
+  @override
+  String admRemoved(String email) {
+    return 'Olib tashlandi: $email';
+  }
+
+  @override
+  String get admSuperNote =>
+      'Egasi maxfiy server sozlamasida (LG_ADMIN_EMAILS) — ilovadan olib tashlanmaydi.';
+
+  @override
+  String get admNoGranted => 'Hali qo‘shilgan admin yo‘q.';
+
+  @override
+  String get cmAdminRevokeTitle => 'Tasdiq bekor qilinsinmi?';
+
+  @override
+  String get cmAdminRevokeBody =>
+      'A’zoning mutaxassis belgisi olinadi va u AI orqali qayta tasdiqlana olmaydi. Savol berishda davom etishi mumkin.';
+
+  @override
+  String get cmAdminRestoreTitle => 'A’zo tiklansinmi?';
+
+  @override
+  String get cmAdminRestoreBody =>
+      'To‘xtatishdan oldingi holat qaytadi, postlari yana ko‘rinadi. Eski shikoyatlar qayta sanalmaydi.';
+
+  @override
+  String get adminActionGrantAdded => 'Admin qo‘shildi';
+
+  @override
+  String get adminActionGrantRemoved => 'Admin olib tashlandi';
 }

@@ -7,6 +7,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
 
 import '../../features/auth/otp_auth.dart';
+import 'admin_team.dart';
 import 'backend_models.dart';
 import 'community_backend.dart';
 import 'lab_backend.dart';
@@ -106,7 +107,8 @@ class _ApiResponse {
 /// Hali ko'chirilmagan bo'limlar (murojaatlar, admin panel, tekshiruv,
 /// hamkorlar, Pro) `BackendFailure.unavailable` beradi — ishlayotgandek
 /// ko'rsatilmaydi.
-class CloudflareLabBackend implements LabBackend, CommunityBackend {
+class CloudflareLabBackend
+    implements LabBackend, CommunityBackend, AdminTeamBackend {
   CloudflareLabBackend(
     this.config, {
     SessionStore? sessionStore,
@@ -965,6 +967,34 @@ class CloudflareLabBackend implements LabBackend, CommunityBackend {
       answersAdded: (m['answers_added'] as num?)?.toInt() ?? 0,
     );
   }
+
+  // ------------------------------------------------- adminlar (D-44)
+  Future<_ApiResponse> _team(String method, String path, {Object? body}) async {
+    final r = await _send(method, path, body: body);
+    if (r.ok) return r;
+    throw AdminTeamException(
+      _failure(r.status),
+      r.error,
+      '$method $path ${r.status} ${r.error}',
+    );
+  }
+
+  @override
+  Future<AdminTeam> adminTeam() async =>
+      AdminTeam.fromJson((await _team('GET', '/v1/admin/admins')).map);
+
+  @override
+  Future<AdminEntry> addAdmin(String email) async => AdminEntry.fromJson(
+    (await _team(
+      'POST',
+      '/v1/admin/admins',
+      body: {'email': email.trim()},
+    )).map,
+  );
+
+  @override
+  Future<void> removeAdmin(String id) =>
+      _team('DELETE', '/v1/admin/admins/${_seg(id)}');
 
   // ------------------------------------------------------------------
   // TODO(port): quyidagilar Cloudflare serveriga hali ko'chirilmagan

@@ -10279,7 +10279,7 @@ abstract class AppLocalizations {
   /// No description provided for @adminSub.
   ///
   /// In en, this message translates to:
-  /// **'Statistics, requests, users'**
+  /// **'Moderation, support, content, admins'**
   String get adminSub;
 
   /// No description provided for @adminMfaTitle.
@@ -13347,6 +13347,294 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'To launch the community, first confirm two-step protection: enter the 6-digit code from your authenticator app. The “Launch the community” button appears after that.'**
   String get cmLaunchMfaHint;
+
+  /// No description provided for @admYouSuper.
+  ///
+  /// In en, this message translates to:
+  /// **'You are the owner (super admin)'**
+  String get admYouSuper;
+
+  /// No description provided for @admYouAdmin.
+  ///
+  /// In en, this message translates to:
+  /// **'You are an admin'**
+  String get admYouAdmin;
+
+  /// No description provided for @adm2faOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Two-step protection (2FA) is confirmed. It is required for every admin action.'**
+  String get adm2faOn;
+
+  /// No description provided for @admReportsQueue.
+  ///
+  /// In en, this message translates to:
+  /// **'Reports and members'**
+  String get admReportsQueue;
+
+  /// No description provided for @admReportsSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Suspended queue, verified and rejected members'**
+  String get admReportsSub;
+
+  /// No description provided for @admLaunchRow.
+  ///
+  /// In en, this message translates to:
+  /// **'Launch the community'**
+  String get admLaunchRow;
+
+  /// No description provided for @admLaunchRowSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Founder confirmation and starter Q&A (once)'**
+  String get admLaunchRowSub;
+
+  /// No description provided for @admPending.
+  ///
+  /// In en, this message translates to:
+  /// **'Pending: {count}'**
+  String admPending(int count);
+
+  /// No description provided for @admQueueEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Queue is empty'**
+  String get admQueueEmpty;
+
+  /// No description provided for @admNotConnected.
+  ///
+  /// In en, this message translates to:
+  /// **'Not connected on this server yet'**
+  String get admNotConnected;
+
+  /// No description provided for @admReview.
+  ///
+  /// In en, this message translates to:
+  /// **'Content review'**
+  String get admReview;
+
+  /// No description provided for @admReviewSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Not yet reviewed: {cards} cards, {questions} questions'**
+  String admReviewSub(int cards, int questions);
+
+  /// No description provided for @admTeam.
+  ///
+  /// In en, this message translates to:
+  /// **'Admin management'**
+  String get admTeam;
+
+  /// No description provided for @admTeamCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Admins: {count}'**
+  String admTeamCount(int count);
+
+  /// No description provided for @admTeamSubManage.
+  ///
+  /// In en, this message translates to:
+  /// **'Add by email and remove'**
+  String get admTeamSubManage;
+
+  /// No description provided for @admTeamSubView.
+  ///
+  /// In en, this message translates to:
+  /// **'List (only the owner can change it)'**
+  String get admTeamSubView;
+
+  /// No description provided for @admLegacyNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Statistics, users, action history and partners are not on this server yet — they will appear here when ready.'**
+  String get admLegacyNote;
+
+  /// No description provided for @admOther.
+  ///
+  /// In en, this message translates to:
+  /// **'Other sections'**
+  String get admOther;
+
+  /// No description provided for @admTeamIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'An admin gets full access to every admin section: community moderation, support threads, content review. Only the server grants this, and every action needs a 2FA code.'**
+  String get admTeamIntro;
+
+  /// No description provided for @admTeamOwnerOnly.
+  ///
+  /// In en, this message translates to:
+  /// **'Only the owner (super admin) can add and remove admins.'**
+  String get admTeamOwnerOnly;
+
+  /// No description provided for @admAddTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Add an admin'**
+  String get admAddTitle;
+
+  /// No description provided for @admAddEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Email (e.g. Gmail)'**
+  String get admAddEmail;
+
+  /// No description provided for @admAddHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Access takes effect once they sign in with this email and set up 2FA; if the account exists — right away.'**
+  String get admAddHint;
+
+  /// No description provided for @admAddButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Make admin'**
+  String get admAddButton;
+
+  /// No description provided for @admAddConfirmTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Make this person an admin?'**
+  String get admAddConfirmTitle;
+
+  /// No description provided for @admAddConfirmBody.
+  ///
+  /// In en, this message translates to:
+  /// **'{email} will get full access to every admin section. You can remove them at any time.'**
+  String admAddConfirmBody(String email);
+
+  /// No description provided for @admAdded.
+  ///
+  /// In en, this message translates to:
+  /// **'Added: {email}'**
+  String admAdded(String email);
+
+  /// No description provided for @admInvalidEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid email. For example: name@gmail.com'**
+  String get admInvalidEmail;
+
+  /// No description provided for @admErrAlready.
+  ///
+  /// In en, this message translates to:
+  /// **'This email is already an admin.'**
+  String get admErrAlready;
+
+  /// No description provided for @admErrSuper.
+  ///
+  /// In en, this message translates to:
+  /// **'This is the owner’s email (super admin) — already an admin.'**
+  String get admErrSuper;
+
+  /// No description provided for @admErrTooMany.
+  ///
+  /// In en, this message translates to:
+  /// **'Admin limit: {max}. Remove someone first.'**
+  String admErrTooMany(int max);
+
+  /// No description provided for @admListTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Admins ({count})'**
+  String admListTitle(int count);
+
+  /// No description provided for @admKindSuper.
+  ///
+  /// In en, this message translates to:
+  /// **'Owner · super admin'**
+  String get admKindSuper;
+
+  /// No description provided for @admKindGranted.
+  ///
+  /// In en, this message translates to:
+  /// **'Admin · added {date}'**
+  String admKindGranted(String date);
+
+  /// No description provided for @admNotSignedIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Not signed in yet — access starts at first sign-in'**
+  String get admNotSignedIn;
+
+  /// No description provided for @admYou.
+  ///
+  /// In en, this message translates to:
+  /// **'You'**
+  String get admYou;
+
+  /// No description provided for @admRemove.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove'**
+  String get admRemove;
+
+  /// No description provided for @admRemoveTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove this admin?'**
+  String get admRemoveTitle;
+
+  /// No description provided for @admRemoveBody.
+  ///
+  /// In en, this message translates to:
+  /// **'{email} loses admin access immediately — on every device. Their account and data are not deleted.'**
+  String admRemoveBody(String email);
+
+  /// No description provided for @admRemoved.
+  ///
+  /// In en, this message translates to:
+  /// **'Removed: {email}'**
+  String admRemoved(String email);
+
+  /// No description provided for @admSuperNote.
+  ///
+  /// In en, this message translates to:
+  /// **'The owner is set in a secret server setting (LG_ADMIN_EMAILS) and cannot be removed from the app.'**
+  String get admSuperNote;
+
+  /// No description provided for @admNoGranted.
+  ///
+  /// In en, this message translates to:
+  /// **'No admins added yet.'**
+  String get admNoGranted;
+
+  /// No description provided for @cmAdminRevokeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Revoke verification?'**
+  String get cmAdminRevokeTitle;
+
+  /// No description provided for @cmAdminRevokeBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The member loses the specialist badge and cannot be re-verified by AI. They can still ask questions.'**
+  String get cmAdminRevokeBody;
+
+  /// No description provided for @cmAdminRestoreTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Restore this member?'**
+  String get cmAdminRestoreTitle;
+
+  /// No description provided for @cmAdminRestoreBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The status before suspension returns and their posts become visible again. Old reports are not counted again.'**
+  String get cmAdminRestoreBody;
+
+  /// No description provided for @adminActionGrantAdded.
+  ///
+  /// In en, this message translates to:
+  /// **'Admin added'**
+  String get adminActionGrantAdded;
+
+  /// No description provided for @adminActionGrantRemoved.
+  ///
+  /// In en, this message translates to:
+  /// **'Admin removed'**
+  String get adminActionGrantRemoved;
 }
 
 class _AppLocalizationsDelegate

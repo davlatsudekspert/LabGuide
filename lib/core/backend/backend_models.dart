@@ -46,6 +46,7 @@ class AccessInfo {
     required this.aal2,
     required this.reviewer,
     this.teacher = false,
+    this.superAdmin = false,
   });
 
   factory AccessInfo.fromJson(Map<String, Object?> json) => AccessInfo(
@@ -53,6 +54,7 @@ class AccessInfo {
     aal2: json['aal'] == 'aal2',
     reviewer: json['reviewer'] == true,
     teacher: json['teacher'] == true,
+    superAdmin: json['super_admin'] == true,
   );
 
   static const none = AccessInfo(
@@ -68,6 +70,10 @@ class AccessInfo {
   /// O'zini ustoz sifatida ro'yxatdan o'tkazgan (faqat o'z guruhlarini
   /// ochadi; admin vakolati emas).
   final bool teacher;
+
+  /// Egasi (serverdagi maxfiy ro'yxat, D-44): faqat u adminlarni qo'shadi
+  /// va olib tashlaydi. Faqat ko'rinish — server har amalda tekshiradi.
+  final bool superAdmin;
 
   /// Admin panelni ochish mumkin (hisob + ikki bosqichli tasdiq).
   bool get admin => adminAccount && aal2;

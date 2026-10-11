@@ -15,6 +15,7 @@ import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
 import '../admin/admin_screens.dart' show AdminGate;
+import '../learn/exam_widgets.dart' show confirmDialog;
 import '../support/support_screens.dart'
     show SignedInGate, backendErrorText, formatWhen;
 
@@ -1471,8 +1472,20 @@ class _AdminCommunityScreenState extends State<AdminCommunityScreen> {
     }
   }
 
-  Future<void> _act(Future<void> Function() f) async {
+  Future<void> _act(
+    Future<void> Function() f, {
+    required String confirmTitle,
+    required String confirmBody,
+    required String action,
+  }) async {
     final l = AppLocalizations.of(context);
+    final ok = await confirmDialog(
+      context,
+      title: confirmTitle,
+      body: confirmBody,
+      action: action,
+    );
+    if (!ok || !mounted) return;
     try {
       await f();
       if (!mounted) return;
@@ -1502,8 +1515,15 @@ class _AdminCommunityScreenState extends State<AdminCommunityScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    const _LaunchCard(),
-                    const SizedBox(height: 12),
+                    // Bir tugma faqat egasi uchun (server ham faqat
+                    // LG_ADMIN_EMAILS dagi hisobga ruxsat beradi).
+                    Builder(
+                      builder: (context) =>
+                          AdminGate.accessOf(context)?.superAdmin ?? false
+                          ? const _LaunchCard()
+                          : const SizedBox.shrink(),
+                    ),
+                    LgSectionTitle(l.admReportsQueue),
                     Wrap(
                       spacing: 6,
                       runSpacing: 6,
@@ -1576,8 +1596,12 @@ class _AdminCommunityScreenState extends State<AdminCommunityScreen> {
                                 LgButton.secondary(
                                   label: l.cmAdminRestore,
                                   icon: Icons.restore_rounded,
-                                  onPressed: () =>
-                                      _act(() => api!.adminRestore(m.userHash)),
+                                  onPressed: () => _act(
+                                    () => api!.adminRestore(m.userHash),
+                                    confirmTitle: l.cmAdminRestoreTitle,
+                                    confirmBody: l.cmAdminRestoreBody,
+                                    action: l.cmAdminRestore,
+                                  ),
                                 ),
                               if (m.status != MemberStatus.rejected &&
                                   !m.isOwner) ...[
@@ -1585,8 +1609,12 @@ class _AdminCommunityScreenState extends State<AdminCommunityScreen> {
                                 LgButton.secondary(
                                   label: l.cmAdminRevoke,
                                   icon: Icons.remove_moderator_outlined,
-                                  onPressed: () =>
-                                      _act(() => api!.adminRevoke(m.userHash)),
+                                  onPressed: () => _act(
+                                    () => api!.adminRevoke(m.userHash),
+                                    confirmTitle: l.cmAdminRevokeTitle,
+                                    confirmBody: l.cmAdminRevokeBody,
+                                    action: l.cmAdminRevoke,
+                                  ),
                                 ),
                               ],
                             ],

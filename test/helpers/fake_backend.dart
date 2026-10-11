@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:typed_data';
 
+import 'package:labguide/core/backend/admin_team.dart';
 import 'package:labguide/core/backend/backend_models.dart';
 import 'package:labguide/core/backend/lab_backend.dart';
 import 'package:labguide/core/backend/partner_models.dart';
@@ -119,7 +120,14 @@ class FakeLabBackend implements LabBackend {
       _current ?? (throw const BackendException(BackendFailure.unauthorized));
 
   bool get _isAdminAccount =>
+      _current != null &&
+      (adminEmails.contains(_current!.email) ||
+          _grants.containsKey(_current!.email));
+  bool get _isSuperAdmin =>
       _current != null && adminEmails.contains(_current!.email);
+
+  /// Super admin qo'shgan adminlar (D-44; faqat [FakeAdminTeamBackend]).
+  final Map<String, ({String id, DateTime at})> _grants = {};
   bool get _isAdmin => _isAdminAccount && _aal2;
   void _requireAdmin() {
     if (!_isAdmin) throw const BackendException(BackendFailure.forbidden);
@@ -135,6 +143,7 @@ class FakeLabBackend implements LabBackend {
           aal2: _aal2,
           reviewer: _current!.reviewer,
           teacher: _current!.teacher,
+          superAdmin: _isSuperAdmin,
         );
 
   @override
@@ -1308,4 +1317,174 @@ class _Assignment {
   _Assignment(this.info, this.key);
   GroupAssignment info;
   final List<int> key;
+}
+
+/// Cloudflare serveriga o'xshash soxta server: adminlar boshqaruvi (D-44)
+/// bor; Supabase'dan hali ko'chirilmagan admin bo'limlari (statistika,
+/// murojaatlar, foydalanuvchilar, jurnal, hamkorlar, tekshiruv) —
+/// `unavailable` ([legacyAdminApi] `true` bo'lsa — ishlaydi).
+///
+/// Qoidalar serverdagidek: faqat super admin (+aal2) qo'shadi/oladi; email
+/// faqat niqoblangan holda qaytadi; olib tashlangan admin darhol vakolatini
+/// yo'qotadi.
+class FakeAdminTeamBackend extends FakeLabBackend implements AdminTeamBackend {
+  FakeAdminTeamBackend({super.adminEmails, this.legacyAdminApi = false});
+
+  final bool legacyAdminApi;
+  static const maxGranted = 20;
+
+  /// Ilova qaysi emaillarni yuborganini tekshirish uchun (faqat test).
+  final List<String> addCalls = [];
+
+  static String mask(String email) {
+    final i = email.indexOf('@');
+    final local = email.substring(0, i);
+    return '${local.substring(0, local.length < 2 ? local.length : 2)}***${email.substring(i)}';
+  }
+
+  Never _notYet() => throw const BackendException(
+    BackendFailure.unavailable,
+    'not ported to cloudflare yet',
+  );
+
+  void _requireSuper() {
+    _requireAdmin();
+    if (!_isSuperAdmin) {
+      throw const AdminTeamException(
+        BackendFailure.forbidden,
+        'not_super_admin',
+      );
+    }
+  }
+
+  @override
+  Future<AdminTeam> adminTeam() async {
+    _requireAdmin();
+    final me = _current!.email;
+    return AdminTeam(
+      canManage: _isSuperAdmin,
+      maxGranted: maxGranted,
+      admins: [
+        for (final e in adminEmails)
+          AdminEntry(
+            id: null,
+            emailMasked: mask(e),
+            kind: AdminKind.superAdmin,
+            active: _users.containsKey(e),
+            you: e == me,
+          ),
+        for (final g
+            in _grants.entries.toList()
+              ..sort((a, b) => b.value.at.compareTo(a.value.at)))
+          AdminEntry(
+            id: g.value.id,
+            emailMasked: mask(g.key),
+            kind: AdminKind.granted,
+            active: _users.containsKey(g.key),
+            you: g.key == me,
+            createdAt: g.value.at,
+          ),
+      ],
+    );
+  }
+
+  @override
+  Future<AdminEntry> addAdmin(String email) async {
+    _requireSuper();
+    addCalls.add(email);
+    if (!isValidEmail(email)) {
+      throw const AdminTeamException(BackendFailure.invalid, 'invalid_email');
+    }
+    final e = normalizeEmail(email);
+    if (adminEmails.contains(e)) {
+      throw const AdminTeamException(
+        BackendFailure.invalid,
+        'already_super_admin',
+      );
+    }
+    if (_grants.containsKey(e)) {
+      throw const AdminTeamException(BackendFailure.invalid, 'already_admin');
+    }
+    if (_grants.length >= maxGranted) {
+      throw const AdminTeamException(BackendFailure.invalid, 'too_many_admins');
+    }
+    final g = (id: _id('grant'), at: _now());
+    _grants[e] = g;
+    audit.add(
+      AuditEntry(
+        action: 'admin_grant_added',
+        at: g.at,
+        target: g.id,
+        details: const {},
+      ),
+    );
+    return AdminEntry(
+      id: g.id,
+      emailMasked: mask(e),
+      kind: AdminKind.granted,
+      active: _users.containsKey(e),
+      you: false,
+      createdAt: g.at,
+    );
+  }
+
+  @override
+  Future<void> removeAdmin(String id) async {
+    _requireSuper();
+    final key = _grants.entries
+        .where((g) => g.value.id == id)
+        .map((g) => g.key)
+        .firstOrNull;
+    if (key == null) throw const BackendException(BackendFailure.notFound);
+    _grants.remove(key);
+    if (_current?.email == key) _aal2 = false;
+    audit.add(
+      AuditEntry(
+        action: 'admin_grant_removed',
+        at: _now(),
+        target: id,
+        details: const {},
+      ),
+    );
+  }
+
+  /// Boshqa qurilmadagi super admin olib tashladi (test: mavjud sessiya).
+  void revokeGrantFor(String email) {
+    final e = normalizeEmail(email);
+    _grants.remove(e);
+    // Server sessiyalarni aal1 ga tushiradi.
+    if (_current?.email == e) _aal2 = false;
+  }
+
+  @override
+  Future<AdminStats> adminStats() async =>
+      legacyAdminApi ? super.adminStats() : _notYet();
+  @override
+  Future<List<SupportThread>> adminThreads({SupportStatus? status}) async =>
+      legacyAdminApi ? super.adminThreads(status: status) : _notYet();
+  @override
+  Future<AdminUserPage> adminUsers({
+    String? query,
+    String? role,
+    String? language,
+    int limit = 20,
+    int offset = 0,
+  }) async => legacyAdminApi
+      ? super.adminUsers(
+          query: query,
+          role: role,
+          language: language,
+          limit: limit,
+          offset: offset,
+        )
+      : _notYet();
+  @override
+  Future<List<AuditEntry>> adminAudit({int limit = 50}) async =>
+      legacyAdminApi ? super.adminAudit(limit: limit) : _notYet();
+  @override
+  Future<List<ContentReview>> contentReviews() async =>
+      legacyAdminApi ? super.contentReviews() : _notYet();
+  @override
+  Future<List<SupportThread>> myThreads() async =>
+      legacyAdminApi ? super.myThreads() : _notYet();
 }

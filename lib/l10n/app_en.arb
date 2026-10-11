@@ -3440,7 +3440,7 @@
   "accountDeleteBody": "Your account, requests, attachments and group results are permanently removed from the server. This can’t be undone. QC records and bookmarks on this device are deleted separately.",
   "accountDeleted": "Account deleted",
   "adminTitle": "Admin panel",
-  "adminSub": "Statistics, requests, users",
+  "adminSub": "Moderation, support, content, admins",
   "adminMfaTitle": "Two-step protection",
   "adminMfaEnrollBody": "The admin panel needs an authenticator app (Google Authenticator, Microsoft Authenticator, 1Password…). Add the key to the app and enter the 6-digit code it shows.",
   "adminMfaVerifyBody": "Enter the 6-digit code from your authenticator app.",
@@ -4408,12 +4408,137 @@
   "cmLaunchButton": "Launch",
   "@cmLaunchDone": {
     "placeholders": {
-      "questions": {"type": "int"},
-      "answers": {"type": "int"}
+      "questions": {
+        "type": "int"
+      },
+      "answers": {
+        "type": "int"
+      }
     }
   },
   "cmLaunchDone": "Done: founder confirmed. Added {questions} questions and {answers} answers.",
   "cmLaunchAlready": "The community is already launched: founder confirmed, nothing new was added.",
   "cmLaunchNotOwner": "This account is not allowed as founder. Sign in with the founder's email.",
-  "cmLaunchMfaHint": "To launch the community, first confirm two-step protection: enter the 6-digit code from your authenticator app. The “Launch the community” button appears after that."
+  "cmLaunchMfaHint": "To launch the community, first confirm two-step protection: enter the 6-digit code from your authenticator app. The “Launch the community” button appears after that.",
+  "admYouSuper": "You are the owner (super admin)",
+  "admYouAdmin": "You are an admin",
+  "adm2faOn": "Two-step protection (2FA) is confirmed. It is required for every admin action.",
+  "admReportsQueue": "Reports and members",
+  "admReportsSub": "Suspended queue, verified and rejected members",
+  "admLaunchRow": "Launch the community",
+  "admLaunchRowSub": "Founder confirmation and starter Q&A (once)",
+  "admPending": "Pending: {count}",
+  "@admPending": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "admQueueEmpty": "Queue is empty",
+  "admNotConnected": "Not connected on this server yet",
+  "admReview": "Content review",
+  "admReviewSub": "Not yet reviewed: {cards} cards, {questions} questions",
+  "@admReviewSub": {
+    "placeholders": {
+      "cards": {
+        "type": "int"
+      },
+      "questions": {
+        "type": "int"
+      }
+    }
+  },
+  "admTeam": "Admin management",
+  "admTeamCount": "Admins: {count}",
+  "@admTeamCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "admTeamSubManage": "Add by email and remove",
+  "admTeamSubView": "List (only the owner can change it)",
+  "admLegacyNote": "Statistics, users, action history and partners are not on this server yet — they will appear here when ready.",
+  "admOther": "Other sections",
+  "admTeamIntro": "An admin gets full access to every admin section: community moderation, support threads, content review. Only the server grants this, and every action needs a 2FA code.",
+  "admTeamOwnerOnly": "Only the owner (super admin) can add and remove admins.",
+  "admAddTitle": "Add an admin",
+  "admAddEmail": "Email (e.g. Gmail)",
+  "admAddHint": "Access takes effect once they sign in with this email and set up 2FA; if the account exists — right away.",
+  "admAddButton": "Make admin",
+  "admAddConfirmTitle": "Make this person an admin?",
+  "admAddConfirmBody": "{email} will get full access to every admin section. You can remove them at any time.",
+  "@admAddConfirmBody": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "admAdded": "Added: {email}",
+  "@admAdded": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "admInvalidEmail": "Invalid email. For example: name@gmail.com",
+  "admErrAlready": "This email is already an admin.",
+  "admErrSuper": "This is the owner’s email (super admin) — already an admin.",
+  "admErrTooMany": "Admin limit: {max}. Remove someone first.",
+  "@admErrTooMany": {
+    "placeholders": {
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "admListTitle": "Admins ({count})",
+  "@admListTitle": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "admKindSuper": "Owner · super admin",
+  "admKindGranted": "Admin · added {date}",
+  "@admKindGranted": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "admNotSignedIn": "Not signed in yet — access starts at first sign-in",
+  "admYou": "You",
+  "admRemove": "Remove",
+  "admRemoveTitle": "Remove this admin?",
+  "admRemoveBody": "{email} loses admin access immediately — on every device. Their account and data are not deleted.",
+  "@admRemoveBody": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "admRemoved": "Removed: {email}",
+  "@admRemoved": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "admSuperNote": "The owner is set in a secret server setting (LG_ADMIN_EMAILS) and cannot be removed from the app.",
+  "admNoGranted": "No admins added yet.",
+  "cmAdminRevokeTitle": "Revoke verification?",
+  "cmAdminRevokeBody": "The member loses the specialist badge and cannot be re-verified by AI. They can still ask questions.",
+  "cmAdminRestoreTitle": "Restore this member?",
+  "cmAdminRestoreBody": "The status before suspension returns and their posts become visible again. Old reports are not counted again.",
+  "adminActionGrantAdded": "Admin added",
+  "adminActionGrantRemoved": "Admin removed"
 }
