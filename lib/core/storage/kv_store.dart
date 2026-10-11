@@ -74,6 +74,9 @@ abstract final class StoreKeys {
   /// mumkin), og'zaki savol-javob belgilari va baholari.
   static const classroomLocal = 'classroom.local';
 
+  /// Hamjamiyat qoidalari kartasi: ochiq/yopiq (qurilma bo'yicha).
+  static const communityRulesOpen = 'community.rulesOpen';
+
   static const all = <String>{
     language,
     themeMode,
@@ -110,6 +113,7 @@ abstract final class StoreKeys {
     dailyStreak,
     dailyReminder,
     classroomLocal,
+    communityRulesOpen,
   };
 }
 

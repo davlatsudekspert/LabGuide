@@ -7561,6 +7561,100 @@ class AppLocalizationsUz extends AppLocalizations {
       'Javoblar — hamkasblar tajribasi, shaxsiy tibbiy maslahat emas.';
 
   @override
+  String get cmRulesTitle => 'Hamjamiyat qoidalari';
+
+  @override
+  String get cmRulesIntro =>
+      'LabGuide hamjamiyati — klinik laboratoriya diagnostikasi bo‘yicha tajriba almashish joyi.';
+
+  @override
+  String get cmRulesExpand => 'Qoidalarni ochish';
+
+  @override
+  String get cmRulesCollapse => 'Qoidalarni yopish';
+
+  @override
+  String get cmRulesH1 => 'Nima muhokama qilinadi';
+
+  @override
+  String get cmRulesA1 =>
+      'tahlil natijalarini talqin qilish (nomuvofiq natijalar, soxta oshish/pasayish)';
+
+  @override
+  String get cmRulesA2 =>
+      'preanalitika: qon olish, probirkalar, saqlash, gemoliz';
+
+  @override
+  String get cmRulesA3 => 'sifat nazorati (QC, Westgard qoidalari), kalibrovka';
+
+  @override
+  String get cmRulesA4 => 'analizatorlar va reagentlar bilan ishlash tajribasi';
+
+  @override
+  String get cmRulesA5 =>
+      'gematologiya, mikroskopiya, biokimyo, immunologiya, siydik tahlili';
+
+  @override
+  String get cmRulesA6 => 'toifa imtihoni va o‘qish bo‘yicha savollar';
+
+  @override
+  String get cmRulesH2 => 'Qanday yozish kerak';
+
+  @override
+  String get cmRulesB1 =>
+      'sarlavhada savolning mohiyati (masalan: “Kaliy yuqori, gemoliz yo‘q — nima sabab?”)';
+
+  @override
+  String get cmRulesB2 =>
+      'batafsil qismida: qaysi tahlil, natija va birligi, usul yoki analizator, nima qilib ko‘rdingiz';
+
+  @override
+  String get cmRulesB3 =>
+      'birliklarni aniq yozing: avval SI, qavs ichida an’anaviy (masalan 7,0 mmol/L (126 mg/dL))';
+
+  @override
+  String get cmRulesB4 => 'bir postda — bitta savol';
+
+  @override
+  String get cmRulesH3 => 'Nima yozilmaydi';
+
+  @override
+  String get cmRulesC1 =>
+      'bemorning ismi, telefoni, manzili, karta raqami va shaxsini aniqlaydigan har qanday ma’lumot';
+
+  @override
+  String get cmRulesC2 => 'reklama, boshqa mavzular, haqoratli so‘zlar';
+
+  @override
+  String get cmRulesC3 =>
+      'bemor uchun shaxsiy davolash tavsiyasi — bu yerda hamkasblar tajribasi, shifokor maslahati emas';
+
+  @override
+  String get cmRulesH4 => 'Kim yoza oladi';
+
+  @override
+  String get cmRulesD1 => 'savolni — ro‘yxatdan o‘tgan har bir foydalanuvchi';
+
+  @override
+  String get cmRulesD2Pre =>
+      'javobni — faqat “✓ Mutaxassis” belgisi bor tasdiqlangan mutaxassislar (';
+
+  @override
+  String get cmRulesD2Link => 'Profil → Mutaxassis tasdiqlash';
+
+  @override
+  String get cmRulesD2Post =>
+      '; diplom yoki sertifikat rasmini yuklang; hujjat saqlanmaydi)';
+
+  @override
+  String get cmRulesD3 =>
+      'qoidaga zid post ko‘rsangiz — “Shikoyat” tugmasini bosing';
+
+  @override
+  String get cmRulesOutro =>
+      'Boshqa tildagi postlarni o‘qish uchun “Tarjima qilish” tugmasidan foydalaning. Hurmat va aniqlik — asosiy qoidamiz.';
+
+  @override
   String get cmAdminTitle => 'Hamjamiyat moderatsiyasi';
 
   @override

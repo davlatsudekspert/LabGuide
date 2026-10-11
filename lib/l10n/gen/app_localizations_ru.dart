@@ -7687,6 +7687,102 @@ class AppLocalizationsRu extends AppLocalizations {
       'Ответы — опыт коллег, а не персональная медицинская консультация.';
 
   @override
+  String get cmRulesTitle => 'Правила сообщества';
+
+  @override
+  String get cmRulesIntro =>
+      'Сообщество LabGuide — место для обмена опытом по клинической лабораторной диагностике.';
+
+  @override
+  String get cmRulesExpand => 'Развернуть правила';
+
+  @override
+  String get cmRulesCollapse => 'Свернуть правила';
+
+  @override
+  String get cmRulesH1 => 'Что обсуждается';
+
+  @override
+  String get cmRulesA1 =>
+      'интерпретация результатов анализов (несоответствующие результаты, ложное повышение/понижение)';
+
+  @override
+  String get cmRulesA2 =>
+      'преаналитика: забор крови, пробирки, хранение, гемолиз';
+
+  @override
+  String get cmRulesA3 =>
+      'контроль качества (QC, правила Вестгарда), калибровка';
+
+  @override
+  String get cmRulesA4 => 'опыт работы с анализаторами и реагентами';
+
+  @override
+  String get cmRulesA5 =>
+      'гематология, микроскопия, биохимия, иммунология, анализ мочи';
+
+  @override
+  String get cmRulesA6 =>
+      'вопросы по аттестационному экзамену (тоифа) и обучению';
+
+  @override
+  String get cmRulesH2 => 'Как писать';
+
+  @override
+  String get cmRulesB1 =>
+      'в заголовке — суть вопроса (например: «Калий повышен, гемолиза нет — в чём причина?»)';
+
+  @override
+  String get cmRulesB2 =>
+      'в подробной части: какой анализ, результат и единицы, метод или анализатор, что вы уже пробовали';
+
+  @override
+  String get cmRulesB3 =>
+      'указывайте единицы точно: сначала СИ, в скобках традиционные (например, 7,0 mmol/L (126 mg/dL))';
+
+  @override
+  String get cmRulesB4 => 'один пост — один вопрос';
+
+  @override
+  String get cmRulesH3 => 'Что не публикуется';
+
+  @override
+  String get cmRulesC1 =>
+      'имя, телефон, адрес, номер карты пациента и любые данные, позволяющие установить личность';
+
+  @override
+  String get cmRulesC2 => 'реклама, посторонние темы, оскорбления';
+
+  @override
+  String get cmRulesC3 =>
+      'личные рекомендации по лечению для пациента — здесь опыт коллег, а не совет врача';
+
+  @override
+  String get cmRulesH4 => 'Кто может писать';
+
+  @override
+  String get cmRulesD1 => 'вопрос — любой зарегистрированный пользователь';
+
+  @override
+  String get cmRulesD2Pre =>
+      'ответ — только подтверждённые специалисты со значком «✓ Специалист» (';
+
+  @override
+  String get cmRulesD2Link => 'Профиль → Подтверждение специалиста';
+
+  @override
+  String get cmRulesD2Post =>
+      '; загрузите фото диплома или сертификата; документ не сохраняется)';
+
+  @override
+  String get cmRulesD3 =>
+      'если видите пост, нарушающий правила, нажмите «Пожаловаться»';
+
+  @override
+  String get cmRulesOutro =>
+      'Чтобы прочитать посты на другом языке, используйте кнопку «Перевести». Уважение и точность — наше главное правило.';
+
+  @override
   String get cmAdminTitle => 'Модерация сообщества';
 
   @override

@@ -1,9 +1,12 @@
 import 'package:flutter/rendering.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:labguide/core/storage/kv_store.dart';
 import 'package:labguide/features/settings/settings_controller.dart';
 import 'package:material_ui/material_ui.dart';
 
 import '../helpers/fake_backend.dart';
+
+
 import '../helpers/fake_community.dart';
 import '../helpers/harness.dart';
 
@@ -372,6 +375,17 @@ void runLayoutExtras() {
           await goTo(tester, route);
           expect(tester.takeException(), isNull, reason: '$lang $route');
         }
+        // Qoidalar kartasi ochiq holatda + “Savol berish”dagi varaq.
+        await s.store.setBool(StoreKeys.communityRulesOpen, true);
+        await goTo(tester, '/profile');
+        await goTo(tester, '/profile/community');
+        expect(tester.takeException(), isNull, reason: '$lang rules open');
+        expect(find.byKey(const ValueKey('cm-rules-card')), findsOneWidget);
+        await goTo(tester, '/profile/community/ask');
+        await tester.tap(find.byKey(const ValueKey('cm-rules-link')));
+        await tester.pumpAndSettle();
+        expect(tester.takeException(), isNull, reason: '$lang rules sheet');
+        expect(find.byKey(const ValueKey('cm-rules-sheet')), findsOneWidget);
         await tester.pumpWidget(const SizedBox());
       }
     });

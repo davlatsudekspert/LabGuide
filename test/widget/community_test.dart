@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:labguide/app/app_scope.dart';
 import 'package:labguide/core/backend/community_backend.dart';
+import 'package:labguide/core/storage/kv_store.dart';
 import 'package:labguide/features/community/community_screens.dart';
 import 'package:labguide/features/settings/settings_controller.dart';
 import 'package:labguide/l10n/gen/app_localizations.dart';
@@ -431,4 +432,76 @@ void main() {
     expect(find.text(l.cmBest), findsWidgets);
     expect(find.text(l.cmUnmarkBest), findsOneWidget);
   });
+
+  for (final lang in AppLanguage.values) {
+    testWidgets('${lang.name}: qoidalar kartasi — yopiq/ochiq, eslab qolish, '
+        'tasdiqlash havolasi', (tester) async {
+      final (s, _, _) = await _setup(tester, language: lang);
+      final l = _l(lang);
+      await pumpApp(tester, s);
+      await _signIn(tester, s, 'rules@example.com');
+      await goTo(tester, '/profile/community');
+      final card = find.byKey(const ValueKey('cm-rules-card'));
+      expect(card, findsOneWidget);
+      // Ro'yxatning eng tepasida (savollardan oldin), standart yopiq.
+      expect(
+        tester.getTopLeft(card).dy,
+        lessThan(tester.getTopLeft(find.text(_seedTitle)).dy),
+      );
+      expect(find.text(l.cmRulesTitle), findsOneWidget);
+      expect(find.text(l.cmRulesIntro), findsOneWidget);
+      expect(find.text(l.cmRulesH1), findsNothing);
+      expect(s.store.getBool(StoreKeys.communityRulesOpen), isNull);
+
+      await tester.tap(find.byKey(const ValueKey('cm-rules-toggle')));
+      await tester.pumpAndSettle();
+      expect(s.store.getBool(StoreKeys.communityRulesOpen), isTrue);
+      for (final t in [
+        l.cmRulesH1,
+        l.cmRulesA1,
+        l.cmRulesH2,
+        l.cmRulesB4,
+        l.cmRulesH3,
+        l.cmRulesC3,
+        l.cmRulesH4,
+        l.cmRulesD1,
+        l.cmRulesD3,
+        l.cmRulesOutro,
+      ]) {
+        await _see(tester, find.text(t));
+      }
+      // “Profil → Mutaxassis tasdiqlash” — bosiladigan havola.
+      await _see(
+        tester,
+        find.textContaining(l.cmRulesD2Link, findRichText: true),
+      );
+      await tester.tapOnText(find.textRange.ofSubstring(l.cmRulesD2Link));
+      await tester.pumpAndSettle();
+      expect(find.byKey(const ValueKey('cm-verify-country')), findsOneWidget);
+      // Orqaga qaytganda holat saqlangan (qurilma bo'yicha).
+      await goTo(tester, '/profile/community');
+      expect(find.text(l.cmRulesH1), findsOneWidget);
+      await tester.ensureVisible(find.byKey(const ValueKey('cm-rules-toggle')));
+      await tester.pumpAndSettle();
+      await tester.tap(find.byKey(const ValueKey('cm-rules-toggle')));
+      await tester.pumpAndSettle();
+      expect(s.store.getBool(StoreKeys.communityRulesOpen), isFalse);
+      expect(find.text(l.cmRulesH1), findsNothing);
+    });
+
+    testWidgets('${lang.name}: savol berish ekranida qoidalar havolasi', (
+      tester,
+    ) async {
+      final (s, _, _) = await _setup(tester, language: lang);
+      final l = _l(lang);
+      await pumpApp(tester, s);
+      await _signIn(tester, s, 'rules2@example.com');
+      await goTo(tester, '/profile/community/ask');
+      await _tap(tester, find.byKey(const ValueKey('cm-rules-link')));
+      await _see(tester, find.text(l.cmRulesH4));
+      await tester.tapOnText(find.textRange.ofSubstring(l.cmRulesD2Link));
+      await tester.pumpAndSettle();
+      expect(find.byKey(const ValueKey('cm-verify-country')), findsOneWidget);
+    });
+  }
 }

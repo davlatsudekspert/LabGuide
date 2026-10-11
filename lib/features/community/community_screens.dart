@@ -15,6 +15,7 @@ import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
 import '../admin/admin_screens.dart' show AdminGate;
+import 'community_rules.dart';
 import '../support/support_screens.dart'
     show SignedInGate, backendErrorText, formatWhen;
 
@@ -569,6 +570,7 @@ class _CommunityListScreenState extends State<CommunityListScreen> {
               ),
             ),
           ),
+        if (!widget.mine) const CommunityRulesCard(),
         Text(l.cmNotAdvice, style: text.bodySmall),
         const SizedBox(height: 10),
         if (!widget.mine)
@@ -700,6 +702,10 @@ class _AskQuestionScreenState extends State<AskQuestionScreen> {
                     ),
                   ),
                 LgNotice(l.cmAskNoPatient),
+                const Align(
+                  alignment: AlignmentDirectional.centerStart,
+                  child: CommunityRulesLink(),
+                ),
                 LgField(
                   key: const ValueKey('cm-ask-title'),
                   label: l.cmAskTitleField,

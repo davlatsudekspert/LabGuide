@@ -13240,6 +13240,168 @@ abstract class AppLocalizations {
   /// **'Answers are colleagues’ experience, not personal medical advice.'**
   String get cmNotAdvice;
 
+  /// No description provided for @cmRulesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Community rules'**
+  String get cmRulesTitle;
+
+  /// No description provided for @cmRulesIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'The LabGuide community is a place to share experience in clinical laboratory diagnostics.'**
+  String get cmRulesIntro;
+
+  /// No description provided for @cmRulesExpand.
+  ///
+  /// In en, this message translates to:
+  /// **'Expand rules'**
+  String get cmRulesExpand;
+
+  /// No description provided for @cmRulesCollapse.
+  ///
+  /// In en, this message translates to:
+  /// **'Collapse rules'**
+  String get cmRulesCollapse;
+
+  /// No description provided for @cmRulesH1.
+  ///
+  /// In en, this message translates to:
+  /// **'What is discussed'**
+  String get cmRulesH1;
+
+  /// No description provided for @cmRulesA1.
+  ///
+  /// In en, this message translates to:
+  /// **'interpreting test results (inconsistent results, spurious increases/decreases)'**
+  String get cmRulesA1;
+
+  /// No description provided for @cmRulesA2.
+  ///
+  /// In en, this message translates to:
+  /// **'pre-analytics: blood collection, tubes, storage, haemolysis'**
+  String get cmRulesA2;
+
+  /// No description provided for @cmRulesA3.
+  ///
+  /// In en, this message translates to:
+  /// **'quality control (QC, Westgard rules), calibration'**
+  String get cmRulesA3;
+
+  /// No description provided for @cmRulesA4.
+  ///
+  /// In en, this message translates to:
+  /// **'experience working with analysers and reagents'**
+  String get cmRulesA4;
+
+  /// No description provided for @cmRulesA5.
+  ///
+  /// In en, this message translates to:
+  /// **'haematology, microscopy, biochemistry, immunology, urinalysis'**
+  String get cmRulesA5;
+
+  /// No description provided for @cmRulesA6.
+  ///
+  /// In en, this message translates to:
+  /// **'questions about the qualification exam (toifa) and study'**
+  String get cmRulesA6;
+
+  /// No description provided for @cmRulesH2.
+  ///
+  /// In en, this message translates to:
+  /// **'How to write'**
+  String get cmRulesH2;
+
+  /// No description provided for @cmRulesB1.
+  ///
+  /// In en, this message translates to:
+  /// **'put the essence of the question in the title (for example: “Potassium high, no haemolysis — what is the cause?”)'**
+  String get cmRulesB1;
+
+  /// No description provided for @cmRulesB2.
+  ///
+  /// In en, this message translates to:
+  /// **'in the details: which test, the result and its unit, the method or analyser, what you have already tried'**
+  String get cmRulesB2;
+
+  /// No description provided for @cmRulesB3.
+  ///
+  /// In en, this message translates to:
+  /// **'state units precisely: SI first, conventional in parentheses (for example 7.0 mmol/L (126 mg/dL))'**
+  String get cmRulesB3;
+
+  /// No description provided for @cmRulesB4.
+  ///
+  /// In en, this message translates to:
+  /// **'one post — one question'**
+  String get cmRulesB4;
+
+  /// No description provided for @cmRulesH3.
+  ///
+  /// In en, this message translates to:
+  /// **'What is not allowed'**
+  String get cmRulesH3;
+
+  /// No description provided for @cmRulesC1.
+  ///
+  /// In en, this message translates to:
+  /// **'a patient’s name, phone, address, card number or any data that identifies a person'**
+  String get cmRulesC1;
+
+  /// No description provided for @cmRulesC2.
+  ///
+  /// In en, this message translates to:
+  /// **'advertising, off-topic posts, abusive language'**
+  String get cmRulesC2;
+
+  /// No description provided for @cmRulesC3.
+  ///
+  /// In en, this message translates to:
+  /// **'personal treatment advice for a patient — this is colleagues’ experience, not a doctor’s advice'**
+  String get cmRulesC3;
+
+  /// No description provided for @cmRulesH4.
+  ///
+  /// In en, this message translates to:
+  /// **'Who can write'**
+  String get cmRulesH4;
+
+  /// No description provided for @cmRulesD1.
+  ///
+  /// In en, this message translates to:
+  /// **'questions — any registered user'**
+  String get cmRulesD1;
+
+  /// No description provided for @cmRulesD2Pre.
+  ///
+  /// In en, this message translates to:
+  /// **'answers — only verified specialists with the “✓ Specialist” badge ('**
+  String get cmRulesD2Pre;
+
+  /// No description provided for @cmRulesD2Link.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile → Specialist verification'**
+  String get cmRulesD2Link;
+
+  /// No description provided for @cmRulesD2Post.
+  ///
+  /// In en, this message translates to:
+  /// **'; upload a photo of your diploma or certificate; the document is not stored)'**
+  String get cmRulesD2Post;
+
+  /// No description provided for @cmRulesD3.
+  ///
+  /// In en, this message translates to:
+  /// **'if you see a post that breaks the rules, tap “Report”'**
+  String get cmRulesD3;
+
+  /// No description provided for @cmRulesOutro.
+  ///
+  /// In en, this message translates to:
+  /// **'To read posts in another language, use the “Translate” button. Respect and accuracy are our main rule.'**
+  String get cmRulesOutro;
+
   /// No description provided for @cmAdminTitle.
   ///
   /// In en, this message translates to:
