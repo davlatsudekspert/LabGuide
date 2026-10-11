@@ -249,6 +249,11 @@ class _QuizScreenState extends State<QuizScreen> {
                 ? _QuizResult(
                     session: session,
                     onRestart: () => _start(_scope!.redraw?.call() ?? _scope!),
+                    onRetryMistakes: () => _start(
+                      QuizScope((l, _) => l.quizTopicMistakes, [
+                        for (final (QuizQuestion q, _) in session.mistakes) q,
+                      ]),
+                    ),
                     onOtherTopic: analyteId == null
                         ? () => setState(() {
                             _scope = null;
@@ -586,11 +591,15 @@ class _QuizResult extends StatelessWidget {
     required this.session,
     required this.onRestart,
     this.onOtherTopic,
+    this.onRetryMistakes,
   });
 
   final QuizSession session;
   final VoidCallback onRestart;
   final VoidCallback? onOtherTopic;
+
+  /// Faqat xato javob berilgan savollarni qayta ishlash.
+  final VoidCallback? onRetryMistakes;
 
   @override
   Widget build(BuildContext context) {
@@ -606,6 +615,23 @@ class _QuizResult extends StatelessWidget {
           title: l.quizDoneTitle,
           message: l.quizScore(session.correctCount, session.questions.length),
         ),
+        // Amallar natija ostida, xatolar ro'yxatidan oldin: uzun ro'yxatni
+        // oxirigacha aylantirmasdan qayta urinish mumkin.
+        const SizedBox(height: 8),
+        if (mistakes.isNotEmpty && onRetryMistakes != null) ...[
+          LgButton(
+            label: l.examReworkMistakes(mistakes.length),
+            onPressed: onRetryMistakes,
+          ),
+          const SizedBox(height: 10),
+          LgButton.secondary(label: l.quizRestart, onPressed: onRestart),
+        ] else
+          LgButton(label: l.quizRestart, onPressed: onRestart),
+        if (onOtherTopic != null) ...[
+          const SizedBox(height: 10),
+          LgButton.secondary(label: l.quizOtherTopic, onPressed: onOtherTopic),
+        ],
+        const SizedBox(height: 8),
         LgSectionTitle(l.quizMistakes),
         if (mistakes.isEmpty)
           Text(l.quizNoMistakes, style: text.bodyMedium)
@@ -633,12 +659,6 @@ class _QuizResult extends StatelessWidget {
                 ],
               ),
             ),
-        const SizedBox(height: 16),
-        LgButton(label: l.quizRestart, onPressed: onRestart),
-        if (onOtherTopic != null) ...[
-          const SizedBox(height: 10),
-          LgButton.secondary(label: l.quizOtherTopic, onPressed: onOtherTopic),
-        ],
       ],
     );
   }
