@@ -5184,14 +5184,14 @@
     },
     {
      "finding": {
-      "uz": "Och qoringa glyukoza ≥ 126 mg/dL (≈7,0 mmol/L) yoki qand pasaytiruvchi dori ichish",
-      "ru": "Глюкоза натощак ≥ 126 мг/дл (≈7,0 ммоль/л) или приём сахароснижающих препаратов",
-      "en": "Fasting glucose ≥ 126 mg/dL (≈7.0 mmol/L) or taking glucose-lowering medicine"
+      "uz": "Och qoringa glyukoza ≥ 100 mg/dL (≈5,6 mmol/L) yoki qand pasaytiruvchi dori ichish",
+      "ru": "Глюкоза натощак ≥ 100 мг/дл (≈5,6 ммоль/л) или приём сахароснижающих препаратов",
+      "en": "Fasting glucose ≥ 100 mg/dL (≈5.6 mmol/L) or taking glucose-lowering medicine"
      },
      "meaning": {
-      "uz": "Metabolik sindrom mezonlaridan biri (100–125 mg/dL — yuqori qand yoki prediabet).",
-      "ru": "Один из критериев (100–125 мг/дл — повышенный сахар или преддиабет).",
-      "en": "One criterion (100–125 mg/dL indicates high blood sugar or prediabetes)."
+      "uz": "Metabolik sindrom mezonlaridan biri — yuqori qand: 100–125 mg/dL (≈5,6–6,9 mmol/L) — yuqori qand yoki prediabet; ≥ 126 mg/dL (≈7,0 mmol/L) — diabet bo‘lishi mumkin.",
+      "ru": "Один из критериев — повышенный сахар: 100–125 мг/дл (≈5,6–6,9 ммоль/л) — повышенный сахар или преддиабет; ≥ 126 мг/дл (≈7,0 ммоль/л) — возможен диабет.",
+      "en": "One criterion — high blood sugar: 100–125 mg/dL (≈5.6–6.9 mmol/L) means high blood sugar or prediabetes; ≥ 126 mg/dL (≈7.0 mmol/L) may mean diabetes."
      },
      "refs": [
       {
