@@ -181,7 +181,8 @@ List<ZoneSlot> layoutZones(
   final n = zones.length;
   final rows = zoneRows(n, columns);
   return [
-    for (var i = 0; i < n; i++) _slot(zones[i], i, n, rows, columns, leftHanded),
+    for (var i = 0; i < n; i++)
+      _slot(zones[i], i, n, rows, columns, leftHanded),
   ];
 }
 
@@ -194,5 +195,4 @@ ZoneSlot _slot(DiffCell c, int i, int n, int rows, int columns, bool left) {
   return ZoneSlot(c, rows - 1 - r, col, span: span);
 }
 
-int zoneRows(int count, [int columns = 2]) =>
-    (count + columns - 1) ~/ columns;
+int zoneRows(int count, [int columns = 2]) => (count + columns - 1) ~/ columns;

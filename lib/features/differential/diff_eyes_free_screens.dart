@@ -205,9 +205,7 @@ class _DiffEyesFreeSettingsScreenState
                 index: i,
                 name: diffCellButton[zones[i]]!.of(lang),
                 onUp: i == 0 ? null : () => _move(zones, i, -1),
-                onDown: i == zones.length - 1
-                    ? null
-                    : () => _move(zones, i, 1),
+                onDown: i == zones.length - 1 ? null : () => _move(zones, i, 1),
                 upLabel: l.diffEfMoveUp(diffCellNames[zones[i]]!.of(lang)),
                 downLabel: l.diffEfMoveDown(diffCellNames[zones[i]]!.of(lang)),
               ),
@@ -304,8 +302,7 @@ class _DiffEyesFreeSettingsScreenState
               spacing: 6,
               runSpacing: 6,
               children: [
-                for (final c in [...zones, null])
-                  LgTag('${words[c]}'),
+                for (final c in [...zones, null]) LgTag('${words[c]}'),
               ],
             ),
             LgNotice(
@@ -794,9 +791,8 @@ class _DiffEyesFreeScreenState extends State<DiffEyesFreeScreen> {
                             child: _DonePanel(
                               title: l.diffDoneTitle(_diff.target),
                               action: l.diffEfShowResult,
-                              onAction: () => context.go(
-                                '/lab/differential/count',
-                              ),
+                              onAction: () =>
+                                  context.go('/lab/differential/count'),
                             ),
                           ),
                       ],
@@ -811,75 +807,72 @@ class _DiffEyesFreeScreenState extends State<DiffEyesFreeScreen> {
     );
   }
 
-  Widget _zones(
-    BuildContext context,
-    AppLocalizations l,
-    EyesFreeSettings s,
-  ) => LayoutBuilder(
-    builder: (context, c) {
-      _area = Size(c.maxWidth, c.maxHeight);
-      final g = _ZoneGeometry(_area, s);
-      final lang = _lang;
-      final zones = s.zones;
-      return Listener(
-        behavior: HitTestBehavior.opaque,
-        onPointerDown: _onDown,
-        onPointerMove: _onMove,
-        onPointerUp: _onUp,
-        onPointerCancel: _onCancel,
-        child: Stack(
-          children: [
-            if (s.undoZone)
-              Positioned.fromRect(
-                rect: g.undoRect,
-                child: Semantics(
-                  button: true,
-                  label: '${l.diffEfUndoZone}. ${l.diffEfUndoHint}',
-                  onTap: _undo,
-                  child: ExcludeSemantics(
-                    child: _UndoZone(
-                      key: const ValueKey('ef-undo'),
-                      flash: _flashUndo,
-                      label: l.diffEfUndoZone,
-                      hint: l.diffEfUndoHint,
-                      enabled: _diff.canUndo,
+  Widget _zones(BuildContext context, AppLocalizations l, EyesFreeSettings s) =>
+      LayoutBuilder(
+        builder: (context, c) {
+          _area = Size(c.maxWidth, c.maxHeight);
+          final g = _ZoneGeometry(_area, s);
+          final lang = _lang;
+          final zones = s.zones;
+          return Listener(
+            behavior: HitTestBehavior.opaque,
+            onPointerDown: _onDown,
+            onPointerMove: _onMove,
+            onPointerUp: _onUp,
+            onPointerCancel: _onCancel,
+            child: Stack(
+              children: [
+                if (s.undoZone)
+                  Positioned.fromRect(
+                    rect: g.undoRect,
+                    child: Semantics(
+                      button: true,
+                      label: '${l.diffEfUndoZone}. ${l.diffEfUndoHint}',
+                      onTap: _undo,
+                      child: ExcludeSemantics(
+                        child: _UndoZone(
+                          key: const ValueKey('ef-undo'),
+                          flash: _flashUndo,
+                          label: l.diffEfUndoZone,
+                          hint: l.diffEfUndoHint,
+                          enabled: _diff.canUndo,
+                        ),
+                      ),
                     ),
                   ),
-                ),
-              ),
-            for (final slot in g.slots)
-              Positioned.fromRect(
-                rect: g.rectOf(slot),
-                child: Semantics(
-                  button: true,
-                  label: l.diffEfZoneSemantics(
-                    diffCellNames[slot.cell]!.of(lang),
-                    _diff.count(slot.cell),
-                    _diff.total,
-                    _diff.target,
-                  ),
-                  onTap: () => _count(slot.cell),
-                  customSemanticsActions: {
-                    CustomSemanticsAction(label: l.diffEfUndoZone): _undo,
-                  },
-                  child: ExcludeSemantics(
-                    child: _Zone(
-                      key: ValueKey('ef-zone-${slot.cell.name}'),
-                      number: zones.indexOf(slot.cell) + 1,
-                      label: diffCellButton[slot.cell]!.of(lang),
-                      count: _diff.count(slot.cell),
-                      flash: _flash == slot.cell,
-                      primary: zones.indexOf(slot.cell) < 2,
-                      dimmed: _diff.isComplete,
+                for (final slot in g.slots)
+                  Positioned.fromRect(
+                    rect: g.rectOf(slot),
+                    child: Semantics(
+                      button: true,
+                      label: l.diffEfZoneSemantics(
+                        diffCellNames[slot.cell]!.of(lang),
+                        _diff.count(slot.cell),
+                        _diff.total,
+                        _diff.target,
+                      ),
+                      onTap: () => _count(slot.cell),
+                      customSemanticsActions: {
+                        CustomSemanticsAction(label: l.diffEfUndoZone): _undo,
+                      },
+                      child: ExcludeSemantics(
+                        child: _Zone(
+                          key: ValueKey('ef-zone-${slot.cell.name}'),
+                          number: zones.indexOf(slot.cell) + 1,
+                          label: diffCellButton[slot.cell]!.of(lang),
+                          count: _diff.count(slot.cell),
+                          flash: _flash == slot.cell,
+                          primary: zones.indexOf(slot.cell) < 2,
+                          dimmed: _diff.isComplete,
+                        ),
+                      ),
                     ),
                   ),
-                ),
-              ),
-          ],
-        ),
+              ],
+            ),
+          );
+        },
       );
-    },
-  );
 }
 
 /// Zonalar geometriyasi — chizish va bosishni aniqlash uchun bir xil.
@@ -929,10 +922,7 @@ class _ZoneGeometry {
       0,
       rows - 1,
     );
-    final col = (pos.dx / (size.width / columns)).floor().clamp(
-      0,
-      columns - 1,
-    );
+    final col = (pos.dx / (size.width / columns)).floor().clamp(0, columns - 1);
     for (final s in slots) {
       if (s.row == row && col >= s.col && col < s.col + s.span) {
         return (undo: false, cell: s.cell);

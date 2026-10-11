@@ -182,7 +182,10 @@ final _shots = <StoreShot>[
       }
       await goTo(t, '/lab/qc/set/${set!.id}');
       await _align(t, find.text(l.qcLatestRun), 0.0);
-      await t.drag(find.byType(Scrollable).hitTestable().first, const Offset(0, -270));
+      await t.drag(
+        find.byType(Scrollable).hitTestable().first,
+        const Offset(0, -270),
+      );
       await t.pumpAndSettle();
     },
   ),

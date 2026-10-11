@@ -1408,7 +1408,7 @@
     }
   },
   "micSearchLabel": "Search the atlas",
-  "micSearchHint": "e.g. neutrophil, оксалат, bezgak",
+  "micSearchHint": "e.g. neutrophil, oxalate, malaria",
   "micNoResultsTitle": "Nothing found",
   "micNoResultsBody": "Try another name or another language (uz, ru, en).",
   "micSections": "Sections",

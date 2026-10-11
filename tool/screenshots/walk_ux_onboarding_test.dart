@@ -11,8 +11,13 @@ void main() {
   setUpAll(loadAppFonts);
   for (final lang in AppLanguage.values) {
     testWidgets('onboarding ${lang.name}', (tester) async {
-      final s = await makeServices(tester,
-          onboarded: false, role: null, languageChosen: false, language: lang);
+      final s = await makeServices(
+        tester,
+        onboarded: false,
+        role: null,
+        languageChosen: false,
+        language: lang,
+      );
       await pumpApp(tester, s);
       final w = Walk(tester, 'ux_onb_${lang.name}');
       await w.snap('til');

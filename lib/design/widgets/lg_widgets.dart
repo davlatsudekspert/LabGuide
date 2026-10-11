@@ -306,7 +306,14 @@ class LgHeroCard extends StatelessWidget {
               const SizedBox(height: 10),
               Semantics(
                 header: true,
-                child: Text(title, style: text.headlineMedium),
+                child: Text(
+                  title,
+                  style: text.headlineMedium,
+                  // Katta shriftda uzun so'z (“заболеваниям”) harfma-harf
+                  // bo'linib ketmasin: sarlavha 1,3x dan oshmaydi.
+                  textScaler: MediaQuery.textScalerOf(context)
+                      .clamp(maxScaleFactor: 1.3),
+                ),
               ),
               if (body != null) ...[
                 const SizedBox(height: 8),

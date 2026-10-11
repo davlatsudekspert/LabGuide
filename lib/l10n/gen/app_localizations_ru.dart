@@ -2621,7 +2621,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get micSearchLabel => 'Поиск по атласу';
 
   @override
-  String get micSearchHint => 'Например: нейтрофил, oxalate, bezgak';
+  String get micSearchHint => 'Например: нейтрофил, оксалат, малярия';
 
   @override
   String get micNoResultsTitle => 'Ничего не найдено';

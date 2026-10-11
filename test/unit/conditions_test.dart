@@ -236,6 +236,14 @@ void main() {
       for (final c in search.search(q, lang: lang)) c.id,
     ];
 
+    test(
+      'russian nominative query finds inflected names (печень → печени)',
+      () {
+        expect(ids('печень', 'ru'), contains('fatty-liver-disease'));
+        expect(ids('глюкоза', 'ru'), isNotEmpty);
+      },
+    );
+
     test('colloquial and multilingual names', () {
       expect(ids('qand', 'uz').first, 'type-2-diabetes');
       expect(ids('qand', 'uz'), contains('gestational-diabetes'));

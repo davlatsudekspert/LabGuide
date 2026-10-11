@@ -2582,7 +2582,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get micSearchLabel => 'Atlasdan qidirish';
 
   @override
-  String get micSearchHint => 'Masalan: neytrofil, оксалат, malaria';
+  String get micSearchHint => 'Masalan: neytrofil, oksalat, bezgak';
 
   @override
   String get micNoResultsTitle => 'Hech narsa topilmadi';

@@ -36,6 +36,12 @@ void main() {
     expect(UnitSystem.tryParse('x'), isNull);
   });
 
+  test('siFirstUnits puts SI before conventional units', () {
+    expect(siFirstUnits(['mg/dL', 'mmol/L']), ['mmol/L', 'mg/dL']);
+    expect(siFirstUnits(['mg/dL', 'µmol/L']), ['µmol/L', 'mg/dL']);
+    expect(siFirstUnits(['%', '×10⁹/L']), ['%', '×10⁹/L']);
+  });
+
   test('defaultUnitFor: conventional picks mg/dL or g/dL, SI the first', () {
     expect(
       defaultUnitFor([Units.creatUmolL, Units.creatMgDl], true).label,

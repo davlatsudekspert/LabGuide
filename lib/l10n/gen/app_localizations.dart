@@ -4651,7 +4651,7 @@ abstract class AppLocalizations {
   /// No description provided for @micSearchHint.
   ///
   /// In en, this message translates to:
-  /// **'e.g. neutrophil, оксалат, bezgak'**
+  /// **'e.g. neutrophil, oxalate, malaria'**
   String get micSearchHint;
 
   /// No description provided for @micNoResultsTitle.

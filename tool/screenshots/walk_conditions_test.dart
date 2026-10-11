@@ -59,7 +59,9 @@ void main() {
     await w.snap('orqaga_diabet');
     await w.tap(find.byTooltip(l.actionBack).hitTestable().first);
     await w.tap(find.byTooltip(l.actionBack).hitTestable().first);
-    await w.tap(find.text('Gipotireoz (qalqonsimon bez faoliyati pasayishi)').first);
+    await w.tap(
+      find.text('Gipotireoz (qalqonsimon bez faoliyati pasayishi)').first,
+    );
     await w.snap('gipotireoz');
     await w.scroll(900);
     await w.snap('gipotireoz_pastroq');

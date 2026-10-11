@@ -12,9 +12,12 @@ final en = lookupAppLocalizations(const Locale('en'));
 
 const _tall = Size(390, 2400);
 
-String _location(WidgetTester tester) => GoRouter.of(
-  tester.element(find.byType(Scaffold).last),
-).routerDelegate.currentConfiguration.uri.path;
+String _location(WidgetTester tester) =>
+    GoRouter.of(tester.element(find.byType(Scaffold).last))
+        .routerDelegate
+        .currentConfiguration
+        .uri
+        .path;
 
 void main() {
   setUpAll(loadAppFonts);
@@ -83,7 +86,7 @@ void main() {
       await goTo(tester, '/library');
       await tester.tap(find.text(l.researchTitle));
       await tester.pumpAndSettle();
-        expect(find.text(l.researchTitle), findsWidgets);
+      expect(find.text(l.researchTitle), findsWidgets);
       await goTo(tester, '/library');
       await tester.tap(find.text(l.intakeTitle));
       await tester.pumpAndSettle();
@@ -105,7 +108,9 @@ void main() {
     await goTo(tester, '/learn/quiz');
     final picker = find.text(uz.quizChooseTopic);
     expect(picker, findsOneWidget);
-    await tester.tap(find.textContaining(uz.quizTopicMixed(1).split('1').first));
+    await tester.tap(
+      find.textContaining(uz.quizTopicMixed(1).split('1').first),
+    );
     await tester.pumpAndSettle();
     expect(picker, findsNothing, reason: 'savol ochilgan, mavzu ro‘yxati yo‘q');
     await goTo(tester, '/tests/analyte/${plain.id}');
