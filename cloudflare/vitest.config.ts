@@ -23,6 +23,9 @@ export default defineConfig(async () => {
     ],
     test: {
       setupFiles: ['./test/setup.ts'],
+      // Sinf testlari bir nechta OTP kirish va guruh yaratishni ketma-ket
+      // bajaradi; sovuq CI runnerida 5 s standart chegara yetmay qolgan (#32).
+      testTimeout: 20_000,
     },
   };
 });
