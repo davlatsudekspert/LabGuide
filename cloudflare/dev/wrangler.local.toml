@@ -1,0 +1,14 @@
+# Mahalliy sinov konfiguratsiyasi — sirlar yo'q, tashqi tarmoqqa chiqmaydi.
+name = "labguide-api-local"
+main = "local.ts"
+compatibility_date = "2026-08-15"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "labguide-local"
+database_id = "00000000-0000-0000-0000-000000000000"
+migrations_dir = "../migrations"
+
+[vars]
+LG_SERVER_SECRET = "local-test-secret-local-test-secret-0123456789"
+EMAIL_PROVIDER = "resend"
