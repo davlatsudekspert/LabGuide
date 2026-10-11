@@ -2385,6 +2385,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get calcOptional => 'optional';
 
   @override
+  String get calcCalciumCaution =>
+      'Albumin-adjusted calcium often misclassifies calcium status, especially with low albumin or kidney impairment. Where available, measure ionised calcium — it is preferred.';
+
+  @override
   String get calcNotDiagnosis =>
       'A calculation aid for learning and checking. It does not diagnose: interpret the result with the clinical picture and your laboratory’s reference intervals.';
 
@@ -6917,6 +6921,11 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get analyteTreatmentGoalsNotRef =>
       'Treatment goals are neither reference intervals nor diagnostic limits. Guidelines define risk groups differently — compare values only within one table.';
+
+  @override
+  String analyteGoalHistorical(String current) {
+    return 'Historical guideline, superseded by $current. Shown for context only — not for current treatment decisions.';
+  }
 
   @override
   String analyteGoalGuideline(String name, String year) {

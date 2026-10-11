@@ -403,6 +403,13 @@ class _ClinicalCalcScreenState extends State<ClinicalCalcScreen> {
                 ),
         ),
         const SizedBox(height: 6),
+        if (widget.calc == ClinicalCalc.calcium) ...[
+          LgNotice(
+            l.calcCalciumCaution,
+            key: const ValueKey('calc-calcium-caution'),
+          ),
+          const SizedBox(height: 6),
+        ],
         LgNotice(l.calcNotDiagnosis, kind: NoticeKind.info),
         LgSectionTitle(l.calcFormula),
         for (final f in info.formula)

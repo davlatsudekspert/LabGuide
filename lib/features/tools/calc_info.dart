@@ -98,6 +98,23 @@ abstract final class CalcSources {
         'of CKD. Kidney Int Suppl. 2013. doi:10.1038/kisup.2012.64',
     url: 'https://doi.org/10.1038/kisup.2012.64',
   );
+  static const kdigo2024 = CalcSource(
+    id: 'calc-kdigo-2024',
+    citation:
+        'KDIGO 2024 Clinical Practice Guideline for the Evaluation and '
+        'Management of Chronic Kidney Disease. Kidney Int. 2024. '
+        'doi:10.1016/j.kint.2023.10.018',
+    url: 'https://doi.org/10.1016/j.kint.2023.10.018',
+  );
+  static const smith2018 = CalcSource(
+    id: 'calc-smith-2018',
+    citation:
+        'Smith JD, Wilson S, Schneider HG. Misclassification of calcium '
+        'status based on albumin-adjusted calcium: studies in a tertiary '
+        'hospital setting. Clin Chem. 2018. '
+        'doi:10.1373/clinchem.2018.291377',
+    url: 'https://doi.org/10.1373/clinchem.2018.291377',
+  );
   static const kraut2007 = CalcSource(
     id: 'calc-kraut-2007',
     citation:
@@ -363,9 +380,11 @@ abstract final class CalcSources {
     inker2021,
     nkf2021,
     kdigo2012,
+    kdigo2024,
     kraut2007,
     figge1998,
     payne1973,
+    smith2018,
     friedewald1972,
     sampson2020,
     atp3,
@@ -430,14 +449,46 @@ final Map<ClinicalCalc, CalcInfo> calcInfo = {
       }),
       LocalizedText({
         'uz':
-            'G toifasi — faqat KDIGO 2012 tasnifi. Buyrak shikastlanishi '
+            'Kreatinin barqaror bo‘lmagan holatda (o‘tkir buyrak shikastlanishi, '
+            'kreatinin tez o‘zgarayotganda) eGFR haqiqiy GFR ni aks ettirmaydi '
+            '(KDIGO 2024).',
+        'ru':
+            'При нестабильном креатинине (острое повреждение почек, быстро '
+            'меняющийся креатинин) eGFR не отражает истинную СКФ (KDIGO 2024).',
+        'en':
+            'When creatinine is not in a steady state (acute kidney injury, '
+            'rapidly changing creatinine), eGFR does not reflect true GFR '
+            '(KDIGO 2024).',
+      }),
+      LocalizedText({
+        'uz':
+            'Kreatinin GFR dan tashqari omillarga bog‘liq: juda katta yoki juda '
+            'kichik mushak massasi (amputatsiya, kaxeksiya, sportchilar), '
+            'go‘shtga boy ovqat yoki kreatin qo‘shimchalari, vegetarian '
+            'parhez. Bunday holatda sistatin C bilan eGFR yoki o‘lchangan GFR '
+            'ko‘rib chiqiladi (KDIGO 2024).',
+        'ru':
+            'Креатинин зависит от факторов помимо СКФ: очень большая или очень '
+            'малая мышечная масса (ампутация, кахексия, спортсмены), богатая '
+            'мясом пища или добавки креатина, вегетарианская диета. В таких '
+            'случаях рассматривают eGFR по цистатину C или измеренную СКФ '
+            '(KDIGO 2024).',
+        'en':
+            'Creatinine depends on factors other than GFR: very high or very '
+            'low muscle mass (amputation, cachexia, athletes), meat-rich meals '
+            'or creatine supplements, vegetarian diet. In such cases consider '
+            'cystatin C-based eGFR or measured GFR (KDIGO 2024).',
+      }),
+      LocalizedText({
+        'uz':
+            'G toifasi — faqat KDIGO tasnifi (2012; 2024 da o‘zgarmagan). Buyrak shikastlanishi '
             'belgilari bo‘lmasa, G1 va G2 surunkali buyrak kasalligi '
             'mezonlariga mos kelmaydi.',
         'ru':
-            'Категория G — только классификация KDIGO 2012. Без признаков '
+            'Категория G — только классификация KDIGO (2012; в 2024 не изменена). Без признаков '
             'повреждения почек G1 и G2 не соответствуют критериям ХБП.',
         'en':
-            'The G category is the KDIGO 2012 classification only. Without '
+            'The G category is the KDIGO classification only (2012; unchanged in 2024). Without '
             'evidence of kidney damage, G1 and G2 do not meet the criteria '
             'for CKD.',
       }),
@@ -446,6 +497,10 @@ final Map<ClinicalCalc, CalcInfo> calcInfo = {
       CalcRef(CalcSources.inker2021, 'Table 2; Methods'),
       CalcRef(CalcSources.nkf2021, 'Equation'),
       CalcRef(CalcSources.kdigo2012, 'Table 5'),
+      CalcRef(
+        CalcSources.kdigo2024,
+        'Chapter 1.2 (evaluation of GFR); Figure 1 (GFR categories)',
+      ),
     ],
   ),
   ClinicalCalc.acr: CalcInfo(
@@ -585,8 +640,30 @@ final Map<ClinicalCalc, CalcInfo> calcInfo = {
             'one uses the formula from the Payne 1973 paper, so results can '
             'differ.',
       }),
+      LocalizedText({
+        'uz':
+            'Smith 2018: kasalxona bemorlarida tuzatilgan kalsiy ionlashgan '
+            'kalsiyga nisbatan kalsiy holatini ko‘p hollarda noto‘g‘ri '
+            'tasniflagan; albumin < 30 g/L va buyrak yetishmovchiligida '
+            'kalsiyni ortiqcha baholaydi. Imkon bo‘lsa ionlashgan kalsiy '
+            'o‘lchanadi.',
+        'ru':
+            'Smith 2018: у госпитализированных пациентов скорректированный '
+            'кальций часто неверно классифицировал статус кальция по сравнению '
+            'с ионизированным; при альбумине < 30 г/л и почечной '
+            'недостаточности завышает кальций. По возможности измеряют '
+            'ионизированный кальций.',
+        'en':
+            'Smith 2018: in hospital patients, adjusted calcium often '
+            'misclassified calcium status compared with ionised calcium and '
+            'overestimated calcium with albumin < 30 g/L or renal impairment. '
+            'Measure ionised calcium where available.',
+      }),
     ],
-    refs: const [CalcRef(CalcSources.payne1973, 'Abstract')],
+    refs: const [
+      CalcRef(CalcSources.payne1973, 'Abstract'),
+      CalcRef(CalcSources.smith2018, 'Abstract; Conclusions'),
+    ],
   ),
   ClinicalCalc.ldl: CalcInfo(
     formula: const [

@@ -1235,6 +1235,10 @@
   "calcHba1cSub": "NGSP ↔ IFCC · ADAG",
   "calcFormulaTag": "Published formula",
   "calcOptional": "optional",
+  "calcCalciumCaution": "Albumin-adjusted calcium often misclassifies calcium status, especially with low albumin or kidney impairment. Where available, measure ionised calcium — it is preferred.",
+  "@calcCalciumCaution": {
+    "description": "Always-visible warning on the albumin-corrected calcium calculator."
+  },
   "calcNotDiagnosis": "A calculation aid for learning and checking. It does not diagnose: interpret the result with the clinical picture and your laboratory’s reference intervals.",
   "calcUnitCheck": "{field}: {value} {unit} is unusual for this unit — check that the right unit is selected.",
   "@calcUnitCheck": {
@@ -3959,6 +3963,15 @@
   "analyteTreatmentGoals": "Treatment goals",
   "analyteTreatmentGoalsNotice": "A treatment goal is set by a physician on the basis of the patient’s full risk assessment; the app does not determine a risk category.",
   "analyteTreatmentGoalsNotRef": "Treatment goals are neither reference intervals nor diagnostic limits. Guidelines define risk groups differently — compare values only within one table.",
+  "analyteGoalHistorical": "Historical guideline, superseded by {current}. Shown for context only — not for current treatment decisions.",
+  "@analyteGoalHistorical": {
+    "description": "Shown under a guideline that has been replaced by newer ones.",
+    "placeholders": {
+      "current": {
+        "type": "String"
+      }
+    }
+  },
   "analyteGoalGuideline": "{name} · {year}",
   "@analyteGoalGuideline": {
     "placeholders": {

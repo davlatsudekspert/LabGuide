@@ -64,6 +64,45 @@ void main() {
     expect(find.text('98 mL/min/1.73 m²'), findsNothing);
   });
 
+  testWidgets('corrected Ca: ionised-calcium caution is always visible; '
+      'eGFR cites KDIGO 2024 limitations', (tester) async {
+    for (final (lang, text) in [
+      (AppLanguage.en, en.calcCalciumCaution),
+      (AppLanguage.ru, ru.calcCalciumCaution),
+      (AppLanguage.uz, uz.calcCalciumCaution),
+    ]) {
+      final s = await makeServices(tester, language: lang);
+      await pumpApp(tester, s, size: const Size(390, 3200));
+      await goTo(tester, '/lab/calculators/calcium');
+      final caution = find.byKey(const ValueKey('calc-calcium-caution'));
+      expect(caution, findsOneWidget);
+      expect(
+        find.descendant(of: caution, matching: find.text(text)),
+        findsOneWidget,
+      );
+    }
+    final s = await makeServices(tester, language: AppLanguage.en);
+    await pumpApp(tester, s, size: const Size(390, 3200));
+    await goTo(tester, '/lab/calculators/egfr');
+    expect(find.byKey(const ValueKey('calc-calcium-caution')), findsNothing);
+    expect(find.textContaining('acute kidney injury'), findsOneWidget);
+    expect(find.textContaining('muscle mass'), findsOneWidget);
+  });
+
+  test('calculator sources: KDIGO 2024 for eGFR, Smith 2018 for Ca', () {
+    String ids(ClinicalCalc c) =>
+        calcInfo[c]!.refs.map((r) => r.source.id).join(',');
+    expect(ids(ClinicalCalc.egfr), contains('calc-kdigo-2024'));
+    expect(ids(ClinicalCalc.calcium), contains('calc-smith-2018'));
+    for (final c in [ClinicalCalc.egfr, ClinicalCalc.calcium]) {
+      for (final x in calcInfo[c]!.limitations) {
+        for (final lang in ['uz', 'ru', 'en']) {
+          expect(x.of(lang), isNotEmpty, reason: '$c $lang');
+        }
+      }
+    }
+  });
+
   testWidgets('editing a field clears the old result (no stale answer)', (
     tester,
   ) async {
