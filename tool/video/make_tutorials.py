@@ -621,8 +621,10 @@ def write_txt(path, video, total):
     txt = (f"{video['title']} | LabGuide\n\n{video['desc']}\n\n"
            'LabGuide — laboratoriya amaliyoti va o‘rganish ilovasi. '
            'Hozir TestFlight / Google Play sinov versiyasida.\n'
-           'Videodagi ma’lumotlar namunaviy (demo): guruh “KDL-1 (namuna)”, '
-           'ustoz@example.com, Talaba 01/02.\n'
+           + ('Videodagi ma’lumotlar namunaviy (demo): guruh “KDL-1 (namuna)”, '
+              'ustoz@example.com, Talaba 01/02.\n' if video['n'] <= 5 else
+              'Videodagi qiymatlar namunaviy (demo) va haqiqiy bemor yoki '
+              'laboratoriya ma’lumoti emas.\n') +
            f'Savollar: {CONTACT}\n\n{video["tags"]}\n')
     open(path, 'w', encoding='utf-8').write(txt)
 
