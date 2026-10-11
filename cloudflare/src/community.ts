@@ -17,6 +17,7 @@ import { iso } from './context';
 import { hex, hmac } from './crypto';
 import { ApiError, badRequest, conflict, forbidden, json, notFound, readJson } from './http';
 import { hit } from './ratelimit';
+import BUNDLED_SEED from '../seed/community_seed.json';
 
 export const VERIFY_MAX_BYTES = 5 * 1024 * 1024;
 export const VERIFY_PER_DAY = 3;
@@ -930,17 +931,25 @@ export async function adminSeedOwnerVerification(ctx: Ctx): Promise<Response> {
   const s = await requireAdmin(ctx);
   const body = await readJson(ctx.req);
   const email = normalizeEmail(body.email);
-  const allow = (ctx.env.LG_ADMIN_EMAILS ?? '')
-    .split(',')
-    .map((x) => x.trim().toLowerCase())
-    .filter(Boolean);
-  if (!email || !allow.includes(email)) throw forbidden('not_allowlisted');
+  if (!email || !adminAllowlist(ctx).includes(email)) throw forbidden('not_allowlisted');
   const user = await ctx.db
     .prepare('SELECT id FROM users WHERE email_hash = ?1')
     .bind(await emailHash(ctx, email))
     .first<{ id: string }>();
   if (!user) throw new ApiError(404, 'user_not_found');
-  const h = await userHash(ctx, user.id);
+  await markOwnerVerified(ctx, s.userId, user.id);
+  return json({ status: 'verified', method: OWNER_VERIFICATION.method, is_owner: true });
+}
+
+function adminAllowlist(ctx: Ctx): string[] {
+  return (ctx.env.LG_ADMIN_EMAILS ?? '')
+    .split(',')
+    .map((x) => x.trim().toLowerCase())
+    .filter(Boolean);
+}
+
+async function markOwnerVerified(ctx: Ctx, actorId: string, userId: string): Promise<void> {
+  const h = await userHash(ctx, userId);
   const o = OWNER_VERIFICATION;
   await ctx.db.batch([
     ctx.db.prepare('UPDATE community_members SET is_owner = 0 WHERE is_owner = 1 AND user_hash <> ?1').bind(h),
@@ -955,8 +964,7 @@ export async function adminSeedOwnerVerification(ctx: Ctx): Promise<Response> {
       )
       .bind(h, o.role, o.country, o.method, o.institution, o.specialty_code, o.credential, o.year, ctx.now),
   ]);
-  await audit(ctx, s.userId, 'community_owner_verified', h.slice(0, 16), { method: o.method });
-  return json({ status: 'verified', method: o.method, is_owner: true });
+  await audit(ctx, actorId, 'community_owner_verified', h.slice(0, 16), { method: o.method });
 }
 
 interface SeedAnswer {
@@ -974,7 +982,40 @@ export async function adminSeed(ctx: Ctx): Promise<Response> {
     .prepare(`SELECT user_hash FROM community_members WHERE is_owner = 1 AND status = 'verified'`)
     .first<{ user_hash: string }>();
   if (!owner) throw conflict('owner_not_verified');
-  const body = await readJson(ctx.req, 256 * 1024);
+  // Bo'sh tana — serverga biriktirilgan seed (egasi bir tugma bilan ishga tushiradi).
+  const empty = (await ctx.req.clone().arrayBuffer()).byteLength === 0;
+  const body = empty ? (BUNDLED_SEED as Record<string, unknown>) : await readJson(ctx.req, 256 * 1024);
+  const r = await applySeed(ctx, s.userId, owner.user_hash, body);
+  return json({ created: r.created, skipped: r.total - r.created });
+}
+
+/**
+ * Bir tugma: chaqiruvchining O'Z emaili LG_ADMIN_EMAILS da bo'lsa egasi
+ * tasdig'i, so'ng biriktirilgan seed. Idempotent; so'rovda email yo'q.
+ */
+export async function adminCommunityLaunch(ctx: Ctx): Promise<Response> {
+  const s = await requireAdmin(ctx);
+  const allow = adminAllowlist(ctx);
+  let mine: string | null = null;
+  const row = await ctx.db.prepare('SELECT email_hash FROM users WHERE id = ?1').bind(s.userId).first<{ email_hash: string }>();
+  if (row) {
+    for (const e of allow) {
+      if ((await emailHash(ctx, e)) === row.email_hash) mine = e;
+    }
+  }
+  if (!mine) throw forbidden('not_allowlisted');
+  await markOwnerVerified(ctx, s.userId, s.userId);
+  const r = await applySeed(ctx, s.userId, await userHash(ctx, s.userId), BUNDLED_SEED as Record<string, unknown>);
+  return json({ owner_verified: true, questions_added: r.created, answers_added: r.answers });
+}
+
+async function applySeed(
+  ctx: Ctx,
+  actorId: string,
+  ownerHash: string,
+  body: Record<string, unknown>,
+): Promise<{ created: number; total: number; answers: number }> {
+  const owner = { user_hash: ownerHash };
   const qs = body.questions;
   if (!Array.isArray(qs) || qs.length === 0 || qs.length > 50) throw badRequest('invalid_questions');
   const parsed = qs.map((raw) => {
@@ -1001,6 +1042,7 @@ export async function adminSeed(ctx: Ctx): Promise<Response> {
     };
   });
   let created = 0;
+  let answersAdded = 0;
   for (const [qi, q] of parsed.entries()) {
     const r = await ctx.db
       .prepare(
@@ -1019,10 +1061,11 @@ export async function adminSeed(ctx: Ctx): Promise<Response> {
         )
         .bind(`${q.id}-a${ai + 1}`, q.id, owner.user_hash, a.body, a.lang, ctx.now + ai + 1)
         .run();
+      answersAdded++;
     }
   }
-  await audit(ctx, s.userId, 'community_seeded', null, { created, total: parsed.length });
-  return json({ created, skipped: parsed.length - created });
+  await audit(ctx, actorId, 'community_seeded', null, { created, total: parsed.length });
+  return { created, total: parsed.length, answers: answersAdded };
 }
 
 // --------------------------------------------------------- account delete

@@ -112,6 +112,7 @@ const routes: Route[] = [
   r('POST', '/v1/admin/community/members/:h/revoke', community.adminRevoke),
   r('POST', '/v1/admin/community/members/:h/suspend', community.adminSuspend),
   r('POST', '/v1/admin/community/seed', community.adminSeed),
+  r('POST', '/v1/admin/community/launch', community.adminCommunityLaunch),
   r('POST', '/v1/admin/seed-owner-verification', community.adminSeedOwnerVerification),
 
   // TODO(port): Supabase'dan ko'chiriladi — hozircha 501 (docs/BACKEND_CLOUDFLARE.md).

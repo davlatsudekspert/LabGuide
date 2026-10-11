@@ -534,6 +534,48 @@ describe('hamjamiyat: egasi va boshlang\'ich kontent', () => {
     const named = makeServer({ LG_OWNER_DISPLAY_NAME: 'LabGuide asoschisi' });
     expect((await named.call('GET', `/v1/community/questions/${item.id}`)).data.question.author.name).toBe('LabGuide asoschisi');
   });
+
+  it("seed: bo'sh tana — biriktirilgan seed ishlatiladi (idempotent)", async () => {
+    const s = makeServer();
+    const admin = await s.signInAdmin();
+    await s.env.DB.batch([s.env.DB.prepare("DELETE FROM community_answers WHERE question_id LIKE 'seed-%'"), s.env.DB.prepare("DELETE FROM community_questions WHERE id LIKE 'seed-%'")]);
+    await s.call('POST', '/v1/admin/seed-owner-verification', { token: admin.token, body: { email: 'boss@example.test' } });
+    const r1 = await s.call('POST', '/v1/admin/community/seed', { token: admin.token });
+    expect(r1.data).toEqual({ created: 2, skipped: 0 });
+    expect((await s.call('POST', '/v1/admin/community/seed', { token: admin.token })).data).toEqual({ created: 0, skipped: 2 });
+  });
+
+  it("launch: egasi tasdig'i + seed bir so'rovda, idempotent; admin/aal2 shart", async () => {
+    const s = makeServer();
+    const path = '/v1/admin/community/launch';
+    const u = await s.signIn(uniqueEmail());
+    expect((await s.call('POST', path, { token: u.token })).status).toBe(403);
+    // Allowlistdagi email, lekin TOTP yo'q (aal1) — 403.
+    const aal1 = await s.signIn('boss@example.test');
+    expect((await s.call('POST', path, { token: aal1.token })).status).toBe(403);
+    const admin = await s.signInAdmin();
+    await s.env.DB.prepare('UPDATE community_members SET is_owner = 0').run();
+    await s.env.DB.batch([s.env.DB.prepare("DELETE FROM community_answers WHERE question_id LIKE 'seed-%'"), s.env.DB.prepare("DELETE FROM community_questions WHERE id LIKE 'seed-%'")]);
+    const r = await s.call('POST', path, { token: admin.token });
+    expect(r.status).toBe(200);
+    const seed = (await import('../seed/community_seed.json')).default as { questions: { answers?: unknown[] }[] };
+    const answers = seed.questions.reduce((n, q) => n + (q.answers?.length ?? 0), 0);
+    expect(r.data).toEqual({ owner_verified: true, questions_added: 2, answers_added: answers });
+    expect((await s.call('GET', '/v1/community/me', { token: admin.token })).data).toMatchObject({ status: 'verified', is_owner: true });
+    expect((await s.call('POST', path, { token: admin.token })).data).toEqual({ owner_verified: true, questions_added: 0, answers_added: 0 });
+    const dump = JSON.stringify((await s.env.DB.prepare('SELECT * FROM community_members').all()).results);
+    expect(dump).not.toContain('boss@');
+  });
+
+  it("launch: admin, lekin emaili LG_ADMIN_EMAILS da emas — 403", async () => {
+    const s = makeServer({ LG_ADMIN_EMAILS: 'boss@example.test,other@example.test' });
+    const admin = await s.signInAdmin('other@example.test');
+    expect((await s.call('POST', '/v1/admin/community/launch', { token: admin.token })).status).toBe(200);
+    const s2 = makeServer({ LG_ADMIN_EMAILS: 'boss@example.test' });
+    const a2 = await s2.signInAdmin();
+    await s2.env.DB.prepare('UPDATE users SET email_hash = ?1 WHERE id = ?2').bind('x'.repeat(64), a2.userId).run();
+    expect((await s2.call('POST', '/v1/admin/community/launch', { token: a2.token })).data.error).toBe('not_allowlisted');
+  });
 });
 
 describe("hamjamiyat: hisobni o'chirish", () => {

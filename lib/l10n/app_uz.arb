@@ -2200,5 +2200,12 @@
   "cmAdminVerified": "Tasdiqlangan",
   "cmAdminRejected": "Rad etilgan",
   "cmAdminDone": "Bajarildi",
-  "cmOwnerTag": "Asoschi"
+  "cmOwnerTag": "Asoschi",
+  "cmLaunchTitle": "Hamjamiyatni ishga tushirish",
+  "cmLaunchBody": "Bir marta bosing: hisobingiz asoschi sifatida tasdiqlanadi va boshlang‘ich savol-javoblar qo‘shiladi. Qayta bossangiz, takrorlanmaydi.",
+  "cmLaunchButton": "Ishga tushirish",
+  "cmLaunchDone": "Tayyor: asoschi tasdiqlandi. Qo‘shildi: {questions} ta savol, {answers} ta javob.",
+  "cmLaunchAlready": "Hamjamiyat allaqachon ishga tushirilgan: asoschi tasdiqlangan, yangi narsa qo‘shilmadi.",
+  "cmLaunchNotOwner": "Bu hisob asoschi sifatida ruxsat etilmagan. Asoschi emaili bilan kiring.",
+  "cmLaunchMfaHint": "Hamjamiyatni ishga tushirish uchun avval ikki bosqichli himoyani tasdiqlang: autentifikator ilovasidagi 6 xonali kodni kiriting. Shundan keyin “Hamjamiyatni ishga tushirish” tugmasi chiqadi."
 }

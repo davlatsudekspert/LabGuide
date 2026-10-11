@@ -66,6 +66,22 @@ abstract interface class CommunityBackend {
   });
   Future<void> adminRestore(String userHash);
   Future<void> adminRevoke(String userHash);
+
+  /// Bir tugma: egasi tasdig'i (chaqiruvchining o'z emaili) + boshlang'ich
+  /// savol-javoblar. Idempotent. Faqat admin (aal2).
+  Future<CommunityLaunchResult> adminCommunityLaunch();
+}
+
+class CommunityLaunchResult {
+  const CommunityLaunchResult({
+    required this.ownerVerified,
+    required this.questionsAdded,
+    required this.answersAdded,
+  });
+
+  final bool ownerVerified;
+  final int questionsAdded;
+  final int answersAdded;
 }
 
 /// Server xato kodi bilan (masalan, `not_verified`, `contact_data`).

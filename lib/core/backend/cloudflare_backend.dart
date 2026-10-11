@@ -956,6 +956,16 @@ class CloudflareLabBackend implements LabBackend, CommunityBackend {
   Future<void> adminRevoke(String userHash) =>
       _c('POST', '/v1/admin/community/members/${_seg(userHash)}/revoke');
 
+  @override
+  Future<CommunityLaunchResult> adminCommunityLaunch() async {
+    final m = (await _c('POST', '/v1/admin/community/launch')).map;
+    return CommunityLaunchResult(
+      ownerVerified: m['owner_verified'] == true,
+      questionsAdded: (m['questions_added'] as num?)?.toInt() ?? 0,
+      answersAdded: (m['answers_added'] as num?)?.toInt() ?? 0,
+    );
+  }
+
   // ------------------------------------------------------------------
   // TODO(port): quyidagilar Cloudflare serveriga hali ko'chirilmagan
   // (docs/BACKEND_CLOUDFLARE.md, “Reja”). Ishlayotgandek ko'rsatilmaydi.

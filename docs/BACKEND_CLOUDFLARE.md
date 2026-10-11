@@ -142,12 +142,13 @@ owner|specialist|member, name (faqat egasi), verified, method, role, country, is
 | `GET /v1/admin/community/members?status=suspended\|verified\|rejected` | admin | holat, kasb, mamlakat, shikoyatchilar soni, oxirgi 10 shikoyat (sabab + parcha) |
 | `POST /v1/admin/community/members/:h/restore` · `/revoke` · `/suspend` | admin | tiklash (oldingi holat), tasdiqni bekor qilish (egasidan tashqari; to‘xtatilgan bo‘lsa to‘xtatish saqlanadi; bekor qilingan a’zo AI orqali qayta tasdiqlanmaydi — `403 revoked`), qo‘lda to‘xtatish |
 | `POST /v1/admin/seed-owner-verification` `{email}` | admin, email **`LG_ADMIN_EMAILS`** da | email serverda HMAC qilinadi; hisob topilmasa `404 user_not_found` (avval ilovaga kiring). Metadata kodda qat’iy (`OWNER_VERIFICATION`): `clinical_lab_diagnostics`, Andijon davlat tibbiyot instituti, 3.03.01 Klinik laborator diagnostika, birlamchi ixtisoslik kursi, 2026, `manual_document_review`; `is_owner=1` — postlari `LG_OWNER_DISPLAY_NAME` nomi bilan |
-| `POST /v1/admin/community/seed` (tana — `cloudflare/seed/community_seed.json`) | admin; egasi tasdiqlangan bo‘lishi shart (`409 owner_not_verified`) | savol va javoblar egasi hisobidan; `seed_id` bo‘yicha **idempotent** (`{created, skipped}`) |
+| `POST /v1/admin/community/seed` (tana ixtiyoriy; bo‘sh tana — serverga biriktirilgan `cloudflare/seed/community_seed.json`) | admin; egasi tasdiqlangan bo‘lishi shart (`409 owner_not_verified`) | savol va javoblar egasi hisobidan; `seed_id` bo‘yicha **idempotent** (`{created, skipped}`) |
+| `POST /v1/admin/community/launch` (tana yo‘q) | admin (aal2); chaqiruvchining O‘Z emaili `LG_ADMIN_EMAILS` da | 1) egasi tasdig‘i (chaqiruvchi uchun), 2) biriktirilgan seed. Idempotent: `{owner_verified, questions_added, answers_added}`. Ilovada: Profil → Hamjamiyat moderatsiyasi → “Hamjamiyatni ishga tushirish” |
 
 Hisob o‘chirilganda hamjamiyatdagi hamma narsa (savollar va ularga javoblar,
 javoblar, ovozlar, shikoyatlar, tarjimalar, holat) o‘chadi.
 
-**Egasi uchun (deploydan keyin, faqat supervisor/egasi):**
+**Egasi uchun (deploydan keyin, faqat supervisor/egasi):** eng oson yo‘l — ilovadagi bir tugma, `docs/OWNER_COMMUNITY_LAUNCH.md`. Qo‘lda variant:
 1. Ilovaga egasi emaili bilan kiring → Admin → TOTP (aal2).
 2. `POST /v1/admin/seed-owner-verification` `{"email":"<LG_ADMIN_EMAILS dagi email>"}`.
 3. `POST /v1/admin/community/seed` — tana `cloudflare/seed/community_seed.json`.

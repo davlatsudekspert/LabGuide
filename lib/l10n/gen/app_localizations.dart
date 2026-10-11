@@ -13305,6 +13305,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Owner'**
   String get cmOwnerTag;
+
+  /// No description provided for @cmLaunchTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Launch the community'**
+  String get cmLaunchTitle;
+
+  /// No description provided for @cmLaunchBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap once: your account is confirmed as the founder and the starter questions and answers are added. Tapping again adds nothing twice.'**
+  String get cmLaunchBody;
+
+  /// No description provided for @cmLaunchButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Launch'**
+  String get cmLaunchButton;
+
+  /// No description provided for @cmLaunchDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Done: founder confirmed. Added {questions} questions and {answers} answers.'**
+  String cmLaunchDone(int questions, int answers);
+
+  /// No description provided for @cmLaunchAlready.
+  ///
+  /// In en, this message translates to:
+  /// **'The community is already launched: founder confirmed, nothing new was added.'**
+  String get cmLaunchAlready;
+
+  /// No description provided for @cmLaunchNotOwner.
+  ///
+  /// In en, this message translates to:
+  /// **'This account is not allowed as founder. Sign in with the founder\'s email.'**
+  String get cmLaunchNotOwner;
+
+  /// No description provided for @cmLaunchMfaHint.
+  ///
+  /// In en, this message translates to:
+  /// **'To launch the community, first confirm two-step protection: enter the 6-digit code from your authenticator app. The “Launch the community” button appears after that.'**
+  String get cmLaunchMfaHint;
 }
 
 class _AppLocalizationsDelegate

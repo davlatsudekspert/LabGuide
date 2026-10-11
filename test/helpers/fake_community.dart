@@ -489,4 +489,29 @@ class FakeCommunityBackend implements CommunityBackend {
       ..status = MemberStatus.rejected
       ..verifiedAt = null;
   }
+
+  /// `adminCommunityLaunch` chaqiruvlari soni va ruxsat etilmagan email holati.
+  int launchCalls = 0;
+  bool launchEmailAllowed = true;
+  bool _launched = false;
+
+  @override
+  Future<CommunityLaunchResult> adminCommunityLaunch() async {
+    await _requireAdmin();
+    launchCalls++;
+    if (!launchEmailAllowed) {
+      throw const CommunityException(
+        BackendFailure.forbidden,
+        'not_allowlisted',
+      );
+    }
+    makeOwner(_uid);
+    final first = !_launched;
+    _launched = true;
+    return CommunityLaunchResult(
+      ownerVerified: true,
+      questionsAdded: first ? 2 : 0,
+      answersAdded: first ? 3 : 0,
+    );
+  }
 }
