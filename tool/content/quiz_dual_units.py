@@ -34,7 +34,9 @@ TOIFA_SRC = Path(
     '/tmp/claude-0/-home-user/8dcb6164-a4cf-5bc3-a722-c55850a85847/scratchpad/toifa/out'
 )
 REPORT = 'docs/QUIZ_UNITS_2026-10-10.md'
-DATE = '2026-10-10'
+# Agent tekshiruvi sanasi — shu ishga tushirishda o'zgargan savollar uchun
+# (2026-10-10: glyukoza/Hb/MCHC; 2026-10-11: trombotsit, gematokrit, temir, B12).
+DATE = '2026-10-11'
 
 # Analitga xos rasmiy koeffitsientlar: konvensional → SI ko'paytuvchi.
 # (SI birlik, konvensional birlik, ko'paytuvchi, SI xonalari, konv. xonalari)
@@ -48,8 +50,14 @@ ANALYTES = {
     'mchc': ('g/L', 'g/dL', 10, 0, 0),
     # Umumiy oqsil: g/dL × 10 = g/L.
     'protein': ('g/L', 'g/dL', 10, 0, 1),
+    # Temir (va TIBC — temir sifatida): µg/dL × 10 / 55,845 = µmol/L.
+    'iron': ('µmol/L', 'µg/dL', 10 / 55.845, 1, 0),
+    # B12 (kobalamin, 1355,37 g/mol): pg/mL × 0,7378 = pmol/L.
+    'b12': ('pmol/L', 'pg/mL', 0.7378, 0, 0),
 }
-UNITS_RU = {'mmol/L': 'ммоль/л', 'mg/dL': 'мг/дл', 'g/L': 'г/л', 'g/dL': 'г/дл'}
+UNITS_RU = {'mmol/L': 'ммоль/л', 'mg/dL': 'мг/дл', 'g/L': 'г/л', 'g/dL': 'г/дл',
+            'µmol/L': 'мкмоль/л', 'µg/dL': 'мкг/дл', 'pmol/L': 'пмоль/л',
+            'pg/mL': 'пг/мл'}
 
 
 def rnd(x: float, digits: int) -> Decimal:
@@ -102,6 +110,28 @@ def hba1c_pair(percent: str, lang: str) -> str:
     return f'{fmt(mmol, lang)} {unit_s} ({orig}%)'
 
 
+def group(n: int, lang: str) -> str:
+    """Minglik ajratgich: en — vergul, uz/ru — bo'sh joy (matndagidek)."""
+    s = f'{n:,}'
+    return s if lang == 'en' else s.replace(',', ' ')
+
+
+def plt_pair(spec: str, lang: str) -> str:
+    """Hujayra soni: /µL → ×10⁹/L (÷ 1000); qavsda manbadagi /µL."""
+    parts = [int(x) for x in spec.split('–')]
+    si = '–'.join(fmt(rnd(v / 1000, 0 if v % 1000 == 0 else 1), lang) for v in parts)
+    conv = '–'.join(group(v, lang) for v in parts)
+    si_u, conv_u = ('×10⁹/л', '/мкл') if lang == 'ru' else ('×10⁹/L', '/µL')
+    return f'{si} {si_u} ({conv}{conv_u})'
+
+
+def hct_pair(percent: str, lang: str) -> str:
+    """Gematokrit: % ÷ 100 = L/L (ulush); qavsda manbadagi %."""
+    v = parse_num(percent)
+    unit_s = 'л/л' if lang == 'ru' else 'L/L'
+    return f'{fmt(rnd(v / 100, 2), lang)} {unit_s} ({percent}%)'
+
+
 TOKEN = re.compile(r'\{([a-z0-9]+):([^}]+)\}')
 
 
@@ -110,6 +140,10 @@ def render(template: str, lang: str) -> str:
         a, spec = m.group(1), m.group(2)
         if a == 'hba1c':
             return hba1c_pair(spec, lang)
+        if a == 'plt':
+            return plt_pair(spec, lang)
+        if a == 'hct':
+            return hct_pair(spec, lang)
         return pair(a, spec, lang)
     return TOKEN.sub(sub, template)
 
@@ -184,6 +218,44 @@ QUIZ_EDITS += [
      'MCHC выше 36–38 г/дл', 'MCHC выше {mchc:36–38}'),
     ('books-mchc-artefact', 'basis', 'en',
      'MCHC above 36–38 g/dL', 'MCHC above {mchc:36–38}'),
+]
+
+# 2026-10-11: trombotsitlar (NHLBI, /µL), gematokrit (%), temir/TIBC (µg/dL),
+# B12 (pg/mL) — manba konvensional birlikda bergan.
+_PLT = {
+    'uz': ('/µL', '15 000', '150 000', '100 000–150 000', '20 000'),
+    'ru': ('/мкл', '15 000', '150 000', '100 000–150 000', '20 000'),
+    'en': ('/µL', '15,000', '150,000', '100,000–150,000', '20,000'),
+}
+for _lang, (_u, _a, _b, _c, _d) in _PLT.items():
+    QUIZ_EDITS += [
+        ('platelets-q1', 'prompt', _lang, f'{_a}{_u}', '{plt:15000}'),
+        ('platelets-q1', 'options.0.explanation', _lang, f'{_b}{_u}', '{plt:150000}'),
+        ('platelets-q1', 'options.1.explanation', _lang, f'{_c}{_u}', '{plt:100000–150000}'),
+        ('platelets-q1', 'options.2.explanation', _lang, f'{_d}{_u}', '{plt:20000}'),
+    ]
+QUIZ_EDITS += [
+    ('platelets-q1', 'basis', 'uz',
+     '< 150 000/µL — past; 100 000–150 000 — yengil; < 20 000 — og‘ir.',
+     '< {plt:150000} — past; {plt:100000–150000} — yengil; < {plt:20000} — og‘ir.'),
+    ('platelets-q1', 'basis', 'ru',
+     '< 150 000/мкл — низкий; 100 000–150 000 — лёгкая; < 20 000 — тяжёлая.',
+     '< {plt:150000} — низкий; {plt:100000–150000} — лёгкая; < {plt:20000} — тяжёлая.'),
+    ('platelets-q1', 'basis', 'en',
+     '< 150,000/µL is low; 100,000–150,000 mild; < 20,000 severe.',
+     '< {plt:150000} is low; {plt:100000–150000} mild; < {plt:20000} severe.'),
+    ('hematocrit-q1', 'prompt', 'uz', 'Gematokrit natijasi 42.', 'Gematokrit natijasi {hct:42}.'),
+    ('hematocrit-q1', 'prompt', 'ru', 'Гематокрит равен 42.', 'Гематокрит равен {hct:42}.'),
+    ('hematocrit-q1', 'prompt', 'en', 'A hematocrit result is 42.', 'A hematocrit result is {hct:42}.'),
+    ('transferrin-tibc-q1', 'prompt', 'uz', 'temiri 50 µg/dL, TIBC 400 µg/dL', 'temiri {iron:50}, TIBC {iron:400}'),
+    ('transferrin-tibc-q1', 'prompt', 'ru', 'железо 50 мкг/дл, ОЖСС 400 мкг/дл', 'железо {iron:50}, ОЖСС {iron:400}'),
+    ('transferrin-tibc-q1', 'prompt', 'en', 'iron is 50 µg/dL and TIBC is 400 µg/dL', 'iron is {iron:50} and TIBC is {iron:400}'),
+    ('vitamin-b12-q1', 'prompt', 'uz', 'B12 = 250 pg/mL', 'B12 = {b12:250}'),
+    ('vitamin-b12-q1', 'prompt', 'ru', 'B12 сыворотки = 250 пг/мл', 'B12 сыворотки = {b12:250}'),
+    ('vitamin-b12-q1', 'prompt', 'en', 'B12 = 250 pg/mL', 'B12 = {b12:250}'),
+    ('vitamin-b12-q1', 'basis', 'uz', 'B12 150–399 pg/mL', 'B12 {b12:150–399}'),
+    ('vitamin-b12-q1', 'basis', 'ru', 'B12 150–399 пг/мл', 'B12 {b12:150–399}'),
+    ('vitamin-b12-q1', 'basis', 'en', 'B12 of 150–399 pg/mL', 'B12 of {b12:150–399}'),
 ]
 
 # (toifa id, eski bo'lak, yangi shablon) — faqat `verdict_note_uz` (uz).

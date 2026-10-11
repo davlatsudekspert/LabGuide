@@ -15,6 +15,12 @@ const factors = <String, double>{
   'hemoglobin': 10,
   'mchc': 10,
   'protein': 10,
+  // 2026-10-11: temir/TIBC (Fe 55,845 g/mol), B12 (1355,37 g/mol),
+  // trombotsitlar (/µL → ×10⁹/L), gematokrit (% → L/L).
+  'iron': 10 / 55.845,
+  'b12': 0.7378,
+  'plt': 1 / 1000,
+  'hct': 1 / 100,
 };
 
 /// Juft uchraydigan savollar va ulardagi analit.
@@ -26,6 +32,10 @@ const itemAnalyte = <String, String>{
   'kdl-t-109': 'glucose',
   'kdl-t-264': 'protein',
   'kdl-t-451': 'hba1c',
+  'platelets-q1': 'plt',
+  'hematocrit-q1': 'hct',
+  'transferrin-tibc-q1': 'iron',
+  'vitamin-b12-q1': 'b12',
 };
 
 /// Juftsiz qiymat ruxsat etilgan savollar (sabab bilan).
@@ -35,18 +45,36 @@ const bareAllowed = <String, String>{
   'unit-factor': 'conversion factor statement',
 };
 
-const _num = r'\d+(?:[.,]\d+)?';
-const _siUnits = r'mmol/L|ммоль/л|g/L|г/л|mmol/mol|ммоль/моль';
-const _convUnits = r'mg/dL|мг/дл|g/dL|г/дл|%';
+/// Raqam: o'nlik ("7,0", "7.0") yoki minglik guruhli butun son ("15 000",
+/// "15,000").
+const _num =
+    r'(?<![A-Za-zА-Яа-я\d.,])\d{1,3}(?:[ ,]\d{3})+(?![.,]?\d)|\d+(?:[.,]\d+)?';
+const _siUnits =
+    r'mmol/L|ммоль/л|g/L|г/л|mmol/mol|ммоль/моль|µmol/L|мкмоль/л|'
+    r'pmol/L|пмоль/л|×10⁹/L|×10⁹/л|L/L|л/л';
+const _convUnits = r'mg/dL|мг/дл|g/dL|г/дл|µg/dL|мкг/дл|pg/mL|пг/мл|/µL|/мкл|%';
 final pairRe = RegExp(
-  '($_num(?:–$_num)?) ($_siUnits) \\(($_num(?:–$_num)?) ?($_convUnits)\\)',
+  '((?:$_num)(?:–(?:$_num))?) ($_siUnits) '
+  '\\(((?:$_num)(?:–(?:$_num))?) ?($_convUnits)\\)',
 );
-final bareConvRe = RegExp('$_num(?:–$_num)? ?(?:mg/dL|мг/дл|g/dL|г/дл)');
-final bareSiRe = RegExp('$_num(?:–$_num)? (?:mmol/L|ммоль/л|g/L|г/л)(?! \\()');
+final bareConvRe = RegExp(
+  '(?:$_num)(?:–(?:$_num))? ?'
+  '(?:mg/dL|мг/дл|g/dL|г/дл|µg/dL|мкг/дл|pg/mL|пг/мл|/µL|/мкл)',
+);
+final bareSiRe = RegExp(
+  '(?:$_num)(?:–(?:$_num))? '
+  '(?:mmol/L|ммоль/л|g/L|г/л|µmol/L|мкмоль/л|pmol/L|пмоль/л|×10⁹/L|×10⁹/л)'
+  '(?! \\()',
+);
 
-double _parse(String s) => double.parse(s.replaceAll(',', '.'));
+final _grouped = RegExp(r'^\d{1,3}(?:[ ,]\d{3})+$');
+
+double _parse(String s) => _grouped.hasMatch(s)
+    ? double.parse(s.replaceAll(RegExp('[ ,]'), ''))
+    : double.parse(s.replaceAll(',', '.'));
 
 int _decimals(String s) {
+  if (_grouped.hasMatch(s)) return 0;
   final i = s.indexOf(RegExp('[.,]'));
   return i < 0 ? 0 : s.length - i - 1;
 }
@@ -104,11 +132,19 @@ String? checkPair(String analyte, RegExpMatch m, String lang) {
   final convUnit = m[4]!;
   if (siParts.length != convParts.length) return 'range shape differs';
   final sep = lang == 'en' ? ',' : '.';
-  if (m[0]!.contains(RegExp('\\d\\$sep\\d'))) {
-    return 'decimal separator for $lang';
+  for (final part in [...siParts, ...convParts]) {
+    if (_grouped.hasMatch(part)) {
+      // Minglik ajratgich: en — vergul, uz/ru — bo'sh joy.
+      if (part.contains(lang == 'en' ? ' ' : ',')) {
+        return 'thousands separator for $lang';
+      }
+    } else if (part.contains(sep)) {
+      return 'decimal separator for $lang';
+    }
   }
   final hba1c = analyte == 'hba1c';
-  if (hba1c != (convUnit == '%')) return 'unit $convUnit for $analyte';
+  final percent = hba1c || analyte == 'hct';
+  if (percent != (convUnit == '%')) return 'unit $convUnit for $analyte';
   final molPerMol = siUnit == 'mmol/mol' || siUnit == 'ммоль/моль';
   if (hba1c != molPerMol) return 'unit $siUnit for $analyte';
   for (var i = 0; i < siParts.length; i++) {
@@ -168,6 +204,20 @@ void main() {
     expect(checkPair('hba1c', ok, 'uz'), isNull);
     final bad = pairRe.firstMatch('42 mmol/mol (5,7%)')!;
     expect(checkPair('hba1c', bad, 'uz'), isNotNull);
+    final plt = pairRe.firstMatch('100–150 ×10⁹/L (100 000–150 000/µL)')!;
+    expect(plt[3], '100 000–150 000');
+    expect(checkPair('plt', plt, 'uz'), isNull);
+    expect(checkPair('plt', plt, 'en'), isNotNull); // en: "100,000"
+    final pltEn = pairRe.firstMatch('15 ×10⁹/L (15,000/µL)')!;
+    expect(checkPair('plt', pltEn, 'en'), isNull);
+    final hct = pairRe.firstMatch('0,42 L/L (42%)')!;
+    expect(checkPair('hct', hct, 'uz'), isNull);
+    final iron = pairRe.firstMatch('9,0 µmol/L (50 µg/dL)')!;
+    expect(checkPair('iron', iron, 'uz'), isNull);
+    final b12 = pairRe.firstMatch('184 pmol/L (250 pg/mL)')!;
+    expect(checkPair('b12', b12, 'en'), isNull);
+    final b12bad = pairRe.firstMatch('250 pmol/L (250 pg/mL)')!;
+    expect(checkPair('b12', b12bad, 'en'), isNotNull);
   });
 
   test('every SI (conventional) pair matches its analyte factor', () {

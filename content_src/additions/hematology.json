@@ -7506,9 +7506,9 @@
    ],
    "correct_index": 2,
    "prompt": {
-    "uz": "Gematokrit natijasi 42. Bu nimani anglatadi?",
-    "ru": "Гематокрит равен 42. Что это значит?",
-    "en": "A hematocrit result is 42. What does it mean?"
+    "uz": "Gematokrit natijasi 0,42 L/L (42%). Bu nimani anglatadi?",
+    "ru": "Гематокрит равен 0,42 л/л (42%). Что это значит?",
+    "en": "A hematocrit result is 0.42 L/L (42%). What does it mean?"
    },
    "basis": {
     "uz": "Gematokrit — qonning eritrotsitlardan iborat qismi foizda.",
@@ -7552,7 +7552,16 @@
       "en": "Correct: the rest is white cells, platelets and plasma."
      }
     }
-   ]
+   ],
+   "review": {
+    "agent_checks": [
+     {
+      "date": "2026-10-11",
+      "scope": "dual units: SI first, conventional in parentheses; values computed by tool/content/quiz_dual_units.py with analyte-specific factors; source numbers kept; answer key unchanged",
+      "report": "docs/QUIZ_UNITS_2026-10-10.md"
+     }
+    ]
+   }
   },
   {
    "id": "hematocrit-q2",
@@ -8502,14 +8511,14 @@
    ],
    "correct_index": 2,
    "prompt": {
-    "uz": "Trombotsitlar soni 15 000/µL. NHLBI tasnifi bo‘yicha bu qaysi daraja?",
-    "ru": "Тромбоциты 15 000/мкл. Какая это степень по классификации NHLBI?",
-    "en": "The platelet count is 15,000/µL. Which category is this per NHLBI?"
+    "uz": "Trombotsitlar soni 15 ×10⁹/L (15 000/µL). NHLBI tasnifi bo‘yicha bu qaysi daraja?",
+    "ru": "Тромбоциты 15 ×10⁹/л (15 000/мкл). Какая это степень по классификации NHLBI?",
+    "en": "The platelet count is 15 ×10⁹/L (15,000/µL). Which category is this per NHLBI?"
    },
    "basis": {
-    "uz": "< 150 000/µL — past; 100 000–150 000 — yengil; < 20 000 — og‘ir.",
-    "ru": "< 150 000/мкл — низкий; 100 000–150 000 — лёгкая; < 20 000 — тяжёлая.",
-    "en": "< 150,000/µL is low; 100,000–150,000 mild; < 20,000 severe."
+    "uz": "< 150 ×10⁹/L (150 000/µL) — past; 100–150 ×10⁹/L (100 000–150 000/µL) — yengil; < 20 ×10⁹/L (20 000/µL) — og‘ir.",
+    "ru": "< 150 ×10⁹/л (150 000/мкл) — низкий; 100–150 ×10⁹/л (100 000–150 000/мкл) — лёгкая; < 20 ×10⁹/л (20 000/мкл) — тяжёлая.",
+    "en": "< 150 ×10⁹/L (150,000/µL) is low; 100–150 ×10⁹/L (100,000–150,000/µL) mild; < 20 ×10⁹/L (20,000/µL) severe."
    },
    "options": [
     {
@@ -8519,9 +8528,9 @@
       "en": "Normal"
      },
      "explanation": {
-      "uz": "Noto‘g‘ri: 150 000/µL dan kam — past.",
-      "ru": "Неверно: меньше 150 000/мкл — снижение.",
-      "en": "Incorrect: below 150,000/µL is low."
+      "uz": "Noto‘g‘ri: 150 ×10⁹/L (150 000/µL) dan kam — past.",
+      "ru": "Неверно: меньше 150 ×10⁹/л (150 000/мкл) — снижение.",
+      "en": "Incorrect: below 150 ×10⁹/L (150,000/µL) is low."
      }
     },
     {
@@ -8531,9 +8540,9 @@
       "en": "Mild thrombocytopenia"
      },
      "explanation": {
-      "uz": "Noto‘g‘ri: yengil daraja 100 000–150 000/µL.",
-      "ru": "Неверно: лёгкая степень — 100 000–150 000/мкл.",
-      "en": "Incorrect: mild is 100,000–150,000/µL."
+      "uz": "Noto‘g‘ri: yengil daraja 100–150 ×10⁹/L (100 000–150 000/µL).",
+      "ru": "Неверно: лёгкая степень — 100–150 ×10⁹/л (100 000–150 000/мкл).",
+      "en": "Incorrect: mild is 100–150 ×10⁹/L (100,000–150,000/µL)."
      }
     },
     {
@@ -8543,12 +8552,21 @@
       "en": "Severe thrombocytopenia"
      },
      "explanation": {
-      "uz": "To‘g‘ri: 20 000/µL dan kam — og‘ir.",
-      "ru": "Верно: меньше 20 000/мкл — тяжёлая.",
-      "en": "Correct: below 20,000/µL is severe."
+      "uz": "To‘g‘ri: 20 ×10⁹/L (20 000/µL) dan kam — og‘ir.",
+      "ru": "Верно: меньше 20 ×10⁹/л (20 000/мкл) — тяжёлая.",
+      "en": "Correct: below 20 ×10⁹/L (20,000/µL) is severe."
      }
     }
-   ]
+   ],
+   "review": {
+    "agent_checks": [
+     {
+      "date": "2026-10-11",
+      "scope": "dual units: SI first, conventional in parentheses; values computed by tool/content/quiz_dual_units.py with analyte-specific factors; source numbers kept; answer key unchanged",
+      "report": "docs/QUIZ_UNITS_2026-10-10.md"
+     }
+    ]
+   }
   },
   {
    "id": "platelets-q2",
