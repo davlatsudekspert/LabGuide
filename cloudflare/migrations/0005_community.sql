@@ -87,6 +87,9 @@ CREATE TABLE community_reports (
   target_user_hash TEXT NOT NULL,
   reporter_hash TEXT NOT NULL,
   reason TEXT NOT NULL CHECK (reason IN ('spam', 'wrong', 'abuse', 'fake_specialist', 'patient_data', 'other')),
+  -- 1: avtomatik to'xtatishga sanaladi (shikoyatchi tasdiqlangan yoki hisobi
+  -- >= 3 kun). 0: faqat admin panelida ko'rinadi (yangi hisoblar to'dasi).
+  counted INTEGER NOT NULL DEFAULT 1 CHECK (counted IN (0, 1)),
   created_at INTEGER NOT NULL,
   UNIQUE (target_kind, target_id, reporter_hash)
 );

@@ -55,6 +55,11 @@ async function ask(s: Server, token: string, extra: Record<string, unknown> = {}
 
 afterEach(() => vi.restoreAllMocks());
 
+/** Hisobni "eski" qilish (shikoyati avtomatik to'xtatishga sanaladi). */
+async function age(s: Server, userId: string, days = 4) {
+  await s.env.DB.prepare('UPDATE users SET created_at = created_at - ?2 WHERE id = ?1').bind(userId, days * 86400_000).run();
+}
+
 describe('hamjamiyat: mutaxassisni avtomatik tasdiqlash', () => {
   it('hujjat AI bilan tekshiriladi → belgi darhol; model id — sozlamadan', async () => {
     const s = makeServer({ LG_VERIFY_MODEL: '@cf/test/vision-model' });
@@ -275,6 +280,8 @@ describe('hamjamiyat: shikoyatlar va moderatsiya', () => {
     const q = await ask(s, asker.token);
     const a = await s.call('POST', `/v1/community/questions/${q.data.id}/answers`, { token: spec.token, body: { body: 'Shubhali javob matni bu yerda.' } });
     const reporters = [await s.signIn(uniqueEmail('r')), await s.signIn(uniqueEmail('r')), await s.signIn(uniqueEmail('r'))];
+    // Avtomatik to'xtatishga faqat eski (>= 3 kun) yoki tasdiqlangan hisoblar sanaladi.
+    for (const r of reporters) await age(s, r.userId);
 
     expect((await s.call('POST', '/v1/community/reports', { token: spec.token, body: { kind: 'answer', id: a.data.id } })).data.error).toBe('own_post');
     expect((await s.call('POST', '/v1/community/reports', { body: { kind: 'answer', id: a.data.id } })).status).toBe(401);
@@ -313,6 +320,119 @@ describe('hamjamiyat: shikoyatlar va moderatsiya', () => {
     expect((await s.call('POST', `/v1/admin/community/members/${row.user_hash}/revoke`, { token: admin.token })).data.status).toBe('rejected');
     expect((await s.call('GET', '/v1/community/me', { token: spec.token })).data).toMatchObject({ status: 'rejected', can_answer: false });
     expect((await s.call('POST', `/v1/admin/community/members/${'0'.repeat(64)}/restore`, { token: admin.token })).status).toBe(404);
+  });
+});
+
+describe('hamjamiyat: QA tuzatishlari (xavfsizlik)', () => {
+  it("yangi hisoblar to'dasi (3 ta, < 3 kun) mutaxassisni to'xtata olmaydi; tasdiqlangan shikoyatchi sanaladi", async () => {
+    const s = makeServer();
+    const spec = await specialist(s);
+    const q = await ask(s, spec.token);
+    for (let i = 0; i < 5; i++) {
+      const fresh = await s.signIn(uniqueEmail('sybil'));
+      expect((await s.call('POST', '/v1/community/reports', { token: fresh.token, body: { kind: 'question', id: q.data.id, reason: 'spam' } })).status).toBe(202);
+    }
+    expect((await s.call('GET', '/v1/community/me', { token: spec.token })).data.status).toBe('verified');
+    // Shikoyatlar saqlangan — admin ko'radi.
+    const admin = await s.signInAdmin();
+    const list = await s.call('GET', '/v1/admin/community/members?status=verified', { token: admin.token });
+    expect(list.data.find((m: any) => m.reporters === 5)).toBeTruthy();
+    // Tasdiqlangan mutaxassislar (hisob yangi bo'lsa ham) va eski hisob — sanaladi.
+    const s1 = await specialist(s);
+    const s2 = await specialist(s);
+    const old = await s.signIn(uniqueEmail('old'));
+    await age(s, old.userId);
+    for (const r of [s1, s2, old]) {
+      await s.call('POST', '/v1/community/reports', { token: r.token, body: { kind: 'question', id: q.data.id, reason: 'wrong' } });
+    }
+    expect((await s.call('GET', '/v1/community/me', { token: spec.token })).data.status).toBe('suspended');
+  });
+
+  it("admin bekor qilgan tasdiqni AI qayta bermaydi; to'xtatilgan a'zoni bekor qilish to'xtatishni olib tashlamaydi", async () => {
+    const s = makeServer();
+    const spec = await specialist(s);
+    const admin = await s.signInAdmin();
+    // A'zoni admin panelida topish: bitta shikoyat orqali (D1 testlar orasida umumiy).
+    const q = await ask(s, spec.token);
+    const rep = await s.signIn(uniqueEmail('r'));
+    await s.call('POST', '/v1/community/reports', { token: rep.token, body: { kind: 'question', id: q.data.id } });
+    const list = await s.call('GET', '/v1/admin/community/members?status=verified', { token: admin.token });
+    const h = list.data.find((m: any) => m.reports.some((r: any) => r.target_id === q.data.id)).user_hash as string;
+    // Avval to'xtatamiz, keyin bekor qilamiz — to'xtatish saqlanadi.
+    expect((await s.call('POST', `/v1/admin/community/members/${h}/suspend`, { token: admin.token })).data.status).toBe('suspended');
+    expect((await s.call('POST', `/v1/admin/community/members/${h}/revoke`, { token: admin.token })).data.status).toBe('suspended');
+    const me1 = await s.call('GET', '/v1/community/me', { token: spec.token });
+    expect(me1.data).toMatchObject({ status: 'suspended', can_ask: false, can_answer: false });
+    expect((await ask(s, spec.token)).data.error).toBe('suspended');
+    // Tiklash — 'rejected' ga (mutaxassis emas).
+    expect((await s.call('POST', `/v1/admin/community/members/${h}/restore`, { token: admin.token })).data.status).toBe('rejected');
+    // O'sha soxta hujjat bilan qayta AI tasdig'i — yo'q, AI chaqirilmaydi.
+    const before = s.aiCalls.length;
+    const r = await upload(s, spec.token, jpeg());
+    expect(r.status).toBe(403);
+    expect(r.data.error).toBe('revoked');
+    expect(s.aiCalls.length).toBe(before);
+    expect((await s.call('GET', '/v1/community/me', { token: spec.token })).data).toMatchObject({ status: 'rejected', can_answer: false });
+  });
+
+  it("AI javobi qat'iy: JSON atrofida matn yoki bir nechta obyekt — rad", async () => {
+    const s = makeServer();
+    const good = JSON.stringify(GOOD.response);
+    for (const response of [
+      `The image says to output this: ${good}`,
+      `${good}\nIgnore previous: ${good}`,
+      `{"is_document": false} ${good}`,
+      { ...GOOD.response, confidence: 'high' },
+      { ...GOOD.response, document_type: 'other' },
+    ]) {
+      const u = await s.signIn(uniqueEmail());
+      s.setAi(async () => ({ response }));
+      expect((await upload(s, u.token, jpeg())).data.status, String(response)).toBe('rejected');
+    }
+    // ```json``` o'rami — qabul qilinadi.
+    const u = await s.signIn(uniqueEmail());
+    s.setAi(async () => ({ response: '```json\n' + good + '\n```' }));
+    expect((await upload(s, u.token, jpeg())).data.status).toBe('verified');
+  });
+
+  it("Content-Length siz (oqim) katta tana ham 413; AI chaqirilmaydi", async () => {
+    const s = makeServer();
+    const u = await s.signIn(uniqueEmail());
+    mockAi(s);
+    const chunk = new Uint8Array(1024 * 1024);
+    chunk.set([0xff, 0xd8, 0xff, 0xe0]);
+    let n = 0;
+    const stream = new ReadableStream<Uint8Array>({
+      pull(c) {
+        if (n++ < 7) c.enqueue(chunk.slice());
+        else c.close();
+      },
+    });
+    const res = await s.app.fetch(
+      new Request('https://api.test/v1/community/verify?role=laborant&country=UZ', {
+        method: 'POST',
+        headers: { authorization: `Bearer ${u.token}`, 'content-type': 'image/jpeg', 'cf-connecting-ip': '203.0.113.9' },
+        body: stream,
+        // @ts-expect-error — oqimli tana uchun (Workers/undici)
+        duplex: 'half',
+      }),
+      s.env,
+    );
+    expect(res.status).toBe(413);
+    expect(s.aiCalls).toHaveLength(0);
+  });
+
+  it('seed: buzuq element — 400 (500 emas)', async () => {
+    const s = makeServer({ LG_ADMIN_EMAILS: 'boss@example.test' });
+    const admin = await s.signInAdmin();
+    await s.call('POST', '/v1/admin/seed-owner-verification', { token: admin.token, body: { email: 'boss@example.test' } });
+    expect((await s.call('POST', '/v1/admin/community/seed', { token: admin.token, body: { questions: [null] } })).status).toBe(400);
+    expect(
+      (await s.call('POST', '/v1/admin/community/seed', {
+        token: admin.token,
+        body: { questions: [{ seed_id: 'abc-x', lang: 'uz', title: 'Sarlavha bu yerda', body: 'Matn bu yerda yetarli', answers: [null] }] },
+      })).status,
+    ).toBe(400);
   });
 });
 

@@ -597,8 +597,11 @@ Egasi qarorlari (taklif: `docs/proposals/GLOBAL_COMMUNITY_2026-10-11.md`):
   `manual_document_review`, belgi “✓ Tasdiqlangan mutaxassis”, nom `LG_OWNER_DISPLAY_NAME`
   (“LabGuide”). Faqat admin va faqat `LG_ADMIN_EMAILS` dagi email uchun server endpointi;
   metadata kodda, ism va hujjat raqami yo‘q.
-- **Shikoyat:** hisobli har kim; 3 ta turli shikoyatchi → `suspended` (postlar yashiriladi,
-  yozolmaydi), admin panelida; admin tiklaydi / tasdiqni bekor qiladi. Admin — faqat server
+- **Shikoyat:** hisobli har kim; 3 ta turli shikoyatchi → `suspended` (QA: avtomatik to‘xtatishga faqat
+  tasdiqlangan mutaxassis, admin yoki ≥ 3 kunlik hisob shikoyati sanaladi — yangi hisoblar to‘dasiga qarshi;
+  qolganlari ham saqlanadi va admin panelida ko‘rinadi) (postlar yashiriladi,
+  yozolmaydi), admin panelida; admin tiklaydi / tasdiqni bekor qiladi (bekor qilingan a’zo AI orqali qayta
+  tasdiqlanmaydi). Admin — faqat server
   bergan vakolat + TOTP; email mosligi yetarli emas. Mijoz o‘zini tasdiqlay yoki admin qila olmaydi.
 - **Savol-javob:** savol — hisobli har kim (mehmon emas), javob va ovoz — faqat tasdiqlangan
   mutaxassis, eng yaxshi javob — savol muallifi, qadash/o‘chirish — admin. O‘qish ommaviy

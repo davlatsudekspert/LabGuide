@@ -2153,6 +2153,7 @@
   "cmErrContact": "Matndan email va telefon raqamini (va bemor ma’lumotini) olib tashlang.",
   "cmErrLength": "Sarlavha 10–200, matn 10–4000 belgi bo‘lsin.",
   "cmErrAlreadyVerified": "Siz allaqachon tasdiqlangansiz.",
+  "cmErrRevoked": "Mutaxassis maqomingizni admin bekor qilgan. Avtomatik qayta tekshiruv mavjud emas.",
   "cmAskTitleField": "Savol sarlavhasi",
   "cmAskBodyField": "Batafsil",
   "cmAskNoPatient": "Bemorning ismi, telefoni va boshqa shaxsiy ma’lumotini yozmang. Javoblar — hamkasblar tajribasi, shaxsiy tibbiy maslahat emas.",

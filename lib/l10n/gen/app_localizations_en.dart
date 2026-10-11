@@ -7541,6 +7541,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get cmErrAlreadyVerified => 'You are already verified.';
 
   @override
+  String get cmErrRevoked =>
+      'Your specialist status was revoked by an administrator. Automatic re-verification is not available.';
+
+  @override
   String get cmAskTitleField => 'Question title';
 
   @override

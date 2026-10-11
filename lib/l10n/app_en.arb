@@ -4334,6 +4334,7 @@
   "cmErrContact": "Remove email addresses and phone numbers (and any patient data) from the text.",
   "cmErrLength": "Title: 10–200 characters, text: 10–4000.",
   "cmErrAlreadyVerified": "You are already verified.",
+  "cmErrRevoked": "Your specialist status was revoked by an administrator. Automatic re-verification is not available.",
   "cmAskTitleField": "Question title",
   "cmAskBodyField": "Details",
   "cmAskNoPatient": "Do not write a patient’s name, phone or other personal data. Answers are colleagues’ experience, not personal medical advice.",

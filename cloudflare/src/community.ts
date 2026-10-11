@@ -25,6 +25,15 @@ export const DEFAULT_VERIFY_MODEL = '@cf/meta/llama-4-scout-17b-16e-instruct';
 export const DEFAULT_TRANSLATE_MODEL = '@cf/meta/m2m100-1.2b';
 export const DEFAULT_OWNER_NAME = 'LabGuide';
 const MIN_CONFIDENCE = 0.7;
+/** Admin tasdiqni bekor qilganini bildiruvchi sabab kodi. */
+const REVOKED = 'revoked_by_admin';
+/**
+ * Avtomatik to'xtatishga sanaladigan shikoyatchi: tasdiqlangan mutaxassis
+ * yoki hisobi kamida shuncha eski (yangi ochilgan hisoblar bilan
+ * "3 ta hisob — istalgan odamni yashirish" hujumiga qarshi). Boshqa
+ * shikoyatlar ham saqlanadi va admin panelida ko'rinadi.
+ */
+export const REPORTER_MIN_AGE_MS = 3 * 86400_000;
 
 const LANGS = new Set(['uz', 'ru', 'en']);
 const ROLES = new Set(['laborant', 'biochemist', 'kdl_doctor', 'teacher', 'other']);
@@ -200,6 +209,31 @@ function sniff(b: Uint8Array): 'image/jpeg' | 'image/png' | 'application/pdf' | 
   return null;
 }
 
+/** Tanani limit bilan o'qish (Content-Length bo'lmasa ham xotira chegaralangan). */
+async function readCapped(req: Request, max: number): Promise<Uint8Array> {
+  if (!req.body) return new Uint8Array(0);
+  const reader = req.body.getReader();
+  const parts: Uint8Array[] = [];
+  let total = 0;
+  for (;;) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    total += value.byteLength;
+    if (total > max) {
+      await reader.cancel().catch(() => undefined);
+      throw new ApiError(413, 'too_large');
+    }
+    parts.push(value);
+  }
+  const out = new Uint8Array(total);
+  let o = 0;
+  for (const p of parts) {
+    out.set(p, o);
+    o += p.byteLength;
+  }
+  return out;
+}
+
 function toBase64(b: Uint8Array): string {
   let s = '';
   const chunk = 0x8000;
@@ -254,10 +288,12 @@ export function parseVerify(raw: unknown): VerifyResult | null {
   let v: unknown = raw;
   if (v && typeof v === 'object' && 'response' in v) v = (v as { response: unknown }).response;
   if (typeof v === 'string') {
-    const m = /\{[\s\S]*\}/.exec(v);
-    if (!m) return null;
+    // Faqat sof JSON (ixtiyoriy ```json``` o'rami bilan). Atrofida matn bo'lsa
+    // — rad: rasm ichidagi buyruq modelni "misol" JSON chiqarishga undashi mumkin.
+    const t = v.trim().replace(/^```(?:json)?\s*([\s\S]*?)\s*```$/i, '$1').trim();
+    if (!t.startsWith('{') || !t.endsWith('}')) return null;
     try {
-      v = JSON.parse(m[0]);
+      v = JSON.parse(t);
     } catch {
       return null;
     }
@@ -269,6 +305,7 @@ export function parseVerify(raw: unknown): VerifyResult | null {
     typeof o.field_is_lab_or_medical !== 'boolean' ||
     typeof o.institution_visible !== 'boolean' ||
     typeof o.confidence !== 'number' ||
+    !Number.isFinite(o.confidence) ||
     typeof o.document_type !== 'string'
   ) {
     return null;
@@ -292,6 +329,9 @@ export async function verify(ctx: Ctx): Promise<Response> {
   const v = await viewer(ctx);
   requireNotSuspended(v);
   if (isVerified(v.member)) throw conflict('already_verified');
+  // Admin bekor qilgan tasdiqni AI qayta bera olmaydi (aks holda o'sha soxta
+  // hujjat bilan darhol qaytadan "mutaxassis" bo'linadi).
+  if (v.member?.ai_reason === REVOKED) throw forbidden('revoked');
   const url = new URL(ctx.req.url);
   const role = url.searchParams.get('role') ?? '';
   const country = (url.searchParams.get('country') ?? '').toUpperCase();
@@ -302,8 +342,7 @@ export async function verify(ctx: Ctx): Promise<Response> {
   if (type !== 'image/jpeg' && type !== 'image/png') throw new ApiError(415, 'unsupported_media_type');
   const declared = Number(ctx.req.headers.get('content-length') ?? '0');
   if (declared > VERIFY_MAX_BYTES) throw new ApiError(413, 'too_large');
-  let bytes: Uint8Array | null = new Uint8Array(await ctx.req.arrayBuffer());
-  if (bytes.byteLength > VERIFY_MAX_BYTES) throw new ApiError(413, 'too_large');
+  let bytes: Uint8Array | null = await readCapped(ctx.req, VERIFY_MAX_BYTES);
   const kind = sniff(bytes);
   if (kind === 'application/pdf') throw new ApiError(415, 'pdf_not_supported');
   if (kind !== type) throw new ApiError(415, 'unsupported_media_type');
@@ -487,7 +526,7 @@ export async function getQuestion(ctx: Ctx, id: string): Promise<Response> {
          EXISTS (SELECT 1 FROM community_votes x WHERE x.answer_id = a.id AND x.voter_hash = ?2) AS voted
        FROM community_answers a LEFT JOIN community_members m ON m.user_hash = a.author_hash
        WHERE a.question_id = ?1 AND ${VISIBLE}
-       ORDER BY (a.id = ?3) DESC, a.upvotes DESC, a.created_at ASC`,
+       ORDER BY (a.id = ?3) DESC, a.upvotes DESC, a.created_at ASC LIMIT 200`,
     )
     .bind(q.id, v?.hash ?? '', q.best_answer_id ?? '')
     .all<AnswerRow>();
@@ -667,12 +706,18 @@ export async function report(ctx: Ctx): Promise<Response> {
   if (!post) throw notFound();
   if (post.author_hash === v.hash) throw badRequest('own_post');
   await hit(ctx.db, `creport:${v.hash.slice(0, 32)}`, 20, 86400, ctx.now);
+  const user = await ctx.db
+    .prepare('SELECT created_at FROM users WHERE id = ?1')
+    .bind(v.session.userId)
+    .first<{ created_at: number }>();
+  const counted =
+    isVerified(v.member) || v.admin || (user !== null && ctx.now - user.created_at >= REPORTER_MIN_AGE_MS) ? 1 : 0;
   await ctx.db
     .prepare(
-      `INSERT INTO community_reports (id, target_kind, target_id, target_user_hash, reporter_hash, reason, created_at)
-       VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7) ON CONFLICT DO NOTHING`,
+      `INSERT INTO community_reports (id, target_kind, target_id, target_user_hash, reporter_hash, reason, counted, created_at)
+       VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8) ON CONFLICT DO NOTHING`,
     )
-    .bind(crypto.randomUUID(), kind, body.id, post.author_hash, v.hash, reason, ctx.now)
+    .bind(crypto.randomUUID(), kind, body.id, post.author_hash, v.hash, reason, counted, ctx.now)
     .run();
   await maybeSuspend(ctx, post.author_hash);
   // Shikoyatlar soni oshkor qilinmaydi.
@@ -686,7 +731,7 @@ async function maybeSuspend(ctx: Ctx, target: string): Promise<void> {
   const n = await ctx.db
     .prepare(
       `SELECT COUNT(DISTINCT reporter_hash) AS n FROM community_reports
-       WHERE target_user_hash = ?1 AND created_at > ?2`,
+       WHERE target_user_hash = ?1 AND counted = 1 AND created_at > ?2`,
     )
     .bind(target, m?.restored_at ?? 0)
     .first<{ n: number }>();
@@ -848,13 +893,16 @@ export async function adminRevoke(ctx: Ctx, h: string): Promise<Response> {
   if (m.is_owner === 1) throw forbidden('owner');
   await ctx.db
     .prepare(
-      `UPDATE community_members SET status = 'rejected', prev_status = NULL, ai_reason = 'revoked_by_admin',
-         verified_at = NULL, updated_at = ?2 WHERE user_hash = ?1`,
+      // To'xtatilgan a'zoda to'xtatish saqlanadi: tiklanganda 'rejected' ga qaytadi.
+      `UPDATE community_members SET
+         status = CASE WHEN status = 'suspended' THEN 'suspended' ELSE 'rejected' END,
+         prev_status = CASE WHEN status = 'suspended' THEN 'rejected' ELSE NULL END,
+         ai_reason = ?3, verified_at = NULL, updated_at = ?2 WHERE user_hash = ?1`,
     )
-    .bind(h, ctx.now)
+    .bind(h, ctx.now, REVOKED)
     .run();
   await audit(ctx, s.userId, 'community_revoked', h.slice(0, 16));
-  return json({ status: 'rejected' });
+  return json({ status: m.status === 'suspended' ? 'suspended' : 'rejected' });
 }
 
 export async function adminSuspend(ctx: Ctx, h: string): Promise<Response> {
@@ -930,12 +978,13 @@ export async function adminSeed(ctx: Ctx): Promise<Response> {
   const qs = body.questions;
   if (!Array.isArray(qs) || qs.length === 0 || qs.length > 50) throw badRequest('invalid_questions');
   const parsed = qs.map((raw) => {
+    if (!raw || typeof raw !== 'object' || Array.isArray(raw)) throw badRequest('invalid_questions');
     const q = raw as Record<string, unknown>;
     if (typeof q.seed_id !== 'string' || !/^[a-z0-9-]{3,40}$/.test(q.seed_id)) throw badRequest('invalid_seed_id');
     const lang = typeof q.lang === 'string' && LANGS.has(q.lang) ? q.lang : null;
     if (!lang) throw badRequest('invalid_language');
     const answers = Array.isArray(q.answers) ? (q.answers as Record<string, unknown>[]) : [];
-    if (answers.length > 10) throw badRequest('invalid_answers');
+    if (answers.length > 10 || answers.some((a) => !a || typeof a !== 'object')) throw badRequest('invalid_answers');
     return {
       id: `seed-${q.seed_id}`,
       title: str(q.title, 'title', 10, 200),

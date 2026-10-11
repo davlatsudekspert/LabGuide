@@ -7559,6 +7559,10 @@ class AppLocalizationsRu extends AppLocalizations {
   String get cmErrAlreadyVerified => 'Вы уже подтверждены.';
 
   @override
+  String get cmErrRevoked =>
+      'Администратор отменил ваш статус специалиста. Повторная автоматическая проверка недоступна.';
+
+  @override
   String get cmAskTitleField => 'Заголовок вопроса';
 
   @override

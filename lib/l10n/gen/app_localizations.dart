@@ -13018,6 +13018,12 @@ abstract class AppLocalizations {
   /// **'You are already verified.'**
   String get cmErrAlreadyVerified;
 
+  /// No description provided for @cmErrRevoked.
+  ///
+  /// In en, this message translates to:
+  /// **'Your specialist status was revoked by an administrator. Automatic re-verification is not available.'**
+  String get cmErrRevoked;
+
   /// No description provided for @cmAskTitleField.
   ///
   /// In en, this message translates to:

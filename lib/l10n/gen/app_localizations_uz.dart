@@ -7435,6 +7435,10 @@ class AppLocalizationsUz extends AppLocalizations {
   String get cmErrAlreadyVerified => 'Siz allaqachon tasdiqlangansiz.';
 
   @override
+  String get cmErrRevoked =>
+      'Mutaxassis maqomingizni admin bekor qilgan. Avtomatik qayta tekshiruv mavjud emas.';
+
+  @override
   String get cmAskTitleField => 'Savol sarlavhasi';
 
   @override

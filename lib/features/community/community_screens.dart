@@ -1,5 +1,7 @@
 import 'dart:async';
+import 'dart:io' show File;
 
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
@@ -49,6 +51,8 @@ String communityErrorText(Object e, AppLocalizations l) {
         return l.cmErrAi;
       case 'already_verified':
         return l.cmErrAlreadyVerified;
+      case 'revoked':
+        return l.cmErrRevoked;
       case 'invalid_title' || 'invalid_body':
         return l.cmErrLength;
     }
@@ -1128,6 +1132,15 @@ Future<(Uint8List, String)?> _pickDocument(ImageSource source) async {
   );
   if (file == null) return null;
   final bytes = await file.readAsBytes();
+  // Hujjat surati qurilmada ham qolmasin: image_picker kesh/tmp ga yozgan
+  // nusxani (kamera surati yoki kichraytirilgan nusxa) darhol o'chiramiz.
+  if (!kIsWeb) {
+    try {
+      await File(file.path).delete();
+    } on Object {
+      // Fayl allaqachon yo'q yoki ruxsat yo'q — bayt xotirada, davom etamiz.
+    }
+  }
   final lower = file.name.toLowerCase();
   final mime =
       file.mimeType ?? (lower.endsWith('.png') ? 'image/png' : 'image/jpeg');
