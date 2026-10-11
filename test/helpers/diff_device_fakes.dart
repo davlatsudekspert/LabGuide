@@ -24,7 +24,8 @@ class RecordingScreenAwake implements ScreenAwake {
 /// Tebranish chaqiruvlari: 'light', 'medium', 'heavy', 'selection', 'long'.
 List<String> recordHaptics(WidgetTester? tester) {
   final out = <String>[];
-  final messenger = tester?.binding.defaultBinaryMessenger ??
+  final messenger =
+      tester?.binding.defaultBinaryMessenger ??
       TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger;
   messenger.setMockMethodCallHandler(SystemChannels.platform, (call) async {
     if (call.method == 'HapticFeedback.vibrate') {

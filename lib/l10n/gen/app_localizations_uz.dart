@@ -221,7 +221,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get roleLabDesc => 'Metodika, apparat va sifat nazorati';
 
   @override
-  String get roleStudent => 'Student';
+  String get roleStudent => 'Talaba';
 
   @override
   String get roleStudentDesc => 'Tushunish, mashq va imtihon';
@@ -938,6 +938,9 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get qcAddRun => 'Seriya qo‘shish';
+
+  @override
+  String get qcJumpToAddRun => 'Seriya kiritish — pastda';
 
   @override
   String get qcNote => 'Izoh (ixtiyoriy)';
@@ -2582,7 +2585,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get micSearchLabel => 'Atlasdan qidirish';
 
   @override
-  String get micSearchHint => 'Masalan: neytrofil, оксалат, malaria';
+  String get micSearchHint => 'Masalan: neytrofil, oksalat, bezgak';
 
   @override
   String get micNoResultsTitle => 'Hech narsa topilmadi';

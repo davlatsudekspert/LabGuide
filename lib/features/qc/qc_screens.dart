@@ -40,8 +40,18 @@ String verdictLabel(QcVerdict v, AppLocalizations l) => switch (v) {
   QcVerdict.reject => l.qcReject,
 };
 
-String _num(double v, String locale) =>
-    formatResult(roundHalfUp(v, 3), locale, maxDecimals: 3);
+/// x̄/SD: kamida bitta o'nlik (“5,0”, en: “5.0”), ko'pi bilan uchta.
+String _num(double v, String locale) {
+  final r = roundHalfUp(v, 3);
+  final abs = r.abs();
+  if (abs != 0 && (abs < 0.001 || abs >= 1e9)) {
+    return formatResult(r, locale, maxDecimals: 3);
+  }
+  final f = NumberFormat.decimalPattern(locale)
+    ..maximumFractionDigits = 3
+    ..minimumFractionDigits = 1;
+  return f.format(r);
+}
 
 String _z(double z, String locale) {
   final s = formatResult(roundHalfUp(z, 2), locale, maxDecimals: 2);
@@ -500,6 +510,7 @@ class _QcSetScreenState extends State<QcSetScreen> {
   /// Kechikib kiritilgan seriya uchun haqiqiy o'lchash vaqti (`null` — hozir).
   DateTime? _runAt;
   bool _showAllRuns = false;
+  final _addRunKey = GlobalKey();
 
   @override
   void dispose() {
@@ -508,6 +519,29 @@ class _QcSetScreenState extends State<QcSetScreen> {
     }
     _note.dispose();
     super.dispose();
+  }
+
+  /// Ro'yxat dangasa quriladi: maydonlar hali yo'q bo'lsa, ular paydo
+  /// bo'lguncha pastga suriladi, so'ng ko'rinadigan qilib to'xtatiladi.
+  Future<void> _jumpToAddRun(BuildContext button) async {
+    final position = Scrollable.of(button).position;
+    for (var i = 0; i < 20 && _addRunKey.currentContext == null; i++) {
+      position.jumpTo(
+        (position.pixels + position.viewportDimension * 0.8).clamp(
+          0.0,
+          position.maxScrollExtent,
+        ),
+      );
+      await WidgetsBinding.instance.endOfFrame;
+      if (!mounted) return;
+    }
+    final ctx = _addRunKey.currentContext;
+    if (ctx != null && ctx.mounted) {
+      await Scrollable.ensureVisible(
+        ctx,
+        duration: const Duration(milliseconds: 200),
+      );
+    }
   }
 
   TextEditingController _ctrl(String levelId) =>
@@ -701,6 +735,20 @@ class _QcSetScreenState extends State<QcSetScreen> {
           ),
         ),
       ],
+      // Eng ko'p bajariladigan amal: yangi seriya — grafiklar tagidagi
+      // maydonlarga bir bosishda o'tish.
+      const SizedBox(height: 10),
+      Builder(
+        builder: (btn) => Align(
+          alignment: Alignment.centerLeft,
+          child: LgButton.secondary(
+            label: l.qcJumpToAddRun,
+            icon: Icons.arrow_downward_rounded,
+            expand: false,
+            onPressed: () => _jumpToAddRun(btn),
+          ),
+        ),
+      ),
 
       // Levey–Jennings: har bir daraja alohida, amaldagi maqsad davri uchun
       // (lot yoki x̄/SD o'zgargan bo'lsa, eski seriyalar o'z maqsadi bilan
@@ -817,7 +865,7 @@ class _QcSetScreenState extends State<QcSetScreen> {
       ],
 
       // Yangi seriya.
-      LgSectionTitle(l.qcAddRun),
+      KeyedSubtree(key: _addRunKey, child: LgSectionTitle(l.qcAddRun)),
       for (final level in set.levels)
         LgField(
           label: [

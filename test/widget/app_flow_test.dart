@@ -294,7 +294,10 @@ void main() {
     // SI ekvivalenti hisoblangan va shunday belgilangan (manbada yo'q).
     expect(find.text(en.analyteSiApprox('5.6–6.9 mmol/L')), findsOneWidget);
     expect(find.text(en.analyteSiApprox('≥ 7.0 mmol/L')), findsOneWidget);
-    expect(find.textContaining(keepUnitsTogether('180.156 g/mol')), findsOneWidget);
+    expect(
+      find.textContaining(keepUnitsTogether('180.156 g/mol')),
+      findsOneWidget,
+    );
     expect(find.text(en.analyteDecisionNotRef), findsOneWidget);
     expect(find.textContaining('MedlinePlus'), findsWidgets);
     expect(find.textContaining('NIDDK'), findsWidgets);

@@ -970,6 +970,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String get qcAddRun => 'Добавить серию';
 
   @override
+  String get qcJumpToAddRun => 'Ввести серию ниже';
+
+  @override
   String get qcNote => 'Примечание (необязательно)';
 
   @override
@@ -2621,7 +2624,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get micSearchLabel => 'Поиск по атласу';
 
   @override
-  String get micSearchHint => 'Например: нейтрофил, oxalate, bezgak';
+  String get micSearchHint => 'Например: нейтрофил, оксалат, малярия';
 
   @override
   String get micNoResultsTitle => 'Ничего не найдено';

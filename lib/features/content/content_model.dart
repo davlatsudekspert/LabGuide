@@ -1302,9 +1302,7 @@ class ClinicalCondition {
   }
 
   /// Panelda havola qilingan analit id lari (takrorsiz).
-  Set<String> get analyteIds => {
-    for (final t in panel) ?t.analyteId,
-  };
+  Set<String> get analyteIds => {for (final t in panel) ?t.analyteId};
 
   bool get isReviewerApproved =>
       reviewState == ReviewState.approved && reviewerId != null;
@@ -1553,7 +1551,8 @@ class ContentPack {
         throw FormatException('condition id is not a slug: ${c.id}');
       }
       void cite(List<SourceRef> refs, String what) {
-        if (refs.isEmpty) throw FormatException('${c.id}: $what without source');
+        if (refs.isEmpty)
+          throw FormatException('${c.id}: $what without source');
         for (final r in refs) {
           if (!sourceIds.contains(r.sourceId)) {
             throw FormatException('${c.id}: $what cites unknown ${r.sourceId}');

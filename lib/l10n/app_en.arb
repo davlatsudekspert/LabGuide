@@ -428,6 +428,7 @@
   "qcLatestRun": "Latest run",
   "qcNoRunsYet": "No runs yet — add the first one below.",
   "qcAddRun": "Add run",
+  "qcJumpToAddRun": "Enter a run below",
   "qcNote": "Note (optional)",
   "qcSaveRun": "Save run",
   "qcErrRunEmpty": "Enter at least one control value.",
@@ -1408,7 +1409,7 @@
     }
   },
   "micSearchLabel": "Search the atlas",
-  "micSearchHint": "e.g. neutrophil, оксалат, bezgak",
+  "micSearchHint": "e.g. neutrophil, oxalate, malaria",
   "micNoResultsTitle": "Nothing found",
   "micNoResultsBody": "Try another name or another language (uz, ru, en).",
   "micSections": "Sections",

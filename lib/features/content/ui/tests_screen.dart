@@ -81,9 +81,8 @@ class _TestsScreenState extends State<TestsScreen> {
                     ConditionRow(
                       condition: conditions[i],
                       divider: i < conditions.length - 1,
-                      onTap: () => context.push(
-                        '/tests/conditions/${conditions[i].id}',
-                      ),
+                      onTap: () =>
+                          context.push('/tests/conditions/${conditions[i].id}'),
                     ),
                   LgSectionTitle(l.featureTests),
                 ],

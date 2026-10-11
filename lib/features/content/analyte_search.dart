@@ -80,7 +80,18 @@ Set<String> searchVariants(String normalized) => {
   normalized,
   if (_cyrillic.hasMatch(normalized))
     normalizeForSearch(uzCyrillicToLatin(normalized)),
+  ?_ruStem(normalized),
 };
+
+final _ruEnding = RegExp('[ьйаяыиеуюо]\$');
+
+/// Ruscha so'rovning oxirgi unlisi/“ь” qirqilgan varianti: “печень” →
+/// “печен” (“Стеатоз печени”), “глюкоза” → “глюкоз” (“глюкозы”). Faqat
+/// 5+ harfli so'rovda — qisqa so'rovlar shovqin bermasin.
+String? _ruStem(String q) {
+  if (q.length < 5 || !_ruEnding.hasMatch(q)) return null;
+  return q.substring(0, q.length - 1);
+}
 
 class AnalyteSearch {
   AnalyteSearch(this.pack)

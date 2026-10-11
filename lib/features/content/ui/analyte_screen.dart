@@ -338,7 +338,10 @@ class _AnalyteBody {
             value: analyte.method ?? l.analyteMethodNotSet,
           ),
           if (analyte.units.isNotEmpty)
-            LgMetric(label: l.analyteUnits, value: analyte.units.join(' · ')),
+            LgMetric(
+              label: l.analyteUnits,
+              value: siFirstUnits(analyte.units).join(' · '),
+            ),
         ],
       ),
     );
@@ -953,4 +956,14 @@ class _ExpandableState extends State<_Expandable> {
       ),
     );
   }
+}
+
+/// Birliklar ro'yxatida SI birinchi, an'anaviy (mg/dL…) qavsdan keyin —
+/// kontentdagi tartibdan qat'i nazar (“mmol/L · mg/dL”).
+List<String> siFirstUnits(List<String> units) {
+  const conventional = {'mg/dL', 'µg/dL', 'ng/dL', 'mEq/L'};
+  return [
+    ...units.where((u) => !conventional.contains(u)),
+    ...units.where(conventional.contains),
+  ];
 }

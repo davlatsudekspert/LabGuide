@@ -36,7 +36,12 @@ Future<void> tapZone(WidgetTester tester, DiffCell c, [int n = 1]) async {
 }
 
 /// Bosilgan zona ajralib turgan paytdagi rasm uchun.
-Future<void> snapFlash(Walk w, WidgetTester tester, DiffCell c, String step) async {
+Future<void> snapFlash(
+  Walk w,
+  WidgetTester tester,
+  DiffCell c,
+  String step,
+) async {
   await tester.tap(zone(c));
   await tester.pump(const Duration(milliseconds: 40));
   await expectLater(

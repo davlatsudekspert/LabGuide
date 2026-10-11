@@ -44,6 +44,30 @@ const _samples = <ClinicalCalc, List<String>>{
 void main() {
   setUpAll(loadAppFonts);
 
+  testWidgets('dilution: no prefilled values, calculates only from input', (
+    tester,
+  ) async {
+    final s = await makeServices(tester, language: AppLanguage.en);
+    await pumpApp(tester, s, size: const Size(390, 1600));
+    await goTo(tester, '/lab/calculators/dilution');
+    for (final e in tester.widgetList<EditableText>(
+      find.byType(EditableText),
+    )) {
+      expect(e.controller.text, isEmpty);
+    }
+    expect(find.text('100'), findsOneWidget); // hint only
+    await tester.tap(find.text(en.dilCalculate));
+    await tester.pumpAndSettle();
+    expect(find.text(en.dilErrorInvalid), findsOneWidget);
+    final f = find.byType(EditableText);
+    await tester.enterText(f.at(0), '10');
+    await tester.enterText(f.at(1), '2');
+    await tester.enterText(f.at(2), '100');
+    await tester.tap(find.text(en.dilCalculate));
+    await tester.pumpAndSettle();
+    expect(find.text(en.dilResult('20')), findsOneWidget);
+  });
+
   testWidgets('eGFR: SI input, sex required, children refused', (tester) async {
     final s = await makeServices(tester, language: AppLanguage.en);
     await pumpApp(tester, s, size: const Size(390, 3200));

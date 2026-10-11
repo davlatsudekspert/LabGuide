@@ -1768,6 +1768,12 @@ abstract class AppLocalizations {
   /// **'Add run'**
   String get qcAddRun;
 
+  /// No description provided for @qcJumpToAddRun.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a run below'**
+  String get qcJumpToAddRun;
+
   /// No description provided for @qcNote.
   ///
   /// In en, this message translates to:
@@ -4651,7 +4657,7 @@ abstract class AppLocalizations {
   /// No description provided for @micSearchHint.
   ///
   /// In en, this message translates to:
-  /// **'e.g. neutrophil, оксалат, bezgak'**
+  /// **'e.g. neutrophil, oxalate, malaria'**
   String get micSearchHint;
 
   /// No description provided for @micNoResultsTitle.

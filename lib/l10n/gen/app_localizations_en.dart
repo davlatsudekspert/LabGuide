@@ -957,6 +957,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get qcAddRun => 'Add run';
 
   @override
+  String get qcJumpToAddRun => 'Enter a run below';
+
+  @override
   String get qcNote => 'Note (optional)';
 
   @override
@@ -2603,7 +2606,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get micSearchLabel => 'Search the atlas';
 
   @override
-  String get micSearchHint => 'e.g. neutrophil, оксалат, bezgak';
+  String get micSearchHint => 'e.g. neutrophil, oxalate, malaria';
 
   @override
   String get micNoResultsTitle => 'Nothing found';

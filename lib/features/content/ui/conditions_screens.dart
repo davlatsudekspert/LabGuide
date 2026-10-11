@@ -173,8 +173,7 @@ class _ConditionsScreenState extends State<ConditionsScreen> {
                 if (pack.conditions.any((c) => c.system == s)) s,
             ];
             final grouped = _query.text.trim().isEmpty && _system == null;
-            void open(ClinicalCondition c) =>
-                context.push('$location/${c.id}');
+            void open(ClinicalCondition c) => context.push('$location/${c.id}');
             return Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
@@ -303,11 +302,24 @@ class _SystemHeader extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 12),
-            Expanded(
-              child: Text(systemName(system, l), style: text.titleLarge),
-            ),
-            const SizedBox(width: 8),
-            Text(l.condCount(count), style: text.bodySmall),
+            if (MediaQuery.textScalerOf(context).scale(16) > 20)
+              // Katta shriftda soni nom ostida: nom harfma-harf bo'linmasin.
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(systemName(system, l), style: text.titleLarge),
+                    Text(l.condCount(count), style: text.bodySmall),
+                  ],
+                ),
+              )
+            else ...[
+              Expanded(
+                child: Text(systemName(system, l), style: text.titleLarge),
+              ),
+              const SizedBox(width: 8),
+              Text(l.condCount(count), style: text.bodySmall),
+            ],
           ],
         ),
       ),
@@ -419,10 +431,7 @@ class _ConditionBody {
         spacing: 8,
         runSpacing: 8,
         children: [
-          LgTag(
-            systemName(c.system, l),
-            icon: systemIcon(c.system),
-          ),
+          LgTag(systemName(c.system, l), icon: systemIcon(c.system)),
           LgTag(
             c.isReviewerApproved ? l.statusVerified : l.statusSourcedSample,
             tone: c.isReviewerApproved ? LgTone.brand : LgTone.warning,
@@ -449,7 +458,8 @@ class _ConditionBody {
               test: t,
               lang: lang,
               cite: cite(t.refs),
-              available: t.analyteId != null && pack.analyte(t.analyteId!) != null,
+              available:
+                  t.analyteId != null && pack.analyte(t.analyteId!) != null,
               onOpen: () => context.push('$location/analyte/${t.analyteId}'),
             ),
         ],
@@ -517,9 +527,8 @@ class _ConditionBody {
     TextTheme text,
   ) {
     final approved = condition.isReviewerApproved;
-    final dates = [
-      for (final id in _sources) ?pack.source(id)?.accessed,
-    ]..sort();
+    final dates = [for (final id in _sources) ?pack.source(id)?.accessed]
+      ..sort();
     final translationsPending = condition.translationReview.values.any(
       (v) => v != 'approved',
     );
@@ -612,10 +621,7 @@ class _TierHeader extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    '${tierName(tier, l)} · $count',
-                    style: text.titleLarge,
-                  ),
+                  Text('${tierName(tier, l)} · $count', style: text.titleLarge),
                   const SizedBox(height: 2),
                   Text(tierHint(tier, l), style: text.bodySmall),
                 ],
@@ -957,10 +963,8 @@ class _QuickChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final p = LgPalette.of(context);
-    final style = Theme.of(context).textTheme.labelMedium!.copyWith(
-      fontSize: 13,
-      color: p.ink,
-    );
+    final style = Theme.of(context).textTheme.labelMedium!
+        .copyWith(fontSize: 13, color: p.ink);
     return LgPressable(
       onTap: onTap,
       color: p.paper,
@@ -1072,8 +1076,7 @@ class AnalyteConditionsSection extends StatelessWidget {
               tierName(_bestTier(conditions[i]), l),
               systemName(conditions[i].system, l),
             ].join(' · '),
-            onTap: () =>
-                context.push('$base/conditions/${conditions[i].id}'),
+            onTap: () => context.push('$base/conditions/${conditions[i].id}'),
           ),
       ],
     );

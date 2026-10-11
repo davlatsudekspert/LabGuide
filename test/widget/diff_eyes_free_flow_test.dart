@@ -121,8 +121,10 @@ void main() {
     expect(find.text(en.diffDoneTitle(100)), findsOneWidget);
 
     // Yana bosish — qo'shilmaydi, "qabul qilinmadi" signali.
-    await tester.tapAt(tester.getRect(_zone(DiffCell.segmented)).bottomRight -
-        const Offset(10, 10));
+    await tester.tapAt(
+      tester.getRect(_zone(DiffCell.segmented)).bottomRight -
+          const Offset(10, 10),
+    );
     await tester.pump(const Duration(milliseconds: 200));
     expect(s.differential.total, 100);
     expect(fakes.cues.cues.last, Cue.blocked);
@@ -221,13 +223,22 @@ void main() {
     await goTo(tester, eyesFreeRunRoute);
     await tester.pump(const Duration(milliseconds: 50));
     expect(engine.listenedLocale, 'ru-RU');
-    expect(find.textContaining(uz.diffVoiceListening(uz.diffVoiceLangRu)), findsOneWidget);
-    expect(find.textContaining(uz.diffVoiceFallback(uz.diffVoiceLangRu)), findsOneWidget);
+    expect(
+      find.textContaining(uz.diffVoiceListening(uz.diffVoiceLangRu)),
+      findsOneWidget,
+    );
+    expect(
+      find.textContaining(uz.diffVoiceFallback(uz.diffVoiceLangRu)),
+      findsOneWidget,
+    );
 
     engine.say('лимфоцит лимфоцит');
     await tester.pump(const Duration(milliseconds: 200));
     expect(s.differential.count(DiffCell.lymphocyte), 2);
-    expect(find.textContaining(uz.diffVoiceHeard('лимфоцит лимфоцит')), findsOneWidget);
+    expect(
+      find.textContaining(uz.diffVoiceHeard('лимфоцит лимфоцит')),
+      findsOneWidget,
+    );
     engine.say('отмена');
     await tester.pump(const Duration(milliseconds: 200));
     expect(s.differential.count(DiffCell.lymphocyte), 1);
