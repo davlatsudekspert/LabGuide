@@ -23,10 +23,10 @@ hal qila oladigan savollar.
 ## Tahlil kartalari va shifokor qo'llanmasi
 8. **Lipidlar**: ESC/EAS 2025 qisman yangilanishi LDL maqsadlariga ta'sir qiladimi (hozir
    2019 qiymatlari).
-9. **Metabolik sindrom glyukoza mezoni**: NHLBI ≥126 mg/dL yoki dori (kartada) vs
-   NCEP ATP III / IDF ≥100 mg/dL — qaysi biri ko'rsatilsin.
-10. **Preeklampsiya**: ≥5 g/24 soat proteinuriya (NICHD) — ACOG 2013+ mezonlardan chiqargan;
-    qoldirilsinmi.
+9. ~~**Metabolik sindrom glyukoza mezoni**~~ — hal qilindi (2026-10-11): ≥100 mg/dL
+   (5,6 mmol/L) yoki dori; TG ≥150 mg/dL (Alberti 2009, NHLBI). `docs/CONTENT_AUDIT_2026-10-11.md`.
+10. ~~**Preeklampsiya**: ≥5 g/24 soat proteinuriya~~ — hal qilindi (2026-10-11): og'irlik
+    belgilaridan olib tashlandi (ACOG PB 222, 2020).
 11. **OGTT homiladorlikda** qon olish oralig'i: NIDDK "har soatda" vs MedlinePlus
     "har 30 daqiqada".
 12. **CRP**: manbada 0,8–1,0 mg/dL bor, kartada raqam yo'q — shunday qolsinmi.
@@ -50,3 +50,13 @@ hal qila oladigan savollar.
 ## Kalkulyatorlar
 21. Goryayev setkasi o'lchamlari, Nechiporenko va rang ko'rsatkichi uchun rasmiy manba
     (SSV buyrug'i / uslubiy ko'rsatma) — bo'lsa kalkulyator qo'shiladi.
+
+## Toifa test banki — ustoz uchun kalit shubhalari (2026-10-11)
+Rasmiy matn va kalitlar o'zgartirilmadi; ustoz ko'rib chiqib qaror qilsin
+(tafsilot: `docs/CONTENT_AUDIT_2026-10-11.md`, 4-bo'lim).
+22. **kdl-t-246** “Qaysi hollarda axlatning nordon reaksiyasi kuzatiladi?” — rasmiy kalit
+    “Axiliya”. Nordon reaksiya (pH < 6) bijg'ish (brodil) dispepsiyasiga xos; axiliyada
+    (chirish jarayoni) reaksiya ishqoriy. Kutilgan kalit — “Brodil dispepsiya”. Ishonch: yuqori.
+23. **kdl-t-420** “Aldolaza, aminotransferaza, LDG-1 oshishi, KK normal — xos:” — kalit
+    “Virusli gepatit”. Gepatitda LDG-**5** oshadi; LDG-1 — miokard/eritrotsit izofermenti.
+    Asl hujjatda “LDG-5” bo'lishi mumkin — asl matnni tekshirish kerak. Ishonch: o'rta.

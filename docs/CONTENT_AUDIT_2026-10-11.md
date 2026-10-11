@@ -83,3 +83,23 @@ sitokimyo (`t-049`, `t-237`, hozir immunofenotiplash); pankreas — amilaza
 - O‘rta: 0 tuzatildi; 7 ochiq (POC A1C, JSST glyukoza mezonlari, preeklampsiya proteinuriyasi, HFmrEF atamasi, TG ≥ 150, Payne cheklovi, eGFR cheklovlari) + 1 Toifa kalit shubhasi.
 - Past: 1 tuzatildi (igna gauge, en); 9 ochiq.
 - Kalkulyator formulalari va konversiya koeffitsiyentlarida xato topilmadi.
+
+## 6. Supervisor qarori bilan qo‘llangan tuzatishlar (2026-10-11, ikkinchi bosqich)
+
+3-bo‘limdagi quyidagi bandlar endi kontentda tuzatildi (uz/ru/en, manba bilan,
+testlar bilan). Qolgan “Past” bandlar va 2026 ACC/AHA noaniqligi o‘zgarmadi.
+
+| # | Band | Nima qilindi | Manba |
+|---|---|---|---|
+| S1 | NCEP ATP III 2001/2004 maqsadlari | `treatment_goals[].superseded_by` maydoni (model + validator): ATP III → `esc-eas-2019`, `acc-aha-2018` (non-HDL: `esc-eas-2019`). Ekranda amaldagi yo‘riqnomalar avval, ATP III jadvallari oxirida “Tarixiy yo‘riqnoma … faqat kontekst uchun” belgisi bilan (`analyteGoalHistorical`, 3 ARB). | ESC/EAS 2019; ACC/AHA 2018 |
+| S2 | HbA1c IFCC | DL izohlarida: prediabet “IFCC: 39–47 mmol/mol”, diabet “≥ 48 mmol/mol”; `type-2-diabetes` naqshlarida ham. **Eslatma:** supervisor 39–46 deb yozgan; ADA 2.2-jadvalidagi rasmiy qiymat **39–47 mmol/mol** (6,4 % = 46,4 mmol/mol, chegara < 48) — manbadagi qiymat qo‘yildi. JSST/IEC 6,0–6,4 % — ishonchli iqtibos o‘qilmagani uchun qo‘shilmadi. | ADA Standards of Care 2025, 2-bo‘lim, 2.1–2.2-jadvallar (doi:10.2337/dc25-S002, PMID 39651986) |
+| S3 | Point-of-care A1C | Karta da’vosi va `hba1c-q2` (asos + 1-variant izohi): tashxisga ruxsat etilgan (FDA) qurilma, CLIA sertifikatlangan, o‘rta/yuqori murakkablik laboratoriyasi, o‘qitilgan xodim — aks holda yo‘q. Kalit o‘zgarmadi (2 — boshqa kuni takroriy test). | ADA 2025, Recommendation 2.2b (PMC orqali o‘qildi) |
+| S4 | JSST IFG | `glucose-plasma-fasting` ga yangi DL: 110–125 mg/dL (6,1–6,9 mmol/L), JSST/IDF; `type-2-diabetes` prediabet naqshida “JSST: 110–125 mg/dL, 6,1–6,9 mmol/L”. | WHO/IDF 2006, xulosa jadvali (IRIS PDF o‘qildi); ADA 2025 “Prediabetes” |
+| S5 | Preeklampsiya | “oqsil ≥ 5 g/sutka” og‘irlik belgilaridan olib tashlandi; izohda ACOG 2013/2020 eslatildi. | ACOG Practice Bulletin 222 (doi:10.1097/AOG.0000000000003891) |
+| S6 | HFmrEF | “chegaraviy / borderline” → “biroz pasaygan (HFmrEF) / умеренно сниженной (СНунФВ) / mildly reduced (HFmrEF)”. | Bozkurt 2021 (PMID 33663906); ESC HF 2021 (PMID 34447992) |
+| S7 | Metabolik sindrom TG | “doimiy > 150” → “≥ 150 mg/dL (≈1,7 mmol/L)”, NHLBI farqi izohda. | Alberti 2009 |
+| S8 | Tuzatilgan Ca | Kalkulyator ekranida doim ko‘rinadigan ogohlantirish (`calcCalciumCaution`, 3 ARB) + cheklovlarda Smith 2018 natijasi. | Smith JD va boshq. Clin Chem 2018;64:1713–22 (PMID 30352866) |
+| S9 | eGFR cheklovlari | AKI / barqaror bo‘lmagan kreatinin; mushak massasi, go‘sht/kreatin, vegetarian parhez → sistatin C yoki o‘lchangan GFR. KDIGO 2024 manbasi qo‘shildi (G toifalari o‘zgarmagan). | KDIGO 2024 CKD (Kidney Int 2024;105(4S):S117–S314, PMID 38490803) |
+
+Toifa kalit shubhalari (`kdl-t-246`, `kdl-t-420`) `docs/EXPERT_QUESTIONS.md` ga
+ustoz uchun qo‘shildi; rasmiy matn/kalit o‘zgartirilmadi.
