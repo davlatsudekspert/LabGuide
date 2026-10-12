@@ -89,6 +89,10 @@ void main() {
         if (visible && lang == AppLanguage.ru) {
           expect(find.text(ru.toifaUzbekOnly), findsWidgets);
         }
+        // Talaba: O'rganishda toifa kartasi yo'q (malaka toifasi unga emas).
+        await s.settings.setRole(AppRole.student);
+        await goTo(tester, '/learn');
+        expect(find.byType(ToifaEntryCard), findsNothing);
         // Shifokor: bosh sahifada ham, O'rganishda ham yo'q, manzil yopiq.
         await s.settings.setRole(AppRole.doctor);
         await goTo(tester, '/home');

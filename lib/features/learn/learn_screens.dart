@@ -13,6 +13,7 @@ import '../content/content_model.dart';
 import '../content/ui/content_widgets.dart';
 import '../daily/daily_screens.dart';
 import '../reference/reference_screens.dart';
+import '../settings/settings_controller.dart';
 import '../toifa/toifa_screens.dart';
 import 'exam_screens.dart';
 import 'quiz_session.dart';
@@ -57,7 +58,11 @@ class LearnScreen extends StatelessWidget {
         // Har kuni qaytish uchun: 5 ta savol va ketma-ketlik.
         const DailyCard(),
         // Faqat O'zbekiston foydalanuvchilariga (til uz yoki mintaqa UZ).
-        if (toifaVisible(context)) const ToifaEntryCard(),
+        // Talabaga malaka toifasi kerak emas — uning O'rganishida kartasi yo'q
+        // (kunlik savollar qoladi, manzil laborant/ustozga ochiq).
+        if (toifaVisible(context) &&
+            context.services.settings.role != AppRole.student)
+          const ToifaEntryCard(),
         // Dars mavzulari kontent paketidan keladi (hozircha bo'sh — domla
         // materiallari kelib, tekshirilgach qo'shiladi).
         ContentGate(
