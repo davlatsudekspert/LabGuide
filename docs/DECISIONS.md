@@ -751,3 +751,9 @@ D-46 dagi paketlar aniqlashtirildi: shaxsiy **Pro** (laborant, shifokor, toifaga
   fayllar gap-gap videoga joylanadi. Roliklar: talaba, shifokor, laborant, ustoz (har biri ≥ 1 daqiqa).
 - Talaba rolida O'rganishda toifa kartasi ko'rsatilmaydi (toifa ishlayotgan mutaxassis uchun).
 - Shanba ish rejasi: `PLAN_2026-10-17_SHANBA.md`.
+
+## D-53. Bepul kunlik savollar: 5 ta (2026-10-12, egasi: "qaysi ma'qul bo'lsa")
+- D-49 dagi "kuniga 2 ta savol" o'rniga **kuniga 5 ta** (mavjud "Bugungi 5 ta savol" bilan bir xil).
+  Sabab: 2 ta savol odat hosil qilmaydi; imtihon simulyatsiyasi, to'liq bank va zaif mavzular Pro'da qoladi.
+  Xatolarni qayta ishlash cheklanmaydi. Foydalanuvchilar ko'paygach qayta ko'riladi.
+- Shanba (17-oktabr) kuni boshida to'liq audit (mazmun, rollar, Pro chegarasi, xavfsizlik, texnik).

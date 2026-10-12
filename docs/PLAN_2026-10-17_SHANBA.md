@@ -30,6 +30,20 @@ Tekshirilmagan narsa "tayyor" deb aytilmaydi.
 
 ## 2. Shanba: ishlar tartibi
 
+### 0-blok. To'liq audit (kun boshida, yangi ish boshlanishidan oldin)
+Topilgan xatolar shu kuni tuzatiladi. Har birida "nima tekshirildi, nima topildi, nima
+tuzatildi" yoziladi (`docs/AUDIT_2026-10-17.md`).
+- **Mazmun:** 119 tahlil kartasi va 43 holat (me'yor, birlik, manba havolasi ochiladimi),
+  toifa banki kalitlari, izohli test, mikroskopiya atlasi (rasm va nom mosligi, litsenziya).
+- **Rollar bo'yicha yurib chiqish:** talaba, shifokor, laborant, ustoz uz/ru/en. Har rolga
+  faqat unga mos bo'limlar ko'rinadimi (masalan, talabada toifa yo'q, shifokorda toifa yo'q).
+- **Pro va bepul chegarasi:** D-53 bo'yicha nima ochiq, nima yopiq; boshlangan test
+  to'xtatilmasligi; TestFlight'da hammasi ochiq.
+- **Xavfsizlik va maxfiylik:** sirlar repoda yo'qligi, server qoidalari (RLS/Worker),
+  maxfiylik siyosati va do'kon deklaratsiyalari amaldagi ilovaga mosligi.
+- **Texnik:** `flutter analyze`, barcha testlar, 320 px, yotiq ekran, katta shrift, qorong'i
+  rejim, oflayn ishlash.
+
 ### 1-blok. Avtomatik taqdimot (Ustoz Pro), D-47, eng muhim
 - Ustoz mavzu yoki tahlillarni tanlaydi. Tizim faqat ilovadagi tekshirilgan mazmundan
   slaydlar yig'adi: kartalar, preanalitika, kalkulyatorlar, atlas, toifa savollari.
@@ -47,7 +61,7 @@ Tekshirilmagan narsa "tayyor" deb aytilmaydi.
   TestFlight'da qiladi (bu yerdan qilib bo'lmaydi, shuni ochiq aytaman).
 
 ### 3-blok. Pro: limit va gating, D-48 va D-49
-- Bepul: kuniga 2 ta savol. Xatolarni qayta ishlash cheklanmaydi. Boshlangan test yoki
+- Bepul: kuniga 5 ta savol (kunlik savol, D-53). Xatolarni qayta ishlash cheklanmaydi. Boshlangan test yoki
   sanash hech qachon to'lov oynasi bilan to'xtatilmaydi.
 - Pro'ga ulanadi: cheksiz savollar, imtihon simulyatsiyasi, to'liq toifa banki, zaif
   mavzular tahlili, atlas mashqlari. Ustoz Pro'ga ulanadi: guruhlar, testlar, hisobotlar,
