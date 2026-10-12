@@ -711,3 +711,14 @@ D-46 dagi paketlar aniqlashtirildi: shaxsiy **Pro** (laborant, shifokor, toifaga
 - Ochiq: ilk foydalanuvchilarga chegirma; talaba holatini qanday tasdiqlash; bepul kunlik savollar soni.
 - Ommaviy chiqishdan oldin: yo Pro to'lov bilan to'liq ulanadi, yo hammasi bepul chiqadi
   ("To'lov hali yoqilmagan" yozuvi yashiriladi) — Apple 3.1.1/2.1.
+
+## D-49. Pro tafsilotlari (2026-10-12, egasi javoblari)
+- Bepul sinov: 7 kun (tavsiya; Ustoz Pro uchun 14 kun — egasi tasdiqlashi kerak). 1 oy tavsiya etilmaydi.
+- Bepul foydalanuvchi: kuniga 2 ta savol (egasi qarori). Tavsiya: xatolarni qayta ishlash cheklanmasin.
+- Ilk foydalanuvchilarga chegirma: yo'q.
+- Talaba chegirmasi: talaba bileti bilan tasdiqlash — hamjamiyatdagi mutaxassis tasdig'i usulida
+  (AI tekshiradi, hujjat saqlanmaydi, faqat natija + amal muddati; yiliga qayta tasdiq).
+  Do'konda alohida "talaba" obuna mahsuloti; faqat tasdiqlangan hisobga ko'rsatiladi.
+- Ustoz PPTX yuklamaydi. Faqat monitorga chiqarish: iPhone — AirPlay (ekranni takrorlash),
+  Android — ekran translyatsiyasi (Miracast/Smart View, Cast); ilova tashqi ekranni ko'rib
+  faqat slaydni chiqaradi (ikki ekranli rejim). Chromecast uchun alohida Cast qabul qiluvchi — keyin.
