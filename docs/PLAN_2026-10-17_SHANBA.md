@@ -103,6 +103,20 @@ tuzatildi" yoziladi (`docs/AUDIT_2026-10-17.md`).
   ona tili darajasida gapiradigan inson o'qiydi; sun'iy ovoz faqat egasi rozi bo'lsa.
 - Yakuniy yozuv: ilova do'konda chiqmaguncha "Tez kunda", chiqqandan keyin "Hoziroq yuklab oling".
 
+### 6b-blok. Yangi bo'limlar (egasi, 12-oktabr)
+- **Sitologiya** — qoralamasi tayyor, `wip/cytology` shoxida (main'ga qo'shilmagan, TestFlight'ga
+  chiqmagan): 13 element sxemasi, qin surtmasi tozalik darajasi (I–IV), Bethesda, surtma olish va
+  bo'yash, "Bu qaysi hujayra?" mashqi. Egasi qo'shimchalar beradi; domla/mutaxassis tekshiradi.
+  Faqat shundan keyin main'ga va TestFlight'ga. Keyin — sitologiya roligi (ovozsiz + diktor PDF).
+- **Qon guruhini aniqlash usullari** (keyingi bo'lim): ABO va Rh(D) — standart zardoblar /
+  tsoliklonlar bilan, kross usul, gel-kartalar; moslik sinamalari; xatolar va ularning sabablari
+  (sovuq agglyutinatsiya, rulo hosil bo'lishi, zaif A2 va h.k.). Manbalar: JSST qon xavfsizligi
+  qo'llanmalari, AABB/ochiq darsliklar; sxemalar o'zimiz chizamiz. Rolik bilan.
+- Ikkalasi ham **Pro** imkoniyatlari qatoriga kiradi (7 kunlik bepul sinov, D-49); bepul qism —
+  kiritish va ko'rish, mashqlar va to'liq jadvallar — Pro (aniq chegara audit kuni yoziladi).
+- Qoida: tibbiy mazmunda xato bo'lmasligi uchun har bo'lim "qoralama" belgisi bilan chiqadi va
+  domla tasdig'idan keyin "tekshirilgan"ga o'tadi; rasm nomga mosligi ko'z bilan tekshiriladi.
+
 ### 7-blok. Yakun
 - `flutter analyze`, barcha testlar, uch tilda skrinshotlar, 320 px va yotiq ekran tekshiruvi.
 - TestFlight build 4, egasiga nima yangiligi va nima tekshirish kerakligi ro'yxati.
