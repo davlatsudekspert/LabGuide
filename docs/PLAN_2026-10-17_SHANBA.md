@@ -104,10 +104,19 @@ tuzatildi" yoziladi (`docs/AUDIT_2026-10-17.md`).
 - Yakuniy yozuv: ilova do'konda chiqmaguncha "Tez kunda", chiqqandan keyin "Hoziroq yuklab oling".
 
 ### 6b-blok. Yangi bo'limlar (egasi, 12-oktabr)
-- **Sitologiya** — qoralamasi tayyor, `wip/cytology` shoxida (main'ga qo'shilmagan, TestFlight'ga
-  chiqmagan): 13 element sxemasi, qin surtmasi tozalik darajasi (I–IV), Bethesda, surtma olish va
+- **Sitologiya** — qoralama main'ga qo'shildi va testga chiqarildi (12-oktabr, egasi so'rovi bilan): 13 element sxemasi, qin surtmasi tozalik darajasi (I–IV), Bethesda, surtma olish va
   bo'yash, "Bu qaysi hujayra?" mashqi. Egasi qo'shimchalar beradi; domla/mutaxassis tekshiradi.
   Faqat shundan keyin main'ga va TestFlight'ga. Keyin — sitologiya roligi (ovozsiz + diktor PDF).
+- **Spermogramma** (yangi bo'lim, leykoformula uslubida; tartib: audit → spermogramma → qon guruhi
+  → sitologiya qo'shimchalari): JSST 2021 (6-nashr) pastki chegaralari — hajm 1,4 ml, konsentratsiya
+  16 mln/ml, umumiy son 39 mln, umumiy harakatchanlik 42 %, progressiv 30 %, tiriklik 54 %, normal
+  shakl 4 %, pH ≥ 7,2 (manba bilan qayta tekshiriladi); harakatchanlik va morfologiya sanash
+  hisoblagichi; atamalar (oligo-, asteno-, terato-, azoospermiya) mezonlari bilan; morfologiya
+  sxemalari (bosh/bo'yin/dum nuqsonlari, o'zimiz chizamiz yoki egasi bergan sxemalar tekshiriladi);
+  preanalitika (2–7 kun saqlanish, 1 soat ichida tahlil, harorat); mashq va rolik.
+- **Sitologiya qo'shimchalari:** yetilish indeksi (gormonal/atrofik surtma), reaktiv o'zgarishlar va
+  atipiyadan farqi, ASC-US / LSIL / AGC sxemalari, namuna sifati va artefaktlar, balg'am, seroz
+  suyuqliklar va siydik sitologiyasi.
 - **Qon guruhini aniqlash usullari** (keyingi bo'lim): ABO va Rh(D) — standart zardoblar /
   tsoliklonlar bilan, kross usul, gel-kartalar; moslik sinamalari; xatolar va ularning sabablari
   (sovuq agglyutinatsiya, rulo hosil bo'lishi, zaif A2 va h.k.). Manbalar: JSST qon xavfsizligi
