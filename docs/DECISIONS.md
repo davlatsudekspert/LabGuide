@@ -733,3 +733,11 @@ D-46 dagi paketlar aniqlashtirildi: shaxsiy **Pro** (laborant, shifokor, toifaga
 - **Ustoz-elchi:** bitta biokimyo o'qituvchisiga bepul Ustoz Pro (admin beradi, muddatli),
   u ilovani talabalariga tanishtiradi. Reklamada hamkorlik ochiq aytiladi. Kerak:
   admin panelda "Pro berish (muddat bilan)" — server tomonidan, audit bilan.
+
+## D-51. Reklama roliklari: ovoz va format (2026-10-12)
+- Ovoz: sof o'zbek tilida, **ayol ovozi, aksentsiz** (ru/en versiyalarda — shu tilda ona tili darajasida).
+  Manba hali hal qilinmagan: egasi yozib beradi yoki pullik TTS (egasi akkaunti). Robot ovoz ishlatilmaydi.
+- Format (namuna — hasharchilar promo): 9:16, logo → qiyshaytirilgan telefon mockuplari (haqiqiy ekranlar)
+  → har sahnada yorliq + sarlavha → oxirida "Hoziroq yuklab oling".
+- Roliklar: Talaba (2 ta, yoki bitta 50–60 s), Shifokor, Mutaxassis (vrach-laborant/laborant); uz/ru/en.
+- Shanba (17-oktabr) rejasi bilan, Pro va avtomatik taqdimot tayyor bo'lgach.
