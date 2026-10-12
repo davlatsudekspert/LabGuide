@@ -757,3 +757,10 @@ D-46 dagi paketlar aniqlashtirildi: shaxsiy **Pro** (laborant, shifokor, toifaga
   Sabab: 2 ta savol odat hosil qilmaydi; imtihon simulyatsiyasi, to'liq bank va zaif mavzular Pro'da qoladi.
   Xatolarni qayta ishlash cheklanmaydi. Foydalanuvchilar ko'paygach qayta ko'riladi.
 - Shanba (17-oktabr) kuni boshida to'liq audit (mazmun, rollar, Pro chegarasi, xavfsizlik, texnik).
+
+## D-54. Tahlil varaqasini o'qish: avval bepul, qurilmada (2026-10-12)
+- Egasi: hozircha bepul usulda sinash — varaqalar asosan kompyuterda bosilgan.
+- Qurilmadagi OCR (iOS Vision / Android ML Kit) + ilovaning oflayn bazasi (kartalar, natija naqshlari).
+  Rasm qurilmadan chiqmaydi, xarajat yo'q. Tashxis qo'yilmaydi.
+- Claude API (ishlatganicha to'lov, oylik to'lov yo'q) — keyin, Pro uchun, murakkab varaqalarga;
+  aniqlik bepul usulda o'lchangandan keyin hal qilinadi. Android ML Kit kirillni tanimasligi — tekshiriladi.

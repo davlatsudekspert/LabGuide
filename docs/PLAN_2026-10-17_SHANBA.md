@@ -78,6 +78,18 @@ tuzatildi" yoziladi (`docs/AUDIT_2026-10-17.md`).
   Do'kon mahsulotlari bo'lmasa, bu blok kelgusi haftaga qoladi va ilova hammasi bepul
   holatda qoladi ("To'lov hali yoqilmagan" yozuvi do'kon versiyasida yashiriladi, D-48).
 
+### 4b-blok. Tahlil varaqasini rasmdan o'qish (bepul, D-54)
+- Shifokor varaqani rasmga oladi yoki galereyadan tanlaydi; ismni kesish taklif qilinadi.
+- Matnni telefonning o'zi o'qiydi (iOS Vision, Android ML Kit), internetsiz va bepul.
+- Ilova qatorlarni ajratadi: tahlil nomi, natija, birlik, varaqadagi me'yor oralig'i
+  (uz/ru/en sinonimlar lug'ati bilan, masalan "Глюкоза", "Glucose", "Qand").
+- Har qator kartaga bog'lanadi; yuqori/past/me'yorda; shifokor qo'llanmasidagi natija naqshlari
+  bilan solishtiriladi va manba bilan ko'rsatiladi. Tashxis qo'yilmaydi.
+- Shifokor o'qilgan qiymatlarni ko'rib, tuzata oladi; rasm hech qayerga yuborilmaydi.
+- **Tayyor degani:** o'zimiz yasagan 20 ta kompyuterda bosilgan namunaviy varaqada (uz/ru/en,
+  haqiqiy bemorsiz) aniqlik o'lchanadi va natija yoziladi.
+- Claude API (Pro) keyinroq, kerak bo'lsa, faqat murakkab varaqalar uchun.
+
 ### 5-blok. Server deploy, faqat 1-bo'limdagi 1-band bajarilgan bo'lsa
 - Worker va D1 migratsiyalarini deploy qilish, ilovani `LG_API_URL` bilan yig'ish.
 - Admin panelda "Pro berish (muddat bilan)" funksiyasi: faqat server tomonida, audit bilan
