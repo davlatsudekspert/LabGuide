@@ -107,6 +107,9 @@ tuzatildi" yoziladi (`docs/AUDIT_2026-10-17.md`).
 - **Sitologiya** — qoralama main'ga qo'shildi va testga chiqarildi (12-oktabr, egasi so'rovi bilan): 13 element sxemasi, qin surtmasi tozalik darajasi (I–IV), Bethesda, surtma olish va
   bo'yash, "Bu qaysi hujayra?" mashqi. Egasi qo'shimchalar beradi; domla/mutaxassis tekshiradi.
   Faqat shundan keyin main'ga va TestFlight'ga. Keyin — sitologiya roligi (ovozsiz + diktor PDF).
+- **Lab bosh sahifasi:** Leykoformula kartasi kabi rasmli katta kartalar qatori — Leykoformula,
+  Sitologiya, Spermogramma (keyin Qon guruhi). Sitologiya hozir pastdagi oddiy qatorda — yuqoriga,
+  rasmli kartaga ko'chiriladi (egasi so'rovi, 12-oktabr skrinshoti).
 - **Spermogramma** (yangi bo'lim, leykoformula uslubida; tartib: audit → spermogramma → qon guruhi
   → sitologiya qo'shimchalari): JSST 2021 (6-nashr) pastki chegaralari — hajm 1,4 ml, konsentratsiya
   16 mln/ml, umumiy son 39 mln, umumiy harakatchanlik 42 %, progressiv 30 %, tiriklik 54 %, normal
