@@ -1,0 +1,8 @@
+[
+ ["intro", 0.3, "LabGuide ilovasini ochamiz. Tilni tanlaymiz va talaba bo‘limiga kiramiz.", "Boshlash oson"],
+ ["analytes", 9.6, "Tahlillar bo‘limida yuz o‘n to‘qqizta tahlil bor: me’yor, sabablar va manbalar bilan.", "119 ta tahlil"],
+ ["toifa", 16.0, "Toifa imtihoniga tayyorlaning: rasmiy savollar, mavzu bo‘yicha mashq.", "Toifa imtihoni"],
+ ["answer", 24.4, "Javob berishingiz bilan to‘g‘ri yoki noto‘g‘ri ekanini darhol ko‘rasiz.", "Darhol tekshiruv"],
+ ["atlas", 30.3, "Mikroskopiya atlasida rasmga qarab, hujayrani o‘zingiz topasiz.", "Mikroskopiya atlasi"],
+ ["outro", 0, "LabGuide — o‘qishda ham, ishda ham yoningizda.", ""]
+]
