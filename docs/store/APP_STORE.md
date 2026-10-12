@@ -150,11 +150,21 @@ diagnosis or suggest drug doses. Results are assessed together with the clinical
 your laboratory’s reference intervals. Content is source-based but is a DRAFT: it has not yet
 passed independent expert review.
 
-## 5. Keywords (≤ 100 belgi, vergul bilan, bo‘shliqsiz)
+## 5. Keywords (≤ 100 belgi, vergul bilan, bo‘shliqsiz) — 2026-10-12 yangilandi
 
-- uz: `laboratoriya,biokimyo,tahlil,eGFR,Westgard,QC,kalkulyator,glyukoza,kreatinin,preanalitika`
-- ru: `лаборатория,биохимия,анализы,рСКФ,Вестгард,контроль качества,калькулятор,глюкоза,креатинин`
-- en: `laboratory,biochemistry,lab tests,eGFR,Westgard,QC,Levey-Jennings,calculator,units,preanalytics`
+- uz (97): `klinik laboratoriya,KDL,biokimyo,laborant,tahlil,toifa,QC,Westgard,eGFR,leykoformula,preanalitika`
+- ru (97): `КДЛ,клиническая лаборатория,биохимия,лаборант,анализы,контроль качества,Вестгард,СКФ,лейкоформула`
+- en (95): `clinical laboratory,biochemistry,lab tests,medical lab,QC,Westgard,eGFR,hematology,preanalytics`
+
+Nomda (title) bor so‘z keywords'da takrorlanmaydi (Apple ikkalasini birga hisoblaydi).
+
+**Google Play'da kalit so‘z maydoni yo‘q** — qidiruv nom, qisqa va to‘liq tavsifdan olinadi
+(+ "Store settings → Tags" dan 5 tagacha tayyor teg: Medical / Education).
+- Nom (≤30): uz `LabGuide: KDL va biokimyo` · ru `LabGuide: КДЛ и биохимия` · en `LabGuide: Clinical Lab Guide`
+- Qisqa tavsif (≤80):
+  - uz `Klinik laboratoriya diagnostikasi va biokimyo: tahlillar, QC, toifa, kalkulyator`
+  - ru `Клиническая лабораторная диагностика и биохимия: анализы, контроль качества`
+  - en `Clinical lab diagnostics & biochemistry: lab tests, QC, calculators, exam prep`
 
 ## 6. App Privacy (Ma’lumotlar)
 
