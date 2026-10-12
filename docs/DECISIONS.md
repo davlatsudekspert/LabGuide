@@ -675,3 +675,23 @@ Egasi so‘rovi: boshqa odamlarni Gmail/email bo‘yicha admin qilish va olib ta
   ona tilida mutaxassis tekshirgan mazmun. Begona imtihon banklari ko'chirilmaydi.
 - To'lov: ilova ichida Apple/Google; muassasa litsenziyasi — shartnoma (YATT kerak bo'ladi).
 - Narx, sinov muddati va limitlar — egasi bilan alohida (17-oktabr).
+
+## D-47. Avtomatik taqdimot va AI Ustoz — reja (2026-10-12, egasi tasdiqladi)
+**Avtomatik taqdimot (Ustoz Pro, uz/ru/en, barcha davlatlar):**
+- Ustoz mavzu yoki tahlillarni tanlaydi → tizim ilovadagi tekshirilgan mazmundan (kartalar,
+  preanalitika, kalkulyatorlar, atlas, toifa savollari) slaydlar yig'adi. Ma'lumot to'qilmaydi.
+- Slaydlar ilovada chiziladi (1-mavzu dizayni: belgilar, kartochkalar, sxemalar) — 3 tilda,
+  TV'da tiniq. Materiali kam mavzular uchun tayyor (qo'lda yasalgan, tekshirilgan) decklar.
+- Ikki ekranli rejim: TV — faqat slayd; telefon — boshqaruv, ustoz izohi, keyingi slayd.
+- AI yozgan taqdimot — keyinroq, faqat "AI qoralama — ustoz tekshiradi" belgisi bilan, tahrirlanadi.
+
+**AI Ustoz (Pro, kunlik limit):**
+1. Offline asos (AI'siz, har doim ishlaydi): har savolga tekshirilgan tushuntirish, og'zaki
+   imtihon mashqi (javob rejasi bilan o'zini tekshirish), aqlli takrorlash, 3 tilda qidiruv.
+2. Online AI Ustoz: shu bazaga tayanadi, manba ko'rsatadi, to'qimaydi ("bilmayman"),
+   "AI" belgisi, bemorga shaxsiy maslahat bermaydi, bemor ma'lumoti yuborilmaydi,
+   yozishma faqat egasiga ko'rinadi, egasi nomidan yozmaydi. Internet yo'q — offline rejim.
+3. Telefon ichidagi kichik model — keyin, ixtiyoriy paket, "tajriba" belgisi bilan.
+
+**Tartib:** 17-oktabr (shanba) — avtomatik taqdimot + slayd shablonlari, keyin ikki ekranli
+rejim → offline tushuntirishlar/og'zaki mashq → online AI Ustoz → telefon ichidagi model.
