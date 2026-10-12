@@ -1,0 +1,12 @@
+[
+ ["s01", 0, "Talabalar uchun LabGuide. Biokimyo va laboratoriyani tushunib o‘rganish ilovasi.", "LabGuide talabalar uchun"],
+ ["s02", 0, "Ro‘yxatdan o‘tmasdan kiramiz va talaba yo‘nalishini tanlaymiz.", "Talaba yo‘nalishi"],
+ ["s03", 0, "Bosh sahifa talabaga moslashadi: mavzular, testlar va mashqlar bir joyda.", "Hammasi bir joyda"],
+ ["s04", 0, "Har kuni beshta savol. Ikki-uch daqiqada bilimingizni tekshirasiz.", "Kunlik 5 savol"],
+ ["s05", 0, "Izohli testda javob bergach, nega to‘g‘ri ekanini manbasi bilan o‘qiysiz.", "Izohli test"],
+ ["s06", 0, "Ma’ruza rejimida dars slaydlari telefoningizda, internetsiz ochiladi.", "Ma’ruza slaydlari"],
+ ["s07", 0, "Imtihon oldidan vaqtli sinov: savollar soni va vaqtni o‘zingiz tanlaysiz.", "Imtihon rejimi"],
+ ["s08", 0, "Tahlillar bo‘limida yuz o‘n to‘qqizta tahlil: me’yori va ma’nosi manbalar bilan.", "119 ta tahlil"],
+ ["s09", 0, "Mikroskopiya atlasida rasmga qarab hujayrani topasiz. Bu neytrofil.", "Mikroskopiya atlasi"],
+ ["s10", 0, "LabGuide. Darsda ham, imtihonda ham yoningizda.", ""]
+]

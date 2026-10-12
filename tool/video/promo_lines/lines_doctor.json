@@ -1,0 +1,12 @@
+[
+ ["d01",0,"Shifokorlar uchun LabGuide. Tahlil natijasini to‘g‘ri talqin qilishga yordam beradigan ilova.","Shifokorlar uchun"],
+ ["d02",0,"Mehmon sifatida kiramiz va shifokor yo‘nalishini tanlaymiz.","Shifokor yo‘nalishi"],
+ ["d03",0,"Bosh sahifada shifokor qo‘llanmasi: qirq uchta holat bo‘yicha qaysi tahlillar kerakligi.","Shifokor qo‘llanmasi"],
+ ["d04",0,"Masalan, ikkinchi tip qandli diabet. Avval qaysi tahlil, keyin qaysi biri buyurilishi aniq ko‘rsatilgan.","Kasallik bo‘yicha tahlillar"],
+ ["d05",0,"Natija naqshlari: qaysi ko‘rsatkich nimaga ishora qilishi, har biri manbasi bilan.","Natija naqshlari"],
+ ["d06",0,"Tahlil kartasida me’yor, buyurish sabablari va talqin uchun izohlar bor.","Tahlil kartasi"],
+ ["d07",0,"Klinik kalkulyatorlar. Masalan, eGFR: kreatinin, yosh va jinsni kiritasiz.","Kalkulyatorlar"],
+ ["d08",0,"Natija bir zumda, KDIGO toifasi bilan. Formula va cheklovlari ham yozilgan.","eGFR natijasi"],
+ ["d09",0,"Namuna yo‘li: bemor tayyorgarligi va probirkalar tartibi natijaga qanday ta’sir qilishi.","Namuna yo‘li"],
+ ["d10",0,"LabGuide. Natijani kontekst bilan tushuning.",""]
+]

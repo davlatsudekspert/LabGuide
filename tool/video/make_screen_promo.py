@@ -46,15 +46,19 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--rec', required=True)
     ap.add_argument('--lines', required=True)
-    ap.add_argument('--vo', required=True)
+    ap.add_argument('--vo', default=None)
+    ap.add_argument('--dur', default=None, help="ovozsiz: gaplar davomiyligi (json), diktor keyin o'zi o'qiydi")
     ap.add_argument('--vo2', default=None, help="ikkinchi ovoz varianti (xuddi shu video bilan)")
     ap.add_argument('--out', required=True)
     ap.add_argument('--name', default='LabGuide-ekran-promo-uz')
     a = ap.parse_args()
     os.makedirs(a.out, exist_ok=True)
     lines = json.load(open(a.lines))
-    vos = [a.vo] + ([a.vo2] if a.vo2 else [])
-    dur = {n: max(wav_len(os.path.join(v, f'{n}.wav')) for v in vos) for n, *_ in lines}
+    vos = ([a.vo] if a.vo else []) + ([a.vo2] if a.vo2 else [])
+    if a.dur:
+        dur = json.load(open(a.dur))
+    else:
+        dur = {n: max(wav_len(os.path.join(v, f'{n}.wav')) for v in vos) for n, *_ in lines}
 
     # ---- yozuv kadrlari
     src = os.path.join(a.out, 'src')
@@ -176,9 +180,11 @@ def main():
         for i, (n, _, txt, *_) in enumerate(lines):
             f.write(f'{i + 1}\n{ts(starts[n])} --> {ts(starts[n] + dur[n] + 0.2)}\n{txt}\n\n')
 
-    for vi, vdir in enumerate(vos):
+    json.dump({'starts': starts, 'dur': dur, 'total': total, 'rec_out': rec_out},
+              open(os.path.join(a.out, a.name + '.timing.json'), 'w'))
+    for vi, vdir in enumerate(vos or [None]):
         vo = np.zeros(tN)
-        for n, *_ in lines:
+        for n, *_ in (lines if vdir else []):
             x = read_wav(os.path.join(vdir, f'{n}.wav'), sr)
             x = x / (np.abs(x).max() + 1e-9) * 0.85
             s0 = int(starts[n] * sr)

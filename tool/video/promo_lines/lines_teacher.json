@@ -1,0 +1,13 @@
+[
+ ["t01",0,"Ustozlar uchun LabGuide. Bilimni darsga aylantiring.","Ustozlar uchun"],
+ ["t02",0,"Mehmon sifatida kiramiz va ustoz yo‘nalishini tanlaymiz.","Ustoz yo‘nalishi"],
+ ["t03",0,"Bosh sahifada guruhlar, savollar, manbalar va ilmiy ish bir joyda.","Bosh sahifa"],
+ ["t04",0,"Guruh yaratish oson: nomini yozasiz, ilova sakkiz belgili kod va QR beradi.","Guruh yaratish"],
+ ["t05",0,"Talabalar kod bilan qo‘shiladi. Ro‘yxatda Talaba 1, Talaba 2 ko‘rinadi, shaxsiy ma’lumot so‘ralmaydi.","Talabalar qo‘shiladi"],
+ ["t06",0,"Test topshiriq: mavzu, savollar soni va vaqtni tanlab, guruhga yuborasiz.","Test berish"],
+ ["t07",0,"Talaba telefonida yechadi, siz esa natijalar panelida kim qanday ishlaganini ko‘rasiz.","Natijalar paneli"],
+ ["t08",0,"Ma’ruza rejimi: tayyor taqdimotlar katta ekranda, internetsiz ochiladi.","Ma’ruza rejimi"],
+ ["t09",0,"Dars rejasi: mavzu va maqsadni yozasiz, qoralama shu qurilmada saqlanadi.","Dars rejasi"],
+ ["t10",0,"Imtihon rejimi: vaqtli sinovni sinfda internetsiz o‘tkazish mumkin.","Imtihon rejimi"],
+ ["t11",0,"LabGuide. Ustoz va talaba uchun bitta ilova.",""]
+]
