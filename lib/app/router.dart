@@ -10,6 +10,7 @@ import '../features/auth/ui/welcome_screen.dart';
 import '../features/content/ui/analyte_screen.dart';
 import '../features/content/ui/conditions_screens.dart';
 import '../features/content/ui/tests_screen.dart';
+import '../features/cytology/cytology_screens.dart';
 import '../features/differential/diff_eyes_free_screens.dart';
 import '../features/daily/daily_screens.dart';
 import '../features/differential/differential_entry_points.dart';
@@ -369,6 +370,42 @@ GoRouter buildRouter(
                                 ),
                           ),
                         ],
+                      ),
+                    ],
+                  ),
+                  // Sitologiya: hujayralar, tozalik darajasi, Bethesda, mashq.
+                  GoRoute(
+                    path: 'cytology',
+                    builder: (context, state) => const CytologyScreen(),
+                    routes: [
+                      GoRoute(
+                        path: 'cells',
+                        builder: (context, state) => const CytoCellsScreen(),
+                        routes: [
+                          GoRoute(
+                            path: ':id',
+                            builder: (context, state) => CytoCellScreen(
+                              cellId: state.pathParameters['id']!,
+                            ),
+                          ),
+                        ],
+                      ),
+                      GoRoute(
+                        path: 'degree',
+                        builder: (context, state) => const CytoDegreeScreen(),
+                      ),
+                      GoRoute(
+                        path: 'bethesda',
+                        builder: (context, state) => const CytoBethesdaScreen(),
+                      ),
+                      GoRoute(
+                        path: 'technique',
+                        builder: (context, state) =>
+                            const CytoTechniqueScreen(),
+                      ),
+                      GoRoute(
+                        path: 'quiz',
+                        builder: (context, state) => const CytoQuizScreen(),
                       ),
                     ],
                   ),

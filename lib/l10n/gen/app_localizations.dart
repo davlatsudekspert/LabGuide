@@ -13857,6 +13857,264 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Admin removed'**
   String get adminActionGrantRemoved;
+
+  /// No description provided for @cytoTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Cytology'**
+  String get cytoTitle;
+
+  /// No description provided for @cytoSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Gynaecological smear: cells and reports'**
+  String get cytoSubtitle;
+
+  /// No description provided for @cytoHeroTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Read a smear with confidence'**
+  String get cytoHeroTitle;
+
+  /// No description provided for @cytoHeroBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Cell drawings, cleanliness grade, the Bethesda system and practice — in one place.'**
+  String get cytoHeroBody;
+
+  /// No description provided for @cytoHeroCta.
+  ///
+  /// In en, this message translates to:
+  /// **'View cells'**
+  String get cytoHeroCta;
+
+  /// No description provided for @cytoSchematicCaption.
+  ///
+  /// In en, this message translates to:
+  /// **'Annotated diagram (LabGuide) — not a micrograph; scale and colours are approximate.'**
+  String get cytoSchematicCaption;
+
+  /// No description provided for @cytoCellsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Cells and organisms'**
+  String get cytoCellsTitle;
+
+  /// No description provided for @cytoCellsSub.
+  ///
+  /// In en, this message translates to:
+  /// **'{n} items: drawing and key feature'**
+  String cytoCellsSub(int n);
+
+  /// No description provided for @cytoDegreeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Vaginal smear cleanliness grade'**
+  String get cytoDegreeTitle;
+
+  /// No description provided for @cytoDegreeSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Grades I–IV: mark what you see'**
+  String get cytoDegreeSub;
+
+  /// No description provided for @cytoBethesdaTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'The Bethesda system'**
+  String get cytoBethesdaTitle;
+
+  /// No description provided for @cytoBethesdaSub.
+  ///
+  /// In en, this message translates to:
+  /// **'What a Pap report means'**
+  String get cytoBethesdaSub;
+
+  /// No description provided for @cytoTechniqueTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Sampling and staining'**
+  String get cytoTechniqueTitle;
+
+  /// No description provided for @cytoTechniqueSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Preparation, fixation, staining, errors'**
+  String get cytoTechniqueSub;
+
+  /// No description provided for @cytoQuizTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Which cell is this?'**
+  String get cytoQuizTitle;
+
+  /// No description provided for @cytoQuizSub.
+  ///
+  /// In en, this message translates to:
+  /// **'{n} picture questions'**
+  String cytoQuizSub(int n);
+
+  /// No description provided for @cytoQuizIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Look at the drawing and pick the name: 4 options. The key feature is shown after you answer.'**
+  String get cytoQuizIntro;
+
+  /// No description provided for @cytoQuizPrompt.
+  ///
+  /// In en, this message translates to:
+  /// **'What is this?'**
+  String get cytoQuizPrompt;
+
+  /// No description provided for @cytoQuizStart.
+  ///
+  /// In en, this message translates to:
+  /// **'Start practice'**
+  String get cytoQuizStart;
+
+  /// No description provided for @cytoLook.
+  ///
+  /// In en, this message translates to:
+  /// **'Appearance'**
+  String get cytoLook;
+
+  /// No description provided for @cytoKey.
+  ///
+  /// In en, this message translates to:
+  /// **'Key feature'**
+  String get cytoKey;
+
+  /// No description provided for @cytoMeaning.
+  ///
+  /// In en, this message translates to:
+  /// **'What it means'**
+  String get cytoMeaning;
+
+  /// No description provided for @cytoConfuse.
+  ///
+  /// In en, this message translates to:
+  /// **'Often confused with'**
+  String get cytoConfuse;
+
+  /// No description provided for @cytoRefer.
+  ///
+  /// In en, this message translates to:
+  /// **'Show to a cytologist or clinician'**
+  String get cytoRefer;
+
+  /// No description provided for @cytoDraftNote.
+  ///
+  /// In en, this message translates to:
+  /// **'This section has not been expert-reviewed. It is a learning aid: the cytologist or clinician reports.'**
+  String get cytoDraftNote;
+
+  /// No description provided for @cytoDegreeIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark what you see under the microscope — the app shows the grade by the traditional scheme. The worst feature decides.'**
+  String get cytoDegreeIntro;
+
+  /// No description provided for @cytoLacto.
+  ///
+  /// In en, this message translates to:
+  /// **'Lactobacilli'**
+  String get cytoLacto;
+
+  /// No description provided for @cytoLeuko.
+  ///
+  /// In en, this message translates to:
+  /// **'Leukocytes'**
+  String get cytoLeuko;
+
+  /// No description provided for @cytoFlora.
+  ///
+  /// In en, this message translates to:
+  /// **'Other flora'**
+  String get cytoFlora;
+
+  /// No description provided for @cytoMany.
+  ///
+  /// In en, this message translates to:
+  /// **'Many'**
+  String get cytoMany;
+
+  /// No description provided for @cytoFew.
+  ///
+  /// In en, this message translates to:
+  /// **'Few'**
+  String get cytoFew;
+
+  /// No description provided for @cytoNone.
+  ///
+  /// In en, this message translates to:
+  /// **'None'**
+  String get cytoNone;
+
+  /// No description provided for @cytoSingle.
+  ///
+  /// In en, this message translates to:
+  /// **'Rare'**
+  String get cytoSingle;
+
+  /// No description provided for @cytoVeryMany.
+  ///
+  /// In en, this message translates to:
+  /// **'Very many'**
+  String get cytoVeryMany;
+
+  /// No description provided for @cytoMixed.
+  ///
+  /// In en, this message translates to:
+  /// **'Mixed (cocci)'**
+  String get cytoMixed;
+
+  /// No description provided for @cytoPathogenic.
+  ///
+  /// In en, this message translates to:
+  /// **'Pathogenic (trichomonads etc.)'**
+  String get cytoPathogenic;
+
+  /// No description provided for @cytoDegreeResult.
+  ///
+  /// In en, this message translates to:
+  /// **'Grade {n}'**
+  String cytoDegreeResult(int n);
+
+  /// No description provided for @cytoDegreeTable.
+  ///
+  /// In en, this message translates to:
+  /// **'Grades at a glance'**
+  String get cytoDegreeTable;
+
+  /// No description provided for @cytoDegreeNote.
+  ///
+  /// In en, this message translates to:
+  /// **'A traditional scheme (used in CIS countries); textbooks differ slightly, pH is approximate. International criteria for bacterial vaginosis are Amsel and Nugent.'**
+  String get cytoDegreeNote;
+
+  /// No description provided for @cytoBethesdaIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'This is how a cervical smear is reported in the Bethesda system. The clinician decides next steps.'**
+  String get cytoBethesdaIntro;
+
+  /// No description provided for @cytoMethod.
+  ///
+  /// In en, this message translates to:
+  /// **'Stain / preparation'**
+  String get cytoMethod;
+
+  /// No description provided for @cytoMarksTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'What the numbers show'**
+  String get cytoMarksTitle;
+
+  /// No description provided for @cytoNoPhoto.
+  ///
+  /// In en, this message translates to:
+  /// **'No real micrograph yet — only images with verified permission will be added.'**
+  String get cytoNoPhoto;
 }
 
 class _AppLocalizationsDelegate

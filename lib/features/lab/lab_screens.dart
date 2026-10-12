@@ -8,6 +8,7 @@ import '../../l10n/gen/app_localizations.dart';
 import '../content/content_model.dart';
 import '../differential/differential_screens.dart';
 import '../partners/partner_widgets.dart';
+import '../cytology/cytology_screens.dart';
 import '../tools/calc_info.dart';
 import '../tools/clinical_calc_screens.dart';
 import 'preanalytics_info.dart';
@@ -63,6 +64,12 @@ class LabScreen extends StatelessWidget {
           subtitle: l.labMicroscopySub,
           icon: Icons.biotech_outlined,
           onTap: () => context.push('/lab/microscopy'),
+        ),
+        LgRow(
+          title: l.cytoTitle,
+          subtitle: l.cytoSubtitle,
+          icon: Icons.blur_on_rounded,
+          onTap: () => context.push(cytoBase),
           divider: false,
         ),
         // Faqat haqiqiy faol hamkor bo'lsa — bitta “Reklama” kartasi.

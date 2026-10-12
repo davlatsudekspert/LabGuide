@@ -131,6 +131,12 @@ class LearnScreen extends StatelessWidget {
           onTap: () => openInTab(context, '/lab/microscopy', exact: true),
         ),
         LgRow(
+          title: l.cytoTitle,
+          subtitle: l.cytoSubtitle,
+          icon: Icons.blur_on_rounded,
+          onTap: () => openInTab(context, '/lab/cytology', exact: true),
+        ),
+        LgRow(
           title: l.learnLessonPlan,
           subtitle: l.learnLessonPlanSub,
           icon: Icons.co_present_outlined,

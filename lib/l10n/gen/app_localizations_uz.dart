@@ -7924,4 +7924,147 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get adminActionGrantRemoved => 'Admin olib tashlandi';
+
+  @override
+  String get cytoTitle => 'Sitologiya';
+
+  @override
+  String get cytoSubtitle => 'Ginekologik surtma: hujayralar va xulosalar';
+
+  @override
+  String get cytoHeroTitle => 'Surtmani tushunib o‘qing';
+
+  @override
+  String get cytoHeroBody =>
+      'Hujayralar rasmlari, tozalik darajasi, Bethesda tasnifi va mashq — bir joyda.';
+
+  @override
+  String get cytoHeroCta => 'Hujayralarni ko‘rish';
+
+  @override
+  String get cytoSchematicCaption =>
+      'Izohli sxema (LabGuide) — mikrofoto emas, masshtab va ranglar shartli.';
+
+  @override
+  String get cytoCellsTitle => 'Hujayralarni tanish';
+
+  @override
+  String cytoCellsSub(int n) {
+    return '$n ta element: rasm va asosiy belgi';
+  }
+
+  @override
+  String get cytoDegreeTitle => 'Qin surtmasining tozalik darajasi';
+
+  @override
+  String get cytoDegreeSub => 'I–IV daraja: ko‘rganingizni belgilang';
+
+  @override
+  String get cytoBethesdaTitle => 'Bethesda tasnifi';
+
+  @override
+  String get cytoBethesdaSub => 'PAP-test xulosasi nimani anglatadi';
+
+  @override
+  String get cytoTechniqueTitle => 'Surtma olish va bo‘yash';
+
+  @override
+  String get cytoTechniqueSub => 'Tayyorgarlik, fiksatsiya, bo‘yash, xatolar';
+
+  @override
+  String get cytoQuizTitle => 'Bu qaysi hujayra?';
+
+  @override
+  String cytoQuizSub(int n) {
+    return '$n ta savol, rasm bo‘yicha';
+  }
+
+  @override
+  String get cytoQuizIntro =>
+      'Rasmga qarang va to‘g‘ri nomni tanlang: 4 variant. Javobdan keyin asosiy belgi ko‘rsatiladi.';
+
+  @override
+  String get cytoQuizPrompt => 'Bu nima?';
+
+  @override
+  String get cytoQuizStart => 'Mashqni boshlash';
+
+  @override
+  String get cytoLook => 'Ko‘rinishi';
+
+  @override
+  String get cytoKey => 'Asosiy belgi';
+
+  @override
+  String get cytoMeaning => 'Nimani anglatadi';
+
+  @override
+  String get cytoConfuse => 'Nima bilan adashtiriladi';
+
+  @override
+  String get cytoRefer => 'Sitolog yoki shifokorga ko‘rsating';
+
+  @override
+  String get cytoDraftNote =>
+      'Bo‘lim mutaxassis tekshiruvidan o‘tmagan. Bu o‘quv qo‘llanma: xulosani sitolog yoki shifokor beradi.';
+
+  @override
+  String get cytoDegreeIntro =>
+      'Mikroskopda ko‘rganingizni belgilang — ilova an’anaviy tasnif bo‘yicha darajani ko‘rsatadi. Eng og‘ir belgi hal qiladi.';
+
+  @override
+  String get cytoLacto => 'Laktobatsillalar';
+
+  @override
+  String get cytoLeuko => 'Leykotsitlar';
+
+  @override
+  String get cytoFlora => 'Boshqa flora';
+
+  @override
+  String get cytoMany => 'Ko‘p';
+
+  @override
+  String get cytoFew => 'Oz';
+
+  @override
+  String get cytoNone => 'Yo‘q';
+
+  @override
+  String get cytoSingle => 'Yakka';
+
+  @override
+  String get cytoVeryMany => 'Juda ko‘p';
+
+  @override
+  String get cytoMixed => 'Aralash (kokklar)';
+
+  @override
+  String get cytoPathogenic => 'Patogen (trixomonada va b.)';
+
+  @override
+  String cytoDegreeResult(int n) {
+    return '$n-daraja';
+  }
+
+  @override
+  String get cytoDegreeTable => 'Darajalar jadvali';
+
+  @override
+  String get cytoDegreeNote =>
+      'An’anaviy tasnif (MDH mamlakatlari amaliyoti); chegaralar darsliklarda biroz farq qiladi, pH — taxminiy. Bakterial vaginoz uchun xalqaro mezonlar — Amsel va Nugent.';
+
+  @override
+  String get cytoBethesdaIntro =>
+      'Bachadon bo‘yni surtmasi xulosasi Bethesda tizimida shunday yoziladi. Keyingi qadamni shifokor belgilaydi.';
+
+  @override
+  String get cytoMethod => 'Bo‘yoq / preparat';
+
+  @override
+  String get cytoMarksTitle => 'Rasmdagi belgilar';
+
+  @override
+  String get cytoNoPhoto =>
+      'Haqiqiy mikrofoto hali qo‘shilmagan — faqat ruxsati tekshirilgan rasm qo‘shiladi.';
 }
