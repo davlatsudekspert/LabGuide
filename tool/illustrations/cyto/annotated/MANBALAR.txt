@@ -1,0 +1,14 @@
+S1 https://screening.iarc.fr/atlascyto_list.php?cat=D1&lang=1
+S2 https://screening.iarc.fr/atlascyto.php
+S3 https://screening.iarc.fr/atlascyto_list.php?cat=D5a&lang=1
+S4 https://screening.iarc.fr/atlasglossdef.php?img=cyt14560&key=Koilocyte&lang=1
+S5 https://screening.iarc.fr/atlascyto_list.php?cat=F1c2&lang=1
+S6 https://www.cdc.gov/std/treatment-guidelines/candidiasis.htm
+S7 https://www.cdc.gov/std/treatment-guidelines/bv.htm
+S8 https://www.cdc.gov/std/treatment-guidelines/gonorrhea-adults.htm
+S9 https://www.cdc.gov/dpdx/trichomoniasis/
+S10 https://www.cdc.gov/std/treatment-guidelines/trichomoniasis.htm
+
+Rasmlar: yangi chizilgan mualliflik sxemalari. Manba mikrofotolari ko‘chirilmagan.
+Ko‘rilgan sana: 2026-10-12.
+IARC 2004 atlasining morfologik namunalaridan foydalanilgan; u zamonaviy davolash protokoli o‘rnini bosmaydi.

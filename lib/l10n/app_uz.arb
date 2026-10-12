@@ -2298,8 +2298,7 @@
   "cytoHeroTitle": "Surtmani tushunib o‘qing",
   "cytoHeroBody": "Hujayralar rasmlari, tozalik darajasi, Bethesda tasnifi va mashq — bir joyda.",
   "cytoHeroCta": "Hujayralarni ko‘rish",
-  "cytoSchematicCaption": "Sxematik rasm (LabGuide chizgan) — mikrofoto emas. Papanikolau bo‘yog‘idagi ko‘rinish.",
-  "cytoGramCaption": "Sxematik rasm — Gram bo‘yog‘i.",
+  "cytoSchematicCaption": "Izohli sxema (LabGuide) — mikrofoto emas, masshtab va ranglar shartli.",
   "cytoCellsTitle": "Hujayralarni tanish",
   "cytoCellsSub": "{n} ta element: rasm va asosiy belgi",
   "cytoDegreeTitle": "Qin surtmasining tozalik darajasi",
@@ -2333,5 +2332,8 @@
   "cytoDegreeResult": "{n}-daraja",
   "cytoDegreeTable": "Darajalar jadvali",
   "cytoDegreeNote": "An’anaviy tasnif (MDH mamlakatlari amaliyoti); chegaralar darsliklarda biroz farq qiladi, pH — taxminiy. Bakterial vaginoz uchun xalqaro mezonlar — Amsel va Nugent.",
-  "cytoBethesdaIntro": "Bachadon bo‘yni surtmasi xulosasi Bethesda tizimida shunday yoziladi. Keyingi qadamni shifokor belgilaydi."
+  "cytoBethesdaIntro": "Bachadon bo‘yni surtmasi xulosasi Bethesda tizimida shunday yoziladi. Keyingi qadamni shifokor belgilaydi.",
+  "cytoMethod": "Bo‘yoq / preparat",
+  "cytoMarksTitle": "Rasmdagi belgilar",
+  "cytoNoPhoto": "Haqiqiy mikrofoto hali qo‘shilmagan — faqat ruxsati tekshirilgan rasm qo‘shiladi."
 }

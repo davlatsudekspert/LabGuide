@@ -8071,10 +8071,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get cytoSchematicCaption =>
-      'Схематический рисунок (LabGuide) — не микрофото. Вид при окраске по Папаниколау.';
-
-  @override
-  String get cytoGramCaption => 'Схематический рисунок — окраска по Граму.';
+      'Схема с пояснениями (LabGuide) — не микрофото, масштаб и цвета условны.';
 
   @override
   String get cytoCellsTitle => 'Знакомство с клетками';
@@ -8188,4 +8185,14 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get cytoBethesdaIntro =>
       'Так записывают заключение мазка шейки матки по системе Bethesda. Дальнейшую тактику определяет врач.';
+
+  @override
+  String get cytoMethod => 'Окраска / препарат';
+
+  @override
+  String get cytoMarksTitle => 'Обозначения на рисунке';
+
+  @override
+  String get cytoNoPhoto =>
+      'Настоящее микрофото пока не добавлено — добавляются только изображения с проверенной лицензией.';
 }

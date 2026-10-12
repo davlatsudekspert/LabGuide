@@ -8049,10 +8049,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get cytoSchematicCaption =>
-      'Schematic drawing (LabGuide) — not a micrograph. Pap-stain appearance.';
-
-  @override
-  String get cytoGramCaption => 'Schematic drawing — Gram stain.';
+      'Annotated diagram (LabGuide) — not a micrograph; scale and colours are approximate.';
 
   @override
   String get cytoCellsTitle => 'Cells and organisms';
@@ -8166,4 +8163,14 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get cytoBethesdaIntro =>
       'This is how a cervical smear is reported in the Bethesda system. The clinician decides next steps.';
+
+  @override
+  String get cytoMethod => 'Stain / preparation';
+
+  @override
+  String get cytoMarksTitle => 'What the numbers show';
+
+  @override
+  String get cytoNoPhoto =>
+      'No real micrograph yet — only images with verified permission will be added.';
 }

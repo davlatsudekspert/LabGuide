@@ -13891,14 +13891,8 @@ abstract class AppLocalizations {
   /// No description provided for @cytoSchematicCaption.
   ///
   /// In en, this message translates to:
-  /// **'Schematic drawing (LabGuide) — not a micrograph. Pap-stain appearance.'**
+  /// **'Annotated diagram (LabGuide) — not a micrograph; scale and colours are approximate.'**
   String get cytoSchematicCaption;
-
-  /// No description provided for @cytoGramCaption.
-  ///
-  /// In en, this message translates to:
-  /// **'Schematic drawing — Gram stain.'**
-  String get cytoGramCaption;
 
   /// No description provided for @cytoCellsTitle.
   ///
@@ -14103,6 +14097,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'This is how a cervical smear is reported in the Bethesda system. The clinician decides next steps.'**
   String get cytoBethesdaIntro;
+
+  /// No description provided for @cytoMethod.
+  ///
+  /// In en, this message translates to:
+  /// **'Stain / preparation'**
+  String get cytoMethod;
+
+  /// No description provided for @cytoMarksTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'What the numbers show'**
+  String get cytoMarksTitle;
+
+  /// No description provided for @cytoNoPhoto.
+  ///
+  /// In en, this message translates to:
+  /// **'No real micrograph yet — only images with verified permission will be added.'**
+  String get cytoNoPhoto;
 }
 
 class _AppLocalizationsDelegate

@@ -1,0 +1,255 @@
+{
+  "version": "1.0",
+  "date": "2026-10-12",
+  "sources": {
+    "S1": "https://screening.iarc.fr/atlascyto_list.php?cat=D1&lang=1",
+    "S2": "https://screening.iarc.fr/atlascyto.php",
+    "S3": "https://screening.iarc.fr/atlascyto_list.php?cat=D5a&lang=1",
+    "S4": "https://screening.iarc.fr/atlasglossdef.php?img=cyt14560&key=Koilocyte&lang=1",
+    "S5": "https://screening.iarc.fr/atlascyto_list.php?cat=F1c2&lang=1",
+    "S6": "https://www.cdc.gov/std/treatment-guidelines/candidiasis.htm",
+    "S7": "https://www.cdc.gov/std/treatment-guidelines/bv.htm",
+    "S8": "https://www.cdc.gov/std/treatment-guidelines/gonorrhea-adults.htm",
+    "S9": "https://www.cdc.gov/dpdx/trichomoniasis/",
+    "S10": "https://www.cdc.gov/std/treatment-guidelines/trichomoniasis.htm"
+  },
+  "cards": [
+    {
+      "id": "candida",
+      "title_uz": "Kandida (zamburug‘)",
+      "term_en": "Candida spp.",
+      "method": "KOH / Gram / Pap",
+      "notes_uz": [
+        "1. Kurtaklangan oval achitqi hujayralari.",
+        "2. Psevdogifa: tutashgan cho‘ziq hujayralar, tutash joylarda torayish.",
+        "Psevdogifa hamma Candida turida ko‘rinmaydi; simptom va test bilan baholanadi."
+      ],
+      "source_ids": [
+        "S6"
+      ],
+      "diagram_type": "original educational structural schematic",
+      "microscopy_photo": false,
+      "scale": "not to scale",
+      "expert_review": "required before clinical educational publication"
+    },
+    {
+      "id": "clue",
+      "title_uz": "“Kalit” hujayra (clue cell)",
+      "term_en": "Clue cell",
+      "method": "Nativ / Gram / Pap",
+      "notes_uz": [
+        "1. Epiteliy yuzasiga zich yopishgan mayda bakteriyalar.",
+        "2. Bakteriyalar hujayra chetini ham xira ko‘rsatadi.",
+        "Bakterial vaginoz belgilaridan biri; faqat shu rasmga qarab tashxis qo‘yilmaydi."
+      ],
+      "source_ids": [
+        "S7"
+      ],
+      "diagram_type": "original educational structural schematic",
+      "microscopy_photo": false,
+      "scale": "not to scale",
+      "expert_review": "required before clinical educational publication"
+    },
+    {
+      "id": "endocervical",
+      "title_uz": "Endoservikal bez hujayralari",
+      "term_en": "Endocervical glandular cells",
+      "method": "Pap",
+      "notes_uz": [
+        "1. Yuqoridan: tartibli, asalari uyasiga o‘xshash qatlam.",
+        "2. Yon tomondan: silindrsimon hujayralar va bazal joylashgan yadrolar.",
+        "Bu ikki xil ko‘rish yo‘nalishi; barcha hujayralarda kiprikcha bo‘lmaydi."
+      ],
+      "source_ids": [
+        "S2"
+      ],
+      "diagram_type": "original educational structural schematic",
+      "microscopy_photo": false,
+      "scale": "not to scale",
+      "expert_review": "required before clinical educational publication"
+    },
+    {
+      "id": "gonococci",
+      "title_uz": "Gram-manfiy diplokokklar",
+      "term_en": "Intracellular gram-negative diplococci",
+      "method": "Gram",
+      "notes_uz": [
+        "1. Ko‘p bo‘lakli yadroli neytrofil.",
+        "2. Sitoplazmada pushti-qizil, juft, loviyasimon kokklar (kattalashtirilgan).",
+        "Endoservikal Gram manfiyligi gonoreyani istisno qilmaydi; NAAT zarur bo‘lishi mumkin."
+      ],
+      "source_ids": [
+        "S8"
+      ],
+      "diagram_type": "original educational structural schematic",
+      "microscopy_photo": false,
+      "scale": "not to scale",
+      "expert_review": "required before clinical educational publication"
+    },
+    {
+      "id": "hsil",
+      "title_uz": "HSIL morfologiyasi",
+      "term_en": "High-grade squamous intraepithelial lesion",
+      "method": "Pap",
+      "notes_uz": [
+        "1. Yadro/sitoplazma nisbati yuqori, sitoplazma kam.",
+        "2. Notekis yadro konturi va qo‘pol, to‘q xromatin.",
+        "Sxema HSIL belgilarini tushuntiradi; yakuniy talqin uchun sitolog bahosi kerak."
+      ],
+      "source_ids": [
+        "S5"
+      ],
+      "diagram_type": "original educational structural schematic",
+      "microscopy_photo": false,
+      "scale": "not to scale",
+      "expert_review": "required before clinical educational publication"
+    },
+    {
+      "id": "inflammation",
+      "title_uz": "Neytrofilli yallig‘lanish",
+      "term_en": "Neutrophilic inflammation",
+      "method": "Pap / boshqa bo‘yalgan surtma",
+      "notes_uz": [
+        "1. Ko‘p bo‘lakli yadroli neytrofillar.",
+        "2. Taqqoslash uchun katta epiteliy hujayrasi.",
+        "Neytrofillar ko‘pligi yallig‘lanish belgisi; uning sababini o‘zi aniqlamaydi."
+      ],
+      "source_ids": [
+        "S2"
+      ],
+      "diagram_type": "original educational structural schematic",
+      "microscopy_photo": false,
+      "scale": "not to scale",
+      "expert_review": "required before clinical educational publication"
+    },
+    {
+      "id": "intermediate",
+      "title_uz": "Oraliq yassi epiteliy hujayrasi",
+      "term_en": "Intermediate squamous cell",
+      "method": "Pap",
+      "notes_uz": [
+        "1. Keng, odatda ko‘kimtir-yashil sitoplazma.",
+        "2. Yuzaki hujayradagidan kattaroq, pufaksimon yadro.",
+        "Yadro qiyoslashga yordam beradi; o‘lcham preparat va holatga qarab o‘zgaradi."
+      ],
+      "source_ids": [
+        "S1"
+      ],
+      "diagram_type": "original educational structural schematic",
+      "microscopy_photo": false,
+      "scale": "not to scale",
+      "expert_review": "required before clinical educational publication"
+    },
+    {
+      "id": "koilocyte",
+      "title_uz": "Koylotsit",
+      "term_en": "Koilocyte",
+      "method": "Pap",
+      "notes_uz": [
+        "1. Yadro atrofida aniq chegarali, notekis bo‘shliq (halo).",
+        "2. Kattalashgan, konturi notekis, to‘q yadro; chetda zich sitoplazma.",
+        "Faqat halo yetarli emas: yadro atipiyasi ham bo‘lishi kerak."
+      ],
+      "source_ids": [
+        "S4"
+      ],
+      "diagram_type": "original educational structural schematic",
+      "microscopy_photo": false,
+      "scale": "not to scale",
+      "expert_review": "required before clinical educational publication"
+    },
+    {
+      "id": "lactobacilli",
+      "title_uz": "Laktobatsillalar",
+      "term_en": "Lactobacillus morphotypes",
+      "method": "Gram; Papda ham ko‘rinishi mumkin",
+      "notes_uz": [
+        "1. Gramda binafsha bo‘yaladigan uzun tayoqchalar.",
+        "2. Taqqoslash uchun epiteliy hujayrasi.",
+        "Tayoqcha shakli tur darajasida identifikatsiya bermaydi; yagona “normal son” yo‘q."
+      ],
+      "source_ids": [
+        "S7",
+        "S2"
+      ],
+      "diagram_type": "original educational structural schematic",
+      "microscopy_photo": false,
+      "scale": "not to scale",
+      "expert_review": "required before clinical educational publication"
+    },
+    {
+      "id": "metaplastic",
+      "title_uz": "Metaplastik yassi hujayralar",
+      "term_en": "Squamous metaplastic cells",
+      "method": "Pap",
+      "notes_uz": [
+        "1. Zich sitoplazma, dumaloq/oval, odatda muntazam yadro.",
+        "2. Ayrim hujayralarda burchakli kontur yoki sitoplazmatik o‘simta.",
+        "Faqat o‘simtaga qarab tanilmaydi; yetilishiga qarab ko‘rinish o‘zgaradi."
+      ],
+      "source_ids": [
+        "S3"
+      ],
+      "diagram_type": "original educational structural schematic",
+      "microscopy_photo": false,
+      "scale": "not to scale",
+      "expert_review": "required before clinical educational publication"
+    },
+    {
+      "id": "parabasal",
+      "title_uz": "Parabazal hujayralar",
+      "term_en": "Parabasal squamous cells",
+      "method": "Pap",
+      "notes_uz": [
+        "1. Kichikroq dumaloq/oval hujayralar, zich sitoplazma.",
+        "2. Oraliq va yuzaki hujayralarga nisbatan yadro ulushi kattaroq.",
+        "Muntazam yadroli parabazal hujayra avtomatik ravishda HSIL degani emas."
+      ],
+      "source_ids": [
+        "S1",
+        "S5"
+      ],
+      "diagram_type": "original educational structural schematic",
+      "microscopy_photo": false,
+      "scale": "not to scale",
+      "expert_review": "required before clinical educational publication"
+    },
+    {
+      "id": "superficial",
+      "title_uz": "Yuzaki yassi epiteliy hujayrasi",
+      "term_en": "Superficial squamous cell",
+      "method": "Pap",
+      "notes_uz": [
+        "1. Keng, yassi, ko‘p burchakli sitoplazma.",
+        "2. Kichik, zich (piknotik) yadro.",
+        "Pushti rang ko‘p uchraydi, ammo bo‘yalish rangi doim bir xil bo‘lmaydi."
+      ],
+      "source_ids": [
+        "S1"
+      ],
+      "diagram_type": "original educational structural schematic",
+      "microscopy_photo": false,
+      "scale": "not to scale",
+      "expert_review": "required before clinical educational publication"
+    },
+    {
+      "id": "trichomonas",
+      "title_uz": "Trixomonada (T. vaginalis)",
+      "term_en": "Trichomonas vaginalis",
+      "method": "Nativ / bo‘yalgan preparat",
+      "notes_uz": [
+        "1. Noksimon tana, oldingi keng qismda yadro.",
+        "2. To‘rtta oldingi xivchin; qaytuvchi xivchin, to‘lqinsimon membrana va aksostil.",
+        "Nativda faol harakat baholanadi; Papda xivchinlar ko‘rinmasligi mumkin. Manfiy nativ istisno qilmaydi."
+      ],
+      "source_ids": [
+        "S9",
+        "S10"
+      ],
+      "diagram_type": "original educational structural schematic",
+      "microscopy_photo": false,
+      "scale": "not to scale",
+      "expert_review": "required before clinical educational publication"
+    }
+  ]
+}

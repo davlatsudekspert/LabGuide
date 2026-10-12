@@ -80,6 +80,49 @@ abstract final class CytoSources {
     url: 'https://doi.org/10.1128/jcm.29.2.297-301.1991',
   );
 
+  static const iarcNormal = CalcSource(
+    id: 'cyto-iarc-atlas-normal',
+    citation:
+        'IARC. Atlas of Colposcopy and Cytology: cytology — normal squamous '
+        'cells (D1). International Agency for Research on Cancer',
+    url: 'https://screening.iarc.fr/atlascyto_list.php?cat=D1&lang=1',
+  );
+  static const iarcAtlas = CalcSource(
+    id: 'cyto-iarc-atlas',
+    citation:
+        'IARC. Atlas of Colposcopy and Cytology — cytology atlas. '
+        'International Agency for Research on Cancer',
+    url: 'https://screening.iarc.fr/atlascyto.php',
+  );
+  static const iarcMetaplastic = CalcSource(
+    id: 'cyto-iarc-atlas-metaplastic',
+    citation:
+        'IARC. Atlas of Colposcopy and Cytology: squamous metaplastic cells '
+        '(D5a). International Agency for Research on Cancer',
+    url: 'https://screening.iarc.fr/atlascyto_list.php?cat=D5a&lang=1',
+  );
+  static const iarcKoilocyte = CalcSource(
+    id: 'cyto-iarc-koilocyte',
+    citation:
+        'IARC. Atlas of Colposcopy and Cytology — glossary: Koilocyte. '
+        'International Agency for Research on Cancer',
+    url: 'https://screening.iarc.fr/atlasglossdef.php?img=cyt14560&key=Koilocyte&lang=1',
+  );
+  static const iarcHsil = CalcSource(
+    id: 'cyto-iarc-atlas-hsil',
+    citation:
+        'IARC. Atlas of Colposcopy and Cytology: high-grade squamous '
+        'intraepithelial lesion (F1c2). International Agency for Research on '
+        'Cancer',
+    url: 'https://screening.iarc.fr/atlascyto_list.php?cat=F1c2&lang=1',
+  );
+  static const dpdxTrich = CalcSource(
+    id: 'cyto-cdc-dpdx-trichomoniasis',
+    citation:
+        'CDC DPDx — Laboratory Identification of Parasites: Trichomoniasis',
+    url: 'https://www.cdc.gov/dpdx/trichomoniasis/',
+  );
+
   static const all = [
     bethesda,
     nciAbnormal,
@@ -91,6 +134,8 @@ abstract final class CytoSources {
     cdcGono,
     amsel,
     nugent,
+    iarcAtlas,
+    dpdxTrich,
     DiffSources.who2003,
   ];
 }
@@ -108,7 +153,6 @@ class CytoCell {
     required this.refs,
     this.confuse,
     this.refer = false,
-    this.gram = false,
   });
 
   final String id;
@@ -129,8 +173,6 @@ class CytoCell {
   /// Shifokorga/sitologga ko'rsatish kerak.
   final bool refer;
 
-  /// Gram bo'yog'idagi sxema (qolganlari — Papanikolau).
-  final bool gram;
   final List<CalcRef> refs;
 }
 
@@ -600,15 +642,16 @@ const cytoCells = <CytoCell>[
           'sensitivity in cervical smears — NAAT is recommended.',
     }),
     refer: true,
-    gram: true,
     refs: [CalcRef(CytoSources.cdcGono, ''), CalcRef(DiffSources.who2003, '')],
   ),
   CytoCell(
     id: 'hsil',
     name: _T({
-      'uz': 'HSIL hujayralari (yuqori darajali o‘zgarish)',
-      'ru': 'Клетки HSIL (поражение высокой степени)',
-      'en': 'HSIL cells (high-grade lesion)',
+      'uz':
+          'HSIL: yuqori darajali yassi epiteliy intraepitelial shikastlanishi',
+      'ru':
+          'HSIL: плоскоклеточное интраэпителиальное поражение высокой степени',
+      'en': 'HSIL: high-grade squamous intraepithelial lesion',
     }),
     look: _T({
       'uz':
@@ -778,7 +821,7 @@ const bethesdaItems = <BethesdaItem>[
   BethesdaItem(
     'NILM',
     _T({
-      'uz': 'Intraepitelial lezyon yoki xavfli o‘sma yo‘q',
+      'uz': 'Intraepitelial shikastlanish yoki xavfli o‘sma yo‘q',
       'ru': 'Нет интраэпителиального поражения или злокачественности',
       'en': 'Negative for intraepithelial lesion or malignancy',
     }),
@@ -805,7 +848,7 @@ const bethesdaItems = <BethesdaItem>[
   BethesdaItem(
     'LSIL',
     _T({
-      'uz': 'Past darajali yassi hujayrali intraepitelial lezyon',
+      'uz': 'Past darajali yassi epiteliy intraepitelial shikastlanishi',
       'ru': 'Плоскоклеточное интраэпителиальное поражение низкой степени',
       'en': 'Low-grade squamous intraepithelial lesion',
     }),
@@ -833,7 +876,7 @@ const bethesdaItems = <BethesdaItem>[
   BethesdaItem(
     'HSIL',
     _T({
-      'uz': 'Yuqori darajali yassi hujayrali intraepitelial lezyon',
+      'uz': 'Yuqori darajali yassi epiteliy intraepitelial shikastlanishi',
       'ru': 'Плоскоклеточное интраэпителиальное поражение высокой степени',
       'en': 'High-grade squamous intraepithelial lesion',
     }),
@@ -995,3 +1038,337 @@ const cytoTechniqueRefs = [
 
 /// "Bu nima?" mashqidagi savollar soni.
 const cytoQuizSize = 10;
+
+// ───────────────────────── Izohli sxema: 1–2 belgilar ─────────────────────────
+
+/// Kartadagi izohli sxema (`assets/cytology/<id>.png`, raqamli belgilar):
+/// bo'yoq/preparat turi, 1 va 2 belgilar izohi va cheklov. Manba:
+/// egasi bergan paket (tool/illustrations/cyto/annotated/metadata.json),
+/// manbalarga solishtirildi; mutaxassis tasdig'i alohida (hali yo'q).
+class CytoMarks {
+  const CytoMarks({
+    required this.method,
+    required this.marks,
+    required this.caveat,
+    required this.refs,
+  });
+
+  /// Bo'yoq yoki preparat turi.
+  final LocalizedText method;
+
+  /// Rasmdagi 1 va 2 raqamlari izohi (tartib bilan).
+  final List<LocalizedText> marks;
+  final LocalizedText caveat;
+  final List<CalcRef> refs;
+}
+
+const _pap = _T({
+  'uz': 'Papanikolau (Pap)',
+  'ru': 'Папаниколау (Pap)',
+  'en': 'Papanicolaou (Pap)',
+});
+
+const cytoMarks = <String, CytoMarks>{
+  'candida': CytoMarks(
+    method: _T({
+      'uz': 'KOH / Gram / Pap',
+      'ru': 'КОН / Грам / Pap',
+      'en': 'KOH / Gram / Pap',
+    }),
+    marks: [
+      _T({
+        'uz': 'Kurtaklanayotgan oval achitqi hujayralari.',
+        'ru': 'Почкующиеся овальные дрожжевые клетки.',
+        'en': 'Budding oval yeast cells.',
+      }),
+      _T({
+        'uz': 'Psevdogifa: tutashgan cho‘ziq hujayralar, tutash joylarda torayish bor.',
+        'ru': 'Псевдогифа: соединённые вытянутые клетки с перетяжками в местах соединения.',
+        'en': 'Pseudohypha: joined elongated cells with constrictions at the junctions.',
+      }),
+    ],
+    caveat: _T({
+      'uz': 'Psevdogifa hamma Candida turida ko‘rinmaydi; natija simptomlar va testlar bilan birga baholanadi.',
+      'ru': 'Псевдогифы видны не у всех видов Candida; результат оценивают вместе с симптомами и тестами.',
+      'en': 'Not every Candida species forms pseudohyphae; interpret with symptoms and tests.',
+    }),
+    refs: [CalcRef(CytoSources.cdcCandida, '')],
+  ),
+  'clue_cell': CytoMarks(
+    method: _T({
+      'uz': 'Nativ / Gram / Pap',
+      'ru': 'Нативный / Грам / Pap',
+      'en': 'Wet mount / Gram / Pap',
+    }),
+    marks: [
+      _T({
+        'uz': 'Epiteliy yuzasiga zich yopishgan mayda bakteriyalar.',
+        'ru': 'Мелкие бактерии, плотно прилипшие к поверхности эпителия.',
+        'en': 'Small bacteria densely adhering to the cell surface.',
+      }),
+      _T({
+        'uz': 'Bakteriyalar hujayra chetini ham xira qilib qo‘yadi.',
+        'ru': 'Бактерии делают нечётким и край клетки.',
+        'en': 'Bacteria blur the cell border as well.',
+      }),
+    ],
+    caveat: _T({
+      'uz': 'Bakterial vaginoz belgilaridan biri; faqat shu rasmga qarab tashxis qo‘yilmaydi.',
+      'ru': 'Один из признаков бактериального вагиноза; только по этой картине диагноз не ставят.',
+      'en': 'One sign of bacterial vaginosis; never a diagnosis on its own.',
+    }),
+    refs: [CalcRef(CytoSources.cdcBv, '')],
+  ),
+  'endocervical': CytoMarks(
+    method: _pap,
+    marks: [
+      _T({
+        'uz': 'Tepadan: tartibli, asalari uyasiga o‘xshash qatlam.',
+        'ru': 'Сверху: упорядоченный пласт, похожий на соты.',
+        'en': 'En face: an orderly honeycomb sheet.',
+      }),
+      _T({
+        'uz': 'Yondan: silindrsimon hujayralar, yadrolar bazal joylashgan.',
+        'ru': 'Сбоку: цилиндрические клетки с базально расположенными ядрами.',
+        'en': 'Side view: columnar cells with basal nuclei.',
+      }),
+    ],
+    caveat: _T({
+      'uz': 'Bu ikki xil ko‘rish yo‘nalishi; kiprikchalar hamma hujayrada bo‘lmaydi.',
+      'ru': 'Это два ракурса одного эпителия; реснички есть не у всех клеток.',
+      'en': 'Two views of the same epithelium; not all cells are ciliated.',
+    }),
+    refs: [CalcRef(CytoSources.iarcAtlas, '')],
+  ),
+  'gonococcus': CytoMarks(
+    method: _T({'uz': 'Gram', 'ru': 'Грам', 'en': 'Gram'}),
+    marks: [
+      _T({
+        'uz': 'Ko‘p bo‘lakli yadroli neytrofil.',
+        'ru': 'Нейтрофил с многодольчатым ядром.',
+        'en': 'Neutrophil with a multilobed nucleus.',
+      }),
+      _T({
+        'uz': 'Sitoplazmada pushti-qizil, juft, loviyasimon kokklar (kattalashtirib chizilgan).',
+        'ru': 'В цитоплазме розово-красные парные бобовидные кокки (нарисованы увеличенными).',
+        'en': 'Pink-red, paired, bean-shaped cocci in the cytoplasm (drawn enlarged).',
+      }),
+    ],
+    caveat: _T({
+      'uz': 'Endotservikal surtmada Gram bo‘yicha manfiy natija gonoreyani istisno qilmaydi — NAAT kerak bo‘lishi mumkin.',
+      'ru': 'Отрицательный мазок по Граму из цервикального канала не исключает гонорею — может понадобиться МАНК.',
+      'en': 'A negative endocervical Gram smear does not exclude gonorrhoea — NAAT may be needed.',
+    }),
+    refs: [CalcRef(CytoSources.cdcGono, '')],
+  ),
+  'hsil': CytoMarks(
+    method: _pap,
+    marks: [
+      _T({
+        'uz': 'Yadro/sitoplazma nisbati yuqori, sitoplazma kam.',
+        'ru': 'Высокое ядерно-цитоплазматическое отношение, мало цитоплазмы.',
+        'en': 'High nuclear-to-cytoplasmic ratio, scant cytoplasm.',
+      }),
+      _T({
+        'uz': 'Yadro konturi notekis, xromatini qo‘pol va to‘q.',
+        'ru': 'Неровный контур ядра, грубый тёмный хроматин.',
+        'en': 'Irregular nuclear outline, coarse dark chromatin.',
+      }),
+    ],
+    caveat: _T({
+      'uz': 'Sxema HSIL belgilarini tushuntiradi; yakuniy talqinni sitolog beradi.',
+      'ru': 'Схема объясняет признаки HSIL; окончательную оценку даёт цитолог.',
+      'en': 'The drawing explains HSIL features; a cytologist makes the final call.',
+    }),
+    refs: [CalcRef(CytoSources.iarcHsil, '')],
+  ),
+  'inflammation': CytoMarks(
+    method: _T({
+      'uz': 'Pap yoki boshqa bo‘yalgan surtma',
+      'ru': 'Pap или другой окрашенный мазок',
+      'en': 'Pap or another stained smear',
+    }),
+    marks: [
+      _T({
+        'uz': 'Ko‘p bo‘lakli yadroli neytrofillar.',
+        'ru': 'Нейтрофилы с многодольчатыми ядрами.',
+        'en': 'Neutrophils with multilobed nuclei.',
+      }),
+      _T({
+        'uz': 'Taqqoslash uchun katta epiteliy hujayrasi.',
+        'ru': 'Крупная эпителиальная клетка для сравнения.',
+        'en': 'A large epithelial cell for comparison.',
+      }),
+    ],
+    caveat: _T({
+      'uz': 'Neytrofillar ko‘pligi yallig‘lanish belgisi, lekin uning sababini o‘zi ko‘rsatmaydi.',
+      'ru': 'Обилие нейтрофилов — признак воспаления, но не указывает его причину.',
+      'en': 'Many neutrophils signal inflammation but not its cause.',
+    }),
+    refs: [CalcRef(CytoSources.iarcAtlas, '')],
+  ),
+  'intermediate': CytoMarks(
+    method: _pap,
+    marks: [
+      _T({
+        'uz': 'Keng, odatda ko‘kimtir-yashil sitoplazma.',
+        'ru': 'Широкая, обычно голубовато-зелёная цитоплазма.',
+        'en': 'Broad, usually blue-green cytoplasm.',
+      }),
+      _T({
+        'uz': 'Yuzaki hujayradagidan kattaroq, pufaksimon yadro.',
+        'ru': 'Пузырьковидное ядро, крупнее, чем у поверхностной клетки.',
+        'en': 'Vesicular nucleus, larger than in a superficial cell.',
+      }),
+    ],
+    caveat: _T({
+      'uz': 'Yadrosi solishtirish uchun qulay; o‘lcham preparat va holatga qarab o‘zgaradi.',
+      'ru': 'Ядро удобно для сравнения; размеры зависят от препарата и состояния.',
+      'en': 'A handy nuclear reference; size varies with preparation and condition.',
+    }),
+    refs: [CalcRef(CytoSources.iarcNormal, '')],
+  ),
+  'koilocyte': CytoMarks(
+    method: _pap,
+    marks: [
+      _T({
+        'uz': 'Yadro atrofida aniq chegarali, notekis bo‘shliq (halo).',
+        'ru': 'Вокруг ядра — полость с чёткой неровной границей (гало).',
+        'en': 'A sharply bordered, irregular perinuclear cavity (halo).',
+      }),
+      _T({
+        'uz': 'Kattalashgan, konturi notekis, to‘q yadro; chetda zich sitoplazma.',
+        'ru': 'Увеличенное тёмное ядро с неровным контуром; по краю плотная цитоплазма.',
+        'en': 'Enlarged dark nucleus with an irregular outline; dense cytoplasm at the rim.',
+      }),
+    ],
+    caveat: _T({
+      'uz': 'Faqat halo yetarli emas: yadro atipiyasi ham bo‘lishi kerak.',
+      'ru': 'Одного гало недостаточно: нужна и атипия ядра.',
+      'en': 'A halo alone is not enough: nuclear atypia must be present.',
+    }),
+    refs: [CalcRef(CytoSources.iarcKoilocyte, '')],
+  ),
+  'lactobacilli': CytoMarks(
+    method: _T({
+      'uz': 'Gram; Papda ham ko‘rinishi mumkin',
+      'ru': 'Грам; видны и в Pap',
+      'en': 'Gram; also visible on Pap',
+    }),
+    marks: [
+      _T({
+        'uz': 'Gramda binafsha bo‘yaladigan uzun tayoqchalar.',
+        'ru': 'Длинные палочки, окрашивающиеся по Граму в фиолетовый цвет.',
+        'en': 'Long rods staining purple on Gram.',
+      }),
+      _T({
+        'uz': 'Taqqoslash uchun epiteliy hujayrasi.',
+        'ru': 'Эпителиальная клетка для сравнения.',
+        'en': 'An epithelial cell for comparison.',
+      }),
+    ],
+    caveat: _T({
+      'uz':
+          'Tayoqcha shakli turini aniqlab bermaydi; yagona "normal son" yo‘q.',
+      'ru': 'Форма палочки не определяет вид; единой «нормы» количества нет.',
+      'en': 'Rod shape does not identify the species; there is no single "normal count".',
+    }),
+    refs: [CalcRef(CytoSources.cdcBv, ''), CalcRef(CytoSources.iarcAtlas, '')],
+  ),
+  'metaplastic': CytoMarks(
+    method: _pap,
+    marks: [
+      _T({
+        'uz': 'Zich sitoplazma, dumaloq yoki oval, odatda muntazam yadro.',
+        'ru':
+            'Плотная цитоплазма, ядро круглое или овальное, обычно правильное.',
+        'en': 'Dense cytoplasm; round or oval, usually regular nucleus.',
+      }),
+      _T({
+        'uz': 'Ayrim hujayralarda burchakli kontur yoki sitoplazma o‘simtasi.',
+        'ru': 'У части клеток угловатый контур или отростки цитоплазмы.',
+        'en': 'Some cells show an angular outline or cytoplasmic process.',
+      }),
+    ],
+    caveat: _T({
+      'uz': 'Faqat o‘simtaga qarab tanilmaydi; yetilishiga qarab ko‘rinishi o‘zgaradi.',
+      'ru': 'Узнают не только по отросткам; вид меняется по мере созревания.',
+      'en': 'Not identified by processes alone; appearance changes with maturation.',
+    }),
+    refs: [CalcRef(CytoSources.iarcMetaplastic, '')],
+  ),
+  'parabasal': CytoMarks(
+    method: _pap,
+    marks: [
+      _T({
+        'uz': 'Kichikroq, dumaloq yoki oval hujayralar, zich sitoplazma.',
+        'ru': 'Более мелкие круглые или овальные клетки, плотная цитоплазма.',
+        'en': 'Smaller round or oval cells with dense cytoplasm.',
+      }),
+      _T({
+        'uz': 'Oraliq va yuzaki hujayralarga nisbatan yadro ulushi kattaroq.',
+        'ru': 'Доля ядра больше, чем у промежуточных и поверхностных клеток.',
+        'en': 'Larger nuclear share than intermediate and superficial cells.',
+      }),
+    ],
+    caveat: _T({
+      'uz': 'Yadrosi muntazam parabazal hujayra HSIL degani emas.',
+      'ru': 'Парабазальная клетка с правильным ядром — это не HSIL.',
+      'en': 'A parabasal cell with a regular nucleus is not HSIL.',
+    }),
+    refs: [
+      CalcRef(CytoSources.iarcNormal, ''),
+      CalcRef(CytoSources.iarcHsil, ''),
+    ],
+  ),
+  'superficial': CytoMarks(
+    method: _pap,
+    marks: [
+      _T({
+        'uz': 'Keng, yassi, ko‘pburchakli sitoplazma.',
+        'ru': 'Широкая плоская полигональная цитоплазма.',
+        'en': 'Broad, flat, polygonal cytoplasm.',
+      }),
+      _T({
+        'uz': 'Kichik, zich (piknotik) yadro.',
+        'ru': 'Маленькое плотное (пикнотичное) ядро.',
+        'en': 'Small, dense (pyknotic) nucleus.',
+      }),
+    ],
+    caveat: _T({
+      'uz':
+          'Ko‘pincha pushti bo‘yaladi, lekin rang har doim bir xil bo‘lmaydi.',
+      'ru': 'Чаще окрашивается в розовый, но цвет бывает разным.',
+      'en': 'Often pink, but staining colour varies.',
+    }),
+    refs: [CalcRef(CytoSources.iarcNormal, '')],
+  ),
+  'trichomonas': CytoMarks(
+    method: _T({
+      'uz': 'Nativ yoki bo‘yalgan preparat',
+      'ru': 'Нативный или окрашенный препарат',
+      'en': 'Wet mount or stained smear',
+    }),
+    marks: [
+      _T({
+        'uz': 'Noksimon tana, yadro oldingi keng qismda.',
+        'ru': 'Грушевидное тело, ядро в переднем широком отделе.',
+        'en': 'Pear-shaped body; nucleus in the broad anterior part.',
+      }),
+      _T({
+        'uz': 'To‘rtta oldingi xivchin; qaytuvchi xivchin, to‘lqinsimon membrana va aksostil.',
+        'ru': 'Четыре передних жгутика; возвратный жгутик, ундулирующая мембрана и аксостиль.',
+        'en': 'Four anterior flagella; recurrent flagellum, undulating membrane and axostyle.',
+      }),
+    ],
+    caveat: _T({
+      'uz': 'Bu tuzilish sxemasi. Nativda faol harakat baholanadi; Papda xivchinlar ko‘rinmasligi mumkin. Manfiy nativ natija istisno qilmaydi.',
+      'ru': 'Это схема строения. В нативном препарате оценивают активное движение; в Pap жгутики могут быть не видны. Отрицательный нативный препарат не исключает.',
+      'en': 'A structural diagram. Wet mounts show motility; flagella may not be visible on Pap. A negative wet mount does not exclude infection.',
+    }),
+    refs: [
+      CalcRef(CytoSources.dpdxTrich, ''),
+      CalcRef(CytoSources.cdcTrich, ''),
+    ],
+  ),
+};

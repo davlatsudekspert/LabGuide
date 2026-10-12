@@ -23,7 +23,18 @@ void main() {
           }
         }
         expect(c.refs, isNotEmpty, reason: c.id);
+        // Rasmdagi 1 va 2 raqamlarining izohi bo'lishi shart.
+        final m = cytoMarks[c.id];
+        expect(m, isNotNull, reason: c.id);
+        expect(m!.marks, hasLength(2), reason: c.id);
+        expect(m.refs, isNotEmpty, reason: c.id);
+        for (final t in [m.method, m.caveat, ...m.marks]) {
+          for (final lang in ['uz', 'ru', 'en']) {
+            expect(t.of(lang).trim(), isNotEmpty, reason: '${c.id} $lang');
+          }
+        }
       }
+      expect(cytoMarks.keys.toSet(), {for (final c in cytoCells) c.id});
       expect(File('assets/cytology/hero.png').existsSync(), true);
       expect({for (final c in cytoCells) c.id}.length, cytoCells.length);
     });

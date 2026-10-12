@@ -1,4 +1,6 @@
-"""Sitologiya bo'limi uchun sxematik chizmalar (SVG).
+"""Sitologiya bo'limi sarlavha rasmi (hero.svg) va eski chizmalar.
+
+Hujayra kartalaridagi rasmlar — annotated/*.svg (raqamli izohli sxemalar).
 
 Bu mikrofoto EMAS — Papanikolau bo'yog'idagi umumiy ko'rinishni o'rgatish
 uchun qo'lda tuzilgan sxema (gonokokk — Gram bo'yog'ida). Belgilar
@@ -358,10 +360,9 @@ def hero():
 
 
 if __name__ == '__main__':
-    for name, fn in CELLS.items():
-        with open(os.path.join(HERE, f'{name}.svg'), 'w') as f:
-            f.write(fn())
-        print('svg', name)
+    # Hujayra rasmlari endi annotated/ dagi izohli sxemalardan (egasi bergan
+    # paket, 2026-10-12): assets/cytology/<id>.png. Bu skript faqat sarlavha
+    # rasmini yasaydi (render.cjs --cyto hero).
     with open(os.path.join(HERE, 'hero.svg'), 'w') as f:
         f.write(hero())
     print('svg hero')

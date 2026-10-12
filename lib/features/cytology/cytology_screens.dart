@@ -99,7 +99,7 @@ class CytoPicture extends StatelessWidget {
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context);
     final lang = Localizations.localeOf(context).languageCode;
-    final cap = cell.gram ? l.cytoGramCaption : l.cytoSchematicCaption;
+    final cap = l.cytoSchematicCaption;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -227,32 +227,82 @@ class CytoCellScreen extends StatelessWidget {
     final l = AppLocalizations.of(context);
     final lang = Localizations.localeOf(context).languageCode;
     final c = cytoCell(cellId);
+    final text = Theme.of(context).textTheme;
+    final p = LgPalette.of(context);
     if (c == null) {
       return LgPage(
         title: l.cytoCellsTitle,
         children: [LgStateView(kind: StateKind.empty, title: l.cytoCellsTitle)],
       );
     }
+    final m = cytoMarks[c.id];
+    // Karta va sxema manbalari, takrorsiz.
+    final seen = <String>{};
+    final refs = [
+      for (final r in [...c.refs, ...?m?.refs])
+        if (seen.add(r.source.id)) r,
+    ];
     return LgPage(
       title: c.name.of(lang),
       subtitle: l.cytoCellsTitle,
       children: [
         CytoPicture(cell: c),
+        if (m != null) ...[
+          const SizedBox(height: 8),
+          Wrap(
+            spacing: 8,
+            runSpacing: 6,
+            crossAxisAlignment: WrapCrossAlignment.center,
+            children: [
+              Text('${l.cytoMethod}:', style: text.labelLarge),
+              LgTag(m.method.of(lang), tone: LgTone.neutral),
+            ],
+          ),
+          LgSectionTitle(l.cytoMarksTitle),
+          for (final (i, mk) in m.marks.indexed)
+            Padding(
+              padding: const EdgeInsets.only(bottom: 6),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  ExcludeSemantics(
+                    child: Container(
+                      width: 26,
+                      height: 26,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(color: p.brand, width: 1.5),
+                      ),
+                      child: Text('${i + 1}', style: text.labelMedium),
+                    ),
+                  ),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: Semantics(
+                      label: '${i + 1}. ${mk.of(lang)}',
+                      excludeSemantics: true,
+                      child: Text(mk.of(lang), style: text.bodyMedium),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          LgNotice(m.caveat.of(lang), kind: NoticeKind.warning),
+        ],
         if (c.refer) LgNotice(l.cytoRefer, kind: NoticeKind.warning),
         LgNotice(c.key.of(lang), title: l.cytoKey, kind: NoticeKind.info),
         _Block(title: l.cytoLook, body: c.look.of(lang)),
         _Block(title: l.cytoMeaning, body: c.meaning.of(lang)),
         if (c.confuse case final cf?)
           _Block(title: l.cytoConfuse, body: cf.of(lang)),
+        const SizedBox(height: 8),
+        Text(l.cytoNoPhoto, style: text.bodySmall),
         Padding(
           padding: const EdgeInsets.only(top: 10, bottom: 2),
-          child: Text(
-            l.diffSourcesTitle,
-            style: Theme.of(context).textTheme.labelLarge,
-          ),
+          child: Text(l.diffSourcesTitle, style: text.labelLarge),
         ),
-        for (final (i, r) in c.refs.indexed)
-          CalcSourceTile(index: i + 1, ref: r),
+        for (final (i, r) in refs.indexed) CalcSourceTile(index: i + 1, ref: r),
       ],
     );
   }
@@ -703,7 +753,7 @@ class _Question extends StatelessWidget {
               aspectRatio: 1,
               child: Semantics(
                 image: true,
-                label: cell.gram ? l.cytoGramCaption : l.cytoSchematicCaption,
+                label: l.cytoSchematicCaption,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(LgRadius.card),
                   child: Image.asset(

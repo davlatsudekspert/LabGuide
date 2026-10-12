@@ -7943,10 +7943,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get cytoSchematicCaption =>
-      'Sxematik rasm (LabGuide chizgan) — mikrofoto emas. Papanikolau bo‘yog‘idagi ko‘rinish.';
-
-  @override
-  String get cytoGramCaption => 'Sxematik rasm — Gram bo‘yog‘i.';
+      'Izohli sxema (LabGuide) — mikrofoto emas, masshtab va ranglar shartli.';
 
   @override
   String get cytoCellsTitle => 'Hujayralarni tanish';
@@ -8060,4 +8057,14 @@ class AppLocalizationsUz extends AppLocalizations {
   @override
   String get cytoBethesdaIntro =>
       'Bachadon bo‘yni surtmasi xulosasi Bethesda tizimida shunday yoziladi. Keyingi qadamni shifokor belgilaydi.';
+
+  @override
+  String get cytoMethod => 'Bo‘yoq / preparat';
+
+  @override
+  String get cytoMarksTitle => 'Rasmdagi belgilar';
+
+  @override
+  String get cytoNoPhoto =>
+      'Haqiqiy mikrofoto hali qo‘shilmagan — faqat ruxsati tekshirilgan rasm qo‘shiladi.';
 }
