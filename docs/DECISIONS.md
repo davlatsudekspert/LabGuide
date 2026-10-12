@@ -713,7 +713,7 @@ D-46 dagi paketlar aniqlashtirildi: shaxsiy **Pro** (laborant, shifokor, toifaga
   ("To'lov hali yoqilmagan" yozuvi yashiriladi) — Apple 3.1.1/2.1.
 
 ## D-49. Pro tafsilotlari (2026-10-12, egasi javoblari)
-- Bepul sinov: 7 kun (tavsiya; Ustoz Pro uchun 14 kun — egasi tasdiqlashi kerak). 1 oy tavsiya etilmaydi.
+- Bepul sinov: Pro — 7 kun, Ustoz Pro — 14 kun (egasi rozi, 2026-10-12). 1 oy emas.
 - Bepul foydalanuvchi: kuniga 2 ta savol (egasi qarori). Tavsiya: xatolarni qayta ishlash cheklanmasin.
 - Ilk foydalanuvchilarga chegirma: yo'q.
 - Talaba chegirmasi: talaba bileti bilan tasdiqlash — hamjamiyatdagi mutaxassis tasdig'i usulida
