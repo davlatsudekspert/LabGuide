@@ -159,6 +159,32 @@ tuzatildi" yoziladi (`docs/AUDIT_2026-10-17.md`).
   (yuklab olish narxi, Pro'ga o'tish, 7 kunlik sinovdan keyin to'lash, qaytish). Shart: reklamadan
   oldin Pro to'lovi ulangan va ilova do'konda ochiq bo'lsin.
 
+### 6e-blok. Dizaynni kundalik foydalanishga qulay qilish (egasi topshirig'i, 12-oktabr)
+Palitra (to'q yashil, sutrang, och yashil), logo va uslub saqlanadi. Avval mavjud kod tekshiriladi —
+ishlayotgan qismlar qayta qurilmaydi (masalan, scrollda ixchamlashadigan sarlavha va tab xotirasi
+allaqachon bor — faqat sinab, kerak bo'lsa tuzatiladi).
+1. Bosh sahifa: molekulali rasm va tanishtiruv kartasi balandligi ~30–35% kamayadi (matn
+   kichraymaydi — rasm balandligi va bo'shliqlar hisobiga); birinchi ekranda asosiy amallar ko'rinadi.
+2. Qidiruv tepada: "Tahlil, apparat yoki mavzu qidirish" — haqiqiy qidiruv; natijalar guruhlangan
+   (tahlillar, apparatlar, o'quv materiallari); uz lotin/kirill, RU/EN nomlar va qisqartmalar.
+3. Rolga mos tezkor tugmalar: shifokor — tahlillar, kalkulyatorlar, shifokor qo'llanmasi;
+   laborant — leykoformula, sifat nazorati, mening apparatim; talaba — mavzular, testlar, xatolar
+   ustida ishlash; ustoz — guruhlar, topshiriqlar, natijalar. Rol almashganda mazmun ham o'zgaradi.
+4. Lab sahifasi: "Apparat → reagent → metod" o'rniga "Kalibrlash va metodika", ostida kichik
+   "Apparat → reagent → usul"; leykoformula, sifat nazorati, preanalitika, kalkulyatorlarga tez kirish.
+5. Atamalar: "QC" → "Sifat nazorati (QC)"; preanalitika izohi — "Namunani olish, saqlash va
+   tashish". Hammasi UZ/RU/EN ARB orqali.
+6. Pastki menyu: oxirgi karta menyu ortida qolmasin (menyu balandligi + safe area); menyu biroz
+   ixcham, lekin yozuv va bosish maydoni kichraymaydi; tab holati saqlanadi.
+7. Scrollda yuqori panel silliq qisqaradi va qaytadi, sakrash yo'q; "harakatni kamaytirish" hisobga
+   olinadi.
+8. Yagona vizual tizim: oraliqlar, ichki bo'shliqlar, burchaklar, ikonka o'lchamlari, sarlavha
+   darajalari; dekorativ rasmlar ish tugmalarini pastga surmaydi; kontrast yetarli.
+Tekshiruv: 4 rol × 3 til × kunduzgi/tungi × kichik ekran (320 px) × shrift 1.3x; qidiruv,
+klaviatura, scroll va menyu bir-biriga xalaqit bermasligi. Natija: bosh sahifa va Lab sahifasining
+oldingi/keyingi skrinshotlari, qayerda tekshirilgani (Flutter widget testlari va web-build, iOS
+TestFlight'da egasi), keyin test buildi.
+
 ### 7-blok. Yakun
 - `flutter analyze`, barcha testlar, uch tilda skrinshotlar, 320 px va yotiq ekran tekshiruvi.
 - TestFlight build 4, egasiga nima yangiligi va nima tekshirish kerakligi ro'yxati.
