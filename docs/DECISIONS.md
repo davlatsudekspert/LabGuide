@@ -736,7 +736,10 @@ D-46 dagi paketlar aniqlashtirildi: shaxsiy **Pro** (laborant, shifokor, toifaga
 
 ## D-51. Reklama roliklari: ovoz va format (2026-10-12)
 - Ovoz: sof o'zbek tilida, **ayol ovozi, aksentsiz** (ru/en versiyalarda — shu tilda ona tili darajasida).
-  Manba hali hal qilinmagan: egasi yozib beradi yoki pullik TTS (egasi akkaunti). Robot ovoz ishlatilmaydi.
+  Manba (egasi tasdiqladi — hasharchilar promo usuli): `edge-tts` (Microsoft neyron ovozlari):
+  uz — `uz-UZ-MadinaNeural` (rate ≈ +10…+20%), ru — `ru-RU-SvetlanaNeural`, en — `en-US-JennyNeural`;
+  ffmpeg bilan sukunat kesiladi; fon musiqasi o'zimiz sintez qilamiz (mualliflik muammosi yo'q),
+  ovoz vaqtida musiqa pasayadi, sahna o'tishida yengil "whoosh". Robot ovoz ishlatilmaydi.
 - Format (namuna — hasharchilar promo): 9:16, logo → qiyshaytirilgan telefon mockuplari (haqiqiy ekranlar)
   → har sahnada yorliq + sarlavha → oxirida "Hoziroq yuklab oling".
 - Roliklar: Talaba (2 ta, yoki bitta 50–60 s), Shifokor, Mutaxassis (vrach-laborant/laborant); uz/ru/en.
