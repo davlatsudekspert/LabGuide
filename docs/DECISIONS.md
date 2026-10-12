@@ -695,3 +695,19 @@ Egasi so‘rovi: boshqa odamlarni Gmail/email bo‘yicha admin qilish va olib ta
 
 **Tartib:** 17-oktabr (shanba) — avtomatik taqdimot + slayd shablonlari, keyin ikki ekranli
 rejim → offline tushuntirishlar/og'zaki mashq → online AI Ustoz → telefon ichidagi model.
+
+## D-48. Narxlar (2026-10-12, egasi tasdiqladi: "narxlar maqul")
+D-46 dagi paketlar aniqlashtirildi: shaxsiy **Pro** (laborant, shifokor, toifaga tayyorlanuvchi)
++ talabaga chegirma; **Ustoz Pro**; **Muassasa** (shartnoma).
+
+| Paket | O'zbekiston | Xalqaro |
+|---|---|---|
+| Pro (shaxsiy) | 29 000 so'm/oy · 199 000 so'm/yil | $4.99/oy · $34.99/yil |
+| Pro — talaba chegirmasi | 15 000 so'm/oy · 99 000 so'm/yil | $2.49/oy · $17.99/yil |
+| Ustoz Pro | 69 000 so'm/oy · 490 000 so'm/yil | $9.99/oy · $69.99/yil |
+| Muassasa | ~15 000 so'm/kishi/oy, kamida 20 kishi | kelishuv |
+
+- Rossiya/Qozog'iston — o'rtadagi narx (do'kon mamlakat narxi). 7 kunlik bepul sinov (tasdiqlash kerak).
+- Ochiq: ilk foydalanuvchilarga chegirma; talaba holatini qanday tasdiqlash; bepul kunlik savollar soni.
+- Ommaviy chiqishdan oldin: yo Pro to'lov bilan to'liq ulanadi, yo hammasi bepul chiqadi
+  ("To'lov hali yoqilmagan" yozuvi yashiriladi) — Apple 3.1.1/2.1.
