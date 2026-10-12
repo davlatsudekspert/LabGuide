@@ -1,6 +1,7 @@
 // SVG chizmalarni PNG ga aylantiradi (Playwright Chromium).
 //   NODE_PATH=$(npm root -g) node tool/illustrations/render.cjs [nom ...]
 //   NODE_PATH=$(npm root -g) node tool/illustrations/render.cjs --cells [nom ...]
+// --sperm: spermogramma kartasi (tool/illustrations/sperm/*.svg) → assets/spermogram/<nom>.png.
 // --cyto: sitologiya sxemalari (tool/illustrations/cyto/*.svg) → assets/cytology/<nom>.png.
 // --cells: leykoformula hujayra sxemalari (tool/illustrations/cells/*.svg,
 // o'lcham SVG dan) → assets/differential/<nom>.png.
@@ -11,10 +12,13 @@ const { join } = require('node:path');
 const here = __dirname;
 const args = process.argv.slice(2);
 const cyto = args[0] === '--cyto';
-const cells = args[0] === '--cells' || cyto;
+const sperm = args[0] === '--sperm';
+const cells = args[0] === '--cells' || cyto || sperm;
 const rest = cells ? args.slice(1) : args;
-const srcDir = cyto ? join(here, 'cyto') : cells ? join(here, 'cells') : here;
-const out = cyto
+const srcDir = sperm ? join(here, 'sperm') : cyto ? join(here, 'cyto') : cells ? join(here, 'cells') : here;
+const out = sperm
+  ? join(here, '../../assets/spermogram')
+  : cyto
   ? join(here, '../../assets/cytology')
   : cells
     ? join(here, '../../assets/differential')

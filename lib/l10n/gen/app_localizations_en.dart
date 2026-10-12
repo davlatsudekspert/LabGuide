@@ -8173,4 +8173,29 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get cytoNoPhoto =>
       'No real micrograph yet — only images with verified permission will be added.';
+
+  @override
+  String get cytoLabCardBody =>
+      'Cell diagrams, cleanliness grade, Bethesda and practice';
+
+  @override
+  String get spermTitle => 'Semen analysis';
+
+  @override
+  String get spermLabCardBody =>
+      'Parameters, counting and morphology — in preparation';
+
+  @override
+  String get spermSoonTitle => 'Section in preparation';
+
+  @override
+  String get spermSoonBody =>
+      'This section is being prepared from the WHO laboratory manual (6th ed., 2021). Reference values will be added after checking against the source.';
+
+  @override
+  String get spermPlannedTitle => 'Coming in this section';
+
+  @override
+  String get spermPlanned =>
+      'Key parameters and WHO reference limits\nMotility and morphology counter\nTerms: oligo-, astheno-, terato-, azoospermia\nMorphology diagrams: head, neck and tail defects\nPre-analytics: preparation, collection, time to analysis\nPractice and a training video';
 }

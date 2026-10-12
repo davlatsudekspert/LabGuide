@@ -68,6 +68,7 @@ flutter:
     - assets/instruments/
     - assets/instruments/img/
     - assets/cytology/
+    - assets/spermogram/
     - assets/differential/
     - assets/differential/sounds/
     - assets/microscopy/

@@ -8195,4 +8195,28 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get cytoNoPhoto =>
       'Настоящее микрофото пока не добавлено — добавляются только изображения с проверенной лицензией.';
+
+  @override
+  String get cytoLabCardBody =>
+      'Схемы клеток, степень чистоты, Bethesda и тренировка';
+
+  @override
+  String get spermTitle => 'Спермограмма';
+
+  @override
+  String get spermLabCardBody => 'Показатели, подсчёт и морфология — готовится';
+
+  @override
+  String get spermSoonTitle => 'Раздел готовится';
+
+  @override
+  String get spermSoonBody =>
+      'Раздел готовится по руководству ВОЗ (6-е изд., 2021). Нормы добавятся после сверки с источником.';
+
+  @override
+  String get spermPlannedTitle => 'В разделе будет';
+
+  @override
+  String get spermPlanned =>
+      'Основные показатели и нормы ВОЗ\nСчётчик подвижности и морфологии\nТермины: олиго-, астено-, терато-, азооспермия\nСхемы морфологии: дефекты головки, шейки, хвоста\nПреаналитика: подготовка, сбор, время анализа\nТренировка и обучающее видео';
 }

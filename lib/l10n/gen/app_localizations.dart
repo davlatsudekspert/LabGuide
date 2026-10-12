@@ -14115,6 +14115,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No real micrograph yet — only images with verified permission will be added.'**
   String get cytoNoPhoto;
+
+  /// No description provided for @cytoLabCardBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Cell diagrams, cleanliness grade, Bethesda and practice'**
+  String get cytoLabCardBody;
+
+  /// No description provided for @spermTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Semen analysis'**
+  String get spermTitle;
+
+  /// No description provided for @spermLabCardBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Parameters, counting and morphology — in preparation'**
+  String get spermLabCardBody;
+
+  /// No description provided for @spermSoonTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Section in preparation'**
+  String get spermSoonTitle;
+
+  /// No description provided for @spermSoonBody.
+  ///
+  /// In en, this message translates to:
+  /// **'This section is being prepared from the WHO laboratory manual (6th ed., 2021). Reference values will be added after checking against the source.'**
+  String get spermSoonBody;
+
+  /// No description provided for @spermPlannedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Coming in this section'**
+  String get spermPlannedTitle;
+
+  /// No description provided for @spermPlanned.
+  ///
+  /// In en, this message translates to:
+  /// **'Key parameters and WHO reference limits\nMotility and morphology counter\nTerms: oligo-, astheno-, terato-, azoospermia\nMorphology diagrams: head, neck and tail defects\nPre-analytics: preparation, collection, time to analysis\nPractice and a training video'**
+  String get spermPlanned;
 }
 
 class _AppLocalizationsDelegate

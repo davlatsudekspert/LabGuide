@@ -8067,4 +8067,29 @@ class AppLocalizationsUz extends AppLocalizations {
   @override
   String get cytoNoPhoto =>
       'Haqiqiy mikrofoto hali qo‘shilmagan — faqat ruxsati tekshirilgan rasm qo‘shiladi.';
+
+  @override
+  String get cytoLabCardBody =>
+      'Hujayralar sxemasi, tozalik darajasi, Bethesda va mashq';
+
+  @override
+  String get spermTitle => 'Spermogramma';
+
+  @override
+  String get spermLabCardBody =>
+      'Ko‘rsatkichlar, sanash va morfologiya — tayyorlanmoqda';
+
+  @override
+  String get spermSoonTitle => 'Bo‘lim tayyorlanmoqda';
+
+  @override
+  String get spermSoonBody =>
+      'Spermogramma bo‘limi JSST qo‘llanmasi (6-nashr, 2021) asosida tayyorlanmoqda. Me’yorlar manba bilan tekshirilgach qo‘shiladi.';
+
+  @override
+  String get spermPlannedTitle => 'Bo‘limda bo‘ladi';
+
+  @override
+  String get spermPlanned =>
+      'Asosiy ko‘rsatkichlar va JSST me’yorlari\nHarakatchanlik va morfologiyani sanash hisoblagichi\nAtamalar: oligo-, asteno-, terato-, azoospermiya\nMorfologiya sxemalari: bosh, bo‘yin, dum nuqsonlari\nPreanalitika: tayyorgarlik, namuna olish, tahlil vaqti\nMashq va o‘quv roligi';
 }

@@ -84,9 +84,6 @@ void main() {
       await pumpApp(tester, s);
       final l = lookupAppLocalizations(Locale(lang.name));
       await goTo(tester, '/lab');
-      await tester.scrollUntilVisible(find.text(l.cytoTitle), 200);
-      await tester.drag(find.byType(Scrollable).first, const Offset(0, -200));
-      await tester.pumpAndSettle();
       await tester.tap(find.text(l.cytoTitle));
       await tester.pumpAndSettle();
       expect(find.byType(CytologyScreen), findsOne);
@@ -101,6 +98,20 @@ void main() {
       }
     });
   }
+
+  testWidgets('Lab: rasmli kartalar, spermogramma sahifasi ochiladi', (
+    tester,
+  ) async {
+    final s = await makeServices(tester);
+    await pumpApp(tester, s, size: const Size(390, 1600));
+    final l = lookupAppLocalizations(const Locale('uz'));
+    await goTo(tester, '/lab');
+    expect(find.text(l.cytoLabCardBody), findsOne);
+    await tester.tap(find.text(l.spermTitle));
+    await tester.pumpAndSettle();
+    expect(find.text(l.spermSoonTitle), findsOne);
+    expect(tester.takeException(), isNull);
+  });
 
   testWidgets('tozalik darajasi tanlovga qarab o‘zgaradi', (tester) async {
     final s = await makeServices(tester);

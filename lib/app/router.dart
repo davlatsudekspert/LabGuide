@@ -12,6 +12,7 @@ import '../features/content/ui/conditions_screens.dart';
 import '../features/content/ui/tests_screen.dart';
 import '../features/cytology/cytology_screens.dart';
 import '../features/differential/diff_eyes_free_screens.dart';
+import '../features/spermogram/spermogram_screens.dart';
 import '../features/daily/daily_screens.dart';
 import '../features/differential/differential_entry_points.dart';
 import '../features/differential/differential_quiz.dart';
@@ -372,6 +373,10 @@ GoRouter buildRouter(
                         ],
                       ),
                     ],
+                  ),
+                  GoRoute(
+                    path: 'spermogram',
+                    builder: (context, state) => const SpermogramScreen(),
                   ),
                   // Sitologiya: hujayralar, tozalik darajasi, Bethesda, mashq.
                   GoRoute(

@@ -9,6 +9,7 @@ import '../content/content_model.dart';
 import '../differential/differential_screens.dart';
 import '../partners/partner_widgets.dart';
 import '../cytology/cytology_screens.dart';
+import '../spermogram/spermogram_screens.dart';
 import '../tools/calc_info.dart';
 import '../tools/clinical_calc_screens.dart';
 import 'preanalytics_info.dart';
@@ -24,8 +25,20 @@ class LabScreen extends StatelessWidget {
       subtitle: l.labSubtitle,
       showBrand: true,
       children: [
-        // Leykoformula — eng ko'p so'raladigan bo'lim, eng yuqorida.
+        // Rasmli katta bo'limlar: leykoformula, sitologiya, spermogramma.
         const DifferentialEntryCard(),
+        LabFeatureCard(
+          image: 'assets/cytology/hero.png',
+          title: l.cytoTitle,
+          body: l.cytoLabCardBody,
+          route: cytoBase,
+        ),
+        LabFeatureCard(
+          image: spermCardImage,
+          title: l.spermTitle,
+          body: l.spermLabCardBody,
+          route: spermBase,
+        ),
         LgHeroCard(
           eyebrow: l.labHeroEyebrow,
           title: l.labHeroTitle,
@@ -64,12 +77,6 @@ class LabScreen extends StatelessWidget {
           subtitle: l.labMicroscopySub,
           icon: Icons.biotech_outlined,
           onTap: () => context.push('/lab/microscopy'),
-        ),
-        LgRow(
-          title: l.cytoTitle,
-          subtitle: l.cytoSubtitle,
-          icon: Icons.blur_on_rounded,
-          onTap: () => context.push(cytoBase),
           divider: false,
         ),
         // Faqat haqiqiy faol hamkor bo'lsa — bitta “Reklama” kartasi.
@@ -383,6 +390,79 @@ class _TubeRow extends StatelessWidget {
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+/// Lab tabi tepasidagi rasmli bo'lim kartasi (leykoformula kartasi uslubida).
+class LabFeatureCard extends StatelessWidget {
+  const LabFeatureCard({
+    super.key,
+    required this.image,
+    required this.title,
+    required this.body,
+    required this.route,
+  });
+
+  final String image;
+  final String title;
+  final String body;
+  final String route;
+
+  @override
+  Widget build(BuildContext context) {
+    final p = LgPalette.of(context);
+    final text = Theme.of(context).textTheme;
+    return Padding(
+      padding: const EdgeInsets.only(top: 6, bottom: 4),
+      child: LgPressable(
+        onTap: () => context.push(route),
+        color: p.soft,
+        borderRadius: BorderRadius.circular(LgRadius.card),
+        semanticLabel: '$title. $body',
+        child: ExcludeSemantics(
+          child: Padding(
+            padding: const EdgeInsets.all(14),
+            child: LayoutBuilder(
+              builder: (context, box) {
+                final tight =
+                    box.maxWidth / MediaQuery.textScalerOf(context).scale(1) <
+                    240;
+                final size = tight ? 40.0 : 64.0;
+                return Row(
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(tight ? 12 : 16),
+                      child: ColoredBox(
+                        color: p.paper,
+                        child: Image.asset(
+                          image,
+                          width: size,
+                          height: size,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: tight ? 10 : 14),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(title, style: text.titleMedium),
+                          const SizedBox(height: 3),
+                          Text(body, style: text.bodySmall),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(width: 6),
+                    Icon(Icons.chevron_right_rounded, color: p.brand),
+                  ],
+                );
+              },
+            ),
+          ),
         ),
       ),
     );
