@@ -4584,5 +4584,67 @@
   "cmAdminRestoreTitle": "Restore this member?",
   "cmAdminRestoreBody": "The status before suspension returns and their posts become visible again. Old reports are not counted again.",
   "adminActionGrantAdded": "Admin added",
-  "adminActionGrantRemoved": "Admin removed"
+  "adminActionGrantRemoved": "Admin removed",
+  "cytoTitle": "Cytology",
+  "cytoSubtitle": "Gynaecological smear: cells and reports",
+  "cytoHeroTitle": "Read a smear with confidence",
+  "cytoHeroBody": "Cell drawings, cleanliness grade, the Bethesda system and practice — in one place.",
+  "cytoHeroCta": "View cells",
+  "cytoSchematicCaption": "Schematic drawing (LabGuide) — not a micrograph. Pap-stain appearance.",
+  "cytoGramCaption": "Schematic drawing — Gram stain.",
+  "cytoCellsTitle": "Cells and organisms",
+  "cytoCellsSub": "{n} items: drawing and key feature",
+  "@cytoCellsSub": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "cytoDegreeTitle": "Vaginal smear cleanliness grade",
+  "cytoDegreeSub": "Grades I–IV: mark what you see",
+  "cytoBethesdaTitle": "The Bethesda system",
+  "cytoBethesdaSub": "What a Pap report means",
+  "cytoTechniqueTitle": "Sampling and staining",
+  "cytoTechniqueSub": "Preparation, fixation, staining, errors",
+  "cytoQuizTitle": "Which cell is this?",
+  "cytoQuizSub": "{n} picture questions",
+  "@cytoQuizSub": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "cytoQuizIntro": "Look at the drawing and pick the name: 4 options. The key feature is shown after you answer.",
+  "cytoQuizPrompt": "What is this?",
+  "cytoQuizStart": "Start practice",
+  "cytoLook": "Appearance",
+  "cytoKey": "Key feature",
+  "cytoMeaning": "What it means",
+  "cytoConfuse": "Often confused with",
+  "cytoRefer": "Show to a cytologist or clinician",
+  "cytoDraftNote": "This section has not been expert-reviewed. It is a learning aid: the cytologist or clinician reports.",
+  "cytoDegreeIntro": "Mark what you see under the microscope — the app shows the grade by the traditional scheme. The worst feature decides.",
+  "cytoLacto": "Lactobacilli",
+  "cytoLeuko": "Leukocytes",
+  "cytoFlora": "Other flora",
+  "cytoMany": "Many",
+  "cytoFew": "Few",
+  "cytoNone": "None",
+  "cytoSingle": "Rare",
+  "cytoVeryMany": "Very many",
+  "cytoMixed": "Mixed (cocci)",
+  "cytoPathogenic": "Pathogenic (trichomonads etc.)",
+  "cytoDegreeResult": "Grade {n}",
+  "@cytoDegreeResult": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "cytoDegreeTable": "Grades at a glance",
+  "cytoDegreeNote": "A traditional scheme (used in CIS countries); textbooks differ slightly, pH is approximate. International criteria for bacterial vaginosis are Amsel and Nugent.",
+  "cytoBethesdaIntro": "This is how a cervical smear is reported in the Bethesda system. The clinician decides next steps."
 }

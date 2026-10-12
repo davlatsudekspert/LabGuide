@@ -8030,4 +8030,140 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get adminActionGrantRemoved => 'Admin removed';
+
+  @override
+  String get cytoTitle => 'Cytology';
+
+  @override
+  String get cytoSubtitle => 'Gynaecological smear: cells and reports';
+
+  @override
+  String get cytoHeroTitle => 'Read a smear with confidence';
+
+  @override
+  String get cytoHeroBody =>
+      'Cell drawings, cleanliness grade, the Bethesda system and practice — in one place.';
+
+  @override
+  String get cytoHeroCta => 'View cells';
+
+  @override
+  String get cytoSchematicCaption =>
+      'Schematic drawing (LabGuide) — not a micrograph. Pap-stain appearance.';
+
+  @override
+  String get cytoGramCaption => 'Schematic drawing — Gram stain.';
+
+  @override
+  String get cytoCellsTitle => 'Cells and organisms';
+
+  @override
+  String cytoCellsSub(int n) {
+    return '$n items: drawing and key feature';
+  }
+
+  @override
+  String get cytoDegreeTitle => 'Vaginal smear cleanliness grade';
+
+  @override
+  String get cytoDegreeSub => 'Grades I–IV: mark what you see';
+
+  @override
+  String get cytoBethesdaTitle => 'The Bethesda system';
+
+  @override
+  String get cytoBethesdaSub => 'What a Pap report means';
+
+  @override
+  String get cytoTechniqueTitle => 'Sampling and staining';
+
+  @override
+  String get cytoTechniqueSub => 'Preparation, fixation, staining, errors';
+
+  @override
+  String get cytoQuizTitle => 'Which cell is this?';
+
+  @override
+  String cytoQuizSub(int n) {
+    return '$n picture questions';
+  }
+
+  @override
+  String get cytoQuizIntro =>
+      'Look at the drawing and pick the name: 4 options. The key feature is shown after you answer.';
+
+  @override
+  String get cytoQuizPrompt => 'What is this?';
+
+  @override
+  String get cytoQuizStart => 'Start practice';
+
+  @override
+  String get cytoLook => 'Appearance';
+
+  @override
+  String get cytoKey => 'Key feature';
+
+  @override
+  String get cytoMeaning => 'What it means';
+
+  @override
+  String get cytoConfuse => 'Often confused with';
+
+  @override
+  String get cytoRefer => 'Show to a cytologist or clinician';
+
+  @override
+  String get cytoDraftNote =>
+      'This section has not been expert-reviewed. It is a learning aid: the cytologist or clinician reports.';
+
+  @override
+  String get cytoDegreeIntro =>
+      'Mark what you see under the microscope — the app shows the grade by the traditional scheme. The worst feature decides.';
+
+  @override
+  String get cytoLacto => 'Lactobacilli';
+
+  @override
+  String get cytoLeuko => 'Leukocytes';
+
+  @override
+  String get cytoFlora => 'Other flora';
+
+  @override
+  String get cytoMany => 'Many';
+
+  @override
+  String get cytoFew => 'Few';
+
+  @override
+  String get cytoNone => 'None';
+
+  @override
+  String get cytoSingle => 'Rare';
+
+  @override
+  String get cytoVeryMany => 'Very many';
+
+  @override
+  String get cytoMixed => 'Mixed (cocci)';
+
+  @override
+  String get cytoPathogenic => 'Pathogenic (trichomonads etc.)';
+
+  @override
+  String cytoDegreeResult(int n) {
+    return 'Grade $n';
+  }
+
+  @override
+  String get cytoDegreeTable => 'Grades at a glance';
+
+  @override
+  String get cytoDegreeNote =>
+      'A traditional scheme (used in CIS countries); textbooks differ slightly, pH is approximate. International criteria for bacterial vaginosis are Amsel and Nugent.';
+
+  @override
+  String get cytoBethesdaIntro =>
+      'This is how a cervical smear is reported in the Bethesda system. The clinician decides next steps.';
 }

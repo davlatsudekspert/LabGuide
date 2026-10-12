@@ -8052,4 +8052,140 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get adminActionGrantRemoved => 'Администратор удалён';
+
+  @override
+  String get cytoTitle => 'Цитология';
+
+  @override
+  String get cytoSubtitle => 'Гинекологический мазок: клетки и заключения';
+
+  @override
+  String get cytoHeroTitle => 'Читайте мазок с пониманием';
+
+  @override
+  String get cytoHeroBody =>
+      'Схемы клеток, степень чистоты, классификация Bethesda и тренировка — в одном месте.';
+
+  @override
+  String get cytoHeroCta => 'Смотреть клетки';
+
+  @override
+  String get cytoSchematicCaption =>
+      'Схематический рисунок (LabGuide) — не микрофото. Вид при окраске по Папаниколау.';
+
+  @override
+  String get cytoGramCaption => 'Схематический рисунок — окраска по Граму.';
+
+  @override
+  String get cytoCellsTitle => 'Знакомство с клетками';
+
+  @override
+  String cytoCellsSub(int n) {
+    return '$n элементов: рисунок и главный признак';
+  }
+
+  @override
+  String get cytoDegreeTitle => 'Степень чистоты влагалищного мазка';
+
+  @override
+  String get cytoDegreeSub => 'I–IV степень: отметьте увиденное';
+
+  @override
+  String get cytoBethesdaTitle => 'Классификация Bethesda';
+
+  @override
+  String get cytoBethesdaSub => 'Что означает заключение ПАП-теста';
+
+  @override
+  String get cytoTechniqueTitle => 'Взятие и окраска мазка';
+
+  @override
+  String get cytoTechniqueSub => 'Подготовка, фиксация, окраска, ошибки';
+
+  @override
+  String get cytoQuizTitle => 'Что это за клетка?';
+
+  @override
+  String cytoQuizSub(int n) {
+    return '$n вопросов по рисунку';
+  }
+
+  @override
+  String get cytoQuizIntro =>
+      'Посмотрите на рисунок и выберите название: 4 варианта. После ответа показывается главный признак.';
+
+  @override
+  String get cytoQuizPrompt => 'Что это?';
+
+  @override
+  String get cytoQuizStart => 'Начать тренировку';
+
+  @override
+  String get cytoLook => 'Как выглядит';
+
+  @override
+  String get cytoKey => 'Главный признак';
+
+  @override
+  String get cytoMeaning => 'Что означает';
+
+  @override
+  String get cytoConfuse => 'С чем путают';
+
+  @override
+  String get cytoRefer => 'Покажите цитологу или врачу';
+
+  @override
+  String get cytoDraftNote =>
+      'Раздел не проверен специалистом. Это учебный материал: заключение даёт цитолог или врач.';
+
+  @override
+  String get cytoDegreeIntro =>
+      'Отметьте, что видите в микроскоп, — приложение покажет степень по традиционной классификации. Решает самый тяжёлый признак.';
+
+  @override
+  String get cytoLacto => 'Лактобациллы';
+
+  @override
+  String get cytoLeuko => 'Лейкоциты';
+
+  @override
+  String get cytoFlora => 'Другая флора';
+
+  @override
+  String get cytoMany => 'Много';
+
+  @override
+  String get cytoFew => 'Мало';
+
+  @override
+  String get cytoNone => 'Нет';
+
+  @override
+  String get cytoSingle => 'Единичные';
+
+  @override
+  String get cytoVeryMany => 'Очень много';
+
+  @override
+  String get cytoMixed => 'Смешанная (кокки)';
+
+  @override
+  String get cytoPathogenic => 'Патогенная (трихомонады и др.)';
+
+  @override
+  String cytoDegreeResult(int n) {
+    return '$n-я степень';
+  }
+
+  @override
+  String get cytoDegreeTable => 'Таблица степеней';
+
+  @override
+  String get cytoDegreeNote =>
+      'Традиционная классификация (практика стран СНГ); границы в учебниках немного различаются, pH ориентировочный. Международные критерии бактериального вагиноза — Амсел и Ньюджент.';
+
+  @override
+  String get cytoBethesdaIntro =>
+      'Так записывают заключение мазка шейки матки по системе Bethesda. Дальнейшую тактику определяет врач.';
 }

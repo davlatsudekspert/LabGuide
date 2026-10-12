@@ -1,6 +1,7 @@
 // SVG chizmalarni PNG ga aylantiradi (Playwright Chromium).
 //   NODE_PATH=$(npm root -g) node tool/illustrations/render.cjs [nom ...]
 //   NODE_PATH=$(npm root -g) node tool/illustrations/render.cjs --cells [nom ...]
+// --cyto: sitologiya sxemalari (tool/illustrations/cyto/*.svg) → assets/cytology/<nom>.png.
 // --cells: leykoformula hujayra sxemalari (tool/illustrations/cells/*.svg,
 // o'lcham SVG dan) → assets/differential/<nom>.png.
 const { chromium } = require('playwright');
@@ -9,12 +10,15 @@ const { join } = require('node:path');
 
 const here = __dirname;
 const args = process.argv.slice(2);
-const cells = args[0] === '--cells';
+const cyto = args[0] === '--cyto';
+const cells = args[0] === '--cells' || cyto;
 const rest = cells ? args.slice(1) : args;
-const srcDir = cells ? join(here, 'cells') : here;
-const out = cells
-  ? join(here, '../../assets/differential')
-  : join(here, '../../assets/instruments/img');
+const srcDir = cyto ? join(here, 'cyto') : cells ? join(here, 'cells') : here;
+const out = cyto
+  ? join(here, '../../assets/cytology')
+  : cells
+    ? join(here, '../../assets/differential')
+    : join(here, '../../assets/instruments/img');
 const names = rest.length
   ? rest
   : cells
