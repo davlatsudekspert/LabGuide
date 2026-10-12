@@ -1,5 +1,7 @@
 # Shanba, 17-oktabr: ish rejasi
 
+Boshlanish: 17-oktabr, 11:00 (Toshkent) — egasi ruxsati bilan so'ramasdan boshlanadi.
+
 Asos: egasi bilan kelishilgan qarorlar D-45…D-51 (`DECISIONS.md`). Bu hujjat ularni bitta
 kunlik, tartiblangan ishga aylantiradi. Har bandda "tayyor" degani nimani anglatishi yozilgan.
 Tekshirilmagan narsa "tayyor" deb aytilmaydi.
@@ -168,8 +170,11 @@ tuzatildi" yoziladi (`docs/AUDIT_2026-10-17.md`).
 Palitra (to'q yashil, sutrang, och yashil), logo va uslub saqlanadi. Avval mavjud kod tekshiriladi —
 ishlayotgan qismlar qayta qurilmaydi (masalan, scrollda ixchamlashadigan sarlavha va tab xotirasi
 allaqachon bor — faqat sinab, kerak bo'lsa tuzatiladi).
-1. Bosh sahifa: molekulali rasm va tanishtiruv kartasi balandligi ~30–35% kamayadi (matn
-   kichraymaydi — rasm balandligi va bo'shliqlar hisobiga); birinchi ekranda asosiy amallar ko'rinadi.
+1. Bosh sahifa: molekulali rasm olib tashlanmaydi, kichik kvadratga aylanadi (~72 px, Lab'dagi
+   leykoformula kartasi kabi kartaning yonida); karta: sarlavha + bir qator izoh + tugma; shior
+   "Bilim. Aniqlik. Amaliyot." kichikroq. Karta ~3 baravar past; birinchi ekranda rolga mos tezkor
+   tugmalar to'liq ko'rinadi (egasi tasdiqladi, 12-oktabr, ustoz rolidagi skrinshot bo'yicha).
+   Matn kichraytirilmaydi. To'rt rolda ham; oldin/keyin skrinshotlari.
 2. Qidiruv tepada: "Tahlil, apparat yoki mavzu qidirish" — haqiqiy qidiruv; natijalar guruhlangan
    (tahlillar, apparatlar, o'quv materiallari); uz lotin/kirill, RU/EN nomlar va qisqartmalar.
 3. Rolga mos tezkor tugmalar: shifokor — tahlillar, kalkulyatorlar, shifokor qo'llanmasi;
