@@ -110,6 +110,13 @@ tuzatildi" yoziladi (`docs/AUDIT_2026-10-17.md`).
 - **Lab bosh sahifasi:** Leykoformula kartasi kabi rasmli katta kartalar qatori — Leykoformula,
   Sitologiya, Spermogramma (keyin Qon guruhi). Sitologiya hozir pastdagi oddiy qatorda — yuqoriga,
   rasmli kartaga ko'chiriladi (egasi so'rovi, 12-oktabr skrinshoti).
+- **Leykoformula: natijani avtomatik baholash.** Hozir sanashdan keyin faqat % va (WBC kiritilsa)
+  mutlaq sonlar chiqadi; "Talqin" sahifasi alohida. Qo'shiladi: har hujayra bo'yicha me'yor bilan
+  solishtirish (mutlaq son ustun; me'yor — laboratoriyaning o'z blankasi bo'yicha sozlanadi,
+  standart qiymat manbadan), yuqori/past belgisi, mos "Talqin" kartasiga havola (masalan,
+  neytrofiliya, limfotsitoz, eozinofiliya, chapga siljish) manbalari bilan; blast/"boshqa"
+  hujayra yoki keskin og'ish bo'lsa "shifokor/gematologga" ogohlantirishi. Tashxis qo'yilmaydi —
+  "nimaga ishora qilishi mumkin". Xuddi shu yondashuv spermogrammaga ham.
 - **Spermogramma** (yangi bo'lim, leykoformula uslubida; tartib: audit → spermogramma → qon guruhi
   → sitologiya qo'shimchalari): JSST 2021 (6-nashr) pastki chegaralari — hajm 1,4 ml, konsentratsiya
   16 mln/ml, umumiy son 39 mln, umumiy harakatchanlik 42 %, progressiv 30 %, tiriklik 54 %, normal
