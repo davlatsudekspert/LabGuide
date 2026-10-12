@@ -132,6 +132,12 @@ tuzatildi" yoziladi (`docs/AUDIT_2026-10-17.md`).
 - Shanba: yangi bo'limlar (spermogramma, qon guruhi, sitologiya qo'shimchalari) birdaniga 3 tilda;
   1-mavzu taqdimoti ru/en; domla savollari — avval domla kalitni tasdiqlaydi (34 shubhali + 8 zid),
   keyin ru/en tarjima. Toifa rasmiy matni o'zbekcha qoladi, ru/en — yordamchi tarjima belgisi bilan.
+- **Rus tili — to'liq teng til** (O'zbekistondagi rus guruhlari toifani rus tilida topshiradi):
+  toifa 488 test + 289 og'zaki savolning ruscha matni rasmiy rus atamalari (ГОСТ Р ИСО 15189,
+  klinik tavsiyalar) bilan qayta tekshiriladi; SSV toifa savollarining rasmiy ruscha varianti
+  qidiriladi (avval domla bergan 300 talik kirill to'plam) — topilsa matn shunga moslanadi va
+  "yordamchi tarjima" belgisi olib tashlanadi. Begona (masalan, RF akkreditatsiya) test banklari
+  ko'chirilmaydi — faqat mavzu qamrovi uchun ko'riladi, bo'sh mavzularga o'z savollarimiz tuziladi.
 - Tarjimalar tibbiy atamalar lug'ati bo'yicha tekshiriladi; ona tilida so'zlashuvchi mutaxassis
   ko'rib chiqishi alohida qayd etiladi (hali yo'q).
 - Roliklar va diktor PDF ham ru/en.
