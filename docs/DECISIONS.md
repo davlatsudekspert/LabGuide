@@ -744,3 +744,10 @@ D-46 dagi paketlar aniqlashtirildi: shaxsiy **Pro** (laborant, shifokor, toifaga
   → har sahnada yorliq + sarlavha → oxirida "Hoziroq yuklab oling".
 - Roliklar: Talaba (2 ta, yoki bitta 50–60 s), Shifokor, Mutaxassis (vrach-laborant/laborant); uz/ru/en.
 - Shanba (17-oktabr) rejasi bilan, Pro va avtomatik taqdimot tayyor bo'lgach.
+
+## D-52. Roliklar: egasining o'z ovozi; shanba rejasi (2026-10-12)
+- `edge-tts` (Madina) bulut serveridan 403 bilan rad etiladi, shuning uchun D-51 dagi ovoz manbasi
+  o'zgaradi: roliklar ovozsiz (faqat musiqa) tayyorlanadi, egasi diktor PDF bo'yicha o'zi o'qiydi,
+  fayllar gap-gap videoga joylanadi. Roliklar: talaba, shifokor, laborant, ustoz (har biri ≥ 1 daqiqa).
+- Talaba rolida O'rganishda toifa kartasi ko'rsatilmaydi (toifa ishlayotgan mutaxassis uchun).
+- Shanba ish rejasi: `PLAN_2026-10-17_SHANBA.md`.
