@@ -142,6 +142,13 @@ tuzatildi" yoziladi (`docs/AUDIT_2026-10-17.md`).
   ko'rib chiqishi alohida qayd etiladi (hali yo'q).
 - Roliklar va diktor PDF ham ru/en.
 
+### 6d-blok. Marketing rejasi (hujjat)
+- `docs/MARKETING_PLAN.md`: bosqichlar (1k → 10k → 100k → 1M), kanallar (Telegram kanallari va
+  guruhlari, Instagram/TikTok roliklari, YouTube o'quv videolari, ustoz-elchi, kollej/institutlar),
+  pullik reklama sinovi ($50–100: Google App Campaigns, Apple Search Ads, Meta) va o'lchovlar
+  (yuklab olish narxi, Pro'ga o'tish, 7 kunlik sinovdan keyin to'lash, qaytish). Shart: reklamadan
+  oldin Pro to'lovi ulangan va ilova do'konda ochiq bo'lsin.
+
 ### 7-blok. Yakun
 - `flutter analyze`, barcha testlar, uch tilda skrinshotlar, 320 px va yotiq ekran tekshiruvi.
 - TestFlight build 4, egasiga nima yangiligi va nima tekshirish kerakligi ro'yxati.
