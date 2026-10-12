@@ -660,3 +660,18 @@ Egasi so‘rovi: boshqa odamlarni Gmail/email bo‘yicha admin qilish va olib ta
 - Yotiq ekranda (TV/proyektor) rasmli slayd butun ekranda; chetini bosib o'tiladi.
   Ekran ulashilganda ustoz izohi ham televizorda ko'rinadi — darsda yopiq tursin.
 - Qolgan mavzular va PPTX yuklash (Ustoz Pro) — 17-oktabr rejasi.
+
+## D-46. Pro yo'nalishi: Ustoz Pro + Talaba Pro, butun dunyo (2026-10-12, egasi tasdiqladi)
+- Maqsad: ilova butun dunyoda foydalanilsin va sotib olinsin (uz/ru/en, keyin boshqa tillar).
+- **Bepul:** barcha kartalar, kalkulyatorlar, preanalitika, sanagich, ochiq manbalar, kuniga
+  10–20 savol, toifa namunalari, hamjamiyatni o'qish/savol berish.
+- **Talaba Pro (arzon, Ustoz Pro'dan 3–5 baravar arzon):** cheksiz savollar, imtihon simulyatsiyasi,
+  zaif mavzular tahlili, to'liq toifa banki, kartadan mini-test, atlas mashqlari, ichki sertifikat
+  ("LabGuide ichki sertifikati" — rasmiy kredit emas).
+- **Ustoz Pro:** guruhlar, testlar, hisobotlar, ma'ruza rejimi, tayyor taqdimotlar, ikki ekranli rejim,
+  guruh topshiriqlari; guruh talabalariga chegirma.
+- **ru/en uchun alohida qiymat:** akkreditatsiya testlariga tayyorgarlik (litsenziyasi tekshirilgach),
+  xalqaro standartlar (CLSI, IFCC, WHO, ISO 15189, Westgard), SI/an'anaviy birliklar, klinik holatlar,
+  ona tilida mutaxassis tekshirgan mazmun. Begona imtihon banklari ko'chirilmaydi.
+- To'lov: ilova ichida Apple/Google; muassasa litsenziyasi — shartnoma (YATT kerak bo'ladi).
+- Narx, sinov muddati va limitlar — egasi bilan alohida (17-oktabr).
