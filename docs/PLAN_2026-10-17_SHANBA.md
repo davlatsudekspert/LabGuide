@@ -30,6 +30,11 @@ Tekshirilmagan narsa "tayyor" deb aytilmaydi.
 
 ## 2. Shanba: ishlar tartibi
 
+**Tartib (egasi bilan kelishilgan, 12-oktabr):** 1) audit → 2) dizayn (6e-blok) →
+3) leykoformula avtomatik baholash → 4) sitologiya: domla izohlari bo'yicha tuzatish va
+qo'shimchalar (yetilish indeksi, reaktiv o'zgarishlar, ASC-US/LSIL/AGC, namuna sifati) →
+5) spermogramma → 6) test buildi. Vaqt qolsa: qon guruhi, roliklar, uch tilni to'liq tekshirish.
+
 ### 0-blok. To'liq audit (kun boshida, yangi ish boshlanishidan oldin)
 Topilgan xatolar shu kuni tuzatiladi. Har birida "nima tekshirildi, nima topildi, nima
 tuzatildi" yoziladi (`docs/AUDIT_2026-10-17.md`).
