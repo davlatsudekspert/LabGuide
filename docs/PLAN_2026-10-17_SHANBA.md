@@ -126,6 +126,16 @@ tuzatildi" yoziladi (`docs/AUDIT_2026-10-17.md`).
 - Qoida: tibbiy mazmunda xato bo'lmasligi uchun har bo'lim "qoralama" belgisi bilan chiqadi va
   domla tasdig'idan keyin "tekshirilgan"ga o'tadi; rasm nomga mosligi ko'z bilan tekshiriladi.
 
+### 6c-blok. Hammasi uch tilda (uz/ru/en)
+- Hozir 3 tilda: interfeys, 119 karta, 173 izohli test, toifa 488 test + 289 og'zaki savol,
+  sitologiya. Faqat o'zbekcha: 1-mavzu taqdimoti (30 slayd), domla bergan 529 yangi savol.
+- Shanba: yangi bo'limlar (spermogramma, qon guruhi, sitologiya qo'shimchalari) birdaniga 3 tilda;
+  1-mavzu taqdimoti ru/en; domla savollari — avval domla kalitni tasdiqlaydi (34 shubhali + 8 zid),
+  keyin ru/en tarjima. Toifa rasmiy matni o'zbekcha qoladi, ru/en — yordamchi tarjima belgisi bilan.
+- Tarjimalar tibbiy atamalar lug'ati bo'yicha tekshiriladi; ona tilida so'zlashuvchi mutaxassis
+  ko'rib chiqishi alohida qayd etiladi (hali yo'q).
+- Roliklar va diktor PDF ham ru/en.
+
 ### 7-blok. Yakun
 - `flutter analyze`, barcha testlar, uch tilda skrinshotlar, 320 px va yotiq ekran tekshiruvi.
 - TestFlight build 4, egasiga nima yangiligi va nima tekshirish kerakligi ro'yxati.
