@@ -722,3 +722,14 @@ D-46 dagi paketlar aniqlashtirildi: shaxsiy **Pro** (laborant, shifokor, toifaga
 - Ustoz PPTX yuklamaydi. Faqat monitorga chiqarish: iPhone — AirPlay (ekranni takrorlash),
   Android — ekran translyatsiyasi (Miracast/Smart View, Cast); ilova tashqi ekranni ko'rib
   faqat slaydni chiqaradi (ikki ekranli rejim). Chromecast uchun alohida Cast qabul qiluvchi — keyin.
+
+## D-50. Talaba narxi (A varianti), reklama roliklari, ustoz-elchi (2026-10-12)
+- Talaba chegirmasi (D-48 ni almashtiradi): **9 000 so'm/oy · 49 000 so'm/yil**; xalqaro **$1.49/oy · $9.99/yil**.
+  3–4 oydan keyin natijaga qarab ko'riladi (Play narx tajribasi).
+- Reklama roliklari **uz/ru/en**: maqsad — talaba (kelajakdagi shifokor, laborant, biokimyogar) ilova
+  unga nega kerakligini tushunsin: toifa/imtihon, kundalik ish (kalkulyator, QC, preanalitika),
+  ustoz uchun taqdimot. Pro va avtomatik taqdimot tayyor bo'lgach, haqiqiy ilova ekranlaridan
+  (soxta raqam/sharh yo'q). Chet ellik (ingliz tilidagi) tibbiyot talabalari ham auditoriya.
+- **Ustoz-elchi:** bitta biokimyo o'qituvchisiga bepul Ustoz Pro (admin beradi, muddatli),
+  u ilovani talabalariga tanishtiradi. Reklamada hamkorlik ochiq aytiladi. Kerak:
+  admin panelda "Pro berish (muddat bilan)" — server tomonidan, audit bilan.
