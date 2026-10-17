@@ -8849,4 +8849,38 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get homeAdDemoCta => 'Place an ad';
+
+  @override
+  String get cmBlock => 'Block user';
+
+  @override
+  String get cmBlockConfirmTitle => 'Block this user?';
+
+  @override
+  String get cmBlockConfirmBody =>
+      'You will no longer see their questions or answers on this device. You can undo this in the community list.';
+
+  @override
+  String get cmBlockedDone => 'User blocked. Their posts are hidden.';
+
+  @override
+  String get cmBlockedHidden =>
+      'This post is hidden because you blocked its author.';
+
+  @override
+  String cmBlockedCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'You have blocked $count users.',
+      one: 'You have blocked 1 user.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get cmUnblockAll => 'Unblock everyone';
+
+  @override
+  String get cmContactLink => 'Contact LabGuide (report a problem)';
 }

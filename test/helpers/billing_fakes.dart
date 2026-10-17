@@ -42,7 +42,10 @@ class FakeEntitlementSource implements EntitlementSource {
   Future<EntitlementSnapshot> fetch() async {
     if (error != null) throw error!;
     return snapshot ??
-        EntitlementSnapshot(serverTime: DateTime.now().toUtc(), items: const []);
+        EntitlementSnapshot(
+          serverTime: DateTime.now().toUtc(),
+          items: const [],
+        );
   }
 
   @override
@@ -138,7 +141,7 @@ List<StoreProduct> storeProducts() => const [
   StoreProduct(
     id: BillingCatalog.teacherMonthly,
     title: 'Ustoz Pro',
-    displayPrice: r'$9.99',
+    displayPrice: r'$6.99',
     period: StorePeriod(1, StorePeriodUnit.month),
     freeTrial: StorePeriod(14, StorePeriodUnit.day),
   ),

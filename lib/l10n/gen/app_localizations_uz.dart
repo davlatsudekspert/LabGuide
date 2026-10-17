@@ -8711,4 +8711,37 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get homeAdDemoCta => 'Reklama joylashtirish';
+
+  @override
+  String get cmBlock => 'Foydalanuvchini bloklash';
+
+  @override
+  String get cmBlockConfirmTitle => 'Foydalanuvchi bloklansinmi?';
+
+  @override
+  String get cmBlockConfirmBody =>
+      'Uning savol va javoblari shu qurilmada ko‘rinmaydi. Buni hamjamiyat ro‘yxatidan qaytarish mumkin.';
+
+  @override
+  String get cmBlockedDone => 'Foydalanuvchi bloklandi. Postlari yashirildi.';
+
+  @override
+  String get cmBlockedHidden =>
+      'Muallifni bloklaganingiz uchun bu post yashirilgan.';
+
+  @override
+  String cmBlockedCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Siz $count ta foydalanuvchini bloklagansiz.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get cmUnblockAll => 'Hammasini blokdan chiqarish';
+
+  @override
+  String get cmContactLink => 'LabGuide bilan aloqa (muammo haqida xabar)';
 }

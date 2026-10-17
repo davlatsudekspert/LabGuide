@@ -6,7 +6,8 @@ Shungacha ilova **to‘liq bepul/ochiq** ishlaydi va hech qanday xarid elementi
 ko‘rsatmaydi (App Store 2.1 / 3.1.1).
 
 Bog‘liq qarorlar: D-46 (paketlar), D-48 (narxlar), D-49 (sinov: Pro 7 kun,
-Ustoz Pro 14 kun; talaba tasdig‘i), D-50 (talaba narxi), D-53 (bepul — kunlik 5 savol).
+Ustoz Pro 14 kun; talaba tasdig‘i), D-50 (talaba narxi), D-53 (bepul — kunlik 5 savol),
+D-57 (Ustoz Pro yangi narxi: 39 000 so‘m/oy).
 Tadqiqot: `docs/PAYMENTS_RESEARCH.md`.
 
 ## 0. Asosiy qoidalar
@@ -58,14 +59,19 @@ Tadqiqot: `docs/PAYMENTS_RESEARCH.md`.
 `cloudflare/src/billing.ts` (`BILLING_PRODUCTS`) — bir xil ro‘yxat (unit test
 ikkalasini solishtiradi). Eski taklif `labguide.pro.*` ishlatilmaydi.
 
-| Mahsulot id | Daraja | Davr | Narx (D-48/D-50, do‘konda qo‘yiladi) | Bepul sinov (D-49) |
+| Mahsulot id | Daraja | Davr | Narx (D-48/D-50/D-57, do‘konda qo‘yiladi) | Bepul sinov (D-49) |
 |---|---|---|---|---|
 | `uz.labguide.pro.monthly` | Pro | 1 oy | 29 000 so‘m · $4.99 | 7 kun |
 | `uz.labguide.pro.yearly` | Pro | 1 yil | 199 000 so‘m · $34.99 | 7 kun |
 | `uz.labguide.pro.student.monthly` | Pro (talaba) | 1 oy | 9 000 so‘m · $1.49 | 7 kun |
 | `uz.labguide.pro.student.yearly` | Pro (talaba) | 1 yil | 49 000 so‘m · $9.99 | 7 kun |
-| `uz.labguide.teacherpro.monthly` | Ustoz Pro | 1 oy | 69 000 so‘m · $9.99 | 14 kun |
-| `uz.labguide.teacherpro.yearly` | Ustoz Pro | 1 yil | 490 000 so‘m · $69.99 | 14 kun |
+| `uz.labguide.teacherpro.monthly` | Ustoz Pro | 1 oy | 39 000 so‘m · $6.99 | 14 kun |
+| `uz.labguide.teacherpro.yearly` | Ustoz Pro | 1 yil | 269 000 so‘m · $46.99 | 14 kun |
+
+**Narx pog‘onalari:** Apple va Google narxni o‘z ro‘yxatidagi pog‘onalardan tanlatadi,
+shuning uchun yuqoridagi so‘m va dollar raqamlari yaxlitlanishi mumkin (ayniqsa UZS).
+Do‘konda eng yaqin pog‘onani tanlang (Ustoz Pro doim Pro’dan qimmat qolsin) va yakuniy
+raqamni `DECISIONS.md` D-57 ga yozing. Ilova narxni kodda saqlamaydi — do‘kondan oladi.
 
 **Talaba mahsulotlari** ilovada hozircha **ko‘rsatilmaydi**: talaba holatini
 tasdiqlash (D-49) hali yo‘q (`EntitlementService.studentVerified = false`).
@@ -219,7 +225,7 @@ Tartib muhim emas; oxirida bitta `deploy_api` ishga tushiriladi.
 2. **Apps → LabGuide → Monetization → Subscriptions** → **Subscription Group**
    yarating (masalan, “LabGuide Pro”). Oltita mahsulot **bitta guruhda** bo‘lsin
    (Pro ↔ Ustoz Pro almashtirish Apple tomonidan avtomatik).
-   Darajalar (Level): 1 — Ustoz Pro (oylik va yillik), 2 — Pro, 3 — Pro talaba.
+   Darajalar (Level): 1 — Ustoz Pro (oylik va yillik; eng qimmat, D-57), 2 — Pro, 3 — Pro talaba.
 3. 2-bo‘limdagi **6 ta auto-renewable subscription** — aynan shu Product ID’lar
    bilan. Har biri uchun: davr (1 Month / 1 Year), narx (bazaviy mamlakat — AQSh,
    O‘zbekiston uchun alohida narx nuqtasi, D-48/D-50), **Introductory Offer →

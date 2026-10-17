@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 
 import '../../core/backend/community_backend.dart';
+import '../../core/storage/kv_store.dart';
 
 /// Hamjamiyat holati: server bormi, foydalanuvchining mutaxassis holati va
 /// mavzular bo'yicha savollar soni (qisqa kesh — har kartada so'rov
@@ -11,11 +12,16 @@ import '../../core/backend/community_backend.dart';
 /// [api] `null` — server ulanmagan (Supabase yoki “ulanmagan” build):
 /// hamjamiyat UI umuman ko'rsatilmaydi (D-43, F).
 class CommunityController extends ChangeNotifier {
-  CommunityController(this.api, {DateTime Function()? clock})
-    : _clock = clock ?? DateTime.now;
+  CommunityController(this.api, {DateTime Function()? clock, this.store})
+    : _clock = clock ?? DateTime.now {
+    _blocked.addAll(_readBlocked());
+  }
 
   final CommunityBackend? api;
   final DateTime Function() _clock;
+
+  /// Bloklar shu omborda (qurilma bo'yicha); `null` — faqat xotirada.
+  final KeyValueStore? store;
 
   static const _ttl = Duration(minutes: 5);
 
@@ -77,7 +83,63 @@ class CommunityController extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// Chiqish / lokal ma'lumotni o'chirish.
+  // ---- bloklash (App Store 1.2: "ability to block abusive users")
+
+  final Set<String> _blocked = {};
+
+  /// Bloklangan mualliflar soni.
+  int get blockedCount => _blocked.length;
+
+  /// Muallif bloklanganmi. Belgisi ([CommunityAuthor.ref]) yo'q yoki o'zimiz
+  /// bo'lsak — hech qachon.
+  bool isBlocked(CommunityAuthor a) =>
+      !a.isMe && a.ref != null && _blocked.contains(a.ref);
+
+  /// Muallifni bloklash mumkinmi (server belgi bergan, o'zimiz emas, egasi
+  /// emas — egasi LabGuide jamoasi, uni shikoyat orqali hal qilamiz).
+  bool canBlock(CommunityAuthor a) =>
+      a.ref != null && !a.isMe && a.kind != AuthorKind.owner;
+
+  List<String> _readBlocked() {
+    try {
+      return store?.getStringList(StoreKeys.communityBlocked) ?? const [];
+    } on Object {
+      return const [];
+    }
+  }
+
+  Future<void> _saveBlocked() async {
+    try {
+      await store?.setStringList(StoreKeys.communityBlocked, [..._blocked]);
+    } on Object {
+      // Eslab qolish xato bersa ham joriy sessiyada blok ishlayveradi.
+    }
+  }
+
+  Future<void> block(CommunityAuthor a) async {
+    final ref = a.ref;
+    if (ref == null || !canBlock(a)) return;
+    if (_blocked.add(ref)) {
+      notifyListeners();
+      await _saveBlocked();
+    }
+  }
+
+  /// Hammasini blokdan chiqarish (“Bloklanganlar” bo'limidan).
+  Future<void> unblockAll() async {
+    if (_blocked.isEmpty) return;
+    _blocked.clear();
+    notifyListeners();
+    await _saveBlocked();
+  }
+
+  /// "Lokal ma'lumotlarni o'chirish": ombor tozalangan, xotiradagi bloklar ham.
+  void resetInMemory() {
+    _blocked.clear();
+    reset();
+  }
+
+  /// Hisobdan chiqish / kirish (bloklar qurilmada qoladi).
   void reset() {
     _me = null;
     _counts.clear();

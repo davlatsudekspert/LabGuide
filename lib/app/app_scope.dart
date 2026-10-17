@@ -197,7 +197,7 @@ class AppServices {
     differential.resetInMemory();
     daily.resetInMemory();
     classroom.resetInMemory();
-    community.reset();
+    community.resetInMemory();
     await reminders.reset();
     await packs.removeAll();
     settings.resetToDefaults(systemLocales);

@@ -164,7 +164,7 @@ void main() {
       expect(find.text(monthly), findsOneWidget);
       expect(find.text(uz.payTrial(uz.payDays(7), monthly)), findsOneWidget);
       expect(find.text(uz.payPricePer(r'$34.99', uz.payUnitYear)), findsOneWidget);
-      final teacher = uz.payPricePer(r'$9.99', uz.payUnitMonth);
+      final teacher = uz.payPricePer(r'$6.99', uz.payUnitMonth);
       expect(find.text(teacher), findsOneWidget);
       expect(find.text(uz.payTrial(uz.payDays(14), teacher)), findsOneWidget);
       // Talaba narxi — faqat tasdiqlangan talabaga (hozir tasdiq yo'q).

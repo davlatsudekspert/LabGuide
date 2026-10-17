@@ -83,6 +83,10 @@ abstract final class StoreKeys {
   /// Hamjamiyat qoidalari kartasi: ochiq/yopiq (qurilma bo'yicha).
   static const communityRulesOpen = 'community.rulesOpen';
 
+  /// Hamjamiyat: foydalanuvchi bloklagan mualliflar (`CommunityAuthor.ref`),
+  /// faqat shu qurilmada (App Store 1.2: suiiste'molchini bloklash).
+  static const communityBlocked = 'community.blocked';
+
   static const all = <String>{
     language,
     themeMode,
@@ -122,6 +126,7 @@ abstract final class StoreKeys {
     dailyReminder,
     classroomLocal,
     communityRulesOpen,
+    communityBlocked,
   };
 }
 

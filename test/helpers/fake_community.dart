@@ -158,6 +158,7 @@ class FakeCommunityBackend implements CommunityBackend {
       role: verified ? m?.role : null,
       country: verified ? m?.country : null,
       isMe: lab.userId == uid,
+      ref: 'ref-$uid',
     );
   }
 

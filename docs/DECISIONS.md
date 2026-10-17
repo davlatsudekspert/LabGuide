@@ -703,8 +703,8 @@ D-46 dagi paketlar aniqlashtirildi: shaxsiy **Pro** (laborant, shifokor, toifaga
 | Paket | O'zbekiston | Xalqaro |
 |---|---|---|
 | Pro (shaxsiy) | 29 000 so'm/oy · 199 000 so'm/yil | $4.99/oy · $34.99/yil |
-| Pro — talaba chegirmasi | 15 000 so'm/oy · 99 000 so'm/yil | $2.49/oy · $17.99/yil |
-| Ustoz Pro | 69 000 so'm/oy · 490 000 so'm/yil | $9.99/oy · $69.99/yil |
+| Pro — talaba chegirmasi | ~~15 000 so'm/oy · 99 000 so'm/yil · $2.49/oy · $17.99/yil~~ — D-50 almashtirgan | |
+| Ustoz Pro | ~~69 000 so'm/oy · 490 000 so'm/yil · $9.99/oy · $69.99/yil~~ — D-57 almashtirgan | |
 | Muassasa | ~15 000 so'm/kishi/oy, kamida 20 kishi | kelishuv |
 
 - Rossiya/Qozog'iston — o'rtadagi narx (do'kon mamlakat narxi). 7 kunlik bepul sinov (tasdiqlash kerak).
@@ -803,3 +803,39 @@ D-46 dagi paketlar aniqlashtirildi: shaxsiy **Pro** (laborant, shifokor, toifaga
   Litsenziyasi AI'ga berishni taqiqlovchi kutubxona yozuvlari yuborilmaydi. Tafsilot: `tool/ai/README.md`.
 - **Qayta ko'rish:** birinchi haqiqiy ishga tushirishlardan keyin (aniq narx va foydali topilmalar ulushi);
   Claude'ni ilova ichida (Pro, D-54) ishlatish alohida qaror bo'lib qoladi.
+
+## D-57. Ustoz Pro narxi: Pro'dan qimmat, lekin D-48 dagidan arzon (2026-10-17, egasi qarori)
+D-48 dagi **Ustoz Pro** qatorini (69 000 so'm/oy · 490 000 so'm/yil · $9.99/oy · $69.99/yil) almashtiradi.
+(D-56 raqami boshqa ish uchun band qilingan, shuning uchun D-57.)
+
+| Paket | O'zbekiston | Xalqaro |
+|---|---|---|
+| Pro (shaxsiy) — o'zgarmaydi | 29 000 so'm/oy · 199 000 so'm/yil | $4.99/oy · $34.99/yil |
+| Pro — talaba (D-50) — o'zgarmaydi | 9 000 so'm/oy · 49 000 so'm/yil | $1.49/oy · $9.99/yil |
+| **Ustoz Pro (yangi)** | **39 000 so'm/oy · 269 000 so'm/yil** | **$6.99/oy · $46.99/yil** |
+
+- **Mantiq:** Ustoz Pro doim Pro'dan qimmat bo'lishi kerak (ustoz = Pro'dagi hammasi + guruhlar, topshiriqlar,
+  avtomatik taqdimot). Yillik narx Pro bilan bir xil nisbatda: Pro 199 000 / 29 000 ≈ 6,9 baravar →
+  39 000 × 6,9 ≈ 269 000 so'm. Xalqaro: $4.99 → $6.99 (×1,4, so'mdagi 29 000 → 39 000 ≈ ×1,34 ga yaqin);
+  yillik $46.99 (oylikning ≈ 6,7 baravari; Pro'da $34.99 / $4.99 ≈ 7,0 — yillik chegirma biroz kuchliroq,
+  egasi taklifi).
+- **Egasi argumenti:** ChatGPT foydalanuvchilari PPTX tayyorlash uchun oyiga ~228 000 so'm to'laydi; LabGuide
+  shu ishni (manbali, o'quv rejaga mos taqdimot) bajaradi, 39 000 so'm esa uning ~1/6 qismi. Eslatma: ilova
+  tashqi LLM'ni chaqirmaydi — taqdimot paketdagi manbaga bog'langan mazmundan qoida bo'yicha yig'iladi
+  (D-47a), shuning uchun reklamada "AI" va "ChatGPT o'rnini bosadi" kabi taqqoslash yozilmaydi
+  (Apple 2.3.1/2.3.14: tekshirib bo'lmaydigan da'vo va narx haqida aniq ma'lumot yo'q).
+- **Sinov muddati o'zgarmaydi:** Ustoz Pro — 14 kun, Pro va talaba — 7 kun (D-49).
+- **Do'kon narx pog'onalari (price points):** Apple va Google narxni faqat o'z ro'yxatidagi pog'onalardan
+  tanlatadi, shuning uchun yakuniy raqam yaxlitlanishi mumkin. Apple'ning UZS pog'onalari ro'yxatini ochiq
+  rasmiy manbada topib bo'lmadi (App Store Connect → obuna → Subscription Prices → O'zbekiston, "Show all
+  prices"): shu ro'yxatdan **39 000 va 269 000 ga eng yaqin** pog'onani tanlang; USD uchun $6.99 va $46.99
+  odatda mavjud (App Store Connect'da tekshiring). Google Play'da narx istalgan raqam (mahalliy valyutada
+  yaxlitlash qoidalari bilan). Tanlangan haqiqiy narxni shu yerga yozib qo'ying. Ilova narxni kodda
+  saqlamaydi — do'kondan oladi, shuning uchun kod o'zgarmaydi.
+- **Hali sotuvda emas:** obuna ulanmagan (to'lov yoqilmagan), shuning uchun avvalgi 69 000 narxdagi obunachi
+  yo'q, narx o'zgarishi uchun foydalanuvchi roziligi (Apple price-increase consent) kerak emas.
+  Narxni *oshirish* keyinroq mavjud obunachilar roziligini talab qiladi — shuning uchun boshlang'ich narxni
+  shu paytda ehtiyotkorlik bilan tanlang.
+- **Joylar:** `docs/PRO_BILLING_PLAN.md` 2-bo'lim jadvali; kodda qotirilgan narx yo'q (test mahsulotlari
+  `test/helpers/billing_fakes.dart` dagi `displayPrice` — faqat sinov qiymati, yangi $6.99 ga moslangan).
+
