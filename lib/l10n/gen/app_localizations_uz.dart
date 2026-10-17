@@ -9127,4 +9127,143 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get lectureDeckLoadFailed => 'Taqdimotni ochib bo‘lmadi';
+
+  @override
+  String get topicTestAction => 'Mavzu testi';
+
+  @override
+  String get topicTestPreparing => 'Bu mavzu uchun savollar tayyorlanmoqda';
+
+  @override
+  String get topicTestPreparingShort => 'Savollar tayyorlanmoqda';
+
+  @override
+  String topicTestPreparingBody(int count) {
+    return 'Testga faqat tekshirilgan savollar qo‘yiladi. Hozircha bu mavzu bo‘yicha $count ta bor — kamida 3 ta kerak.';
+  }
+
+  @override
+  String topicTestIntro(int count) {
+    return '$count ta savol · har javobdan keyin to‘g‘ri javob va izoh';
+  }
+
+  @override
+  String get topicTestSavedNote =>
+      'Chiqib ketsangiz ham javoblar saqlanadi — keyin shu joydan davom ettirasiz.';
+
+  @override
+  String get topicTestSourcesNote =>
+      'Savollar faqat tekshirilgan manbalardan: kaliti tasdiqlangan rasmiy toifa savollari va manbasi ko‘rsatilgan mashq savollari.';
+
+  @override
+  String get topicTestStart => 'Testni boshlash';
+
+  @override
+  String topicTestResume(int answered, int total) {
+    return 'Davom ettirish · $answered/$total';
+  }
+
+  @override
+  String topicTestBest(int score, int total) {
+    return 'Eng yaxshi natija: $score/$total';
+  }
+
+  @override
+  String topicTestBadgeLabel(int score, int total) {
+    return 'Mavzu testi, eng yaxshi natija $score / $total';
+  }
+
+  @override
+  String get topicTestRetake => 'Qayta topshirish';
+
+  @override
+  String get topicTestNextTopic => 'Keyingi mavzu';
+
+  @override
+  String get topicTestOpenSlide => 'Slaydni ko‘rish';
+
+  @override
+  String get topicTestOpenDeckStart => 'Taqdimotni boshidan ko‘rish';
+
+  @override
+  String get topicTestHistory => 'Natijalar tarixi';
+
+  @override
+  String get topicTestAssign => 'Guruhga topshirish';
+
+  @override
+  String get topicTestAssignIntro =>
+      'Talabalar testni o‘z telefonida muddatgacha topshiradi; ball serverda hisoblanadi.';
+
+  @override
+  String get topicTestGroups => 'Guruhlar';
+
+  @override
+  String get topicTestNoGroups => 'Sizda hali guruh yo‘q';
+
+  @override
+  String get topicTestNoGroupsBody =>
+      'Avval guruh oching va talabalarni taklif qiling — keyin testni shu yerdan topshirasiz.';
+
+  @override
+  String get topicTestPickGroup => 'Kamida bitta guruhni tanlang';
+
+  @override
+  String get topicTestReveal => 'To‘g‘ri javoblar talabaga';
+
+  @override
+  String get topicTestRevealNow => 'Topshirgach darhol';
+
+  @override
+  String get topicTestRevealAfterDue => 'Muddat tugagach';
+
+  @override
+  String get topicTestRevealNeedsDue =>
+      '“Muddat tugagach” uchun topshirish muddatini tanlang';
+
+  @override
+  String topicTestSent(int count) {
+    return 'Test yuborildi: $count ta guruh';
+  }
+
+  @override
+  String topicTestTitle(String title) {
+    return 'Mavzu testi: $title';
+  }
+
+  @override
+  String get topicTestSentList => 'Yuborilgan testlar';
+
+  @override
+  String topicTestAnswersLater(String date) {
+    return 'To‘g‘ri javoblar muddat tugagach ochiladi ($date)';
+  }
+
+  @override
+  String get topicTestDistribution => 'Natijalar taqsimoti';
+
+  @override
+  String get topicTestHardest => 'Eng qiyin savollar';
+
+  @override
+  String get topicTestAssignedTitle => 'Topshirilgan testlar';
+
+  @override
+  String get topicTestMenu => 'Amallar';
+
+  @override
+  String get topicTestOpenLecture => 'Taqdimotni ochish';
+
+  @override
+  String get topicTestCreateGroup => 'Guruh ochish';
+
+  @override
+  String topicTestStudents(int count) {
+    return '$count ta talaba';
+  }
+
+  @override
+  String topicTestReworkMistakes(int count) {
+    return 'Xatolarni takrorlash · $count';
+  }
 }

@@ -19,6 +19,8 @@ import 'lecture_library.dart';
 import 'lecture_slide.dart';
 import 'lecture_templates.dart';
 import 'topic_questions.dart';
+import 'topic_test.dart' show DeckTestState;
+import 'topic_test_screens.dart';
 
 // Ma'ruza (taqdimot) rejimi: ustoz mavzuni katta ekranda ko'rsatadi.
 // Serversiz ishlaydi — slaydlar o'quv dasturi va ilova kontentidan
@@ -335,10 +337,30 @@ class _LectureScreenState extends State<LectureScreen> {
     }());
   }
 
+  /// Mavzu testi qaysi deck bo'yicha: katalog decki yoki mavzuning decki
+  /// (avtomatik taqdimotda — yo'q).
+  DeckEntry? _testDeck() {
+    if (widget.generated != null) return null;
+    final c = DeckCatalog.peek(
+      context.services.curriculum.bundle ?? rootBundle,
+    );
+    if (widget.deckId != null) return c?.byId(widget.deckId!);
+    return widget.topicId.isEmpty ? null : c?.byTopic(widget.topicId);
+  }
+
   @override
   void initState() {
     super.initState();
     unawaited(DiffDevice.screenAwake.set(on: true));
+    // Mavzu testi tugmasi uchun katalog (ro'yxat ochilmagan bo'lsa).
+    final bundle = context.services.curriculum.bundle ?? rootBundle;
+    if (widget.generated == null && DeckCatalog.peek(bundle) == null) {
+      unawaited(
+        DeckCatalog.load(bundle).then<void>((_) {
+          if (mounted) setState(() {});
+        }, onError: (Object _) {}),
+      );
+    }
     if (widget.deckId != null) {
       _index = widget.startSlide;
       return;
@@ -351,7 +373,6 @@ class _LectureScreenState extends State<LectureScreen> {
     unawaited(s.curriculum.ensureLoaded());
     unawaited(s.toifa.ensureLoaded());
     unawaited(s.microscopy.ensureAtlas());
-    final bundle = s.curriculum.bundle ?? rootBundle;
     final ready = LectureDecks.peek(bundle);
     if (ready != null) {
       _authored = ready[widget.topicId];
@@ -455,6 +476,11 @@ class _LectureScreenState extends State<LectureScreen> {
     final l = AppLocalizations.of(context);
     final p = LgPalette.of(context);
     final text = Theme.of(context).textTheme;
+    final testDeck = _testDeck();
+    final last = i == slides.length - 1;
+    // Katalog deckining oxirgi slaydi (manbalardan keyin) — “Mavzu testi”.
+    // Mavzu (avtomatik slaydlar) marshrutida — faqat menyuda.
+    final endDeck = last && widget.deckId != null ? testDeck : null;
     return Focus(
       focusNode: _focus,
       autofocus: true,
@@ -499,6 +525,7 @@ class _LectureScreenState extends State<LectureScreen> {
                             onPressed: () => context.pop(),
                           ),
                           const Spacer(),
+                          if (testDeck != null) DeckTestMenu(deck: testDeck),
                           if (slides[i].teacherNote != null)
                             IconButton(
                               key: const ValueKey('lecture-notes'),
@@ -544,6 +571,28 @@ class _LectureScreenState extends State<LectureScreen> {
                         ),
                       ),
                     ),
+                    // Savollar yetmasa — oxirgi slaydda halol izoh.
+                    if (endDeck != null)
+                      DeckTestBuilder(
+                        deck: endDeck,
+                        builder: (context, state, _) =>
+                            state == DeckTestState.preparing
+                            ? Padding(
+                                padding: const EdgeInsets.fromLTRB(
+                                  16,
+                                  6,
+                                  16,
+                                  0,
+                                ),
+                                child: Text(
+                                  l.topicTestPreparing,
+                                  key: const ValueKey('lecture-test-preparing'),
+                                  textAlign: TextAlign.center,
+                                  style: text.bodySmall,
+                                ),
+                              )
+                            : const SizedBox.shrink(),
+                      ),
                     Padding(
                       padding: const EdgeInsets.fromLTRB(16, 8, 16, 12),
                       child: Row(
@@ -559,13 +608,25 @@ class _LectureScreenState extends State<LectureScreen> {
                           ),
                           const SizedBox(width: 12),
                           Expanded(
-                            child: LgButton(
-                              label: l.lectureNext,
-                              icon: Icons.chevron_right_rounded,
-                              onPressed: i == slides.length - 1
-                                  ? null
-                                  : () => _go(1, slides.length),
-                            ),
+                            child: endDeck != null
+                                ? DeckTestBuilder(
+                                    deck: endDeck,
+                                    builder: (context, state, _) =>
+                                        state == DeckTestState.ready
+                                        ? DeckTestEndButton(deck: endDeck)
+                                        : LgButton(
+                                            label: l.lectureNext,
+                                            icon: Icons.chevron_right_rounded,
+                                            onPressed: null,
+                                          ),
+                                  )
+                                : LgButton(
+                                    label: l.lectureNext,
+                                    icon: Icons.chevron_right_rounded,
+                                    onPressed: last
+                                        ? null
+                                        : () => _go(1, slides.length),
+                                  ),
                           ),
                         ],
                       ),
@@ -584,6 +645,9 @@ class _LectureScreenState extends State<LectureScreen> {
     final p = LgPalette.of(context);
     final text = Theme.of(context).textTheme;
     final slide = slides[i];
+    final testDeck = _testDeck();
+    final last = i == slides.length - 1;
+    final endDeck = last && widget.deckId != null ? testDeck : null;
     Widget round(IconData icon, String tip, VoidCallback? onTap, {Key? key}) =>
         IconButton.filledTonal(
           key: key,
@@ -641,6 +705,7 @@ class _LectureScreenState extends State<LectureScreen> {
               right: 8,
               child: Row(
                 children: [
+                  if (testDeck != null) DeckTestMenu(deck: testDeck),
                   if (slide.teacherNote != null)
                     round(
                       _notes
@@ -673,11 +738,28 @@ class _LectureScreenState extends State<LectureScreen> {
             Positioned(
               right: 4,
               bottom: 4,
-              child: round(
-                Icons.chevron_right_rounded,
-                l.lectureNext,
-                i == slides.length - 1 ? null : () => _go(1, slides.length),
-              ),
+              child: endDeck != null
+                  ? DeckTestBuilder(
+                      deck: endDeck,
+                      builder: (context, state, _) =>
+                          state == DeckTestState.ready
+                          ? round(
+                              Icons.quiz_outlined,
+                              l.topicTestAction,
+                              () => openTopicTest(context, endDeck.id),
+                              key: const ValueKey('lecture-topic-test'),
+                            )
+                          : round(
+                              Icons.chevron_right_rounded,
+                              l.lectureNext,
+                              null,
+                            ),
+                    )
+                  : round(
+                      Icons.chevron_right_rounded,
+                      l.lectureNext,
+                      last ? null : () => _go(1, slides.length),
+                    ),
             ),
             if (_notes && slide.teacherNote != null)
               Positioned(

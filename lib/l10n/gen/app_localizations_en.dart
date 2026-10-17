@@ -9263,4 +9263,144 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get lectureDeckLoadFailed => 'Could not open the presentation';
+
+  @override
+  String get topicTestAction => 'Topic test';
+
+  @override
+  String get topicTestPreparing =>
+      'Questions for this topic are being prepared';
+
+  @override
+  String get topicTestPreparingShort => 'Questions in preparation';
+
+  @override
+  String topicTestPreparingBody(int count) {
+    return 'Only verified questions go into the test. This topic has $count so far — at least 3 are needed.';
+  }
+
+  @override
+  String topicTestIntro(int count) {
+    return '$count questions · the correct answer and explanation after each one';
+  }
+
+  @override
+  String get topicTestSavedNote =>
+      'If you leave, your answers are kept — you will continue from the same place.';
+
+  @override
+  String get topicTestSourcesNote =>
+      'Questions come only from verified sources: official certification questions with a confirmed key and practice questions with a cited source.';
+
+  @override
+  String get topicTestStart => 'Start the test';
+
+  @override
+  String topicTestResume(int answered, int total) {
+    return 'Continue · $answered/$total';
+  }
+
+  @override
+  String topicTestBest(int score, int total) {
+    return 'Best score: $score/$total';
+  }
+
+  @override
+  String topicTestBadgeLabel(int score, int total) {
+    return 'Topic test, best score $score of $total';
+  }
+
+  @override
+  String get topicTestRetake => 'Retake';
+
+  @override
+  String get topicTestNextTopic => 'Next topic';
+
+  @override
+  String get topicTestOpenSlide => 'View slide';
+
+  @override
+  String get topicTestOpenDeckStart => 'Open the presentation from the start';
+
+  @override
+  String get topicTestHistory => 'Result history';
+
+  @override
+  String get topicTestAssign => 'Assign to a group';
+
+  @override
+  String get topicTestAssignIntro =>
+      'Students take the test on their own phones before the deadline; the score is calculated on the server.';
+
+  @override
+  String get topicTestGroups => 'Groups';
+
+  @override
+  String get topicTestNoGroups => 'You have no groups yet';
+
+  @override
+  String get topicTestNoGroupsBody =>
+      'Create a group and invite students first — then assign the test from here.';
+
+  @override
+  String get topicTestPickGroup => 'Pick at least one group';
+
+  @override
+  String get topicTestReveal => 'Correct answers shown to students';
+
+  @override
+  String get topicTestRevealNow => 'Right after submitting';
+
+  @override
+  String get topicTestRevealAfterDue => 'After the deadline';
+
+  @override
+  String get topicTestRevealNeedsDue =>
+      'Choose a deadline to use “After the deadline”';
+
+  @override
+  String topicTestSent(int count) {
+    return 'Test sent to groups: $count';
+  }
+
+  @override
+  String topicTestTitle(String title) {
+    return 'Topic test: $title';
+  }
+
+  @override
+  String get topicTestSentList => 'Sent tests';
+
+  @override
+  String topicTestAnswersLater(String date) {
+    return 'Correct answers open after the deadline ($date)';
+  }
+
+  @override
+  String get topicTestDistribution => 'Score distribution';
+
+  @override
+  String get topicTestHardest => 'Hardest questions';
+
+  @override
+  String get topicTestAssignedTitle => 'Assigned tests';
+
+  @override
+  String get topicTestMenu => 'Actions';
+
+  @override
+  String get topicTestOpenLecture => 'Open the presentation';
+
+  @override
+  String get topicTestCreateGroup => 'Create a group';
+
+  @override
+  String topicTestStudents(int count) {
+    return 'Students: $count';
+  }
+
+  @override
+  String topicTestReworkMistakes(int count) {
+    return 'Review mistakes · $count';
+  }
 }

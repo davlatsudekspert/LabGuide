@@ -34,6 +34,7 @@ import '../features/community/community_screens.dart';
 import '../features/classroom/auto_deck.dart' show AutoDeckSpec;
 import '../features/classroom/auto_deck_screens.dart';
 import '../features/classroom/lecture_screens.dart';
+import '../features/classroom/topic_test_screens.dart';
 import '../features/learn/classes_screens.dart';
 import '../features/learn/exam_screens.dart';
 import '../features/learn/learn_screens.dart';
@@ -1191,6 +1192,25 @@ GoRouter buildRouter(
                               generated: state.extra is List<LectureSlide>
                                   ? state.extra! as List<LectureSlide>
                                   : null,
+                            ),
+                          ),
+                        ],
+                      ),
+                      // Mavzu testi (taqdimot oxirida) va ustoz uchun
+                      // “Guruhga topshirish” — to'liq ekran (pleyerdan ham
+                      // ochiladi).
+                      GoRoute(
+                        path: 'test/:deckId',
+                        parentNavigatorKey: rootKey,
+                        builder: (context, state) => TopicTestScreen(
+                          deckId: state.pathParameters['deckId']!,
+                        ),
+                        routes: [
+                          GoRoute(
+                            path: 'assign',
+                            parentNavigatorKey: rootKey,
+                            builder: (context, state) => AssignDeckTestScreen(
+                              deckId: state.pathParameters['deckId']!,
                             ),
                           ),
                         ],

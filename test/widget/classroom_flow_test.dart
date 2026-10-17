@@ -283,7 +283,8 @@ void main() {
     expect(find.text(uz.classroomTestSubmitted(1, 1)), findsOneWidget);
     await tapScroll(tester, uz.classroomTestResults);
     expect(find.text('Aliyev A. · ${uz.classesSeat('01')}'), findsOneWidget);
-    await _scrollTo(tester, find.text(uz.classesWrongOf(1, 1)));
+    // “Eng qiyin savollar” va “Savollar bo'yicha” — ikkalasida ham.
+    await _scrollTo(tester, find.text(uz.classesWrongOf(1, 1)).first);
     routerOf(tester).pop();
     await tester.pumpAndSettle();
     await tapScroll(tester, uz.classroomTestFinish);

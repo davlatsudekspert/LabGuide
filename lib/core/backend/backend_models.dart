@@ -381,6 +381,9 @@ class GroupAssignment {
     required this.timeLimitMinutes,
     required this.createdAt,
     this.topicId,
+    this.deckId,
+    this.revealAfterDue = false,
+    this.closed = false,
   });
 
   factory GroupAssignment.fromJson(Map<String, Object?> j) => GroupAssignment(
@@ -392,6 +395,9 @@ class GroupAssignment {
     timeLimitMinutes: (j['time_limit_minutes'] as num?)?.toInt(),
     createdAt: DateTime.parse(j['created_at']! as String),
     topicId: j['topic_id'] as String?,
+    deckId: j['deck_id'] as String?,
+    revealAfterDue: j['reveal'] == 'after_due',
+    closed: j['status'] == 'closed',
   );
 
   final String id;
@@ -400,6 +406,26 @@ class GroupAssignment {
 
   /// O'quv dasturi mavzusi testi bo'lsa — mavzu id si.
   final String? topicId;
+
+  /// Taqdimotdan topshirilgan mavzu testi — deck id si (natijada “slaydni
+  /// ko'rish” havolasi uchun).
+  final String? deckId;
+
+  /// To'g'ri javoblar talabaga muddat tugagach (yoki ustoz yakunlagach)
+  /// ko'rsatiladi; aks holda — topshirilgandan keyin darhol.
+  final bool revealAfterDue;
+
+  /// Ustoz testni yakunlagan (yangi urinish yo'q).
+  final bool closed;
+
+  /// Talabaga to'g'ri javoblar ochiqmi ([now] — server bilan taqqoslanadigan
+  /// qurilma vaqti).
+  bool answersOpen(DateTime now) {
+    if (!revealAfterDue || closed) return true;
+    final due = dueAt;
+    return due != null && !now.isBefore(due);
+  }
+
   final List<String> questionIds;
   final DateTime? dueAt;
   final int? timeLimitMinutes;

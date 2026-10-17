@@ -739,12 +739,21 @@ class FakeLabBackend implements LabBackend {
     DateTime? dueAt,
     int? timeLimitMinutes,
     String? topicId,
+    String? dayId,
+    String? deckId,
+    bool revealAfterDue = false,
   }) async {
     _require();
     if (!_isTeacher(groupId)) {
       throw const BackendException(BackendFailure.forbidden);
     }
     _checkLength(title, 3, 120);
+    // 0010: “muddat tugagach” — muddat bo'lishi shart; deck id — mavzu id
+    // qoidasi bilan bir xil.
+    if ((revealAfterDue && dueAt == null) ||
+        (deckId != null && !_topicId.hasMatch(deckId))) {
+      throw const BackendException(BackendFailure.invalid);
+    }
     if (questionIds.isEmpty ||
         questionIds.length > 50 ||
         questionIds.length != correctIndexes.length ||
@@ -762,7 +771,9 @@ class FakeLabBackend implements LabBackend {
       dueAt: dueAt?.toUtc(),
       timeLimitMinutes: timeLimitMinutes,
       createdAt: _now(),
-      topicId: topicId,
+      topicId: topicId ?? dayId,
+      deckId: deckId,
+      revealAfterDue: revealAfterDue,
     );
     _assignments.add(_Assignment(a, List.unmodifiable(correctIndexes)));
     return a.id;
@@ -839,7 +850,24 @@ class FakeLabBackend implements LabBackend {
       correct: List.unmodifiable(correct),
     );
     _submissions.add(s);
-    return s;
+    return _forViewer(s);
+  }
+
+  /// Server kabi: “muddat tugagach” topshirig'ida talabaga har savol
+  /// natijasi (`correct`) muddatgacha berilmaydi.
+  GroupSubmission _forViewer(GroupSubmission s) {
+    final a = _assignments.firstWhere((a) => a.info.id == s.assignmentId);
+    if (_isTeacher(a.info.groupId) || a.info.answersOpen(groupClock())) {
+      return s;
+    }
+    return GroupSubmission(
+      assignmentId: s.assignmentId,
+      userId: s.userId,
+      score: s.score,
+      total: s.total,
+      submittedAt: s.submittedAt,
+      answers: s.answers,
+    );
   }
 
   /// RLS: o'z natijasi yoki ustoz bo'lgan guruhniki.
@@ -853,7 +881,7 @@ class FakeLabBackend implements LabBackend {
     _require();
     return [
       for (final s in _submissions)
-        if (s.assignmentId == assignmentId && _canSee(s)) s,
+        if (s.assignmentId == assignmentId && _canSee(s)) _forViewer(s),
     ];
   }
 
@@ -862,7 +890,7 @@ class FakeLabBackend implements LabBackend {
     final ids = {for (final a in await assignments(groupId)) a.id};
     return [
       for (final s in _submissions)
-        if (ids.contains(s.assignmentId) && _canSee(s)) s,
+        if (ids.contains(s.assignmentId) && _canSee(s)) _forViewer(s),
     ];
   }
 
@@ -974,6 +1002,8 @@ class FakeLabBackend implements LabBackend {
         timeLimitMinutes: i.timeLimitMinutes,
         createdAt: i.createdAt,
         topicId: i.topicId,
+        deckId: i.deckId,
+        revealAfterDue: i.revealAfterDue,
       );
     }
   }

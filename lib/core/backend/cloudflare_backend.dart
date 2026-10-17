@@ -782,6 +782,8 @@ class CloudflareLabBackend
     DateTime? dueAt,
     int? timeLimitMinutes,
     String? dayId,
+    String? deckId,
+    bool revealAfterDue = false,
     bool start = true,
   }) async {
     final m = (await _call(
@@ -795,6 +797,8 @@ class CloudflareLabBackend
         'time_limit_minutes': timeLimitMinutes,
         'day_id': dayId,
         'start': start,
+        'deck_id': ?deckId,
+        if (revealAfterDue) 'reveal': 'after_due',
       },
       notFound: BackendFailure.forbidden,
     )).map;
