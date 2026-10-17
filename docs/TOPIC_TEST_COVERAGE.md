@@ -23,13 +23,13 @@ Hujjat `test/unit/topic_test_coverage_test.dart` bilan ilovadagi aynan shu qoida
 | **≥ 10 ta** (to‘liq 10 savollik test) | 80 |
 | `test_gap: true` belgisi | 32 |
 
-Taqdimotlar (124 ta):
+Taqdimotlar (125 ta):
 
 | Holat | Decklar |
 |---|---:|
 | Test tayyor (≥ 3 savol) | 77 |
 | “Savollar tayyorlanmoqda” (< 3) | 21 |
-| Tugma yo‘q — amaliy protokol, mavzuga bog‘lanmagan | 26 |
+| Tugma yo‘q — amaliy protokol, mavzuga bog‘lanmagan | 27 |
 
 Amaliy protokol decklari (`index_v2.json` da `topics: []`) hech qaysi mavzu yoki analitga bog‘lanmagan — ularda test tugmasi ko‘rsatilmaydi. Bog‘lash uchun eksportga (`tool/slides/export_app_decks.py`) mavzu/analit havolasi qo‘shilishi kerak (mutaxassis tanlovi bilan).
 
@@ -398,6 +398,7 @@ Belgi curriculum’da “savollar yetarli emas” degani; bu mavzularda tekshiri
 | urogenital-surtma-mikroskopiya | — | 0 | tugma yo‘q |
 | zardob-plazma-tayyorlash | — | 0 | tugma yo‘q |
 | fotometriya-asoslari-biokimyo | — | 0 | tugma yo‘q |
+| yarim-avtomat-biokimyo-analizator | — | 0 | tugma yo‘q |
 | glyukoza-gox-pod-fotometrik | — | 0 | tugma yo‘q |
 | alt-kinetik-fotometrik | — | 0 | tugma yo‘q |
 | mochevina-ureaza-gldg | — | 0 | tugma yo‘q |

@@ -72,7 +72,7 @@ void main() {
     (tester) async {
       final l = await _open(tester);
       final c = await _catalog(tester);
-      expect(c.decks.length, 124);
+      expect(c.decks.length, 125);
       // Har deck o'z qatorida (har deck bir marta).
       for (final d in c.decks) {
         expect(
@@ -95,7 +95,7 @@ void main() {
         expect(count, contains('UZ'));
       }
       final protos = c.protocols;
-      expect(protos.length, 26);
+      expect(protos.length, 27);
       expect(
         find.byKey(const ValueKey('lecture-group-protocols')),
         findsOneWidget,
@@ -105,7 +105,7 @@ void main() {
           tester,
           find.byKey(const ValueKey('lecture-group-count-protocols')),
         ),
-        contains(l.lectureDecksCount(26)),
+        contains(l.lectureDecksCount(27)),
       );
       expect(find.text(l.lectureFilterProtocols), findsWidgets);
       // d001 (muallif decki) shu ro'yxatda, faqat o'zbekcha.
@@ -454,6 +454,65 @@ void main() {
     expect(find.text(l.lectureCounter(1, deck.slides.length)), findsOneWidget);
     expect(find.text(deck.title!), findsWidgets);
   });
+
+  // Yarim avtomat analizator protokoli (docs/PROTOCOLS_COVERAGE.md): har bir slayd
+  // telefon (360×740, shrift ×1.3) va proyektor (1920×1080) o'lchamida toshmasdan chiziladi.
+  for (final lang in AppLanguage.values) {
+    for (final (size, scale) in [
+      (const Size(360, 740), 1.3),
+      (const Size(1920, 1080), 1.0),
+    ]) {
+      testWidgets('yarim avtomat analizator protokoli: ${lang.name} '
+          '${size.width.toInt()}×${size.height.toInt()} — barcha slaydlar', (
+        tester,
+      ) async {
+        const id = 'yarim-avtomat-biokimyo-analizator';
+        final deck = await _preload(tester, id, lang.name);
+        expect(deck.lang, lang.name);
+        final l = await _open(tester, lang: lang, size: size, textScale: scale);
+        final n = deck.slides.length;
+        expect(n, greaterThan(8));
+        expect(deck.slides.map((s) => s.template), contains('table'));
+        for (var i = 0; i < n; i++) {
+          await goTo(tester, '/learn/lecture');
+          await goTo(tester, '/learn/lecture/deck/$id?s=$i');
+          expect(
+            find.text(l.lectureCounter(i + 1, n)),
+            findsOneWidget,
+            reason: '$id/${lang.name} #$i',
+          );
+          expect(tester.takeException(), isNull, reason: '$id #$i');
+        }
+      });
+    }
+  }
+
+  testWidgets(
+    'ALT protokolidagi yarim avtomat analizator slaydlari chiziladi',
+    (tester) async {
+      const id = 'alt-kinetik-fotometrik';
+      final deck = await _preload(tester, id, 'uz');
+      final l = await _open(tester, size: const Size(360, 740), textScale: 1.3);
+      final idx = [
+        for (var i = 0; i < deck.slides.length; i++)
+          if ((deck.slides[i].eyebrow ?? '').startsWith(
+            'Yarim avtomat analizator',
+          ))
+            i,
+      ];
+      expect(idx.length, greaterThanOrEqualTo(2));
+      expect(idx.map((i) => deck.slides[i].template), contains('table'));
+      for (final i in idx) {
+        await goTo(tester, '/learn/lecture');
+        await goTo(tester, '/learn/lecture/deck/$id?s=$i');
+        expect(
+          find.text(l.lectureCounter(i + 1, deck.slides.length)),
+          findsOneWidget,
+        );
+        expect(tester.takeException(), isNull, reason: '$id #$i');
+      }
+    },
+  );
 
   testWidgets('noma‘lum deck — halol xato holati', (tester) async {
     final l = await _open(tester);

@@ -632,6 +632,221 @@
     },
     {
      "type": "text",
+     "label": "analyzer",
+     "title": {
+      "uz": "Reaktivni tayyorlash (yarim avtomat analizator uchun)",
+      "ru": "Приготовление реагента (для полуавтоматического анализатора)",
+      "en": "Reagent preparation (for a semi-automatic analyser)"
+     },
+     "bullets": {
+      "uz": [
+       "Reagent ishlatishga tayyor; ko‘rsatilgan muddatgacha yaroqli, xona haroratida (10–30 °C) saqlanadi.",
+       "Kalibrovka: standart qon (gemoglobini ma’lum) bo‘yicha yoki K-omil bo‘yicha — omil reagent qutisida ko‘rsatilgan.",
+       "Namuna: K2-EDTA li kapillyar yoki venoz qon; kapillyar qon tezda, venoz qon olingandan keyin 6 soat ichida tekshiriladi.",
+       "Hajmlar manba ichida mos emas: dastur jadvalida namuna 50,0 µl va reagent 1250 µl, qo‘lda bajarish tartibida reagent 1,25 ml va qon 5 µl — to‘plam yo‘riqnomasiga qarang.",
+       "Qiymatlar qo‘llanmadagi Hospitex Diagnostics to‘plami va Screen Master Plus fotometriga tegishli. Siz ishlatayotgan to‘plam yo‘riqnomasi (IFU) va analizator qo‘llanmasi har doim ustun — parametrlarni o‘sha hujjatdan tekshirib kiriting."
+      ],
+      "ru": [
+       "Реагент готов к использованию; годен до указанного срока, хранится при комнатной температуре (10–30 °C).",
+       "Калибровка: по стандартной крови (с известным гемоглобином) или по K-фактору — фактор указан на коробке реагента.",
+       "Проба: капиллярная или венозная кровь с K2-ЭДТА; капиллярную исследуют быстро, венозную — в течение 6 часов после взятия.",
+       "Объёмы в источнике не совпадают: в таблице программы проба 50,0 мкл и реагент 1250 мкл, в ручной методике реагент 1,25 мл и кровь 5 мкл — см. инструкцию к набору.",
+       "Значения относятся к набору Hospitex Diagnostics и фотометру Screen Master Plus из руководства. Инструкция к используемому вами набору (IFU) и руководство к анализатору всегда имеют приоритет — сверяйте параметры с ними."
+      ],
+      "en": [
+       "The reagent is ready to use; usable until the stated date, kept at room temperature (10–30 °C).",
+       "Calibration: with standard blood (known haemoglobin) or by the K factor — the factor is given on the reagent box.",
+       "Sample: capillary or venous blood with K2-EDTA; capillary blood is tested quickly, venous blood within 6 hours of collection.",
+       "The volumes are inconsistent in the source: sample 50.0 µL and reagent 1250 µL in the programme table, reagent 1.25 mL and blood 5 µL in the manual procedure — see the kit IFU.",
+       "The values belong to the Hospitex Diagnostics kit and the Screen Master Plus photometer in the manual. The IFU of the kit you use and the analyser manual always take precedence — check the parameters against them."
+      ]
+     },
+     "numbered": false,
+     "warn": false,
+     "refs": [
+      {
+       "book": "kdl-qvp-2006",
+       "loc": {
+        "uz": "I bob, «Gemoglobinni aniqlash uchun dastur tuzish» va «Gemoglobinni aniqlash usuli»",
+        "ru": "гл. I, «Составление программы для определения гемоглобина» и «Метод определения гемоглобина»",
+        "en": "ch. I, “Programming the haemoglobin test” and “Haemoglobin method”"
+       }
+      }
+     ],
+     "excerpts": [
+      "aripov2006-hgb-program"
+     ]
+    },
+    {
+     "type": "table",
+     "label": "analyzer",
+     "title": {
+      "uz": "Yarim avtomat analizator: gemoglobin dasturi",
+      "ru": "Полуавтоматический анализатор: программа гемоглобина",
+      "en": "Semi-automatic analyser: haemoglobin programme"
+     },
+     "header": {
+      "uz": [
+       "Dastur maydoni",
+       "Qo‘llanmadagi qiymat"
+      ],
+      "ru": [
+       "Поле программы",
+       "Значение в руководстве"
+      ],
+      "en": [
+       "Programme field",
+       "Value in the manual"
+      ]
+     },
+     "rows": {
+      "uz": [
+       [
+        "Test nomi",
+        "HGB"
+       ],
+       [
+        "Reaksiya turi",
+        "Oxirgi nuqta"
+       ],
+       [
+        "Nol",
+        "Dastur jadvalida suvga qarshi (qo‘lda — reagent blankiga qarshi)"
+       ],
+       [
+        "O‘lchov birligi",
+        "g/l"
+       ],
+       [
+        "Harorat",
+        "Dastur jadvalida ko‘rsatilmagan (qo‘lda: 18–37 °C)"
+       ],
+       [
+        "Kalibrovka",
+        "Standart bo‘yicha; konsentratsiyasi standart flakonida ko‘rsatilgan"
+       ],
+       [
+        "Namuna / reagent 1 hajmi",
+        "50,0 µl / 1250 µl — qo‘lda bajarishdagi 5 µl / 1,25 ml ga mos emas"
+       ],
+       [
+        "Filtr (to‘lqin uzunligi)",
+        "546 nm"
+       ],
+       [
+        "Me’yor: maks. / min.",
+        "175 / 115 g/l"
+       ],
+       [
+        "Chiziqlilik: maks. konsentratsiya",
+        "240 g/l"
+       ]
+      ],
+      "ru": [
+       [
+        "Название теста",
+        "HGB"
+       ],
+       [
+        "Тип реакции",
+        "Конечная точка"
+       ],
+       [
+        "Ноль",
+        "В таблице программы против воды (вручную — против бланка по реагенту)"
+       ],
+       [
+        "Единица измерения",
+        "г/л"
+       ],
+       [
+        "Температура",
+        "В таблице программы не указана (вручную: 18–37 °C)"
+       ],
+       [
+        "Калибровка",
+        "По стандарту; концентрация указана на флаконе стандарта"
+       ],
+       [
+        "Объём пробы / реагента 1",
+        "50,0 мкл / 1250 мкл — не совпадает с ручной методикой 5 мкл / 1,25 мл"
+       ],
+       [
+        "Фильтр (длина волны)",
+        "546 нм"
+       ],
+       [
+        "Норма: макс. / мин.",
+        "175 / 115 г/л"
+       ],
+       [
+        "Линейность: макс. концентрация",
+        "240 г/л"
+       ]
+      ],
+      "en": [
+       [
+        "Test name",
+        "HGB"
+       ],
+       [
+        "Reaction type",
+        "End point"
+       ],
+       [
+        "Zero",
+        "Against water in the programme table (manual: against the reagent blank)"
+       ],
+       [
+        "Unit",
+        "g/L"
+       ],
+       [
+        "Temperature",
+        "Not given in the programme table (manual: 18–37 °C)"
+       ],
+       [
+        "Calibration",
+        "By standard; the concentration is given on the standard vial"
+       ],
+       [
+        "Sample / reagent 1 volume",
+        "50.0 µL / 1250 µL — does not match the manual 5 µL / 1.25 mL"
+       ],
+       [
+        "Filter (wavelength)",
+        "546 nm"
+       ],
+       [
+        "Normal range: max / min",
+        "175 / 115 g/L"
+       ],
+       [
+        "Linearity: max concentration",
+        "240 g/L"
+       ]
+      ]
+     },
+     "widths": [
+      0.38,
+      0.62
+     ],
+     "refs": [
+      {
+       "book": "kdl-qvp-2006",
+       "loc": {
+        "uz": "I bob, «Gemoglobinni aniqlash uchun dastur tuzish» va «Gemoglobinni aniqlash usuli»",
+        "ru": "гл. I, «Составление программы для определения гемоглобина» и «Метод определения гемоглобина»",
+        "en": "ch. I, “Programming the haemoglobin test” and “Haemoglobin method”"
+       }
+      }
+     ],
+     "excerpts": [
+      "aripov2006-hgb-program"
+     ]
+    },
+    {
+     "type": "text",
      "label": "safety",
      "title": {
       "uz": "Xavfsizlik",
@@ -8479,6 +8694,526 @@
    ]
   },
   {
+   "id": "yarim-avtomat-biokimyo-analizator",
+   "group": {
+    "uz": "Klinik biokimyo · fotometrik usullar",
+    "ru": "Клиническая биохимия · фотометрические методы",
+    "en": "Clinical biochemistry · photometric methods"
+   },
+   "title": {
+    "uz": "Yarim avtomat biokimyoviy analizatorda ishlash: test dasturi, kalibrovka, nazorat",
+    "ru": "Работа на полуавтоматическом биохимическом анализаторе: программа теста, калибровка, контроль",
+    "en": "Working on a semi-automatic biochemistry analyser: test programme, calibration, control"
+   },
+   "slides": [
+    {
+     "type": "text",
+     "label": "principle",
+     "title": {
+      "uz": "Asbob va o‘lchash rejimlari",
+      "ru": "Прибор и режимы измерения",
+      "en": "The instrument and measuring modes"
+     },
+     "bullets": {
+      "uz": [
+       "Qo‘llanmadagi misol — Screen Master Plus (Hospitex Diagnostics) fotometri: test parametrlari asbob dasturiga kiritiladi (200 tagacha usul), namuna va reagent kyuvetaga solinib, asbobda o‘lchanadi.",
+       "O‘lchash rejimlari: «oxirgi nuqta» (chiziqli va nochiziqli kalibrovka bilan), «fiksatsiyalangan vaqt», «kinetika», nochiziqli ko‘p nuqtali kalibrovka; bixromatik o‘lchash ham mumkin.",
+       "Galogen lampa va 6 ta interferension filtr: 340, 405, 505, 546, 578, 630 nm; 10 mm optik yo‘lli 80 µl mikrokyuveta va bir martalik kyuvetalar.",
+       "Harorat rejimlari: 25, 30 va 37 °C.",
+       "Boshqa analizator bilan ishlaganda o‘sha asbobning foydalanish qo‘llanmasi va reagent to‘plami yo‘riqnomasiga amal qiling; qo‘llanma ham ishdan oldin asbob qo‘llanmasini diqqat bilan o‘qishni talab qiladi."
+      ],
+      "ru": [
+       "Пример в руководстве — фотометр Screen Master Plus (Hospitex Diagnostics): параметры теста вводят в программу прибора (до 200 методов), пробу и реагент вносят в кювету и измеряют на приборе.",
+       "Режимы измерения: «конечная точка» (с линейной и нелинейной калибровкой), «фиксированное время», «кинетика», нелинейная многоточечная калибровка; возможны и бихроматические измерения.",
+       "Галогенная лампа и 6 интерференционных фильтров: 340, 405, 505, 546, 578, 630 нм; микрокювета 80 мкл с оптическим путём 10 мм и одноразовые кюветы.",
+       "Температурные режимы: 25, 30 и 37 °C.",
+       "При работе на другом анализаторе следуйте руководству к этому прибору и инструкции к набору реагентов; руководство также требует перед работой внимательно прочитать инструкцию к прибору."
+      ],
+      "en": [
+       "The example in the manual is the Screen Master Plus photometer (Hospitex Diagnostics): test parameters are entered into the instrument programme (up to 200 methods), sample and reagent are put into the cuvette and measured on the instrument.",
+       "Measuring modes: “end point” (with linear and non-linear calibration), “fixed time”, “kinetic”, non-linear multipoint calibration; bichromatic measurement is also possible.",
+       "Halogen lamp and 6 interference filters: 340, 405, 505, 546, 578, 630 nm; an 80 µL microcuvette with a 10 mm light path and single-use cuvettes.",
+       "Temperature modes: 25, 30 and 37 °C.",
+       "With another analyser follow that instrument’s user manual and the reagent kit IFU; the manual also requires reading the instrument manual carefully before starting."
+      ]
+     },
+     "numbered": false,
+     "warn": false,
+     "refs": [
+      {
+       "book": "kdl-qvp-2006",
+       "loc": {
+        "uz": "I bob, «Hospitex Diagnostics to‘plamlari yordamida biokimyoviy tekshiruvlar» (Screen Master)",
+        "ru": "гл. I, «Биохимические исследования с наборами Hospitex Diagnostics» (Screen Master)",
+        "en": "ch. I, “Biochemical tests with Hospitex Diagnostics kits” (Screen Master)"
+       }
+      }
+     ],
+     "excerpts": [
+      "aripov2006-screenmaster"
+     ]
+    },
+    {
+     "type": "table",
+     "label": "procedure",
+     "title": {
+      "uz": "Test dasturini tuzish: qaysi maydonga nima kiritiladi",
+      "ru": "Составление программы теста: что вводить в каждое поле",
+      "en": "Programming a test: what goes into each field"
+     },
+     "header": {
+      "uz": [
+       "Dastur maydoni",
+       "Nima kiritiladi",
+       "Qayerdan olinadi"
+      ],
+      "ru": [
+       "Поле программы",
+       "Что вводят",
+       "Откуда берут"
+      ],
+      "en": [
+       "Programme field",
+       "What is entered",
+       "Where it comes from"
+      ]
+     },
+     "rows": {
+      "uz": [
+       [
+        "Usul nomi",
+        "Testning qisqa nomi (masalan, ALT, UREA, GLUC)",
+        "—"
+       ],
+       [
+        "Reaksiya turi",
+        "Oxirgi nuqta, belgilangan vaqt yoki kinetika",
+        "To‘plam yo‘riqnomasi"
+       ],
+       [
+        "Nol",
+        "Masalan, suvga qarshi",
+        "To‘plam yo‘riqnomasi"
+       ],
+       [
+        "Birlik va harorat",
+        "Masalan, mmol/l yoki E/l; 37 °C",
+        "To‘plam yo‘riqnomasi"
+       ],
+       [
+        "Kalibrovka",
+        "Standart bo‘yicha (konsentratsiyasi kiritiladi) yoki omil (K) bo‘yicha",
+        "Standart flakoni, to‘plam yo‘riqnomasi"
+       ],
+       [
+        "Namuna, reagent 1, reagent 2 hajmi",
+        "µl da",
+        "To‘plam yo‘riqnomasi"
+       ],
+       [
+        "Filtr 1 (bixromatik o‘lchashda filtr 2)",
+        "To‘lqin uzunligi, nm",
+        "To‘plam yo‘riqnomasi"
+       ],
+       [
+        "Inkubatsiya va reaksiya vaqti",
+        "Soniyalarda (kinetika va belgilangan vaqt uchun)",
+        "To‘plam yo‘riqnomasi"
+       ],
+       [
+        "Me’yor",
+        "Maksimal va minimal qiymat",
+        "Laboratoriya me’yori (har bir laboratoriya oraliqni o‘zi tuzatadi)"
+       ],
+       [
+        "Chiziqlilik",
+        "Maks./min. yutilish va maks. delta yoki maks. konsentratsiya",
+        "To‘plam yo‘riqnomasi"
+       ]
+      ],
+      "ru": [
+       [
+        "Название метода",
+        "Краткое название теста (например, ALT, UREA, GLUC)",
+        "—"
+       ],
+       [
+        "Тип реакции",
+        "Конечная точка, фиксированное время или кинетика",
+        "Инструкция к набору"
+       ],
+       [
+        "Ноль",
+        "Например, против воды",
+        "Инструкция к набору"
+       ],
+       [
+        "Единица и температура",
+        "Например, ммоль/л или Е/л; 37 °C",
+        "Инструкция к набору"
+       ],
+       [
+        "Калибровка",
+        "По стандарту (вводят концентрацию) или по фактору (K)",
+        "Флакон стандарта, инструкция к набору"
+       ],
+       [
+        "Объём пробы, реагента 1, реагента 2",
+        "В мкл",
+        "Инструкция к набору"
+       ],
+       [
+        "Фильтр 1 (при бихроматическом измерении фильтр 2)",
+        "Длина волны, нм",
+        "Инструкция к набору"
+       ],
+       [
+        "Время инкубации и реакции",
+        "В секундах (для кинетики и фиксированного времени)",
+        "Инструкция к набору"
+       ],
+       [
+        "Норма",
+        "Максимальное и минимальное значение",
+        "Норма лаборатории (каждая лаборатория корректирует диапазон сама)"
+       ],
+       [
+        "Линейность",
+        "Макс./мин. поглощение и макс. дельта или макс. концентрация",
+        "Инструкция к набору"
+       ]
+      ],
+      "en": [
+       [
+        "Method name",
+        "Short test name (for example ALT, UREA, GLUC)",
+        "—"
+       ],
+       [
+        "Reaction type",
+        "End point, fixed time or kinetic",
+        "Kit IFU"
+       ],
+       [
+        "Zero",
+        "For example against water",
+        "Kit IFU"
+       ],
+       [
+        "Unit and temperature",
+        "For example mmol/L or U/L; 37 °C",
+        "Kit IFU"
+       ],
+       [
+        "Calibration",
+        "By standard (its concentration is entered) or by factor (K)",
+        "Standard vial, kit IFU"
+       ],
+       [
+        "Sample, reagent 1, reagent 2 volume",
+        "In µL",
+        "Kit IFU"
+       ],
+       [
+        "Filter 1 (filter 2 for bichromatic measurement)",
+        "Wavelength, nm",
+        "Kit IFU"
+       ],
+       [
+        "Incubation and reaction time",
+        "In seconds (for kinetic and fixed-time tests)",
+        "Kit IFU"
+       ],
+       [
+        "Normal range",
+        "Maximum and minimum value",
+        "The laboratory’s own range (each laboratory adjusts it)"
+       ],
+       [
+        "Linearity",
+        "Max/min absorbance and max delta, or max concentration",
+        "Kit IFU"
+       ]
+      ]
+     },
+     "widths": [
+      0.26,
+      0.42,
+      0.32
+     ],
+     "refs": [
+      {
+       "book": "kdl-qvp-2006",
+       "loc": {
+        "uz": "I bob, «Hospitex Diagnostics to‘plamlari yordamida biokimyoviy tekshiruvlar» (Screen Master)",
+        "ru": "гл. I, «Биохимические исследования с наборами Hospitex Diagnostics» (Screen Master)",
+        "en": "ch. I, “Biochemical tests with Hospitex Diagnostics kits” (Screen Master)"
+       }
+      },
+      {
+       "book": "kdl-qvp-2006",
+       "loc": {
+        "uz": "I bob, «AlAT ni aniqlash uchun dastur tuzish» va «AlAT ni aniqlash usuli»",
+        "ru": "гл. I, «Составление программы для определения АлАТ» и «Метод определения АлАТ»",
+        "en": "ch. I, “Programming the ALT test” and “ALT method”"
+       }
+      },
+      {
+       "book": "kdl-qvp-2006",
+       "loc": {
+        "uz": "I bob, «Mochevinani aniqlash uchun dastur tuzish» va «Mochevinani aniqlash usuli»",
+        "ru": "гл. I, «Составление программы для определения мочевины» и «Метод определения мочевины»",
+        "en": "ch. I, “Programming the urea test” and “Urea method”"
+       }
+      },
+      {
+       "book": "kdl-qvp-2006",
+       "loc": {
+        "uz": "I bob, «Glyukozani aniqlash uchun dastur tuzish» va «Glyukozani aniqlash usuli»",
+        "ru": "гл. I, «Составление программы для определения глюкозы» и «Метод определения глюкозы»",
+        "en": "ch. I, “Programming the glucose test” and “Glucose method”"
+       }
+      }
+     ],
+     "excerpts": [
+      "aripov2006-screenmaster",
+      "aripov2006-alt-program",
+      "aripov2006-urea-program",
+      "aripov2006-gluc-program"
+     ]
+    },
+    {
+     "type": "text",
+     "label": "procedure",
+     "title": {
+      "uz": "Ish tartibi (har bir analitik seriya)",
+      "ru": "Порядок работы (каждая аналитическая серия)",
+      "en": "Working order (each analytical run)"
+     },
+     "bullets": {
+      "uz": [
+       "Ishdan oldin asbob qo‘llanmasini o‘qing; to‘plam yo‘riqnomasidagi parametrlar dasturga to‘g‘ri kiritilganini tekshiring.",
+       "Ishchi reagentni to‘plam yo‘riqnomasi bo‘yicha tayyorlang; yo‘riqnoma talab qilsa, ishlatishdan oldin isiting (masalan, ALT monoreagenti 37 °C gacha).",
+       "Nolni yo‘riqnomadagidek o‘rnating: distillangan suv, havo yoki reagent blankiga qarshi.",
+       "Kalibrlang: standart (kalibrator)ni o‘lchang yoki omilni kiriting.",
+       "Nazorat materialini o‘lchang: ichki sifat nazorati har kuni, har bir analitik seriyada o‘tkaziladi, natija nazorat kartasiga yoziladi.",
+       "Bemor namunalarini o‘lchang; natija chiziqlilikdan oshsa, namunani suyultirib qayta aniqlang va natijani suyultirish darajasiga ko‘paytiring."
+      ],
+      "ru": [
+       "Перед работой прочитайте руководство к прибору; проверьте, что параметры из инструкции к набору правильно введены в программу.",
+       "Приготовьте рабочий реагент по инструкции к набору; если инструкция требует, нагрейте его перед использованием (например, монореагент АЛТ — до 37 °C).",
+       "Установите ноль как в инструкции: против дистиллированной воды, воздуха или бланка по реагенту.",
+       "Откалибруйте: измерьте стандарт (калибратор) или введите фактор.",
+       "Измерьте контрольный материал: внутренний контроль качества проводят ежедневно, в каждой аналитической серии, результат записывают в контрольную карту.",
+       "Измерьте пробы пациентов; если результат выше линейности, разведите пробу, повторите определение и умножьте результат на степень разведения."
+      ],
+      "en": [
+       "Before work read the instrument manual; check that the parameters from the kit IFU are entered correctly in the programme.",
+       "Prepare the working reagent as the kit IFU says; warm it before use if the IFU requires (for example the ALT monoreagent to 37 °C).",
+       "Set the zero as in the IFU: against distilled water, air or the reagent blank.",
+       "Calibrate: measure the standard (calibrator) or enter the factor.",
+       "Measure the control material: internal quality control is done every day in each analytical run and the result is recorded on the control chart.",
+       "Measure the patient samples; if a result is above the linearity, dilute the sample, repeat the determination and multiply the result by the dilution."
+      ]
+     },
+     "numbered": true,
+     "warn": false,
+     "refs": [
+      {
+       "book": "kdl-qvp-2006",
+       "loc": {
+        "uz": "I bob, «Hospitex Diagnostics to‘plamlari yordamida biokimyoviy tekshiruvlar» (Screen Master)",
+        "ru": "гл. I, «Биохимические исследования с наборами Hospitex Diagnostics» (Screen Master)",
+        "en": "ch. I, “Biochemical tests with Hospitex Diagnostics kits” (Screen Master)"
+       }
+      },
+      {
+       "book": "kdl-qvp-2006",
+       "loc": {
+        "uz": "I bob, «AlAT ni aniqlash uchun dastur tuzish» va «AlAT ni aniqlash usuli»",
+        "ru": "гл. I, «Составление программы для определения АлАТ» и «Метод определения АлАТ»",
+        "en": "ch. I, “Programming the ALT test” and “ALT method”"
+       }
+      },
+      {
+       "book": "kdl-qvp-2006",
+       "loc": {
+        "uz": "I bob, «Glyukozani aniqlash uchun dastur tuzish» va «Glyukozani aniqlash usuli»",
+        "ru": "гл. I, «Составление программы для определения глюкозы» и «Метод определения глюкозы»",
+        "en": "ch. I, “Programming the glucose test” and “Glucose method”"
+       }
+      },
+      {
+       "book": "kdl-qvp-2006",
+       "loc": {
+        "uz": "III bob, «Laboratoriya ichidagi sifat nazorati», jadval 3.2",
+        "ru": "гл. III, «Внутрилабораторный контроль качества», табл. 3.2",
+        "en": "ch. III, “Internal laboratory quality control”, table 3.2"
+       }
+      }
+     ],
+     "excerpts": [
+      "aripov2006-screenmaster",
+      "aripov2006-alt-program",
+      "aripov2006-gluc-program",
+      "aripov2006-iqc"
+     ]
+    },
+    {
+     "type": "text",
+     "label": "qc",
+     "title": {
+      "uz": "Nazorat materiali bilan ishlash",
+      "ru": "Работа с контрольным материалом",
+      "en": "Working with control material"
+     },
+     "bullets": {
+      "uz": [
+       "Ichki nazoratning asosi — bitta standartlashtirilgan nazorat materialini uzoq vaqt har kuni o‘lchab, natijalarni nazorat kartasiga yozish.",
+       "O‘zbekistonda ishlatishga ruxsat etilgan nazorat materiallari tavsiya etiladi; ular bo‘lmasa, ishlatilmay qolgan namuna qoldiqlaridan (zardob, plazma, siydik) tayyorlangan material ishlatilishi mumkin.",
+       "Tayyorlashda: ishlab chiqaruvchi qo‘llanmasini o‘qing, flakonni ehtiyotkorlik bilan oching, erituvchini aniq oling, qopqoqni yopib ko‘pik hosil qilmay aralashtiring, erish vaqtiga rioya qiling.",
+       "Nazorat materiali virusli gepatit va OIV antigenlaridan xoli deb ko‘rsatilsa ham, u bilan juda ehtiyotkorlik bilan ishlang.",
+       "Shubhali natijani yangi tayyorlangan reagent va yangi tayyorlangan nazorat materiali bilan qayta tekshiring."
+      ],
+      "ru": [
+       "Основа внутреннего контроля — ежедневно и длительно измерять один стандартизованный контрольный материал и записывать результаты в контрольную карту.",
+       "Рекомендуются контрольные материалы, разрешённые к применению в Узбекистане; если их нет, можно использовать материал из неизрасходованных остатков проб (сыворотка, плазма, моча).",
+       "При подготовке: прочитайте инструкцию производителя, осторожно откройте флакон, точно отмерьте растворитель, закройте крышку и перемешайте без пены, соблюдайте время растворения.",
+       "Даже если в паспорте указано, что материал свободен от антигенов вирусных гепатитов и ВИЧ, работайте с ним очень осторожно.",
+       "Сомнительный результат перепроверьте со свежеприготовленным реагентом и свежеприготовленным контрольным материалом."
+      ],
+      "en": [
+       "The basis of internal control is measuring one standardised control material every day over a long period and recording the results on a control chart.",
+       "Control materials approved for use in Uzbekistan are recommended; if there are none, material made from unused sample leftovers (serum, plasma, urine) may be used.",
+       "When preparing: read the manufacturer’s instructions, open the vial carefully, measure the solvent exactly, close the cap and mix without foaming, keep to the dissolution time.",
+       "Even if the control material is stated to be free of viral hepatitis and HIV antigens, handle it with great care.",
+       "Recheck a doubtful result with freshly prepared reagent and freshly prepared control material."
+      ]
+     },
+     "numbered": false,
+     "warn": false,
+     "refs": [
+      {
+       "book": "kdl-qvp-2006",
+       "loc": {
+        "uz": "III bob, «Laboratoriya ichidagi sifat nazorati», jadval 3.2",
+        "ru": "гл. III, «Внутрилабораторный контроль качества», табл. 3.2",
+        "en": "ch. III, “Internal laboratory quality control”, table 3.2"
+       }
+      }
+     ],
+     "excerpts": [
+      "aripov2006-iqc"
+     ]
+    },
+    {
+     "type": "text",
+     "label": "errors",
+     "title": {
+      "uz": "Xatolik manbalari va asbob parvarishi",
+      "ru": "Источники ошибок и уход за прибором",
+      "en": "Sources of error and instrument care"
+     },
+     "bullets": {
+      "uz": [
+       "O‘lchash bosqichidagi xatolar: harorat rejimining buzilishi, namuna va reagentlarni noaniq o‘lchash, asbob nosozligi va dasturdagi o‘zgarishlar.",
+       "Suv toza va pH 6,5–7,5 bo‘lishi kerak; reagentlarni 37 °C dan yuqorida saqlash barqarorligini keskin buzadi.",
+       "Asbob tomonidan: reagent o‘lchashga aloqador qismlarni, zarur bo‘lsa kalibrovkani va dastur parametrlarini tekshiring; tirnalgan kyuvetalarda ishlamang; optik tizimni artib turing.",
+       "Imkon bo‘lsa, shubhali natijani boshqa asbobda tekshiring.",
+       "Kunlik va haftalik texnik xizmat, yuvish tartibi va lampani qizdirish vaqti bu qo‘llanmada berilmagan — ularni analizatorning foydalanish qo‘llanmasidan oling."
+      ],
+      "ru": [
+       "Ошибки на этапе измерения: нарушение температурного режима, неточное дозирование проб и реагентов, неисправность прибора и изменения в программе.",
+       "Вода должна быть чистой, pH 6,5–7,5; хранение реагентов выше 37 °C резко нарушает их стабильность.",
+       "Со стороны прибора: проверьте части, отвечающие за дозирование реагентов, при необходимости калибровку и параметры программы; не работайте в поцарапанных кюветах; протирайте оптическую систему.",
+       "По возможности проверьте сомнительный результат на другом приборе.",
+       "Ежедневное и еженедельное обслуживание, порядок промывки и время прогрева лампы в этом руководстве не даны — берите их из руководства по эксплуатации анализатора."
+      ],
+      "en": [
+       "Errors at the measuring stage: a broken temperature regime, inaccurate dosing of samples and reagents, instrument faults and changes in the programme.",
+       "The water must be clean with a pH of 6.5–7.5; storing reagents above 37 °C sharply reduces their stability.",
+       "On the instrument side: check the parts that dose the reagents and, if needed, the calibration and programme parameters; do not use scratched cuvettes; wipe the optical system.",
+       "If possible check a doubtful result on another instrument.",
+       "Daily and weekly maintenance, the washing routine and the lamp warm-up time are not given in this manual — take them from the analyser’s user manual."
+      ]
+     },
+     "numbered": false,
+     "warn": false,
+     "refs": [
+      {
+       "book": "kdl-qvp-2006",
+       "loc": {
+        "uz": "III bob, «Laboratoriya ichidagi sifat nazorati», jadval 3.2",
+        "ru": "гл. III, «Внутрилабораторный контроль качества», табл. 3.2",
+        "en": "ch. III, “Internal laboratory quality control”, table 3.2"
+       }
+      }
+     ],
+     "excerpts": [
+      "aripov2006-iqc"
+     ]
+    },
+    {
+     "type": "text",
+     "label": "safety",
+     "title": {
+      "uz": "Xavfsizlik",
+      "ru": "Безопасность",
+      "en": "Safety"
+     },
+     "bullets": {
+      "uz": [
+       "Zardob va plazma potensial yuqumli: qo‘lqop kiying, pipetkaga og‘iz bilan so‘rmang.",
+       "Reagent ogohlantirishlariga amal qiling (masalan, gemoglobin reagenti kaliy sianid saqlaydi); reagentlar faqat in vitro diagnostika uchun.",
+       "Tarmoq kuchlanishi 220 V ±10% bo‘lishi kerak; elektr kabeli iloji boricha boshqa asboblardan alohida ulanadi."
+      ],
+      "ru": [
+       "Сыворотка и плазма потенциально инфекционны: надевайте перчатки, не набирайте в пипетку ртом.",
+       "Соблюдайте предупреждения к реагентам (например, реагент для гемоглобина содержит цианид калия); реагенты только для диагностики in vitro.",
+       "Напряжение сети должно быть 220 В ±10%; кабель по возможности подключают отдельно от других приборов."
+      ],
+      "en": [
+       "Serum and plasma are potentially infectious: wear gloves and never pipette by mouth.",
+       "Follow the reagent warnings (for example the haemoglobin reagent contains potassium cyanide); reagents are for in vitro diagnostic use only.",
+       "The mains voltage must be 220 V ±10%; the cable is connected separately from other instruments where possible."
+      ]
+     },
+     "numbered": false,
+     "warn": true,
+     "refs": [
+      {
+       "book": "kdl-qvp-2006",
+       "loc": {
+        "uz": "Kirish qismi, «Biologik material bilan xavfsiz ishlash qoidalari»",
+        "ru": "Вводная часть, «Правила безопасной работы с биологическим материалом»",
+        "en": "Introduction, “Rules for safe handling of biological material”"
+       }
+      },
+      {
+       "book": "kdl-qvp-2006",
+       "loc": {
+        "uz": "I bob, «Gemoglobinni aniqlash uchun dastur tuzish» va «Gemoglobinni aniqlash usuli»",
+        "ru": "гл. I, «Составление программы для определения гемоглобина» и «Метод определения гемоглобина»",
+        "en": "ch. I, “Programming the haemoglobin test” and “Haemoglobin method”"
+       }
+      },
+      {
+       "book": "kdl-qvp-2006",
+       "loc": {
+        "uz": "I bob, «Hospitex Diagnostics to‘plamlari yordamida biokimyoviy tekshiruvlar» (Screen Master)",
+        "ru": "гл. I, «Биохимические исследования с наборами Hospitex Diagnostics» (Screen Master)",
+        "en": "ch. I, “Biochemical tests with Hospitex Diagnostics kits” (Screen Master)"
+       }
+      }
+     ],
+     "excerpts": [
+      "aripov2006-hgb-program",
+      "aripov2006-screenmaster"
+     ]
+    }
+   ]
+  },
+  {
    "id": "glyukoza-gox-pod-fotometrik",
    "group": {
     "uz": "Klinik biokimyo · fotometrik usullar",
@@ -8825,6 +9560,245 @@
     },
     {
      "type": "text",
+     "label": "analyzer",
+     "title": {
+      "uz": "Reaktivni tayyorlash (yarim avtomat analizator uchun)",
+      "ru": "Приготовление реагента (для полуавтоматического анализатора)",
+      "en": "Reagent preparation (for a semi-automatic analyser)"
+     },
+     "bullets": {
+      "uz": [
+       "Ishchi reagent: R2 substratni R1 buferda ehtiyotkorlik bilan aralashtirib eriting; 2–8 °C da 6 oy, 15–25 °C da 3 hafta barqaror, yorug‘lik tushmaydigan joyda saqlang.",
+       "Kalibrovka: standart bo‘yicha — R3 standarti, glyukoza 5,56 mmol/l (100 mg/dl).",
+       "Rejim — oxirgi nuqta: 37 °C da 15 daqiqa inkubatsiyadan so‘ng o‘lchanadi; rang 60 daqiqa barqaror.",
+       "Nol: dastur jadvalida suvga qarshi, qo‘lda bajarish shartlarida reagentga qarshi — reagent blankini to‘plam yo‘riqnomasi bo‘yicha qo‘ying.",
+       "Qiymatlar qo‘llanmadagi Hospitex Diagnostics to‘plami va Screen Master Plus fotometriga tegishli. Siz ishlatayotgan to‘plam yo‘riqnomasi (IFU) va analizator qo‘llanmasi har doim ustun — parametrlarni o‘sha hujjatdan tekshirib kiriting."
+      ],
+      "ru": [
+       "Рабочий реагент: осторожно растворите субстрат R2 в буфере R1; стабилен 6 месяцев при 2–8 °C, 3 недели при 15–25 °C, хранить в защищённом от света месте.",
+       "Калибровка: по стандарту — стандарт R3, глюкоза 5,56 ммоль/л (100 мг/дл).",
+       "Режим — конечная точка: измеряют после 15 минут инкубации при 37 °C; окраска стабильна 60 минут.",
+       "Ноль: в таблице программы против воды, в условиях ручной методики против реагента — бланк по реагенту ставьте по инструкции к набору.",
+       "Значения относятся к набору Hospitex Diagnostics и фотометру Screen Master Plus из руководства. Инструкция к используемому вами набору (IFU) и руководство к анализатору всегда имеют приоритет — сверяйте параметры с ними."
+      ],
+      "en": [
+       "Working reagent: dissolve the R2 substrate in the R1 buffer carefully; stable for 6 months at 2–8 °C and 3 weeks at 15–25 °C, keep away from light.",
+       "Calibration: by standard — the R3 standard, glucose 5.56 mmol/L (100 mg/dL).",
+       "Mode — end point: read after 15 minutes of incubation at 37 °C; the colour is stable for 60 minutes.",
+       "Zero: against water in the programme table, against reagent in the manual conditions — set up the reagent blank as the kit IFU says.",
+       "The values belong to the Hospitex Diagnostics kit and the Screen Master Plus photometer in the manual. The IFU of the kit you use and the analyser manual always take precedence — check the parameters against them."
+      ]
+     },
+     "numbered": false,
+     "warn": false,
+     "refs": [
+      {
+       "book": "kdl-qvp-2006",
+       "loc": {
+        "uz": "I bob, «Glyukozani aniqlash uchun dastur tuzish» va «Glyukozani aniqlash usuli»",
+        "ru": "гл. I, «Составление программы для определения глюкозы» и «Метод определения глюкозы»",
+        "en": "ch. I, “Programming the glucose test” and “Glucose method”"
+       }
+      }
+     ],
+     "excerpts": [
+      "aripov2006-gluc-program"
+     ]
+    },
+    {
+     "type": "table",
+     "label": "analyzer",
+     "title": {
+      "uz": "Yarim avtomat analizator: glyukoza dasturi",
+      "ru": "Полуавтоматический анализатор: программа глюкозы",
+      "en": "Semi-automatic analyser: glucose programme"
+     },
+     "header": {
+      "uz": [
+       "Dastur maydoni",
+       "Qo‘llanmadagi qiymat"
+      ],
+      "ru": [
+       "Поле программы",
+       "Значение в руководстве"
+      ],
+      "en": [
+       "Programme field",
+       "Value in the manual"
+      ]
+     },
+     "rows": {
+      "uz": [
+       [
+        "Test nomi",
+        "GLUC"
+       ],
+       [
+        "Reaksiya turi",
+        "Oxirgi nuqta"
+       ],
+       [
+        "Nol",
+        "Suvga qarshi"
+       ],
+       [
+        "O‘lchov birligi",
+        "mmol/l"
+       ],
+       [
+        "Harorat",
+        "37 °C"
+       ],
+       [
+        "Kalibrovka",
+        "Standart bo‘yicha: 5,56"
+       ],
+       [
+        "Namuna hajmi",
+        "5,0 µl"
+       ],
+       [
+        "Reagent 1 / reagent 2 hajmi",
+        "500 µl / 0"
+       ],
+       [
+        "Filtr (to‘lqin uzunligi)",
+        "505 nm"
+       ],
+       [
+        "Inkubatsiya vaqti / reaksiya vaqti",
+        "Elektron nusxadagi jadvalda qatorlar siljigan — o‘qib bo‘lmaydi; qo‘lda: 37 °C da 15 daqiqa"
+       ],
+       [
+        "Me’yor: maks. / min.",
+        "6,11 / 3,61 mmol/l"
+       ],
+       [
+        "Chiziqlilik: maks. konsentratsiya",
+        "27,8 mmol/l"
+       ]
+      ],
+      "ru": [
+       [
+        "Название теста",
+        "GLUC"
+       ],
+       [
+        "Тип реакции",
+        "Конечная точка"
+       ],
+       [
+        "Ноль",
+        "Против воды"
+       ],
+       [
+        "Единица измерения",
+        "ммоль/л"
+       ],
+       [
+        "Температура",
+        "37 °C"
+       ],
+       [
+        "Калибровка",
+        "По стандарту: 5,56"
+       ],
+       [
+        "Объём пробы",
+        "5,0 мкл"
+       ],
+       [
+        "Объём реагента 1 / реагента 2",
+        "500 мкл / 0"
+       ],
+       [
+        "Фильтр (длина волны)",
+        "505 нм"
+       ],
+       [
+        "Время инкубации / время реакции",
+        "В электронной копии строки таблицы сдвинуты — прочитать нельзя; вручную: 15 минут при 37 °C"
+       ],
+       [
+        "Норма: макс. / мин.",
+        "6,11 / 3,61 ммоль/л"
+       ],
+       [
+        "Линейность: макс. концентрация",
+        "27,8 ммоль/л"
+       ]
+      ],
+      "en": [
+       [
+        "Test name",
+        "GLUC"
+       ],
+       [
+        "Reaction type",
+        "End point"
+       ],
+       [
+        "Zero",
+        "Against water"
+       ],
+       [
+        "Unit",
+        "mmol/L"
+       ],
+       [
+        "Temperature",
+        "37 °C"
+       ],
+       [
+        "Calibration",
+        "By standard: 5.56"
+       ],
+       [
+        "Sample volume",
+        "5.0 µL"
+       ],
+       [
+        "Reagent 1 / reagent 2 volume",
+        "500 µL / 0"
+       ],
+       [
+        "Filter (wavelength)",
+        "505 nm"
+       ],
+       [
+        "Incubation time / reaction time",
+        "Rows are shifted in the electronic copy — not readable; manual: 15 minutes at 37 °C"
+       ],
+       [
+        "Normal range: max / min",
+        "6.11 / 3.61 mmol/L"
+       ],
+       [
+        "Linearity: max concentration",
+        "27.8 mmol/L"
+       ]
+      ]
+     },
+     "widths": [
+      0.38,
+      0.62
+     ],
+     "refs": [
+      {
+       "book": "kdl-qvp-2006",
+       "loc": {
+        "uz": "I bob, «Glyukozani aniqlash uchun dastur tuzish» va «Glyukozani aniqlash usuli»",
+        "ru": "гл. I, «Составление программы для определения глюкозы» и «Метод определения глюкозы»",
+        "en": "ch. I, “Programming the glucose test” and “Glucose method”"
+       }
+      }
+     ],
+     "excerpts": [
+      "aripov2006-gluc-program"
+     ]
+    },
+    {
+     "type": "text",
      "label": "safety",
      "title": {
       "uz": "Xavfsizlik",
@@ -9154,6 +10128,245 @@
         "en": "ch. V, p. 52"
        }
       }
+     ]
+    },
+    {
+     "type": "text",
+     "label": "analyzer",
+     "title": {
+      "uz": "Reaktivni tayyorlash (yarim avtomat analizator uchun)",
+      "ru": "Приготовление реагента (для полуавтоматического анализатора)",
+      "en": "Reagent preparation (for a semi-automatic analyser)"
+     },
+     "bullets": {
+      "uz": [
+       "Ishchi reagent: R2 flakonidagi moddani R1 buferning mos hajmida eriting; 2–8 °C da 30 kun, xona haroratida 24 soat barqaror.",
+       "Analizator uchun monoreagent: ishchi reagentga R3 (α-ketoglutarat) 10:1 nisbatda qo‘shiladi; 2–8 °C da 5 kun saqlanadi, ishlatishdan oldin 37 °C gacha isitiladi.",
+       "Kalibrovka: omil (K) bo‘yicha — monoreagent bilan omil 1746; yoki faolligi aniq kalibrator bo‘yicha kalibrovka tuziladi, aniqlik nazorat zardoblari bilan tekshirilishi shart.",
+       "Nol: distillangan suv yoki havoga qarshi; o‘lchash 340 nm, 37 °C, kyuveta 1 sm.",
+       "Qiymatlar qo‘llanmadagi Hospitex Diagnostics to‘plami va Screen Master Plus fotometriga tegishli. Siz ishlatayotgan to‘plam yo‘riqnomasi (IFU) va analizator qo‘llanmasi har doim ustun — parametrlarni o‘sha hujjatdan tekshirib kiriting."
+      ],
+      "ru": [
+       "Рабочий реагент: растворите содержимое флакона R2 в соответствующем объёме буфера R1; стабилен 30 дней при 2–8 °C, 24 часа при комнатной температуре.",
+       "Монореагент для анализатора: к рабочему реагенту добавляют R3 (α-кетоглутарат) в соотношении 10:1; хранится 5 дней при 2–8 °C, перед использованием нагревается до 37 °C.",
+       "Калибровка: по фактору (K) — с монореагентом фактор 1746; или строят калибровку по калибратору с известной активностью, правильность обязательно проверяют контрольными сыворотками.",
+       "Ноль: против дистиллированной воды или воздуха; измерение при 340 нм, 37 °C, кювета 1 см.",
+       "Значения относятся к набору Hospitex Diagnostics и фотометру Screen Master Plus из руководства. Инструкция к используемому вами набору (IFU) и руководство к анализатору всегда имеют приоритет — сверяйте параметры с ними."
+      ],
+      "en": [
+       "Working reagent: dissolve the contents of the R2 vial in the matching volume of R1 buffer; stable for 30 days at 2–8 °C and 24 hours at room temperature.",
+       "Monoreagent for the analyser: R3 (α-ketoglutarate) is added to the working reagent at a 10:1 ratio; it keeps for 5 days at 2–8 °C and is warmed to 37 °C before use.",
+       "Calibration: by factor (K) — 1746 with the monoreagent; or calibrate with a calibrator of known activity, and the accuracy must be checked with control sera.",
+       "Zero: against distilled water or air; measure at 340 nm, 37 °C, 1 cm cuvette.",
+       "The values belong to the Hospitex Diagnostics kit and the Screen Master Plus photometer in the manual. The IFU of the kit you use and the analyser manual always take precedence — check the parameters against them."
+      ]
+     },
+     "numbered": false,
+     "warn": false,
+     "refs": [
+      {
+       "book": "kdl-qvp-2006",
+       "loc": {
+        "uz": "I bob, «AlAT ni aniqlash uchun dastur tuzish» va «AlAT ni aniqlash usuli»",
+        "ru": "гл. I, «Составление программы для определения АлАТ» и «Метод определения АлАТ»",
+        "en": "ch. I, “Programming the ALT test” and “ALT method”"
+       }
+      }
+     ],
+     "excerpts": [
+      "aripov2006-alt-program"
+     ]
+    },
+    {
+     "type": "table",
+     "label": "analyzer",
+     "title": {
+      "uz": "Yarim avtomat analizator: ALT dasturi",
+      "ru": "Полуавтоматический анализатор: программа АЛТ",
+      "en": "Semi-automatic analyser: ALT programme"
+     },
+     "header": {
+      "uz": [
+       "Dastur maydoni",
+       "Qo‘llanmadagi qiymat"
+      ],
+      "ru": [
+       "Поле программы",
+       "Значение в руководстве"
+      ],
+      "en": [
+       "Programme field",
+       "Value in the manual"
+      ]
+     },
+     "rows": {
+      "uz": [
+       [
+        "Test nomi",
+        "ALT"
+       ],
+       [
+        "Reaksiya turi",
+        "Kinetika"
+       ],
+       [
+        "Nol",
+        "Suvga qarshi"
+       ],
+       [
+        "O‘lchov birligi",
+        "E/l"
+       ],
+       [
+        "Harorat",
+        "37 °C"
+       ],
+       [
+        "Kalibrovka",
+        "Omil (K) bo‘yicha: 1746"
+       ],
+       [
+        "Namuna hajmi",
+        "Manbada mos emas: dasturda 5,0 µl, qo‘lda 50 µl — IFU dan oling"
+       ],
+       [
+        "Reagent 1 / reagent 2 hajmi",
+        "500 µl / 0"
+       ],
+       [
+        "Filtr (to‘lqin uzunligi)",
+        "340 nm"
+       ],
+       [
+        "Inkubatsiya vaqti / reaksiya vaqti",
+        "60 s / 30 s"
+       ],
+       [
+        "Me’yor: maks. / min.",
+        "40 E/l / 0"
+       ],
+       [
+        "Chiziqlilik: maks./min. yutilish, maks. delta",
+        "2,250 / 0,800 / 0,350"
+       ]
+      ],
+      "ru": [
+       [
+        "Название теста",
+        "ALT"
+       ],
+       [
+        "Тип реакции",
+        "Кинетика"
+       ],
+       [
+        "Ноль",
+        "Против воды"
+       ],
+       [
+        "Единица измерения",
+        "Е/л"
+       ],
+       [
+        "Температура",
+        "37 °C"
+       ],
+       [
+        "Калибровка",
+        "По фактору (K): 1746"
+       ],
+       [
+        "Объём пробы",
+        "В источнике не совпадает: в программе 5,0 мкл, вручную 50 мкл — берите из IFU"
+       ],
+       [
+        "Объём реагента 1 / реагента 2",
+        "500 мкл / 0"
+       ],
+       [
+        "Фильтр (длина волны)",
+        "340 нм"
+       ],
+       [
+        "Время инкубации / время реакции",
+        "60 с / 30 с"
+       ],
+       [
+        "Норма: макс. / мин.",
+        "40 Е/л / 0"
+       ],
+       [
+        "Линейность: макс./мин. поглощение, макс. дельта",
+        "2,250 / 0,800 / 0,350"
+       ]
+      ],
+      "en": [
+       [
+        "Test name",
+        "ALT"
+       ],
+       [
+        "Reaction type",
+        "Kinetic"
+       ],
+       [
+        "Zero",
+        "Against water"
+       ],
+       [
+        "Unit",
+        "U/L"
+       ],
+       [
+        "Temperature",
+        "37 °C"
+       ],
+       [
+        "Calibration",
+        "By factor (K): 1746"
+       ],
+       [
+        "Sample volume",
+        "Inconsistent in the source: 5.0 µL in the programme, 50 µL manually — take it from the IFU"
+       ],
+       [
+        "Reagent 1 / reagent 2 volume",
+        "500 µL / 0"
+       ],
+       [
+        "Filter (wavelength)",
+        "340 nm"
+       ],
+       [
+        "Incubation time / reaction time",
+        "60 s / 30 s"
+       ],
+       [
+        "Normal range: max / min",
+        "40 U/L / 0"
+       ],
+       [
+        "Linearity: max/min absorbance, max delta",
+        "2.250 / 0.800 / 0.350"
+       ]
+      ]
+     },
+     "widths": [
+      0.38,
+      0.62
+     ],
+     "refs": [
+      {
+       "book": "kdl-qvp-2006",
+       "loc": {
+        "uz": "I bob, «AlAT ni aniqlash uchun dastur tuzish» va «AlAT ni aniqlash usuli»",
+        "ru": "гл. I, «Составление программы для определения АлАТ» и «Метод определения АлАТ»",
+        "en": "ch. I, “Programming the ALT test” and “ALT method”"
+       }
+      }
+     ],
+     "excerpts": [
+      "aripov2006-alt-program"
      ]
     },
     {
@@ -9524,6 +10737,245 @@
     },
     {
      "type": "text",
+     "label": "analyzer",
+     "title": {
+      "uz": "Reaktivni tayyorlash (yarim avtomat analizator uchun)",
+      "ru": "Приготовление реагента (для полуавтоматического анализатора)",
+      "en": "Reagent preparation (for a semi-automatic analyser)"
+     },
+     "bullets": {
+      "uz": [
+       "Ishchi reagent: R2 ning bitta flakoni R1 buferning kerakli hajmida sekin aralashtirib, to‘liq erigunga qadar eritiladi; 2–8 °C da 20 kun, xona haroratida 5 kungacha barqaror.",
+       "Kalibrovka: standart bo‘yicha — to‘plamdagi R3 mochevina standarti 8,325 mmol/l (50 mg/dl); konsentratsiya standart flakonida ko‘rsatilgan.",
+       "Rejim — belgilangan vaqt: A1 30 soniyadan, A2 60 soniyadan keyin o‘lchanadi; ΔA = A2 − A1.",
+       "Nol: havo yoki distillangan suvga qarshi; 340 nm, 37 °C, kyuveta 1 sm.",
+       "Qiymatlar qo‘llanmadagi Hospitex Diagnostics to‘plami va Screen Master Plus fotometriga tegishli. Siz ishlatayotgan to‘plam yo‘riqnomasi (IFU) va analizator qo‘llanmasi har doim ustun — parametrlarni o‘sha hujjatdan tekshirib kiriting."
+      ],
+      "ru": [
+       "Рабочий реагент: один флакон R2 растворяют в нужном объёме буфера R1, медленно перемешивая до полного растворения; стабилен 20 дней при 2–8 °C, до 5 дней при комнатной температуре.",
+       "Калибровка: по стандарту — R3 набора, стандарт мочевины 8,325 ммоль/л (50 мг/дл); концентрация указана на флаконе стандарта.",
+       "Режим — фиксированное время: A1 измеряют через 30 секунд, A2 через 60 секунд; ΔA = A2 − A1.",
+       "Ноль: против воздуха или дистиллированной воды; 340 нм, 37 °C, кювета 1 см.",
+       "Значения относятся к набору Hospitex Diagnostics и фотометру Screen Master Plus из руководства. Инструкция к используемому вами набору (IFU) и руководство к анализатору всегда имеют приоритет — сверяйте параметры с ними."
+      ],
+      "en": [
+       "Working reagent: one vial of R2 is dissolved in the required volume of R1 buffer, mixing slowly until fully dissolved; stable for 20 days at 2–8 °C and up to 5 days at room temperature.",
+       "Calibration: by standard — the kit R3 urea standard, 8.325 mmol/L (50 mg/dL); the concentration is given on the standard vial.",
+       "Mode — fixed time: A1 is read after 30 seconds and A2 after 60 seconds; ΔA = A2 − A1.",
+       "Zero: against air or distilled water; 340 nm, 37 °C, 1 cm cuvette.",
+       "The values belong to the Hospitex Diagnostics kit and the Screen Master Plus photometer in the manual. The IFU of the kit you use and the analyser manual always take precedence — check the parameters against them."
+      ]
+     },
+     "numbered": false,
+     "warn": false,
+     "refs": [
+      {
+       "book": "kdl-qvp-2006",
+       "loc": {
+        "uz": "I bob, «Mochevinani aniqlash uchun dastur tuzish» va «Mochevinani aniqlash usuli»",
+        "ru": "гл. I, «Составление программы для определения мочевины» и «Метод определения мочевины»",
+        "en": "ch. I, “Programming the urea test” and “Urea method”"
+       }
+      }
+     ],
+     "excerpts": [
+      "aripov2006-urea-program"
+     ]
+    },
+    {
+     "type": "table",
+     "label": "analyzer",
+     "title": {
+      "uz": "Yarim avtomat analizator: mochevina dasturi",
+      "ru": "Полуавтоматический анализатор: программа мочевины",
+      "en": "Semi-automatic analyser: urea programme"
+     },
+     "header": {
+      "uz": [
+       "Dastur maydoni",
+       "Qo‘llanmadagi qiymat"
+      ],
+      "ru": [
+       "Поле программы",
+       "Значение в руководстве"
+      ],
+      "en": [
+       "Programme field",
+       "Value in the manual"
+      ]
+     },
+     "rows": {
+      "uz": [
+       [
+        "Test nomi",
+        "UREA"
+       ],
+       [
+        "Reaksiya turi",
+        "Belgilangan vaqt"
+       ],
+       [
+        "Nol",
+        "Suvga qarshi"
+       ],
+       [
+        "O‘lchov birligi",
+        "mmol/l"
+       ],
+       [
+        "Harorat",
+        "37 °C"
+       ],
+       [
+        "Kalibrovka",
+        "Standart bo‘yicha; konsentratsiyasi standart flakonida ko‘rsatilgan"
+       ],
+       [
+        "Namuna hajmi",
+        "5,0 µl"
+       ],
+       [
+        "Reagent 1 / reagent 2 hajmi",
+        "500 µl / 0"
+       ],
+       [
+        "Inkubatsiya vaqti / reaksiya vaqti",
+        "30 / 60 (qo‘lda bajarish tartibida — soniya)"
+       ],
+       [
+        "Filtr (to‘lqin uzunligi)",
+        "340 nm"
+       ],
+       [
+        "Me’yor: maks. / min.",
+        "8,3 / 1,6 (usul bo‘limidagi me’yor: 1,66–8,3 mmol/l)"
+       ],
+       [
+        "Chiziqlilik: maks./min. yutilish, maks. delta",
+        "2,0 / 0,7 / 0,4"
+       ]
+      ],
+      "ru": [
+       [
+        "Название теста",
+        "UREA"
+       ],
+       [
+        "Тип реакции",
+        "Фиксированное время"
+       ],
+       [
+        "Ноль",
+        "Против воды"
+       ],
+       [
+        "Единица измерения",
+        "ммоль/л"
+       ],
+       [
+        "Температура",
+        "37 °C"
+       ],
+       [
+        "Калибровка",
+        "По стандарту; концентрация указана на флаконе стандарта"
+       ],
+       [
+        "Объём пробы",
+        "5,0 мкл"
+       ],
+       [
+        "Объём реагента 1 / реагента 2",
+        "500 мкл / 0"
+       ],
+       [
+        "Время инкубации / время реакции",
+        "30 / 60 (в ручной методике — секунды)"
+       ],
+       [
+        "Фильтр (длина волны)",
+        "340 нм"
+       ],
+       [
+        "Норма: макс. / мин.",
+        "8,3 / 1,6 (норма в разделе метода: 1,66–8,3 ммоль/л)"
+       ],
+       [
+        "Линейность: макс./мин. поглощение, макс. дельта",
+        "2,0 / 0,7 / 0,4"
+       ]
+      ],
+      "en": [
+       [
+        "Test name",
+        "UREA"
+       ],
+       [
+        "Reaction type",
+        "Fixed time"
+       ],
+       [
+        "Zero",
+        "Against water"
+       ],
+       [
+        "Unit",
+        "mmol/L"
+       ],
+       [
+        "Temperature",
+        "37 °C"
+       ],
+       [
+        "Calibration",
+        "By standard; the concentration is given on the standard vial"
+       ],
+       [
+        "Sample volume",
+        "5.0 µL"
+       ],
+       [
+        "Reagent 1 / reagent 2 volume",
+        "500 µL / 0"
+       ],
+       [
+        "Incubation time / reaction time",
+        "30 / 60 (seconds in the manual procedure)"
+       ],
+       [
+        "Filter (wavelength)",
+        "340 nm"
+       ],
+       [
+        "Normal range: max / min",
+        "8.3 / 1.6 (normal range in the method section: 1.66–8.3 mmol/L)"
+       ],
+       [
+        "Linearity: max/min absorbance, max delta",
+        "2.0 / 0.7 / 0.4"
+       ]
+      ]
+     },
+     "widths": [
+      0.38,
+      0.62
+     ],
+     "refs": [
+      {
+       "book": "kdl-qvp-2006",
+       "loc": {
+        "uz": "I bob, «Mochevinani aniqlash uchun dastur tuzish» va «Mochevinani aniqlash usuli»",
+        "ru": "гл. I, «Составление программы для определения мочевины» и «Метод определения мочевины»",
+        "en": "ch. I, “Programming the urea test” and “Urea method”"
+       }
+      }
+     ],
+     "excerpts": [
+      "aripov2006-urea-program"
+     ]
+    },
+    {
+     "type": "text",
      "label": "safety",
      "title": {
       "uz": "Xavfsizlik",
@@ -9806,6 +11258,270 @@
         "en": "ch. III, “Internal quality control”"
        }
       }
+     ]
+    },
+    {
+     "type": "text",
+     "label": "analyzer",
+     "title": {
+      "uz": "Reaktivni tayyorlash (yarim avtomat analizator uchun)",
+      "ru": "Приготовление реагента (для полуавтоматического анализатора)",
+      "en": "Reagent preparation (for a semi-automatic analyser)"
+     },
+     "bullets": {
+      "uz": [
+       "Ishchi reagent: 9 ml R1 va 0,3 ml R2 aralashtiriladi (umumiy bilirubin uchun DMSO li R1, bog‘langan uchun DMSO siz R1); 2–8 °C da, qorong‘uda 5 kun yaroqli.",
+       "Reagentlar qadoqdagi sanagacha yaroqli va xona haroratida saqlanadi.",
+       "Kalibrovka: standart (kalibrator) bo‘yicha, konsentratsiya flakonda; qo‘lda bajarish tartibida har bir namuna uchun R2 siz R1 bilan namuna blanki qo‘yiladi.",
+       "Harorat manba ichida mos emas: dastur jadvalida 37 °C, qo‘lda bajarish shartlarida xona harorati — to‘plam yo‘riqnomasiga qarang.",
+       "Qiymatlar qo‘llanmadagi Hospitex Diagnostics to‘plami va Screen Master Plus fotometriga tegishli. Siz ishlatayotgan to‘plam yo‘riqnomasi (IFU) va analizator qo‘llanmasi har doim ustun — parametrlarni o‘sha hujjatdan tekshirib kiriting."
+      ],
+      "ru": [
+       "Рабочий реагент: смешивают 9 мл R1 и 0,3 мл R2 (для общего билирубина R1 с DMSO, для связанного — R1 без DMSO); годен 5 дней при 2–8 °C в темноте.",
+       "Реагенты годны до даты на упаковке и хранятся при комнатной температуре.",
+       "Калибровка: по стандарту (калибратору), концентрация указана на флаконе; в ручной методике для каждой пробы ставят бланк пробы с R1 без R2.",
+       "Температура в источнике не совпадает: в таблице программы 37 °C, в условиях ручной методики — комнатная; см. инструкцию к набору.",
+       "Значения относятся к набору Hospitex Diagnostics и фотометру Screen Master Plus из руководства. Инструкция к используемому вами набору (IFU) и руководство к анализатору всегда имеют приоритет — сверяйте параметры с ними."
+      ],
+      "en": [
+       "Working reagent: mix 9 mL of R1 with 0.3 mL of R2 (R1 with DMSO for total bilirubin, R1 without DMSO for direct); usable for 5 days at 2–8 °C in the dark.",
+       "The reagents are usable until the date on the pack and are kept at room temperature.",
+       "Calibration: by standard (calibrator), concentration on the vial; in the manual procedure each sample has a sample blank with R1 without R2.",
+       "Temperature is inconsistent in the source: 37 °C in the programme table, room temperature in the manual conditions — see the kit IFU.",
+       "The values belong to the Hospitex Diagnostics kit and the Screen Master Plus photometer in the manual. The IFU of the kit you use and the analyser manual always take precedence — check the parameters against them."
+      ]
+     },
+     "numbered": false,
+     "warn": false,
+     "refs": [
+      {
+       "book": "kdl-qvp-2006",
+       "loc": {
+        "uz": "I bob, «Umumiy va bog‘langan bilirubinni aniqlash uchun dastur tuzish» va «aniqlash usullari»",
+        "ru": "гл. I, «Составление программы для общего и связанного билирубина» и «Методы определения»",
+        "en": "ch. I, “Programming total and direct bilirubin” and “Methods”"
+       }
+      }
+     ],
+     "excerpts": [
+      "aripov2006-bil-program"
+     ]
+    },
+    {
+     "type": "table",
+     "label": "analyzer",
+     "title": {
+      "uz": "Yarim avtomat analizator: bilirubin dasturi",
+      "ru": "Полуавтоматический анализатор: программа билирубина",
+      "en": "Semi-automatic analyser: bilirubin programme"
+     },
+     "header": {
+      "uz": [
+       "Dastur maydoni",
+       "TBIL (umumiy)",
+       "DBIL (bog‘langan)"
+      ],
+      "ru": [
+       "Поле программы",
+       "TBIL (общий)",
+       "DBIL (связанный)"
+      ],
+      "en": [
+       "Programme field",
+       "TBIL (total)",
+       "DBIL (direct)"
+      ]
+     },
+     "rows": {
+      "uz": [
+       [
+        "Reaksiya turi",
+        "Oxirgi nuqta",
+        "Oxirgi nuqta"
+       ],
+       [
+        "Nol",
+        "Suvga qarshi",
+        "Suvga qarshi"
+       ],
+       [
+        "O‘lchov birligi",
+        "µmol/l",
+        "µmol/l"
+       ],
+       [
+        "Harorat",
+        "37 °C",
+        "37 °C"
+       ],
+       [
+        "Kalibrovka",
+        "Standart bo‘yicha",
+        "Standart bo‘yicha"
+       ],
+       [
+        "Namuna hajmi",
+        "30,0 µl",
+        "30,0 µl"
+       ],
+       [
+        "Reagent 1 / reagent 2 hajmi",
+        "500 µl / 0 (qo‘lda: 0,45 ml)",
+        "500 µl / 0 (qo‘lda: 0,45 ml)"
+       ],
+       [
+        "Filtr (to‘lqin uzunligi)",
+        "546 nm",
+        "546 nm"
+       ],
+       [
+        "Me’yor: maks. / min.",
+        "17,0 / 1,0",
+        "5,1 / 0"
+       ],
+       [
+        "Chiziqlilik: maks. konsentratsiya",
+        "340",
+        "340"
+       ],
+       [
+        "Inkubatsiya (qo‘lda bajarish)",
+        "10 daqiqa",
+        "Roppa-rosa 5 daqiqa"
+       ]
+      ],
+      "ru": [
+       [
+        "Тип реакции",
+        "Конечная точка",
+        "Конечная точка"
+       ],
+       [
+        "Ноль",
+        "Против воды",
+        "Против воды"
+       ],
+       [
+        "Единица измерения",
+        "мкмоль/л",
+        "мкмоль/л"
+       ],
+       [
+        "Температура",
+        "37 °C",
+        "37 °C"
+       ],
+       [
+        "Калибровка",
+        "По стандарту",
+        "По стандарту"
+       ],
+       [
+        "Объём пробы",
+        "30,0 мкл",
+        "30,0 мкл"
+       ],
+       [
+        "Объём реагента 1 / реагента 2",
+        "500 мкл / 0 (вручную: 0,45 мл)",
+        "500 мкл / 0 (вручную: 0,45 мл)"
+       ],
+       [
+        "Фильтр (длина волны)",
+        "546 нм",
+        "546 нм"
+       ],
+       [
+        "Норма: макс. / мин.",
+        "17,0 / 1,0",
+        "5,1 / 0"
+       ],
+       [
+        "Линейность: макс. концентрация",
+        "340",
+        "340"
+       ],
+       [
+        "Инкубация (ручная методика)",
+        "10 минут",
+        "Ровно 5 минут"
+       ]
+      ],
+      "en": [
+       [
+        "Reaction type",
+        "End point",
+        "End point"
+       ],
+       [
+        "Zero",
+        "Against water",
+        "Against water"
+       ],
+       [
+        "Unit",
+        "µmol/L",
+        "µmol/L"
+       ],
+       [
+        "Temperature",
+        "37 °C",
+        "37 °C"
+       ],
+       [
+        "Calibration",
+        "By standard",
+        "By standard"
+       ],
+       [
+        "Sample volume",
+        "30.0 µL",
+        "30.0 µL"
+       ],
+       [
+        "Reagent 1 / reagent 2 volume",
+        "500 µL / 0 (manual: 0.45 mL)",
+        "500 µL / 0 (manual: 0.45 mL)"
+       ],
+       [
+        "Filter (wavelength)",
+        "546 nm",
+        "546 nm"
+       ],
+       [
+        "Normal range: max / min",
+        "17.0 / 1.0",
+        "5.1 / 0"
+       ],
+       [
+        "Linearity: max concentration",
+        "340",
+        "340"
+       ],
+       [
+        "Incubation (manual procedure)",
+        "10 minutes",
+        "Exactly 5 minutes"
+       ]
+      ]
+     },
+     "widths": [
+      0.34,
+      0.33,
+      0.33
+     ],
+     "refs": [
+      {
+       "book": "kdl-qvp-2006",
+       "loc": {
+        "uz": "I bob, «Umumiy va bog‘langan bilirubinni aniqlash uchun dastur tuzish» va «aniqlash usullari»",
+        "ru": "гл. I, «Составление программы для общего и связанного билирубина» и «Методы определения»",
+        "en": "ch. I, “Programming total and direct bilirubin” and “Methods”"
+       }
+      }
+     ],
+     "excerpts": [
+      "aripov2006-bil-program"
      ]
     },
     {

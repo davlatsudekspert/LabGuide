@@ -183,7 +183,7 @@ Qoidalar: matn kitoblardan o‘z so‘zim bilan; har slaydda muallif + qisqa nom
 | Texnika (uz) | Guruh | Slayd (uz) | Manbalar |
 |---|---|---|---|
 | Kapillyar qon olish va gematologik tekshiruv uchun namuna tayyorlash | Gematologiya | 9 | 5 |
-| Gemoglobinni gemiglobintsianid (sianmetgemoglobin) usulida aniqlash | Gematologiya | 10 | 2 |
+| Gemoglobinni gemiglobintsianid (sianmetgemoglobin) usulida aniqlash | Gematologiya | 12 | 2 |
 | Eritrotsitlarni sanoq kamerasida (Goryaev) sanash | Gematologiya | 10 | 2 |
 | Leykotsitlarni sanoq kamerasida sanash | Gematologiya | 10 | 2 |
 | Eritrotsitlarning cho‘kish tezligini (EChT) aniqlash | Gematologiya | 8 | 2 |
@@ -200,10 +200,11 @@ Qoidalar: matn kitoblardan o‘z so‘zim bilan; har slaydda muallif + qisqa nom
 | Urogenital surtmalar mikroskopiyasi: gonoreya va trixomoniaz | Umumklinik va mikrobiologik tekshiruvlar · balg‘am, surtmalar | 12 | 3 |
 | Zardob va plazma tayyorlash (biokimyoviy tekshiruv uchun) | Klinik biokimyo · fotometrik usullar | 10 | 1 |
 | Biokimyoviy fotometriya asoslari va to‘plam bilan ishlash tartibi | Klinik biokimyo · fotometrik usullar | 9 | 1 |
-| Qon zardobida glyukozani fotometrik aniqlash (GOD-POD) | Klinik biokimyo · fotometrik usullar | 9 | 2 |
-| Alaninaminotransferaza (ALT) faolligini kinetik aniqlash | Klinik biokimyo · fotometrik usullar | 10 | 2 |
-| Qon zardobida mochevinani fermentativ aniqlash (ureaza–GLDG) | Klinik biokimyo · fotometrik usullar | 9 | 1 |
-| Umumiy va bog‘langan bilirubinni diazo usulida aniqlash | Klinik biokimyo · fotometrik usullar | 9 | 1 |
+| Yarim avtomat biokimyoviy analizatorda ishlash: test dasturi, kalibrovka, nazorat | Klinik biokimyo · fotometrik usullar | 9 | 1 |
+| Qon zardobida glyukozani fotometrik aniqlash (GOD-POD) | Klinik biokimyo · fotometrik usullar | 11 | 2 |
+| Alaninaminotransferaza (ALT) faolligini kinetik aniqlash | Klinik biokimyo · fotometrik usullar | 12 | 2 |
+| Qon zardobida mochevinani fermentativ aniqlash (ureaza–GLDG) | Klinik biokimyo · fotometrik usullar | 11 | 1 |
+| Umumiy va bog‘langan bilirubinni diazo usulida aniqlash | Klinik biokimyo · fotometrik usullar | 11 | 1 |
 | Gemostaz tizimini tekshirish uchun qon olish va tayyorgarlik | Gematologiya · gemostaz | 8 | 2 |
 | Trombotsitlarni Fonio usulida sanash | Gematologiya · gemostaz | 9 | 3 |
 | Laboratoriya ichidagi sifat nazorati: bosqichlar va nazorat materiali | Laboratoriya tartibi · sifat va xavfsizlik | 10 | 1 |

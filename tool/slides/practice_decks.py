@@ -43,6 +43,10 @@ LABELS = {
     'safety': {'uz': 'Xavfsizlik', 'ru': 'Безопасность', 'en': 'Safety'},
     'avoid': {'uz': 'Tavsiya etilmaydi', 'ru': 'Не рекомендуется', 'en': 'Not recommended'},
     'atlas': {'uz': 'Mikroskopik atlas', 'ru': 'Микроскопический атлас', 'en': 'Microscopy atlas'},
+    # Reaktiv tayyorlash va test dasturi (yarim avtomat analizator); har bunday slaydda "excerpts" —
+    # data/analyzer_source_excerpts.json dagi manba parchalari (test_analyzer_protocols.py).
+    'analyzer': {'uz': 'Yarim avtomat analizator', 'ru': 'Полуавтоматический анализатор',
+                 'en': 'Semi-automatic analyser'},
 }
 
 MAX_BULLETS = 6
