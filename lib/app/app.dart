@@ -4,6 +4,7 @@ import 'package:material_ui/material_ui.dart';
 import '../design/theme.dart';
 import '../features/daily/daily_screens.dart';
 import '../features/settings/settings_controller.dart';
+import '../features/toifa/toifa_screens.dart' show toifaBase;
 import '../l10n/gen/app_localizations.dart';
 import 'app_scope.dart';
 import 'router.dart';
@@ -45,6 +46,11 @@ class _LabGuideAppState extends State<LabGuideApp> {
     if (!mounted || !_settings.onboarded) return;
     if (widget.services.reminders.takeOpenRequest()) {
       openDailyFromReminder(_router);
+    }
+    // Toifa eslatmasi — toifa bo'limi (bo'lim yopiq bo'lsa, router o'zi
+    // O'rganishga qaytaradi).
+    if (widget.services.reminders.takeToifaOpenRequest()) {
+      _router.go(toifaBase);
     }
   }
 

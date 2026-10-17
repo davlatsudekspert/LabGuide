@@ -18,9 +18,10 @@ import '../learn/exam_widgets.dart';
 import '../share/result_share.dart';
 import 'toifa_bank.dart';
 import 'toifa_controller.dart';
+import 'toifa_daily.dart';
+import 'toifa_today.dart';
 
-/// Bo'lim manzili (O'rganish tabi ichida).
-const toifaBase = '/learn/toifa';
+export 'toifa_today.dart' show toifaBase;
 
 /// Bo'lim shu foydalanuvchiga ko'rinadimi: ilova tili o'zbekcha yoki
 /// qurilma mintaqasi UZ; shifokor roliga emas.
@@ -63,8 +64,11 @@ class ToifaEntryCard extends StatelessWidget {
         final active = exams.active?.sourceId == ToifaQuestionSource.sourceId
             ? exams.active
             : null;
+        final drill = toifa.activeDrill;
         final status = active != null
             ? l.toifaEntryTestActive(active.answeredCount, active.length)
+            : drill != null
+            ? l.toifaDrillActive(drill.answeredCount, drill.length)
             : ticket != null && !ticket.done
             ? l.toifaEntryTicketActive(ticket.ratings.length, ticket.ids.length)
             : null;
@@ -262,8 +266,23 @@ List<ToifaTestQuestion> _testMistakes(BuildContext context, ToifaBank bank) {
   ];
 }
 
-class ToifaHubScreen extends StatelessWidget {
+class ToifaHubScreen extends StatefulWidget {
   const ToifaHubScreen({super.key});
+
+  @override
+  State<ToifaHubScreen> createState() => _ToifaHubScreenState();
+}
+
+class _ToifaHubScreenState extends State<ToifaHubScreen> {
+  @override
+  void initState() {
+    super.initState();
+    // Bo'lim ochildi — bosh sahifada "Bugun" kartasi ko'rinadi.
+    final toifa = context.services.toifa;
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) => unawaited(toifa.markOpened()),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -298,6 +317,7 @@ class ToifaHubScreen extends StatelessWidget {
           title: l.toifaUzbekOnly,
           kind: NoticeKind.info,
         ),
+      const ToifaTodayCard(),
       LgSectionTitle(l.toifaYourCategory),
       const ToifaCategoryPicker(),
       const SizedBox(height: 8),
@@ -509,7 +529,11 @@ class _ToifaTestScreenState extends State<ToifaTestScreen> {
   Future<void> _start(ToifaBank bank) async {
     final l = AppLocalizations.of(context);
     setState(() => _tried = true);
-    if (_minutesError(l) != null || _passError(l) != null) return;
+    final practice = context.services.toifa.testMode == ToifaTestMode.practice;
+    if ((!practice && _minutesError(l) != null) || _passError(l) != null) {
+      return;
+    }
+    if (practice) return _startDrill(bank);
     final services = context.services;
     final exams = services.exams;
     if (exams.active != null) {
@@ -523,7 +547,11 @@ class _ToifaTestScreenState extends State<ToifaTestScreen> {
     }
     final minutes = _parse(_minutes);
     final pass = _parse(_pass);
-    await services.toifa.setTestSettings(minutes: minutes, pass: pass);
+    await services.toifa.setTestSettings(
+      minutes: minutes,
+      pass: pass,
+      mode: ToifaTestMode.exam,
+    );
     final session = ExamSession.build(
       id: exams.newId(),
       mode: ExamMode.exam,
@@ -543,6 +571,34 @@ class _ToifaTestScreenState extends State<ToifaTestScreen> {
     if (mounted) await context.push('$toifaBase/test/run');
   }
 
+  /// Mashq rejimi: 50 ta (bankda kamroq bo'lsa — hammasi) rasmiy kalitli
+  /// savol, vaqtsiz; har javobdan keyin darhol to'g'ri/xato.
+  Future<void> _startDrill(ToifaBank bank) async {
+    final l = AppLocalizations.of(context);
+    final toifa = context.services.toifa;
+    if (toifa.activeDrill != null) {
+      final ok = await confirmDialog(
+        context,
+        title: l.examReplaceTitle,
+        body: l.examReplaceBody,
+        action: l.toifaDrillStart,
+      );
+      if (!ok || !mounted) return;
+    }
+    final pass = _parse(_pass);
+    await toifa.setTestSettings(
+      // Vaqt maydoni mashqda yashirin — saqlangan imtihon vaqti o'zgarmaydi.
+      minutes: toifa.testMinutes,
+      pass: pass,
+      mode: ToifaTestMode.practice,
+    );
+    await toifa.startDrill(
+      drawQuestions(toifaTestPool(bank), ToifaFormat.testSize, toifa.random),
+      pass: pass,
+    );
+    if (mounted) await context.push('$toifaBase/test/practice');
+  }
+
   @override
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context);
@@ -555,31 +611,59 @@ class _ToifaTestScreenState extends State<ToifaTestScreen> {
 
   List<Widget> _body(BuildContext context, AppLocalizations l, ToifaBank bank) {
     final exams = context.services.exams;
+    final toifa = context.services.toifa;
     final active = exams.active?.sourceId == ToifaQuestionSource.sourceId
         ? exams.active
         : null;
+    final drill = toifa.activeDrill;
+    final practice = toifa.testMode == ToifaTestMode.practice;
+    final size = ToifaFormat.testSize.clamp(0, toifaTestPool(bank).length);
     return [
       if (active != null) ActiveExamCard(session: active),
+      if (drill != null) _ActiveDrillCard(drill: drill),
       const UzbekOnlyTag(),
+      LgSectionTitle(l.toifaModeTitle),
+      _ModeOption(
+        key: const ValueKey('toifa-mode-exam'),
+        title: l.toifaModeExam,
+        subtitle: l.toifaModeExamSub,
+        icon: Icons.timer_outlined,
+        selected: !practice,
+        onTap: () => toifa.setTestMode(ToifaTestMode.exam),
+      ),
+      _ModeOption(
+        key: const ValueKey('toifa-mode-practice'),
+        title: l.toifaModePractice,
+        subtitle: l.toifaModePracticeSub,
+        icon: Icons.fact_check_outlined,
+        selected: practice,
+        onTap: () => toifa.setTestMode(ToifaTestMode.practice),
+      ),
       LgSectionTitle(l.toifaFormatTitle),
       LgSteps([
-        l.toifaFormatStep1(ToifaFormat.testSize, toifaTestPool(bank).length),
-        l.toifaFormatStep2,
-        l.toifaFormatStep3,
+        l.toifaFormatStep1(size, toifaTestPool(bank).length),
+        if (practice) ...[
+          l.toifaDrillStep2,
+          l.toifaDrillStep3,
+        ] else ...[
+          l.toifaFormatStep2,
+          l.toifaFormatStep3,
+        ],
       ]),
       LgSectionTitle(l.examSettings),
-      NumberPresetField(
-        label: l.toifaTimeLabel,
-        controller: _minutes,
-        hint: l.toifaNoTime,
-        helper: l.toifaTimeHelper,
-        errorText: _tried ? _minutesError(l) : null,
-        presets: [
-          (l.toifaNoTime, ''),
-          for (final n in [30, 60, 90]) (l.examMinutes(n), '$n'),
-        ],
-        onChanged: () => setState(() {}),
-      ),
+      if (!practice)
+        NumberPresetField(
+          label: l.toifaTimeLabel,
+          controller: _minutes,
+          hint: l.toifaNoTime,
+          helper: l.toifaTimeHelper,
+          errorText: _tried ? _minutesError(l) : null,
+          presets: [
+            (l.toifaNoTime, ''),
+            for (final n in [30, 60, 90]) (l.examMinutes(n), '$n'),
+          ],
+          onChanged: () => setState(() {}),
+        ),
       const SizedBox(height: 6),
       NumberPresetField(
         label: l.toifaPassLabel,
@@ -597,11 +681,345 @@ class _ToifaTestScreenState extends State<ToifaTestScreen> {
       LgNotice(l.toifaScoringNotice, kind: NoticeKind.info),
       const SizedBox(height: 12),
       LgButton(
-        label: l.toifaTestStart,
+        label: practice ? l.toifaDrillStart : l.toifaTestStart,
         icon: Icons.play_arrow_rounded,
         onPressed: () => _start(bank),
       ),
       ExamHistory(exams: exams, sourceId: ToifaQuestionSource.sourceId),
+    ];
+  }
+}
+
+/// Test rejimi tanlovi (radio kabi katta karta).
+class _ModeOption extends StatelessWidget {
+  const _ModeOption({
+    super.key,
+    required this.title,
+    required this.subtitle,
+    required this.icon,
+    required this.selected,
+    required this.onTap,
+  });
+
+  final String title;
+  final String subtitle;
+  final IconData icon;
+  final bool selected;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final p = LgPalette.of(context);
+    final text = Theme.of(context).textTheme;
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10),
+      child: LgPressable(
+        onTap: onTap,
+        selected: selected,
+        color: selected ? p.soft : p.paper,
+        border: Border.all(
+          color: selected ? p.brand : p.line,
+          width: selected ? 2 : 1,
+        ),
+        borderRadius: BorderRadius.circular(LgRadius.card),
+        semanticLabel: '$title. $subtitle',
+        child: ExcludeSemantics(
+          child: Padding(
+            padding: const EdgeInsets.all(14),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Icon(
+                  selected
+                      ? Icons.radio_button_checked_rounded
+                      : Icons.radio_button_unchecked_rounded,
+                  color: selected ? p.brand : p.sub,
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(title, style: text.titleSmall),
+                      const SizedBox(height: 2),
+                      Text(subtitle, style: text.bodySmall),
+                    ],
+                  ),
+                ),
+                const SizedBox(width: 8),
+                Icon(icon, size: 20, color: selected ? p.brand : p.sub),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// Davom etayotgan mashq testi (ilova yopilgan bo'lsa ham).
+class _ActiveDrillCard extends StatelessWidget {
+  const _ActiveDrillCard({required this.drill});
+
+  final ToifaDrill drill;
+
+  @override
+  Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context);
+    final text = Theme.of(context).textTheme;
+    final toifa = context.services.toifa;
+    return LgPanel(
+      soft: true,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          LgEyebrow(drill.rework ? l.toifaDrillRework : l.toifaDrillTitle),
+          Text(
+            l.toifaDrillActive(drill.answeredCount, drill.length),
+            style: text.titleMedium,
+          ),
+          const SizedBox(height: 4),
+          Text(
+            l.toifaDrillScore(drill.correctCount, drill.wrongCount),
+            style: text.bodyMedium,
+          ),
+          const SizedBox(height: 12),
+          LgButton(
+            label: l.examResume,
+            icon: Icons.play_arrow_rounded,
+            onPressed: () => context.push('$toifaBase/test/practice'),
+          ),
+          const SizedBox(height: 4),
+          LgButton.link(
+            label: l.examDiscardAction,
+            onPressed: () async {
+              final ok = await confirmDialog(
+                context,
+                title: l.toifaDrillDiscardTitle,
+                body: l.toifaDrillFinishBody,
+                action: l.examDiscardAction,
+              );
+              if (ok) await toifa.discardDrill();
+            },
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// Mashq rejimidagi test: har javobdan keyin darhol to'g'ri/xato, rasmiy
+/// kalit, (bo'lsa) LabGuide izohi va manba; so'ng "Keyingi". Vaqt yo'q.
+/// Javoblar darhol yoziladi — ilova yopilsa ham shu joydan davom etadi.
+class ToifaDrillScreen extends StatelessWidget {
+  const ToifaDrillScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context);
+    final toifa = context.services.toifa;
+    return _ToifaPage(
+      title: l.toifaDrillTitle,
+      pageKey: () {
+        final d = toifa.drill;
+        return (d?.id, d?.index, d?.finished);
+      },
+      builder: (context, bank) {
+        final d = toifa.drill;
+        if (d == null) {
+          return [
+            LgStateView(
+              kind: StateKind.empty,
+              title: l.toifaDrillNone,
+              actionLabel: l.toifaDrillNew,
+              onAction: () => context.go('$toifaBase/test'),
+            ),
+          ];
+        }
+        if (d.finished) return _result(context, l, bank, d);
+        return _question(context, l, bank, d);
+      },
+    );
+  }
+
+  List<Widget> _question(
+    BuildContext context,
+    AppLocalizations l,
+    ToifaBank bank,
+    ToifaDrill d,
+  ) {
+    final p = LgPalette.of(context);
+    final text = Theme.of(context).textTheme;
+    final toifa = context.services.toifa;
+    final q = bank.test(d.ids[d.index])!;
+    final answer = d.answers[d.index];
+    final answered = answer != null;
+    final correct = answered && d.isCorrect(d.index);
+    final check = q.keyCheck;
+    // Oxirgi javob — "Natijani ko'rish".
+    final last = d.answeredCount == d.length;
+    return [
+      Wrap(
+        spacing: 8,
+        runSpacing: 6,
+        crossAxisAlignment: WrapCrossAlignment.center,
+        children: [
+          LgEyebrow(l.quizProgress(d.index + 1, d.length)),
+          LgTag(l.toifaListNumber(q.number), tone: LgTone.neutral),
+          if (answered && check.flagged) KeyVerdictTag(verdict: check.verdict),
+        ],
+      ),
+      Padding(
+        padding: const EdgeInsets.symmetric(vertical: 10),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(8),
+          child: LinearProgressIndicator(
+            value: d.answeredCount / d.length,
+            minHeight: 6,
+            color: p.brand,
+            backgroundColor: p.line,
+          ),
+        ),
+      ),
+      Text(
+        l.toifaDrillScore(d.correctCount, d.wrongCount),
+        style: text.bodySmall,
+      ),
+      const SizedBox(height: 8),
+      Semantics(
+        header: true,
+        child: Text(q.prompt(_lang(context)), style: text.headlineSmall),
+      ),
+      OfficialTextToggle(question: q),
+      const SizedBox(height: 14),
+      for (var i = 0; i < q.options.length; i++)
+        Padding(
+          padding: const EdgeInsets.only(bottom: 10),
+          child: _PracticeOption(
+            letter: optionLetter(i),
+            label: q.option(i, _lang(context)),
+            state: !answered
+                ? _Opt.idle
+                : q.key.contains(i)
+                ? _Opt.key
+                : i == answer
+                ? _Opt.wrong
+                : _Opt.idle,
+            keyLabel: check.flagged ? l.toifaOfficialKey : l.quizCorrectAnswer,
+            onTap: answered
+                ? null
+                : () async {
+                    final progress = context.services.quizProgress;
+                    final ok = await toifa.answerDrill(i);
+                    // Xatolar ro'yxatiga (umumiy mashq tarixi) — darhol.
+                    if (ok != null) await progress.record(q.id, correct: ok);
+                  },
+          ),
+        ),
+      if (answered) ...[
+        LgNotice(
+          correct ? l.toifaPracticeRight : l.toifaPracticeWrong,
+          title: correct ? l.quizCorrect : l.quizIncorrect,
+          kind: correct ? NoticeKind.info : NoticeKind.warning,
+        ),
+        KeyCheckNote(question: q),
+        const OfficialListSource(),
+        _RelatedCards(ids: q.analytes),
+        const SizedBox(height: 14),
+        LgButton(
+          label: last ? l.quizFinish : l.quizNext,
+          onPressed: toifa.drillNext,
+        ),
+      ],
+      const SizedBox(height: 8),
+      LgButton.link(
+        label: l.toifaDrillFinishEarly,
+        onPressed: () async {
+          final ok = await confirmDialog(
+            context,
+            title: l.toifaDrillFinishEarly,
+            body: l.toifaDrillFinishBody,
+            action: l.toifaDrillFinishEarly,
+          );
+          if (ok) await toifa.finishDrill();
+        },
+      ),
+    ];
+  }
+
+  List<Widget> _result(
+    BuildContext context,
+    AppLocalizations l,
+    ToifaBank bank,
+    ToifaDrill d,
+  ) {
+    final toifa = context.services.toifa;
+    final text = Theme.of(context).textTheme;
+    final wrong = d.wrongIndexes;
+    return [
+      ScoreHero(
+        correct: d.correctCount,
+        total: d.length,
+        wrong: d.wrongCount,
+        unanswered: d.unansweredCount,
+        title: d.rework ? l.toifaDrillRework : null,
+        badges: [
+          if (d.passed case final passed?)
+            LgTag(
+              passed ? l.examPassMet(d.pass!) : l.examPassMissed(d.pass!),
+              tone: passed ? LgTone.brand : LgTone.warning,
+              icon: passed ? Icons.verified_rounded : Icons.flag_outlined,
+            ),
+        ],
+      ),
+      const ToifaReminderOffer(),
+      const SizedBox(height: 6),
+      if (wrong.isNotEmpty) ...[
+        LgButton(
+          label: l.examReworkMistakes(wrong.length),
+          icon: Icons.replay_rounded,
+          onPressed: () => toifa.startDrill(
+            [for (final i in wrong) ?bank.test(d.ids[i])],
+            pass: d.pass,
+            rework: true,
+          ),
+        ),
+        const SizedBox(height: 10),
+      ],
+      LgButton.secondary(
+        label: l.toifaDrillNew,
+        icon: Icons.add_rounded,
+        onPressed: () => context.go('$toifaBase/test'),
+      ),
+      const SizedBox(height: 10),
+      ShareResultButton(
+        data: ShareData(
+          kind: ShareKind.toifa,
+          correct: d.correctCount,
+          total: d.length,
+          date: d.finishedAt ?? d.startedAt,
+          topic: d.rework ? l.toifaDrillRework : l.toifaDrillTitle,
+        ),
+      ),
+      LgSectionTitle(l.quizMistakes),
+      if (d.unansweredCount > 0)
+        Padding(
+          padding: const EdgeInsets.only(bottom: 6),
+          child: Text(
+            l.toifaDrillUnanswered(d.unansweredCount),
+            style: text.bodySmall,
+          ),
+        ),
+      if (wrong.isEmpty)
+        Text(l.quizNoMistakes, style: text.bodyMedium)
+      else
+        for (final (n, i) in wrong.indexed)
+          ExamReviewCard(
+            number: n + 1,
+            question: bank.test(d.ids[i]),
+            chosen: [d.answers[i]!],
+            correct: [d.keys[i]],
+          ),
     ];
   }
 }
@@ -806,10 +1224,15 @@ class _ToifaPracticeScreenState extends State<ToifaPracticeScreen> {
                 ? null
                 : () {
                     setState(() => _answers[_index] = i);
+                    final ok = q.key.contains(i);
                     unawaited(
-                      context.services.quizProgress.record(
-                        q.id,
-                        correct: q.key.contains(i),
+                      context.services.quizProgress.record(q.id, correct: ok),
+                    );
+                    // Bugungi mashg'ulot hisobiga (kunlik maqsad).
+                    unawaited(
+                      context.services.toifa.recordAnswers(
+                        answered: 1,
+                        correct: ok ? 1 : 0,
                       ),
                     );
                   },
@@ -855,6 +1278,7 @@ class _ToifaPracticeScreenState extends State<ToifaPracticeScreen> {
     ];
     return [
       ScoreHero(correct: right, total: round.length),
+      const ToifaReminderOffer(),
       LgButton(
         label: l.quizRestart,
         icon: Icons.replay_rounded,
@@ -1151,6 +1575,7 @@ class ToifaOralScreen extends StatelessWidget {
     return [
       _TicketDots(ticket: ticket),
       _OralQuestionView(
+        key: ValueKey(q.id),
         number: ticket.index + 1,
         total: ticket.ids.length,
         question: q,
@@ -1181,6 +1606,25 @@ class ToifaOralScreen extends StatelessWidget {
           ticket.count(OralRating.unknown),
         ),
       ),
+      const ToifaReminderOffer(),
+      // Takrorlash: “Qisman”/“Bilmadim” — keyingi biletlarda birinchi
+      // (Leitner qutilari).
+      LgSectionTitle(l.toifaRepeatTitle),
+      if (ticket.toRepeat.isEmpty)
+        Text(l.toifaRepeatNone, style: text.bodyMedium)
+      else ...[
+        for (final (i, id) in ticket.toRepeat.indexed)
+          LgRow(
+            title: bank.oralQuestion(id)?.localized(_lang(context)).text ?? id,
+            subtitle: ticket.ratings[id]?.label(l),
+            icon: _ratingIcon(ticket.ratings[id]),
+            onTap: () => context.push('$toifaBase/oral/q/$id'),
+            divider: i < ticket.toRepeat.length - 1,
+          ),
+        const SizedBox(height: 4),
+        Text(l.toifaRepeatNote, style: text.bodySmall),
+      ],
+      const SizedBox(height: 12),
       LgButton(
         label: l.toifaNewTicket,
         icon: Icons.style_outlined,
@@ -1296,10 +1740,13 @@ class _TicketDots extends StatelessWidget {
   }
 }
 
-/// Og'zaki savol: matn → “Javob rejasini ko'rish” → reja, eskirgan xatolar,
-/// manbalar, bog'liq kartalar → o'zini baholash.
-class _OralQuestionView extends StatelessWidget {
+/// Og'zaki savol: matn → javobni o'ylash (ixtiyoriy taymer, ovoz chiqarib
+/// yoki qog'ozda — ilovaga yozish shart emas) → “Javob rejasini ko'rish” →
+/// reja, (ixtiyoriy) asosiy so'zlar ro'yxati, eskirgan xatolar, manbalar,
+/// bog'liq kartalar → o'zini baholash.
+class _OralQuestionView extends StatefulWidget {
   const _OralQuestionView({
+    super.key,
     required this.question,
     required this.revealed,
     required this.onReveal,
@@ -1318,11 +1765,186 @@ class _OralQuestionView extends StatelessWidget {
   final int? total;
 
   @override
+  State<_OralQuestionView> createState() => _OralQuestionViewState();
+}
+
+class _OralQuestionViewState extends State<_OralQuestionView> {
+  /// O'ylash taymeri (daqiqa).
+  static const thinkMinutes = 3;
+
+  Timer? _timer;
+  DateTime? _end;
+  bool _timeUp = false;
+
+  /// Belgilangan asosiy so'zlar (faqat shu ekranda).
+  final Set<int> _ticked = {};
+
+  ToifaOralQuestion get question => widget.question;
+  bool get revealed => widget.revealed;
+  OralRating? get rating => widget.rating;
+  int? get number => widget.number;
+  int? get total => widget.total;
+
+  @override
+  void didUpdateWidget(_OralQuestionView old) {
+    super.didUpdateWidget(old);
+    if (old.question.id != widget.question.id) {
+      _stopTimer();
+      _end = null;
+      _timeUp = false;
+      _ticked.clear();
+    }
+  }
+
+  @override
+  void dispose() {
+    _stopTimer();
+    super.dispose();
+  }
+
+  void _stopTimer() {
+    _timer?.cancel();
+    _timer = null;
+  }
+
+  void _startTimer() {
+    _stopTimer();
+    setState(() {
+      _end = DateTime.now().add(const Duration(minutes: thinkMinutes));
+      _timeUp = false;
+    });
+    _timer = Timer.periodic(const Duration(seconds: 1), (_) {
+      if (!mounted) return;
+      final left = _end!.difference(DateTime.now());
+      setState(() {
+        if (left <= Duration.zero) {
+          _timeUp = true;
+          _stopTimer();
+        }
+      });
+    });
+  }
+
+  void _reveal() {
+    _stopTimer();
+    widget.onReveal();
+  }
+
+  Widget _thinkTimer(AppLocalizations l, LgPalette p, TextTheme text) {
+    if (_timeUp) {
+      return Text(
+        l.toifaThinkUp,
+        style: text.bodyMedium!.copyWith(color: p.brand),
+      );
+    }
+    final end = _end;
+    if (end == null) {
+      return LgButton.secondary(
+        key: const ValueKey('toifa-think-start'),
+        label: l.toifaThinkTimer(thinkMinutes),
+        icon: Icons.hourglass_empty_rounded,
+        onPressed: _startTimer,
+      );
+    }
+    final left = end.difference(DateTime.now());
+    return Row(
+      children: [
+        Icon(Icons.hourglass_bottom_rounded, size: 20, color: p.brand),
+        const SizedBox(width: 8),
+        Expanded(
+          child: Text(
+            l.toifaThinkLeft(
+              formatClock(left.isNegative ? Duration.zero : left),
+            ),
+            style: text.titleSmall!.copyWith(
+              color: p.brand,
+              fontFeatures: const [FontFeature.tabularFigures()],
+            ),
+          ),
+        ),
+        LgButton.link(
+          key: const ValueKey('toifa-think-stop'),
+          label: l.toifaThinkStop,
+          expand: false,
+          onPressed: () => setState(() {
+            _stopTimer();
+            _end = null;
+          }),
+        ),
+      ],
+    );
+  }
+
+  void _toggle(int i) => setState(() {
+    if (!_ticked.remove(i)) _ticked.add(i);
+  });
+
+  /// Rejaning bandlari va referens/chegara qiymatlari — o'zini tekshirish
+  /// uchun belgilanadigan ro'yxat (faqat mavjud matndan).
+  Widget _checklist(
+    AppLocalizations l,
+    LgPalette p,
+    TextTheme text,
+    ToifaOralQuestion q,
+  ) {
+    String fact(OralFact f) => [
+      ?f.label,
+      f.unit == null ? f.value : '${f.value} ${f.unit}',
+    ].join(': ');
+    final items = [
+      ...q.plan,
+      for (final f in q.reference) fact(f),
+      for (final f in q.cutoffs) fact(f),
+    ];
+    if (items.isEmpty) return const SizedBox.shrink();
+    return LgPanel(
+      key: const ValueKey('toifa-checklist'),
+      soft: true,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Text(l.toifaChecklistHint, style: text.bodySmall),
+          const SizedBox(height: 4),
+          for (final (i, item) in items.indexed)
+            MergeSemantics(
+              child: GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onTap: () => _toggle(i),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Checkbox(
+                      value: _ticked.contains(i),
+                      onChanged: (_) => _toggle(i),
+                      activeColor: p.brand,
+                    ),
+                    const SizedBox(width: 4),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 12),
+                        child: Text(item, style: text.bodyMedium),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          Text(
+            l.toifaChecklistCount(_ticked.length, items.length),
+            style: text.labelMedium!.copyWith(color: p.brand),
+          ),
+        ],
+      ),
+    );
+  }
+
+  @override
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context);
     final p = LgPalette.of(context);
     final text = Theme.of(context).textTheme;
     final q = question.localized(_lang(context));
+    final toifa = context.services.toifa;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -1354,12 +1976,30 @@ class _OralQuestionView extends StatelessWidget {
         _OralOriginalToggle(question: q, revealed: revealed),
         const SizedBox(height: 14),
         if (!revealed) ...[
-          Text(l.toifaRevealHint, style: text.bodyMedium),
+          LgPanel(
+            soft: true,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                ExcludeSemantics(
+                  child: Icon(
+                    Icons.record_voice_over_outlined,
+                    color: p.brand,
+                    size: 22,
+                  ),
+                ),
+                const SizedBox(width: 10),
+                Expanded(child: Text(l.toifaThinkHint, style: text.bodyMedium)),
+              ],
+            ),
+          ),
+          const SizedBox(height: 8),
+          _thinkTimer(l, p, text),
           const SizedBox(height: 12),
           LgButton(
             label: l.toifaShowPlan,
             icon: Icons.visibility_outlined,
-            onPressed: onReveal,
+            onPressed: _reveal,
           ),
         ] else ...[
           LgPanel(
@@ -1408,6 +2048,21 @@ class _OralQuestionView extends StatelessWidget {
               ],
             ),
           ),
+          // Ixtiyoriy: javobni reja bilan solishtirish uchun belgilash.
+          MergeSemantics(
+            child: LgRow(
+              title: l.toifaChecklistToggle,
+              icon: Icons.checklist_rounded,
+              onTap: () => toifa.setChecklist(!toifa.checklist),
+              trailing: Switch(
+                key: const ValueKey('toifa-checklist-switch'),
+                value: toifa.checklist,
+                onChanged: toifa.setChecklist,
+              ),
+              divider: false,
+            ),
+          ),
+          if (toifa.checklist) _checklist(l, p, text, q),
           // Referens interval va diagnostik chegara — alohida bloklarda.
           if (q.reference.isNotEmpty)
             _FactBlock(
@@ -1437,12 +2092,12 @@ class _OralQuestionView extends StatelessWidget {
                   ? LgButton(
                       label: r.label(l),
                       icon: _ratingIcon(r),
-                      onPressed: () => onRate(r),
+                      onPressed: () => widget.onRate(r),
                     )
                   : LgButton.secondary(
                       label: r.label(l),
                       icon: _ratingIcon(r),
-                      onPressed: () => onRate(r),
+                      onPressed: () => widget.onRate(r),
                     ),
             ),
         ],
@@ -1742,6 +2397,7 @@ class _ToifaOralQuestionScreenState extends State<ToifaOralQuestionScreen> {
         final toifa = context.services.toifa;
         return [
           _OralQuestionView(
+            key: ValueKey(q.id),
             question: q,
             revealed: _revealed,
             onReveal: () => setState(() => _revealed = true),

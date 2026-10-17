@@ -18,6 +18,7 @@ import '../partners/partner_widgets.dart';
 import 'global_search.dart';
 import '../settings/settings_controller.dart';
 import '../toifa/toifa_screens.dart';
+import '../toifa/toifa_today.dart' show ToifaTodayCard;
 
 /// Bosh sahifadagi bitta tezkor amal.
 class HomeAction {
@@ -237,9 +238,9 @@ class HomeScreen extends StatelessWidget {
             // Hamjamiyat (faqat server ulangan buildda; aks holda yo'q).
             const CommunityHomeCard(),
             // Laborant uchun tezkor amal: toifa imtihoniga tayyorgarlik
-            // (faqat O'zbekiston foydalanuvchilariga).
-            if (role == AppRole.lab && toifaVisible(context))
-              const ToifaEntryCard(compact: true),
+            // (faqat O'zbekiston foydalanuvchilariga). Bo'lim ochilgach —
+            // "Bugun" kartasi (laborant va toifani ochgan har kim).
+            if (toifaVisible(context)) _ToifaHomeSlot(lab: role == AppRole.lab),
             LgSectionTitle(l.homeUsefulTests),
             ContentGate(
               builder: (context, pack) {
@@ -268,3 +269,24 @@ class HomeScreen extends StatelessWidget {
 
 bool _keepsStack(String location) =>
     location == '/lab/qc' || location == '/lab/calibration';
+
+/// Bosh sahifadagi toifa kartasi: bo'lim hali ochilmagan laborantga —
+/// kirish kartasi; ochilgan bo'lsa (har qanday rol) — "Bugun" kartasi.
+class _ToifaHomeSlot extends StatelessWidget {
+  const _ToifaHomeSlot({required this.lab});
+
+  final bool lab;
+
+  @override
+  Widget build(BuildContext context) {
+    final toifa = context.services.toifa;
+    return ListenableBuilder(
+      listenable: toifa,
+      builder: (context, _) => toifa.opened
+          ? const ToifaTodayCard(compact: true)
+          : lab
+          ? const ToifaEntryCard(compact: true)
+          : const SizedBox.shrink(),
+    );
+  }
+}

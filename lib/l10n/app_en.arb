@@ -2394,6 +2394,171 @@
   "toifaPassError": "Enter 1 to 100 % or leave empty",
   "toifaScoringNotice": "Scoring follows the official key — that is what the exam expects. Where the key is disputed, the results also show a LabGuide note.",
   "toifaTestStart": "Start test",
+  "toifaTodayEyebrow": "Today",
+  "toifaTodayGoal": "Goal: {count} questions or 1 ticket",
+  "@toifaTodayGoal": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "toifaTodayDone": "Today’s goal is done",
+  "toifaTodayProgress": "{answered}/{goal} questions",
+  "@toifaTodayProgress": {
+    "placeholders": {
+      "answered": {
+        "type": "int"
+      },
+      "goal": {
+        "type": "int"
+      }
+    }
+  },
+  "toifaTodayCorrect": "{percent}% correct",
+  "@toifaTodayCorrect": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "toifaTodayTickets": "tickets: {count}",
+  "@toifaTodayTickets": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "toifaStreakDays": "{count}-day streak",
+  "@toifaStreakDays": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "toifaTodayNone": "No practice yet today.",
+  "toifaTodayTomorrow": "Come back tomorrow to keep your streak.",
+  "toifaWeekLabel": "Last 7 days: {values}",
+  "@toifaWeekLabel": {
+    "placeholders": {
+      "values": {
+        "type": "String"
+      }
+    }
+  },
+  "toifaGoalLabel": "Daily goal",
+  "toifaGoalOption": "{count} questions",
+  "@toifaGoalOption": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "toifaGoalHint": "Or 1 oral ticket — whichever comes first.",
+  "toifaReminderTitle": "LabGuide · Qualification",
+  "toifaReminderBody": "Today’s qualification practice is waiting — {count} questions or 1 ticket",
+  "@toifaReminderBody": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "toifaReminderChannel": "Qualification reminder",
+  "toifaOfferTitle": "Continue tomorrow?",
+  "toifaOfferBody": "Pick a reminder time. There’s no reminder on days you’ve met the goal.",
+  "toifaOfferOn": "We’ll remind you tomorrow at {time}.",
+  "@toifaOfferOn": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "toifaModeTitle": "Mode",
+  "toifaModeExam": "Exam mode",
+  "toifaModeExamSub": "Timed; score and mistakes at the end — like the real exam.",
+  "toifaModePractice": "Practice mode — mistakes shown right away",
+  "toifaModePracticeSub": "After each answer: the correct option and note; no timer.",
+  "toifaDrillStep2": "Right after answering you see if it’s correct: the official key and (if any) a note and source.",
+  "toifaDrillStep3": "Resume where you left off even after closing the app; rework your mistakes at the end.",
+  "toifaDrillStart": "Start practice",
+  "toifaDrillActive": "Practice in progress: {answered}/{total}",
+  "@toifaDrillActive": {
+    "placeholders": {
+      "answered": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "toifaDrillTitle": "Practice mode",
+  "toifaDrillRework": "Rework mistakes",
+  "toifaDrillScore": "Correct: {right} · wrong: {wrong}",
+  "@toifaDrillScore": {
+    "placeholders": {
+      "right": {
+        "type": "int"
+      },
+      "wrong": {
+        "type": "int"
+      }
+    }
+  },
+  "toifaDrillFinishEarly": "Finish now",
+  "toifaDrillFinishBody": "Unanswered questions count as wrong. Your answers stay in the mistakes list.",
+  "toifaDrillDiscardTitle": "Abandon this practice?",
+  "toifaDrillNone": "No practice in progress",
+  "toifaDrillNew": "New test",
+  "toifaDrillUnanswered": "Unanswered: {count}",
+  "@toifaDrillUnanswered": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "toifaThinkHint": "Think through your answer: say it out loud or jot it on paper. Then open the plan and compare.",
+  "toifaThinkTimer": "{minutes}-min think timer",
+  "@toifaThinkTimer": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "toifaThinkLeft": "Think time: {time}",
+  "@toifaThinkLeft": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "toifaThinkUp": "Time’s up — open the plan and compare.",
+  "toifaThinkStop": "Stop timer",
+  "toifaChecklistToggle": "Key points to compare with the plan",
+  "toifaChecklistHint": "Tick what your answer covered (on this device only, no typing).",
+  "toifaChecklistCount": "{done}/{total} ticked",
+  "@toifaChecklistCount": {
+    "placeholders": {
+      "done": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "toifaRepeatTitle": "To repeat",
+  "toifaRepeatNote": "“Partly” and “Didn’t know” questions come back first in your next tickets.",
+  "toifaRepeatNone": "You knew them all — new questions in the next ticket.",
   "toifaPracticeSubtitle": "Key right after each answer",
   "toifaPracticeMixed": "Mixed: {count} questions",
   "@toifaPracticeMixed": {
@@ -2465,8 +2630,8 @@
   "toifaPickCategoryFirst": "Choose a category first",
   "toifaDrawTicket": "Draw a ticket",
   "toifaTicketTitle": "Your ticket",
-  "toifaPrepHint": "Prepare an answer to each question. Then open the answer plans one by one and rate yourself.",
-  "toifaShowPlans": "View answer plan",
+  "toifaPrepHint": "No typing needed. Think through each answer — say it out loud or jot it on paper. Then compare with the answer plan and rate yourself.",
+  "toifaShowPlans": "Answer one by one",
   "toifaShowPlan": "View answer plan",
   "toifaNewTicket": "New ticket",
   "toifaNewTicketBody": "Five new questions replace the current ticket. Ratings you gave are kept.",

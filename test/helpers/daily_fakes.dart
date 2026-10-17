@@ -1,25 +1,33 @@
 import 'dart:typed_data';
 import 'dart:ui';
 
+import 'package:flutter/foundation.dart' show ValueChanged;
+
 import 'package:labguide/features/daily/daily_reminder.dart';
 import 'package:labguide/features/share/result_share.dart';
 
-/// Testda bildirishnoma o'rniga: so'rovlar va reja yoziladi.
+/// Testda bildirishnoma o'rniga: so'rovlar va reja yoziladi (har tur
+/// alohida; [scheduled]/[texts]/[cancels] — kunlik eslatma).
 class FakeReminderScheduler implements ReminderScheduler {
   FakeReminderScheduler({this.permission = ReminderPermission.granted});
 
   ReminderPermission permission;
   int permissionRequests = 0;
-  List<DateTime> scheduled = [];
-  ReminderTexts? texts;
-  int cancels = 0;
-  VoidCallback? _onOpen;
+  final plans = <ReminderSlot, List<DateTime>>{};
+  final textsBySlot = <ReminderSlot, ReminderTexts>{};
+  final cancelsBySlot = <ReminderSlot, int>{};
+  ValueChanged<ReminderSlot>? _onOpen;
+
+  List<DateTime> get scheduled => plans[ReminderSlot.daily] ?? const [];
+  set scheduled(List<DateTime> v) => plans[ReminderSlot.daily] = v;
+  ReminderTexts? get texts => textsBySlot[ReminderSlot.daily];
+  int get cancels => cancelsBySlot[ReminderSlot.daily] ?? 0;
 
   /// Bildirishnoma bosilgandek.
-  void tap() => _onOpen?.call();
+  void tap([ReminderSlot slot = ReminderSlot.daily]) => _onOpen?.call(slot);
 
   @override
-  set onOpen(VoidCallback? callback) => _onOpen = callback;
+  set onOpen(ValueChanged<ReminderSlot>? callback) => _onOpen = callback;
 
   @override
   Future<ReminderPermission> requestPermission() async {
@@ -28,15 +36,19 @@ class FakeReminderScheduler implements ReminderScheduler {
   }
 
   @override
-  Future<void> schedule(List<DateTime> times, ReminderTexts texts) async {
-    scheduled = List.of(times);
-    this.texts = texts;
+  Future<void> schedule(
+    List<DateTime> times,
+    ReminderTexts texts, {
+    ReminderSlot slot = ReminderSlot.daily,
+  }) async {
+    plans[slot] = List.of(times);
+    textsBySlot[slot] = texts;
   }
 
   @override
-  Future<void> cancelAll() async {
-    cancels++;
-    scheduled = [];
+  Future<void> cancelAll({ReminderSlot slot = ReminderSlot.daily}) async {
+    cancelsBySlot[slot] = (cancelsBySlot[slot] ?? 0) + 1;
+    plans[slot] = [];
   }
 }
 

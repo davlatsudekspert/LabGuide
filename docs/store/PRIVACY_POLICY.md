@@ -20,7 +20,7 @@ Quyidagilar faqat qurilmangizda saqlanadi va serverga yuborilmaydi: sozlamalar (
 o‘lchov birliklari, rol), xatcho‘plar, qaydlar va qoralamalar, QC (sifat nazorati) qaydlari,
 apparatlaringiz va kalibrlash jurnali, PDF o‘qish holati, mashq va imtihon natijalari (guruhdagi
 testlar bundan mustasno — 5-bo‘lim), kunlik savol holati va eslatma sozlamasi, leykoformula
-natijalari, toifa imtihoniga tayyorgarlik belgilari, hamjamiyatda o‘zingiz bloklagan mualliflar ro‘yxati. Ustozning guruh a’zosiga qo‘ygan
+natijalari, toifa imtihoniga tayyorgarlik belgilari va kunlik mashg‘ulot hisobi, hamjamiyatda o‘zingiz bloklagan mualliflar ro‘yxati. Ustozning guruh a’zosiga qo‘ygan
 real ism belgisi va og‘zaki savol-javob baholari ham faqat ustoz qurilmasida qoladi.
 
 Hisob bilan kirsangiz, email manzilingiz ilovada ko‘rsatish uchun qurilmada saqlanadi, sessiya
@@ -261,8 +261,8 @@ sanaladi. Ovoz bilan bemor ismini aytmang.
 
 ### 14. Eslatmalar, ulashish va rasm
 
-Kunlik savol eslatmasi standart o‘chiq; yoqsangiz, u qurilmada rejalashtiriladigan lokal
-bildirishnoma (push server yo‘q). Natija kartochkasi tizimning ulashish oynasi orqali faqat siz
+Kunlik savol va toifa mashg‘uloti eslatmalari standart o‘chiq; yoqsangiz, ular qurilmada
+rejalashtiriladigan lokal bildirishnomalar (push server yo‘q). Natija kartochkasi tizimning ulashish oynasi orqali faqat siz
 tanlagan joyga yuboriladi; rasmda shaxsiy ma’lumot yo‘q. “Rasmni saqlash” tanlansa, foto
 kutubxonasiga faqat shu rasm qo‘shiladi. Mutaxassis hujjati uchun kamera yoki galereyadan rasm faqat
 siz suratga olganingizda yoki tanlaganingizda o‘qiladi va faqat tekshiruvga yuboriladi (7-bo‘lim).
@@ -293,7 +293,7 @@ LabGuide — учебное и справочное приложение по к
 измерения, роль), закладки, заметки и черновики, записи контроля качества (QC), ваши приборы и
 журнал калибровок, положение чтения PDF, результаты тренировок и экзаменов (кроме тестов в
 группе — раздел 5), состояние вопроса дня и настройка напоминания, результаты лейкоформулы,
-отметки подготовки к экзамену на категорию, список авторов, которых вы заблокировали в сообществе. Реальное имя, которое
+отметки и ежедневная статистика подготовки к экзамену на категорию, список авторов, которых вы заблокировали в сообществе. Реальное имя, которое
 преподаватель ставит участнику группы как метку, и оценки устного опроса тоже остаются только на
 устройстве преподавателя.
 
@@ -532,8 +532,8 @@ iPhone, и на Android (Android 12+); если офлайн-распознав�
 
 ### 14. Напоминания, «Поделиться» и изображения
 
-Напоминание о вопросах дня по умолчанию выключено; если его включить, это локальное уведомление,
-запланированное на устройстве (push-сервера нет). Карточка результата отправляется через системное
+Напоминания о вопросах дня и о подготовке к категории по умолчанию выключены; если их включить, это
+локальные уведомления, запланированные на устройстве (push-сервера нет). Карточка результата отправляется через системное
 окно «Поделиться» только туда, куда выберете вы; персональных данных в ней нет. При выборе
 «Сохранить изображение» в фотоальбом добавляется только эта картинка. Для документа специалиста снимок с
 камеры или изображение из галереи читается, только когда вы сами снимаете или выбираете его, и
@@ -565,7 +565,7 @@ The following stay only on your device and are not sent to a server: settings (l
 units, role), bookmarks, notes and drafts, quality-control (QC) records, your instruments and
 calibration log, PDF reading position, practice and exam results (except group tests — section
 5), daily-question state and
-reminder setting, differential-count results, category-exam preparation marks, and the list of
+reminder setting, differential-count results, category-exam preparation marks and daily practice stats, and the list of
 authors you blocked in the community. A real-name label a teacher puts on a group member and oral
 Q&A grades also stay only on the teacher’s device.
 
@@ -805,8 +805,8 @@ a patient’s name aloud.
 
 ### 14. Reminders, sharing and images
 
-The daily question reminder is off by default; if you turn it on, it is a local notification
-scheduled on the device (no push server). A result card is shared through the system share sheet
+The daily question and qualification-practice reminders are off by default; if you turn them on,
+they are local notifications scheduled on the device (no push server). A result card is shared through the system share sheet
 only to the destination you choose; it contains no personal data. If you choose “Save Image”, only
 that image is added to your photo library. For a specialist document, a camera photo or a gallery image
 is read only when you take or pick it yourself, and is sent only for the check (section 7).

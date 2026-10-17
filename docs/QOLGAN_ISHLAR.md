@@ -19,6 +19,9 @@ Shu ro'yxat bo'yicha ketamiz. Bajarilgani `[x]`.
 
 ## Men qilaman (navbat)
 - [x] Ma'ruza — 16:9 taqdimot ko'rinishi, to'liq ekran (gorizontal so'rovi), to'liq manbalar oynasi, uzun slaydlarni bo'lish, ekranga uzatish (tizim ko'zgusi), taqdimotchi rejimi (D-59)
+- [x] Toifa: 50 savollik test — imtihon yoki mashq rejimi (xato darhol), qoralama davom etadi, xatolar raundi; kunlik hisob, seriya, 7 kun, "Bugun" kartasi (hub + bosh sahifa); "ertaga davom etamiz" lokal eslatmasi (standart o'chiq); og'zaki bilet yozmasdan (o'ylash taymeri, asosiy so'zlar ro'yxati, Leitner takrorlash) (D-60)
+- [ ] Toifa: haqiqiy qurilmada toifa eslatmasini sinash (Android 13+ ruxsat oynasi, iOS; bosilganda toifa bo'limi ochilishi)
+- [ ] Toifa: shifokor roli uchun toifa bo'limi kerakmi — egasi qarori (hozir shifokor/talabaga yopiq, "Bugun" kartasi ham yo'q)
 - [ ] Haqiqiy ikkinchi ekran (televizorda slayd, telefonda taqdimotchi): Android `Presentation` / iOS `UIScreen` — native kod va qurilmada sinov kerak (hozir faqat ekran ko'zgusi, D-59)
 - [ ] Ma'ruza: tik telefonda slaydni barmoq bilan kattalashtirish (pinch-zoom) — surish bilan to'qnashmasligi kerak
 - [ ] **Har mavzudan keyin test** (mavzu testi): ma'ruza oxirida "Mavzu testi", ustoz guruhga bir bosishda topshiradi, natijalar ko'rinadi, xato qilingan savol → tegishli slaydga havola

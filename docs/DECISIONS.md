@@ -903,3 +903,41 @@ D-48 dagi **Ustoz Pro** qatorini (69 000 so'm/oy · 490 000 so'm/yil · $9.99/oy
   "Taqdimotchi rejimi" (joriy + keyingi slayd, vaqt, izoh, katta tugmalar) — faqat shu qurilmada; ko'zguda
   televizor ham shuni ko'rsatadi. Tashqi displeyga alohida chiqish (Android Presentation / iOS UIScreen) native
   kod talab qiladi — keyinga (QOLGAN_ISHLAR).
+
+## D-60. Toifa: 50 savollik test (imtihon/mashq rejimi), kunlik mashg'ulot, "ertaga davom etamiz" eslatmasi, og'zaki bilet yozmasdan (2026-10-17, egasi talabi)
+- **Muammo (egasi, mutaxassislar):** toifa va testlar mutaxassisni ilovada ushlab turadi — 50 savollik test, xato
+  DARHOL ko'rinsin; har kungi natija saqlansin va ertaga qaytishga taklif qilinsin; bilet 5 savol, lekin ilovaga
+  javob yozib bo'lmaydi.
+- **Test rejimi aniq tanlanadi** (`ToifaTestScreen`): "Imtihon rejimi" — avvalgidek (`ExamSession`, ixtiyoriy vaqt,
+  natija oxirida, qoralama `exam.active`); "Mashq rejimi — xato darhol ko'rinadi" — `ToifaDrill`
+  (`lib/features/toifa/toifa_daily.dart`), vaqtsiz, har javobdan keyin rasmiy kalit, (bo'lsa) LabGuide izohi va
+  manba, so'ng "Keyingi"; qoralama `toifa.drill` da (ilova yopilsa — shu savoldan davom). Ikkalasi ham faqat
+  rasmiy kalitli (`scorable`) savollardan, 50 ta (bankda kamroq bo'lsa — hammasi). Mashq natijasi: ball, o'tish
+  chegarasi, xatolar (to'g'ri javob bilan), "Xatolarni qayta ishlash" (faqat xato savollar, mashq rejimida).
+  Har javob umumiy xatolar tarixiga (`QuizProgressController`) ham yoziladi — "Xatolar" sahifasi o'zgarmadi.
+  Mashqda kalit boshlanganda saqlanadi (bank yangilansa ham ball o'zgarmaydi); bankda yo'q savolli qoralama tashlanadi.
+- **Kunlik hisob** (`toifa.daily`, kalit — qurilmaning mahalliy sanasi `yyyy-MM-dd`; oxirgi 60 kun): javob berilgan
+  test savollari, to'g'rilari, yakunlangan biletlar. Mashq rejimi va mavzu mashqi — har javobda; imtihon — yakunda
+  (`recordExamProgress`, javob berilganlari). Kunlik maqsad: N savol (20/50/100, sukut 50) YOKI 1 bilet.
+  Seriya — maqsad bajarilgan ketma-ket kunlar (bugun hali bajarilmagan bo'lsa kechagacha sanaladi; muzlatish yo'q —
+  kunlik savoldan farqli, sodda). "Bugun" kartasi (`ToifaTodayCard`): hub'da (maqsad tanlovi va eslatma bilan) va
+  bosh sahifada — toifa bo'limini ochgan har qanday rolga (laborant ochmaguncha — avvalgi kirish kartasi).
+  Shifokor va talabaga bo'lim yopiq (egasi qarori, 2026-10-09 va 10-12 — o'zgarmadi), ularga karta ham yo'q.
+- **Eslatma** — yangi plagin yo'q: kunlik savolning `ReminderScheduler`/`flutter_local_notifications` qayta
+  ishlatildi, `ReminderSlot` (daily 7100+, toifa 7200+ id, alohida Android kanali, `payload`) bilan — biri
+  ikkinchisini bekor qilmaydi; bosilsa toifa bo'limi ochiladi. Standart o'chiq; ruxsat faqat yoqilganda
+  so'raladi (iOS/Android oynasi, rad etilsa o'chiq qoladi). Maqsad bajarilgach natija sahifalarida (mashq, imtihon,
+  mavzu mashqi, bilet yakuni) "Ertaga davom etamizmi? Eslatma vaqtini tanlang" paneli (kalit, vaqt — sukut 20:00,
+  "Kerak emas"). Matn: "Bugungi toifa mashg'uloti sizni kutmoqda — N ta savol yoki 1 bilet". Maqsad bajarilgan
+  kuni eslatma kelmaydi; 7 kun oldinga rejalashtiriladi. Rol shifokor/talabaga o'zgarsa — bekor qilinadi.
+  Maxfiylik siyosati §1 va §14 bir jumlaga yangilandi (lokal, server yo'q).
+- **Og'zaki bilet yozmasdan:** tayyorlanish matni — "ilovaga yozish shart emas"; har savolda "Javobni o'ylab
+  ko'ring: ovoz chiqarib ayting yoki qog'ozga yozing", ixtiyoriy 3 daqiqalik o'ylash taymeri (to'xtatsa bo'ladi,
+  saqlanmaydi), "Javob rejasini ko'rish", ixtiyoriy "asosiy so'zlar" ro'yxati — FAQAT mavjud reja bandlari va
+  referens/chegara qiymatlaridan belgilanadigan checklist (belgilar saqlanmaydi), so'ng Bildim/Qisman/Bilmadim.
+  Yakunda: baholar, "Takrorlash kerak" ro'yxati. Ovoz yozish yo'q.
+- **Leitner** (`toifa.leitner`): bilmadim → 1-quti, qisman → 2-quti, bildim → bir quti yuqori (yangi → 3), 5 quti;
+  oraliq biletlar soni bilan (1, 2, 4, 8, 16). Bilet tartibi: muddati kelgan zaif (1–2-quti, ko'pi bilan 3 ta) →
+  yangi → muddati kelgan mustahkam → qolgan. Bilet ichida baho o'zgartirilsa quti biletdan oldingi holatdan
+  hisoblanadi. Eski baholar (`toifa.oral`) birinchi o'qishda qutiga o'tkaziladi.
+- Savollar, kalitlar, javob rejalari o'zgarmadi (assets/toifa faqat o'qiladi).

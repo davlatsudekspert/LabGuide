@@ -1024,6 +1024,12 @@ GoRouter buildRouter(
                             builder: (context, state) =>
                                 const ExamRunScreen(base: '$toifaBase/test'),
                           ),
+                          // Mashq rejimi: xato darhol ko'rinadi (vaqtsiz).
+                          GoRoute(
+                            path: 'practice',
+                            builder: (context, state) =>
+                                const ToifaDrillScreen(),
+                          ),
                           GoRoute(
                             path: 'result/:id',
                             builder: (context, state) => ExamResultScreen(
