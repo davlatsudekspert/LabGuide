@@ -44,6 +44,7 @@ import '../features/partners/become_partner_screen.dart';
 import '../features/partners/partner_admin_screens.dart';
 import '../features/partners/partner_widgets.dart';
 import '../features/library/pdf_reader_screen.dart';
+import '../features/profile/contact_screen.dart';
 import '../features/profile/profile_screens.dart';
 import '../features/qc/qc_guides.dart';
 import '../features/qc/qc_guides_info.dart';
@@ -185,6 +186,11 @@ GoRouter buildRouter(
           GoRoute(
             path: 'privacy',
             builder: (context, state) => const PrivacyScreen(),
+          ),
+          // Aloqa va shikoyat: serversiz, doim ochiq (mailto).
+          GoRoute(
+            path: 'contact',
+            builder: (context, state) => const ContactScreen(),
           ),
           GoRoute(
             path: 'support',

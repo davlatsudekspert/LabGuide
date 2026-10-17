@@ -8780,4 +8780,87 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get histoLabCardBody =>
       'Ткани и органы: настоящие микрофото, признаки, тренировка';
+
+  @override
+  String get contactRowTitle => 'Контакты и жалобы';
+
+  @override
+  String get contactRowSub => 'Вопросы, реклама, сообщить об ошибке';
+
+  @override
+  String get contactTitle => 'Связь';
+
+  @override
+  String get contactIntro =>
+      'Работает без интернета и аккаунта: письмо отправляется из вашего почтового приложения.';
+
+  @override
+  String get contactEmailLabel => 'Электронная почта';
+
+  @override
+  String get contactCopy => 'Скопировать адрес';
+
+  @override
+  String get contactCopied => 'Адрес скопирован';
+
+  @override
+  String get contactNoMailApp =>
+      'Не удалось открыть почтовое приложение. Адрес скопирован: отправьте письмо из любой почты.';
+
+  @override
+  String get contactQuestionTitle => 'Вопросы и предложения';
+
+  @override
+  String get contactQuestionBody =>
+      'Задайте вопрос о приложении, предложите тему или улучшение.';
+
+  @override
+  String get contactQuestionAction => 'Написать письмо';
+
+  @override
+  String get contactAdTitle => 'Реклама и партнёрство';
+
+  @override
+  String get contactAdBody =>
+      'Производители, дистрибьюторы и сервисные фирмы лабораторного оборудования могут размещать рекламу в LabGuide.\nНапишите нам или (если доступно в вашей версии) используйте форму партнёра.';
+
+  @override
+  String get contactAdAction => 'Написать по рекламе';
+
+  @override
+  String get contactReportTitle => 'Жалоба / сообщить об ошибке';
+
+  @override
+  String get contactReportBody =>
+      'Сообщите о неверных медицинских данных, неуместной рекламе или неуместном пользовательском контенте.';
+
+  @override
+  String get contactReportHint =>
+      'Укажите в письме раздел или карточку (для рекламы — рекламодателя), чтобы мы быстрее нашли.';
+
+  @override
+  String get contactReportAction => 'Отправить жалобу';
+
+  @override
+  String get contactResponseNote =>
+      'Мы читаем каждое сообщение и исправляем подтверждённые ошибки, но не обещаем срок ответа. Этот адрес не предназначен для экстренной медицинской помощи.';
+
+  @override
+  String get contactPrivacyNote =>
+      'Если вы нам пишете, мы видим ваш адрес и текст письма.';
+
+  @override
+  String contactMailBodyQuestion(String version, String platform) {
+    return 'Ваш вопрос или предложение:\n\n\n---\nПриложение: LabGuide $version\nПлатформа: $platform';
+  }
+
+  @override
+  String contactMailBodyAd(String version, String platform) {
+    return 'Фирма и что вы хотите рекламировать:\n\n\n---\nПриложение: LabGuide $version\nПлатформа: $platform';
+  }
+
+  @override
+  String contactMailBodyReport(String version, String platform) {
+    return 'Раздел / название карточки (или рекламодатель):\nЧто не так:\n(Не указывайте данные пациентов.)\n\n\n---\nПриложение: LabGuide $version\nПлатформа: $platform';
+  }
 }

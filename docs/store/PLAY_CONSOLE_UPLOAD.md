@@ -47,6 +47,7 @@ Dashboard'dagi "Set up your app" ro'yxatidagi bo'limlar:
 | Bo'lim | Javob |
 |---|---|
 | Privacy policy | `https://github.com/davlatsudekspert/LabGuide/blob/main/docs/store/PRIVACY_POLICY.md` (GitHub Pages yoqilsa: `https://davlatsudekspert.github.io/LabGuide/store/PRIVACY_POLICY`). Matnda sana (2026-10-10) va aloqa (labguide@nfcstore.uz) taklif qilingan — egasi tasdiqlasin va muharrir eslatmasini o'chirsin (APP_STORE.md 14-bo'lim). |
+| Contact details (Store listing) | Email: **labguide@nfcstore.uz** (ilovadagi Profil → Aloqa va shikoyat bilan bir xil; kodda `lib/core/contact.dart`). Egasi alias ishlashini sinov xati bilan tasdiqlasin. Telefon/sayt — ixtiyoriy. |
 | App access | "All functionality is available without special access" — hammasi login'siz ochiq (mehmon rejimi). |
 | Ads | **No, my app does not contain ads** (hozirgi buildda e'lon yo'q). |
 | Content rating | Kategoriya: *Reference, News, or Educational*. So'rovnomada zo'ravonlik, jinsiy kontent, qimor, giyohvand moddalar, foydalanuvchi kontenti almashinuvi, joylashuv — hammasiga **No**. Email manzilingizni kiriting, natijani saqlang. |

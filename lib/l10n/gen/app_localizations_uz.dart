@@ -8605,4 +8605,87 @@ class AppLocalizationsUz extends AppLocalizations {
   @override
   String get histoLabCardBody =>
       'To‘qimalar va a’zolar: haqiqiy mikrofotolar, belgilar, mashq';
+
+  @override
+  String get contactRowTitle => 'Aloqa va shikoyat';
+
+  @override
+  String get contactRowSub => 'Savol, reklama, xato haqida xabar';
+
+  @override
+  String get contactTitle => 'Aloqa';
+
+  @override
+  String get contactIntro =>
+      'Internetsiz va hisobsiz ham ishlaydi: xat pochta ilovangiz orqali yuboriladi.';
+
+  @override
+  String get contactEmailLabel => 'Elektron pochta';
+
+  @override
+  String get contactCopy => 'Manzilni nusxalash';
+
+  @override
+  String get contactCopied => 'Manzil nusxalandi';
+
+  @override
+  String get contactNoMailApp =>
+      'Pochta ilovasi ochilmadi. Manzil nusxalandi: xatni istalgan pochta xizmatidan yuboring.';
+
+  @override
+  String get contactQuestionTitle => 'Savol va takliflar';
+
+  @override
+  String get contactQuestionBody =>
+      'Ilova haqida savol bering, mavzu yoki yaxshilash bo‘yicha taklif yuboring.';
+
+  @override
+  String get contactQuestionAction => 'Xat yozish';
+
+  @override
+  String get contactAdTitle => 'Reklama va hamkorlik';
+
+  @override
+  String get contactAdBody =>
+      'Laboratoriya apparatlari ishlab chiqaruvchilari, distribyutorlari va servis firmalari LabGuide’da reklama berishi mumkin.\nBizga yozing yoki (ilovangizda bo‘lsa) hamkor arizasidan foydalaning.';
+
+  @override
+  String get contactAdAction => 'Reklama bo‘yicha yozish';
+
+  @override
+  String get contactReportTitle => 'Shikoyat / xato haqida xabar';
+
+  @override
+  String get contactReportBody =>
+      'Noto‘g‘ri tibbiy ma’lumot, nomaqbul reklama yoki nomaqbul foydalanuvchi kontenti haqida yozing.';
+
+  @override
+  String get contactReportHint =>
+      'Xatda bo‘lim yoki karta nomini (reklama bo‘lsa — reklama bergan firmani) yozing: tezroq topamiz.';
+
+  @override
+  String get contactReportAction => 'Shikoyat yuborish';
+
+  @override
+  String get contactResponseNote =>
+      'Har bir xabarni o‘qiymiz va tasdiqlangan xatolarni tuzatamiz, lekin javob muddatini va’da qila olmaymiz. Bu manzil shoshilinch tibbiy yordam uchun emas.';
+
+  @override
+  String get contactPrivacyNote =>
+      'Bizga yozsangiz, email manzilingiz va yozganingiz bizga ko‘rinadi.';
+
+  @override
+  String contactMailBodyQuestion(String version, String platform) {
+    return 'Savol yoki taklifingiz:\n\n\n---\nIlova: LabGuide $version\nPlatforma: $platform';
+  }
+
+  @override
+  String contactMailBodyAd(String version, String platform) {
+    return 'Firma va nimani reklama qilmoqchisiz:\n\n\n---\nIlova: LabGuide $version\nPlatforma: $platform';
+  }
+
+  @override
+  String contactMailBodyReport(String version, String platform) {
+    return 'Bo‘lim / karta nomi (yoki reklama bergan firma):\nNima noto‘g‘ri:\n(Bemor ma’lumotlarini yozmang.)\n\n\n---\nIlova: LabGuide $version\nPlatforma: $platform';
+  }
 }
