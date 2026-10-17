@@ -1,4 +1,4 @@
-# Apparat rasmlari — huquq va holat (2026-10-09)
+# Apparat rasmlari — huquq va holat (2026-10-17)
 
 Qoida (D-36a): model kartasida faqat **aynan shu modelning** fotosi turadi —
 ishlab chiqaruvchining rasmiy materialidan **yozma ruxsat bilan** yoki modeli
@@ -15,7 +15,47 @@ validatori to'liq bo'lmagan yoki boshqa modelga tegishli metadatani rad etadi.
 
 ## Ilovadagi rasmlar
 
-Hozircha **yo'q** (26 modeldan 0). Hamma kartada neytral belgi.
+Hozircha **yo'q** (26 modeldan 0). Hamma kartada neytral belgi. Ilovada
+rasm ostida muallif · litsenziya (manba sahifasiga havola) va “Huquq
+tekshirilgan” sanasi ko'rinadi; to'liq ekranda `rights` matni ham chiqadi
+(`lib/features/instruments/instrument_image.dart`) — rasm qo'shilsa
+atribusiya qo'shimcha kodsiz ko'rinadi.
+
+## Model → holat (2026-10-17)
+
+“Ochiq manba” ustuni: Wikimedia Commons / Openverse (Flickr va boshqalar)
+bo'yicha model nomi bilan qidirildi (2026-10-17). Ruxsat xatlari:
+[`docs/instrument_permission_emails/`](instrument_permission_emails/) —
+**hali yuborilmagan** (egasi yuboradi).
+
+| Model | Holat | Manba | Litsenziya | Keyingi qadam |
+|---|---|---|---|---|
+| BS-240 | rasm yo'q (neytral belgi) | ochiq manbada topilmadi | — | ruxsat xati `mindray.md` |
+| BS-480 | rasm yo'q (neytral belgi) | ochiq manbada topilmadi | — | ruxsat xati `mindray.md` |
+| HumaStar 600 | rasm yo'q (neytral belgi) | ochiq manbada topilmadi | — | ruxsat xati `human.md` |
+| HumaLyzer 4000 | rasm yo'q (neytral belgi) | ochiq manbada topilmadi | — | ruxsat xati `human.md` |
+| cobas c 311 | rasm yo'q (neytral belgi) | ochiq manbada topilmadi | — | ruxsat xati `roche_diagnostics.md` |
+| cobas c 303 | rasm yo'q (neytral belgi) | ochiq manbada topilmadi | — | ruxsat xati `roche_diagnostics.md` |
+| ARCHITECT c4000 | rasm yo'q (neytral belgi) | ochiq manbada topilmadi | — | ruxsat xati `abbott.md` |
+| Alinity c | rasm yo'q (neytral belgi) | ochiq manbada topilmadi | — | ruxsat xati `abbott.md` |
+| BC-5390 | rasm yo'q (neytral belgi) | ochiq manbada topilmadi | — | ruxsat xati `mindray.md` |
+| BC-30s | rasm yo'q (neytral belgi) | ochiq manbada topilmadi | — | ruxsat xati `mindray.md` |
+| BC-6200 | rasm yo'q (neytral belgi) | ochiq manbada topilmadi | — | ruxsat xati `mindray.md` |
+| HumaCount 5D | rasm yo'q (neytral belgi) | ochiq manbada topilmadi | — | ruxsat xati `human.md` |
+| HumaCount 30TS | rasm yo'q (neytral belgi) | ochiq manbada topilmadi | — | ruxsat xati `human.md` |
+| CELL-DYN Emerald 22 AL | rasm yo'q (neytral belgi) | ochiq manbada topilmadi | — | ruxsat xati `abbott.md` |
+| CELL-DYN Emerald | rasm yo'q (neytral belgi) | ochiq manbada topilmadi | — | ruxsat xati `abbott.md` |
+| Alinity hq | rasm yo'q (neytral belgi) | ochiq manbada topilmadi | — | ruxsat xati `abbott.md` |
+| CL-900i | rasm yo'q (neytral belgi) | ochiq manbada topilmadi | — | ruxsat xati `mindray.md` |
+| CL-1200i | rasm yo'q (neytral belgi) | ochiq manbada topilmadi | — | ruxsat xati `mindray.md` |
+| HumaCLIA 150 | rasm yo'q (neytral belgi) | ochiq manbada topilmadi | — | ruxsat xati `human.md` |
+| cobas e 411 | rasm yo'q (neytral belgi) | ochiq manbada topilmadi | — | ruxsat xati `roche_diagnostics.md` |
+| cobas e 402 | rasm yo'q (neytral belgi) | ochiq manbada topilmadi | — | ruxsat xati `roche_diagnostics.md` |
+| ARCHITECT i1000SR | rasm yo'q (neytral belgi) | ochiq manbada topilmadi | — | ruxsat xati `abbott.md` |
+| Alinity i | rasm yo'q (neytral belgi) | ochiq manbada topilmadi | — | ruxsat xati `abbott.md` |
+| cobas u 411 | rasm yo'q (neytral belgi) | Commons: File:Cobas_u_411.JPG (Roto2esdios) — sifat talabiga javob bermaydi, pastga qarang | CC BY-SA 4.0 (+GFDL) — lekin ishlatilmadi | ruxsat xati `roche_diagnostics.md` |
+| cobas 6500 | rasm yo'q (neytral belgi) | ochiq manbada topilmadi | — | ruxsat xati `roche_diagnostics.md` |
+| EU-5600 Pro | rasm yo'q (neytral belgi) | ochiq manbada topilmadi | — | ruxsat xati `mindray.md` |
 
 ## Ishlab chiqaruvchi sayti shartlari (o'qilgan 2026-10-09)
 
@@ -27,6 +67,12 @@ Hozircha **yo'q** (26 modeldan 0). Hamma kartada neytral belgi.
 | HUMAN — imprint (human.de) | Sayt avtomatik so'rovlarni bloklaydi (403), shartlar matni bevosita o'qilmadi; imprint sahifasida rasmlar qisman Shutterstock'dan ekani ko'rsatilgan (qidiruv natijasi orqali) | Ruxsat aniq emas → so'rash kerak |
 
 ## Ruxsat talab qilinadi
+
+Tayyor inglizcha so'rov xatlari (har ishlab chiqaruvchiga bittadan, aynan
+shu sahifalar bilan): [`docs/instrument_permission_emails/`](instrument_permission_emails/)
+(`mindray.md`, `human.md`, `roche_diagnostics.md`, `abbott.md`). Yuborilmagan;
+`[...]` joylarini to'ldirib egasi yuboradi. Yozma javob kelmaguncha rasm
+ishlatilmaydi.
 
 Har qatorda: model — rasm turgan rasmiy sahifa — kimdan so'rash.
 Ruxsat olingach rasm aynan shu sahifadagi asl nusxadan, o'zgartirilmasdan
@@ -90,16 +136,36 @@ so'ralsin.
 | CELL-DYN Emerald | https://www.corelaboratory.abbott/us/en/offerings/brands/cell-dyn/cell-dyn-emerald.html | Oila sahifasiga yo'naltiradi (bir nechta model) — kartada “manba” havolasi qo'yilmadi |
 | Alinity hq | https://www.corelaboratory.abbott/int/en/offerings/brands/alinity/Alinity-h-hematology-system.html | Faqat “h-series integrated system” rasmi — aynan hq emas |
 
-## Ochiq litsenziyali manbalar (Wikimedia Commons) — tekshiruv natijasi
+## Ochiq litsenziyali manbalar — tekshiruv natijasi (2026-10-17)
 
-26 model nomi bo'yicha qidirildi. Topilganlar:
+26 model nomi bo'yicha qayta qidirildi: Wikimedia Commons (fayl nomlari va
+to'liq matn, aniq model nomi qo'shtirnoqda: “cobas c 311”, “BS-480”,
+“HumaStar”, “Alinity”, “CELL-DYN” va h.k.) va Openverse (Commons + Flickr va
+boshqa CC/PD manbalar). Qoida: faqat fayl sahifasida aynan shu model nomi
+yozilgan, muallifi va litsenziyasi (CC0 / CC BY / CC BY-SA / PD) aniq, tiniq
+va kesilmagan foto qabul qilinadi.
 
 - **cobas u 411** — [File:Cobas_u_411.JPG](https://commons.wikimedia.org/wiki/File:Cobas_u_411.JPG),
-  Roto2esdios, CC BY-SA 4.0 (+GFDL). Model yozuvi rasmda aniq ko'rinadi, lekin
+  Roto2esdios, CC BY-SA 4.0 (+GFDL va boshqa CC BY-SA versiyalari), 2011-yil
+  yuklangan yagona versiya. Litsenziya va model nomi talabiga mos, lekin
   surat **xira (harakatdan loyqa)**, apparat pastdan va yonlardan kesilgan,
   fonda begona buyumlar. “Tiniq, muhim qismlar kesilmagan” talabiga javob
-  bermaydi; egasi ham avval olib tashlatgan → **qo'yilmadi**.
-- File:CBC_Analyzer.jpg — Mindray **BC-5000** (katalogda yo'q model) → qo'yilmadi.
-- Abbott CELL-DYN 1700, AxSYM; Sysmex XT-4000i va boshqalar — katalogdagi
-  modellar emas → qo'yilmadi.
-- Qolgan modellar uchun Commons'da model nomi ko'rsatilgan fayl topilmadi.
+  bermaydi (D-36a) → **qo'yilmadi**. Fayl sahifasi 2026-10-17 da qayta
+  tekshirildi: yangi versiya yo'q (faqat 2011-05-21 yuklamasi). Eslatma:
+  bu safar Wikimedia `upload.wikimedia.org` so'rovlarni cheklagani (HTTP 429)
+  uchun foto qayta ko'rilmadi — xulosa 2026-10-09 dagi ko'rikka tayanadi.
+- File:CBC_Analyzer.jpg (CC BY-SA 4.0) — Mindray **BC-5000**, katalogda yo'q
+  model → qo'yilmadi.
+- File:Cobas_machine.jpg (CC0) — fayl sahifasida aniq model yozilmagan
+  (“Cobas”, “Chemistry analyzer”) → qo'yilmadi. File:Cobas_c111.jpg (CC0) —
+  c 111, katalogdagi c 311 / c 303 emas → qo'yilmadi.
+- File:Biochemistry_Analyzer.jpg — Erba Chem-7; Sysmex XT-4000i, Konelab 60i;
+  Abbott CELL-DYN 1700, AxSYM — katalogdagi modellar emas → qo'yilmadi.
+- HUMAN (HumaStar, HumaLyzer, HumaCount, HumaCLIA), Abbott (ARCHITECT,
+  Alinity, CELL-DYN Emerald), Mindray BS/BC/CL/EU, Roche cobas c/e 4xx/6500 —
+  Commons va Openverse'da model nomi ko'rsatilgan fayl **topilmadi**.
+
+Natija: 26 modeldan 0 tasi uchun ochiq litsenziyali, talabga mos foto bor.
+Rasm kerak bo'lgan modellar uchun ruxsat xatlari tayyor
+(`docs/instrument_permission_emails/`). Keyingi tekshiruvda Commons'ga yangi
+yuklangan fayllar uchun yuqoridagi qidiruvni takrorlang.
