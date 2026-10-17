@@ -1661,7 +1661,9 @@ class ContentPack {
           throw FormatException('$where: target without a number ($lang)');
         }
         for (final u in g.units) {
-          if (!text.contains(u)) {
+          // Ruscha matnda birlik kirillcha yoziladi (ммоль/л, мг/дл).
+          final ru = lang == 'ru' ? _ruUnits[u] : null;
+          if (!text.contains(u) && (ru == null || !text.contains(ru))) {
             throw FormatException('$where: target ($lang) lacks unit $u');
           }
         }
@@ -1674,6 +1676,8 @@ class ContentPack {
       }
     }
   }
+
+  static const _ruUnits = {'mg/dL': 'мг/дл', 'mmol/L': 'ммоль/л'};
 
   /// Agent tekshiruvi: sana (ISO), qamrov va hisobot fayli majburiy.
   static void _validateAgentChecks(Analyte a) {

@@ -4223,7 +4223,7 @@
      },
      "target_text": {
       "uz": "< 100 mg/dL",
-      "ru": "< 100 mg/dL",
+      "ru": "< 100 мг/дл",
       "en": "< 100 mg/dL"
      },
      "unit": "mg/dL",
@@ -4255,7 +4255,7 @@
      },
      "target_text": {
       "uz": "< 130 mg/dL",
-      "ru": "< 130 mg/dL",
+      "ru": "< 130 мг/дл",
       "en": "< 130 mg/dL"
      },
      "unit": "mg/dL",
@@ -4287,7 +4287,7 @@
      },
      "target_text": {
       "uz": "< 160 mg/dL",
-      "ru": "< 160 mg/dL",
+      "ru": "< 160 мг/дл",
       "en": "< 160 mg/dL"
      },
      "unit": "mg/dL",
@@ -4324,7 +4324,7 @@
      },
      "target_text": {
       "uz": "< 100 mg/dL; ixtiyoriy maqsad: < 70 mg/dL",
-      "ru": "< 100 mg/dL; факультативная цель: < 70 mg/dL",
+      "ru": "< 100 мг/дл; факультативная цель: < 70 мг/дл",
       "en": "< 100 mg/dL; optional goal: < 70 mg/dL"
      },
      "unit": "mg/dL",
@@ -4356,7 +4356,7 @@
      },
      "target_text": {
       "uz": "< 130 mg/dL; ixtiyoriy maqsad: < 100 mg/dL",
-      "ru": "< 130 mg/dL; факультативная цель: < 100 mg/dL",
+      "ru": "< 130 мг/дл; факультативная цель: < 100 мг/дл",
       "en": "< 130 mg/dL; optional goal: < 100 mg/dL"
      },
      "unit": "mg/dL",
@@ -4383,7 +4383,7 @@
      },
      "target_text": {
       "uz": "< 130 mg/dL",
-      "ru": "< 130 mg/dL",
+      "ru": "< 130 мг/дл",
       "en": "< 130 mg/dL"
      },
      "unit": "mg/dL",
@@ -4410,7 +4410,7 @@
      },
      "target_text": {
       "uz": "< 160 mg/dL",
-      "ru": "< 160 mg/dL",
+      "ru": "< 160 мг/дл",
       "en": "< 160 mg/dL"
      },
      "unit": "mg/dL",
@@ -4468,8 +4468,8 @@
       "en": "Very high risk (primary or secondary prevention)"
      },
      "target_text": {
-      "uz": "Boshlang‘ich qiymatdan ≥ 50% pasayish va < 1.4 mmol/L (< 55 mg/dL)",
-      "ru": "Снижение на ≥ 50% от исходного и < 1.4 mmol/L (< 55 mg/dL)",
+      "uz": "Boshlang‘ich qiymatdan ≥ 50% pasayish va < 1,4 mmol/L (< 55 mg/dL)",
+      "ru": "Снижение на ≥ 50% от исходного и < 1,4 ммоль/л (< 55 мг/дл)",
       "en": "≥ 50% reduction from baseline and < 1.4 mmol/L (< 55 mg/dL)"
      },
      "unit": "%, mmol/L, mg/dL",
@@ -4490,8 +4490,8 @@
       "en": "High risk"
      },
      "target_text": {
-      "uz": "Boshlang‘ich qiymatdan ≥ 50% pasayish va < 1.8 mmol/L (< 70 mg/dL)",
-      "ru": "Снижение на ≥ 50% от исходного и < 1.8 mmol/L (< 70 mg/dL)",
+      "uz": "Boshlang‘ich qiymatdan ≥ 50% pasayish va < 1,8 mmol/L (< 70 mg/dL)",
+      "ru": "Снижение на ≥ 50% от исходного и < 1,8 ммоль/л (< 70 мг/дл)",
       "en": "≥ 50% reduction from baseline and < 1.8 mmol/L (< 70 mg/dL)"
      },
      "unit": "%, mmol/L, mg/dL",
@@ -4512,8 +4512,8 @@
       "en": "Moderate risk"
      },
      "target_text": {
-      "uz": "< 2.6 mmol/L (< 100 mg/dL)",
-      "ru": "< 2.6 mmol/L (< 100 mg/dL)",
+      "uz": "< 2,6 mmol/L (< 100 mg/dL)",
+      "ru": "< 2,6 ммоль/л (< 100 мг/дл)",
       "en": "< 2.6 mmol/L (< 100 mg/dL)"
      },
      "unit": "mmol/L, mg/dL",
@@ -4534,8 +4534,8 @@
       "en": "Low risk"
      },
      "target_text": {
-      "uz": "< 3.0 mmol/L (< 116 mg/dL)",
-      "ru": "< 3.0 mmol/L (< 116 mg/dL)",
+      "uz": "< 3,0 mmol/L (< 116 mg/dL)",
+      "ru": "< 3,0 ммоль/л (< 116 мг/дл)",
       "en": "< 3.0 mmol/L (< 116 mg/dL)"
      },
      "unit": "mmol/L, mg/dL",
@@ -4592,8 +4592,8 @@
       "en": "Very high-risk ASCVD, on maximal statin therapy"
      },
      "target_text": {
-      "uz": "Chegara: LDL-C ≥ 70 mg/dL (≥ 1.8 mmol/L)",
-      "ru": "Порог: ХС ЛПНП ≥ 70 mg/dL (≥ 1.8 mmol/L)",
+      "uz": "Chegara: LDL-C ≥ 70 mg/dL (≥ 1,8 mmol/L)",
+      "ru": "Порог: ХС ЛПНП ≥ 70 мг/дл (≥ 1,8 ммоль/л)",
       "en": "Threshold: LDL-C ≥ 70 mg/dL (≥ 1.8 mmol/L)"
      },
      "unit": "mg/dL, mmol/L",
@@ -4959,7 +4959,7 @@
      },
      "target_text": {
       "uz": "< 130 mg/dL",
-      "ru": "< 130 mg/dL",
+      "ru": "< 130 мг/дл",
       "en": "< 130 mg/dL"
      },
      "unit": "mg/dL",
@@ -4990,7 +4990,7 @@
      },
      "target_text": {
       "uz": "< 160 mg/dL",
-      "ru": "< 160 mg/dL",
+      "ru": "< 160 мг/дл",
       "en": "< 160 mg/dL"
      },
      "unit": "mg/dL",
@@ -5021,7 +5021,7 @@
      },
      "target_text": {
       "uz": "< 190 mg/dL",
-      "ru": "< 190 mg/dL",
+      "ru": "< 190 мг/дл",
       "en": "< 190 mg/dL"
      },
      "unit": "mg/dL",
@@ -5057,7 +5057,7 @@
      },
      "target_text": {
       "uz": "Ixtiyoriy maqsad: < 100 mg/dL",
-      "ru": "Факультативная цель: < 100 mg/dL",
+      "ru": "Факультативная цель: < 100 мг/дл",
       "en": "Optional goal: < 100 mg/dL"
      },
      "unit": "mg/dL",
@@ -5082,8 +5082,8 @@
       "en": "Very high risk"
      },
      "target_text": {
-      "uz": "< 2.2 mmol/L (< 85 mg/dL)",
-      "ru": "< 2.2 mmol/L (< 85 mg/dL)",
+      "uz": "< 2,2 mmol/L (< 85 mg/dL)",
+      "ru": "< 2,2 ммоль/л (< 85 мг/дл)",
       "en": "< 2.2 mmol/L (< 85 mg/dL)"
      },
      "unit": "mmol/L, mg/dL",
@@ -5104,8 +5104,8 @@
       "en": "High risk"
      },
      "target_text": {
-      "uz": "< 2.6 mmol/L (< 100 mg/dL)",
-      "ru": "< 2.6 mmol/L (< 100 mg/dL)",
+      "uz": "< 2,6 mmol/L (< 100 mg/dL)",
+      "ru": "< 2,6 ммоль/л (< 100 мг/дл)",
       "en": "< 2.6 mmol/L (< 100 mg/dL)"
      },
      "unit": "mmol/L, mg/dL",
@@ -5126,8 +5126,8 @@
       "en": "Moderate risk"
      },
      "target_text": {
-      "uz": "< 3.4 mmol/L (< 130 mg/dL)",
-      "ru": "< 3.4 mmol/L (< 130 mg/dL)",
+      "uz": "< 3,4 mmol/L (< 130 mg/dL)",
+      "ru": "< 3,4 ммоль/л (< 130 мг/дл)",
       "en": "< 3.4 mmol/L (< 130 mg/dL)"
      },
      "unit": "mmol/L, mg/dL",
