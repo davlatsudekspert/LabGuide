@@ -1,11 +1,13 @@
 # App Store va TestFlight uchun materiallar
 
 App Store Connect’ga kiritiladigan matnlar va javoblar. Hammasi ilovaning haqiqiy holatiga
-mos: ilova serverga ma’lumot yubormaydi, tashxis qo‘ymaydi, kontent manbali o‘quv namunasi.
-Ilova o‘zgarsa (masalan, email kirish ulanganda), shu hujjat ham yangilanadi.
+mos: mehmon rejimida ilova serverga ma’lumot yubormaydi, hisob bilan nima saqlanishi —
+[PRIVACY_POLICY.md](PRIVACY_POLICY.md) (2026-10-17, kodga qarab tekshirilgan); ilova tashxis
+qo‘ymaydi, kontent manbali o‘quv namunasi. Ilova o‘zgarsa, shu hujjat ham yangilanadi.
 
-**Va’da qilinmaydigan narsalar (hozir ishlamaydi):** email orqali kirish, guruhlar/sinflar,
-“Taklif va yordam” va hamkor statistikasi (server ulanmagan), pullik obuna/to‘lov (bu versiyada to‘lov yo‘q, D-58).
+**Va’da qilinmaydigan narsalar:** hamkor reklamasi va hamkor statistikasi (do‘kon buildida
+kompilyatsiyadan chiqarilgan, `LG_PARTNER_ADS`), murojaatga skrinshot biriktirish (serverda
+yo‘q), pullik obuna/to‘lov (bu versiyada to‘lov yo‘q, D-58).
 Tavsiflarda ular tilga olinmaydi; “qoralama / mutaxassis tekshiruvi kutilmoqda” holati
 tavsiflarda ochiq yoziladi — buni olib tashlamang. Rus/ingliz tavsifida O‘zbekistonga xos
 bo‘limlar (malaka toifasi) yo‘q: ular faqat o‘zbek tili yoki UZ mintaqasida ko‘rinadi.
@@ -70,8 +72,8 @@ hisobi va ixtiyoriy mahalliy eslatma. Savollar qoralama.
 • Preanalitika, analizator katalogi, izohli testlar, kutubxona (ochiq va rasmiy manbalar).
 • Malaka toifasi imtihoniga tayyorgarlik (o‘zbek tilidagi savollar; qoralama, rasmiy natija emas).
 
-Uch tilda: o‘zbek, rus, ingliz. Internet shart emas. Hisobsiz (mehmon) ishlaydi. Ilova hozircha
-serverga ma’lumot yubormaydi.
+Uch tilda: o‘zbek, rus, ingliz. Internet shart emas. Hisobsiz (mehmon) ishlaydi — bu rejimda
+ilova serverga ma’lumot yubormaydi.
 
 Muhim: LabGuide o‘quv va ma’lumotnoma vositasi. U natijani talqin qilmaydi, tashxis qo‘ymaydi
 va dori dozasini taklif qilmaydi. Natijalar klinik manzara va laboratoriyangiz referens
@@ -108,7 +110,7 @@ Sampson) и не-ЛПВП, осмоляльность, HbA1c NGSP ↔ IFCC и eA
 источники).
 
 Три языка: узбекский, русский, английский. Работает без интернета и без аккаунта (гостевой
-режим). Сейчас приложение не отправляет данные на сервер.
+режим) — в этом режиме приложение не отправляет данные на сервер.
 
 Важно: LabGuide — учебный и справочный инструмент. Он не интерпретирует результаты, не ставит
 диагноз и не предлагает дозы препаратов. Результаты оцениваются с учётом клинической картины и
@@ -142,8 +144,8 @@ streak and an optional local reminder. The questions are drafts.
 • Preanalytics, an instrument catalogue, explained quizzes and a library of open and official
 sources.
 
-Three languages: Uzbek, Russian, English. Works offline and without an account (guest mode).
-The app currently sends no data to a server.
+Three languages: Uzbek, Russian, English. Works offline and without an account (guest mode) —
+in that mode the app sends no data to a server.
 
 Important: LabGuide is a learning and reference tool. It does not interpret results, make a
 diagnosis or suggest drug doses. Results are assessed together with the clinical picture and
@@ -191,12 +193,13 @@ yo‘q). Hamma toifalar — **Linked to the user**, **not used for tracking**. M
 | Contact Info → Email Address | kirish emaili (serverda faqat HMAC-hash + niqoblangan ko‘rinish; Resend (zaxirada Brevo) orqali kod yuboriladi; Google/Apple bilan kirishda ham o‘sha email — provayder tasdiqlagani, D-56) | App Functionality |
 | Identifiers → User ID | ichki tasodifiy hisob id si (`users.id`); Google/Apple bilan kirishda provayder `sub` i ham (`auth_identities`, D-56) | App Functionality |
 | User Content → Other User Content | guruh taxallusi (yoki “Talaba NN”), test javoblari, har savol natijasi va ball | App Functionality |
-| Usage Data → Product Interaction | ilovadan oxirgi foydalangan **kun** (`last_seen_on`, vaqtsiz) | App Functionality |
+| Usage Data → Product Interaction | oxirgi faollik **kuni** (`last_seen_on`) va daqiqaga yaxlitlangan oxirgi faollik vaqti (`last_seen_at`, faqat admin paneldagi umumiy “hozir onlayn” soni uchun; 0009) | App Functionality |
+| User Content → Customer Support | “Taklif va yordam” murojaatlari (tur, mavzu, xabarlar; `support_threads`/`support_messages`) va ilova ichidagi shikoyatlar (`complaints`, mehmondan ham — identifikatorsiz) | App Functionality |
 | User Content → Other User Content (hamjamiyat, D-43) | savol va javoblar matni (**ilova ichida ommaviy**, muallif ismsiz), ovozlar, shikoyatlar; mutaxassis holati (kasb, mamlakat kodi, sana) | App Functionality |
 
-**Google / Apple bilan kirish (D-56).** Yangi toifa qo‘shilmaydi: provayderdan faqat `sub`, email va tasdiq belgisi
-olinadi (ism, rasm, kontakt so‘ralmaydi; Apple’dan faqat email scope), token tekshirilgach tashlanadi — *Name* toifasi
-**qo‘shilmaydi**. Provayderlar (Google, Apple) — kirish identifikatsiyasi; ular bilan ma’lumot ulashilmaydi. Tracking: No.
+**Google / Apple bilan kirish (D-56).** Yangi toifa qo‘shilmaydi: server provayder tokenidan faqat `sub`, email va
+tasdiq belgisini o‘qiydi (Apple’dan faqat email scope; Google’ning standart oynasi tokenga ism/rasm qo‘shishi mumkin,
+lekin ular o‘qilmaydi va saqlanmaydi), token tekshirilgach tashlanadi — *Name* toifasi **qo‘shilmaydi**. Provayderlar (Google, Apple) — kirish identifikatsiyasi; ular bilan ma’lumot ulashilmaydi. Tracking: No.
 Apple 4.8 (Apple tugmasi Google’dan kam emas, email-kod va mehmon rejimi bor) va 5.1.1(v) (ilovada hisobni o‘chirish +
 Apple tokenini bekor qilish) bajarilgan — `docs/AUTH_SOCIAL_LOGIN.md`. App Review izohiga shuni yozing.
 
@@ -213,11 +216,12 @@ hujjat tasdig‘ini ham qamrashini tekshiring.
 Rol va til sozlamasi ham hisobda saqlanadi — alohida App Store toifasi yo‘q, shuning uchun
 yuqoridagilarga kiritilgan (talab bo‘lsa Other Data Types). **Diagnostics** (crash/performance)
 to‘planmaydi: SDK yo‘q, Worker `observability` o‘chiq. IP faqat suiiste’molga qarshi hash-teg
-sifatida ishlatiladi, saqlanmaydi (Location/Device ID yo‘q). **Customer Support**, **Photos or
-Videos**, **Advertising Data** serverda hozir yo‘q (murojaatlar, hamkorlar `501`) — qo‘shilmaydi;
-ular ishga tushirilsa jadval yangilanadi (murojaat: Customer Support + Photos or Videos;
-hamkorlar: Advertising Data, **Not linked**, Third-Party Advertising; ariza: Contact Info).
-Mehmon rejimida va server ulanmagan buildda hech narsa yuborilmaydi.
+sifatida ishlatiladi, saqlanmaydi (Location/Device ID yo‘q). **Customer Support** endi bor
+(yuqoridagi jadval: murojaatlar `support.ts`, shikoyatlar `complaints.ts`, 0009). **Photos or
+Videos** (murojaat skrinshoti) — server biriktirma qabul qilmaydi, qo‘shilmaydi. **Advertising
+Data** — do‘kon buildida hamkor reklamasi yo‘q (`LG_PARTNER_ADS=false`), qo‘shilmaydi. Mehmon
+rejimida hisob yo‘q; mehmon faqat ixtiyoriy shikoyat matnini yuborishi mumkin (identifikatorsiz).
+Server ulanmagan buildda hech narsa yuborilmaydi.
 
 **Mikrofon / nutqni tanish (leykoformula ovozli buyruqlari, ixtiyoriy, eksperimental):** iOS’da
 `requiresOnDeviceRecognition` majburiy — ovoz qurilmadan chiqmaydi, ilova ovozni saqlamaydi va
@@ -226,38 +230,41 @@ qoladi). Info.plist: `NSMicrophoneUsageDescription`, `NSSpeechRecognitionUsageDe
 (uz/ru/en `InfoPlist.strings`). Kunlik eslatma — lokal bildirishnoma (push server yo‘q);
 ulashish — tizim oynasi, `NSPhotoLibraryAddUsageDescription` faqat “Save Image” uchun.
 
-**Privacy Policy URL** — majburiy. Matn: [PRIVACY_POLICY.md](PRIVACY_POLICY.md). Joylash: GitHub
-→ repo Settings → Pages → “Deploy from a branch”, `main` / `docs` — manzil
-`https://davlatsudekspert.github.io/LabGuide/store/PRIVACY_POLICY` (yoki o‘z saytingiz).
-Matnda sana (2026-10-10) va aloqa (labguide@nfcstore.uz) taklif qilingan — **egasi
-tasdiqlaydi**; hosting (Cloudflare, Sharqiy Yevropa) va email xizmati (Resend; zaxirada Brevo) kiritilgan.
+**Privacy Policy URL** — majburiy. Matn: [PRIVACY_POLICY.md](PRIVACY_POLICY.md), sahifa
+`site/privacy/index.html` (`python3 tool/site/build_site.py` bilan yasaladi). Taklif qilingan
+manzil: `https://nfcstore.uz/labguide/privacy/` (joylash — `site/README.md`). Matnda sana
+(2026-10-17) va aloqa (labguide@nfcstore.uz) — **egasi tasdiqlaydi**; ochiq savollar:
+[PRIVACY_OPEN_QUESTIONS.md](PRIVACY_OPEN_QUESTIONS.md).
 
 **Support / aloqa (App Store Connect “Support URL”, Play “Email address” / “Developer contact”):**
 qo‘llab-quvvatlash aloqasi — **labguide@nfcstore.uz** (ilovada: Profil → Aloqa va shikoyat; kodda
-`lib/core/contact.dart`). App Store Connect “Support URL” maydoni URL talab qiladi: maxfiylik
-siyosati sahifasi (yuqoridagi manzil, unda aloqa emaili bor) yoki `mailto:` emas, haqiqiy sahifa
-bering. Play Console Store listing → Contact details → Email: shu manzil. **Egasi manzil
+`lib/core/contact.dart`). App Store Connect “Support URL” maydoni URL talab qiladi: bosh sahifa
+`https://nfcstore.uz/labguide/` (`site/index.html`, unda aloqa emaili bor) — `mailto:` emas, haqiqiy
+sahifa bering. Play Console Store listing → Contact details → Email: shu manzil. **Egasi manzil
 ishlashini tasdiqlamaguncha (Cloudflare Email Routing → Gmail, sinov xati bilan) topshirmang.**
 Manzil o‘zgarsa — `Contact.email`, PRIVACY_POLICY.md va do‘kon maydonlarini birga yangilang.
 
-**Hisobni o‘chirish** (App Store 5.1.1(v)): ilovada Profil → Maxfiylik → “Hisobni o‘chirish”
-(server: `DELETE /v1/me`, `cloudflare/src/auth.ts` `deleteAccount` — profil, sessiyalar,
-a’zolik, javoblar va ball; ustozning guruhlari ham).
+**Hisobni o‘chirish** (App Store 5.1.1(v)): ilovada Profil → Maxfiylik va ma’lumotlar → “Hisobni
+o‘chirish” (server: `DELETE /v1/me`, `cloudflare/src/auth.ts` `deleteAccount` — profil, sessiyalar,
+Google/Apple bog‘lanishi, a’zolik, javoblar va ball, murojaatlar, hamjamiyat ma’lumotlari; ustozning
+guruhlari ham; ilova ichidagi shikoyat matni hisobdan uzilib qoladi; Apple tokeni bekor qilinadi).
+Veb yo‘riqnoma: `https://nfcstore.uz/labguide/delete-account/` (`site/delete-account/index.html`).
 
 ## 7. Age rating
 
 **To‘liq va yangi javoblar (2025-07 savolnomasi, 13+/16+/18+, “Social media” savoli bilan) —
 [APPLE_2026_REQUIREMENTS.md](../APPLE_2026_REQUIREMENTS.md) 6-bo‘lim.** Qisqasi: Medical or
 Treatment Information — **Infrequent** (natija **13+**); User-Generated Content — **Yes**; Messaging
-and Chat — **Yes** (ommaviy savol-javob, DM yo‘q); Advertising — **Yes** (hamkor reklamasi);
+and Chat — **Yes** (ommaviy savol-javob, DM yo‘q); Advertising — **No** (do‘kon buildida hamkor
+reklamasi kompilyatsiyadan chiqarilgan, `lib/core/build_flags.dart`);
 Social Media — **No** (lenta/ulashish/kuzatish yo‘q); qolganlari None. Yakuniy reytingni App Store
 Connect hisoblaydi. Shuningdek: “regulated medical device” deklaratsiyasi (ikkilamchi toifa Medical
 bo‘lgani uchun majburiy) — o‘sha hujjatning 8-bo‘limi.
 
-> **Eskirgan joylar (2026-10-17):** yuqoridagi tavsiflar va §6 “server ulanmagan” deb yozadi, lekin
-> CI sukut bo‘yicha `LG_API_URL` bilan quradi (email kirish, guruhlar, hamjamiyat ishlaydi). Ommaviy
-> yuborishdan oldin tavsif, App Privacy va `ios/Runner/PrivacyInfo.xcprivacy` build bilan mos
-> bo‘lsin (Apple 2.3.1: aniq metadata).
+> **Eslab qoling (2026-10-17):** CI sukut bo‘yicha `LG_API_URL` bilan quradi (email kirish,
+> guruhlar, hamjamiyat, murojaatlar ishlaydi). Tavsiflar endi “mehmon rejimida serverga ma’lumot
+> yubormaydi” deydi; §6 jadvali server ulangan buildga mos. Ommaviy yuborishdan oldin
+> `ios/Runner/PrivacyInfo.xcprivacy` ham shunga mos bo‘lsin (Apple 2.3.1: aniq metadata).
 
 ## 8. Export compliance
 
@@ -344,10 +351,11 @@ yuklanishidan **oldin** Data safety quyidagicha to‘ldiriladi (manba: `cloudfla
 | Personal info → User IDs | To‘planadi; ichki hisob id si (tasodifiy) va Google/Apple provayder identifikatori (`sub`, D-56); Account management, App functionality |
 | Account creation methods (Play so‘rasa) | **OAuth** (Google, Apple) va **Other authentication** (email kodi); mehmon rejimida hisob shart emas |
 | App activity → Other user-generated content | To‘planadi; ixtiyoriy (sinfda); guruh taxallusi, test javoblari va ball; App functionality |
-| App activity → App interactions | Faqat oxirgi faol **kun** (`last_seen_on`); App functionality — Play talab qilsa shu qatorni qo‘shing |
+| App activity → App interactions | Oxirgi faol **kun** (`last_seen_on`) va daqiqaga yaxlitlangan oxirgi faollik vaqti (`last_seen_at`, faqat umumiy “hozir onlayn” soni uchun); App functionality — Play talab qilsa shu qatorni qo‘shing |
+| Messages → Other in-app messages | To‘planadi; ixtiyoriy; “Taklif va yordam” murojaatlari (hisob bilan) va ilova ichidagi shikoyatlar (mehmondan ham, identifikatorsiz); App functionality. Shared: No |
 | App activity → Other user-generated content (hamjamiyat, D-43) | To‘planadi; ixtiyoriy; savol/javob matni (**ilova ichida hamma ko‘radi**, muallif ismsiz), ovoz, shikoyat; App functionality |
 | Photos and videos → Photos (hamjamiyat, D-43) | Ixtiyoriy; mutaxassis hujjati surati — **ephemeral processing: Yes** (faqat AI tekshiruvi vaqtida, saqlanmaydi); App functionality (hisobni tasdiqlash) |
-| Messages, Location, Contacts, Financial, Health, Device or other IDs, Diagnostics | To‘planmaydi (murojaat/skrinshot/hamkorlar serverda hozir yo‘q — `501`) |
+| Location, Contacts, Financial, Health, Device or other IDs, Diagnostics | To‘planmaydi (skrinshot biriktirish serverda yo‘q; hamkor reklamasi do‘kon buildida yo‘q) |
 
 **Ovozli buyruqlar (RECORD_AUDIO, ixtiyoriy, eksperimental):** Android’da rejim faqat
 qurilmada oflayn tanish mavjud bo‘lsa yoqiladi (`MainActivity` →
@@ -356,8 +364,9 @@ shu holda `createOnDeviceSpeechRecognizer` ishlatadi). Ovoz qurilmadan chiqmaydi
 saqlamaydi — Data safety’da **Audio qo‘shilmaydi** (egasi qarori, 2026-10-09). Kunlik eslatma
 (`POST_NOTIFICATIONS`) va ulashish ma’lumot to‘plamaydi.
 
-Reklama: ilovada hamkor e’lonlari bo‘lsa, Play Console → App content → **Ads: Yes**.
-Hisobni o‘chirish havolasi (Play talabi): siyosat sahifasi + ilovadagi tugma.
+Reklama: do‘kon buildida hamkor e’lonlari yo‘q (`LG_PARTNER_ADS=false`) — Play Console → App
+content → **Ads: No**. Hisobni o‘chirish havolasi (Play talabi, “Delete account URL”):
+`https://nfcstore.uz/labguide/delete-account/` (`site/delete-account/index.html`) + ilovadagi tugma.
 
 
 ## 13. Test tarqatish: holat va egasidan kerakli amallar
@@ -437,14 +446,18 @@ Faqat **ichki/yopiq test**. Production, App Store review, Play production — CI
 
 ## 14. Maxfiylik siyosatini ochiq havolada joylash
 
-Tekshirildi (2026-10-09): repo **public**; GitHub Pages **yoqilmagan**
-(`davlatsudekspert.github.io/LabGuide/...` → 404).
-- **Tavsiya:** Settings → Pages → Source “Deploy from a branch”, `main` / `/docs`. Bir necha
-  daqiqadan so‘ng: `https://davlatsudekspert.github.io/LabGuide/store/PRIVACY_POLICY` (Jekyll
-  markdown’ni HTML qiladi). Eslatma: `docs/` dagi boshqa fayllar ham sahifa bo‘lib chiqadi
-  (repo baribir public).
-- **Hozir ishlaydigan zaxira:** `https://github.com/davlatsudekspert/LabGuide/blob/main/docs/store/PRIVACY_POLICY.md`
-  (200 qaytaradi). `raw.githubusercontent.com` havolasi ham 200, lekin oddiy matn — do‘kon
-  uchun yaroqsiz ko‘rinadi.
-- E’lon qilishdan oldin `[sana]`, `[email]`, `[hosting mintaqasi]`, `[email yuborish xizmati]`
-  joylarini to‘ldiring va “Eslatma” blokini olib tashlang.
+2026-10-17 dan: statik sayt `site/` (bosh sahifa, maxfiylik siyosati, hisobni o‘chirish
+yo‘riqnomasi). Siyosat sahifasi `docs/store/PRIVACY_POLICY.md` dan
+`python3 tool/site/build_site.py` bilan yasaladi; `python3 tool/site/check_site.py` ichki
+izoh, taqiqlangan so‘zlar va buzuq havolalarni tekshiradi. Joylash (Cloudflare Pages yoki
+istalgan statik hosting, taklif: `https://nfcstore.uz/labguide/`) — `site/README.md`.
+
+| Maydon | Manzil |
+|---|---|
+| Privacy policy (App Store, Play, Google OAuth) | `https://nfcstore.uz/labguide/privacy/` |
+| Homepage / Support URL (Google OAuth, App Store) | `https://nfcstore.uz/labguide/` |
+| Delete account URL (Play Data safety) | `https://nfcstore.uz/labguide/delete-account/` |
+
+Sayt joylanmaguncha zaxira: `https://github.com/davlatsudekspert/LabGuide/blob/main/docs/store/PRIVACY_POLICY.md`
+(ichki izohsiz). Google OAuth “In production” uchun domen (`nfcstore.uz`) Google Search Console’da
+tasdiqlangan bo‘lishi kerak. Ochiq savollar: [PRIVACY_OPEN_QUESTIONS.md](PRIVACY_OPEN_QUESTIONS.md).
