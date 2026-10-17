@@ -2,7 +2,7 @@
 
 Avtomatik: `python3 tool/slides/make_topic_decks.py --all --dry-run --report docs/DECKS_COVERAGE.md`. Qo‘lda tahrirlamang.
 
-Tillar: uz, ru, en. Bitta deck = bitta o‘quv kuni (amaliy + ma’ruza bir xil havolalarga ega, `dNNN-P` va `dNNN-L` bitta fayl). Kunlar: 143; deck: 96; kontentsiz (deck yo‘q): 47.
+Tillar: uz, ru, en. Bitta deck = bitta o‘quv kuni (amaliy + ma’ruza bir xil havolalarga ega, `dNNN-P` va `dNNN-L` bitta fayl). Kunlar: 143; deck: 98; kontentsiz (deck yo‘q): 45.
 
 ## Rasm va jadvallarni mavzuga bog‘lash qoidasi
 
@@ -11,7 +11,7 @@ Tillar: uz, ru, en. Bitta deck = bitta o‘quv kuni (amaliy + ma’ruza bir xil 
 - **Jadvallar** — `links.reference` (anemiya algoritmi, soxta natijalar, sariqlik, jigar sindromlari, najas parazitlari).
 - **Leykoformula hujayralari (sxema)** — 7 asosiy hujayra: `/lab/calculators/differential` vositasi yoki neytrofil/limfotsit/monotsit/eozinofil/bazofil analiti bor mavzularda; reaktiv limfotsit va toksik neytrofil — faqat differential vositali mavzularda; gipersegmentlangan neytrofil — B12/foliy/MMA analitli yoki sarlavhada “B-12”; blast — sarlavhada “leykoz” (surunkali leykozlardan tashqari); smudge hujayra — sarlavhada “limfoleykoz”. Adashtiriladigan juftliklar, talqin, surtma texnikasi va misol oraliqlari — differential vositali mavzularda.
 - **Sitologiya sxemalari** — `pap-test` → epiteliy hujayralari + Bethesda jadvali; `vaginal-wet-mount` → flora/yallig‘lanish sxemalari; `pap-test` yoki `hpv-test` → koilotsit, HSIL; surtma olish va bo‘yash — pap-test va vaginal-wet-mount birga bo‘lgan mavzuda. “Qin surtmasi tozalik darajalari” jadvali manbasi yo‘qligi uchun kiritilmagan.
-- **Darslik bo‘yicha qisqa mazmun** — `tool/slides/data/books_extra.json`: ustoz kitoblaridan o‘z so‘zim bilan (Aripova va b., 2007: d044, d047, d051, d052 — sahifalar bilan; Najmitdinov, 1998: d010, d017, d018 — elektron matnda sahifa raqami yo‘q, bo‘lim nomi bilan). Matn/rasm ko‘chirilmagan; kitobdagi eskirgan raqamlar olinmagan. Kitoblar Drive MCP orqali o‘qildi; Najmitdinov matni leykoz bobining oxirida (sitokimyo) kesilgan — surunkali leykozlar (d019–d022) uchun kitob mazmuni yo‘q. DjVu atlaslar va juda katta fayllar o‘qilmadi.
+- **Darslik bo‘yicha qisqa mazmun** — `tool/slides/data/books_extra.json`: ustoz kitoblaridan o‘z so‘zim bilan (Aripova va b., 2007: d044, d047, d051, d052 — sahifalar bilan; Najmitdinov, 1998: d010, d017, d018 — elektron matnda sahifa raqami yo‘q, bo‘lim nomi bilan). Yupqa kunlar uchun qo‘shimcha (d001–d006, d009, d010, d019, d020, d032, d033, d038, d040, d041, d053, d063, d064, d078, d081, d083, d085, d086, d116, d143): Aripov va b., 2006; Yusupova va b., 2022 va Kurbonova, 2023 (bosma sahifa raqami bilan); Agzamxodjaev va b., 2016; muallifi/yili ko‘rsatilmagan ma’ruza matnlari (shunday belgilangan). Matn/rasm ko‘chirilmagan; kitobdagi eskirgan yoki o‘zaro zid raqamlar olinmagan. Kitoblar Drive MCP orqali o‘qildi; Najmitdinov matni dastlab leykoz bobining oxirida (sitokimyo) kesilgan edi, to‘liq matn keyin .doc orqali tiklandi (d021/d022 uchun kitob mazmuni hali qo‘shilmagan; surunkali mieloleykozning klinik bo‘limi manbada shikastlangan). Axloq/deontologiya (d001, d004), TORCH (d083, toksoplazmadan tashqari), SOE analizatorlari (d085) va Mindray (d041, d116) bo‘yicha o‘qiladigan manba topilmadi. DjVu atlaslar, Hodjibekov va Sultonov (o‘qib bo‘lmaydi) olinmadi.
 - **Mikroskopik atlas fotolari** — `links.microscopy` (urine / blood / parasites); litsenziya va muallif har slaydda va “Adabiyotlar”da.
 - **Savol-javob** — curriculum nomzodlari (yo‘q bo‘lsa ilovadagi kabi analit/toifa mavzusi bo‘yicha): paket mashq savollari (manbasizlari tashlanadi), toifa testlari (faqat kaliti aniq: verdict `ok`, bitta javob, `unverified` emas), og‘zaki savollar (javob rejasi). Chegara: {'quiz': 6, 'test': 6, 'oral': 3}.
 - `bloodgroup/card.png` va `spermogram/card.png` — hech bir curriculum mavzusiga bog‘lanmagan (havolalarda yo‘q), shuning uchun ishlatilmadi.
@@ -20,14 +20,16 @@ Tillar: uz, ru, en. Bitta deck = bitta o‘quv kuni (amaliy + ma’ruza bir xil 
 
 | Kun | Mavzu (uz) | Slayd (PPTX, uz; ~ — taxminiy) | Kontent | Yetishmaydi |
 |---|---|---|---|---|
-| d001 | Laborator xizmatni tashkillashtirish. Tibbiy etika va deontologiya. Ma | 10 | Q&A 0+0+3 | curriculum: gap bayrog‘i (havolalar yetarli emas) |
-| d002 | O‘zbekistonda klinik biokimyoviy laboratoriyalarni rivojlantirishning  | 22 | me’yor qatori 2, Q&A 0+6+3 | curriculum: gap bayrog‘i (havolalar yetarli emas) |
-| d003 | Laboratoriya ichida va laboratoriyalar oro o‘tkaziladigan sifat nazora | 22 | me’yor qatori 2, Q&A 0+6+3 | — |
-| d004 | Attestatsiya 1. Laborator xizmatni tashkillashtirish. Tibbiy etika va  | 23 | me’yor qatori 2, Q&A 0+6+3 | — |
+| d001 | Laborator xizmatni tashkillashtirish. Tibbiy etika va deontologiya. Ma | 22 | kitob 6, Q&A 0+0+3 | curriculum: gap bayrog‘i (havolalar yetarli emas) |
+| d002 | O‘zbekistonda klinik biokimyoviy laboratoriyalarni rivojlantirishning  | 29 | me’yor qatori 2, kitob 3, Q&A 0+6+3 | curriculum: gap bayrog‘i (havolalar yetarli emas) |
+| d003 | Laboratoriya ichida va laboratoriyalar oro o‘tkaziladigan sifat nazora | 30 | me’yor qatori 2, kitob 4, Q&A 0+6+3 | — |
+| d004 | Attestatsiya 1. Laborator xizmatni tashkillashtirish. Tibbiy etika va  | 28 | me’yor qatori 2, kitob 2, Q&A 0+6+3 | — |
+| d005 | Odam ichki a’zolari tuzilishi va vazifalari. To‘qimalar klassifikatsiy | 13 | kitob 5 | curriculum: gap bayrog‘i (havolalar yetarli emas) |
+| d006 | Biriktiruvchi to‘qimaning morfofunksional xarakteristikasi | 6 | kitob 2 | curriculum: gap bayrog‘i (havolalar yetarli emas) |
 | d007 | Jigar kasalliklarining laborator ko‘rsatkichlari | 92 | analit 7, holat 4, jadval 2, me’yor qatori 2, Q&A 6+6+3 | — |
 | d008 | Buyrak va siydik yo‘llari kasalliklarining laborator ko‘rsatkichlari | 103 | analit 7, holat 3, me’yor qatori 10, Q&A 6+6+3 | — |
-| d009 | Attestatsiya 2. Odam ichki a’zolari tuzilishi va vazifalari modulidan | 24 | me’yor qatori 10, Q&A 0+6+3 | — |
-| d010 | Qon ishlab chiqarishning zamonaviy nazariyasi. Eritropoez, leykopoez,  | 29 | analit 1, me’yor qatori 10, kitob 1, Q&A 3+1+3 | curriculum: gap bayrog‘i (havolalar yetarli emas) |
+| d009 | Attestatsiya 2. Odam ichki a’zolari tuzilishi va vazifalari modulidan | 29 | me’yor qatori 10, kitob 2, Q&A 0+6+3 | — |
+| d010 | Qon ishlab chiqarishning zamonaviy nazariyasi. Eritropoez, leykopoez,  | 37 | analit 1, me’yor qatori 10, kitob 5, Q&A 3+1+3 | curriculum: gap bayrog‘i (havolalar yetarli emas) |
 | d011 | Qon shaklli elementlari sonini sanash. Gemoglobinni aniqlash | 77 | analit 5, jadval 1, me’yor qatori 16, Q&A 6+6+3 | — |
 | d012 | Leykositar formula uchun material olish va ularni sanash. Mieloid, lim | 107 | analit 7, hujayra 12, foto 8, me’yor qatori 9, Q&A 6+6+3 | — |
 | d013 | Anemiyalar. Klassifikatsiyasi, etiologiyasi va patogenezi | 90 | analit 7, holat 1, jadval 1, me’yor qatori 12, Q&A 6+5+3 | — |
@@ -36,8 +38,8 @@ Tillar: uz, ru, en. Bitta deck = bitta o‘quv kuni (amaliy + ma’ruza bir xil 
 | d016 | Gemolitik kamqonliklar. Klinik-laborator ko‘rsatkichlari. Suyak ko‘mig | 75 | analit 5, holat 2, jadval 1, me’yor qatori 2, Q&A 6+4+3 | — |
 | d017 | Leykozlar, etiologiyasi, patogenezi va klassifikatsiya | 43 | analit 2, hujayra 1, me’yor qatori 3, kitob 3, Q&A 3+6+3 | curriculum: gap bayrog‘i (havolalar yetarli emas) |
 | d018 | O‘tkir leykozlar. O‘tkir leykozlarda suyak ko‘migi va periferik qon ko | 34 | analit 1, hujayra 1, me’yor qatori 3, kitob 2, Q&A 1+6+3 | curriculum: gap bayrog‘i (havolalar yetarli emas) |
-| d019 | Surunkali leykozlar. Suyak ko‘migi va periferik qon ko‘rinishi | 22 | me’yor qatori 3, Q&A 0+6+3 | curriculum: gap bayrog‘i (havolalar yetarli emas) |
-| d020 | Surunkali mieloleykoz. Suyak ko‘migi va periferik qon ko‘rinishi | 7 | Q&A 0+1+1 | curriculum: gap bayrog‘i (havolalar yetarli emas) |
+| d019 | Surunkali leykozlar. Suyak ko‘migi va periferik qon ko‘rinishi | 28 | me’yor qatori 3, kitob 3, Q&A 0+6+3 | curriculum: gap bayrog‘i (havolalar yetarli emas) |
+| d020 | Surunkali mieloleykoz. Suyak ko‘migi va periferik qon ko‘rinishi | 10 | kitob 2, Q&A 0+1+1 | curriculum: gap bayrog‘i (havolalar yetarli emas) |
 | d021 | Surunkali limfoleykoz. Suyak ko‘migi va periferik qon ko‘rinishi | 30 | analit 1, hujayra 8, me’yor qatori 1, Q&A 2+1+1 | curriculum: gap bayrog‘i (havolalar yetarli emas) |
 | d022 | Mielom kasalligida suyak ko‘migi va periferik qon ko‘rinishi | 29 | analit 2, me’yor qatori 1, Q&A 4+3+1 | curriculum: gap bayrog‘i (havolalar yetarli emas) |
 | d023 | Attestatsiya 3. Gematologik tekshiruv usullari modulidan | 44 | analit 1, me’yor qatori 27, Q&A 2+6+3 | — |
@@ -49,16 +51,16 @@ Tillar: uz, ru, en. Bitta deck = bitta o‘quv kuni (amaliy + ma’ruza bir xil 
 | d029 | Bronxial astma, pnevmoniya, bronxit va boshqa nafas yo‘llari kasallikl | 38 | analit 2, me’yor qatori 1, Q&A 2+6+3 | — |
 | d030 | Sil kasalligida balg‘amni tekshirish va uning klinik diagnostik ahamiy | 38 | analit 2, me’yor qatori 1, Q&A 2+6+3 | — |
 | d031 | Sil kasalligida balg‘amni tekshirish va uning klinik diagnostik ahamiy | 38 | analit 2, me’yor qatori 1, Q&A 2+6+3 | — |
-| d032 | Transsudat va ekssudatlarni tekshirishning klinik diagnostikasi | 21 | analit 2, me’yor qatori 1, Q&A 1+1+2 | — |
-| d033 | Xar xil kasalliklarda orqa miya suyuqligini laborator ko‘rsatkichlari | 15 | analit 1, Q&A 1+1+1 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q |
+| d032 | Transsudat va ekssudatlarni tekshirishning klinik diagnostikasi | 29 | analit 2, me’yor qatori 1, kitob 4, Q&A 1+1+2 | — |
+| d033 | Xar xil kasalliklarda orqa miya suyuqligini laborator ko‘rsatkichlari | 22 | analit 1, kitob 4, Q&A 1+1+1 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q |
 | d034 | Attestatsiya 4. Umumklinik tekshiruv usullari modulidan | 48 | analit 2, me’yor qatori 10, Q&A 2+6+3 | — |
 | d035 | Sitologik tekshiruv usullari. Ayollar jinsiy a’zolari ajralmalarini mi | 72 | analit 3, sitologiya 13, me’yor qatori 3, Q&A 4+6+3 | — |
 | d036 | O‘smalar. O‘sma markerlari haqida umumiy ma’lumotlar. Yomon sifatli o‘ | 59 | analit 5, Q&A 4+6+3 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q |
 | d037 | Bachadon bo‘yinchasi va bachadon yomon sifatli o‘smalarining sitodiagn | 50 | analit 2, sitologiya 7, me’yor qatori 1, Q&A 2+6+3 | — |
-| d038 | Nafas organlari o‘smalari sitodiagnostikasi | 23 | analit 1, Q&A 2+3+1 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q; curriculum: gap bayrog‘i (havolalar yetarli emas) |
+| d038 | Nafas organlari o‘smalari sitodiagnostikasi | 27 | analit 1, kitob 2, Q&A 2+3+1 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q; curriculum: gap bayrog‘i (havolalar yetarli emas) |
 | d039 | Attestatsiya 5. Sitologik tekshiruv usullari modulidan | 50 | analit 2, sitologiya 7, me’yor qatori 3, Q&A 2+6+3 | — |
-| d040 | Klinik biokimyodan umumiy masalalar. Fizik-kimyoviy va kimyoviy usulla | 5 | Q&A 0+0+1 | curriculum: gap bayrog‘i (havolalar yetarli emas) |
-| d041 | Mindray BA-88A bioximik yarim avtomat analizator ishlash prinsiplari.  | 20 | Q&A 0+6+3 | — |
+| d040 | Klinik biokimyodan umumiy masalalar. Fizik-kimyoviy va kimyoviy usulla | 13 | kitob 4, Q&A 0+0+1 | curriculum: gap bayrog‘i (havolalar yetarli emas) |
+| d041 | Mindray BA-88A bioximik yarim avtomat analizator ishlash prinsiplari.  | 24 | kitob 2, Q&A 0+6+3 | — |
 | d042 | Aminokislotalar klassifikatsiyasi. Oddiy va murakkab oqsillar | 41 | analit 2, me’yor qatori 6, Q&A 4+6+3 | — |
 | d043 | Pigmentlar almashinuvi. Bilirubin hosil bo‘lishi | 53 | analit 2, holat 1, jadval 1, me’yor qatori 2, Q&A 5+6+3 | — |
 | d044 | Uglevodlar, klassifikatsiyasi, biologik ahamiyati. Uglevodlarni oshqoz | 40 | analit 1, me’yor qatori 5, kitob 6, Q&A 0+6+3 | — |
@@ -70,7 +72,7 @@ Tillar: uz, ru, en. Bitta deck = bitta o‘quv kuni (amaliy + ma’ruza bir xil 
 | d050 | Laktatdegidrogenaza, ishqoriy fosfataza fermentlarini tekshirish | 39 | analit 2, Q&A 5+6+1 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q |
 | d051 | Vitaminlar. Vitamin B12 va D larni tekshirishning klinik diagnostik ah | 60 | analit 3, holat 2, hujayra 1, me’yor qatori 1, kitob 2, Q&A 4+6+1 | — |
 | d052 | Vitaminlar. Vitamin B12 va D larni tekshirishning klinik diagnostik ah | 57 | analit 3, holat 2, hujayra 1, me’yor qatori 1, Q&A 4+6+1 | — |
-| d053 | Attestatsiya 6. Klinik biokimyodan umumiy masalalar modulidan | 27 | me’yor qatori 10, Q&A 0+6+3 | — |
+| d053 | Attestatsiya 6. Klinik biokimyodan umumiy masalalar modulidan | 31 | me’yor qatori 10, kitob 2, Q&A 0+6+3 | — |
 | d054 | Klinik biokimyo va biokimyoviy tekshiruv usullari. Umumiy oqsilni va a | 41 | analit 2, me’yor qatori 6, Q&A 4+6+3 | — |
 | d055 | Azotemiyalar. Klinik diagnostik ahamiyati | 66 | analit 4, holat 1, me’yor qatori 3, Q&A 6+6+3 | — |
 | d056 | Mochevinani aniqlash usullari. Klinik diagnostik ahamiyati | 31 | analit 1, me’yor qatori 2, Q&A 2+6+3 | — |
@@ -80,8 +82,8 @@ Tillar: uz, ru, en. Bitta deck = bitta o‘quv kuni (amaliy + ma’ruza bir xil 
 | d060 | Glikozirlangan gemoglobinni aniqlash. Klinik diagnostik ahamiyati | 34 | analit 2, me’yor qatori 3, Q&A 4+2+3 | — |
 | d061 | Transaminazalar, amilazani aniqlash usullari. Klinik diagnostik ahamiy | 57 | analit 4, holat 1, me’yor qatori 2, Q&A 6+6+3 | — |
 | d062 | Ishqoriy fosfataza, γ-GT fermentlarini aniqlash usullari. Tekshirishni | 43 | analit 2, holat 1, Q&A 5+6+2 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q |
-| d063 | Kislota-asos muvozanati. Bufer sistemasi | 23 | me’yor qatori 7, Q&A 0+6+3 | curriculum: gap bayrog‘i (havolalar yetarli emas) |
-| d064 | Kislota-asos muvozanati. Bufer sistemasi (2-kun) | 23 | me’yor qatori 7, Q&A 0+6+3 | curriculum: gap bayrog‘i (havolalar yetarli emas) |
+| d063 | Kislota-asos muvozanati. Bufer sistemasi | 30 | me’yor qatori 7, kitob 3, Q&A 0+6+3 | curriculum: gap bayrog‘i (havolalar yetarli emas) |
+| d064 | Kislota-asos muvozanati. Bufer sistemasi (2-kun) | 32 | me’yor qatori 7, kitob 4, Q&A 0+6+3 | curriculum: gap bayrog‘i (havolalar yetarli emas) |
 | d065 | Umumiy xolesterinni aniqlash. Klinik diagnostik ahamiyati | 62 | analit 4, holat 1, me’yor qatori 5, Q&A 6+6+3 | — |
 | d066 | Triglitseridlarni aniqlash usullari. Klinik diagnostik ahamiyati | 42 | analit 2, holat 2, me’yor qatori 2, Q&A 4+6+1 | — |
 | d067 | Natriy, kaliy, kaltsiyni aniqlash usullari. Klinik diagnostik ahamiyat | 55 | analit 3, holat 1, me’yor qatori 7, Q&A 6+5+3 | — |
@@ -95,15 +97,15 @@ Tillar: uz, ru, en. Bitta deck = bitta o‘quv kuni (amaliy + ma’ruza bir xil 
 | d075 | Turli kasalliklar laborator diagnostikasi. Qonning tomir ichida ivib q | 71 | analit 5, holat 1, me’yor qatori 1, Q&A 6+5+2 | — |
 | d076 | Allergik kasalliklar laborator diagnostikasi | 33 | analit 1, hujayra 7, me’yor qatori 4, Q&A 2+3+2 | curriculum: gap bayrog‘i (havolalar yetarli emas) |
 | d077 | Jinsiy yo‘l bilan yuqadigan infeksiyalar laborator diagnostikasi. Vass | 58 | analit 3, holat 1, sitologiya 8, Q&A 3+2+3 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q |
-| d078 | Bezgak kasalligining laborator diagnostikasi | 18 | analit 1, foto 2, me’yor qatori 1, Q&A 1+1+3 | — |
+| d078 | Bezgak kasalligining laborator diagnostikasi | 24 | analit 1, foto 2, me’yor qatori 1, kitob 3, Q&A 1+1+3 | — |
 | d079 | OIV infeksiyasi. Klinik laborator tekshiruv usullari. Klinik diagnosti | 30 | analit 1, holat 1, me’yor qatori 5, Q&A 1+3+3 | — |
 | d080 | Parazitar kasalliklar laborator diagnostikasi. Dumaloq gijjalar labora | 40 | analit 2, jadval 1, Q&A 2+2+3 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q |
-| d081 | Lentasimon gijjalar laborator diagnostikasi. Klinik diagnostik ahamiya | 28 | analit 1, jadval 1, Q&A 1+1+2 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q |
+| d081 | Lentasimon gijjalar laborator diagnostikasi. Klinik diagnostik ahamiya | 38 | analit 1, jadval 1, kitob 4, Q&A 1+1+2 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q |
 | d082 | So‘ruvchi gijjalar laborator diagnostikasi. Klinik diagnostik ahamiyat | 38 | analit 1, jadval 1, Q&A 1+6+2 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q |
-| d083 | TORCH infeksiyalar laborator diagnostikasi. Klinik diagnostik ahamiyat | 20 | holat 1, Q&A 0+3+3 | curriculum: gap bayrog‘i (havolalar yetarli emas) |
+| d083 | TORCH infeksiyalar laborator diagnostikasi. Klinik diagnostik ahamiyat | 26 | holat 1, kitob 3, Q&A 0+3+3 | curriculum: gap bayrog‘i (havolalar yetarli emas) |
 | d084 | Klinik laborator diagnostikada gematologik analizatorlar | 52 | analit 4, me’yor qatori 14, Q&A 6+1+3 | — |
-| d085 | Klinik laborator diagnostikada ECHT analizatorlar | 20 | Q&A 0+6+3 | curriculum: gap bayrog‘i (havolalar yetarli emas) |
-| d086 | Klinik laborator diagnostikada bioximik analizatorlar | 20 | Q&A 0+6+3 | — |
+| d085 | Klinik laborator diagnostikada ECHT analizatorlar | 22 | kitob 1, Q&A 0+6+3 | curriculum: gap bayrog‘i (havolalar yetarli emas) |
+| d086 | Klinik laborator diagnostikada bioximik analizatorlar | 24 | kitob 2, Q&A 0+6+3 | — |
 | d087 | Klinik laborator diagnostikada urino analizatorlar | 37 | analit 1, Q&A 2+6+3 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q |
 | d088 | Klinik laborator diagnostikada koagulometrik analizatorlar | 41 | analit 3, Q&A 6+0+3 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q |
 | d089 | Attestatsiya 8. Turli kasalliklar laborator diagnostikasi modulidan | 37 | analit 2, me’yor qatori 5, Q&A 2+3+3 | — |
@@ -112,10 +114,10 @@ Tillar: uz, ru, en. Bitta deck = bitta o‘quv kuni (amaliy + ma’ruza bir xil 
 | d101 | Umumiy siydik tahlilini amaliyotda o‘zlashtirish | 64 | analit 2, foto 14, me’yor qatori 9, Q&A 4+5+3 | — |
 | d106 | Umumiy balg‘am tahlilini amaliyotda o‘zlashtirish | 38 | analit 2, me’yor qatori 1, Q&A 2+6+3 | — |
 | d112 | Umumiy axlat (najas) tahlilini amaliyotda o‘zlashtirish | 57 | analit 3, jadval 1, me’yor qatori 2, Q&A 2+6+3 | — |
-| d116 | Mindray BA-88A bioximik yarim avtomat analizator ishlash prinsiplari.  | 20 | Q&A 0+6+3 | — |
+| d116 | Mindray BA-88A bioximik yarim avtomat analizator ishlash prinsiplari.  | 24 | kitob 2, Q&A 0+6+3 | — |
 | d121 | Laktatdegidrogenaza, ishqoriy fosfataza fermentlar tekshiruvini amaliy | 39 | analit 2, Q&A 5+6+1 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q |
 | d127 | SRB, RF, ASLO lar tekshiruvini amaliyotda o‘zlashtirish | 34 | analit 3, me’yor qatori 1, Q&A 3+3+1 | — |
-| d143 | Attestatsiya. Laborator tekshiruv usullarini amaliyotda o‘zlashtirish  | 22 | me’yor qatori 2, Q&A 0+6+3 | — |
+| d143 | Attestatsiya. Laborator tekshiruv usullarini amaliyotda o‘zlashtirish  | 27 | me’yor qatori 2, kitob 2, Q&A 0+6+3 | — |
 
 ## Deck yo‘q mavzular (kontent topilmadi)
 
@@ -123,8 +125,6 @@ Bu kunlarda `links` bo‘sh yoki bog‘langan kontent yo‘q — slayd o‘ylab 
 
 | Kun | Mavzu (uz) | Sabab |
 |---|---|---|
-| d005 | Odam ichki a’zolari tuzilishi va vazifalari. To‘qimalar klassifikatsiy | curriculum: gap bayrog‘i (havolalar yetarli emas) |
-| d006 | Biriktiruvchi to‘qimaning morfofunksional xarakteristikasi | curriculum: gap bayrog‘i (havolalar yetarli emas) |
 | d091 | Laborator tekshiruv usullarini amaliyotda o‘zlashtirish | havolalar bo‘sh |
 | d092 | Laborator tekshiruv usullarini amaliyotda o‘zlashtirish | havolalar bo‘sh |
 | d093 | Laborator tekshiruv usullarini amaliyotda o‘zlashtirish | havolalar bo‘sh |

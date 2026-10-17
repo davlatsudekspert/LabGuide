@@ -925,9 +925,14 @@ def write_report(path, rows, nodeck, langs, totals):
           '“Qin surtmasi tozalik darajalari” jadvali manbasi yo‘qligi uchun kiritilmagan.',
           '- **Darslik bo‘yicha qisqa mazmun** — `tool/slides/data/books_extra.json`: ustoz kitoblaridan o‘z so‘zim bilan '
           '(Aripova va b., 2007: d044, d047, d051, d052 — sahifalar bilan; Najmitdinov, 1998: d010, d017, d018 — '
-          'elektron matnda sahifa raqami yo‘q, bo‘lim nomi bilan). Matn/rasm ko‘chirilmagan; kitobdagi eskirgan raqamlar olinmagan. '
-          'Kitoblar Drive MCP orqali o‘qildi; Najmitdinov matni leykoz bobining oxirida (sitokimyo) kesilgan — surunkali leykozlar '
-          '(d019–d022) uchun kitob mazmuni yo‘q. DjVu atlaslar va juda katta fayllar o‘qilmadi.',
+          'elektron matnda sahifa raqami yo‘q, bo‘lim nomi bilan). Yupqa kunlar uchun qo‘shimcha (d001–d006, d009, d010, d019, d020, d032, d033, '
+          'd038, d040, d041, d053, d063, d064, d078, d081, d083, d085, d086, d116, d143): Aripov va b., 2006; Yusupova va b., 2022 va Kurbonova, 2023 '
+          '(bosma sahifa raqami bilan); Agzamxodjaev va b., 2016; muallifi/yili ko‘rsatilmagan ma’ruza matnlari (shunday belgilangan). '
+          'Matn/rasm ko‘chirilmagan; kitobdagi eskirgan yoki o‘zaro zid raqamlar olinmagan. '
+          'Kitoblar Drive MCP orqali o‘qildi; Najmitdinov matni dastlab leykoz bobining oxirida (sitokimyo) kesilgan edi, '
+          'to‘liq matn keyin .doc orqali tiklandi (d021/d022 uchun kitob mazmuni hali qo‘shilmagan; surunkali mieloleykozning klinik bo‘limi manbada shikastlangan). '
+          'Axloq/deontologiya (d001, d004), TORCH (d083, toksoplazmadan tashqari), SOE analizatorlari (d085) va Mindray (d041, d116) '
+          'bo‘yicha o‘qiladigan manba topilmadi. DjVu atlaslar, Hodjibekov va Sultonov (o‘qib bo‘lmaydi) olinmadi.',
           '- **Mikroskopik atlas fotolari** — `links.microscopy` (urine / blood / parasites); litsenziya va muallif har slaydda va “Adabiyotlar”da.',
           '- **Savol-javob** — curriculum nomzodlari (yo‘q bo‘lsa ilovadagi kabi analit/toifa mavzusi bo‘yicha): paket mashq savollari '
           '(manbasizlari tashlanadi), toifa testlari (faqat kaliti aniq: verdict `ok`, bitta javob, `unverified` emas), og‘zaki savollar (javob rejasi). '

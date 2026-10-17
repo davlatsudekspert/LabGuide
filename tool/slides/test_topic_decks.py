@@ -104,7 +104,11 @@ class BooksExtra(unittest.TestCase):
                         self.assertTrue(e['bullets'][lg], f'{day_id}/{lg}')
                 self.assertTrue(e['refs'], f'{day_id}: manba yo‘q')
                 for ref in e['refs']:
-                    self.assertEqual(r.src[ref['pack']]['kind'], 'book')
+                    if 'book' in ref:      # pack.json'da bo'lmagan kitob: 'books' ro'yxatida short/full bo'lishi shart
+                        b = r.books['books'][ref['book']]
+                        self.assertTrue(b['short'].strip() and b['full'].strip(), ref['book'])
+                    else:
+                        self.assertEqual(r.src[ref['pack']]['kind'], 'book')
                     for lg in dc.LANGS:
                         self.assertTrue(dc.L(ref['loc'], lg).strip(), f'{day_id}: bo‘lim/sahifa yo‘q')
 
