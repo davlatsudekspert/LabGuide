@@ -90,7 +90,7 @@ void main() {
     final s = await makeServices(tester, language: AppLanguage.ru);
     await pumpApp(tester, s, size: const Size(390, 12000));
     await goTo(tester, '/tests/analyte/ldl-c');
-    expect(_goalSi('2,6 mmol/L'), findsWidgets);
+    expect(_goalSi('2,6 ммоль/л'), findsWidgets);
   });
 
   testWidgets('LDL calculator starts in mg/dL for conventional users', (

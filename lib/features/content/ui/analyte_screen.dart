@@ -110,7 +110,7 @@ String siNumber(double value, UnitConversion c, String locale) {
   return f.format(roundHalfUp(value * siFactor(c), digits));
 }
 
-final _mgDlValue = RegExp(r'(\d+(?:\.\d+)?)(\s|\u00A0)*mg/dL');
+final _mgDlValue = RegExp(r'(\d+(?:[.,]\d+)?)(\s|\u00A0)*(?:mg/dL|\u043C\u0433/\u0434\u043B)');
 
 /// Faqat mg/dL da berilgan maqsad matnidagi har bir "N mg/dL" ni SI
 /// ekvivalentiga almashtiradi ("< 100 mg/dL" → "< 2,6 mmol/L"). Birlik
@@ -127,7 +127,9 @@ String? goalTextInSi(
   return text.replaceAllMapped(
     _mgDlValue,
     (m) =>
-        '${siNumber(double.parse(m[1]!), conversion, locale)} ${conversion.siUnit}',
+        '${siNumber(double.parse(m[1]!.replaceAll(',', '.')), conversion, locale)} '
+        // Ruscha matnda birlik kirillcha (мг/дл bilan bir xil yozuvda).
+        '${m[0]!.contains('мг/дл') && conversion.siUnit == 'mmol/L' ? 'ммоль/л' : conversion.siUnit}',
   );
 }
 
