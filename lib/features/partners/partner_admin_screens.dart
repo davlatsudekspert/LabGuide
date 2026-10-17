@@ -54,6 +54,8 @@ String partnerPlacementLabel(PartnerPlacement p, AppLocalizations l) =>
       PartnerPlacement.category => l.partnerPlacementCategory,
       PartnerPlacement.labHome => l.partnerPlacementLabHome,
       PartnerPlacement.partnerPage => l.partnerPlacementPage,
+      PartnerPlacement.homeLab => l.partnerPlacementHomeLab,
+      PartnerPlacement.homeEquipment => l.partnerPlacementHomeEquipment,
     };
 
 /// Admin ekranlari qobig'i: kirish, admin vakolati, so'ng bir marta yuklash.

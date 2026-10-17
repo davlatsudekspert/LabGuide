@@ -22,6 +22,7 @@ String partnerKindLabel(PartnerKind k, AppLocalizations l) => switch (k) {
   PartnerKind.manufacturer => l.partnerKindManufacturer,
   PartnerKind.distributor => l.partnerKindDistributor,
   PartnerKind.service => l.partnerKindService,
+  PartnerKind.laboratory => l.partnerKindLaboratory,
 };
 
 String partnerRegionsText(Partner p, String lang) =>
@@ -657,6 +658,252 @@ class _LabPartnerCardState extends State<LabPartnerCard> {
           ),
         );
       },
+    );
+  }
+}
+
+/// Asosiy menyu (Bosh sahifa) reklama joyi: [PartnerPlacement.homeLab]
+/// (laboratoriya xizmati) yoki [PartnerPlacement.homeEquipment] (apparat
+/// firmasi). Bir qatorli ixcham karta — birinchi ekranda ikkalasi sig'ishi
+/// uchun.
+///
+/// * haqiqiy faol hamkor bor — hamkor kartasi (kunlik aylanish,
+///   ko'rsatilish/bog'lanish hisoblagichi bilan);
+/// * hamkor yo'q, demo/test build (`allFeaturesOpen`) — aniq “Namuna / Demo”
+///   belgili o'rin: kompaniya, telefon, Telegram yo'q, hisoblagich yo'q;
+/// * hamkor yo'q, do'kon (release) build — hech narsa chizilmaydi.
+class HomePartnerSlot extends StatefulWidget {
+  const HomePartnerSlot({super.key, required this.placement})
+    : assert(
+        placement == PartnerPlacement.homeLab ||
+            placement == PartnerPlacement.homeEquipment,
+      );
+
+  final PartnerPlacement placement;
+
+  @override
+  State<HomePartnerSlot> createState() => _HomePartnerSlotState();
+}
+
+class _HomePartnerSlotState extends State<HomePartnerSlot> {
+  @override
+  void initState() {
+    super.initState();
+    context.services.partners.refresh();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final controller = context.services.partners;
+    final demoBuild = context.services.entitlements.allFeaturesOpen;
+    return ListenableBuilder(
+      listenable: controller,
+      builder: (context, _) {
+        final p = controller.forHome(widget.placement);
+        if (p != null) {
+          return _HomeAdPartnerRow(
+            // Hamkor almashganda ko'rsatilish yangidan sanalsin.
+            key: ValueKey(p.id),
+            partner: p,
+            placement: widget.placement,
+          );
+        }
+        if (!demoBuild) return const SizedBox.shrink();
+        return _HomeAdDemoRow(placement: widget.placement);
+      },
+    );
+  }
+}
+
+/// Juda kichik “Reklama” yorlig'i (ikonka + matn: rangga tayanmaydi).
+class _MiniAdTag extends StatelessWidget {
+  const _MiniAdTag(this.text);
+
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    final p = LgPalette.of(context);
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        color: p.amberBg,
+        borderRadius: BorderRadius.circular(LgRadius.tag),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ExcludeSemantics(
+              child: Icon(Icons.campaign_outlined, size: 12, color: p.amber),
+            ),
+            const SizedBox(width: 3),
+            Text(
+              text,
+              style: Theme.of(context).textTheme.labelSmall!
+                  .copyWith(color: p.amber, height: 1.1),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+/// Bosh sahifa reklama qatori: chapda kvadrat belgi (logo/ikonka), o'rtada
+/// ikki-uch qator matn, birinchi qatorda “Reklama” yorlig'i.
+class _HomeAdRow extends StatelessWidget {
+  const _HomeAdRow({
+    required this.leading,
+    required this.title,
+    required this.body,
+    required this.footer,
+    required this.onTap,
+    this.dashed = false,
+  });
+
+  final Widget leading;
+  final String title;
+  final String body;
+  final String footer;
+  final VoidCallback onTap;
+
+  /// Namuna (demo): yumshoq fon — haqiqiy kartadan ajralib turadi.
+  final bool dashed;
+
+  @override
+  Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context);
+    final text = Theme.of(context).textTheme;
+    final p = LgPalette.of(context);
+    final radius = BorderRadius.circular(LgRadius.card);
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 3),
+      child: LgPressable(
+        onTap: onTap,
+        color: dashed ? p.soft : p.paper,
+        borderRadius: radius,
+        border: Border.all(color: p.line),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              leading,
+              const SizedBox(width: 12),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Row(
+                      children: [
+                        _MiniAdTag(l.partnerAdLabel),
+                        const SizedBox(width: 6),
+                        Expanded(
+                          child: Text(
+                            title,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: text.labelLarge,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 1),
+                    Text(
+                      body,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: text.bodySmall,
+                    ),
+                    const SizedBox(height: 1),
+                    Text(
+                      footer,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: text.labelMedium!.copyWith(color: p.brand),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// Haqiqiy hamkor: logo, nom, qisqa tavsif, tur · “Batafsil” → hamkor sahifasi.
+class _HomeAdPartnerRow extends StatelessWidget {
+  const _HomeAdPartnerRow({
+    super.key,
+    required this.partner,
+    required this.placement,
+  });
+
+  final Partner partner;
+  final PartnerPlacement placement;
+
+  @override
+  Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context);
+    final lang = Localizations.localeOf(context).languageCode;
+    final summary = partner.summaryOf(lang);
+    final kind = partnerKindLabel(partner.kind, l);
+    return _Impression(
+      partner: partner,
+      placement: placement,
+      child: _HomeAdRow(
+        leading: PartnerLogo(partner: partner, size: 44),
+        title: partner.name,
+        body: summary.isEmpty ? kind : summary,
+        footer: '$kind · ${l.partnerMore}',
+        onTap: () => _openPartner(context, partner),
+      ),
+    );
+  }
+}
+
+/// Demo/test buildda hamkor yo'q joyni ko'rsatadigan namuna. Soxta kompaniya
+/// emas: nom, logo, aloqa yo'q; ko'rsatilish ham sanalmaydi.
+class _HomeAdDemoRow extends StatelessWidget {
+  const _HomeAdDemoRow({required this.placement});
+
+  final PartnerPlacement placement;
+
+  @override
+  Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context);
+    final p = LgPalette.of(context);
+    final body = placement == PartnerPlacement.homeLab
+        ? l.homeAdDemoLabBody
+        : l.homeAdDemoEquipmentBody;
+    return _HomeAdRow(
+      dashed: true,
+      leading: ExcludeSemantics(
+        child: Container(
+          width: 44,
+          height: 44,
+          decoration: BoxDecoration(
+            color: p.paper,
+            borderRadius: BorderRadius.circular(44 * 0.28),
+            border: Border.all(color: p.line),
+          ),
+          child: Icon(
+            placement == PartnerPlacement.homeLab
+                ? Icons.biotech_outlined
+                : Icons.precision_manufacturing_outlined,
+            color: p.sub,
+            size: 22,
+          ),
+        ),
+      ),
+      title: l.homeAdDemoTitle,
+      body: body,
+      footer: '${l.homeAdDemoCta} →',
+      onTap: () => context.push('/profile/partnership'),
     );
   }
 }

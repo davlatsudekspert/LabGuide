@@ -2495,5 +2495,12 @@
     }
   },
   "histoTitle": "Гистология",
-  "histoLabCardBody": "Ткани и органы: настоящие микрофото, признаки, тренировка"
+  "histoLabCardBody": "Ткани и органы: настоящие микрофото, признаки, тренировка",
+  "partnerKindLaboratory": "Лабораторная служба",
+  "partnerPlacementHomeLab": "Главная: лабораторная служба",
+  "partnerPlacementHomeEquipment": "Главная: фирма-поставщик оборудования",
+  "homeAdDemoTitle": "Образец / Демо — рекламное место",
+  "homeAdDemoLabBody": "Здесь появится реклама партнёрской лабораторной службы",
+  "homeAdDemoEquipmentBody": "Здесь появится реклама фирмы-поставщика оборудования",
+  "homeAdDemoCta": "Разместить рекламу"
 }

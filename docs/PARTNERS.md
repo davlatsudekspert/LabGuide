@@ -25,8 +25,26 @@ Oxirida texnik tafsilotlar va qonunchilik bo‘yicha eslatma.
 | **Apparat kartasi** (Lab → Apparatlar → yo‘nalish → ishlab chiqaruvchi → model) | Kartaning oxirida “Rasmiy hamkorlar” bo‘limi (“Reklama” yorlig‘i bilan): logo, kompaniya nomi va turi, qisqa tavsif, hududlar, apparatning O‘zbekistonda ro‘yxatdan o‘tganlik guvohnomasi raqami (berilgan bo‘lsa), **Qo‘ng‘iroq** va **Telegram** tugmalari, “Batafsil”. Hamkor model yoki butun ishlab chiqaruvchiga bog‘lanadi. |
 | **Yo‘nalish** (masalan, Biokimyo) | Ishlab chiqaruvchilar ro‘yxatidan keyin ixcham “Hamkor · Reklama” kartasi (ko‘pi bilan ikkitasi, har kuni navbat bilan). |
 | **Lab bosh sahifasi** | Bo‘limlar ro‘yxatidan keyin bitta “Reklama” kartasi (bir nechta hamkor bo‘lsa — har kuni navbat bilan). |
+| **Asosiy menyu (Bosh sahifa) — 1-joy: laboratoriya xizmati** | Tezkor amallar to‘ridan keyin, kunlik kartadan oldin bir qatorli ixcham “Reklama” kartasi: logo, nom, qisqa tavsif, tur · “Batafsil” (hamkor sahifasiga). Faqat **laboratoriya xizmati** turidagi hamkor; bir nechta bo‘lsa — har kuni navbat bilan. |
+| **Asosiy menyu (Bosh sahifa) — 2-joy: apparat firmasi** | Xuddi shunday ixcham karta; ishlab chiqaruvchi, rasmiy distribyutor yoki servis markazi turidagi hamkor uchun (kunlik navbat). |
 | **Hamkor sahifasi** | Tavsif, barcha aloqa (telefon, Telegram, sayt, email, buklet), bog‘liq modellar va guvohnoma raqamlari. Sahifa boshida “Reklama” yorlig‘i, oxirida “bu sahifa — reklama” izohi. |
 | **Hisobot** | Kun va joy bo‘yicha ko‘rsatilishlar va “bog‘lanish” bosilishlari (pastda — qanday sanalishi). |
+
+#### Bosh sahifa joylari: build rejimiga qarab
+
+| Holat | Nima ko‘rinadi |
+|---|---|
+| Joy turiga mos **haqiqiy faol hamkor bor** (har qanday build) | Hamkor kartasi; ko‘rsatilish va “bog‘lanish” hisoblagichi `home_lab` / `home_equipment` joylari bo‘yicha (bitta qurilmadan kuniga bir marta; faqat hisobli foydalanuvchi). |
+| Hamkor **yo‘q**, **demo/test build** (`LG_ALL_FEATURES_OPEN=true` — TestFlight/CI, yoki debug) | Aniq belgilangan **“Namuna / Demo — reklama joyi”** kartasi: “Reklama” yorlig‘i, “Bu yerda hamkor laboratoriya xizmati / apparat firmasi reklamasi chiqadi” matni va “Reklama joylashtirish” (→ Hamkor bo‘lish sahifasi). Kompaniya nomi, logo, telefon, Telegram **yo‘q**; ko‘rsatilish ham, bosish ham **sanalmaydi**. |
+| Hamkor **yo‘q**, **do‘kon (release) build** | Hech narsa chizilmaydi (bo‘sh joy ham qoldirilmaydi). |
+
+Demo karta soxta kompaniya emas, faqat joyni ko‘rsatuvchi namuna; u faqat
+ichki sinov buildlarida chiqadi, do‘kon foydalanuvchilariga ko‘rinmaydi.
+Hamkor turi **“Laboratoriya xizmati”** (`laboratory`) yangi: u katalogdagi
+apparatga bog‘lanmaydi, shuning uchun e’lon qilish uchun “kamida bitta
+bog‘lanish” sharti bu tur uchun talab qilinmaydi (tavsif va aloqa baribir
+shart). Apparat firmalari (ishlab chiqaruvchi, distribyutor, servis markazi)
+uchun bog‘lanish sharti o‘zgarmagan.
 
 ### Auditoriya
 
@@ -143,7 +161,8 @@ Qanday sanaladi (hisobotda ham shu matn bor):
 
 ## 3. Texnik tafsilotlar
 
-Migratsiya: `supabase/migrations/20261009001000_partners.sql`, qabul
+Migratsiya: `supabase/migrations/20261009001000_partners.sql` (+
+`20261017000100_partner_home_slots.sql`), qabul
 testlari: `supabase/tests/20_partners.sql` (`tool/backend_test.sh`).
 
 | Jadval | Nima | O‘qish (RLS) | Yozish |
@@ -157,6 +176,12 @@ testlari: `supabase/tests/20_partners.sql` (`tool/backend_test.sh`).
 - `partners_feed()` — ilova o‘qiydigan ro‘yxat (chaqiruvchi huquqi bilan, RLS
   qo‘llanadi; admin uchun ham faqat faol hamkorlar — qoralama reklama
   joyiga chiqmaydi).
+- Hisobot joylari (`partner_events.placement`): `card`, `category`,
+  `lab_home`, `partner_page`, `home_lab`, `home_equipment`. Hamkor turlari:
+  `manufacturer`, `distributor`, `service`, `laboratory`. Bosh sahifa
+  joylari va `laboratory` turi `supabase/migrations/20261017000100_partner_home_slots.sql`
+  migratsiyasi bilan qo‘shilgan (eski serverda yangi joy hodisasi rad etiladi
+  — avval migratsiyani qo‘llang).
 - `partner_track(p_events)` — faqat hisobli foydalanuvchi; bir chaqiruvda
   ≤ 20 hodisa, hisobga kuniga ≤ 100; faol bo‘lmagan hamkor sanalmaydi; admin
   hodisasi sanalmaydi.

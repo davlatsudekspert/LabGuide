@@ -4,6 +4,7 @@ import 'package:material_ui/material_ui.dart';
 import '../../app/app_scope.dart';
 import '../../app/shell.dart';
 import '../../app/widgets/lg_page.dart';
+import '../../core/backend/partner_models.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
 import '../auth/ui/role_screen.dart';
@@ -12,6 +13,7 @@ import '../community/community_screens.dart';
 import '../content/ui/conditions_screens.dart';
 import '../content/ui/content_widgets.dart';
 import '../daily/daily_screens.dart';
+import '../partners/partner_widgets.dart';
 import 'global_search.dart';
 import '../settings/settings_controller.dart';
 import '../toifa/toifa_screens.dart';
@@ -219,6 +221,13 @@ class HomeScreen extends StatelessWidget {
                   ),
               ],
             ),
+            // Reklama joylari (“Reklama” yorlig'i bilan, bir qatorli ixcham):
+            // 1 — laboratoriya xizmati, 2 — apparat firmasi. Tezkor
+            // amallar to'rida, kunlik kartadan oldin — birinchi ekranda.
+            // Haqiqiy hamkor yoki (faqat demo buildda) namuna bo'lmasa —
+            // hech narsa chizilmaydi.
+            const HomePartnerSlot(placement: PartnerPlacement.homeLab),
+            const HomePartnerSlot(placement: PartnerPlacement.homeEquipment),
             // Kunlik 5 ta savol — har kuni qaytish uchun ixcham karta.
             const DailyCard(),
             // Hamjamiyat (faqat server ulangan buildda; aks holda yo'q).

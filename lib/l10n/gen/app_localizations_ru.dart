@@ -8780,4 +8780,28 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get histoLabCardBody =>
       'Ткани и органы: настоящие микрофото, признаки, тренировка';
+
+  @override
+  String get partnerKindLaboratory => 'Лабораторная служба';
+
+  @override
+  String get partnerPlacementHomeLab => 'Главная: лабораторная служба';
+
+  @override
+  String get partnerPlacementHomeEquipment =>
+      'Главная: фирма-поставщик оборудования';
+
+  @override
+  String get homeAdDemoTitle => 'Образец / Демо — рекламное место';
+
+  @override
+  String get homeAdDemoLabBody =>
+      'Здесь появится реклама партнёрской лабораторной службы';
+
+  @override
+  String get homeAdDemoEquipmentBody =>
+      'Здесь появится реклама фирмы-поставщика оборудования';
+
+  @override
+  String get homeAdDemoCta => 'Разместить рекламу';
 }

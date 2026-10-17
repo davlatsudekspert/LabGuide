@@ -4973,5 +4973,33 @@
   },
   "@histoLabCardBody": {
     "description": "Lab tab: histology picture card subtitle"
+  },
+  "partnerKindLaboratory": "Laboratory service",
+  "partnerPlacementHomeLab": "Home: laboratory service",
+  "partnerPlacementHomeEquipment": "Home: equipment firm",
+  "homeAdDemoTitle": "Sample / Demo — ad slot",
+  "homeAdDemoLabBody": "A partner laboratory service ad will appear here",
+  "homeAdDemoEquipmentBody": "An equipment firm ad will appear here",
+  "homeAdDemoCta": "Place an ad",
+  "@partnerKindLaboratory": {
+    "description": "Partner type: a laboratory that provides testing services (home ad slot 1)"
+  },
+  "@partnerPlacementHomeLab": {
+    "description": "Admin statistics: ad placement on the Home tab for laboratory services"
+  },
+  "@partnerPlacementHomeEquipment": {
+    "description": "Admin statistics: ad placement on the Home tab for equipment firms"
+  },
+  "@homeAdDemoTitle": {
+    "description": "Home tab: title of the demo ad placeholder"
+  },
+  "@homeAdDemoLabBody": {
+    "description": "Home tab: demo placeholder text for the laboratory service ad slot"
+  },
+  "@homeAdDemoEquipmentBody": {
+    "description": "Home tab: demo placeholder text for the equipment firm ad slot"
+  },
+  "@homeAdDemoCta": {
+    "description": "Home tab: button on the demo ad placeholder, opens the become-a-partner page"
   }
 }

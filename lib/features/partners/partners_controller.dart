@@ -99,6 +99,23 @@ class PartnersController extends ChangeNotifier {
   /// Lab bosh sahifasi uchun bitta hamkor (bo'lmasa — `null`).
   Partner? get featured => _rotate(live).firstOrNull;
 
+  /// Bosh sahifa (asosiy menyu) reklama joyi uchun bitta hamkor: laboratoriya
+  /// xizmati joyi — [PartnerKind.laboratory]; apparat joyi — qolgan turlar.
+  /// Bir nechta bo'lsa har kuni navbat bilan; haqiqiy faol hamkor bo'lmasa
+  /// `null` (soxta kompaniya hech qachon qaytarilmaydi).
+  Partner? forHome(PartnerPlacement slot) {
+    assert(
+      slot == PartnerPlacement.homeLab ||
+          slot == PartnerPlacement.homeEquipment,
+      'not a home slot: $slot',
+    );
+    final lab = slot == PartnerPlacement.homeLab;
+    return _rotate([
+      for (final p in live)
+        if ((p.kind == PartnerKind.laboratory) == lab) p,
+    ]).firstOrNull;
+  }
+
   // ------------------------------------------------------------ yuklash
   void _readCache() {
     final raw = _store.getString(StoreKeys.partnersCache);

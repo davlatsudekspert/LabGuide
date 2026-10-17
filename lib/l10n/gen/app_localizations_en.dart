@@ -8744,4 +8744,26 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get histoLabCardBody =>
       'Tissues and organs: real micrographs, key features, practice';
+
+  @override
+  String get partnerKindLaboratory => 'Laboratory service';
+
+  @override
+  String get partnerPlacementHomeLab => 'Home: laboratory service';
+
+  @override
+  String get partnerPlacementHomeEquipment => 'Home: equipment firm';
+
+  @override
+  String get homeAdDemoTitle => 'Sample / Demo — ad slot';
+
+  @override
+  String get homeAdDemoLabBody =>
+      'A partner laboratory service ad will appear here';
+
+  @override
+  String get homeAdDemoEquipmentBody => 'An equipment firm ad will appear here';
+
+  @override
+  String get homeAdDemoCta => 'Place an ad';
 }

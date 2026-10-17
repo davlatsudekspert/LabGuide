@@ -8605,4 +8605,27 @@ class AppLocalizationsUz extends AppLocalizations {
   @override
   String get histoLabCardBody =>
       'To‘qimalar va a’zolar: haqiqiy mikrofotolar, belgilar, mashq';
+
+  @override
+  String get partnerKindLaboratory => 'Laboratoriya xizmati';
+
+  @override
+  String get partnerPlacementHomeLab => 'Bosh sahifa: laboratoriya xizmati';
+
+  @override
+  String get partnerPlacementHomeEquipment => 'Bosh sahifa: apparat firmasi';
+
+  @override
+  String get homeAdDemoTitle => 'Namuna / Demo — reklama joyi';
+
+  @override
+  String get homeAdDemoLabBody =>
+      'Bu yerda hamkor laboratoriya xizmati reklamasi chiqadi';
+
+  @override
+  String get homeAdDemoEquipmentBody =>
+      'Bu yerda apparat firmasi reklamasi chiqadi';
+
+  @override
+  String get homeAdDemoCta => 'Reklama joylashtirish';
 }

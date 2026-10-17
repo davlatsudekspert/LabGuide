@@ -321,4 +321,48 @@ do $$ begin
   assert (select public from storage.buckets where id = 'partner-logos'), 'logos bucket is public';
 end $$;
 
+-- ============ bosh sahifa joylari: laboratoriya xizmati (kind = laboratory)
+-- Katalogga bog'lanmasdan e'lon qilinadi (apparat firmasi esa yo'q);
+-- yangi joylar (home_lab, home_equipment) sanaladi.
+set role authenticated;
+select t.login('00000000-0000-0000-0000-00000000ad01', 'aal2');
+do $$
+declare
+  lab uuid;
+  eq uuid;
+begin
+  lab := public.admin_partner_save(null, t.partner('Sinov Diagnostika Lab', -1, 30)
+    || jsonb_build_object('kind', 'laboratory', 'links', '[]'::jsonb));
+  perform public.admin_partner_set_status(lab, 'published');
+  eq := public.admin_partner_save(null, t.partner('Linksiz Distribyutor', -1, 30)
+    || jsonb_build_object('links', '[]'::jsonb));
+  begin
+    perform public.admin_partner_set_status(eq, 'published');
+    raise exception 'equipment partner without links was published';
+  exception when invalid_parameter_value then null;
+  end;
+  begin
+    perform public.admin_partner_save(null, t.partner('Noma''lum tur', -1, 30)
+      || jsonb_build_object('kind', 'bank'));
+    raise exception 'unknown partner kind accepted';
+  exception when check_violation then null;
+  end;
+  insert into t.vars values ('p_home_lab', lab::text);
+end $$;
+select t.login('00000000-0000-0000-0000-0000000000a1');
+do $$
+declare lab uuid := (select v::uuid from t.vars where k = 'p_home_lab');
+begin
+  assert public.partner_track(jsonb_build_array(
+    jsonb_build_object('partner', lab, 'placement', 'home_lab', 'kind', 'impression'),
+    jsonb_build_object('partner', lab, 'placement', 'home_equipment', 'kind', 'impression'))) = 2,
+    'home placements are counted';
+end $$;
+reset role;
+do $$ begin
+  assert (select impressions from public.partner_events
+          where partner_id = (select v::uuid from t.vars where k = 'p_home_lab')
+            and placement = 'home_lab') = 1, 'home_lab impression stored';
+end $$;
+
 select 'partners: all checks passed' as result;
