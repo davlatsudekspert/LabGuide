@@ -467,6 +467,8 @@ class _TopBar extends StatelessWidget {
                 ),
               ),
             ),
+            // Yig'ilgan uzun sarlavha til tugmasiga "yopishmasin".
+            const SizedBox(width: 8),
             const _LanguageButton(),
             if (showProfile)
               _IconCircle(

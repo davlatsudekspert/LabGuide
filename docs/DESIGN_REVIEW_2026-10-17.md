@@ -42,6 +42,83 @@ qo'yilgan; "keyin" — o'sha nomli `tool/screenshots/out/walk/<ssenariy>/`.
 | 11 | Past | Tungi rejim: lime aksent biroz "kislotali", yumshoq fon (`soft`) to'q-yashil to'yingan. | `before/roles_doctor_ru_katta/01_bosh.png`, `before/ux_dark_uz/05_lab.png` | **O'zgartirildi** — aksent va `soft` to'yinganligi pasaytirildi (kontrast testlari o'tadi) |
 | 12 | Past | Shifokor qo'llanmasi kartasida "11 систем" tegi (neutral) panel ustida fondan to'qroq "teshik" bo'lib ko'rinadi. | `before/roles_doctor_ru_katta/02_bosh_past.png` | **Taklif** — pastda |
 
+## Har bir ekran — tekshiruv ro'yxati
+
+Skript: `tool/screenshots/walk_all_screens_test.dart` — 62 marshrut, har
+biri tepasi va bir surilgandan keyin, ikki ko'rinishda:
+`walk/all_uz_light_390/` (uz · kunduzgi · 390 px) va
+`walk/all_ru_dark_320/` (ru · tungi · 320 px) — jami 248 rasm, hammasi
+ko'zdan kechirildi. Belgilar: **T** — tuzatildi, **Tk** — taklif,
+**—** — muammo topilmadi. "(test)" — faqat golden muhitidagi holat
+(rasm oldindan yuklanmagan), qurilmada yo'q.
+
+| Ekran (marshrut) | Topilgan | Holat |
+|---|---|---|
+| Til tanlash | logotip "yalang'och" | T — halo |
+| Welcome | qiymat aytilmaydi, CTA pastda | T — 3 afzallik, CTA birinchi ekranda |
+| Kirish / OTP / Rol | — (rol kartalari toza, tanlangan holat aniq) | — |
+| Bosh (`/home`), 4 rol | hamma kartada "Ochish"; 320 px da "Kalkulyatorla/r"; qattiq chegarali qidiruv | T |
+| Bosh — Kunlik savol kartasi | ingichka brend chegara "arzon" ko'rinadi | T — soya |
+| Bosh — Toifa kartasi (laborant) | chegarali, Kunlik kartadan farqli uslub | Tk (toifa — tegilmaydi) |
+| Qidiruv (`/home/search`) | bo'sh holat — ma'lumot bloki, yaxshi; fokus chegarasi tungi rejimda yorqin lime | — |
+| Tahlillar (`/tests`) | ru 320: filtr chiplari gorizontal suriladi (kesilgan chip — ataylab "yana bor" ishorasi) | — |
+| Tahlil kartasi (glyukoza) | manba havolalari qalin, tagi chizilgan | T — iqtibos uslubi |
+| Kasallik bo'yicha tahlillar / holat | — (bo'limlar raqamli belgisi va rangli ikonkalari izchil) | — |
+| Lab (`/lab`) | Sitologiya/Spermogramma/Qon guruhi/Gistologiya kartalarida rasm o'rni bo'sh oq kvadrat | (test) |
+| QC, QC yangi, EQA | bo'sh holat — yangi illyustratsiya; maydonlar va chiplar izchil | T (bo'sh holat) |
+| Kalibrlash, jurnal | jurnal bo'sh holati — yangi illyustratsiya | T |
+| Kalkulyatorlar ro'yxati, eGFR, suyultirish, kamera | manbalar qalin/tagi chizilgan | T |
+| Preanalitika | ingliz tilidagi manba lokatorlari ("Other steps to prepare") uz/ru matn ichida | Tk — kontent (tibbiy matn, tegilmadi) |
+| Apparatlar, gematologiya, BS-240 | model rasmida bo'sh maydon | (test) |
+| Mikroskopiya atlasi, bo'lim, rasm | "Bu nima?" kartasida doira o'rinlari bo'sh | (test) |
+| Leykoformula, hujayralar, hujayra | ru 320: "Гиперсегментированн/ый" so'z bo'linadi | T — FitLongWordText |
+| Leykoformula — hisoblagich, tarix, talqin | tarix bo'sh holati — yangi illyustratsiya; manbalar | T |
+| Sitologiya, hujayralar, Bethesda | ro'yxatda ba'zi rasm o'rinlari bo'sh | (test) |
+| Spermogramma, chegaralar, hisoblagich | manbalar qalin | T |
+| Qon guruhi, moslik | manbalar qalin | T |
+| Gistologiya, to'qimalar | manbalar qalin | T |
+| Qon morfologiyasi, eritrotsitlar | hero rasm o'rni bo'sh | (test) |
+| Siydik tahlili, test-chiziq, cho'kma | — | — |
+| Kutubxona, saqlanganlar, paketlar | saqlanganlar bo'sh holati — yangi illyustratsiya | T |
+| Kitob va qo'llanmalar | ba'zi kitob nomlari KATTA HARFDA (manba nomi) | Tk — kontent |
+| Manbalar va litsenziyalar | 289 ta qalin tagi chizilgan havola — sahifa "ko'k" | T |
+| Ilmiy ish maydoni | — | — |
+| O'rganish (`/learn`) | hero rasm o'rni bo'sh (test); hero birinchi ekranning katta qismi | Tk (yuqoridagi 1-taklif) |
+| Izohli test, jadvallar, kunlik, imtihon | — (chiplar, raqamli qadamlar izchil) | — |
+| Profil, rol, maxfiylik, aloqa | — | — |
+| Taklif va yordam (server yo'q) | holat — yangi illyustratsiya | T |
+| Foydalanish shartlari | — | — |
+| Barcha ichki sahifalar — yig'ilgan sarlavha | uzun sarlavha til tugmasiga yopishadi ("…(EQA)UZ") | T — 8 px oraliq |
+| Barcha tab sahifalari — ro'yxat oxiri | panel ostida qolardi | T — 24 px |
+| Dialog / bottom sheet / snackbar | snackbar radiusi tokenlardan; dialog — `LgRadius.card` (26) | T |
+| Admin konsoli | sarlavhasiz yuklanish — spinner o'rniga skeleton | T |
+| Classroom (guruhlar, ma'ruza) | tegilmadi (parallel ish) — yangi tokenlar avtomatik qo'llanadi (LgPanel, LgTile, LgStateView); `classroom_screens.dart` va `topic_test_screens.dart` dagi `LgStateView(loading, title: l.classesLoading)` — sarlavhali, shuning uchun spinner qoladi | Tk — egasiga: sarlavhasiz qilsa skeleton bo'ladi |
+| Toifa | tegilmadi; `ToifaEntryCard` chegarali — Kunlik kartasi uslubiga keltirish | Tk — egasiga |
+
+Admin, hamjamiyat, guruh ichki sahifalari server talab qiladi (bu buildda
+"Server hali ulanmagan" holati) — ular `test/widget/*` dagi soxta server
+bilan tekshiriladi va ko'rinishi umumiy vidjetlardan (LgPanel, LgRow,
+LgStateView) keladi.
+
+## Oldin / keyin (rasm yo'llari)
+
+Hammasi `tool/screenshots/out/` ichida.
+
+| Ekran | Oldin | Keyin |
+|---|---|---|
+| Til tanlash | `before/ux_onb_uz/01_til.png` | `walk/ux_onb_uz/01_til.png` |
+| Welcome (uz / ru / en) | `before/ux_onb_{uz,ru,en}/02_welcome.png` | `walk/ux_onb_{uz,ru,en}/02_welcome.png` |
+| Kirish | `before/ux_onb_uz/03_auth.png` | `walk/ux_onb_uz/03_auth.png` |
+| Rol | `before/ux_onb_uz/06_role.png` | `walk/ux_onb_uz/06_role.png` |
+| Bosh — laborant | `before/roles_lab_uz/01_bosh.png`, `02_bosh_past.png` | `walk/roles_lab_uz/01_bosh.png`, `02_bosh_past.png` |
+| Bosh — ustoz | `before/roles_teacher_uz/01_bosh.png` | `walk/roles_teacher_uz/01_bosh.png` |
+| Bosh — talaba / shifokor | `before/roles_student_uz/01_bosh.png`, `before/roles_doctor_uz/01_bosh.png` | `walk/roles_student_uz/…`, `walk/roles_doctor_uz/…` |
+| Lab, Kutubxona, O'rganish, Profil | `before/roles_lab_uz/05_lab.png`, `07_library.png`, `09_learn.png`, `11_profil.png` | `walk/roles_lab_uz/` (o'sha nomlar) |
+| Tungi + katta shrift (ru) | `before/roles_doctor_ru_katta/01_bosh.png` | `walk/roles_doctor_ru_katta/01_bosh.png` |
+| 320 px | `before/ux_w320_uz/01_home.png` | `walk/ux_w320_uz/01_home.png` |
+| Katta shrift 1,6x | `before/ux_big_uz/01_home.png` | `walk/ux_big_uz/01_home.png` |
+| Tungi Lab | `before/ux_dark_uz/05_lab.png` | `walk/ux_dark_uz/05_lab.png` |
+
 ## Yangi dizayn tokenlari ("mayin" yangilanish)
 
 Hammasi `lib/design/tokens.dart` va `lib/design/theme.dart` da — ekranlar
@@ -103,6 +180,14 @@ darhol, animatsiyasiz.
 - `lib/features/daily/daily_screens.dart` — Kunlik savol kartasi: chegara
   o'rniga soya.
 - `lib/app/widgets/lg_page.dart` — shell ichida ro'yxat oxiri 16 → 24 px.
+- `lib/app/widgets/lg_page.dart` — yig'ilgan sarlavha va til tugmasi orasida 8 px.
+- `lib/features/tools/clinical_calc_screens.dart` (`CalcSourceTile`) va
+  `lib/features/content/ui/analyte_screen.dart` (`SourceTile`) — iqtiboslar
+  14 px oddiy matn rangida, tagi chizilmagan; havola ekanini ikonka aytadi
+  (butun ilovadagi manbalar ro'yxatlari shu ikki vidjetdan).
+- `lib/features/differential/differential_screens.dart` — hujayra nomi tor
+  ekranda harfma-harf bo'linmaydi.
+- `tool/screenshots/walk_all_screens_test.dart` — barcha ekranlar ko'rigi.
 - ARB (faqat yangi kalitlar, uch tilda): `welcomeBenefit*`, `homeTile*`,
   `stateLoading`. Mavjud izohlar qayta ishlatildi: `labQcSub`,
   `labMicroscopySub`, `analytePracticeSub`, `libSourcesSub`, `libResearchSub`.
@@ -142,6 +227,6 @@ Tibbiy mazmun va raqamlar o'zgartirilmadi. `classroom`, `toifa`,
 
 - `walk_smoke_test.dart` — eGFR qadamida `TextField` topilmaydi (65-qator):
   kalkulyator ekrani o'zgargan, skript eskirgan.
-- `walk_library_test.dart` — en va ru-tungi ssenariylari yiqiladi
-  (skript ekrandagi matnni topmaydi).
+- `walk_library_test.dart` — en va ru-tungi ssenariylari bu o'zgarishlardan
+  oldin ham yiqilardi (ko'rib chiqilmadi).
 Ikkalasi ham `tool/` skriptlari, `flutter test` to'plamiga kirmaydi.
