@@ -44,6 +44,7 @@ sys.path.insert(0, HERE)
 
 import deck_content as dc  # noqa: E402
 import practice_decks as pd  # noqa: E402
+import visuals as vz  # noqa: E402
 
 REPO = dc.REPO
 OUT_DIR = os.path.join(REPO, 'assets', 'lectures')
@@ -100,6 +101,21 @@ NOTE_SIZE = 18
 # ru 0.53) + ~8% zaxira.
 EM = {'uz': 0.50, 'en': 0.51, 'ru': 0.57}
 BOLD_K = 1.05
+
+# --- vizual shablonlar (lecture_canvas.dart dagi o'lchamlar bilan bir xil) -------------
+STAT_ROW = 174                          # raqam kartalari qatori (karta 150 + oraliq 24)
+SIDE_W, SIDE_GAP = 400, 40              # yon rasm (bandlar o'ngda emas, chapda; rasm o'ngda)
+STEP_COL = 72                           # qadam tuguni (48) + oraliq
+STEP_PAD_X, STEP_PAD_Y, STEP_GAP = 20, 14, 16
+STEPS_MAX = 6
+STEP_W = CONTENT_W - STEP_COL - 2 * STEP_PAD_X
+SPLIT_GAP, SPLIT_HEAD, SPLIT_PAD = 32, 80, 20
+SPLIT_COL_W = (CONTENT_W - SPLIT_GAP) / 2 - 2 * SPLIT_PAD - BULLET_INDENT
+SPLIT_FONT = 24                         # ikki ustun: 24 px da hisoblanadi (jadval kabi)
+SPLIT_MAX_PAGES = 3
+TREE_ROOT_W, TREE_LINK, TREE_PAD_X, TREE_PAD_Y, TREE_GAP = 300, 64, 18, 12, 12
+TREE_FONT = 24                          # daraxt: 24 px da sig'masa — oddiy bandlar
+TREE_W = CONTENT_W - TREE_ROOT_W - TREE_LINK - 2 * TREE_PAD_X
 
 SKIP_TITLES_FOR_SEARCH = set()
 WARNINGS = []   # bo'linmaydigan (bitta jumla) va sig'maydigan holatlar
@@ -299,6 +315,41 @@ def paginate_sources(items, title, lang):
                     'Adabiyotlar')
 
 
+def steps_height(items, lang, size=PACK_FONT):
+    h = 0
+    for t in items:
+        body = re.sub(r'^\d{1,2}\.\s+', '', t)
+        h += max(48, wrap_lines(body, size, STEP_W, lang) * size * 1.3 + 2 * STEP_PAD_Y)
+    return h + max(0, len(items) - 1) * STEP_GAP
+
+
+def split_height(left, right, singles, lang, size=None):
+    size = size or SPLIT_FONT
+    col = max(items_height(left, size, SPLIT_COL_W, lang), items_height(right, size, SPLIT_COL_W, lang))
+    h = SPLIT_HEAD + col + 2 * SPLIT_PAD
+    if singles:
+        h += 20 + items_height(singles, size, CONTENT_W - BULLET_INDENT, lang)
+    return h
+
+
+def tree_height(items, lang, size=TREE_FONT):
+    h = 0
+    for t in items:
+        m = vz.LABEL_RE.match(t)
+        h += (wrap_lines(m.group(1), size, TREE_W, lang, bold=True) * size * 1.25
+              + wrap_lines(m.group(2), size, TREE_W, lang) * size * 1.3 + 2 * TREE_PAD_Y)
+    return h + (len(items) - 1) * TREE_GAP
+
+
+def ex_sentences(text):
+    return sentences(text)
+
+
+def side_fits(items, title, lang, source):
+    width = CONTENT_W - SIDE_W - SIDE_GAP - BULLET_INDENT
+    return items_height(items, MIN_FONT, width, lang) <= body_box(title, lang, source)
+
+
 def block_bullets(blocks, numbered=False):
     """PPTX bloklari (label, text) -> bandlar ro'yxati."""
     out = []
@@ -322,10 +373,11 @@ def clean(d):
 # ------------------------------------------------------------ konvertatsiya ----
 
 class Conv:
-    def __init__(self, deck):
+    def __init__(self, deck, repo=None):
         import make_topic_decks as mk
         self.mk = mk
         self.deck = deck
+        self.repo = repo
         self.lang = deck.lang
         self.out = []
         self._ctx = types.SimpleNamespace(deck=deck, lang=deck.lang)
@@ -364,6 +416,59 @@ class Conv:
     def _bullet_pages(self, items, title, src, indent=BULLET_INDENT):
         return paginate_bullets(items, title, self.lang, src, indent=indent)
 
+    # -- vizual shablonlar ----------------------------------------------------
+
+    def _emit_bullets(self, items, title, eyebrow, src, refs):
+        """Oddiy bandlar; bandlarda >= 2 miqdor bo'lsa — raqam kartalari (stats) bilan
+        (kartalar qatori uchun joy ajratib bo'linadi)."""
+        lang = self.lang
+        if not vz.has_stats(items, lang):
+            pages = self._bullet_pages(items, title, src)
+            for i, pg in enumerate(pages, 1):
+                self.add(template='bullets', title=title, eyebrow=eyebrow_with_page(eyebrow, i, len(pages)),
+                         bullets=pg, source=src, refs=refs)
+            return
+        avail = body_box(title, lang, src) - STAT_ROW
+        width = CONTENT_W - BULLET_INDENT
+        pages = paginate(items, lambda xs: items_height(xs, PACK_FONT, width, lang) <= avail, title[:40])
+        for i, pg in enumerate(pages, 1):
+            st = vz.stats_for(pg, lang)
+            self.add(template='stats' if st else 'bullets', title=title,
+                     eyebrow=eyebrow_with_page(eyebrow, i, len(pages)), bullets=pg, stats=st,
+                     source=src, refs=refs)
+
+    def _steps(self, items, title, eyebrow, src, refs):
+        """Raqamli tartib -> 'steps' (sahifada <= STEPS_MAX qadam). Bo'linishda raqamsiz
+        bo'lak chiqsa (bitta qadam sahifaga sig'masa) — None (oddiy bandlar)."""
+        lang = self.lang
+        avail = body_box(title, lang, src)
+        pages = paginate(items, lambda xs: len(xs) <= STEPS_MAX and steps_height(xs, lang) <= avail,
+                         title[:40])
+        if any(not re.match(r'^\d{1,2}\.\s', x) for pg in pages for x in pg):
+            return False
+        for i, pg in enumerate(pages, 1):
+            self.add(template='steps', title=title, eyebrow=eyebrow_with_page(eyebrow, i, len(pages)),
+                     bullets=pg, source=src, refs=refs)
+        return True
+
+    def _tree(self, items, title, eyebrow, src, refs):
+        if not vz.tree_ok(items):
+            return False
+        if tree_height(items, self.lang) > body_box(title, self.lang, src):
+            return False
+        self.add(template='tree', title=title, eyebrow=eyebrow or None, bullets=items, source=src, refs=refs)
+        return True
+
+    def _example(self, title, given, ex, src, refs):
+        self.add(template='example', title=title, eyebrow=dc.T('example', self.lang), bullets=given,
+                 ex=ex, source=src, refs=refs)
+
+    def _tree_context(self, s):
+        head = (s.eyebrow or '').split(' · ')[0]
+        lg = self.lang
+        return head in {dc.T('ref_label', lg), dc.T('book_extra', lg)} or head in {
+            v[lg] for v in pd.LABELS.values()}
+
     # -- turlar --------------------------------------------------------------
 
     def title(self, s):
@@ -390,11 +495,86 @@ class Conv:
             eyebrow = f'{eyebrow.split(" · ")[0]} · {dc.T("oral_a", self.lang)}' if eyebrow else dc.T('oral_a', self.lang)
         items += block_bullets(d['blocks'], numbered=bool(d.get('numbered')))
         src = self.source(s)
-        pages = self._bullet_pages(items, title, src)
         refs = self.refs(s)
-        for i, pg in enumerate(pages, 1):
-            self.add(template='bullets', title=title, eyebrow=eyebrow_with_page(eyebrow, i, len(pages)),
-                     bullets=pg, source=src, refs=refs)
+        if d.get('example'):
+            # kalkulyator formulasi + manbadagi ishlangan misol (deck_content.example_slides)
+            given = items[:-1]
+            self._example(title, given, d['example'], src, refs)
+            return
+        # protokol bandidagi manbali "Misol (…): … → …" — alohida misol kartasi
+        exs = [x for x in items if vz.is_example_item(x)] if not d.get('numbered') else []
+        items = [x for x in items if x not in exs]
+        if items:
+            done = False
+            if d.get('numbered') and not d.get('lead') and not chips:
+                done = self._steps(items, title, eyebrow, src, refs)
+            elif not chips and not d.get('lead') and self._tree_context(s):
+                done = self._tree(items, title, eyebrow, src, refs)
+            if not done:
+                if d.get('lead'):
+                    pages = self._bullet_pages(items, title, src)
+                    for i, pg in enumerate(pages, 1):
+                        self.add(template='bullets', title=title,
+                                 eyebrow=eyebrow_with_page(eyebrow, i, len(pages)),
+                                 bullets=pg, source=src, refs=refs)
+                else:
+                    self._emit_bullets(items, title, eyebrow, src, refs)
+        for x in exs:
+            self._example(title, [], x, src, refs)
+
+    SPLIT_KINDS = (('high', 'up'), ('low', 'down'), ('positive', 'pos'), ('negative', 'neg'))
+
+    def _split_pages(self, cols, singles, title, src):
+        """Ikki ustun (yuqori/past yoki musbat/manfiy) -> sahifalar [(chap, o'ng, yakka)].
+        Ustunlar navbatma-navbat (pastroq ustunga) to'ldiriladi; band sig'masa — faqat jumla
+        oxirida bo'linadi va qolgani keyingi sahifada shu ustunda davom etadi. Bitta jumla
+        ham sig'masa — None (oddiy bandlar)."""
+        lang = self.lang
+        avail = body_box(title, lang, src)
+        queues = [list(cols[0][2]), list(cols[1][2])]
+
+        def fits(cl, cr):
+            return split_height(cl, cr, [], lang) <= avail
+
+        pages = []
+        while queues[0] or queues[1]:
+            cur = [[], []]
+            full = [False, False]
+            while not all(full[k] or not queues[k] for k in (0, 1)):
+                hs = [items_height(cur[k], SPLIT_FONT, SPLIT_COL_W, lang) for k in (0, 1)]
+                order = sorted((k for k in (0, 1) if queues[k] and not full[k]), key=lambda k: hs[k])
+                k = order[0]
+                x = queues[k][0]
+                trial = [cur[0] + [x], cur[1]] if k == 0 else [cur[0], cur[1] + [x]]
+                if fits(*trial):
+                    cur = trial
+                    queues[k].pop(0)
+                    continue
+                # jumla oxirida bo'lish: sig'adigan eng uzun boshlang'ich qism
+                sents = ex_sentences(x)
+                piece = []
+                for snt in sents:
+                    cand = ' '.join(piece + [snt])
+                    trial = [cur[0] + [cand], cur[1]] if k == 0 else [cur[0], cur[1] + [cand]]
+                    if fits(*trial):
+                        piece.append(snt)
+                    else:
+                        break
+                if piece and len(piece) < len(sents):
+                    cur[k] = cur[k] + [' '.join(piece)]
+                    queues[k][0] = ' '.join(sents[len(piece):])
+                if not cur[k] and not piece:
+                    return None
+                full[k] = True
+            if not cur[0] and not cur[1]:
+                return None
+            pages.append([cur[0], cur[1], []])
+            if len(pages) > SPLIT_MAX_PAGES:
+                return None
+        rest = list(singles)
+        while rest and split_height(pages[-1][0], pages[-1][1], pages[-1][2] + rest[:1], lang) <= avail:
+            pages[-1][2].append(rest.pop(0))
+        return pages, rest
 
     def columns(self, s):
         d = s.data
@@ -403,10 +583,26 @@ class Conv:
             items += [f'{c["head"]}: {b["text"]}' for b in c['blocks']]
         items += [b['text'] for b in d['single']]
         src = self.source(s)
-        pages = self._bullet_pages(items, s.title, src)
         refs = self.refs(s)
-        for i, pg in enumerate(pages, 1):
-            self.add(template='bullets', title=s.title, eyebrow=eyebrow_with_page(s.eyebrow, i, len(pages)),
+        lang = self.lang
+        kinds = {dc.T(k, lang): code for k, code in self.SPLIT_KINDS}
+        cols = [(c['head'], kinds.get(c['head']), [b['text'] for b in c['blocks']]) for c in d['cols']]
+        res = None
+        if len(cols) == 2 and all(code for _, code, _ in cols) and \
+                {cols[0][1], cols[1][1]} in ({'up', 'down'}, {'pos', 'neg'}):
+            res = self._split_pages(cols, [b['text'] for b in d['single']], s.title, src)
+        if res is None:
+            self._emit_bullets(items, s.title, s.eyebrow, src, refs)
+            return
+        pages, rest = res
+        extra = self._bullet_pages(rest, s.title, src) if rest else []
+        n = len(pages) + len(extra)
+        for i, (cl, cr, sg) in enumerate(pages, 1):
+            self.add(template='split', title=s.title, eyebrow=eyebrow_with_page(s.eyebrow, i, n),
+                     cols=[[cols[0][0], cols[0][1], cl], [cols[1][0], cols[1][1], cr]], bullets=sg,
+                     source=src, refs=refs)
+        for k, pg in enumerate(extra, len(pages) + 1):
+            self.add(template='bullets', title=s.title, eyebrow=eyebrow_with_page(s.eyebrow, k, n),
                      bullets=pg, source=src, refs=refs)
 
     def table(self, s):
@@ -416,6 +612,11 @@ class Conv:
         note = d.get('note') or None
         pages = paginate_rows(d['rows'], header, s.title, self.lang, src, note)
         refs = self.refs(s)
+        # kartadagi chegaralar diagrammasi (faqat kartadagi sonlar) — jadvaldan oldin
+        blocks = vz.range_blocks(d.get('limits') or [])
+        for i, b in enumerate(blocks, 1):
+            self.add(template='range', title=s.title, eyebrow=eyebrow_with_page(s.eyebrow, i, len(blocks)),
+                     range=b, source=src, refs=refs)
         for i, pg in enumerate(pages, 1):
             self.add(template='table', title=s.title, eyebrow=eyebrow_with_page(s.eyebrow, i, len(pages)),
                      header=header, rows=pg, footnote=note, source=src, refs=refs)
@@ -514,11 +715,81 @@ class Conv:
     def run(self):
         for s in self.deck.slides:
             getattr(self, s.kind)(s)
+        if self.repo is not None:
+            decorate(self.out, self.deck, self.repo)
         return self.out
 
 
-def convert(deck):
-    return Conv(deck).run()
+def convert(deck, repo=None):
+    return Conv(deck, repo).run()
+
+
+# ----------------------------------------------------------------- rasmlar ----
+
+def _deck_groups(repo, deck):
+    """Deck mavzusi analitlarining guruhlari (tartib bilan)."""
+    links = getattr(deck.day, 'links', None) or {}
+    out = []
+    for a in links.get('analytes', []):
+        g = repo.an.get(a, {}).get('group')
+        if g and g not in out:
+            out.append(g)
+    return out, links.get('reference', [])
+
+
+def title_image(repo, deck, slides):
+    """Sarlavha slaydi rasmi: xaritadagi aniq deck -> analit guruhi/Jadval -> deckning o'zidagi
+    birinchi rasm (u allaqachon mavzuga tegishli, krediti bilan)."""
+    did = deck.day.id
+    rules = repo.images['rules']
+    groups, refs = _deck_groups(repo, deck)
+    for r in rules:
+        if not r.get('side_only') and did in r.get('decks', []):
+            return r['image'], vz.credit_text(r, deck.lang)
+    for g in groups:
+        for r in rules:
+            if not r.get('side_only') and g in r.get('groups', []):
+                return r['image'], vz.credit_text(r, deck.lang)
+    for rid in refs:
+        for r in rules:
+            if not r.get('side_only') and rid in r.get('reference', []):
+                return r['image'], vz.credit_text(r, deck.lang)
+    for s in slides:
+        if s.get('figure') and s.get('template') == 'figure':
+            return s['figure'], s.get('credit')
+    return None, None
+
+
+def decorate(slides, deck, repo):
+    """Sarlavha rasmi va kontent slaydlariga yon rasm (xarita bo'yicha, bir rasm deckda bir
+    marta, faqat sig'sa) — data/slide_images.json."""
+    lang = deck.lang
+    did = deck.day.id
+    img, credit = title_image(repo, deck, slides)
+    if img and slides and slides[0].get('template') == 'title':
+        slides[0]['figure'] = img
+        if credit:
+            slides[0]['credit'] = credit
+    gnames = vz.group_names(repo, lang)
+    rtitles = vz.reftopic_titles(repo, lang)
+    rules = repo.images['rules']
+    used = set()
+    for s in slides[1:]:
+        if s.get('template', 'bullets') != 'bullets' or s.get('plan') or s.get('compact') or 'source' not in s:
+            continue
+        parts = (s.get('eyebrow') or '').split(' · ')
+        g = gnames.get(parts[0])
+        rid = rtitles.get(parts[1]) if len(parts) > 1 and parts[0] == dc.T('ref_label', lang) else None
+        for r in rules:
+            if r['image'] in used:
+                continue
+            hit = (did in r.get('decks', []) or (g and g in r.get('groups', []))
+                   or (rid and rid in r.get('reference', [])))
+            if hit and side_fits(s['bullets'], s['title'], lang, s['source']):
+                s['figure'] = r['image']
+                s['credit'] = vz.credit_text(r, lang)
+                used.add(r['image'])
+                break
 
 
 # -------------------------------------------------------------- yig'ish ----
@@ -527,9 +798,11 @@ def day_topic_ids(day):
     return [t['id'] for t in day.topics]
 
 
-def deck_json(deck_id, lang, title, topics, slides):
+def deck_json(deck_id, lang, title, topics, slides, cats=None):
     """Deck JSON. Takrorlanuvchi manba qatorlari deck darajasidagi `srcs`
-    jadvaliga olinadi (slaydda `src` indeksi) — hajmni ~1 MB ga kamaytiradi."""
+    jadvaliga olinadi (slaydda `src` indeksi) — hajmni ~1 MB ga kamaytiradi.
+    `cats` — eyebrow boshlari (eyebrow_heads tartibida) kategoriyasi: ilova har bo'lim
+    uchun aksent rangi va ikon tanlaydi (bo'sh satr — umumiy)."""
     srcs, refs, slim = [], [], []
     for s in slides:
         s = dict(s)
@@ -549,6 +822,10 @@ def deck_json(deck_id, lang, title, topics, slides):
         j['srcs'] = srcs
     if refs:
         j['refs'] = refs
+    if cats is not None:
+        heads = eyebrow_heads(slim)
+        if heads:
+            j['cats'] = [cats.get(h, '') for h in heads]
     j['slides'] = slim
     return j
 
@@ -630,8 +907,9 @@ def build_all(repo):
             deck, _cov = dc.build_deck(repo, day, lg)
             if deck is None:
                 break
-            slides = convert(deck)
-            per_lang[lg] = deck_json(day.id, lg, day.title(lg), day_topic_ids(day), slides)
+            slides = convert(deck, repo)
+            per_lang[lg] = deck_json(day.id, lg, day.title(lg), day_topic_ids(day), slides,
+                                     vz.category_map(repo, lg))
         if not per_lang:
             continue
         # muallif decki (uz) o'z faylida qoladi; indeks uchun uning sarlavhalari
@@ -667,8 +945,9 @@ def build_all(repo):
             deck, _cov = pd.build_practice_deck(repo, p, lg)
             if deck is None:
                 continue
-            slides = convert(deck)
-            per_lang[lg] = deck_json(p['id'], lg, dc.L(p['title'], lg), [], slides)
+            slides = convert(deck, repo)
+            per_lang[lg] = deck_json(p['id'], lg, dc.L(p['title'], lg), [], slides,
+                                     vz.category_map(repo, lg))
             files[(p['id'], lg)] = per_lang[lg]
         if not per_lang:
             continue

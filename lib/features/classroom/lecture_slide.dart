@@ -24,6 +24,82 @@ enum SlideTemplate {
 
   /// Savol-javob: variantlar, javob tugma bilan ochiladi.
   qa,
+
+  /// Raqam kartalari: banddagi miqdorlar katta raqam sifatida (qiymat va
+  /// yorliq — band matnidan so'zma-so'z), to'liq bandlar ostida.
+  stats,
+
+  /// Chegaralar diagrammasi: analit kartasidagi qaror chegaralari chiziqli
+  /// o'qda ([LectureSlide.range]).
+  range,
+
+  /// Bajarish tartibi: raqamli tugunlar va strelkalar ("1. …" bandlar).
+  steps,
+
+  /// Ikki ustun: oshishi / pasayishi (yoki musbat / manfiy).
+  split,
+
+  /// Tasnif: "Yorliq: bandlar" — ildiz va shoxlar.
+  tree,
+
+  /// Manbadagi ishlangan misol (misol kartasi).
+  example,
+}
+
+/// Raqam kartasi: [value] — miqdor ("150–180 l"), [label] — band matnidagi
+/// qisqa ibora.
+@immutable
+class SlideStat {
+  const SlideStat(this.value, this.label);
+
+  final String value;
+  final String label;
+}
+
+/// Chegaralar diagrammasi qatori: [low]/[high] — kartadagi son (null —
+/// ochiq tomon), [lowText]/[highText] — kartadagi yozuvi.
+@immutable
+class SlideRangeRow {
+  const SlideRangeRow({
+    required this.label,
+    this.sub,
+    this.low,
+    this.high,
+    this.lowExclusive = false,
+    this.highExclusive = false,
+    this.lowText,
+    this.highText,
+  });
+
+  final String label;
+  final String? sub;
+  final double? low;
+  final double? high;
+  final bool lowExclusive;
+  final bool highExclusive;
+  final String? lowText;
+  final String? highText;
+}
+
+/// Chegaralar diagrammasi: bitta birlikdagi qatorlar.
+@immutable
+class SlideRange {
+  const SlideRange({required this.unit, required this.rows, this.caption});
+
+  final String unit;
+  final String? caption;
+  final List<SlideRangeRow> rows;
+}
+
+/// Ikki ustunli slayd ustuni: sarlavha, yo'nalish (`up`, `down`, `pos`,
+/// `neg`) va bandlar.
+@immutable
+class SlideColumn {
+  const SlideColumn(this.head, this.kind, this.items);
+
+  final String head;
+  final String kind;
+  final List<String> items;
 }
 
 @immutable
@@ -52,6 +128,11 @@ class LectureSlide {
     this.plan = false,
     this.notice,
     this.refs = const [],
+    this.stats = const [],
+    this.range,
+    this.columns = const [],
+    this.example,
+    this.category,
   });
 
   final String? eyebrow;
@@ -86,7 +167,8 @@ class LectureSlide {
   /// bo'lsa — belgi yo'q. Uzunligi `tableRows` bilan bir xil yoki bo'sh.
   final List<List<Color>> rowSwatches;
 
-  /// Rasm shabloni: asset yo'li va izoh.
+  /// Rasm shabloni: asset yo'li va izoh. Bandli/sarlavha slaydida — yon
+  /// rasm (mavzuga tegishli mavjud sxema yoki foto, [figureCredit] bilan).
   final String? figure;
   final String? figureCaption;
 
@@ -110,6 +192,22 @@ class LectureSlide {
 
   /// Shu slaydning to'liq manbalari (manba oynasida kesilmasdan).
   final List<SlideRef> refs;
+
+  /// [SlideTemplate.stats]: raqam kartalari.
+  final List<SlideStat> stats;
+
+  /// [SlideTemplate.range]: chegaralar diagrammasi.
+  final SlideRange? range;
+
+  /// [SlideTemplate.split]: ikki ustun.
+  final List<SlideColumn> columns;
+
+  /// [SlideTemplate.example]: misol matni (karta).
+  final String? example;
+
+  /// Bo'lim kategoriyasi (aksent rangi va ikon): pack guruhi (`hematology`,
+  /// `urine`...), `qa`, `reference`, `p_procedure` va h.k.
+  final String? category;
 }
 
 /// Slayd manbasi: to'liq bibliografik yozuv (muallif, nom, nashr, URL) va shu

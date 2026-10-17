@@ -3,6 +3,8 @@ import 'package:material_ui/material_ui.dart';
 import '../../design/tokens.dart';
 import 'lecture_slide.dart';
 
+part 'lecture_canvas_visuals.dart';
+
 // 16:9 taqdimot kanvasi (D-59). Slayd 1280×720 dizayn o'lchamida chiziladi va
 // ekranga TENG masshtablanadi (FittedBox): telefonda kichik karta, proyektorda
 // butun ekran — matn nisbati bir xil, hech qachon kesilmaydi. Ko'rinish PPTX
@@ -38,6 +40,16 @@ abstract final class SlideCanvasMetrics {
   /// Asosiy matn: eng kattasidan boshlab tanlanadi (eksport 28 px da
   /// hisoblaydi, minimal o'qiladigan — 26 px).
   static const bodySizes = [34.0, 32.0, 30.0, 28.0, 26.0, 24.0, 22.0];
+
+  /// Vizual shablonlar (tool/slides/export_app_decks.py dagi byudjet bilan
+  /// bir xil): raqam kartalari qatori, yon rasm, qadam tuguni.
+  static const statRowH = 150.0;
+  static const statGap = 24.0;
+  static const sideW = 400.0;
+  static const sideGap = 40.0;
+  static const stepNode = 48.0;
+  static const stepCol = 72.0;
+  static const progressH = 6.0;
   static const titleSizes = [44.0, 40.0, 36.0, 32.0];
   static const questionSizes = [40.0, 36.0, 32.0, 28.0];
 }
@@ -46,15 +58,37 @@ abstract final class SlideCanvasMetrics {
 /// slaydi — PPTX'dagi kabi chuqur yashil fon va lime aksent.
 @immutable
 class SlideColors {
-  const SlideColors._(this.p, this.dark);
+  const SlideColors._(this.p, this.dark, this.category);
 
-  factory SlideColors.of(BuildContext context) => SlideColors._(
-    LgPalette.of(context),
-    Theme.of(context).brightness == Brightness.dark,
-  );
+  factory SlideColors.of(BuildContext context, [String? category]) =>
+      SlideColors._(
+        LgPalette.of(context),
+        Theme.of(context).brightness == Brightness.dark,
+        category,
+      );
 
   final LgPalette p;
   final bool dark;
+
+  /// Bo'lim kategoriyasi ([LectureSlide.category]).
+  final String? category;
+
+  /// Bo'lim aksenti (chip, chap chiziq, belgi, kalit atama): kategoriya
+  /// rangi; kategoriyasiz — brend rangi. Kunduzi fon bilan >= 4.5:1.
+  Color get accent => SlideCategory.of(category)?.color(dark) ?? p.brand;
+
+  /// Aksentning yumshoq foni.
+  Color get accentSoft => SlideCategory.of(category) == null
+      ? p.soft
+      : accent.withValues(alpha: dark ? 0.20 : 0.11);
+
+  /// Kategoriya ikoni (bo'lmasa — null).
+  IconData? get icon => SlideCategory.of(category)?.icon;
+
+  /// Aksent ustidagi matn.
+  Color get onAccent => SlideCategory.of(category) == null
+      ? p.onBrand
+      : (dark ? const Color(0xFF10201C) : Colors.white);
 
   Color get bg => p.bg;
   Color get paper => p.paper;
@@ -115,7 +149,7 @@ class SlideCanvas extends StatelessWidget {
 
   Widget _frame(BuildContext context) {
     if (slide.image != null) return _PictureSlide(slide: slide);
-    final c = SlideColors.of(context);
+    final c = SlideColors.of(context, slide.category);
     if (slide.template == SlideTemplate.title || slide.section) {
       return _TitleSlide(slide: slide, number: number, total: total, colors: c);
     }
@@ -249,7 +283,11 @@ class _TitleSlide extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final base = _base(context);
-    const w = SlideCanvasMetrics.contentW - 120;
+    final img = slide.figure;
+    // Rasm bo'lsa — o'ngda (mavzu bo'limi rasmi yoki deckdagi birinchi rasm).
+    final w = img == null
+        ? SlideCanvasMetrics.contentW - 120
+        : SlideCanvasMetrics.contentW - _TitleImage.w - 56;
     final titleStyle = base.copyWith(
       fontWeight: FontWeight.w700,
       color: Colors.white,
@@ -288,10 +326,24 @@ class _TitleSlide extends StatelessWidget {
             bottom: 0,
             child: Container(width: 14, color: SlideColors.lime),
           ),
+          if (img != null)
+            Positioned(
+              right: SlideCanvasMetrics.padX,
+              top: 104,
+              width: _TitleImage.w,
+              bottom: 104,
+              child: _TitleImage(
+                asset: img,
+                credit: slide.figureCredit,
+                base: base,
+              ),
+            ),
           Positioned(
             left: SlideCanvasMetrics.padX,
             top: 120,
-            right: SlideCanvasMetrics.padX + 120,
+            right: img == null
+                ? SlideCanvasMetrics.padX + 120
+                : SlideCanvasMetrics.padX + _TitleImage.w + 56,
             bottom: 110,
             child: LayoutBuilder(
               builder: (context, box) => _Shrink(
@@ -361,6 +413,17 @@ class _TitleSlide extends StatelessWidget {
               total: total,
               color: SlideColors.pale,
               strong: Colors.white,
+            ),
+          ),
+          Positioned(
+            left: 0,
+            right: 0,
+            bottom: 0,
+            child: _Progress(
+              number: number,
+              total: total,
+              color: SlideColors.lime,
+              track: Colors.white.withValues(alpha: 0.12),
             ),
           ),
         ],
@@ -511,7 +574,18 @@ class _ContentSlide extends StatelessWidget {
             left: 0,
             top: 0,
             bottom: 0,
-            child: Container(width: 10, color: c.brand),
+            child: Container(width: 10, color: c.accent),
+          ),
+          Positioned(
+            left: 0,
+            right: 0,
+            bottom: 0,
+            child: _Progress(
+              number: number,
+              total: total,
+              color: c.accent,
+              track: c.line,
+            ),
           ),
           Positioned(
             right: -90,
@@ -663,6 +737,85 @@ class _ContentSlide extends StatelessWidget {
         );
       case SlideTemplate.figure:
         return _Figure(slide: slide, colors: colors, base: base, w: w, h: h);
+      case SlideTemplate.stats:
+        return _withSide(
+          (w) => _StatsBody(
+            slide: slide,
+            colors: colors,
+            base: base,
+            width: w,
+            maxHeight: h - noteH,
+          ),
+          w,
+          h,
+          withNote,
+          base,
+        );
+      case SlideTemplate.range:
+        return _Shrink(
+          width: w,
+          child: withNote(
+            _RangeBody(
+              range: slide.range!,
+              colors: colors,
+              base: base,
+              width: w,
+              maxHeight: h - noteH,
+            ),
+          ),
+        );
+      case SlideTemplate.steps:
+        return _Shrink(
+          width: w,
+          child: withNote(
+            _StepsBody(
+              slide: slide,
+              colors: colors,
+              base: base,
+              width: w,
+              maxHeight: h - noteH,
+            ),
+          ),
+        );
+      case SlideTemplate.split:
+        return _Shrink(
+          width: w,
+          child: withNote(
+            _SplitBody(
+              slide: slide,
+              colors: colors,
+              base: base,
+              width: w,
+              maxHeight: h - noteH,
+            ),
+          ),
+        );
+      case SlideTemplate.tree:
+        return _Shrink(
+          width: w,
+          child: withNote(
+            _TreeBody(
+              slide: slide,
+              colors: colors,
+              base: base,
+              width: w,
+              maxHeight: h - noteH,
+            ),
+          ),
+        );
+      case SlideTemplate.example:
+        return _Shrink(
+          width: w,
+          child: withNote(
+            _ExampleBody(
+              slide: slide,
+              colors: colors,
+              base: base,
+              width: w,
+              maxHeight: h - noteH,
+            ),
+          ),
+        );
       case SlideTemplate.qa:
         return _Shrink(
           width: w,
@@ -677,19 +830,52 @@ class _ContentSlide extends StatelessWidget {
         );
       case SlideTemplate.title:
       case SlideTemplate.bullets:
-        return _Shrink(
-          width: w,
-          child: withNote(
-            _Bullets(
-              slide: slide,
-              colors: colors,
-              base: base,
-              width: w,
-              maxHeight: h - noteH,
-            ),
+        return _withSide(
+          (w) => _Bullets(
+            slide: slide,
+            colors: colors,
+            base: base,
+            width: w,
+            maxHeight: h - noteH,
           ),
+          w,
+          h,
+          withNote,
+          base,
         );
     }
+  }
+
+  /// Yon rasm (bandli slayd): matn chapda, rasm o'ngda; rasm yo'q bo'lsa —
+  /// butun kenglikdagi matn.
+  Widget _withSide(
+    Widget Function(double w) body,
+    double w,
+    double h,
+    Widget Function(Widget) withNote,
+    TextStyle base,
+  ) {
+    final img = slide.figure;
+    if (img == null) return _Shrink(width: w, child: withNote(body(w)));
+    final tw = w - SlideCanvasMetrics.sideW - SlideCanvasMetrics.sideGap;
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        SizedBox(
+          width: tw,
+          height: h,
+          child: _Shrink(width: tw, child: withNote(body(tw))),
+        ),
+        const SizedBox(width: SlideCanvasMetrics.sideGap),
+        _SideImage(
+          asset: img,
+          credit: slide.figureCredit,
+          colors: colors,
+          base: base,
+          height: h,
+        ),
+      ],
+    );
   }
 
   double _noteHeight(String note, TextStyle base, double w) =>
@@ -708,21 +894,35 @@ class _Chip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Container(
-    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+    padding: EdgeInsets.only(
+      left: colors.icon == null ? 16 : 10,
+      right: 16,
+      top: 6,
+      bottom: 6,
+    ),
     decoration: BoxDecoration(
-      color: colors.soft,
+      color: colors.accentSoft,
       borderRadius: BorderRadius.circular(20),
     ),
-    child: Text(
-      text,
-      maxLines: 1,
-      style: _base(context).copyWith(
-        fontSize: 20,
-        height: 1.2,
-        fontWeight: FontWeight.w700,
-        color: colors.brand,
-        letterSpacing: 0.3,
-      ),
+    child: Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        if (colors.icon case final i?) ...[
+          Icon(i, size: 22, color: colors.accent),
+          const SizedBox(width: 8),
+        ],
+        Text(
+          text,
+          maxLines: 1,
+          style: _base(context).copyWith(
+            fontSize: 20,
+            height: 1.2,
+            fontWeight: FontWeight.w700,
+            color: colors.accent,
+            letterSpacing: 0.3,
+          ),
+        ),
+      ],
     ),
   );
 }
@@ -817,14 +1017,14 @@ class _Bullets extends StatelessWidget {
             text: '${m.group(1)}.  ',
             style: st.copyWith(
               fontWeight: FontWeight.w700,
-              color: colors.brand,
+              color: colors.accent,
             ),
           ),
           TextSpan(text: m.group(2)),
         ],
       );
     }
-    return _richItem(_text(b), _style(s), colors.brand);
+    return _richItem(_text(b), _style(s), colors.accent);
   }
 
   @override
@@ -875,7 +1075,7 @@ class _Bullets extends StatelessWidget {
           height: 44,
           alignment: Alignment.center,
           decoration: BoxDecoration(
-            color: c.brand,
+            color: c.accent,
             borderRadius: BorderRadius.circular(14),
           ),
           child: _numberPlan
@@ -884,10 +1084,10 @@ class _Bullets extends StatelessWidget {
                   style: base.copyWith(
                     fontSize: 22,
                     fontWeight: FontWeight.w700,
-                    color: c.onBrand,
+                    color: c.onAccent,
                   ),
                 )
-              : Icon(Icons.east_rounded, size: 24, color: c.onBrand),
+              : Icon(Icons.east_rounded, size: 24, color: c.onAccent),
         ),
       );
     }
@@ -902,13 +1102,13 @@ class _Bullets extends StatelessWidget {
           width: 36,
           height: 36,
           alignment: Alignment.center,
-          decoration: BoxDecoration(color: c.brand, shape: BoxShape.circle),
+          decoration: BoxDecoration(color: c.accent, shape: BoxShape.circle),
           child: Text(
             m.group(1)!,
             style: base.copyWith(
               fontSize: 18,
               fontWeight: FontWeight.w700,
-              color: c.onBrand,
+              color: c.onAccent,
             ),
           ),
         ),
@@ -920,7 +1120,7 @@ class _Bullets extends StatelessWidget {
         width: 12,
         height: 12,
         decoration: BoxDecoration(
-          color: c.brand,
+          color: c.accent,
           borderRadius: BorderRadius.circular(3),
         ),
       ),

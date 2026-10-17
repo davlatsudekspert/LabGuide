@@ -161,8 +161,22 @@ List<LectureSlide> deckLectureSlides(
           'table' => SlideTemplate.table,
           'figure' => SlideTemplate.figure,
           'qa' => SlideTemplate.qa,
+          'stats' when d.stats.isNotEmpty => SlideTemplate.stats,
+          'range' when d.range != null => SlideTemplate.range,
+          'steps' => SlideTemplate.steps,
+          'split' when d.cols.length == 2 => SlideTemplate.split,
+          'tree' => SlideTemplate.tree,
+          'example' when d.example != null => SlideTemplate.example,
           _ => SlideTemplate.bullets,
         },
+        stats: [
+          for (final st in d.stats)
+            if (st.length >= 2) SlideStat(st[0], st[1]),
+        ],
+        range: _range(d.range),
+        columns: [for (final (h, k, items) in d.cols) SlideColumn(h, k, items)],
+        example: d.example,
+        category: d.category,
         question: d.template == 'qa',
         tableHeader: d.header,
         tableRows: d.rows,
@@ -176,6 +190,35 @@ List<LectureSlide> deckLectureSlides(
         plan: d.plan,
       ),
   ];
+}
+
+/// Deck JSON `range` -> [SlideRange] (noto'g'ri tuzilma — null, oddiy jadval
+/// slaydi ko'rinadi).
+SlideRange? _range(Map<String, Object?>? j) {
+  if (j == null) return null;
+  final rows = <SlideRangeRow>[];
+  for (final r in (j['rows'] as List?) ?? const []) {
+    if (r is! List || r.length < 7) continue;
+    final flags = (r[4] as num?)?.toInt() ?? 0;
+    rows.add(
+      SlideRangeRow(
+        label: r[0] as String? ?? '',
+        sub: r[1] as String?,
+        low: (r[2] as num?)?.toDouble(),
+        high: (r[3] as num?)?.toDouble(),
+        lowExclusive: flags & 1 != 0,
+        highExclusive: flags & 2 != 0,
+        lowText: r[5] as String?,
+        highText: r[6] as String?,
+      ),
+    );
+  }
+  if (rows.isEmpty) return null;
+  return SlideRange(
+    unit: j['u'] as String? ?? '',
+    caption: j['cap'] as String?,
+    rows: rows,
+  );
 }
 
 /// Ma'ruza bo'limi: BARCHA tayyor taqdimotlar (qidiruv va filtr bilan),
@@ -664,20 +707,24 @@ class _LectureScreenState extends State<LectureScreen> {
           boxShadow: [
             BoxShadow(
               color: p.shadow.withValues(alpha: 0.16),
-              blurRadius: 22,
-              offset: const Offset(0, 8),
+              blurRadius: 18,
+              offset: const Offset(0, 4),
             ),
           ],
         ),
-        // Tungi mavzuda karta fon bilan qo'shilib ketmasin — chegara.
+        // Karta foni sahifa foni bilan bir xil — yuqori va chap qirrasi
+        // "kesilgan"dek ko'rinmasin: har ikki mavzuda ingichka chegara.
         position: DecorationPosition.background,
         child: Container(
-          foregroundDecoration: Theme.of(context).brightness == Brightness.dark
-              ? BoxDecoration(
-                  borderRadius: BorderRadius.circular(16),
-                  border: Border.all(color: p.line, width: 1.5),
-                )
-              : null,
+          foregroundDecoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(
+              color: Theme.of(context).brightness == Brightness.dark
+                  ? p.line
+                  : p.outline.withValues(alpha: 0.45),
+              width: 1.5,
+            ),
+          ),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(16),
             child: SlideCanvas(

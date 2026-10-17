@@ -255,7 +255,15 @@ void main() {
         withTopic: true,
       );
       final templates = {for (final s in deck.slides) s.slide.template};
-      expect(templates, SlideTemplate.values.toSet());
+      // Avtomatik taqdimot asosiy 5 shablonni ishlatadi (vizual shablonlar —
+      // faqat eksport qilingan decklarda).
+      expect(templates, {
+        SlideTemplate.title,
+        SlideTemplate.bullets,
+        SlideTemplate.table,
+        SlideTemplate.figure,
+        SlideTemplate.qa,
+      });
       final figure = deck.slides.firstWhere(
         (s) => s.slide.template == SlideTemplate.figure,
       );

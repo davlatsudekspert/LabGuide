@@ -7,9 +7,12 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:labguide/core/storage/kv_store.dart';
+import 'package:labguide/design/theme.dart';
+import 'package:labguide/features/classroom/lecture_canvas.dart';
 import 'package:labguide/features/classroom/lecture_catalog.dart';
 import 'package:labguide/features/classroom/lecture_decks.dart';
 import 'package:labguide/features/classroom/lecture_present.dart';
+import 'package:labguide/features/classroom/lecture_screens.dart';
 import 'package:labguide/features/settings/settings_controller.dart';
 import 'package:labguide/l10n/gen/app_localizations.dart';
 import 'package:material_ui/material_ui.dart';
@@ -89,6 +92,47 @@ Future<void> _tap(WidgetTester tester, Finder f) async {
 }
 
 Finder _canvas(int i) => find.byKey(ValueKey('lecture-canvas-$i'));
+
+/// Vizual shablonlar (D-60): raqam kartalari, chegaralar, qadamlar, ikki
+/// ustun, tasnif, misol.
+const _visualTemplates = [
+  'stats',
+  'range',
+  'steps',
+  'split',
+  'tree',
+  'example',
+];
+
+/// Slayd yangi vizual bilan chiziladimi: yangi shablon, yon rasm yoki
+/// sarlavha rasmi.
+bool _isVisual(DeckSlide s) =>
+    _visualTemplates.contains(s.template) ||
+    (s.figure != null && s.template != 'figure');
+
+/// Slayd matni uzunligi (eng og'ir holatni tanlash uchun).
+int _textLen(DeckSlide s) =>
+    s.title.length +
+    s.bullets.fold<int>(0, (a, b) => a + b.length) +
+    s.cols.fold<int>(
+      0,
+      (a, c) => a + c.$3.fold<int>(0, (x, y) => x + y.length),
+    ) +
+    (s.example?.length ?? 0) +
+    ((s.range?['rows'] as List?)?.length ?? 0) * 60;
+
+/// Tilning barcha decklari (muallif decki d001 — rasmli slaydlar — tashqari).
+Future<List<LectureDeck>> _allDecks(WidgetTester tester, String lang) async {
+  final c = (await tester.runAsync(() => DeckCatalog.load(rootBundle)))!;
+  final out = <LectureDeck>[];
+  await tester.runAsync(() async {
+    for (final e in c.decks) {
+      if (!e.languages.contains(lang) || e.files.containsKey(lang)) continue;
+      out.add(await DeckCatalog.loadDeck(rootBundle, e, lang));
+    }
+  });
+  return out;
+}
 
 void main() {
   setUpAll(loadAppFonts);
@@ -416,6 +460,167 @@ void main() {
     expect(_canvas(0), findsOneWidget);
     await _tap(tester, find.byTooltip(l.lectureNext));
     expect(find.text(l.lectureCounter(2, n)), findsOneWidget);
+    expect(tester.takeException(), isNull);
+  });
+
+  // Har deckdagi har vizual slayd (yangi shablonlar, yon rasm, sarlavha
+  // rasmi) to'liq ekran o'lchamida — 1280×720 — overflow'siz: uz/ru/en,
+  // kunduzgi/tungi. Kanvas har doim 1280×720 da joylashib, keyin teng
+  // masshtablanadi, shuning uchun 320 px kartada ham joylashuv aynan shu.
+  for (final lang in AppLanguage.values) {
+    for (final b in Brightness.values) {
+      testWidgets('vizual shablonlar 1280×720 (${lang.name}, ${b.name})', (
+        tester,
+      ) async {
+        final decks = await _allDecks(tester, lang.name);
+        tester.view.devicePixelRatio = 1;
+        tester.view.physicalSize = const Size(1280, 720);
+        addTearDown(tester.view.reset);
+        final at = ValueNotifier<(int, int)>((0, 0));
+        await tester.pumpWidget(
+          MaterialApp(
+            theme: buildLgTheme(b),
+            locale: lang.locale,
+            supportedLocales: AppLocalizations.supportedLocales,
+            localizationsDelegates: const [
+              AppLocalizations.delegate,
+              ...GlobalMaterialLocalizations.delegates,
+            ],
+            home: ValueListenableBuilder<(int, int)>(
+              valueListenable: at,
+              builder: (context, v, _) {
+                final d = decks[v.$1];
+                final slides = deckLectureSlides(context, d);
+                return Center(
+                  child: SizedBox(
+                    width: 1280,
+                    height: 720,
+                    child: SlideCanvas(
+                      key: ValueKey('vis-${v.$1}-${v.$2}'),
+                      slide: slides[v.$2],
+                      number: v.$2 + 1,
+                      total: slides.length,
+                      deckTitle: d.title,
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
+        );
+        final seen = <String, int>{};
+        for (final (di, d) in decks.indexed) {
+          for (final (si, s) in d.slides.indexed) {
+            if (!_isVisual(s)) continue;
+            at.value = (di, si);
+            await tester.pump();
+            final key =
+                s.figure != null && !_visualTemplates.contains(s.template)
+                ? '${s.template}+figure'
+                : s.template;
+            seen[key] = (seen[key] ?? 0) + 1;
+            expect(
+              tester.takeException(),
+              isNull,
+              reason: '${d.id}.${lang.name}#$si ${s.template} ${s.title}',
+            );
+          }
+        }
+        // Har yangi shablon kamida bir marta chizildi.
+        for (final t in _visualTemplates) {
+          expect(seen[t] ?? 0, greaterThan(0), reason: '$t: $seen');
+        }
+        expect(seen['title+figure'] ?? 0, greaterThan(50), reason: '$seen');
+        expect(seen['bullets+figure'] ?? 0, greaterThan(10), reason: '$seen');
+      });
+    }
+  }
+
+  // Tik telefon kartasi (320 px, ×1.3 shrift): har yangi shablonning eng uzun
+  // matnli slaydi ilova ichida — overflow'siz, karta 16:9 va ekranga sig'adi.
+  for (final lang in AppLanguage.values) {
+    for (final theme in [ThemeMode.light, ThemeMode.dark]) {
+      testWidgets('vizual shablonlar 320 px (${lang.name}, ${theme.name})', (
+        tester,
+      ) async {
+        final decks = await _allDecks(tester, lang.name);
+        final picks = <String, (String, int)>{};
+        final best = <String, int>{};
+        for (final d in decks) {
+          for (final (i, s) in d.slides.indexed) {
+            if (!_isVisual(s)) continue;
+            final k = _visualTemplates.contains(s.template)
+                ? s.template
+                : '${s.template}+figure';
+            final n = _textLen(s);
+            if (n > (best[k] ?? -1)) {
+              best[k] = n;
+              picks[k] = (d.id!, i);
+            }
+          }
+        }
+        expect(picks.keys, containsAll(_visualTemplates));
+        await _open(
+          tester,
+          '/learn/lecture',
+          lang: lang,
+          size: const Size(320, 640),
+          textScale: 1.3,
+          theme: theme,
+        );
+        for (final MapEntry(key: t, value: (id, k)) in picks.entries) {
+          await goTo(tester, '/learn/lecture');
+          await goTo(tester, '/learn/lecture/deck/$id?s=$k');
+          expect(_canvas(k), findsOneWidget, reason: '$t $id#$k');
+          final r = tester.getRect(_canvas(k));
+          expect(r.left, greaterThanOrEqualTo(-0.5), reason: '$t $id#$k');
+          expect(r.right, lessThanOrEqualTo(320.5), reason: '$t $id#$k');
+          expect(r.width / r.height, closeTo(16 / 9, 0.02));
+          expect(tester.takeException(), isNull, reason: '$t $id#$k');
+        }
+      });
+    }
+  }
+
+  testWidgets('raqam kartasi va chegaralar: matn bandlardan, sonlar kartadan', (
+    tester,
+  ) async {
+    final decks = await _allDecks(tester, 'uz');
+    // stats: kartadagi qiymat va yorliq — bandlar matnining bo'lagi
+    var n = 0;
+    for (final d in decks) {
+      for (final s in d.slides) {
+        if (s.template != 'stats') continue;
+        final text = s.bullets.join('\n');
+        for (final st in s.stats) {
+          expect(text, contains(st[0]));
+          expect(text, contains(st[1]));
+          n++;
+        }
+      }
+    }
+    expect(n, greaterThan(50));
+    // range: d045 (glyukoza) — kanvasda diagramma va kartadagi qiymatlar
+    final d = decks.firstWhere(
+      (d) => d.slides.any((s) => s.template == 'range'),
+    );
+    final k = d.slides.indexWhere((s) => s.template == 'range');
+    await _open(
+      tester,
+      '/learn/lecture/deck/${d.id}?s=$k',
+      size: const Size(1280, 800),
+    );
+    expect(_canvas(k), findsOneWidget);
+    final rows = d.slides[k].range!['rows']! as List;
+    for (final r in rows.cast<List<Object?>>()) {
+      for (final t in [r[5], r[6]].whereType<String>()) {
+        expect(
+          find.descendant(of: _canvas(k), matching: find.textContaining(t)),
+          findsWidgets,
+          reason: t,
+        );
+      }
+    }
     expect(tester.takeException(), isNull);
   });
 

@@ -4,7 +4,7 @@ Avtomatik: `python3 tool/slides/make_topic_decks.py --all --dry-run --report doc
 
 **Ilova ichida:** shu mazmunning hammasi (98 kun mavzusi + amaliy protokollar, uz/ru/en) ilovaning Ma’ruza bo‘limida qidiruv bilan mavjud: `python3 tool/slides/export_app_decks.py` `assets/lectures/decks/` va `assets/lectures/index_v2.json` ni qayta yozadi (kontent o‘zgarganda ishga tushiring; `--check` dolzarbligini tekshiradi). PPTX fayllar repoga qo‘shilmaydi.
 
-Tillar: uz, ru, en. Bitta deck = bitta o‘quv kuni (amaliy + ma’ruza bir xil havolalarga ega, `dNNN-P` va `dNNN-L` bitta fayl). Kunlar: 143; deck: 98; kontentsiz (deck yo‘q): 45.
+Tillar: uz. Bitta deck = bitta o‘quv kuni (amaliy + ma’ruza bir xil havolalarga ega, `dNNN-P` va `dNNN-L` bitta fayl). Kunlar: 143; deck: 98; kontentsiz (deck yo‘q): 45.
 
 ## Rasm va jadvallarni mavzuga bog‘lash qoidasi
 
@@ -22,104 +22,104 @@ Tillar: uz, ru, en. Bitta deck = bitta o‘quv kuni (amaliy + ma’ruza bir xil 
 
 | Kun | Mavzu (uz) | Slayd (PPTX, uz; ~ — taxminiy) | Kontent | Yetishmaydi |
 |---|---|---|---|---|
-| d001 | Laborator xizmatni tashkillashtirish. Tibbiy etika va deontologiya. Ma | 22 | kitob 6, Q&A 0+0+3 | curriculum: gap bayrog‘i (havolalar yetarli emas) |
-| d002 | O‘zbekistonda klinik biokimyoviy laboratoriyalarni rivojlantirishning  | 29 | me’yor qatori 2, kitob 3, Q&A 0+6+3 | curriculum: gap bayrog‘i (havolalar yetarli emas) |
-| d003 | Laboratoriya ichida va laboratoriyalar oro o‘tkaziladigan sifat nazora | 30 | me’yor qatori 2, kitob 4, Q&A 0+6+3 | — |
-| d004 | Attestatsiya 1. Laborator xizmatni tashkillashtirish. Tibbiy etika va  | 28 | me’yor qatori 2, kitob 2, Q&A 0+6+3 | — |
-| d005 | Odam ichki a’zolari tuzilishi va vazifalari. To‘qimalar klassifikatsiy | 13 | kitob 5 | curriculum: gap bayrog‘i (havolalar yetarli emas) |
-| d006 | Biriktiruvchi to‘qimaning morfofunksional xarakteristikasi | 6 | kitob 2 | curriculum: gap bayrog‘i (havolalar yetarli emas) |
-| d007 | Jigar kasalliklarining laborator ko‘rsatkichlari | 92 | analit 7, holat 4, jadval 2, me’yor qatori 2, Q&A 6+6+3 | — |
-| d008 | Buyrak va siydik yo‘llari kasalliklarining laborator ko‘rsatkichlari | 103 | analit 7, holat 3, me’yor qatori 10, Q&A 6+6+3 | — |
-| d009 | Attestatsiya 2. Odam ichki a’zolari tuzilishi va vazifalari modulidan | 29 | me’yor qatori 10, kitob 2, Q&A 0+6+3 | — |
-| d010 | Qon ishlab chiqarishning zamonaviy nazariyasi. Eritropoez, leykopoez,  | 37 | analit 1, me’yor qatori 10, kitob 5, Q&A 3+1+3 | curriculum: gap bayrog‘i (havolalar yetarli emas) |
-| d011 | Qon shaklli elementlari sonini sanash. Gemoglobinni aniqlash | 77 | analit 5, jadval 1, me’yor qatori 16, Q&A 6+6+3 | — |
-| d012 | Leykositar formula uchun material olish va ularni sanash. Mieloid, lim | 107 | analit 7, hujayra 12, foto 8, me’yor qatori 9, Q&A 6+6+3 | — |
-| d013 | Anemiyalar. Klassifikatsiyasi, etiologiyasi va patogenezi | 90 | analit 7, holat 1, jadval 1, me’yor qatori 12, Q&A 6+5+3 | — |
-| d014 | Temir tanqisligi bilan kechadigan anemiyalar. Suyak ko‘migi va perifer | 97 | analit 6, holat 1, jadval 1, foto 8, me’yor qatori 9, Q&A 6+6+3 | — |
-| d015 | Vit. B-12 yetishmasligi bilan bog‘liq kamqonliklar. Suyak ko‘migi va p | 77 | analit 5, holat 1, jadval 1, hujayra 1, me’yor qatori 4, Q&A 5+6+3 | — |
-| d016 | Gemolitik kamqonliklar. Klinik-laborator ko‘rsatkichlari. Suyak ko‘mig | 75 | analit 5, holat 2, jadval 1, me’yor qatori 2, Q&A 6+4+3 | — |
-| d017 | Leykozlar, etiologiyasi, patogenezi va klassifikatsiya | 43 | analit 2, hujayra 1, me’yor qatori 3, kitob 3, Q&A 3+6+3 | curriculum: gap bayrog‘i (havolalar yetarli emas) |
-| d018 | O‘tkir leykozlar. O‘tkir leykozlarda suyak ko‘migi va periferik qon ko | 34 | analit 1, hujayra 1, me’yor qatori 3, kitob 2, Q&A 1+6+3 | curriculum: gap bayrog‘i (havolalar yetarli emas) |
-| d019 | Surunkali leykozlar. Suyak ko‘migi va periferik qon ko‘rinishi | 28 | me’yor qatori 3, kitob 3, Q&A 0+6+3 | curriculum: gap bayrog‘i (havolalar yetarli emas) |
-| d020 | Surunkali mieloleykoz. Suyak ko‘migi va periferik qon ko‘rinishi | 10 | kitob 2, Q&A 0+1+1 | curriculum: gap bayrog‘i (havolalar yetarli emas) |
-| d021 | Surunkali limfoleykoz. Suyak ko‘migi va periferik qon ko‘rinishi | 30 | analit 1, hujayra 8, me’yor qatori 1, Q&A 2+1+1 | curriculum: gap bayrog‘i (havolalar yetarli emas) |
-| d022 | Mielom kasalligida suyak ko‘migi va periferik qon ko‘rinishi | 29 | analit 2, me’yor qatori 1, Q&A 4+3+1 | curriculum: gap bayrog‘i (havolalar yetarli emas) |
-| d023 | Attestatsiya 3. Gematologik tekshiruv usullari modulidan | 44 | analit 1, me’yor qatori 27, Q&A 2+6+3 | — |
-| d024 | Oshqozon va o‘t suyuqligini mikroskopik tekshirish kasalliklarining kl | 24 | analit 1, Q&A 1+6+1 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q; curriculum: gap bayrog‘i (havolalar yetarli emas) |
-| d025 | Najasni mikroskopik tekshirish. Klinik diagnostik ahamiyati | 64 | analit 4, jadval 1, me’yor qatori 2, Q&A 3+6+3 | — |
-| d026 | Najasni mikroskopik tekshirish. Klinik diagnostik ahamiyati (2-kun) | 57 | analit 3, jadval 1, me’yor qatori 2, Q&A 2+6+3 | — |
-| d027 | Siydikni tekshirish. Klinik diagnostik ahamiyati | 88 | analit 5, foto 14, me’yor qatori 9, Q&A 6+6+3 | — |
-| d028 | Siydikni tekshirish. Klinik diagnostik ahamiyati (2-kun) | 88 | analit 5, foto 14, me’yor qatori 9, Q&A 6+6+3 | — |
-| d029 | Bronxial astma, pnevmoniya, bronxit va boshqa nafas yo‘llari kasallikl | 38 | analit 2, me’yor qatori 1, Q&A 2+6+3 | — |
-| d030 | Sil kasalligida balg‘amni tekshirish va uning klinik diagnostik ahamiy | 38 | analit 2, me’yor qatori 1, Q&A 2+6+3 | — |
-| d031 | Sil kasalligida balg‘amni tekshirish va uning klinik diagnostik ahamiy | 38 | analit 2, me’yor qatori 1, Q&A 2+6+3 | — |
-| d032 | Transsudat va ekssudatlarni tekshirishning klinik diagnostikasi | 29 | analit 2, me’yor qatori 1, kitob 4, Q&A 1+1+2 | — |
-| d033 | Xar xil kasalliklarda orqa miya suyuqligini laborator ko‘rsatkichlari | 22 | analit 1, kitob 4, Q&A 1+1+1 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q |
-| d034 | Attestatsiya 4. Umumklinik tekshiruv usullari modulidan | 48 | analit 2, me’yor qatori 10, Q&A 2+6+3 | — |
-| d035 | Sitologik tekshiruv usullari. Ayollar jinsiy a’zolari ajralmalarini mi | 73 | analit 3, sitologiya 13, me’yor qatori 3, Q&A 4+6+3 | — |
-| d036 | O‘smalar. O‘sma markerlari haqida umumiy ma’lumotlar. Yomon sifatli o‘ | 59 | analit 5, Q&A 4+6+3 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q |
-| d037 | Bachadon bo‘yinchasi va bachadon yomon sifatli o‘smalarining sitodiagn | 51 | analit 2, sitologiya 7, me’yor qatori 1, Q&A 2+6+3 | — |
-| d038 | Nafas organlari o‘smalari sitodiagnostikasi | 27 | analit 1, kitob 2, Q&A 2+3+1 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q; curriculum: gap bayrog‘i (havolalar yetarli emas) |
-| d039 | Attestatsiya 5. Sitologik tekshiruv usullari modulidan | 51 | analit 2, sitologiya 7, me’yor qatori 3, Q&A 2+6+3 | — |
-| d040 | Klinik biokimyodan umumiy masalalar. Fizik-kimyoviy va kimyoviy usulla | 13 | kitob 4, Q&A 0+0+1 | curriculum: gap bayrog‘i (havolalar yetarli emas) |
-| d041 | Mindray BA-88A bioximik yarim avtomat analizator ishlash prinsiplari.  | 24 | kitob 2, Q&A 0+6+3 | — |
-| d042 | Aminokislotalar klassifikatsiyasi. Oddiy va murakkab oqsillar | 41 | analit 2, me’yor qatori 6, Q&A 4+6+3 | — |
-| d043 | Pigmentlar almashinuvi. Bilirubin hosil bo‘lishi | 53 | analit 2, holat 1, jadval 1, me’yor qatori 2, Q&A 5+6+3 | — |
-| d044 | Uglevodlar, klassifikatsiyasi, biologik ahamiyati. Uglevodlarni oshqoz | 40 | analit 1, me’yor qatori 5, kitob 6, Q&A 0+6+3 | — |
-| d045 | Qandli diabet diagnostikasi | 83 | analit 6, holat 3, me’yor qatori 10, Q&A 6+6+3 | — |
-| d046 | Yog‘larning tuzilishi, klassifikatsiyasi va biologik roli | 74 | analit 6, holat 1, me’yor qatori 6, Q&A 6+6+3 | — |
-| d047 | Suv-tuz almashinuvi va uning buzilishi | 69 | analit 6, me’yor qatori 7, kitob 3, Q&A 6+6+3 | — |
-| d048 | Fermentlar, tuzilishi, klassifikatsiyasi | 72 | analit 8, me’yor qatori 1, Q&A 6+6+3 | — |
-| d049 | Jigar fermentlarini tekshirish | 65 | analit 4, holat 2, jadval 1, Q&A 6+6+3 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q |
-| d050 | Laktatdegidrogenaza, ishqoriy fosfataza fermentlarini tekshirish | 39 | analit 2, Q&A 5+6+1 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q |
-| d051 | Vitaminlar. Vitamin B12 va D larni tekshirishning klinik diagnostik ah | 60 | analit 3, holat 2, hujayra 1, me’yor qatori 1, kitob 2, Q&A 4+6+1 | — |
-| d052 | Vitaminlar. Vitamin B12 va D larni tekshirishning klinik diagnostik ah | 57 | analit 3, holat 2, hujayra 1, me’yor qatori 1, Q&A 4+6+1 | — |
-| d053 | Attestatsiya 6. Klinik biokimyodan umumiy masalalar modulidan | 31 | me’yor qatori 10, kitob 2, Q&A 0+6+3 | — |
-| d054 | Klinik biokimyo va biokimyoviy tekshiruv usullari. Umumiy oqsilni va a | 41 | analit 2, me’yor qatori 6, Q&A 4+6+3 | — |
-| d055 | Azotemiyalar. Klinik diagnostik ahamiyati | 66 | analit 4, holat 1, me’yor qatori 3, Q&A 6+6+3 | — |
-| d056 | Mochevinani aniqlash usullari. Klinik diagnostik ahamiyati | 31 | analit 1, me’yor qatori 2, Q&A 2+6+3 | — |
-| d057 | Kreatininni aniqlash usullari. Klinik diagnostik ahamiyati | 39 | analit 2, me’yor qatori 3, Q&A 4+3+2 | — |
-| d058 | Bilirubinni aniqlash usullari. Klinik diagnostik ahamiyati | 53 | analit 2, holat 1, jadval 1, me’yor qatori 2, Q&A 5+6+3 | — |
-| d059 | Glyukozani aniqlash usullari. Glyukoza tolerant testi. Klinik diagnost | 49 | analit 2, holat 2, me’yor qatori 6, Q&A 2+6+3 | — |
-| d060 | Glikozirlangan gemoglobinni aniqlash. Klinik diagnostik ahamiyati | 34 | analit 2, me’yor qatori 3, Q&A 4+2+3 | — |
-| d061 | Transaminazalar, amilazani aniqlash usullari. Klinik diagnostik ahamiy | 57 | analit 4, holat 1, me’yor qatori 2, Q&A 6+6+3 | — |
-| d062 | Ishqoriy fosfataza, γ-GT fermentlarini aniqlash usullari. Tekshirishni | 43 | analit 2, holat 1, Q&A 5+6+2 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q |
-| d063 | Kislota-asos muvozanati. Bufer sistemasi | 30 | me’yor qatori 7, kitob 3, Q&A 0+6+3 | curriculum: gap bayrog‘i (havolalar yetarli emas) |
-| d064 | Kislota-asos muvozanati. Bufer sistemasi (2-kun) | 32 | me’yor qatori 7, kitob 4, Q&A 0+6+3 | curriculum: gap bayrog‘i (havolalar yetarli emas) |
-| d065 | Umumiy xolesterinni aniqlash. Klinik diagnostik ahamiyati | 62 | analit 4, holat 1, me’yor qatori 5, Q&A 6+6+3 | — |
-| d066 | Triglitseridlarni aniqlash usullari. Klinik diagnostik ahamiyati | 42 | analit 2, holat 2, me’yor qatori 2, Q&A 4+6+1 | — |
-| d067 | Natriy, kaliy, kaltsiyni aniqlash usullari. Klinik diagnostik ahamiyat | 55 | analit 3, holat 1, me’yor qatori 7, Q&A 6+5+3 | — |
-| d068 | Temirni aniqlash usullari. Klinik diagnostik ahamiyati | 60 | analit 3, holat 2, me’yor qatori 9, Q&A 2+6+3 | — |
-| d069 | O‘tkir faza oqsillari | 57 | analit 4, me’yor qatori 4, Q&A 5+4+3 | — |
-| d070 | SRB, RF, ASLO aniqlash. Klinik diagnostik ahamiyati | 41 | analit 4, holat 1, me’yor qatori 1, Q&A 4+1+1 | — |
-| d071 | Miokard infarkti biokimyoviy markerlari va xavf omillari | 69 | analit 5, holat 3, me’yor qatori 1, Q&A 6+6+2 | — |
-| d072 | Podagra kasalligining laborator diagnostikasi. Siydik kislotasini aniq | 29 | analit 1, holat 1, Q&A 2+6+1 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q |
-| d073 | Gemostazning zamonaviy tasavvuri | 89 | analit 7, holat 2, me’yor qatori 3, Q&A 6+6+3 | — |
-| d074 | Attestatsiya 7. Klinik biokimyo va biokimyoviy tekshirish usullari mod | 51 | analit 3, me’yor qatori 9, Q&A 4+6+3 | — |
-| d075 | Turli kasalliklar laborator diagnostikasi. Qonning tomir ichida ivib q | 71 | analit 5, holat 1, me’yor qatori 1, Q&A 6+5+2 | — |
-| d076 | Allergik kasalliklar laborator diagnostikasi | 33 | analit 1, hujayra 7, me’yor qatori 4, Q&A 2+3+2 | curriculum: gap bayrog‘i (havolalar yetarli emas) |
-| d077 | Jinsiy yo‘l bilan yuqadigan infeksiyalar laborator diagnostikasi. Vass | 58 | analit 3, holat 1, sitologiya 8, Q&A 3+2+3 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q |
-| d078 | Bezgak kasalligining laborator diagnostikasi | 24 | analit 1, foto 2, me’yor qatori 1, kitob 3, Q&A 1+1+3 | — |
-| d079 | OIV infeksiyasi. Klinik laborator tekshiruv usullari. Klinik diagnosti | 30 | analit 1, holat 1, me’yor qatori 5, Q&A 1+3+3 | — |
-| d080 | Parazitar kasalliklar laborator diagnostikasi. Dumaloq gijjalar labora | 40 | analit 2, jadval 1, Q&A 2+2+3 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q |
-| d081 | Lentasimon gijjalar laborator diagnostikasi. Klinik diagnostik ahamiya | 38 | analit 1, jadval 1, kitob 4, Q&A 1+1+2 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q |
-| d082 | So‘ruvchi gijjalar laborator diagnostikasi. Klinik diagnostik ahamiyat | 38 | analit 1, jadval 1, Q&A 1+6+2 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q |
-| d083 | TORCH infeksiyalar laborator diagnostikasi. Klinik diagnostik ahamiyat | 26 | holat 1, kitob 3, Q&A 0+3+3 | curriculum: gap bayrog‘i (havolalar yetarli emas) |
-| d084 | Klinik laborator diagnostikada gematologik analizatorlar | 52 | analit 4, me’yor qatori 14, Q&A 6+1+3 | — |
-| d085 | Klinik laborator diagnostikada ECHT analizatorlar | 22 | kitob 1, Q&A 0+6+3 | curriculum: gap bayrog‘i (havolalar yetarli emas) |
-| d086 | Klinik laborator diagnostikada bioximik analizatorlar | 24 | kitob 2, Q&A 0+6+3 | — |
-| d087 | Klinik laborator diagnostikada urino analizatorlar | 37 | analit 1, Q&A 2+6+3 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q |
-| d088 | Klinik laborator diagnostikada koagulometrik analizatorlar | 41 | analit 3, Q&A 6+0+3 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q |
-| d089 | Attestatsiya 8. Turli kasalliklar laborator diagnostikasi modulidan | 37 | analit 2, me’yor qatori 5, Q&A 2+3+3 | — |
-| d090 | Umumiy qon tahlilini amaliyotda o‘zlashtirish | 84 | analit 6, jadval 1, me’yor qatori 20, Q&A 6+6+3 | — |
-| d095 | Leykositar formulani amaliyotda o‘zlashtirish | 90 | analit 5, hujayra 12, foto 8, me’yor qatori 9, Q&A 6+3+2 | — |
-| d101 | Umumiy siydik tahlilini amaliyotda o‘zlashtirish | 64 | analit 2, foto 14, me’yor qatori 9, Q&A 4+5+3 | — |
-| d106 | Umumiy balg‘am tahlilini amaliyotda o‘zlashtirish | 38 | analit 2, me’yor qatori 1, Q&A 2+6+3 | — |
-| d112 | Umumiy axlat (najas) tahlilini amaliyotda o‘zlashtirish | 57 | analit 3, jadval 1, me’yor qatori 2, Q&A 2+6+3 | — |
-| d116 | Mindray BA-88A bioximik yarim avtomat analizator ishlash prinsiplari.  | 24 | kitob 2, Q&A 0+6+3 | — |
-| d121 | Laktatdegidrogenaza, ishqoriy fosfataza fermentlar tekshiruvini amaliy | 39 | analit 2, Q&A 5+6+1 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q |
-| d127 | SRB, RF, ASLO lar tekshiruvini amaliyotda o‘zlashtirish | 34 | analit 3, me’yor qatori 1, Q&A 3+3+1 | — |
-| d143 | Attestatsiya. Laborator tekshiruv usullarini amaliyotda o‘zlashtirish  | 27 | me’yor qatori 2, kitob 2, Q&A 0+6+3 | — |
+| d001 | Laborator xizmatni tashkillashtirish. Tibbiy etika va deontologiya. Ma | ~12 | kitob 6, Q&A 0+0+3 | curriculum: gap bayrog‘i (havolalar yetarli emas) |
+| d002 | O‘zbekistonda klinik biokimyoviy laboratoriyalarni rivojlantirishning  | ~22 | me’yor qatori 2, kitob 3, Q&A 0+6+3 | curriculum: gap bayrog‘i (havolalar yetarli emas) |
+| d003 | Laboratoriya ichida va laboratoriyalar oro o‘tkaziladigan sifat nazora | ~23 | me’yor qatori 2, kitob 4, Q&A 0+6+3 | — |
+| d004 | Attestatsiya 1. Laborator xizmatni tashkillashtirish. Tibbiy etika va  | ~21 | me’yor qatori 2, kitob 2, Q&A 0+6+3 | — |
+| d005 | Odam ichki a’zolari tuzilishi va vazifalari. To‘qimalar klassifikatsiy | ~11 | kitob 5 | curriculum: gap bayrog‘i (havolalar yetarli emas) |
+| d006 | Biriktiruvchi to‘qimaning morfofunksional xarakteristikasi | ~9 | kitob 2 | curriculum: gap bayrog‘i (havolalar yetarli emas) |
+| d007 | Jigar kasalliklarining laborator ko‘rsatkichlari | ~75 | analit 7, holat 4, jadval 2, me’yor qatori 2, Q&A 6+6+3 | — |
+| d008 | Buyrak va siydik yo‘llari kasalliklarining laborator ko‘rsatkichlari | ~65 | analit 7, holat 3, me’yor qatori 10, Q&A 6+6+3 | — |
+| d009 | Attestatsiya 2. Odam ichki a’zolari tuzilishi va vazifalari modulidan | ~21 | me’yor qatori 10, kitob 2, Q&A 0+6+3 | — |
+| d010 | Qon ishlab chiqarishning zamonaviy nazariyasi. Eritropoez, leykopoez,  | ~25 | analit 1, me’yor qatori 10, kitob 5, Q&A 3+1+3 | curriculum: gap bayrog‘i (havolalar yetarli emas) |
+| d011 | Qon shaklli elementlari sonini sanash. Gemoglobinni aniqlash | ~54 | analit 5, jadval 1, me’yor qatori 16, Q&A 6+6+3 | — |
+| d012 | Leykositar formula uchun material olish va ularni sanash. Mieloid, lim | ~92 | analit 7, hujayra 12, foto 8, me’yor qatori 9, Q&A 6+6+3 | — |
+| d013 | Anemiyalar. Klassifikatsiyasi, etiologiyasi va patogenezi | ~64 | analit 7, holat 1, jadval 1, me’yor qatori 12, Q&A 6+5+3 | — |
+| d014 | Temir tanqisligi bilan kechadigan anemiyalar. Suyak ko‘migi va perifer | ~68 | analit 6, holat 1, jadval 1, foto 8, me’yor qatori 9, Q&A 6+6+3 | — |
+| d015 | Vit. B-12 yetishmasligi bilan bog‘liq kamqonliklar. Suyak ko‘migi va p | ~60 | analit 5, holat 1, jadval 1, hujayra 1, me’yor qatori 4, Q&A 5+6+3 | — |
+| d016 | Gemolitik kamqonliklar. Klinik-laborator ko‘rsatkichlari. Suyak ko‘mig | ~57 | analit 5, holat 2, jadval 1, me’yor qatori 2, Q&A 6+4+3 | — |
+| d017 | Leykozlar, etiologiyasi, patogenezi va klassifikatsiya | ~36 | analit 2, hujayra 1, me’yor qatori 3, kitob 3, Q&A 3+6+3 | curriculum: gap bayrog‘i (havolalar yetarli emas) |
+| d018 | O‘tkir leykozlar. O‘tkir leykozlarda suyak ko‘migi va periferik qon ko | ~28 | analit 1, hujayra 1, me’yor qatori 3, kitob 2, Q&A 1+6+3 | curriculum: gap bayrog‘i (havolalar yetarli emas) |
+| d019 | Surunkali leykozlar. Suyak ko‘migi va periferik qon ko‘rinishi | ~22 | me’yor qatori 3, kitob 3, Q&A 0+6+3 | curriculum: gap bayrog‘i (havolalar yetarli emas) |
+| d020 | Surunkali mieloleykoz. Suyak ko‘migi va periferik qon ko‘rinishi | ~8 | kitob 2, Q&A 0+1+1 | curriculum: gap bayrog‘i (havolalar yetarli emas) |
+| d021 | Surunkali limfoleykoz. Suyak ko‘migi va periferik qon ko‘rinishi | ~26 | analit 1, hujayra 8, me’yor qatori 1, Q&A 2+1+1 | curriculum: gap bayrog‘i (havolalar yetarli emas) |
+| d022 | Mielom kasalligida suyak ko‘migi va periferik qon ko‘rinishi | ~26 | analit 2, me’yor qatori 1, Q&A 4+3+1 | curriculum: gap bayrog‘i (havolalar yetarli emas) |
+| d023 | Attestatsiya 3. Gematologik tekshiruv usullari modulidan | ~27 | analit 1, me’yor qatori 27, Q&A 2+6+3 | — |
+| d024 | Oshqozon va o‘t suyuqligini mikroskopik tekshirish kasalliklarining kl | ~21 | analit 1, Q&A 1+6+1 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q; curriculum: gap bayrog‘i (havolalar yetarli emas) |
+| d025 | Najasni mikroskopik tekshirish. Klinik diagnostik ahamiyati | ~44 | analit 4, jadval 1, me’yor qatori 2, Q&A 3+6+3 | — |
+| d026 | Najasni mikroskopik tekshirish. Klinik diagnostik ahamiyati (2-kun) | ~39 | analit 3, jadval 1, me’yor qatori 2, Q&A 2+6+3 | — |
+| d027 | Siydikni tekshirish. Klinik diagnostik ahamiyati | ~55 | analit 5, foto 14, me’yor qatori 9, Q&A 6+6+3 | — |
+| d028 | Siydikni tekshirish. Klinik diagnostik ahamiyati (2-kun) | ~55 | analit 5, foto 14, me’yor qatori 9, Q&A 6+6+3 | — |
+| d029 | Bronxial astma, pnevmoniya, bronxit va boshqa nafas yo‘llari kasallikl | ~29 | analit 2, me’yor qatori 1, Q&A 2+6+3 | — |
+| d030 | Sil kasalligida balg‘amni tekshirish va uning klinik diagnostik ahamiy | ~29 | analit 2, me’yor qatori 1, Q&A 2+6+3 | — |
+| d031 | Sil kasalligida balg‘amni tekshirish va uning klinik diagnostik ahamiy | ~29 | analit 2, me’yor qatori 1, Q&A 2+6+3 | — |
+| d032 | Transsudat va ekssudatlarni tekshirishning klinik diagnostikasi | ~20 | analit 2, me’yor qatori 1, kitob 4, Q&A 1+1+2 | — |
+| d033 | Xar xil kasalliklarda orqa miya suyuqligini laborator ko‘rsatkichlari | ~15 | analit 1, kitob 4, Q&A 1+1+1 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q |
+| d034 | Attestatsiya 4. Umumklinik tekshiruv usullari modulidan | ~29 | analit 2, me’yor qatori 10, Q&A 2+6+3 | — |
+| d035 | Sitologik tekshiruv usullari. Ayollar jinsiy a’zolari ajralmalarini mi | ~51 | analit 3, sitologiya 13, me’yor qatori 3, Q&A 4+6+3 | — |
+| d036 | O‘smalar. O‘sma markerlari haqida umumiy ma’lumotlar. Yomon sifatli o‘ | ~41 | analit 5, Q&A 4+6+3 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q |
+| d037 | Bachadon bo‘yinchasi va bachadon yomon sifatli o‘smalarining sitodiagn | ~37 | analit 2, sitologiya 7, me’yor qatori 1, Q&A 2+6+3 | — |
+| d038 | Nafas organlari o‘smalari sitodiagnostikasi | ~19 | analit 1, kitob 2, Q&A 2+3+1 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q; curriculum: gap bayrog‘i (havolalar yetarli emas) |
+| d039 | Attestatsiya 5. Sitologik tekshiruv usullari modulidan | ~37 | analit 2, sitologiya 7, me’yor qatori 3, Q&A 2+6+3 | — |
+| d040 | Klinik biokimyodan umumiy masalalar. Fizik-kimyoviy va kimyoviy usulla | ~8 | kitob 4, Q&A 0+0+1 | curriculum: gap bayrog‘i (havolalar yetarli emas) |
+| d041 | Mindray BA-88A bioximik yarim avtomat analizator ishlash prinsiplari.  | ~20 | kitob 2, Q&A 0+6+3 | — |
+| d042 | Aminokislotalar klassifikatsiyasi. Oddiy va murakkab oqsillar | ~34 | analit 2, me’yor qatori 6, Q&A 4+6+3 | — |
+| d043 | Pigmentlar almashinuvi. Bilirubin hosil bo‘lishi | ~43 | analit 2, holat 1, jadval 1, me’yor qatori 2, Q&A 5+6+3 | — |
+| d044 | Uglevodlar, klassifikatsiyasi, biologik ahamiyati. Uglevodlarni oshqoz | ~29 | analit 1, me’yor qatori 5, kitob 6, Q&A 0+6+3 | — |
+| d045 | Qandli diabet diagnostikasi | ~63 | analit 6, holat 3, me’yor qatori 10, Q&A 6+6+3 | — |
+| d046 | Yog‘larning tuzilishi, klassifikatsiyasi va biologik roli | ~54 | analit 6, holat 1, me’yor qatori 6, Q&A 6+6+3 | — |
+| d047 | Suv-tuz almashinuvi va uning buzilishi | ~52 | analit 6, me’yor qatori 7, kitob 3, Q&A 6+6+3 | — |
+| d048 | Fermentlar, tuzilishi, klassifikatsiyasi | ~55 | analit 8, me’yor qatori 1, Q&A 6+6+3 | — |
+| d049 | Jigar fermentlarini tekshirish | ~53 | analit 4, holat 2, jadval 1, Q&A 6+6+3 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q |
+| d050 | Laktatdegidrogenaza, ishqoriy fosfataza fermentlarini tekshirish | ~32 | analit 2, Q&A 5+6+1 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q |
+| d051 | Vitaminlar. Vitamin B12 va D larni tekshirishning klinik diagnostik ah | ~47 | analit 3, holat 2, hujayra 1, me’yor qatori 1, kitob 2, Q&A 4+6+1 | — |
+| d052 | Vitaminlar. Vitamin B12 va D larni tekshirishning klinik diagnostik ah | ~45 | analit 3, holat 2, hujayra 1, me’yor qatori 1, Q&A 4+6+1 | — |
+| d053 | Attestatsiya 6. Klinik biokimyodan umumiy masalalar modulidan | ~21 | me’yor qatori 10, kitob 2, Q&A 0+6+3 | — |
+| d054 | Klinik biokimyo va biokimyoviy tekshiruv usullari. Umumiy oqsilni va a | ~34 | analit 2, me’yor qatori 6, Q&A 4+6+3 | — |
+| d055 | Azotemiyalar. Klinik diagnostik ahamiyati | ~48 | analit 4, holat 1, me’yor qatori 3, Q&A 6+6+3 | — |
+| d056 | Mochevinani aniqlash usullari. Klinik diagnostik ahamiyati | ~26 | analit 1, me’yor qatori 2, Q&A 2+6+3 | — |
+| d057 | Kreatininni aniqlash usullari. Klinik diagnostik ahamiyati | ~27 | analit 2, me’yor qatori 3, Q&A 4+3+2 | — |
+| d058 | Bilirubinni aniqlash usullari. Klinik diagnostik ahamiyati | ~43 | analit 2, holat 1, jadval 1, me’yor qatori 2, Q&A 5+6+3 | — |
+| d059 | Glyukozani aniqlash usullari. Glyukoza tolerant testi. Klinik diagnost | ~39 | analit 2, holat 2, me’yor qatori 6, Q&A 2+6+3 | — |
+| d060 | Glikozirlangan gemoglobinni aniqlash. Klinik diagnostik ahamiyati | ~25 | analit 2, me’yor qatori 3, Q&A 4+2+3 | — |
+| d061 | Transaminazalar, amilazani aniqlash usullari. Klinik diagnostik ahamiy | ~47 | analit 4, holat 1, me’yor qatori 2, Q&A 6+6+3 | — |
+| d062 | Ishqoriy fosfataza, γ-GT fermentlarini aniqlash usullari. Tekshirishni | ~37 | analit 2, holat 1, Q&A 5+6+2 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q |
+| d063 | Kislota-asos muvozanati. Bufer sistemasi | ~22 | me’yor qatori 7, kitob 3, Q&A 0+6+3 | curriculum: gap bayrog‘i (havolalar yetarli emas) |
+| d064 | Kislota-asos muvozanati. Bufer sistemasi (2-kun) | ~23 | me’yor qatori 7, kitob 4, Q&A 0+6+3 | curriculum: gap bayrog‘i (havolalar yetarli emas) |
+| d065 | Umumiy xolesterinni aniqlash. Klinik diagnostik ahamiyati | ~48 | analit 4, holat 1, me’yor qatori 5, Q&A 6+6+3 | — |
+| d066 | Triglitseridlarni aniqlash usullari. Klinik diagnostik ahamiyati | ~39 | analit 2, holat 2, me’yor qatori 2, Q&A 4+6+1 | — |
+| d067 | Natriy, kaliy, kaltsiyni aniqlash usullari. Klinik diagnostik ahamiyat | ~42 | analit 3, holat 1, me’yor qatori 7, Q&A 6+5+3 | — |
+| d068 | Temirni aniqlash usullari. Klinik diagnostik ahamiyati | ~43 | analit 3, holat 2, me’yor qatori 9, Q&A 2+6+3 | — |
+| d069 | O‘tkir faza oqsillari | ~40 | analit 4, me’yor qatori 4, Q&A 5+4+3 | — |
+| d070 | SRB, RF, ASLO aniqlash. Klinik diagnostik ahamiyati | ~31 | analit 4, holat 1, me’yor qatori 1, Q&A 4+1+1 | — |
+| d071 | Miokard infarkti biokimyoviy markerlari va xavf omillari | ~55 | analit 5, holat 3, me’yor qatori 1, Q&A 6+6+2 | — |
+| d072 | Podagra kasalligining laborator diagnostikasi. Siydik kislotasini aniq | ~26 | analit 1, holat 1, Q&A 2+6+1 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q |
+| d073 | Gemostazning zamonaviy tasavvuri | ~63 | analit 7, holat 2, me’yor qatori 3, Q&A 6+6+3 | — |
+| d074 | Attestatsiya 7. Klinik biokimyo va biokimyoviy tekshirish usullari mod | ~37 | analit 3, me’yor qatori 9, Q&A 4+6+3 | — |
+| d075 | Turli kasalliklar laborator diagnostikasi. Qonning tomir ichida ivib q | ~50 | analit 5, holat 1, me’yor qatori 1, Q&A 6+5+2 | — |
+| d076 | Allergik kasalliklar laborator diagnostikasi | ~28 | analit 1, hujayra 7, me’yor qatori 4, Q&A 2+3+2 | curriculum: gap bayrog‘i (havolalar yetarli emas) |
+| d077 | Jinsiy yo‘l bilan yuqadigan infeksiyalar laborator diagnostikasi. Vass | ~37 | analit 3, holat 1, sitologiya 8, Q&A 3+2+3 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q |
+| d078 | Bezgak kasalligining laborator diagnostikasi | ~19 | analit 1, foto 2, me’yor qatori 1, kitob 3, Q&A 1+1+3 | — |
+| d079 | OIV infeksiyasi. Klinik laborator tekshiruv usullari. Klinik diagnosti | ~22 | analit 1, holat 1, me’yor qatori 5, Q&A 1+3+3 | — |
+| d080 | Parazitar kasalliklar laborator diagnostikasi. Dumaloq gijjalar labora | ~27 | analit 2, jadval 1, Q&A 2+2+3 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q |
+| d081 | Lentasimon gijjalar laborator diagnostikasi. Klinik diagnostik ahamiya | ~23 | analit 1, jadval 1, kitob 4, Q&A 1+1+2 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q |
+| d082 | So‘ruvchi gijjalar laborator diagnostikasi. Klinik diagnostik ahamiyat | ~29 | analit 1, jadval 1, Q&A 1+6+2 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q |
+| d083 | TORCH infeksiyalar laborator diagnostikasi. Klinik diagnostik ahamiyat | ~18 | holat 1, kitob 3, Q&A 0+3+3 | curriculum: gap bayrog‘i (havolalar yetarli emas) |
+| d084 | Klinik laborator diagnostikada gematologik analizatorlar | ~36 | analit 4, me’yor qatori 14, Q&A 6+1+3 | — |
+| d085 | Klinik laborator diagnostikada ECHT analizatorlar | ~19 | kitob 1, Q&A 0+6+3 | curriculum: gap bayrog‘i (havolalar yetarli emas) |
+| d086 | Klinik laborator diagnostikada bioximik analizatorlar | ~20 | kitob 2, Q&A 0+6+3 | — |
+| d087 | Klinik laborator diagnostikada urino analizatorlar | ~25 | analit 1, Q&A 2+6+3 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q |
+| d088 | Klinik laborator diagnostikada koagulometrik analizatorlar | ~28 | analit 3, Q&A 6+0+3 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q |
+| d089 | Attestatsiya 8. Turli kasalliklar laborator diagnostikasi modulidan | ~23 | analit 2, me’yor qatori 5, Q&A 2+3+3 | — |
+| d090 | Umumiy qon tahlilini amaliyotda o‘zlashtirish | ~57 | analit 6, jadval 1, me’yor qatori 20, Q&A 6+6+3 | — |
+| d095 | Leykositar formulani amaliyotda o‘zlashtirish | ~78 | analit 5, hujayra 12, foto 8, me’yor qatori 9, Q&A 6+3+2 | — |
+| d101 | Umumiy siydik tahlilini amaliyotda o‘zlashtirish | ~38 | analit 2, foto 14, me’yor qatori 9, Q&A 4+5+3 | — |
+| d106 | Umumiy balg‘am tahlilini amaliyotda o‘zlashtirish | ~29 | analit 2, me’yor qatori 1, Q&A 2+6+3 | — |
+| d112 | Umumiy axlat (najas) tahlilini amaliyotda o‘zlashtirish | ~39 | analit 3, jadval 1, me’yor qatori 2, Q&A 2+6+3 | — |
+| d116 | Mindray BA-88A bioximik yarim avtomat analizator ishlash prinsiplari.  | ~20 | kitob 2, Q&A 0+6+3 | — |
+| d121 | Laktatdegidrogenaza, ishqoriy fosfataza fermentlar tekshiruvini amaliy | ~32 | analit 2, Q&A 5+6+1 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q |
+| d127 | SRB, RF, ASLO lar tekshiruvini amaliyotda o‘zlashtirish | ~26 | analit 3, me’yor qatori 1, Q&A 3+3+1 | — |
+| d143 | Attestatsiya. Laborator tekshiruv usullarini amaliyotda o‘zlashtirish  | ~21 | me’yor qatori 2, kitob 2, Q&A 0+6+3 | — |
 
 ## Deck yo‘q mavzular (kontent topilmadi)
 

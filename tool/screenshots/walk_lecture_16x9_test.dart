@@ -1,5 +1,8 @@
 // Ma'ruza: 16:9 taqdimot (D-59) — tik telefon (karta + panel), manbalar
 // oynasi, to'liq ekran (yotiq), keng ekran (planshet), taqdimotchi, tungi.
+// Vizual shablonlar (D-60): raqam kartalari, chegaralar diagrammasi,
+// qadamlar, ikki ustun, tasnif daraxti, misol kartasi, yon rasm, sarlavha
+// rasmi, litsenziyali atlas fotolari — telefon (uz) va keng ekran (en, tungi).
 //
 //   flutter test tool/screenshots/walk_lecture_16x9_test.dart --update-goldens
 // Rasmlar: tool/screenshots/out/walk/lecture16x9_*/
@@ -29,6 +32,35 @@ Future<void> _precache(WidgetTester tester, LectureDeck d) =>
         if (s.figure != null) await precacheImage(AssetImage(s.figure!), ctx);
       }
     });
+
+/// Har vizual shablon uchun namuna: (deck, shablon tanlovi). Birinchi mos
+/// slayd olinadi.
+final _visualPicks = <(String, String, bool Function(DeckSlide))>[
+  ('d009', 'title_image', (s) => s.template == 'title'),
+  ('d009', 'stats', (s) => s.template == 'stats'),
+  ('d045', 'range', (s) => s.template == 'range'),
+  ('d014', 'split', (s) => s.template == 'split'),
+  ('d014', 'tree', (s) => s.template == 'tree'),
+  ('siydik-chokmasi-mikroskopiya', 'steps', (s) => s.template == 'steps'),
+  ('d011', 'example', (s) => s.template == 'example'),
+  (
+    'leykotsitlarni-sanash-kamera',
+    'example_protocol',
+    (s) => s.template == 'example',
+  ),
+  ('d087', 'side_image', (s) => s.figure != null && s.template == 'bullets'),
+  (
+    'd016',
+    'photo_bloodmorph',
+    (s) => (s.figure ?? '').contains('bloodmorph/img'),
+  ),
+  (
+    'd005',
+    'photo_histology',
+    (s) => (s.figure ?? '').contains('histology/img'),
+  ),
+  ('d013', 'range_hb', (s) => s.template == 'range'),
+];
 
 void main() {
   setUpAll(loadAppFonts);
@@ -75,6 +107,54 @@ void main() {
       await w.snap('rotate_dialog');
     });
   }
+
+  for (final (lang, theme, size, tag) in [
+    (AppLanguage.uz, ThemeMode.light, const Size(390, 844), 'phone_uz'),
+    (AppLanguage.ru, ThemeMode.light, const Size(320, 640), 'phone320_ru'),
+    (AppLanguage.en, ThemeMode.dark, const Size(1280, 800), 'wide_en_dark'),
+  ]) {
+    testWidgets('vizual shablonlar ($tag)', (tester) async {
+      installDiffFakes();
+      final w = Walk(tester, 'lecture16x9_visual_$tag');
+      await start(
+        tester,
+        lang: lang,
+        role: AppRole.teacher,
+        size: size,
+        theme: theme,
+      );
+      for (final (id, name, pick) in _visualPicks) {
+        final d = await _deck(tester, id, lang.name);
+        final k = d.slides.indexWhere(pick);
+        if (k < 0) continue;
+        await _precache(tester, d);
+        routerOf(tester).go('/learn/lecture');
+        await tester.pumpAndSettle();
+        routerOf(tester).go('/learn/lecture/deck/$id?s=$k');
+        await tester.pumpAndSettle();
+        await w.snap('${name}_$k');
+      }
+    });
+  }
+
+  testWidgets('to‘liq ekran: vizual shablonlar (uz)', (tester) async {
+    installDiffFakes();
+    final w = Walk(tester, 'lecture16x9_visual_fullscreen');
+    await start(tester, role: AppRole.teacher, size: const Size(844, 390));
+    for (final (id, name, pick) in _visualPicks.take(7)) {
+      final d = await _deck(tester, id, 'uz');
+      final k = d.slides.indexWhere(pick);
+      if (k < 0) continue;
+      await _precache(tester, d);
+      routerOf(tester).go('/learn/lecture');
+      await tester.pumpAndSettle();
+      routerOf(tester).go('/learn/lecture/deck/$id?s=$k');
+      await tester.pumpAndSettle();
+      await w.tap(find.byKey(const ValueKey('lecture-fullscreen')));
+      await w.snap('${name}_$k');
+      await w.tap(find.byKey(const ValueKey('lecture-fullscreen-exit')));
+    }
+  });
 
   testWidgets('eGFR (uzun band bo‘lingan)', (tester) async {
     installDiffFakes();

@@ -504,6 +504,12 @@ String _templateLabel(AppLocalizations l, SlideTemplate t) => switch (t) {
   SlideTemplate.table => l.autoPresTplTable,
   SlideTemplate.figure => l.autoPresTplFigure,
   SlideTemplate.qa => l.autoPresTplQa,
+  SlideTemplate.range => l.autoPresTplTable,
+  SlideTemplate.example => l.autoPresTplFigure,
+  SlideTemplate.stats ||
+  SlideTemplate.steps ||
+  SlideTemplate.split ||
+  SlideTemplate.tree => l.autoPresTplBullets,
 };
 
 IconData _templateIcon(SlideTemplate t) => switch (t) {
@@ -512,6 +518,12 @@ IconData _templateIcon(SlideTemplate t) => switch (t) {
   SlideTemplate.table => Icons.table_chart_outlined,
   SlideTemplate.figure => Icons.image_outlined,
   SlideTemplate.qa => Icons.quiz_outlined,
+  SlideTemplate.stats => Icons.pin_outlined,
+  SlideTemplate.range => Icons.straighten_rounded,
+  SlideTemplate.steps => Icons.format_list_numbered_rounded,
+  SlideTemplate.split => Icons.swap_vert_rounded,
+  SlideTemplate.tree => Icons.account_tree_outlined,
+  SlideTemplate.example => Icons.calculate_outlined,
 };
 
 /// Slaydning qisqa mazmuni (ko'rishda nima chiqishini bilish uchun).

@@ -1,0 +1,41 @@
+{
+ "_note": "Ma'ruza slaydlari uchun rasm xaritasi (export_app_decks.py, deck_content.py). Faqat repodagi MAVJUD rasmlar; yangi rasm yo'q. 'credit' — tayyor matn kaliti (deck_content.UI): 'schematic' = Sxema (mikrofoto emas), 'illustration' = sxematik rasm, foto emas, 'instr_scheme' = apparat turining umumiy chizmasi (aniq model emas; instrument_catalog.dart D-36a). Moslik: 'decks' — deck id (kun yoki protokol), 'groups' — pack.json analit guruhi (slayd eyebrow'i shu guruh nomi bilan boshlanganda yon rasm), 'reference' — Jadvallar (refTopics) id'si. Bir rasm deckda yon rasm sifatida ko'pi bilan bir marta; mos kelmagan mavzuga qo'yilmaydi. Litsenziyali fotolar (bloodmorph/img, histology/img) — deck_content.photo_slides (muallif va litsenziya bilan); atlas (assets/microscopy) fotolari — links.microscopy bo'yicha, avvalgidek.",
+ "rules": [
+  {"id": "hematology-analyzer", "image": "assets/instruments/schematic/hematology5_1200.png", "credit": "instr_scheme",
+   "decks": ["d084"], "why": "d084 — gematologik analizatorlar mavzusi"},
+  {"id": "urine-analyzer", "image": "assets/instruments/schematic/urine_system_1200.png", "credit": "instr_scheme",
+   "decks": ["d087"], "why": "d087 — urino analizatorlar mavzusi"},
+  {"id": "urine-strip-reader", "image": "assets/instruments/schematic/urine_strip_1200.png", "credit": "instr_scheme",
+   "decks": ["d087"], "side_only": true, "why": "d087 — test-poloska o'quvchi urinoanalizator turi"},
+  {"id": "chemistry-analyzer", "image": "assets/instruments/schematic/chemistry_1200.png", "credit": "instr_scheme",
+   "decks": ["d086"], "why": "d086 — bioximik analizatorlar mavzusi"},
+  {"id": "photometer", "image": "assets/instruments/schematic/photometer_1200.png", "credit": "instr_scheme",
+   "decks": ["d040", "d041", "d116", "fotometriya-asoslari-biokimyo", "glyukoza-gox-pod-fotometrik",
+             "alt-kinetik-fotometrik", "mochevina-ureaza-gldg", "bilirubin-umumiy-bogllangan"],
+   "why": "fotometrik usullar va Mindray BA-88A (yarim avtomat fotometr) mavzulari"},
+  {"id": "urinalysis-card", "image": "assets/urinalysis/card.png", "credit": "illustration",
+   "groups": ["urine"], "decks": ["siydik-yigish-fizik-xossalar", "siydik-kimyoviy-tekshiruv", "siydik-chokmasi-mikroskopiya"],
+   "why": "siydik idishi va test-poloska illyustratsiyasi (ilovaning Siydik tahlili bo'limi kartasi)"},
+  {"id": "bloodmorph-card", "image": "assets/bloodmorph/card.png", "credit": "schematic",
+   "groups": ["hematology"], "reference": ["anemia", "spurious-cbc"],
+   "decks": ["qon-surtmasi-tayyorlash-boyash", "eritrotsitlarni-sanash-kamera", "leykotsitlarni-sanash-kamera",
+             "leykoformula-sanash-mikroskop", "kapillyar-qon-olish", "gemoglobin-gemiglobintsianid"],
+   "why": "qon surtmasi sxemasi (eritrotsitlar va limfotsit; ilovaning Eritrotsitlar morfologiyasi bo'limi kartasi)"},
+  {"id": "cytology-hero", "image": "assets/cytology/hero.png", "credit": "schematic",
+   "groups": ["cytology"], "decks": ["urogenital-surtma-mikroskopiya"],
+   "why": "qin surtmasi hujayralari sxemasi (ilovaning Sitologiya bo'limi rasmi)"},
+  {"id": "histology-card", "image": "assets/histology/card.png", "credit": "schematic",
+   "decks": ["d005", "d006"],
+   "why": "epiteliy va biriktiruvchi to'qima sxemasi (ilovaning Gistologiya bo'limi kartasi); d005/d006 — to'qimalar mavzusi"}
+ ],
+ "histology": {"d005": "epithelium", "d006": "connective"},
+ "not_used": {
+  "assets/spermogram/card.png": "spermogramma mavzusi o'quv dasturida yo'q",
+  "assets/bloodgroup/card.png": "qon guruhi alohida mavzu emas (d083 da faqat jadval qatori)",
+  "assets/bloodmorph/scheme.png": "raqamli shakllar sxemasi — rasmda izohlar (legend) yo'q, slaydda nimani ko'rsatishi noaniq",
+  "assets/instruments/schematic/immunoassay_1200.png": "immunoanalizatorlar alohida mavzu sifatida yo'q",
+  "assets/instruments/schematic/hematology3_1200.png": "d084 uchun hematology5 tanlangan; bir deckda ikki o'xshash sxema shart emas",
+  "assets/instruments/img/*.png": "katalog modellari rasmi (mavzuga emas, aniq modelga tegishli)",
+  "assets/images/molecular_hero.webp": "bezak rasm (kirish ekrani) — mazmunga aloqasi yo'q"
+ }
+}

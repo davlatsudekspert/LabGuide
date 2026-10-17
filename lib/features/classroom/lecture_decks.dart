@@ -33,6 +33,11 @@ class DeckSlide {
     this.compact = false,
     this.plan = false,
     this.refs = const [],
+    this.stats = const [],
+    this.range,
+    this.cols = const [],
+    this.example,
+    this.category,
   });
 
   /// [srcs] — deck darajasidagi manba qatorlari jadvali: slaydda `src`
@@ -41,6 +46,7 @@ class DeckSlide {
     Map<String, Object?> j, {
     List<String> srcs = const [],
     List<List<DeckRef>> refs = const [],
+    Map<String, String> cats = const {},
   }) => DeckSlide(
     title: j['title']! as String,
     eyebrow: j['eyebrow'] as String?,
@@ -71,6 +77,21 @@ class DeckSlide {
     refs: j['ref'] is int && (j['ref']! as int) < refs.length
         ? refs[j['ref']! as int]
         : const [],
+    stats: [
+      for (final r in (j['stats'] as List?) ?? const [])
+        [...(r as List).cast<String>()],
+    ],
+    range: j['range'] as Map<String, Object?>?,
+    cols: [
+      for (final c in (j['cols'] as List?) ?? const [])
+        (
+          (c as List)[0]! as String,
+          c[1]! as String,
+          [...(c[2]! as List).cast<String>()],
+        ),
+    ],
+    example: j['ex'] as String?,
+    category: cats[(j['eyebrow'] as String? ?? '').split(' · ').first],
   );
 
   final String title;
@@ -121,6 +142,22 @@ class DeckSlide {
   /// Shu slayd manbalari: "Adabiyotlar" ro'yxatidagi tartib raqami va shu
   /// slaydda ishlatilgan bo'lim/sahifalar (deck `refs` jadvalidan).
   final List<DeckRef> refs;
+
+  /// `stats`: [[qiymat, yorliq], ...] — band matnidan so'zma-so'z.
+  final List<List<String>> stats;
+
+  /// `range`: {u: birlik, cap: umumiy yorliq, rows: [[yorliq, izoh, past,
+  /// yuqori, bayroq, past matni, yuqori matni], ...]} — analit kartasidan.
+  final Map<String, Object?>? range;
+
+  /// `split`: ustunlar (sarlavha, yo'nalish, bandlar).
+  final List<(String, String, List<String>)> cols;
+
+  /// `example`: misol matni.
+  final String? example;
+
+  /// Bo'lim kategoriyasi (deck `cats` jadvalidan, eyebrow boshi bo'yicha).
+  final String? category;
 }
 
 /// Slayd manbasi: [index] — deck bibliografiyasidagi (oxirgi "Adabiyotlar"
@@ -153,6 +190,17 @@ class LectureDeck {
       for (final r in (j['refs'] as List?) ?? const [])
         [for (final row in r as List) DeckRef.fromJson(row as List)],
     ];
+    // `cats` — eyebrow boshlari (birinchi uchrash tartibida) kategoriyasi.
+    final heads = <String>[];
+    for (final s in (j['slides']! as List).cast<Map<String, Object?>>()) {
+      final e = (s['eyebrow'] as String? ?? '').split(' · ').first.trim();
+      if (e.isNotEmpty && !heads.contains(e)) heads.add(e);
+    }
+    final catList = [...?(j['cats'] as List?)?.cast<String>()];
+    final cats = <String, String>{
+      for (final (i, h) in heads.indexed)
+        if (i < catList.length && catList[i].isNotEmpty) h: catList[i],
+    };
     return LectureDeck(
       id: j['id'] as String?,
       title: j['title'] as String?,
@@ -161,7 +209,7 @@ class LectureDeck {
       draft: (j['status'] ?? 'draft') == 'draft',
       slides: [
         for (final s in (j['slides']! as List).cast<Map<String, Object?>>())
-          DeckSlide.fromJson(s, srcs: srcs, refs: refs),
+          DeckSlide.fromJson(s, srcs: srcs, refs: refs, cats: cats),
       ],
     );
   }

@@ -28,6 +28,10 @@ FILES = {
     'cytology': 'lib/features/cytology/cytology_content.dart',
     'reference': 'lib/features/reference/reference_content.dart',
     'reference_sources': 'lib/features/reference/reference_sources.dart',
+    'calc_info': 'lib/features/tools/calc_info.dart',
+    'manual_calc_info': 'lib/features/tools/manual_calc_info.dart',
+    'bloodmorph': 'lib/features/bloodmorph/bloodmorph_content.dart',
+    'histology': 'lib/features/histology/histology_content.dart',
 }
 
 # Pozitsion argumentli klasslar -> maydon nomlari.
@@ -221,6 +225,8 @@ class Parser:
     def resolve(self, name):
         if name in self.env.cache:
             return self.env.cache[name]
+        if '.' in name and name in self.env.decl:
+            return self.env.value(name)
         short = name.split('.')[-1]
         if short in self.env.decl:
             v = self.env.value(short)
@@ -232,12 +238,20 @@ class Env:
     DECL = re.compile(
         r'^[ \t]*(?:static[ \t]+)?(?:const|final)[ \t]+'
         r'(?:[A-Za-z_][\w<>?, ]*?[ \t]+)?([A-Za-z_]\w*)[ \t]*=[ \t]*', re.M)
+    CLASS = re.compile(r'^(?:abstract[ \t]+)?(?:final[ \t]+)?class[ \t]+([A-Za-z_]\w*)', re.M)
 
     def __init__(self, src):
         self.src = src
         self.decl = {}
+        classes = [(m.start(), m.group(1)) for m in self.CLASS.finditer(src)]
         for m in self.DECL.finditer(src):
             self.decl.setdefault(m.group(1), m.end())
+            if 'static' in m.group(0):
+                # `static const` klass ichida: "Klass.nom" bilan ham (bir xil qisqa nomli
+                # taxalluslar, masalan `BmSources.x = CalcSources.x`, aylanib qolmasin)
+                owner = [c for pos, c in classes if pos < m.start()]
+                if owner:
+                    self.decl.setdefault(f'{owner[-1]}.{m.group(1)}', m.end())
         self.cache = {}
         self.toks = None
 
@@ -340,7 +354,31 @@ def build():
         for n in ('who2003', 'medlineDiff', 'medlineEncyDiff', 'nciDictionary',
                   'gulati2013', 'lyubina1984')
     }
+    out['_generated_from'] += [FILES['bloodmorph'], FILES['histology'], FILES['manual_calc_info'],
+                               FILES['calc_info']]
+    # Rasm atlaslari (litsenziyali foto): faqat taqdimotga kerakli maydonlar — nom, fayl,
+    # muallif, litsenziya, Commons nomi, izoh tarjimasi va bog'langan tahlillar (`analytes`).
+    common = [FILES['calc_info'], FILES['reference_sources']]
+    bm = MultiEnv([FILES['bloodmorph']] + common)
+    out['bmFindings'] = [_photo_item(x, analytes=True)
+                         for x in fix_records(bm.value('bmFindings')) + fix_records(bm.value('bmPlatelets'))
+                         if x.get('image')]
+    hi = MultiEnv([FILES['histology']] + common)
+    out['histoItems'] = [_photo_item(x) for x in fix_records(hi.value('histoItems')) if x.get('image')]
+    # Qo'lda hisoblash kalkulyatorlari: formula qatorlari (ichida manbadagi ishlangan misol) va manbalari
+    mc = MultiEnv([FILES['manual_calc_info']] + common)
+    out['manualCalcInfo'] = {k.split('.')[-1]: {'formula': v['formula'], 'refs': v['refs']}
+                             for k, v in fix_records(mc.value('manualCalcInfo')).items()}
     return out
+
+
+def _photo_item(x, analytes=False):
+    im = x['image']
+    o = {'id': x['id'], 'group': str(x['group']).split('.')[-1], 'name': x['name'],
+         'image': {k: im[k] for k in ('file', 'commonsTitle', 'author', 'license', 'captionTr')}}
+    if analytes:
+        o['analytes'] = x.get('analytes') or []
+    return o
 
 
 def dump(obj):

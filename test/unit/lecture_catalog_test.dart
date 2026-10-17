@@ -164,23 +164,55 @@ void main() {
               case 'title':
                 expect(i, 0, reason: why);
                 expect(s.bullets, isNotEmpty, reason: why);
-              case 'bullets':
+              case 'bullets' || 'steps' || 'tree':
                 expect(s.bullets, isNotEmpty, reason: why);
+              case 'stats':
+                expect(s.bullets, isNotEmpty, reason: why);
+                expect(s.stats.length, inInclusiveRange(2, 4), reason: why);
+                for (final st in s.stats) {
+                  // qiymat va yorliq — band matnining bo'lagi
+                  expect(s.bullets.join('\n'), contains(st[0]), reason: why);
+                  expect(s.bullets.join('\n'), contains(st[1]), reason: why);
+                }
+              case 'range':
+                expect(s.range?['rows'], isNotEmpty, reason: why);
+              case 'split':
+                expect(s.cols.length, 2, reason: why);
+              case 'example':
+                expect(s.example, isNotEmpty, reason: why);
               default:
                 fail('noma’lum shablon: $why');
+            }
+            if (s.figure != null && s.template != 'figure') {
+              // sarlavha/yon rasm — krediti bilan
+              expect(s.credit, isNotEmpty, reason: why);
             }
           }
         }
       }
-      expect(seen, {'title', 'bullets', 'table', 'figure', 'qa'});
+      expect(seen, {
+        'title',
+        'bullets',
+        'table',
+        'figure',
+        'qa',
+        'stats',
+        'range',
+        'steps',
+        'split',
+        'tree',
+        'example',
+      });
     });
 
-    test('hajm: yangi assetlar 12 MB dan oshmaydi', () {
+    // 13 MiB: vizual shablonlar va litsenziyali fotolar ~0.5 MB qo'shdi
+    // (tool/slides/test_export_app_decks.py SIZE_BUDGET bilan bir xil).
+    test('hajm: yangi assetlar 13 MB dan oshmaydi', () {
       var bytes = File('assets/lectures/index_v2.json').lengthSync();
       for (final f in Directory('assets/lectures/decks').listSync()) {
         if (f is File) bytes += f.lengthSync();
       }
-      expect(bytes, lessThan(12 * 1024 * 1024));
+      expect(bytes, lessThan(13 * 1024 * 1024));
     });
 
     test(

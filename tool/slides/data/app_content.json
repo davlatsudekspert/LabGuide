@@ -4,7 +4,11 @@
   "lib/features/differential/differential_sources.dart",
   "lib/features/cytology/cytology_content.dart",
   "lib/features/reference/reference_content.dart",
-  "lib/features/reference/reference_sources.dart"
+  "lib/features/reference/reference_sources.dart",
+  "lib/features/bloodmorph/bloodmorph_content.dart",
+  "lib/features/histology/histology_content.dart",
+  "lib/features/tools/manual_calc_info.dart",
+  "lib/features/tools/calc_info.dart"
  ],
  "_note": "Avtomatik: python3 tool/slides/extract_dart_content.py. Qo'lda tahrirlamang.",
  "cellGuides": [
@@ -4337,8 +4341,8 @@
      ],
      "refs": [
       {
-       "source_id": "diff-who-basic-lab-2003",
-       "citation": "World Health Organization. Manual of basic techniques for a health laboratory, 2nd ed. Geneva: WHO; 2003. ISBN 92 4 154530 5",
+       "source_id": "who-basic-lab-techniques-2003",
+       "citation": "World Health Organization. Manual of basic techniques for a health laboratory, 2nd ed. Geneva: WHO; 2003",
        "url": "https://www.who.int/publications/i/item/9241545305",
        "locator": "4.2.3 Microscopic examination, p. 107–109"
       },
@@ -4384,8 +4388,8 @@
      ],
      "refs": [
       {
-       "source_id": "diff-who-basic-lab-2003",
-       "citation": "World Health Organization. Manual of basic techniques for a health laboratory, 2nd ed. Geneva: WHO; 2003. ISBN 92 4 154530 5",
+       "source_id": "who-basic-lab-techniques-2003",
+       "citation": "World Health Organization. Manual of basic techniques for a health laboratory, 2nd ed. Geneva: WHO; 2003",
        "url": "https://www.who.int/publications/i/item/9241545305",
        "locator": "4.2.3 Microscopic examination, p. 107–109"
       },
@@ -4431,8 +4435,8 @@
      ],
      "refs": [
       {
-       "source_id": "diff-who-basic-lab-2003",
-       "citation": "World Health Organization. Manual of basic techniques for a health laboratory, 2nd ed. Geneva: WHO; 2003. ISBN 92 4 154530 5",
+       "source_id": "who-basic-lab-techniques-2003",
+       "citation": "World Health Organization. Manual of basic techniques for a health laboratory, 2nd ed. Geneva: WHO; 2003",
        "url": "https://www.who.int/publications/i/item/9241545305",
        "locator": "4.4.1 Kato–Katz technique, p. 141–143"
       },
@@ -4478,8 +4482,8 @@
      ],
      "refs": [
       {
-       "source_id": "diff-who-basic-lab-2003",
-       "citation": "World Health Organization. Manual of basic techniques for a health laboratory, 2nd ed. Geneva: WHO; 2003. ISBN 92 4 154530 5",
+       "source_id": "who-basic-lab-techniques-2003",
+       "citation": "World Health Organization. Manual of basic techniques for a health laboratory, 2nd ed. Geneva: WHO; 2003",
        "url": "https://www.who.int/publications/i/item/9241545305",
        "locator": "4.5 Techniques for concentrating parasites, p. 152–156"
       },
@@ -4531,8 +4535,8 @@
      ],
      "refs": [
       {
-       "source_id": "diff-who-basic-lab-2003",
-       "citation": "World Health Organization. Manual of basic techniques for a health laboratory, 2nd ed. Geneva: WHO; 2003. ISBN 92 4 154530 5",
+       "source_id": "who-basic-lab-techniques-2003",
+       "citation": "World Health Organization. Manual of basic techniques for a health laboratory, 2nd ed. Geneva: WHO; 2003",
        "url": "https://www.who.int/publications/i/item/9241545305",
        "locator": "4.5 Techniques for concentrating parasites, p. 152–156"
       },
@@ -4569,8 +4573,8 @@
      ],
      "refs": [
       {
-       "source_id": "diff-who-basic-lab-2003",
-       "citation": "World Health Organization. Manual of basic techniques for a health laboratory, 2nd ed. Geneva: WHO; 2003. ISBN 92 4 154530 5",
+       "source_id": "who-basic-lab-techniques-2003",
+       "citation": "World Health Organization. Manual of basic techniques for a health laboratory, 2nd ed. Geneva: WHO; 2003",
        "url": "https://www.who.int/publications/i/item/9241545305",
        "locator": "4.2.1; 4.2.4, p. 107–109"
       },
@@ -4602,8 +4606,8 @@
      ],
      "refs": [
       {
-       "source_id": "diff-who-basic-lab-2003",
-       "citation": "World Health Organization. Manual of basic techniques for a health laboratory, 2nd ed. Geneva: WHO; 2003. ISBN 92 4 154530 5",
+       "source_id": "who-basic-lab-techniques-2003",
+       "citation": "World Health Organization. Manual of basic techniques for a health laboratory, 2nd ed. Geneva: WHO; 2003",
        "url": "https://www.who.int/publications/i/item/9241545305",
        "locator": "4.4.1 Enterobius vermicularis, p. 135–136"
       },
@@ -4697,8 +4701,8 @@
      ],
      "refs": [
       {
-       "source_id": "diff-who-basic-lab-2003",
-       "citation": "World Health Organization. Manual of basic techniques for a health laboratory, 2nd ed. Geneva: WHO; 2003. ISBN 92 4 154530 5",
+       "source_id": "who-basic-lab-techniques-2003",
+       "citation": "World Health Organization. Manual of basic techniques for a health laboratory, 2nd ed. Geneva: WHO; 2003",
        "url": "https://www.who.int/publications/i/item/9241545305",
        "locator": "9.3.1 Haemiglobincyanide method, p. 271"
       },
@@ -4773,8 +4777,8 @@
        "locator": "Abstract"
       },
       {
-       "source_id": "diff-who-basic-lab-2003",
-       "citation": "World Health Organization. Manual of basic techniques for a health laboratory, 2nd ed. Geneva: WHO; 2003. ISBN 92 4 154530 5",
+       "source_id": "who-basic-lab-techniques-2003",
+       "citation": "World Health Organization. Manual of basic techniques for a health laboratory, 2nd ed. Geneva: WHO; 2003",
        "url": "https://www.who.int/publications/i/item/9241545305",
        "locator": "9.7 Erythrocyte sedimentation rate"
       },
@@ -4838,8 +4842,8 @@
      ],
      "refs": [
       {
-       "source_id": "diff-who-basic-lab-2003",
-       "citation": "World Health Organization. Manual of basic techniques for a health laboratory, 2nd ed. Geneva: WHO; 2003. ISBN 92 4 154530 5",
+       "source_id": "who-basic-lab-techniques-2003",
+       "citation": "World Health Organization. Manual of basic techniques for a health laboratory, 2nd ed. Geneva: WHO; 2003",
        "url": "https://www.who.int/publications/i/item/9241545305",
        "locator": "4.6 Occult blood in stools, p. 157"
       },
@@ -5244,6 +5248,1073 @@
    "id": "book-lyubina-1984",
    "citation": "Любина А.Я., Ильичева Л.П., Катасонова Т.В., Петросова С.А. Клинические лабораторные исследования. Москва: Медицина; 1984",
    "url": null
+  }
+ },
+ "bmFindings": [
+  {
+   "id": "microcytes",
+   "group": "size",
+   "name": {
+    "uz": "Mikrotsitlar",
+    "ru": "Микроциты",
+    "en": "Microcytes"
+   },
+   "image": {
+    "file": "iron_deficiency",
+    "commonsTitle": "Iron-deficiency Anemia, Peripheral Blood Smear (4422704616).jpg",
+    "author": "Ed Uthman",
+    "license": "CC BY 2.0",
+    "captionTr": {
+     "uz": "Temir tanqisligiga xos, juda rivojlangan mikrotsitar-gipoxrom anemiya (MCV 55 fL); muallif surtma sifati past ekanini aytgan",
+     "ru": "Резко выраженная микроцитарная гипохромная анемия, характерная для дефицита железа (MCV 55 фл); автор отмечает низкое качество мазка",
+     "en": "Very advanced microcytic hypochromic anaemia typical of iron deficiency (MCV 55 fL); the author notes the smear is of poor quality"
+    }
+   },
+   "analytes": [
+    "mcv",
+    "rdw",
+    "ferritin",
+    "iron"
+   ]
+  },
+  {
+   "id": "polychromasia",
+   "group": "colour",
+   "name": {
+    "uz": "Polixromaziya (polixromatofiliya)",
+    "ru": "Полихромазия (полихроматофилия)",
+    "en": "Polychromasia (polychromatophilia)"
+   },
+   "image": {
+    "file": "polychromasia",
+    "commonsTitle": "Polychromasia.jpg",
+    "author": "Prof. Osaro Erhabor",
+    "license": "CC0 1.0",
+    "captionTr": {
+     "uz": "Polixromaziya: turli yoshdagi eritrotsitlarning har xil bo‘yalishi; yirikroq yosh hujayralar ko‘pincha ko‘kish",
+     "ru": "Полихромазия: неодинаковая окраска эритроцитов разного возраста; более крупные молодые клетки часто голубоватые",
+     "en": "Polychromasia: uneven staining of red cells of different ages; the larger young cells often stain blue"
+    }
+   },
+   "analytes": [
+    "reticulocytes"
+   ]
+  },
+  {
+   "id": "spherocytes",
+   "group": "shape",
+   "name": {
+    "uz": "Sferotsitlar",
+    "ru": "Сфероциты",
+    "en": "Spherocytes"
+   },
+   "image": {
+    "file": "spherocytes",
+    "commonsTitle": "Hereditary Spherocytosis smear 2010-03-17.JPG",
+    "author": "Paulo Henrique Orlandi Mourao",
+    "license": "CC BY-SA 3.0",
+    "captionTr": {
+     "uz": "Irsiy sferotsitozli bemorning periferik qon surtmasi",
+     "ru": "Мазок периферической крови больного наследственным сфероцитозом",
+     "en": "Peripheral blood film from a patient with hereditary spherocytosis"
+    }
+   },
+   "analytes": [
+    "mchc",
+    "reticulocytes",
+    "ldh",
+    "bilirubin-total"
+   ]
+  },
+  {
+   "id": "target-cells",
+   "group": "shape",
+   "name": {
+    "uz": "Nishonsimon hujayralar (kodotsitlar)",
+    "ru": "Мишеневидные клетки (кодоциты)",
+    "en": "Target cells (codocytes)"
+   },
+   "image": {
+    "file": "target_cells",
+    "commonsTitle": "Target cells.jpg",
+    "author": "Prof. Osaro Erhabor",
+    "license": "CC0 1.0",
+    "captionTr": {
+     "uz": "Nishonsimon hujayralar (kodotsitlar): markazi to‘q, atrofida och halqa, cheti yana to‘q",
+     "ru": "Мишеневидные клетки (кодоциты): тёмный центр, светлое кольцо и снова тёмный край",
+     "en": "Target cells (codocytes): dark centre, a paler ring, then a dark rim"
+    }
+   },
+   "analytes": [
+    "hemoglobin-electrophoresis",
+    "mcv",
+    "ferritin"
+   ]
+  },
+  {
+   "id": "schistocytes",
+   "group": "shape",
+   "name": {
+    "uz": "Shizotsitlar (eritrotsit bo‘laklari)",
+    "ru": "Шизоциты (фрагменты эритроцитов)",
+    "en": "Schistocytes (red cell fragments)"
+   },
+   "image": {
+    "file": "schistocytes",
+    "commonsTitle": "Schizocyte smear 2009-12-22.JPG",
+    "author": "Paulo Henrique Orlandi Mourao",
+    "license": "CC BY-SA 3.0",
+    "captionTr": {
+     "uz": "Shizotsitlar (gemolitik-uremik sindrom); rasmda strelkalar bilan ko‘rsatilgan",
+     "ru": "Шизоциты (гемолитико-уремический синдром); на снимке отмечены стрелками",
+     "en": "Schistocytes (haemolytic uraemic syndrome); arrowed in the picture"
+    }
+   },
+   "analytes": [
+    "platelets",
+    "ldh",
+    "creatinine",
+    "d-dimer",
+    "fibrinogen"
+   ]
+  },
+  {
+   "id": "sickle-cells",
+   "group": "shape",
+   "name": {
+    "uz": "O‘roqsimon hujayralar (drepanotsitlar)",
+    "ru": "Серповидные клетки (дрепаноциты)",
+    "en": "Sickle cells (drepanocytes)"
+   },
+   "image": {
+    "file": "sickle_cells",
+    "commonsTitle": "Sickle Cell Disease.jpg",
+    "author": "Prof. Osaro Erhabor",
+    "license": "CC0 1.0",
+    "captionTr": {
+     "uz": "O‘roqsimon hujayralar (drepanotsitlar), o‘roqsimon hujayrali anemiya",
+     "ru": "Серповидные клетки (дрепаноциты) при серповидноклеточной анемии",
+     "en": "Sickle cells (drepanocytes) in sickle cell anaemia"
+    }
+   },
+   "analytes": [
+    "hemoglobin-electrophoresis",
+    "reticulocytes"
+   ]
+  },
+  {
+   "id": "teardrop-cells",
+   "group": "shape",
+   "name": {
+    "uz": "Tomchisimon hujayralar (dakriotsitlar)",
+    "ru": "Каплевидные клетки (дакриоциты)",
+    "en": "Teardrop cells (dacrocytes)"
+   },
+   "image": {
+    "file": "teardrop_cells",
+    "commonsTitle": "Teardrop Cells smear 2009-09-22.JPG",
+    "author": "Paulo Henrique Orlandi Mourao",
+    "license": "CC BY-SA 3.0",
+    "captionTr": {
+     "uz": "Tomchisimon hujayralar (dakriotsitlar)",
+     "ru": "Каплевидные клетки (дакриоциты)",
+     "en": "Teardrop cells (dacrocytes)"
+    }
+   },
+   "analytes": [
+    "platelets",
+    "wbc-count"
+   ]
+  },
+  {
+   "id": "elliptocytes",
+   "group": "shape",
+   "name": {
+    "uz": "Elliptotsitlar (ovalotsitlar)",
+    "ru": "Эллиптоциты (овалоциты)",
+    "en": "Elliptocytes (ovalocytes)"
+   },
+   "image": {
+    "file": "elliptocytes",
+    "commonsTitle": "Hereditary Elliptocytosis 6 0.jpg",
+    "author": "Dr Erhabor Osaro",
+    "license": "CC BY-SA 3.0",
+    "captionTr": {
+     "uz": "Irsiy elliptotsitoz (ovalotsitoz): oval yoki cho‘zinchoq, sigaraga o‘xshash eritrotsitlar",
+     "ru": "Наследственный эллиптоцитоз (овалоцитоз): овальные или вытянутые сигаровидные эритроциты",
+     "en": "Hereditary elliptocytosis (ovalocytosis): oval or elongated cigar-shaped red cells"
+    }
+   },
+   "analytes": [
+    "mcv",
+    "reticulocytes"
+   ]
+  },
+  {
+   "id": "stomatocytes",
+   "group": "shape",
+   "name": {
+    "uz": "Stomatotsitlar",
+    "ru": "Стоматоциты",
+    "en": "Stomatocytes"
+   },
+   "image": {
+    "file": "stomatocytes",
+    "commonsTitle": "Stomatocytes.jpg",
+    "author": "Prof. Osaro Erhabor",
+    "license": "CC0 1.0",
+    "captionTr": {
+     "uz": "Stomatotsitlar: markaziy och joyi oval yoki to‘rtburchak (og‘izsimon) eritrotsitlar",
+     "ru": "Стоматоциты: эритроциты с овальным или прямоугольным (ротовидным) центральным просветлением",
+     "en": "Stomatocytes: red cells with an oval or rectangular (mouth-like) central pallor"
+    }
+   },
+   "analytes": [
+    "alt",
+    "mcv"
+   ]
+  },
+  {
+   "id": "acanthocytes",
+   "group": "shape",
+   "name": {
+    "uz": "Akantotsitlar",
+    "ru": "Акантоциты",
+    "en": "Acanthocytes"
+   },
+   "image": {
+    "file": "acanthocytes",
+    "commonsTitle": "Acanthocytes 4.jpg",
+    "author": "Prof. Erhabor Osaro",
+    "license": "CC BY-SA 4.0",
+    "captionTr": {
+     "uz": "Akantotsitoz",
+     "ru": "Акантоцитоз",
+     "en": "Acanthocytosis"
+    }
+   },
+   "analytes": [
+    "alt",
+    "creatinine"
+   ]
+  },
+  {
+   "id": "echinocytes",
+   "group": "shape",
+   "name": {
+    "uz": "Exinotsitlar (krenatsiyali hujayralar)",
+    "ru": "Эхиноциты (кренированные клетки)",
+    "en": "Echinocytes (crenated cells)"
+   },
+   "image": {
+    "file": "echinocytes",
+    "commonsTitle": "Crenated red cells 11.jpg",
+    "author": "Prof. Erhabor Osaro",
+    "license": "CC BY-SA 4.0",
+    "captionTr": {
+     "uz": "Burishgan (krenatsiyali) eritrotsitlar surtmasi",
+     "ru": "Мазок с зубчатыми (кренированными) эритроцитами",
+     "en": "A film showing crenated red cells"
+    }
+   },
+   "analytes": [
+    "creatinine"
+   ]
+  },
+  {
+   "id": "basophilic-stippling",
+   "group": "inclusion",
+   "name": {
+    "uz": "Bazofil punktatsiya",
+    "ru": "Базофильная пунктация",
+    "en": "Basophilic stippling"
+   },
+   "image": {
+    "file": "basophilic_stippling",
+    "commonsTitle": "Basophilic stippling 2.jpg",
+    "author": "Prof. Erhabor Osaro",
+    "license": "CC BY-SA 4.0",
+    "captionTr": {
+     "uz": "Bazofil punktatsiyali eritrotsitlar",
+     "ru": "Эритроциты с базофильной пунктацией",
+     "en": "Red cells with basophilic stippling"
+    }
+   },
+   "analytes": [
+    "hemoglobin-electrophoresis",
+    "mcv"
+   ]
+  },
+  {
+   "id": "howell-jolly",
+   "group": "inclusion",
+   "name": {
+    "uz": "Xauell–Jolli tanachalari",
+    "ru": "Тельца Хауэлла–Жолли",
+    "en": "Howell–Jolly bodies"
+   },
+   "image": {
+    "file": "howell_jolly",
+    "commonsTitle": "Howell-Jolly smear 2010-11-17.JPG",
+    "author": "Paulo Henrique Orlandi Mourao",
+    "license": "CC BY-SA 3.0",
+    "captionTr": {
+     "uz": "Xauell–Jolli tanachalari: eritrotsit ichidagi kichik yumaloq kiritmalar",
+     "ru": "Тельца Хауэлла–Жолли: мелкие круглые включения в эритроцитах",
+     "en": "Howell–Jolly bodies: small round inclusions in red cells"
+    }
+   },
+   "analytes": [
+    "blood-smear"
+   ]
+  },
+  {
+   "id": "rouleaux",
+   "group": "arrangement",
+   "name": {
+    "uz": "“Tanga ustunchalari” (rouleaux)",
+    "ru": "Монетные столбики (rouleaux)",
+    "en": "Rouleaux"
+   },
+   "image": {
+    "file": "rouleaux",
+    "commonsTitle": "Rouleaux Red Cells.jpg",
+    "author": "Prof. Osaro Erhabor",
+    "license": "CC0 1.0",
+    "captionTr": {
+     "uz": "“Tanga ustunchalari” (rouleaux): ustma-ust terilgan eritrotsitlar",
+     "ru": "Монетные столбики: эритроциты, сложенные стопкой",
+     "en": "Rouleaux: stacked red cells"
+    }
+   },
+   "analytes": [
+    "esr",
+    "total-protein"
+   ]
+  },
+  {
+   "id": "agglutination",
+   "group": "arrangement",
+   "name": {
+    "uz": "Eritrotsitlar agglyutinatsiyasi",
+    "ru": "Агглютинация эритроцитов",
+    "en": "Red cell agglutination"
+   },
+   "image": {
+    "file": "agglutination",
+    "commonsTitle": "Red cell agglutination.jpg",
+    "author": "Prof. Erhabor Osaro",
+    "license": "CC BY-SA 4.0",
+    "captionTr": {
+     "uz": "Sovuq agglyutininlar kasalligida eritrotsitlar agglyutinatsiyasi",
+     "ru": "Агглютинация эритроцитов при болезни холодовых агглютининов",
+     "en": "Red cell agglutination in cold agglutinin disease"
+    }
+   },
+   "analytes": [
+    "rbc-count",
+    "mcv",
+    "mchc"
+   ]
+  },
+  {
+   "id": "giant-platelets",
+   "group": "platelet",
+   "name": {
+    "uz": "Yirik va gigant trombotsitlar",
+    "ru": "Крупные и гигантские тромбоциты",
+    "en": "Large and giant platelets"
+   },
+   "image": {
+    "file": "giant_platelet",
+    "commonsTitle": "Micrograph of a giant platelet.jpg",
+    "author": "Mikael Häggström, M.D.",
+    "license": "CC0 1.0",
+    "captionTr": {
+     "uz": "Gigant trombotsit",
+     "ru": "Гигантский тромбоцит",
+     "en": "A giant platelet"
+    }
+   },
+   "analytes": [
+    "platelets",
+    "mpv"
+   ]
+  },
+  {
+   "id": "platelet-clumps",
+   "group": "platelet",
+   "name": {
+    "uz": "Trombotsit to‘plamlari (psevdotrombotsitopeniya)",
+    "ru": "Агрегаты тромбоцитов (псевдотромбоцитопения)",
+    "en": "Platelet clumps (pseudothrombocytopenia)"
+   },
+   "image": {
+    "file": "platelet_clumping",
+    "commonsTitle": "Platelet Clumping 8.jpg",
+    "author": "Prof. Erhabor Osaro",
+    "license": "CC BY-SA 4.0",
+    "captionTr": {
+     "uz": "Surtmada trombotsitlar to‘plami (psevdotrombotsitopeniya)",
+     "ru": "Агрегаты тромбоцитов в мазке (псевдотромбоцитопения)",
+     "en": "Platelet clumping on a blood film (pseudothrombocytopenia)"
+    }
+   },
+   "analytes": [
+    "platelets"
+   ]
+  },
+  {
+   "id": "platelet-satellitism",
+   "group": "platelet",
+   "name": {
+    "uz": "Trombotsit satellitizmi",
+    "ru": "Сателлитизм тромбоцитов",
+    "en": "Platelet satellitism"
+   },
+   "image": {
+    "file": "platelet_satellitism",
+    "commonsTitle": "Platelet Satellitism smear 2009-09-11.JPG",
+    "author": "Paulo Henrique Orlandi Mourao",
+    "license": "CC BY-SA 3.0",
+    "captionTr": {
+     "uz": "Trombotsit satellitizmi: trombotsitlar neytrofilga yopishgan (faqat EDTA li qonda)",
+     "ru": "Сателлитизм тромбоцитов: тромбоциты прилипли к нейтрофилу (только в крови с ЭДТА)",
+     "en": "Platelet satellitism: platelets stuck to a neutrophil (EDTA blood only)"
+    }
+   },
+   "analytes": [
+    "platelets"
+   ]
+  }
+ ],
+ "histoItems": [
+  {
+   "id": "simple_squamous",
+   "group": "epithelium",
+   "name": {
+    "uz": "Bir qavatli yassi epiteliy",
+    "ru": "Однослойный плоский эпителий",
+    "en": "Simple squamous epithelium"
+   },
+   "image": {
+    "file": "simple_squamous",
+    "commonsTitle": "Epithelial Tissues Simple Squamous Epithelium (41722161021).jpg",
+    "author": "Berkshire Community College Bioscience Image Library",
+    "license": "CC0 1.0",
+    "captionTr": {
+     "uz": "Yaxlit preparat (whole mount): odam epiteliysi; kattalashtirish 200x",
+     "ru": "Тотальный препарат (whole mount): эпителий человека; увеличение 200x",
+     "en": "Whole mount: human epithelium; magnification 200x"
+    }
+   }
+  },
+  {
+   "id": "simple_cuboidal",
+   "group": "epithelium",
+   "name": {
+    "uz": "Bir qavatli kubsimon epiteliy",
+    "ru": "Однослойный кубический эпителий",
+    "en": "Simple cuboidal epithelium"
+   },
+   "image": {
+    "file": "simple_cuboidal",
+    "commonsTitle": "Epithelial Tissues Simple Cuboidal Epithelium (41681552432).jpg",
+    "author": "Berkshire Community College Bioscience Image Library",
+    "license": "CC0 1.0",
+    "captionTr": {
+     "uz": "Ko‘ndalang kesma: buyrak kanalchasi; kattalashtirish 200x",
+     "ru": "Поперечный срез: почечный каналец; увеличение 200x",
+     "en": "Cross section: kidney tubule; magnification 200x"
+    }
+   }
+  },
+  {
+   "id": "simple_columnar",
+   "group": "epithelium",
+   "name": {
+    "uz": "Bir qavatli prizmatik epiteliy",
+    "ru": "Однослойный призматический эпителий",
+    "en": "Simple columnar epithelium"
+   },
+   "image": {
+    "file": "simple_columnar",
+    "commonsTitle": "Epithelial Tissues Simple Columnar Epithelium (27854453538).jpg",
+    "author": "Berkshire Community College Bioscience Image Library",
+    "license": "CC0 1.0",
+    "captionTr": {
+     "uz": "Ko‘ndalang kesma: sutemizuvchi ichagi; kattalashtirish 400x",
+     "ru": "Поперечный срез: кишка млекопитающего; увеличение 400x",
+     "en": "Cross section: mammalian gut; magnification 400x"
+    }
+   }
+  },
+  {
+   "id": "pseudostratified",
+   "group": "epithelium",
+   "name": {
+    "uz": "Ko‘p qatorli kiprikli epiteliy",
+    "ru": "Многорядный реснитчатый эпителий",
+    "en": "Pseudostratified ciliated columnar epithelium"
+   },
+   "image": {
+    "file": "pseudostratified",
+    "commonsTitle": "Epithelial Tissues Pseudostratified Columnar Epithelium (26915091897).jpg",
+    "author": "Berkshire Community College Bioscience Image Library",
+    "license": "CC0 1.0",
+    "captionTr": {
+     "uz": "Ko‘ndalang kesma: sutemizuvchi traxeyasi; kattalashtirish 200x",
+     "ru": "Поперечный срез: трахея млекопитающего; увеличение 200x",
+     "en": "Cross section: mammalian trachea; magnification 200x"
+    }
+   }
+  },
+  {
+   "id": "stratified_squamous",
+   "group": "epithelium",
+   "name": {
+    "uz": "Ko‘p qavatli yassi epiteliy",
+    "ru": "Многослойный плоский эпителий",
+    "en": "Stratified squamous epithelium"
+   },
+   "image": {
+    "file": "stratified_squamous",
+    "commonsTitle": "Epithelial Tissues Stratified Squamous Epithelium (40230837610).jpg",
+    "author": "Berkshire Community College Bioscience Image Library",
+    "license": "CC0 1.0",
+    "captionTr": {
+     "uz": "Ko‘ndalang kesma: ko‘p qavatli yassi epiteliy; kattalashtirish 100x",
+     "ru": "Поперечный срез: многослойный плоский эпителий; увеличение 100x",
+     "en": "Cross section: stratified squamous epithelium; magnification 100x"
+    }
+   }
+  },
+  {
+   "id": "transitional",
+   "group": "epithelium",
+   "name": {
+    "uz": "O‘tuvchi epiteliy",
+    "ru": "Переходный эпителий",
+    "en": "Transitional epithelium"
+   },
+   "image": {
+    "file": "transitional",
+    "commonsTitle": "Epithelial Tissues Transitional (27025225607).jpg",
+    "author": "Berkshire Community College Bioscience Image Library",
+    "license": "CC0 1.0",
+    "captionTr": {
+     "uz": "Ko‘ndalang kesma: siydik pufagi (qovuq); kattalashtirish 400x",
+     "ru": "Поперечный срез: мочевой пузырь; увеличение 400x",
+     "en": "Cross section: urinary bladder; magnification 400x"
+    }
+   }
+  },
+  {
+   "id": "loose_ct",
+   "group": "connective",
+   "name": {
+    "uz": "G‘ovak tolali biriktiruvchi to‘qima",
+    "ru": "Рыхлая волокнистая соединительная ткань",
+    "en": "Loose connective tissue"
+   },
+   "image": {
+    "file": "loose_ct",
+    "commonsTitle": "Connective Tissue Loose Aerolar (41743648512).jpg",
+    "author": "Berkshire Community College Bioscience Image Library",
+    "license": "CC0 1.0",
+    "captionTr": {
+     "uz": "To‘qima yoyilmasi (kesma emas); kattalashtirish 100x",
+     "ru": "Плёночный препарат (не срез); увеличение 100x",
+     "en": "Tissue spread (not a section); magnification 100x"
+    }
+   }
+  },
+  {
+   "id": "dense_regular",
+   "group": "connective",
+   "name": {
+    "uz": "Zich shakllangan biriktiruvchi to‘qima (pay)",
+    "ru": "Плотная оформленная соединительная ткань (сухожилие)",
+    "en": "Dense regular connective tissue (tendon)"
+   },
+   "image": {
+    "file": "dense_regular",
+    "commonsTitle": "Connective Tissue White Fibrous Connective (27986735128).jpg",
+    "author": "Berkshire Community College Bioscience Image Library",
+    "license": "CC0 1.0",
+    "captionTr": {
+     "uz": "Bo‘ylama kesma: pay; kattalashtirish 100x",
+     "ru": "Продольный срез: сухожилие; увеличение 100x",
+     "en": "Longitudinal section: tendon; magnification 100x"
+    }
+   }
+  },
+  {
+   "id": "adipose",
+   "group": "connective",
+   "name": {
+    "uz": "Yog‘ to‘qimasi (oq)",
+    "ru": "Жировая ткань (белая)",
+    "en": "Adipose tissue (white)"
+   },
+   "image": {
+    "file": "adipose",
+    "commonsTitle": "Connective Tissues Adipose (26915768737).jpg",
+    "author": "Berkshire Community College Bioscience Image Library",
+    "license": "CC0 1.0",
+    "captionTr": {
+     "uz": "Ko‘ndalang kesma; kattalashtirish 200x",
+     "ru": "Поперечный срез; увеличение 200x",
+     "en": "Cross section; magnification 200x"
+    }
+   }
+  },
+  {
+   "id": "hyaline",
+   "group": "connective",
+   "name": {
+    "uz": "Gialin tog‘ay",
+    "ru": "Гиалиновый хрящ",
+    "en": "Hyaline cartilage"
+   },
+   "image": {
+    "file": "hyaline",
+    "commonsTitle": "Connective Tissue Hyaline Cartilage (26989336187).jpg",
+    "author": "Berkshire Community College Bioscience Image Library",
+    "license": "CC0 1.0",
+    "captionTr": {
+     "uz": "Ko‘ndalang kesma: gialin tog‘ay; kattalashtirish 200x",
+     "ru": "Поперечный срез: гиалиновый хрящ; увеличение 200x",
+     "en": "Cross section: hyaline cartilage; magnification 200x"
+    }
+   }
+  },
+  {
+   "id": "elastic_cartilage",
+   "group": "connective",
+   "name": {
+    "uz": "Elastik tog‘ay",
+    "ru": "Эластический хрящ",
+    "en": "Elastic cartilage"
+   },
+   "image": {
+    "file": "elastic_cartilage",
+    "commonsTitle": "Connective Tissue Elastic Cartilage (41855666011).jpg",
+    "author": "Berkshire Community College Bioscience Image Library",
+    "license": "CC0 1.0",
+    "captionTr": {
+     "uz": "Ko‘ndalang kesma: sutemizuvchi elastik tog‘ayi; kattalashtirish 100x",
+     "ru": "Поперечный срез: эластический хрящ млекопитающего; увеличение 100x",
+     "en": "Cross section: mammalian elastic cartilage; magnification 100x"
+    }
+   }
+  },
+  {
+   "id": "fibrocartilage",
+   "group": "connective",
+   "name": {
+    "uz": "Tolali tog‘ay",
+    "ru": "Волокнистый хрящ",
+    "en": "Fibrocartilage"
+   },
+   "image": {
+    "file": "fibrocartilage",
+    "commonsTitle": "Connective Tissue Fibrocartilage (27988652098).jpg",
+    "author": "Berkshire Community College Bioscience Image Library",
+    "license": "CC0 1.0",
+    "captionTr": {
+     "uz": "Ko‘ndalang kesma: tolali tog‘ay; kattalashtirish 400x",
+     "ru": "Поперечный срез: волокнистый хрящ; увеличение 400x",
+     "en": "Cross section: fibrocartilage; magnification 400x"
+    }
+   }
+  },
+  {
+   "id": "bone",
+   "group": "connective",
+   "name": {
+    "uz": "Kompakt suyak to‘qimasi (osteon)",
+    "ru": "Компактная костная ткань (остеон)",
+    "en": "Compact bone (osteon)"
+   },
+   "image": {
+    "file": "bone",
+    "commonsTitle": "Connective Tissue Compact Bone (41068142774).jpg",
+    "author": "Berkshire Community College Bioscience Image Library",
+    "license": "CC0 1.0",
+    "captionTr": {
+     "uz": "Ko‘ndalang kesma: odam suyagining shliflangan (ground) preparati; kattalashtirish 200x",
+     "ru": "Поперечный срез: шлиф кости человека; увеличение 200x",
+     "en": "Cross section: ground human bone; magnification 200x"
+    }
+   }
+  },
+  {
+   "id": "skeletal",
+   "group": "muscle",
+   "name": {
+    "uz": "Skelet ko‘ndalang-targ‘il muskul to‘qimasi",
+    "ru": "Поперечнополосатая скелетная мышечная ткань",
+    "en": "Skeletal muscle"
+   },
+   "image": {
+    "file": "skeletal",
+    "commonsTitle": "Muscle Tissue Skeletal Muscle Fibers (40153601630).jpg",
+    "author": "Berkshire Community College Bioscience Image Library",
+    "license": "CC0 1.0",
+    "captionTr": {
+     "uz": "Skelet muskuli tolalari (ajratilgan, teased); kattalashtirish 200x",
+     "ru": "Волокна скелетной мышцы (расщеплённые, teased); увеличение 200x",
+     "en": "Teased skeletal muscle fibres; magnification 200x"
+    }
+   }
+  },
+  {
+   "id": "cardiac",
+   "group": "muscle",
+   "name": {
+    "uz": "Yurak muskul to‘qimasi",
+    "ru": "Поперечнополосатая сердечная мышечная ткань",
+    "en": "Cardiac muscle"
+   },
+   "image": {
+    "file": "cardiac",
+    "commonsTitle": "Cardiac muscle histology 400x.jpg",
+    "author": "Alexander G. Cheroske",
+    "license": "CC BY-SA 4.0",
+    "captionTr": {
+     "uz": "Yorug‘lik mikroskopida yurak muskuli, kattalashtirish 400x",
+     "ru": "Сердечная мышца в световом микроскопе, увеличение 400x",
+     "en": "Cardiac muscle in the light microscope, magnification 400x"
+    }
+   }
+  },
+  {
+   "id": "smooth",
+   "group": "muscle",
+   "name": {
+    "uz": "Silliq muskul to‘qimasi",
+    "ru": "Гладкая мышечная ткань",
+    "en": "Smooth muscle"
+   },
+   "image": {
+    "file": "smooth",
+    "commonsTitle": "Muscle Tissue Smooth (40087100000).jpg",
+    "author": "Berkshire Community College Bioscience Image Library",
+    "license": "CC0 1.0",
+    "captionTr": {
+     "uz": "Kesma: silliq muskul; kattalashtirish 400x",
+     "ru": "Срез: гладкая мышечная ткань; увеличение 400x",
+     "en": "Section: smooth muscle; magnification 400x"
+    }
+   }
+  },
+  {
+   "id": "neuron",
+   "group": "nerve",
+   "name": {
+    "uz": "Neyron (orqa miya motor neyroni)",
+    "ru": "Нейрон (мотонейрон спинного мозга)",
+    "en": "Neuron (spinal cord motor neuron)"
+   },
+   "image": {
+    "file": "neuron",
+    "commonsTitle": "Nervous Tissue Spinal Cord Motor Neuron (41850850452).jpg",
+    "author": "Berkshire Community College Bioscience Image Library",
+    "license": "CC0 1.0",
+    "captionTr": {
+     "uz": "Surtma: orqa miya (motor neyron); kattalashtirish 200x",
+     "ru": "Мазок: спинной мозг (мотонейрон); увеличение 200x",
+     "en": "Smear: spinal cord (motor neuron); magnification 200x"
+    }
+   }
+  },
+  {
+   "id": "nerve",
+   "group": "nerve",
+   "name": {
+    "uz": "Periferik nerv",
+    "ru": "Периферический нерв",
+    "en": "Peripheral nerve"
+   },
+   "image": {
+    "file": "nerve",
+    "commonsTitle": "Nervous Tissue Nerve Bundle (40106758860).jpg",
+    "author": "Berkshire Community College Bioscience Image Library",
+    "license": "CC0 1.0",
+    "captionTr": {
+     "uz": "Ko‘ndalang kesma: nerv; kattalashtirish 100x",
+     "ru": "Поперечный срез: нерв; увеличение 100x",
+     "en": "Cross section: nerve; magnification 100x"
+    }
+   }
+  },
+  {
+   "id": "liver",
+   "group": "organ",
+   "name": {
+    "uz": "Jigar (jigar bo‘lakchasi)",
+    "ru": "Печень (печёночная долька)",
+    "en": "Liver (lobule)"
+   },
+   "image": {
+    "file": "liver",
+    "commonsTitle": "Histopathology of liver zones.jpg",
+    "author": "Alexander Boyd, Owen Cain, Abhishek Chauhan, Gwilym James Webb",
+    "license": "CC BY 4.0",
+    "captionTr": {
+     "uz": "Retikulin bo‘yog‘i: normal jigar to‘qimasi; yuqori chapda portal yo‘l, pastki o‘ngda markaziy vena; 1–3-zonalar belgilangan.",
+     "ru": "Окраска на ретикулин: нормальная паренхима печени; вверху слева — портальный тракт, внизу справа — центральная вена; отмечены зоны 1–3.",
+     "en": "Reticulin stain: normal liver parenchyma; portal tract top left, central vein bottom right; zones 1–3 labelled."
+    }
+   }
+  },
+  {
+   "id": "kidney",
+   "group": "organ",
+   "name": {
+    "uz": "Buyrak (po‘stloq: tanacha va kanalchalar)",
+    "ru": "Почка (корковое вещество: тельце и канальцы)",
+    "en": "Kidney (cortex: corpuscle and tubules)"
+   },
+   "image": {
+    "file": "kidney",
+    "commonsTitle": "Benign kidney -- intermed mag.jpg",
+    "author": "Nephron (Wikimedia Commons)",
+    "license": "CC BY-SA 3.0",
+    "captionTr": {
+     "uz": "Buyrak biopsiyasidagi o‘zgarmagan (xavfsiz) buyrak to‘qimasi. Bo‘yoq: gematoksilin-eozin.",
+     "ru": "Неизменённая (доброкачественная) ткань почки в биоптате. Окраска гематоксилином и эозином.",
+     "en": "Benign kidney tissue on a kidney biopsy. H&E stain."
+    }
+   }
+  }
+ ],
+ "manualCalcInfo": {
+  "chamber": {
+   "formula": [
+    {
+     "uz": "Hujayra/µL = sanalgan hujayralar × suyultirish ÷ (kvadratlar soni × bitta kvadrat maydoni, mm² × kamera chuqurligi, mm)",
+     "ru": "Клеток/мкл = подсчитанные клетки × разведение ÷ (число квадратов × площадь квадрата, мм² × глубина камеры, мм)",
+     "en": "Cells/µL = cells counted × dilution ÷ (squares counted × area of one square, mm² × chamber depth, mm)"
+    },
+    {
+     "uz": "1 µL = 1 mm³; ×10⁹/L = hujayra/µL ÷ 1000. WHO misoli: Neubauer, 4 burchak kvadrat (har biri 1 mm²), chuqurlik 0,1 mm, suyultirish 1:20, 188 leykotsit → 9,4 × 10⁹/L.",
+     "ru": "1 мкл = 1 мм³; ×10⁹/л = клеток/мкл ÷ 1000. Пример ВОЗ: камера Нейбауэра, 4 угловых квадрата (по 1 мм²), глубина 0,1 мм, разведение 1:20, 188 лейкоцитов → 9,4 × 10⁹/л.",
+     "en": "1 µL = 1 mm³; ×10⁹/L = cells/µL ÷ 1000. WHO example: improved Neubauer, 4 corner squares (1 mm² each), depth 0.1 mm, 1 in 20 dilution, 188 leukocytes → 9.4 × 10⁹/L."
+    }
+   ],
+   "refs": [
+    {
+     "source_id": "who-basic-lab-2003",
+     "citation": "WHO. Manual of basic techniques for a health laboratory, 2nd ed. World Health Organization, 2003. ISBN 92 4 154530 5",
+     "url": "https://iris.who.int/handle/10665/42295",
+     "locator": "9.6.2–9.6.3 (Neubauer, leukocytes); 8.3.3 (Fuchs–Rosenthal); 9.5"
+    }
+   ]
+  },
+  "differential": {
+   "formula": [
+    {
+     "uz": "Mutlaq son (×10⁹/L) = hujayra turi, % ÷ 100 × WBC (×10⁹/L)",
+     "ru": "Абсолютное число (×10⁹/л) = доля клеток, % ÷ 100 × WBC (×10⁹/л)",
+     "en": "Absolute count (×10⁹/L) = cell type, % ÷ 100 × WBC (×10⁹/L)"
+    },
+    {
+     "uz": "Yadroli eritrotsitlar (n — 100 leykotsitga): NRBC = n × WBC ÷ (100 + n); tuzatilgan WBC = WBC − NRBC.",
+     "ru": "Нормобласты (n — на 100 лейкоцитов): NRBC = n × WBC ÷ (100 + n); исправленный WBC = WBC − NRBC.",
+     "en": "Nucleated RBCs (n per 100 leukocytes): NRBC = n × WBC ÷ (100 + n); corrected WBC = WBC − NRBC."
+    }
+   ],
+   "refs": [
+    {
+     "source_id": "who-basic-lab-2003",
+     "citation": "WHO. Manual of basic techniques for a health laboratory, 2nd ed. World Health Organization, 2003. ISBN 92 4 154530 5",
+     "url": "https://iris.who.int/handle/10665/42295",
+     "locator": "9.13.1, 9.13.3 (number concentration); 9.6.4 (correction for nucleated erythrocytes)"
+    }
+   ]
+  },
+  "reticulocytes": {
+   "formula": [
+    {
+     "uz": "Retikulotsitlar, % = sanalgan retikulotsitlar ÷ ko‘rilgan eritrotsitlar × 100. Mutlaq son (×10⁹/L) = RBC (×10¹²/L) × % × 10.",
+     "ru": "Ретикулоциты, % = подсчитанные ретикулоциты ÷ просмотренные эритроциты × 100. Абсолютное число (×10⁹/л) = RBC (×10¹²/л) × % × 10.",
+     "en": "Reticulocytes, % = reticulocytes counted ÷ erythrocytes examined × 100. Absolute count (×10⁹/L) = RBC (×10¹²/L) × % × 10."
+    },
+    {
+     "uz": "Tuzatilgan % = % × bemor Ht ÷ 45. RPI = tuzatilgan % ÷ yetilish koeffitsiyenti.",
+     "ru": "Исправленный % = % × Ht пациента ÷ 45. RPI = исправленный % ÷ поправка на созревание.",
+     "en": "Corrected % = % × patient Hct ÷ 45. RPI = corrected % ÷ maturation factor."
+    },
+    {
+     "uz": "Yetilish koeffitsiyenti jadvali [3]: Ht 45 % → 1,0; 35 % → 1,5; 25 % → 2,0; 20 % → 2,5.",
+     "ru": "Таблица поправки на созревание [3]: Ht 45 % → 1,0; 35 % → 1,5; 25 % → 2,0; 20 % → 2,5.",
+     "en": "Maturation factor table [3]: Hct 45% → 1.0; 35% → 1.5; 25% → 2.0; 20% → 2.5."
+    }
+   ],
+   "refs": [
+    {
+     "source_id": "who-basic-lab-2003",
+     "citation": "WHO. Manual of basic techniques for a health laboratory, 2nd ed. World Health Organization, 2003. ISBN 92 4 154530 5",
+     "url": "https://iris.who.int/handle/10665/42295",
+     "locator": "9.12.4 (calculation)"
+    },
+    {
+     "source_id": "calc-chueh-2022",
+     "citation": "Chueh HW, et al. Korean clinical practice guidelines for the diagnosis of hereditary hemolytic anemia. Blood Res. 2022. doi:10.5045/br.2022.2021224",
+     "url": "https://doi.org/10.5045/br.2022.2021224",
+     "locator": "Laboratory tests for screening"
+    },
+    {
+     "source_id": "calc-kroll-2015",
+     "citation": "Kroll M. Hematology. In: Hui D, Leung AA, Padwal R, eds. Approach to Internal Medicine. Springer, 2015. doi:10.1007/978-3-319-11821-5_6",
+     "url": "https://doi.org/10.1007/978-3-319-11821-5_6",
+     "locator": "Reticulocyte production index"
+    },
+    {
+     "source_id": "calc-hillman-1969",
+     "citation": "Hillman RS. Characteristics of marrow production and reticulocyte maturation in normal man in response to anemia. J Clin Invest. 1969. doi:10.1172/JCI106001",
+     "url": "https://doi.org/10.1172/JCI106001",
+     "locator": "Abstract"
+    }
+   ]
+  },
+  "light": {
+   "formula": [
+    {
+     "uz": "Ekssudat, agar kamida bittasi bajarilsa: (1) suyuqlik oqsili ÷ zardob oqsili > 0,5; (2) suyuqlik LDH ÷ zardob LDH > 0,6; (3) suyuqlik LDH > zardob LDH yuqori chegarasining 2/3 qismi.",
+     "ru": "Экссудат, если выполнен хотя бы один: (1) белок жидкости ÷ белок сыворотки > 0,5; (2) ЛДГ жидкости ÷ ЛДГ сыворотки > 0,6; (3) ЛДГ жидкости > 2/3 верхней границы нормы ЛДГ сыворотки.",
+     "en": "Exudate if at least one is met: (1) fluid protein ÷ serum protein > 0.5; (2) fluid LDH ÷ serum LDH > 0.6; (3) fluid LDH > 2/3 of the upper limit of normal serum LDH."
+    }
+   ],
+   "refs": [
+    {
+     "source_id": "calc-light-1972",
+     "citation": "Light RW, Macgregor MI, Luchsinger PC, Ball WC. Pleural effusions: the diagnostic separation of transudates and exudates. Ann Intern Med. 1972. doi:10.7326/0003-4819-77-4-507",
+     "url": "https://doi.org/10.7326/0003-4819-77-4-507",
+     "locator": "Original criteria"
+    },
+    {
+     "source_id": "calc-harding-2025",
+     "citation": "Harding WC, et al. Pleural effusion: shedding light on pleural disease beyond infection and malignancy. Medicina (Kaunas). 2025. doi:10.3390/medicina61030443",
+     "url": "https://doi.org/10.3390/medicina61030443",
+     "locator": "Table 1; Diagnosis"
+    }
+   ]
+  },
+  "colourIndex": {
+   "formula": [
+    {
+     "uz": "MCHC (g/dL) = Hb (g/dL) ÷ Ht (%) × 100 — WHO qo‘llanmasidagi misol: 15,0 ÷ 43 × 100 ≈ 35.",
+     "ru": "MCHC (г/дл) = Hb (г/дл) ÷ Ht (%) × 100 — пример из руководства ВОЗ: 15,0 ÷ 43 × 100 ≈ 35.",
+     "en": "MCHC (g/dL) = Hb (g/dL) ÷ Hct (%) × 100 — WHO manual example: 15.0 ÷ 43 × 100 ≈ 35."
+    }
+   ],
+   "refs": [
+    {
+     "source_id": "who-basic-lab-2003",
+     "citation": "WHO. Manual of basic techniques for a health laboratory, 2nd ed. World Health Organization, 2003. ISBN 92 4 154530 5",
+     "url": "https://iris.who.int/handle/10665/42295",
+     "locator": "9.4.1 (MCHC)"
+    },
+    {
+     "source_id": "medlineplus-rbc-indices",
+     "citation": "MedlinePlus. Red Blood Cell (RBC) Indices. U.S. National Library of Medicine",
+     "url": "https://medlineplus.gov/lab-tests/red-blood-cell-rbc-indices/",
+     "locator": "What are RBC indices?"
+    }
+   ]
+  },
+  "nechiporenko": {
+   "formula": [
+    {
+     "uz": "x (1 µL cho‘kmada) = A ÷ V, bunda A — to‘rda sanalgan hujayralar, V — sanalgan to‘r hajmi, µL. N (1 ml siydikda) = x × cho‘kma hajmi (µL) ÷ sentrifugalangan siydik (ml) [1, 44-bet].",
+     "ru": "x (в 1 мкл осадка) = A ÷ V, где A — клетки, подсчитанные в сетке, V — объём подсчитанной сетки, мкл. N (в 1 мл мочи) = x × объём осадка (мкл) ÷ центрифугированная моча (мл) [1, с. 44].",
+     "en": "x (per 1 µL of sediment) = A ÷ V, where A is the cells counted and V the volume of the ruling counted, µL. N (per 1 ml of urine) = x × sediment volume (µL) ÷ urine centrifuged (ml) [1, p. 44]."
+    },
+    {
+     "uz": "Misol (Aripova [2, 99-bet]): 10 ml siydik, 1 ml cho‘kma, Goryaev to‘rining 100 katta kvadrati (0,4 µL) → N = A × 250.",
+     "ru": "Пример (Арипова [2, с. 99]): 10 мл мочи, 1 мл осадка, 100 больших квадратов сетки Горяева (0,4 мкл) → N = A × 250.",
+     "en": "Example (Aripova [2, p. 99]): 10 ml urine, 1 ml sediment, 100 large Goryaev squares (0.4 µL) → N = A × 250."
+    }
+   ],
+   "refs": [
+    {
+     "source_id": "book-lyubina-1984",
+     "citation": "Любина А.Я., Ильичева Л.П., Катасонова Т.В., Петросова С.А. Клинические лабораторные исследования. М.: Медицина, 1984",
+     "url": null,
+     "locator": "Метод Нечипоренко, pp. 43–44"
+    },
+    {
+     "source_id": "book-aripova-2007",
+     "citation": "Aripova G.S., Po‘latova F.G., Nazarova N.S., Toirova Z.S. Klinik va biokimyoviy tekshiruv usullari. Toshkent: G‘afur G‘ulom NMIU, 2007. ISBN 978-9943-03-034-3",
+     "url": null,
+     "locator": "10.5 Nechiporenko usuli, p. 99"
+    }
+   ]
+  },
+  "addis": {
+   "formula": [
+    {
+     "uz": "Sentrifugaga 12 daqiqalik siydik olinadi: Q = v ÷ (t × 5), v — yig‘ilgan siydik (ml), t — yig‘ish vaqti (soat) [1, 42-bet; 2, 100-bet].",
+     "ru": "Центрифугируют мочу, выделенную за 12 минут: Q = v ÷ (t × 5), v — собранная моча (мл), t — время сбора (ч) [1, с. 42; 2, с. 100].",
+     "en": "Centrifuge the urine passed in 12 minutes: Q = v ÷ (t × 5), v — urine collected (ml), t — collection time (h) [1, p. 42; 2, p. 100]."
+    },
+    {
+     "uz": "x (1 µL cho‘kmada) = A ÷ V. Sutkada = x × cho‘kma hajmi (µL) × 5 × 24: 0,5 ml cho‘kmada x × 60 000, 1 ml da x × 120 000 [1, 43-bet; 2, 100-bet].",
+     "ru": "x (в 1 мкл осадка) = A ÷ V. За сутки = x × объём осадка (мкл) × 5 × 24: при 0,5 мл осадка x × 60 000, при 1 мл — x × 120 000 [1, с. 43; 2, с. 100].",
+     "en": "x (per 1 µL of sediment) = A ÷ V. Per day = x × sediment volume (µL) × 5 × 24: x × 60,000 for 0.5 ml of sediment, x × 120,000 for 1 ml [1, p. 43; 2, p. 100]."
+    }
+   ],
+   "refs": [
+    {
+     "source_id": "book-lyubina-1984",
+     "citation": "Любина А.Я., Ильичева Л.П., Катасонова Т.В., Петросова С.А. Клинические лабораторные исследования. М.: Медицина, 1984",
+     "url": null,
+     "locator": "Метод Каковского — Аддиса, pp. 42–43"
+    },
+    {
+     "source_id": "book-aripova-2007",
+     "citation": "Aripova G.S., Po‘latova F.G., Nazarova N.S., Toirova Z.S. Klinik va biokimyoviy tekshiruv usullari. Toshkent: G‘afur G‘ulom NMIU, 2007. ISBN 978-9943-03-034-3",
+     "url": null,
+     "locator": "10.6 Kakovskiy–Addis usuli, p. 100"
+    }
+   ]
+  },
+  "zimnitsky": {
+   "formula": [
+    {
+     "uz": "Odatdagi suv va ovqat rejimida 06:00 da qovuq bo‘shatiladi, so‘ng har 3 soatda alohida idishga — jami 8 porsiya. 1–4-porsiyalar kunduzgi, 5–8 — tungi diurez; yig‘indisi — sutkalik diurez [1, 16-bet; 2, 98-bet].",
+     "ru": "При обычном водно-пищевом режиме в 6:00 опорожняют мочевой пузырь, затем каждые 3 часа собирают мочу в отдельную ёмкость — всего 8 порций. Порции 1–4 — дневной, 5–8 — ночной диурез; сумма — суточный диурез [1, с. 16; 2, с. 98].",
+     "en": "On the usual diet and fluids the bladder is emptied at 06:00, then urine is collected every 3 hours into separate containers — 8 portions. Portions 1–4 are daytime, 5–8 night-time diuresis; their sum is the 24-hour diuresis [1, p. 16; 2, p. 98]."
+    },
+    {
+     "uz": "Har porsiyada hajm va nisbiy zichlik o‘lchanadi. Zichlik amplitudasi = eng yuqori − eng past zichlik; sutkalik diurez ichilgan suyuqlikka foiz sifatida ham hisoblanadi.",
+     "ru": "В каждой порции измеряют объём и относительную плотность. Амплитуда плотности = максимальная − минимальная; суточный диурез считают и в процентах от выпитой жидкости.",
+     "en": "Volume and specific gravity are measured in each portion. Specific-gravity amplitude = highest − lowest; the 24-hour diuresis is also expressed as a percentage of fluid drunk."
+    }
+   ],
+   "refs": [
+    {
+     "source_id": "book-lyubina-1984",
+     "citation": "Любина А.Я., Ильичева Л.П., Катасонова Т.В., Петросова С.А. Клинические лабораторные исследования. М.: Медицина, 1984",
+     "url": null,
+     "locator": "§ 2. Проба Зимницкого, pp. 16–17"
+    },
+    {
+     "source_id": "book-aripova-2007",
+     "citation": "Aripova G.S., Po‘latova F.G., Nazarova N.S., Toirova Z.S. Klinik va biokimyoviy tekshiruv usullari. Toshkent: G‘afur G‘ulom NMIU, 2007. ISBN 978-9943-03-034-3",
+     "url": null,
+     "locator": "10.4 Zimnitskiy usuli, pp. 98–99"
+    },
+    {
+     "source_id": "book-sobirova-2006",
+     "citation": "Sobirova R.A., Abrorov O.A., Inoyatova F.X., Aripov A.N. Biologik kimyo. Toshkent: Yangi asr avlodi, 2006. ISBN 978-9943-08-010-2",
+     "url": "https://biochem.medprof.tma.uz/wp-content/uploads/2018/06/Sobirova-R.A-biokimyo.pdf",
+     "locator": "XVIII bob — Buyrak biokimyosi va siydik"
+    }
+   ]
   }
  }
 }
