@@ -8587,4 +8587,11 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get autoPresTplQa => 'Savol';
+
+  @override
+  String get histoTitle => 'Gistologiya';
+
+  @override
+  String get histoLabCardBody =>
+      'To‘qimalar va a’zolar: haqiqiy mikrofotolar, belgilar, mashq';
 }

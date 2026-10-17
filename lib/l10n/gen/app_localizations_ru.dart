@@ -8760,4 +8760,11 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get autoPresTplQa => 'Вопрос';
+
+  @override
+  String get histoTitle => 'Гистология';
+
+  @override
+  String get histoLabCardBody =>
+      'Ткани и органы: настоящие микрофото, признаки, тренировка';
 }

@@ -15,6 +15,7 @@ import '../features/cytology/cytology_more_screens.dart';
 import '../features/cytology/cytology_screens.dart';
 import '../features/differential/diff_eyes_free_screens.dart';
 import '../features/bloodgroup/bloodgroup_screens.dart';
+import '../features/histology/histology_screens.dart';
 import '../features/spermogram/spermogram_screens.dart';
 import '../features/daily/daily_screens.dart';
 import '../features/differential/differential_entry_points.dart';
@@ -177,9 +178,8 @@ GoRouter buildRouter(
             path: 'purchase',
             // `?feature=` — boshlash tugmasidan (qaysi imkoniyat uchun).
             builder: (context, state) => PurchaseScreen(
-              feature: Feature.values.asNameMap()[state
-                  .uri
-                  .queryParameters['feature']],
+              feature: Feature.values
+                  .asNameMap()[state.uri.queryParameters['feature']],
             ),
           ),
           GoRoute(
@@ -458,6 +458,38 @@ GoRouter buildRouter(
                       GoRoute(
                         path: 'quiz',
                         builder: (context, state) => const BgQuizScreen(),
+                      ),
+                    ],
+                  ),
+                  // Gistologiya: to'qimalar va a'zolar (mikrofotolar), bo'yash
+                  // usullari, "Bu qaysi to'qima?" mashqi, rasm mualliflari.
+                  GoRoute(
+                    path: 'histology',
+                    builder: (context, state) => const HistologyScreen(),
+                    routes: [
+                      GoRoute(
+                        path: 'items',
+                        builder: (context, state) => const HistoItemsScreen(),
+                        routes: [
+                          GoRoute(
+                            path: ':id',
+                            builder: (context, state) => HistoItemScreen(
+                              itemId: state.pathParameters['id']!,
+                            ),
+                          ),
+                        ],
+                      ),
+                      GoRoute(
+                        path: 'stains',
+                        builder: (context, state) => const HistoStainsScreen(),
+                      ),
+                      GoRoute(
+                        path: 'quiz',
+                        builder: (context, state) => const HistoQuizScreen(),
+                      ),
+                      GoRoute(
+                        path: 'credits',
+                        builder: (context, state) => const HistoCreditsScreen(),
                       ),
                     ],
                   ),

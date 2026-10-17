@@ -15003,6 +15003,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Question'**
   String get autoPresTplQa;
+
+  /// Lab tab: histology section title (tissues and organs)
+  ///
+  /// In en, this message translates to:
+  /// **'Histology'**
+  String get histoTitle;
+
+  /// Lab tab: histology picture card subtitle
+  ///
+  /// In en, this message translates to:
+  /// **'Tissues and organs: real micrographs, key features, practice'**
+  String get histoLabCardBody;
 }
 
 class _AppLocalizationsDelegate

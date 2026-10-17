@@ -8725,4 +8725,11 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get autoPresTplQa => 'Question';
+
+  @override
+  String get histoTitle => 'Histology';
+
+  @override
+  String get histoLabCardBody =>
+      'Tissues and organs: real micrographs, key features, practice';
 }

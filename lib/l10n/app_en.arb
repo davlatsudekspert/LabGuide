@@ -4955,5 +4955,13 @@
   "autoPresTplBullets": "Points",
   "autoPresTplTable": "Table",
   "autoPresTplFigure": "Image",
-  "autoPresTplQa": "Question"
+  "autoPresTplQa": "Question",
+  "histoTitle": "Histology",
+  "histoLabCardBody": "Tissues and organs: real micrographs, key features, practice",
+  "@histoTitle": {
+    "description": "Lab tab: histology section title (tissues and organs)"
+  },
+  "@histoLabCardBody": {
+    "description": "Lab tab: histology picture card subtitle"
+  }
 }

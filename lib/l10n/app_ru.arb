@@ -2483,5 +2483,7 @@
   "autoPresTplBullets": "Пункты",
   "autoPresTplTable": "Таблица",
   "autoPresTplFigure": "Рисунок",
-  "autoPresTplQa": "Вопрос"
+  "autoPresTplQa": "Вопрос",
+  "histoTitle": "Гистология",
+  "histoLabCardBody": "Ткани и органы: настоящие микрофото, признаки, тренировка"
 }

@@ -3,6 +3,7 @@
 //   NODE_PATH=$(npm root -g) node tool/illustrations/render.cjs --cells [nom ...]
 // --sperm: spermogramma kartasi (tool/illustrations/sperm/*.svg) → assets/spermogram/<nom>.png.
 // --bloodgroup: qon guruhi kartasi (tool/illustrations/bloodgroup/*.svg) → assets/bloodgroup/<nom>.png.
+// --histology: gistologiya kartasi (tool/illustrations/histology/*.svg) → assets/histology/<nom>.png.
 // --cyto: sitologiya sxemalari (tool/illustrations/cyto/*.svg) → assets/cytology/<nom>.png.
 // --cells: leykoformula hujayra sxemalari (tool/illustrations/cells/*.svg,
 // o'lcham SVG dan) → assets/differential/<nom>.png.
@@ -15,10 +16,13 @@ const args = process.argv.slice(2);
 const cyto = args[0] === '--cyto';
 const sperm = args[0] === '--sperm';
 const blood = args[0] === '--bloodgroup';
-const cells = args[0] === '--cells' || cyto || sperm || blood;
+const histo = args[0] === '--histology';
+const cells = args[0] === '--cells' || cyto || sperm || blood || histo;
 const rest = cells ? args.slice(1) : args;
-const srcDir = blood ? join(here, 'bloodgroup') : sperm ? join(here, 'sperm') : cyto ? join(here, 'cyto') : cells ? join(here, 'cells') : here;
-const out = blood
+const srcDir = histo ? join(here, 'histology') : blood ? join(here, 'bloodgroup') : sperm ? join(here, 'sperm') : cyto ? join(here, 'cyto') : cells ? join(here, 'cells') : here;
+const out = histo
+  ? join(here, '../../assets/histology')
+  : blood
   ? join(here, '../../assets/bloodgroup')
   : sperm
   ? join(here, '../../assets/spermogram')
