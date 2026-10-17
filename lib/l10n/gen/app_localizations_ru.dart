@@ -8315,4 +8315,85 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get diffLimitsSourceNote =>
       'Значения по умолчанию — 95 % интервал для взрослых (Harrison’s Manual of Medicine, табл. 64-1); палочкоядерные — Любина 1984, табл. 6. У детей и в некоторых этнических группах (например, Duffy-отрицательных) норма другая.';
+
+  @override
+  String get cytoAdequacyTitle => 'Качество образца';
+
+  @override
+  String get cytoAdequacySub =>
+      'Bethesda 2014: пригоден или нет, частые артефакты';
+
+  @override
+  String get cytoArtefactsTitle => 'Частые артефакты';
+
+  @override
+  String get cytoReactiveTitle => 'Реактивные изменения и атипия';
+
+  @override
+  String get cytoReactiveSub =>
+      'Воспаление, репарация, облучение, ВМС против ASC-US и LSIL';
+
+  @override
+  String get cytoReactiveIntro =>
+      'В системе Bethesda реактивные клеточные изменения (воспаление, включая репарацию, лимфоцитарный цервицит, облучение, ВМС) — неопухолевые находки в рамках NILM.';
+
+  @override
+  String get cytoCompareTitle => 'Сравнение';
+
+  @override
+  String get cytoCompareNone =>
+      'в указанных источниках отдельного критерия нет';
+
+  @override
+  String get cytoReactiveTypesTitle => 'Виды реактивных изменений';
+
+  @override
+  String get cytoMaturationTitle => 'Индекс созревания';
+
+  @override
+  String get cytoMaturationSub =>
+      'Парабазальные : промежуточные : поверхностные — калькулятор';
+
+  @override
+  String get cytoMiCalcTitle => 'Калькулятор';
+
+  @override
+  String get cytoMiParabasal => 'Парабазальные клетки';
+
+  @override
+  String get cytoMiIntermediate => 'Промежуточные клетки';
+
+  @override
+  String get cytoMiSuperficial => 'Поверхностные клетки';
+
+  @override
+  String get cytoMiEmpty =>
+      'Введите число одиночных клеток (целые числа); хотя бы одно больше 0.';
+
+  @override
+  String get cytoMiResult =>
+      'Индекс созревания (парабазальные : промежуточные : поверхностные)';
+
+  @override
+  String cytoMiTotal(int n) {
+    return 'Подсчитано клеток: $n';
+  }
+
+  @override
+  String get cytoMiCaveat =>
+      'Это только арифметика. Трактовка зависит от возраста, дня цикла, беременности, гормонов и воспаления — её даёт цитолог или врач.';
+
+  @override
+  String get cytoOtherTitle => 'Другие материалы';
+
+  @override
+  String get cytoOtherSub =>
+      'Моча, серозные жидкости, мокрота: категории заключений';
+
+  @override
+  String get cytoOtherIntro =>
+      'Краткий обзор: только названия международных категорий заключений. Критерии и показатели риска — в источниках.';
+
+  @override
+  String get cytoCategoriesTitle => 'Категории';
 }

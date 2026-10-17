@@ -14325,6 +14325,144 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Defaults are adult 95 % intervals (Harrison’s Manual of Medicine, Table 64-1); bands — Lyubina 1984, Table 6. Ranges differ in children and in some ethnic groups (e.g. Duffy-negative).'**
   String get diffLimitsSourceNote;
+
+  /// No description provided for @cytoAdequacyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Specimen adequacy'**
+  String get cytoAdequacyTitle;
+
+  /// No description provided for @cytoAdequacySub.
+  ///
+  /// In en, this message translates to:
+  /// **'Bethesda 2014: satisfactory or not, common artefacts'**
+  String get cytoAdequacySub;
+
+  /// No description provided for @cytoArtefactsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Common artefacts'**
+  String get cytoArtefactsTitle;
+
+  /// No description provided for @cytoReactiveTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Reactive changes vs atypia'**
+  String get cytoReactiveTitle;
+
+  /// No description provided for @cytoReactiveSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Inflammation, repair, radiation, IUD vs ASC-US and LSIL'**
+  String get cytoReactiveSub;
+
+  /// No description provided for @cytoReactiveIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'In the Bethesda system reactive cellular changes (inflammation including repair, lymphocytic cervicitis, radiation, IUD) are non-neoplastic findings within NILM.'**
+  String get cytoReactiveIntro;
+
+  /// No description provided for @cytoCompareTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Side by side'**
+  String get cytoCompareTitle;
+
+  /// No description provided for @cytoCompareNone.
+  ///
+  /// In en, this message translates to:
+  /// **'no separate criterion in the cited sources'**
+  String get cytoCompareNone;
+
+  /// No description provided for @cytoReactiveTypesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Types of reactive change'**
+  String get cytoReactiveTypesTitle;
+
+  /// No description provided for @cytoMaturationTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Maturation index'**
+  String get cytoMaturationTitle;
+
+  /// No description provided for @cytoMaturationSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Parabasal : intermediate : superficial — calculator'**
+  String get cytoMaturationSub;
+
+  /// No description provided for @cytoMiCalcTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Calculator'**
+  String get cytoMiCalcTitle;
+
+  /// No description provided for @cytoMiParabasal.
+  ///
+  /// In en, this message translates to:
+  /// **'Parabasal cells'**
+  String get cytoMiParabasal;
+
+  /// No description provided for @cytoMiIntermediate.
+  ///
+  /// In en, this message translates to:
+  /// **'Intermediate cells'**
+  String get cytoMiIntermediate;
+
+  /// No description provided for @cytoMiSuperficial.
+  ///
+  /// In en, this message translates to:
+  /// **'Superficial cells'**
+  String get cytoMiSuperficial;
+
+  /// No description provided for @cytoMiEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the counts of single cells (whole numbers); at least one must be above 0.'**
+  String get cytoMiEmpty;
+
+  /// No description provided for @cytoMiResult.
+  ///
+  /// In en, this message translates to:
+  /// **'Maturation index (parabasal : intermediate : superficial)'**
+  String get cytoMiResult;
+
+  /// No description provided for @cytoMiTotal.
+  ///
+  /// In en, this message translates to:
+  /// **'Cells counted: {n}'**
+  String cytoMiTotal(int n);
+
+  /// No description provided for @cytoMiCaveat.
+  ///
+  /// In en, this message translates to:
+  /// **'This is arithmetic only. Interpretation depends on age, cycle day, pregnancy, hormones and inflammation — the cytologist or clinician interprets.'**
+  String get cytoMiCaveat;
+
+  /// No description provided for @cytoOtherTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Other specimens'**
+  String get cytoOtherTitle;
+
+  /// No description provided for @cytoOtherSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Urine, serous fluids, sputum: reporting categories'**
+  String get cytoOtherSub;
+
+  /// No description provided for @cytoOtherIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'A brief overview: only the names of the international reporting categories. Criteria and risk figures are in the sources.'**
+  String get cytoOtherIntro;
+
+  /// No description provided for @cytoCategoriesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Categories'**
+  String get cytoCategoriesTitle;
 }
 
 class _AppLocalizationsDelegate

@@ -8296,4 +8296,84 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get diffLimitsSourceNote =>
       'Defaults are adult 95 % intervals (Harrison’s Manual of Medicine, Table 64-1); bands — Lyubina 1984, Table 6. Ranges differ in children and in some ethnic groups (e.g. Duffy-negative).';
+
+  @override
+  String get cytoAdequacyTitle => 'Specimen adequacy';
+
+  @override
+  String get cytoAdequacySub =>
+      'Bethesda 2014: satisfactory or not, common artefacts';
+
+  @override
+  String get cytoArtefactsTitle => 'Common artefacts';
+
+  @override
+  String get cytoReactiveTitle => 'Reactive changes vs atypia';
+
+  @override
+  String get cytoReactiveSub =>
+      'Inflammation, repair, radiation, IUD vs ASC-US and LSIL';
+
+  @override
+  String get cytoReactiveIntro =>
+      'In the Bethesda system reactive cellular changes (inflammation including repair, lymphocytic cervicitis, radiation, IUD) are non-neoplastic findings within NILM.';
+
+  @override
+  String get cytoCompareTitle => 'Side by side';
+
+  @override
+  String get cytoCompareNone => 'no separate criterion in the cited sources';
+
+  @override
+  String get cytoReactiveTypesTitle => 'Types of reactive change';
+
+  @override
+  String get cytoMaturationTitle => 'Maturation index';
+
+  @override
+  String get cytoMaturationSub =>
+      'Parabasal : intermediate : superficial — calculator';
+
+  @override
+  String get cytoMiCalcTitle => 'Calculator';
+
+  @override
+  String get cytoMiParabasal => 'Parabasal cells';
+
+  @override
+  String get cytoMiIntermediate => 'Intermediate cells';
+
+  @override
+  String get cytoMiSuperficial => 'Superficial cells';
+
+  @override
+  String get cytoMiEmpty =>
+      'Enter the counts of single cells (whole numbers); at least one must be above 0.';
+
+  @override
+  String get cytoMiResult =>
+      'Maturation index (parabasal : intermediate : superficial)';
+
+  @override
+  String cytoMiTotal(int n) {
+    return 'Cells counted: $n';
+  }
+
+  @override
+  String get cytoMiCaveat =>
+      'This is arithmetic only. Interpretation depends on age, cycle day, pregnancy, hormones and inflammation — the cytologist or clinician interprets.';
+
+  @override
+  String get cytoOtherTitle => 'Other specimens';
+
+  @override
+  String get cytoOtherSub =>
+      'Urine, serous fluids, sputum: reporting categories';
+
+  @override
+  String get cytoOtherIntro =>
+      'A brief overview: only the names of the international reporting categories. Criteria and risk figures are in the sources.';
+
+  @override
+  String get cytoCategoriesTitle => 'Categories';
 }

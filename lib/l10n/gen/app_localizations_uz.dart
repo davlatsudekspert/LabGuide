@@ -8188,4 +8188,82 @@ class AppLocalizationsUz extends AppLocalizations {
   @override
   String get diffLimitsSourceNote =>
       'Sukut qiymatlari — kattalar uchun 95 % oraliq (Harrison’s Manual of Medicine, 64-1-jadval); tayoqchalar — Lyubina 1984, 6-jadval. Bolalarda va ayrim etnik guruhlarda (masalan, Duffy-manfiy) me’yor farq qiladi.';
+
+  @override
+  String get cytoAdequacyTitle => 'Namuna sifati';
+
+  @override
+  String get cytoAdequacySub =>
+      'Bethesda 2014: yaroqli yoki yo‘q, ko‘p uchraydigan artefaktlar';
+
+  @override
+  String get cytoArtefactsTitle => 'Ko‘p uchraydigan artefaktlar';
+
+  @override
+  String get cytoReactiveTitle => 'Reaktiv o‘zgarishlar va atipiya farqi';
+
+  @override
+  String get cytoReactiveSub =>
+      'Yallig‘lanish, repair, nur, BIV — ASC-US va LSIL bilan solishtirish';
+
+  @override
+  String get cytoReactiveIntro =>
+      'Bethesda tizimida reaktiv hujayra o‘zgarishlari (yallig‘lanish va repair, limfotsitar servitsit, nur ta’siri, BIV) — NILM ichidagi o‘smaga aloqasiz topilmalar.';
+
+  @override
+  String get cytoCompareTitle => 'Yonma-yon solishtirish';
+
+  @override
+  String get cytoCompareNone => 'keltirilgan manbalarda alohida mezon yo‘q';
+
+  @override
+  String get cytoReactiveTypesTitle => 'Reaktiv o‘zgarish turlari';
+
+  @override
+  String get cytoMaturationTitle => 'Yetilish indeksi';
+
+  @override
+  String get cytoMaturationSub => 'Parabazal : oraliq : yuzaki — hisoblagich';
+
+  @override
+  String get cytoMiCalcTitle => 'Hisoblagich';
+
+  @override
+  String get cytoMiParabasal => 'Parabazal hujayralar';
+
+  @override
+  String get cytoMiIntermediate => 'Oraliq hujayralar';
+
+  @override
+  String get cytoMiSuperficial => 'Yuzaki hujayralar';
+
+  @override
+  String get cytoMiEmpty =>
+      'Yakka hujayralar sonini kiriting (butun son); kamida bittasi 0 dan katta bo‘lsin.';
+
+  @override
+  String get cytoMiResult => 'Yetilish indeksi (parabazal : oraliq : yuzaki)';
+
+  @override
+  String cytoMiTotal(int n) {
+    return 'Sanalgan hujayralar: $n';
+  }
+
+  @override
+  String get cytoMiCaveat =>
+      'Bu faqat arifmetika. Talqin yosh, sikl kuni, homiladorlik, gormonlar va yallig‘lanishga bog‘liq — uni sitolog yoki shifokor beradi.';
+
+  @override
+  String get cytoOtherTitle => 'Boshqa namunalar';
+
+  @override
+  String get cytoOtherSub =>
+      'Siydik, seroz suyuqliklar, balg‘am: xulosa toifalari';
+
+  @override
+  String get cytoOtherIntro =>
+      'Qisqa sharh: faqat xalqaro xulosa toifalarining nomlari. Mezonlar va xavf ko‘rsatkichlari — manbalarda.';
+
+  @override
+  String get cytoCategoriesTitle => 'Toifalar';
 }

@@ -4697,5 +4697,35 @@
         "type": "String"
       }
     }
-  }
+  },
+  "cytoAdequacyTitle": "Specimen adequacy",
+  "cytoAdequacySub": "Bethesda 2014: satisfactory or not, common artefacts",
+  "cytoArtefactsTitle": "Common artefacts",
+  "cytoReactiveTitle": "Reactive changes vs atypia",
+  "cytoReactiveSub": "Inflammation, repair, radiation, IUD vs ASC-US and LSIL",
+  "cytoReactiveIntro": "In the Bethesda system reactive cellular changes (inflammation including repair, lymphocytic cervicitis, radiation, IUD) are non-neoplastic findings within NILM.",
+  "cytoCompareTitle": "Side by side",
+  "cytoCompareNone": "no separate criterion in the cited sources",
+  "cytoReactiveTypesTitle": "Types of reactive change",
+  "cytoMaturationTitle": "Maturation index",
+  "cytoMaturationSub": "Parabasal : intermediate : superficial — calculator",
+  "cytoMiCalcTitle": "Calculator",
+  "cytoMiParabasal": "Parabasal cells",
+  "cytoMiIntermediate": "Intermediate cells",
+  "cytoMiSuperficial": "Superficial cells",
+  "cytoMiEmpty": "Enter the counts of single cells (whole numbers); at least one must be above 0.",
+  "cytoMiResult": "Maturation index (parabasal : intermediate : superficial)",
+  "cytoMiTotal": "Cells counted: {n}",
+  "@cytoMiTotal": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "cytoMiCaveat": "This is arithmetic only. Interpretation depends on age, cycle day, pregnancy, hormones and inflammation — the cytologist or clinician interprets.",
+  "cytoOtherTitle": "Other specimens",
+  "cytoOtherSub": "Urine, serous fluids, sputum: reporting categories",
+  "cytoOtherIntro": "A brief overview: only the names of the international reporting categories. Criteria and risk figures are in the sources.",
+  "cytoCategoriesTitle": "Categories"
 }

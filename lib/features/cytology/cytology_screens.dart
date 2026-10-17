@@ -67,6 +67,30 @@ class CytologyScreen extends StatelessWidget {
           onTap: () => context.push('$cytoBase/technique'),
         ),
         LgRow(
+          title: l.cytoAdequacyTitle,
+          subtitle: l.cytoAdequacySub,
+          icon: Icons.rule_rounded,
+          onTap: () => context.push('$cytoBase/adequacy'),
+        ),
+        LgRow(
+          title: l.cytoReactiveTitle,
+          subtitle: l.cytoReactiveSub,
+          icon: Icons.compare_arrows_rounded,
+          onTap: () => context.push('$cytoBase/reactive'),
+        ),
+        LgRow(
+          title: l.cytoMaturationTitle,
+          subtitle: l.cytoMaturationSub,
+          icon: Icons.calculate_outlined,
+          onTap: () => context.push('$cytoBase/maturation'),
+        ),
+        LgRow(
+          title: l.cytoOtherTitle,
+          subtitle: l.cytoOtherSub,
+          icon: Icons.science_outlined,
+          onTap: () => context.push('$cytoBase/other'),
+        ),
+        LgRow(
           title: l.cytoQuizTitle,
           subtitle: l.cytoQuizSub(cytoQuizSize),
           icon: Icons.quiz_outlined,
@@ -474,6 +498,7 @@ class CytoBethesdaScreen extends StatelessWidget {
       title: l.cytoBethesdaTitle,
       subtitle: l.cytoTitle,
       children: [
+        LgNotice(l.cytoDraftNote),
         Text(l.cytoBethesdaIntro, style: text.bodyMedium),
         const SizedBox(height: 10),
         for (final b in bethesdaItems)
@@ -506,15 +531,25 @@ class CytoBethesdaScreen extends StatelessWidget {
             ),
           ),
         LgNotice(l.cytoDraftNote),
-        for (final (i, s) in [
-          CytoSources.bethesda,
-          CytoSources.nciAbnormal,
-          CytoSources.nciPdq,
-        ].indexed)
-          CalcSourceTile(index: i + 1, ref: CalcRef(s, '')),
+        for (final (i, r) in bethesdaRefs().indexed)
+          CalcSourceTile(index: i + 1, ref: r),
       ],
     );
   }
+}
+
+/// Bethesda sahifasi manbalari: kitob, NCI va har toifa manbalari (takrorsiz).
+List<CalcRef> bethesdaRefs() {
+  final seen = <String>{};
+  return [
+    for (final r in [
+      const CalcRef(CytoSources.bethesda, ''),
+      const CalcRef(CytoSources.nciAbnormal, ''),
+      const CalcRef(CytoSources.nciPdq, ''),
+      for (final b in bethesdaItems) ...b.refs,
+    ])
+      if (seen.add(r.source.id)) r,
+  ];
 }
 
 // ───────────────────────── Texnika ─────────────────────────
