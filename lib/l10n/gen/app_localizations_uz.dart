@@ -8417,4 +8417,174 @@ class AppLocalizationsUz extends AppLocalizations {
   @override
   String get bloodGroupLabCardBody =>
       'ABO va RhD: usullar, moslik, nomuvofiqliklar, mashq';
+
+  @override
+  String get autoPresTitle => 'Avtomatik taqdimot';
+
+  @override
+  String get autoPresEntrySub => 'Ilovadagi manbali mazmundan slaydlar';
+
+  @override
+  String get autoPresPickerSub =>
+      'Mavzu yoki tahlillarni tanlang. Slaydlar faqat ilovadagi manbali mazmundan yig‘iladi — hech narsa to‘qilmaydi.';
+
+  @override
+  String get autoPresLanguageNote =>
+      'Slaydlar ilova tilida tuziladi. Bu tilda yo‘q mazmun o‘tkazib yuboriladi — tillar aralashtirilmaydi.';
+
+  @override
+  String get autoPresModeTopic => 'Mavzu bo‘yicha';
+
+  @override
+  String get autoPresModeTests => 'Tahlillar bo‘yicha';
+
+  @override
+  String get autoPresSearch => 'Tahlil qidirish';
+
+  @override
+  String get autoPresSearchHint => 'Nomi, qisqartmasi yoki sinonimi';
+
+  @override
+  String autoPresSelectedCount(int count, int max) {
+    return 'Tanlandi: $count / $max';
+  }
+
+  @override
+  String autoPresLimitReached(int max) {
+    return 'Bitta taqdimotda $max tadan ko‘p tahlil bo‘lmaydi.';
+  }
+
+  @override
+  String get autoPresNoResults => 'Tahlil topilmadi.';
+
+  @override
+  String get autoPresOptQuiz => 'Savol slaydlari';
+
+  @override
+  String get autoPresOptQuizSub =>
+      'Tanlangan mazmun bo‘yicha savollar; javob bosilganda ochiladi.';
+
+  @override
+  String get autoPresOptGeneral => 'Umumiy preanalitika';
+
+  @override
+  String get autoPresOptGeneralSub =>
+      'Probirkalar tartibi, gemoliz, jgut (JSST, 2010).';
+
+  @override
+  String get autoPresPreview => 'Slaydlarni ko‘rish';
+
+  @override
+  String get autoPresPickFirst =>
+      'Avval mavzu yoki kamida bitta tahlilni tanlang.';
+
+  @override
+  String get autoPresPreviewTitle => 'Slaydlar ko‘rinishi';
+
+  @override
+  String get autoPresPreviewSub =>
+      'Slaydlar tartibini o‘zgartiring yoki olib tashlang, so‘ng boshlang.';
+
+  @override
+  String autoPresSlideCount(int count) {
+    return '$count ta slayd';
+  }
+
+  @override
+  String get autoPresStart => 'Boshlash';
+
+  @override
+  String get autoPresMoveUp => 'Yuqoriga';
+
+  @override
+  String get autoPresMoveDown => 'Pastga';
+
+  @override
+  String get autoPresRemove => 'Slaydni olib tashlash';
+
+  @override
+  String get autoPresRestore => 'Olib tashlanganlarni qaytarish';
+
+  @override
+  String get autoPresSourcesPinned =>
+      'Manbalar slaydi — qolgan slaydlardan avtomatik yig‘iladi';
+
+  @override
+  String get autoPresEmptyTitle => 'Manbali mazmun yetarli emas';
+
+  @override
+  String get autoPresEmptyBody =>
+      'Bu tanlov bo‘yicha ilovada joriy tilda manbali mazmun yo‘q, shuning uchun slayd yaratilmadi. Hech narsa o‘zimizdan to‘qilmaydi.';
+
+  @override
+  String autoPresNoticeStructureOnly(String name) {
+    return '$name: kartada hali matn yo‘q — o‘tkazib yuborildi.';
+  }
+
+  @override
+  String autoPresNoticeNoContent(String name) {
+    return '$name: slayd uchun manbali matn yo‘q — o‘tkazib yuborildi.';
+  }
+
+  @override
+  String autoPresNoticeLang(int count) {
+    return 'Bu tilda yo‘q, shuning uchun o‘tkazib yuborildi: $count ta. Tillar aralashtirilmaydi.';
+  }
+
+  @override
+  String get autoPresDeckTitleTests => 'Laboratoriya tahlillari';
+
+  @override
+  String autoPresMoreItems(int count) {
+    return 'yana $count ta';
+  }
+
+  @override
+  String autoPresPackSource(String version) {
+    return 'LabGuide, kontent paketi $version — slaydlar manbali kartalardan avtomatik yig‘ilgan';
+  }
+
+  @override
+  String autoPresSourceLine(String text) {
+    return 'Manba: $text';
+  }
+
+  @override
+  String get autoPresColIndicator => 'Ko‘rsatkich';
+
+  @override
+  String get autoPresColValue => 'Qiymat';
+
+  @override
+  String get autoPresColTarget => 'Maqsad';
+
+  @override
+  String get autoPresColTube => 'Probirka';
+
+  @override
+  String get autoPresColCap => 'Qopqoq rangi';
+
+  @override
+  String get autoPresShowAnswer => 'Javobni ko‘rsatish';
+
+  @override
+  String get autoPresHideAnswer => 'Javobni yashirish';
+
+  @override
+  String get autoPresAnswerLabel => 'Javob';
+
+  @override
+  String get autoPresTplTitle => 'Sarlavha';
+
+  @override
+  String get autoPresTplBullets => 'Bandlar';
+
+  @override
+  String get autoPresTplTable => 'Jadval';
+
+  @override
+  String get autoPresTplFigure => 'Rasm';
+
+  @override
+  String get autoPresTplQa => 'Savol';
 }

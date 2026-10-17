@@ -28,6 +28,8 @@ import '../features/instruments/instrument_screens.dart';
 import '../features/lab/lab_screens.dart';
 import '../features/classroom/classroom_screens.dart';
 import '../features/community/community_screens.dart';
+import '../features/classroom/auto_deck.dart' show AutoDeckSpec;
+import '../features/classroom/auto_deck_screens.dart';
 import '../features/classroom/lecture_screens.dart';
 import '../features/learn/classes_screens.dart';
 import '../features/learn/exam_screens.dart';
@@ -1010,6 +1012,34 @@ GoRouter buildRouter(
                     path: 'lecture',
                     builder: (context, state) => const LectureListScreen(),
                     routes: [
+                      // Avtomatik taqdimot (Ustoz Pro): tanlash → ko'rish →
+                      // pleyer. ':topicId' dan OLDIN turishi shart.
+                      GoRoute(
+                        path: 'auto',
+                        builder: (context, state) =>
+                            const AutoPresentationPickerScreen(),
+                        routes: [
+                          GoRoute(
+                            path: 'preview',
+                            builder: (context, state) =>
+                                AutoPresentationPreviewScreen(
+                                  spec: state.extra is AutoDeckSpec
+                                      ? state.extra! as AutoDeckSpec
+                                      : null,
+                                ),
+                          ),
+                          GoRoute(
+                            path: 'play',
+                            parentNavigatorKey: rootKey,
+                            builder: (context, state) => LectureScreen(
+                              topicId: '',
+                              generated: state.extra is List<LectureSlide>
+                                  ? state.extra! as List<LectureSlide>
+                                  : null,
+                            ),
+                          ),
+                        ],
+                      ),
                       GoRoute(
                         path: ':topicId',
                         parentNavigatorKey: rootKey,

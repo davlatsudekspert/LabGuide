@@ -14715,6 +14715,294 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'ABO and RhD: methods, compatibility, discrepancies, practice'**
   String get bloodGroupLabCardBody;
+
+  /// No description provided for @autoPresTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Automatic presentation'**
+  String get autoPresTitle;
+
+  /// No description provided for @autoPresEntrySub.
+  ///
+  /// In en, this message translates to:
+  /// **'Slides built from the app’s sourced content'**
+  String get autoPresEntrySub;
+
+  /// No description provided for @autoPresPickerSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick a topic or tests. Slides are assembled only from sourced content already in the app — nothing is made up.'**
+  String get autoPresPickerSub;
+
+  /// No description provided for @autoPresLanguageNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Slides use the app language. Content missing in this language is skipped — languages are never mixed.'**
+  String get autoPresLanguageNote;
+
+  /// No description provided for @autoPresModeTopic.
+  ///
+  /// In en, this message translates to:
+  /// **'By topic'**
+  String get autoPresModeTopic;
+
+  /// No description provided for @autoPresModeTests.
+  ///
+  /// In en, this message translates to:
+  /// **'By tests'**
+  String get autoPresModeTests;
+
+  /// No description provided for @autoPresSearch.
+  ///
+  /// In en, this message translates to:
+  /// **'Search tests'**
+  String get autoPresSearch;
+
+  /// No description provided for @autoPresSearchHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Name, abbreviation or synonym'**
+  String get autoPresSearchHint;
+
+  /// No description provided for @autoPresSelectedCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Selected: {count} of {max}'**
+  String autoPresSelectedCount(int count, int max);
+
+  /// No description provided for @autoPresLimitReached.
+  ///
+  /// In en, this message translates to:
+  /// **'No more than {max} tests per presentation.'**
+  String autoPresLimitReached(int max);
+
+  /// No description provided for @autoPresNoResults.
+  ///
+  /// In en, this message translates to:
+  /// **'No tests found.'**
+  String get autoPresNoResults;
+
+  /// No description provided for @autoPresOptQuiz.
+  ///
+  /// In en, this message translates to:
+  /// **'Question slides'**
+  String get autoPresOptQuiz;
+
+  /// No description provided for @autoPresOptQuizSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Practice questions of the selected content; the answer opens on tap.'**
+  String get autoPresOptQuizSub;
+
+  /// No description provided for @autoPresOptGeneral.
+  ///
+  /// In en, this message translates to:
+  /// **'General preanalytics'**
+  String get autoPresOptGeneral;
+
+  /// No description provided for @autoPresOptGeneralSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Order of draw, hemolysis, tourniquet (WHO, 2010).'**
+  String get autoPresOptGeneralSub;
+
+  /// No description provided for @autoPresPreview.
+  ///
+  /// In en, this message translates to:
+  /// **'Preview slides'**
+  String get autoPresPreview;
+
+  /// No description provided for @autoPresPickFirst.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick a topic or at least one test first.'**
+  String get autoPresPickFirst;
+
+  /// No description provided for @autoPresPreviewTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Slide preview'**
+  String get autoPresPreviewTitle;
+
+  /// No description provided for @autoPresPreviewSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Reorder or remove slides, then start.'**
+  String get autoPresPreviewSub;
+
+  /// No description provided for @autoPresSlideCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 slide} other{{count} slides}}'**
+  String autoPresSlideCount(int count);
+
+  /// No description provided for @autoPresStart.
+  ///
+  /// In en, this message translates to:
+  /// **'Start'**
+  String get autoPresStart;
+
+  /// No description provided for @autoPresMoveUp.
+  ///
+  /// In en, this message translates to:
+  /// **'Move up'**
+  String get autoPresMoveUp;
+
+  /// No description provided for @autoPresMoveDown.
+  ///
+  /// In en, this message translates to:
+  /// **'Move down'**
+  String get autoPresMoveDown;
+
+  /// No description provided for @autoPresRemove.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove slide'**
+  String get autoPresRemove;
+
+  /// No description provided for @autoPresRestore.
+  ///
+  /// In en, this message translates to:
+  /// **'Restore removed slides'**
+  String get autoPresRestore;
+
+  /// No description provided for @autoPresSourcesPinned.
+  ///
+  /// In en, this message translates to:
+  /// **'Sources slide — built automatically from the slides you keep'**
+  String get autoPresSourcesPinned;
+
+  /// No description provided for @autoPresEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Not enough sourced content'**
+  String get autoPresEmptyTitle;
+
+  /// No description provided for @autoPresEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The app has no sourced content for this selection in the current language, so no slides were made. Nothing is filled in with made-up text.'**
+  String get autoPresEmptyBody;
+
+  /// No description provided for @autoPresNoticeStructureOnly.
+  ///
+  /// In en, this message translates to:
+  /// **'{name}: the card has no written content yet — skipped.'**
+  String autoPresNoticeStructureOnly(String name);
+
+  /// No description provided for @autoPresNoticeNoContent.
+  ///
+  /// In en, this message translates to:
+  /// **'{name}: no sourced text to build slides from — skipped.'**
+  String autoPresNoticeNoContent(String name);
+
+  /// No description provided for @autoPresNoticeLang.
+  ///
+  /// In en, this message translates to:
+  /// **'Not available in this language, so skipped: {count}. Languages are never mixed.'**
+  String autoPresNoticeLang(int count);
+
+  /// No description provided for @autoPresDeckTitleTests.
+  ///
+  /// In en, this message translates to:
+  /// **'Laboratory tests'**
+  String get autoPresDeckTitleTests;
+
+  /// No description provided for @autoPresMoreItems.
+  ///
+  /// In en, this message translates to:
+  /// **'+{count} more'**
+  String autoPresMoreItems(int count);
+
+  /// No description provided for @autoPresPackSource.
+  ///
+  /// In en, this message translates to:
+  /// **'LabGuide, content pack {version} — slides are assembled automatically from the cited cards'**
+  String autoPresPackSource(String version);
+
+  /// No description provided for @autoPresSourceLine.
+  ///
+  /// In en, this message translates to:
+  /// **'Source: {text}'**
+  String autoPresSourceLine(String text);
+
+  /// No description provided for @autoPresColIndicator.
+  ///
+  /// In en, this message translates to:
+  /// **'Indicator'**
+  String get autoPresColIndicator;
+
+  /// No description provided for @autoPresColValue.
+  ///
+  /// In en, this message translates to:
+  /// **'Value'**
+  String get autoPresColValue;
+
+  /// No description provided for @autoPresColTarget.
+  ///
+  /// In en, this message translates to:
+  /// **'Target'**
+  String get autoPresColTarget;
+
+  /// No description provided for @autoPresColTube.
+  ///
+  /// In en, this message translates to:
+  /// **'Tube'**
+  String get autoPresColTube;
+
+  /// No description provided for @autoPresColCap.
+  ///
+  /// In en, this message translates to:
+  /// **'Cap colour'**
+  String get autoPresColCap;
+
+  /// No description provided for @autoPresShowAnswer.
+  ///
+  /// In en, this message translates to:
+  /// **'Show answer'**
+  String get autoPresShowAnswer;
+
+  /// No description provided for @autoPresHideAnswer.
+  ///
+  /// In en, this message translates to:
+  /// **'Hide answer'**
+  String get autoPresHideAnswer;
+
+  /// No description provided for @autoPresAnswerLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Answer'**
+  String get autoPresAnswerLabel;
+
+  /// No description provided for @autoPresTplTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Title'**
+  String get autoPresTplTitle;
+
+  /// No description provided for @autoPresTplBullets.
+  ///
+  /// In en, this message translates to:
+  /// **'Points'**
+  String get autoPresTplBullets;
+
+  /// No description provided for @autoPresTplTable.
+  ///
+  /// In en, this message translates to:
+  /// **'Table'**
+  String get autoPresTplTable;
+
+  /// No description provided for @autoPresTplFigure.
+  ///
+  /// In en, this message translates to:
+  /// **'Image'**
+  String get autoPresTplFigure;
+
+  /// No description provided for @autoPresTplQa.
+  ///
+  /// In en, this message translates to:
+  /// **'Question'**
+  String get autoPresTplQa;
 }
 
 class _AppLocalizationsDelegate
