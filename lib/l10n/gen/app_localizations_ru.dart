@@ -465,7 +465,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get featureCalibration => 'Калибровка';
 
   @override
-  String get featureQc => 'QC';
+  String get featureQc => 'Контроль качества (QC)';
 
   @override
   String get featureSampling => 'Взятие образца';
@@ -726,10 +726,10 @@ class AppLocalizationsRu extends AppLocalizations {
   String get labSubtitle => 'Понятный путь на каждом этапе.';
 
   @override
-  String get labHeroEyebrow => 'Практика';
+  String get labHeroEyebrow => 'Прибор → реагент → метод';
 
   @override
-  String get labHeroTitle => 'Прибор → реагент → метод';
+  String get labHeroTitle => 'Калибровка и методики';
 
   @override
   String get labHeroBody => 'Инструкции и контроль для конкретной модели.';
@@ -744,7 +744,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get labPreanalytics => 'Преаналитика';
 
   @override
-  String get labPreanalyticsSub => 'Подготовка, взятие, хранение, доставка';
+  String get labPreanalyticsSub => 'Взятие, хранение и доставка образца';
 
   @override
   String get labCalculatorsSub => 'Разведения и единицы';
@@ -8223,4 +8223,17 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get spermPlanned =>
       'Основные показатели и нормы ВОЗ\nСчётчик подвижности и морфологии\nТермины: олиго-, астено-, терато-, азооспермия\nСхемы морфологии: дефекты головки, шейки, хвоста\nПреаналитика: подготовка, сбор, время анализа\nТренировка и обучающее видео';
+
+  @override
+  String get homeSearchHint => 'Поиск анализа, прибора или темы';
+
+  @override
+  String get searchTitle => 'Поиск';
+
+  @override
+  String get searchPrompt =>
+      'Введите название, сокращение или синоним — на узбекском (латиница или кириллица), русском или английском.';
+
+  @override
+  String get searchSectionLibrary => 'Учебные материалы';
 }

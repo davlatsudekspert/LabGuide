@@ -456,7 +456,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get featureCalibration => 'Calibration';
 
   @override
-  String get featureQc => 'QC';
+  String get featureQc => 'Quality control (QC)';
 
   @override
   String get featureSampling => 'Sampling';
@@ -715,10 +715,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get labSubtitle => 'A clear path at every stage.';
 
   @override
-  String get labHeroEyebrow => 'At the bench';
+  String get labHeroEyebrow => 'Instrument → reagent → method';
 
   @override
-  String get labHeroTitle => 'Instrument → reagent → method';
+  String get labHeroTitle => 'Calibration and methods';
 
   @override
   String get labHeroBody =>
@@ -734,7 +734,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get labPreanalytics => 'Preanalytics';
 
   @override
-  String get labPreanalyticsSub => 'Prepare, collect, store, transport';
+  String get labPreanalyticsSub =>
+      'Collecting, storing and transporting samples';
 
   @override
   String get labCalculatorsSub => 'Dilution and units';
@@ -8202,4 +8203,17 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get spermPlanned =>
       'Key parameters and WHO reference limits\nMotility and morphology counter\nTerms: oligo-, astheno-, terato-, azoospermia\nMorphology diagrams: head, neck and tail defects\nPre-analytics: preparation, collection, time to analysis\nPractice and a training video';
+
+  @override
+  String get homeSearchHint => 'Search tests, instruments or topics';
+
+  @override
+  String get searchTitle => 'Search';
+
+  @override
+  String get searchPrompt =>
+      'Type a name, abbreviation or synonym — in Uzbek (Latin or Cyrillic), Russian or English.';
+
+  @override
+  String get searchSectionLibrary => 'Learning materials';
 }

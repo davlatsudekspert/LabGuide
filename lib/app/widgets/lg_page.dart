@@ -26,12 +26,17 @@ class LgPage extends StatefulWidget {
     this.showBrand = false,
     this.showProfile = true,
     this.leadingHero,
+    this.compactTitle = false,
   });
 
   final String title;
   final String? subtitle;
   final String? eyebrow;
   final List<Widget> children;
+
+  /// Kichikroq katta sarlavha (masalan, bosh sahifa shiori): ish
+  /// tugmalari birinchi ekranda ko'rinsin.
+  final bool compactTitle;
 
   /// Tab ildiz ekranlarida: kengaytirilgan holatda brend ko'rinadi.
   final bool showBrand;
@@ -158,6 +163,7 @@ class _LgPageState extends State<LgPage> {
       title: widget.title,
       subtitle: widget.subtitle,
       leadingHero: widget.leadingHero,
+      compact: widget.compactTitle,
     );
 
     return Scaffold(
@@ -256,12 +262,14 @@ class _LargeTitle extends StatelessWidget {
     this.eyebrow,
     this.subtitle,
     this.leadingHero,
+    this.compact = false,
   });
 
   final String title;
   final String? eyebrow;
   final String? subtitle;
   final Widget? leadingHero;
+  final bool compact;
 
   @override
   Widget build(BuildContext context) {
@@ -293,9 +301,11 @@ class _LargeTitle extends StatelessWidget {
             child: FitLongWordText(
               title,
               textScaler: scaler,
-              minFontSize: 24,
+              minFontSize: compact ? 20 : 24,
               // Telefonda ixcham: sarlavha ekranning katta qismini egallamaydi.
-              style: text.displaySmall!.copyWith(fontSize: narrow ? 28 : 32),
+              style: text.displaySmall!.copyWith(
+                fontSize: compact ? (narrow ? 22 : 24) : (narrow ? 28 : 32),
+              ),
             ),
           ),
           if (subtitle != null) ...[

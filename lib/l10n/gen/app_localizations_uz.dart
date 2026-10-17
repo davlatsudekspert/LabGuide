@@ -449,7 +449,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get featureCalibration => 'Kalibrlash';
 
   @override
-  String get featureQc => 'QC';
+  String get featureQc => 'Sifat nazorati (QC)';
 
   @override
   String get featureSampling => 'Namuna olish';
@@ -706,10 +706,10 @@ class AppLocalizationsUz extends AppLocalizations {
   String get labSubtitle => 'Har bosqichda aniq yo‘l.';
 
   @override
-  String get labHeroEyebrow => 'Amaliy ish';
+  String get labHeroEyebrow => 'Apparat → reagent → usul';
 
   @override
-  String get labHeroTitle => 'Apparat → reagent → metod';
+  String get labHeroTitle => 'Kalibrlash va metodika';
 
   @override
   String get labHeroBody => 'Aniq modelga mos yo‘riqnoma va nazorat.';
@@ -724,7 +724,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get labPreanalytics => 'Preanalitika';
 
   @override
-  String get labPreanalyticsSub => 'Tayyorlash, olish, saqlash, tashish';
+  String get labPreanalyticsSub => 'Namunani olish, saqlash va tashish';
 
   @override
   String get labCalculatorsSub => 'Suyultirish va birliklar';
@@ -8096,4 +8096,17 @@ class AppLocalizationsUz extends AppLocalizations {
   @override
   String get spermPlanned =>
       'Asosiy ko‘rsatkichlar va JSST me’yorlari\nHarakatchanlik va morfologiyani sanash hisoblagichi\nAtamalar: oligo-, asteno-, terato-, azoospermiya\nMorfologiya sxemalari: bosh, bo‘yin, dum nuqsonlari\nPreanalitika: tayyorgarlik, namuna olish, tahlil vaqti\nMashq va o‘quv roligi';
+
+  @override
+  String get homeSearchHint => 'Tahlil, apparat yoki mavzu qidirish';
+
+  @override
+  String get searchTitle => 'Qidiruv';
+
+  @override
+  String get searchPrompt =>
+      'Nom, qisqartma yoki sinonimni yozing — lotin yoki kirillda, ruscha yoki inglizcha ham bo‘ladi.';
+
+  @override
+  String get searchSectionLibrary => 'O‘quv materiallari';
 }

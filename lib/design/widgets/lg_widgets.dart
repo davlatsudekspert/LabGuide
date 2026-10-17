@@ -247,6 +247,10 @@ class LgPanel extends StatelessWidget {
 
 /// Hero karta: soft → paper gradient, 27 px radius, yumshoq soya.
 /// [image] faqat dekorativ — screen reader uchun yashiriladi.
+///
+/// [compact] — kundalik ekranlar uchun: rasm sarlavha yonida kichik
+/// kvadrat (72 px), teg ko'rsatilmaydi; karta taxminan 3 baravar past va
+/// rolga mos tezkor tugmalar birinchi ekranda ko'rinadi.
 class LgHeroCard extends StatelessWidget {
   const LgHeroCard({
     super.key,
@@ -256,6 +260,7 @@ class LgHeroCard extends StatelessWidget {
     this.body,
     this.action,
     this.image,
+    this.compact = false,
   });
 
   final String title;
@@ -264,11 +269,77 @@ class LgHeroCard extends StatelessWidget {
   final String? body;
   final Widget? action;
   final ImageProvider? image;
+  final bool compact;
 
   @override
   Widget build(BuildContext context) {
     final p = LgPalette.of(context);
     final text = Theme.of(context).textTheme;
+    final titleScaler = MediaQuery.textScalerOf(context)
+        .clamp(maxScaleFactor: 1.3);
+    if (compact) {
+      return Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8),
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(LgRadius.card),
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [p.soft, p.paper],
+            ),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    if (image != null) ...[
+                      ExcludeSemantics(
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(16),
+                          child: Image(
+                            image: image!,
+                            width: 72,
+                            height: 72,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 14),
+                    ],
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          if (eyebrow != null) LgEyebrow(eyebrow!),
+                          Semantics(
+                            header: true,
+                            child: Text(
+                              title,
+                              style: text.titleLarge,
+                              textScaler: titleScaler,
+                            ),
+                          ),
+                          if (body != null) ...[
+                            const SizedBox(height: 4),
+                            Text(body!, style: text.bodyMedium),
+                          ],
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                if (action != null) ...[const SizedBox(height: 12), action!],
+              ],
+            ),
+          ),
+        ),
+      );
+    }
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10),
       child: DecoratedBox(
@@ -311,8 +382,7 @@ class LgHeroCard extends StatelessWidget {
                   style: text.headlineMedium,
                   // Katta shriftda uzun so'z (“заболеваниям”) harfma-harf
                   // bo'linib ketmasin: sarlavha 1,3x dan oshmaydi.
-                  textScaler: MediaQuery.textScalerOf(context)
-                      .clamp(maxScaleFactor: 1.3),
+                  textScaler: titleScaler,
                 ),
               ),
               if (body != null) ...[

@@ -895,7 +895,7 @@ abstract class AppLocalizations {
   /// No description provided for @featureQc.
   ///
   /// In en, this message translates to:
-  /// **'QC'**
+  /// **'Quality control (QC)'**
   String get featureQc;
 
   /// No description provided for @featureSampling.
@@ -1363,13 +1363,13 @@ abstract class AppLocalizations {
   /// No description provided for @labHeroEyebrow.
   ///
   /// In en, this message translates to:
-  /// **'At the bench'**
+  /// **'Instrument → reagent → method'**
   String get labHeroEyebrow;
 
   /// No description provided for @labHeroTitle.
   ///
   /// In en, this message translates to:
-  /// **'Instrument → reagent → method'**
+  /// **'Calibration and methods'**
   String get labHeroTitle;
 
   /// No description provided for @labHeroBody.
@@ -1399,7 +1399,7 @@ abstract class AppLocalizations {
   /// No description provided for @labPreanalyticsSub.
   ///
   /// In en, this message translates to:
-  /// **'Prepare, collect, store, transport'**
+  /// **'Collecting, storing and transporting samples'**
   String get labPreanalyticsSub;
 
   /// No description provided for @labCalculatorsSub.
@@ -14163,6 +14163,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Key parameters and WHO reference limits\nMotility and morphology counter\nTerms: oligo-, astheno-, terato-, azoospermia\nMorphology diagrams: head, neck and tail defects\nPre-analytics: preparation, collection, time to analysis\nPractice and a training video'**
   String get spermPlanned;
+
+  /// No description provided for @homeSearchHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search tests, instruments or topics'**
+  String get homeSearchHint;
+
+  /// No description provided for @searchTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Search'**
+  String get searchTitle;
+
+  /// No description provided for @searchPrompt.
+  ///
+  /// In en, this message translates to:
+  /// **'Type a name, abbreviation or synonym — in Uzbek (Latin or Cyrillic), Russian or English.'**
+  String get searchPrompt;
+
+  /// No description provided for @searchSectionLibrary.
+  ///
+  /// In en, this message translates to:
+  /// **'Learning materials'**
+  String get searchSectionLibrary;
 }
 
 class _AppLocalizationsDelegate

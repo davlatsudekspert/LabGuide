@@ -12,6 +12,7 @@ import '../community/community_screens.dart';
 import '../content/ui/conditions_screens.dart';
 import '../content/ui/content_widgets.dart';
 import '../daily/daily_screens.dart';
+import 'global_search.dart';
 import '../settings/settings_controller.dart';
 import '../toifa/toifa_screens.dart';
 
@@ -131,6 +132,8 @@ class RoleHome {
           '/lab/microscopy',
         ),
         HomeAction(l.featureExam, Icons.timer_outlined, '/learn/exam'),
+        HomeAction(l.dailyTitle, Icons.today_outlined, '/learn/daily'),
+        HomeAction(l.featureTopics, Icons.school_outlined, '/learn'),
       ],
       usefulAnalytes: const ['glucose-plasma-fasting', 'hba1c', 'egfr'],
     ),
@@ -141,7 +144,8 @@ class RoleHome {
       heroLocation: '/learn/classes',
       actions: [
         HomeAction(l.featureClasses, Icons.groups_outlined, '/learn/classes'),
-        HomeAction(l.featureQuestionBank, Icons.quiz_outlined, '/learn/quiz'),
+        // Ma'ruza rejimi — Ustoz Pro'ning asosiy qismi (D-45/47).
+        HomeAction(l.lectureTitle, Icons.co_present_outlined, '/learn/lecture'),
         HomeAction(
           l.featureSources,
           Icons.fact_check_outlined,
@@ -176,15 +180,17 @@ class HomeScreen extends StatelessWidget {
           title: l.homeTitle,
           eyebrow: role.title(l),
           showBrand: true,
+          compactTitle: true,
           children: [
+            const HomeSearchField(),
             if (config.featuredConditions.isNotEmpty)
               ConditionGuideCard(
                 base: '/home',
                 featured: config.featuredConditions,
               ),
             LgHeroCard(
+              compact: true,
               image: kHeroImage,
-              tag: l.homeFocusTag,
               title: config.heroTitle,
               body: config.heroBody,
               action: LgButton(

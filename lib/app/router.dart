@@ -17,6 +17,7 @@ import '../features/daily/daily_screens.dart';
 import '../features/differential/differential_entry_points.dart';
 import '../features/differential/differential_quiz.dart';
 import '../features/differential/differential_screens.dart';
+import '../features/home/global_search.dart';
 import '../features/home/home_screen.dart';
 import '../features/instruments/calibration_screens.dart';
 import '../features/instruments/instrument_screens.dart';
@@ -329,7 +330,14 @@ GoRouter buildRouter(
               GoRoute(
                 path: '/home',
                 builder: (context, state) => const HomeScreen(),
-                routes: [...analyteRoutes(), ...conditionRoutes()],
+                routes: [
+                  GoRoute(
+                    path: 'search',
+                    builder: (context, state) => const GlobalSearchScreen(),
+                  ),
+                  ...analyteRoutes(),
+                  ...conditionRoutes(),
+                ],
               ),
             ],
           ),
