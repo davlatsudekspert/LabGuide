@@ -2483,5 +2483,15 @@
   "autoPresTplBullets": "Пункты",
   "autoPresTplTable": "Таблица",
   "autoPresTplFigure": "Рисунок",
-  "autoPresTplQa": "Вопрос"
+  "autoPresTplQa": "Вопрос",
+  "instSchematicCaption": "Схематичное изображение — не фото конкретной модели",
+  "instSchematicTapToZoom": "Нажмите на изображение, чтобы увеличить",
+  "instSchematicSemantics": "Схематичное изображение: {kind}",
+  "@instSchematicSemantics": {
+    "placeholders": {
+      "kind": {
+        "type": "String"
+      }
+    }
+  }
 }

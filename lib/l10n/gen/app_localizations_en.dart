@@ -8725,4 +8725,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get autoPresTplQa => 'Question';
+
+  @override
+  String get instSchematicCaption =>
+      'Schematic illustration — not a photo of this exact model';
+
+  @override
+  String get instSchematicTapToZoom => 'Tap the illustration to enlarge';
+
+  @override
+  String instSchematicSemantics(String kind) {
+    return 'Schematic illustration: $kind';
+  }
 }

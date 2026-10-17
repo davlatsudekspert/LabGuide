@@ -4955,5 +4955,15 @@
   "autoPresTplBullets": "Points",
   "autoPresTplTable": "Table",
   "autoPresTplFigure": "Image",
-  "autoPresTplQa": "Question"
+  "autoPresTplQa": "Question",
+  "instSchematicCaption": "Schematic illustration — not a photo of this exact model",
+  "instSchematicTapToZoom": "Tap the illustration to enlarge",
+  "instSchematicSemantics": "Schematic illustration: {kind}",
+  "@instSchematicSemantics": {
+    "placeholders": {
+      "kind": {
+        "type": "String"
+      }
+    }
+  }
 }

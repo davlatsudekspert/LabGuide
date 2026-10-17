@@ -12,8 +12,10 @@ Color _frameColor(BuildContext context) =>
     : const Color(0xFFF6F6F3);
 
 /// Model kartasidagi rasm bloki (D-36a): aynan shu modelning ruxsatli fotosi
-/// yoki neytral belgi + “Model rasmi hozircha mavjud emas”. Boshqa apparat
-/// fotosi yoki sxematik chizma bu yerda ko'rsatilmaydi.
+/// bo'lsa — foto (muallif va litsenziya bilan). Foto yo'q bo'lsa — apparat
+/// TURINING LabGuide chizgan sxematik tasviri va ko'rinib turuvchi izoh
+/// “Sxematik tasvir — aniq model emas”. Sxematik chizma hech qachon
+/// model fotosi sifatida ko'rsatilmaydi va boshqa apparat fotosi qo'yilmaydi.
 class InstrumentImageBlock extends StatelessWidget {
   const InstrumentImageBlock({
     super.key,
@@ -87,48 +89,113 @@ class InstrumentImageBlock extends StatelessWidget {
             l.instImageRightsChecked(img.checkedAt),
             style: text.bodySmall!.copyWith(color: p.sub),
           ),
-        ] else
-          Container(
-            key: const ValueKey('instrument-photo-missing'),
-            decoration: BoxDecoration(
-              color: _frameColor(context),
-              borderRadius: BorderRadius.circular(LgRadius.card),
-              border: Border.all(color: p.line),
-            ),
-            padding: const EdgeInsets.all(20),
-            child: LayoutBuilder(
-              // Rasmli kartadagi maydon bilan bir xil balandlik (3:2);
-              // katta shriftda kerak bo'lsa o'sadi.
-              builder: (context, c) => ConstrainedBox(
-                constraints: BoxConstraints(
-                  minHeight: (c.maxWidth + 40) * 2 / 3 - 40,
-                ),
-                child: Center(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      const _MissingMark(compact: false),
-                      if (page != null) ...[
-                        const SizedBox(height: 8),
-                        Text(
-                          l.instImageMissingSub,
-                          style: text.bodySmall!.copyWith(color: p.sub),
-                          textAlign: TextAlign.center,
-                        ),
-                      ],
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ),
+        ] else ...[
+          _SchematicBlock(model: model, hasPage: page != null),
+        ],
         if (page != null) _Link(label: l.instMakerSource, url: page.url),
       ],
     );
   }
 }
 
-/// Neutral apparat belgisi va “rasm hozircha mavjud emas” yozuvi.
+/// Foto yo'q model: apparat turining sxematik chizmasi + majburiy izoh
+/// (uz/ru/en) — foydalanuvchi buni aniq model fotosi deb o'ylamasligi uchun.
+class _SchematicBlock extends StatelessWidget {
+  const _SchematicBlock({required this.model, required this.hasPage});
+
+  final InstrumentModel model;
+
+  /// Rasmiy sahifa havolasi bor — “aniq model rasmini u yerda ko'ring” izohi.
+  final bool hasPage;
+
+  @override
+  Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context);
+    final lang = Localizations.localeOf(context).languageCode;
+    final text = Theme.of(context).textTheme;
+    final p = LgPalette.of(context);
+    final schematic = model.schematic;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Semantics(
+          button: true,
+          label: l.instSchematicTapToZoom,
+          child: Material(
+            color: _frameColor(context),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(LgRadius.card),
+              side: BorderSide(color: p.line),
+            ),
+            clipBehavior: Clip.antiAlias,
+            child: InkWell(
+              key: const ValueKey('instrument-schematic'),
+              onTap: () => Navigator.of(context).push(
+                MaterialPageRoute<void>(
+                  fullscreenDialog: true,
+                  builder: (_) => InstrumentSchematicViewer(
+                    schematic: schematic,
+                    title: model.model,
+                  ),
+                ),
+              ),
+              child: AspectRatio(
+                aspectRatio: 3 / 2,
+                child: Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: Image.asset(
+                    schematic.asset,
+                    fit: BoxFit.contain,
+                    semanticLabel: l.instSchematicSemantics(
+                      model.kind.of(lang),
+                    ),
+                    errorBuilder: (context, _, _) =>
+                        const _MissingMark(compact: true),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+        const SizedBox(height: 8),
+        Row(
+          key: const ValueKey('instrument-schematic-caption'),
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 1),
+              child: Icon(Icons.info_outline_rounded, size: 16, color: p.ink),
+            ),
+            const SizedBox(width: 6),
+            Expanded(
+              child: Text(
+                l.instSchematicCaption,
+                style: text.bodySmall!.copyWith(
+                  color: p.ink,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ),
+          ],
+        ),
+        Text(
+          l.instSchematicTapToZoom,
+          style: text.bodySmall!.copyWith(color: p.sub),
+        ),
+        if (hasPage) ...[
+          const SizedBox(height: 4),
+          Text(
+            l.instImageMissingSub,
+            style: text.bodySmall!.copyWith(color: p.sub),
+          ),
+        ],
+      ],
+    );
+  }
+}
+
+/// Neutral apparat belgisi va “rasm hozircha mavjud emas” yozuvi
+/// (rasm fayli o'qilmaganda — errorBuilder).
 class _MissingMark extends StatelessWidget {
   const _MissingMark({required this.compact});
 
@@ -208,6 +275,56 @@ class InstrumentImageViewer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context);
+    return _ViewerScaffold(
+      title: title,
+      asset: image.assetLarge,
+      semanticLabel: l.instImageSemantics(title),
+      footer:
+          '${l.instImageCredit(image.author, image.license)}\n'
+          '${image.rights}',
+    );
+  }
+}
+
+/// Sxematik chizmaning to'liq ekrani — pastda “aniq model emas” izohi.
+class InstrumentSchematicViewer extends StatelessWidget {
+  const InstrumentSchematicViewer({
+    super.key,
+    required this.schematic,
+    required this.title,
+  });
+
+  final InstrumentSchematic schematic;
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context);
+    return _ViewerScaffold(
+      title: title,
+      asset: schematic.assetLarge,
+      semanticLabel: l.instSchematicCaption,
+      footer: l.instSchematicCaption,
+    );
+  }
+}
+
+class _ViewerScaffold extends StatelessWidget {
+  const _ViewerScaffold({
+    required this.title,
+    required this.asset,
+    required this.semanticLabel,
+    required this.footer,
+  });
+
+  final String title;
+  final String asset;
+  final String semanticLabel;
+  final String footer;
+
+  @override
+  Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context);
     final text = Theme.of(context).textTheme;
     const fg = Colors.white;
     return Scaffold(
@@ -239,9 +356,9 @@ class InstrumentImageViewer extends StatelessWidget {
                 maxScale: 6,
                 child: Center(
                   child: Image.asset(
-                    image.assetLarge,
+                    asset,
                     fit: BoxFit.contain,
-                    semanticLabel: l.instImageSemantics(title),
+                    semanticLabel: semanticLabel,
                     errorBuilder: (context, _, _) => Text(
                       l.instImageMissing,
                       style: text.bodyMedium!.copyWith(color: fg),
@@ -253,8 +370,7 @@ class InstrumentImageViewer extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.fromLTRB(16, 8, 16, 12),
               child: Text(
-                '${l.instImageCredit(image.author, image.license)}\n'
-                '${image.rights}',
+                footer,
                 style: text.bodySmall!.copyWith(color: fg),
                 textAlign: TextAlign.center,
               ),

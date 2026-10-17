@@ -74,6 +74,7 @@ flutter:
     - assets/content/core/
     - assets/instruments/
     - assets/instruments/img/
+    - assets/instruments/schematic/
     - assets/cytology/
     - assets/spermogram/
     - assets/bloodgroup/

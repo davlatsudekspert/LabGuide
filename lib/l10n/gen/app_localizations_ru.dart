@@ -8760,4 +8760,17 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get autoPresTplQa => 'Вопрос';
+
+  @override
+  String get instSchematicCaption =>
+      'Схематичное изображение — не фото конкретной модели';
+
+  @override
+  String get instSchematicTapToZoom =>
+      'Нажмите на изображение, чтобы увеличить';
+
+  @override
+  String instSchematicSemantics(String kind) {
+    return 'Схематичное изображение: $kind';
+  }
 }

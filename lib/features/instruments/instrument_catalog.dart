@@ -15,6 +15,52 @@ enum InstrumentCategory {
   );
 }
 
+/// Rasm yo'q modelda ko'rsatiladigan SXEMATIK chizma turi (D-36a: bu aniq
+/// model fotosi emas, apparat TURINING umumiy chizmasi). Fayllar:
+/// `assets/instruments/schematic/<key>_480.png` (karta) va `<key>_1200.png`
+/// (to'liq ekran); manba — `tool/illustrations/schematic/gen.py`.
+enum InstrumentSchematic {
+  chemistry('chemistry', InstrumentCategory.chemistry),
+  photometer('photometer', InstrumentCategory.chemistry),
+  hematology5('hematology5', InstrumentCategory.hematology),
+  hematology3('hematology3', InstrumentCategory.hematology),
+  immunoassay('immunoassay', InstrumentCategory.immunoassay),
+  urineStrip('urine_strip', InstrumentCategory.urinalysis),
+  urineSystem('urine_system', InstrumentCategory.urinalysis);
+
+  const InstrumentSchematic(this.key, this.category);
+
+  final String key;
+
+  /// Chizma faqat shu yo'nalish modeliga mos keladi.
+  final InstrumentCategory category;
+
+  /// Karta uchun kichik nusxa (~480 px).
+  String get asset => 'assets/instruments/schematic/${key}_480.png';
+
+  /// To'liq ekran uchun katta nusxa (~1200 px).
+  String get assetLarge => 'assets/instruments/schematic/${key}_1200.png';
+
+  /// Katalogda tur ko'rsatilmasa — yo'nalishning umumiy chizmasi.
+  static InstrumentSchematic defaultFor(InstrumentCategory c) => switch (c) {
+    InstrumentCategory.chemistry => chemistry,
+    InstrumentCategory.hematology => hematology5,
+    InstrumentCategory.immunoassay => immunoassay,
+    InstrumentCategory.urinalysis => urineStrip,
+  };
+
+  static InstrumentSchematic parse(String raw, InstrumentCategory category) {
+    final s = values.firstWhere(
+      (v) => v.key == raw,
+      orElse: () => throw FormatException('unknown schematic: $raw'),
+    );
+    if (s.category != category) {
+      throw FormatException('schematic $raw does not fit ${category.name}');
+    }
+    return s;
+  }
+}
+
 /// Kartadagi ma'lumot qay darajada tasdiqlangan. Har bosqich oldingisini
 /// o'z ichiga oladi; dalilsiz yuqori holat qo'yilmaydi ([InstrumentCatalog]
 /// validatori tekshiradi).
@@ -365,6 +411,7 @@ class InstrumentModel {
     required this.image,
     required this.officialPage,
     required this.status,
+    required this.schematic,
   });
 
   factory InstrumentModel.fromJson(Map<String, Object?> j) {
@@ -372,11 +419,15 @@ class InstrumentModel {
         (j[k] as Map?)?.cast<String, Object?>();
     final manual = map('manual')!;
     final reagent = map('reagent_system')!;
+    final category = InstrumentCategory.parse(j['category']! as String);
     return InstrumentModel(
+      schematic: j['schematic'] == null
+          ? InstrumentSchematic.defaultFor(category)
+          : InstrumentSchematic.parse(j['schematic']! as String, category),
       id: j['id']! as String,
       makerId: j['maker']! as String,
       model: j['model']! as String,
-      category: InstrumentCategory.parse(j['category']! as String),
+      category: category,
       kind: LocalizedText.fromJson(j['kind']),
       aliases: (j['aliases'] as List? ?? const []).cast<String>(),
       localNames: (map('local_names') ?? const {}).cast<String, String>(),
@@ -441,6 +492,10 @@ class InstrumentModel {
   /// bo'lmasa, foydalanuvchi tashqi ko'rinishni shu yerda ko'radi.
   final String? officialPage;
   final InstrumentStatus status;
+
+  /// Rasm yo'q bo'lganda ko'rsatiladigan apparat turi chizmasi (aniq model
+  /// fotosi emas — kartada shunday izohlanadi).
+  final InstrumentSchematic schematic;
 
   Iterable<SourcedQuote> get _allQuotes => [
     ...?purpose?.quotes,
