@@ -468,6 +468,7 @@ class _BgReaderScreenState extends State<BgReaderScreen> {
       (BgReaction.neg, BgL.reactionNeg, 'neg'),
       (BgReaction.pos, BgL.reactionPos, 'pos'),
       (BgReaction.weak, BgL.reactionWeak, 'weak'),
+      (BgReaction.mixed, BgL.reactionMixed, 'mixed'),
     ];
     return _row(label, [
       for (final (v, t, key) in opts)
@@ -588,13 +589,16 @@ class _ReaderResult extends StatelessWidget {
       RhResult.positive => context.tr(BgL.rhPositive),
       RhResult.negative => context.tr(BgL.rhNegative),
       RhResult.weak => context.tr(BgL.rhWeak),
+      RhResult.mixedField => context.tr(BgL.rhMixed),
       null => null,
     };
-    final headline = r.invalid
-        ? context.tr(BgL.invalidTitle)
+    final (headline, headlineKey) = r.invalid
+        ? (context.tr(BgL.invalidTitle), 'bg-res-invalid')
         : r.discrepancy
-        ? context.tr(BgL.discrepancyTitle)
-        : null;
+        ? (context.tr(BgL.discrepancyTitle), 'bg-res-discrepancy')
+        : r.anomaly
+        ? (context.tr(BgL.anomalyTitle), 'bg-res-anomaly')
+        : (null, null);
     return LgPanel(
       key: const ValueKey('bg-reader-result'),
       child: Column(
@@ -603,9 +607,7 @@ class _ReaderResult extends StatelessWidget {
           if (headline != null)
             Text(
               headline,
-              key: ValueKey(
-                r.invalid ? 'bg-res-invalid' : 'bg-res-discrepancy',
-              ),
+              key: ValueKey<String>(headlineKey!),
               style: text.titleMedium!.copyWith(
                 color: p.danger,
                 fontWeight: FontWeight.w700,
@@ -626,7 +628,8 @@ class _ReaderResult extends StatelessWidget {
                 ),
               ],
             ),
-          if (r.forward case final f?)
+          // Anomaliyada to'g'ri usul bo'yicha guruh ham aytilmaydi.
+          if (r.forward case final f? when !r.anomaly)
             Text(
               '${context.tr(BgL.forwardSays)}: ${g(f)}',
               key: const ValueKey('bg-res-forward'),

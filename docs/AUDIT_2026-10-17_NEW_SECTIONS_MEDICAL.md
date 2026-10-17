@@ -39,3 +39,31 @@ Method: code/content read; high-risk claims checked against sources fetched in t
 - Bethesda 2014: 8,000–12,000 / 5,000 cells, 2,000-cell discretionary floor, ≥ 10 TZ cells, > 75 % obscured, abnormal cells = satisfactory; AGC/AIS/adenocarcinoma subcategories correct. Purity-degree pH bands match the classical scheme.
 - Histology: images viewed — liver (reticulin, labelled zones), kidney (H&E glomerulus/tubules), PAS glomerulus, cardiac (branching, intercalated discs), skeletal (striated, peripheral nuclei), smooth, elastic cartilage (elastin-stained), neuron (smear), transitional, simple cuboidal, simple squamous (whole mount, as the card says) — all match the cards and HISTOLOGY_SOURCES. Histology quiz keys are derived from the item id (correct by construction).
 - Unverified: ASCCP HSIL/ASC-H/unsatisfactory text (primary PDF not reached; consistent with the guidelinecentral summary); Russian and Uzbek histology terms (no textbook available).
+
+## Fix status (2026-10-17, same day)
+
+Every cited source was re-fetched before changing text (WHO 2010 phlebotomy PDF, WHO 2021 semen manual PDF,
+BSH 2012 PDF, ASCCP 2019 Perkins et al. 2020 full text, Harrison's Manual 20th ed. page, MSD pages, Geckler 1977).
+
+| # | Status | Change |
+|---|---|---|
+| 1 | fixed | Recap/detach text replaced: no recapping or manual detachment, needle + syringe as one unit into a sharps container, one-hand scoop only if unavoidable (WHO 2010 §1.1 p. 3, Table 2.2 p. 12). |
+| 2 | fixed | "Re-used lancets" bullet replaced; "single-use where possible" → single-use sterile lancets only, one per puncture/patient (WHO 2010 §2.1.4 p. 11, Table 2.2, §7.2.1). |
+| 3 | fixed | `assessDifferential` returns `incomplete` (no comparison) while `total < target`; panel shows "N of M cells counted" hint. Blasts/"other" still trigger referral. |
+| 4 | fixed | `DiffAssessment.allNormal` is false whenever `refer` is true; panel uses it. |
+| 5 | fixed | Weak anti-A/anti-B and new "mixed field" option (anti-A/B/D) = anomaly: no group named, forward-group line hidden, own flag texts (BSH §4.7.1 i, iv; §4.8.1; Fig. A1). |
+| 6 | fixed | Hand washing ≥ 30 s incl. wrists/between fingers, single-use towel (WHO 2010 Table 2.2). The unsourced "3–5 mL" alcohol volume was dropped. |
+| 7 | fixed | PEP: as soon as possible, ideally within the first hours, no later than 72 h; 28 days (WHO 2010 Annex D p. 74, §8.5.2 p. 53). WHO says "first hours", not "2 h" — "2 h" not used. |
+| 8 | fixed | "Blow the blood" (3 protocols) → expel with a rubber bulb/automatic pipette, never by mouth. |
+| 9 | fixed | Sites per WHO 2010 §7.1.1/Table 7.1/§7.1.2 (finger; heel medial/lateral up to ~6 months; posterior heel avoided; earlobe only mass screening/research; toe dropped). Post-puncture: firm pressure with clean dry gauze/cotton (§7.2.2, §2.2.3). |
+| 10 | fixed | Concentration 0 → "Azoospermia suspected (confirm in a centrifuged sediment)" panel; the term chip is no longer produced (WHO 2021 §2.4.8.8 p. 35 re-read). |
+| 11 | fixed | d064: filtrate "9:1" and urine "50:1" removed (filtrate is a plasma ultrafiltrate; the lecture numbers could not be confirmed); kept "≈1:4 in blood" and "dihydrogen form predominates as tubular fluid is acidified". RU term "монофосфат" → "гидрофосфат". |
+| 12 | fixed | AGC text per ASCCP 2019 Section G.1 (verified in Perkins 2020 full text): colposcopy + endocervical sampling; endometrial sampling at ≥ 35 y or < 35 with increased endometrial risk (AUB, chronic anovulation, obesity); atypical endometrial cells — endometrial + endocervical sampling first. |
+| 13 | fixed | Referral thresholds (neutrophils < 0.5, eosinophils > 1.5) use the displayed 2-decimal value. |
+| 14 | fixed (partly disagreed) | The cited URL is Harrison's Manual **20th ed. (2020)**, where the table **is** 64-1 (verified) — kept 64-1, added the edition to citation/locator/note. MSD differences (eosinophilia > 0.5; lymphocytopenia < 1.0) added to `diffLimitsSourceNote` (3 langs) and an MSD Lymphocytopenia source tile. |
+| 15 | fixed | RU: "Возможная трактовка: нейтропения" (nominative, lowercase after colon). |
+| 16 | fixed | uz "ko‘pi bilan 60 daqiqadan kechiktirmay"; en "no later than 60 minutes". |
+| 17 | fixed | `roundedPercents` adjusts the dominant (largest) grade only when the sum is 99/101 (WHO §2.4.6.2 p. 25 re-read); x.5 ties giving 102/98 are left and the counter shows one-decimal values. |
+| 18 | fixed | Necrozoospermia only with low vitality AND total motility below its lower limit (immotile > 58 %); vitality alone → info note. |
+| 19 | fixed | Degree II rule aligned with its own text: single leukocytes + fewer lactobacilli and/or some mixed flora (no pathogenic flora, lactobacilli present) → II. |
+| 20 | fixed / removed | Haemostasis "45 min" removed (CLSI H21 primary text not reachable → no number); platelets 180–320, "primary thrombocytosis > 400", "signs < 70 / 700–900" removed — MSD 2026 reference interval 140–440 shown as source-specific; sputum ">25 per field" kept but made specific (×100 low-power field) with Geckler 1977 (the >25 SEC/LPF cut-off is in that paper; < 10 SEC + > 25 WBC = best quality); kidney "10–20 h" removed (renal compensation "much more slowly"); blood eye-splash "do not remove contact lenses" removed → WHO Annex D flush ≥ 10 min (chemical-splash slide unchanged). Removed numbers listed in the protocol set's "not included" notes. |

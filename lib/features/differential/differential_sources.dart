@@ -96,15 +96,16 @@ abstract final class DiffSources {
     url: null,
   );
 
-  /// Harrison's Manual of Medicine — "Leukocytosis and Leukopenia" bobi,
-  /// 64-1-jadval (leykotsitlar: o'rtacha va 95 % oraliq, hujayra/µl).
-  /// Leykoformula bahosining sukut me'yorlari shu jadvaldan.
+  /// Harrison's Manual of Medicine, 20-nashr (2020) — "Leukocytosis"
+  /// bo'limi, 64-1-jadval (leykotsitlar: o'rtacha va 95 % oraliq,
+  /// hujayra/µl; boshqa nashrlarda jadval raqami boshqacha bo'lishi
+  /// mumkin). Leykoformula bahosining sukut me'yorlari shu jadvaldan
+  /// (URL — 20-nashr, 2026-10-17 da tekshirilgan).
   static const harrisonManual = CalcSource(
     id: 'diff-harrison-manual-64-1',
     citation:
-        "Jameson JL, Kasper DL, Longo DL, et al., eds. Harrison's Manual of "
-        'Medicine. McGraw Hill. Chapter: Leukocytosis and Leukopenia, '
-        'Table 64-1',
+        "Kasper DL, Fauci AS, Hauser SL, et al., eds. Harrison's Manual of "
+        'Medicine. 20th ed. McGraw Hill; 2020. Leukocytosis, Table 64-1',
     url:
         'https://harrisons.unboundmedicine.com/harrisons/view/'
         'Harrisons-Manual-of-Medicine/623588/5.0/',
@@ -130,6 +131,16 @@ abstract final class DiffSources {
         'eosinophilic-disorders/eosinophilia',
   );
 
+  /// MSD Manual Professional — Lymphocytopenia: kattalarda < 1000/mcL
+  /// (me'yor 1000–4800/mcL). Sukut pastki chegara (1,5) Harrison'dan.
+  static const msdLymphocytopenia = CalcSource(
+    id: 'diff-msd-lymphocytopenia',
+    citation: 'MSD Manual Professional Edition. Lymphocytopenia. 2026',
+    url:
+        'https://www.msdmanuals.com/professional/hematology-and-oncology/'
+        'leukopenias/lymphocytopenia',
+  );
+
   static const all = [
     who2003,
     medlineDiff,
@@ -143,6 +154,7 @@ abstract final class DiffSources {
     harrisonManual,
     msdNeutropenia,
     msdEosinophilia,
+    msdLymphocytopenia,
   ];
 }
 

@@ -541,6 +541,11 @@ abstract final class BgL {
     'ru': 'Слабая',
     'en': 'Weak',
   });
+  static const reactionMixed = _T({
+    'uz': 'Aralash maydon',
+    'ru': 'Смешанное поле',
+    'en': 'Mixed field',
+  });
   static const controlLabel = _T({
     'uz': 'Nazorat (diluent / autonazorat)',
     'ru': 'Контроль (дилюент / аутоконтроль)',
@@ -572,6 +577,11 @@ abstract final class BgL {
     'ru': 'Расхождение — группа не устанавливается',
     'en': 'Discrepancy — no group is assigned',
   });
+  static const anomalyTitle = _T({
+    'uz': 'Anomaliya — guruh aytilmaydi',
+    'ru': 'Аномалия — группа не устанавливается',
+    'en': 'Anomaly — no group is assigned',
+  });
   static const invalidTitle = _T({
     'uz': 'Natija yaroqsiz',
     'ru': 'Результат недействителен',
@@ -591,6 +601,11 @@ abstract final class BgL {
     'uz': 'Anti-D bilan kuchsiz reaksiya',
     'ru': 'Слабая реакция с анти-D',
     'en': 'Weak reaction with anti-D',
+  });
+  static const rhMixed = _T({
+    'uz': 'Anti-D bilan aralash maydon',
+    'ru': 'Смешанное поле с анти-D',
+    'en': 'Mixed field with anti-D',
   });
 }
 
@@ -2221,21 +2236,48 @@ const bgFlagInfo = <BgFlag, BgFlagInfo>{
   BgFlag.weakForward: BgFlagInfo(
     _T({
       'uz':
-          'Kuchsiz reaksiya: A/B variantlari monoklonal reagentlar bilan '
-          'kuchsiz reaksiya berishi mumkin; aralash maydon bo‘lsa — takrorlanadi '
-          'va tekshiriladi. '
-          'Tasdiqlash uchun ma’lumotnoma laboratoriyasi kerak bo‘lishi mumkin.',
+          'Anti-A yoki anti-B bilan kuchsiz reaksiya — anomaliya, guruh '
+          'aytilmaydi. A/B variantlari monoklonal reagentlar bilan kuchsiz '
+          'yoki manfiy reaksiya berishi mumkin; test takrorlanadi va sabab SOP '
+          'bo‘yicha aniqlanadi, guruhni tasdiqlash uchun ma’lumotnoma '
+          'laboratoriyasi kerak bo‘lishi mumkin.',
       'ru':
-          'Слабая реакция: варианты A/B могут слабо реагировать с '
-          'моноклональными реагентами; смешанное поле повторяют и исследуют. Для '
-          'подтверждения может понадобиться референс-лаборатория.',
+          'Слабая реакция с анти-A или анти-B — аномалия, группа не '
+          'устанавливается. Варианты A/B могут давать слабые или отрицательные '
+          'реакции с моноклональными реагентами; исследование повторяют и '
+          'выясняют причину по СОП, для подтверждения группы может '
+          'понадобиться референс-лаборатория.',
       'en':
-          'Weak reaction: A/B variants may react weakly with monoclonal '
-          'reagents; mixed field is repeated and investigated. A reference '
-          'centre may be needed to '
-          'confirm.',
+          'Weak reaction with anti-A or anti-B — an anomaly, no group is '
+          'assigned. A/B variants may give weak or negative reactions with '
+          'monoclonal reagents; repeat and investigate per SOP — referral to a '
+          'reference centre may be needed to confirm the group.',
     }),
-    [refBshAnomalies],
+    [refBshAnomalies, refBshResolve, refBshFigA1],
+  ),
+  BgFlag.mixedField: BgFlagInfo(
+    _T({
+      'uz':
+          'Aralash maydon — anomaliya: guruh tasdiqlanishidan yoki '
+          'eritrotsitlar berilishidan oldin test takrorlanadi va/yoki '
+          'tekshiriladi. Sabablari: ABO/D bo‘yicha mos bo‘lmagan (hatto '
+          'nomuvofiq) transfuziya, mos bo‘lmagan gemopoetik ildiz hujayra '
+          'transplantatsiyasi, A3 yoki B3, katta homila-ona qon o‘tishi, '
+          'kamdan-kam — ximera.',
+      'ru':
+          'Смешанное поле — аномалия: до утверждения группы или выдачи '
+          'эритроцитов исследование повторяют и/или выясняют причину. Причины: '
+          'ABO/D-несовпадающая (даже несовместимая) трансфузия, несовпадающая '
+          'трансплантация гемопоэтических стволовых клеток, A3 или B3, '
+          'массивное фетоматеринское кровотечение, редко — химеризм.',
+      'en':
+          'Mixed field — an anomaly: repeat and/or investigate before the '
+          'group is authorised or red cells are issued. Causes: an ABO/D '
+          'mismatched or even incompatible transfusion, a mismatched '
+          'haemopoietic stem cell transplant, A3 or B3, a large fetomaternal '
+          'haemorrhage or, rarely, a chimera.',
+    }),
+    [refBshAnomalies, refBshResolve],
   ),
   BgFlag.weakD: BgFlagInfo(
     _T({

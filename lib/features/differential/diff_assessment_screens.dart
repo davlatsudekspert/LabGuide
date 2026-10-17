@@ -9,6 +9,7 @@ import '../../l10n/gen/app_localizations.dart';
 import '../tools/clinical_calc_screens.dart';
 import '../tools/tool_screens.dart';
 import 'diff_assessment.dart';
+import 'differential_content.dart';
 import 'differential_controller.dart';
 
 String _num(BuildContext context, double v, {int decimals = 2}) => formatResult(
@@ -25,6 +26,14 @@ String diffMeasureLabel(DiffMeasure m, AppLocalizations l) => switch (m) {
   DiffMeasure.basophils => l.diffMeasureBasophils,
   DiffMeasure.bandsPercent => l.diffMeasureBands,
 };
+
+/// "Talqin" topilmasi nomi ikki nuqtadan keyin: rus tilida kichik harf bilan
+/// (bosh kelishikdagi atama — "Возможная трактовка: нейтропения").
+String findingLabel(DiffFinding f, String lang) {
+  final t = f.title.of(lang);
+  if (lang != 'ru' || t.isEmpty) return t;
+  return t[0].toLowerCase() + t.substring(1);
+}
 
 String _unit(DiffMeasure m, AppLocalizations l) =>
     m == DiffMeasure.bandsPercent ? '%' : l.diffColAbs;
@@ -58,7 +67,7 @@ class DiffAssessmentPanel extends StatelessWidget {
     final text = Theme.of(context).textTheme;
     final diff = context.services.differential;
     final a = assessDifferential(record, diff.limits);
-    if (a.results.isEmpty) return const SizedBox.shrink();
+    if (a.results.isEmpty && !a.incomplete) return const SizedBox.shrink();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -66,8 +75,18 @@ class DiffAssessmentPanel extends StatelessWidget {
         if (a.refer)
           LgNotice(
             l.diffAssessReferBody,
+            key: const ValueKey('diff-assess-refer'),
             title: l.diffReferTitle,
             kind: NoticeKind.error,
+          ),
+        if (a.incomplete)
+          Padding(
+            padding: const EdgeInsets.only(bottom: 6),
+            child: Text(
+              l.diffAssessIncomplete(a.counted, a.target),
+              key: const ValueKey('diff-assess-incomplete'),
+              style: text.bodyMedium,
+            ),
           ),
         if (a.needsWbc)
           Padding(
@@ -118,7 +137,7 @@ class DiffAssessmentPanel extends StatelessWidget {
                     if (r.finding case final f?) ...[
                       const SizedBox(height: 6),
                       Text(
-                        l.diffAssessMaySuggest(f.title.of(lang)),
+                        l.diffAssessMaySuggest(findingLabel(f, lang)),
                         style: text.bodyMedium!.copyWith(color: p.brand),
                       ),
                       Text(f.what.of(lang), style: text.bodySmall),
@@ -128,10 +147,14 @@ class DiffAssessmentPanel extends StatelessWidget {
               ),
             ),
           ),
-        if (a.flagged.isEmpty && !a.needsWbc)
+        if (a.allNormal)
           Padding(
             padding: const EdgeInsets.only(top: 4),
-            child: Text(l.diffAssessAllNormal, style: text.bodyMedium),
+            child: Text(
+              l.diffAssessAllNormal,
+              key: const ValueKey('diff-assess-all-normal'),
+              style: text.bodyMedium,
+            ),
           ),
         LgNotice(l.diffAssessNote, kind: NoticeKind.info),
         Wrap(
@@ -185,6 +208,7 @@ class DiffLimitsScreen extends StatelessWidget {
           const CalcSourceTile(index: 1, ref: diffDefaultLimitsRef),
           const CalcSourceTile(index: 2, ref: diffNeutropeniaRef),
           const CalcSourceTile(index: 3, ref: diffEosinophiliaRef),
+          const CalcSourceTile(index: 4, ref: diffLymphocytopeniaRef),
           const SizedBox(height: 12),
           LgButton.secondary(
             label: l.diffLimitsReset,

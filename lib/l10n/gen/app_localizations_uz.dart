@@ -8085,6 +8085,11 @@ class AppLocalizationsUz extends AppLocalizations {
   String get diffAssessAllNormal => 'Barcha ko‘rsatkichlar me’yor oralig‘ida.';
 
   @override
+  String diffAssessIncomplete(int counted, int target) {
+    return 'Solishtirish sanash tugagach chiqadi: $target ta hujayradan $counted tasi sanaldi. Tugallanmagan sanashdagi ulushlar ishonchsiz.';
+  }
+
+  @override
   String get diffFlagHigh => 'Yuqori';
 
   @override
@@ -8147,7 +8152,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get diffLimitsSourceNote =>
-      'Sukut qiymatlari — kattalar uchun 95 % oraliq (Harrison’s Manual of Medicine, 64-1-jadval); tayoqchalar — Lyubina 1984, 6-jadval. Bolalarda va ayrim etnik guruhlarda (masalan, Duffy-manfiy) me’yor farq qiladi.';
+      'Sukut qiymatlari — kattalar uchun 95 % oraliq (Harrison’s Manual of Medicine, 20-nashr, 64-1-jadval); tayoqchalar — Lyubina 1984, 6-jadval. MSD qo‘llanmasi ta’riflari farq qiladi: eozinofiliya > 0,5 ×10⁹/L (bu yerda sukut yuqori chegara 0,7), limfopeniya < 1,0 ×10⁹/L (bu yerda sukut pastki chegara 1,5). Bolalarda va ayrim etnik guruhlarda (masalan, Duffy-manfiy) me’yor farq qiladi.';
 
   @override
   String get cytoAdequacyTitle => 'Namuna sifati';

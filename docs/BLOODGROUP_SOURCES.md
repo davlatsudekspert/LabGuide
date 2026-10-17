@@ -138,6 +138,10 @@ ABO discrepancies" (pullik), AABB Technical Manual (yopiq). Ulardan hech narsa o
   ustun bo'yicha "antigen ham, antitela ham bor/yo'q" belgilanadi va BSH Fig. A1 sabablari
   ko'rsatiladi. Nazorat musbat → yaroqsiz (BSH §4.4.9). AB D+ va nazoratsiz → ogohlantirish
   (BSH §8.4.3). Kuchsiz anti-D → BSH Fig. 1 izohi.
+- Tibbiy audit (2026-10-17) bo'yicha: anti-A/anti-B bilan **kuchsiz** reaksiya yoki **aralash maydon**
+  (yangi tanlov; anti-D da ham) — anomaliya: ikki usul mos bo'lsa ham guruh **aytilmaydi**
+  ("Anomaliya — guruh aytilmaydi"), takrorlash/tekshirish va ma'lumotnoma laboratoriyasi izohi
+  (BSH §4.7.1 i, iv, p. 12; §4.8.1; Fig. A1, p. 28 — PDF matni qayta o'qildi).
 
 ## Atamalar (ruscha) — tekshiruv holati
 

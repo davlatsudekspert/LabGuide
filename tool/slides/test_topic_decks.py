@@ -112,6 +112,20 @@ class BooksExtra(unittest.TestCase):
                     for lg in dc.LANGS:
                         self.assertTrue(dc.L(ref['loc'], lg).strip(), f'{day_id}: bo‘lim/sahifa yo‘q')
 
+    def test_d064_kidney_slide_medical_audit_2026_10_17(self):
+        """Koptokcha filtrati plazma ultrafiltrati: "filtratda 9:1" xatosi va tasdiqlanmagan
+        "buyrak 10–20 soat" qaytmasin (uch tilda)."""
+        e = next(x for x in repo().books['topics']['d064']
+                 if x['title']['en'].startswith('The role of the kidneys'))
+        bad = {'en': ['9:1', '50:1', '10–20 hours', 'glomerular filtrate'],
+               'ru': ['9:1', '50:1', '10–20 часов', 'клубочковом фильтрате', 'монофосфат'],
+               'uz': ['9:1', '50:1', '10–20 soat', 'koptokcha filtratida']}
+        for lg, pats in bad.items():
+            text = ' '.join(e['bullets'][lg])
+            for p in pats:
+                self.assertNotIn(p, text, f'{lg}: {p}')
+            self.assertIn('1:4', text, lg)
+
     def test_book_slides_are_in_decks_and_listed_with_locations(self):
         r = repo()
         for day_id in r.books['topics']:

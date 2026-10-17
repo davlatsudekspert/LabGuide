@@ -8193,6 +8193,11 @@ class AppLocalizationsEn extends AppLocalizations {
       'All values are within the reference range.';
 
   @override
+  String diffAssessIncomplete(int counted, int target) {
+    return 'The comparison appears when the count is complete: $counted of $target cells counted. Percentages from an incomplete count are not reliable.';
+  }
+
+  @override
   String get diffFlagHigh => 'High';
 
   @override
@@ -8255,7 +8260,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get diffLimitsSourceNote =>
-      'Defaults are adult 95 % intervals (Harrison’s Manual of Medicine, Table 64-1); bands — Lyubina 1984, Table 6. Ranges differ in children and in some ethnic groups (e.g. Duffy-negative).';
+      'Defaults are adult 95 % intervals (Harrison’s Manual of Medicine, 20th ed., Table 64-1); bands — Lyubina 1984, Table 6. MSD Manual definitions differ: eosinophilia > 0.5 ×10⁹/L (default upper limit here 0.7) and lymphocytopenia < 1.0 ×10⁹/L (default lower limit here 1.5). Ranges differ in children and in some ethnic groups (e.g. Duffy-negative).';
 
   @override
   String get cytoAdequacyTitle => 'Specimen adequacy';

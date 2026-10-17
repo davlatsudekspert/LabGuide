@@ -10,9 +10,11 @@ library;
 /// ABO guruhi.
 enum AboGroup { o, a, b, ab }
 
-/// Reagent bilan reaksiya. `weak` — kuchsiz musbat (guruh uchun musbat
-/// hisoblanadi, lekin alohida belgilanadi).
-enum BgReaction { neg, pos, weak }
+/// Reagent bilan reaksiya. `weak` — kuchsiz musbat, `mixed` — aralash
+/// maydon. Ikkalasi ham agglyutinatsiya bor deb o'qiladi, lekin anti-A /
+/// anti-B da anomaliya: guruh aytilmaydi, takrorlash va tekshirish kerak
+/// (BSH 2012 §4.7.1 i, iv; §4.8.1; Fig. A1).
+enum BgReaction { neg, pos, weak, mixed }
 
 extension on BgReaction {
   bool get positive => this != BgReaction.neg;
@@ -54,7 +56,7 @@ class BgInput {
 }
 
 /// RhD natijasi (o'quv talqini).
-enum RhResult { positive, negative, weak }
+enum RhResult { positive, negative, weak, mixedField }
 
 /// Belgilar (ogohlantirishlar). Har biri ekranda manbali izoh bilan chiqadi.
 enum BgFlag {
@@ -85,8 +87,13 @@ enum BgFlag {
   /// Hamma reagent bilan musbat (AB, D+) va nazorat qo'yilmagan.
   allPositiveNoControl,
 
-  /// Anti-A yoki anti-B bilan kuchsiz reaksiya.
+  /// Anti-A yoki anti-B bilan kuchsiz reaksiya — anomaliya, guruh
+  /// aytilmaydi (BSH §4.7.1 iv, Fig. A1).
   weakForward,
+
+  /// Aralash maydon (anti-A, anti-B yoki anti-D) — anomaliya: guruh
+  /// tasdiqlanishidan oldin takrorlanadi/tekshiriladi (BSH §4.7.1 i).
+  mixedField,
 
   /// Anti-D bilan kuchsiz reaksiya.
   weakD,
@@ -112,10 +119,19 @@ class BgResult {
   bool get invalid => flags.contains(BgFlag.controlPositive);
   bool get discrepancy => flags.contains(BgFlag.discrepancy);
 
-  /// O'quv talqini: ikkala usul mos kelsa va nazorat musbat bo'lmasa.
-  /// Nomuvofiqlik yoki to'liqsiz natijada — `null` (guruh aytilmaydi).
+  /// To'g'ri usulda anomaliya (kuchsiz reaksiya yoki aralash maydon):
+  /// BSH §4.7.1, §4.8.1 — guruh hal bo'lmaguncha aytilmaydi.
+  bool get anomaly =>
+      flags.contains(BgFlag.weakForward) || flags.contains(BgFlag.mixedField);
+
+  /// O'quv talqini: ikkala usul mos kelsa, nazorat musbat bo'lmasa va
+  /// anomaliya yo'q bo'lsa. Aks holda — `null` (guruh aytilmaydi).
   AboGroup? get group =>
-      !invalid && !discrepancy && forward != null && forward == reverse
+      !invalid &&
+          !discrepancy &&
+          !anomaly &&
+          forward != null &&
+          forward == reverse
       ? forward
       : null;
 }
@@ -152,6 +168,9 @@ BgResult readPattern(BgInput i) {
     if (i.antiA == BgReaction.weak || i.antiB == BgReaction.weak) {
       flags.add(BgFlag.weakForward);
     }
+    if (i.antiA == BgReaction.mixed || i.antiB == BgReaction.mixed) {
+      flags.add(BgFlag.mixedField);
+    }
   }
   if (i.reverseDone) {
     reverse = groupFromAntibodies(antiA: i.a1Cells!, antiB: i.bCells!);
@@ -174,8 +193,10 @@ BgResult readPattern(BgInput i) {
       BgReaction.pos => RhResult.positive,
       BgReaction.neg => RhResult.negative,
       BgReaction.weak => RhResult.weak,
+      BgReaction.mixed => RhResult.mixedField,
     };
     if (i.antiD == BgReaction.weak) flags.add(BgFlag.weakD);
+    if (i.antiD == BgReaction.mixed) flags.add(BgFlag.mixedField);
   }
   if (i.control == true) flags.add(BgFlag.controlPositive);
   // BSH §8.4.3: AB D+ (hammasi musbat) naqshida nazoratsiz sovuq

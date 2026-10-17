@@ -122,14 +122,18 @@ enum MotilityGrade { rapid, slow, nonProgressive, immotile }
 const spermWhoTarget = 200;
 const spermTargets = [100, spermWhoTarget];
 
-/// Butun foizlar: yig'indi 100 bo'lmasa (99 yoki 101), eng katta guruh
-/// tuzatiladi — JSST 2021 §2.4.6.2 qoidasi. [counts] bo'sh bo'lsa — nollar.
+/// Butun foizlar — JSST 2021 §2.4.6.2: eng yaqin butun songa yaxlitlanadi;
+/// yig'indi faqat 99 yoki 101 bo'lsa, ustun (eng katta) guruh tuzatiladi.
+/// Boshqa yig'indida tuzatilmaydi (JSST bo'yicha bu sanash/hisob xatosi
+/// belgisi; aniq sonlarda bunday holat faqat bir nechta x,5 qiymatning
+/// yaxlitlanishidan bo'ladi — ekranda o'nli qiymat ko'rsatiladi).
+/// [counts] bo'sh bo'lsa — nollar.
 List<int> roundedPercents(List<int> counts) {
   final total = counts.fold<int>(0, (a, b) => a + b);
   if (total == 0) return List.filled(counts.length, 0);
   final r = <int>[for (final c in counts) (c * 100 / total).round()];
   final diff = 100 - r.fold<int>(0, (a, b) => a + b);
-  if (diff != 0) {
+  if (diff == 1 || diff == -1) {
     var dominant = 0;
     for (var i = 1; i < counts.length; i++) {
       if (counts[i] > counts[dominant]) dominant = i;
@@ -169,9 +173,19 @@ class MotilityCount {
     }
   }
 
-  /// To'rt toifa foizi (butun, yig'indi 100).
+  /// To'rt toifa foizi (butun; JSST qoidasi bo'yicha odatda yig'indi 100).
   List<int> get percents =>
       roundedPercents([for (final g in MotilityGrade.values) count(g)]);
+
+  /// Butun foizlar yig'indisi 100 emas (faqat bir nechta x,5 qiymat
+  /// yaxlitlanganda) — ekranda o'nli [exactPercents] ko'rsatiladi.
+  bool get roundingUnresolved =>
+      !isEmpty && percents.fold<int>(0, (a, b) => a + b) != 100;
+
+  /// To'rt toifa foizi, yaxlitlanmagan.
+  List<double> get exactPercents => [
+    for (final g in MotilityGrade.values) isEmpty ? 0 : count(g) * 100 / total,
+  ];
 
   /// Progressiv harakat (PR = a + b), %.
   double? get progressive => isEmpty
@@ -295,7 +309,19 @@ class SpermAssessment {
     required this.countBasis,
     required this.lowPh,
     required this.errors,
+    this.azoospermiaSuspected = false,
+    this.vitalityLowOnly = false,
   });
+
+  /// Konsentratsiya 0 (nam preparatlarda spermatozoid yo'q): JSST 2021
+  /// §2.4.8.8 — azoospermiyaga faqat shubha; atama sentrifugalangan
+  /// cho'kma tekshirilgandan keyin ishlatiladi. Shuning uchun [terms] bo'sh.
+  final bool azoospermiaSuspected;
+
+  /// Tirik spermatozoidlar ulushi past, lekin harakatsizlar ulushi yuqori
+  /// ekani ko'rsatilmagan (umumiy harakatchanlik kiritilmagan yoki pastki
+  /// chegaradan past emas) — nekrozoospermiya atamasi qo'llanmaydi.
+  final bool vitalityLowOnly;
 
   /// Pastki chegaradan past ko'rsatkichlar.
   final Set<SpermParam> below;
@@ -312,7 +338,8 @@ class SpermAssessment {
 
   final Set<SpermInputError> errors;
 
-  bool get hasFindings => below.isNotEmpty || terms.isNotEmpty || lowPh;
+  bool get hasFindings =>
+      below.isNotEmpty || terms.isNotEmpty || lowPh || azoospermiaSuspected;
 }
 
 SpermAssessment assessSperm(SpermInput i) {
@@ -335,15 +362,18 @@ SpermAssessment assessSperm(SpermInput i) {
   check(SpermParam.vitality, i.vitality);
   check(SpermParam.normalForms, i.normalForms);
 
-  // Spermatozoid topilmadi: boshqa sperma atamalari qo'llanmaydi.
+  // Nam preparatda spermatozoid topilmadi: azoospermiyaga faqat shubha
+  // (JSST 2021 §2.4.8.8) — atama sentrifugalangan cho'kmadan keyin; boshqa
+  // sperma atamalari ham qo'llanmaydi.
   final none = i.concentration == 0;
   if (none) {
     return SpermAssessment(
       below: below,
-      terms: const [SpermTerm.azoospermia],
+      terms: const [],
       countBasis: SpermParam.concentration,
       lowPh: i.ph != null && i.ph! < spermPhLow,
       errors: errors,
+      azoospermiaSuspected: true,
     );
   }
 
@@ -376,7 +406,12 @@ SpermAssessment assessSperm(SpermInput i) {
     // Normozoospermiya — uchala ko'rsatkich kiritilgan va chegaradan past emas.
     terms.add(SpermTerm.normozoospermia);
   }
-  if (below.contains(SpermParam.vitality)) {
+  // Nekrozoospermiya (JSST 2010 Table A1.3): tirik spermatozoidlar ulushi
+  // past VA harakatsizlar ulushi yuqori. "Yuqori" — umumiy harakatchanlik
+  // pastki chegaradan (42 %) past, ya'ni harakatsizlar > 58 %.
+  final lowVitality = below.contains(SpermParam.vitality);
+  final highImmotile = below.contains(SpermParam.totalMotility);
+  if (lowVitality && highImmotile) {
     terms.add(SpermTerm.necrozoospermia);
   }
   return SpermAssessment(
@@ -385,5 +420,6 @@ SpermAssessment assessSperm(SpermInput i) {
     countBasis: countBasis,
     lowPh: i.ph != null && i.ph! < spermPhLow,
     errors: errors,
+    vitalityLowOnly: lowVitality && !highImmotile,
   );
 }
