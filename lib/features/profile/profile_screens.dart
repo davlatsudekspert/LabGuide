@@ -15,6 +15,7 @@ import '../../design/widgets/lg_widgets.dart';
 import '../learn/exam_question.dart' show keepUnitsTogether;
 import '../../l10n/gen/app_localizations.dart';
 import '../auth/auth_controller.dart';
+import '../auth/social_auth.dart';
 import '../auth/ui/role_screen.dart';
 import '../settings/settings_controller.dart';
 import '../community/community_screens.dart';
@@ -673,15 +674,39 @@ class PrivacyScreen extends StatelessWidget {
     final l = AppLocalizations.of(context);
     final services = context.services;
     final messenger = ScaffoldMessenger.of(context);
+    final backend = services.backend;
+    final social = services.auth.social;
+    final socialBackend = social.backend;
+    final apple = social.provider(SocialProvider.apple);
+    // Apple (App Store 5.1.1(v)): hisob Apple bilan bog'langan bo'lsa, o'chirishda
+    // Apple tokeni bekor qilinadi — buning uchun Apple'dan yangi tasdiq olinadi.
+    var appleLinked = false;
+    if (socialBackend != null && apple != null && apple.isSupported) {
+      try {
+        appleLinked = (await socialBackend.linkedProviders()).contains(
+          SocialProvider.apple,
+        );
+      } on Object {
+        appleLinked = false;
+      }
+    }
+    if (!context.mounted) return;
     final ok = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
         title: Text(l.accountDeleteTitle),
         content: Text(
-          services.entitlements.purchasesEnabled ||
-                  services.entitlements.activeEntitlement != null
-              ? '${l.accountDeleteBody}\n\n${l.payDeleteAccountNote(services.entitlements.source.platform == 'app_store' ? 'App Store' : 'Google Play')}'
-              : l.accountDeleteBody,
+          [
+            l.accountDeleteBody,
+            if (services.entitlements.purchasesEnabled ||
+                services.entitlements.activeEntitlement != null)
+              l.payDeleteAccountNote(
+                services.entitlements.source.platform == 'app_store'
+                    ? 'App Store'
+                    : 'Google Play',
+              ),
+            if (appleLinked) l.accountDeleteAppleNote,
+          ].join('\n\n'),
         ),
         actions: [
           TextButton(
@@ -696,8 +721,30 @@ class PrivacyScreen extends StatelessWidget {
       ),
     );
     if (ok != true) return;
+    String? appleCode;
+    if (appleLinked) {
+      try {
+        final credential = await apple!.authenticate();
+        if (credential == null) {
+          // Foydalanuvchi Apple tasdig'ini bekor qildi: hech narsa o'chirilmaydi.
+          messenger.showSnackBar(
+            SnackBar(content: Text(l.accountDeleteAppleCancelled)),
+          );
+          return;
+        }
+        appleCode = credential.authorizationCode;
+      } on Object {
+        // Apple oynasi ochilmadi: hisobni o'chirish to'silmaydi (server
+        // bekor qilish o'tkazib yuborilganini jurnalga yozadi).
+        appleCode = null;
+      }
+    }
     try {
-      await services.backend.deleteAccount();
+      if (socialBackend != null) {
+        await socialBackend.deleteAccountWithApple(appleCode);
+      } else {
+        await backend.deleteAccount();
+      }
     } on Object catch (e) {
       messenger.showSnackBar(SnackBar(content: Text(backendErrorText(e, l))));
       return;

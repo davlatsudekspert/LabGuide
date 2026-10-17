@@ -8849,4 +8849,33 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get homeAdDemoCta => 'Place an ad';
+
+  @override
+  String get authOr => 'or';
+
+  @override
+  String get authSignInApple => 'Sign in with Apple';
+
+  @override
+  String get authSignInGoogle => 'Sign in with Google';
+
+  @override
+  String get authSocialFailed =>
+      'Couldn’t sign in. Check the connection and try again, or use the email code.';
+
+  @override
+  String get authSocialEmailUnverified =>
+      'This account’s email isn’t verified, so it can’t be used to sign in. Use the email code instead.';
+
+  @override
+  String get authSocialEmailRequired =>
+      'This account didn’t share an email address. Use the email code instead.';
+
+  @override
+  String get accountDeleteAppleNote =>
+      'You signed in with Apple, so Apple will ask you to confirm before the account is deleted. This also disconnects LabGuide from your Apple ID.';
+
+  @override
+  String get accountDeleteAppleCancelled =>
+      'Nothing was deleted: Apple confirmation was cancelled.';
 }

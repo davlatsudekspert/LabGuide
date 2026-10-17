@@ -7,6 +7,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
 
 import '../../features/auth/otp_auth.dart';
+import '../../features/auth/social_auth.dart';
 import 'admin_team.dart';
 import 'backend_models.dart';
 import 'community_backend.dart';
@@ -108,7 +109,11 @@ class _ApiResponse {
 /// hamkorlar) `BackendFailure.unavailable` beradi — ishlayotgandek
 /// ko'rsatilmaydi. Pro obunalari — [billing] (`CloudflareEntitlementSource`).
 class CloudflareLabBackend
-    implements LabBackend, CommunityBackend, AdminTeamBackend {
+    implements
+        LabBackend,
+        CommunityBackend,
+        AdminTeamBackend,
+        SocialLoginBackend {
   CloudflareLabBackend(
     this.config, {
     SessionStore? sessionStore,
@@ -350,18 +355,7 @@ class CloudflareLabBackend
         auth: false,
       );
       if (r.status == 200) {
-        final m = r.map;
-        _token = m['token']! as String;
-        _userId = m['user_id']! as String;
-        _email = key;
-        await _sessions.write(
-          jsonEncode({
-            'token': _token,
-            'user_id': _userId,
-            'email': key,
-            'expires_at': m['expires_at'],
-          }),
-        );
+        await _adoptSession(r.map, key);
         return const OtpVerifyResult(OtpVerifyStatus.verified);
       }
       return switch (r.error) {
@@ -381,6 +375,106 @@ class CloudflareLabBackend
     } on BackendException {
       return const OtpVerifyResult(OtpVerifyStatus.failed);
     }
+  }
+
+  /// Server bergan sessiyani qurilmaga yozadi (email kodi va Google/Apple uchun
+  /// bir xil). [email] — ekranda ko'rsatiladigan manzil (yo'q bo'lishi mumkin).
+  Future<void> _adoptSession(Map<String, Object?> m, String? email) async {
+    _token = m['token']! as String;
+    _userId = m['user_id']! as String;
+    _email = email;
+    await _sessions.write(
+      jsonEncode({
+        'token': _token,
+        'user_id': _userId,
+        'email': email,
+        'expires_at': m['expires_at'],
+      }),
+    );
+  }
+
+  // ------------------------------------------------- Google / Apple (D-56)
+  @override
+  Future<SocialServerStatus?> socialStatus() async {
+    try {
+      final r = await _send('GET', '/v1/auth/providers', auth: false);
+      if (!r.ok) return null;
+      return SocialServerStatus(
+        google: r.map['google'] == true,
+        apple: r.map['apple'] == true,
+        appleWeb: r.map['apple_web'] == true,
+      );
+    } on BackendException {
+      return null;
+    }
+  }
+
+  @override
+  Future<SocialSignInResult> socialSignIn(SocialCredential c) async {
+    try {
+      final r = await _send(
+        'POST',
+        c.provider == SocialProvider.google
+            ? '/v1/auth/google'
+            : '/v1/auth/apple',
+        body: {'id_token': c.idToken, 'nonce': c.rawNonce},
+        auth: false,
+      );
+      if (r.ok) {
+        final m = r.map;
+        // Tokendagi email (bo'lsa), aks holda serverdagi niqoblangani.
+        final shown = (m['email'] as String?) ?? (m['email_masked'] as String?);
+        await _adoptSession(m, m['email'] as String?);
+        return SocialSignInResult(SocialSignInStatus.success, email: shown);
+      }
+      return switch (r.error) {
+        'email_not_verified' => const SocialSignInResult(
+          SocialSignInStatus.emailNotVerified,
+        ),
+        'email_required' => const SocialSignInResult(
+          SocialSignInStatus.emailRequired,
+        ),
+        'not_configured' => const SocialSignInResult(
+          SocialSignInStatus.unavailable,
+        ),
+        'rate_limited' => SocialSignInResult(
+          SocialSignInStatus.rateLimited,
+          retryAfter: _seconds(r.map['retry_after']),
+        ),
+        _ when r.status == 503 => const SocialSignInResult(
+          SocialSignInStatus.unavailable,
+        ),
+        _ => const SocialSignInResult(SocialSignInStatus.failed),
+      };
+    } on BackendException {
+      return const SocialSignInResult(SocialSignInStatus.failed);
+    }
+  }
+
+  @override
+  Future<Set<SocialProvider>> linkedProviders() async {
+    if (!hasSession) return const {};
+    final r = await _send('GET', '/v1/me');
+    if (!r.ok) return const {};
+    final ids = r.map['identities'];
+    return {
+      if (ids is List)
+        for (final id in ids)
+          for (final p in SocialProvider.values)
+            if (p.name == id) p,
+    };
+  }
+
+  @override
+  Future<void> deleteAccountWithApple(String? appleAuthorizationCode) async {
+    await _call(
+      'DELETE',
+      '/v1/me',
+      body: appleAuthorizationCode == null
+          ? null
+          : {'apple_authorization_code': appleAuthorizationCode},
+    );
+    await _clearSession();
   }
 
   @override

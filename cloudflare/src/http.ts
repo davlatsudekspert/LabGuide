@@ -40,6 +40,24 @@ export interface Env {
   GOOGLE_PLAY_PACKAGE?: string;
   /** Maxfiy (ixtiyoriy): RTDN push URL'idagi `?token=` qiymati. */
   PLAY_RTDN_TOKEN?: string;
+  /**
+   * Google bilan kirish (src/social.ts): ruxsat etilgan OAuth client ID lar
+   * (ID tokendagi `aud`), vergul/bo'shliq bilan. Bo'sh — Google kirishi
+   * `503 not_configured`, ilova tugmani ko'rsatmaydi.
+   */
+  GOOGLE_CLIENT_IDS?: string;
+  /**
+   * Apple bilan kirish: Developer → Keys → "Sign in with Apple" kaliti.
+   * Uchalasi (TEAM_ID, KEY_ID, PRIVATE_KEY = `.p8` matni) bo'lsa yoqiladi —
+   * hisobni o'chirishda Apple tokenini bekor qilish (revoke) shularga bog'liq.
+   */
+  APPLE_SIGNIN_TEAM_ID?: string;
+  APPLE_SIGNIN_KEY_ID?: string;
+  APPLE_SIGNIN_PRIVATE_KEY?: string;
+  /** Standart: APPLE_BUNDLE_ID yoki uz.labguide.app (iOS/macOS ilova). */
+  APPLE_SIGNIN_CLIENT_ID?: string;
+  /** Ixtiyoriy: Android veb-oqimi uchun Apple Services ID (qo'shimcha `aud`). */
+  APPLE_SIGNIN_SERVICE_ID?: string;
 }
 
 export class ApiError extends Error {

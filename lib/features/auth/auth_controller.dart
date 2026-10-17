@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import '../../core/backend/lab_backend.dart';
 import '../../core/storage/kv_store.dart';
 import 'otp_auth.dart';
+import 'social_auth.dart';
 
 /// Joriy sessiya. Kontentni o'qish uchun sessiya shart emas: mehmon ham
 /// barcha o'qish ekranlarini ko'radi. Hisob faqat sinxronlash, guruh va
@@ -32,7 +33,9 @@ class AuthController extends ChangeNotifier {
     this.adapter, {
     DateTime Function()? clock,
     this.backend,
-  }) : _session = _restore(_store),
+    SocialAuthService? social,
+  }) : social = social ?? SocialAuthService.none(),
+       _session = _restore(_store),
        _clock = clock ?? DateTime.now {
     // Server sessiyani bekor qildi (token yaroqsiz, hisob o'chirilgan):
     // qurilmada ham hisobdan chiqiladi, mehmon rejimi qoladi.
@@ -47,6 +50,9 @@ class AuthController extends ChangeNotifier {
 
   /// Sozlangan bo'lsa — haqiqiy server (sessiya tokeni shu yerda).
   final LabBackend? backend;
+
+  /// Google / Apple bilan kirish (sozlanmagan buildda — tugmalar yo'q).
+  final SocialAuthService social;
   StreamSubscription<void>? _lost;
 
   AuthSession? _session;
@@ -103,6 +109,22 @@ class AuthController extends ChangeNotifier {
       } else {
         await _store.setString(StoreKeys.session, 'guest');
       }
+    }
+    return result;
+  }
+
+  /// Google / Apple bilan kirish. Bekor qilish — jim [SocialSignInStatus.cancelled].
+  /// Muvaffaqiyatda sessiya email kodi bilan kirgandagidek saqlanadi (bitta
+  /// email = bitta hisob; server mavjud hisobga bog'laydi).
+  Future<SocialSignInResult> signInWithSocial(SocialProvider provider) async {
+    final result = await social.signIn(provider);
+    if (result.status == SocialSignInStatus.success) {
+      final email = result.email ?? '';
+      _session = EmailSession(email, isDemo: false);
+      _pendingEmail = null;
+      _lastRequest = null;
+      notifyListeners();
+      await _store.setString(StoreKeys.session, 'email:$email');
     }
     return result;
   }

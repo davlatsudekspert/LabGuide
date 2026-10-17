@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  "Sign in with Apple" (D-56). Bu fayl Xcode loyihasiga AVTOMATIK ulanmagan:
+  CI (testflight rejimi) uni faqat repo variable LG_APPLE_SIGNIN=true bo'lganda
+  runner'dagi nusxaga CODE_SIGN_ENTITLEMENTS sifatida ulaydi. Sabab: App ID'da
+  imkoniyat yoqilmagan bo'lsa, profil entitlement'ni o'z ichiga olmaydi va
+  imzolash/TestFlight yuklash xato bilan to'xtardi. Egasi qadamlari:
+  docs/AUTH_SOCIAL_LOGIN.md. Mac'da qo'lda ishlaganda: Xcode -> Runner ->
+  Signing & Capabilities -> "+ Capability" -> Sign in with Apple.
+-->
+<plist version="1.0">
+<dict>
+	<key>com.apple.developer.applesignin</key>
+	<array>
+		<string>Default</string>
+	</array>
+</dict>
+</plist>

@@ -8887,4 +8887,33 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get homeAdDemoCta => 'Разместить рекламу';
+
+  @override
+  String get authOr => 'или';
+
+  @override
+  String get authSignInApple => 'Войти с Apple';
+
+  @override
+  String get authSignInGoogle => 'Войти через Google';
+
+  @override
+  String get authSocialFailed =>
+      'Не удалось войти. Проверьте соединение и попробуйте ещё раз или войдите по коду из письма.';
+
+  @override
+  String get authSocialEmailUnverified =>
+      'Email этого аккаунта не подтверждён, поэтому войти с ним нельзя. Войдите по коду из письма.';
+
+  @override
+  String get authSocialEmailRequired =>
+      'Этот аккаунт не передал адрес email. Войдите по коду из письма.';
+
+  @override
+  String get accountDeleteAppleNote =>
+      'Вы вошли через Apple, поэтому перед удалением Apple попросит подтверждение. Это также отключит LabGuide от вашего Apple ID.';
+
+  @override
+  String get accountDeleteAppleCancelled =>
+      'Ничего не удалено: подтверждение Apple отменено.';
 }

@@ -11,6 +11,8 @@ import '../../../design/widgets/lg_widgets.dart';
 import '../../../l10n/gen/app_localizations.dart';
 import 'welcome_screen.dart';
 import '../otp_auth.dart';
+import '../social_auth.dart';
+import 'social_buttons.dart';
 
 /// Profil ichidan ochilganmi (aks holda onboarding oqimi).
 bool _fromProfile(BuildContext context) =>
@@ -36,11 +38,65 @@ class _EmailScreenState extends State<EmailScreen> {
   _Msg? _consentError;
   _Msg? _formError;
 
+  /// Google / Apple: platforma, build sozlamasi va server tasdiqlagan
+  /// tugmalar (bo'sh — hech narsa ko'rinmaydi).
+  List<SocialProvider> _social = const [];
+  SocialProvider? _socialBusy;
+
   @override
   void initState() {
     super.initState();
-    final pending = context.services.auth.pendingEmail;
+    final auth = context.services.auth;
+    final pending = auth.pendingEmail;
     if (pending != null) _email.text = pending;
+    unawaited(_loadSocial());
+  }
+
+  Future<void> _loadSocial() async {
+    final list = await context.services.auth.social.available();
+    if (!mounted || list.isEmpty) return;
+    setState(() => _social = list);
+  }
+
+  Future<void> _socialSignIn(SocialProvider provider) async {
+    if (_busy || _socialBusy != null) return;
+    // Email kodi bilan bir xil shart: foydalanish shartlari qabul qilinishi kerak.
+    if (!_consent) {
+      setState(() => _consentError = (l) => l.authConsentRequired);
+      return;
+    }
+    final fromProfile = _fromProfile(context);
+    setState(() {
+      _socialBusy = provider;
+      _formError = null;
+      _emailError = null;
+    });
+    final result = await context.services.auth.signInWithSocial(provider);
+    if (!mounted) return;
+    setState(() => _socialBusy = null);
+    switch (result.status) {
+      case SocialSignInStatus.success:
+        if (fromProfile) {
+          context.pop();
+        } else {
+          context.go('/welcome/role');
+        }
+      case SocialSignInStatus.cancelled:
+        // Foydalanuvchi o'zi yopdi — xato ko'rsatilmaydi.
+        break;
+      case SocialSignInStatus.emailNotVerified:
+        setState(() => _formError = (l) => l.authSocialEmailUnverified);
+      case SocialSignInStatus.emailRequired:
+        setState(() => _formError = (l) => l.authSocialEmailRequired);
+      case SocialSignInStatus.rateLimited:
+        final seconds = (result.retryAfter ?? const Duration(seconds: 60))
+            .inSeconds
+            .clamp(1, 3600);
+        setState(() => _formError = (l) => l.authRateLimited(seconds));
+      case SocialSignInStatus.unavailable:
+      case SocialSignInStatus.failed:
+        setState(() => _formError = (l) => l.authSocialFailed);
+    }
   }
 
   @override
@@ -182,6 +238,11 @@ class _EmailScreenState extends State<EmailScreen> {
             LgNotice(_formError!(l), kind: NoticeKind.error),
           const SizedBox(height: 10),
           LgButton(label: l.authGetCode, busy: _busy, onPressed: _submit),
+          SocialSignInButtons(
+            providers: _social,
+            busy: _socialBusy,
+            onPressed: _socialSignIn,
+          ),
           LgButton.link(
             label: l.authViewTerms,
             onPressed: () => context.push('/terms'),

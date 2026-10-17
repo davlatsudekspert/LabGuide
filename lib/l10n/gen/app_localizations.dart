@@ -15213,6 +15213,54 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Place an ad'**
   String get homeAdDemoCta;
+
+  /// Divider text between the email form and the Google/Apple sign-in buttons
+  ///
+  /// In en, this message translates to:
+  /// **'or'**
+  String get authOr;
+
+  /// Apple button label (Apple HIG wording)
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in with Apple'**
+  String get authSignInApple;
+
+  /// Google button label (Google branding wording)
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in with Google'**
+  String get authSignInGoogle;
+
+  /// Shown when Google/Apple sign-in fails (not when the user cancels)
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn’t sign in. Check the connection and try again, or use the email code.'**
+  String get authSocialFailed;
+
+  /// Shown when the provider reports the email as unverified
+  ///
+  /// In en, this message translates to:
+  /// **'This account’s email isn’t verified, so it can’t be used to sign in. Use the email code instead.'**
+  String get authSocialEmailUnverified;
+
+  /// Shown when the provider gave no email on first sign-in
+  ///
+  /// In en, this message translates to:
+  /// **'This account didn’t share an email address. Use the email code instead.'**
+  String get authSocialEmailRequired;
+
+  /// Added to the delete-account dialog for accounts linked to Apple
+  ///
+  /// In en, this message translates to:
+  /// **'You signed in with Apple, so Apple will ask you to confirm before the account is deleted. This also disconnects LabGuide from your Apple ID.'**
+  String get accountDeleteAppleNote;
+
+  /// Snackbar when the user cancels the Apple confirmation during account deletion
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing was deleted: Apple confirmation was cancelled.'**
+  String get accountDeleteAppleCancelled;
 }
 
 class _AppLocalizationsDelegate

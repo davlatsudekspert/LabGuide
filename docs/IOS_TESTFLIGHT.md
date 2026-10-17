@@ -61,6 +61,13 @@ versiya, SDK, entitlements), `altool` (ishlamasa `xcodebuild -exportArchive`) bi
 kutiladi. Build raqami App Store Connect’dagi oxirgisidan bittaga katta (avtomatik).
 App Store review’ga **yuborilmaydi**, reliz **qilinmaydi**.
 
+**Sign in with Apple (D-56) va TestFlight:** `com.apple.developer.applesignin` entitlement’i
+(`ios/Runner/Runner.entitlements`) IPA’ga **faqat** repo variable `LG_APPLE_SIGNIN=true` bo‘lganda qo‘shiladi
+(App ID’da imkoniyat yoqilgach; tartibi: `docs/AUTH_SOCIAL_LOGIN.md`, 1-bo‘lim). Variable yo‘q/`false` bo‘lsa
+build avvalgidek, Apple tugmasi ilovada yo‘q. Qo‘lda imzoda profilda imkoniyat bo‘lmasa job ogohlantirib
+entitlement’siz davom etadi; `true` bo‘lib IPA’da entitlement chiqmasa “IPA tekshiruvi” aniq xabar bilan to‘xtaydi.
+Google (iOS) uchun `LG_GOOGLE_IOS_CLIENT_ID` variable’i — CI uni runner’dagi `Info.plist` ga URL sxemasi qilib yozadi.
+
 ## 4. Telefonda ochish (ichki test)
 
 App Store Connect → **Apps → LabGuide → TestFlight → Internal Testing → +** (guruh yarating)

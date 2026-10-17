@@ -75,7 +75,7 @@ const storeUnavailable = () => new ApiError(502, 'store_unavailable');
 const enc = new TextEncoder();
 const b64json = (v: unknown) => base64url(enc.encode(JSON.stringify(v)));
 
-function pemToDer(pem: string): ArrayBuffer {
+export function pemToDer(pem: string): ArrayBuffer {
   // Secret'da `\n` ketma-ketligi bilan saqlangan bo'lishi ham mumkin.
   const body = pem
     .replace(/\\n/g, '\n')
@@ -87,7 +87,7 @@ function pemToDer(pem: string): ArrayBuffer {
   return out.buffer;
 }
 
-function b64urlDecode(s: string): string {
+export function b64urlDecode(s: string): string {
   const pad = s.replace(/-/g, '+').replace(/_/g, '/');
   const bin = atob(pad + '='.repeat((4 - (pad.length % 4)) % 4));
   const bytes = new Uint8Array(bin.length);
@@ -111,7 +111,7 @@ export function decodeJws<T = Record<string, unknown>>(jws: unknown): T {
   }
 }
 
-async function signJwt(
+export async function signJwt(
   alg: 'ES256' | 'RS256',
   pem: string,
   header: Record<string, unknown>,
