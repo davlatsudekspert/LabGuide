@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:math' as math;
 
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
@@ -17,7 +16,8 @@ import 'lecture_catalog.dart';
 import 'lecture_decks.dart';
 import 'lecture_library.dart';
 import 'lecture_slide.dart';
-import 'lecture_templates.dart';
+import 'lecture_canvas.dart';
+import 'lecture_present.dart';
 import 'topic_questions.dart';
 import 'topic_test.dart' show DeckTestState;
 import 'topic_test_screens.dart';
@@ -112,14 +112,6 @@ List<LectureSlide> buildLectureSlides(
   return slides;
 }
 
-String? _joinNote(List<String?> parts) {
-  final s = [
-    for (final p in parts)
-      if (p != null && p.isNotEmpty) p,
-  ].join('\n');
-  return s.isEmpty ? null : s;
-}
-
 /// Tayyor taqdimot slaydlari. Birinchi slaydda halol holat: qoralama va
 /// (til yo'q bo'lsa) "boshqa tilda ko'rsatilmoqda" ogohlantirishi. [wanted] —
 /// so'ralgan til (standart: ilova tili).
@@ -142,15 +134,26 @@ List<LectureSlide> deckLectureSlides(
               kDeckLangNames[deck.lang] ?? deck.lang,
             ),
   ].join('\n');
+  final bib = deck.bibliography;
   return [
     for (final (i, d) in deck.slides.indexed)
       LectureSlide(
         eyebrow: d.eyebrow,
         title: d.title,
         bullets: d.bullets,
-        note: _joinNote([if (i == 0) notice, d.footnote]),
+        note: d.footnote,
+        notice: i == 0 && notice.isNotEmpty ? notice : null,
         teacherNote: d.note,
         source: d.source,
+        refs: [
+          for (final r in d.refs)
+            if (r.index < bib.length)
+              SlideRef(
+                number: r.index + 1,
+                text: bib[r.index],
+                locators: r.locators,
+              ),
+        ],
         section: d.section,
         image: d.image,
         template: switch (d.template) {
@@ -165,10 +168,12 @@ List<LectureSlide> deckLectureSlides(
         tableRows: d.rows,
         figure: d.figure,
         figureCaption: d.caption,
+        figureCredit: d.credit,
         options: d.options,
         correctIndex: d.correct,
         answerExplanation: d.explanation,
         compact: d.compact,
+        plan: d.plan,
       ),
   ];
 }
@@ -280,6 +285,12 @@ class _LectureScreenState extends State<LectureScreen> {
   bool _deckLoaded = false;
   LectureDeck? _authored;
   final _focus = FocusNode(debugLabel: 'lecture');
+
+  // Taqdimot ko'rinishi (to'liq ekran / taqdimotchi) va tizim holati.
+  _View _view = _View.normal;
+  bool _immersive = false;
+  bool _chrome = true;
+  Timer? _chromeTimer;
 
   // Katalog decki (deckId bilan ochilganda).
   bool _catalogStarted = false;
@@ -397,6 +408,9 @@ class _LectureScreenState extends State<LectureScreen> {
   @override
   void dispose() {
     unawaited(DiffDevice.screenAwake.set(on: false));
+    _chromeTimer?.cancel();
+    // Ekran holati va tizim panellari har doim qaytariladi (orqaga, yopish).
+    if (_immersive) unawaited(LecturePresentation.exit());
     _focus.dispose();
     super.dispose();
   }
@@ -409,6 +423,69 @@ class _LectureScreenState extends State<LectureScreen> {
   void _toggleAnswer(int i) => setState(
     () => _answers.contains(i) ? _answers.remove(i) : _answers.add(i),
   );
+
+  void _swipe(DragEndDetails d, int count) {
+    final v = d.primaryVelocity ?? 0;
+    if (v < -200) _go(1, count);
+    if (v > 200) _go(-1, count);
+  }
+
+  /// Taqdimot (to'liq ekran) yoki taqdimotchi ko'rinishini boshlash. Tik
+  /// ekranda ekran holati so'raladi (yoki eslab qolingan tanlov).
+  Future<void> _present({_View view = _View.present, bool cast = false}) async {
+    final store = context.services.store;
+    final size = MediaQuery.sizeOf(context);
+    var landscape = false;
+    if (size.height > size.width) {
+      switch (LecturePresentation.read(store)) {
+        case LectureOrientation.landscape:
+          landscape = true;
+        case LectureOrientation.keep:
+          landscape = false;
+        case LectureOrientation.ask:
+          final r = await askLandscape(context, cast: cast);
+          if (r == null || !mounted) return;
+          landscape = r.landscape;
+          if (r.remember) {
+            await LecturePresentation.write(
+              store,
+              r.landscape
+                  ? LectureOrientation.landscape
+                  : LectureOrientation.keep,
+            );
+          }
+      }
+    }
+    if (!mounted) return;
+    _immersive = true;
+    setState(() => _view = view);
+    _showChrome();
+    _focus.requestFocus();
+    await LecturePresentation.enter(landscape: landscape);
+  }
+
+  Future<void> _leave() async {
+    if (_view == _View.normal) return;
+    _chromeTimer?.cancel();
+    setState(() => _view = _View.normal);
+    if (_immersive) {
+      _immersive = false;
+      await LecturePresentation.exit();
+    }
+  }
+
+  /// To'liq ekrandagi kichik tugmalar: bosilganda ko'rinadi, 3 soniyadan
+  /// keyin yashirinadi (televizorga uzatilganda ekranda faqat slayd).
+  void _showChrome() {
+    _chromeTimer?.cancel();
+    if (!_chrome) setState(() => _chrome = true);
+    _chromeTimer = Timer(const Duration(seconds: 3), () {
+      if (mounted) setState(() => _chrome = false);
+    });
+  }
+
+  void _cast() =>
+      unawaited(showCastSheet(context, () => unawaited(_present(cast: true))));
 
   @override
   Widget build(BuildContext context) {
@@ -429,10 +506,20 @@ class _LectureScreenState extends State<LectureScreen> {
         );
       }
       final slides = deckLectureSlides(context, deck, wanted: _wantedLang);
-      return _deck(context, slides, _index.clamp(0, slides.length - 1));
+      return _deck(
+        context,
+        slides,
+        _index.clamp(0, slides.length - 1),
+        deck.title ?? slides.first.title,
+      );
     }
     if (widget.generated case final slides? when slides.isNotEmpty) {
-      return _deck(context, slides, _index.clamp(0, slides.length - 1));
+      return _deck(
+        context,
+        slides,
+        _index.clamp(0, slides.length - 1),
+        slides.first.title,
+      );
     }
     return ListenableBuilder(
       listenable: Listenable.merge([
@@ -467,187 +554,494 @@ class _LectureScreenState extends State<LectureScreen> {
             ? deckLectureSlides(context, _authored!)
             : buildLectureSlides(context, cur, t);
         final i = _index.clamp(0, slides.length - 1);
-        return _deck(context, slides, i);
+        return _deck(
+          context,
+          slides,
+          i,
+          _authored?.title ?? t.title.of(_lang(context)),
+        );
       },
     );
   }
 
-  Widget _deck(BuildContext context, List<LectureSlide> slides, int i) {
+  KeyEventResult _key(KeyEvent e, List<LectureSlide> slides, int i) {
+    if (e is! KeyDownEvent) return KeyEventResult.ignored;
+    final k = e.logicalKey;
+    if (k == LogicalKeyboardKey.arrowRight ||
+        k == LogicalKeyboardKey.pageDown ||
+        k == LogicalKeyboardKey.space) {
+      _go(1, slides.length);
+      return KeyEventResult.handled;
+    }
+    if (k == LogicalKeyboardKey.arrowLeft || k == LogicalKeyboardKey.pageUp) {
+      _go(-1, slides.length);
+      return KeyEventResult.handled;
+    }
+    // Savol slaydida Enter — javobni ochish/yopish.
+    if (k == LogicalKeyboardKey.enter &&
+        slides[i].template == SlideTemplate.qa) {
+      _toggleAnswer(i);
+      return KeyEventResult.handled;
+    }
+    if (k == LogicalKeyboardKey.escape && _view != _View.normal) {
+      unawaited(_leave());
+      return KeyEventResult.handled;
+    }
+    if (k == LogicalKeyboardKey.keyF && _view == _View.normal) {
+      unawaited(_present());
+      return KeyEventResult.handled;
+    }
+    return KeyEventResult.ignored;
+  }
+
+  Widget _deck(
+    BuildContext context,
+    List<LectureSlide> slides,
+    int i,
+    String? title,
+  ) {
+    final size = MediaQuery.sizeOf(context);
+    final Widget body = switch (_view) {
+      _View.present => _presentation(context, slides, i, title),
+      _View.presenter => PresenterView(
+        slides: slides,
+        index: i,
+        deckTitle: title,
+        answerShown: _answers.contains(i),
+        onGo: (d) => _go(d, slides.length),
+        onExit: () => unawaited(_leave()),
+        onToggleAnswer: () => _toggleAnswer(i),
+      ),
+      _View.normal when size.width >= _wideWidth => _wide(
+        context,
+        slides,
+        i,
+        title,
+      ),
+      _View.normal when size.width > size.height => _stage(
+        context,
+        slides,
+        i,
+        title,
+      ),
+      _View.normal => _portrait(context, slides, i, title),
+    };
+    return PopScope(
+      canPop: _view == _View.normal,
+      onPopInvokedWithResult: (didPop, _) {
+        if (!didPop) unawaited(_leave());
+      },
+      child: Focus(
+        focusNode: _focus,
+        autofocus: true,
+        onKeyEvent: (node, e) => _key(e, slides, i),
+        child: body,
+      ),
+    );
+  }
+
+  /// Planshet/keng ekran: slayd katta, yonida ma'lumot paneli.
+  static const _wideWidth = 900.0;
+
+  DeckEntry? _endDeck(List<LectureSlide> slides, int i) =>
+      i == slides.length - 1 && widget.deckId != null ? _testDeck() : null;
+
+  /// Slayd kartasi: 16:9, yumaloq, soyali; surish — oldinga/orqaga.
+  Widget _card(
+    BuildContext context,
+    List<LectureSlide> slides,
+    int i,
+    String? title,
+  ) {
+    final p = LgPalette.of(context);
+    return GestureDetector(
+      key: const ValueKey('lecture-slide-card'),
+      behavior: HitTestBehavior.opaque,
+      onHorizontalDragEnd: (d) => _swipe(d, slides.length),
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(16),
+          boxShadow: [
+            BoxShadow(
+              color: p.shadow.withValues(alpha: 0.16),
+              blurRadius: 22,
+              offset: const Offset(0, 8),
+            ),
+          ],
+        ),
+        // Tungi mavzuda karta fon bilan qo'shilib ketmasin — chegara.
+        position: DecorationPosition.background,
+        child: Container(
+          foregroundDecoration: Theme.of(context).brightness == Brightness.dark
+              ? BoxDecoration(
+                  borderRadius: BorderRadius.circular(16),
+                  border: Border.all(color: p.line, width: 1.5),
+                )
+              : null,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(16),
+            child: SlideCanvas(
+              key: ValueKey('lecture-canvas-$i'),
+              slide: slides[i],
+              number: i + 1,
+              total: slides.length,
+              deckTitle: title,
+              answerShown: _answers.contains(i),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _topBar(BuildContext context, List<LectureSlide> slides, int i) {
+    final l = AppLocalizations.of(context);
+    final text = Theme.of(context).textTheme;
+    final testDeck = _testDeck();
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(8, 4, 12, 0),
+      child: Row(
+        children: [
+          IconButton(
+            tooltip: l.lectureClose,
+            icon: const Icon(Icons.close_rounded),
+            onPressed: () => context.pop(),
+          ),
+          const Spacer(),
+          if (testDeck != null) DeckTestMenu(deck: testDeck),
+          if (slides[i].teacherNote != null) _notesButton(context),
+          _moreMenu(context),
+          const SizedBox(width: 4),
+          Semantics(
+            liveRegion: true,
+            child: Text(
+              l.lectureCounter(i + 1, slides.length),
+              style: text.labelLarge,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _notesButton(BuildContext context, {bool tonal = false}) {
+    final l = AppLocalizations.of(context);
+    final tip = _notes ? l.lectureNotesHide : l.lectureNotesShow;
+    final icon = Icon(
+      _notes ? Icons.speaker_notes_rounded : Icons.speaker_notes_outlined,
+    );
+    void tap() => setState(() => _notes = !_notes);
+    return tonal
+        ? IconButton.filledTonal(
+            key: const ValueKey('lecture-notes'),
+            tooltip: tip,
+            onPressed: tap,
+            icon: icon,
+          )
+        : IconButton(
+            key: const ValueKey('lecture-notes'),
+            tooltip: tip,
+            isSelected: _notes,
+            onPressed: tap,
+            icon: icon,
+          );
+  }
+
+  /// Menyu: ekranga uzatish, taqdimotchi rejimi, ekran holati tanlovi.
+  Widget _moreMenu(BuildContext context, {bool tonal = false}) {
+    final l = AppLocalizations.of(context);
+    final store = context.services.store;
+    final current = LecturePresentation.read(store);
+    return PopupMenuButton<Object>(
+      key: const ValueKey('lecture-more'),
+      tooltip: l.lectureMore,
+      icon: const Icon(Icons.tune_rounded),
+      style: tonal ? IconButton.styleFrom() : null,
+      onSelected: (v) {
+        if (v == 'cast') _cast();
+        if (v == 'presenter') unawaited(_present(view: _View.presenter));
+        if (v is LectureOrientation) {
+          unawaited(
+            LecturePresentation.write(
+              store,
+              v,
+            ).then((_) => mounted ? setState(() {}) : null),
+          );
+        }
+      },
+      itemBuilder: (context) => [
+        PopupMenuItem(
+          key: const ValueKey('lecture-menu-cast'),
+          value: 'cast',
+          child: ListTile(
+            leading: const Icon(Icons.cast_rounded),
+            title: Text(l.lectureCast),
+          ),
+        ),
+        PopupMenuItem(
+          key: const ValueKey('lecture-menu-presenter'),
+          value: 'presenter',
+          child: ListTile(
+            leading: const Icon(Icons.co_present_outlined),
+            title: Text(l.lecturePresenter),
+          ),
+        ),
+        const PopupMenuDivider(),
+        PopupMenuItem(
+          enabled: false,
+          child: Text(
+            l.lectureOrientationMenu,
+            style: Theme.of(context).textTheme.labelLarge,
+          ),
+        ),
+        for (final (o, label) in [
+          (LectureOrientation.ask, l.lectureOrientationAsk),
+          (LectureOrientation.landscape, l.lectureOrientationLandscape),
+          (LectureOrientation.keep, l.lectureOrientationKeep),
+        ])
+          CheckedPopupMenuItem<Object>(
+            key: ValueKey('lecture-orient-${o.name}'),
+            value: o,
+            checked: current == o,
+            child: Text(label),
+          ),
+      ],
+    );
+  }
+
+  /// Slayd ostidagi panel: amallar, manba, ogohlantirish, ustoz izohi.
+  List<Widget> _info(BuildContext context, List<LectureSlide> slides, int i) {
     final l = AppLocalizations.of(context);
     final p = LgPalette.of(context);
     final text = Theme.of(context).textTheme;
-    final testDeck = _testDeck();
+    final slide = slides[i];
+    final endDeck = _endDeck(slides, i);
+    final shown = _answers.contains(i);
+    return [
+      Wrap(
+        spacing: 8,
+        runSpacing: 8,
+        children: [
+          FilledButton.tonalIcon(
+            key: const ValueKey('lecture-fullscreen'),
+            onPressed: () => unawaited(_present()),
+            icon: const Icon(Icons.fullscreen_rounded),
+            label: Text(l.lectureFullscreen),
+          ),
+          OutlinedButton.icon(
+            key: const ValueKey('lecture-cast'),
+            onPressed: _cast,
+            icon: const Icon(Icons.cast_rounded),
+            label: Text(l.lectureCast),
+          ),
+          if (slide.template == SlideTemplate.qa)
+            OutlinedButton.icon(
+              key: const ValueKey('lecture-answer'),
+              onPressed: () => _toggleAnswer(i),
+              icon: Icon(
+                shown
+                    ? Icons.visibility_off_outlined
+                    : Icons.visibility_outlined,
+              ),
+              label: Text(shown ? l.autoPresHideAnswer : l.autoPresShowAnswer),
+            ),
+        ],
+      ),
+      if (slide.source != null || slide.refs.isNotEmpty) ...[
+        const SizedBox(height: 12),
+        SlideSourceTile(slide: slide),
+      ],
+      if (slide.notice != null) ...[
+        const SizedBox(height: 12),
+        LgNotice(slide.notice!, kind: NoticeKind.info),
+      ],
+      if (_notes && slide.teacherNote != null) ...[
+        const SizedBox(height: 12),
+        Container(
+          key: const ValueKey('lecture-teacher-note'),
+          width: double.infinity,
+          padding: const EdgeInsets.all(14),
+          decoration: BoxDecoration(
+            color: p.soft,
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                l.lectureTeacherNote,
+                style: text.labelLarge!.copyWith(color: p.brand),
+              ),
+              const SizedBox(height: 6),
+              Text(
+                slide.teacherNote!,
+                style: text.bodyMedium!.copyWith(height: 1.4, color: p.ink),
+              ),
+            ],
+          ),
+        ),
+      ],
+      // Savollar yetmasa — oxirgi slaydda halol izoh.
+      if (endDeck != null)
+        DeckTestBuilder(
+          deck: endDeck,
+          builder: (context, state, _) => state == DeckTestState.preparing
+              ? Padding(
+                  padding: const EdgeInsets.only(top: 12),
+                  child: Text(
+                    l.topicTestPreparing,
+                    key: const ValueKey('lecture-test-preparing'),
+                    textAlign: TextAlign.center,
+                    style: text.bodySmall,
+                  ),
+                )
+              : const SizedBox.shrink(),
+        ),
+    ];
+  }
+
+  Widget _navRow(BuildContext context, List<LectureSlide> slides, int i) {
+    final l = AppLocalizations.of(context);
     final last = i == slides.length - 1;
-    // Katalog deckining oxirgi slaydi (manbalardan keyin) — “Mavzu testi”.
-    // Mavzu (avtomatik slaydlar) marshrutida — faqat menyuda.
-    final endDeck = last && widget.deckId != null ? testDeck : null;
-    return Focus(
-      focusNode: _focus,
-      autofocus: true,
-      onKeyEvent: (node, e) {
-        if (e is! KeyDownEvent) return KeyEventResult.ignored;
-        if (e.logicalKey == LogicalKeyboardKey.arrowRight ||
-            e.logicalKey == LogicalKeyboardKey.pageDown ||
-            e.logicalKey == LogicalKeyboardKey.space) {
-          _go(1, slides.length);
-          return KeyEventResult.handled;
-        }
-        if (e.logicalKey == LogicalKeyboardKey.arrowLeft ||
-            e.logicalKey == LogicalKeyboardKey.pageUp) {
-          _go(-1, slides.length);
-          return KeyEventResult.handled;
-        }
-        // Savol slaydida Enter — javobni ochish/yopish.
-        if (e.logicalKey == LogicalKeyboardKey.enter &&
-            slides[i].template == SlideTemplate.qa) {
-          _toggleAnswer(i);
-          return KeyEventResult.handled;
-        }
-        return KeyEventResult.ignored;
-      },
-      child:
-          slides[i].image != null &&
-              MediaQuery.sizeOf(context).width >
-                  MediaQuery.sizeOf(context).height
-          ? _stage(context, slides, i)
-          : Scaffold(
-              backgroundColor: p.bg,
-              body: SafeArea(
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(8, 4, 16, 0),
-                      child: Row(
-                        children: [
-                          IconButton(
-                            tooltip: l.lectureClose,
-                            icon: const Icon(Icons.close_rounded),
-                            onPressed: () => context.pop(),
-                          ),
-                          const Spacer(),
-                          if (testDeck != null) DeckTestMenu(deck: testDeck),
-                          if (slides[i].teacherNote != null)
-                            IconButton(
-                              key: const ValueKey('lecture-notes'),
-                              tooltip: _notes
-                                  ? l.lectureNotesHide
-                                  : l.lectureNotesShow,
-                              isSelected: _notes,
-                              icon: const Icon(Icons.speaker_notes_outlined),
-                              selectedIcon: const Icon(
-                                Icons.speaker_notes_rounded,
-                              ),
-                              onPressed: () => setState(() => _notes = !_notes),
-                            ),
-                          const SizedBox(width: 8),
-                          Semantics(
-                            liveRegion: true,
-                            child: Text(
-                              l.lectureCounter(i + 1, slides.length),
-                              style: text.labelLarge,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Expanded(
-                      child: GestureDetector(
-                        behavior: HitTestBehavior.opaque,
-                        onHorizontalDragEnd: (d) {
-                          final v = d.primaryVelocity ?? 0;
-                          if (v < -200) _go(1, slides.length);
-                          if (v > 200) _go(-1, slides.length);
-                        },
-                        child: LayoutBuilder(
-                          builder: (context, box) => _SlideView(
-                            key: ValueKey(i),
-                            slide: slides[i],
-                            width: box.maxWidth,
-                            height: box.maxHeight,
-                            showNotes: _notes,
-                            answerShown: _answers.contains(i),
-                            onAnswer: () => _toggleAnswer(i),
-                          ),
+    final endDeck = _endDeck(slides, i);
+    return Row(
+      children: [
+        Expanded(
+          child: LgButton.secondary(
+            label: l.lecturePrev,
+            icon: Icons.chevron_left_rounded,
+            onPressed: i == 0 ? null : () => _go(-1, slides.length),
+          ),
+        ),
+        const SizedBox(width: 12),
+        Expanded(
+          child: endDeck != null
+              ? DeckTestBuilder(
+                  deck: endDeck,
+                  builder: (context, state, _) => state == DeckTestState.ready
+                      ? DeckTestEndButton(deck: endDeck)
+                      : LgButton(
+                          label: l.lectureNext,
+                          icon: Icons.chevron_right_rounded,
+                          onPressed: null,
                         ),
-                      ),
-                    ),
-                    // Savollar yetmasa — oxirgi slaydda halol izoh.
-                    if (endDeck != null)
-                      DeckTestBuilder(
-                        deck: endDeck,
-                        builder: (context, state, _) =>
-                            state == DeckTestState.preparing
-                            ? Padding(
-                                padding: const EdgeInsets.fromLTRB(
-                                  16,
-                                  6,
-                                  16,
-                                  0,
-                                ),
-                                child: Text(
-                                  l.topicTestPreparing,
-                                  key: const ValueKey('lecture-test-preparing'),
-                                  textAlign: TextAlign.center,
-                                  style: text.bodySmall,
-                                ),
-                              )
-                            : const SizedBox.shrink(),
-                      ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(16, 8, 16, 12),
-                      child: Row(
-                        children: [
-                          Expanded(
-                            child: LgButton.secondary(
-                              label: l.lecturePrev,
-                              icon: Icons.chevron_left_rounded,
-                              onPressed: i == 0
-                                  ? null
-                                  : () => _go(-1, slides.length),
-                            ),
-                          ),
-                          const SizedBox(width: 12),
-                          Expanded(
-                            child: endDeck != null
-                                ? DeckTestBuilder(
-                                    deck: endDeck,
-                                    builder: (context, state, _) =>
-                                        state == DeckTestState.ready
-                                        ? DeckTestEndButton(deck: endDeck)
-                                        : LgButton(
-                                            label: l.lectureNext,
-                                            icon: Icons.chevron_right_rounded,
-                                            onPressed: null,
-                                          ),
-                                  )
-                                : LgButton(
-                                    label: l.lectureNext,
-                                    icon: Icons.chevron_right_rounded,
-                                    onPressed: last
-                                        ? null
-                                        : () => _go(1, slides.length),
-                                  ),
-                          ),
-                        ],
-                      ),
-                    ),
+                )
+              : LgButton(
+                  label: l.lectureNext,
+                  icon: Icons.chevron_right_rounded,
+                  onPressed: last ? null : () => _go(1, slides.length),
+                ),
+        ),
+      ],
+    );
+  }
+
+  /// Telefon (tik): 16:9 slayd kartasi tepada, ostida panel.
+  Widget _portrait(
+    BuildContext context,
+    List<LectureSlide> slides,
+    int i,
+    String? title,
+  ) {
+    final p = LgPalette.of(context);
+    return Scaffold(
+      backgroundColor: p.bg,
+      body: SafeArea(
+        child: Column(
+          children: [
+            _topBar(context, slides, i),
+            Expanded(
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.fromLTRB(16, 8, 16, 12),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    _card(context, slides, i, title),
+                    const SizedBox(height: 16),
+                    ..._info(context, slides, i),
                   ],
                 ),
               ),
             ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(16, 8, 16, 12),
+              child: _navRow(context, slides, i),
+            ),
+          ],
+        ),
+      ),
     );
   }
 
-  /// Yotiq ekran (TV, proyektor): rasmli slayd butun ekranda, boshqaruv
+  /// Planshet / keng ekran (≥ 900 px): slayd katta, yonida panel —
+  /// aylantirish shart emas.
+  Widget _wide(
+    BuildContext context,
+    List<LectureSlide> slides,
+    int i,
+    String? title,
+  ) {
+    final p = LgPalette.of(context);
+    return Scaffold(
+      backgroundColor: p.bg,
+      body: SafeArea(
+        child: Column(
+          children: [
+            _topBar(context, slides, i),
+            Expanded(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(24, 8, 16, 24),
+                      child: Center(child: _card(context, slides, i, title)),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 360,
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 8, 20, 16),
+                      child: Column(
+                        children: [
+                          Expanded(
+                            child: SingleChildScrollView(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.stretch,
+                                children: _info(context, slides, i),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 12),
+                          _navRow(context, slides, i),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  /// Yotiq telefon (to'liq ekransiz): slayd butun balandlikda, boshqaruv
   /// kichik va chetlarda; slayd chetini bosish — oldinga/orqaga.
-  Widget _stage(BuildContext context, List<LectureSlide> slides, int i) {
+  Widget _stage(
+    BuildContext context,
+    List<LectureSlide> slides,
+    int i,
+    String? title,
+  ) {
     final l = AppLocalizations.of(context);
     final p = LgPalette.of(context);
     final text = Theme.of(context).textTheme;
     final slide = slides[i];
     final testDeck = _testDeck();
     final last = i == slides.length - 1;
-    final endDeck = last && widget.deckId != null ? testDeck : null;
+    final endDeck = _endDeck(slides, i);
     Widget round(IconData icon, String tip, VoidCallback? onTap, {Key? key}) =>
         IconButton.filledTonal(
           key: key,
@@ -663,29 +1057,22 @@ class _LectureScreenState extends State<LectureScreen> {
             Positioned.fill(
               child: GestureDetector(
                 behavior: HitTestBehavior.opaque,
-                onHorizontalDragEnd: (d) {
-                  final v = d.primaryVelocity ?? 0;
-                  if (v < -200) _go(1, slides.length);
-                  if (v > 200) _go(-1, slides.length);
-                },
+                onHorizontalDragEnd: (d) => _swipe(d, slides.length),
                 onTapUp: (d) {
                   final w = MediaQuery.sizeOf(context).width;
                   if (d.localPosition.dx > w * 0.65) _go(1, slides.length);
                   if (d.localPosition.dx < w * 0.35) _go(-1, slides.length);
                 },
-                child: SizedBox.expand(
-                  child: Semantics(
-                    image: true,
-                    label: [slide.title, ...slide.bullets].join('. '),
-                    child: Image.asset(
-                      slide.image!,
-                      key: ValueKey(slide.image),
-                      width: double.infinity,
-                      height: double.infinity,
-                      fit: BoxFit.contain,
-                      filterQuality: FilterQuality.medium,
-                      excludeFromSemantics: true,
-                      gaplessPlayback: true,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 56),
+                  child: Center(
+                    child: SlideCanvas(
+                      key: ValueKey('lecture-canvas-$i'),
+                      slide: slide,
+                      number: i + 1,
+                      total: slides.length,
+                      deckTitle: title,
+                      answerShown: _answers.contains(i),
                     ),
                   ),
                 ),
@@ -702,20 +1089,20 @@ class _LectureScreenState extends State<LectureScreen> {
             ),
             Positioned(
               top: 4,
-              right: 8,
+              right: 4,
               child: Row(
                 children: [
                   if (testDeck != null) DeckTestMenu(deck: testDeck),
                   if (slide.teacherNote != null)
-                    round(
-                      _notes
-                          ? Icons.speaker_notes_rounded
-                          : Icons.speaker_notes_outlined,
-                      _notes ? l.lectureNotesHide : l.lectureNotesShow,
-                      () => setState(() => _notes = !_notes),
-                      key: const ValueKey('lecture-notes'),
-                    ),
-                  const SizedBox(width: 8),
+                    _notesButton(context, tonal: true),
+                  round(
+                    Icons.fullscreen_rounded,
+                    l.lectureFullscreen,
+                    () => unawaited(_present()),
+                    key: const ValueKey('lecture-fullscreen'),
+                  ),
+                  _moreMenu(context),
+                  const SizedBox(width: 4),
                   Semantics(
                     liveRegion: true,
                     child: Text(
@@ -735,6 +1122,32 @@ class _LectureScreenState extends State<LectureScreen> {
                 i == 0 ? null : () => _go(-1, slides.length),
               ),
             ),
+            if (slide.template == SlideTemplate.qa)
+              Positioned(
+                left: 4,
+                top: 56,
+                child: round(
+                  _answers.contains(i)
+                      ? Icons.visibility_off_outlined
+                      : Icons.visibility_outlined,
+                  _answers.contains(i)
+                      ? l.autoPresHideAnswer
+                      : l.autoPresShowAnswer,
+                  () => _toggleAnswer(i),
+                  key: const ValueKey('lecture-answer'),
+                ),
+              ),
+            if (slide.source != null || slide.refs.isNotEmpty)
+              Positioned(
+                left: 4,
+                bottom: 56,
+                child: round(
+                  Icons.menu_book_outlined,
+                  l.lectureSourcesOpen,
+                  () => unawaited(showSlideSources(context, slide)),
+                  key: const ValueKey('lecture-source'),
+                ),
+              ),
             Positioned(
               right: 4,
               bottom: 4,
@@ -795,270 +1208,104 @@ class _LectureScreenState extends State<LectureScreen> {
                   ),
                 ),
               ),
-            if (slide.note != null)
+            if (slide.notice != null)
               Positioned(
                 left: 64,
                 right: 64,
                 top: 8,
-                child: LgNotice(slide.note!, kind: NoticeKind.info),
+                child: LgNotice(slide.notice!, kind: NoticeKind.info),
               ),
           ],
         ),
       ),
     );
   }
-}
 
-class _SlideView extends StatelessWidget {
-  const _SlideView({
-    super.key,
-    required this.slide,
-    required this.width,
-    this.height = double.infinity,
-    this.showNotes = false,
-    this.answerShown = false,
-    this.onAnswer,
-  });
-
-  final LectureSlide slide;
-  final double width;
-
-  /// Savol-javob shabloni: javob ochiqmi va uni almashtirish.
-  final bool answerShown;
-  final VoidCallback? onAnswer;
-
-  /// Yotiq ekranda (televizor, proyektor) shrift balandlikka ham moslanadi.
-  final double height;
-  final bool showNotes;
-
-  @override
-  Widget build(BuildContext context) {
-    final p = LgPalette.of(context);
-    final text = Theme.of(context).textTheme;
-    // Katta ekranda (proyektor, televizor) shrift kattalashadi.
-    final base = slideBaseFont(width, height);
-    if (slide.image != null) return _picture(context, base);
-    final isTitle = slide.template == SlideTemplate.title;
-    final pad = (width * 0.06).clamp(16.0, 64.0);
-    final content = Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: isTitle && height.isFinite
-          ? MainAxisAlignment.center
-          : MainAxisAlignment.start,
-      children: [
-        if (slide.eyebrow != null && slide.eyebrow != slide.title)
-          Text(
-            slide.eyebrow!,
-            style: text.labelLarge!.copyWith(
-              fontSize: base * 0.7,
-              color: p.brand,
+  /// Taqdimot (to'liq ekran): faqat 16:9 slayd — televizorga uzatishga
+  /// (ekran takrorlash) mos. Chap/o'ng yarmini bosish yoki surish —
+  /// orqaga/oldinga; kichik tugmalar 3 soniyadan keyin yashirinadi.
+  Widget _presentation(
+    BuildContext context,
+    List<LectureSlide> slides,
+    int i,
+    String? title,
+  ) {
+    final l = AppLocalizations.of(context);
+    final slide = slides[i];
+    Widget small(IconData icon, String tip, VoidCallback onTap, Key key) =>
+        AnimatedOpacity(
+          opacity: _chrome ? 1 : 0,
+          duration: const Duration(milliseconds: 250),
+          child: IconButton(
+            key: key,
+            tooltip: tip,
+            onPressed: () {
+              _showChrome();
+              onTap();
+            },
+            style: IconButton.styleFrom(
+              backgroundColor: Colors.black.withValues(alpha: 0.45),
+              foregroundColor: Colors.white,
             ),
+            icon: Icon(icon),
           ),
-        const SizedBox(height: 8),
-        Semantics(
-          header: true,
-          child: Text(
-            slide.title,
-            style: text.headlineMedium!.copyWith(
-              fontSize: isTitle
-                  // Uzun mavzu nomi kichikroq: sarlavha slaydi sig'sin.
-                  ? (slide.title.length > 90
-                        ? base * 1.35
-                        : slide.title.length > 50
-                        ? base * 1.7
-                        : base * 2.1)
-                  : slide.section
-                  ? base * 1.9
-                  : slide.question
-                  // Uzun savol matni kichikroq: javob bilan birga sig'sin.
-                  ? (slide.title.length > 110 ? base * 1.15 : base * 1.4)
-                  : base * 1.6,
-              height: 1.2,
-              color: p.ink,
-            ),
-          ),
-        ),
-        SizedBox(height: isTitle ? 28 : 20),
-        ..._body(context, base, pad),
-        if (slide.note != null) ...[
-          const SizedBox(height: 8),
-          _scaled(context, base, LgNotice(slide.note!, kind: NoticeKind.info)),
-        ],
-        if (slide.source != null) ...[
-          const SizedBox(height: 8),
-          Text(
-            slide.source!,
-            key: const ValueKey('lecture-source'),
-            style: text.bodySmall!.copyWith(
-              fontSize: (base * 0.6).clamp(12.0, 24.0),
-              color: p.sub,
-            ),
-          ),
-        ],
-        if (showNotes && slide.teacherNote != null) ...[
-          const SizedBox(height: 16),
-          _notes(context, base),
-        ],
-      ],
-    );
-    return SingleChildScrollView(
-      padding: EdgeInsets.symmetric(horizontal: pad, vertical: 16),
-      child: height.isFinite
-          ? ConstrainedBox(
-              constraints: BoxConstraints(minHeight: height - 32),
-              child: content,
-            )
-          : content,
-    );
-  }
-
-  /// Katta ekranda (televizor) izoh matni ham kattalashadi: oddiy 14 px
-  /// 1080p da o'qilmaydi.
-  Widget _scaled(BuildContext context, double base, Widget child) {
-    final k = (base / 28).clamp(1.0, 1.5);
-    if (k <= 1.0) return child;
-    final mq = MediaQuery.of(context);
-    return MediaQuery(
-      data: mq.copyWith(
-        textScaler: TextScaler.linear(mq.textScaler.scale(1) * k),
-      ),
-      child: child,
-    );
-  }
-
-  /// Shablonga qarab slayd tanasi.
-  List<Widget> _body(BuildContext context, double base, double pad) {
-    final p = LgPalette.of(context);
-    final text = Theme.of(context).textTheme;
-    switch (slide.template) {
-      case SlideTemplate.title:
-        return [SlideTitleBody(slide: slide, base: base)];
-      case SlideTemplate.table:
-        return [
-          SlideTableBody(slide: slide, base: base, width: width - pad * 2),
-        ];
-      case SlideTemplate.figure:
-        return [
-          if (slide.figure != null)
-            SlideFigureBody(
-              slide: slide,
-              base: base,
-              width: width,
-              height: height,
-            ),
-          const SizedBox(height: 12),
-        ];
-      case SlideTemplate.qa:
-        return [
-          SlideQaBody(
-            slide: slide,
-            base: base,
-            answerShown: answerShown,
-            onToggleAnswer: onAnswer ?? () {},
-          ),
-        ];
-      case SlideTemplate.bullets:
-        final f = slide.compact ? base * 0.8 : base;
-        return [
-          for (final b in slide.bullets)
-            Padding(
-              padding: const EdgeInsets.only(bottom: 12),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  ExcludeSemantics(
-                    child: Text(
-                      '•  ',
-                      style: text.bodyLarge!.copyWith(
-                        fontSize: f,
-                        color: p.brand,
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Text(
-                      b,
-                      style: text.bodyLarge!.copyWith(
-                        fontSize: f,
-                        height: 1.35,
-                        color: p.ink,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-        ];
-    }
-  }
-
-  Widget _notes(BuildContext context, double base) {
-    final p = LgPalette.of(context);
-    final text = Theme.of(context).textTheme;
-    return Container(
-      key: const ValueKey('lecture-teacher-note'),
-      width: double.infinity,
-      padding: const EdgeInsets.all(14),
-      decoration: BoxDecoration(
-        color: p.soft,
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        );
+    return Scaffold(
+      key: const ValueKey('lecture-presentation'),
+      backgroundColor: Colors.black,
+      body: Stack(
         children: [
-          Text(
-            AppLocalizations.of(context).lectureTeacherNote,
-            style: text.labelLarge!.copyWith(color: p.brand),
-          ),
-          const SizedBox(height: 6),
-          Text(
-            slide.teacherNote!,
-            style: text.bodyMedium!.copyWith(
-              fontSize: (base * 0.7).clamp(14.0, 22.0),
-              height: 1.4,
-              color: p.ink,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  /// Tayyor dizayndagi slayd: ekranga sig'adigan eng katta 16:9 rasm.
-  Widget _picture(BuildContext context, double base) {
-    final pad = width > height ? 8.0 : 16.0;
-    final w = math.min(width - pad * 2, (height - pad * 2) * 16 / 9);
-    return SingleChildScrollView(
-      padding: EdgeInsets.all(pad),
-      child: Column(
-        children: [
-          Semantics(
-            image: true,
-            label: [slide.title, ...slide.bullets].join('. '),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(6),
-              child: Image.asset(
-                slide.image!,
-                key: ValueKey(slide.image),
-                width: w,
-                height: w * 9 / 16,
-                fit: BoxFit.contain,
-                filterQuality: FilterQuality.medium,
-                excludeFromSemantics: true,
-                gaplessPlayback: true,
+          Positioned.fill(
+            child: GestureDetector(
+              behavior: HitTestBehavior.opaque,
+              onHorizontalDragEnd: (d) => _swipe(d, slides.length),
+              onTapUp: (d) {
+                final w = MediaQuery.sizeOf(context).width;
+                _go(d.localPosition.dx >= w / 2 ? 1 : -1, slides.length);
+                _showChrome();
+              },
+              child: Center(
+                child: SlideCanvas(
+                  key: ValueKey('lecture-canvas-$i'),
+                  slide: slide,
+                  number: i + 1,
+                  total: slides.length,
+                  deckTitle: title,
+                  answerShown: _answers.contains(i),
+                ),
               ),
             ),
           ),
-          if (slide.note != null) ...[
-            const SizedBox(height: 12),
-            LgNotice(slide.note!, kind: NoticeKind.info),
-          ],
-          if (showNotes && slide.teacherNote != null) ...[
-            const SizedBox(height: 12),
-            _notes(context, base),
-          ],
+          Positioned(
+            top: 8,
+            left: 8,
+            child: small(
+              Icons.close_fullscreen_rounded,
+              l.lectureFullscreenExit,
+              () => unawaited(_leave()),
+              const ValueKey('lecture-fullscreen-exit'),
+            ),
+          ),
+          if (slide.template == SlideTemplate.qa)
+            Positioned(
+              right: 8,
+              bottom: 8,
+              child: small(
+                _answers.contains(i)
+                    ? Icons.visibility_off_outlined
+                    : Icons.visibility_outlined,
+                _answers.contains(i)
+                    ? l.autoPresHideAnswer
+                    : l.autoPresShowAnswer,
+                () => _toggleAnswer(i),
+                const ValueKey('lecture-answer'),
+              ),
+            ),
         ],
       ),
     );
   }
 }
+
+/// Pleyer ko'rinishi.
+enum _View { normal, present, presenter }

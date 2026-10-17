@@ -18,6 +18,9 @@ Shu ro'yxat bo'yicha ketamiz. Bajarilgani `[x]`.
 - [ ] Ustoz bilan suhbat natijalari (rejaga qo'shish)
 
 ## Men qilaman (navbat)
+- [x] Ma'ruza — 16:9 taqdimot ko'rinishi, to'liq ekran (gorizontal so'rovi), to'liq manbalar oynasi, uzun slaydlarni bo'lish, ekranga uzatish (tizim ko'zgusi), taqdimotchi rejimi (D-59)
+- [ ] Haqiqiy ikkinchi ekran (televizorda slayd, telefonda taqdimotchi): Android `Presentation` / iOS `UIScreen` — native kod va qurilmada sinov kerak (hozir faqat ekran ko'zgusi, D-59)
+- [ ] Ma'ruza: tik telefonda slaydni barmoq bilan kattalashtirish (pinch-zoom) — surish bilan to'qnashmasligi kerak
 - [ ] **Har mavzudan keyin test** (mavzu testi): ma'ruza oxirida "Mavzu testi", ustoz guruhga bir bosishda topshiradi, natijalar ko'rinadi, xato qilingan savol → tegishli slaydga havola
 - [ ] 32 ta mavzuda test savollari yo'q (test_gap) — tekshirilgan kontentdan savollar tuzish (AI loyiha + inson tekshiruvi)
 - [ ] Yangi bo'limlar 2-to'lqin: koagulogramma, parazitologiya, koprologiya; 3-to'lqin: IFA, likvor, balg'am

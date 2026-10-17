@@ -120,37 +120,54 @@ void main() {
     expect(find.textContaining(' / '), findsWidgets);
   });
 
-  testWidgets('yotiq ekran (TV): slayd to‘liq, chetini bosib o‘tish', (
-    tester,
-  ) async {
-    installDiffFakes();
-    final l = lookupAppLocalizations(const Locale('uz'));
-    final deck = (await tester.runAsync(
-      () => LectureDecks.forTopic(rootBundle, 'd001-P'),
-    ))!;
-    final s = await makeServices(tester, role: AppRole.teacher);
-    await pumpApp(tester, s, size: const Size(960, 540));
-    await goTo(tester, '/learn/lecture/d001-P');
-    final img = find.byKey(ValueKey(deck.slides.first.image));
-    expect(img, findsOneWidget);
-    // Rasm deyarli butun balandlikni egallaydi.
-    expect(tester.getSize(img).height, greaterThan(400));
-    expect(find.text(l.lectureNext), findsNothing);
-    await tester.tapAt(const Offset(900, 270));
-    await tester.pumpAndSettle();
-    expect(find.text(l.lectureCounter(2, deck.slides.length)), findsOneWidget);
-    await tester.tapAt(const Offset(60, 270));
-    await tester.pumpAndSettle();
-    expect(find.text(l.lectureCounter(1, deck.slides.length)), findsOneWidget);
-    await tester.tap(find.byTooltip(l.lectureNext));
-    await tester.pumpAndSettle();
-    final withNote = deck.slides.indexWhere((d) => d.note != null);
-    for (var k = 1; k < withNote; k++) {
-      await tester.tap(find.byTooltip(l.lectureNext));
+  testWidgets(
+    'keng ekran (TV): slayd paneli yonida; to‘liq ekranda chetini bosib o‘tish',
+    (tester) async {
+      installDiffFakes();
+      final l = lookupAppLocalizations(const Locale('uz'));
+      final deck = (await tester.runAsync(
+        () => LectureDecks.forTopic(rootBundle, 'd001-P'),
+      ))!;
+      final n = deck.slides.length;
+      final s = await makeServices(tester, role: AppRole.teacher);
+      await pumpApp(tester, s, size: const Size(960, 540));
+      await goTo(tester, '/learn/lecture/d001-P');
+      final img = find.byKey(ValueKey(deck.slides.first.image));
+      expect(img, findsOneWidget);
+      // Keng ekran: slayd + yon panel (aylantirish shart emas).
+      expect(find.text(l.lectureNext), findsOneWidget);
+      expect(find.text(l.lectureCounter(1, n)), findsOneWidget);
+
+      // To'liq ekran: yotiq ekranda so'ralmaydi; faqat slayd.
+      await tester.tap(find.byKey(const ValueKey('lecture-fullscreen')));
       await tester.pumpAndSettle();
-    }
-    await tester.tap(find.byTooltip(l.lectureNotesShow));
-    await tester.pumpAndSettle();
-    expect(find.text(deck.slides[withNote].note!), findsOneWidget);
-  });
+      expect(find.byKey(const ValueKey('lecture-rotate-dialog')), findsNothing);
+      expect(
+        find.byKey(const ValueKey('lecture-presentation')),
+        findsOneWidget,
+      );
+      expect(tester.getRect(img).height, greaterThan(500));
+      expect(find.text(l.lectureNext), findsNothing);
+      await tester.tapAt(const Offset(900, 270));
+      await tester.pumpAndSettle();
+      expect(find.byKey(const ValueKey('lecture-canvas-1')), findsOneWidget);
+      await tester.tapAt(const Offset(60, 270));
+      await tester.pumpAndSettle();
+      expect(find.byKey(const ValueKey('lecture-canvas-0')), findsOneWidget);
+      await tester.tap(find.byKey(const ValueKey('lecture-fullscreen-exit')));
+      await tester.pumpAndSettle();
+      expect(find.text(l.lectureCounter(1, n)), findsOneWidget);
+
+      // Ustoz izohi — yon panelda.
+      final withNote = deck.slides.indexWhere((d) => d.note != null);
+      for (var k = 0; k < withNote; k++) {
+        await tester.tap(find.text(l.lectureNext));
+        await tester.pumpAndSettle();
+      }
+      await tester.tap(find.byTooltip(l.lectureNotesShow));
+      await tester.pumpAndSettle();
+      expect(find.text(deck.slides[withNote].note!), findsOneWidget);
+      expect(tester.takeException(), isNull);
+    },
+  );
 }

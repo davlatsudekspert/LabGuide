@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
 // Tayyor taqdimotlar. Muallif yozgan deck: assets/lectures/index.json → har
@@ -25,10 +26,13 @@ class DeckSlide {
     this.footnote,
     this.figure,
     this.caption,
+    this.credit,
     this.options = const [],
     this.correct,
     this.explanation,
     this.compact = false,
+    this.plan = false,
+    this.refs = const [],
   });
 
   /// [srcs] — deck darajasidagi manba qatorlari jadvali: slaydda `src`
@@ -36,6 +40,7 @@ class DeckSlide {
   factory DeckSlide.fromJson(
     Map<String, Object?> j, {
     List<String> srcs = const [],
+    List<List<DeckRef>> refs = const [],
   }) => DeckSlide(
     title: j['title']! as String,
     eyebrow: j['eyebrow'] as String?,
@@ -57,10 +62,15 @@ class DeckSlide {
     footnote: j['footnote'] as String?,
     figure: j['figure'] as String?,
     caption: j['caption'] as String?,
+    credit: j['credit'] as String?,
     options: [...?(j['options'] as List?)?.cast<String>()],
     correct: j['correct'] as int?,
     explanation: j['explanation'] as String?,
     compact: j['compact'] == true,
+    plan: j['plan'] == true,
+    refs: j['ref'] is int && (j['ref']! as int) < refs.length
+        ? refs[j['ref']! as int]
+        : const [],
   );
 
   final String title;
@@ -94,6 +104,9 @@ class DeckSlide {
   final String? figure;
   final String? caption;
 
+  /// Rasm muallifi/litsenziyasi yoki "sxema" izohi (har sahifada).
+  final String? credit;
+
   /// Savol-javob shabloni: variantlar, to'g'ri javob indeksi, tushuntirish.
   final List<String> options;
   final int? correct;
@@ -101,6 +114,27 @@ class DeckSlide {
 
   /// Ixcham bandlar (uzun manbalar ro'yxati).
   final bool compact;
+
+  /// Dars/protokol rejasi slaydi (raqamli bandlar).
+  final bool plan;
+
+  /// Shu slayd manbalari: "Adabiyotlar" ro'yxatidagi tartib raqami va shu
+  /// slaydda ishlatilgan bo'lim/sahifalar (deck `refs` jadvalidan).
+  final List<DeckRef> refs;
+}
+
+/// Slayd manbasi: [index] — deck bibliografiyasidagi (oxirgi "Adabiyotlar"
+/// slaydlari) tartib raqami (0 dan), [locators] — shu slaydda ishlatilgan
+/// bo'lim/sahifalar.
+@immutable
+class DeckRef {
+  const DeckRef(this.index, [this.locators = const []]);
+
+  factory DeckRef.fromJson(List<Object?> row) =>
+      DeckRef(row.first! as int, [for (final x in row.skip(1)) x! as String]);
+
+  final int index;
+  final List<String> locators;
 }
 
 class LectureDeck {
@@ -115,6 +149,10 @@ class LectureDeck {
 
   factory LectureDeck.fromJson(Map<String, Object?> j) {
     final srcs = [...?(j['srcs'] as List?)?.cast<String>()];
+    final refs = [
+      for (final r in (j['refs'] as List?) ?? const [])
+        [for (final row in r as List) DeckRef.fromJson(row as List)],
+    ];
     return LectureDeck(
       id: j['id'] as String?,
       title: j['title'] as String?,
@@ -123,7 +161,7 @@ class LectureDeck {
       draft: (j['status'] ?? 'draft') == 'draft',
       slides: [
         for (final s in (j['slides']! as List).cast<Map<String, Object?>>())
-          DeckSlide.fromJson(s, srcs: srcs),
+          DeckSlide.fromJson(s, srcs: srcs, refs: refs),
       ],
     );
   }
@@ -137,6 +175,14 @@ class LectureDeck {
   final String lang;
   final bool draft;
   final List<DeckSlide> slides;
+
+  /// Deck bibliografiyasi: "Adabiyotlar" slaydlari (ixcham) bandlari
+  /// ketma-ket, boshidagi "N. " raqamisiz. [DeckRef.index] shu ro'yxatga.
+  List<String> get bibliography => [
+    for (final s in slides)
+      if (s.compact)
+        for (final b in s.bullets) b.replaceFirst(RegExp(r'^\d+\.\s+'), ''),
+  ];
 }
 
 /// Tayyor taqdimotlar (bir marta yuklanadi, bundle bo'yicha keshlanadi).

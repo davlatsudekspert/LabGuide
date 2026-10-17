@@ -44,10 +44,14 @@ class LectureSlide {
     this.rowSwatches = const [],
     this.figure,
     this.figureCaption,
+    this.figureCredit,
     this.options = const [],
     this.correctIndex,
     this.answerExplanation,
     this.compact = false,
+    this.plan = false,
+    this.notice,
+    this.refs = const [],
   });
 
   final String? eyebrow;
@@ -86,6 +90,9 @@ class LectureSlide {
   final String? figure;
   final String? figureCaption;
 
+  /// Rasm muallifi/litsenziyasi (kichik shriftda, izoh ostida).
+  final String? figureCredit;
+
   /// Savol-javob: variantlar, to'g'ri javob indeksi va tushuntirish.
   final List<String> options;
   final int? correctIndex;
@@ -93,4 +100,30 @@ class LectureSlide {
 
   /// Ixcham bandlar (kichikroq shrift): uzun manba yozuvlari ro'yxati.
   final bool compact;
+
+  /// Dars rejasi: bandlar raqamli doirachalar bilan.
+  final bool plan;
+
+  /// Ilova ogohlantirishi (qoralama, boshqa tilda ko'rsatilmoqda) — slayd
+  /// mazmuni emas: kanvasda emas, slayd ostidagi panelda ko'rinadi.
+  final String? notice;
+
+  /// Shu slaydning to'liq manbalari (manba oynasida kesilmasdan).
+  final List<SlideRef> refs;
+}
+
+/// Slayd manbasi: to'liq bibliografik yozuv (muallif, nom, nashr, URL) va shu
+/// slaydda ishlatilgan bo'lim/sahifalar. [number] — "Adabiyotlar" slaydidagi
+/// raqam (1 dan).
+@immutable
+class SlideRef {
+  const SlideRef({
+    required this.number,
+    required this.text,
+    this.locators = const [],
+  });
+
+  final int number;
+  final String text;
+  final List<String> locators;
 }

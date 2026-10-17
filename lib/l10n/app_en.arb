@@ -5367,6 +5367,52 @@
     }
   },
   "lectureDeckLoadFailed": "Could not open the presentation",
+  "lectureFullscreen": "Full screen",
+  "lectureFullscreenExit": "Exit full screen",
+  "lectureSourcesTitle": "Slide sources",
+  "lectureSourcesOpen": "Show full sources",
+  "lectureSourcesCount": "Sources: {count}",
+  "@lectureSourcesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "lectureSourceLocator": "Section/page: {loc}",
+  "@lectureSourceLocator": {
+    "placeholders": {
+      "loc": {
+        "type": "String"
+      }
+    }
+  },
+  "lectureSourcesHint": "The full list is on the last “References” slide.",
+  "lectureRotateTitle": "Rotate the screen to landscape?",
+  "lectureRotateBody": "In landscape the slide fills the whole screen. “No” keeps the current orientation.",
+  "lectureRotateCastBody": "TVs and monitors are landscape, so landscape is recommended when casting.",
+  "lectureRotateYes": "Yes",
+  "lectureRotateNo": "No",
+  "lectureRotateRemember": "Don’t ask again",
+  "lectureOrientationMenu": "Screen orientation when presenting",
+  "lectureOrientationAsk": "Always ask",
+  "lectureOrientationLandscape": "Always landscape",
+  "lectureOrientationKeep": "Don’t rotate",
+  "lectureMore": "More actions",
+  "lectureCast": "Show on TV",
+  "lectureCastTitle": "Show on a TV or monitor",
+  "lectureCastHow": "Casting uses your phone’s built-in screen mirroring: the TV shows the phone screen. In presentation mode the screen shows only the slide (no buttons) and stays on.",
+  "lectureCastStepsAndroid": "1. Connect the phone and the TV to the same Wi‑Fi network.\n2. Open “Cast screen” (Cast, Smart View, Miracast — the name depends on the phone) and pick the TV.\n3. Come back to the app and tap “Start presentation”.",
+  "lectureCastStepsIos": "1. Connect the iPhone/iPad and the TV (Apple TV or AirPlay-compatible) to the same Wi‑Fi network.\n2. Open Control Center (swipe down from the top-right corner) → Screen Mirroring → pick the TV.\n3. Come back to the app and tap “Start presentation”.",
+  "lectureCastOpenSettings": "Open cast settings",
+  "lectureCastSettingsFailed": "Could not open the settings — find “Cast screen” in Settings or in the quick settings panel.",
+  "lectureCastStart": "Start presentation",
+  "lecturePresenter": "Presenter view",
+  "lecturePresenterNext": "Next slide",
+  "lecturePresenterLast": "This is the last slide",
+  "lecturePresenterTimer": "Time",
+  "lecturePresenterReset": "Reset timer",
+  "lecturePresenterNote": "Presenter view is on this device only. When mirroring, the TV shows the same view — use “Full screen” for the audience.",
   "topicTestAction": "Topic test",
   "topicTestPreparing": "Questions for this topic are being prepared",
   "topicTestPreparingShort": "Questions in preparation",

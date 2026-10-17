@@ -26,8 +26,11 @@ PPTX slayd turlari -> ilova shablonlari (title, bullets, table, figure, qa):
   card     -> figure (rasm + qatorlar izoh)          pair    -> 2 ta figure
   gallery  -> figure (har foto alohida)              qa_q+qa_a -> bitta qa (javob tugma bilan)
   sources  -> bullets (ixcham, raqamlangan)
-Uzun slaydlar (PPTX'dagi kabi) bir necha slaydga bo'linadi; sahifa raqami
-eyebrow'da ("... · 1/2"), sarlavha o'zgarmaydi (qidiruv uchun).
+Uzun slaydlar ilovaning 16:9 kanvasi (1280×720, asosiy matn ≥ 26 px) byudjeti bo'yicha
+davom slaydlariga bo'linadi (D-59): band chegarasida, bitta uzun band — faqat jumla oxirida;
+sahifa raqami eyebrow'da ("... · 1/2"), sarlavha va manba har qismda bir xil (qidiruv uchun).
+Har kontent slaydida `ref` — deck `refs` jadvaliga: "Adabiyotlar" raqami + shu slayd bo'lim/sahifalari
+(ilova manba oynasida to'liq yozuv ko'rsatadi).
 """
 import argparse
 import json
@@ -51,24 +54,58 @@ LANGS = dc.LANGS
 # d001 — muallif tayyorlagan rasmli deck (uz); indeksda shu fayl ishlatiladi.
 AUTHORED = {('d001', 'uz'): 'assets/lectures/d001.json'}
 
-# Bo'lish byudjeti (belgilar): ilova pleyeri slaydni aylantiradi, lekin juda uzun
-# slayd proyektorda o'qilmaydi — PPTX'dagi sahifalash kabi.
-BULLET_CHARS = 900
-BULLET_MAX = 7
-TABLE_CHARS = 1000
-TABLE_ROWS = 9
-CAPTION_CHARS = 900
-SOURCES_PER_SLIDE = 7
+# ------------------------------------------------------- 16:9 kanvas byudjeti ----
+# Ilova slaydni 1280×720 kanvasda chizadi (lib/features/classroom/lecture_canvas.dart —
+# o'lchamlar aynan shu) va ekranga teng masshtablaydi. Proyektorda o'qilishi uchun asosiy
+# matn kamida MIN_FONT px (1280 kenglikda). Slayd PACK_FONT da sig'maydigan bo'lsa, davom
+# slaydlariga ("... · 2/3") bo'linadi: bandlar chegarasida, bitta uzun band esa faqat jumla
+# oxirida (hech qachon jumla o'rtasida emas). Hisob — ehtiyotkor taxmin (harf kengligi ×
+# belgilar soni, so'zma-so'z o'rash); haqiqiy o'lchov ilovada (sig'masa — kichraytiriladi,
+# matn kesilmaydi). Taxmin deterministik (PIL/shriftga bog'liq emas).
+CANVAS_W, CANVAS_H = 1280, 720
+PAD_X = 72
+CONTENT_W = CANVAS_W - 2 * PAD_X        # 1136
+TITLE_TOP = 96
+TITLE_SIZES = (44, 40, 36, 32)          # 2 qatorgacha; bo'lmasa 32 px da ko'proq qator
+QA_TITLE_SIZES = (40, 36, 32, 28)       # savol: 3 qatorgacha
+TITLE_LH = 1.15
+TITLE_GAP = 24
+FOOTER_TOP = 664
+BODY_BOTTOM = FOOTER_TOP - 24           # manba qatorisiz
+SRC_SIZE = 17
+SRC_LH = 1.3
+SRC_GAP = 12                            # manba va footer orasida
+BODY_SRC_GAP = 16                       # tana va manba orasida
+BULLET_INDENT = 30                      # belgi + bo'shliq
+BODY_LH = 1.35
+ITEM_GAP = 0.5                          # bandlar orasida (em)
+PACK_FONT = 28                          # bo'lish shu shriftda hisoblanadi (ilova 34→26)
+MIN_FONT = 26
+PLAN_INDENT = 64                        # raqamli doiracha + bo'shliq
+TABLE_FONT = 24
+TABLE_LH = 1.3
+TABLE_PAD_X, TABLE_PAD_Y = 14, 10
+SOURCES_FONT = 20
+SOURCES_GAP = 8
+FIG_IMG_W = 520                         # rasm qutisi (ilovada izoh qisqa bo'lsa 640); izoh o'ngda
+CREDIT_SIZE = 18
+FIG_GAP = 40
+FIG_CAP_W = CONTENT_W - FIG_IMG_W - FIG_GAP
+CAP_GAP = 0.4
+QA_LETTER = 44
+QA_OPT_PAD = 14
+QA_OPT_GAP = 12
+NOTE_SIZE = 18
+# O'rtacha harf kengligi (em) — Inter 400, tilga qarab (o'lchangan: uz 0.46, en 0.47,
+# ru 0.53) + ~8% zaxira.
+EM = {'uz': 0.50, 'en': 0.51, 'ru': 0.57}
+BOLD_K = 1.05
 
 SKIP_TITLES_FOR_SEARCH = set()
+WARNINGS = []   # bo'linmaydigan (bitta jumla) va sig'maydigan holatlar
 
 
 # ------------------------------------------------------------- yordamchi ----
-
-def split_sentences(text, seps='.!?'):
-    parts = re.split(r'(?<=[' + re.escape(seps) + r'])\s+', text)
-    return [p for p in parts if p]
-
 
 def normalize_for_search(s):
     """lib/features/content/analyte_search.dart normalizeForSearch bilan bir xil."""
@@ -80,6 +117,118 @@ def normalize_for_search(s):
     return s
 
 
+def wrap_lines(text, size, width, lang, bold=False):
+    """So'zma-so'z o'rash: taxminiy qatorlar soni (belgi = o'rtacha harf kengligi)."""
+    cpl = max(8, int(width / (EM.get(lang, 0.57) * size * (BOLD_K if bold else 1.0))))
+    total = 0
+    for para in str(text).split('\n'):
+        n, cur = 1, 0
+        for w in para.split():
+            ln = len(w)
+            if cur == 0:
+                cur = ln
+            elif cur + 1 + ln <= cpl:
+                cur += 1 + ln
+            else:
+                n += 1
+                cur = ln
+            while cur > cpl:      # juda uzun so'z (URL)
+                n += 1
+                cur -= cpl
+        total += n
+    return total
+
+
+def title_height(title, lang, sizes=TITLE_SIZES, max_lines=2):
+    for sz in sizes:
+        n = wrap_lines(title, sz, CONTENT_W, lang, bold=True)
+        if n <= max_lines:
+            return n * sz * TITLE_LH
+    sz = sizes[-1]
+    return wrap_lines(title, sz, CONTENT_W, lang, bold=True) * sz * TITLE_LH
+
+
+def body_box(title, lang, source=None, sizes=TITLE_SIZES, max_lines=2):
+    """Tana balandligi (px): sarlavha ostidan manba qatori (yoki footer) gacha."""
+    top = TITLE_TOP + title_height(title, lang, sizes, max_lines) + TITLE_GAP
+    bottom = BODY_BOTTOM
+    if source:
+        src_h = wrap_lines(source, SRC_SIZE, CONTENT_W, lang) * SRC_SIZE * SRC_LH
+        bottom = FOOTER_TOP - SRC_GAP - src_h - BODY_SRC_GAP
+    return bottom - top
+
+
+def items_height(items, size, width, lang, gap=ITEM_GAP, lh=BODY_LH):
+    if not items:
+        return 0
+    return (sum(wrap_lines(t, size, width, lang) for t in items) * size * lh
+            + (len(items) - 1) * gap * size)
+
+
+# --- jumlalar (faqat jumla oxirida bo'linadi) ---------------------------------
+
+_SENT_END = re.compile(r'[.!?…]["»”’)\]]*(\s+)(?=["«„“(\[]?[A-ZÀ-ÖØ-ÞА-ЯЁЎҚҒҲ0-9])')
+_ABBR = {'e.g', 'i.e', 'vs', 'cf', 'fig', 'figs', 'no', 'nos', 'dr', 'prof', 'st', 'p', 'pp', 'ch',
+         'vol', 'ed', 'eds', 'approx', 'ca', 'al', 'mr', 'mrs', 'т.е', 'т.д', 'т.п', 'т.к', 'др', 'см',
+         'рис', 'табл', 'стр', 'г', 'гг', 'h.k', 'sh', 'ya'}
+
+
+def sentences(text):
+    """Matnni jumlalarga ajratadi (' '.join(...) — asl matn). Chegara: . ! ? … dan keyin
+    bo'shliq va katta harf/raqam; qisqartmalar (e.g., т.е., bosh harf "A.") chegara emas."""
+    out, start = [], 0
+    for m in _SENT_END.finditer(text):
+        head = text[start:m.start(1)]
+        words = head.split()
+        prev = words[-1] if words else ''
+        tok = prev.lstrip('(«"').rstrip('.!?…"»”’)]').lower()
+        if tok in _ABBR or (len(tok) == 1 and tok.isalpha()):
+            continue
+        out.append(head.strip())
+        start = m.end(1)
+    tail = text[start:].strip()
+    if tail:
+        out.append(tail)
+    return [x for x in out if x] or [text]
+
+
+def paginate(items, fits, what=''):
+    """Bandlarni sahifalarga: band chegarasida; bitta band sahifaga sig'masa — jumlalar
+    bo'yicha (bitta jumla ham sig'masa — o'zi alohida sahifa, ilova kichraytiradi).
+    fits(list) -> bool."""
+    pages, cur, queue = [], [], list(items)
+    while queue:
+        it = queue.pop(0)
+        if fits(cur + [it]):
+            cur.append(it)
+            continue
+        if cur:
+            pages.append(cur)
+            cur = []
+        if fits([it]):
+            cur = [it]
+            continue
+        sents = sentences(it)
+        piece = []
+        for snt in sents:
+            if fits([' '.join(piece + [snt])]):
+                piece.append(snt)
+            else:
+                break
+        if not piece:
+            WARNINGS.append(f'{what}: bitta jumla sig\'madi: {sents[0][:60]}')
+            piece = sents[:1]
+        rest = sents[len(piece):]
+        if rest:
+            pages.append([' '.join(piece)])
+            queue.insert(0, ' '.join(rest))
+        else:
+            cur = [' '.join(piece)]
+    if cur:
+        pages.append(cur)
+    return pages or [[]]
+
+
 def eyebrow_with_page(eyebrow, i, n):
     if n <= 1:
         return eyebrow or None
@@ -87,58 +236,67 @@ def eyebrow_with_page(eyebrow, i, n):
     return f'{eyebrow} · {pg}' if eyebrow else pg
 
 
-def split_long(text, budget):
-    """Bitta uzun matnni jumlalar bo'yicha bo'laklarga (budjetga sig'adigan)."""
-    if len(text) <= budget:
-        return [text]
-    for seps in ('.!?', '.!?;', '.!?;:,'):
-        sents = split_sentences(text, seps)
-        if len(sents) > 1 and all(len(s) <= budget for s in sents):
-            break
-    else:
-        sents = split_sentences(text, '.!?;:,')
-    if len(sents) <= 1:
-        return [text]
-    out, cur = [], ''
-    for s in sents:
-        if cur and len(cur) + 1 + len(s) > budget:
-            out.append(cur)
-            cur = s
-        else:
-            cur = f'{cur} {s}'.strip()
-    if cur:
-        out.append(cur)
-    return out
+def bullets_fit(items, title, lang, source=None, indent=BULLET_INDENT, size=PACK_FONT):
+    return items_height(items, size, CONTENT_W - indent, lang) <= body_box(title, lang, source)
 
 
-def paginate_bullets(items, chars=BULLET_CHARS, maxn=BULLET_MAX):
-    pages, cur, used = [], [], 0
-    queue = []
-    for it in items:
-        queue += split_long(it, chars)
-    for it in queue:
-        if cur and (used + len(it) > chars or len(cur) >= maxn):
-            pages.append(cur)
-            cur, used = [], 0
-        cur.append(it)
-        used += len(it)
-    if cur:
-        pages.append(cur)
-    return pages or [[]]
+def paginate_bullets(items, title, lang, source=None, indent=BULLET_INDENT, size=PACK_FONT):
+    avail = body_box(title, lang, source)
+    width = CONTENT_W - indent
+    return paginate(items, lambda xs: items_height(xs, size, width, lang) <= avail, title[:40])
 
 
-def paginate_rows(rows, chars=TABLE_CHARS, maxn=TABLE_ROWS):
-    pages, cur, used = [], [], 0
+def table_height(header, rows, lang, size=TABLE_FONT):
+    cols = max([len(header or [])] + [len(r) for r in rows] + [1])
+    flex = [1.0] * cols
+    if cols > 2:
+        flex[-1] = 1.4
+    tot = sum(flex)
+    widths = [CONTENT_W * f / tot - 2 * TABLE_PAD_X for f in flex]
+
+    def row_h(r, k=1.0):
+        n = max([wrap_lines(c, size * k, widths[i], lang, bold=(i == 0))
+                 for i, c in enumerate(r)] or [1])
+        return n * size * k * TABLE_LH + 2 * TABLE_PAD_Y
+    h = row_h(header, 0.8) if any(header or []) else 0
+    return h + sum(row_h(r) for r in rows)
+
+
+def paginate_rows(rows, header, title, lang, source=None, note=None):
+    avail = body_box(title, lang, source)
+    if note:
+        avail -= wrap_lines(note, NOTE_SIZE, CONTENT_W, lang) * NOTE_SIZE * 1.3 + 12
+    pages, cur = [], []
     for r in rows:
-        n = sum(len(c) for c in r)
-        if cur and (used + n > chars or len(cur) >= maxn):
+        if cur and table_height(header, cur + [r], lang) > avail:
             pages.append(cur)
-            cur, used = [], 0
+            cur = []
         cur.append(r)
-        used += n
     if cur:
         pages.append(cur)
+    for pg in pages:
+        if table_height(header, pg, lang) > avail:
+            WARNINGS.append(f'{title[:40]}: jadval qatori sig\'madi')
     return pages or [[]]
+
+
+def paginate_caption(lines, title, lang, source=None, credit=None):
+    """Rasm izohi (qatorlar) — o'ng ustunga. [credit] (rasm muallifi/litsenziyasi yoki
+    "sxema" izohi) har sahifada alohida, kichik shriftda — rasm har sahifada bor."""
+    avail = body_box(title, lang, source)
+    if credit:
+        avail -= 30 + wrap_lines(credit, CREDIT_SIZE, FIG_CAP_W, lang) * CREDIT_SIZE * 1.3
+
+    def fits(xs):
+        return items_height(xs, PACK_FONT, FIG_CAP_W, lang, gap=CAP_GAP) <= avail
+    return paginate(lines, fits, title[:40]) if lines else [[]]
+
+
+def paginate_sources(items, title, lang):
+    avail = body_box(title, lang)
+    return paginate(items, lambda xs: items_height(xs, SOURCES_FONT, CONTENT_W, lang,
+                                                   gap=SOURCES_GAP / SOURCES_FONT, lh=1.3) <= avail,
+                    'Adabiyotlar')
 
 
 def block_bullets(blocks, numbered=False):
@@ -171,6 +329,7 @@ class Conv:
         self.lang = deck.lang
         self.out = []
         self._ctx = types.SimpleNamespace(deck=deck, lang=deck.lang)
+        self._bib = {k: i for i, k in enumerate(deck.sources.entries)}
 
     def source(self, spec, refs=None):
         if not spec.is_content:
@@ -179,10 +338,31 @@ class Conv:
             spec = types.SimpleNamespace(sources=refs)
         return self.mk.source_line(self._ctx, spec) or None
 
+    def refs(self, spec, refs=None):
+        """Slayd manbalari — "Adabiyotlar" ro'yxatidagi tartib raqami (0 dan) va shu
+        slaydda ishlatilgan bo'lim/sahifalar: [[i, loc1, loc2...], ...]. Ilova manba
+        oynasida to'liq yozuvni (muallif, kitob, sahifa) kesmasdan ko'rsatadi."""
+        if not spec.is_content:
+            return None
+        out = []
+        for r in (refs if refs is not None else spec.sources):
+            i = self._bib[r['key']]
+            row = next((x for x in out if x[0] == i), None)
+            if row is None:
+                row = [i]
+                out.append(row)
+            loc = (r.get('loc') or '').strip()
+            if loc and loc not in row[1:]:
+                row.append(loc)
+        return out or None
+
     def add(self, **kw):
         if kw.get('template') == 'bullets':
             del kw['template']      # standart shablon
         self.out.append(clean(kw))
+
+    def _bullet_pages(self, items, title, src, indent=BULLET_INDENT):
+        return paginate_bullets(items, title, self.lang, src, indent=indent)
 
     # -- turlar --------------------------------------------------------------
 
@@ -192,10 +372,10 @@ class Conv:
                  bullets=[d['module']] + list(d['lines']))
 
     def outline(self, s):
-        pages = paginate_bullets(s.data['items'])
+        pages = self._bullet_pages(s.data['items'], s.title, None, indent=PLAN_INDENT)
         for i, pg in enumerate(pages, 1):
             self.add(template='bullets', title=s.title, eyebrow=eyebrow_with_page('', i, len(pages)),
-                     bullets=pg)
+                     bullets=pg, plan=True)
 
     def text(self, s):
         d = s.data
@@ -209,11 +389,12 @@ class Conv:
             title = d['lead']
             eyebrow = f'{eyebrow.split(" · ")[0]} · {dc.T("oral_a", self.lang)}' if eyebrow else dc.T('oral_a', self.lang)
         items += block_bullets(d['blocks'], numbered=bool(d.get('numbered')))
-        pages = paginate_bullets(items)
         src = self.source(s)
+        pages = self._bullet_pages(items, title, src)
+        refs = self.refs(s)
         for i, pg in enumerate(pages, 1):
             self.add(template='bullets', title=title, eyebrow=eyebrow_with_page(eyebrow, i, len(pages)),
-                     bullets=pg, source=src)
+                     bullets=pg, source=src, refs=refs)
 
     def columns(self, s):
         d = s.data
@@ -221,23 +402,30 @@ class Conv:
         for c in d['cols']:
             items += [f'{c["head"]}: {b["text"]}' for b in c['blocks']]
         items += [b['text'] for b in d['single']]
-        pages = paginate_bullets(items)
         src = self.source(s)
+        pages = self._bullet_pages(items, s.title, src)
+        refs = self.refs(s)
         for i, pg in enumerate(pages, 1):
             self.add(template='bullets', title=s.title, eyebrow=eyebrow_with_page(s.eyebrow, i, len(pages)),
-                     bullets=pg, source=src)
+                     bullets=pg, source=src, refs=refs)
 
     def table(self, s):
         d = s.data
-        pages = paginate_rows(d['rows'])
         src = self.source(s)
+        header = d['header'] if any(d['header']) else None
+        note = d.get('note') or None
+        pages = paginate_rows(d['rows'], header, s.title, self.lang, src, note)
+        refs = self.refs(s)
         for i, pg in enumerate(pages, 1):
             self.add(template='table', title=s.title, eyebrow=eyebrow_with_page(s.eyebrow, i, len(pages)),
-                     header=d['header'] if any(d['header']) else None, rows=pg,
-                     footnote=d.get('note') or None, source=src)
+                     header=header, rows=pg, footnote=note, source=src, refs=refs)
 
-    def _caption_pages(self, lines):
-        return paginate_bullets(lines, chars=CAPTION_CHARS, maxn=99)
+    def _figures(self, s, image, lines, credit, src, refs):
+        """Bitta rasm + izoh qatorlari; izoh sig'masa — rasm takrorlanadigan davom slaydlari."""
+        pages = paginate_caption(lines, s.title, self.lang, src, credit)
+        for i, pg in enumerate(pages, 1):
+            self.add(template='figure', title=s.title, eyebrow=eyebrow_with_page(s.eyebrow, i, len(pages)),
+                     figure=image, caption='\n'.join(pg), credit=credit, source=src, refs=refs)
 
     def card(self, s):
         d = s.data
@@ -248,34 +436,39 @@ class Conv:
         lines += [f'{k}: {v}' for k, v in d['rows']]
         if d.get('caveat'):
             lines.append(f'{d["caveat"][0]}: {d["caveat"][1]}')
-        lines.append(d['note'])
-        pages = self._caption_pages(lines)
-        src = self.source(s)
-        for i, pg in enumerate(pages, 1):
-            self.add(template='figure', title=s.title, eyebrow=eyebrow_with_page(s.eyebrow, i, len(pages)),
-                     figure=s.image, caption='\n'.join(pg), source=src)
+        self._figures(s, s.image, lines, d['note'], self.source(s), self.refs(s))
 
     def pair(self, s):
         d = s.data
         src = self.source(s)
-        cap_a = [d['a']['name'], d['note']]
+        refs = self.refs(s)
+        cap_a = [d['a']['name']]
         cap_b = [d['b']['name'], d['tip']]
         if d.get('badge'):
             cap_b.append(d['badge'])
-        cap_b.append(d['note'])
-        self.add(template='figure', title=s.title, eyebrow=eyebrow_with_page(s.eyebrow, 1, 2),
-                 figure=d['a']['image'], caption='\n'.join(cap_a), source=src)
-        self.add(template='figure', title=s.title, eyebrow=eyebrow_with_page(s.eyebrow, 2, 2),
-                 figure=d['b']['image'], caption='\n'.join(cap_b), source=src)
+        parts = [(d[k]['image'], paginate_caption(c, s.title, self.lang, src, d['note']))
+                 for k, c in (('a', cap_a), ('b', cap_b))]
+        total = sum(len(p) for _, p in parts)
+        k = 0
+        for image, pages in parts:
+            for pg in pages:
+                k += 1
+                self.add(template='figure', title=s.title, eyebrow=eyebrow_with_page(s.eyebrow, k, total),
+                         figure=image, caption='\n'.join(pg), credit=d['note'], source=src, refs=refs)
 
     def gallery(self, s):
         items = s.data['items']
         n = len(items)
         for i, it in enumerate(items, 1):
-            refs = [s.sources[i - 1]] if len(s.sources) == n else None
-            self.add(template='figure', title=s.title, eyebrow=s.eyebrow or None,
-                     figure=it['image'], caption=f'{it["caption"]}\n{it["credit"]}',
-                     source=self.source(s, refs))
+            rs = [s.sources[i - 1]] if len(s.sources) == n else None
+            src = self.source(s, rs)
+            pages = paginate_caption([it['caption']], s.title, self.lang, src, it['credit'])
+            for k, pg in enumerate(pages, 1):
+                ey = s.eyebrow or None
+                if len(pages) > 1:
+                    ey = eyebrow_with_page(s.eyebrow, k, len(pages))
+                self.add(template='figure', title=s.title, eyebrow=ey, figure=it['image'],
+                         caption='\n'.join(pg), credit=it['credit'], source=src, refs=self.refs(s, rs))
 
     def qa_q(self, s):
         pass    # savol va javob bitta qa slaydida (qa_a bilan)
@@ -287,14 +480,34 @@ class Conv:
             parts.append(f'{d["labels"]["explanation"]}: {d["explanation"]}')
         if d.get('basis'):
             parts.append(f'{d["labels"]["basis"]}: {d["basis"]}')
-        self.add(template='qa', title=d['question'], eyebrow=s.eyebrow, options=d['options'],
-                 correct=d['correct'], explanation='\n\n'.join(parts) or None,
-                 source=self.source(s))
+        src = self.source(s)
+        refs = self.refs(s)
+        q = d['question']
+        # Javob ko'rinishi: savol (sarlavha) + to'g'ri javob qutisi + izoh. Izoh sig'masa —
+        # qolgani davom slaydida (sarlavha — o'sha savol), PPTX'dagi kabi.
+        ans = d['options'][d['correct']]
+        box = wrap_lines(ans, PACK_FONT, CONTENT_W - QA_LETTER - 60, self.lang, bold=True) \
+            * PACK_FONT * 1.3 + 32 + 24
+        avail = body_box(q, self.lang, src, QA_TITLE_SIZES, 3) - box
+        first, rest = [], list(parts)
+        if parts and avail >= 2 * PACK_FONT * BODY_LH:
+            pages = paginate(parts, lambda xs: items_height(xs, PACK_FONT, CONTENT_W, self.lang) <= avail,
+                             q[:40])
+            first = pages[0]
+            rest = [x for pg in pages[1:] for x in pg]
+        cont = self._bullet_pages(rest, q, src) if rest else []
+        n = 1 + len(cont)
+        self.add(template='qa', title=q, eyebrow=eyebrow_with_page(s.eyebrow, 1, n), options=d['options'],
+                 correct=d['correct'], explanation='\n\n'.join(first) or None,
+                 source=src, refs=refs)
+        for k, pg in enumerate(cont, 2):
+            self.add(template='bullets', title=q, eyebrow=eyebrow_with_page(s.eyebrow, k, n),
+                     bullets=pg, source=src, refs=refs)
 
     def sources(self, s):
         items = [f'{i}. {t}' for i, t in enumerate(s.data['items'], 1)]
-        pages = [items[k:k + SOURCES_PER_SLIDE] for k in range(0, len(items), SOURCES_PER_SLIDE)]
-        for i, pg in enumerate(pages or [[]], 1):
+        pages = paginate_sources(items, s.title, self.lang)
+        for i, pg in enumerate(pages, 1):
             self.add(template='bullets', title=s.title, eyebrow=eyebrow_with_page('', i, len(pages)),
                      bullets=pg, compact=True)
 
@@ -317,18 +530,25 @@ def day_topic_ids(day):
 def deck_json(deck_id, lang, title, topics, slides):
     """Deck JSON. Takrorlanuvchi manba qatorlari deck darajasidagi `srcs`
     jadvaliga olinadi (slaydda `src` indeksi) — hajmni ~1 MB ga kamaytiradi."""
-    srcs, slim = [], []
+    srcs, refs, slim = [], [], []
     for s in slides:
         s = dict(s)
         if 'source' in s:
             if s['source'] not in srcs:
                 srcs.append(s['source'])
             s['src'] = srcs.index(s.pop('source'))
+        if 'refs' in s:
+            # slayd manbalari ham deck jadvalida (davom slaydlari bir xil ro'yxatni ulashadi)
+            if s['refs'] not in refs:
+                refs.append(s['refs'])
+            s['ref'] = refs.index(s.pop('refs'))
         slim.append(s)
     j = {'schema': SCHEMA, 'id': deck_id, 'lang': lang, 'status': 'sourced',
          'title': title, 'topics': topics}
     if srcs:
         j['srcs'] = srcs
+    if refs:
+        j['refs'] = refs
     j['slides'] = slim
     return j
 

@@ -15952,6 +15952,198 @@ abstract class AppLocalizations {
   /// **'Could not open the presentation'**
   String get lectureDeckLoadFailed;
 
+  /// No description provided for @lectureFullscreen.
+  ///
+  /// In en, this message translates to:
+  /// **'Full screen'**
+  String get lectureFullscreen;
+
+  /// No description provided for @lectureFullscreenExit.
+  ///
+  /// In en, this message translates to:
+  /// **'Exit full screen'**
+  String get lectureFullscreenExit;
+
+  /// No description provided for @lectureSourcesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Slide sources'**
+  String get lectureSourcesTitle;
+
+  /// No description provided for @lectureSourcesOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'Show full sources'**
+  String get lectureSourcesOpen;
+
+  /// No description provided for @lectureSourcesCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Sources: {count}'**
+  String lectureSourcesCount(int count);
+
+  /// No description provided for @lectureSourceLocator.
+  ///
+  /// In en, this message translates to:
+  /// **'Section/page: {loc}'**
+  String lectureSourceLocator(String loc);
+
+  /// No description provided for @lectureSourcesHint.
+  ///
+  /// In en, this message translates to:
+  /// **'The full list is on the last “References” slide.'**
+  String get lectureSourcesHint;
+
+  /// No description provided for @lectureRotateTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Rotate the screen to landscape?'**
+  String get lectureRotateTitle;
+
+  /// No description provided for @lectureRotateBody.
+  ///
+  /// In en, this message translates to:
+  /// **'In landscape the slide fills the whole screen. “No” keeps the current orientation.'**
+  String get lectureRotateBody;
+
+  /// No description provided for @lectureRotateCastBody.
+  ///
+  /// In en, this message translates to:
+  /// **'TVs and monitors are landscape, so landscape is recommended when casting.'**
+  String get lectureRotateCastBody;
+
+  /// No description provided for @lectureRotateYes.
+  ///
+  /// In en, this message translates to:
+  /// **'Yes'**
+  String get lectureRotateYes;
+
+  /// No description provided for @lectureRotateNo.
+  ///
+  /// In en, this message translates to:
+  /// **'No'**
+  String get lectureRotateNo;
+
+  /// No description provided for @lectureRotateRemember.
+  ///
+  /// In en, this message translates to:
+  /// **'Don’t ask again'**
+  String get lectureRotateRemember;
+
+  /// No description provided for @lectureOrientationMenu.
+  ///
+  /// In en, this message translates to:
+  /// **'Screen orientation when presenting'**
+  String get lectureOrientationMenu;
+
+  /// No description provided for @lectureOrientationAsk.
+  ///
+  /// In en, this message translates to:
+  /// **'Always ask'**
+  String get lectureOrientationAsk;
+
+  /// No description provided for @lectureOrientationLandscape.
+  ///
+  /// In en, this message translates to:
+  /// **'Always landscape'**
+  String get lectureOrientationLandscape;
+
+  /// No description provided for @lectureOrientationKeep.
+  ///
+  /// In en, this message translates to:
+  /// **'Don’t rotate'**
+  String get lectureOrientationKeep;
+
+  /// No description provided for @lectureMore.
+  ///
+  /// In en, this message translates to:
+  /// **'More actions'**
+  String get lectureMore;
+
+  /// No description provided for @lectureCast.
+  ///
+  /// In en, this message translates to:
+  /// **'Show on TV'**
+  String get lectureCast;
+
+  /// No description provided for @lectureCastTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Show on a TV or monitor'**
+  String get lectureCastTitle;
+
+  /// No description provided for @lectureCastHow.
+  ///
+  /// In en, this message translates to:
+  /// **'Casting uses your phone’s built-in screen mirroring: the TV shows the phone screen. In presentation mode the screen shows only the slide (no buttons) and stays on.'**
+  String get lectureCastHow;
+
+  /// No description provided for @lectureCastStepsAndroid.
+  ///
+  /// In en, this message translates to:
+  /// **'1. Connect the phone and the TV to the same Wi‑Fi network.\n2. Open “Cast screen” (Cast, Smart View, Miracast — the name depends on the phone) and pick the TV.\n3. Come back to the app and tap “Start presentation”.'**
+  String get lectureCastStepsAndroid;
+
+  /// No description provided for @lectureCastStepsIos.
+  ///
+  /// In en, this message translates to:
+  /// **'1. Connect the iPhone/iPad and the TV (Apple TV or AirPlay-compatible) to the same Wi‑Fi network.\n2. Open Control Center (swipe down from the top-right corner) → Screen Mirroring → pick the TV.\n3. Come back to the app and tap “Start presentation”.'**
+  String get lectureCastStepsIos;
+
+  /// No description provided for @lectureCastOpenSettings.
+  ///
+  /// In en, this message translates to:
+  /// **'Open cast settings'**
+  String get lectureCastOpenSettings;
+
+  /// No description provided for @lectureCastSettingsFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not open the settings — find “Cast screen” in Settings or in the quick settings panel.'**
+  String get lectureCastSettingsFailed;
+
+  /// No description provided for @lectureCastStart.
+  ///
+  /// In en, this message translates to:
+  /// **'Start presentation'**
+  String get lectureCastStart;
+
+  /// No description provided for @lecturePresenter.
+  ///
+  /// In en, this message translates to:
+  /// **'Presenter view'**
+  String get lecturePresenter;
+
+  /// No description provided for @lecturePresenterNext.
+  ///
+  /// In en, this message translates to:
+  /// **'Next slide'**
+  String get lecturePresenterNext;
+
+  /// No description provided for @lecturePresenterLast.
+  ///
+  /// In en, this message translates to:
+  /// **'This is the last slide'**
+  String get lecturePresenterLast;
+
+  /// No description provided for @lecturePresenterTimer.
+  ///
+  /// In en, this message translates to:
+  /// **'Time'**
+  String get lecturePresenterTimer;
+
+  /// No description provided for @lecturePresenterReset.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset timer'**
+  String get lecturePresenterReset;
+
+  /// No description provided for @lecturePresenterNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Presenter view is on this device only. When mirroring, the TV shows the same view — use “Full screen” for the audience.'**
+  String get lecturePresenterNote;
+
   /// No description provided for @topicTestAction.
   ///
   /// In en, this message translates to:
