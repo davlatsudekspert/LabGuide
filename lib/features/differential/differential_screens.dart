@@ -454,7 +454,13 @@ class _CellListRow extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(guide.name.of(lang), style: text.titleSmall),
+                    // Uzun so'z ("Гиперсегментированный") tor ekranda
+                    // harfma-harf bo'linmasin — biroz kichrayadi.
+                    FitLongWordText(
+                      guide.name.of(lang),
+                      style: text.titleSmall!,
+                      minFontSize: 13,
+                    ),
                     const SizedBox(height: 2),
                     Text(
                       '${l.diffSize}: ${guide.size.of(lang)}',

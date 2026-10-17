@@ -98,6 +98,66 @@ class AppLocalizationsEn extends AppLocalizations {
       'No account is needed to read content. Sign-in is used for sync and classes.';
 
   @override
+  String get welcomeBenefitDoctorTitle => 'For doctors';
+
+  @override
+  String get welcomeBenefitDoctorBody =>
+      'Results, interfering factors and tests by condition';
+
+  @override
+  String get welcomeBenefitLabTitle => 'For lab specialists';
+
+  @override
+  String get welcomeBenefitLabBody =>
+      'Quality control, sampling, instruments and calculators';
+
+  @override
+  String get welcomeBenefitLearnTitle => 'For students and teachers';
+
+  @override
+  String get welcomeBenefitLearnBody =>
+      'Topics, explained questions, exams and groups';
+
+  @override
+  String get stateLoading => 'Loading…';
+
+  @override
+  String get homeTileTests => 'Ranges, causes, meaning';
+
+  @override
+  String get homeTileCalculators => 'eGFR, ACR, dilution and more';
+
+  @override
+  String get homeTileSampling => 'Tubes, storage, transport';
+
+  @override
+  String get homeTileSaved => 'Quick access to bookmarks';
+
+  @override
+  String get homeTileDiff => 'Counter and cell atlas';
+
+  @override
+  String get homeTileCalibration => 'Analyzer, reagent and IFU match';
+
+  @override
+  String get homeTileInstruments => 'Principles and methods';
+
+  @override
+  String get homeTileExam => 'Timed practice exam';
+
+  @override
+  String get homeTileDaily => '5 questions every day';
+
+  @override
+  String get homeTileTopics => 'Topic, explanation, practice';
+
+  @override
+  String get homeTileClasses => 'Students and assignments';
+
+  @override
+  String get homeTileLecture => 'Slides and screen casting';
+
+  @override
   String get authTitle => 'Welcome';
 
   @override

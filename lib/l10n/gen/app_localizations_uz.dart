@@ -99,6 +99,66 @@ class AppLocalizationsUz extends AppLocalizations {
       'Kontentni o‘qish uchun hisob shart emas. Kirish sinxronlash va guruhlar uchun kerak.';
 
   @override
+  String get welcomeBenefitDoctorTitle => 'Shifokor uchun';
+
+  @override
+  String get welcomeBenefitDoctorBody =>
+      'Natija, unga ta’sir qiluvchi omillar va kasallik bo‘yicha tahlillar';
+
+  @override
+  String get welcomeBenefitLabTitle => 'Laboratoriya mutaxassisi uchun';
+
+  @override
+  String get welcomeBenefitLabBody =>
+      'Sifat nazorati, namuna olish, apparatlar va kalkulyatorlar';
+
+  @override
+  String get welcomeBenefitLearnTitle => 'Talaba va ustoz uchun';
+
+  @override
+  String get welcomeBenefitLearnBody =>
+      'Mavzular, izohli savollar, imtihon va guruhlar';
+
+  @override
+  String get stateLoading => 'Yuklanmoqda…';
+
+  @override
+  String get homeTileTests => 'Me’yor, sabablar va talqin';
+
+  @override
+  String get homeTileCalculators => 'eGFR, ACR, suyultirish va boshqalar';
+
+  @override
+  String get homeTileSampling => 'Probirka, saqlash va tashish';
+
+  @override
+  String get homeTileSaved => 'Belgilanganlarga tez qaytish';
+
+  @override
+  String get homeTileDiff => 'Hisoblagich va hujayralar atlasi';
+
+  @override
+  String get homeTileCalibration => 'Apparat, reagent va IFU mosligi';
+
+  @override
+  String get homeTileInstruments => 'Ish prinsipi va metodikalar';
+
+  @override
+  String get homeTileExam => 'Vaqtli sinov imtihoni';
+
+  @override
+  String get homeTileDaily => 'Har kuni 5 ta savol';
+
+  @override
+  String get homeTileTopics => 'Mavzu, izoh va mashq';
+
+  @override
+  String get homeTileClasses => 'Talabalar va topshiriqlar';
+
+  @override
+  String get homeTileLecture => 'Taqdimot va ekranga uzatish';
+
+  @override
   String get authTitle => 'Xush kelibsiz';
 
   @override

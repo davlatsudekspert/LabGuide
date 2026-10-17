@@ -19,6 +19,15 @@ void main() {
         language: lang,
       );
       await pumpApp(tester, s);
+      // Logotip rasmlari oldindan dekod qilinadi (aks holda rasmda bo'sh
+      // kulrang kvadrat chiqadi — haqiqiy ilovada bunday emas).
+      await tester.runAsync(() async {
+        final ctx = tester.element(find.byType(Scaffold).first);
+        for (final a in ['logo_mark.png', 'logo_mark_large.png']) {
+          await precacheImage(AssetImage('assets/images/$a'), ctx);
+        }
+      });
+      await tester.pumpAndSettle();
       final w = Walk(tester, 'ux_onb_${lang.name}');
       await w.snap('til');
       final names = {'uz': 'O‘zbekcha', 'ru': 'Русский', 'en': 'English'};

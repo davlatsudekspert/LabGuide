@@ -67,11 +67,11 @@ class LgPalette extends ThemeExtension<LgPalette> {
     paper: Color(0xFFFFFEF9),
     ink: Color(0xFF183A36),
     sub: Color(0xFF536C65),
-    line: Color(0xFFDCE4D9),
+    line: Color(0xFFE1E7DE),
     outline: Color(0xFF788C85),
     brand: Color(0xFF194C40),
     onBrand: Color(0xFFF7FAEE),
-    soft: Color(0xFFE8EEDB),
+    soft: Color(0xFFE9EFE1),
     amber: Color(0xFF7B4D0B),
     amberBg: Color(0xFFFFF1DB),
     danger: Color(0xFF9A2B1F),
@@ -83,11 +83,11 @@ class LgPalette extends ThemeExtension<LgPalette> {
     paper: Color(0xFF172828),
     ink: Color(0xFFECF4E9),
     sub: Color(0xFFAABFB5),
-    line: Color(0xFF304641),
+    line: Color(0xFF2C413D),
     outline: Color(0xFF6A857B),
-    brand: Color(0xFFC5E8A1),
+    brand: Color(0xFFBFE0A8),
     onBrand: Color(0xFF163222),
-    soft: Color(0xFF253F31),
+    soft: Color(0xFF223A31),
     amber: Color(0xFFF0C586),
     amberBg: Color(0xFF3F3324),
     danger: Color(0xFFFFB4A6),
@@ -151,14 +151,63 @@ class LgPalette extends ThemeExtension<LgPalette> {
   }
 }
 
-/// Burchak radiuslari (DESIGN_REQUIREMENTS: 27 hero / 23 karta / 18 tugma).
+/// Burchak radiuslari. 2026-10 "mayin" yangilanishi: hammasi biroz
+/// kattaroq va yumshoqroq (avval 27 / 23 / 18 / 14) — docs/DESIGN_REVIEW_2026-10-17.md.
 abstract final class LgRadius {
-  static const double hero = 27;
-  static const double card = 23;
-  static const double button = 18;
-  static const double chip = 14;
-  static const double field = 14;
+  static const double hero = 30;
+  static const double card = 26;
+  static const double button = 20;
+  static const double chip = 16;
+  static const double field = 16;
   static const double tag = 20;
+
+  /// Ogohlantirish/ma'lumot bloki, ichki kichik rasm.
+  static const double notice = 18;
+}
+
+/// Yumshoq, qatlamli soyalar: qattiq chegara o'rniga sirtni fondan
+/// ajratadi. Ikki qatlam — keng "ambient" (juda xira) va yaqin "key"
+/// (kontur beradi). Tungi rejimda soya ko'rinmaydi — sirt rangining o'zi
+/// ajratadi, shuning uchun bo'sh ro'yxat qaytadi.
+abstract final class LgShadow {
+  static bool _dark(BuildContext context) =>
+      Theme.of(context).brightness == Brightness.dark;
+
+  /// Karta/panel (paper) uchun.
+  static List<BoxShadow> card(BuildContext context) {
+    if (_dark(context)) return const [];
+    final c = LgPalette.of(context).shadow;
+    return [
+      BoxShadow(
+        color: c.withValues(alpha: 0.045),
+        blurRadius: 28,
+        offset: const Offset(0, 10),
+      ),
+      BoxShadow(
+        color: c.withValues(alpha: 0.03),
+        blurRadius: 6,
+        offset: const Offset(0, 2),
+      ),
+    ];
+  }
+
+  /// Ko'tarilgan element (asosiy tugma, hero karta).
+  static List<BoxShadow> raised(BuildContext context) {
+    if (_dark(context)) return const [];
+    final c = LgPalette.of(context).shadow;
+    return [
+      BoxShadow(
+        color: c.withValues(alpha: 0.10),
+        blurRadius: 22,
+        offset: const Offset(0, 8),
+      ),
+      BoxShadow(
+        color: c.withValues(alpha: 0.05),
+        blurRadius: 4,
+        offset: const Offset(0, 1),
+      ),
+    ];
+  }
 }
 
 /// Bo'shliqlar. Telefon gutteri 24, tor ekranda (<=360) 18.
@@ -200,10 +249,20 @@ abstract final class LgGlass {
 }
 
 /// Harakat davomiyliklari. Reduced motion yoqilganda hammasi nolga tushadi.
+/// Mayin harakat: 200–300 ms, ease-out egri chizig'i.
 abstract final class LgMotion {
-  static const press = Duration(milliseconds: 160);
-  static const page = Duration(milliseconds: 200);
+  static const press = Duration(milliseconds: 180);
+  static const page = Duration(milliseconds: 260);
   static const header = Duration(milliseconds: 200);
+
+  /// Ekranga kirish (fade + kichik ko'tarilish) animatsiyasi.
+  static const enter = Duration(milliseconds: 320);
+
+  /// Bosilganda sirt shuncha kichrayadi.
+  static const pressScale = 0.97;
+
+  /// Umumiy egri chiziq: tez boshlanib, yumshoq to'xtaydi.
+  static const curve = Curves.easeOutCubic;
 
   static bool reduced(BuildContext context) =>
       MediaQuery.maybeDisableAnimationsOf(context) ?? false;

@@ -731,13 +731,13 @@ class CalcSourceTile extends StatelessWidget {
                     children: [
                       Text(
                         '[$index] ${ref.source.citation}',
-                        style: url == null
-                            ? text.titleSmall
-                            : text.titleSmall!.copyWith(
-                                color: p.brand,
-                                decoration: TextDecoration.underline,
-                                decorationColor: p.brand.withValues(alpha: 0.5),
-                              ),
+                        // Iqtibos — mazmundan "balandroq" ko'rinmasin:
+                        // 14 px, oddiy matn rangi, tagi chizilmagan;
+                        // havola ekanini o'ngdagi ikonka aytadi.
+                        style: text.bodyMedium!.copyWith(
+                          color: p.ink,
+                          height: 1.45,
+                        ),
                       ),
                       if (ref.locator.isNotEmpty)
                         Text(

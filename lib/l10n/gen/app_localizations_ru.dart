@@ -99,6 +99,66 @@ class AppLocalizationsRu extends AppLocalizations {
       'Для чтения контента аккаунт не нужен. Вход нужен для синхронизации и групп.';
 
   @override
+  String get welcomeBenefitDoctorTitle => 'Врачу';
+
+  @override
+  String get welcomeBenefitDoctorBody =>
+      'Результат, влияющие факторы и анализы по заболеваниям';
+
+  @override
+  String get welcomeBenefitLabTitle => 'Специалисту лаборатории';
+
+  @override
+  String get welcomeBenefitLabBody =>
+      'Контроль качества, взятие образцов, приборы и калькуляторы';
+
+  @override
+  String get welcomeBenefitLearnTitle => 'Студенту и преподавателю';
+
+  @override
+  String get welcomeBenefitLearnBody =>
+      'Темы, вопросы с разбором, экзамен и группы';
+
+  @override
+  String get stateLoading => 'Загрузка…';
+
+  @override
+  String get homeTileTests => 'Норма, причины и трактовка';
+
+  @override
+  String get homeTileCalculators => 'eGFR, ACR, разведение и др.';
+
+  @override
+  String get homeTileSampling => 'Пробирки, хранение, доставка';
+
+  @override
+  String get homeTileSaved => 'Быстрый доступ к отмеченному';
+
+  @override
+  String get homeTileDiff => 'Счётчик и атлас клеток';
+
+  @override
+  String get homeTileCalibration => 'Прибор, реагент и IFU';
+
+  @override
+  String get homeTileInstruments => 'Принципы работы и методики';
+
+  @override
+  String get homeTileExam => 'Пробный экзамен на время';
+
+  @override
+  String get homeTileDaily => '5 вопросов каждый день';
+
+  @override
+  String get homeTileTopics => 'Тема, разбор и практика';
+
+  @override
+  String get homeTileClasses => 'Студенты и задания';
+
+  @override
+  String get homeTileLecture => 'Слайды и показ на экране';
+
+  @override
   String get authTitle => 'Добро пожаловать';
 
   @override

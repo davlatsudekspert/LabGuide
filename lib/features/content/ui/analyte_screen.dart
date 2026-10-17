@@ -812,11 +812,9 @@ class SourceTile extends StatelessWidget {
     final url = source.url;
     final title = Text(
       '[$index] ${source.publisher} · ${source.title}',
-      style: text.titleSmall!.copyWith(
-        color: url == null ? null : p.brand,
-        decoration: url == null ? null : TextDecoration.underline,
-        decorationColor: p.brand.withValues(alpha: 0.5),
-      ),
+      // Iqtibos — mazmundan "balandroq" ko'rinmasin: 14 px, oddiy matn
+      // rangi; havola ekanini o'ngdagi ikonka aytadi.
+      style: text.bodyMedium!.copyWith(color: p.ink, height: 1.45),
     );
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8),

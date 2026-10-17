@@ -1,9 +1,10 @@
 import 'package:flutter/services.dart';
 import 'package:material_ui/material_ui.dart';
 
+import '../../l10n/gen/app_localizations.dart';
 import '../tokens.dart';
 
-/// Bosilganda 160 ms ichida biroz kichrayadigan (0.975) yuzani beradi.
+/// Bosilganda 180 ms ichida biroz kichrayadigan (0.97) yuzani beradi.
 /// Klaviatura fokusi uchun aniq halqa chiziladi. Reduced motion yoqilgan
 /// bo'lsa kichrayish o'chadi.
 class LgPressable extends StatefulWidget {
@@ -83,9 +84,9 @@ class _LgPressableState extends State<LgPressable> {
       selected: widget.selected,
       label: widget.semanticLabel,
       child: AnimatedScale(
-        scale: _pressed && enabled && !reduce ? 0.975 : 1,
+        scale: _pressed && enabled && !reduce ? LgMotion.pressScale : 1,
         duration: reduce ? Duration.zero : LgMotion.press,
-        curve: Curves.easeOut,
+        curve: LgMotion.curve,
         child: body,
       ),
     );
@@ -199,13 +200,7 @@ class LgButton extends StatelessWidget {
       button = DecoratedBox(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(LgRadius.button),
-          boxShadow: [
-            BoxShadow(
-              color: p.shadow.withValues(alpha: 0.10),
-              blurRadius: 15,
-              offset: const Offset(0, 5),
-            ),
-          ],
+          boxShadow: LgShadow.raised(context),
         ),
         child: button,
       );
@@ -214,7 +209,8 @@ class LgButton extends StatelessWidget {
   }
 }
 
-/// Karta/panel: paper fon, 23 px radius, chiziqsiz.
+/// Karta/panel: paper fon, 26 px radius, chiziqsiz — fondan qattiq
+/// chegara emas, yumshoq qatlamli soya ([LgShadow.card]) ajratadi.
 class LgPanel extends StatelessWidget {
   const LgPanel({
     super.key,
@@ -244,6 +240,7 @@ class LgPanel extends StatelessWidget {
           color: soft ? p.soft : p.paper,
           borderRadius: BorderRadius.circular(LgRadius.card),
           border: outlined ? Border.all(color: p.brand, width: 2) : null,
+          boxShadow: soft ? null : LgShadow.card(context),
         ),
         child: Padding(padding: padding, child: child),
       ),
@@ -251,7 +248,7 @@ class LgPanel extends StatelessWidget {
   }
 }
 
-/// Hero karta: soft → paper gradient, 27 px radius, yumshoq soya.
+/// Hero karta: soft → paper gradient, 30 px radius, yumshoq soya.
 /// [image] faqat dekorativ — screen reader uchun yashiriladi.
 ///
 /// [compact] — kundalik ekranlar uchun: rasm sarlavha yonida kichik
@@ -294,6 +291,7 @@ class LgHeroCard extends StatelessWidget {
               end: Alignment.bottomRight,
               colors: [p.soft, p.paper],
             ),
+            boxShadow: LgShadow.card(context),
           ),
           child: Padding(
             padding: const EdgeInsets.all(16),
@@ -306,7 +304,7 @@ class LgHeroCard extends StatelessWidget {
                     if (image != null) ...[
                       ExcludeSemantics(
                         child: ClipRRect(
-                          borderRadius: BorderRadius.circular(16),
+                          borderRadius: BorderRadius.circular(LgRadius.notice),
                           child: Image(
                             image: image!,
                             width: 72,
@@ -356,13 +354,7 @@ class LgHeroCard extends StatelessWidget {
             end: Alignment.bottomRight,
             colors: [p.soft, p.paper],
           ),
-          boxShadow: [
-            BoxShadow(
-              color: p.shadow.withValues(alpha: 0.05),
-              blurRadius: 24,
-              offset: const Offset(0, 7),
-            ),
-          ],
+          boxShadow: LgShadow.card(context),
         ),
         child: Padding(
           padding: const EdgeInsets.all(24),
@@ -537,7 +529,7 @@ class LgNotice extends StatelessWidget {
         child: DecoratedBox(
           decoration: BoxDecoration(
             color: bg,
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(LgRadius.notice),
           ),
           child: Padding(
             padding: const EdgeInsets.fromLTRB(14, 12, 16, 12),
@@ -662,7 +654,12 @@ class LgRow extends StatelessWidget {
   }
 }
 
-/// Bosh sahifadagi tezkor amal kartasi.
+/// Bosh sahifadagi tezkor amal kartasi: ikonka yumshoq "badge"da,
+/// sarlavha va bir qatorli ma'noli izoh (masalan, "eGFR, ACR, dozalar").
+///
+/// Tor katakda uzun so'z ("Kalkulyatorlar") harfma-harf bo'linmasin:
+/// [LgTwoColumnGrid] katak kengligini beradi, sarlavha shunga qarab
+/// biroz kichrayadi (kamida 13 px).
 class LgTile extends StatelessWidget {
   const LgTile({
     super.key,
@@ -679,6 +676,31 @@ class LgTile extends StatelessWidget {
   final VoidCallback onTap;
   final bool highlighted;
 
+  static const _padding = 18.0;
+
+  TextStyle _fitTitle(BuildContext context, TextStyle style) {
+    final cell = _GridCell.maybeOf(context);
+    if (cell == null) return style;
+    final available = cell - 2 * _padding;
+    final scaler = MediaQuery.textScalerOf(context);
+    var widest = 0.0;
+    for (final word in title.split(RegExp(r'\s+'))) {
+      if (word.isEmpty) continue;
+      final tp = TextPainter(
+        text: TextSpan(text: word, style: style),
+        textDirection: Directionality.of(context),
+        textScaler: scaler,
+        maxLines: 1,
+      )..layout();
+      if (tp.width > widest) widest = tp.width;
+      tp.dispose();
+    }
+    if (widest <= available || widest == 0) return style;
+    final base = style.fontSize!;
+    final size = (base * available / widest).floorToDouble().clamp(13.0, base);
+    return style.copyWith(fontSize: size);
+  }
+
   @override
   Widget build(BuildContext context) {
     final p = LgPalette.of(context);
@@ -686,13 +708,7 @@ class LgTile extends StatelessWidget {
     return DecoratedBox(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(LgRadius.card),
-        boxShadow: [
-          BoxShadow(
-            color: p.shadow.withValues(alpha: 0.04),
-            blurRadius: 15,
-            offset: const Offset(0, 3),
-          ),
-        ],
+        boxShadow: LgShadow.card(context),
       ),
       child: LgPressable(
         onTap: onTap,
@@ -701,16 +717,31 @@ class LgTile extends StatelessWidget {
         child: ConstrainedBox(
           constraints: const BoxConstraints(minHeight: 120),
           child: Padding(
-            padding: const EdgeInsets.all(18),
+            padding: const EdgeInsets.all(_padding),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                ExcludeSemantics(child: Icon(icon, color: p.brand, size: 24)),
-                const SizedBox(height: 18),
-                Text(title, style: text.titleMedium),
-                const SizedBox(height: 4),
-                Text(caption, style: text.bodySmall),
+                ExcludeSemantics(
+                  child: Container(
+                    width: 40,
+                    height: 40,
+                    decoration: BoxDecoration(
+                      color: highlighted ? p.paper : p.soft,
+                      borderRadius: BorderRadius.circular(13),
+                    ),
+                    child: Icon(icon, color: p.brand, size: 22),
+                  ),
+                ),
+                const SizedBox(height: 16),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(title, style: _fitTitle(context, text.titleMedium!)),
+                    const SizedBox(height: 4),
+                    Text(caption, style: text.bodySmall!.copyWith(height: 1.4)),
+                  ],
+                ),
               ],
             ),
           ),
@@ -718,6 +749,20 @@ class LgTile extends StatelessWidget {
       ),
     );
   }
+}
+
+/// [LgTwoColumnGrid] katagining kengligi (bolalar intrinsic o'lchovda
+/// LayoutBuilder ishlata olmaydi).
+class _GridCell extends InheritedWidget {
+  const _GridCell({required this.width, required super.child});
+
+  final double width;
+
+  static double? maybeOf(BuildContext context) =>
+      context.dependOnInheritedWidgetOfExactType<_GridCell>()?.width;
+
+  @override
+  bool updateShouldNotify(_GridCell old) => old.width != width;
 }
 
 /// Ikki ustunli to'r: balandlik kontentga qarab o'sadi (katta shriftda
@@ -734,6 +779,7 @@ class LgTwoColumnGrid extends StatelessWidget {
       builder: (context, constraints) {
         final scale = MediaQuery.textScalerOf(context).scale(16) / 16;
         final columns = constraints.maxWidth / scale < 280 ? 1 : 2;
+        final cell = (constraints.maxWidth - gap * (columns - 1)) / columns;
         final rows = <Widget>[];
         for (var i = 0; i < children.length; i += columns) {
           final slice = children.skip(i).take(columns).toList();
@@ -756,7 +802,10 @@ class LgTwoColumnGrid extends StatelessWidget {
             ),
           );
         }
-        return Column(children: rows);
+        return _GridCell(
+          width: cell,
+          child: Column(children: rows),
+        );
       },
     );
   }
@@ -924,6 +973,11 @@ enum StateKind { loading, empty, offline, error, unavailable, success }
 /// Bir xil ko'rinishdagi holat bloki: loading / empty / offline / error /
 /// unavailable / success. Ishlamaydigan amal muvaffaqiyat ko'rsatmaydi —
 /// buning uchun [StateKind.unavailable] bor.
+///
+/// Bo'sh/xato holatlarda — yumshoq "illyustratsiya" ([LgStateArt]): ikonka
+/// suzuvchi kartada, orqasida xira doiralar. Sarlavhasiz yuklanish
+/// (`title: ''`) — spinner o'rniga kontur ([LgSkeleton]): sahifa
+/// "sakramaydi", kutish qisqaroq tuyuladi.
 class LgStateView extends StatelessWidget {
   const LgStateView({
     super.key,
@@ -942,19 +996,21 @@ class LgStateView extends StatelessWidget {
   final VoidCallback? onAction;
   final Widget? secondary;
 
+  static IconData iconFor(StateKind kind) => switch (kind) {
+    StateKind.loading => Icons.hourglass_top_rounded,
+    StateKind.empty => Icons.inbox_outlined,
+    StateKind.offline => Icons.cloud_off_rounded,
+    StateKind.error => Icons.error_outline_rounded,
+    StateKind.unavailable => Icons.link_off_rounded,
+    StateKind.success => Icons.check_circle_outline_rounded,
+  };
+
   @override
   Widget build(BuildContext context) {
-    final p = LgPalette.of(context);
     final text = Theme.of(context).textTheme;
-    final IconData icon = switch (kind) {
-      StateKind.loading => Icons.hourglass_top_rounded,
-      StateKind.empty => Icons.inbox_outlined,
-      StateKind.offline => Icons.cloud_off_rounded,
-      StateKind.error => Icons.error_outline_rounded,
-      StateKind.unavailable => Icons.link_off_rounded,
-      StateKind.success => Icons.check_circle_outline_rounded,
-    };
-    final color = kind == StateKind.error ? p.danger : p.brand;
+    if (kind == StateKind.loading && title.isEmpty && actionLabel == null) {
+      return const LgSkeleton();
+    }
     return Semantics(
       container: true,
       liveRegion: true,
@@ -962,32 +1018,18 @@ class LgStateView extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 24),
         child: Column(
           children: [
-            Container(
-              width: 76,
-              height: 76,
-              decoration: BoxDecoration(
-                color: p.soft,
-                borderRadius: BorderRadius.circular(25),
-              ),
-              alignment: Alignment.center,
-              child: kind == StateKind.loading
-                  ? SizedBox.square(
-                      dimension: 28,
-                      child: CircularProgressIndicator(
-                        strokeWidth: 2.5,
-                        color: color,
-                      ),
-                    )
-                  : ExcludeSemantics(child: Icon(icon, size: 34, color: color)),
-            ),
+            LgStateArt(kind: kind),
             const SizedBox(height: 18),
             Text(title, textAlign: TextAlign.center, style: text.titleLarge),
             if (message != null) ...[
               const SizedBox(height: 8),
-              Text(
-                message!,
-                textAlign: TextAlign.center,
-                style: text.bodyMedium,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8),
+                child: Text(
+                  message!,
+                  textAlign: TextAlign.center,
+                  style: text.bodyMedium,
+                ),
               ),
             ],
             if (actionLabel != null) ...[
@@ -998,6 +1040,183 @@ class LgStateView extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+/// Holat bloki uchun dekorativ kompozitsiya: xira ikki doira, uchta
+/// "molekula" nuqtasi va o'rtada yumshoq soyali karta ichida ikonka.
+/// Faqat shakllar — rasm yuklanmaydi, tungi rejimda ham ranglar tokenlardan.
+class LgStateArt extends StatelessWidget {
+  const LgStateArt({super.key, required this.kind});
+
+  final StateKind kind;
+
+  @override
+  Widget build(BuildContext context) {
+    final p = LgPalette.of(context);
+    final accent = kind == StateKind.error ? p.danger : p.brand;
+    Widget dot(double size, double alpha) => Container(
+      width: size,
+      height: size,
+      decoration: BoxDecoration(
+        color: accent.withValues(alpha: alpha),
+        shape: BoxShape.circle,
+      ),
+    );
+    return ExcludeSemantics(
+      child: SizedBox(
+        width: 132,
+        height: 112,
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            Container(
+              width: 112,
+              height: 112,
+              decoration: BoxDecoration(
+                color: p.soft.withValues(alpha: 0.55),
+                shape: BoxShape.circle,
+              ),
+            ),
+            Container(
+              width: 84,
+              height: 84,
+              decoration: BoxDecoration(color: p.soft, shape: BoxShape.circle),
+            ),
+            Positioned(top: 10, right: 12, child: dot(12, 0.28)),
+            Positioned(bottom: 16, left: 10, child: dot(9, 0.2)),
+            Positioned(top: 26, left: 18, child: dot(6, 0.16)),
+            Container(
+              width: 60,
+              height: 60,
+              decoration: BoxDecoration(
+                color: p.paper,
+                borderRadius: BorderRadius.circular(20),
+                boxShadow: LgShadow.raised(context),
+              ),
+              alignment: Alignment.center,
+              child: kind == StateKind.loading
+                  ? SizedBox.square(
+                      dimension: 26,
+                      child: CircularProgressIndicator(
+                        strokeWidth: 2.5,
+                        color: accent,
+                      ),
+                    )
+                  : Icon(LgStateView.iconFor(kind), size: 28, color: accent),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+/// Yuklanish konturi (skeleton): ro'yxat qatorlariga o'xshash xira
+/// shakllar. Animatsiyasiz — reduced motion bilan ham, testdagi
+/// `pumpAndSettle` bilan ham muammo yo'q. Screen reader "Yuklanmoqda…"
+/// eshitadi.
+class LgSkeleton extends StatelessWidget {
+  const LgSkeleton({super.key, this.rows = 3});
+
+  final int rows;
+
+  @override
+  Widget build(BuildContext context) {
+    final p = LgPalette.of(context);
+    final label = Localizations.of<AppLocalizations>(
+      context,
+      AppLocalizations,
+    )?.stateLoading;
+    final fill = p.line.withValues(alpha: 0.7);
+    Widget bar(double factor, double height) => FractionallySizedBox(
+      alignment: Alignment.centerLeft,
+      widthFactor: factor,
+      child: Container(
+        height: height,
+        decoration: BoxDecoration(
+          color: fill,
+          borderRadius: BorderRadius.circular(height / 2),
+        ),
+      ),
+    );
+    return Semantics(
+      container: true,
+      liveRegion: true,
+      label: label,
+      child: ExcludeSemantics(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 12),
+          child: Column(
+            children: [
+              for (var i = 0; i < rows; i++)
+                Container(
+                  margin: const EdgeInsets.symmetric(vertical: 6),
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    color: p.paper,
+                    borderRadius: BorderRadius.circular(LgRadius.card),
+                    boxShadow: LgShadow.card(context),
+                  ),
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 42,
+                        height: 42,
+                        decoration: BoxDecoration(
+                          color: p.soft,
+                          shape: BoxShape.circle,
+                        ),
+                      ),
+                      const SizedBox(width: 14),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            bar(i.isEven ? 0.7 : 0.55, 12),
+                            const SizedBox(height: 10),
+                            bar(i.isEven ? 0.45 : 0.6, 10),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// Mayin kirish: bola birinchi marta chizilganda [LgMotion.enter] davomida
+/// xiradan paydo bo'lib, 12 px pastdan ko'tariladi. [delay] — ketma-ket
+/// (stagger) elementlar uchun ulush (0..1, umumiy davomiylikdan).
+/// Reduced motion yoqilgan bo'lsa — darhol, animatsiyasiz.
+class LgFadeIn extends StatelessWidget {
+  const LgFadeIn({super.key, required this.child, this.delay = 0});
+
+  final Widget child;
+  final double delay;
+
+  @override
+  Widget build(BuildContext context) {
+    if (LgMotion.reduced(context)) return child;
+    final start = delay.clamp(0.0, 0.8);
+    return TweenAnimationBuilder<double>(
+      tween: Tween(begin: 0, end: 1),
+      duration: LgMotion.enter * (1 + start),
+      curve: Interval(start / (1 + start), 1, curve: LgMotion.curve),
+      builder: (context, t, child) => Opacity(
+        opacity: t,
+        child: Transform.translate(
+          offset: Offset(0, 12 * (1 - t)),
+          child: child,
+        ),
+      ),
+      child: child,
     );
   }
 }

@@ -238,7 +238,10 @@ class _LgPageState extends State<LgPage> {
                             horizontal,
                             pinned ? 4 : 0,
                             horizontal,
-                            (insideShell ? 16 : 32) + bottomInset,
+                            // Shell ichida: panel (Lab tugmasi bilan) ustida
+                            // 24 px bo'sh joy — oxirgi tugma panelga
+                            // "yopishib" turmaydi.
+                            (insideShell ? 24 : 32) + bottomInset,
                           ),
                           // Birinchi o'rin doim band: qaror o'zgarganda
                           // kontent elementlarining indeksi (va holati —
@@ -464,6 +467,8 @@ class _TopBar extends StatelessWidget {
                 ),
               ),
             ),
+            // Yig'ilgan uzun sarlavha til tugmasiga "yopishmasin".
+            const SizedBox(width: 8),
             const _LanguageButton(),
             if (showProfile)
               _IconCircle(

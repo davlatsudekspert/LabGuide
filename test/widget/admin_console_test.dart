@@ -10,6 +10,7 @@ import 'package:labguide/app/app_scope.dart';
 import 'package:labguide/core/backend/admin_console.dart';
 import 'package:labguide/core/backend/backend_models.dart';
 import 'package:labguide/core/contact.dart';
+import 'package:labguide/design/widgets/lg_widgets.dart';
 import 'package:labguide/features/admin/admin_console_screens.dart';
 import 'package:labguide/features/settings/settings_controller.dart';
 import 'package:labguide/l10n/gen/app_localizations.dart';
@@ -306,7 +307,8 @@ void main() {
     routerOf(tester).go('/profile/admin/complaints');
     await tester.pump();
     await tester.pump();
-    expect(find.byType(CircularProgressIndicator), findsWidgets);
+    // Sarlavhasiz yuklanish — spinner emas, kontur (skeleton).
+    expect(find.byType(LgSkeleton), findsWidgets);
     lab.failNext = const BackendException(BackendFailure.network);
     lab.hold!.complete();
     lab.hold = null;
