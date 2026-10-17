@@ -8109,4 +8109,83 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get searchSectionLibrary => 'O‘quv materiallari';
+
+  @override
+  String get diffAssessTitle => 'Me’yor bilan solishtirish';
+
+  @override
+  String get diffAssessNote =>
+      'Bu tashxis emas: natija blanka me’yori bilan solishtirildi va nimaga ishora qilishi mumkinligi ko‘rsatildi. Xulosani shifokor beradi.';
+
+  @override
+  String get diffAssessNeedWbc =>
+      'Mutlaq sonlar bo‘yicha baholash uchun leykotsitlar sonini (WBC) kiriting — hozir faqat tayoqcha yadrolilar foizi baholandi.';
+
+  @override
+  String get diffAssessAllNormal => 'Barcha ko‘rsatkichlar me’yor oralig‘ida.';
+
+  @override
+  String get diffFlagHigh => 'Yuqori';
+
+  @override
+  String get diffFlagLow => 'Past';
+
+  @override
+  String get diffFlagNormal => 'Me’yorda';
+
+  @override
+  String get diffMeasureNeutrophils => 'Neytrofillar (jami)';
+
+  @override
+  String get diffMeasureLymphocytes => 'Limfotsitlar';
+
+  @override
+  String get diffMeasureMonocytes => 'Monotsitlar';
+
+  @override
+  String get diffMeasureEosinophils => 'Eozinofillar';
+
+  @override
+  String get diffMeasureBasophils => 'Bazofillar';
+
+  @override
+  String get diffMeasureBands => 'Tayoqcha yadroli neytrofillar';
+
+  @override
+  String diffAssessRange(String range) {
+    return 'me’yor $range';
+  }
+
+  @override
+  String diffAssessMaySuggest(String finding) {
+    return 'Ishora qilishi mumkin: $finding';
+  }
+
+  @override
+  String get diffAssessReferBody =>
+      'Blast yoki noma’lum hujayra, og‘ir neytropeniya (< 0,5 ×10⁹/L) yoki yaqqol eozinofiliya (> 1,5 ×10⁹/L): natija va surtmani shifokor yoki gematologga zudlik bilan ko‘rsating.';
+
+  @override
+  String get diffLimitsTitle => 'Blanka me’yorlari';
+
+  @override
+  String get diffLimitsSub =>
+      'Laboratoriyangiz blankasidagi oraliqlarni kiriting — baholash shular bo‘yicha qilinadi. Pastki chegara bo‘sh qolsa, tekshirilmaydi.';
+
+  @override
+  String get diffLimitsLow => 'Pastki chegara';
+
+  @override
+  String get diffLimitsHigh => 'Yuqori chegara';
+
+  @override
+  String get diffLimitsInvalid =>
+      'Noto‘g‘ri oraliq: pastki chegara yuqoridan kichik bo‘lsin.';
+
+  @override
+  String get diffLimitsReset => 'Manbadagi qiymatlarga qaytarish';
+
+  @override
+  String get diffLimitsSourceNote =>
+      'Sukut qiymatlari — kattalar uchun 95 % oraliq (Harrison’s Manual of Medicine, 64-1-jadval); tayoqchalar — Lyubina 1984, 6-jadval. Bolalarda va ayrim etnik guruhlarda (masalan, Duffy-manfiy) me’yor farq qiladi.';
 }

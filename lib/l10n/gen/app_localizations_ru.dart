@@ -8236,4 +8236,83 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get searchSectionLibrary => 'Учебные материалы';
+
+  @override
+  String get diffAssessTitle => 'Сравнение с нормой';
+
+  @override
+  String get diffAssessNote =>
+      'Это не диагноз: результат сопоставлен с нормой бланка и показано, на что он может указывать. Заключение даёт врач.';
+
+  @override
+  String get diffAssessNeedWbc =>
+      'Для оценки по абсолютным числам введите количество лейкоцитов (WBC) — сейчас оценена только доля палочкоядерных.';
+
+  @override
+  String get diffAssessAllNormal => 'Все показатели в пределах нормы.';
+
+  @override
+  String get diffFlagHigh => 'Повышено';
+
+  @override
+  String get diffFlagLow => 'Понижено';
+
+  @override
+  String get diffFlagNormal => 'В норме';
+
+  @override
+  String get diffMeasureNeutrophils => 'Нейтрофилы (всего)';
+
+  @override
+  String get diffMeasureLymphocytes => 'Лимфоциты';
+
+  @override
+  String get diffMeasureMonocytes => 'Моноциты';
+
+  @override
+  String get diffMeasureEosinophils => 'Эозинофилы';
+
+  @override
+  String get diffMeasureBasophils => 'Базофилы';
+
+  @override
+  String get diffMeasureBands => 'Палочкоядерные нейтрофилы';
+
+  @override
+  String diffAssessRange(String range) {
+    return 'норма $range';
+  }
+
+  @override
+  String diffAssessMaySuggest(String finding) {
+    return 'Может указывать на: $finding';
+  }
+
+  @override
+  String get diffAssessReferBody =>
+      'Бласты или неопознанные клетки, тяжёлая нейтропения (< 0,5 ×10⁹/л) или выраженная эозинофилия (> 1,5 ×10⁹/л): срочно покажите результат и мазок врачу или гематологу.';
+
+  @override
+  String get diffLimitsTitle => 'Нормы бланка';
+
+  @override
+  String get diffLimitsSub =>
+      'Введите интервалы из бланка вашей лаборатории — оценка будет по ним. Если нижняя граница пуста, она не проверяется.';
+
+  @override
+  String get diffLimitsLow => 'Нижняя граница';
+
+  @override
+  String get diffLimitsHigh => 'Верхняя граница';
+
+  @override
+  String get diffLimitsInvalid =>
+      'Неверный интервал: нижняя граница должна быть меньше верхней.';
+
+  @override
+  String get diffLimitsReset => 'Вернуть значения из источника';
+
+  @override
+  String get diffLimitsSourceNote =>
+      'Значения по умолчанию — 95 % интервал для взрослых (Harrison’s Manual of Medicine, табл. 64-1); палочкоядерные — Любина 1984, табл. 6. У детей и в некоторых этнических группах (например, Duffy-отрицательных) норма другая.';
 }

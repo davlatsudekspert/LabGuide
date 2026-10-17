@@ -14187,6 +14187,144 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Learning materials'**
   String get searchSectionLibrary;
+
+  /// No description provided for @diffAssessTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Compared with reference'**
+  String get diffAssessTitle;
+
+  /// No description provided for @diffAssessNote.
+  ///
+  /// In en, this message translates to:
+  /// **'This is not a diagnosis: the result is compared with the report’s reference range and shows what it may point to. The clinician draws the conclusion.'**
+  String get diffAssessNote;
+
+  /// No description provided for @diffAssessNeedWbc.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the white cell count (WBC) to assess absolute counts — only the band percentage was assessed.'**
+  String get diffAssessNeedWbc;
+
+  /// No description provided for @diffAssessAllNormal.
+  ///
+  /// In en, this message translates to:
+  /// **'All values are within the reference range.'**
+  String get diffAssessAllNormal;
+
+  /// No description provided for @diffFlagHigh.
+  ///
+  /// In en, this message translates to:
+  /// **'High'**
+  String get diffFlagHigh;
+
+  /// No description provided for @diffFlagLow.
+  ///
+  /// In en, this message translates to:
+  /// **'Low'**
+  String get diffFlagLow;
+
+  /// No description provided for @diffFlagNormal.
+  ///
+  /// In en, this message translates to:
+  /// **'Normal'**
+  String get diffFlagNormal;
+
+  /// No description provided for @diffMeasureNeutrophils.
+  ///
+  /// In en, this message translates to:
+  /// **'Neutrophils (total)'**
+  String get diffMeasureNeutrophils;
+
+  /// No description provided for @diffMeasureLymphocytes.
+  ///
+  /// In en, this message translates to:
+  /// **'Lymphocytes'**
+  String get diffMeasureLymphocytes;
+
+  /// No description provided for @diffMeasureMonocytes.
+  ///
+  /// In en, this message translates to:
+  /// **'Monocytes'**
+  String get diffMeasureMonocytes;
+
+  /// No description provided for @diffMeasureEosinophils.
+  ///
+  /// In en, this message translates to:
+  /// **'Eosinophils'**
+  String get diffMeasureEosinophils;
+
+  /// No description provided for @diffMeasureBasophils.
+  ///
+  /// In en, this message translates to:
+  /// **'Basophils'**
+  String get diffMeasureBasophils;
+
+  /// No description provided for @diffMeasureBands.
+  ///
+  /// In en, this message translates to:
+  /// **'Band neutrophils'**
+  String get diffMeasureBands;
+
+  /// No description provided for @diffAssessRange.
+  ///
+  /// In en, this message translates to:
+  /// **'reference {range}'**
+  String diffAssessRange(String range);
+
+  /// No description provided for @diffAssessMaySuggest.
+  ///
+  /// In en, this message translates to:
+  /// **'May point to: {finding}'**
+  String diffAssessMaySuggest(String finding);
+
+  /// No description provided for @diffAssessReferBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Blasts or unidentified cells, severe neutropenia (< 0.5 ×10⁹/L) or marked eosinophilia (> 1.5 ×10⁹/L): show the result and the smear to a clinician or haematologist urgently.'**
+  String get diffAssessReferBody;
+
+  /// No description provided for @diffLimitsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Report reference ranges'**
+  String get diffLimitsTitle;
+
+  /// No description provided for @diffLimitsSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the ranges printed on your laboratory’s report — assessment uses them. An empty lower limit is not checked.'**
+  String get diffLimitsSub;
+
+  /// No description provided for @diffLimitsLow.
+  ///
+  /// In en, this message translates to:
+  /// **'Lower limit'**
+  String get diffLimitsLow;
+
+  /// No description provided for @diffLimitsHigh.
+  ///
+  /// In en, this message translates to:
+  /// **'Upper limit'**
+  String get diffLimitsHigh;
+
+  /// No description provided for @diffLimitsInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid range: the lower limit must be below the upper.'**
+  String get diffLimitsInvalid;
+
+  /// No description provided for @diffLimitsReset.
+  ///
+  /// In en, this message translates to:
+  /// **'Restore source values'**
+  String get diffLimitsReset;
+
+  /// No description provided for @diffLimitsSourceNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Defaults are adult 95 % intervals (Harrison’s Manual of Medicine, Table 64-1); bands — Lyubina 1984, Table 6. Ranges differ in children and in some ethnic groups (e.g. Duffy-negative).'**
+  String get diffLimitsSourceNote;
 }
 
 class _AppLocalizationsDelegate

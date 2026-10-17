@@ -8216,4 +8216,84 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get searchSectionLibrary => 'Learning materials';
+
+  @override
+  String get diffAssessTitle => 'Compared with reference';
+
+  @override
+  String get diffAssessNote =>
+      'This is not a diagnosis: the result is compared with the report’s reference range and shows what it may point to. The clinician draws the conclusion.';
+
+  @override
+  String get diffAssessNeedWbc =>
+      'Enter the white cell count (WBC) to assess absolute counts — only the band percentage was assessed.';
+
+  @override
+  String get diffAssessAllNormal =>
+      'All values are within the reference range.';
+
+  @override
+  String get diffFlagHigh => 'High';
+
+  @override
+  String get diffFlagLow => 'Low';
+
+  @override
+  String get diffFlagNormal => 'Normal';
+
+  @override
+  String get diffMeasureNeutrophils => 'Neutrophils (total)';
+
+  @override
+  String get diffMeasureLymphocytes => 'Lymphocytes';
+
+  @override
+  String get diffMeasureMonocytes => 'Monocytes';
+
+  @override
+  String get diffMeasureEosinophils => 'Eosinophils';
+
+  @override
+  String get diffMeasureBasophils => 'Basophils';
+
+  @override
+  String get diffMeasureBands => 'Band neutrophils';
+
+  @override
+  String diffAssessRange(String range) {
+    return 'reference $range';
+  }
+
+  @override
+  String diffAssessMaySuggest(String finding) {
+    return 'May point to: $finding';
+  }
+
+  @override
+  String get diffAssessReferBody =>
+      'Blasts or unidentified cells, severe neutropenia (< 0.5 ×10⁹/L) or marked eosinophilia (> 1.5 ×10⁹/L): show the result and the smear to a clinician or haematologist urgently.';
+
+  @override
+  String get diffLimitsTitle => 'Report reference ranges';
+
+  @override
+  String get diffLimitsSub =>
+      'Enter the ranges printed on your laboratory’s report — assessment uses them. An empty lower limit is not checked.';
+
+  @override
+  String get diffLimitsLow => 'Lower limit';
+
+  @override
+  String get diffLimitsHigh => 'Upper limit';
+
+  @override
+  String get diffLimitsInvalid =>
+      'Invalid range: the lower limit must be below the upper.';
+
+  @override
+  String get diffLimitsReset => 'Restore source values';
+
+  @override
+  String get diffLimitsSourceNote =>
+      'Defaults are adult 95 % intervals (Harrison’s Manual of Medicine, Table 64-1); bands — Lyubina 1984, Table 6. Ranges differ in children and in some ethnic groups (e.g. Duffy-negative).';
 }

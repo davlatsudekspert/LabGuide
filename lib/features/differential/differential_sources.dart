@@ -96,6 +96,40 @@ abstract final class DiffSources {
     url: null,
   );
 
+  /// Harrison's Manual of Medicine — "Leukocytosis and Leukopenia" bobi,
+  /// 64-1-jadval (leykotsitlar: o'rtacha va 95 % oraliq, hujayra/µl).
+  /// Leykoformula bahosining sukut me'yorlari shu jadvaldan.
+  static const harrisonManual = CalcSource(
+    id: 'diff-harrison-manual-64-1',
+    citation:
+        "Jameson JL, Kasper DL, Longo DL, et al., eds. Harrison's Manual of "
+        'Medicine. McGraw Hill. Chapter: Leukocytosis and Leukopenia, '
+        'Table 64-1',
+    url:
+        'https://harrisons.unboundmedicine.com/harrisons/view/'
+        'Harrisons-Manual-of-Medicine/623588/5.0/',
+  );
+
+  /// MSD Manual Professional — Neutropenia (yangilangan 2026-04):
+  /// pastki chegara 1500/mcL, og'irlik darajalari.
+  static const msdNeutropenia = CalcSource(
+    id: 'diff-msd-neutropenia',
+    citation: 'MSD Manual Professional Edition. Neutropenia. Updated 2026',
+    url:
+        'https://www.msdmanuals.com/professional/hematology-and-oncology/'
+        'leukopenias/neutropenia',
+  );
+
+  /// MSD Manual Professional — Eosinophilia (yangilangan 2026-05):
+  /// > 500/mcL; yengil / o'rtacha / og'ir darajalar.
+  static const msdEosinophilia = CalcSource(
+    id: 'diff-msd-eosinophilia',
+    citation: 'MSD Manual Professional Edition. Eosinophilia. Updated 2026',
+    url:
+        'https://www.msdmanuals.com/professional/hematology-and-oncology/'
+        'eosinophilic-disorders/eosinophilia',
+  );
+
   static const all = [
     who2003,
     medlineDiff,
@@ -106,6 +140,9 @@ abstract final class DiffSources {
     oskarsson2022,
     zhao2024,
     lyubina1984,
+    harrisonManual,
+    msdNeutropenia,
+    msdEosinophilia,
   ];
 }
 

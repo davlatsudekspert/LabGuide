@@ -15,6 +15,7 @@ import '../microscopy/microscopy_widgets.dart';
 import '../tools/calc_info.dart';
 import '../tools/clinical_calc_screens.dart';
 import '../tools/tool_screens.dart';
+import 'diff_assessment_screens.dart';
 import 'diff_eyes_free.dart';
 import 'differential_content.dart';
 import 'differential_controller.dart';
@@ -957,6 +958,7 @@ class _DiffCounterScreenState extends State<DiffCounterScreen> {
               Text(l.diffTapHint, style: text.bodyMedium)
             else ...[
               DiffResultTable(record: record),
+              DiffAssessmentPanel(record: record, base: _base),
               if (record.wbc == null)
                 Padding(
                   padding: const EdgeInsets.only(top: 6),
@@ -1523,6 +1525,7 @@ class DiffRecordScreen extends StatelessWidget {
           subtitle: r.label.isEmpty ? l.diffResultTitle : r.label,
           children: [
             DiffResultTable(record: r),
+            DiffAssessmentPanel(record: r, base: _base),
             if (r.wbc == null)
               Padding(
                 padding: const EdgeInsets.only(top: 6),

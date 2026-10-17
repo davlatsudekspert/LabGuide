@@ -16,6 +16,7 @@ import '../features/spermogram/spermogram_screens.dart';
 import '../features/daily/daily_screens.dart';
 import '../features/differential/differential_entry_points.dart';
 import '../features/differential/differential_quiz.dart';
+import '../features/differential/diff_assessment_screens.dart';
 import '../features/differential/differential_screens.dart';
 import '../features/home/global_search.dart';
 import '../features/home/home_screen.dart';
@@ -485,6 +486,10 @@ GoRouter buildRouter(
                         path: 'interpret',
                         builder: (context, state) =>
                             const DiffInterpretScreen(),
+                      ),
+                      GoRoute(
+                        path: 'limits',
+                        builder: (context, state) => const DiffLimitsScreen(),
                       ),
                       GoRoute(
                         path: 'technique',

@@ -67,6 +67,9 @@ abstract final class StoreKeys {
   /// Leykoformula: oddiy hisoblagichda tovush/tebranish tugmalari.
   static const differentialFeedback = 'differential.feedback';
 
+  /// Leykoformula: laboratoriya blankasidagi me'yorlar (baholash uchun).
+  static const differentialLimits = 'differential.limits';
+
   /// Kunlik savol: bugungi to'plam, ketma-ketlik (kunlar, urug'), eslatma.
   static const dailyToday = 'daily.today';
   static const dailyStreak = 'daily.streak';
@@ -113,6 +116,7 @@ abstract final class StoreKeys {
     differentialHistory,
     differentialEyesFree,
     differentialFeedback,
+    differentialLimits,
     dailyToday,
     dailyStreak,
     dailyReminder,

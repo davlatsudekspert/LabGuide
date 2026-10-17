@@ -4660,5 +4660,42 @@
   "homeSearchHint": "Search tests, instruments or topics",
   "searchTitle": "Search",
   "searchPrompt": "Type a name, abbreviation or synonym — in Uzbek (Latin or Cyrillic), Russian or English.",
-  "searchSectionLibrary": "Learning materials"
+  "searchSectionLibrary": "Learning materials",
+  "diffAssessTitle": "Compared with reference",
+  "diffAssessNote": "This is not a diagnosis: the result is compared with the report’s reference range and shows what it may point to. The clinician draws the conclusion.",
+  "diffAssessNeedWbc": "Enter the white cell count (WBC) to assess absolute counts — only the band percentage was assessed.",
+  "diffAssessAllNormal": "All values are within the reference range.",
+  "diffFlagHigh": "High",
+  "diffFlagLow": "Low",
+  "diffFlagNormal": "Normal",
+  "diffMeasureNeutrophils": "Neutrophils (total)",
+  "diffMeasureLymphocytes": "Lymphocytes",
+  "diffMeasureMonocytes": "Monocytes",
+  "diffMeasureEosinophils": "Eosinophils",
+  "diffMeasureBasophils": "Basophils",
+  "diffMeasureBands": "Band neutrophils",
+  "diffAssessRange": "reference {range}",
+  "diffAssessMaySuggest": "May point to: {finding}",
+  "diffAssessReferBody": "Blasts or unidentified cells, severe neutropenia (< 0.5 ×10⁹/L) or marked eosinophilia (> 1.5 ×10⁹/L): show the result and the smear to a clinician or haematologist urgently.",
+  "diffLimitsTitle": "Report reference ranges",
+  "diffLimitsSub": "Enter the ranges printed on your laboratory’s report — assessment uses them. An empty lower limit is not checked.",
+  "diffLimitsLow": "Lower limit",
+  "diffLimitsHigh": "Upper limit",
+  "diffLimitsInvalid": "Invalid range: the lower limit must be below the upper.",
+  "diffLimitsReset": "Restore source values",
+  "diffLimitsSourceNote": "Defaults are adult 95 % intervals (Harrison’s Manual of Medicine, Table 64-1); bands — Lyubina 1984, Table 6. Ranges differ in children and in some ethnic groups (e.g. Duffy-negative).",
+  "@diffAssessRange": {
+    "placeholders": {
+      "range": {
+        "type": "String"
+      }
+    }
+  },
+  "@diffAssessMaySuggest": {
+    "placeholders": {
+      "finding": {
+        "type": "String"
+      }
+    }
+  }
 }

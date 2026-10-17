@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 
 import '../../core/storage/kv_store.dart';
+import 'diff_assessment.dart';
 import 'diff_eyes_free_settings.dart';
 import 'differential_content.dart';
 
@@ -92,6 +93,26 @@ class DifferentialController extends ChangeNotifier {
   EyesFreeSettings _eyesFree = const EyesFreeSettings();
   bool _counterSound = false;
   bool _counterHaptics = true;
+  Map<DiffMeasure, DiffLimit> _limits = Map.of(diffDefaultLimits);
+
+  /// Natijani baholash me'yorlari (laboratoriya blankasi bo'yicha).
+  Map<DiffMeasure, DiffLimit> get limits => Map.unmodifiable(_limits);
+
+  Future<void> setLimit(DiffMeasure m, DiffLimit limit) async {
+    _limits[m] = limit;
+    notifyListeners();
+    await _store.setString(
+      StoreKeys.differentialLimits,
+      encodeDiffLimits(_limits),
+    );
+  }
+
+  /// Sukut (manbadagi) me'yorlarga qaytarish.
+  Future<void> resetLimits() async {
+    _limits = Map.of(diffDefaultLimits);
+    notifyListeners();
+    await _store.remove(StoreKeys.differentialLimits);
+  }
 
   /// Oddiy hisoblagich: har bosishda tovush (sukut: o'chiq).
   bool get counterSound => _counterSound;
@@ -237,6 +258,7 @@ class DifferentialController extends ChangeNotifier {
     _eyesFree = const EyesFreeSettings();
     _counterSound = false;
     _counterHaptics = true;
+    _limits = Map.of(diffDefaultLimits);
     notifyListeners();
   }
 
@@ -258,6 +280,7 @@ class DifferentialController extends ChangeNotifier {
   );
 
   void _load() {
+    _limits = decodeDiffLimits(_store.getString(StoreKeys.differentialLimits));
     _eyesFree = decodeEyesFree(
       _store.getString(StoreKeys.differentialEyesFree),
     );
