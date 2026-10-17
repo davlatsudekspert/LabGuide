@@ -8544,4 +8544,178 @@ class AppLocalizationsEn extends AppLocalizations {
   String payDeleteAccountNote(String store) {
     return 'Deleting your account doesn’t cancel your subscription: cancel it in your $store settings.';
   }
+
+  @override
+  String get autoPresTitle => 'Automatic presentation';
+
+  @override
+  String get autoPresEntrySub => 'Slides built from the app’s sourced content';
+
+  @override
+  String get autoPresPickerSub =>
+      'Pick a topic or tests. Slides are assembled only from sourced content already in the app — nothing is made up.';
+
+  @override
+  String get autoPresLanguageNote =>
+      'Slides use the app language. Content missing in this language is skipped — languages are never mixed.';
+
+  @override
+  String get autoPresModeTopic => 'By topic';
+
+  @override
+  String get autoPresModeTests => 'By tests';
+
+  @override
+  String get autoPresSearch => 'Search tests';
+
+  @override
+  String get autoPresSearchHint => 'Name, abbreviation or synonym';
+
+  @override
+  String autoPresSelectedCount(int count, int max) {
+    return 'Selected: $count of $max';
+  }
+
+  @override
+  String autoPresLimitReached(int max) {
+    return 'No more than $max tests per presentation.';
+  }
+
+  @override
+  String get autoPresNoResults => 'No tests found.';
+
+  @override
+  String get autoPresOptQuiz => 'Question slides';
+
+  @override
+  String get autoPresOptQuizSub =>
+      'Practice questions of the selected content; the answer opens on tap.';
+
+  @override
+  String get autoPresOptGeneral => 'General preanalytics';
+
+  @override
+  String get autoPresOptGeneralSub =>
+      'Order of draw, hemolysis, tourniquet (WHO, 2010).';
+
+  @override
+  String get autoPresPreview => 'Preview slides';
+
+  @override
+  String get autoPresPickFirst => 'Pick a topic or at least one test first.';
+
+  @override
+  String get autoPresPreviewTitle => 'Slide preview';
+
+  @override
+  String get autoPresPreviewSub => 'Reorder or remove slides, then start.';
+
+  @override
+  String autoPresSlideCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count slides',
+      one: '1 slide',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get autoPresStart => 'Start';
+
+  @override
+  String get autoPresMoveUp => 'Move up';
+
+  @override
+  String get autoPresMoveDown => 'Move down';
+
+  @override
+  String get autoPresRemove => 'Remove slide';
+
+  @override
+  String get autoPresRestore => 'Restore removed slides';
+
+  @override
+  String get autoPresSourcesPinned =>
+      'Sources slide — built automatically from the slides you keep';
+
+  @override
+  String get autoPresEmptyTitle => 'Not enough sourced content';
+
+  @override
+  String get autoPresEmptyBody =>
+      'The app has no sourced content for this selection in the current language, so no slides were made. Nothing is filled in with made-up text.';
+
+  @override
+  String autoPresNoticeStructureOnly(String name) {
+    return '$name: the card has no written content yet — skipped.';
+  }
+
+  @override
+  String autoPresNoticeNoContent(String name) {
+    return '$name: no sourced text to build slides from — skipped.';
+  }
+
+  @override
+  String autoPresNoticeLang(int count) {
+    return 'Not available in this language, so skipped: $count. Languages are never mixed.';
+  }
+
+  @override
+  String get autoPresDeckTitleTests => 'Laboratory tests';
+
+  @override
+  String autoPresMoreItems(int count) {
+    return '+$count more';
+  }
+
+  @override
+  String autoPresPackSource(String version) {
+    return 'LabGuide, content pack $version — slides are assembled automatically from the cited cards';
+  }
+
+  @override
+  String autoPresSourceLine(String text) {
+    return 'Source: $text';
+  }
+
+  @override
+  String get autoPresColIndicator => 'Indicator';
+
+  @override
+  String get autoPresColValue => 'Value';
+
+  @override
+  String get autoPresColTarget => 'Target';
+
+  @override
+  String get autoPresColTube => 'Tube';
+
+  @override
+  String get autoPresColCap => 'Cap colour';
+
+  @override
+  String get autoPresShowAnswer => 'Show answer';
+
+  @override
+  String get autoPresHideAnswer => 'Hide answer';
+
+  @override
+  String get autoPresAnswerLabel => 'Answer';
+
+  @override
+  String get autoPresTplTitle => 'Title';
+
+  @override
+  String get autoPresTplBullets => 'Points';
+
+  @override
+  String get autoPresTplTable => 'Table';
+
+  @override
+  String get autoPresTplFigure => 'Image';
+
+  @override
+  String get autoPresTplQa => 'Question';
 }

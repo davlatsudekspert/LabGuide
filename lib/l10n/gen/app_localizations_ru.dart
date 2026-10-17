@@ -8574,4 +8574,183 @@ class AppLocalizationsRu extends AppLocalizations {
   String payDeleteAccountNote(String store) {
     return 'Подписка не отменяется вместе с аккаунтом: отмените её в настройках $store.';
   }
+
+  @override
+  String get autoPresTitle => 'Автоматическая презентация';
+
+  @override
+  String get autoPresEntrySub =>
+      'Слайды из материалов приложения с источниками';
+
+  @override
+  String get autoPresPickerSub =>
+      'Выберите тему или анализы. Слайды собираются только из материалов приложения с источниками — ничего не выдумывается.';
+
+  @override
+  String get autoPresLanguageNote =>
+      'Слайды создаются на языке приложения. Материалы, которых нет на этом языке, пропускаются — языки не смешиваются.';
+
+  @override
+  String get autoPresModeTopic => 'По теме';
+
+  @override
+  String get autoPresModeTests => 'По анализам';
+
+  @override
+  String get autoPresSearch => 'Поиск анализов';
+
+  @override
+  String get autoPresSearchHint => 'Название, сокращение или синоним';
+
+  @override
+  String autoPresSelectedCount(int count, int max) {
+    return 'Выбрано: $count из $max';
+  }
+
+  @override
+  String autoPresLimitReached(int max) {
+    return 'Не больше $max анализов в одной презентации.';
+  }
+
+  @override
+  String get autoPresNoResults => 'Анализы не найдены.';
+
+  @override
+  String get autoPresOptQuiz => 'Слайды с вопросами';
+
+  @override
+  String get autoPresOptQuizSub =>
+      'Вопросы по выбранным материалам; ответ открывается по нажатию.';
+
+  @override
+  String get autoPresOptGeneral => 'Общая преаналитика';
+
+  @override
+  String get autoPresOptGeneralSub =>
+      'Порядок взятия, гемолиз, жгут (ВОЗ, 2010).';
+
+  @override
+  String get autoPresPreview => 'Просмотреть слайды';
+
+  @override
+  String get autoPresPickFirst =>
+      'Сначала выберите тему или хотя бы один анализ.';
+
+  @override
+  String get autoPresPreviewTitle => 'Предпросмотр слайдов';
+
+  @override
+  String get autoPresPreviewSub =>
+      'Измените порядок или уберите слайды, затем начните.';
+
+  @override
+  String autoPresSlideCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count слайда',
+      many: '$count слайдов',
+      few: '$count слайда',
+      one: '$count слайд',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get autoPresStart => 'Начать';
+
+  @override
+  String get autoPresMoveUp => 'Выше';
+
+  @override
+  String get autoPresMoveDown => 'Ниже';
+
+  @override
+  String get autoPresRemove => 'Убрать слайд';
+
+  @override
+  String get autoPresRestore => 'Вернуть убранные слайды';
+
+  @override
+  String get autoPresSourcesPinned =>
+      'Слайд с источниками — собирается автоматически из оставшихся слайдов';
+
+  @override
+  String get autoPresEmptyTitle => 'Недостаточно материалов с источниками';
+
+  @override
+  String get autoPresEmptyBody =>
+      'Для этого выбора в приложении нет материалов с источниками на текущем языке, поэтому слайды не созданы. Ничего не дописывается от себя.';
+
+  @override
+  String autoPresNoticeStructureOnly(String name) {
+    return '$name: в карточке ещё нет текста — пропущено.';
+  }
+
+  @override
+  String autoPresNoticeNoContent(String name) {
+    return '$name: нет текста с источниками для слайдов — пропущено.';
+  }
+
+  @override
+  String autoPresNoticeLang(int count) {
+    return 'Нет на этом языке, поэтому пропущено: $count. Языки не смешиваются.';
+  }
+
+  @override
+  String get autoPresDeckTitleTests => 'Лабораторные анализы';
+
+  @override
+  String autoPresMoreItems(int count) {
+    return 'и ещё $count';
+  }
+
+  @override
+  String autoPresPackSource(String version) {
+    return 'LabGuide, пакет контента $version — слайды собраны автоматически из карточек с источниками';
+  }
+
+  @override
+  String autoPresSourceLine(String text) {
+    return 'Источник: $text';
+  }
+
+  @override
+  String get autoPresColIndicator => 'Показатель';
+
+  @override
+  String get autoPresColValue => 'Значение';
+
+  @override
+  String get autoPresColTarget => 'Цель';
+
+  @override
+  String get autoPresColTube => 'Пробирка';
+
+  @override
+  String get autoPresColCap => 'Цвет крышки';
+
+  @override
+  String get autoPresShowAnswer => 'Показать ответ';
+
+  @override
+  String get autoPresHideAnswer => 'Скрыть ответ';
+
+  @override
+  String get autoPresAnswerLabel => 'Ответ';
+
+  @override
+  String get autoPresTplTitle => 'Заголовок';
+
+  @override
+  String get autoPresTplBullets => 'Пункты';
+
+  @override
+  String get autoPresTplTable => 'Таблица';
+
+  @override
+  String get autoPresTplFigure => 'Рисунок';
+
+  @override
+  String get autoPresTplQa => 'Вопрос';
 }

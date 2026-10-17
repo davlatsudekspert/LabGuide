@@ -4836,5 +4836,119 @@
         "type": "String"
       }
     }
-  }
+  },
+  "autoPresTitle": "Automatic presentation",
+  "autoPresEntrySub": "Slides built from the app’s sourced content",
+  "autoPresPickerSub": "Pick a topic or tests. Slides are assembled only from sourced content already in the app — nothing is made up.",
+  "autoPresLanguageNote": "Slides use the app language. Content missing in this language is skipped — languages are never mixed.",
+  "autoPresModeTopic": "By topic",
+  "autoPresModeTests": "By tests",
+  "autoPresSearch": "Search tests",
+  "autoPresSearchHint": "Name, abbreviation or synonym",
+  "autoPresSelectedCount": "Selected: {count} of {max}",
+  "@autoPresSelectedCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "autoPresLimitReached": "No more than {max} tests per presentation.",
+  "@autoPresLimitReached": {
+    "placeholders": {
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "autoPresNoResults": "No tests found.",
+  "autoPresOptQuiz": "Question slides",
+  "autoPresOptQuizSub": "Practice questions of the selected content; the answer opens on tap.",
+  "autoPresOptGeneral": "General preanalytics",
+  "autoPresOptGeneralSub": "Order of draw, hemolysis, tourniquet (WHO, 2010).",
+  "autoPresPreview": "Preview slides",
+  "autoPresPickFirst": "Pick a topic or at least one test first.",
+  "autoPresPreviewTitle": "Slide preview",
+  "autoPresPreviewSub": "Reorder or remove slides, then start.",
+  "autoPresSlideCount": "{count, plural, =1{1 slide} other{{count} slides}}",
+  "@autoPresSlideCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "autoPresStart": "Start",
+  "autoPresMoveUp": "Move up",
+  "autoPresMoveDown": "Move down",
+  "autoPresRemove": "Remove slide",
+  "autoPresRestore": "Restore removed slides",
+  "autoPresSourcesPinned": "Sources slide — built automatically from the slides you keep",
+  "autoPresEmptyTitle": "Not enough sourced content",
+  "autoPresEmptyBody": "The app has no sourced content for this selection in the current language, so no slides were made. Nothing is filled in with made-up text.",
+  "autoPresNoticeStructureOnly": "{name}: the card has no written content yet — skipped.",
+  "@autoPresNoticeStructureOnly": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "autoPresNoticeNoContent": "{name}: no sourced text to build slides from — skipped.",
+  "@autoPresNoticeNoContent": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "autoPresNoticeLang": "Not available in this language, so skipped: {count}. Languages are never mixed.",
+  "@autoPresNoticeLang": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "autoPresDeckTitleTests": "Laboratory tests",
+  "autoPresMoreItems": "+{count} more",
+  "@autoPresMoreItems": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "autoPresPackSource": "LabGuide, content pack {version} — slides are assembled automatically from the cited cards",
+  "@autoPresPackSource": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "autoPresSourceLine": "Source: {text}",
+  "@autoPresSourceLine": {
+    "placeholders": {
+      "text": {
+        "type": "String"
+      }
+    }
+  },
+  "autoPresColIndicator": "Indicator",
+  "autoPresColValue": "Value",
+  "autoPresColTarget": "Target",
+  "autoPresColTube": "Tube",
+  "autoPresColCap": "Cap colour",
+  "autoPresShowAnswer": "Show answer",
+  "autoPresHideAnswer": "Hide answer",
+  "autoPresAnswerLabel": "Answer",
+  "autoPresTplTitle": "Title",
+  "autoPresTplBullets": "Points",
+  "autoPresTplTable": "Table",
+  "autoPresTplFigure": "Image",
+  "autoPresTplQa": "Question"
 }

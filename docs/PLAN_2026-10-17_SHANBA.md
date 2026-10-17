@@ -59,6 +59,9 @@ tuzatildi" yoziladi (`docs/AUDIT_2026-10-17.md`).
 - Har slaydda manba ko'rsatiladi. Ma'lumot to'qilmaydi, mazmun yetmasa slayd chiqmaydi.
 - **Tayyor degani:** 5 ta mavzuda taqdimot yig'ilib, uch tilda skrinshot bilan tekshirilgan;
   widget testlari; telefon va yotiq (1920×1080) ekranda kesilish yo'q.
+- **Holat (17-oktabr):** qurildi, qoidalar D-47a da. Slaydlarga: kartalar, chegara jadvallari, kitob/JSST
+  jadvallari, klinik holatlar, atlas, umumiy preanalitika, savollar. Kalkulyator slaydlari yo'q (ularda
+  tekshirilgan qiymat/manba tuzilmasi yo'q, to'qilmaydi).
 
 ### 2-blok. Ikki ekranli rejim, D-49
 - Tashqi ekran (iPhone AirPlay "ekranni takrorlash", Android Miracast/Cast) ulanganda:

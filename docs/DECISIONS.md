@@ -764,3 +764,23 @@ D-46 dagi paketlar aniqlashtirildi: shaxsiy **Pro** (laborant, shifokor, toifaga
   Rasm qurilmadan chiqmaydi, xarajat yo'q. Tashxis qo'yilmaydi.
 - Claude API (ishlatganicha to'lov, oylik to'lov yo'q) — keyin, Pro uchun, murakkab varaqalarga;
   aniqlik bepul usulda o'lchangandan keyin hal qilinadi. Android ML Kit kirillni tanimasligi — tekshiriladi.
+
+## D-47a. Avtomatik taqdimot: amalga oshirish (2026-10-17)
+- **Yig'ish qoidasi** (`lib/features/classroom/auto_deck.dart`, LLM va tashqi chaqiruvsiz): faqat paketdagi
+  manbaga bog'langan mazmun — karta da'volari (maqsad, fiziologiya, oshishi/pasayishi, preanalitika, xalaqit),
+  qaror chegaralari va referens intervallar (jadval; "me'yor emas" izohi bilan), davolash maqsadlari
+  (eskirgan yo'riqnomalar kirmaydi), kitob/JSST jadvallari, klinik holat tavsifi, atlas rasmlari (litsenziya
+  manbada), mashq savollari (manbasi bor, kaliti va tushuntirishi bilan). Mazmun yetmasa slayd chiqmaydi;
+  manbasi paketda yo'q da'vo va savol olinmaydi; "faqat tuzilma" yoki matnsiz karta o'tkaziladi va aytiladi.
+- **Til:** ilova tili. Tanlangan tilda matni yo'q element tashlanadi, soni sarlavha slaydida va ko'rishda
+  aytiladi; tillar aralashtirilmaydi.
+- **Manba:** har slaydda "Manba: ..." qatori; oxirida qolgan slaydlardan avtomatik yig'iladigan "Manbalar"
+  slaydi (ustoz slaydni olib tashlasa, uning manbasi ro'yxatdan ham tushadi).
+- **Halollik:** kartalar hali mustaqil mutaxassis tekshiruvidan o'tmagan — sarlavha slaydida "o'quv namunasi,
+  ekspertiza kutilmoqda" izohi chiqadi. Kuratorning `goals`/`key_points` matnlari manbasiz, shuning uchun
+  avtomatik taqdimotga kiritilmaydi. Karta "Cheklovlar" bandi (har kartada bir xil umumiy gap) slayd bo'lmaydi.
+- **Shablonlar** (`LectureSlide.template`, hammasi ilova ichida chiziladi): sarlavha, bandlar, jadval (rang
+  belgilari bilan), rasm, savol-javob (javob tugma yoki Enter bilan). Mavjud Ma'ruza pleyeri shuni chizadi.
+- **Kirish:** `/learn/lecture` → "Avtomatik taqdimot" → `/learn/lecture/auto` (tanlash) → `.../preview`
+  (tartib, olib tashlash) → `.../play`. Ustoz Pro (`Feature.autoPresentation`): kirishda va "Boshlash"da
+  tekshiriladi; TestFlight/`LG_ALL_FEATURES_OPEN` da ochiq.
