@@ -88,7 +88,16 @@ Narxlar `tool/ai/budget.py` da (Anthropic narx jadvali o'zgarsa yangilang).
 - Uchinchi tomon action'lar commit SHA bilan mahkamlangan; Python paketlari `requirements.txt` da aniq versiyada.
 - Model uchun element — faqat ma'lumot (`<item_json>`); ichidagi "ko'rsatma"larga amal qilmaydi.
 - Byudjet qo'riqchisi: har chaqiruvdan oldin (taxminiy kirish + kutilgan chiqish) va keyin (API `usage`) hisob;
-  chegara oshadigan bo'lsa to'xtaydi. Ketma-ket 3 xato yoki kalit/ruxsat xatosi (401/403/404) — ishni to'xtatadi.
+  chegara oshadigan bo'lsa to'xtaydi. Ketma-ket 3 xato, kalit/ruxsat xatosi (401/403/404) yoki API hisobida
+  kredit tugashi (`400 ... credit balance is too low`) — ishni darhol to'xtatadi (`::error::` izohi, `abort_reason`).
+- Qayta urinish (eksponensial backoff + `retry-after`) faqat vaqtinchalik xatolarda: 408/409/429, 5xx (529 overloaded).
+  Boshqa 400 xatolar qayta urinilmaydi.
+- Xato bo'lgan element log qatorida qisqa sabab bor: `error=<klass> status=<kod> type=<API turi> request_id=... msg='...'`
+  (kalit yashiriladi; prompt/javob matni chiqarilmaydi). Mahalliy xato (masalan javobni qayta ishlash) ham ishni
+  yiqitmaydi — `mahalliy xato / local error: <klass> ...` sifatida yoziladi.
+- `concurrency` guruhi — vazifa+target bo'yicha (`ai-tasks-<task>-<target>`): turli vazifalar parallel ishlaydi,
+  hech biri bekor qilinmaydi (GitHub bitta guruhda faqat bitta kutayotgan run'ni saqlaydi). `publish` parallel
+  push to'qnashsa `ai-reports`ning yangi uchidan qayta quradi (force'siz, 4 urinish).
 
 ## Mahalliy ishlatish va testlar
 

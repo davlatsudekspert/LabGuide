@@ -48,12 +48,31 @@ def resp(obj: Any = None, *, text: str | None = None, stop: str = "end_turn", ti
 
 
 class FakeAPIError(Exception):
-    def __init__(self, status: int, message: str = "boom", retry_after: str | None = None):
+    def __init__(self, status: int, message: str = "boom", retry_after: str | None = None,
+                 error_type: str | None = None, error_message: str | None = None):
         super().__init__(message)
         self.status_code = status
         self.message = message
         self.request_id = "req_test"
         self.response = SimpleNamespace(headers={"retry-after": retry_after} if retry_after else {})
+        if error_type or error_message:
+            self.body = {"type": "error", "error": {"type": error_type or "api_error", "message": error_message or message}}
+
+
+class BadRequestError(FakeAPIError):
+    """SDK'dagi nom bilan bir xil (logdagi klass nomini tekshirish uchun)."""
+
+
+# 2026-10-17 jonli ishga tushirishda (run 39052903079 / 39052906448) qaytgan aynan xato shakli.
+CREDIT_MSG = ("Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing "
+              "to upgrade or purchase credits.")
+
+
+def credit_error() -> BadRequestError:
+    return BadRequestError(
+        400,
+        "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': '" + CREDIT_MSG + "'}}",
+        error_type="invalid_request_error", error_message=CREDIT_MSG)
 
 
 class FakeClient:
