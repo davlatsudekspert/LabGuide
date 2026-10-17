@@ -9129,6 +9129,115 @@ class AppLocalizationsUz extends AppLocalizations {
   String get lectureDeckLoadFailed => 'Taqdimotni ochib bo‘lmadi';
 
   @override
+  String get lectureFullscreen => 'To‘liq ekran';
+
+  @override
+  String get lectureFullscreenExit => 'To‘liq ekrandan chiqish';
+
+  @override
+  String get lectureSourcesTitle => 'Slayd manbalari';
+
+  @override
+  String get lectureSourcesOpen => 'Manbalarni to‘liq ko‘rish';
+
+  @override
+  String lectureSourcesCount(int count) {
+    return 'Manbalar: $count';
+  }
+
+  @override
+  String lectureSourceLocator(String loc) {
+    return 'Bo‘lim/sahifa: $loc';
+  }
+
+  @override
+  String get lectureSourcesHint =>
+      'To‘liq ro‘yxat — oxirgi «Adabiyotlar» slaydida.';
+
+  @override
+  String get lectureRotateTitle =>
+      'Ekranni gorizontal (albom) holatga aylantiraymizmi?';
+
+  @override
+  String get lectureRotateBody =>
+      'Gorizontal holatda slayd butun ekranni egallaydi. «Yo‘q» — ekran aylanmaydi, slayd joriy holatda ko‘rsatiladi.';
+
+  @override
+  String get lectureRotateCastBody =>
+      'Televizor va monitorlar gorizontal: uzatishda gorizontal holat tavsiya etiladi.';
+
+  @override
+  String get lectureRotateYes => 'Ha';
+
+  @override
+  String get lectureRotateNo => 'Yo‘q';
+
+  @override
+  String get lectureRotateRemember => 'Qayta so‘ramaslik';
+
+  @override
+  String get lectureOrientationMenu => 'Taqdimotda ekran holati';
+
+  @override
+  String get lectureOrientationAsk => 'Doim so‘rash';
+
+  @override
+  String get lectureOrientationLandscape => 'Doim gorizontal';
+
+  @override
+  String get lectureOrientationKeep => 'Aylantirmaslik';
+
+  @override
+  String get lectureMore => 'Boshqa amallar';
+
+  @override
+  String get lectureCast => 'Ekranga uzatish';
+
+  @override
+  String get lectureCastTitle => 'Televizor yoki monitorga uzatish';
+
+  @override
+  String get lectureCastHow =>
+      'Uzatish telefonning o‘z «ekranni takrorlash» funksiyasi orqali ishlaydi: televizorda telefon ekrani ko‘rinadi. Taqdimot rejimida ekranda faqat slayd bo‘ladi (tugmalarsiz), ekran o‘chmaydi.';
+
+  @override
+  String get lectureCastStepsAndroid =>
+      '1. Telefon va televizor bitta Wi‑Fi tarmog‘ida bo‘lsin.\n2. «Ekranni uzatish» (Cast, Smart View, Miracast — nomi telefonga qarab) ni oching va televizorni tanlang.\n3. Ilovaga qayting va «Taqdimotni boshlash» ni bosing.';
+
+  @override
+  String get lectureCastStepsIos =>
+      '1. iPhone/iPad va televizor (Apple TV yoki AirPlay qo‘llaydigan) bitta Wi‑Fi tarmog‘ida bo‘lsin.\n2. Boshqaruv markazini oching (yuqori o‘ng burchakdan pastga suring) → «Ekranni takrorlash» (Screen Mirroring) → televizorni tanlang.\n3. Ilovaga qayting va «Taqdimotni boshlash» ni bosing.';
+
+  @override
+  String get lectureCastOpenSettings => 'Uzatish sozlamasini ochish';
+
+  @override
+  String get lectureCastSettingsFailed =>
+      'Sozlamani ochib bo‘lmadi — telefon sozlamalari yoki tezkor panelidan «Ekranni uzatish» ni toping.';
+
+  @override
+  String get lectureCastStart => 'Taqdimotni boshlash';
+
+  @override
+  String get lecturePresenter => 'Taqdimotchi rejimi';
+
+  @override
+  String get lecturePresenterNext => 'Keyingi slayd';
+
+  @override
+  String get lecturePresenterLast => 'Bu oxirgi slayd';
+
+  @override
+  String get lecturePresenterTimer => 'Vaqt';
+
+  @override
+  String get lecturePresenterReset => 'Vaqtni qaytadan boshlash';
+
+  @override
+  String get lecturePresenterNote =>
+      'Taqdimotchi rejimi faqat shu qurilmada. Televizorga uzatilsa, televizorda ham shu ko‘rinish chiqadi (ekran takrorlanadi) — auditoriya uchun «To‘liq ekran» dan foydalaning.';
+
+  @override
   String get topicTestAction => 'Mavzu testi';
 
   @override

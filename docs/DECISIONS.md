@@ -875,3 +875,31 @@ D-48 dagi **Ustoz Pro** qatorini (69 000 so'm/oy · 490 000 so'm/yil · $9.99/oy
   later; work kept on branch `pro-later`. Reklama UI do'kon buildidan ham chiqarildi (`LG_PARTNER_ADS=false`,
   faqat TestFlight/Play ichki test buildlarida `true` — docs/PARTNERS.md). Serverda faqat ko'rinmas `users.plan`
   ustuni (`0009_admin_console.sql`), hech bir endpoint uni bermaydi.
+
+## D-59. Ma'ruza — haqiqiy 16:9 taqdimot, to'liq ekran va ekranga uzatish (2026-10-17, egasi talabi)
+- **Muammo (egasi):** ma'ruza slaydlari tik matn sahifasi kabi edi; manba qatori kesilib qolardi.
+- **Kanvas:** har slayd 1280×720 dizayn o'lchamida chiziladi (`lib/features/classroom/lecture_canvas.dart`)
+  va ekranga teng masshtablanadi (FittedBox) — PPTX (`make_topic_decks.render_deck`) ko'rinishi: eyebrow chipi,
+  katta sarlavha, belgili/raqamli bandlar, "Yorliq:" qalin aksentda, jadval (aksent sarlavha, zebra qatorlar),
+  rasm + izoh + muallif qatori, savol kartalari (javob ochilsa to'g'risi ajratiladi), sarlavha slaydi chuqur
+  yashil fonda lime aksent va logo bilan, footer "LabGuide · <deck>" va slayd raqami; kunduzgi/tungi ranglar
+  `tokens.dart` dan. Kanvas ichida tizim shrift masshtabi qo'llanmaydi (slayd — "rasm"; kattalashtirish —
+  to'liq ekran); panel matni masshtabga bo'ysunadi. Sig'masa — kesilmaydi, butunligicha kichrayadi.
+- **Bo'lish (eksport):** `tool/slides/export_app_decks.py` 16:9 byudjeti (shu o'lchamlar, asosiy matn 28 px da
+  hisoblanadi, ilovada ≥ 26 px): uzun slayd davom slaydlariga ("· 2/3"), band chegarasida; bitta uzun band —
+  faqat jumla oxirida (qisqartmalar e.g., т.е., "A." chegara emas). Har qismda manba bir xil. Jadval qatorlar
+  bo'yicha, rasm izohi qatorlar bo'yicha (rasm takrorlanadi), savol izohi davom slaydida. Natija: 11 708 → 14 738
+  slayd (369 fayl); 38 holatda bitta jadval qatori 24 px da sig'maydi — ilova shriftni kichraytiradi.
+- **To'liq manbalar:** slaydda `ref` → deck `refs` (Adabiyotlar raqami + shu slayd bo'lim/sahifalari);
+  ilovada manba qatorini bosish — to'liq yozuvlar oynasi (hech narsa kesilmaydi).
+- **To'liq ekran:** faqat slayd; chap/o'ng yarmi yoki surish; tik ekranda "Gorizontal holatga aylantiraymizmi?"
+  (Ha — majburiy landscape + immersive; Yo'q — aylantirmaydi), "Qayta so'ramaslik" qurilmada
+  (`lecture.orientation`), menyuda ham. Chiqishda (tugma, orqaga, Esc, ekran yopilishi) ekran holati
+  cheklovsiz va tizim panellari qaytariladi. ≥ 900 px — slayd yonida panel (aylantirish shart emas).
+- **Ekranga uzatish:** haqiqiy ikkinchi ekran EMAS — tizimning ekranni takrorlashi (Android Cast/Miracast,
+  iOS AirPlay Screen Mirroring). Android'da `android_intent_plus` (6.1.0, BSD-3, sof Java) bilan
+  `android.settings.CAST_SETTINGS` ochiladi, bo'lmasa yo'riqnoma; iOS — Boshqaruv markazi yo'riqnomasi.
+  Taqdimot rejimi ko'zgu uchun: tugmalarsiz (3 s dan keyin yashiriladi), ekran o'chmaydi (wakelock_plus).
+  "Taqdimotchi rejimi" (joriy + keyingi slayd, vaqt, izoh, katta tugmalar) — faqat shu qurilmada; ko'zguda
+  televizor ham shuni ko'rsatadi. Tashqi displeyga alohida chiqish (Android Presentation / iOS UIScreen) native
+  kod talab qiladi — keyinga (QOLGAN_ISHLAR).

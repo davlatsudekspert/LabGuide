@@ -9265,6 +9265,114 @@ class AppLocalizationsEn extends AppLocalizations {
   String get lectureDeckLoadFailed => 'Could not open the presentation';
 
   @override
+  String get lectureFullscreen => 'Full screen';
+
+  @override
+  String get lectureFullscreenExit => 'Exit full screen';
+
+  @override
+  String get lectureSourcesTitle => 'Slide sources';
+
+  @override
+  String get lectureSourcesOpen => 'Show full sources';
+
+  @override
+  String lectureSourcesCount(int count) {
+    return 'Sources: $count';
+  }
+
+  @override
+  String lectureSourceLocator(String loc) {
+    return 'Section/page: $loc';
+  }
+
+  @override
+  String get lectureSourcesHint =>
+      'The full list is on the last “References” slide.';
+
+  @override
+  String get lectureRotateTitle => 'Rotate the screen to landscape?';
+
+  @override
+  String get lectureRotateBody =>
+      'In landscape the slide fills the whole screen. “No” keeps the current orientation.';
+
+  @override
+  String get lectureRotateCastBody =>
+      'TVs and monitors are landscape, so landscape is recommended when casting.';
+
+  @override
+  String get lectureRotateYes => 'Yes';
+
+  @override
+  String get lectureRotateNo => 'No';
+
+  @override
+  String get lectureRotateRemember => 'Don’t ask again';
+
+  @override
+  String get lectureOrientationMenu => 'Screen orientation when presenting';
+
+  @override
+  String get lectureOrientationAsk => 'Always ask';
+
+  @override
+  String get lectureOrientationLandscape => 'Always landscape';
+
+  @override
+  String get lectureOrientationKeep => 'Don’t rotate';
+
+  @override
+  String get lectureMore => 'More actions';
+
+  @override
+  String get lectureCast => 'Show on TV';
+
+  @override
+  String get lectureCastTitle => 'Show on a TV or monitor';
+
+  @override
+  String get lectureCastHow =>
+      'Casting uses your phone’s built-in screen mirroring: the TV shows the phone screen. In presentation mode the screen shows only the slide (no buttons) and stays on.';
+
+  @override
+  String get lectureCastStepsAndroid =>
+      '1. Connect the phone and the TV to the same Wi‑Fi network.\n2. Open “Cast screen” (Cast, Smart View, Miracast — the name depends on the phone) and pick the TV.\n3. Come back to the app and tap “Start presentation”.';
+
+  @override
+  String get lectureCastStepsIos =>
+      '1. Connect the iPhone/iPad and the TV (Apple TV or AirPlay-compatible) to the same Wi‑Fi network.\n2. Open Control Center (swipe down from the top-right corner) → Screen Mirroring → pick the TV.\n3. Come back to the app and tap “Start presentation”.';
+
+  @override
+  String get lectureCastOpenSettings => 'Open cast settings';
+
+  @override
+  String get lectureCastSettingsFailed =>
+      'Could not open the settings — find “Cast screen” in Settings or in the quick settings panel.';
+
+  @override
+  String get lectureCastStart => 'Start presentation';
+
+  @override
+  String get lecturePresenter => 'Presenter view';
+
+  @override
+  String get lecturePresenterNext => 'Next slide';
+
+  @override
+  String get lecturePresenterLast => 'This is the last slide';
+
+  @override
+  String get lecturePresenterTimer => 'Time';
+
+  @override
+  String get lecturePresenterReset => 'Reset timer';
+
+  @override
+  String get lecturePresenterNote =>
+      'Presenter view is on this device only. When mirroring, the TV shows the same view — use “Full screen” for the audience.';
+
+  @override
   String get topicTestAction => 'Topic test';
 
   @override

@@ -120,7 +120,7 @@ class Decks(unittest.TestCase):
                     self.assertTrue(all(len(r) == cols for r in s['rows']), w)
                 elif t == 'figure':
                     self.assertTrue(os.path.exists(os.path.join(REPO, s['figure'])), w)
-                    self.assertTrue(s.get('caption'), w)
+                    self.assertTrue(s.get('caption') or s.get('credit'), w)
                 elif t == 'qa':
                     self.assertGreaterEqual(len(s['options']), 2, w)
                     self.assertIn(s['correct'], range(len(s['options'])), w)
@@ -175,6 +175,115 @@ class Decks(unittest.TestCase):
                     if s.kind == 'gallery':
                         imgs |= {i['image'] for i in s.data['items']}
                 self.assertEqual({s['figure'] for s in app if s.get('figure')}, imgs, f'{did}.{lg}')
+
+    def test_slide_refs_point_into_bibliography(self):
+        """Har kontent slaydida to'liq manbalar (`ref` -> deck `refs`): "Adabiyotlar"
+        ro'yxatidagi raqam + shu slayd bo'lim/sahifalari. Ilova manba oynasi shu."""
+        _, files, _ = built()
+        for (did, lg), j in files.items():
+            bib = [b for s in j['slides'] if s.get('compact') for b in s['bullets']]
+            refs = j.get('refs', [])
+            used = set()
+            for i, s in enumerate(j['slides']):
+                w = f'{did}.{lg}#{i}'
+                if 'src' in s:
+                    self.assertIn('ref', s, w)
+                if 'ref' in s:
+                    used.add(s['ref'])
+                    rl = refs[s['ref']]
+                    self.assertTrue(rl, w)
+                    for row in rl:
+                        self.assertIn(row[0], range(len(bib)), w)
+                        self.assertTrue(all(isinstance(x, str) and x.strip() for x in row[1:]), w)
+            self.assertEqual(used, set(range(len(refs))), f'{did}.{lg}: ishlatilmagan refs')
+
+    def test_figures_exist_and_declared_in_pubspec(self):
+        """Har rasm (figure va d001 slayd rasmlari) repoda bor va pubspec.yaml assets
+        ro'yxatidagi papkada (aks holda ilovada bo'sh joy chiqadi)."""
+        _, files, _ = built()
+        with open(os.path.join(REPO, 'pubspec.yaml'), encoding='utf-8') as f:
+            declared = set(re.findall(r'^\s+- (assets/\S+/)\s*$', f.read(), re.M))
+        paths = {s['figure'] for j in files.values() for s in j['slides'] if s.get('figure')}
+        with open(os.path.join(REPO, 'assets', 'lectures', 'd001.json'), encoding='utf-8') as f:
+            paths |= {s['image'] for s in json.load(f)['slides'] if s.get('image')}
+        self.assertTrue(paths)
+        for p in sorted(paths):
+            self.assertTrue(os.path.exists(os.path.join(REPO, p)), p)
+            self.assertIn(os.path.dirname(p) + '/', declared, p)
+
+
+class Canvas16x9(unittest.TestCase):
+    """16:9 kanvas byudjeti (1280×720, asosiy matn ≥ MIN_FONT px)."""
+
+    EGFR = ('eGFR sistatin C bo‘yicha ham hisoblanishi mumkin — bu ko‘plab hujayralar ishlab '
+            'chiqaradigan oqsil bo‘lib, uning darajasiga mushak hajmi, yosh va ovqatlanish ta’sir '
+            'qilmaydi. NIDDK ma’lumotiga ko‘ra, kreatinin va sistatin C ni birga qo‘llash afzal va '
+            'faqat kreatinindan aniqroq, ayniqsa eGFR muhim qaror chegarasiga yaqin bo‘lganda '
+            '(masalan, dori dozasini belgilash yoki buyrak transplantatsiyasiga baholash).')
+
+    def test_sentences_round_trip_and_abbreviations(self):
+        s = ex.sentences(self.EGFR)
+        self.assertEqual(len(s), 2)
+        self.assertEqual(' '.join(s), self.EGFR)
+        self.assertEqual(ex.sentences('Masalan, e.g. Glukoza. Keyin A. Smith yozgan. 3.5 mmol/L. Tamom'),
+                         ['Masalan, e.g. Glukoza.', 'Keyin A. Smith yozgan.', '3.5 mmol/L.', 'Tamom'])
+        self.assertEqual(ex.sentences('Без деления, т.е. Норма.'), ['Без деления, т.е. Норма.'])
+        self.assertEqual(ex.sentences('kichik harf. davom etadi'), ['kichik harf. davom etadi'])
+
+    def test_paginate_splits_only_at_sentence_end(self):
+        # tor byudjet: bitta jumla sig'adi, ikkitasi emas
+        one = len(ex.sentences(self.EGFR)[1]) + 5
+        pages = ex.paginate(['Qisqa band.', self.EGFR, 'Oxirgi.'],
+                            lambda xs: sum(len(x) for x in xs) <= one)
+        flat = [x for pg in pages for x in pg]
+        self.assertEqual(' '.join(flat), ' '.join(['Qisqa band.', self.EGFR, 'Oxirgi.']))
+        for x in flat:
+            self.assertRegex(x, r'[.!?…)]$')
+        # bitta jumla ham sig'masa — kesilmaydi, butunligicha qoladi
+        ex.WARNINGS.clear()
+        pages = ex.paginate(['Bir jumla juda uzun.'], lambda xs: False)
+        self.assertEqual(pages, [['Bir jumla juda uzun.']])
+        self.assertTrue(ex.WARNINGS)
+
+    def test_every_bullet_slide_fits_at_min_font(self):
+        """Bandli slaydlar MIN_FONT (26 px) da 16:9 kanvasga sig'adi; sig'maydigani faqat
+        bo'linmaydigan bitta jumla (ilova o'zi kichraytiradi)."""
+        _, files, _ = built()
+        misfit = []
+        for (did, lg), j in files.items():
+            srcs = j.get('srcs', [])
+            for i, s in enumerate(j['slides']):
+                if s.get('template', 'bullets') != 'bullets' or s.get('compact'):
+                    continue
+                src = srcs[s['src']] if 'src' in s else None
+                indent = ex.PLAN_INDENT if s.get('plan') else ex.BULLET_INDENT
+                h = ex.items_height(s['bullets'], ex.MIN_FONT, ex.CONTENT_W - indent, lg)
+                if h > ex.body_box(s['title'], lg, src):
+                    one = len(s['bullets']) == 1 and len(ex.sentences(s['bullets'][0])) == 1
+                    if not one:
+                        misfit.append(f'{did}.{lg}#{i}')
+        self.assertEqual(misfit, [])
+
+    def test_continuations_keep_sources_and_numbering(self):
+        """Davom slaydlari: eyebrow 'k/n' ketma-ket, manba (src/ref) har qismida bir xil."""
+        _, files, _ = built()
+        for (did, lg), j in files.items():
+            sl = j['slides']
+            for i, s in enumerate(sl):
+                m = re.search(r'(?:^| · )(\d+)/(\d+)$', s.get('eyebrow') or '')
+                if not m or m.group(1) != '1':
+                    continue
+                n = int(m.group(2))
+                group = sl[i:i + n]
+                self.assertEqual(len(group), n, f'{did}.{lg}#{i}')
+                base = s['eyebrow'][:m.start()]
+                for k, g in enumerate(group, 1):
+                    w = f'{did}.{lg}#{i + k - 1}'
+                    self.assertEqual(g['title'], s['title'], w)
+                    self.assertEqual(g.get('eyebrow'), ex.eyebrow_with_page(base, k, n) if base
+                                     else f'{k}/{n}', w)
+                    self.assertEqual(g.get('src'), s.get('src'), w)
+                    self.assertEqual(g.get('ref'), s.get('ref'), w)
 
     def test_authored_d001_untouched(self):
         with open(os.path.join(REPO, 'assets', 'lectures', 'd001.json'), encoding='utf-8') as f:

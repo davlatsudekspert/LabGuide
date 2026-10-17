@@ -9303,6 +9303,115 @@ class AppLocalizationsRu extends AppLocalizations {
   String get lectureDeckLoadFailed => 'Не удалось открыть презентацию';
 
   @override
+  String get lectureFullscreen => 'Полный экран';
+
+  @override
+  String get lectureFullscreenExit => 'Выйти из полноэкранного режима';
+
+  @override
+  String get lectureSourcesTitle => 'Источники слайда';
+
+  @override
+  String get lectureSourcesOpen => 'Показать источники полностью';
+
+  @override
+  String lectureSourcesCount(int count) {
+    return 'Источники: $count';
+  }
+
+  @override
+  String lectureSourceLocator(String loc) {
+    return 'Раздел/страница: $loc';
+  }
+
+  @override
+  String get lectureSourcesHint =>
+      'Полный список — на последнем слайде «Литература».';
+
+  @override
+  String get lectureRotateTitle =>
+      'Повернуть экран горизонтально (альбомная ориентация)?';
+
+  @override
+  String get lectureRotateBody =>
+      'В альбомной ориентации слайд займёт весь экран. «Нет» — экран не поворачивается, слайд показывается в текущей ориентации.';
+
+  @override
+  String get lectureRotateCastBody =>
+      'Телевизоры и мониторы горизонтальные: для трансляции рекомендуется альбомная ориентация.';
+
+  @override
+  String get lectureRotateYes => 'Да';
+
+  @override
+  String get lectureRotateNo => 'Нет';
+
+  @override
+  String get lectureRotateRemember => 'Больше не спрашивать';
+
+  @override
+  String get lectureOrientationMenu => 'Ориентация экрана при показе';
+
+  @override
+  String get lectureOrientationAsk => 'Всегда спрашивать';
+
+  @override
+  String get lectureOrientationLandscape => 'Всегда горизонтально';
+
+  @override
+  String get lectureOrientationKeep => 'Не поворачивать';
+
+  @override
+  String get lectureMore => 'Другие действия';
+
+  @override
+  String get lectureCast => 'Вывести на экран';
+
+  @override
+  String get lectureCastTitle => 'Показ на телевизоре или мониторе';
+
+  @override
+  String get lectureCastHow =>
+      'Показ работает через встроенное в телефон «дублирование экрана»: на телевизоре виден экран телефона. В режиме показа на экране только слайд (без кнопок), экран не гаснет.';
+
+  @override
+  String get lectureCastStepsAndroid =>
+      '1. Телефон и телевизор должны быть в одной сети Wi‑Fi.\n2. Откройте «Трансляцию экрана» (Cast, Smart View, Miracast — зависит от телефона) и выберите телевизор.\n3. Вернитесь в приложение и нажмите «Начать показ».';
+
+  @override
+  String get lectureCastStepsIos =>
+      '1. iPhone/iPad и телевизор (Apple TV или с поддержкой AirPlay) должны быть в одной сети Wi‑Fi.\n2. Откройте Пункт управления (свайп вниз от правого верхнего угла) → «Повтор экрана» → выберите телевизор.\n3. Вернитесь в приложение и нажмите «Начать показ».';
+
+  @override
+  String get lectureCastOpenSettings => 'Открыть настройки трансляции';
+
+  @override
+  String get lectureCastSettingsFailed =>
+      'Не удалось открыть настройки — найдите «Трансляцию экрана» в настройках или в быстрой панели.';
+
+  @override
+  String get lectureCastStart => 'Начать показ';
+
+  @override
+  String get lecturePresenter => 'Режим докладчика';
+
+  @override
+  String get lecturePresenterNext => 'Следующий слайд';
+
+  @override
+  String get lecturePresenterLast => 'Это последний слайд';
+
+  @override
+  String get lecturePresenterTimer => 'Время';
+
+  @override
+  String get lecturePresenterReset => 'Сбросить время';
+
+  @override
+  String get lecturePresenterNote =>
+      'Режим докладчика — только на этом устройстве. При трансляции телевизор покажет то же самое (дублирование экрана) — для зрителей используйте «Полный экран».';
+
+  @override
   String get topicTestAction => 'Тест по теме';
 
   @override

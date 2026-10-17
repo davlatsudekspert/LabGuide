@@ -88,6 +88,10 @@ abstract final class StoreKeys {
   /// natijalar tarixi — faqat shu qurilmada.
   static const topicTests = 'classroom.topicTests';
 
+  /// Ma'ruza taqdimotida ekran holati tanlovi (`landscape` / `keep`; yo'q —
+  /// har safar so'raladi) — faqat shu qurilmada.
+  static const lectureOrientation = 'lecture.orientation';
+
   static const all = <String>{
     language,
     themeMode,
@@ -126,6 +130,7 @@ abstract final class StoreKeys {
     dailyReminder,
     classroomLocal,
     topicTests,
+    lectureOrientation,
     communityRulesOpen,
     communityBlocked,
   };
