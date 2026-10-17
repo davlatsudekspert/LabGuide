@@ -8,6 +8,8 @@ import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
 import '../library/library_widgets.dart' show LibrarySearchField;
 import 'lecture_catalog.dart';
+import 'topic_test.dart' show DeckTestState;
+import 'topic_test_screens.dart';
 
 // Ma'ruza bo'limining asosiy ro'yxati: BARCHA tayyor taqdimotlar modul bo'yicha
 // guruhlangan (M1–M9 + amaliy protokollar), tepada qidiruv va filtr chiplari.
@@ -332,17 +334,78 @@ class _Group extends StatelessWidget {
         ),
         const SizedBox(height: 4),
         for (final (i, d) in decks.indexed)
-          LgRow(
-            key: ValueKey('deck-${d.id}'),
-            title: d.title(lang),
-            subtitle: deckMeta(l, d, lang),
-            icon: d.kind == DeckKind.protocol
-                ? Icons.science_outlined
-                : Icons.co_present_outlined,
-            divider: i < decks.length - 1,
-            onTap: () => openDeck(context, d.id),
-          ),
+          _DeckRow(deck: d, lang: lang, divider: i < decks.length - 1),
       ],
+    );
+  }
+}
+
+/// Deck qatori: bosish — pleyer; o'ngda — “Mavzu testi” va eng yaxshi natija
+/// (8/10); savollar yetmasa — “Savollar tayyorlanmoqda”; uzoq bosish — amallar
+/// (mavzu testi, ustozga “Guruhga topshirish”).
+class _DeckRow extends StatelessWidget {
+  const _DeckRow({
+    required this.deck,
+    required this.lang,
+    required this.divider,
+  });
+
+  final DeckEntry deck;
+  final String lang;
+  final bool divider;
+
+  @override
+  Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context);
+    final p = LgPalette.of(context);
+    return DeckTestBuilder(
+      deck: deck,
+      builder: (context, state, _) {
+        final ready = state == DeckTestState.ready;
+        final row = LgRow(
+          key: ValueKey('deck-${deck.id}'),
+          title: deck.title(lang),
+          subtitle: [
+            deckMeta(l, deck, lang),
+            if (state == DeckTestState.preparing) l.topicTestPreparingShort,
+          ].join(' · '),
+          icon: deck.kind == DeckKind.protocol
+              ? Icons.science_outlined
+              : Icons.co_present_outlined,
+          divider: divider && !ready,
+          onTap: () => openDeck(context, deck.id),
+        );
+        return GestureDetector(
+          onLongPress: () => showDeckActions(context, deck),
+          child: !ready
+              ? row
+              : DecoratedBox(
+                  decoration: BoxDecoration(
+                    border: divider
+                        ? Border(
+                            bottom: BorderSide(
+                              color: p.line.withValues(alpha: 0.7),
+                            ),
+                          )
+                        : null,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      row,
+                      // Qator matni bilan bir chiziqda (ikonka 42 + 12).
+                      Padding(
+                        padding: const EdgeInsetsDirectional.only(
+                          start: 54,
+                          bottom: 12,
+                        ),
+                        child: DeckTestBadge(deck: deck),
+                      ),
+                    ],
+                  ),
+                ),
+        );
+      },
     );
   }
 }

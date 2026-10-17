@@ -9301,4 +9301,142 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get lectureDeckLoadFailed => 'Не удалось открыть презентацию';
+
+  @override
+  String get topicTestAction => 'Тест по теме';
+
+  @override
+  String get topicTestPreparing => 'Вопросы по этой теме готовятся';
+
+  @override
+  String get topicTestPreparingShort => 'Вопросы готовятся';
+
+  @override
+  String topicTestPreparingBody(int count) {
+    return 'В тест входят только проверенные вопросы. Сейчас по этой теме их $count — нужно не меньше 3.';
+  }
+
+  @override
+  String topicTestIntro(int count) {
+    return 'Вопросов: $count · после каждого ответа — правильный ответ и пояснение';
+  }
+
+  @override
+  String get topicTestSavedNote =>
+      'Если выйдете, ответы сохранятся — продолжите с того же места.';
+
+  @override
+  String get topicTestSourcesNote =>
+      'Вопросы только из проверенных источников: официальные вопросы аттестации с подтверждённым ключом и учебные вопросы с указанным источником.';
+
+  @override
+  String get topicTestStart => 'Начать тест';
+
+  @override
+  String topicTestResume(int answered, int total) {
+    return 'Продолжить · $answered/$total';
+  }
+
+  @override
+  String topicTestBest(int score, int total) {
+    return 'Лучший результат: $score/$total';
+  }
+
+  @override
+  String topicTestBadgeLabel(int score, int total) {
+    return 'Тест по теме, лучший результат $score из $total';
+  }
+
+  @override
+  String get topicTestRetake => 'Пройти заново';
+
+  @override
+  String get topicTestNextTopic => 'Следующая тема';
+
+  @override
+  String get topicTestOpenSlide => 'Открыть слайд';
+
+  @override
+  String get topicTestOpenDeckStart => 'Открыть презентацию с начала';
+
+  @override
+  String get topicTestHistory => 'История результатов';
+
+  @override
+  String get topicTestAssign => 'Задать группе';
+
+  @override
+  String get topicTestAssignIntro =>
+      'Студенты сдают тест на своём телефоне до срока; балл считается на сервере.';
+
+  @override
+  String get topicTestGroups => 'Группы';
+
+  @override
+  String get topicTestNoGroups => 'У вас пока нет групп';
+
+  @override
+  String get topicTestNoGroupsBody =>
+      'Сначала создайте группу и пригласите студентов — затем задайте тест отсюда.';
+
+  @override
+  String get topicTestPickGroup => 'Выберите хотя бы одну группу';
+
+  @override
+  String get topicTestReveal => 'Правильные ответы студенту';
+
+  @override
+  String get topicTestRevealNow => 'Сразу после сдачи';
+
+  @override
+  String get topicTestRevealAfterDue => 'После срока';
+
+  @override
+  String get topicTestRevealNeedsDue => 'Для «После срока» выберите срок сдачи';
+
+  @override
+  String topicTestSent(int count) {
+    return 'Тест отправлен, групп: $count';
+  }
+
+  @override
+  String topicTestTitle(String title) {
+    return 'Тест по теме: $title';
+  }
+
+  @override
+  String get topicTestSentList => 'Отправленные тесты';
+
+  @override
+  String topicTestAnswersLater(String date) {
+    return 'Правильные ответы откроются после срока ($date)';
+  }
+
+  @override
+  String get topicTestDistribution => 'Распределение результатов';
+
+  @override
+  String get topicTestHardest => 'Самые трудные вопросы';
+
+  @override
+  String get topicTestAssignedTitle => 'Заданные тесты';
+
+  @override
+  String get topicTestMenu => 'Действия';
+
+  @override
+  String get topicTestOpenLecture => 'Открыть презентацию';
+
+  @override
+  String get topicTestCreateGroup => 'Создать группу';
+
+  @override
+  String topicTestStudents(int count) {
+    return 'Студентов: $count';
+  }
+
+  @override
+  String topicTestReworkMistakes(int count) {
+    return 'Повторить ошибки · $count';
+  }
 }

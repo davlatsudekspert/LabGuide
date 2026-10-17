@@ -5366,5 +5366,122 @@
       }
     }
   },
-  "lectureDeckLoadFailed": "Could not open the presentation"
+  "lectureDeckLoadFailed": "Could not open the presentation",
+  "topicTestAction": "Topic test",
+  "topicTestPreparing": "Questions for this topic are being prepared",
+  "topicTestPreparingShort": "Questions in preparation",
+  "topicTestPreparingBody": "Only verified questions go into the test. This topic has {count} so far — at least 3 are needed.",
+  "@topicTestPreparingBody": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "topicTestIntro": "{count} questions · the correct answer and explanation after each one",
+  "@topicTestIntro": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "topicTestSavedNote": "If you leave, your answers are kept — you will continue from the same place.",
+  "topicTestSourcesNote": "Questions come only from verified sources: official certification questions with a confirmed key and practice questions with a cited source.",
+  "topicTestStart": "Start the test",
+  "topicTestResume": "Continue · {answered}/{total}",
+  "@topicTestResume": {
+    "placeholders": {
+      "answered": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "topicTestBest": "Best score: {score}/{total}",
+  "@topicTestBest": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "topicTestBadgeLabel": "Topic test, best score {score} of {total}",
+  "@topicTestBadgeLabel": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "topicTestRetake": "Retake",
+  "topicTestNextTopic": "Next topic",
+  "topicTestOpenSlide": "View slide",
+  "topicTestOpenDeckStart": "Open the presentation from the start",
+  "topicTestHistory": "Result history",
+  "topicTestAssign": "Assign to a group",
+  "topicTestAssignIntro": "Students take the test on their own phones before the deadline; the score is calculated on the server.",
+  "topicTestGroups": "Groups",
+  "topicTestNoGroups": "You have no groups yet",
+  "topicTestNoGroupsBody": "Create a group and invite students first — then assign the test from here.",
+  "topicTestPickGroup": "Pick at least one group",
+  "topicTestReveal": "Correct answers shown to students",
+  "topicTestRevealNow": "Right after submitting",
+  "topicTestRevealAfterDue": "After the deadline",
+  "topicTestRevealNeedsDue": "Choose a deadline to use “After the deadline”",
+  "topicTestSent": "Test sent to groups: {count}",
+  "@topicTestSent": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "topicTestTitle": "Topic test: {title}",
+  "@topicTestTitle": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "topicTestSentList": "Sent tests",
+  "topicTestAnswersLater": "Correct answers open after the deadline ({date})",
+  "@topicTestAnswersLater": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "topicTestDistribution": "Score distribution",
+  "topicTestHardest": "Hardest questions",
+  "topicTestAssignedTitle": "Assigned tests",
+  "topicTestMenu": "Actions",
+  "topicTestOpenLecture": "Open the presentation",
+  "topicTestCreateGroup": "Create a group",
+  "topicTestStudents": "Students: {count}",
+  "@topicTestStudents": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "topicTestReworkMistakes": "Review mistakes · {count}",
+  "@topicTestReworkMistakes": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  }
 }

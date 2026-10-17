@@ -20,6 +20,7 @@ import 'features/auth/otp_auth.dart';
 import 'features/auth/social_auth.dart';
 import 'features/classroom/classroom_local.dart';
 import 'features/classroom/curriculum.dart';
+import 'features/classroom/topic_test.dart';
 import 'features/community/community_controller.dart';
 import 'features/content/content_controller.dart';
 import 'features/daily/daily_controller.dart';
@@ -135,6 +136,7 @@ AppServices createServices({
     sharer: sharer ?? const SystemResultSharer(),
     curriculum: CurriculumController(bundle: bundle, curriculum: curriculum),
     classroom: ClassroomLocal(store),
+    topicTests: TopicTestController(store, clock: clock),
     // Hamjamiyat faqat Cloudflare serveri (LG_API_URL) bilan; aks holda
     // UI umuman ko'rinmaydi.
     community: CommunityController(

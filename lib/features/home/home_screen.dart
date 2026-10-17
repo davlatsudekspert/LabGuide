@@ -9,6 +9,7 @@ import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
 import '../auth/ui/role_screen.dart';
 import '../auth/ui/welcome_screen.dart';
+import '../classroom/topic_test_screens.dart' show AssignedTestsCard;
 import '../community/community_screens.dart';
 import '../content/ui/conditions_screens.dart';
 import '../content/ui/content_widgets.dart';
@@ -231,6 +232,8 @@ class HomeScreen extends StatelessWidget {
             ),
             // Kunlik 5 ta savol — har kuni qaytish uchun ixcham karta.
             const DailyCard(),
+            // Talabaga guruhda berilgan testlar (muddati bilan).
+            const AssignedTestsCard(),
             // Hamjamiyat (faqat server ulangan buildda; aks holda yo'q).
             const CommunityHomeCard(),
             // Laborant uchun tezkor amal: toifa imtihoniga tayyorgarlik

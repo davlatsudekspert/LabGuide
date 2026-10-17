@@ -9,6 +9,7 @@ import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
 import '../auth/ui/welcome_screen.dart';
+import '../classroom/topic_test_screens.dart' show AssignedTestsCard;
 import '../content/content_model.dart';
 import '../content/ui/content_widgets.dart';
 import '../daily/daily_screens.dart';
@@ -57,6 +58,8 @@ class LearnScreen extends StatelessWidget {
         ),
         // Har kuni qaytish uchun: 5 ta savol va ketma-ketlik.
         const DailyCard(),
+        // Guruhda berilgan (hali topshirilmagan) testlar — muddati bilan.
+        const AssignedTestsCard(),
         // Faqat O'zbekiston foydalanuvchilariga (til uz yoki mintaqa UZ).
         // Talabaga malaka toifasi kerak emas — uning O'rganishida kartasi yo'q
         // (kunlik savollar qoladi, manzil laborant/ustozga ochiq).
@@ -427,15 +430,15 @@ class _QuizQuestion extends StatelessWidget {
         for (var i = 0; i < q.options.length; i++)
           Padding(
             padding: const EdgeInsets.only(bottom: 10),
-            child: _OptionButton(
+            child: QuizOptionButton(
               label: q.options[i].text.of(lang),
               state: !answered
-                  ? _OptionState.idle
+                  ? QuizOptionState.idle
                   : i == q.correctIndex
-                  ? _OptionState.correct
+                  ? QuizOptionState.correct
                   : i == answer
-                  ? _OptionState.wrong
-                  : _OptionState.disabled,
+                  ? QuizOptionState.wrong
+                  : QuizOptionState.disabled,
               onTap: answered
                   ? null
                   : () {
@@ -516,17 +519,20 @@ class _QuizQuestion extends StatelessWidget {
   }
 }
 
-enum _OptionState { idle, correct, wrong, disabled }
+/// Variant kartasining holati (mashq va mavzu testi).
+enum QuizOptionState { idle, correct, wrong, disabled }
 
-class _OptionButton extends StatelessWidget {
-  const _OptionButton({
+/// Katta bosiladigan variant kartasi: javobdan keyin to'g'ri/xato belgisi.
+class QuizOptionButton extends StatelessWidget {
+  const QuizOptionButton({
+    super.key,
     required this.label,
     required this.state,
     required this.onTap,
   });
 
   final String label;
-  final _OptionState state;
+  final QuizOptionState state;
   final VoidCallback? onTap;
 
   @override
@@ -540,27 +546,27 @@ class _OptionButton extends StatelessWidget {
       IconData? icon,
       String? suffix,
     ) = switch (state) {
-      _OptionState.idle => (p.paper, p.line, null, null),
-      _OptionState.correct => (
+      QuizOptionState.idle => (p.paper, p.line, null, null),
+      QuizOptionState.correct => (
         p.soft,
         p.brand,
         Icons.check_circle_rounded,
         l.quizCorrectAnswer,
       ),
-      _OptionState.wrong => (
+      QuizOptionState.wrong => (
         p.amberBg,
         p.amber,
         Icons.cancel_rounded,
         l.quizYourAnswer,
       ),
-      _OptionState.disabled => (p.paper, p.line, null, null),
+      QuizOptionState.disabled => (p.paper, p.line, null, null),
     };
     return DecoratedBox(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(LgRadius.button),
         border: Border.all(
           color: border,
-          width: state == _OptionState.idle ? 1 : 2,
+          width: state == QuizOptionState.idle ? 1 : 2,
         ),
       ),
       child: LgPressable(
@@ -585,7 +591,7 @@ class _OptionButton extends StatelessWidget {
                             suffix,
                             style: text.bodySmall!.copyWith(
                               fontWeight: FontWeight.w600,
-                              color: state == _OptionState.wrong
+                              color: state == QuizOptionState.wrong
                                   ? p.amber
                                   : p.brand,
                             ),
@@ -597,7 +603,7 @@ class _OptionButton extends StatelessWidget {
                     const SizedBox(width: 8),
                     Icon(
                       icon,
-                      color: state == _OptionState.wrong ? p.amber : p.brand,
+                      color: state == QuizOptionState.wrong ? p.amber : p.brand,
                     ),
                   ],
                 ],

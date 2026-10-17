@@ -15951,6 +15951,234 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Could not open the presentation'**
   String get lectureDeckLoadFailed;
+
+  /// No description provided for @topicTestAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Topic test'**
+  String get topicTestAction;
+
+  /// No description provided for @topicTestPreparing.
+  ///
+  /// In en, this message translates to:
+  /// **'Questions for this topic are being prepared'**
+  String get topicTestPreparing;
+
+  /// No description provided for @topicTestPreparingShort.
+  ///
+  /// In en, this message translates to:
+  /// **'Questions in preparation'**
+  String get topicTestPreparingShort;
+
+  /// No description provided for @topicTestPreparingBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Only verified questions go into the test. This topic has {count} so far — at least 3 are needed.'**
+  String topicTestPreparingBody(int count);
+
+  /// No description provided for @topicTestIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} questions · the correct answer and explanation after each one'**
+  String topicTestIntro(int count);
+
+  /// No description provided for @topicTestSavedNote.
+  ///
+  /// In en, this message translates to:
+  /// **'If you leave, your answers are kept — you will continue from the same place.'**
+  String get topicTestSavedNote;
+
+  /// No description provided for @topicTestSourcesNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Questions come only from verified sources: official certification questions with a confirmed key and practice questions with a cited source.'**
+  String get topicTestSourcesNote;
+
+  /// No description provided for @topicTestStart.
+  ///
+  /// In en, this message translates to:
+  /// **'Start the test'**
+  String get topicTestStart;
+
+  /// No description provided for @topicTestResume.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue · {answered}/{total}'**
+  String topicTestResume(int answered, int total);
+
+  /// No description provided for @topicTestBest.
+  ///
+  /// In en, this message translates to:
+  /// **'Best score: {score}/{total}'**
+  String topicTestBest(int score, int total);
+
+  /// No description provided for @topicTestBadgeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Topic test, best score {score} of {total}'**
+  String topicTestBadgeLabel(int score, int total);
+
+  /// No description provided for @topicTestRetake.
+  ///
+  /// In en, this message translates to:
+  /// **'Retake'**
+  String get topicTestRetake;
+
+  /// No description provided for @topicTestNextTopic.
+  ///
+  /// In en, this message translates to:
+  /// **'Next topic'**
+  String get topicTestNextTopic;
+
+  /// No description provided for @topicTestOpenSlide.
+  ///
+  /// In en, this message translates to:
+  /// **'View slide'**
+  String get topicTestOpenSlide;
+
+  /// No description provided for @topicTestOpenDeckStart.
+  ///
+  /// In en, this message translates to:
+  /// **'Open the presentation from the start'**
+  String get topicTestOpenDeckStart;
+
+  /// No description provided for @topicTestHistory.
+  ///
+  /// In en, this message translates to:
+  /// **'Result history'**
+  String get topicTestHistory;
+
+  /// No description provided for @topicTestAssign.
+  ///
+  /// In en, this message translates to:
+  /// **'Assign to a group'**
+  String get topicTestAssign;
+
+  /// No description provided for @topicTestAssignIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Students take the test on their own phones before the deadline; the score is calculated on the server.'**
+  String get topicTestAssignIntro;
+
+  /// No description provided for @topicTestGroups.
+  ///
+  /// In en, this message translates to:
+  /// **'Groups'**
+  String get topicTestGroups;
+
+  /// No description provided for @topicTestNoGroups.
+  ///
+  /// In en, this message translates to:
+  /// **'You have no groups yet'**
+  String get topicTestNoGroups;
+
+  /// No description provided for @topicTestNoGroupsBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Create a group and invite students first — then assign the test from here.'**
+  String get topicTestNoGroupsBody;
+
+  /// No description provided for @topicTestPickGroup.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick at least one group'**
+  String get topicTestPickGroup;
+
+  /// No description provided for @topicTestReveal.
+  ///
+  /// In en, this message translates to:
+  /// **'Correct answers shown to students'**
+  String get topicTestReveal;
+
+  /// No description provided for @topicTestRevealNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Right after submitting'**
+  String get topicTestRevealNow;
+
+  /// No description provided for @topicTestRevealAfterDue.
+  ///
+  /// In en, this message translates to:
+  /// **'After the deadline'**
+  String get topicTestRevealAfterDue;
+
+  /// No description provided for @topicTestRevealNeedsDue.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a deadline to use “After the deadline”'**
+  String get topicTestRevealNeedsDue;
+
+  /// No description provided for @topicTestSent.
+  ///
+  /// In en, this message translates to:
+  /// **'Test sent to groups: {count}'**
+  String topicTestSent(int count);
+
+  /// No description provided for @topicTestTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Topic test: {title}'**
+  String topicTestTitle(String title);
+
+  /// No description provided for @topicTestSentList.
+  ///
+  /// In en, this message translates to:
+  /// **'Sent tests'**
+  String get topicTestSentList;
+
+  /// No description provided for @topicTestAnswersLater.
+  ///
+  /// In en, this message translates to:
+  /// **'Correct answers open after the deadline ({date})'**
+  String topicTestAnswersLater(String date);
+
+  /// No description provided for @topicTestDistribution.
+  ///
+  /// In en, this message translates to:
+  /// **'Score distribution'**
+  String get topicTestDistribution;
+
+  /// No description provided for @topicTestHardest.
+  ///
+  /// In en, this message translates to:
+  /// **'Hardest questions'**
+  String get topicTestHardest;
+
+  /// No description provided for @topicTestAssignedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Assigned tests'**
+  String get topicTestAssignedTitle;
+
+  /// No description provided for @topicTestMenu.
+  ///
+  /// In en, this message translates to:
+  /// **'Actions'**
+  String get topicTestMenu;
+
+  /// No description provided for @topicTestOpenLecture.
+  ///
+  /// In en, this message translates to:
+  /// **'Open the presentation'**
+  String get topicTestOpenLecture;
+
+  /// No description provided for @topicTestCreateGroup.
+  ///
+  /// In en, this message translates to:
+  /// **'Create a group'**
+  String get topicTestCreateGroup;
+
+  /// No description provided for @topicTestStudents.
+  ///
+  /// In en, this message translates to:
+  /// **'Students: {count}'**
+  String topicTestStudents(int count);
+
+  /// No description provided for @topicTestReworkMistakes.
+  ///
+  /// In en, this message translates to:
+  /// **'Review mistakes · {count}'**
+  String topicTestReworkMistakes(int count);
 }
 
 class _AppLocalizationsDelegate

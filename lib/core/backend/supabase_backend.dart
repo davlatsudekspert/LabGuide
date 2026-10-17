@@ -751,6 +751,11 @@ class SupabaseLabBackend implements LabBackend {
     required List<int> correctIndexes,
     DateTime? dueAt,
     int? timeLimitMinutes,
+    // Supabase sxemasida mavzu/deck va “javoblar muddatdan keyin” ustunlari
+    // yo'q (asosiy server — Cloudflare): bu maydonlar saqlanmaydi.
+    String? dayId,
+    String? deckId,
+    bool revealAfterDue = false,
   }) async {
     final id = await _guard(
       () => client.rpc<Object?>(

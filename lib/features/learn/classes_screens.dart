@@ -12,6 +12,7 @@ import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
 import '../classroom/qr_code_view.dart';
 import '../classroom/topic_questions.dart';
+import '../classroom/topic_test_screens.dart' show SlideLink, deckOfAssignment;
 import '../content/content_model.dart';
 import '../content/ui/content_widgets.dart';
 import '../settings/settings_controller.dart';
@@ -1698,11 +1699,14 @@ class _AssignmentScreenState extends State<AssignmentScreen>
           ? null
           : Duration(minutes: a.timeLimitMinutes!);
       final due = a.dueAt?.add(localNow.difference(start.serverNow));
+      final questions = [for (final id in a.questionIds) byId[id]!];
       await exams.startAssignment(
         ExamSession.build(
           id: exams.newId(),
           mode: ExamMode.assignment,
-          questions: [for (final id in a.questionIds) byId[id]!],
+          questions: questions,
+          // Rasmiy (toifa) savollarda variantlar tartibi saqlanadi.
+          shuffleOptions: !questions.any((q) => q is OfficialKeyQuestion),
           sourceId: _packOnly(pack, a)
               ? PackQuestionSource.sourceId
               : ClassQuestionSource.sourceId,
@@ -1911,17 +1915,32 @@ class _AssignmentScreenState extends State<AssignmentScreen>
     ];
     final shown = _all ? all : wrong;
     final unanswered = mine.answers.where((x) => x < 0).length;
+    final hero = ScoreHero(
+      correct: mine.score,
+      total: mine.total,
+      wrong: mine.total - mine.score - unanswered,
+      unanswered: unanswered,
+      caption: l.classesSubmittedAt(formatWhen(mine.submittedAt, context)),
+      badges: [LgTag(l.classesServerScore, icon: Icons.verified_outlined)],
+    );
+    // Ustoz “muddat tugagach” tanlagan: to'g'ri javoblar hozircha yopiq.
+    if (!a.answersOpen(context.services.exams.now()) && a.dueAt != null) {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          hero,
+          LgNotice(
+            l.topicTestAnswersLater(formatWhen(a.dueAt!, context)),
+            kind: NoticeKind.info,
+          ),
+        ],
+      );
+    }
+    final deck = deckOfAssignment(context, a);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        ScoreHero(
-          correct: mine.score,
-          total: mine.total,
-          wrong: mine.total - mine.score - unanswered,
-          unanswered: unanswered,
-          caption: l.classesSubmittedAt(formatWhen(mine.submittedAt, context)),
-          badges: [LgTag(l.classesServerScore, icon: Icons.verified_outlined)],
-        ),
+        hero,
         LgSectionTitle(l.examAnalysis),
         Wrap(
           spacing: 8,
@@ -1949,7 +1968,7 @@ class _AssignmentScreenState extends State<AssignmentScreen>
               final chosen = i < mine.answers.length && mine.answers[i] >= 0
                   ? mine.answers[i]
                   : null;
-              return ExamReviewCard(
+              final card = ExamReviewCard(
                 number: i + 1,
                 question: q,
                 chosen: chosen == null ? null : [chosen],
@@ -1957,6 +1976,14 @@ class _AssignmentScreenState extends State<AssignmentScreen>
                 correct: isRight(i) && chosen != null
                     ? [chosen]
                     : (q?.correct.toList() ?? const []),
+              );
+              if (deck == null || q == null || isRight(i)) return card;
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  card,
+                  SlideLink(question: q, deck: deck),
+                ],
               );
             }(),
       ],
@@ -2046,6 +2073,11 @@ class _AssignmentScreenState extends State<AssignmentScreen>
               ],
             ),
           ),
+        if (subs.isNotEmpty) ...[
+          LgSectionTitle(l.topicTestDistribution),
+          _Distribution(percents: [for (final s in subs.values) s.percent]),
+          ..._hardestQuestions(context, d, byId, subs.values.toList(), right),
+        ],
         LgSectionTitle(l.classesByQuestion),
         if (subs.isEmpty)
           Text(l.classesByQuestionEmpty, style: text.bodyMedium)
@@ -2102,6 +2134,125 @@ class _AssignmentScreenState extends State<AssignmentScreen>
               );
             }(),
       ],
+    );
+  }
+}
+
+/// Eng ko'p xato qilingan savollar (5 tagacha) va (deck ma'lum bo'lsa)
+/// tegishli slayd havolasi.
+List<Widget> _hardestQuestions(
+  BuildContext context,
+  _AssignmentData d,
+  Map<String, ExamQuestion> byId,
+  List<GroupSubmission> subs,
+  bool Function(GroupSubmission s, int i) right,
+) {
+  final l = AppLocalizations.of(context);
+  final text = Theme.of(context).textTheme;
+  final lang = Localizations.localeOf(context).languageCode;
+  final a = d.assignment;
+  final wrong =
+      [
+        for (var i = 0; i < a.questionIds.length; i++)
+          (i, subs.where((s) => !right(s, i)).length),
+      ].where((e) => e.$2 > 0).toList()..sort(
+        (x, y) => y.$2 != x.$2 ? y.$2.compareTo(x.$2) : x.$1.compareTo(y.$1),
+      );
+  if (wrong.isEmpty) return const [];
+  final deck = deckOfAssignment(context, a);
+  return [
+    LgSectionTitle(l.topicTestHardest),
+    for (final (i, n) in wrong.take(5))
+      () {
+        final q = byId[a.questionIds[i]];
+        return LgPanel(
+          key: ValueKey('hardest-$i'),
+          padding: const EdgeInsets.fromLTRB(16, 14, 16, 4),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Row(
+                children: [
+                  Expanded(child: LgEyebrow(l.examQuestionN(i + 1))),
+                  LgTag(l.classesWrongOf(n, subs.length), tone: LgTone.warning),
+                ],
+              ),
+              const SizedBox(height: 6),
+              Text(
+                q?.prompt(lang) ?? l.examQuestionMissing,
+                style: text.bodyMedium,
+              ),
+              if (q != null && deck != null)
+                SlideLink(question: q, deck: deck)
+              else
+                const SizedBox(height: 10),
+            ],
+          ),
+        );
+      }(),
+  ];
+}
+
+/// Natijalar taqsimoti: foiz oraliqlari bo'yicha talabalar soni.
+class _Distribution extends StatelessWidget {
+  const _Distribution({required this.percents});
+
+  final List<int> percents;
+
+  static const _bands = [(90, 100), (70, 89), (50, 69), (0, 49)];
+
+  @override
+  Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context);
+    final p = LgPalette.of(context);
+    final text = Theme.of(context).textTheme;
+    final total = percents.length;
+    return LgPanel(
+      key: const ValueKey('score-distribution'),
+      padding: const EdgeInsets.fromLTRB(16, 10, 16, 10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          for (final (from, to) in _bands)
+            () {
+              final n = percents.where((x) => x >= from && x <= to).length;
+              return Semantics(
+                label: '$from–$to%: ${l.topicTestStudents(n)}',
+                excludeSemantics: true,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 6),
+                  child: Row(
+                    children: [
+                      SizedBox(
+                        width: 72,
+                        child: Text('$from–$to%', style: text.labelMedium),
+                      ),
+                      Expanded(
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(4),
+                          child: LinearProgressIndicator(
+                            value: total == 0 ? 0 : n / total,
+                            minHeight: 8,
+                            color: from >= 50 ? p.brand : p.amber,
+                            backgroundColor: p.paper,
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 32,
+                        child: Text(
+                          '$n',
+                          textAlign: TextAlign.end,
+                          style: text.titleSmall,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            }(),
+        ],
+      ),
     );
   }
 }

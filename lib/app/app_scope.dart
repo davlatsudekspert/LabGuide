@@ -10,6 +10,7 @@ import '../core/storage/kv_store.dart';
 import '../features/auth/auth_controller.dart';
 import '../features/classroom/classroom_local.dart';
 import '../features/classroom/curriculum.dart';
+import '../features/classroom/topic_test.dart';
 import '../features/community/community_controller.dart';
 import '../features/content/content_controller.dart';
 import '../features/daily/daily_controller.dart';
@@ -81,6 +82,7 @@ class AppServices {
     required this.curriculum,
     required this.classroom,
     required this.community,
+    required this.topicTests,
   });
 
   final AppConfig config;
@@ -136,6 +138,9 @@ class AppServices {
   /// Hamjamiyat (savol-javob, mutaxassis tasdig'i) — faqat Cloudflare
   /// serveri ulangan buildda ([CommunityController.available]).
   final CommunityController community;
+
+  /// Mavzu testlari (taqdimot oxirida): qoralama va natijalar (qurilmada).
+  final TopicTestController topicTests;
 
   /// Adminlar boshqaruvi (D-44) — server bu imkoniyatga ega bo'lsa
   /// (hozircha faqat Cloudflare). Aks holda bo'lim ko'rinmaydi.
@@ -199,6 +204,7 @@ class AppServices {
     differential.resetInMemory();
     daily.resetInMemory();
     classroom.resetInMemory();
+    topicTests.resetInMemory();
     community.resetInMemory();
     await reminders.reset();
     await packs.removeAll();

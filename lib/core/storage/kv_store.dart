@@ -84,6 +84,10 @@ abstract final class StoreKeys {
   /// faqat shu qurilmada (App Store 1.2: suiiste'molchini bloklash).
   static const communityBlocked = 'community.blocked';
 
+  /// Mavzu testlari (taqdimot oxirida): boshlangan test, oxirgi urinish va
+  /// natijalar tarixi — faqat shu qurilmada.
+  static const topicTests = 'classroom.topicTests';
+
   static const all = <String>{
     language,
     themeMode,
@@ -121,6 +125,7 @@ abstract final class StoreKeys {
     dailyStreak,
     dailyReminder,
     classroomLocal,
+    topicTests,
     communityRulesOpen,
     communityBlocked,
   };

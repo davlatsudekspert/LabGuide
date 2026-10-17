@@ -600,6 +600,18 @@ interface AssignmentRow {
   opened_at: number | null;
   closed_at: number | null;
   created_at: number;
+  /** 0010: taqdimot (deck) id si va javoblar qachon ochiladi. */
+  deck_id: string | null;
+  reveal: 'now' | 'after_due';
+}
+
+/**
+ * Talabaga har savol bo'yicha to'g'ri/xato ochiqmi: `now` — darhol;
+ * `after_due` — muddat o'tgach yoki ustoz testni yakunlagach.
+ */
+function revealed(a: Pick<AssignmentRow, 'reveal' | 'due_at' | 'status'>, now: number): boolean {
+  if (a.reveal !== 'after_due') return true;
+  return a.status === 'closed' || (a.due_at != null && now >= a.due_at);
 }
 
 function assignmentJson(a: AssignmentRow) {
@@ -616,6 +628,8 @@ function assignmentJson(a: AssignmentRow) {
     opened_at: iso(a.opened_at),
     closed_at: iso(a.closed_at),
     created_at: iso(a.created_at),
+    deck_id: a.deck_id ?? null,
+    reveal: a.reveal ?? 'now',
   };
 }
 
@@ -672,14 +686,23 @@ function parseAssignment(ctx: Ctx, body: Record<string, unknown>) {
       throw badRequest('invalid_due');
     }
   }
-  return { title, questionIds, key: key as number[], limit, due };
+  let deck: string | null = null;
+  if (body.deck_id != null) {
+    if (typeof body.deck_id !== 'string' || !TOPIC_RE.test(body.deck_id)) throw badRequest('invalid_deck');
+    deck = body.deck_id;
+  }
+  const reveal = body.reveal == null ? 'now' : body.reveal;
+  if (reveal !== 'now' && reveal !== 'after_due') throw badRequest('invalid_reveal');
+  // "Muddat tugagach" — muddat bo'lishi shart (aks holda javob hech qachon ochilmaydi).
+  if (reveal === 'after_due' && due == null) throw badRequest('invalid_reveal');
+  return { title, questionIds, key: key as number[], limit, due, deck, reveal };
 }
 
 export async function createAssignment(ctx: Ctx, gid: string): Promise<Response> {
   const s = await requireSession(ctx);
   await requireTeacher(ctx, s, gid);
   const body = await readJson(ctx.req);
-  const { title, questionIds, key, limit, due } = parseAssignment(ctx, body);
+  const { title, questionIds, key, limit, due, deck, reveal } = parseAssignment(ctx, body);
   const day = body.day_id == null ? null : topicId(body.day_id);
   // Standart: darhol ochiladi (eski oqim); `start: false` — qoralama.
   const open = body.start !== false;
@@ -687,10 +710,23 @@ export async function createAssignment(ctx: Ctx, gid: string): Promise<Response>
   await ctx.db.batch([
     ctx.db
       .prepare(
-        `INSERT INTO assignments (id, group_id, title, day_id, question_ids, time_limit_minutes, due_at, status, opened_at, created_at)
-         VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10)`,
+        `INSERT INTO assignments (id, group_id, title, day_id, question_ids, time_limit_minutes, due_at, status, opened_at, created_at, deck_id, reveal)
+         VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12)`,
       )
-      .bind(aid, gid, title, day, JSON.stringify(questionIds), limit, due, open ? 'open' : 'draft', open ? ctx.now : null, ctx.now),
+      .bind(
+        aid,
+        gid,
+        title,
+        day,
+        JSON.stringify(questionIds),
+        limit,
+        due,
+        open ? 'open' : 'draft',
+        open ? ctx.now : null,
+        ctx.now,
+        deck,
+        reveal,
+      ),
     ctx.db
       .prepare('INSERT INTO assignment_keys (assignment_id, correct_indexes) VALUES (?1, ?2)')
       .bind(aid, JSON.stringify(key)),
@@ -802,7 +838,8 @@ export async function submitAssignment(ctx: Ctx, aid: string): Promise<Response>
       score,
       total: key.length,
       answers,
-      correct,
+      // "Muddat tugagach" — har savol bo'yicha natija hozircha yopiq.
+      correct: revealed(a, ctx.now) ? correct : null,
       submitted_at: iso(ctx.now),
     },
     201,
@@ -819,13 +856,14 @@ interface SubmissionRow {
   submitted_at: number;
 }
 
-const submissionJson = (r: SubmissionRow) => ({
+/** [hide] — talabaga javoblar hali ochilmagan (`after_due`): `correct` — null. */
+const submissionJson = (r: SubmissionRow, hide = false) => ({
   assignment_id: r.assignment_id,
   user_id: r.user_id,
   score: r.score,
   total: r.total,
   answers: JSON.parse(r.answers) as number[],
-  correct: JSON.parse(r.correct) as boolean[],
+  correct: hide ? null : (JSON.parse(r.correct) as boolean[]),
   submitted_at: iso(r.submitted_at),
 });
 
@@ -839,7 +877,8 @@ export async function listSubmissions(ctx: Ctx, aid: string): Promise<Response> 
     )
     .bind(a.id, teacher ? 1 : 0, s.userId)
     .all<SubmissionRow>();
-  return json(rows.results.map(submissionJson));
+  const hide = !teacher && !revealed(a, ctx.now);
+  return json(rows.results.map((r) => submissionJson(r, hide)));
 }
 
 export async function groupSubmissions(ctx: Ctx, gid: string): Promise<Response> {
@@ -848,12 +887,12 @@ export async function groupSubmissions(ctx: Ctx, gid: string): Promise<Response>
   const teacher = m.role === 'teacher' && m.owner;
   const rows = await ctx.db
     .prepare(
-      `SELECT s.* FROM submissions s JOIN assignments a ON a.id = s.assignment_id
+      `SELECT s.*, a.reveal, a.due_at, a.status FROM submissions s JOIN assignments a ON a.id = s.assignment_id
        WHERE a.group_id = ?1 AND (?2 = 1 OR s.user_id = ?3) ORDER BY s.submitted_at`,
     )
     .bind(gid, teacher ? 1 : 0, s.userId)
-    .all<SubmissionRow>();
-  return json(rows.results.map(submissionJson));
+    .all<SubmissionRow & Pick<AssignmentRow, 'reveal' | 'due_at' | 'status'>>();
+  return json(rows.results.map((r) => submissionJson(r, !teacher && !revealed(r, ctx.now))));
 }
 
 export async function assignmentKey(ctx: Ctx, aid: string): Promise<Response> {

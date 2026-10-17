@@ -11,7 +11,7 @@ final uz = AppLocalizationsUz();
 
 Future<void> _pick(WidgetTester tester) async {
   final f = find.byWidgetPredicate(
-    (w) => w.runtimeType.toString() == '_OptionButton',
+    (w) => w.runtimeType.toString() == 'QuizOptionButton',
   );
   await tester.ensureVisible(f.first);
   await tester.tap(f.first);

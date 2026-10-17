@@ -129,6 +129,10 @@ abstract interface class LabBackend implements OtpAuthAdapter {
   /// Ustoz talabani guruhdan chiqaradi (ustozni emas).
   Future<void> removeMember(String groupId, String userId);
   Future<List<GroupAssignment>> assignments(String groupId);
+
+  /// [dayId] — o'quv dasturi mavzusi, [deckId] — taqdimot (mavzu testi);
+  /// [revealAfterDue] — to'g'ri javoblar talabaga muddat tugagach (muddat
+  /// bo'lishi shart).
   Future<String> createAssignment({
     required String groupId,
     required String title,
@@ -136,6 +140,9 @@ abstract interface class LabBackend implements OtpAuthAdapter {
     required List<int> correctIndexes,
     DateTime? dueAt,
     int? timeLimitMinutes,
+    String? dayId,
+    String? deckId,
+    bool revealAfterDue = false,
   });
 
   /// Talaba topshiriqni boshlaydi (qayta chaqirilsa — o'sha vaqt qaytadi).
@@ -339,6 +346,9 @@ class UnconfiguredBackend implements LabBackend {
     required List<int> correctIndexes,
     DateTime? dueAt,
     int? timeLimitMinutes,
+    String? dayId,
+    String? deckId,
+    bool revealAfterDue = false,
   }) async => _no();
   @override
   Future<AssignmentStart> startAssignment(String assignmentId) async => _no();

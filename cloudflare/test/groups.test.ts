@@ -286,3 +286,89 @@ describe('mavzular, belgilar, test sessiyasi', () => {
     expect((await s.call('POST', '/v1/groups', { token: t.token, body: { name: 'Guruh 11' } })).status).toBe(429);
   });
 });
+
+describe('taqdimotdan mavzu testi (0010: deck_id, reveal)', () => {
+  const base = { title: 'Mavzu testi: Anemiyalar', question_ids: ['kdl-t-001', 'iron-ferritin'], correct_indexes: [1, 0] };
+
+  it("deck_id va reveal saqlanadi va ro'yxatda qaytadi; standart — now", async () => {
+    const { s, tA, gA, s1, aid } = await classroom();
+    const due = new Date(s.clock.now + 86400_000).toISOString();
+    const r = await s.call('POST', `/v1/groups/${gA.id}/assignments`, {
+      token: tA.token,
+      body: { ...base, day_id: 'd013-L', deck_id: 'd013', reveal: 'after_due', due_at: due },
+    });
+    expect(r.status).toBe(201);
+    const list = (await s.call('GET', `/v1/groups/${gA.id}/assignments`, { token: s1.token })).data;
+    const mine = list.find((x: any) => x.id === r.data.id);
+    expect(mine).toMatchObject({ deck_id: 'd013', reveal: 'after_due', topic_id: 'd013-L' });
+    // Eski topshiriq (deck_id siz) — o'zgarmagan: reveal now.
+    expect(list.find((x: any) => x.id === aid)).toMatchObject({ deck_id: null, reveal: 'now' });
+  });
+
+  it("noto'g'ri deck_id/reveal va muddatsiz after_due — 400", async () => {
+    const { s, tA, gA } = await classroom();
+    const due = new Date(s.clock.now + 86400_000).toISOString();
+    for (const extra of [
+      { deck_id: '' },
+      { deck_id: '../x' },
+      { deck_id: 'a'.repeat(81) },
+      { deck_id: 12 },
+      { reveal: 'later' },
+      { reveal: 'after_due' },
+    ]) {
+      const r = await s.call('POST', `/v1/groups/${gA.id}/assignments`, { token: tA.token, body: { ...base, ...extra } });
+      expect(r.status, JSON.stringify(extra)).toBe(400);
+    }
+    const ok = await s.call('POST', `/v1/groups/${gA.id}/assignments`, {
+      token: tA.token,
+      body: { ...base, deck_id: 'kapillyar-qon-olish', reveal: 'after_due', due_at: due },
+    });
+    expect(ok.status).toBe(201);
+  });
+
+  it("after_due: talaba muddatgacha har savol natijasini olmaydi, keyin oladi; ustoz doim ko'radi", async () => {
+    const { s, tA, gA, s1 } = await classroom();
+    const due = new Date(s.clock.now + 3600_000).toISOString();
+    const a = (
+      await s.call('POST', `/v1/groups/${gA.id}/assignments`, {
+        token: tA.token,
+        body: { ...base, deck_id: 'd013', reveal: 'after_due', due_at: due },
+      })
+    ).data.id;
+    await s.call('POST', `/v1/assignments/${a}/start`, { token: s1.token });
+    const sub = await s.call('POST', `/v1/assignments/${a}/submit`, { token: s1.token, body: { answers: [1, 2] } });
+    expect(sub.status).toBe(201);
+    expect(sub.data.score).toBe(1);
+    expect(sub.data.correct).toBeNull();
+    const mine = (await s.call('GET', `/v1/assignments/${a}/submissions`, { token: s1.token })).data;
+    expect(mine[0].correct).toBeNull();
+    expect(mine[0].score).toBe(1);
+    const inGroup = (await s.call('GET', `/v1/groups/${gA.id}/submissions`, { token: s1.token })).data;
+    expect(inGroup.find((x: any) => x.assignment_id === a).correct).toBeNull();
+    // Ustoz — darhol.
+    const t = (await s.call('GET', `/v1/assignments/${a}/submissions`, { token: tA.token })).data;
+    expect(t[0].correct).toEqual([true, false]);
+    // Muddat o'tdi — talabaga ham ochiladi.
+    s.clock.now += 2 * 3600_000;
+    const after = (await s.call('GET', `/v1/assignments/${a}/submissions`, { token: s1.token })).data;
+    expect(after[0].correct).toEqual([true, false]);
+    const groupAfter = (await s.call('GET', `/v1/groups/${gA.id}/submissions`, { token: s1.token })).data;
+    expect(groupAfter.find((x: any) => x.assignment_id === a).correct).toEqual([true, false]);
+  });
+
+  it('after_due: ustoz testni yakunlasa javoblar ochiladi', async () => {
+    const { s, tA, gA, s1 } = await classroom();
+    const due = new Date(s.clock.now + 86400_000).toISOString();
+    const a = (
+      await s.call('POST', `/v1/groups/${gA.id}/assignments`, {
+        token: tA.token,
+        body: { ...base, deck_id: 'd013', reveal: 'after_due', due_at: due },
+      })
+    ).data.id;
+    await s.call('POST', `/v1/assignments/${a}/start`, { token: s1.token });
+    await s.call('POST', `/v1/assignments/${a}/submit`, { token: s1.token, body: { answers: [1, 0] } });
+    expect((await s.call('GET', `/v1/assignments/${a}/submissions`, { token: s1.token })).data[0].correct).toBeNull();
+    await s.call('POST', `/v1/assignments/${a}/close`, { token: tA.token });
+    expect((await s.call('GET', `/v1/assignments/${a}/submissions`, { token: s1.token })).data[0].correct).toEqual([true, true]);
+  });
+});

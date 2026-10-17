@@ -204,8 +204,9 @@ void main() {
     expect(find.text('Aliyev Anvar'), findsOneWidget);
     expect(find.text('1 / 1'), findsOneWidget);
     expect(find.text('67%'), findsWidgets);
+    // “Eng qiyin savollar” va “Savollar bo'yicha” — ikkalasida ham.
     await tester.scrollUntilVisible(
-      find.text(uz.classesWrongOf(1, 1)),
+      find.text(uz.classesWrongOf(1, 1)).first,
       300,
       scrollable: find.byType(Scrollable).hitTestable().first,
     );
