@@ -528,7 +528,8 @@
    "market_note": null,
    "status": "device_info",
    "principle": null,
-   "official_page": "mr-bs240"
+   "official_page": "mr-bs240",
+   "schematic": "chemistry"
   },
   {
    "id": "mindray-bs-480",
@@ -619,7 +620,8 @@
    "image": null,
    "market_note": null,
    "status": "device_info",
-   "official_page": "mr-bs480"
+   "official_page": "mr-bs480",
+   "schematic": "chemistry"
   },
   {
    "id": "human-humastar-600",
@@ -726,7 +728,8 @@
    "image": null,
    "market_note": null,
    "status": "device_info",
-   "official_page": "hu-hs600"
+   "official_page": "hu-hs600",
+   "schematic": "chemistry"
   },
   {
    "id": "human-humalyzer-4000",
@@ -1084,7 +1087,8 @@
    "image": null,
    "market_note": null,
    "status": "device_info",
-   "official_page": "hu-hl4000"
+   "official_page": "hu-hl4000",
+   "schematic": "photometer"
   },
   {
    "id": "roche-cobas-c-311",
@@ -1180,7 +1184,8 @@
    "image": null,
    "market_note": null,
    "status": "device_info",
-   "official_page": "ro-c311"
+   "official_page": "ro-c311",
+   "schematic": "chemistry"
   },
   {
    "id": "roche-cobas-c-303",
@@ -1276,7 +1281,8 @@
    "image": null,
    "market_note": null,
    "status": "device_info",
-   "official_page": "ro-c303"
+   "official_page": "ro-c303",
+   "schematic": "chemistry"
   },
   {
    "id": "abbott-architect-c4000",
@@ -1366,7 +1372,8 @@
    "image": null,
    "market_note": null,
    "status": "device_info",
-   "official_page": "ab-c4000"
+   "official_page": "ab-c4000",
+   "schematic": "chemistry"
   },
   {
    "id": "abbott-alinity-c",
@@ -1434,7 +1441,8 @@
    "market_note": null,
    "status": "device_info",
    "purpose": null,
-   "official_page": "ab-alinity-ci"
+   "official_page": "ab-alinity-ci",
+   "schematic": "chemistry"
   },
   {
    "id": "mindray-bc-5390",
@@ -1514,7 +1522,8 @@
    "image": null,
    "market_note": null,
    "status": "device_info",
-   "official_page": "mr-bc5390"
+   "official_page": "mr-bc5390",
+   "schematic": "hematology5"
   },
   {
    "id": "mindray-bc-30s",
@@ -1586,7 +1595,8 @@
    "market_note": null,
    "status": "device_info",
    "principle": null,
-   "official_page": "mr-bc30s"
+   "official_page": "mr-bc30s",
+   "schematic": "hematology3"
   },
   {
    "id": "mindray-bc-6200",
@@ -1654,7 +1664,8 @@
    "market_note": null,
    "status": "device_info",
    "purpose": null,
-   "official_page": "mr-bc6200"
+   "official_page": "mr-bc6200",
+   "schematic": "hematology5"
   },
   {
    "id": "human-humacount-5d",
@@ -1747,7 +1758,8 @@
    "image": null,
    "market_note": null,
    "status": "device_info",
-   "official_page": "hu-hc5d"
+   "official_page": "hu-hc5d",
+   "schematic": "hematology5"
   },
   {
    "id": "human-humacount-30ts",
@@ -1840,7 +1852,8 @@
    "image": null,
    "market_note": null,
    "status": "device_info",
-   "official_page": "hu-hc30ts"
+   "official_page": "hu-hc30ts",
+   "schematic": "hematology3"
   },
   {
    "id": "abbott-cell-dyn-emerald-22-al",
@@ -1920,7 +1933,8 @@
    "image": null,
    "market_note": null,
    "status": "device_info",
-   "official_page": "ab-emerald"
+   "official_page": "ab-emerald",
+   "schematic": "hematology5"
   },
   {
    "id": "abbott-cell-dyn-emerald",
@@ -1995,7 +2009,8 @@
    "image": null,
    "market_note": null,
    "status": "device_info",
-   "official_page": null
+   "official_page": null,
+   "schematic": "hematology3"
   },
   {
    "id": "abbott-alinity-hq",
@@ -2075,7 +2090,8 @@
    "image": null,
    "market_note": null,
    "status": "device_info",
-   "official_page": "ab-hq"
+   "official_page": "ab-hq",
+   "schematic": "hematology5"
   },
   {
    "id": "mindray-cl-900i",
@@ -2173,7 +2189,8 @@
    "image": null,
    "market_note": null,
    "status": "device_info",
-   "official_page": "mr-cl900i"
+   "official_page": "mr-cl900i",
+   "schematic": "immunoassay"
   },
   {
    "id": "mindray-cl-1200i",
@@ -2264,7 +2281,8 @@
    "image": null,
    "market_note": null,
    "status": "device_info",
-   "official_page": "mr-cl1200i"
+   "official_page": "mr-cl1200i",
+   "schematic": "immunoassay"
   },
   {
    "id": "human-humaclia-150",
@@ -2353,7 +2371,8 @@
    "image": null,
    "market_note": null,
    "status": "device_info",
-   "official_page": "hu-clia150"
+   "official_page": "hu-clia150",
+   "schematic": "immunoassay"
   },
   {
    "id": "roche-cobas-e-411",
@@ -2435,7 +2454,8 @@
    "image": null,
    "market_note": null,
    "status": "device_info",
-   "official_page": "ro-e411"
+   "official_page": "ro-e411",
+   "schematic": "immunoassay"
   },
   {
    "id": "roche-cobas-e-402",
@@ -2521,7 +2541,8 @@
    "image": null,
    "market_note": null,
    "status": "device_info",
-   "official_page": "ro-e402"
+   "official_page": "ro-e402",
+   "schematic": "immunoassay"
   },
   {
    "id": "abbott-architect-i1000sr",
@@ -2606,7 +2627,8 @@
    "image": null,
    "market_note": null,
    "status": "device_info",
-   "official_page": "ab-i1000"
+   "official_page": "ab-i1000",
+   "schematic": "immunoassay"
   },
   {
    "id": "abbott-alinity-i",
@@ -2674,7 +2696,8 @@
    "market_note": null,
    "status": "device_info",
    "purpose": null,
-   "official_page": "ab-alinity-ci"
+   "official_page": "ab-alinity-ci",
+   "schematic": "immunoassay"
   },
   {
    "id": "roche-cobas-u-411",
@@ -2765,7 +2788,8 @@
    "image": null,
    "market_note": null,
    "status": "device_info",
-   "official_page": "ro-u411"
+   "official_page": "ro-u411",
+   "schematic": "urine_strip"
   },
   {
    "id": "roche-cobas-6500",
@@ -2857,7 +2881,8 @@
    "image": null,
    "market_note": null,
    "status": "device_info",
-   "official_page": "ro-6500"
+   "official_page": "ro-6500",
+   "schematic": "urine_system"
   },
   {
    "id": "mindray-eu-5600-pro",
@@ -2924,7 +2949,8 @@
    "image": null,
    "market_note": null,
    "status": "device_info",
-   "official_page": "mr-eu5600"
+   "official_page": "mr-eu5600",
+   "schematic": "urine_system"
   }
  ]
 }

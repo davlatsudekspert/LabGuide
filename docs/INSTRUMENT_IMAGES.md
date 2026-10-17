@@ -1,11 +1,67 @@
 # Apparat rasmlari — huquq va holat (2026-10-17)
 
-Qoida (D-36a): model kartasida faqat **aynan shu modelning** fotosi turadi —
-ishlab chiqaruvchining rasmiy materialidan **yozma ruxsat bilan** yoki modeli
-aniq ko'rsatilgan ochiq litsenziyali manbadan (CC0 / CC BY / CC BY-SA / PD).
-O'xshash model, boshqa avlod/konfiguratsiya, AI yoki sxematik tasvir model
-rasmi sifatida ishlatilmaydi. Rasm yo'q bo'lsa — neytral belgi va “Model rasmi
-hozircha mavjud emas”, ostida “Ishlab chiqaruvchi manbasi” havolasi.
+Qoida (D-36a): model kartasida **model fotosi** sifatida faqat **aynan shu
+modelning** fotosi turadi — ishlab chiqaruvchining rasmiy materialidan **yozma
+ruxsat bilan** yoki modeli aniq ko'rsatilgan ochiq litsenziyali manbadan
+(CC0 / CC BY / CC BY-SA / PD). O'xshash model, boshqa avlod/konfiguratsiya, AI
+yoki sxematik tasvir model rasmi sifatida ishlatilmaydi.
+
+Rasm yo'q bo'lsa — kartada apparat **TURINING** LabGuide o'zi chizgan sxematik
+tasviri turadi (pastdagi “Sxematik tasvirlar siyosati”) va har doim ko'rinib
+turuvchi izoh: “Sxematik tasvir — aniq model emas” (ru: “Схематичное
+изображение — не фото конкретной модели” / en: “Schematic illustration — not
+a photo of this exact model”). Ostida — “Ishlab chiqaruvchi manbasi” havolasi.
+
+## Sxematik tasvirlar siyosati
+
+Neytral belgi o'rniga ilova egasi talabi bilan **o'zimiz chizgan, original**
+sxematik tasvirlar ko'rsatiladi. D-36a qoidasiga zid kelmasligi uchun:
+
+- Chizma **apparat turi/yo'nalishi** bo'yicha, modelga emas: bir turdagi barcha
+  modellarga bir xil chizma. Brend, logotip, yozuv, ishlab chiqaruvchi
+  dizayniga o'xshatilgan shakl yo'q (rasmda matn umuman yo'q). Funksional
+  qismlar umumiy: namuna rakasi/diski, reagent joyi, zond/igna qo'li, displey,
+  chiqindi idishi, shlanglar.
+- Hech qachon “model fotosi” sifatida berilmaydi: kartada **doim** ko'rinib
+  turuvchi uch tilli izoh bor (`instSchematicCaption`: uz “Sxematik tasvir —
+  aniq model emas”, ru “Схематичное изображение — не фото конкретной модели”,
+  en “Schematic illustration — not a photo of this exact model”); muallif /
+  litsenziya / “Huquq tekshirilgan” qatorlari chiqmaydi (bu foto emas).
+- Aniq model fotosi (ruxsat yoki ochiq litsenziya bilan) `image={...}` orqali
+  qo'shilsa, u chizmaning **o'rnini egallaydi** — foto mantig'i va atribusiya
+  o'zgarmagan (`instrument_image.dart`: `img != null` → foto, aks holda chizma).
+- Tuzilmaviy farq: chizma faqat turni bildiradi. Masalan 6 qismli Alinity hq
+  umumiy avtomatik gematologiya chizmasini oladi — bu modelga xos emas.
+
+Turlar (katalogdagi `schematic` kaliti; manba — `tool/instrument_catalog_src.py`
+dagi `SCHEMATICS`, bo'lmasa yo'nalishning standart chizmasi):
+
+| Kalit | Yo'nalish | Qaysi modellar (`kind` bo'yicha) |
+|---|---|---|
+| `chemistry` | chemistry | avtomatik biokimyoviy analizator (BS-240, BS-480, HumaStar 600, cobas c 311/c 303, ARCHITECT c4000, Alinity c) |
+| `photometer` | chemistry | yarim avtomatik fotometr (HumaLyzer 4000) |
+| `hematology5` | hematology | 5 (6) qismli gematologik analizator (BC-5390, BC-6200, HumaCount 5D, CELL-DYN Emerald 22 AL, Alinity hq) |
+| `hematology3` | hematology | 3 qismli, ixcham (BC-30s, HumaCount 30TS, CELL-DYN Emerald) |
+| `immunoassay` | immunoassay | xemilyuminessent/elektroxemilyuminessent immunoanalizator (CL-900i, CL-1200i, HumaCLIA 150, cobas e 411/e 402, ARCHITECT i1000SR, Alinity i) |
+| `urine_strip` | urinalysis | siydik test-chiziq o'quvchisi (cobas u 411) |
+| `urine_system` | urinalysis | siydik tahlili tizimi: chiziq + cho'kma (cobas 6500, EU-5600 Pro) |
+
+Katalogda koagulyatsiya analizatori va mikroplastinka (ELISA) o'quvchisi yo'q
+— ular chizilmadi; modeli paydo bo'lsa, tur qo'shiladi (`gen.py`,
+`InstrumentSchematic`, `SCHEMATIC_BY_CATEGORY`).
+
+Fayllar: `assets/instruments/schematic/<kalit>_480.png` (karta, 480×320) va
+`<kalit>_1200.png` (to'liq ekran, 1200×800), shaffof fon (kunduzgi va tungi
+mavzuda neytral fon ustida o'qiladi). Karta bosilsa — to'liq ekran (katta nusxa
++ izoh). Chizish: `python3 tool/illustrations/schematic/gen.py` (SVG) →
+`node tool/illustrations/render.cjs --schematic` (PNG, Playwright;
+`NODE_PATH=$(npm root -g)`) → `python3 tool/instrument_catalog_src.py`
+(katalog fayl mavjudligini tekshiradi). Palitra `lib/design/tokens.dart` va
+mavjud `tool/illustrations/*.svg` bilan bir xil.
+
+Yo'nalish sahifasidagi bezak chizmalari (`assets/instruments/img/*.png`,
+“Sxematik tasvir (LabGuide chizgan) — bezak…” izohi bilan) alohida va model
+kartasida ishlatilmaydi.
 
 Rasm qo'shish: `tool/instrument_catalog_src.py` da modelga `image={...}`
 (`asset` ~480 px, `asset_large` ≤1600 px, `manufacturer`, `model`,
@@ -15,7 +71,8 @@ validatori to'liq bo'lmagan yoki boshqa modelga tegishli metadatani rad etadi.
 
 ## Ilovadagi rasmlar
 
-Hozircha **yo'q** (26 modeldan 0). Hamma kartada neytral belgi. Ilovada
+Hozircha **yo'q** (26 modeldan 0 ta foto). Hamma kartada tur chizmasi va
+“Sxematik tasvir — aniq model emas” izohi. Foto qo'shilgach, ilovada
 rasm ostida muallif · litsenziya (manba sahifasiga havola) va “Huquq
 tekshirilgan” sanasi ko'rinadi; to'liq ekranda `rights` matni ham chiqadi
 (`lib/features/instruments/instrument_image.dart`) — rasm qo'shilsa
@@ -30,32 +87,32 @@ bo'yicha model nomi bilan qidirildi (2026-10-17). Ruxsat xatlari:
 
 | Model | Holat | Manba | Litsenziya | Keyingi qadam |
 |---|---|---|---|---|
-| BS-240 | rasm yo'q (neytral belgi) | ochiq manbada topilmadi | — | ruxsat xati `mindray.md` |
-| BS-480 | rasm yo'q (neytral belgi) | ochiq manbada topilmadi | — | ruxsat xati `mindray.md` |
-| HumaStar 600 | rasm yo'q (neytral belgi) | ochiq manbada topilmadi | — | ruxsat xati `human.md` |
-| HumaLyzer 4000 | rasm yo'q (neytral belgi) | ochiq manbada topilmadi | — | ruxsat xati `human.md` |
-| cobas c 311 | rasm yo'q (neytral belgi) | ochiq manbada topilmadi | — | ruxsat xati `roche_diagnostics.md` |
-| cobas c 303 | rasm yo'q (neytral belgi) | ochiq manbada topilmadi | — | ruxsat xati `roche_diagnostics.md` |
-| ARCHITECT c4000 | rasm yo'q (neytral belgi) | ochiq manbada topilmadi | — | ruxsat xati `abbott.md` |
-| Alinity c | rasm yo'q (neytral belgi) | ochiq manbada topilmadi | — | ruxsat xati `abbott.md` |
-| BC-5390 | rasm yo'q (neytral belgi) | ochiq manbada topilmadi | — | ruxsat xati `mindray.md` |
-| BC-30s | rasm yo'q (neytral belgi) | ochiq manbada topilmadi | — | ruxsat xati `mindray.md` |
-| BC-6200 | rasm yo'q (neytral belgi) | ochiq manbada topilmadi | — | ruxsat xati `mindray.md` |
-| HumaCount 5D | rasm yo'q (neytral belgi) | ochiq manbada topilmadi | — | ruxsat xati `human.md` |
-| HumaCount 30TS | rasm yo'q (neytral belgi) | ochiq manbada topilmadi | — | ruxsat xati `human.md` |
-| CELL-DYN Emerald 22 AL | rasm yo'q (neytral belgi) | ochiq manbada topilmadi | — | ruxsat xati `abbott.md` |
-| CELL-DYN Emerald | rasm yo'q (neytral belgi) | ochiq manbada topilmadi | — | ruxsat xati `abbott.md` |
-| Alinity hq | rasm yo'q (neytral belgi) | ochiq manbada topilmadi | — | ruxsat xati `abbott.md` |
-| CL-900i | rasm yo'q (neytral belgi) | ochiq manbada topilmadi | — | ruxsat xati `mindray.md` |
-| CL-1200i | rasm yo'q (neytral belgi) | ochiq manbada topilmadi | — | ruxsat xati `mindray.md` |
-| HumaCLIA 150 | rasm yo'q (neytral belgi) | ochiq manbada topilmadi | — | ruxsat xati `human.md` |
-| cobas e 411 | rasm yo'q (neytral belgi) | ochiq manbada topilmadi | — | ruxsat xati `roche_diagnostics.md` |
-| cobas e 402 | rasm yo'q (neytral belgi) | ochiq manbada topilmadi | — | ruxsat xati `roche_diagnostics.md` |
-| ARCHITECT i1000SR | rasm yo'q (neytral belgi) | ochiq manbada topilmadi | — | ruxsat xati `abbott.md` |
-| Alinity i | rasm yo'q (neytral belgi) | ochiq manbada topilmadi | — | ruxsat xati `abbott.md` |
-| cobas u 411 | rasm yo'q (neytral belgi) | Commons: File:Cobas_u_411.JPG (Roto2esdios) — sifat talabiga javob bermaydi, pastga qarang | CC BY-SA 4.0 (+GFDL) — lekin ishlatilmadi | ruxsat xati `roche_diagnostics.md` |
-| cobas 6500 | rasm yo'q (neytral belgi) | ochiq manbada topilmadi | — | ruxsat xati `roche_diagnostics.md` |
-| EU-5600 Pro | rasm yo'q (neytral belgi) | ochiq manbada topilmadi | — | ruxsat xati `mindray.md` |
+| BS-240 | foto yo'q (tur chizmasi) | ochiq manbada topilmadi | — | ruxsat xati `mindray.md` |
+| BS-480 | foto yo'q (tur chizmasi) | ochiq manbada topilmadi | — | ruxsat xati `mindray.md` |
+| HumaStar 600 | foto yo'q (tur chizmasi) | ochiq manbada topilmadi | — | ruxsat xati `human.md` |
+| HumaLyzer 4000 | foto yo'q (tur chizmasi) | ochiq manbada topilmadi | — | ruxsat xati `human.md` |
+| cobas c 311 | foto yo'q (tur chizmasi) | ochiq manbada topilmadi | — | ruxsat xati `roche_diagnostics.md` |
+| cobas c 303 | foto yo'q (tur chizmasi) | ochiq manbada topilmadi | — | ruxsat xati `roche_diagnostics.md` |
+| ARCHITECT c4000 | foto yo'q (tur chizmasi) | ochiq manbada topilmadi | — | ruxsat xati `abbott.md` |
+| Alinity c | foto yo'q (tur chizmasi) | ochiq manbada topilmadi | — | ruxsat xati `abbott.md` |
+| BC-5390 | foto yo'q (tur chizmasi) | ochiq manbada topilmadi | — | ruxsat xati `mindray.md` |
+| BC-30s | foto yo'q (tur chizmasi) | ochiq manbada topilmadi | — | ruxsat xati `mindray.md` |
+| BC-6200 | foto yo'q (tur chizmasi) | ochiq manbada topilmadi | — | ruxsat xati `mindray.md` |
+| HumaCount 5D | foto yo'q (tur chizmasi) | ochiq manbada topilmadi | — | ruxsat xati `human.md` |
+| HumaCount 30TS | foto yo'q (tur chizmasi) | ochiq manbada topilmadi | — | ruxsat xati `human.md` |
+| CELL-DYN Emerald 22 AL | foto yo'q (tur chizmasi) | ochiq manbada topilmadi | — | ruxsat xati `abbott.md` |
+| CELL-DYN Emerald | foto yo'q (tur chizmasi) | ochiq manbada topilmadi | — | ruxsat xati `abbott.md` |
+| Alinity hq | foto yo'q (tur chizmasi) | ochiq manbada topilmadi | — | ruxsat xati `abbott.md` |
+| CL-900i | foto yo'q (tur chizmasi) | ochiq manbada topilmadi | — | ruxsat xati `mindray.md` |
+| CL-1200i | foto yo'q (tur chizmasi) | ochiq manbada topilmadi | — | ruxsat xati `mindray.md` |
+| HumaCLIA 150 | foto yo'q (tur chizmasi) | ochiq manbada topilmadi | — | ruxsat xati `human.md` |
+| cobas e 411 | foto yo'q (tur chizmasi) | ochiq manbada topilmadi | — | ruxsat xati `roche_diagnostics.md` |
+| cobas e 402 | foto yo'q (tur chizmasi) | ochiq manbada topilmadi | — | ruxsat xati `roche_diagnostics.md` |
+| ARCHITECT i1000SR | foto yo'q (tur chizmasi) | ochiq manbada topilmadi | — | ruxsat xati `abbott.md` |
+| Alinity i | foto yo'q (tur chizmasi) | ochiq manbada topilmadi | — | ruxsat xati `abbott.md` |
+| cobas u 411 | foto yo'q (tur chizmasi) | Commons: File:Cobas_u_411.JPG (Roto2esdios) — sifat talabiga javob bermaydi, pastga qarang | CC BY-SA 4.0 (+GFDL) — lekin ishlatilmadi | ruxsat xati `roche_diagnostics.md` |
+| cobas 6500 | foto yo'q (tur chizmasi) | ochiq manbada topilmadi | — | ruxsat xati `roche_diagnostics.md` |
+| EU-5600 Pro | foto yo'q (tur chizmasi) | ochiq manbada topilmadi | — | ruxsat xati `mindray.md` |
 
 ## Ishlab chiqaruvchi sayti shartlari (o'qilgan 2026-10-09)
 

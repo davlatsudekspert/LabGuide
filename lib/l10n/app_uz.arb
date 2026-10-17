@@ -2483,5 +2483,15 @@
   "autoPresTplBullets": "Bandlar",
   "autoPresTplTable": "Jadval",
   "autoPresTplFigure": "Rasm",
-  "autoPresTplQa": "Savol"
+  "autoPresTplQa": "Savol",
+  "instSchematicCaption": "Sxematik tasvir — aniq model emas",
+  "instSchematicTapToZoom": "Kattalashtirish uchun tasvirni bosing",
+  "instSchematicSemantics": "Sxematik tasvir: {kind}",
+  "@instSchematicSemantics": {
+    "placeholders": {
+      "kind": {
+        "type": "String"
+      }
+    }
+  }
 }

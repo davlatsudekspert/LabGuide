@@ -15003,6 +15003,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Question'**
   String get autoPresTplQa;
+
+  /// No description provided for @instSchematicCaption.
+  ///
+  /// In en, this message translates to:
+  /// **'Schematic illustration — not a photo of this exact model'**
+  String get instSchematicCaption;
+
+  /// No description provided for @instSchematicTapToZoom.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap the illustration to enlarge'**
+  String get instSchematicTapToZoom;
+
+  /// No description provided for @instSchematicSemantics.
+  ///
+  /// In en, this message translates to:
+  /// **'Schematic illustration: {kind}'**
+  String instSchematicSemantics(String kind);
 }
 
 class _AppLocalizationsDelegate

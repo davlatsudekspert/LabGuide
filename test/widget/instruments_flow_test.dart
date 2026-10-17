@@ -91,17 +91,31 @@ void main() {
     await _tapText(tester, 'HUMAN');
     expect(find.text('HumaCount 5D'), findsOneWidget);
     await _tapText(tester, 'HumaCount 5D');
-    // Karta: ruxsatli model fotosi yo'q — neytral belgi (sxematik chizma
-    // emas), holat zinapoyasi, vazifa va rasmiy matn, reagent, parvarish.
-    expect(find.text(l.instImageMissing), findsOneWidget);
+    // Karta: ruxsatli model fotosi yo'q — apparat turining sxematik chizmasi
+    // va “aniq model emas” izohi (HumaCount 5D — 5 qismli gematologiya);
+    // holat zinapoyasi, vazifa va rasmiy matn, reagent, parvarish.
+    expect(find.text(l.instSchematicCaption), findsOneWidget);
+    expect(find.text('Sxematik tasvir — aniq model emas'), findsOneWidget);
+    expect(find.text(l.instImageMissing), findsNothing);
     expect(find.text(l.instIllustration), findsNothing);
+    final images = tester
+        .widgetList<Image>(find.byType(Image))
+        .map((i) => i.image);
     expect(
-      tester.widgetList<Image>(find.byType(Image)).map((i) => i.image),
+      images,
+      contains(
+        const AssetImage('assets/instruments/schematic/hematology5_480.png'),
+      ),
+    );
+    // Yo'nalish sahifasining bezak chizmasi model kartasida yo'q.
+    expect(
+      images,
       isNot(
         contains(const AssetImage('assets/instruments/img/hematology.png')),
       ),
     );
-    expect(find.text(l.instStatusDevice), findsOneWidget);
+    // Rasm bloki (chizma + izoh) balandroq — holat qatorlari pastda, skroll bilan.
+    await _seek(tester, find.text(l.instStatusDevice));
     expect(
       find.text('${l.instStatusIfu} — ${l.instStatusNotYet}'),
       findsOneWidget,
@@ -123,25 +137,69 @@ void main() {
     expect(find.text('HumaCount 30TS'), findsOneWidget);
   });
 
-  testWidgets('siydik apparati kartasida chizma ham, begona foto ham yo‘q', (
-    tester,
-  ) async {
-    final l = lookupAppLocalizations(const Locale('uz'));
-    final services = await makeServices(tester);
-    await _loadCatalog(tester, services);
-    await pumpApp(tester, services);
-    await goTo(tester, '/lab/instruments/m/roche-cobas-u-411');
-    expect(
-      tester.widgetList<Image>(find.byType(Image)).map((i) => i.image),
-      isNot(
-        contains(const AssetImage('assets/instruments/img/urinalysis.png')),
-      ),
+  for (final (id, schematic) in [
+    ('roche-cobas-u-411', 'urine_strip'),
+    ('roche-cobas-6500', 'urine_system'),
+    ('mindray-bc-30s', 'hematology3'),
+    ('human-humalyzer-4000', 'photometer'),
+    ('abbott-alinity-i', 'immunoassay'),
+    ('roche-cobas-c-311', 'chemistry'),
+  ]) {
+    testWidgets('$id kartasi: $schematic chizmasi + izoh, begona foto yo‘q', (
+      tester,
+    ) async {
+      final l = lookupAppLocalizations(const Locale('uz'));
+      final services = await makeServices(tester);
+      await _loadCatalog(tester, services);
+      await pumpApp(tester, services);
+      await goTo(tester, '/lab/instruments/m/$id');
+      final images = tester
+          .widgetList<Image>(find.byType(Image))
+          .map((i) => i.image);
+      expect(
+        images,
+        contains(
+          AssetImage('assets/instruments/schematic/${schematic}_480.png'),
+        ),
+      );
+      expect(
+        images,
+        isNot(
+          contains(const AssetImage('assets/instruments/img/urinalysis.png')),
+        ),
+      );
+      // Chizma — foto emas: izoh ko'rinadi, muallif/litsenziya yo'q.
+      expect(find.text(l.instSchematicCaption), findsOneWidget);
+      expect(find.text(l.instImageMissing), findsNothing);
+      expect(find.text(l.instIllustration), findsNothing);
+      expect(find.textContaining('CC BY-SA'), findsNothing);
+      expect(find.byKey(const ValueKey('instrument-photo')), findsNothing);
+    });
+  }
+
+  for (final lang in AppLanguage.values) {
+    testWidgets(
+      'model kartasi 320 px, shrift 1.3 (${lang.name}): izoh sig‘adi',
+      (tester) async {
+        final services = await makeServices(tester, language: lang);
+        await _loadCatalog(tester, services);
+        await pumpApp(
+          tester,
+          services,
+          size: const Size(320, 640),
+          textScale: 1.3,
+        );
+        await goTo(tester, '/lab/instruments/m/roche-cobas-u-411');
+        final caption = lookupAppLocalizations(Locale(lang.name))
+            .instSchematicCaption;
+        expect(find.text(caption), findsOneWidget);
+        final r = tester.getRect(find.text(caption));
+        expect(r.left, greaterThanOrEqualTo(0));
+        expect(r.right, lessThanOrEqualTo(320));
+        expect(tester.takeException(), isNull);
+      },
     );
-    expect(find.text(l.instImageMissing), findsOneWidget);
-    expect(find.text(l.instMakerSource), findsOneWidget);
-    expect(find.text(l.instIllustration), findsNothing);
-    expect(find.textContaining('CC BY-SA'), findsNothing);
-  });
+  }
 
   for (final (lang, query, expected) in [
     (AppLanguage.uz, 'siydik', 'cobas u 411'),

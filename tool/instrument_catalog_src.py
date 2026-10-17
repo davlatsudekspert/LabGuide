@@ -960,6 +960,46 @@ OFFICIAL_PAGES = {
     "mindray-eu-5600-pro": "mr-eu5600",
 }
 
+# Rasm yo'q modelda ko'rsatiladigan SXEMATIK chizma turi (D-36a: bu aniq model
+# fotosi emas — kartada “Sxematik tasvir — aniq model emas” izohi turadi).
+# Tur apparatning `kind` matni va yo'nalishiga qarab tanlanadi, brend yoki
+# model ko'rinishiga emas. Fayllar: assets/instruments/schematic/<tur>_480.png
+# va <tur>_1200.png (tool/illustrations/schematic/gen.py + render.cjs --schematic).
+SCHEMATIC_BY_CATEGORY = {
+    "chemistry": {"chemistry", "photometer"},
+    "hematology": {"hematology5", "hematology3"},
+    "immunoassay": {"immunoassay"},
+    "urinalysis": {"urine_strip", "urine_system"},
+}
+SCHEMATICS = {
+    "mindray-bs-240": "chemistry",
+    "mindray-bs-480": "chemistry",
+    "human-humastar-600": "chemistry",
+    "human-humalyzer-4000": "photometer",  # yarim avtomatik fotometr
+    "roche-cobas-c-311": "chemistry",
+    "roche-cobas-c-303": "chemistry",
+    "abbott-architect-c4000": "chemistry",
+    "abbott-alinity-c": "chemistry",
+    "mindray-bc-5390": "hematology5",
+    "mindray-bc-30s": "hematology3",
+    "mindray-bc-6200": "hematology5",
+    "human-humacount-5d": "hematology5",
+    "human-humacount-30ts": "hematology3",
+    "abbott-cell-dyn-emerald-22-al": "hematology5",
+    "abbott-cell-dyn-emerald": "hematology3",
+    "abbott-alinity-hq": "hematology5",  # 6-part: umumiy avtomatik gematologiya chizmasi
+    "mindray-cl-900i": "immunoassay",
+    "mindray-cl-1200i": "immunoassay",
+    "human-humaclia-150": "immunoassay",
+    "roche-cobas-e-411": "immunoassay",
+    "roche-cobas-e-402": "immunoassay",
+    "abbott-architect-i1000sr": "immunoassay",
+    "abbott-alinity-i": "immunoassay",
+    "roche-cobas-u-411": "urine_strip",
+    "roche-cobas-6500": "urine_system",
+    "mindray-eu-5600-pro": "urine_system",
+}
+
 IMAGE_KEYS = ("asset", "asset_large", "manufacturer", "model", "source_url",
               "license", "license_url", "rights", "checked_at", "author", "caption")
 
@@ -986,10 +1026,18 @@ def build():
     assert not unknown, unknown
     makers = {mk["id"]: mk["name"] for mk in MAKERS}
     assert set(OFFICIAL_PAGES) == {m["id"] for m in MODELS}
+    assert set(SCHEMATICS) == {m["id"] for m in MODELS}
+    schem_dir = OUT.parent / "schematic"
+    for kinds in SCHEMATIC_BY_CATEGORY.values():
+        for sk in kinds:
+            for px in ("480", "1200"):
+                assert (schem_dir / f"{sk}_{px}.png").exists(), (sk, px)
     for m in MODELS:
         page = OFFICIAL_PAGES[m["id"]]
         assert page is None or page in SOURCES, page
         m["official_page"] = page
+        assert SCHEMATICS[m["id"]] in SCHEMATIC_BY_CATEGORY[m["category"]], m["id"]
+        m["schematic"] = SCHEMATICS[m["id"]]
         img = m["image"]
         if img is not None:
             # Rasm metadatasi to'liq va aynan shu modelniki bo'lishi shart.

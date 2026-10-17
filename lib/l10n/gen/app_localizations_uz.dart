@@ -8587,4 +8587,15 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get autoPresTplQa => 'Savol';
+
+  @override
+  String get instSchematicCaption => 'Sxematik tasvir — aniq model emas';
+
+  @override
+  String get instSchematicTapToZoom => 'Kattalashtirish uchun tasvirni bosing';
+
+  @override
+  String instSchematicSemantics(String kind) {
+    return 'Sxematik tasvir: $kind';
+  }
 }
