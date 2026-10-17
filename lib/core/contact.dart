@@ -15,7 +15,7 @@ abstract final class Contact {
   /// Maxfiylik siyosati (docs/store/PRIVACY_POLICY.md; App Store Connect'dagi
   /// havola bilan bir xil bo'lsin — docs/store/APP_STORE.md 14-bo'lim).
   static const privacyPolicyUrl =
-      'https://github.com/davlatsudekspert/LabGuide/blob/main/docs/store/PRIVACY_POLICY.md';
+      'https://labguide.nfcstore.uz/privacy/';
 
   /// `mailto:` havolasi. Mavzu va matn foiz bilan kodlanadi (bo'sh joy
   /// `%20`, qator `%0A`): ba'zi pochta ilovalari `+` ni bo'sh joy deb

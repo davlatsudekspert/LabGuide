@@ -5952,7 +5952,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get accountDeleteBody =>
-      'Your account, requests, attachments and group results are permanently removed from the server. This can’t be undone. QC records and bookmarks on this device are deleted separately.';
+      'Your account, sign-in methods (Google/Apple links), group memberships and results, “Feedback & help” requests and your community questions and answers are permanently removed from the server. If you are a teacher, the groups you created are deleted too. This can’t be undone. The text of complaints you sent in the app stays, no longer linked to the account. Data on this device is cleared as well.';
 
   @override
   String get accountDeleted => 'Account deleted';
@@ -6163,7 +6163,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get privacyBody =>
-      'In guest mode the app sends nothing to a server: settings, bookmarks, QC records, your instruments and practice results stay on this device (they may be included in the device backup). If you sign in with email, data is stored on a Cloudflare server (Eastern Europe, outside Uzbekistan): your email only as a hash and a masked form (the sign-in code is sent by the Resend service), role, language, last active day; in a group — the group name, your nickname or sequence number (no name is asked), test answers and scores. A teacher sees only their own group, a student only themselves. No ads or tracking. You can delete your account at any time.';
+      'The core features work without an account (guest mode): settings, bookmarks, QC records, your instruments and practice results stay on this device. An account is optional (email code, Google or Apple) and is needed for groups, the community and “Feedback & help”. Then data is stored on a Cloudflare server (Eastern Europe, outside Uzbekistan): your email only as a hash and a masked form, sign-in method, role, language, last activity time (to the minute); in a group — your nickname or sequence number, test answers and scores; the text of requests and complaints. From Google/Apple only the account identifier and email are used; the token is not stored. A teacher sees only their own group. No ads, analytics or tracking. Full text: the “Privacy policy” link.';
 
   @override
   String get privacyBodyLocal =>

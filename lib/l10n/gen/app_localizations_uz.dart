@@ -5846,7 +5846,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get accountDeleteBody =>
-      'Hisobingiz, murojaatlaringiz, biriktirilgan rasmlar va guruh natijalari serverdan butunlay o‘chiriladi. Buni qaytarib bo‘lmaydi. Qurilmadagi QC qaydlari va xatcho‘plar alohida o‘chiriladi.';
+      'Hisobingiz, kirish usullari (Google/Apple bog‘lanishi), guruhlardagi a’zolik va natijalaringiz, “Taklif va yordam” murojaatlari va hamjamiyatdagi savol-javoblaringiz serverdan butunlay o‘chiriladi. Ustoz bo‘lsangiz, yaratgan guruhlaringiz ham o‘chadi. Buni qaytarib bo‘lmaydi. Ilova ichida yuborgan shikoyatlar matni hisobga bog‘lanmagan holda qoladi. Qurilmadagi ma’lumotlar ham tozalanadi.';
 
   @override
   String get accountDeleted => 'Hisob o‘chirildi';
@@ -6057,7 +6057,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get privacyBody =>
-      'Mehmon rejimida ilova serverga hech narsa yubormaydi: sozlamalar, xatcho‘plar, QC qaydlari, apparatlaringiz va mashq natijalari shu qurilmada saqlanadi (qurilmaning o‘z zaxira nusxasiga kirishi mumkin). Email bilan kirsangiz, ma’lumotlar Cloudflare serverida (Sharqiy Yevropa, O‘zbekistondan tashqarida) saqlanadi: email faqat hash va niqoblangan ko‘rinishda (kirish kodi Resend xizmati orqali yuboriladi), rol, til, oxirgi faol kun; guruhda — guruh nomi, taxallusingiz yoki tartib raqamingiz (ism so‘ralmaydi), test javoblari va ballaringiz. Ustoz faqat o‘z guruhini ko‘radi, talaba faqat o‘zini. Reklama va kuzatuv yo‘q. Hisobni istalgan vaqtda o‘chirishingiz mumkin.';
+      'Asosiy bo‘limlar hisobsiz (mehmon rejimida) ishlaydi: sozlamalar, xatcho‘plar, QC qaydlari, apparatlaringiz va mashq natijalari shu qurilmada saqlanadi. Hisob ixtiyoriy (email kodi, Google yoki Apple bilan) — guruhlar, hamjamiyat va “Taklif va yordam” uchun kerak. Bunda ma’lumotlar Cloudflare serverida (Sharqiy Yevropa, O‘zbekistondan tashqarida) saqlanadi: email faqat hash va niqoblangan ko‘rinishda, kirish usuli, rol, til, oxirgi faollik vaqti (daqiqagacha); guruhda — taxallus yoki tartib raqami, test javoblari va ballar; murojaat va shikoyat matnlari. Google/Apple’dan faqat hisob identifikatori va email olinadi, token saqlanmaydi. Ustoz faqat o‘z guruhini ko‘radi. Reklama, analitika va kuzatuv yo‘q. To‘liq matn — “Maxfiylik siyosati” havolasida.';
 
   @override
   String get privacyBodyLocal =>
