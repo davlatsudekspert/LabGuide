@@ -1,5 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:labguide/core/backend/partner_models.dart';
+import 'package:labguide/core/build_flags.dart';
 import 'package:labguide/features/settings/settings_controller.dart';
 import 'package:material_ui/material_ui.dart';
 
@@ -28,6 +29,9 @@ const _routes = [
 ];
 
 void main() {
+  // Hamkor UI yoqilgan (TestFlight/Play ichki test) build.
+  setUp(() => BuildFlags.debugPartnerAdsOverride = true);
+  tearDown(() => BuildFlags.debugPartnerAdsOverride = null);
   setUpAll(loadAppFonts);
 
   for (final lang in AppLanguage.values) {

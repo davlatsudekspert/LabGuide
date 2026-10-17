@@ -1,10 +1,6 @@
-/// Leykoformula: keyinchalik "entitlement" (Pro) qatlami bilan bog'lanadigan
-/// kirish nuqtalari. Egasining qarori: hisoblagich, foiz va mutlaq sonlar
-/// doim BEPUL; boshlangan sanash hech qachon to'lov oynasi bilan
-/// to'xtatilmaydi; tarix qurilmada to'liq saqlanadi va yashirincha
-/// o'chirilmaydi. Cheklov (bo'lsa) faqat KO'RSATISHGA qo'yiladi.
-///
-/// Hozir hamma narsa ochiq. To'lov UI yo'q.
+/// Leykoformula: qo'shimcha kirish nuqtalari (kengaytirilgan mashq, PDF
+/// eksport). Hisoblagich, foiz, mutlaq sonlar va to'liq tarix — hammasi
+/// ochiq; tarix qurilmada to'liq saqlanadi va yashirincha o'chirilmaydi.
 library;
 
 import 'package:go_router/go_router.dart';
@@ -13,10 +9,6 @@ import 'package:material_ui/material_ui.dart';
 import 'differential_controller.dart';
 
 abstract final class DiffEntryPoints {
-  /// Tarix ro'yxatida ko'rsatiladigan yozuvlar soni (`null` — cheksiz).
-  /// Ma'lumot baribir to'liq saqlanadi; bu faqat ro'yxatni chizish chegarasi.
-  static int? historyVisibleLimit(BuildContext context) => null;
-
   /// Kengaytirilgan mashq ("belgi → hujayra" savollari bilan).
   static const extendedQuizLocation = '/lab/differential/quiz?mode=extended';
 

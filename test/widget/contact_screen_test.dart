@@ -50,8 +50,14 @@ Future<void> _openContact(
   Size size = const Size(390, 3200),
   double textScale = 1,
   FakeLabBackend? backend,
+  bool? partnerAds,
 }) async {
-  final s = await makeServices(tester, language: lang, backend: backend);
+  final s = await makeServices(
+    tester,
+    language: lang,
+    backend: backend,
+    partnerAds: partnerAds,
+  );
   await pumpApp(tester, s, size: size, textScale: textScale);
   await goTo(tester, '/profile/contact');
 }
@@ -101,12 +107,24 @@ void main() {
       expect(find.byKey(const ValueKey('contact-email')), findsOneWidget);
       expect(find.text(Contact.email), findsOneWidget);
       expect(find.text(l.contactQuestionTitle), findsOneWidget);
-      expect(find.text(l.contactAdTitle), findsOneWidget);
+      // Do'kon build (LG_PARTNER_ADS o'chiq): reklama bo'limi yo'q.
+      expect(find.text(l.contactAdTitle), findsNothing);
+      expect(find.byKey(const ValueKey('contact-mail-ad')), findsNothing);
       expect(find.text(l.contactReportTitle), findsOneWidget);
       expect(find.text(l.contactResponseNote), findsOneWidget);
-      expect(find.text(l.payPrivacy), findsOneWidget);
+      expect(find.text(l.contactPrivacyPolicy), findsOneWidget);
     });
   }
+
+  testWidgets('test build (partner ads on) shows the advertising section', (
+    tester,
+  ) async {
+    _Fakes(tester);
+    await _openContact(tester, partnerAds: true);
+    final l = _l(tester);
+    expect(find.text(l.contactAdTitle), findsOneWidget);
+    expect(find.byKey(const ValueKey('contact-mail-ad')), findsOneWidget);
+  });
 
   testWidgets('reachable from Profile without a server', (tester) async {
     _Fakes(tester);
@@ -131,7 +149,7 @@ void main() {
 
   testWidgets('mail buttons launch well-formed mailto links', (tester) async {
     final f = _Fakes(tester);
-    await _openContact(tester);
+    await _openContact(tester, partnerAds: true);
     final expected = {
       'contact-mail-question': Contact.subjectQuestion,
       'contact-mail-ad': Contact.subjectAd,
@@ -180,7 +198,15 @@ void main() {
     tester,
   ) async {
     _Fakes(tester);
-    await _openContact(tester);
+    await _openContact(tester, partnerAds: true);
+    expect(find.byKey(const ValueKey('contact-partner-link')), findsNothing);
+  });
+
+  testWidgets('store build: no partner form link even with a server', (
+    tester,
+  ) async {
+    _Fakes(tester);
+    await _openContact(tester, backend: FakeLabBackend());
     expect(find.byKey(const ValueKey('contact-partner-link')), findsNothing);
   });
 
@@ -188,7 +214,7 @@ void main() {
     tester,
   ) async {
     _Fakes(tester);
-    await _openContact(tester, backend: FakeLabBackend());
+    await _openContact(tester, backend: FakeLabBackend(), partnerAds: true);
     final link = find.byKey(const ValueKey('contact-partner-link'));
     expect(link, findsOneWidget);
     await tester.tap(link);
@@ -209,6 +235,7 @@ void main() {
           size: Size(width, 3600),
           textScale: scale,
           backend: FakeLabBackend(),
+          partnerAds: true,
         );
         expect(tester.takeException(), isNull);
         expect(find.byKey(const ValueKey('contact-email')), findsOneWidget);

@@ -503,10 +503,9 @@ void main() {
     expect(find.text(uz.classesUnavailableTitle), findsOneWidget);
     expect(find.text(uz.classesCreate), findsNothing);
     expect(find.text(uz.classesJoin), findsNothing);
-    // To'lov yoqilmagan: "tez orada" xarid tugmalari umuman yo'q (App Store 2.1).
-    await goTo(tester, '/profile/purchase');
-    expect(find.text(uz.payTestBuildOpen), findsOneWidget);
-    expect(find.textContaining(uz.notAvailableYet), findsNothing);
+    // To'lov yo'q (App Store 2.1 / 2.5.19): Profilda obuna/Pro qatori yo'q.
+    await goTo(tester, '/profile');
+    expect(find.textContaining(RegExp(r'\bPro\b')), findsNothing);
   });
 
   testWidgets('large title collapses on scroll down and expands on scroll up', (

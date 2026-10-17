@@ -96,7 +96,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get welcomeGuestNote =>
-      'Kontentni o‘qish uchun hisob shart emas. Kirish sinxronlash, guruhlar va xaridlar uchun kerak.';
+      'Kontentni o‘qish uchun hisob shart emas. Kirish sinxronlash va guruhlar uchun kerak.';
 
   @override
   String get authTitle => 'Xush kelibsiz';
@@ -5028,16 +5028,6 @@ class AppLocalizationsUz extends AppLocalizations {
       'Barcha imtihon natijalari shu qurilmadan o‘chiriladi.';
 
   @override
-  String examHistoryHidden(int count, int limit) {
-    String _temp0 = intl.Intl.pluralLogic(
-      count,
-      locale: localeName,
-      other: 'Yana $count ta eski natija saqlangan',
-    );
-    return '$_temp0 — bepul rejimda oxirgi $limit tasi ko‘rinadi. Hech narsa o‘chirilmagan.';
-  }
-
-  @override
   String examProgressLabel(String values) {
     return 'So‘nggi natijalar: $values';
   }
@@ -5705,12 +5695,6 @@ class AppLocalizationsUz extends AppLocalizations {
   String get themeDark => 'Tungi';
 
   @override
-  String get profilePurchase => 'Obuna va tiklash';
-
-  @override
-  String get profilePurchaseSub => 'Free · Pro';
-
-  @override
   String get profilePrivacy => 'Maxfiylik va ma’lumotlar';
 
   @override
@@ -5953,9 +5937,6 @@ class AppLocalizationsUz extends AppLocalizations {
   }
 
   @override
-  String get adminBilling => 'Free / Pro: billing ulanmagan — ma’lumot yo‘q';
-
-  @override
   String get adminInbox => 'Murojaatlar';
 
   @override
@@ -6070,28 +6051,6 @@ class AppLocalizationsUz extends AppLocalizations {
   String profileVersion(String version) {
     return 'Versiya $version';
   }
-
-  @override
-  String get purchaseTitle => 'LabGuide Pro';
-
-  @override
-  String get purchaseStatusTitle => 'Holat';
-
-  @override
-  String purchaseStatusPro(String date) {
-    return 'Pro faol · $date gacha';
-  }
-
-  @override
-  String get purchaseStatusProNoEnd => 'Pro faol';
-
-  @override
-  String purchaseStatusOffline(String date) {
-    return 'Internetsiz: oxirgi tekshiruv $date';
-  }
-
-  @override
-  String get purchaseStatusFree => 'Hozir: bepul rejim';
 
   @override
   String get privacyTitle => 'Maxfiylik va ma’lumotlar';
@@ -8233,188 +8192,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get cytoCategoriesTitle => 'Toifalar';
 
   @override
-  String get payTierPro => 'Pro';
-
-  @override
-  String get payTierProSub =>
-      'Laborant, shifokor, talaba va toifaga tayyorlanuvchi uchun';
-
-  @override
-  String get payTierTeacher => 'Ustoz Pro';
-
-  @override
-  String get payTierTeacherSub =>
-      'Guruh bilan ishlaydigan ustoz uchun. Pro’dagi hamma imkoniyat ham kiradi.';
-
-  @override
-  String get payFree =>
-      'Bepul doim: barcha kartalar, kalkulyatorlar, preanalitika, leykoformula, kunlik 5 ta savol va xatolar ustida ishlash.';
-
-  @override
-  String get payFeatQuestions =>
-      'Cheksiz savollar: mavzular bo‘yicha mashq va kartadan mini-test';
-
-  @override
-  String get payFeatExam => 'Imtihon simulyatsiyasi (vaqtli test)';
-
-  @override
-  String get payFeatToifa =>
-      'To‘liq toifa banki: rasmiy test va mavzular bo‘yicha mashq';
-
-  @override
-  String get payFeatWeak => 'Zaif mavzular tahlili natijada';
-
-  @override
-  String get payFeatAtlas => 'Mikroskopiya atlasi mashqlari';
-
-  @override
-  String get payFeatHistory => 'Natijalarning to‘liq tarixi';
-
-  @override
-  String get payFeatAllPro => 'Pro’dagi hamma imkoniyat';
-
-  @override
-  String get payFeatGroups =>
-      'Guruhlar: talabalarni qo‘shish, baholar va natijalar hisoboti';
-
-  @override
-  String get payFeatAssignments => 'Guruh topshiriqlari (vaqtli testlar)';
-
-  @override
-  String get payFeatLecture =>
-      'Ma’ruza rejimi: mavzu bo‘yicha avtomatik taqdimot';
-
-  @override
-  String get payPlanMonthly => 'Oylik';
-
-  @override
-  String get payPlanYearly => 'Yillik';
-
-  @override
-  String get payUnitDay => 'kun';
-
-  @override
-  String get payUnitWeek => 'hafta';
-
-  @override
-  String get payUnitMonth => 'oy';
-
-  @override
-  String get payUnitYear => 'yil';
-
-  @override
-  String payDays(int count) {
-    return '$count kun';
-  }
-
-  @override
-  String payWeeks(int count) {
-    return '$count hafta';
-  }
-
-  @override
-  String payMonths(int count) {
-    return '$count oy';
-  }
-
-  @override
-  String payYears(int count) {
-    return '$count yil';
-  }
-
-  @override
-  String payPricePer(String price, String period) {
-    return '$price / $period';
-  }
-
-  @override
-  String payTrial(String trial, String price) {
-    return '$trial bepul, keyin $price';
-  }
-
-  @override
-  String get payStartTrial => 'Bepul sinovni boshlash';
-
-  @override
-  String get paySubscribe => 'Obuna bo‘lish';
-
-  @override
-  String get payCurrent => 'Faol obuna';
-
-  @override
-  String get payRestore => 'Xaridni tiklash';
-
-  @override
-  String get payManage => 'Obunani boshqarish yoki bekor qilish';
-
-  @override
-  String get payTerms => 'Foydalanish shartlari (EULA)';
-
-  @override
-  String get payPrivacy => 'Maxfiylik siyosati';
-
-  @override
-  String payDisclosure(String store) {
-    return 'Obuna avtomatik yangilanadi. To‘lov xarid tasdiqlanganda $store hisobingizdan olinadi (bepul sinov bo‘lsa — sinov tugagach). Joriy davr tugashidan kamida 24 soat oldin bekor qilinmasa, obuna xuddi shu davr va narxda yangilanadi va to‘lov davr tugashidan oldingi 24 soat ichida olinadi. Obunani $store hisob sozlamalarida boshqarish va bekor qilish mumkin. Bepul sinovning foydalanilmagan qismi obuna sotib olinganda bekor bo‘ladi.';
-  }
-
-  @override
-  String get payGuestNote =>
-      'Xarid uchun hisob shart emas. Hisobga kirsangiz, obuna boshqa qurilmalaringizda ham ishlaydi.';
-
-  @override
-  String get payLockedPro => 'Bu imkoniyat Pro obunasida.';
-
-  @override
-  String get payLockedTeacher => 'Bu imkoniyat Ustoz Pro obunasida.';
-
-  @override
-  String get payAllOpen => 'Hozir barcha imkoniyatlar ochiq.';
-
-  @override
-  String get payTestBuildOpen => 'Sinov versiyasi: barcha imkoniyatlar ochiq.';
-
-  @override
-  String payStatusTeacher(String date) {
-    return 'Ustoz Pro faol · $date gacha';
-  }
-
-  @override
-  String get payStatusTeacherNoEnd => 'Ustoz Pro faol';
-
-  @override
-  String get payStatusDevice =>
-      'Obuna shu qurilmada faol. Boshqa qurilmalarda ham ishlashi uchun hisobga kiring.';
-
-  @override
-  String get paySuccess => 'Obuna faollashdi. Rahmat!';
-
-  @override
-  String get payRestored => 'Xarid tiklandi.';
-
-  @override
-  String get payPending =>
-      'To‘lov tasdiqlanishi kutilmoqda. Tasdiqlangach obuna avtomatik ochiladi.';
-
-  @override
-  String get payNothingFound => 'Tiklanadigan faol obuna topilmadi.';
-
-  @override
-  String get payOwnedByOther =>
-      'Bu xarid boshqa LabGuide hisobiga bog‘langan. O‘sha hisob bilan kiring.';
-
-  @override
-  String get payFailed =>
-      'Xarid yakunlanmadi. Internetni tekshirib, qayta urinib ko‘ring. Pul yechilgan bo‘lsa, «Xaridni tiklash» ni bosing.';
-
-  @override
-  String get payUnavailable =>
-      'Do‘kon hozir javob bermayapti. Keyinroq urinib ko‘ring.';
-
-  @override
-  String payDeleteAccountNote(String store) {
-    return 'Obuna hisob bilan birga bekor bo‘lmaydi: uni $store sozlamalarida bekor qiling.';
-  }
+  String get contactPrivacyPolicy => 'Maxfiylik siyosati';
 
   @override
   String get bloodGroupTitle => 'Qon guruhi';

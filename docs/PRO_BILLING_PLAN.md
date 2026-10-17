@@ -1,3 +1,5 @@
+> **FUTURE — not in the app; code on branch `pro-later`** (D-58).
+
 # Pro obuna: huquqlar, xarid va server tekshiruvi
 
 Holat (2026-10-17): **kod to‘liq tayyor — to‘lov o‘zi yoqiladi**, egasi do‘konlarda

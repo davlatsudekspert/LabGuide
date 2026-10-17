@@ -217,9 +217,6 @@ class AdminStats {
   Map<String, int> get byRole => _map('by_role');
   Map<String, int> get byLanguage => _map('by_language');
   Map<String, int> get support => _map('support');
-
-  /// Billing ulanmaguncha `null` — Free/Pro taqsimoti ko'rsatilmaydi.
-  Object? get billing => json['billing'];
 }
 
 @immutable

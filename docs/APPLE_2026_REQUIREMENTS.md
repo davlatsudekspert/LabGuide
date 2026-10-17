@@ -14,11 +14,11 @@ tekshiring.
    **2.5.19** (yangi, yashirin/“uxlab yotgan”/hujjatlanmagan funksiyalar yo'q), 3.1.1(a), 5-bo'lim.
    Bizga ta'siri: 2.5.19 va 1.2 — **yes**; 2.3.14 — do'kon grafikasi uchun **yes**. 3.1.1(a) (tashqi
    to'lov havolasi) va 5-bo'lim (odam savdosi) — **no**.
-2. **2.5.19 xavfi — do'kon buildi hozir yo'q.** `ci.yml` dagi har uch rejim (`build`, `testflight`,
-   `play_internal`) `LG_ALL_FEATURES_OPEN=true` bilan quradi; review'ga TestFlight buildi
-   yuborilsa, reviewer “Namuna / Demo” reklama joylarini ko'radi va to'lov/Pro chegarasi ko'rinmaydi.
-   **Review uchun alohida `store` rejimi kerak** (3-bo'lim). `ci.yml` bu ishda tegilmaydi —
-   boshqa muhandisga topshiriq.
+2. **2.5.19 — bu versiyada to'lov yo'q (D-58).** Pro/obuna kodi ilovadan butunlay olib tashlandi
+   (hamma narsa bepul; ish `pro-later` branchida). Reklama UI `LG_PARTNER_ADS` bayrog'i bilan:
+   faqat `testflight`/`play_internal` buildlarida `true` (“Namuna / Demo” joylari bilan); `build` va
+   kelajakdagi do'kon rejimida `false` — reklama UI kompilyatsiyadan chiqariladi. **Review uchun
+   alohida `store` rejimi kerak** (3-bo'lim) — `LG_PARTNER_ADS` siz.
 3. **1.2 — “foydalanuvchini bloklash” yo'q edi.** Ilova tomoni tayyorlandi (mahalliy blok, test
    bilan), lekin ishlashi uchun **serverda bitta kichik o'zgarish** kerak (`author.ref`, 4-bo'lim).
    Server o'zgarmaguncha blok tugmasi ko'rinmaydi → 1.2 bajarilmagan hisoblanadi.
@@ -91,24 +91,23 @@ Quyidagi tekshiruvlar `lib/`, `ios/`, `.github/workflows/ci.yml`, `docs/` bo'yic
 
 | Element | Qayerda | Holat | “Hujjatlangan va review uchun yetib boriladimi?” | Qaror |
 |---|---|---|---|---|
-| **To'lov/obuna kodi** (StoreKit 2 + Play Billing, server tekshiruvi) | `lib/core/entitlements/*`, `cloudflare/src/billing.ts` | Do'kon mahsulotlari yo'q va server `billingReady=false` bo'lsa **butunlay o'chiq** (`purchasesEnabled`), UI chizilmaydi | Faqat mahsulotlar App Store Connect’da yaratilib, review’ga biriktirilsa yetib boriladi | **Yo biri:** (a) birinchi ommaviy chiqishda mahsulotlarni versiyaga biriktirish (D-48 qarori: yo to'lov to'liq ulanadi, yo hammasi bepul); (b) o'chiq bo'lsa — Notes for Review’da “binarda bor, o'chiq” deb ochiq yozish (8.3 matn) |
-| **`LG_ALL_FEATURES_OPEN`** | `entitlement_service.dart`; `ci.yml` `LG_ALL_FEATURES_OPEN` ifodasi | Hozirgi **barcha** CI rejimlarida `true` | Reviewer to'lov chegarasini ko'rmaydi; “Namuna/Demo” joylar chiqadi | **Kod o'zgarishi kerak (ci.yml, boshqa muhandis):** yangi `store` rejimi → `LG_ALL_FEATURES_OPEN=false`; TestFlight/ichki sinov buildlari review’ga yuborilmasin |
-| **Hamkor reklama joylari** (`HomePartnerPair`) | `partner_widgets.dart` | Faol hamkor yo'q va do'kon build → **hech narsa chizilmaydi**; demo build → “Namuna / Demo” joy | Reviewer bo'sh joy ko'radi | Demo joy faqat `allFeaturesOpen` da — `store` rejimida chiqmaydi (yuqoridagi tuzatish bilan). Notes’da “server boshqaradigan reklama, ‘Reklama’ belgisi bilan” deb yozing |
+| **To'lov/obuna** | — | **Bu versiyada to'lov yo'q** (D-58): StoreKit/Play Billing kodi, paketlar va server endpointlari olib tashlangan; hamma imkoniyat bepul | — | OK. To'lov keyin to'liq yangilanish sifatida (mahsulotlar versiyaga biriktirilib) qaytadi |
+| **Hamkor reklama UI** (`HomePartnerPair`, Lab/apparat kartalari, hamkor sahifalari, “Hamkor bo'lish”) | `lib/core/build_flags.dart` (`LG_PARTNER_ADS`) | `false` (standart, do'kon) — kompilyatsiyadan chiqariladi; `true` faqat `testflight`/`play_internal` | Do'kon buildida yo'q | Review’ga faqat `LG_PARTNER_ADS=false` build yuborilsin; TestFlight/ichki sinov buildlari review’ga yuborilmasin |
 | **Hamjamiyat** (savol-javob) | `lib/features/community` | `LG_API_URL` bo'sh bo'lsa UI yo'q; CI sukut bo'yicha URL beradi → ko'rinadi | Savolni **mehmon** ham o'qiydi; savol berish — kirish; javob berish — tasdiqlangan mutaxassis | Notes’da tushuntiring; review uchun **demo hisob** kerak (8.2) |
 | **Mutaxassis tasdig'i** (hujjat suratini AI tekshiradi) | `VerifySpecialistScreen` | Ko'rinadi (kirgan foydalanuvchiga) | Reviewer rasm yuklab sinay oladi | Notes’da: “fayl saqlanmaydi, Cloudflare Workers AI”; 5.1.2(i): ekranda ochiq ogohlantirish bor (`cmVerifyInfo`) |
 | **Admin panel** (`/profile/admin/*`, `AdminGate`) | `admin_screens.dart` | Faqat server admin huquqi + 2FA bo'lgan hisobga ochiladi | Reviewer ko'rmaydi | Notes’da ochiq yozing (“administrator area for moderation, not available to regular users”). Yashirin yo'l emas: oddiy foydalanuvchida “ruxsat yo'q” sahifasi chiqadi |
 | **Demo OTP adapteri** | `otp_auth.dart` (`kDebugMode`) | Release’da kompilyatsiya vaqtida **chiqarib tashlanadi** | — | OK (binarda yo'q) |
 | **Ovozli buyruqlar** (leykoformula, eksperimental) | `speech_to_text`, Info.plist | Foydalanuvchi o'zi yoqadi; qurilmada tanish | Reviewer yoqa oladi | Notes’da yozing |
-| **Ustoz Pro: avtomatik taqdimot, guruhlar, topshiriqlar** | classroom/lecture | Gating faol bo'lmasa hamma ochiq | Reviewer ko'radi | Notes’da qaysi daraja nimani ochishi |
+| **Ustoz: avtomatik taqdimot, guruhlar, topshiriqlar** | classroom/lecture | Hamma uchun ochiq (to'lov yo'q) | Reviewer ko'radi | Notes’da tushuntiring |
 | **Paketlar** (kontent, GitHub raw) | `lib/features/packs` | Foydalanuvchi bossa JSON/fayl yuklanadi | Reviewer ko'radi | Yuklanadigani **ma'lumot**, bajariladigan kod emas (2.5.2) — Notes’da bir jumla |
 | Chuqur havolalar | `Info.plist` | `CFBundleURLTypes`/Associated Domains **yo'q** → tashqaridan yashirin yo'l yo'q | — | OK |
-| Server bayroqlari | `/v1/billing/status`, `/v1/partners` | Server javobi bilan ko'rinish o'zgaradi (to'lov yoqiladi, hamkor paydo bo'ladi) | — | Notes’da “to'lov serverdan yoqiladi” deb ochiq yozing. Review’dan keyin **yangi funksiya** serverdan yoqilmasin (bait-and-switch, 2.5.19 va 2.3.1) |
+| Server bayroqlari | — | Bu versiyada to'lov yo'q; do'kon buildida hamkor UI yo'q — serverdan yoqiladigan funksiya yo'q | — | Review’dan keyin **yangi funksiya** serverdan yoqilmasin (bait-and-switch, 2.5.19 va 2.3.1) |
 
 ### 3.2 Kodda o'zgartirish kerak bo'lganlar (ro'yxat)
 
-1. **`ci.yml`: `store` rejimi** (boshqa muhandis): `LG_ALL_FEATURES_OPEN=false`, `flutter build ipa`, TestFlight’ga
+1. **`ci.yml`: `store` rejimi** (boshqa muhandis): `LG_PARTNER_ADS` siz (`false`), `flutter build ipa`, TestFlight’ga
    yuklash, lekin `Beta App Review/Submit for Review` faqat shu build’dan. (Hozir TestFlight buildi
-   “hamma ochiq”, demo joylar bilan chiqadi.)
+   `LG_PARTNER_ADS=true` — demo reklama joylari bilan chiqadi.)
 2. **Review demo hisobi** (server, boshqa muhandis): sobit `LG_REVIEW_EMAIL` + sobit kod, faqat
    shu email uchun; **Notes for Review’da ochiq yoziladi** (aks holda yashirin orqa eshik hisoblanadi).
    Muqobil: faqat mehmon rejimi + “har qanday email’ga kod keladi”.
@@ -149,16 +148,10 @@ Quyidagi tekshiruvlar `lib/`, `ios/`, `.github/workflows/ci.yml`, `docs/` bo'yic
 > checked once by an AI model (Cloudflare Workers AI) and is not stored; only role/country/status are kept. The
 > screen explains this before the user taps “Send for automatic check”.
 >
-> **Subscriptions (Pro, Teacher Pro; auto-renewable):** [Profile → Subscription: monthly/yearly plans with a 7-day
-> (Pro) / 14-day (Teacher Pro) free trial; Restore Purchases; Manage subscription; Terms and Privacy links.]
-> **or** [In-app subscriptions are implemented in the binary but switched off by server configuration in this
-> version; no purchase UI is shown. They will be enabled by a later version submitted with its products.]
-> Free users: 5 daily questions and the full atlas, calculators, QC and basic study tools. Pro: exam simulation,
-> full bank, weak-topics, history. Teacher Pro: groups, assignments, Lecture mode auto-presentations.
+> **No in-app purchases or subscriptions in this version.** All features are free: exam simulation, full question
+> banks, history, weak-topics analysis, atlas practice, groups, assignments and Lecture mode.
 >
-> **Partner ads:** the Home tab can show up to two labelled “Advertisement” slots (lab service, equipment
-> supplier) supplied by our server; Profile → Partnership explains how to become a partner. No third-party ad SDK,
-> no tracking, no IDFA.
+> **No advertising in this version.**
 >
 > **Administrator area (not available to regular users or reviewers):** Profile → Admin panel appears only for
 > accounts that the server has granted administrator rights and that passed two-factor authentication. It is used to
@@ -383,6 +376,8 @@ yangilanish yuborish uchun ham kerak (2024-10-16 dan). Hujjat: `help/app-store-c
 
 ## 13. Obuna, narx, shaffoflik
 
+> KELAJAK — bu versiyada to'lov yo'q (D-58); quyidagilar to'lov qaytganda kerak bo'ladi (kod `pro-later` branchida).
+
 - **3.1.2(a):** davr kamida 7 kun (bizda 1 oy/1 yil ✓); obuna barcha qurilmalarda ishlaydi (hisobga bog'langan
   server tekshiruvi ✓); xarid uchun qo'shimcha harakat (ijtimoiy tarmoqda post va h.k.) talab qilinmaydi ✓ [V].
 - **3.1.2(c):** obunadan oldin nima olinishini va narxni aniq yozing; Schedule 2 (nom, davr, narx, avtomatik uzaytirish,
@@ -405,7 +400,7 @@ yangilanish yuborish uchun ham kerak (2024-10-16 dan). Hujjat: `help/app-store-c
 ## 14. Egasi bajaradigan ishlar — ro'yxat (tartib bilan)
 
 **Review'dan oldin (blokerlar):**
-- [ ] `store` build rejimi (ci.yml, boshqa muhandis) — `LG_ALL_FEATURES_OPEN=false`, demo joylarsiz.
+- [ ] `store` build rejimi (ci.yml, boshqa muhandis) — `LG_PARTNER_ADS` siz (`false`): reklama UI yo'q.
 - [ ] Serverda `author.ref` (blok uchun) — 4-bo'lim; shu bo'lmasa 1.2 to'liq emas.
 - [ ] Review demo hisobi (sobit kod) va u Notes’da ochiq yozilishi.
 - [ ] Do'kon matni va **App Privacy** javobi build bilan mos: server ulanadi → “Data Not Collected” **emas**

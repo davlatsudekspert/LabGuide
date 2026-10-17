@@ -107,7 +107,7 @@ class _ApiResponse {
 ///
 /// Hali ko'chirilmagan bo'limlar (murojaatlar, admin panel, tekshiruv,
 /// hamkorlar) `BackendFailure.unavailable` beradi — ishlayotgandek
-/// ko'rsatilmaydi. Pro obunalari — [billing] (`CloudflareEntitlementSource`).
+/// ko'rsatilmaydi.
 class CloudflareLabBackend
     implements
         LabBackend,
@@ -247,19 +247,6 @@ class CloudflareLabBackend
     501 || 503 => BackendFailure.unavailable,
     _ => BackendFailure.unknown,
   };
-
-  /// Pro obunalari (`/v1/billing/*`): holat kodi va JSON. Xato statusda
-  /// istisno tashlamaydi — `CloudflareEntitlementSource` o'zi talqin qiladi
-  /// (masalan, `503 not_configured` — to'lov yoqilmagan).
-  Future<({int status, Map<String, Object?> data})> billing(
-    String method,
-    String path, {
-    Object? body,
-    bool auth = true,
-  }) async {
-    final r = await _send(method, path, body: body, auth: auth);
-    return (status: r.status, data: r.map);
-  }
 
   /// Ro'yxat o'qish: a'zo bo'lmagan guruh (404) — bo'sh ro'yxat, xuddi
   /// Supabase RLS dagi kabi (begona ustoz va admin ham hech narsa ko'rmaydi).

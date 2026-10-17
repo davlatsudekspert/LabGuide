@@ -14,8 +14,9 @@ Aloqa / Контакт / Contact: **labguide@nfcstore.uz**
 >   ma’lumotlar olib tashlangan.
 > - **Hamjamiyat (D-43)** — `cloudflare/src/community.ts`, `0005_community.sql`: hujjat surati
 >   saqlanmaydi (testda tekshirilgan), Q&A ilova ichida ommaviy, tarjima — Workers AI.
-> - Murojaatlar (“Taklif va yordam”), tekshiruvchi, hamkorlar (reklama), admin panel va Pro
+> - Murojaatlar (“Taklif va yordam”), tekshiruvchi, hamkorlar (reklama) va admin panel
 >   server tomonida hali yo‘q (endpointlar `501`) — shuning uchun matnda “to‘planmaydi” deyilgan.
+>   To‘lov (Pro) — bu versiyada yo‘q (D-58).
 >   Ular ishga tushirilsa, matn va do‘kon deklaratsiyalarini yangilang.
 > - **O‘zbekiston qonunchiligi (muhim):** “Shaxsga doir ma’lumotlar to‘g‘risida”gi qonun
 >   (O‘RQ-547) O‘zbekiston fuqarolarining shaxsiy ma’lumotlarini internet orqali qayta

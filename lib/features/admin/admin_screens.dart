@@ -10,6 +10,7 @@ import '../../app/widgets/lg_page.dart';
 import '../../app/widgets/links.dart';
 import '../../core/backend/admin_team.dart';
 import '../../core/backend/backend_models.dart';
+import '../../core/build_flags.dart';
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
@@ -504,15 +505,17 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
           ],
         ),
       ),
-      LgNotice(l.adminBilling, kind: NoticeKind.info),
       LgSectionTitle(l.admOther),
-      LgRow(
-        title: l.adminPartners,
-        subtitle: l.adminPartnersSub,
-        icon: Icons.storefront_outlined,
-        onTap: () => _open('/profile/admin/partners'),
-      ),
-      const AdminPartnerRequestsRow(),
+      // Hamkorlar — faqat hamkor UI yoqilgan (test) buildda.
+      if (BuildFlags.partnerAds) ...[
+        LgRow(
+          title: l.adminPartners,
+          subtitle: l.adminPartnersSub,
+          icon: Icons.storefront_outlined,
+          onTap: () => _open('/profile/admin/partners'),
+        ),
+        const AdminPartnerRequestsRow(),
+      ],
       LgRow(
         title: l.adminUsers,
         icon: Icons.people_outline_rounded,

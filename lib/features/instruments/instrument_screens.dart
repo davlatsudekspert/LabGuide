@@ -4,6 +4,7 @@ import 'package:material_ui/material_ui.dart';
 import '../../app/app_scope.dart';
 import '../../app/widgets/lg_page.dart';
 import '../../app/widgets/links.dart';
+import '../../core/build_flags.dart';
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
@@ -562,7 +563,8 @@ class InstrumentMakersScreen extends StatelessWidget {
             const SizedBox(height: 16),
             CategoryIllustration(asset: catalog.category(cat).illustration),
             // Reklama: ro'yxatdan keyin, alohida va “Hamkor” yorlig'i bilan.
-            CategoryPartnerCards(catalog: catalog, category: cat),
+            if (BuildFlags.partnerAds)
+              CategoryPartnerCards(catalog: catalog, category: cat),
           ],
         );
       },
@@ -811,7 +813,7 @@ class _InstrumentCard extends StatelessWidget {
               onTap: () => openExternalLink(context, s.url),
             ),
         // Reklama: barcha katalog ma'lumotidan keyin, alohida bo'lim.
-        InstrumentPartnersSection(model: model),
+        if (BuildFlags.partnerAds) InstrumentPartnersSection(model: model),
       ],
     );
   }

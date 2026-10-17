@@ -4,6 +4,7 @@ import 'package:material_ui/material_ui.dart';
 import '../../app/app_scope.dart';
 import '../../app/shell.dart';
 import '../../app/widgets/lg_page.dart';
+import '../../core/build_flags.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
 import '../auth/ui/role_screen.dart';
@@ -145,7 +146,7 @@ class RoleHome {
       heroLocation: '/learn/classes',
       actions: [
         HomeAction(l.featureClasses, Icons.groups_outlined, '/learn/classes'),
-        // Ma'ruza rejimi — Ustoz Pro'ning asosiy qismi (D-45/47).
+        // Ma'ruza rejimi (D-45/47).
         HomeAction(l.lectureTitle, Icons.co_present_outlined, '/learn/lecture'),
         HomeAction(
           l.featureSources,
@@ -186,9 +187,9 @@ class HomeScreen extends StatelessWidget {
             const HomeSearchField(),
             // Reklama joylari (“Reklama” yorlig'i bilan): 1 — laboratoriya
             // xizmati, 2 — apparat firmasi; yonma-yon ixcham juftlik —
-            // ilova ochilganda birinchi ekranda. Haqiqiy hamkor yoki (faqat
-            // demo/test buildda) namuna bo'lmasa — hech narsa chizilmaydi.
-            const HomePartnerPair(),
+            // ilova ochilganda birinchi ekranda. Faqat hamkor UI yoqilgan
+            // (test) buildda; do'kon buildida umuman yo'q.
+            if (BuildFlags.partnerAds) const HomePartnerPair(),
             if (config.featuredConditions.isNotEmpty)
               ConditionGuideCard(
                 base: '/home',

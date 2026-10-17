@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 
 import '../../core/backend/lab_backend.dart';
 import '../../core/backend/partner_models.dart';
+import '../../core/build_flags.dart';
 import '../../core/storage/kv_store.dart';
 import '../instruments/instrument_catalog.dart';
 
@@ -36,8 +37,10 @@ class PartnersController extends ChangeNotifier {
   final List<PartnerEvent> _queue = [];
   bool _flushScheduled = false;
 
-  /// Reklama joylari faqat server ulangan buildda bor.
-  bool get enabled => _backend.isConfigured;
+  /// Reklama joylari faqat hamkor UI yoqilgan ([BuildFlags.partnerAds]) va
+  /// server ulangan buildda bor. Aks holda serverga so'rov ham, ko'rsatilish
+  /// hisoboti ham yo'q.
+  bool get enabled => BuildFlags.partnerAds && _backend.isConfigured;
 
   DateTime get today => tashkentToday(_clock());
 

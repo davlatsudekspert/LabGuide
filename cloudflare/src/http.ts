@@ -24,23 +24,6 @@ export interface Env {
   /** Hamjamiyatda egasi hisobining ko'rinadigan nomi. */
   LG_OWNER_DISPLAY_NAME?: string;
   /**
-   * Pro obunalari (src/billing.ts). Maxfiy: App Store Server API kaliti
-   * (App Store Connect → Users and Access → Integrations → In-App Purchase).
-   * Uchalasi bo'lmasa — App Store tekshiruvi `503 not_configured`.
-   */
-  APPLE_IAP_KEY_ID?: string;
-  APPLE_IAP_ISSUER_ID?: string;
-  /** `.p8` fayl matni (PEM). */
-  APPLE_IAP_PRIVATE_KEY?: string;
-  /** Standart: uz.labguide.app. */
-  APPLE_BUNDLE_ID?: string;
-  /** Maxfiy: Play Developer API uchun service account JSON. */
-  GOOGLE_PLAY_SERVICE_ACCOUNT?: string;
-  /** Standart: uz.labguide.app. */
-  GOOGLE_PLAY_PACKAGE?: string;
-  /** Maxfiy (ixtiyoriy): RTDN push URL'idagi `?token=` qiymati. */
-  PLAY_RTDN_TOKEN?: string;
-  /**
    * Google bilan kirish (src/social.ts): ruxsat etilgan OAuth client ID lar
    * (ID tokendagi `aud`), vergul/bo'shliq bilan. Bo'sh — Google kirishi
    * `503 not_configured`, ilova tugmani ko'rsatmaydi.

@@ -15,7 +15,7 @@ trekiga qo'lda yuklash. **Production'ga yubormang.** Ommaviy reliz bu hujjatda y
 | minSdk / targetSdk | 24 / 36 (Play talabi: targetSdk >= 35 — bajarilgan) |
 | Imzo | upload kaliti (CN=LabGuide), `jarsigner -verify`: "jar verified" (debug kalit emas) |
 | Upload sertifikati SHA-256 | `19:29:AB:51:9C:FE:61:D5:48:15:93:64:0C:54:C5:B4:B6:C5:A3:C4:38:37:35:3C:9D:B2:57:76:56:E8:FA:24` |
-| Build | server ulanmagan (`LG_API_URL` bo'sh; Supabase endi ishlatilmaydi), `LG_ALL_FEATURES_OPEN=true` |
+| Build | server ulanmagan (`LG_API_URL` bo'sh; Supabase endi ishlatilmaydi), `LG_ALL_FEATURES_OPEN=true` (eski bayroq; D-58 dan keyin yo'q — bu versiyada to'lov yo'q) |
 
 Faylni tekshirish: `sha256sum LabGuide-0.1.0-20.aab` (yuqoridagi qiymat bilan bir xil bo'lsin).
 

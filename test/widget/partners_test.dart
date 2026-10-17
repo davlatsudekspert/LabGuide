@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:labguide/app/app_scope.dart';
 import 'package:labguide/core/backend/partner_models.dart';
+import 'package:labguide/core/build_flags.dart';
 import 'package:labguide/core/storage/kv_store.dart';
 import 'package:labguide/features/partners/partner_widgets.dart';
 import 'package:labguide/l10n/gen/app_localizations.dart';
@@ -88,6 +89,9 @@ void _expectNoAds() {
 }
 
 void main() {
+  // Hamkor UI yoqilgan (TestFlight/Play ichki test) build.
+  setUp(() => BuildFlags.debugPartnerAdsOverride = true);
+  tearDown(() => BuildFlags.debugPartnerAdsOverride = null);
   setUpAll(loadAppFonts);
 
   testWidgets('sozlanmagan build: reklama joylari umuman chiqmaydi', (

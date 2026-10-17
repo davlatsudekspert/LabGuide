@@ -2,6 +2,7 @@ import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
 import '../../app/widgets/lg_page.dart';
+import '../../core/build_flags.dart';
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
@@ -101,8 +102,9 @@ class LabScreen extends StatelessWidget {
           onTap: () => context.push('/lab/microscopy'),
           divider: false,
         ),
-        // Faqat haqiqiy faol hamkor bo'lsa — bitta “Reklama” kartasi.
-        const LabPartnerCard(),
+        // Faqat hamkor UI yoqilgan buildda va haqiqiy faol hamkor bo'lsa —
+        // bitta “Reklama” kartasi.
+        if (BuildFlags.partnerAds) const LabPartnerCard(),
       ],
     );
   }

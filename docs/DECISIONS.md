@@ -783,7 +783,7 @@ D-46 dagi paketlar aniqlashtirildi: shaxsiy **Pro** (laborant, shifokor, toifaga
   belgilari bilan), rasm, savol-javob (javob tugma yoki Enter bilan). Mavjud Ma'ruza pleyeri shuni chizadi.
 - **Kirish:** `/learn/lecture` → "Avtomatik taqdimot" → `/learn/lecture/auto` (tanlash) → `.../preview`
   (tartib, olib tashlash) → `.../play`. Ustoz Pro (`Feature.autoPresentation`): kirishda va "Boshlash"da
-  tekshiriladi; TestFlight/`LG_ALL_FEATURES_OPEN` da ochiq.
+  tekshiriladi; TestFlight/`LG_ALL_FEATURES_OPEN` da ochiq. (D-58: tekshiruv va bayroq olib tashlandi — hamma uchun ochiq.)
 
 ## D-55. AI yordamidagi sharh ishlari: faqat qo'lda, faqat taklif (2026-10-17)
 - Egasi repo secret'i `ANTHROPIC_API_KEY` ni fon AI ishlari uchun ishlatishga ruxsat berdi. Kalitni hech kim (chatda ham)
@@ -869,3 +869,9 @@ D-48 dagi **Ustoz Pro** qatorini (69 000 so'm/oy · 490 000 so'm/yil · $9.99/oy
 - **Qaytarish sharti:** Google/Apple tekshiruvida jiddiy xavfsizlik muammosi chiqsa, secretlarni (`GOOGLE_CLIENT_IDS`,
   `APPLE_SIGNIN_*`) o‘chirish kifoya — endpointlar `503`, tugmalar yo‘qoladi; email-kod kirishi ta’sirlanmaydi.
 - **Egasi qadamlari:** `docs/AUTH_SOCIAL_LOGIN.md`. Maxfiylik siyosati va do‘kon deklaratsiyalari yangilangan.
+
+## D-58. Pro/to'lov ilovadan olib tashlandi (2026-10-17, egasi qarori)
+- Pro/payments removed from the shipping app (Apple 2.5.19/2.1); everything free; return as a complete update
+  later; work kept on branch `pro-later`. Reklama UI do'kon buildidan ham chiqarildi (`LG_PARTNER_ADS=false`,
+  faqat TestFlight/Play ichki test buildlarida `true` — docs/PARTNERS.md). Serverda faqat ko'rinmas `users.plan`
+  ustuni (`0010_user_plan.sql`), hech bir endpoint uni bermaydi.

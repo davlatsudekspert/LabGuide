@@ -2,6 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:labguide/core/backend/backend_models.dart';
 import 'package:labguide/core/backend/lab_backend.dart';
 import 'package:labguide/core/backend/partner_models.dart';
+import 'package:labguide/core/build_flags.dart';
 import 'package:labguide/core/storage/kv_store.dart';
 import 'package:labguide/features/partners/partners_controller.dart';
 
@@ -9,6 +10,9 @@ import '../helpers/fake_backend.dart';
 import '../helpers/partner_fixtures.dart';
 
 void main() {
+  // Hamkor UI yoqilgan (TestFlight/Play ichki test) build.
+  setUp(() => BuildFlags.debugPartnerAdsOverride = true);
+  tearDown(() => BuildFlags.debugPartnerAdsOverride = null);
   test('Toshkent sanasi: UTC+5 (yozgi vaqtsiz)', () {
     expect(
       tashkentToday(DateTime.utc(2026, 10, 9, 18, 59)),

@@ -82,10 +82,10 @@ env:
   # Cloudflare Worker API (sir emas; secret yoki repo variable). Berilsa
   # ilova shu serverga ulanadi (Supabase o'rniga), bo'sh — avvalgi holat.
   LG_API_URL: ${{ secrets.LG_API_URL || vars.LG_API_URL || 'https://labguide-api.davlatsudekspert.workers.dev' }}
-  # Pro huquqlari: sinov buildlari (build, testflight va play_internal rejimlari, sinov
-  # APK'lari) hamma imkoniyatni ochadi — to'lov hali yoqilmagan. Kelajakdagi
-  # do'kon (store/release) rejimida false bo'ladi (docs/PRO_BILLING_PLAN.md).
-  LG_ALL_FEATURES_OPEN: ${{ (inputs.mode || 'build') == 'build' || inputs.mode == 'testflight' || inputs.mode == 'play_internal' }}
+  # Hamkor (reklama) UI (lib/core/build_flags.dart): faqat TestFlight va Play ichki
+  # test buildlarida. `build` va kelajakdagi do'kon rejimlarida false — reklama UI
+  # kompilyatsiyadan chiqariladi (docs/PARTNERS.md).
+  LG_PARTNER_ADS: ${{ inputs.mode == 'testflight' || inputs.mode == 'play_internal' }}
   # Google / Apple bilan kirish (D-56, docs/AUTH_SOCIAL_LOGIN.md). OAuth client
   # ID lar sir emas (ochiq identifikator): repo variables. Bo'sh bo'lsa
   # tegishli tugma ilovada ko'rinmaydi. LG_APPLE_SIGNIN=true FAQAT egasi
@@ -254,13 +254,6 @@ jobs:
           LG_SENDER_EMAIL: ${{ secrets.LG_SENDER_EMAIL }}
           LG_SERVER_SECRET: ${{ secrets.LG_SERVER_SECRET }}
           LG_ADMIN_EMAILS: ${{ secrets.LG_ADMIN_EMAILS }}
-          # Pro obunalari (ixtiyoriy; docs/PRO_BILLING_PLAN.md). Bo'lmasa server
-          # `503 not_configured` beradi va ilova to'lov oynasini ko'rsatmaydi.
-          APPLE_IAP_KEY_ID: ${{ secrets.APPLE_IAP_KEY_ID }}
-          APPLE_IAP_ISSUER_ID: ${{ secrets.APPLE_IAP_ISSUER_ID }}
-          APPLE_IAP_PRIVATE_KEY: ${{ secrets.APPLE_IAP_PRIVATE_KEY }}
-          GOOGLE_PLAY_SERVICE_ACCOUNT: ${{ secrets.GOOGLE_PLAY_BILLING_SERVICE_ACCOUNT_JSON }}
-          PLAY_RTDN_TOKEN: ${{ secrets.PLAY_RTDN_TOKEN }}
           # Google / Apple bilan kirish (D-56, docs/AUTH_SOCIAL_LOGIN.md).
           # Ixtiyoriy: bo'lmasa tegishli endpoint `503 not_configured`, ilova
           # tugmani ko'rsatmaydi.
@@ -286,22 +279,6 @@ jobs:
           else
             echo "- LG_ADMIN_EMAILS berilmagan: admin vakolati hech kimga berilmaydi" >> "$GITHUB_STEP_SUMMARY"
           fi
-          # Pro obunalari: App Store kaliti uchala qiymat bilan birga ishlaydi.
-          apple=0
-          for k in APPLE_IAP_KEY_ID APPLE_IAP_ISSUER_ID APPLE_IAP_PRIVATE_KEY; do
-            if [ -n "${!k}" ]; then apple=$((apple + 1)); fi
-          done
-          if [ "$apple" -eq 3 ]; then
-            for k in APPLE_IAP_KEY_ID APPLE_IAP_ISSUER_ID APPLE_IAP_PRIVATE_KEY; do put "$k"; done
-          elif [ "$apple" -gt 0 ]; then
-            echo "::warning::APPLE_IAP_* secretlaridan faqat $apple tasi berilgan — App Store to'lovi o'chiq qoladi"
-            echo "- APPLE_IAP_*: to'liq emas ($apple/3) — o'rnatilmadi" >> "$GITHUB_STEP_SUMMARY"
-          else
-            echo "- APPLE_IAP_*: berilmagan — App Store to'lovi o'chiq" >> "$GITHUB_STEP_SUMMARY"
-          fi
-          for k in GOOGLE_PLAY_SERVICE_ACCOUNT PLAY_RTDN_TOKEN; do
-            if [ -n "${!k}" ]; then put "$k"; else echo "- secret $k: berilmagan" >> "$GITHUB_STEP_SUMMARY"; fi
-          done
           # Google bilan kirish: client ID lar ro'yxati.
           if [ -n "$GOOGLE_CLIENT_IDS" ]; then
             put GOOGLE_CLIENT_IDS
@@ -393,13 +370,13 @@ jobs:
           flutter build apk --release --split-per-abi \
             --build-number="${{ github.run_number }}" \
             --dart-define=LG_SUPABASE_URL="$LG_SUPABASE_URL" --dart-define=LG_SUPABASE_KEY="$LG_SUPABASE_KEY" --dart-define=LG_API_URL="$LG_API_URL" \
-            --dart-define=LG_ALL_FEATURES_OPEN="$LG_ALL_FEATURES_OPEN" \
+            --dart-define=LG_PARTNER_ADS="$LG_PARTNER_ADS" \
             --dart-define=LG_GOOGLE_CLIENT_ID="$LG_GOOGLE_CLIENT_ID" --dart-define=LG_GOOGLE_IOS_CLIENT_ID="$LG_GOOGLE_IOS_CLIENT_ID" \
             --dart-define=LG_APPLE_SERVICE_ID="$LG_APPLE_SERVICE_ID" --dart-define=LG_APPLE_SIGNIN="$LG_APPLE_SIGNIN"
           if [ "${ANDROID_SIGNED:-false}" = true ]; then
             flutter build appbundle --release --build-number="${{ github.run_number }}" \
               --dart-define=LG_SUPABASE_URL="$LG_SUPABASE_URL" --dart-define=LG_SUPABASE_KEY="$LG_SUPABASE_KEY" --dart-define=LG_API_URL="$LG_API_URL" \
-              --dart-define=LG_ALL_FEATURES_OPEN="$LG_ALL_FEATURES_OPEN" \
+              --dart-define=LG_PARTNER_ADS="$LG_PARTNER_ADS" \
               --dart-define=LG_GOOGLE_CLIENT_ID="$LG_GOOGLE_CLIENT_ID" --dart-define=LG_GOOGLE_IOS_CLIENT_ID="$LG_GOOGLE_IOS_CLIENT_ID" \
               --dart-define=LG_APPLE_SERVICE_ID="$LG_APPLE_SERVICE_ID" --dart-define=LG_APPLE_SIGNIN="$LG_APPLE_SIGNIN"
           fi
@@ -560,7 +537,7 @@ jobs:
           flutter build ios --release --no-codesign \
             --build-name="$IOS_VERSION" --build-number="$IOS_BUILD_NUMBER" \
             --dart-define=LG_SUPABASE_URL="$LG_SUPABASE_URL" --dart-define=LG_SUPABASE_KEY="$LG_SUPABASE_KEY" --dart-define=LG_API_URL="$LG_API_URL" \
-            --dart-define=LG_ALL_FEATURES_OPEN="$LG_ALL_FEATURES_OPEN" \
+            --dart-define=LG_PARTNER_ADS="$LG_PARTNER_ADS" \
             --dart-define=LG_GOOGLE_CLIENT_ID="$LG_GOOGLE_CLIENT_ID" --dart-define=LG_GOOGLE_IOS_CLIENT_ID="$LG_GOOGLE_IOS_CLIENT_ID" \
             --dart-define=LG_APPLE_SERVICE_ID="$LG_APPLE_SERVICE_ID" --dart-define=LG_APPLE_SIGNIN=false
           APP=build/ios/iphoneos/Runner.app
@@ -955,7 +932,7 @@ jobs:
             flutter build ipa --release \
               --build-name="$IOS_VERSION" --build-number="$IOS_BUILD_NUMBER" \
               --dart-define=LG_SUPABASE_URL="$LG_SUPABASE_URL" --dart-define=LG_SUPABASE_KEY="$LG_SUPABASE_KEY" --dart-define=LG_API_URL="$LG_API_URL" \
-              --dart-define=LG_ALL_FEATURES_OPEN="$LG_ALL_FEATURES_OPEN" \
+              --dart-define=LG_PARTNER_ADS="$LG_PARTNER_ADS" \
               --dart-define=LG_GOOGLE_CLIENT_ID="$LG_GOOGLE_CLIENT_ID" --dart-define=LG_GOOGLE_IOS_CLIENT_ID="$LG_GOOGLE_IOS_CLIENT_ID" \
               --dart-define=LG_APPLE_SERVICE_ID="$LG_APPLE_SERVICE_ID" --dart-define=LG_APPLE_SIGNIN="$LG_APPLE_SIGNIN" \
               --export-options-plist="$SIGN_DIR/ExportOptions.plist"
@@ -965,7 +942,7 @@ jobs:
             flutter build ios --release --config-only \
               --build-name="$IOS_VERSION" --build-number="$IOS_BUILD_NUMBER" \
               --dart-define=LG_SUPABASE_URL="$LG_SUPABASE_URL" --dart-define=LG_SUPABASE_KEY="$LG_SUPABASE_KEY" --dart-define=LG_API_URL="$LG_API_URL" \
-              --dart-define=LG_ALL_FEATURES_OPEN="$LG_ALL_FEATURES_OPEN" \
+              --dart-define=LG_PARTNER_ADS="$LG_PARTNER_ADS" \
               --dart-define=LG_GOOGLE_CLIENT_ID="$LG_GOOGLE_CLIENT_ID" --dart-define=LG_GOOGLE_IOS_CLIENT_ID="$LG_GOOGLE_IOS_CLIENT_ID" \
               --dart-define=LG_APPLE_SERVICE_ID="$LG_APPLE_SERVICE_ID" --dart-define=LG_APPLE_SIGNIN="$LG_APPLE_SIGNIN"
             xcodebuild -workspace ios/Runner.xcworkspace -scheme Runner \
