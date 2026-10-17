@@ -384,9 +384,37 @@ GoRouter buildRouter(
                       ),
                     ],
                   ),
+                  // Spermogramma: JSST 2021 chegaralari, hisoblagich,
+                  // baholash, atamalar, preanalitika, mashq.
                   GoRoute(
                     path: 'spermogram',
                     builder: (context, state) => const SpermogramScreen(),
+                    routes: [
+                      GoRoute(
+                        path: 'limits',
+                        builder: (context, state) => const SpermLimitsScreen(),
+                      ),
+                      GoRoute(
+                        path: 'count',
+                        builder: (context, state) => const SpermCounterScreen(),
+                      ),
+                      GoRoute(
+                        path: 'assess',
+                        builder: (context, state) => const SpermAssessScreen(),
+                      ),
+                      GoRoute(
+                        path: 'terms',
+                        builder: (context, state) => const SpermTermsScreen(),
+                      ),
+                      GoRoute(
+                        path: 'preanalytics',
+                        builder: (context, state) => const SpermPreScreen(),
+                      ),
+                      GoRoute(
+                        path: 'quiz',
+                        builder: (context, state) => const SpermQuizScreen(),
+                      ),
+                    ],
                   ),
                   // Sitologiya: hujayralar, tozalik darajasi, Bethesda, mashq, namuna
                   // sifati, reaktiv o'zgarishlar, yetilish indeksi, boshqa namunalar.
