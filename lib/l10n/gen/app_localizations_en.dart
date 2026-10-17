@@ -8849,4 +8849,11 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get homeAdDemoCta => 'Place an ad';
+
+  @override
+  String get bloodMorphTitle => 'Blood morphology';
+
+  @override
+  String get bloodMorphLabCardBody =>
+      'Red cells, platelets, anaemias: real micrographs, helper, practice';
 }

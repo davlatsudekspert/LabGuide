@@ -4,6 +4,7 @@
 // --sperm: spermogramma kartasi (tool/illustrations/sperm/*.svg) → assets/spermogram/<nom>.png.
 // --bloodgroup: qon guruhi kartasi (tool/illustrations/bloodgroup/*.svg) → assets/bloodgroup/<nom>.png.
 // --histology: gistologiya kartasi (tool/illustrations/histology/*.svg) → assets/histology/<nom>.png.
+// --bloodmorph: qon morfologiyasi kartasi va sxemasi (tool/illustrations/bloodmorph/*.svg) → assets/bloodmorph/<nom>.png.
 // --cyto: sitologiya sxemalari (tool/illustrations/cyto/*.svg) → assets/cytology/<nom>.png.
 // --schematic: apparat turi chizmalari (tool/illustrations/schematic/*.svg, gen.py bilan
 // yaratiladi) → assets/instruments/schematic/<nom>_1200.png va <nom>_480.png (shaffof fon).
@@ -20,11 +21,14 @@ const sperm = args[0] === '--sperm';
 const blood = args[0] === '--bloodgroup';
 const schematic = args[0] === '--schematic';
 const histo = args[0] === '--histology';
-const cells = args[0] === '--cells' || cyto || sperm || blood || histo;
+const morph = args[0] === '--bloodmorph';
+const cells = args[0] === '--cells' || cyto || sperm || blood || histo || morph;
 const rest = cells || schematic ? args.slice(1) : args;
-const srcDir = schematic ? join(here, 'schematic') : histo ? join(here, 'histology') : blood ? join(here, 'bloodgroup') : sperm ? join(here, 'sperm') : cyto ? join(here, 'cyto') : cells ? join(here, 'cells') : here;
+const srcDir = schematic ? join(here, 'schematic') : morph ? join(here, 'bloodmorph') : histo ? join(here, 'histology') : blood ? join(here, 'bloodgroup') : sperm ? join(here, 'sperm') : cyto ? join(here, 'cyto') : cells ? join(here, 'cells') : here;
 const out = schematic
   ? join(here, '../../assets/instruments/schematic')
+  : morph
+  ? join(here, '../../assets/bloodmorph')
   : histo
   ? join(here, '../../assets/histology')
   : blood

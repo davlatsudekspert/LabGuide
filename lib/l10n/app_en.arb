@@ -5057,5 +5057,13 @@
   },
   "@homeAdDemoCta": {
     "description": "Home tab: button on the demo ad placeholder, opens the become-a-partner page"
+  },
+  "bloodMorphTitle": "Blood morphology",
+  "bloodMorphLabCardBody": "Red cells, platelets, anaemias: real micrographs, helper, practice",
+  "@bloodMorphTitle": {
+    "description": "Lab tab: blood morphology section title (peripheral blood film: red cells, platelets, anaemias)"
+  },
+  "@bloodMorphLabCardBody": {
+    "description": "Lab tab: blood morphology picture card subtitle"
   }
 }

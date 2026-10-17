@@ -8711,4 +8711,11 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get homeAdDemoCta => 'Reklama joylashtirish';
+
+  @override
+  String get bloodMorphTitle => 'Qon morfologiyasi';
+
+  @override
+  String get bloodMorphLabCardBody =>
+      'Eritrotsitlar, trombotsitlar, anemiyalar: haqiqiy mikrofotolar, yordamchi, mashq';
 }

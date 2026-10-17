@@ -8887,4 +8887,11 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get homeAdDemoCta => 'Разместить рекламу';
+
+  @override
+  String get bloodMorphTitle => 'Морфология крови';
+
+  @override
+  String get bloodMorphLabCardBody =>
+      'Эритроциты, тромбоциты, анемии: настоящие микрофото, помощник, тренировка';
 }

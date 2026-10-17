@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" width="900" height="600">
+<rect width="900" height="600" fill="#FBF7F7"/>
+<circle cx="150.0" cy="190.0" r="52.5" fill="#E7959F" stroke="#C9707C" stroke-width="2"/>
+<circle cx="150.0" cy="190.0" r="17.9" fill="#F8DADD"/>
+<circle cx="55" cy="95" r="22" fill="#1F4E79"/>
+<text x="55" y="103" text-anchor="middle" font-family="Inter" font-weight="700" font-size="24" fill="#FFFFFF">1</text>
+<circle cx="450.0" cy="190.0" r="35.0" fill="#E7959F" stroke="#C9707C" stroke-width="2"/>
+<circle cx="450.0" cy="190.0" r="10.5" fill="#F8DADD"/>
+<circle cx="355" cy="95" r="22" fill="#1F4E79"/>
+<text x="355" y="103" text-anchor="middle" font-family="Inter" font-weight="700" font-size="24" fill="#FFFFFF">2</text>
+<circle cx="750.0" cy="190.0" r="66.5" fill="#E7959F" stroke="#C9707C" stroke-width="2"/>
+<circle cx="750.0" cy="190.0" r="22.6" fill="#F8DADD"/>
+<circle cx="655" cy="95" r="22" fill="#1F4E79"/>
+<text x="655" y="103" text-anchor="middle" font-family="Inter" font-weight="700" font-size="24" fill="#FFFFFF">3</text>
+<circle cx="150.0" cy="440.0" r="52.5" fill="#F0B9C0" stroke="#D38B95" stroke-width="2"/>
+<circle cx="150.0" cy="440.0" r="34.6" fill="#F8DADD"/>
+<circle cx="55" cy="345" r="22" fill="#1F4E79"/>
+<text x="55" y="353" text-anchor="middle" font-family="Inter" font-weight="700" font-size="24" fill="#FFFFFF">4</text>
+<circle cx="450.0" cy="440.0" r="42.0" fill="#D86F7E" stroke="#B4505F" stroke-width="2"/>
+<circle cx="355" cy="345" r="22" fill="#1F4E79"/>
+<text x="355" y="353" text-anchor="middle" font-family="Inter" font-weight="700" font-size="24" fill="#FFFFFF">5</text>
+<circle cx="750.0" cy="440.0" r="63.0" fill="#9EB9E3" stroke="#6F8FC4" stroke-width="2"/>
+<circle cx="747.0" cy="442.0" r="52.5" fill="#4B2F7E"/>
+<circle cx="655" cy="345" r="22" fill="#1F4E79"/>
+<text x="655" y="353" text-anchor="middle" font-family="Inter" font-weight="700" font-size="24" fill="#FFFFFF">6</text>
+<line x1="40" y1="570" x2="110" y2="570" stroke="#333" stroke-width="4"/>
+<text x="122" y="578" font-family="Inter" font-weight="600" font-size="22" fill="#333">5 µm</text>
+</svg>
