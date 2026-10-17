@@ -11,6 +11,11 @@ export interface Deps {
    * Kiruvchi ma'lumot (hujjat rasmi) hech qayerga yozilmaydi.
    */
   runAi?: (env: Env, model: string, input: Record<string, unknown>) => Promise<unknown>;
+  /**
+   * Tashqi so'rovlar (App Store / Google Play API). Standart: global `fetch`;
+   * testlarda soxta — haqiqiy do'konga hech qachon murojaat qilinmaydi.
+   */
+  fetch?: typeof fetch;
 }
 
 export interface Ctx {

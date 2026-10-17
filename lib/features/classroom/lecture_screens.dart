@@ -7,10 +7,12 @@ import 'package:material_ui/material_ui.dart';
 
 import '../../app/app_scope.dart';
 import '../../app/widgets/lg_page.dart';
+import '../../core/entitlements/feature.dart';
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
 import '../differential/diff_eyes_free.dart' show DiffDevice;
+import '../profile/pro_gate.dart';
 import 'classroom_screens.dart';
 import 'curriculum.dart';
 import 'lecture_decks.dart';
@@ -199,7 +201,12 @@ class LectureListScreen extends StatelessWidget {
                           ? Icons.co_present_outlined
                           : Icons.slideshow_outlined,
                       divider: i < m.topics.length - 1,
-                      onTap: () => context.push('/learn/lecture/${t.id}'),
+                      // Ma'ruza rejimi — Ustoz Pro; boshlashdan oldin.
+                      onTap: () => pushGated(
+                        context,
+                        Feature.autoPresentation,
+                        '/learn/lecture/${t.id}',
+                      ),
                     ),
                 ],
               ],

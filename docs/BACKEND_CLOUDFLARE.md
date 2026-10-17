@@ -200,7 +200,13 @@ ko‘rsatilmaydi. Hamkorlar ro‘yxati bo‘sh (reklama joylari chiqmaydi).
 | Admin panel | `/v1/admin/*` (hozir ham admin+aal2 tekshiriladi) | statistika (faqat ro‘yxatdan o‘tganlar — mehmonlar serverga tushmaydi), foydalanuvchilar (`email_masked`), reviewer berish, audit o‘qish |
 | Kontent tekshiruvi | `/v1/reviews` | `content_reviews` |
 | Hamkorlar | `/v1/partners*` | feed, arizalar, kunlik umumiy hisoblagich, logo (R2) |
-| Pro huquqlari | `/v1/entitlements` | `verify-purchase` porti (do‘kon API), ilova faqat o‘qiydi |
+
+**Pro obunalari — tayyor** (`src/billing.ts`, `migrations/0007_billing.sql`):
+`GET /v1/billing/status`, `GET /v1/billing/entitlements` (= `/v1/entitlements`),
+`POST /v1/billing/verify`, `POST /v1/billing/apple/notifications` (ASSN v2),
+`POST /v1/billing/google/rtdn` (Play RTDN). Kalitlar (`APPLE_IAP_*`,
+`GOOGLE_PLAY_SERVICE_ACCOUNT`) bo‘lmasa — `503 not_configured`. Egasi qadamlari:
+`docs/PRO_BILLING_PLAN.md`.
 
 Eslatma: to‘liq emailni “ochish” (`adminRevealEmail`) bu serverda **bo‘lmaydi**
 — email saqlanmaydi.

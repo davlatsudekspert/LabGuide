@@ -13,6 +13,8 @@ import 'package:labguide/app/widgets/lg_page.dart';
 import 'package:labguide/core/backend/community_backend.dart';
 import 'package:labguide/core/backend/lab_backend.dart';
 import 'package:labguide/core/entitlements/entitlement_cache.dart';
+import 'package:labguide/core/entitlements/entitlement_source.dart';
+import 'package:labguide/core/entitlements/purchase_adapter.dart';
 import 'package:labguide/core/storage/kv_store.dart';
 import 'package:labguide/features/auth/otp_auth.dart';
 import 'package:labguide/features/classroom/lecture_decks.dart';
@@ -59,6 +61,9 @@ Future<AppServices> makeServices(
   ResultSharer? sharer,
   DateTime Function()? clock,
   CommunityBackend? community,
+  // Pro: soxta do'kon va server (test/helpers/billing_fakes.dart).
+  PurchaseAdapter? purchases,
+  EntitlementSource? entitlementSource,
 }) async {
   final s = store ?? MemoryKeyValueStore();
   // Har test o'z (hali yaratilmagan) paketlar papkasi bilan.
@@ -81,6 +86,8 @@ Future<AppServices> makeServices(
     backend: backend,
     entitlementKeys: MemoryEntitlementKeyStore(),
     allFeaturesOpen: allFeaturesOpen,
+    purchases: purchases,
+    entitlementSource: entitlementSource,
     // Haqiqiy bildirishnoma/ulashish plaginlari testda yo'q.
     reminderScheduler: reminderScheduler ?? FakeReminderScheduler(),
     sharer: sharer ?? FakeResultSharer(),

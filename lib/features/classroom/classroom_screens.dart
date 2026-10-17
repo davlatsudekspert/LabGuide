@@ -7,6 +7,7 @@ import 'package:material_ui/material_ui.dart';
 import '../../app/app_scope.dart';
 import '../../app/widgets/lg_page.dart';
 import '../../core/backend/backend_models.dart';
+import '../../core/entitlements/feature.dart';
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
@@ -15,6 +16,7 @@ import '../content/ui/content_widgets.dart';
 import '../learn/classes_screens.dart';
 import '../learn/exam_question.dart';
 import '../learn/exam_widgets.dart';
+import '../profile/pro_gate.dart';
 import '../reference/reference_content.dart';
 import '../toifa/toifa_bank.dart';
 import '../tools/calc_info.dart';
@@ -614,8 +616,11 @@ class _GroupTopicScreenState extends State<GroupTopicScreen>
             LgButton(
               label: l.lectureStart,
               icon: Icons.slideshow_outlined,
-              onPressed: () =>
-                  context.push('/learn/lecture/${t.id}?g=${widget.groupId}'),
+              onPressed: () => pushGated(
+                context,
+                Feature.autoPresentation,
+                '/learn/lecture/${t.id}?g=${widget.groupId}',
+              ),
             ),
             if (gt?.lectureDoneAt == null) ...[
               const SizedBox(height: 8),

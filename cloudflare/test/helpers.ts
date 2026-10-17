@@ -20,6 +20,8 @@ export function unbase32(s: string): Uint8Array {
   return new Uint8Array(out);
 }
 
+export type FetchFn = (url: string, init?: RequestInit) => Promise<Response>;
+
 export type AiFn = (model: string, input: Record<string, unknown>) => Promise<unknown>;
 
 export interface Sent {
@@ -47,9 +49,19 @@ export function makeServer(overrides: Partial<Env> = {}) {
   let aiImpl: AiFn = async () => {
     throw new Error('AI not mocked in this test');
   };
+  // Do'kon API'lari (App Store / Google Play) soxtasi: haqiqiy tarmoq yo'q.
+  const fetchCalls: { url: string; init?: RequestInit }[] = [];
+  let fetchImpl: FetchFn = async (url) => {
+    throw new Error(`fetch not mocked in this test: ${url}`);
+  };
   const app = createApp({
     sendCode: sender,
     now: () => clock.now,
+    fetch: (async (input: RequestInfo | URL, init?: RequestInit) => {
+      const url = typeof input === 'string' ? input : input instanceof URL ? input.toString() : input.url;
+      fetchCalls.push({ url, init });
+      return fetchImpl(url, init);
+    }) as typeof fetch,
     runAi: async (_env, model, input) => {
       aiCalls.push({ model, input });
       return aiImpl(model, input);
@@ -142,6 +154,10 @@ export function makeServer(overrides: Partial<Env> = {}) {
   return {
     app,
     aiCalls,
+    fetchCalls,
+    setFetch: (fn: FetchFn) => {
+      fetchImpl = fn;
+    },
     setAi: (fn: AiFn) => {
       aiImpl = fn;
     },

@@ -6181,33 +6181,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get purchaseTitle => 'LabGuide Pro';
 
   @override
-  String get purchaseFree =>
-      'Free: leukocyte differential counter, percentages and absolute counts, core guides, the last 3 results in history.';
-
-  @override
-  String get purchasePro =>
-      'Pro (monthly or yearly): unlimited results history, PDF export, extended practice, full preparation for the qualification category exam.';
-
-  @override
-  String get purchaseNotice =>
-      'Store products aren\'t connected. Prices will come from the App Store / Google Play in your currency. Nothing is charged here, and features that aren\'t built yet are not sold.';
-
-  @override
-  String get purchaseSubscribe => 'Subscribe';
-
-  @override
-  String get purchaseRestore => 'Restore purchases';
-
-  @override
   String get purchaseStatusTitle => 'Status';
-
-  @override
-  String get purchaseStatusAllOpen =>
-      'Payments aren’t enabled yet; every feature is open in TestFlight.';
-
-  @override
-  String get purchaseStatusBillingOff =>
-      'Payments aren’t enabled yet. Free features work fully; Pro will be switched on once the price is approved.';
 
   @override
   String purchaseStatusPro(String date) {
@@ -8198,4 +8172,212 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get spermPlanned =>
       'Key parameters and WHO reference limits\nMotility and morphology counter\nTerms: oligo-, astheno-, terato-, azoospermia\nMorphology diagrams: head, neck and tail defects\nPre-analytics: preparation, collection, time to analysis\nPractice and a training video';
+
+  @override
+  String get payTierPro => 'Pro';
+
+  @override
+  String get payTierProSub =>
+      'For lab staff, doctors, students and anyone preparing for the qualification exam';
+
+  @override
+  String get payTierTeacher => 'Teacher Pro';
+
+  @override
+  String get payTierTeacherSub =>
+      'For teachers working with a group. Includes everything in Pro.';
+
+  @override
+  String get payFree =>
+      'Always free: all cards, calculators, pre-analytics, the differential counter, 5 daily questions and mistake review.';
+
+  @override
+  String get payFeatQuestions =>
+      'Unlimited questions: practice by topic and card mini-tests';
+
+  @override
+  String get payFeatExam => 'Exam simulation (timed test)';
+
+  @override
+  String get payFeatToifa =>
+      'The full qualification exam bank: official test and practice by topic';
+
+  @override
+  String get payFeatWeak => 'Weak-topic analysis in your results';
+
+  @override
+  String get payFeatAtlas => 'Microscopy atlas practice';
+
+  @override
+  String get payFeatHistory => 'Full results history';
+
+  @override
+  String get payFeatAllPro => 'Everything in Pro';
+
+  @override
+  String get payFeatGroups =>
+      'Groups: add students, grades and results reports';
+
+  @override
+  String get payFeatAssignments => 'Group assignments (timed tests)';
+
+  @override
+  String get payFeatLecture =>
+      'Lecture mode: automatic presentation for a topic';
+
+  @override
+  String get payPlanMonthly => 'Monthly';
+
+  @override
+  String get payPlanYearly => 'Yearly';
+
+  @override
+  String get payUnitDay => 'day';
+
+  @override
+  String get payUnitWeek => 'week';
+
+  @override
+  String get payUnitMonth => 'month';
+
+  @override
+  String get payUnitYear => 'year';
+
+  @override
+  String payDays(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count days',
+      one: '1 day',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String payWeeks(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count weeks',
+      one: '1 week',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String payMonths(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count months',
+      one: '1 month',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String payYears(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count years',
+      one: '1 year',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String payPricePer(String price, String period) {
+    return '$price / $period';
+  }
+
+  @override
+  String payTrial(String trial, String price) {
+    return '$trial free, then $price';
+  }
+
+  @override
+  String get payStartTrial => 'Start free trial';
+
+  @override
+  String get paySubscribe => 'Subscribe';
+
+  @override
+  String get payCurrent => 'Active subscription';
+
+  @override
+  String get payRestore => 'Restore purchases';
+
+  @override
+  String get payManage => 'Manage or cancel subscription';
+
+  @override
+  String get payTerms => 'Terms of Use (EULA)';
+
+  @override
+  String get payPrivacy => 'Privacy Policy';
+
+  @override
+  String payDisclosure(String store) {
+    return 'Subscriptions renew automatically. Payment is charged to your $store account when you confirm the purchase (after the free trial ends, if there is one). Unless cancelled at least 24 hours before the end of the current period, the subscription renews for the same period and price, and your account is charged within 24 hours before the period ends. You can manage and cancel the subscription in your $store account settings. Any unused part of a free trial is forfeited when you buy a subscription.';
+  }
+
+  @override
+  String get payGuestNote =>
+      'You don’t need an account to buy. Sign in to use the subscription on your other devices too.';
+
+  @override
+  String get payLockedPro => 'This feature is part of Pro.';
+
+  @override
+  String get payLockedTeacher => 'This feature is part of Teacher Pro.';
+
+  @override
+  String get payAllOpen => 'All features are open right now.';
+
+  @override
+  String get payTestBuildOpen => 'Test build: all features are open.';
+
+  @override
+  String payStatusTeacher(String date) {
+    return 'Teacher Pro is active · until $date';
+  }
+
+  @override
+  String get payStatusTeacherNoEnd => 'Teacher Pro is active';
+
+  @override
+  String get payStatusDevice =>
+      'The subscription is active on this device. Sign in to use it on your other devices too.';
+
+  @override
+  String get paySuccess => 'Your subscription is active. Thank you!';
+
+  @override
+  String get payRestored => 'Purchase restored.';
+
+  @override
+  String get payPending =>
+      'Waiting for the payment to be approved. The subscription will unlock automatically once it is.';
+
+  @override
+  String get payNothingFound => 'No active subscription was found to restore.';
+
+  @override
+  String get payOwnedByOther =>
+      'This purchase is linked to another LabGuide account. Sign in to that account.';
+
+  @override
+  String get payFailed =>
+      'The purchase didn’t complete. Check your connection and try again. If you were charged, tap “Restore purchases”.';
+
+  @override
+  String get payUnavailable =>
+      'The store isn’t responding right now. Please try again later.';
+
+  @override
+  String payDeleteAccountNote(String store) {
+    return 'Deleting your account doesn’t cancel your subscription: cancel it in your $store settings.';
+  }
 }

@@ -1,236 +1,297 @@
-# Pro obuna: huquqlar qatlami va xarid tekshiruvi rejasi
+# Pro obuna: huquqlar, xarid va server tekshiruvi
 
-Holat: **huquqlar qatlami tayyor, to‘lov YOQILMAGAN** (narx tasdiqlanmagan).
-Sana: 2026-10-09. Bog‘liq: `docs/proposals/LAB_REPORT_READING.md` (2-bo‘lim).
+Holat (2026-10-17): **kod to‘liq tayyor — to‘lov o‘zi yoqiladi**, egasi do‘konlarda
+mahsulotlarni yaratib, kalitlarni GitHub secretlariga qo‘yishi bilan (9-bo‘lim).
+Shungacha ilova **to‘liq bepul/ochiq** ishlaydi va hech qanday xarid elementi
+ko‘rsatmaydi (App Store 2.1 / 3.1.1).
 
-## 0. Egasining qarorlari (asos)
+Bog‘liq qarorlar: D-46 (paketlar), D-48 (narxlar), D-49 (sinov: Pro 7 kun,
+Ustoz Pro 14 kun; talaba tasdig‘i), D-50 (talaba narxi), D-53 (bepul — kunlik 5 savol).
+Tadqiqot: `docs/PAYMENTS_RESEARCH.md`.
 
-| Bepul | Pro |
-|---|---|
-| Leykoformula hisoblagichi | Cheksiz natijalar tarixi |
-| Foiz va mutlaq sonlar | PDF eksport |
-| Asosiy qo‘llanmalar | Kengaytirilgan mashqlar |
-| Tarixda oxirgi 3 natija | Toifa imtihoniga to‘liq tayyorgarlik |
+## 0. Asosiy qoidalar
 
-Qoidalar:
-1. Boshlangan sanash yoki imtihon **hech qachon** to‘lov oynasi bilan to‘xtatilmaydi.
-   `can(Feature)` faqat amal boshlanishidan oldin yoki natijadan keyin so‘raladi;
-   obuna o‘rtada tugasa ham boshlangan amal oxirigacha ishlaydi.
-2. Bepul tarixda oxirgi 3 natija ko‘rinadi. Eskilari **o‘chirilmaydi**, ekranda
-   “Yana N ta eski natija saqlangan” deyiladi.
-3. Obuna tugagach Pro davrida saqlangan natijalar ko‘rinib turadi; faqat yangi Pro
-   amallar yopiladi.
-4. TestFlight/debug buildlarda hamma imkoniyat ochiq.
-5. Narx tasdiqlanmaguncha haqiqiy to‘lov yoqilmaydi.
-6. Pro huquqi bitta lokal sozlamaga bog‘lanmaydi.
+1. **To‘lov yoqilmagan bo‘lsa — hammasi ochiq.** `purchasesEnabled` =
+   do‘kon javob berdi VA kamida bitta mahsulot yuklandi VA serverda shu do‘kon
+   kaliti sozlangan (`GET /v1/billing/status`). `false` bo‘lsa: `can()` doim
+   `true`, tarix cheklanmaydi, Profil’da “Obuna” qatori yo‘q, “Hali mavjud emas”,
+   “E-bosqichda rejalashtirilgan”, “to‘lov yoqilmagan” yozuvlari yo‘q.
+2. Boshlangan test, sanash yoki imtihon **hech qachon** to‘lov oynasi bilan
+   to‘xtatilmaydi: `requireFeature()` faqat “Boshlash” bosilganda yoki
+   natijadan keyin chaqiriladi.
+3. Bepul tarixda oxirgi 3 natija ko‘rinadi; eskilari **o‘chirilmaydi**
+   (“Yana N ta eski natija saqlangan”). Obuna tugasa Pro davrida saqlangan
+   natijalar ko‘rinib turadi.
+4. TestFlight/debug/CI buildlarda (`LG_ALL_FEATURES_OPEN=true`) hamma imkoniyat ochiq.
+5. Narx **hech qachon** ilovaga qotirilmaydi — faqat do‘kondan (mahalliy valyutada).
+6. Pro bitta lokal sozlamaga bog‘lanmaydi (kesh imzolangan, hisobga bog‘langan, muddatli).
+7. Xarid uchun hisob **shart emas** (App Store 5.1.1): mehmon xaridi qurilmada
+   ishlaydi, hisobga kirilganda serverga bog‘lanadi.
 
-## 1. Hozir nima bor (kodda)
+## 1. Paketlar va imkoniyatlar (D-46, D-53)
+
+| Daraja | Imkoniyat (`Feature`) | Qayerda tekshiriladi |
+|---|---|---|
+| Bepul | kartalar, kalkulyatorlar, preanalitika, leykoformula, kunlik 5 ta savol (`dailyQuestions`), xatolar ustida ishlash (`mistakeReview`, cheklanmaydi) | — |
+| Pro | `unlimitedQuestions` — mavzu bo‘yicha mashq, kartadan mini-test | `learn_screens.dart` (`_startGated`, analit testi) |
+| Pro | `examSimulation` — vaqtli imtihon | `exam_screens.dart` `_start` |
+| Pro | `fullToifaBank` — rasmiy toifa testi, mavzu/aralash mashq | `toifa_screens.dart` (test boshlash, mashq qatorlari) |
+| Pro | `weakTopics` — natijada mavzular tahlili | `exam_screens.dart` (natija ekrani) |
+| Pro | `atlasPractice` — mikroskopiya atlasi mashqi | `microscopy_quiz_screen.dart` |
+| Pro | `unlimitedHistory` — to‘liq tarix | `ExamHistory` (`historyView`) |
+| Ustoz Pro | Pro’dagi hammasi + `groups` (guruh ochish, baholar, hisobotlar) | `classes_screens.dart` (Guruh ochish) |
+| Ustoz Pro | `assignments` — yangi topshiriq | `classes_screens.dart` |
+| Ustoz Pro | `autoPresentation` — Ma’ruza rejimi | `lecture_screens.dart`, `classroom_screens.dart` |
+
+- Guruhga **qo‘shilish** va ustoz bergan topshiriqni bajarish — bepul.
+- PDF eksport ilovada **yo‘q** — `Feature` dan olib tashlandi va hech qayerda reklama qilinmaydi.
+- Ikki ekranli rejim hali yo‘q — to‘lov oynasida ko‘rsatilmaydi (paydo bo‘lgach `Feature` ga qo‘shiladi).
+- Toifa banki (`toifa_bank.dart` → `toifaAllows`) hali `EntitlementService` ga
+  ulanmagan: bu fayl boshqa ish bilan parallel o‘zgarmoqda. Hozircha toifa testi va
+  mashqi **boshlash tugmasida** `Feature.fullToifaBank` bilan tekshiriladi
+  (bepul foydalanuvchiga xatolar mashqi ochiq). Keyin: `toifaAllows(f)` →
+  `services.entitlements.can(...)`.
+
+## 2. Mahsulot id’lari (yagona joy)
+
+`lib/core/entitlements/billing_catalog.dart` (`BillingCatalog`) va server
+`cloudflare/src/billing.ts` (`BILLING_PRODUCTS`) — bir xil ro‘yxat (unit test
+ikkalasini solishtiradi). Eski taklif `labguide.pro.*` ishlatilmaydi.
+
+| Mahsulot id | Daraja | Davr | Narx (D-48/D-50, do‘konda qo‘yiladi) | Bepul sinov (D-49) |
+|---|---|---|---|---|
+| `uz.labguide.pro.monthly` | Pro | 1 oy | 29 000 so‘m · $4.99 | 7 kun |
+| `uz.labguide.pro.yearly` | Pro | 1 yil | 199 000 so‘m · $34.99 | 7 kun |
+| `uz.labguide.pro.student.monthly` | Pro (talaba) | 1 oy | 9 000 so‘m · $1.49 | 7 kun |
+| `uz.labguide.pro.student.yearly` | Pro (talaba) | 1 yil | 49 000 so‘m · $9.99 | 7 kun |
+| `uz.labguide.teacherpro.monthly` | Ustoz Pro | 1 oy | 69 000 so‘m · $9.99 | 14 kun |
+| `uz.labguide.teacherpro.yearly` | Ustoz Pro | 1 yil | 490 000 so‘m · $69.99 | 14 kun |
+
+**Talaba mahsulotlari** ilovada hozircha **ko‘rsatilmaydi**: talaba holatini
+tasdiqlash (D-49) hali yo‘q (`EntitlementService.studentVerified = false`).
+Do‘konda yaratib qo‘yish mumkin — server ularni taniydi; tasdiq qo‘shilganda
+faqat shu bayroq yoqiladi.
+
+## 3. Arxitektura (kodda)
 
 | Joy | Nima |
 |---|---|
-| `lib/core/entitlements/feature.dart` | `Feature` enum: qaysi imkoniyat bepul, qaysi Pro |
-| `lib/core/entitlements/entitlement_service.dart` | `EntitlementService`: `can()`, `historyVisibleLimit()`, `historyView()`, `restore()`, `purchase()` |
-| `lib/core/entitlements/entitlement_cache.dart` | Imzolangan (HMAC-SHA256, kalit Keychain/Keystore'da), hisobga bog‘langan, muddatli kesh |
-| `lib/core/entitlements/entitlement_source.dart` | `EntitlementSource`: Supabase (`my_entitlements` RPC + `verify-purchase`) yoki “ulanmagan” |
-| `lib/core/entitlements/purchase_adapter.dart` | `PurchaseAdapter` interfeysi + `UnavailablePurchaseAdapter` (hech qanday oyna yo‘q) |
-| `supabase/migrations/…1200_entitlements.sql` | `entitlements` jadvali, RLS, `my_entitlements()`, `entitlement_active()`, `entitlement_apply()` |
-| `supabase/tests/20_entitlements.sql` | Qabul testi (RLS, yozish faqat service role, tartib, refund) |
-| `supabase/functions/verify-purchase/` | Edge Function skeleti: hozir har doim `503 not_configured` |
-| Profil → Obuna va tiklash | Halol holat: “To‘lov hali yoqilmagan; TestFlight’da hamma imkoniyat ochiq” |
-| O‘rganish → Imtihon → Tarix | Yagona namunaviy ulanish: `historyView()` (bepulda 3 ta + Pro davri) |
+| `lib/core/entitlements/feature.dart` | `ProTier` (free/pro/teacher) va `Feature` |
+| `lib/core/entitlements/billing_catalog.dart` | id’lar, daraja, davr; EULA / Maxfiylik / “Obunani boshqarish” havolalari |
+| `lib/core/entitlements/purchase_adapter.dart` | `PurchaseAdapter` (init, buy, restore, finish, updates), `StoreProduct` (narx/davr/sinov do‘kondan) |
+| `lib/core/entitlements/store_purchase_adapter.dart` | `in_app_purchase` 3.3 (iOS — StoreKit 2, Android — Play Billing) |
+| `lib/core/entitlements/entitlement_source.dart` | `CloudflareEntitlementSource` (`/v1/billing/*`), Supabase (to‘lovsiz), Unavailable |
+| `lib/core/entitlements/entitlement_service.dart` | `can()`, `tier`, `purchasesEnabled`, `gatingActive`, `purchase()`, `restore()`, `start()` |
+| `lib/features/profile/pro_gate.dart` | `requireFeature()` — boshlashdan oldin; yopiq bo‘lsa to‘lov oynasi |
+| `lib/features/profile/profile_screens.dart` | `PurchaseScreen` (to‘lov oynasi, 3.1.2) |
+| `cloudflare/src/billing.ts` | server tekshiruvi, saqlash, bildirishnomalar |
+| `cloudflare/migrations/0007_billing.sql` | `entitlements` jadvali |
 
-Boshqa bo‘limlarga (leykoformula, toifa imtihoni, PDF) gating hali **ulanmagan** —
-ular parallel qurilmoqda. Ulash: `context.services.entitlements.can(Feature.x)`
-ni boshlash tugmasidan oldin yoki natija ekranida tekshirish.
-
-### Pro manbalari (tartib bilan)
+### Pro manbalari
 
 1. **Build rejimi** — `allFeaturesOpen = kDebugMode || LG_ALL_FEATURES_OPEN`.
-2. **Server** — `entitlements` jadvali; faqat server (service role) yozadi.
-3. **Oflayn kesh** — oxirgi server javobi: foydalanuvchi id’siga bog‘langan,
-   HMAC bilan imzolangan, 7 kun amal qiladi (`offlineTtl`), har xaridning o‘z
-   `expires_at` muddati ham tekshiriladi (server va qurilma soati farqi hisobga
-   olinadi). Soat javob olingan paytdan 10 daqiqadan ko‘proq orqaga surilsa kesh
-   Pro bermaydi. Imzo buzilsa yoki boshqa hisobniki bo‘lsa — e’tiborsiz.
+2. **Server** — `entitlements` jadvali (faqat server yozadi, do‘kon API’sidan).
+3. **Oflayn kesh** — oxirgi server javobi: hisobga bog‘langan, HMAC bilan
+   imzolangan (kalit Keychain/Keystore’da), 7 kun; soat 10 daqiqadan ko‘p
+   orqaga surilsa Pro bermaydi.
+4. **Qurilma (mehmon)** — StoreKit 2 / Play tasdiqlagan joriy tranzaksiya
+   (faqat hisobsiz paytda; iOS’da StoreKit bergan muddat bilan).
 
-Cheklov (halol): qurilmadagi kesh — qulaylik, xavfsizlik chegarasi emas
-(root/jailbreak qurilmada kalit ham o‘qilishi mumkin). Shu sababli serverda
-ishlaydigan Pro amallar (masalan, kelajakdagi AI o‘qish) `entitlement_active()`
-bilan **serverda** qayta tekshiriladi.
+### Ilova ochilganda (`EntitlementService.start`)
 
-### Pro davrlari (obuna tugagach saqlangan natijalar)
+kesh → `GET /v1/billing/status` (shu do‘kon sozlanganmi) → do‘konga ulanish va
+mahsulotlar → `GET /v1/billing/entitlements` → do‘kondagi joriy obunalarni
+**jim** o‘qish (iOS: `Transaction.currentEntitlements`, Apple ID so‘ralmaydi;
+Android: `queryPurchases`). Server bilmagan obuna bo‘lsa — hisobga bog‘lanadi.
+`purchaseStream` ilova ochilishi bilan tinglanadi: yangilanish, Ask to Buy,
+kutilgan to‘lov yakuni server tekshiruvidan **keyin** yakunlanadi (`finish`).
 
-Server qatorlari muddati o‘tgandan keyin ham o‘chirilmaydi (`expired`). Ilova
-har qatordan `started_at..expires_at` davrini oladi; shu davrda saqlangan natija
-bepul rejimda ham ko‘rinadi. Qaytarilgan (refund, `revoked`) xarid davr hisoblanmaydi
-— natijalar o‘chmaydi, faqat “N ta eski natija saqlangan” qatoriga tushadi.
-Kesh oflayn muddati o‘tgan bo‘lsa ham davrlar ishlatiladi (bu huquq emas, tarix).
-
-## 2. Ma’lumot modeli (server)
-
-`public.entitlements`: `user_id`, `product_id`, `platform` (`app_store` |
-`play_store`), `status`, `started_at`, `expires_at`, `original_transaction_id`,
-`ownership` (`purchased` | `family_shared`), `environment` (`production` |
-`sandbox`), `event_at`, `updated_at`. Noyob: `(platform, original_transaction_id)`.
-
-| status | Pro beradimi | Manba |
-|---|---|---|
-| `active` | ha | App Store 1 / Play `ACTIVE` |
-| `grace_period` | ha | App Store 4 / Play `IN_GRACE_PERIOD` |
-| `billing_retry` | yo‘q | App Store 3 / Play `ON_HOLD` |
-| `paused` | yo‘q | Play `PAUSED` |
-| `expired` | yo‘q | App Store 2 / Play `EXPIRED` |
-| `revoked` | yo‘q | refund, Family Sharing to‘xtatildi, Play voided |
-
-RLS: foydalanuvchi faqat o‘z qatorini o‘qiydi; `anon`/`authenticated` uchun
-insert/update/delete yo‘q. `entitlement_apply()` faqat `service_role`:
-- eskiroq hodisa (`event_at`) yangisining ustidan yozilmaydi (`stale`);
-- xarid boshqa hisobga bog‘langan bo‘lsa — ko‘chirilmaydi (`owned_by_other`).
-
-Hisob o‘chirilsa (`delete-account`) qatorlar `on delete cascade` bilan ketadi.
-Do‘kondagi obuna esa davom etadi — hisob o‘chirish oynasida “obunani App Store /
-Google Play sozlamalarida bekor qiling” degan matn qo‘shiladi (Apple talabi).
-
-## 3. Xarid oqimi (yoqilgandan keyin)
+## 4. Xarid oqimi
 
 ```
 Ilova (StoreKit 2 / Play Billing) ──xarid──▶ do'kon
-   │ transactionId / purchaseToken
+   │ transactionId (iOS) / purchaseToken (Android)
    ▼
-verify-purchase (Edge Function, foydalanuvchi JWT)
-   │ App Store Server API / Play Developer API (kalitlar faqat secrets'da)
+POST /v1/billing/verify (sessiya tokeni bilan)
+   │ App Store Server API / Play Developer API (kalitlar faqat Worker secretlarida)
    ▼
-entitlement_apply (service role) ──▶ entitlements
-   ▲
-billing-notifications (Edge Function) ◀── ASSN v2 / RTDN (Pub/Sub push)
+entitlements (D1) ──▶ javob: {server_time, items[], owned_by_other}
+   │
+   ▼ shundan keyin ilova tranzaksiyani yakunlaydi (finish / acknowledge)
+
+ASSN v2 / RTDN ──▶ /v1/billing/apple/notifications, /v1/billing/google/rtdn
+   (tanadan faqat id olinadi, holat do'kon API'sidan qayta o'qiladi)
 ```
 
-Ilova bergan holat yoki muddatga **ishonilmaydi** — faqat identifikator olinadi.
+- **iOS:** `appAccountToken` = hisob UUID’i. Server: `GET /inApps/v1/transactions/{id}`
+  va `GET /inApps/v1/subscriptions/{id}` (ES256 JWT, `aud=appstoreconnect-v1`,
+  `bid=uz.labguide.app`), avval production, 404 (4040010) bo‘lsa sandbox.
+  `signedTransactionInfo` dan `bundleId`, `productId`, `originalTransactionId`,
+  `expiresDate`, `revocationDate`, `inAppOwnershipType`, `appAccountToken` tekshiriladi.
+  Holat: 1 active, 2 expired, 3 billing_retry, 4 grace_period, 5 revoked.
+- **Android:** `obfuscatedAccountId` = SHA-256(hisob id). Server:
+  `purchases.subscriptionsv2.get`; `ACTIVE`/`CANCELED` (muddat tugaguncha) → active,
+  `IN_GRACE_PERIOD` → grace_period, `ON_HOLD` → billing_retry, `PAUSED`, `EXPIRED`;
+  `PENDING` → `409 purchase_pending` (ilova “to‘lov kutilmoqda” deydi).
+  Tasdiqlanmagan xarid serverda **acknowledge** qilinadi (3 kun qoidasi); ilova
+  ham `completePurchase` qiladi. Pro ↔ Ustoz Pro almashtirishda eski obuna
+  `ChangeSubscriptionParam` bilan almashtiriladi; `linkedPurchaseToken` zanjiri
+  bitta qatorda qoladi.
+- **Bitta xarid — bitta hisob:** `(platform, original_transaction_id)` noyob;
+  boshqa hisob uni ololmaydi (`owned_by_other`), hisob belgisi
+  (appAccountToken / obfuscatedAccountId) boshqa hisobniki bo‘lsa ham.
+- Eskiroq hodisa (`event_at`) yangisining ustidan yozilmaydi.
+- Kalitlar bo‘lmasa: `503 not_configured` → ilova to‘lovni yoqmaydi.
+- **Cheklov (halol):** JWS x5c sertifikat zanjiri Apple Root CA bilan
+  tekshirilmaydi. Buning o‘rniga tranzaksiya har doim App Store Server API’dan
+  (TLS + bizning ES256 kalit) so‘raladi; bildirishnoma tanasiga ishonilmaydi —
+  undan faqat `transactionId` olinib, holat API’dan qayta o‘qiladi.
 
-### 3.1 iOS: StoreKit 2 + App Store Server Notifications v2
-- Xarid: `Product.purchase(options: [.appAccountToken(<Supabase user UUID>)])` —
-  server bildirishnomani shu UUID orqali hisobga bog‘laydi.
-- `Transaction.updates` tinglanadi (ilova yopiq paytdagi yangilanishlar,
-  Ask to Buy, refund); har tranzaksiya serverga yuborilgach `finish()`.
-- Server: `GET /inApps/v1/transactions/{id}` va
-  `GET /inApps/v1/subscriptions/{originalTransactionId}` (ES256 JWT, In-App
-  Purchase kaliti). JWS Apple root sertifikat zanjiri bilan tekshiriladi,
-  `bundleId` solishtiriladi. Avval production, `4040010` bo‘lsa sandbox.
-- ASSN v2 (App Store Connect → App Information → Production/Sandbox URL):
-  `SUBSCRIBED`, `DID_RENEW`, `DID_FAIL_TO_RENEW` (subtype `GRACE_PERIOD`),
-  `GRACE_PERIOD_EXPIRED`, `EXPIRED`, `REFUND`, `REVOKE` (Family Sharing),
-  `DID_CHANGE_RENEWAL_STATUS`. `signedPayload` imzosi tekshiriladi; `signedDate`
-  → `event_at`.
+## 5. To‘lov oynasi (App Store 3.1.2)
 
-### 3.2 Android: Google Play Billing + RTDN
-- Play Billing Library (joriy talab qilingan versiya), `obfuscatedAccountId` =
-  Supabase user UUID ning hash’i.
-- Server: `purchases.subscriptionsv2.get`; xarid **3 kun ichida acknowledge**
-  qilinadi (aks holda Google pulni qaytaradi) — serverda.
-- RTDN: Pub/Sub push → `billing-notifications`; `SUBSCRIPTION_PURCHASED`,
-  `RENEWED`, `IN_GRACE_PERIOD`, `ON_HOLD`, `PAUSED`, `EXPIRED`, `REVOKED`.
-  Voided Purchases API — refund’lar uchun kunlik tekshiruv.
-- Yangilash/almashtirishda `linkedPurchaseToken` zanjiri: asl token
-  `original_transaction_id` sifatida qoladi.
+`PurchaseScreen` (`/profile/purchase`, `?feature=` bilan boshlash tugmasidan):
+- har reja: nom (Oylik/Yillik), **narx/davr do‘kondan** (“$4.99 / oy”),
+  bepul sinov do‘kondagi kirish taklifidan (iOS — foydalanuvchi haqli bo‘lsa,
+  Android — Play qaytargan offer) — “7 kun bepul, keyin $4.99 / oy”;
+- nima kiradi (faqat ilovada bor imkoniyatlar), bepul nima qoladi;
+- avtomatik yangilanish sharti (24 soat, to‘lov qachon olinadi, qayerda bekor qilinadi);
+- **Xaridni tiklash**, **Obunani boshqarish yoki bekor qilish**
+  (`apps.apple.com/account/subscriptions` / Play subscriptions),
+  **Foydalanish shartlari (EULA)** — Apple standart EULA,
+  **Maxfiylik siyosati** — `docs/store/PRIVACY_POLICY.md` havolasi;
+- hisobni o‘chirish oynasida: “obuna hisob bilan bekor bo‘lmaydi” (5.1.1(v)).
 
-### 3.3 Tiklash (Restore Purchases)
-- iOS: `AppStore.sync()` → `Transaction.currentEntitlements` → id’lar
-  `verify-purchase` (`action: restore`) ga. Tugma Obuna ekranida doim bor
-  (App Store talabi); hozir o‘chirilgan va “Hali mavjud emas” deb yozilgan.
-- Android: `queryPurchasesAsync(SUBS)` → tokenlar serverga.
-- Xarid boshqa LabGuide hisobiga bog‘langan bo‘lsa — ko‘chirilmaydi,
-  foydalanuvchiga “bu xarid boshqa hisobda” deyiladi (`BillingOutcome.ownedByOther`).
-  Ko‘chirish siyosati (masalan, qo‘llab-quvvatlash orqali) — egasining qarori.
+Matnlar uz/ru/en (`pay*` kalitlari, ARB oxirida).
 
-### 3.4 Oilaviy ulashish va qaytarish
-- **Family Sharing** (iOS, ixtiyoriy, mahsulotda yoqiladi): `inAppOwnershipType =
-  FAMILY_SHARED` → `ownership = family_shared`. `REVOKE` kelsa → `revoked`.
-  Yoqish-yoqmaslik egasining qarori (bir marta yoqilgach o‘chirib bo‘lmaydi).
-- **Refund**: `REFUND` (Apple) / `REVOKED` yoki voided (Google) → `revoked`;
-  Pro darhol yopiladi, qator o‘chmaydi, davr hisobga olinmaydi; natijalar
-  o‘chirilmaydi.
+## 6. Server: endpointlar va jadval
 
-### 3.5 Grace period va billing retry
-- App Store Connect’da **Billing Grace Period** yoqiladi (tavsiya: 16 kun).
-  Grace davrida Pro ochiq, Obuna ekranida “to‘lovni yangilang” eslatmasi.
-- Billing retry / Play `ON_HOLD` — Pro yopiq; to‘lov tiklansa `DID_RENEW` /
-  `RECOVERED` bilan qaytadi.
-
-## 4. Narx tasdiqlangandan keyingi qadamlar (tartib bilan)
-
-1. **Egasi:** narx, davrlar (oylik/yillik), bepul sinov (bor/yo‘q, necha kun),
-   Family Sharing, mahsulot id’lari (taklif: `labguide.pro.monthly`,
-   `labguide.pro.yearly` — tasdiqlanmagan).
-2. App Store Connect: Paid Applications Agreement, soliq/bank; Subscription Group;
-   mahsulotlar; lokalizatsiya (uz/ru/en); review skrinshoti; Grace Period.
-   Google Play Console: merchant hisob; subscription + base plan; RTDN topic.
-3. Kalitlar (faqat `supabase secrets set`): `APPLE_ISSUER_ID`, `APPLE_KEY_ID`,
-   `APPLE_PRIVATE_KEY_P8`, `APPLE_BUNDLE_ID`, `GOOGLE_SERVICE_ACCOUNT_JSON`,
-   `GOOGLE_PACKAGE_NAME`. Repoga va ilovaga hech qachon tushmaydi.
-4. `verify-purchase` ichidagi `verifyApple` / `verifyGoogle` yoziladi (JWS
-   tekshiruvi, Play acknowledge); `billing-notifications` funksiyasi qo‘shiladi.
-5. Ilovada haqiqiy `PurchaseAdapter` (StoreKit 2 / Play Billing; Flutter’da
-   `in_app_purchase` paketi yoki native kanal — litsenziya va SK2 qo‘llovi
-   tekshiriladi). Obuna ekrani: do‘kondan kelgan narx (`displayPrice`), davr,
-   avtomatik yangilanish, bekor qilish yo‘li, Foydalanish shartlari va Maxfiylik
-   havolalari (3.1.2).
-6. Sandbox / StoreKit Configuration file / Play license testers bilan sinov:
-   xarid, yangilanish, grace, refund, tiklash, boshqa hisob, oflayn.
-7. Faqat shundan keyin: `supabase secrets set LG_BILLING_ENABLED=true` va store
-   build’da `LG_ALL_FEATURES_OPEN=false`.
-
-## 5. App Store qoidalari (qisqa)
-
-- **3.1.1**: raqamli imkoniyat (Pro) faqat In-App Purchase orqali; ilovada
-  tashqi to‘lov havolasi yoki “saytda arzonroq” degan matn yo‘q. Tiklash tugmasi bor.
-- **3.1.2**: obuna doimiy qiymat beradi; to‘lov oynasida narx, davr, avtomatik
-  yangilanish va shartlar aniq ko‘rsatiladi; bepul sinov bo‘lsa — tugash sanasi.
-- **5.1.1(v)**: hisob o‘chirish ilovada bor (`delete-account`); obunani bekor
-  qilish haqida eslatma qo‘shiladi.
-- **Ochiq savol (egasiga):** hozirgi dizayn Pro’ni LabGuide hisobiga bog‘laydi
-  (server qatori). Apple ro‘yxatdan o‘tmasdan xarid qilishga ruxsat berishni
-  kutishi mumkin (5.1.1). Variant: hisobsiz foydalanuvchi uchun StoreKit 2
-  `Transaction.currentEntitlements` (qurilmada JWS tekshiriladi) to‘rtinchi
-  manba sifatida, hisobga kirganda serverga bog‘lanadi. Qaror kerak.
-- Hech bir boshlangan sanash/imtihon to‘lov oynasi bilan to‘xtatilmaydi; to‘lov
-  oynasi faqat foydalanuvchi o‘zi bosganda ochiladi.
-
-## 6. CI va build rejimlari
-
-| Build | `LG_ALL_FEATURES_OPEN` | Natija |
+| Yo‘l | Kim | Nima |
 |---|---|---|
-| `flutter run` (debug) | — | `kDebugMode` → hamma ochiq |
-| CI `build` rejimi (push/PR, sinov APK, imzosiz iOS) | `true` | hamma ochiq |
-| CI `testflight` rejimi | `true` | hamma ochiq (TestFlight) |
-| Kelajakdagi `store` rejimi (App Store / Play production) | `false` | haqiqiy huquqlar |
+| `GET /v1/billing/status` | hamma | `{app_store: bool, play_store: bool}` — kalitlar bormi |
+| `GET /v1/billing/entitlements` (= `/v1/entitlements`) | sessiya | `{server_time, items[], owned_by_other}` |
+| `POST /v1/billing/verify` | sessiya | `{platform, product_id, token}` yoki `{platform, purchases:[…]}` (tiklash, ≤ 10) |
+| `POST /v1/billing/apple/notifications` | Apple | ASSN v2 `{signedPayload}` |
+| `POST /v1/billing/google/rtdn[?token=…]` | Pub/Sub | RTDN push; `PLAY_RTDN_TOKEN` bo‘lsa token majburiy |
 
-`.github/workflows/ci.yml` da `LG_ALL_FEATURES_OPEN` env’i rejimdan hisoblanadi
-va har `flutter build` ga `--dart-define` bilan beriladi. Do‘kon relizi uchun
-`mode: store` qo‘shilganda ifoda avtomatik `false` beradi (u faqat `build` va
-`testflight` uchun `true`). Release store build qo‘shilganda CI’da tekshiruv
-qo‘shiladi: `store` rejimida `LG_ALL_FEATURES_OPEN=true` bo‘lsa — xato.
-
-Eslatma: TestFlight’dan App Store versiyasiga o‘tganda qurilmadagi natijalar
-saqlanadi; store build’da bepul foydalanuvchiga ular “N ta eski natija saqlangan”
-bo‘lib ko‘rinadi (o‘chirilmaydi).
+`entitlements`: `platform`, `original_transaction_id`, `user_id`, `product_id`,
+`status`, `started_at`, `expires_at`, `ownership`, `environment`, `latest_token`,
+`event_at`, `updated_at`. Qator muddati o‘tsa ham o‘chmaydi (Pro davrlari);
+hisob o‘chirilsa — o‘chadi (do‘kondagi obuna davom etadi).
+Limitlar: verify — hisobga 30/soat, IP ga 120/soat.
 
 ## 7. Testlar
 
-- `test/unit/entitlements_test.dart`: TestFlight ochiq; bepul limit 3; eski
-  natijalar o‘chmaydi; obuna tugagach Pro davri natijalari ko‘rinadi; refund;
-  grace / billing retry; oflayn kesh muddati; soat orqaga; imzo buzilishi;
-  boshqa hisob; tiklash natijalari.
-- `test/widget/entitlements_flow_test.dart`: imtihon tarixi (bepul: 3 ta + “N ta
-  eski natija saqlangan”; debug: hammasi), Obuna ekranining halol holati.
-- `supabase/tests/20_entitlements.sql` (`tool/backend_test.sh`): RLS, mijoz
-  yoza olmaydi, `entitlement_apply` faqat service role, stale hodisa, boshqa
-  hisob, refund qatorni o‘chirmaydi.
+- `test/unit/entitlements_test.dart`: to‘lov yoqilmagan → hammasi ochiq (do‘kon
+  yo‘q / mahsulot yo‘q / server sozlanmagan); D-53 bepul ro‘yxati; Pro va Ustoz Pro;
+  grace/billing retry/refund; oflayn kesh; xarid → server → `finish`; server
+  xatosida yakunlanmaydi; pending/cancel; tiklash; boshqa hisob; mehmon xaridi va
+  hisobga bog‘lash; `start()`; do‘kon yuborgan tranzaksiya; katalog = server ro‘yxati;
+  `CloudflareEntitlementSource` (status, verify tanasi, 503/409/502).
+- `test/widget/entitlements_flow_test.dart`: to‘lovsiz do‘kon build (tarix to‘liq,
+  Obuna qatori yo‘q, “Hali mavjud emas” yo‘q); to‘lov yoqilgach tarix 3 ta;
+  imtihon boshlashdan oldin to‘lov oynasi; to‘lov oynasi (narx/sinov/shartlar/
+  tiklash) va mehmon xaridi; ru; TestFlight.
+- `cloudflare/test/billing.test.ts` (`npm test`): sozlanmagan → 503; App Store
+  (production→sandbox, ES256 imzo tekshiriladi), boshqa hisob, appAccountToken,
+  bundle/mahsulot xatolari, ASSN refund, eski hodisa, hisob o‘chirish; Play
+  (acknowledge, pending, canceled, obfuscatedAccountId, RTDN token va voided).
 
-## 8. Ma’lum cheklovlar
+## 8. CI va build rejimlari
 
-- `ExamController.historyLimit = 50` — mavjud kod 50 tadan eski natijani
-  qurilmadan o‘chiradi. Bu “eski natijalar o‘chirilmaydi” qoidasiga zid;
-  Pro “cheksiz tarix” ulanayotganda bu chegara qayta ko‘rib chiqilishi kerak
-  (imtihon bo‘limi egasi bilan kelishib).
-- Hisobsiz (mehmon) foydalanuvchi uchun server huquqi yo‘q (5-bo‘limdagi savol).
-- Pro davrlari faqat hisobga kirilgan paytda (kesh shu hisobniki) ma’lum.
+| Build | `LG_ALL_FEATURES_OPEN` | Natija |
+|---|---|---|
+| `flutter run` (debug) | — | hamma ochiq |
+| CI `build` / `testflight` / `play_internal` | `true` | hamma ochiq (do‘kon mahsulotlari bo‘lsa, to‘lov oynasi sandbox bilan sinaladi) |
+| Do‘kon relizi (`mode: store`, keyin) | `false` | to‘lov yoqilgan bo‘lsa — haqiqiy huquqlar; yoqilmagan bo‘lsa — hammasi ochiq |
+
+`deploy_api` rejimi Worker secretlarini stdin orqali qo‘yadi (bo‘sh bo‘lsa
+o‘tkazib yuboradi, App Store uchtasi faqat birga).
+
+## 9. EGASI NIMA QILADI (to‘lovni yoqish)
+
+To‘lov quyidagilar tugagach **avtomatik** yoqiladi — ilovani qayta yozish shart emas.
+Tartib muhim emas; oxirida bitta `deploy_api` ishga tushiriladi.
+
+### 9.1 App Store Connect
+1. **Agreements, Tax, and Banking** → **Paid Applications Agreement** ni qabul
+   qiling; bank hisobi va soliq shakllarini (W-8BEN va h.k.) to‘ldiring. Holat
+   “Active” bo‘lmaguncha mahsulotlar StoreKit’da yuklanmaydi.
+2. **Apps → LabGuide → Monetization → Subscriptions** → **Subscription Group**
+   yarating (masalan, “LabGuide Pro”). Oltita mahsulot **bitta guruhda** bo‘lsin
+   (Pro ↔ Ustoz Pro almashtirish Apple tomonidan avtomatik).
+   Darajalar (Level): 1 — Ustoz Pro (oylik va yillik), 2 — Pro, 3 — Pro talaba.
+3. 2-bo‘limdagi **6 ta auto-renewable subscription** — aynan shu Product ID’lar
+   bilan. Har biri uchun: davr (1 Month / 1 Year), narx (bazaviy mamlakat — AQSh,
+   O‘zbekiston uchun alohida narx nuqtasi, D-48/D-50), **Introductory Offer →
+   Free Trial**: Pro va talaba — 7 kun, Ustoz Pro — 14 kun; lokalizatsiya
+   (uz yo‘q bo‘lsa — en va ru: nom + tavsif); **Review screenshot** (to‘lov oynasi
+   skrinshoti) va review eslatmasi.
+4. Guruh lokalizatsiyasi (en, ru) va **Billing Grace Period** — 16 kun (tavsiya).
+5. **App Store Server Notifications V2:** App Information → Production va
+   Sandbox URL: `https://<worker-url>/v1/billing/apple/notifications`.
+6. **In-App Purchase kaliti:** Users and Access → Integrations →
+   **In-App Purchase** → Generate key → `.p8` faylni yuklab oling (bir marta!).
+   GitHub → Settings → Secrets and variables → Actions:
+   - `APPLE_IAP_KEY_ID` — kalit ID (10 belgi),
+   - `APPLE_IAP_ISSUER_ID` — Issuer ID (shu sahifa tepasida, UUID),
+   - `APPLE_IAP_PRIVATE_KEY` — `.p8` fayl matni to‘liq (`-----BEGIN PRIVATE KEY-----`…).
+   Uchalasi birga bo‘lmasa CI ularni o‘rnatmaydi.
+7. Ilova versiyasini review’ga yuborganda mahsulotlarni ham shu versiyaga
+   biriktiring (birinchi obunalar ilova bilan birga ko‘rib chiqiladi). Review
+   eslatmasiga: “Subscriptions: Profile → Subscription and restore; no account
+   required to purchase.”
+
+### 9.2 Google Play Console
+1. **Payments profile** (merchant) faol, “Uzbekistan tax info” to‘ldirilgan
+   (`PAYMENTS_RESEARCH.md` 5-bo‘lim).
+2. **Monetize → Products → Subscriptions:** 6 ta subscription — aynan shu
+   Product ID’lar bilan; har birida bitta **auto-renewing base plan**
+   (oylik — P1M, yillik — P1Y), narxlar (O‘zbekiston — UZS). Bepul sinov uchun
+   base plan’ga **offer** qo‘shing: eligibility “New customer acquisition — never
+   had this subscription”, phase **Free trial** 7 kun (Pro, talaba) / 14 kun
+   (Ustoz Pro). Boshqa (chegirmali) offer qo‘shmang — ilova ularni ko‘rsatmaydi.
+   Base plan va offer’ni **Activate** qiling.
+3. **Service account (Play Developer API):** Google Cloud Console (Play Console
+   bog‘langan loyiha) → IAM → Service accounts → yangi hisob → Keys → JSON.
+   Play Console → **Users and permissions** → shu emailni taklif qiling, ruxsatlar:
+   “View financial data, orders, and cancellation survey responses” va
+   “Manage orders and subscriptions” (faqat LabGuide ilovasi uchun).
+   “Google Play Android Developer API” loyihada yoqilgan bo‘lsin.
+   GitHub secret: `GOOGLE_PLAY_BILLING_SERVICE_ACCOUNT_JSON` — JSON fayl matni
+   (yuklash uchun ishlatilayotgan `GOOGLE_PLAY_SERVICE_ACCOUNT_JSON` dan **alohida**,
+   kam vakolatli hisob tavsiya etiladi).
+4. **RTDN:** Google Cloud → Pub/Sub → topic (masalan, `play-billing`), topic’ga
+   `google-play-developer-notifications@system.gserviceaccount.com` ga
+   **Pub/Sub Publisher** roli; Play Console → Monetization setup → Real-time
+   developer notifications → shu topic. Topic’da **Push subscription**:
+   endpoint `https://<worker-url>/v1/billing/google/rtdn?token=<tasodifiy-satr>`.
+   Shu `<tasodifiy-satr>` ni (`openssl rand -hex 24`) GitHub secret
+   `PLAY_RTDN_TOKEN` ga qo‘ying.
+5. **License testers** (Setup → License testing) — sinov xaridlari pulsiz.
+
+### 9.3 Yoqish va tekshirish
+1. GitHub → Actions → CI → Run workflow → `mode: deploy_api`. Natijada
+   “secret … o‘rnatildi” qatorlari va `0007_billing.sql` migratsiyasi.
+2. Tekshiruv: `curl https://<worker-url>/v1/billing/status` →
+   `{"app_store":true,"play_store":true}`.
+3. TestFlight / ichki test (sandbox Apple ID, license tester) bilan:
+   xarid, sinov, tiklash, boshqa hisob, bekor qilish, grace, refund.
+4. Faqat shundan keyin do‘kon relizi `LG_ALL_FEATURES_OPEN=false` bilan.
+   Mahsulotlar yoki kalitlar bo‘lmasa ham reliz xavfsiz: ilova hammasini ochiq
+   qoldiradi va xarid elementini ko‘rsatmaydi.
+
+## 10. Ma’lum cheklovlar
+
+- JWS x5c zanjiri Apple Root CA bilan tekshirilmaydi (4-bo‘lim — o‘rniga API’dan
+  qayta so‘rash).
+- Oflaynda yoki server javob bermasa (`/v1/billing/status`) to‘lov yoqilmaydi —
+  bepul foydalanuvchi shu paytda hamma imkoniyatni ko‘radi (ataylab yumshoq:
+  “yopiq tugma” ko‘rsatgandan ko‘ra ochiq qoldirish xavfsizroq).
+- Mehmon xaridi qurilmada faqat shu sessiyada (ilova ochilganda jim tiklanadi);
+  Android’da muddat qurilmada ma’lum emas — do‘kon joriy deb bergan obuna amalda.
+- Talaba tasdig‘i yo‘q — talaba mahsulotlari ko‘rsatilmaydi.
+- `toifaAllows` hali `EntitlementService` ga ulanmagan (1-bo‘lim).
+- `ExamController.historyLimit = 50` — 50 tadan eski natija qurilmadan o‘chadi
+  (“eski natijalar o‘chirilmaydi” qoidasiga zid; imtihon bo‘limi bilan kelishib).
+- Supabase backend’da (`verify-purchase` hali 503) to‘lov yoqilmaydi; ishlaydigan
+  server — Cloudflare Worker.

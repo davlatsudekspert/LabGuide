@@ -1,6 +1,13 @@
 import 'dart:convert';
+import 'dart:io';
 
+import 'package:crypto/crypto.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:http/http.dart' as http;
+import 'package:http/testing.dart';
+import 'package:labguide/core/backend/cloudflare_backend.dart';
+import 'package:labguide/core/backend/supabase_backend.dart';
+import 'package:labguide/core/entitlements/billing_catalog.dart';
 import 'package:labguide/core/entitlements/entitlement_cache.dart';
 import 'package:labguide/core/entitlements/entitlement_models.dart';
 import 'package:labguide/core/entitlements/entitlement_service.dart';
@@ -9,51 +16,7 @@ import 'package:labguide/core/entitlements/feature.dart';
 import 'package:labguide/core/entitlements/purchase_adapter.dart';
 import 'package:labguide/core/storage/kv_store.dart';
 
-/// Server o'rnida: javob yoki xato (internet yo'q).
-class _FakeSource implements EntitlementSource {
-  _FakeSource();
-
-  String? user = 'user-a';
-  EntitlementSnapshot? snapshot;
-  Object? error;
-  List<PurchaseProof>? verified;
-
-  @override
-  bool get isConfigured => true;
-  @override
-  bool get hasSession => user != null;
-  @override
-  String? get userId => user;
-
-  @override
-  Future<EntitlementSnapshot> fetch() async {
-    if (error != null) throw error!;
-    return snapshot!;
-  }
-
-  @override
-  Future<EntitlementSnapshot> verify(
-    List<PurchaseProof> proofs, {
-    required bool restore,
-  }) async {
-    verified = proofs;
-    return fetch();
-  }
-}
-
-class _FakeStore implements PurchaseAdapter {
-  _FakeStore(this.proofs);
-  final List<PurchaseProof> proofs;
-
-  @override
-  bool get isAvailable => true;
-  @override
-  Future<List<StoreProduct>> products(Set<String> ids) async => const [];
-  @override
-  Future<PurchaseProof?> buy(String productId) async => proofs.firstOrNull;
-  @override
-  Future<List<PurchaseProof>> restore() async => proofs;
-}
+import '../helpers/billing_fakes.dart';
 
 final _t0 = DateTime.utc(2026, 10, 9, 12);
 
@@ -61,8 +24,9 @@ ServerEntitlement _sub({
   EntitlementStatus status = EntitlementStatus.active,
   DateTime? start,
   DateTime? end,
+  String product = BillingCatalog.proMonthly,
 }) => ServerEntitlement(
-  productId: 'labguide.pro.monthly',
+  productId: product,
   platform: 'app_store',
   status: status,
   startedAt: start ?? _t0.subtract(const Duration(days: 3)),
@@ -72,29 +36,49 @@ ServerEntitlement _sub({
 EntitlementSnapshot _snap(List<ServerEntitlement> items, [DateTime? at]) =>
     EntitlementSnapshot(serverTime: at ?? _t0, items: items);
 
+const _proof = PurchaseProof(
+  platform: 'app_store',
+  productId: BillingCatalog.proMonthly,
+  token: '2000000123',
+);
+
+/// Xotiradagi sessiya (Cloudflare backend testi uchun).
+class _MemorySessions implements SessionStore {
+  String? value;
+  @override
+  Future<void> delete() async => value = null;
+  @override
+  Future<String?> read() async => value;
+  @override
+  Future<void> write(String v) async => value = v;
+}
+
 void main() {
   late MemoryKeyValueStore store;
   late MemoryEntitlementKeyStore keys;
-  late _FakeSource source;
+  late FakeEntitlementSource source;
+  late FakePurchaseAdapter shop;
   late DateTime now;
 
+  /// Standart: do'kon buildi, to'lov YOQILGAN (soxta do'kon + server).
   EntitlementService make({bool open = false, PurchaseAdapter? purchases}) =>
       EntitlementService(
         source: source,
         cache: EntitlementCacheStore(store, keys),
         allFeaturesOpen: open,
-        purchases: purchases ?? const UnavailablePurchaseAdapter(),
+        purchases: purchases ?? shop,
         clock: () => now,
       );
 
   setUp(() {
     store = MemoryKeyValueStore();
     keys = MemoryEntitlementKeyStore();
-    source = _FakeSource();
+    source = FakeEntitlementSource();
+    shop = FakePurchaseAdapter();
     now = _t0;
   });
 
-  // Tarix: 6 natija, eng yangisi birinchi, har biri bir kun oldin.
+  // Tarix: n natija, eng yangisi birinchi, har biri bir kun oldin.
   List<DateTime> history(int n, {DateTime? from}) => [
     for (var i = 0; i < n; i++) (from ?? _t0).subtract(Duration(days: i)),
   ];
@@ -104,6 +88,7 @@ void main() {
       source.user = null;
       final s = make(open: true);
       expect(s.proSource, ProSource.buildOpen);
+      expect(s.tier, ProTier.teacher);
       for (final f in Feature.values) {
         expect(s.can(f), isTrue, reason: f.name);
       }
@@ -111,6 +96,7 @@ void main() {
       final v = s.historyView(history(10), (d) => d);
       expect(v.visible, hasLength(10));
       expect(v.hiddenCount, 0);
+      expect(s.gatingActive, isFalse);
     });
 
     test('LG_ALL_FEATURES_OPEN standart qiymati — false (do‘kon build)', () {
@@ -118,17 +104,71 @@ void main() {
     });
   });
 
-  group('bepul rejim', () {
-    test('bepul imkoniyatlar ochiq, Pro yopiq', () {
+  group('to‘lov yoqilmagan do‘kon build — hammasi ochiq (App Store 2.1)', () {
+    void allOpen(EntitlementService s) {
+      expect(s.purchasesEnabled, isFalse);
+      expect(s.gatingActive, isFalse);
+      for (final f in Feature.values) {
+        expect(s.can(f), isTrue, reason: f.name);
+      }
+      expect(s.historyVisibleLimit(), isNull);
+      final v = s.historyView(history(9), (d) => d);
+      expect(v.visible, hasLength(9));
+      expect(v.hiddenCount, 0);
+    }
+
+    test('do‘kon ulanmagan (UnavailablePurchaseAdapter)', () {
+      allOpen(make(purchases: UnavailablePurchaseAdapter()));
+    });
+
+    test('do‘konda mahsulot yo‘q (hali yaratilmagan)', () {
+      shop.products = const [];
+      allOpen(make());
+    });
+
+    test('server kalitlari sozlanmagan (billing/status: false)', () {
+      source.billing = false;
+      allOpen(make());
+    });
+
+    test('mahsulotlar keyin yuklansa — gating shundan keyin yoqiladi', () {
+      shop.available = false;
       final s = make();
+      var notified = 0;
+      s.addListener(() => notified++);
+      expect(s.can(Feature.examSimulation), isTrue);
+      shop.setAvailable(true);
+      expect(notified, greaterThan(0));
+      expect(s.gatingActive, isTrue);
+      expect(s.can(Feature.examSimulation), isFalse);
+    });
+
+    test('xarid va tiklash — unavailable, do‘kon oynasi ochilmaydi', () async {
+      source.billing = false;
+      final s = make();
+      expect(await s.purchase(BillingCatalog.proMonthly), BillingOutcome.unavailable);
+      expect(await s.restore(), BillingOutcome.unavailable);
+      expect(shop.bought, isEmpty);
+    });
+  });
+
+  group('bepul rejim (to‘lov yoqilgan)', () {
+    test('D-53: bepul imkoniyatlar ochiq, Pro va Ustoz Pro yopiq', () {
+      final s = make();
+      expect(s.gatingActive, isTrue);
       expect(s.isPro, isFalse);
-      expect(s.can(Feature.leukocyteCounter), isTrue);
-      expect(s.can(Feature.absoluteCounts), isTrue);
-      expect(s.can(Feature.basicGuides), isTrue);
-      expect(s.can(Feature.unlimitedHistory), isFalse);
-      expect(s.can(Feature.pdfExport), isFalse);
-      expect(s.can(Feature.advancedPractice), isFalse);
-      expect(s.can(Feature.categoryExamPrep), isFalse);
+      for (final f in [
+        Feature.leukocyteCounter,
+        Feature.absoluteCounts,
+        Feature.basicGuides,
+        Feature.dailyQuestions,
+        Feature.mistakeReview,
+      ]) {
+        expect(s.can(f), isTrue, reason: f.name);
+      }
+      for (final f in Feature.values.where((f) => f.pro)) {
+        expect(s.can(f), isFalse, reason: f.name);
+      }
     });
 
     test('tarixda oxirgi 3 natija; eskilari o‘chmaydi, soni aytiladi', () {
@@ -138,7 +178,6 @@ void main() {
       final v = s.historyView(all, (d) => d);
       expect(v.visible, all.take(3).toList());
       expect(v.hiddenCount, 4);
-      // Asl ro'yxat o'zgarmadi — hech narsa o'chirilmagan.
       expect(all, hasLength(7));
     });
 
@@ -147,17 +186,44 @@ void main() {
       expect(v.visible, hasLength(2));
       expect(v.hiddenCount, 0);
     });
+
+    test('to‘lov oynasida talaba mahsuloti ko‘rsatilmaydi (tasdiq yo‘q)', () {
+      final ids = make().offeredProducts.map((p) => p.id);
+      expect(ids, isNot(contains(BillingCatalog.studentMonthly)));
+      expect(ids, contains(BillingCatalog.proMonthly));
+      expect(ids, contains(BillingCatalog.teacherMonthly));
+    });
   });
 
   group('server tasdiqlagan obuna', () {
-    test('faol obuna Pro beradi va imzolangan keshga yoziladi', () async {
+    test('faol Pro: Pro ochiq, Ustoz Pro yopiq; imzolangan keshga yoziladi', () async {
       source.snapshot = _snap([_sub()]);
       final s = make();
       await s.refresh();
       expect(s.proSource, ProSource.server);
-      expect(s.can(Feature.pdfExport), isTrue);
+      expect(s.tier, ProTier.pro);
+      expect(s.can(Feature.examSimulation), isTrue);
+      expect(s.can(Feature.fullToifaBank), isTrue);
+      expect(s.can(Feature.groups), isFalse);
       expect(s.historyVisibleLimit(), isNull);
       expect(store.getString(StoreKeys.entitlementsCache), isNotNull);
+    });
+
+    test('Ustoz Pro hammasini ochadi', () async {
+      source.snapshot = _snap([_sub(product: BillingCatalog.teacherYearly)]);
+      final s = make();
+      await s.refresh();
+      expect(s.tier, ProTier.teacher);
+      for (final f in Feature.values) {
+        expect(s.can(f), isTrue, reason: f.name);
+      }
+    });
+
+    test('katalogda yo‘q mahsulot — faqat Pro (Ustoz Pro emas)', () async {
+      source.snapshot = _snap([_sub(product: 'labguide.pro.monthly')]);
+      final s = make();
+      await s.refresh();
+      expect(s.tier, ProTier.pro);
     });
 
     test('imtiyoz davri (grace) Pro beradi, billing retry bermaydi', () async {
@@ -179,7 +245,6 @@ void main() {
     });
 
     test('obuna tugagach Pro davrida saqlangan natijalar ko‘rinadi', () async {
-      // Obuna 30..10 kun oldin amalda bo'lgan, endi tugagan.
       final start = _t0.subtract(const Duration(days: 30));
       final end = _t0.subtract(const Duration(days: 10));
       source.snapshot = _snap([
@@ -188,9 +253,8 @@ void main() {
       final s = make();
       await s.refresh();
       expect(s.isPro, isFalse);
-      expect(s.can(Feature.pdfExport), isFalse, reason: 'yangi Pro amal yopiq');
+      expect(s.can(Feature.examSimulation), isFalse, reason: 'yangi Pro amal yopiq');
 
-      // Kunlik natijalar: bugundan 40 kun oldingacha (eng yangisi birinchi).
       final all = history(41);
       final v = s.historyView(all, (d) => d);
       final inPro = all.where((d) => !d.isBefore(start) && !d.isAfter(end));
@@ -233,7 +297,7 @@ void main() {
       now = _t0.add(const Duration(days: 6, hours: 23));
       final s = make();
       await s.load();
-      await s.refresh(); // internet yo'q — kesh qoladi
+      await s.refresh();
       expect(s.proSource, ProSource.offlineCache);
       expect(s.can(Feature.unlimitedHistory), isTrue);
 
@@ -308,28 +372,72 @@ void main() {
   });
 
   group('xarid va tiklash', () {
-    test('to‘lov yoqilmagan: unavailable, hech narsa o‘zgarmaydi', () async {
+    test('xarid: server tekshiradi, keyin tranzaksiya yakunlanadi', () async {
+      source.user = '0F8FAD5B-D9CB-469F-A165-70867728950E';
+      shop.proofs = const [_proof];
+      source.snapshot = _snap([_sub()]);
       final s = make();
-      expect(s.purchasesEnabled, isFalse);
-      expect(await s.restore(), BillingOutcome.unavailable);
+      expect(await s.purchase(BillingCatalog.proMonthly), BillingOutcome.success);
+      expect(source.verified, [_proof]);
+      expect(source.verifiedRestore, isFalse);
+      expect(shop.finished, [_proof]);
+      // App Store appAccountToken — hisob UUID'i (kichik harf).
+      expect(shop.bought.single, (
+        BillingCatalog.proMonthly,
+        '0f8fad5b-d9cb-469f-a165-70867728950e',
+      ));
+      expect(s.isPro, isTrue);
+    });
+
+    test('Play: obfuscatedAccountId — hisob id sining SHA-256 xeshi', () async {
+      source = FakeEntitlementSource(platform: 'play_store');
+      shop.proofs = const [_proof];
+      source.snapshot = _snap([_sub()]);
+      await make().purchase(BillingCatalog.proMonthly);
       expect(
-        await s.purchase('labguide.pro.monthly'),
-        BillingOutcome.unavailable,
+        shop.bought.single.$2,
+        sha256.convert(utf8.encode('user-a')).toString(),
       );
+    });
+
+    test('server xatosi: tranzaksiya yakunlanmaydi (do‘kon qayta beradi)', () async {
+      shop.proofs = const [_proof];
+      source.error = const EntitlementException(EntitlementFailure.network);
+      final s = make();
+      expect(await s.purchase(BillingCatalog.proMonthly), BillingOutcome.failed);
+      expect(shop.finished, isEmpty);
+      expect(s.isPro, isFalse);
+    });
+
+    test('bekor qilish va kutilayotgan to‘lov', () async {
+      final s = make();
+      shop.cancel = true;
+      expect(await s.purchase(BillingCatalog.proMonthly), BillingOutcome.cancelled);
+      shop
+        ..cancel = false
+        ..buyError = const PurchasePendingException();
+      expect(await s.purchase(BillingCatalog.proMonthly), BillingOutcome.pending);
+      shop.buyError = const PurchaseFailedException('declined');
+      expect(await s.purchase(BillingCatalog.proMonthly), BillingOutcome.failed);
+      shop.buyError = null;
+      shop.proofs = const [_proof];
+      source.error = const EntitlementException(EntitlementFailure.pending);
+      expect(await s.purchase(BillingCatalog.proMonthly), BillingOutcome.pending);
       expect(s.isPro, isFalse);
     });
 
     test('tiklash: server tekshiradi va Pro beradi', () async {
-      const proof = PurchaseProof(
-        platform: 'app_store',
-        productId: 'labguide.pro.monthly',
-        token: '2000000123',
-      );
+      shop.proofs = const [_proof];
       source.snapshot = _snap([_sub()]);
-      final s = make(purchases: _FakeStore([proof]));
+      final s = make();
       expect(await s.restore(), BillingOutcome.success);
-      expect(source.verified, [proof]);
+      expect(source.verified, [_proof]);
+      expect(source.verifiedRestore, isTrue);
       expect(s.isPro, isTrue);
+    });
+
+    test('tiklash: do‘konda hech narsa yo‘q', () async {
+      expect(await make().restore(), BillingOutcome.nothingFound);
     });
 
     test('tiklash: xarid boshqa hisobda', () async {
@@ -338,11 +446,8 @@ void main() {
         items: const [],
         ownedByOther: true,
       );
-      final s = make(
-        purchases: _FakeStore(const [
-          PurchaseProof(platform: 'app_store', productId: 'p', token: 't'),
-        ]),
-      );
+      shop.proofs = const [_proof];
+      final s = make();
       expect(await s.restore(), BillingOutcome.ownedByOther);
       expect(s.isPro, isFalse);
     });
@@ -351,27 +456,254 @@ void main() {
       source.error = const EntitlementException(
         EntitlementFailure.notConfigured,
       );
-      final s = make(
-        purchases: _FakeStore(const [
-          PurchaseProof(platform: 'app_store', productId: 'p', token: 't'),
-        ]),
-      );
-      expect(await s.restore(), BillingOutcome.unavailable);
+      shop.proofs = const [_proof];
+      expect(await make().restore(), BillingOutcome.unavailable);
     });
 
-    test('hisobsiz tiklash — kirish kerak', () async {
+    test('mehmon: hisobsiz xarid qurilmada ishlaydi (App Store 5.1.1)', () async {
       source.user = null;
-      final s = make(purchases: _FakeStore(const []));
-      expect(await s.restore(), BillingOutcome.signInRequired);
+      shop.proofs = [
+        PurchaseProof(
+          platform: 'app_store',
+          productId: BillingCatalog.teacherMonthly,
+          token: '2000000999',
+          purchasedAt: _t0,
+          expiresAt: _t0.add(const Duration(days: 14)),
+        ),
+      ];
+      final s = make();
+      expect(await s.purchase(BillingCatalog.teacherMonthly), BillingOutcome.success);
+      expect(shop.bought.single.$2, isNull, reason: 'hisob belgisi yo‘q');
+      expect(source.verified, isNull, reason: 'serverga yuborilmadi');
+      expect(shop.finished, hasLength(1));
+      expect(s.proSource, ProSource.store);
+      expect(s.tier, ProTier.teacher);
+      now = _t0.add(const Duration(days: 15));
+      expect(s.isPro, isFalse, reason: 'StoreKit muddati tugadi');
+    });
+
+    test('mehmon xaridi hisobga kirilganda serverga bog‘lanadi', () async {
+      source.user = null;
+      shop.proofs = const [_proof];
+      final s = make();
+      expect(await s.purchase(BillingCatalog.proMonthly), BillingOutcome.success);
+      // Server hali bu xaridni bilmaydi — refresh uni tiklash sifatida yuboradi.
+      source
+        ..user = 'user-a'
+        ..snapshot = _snap([]);
+      await s.refresh();
+      expect(source.verified?.single.token, _proof.token);
+      expect(source.verifiedRestore, isTrue);
+      expect(s.proSource, ProSource.none, reason: 'hisobda faqat server holati');
+    });
+
+    test('ilova ochilganda: probe → do‘kon → server → jim tiklash', () async {
+      source.snapshot = _snap([]);
+      shop.proofs = const [_proof];
+      final s = make();
+      await s.start();
+      expect(source.probes, 1);
+      expect(shop.inits, 1);
+      // Server bilmagan, lekin do'konda bor obuna — bog'lanadi.
+      expect(source.verified, [_proof]);
+    });
+
+    test('do‘kon o‘zi yuborgan tranzaksiya: tekshiriladi va yakunlanadi', () async {
+      source.snapshot = _snap([]);
+      final s = make();
+      await s.start();
+      source.snapshot = _snap([_sub()]);
+      shop.emit(_proof);
+      await pumpEventQueue();
+      expect(source.verified, [_proof]);
+      expect(source.verifiedRestore, isFalse);
+      expect(shop.finished, [_proof]);
+      expect(s.isPro, isTrue);
     });
   });
 
-  test('server javobi (my_entitlements) o‘qiladi', () {
+  group('katalog', () {
+    test('id lar egasi tasdiqlagan ro‘yxat va server bilan bir xil', () {
+      expect(BillingCatalog.ids, {
+        'uz.labguide.pro.monthly',
+        'uz.labguide.pro.yearly',
+        'uz.labguide.pro.student.monthly',
+        'uz.labguide.pro.student.yearly',
+        'uz.labguide.teacherpro.monthly',
+        'uz.labguide.teacherpro.yearly',
+      });
+      final server = File('cloudflare/src/billing.ts').readAsStringSync();
+      final ids = RegExp(r"'(uz\.labguide\.[a-z.]+)': \{ tier: '(\w+)'")
+          .allMatches(server)
+          .map((m) => (m[1]!, m[2]!))
+          .toSet();
+      expect(ids, {
+        for (final p in BillingCatalog.all)
+          (p.id, p.tier == ProTier.teacher ? 'teacher' : 'pro'),
+      });
+    });
+
+    test('Play billingPeriod (ISO 8601) o‘qiladi', () {
+      expect(StorePeriod.parseIso('P7D'), const StorePeriod(7, StorePeriodUnit.day));
+      expect(StorePeriod.parseIso('P1M'), const StorePeriod(1, StorePeriodUnit.month));
+      expect(StorePeriod.parseIso('P1Y'), const StorePeriod(1, StorePeriodUnit.year));
+      expect(StorePeriod.parseIso('P2W'), const StorePeriod(2, StorePeriodUnit.week));
+      expect(StorePeriod.parseIso('bad'), isNull);
+    });
+
+    test('obunani boshqarish havolasi', () {
+      expect(
+        BillingLinks.manageSubscriptions(ios: true),
+        'https://apps.apple.com/account/subscriptions',
+      );
+      expect(
+        BillingLinks.manageSubscriptions(ios: false, productId: 'x'),
+        'https://play.google.com/store/account/subscriptions?package=uz.labguide.app&sku=x',
+      );
+    });
+  });
+
+  group('CloudflareEntitlementSource', () {
+    Future<(CloudflareEntitlementSource, List<http.Request>)> make2(
+      http.Response Function(http.Request) handler, {
+      bool signedIn = true,
+    }) async {
+      final calls = <http.Request>[];
+      final sessions = _MemorySessions();
+      if (signedIn) {
+        sessions.value = jsonEncode({
+          'token': 'a' * 43,
+          'email': 'u@example.test',
+          'user_id': 'user-a',
+          'expires_at': '2099-01-01T00:00:00.000Z',
+        });
+      }
+      final backend = CloudflareLabBackend(
+        const ApiConfig(url: 'https://api.test'),
+        sessionStore: sessions,
+        httpClient: MockClient((r) async {
+          calls.add(r);
+          return handler(r);
+        }),
+      );
+      await backend.restoreSession();
+      return (
+        CloudflareEntitlementSource(backend, platform: 'app_store'),
+        calls,
+      );
+    }
+
+    http.Response j(Object body, [int status = 200]) => http.Response(
+      jsonEncode(body),
+      status,
+      headers: {'content-type': 'application/json'},
+    );
+
+    test('status: faqat shu platforma sozlangan bo‘lsa billingReady', () async {
+      final (src, calls) = await make2(
+        (_) => j({'app_store': true, 'play_store': false}),
+        signedIn: false,
+      );
+      expect(src.billingReady, isFalse);
+      await src.probe();
+      expect(src.billingReady, isTrue);
+      expect(calls.single.url.path, '/v1/billing/status');
+      expect(calls.single.headers['authorization'], isNull);
+
+      final (play, _) = await make2(
+        (_) => j({'app_store': true, 'play_store': false}),
+        signedIn: false,
+      );
+      final p = CloudflareEntitlementSource(play.backend, platform: 'play_store');
+      await p.probe();
+      expect(p.billingReady, isFalse);
+    });
+
+    test('internet yo‘q — to‘lov yoqilmaydi', () async {
+      final (src, _) = await make2(
+        (_) => throw const SocketException('offline'),
+        signedIn: false,
+      );
+      await src.probe();
+      expect(src.billingReady, isFalse);
+    });
+
+    test('verify: so‘rov tanasi va javob (owned_by_other)', () async {
+      final (src, calls) = await make2(
+        (_) => j({
+          'server_time': '2026-10-09T12:00:00.000Z',
+          'items': [
+            {
+              'product_id': BillingCatalog.proYearly,
+              'platform': 'app_store',
+              'status': 'active',
+              'started_at': '2026-10-01T00:00:00.000Z',
+              'expires_at': '2027-10-01T00:00:00.000Z',
+              'ownership': 'purchased',
+              'environment': 'sandbox',
+            },
+          ],
+          'owned_by_other': true,
+        }),
+      );
+      final snap = await src.verify(const [_proof], restore: false);
+      expect(snap.items.single.productId, BillingCatalog.proYearly);
+      expect(snap.ownedByOther, isTrue);
+      final req = calls.single;
+      expect(req.url.path, '/v1/billing/verify');
+      expect(req.headers['authorization'], 'Bearer ${'a' * 43}');
+      expect(jsonDecode(req.body), {
+        'platform': 'app_store',
+        'restore': false,
+        'product_id': BillingCatalog.proMonthly,
+        'token': '2000000123',
+      });
+
+      await src.verify(const [_proof, _proof], restore: true);
+      expect((jsonDecode(calls.last.body) as Map)['purchases'], hasLength(2));
+    });
+
+    test('xatolar: 503 → notConfigured, 409 pending, 502 → network', () async {
+      var reply = j({'error': 'not_configured'}, 503);
+      final (src, _) = await make2((_) => reply);
+      Future<EntitlementFailure?> failure() async {
+        try {
+          await src.fetch();
+          return null;
+        } on EntitlementException catch (e) {
+          return e.failure;
+        }
+      }
+
+      expect(await failure(), EntitlementFailure.notConfigured);
+      reply = j({'error': 'purchase_pending'}, 409);
+      expect(await failure(), EntitlementFailure.pending);
+      reply = j({'error': 'store_unavailable'}, 502);
+      expect(await failure(), EntitlementFailure.network);
+    });
+
+    test('hisobsiz — unauthorized (serverga so‘rov ketmaydi)', () async {
+      final (src, calls) = await make2((_) => j({}), signedIn: false);
+      await expectLater(
+        src.fetch(),
+        throwsA(
+          isA<EntitlementException>().having(
+            (e) => e.failure,
+            'failure',
+            EntitlementFailure.unauthorized,
+          ),
+        ),
+      );
+      expect(calls, isEmpty);
+    });
+  });
+
+  test('server javobi (entitlements) o‘qiladi', () {
     final snap = EntitlementSnapshot.fromJson({
       'server_time': '2026-10-09T12:00:00+00:00',
       'items': [
         {
-          'product_id': 'labguide.pro.yearly',
+          'product_id': BillingCatalog.proYearly,
           'platform': 'play_store',
           'status': 'grace_period',
           'started_at': '2026-01-01T00:00:00+00:00',

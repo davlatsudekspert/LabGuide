@@ -5,9 +5,11 @@ import 'package:material_ui/material_ui.dart';
 
 import '../../app/app_scope.dart';
 import '../../app/widgets/lg_page.dart';
+import '../../core/entitlements/feature.dart';
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
+import '../profile/pro_gate.dart';
 import '../share/result_share.dart';
 import '../support/support_screens.dart' show formatWhen;
 import '../toifa/toifa_bank.dart';
@@ -92,6 +94,9 @@ class _ExamSetupScreenState extends State<ExamSetupScreen> {
     setState(() => _tried = true);
     if (pool.isEmpty || _countError(pool.length) != null) return;
     if (_minutesError() != null) return;
+    // Imtihon simulyatsiyasi — Pro (D-53); tekshiruv faqat boshlashdan oldin.
+    if (!await requireFeature(context, Feature.examSimulation)) return;
+    if (!mounted) return;
     final exams = context.services.exams;
     if (exams.active != null) {
       final ok = await confirmDialog(
@@ -672,7 +677,18 @@ class _ExamResultScreenState extends State<ExamResultScreen> {
                 : null,
           ),
         ),
-        TopicBreakdown(session: s, source: source),
+        // Zaif mavzular tahlili — Pro (natijadan keyin; to'lov yoqilmagan
+        // buildda doim ko'rinadi).
+        if (context.services.entitlements.can(Feature.weakTopics))
+          TopicBreakdown(session: s, source: source)
+        else if (s.topicBreakdown().length > 1)
+          LgRow(
+            title: l.payFeatWeak,
+            subtitle: l.payLockedPro,
+            icon: Icons.insights_outlined,
+            onTap: () => context.push(purchaseRoute(Feature.weakTopics)),
+            divider: false,
+          ),
         LgSectionTitle(l.examAnalysis),
         Wrap(
           spacing: 8,
