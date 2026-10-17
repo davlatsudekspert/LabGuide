@@ -46,13 +46,13 @@ Dashboard'dagi "Set up your app" ro'yxatidagi bo'limlar:
 
 | Bo'lim | Javob |
 |---|---|
-| Privacy policy | `https://github.com/davlatsudekspert/LabGuide/blob/main/docs/store/PRIVACY_POLICY.md` (GitHub Pages yoqilsa: `https://davlatsudekspert.github.io/LabGuide/store/PRIVACY_POLICY`). Matnda sana (2026-10-17) va aloqa (labguide@nfcstore.uz) taklif qilingan — egasi tasdiqlasin va muharrir eslatmasini o'chirsin (APP_STORE.md 14-bo'lim). |
+| Privacy policy | `https://nfcstore.uz/labguide/privacy/` (`site/privacy/index.html`, joylash — `site/README.md`; sayt joylanmaguncha zaxira: `https://github.com/davlatsudekspert/LabGuide/blob/main/docs/store/PRIVACY_POLICY.md`). Matnda sana (2026-10-17) va aloqa (labguide@nfcstore.uz) taklif qilingan — egasi tasdiqlasin; ochiq savollar `docs/store/PRIVACY_OPEN_QUESTIONS.md` (APP_STORE.md 14-bo'lim). |
 | Contact details (Store listing) | Email: **labguide@nfcstore.uz** (ilovadagi Profil → Aloqa va shikoyat bilan bir xil; kodda `lib/core/contact.dart`). Egasi alias ishlashini sinov xati bilan tasdiqlasin. Telefon/sayt — ixtiyoriy. |
 | App access | "All functionality is available without special access" — hammasi login'siz ochiq (mehmon rejimi). |
-| Ads | **No, my app does not contain ads** (hozirgi buildda e'lon yo'q). |
+| Ads | **No, my app does not contain ads** (do'kon buildida hamkor reklamasi kompilyatsiyadan chiqarilgan — `LG_PARTNER_ADS=false`, `lib/core/build_flags.dart`). |
 | Content rating | Kategoriya: *Reference, News, or Educational*. So'rovnomada zo'ravonlik, jinsiy kontent, qimor, giyohvand moddalar, joylashuv — **No**. **Foydalanuvchi kontenti / foydalanuvchilar o'zaro aloqasi (user-generated content, users can interact) — Yes**: hamjamiyat savol-javoblari (server ulangan buildda hisobli foydalanuvchi savol yozadi, javoblar ilovada hammaga ochiq; D-43). Play UGC siyosati talablari: ilova ichida shikoyat qilish va moderatsiya bor (admin panel; 3 ta turli foydalanuvchi shikoyati hisobni ko'rib chiqquncha to'xtatadi; maxfiylik siyosati 'Hamjamiyat' bandi). Hamjamiyat faqat `LG_API_URL` berilgan buildda mavjud, lekin so'rovnomani do'kondagi ilovaning to'liq (server ulangan) holatiga mos to'ldiring. Email manzilingizni kiriting, natijani saqlang. |
 | Target audience | **18 va undan katta** (faqat kattalar). Bolalarga yo'naltirilmagan. |
-| Data safety | **`LG_API_URL` bo'sh build (server ulanmagan):** "Does your app collect or share any of the required user data types?" → **No**; Data deletion savollari so'ralmaydi. **`LG_API_URL` berilgan build (Cloudflare server):** **Yes, collects** — *Personal info → Email address* (Account management, App functionality; sinf uchun majburiy, umuman ixtiyoriy — mehmon rejimida yo'q), *Personal info → User IDs* (Account management, App functionality; shu qatorga Google/Apple provayder identifikatori ham kiradi, D-56 — yangi toifa yo'q, *Name* qo'shilmaydi), *Account creation methods*: OAuth (Google, Apple) + Other authentication (email kodi) — Play so'rasa, *App activity → Other user-generated content* (guruh taxallusi, test javoblari va ball; hamjamiyat savol-javoblari — ilova ichida ommaviy; App functionality); *Photos and videos → Photos* (mutaxassis hujjati, ixtiyoriy, **processed ephemerally** — Workers AI tekshiruvidan keyin saqlanmaydi; App functionality, D-43); [*App interactions* — faqat oxirgi faol kun, kerak bo'lsa]. **Shared: No** (Cloudflare, Resend va zaxira email xizmati Brevo — xizmat ko'rsatuvchi). **Encrypted in transit: Yes** (HTTPS). **Deletion: Yes** — ilovada Profil → Maxfiylik → "Hisobni o'chirish" va aloqa emaili labguide@nfcstore.uz (Data deletion URL maydoniga siyosat havolasi). Ovozli buyruqlar faqat qurilmada oflayn ishlaydi — Audio **qo'shilmaydi**. To'liq jadval: APP_STORE.md 12-bo'lim. |
+| Data safety | **`LG_API_URL` bo'sh build (server ulanmagan):** "Does your app collect or share any of the required user data types?" → **No**; Data deletion savollari so'ralmaydi. **`LG_API_URL` berilgan build (Cloudflare server):** **Yes, collects** — *Personal info → Email address* (Account management, App functionality; sinf uchun majburiy, umuman ixtiyoriy — mehmon rejimida yo'q), *Personal info → User IDs* (Account management, App functionality; shu qatorga Google/Apple provayder identifikatori ham kiradi, D-56 — yangi toifa yo'q, *Name* qo'shilmaydi), *Account creation methods*: OAuth (Google, Apple) + Other authentication (email kodi) — Play so'rasa, *App activity → Other user-generated content* (guruh taxallusi, test javoblari va ball; hamjamiyat savol-javoblari — ilova ichida ommaviy; App functionality); *Photos and videos → Photos* (mutaxassis hujjati, ixtiyoriy, **processed ephemerally** — Workers AI tekshiruvidan keyin saqlanmaydi; App functionality, D-43); *Messages → Other in-app messages* ("Taklif va yordam" murojaatlari va ilova ichidagi shikoyatlar — mehmondan ham, identifikatorsiz; App functionality); [*App interactions* — oxirgi faol kun va daqiqaga yaxlitlangan oxirgi faollik vaqti, faqat umumiy "hozir onlayn" soni uchun; kerak bo'lsa]. **Shared: No** (Cloudflare, Resend va zaxira email xizmati Brevo — xizmat ko'rsatuvchi). **Encrypted in transit: Yes** (HTTPS). **Deletion: Yes** — ilovada Profil → Maxfiylik va ma'lumotlar → "Hisobni o'chirish" va aloqa emaili labguide@nfcstore.uz (Delete account URL maydoniga: `https://nfcstore.uz/labguide/delete-account/`). Ovozli buyruqlar faqat qurilmada oflayn ishlaydi — Audio **qo'shilmaydi**. To'liq jadval: APP_STORE.md 12-bo'lim. |
 | Health apps | Ilova tibbiy qurilma emas, tashxis qo'ymaydi, doza bermaydi. Kategoriya: ma'lumotnoma / ta'lim. "Medical device / diagnosis / treatment" variantlarini **tanlamang**; sog'liq bilan bog'liq funksiya sifatida faqat "Educational / reference" ni belgilang. |
 | Government apps, Financial features, News | Mos emas — "No". |
 | Advertising ID | Ishlatilmaydi — "No". |
@@ -127,7 +127,8 @@ gaplashaman, sen ham o'zbekcha javob ber.
 KONTEKST
 - Ilova: LabGuide, paket nomi uz.labguide.app, bepul (Free), toifa Education.
 - Ilova biokimyo/klinik laboratoriya o'quv va ma'lumotnoma vositasi. Tibbiy qurilma emas,
-  tashxis qo'ymaydi, doza bermaydi. Hozirgi build serverga ulanmagan, reklama yo'q.
+  tashxis qo'ymaydi, doza bermaydi. Reklama yo'q. Mehmon rejimida serverga hech narsa
+  yuborilmaydi; ixtiyoriy hisob (email kodi, Google, Apple) bilan server (Cloudflare) ishlatiladi.
 - Ruxsatlar: INTERNET, RECORD_AUDIO (ixtiyoriy, faqat qurilmada oflayn ovozli buyruq),
   POST_NOTIFICATIONS, RECEIVE_BOOT_COMPLETED, VIBRATE. Kamera/joylashuv yo'q.
 - Fayl: LabGuide-0.1.0-20.aab (versionCode 20, versionName 0.1.0), kompyuterimda.
@@ -135,8 +136,9 @@ KONTEKST
 BOSQICHLAR (shu tartibda, har birini men bilan tasdiqlab)
 1. Create app: nom LabGuide, default til o'zbekcha (bo'lmasa English), App, Free; deklaratsiyalarni
    men o'zim belgilayman.
-2. App content: Privacy policy URL =
-   https://github.com/davlatsudekspert/LabGuide/blob/main/docs/store/PRIVACY_POLICY.md ;
+2. App content: Privacy policy URL = https://nfcstore.uz/labguide/privacy/
+   (sayt joylanmagan bo'lsa: https://github.com/davlatsudekspert/LabGuide/blob/main/docs/store/PRIVACY_POLICY.md);
+   Delete account URL = https://nfcstore.uz/labguide/delete-account/ ;
    App access = hammasi login'siz ochiq; Ads = No; Content rating = Reference/Educational,
    foydalanuvchi kontenti (hamjamiyat) savoliga Yes, qolgan savollarga No; Target audience = 18+; Data safety = `LG_API_URL` bo'sh buildda hech
    qanday ma'lumot to'planmaydi va ulashilmaydi (No), `LG_API_URL` berilgan buildda 54-qatordagi
