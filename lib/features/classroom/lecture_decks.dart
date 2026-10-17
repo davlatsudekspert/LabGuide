@@ -120,7 +120,7 @@ class LectureDeck {
       title: j['title'] as String?,
       topics: [...?(j['topics'] as List?)?.cast<String>()],
       lang: j['lang']! as String,
-      draft: j['status'] != 'approved',
+      draft: (j['status'] ?? 'draft') == 'draft',
       slides: [
         for (final s in (j['slides']! as List).cast<Map<String, Object?>>())
           DeckSlide.fromJson(s, srcs: srcs),

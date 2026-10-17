@@ -363,8 +363,9 @@ void main() {
         final n = deck.slides.length;
         expect(find.text(l.lectureCounter(1, n)), findsOneWidget);
         expect(find.text(deck.slides.first.title), findsOneWidget);
-        // Qoralama izohi birinchi slaydda; boshqa til ogohlantirishi yo'q.
-        expect(find.textContaining(l.lectureDraftNotice), findsOneWidget);
+        // Manbali taqdimotda qoralama izohi yo'q (egasi qarori); boshqa til
+        // ogohlantirishi ham yo'q.
+        expect(find.textContaining(l.lectureDraftNotice), findsNothing);
         expect(find.textContaining(l.lectureUzOnly), findsNothing);
         await tester.tap(find.byTooltip(l.lectureClose));
         await tester.pumpAndSettle();

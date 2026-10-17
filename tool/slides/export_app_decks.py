@@ -325,7 +325,7 @@ def deck_json(deck_id, lang, title, topics, slides):
                 srcs.append(s['source'])
             s['src'] = srcs.index(s.pop('source'))
         slim.append(s)
-    j = {'schema': SCHEMA, 'id': deck_id, 'lang': lang, 'status': 'draft',
+    j = {'schema': SCHEMA, 'id': deck_id, 'lang': lang, 'status': 'sourced',
          'title': title, 'topics': topics}
     if srcs:
         j['srcs'] = srcs
