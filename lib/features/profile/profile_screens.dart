@@ -245,6 +245,13 @@ class ProfileScreen extends StatelessWidget {
                 icon: Icons.admin_panel_settings_outlined,
                 onTap: () => context.push('/profile/admin'),
               ),
+            // Serverga bog'liq emas — doim ko'rinadi.
+            LgRow(
+              title: l.contactRowTitle,
+              subtitle: l.contactRowSub,
+              icon: Icons.mail_outline_rounded,
+              onTap: () => context.push('/profile/contact'),
+            ),
             LgRow(
               title: l.profilePrivacy,
               subtitle: l.profilePrivacySub,

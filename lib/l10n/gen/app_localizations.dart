@@ -15033,6 +15033,144 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Tissues and organs: real micrographs, key features, practice'**
   String get histoLabCardBody;
+
+  /// No description provided for @contactRowTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact & reports'**
+  String get contactRowTitle;
+
+  /// No description provided for @contactRowSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Questions, advertising, report a problem'**
+  String get contactRowSub;
+
+  /// No description provided for @contactTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact'**
+  String get contactTitle;
+
+  /// No description provided for @contactIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Works without internet or an account: the message is sent from your mail app.'**
+  String get contactIntro;
+
+  /// No description provided for @contactEmailLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Email'**
+  String get contactEmailLabel;
+
+  /// No description provided for @contactCopy.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy address'**
+  String get contactCopy;
+
+  /// No description provided for @contactCopied.
+  ///
+  /// In en, this message translates to:
+  /// **'Address copied'**
+  String get contactCopied;
+
+  /// No description provided for @contactNoMailApp.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not open a mail app. The address was copied: send your message from any mail service.'**
+  String get contactNoMailApp;
+
+  /// No description provided for @contactQuestionTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Questions and suggestions'**
+  String get contactQuestionTitle;
+
+  /// No description provided for @contactQuestionBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Ask about the app, suggest a topic or an improvement.'**
+  String get contactQuestionBody;
+
+  /// No description provided for @contactQuestionAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Write an email'**
+  String get contactQuestionAction;
+
+  /// No description provided for @contactAdTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Advertising and partnership'**
+  String get contactAdTitle;
+
+  /// No description provided for @contactAdBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Laboratory equipment makers, distributors and service companies can advertise in LabGuide.\nWrite to us, or use the partner form if it is available in your version.'**
+  String get contactAdBody;
+
+  /// No description provided for @contactAdAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Write about advertising'**
+  String get contactAdAction;
+
+  /// No description provided for @contactReportTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Report a problem'**
+  String get contactReportTitle;
+
+  /// No description provided for @contactReportBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Tell us about wrong medical content, an inappropriate advertisement or inappropriate user content.'**
+  String get contactReportBody;
+
+  /// No description provided for @contactReportHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Please name the section or card (and the advertiser, for an ad) so we can find it quickly.'**
+  String get contactReportHint;
+
+  /// No description provided for @contactReportAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Send a report'**
+  String get contactReportAction;
+
+  /// No description provided for @contactResponseNote.
+  ///
+  /// In en, this message translates to:
+  /// **'We read every report and fix confirmed errors, but we cannot promise a reply time. This address is not for medical emergencies.'**
+  String get contactResponseNote;
+
+  /// No description provided for @contactPrivacyNote.
+  ///
+  /// In en, this message translates to:
+  /// **'If you write to us, we see your email address and what you write.'**
+  String get contactPrivacyNote;
+
+  /// Prefilled email body (no personal data)
+  ///
+  /// In en, this message translates to:
+  /// **'Your question or suggestion:\n\n\n---\nApp: LabGuide {version}\nPlatform: {platform}'**
+  String contactMailBodyQuestion(String version, String platform);
+
+  /// Prefilled email body (no personal data)
+  ///
+  /// In en, this message translates to:
+  /// **'Company and what you would like to advertise:\n\n\n---\nApp: LabGuide {version}\nPlatform: {platform}'**
+  String contactMailBodyAd(String version, String platform);
+
+  /// Prefilled email body (no personal data)
+  ///
+  /// In en, this message translates to:
+  /// **'Section / card name (or advertiser):\nWhat is wrong:\n(Please do not include patient data.)\n\n\n---\nApp: LabGuide {version}\nPlatform: {platform}'**
+  String contactMailBodyReport(String version, String platform);
 }
 
 class _AppLocalizationsDelegate

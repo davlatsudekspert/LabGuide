@@ -8744,4 +8744,87 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get histoLabCardBody =>
       'Tissues and organs: real micrographs, key features, practice';
+
+  @override
+  String get contactRowTitle => 'Contact & reports';
+
+  @override
+  String get contactRowSub => 'Questions, advertising, report a problem';
+
+  @override
+  String get contactTitle => 'Contact';
+
+  @override
+  String get contactIntro =>
+      'Works without internet or an account: the message is sent from your mail app.';
+
+  @override
+  String get contactEmailLabel => 'Email';
+
+  @override
+  String get contactCopy => 'Copy address';
+
+  @override
+  String get contactCopied => 'Address copied';
+
+  @override
+  String get contactNoMailApp =>
+      'Could not open a mail app. The address was copied: send your message from any mail service.';
+
+  @override
+  String get contactQuestionTitle => 'Questions and suggestions';
+
+  @override
+  String get contactQuestionBody =>
+      'Ask about the app, suggest a topic or an improvement.';
+
+  @override
+  String get contactQuestionAction => 'Write an email';
+
+  @override
+  String get contactAdTitle => 'Advertising and partnership';
+
+  @override
+  String get contactAdBody =>
+      'Laboratory equipment makers, distributors and service companies can advertise in LabGuide.\nWrite to us, or use the partner form if it is available in your version.';
+
+  @override
+  String get contactAdAction => 'Write about advertising';
+
+  @override
+  String get contactReportTitle => 'Report a problem';
+
+  @override
+  String get contactReportBody =>
+      'Tell us about wrong medical content, an inappropriate advertisement or inappropriate user content.';
+
+  @override
+  String get contactReportHint =>
+      'Please name the section or card (and the advertiser, for an ad) so we can find it quickly.';
+
+  @override
+  String get contactReportAction => 'Send a report';
+
+  @override
+  String get contactResponseNote =>
+      'We read every report and fix confirmed errors, but we cannot promise a reply time. This address is not for medical emergencies.';
+
+  @override
+  String get contactPrivacyNote =>
+      'If you write to us, we see your email address and what you write.';
+
+  @override
+  String contactMailBodyQuestion(String version, String platform) {
+    return 'Your question or suggestion:\n\n\n---\nApp: LabGuide $version\nPlatform: $platform';
+  }
+
+  @override
+  String contactMailBodyAd(String version, String platform) {
+    return 'Company and what you would like to advertise:\n\n\n---\nApp: LabGuide $version\nPlatform: $platform';
+  }
+
+  @override
+  String contactMailBodyReport(String version, String platform) {
+    return 'Section / card name (or advertiser):\nWhat is wrong:\n(Please do not include patient data.)\n\n\n---\nApp: LabGuide $version\nPlatform: $platform';
+  }
 }

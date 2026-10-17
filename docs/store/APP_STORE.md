@@ -226,6 +226,14 @@ ulashish — tizim oynasi, `NSPhotoLibraryAddUsageDescription` faqat “Save Ima
 Matnda sana (2026-10-10) va aloqa (labguide@nfcstore.uz) taklif qilingan — **egasi
 tasdiqlaydi**; hosting (Cloudflare, Sharqiy Yevropa) va email xizmati (Resend) kiritilgan.
 
+**Support / aloqa (App Store Connect “Support URL”, Play “Email address” / “Developer contact”):**
+qo‘llab-quvvatlash aloqasi — **labguide@nfcstore.uz** (ilovada: Profil → Aloqa va shikoyat; kodda
+`lib/core/contact.dart`). App Store Connect “Support URL” maydoni URL talab qiladi: maxfiylik
+siyosati sahifasi (yuqoridagi manzil, unda aloqa emaili bor) yoki `mailto:` emas, haqiqiy sahifa
+bering. Play Console Store listing → Contact details → Email: shu manzil. **Egasi manzil
+ishlashini tasdiqlamaguncha (Cloudflare Email Routing → Gmail, sinov xati bilan) topshirmang.**
+Manzil o‘zgarsa — `Contact.email`, PRIVACY_POLICY.md va do‘kon maydonlarini birga yangilang.
+
 **Hisobni o‘chirish** (App Store 5.1.1(v)): ilovada Profil → Maxfiylik → “Hisobni o‘chirish”
 (server: `DELETE /v1/me`, `cloudflare/src/auth.ts` `deleteAccount` — profil, sessiyalar,
 a’zolik, javoblar va ball; ustozning guruhlari ham).

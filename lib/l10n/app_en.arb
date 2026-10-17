@@ -4973,5 +4973,61 @@
   },
   "@histoLabCardBody": {
     "description": "Lab tab: histology picture card subtitle"
+  },
+  "contactRowTitle": "Contact & reports",
+  "contactRowSub": "Questions, advertising, report a problem",
+  "contactTitle": "Contact",
+  "contactIntro": "Works without internet or an account: the message is sent from your mail app.",
+  "contactEmailLabel": "Email",
+  "contactCopy": "Copy address",
+  "contactCopied": "Address copied",
+  "contactNoMailApp": "Could not open a mail app. The address was copied: send your message from any mail service.",
+  "contactQuestionTitle": "Questions and suggestions",
+  "contactQuestionBody": "Ask about the app, suggest a topic or an improvement.",
+  "contactQuestionAction": "Write an email",
+  "contactAdTitle": "Advertising and partnership",
+  "contactAdBody": "Laboratory equipment makers, distributors and service companies can advertise in LabGuide.\nWrite to us, or use the partner form if it is available in your version.",
+  "contactAdAction": "Write about advertising",
+  "contactReportTitle": "Report a problem",
+  "contactReportBody": "Tell us about wrong medical content, an inappropriate advertisement or inappropriate user content.",
+  "contactReportHint": "Please name the section or card (and the advertiser, for an ad) so we can find it quickly.",
+  "contactReportAction": "Send a report",
+  "contactResponseNote": "We read every report and fix confirmed errors, but we cannot promise a reply time. This address is not for medical emergencies.",
+  "contactPrivacyNote": "If you write to us, we see your email address and what you write.",
+  "contactMailBodyQuestion": "Your question or suggestion:\n\n\n---\nApp: LabGuide {version}\nPlatform: {platform}",
+  "@contactMailBodyQuestion": {
+    "description": "Prefilled email body (no personal data)",
+    "placeholders": {
+      "version": {
+        "type": "String"
+      },
+      "platform": {
+        "type": "String"
+      }
+    }
+  },
+  "contactMailBodyAd": "Company and what you would like to advertise:\n\n\n---\nApp: LabGuide {version}\nPlatform: {platform}",
+  "@contactMailBodyAd": {
+    "description": "Prefilled email body (no personal data)",
+    "placeholders": {
+      "version": {
+        "type": "String"
+      },
+      "platform": {
+        "type": "String"
+      }
+    }
+  },
+  "contactMailBodyReport": "Section / card name (or advertiser):\nWhat is wrong:\n(Please do not include patient data.)\n\n\n---\nApp: LabGuide {version}\nPlatform: {platform}",
+  "@contactMailBodyReport": {
+    "description": "Prefilled email body (no personal data)",
+    "placeholders": {
+      "version": {
+        "type": "String"
+      },
+      "platform": {
+        "type": "String"
+      }
+    }
   }
 }

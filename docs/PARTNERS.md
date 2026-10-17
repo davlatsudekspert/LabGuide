@@ -75,6 +75,36 @@ hujjatda narx ko‘rsatilmaydi.
    - faollik davri (boshlanish va tugash sanasi).
 4. Admin tekshiradi va e’lon qiladi; hisobot muntazam yuboriladi.
 
+### Aloqa, reklama va shikoyat kanali
+
+Ilovada **Profil → Aloqa va shikoyat** ekrani bor (`ContactScreen`, marshrut
+`/profile/contact`). U **serverga bog‘liq emas, doim ochiq** va barcha murojaat
+bitta ommaviy manzilga boradi: **labguide@nfcstore.uz** (Cloudflare Email
+Routing orqali egasiga yo‘naltiriladi). Manzil kodda **bitta joyda** —
+`lib/core/contact.dart` (`Contact.email`); almashtirish uchun faqat shu qiymat
+o‘zgaradi (so‘ng `docs/store/PRIVACY_POLICY.md` va do‘kon “Support” maydonlarini
+ham yangilang).
+
+- **Savol va takliflar** — pochta ilovasi mavzu “LabGuide: savol/taklif” bilan ochiladi.
+- **Reklama va hamkorlik** — mavzu “LabGuide: reklama”; server ulangan buildda
+  qo‘shimcha ravishda **Hamkor bo‘lish** arizasiga havola.
+- **Shikoyat / xato haqida xabar** — mavzu “LabGuide: shikoyat”: noto‘g‘ri tibbiy
+  ma’lumot, nomaqbul reklama yoki foydalanuvchi kontenti. Xatda bo‘lim/karta
+  (reklama bo‘lsa — firma) nomi so‘raladi. Javob muddati va’da qilinmaydi.
+- Xat shabloniga faqat ilova versiyasi va platforma qo‘yiladi (shaxsiy ma’lumot
+  yo‘q). Pochta ilovasi ochilmasa manzil nusxalanadi.
+
+**Reklamaga shikoyat — qaytadan ko‘rib chiqish kerak:** hozir reklama
+kartalarida (`lib/features/partners/partner_widgets.dart`) alohida
+“Reklama haqida xabar” havolasi **yo‘q** (u fayl va `lib/features/home` boshqa
+ish bilan band bo‘lgani uchun tegilmadi). Qo‘shish oson: `PartnerTag` yonida yoki
+hamkor sahifasi (`PartnerScreen`) oxiridagi “bu sahifa — reklama” izohi (yoki umumiy `_AdFrame`)
+ostida kichik `LgButton.link` — bosilganda `context.push('/profile/contact')`
+yoki to‘g‘ridan-to‘g‘ri `Contact.mailto(subject: Contact.subjectReport, body: …)`
+(xat matniga hamkor nomi/id qo‘yilsa, shikoyatni topish tezlashadi; shaxsiy
+ma’lumot yo‘q). Matn uchun yangi ARB kaliti kerak (masalan, “Reklama haqida
+xabar berish”).
+
 ---
 
 ## 2. Admin qo‘llanmasi
