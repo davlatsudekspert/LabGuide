@@ -8574,4 +8574,11 @@ class AppLocalizationsRu extends AppLocalizations {
   String payDeleteAccountNote(String store) {
     return 'Подписка не отменяется вместе с аккаунтом: отмените её в настройках $store.';
   }
+
+  @override
+  String get bloodGroupTitle => 'Группа крови';
+
+  @override
+  String get bloodGroupLabCardBody =>
+      'AB0 и RhD: методы, совместимость, расхождения, тренировка';
 }

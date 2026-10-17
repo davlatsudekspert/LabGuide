@@ -14703,6 +14703,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Deleting your account doesn’t cancel your subscription: cancel it in your {store} settings.'**
   String payDeleteAccountNote(String store);
+
+  /// Lab tab: blood group determination methods section title
+  ///
+  /// In en, this message translates to:
+  /// **'Blood grouping'**
+  String get bloodGroupTitle;
+
+  /// No description provided for @bloodGroupLabCardBody.
+  ///
+  /// In en, this message translates to:
+  /// **'ABO and RhD: methods, compatibility, discrepancies, practice'**
+  String get bloodGroupLabCardBody;
 }
 
 class _AppLocalizationsDelegate

@@ -8544,4 +8544,11 @@ class AppLocalizationsEn extends AppLocalizations {
   String payDeleteAccountNote(String store) {
     return 'Deleting your account doesn’t cancel your subscription: cancel it in your $store settings.';
   }
+
+  @override
+  String get bloodGroupTitle => 'Blood grouping';
+
+  @override
+  String get bloodGroupLabCardBody =>
+      'ABO and RhD: methods, compatibility, discrepancies, practice';
 }

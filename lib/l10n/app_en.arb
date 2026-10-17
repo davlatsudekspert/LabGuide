@@ -4836,5 +4836,10 @@
         "type": "String"
       }
     }
+  },
+  "bloodGroupTitle": "Blood grouping",
+  "bloodGroupLabCardBody": "ABO and RhD: methods, compatibility, discrepancies, practice",
+  "@bloodGroupTitle": {
+    "description": "Lab tab: blood group determination methods section title"
   }
 }

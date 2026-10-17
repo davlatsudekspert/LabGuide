@@ -14,6 +14,7 @@ import '../features/content/ui/tests_screen.dart';
 import '../features/cytology/cytology_more_screens.dart';
 import '../features/cytology/cytology_screens.dart';
 import '../features/differential/diff_eyes_free_screens.dart';
+import '../features/bloodgroup/bloodgroup_screens.dart';
 import '../features/spermogram/spermogram_screens.dart';
 import '../features/daily/daily_screens.dart';
 import '../features/differential/differential_entry_points.dart';
@@ -419,6 +420,42 @@ GoRouter buildRouter(
                       GoRoute(
                         path: 'quiz',
                         builder: (context, state) => const SpermQuizScreen(),
+                      ),
+                    ],
+                  ),
+                  // Qon guruhi: ABO/RhD asoslari, usullar, moslik, xatolar,
+                  // sifat, naqshni o'qish mashqi, test (BSH 2012, JSST).
+                  GoRoute(
+                    path: 'bloodgroup',
+                    builder: (context, state) => const BloodGroupScreen(),
+                    routes: [
+                      GoRoute(
+                        path: 'basics',
+                        builder: (context, state) => const BgBasicsScreen(),
+                      ),
+                      GoRoute(
+                        path: 'methods',
+                        builder: (context, state) => const BgMethodsScreen(),
+                      ),
+                      GoRoute(
+                        path: 'compat',
+                        builder: (context, state) => const BgCompatScreen(),
+                      ),
+                      GoRoute(
+                        path: 'errors',
+                        builder: (context, state) => const BgErrorsScreen(),
+                      ),
+                      GoRoute(
+                        path: 'quality',
+                        builder: (context, state) => const BgQualityScreen(),
+                      ),
+                      GoRoute(
+                        path: 'reader',
+                        builder: (context, state) => const BgReaderScreen(),
+                      ),
+                      GoRoute(
+                        path: 'quiz',
+                        builder: (context, state) => const BgQuizScreen(),
                       ),
                     ],
                   ),

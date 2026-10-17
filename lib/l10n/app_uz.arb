@@ -2433,5 +2433,7 @@
   "payOwnedByOther": "Bu xarid boshqa LabGuide hisobiga bog‘langan. O‘sha hisob bilan kiring.",
   "payFailed": "Xarid yakunlanmadi. Internetni tekshirib, qayta urinib ko‘ring. Pul yechilgan bo‘lsa, «Xaridni tiklash» ni bosing.",
   "payUnavailable": "Do‘kon hozir javob bermayapti. Keyinroq urinib ko‘ring.",
-  "payDeleteAccountNote": "Obuna hisob bilan birga bekor bo‘lmaydi: uni {store} sozlamalarida bekor qiling."
+  "payDeleteAccountNote": "Obuna hisob bilan birga bekor bo‘lmaydi: uni {store} sozlamalarida bekor qiling.",
+  "bloodGroupTitle": "Qon guruhi",
+  "bloodGroupLabCardBody": "ABO va RhD: usullar, moslik, nomuvofiqliklar, mashq"
 }

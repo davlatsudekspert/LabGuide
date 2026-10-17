@@ -8410,4 +8410,11 @@ class AppLocalizationsUz extends AppLocalizations {
   String payDeleteAccountNote(String store) {
     return 'Obuna hisob bilan birga bekor bo‘lmaydi: uni $store sozlamalarida bekor qiling.';
   }
+
+  @override
+  String get bloodGroupTitle => 'Qon guruhi';
+
+  @override
+  String get bloodGroupLabCardBody =>
+      'ABO va RhD: usullar, moslik, nomuvofiqliklar, mashq';
 }
