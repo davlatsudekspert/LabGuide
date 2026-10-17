@@ -175,6 +175,30 @@ abstract final class LgSpace {
   static const double maxContentWidth = 640;
 }
 
+/// Pastki menyuning "muzlatilgan shisha" (frosted glass) bo'yoqlari.
+///
+/// Sirt yarim shaffof, orqasi [blurSigma] bilan xiralashtiriladi. Shaffoflik
+/// shunday tanlanganki, eng yomon fon (sof qora yoki sof oq kontent) ustida
+/// ham `ink` va `brand` ranglari kamida 4,5:1 kontrast beradi
+/// (test/widget/bottom_nav_test.dart tekshiradi). OS "kontrastni oshirish"ni
+/// so'rasa — shaffoflik o'chadi, sirt qattiq ([solid]).
+abstract final class LgGlass {
+  static const double blurSigma = 22;
+
+  static double surfaceAlpha(Brightness brightness) =>
+      brightness == Brightness.dark ? 0.8 : 0.84;
+
+  static Color surface(
+    LgPalette p,
+    Brightness brightness, {
+    bool solid = false,
+  }) => solid ? p.paper : p.paper.withValues(alpha: surfaceAlpha(brightness));
+
+  /// Yupqa chegara: shishaning qirrasi; qattiq rejimda — aniq `outline`.
+  static Color border(LgPalette p, {bool solid = false}) =>
+      solid ? p.outline : p.ink.withValues(alpha: 0.14);
+}
+
 /// Harakat davomiyliklari. Reduced motion yoqilganda hammasi nolga tushadi.
 abstract final class LgMotion {
   static const press = Duration(milliseconds: 160);

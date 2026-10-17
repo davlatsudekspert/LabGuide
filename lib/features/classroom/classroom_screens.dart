@@ -1128,6 +1128,8 @@ class _TopicOralScreenState extends State<TopicOralScreen>
     final local = context.services.classroom;
     await showModalBottomSheet<void>(
       context: context,
+      // Tab paneli ham xiralashsin (oyna butun ekran ustida).
+      useRootNavigator: true,
       isScrollControlled: true,
       showDragHandle: true,
       builder: (context) => ListenableBuilder(

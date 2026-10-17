@@ -151,6 +151,11 @@ class _LgPageState extends State<LgPage> {
     final collapsed = _logic.collapsed;
     final duration = LgMotion.of(context, LgMotion.header);
     final media = MediaQuery.of(context);
+    // Shell ichida bu — shaffof pastki panelning to'liq balandligi (Lab
+    // tugmasi va xavfsiz hudud bilan): ro'yxat oxirgi karta panel ostida
+    // qolmasligi uchun shuncha bo'sh joy qoldiradi. Shelldan tashqarida —
+    // oddiy xavfsiz hudud.
+    final bottomInset = media.padding.bottom;
     final insideShell = StatefulNavigationShell.maybeOf(context) != null;
     // Sahifaning o'z marshruti bo'yicha (ModalRoute — o'zgarsa qayta
     // chiziladi). Navigator.canPop yopiq sahifa ustida boshqa sahifa
@@ -184,7 +189,10 @@ class _LgPageState extends State<LgPage> {
             // Shell Scaffold'i ichida MediaQuery.viewInsets allaqachon
             // olib tashlangan — klaviatura oynaning o'zidan aniqlanadi.
             final keyboardOpen = View.of(context).viewInsets.bottom > 0;
-            final available = constraints.maxHeight;
+            // Shell ichida body panel ostigacha cho'ziladi: joy hisobida
+            // panel egallagan pastki qism chiqarib tashlanadi.
+            final available =
+                constraints.maxHeight - (insideShell ? bottomInset : 0);
             if (!keyboardOpen || _pinned == null) {
               _pinned =
                   widget.leadingHero == null &&
@@ -230,7 +238,7 @@ class _LgPageState extends State<LgPage> {
                             horizontal,
                             pinned ? 4 : 0,
                             horizontal,
-                            32 + (insideShell ? 0 : media.padding.bottom),
+                            (insideShell ? 16 : 32) + bottomInset,
                           ),
                           // Birinchi o'rin doim band: qaror o'zgarganda
                           // kontent elementlarining indeksi (va holati —

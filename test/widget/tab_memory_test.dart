@@ -119,9 +119,11 @@ void main() {
     double offset() =>
         tester.state<ScrollableState>(scrollable.first).position.pixels;
     expect(offset(), greaterThan(100));
-    await tester.tap(find.text(en.navTests).last);
-    await tester.pumpAndSettle();
+    // Pastga scroll: menyu ixcham (nomlar yashirin) — tab kalit bilan bosiladi.
+    await tapNavTab(tester, 1);
     expect(offset(), 0);
+    // Tepaga qaytganda menyu yana kengaygan: nomlar ko'rinadi.
+    expect(find.text(en.navTests), findsOneWidget);
   });
 
   // Tab ildiziga olib boruvchi tugma (“Tahlillar”, “O'rganishni boshlash”)

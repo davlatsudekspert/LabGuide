@@ -1,4 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:labguide/app/widgets/lg_page.dart';
 import 'package:labguide/features/settings/settings_controller.dart';
 import 'package:labguide/l10n/gen/app_localizations_en.dart';
 import 'package:material_ui/material_ui.dart';
@@ -40,6 +41,34 @@ void main() {
       tester.getSemantics(find.bySemanticsLabel(en.navLab).first),
       isSemantics(isSelected: true),
     );
+
+    // Pastga scroll: menyu ixcham (nomlar ko'rinmaydi), lekin ekran
+    // o'quvchi nomlari va tap amali saqlanadi; Lab o'rtadagi tab sifatida.
+    await goTo(tester, '/home');
+    await tester.drag(
+      find
+          .descendant(
+            of: find.byType(LgPage).last,
+            matching: find.byType(Scrollable),
+          )
+          .first,
+      const Offset(0, -500),
+    );
+    await tester.pumpAndSettle();
+    expect(tester.getSize(find.byKey(const ValueKey('nav-pill'))).height, 48);
+    for (final label in [
+      en.navHome,
+      en.navTests,
+      en.navLab,
+      en.navLibrary,
+      en.navLearn,
+    ]) {
+      expect(
+        tester.getSemantics(find.bySemanticsLabel(label).first),
+        isSemantics(label: label, isButton: true, hasTapAction: true),
+        reason: 'compact: $label',
+      );
+    }
 
     await goTo(tester, '/lab/calculators');
     expect(

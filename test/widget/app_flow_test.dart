@@ -44,8 +44,27 @@ Future<void> scrollTo(WidgetTester tester, Finder finder) async {
   await tester.pumpAndSettle();
 }
 
+/// Pastki menyu tab nomlari (uz/ru/en) → tab indeksi.
+final navIndexByLabel = <String, int>{
+  for (final l in [uz, ru, en]) ...{
+    l.navHome: 0,
+    l.navTests: 1,
+    l.navLab: 2,
+    l.navLibrary: 3,
+    l.navLearn: 4,
+  },
+};
+
 /// Matnli elementni topib (kerak bo'lsa scroll qilib) bosadi.
+///
+/// Pastki menyu tabi bo'lsa — kalit orqali: sahifa pastga scroll qilinganda
+/// menyu ixcham bo'lib, nomlarini yashiradi (ikonka bosiladi).
 Future<void> tapText(WidgetTester tester, String text) async {
+  final navIndex = navIndexByLabel[text];
+  if (navIndex != null && find.text(text).evaluate().length == 1) {
+    await tapNavTab(tester, navIndex);
+    return;
+  }
   final all = find.text(text);
   await scrollTo(tester, all);
   await tester.tap(all.hitTestable().first);
@@ -174,8 +193,9 @@ void main() {
     await tester.pumpAndSettle();
     final labOffset = tester.state<ScrollableState>(labList).position.pixels;
     expect(labOffset, greaterThan(0));
-    // Tahlillarga qaytganda karta hali ochiq.
-    await tapText(tester, uz.navTests);
+    // Tahlillarga qaytganda karta hali ochiq (Lab ro'yxati pastga surilgani
+    // uchun menyu ixcham: tab kalit bilan bosiladi).
+    await tapNavTab(tester, 1);
     expect(find.text(uz.analyteSampleNotice), findsOneWidget);
     // Lab ga qaytganda scroll joyida.
     await tapText(tester, uz.navLab);

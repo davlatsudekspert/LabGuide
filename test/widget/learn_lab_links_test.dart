@@ -15,10 +15,18 @@ final uz = AppLocalizationsUz();
 
 String _loc(WidgetTester tester) => routerOf(tester).state.matchedLocation;
 
-Future<void> _tab(WidgetTester tester, String label) async {
-  await tester.tap(find.text(label).hitTestable().last);
-  await tester.pumpAndSettle();
-}
+/// Pastki menyu tabi (nomi bo'yicha). Menyu pastga scroll qilinganda ixcham
+/// bo'lib nomlarini yashiradi — shuning uchun kalit orqali bosiladi.
+Future<void> _tab(WidgetTester tester, String label) => tapNavTab(
+  tester,
+  {
+    uz.navHome: 0,
+    uz.navTests: 1,
+    uz.navLab: 2,
+    uz.navLibrary: 3,
+    uz.navLearn: 4,
+  }[label]!,
+);
 
 void main() {
   setUpAll(loadAppFonts);

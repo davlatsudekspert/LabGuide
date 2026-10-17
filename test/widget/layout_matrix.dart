@@ -1,5 +1,6 @@
 import 'package:flutter/rendering.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:labguide/app/widgets/lg_page.dart';
 import 'package:labguide/core/storage/kv_store.dart';
 import 'package:labguide/features/settings/settings_controller.dart';
 import 'package:material_ui/material_ui.dart';
@@ -388,6 +389,55 @@ void runLayoutExtras() {
         await tester.pumpAndSettle();
         expect(tester.takeException(), isNull, reason: '$lang rules sheet');
         expect(find.byKey(const ValueKey('cm-rules-sheet')), findsOneWidget);
+        await tester.pumpWidget(const SizedBox());
+      }
+    });
+  }
+
+  // Pastki menyu: kengaygan va ixcham holat, Lab o'rtada ko'tarilgan —
+  // barcha tillar, tor ekran, katta shrift, landshaft.
+  for (final (w, h, scale) in [
+    (320.0, 640.0, 1.0),
+    (320.0, 640.0, 2.0),
+    (390.0, 844.0, 1.3),
+    (844.0, 390.0, 2.0),
+  ]) {
+    testWidgets('bottom bar: expanded + compact, '
+        '${w.toInt()}×${h.toInt()} ×$scale', (tester) async {
+      for (final lang in AppLanguage.values) {
+        final s = await makeServices(tester, language: lang);
+        await pumpApp(tester, s, size: Size(w, h), textScale: scale);
+        for (final route in ['/home', '/tests', '/lab', '/library', '/learn']) {
+          await goTo(tester, route);
+          for (final compact in [false, true]) {
+            if (compact) {
+              final list = find.descendant(
+                of: find.byType(LgPage).last,
+                matching: find.byType(Scrollable),
+              );
+              await tester.drag(list.first, const Offset(0, -400));
+              await tester.pumpAndSettle();
+            }
+            expect(
+              tester.takeException(),
+              isNull,
+              reason: '$lang $route compact=$compact',
+            );
+            final pill = tester.getRect(find.byKey(const ValueKey('nav-pill')));
+            final lab = tester.getRect(
+              find.byKey(const ValueKey('nav-lab-circle')),
+            );
+            expect(pill.left, greaterThanOrEqualTo(0));
+            expect(pill.right, lessThanOrEqualTo(w));
+            expect(lab.top, lessThan(pill.top), reason: 'Lab is raised');
+            expect(lab.center.dx, closeTo(pill.center.dx, 0.5));
+            for (var i = 0; i < 5; i++) {
+              final r = tester.getSize(find.byKey(ValueKey('nav-tab-$i')));
+              expect(r.width, greaterThanOrEqualTo(44), reason: 'tab $i');
+              expect(r.height, greaterThanOrEqualTo(44), reason: 'tab $i');
+            }
+          }
+        }
         await tester.pumpWidget(const SizedBox());
       }
     });
