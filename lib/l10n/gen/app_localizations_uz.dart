@@ -8773,4 +8773,11 @@ class AppLocalizationsUz extends AppLocalizations {
   @override
   String get accountDeleteAppleCancelled =>
       'Hech narsa o‘chirilmadi: Apple tasdig‘i bekor qilindi.';
+
+  @override
+  String get urinTitle => 'Siydik tahlili';
+
+  @override
+  String get urinLabCardBody =>
+      'Yig‘ish, test-chiziq, cho‘kma rasmlari, natijani o‘qish, mashq';
 }

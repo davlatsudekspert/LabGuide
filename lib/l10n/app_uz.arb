@@ -2541,5 +2541,7 @@
   "authSocialEmailUnverified": "Bu hisobning emaili tasdiqlanmagan, shuning uchun u bilan kirib bo‘lmaydi. Email kodidan foydalaning.",
   "authSocialEmailRequired": "Bu hisob email manzilini bermadi. Email kodidan foydalaning.",
   "accountDeleteAppleNote": "Siz Apple orqali kirgansiz, shuning uchun hisobni o‘chirishdan oldin Apple tasdiq so‘raydi. Bu LabGuide’ni Apple ID’ngizdan ham uzadi.",
-  "accountDeleteAppleCancelled": "Hech narsa o‘chirilmadi: Apple tasdig‘i bekor qilindi."
+  "accountDeleteAppleCancelled": "Hech narsa o‘chirilmadi: Apple tasdig‘i bekor qilindi.",
+  "urinTitle": "Siydik tahlili",
+  "urinLabCardBody": "Yig‘ish, test-chiziq, cho‘kma rasmlari, natijani o‘qish, mashq"
 }

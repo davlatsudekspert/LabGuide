@@ -12,6 +12,7 @@ import '../bloodgroup/bloodgroup_screens.dart';
 import '../cytology/cytology_screens.dart';
 import '../histology/histology_screens.dart';
 import '../spermogram/spermogram_screens.dart';
+import '../urinalysis/urinalysis_screens.dart';
 import '../tools/calc_info.dart';
 import '../tools/clinical_calc_screens.dart';
 import 'preanalytics_info.dart';
@@ -28,7 +29,7 @@ class LabScreen extends StatelessWidget {
       showBrand: true,
       children: [
         // Rasmli katta bo'limlar: leykoformula, sitologiya, spermogramma,
-        // qon guruhi, gistologiya.
+        // qon guruhi, gistologiya, siydik tahlili.
         const DifferentialEntryCard(),
         LabFeatureCard(
           image: 'assets/cytology/hero.png',
@@ -53,6 +54,12 @@ class LabScreen extends StatelessWidget {
           title: l.histoTitle,
           body: l.histoLabCardBody,
           route: histoBase,
+        ),
+        LabFeatureCard(
+          image: urinCardImage,
+          title: l.urinTitle,
+          body: l.urinLabCardBody,
+          route: urinBase,
         ),
         LgHeroCard(
           eyebrow: l.labHeroEyebrow,

@@ -93,6 +93,7 @@ flutter:
     - assets/bloodgroup/
     - assets/histology/
     - assets/histology/img/
+    - assets/urinalysis/
     - assets/differential/
     - assets/differential/sounds/
     - assets/microscopy/

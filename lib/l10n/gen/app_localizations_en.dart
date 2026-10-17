@@ -8912,4 +8912,11 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get accountDeleteAppleCancelled =>
       'Nothing was deleted: Apple confirmation was cancelled.';
+
+  @override
+  String get urinTitle => 'Urinalysis';
+
+  @override
+  String get urinLabCardBody =>
+      'Collection, strip test, sediment pictures, result reader, practice';
 }

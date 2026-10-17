@@ -8952,4 +8952,11 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get accountDeleteAppleCancelled =>
       'Ничего не удалено: подтверждение Apple отменено.';
+
+  @override
+  String get urinTitle => 'Анализ мочи';
+
+  @override
+  String get urinLabCardBody =>
+      'Сбор, тест-полоска, снимки осадка, чтение результата, тренировка';
 }

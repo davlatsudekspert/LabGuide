@@ -5125,5 +5125,13 @@
   },
   "@accountDeleteAppleCancelled": {
     "description": "Snackbar when the user cancels the Apple confirmation during account deletion"
+  },
+  "urinTitle": "Urinalysis",
+  "urinLabCardBody": "Collection, strip test, sediment pictures, result reader, practice",
+  "@urinTitle": {
+    "description": "Lab tab: title of the urinalysis section and its picture card"
+  },
+  "@urinLabCardBody": {
+    "description": "Lab tab: one-line description on the urinalysis picture card"
   }
 }

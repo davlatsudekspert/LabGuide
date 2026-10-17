@@ -17,6 +17,7 @@ import '../features/differential/diff_eyes_free_screens.dart';
 import '../features/bloodgroup/bloodgroup_screens.dart';
 import '../features/histology/histology_screens.dart';
 import '../features/spermogram/spermogram_screens.dart';
+import '../features/urinalysis/urinalysis_screens.dart';
 import '../features/daily/daily_screens.dart';
 import '../features/differential/differential_entry_points.dart';
 import '../features/differential/differential_quiz.dart';
@@ -496,6 +497,47 @@ GoRouter buildRouter(
                       GoRoute(
                         path: 'credits',
                         builder: (context, state) => const HistoCreditsScreen(),
+                      ),
+                    ],
+                  ),
+                  // Siydik tahlili: yig'ish va saqlash, fizik xossalar,
+                  // test-chiziq, cho'kma (atlas rasmlari), natijani o'qish,
+                  // mashq.
+                  GoRoute(
+                    path: 'urinalysis',
+                    builder: (context, state) => const UrinalysisScreen(),
+                    routes: [
+                      GoRoute(
+                        path: 'collect',
+                        builder: (context, state) => const UrCollectScreen(),
+                      ),
+                      GoRoute(
+                        path: 'physical',
+                        builder: (context, state) => const UrPhysicalScreen(),
+                      ),
+                      GoRoute(
+                        path: 'strip',
+                        builder: (context, state) => const UrStripScreen(),
+                      ),
+                      GoRoute(
+                        path: 'sediment',
+                        builder: (context, state) => const UrSedimentScreen(),
+                        routes: [
+                          GoRoute(
+                            path: ':id',
+                            builder: (context, state) => UrElementScreen(
+                              elementId: state.pathParameters['id']!,
+                            ),
+                          ),
+                        ],
+                      ),
+                      GoRoute(
+                        path: 'reader',
+                        builder: (context, state) => const UrReaderScreen(),
+                      ),
+                      GoRoute(
+                        path: 'quiz',
+                        builder: (context, state) => const UrQuizScreen(),
                       ),
                     ],
                   ),

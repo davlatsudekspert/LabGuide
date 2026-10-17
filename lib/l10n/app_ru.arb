@@ -2541,5 +2541,7 @@
   "authSocialEmailUnverified": "Email этого аккаунта не подтверждён, поэтому войти с ним нельзя. Войдите по коду из письма.",
   "authSocialEmailRequired": "Этот аккаунт не передал адрес email. Войдите по коду из письма.",
   "accountDeleteAppleNote": "Вы вошли через Apple, поэтому перед удалением Apple попросит подтверждение. Это также отключит LabGuide от вашего Apple ID.",
-  "accountDeleteAppleCancelled": "Ничего не удалено: подтверждение Apple отменено."
+  "accountDeleteAppleCancelled": "Ничего не удалено: подтверждение Apple отменено.",
+  "urinTitle": "Анализ мочи",
+  "urinLabCardBody": "Сбор, тест-полоска, снимки осадка, чтение результата, тренировка"
 }

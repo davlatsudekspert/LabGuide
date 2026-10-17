@@ -15309,6 +15309,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Nothing was deleted: Apple confirmation was cancelled.'**
   String get accountDeleteAppleCancelled;
+
+  /// Lab tab: title of the urinalysis section and its picture card
+  ///
+  /// In en, this message translates to:
+  /// **'Urinalysis'**
+  String get urinTitle;
+
+  /// Lab tab: one-line description on the urinalysis picture card
+  ///
+  /// In en, this message translates to:
+  /// **'Collection, strip test, sediment pictures, result reader, practice'**
+  String get urinLabCardBody;
 }
 
 class _AppLocalizationsDelegate
