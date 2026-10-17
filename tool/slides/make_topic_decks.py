@@ -908,6 +908,10 @@ def write_report(path, rows, nodeck, langs, totals, extra=None):
     md = ['# Taqdimotlar qamrovi (mavzu bo‘yicha PPTX)', '',
           'Avtomatik: `python3 tool/slides/make_topic_decks.py --all --dry-run --report docs/DECKS_COVERAGE.md`. '
           'Qo‘lda tahrirlamang.', '',
+          '**Ilova ichida:** shu mazmunning hammasi (98 kun mavzusi + amaliy protokollar, uz/ru/en) ilovaning '
+          'Ma’ruza bo‘limida qidiruv bilan mavjud: `python3 tool/slides/export_app_decks.py` '
+          '`assets/lectures/decks/` va `assets/lectures/index_v2.json` ni qayta yozadi (kontent o‘zgarganda '
+          'ishga tushiring; `--check` dolzarbligini tekshiradi). PPTX fayllar repoga qo‘shilmaydi.', '',
           f'Tillar: {", ".join(langs)}. Bitta deck = bitta o‘quv kuni (amaliy + ma’ruza bir xil havolalarga ega, '
           f'`dNNN-P` va `dNNN-L` bitta fayl). Kunlar: {totals["days"]}; deck: {totals["decks"]}; '
           f'kontentsiz (deck yo‘q): {totals["nodeck"]}.', '',

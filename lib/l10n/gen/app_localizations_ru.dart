@@ -9192,4 +9192,107 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get bloodMorphLabCardBody =>
       'Эритроциты, тромбоциты, анемии: настоящие микрофото, помощник, тренировка';
+
+  @override
+  String get lectureSearchLabel => 'Поиск презентаций';
+
+  @override
+  String get lectureSearchHint =>
+      'Тема, анализ или заголовок слайда (например: глюкоза)';
+
+  @override
+  String get lectureFilterAll => 'Все';
+
+  @override
+  String get lectureFilterProtocols => 'Практические протоколы';
+
+  @override
+  String lectureFilterModule(int n) {
+    return 'Модуль $n';
+  }
+
+  @override
+  String get lectureLangAll => 'Все языки';
+
+  @override
+  String lectureDecksCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count презентации',
+      many: '$count презентаций',
+      few: '$count презентации',
+      one: '$count презентация',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String lectureSlidesCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count слайда',
+      many: '$count слайдов',
+      few: '$count слайда',
+      one: '$count слайд',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String lectureSlidesMatch(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count слайда подходят',
+      many: '$count слайдов подходят',
+      few: '$count слайда подходят',
+      one: '$count слайд подходит',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String lectureMoreSlides(int count) {
+    return 'ещё $count';
+  }
+
+  @override
+  String lectureResultsFound(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Найдено $count презентации',
+      many: 'Найдено $count презентаций',
+      few: 'Найдено $count презентации',
+      one: 'Найдена $count презентация',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get lectureNoResultsTitle => 'Ничего не найдено';
+
+  @override
+  String get lectureNoResultsBody =>
+      'Попробуйте другое слово или фильтр. Поиск работает по-узбекски (латиница или кириллица), по-русски и по-английски.';
+
+  @override
+  String get lectureClearFilters => 'Сбросить поиск и фильтры';
+
+  @override
+  String get lectureTopicsAutoTitle => 'Темы программы — автоматические слайды';
+
+  @override
+  String get lectureTopicsAutoSub =>
+      'Для тем без готовой презентации слайды собираются из учебной программы';
+
+  @override
+  String lectureLangFallback(String wanted, String shown) {
+    return 'Эта презентация недоступна на языке «$wanted» — показана на языке «$shown»';
+  }
+
+  @override
+  String get lectureDeckLoadFailed => 'Не удалось открыть презентацию';
 }

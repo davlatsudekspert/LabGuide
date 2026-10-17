@@ -1194,6 +1194,23 @@ GoRouter buildRouter(
                           ),
                         ],
                       ),
+                      // Katalogdagi tayyor taqdimot (kun mavzusi yoki amaliy
+                      // protokol): ?s=slayd indeksi, ?l=til (qidiruvda boshqa
+                      // tildagi slayd tanlanganda).
+                      GoRoute(
+                        path: 'deck/:deckId',
+                        parentNavigatorKey: rootKey,
+                        builder: (context, state) => LectureScreen(
+                          topicId: '',
+                          deckId: state.pathParameters['deckId']!,
+                          deckLang: state.uri.queryParameters['l'],
+                          startSlide:
+                              int.tryParse(
+                                state.uri.queryParameters['s'] ?? '',
+                              ) ??
+                              0,
+                        ),
+                      ),
                       GoRoute(
                         path: ':topicId',
                         parentNavigatorKey: rootKey,
