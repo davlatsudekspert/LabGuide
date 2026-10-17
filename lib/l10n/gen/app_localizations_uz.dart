@@ -8744,4 +8744,33 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get cmContactLink => 'LabGuide bilan aloqa (muammo haqida xabar)';
+
+  @override
+  String get authOr => 'yoki';
+
+  @override
+  String get authSignInApple => 'Apple bilan kirish';
+
+  @override
+  String get authSignInGoogle => 'Google bilan kirish';
+
+  @override
+  String get authSocialFailed =>
+      'Kirib bo‘lmadi. Ulanishni tekshirib qayta urinib ko‘ring yoki email kodidan foydalaning.';
+
+  @override
+  String get authSocialEmailUnverified =>
+      'Bu hisobning emaili tasdiqlanmagan, shuning uchun u bilan kirib bo‘lmaydi. Email kodidan foydalaning.';
+
+  @override
+  String get authSocialEmailRequired =>
+      'Bu hisob email manzilini bermadi. Email kodidan foydalaning.';
+
+  @override
+  String get accountDeleteAppleNote =>
+      'Siz Apple orqali kirgansiz, shuning uchun hisobni o‘chirishdan oldin Apple tasdiq so‘raydi. Bu LabGuide’ni Apple ID’ngizdan ham uzadi.';
+
+  @override
+  String get accountDeleteAppleCancelled =>
+      'Hech narsa o‘chirilmadi: Apple tasdig‘i bekor qilindi.';
 }

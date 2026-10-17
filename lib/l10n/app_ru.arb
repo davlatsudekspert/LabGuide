@@ -2533,5 +2533,13 @@
   "cmBlockedHidden": "Публикация скрыта, потому что вы заблокировали её автора.",
   "cmBlockedCount": "{count, plural, one{Вы заблокировали {count} пользователя.} few{Вы заблокировали {count} пользователей.} other{Вы заблокировали {count} пользователей.}}",
   "cmUnblockAll": "Разблокировать всех",
-  "cmContactLink": "Связаться с LabGuide (сообщить о проблеме)"
+  "cmContactLink": "Связаться с LabGuide (сообщить о проблеме)",
+  "authOr": "или",
+  "authSignInApple": "Войти с Apple",
+  "authSignInGoogle": "Войти через Google",
+  "authSocialFailed": "Не удалось войти. Проверьте соединение и попробуйте ещё раз или войдите по коду из письма.",
+  "authSocialEmailUnverified": "Email этого аккаунта не подтверждён, поэтому войти с ним нельзя. Войдите по коду из письма.",
+  "authSocialEmailRequired": "Этот аккаунт не передал адрес email. Войдите по коду из письма.",
+  "accountDeleteAppleNote": "Вы вошли через Apple, поэтому перед удалением Apple попросит подтверждение. Это также отключит LabGuide от вашего Apple ID.",
+  "accountDeleteAppleCancelled": "Ничего не удалено: подтверждение Apple отменено."
 }

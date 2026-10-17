@@ -2533,5 +2533,13 @@
   "cmBlockedHidden": "Muallifni bloklaganingiz uchun bu post yashirilgan.",
   "cmBlockedCount": "{count, plural, other{Siz {count} ta foydalanuvchini bloklagansiz.}}",
   "cmUnblockAll": "Hammasini blokdan chiqarish",
-  "cmContactLink": "LabGuide bilan aloqa (muammo haqida xabar)"
+  "cmContactLink": "LabGuide bilan aloqa (muammo haqida xabar)",
+  "authOr": "yoki",
+  "authSignInApple": "Apple bilan kirish",
+  "authSignInGoogle": "Google bilan kirish",
+  "authSocialFailed": "Kirib bo‘lmadi. Ulanishni tekshirib qayta urinib ko‘ring yoki email kodidan foydalaning.",
+  "authSocialEmailUnverified": "Bu hisobning emaili tasdiqlanmagan, shuning uchun u bilan kirib bo‘lmaydi. Email kodidan foydalaning.",
+  "authSocialEmailRequired": "Bu hisob email manzilini bermadi. Email kodidan foydalaning.",
+  "accountDeleteAppleNote": "Siz Apple orqali kirgansiz, shuning uchun hisobni o‘chirishdan oldin Apple tasdiq so‘raydi. Bu LabGuide’ni Apple ID’ngizdan ham uzadi.",
+  "accountDeleteAppleCancelled": "Hech narsa o‘chirilmadi: Apple tasdig‘i bekor qilindi."
 }

@@ -57,15 +57,56 @@ borligi ham bildirilmaydi), 409 holatga zid (masalan, ikkinchi topshirish),
 | `GET /v1/health` | hamma | `{ok:true}` |
 | `POST /v1/auth/otp/request` `{email, language?}` | hamma | 6 raqamli kod email orqali (til `language`, standart uz); `{retry_after:60, valid_for:600}` |
 | `POST /v1/auth/otp/verify` `{email, code}` | hamma | `{token, user_id, expires_at}` (sessiya 60 kun) |
+| `GET /v1/auth/providers` | hamma | `{google, apple, apple_web}` — qaysi kirish usullari sozlangan (ilova tugmani shunga qarab ko‘rsatadi; D-56) |
+| `POST /v1/auth/google` `{id_token, nonce}` | hamma | Google ID token serverda tekshiriladi; `{token, user_id, expires_at, new_user, linked, provider, email, email_masked}`. Sozlama yo‘q — `503 not_configured` |
+| `POST /v1/auth/apple` `{id_token, nonce}` | hamma | xuddi shunday, Apple uchun |
+| `POST /v1/auth/apple/callback` | Apple (form POST) | faqat Android veb-oqimi (`APPLE_SIGNIN_SERVICE_ID` bo‘lsa): natijani ilovaga `intent://` bilan qaytaradi |
 | `POST /v1/auth/logout` | sessiya | joriy tokenni bekor qiladi |
 | `POST /v1/auth/logout-all` | sessiya | hamma qurilmalardan chiqish |
-| `GET /v1/me` | sessiya | `{user_id, role, language, admin_account, aal, admin, super_admin, reviewer, teacher}` (`super_admin` — email `LG_ADMIN_EMAILS` da) |
+| `GET /v1/me` | sessiya | `{user_id, role, language, admin_account, aal, admin, super_admin, reviewer, teacher, identities}` (`super_admin` — email `LG_ADMIN_EMAILS` da; `identities` — bog‘langan `google`/`apple`) |
 | `POST /v1/me/teacher` | sessiya | ustoz sifatida ro‘yxat (`registerTeacher`) |
 | `PUT /v1/me/profile` `{role?, language?}` | sessiya | rol: `doctor/lab/student/teacher` (boshqasi — 400) |
-| `DELETE /v1/me` | sessiya | hisob va unga bog‘liq hamma narsa o‘chadi |
+| `DELETE /v1/me` `{apple_authorization_code?}` | sessiya | hisob va unga bog‘liq hamma narsa o‘chadi. Apple bilan bog‘langan va `APPLE_SIGNIN_*` sozlangan bo‘lsa — kod almashtirilib Apple tokeni bekor qilinadi (saqlanmaydi); kod/sozlama yo‘q bo‘lsa ham hisob o‘chadi, natija `audit_log` da |
 | `GET /v1/auth/mfa` | admin hisobi | TOTP holati |
 | `POST /v1/auth/mfa/enroll` | admin hisobi, faktor hali yo‘q | TOTP kalit va `otpauth://` URI |
 | `POST /v1/auth/mfa/verify` `{code}` | admin hisobi | sessiya `aal2` bo‘ladi |
+
+### Google / Apple bilan kirish (D-56) — `cloudflare/src/social.ts`
+
+Email-kod kirishi yoniga ikkinchi usul; mehmon rejimi o‘zgarmaydi. Batafsil egasi
+qadamlari: `docs/AUTH_SOCIAL_LOGIN.md`.
+
+- **Token tekshiruvi serverda:** imzo (provayder JWKS: Google `…/oauth2/v3/certs`,
+  Apple `…/auth/keys`; faqat RS256, `kid` bo‘yicha; `cache-control` muddatiga
+  keshlanadi, noma‘lum `kid` bo‘lsa 5 daqiqada ko‘pi bilan bir marta qayta
+  yuklanadi — kalit almashtirishni qo‘llaydi; yuklab bo‘lmasa eski kesh), `iss`,
+  `aud` (Google: `GOOGLE_CLIENT_IDS` ro‘yxati; Apple: `uz.labguide.app`
+  (+ ixtiyoriy Services ID)), `exp`/`iat`/`nbf` (±60 s), `email_verified`,
+  **nonce** (ilova provayderga `sha256(xom nonce)` beradi, serverga xomini
+  yuboradi; token `nonce` i shunga teng bo‘lishi shart).
+- **Takroriy ishlatishga qarshi:** `auth_replay` jadvali — `sha256(provider|sub|iat|exp|nonce)`
+  token muddatigacha (kunlik cron tozalaydi). Token yoki nonce saqlanmaydi.
+- **Bitta email = bitta hisob:** birinchi kirishda tasdiqlangan email mavjud
+  hisob emailiga (HMAC) teng bo‘lsa — o‘sha hisobga bog‘lanadi (`linked:true`),
+  dublikat yaratilmaydi; aks holda yangi hisob. Keyingi kirishlar provayder `sub`
+  i bo‘yicha (`auth_identities`) — Apple private relay emaili yoki email o‘zgarsa
+  ham hisob o‘sha. Tasdiqlanmagan email — `403 email_not_verified`, email yo‘q
+  (birinchi kirishda) — `400 email_required`.
+- **Admin:** bu yo‘l bilan admin vakolati BERILMAYDI (faqat email kodi); ro‘yxatdan
+  chiqqan adminning vakolati esa olinadi. Sessiya `aal1`.
+- **Limit:** IP bo‘yicha 10 daqiqada 60 urinish (`social-ip`).
+- **Xatolar (401 `invalid_token`):** `token_expired`, `nonce_mismatch`,
+  `replayed_token`; JWKS yetib bo‘lmasa `502 provider_unavailable`.
+- **Apple revoke:** hisob o‘chirilganda ilova Apple’dan yangi `authorizationCode`
+  oladi → server uni `/auth/token` da almashtiradi (`client_secret` — ES256 JWT,
+  `.p8` kalit bilan) → olingan refresh token darhol `/auth/revoke` ga beriladi.
+  `sub` mos kelmasa bekor qilinmaydi. Hech narsa saqlanmaydi.
+
+Secretlar (hammasi ixtiyoriy; yo‘q bo‘lsa shu usul `503 not_configured`):
+`GOOGLE_CLIENT_IDS`; `APPLE_SIGNIN_TEAM_ID` + `APPLE_SIGNIN_KEY_ID` +
+`APPLE_SIGNIN_PRIVATE_KEY` (uchalasi birga — Apple yoqiladi);
+`APPLE_SIGNIN_CLIENT_ID` (standart `APPLE_BUNDLE_ID`/`uz.labguide.app`),
+`APPLE_SIGNIN_SERVICE_ID` (Android uchun).
 
 ### Ustoz–talaba (endpoint ↔ `LabBackend` metodi)
 
@@ -314,6 +355,10 @@ npm run typecheck
    - `LG_SERVER_SECRET` (5-qadam)
    - ixtiyoriy: `LG_ADMIN_EMAILS` (masalan, egasining emaili — vergul bilan),
      `CLOUDFLARE_D1_DATABASE_ID` (boshqa baza ishlatilsa)
+   - ixtiyoriy, Google/Apple bilan kirish (D-56): `GOOGLE_CLIENT_IDS`,
+     `APPLE_SIGNIN_TEAM_ID`, `APPLE_SIGNIN_KEY_ID`, `APPLE_SIGNIN_PRIVATE_KEY`,
+     `APPLE_SIGNIN_CLIENT_ID`, `APPLE_SIGNIN_SERVICE_ID` — qadamlari:
+     `docs/AUTH_SOCIAL_LOGIN.md`
 7. **Deploy:** Actions → LabGuide CI → Run workflow → mode **deploy_api**.
    Job: Worker testlari → D1 migratsiyalari → `labguide-api` deploy →
    secretlar (stdin orqali, logga chiqmaydi) → `/v1/health`. Secret yetishmasa

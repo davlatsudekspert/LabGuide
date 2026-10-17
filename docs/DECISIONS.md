@@ -839,3 +839,33 @@ D-48 dagi **Ustoz Pro** qatorini (69 000 so'm/oy · 490 000 so'm/yil · $9.99/oy
 - **Joylar:** `docs/PRO_BILLING_PLAN.md` 2-bo'lim jadvali; kodda qotirilgan narx yo'q (test mahsulotlari
   `test/helpers/billing_fakes.dart` dagi `displayPrice` — faqat sinov qiymati, yangi $6.99 ga moslangan).
 
+
+## D-56. Google va Apple bilan kirish (2026-10-17)
+- **Qaror (egasi):** email-kod kirishi yoniga "Google bilan kirish" va "Apple bilan kirish" qo‘shiladi. Sabab: Apple 4.8 —
+  boshqa uchinchi tomon kirishi bo‘lsa, Sign in with Apple ham bo‘lishi shart. Mehmon rejimi o‘zgarmaydi (5.1.1: majburiy
+  kirish yo‘q); hisobni o‘chirish (5.1.1(v)) ishlashda qoladi.
+- **Bitta email = bitta hisob:** provayderning *tasdiqlangan* emaili mavjud hisob emailiga teng bo‘lsa — o‘sha hisobga
+  kiriladi (bog‘lanadi), dublikat yaratilmaydi; rol eski dizayn bo‘yicha almashtiriladi. Apple private relay emaili alohida
+  email-identitet; birinchi kirishdan keyin hisob provayder `sub` i bo‘yicha topiladi (`auth_identities`).
+- **Xavfsizlik dizayni:** ID token faqat **serverda** tekshiriladi (`cloudflare/src/social.ts`): imzo (provayder JWKS, RS256,
+  keshlanadi, kalit almashtirish qo‘llanadi), `iss`, `aud` (Google — `GOOGLE_CLIENT_IDS`; Apple — `uz.labguide.app`), `exp`,
+  `email_verified`, nonce (xom nonce serverga, `sha256` provayderga) va bir martalik belgi (`auth_replay`, faqat hash). Hech
+  qanday provayder tokeni saqlanmaydi. Sessiya email-kod bilan bir xil (`aal1`, hash, 60 kun) va shu limitlar turi.
+  **Admin vakolati bu yo‘l bilan berilmaydi** (faqat email kodi; vakolat olinishi esa ishlaydi) — admin amallari baribir TOTP.
+- **Ma’lumotni minimallashtirish:** Apple’dan faqat email so‘raladi (ism so‘ralmaydi); Google profil nomi/rasmi ilovada ham,
+  serverda ham saqlanmaydi. Bazada: identitet (provayder, `sub`), mavjud `users` jadvali (email HMAC + niqoblangan).
+- **Apple revoke (5.1.1(v)):** hisobni o‘chirishda ilova Apple’dan yangi `authorizationCode` oladi, server uni almashtirib
+  refresh tokenni darhol bekor qiladi (`/auth/revoke`) — saqlanmaydi, shuning uchun bazada token yo‘q. Apple oynasi bekor
+  qilinsa o‘chirish to‘xtatiladi (hech narsa o‘chmaydi); Apple oynasi xato bersa yoki server sozlanmagan bo‘lsa hisob
+  baribir o‘chadi va natija `audit_log` da (`apple_revoke`).
+- **Tugma faqat ishlasa ko‘rinadi:** ilova tugmani (1) platforma qo‘llasa, (2) build sozlangan bo‘lsa
+  (`LG_GOOGLE_CLIENT_ID` [+ iOS: `LG_GOOGLE_IOS_CLIENT_ID`], `LG_APPLE_SIGNIN`), (3) `GET /v1/auth/providers` yoqqan bo‘lsa
+  ko‘rsatadi. Server sozlamasiz — `503 not_configured`. Apple tugmasi Google’dan kam ko‘zga tashlanmaydi (birinchi, bir xil
+  eni/balandligi, plaginning rasmiy tugmasi).
+- **TestFlight buzilmasin:** `com.apple.developer.applesignin` entitlement fayli (`ios/Runner/Runner.entitlements`) repoda
+  bor, lekin Xcode loyihasiga CI faqat repo variable `LG_APPLE_SIGNIN=true` bo‘lganda ulaydi (egasi App ID’da imkoniyatni
+  yoqqach). Qo‘lda imzoda profilda imkoniyat bo‘lmasa — ogohlantirish bilan o‘chiriladi; IPA tekshiruvi entitlement
+  haqiqatan bor-yo‘qligini isbotlaydi. Standart holatda iOS build avvalgidek.
+- **Qaytarish sharti:** Google/Apple tekshiruvida jiddiy xavfsizlik muammosi chiqsa, secretlarni (`GOOGLE_CLIENT_IDS`,
+  `APPLE_SIGNIN_*`) o‘chirish kifoya — endpointlar `503`, tugmalar yo‘qoladi; email-kod kirishi ta’sirlanmaydi.
+- **Egasi qadamlari:** `docs/AUTH_SOCIAL_LOGIN.md`. Maxfiylik siyosati va do‘kon deklaratsiyalari yangilangan.

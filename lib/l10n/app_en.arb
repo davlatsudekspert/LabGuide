@@ -5093,5 +5093,37 @@
   "cmContactLink": "Contact LabGuide (report a problem)",
   "@cmContactLink": {
     "description": "Community moderation (App Store 1.2): cmContactLink"
+  },
+  "authOr": "or",
+  "authSignInApple": "Sign in with Apple",
+  "authSignInGoogle": "Sign in with Google",
+  "authSocialFailed": "Couldn’t sign in. Check the connection and try again, or use the email code.",
+  "authSocialEmailUnverified": "This account’s email isn’t verified, so it can’t be used to sign in. Use the email code instead.",
+  "authSocialEmailRequired": "This account didn’t share an email address. Use the email code instead.",
+  "accountDeleteAppleNote": "You signed in with Apple, so Apple will ask you to confirm before the account is deleted. This also disconnects LabGuide from your Apple ID.",
+  "accountDeleteAppleCancelled": "Nothing was deleted: Apple confirmation was cancelled.",
+  "@authOr": {
+    "description": "Divider text between the email form and the Google/Apple sign-in buttons"
+  },
+  "@authSignInApple": {
+    "description": "Apple button label (Apple HIG wording)"
+  },
+  "@authSignInGoogle": {
+    "description": "Google button label (Google branding wording)"
+  },
+  "@authSocialFailed": {
+    "description": "Shown when Google/Apple sign-in fails (not when the user cancels)"
+  },
+  "@authSocialEmailUnverified": {
+    "description": "Shown when the provider reports the email as unverified"
+  },
+  "@authSocialEmailRequired": {
+    "description": "Shown when the provider gave no email on first sign-in"
+  },
+  "@accountDeleteAppleNote": {
+    "description": "Added to the delete-account dialog for accounts linked to Apple"
+  },
+  "@accountDeleteAppleCancelled": {
+    "description": "Snackbar when the user cancels the Apple confirmation during account deletion"
   }
 }

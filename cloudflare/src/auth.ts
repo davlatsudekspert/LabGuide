@@ -26,6 +26,7 @@ import {
 } from './http';
 import { communityDeleteStatements, userHash } from './community';
 import { hit } from './ratelimit';
+import { revokeAppleOnDelete } from './social';
 
 export const OTP_TTL_SEC = 600;
 export const OTP_MAX_ATTEMPTS = 5;
@@ -145,6 +146,20 @@ export async function verifyCode(ctx: Ctx): Promise<Response> {
     .run();
   if (!del.meta.changes) throw badRequest('no_active_code');
 
+  const { id: userId, created } = await findOrCreateUser(ctx, eh, email);
+  await syncAdmin(ctx, userId, email);
+  return json({ ...(await createSession(ctx, userId)), new_user: created });
+}
+
+/**
+ * Bitta email = bitta hisob: `email_hash` bo'yicha topadi, yo'q bo'lsa yaratadi.
+ * Email kod bilan ham, Google/Apple (social.ts) orqali ham shu yerdan o'tadi.
+ */
+export async function findOrCreateUser(
+  ctx: Ctx,
+  eh: string,
+  email: string,
+): Promise<{ id: string; created: boolean }> {
   let user = await ctx.db
     .prepare('SELECT id FROM users WHERE email_hash = ?1')
     .bind(eh)
@@ -165,17 +180,23 @@ export async function verifyCode(ctx: Ctx): Promise<Response> {
       .first<{ id: string }>();
     if (!user) throw new Error('user insert failed');
   }
-  await syncAdmin(ctx, user.id, email);
+  return { id: user.id, created };
+}
 
+/** Yangi sessiya (faqat hash saqlanadi); token faqat javobda. */
+export async function createSession(
+  ctx: Ctx,
+  userId: string,
+): Promise<{ token: string; user_id: string; expires_at: string | null }> {
   const token = base64url(randomBytes(32));
   const expires = ctx.now + SESSION_TTL_DAYS * 86400_000;
   await ctx.db
     .prepare(
       'INSERT INTO sessions (token_hash, user_id, created_at, expires_at, aal) VALUES (?1, ?2, ?3, ?4, ?5)',
     )
-    .bind(await sha256Hex(token), user.id, ctx.now, expires, 'aal1')
+    .bind(await sha256Hex(token), userId, ctx.now, expires, 'aal1')
     .run();
-  return json({ token, user_id: user.id, expires_at: iso(expires), new_user: created });
+  return { token, user_id: userId, expires_at: iso(expires) };
 }
 
 /** Maxfiy LG_ADMIN_EMAILS — super adminlar (egasi). Kichik harf, bo'shsiz. */
@@ -212,9 +233,17 @@ export async function isSuperAdmin(ctx: Ctx, userId: string): Promise<boolean> {
  * olinadi. Qo'lda (`wrangler d1 execute`) berilgan vakolat
  * (`granted_reason = 'manual'`) saqlanadi.
  */
-async function syncAdmin(ctx: Ctx, userId: string, email: string): Promise<void> {
+export async function syncAdmin(
+  ctx: Ctx,
+  userId: string,
+  email: string,
+  opts: { grant?: boolean } = {},
+): Promise<void> {
+  const grantAllowed = opts.grant !== false;
   const eh = await emailHash(ctx, email);
   if (adminAllowlist(ctx).includes(email)) {
+    // Google/Apple orqali kirishda vakolat BERILMAYDI (faqat email kodi bilan).
+    if (!grantAllowed) return;
     const r = await ctx.db
       .prepare(
         `INSERT INTO admins (user_id, granted_at, granted_reason) VALUES (?1, ?2, 'verified allowlisted email')
@@ -230,6 +259,7 @@ async function syncAdmin(ctx: Ctx, userId: string, email: string): Promise<void>
     .bind(eh)
     .first<{ id: string }>();
   if (grant) {
+    if (!grantAllowed) return;
     const r = await ctx.db
       .prepare(
         `INSERT INTO admins (user_id, granted_at, granted_reason) VALUES (?1, ?2, 'admin_grant')
@@ -320,6 +350,10 @@ export async function requireAdmin(ctx: Ctx): Promise<Session> {
 export async function me(ctx: Ctx): Promise<Response> {
   const s = await requireSession(ctx);
   const f = await flags(ctx, s.userId);
+  const ids = await ctx.db
+    .prepare('SELECT DISTINCT provider FROM auth_identities WHERE user_id = ?1 ORDER BY provider')
+    .bind(s.userId)
+    .all<{ provider: string }>();
   return json({
     user_id: s.userId,
     role: s.role,
@@ -332,6 +366,8 @@ export async function me(ctx: Ctx): Promise<Response> {
     reviewer: f.reviewer,
     // Ustoz — faqat o'z guruhlari; admin vakolati emas.
     teacher: f.teacher,
+    // Bog'langan kirish usullari (Google/Apple); email kodi doim mavjud.
+    identities: ids.results.map((r) => r.provider),
   });
 }
 
@@ -355,6 +391,9 @@ export async function updateProfile(ctx: Ctx): Promise<Response> {
 export async function deleteAccount(ctx: Ctx): Promise<Response> {
   const s = await requireSession(ctx);
   const u = s.userId;
+  // Apple (App Store 5.1.1(v)): hisob o'chirilganda Apple tokeni bekor qilinadi.
+  // Muvaffaqiyatsizlik hisobni o'chirishga to'sqinlik qilmaydi (natija jurnalda).
+  await revokeAppleOnDelete(ctx, u);
   const owned = `SELECT id FROM study_groups WHERE owner_id = ?1`;
   const ownedAssignments = `SELECT id FROM assignments WHERE group_id IN (${owned})`;
   const stmts = [
@@ -376,6 +415,7 @@ export async function deleteAccount(ctx: Ctx): Promise<Response> {
     `DELETE FROM teacher_accounts WHERE user_id = ?1`,
     `DELETE FROM admins WHERE user_id = ?1`,
     `DELETE FROM sessions WHERE user_id = ?1`,
+    `DELETE FROM auth_identities WHERE user_id = ?1`,
     `DELETE FROM users WHERE id = ?1`,
     `INSERT INTO audit_log (at, actor, action, target, details) VALUES (?2, ?1, 'account_deleted', ?1, '{}')`,
   ];

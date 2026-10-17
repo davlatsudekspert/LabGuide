@@ -59,6 +59,19 @@ dependencies:
   # Platformaga xos tafsilotlar (kirish taklifi, Play offer, tiklash).
   in_app_purchase_android: ^0.5.4
   in_app_purchase_storekit: ^0.4.14
+  # "Sign in with Google" / "Sign in with Apple" (D-56): email-kod kirishi
+  # yoniga ikkinchi usul. Faqat ID token olinadi — tekshiruv serverda
+  # (cloudflare/src/social.ts); ilova token yoki parol saqlamaydi.
+  # sign_in_with_apple: MIT, iOS/macOS native + Android veb-oqim.
+  sign_in_with_apple: 8.2.0
+  # google_sign_in: BSD-3 (flutter.dev). Android — Credential Manager,
+  # iOS — GoogleSignIn SDK. Versiyalar kamida 2 hafta oldingi (pub.dev).
+  google_sign_in: 7.2.0
+  # Tranzitiv platforma paketlari ataylab mahkamlangan: pub eng yangisini
+  # (android 7.2.18 — 2026-10-13, ios 6.3.8 — 2026-10-15) tanlardi, bizda esa
+  # versiyalar kamida 2 hafta oldingi bo'lishi shart.
+  google_sign_in_android: 7.2.17
+  google_sign_in_ios: 6.3.6
 
 dev_dependencies:
   flutter_test:

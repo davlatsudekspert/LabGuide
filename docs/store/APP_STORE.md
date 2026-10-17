@@ -188,11 +188,17 @@ yo‘q). Hamma toifalar — **Linked to the user**, **not used for tracking**. M
 
 | App Store toifasi | Nima (kodda) | Maqsad |
 |---|---|---|
-| Contact Info → Email Address | kirish emaili (serverda faqat HMAC-hash + niqoblangan ko‘rinish; Resend orqali kod yuboriladi) | App Functionality |
-| Identifiers → User ID | ichki tasodifiy hisob id si (`users.id`) | App Functionality |
+| Contact Info → Email Address | kirish emaili (serverda faqat HMAC-hash + niqoblangan ko‘rinish; Resend orqali kod yuboriladi; Google/Apple bilan kirishda ham o‘sha email — provayder tasdiqlagani, D-56) | App Functionality |
+| Identifiers → User ID | ichki tasodifiy hisob id si (`users.id`); Google/Apple bilan kirishda provayder `sub` i ham (`auth_identities`, D-56) | App Functionality |
 | User Content → Other User Content | guruh taxallusi (yoki “Talaba NN”), test javoblari, har savol natijasi va ball | App Functionality |
 | Usage Data → Product Interaction | ilovadan oxirgi foydalangan **kun** (`last_seen_on`, vaqtsiz) | App Functionality |
 | User Content → Other User Content (hamjamiyat, D-43) | savol va javoblar matni (**ilova ichida ommaviy**, muallif ismsiz), ovozlar, shikoyatlar; mutaxassis holati (kasb, mamlakat kodi, sana) | App Functionality |
+
+**Google / Apple bilan kirish (D-56).** Yangi toifa qo‘shilmaydi: provayderdan faqat `sub`, email va tasdiq belgisi
+olinadi (ism, rasm, kontakt so‘ralmaydi; Apple’dan faqat email scope), token tekshirilgach tashlanadi — *Name* toifasi
+**qo‘shilmaydi**. Provayderlar (Google, Apple) — kirish identifikatsiyasi; ular bilan ma’lumot ulashilmaydi. Tracking: No.
+Apple 4.8 (Apple tugmasi Google’dan kam emas, email-kod va mehmon rejimi bor) va 5.1.1(v) (ilovada hisobni o‘chirish +
+Apple tokenini bekor qilish) bajarilgan — `docs/AUTH_SOCIAL_LOGIN.md`. App Review izohiga shuni yozing.
 
 **Hamjamiyat (D-43) — hujjat surati va tarjima.** Mutaxassis tasdig‘i uchun yuklangan surat
 faqat so‘rov davomida Cloudflare Workers AI ga uzatiladi va **saqlanmaydi** (D1/R2/log —
@@ -335,7 +341,8 @@ yuklanishidan **oldin** Data safety quyidagicha to‘ldiriladi (manba: `cloudfla
 | Uzatishda shifrlanganmi? | **Ha** (HTTPS) |
 | O‘chirishni so‘rash mumkinmi? | **Ha** — ilovada Profil → Maxfiylik → “Hisobni o‘chirish” va aloqa emaili labguide@nfcstore.uz |
 | Personal info → Email address | To‘planadi; sinf (guruh) uchun majburiy, umuman ilova uchun **ixtiyoriy** (mehmon rejimida yo‘q); Account management, App functionality (serverda faqat hash + niqoblangan ko‘rinish) |
-| Personal info → User IDs | To‘planadi; ichki hisob id si (tasodifiy); Account management, App functionality |
+| Personal info → User IDs | To‘planadi; ichki hisob id si (tasodifiy) va Google/Apple provayder identifikatori (`sub`, D-56); Account management, App functionality |
+| Account creation methods (Play so‘rasa) | **OAuth** (Google, Apple) va **Other authentication** (email kodi); mehmon rejimida hisob shart emas |
 | App activity → Other user-generated content | To‘planadi; ixtiyoriy (sinfda); guruh taxallusi, test javoblari va ball; App functionality |
 | App activity → App interactions | Faqat oxirgi faol **kun** (`last_seen_on`); App functionality — Play talab qilsa shu qatorni qo‘shing |
 | App activity → Other user-generated content (hamjamiyat, D-43) | To‘planadi; ixtiyoriy; savol/javob matni (**ilova ichida hamma ko‘radi**, muallif ismsiz), ovoz, shikoyat; App functionality |

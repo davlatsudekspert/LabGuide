@@ -32,18 +32,36 @@ kalibrlash jurnali, o‘qish holati va mashq natijalari faqat qurilmangizda saql
 o‘z zaxira nusxasiga — iCloud yoki Google — tizim sozlamalariga ko‘ra kirishi mumkin). Ustozning
 guruh a’zosiga qo‘ygan real ism belgisi ham faqat ustoz qurilmasida qoladi.
 
-**Xizmat ko‘rsatuvchilar.** Email bilan kirsangiz, ma’lumot quyidagi xizmatlar orqali
-qayta ishlanadi:
+**Xizmat ko‘rsatuvchilar.** Email bilan (yoki Google / Apple orqali) kirsangiz, ma’lumot
+quyidagi xizmatlar orqali qayta ishlanadi:
 - **Cloudflare, Inc.** — server (Workers) va ma’lumotlar bazasi (D1, Sharqiy Yevropa);
 - **Resend** — faqat kirish kodi xatini yuborish (email manzilingiz va 6 raqamli kod xat
-  yuborish uchun unga uzatiladi; xizmat o‘z siyosatiga ko‘ra yetkazish jurnalini saqlashi mumkin).
+  yuborish uchun unga uzatiladi; xizmat o‘z siyosatiga ko‘ra yetkazish jurnalini saqlashi mumkin);
+- **Google LLC** va **Apple Inc.** — **faqat** “Google bilan kirish” yoki “Apple bilan kirish”ni
+  o‘zingiz tanlasangiz: ular kirish (identifikatsiya) provayderi. Qurilmangizdagi tizim oynasida
+  o‘z siyosatlariga ko‘ra sizni tasdiqlaydi va LabGuide’ga imzolangan identifikatsiya tokenini
+  beradi; LabGuide ularga sizning ma’lumotingizni yubormaydi (faqat tokenning amal qilish
+  kalitlarini o‘qiydi).
 
-Ular ma’lumotni faqat LabGuide nomidan, xizmat ko‘rsatish uchun qayta ishlaydi; reklama uchun
+Cloudflare va Resend ma’lumotni faqat LabGuide nomidan, xizmat ko‘rsatish uchun qayta ishlaydi; reklama uchun
 ishlatmaydi va sotmaydi.
 
 **Hisob bilan serverda nima saqlanadi va qancha vaqt.**
 - **Email:** ochiq holda saqlanmaydi — faqat HMAC-hash (hisobni topish uchun) va niqoblangan
   ko‘rinish (masalan `da***@gmail.com`). Hisob o‘chirilguncha.
+- **Google / Apple bilan kirish (ixtiyoriy):** provayderdan **faqat** quyidagilar olinadi: provayderdagi
+  hisobingizning barqaror identifikatori (`sub`), email manzilingiz va uning tasdiqlanganlik belgisi
+  (Apple’da “Emailimni yashirish” tanlansa — Apple bergan vaqtinchalik `privaterelay` manzili).
+  Ism, rasm, kontaktlar so‘ralmaydi va saqlanmaydi (Apple’dan faqat email so‘raladi). Token serverda
+  tekshirilib **tashlanadi — saqlanmaydi**. Saqlanadi: provayder nomi, `sub`, ichki hisob id si va
+  bog‘langan vaqt (hisob o‘chirilguncha); email avvalgidek faqat hash + niqoblangan ko‘rinishda;
+  tokenni qayta ishlatishdan himoya uchun tokenning **hash** belgisi — tokenning amal qilish
+  muddatigacha (taxminan bir soatgacha; kunlik tozalash o‘chiradi). Bitta email — bitta hisob:
+  Google/Apple emailingiz email-kod bilan ochilgan hisobingiz emailiga teng bo‘lsa, ular bitta hisobga
+  bog‘lanadi. Hisobni o‘chirsangiz bog‘lanish ham o‘chadi; Apple bilan kirgan bo‘lsangiz, o‘chirishda
+  Apple sizdan tasdiq so‘raydi va LabGuide’ning Apple ID’ngizdagi ruxsati bekor qilinadi.
+  Google’da LabGuide serverda hech qanday kirish ruxsatini saqlamaydi; xohlasangiz Google
+  hisobingiz → Xavfsizlik → “Uchinchi tomon ilovalari”dan ham olib tashlashingiz mumkin.
 - **Kirish kodi:** faqat hash ko‘rinishida; 10 daqiqa amal qiladi, 5 urinish; ishlatilgach yoki
   muddati o‘tgach o‘chadi (muddati o‘tganlarini kunlik tozalash ham o‘chiradi).
 - **Sessiya:** token faqat hash ko‘rinishida (tokenning o‘zi qurilmangizda, Keychain / Android
@@ -98,8 +116,8 @@ shartlari doirasida kirishi mumkin.
 
 **Ma’lumot O‘zbekistondan tashqarida saqlanadi.** Cloudflare D1 bazasi Sharqiy Yevropa
 (EI) hududida joylashgan, ya’ni ma’lumotlaringiz **O‘zbekiston hududidan tashqarida**
-saqlanadi va qayta ishlanadi; Cloudflare va Resend global infratuzilmada ishlaydi
-(ma’lumot AQShga ham uzatilishi mumkin). Email bilan kirib, shu shartlarga rozilik bildirasiz;
+saqlanadi va qayta ishlanadi; Cloudflare, Resend, Google va Apple global infratuzilmada ishlaydi
+(ma’lumot AQShga ham uzatilishi mumkin). Email bilan (yoki Google / Apple orqali) kirib, shu shartlarga rozilik bildirasiz;
 rozi bo‘lmasangiz, hisobsiz (mehmon) foydalaning — asosiy imkoniyatlar qurilmada ishlaydi.
 Ma’lumot uzatishda shifrlanadi (HTTPS).
 
@@ -151,17 +169,33 @@ avtomatik o‘chirilmaydi.
 попадать в системную резервную копию iCloud или Google). Реальное имя, которое преподаватель
 ставит участнику группы как метку, тоже остаётся только на устройстве преподавателя.
 
-**Поставщики услуг.** При входе по email данные обрабатываются через:
+**Поставщики услуг.** При входе по email (или через Google / Apple) данные обрабатываются через:
 - **Cloudflare, Inc.** — сервер (Workers) и база данных (D1, Восточная Европа);
 - **Resend** — только отправка письма с кодом входа (ему передаются ваш email и 6-значный код;
-  сервис может хранить журнал доставки по своей политике).
+  сервис может хранить журнал доставки по своей политике);
+- **Google LLC** и **Apple Inc.** — **только** если вы сами выбрали «Войти через Google» или «Войти с Apple»:
+  они выступают провайдером входа (идентификации). Подтверждают вас в системном окне устройства по
+  своим правилам и выдают LabGuide подписанный токен личности; LabGuide не отправляет им ваши
+  данные (лишь читает публичные ключи для проверки подписи токена).
 
-Они обрабатывают данные только от имени LabGuide для оказания услуги; не используют их для
+Cloudflare и Resend обрабатывают данные только от имени LabGuide для оказания услуги; не используют их для
 рекламы и не продают.
 
 **Что хранится на сервере и сколько.**
 - **Email:** в открытом виде не хранится — только HMAC-хеш (для поиска аккаунта) и маскированный
   вид (например `da***@gmail.com`). До удаления аккаунта.
+- **Вход через Google / Apple (по желанию):** от провайдера берутся **только** постоянный идентификатор
+  вашего аккаунта у провайдера (`sub`), адрес email и отметка о его подтверждении (если в Apple выбрано
+  «Скрыть e-mail» — временный адрес `privaterelay`, выданный Apple). Имя, фото и контакты не запрашиваются
+  и не сохраняются (у Apple запрашивается только email). Токен проверяется на сервере и **отбрасывается —
+  не хранится**. Хранится: название провайдера, `sub`, внутренний id аккаунта и время привязки (до
+  удаления аккаунта); email по-прежнему только как хеш + маскированный вид; для защиты от повторного
+  использования токена — **хеш**-метка токена на срок его действия (около часа; удаляется ежедневной
+  очисткой). Один email — один аккаунт: если email Google/Apple совпадает с email аккаунта, созданного
+  по коду из письма, они привязываются к одному аккаунту. При удалении аккаунта привязка удаляется; если
+  вы входили через Apple, при удалении Apple попросит подтверждение, и доступ LabGuide к вашему Apple ID
+  отзывается. В Google LabGuide не хранит на сервере никаких прав доступа; при желании приложение можно
+  убрать в аккаунте Google → Безопасность → «Сторонние приложения».
 - **Код входа:** только хеш; действует 10 минут, 5 попыток; удаляется после использования или
   по истечении (просроченные также удаляет ежедневная очистка).
 - **Сессия:** токен только в виде хеша (сам токен — на вашем устройстве, Keychain / Android
@@ -217,8 +251,8 @@ Cloudflare как сетевой сервис обрабатывает запр�
 
 **Данные хранятся за пределами Узбекистана.** База Cloudflare D1 находится в Восточной Европе
 (ЕС), то есть ваши данные хранятся и обрабатываются **за пределами территории Узбекистана**;
-Cloudflare и Resend работают на глобальной инфраструктуре (данные могут передаваться и в США).
-Входя по email, вы соглашаетесь с этим; если не согласны, пользуйтесь без аккаунта (гостевой
+Cloudflare, Resend, Google и Apple работают на глобальной инфраструктуре (данные могут передаваться и в США).
+Входя по email (или через Google / Apple), вы соглашаетесь с этим; если не согласны, пользуйтесь без аккаунта (гостевой
 режим) — основные функции работают на устройстве. При передаче данные шифруются (HTTPS).
 
 **Сообщество (вопросы и ответы, по желанию).** В сборке с сервером вошедший пользователь может
@@ -266,17 +300,33 @@ log, reading position and practice results stay on your device (they may be incl
 system’s iCloud or Google backup). A real-name label a teacher puts on a group member also
 stays only on the teacher’s device.
 
-**Service providers.** If you sign in with email, data is processed through:
+**Service providers.** If you sign in with email (or with Google / Apple), data is processed through:
 - **Cloudflare, Inc.** — the server (Workers) and database (D1, Eastern Europe);
 - **Resend** — only to send the sign-in code email (your email address and the 6-digit code are
-  passed to it; it may keep a delivery log under its own policy).
+  passed to it; it may keep a delivery log under its own policy);
+- **Google LLC** and **Apple Inc.** — **only** if you choose “Sign in with Google” or “Sign in with Apple”:
+  they act as the identity provider. They verify you in the system sheet on your device under their
+  own policies and hand LabGuide a signed identity token; LabGuide does not send them your data
+  (it only reads their public keys to verify the token’s signature).
 
-They process data only on LabGuide’s behalf to provide the service; they do not use it for
+Cloudflare and Resend process data only on LabGuide’s behalf to provide the service; they do not use it for
 advertising or sell it.
 
 **What the server stores, and for how long.**
 - **Email:** never stored in the clear — only an HMAC hash (to find your account) and a masked
   form (e.g. `da***@gmail.com`). Until you delete your account.
+- **Sign in with Google / Apple (optional):** from the provider we receive **only** the stable identifier of your
+  account at that provider (`sub`), your email address and whether it is verified (if you choose “Hide My
+  Email” with Apple, Apple’s temporary `privaterelay` address). Your name, photo and contacts are not
+  requested and not stored (only the email scope is requested from Apple). The token is verified on the
+  server and then **discarded — it is not stored**. Stored: the provider name, `sub`, your internal account
+  id and the time of linking (until account deletion); the email stays hash + masked form only; and, to
+  stop a token being replayed, a **hash** mark of the token for as long as the token is valid (about an
+  hour; removed by the daily cleanup). One email, one account: if your Google/Apple email equals the email
+  of an account created with the email code, both sign-in methods are linked to that one account. When you
+  delete your account the link is deleted; if you signed in with Apple, Apple asks you to confirm during
+  deletion and LabGuide’s access to your Apple ID is revoked. With Google, LabGuide keeps no access grant on
+  the server; you can also remove the app in your Google Account → Security → “Third-party apps”.
 - **Sign-in code:** hash only; valid for 10 minutes, 5 attempts; removed once used or expired
   (the daily cleanup also removes expired ones).
 - **Session:** the token is stored only as a hash (the token itself lives on your device,
@@ -330,9 +380,9 @@ has technical access to the database and its backups but cannot recover a full e
 own service terms.
 
 **Data is stored outside Uzbekistan.** The Cloudflare D1 database is located in Eastern Europe
-(EU), so your data is stored and processed **outside the territory of Uzbekistan**; Cloudflare
-and Resend run on global infrastructure (data may also be transferred to the US). By signing in
-with email you accept this; if you do not, use the app without an account (guest mode) — the
+(EU), so your data is stored and processed **outside the territory of Uzbekistan**; Cloudflare,
+Resend, Google and Apple run on global infrastructure (data may also be transferred to the US). By signing in
+with email (or with Google / Apple) you accept this; if you do not, use the app without an account (guest mode) — the
 core features work on the device. Data is encrypted in transit (HTTPS).
 
 **Community (Q&A, optional).** In a build connected to the server, a signed-in user can ask a

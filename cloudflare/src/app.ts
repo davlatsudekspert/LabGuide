@@ -7,6 +7,7 @@ import * as community from './community';
 import type { Ctx, Deps } from './context';
 import { deriveKeys, hex, hmac } from './crypto';
 import * as groups from './groups';
+import * as social from './social';
 import {
   ApiError,
   corsHeaders,
@@ -53,6 +54,11 @@ const routes: Route[] = [
   // Auth
   r('POST', '/v1/auth/otp/request', auth.requestCode),
   r('POST', '/v1/auth/otp/verify', auth.verifyCode),
+  // Google / Apple bilan kirish (D-56): ID token serverda tekshiriladi.
+  r('GET', '/v1/auth/providers', social.providers),
+  r('POST', '/v1/auth/google', social.googleLogin),
+  r('POST', '/v1/auth/apple', social.appleLogin),
+  r('POST', '/v1/auth/apple/callback', social.appleCallback),
   r('POST', '/v1/auth/logout', auth.logout),
   r('POST', '/v1/auth/logout-all', auth.logoutAll),
   r('GET', '/v1/auth/mfa', auth.mfaStatus),
@@ -191,6 +197,7 @@ export function createApp(deps: Deps) {
       await env.DB.batch([
         env.DB.prepare('DELETE FROM otp_challenges WHERE expires_at < ?1').bind(now),
         env.DB.prepare('DELETE FROM sessions WHERE expires_at < ?1').bind(now),
+        env.DB.prepare('DELETE FROM auth_replay WHERE expires_at < ?1').bind(now),
         env.DB.prepare('DELETE FROM rate_limits WHERE window_start < ?1').bind(now - 86400_000),
       ]);
     },

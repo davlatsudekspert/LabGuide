@@ -22,6 +22,7 @@ import 'core/entitlements/store_purchase_adapter.dart';
 import 'core/storage/kv_store.dart';
 import 'features/auth/auth_controller.dart';
 import 'features/auth/otp_auth.dart';
+import 'features/auth/social_auth.dart';
 import 'features/classroom/classroom_local.dart';
 import 'features/classroom/curriculum.dart';
 import 'features/community/community_controller.dart';
@@ -91,6 +92,7 @@ AppServices createServices({
   DateTime Function()? clock,
   Curriculum? curriculum,
   CommunityBackend? community,
+  SocialAuthService? socialAuth,
 }) {
   const config = AppConfig(appVersion: _appVersion, showDebugBadge: kDebugMode);
   final server = backend ?? _defaultBackend();
@@ -106,6 +108,16 @@ AppServices createServices({
       store,
       otpAdapter ?? (server.isConfigured ? server : createOtpAdapter()),
       backend: server,
+      // Google / Apple: faqat Cloudflare serveri va --dart-define sozlamasi
+      // bilan; aks holda tugmalar umuman ko'rinmaydi (D-56).
+      social:
+          socialAuth ??
+          SocialAuthService.fromEnvironment(
+            backend: server,
+            appleAndroidRedirect: server is CloudflareLabBackend
+                ? server.config.resolve('/v1/auth/apple/callback')
+                : null,
+          ),
     ),
     content: ContentController(bundle: bundle),
     bookmarks: BookmarksController(store),

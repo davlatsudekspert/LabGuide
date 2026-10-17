@@ -86,6 +86,15 @@ env:
   # APK'lari) hamma imkoniyatni ochadi — to'lov hali yoqilmagan. Kelajakdagi
   # do'kon (store/release) rejimida false bo'ladi (docs/PRO_BILLING_PLAN.md).
   LG_ALL_FEATURES_OPEN: ${{ (inputs.mode || 'build') == 'build' || inputs.mode == 'testflight' || inputs.mode == 'play_internal' }}
+  # Google / Apple bilan kirish (D-56, docs/AUTH_SOCIAL_LOGIN.md). OAuth client
+  # ID lar sir emas (ochiq identifikator): repo variables. Bo'sh bo'lsa
+  # tegishli tugma ilovada ko'rinmaydi. LG_APPLE_SIGNIN=true FAQAT egasi
+  # Apple Developer'da App ID uchun "Sign in with Apple" imkoniyatini yoqqach
+  # qo'yiladi: shunda testflight rejimi entitlement'ni IPA'ga qo'shadi.
+  LG_GOOGLE_CLIENT_ID: ${{ vars.LG_GOOGLE_CLIENT_ID }}
+  LG_GOOGLE_IOS_CLIENT_ID: ${{ vars.LG_GOOGLE_IOS_CLIENT_ID }}
+  LG_APPLE_SERVICE_ID: ${{ vars.LG_APPLE_SERVICE_ID }}
+  LG_APPLE_SIGNIN: ${{ vars.LG_APPLE_SIGNIN || 'false' }}
 
 jobs:
   tests:
@@ -252,6 +261,15 @@ jobs:
           APPLE_IAP_PRIVATE_KEY: ${{ secrets.APPLE_IAP_PRIVATE_KEY }}
           GOOGLE_PLAY_SERVICE_ACCOUNT: ${{ secrets.GOOGLE_PLAY_BILLING_SERVICE_ACCOUNT_JSON }}
           PLAY_RTDN_TOKEN: ${{ secrets.PLAY_RTDN_TOKEN }}
+          # Google / Apple bilan kirish (D-56, docs/AUTH_SOCIAL_LOGIN.md).
+          # Ixtiyoriy: bo'lmasa tegishli endpoint `503 not_configured`, ilova
+          # tugmani ko'rsatmaydi.
+          GOOGLE_CLIENT_IDS: ${{ secrets.GOOGLE_CLIENT_IDS }}
+          APPLE_SIGNIN_TEAM_ID: ${{ secrets.APPLE_SIGNIN_TEAM_ID }}
+          APPLE_SIGNIN_KEY_ID: ${{ secrets.APPLE_SIGNIN_KEY_ID }}
+          APPLE_SIGNIN_PRIVATE_KEY: ${{ secrets.APPLE_SIGNIN_PRIVATE_KEY }}
+          APPLE_SIGNIN_CLIENT_ID: ${{ secrets.APPLE_SIGNIN_CLIENT_ID }}
+          APPLE_SIGNIN_SERVICE_ID: ${{ secrets.APPLE_SIGNIN_SERVICE_ID }}
         run: |
           set -euo pipefail
           put() {
@@ -284,6 +302,30 @@ jobs:
           for k in GOOGLE_PLAY_SERVICE_ACCOUNT PLAY_RTDN_TOKEN; do
             if [ -n "${!k}" ]; then put "$k"; else echo "- secret $k: berilmagan" >> "$GITHUB_STEP_SUMMARY"; fi
           done
+          # Google bilan kirish: client ID lar ro'yxati.
+          if [ -n "$GOOGLE_CLIENT_IDS" ]; then
+            put GOOGLE_CLIENT_IDS
+          else
+            echo "- GOOGLE_CLIENT_IDS berilmagan: Google bilan kirish o'chiq" >> "$GITHUB_STEP_SUMMARY"
+          fi
+          # Apple bilan kirish: Developer kaliti uchala qiymat bilan birga ishlaydi
+          # (hisobni o'chirishda tokenni bekor qilish uchun shart). CLIENT_ID va
+          # SERVICE_ID ixtiyoriy.
+          asi=0
+          for k in APPLE_SIGNIN_TEAM_ID APPLE_SIGNIN_KEY_ID APPLE_SIGNIN_PRIVATE_KEY; do
+            if [ -n "${!k}" ]; then asi=$((asi + 1)); fi
+          done
+          if [ "$asi" -eq 3 ]; then
+            for k in APPLE_SIGNIN_TEAM_ID APPLE_SIGNIN_KEY_ID APPLE_SIGNIN_PRIVATE_KEY; do put "$k"; done
+            for k in APPLE_SIGNIN_CLIENT_ID APPLE_SIGNIN_SERVICE_ID; do
+              if [ -n "${!k}" ]; then put "$k"; else echo "- secret $k: berilmagan (ixtiyoriy)" >> "$GITHUB_STEP_SUMMARY"; fi
+            done
+          elif [ "$asi" -gt 0 ]; then
+            echo "::warning::APPLE_SIGNIN_* secretlaridan faqat $asi tasi berilgan — Apple bilan kirish o'chiq qoladi"
+            echo "- APPLE_SIGNIN_*: to'liq emas ($asi/3) — o'rnatilmadi" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "- APPLE_SIGNIN_*: berilmagan — Apple bilan kirish o'chiq" >> "$GITHUB_STEP_SUMMARY"
+          fi
       - name: Tekshiruv (health)
         if: steps.ready.outputs.ready == 'true'
         run: |
@@ -351,11 +393,15 @@ jobs:
           flutter build apk --release --split-per-abi \
             --build-number="${{ github.run_number }}" \
             --dart-define=LG_SUPABASE_URL="$LG_SUPABASE_URL" --dart-define=LG_SUPABASE_KEY="$LG_SUPABASE_KEY" --dart-define=LG_API_URL="$LG_API_URL" \
-            --dart-define=LG_ALL_FEATURES_OPEN="$LG_ALL_FEATURES_OPEN"
+            --dart-define=LG_ALL_FEATURES_OPEN="$LG_ALL_FEATURES_OPEN" \
+            --dart-define=LG_GOOGLE_CLIENT_ID="$LG_GOOGLE_CLIENT_ID" --dart-define=LG_GOOGLE_IOS_CLIENT_ID="$LG_GOOGLE_IOS_CLIENT_ID" \
+            --dart-define=LG_APPLE_SERVICE_ID="$LG_APPLE_SERVICE_ID" --dart-define=LG_APPLE_SIGNIN="$LG_APPLE_SIGNIN"
           if [ "${ANDROID_SIGNED:-false}" = true ]; then
             flutter build appbundle --release --build-number="${{ github.run_number }}" \
               --dart-define=LG_SUPABASE_URL="$LG_SUPABASE_URL" --dart-define=LG_SUPABASE_KEY="$LG_SUPABASE_KEY" --dart-define=LG_API_URL="$LG_API_URL" \
-              --dart-define=LG_ALL_FEATURES_OPEN="$LG_ALL_FEATURES_OPEN"
+              --dart-define=LG_ALL_FEATURES_OPEN="$LG_ALL_FEATURES_OPEN" \
+              --dart-define=LG_GOOGLE_CLIENT_ID="$LG_GOOGLE_CLIENT_ID" --dart-define=LG_GOOGLE_IOS_CLIENT_ID="$LG_GOOGLE_IOS_CLIENT_ID" \
+              --dart-define=LG_APPLE_SERVICE_ID="$LG_APPLE_SERVICE_ID" --dart-define=LG_APPLE_SIGNIN="$LG_APPLE_SIGNIN"
           fi
           cd build/app/outputs/flutter-apk
           VERSION=$(grep '^version:' "$GITHUB_WORKSPACE/pubspec.yaml" | sed 's/version: *//; s/+.*//')
@@ -482,6 +528,30 @@ jobs:
           echo "IOS_BUILD_NUMBER=${{ github.run_number }}" >> "$GITHUB_ENV"
           echo "- Ilova: **LabGuide** \`$IDS\` v$VERSION · rejim: **$MODE**" >> "$GITHUB_STEP_SUMMARY"
 
+      # Google (iOS) OAuth qaytish sxemasi (reversed client ID) — repoda yo'q,
+      # faqat runner'dagi nusxaga yoziladi. Variable yo'q yoki formati noto'g'ri
+      # bo'lsa: Google iOS'da o'chiq (Dart tomoni ham tugmani ko'rsatmaydi).
+      - name: Google kirishi (iOS) sozlamasi
+        run: |
+          set -euo pipefail
+          if [ -z "${LG_GOOGLE_IOS_CLIENT_ID:-}" ]; then
+            echo "- Google (iOS): LG_GOOGLE_IOS_CLIENT_ID berilmagan — iOS'da Google tugmasi yo'q" >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          if ! printf '%s' "$LG_GOOGLE_IOS_CLIENT_ID" | grep -Eq '^[0-9]+-[a-z0-9]+\.apps\.googleusercontent\.com$'; then
+            echo "::warning::LG_GOOGLE_IOS_CLIENT_ID formati noto'g'ri — Google (iOS) o'chiq"
+            echo "LG_GOOGLE_IOS_CLIENT_ID=" >> "$GITHUB_ENV"
+            exit 0
+          fi
+          REV="com.googleusercontent.apps.${LG_GOOGLE_IOS_CLIENT_ID%.apps.googleusercontent.com}"
+          PB=/usr/libexec/PlistBuddy
+          P=ios/Runner/Info.plist
+          $PB -c 'Add :CFBundleURLTypes array' "$P"
+          $PB -c 'Add :CFBundleURLTypes:0 dict' "$P"
+          $PB -c 'Add :CFBundleURLTypes:0:CFBundleURLSchemes array' "$P"
+          $PB -c "Add :CFBundleURLTypes:0:CFBundleURLSchemes:0 string $REV" "$P"
+          echo "- Google (iOS): URL sxemasi qo'shildi" >> "$GITHUB_STEP_SUMMARY"
+
       # ---------- IMZOSIZ TEKSHIRUV ----------
       - name: iOS release build (imzosiz)
         if: env.MODE == 'build'
@@ -490,7 +560,9 @@ jobs:
           flutter build ios --release --no-codesign \
             --build-name="$IOS_VERSION" --build-number="$IOS_BUILD_NUMBER" \
             --dart-define=LG_SUPABASE_URL="$LG_SUPABASE_URL" --dart-define=LG_SUPABASE_KEY="$LG_SUPABASE_KEY" --dart-define=LG_API_URL="$LG_API_URL" \
-            --dart-define=LG_ALL_FEATURES_OPEN="$LG_ALL_FEATURES_OPEN"
+            --dart-define=LG_ALL_FEATURES_OPEN="$LG_ALL_FEATURES_OPEN" \
+            --dart-define=LG_GOOGLE_CLIENT_ID="$LG_GOOGLE_CLIENT_ID" --dart-define=LG_GOOGLE_IOS_CLIENT_ID="$LG_GOOGLE_IOS_CLIENT_ID" \
+            --dart-define=LG_APPLE_SERVICE_ID="$LG_APPLE_SERVICE_ID" --dart-define=LG_APPLE_SIGNIN=false
           APP=build/ios/iphoneos/Runner.app
           PB=/usr/libexec/PlistBuddy
           ID=$($PB -c 'Print :CFBundleIdentifier' "$APP/Info.plist")
@@ -809,6 +881,29 @@ jobs:
           cp "$SIGN_DIR/profile.mobileprovision" "$HOME/Library/MobileDevice/Provisioning Profiles/$UUID.mobileprovision"
           rm -f "$SIGN_DIR/distribution.p12"
 
+      # "Sign in with Apple" entitlement (ios/Runner/Runner.entitlements) —
+      # OCHIQ YOZILGAN, TestFlight'ni buzmaslik uchun: faqat egasi App ID'da
+      # imkoniyatni yoqib, repo variable LG_APPLE_SIGNIN=true qo'ygandagina
+      # IPA'ga qo'shiladi (docs/AUTH_SOCIAL_LOGIN.md). Qo'lda imzoda profil
+      # imkoniyatni o'z ichiga olmagan bo'lsa — entitlement qo'shilmaydi,
+      # ogohlantirish chiqadi va ilovada Apple tugmasi yashirin qoladi.
+      - name: Sign in with Apple — entitlement qarori
+        if: env.MODE == 'testflight'
+        run: |
+          set -euo pipefail
+          if [ "$LG_APPLE_SIGNIN" != true ]; then
+            echo "LG_APPLE_SIGNIN=false" >> "$GITHUB_ENV"
+            echo "- Sign in with Apple: o'chiq (LG_APPLE_SIGNIN=true emas) — entitlement qo'shilmaydi" >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          if [ "$SIGNING" = manual ] && ! grep -q 'com.apple.developer.applesignin' "$SIGN_DIR/profile.plist"; then
+            echo "::warning::App Store profilida Sign in with Apple yo'q — App ID'da imkoniyatni yoqing va profilni qayta yarating. Hozircha entitlement qo'shilmaydi."
+            echo "LG_APPLE_SIGNIN=false" >> "$GITHUB_ENV"
+            echo "- Sign in with Apple: profilda imkoniyat yo'q — o'chirildi (build buzilmadi)" >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          echo "- Sign in with Apple: entitlement IPA'ga qo'shiladi" >> "$GITHUB_STEP_SUMMARY"
+
       # Imzo sozlamasi faqat runner'dagi nusxada — commit qilinmaydi.
       - name: Runner imzosini sozlash (vaqtinchalik)
         if: env.MODE == 'testflight'
@@ -820,6 +915,9 @@ jobs:
           cloud = ENV.fetch('SIGNING') == 'cloud'
           target.build_configurations.each do |c|
             c.build_settings['DEVELOPMENT_TEAM'] = ENV.fetch('IOS_TEAM_ID')
+            if ENV['LG_APPLE_SIGNIN'] == 'true'
+              c.build_settings['CODE_SIGN_ENTITLEMENTS'] = 'Runner/Runner.entitlements'
+            end
             if cloud
               c.build_settings['CODE_SIGN_STYLE'] = 'Automatic'
               c.build_settings.delete('PROVISIONING_PROFILE_SPECIFIER')
@@ -858,6 +956,8 @@ jobs:
               --build-name="$IOS_VERSION" --build-number="$IOS_BUILD_NUMBER" \
               --dart-define=LG_SUPABASE_URL="$LG_SUPABASE_URL" --dart-define=LG_SUPABASE_KEY="$LG_SUPABASE_KEY" --dart-define=LG_API_URL="$LG_API_URL" \
               --dart-define=LG_ALL_FEATURES_OPEN="$LG_ALL_FEATURES_OPEN" \
+              --dart-define=LG_GOOGLE_CLIENT_ID="$LG_GOOGLE_CLIENT_ID" --dart-define=LG_GOOGLE_IOS_CLIENT_ID="$LG_GOOGLE_IOS_CLIENT_ID" \
+              --dart-define=LG_APPLE_SERVICE_ID="$LG_APPLE_SERVICE_ID" --dart-define=LG_APPLE_SIGNIN="$LG_APPLE_SIGNIN" \
               --export-options-plist="$SIGN_DIR/ExportOptions.plist"
           else
             # Arxiv imzosiz; eksportda Xcode bulut sertifikati va avtomatik
@@ -865,7 +965,9 @@ jobs:
             flutter build ios --release --config-only \
               --build-name="$IOS_VERSION" --build-number="$IOS_BUILD_NUMBER" \
               --dart-define=LG_SUPABASE_URL="$LG_SUPABASE_URL" --dart-define=LG_SUPABASE_KEY="$LG_SUPABASE_KEY" --dart-define=LG_API_URL="$LG_API_URL" \
-              --dart-define=LG_ALL_FEATURES_OPEN="$LG_ALL_FEATURES_OPEN"
+              --dart-define=LG_ALL_FEATURES_OPEN="$LG_ALL_FEATURES_OPEN" \
+              --dart-define=LG_GOOGLE_CLIENT_ID="$LG_GOOGLE_CLIENT_ID" --dart-define=LG_GOOGLE_IOS_CLIENT_ID="$LG_GOOGLE_IOS_CLIENT_ID" \
+              --dart-define=LG_APPLE_SERVICE_ID="$LG_APPLE_SERVICE_ID" --dart-define=LG_APPLE_SIGNIN="$LG_APPLE_SIGNIN"
             xcodebuild -workspace ios/Runner.xcworkspace -scheme Runner \
               -configuration Release -destination 'generic/platform=iOS' \
               -archivePath build/ios/archive/Runner.xcarchive \
@@ -904,6 +1006,12 @@ jobs:
           assert int(p['DTSDKName'].removeprefix('iphoneos').split('.')[0]) >= 26, p['DTSDKName']
           assert e['application-identifier'] == os.environ['IOS_TEAM_ID'] + '.' + os.environ['IOS_BUNDLE_ID']
           assert not e.get('get-task-allow', True)
+          # Apple tugmasi (LG_APPLE_SIGNIN=true) faqat entitlement haqiqatan
+          # IPA'da bo'lsa: aks holda TestFlight'da o'lik tugma chiqardi.
+          if os.environ.get('LG_APPLE_SIGNIN') == 'true':
+              assert 'com.apple.developer.applesignin' in e, (
+                  "IPA'da Sign in with Apple entitlement yo'q — LG_APPLE_SIGNIN ni false qiling "
+                  "yoki App ID/profilni tekshiring (docs/AUTH_SOCIAL_LOGIN.md)")
           msg = (f"IPA: {p['CFBundleIdentifier']} {p['CFBundleShortVersionString']} ({p['CFBundleVersion']}), "
                  f"SDK {p['DTSDKName']}, min iOS {p['MinimumOSVersion']}")
           print(msg); open(os.environ['GITHUB_STEP_SUMMARY'], 'a').write('- ' + msg + '\n')
