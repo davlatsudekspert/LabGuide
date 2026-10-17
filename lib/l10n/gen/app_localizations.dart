@@ -15213,6 +15213,54 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Place an ad'**
   String get homeAdDemoCta;
+
+  /// Community moderation (App Store 1.2): cmBlock
+  ///
+  /// In en, this message translates to:
+  /// **'Block user'**
+  String get cmBlock;
+
+  /// Community moderation (App Store 1.2): cmBlockConfirmTitle
+  ///
+  /// In en, this message translates to:
+  /// **'Block this user?'**
+  String get cmBlockConfirmTitle;
+
+  /// Community moderation (App Store 1.2): cmBlockConfirmBody
+  ///
+  /// In en, this message translates to:
+  /// **'You will no longer see their questions or answers on this device. You can undo this in the community list.'**
+  String get cmBlockConfirmBody;
+
+  /// Community moderation (App Store 1.2): cmBlockedDone
+  ///
+  /// In en, this message translates to:
+  /// **'User blocked. Their posts are hidden.'**
+  String get cmBlockedDone;
+
+  /// Community moderation (App Store 1.2): cmBlockedHidden
+  ///
+  /// In en, this message translates to:
+  /// **'This post is hidden because you blocked its author.'**
+  String get cmBlockedHidden;
+
+  /// No description provided for @cmBlockedCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{You have blocked 1 user.} other{You have blocked {count} users.}}'**
+  String cmBlockedCount(int count);
+
+  /// Community moderation (App Store 1.2): cmUnblockAll
+  ///
+  /// In en, this message translates to:
+  /// **'Unblock everyone'**
+  String get cmUnblockAll;
+
+  /// Community moderation (App Store 1.2): cmContactLink
+  ///
+  /// In en, this message translates to:
+  /// **'Contact LabGuide (report a problem)'**
+  String get cmContactLink;
 }
 
 class _AppLocalizationsDelegate

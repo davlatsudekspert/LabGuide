@@ -2525,5 +2525,13 @@
   "homeAdDemoTitle": "Namuna / Demo — reklama joyi",
   "homeAdDemoLabBody": "Bu yerda hamkor laboratoriya xizmati reklamasi chiqadi",
   "homeAdDemoEquipmentBody": "Bu yerda apparat firmasi reklamasi chiqadi",
-  "homeAdDemoCta": "Reklama joylashtirish"
+  "homeAdDemoCta": "Reklama joylashtirish",
+  "cmBlock": "Foydalanuvchini bloklash",
+  "cmBlockConfirmTitle": "Foydalanuvchi bloklansinmi?",
+  "cmBlockConfirmBody": "Uning savol va javoblari shu qurilmada ko‘rinmaydi. Buni hamjamiyat ro‘yxatidan qaytarish mumkin.",
+  "cmBlockedDone": "Foydalanuvchi bloklandi. Postlari yashirildi.",
+  "cmBlockedHidden": "Muallifni bloklaganingiz uchun bu post yashirilgan.",
+  "cmBlockedCount": "{count, plural, other{Siz {count} ta foydalanuvchini bloklagansiz.}}",
+  "cmUnblockAll": "Hammasini blokdan chiqarish",
+  "cmContactLink": "LabGuide bilan aloqa (muammo haqida xabar)"
 }

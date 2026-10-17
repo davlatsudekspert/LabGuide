@@ -4,6 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:labguide/app/app_scope.dart';
 import 'package:labguide/core/backend/community_backend.dart';
 import 'package:labguide/core/storage/kv_store.dart';
+import 'package:labguide/features/community/community_controller.dart';
 import 'package:labguide/features/community/community_screens.dart';
 import 'package:labguide/features/settings/settings_controller.dart';
 import 'package:labguide/l10n/gen/app_localizations.dart';
@@ -444,6 +445,109 @@ void main() {
     await _tap(tester, find.text(l.cmMarkBest));
     expect(find.text(l.cmBest), findsWidgets);
     expect(find.text(l.cmUnmarkBest), findsOneWidget);
+  });
+
+  group('1.2: foydalanuvchini bloklash', () {
+    Future<(AppServices, String)> setupBad(WidgetTester tester) async {
+      final (s, lab, community) = await _setup(tester);
+      await lab.requestCode('bad@example.com');
+      await lab.verifyCode('bad@example.com', FakeLabBackend.otpCode);
+      community.makeSpecialist(lab.userId!);
+      community.seedQuestion(
+        author: lab.userId!,
+        title: 'Shubhali savol matni bu yerda',
+        body: 'Haqoratli matn va boshqa narsalar.',
+        answers: ['Haqoratli javob matni shu yerda.'],
+      );
+      final ref = 'ref-${lab.userId}';
+      await lab.signOut();
+      await pumpApp(tester, s);
+      return (s, ref);
+    }
+
+    testWidgets(
+      'bloklash: post yashirinadi, qurilmada saqlanadi, qaytariladi',
+      (tester) async {
+        final (s, ref) = await setupBad(tester);
+        final l = _l(AppLanguage.uz);
+        await _signIn(tester, s, 'reader@example.com');
+        await goTo(tester, '/profile/community');
+        await _tap(tester, find.text('Shubhali savol matni bu yerda'));
+        expect(find.text('Haqoratli javob matni shu yerda.'), findsOneWidget);
+
+        await _tap(tester, find.text(l.cmBlock).first);
+        expect(find.text(l.cmBlockConfirmTitle), findsOneWidget);
+        await tester.tap(find.byKey(const ValueKey('cm-block-confirm')));
+        await tester.pumpAndSettle();
+        expect(find.text(l.cmBlockedDone), findsOneWidget);
+        expect(s.store.getStringList(StoreKeys.communityBlocked), [ref]);
+        // Savol va javob (ikkalasi ham shu muallifniki) yashirilgan.
+        expect(find.text(l.cmBlockedHidden), findsWidgets);
+        expect(find.text('Haqoratli javob matni shu yerda.'), findsNothing);
+
+        // Ro'yxatda ko'rinmaydi; “bloklanganlar” bo'limi bor.
+        await goTo(tester, '/profile/community');
+        expect(find.text('Shubhali savol matni bu yerda'), findsNothing);
+        await _see(tester, find.byKey(const ValueKey('cm-blocked-panel')));
+        expect(find.text(l.cmBlockedCount(1)), findsOneWidget);
+
+        await _tap(tester, find.byKey(const ValueKey('cm-unblock-all')));
+        expect(s.store.getStringList(StoreKeys.communityBlocked), isEmpty);
+        await _see(tester, find.text('Shubhali savol matni bu yerda'));
+      },
+    );
+
+    testWidgets(
+      'egasi (LabGuide jamoasi) bloklanmaydi, blok tugmasi chiqmaydi',
+      (tester) async {
+        final (s, _) = await setupBad(tester);
+        final l = _l(AppLanguage.uz);
+        await _signIn(tester, s, 'reader2@example.com');
+        await goTo(tester, '/profile/community');
+        await _tap(tester, find.text(_seedTitle));
+        expect(find.text(l.cmReport), findsWidgets);
+        expect(find.text(l.cmBlock), findsNothing);
+      },
+    );
+
+    testWidgets('aloqa ma\'lumoti hamjamiyat ro\'yxatidan ochiladi', (
+      tester,
+    ) async {
+      await setupBad(tester);
+      final l = _l(AppLanguage.uz);
+      await goTo(tester, '/profile/community');
+      await _tap(tester, find.byKey(const ValueKey('cm-contact-link')));
+      expect(find.text(l.contactTitle), findsWidgets);
+    });
+
+    test('controller: saqlash, o\'zini/belgisizni bloklamaslik', () async {
+      final store = MemoryKeyValueStore();
+      final c = CommunityController(null, store: store);
+      const other = CommunityAuthor(kind: AuthorKind.member, ref: 'r1');
+      const me = CommunityAuthor(
+        kind: AuthorKind.member,
+        ref: 'r2',
+        isMe: true,
+      );
+      const noRef = CommunityAuthor(kind: AuthorKind.member);
+      const owner = CommunityAuthor(kind: AuthorKind.owner, ref: 'r3');
+      expect(c.canBlock(other), isTrue);
+      expect(c.canBlock(me), isFalse);
+      expect(c.canBlock(noRef), isFalse);
+      expect(c.canBlock(owner), isFalse);
+      await c.block(me);
+      await c.block(noRef);
+      await c.block(owner);
+      expect(c.blockedCount, 0);
+      await c.block(other);
+      expect(c.isBlocked(other), isTrue);
+      expect(c.isBlocked(noRef), isFalse);
+      // Yangi controller (ilova qayta ochildi) blokni saqlagan.
+      final again = CommunityController(null, store: store);
+      expect(again.isBlocked(other), isTrue);
+      again.resetInMemory();
+      expect(again.blockedCount, 0);
+    });
   });
 
   for (final lang in AppLanguage.values) {

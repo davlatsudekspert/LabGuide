@@ -8887,4 +8887,40 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get homeAdDemoCta => 'Разместить рекламу';
+
+  @override
+  String get cmBlock => 'Заблокировать пользователя';
+
+  @override
+  String get cmBlockConfirmTitle => 'Заблокировать пользователя?';
+
+  @override
+  String get cmBlockConfirmBody =>
+      'Его вопросы и ответы больше не будут видны на этом устройстве. Блокировку можно снять в списке сообщества.';
+
+  @override
+  String get cmBlockedDone =>
+      'Пользователь заблокирован. Его публикации скрыты.';
+
+  @override
+  String get cmBlockedHidden =>
+      'Публикация скрыта, потому что вы заблокировали её автора.';
+
+  @override
+  String cmBlockedCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Вы заблокировали $count пользователей.',
+      few: 'Вы заблокировали $count пользователей.',
+      one: 'Вы заблокировали $count пользователя.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get cmUnblockAll => 'Разблокировать всех';
+
+  @override
+  String get cmContactLink => 'Связаться с LabGuide (сообщить о проблеме)';
 }

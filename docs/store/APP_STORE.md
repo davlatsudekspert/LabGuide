@@ -240,8 +240,18 @@ a’zolik, javoblar va ball; ustozning guruhlari ham).
 
 ## 7. Age rating
 
-Savolnomada: “Medical or Treatment Information” — **Infrequent/Mild** (o‘quv ma’lumoti,
-tashxis yo‘q); boshqa barcha toifalar — None. Yakuniy reytingni App Store Connect hisoblaydi.
+**To‘liq va yangi javoblar (2025-07 savolnomasi, 13+/16+/18+, “Social media” savoli bilan) —
+[APPLE_2026_REQUIREMENTS.md](../APPLE_2026_REQUIREMENTS.md) 6-bo‘lim.** Qisqasi: Medical or
+Treatment Information — **Infrequent** (natija **13+**); User-Generated Content — **Yes**; Messaging
+and Chat — **Yes** (ommaviy savol-javob, DM yo‘q); Advertising — **Yes** (hamkor reklamasi);
+Social Media — **No** (lenta/ulashish/kuzatish yo‘q); qolganlari None. Yakuniy reytingni App Store
+Connect hisoblaydi. Shuningdek: “regulated medical device” deklaratsiyasi (ikkilamchi toifa Medical
+bo‘lgani uchun majburiy) — o‘sha hujjatning 8-bo‘limi.
+
+> **Eskirgan joylar (2026-10-17):** yuqoridagi tavsiflar va §6 “server ulanmagan” deb yozadi, lekin
+> CI sukut bo‘yicha `LG_API_URL` bilan quradi (email kirish, guruhlar, hamjamiyat ishlaydi). Ommaviy
+> yuborishdan oldin tavsif, App Privacy va `ios/Runner/PrivacyInfo.xcprivacy` build bilan mos
+> bo‘lsin (Apple 2.3.1: aniq metadata).
 
 ## 8. Export compliance
 

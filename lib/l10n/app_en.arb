@@ -5057,5 +5057,41 @@
   },
   "@homeAdDemoCta": {
     "description": "Home tab: button on the demo ad placeholder, opens the become-a-partner page"
+  },
+  "cmBlock": "Block user",
+  "@cmBlock": {
+    "description": "Community moderation (App Store 1.2): cmBlock"
+  },
+  "cmBlockConfirmTitle": "Block this user?",
+  "@cmBlockConfirmTitle": {
+    "description": "Community moderation (App Store 1.2): cmBlockConfirmTitle"
+  },
+  "cmBlockConfirmBody": "You will no longer see their questions or answers on this device. You can undo this in the community list.",
+  "@cmBlockConfirmBody": {
+    "description": "Community moderation (App Store 1.2): cmBlockConfirmBody"
+  },
+  "cmBlockedDone": "User blocked. Their posts are hidden.",
+  "@cmBlockedDone": {
+    "description": "Community moderation (App Store 1.2): cmBlockedDone"
+  },
+  "cmBlockedHidden": "This post is hidden because you blocked its author.",
+  "@cmBlockedHidden": {
+    "description": "Community moderation (App Store 1.2): cmBlockedHidden"
+  },
+  "cmBlockedCount": "{count, plural, =1{You have blocked 1 user.} other{You have blocked {count} users.}}",
+  "@cmBlockedCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "cmUnblockAll": "Unblock everyone",
+  "@cmUnblockAll": {
+    "description": "Community moderation (App Store 1.2): cmUnblockAll"
+  },
+  "cmContactLink": "Contact LabGuide (report a problem)",
+  "@cmContactLink": {
+    "description": "Community moderation (App Store 1.2): cmContactLink"
   }
 }

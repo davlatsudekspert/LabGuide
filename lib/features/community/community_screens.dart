@@ -16,6 +16,7 @@ import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
 import '../admin/admin_screens.dart' show AdminGate;
 import '../learn/exam_widgets.dart' show confirmDialog;
+import 'community_controller.dart';
 import 'community_rules.dart';
 import '../support/support_screens.dart'
     show SignedInGate, backendErrorText, formatWhen;
@@ -352,15 +353,19 @@ class _CommunityHomeCardState extends State<CommunityHomeCard> {
                   child: Center(child: CircularProgressIndicator()),
                 );
               }
+              final items = [
+                for (final q in page.items)
+                  if (!community.isBlocked(q.author)) q,
+              ];
               return Column(
                 children: [
-                  for (final (i, q) in page.items.indexed)
+                  for (final (i, q) in items.indexed)
                     _QuestionRow(
                       q: q,
-                      divider: i < page.items.length - 1,
+                      divider: i < items.length - 1,
                       onReturn: () => setState(_load),
                     ),
-                  if (page.items.isEmpty)
+                  if (items.isEmpty)
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 6),
                       child: Text(l.cmEmptyBody, style: text.bodyMedium),
@@ -553,9 +558,21 @@ class _CommunityListScreenState extends State<CommunityListScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final community = context.services.community;
+    return ListenableBuilder(
+      listenable: community,
+      builder: (context, _) => _buildList(context, community),
+    );
+  }
+
+  Widget _buildList(BuildContext context, CommunityController community) {
     final l = AppLocalizations.of(context);
     final text = Theme.of(context).textTheme;
     final topic = widget.topic;
+    final items = [
+      for (final q in _items)
+        if (!community.isBlocked(q.author)) q,
+    ];
     final body = Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -586,17 +603,17 @@ class _CommunityListScreenState extends State<CommunityListScreen> {
           )
         else if (!_loaded)
           const LgStateView(kind: StateKind.loading, title: '')
-        else if (_items.isEmpty)
+        else if (items.isEmpty)
           LgStateView(
             kind: StateKind.empty,
             title: l.cmEmptyTitle,
             message: widget.mine ? null : l.cmEmptyBody,
           )
         else ...[
-          for (final (i, q) in _items.indexed)
+          for (final (i, q) in items.indexed)
             _QuestionRow(
               q: q,
-              divider: i < _items.length - 1,
+              divider: i < items.length - 1,
               onReturn: _reload,
             ),
           if (_next != null && _items.length < _total)
@@ -610,6 +627,18 @@ class _CommunityListScreenState extends State<CommunityListScreen> {
             ),
           if (_error != null) LgNotice(communityErrorText(_error!, l)),
         ],
+        if (!widget.mine && community.blockedCount > 0)
+          _BlockedPanel(controller: community),
+        if (!widget.mine)
+          // App Store 1.2: foydalanuvchilar sizga oson yetib borishi uchun
+          // ommaviy aloqa ma'lumoti (Profil → Aloqa) hamjamiyat ichidan ham.
+          LgButton.link(
+            key: const ValueKey('cm-contact-link'),
+            label: l.cmContactLink,
+            icon: Icons.mail_outline_rounded,
+            expand: false,
+            onPressed: () => context.push('/profile/contact'),
+          ),
       ],
     );
     return LgPage(
@@ -620,6 +649,40 @@ class _CommunityListScreenState extends State<CommunityListScreen> {
           child: widget.mine ? SignedInGate(child: body) : body,
         ),
       ],
+    );
+  }
+}
+
+/// “Siz N ta foydalanuvchini bloklagansiz” + hammasini qaytarish.
+class _BlockedPanel extends StatelessWidget {
+  const _BlockedPanel({required this.controller});
+
+  final CommunityController controller;
+
+  @override
+  Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context);
+    return Padding(
+      key: const ValueKey('cm-blocked-panel'),
+      padding: const EdgeInsets.only(top: 12),
+      child: LgPanel(
+        soft: true,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              l.cmBlockedCount(controller.blockedCount),
+              style: Theme.of(context).textTheme.bodyMedium,
+            ),
+            LgButton.link(
+              key: const ValueKey('cm-unblock-all'),
+              label: l.cmUnblockAll,
+              expand: false,
+              onPressed: controller.unblockAll,
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
@@ -851,6 +914,34 @@ class _QuestionScreenState extends State<QuestionScreen> {
     );
   }
 
+  Future<void> _block(CommunityAuthor author) async {
+    final l = AppLocalizations.of(context);
+    final community = context.services.community;
+    final ok =
+        await showDialog<bool>(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: Text(l.cmBlockConfirmTitle),
+            content: Text(l.cmBlockConfirmBody),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.of(context).pop(false),
+                child: Text(l.actionCancel),
+              ),
+              TextButton(
+                key: const ValueKey('cm-block-confirm'),
+                onPressed: () => Navigator.of(context).pop(true),
+                child: Text(l.cmBlock),
+              ),
+            ],
+          ),
+        ) ==
+        true;
+    if (!ok || !mounted) return;
+    await community.block(author);
+    if (mounted) _snack(context, l.cmBlockedDone);
+  }
+
   Future<bool> _confirmDelete() async {
     final l = AppLocalizations.of(context);
     return await showDialog<bool>(
@@ -874,6 +965,24 @@ class _QuestionScreenState extends State<QuestionScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final community = context.services.community;
+    return ListenableBuilder(
+      listenable: community,
+      builder: (context, _) => _buildThread(context, community),
+    );
+  }
+
+  /// Bloklangan muallif posti o'rniga: matn ko'rsatilmaydi.
+  Widget _hiddenPanel(AppLocalizations l, {Key? key}) => LgPanel(
+    key: key,
+    soft: true,
+    child: Text(
+      l.cmBlockedHidden,
+      style: Theme.of(context).textTheme.bodyMedium,
+    ),
+  );
+
+  Widget _buildThread(BuildContext context, CommunityController community) {
     final l = AppLocalizations.of(context);
     final text = Theme.of(context).textTheme;
     final t = _thread;
@@ -910,66 +1019,78 @@ class _QuestionScreenState extends State<QuestionScreen> {
                 ),
             ],
           ),
-          LgPanel(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                TranslatablePost(
-                  key: ValueKey('cm-q-${q.id}'),
-                  kind: PostKind.question,
-                  id: q.id,
-                  lang: q.lang,
-                  title: q.title,
-                  body: q.text,
-                ),
-                const SizedBox(height: 10),
-                CommunityAuthorLine(author: q.author, createdAt: q.createdAt),
-                Wrap(
-                  spacing: 4,
-                  children: [
-                    if (signedIn && !q.author.isMe)
-                      LgButton.link(
-                        label: l.cmReport,
-                        icon: Icons.flag_outlined,
-                        expand: false,
-                        onPressed: () => _report(PostKind.question, q.id),
-                      ),
-                    if (t.admin) ...[
-                      LgButton.link(
-                        label: q.pinned ? l.cmUnpin : l.cmPin,
-                        icon: Icons.push_pin_outlined,
-                        expand: false,
-                        onPressed: () => _act(
-                          (api) => api.pinQuestion(q.id, pinned: !q.pinned),
+          if (community.isBlocked(q.author))
+            _hiddenPanel(l, key: ValueKey('cm-q-hidden-${q.id}'))
+          else
+            LgPanel(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  TranslatablePost(
+                    key: ValueKey('cm-q-${q.id}'),
+                    kind: PostKind.question,
+                    id: q.id,
+                    lang: q.lang,
+                    title: q.title,
+                    body: q.text,
+                  ),
+                  const SizedBox(height: 10),
+                  CommunityAuthorLine(author: q.author, createdAt: q.createdAt),
+                  Wrap(
+                    spacing: 4,
+                    children: [
+                      if (signedIn && !q.author.isMe)
+                        LgButton.link(
+                          label: l.cmReport,
+                          icon: Icons.flag_outlined,
+                          expand: false,
+                          onPressed: () => _report(PostKind.question, q.id),
                         ),
-                      ),
-                      LgButton.link(
-                        label: l.cmDelete,
-                        icon: Icons.delete_outline_rounded,
-                        expand: false,
-                        onPressed: () async {
-                          if (!await _confirmDelete() || !context.mounted) {
-                            return;
-                          }
-                          try {
-                            await _api!.deleteQuestion(q.id);
-                            if (!context.mounted) return;
-                            context.services.community.invalidate();
-                            _snack(context, l.cmDeleted);
-                            context.pop();
-                          } on Object catch (e) {
-                            if (context.mounted) {
-                              _snack(context, communityErrorText(e, l));
+                      if (signedIn &&
+                          context.services.community.canBlock(q.author))
+                        LgButton.link(
+                          key: ValueKey('cm-block-q-${q.id}'),
+                          label: l.cmBlock,
+                          icon: Icons.block_rounded,
+                          expand: false,
+                          onPressed: () => _block(q.author),
+                        ),
+                      if (t.admin) ...[
+                        LgButton.link(
+                          label: q.pinned ? l.cmUnpin : l.cmPin,
+                          icon: Icons.push_pin_outlined,
+                          expand: false,
+                          onPressed: () => _act(
+                            (api) => api.pinQuestion(q.id, pinned: !q.pinned),
+                          ),
+                        ),
+                        LgButton.link(
+                          label: l.cmDelete,
+                          icon: Icons.delete_outline_rounded,
+                          expand: false,
+                          onPressed: () async {
+                            if (!await _confirmDelete() || !context.mounted) {
+                              return;
                             }
-                          }
-                        },
-                      ),
+                            try {
+                              await _api!.deleteQuestion(q.id);
+                              if (!context.mounted) return;
+                              context.services.community.invalidate();
+                              _snack(context, l.cmDeleted);
+                              context.pop();
+                            } on Object catch (e) {
+                              if (context.mounted) {
+                                _snack(context, communityErrorText(e, l));
+                              }
+                            }
+                          },
+                        ),
+                      ],
                     ],
-                  ],
-                ),
-              ],
+                  ),
+                ],
+              ),
             ),
-          ),
           LgSectionTitle(l.cmAnswers(t.answers.length)),
           for (final a in t.answers) _answerCard(context, t, a),
           const SizedBox(height: 8),
@@ -1045,6 +1166,9 @@ class _QuestionScreenState extends State<QuestionScreen> {
     final text = Theme.of(context).textTheme;
     final signedIn = _api?.hasSession ?? false;
     final canVote = t.canVote && !a.author.isMe;
+    if (context.services.community.isBlocked(a.author)) {
+      return _hiddenPanel(l, key: ValueKey('cm-answer-hidden-${a.id}'));
+    }
     return LgPanel(
       key: ValueKey('cm-answer-${a.id}'),
       child: Column(
@@ -1102,6 +1226,14 @@ class _QuestionScreenState extends State<QuestionScreen> {
                   icon: Icons.flag_outlined,
                   expand: false,
                   onPressed: () => _report(PostKind.answer, a.id),
+                ),
+              if (signedIn && context.services.community.canBlock(a.author))
+                LgButton.link(
+                  key: ValueKey('cm-block-a-${a.id}'),
+                  label: l.cmBlock,
+                  icon: Icons.block_rounded,
+                  expand: false,
+                  onPressed: () => _block(a.author),
                 ),
               if (t.admin)
                 LgButton.link(

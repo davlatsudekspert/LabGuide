@@ -224,6 +224,7 @@ class CommunityAuthor {
     this.role,
     this.country,
     this.isMe = false,
+    this.ref,
   });
 
   factory CommunityAuthor.fromJson(Map<String, Object?> j) => CommunityAuthor(
@@ -237,6 +238,7 @@ class CommunityAuthor {
     role: SpecialistRole.parse(j['role']),
     country: j['country'] as String?,
     isMe: j['is_me'] == true,
+    ref: j['ref'] as String?,
   );
 
   final AuthorKind kind;
@@ -248,6 +250,11 @@ class CommunityAuthor {
   final SpecialistRole? role;
   final String? country;
   final bool isMe;
+
+  /// Muallifning ma'lum bir hisobga qaytarib bo'lmaydigan, barqaror belgisi
+  /// (serverdagi `author_hash` ning qisqa hosilasi; ism/email emas). Faqat
+  /// “bloklash” uchun (App Store 1.2): `null` bo'lsa blok tugmasi chiqmaydi.
+  final String? ref;
 }
 
 @immutable

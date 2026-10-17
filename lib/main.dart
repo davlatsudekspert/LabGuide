@@ -165,6 +165,7 @@ AppServices createServices({
       community ??
           (server is CommunityBackend ? server as CommunityBackend : null),
       clock: clock,
+      store: store,
     ),
   )..watchAccess();
 }
