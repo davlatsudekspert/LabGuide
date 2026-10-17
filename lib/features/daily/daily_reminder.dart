@@ -9,6 +9,9 @@ import 'package:timezone/timezone.dart' as tz;
 import '../../core/storage/kv_store.dart';
 import '../../l10n/gen/app_localizations.dart';
 import '../settings/settings_controller.dart';
+import '../toifa/toifa_bank.dart' show toifaAvailable;
+import '../toifa/toifa_controller.dart';
+import '../toifa/toifa_daily.dart' show ToifaGoal;
 import 'daily_controller.dart';
 
 /// Bildirishnomaga ruxsat natijasi.
@@ -23,17 +26,41 @@ enum ReminderPermission {
 /// Eslatma matnlari (ilova tilida).
 typedef ReminderTexts = ({String title, String body, String channel});
 
+/// Eslatma turi: har biri o'z bildirishnoma id lari va kanali bilan —
+/// birini rejalashtirish/bekor qilish ikkinchisiga tegmaydi.
+enum ReminderSlot {
+  /// Kunlik 5 ta savol.
+  daily(7100, 'daily_reminder'),
+
+  /// Toifa mashg'uloti ("ertaga davom etamiz").
+  toifa(7200, 'toifa_reminder');
+
+  const ReminderSlot(this.baseId, this.channelId);
+
+  final int baseId;
+  final String channelId;
+
+  /// Bildirishnoma `payload` idan (eski/bo'sh — kunlik).
+  static ReminderSlot fromPayload(String? payload) =>
+      payload == toifa.name ? toifa : daily;
+}
+
 /// Lokal bildirishnoma rejalashtiruvchi. Server/push yo'q — hammasi
 /// qurilmaning o'zida.
 abstract interface class ReminderScheduler {
   Future<ReminderPermission> requestPermission();
 
-  /// Oldingi eslatmalar o'chiriladi, [times] dagi har biri bir martalik.
-  Future<void> schedule(List<DateTime> times, ReminderTexts texts);
-  Future<void> cancelAll();
+  /// Shu turdagi oldingi eslatmalar o'chiriladi, [times] dagi har biri bir
+  /// martalik.
+  Future<void> schedule(
+    List<DateTime> times,
+    ReminderTexts texts, {
+    ReminderSlot slot = ReminderSlot.daily,
+  });
+  Future<void> cancelAll({ReminderSlot slot = ReminderSlot.daily});
 
   /// Bildirishnoma bosilganda (ilova ochilganda ham) chaqiriladi.
-  set onOpen(VoidCallback? callback);
+  set onOpen(ValueChanged<ReminderSlot>? callback);
 }
 
 /// Oldindan rejalashtiriladigan kunlar soni: ilova shuncha kun ochilmasa,
@@ -65,15 +92,12 @@ List<DateTime> upcomingReminderTimes(
 class LocalReminderScheduler implements ReminderScheduler {
   LocalReminderScheduler();
 
-  static const _baseId = 7100;
-  static const _channelId = 'daily_reminder';
-
   final _plugin = FlutterLocalNotificationsPlugin();
   Future<bool>? _ready;
-  VoidCallback? _onOpen;
+  ValueChanged<ReminderSlot>? _onOpen;
 
   @override
-  set onOpen(VoidCallback? callback) {
+  set onOpen(ValueChanged<ReminderSlot>? callback) {
     _onOpen = callback;
     unawaited(_init());
   }
@@ -90,10 +114,15 @@ class LocalReminderScheduler implements ReminderScheduler {
             requestSoundPermission: false,
           ),
         ),
-        onDidReceiveNotificationResponse: (_) => _onOpen?.call(),
+        onDidReceiveNotificationResponse: (r) =>
+            _onOpen?.call(ReminderSlot.fromPayload(r.payload)),
       );
       final launch = await _plugin.getNotificationAppLaunchDetails();
-      if (launch?.didNotificationLaunchApp ?? false) _onOpen?.call();
+      if (launch?.didNotificationLaunchApp ?? false) {
+        _onOpen?.call(
+          ReminderSlot.fromPayload(launch!.notificationResponse?.payload),
+        );
+      }
       return true;
     } on MissingPluginException {
       return false;
@@ -132,26 +161,31 @@ class LocalReminderScheduler implements ReminderScheduler {
     }
   }
 
-  Future<void> _cancelOurs() async {
+  Future<void> _cancelOurs(ReminderSlot slot) async {
     for (var i = 0; i <= kReminderDays; i++) {
-      await _plugin.cancel(id: _baseId + i);
+      await _plugin.cancel(id: slot.baseId + i);
     }
   }
 
   @override
-  Future<void> schedule(List<DateTime> times, ReminderTexts texts) async {
+  Future<void> schedule(
+    List<DateTime> times,
+    ReminderTexts texts, {
+    ReminderSlot slot = ReminderSlot.daily,
+  }) async {
     if (!await _init()) return;
     try {
-      await _cancelOurs();
+      await _cancelOurs(slot);
       final details = NotificationDetails(
-        android: AndroidNotificationDetails(_channelId, texts.channel),
+        android: AndroidNotificationDetails(slot.channelId, texts.channel),
         iOS: const DarwinNotificationDetails(),
       );
       for (final (i, t) in times.indexed) {
         await _plugin.zonedSchedule(
-          id: _baseId + i,
+          id: slot.baseId + i,
           title: texts.title,
           body: texts.body,
+          payload: slot.name,
           // Aniq lahza (UTC): mahalliy vaqt mintaqasi bazasi kerak emas.
           scheduledDate: tz.TZDateTime.from(t.toUtc(), tz.UTC),
           notificationDetails: details,
@@ -164,10 +198,10 @@ class LocalReminderScheduler implements ReminderScheduler {
   }
 
   @override
-  Future<void> cancelAll() async {
+  Future<void> cancelAll({ReminderSlot slot = ReminderSlot.daily}) async {
     if (!await _init()) return;
     try {
-      await _cancelOurs();
+      await _cancelOurs(slot);
     } on PlatformException catch (e) {
       debugPrint('reminder cancel failed: $e');
     }
@@ -182,11 +216,13 @@ class ReminderController extends ChangeNotifier {
     this._scheduler, {
     required this.daily,
     required this.settings,
+    this.toifa,
   }) {
     _read();
     _scheduler.onOpen = _requestOpen;
     var todayDone = daily.streak.todayDone;
     var language = settings.language;
+    var role = settings.role;
     daily.addListener(() {
       final done = daily.streak.todayDone;
       if (done == todayDone) return;
@@ -194,10 +230,30 @@ class ReminderController extends ChangeNotifier {
       unawaited(sync());
     });
     settings.addListener(() {
-      if (settings.language == language) return;
+      if (settings.language == language && settings.role == role) return;
+      final languageChanged = settings.language != language;
       language = settings.language;
-      unawaited(sync());
+      role = settings.role;
+      if (languageChanged) unawaited(sync());
+      unawaited(syncToifa());
     });
+    final t = toifa;
+    if (t != null) {
+      var goalMet = t.todayGoalMet;
+      var goal = t.goalQuestions;
+      var day = t.today;
+      t.addListener(() {
+        if (t.todayGoalMet == goalMet &&
+            t.goalQuestions == goal &&
+            t.today == day) {
+          return;
+        }
+        goalMet = t.todayGoalMet;
+        goal = t.goalQuestions;
+        day = t.today;
+        unawaited(syncToifa());
+      });
+    }
   }
 
   static const defaultHour = 20;
@@ -208,12 +264,22 @@ class ReminderController extends ChangeNotifier {
   final DailyController daily;
   final SettingsController settings;
 
+  /// Toifa mashg'uloti (berilmasa — toifa eslatmasi yo'q).
+  final ToifaController? toifa;
+
   bool _enabled = false;
   int _hour = defaultHour;
   int _minute = defaultMinute;
   bool _offerClosed = false;
   ReminderPermission? _lastDenied;
   bool _openPending = false;
+
+  bool _toifaEnabled = false;
+  int _toifaHour = defaultHour;
+  int _toifaMinute = defaultMinute;
+  bool _toifaOfferClosed = false;
+  ReminderPermission? _toifaDenied;
+  bool _toifaOpenPending = false;
 
   bool get enabled => _enabled;
   int get hour => _hour;
@@ -225,7 +291,19 @@ class ReminderController extends ChangeNotifier {
   /// Taklif ko'rsatilsinmi: eslatma o'chiq, taklif yopilmagan.
   bool get shouldOffer => !_enabled && !_offerClosed;
 
+  /// Toifa eslatmasi (standart o'chiq) va vaqti.
+  bool get toifaEnabled => _toifaEnabled;
+  int get toifaHour => _toifaHour;
+  int get toifaMinute => _toifaMinute;
+  ReminderPermission? get toifaDenied => _toifaDenied;
+
+  /// "Ertaga davom etamizmi?" taklifi: bugungi maqsad bajarilgan va taklif
+  /// yopilmagan (yoqilgan bo'lsa ham ko'rinadi — ertangi vaqtni eslatadi).
+  bool get shouldOfferToifa =>
+      (toifa?.todayGoalMet ?? false) && !_toifaOfferClosed;
+
   void _read() {
+    _readToifa();
     final raw = _store.getString(StoreKeys.dailyReminder);
     if (raw == null) return;
     try {
@@ -249,9 +327,45 @@ class ReminderController extends ChangeNotifier {
     }),
   );
 
-  void _requestOpen() {
-    _openPending = true;
+  void _readToifa() {
+    final raw = _store.getString(StoreKeys.toifaReminder);
+    if (raw == null) return;
+    try {
+      final j = (jsonDecode(raw) as Map).cast<String, Object?>();
+      _toifaEnabled = j['on'] as bool? ?? false;
+      _toifaHour = (j['h'] as int? ?? defaultHour).clamp(0, 23);
+      _toifaMinute = (j['m'] as int? ?? defaultMinute).clamp(0, 59);
+      _toifaOfferClosed = j['offer'] as bool? ?? false;
+    } on Object {
+      // Buzilgan yozuv — standart (o'chiq).
+    }
+  }
+
+  Future<void> _saveToifa() => _store.setString(
+    StoreKeys.toifaReminder,
+    jsonEncode({
+      'on': _toifaEnabled,
+      'h': _toifaHour,
+      'm': _toifaMinute,
+      'offer': _toifaOfferClosed,
+    }),
+  );
+
+  void _requestOpen(ReminderSlot slot) {
+    if (slot == ReminderSlot.toifa) {
+      _toifaOpenPending = true;
+    } else {
+      _openPending = true;
+    }
     notifyListeners();
+  }
+
+  /// Toifa eslatmasi bosilgan bo'lsa — bir marta true (ilova toifa
+  /// bo'limini ochadi).
+  bool takeToifaOpenRequest() {
+    final p = _toifaOpenPending;
+    _toifaOpenPending = false;
+    return p;
   }
 
   /// Bildirishnoma bosilgan bo'lsa — bir marta true (ilova kunlik savolni
@@ -326,15 +440,107 @@ class ReminderController extends ChangeNotifier {
     await _save();
   }
 
+  // ----------------------------------------------------- Toifa eslatmasi
+
+  ReminderTexts _toifaTexts() {
+    final l = lookupAppLocalizations(settings.language.locale);
+    return (
+      title: l.toifaReminderTitle,
+      body: l.toifaReminderBody(
+        toifa?.goalQuestions ?? ToifaGoal.defaultQuestions,
+      ),
+      channel: l.toifaReminderChannel,
+    );
+  }
+
+  /// Toifa bo'limi shu foydalanuvchiga ochiqmi (til/mintaqa, rol).
+  bool get _toifaAllowed => toifaAvailable(
+    settings.language,
+    PlatformDispatcher.instance.locales,
+    role: settings.role,
+  );
+
+  /// Toifa eslatmasi rejasi: bugungi maqsad bajarilgan bo'lsa — ertadan.
+  /// Bo'lim yopiq (masalan, rol o'zgardi) — eslatmalar bekor qilinadi.
+  Future<void> syncToifa() async {
+    final t = toifa;
+    if (!_toifaEnabled || t == null) return;
+    if (!_toifaAllowed) {
+      await _scheduler.cancelAll(slot: ReminderSlot.toifa);
+      return;
+    }
+    await _scheduler.schedule(
+      upcomingReminderTimes(
+        t.now(),
+        hour: _toifaHour,
+        minute: _toifaMinute,
+        todayDone: t.todayGoalMet,
+      ),
+      _toifaTexts(),
+      slot: ReminderSlot.toifa,
+    );
+  }
+
+  /// Toifa eslatmasini yoqish (ixtiyoriy vaqt bilan): avval tizim ruxsati
+  /// (iOS/Android oynasi). Rad etilsa — o'chiq qoladi.
+  Future<ReminderPermission> enableToifa({int? hour, int? minute}) async {
+    final p = await _scheduler.requestPermission();
+    if (p != ReminderPermission.granted) {
+      _toifaDenied = p;
+      notifyListeners();
+      return p;
+    }
+    if (hour != null) _toifaHour = hour.clamp(0, 23);
+    if (minute != null) _toifaMinute = minute.clamp(0, 59);
+    _toifaEnabled = true;
+    _toifaDenied = null;
+    notifyListeners();
+    await _saveToifa();
+    await syncToifa();
+    return p;
+  }
+
+  Future<void> disableToifa() async {
+    _toifaEnabled = false;
+    _toifaDenied = null;
+    notifyListeners();
+    await _saveToifa();
+    await _scheduler.cancelAll(slot: ReminderSlot.toifa);
+  }
+
+  /// Vaqt (eslatma o'chiq bo'lsa ham — yoqilganda shu vaqt olinadi).
+  Future<void> setToifaTime(int hour, int minute) async {
+    _toifaHour = hour.clamp(0, 23);
+    _toifaMinute = minute.clamp(0, 59);
+    notifyListeners();
+    await _saveToifa();
+    await syncToifa();
+  }
+
+  /// "Kerak emas" — natijalardagi taklif boshqa ko'rsatilmaydi (sozlama
+  /// "Bugun" kartasida qoladi).
+  Future<void> closeToifaOffer() async {
+    _toifaOfferClosed = true;
+    notifyListeners();
+    await _saveToifa();
+  }
+
   /// "Lokal ma'lumotlarni o'chirish": eslatmalar ham bekor qilinadi.
   Future<void> reset() async {
     final was = _enabled;
+    final wasToifa = _toifaEnabled;
     _enabled = false;
     _hour = defaultHour;
     _minute = defaultMinute;
     _offerClosed = false;
     _lastDenied = null;
+    _toifaEnabled = false;
+    _toifaHour = defaultHour;
+    _toifaMinute = defaultMinute;
+    _toifaOfferClosed = false;
+    _toifaDenied = null;
     notifyListeners();
     if (was) await _scheduler.cancelAll();
+    if (wasToifa) await _scheduler.cancelAll(slot: ReminderSlot.toifa);
   }
 }

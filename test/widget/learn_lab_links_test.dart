@@ -95,7 +95,8 @@ void main() {
     await pumpApp(tester, s);
     await goTo(tester, '/learn/toifa/practice/anemias');
     await _tab(tester, uz.navHome);
-    await tapScroll(tester, uz.toifaOpen);
+    // Bo'lim ochilgan — bosh sahifada "Bugun" kartasi (D-60).
+    await tapScroll(tester, uz.toifaContinue);
     expect(_loc(tester), '/learn/toifa');
   });
 }

@@ -200,6 +200,13 @@ Future<void> recordExamProgress(AppServices services, ExamSession s) async {
       correct: s.isCorrect(i),
     );
   }
+  // Toifa testi — bugungi mashg'ulot hisobiga (kunlik maqsad, seriya).
+  if (s.sourceId == ToifaQuestionSource.sourceId) {
+    await services.toifa.recordAnswers(
+      answered: s.answeredCount,
+      correct: s.correctCount,
+    );
+  }
 }
 
 /// Mavzular: ko'p tanlovli chiplar. Bo'sh tanlov — “Hammasi”.

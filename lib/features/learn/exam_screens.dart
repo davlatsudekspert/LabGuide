@@ -11,6 +11,7 @@ import '../../l10n/gen/app_localizations.dart';
 import '../share/result_share.dart';
 import '../support/support_screens.dart' show formatWhen;
 import '../toifa/toifa_bank.dart';
+import '../toifa/toifa_today.dart' show ToifaReminderOffer;
 import 'exam_controller.dart';
 import 'exam_question.dart';
 import 'exam_session.dart';
@@ -625,6 +626,9 @@ class _ExamResultScreenState extends State<ExamResultScreen> {
               ),
           ],
         ),
+        // Toifa: kunlik maqsad bajarilgan bo'lsa — "Ertaga davom etamizmi?"
+        if (s.sourceId == ToifaQuestionSource.sourceId)
+          const ToifaReminderOffer(),
         const SizedBox(height: 6),
         if (mistakes.isNotEmpty) ...[
           LgButton(

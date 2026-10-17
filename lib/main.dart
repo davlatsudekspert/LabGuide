@@ -63,6 +63,7 @@ Future<void> main() async {
   unawaited(services.partners.refresh(force: true));
   // Kunlik eslatma yoqilgan bo'lsa — keyingi kunlar rejasi yangilanadi.
   unawaited(services.reminders.sync());
+  unawaited(services.reminders.syncToifa());
   runApp(LabGuideApp(services: services));
 }
 
@@ -86,6 +87,7 @@ AppServices createServices({
   final server = backend ?? _defaultBackend();
   final settings = SettingsController(store, systemLocales: systemLocales);
   final daily = DailyController(store, clock: clock);
+  final toifa = ToifaController(store, bundle: bundle, clock: clock);
   return AppServices(
     config: config,
     store: store,
@@ -124,7 +126,7 @@ AppServices createServices({
     backend: server,
     access: AccessController(server),
     partners: PartnersController(store, server),
-    toifa: ToifaController(store, bundle: bundle),
+    toifa: toifa,
     differential: DifferentialController(store),
     daily: daily,
     reminders: ReminderController(
@@ -132,6 +134,7 @@ AppServices createServices({
       reminderScheduler ?? LocalReminderScheduler(),
       daily: daily,
       settings: settings,
+      toifa: toifa,
     ),
     sharer: sharer ?? const SystemResultSharer(),
     curriculum: CurriculumController(bundle: bundle, curriculum: curriculum),

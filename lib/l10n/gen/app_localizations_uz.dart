@@ -4340,6 +4340,192 @@ class AppLocalizationsUz extends AppLocalizations {
   String get toifaTestStart => 'Testni boshlash';
 
   @override
+  String get toifaTodayEyebrow => 'Bugun';
+
+  @override
+  String toifaTodayGoal(int count) {
+    return 'Maqsad: $count ta savol yoki 1 bilet';
+  }
+
+  @override
+  String get toifaTodayDone => 'Bugungi maqsad bajarildi';
+
+  @override
+  String toifaTodayProgress(int answered, int goal) {
+    return '$answered/$goal savol';
+  }
+
+  @override
+  String toifaTodayCorrect(int percent) {
+    return '$percent% to‘g‘ri';
+  }
+
+  @override
+  String toifaTodayTickets(int count) {
+    return 'biletlar: $count';
+  }
+
+  @override
+  String toifaStreakDays(int count) {
+    return '$count kun ketma-ket';
+  }
+
+  @override
+  String get toifaTodayNone => 'Bugun hali mashg‘ulot bo‘lmadi.';
+
+  @override
+  String get toifaTodayTomorrow => 'Ertaga ham davom eting — seriya uzilmasin.';
+
+  @override
+  String toifaWeekLabel(String values) {
+    return 'So‘nggi 7 kun: $values';
+  }
+
+  @override
+  String get toifaGoalLabel => 'Kunlik maqsad';
+
+  @override
+  String toifaGoalOption(int count) {
+    return '$count savol';
+  }
+
+  @override
+  String get toifaGoalHint =>
+      'Yoki 1 ta og‘zaki bilet — qaysi biri oldin bajarilsa.';
+
+  @override
+  String get toifaReminderTitle => 'LabGuide · Toifa';
+
+  @override
+  String toifaReminderBody(int count) {
+    return 'Bugungi toifa mashg‘uloti sizni kutmoqda — $count ta savol yoki 1 bilet';
+  }
+
+  @override
+  String get toifaReminderChannel => 'Toifa eslatmasi';
+
+  @override
+  String get toifaOfferTitle => 'Ertaga davom etamizmi?';
+
+  @override
+  String get toifaOfferBody =>
+      'Eslatma vaqtini tanlang. Maqsadni bajargan kuningiz eslatma kelmaydi.';
+
+  @override
+  String toifaOfferOn(String time) {
+    return 'Ertaga soat $time da eslatamiz.';
+  }
+
+  @override
+  String get toifaModeTitle => 'Rejim';
+
+  @override
+  String get toifaModeExam => 'Imtihon rejimi';
+
+  @override
+  String get toifaModeExamSub =>
+      'Vaqt bilan; ball va xatolar oxirida — haqiqiy imtihondek.';
+
+  @override
+  String get toifaModePractice => 'Mashq rejimi — xato darhol ko‘rinadi';
+
+  @override
+  String get toifaModePracticeSub =>
+      'Har javobdan keyin to‘g‘ri javob va izoh; vaqt yo‘q.';
+
+  @override
+  String get toifaDrillStep2 =>
+      'Javob bergan zahoti to‘g‘ri yoki xato ko‘rinadi: rasmiy kalit va (bo‘lsa) izoh, manba.';
+
+  @override
+  String get toifaDrillStep3 =>
+      'Ilova yopilsa ham joyidan davom etasiz; yakunda xatolarni qayta ishlash.';
+
+  @override
+  String get toifaDrillStart => 'Mashqni boshlash';
+
+  @override
+  String toifaDrillActive(int answered, int total) {
+    return 'Mashq davom etmoqda: $answered/$total';
+  }
+
+  @override
+  String get toifaDrillTitle => 'Mashq rejimi';
+
+  @override
+  String get toifaDrillRework => 'Xatolarni qayta ishlash';
+
+  @override
+  String toifaDrillScore(int right, int wrong) {
+    return 'To‘g‘ri: $right · xato: $wrong';
+  }
+
+  @override
+  String get toifaDrillFinishEarly => 'Hozircha yakunlash';
+
+  @override
+  String get toifaDrillFinishBody =>
+      'Javobsiz savollar noto‘g‘ri sanaladi. Berilgan javoblar xatolar ro‘yxatida qoladi.';
+
+  @override
+  String get toifaDrillDiscardTitle => 'Mashq to‘xtatilsinmi?';
+
+  @override
+  String get toifaDrillNone => 'Davom etayotgan mashq yo‘q';
+
+  @override
+  String get toifaDrillNew => 'Yangi test';
+
+  @override
+  String toifaDrillUnanswered(int count) {
+    return 'Javobsiz: $count';
+  }
+
+  @override
+  String get toifaThinkHint =>
+      'Javobni o‘ylab ko‘ring: ovoz chiqarib ayting yoki qog‘ozga yozing. So‘ng rejani ochib solishtiring.';
+
+  @override
+  String toifaThinkTimer(int minutes) {
+    return '$minutes daqiqa o‘ylash';
+  }
+
+  @override
+  String toifaThinkLeft(String time) {
+    return 'O‘ylash vaqti: $time';
+  }
+
+  @override
+  String get toifaThinkUp => 'Vaqt tugadi — endi rejani ochib solishtiring.';
+
+  @override
+  String get toifaThinkStop => 'Taymerni to‘xtatish';
+
+  @override
+  String get toifaChecklistToggle =>
+      'Javob rejasini taqqoslash uchun asosiy so‘zlar';
+
+  @override
+  String get toifaChecklistHint =>
+      'Javobingizda bo‘lganlarini belgilang (faqat qurilmada, yozish shart emas).';
+
+  @override
+  String toifaChecklistCount(int done, int total) {
+    return '$done/$total belgilandi';
+  }
+
+  @override
+  String get toifaRepeatTitle => 'Takrorlash kerak';
+
+  @override
+  String get toifaRepeatNote =>
+      '“Qisman” va “Bilmadim” savollari keyingi biletlarda birinchi bo‘lib qaytadi.';
+
+  @override
+  String get toifaRepeatNone =>
+      'Hammasini bildingiz — keyingi biletda yangi savollar.';
+
+  @override
   String get toifaPracticeSubtitle => 'Javobdan keyin darhol kalit';
 
   @override
@@ -4436,10 +4622,10 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get toifaPrepHint =>
-      'Har savolga javobingizni tayyorlang. Tayyor bo‘lgach, javob rejalarini birma-bir ko‘rib, o‘zingizni baholaysiz.';
+      'Ilovaga yozish shart emas. Har savolga javobni o‘ylab ko‘ring — ovoz chiqarib ayting yoki qog‘ozga yozing. So‘ng javob rejasi bilan solishtirib, o‘zingizni baholaysiz.';
 
   @override
-  String get toifaShowPlans => 'Javob rejasini ko‘rish';
+  String get toifaShowPlans => 'Savollarga birma-bir javob berish';
 
   @override
   String get toifaShowPlan => 'Javob rejasini ko‘rish';

@@ -54,6 +54,14 @@ abstract final class StoreKeys {
   static const toifaTicket = 'toifa.ticket';
   static const toifaTestSettings = 'toifa.testSettings';
 
+  /// Toifa: kunlik mashg'ulot hisobi (mahalliy sana bo'yicha) va maqsad,
+  /// og'zaki savollar Leitner qutilari, mashq rejimidagi test qoralamasi va
+  /// "ertaga davom etish" eslatmasi — faqat shu qurilmada.
+  static const toifaDaily = 'toifa.daily';
+  static const toifaLeitner = 'toifa.leitner';
+  static const toifaDrill = 'toifa.drill';
+  static const toifaReminder = 'toifa.reminder';
+
   /// Leykoformula: joriy sanash (qoralama) va saqlangan natijalar.
   static const differentialDraft = 'differential.draft';
   static const differentialHistory = 'differential.history';
@@ -120,6 +128,10 @@ abstract final class StoreKeys {
     toifaOral,
     toifaTicket,
     toifaTestSettings,
+    toifaDaily,
+    toifaLeitner,
+    toifaDrill,
+    toifaReminder,
     differentialDraft,
     differentialHistory,
     differentialEyesFree,

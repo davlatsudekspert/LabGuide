@@ -7678,6 +7678,294 @@ abstract class AppLocalizations {
   /// **'Start test'**
   String get toifaTestStart;
 
+  /// No description provided for @toifaTodayEyebrow.
+  ///
+  /// In en, this message translates to:
+  /// **'Today'**
+  String get toifaTodayEyebrow;
+
+  /// No description provided for @toifaTodayGoal.
+  ///
+  /// In en, this message translates to:
+  /// **'Goal: {count} questions or 1 ticket'**
+  String toifaTodayGoal(int count);
+
+  /// No description provided for @toifaTodayDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Today’s goal is done'**
+  String get toifaTodayDone;
+
+  /// No description provided for @toifaTodayProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'{answered}/{goal} questions'**
+  String toifaTodayProgress(int answered, int goal);
+
+  /// No description provided for @toifaTodayCorrect.
+  ///
+  /// In en, this message translates to:
+  /// **'{percent}% correct'**
+  String toifaTodayCorrect(int percent);
+
+  /// No description provided for @toifaTodayTickets.
+  ///
+  /// In en, this message translates to:
+  /// **'tickets: {count}'**
+  String toifaTodayTickets(int count);
+
+  /// No description provided for @toifaStreakDays.
+  ///
+  /// In en, this message translates to:
+  /// **'{count}-day streak'**
+  String toifaStreakDays(int count);
+
+  /// No description provided for @toifaTodayNone.
+  ///
+  /// In en, this message translates to:
+  /// **'No practice yet today.'**
+  String get toifaTodayNone;
+
+  /// No description provided for @toifaTodayTomorrow.
+  ///
+  /// In en, this message translates to:
+  /// **'Come back tomorrow to keep your streak.'**
+  String get toifaTodayTomorrow;
+
+  /// No description provided for @toifaWeekLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Last 7 days: {values}'**
+  String toifaWeekLabel(String values);
+
+  /// No description provided for @toifaGoalLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily goal'**
+  String get toifaGoalLabel;
+
+  /// No description provided for @toifaGoalOption.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} questions'**
+  String toifaGoalOption(int count);
+
+  /// No description provided for @toifaGoalHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Or 1 oral ticket — whichever comes first.'**
+  String get toifaGoalHint;
+
+  /// No description provided for @toifaReminderTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'LabGuide · Qualification'**
+  String get toifaReminderTitle;
+
+  /// No description provided for @toifaReminderBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Today’s qualification practice is waiting — {count} questions or 1 ticket'**
+  String toifaReminderBody(int count);
+
+  /// No description provided for @toifaReminderChannel.
+  ///
+  /// In en, this message translates to:
+  /// **'Qualification reminder'**
+  String get toifaReminderChannel;
+
+  /// No description provided for @toifaOfferTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue tomorrow?'**
+  String get toifaOfferTitle;
+
+  /// No description provided for @toifaOfferBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick a reminder time. There’s no reminder on days you’ve met the goal.'**
+  String get toifaOfferBody;
+
+  /// No description provided for @toifaOfferOn.
+  ///
+  /// In en, this message translates to:
+  /// **'We’ll remind you tomorrow at {time}.'**
+  String toifaOfferOn(String time);
+
+  /// No description provided for @toifaModeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Mode'**
+  String get toifaModeTitle;
+
+  /// No description provided for @toifaModeExam.
+  ///
+  /// In en, this message translates to:
+  /// **'Exam mode'**
+  String get toifaModeExam;
+
+  /// No description provided for @toifaModeExamSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Timed; score and mistakes at the end — like the real exam.'**
+  String get toifaModeExamSub;
+
+  /// No description provided for @toifaModePractice.
+  ///
+  /// In en, this message translates to:
+  /// **'Practice mode — mistakes shown right away'**
+  String get toifaModePractice;
+
+  /// No description provided for @toifaModePracticeSub.
+  ///
+  /// In en, this message translates to:
+  /// **'After each answer: the correct option and note; no timer.'**
+  String get toifaModePracticeSub;
+
+  /// No description provided for @toifaDrillStep2.
+  ///
+  /// In en, this message translates to:
+  /// **'Right after answering you see if it’s correct: the official key and (if any) a note and source.'**
+  String get toifaDrillStep2;
+
+  /// No description provided for @toifaDrillStep3.
+  ///
+  /// In en, this message translates to:
+  /// **'Resume where you left off even after closing the app; rework your mistakes at the end.'**
+  String get toifaDrillStep3;
+
+  /// No description provided for @toifaDrillStart.
+  ///
+  /// In en, this message translates to:
+  /// **'Start practice'**
+  String get toifaDrillStart;
+
+  /// No description provided for @toifaDrillActive.
+  ///
+  /// In en, this message translates to:
+  /// **'Practice in progress: {answered}/{total}'**
+  String toifaDrillActive(int answered, int total);
+
+  /// No description provided for @toifaDrillTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Practice mode'**
+  String get toifaDrillTitle;
+
+  /// No description provided for @toifaDrillRework.
+  ///
+  /// In en, this message translates to:
+  /// **'Rework mistakes'**
+  String get toifaDrillRework;
+
+  /// No description provided for @toifaDrillScore.
+  ///
+  /// In en, this message translates to:
+  /// **'Correct: {right} · wrong: {wrong}'**
+  String toifaDrillScore(int right, int wrong);
+
+  /// No description provided for @toifaDrillFinishEarly.
+  ///
+  /// In en, this message translates to:
+  /// **'Finish now'**
+  String get toifaDrillFinishEarly;
+
+  /// No description provided for @toifaDrillFinishBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Unanswered questions count as wrong. Your answers stay in the mistakes list.'**
+  String get toifaDrillFinishBody;
+
+  /// No description provided for @toifaDrillDiscardTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Abandon this practice?'**
+  String get toifaDrillDiscardTitle;
+
+  /// No description provided for @toifaDrillNone.
+  ///
+  /// In en, this message translates to:
+  /// **'No practice in progress'**
+  String get toifaDrillNone;
+
+  /// No description provided for @toifaDrillNew.
+  ///
+  /// In en, this message translates to:
+  /// **'New test'**
+  String get toifaDrillNew;
+
+  /// No description provided for @toifaDrillUnanswered.
+  ///
+  /// In en, this message translates to:
+  /// **'Unanswered: {count}'**
+  String toifaDrillUnanswered(int count);
+
+  /// No description provided for @toifaThinkHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Think through your answer: say it out loud or jot it on paper. Then open the plan and compare.'**
+  String get toifaThinkHint;
+
+  /// No description provided for @toifaThinkTimer.
+  ///
+  /// In en, this message translates to:
+  /// **'{minutes}-min think timer'**
+  String toifaThinkTimer(int minutes);
+
+  /// No description provided for @toifaThinkLeft.
+  ///
+  /// In en, this message translates to:
+  /// **'Think time: {time}'**
+  String toifaThinkLeft(String time);
+
+  /// No description provided for @toifaThinkUp.
+  ///
+  /// In en, this message translates to:
+  /// **'Time’s up — open the plan and compare.'**
+  String get toifaThinkUp;
+
+  /// No description provided for @toifaThinkStop.
+  ///
+  /// In en, this message translates to:
+  /// **'Stop timer'**
+  String get toifaThinkStop;
+
+  /// No description provided for @toifaChecklistToggle.
+  ///
+  /// In en, this message translates to:
+  /// **'Key points to compare with the plan'**
+  String get toifaChecklistToggle;
+
+  /// No description provided for @toifaChecklistHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Tick what your answer covered (on this device only, no typing).'**
+  String get toifaChecklistHint;
+
+  /// No description provided for @toifaChecklistCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{done}/{total} ticked'**
+  String toifaChecklistCount(int done, int total);
+
+  /// No description provided for @toifaRepeatTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'To repeat'**
+  String get toifaRepeatTitle;
+
+  /// No description provided for @toifaRepeatNote.
+  ///
+  /// In en, this message translates to:
+  /// **'“Partly” and “Didn’t know” questions come back first in your next tickets.'**
+  String get toifaRepeatNote;
+
+  /// No description provided for @toifaRepeatNone.
+  ///
+  /// In en, this message translates to:
+  /// **'You knew them all — new questions in the next ticket.'**
+  String get toifaRepeatNone;
+
   /// No description provided for @toifaPracticeSubtitle.
   ///
   /// In en, this message translates to:
@@ -7837,13 +8125,13 @@ abstract class AppLocalizations {
   /// No description provided for @toifaPrepHint.
   ///
   /// In en, this message translates to:
-  /// **'Prepare an answer to each question. Then open the answer plans one by one and rate yourself.'**
+  /// **'No typing needed. Think through each answer — say it out loud or jot it on paper. Then compare with the answer plan and rate yourself.'**
   String get toifaPrepHint;
 
   /// No description provided for @toifaShowPlans.
   ///
   /// In en, this message translates to:
-  /// **'View answer plan'**
+  /// **'Answer one by one'**
   String get toifaShowPlans;
 
   /// No description provided for @toifaShowPlan.

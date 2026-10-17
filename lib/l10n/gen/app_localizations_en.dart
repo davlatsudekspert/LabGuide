@@ -4384,6 +4384,190 @@ class AppLocalizationsEn extends AppLocalizations {
   String get toifaTestStart => 'Start test';
 
   @override
+  String get toifaTodayEyebrow => 'Today';
+
+  @override
+  String toifaTodayGoal(int count) {
+    return 'Goal: $count questions or 1 ticket';
+  }
+
+  @override
+  String get toifaTodayDone => 'Today’s goal is done';
+
+  @override
+  String toifaTodayProgress(int answered, int goal) {
+    return '$answered/$goal questions';
+  }
+
+  @override
+  String toifaTodayCorrect(int percent) {
+    return '$percent% correct';
+  }
+
+  @override
+  String toifaTodayTickets(int count) {
+    return 'tickets: $count';
+  }
+
+  @override
+  String toifaStreakDays(int count) {
+    return '$count-day streak';
+  }
+
+  @override
+  String get toifaTodayNone => 'No practice yet today.';
+
+  @override
+  String get toifaTodayTomorrow => 'Come back tomorrow to keep your streak.';
+
+  @override
+  String toifaWeekLabel(String values) {
+    return 'Last 7 days: $values';
+  }
+
+  @override
+  String get toifaGoalLabel => 'Daily goal';
+
+  @override
+  String toifaGoalOption(int count) {
+    return '$count questions';
+  }
+
+  @override
+  String get toifaGoalHint => 'Or 1 oral ticket — whichever comes first.';
+
+  @override
+  String get toifaReminderTitle => 'LabGuide · Qualification';
+
+  @override
+  String toifaReminderBody(int count) {
+    return 'Today’s qualification practice is waiting — $count questions or 1 ticket';
+  }
+
+  @override
+  String get toifaReminderChannel => 'Qualification reminder';
+
+  @override
+  String get toifaOfferTitle => 'Continue tomorrow?';
+
+  @override
+  String get toifaOfferBody =>
+      'Pick a reminder time. There’s no reminder on days you’ve met the goal.';
+
+  @override
+  String toifaOfferOn(String time) {
+    return 'We’ll remind you tomorrow at $time.';
+  }
+
+  @override
+  String get toifaModeTitle => 'Mode';
+
+  @override
+  String get toifaModeExam => 'Exam mode';
+
+  @override
+  String get toifaModeExamSub =>
+      'Timed; score and mistakes at the end — like the real exam.';
+
+  @override
+  String get toifaModePractice => 'Practice mode — mistakes shown right away';
+
+  @override
+  String get toifaModePracticeSub =>
+      'After each answer: the correct option and note; no timer.';
+
+  @override
+  String get toifaDrillStep2 =>
+      'Right after answering you see if it’s correct: the official key and (if any) a note and source.';
+
+  @override
+  String get toifaDrillStep3 =>
+      'Resume where you left off even after closing the app; rework your mistakes at the end.';
+
+  @override
+  String get toifaDrillStart => 'Start practice';
+
+  @override
+  String toifaDrillActive(int answered, int total) {
+    return 'Practice in progress: $answered/$total';
+  }
+
+  @override
+  String get toifaDrillTitle => 'Practice mode';
+
+  @override
+  String get toifaDrillRework => 'Rework mistakes';
+
+  @override
+  String toifaDrillScore(int right, int wrong) {
+    return 'Correct: $right · wrong: $wrong';
+  }
+
+  @override
+  String get toifaDrillFinishEarly => 'Finish now';
+
+  @override
+  String get toifaDrillFinishBody =>
+      'Unanswered questions count as wrong. Your answers stay in the mistakes list.';
+
+  @override
+  String get toifaDrillDiscardTitle => 'Abandon this practice?';
+
+  @override
+  String get toifaDrillNone => 'No practice in progress';
+
+  @override
+  String get toifaDrillNew => 'New test';
+
+  @override
+  String toifaDrillUnanswered(int count) {
+    return 'Unanswered: $count';
+  }
+
+  @override
+  String get toifaThinkHint =>
+      'Think through your answer: say it out loud or jot it on paper. Then open the plan and compare.';
+
+  @override
+  String toifaThinkTimer(int minutes) {
+    return '$minutes-min think timer';
+  }
+
+  @override
+  String toifaThinkLeft(String time) {
+    return 'Think time: $time';
+  }
+
+  @override
+  String get toifaThinkUp => 'Time’s up — open the plan and compare.';
+
+  @override
+  String get toifaThinkStop => 'Stop timer';
+
+  @override
+  String get toifaChecklistToggle => 'Key points to compare with the plan';
+
+  @override
+  String get toifaChecklistHint =>
+      'Tick what your answer covered (on this device only, no typing).';
+
+  @override
+  String toifaChecklistCount(int done, int total) {
+    return '$done/$total ticked';
+  }
+
+  @override
+  String get toifaRepeatTitle => 'To repeat';
+
+  @override
+  String get toifaRepeatNote =>
+      '“Partly” and “Didn’t know” questions come back first in your next tickets.';
+
+  @override
+  String get toifaRepeatNone =>
+      'You knew them all — new questions in the next ticket.';
+
+  @override
   String get toifaPracticeSubtitle => 'Key right after each answer';
 
   @override
@@ -4481,10 +4665,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get toifaPrepHint =>
-      'Prepare an answer to each question. Then open the answer plans one by one and rate yourself.';
+      'No typing needed. Think through each answer — say it out loud or jot it on paper. Then compare with the answer plan and rate yourself.';
 
   @override
-  String get toifaShowPlans => 'View answer plan';
+  String get toifaShowPlans => 'Answer one by one';
 
   @override
   String get toifaShowPlan => 'View answer plan';
