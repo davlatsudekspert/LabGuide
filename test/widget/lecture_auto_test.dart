@@ -264,9 +264,18 @@ void main() {
             includeGeneralPreanalytics: true,
           ),
         );
-        expect({
-          for (final a in deck.slides) a.slide.template,
-        }, SlideTemplate.values.toSet());
+        // Avtomatik taqdimot — asosiy 5 shablon (vizual shablonlar faqat
+        // eksport qilingan decklarda).
+        expect(
+          {for (final a in deck.slides) a.slide.template},
+          {
+            SlideTemplate.title,
+            SlideTemplate.bullets,
+            SlideTemplate.table,
+            SlideTemplate.figure,
+            SlideTemplate.qa,
+          },
+        );
         final slides = assembleAutoDeck(l, deck, deck.slides);
         await _play(tester, slides);
         final misfit = <String>[];

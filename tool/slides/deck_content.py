@@ -21,6 +21,7 @@ import dataclasses
 import json
 import os
 import re
+import urllib.parse
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(os.path.dirname(HERE))
@@ -161,6 +162,19 @@ UI = {
     'more_sources': {'uz': 'va yana {n} ta — oxirgi slaydda',
                      'ru': 'и ещё {n} — на последнем слайде',
                      'en': 'and {n} more — see the last slide'},
+    'example': {'uz': 'Misol', 'ru': 'Пример', 'en': 'Example'},
+    'example_given': {'uz': 'Formula', 'ru': 'Формула', 'en': 'Formula'},
+    'bm_gallery': {'uz': 'Periferik qon surtmasi: morfologiya (foto)',
+                   'ru': 'Мазок периферической крови: морфология (фото)',
+                   'en': 'Peripheral blood film: morphology (photos)'},
+    'histo_gallery': {'uz': 'Gistologik preparatlar (foto)', 'ru': 'Гистологические препараты (фото)',
+                      'en': 'Histology slides (photos)'},
+    'illustration': {'uz': 'Illyustratsiya (sxematik rasm, foto emas)',
+                     'ru': 'Иллюстрация (схематичный рисунок, не фото)',
+                     'en': 'Illustration (schematic drawing, not a photo)'},
+    'instr_scheme': {'uz': 'Sxema: apparat turining umumiy chizmasi (aniq model emas)',
+                     'ru': 'Схема: общий вид типа анализатора (не конкретная модель)',
+                     'en': 'Schematic: generic analyser type (not a specific model)'},
     'book_extra': {'uz': 'Darslik bo‘yicha qisqa mazmun',
                    'ru': 'Краткое содержание по учебнику',
                    'en': 'Short summary from the textbook'},
@@ -203,6 +217,8 @@ class Repo:
         self.oral = {q['id']: q for q in _load('assets/toifa/kdl_oral.json')['questions']}
         self.tests = {q['id']: q for q in _load('assets/toifa/kdl_tests.json')['questions']}
         self.app = _load('tool/slides/data/app_content.json')
+        # slayd rasmlari xaritasi (mavzu/bo'lim -> repodagi mavjud rasm, krediti bilan)
+        self.images = _load('tool/slides/data/slide_images.json')
         p = os.path.join(HERE, 'data', 'books_extra.json')
         self.books = {'books': {}, 'topics': {}}
         if os.path.exists(p):
@@ -384,6 +400,17 @@ class Sources:
                                  'url': img['source_page']}
         return {'key': key, 'loc': ''}
 
+    # --- ilova atlaslaridagi Wikimedia Commons fotosi (bloodmorph, histology)
+    def commons(self, im):
+        title = im['commonsTitle']
+        key = 'commons:' + title
+        if key not in self.entries:
+            page = 'https://commons.wikimedia.org/wiki/' + urllib.parse.quote(
+                'File:' + title.replace(' ', '_'), safe="-_.!~*'()")
+            full = f'{title}. {im["author"]}, {im["license"]}, Wikimedia Commons. {page}'
+            self.entries[key] = {'short': f'{im["author"]}, {im["license"]}', 'full': full, 'url': page}
+        return {'key': key, 'loc': ''}
+
     # --- ichki: toifa banki (url'siz)
     def bank(self, kind, lang, n=None):
         key = f'bank:{kind}'
@@ -488,13 +515,20 @@ def analyte_slides(repo, src, an, lang, seen=None):
                          data={'blocks': blocks, 'chips': chips},
                          sources=dedupe([r for c in pur + phy for r in refs_of(src, c)])))
     # 2) me'yor/qaror chegaralari (pack)
-    rows, rrefs = [], []
+    rows, rrefs, limits = [], [], []
     for x in an.get('decision_limits') or []:
         who = L(x.get('population'), lang)
         note = L(x.get('note'), lang)
         rows.append([L(x['label'], lang), _range_str(x, lang),
                      (who + (' — ' + note if note else '')).strip(' —')])
         rrefs += refs_of(src, x)
+        # chegara diagrammasi (ilovadagi 'range' shabloni) uchun — faqat kartadagi qiymatlar
+        limits.append({'label': L(x['label'], lang), 'population': who, 'unit': x.get('unit') or '',
+                       'low': x.get('low'), 'high': x.get('high'),
+                       'low_exclusive': bool(x.get('low_exclusive')),
+                       'high_exclusive': bool(x.get('high_exclusive')),
+                       'low_text': num(x['low'], lang) if x.get('low') is not None else None,
+                       'high_text': num(x['high'], lang) if x.get('high') is not None else None})
     for g in an.get('treatment_goals') or []:
         tag = f' ({T("obsolete", lang)})' if g.get('superseded_by') else ''
         rows.append([f'{g["guideline_name"]}, {g["year"]}{tag}',
@@ -503,7 +537,7 @@ def analyte_slides(repo, src, an, lang, seen=None):
     if rows:
         out.append(Slide('table', title=name, eyebrow=f'{group} · {T("limits", lang)}',
                          data={'header': [T('th_indicator', lang), T('th_value', lang), T('th_who', lang)],
-                               'rows': rows, 'widths': [0.30, 0.20, 0.50]},
+                               'rows': rows, 'widths': [0.30, 0.20, 0.50], 'limits': limits},
                          sources=dedupe(rrefs)))
     # 3) natija talqini
     hi, lo = claims(an, 'high_result'), claims(an, 'low_result')
@@ -922,6 +956,113 @@ def book_slides(repo, src, day, lang):
     return out
 
 
+# ------------------------------------------- ishlangan misollar (Dart) ------
+
+# Kalkulyator -> (manual_calc_info.dart kaliti, sarlavha: ilova ARB kaliti yoki matnning
+# o'zidagi atama). Misol faqat formulaning manbali "WHO misoli" / "Misol (Aripova ...)" qatoridan.
+EXAMPLE_CALCS = {'/lab/calculators/chamber': ('chamber', 'arb:mcChamber'),
+                 '/lab/calculators/colour-index': ('colourIndex', 'MCHC'),
+                 '/lab/calculators/nechiporenko': ('nechiporenko', 'arb:mcNechiporenko')}
+_EX_MARK = re.compile(r'(?:misol|Misol|Пример|пример|example|Example)')
+_ARB = {}
+
+
+def arb(key, lang):
+    if lang not in _ARB:
+        _ARB[lang] = _load(f'lib/l10n/app_{lang}.arb')
+    return _ARB[lang][key]
+
+
+def example_parts(formula, lang):
+    """Formula qatorlari -> (berilgan qatorlar, misol matni). Misol — inglizcha matnida
+    "example" so'zi bor qator (yoki uning " — " dan keyingi qismi); topilmasa (None, None)."""
+    given, ex = [], None
+    for f in formula:
+        t = L(f, lang)
+        en = f.get('en', '') if isinstance(f, dict) else t
+        if ex is None and re.search(r'\bexample\b', en, re.I):
+            head, sep, tail = t.partition(' — ')
+            if sep and _EX_MARK.search(tail):
+                given.append(head)
+                ex = tail
+            else:
+                ex = t
+        else:
+            given.append(t)
+    return (given, ex) if ex else (None, None)
+
+
+def example_slides(repo, src, day, lang):
+    out = []
+    info = repo.app.get('manualCalcInfo') or {}
+    for tool in day.links['tools']:
+        if tool not in EXAMPLE_CALCS:
+            continue
+        cid, name = EXAMPLE_CALCS[tool]
+        ci = info.get(cid)
+        if not ci:
+            continue
+        given, ex = example_parts(ci['formula'], lang)
+        if not ex:
+            continue
+        name = arb(name[4:], lang) if name.startswith('arb:') else name
+        out.append(Slide('text', title=f'{T("example", lang)}: {name}', eyebrow=T('example', lang),
+                         data={'blocks': [{'label': T('example_given', lang) if i == 0 else None, 'text': g}
+                                          for i, g in enumerate(given)]
+                               + [{'label': T('example', lang), 'text': ex}],
+                               'chips': [], 'example': ex},
+                         sources=dedupe([src.dart(r) for r in ci['refs']])))
+    return out
+
+
+# ------------------------------------ atlas fotolari (bloodmorph, gistologiya) ----
+
+BM_MAX = 4
+# Topilma rasmi faqat gematologik kontekstdagi tahlil orqali bog'lanadi (topilmaning
+# `analytes` ro'yxati — bloodmorph_content.dart). Masalan, ALT yoki kreatinin orqali jigar
+# yoki buyrak mavzusiga eritrotsit fotosi qo'yilmaydi.
+BM_GROUPS = {'hematology', 'iron-vitamins', 'coagulation', 'proteins'}
+
+
+def _photo_items(src, items, lang):
+    out, refs = [], []
+    for x in items:
+        im = x['image']
+        out.append({'image': f'assets/{x["_dir"]}/img/{im["file"]}.jpg',
+                    'caption': f'{L(x["name"], lang)}: {L(im["captionTr"], lang)}',
+                    'credit': f'{T("photo", lang)}: {im["author"]}, {im["license"]} · Wikimedia Commons'})
+        refs.append(src.commons(im))
+    return out, refs
+
+
+def photo_selection(repo, day):
+    """(bloodmorph topilmalari, gistologiya bandlari) — shu kun uchun."""
+    an = [a for a in day.links['analytes'] if a in repo.an and repo.an[a]['group'] in BM_GROUPS]
+    found = []
+    for k, x in enumerate(repo.app.get('bmFindings') or []):
+        n = len(set(an) & set(x['analytes']))
+        if n:
+            found.append((-n, k, x))
+    bm = [x for _, _, x in sorted(found, key=lambda t: (t[0], t[1]))[:BM_MAX]]
+    # gistologiya: kun -> HistoGroup (data/slide_images.json "histology", mavzu nomi bo'yicha)
+    hg = (repo.images.get('histology') or {}).get(day.id)
+    histo = [x for x in repo.app.get('histoItems') or [] if hg and x['group'] == hg]
+    return bm, histo
+
+
+def photo_slides(repo, src, day, lang):
+    out = []
+    bm, histo = photo_selection(repo, day)
+    for title, d, items in ((T('bm_gallery', lang), 'bloodmorph', bm),
+                            (T('histo_gallery', lang), 'histology', histo)):
+        items = [dict(x, _dir=d) for x in items]
+        for k in range(0, len(items), 2):
+            its, refs = _photo_items(src, items[k:k + 2], lang)
+            out.append(Slide('gallery', title=title, eyebrow=T('atlas', lang),
+                             data={'items': its}, sources=refs))
+    return out
+
+
 # --------------------------------------------------------------- yig'ish ----
 
 @dataclasses.dataclass
@@ -1013,10 +1154,18 @@ def collect(repo, day, lang):
     if ys:
         cov['cyto'] = cyto_selection(day)
         groups.append(('cyto', ys))
+    exs = example_slides(repo, src, day, lang)
+    if exs:
+        cov['examples'] = len(exs)
+        groups.append(('examples', exs))
     ats = atlas_slides(repo, src, day, lang)
     if ats:
         cov['atlas'] = sum(len(s.data['items']) for s in ats)
         groups.append(('atlas', ats))
+    ps = photo_slides(repo, src, day, lang)
+    if ps:
+        cov['photos'] = sum(len(s.data['items']) for s in ps)
+        groups.append(('photos', ps))
     bs = book_slides(repo, src, day, lang)
     if bs:
         cov['books'] = len(bs)
@@ -1043,6 +1192,8 @@ GROUP_LABEL = {
     'cells': {'uz': 'Leykoformula hujayralari', 'ru': 'Клетки лейкоформулы', 'en': 'Differential cells'},
     'cyto': {'uz': 'Sitologiya', 'ru': 'Цитология', 'en': 'Cytology'},
     'atlas': {'uz': 'Mikroskopik atlas', 'ru': 'Микроскопический атлас', 'en': 'Microscopy atlas'},
+    'examples': {'uz': 'Hisoblash misollari', 'ru': 'Примеры расчёта', 'en': 'Worked examples'},
+    'photos': {'uz': 'Atlas fotolari', 'ru': 'Фото из атласов', 'en': 'Atlas photos'},
     'books': {'uz': 'Darslik bo‘yicha mazmun', 'ru': 'Материал из учебников', 'en': 'Textbook material'},
     'oralref': {'uz': 'Me’yoriy qiymatlar', 'ru': 'Референтные значения', 'en': 'Reference values'},
     'qa': {'uz': 'Mashq: savol-javob', 'ru': 'Практика: вопросы и ответы', 'en': 'Practice: Q&A'},

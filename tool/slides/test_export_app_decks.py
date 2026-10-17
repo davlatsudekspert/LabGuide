@@ -21,7 +21,12 @@ import export_app_decks as ex  # noqa: E402
 import practice_decks as pd  # noqa: E402
 
 REPO = dc.REPO
-TEMPLATES = {'title', 'bullets', 'table', 'figure', 'qa'}
+TEMPLATES = {'title', 'bullets', 'table', 'figure', 'qa',
+             'stats', 'range', 'steps', 'split', 'tree', 'example'}
+# Hajm byudjeti: 13 MiB. 12 MiB edi; vizual shablonlar (raqam kartalari, chegaralar
+# diagrammasi, ikki ustun, qadamlar, litsenziyali atlas fotolari va ularning manbalari,
+# sarlavha/yon rasm kreditlari, bo'lim kategoriyalari) ~0.5 MB qo'shdi (2026-10-17).
+SIZE_BUDGET = 13 * 1024 * 1024
 _cache = {}
 
 
@@ -42,7 +47,7 @@ class Fresh(unittest.TestCase):
     def test_size_budget(self):
         _, files, index = built()
         total = sum(len(ex.dumps(j).encode()) for j in files.values()) + len(ex.dumps(index).encode())
-        self.assertLess(total, 12 * 1024 * 1024)
+        self.assertLess(total, SIZE_BUDGET)
 
 
 class Index(unittest.TestCase):
@@ -124,8 +129,21 @@ class Decks(unittest.TestCase):
                 elif t == 'qa':
                     self.assertGreaterEqual(len(s['options']), 2, w)
                     self.assertIn(s['correct'], range(len(s['options'])), w)
-                elif t == 'bullets':
+                elif t in ('bullets', 'steps', 'tree'):
                     self.assertTrue(s.get('bullets'), w)
+                elif t == 'stats':
+                    self.assertTrue(s.get('bullets'), w)
+                    self.assertTrue(2 <= len(s['stats']) <= 4, w)
+                elif t == 'range':
+                    self.assertTrue(s['range']['rows'], w)
+                elif t == 'split':
+                    self.assertEqual(len(s['cols']), 2, w)
+                    self.assertTrue(s['cols'][0][2] or s['cols'][1][2], w)
+                elif t == 'example':
+                    self.assertTrue(s.get('ex'), w)
+                if s.get('figure') and t != 'figure':
+                    # sarlavha/yon rasm — har doim krediti (sxema yoki foto muallifi) bilan
+                    self.assertTrue(s.get('credit'), w)
                 # reja/adabiyotlar/sarlavhadan boshqa hamma slaydda manba qatori
                 generic = i == 0 or s['title'] in ex.generic_titles(lg)
                 if not generic:
@@ -174,7 +192,13 @@ class Decks(unittest.TestCase):
                         imgs |= {s.data['a']['image'], s.data['b']['image']}
                     if s.kind == 'gallery':
                         imgs |= {i['image'] for i in s.data['items']}
-                self.assertEqual({s['figure'] for s in app if s.get('figure')}, imgs, f'{did}.{lg}')
+                # PPTX rasmlari ilovada ham bor; ilovada qo'shimcha — faqat sarlavha/yon rasm
+                # (data/slide_images.json xaritasidan yoki shu deckning o'z rasmlaridan)
+                app_figs = {s['figure'] for s in app if s.get('template') == 'figure'}
+                self.assertEqual(app_figs, imgs, f'{did}.{lg}')
+                mapped = {r['image'] for r in repo.images['rules']}
+                extra = {s['figure'] for s in app if s.get('figure') and s.get('template') != 'figure'}
+                self.assertEqual(extra - mapped - imgs, set(), f'{did}.{lg}')
 
     def test_slide_refs_point_into_bibliography(self):
         """Har kontent slaydida to'liq manbalar (`ref` -> deck `refs`): "Adabiyotlar"
@@ -210,6 +234,190 @@ class Decks(unittest.TestCase):
         for p in sorted(paths):
             self.assertTrue(os.path.exists(os.path.join(REPO, p)), p)
             self.assertIn(os.path.dirname(p) + '/', declared, p)
+
+
+class Visuals(unittest.TestCase):
+    """Vizual shablonlar: hech qanday son yoki matn o'ylab topilmaydi."""
+
+    def _all(self):
+        _, files, _ = built()
+        for (did, lg), j in files.items():
+            for i, s in enumerate(j['slides']):
+                yield did, lg, j, i, s
+
+    def test_every_stats_number_is_in_the_slide_text(self):
+        """Raqam kartasidagi qiymat ham, yorliq ham — shu slayd bandlarining so'zma-so'z
+        bo'lagi; kartadagi har son matnda bor."""
+        n = 0
+        for did, lg, j, i, s in self._all():
+            if s.get('template') != 'stats':
+                continue
+            w = f'{did}.{lg}#{i}'
+            text = '\n'.join(s['bullets'])
+            for value, label in s['stats']:
+                n += 1
+                self.assertIn(value, text, w)
+                self.assertIn(label, text, w)
+                for num in re.findall(r'\d+(?:[.,]\d+)?', value):
+                    self.assertIn(num, text, w)
+        self.assertGreater(n, 100)
+
+    def test_every_range_number_is_in_the_cited_card(self):
+        """Chegaralar diagrammasidagi har son, birlik va yorliq — slayd keltirgan analit
+        kartasining (pack.json decision_limits) o'zida; manba — kartaning manbasi."""
+        repo, files, _ = built()
+        by_name = {}
+        for a in repo.pack['analytes']:
+            for lg in dc.LANGS:
+                by_name[(dc.L(a['names'], lg), lg)] = a
+        n = 0
+        for did, lg, j, i, s in self._all():
+            if s.get('template') != 'range':
+                continue
+            w = f'{did}.{lg}#{i}'
+            a = by_name[(s['title'], lg)]
+            lims = a['decision_limits']
+            nums = {x for x in lims for x in (x.get('low'), x.get('high')) if x is not None}
+            texts = {dc.num(v, lg) for v in nums}
+            labels = {dc.L(x['label'], lg) for x in lims} | {dc.L(x.get('population'), lg) for x in lims}
+            units = {x.get('unit') for x in lims}
+            r = s['range']
+            self.assertIn(r['u'], units, w)
+            if r.get('cap'):
+                self.assertIn(r['cap'], labels, w)
+            for lab, sub, lo, hi, flags, lo_t, hi_t in r['rows']:
+                n += 1
+                self.assertIn(lab, labels, w)
+                if sub:
+                    self.assertIn(sub, labels, w)
+                for v, t in ((lo, lo_t), (hi, hi_t)):
+                    self.assertEqual(v is None, t is None, w)
+                    if v is not None:
+                        self.assertIn(v, nums, w)
+                        self.assertIn(t, texts, w)
+            # manba: jadval slaydi bilan bir xil (kartaning manbalari)
+            nxt = next(x for x in j['slides'][i + 1:] if x.get('template') == 'table')
+            self.assertEqual(nxt['title'], s['title'], w)
+            self.assertEqual(nxt.get('src'), s.get('src'), w)
+        self.assertGreater(n, 20)
+
+    def test_steps_are_numbered_and_at_most_six(self):
+        n = 0
+        for did, lg, j, i, s in self._all():
+            if s.get('template') != 'steps':
+                continue
+            w = f'{did}.{lg}#{i}'
+            nums = [int(re.match(r'^(\d{1,2})\.\s', b).group(1)) for b in s['bullets']]
+            self.assertLessEqual(len(nums), 6, w)
+            self.assertEqual(nums, list(range(nums[0], nums[0] + len(nums))), w)
+            n += 1
+        self.assertGreater(n, 30)
+
+    def test_split_and_tree_keep_source_text(self):
+        """Ikki ustun bandlari — PPTX "Oshishi: …" bandlarining matni (yorliqsiz), daraxt —
+        "Yorliq: matn" bandlari; hech biri bo'sh emas."""
+        repo, files, _ = built()
+        heads = {lg: {dc.T(k, lg) for k in ('high', 'low', 'positive', 'negative')} for lg in dc.LANGS}
+        kinds = {'up', 'down', 'pos', 'neg'}
+        for did, lg, j, i, s in self._all():
+            w = f'{did}.{lg}#{i}'
+            if s.get('template') == 'split':
+                for head, kind, items in s['cols']:
+                    self.assertIn(head, heads[lg], w)
+                    self.assertIn(kind, kinds, w)
+                    self.assertTrue(all(x.strip() for x in items), w)
+            if s.get('template') == 'tree':
+                self.assertTrue(3 <= len(s['bullets']) <= 6, w)
+                for b in s['bullets']:
+                    self.assertRegex(b, r'^[^:.;!?\n]{2,48}: .+', w)
+
+    def test_examples_come_from_sources(self):
+        """Misol kartasi matni manbadagi formulaning o'zidan (manual_calc_info.dart) yoki
+        protokol bandidan; manbasi bor."""
+        repo, files, _ = built()
+        allowed = set()
+        for ci in repo.app['manualCalcInfo'].values():
+            for f in ci['formula']:
+                for lg in dc.LANGS:
+                    allowed.add(f[lg])
+        n = 0
+        for did, lg, j, i, s in self._all():
+            if s.get('template') != 'example':
+                continue
+            w = f'{did}.{lg}#{i}'
+            self.assertIn('src', s, w)
+            ok = any(s['ex'] in a for a in allowed) or did in {p['id'] for p in pd.protocols(repo)}
+            self.assertTrue(ok, w)
+            n += 1
+        self.assertGreater(n, 5)
+
+    def test_side_images_once_per_deck_and_mapped(self):
+        """Yon rasm — faqat xaritadagi rasm, deckda bir marta, kredit bilan; mavzuga mos
+        (xarita qoidasi: deck id, analit guruhi yoki Jadval)."""
+        repo, files, _ = built()
+        rules = {r['image']: r for r in repo.images['rules']}
+        for (did, lg), j in files.items():
+            seen = []
+            for i, s in enumerate(j['slides'][1:], 1):
+                if s.get('figure') and s.get('template', 'bullets') == 'bullets':
+                    w = f'{did}.{lg}#{i}'
+                    r = rules[s['figure']]
+                    seen.append(s['figure'])
+                    self.assertEqual(s['credit'], dc.T(r['credit'], lg), w)
+            self.assertEqual(len(seen), len(set(seen)), f'{did}.{lg}')
+        for r in repo.images['rules']:
+            self.assertTrue(os.path.exists(os.path.join(REPO, r['image'])), r['id'])
+            self.assertIn(r['credit'], dc.UI, r['id'])
+
+    def test_categories_align_with_eyebrows(self):
+        _, files, _ = built()
+        for (did, lg), j in files.items():
+            heads = ex.eyebrow_heads(j['slides'])
+            self.assertEqual(len(j.get('cats', [])), len(heads), f'{did}.{lg}')
+
+    def test_new_templates_fit(self):
+        """Vizual shablonlar byudjetga sig'adi: stats — kartalar qatori + bandlar MIN_FONT da,
+        steps — PACK_FONT da, split — SPLIT_FONT da, tree — TREE_FONT da; yon rasmli
+        bandlar — tor ustunda MIN_FONT da."""
+        misfit = []
+        for did, lg, j, i, s in self._all():
+            t = s.get('template', 'bullets')
+            srcs = j.get('srcs', [])
+            src = srcs[s['src']] if 'src' in s else None
+            box = ex.body_box(s['title'], lg, src)
+            w = f'{did}.{lg}#{i} {t}'
+            if t == 'stats':
+                h = ex.items_height(s['bullets'], ex.MIN_FONT, ex.CONTENT_W - ex.BULLET_INDENT, lg) + ex.STAT_ROW
+            elif t == 'steps':
+                h = ex.steps_height(s['bullets'], lg)
+            elif t == 'split':
+                h = ex.split_height(s['cols'][0][2], s['cols'][1][2], s.get('bullets', []), lg)
+            elif t == 'tree':
+                h = ex.tree_height(s['bullets'], lg)
+            elif t == 'bullets' and s.get('figure') and i > 0:
+                h = 0 if ex.side_fits(s['bullets'], s['title'], lg, src) else box + 1
+            else:
+                continue
+            if h > box:
+                one = len(s.get('bullets', [])) == 1 and len(ex.sentences(s['bullets'][0])) == 1
+                if not one:
+                    misfit.append(w)
+        self.assertEqual(misfit, [])
+
+    def test_photo_galleries_have_licence_and_source(self):
+        """Litsenziyali atlas fotolari (bloodmorph, histology): kredit — muallif va litsenziya,
+        manba — Wikimedia Commons fayl sahifasi ("Adabiyotlar"da)."""
+        _, files, _ = built()
+        n = 0
+        for did, lg, j, i, s in self._all():
+            f = s.get('figure') or ''
+            if s.get('template') == 'figure' and ('/bloodmorph/img/' in f or '/histology/img/' in f):
+                n += 1
+                w = f'{did}.{lg}#{i}'
+                self.assertRegex(s['credit'], r'CC|Public', w)
+                self.assertIn('Wikimedia Commons', s['credit'], w)
+                self.assertIn('src', s, w)
+        self.assertGreater(n, 20)
 
 
 class Canvas16x9(unittest.TestCase):
