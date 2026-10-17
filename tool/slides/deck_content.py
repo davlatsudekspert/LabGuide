@@ -388,7 +388,10 @@ class Sources:
         b = self.repo.books['books'][book_id]
         key = 'book:' + book_id
         if key not in self.entries:
-            self.entries[key] = {'short': b['short'], 'full': b['full'], 'url': None}
+            self.entries[key] = {'short': b['short'], 'full': b['full'], 'url': None, 'locs': []}
+        locs = self.entries[key]['locs']
+        if loc and loc not in locs:
+            locs.append(loc)    # "Adabiyotlar"da foydalanilgan bo'lim/sahifalar chiqadi (pack kitoblari kabi)
         return {'key': key, 'loc': loc}
 
     def short_cite(self, ref, loc_max=44):
@@ -888,7 +891,8 @@ def book_slides(repo, src, day, lang):
     shu tilda mazmun bo'lmasa slayd tashlanadi."""
     out = []
     for e in repo.books['topics'].get(day.id, []):
-        refs = [src.pack(r['pack'], L(r['loc'], lang)) for r in e['refs']]
+        refs = [src.book(r['book'], L(r['loc'], lang)) if 'book' in r
+                else src.pack(r['pack'], L(r['loc'], lang)) for r in e['refs']]
         if 'table' in e:
             t = e['table']
             if lang not in t['rows']:
