@@ -55,3 +55,6 @@ app.*.map.json
 
 # Imzolangan AAB (egasi Play Console'ga qo'lda yuklaydi)
 /dist/
+
+# Generated slide decks (tool/slides/make_topic_decks.py) are not committed
+*.pptx
