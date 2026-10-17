@@ -4991,5 +4991,300 @@
   },
   "@urinLabCardBody": {
     "description": "Lab tab: one-line description on the urinalysis picture card"
-  }
+  },
+  "admPanelAccess": "Access: the owner email (ADMIN_EMAILS) and an email code. The server re-checks every request.",
+  "admOverview": "Overview",
+  "admOverviewSub": "Registered: {total} · online: {online} · new in 7 days: {week}",
+  "@admOverviewSub": {
+    "placeholders": {
+      "total": {
+        "type": "int"
+      },
+      "online": {
+        "type": "int"
+      },
+      "week": {
+        "type": "int"
+      }
+    }
+  },
+  "admComplaintsRow": "In-app complaints",
+  "admComplaintsRowSub": "Open: {count}",
+  "@admComplaintsRowSub": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "admReportsRow": "Community reports",
+  "admReportsRowSub": "Unreviewed posts: {count}",
+  "@admReportsRowSub": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "admEmailNote": "Complaints and questions sent by email arrive at {email} — check them in the mailbox (they do not reach the app).",
+  "@admEmailNote": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "admUsersSub": "Search by email or nickname, role, suspension",
+  "admAuditSub": "Every admin action is recorded",
+  "admStoreTitle": "Downloads and sales",
+  "admStoreBody": "The server cannot see store downloads — App Store Connect and Google Play Console show them. The app has no analytics SDK (privacy policy). Numbers in this panel are accounts that confirmed their email.",
+  "admSales": "Sales: 0 (no payments yet)",
+  "admAppStoreConnect": "App Store Connect",
+  "admPlayConsole": "Google Play Console",
+  "admStatsAccounts": "Accounts",
+  "admOnlineNow": "Online now (5 minutes)",
+  "admSuspendedAccounts": "Suspended accounts",
+  "admStatsActiveNote": "Online and active — accounts that made a request to the server. Only the minute and day are stored; no IP or device.",
+  "admChartTitle": "New accounts — last 14 days",
+  "admChartBar": "{date}: {count} new accounts",
+  "@admChartBar": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "admChartTotal": "Total in 14 days: {count}",
+  "@admChartTotal": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "admStatsObjects": "Main objects",
+  "admStatsGroupsCount": "Groups",
+  "admStatsTeachers": "Registered teachers",
+  "admStatsStudents": "Students in groups",
+  "admStatsAssignments": "Test sessions",
+  "admStatsResults": "Test results",
+  "admStatsQuestions": "Community questions",
+  "admStatsAnswers": "Community answers",
+  "admStatsComplaintsOpen": "Open complaints",
+  "admStatsComplaintsResolved": "Resolved complaints",
+  "admStatsReportsOpen": "Community: unreviewed reports",
+  "admStatsAwaiting": "Messages: awaiting reply",
+  "admStatsUpdated": "Updated: {time}",
+  "@admStatsUpdated": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "admComplaintsTitle": "In-app complaints",
+  "admApple12Note": "Handle reports of objectionable content promptly (Apple 1.2 requires timely action; target — 24 hours).",
+  "admFilterOpen": "Open",
+  "admFilterResolved": "Resolved",
+  "admAllKinds": "All types",
+  "complaintKindComplaint": "Complaint",
+  "complaintKindInappropriate": "Inappropriate content",
+  "complaintKindBug": "Bug",
+  "complaintKindAd": "Advertising",
+  "complaintKindOther": "Other",
+  "admComplaintsEmpty": "No complaints in this list",
+  "admComplaintAnon": "Guest (no account)",
+  "admComplaintFrom": "From: {email}",
+  "@admComplaintFrom": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "admComplaintTarget": "Reference: {ref}",
+  "@admComplaintTarget": {
+    "placeholders": {
+      "ref": {
+        "type": "String"
+      }
+    }
+  },
+  "admComplaintNote": "Admin note",
+  "admComplaintNoteHint": "What was done? (admins only)",
+  "admComplaintSaveNote": "Save note",
+  "admComplaintResolve": "Mark resolved",
+  "admComplaintReopen": "Reopen",
+  "admComplaintResolvedOn": "Resolved: {date}",
+  "@admComplaintResolvedOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "admSaved": "Saved",
+  "admReportsEmpty": "No reports in this list",
+  "admReportOpen": "Open",
+  "admReportDismissed": "Dismissed",
+  "admReportResolved": "Resolved",
+  "admReportKindQuestion": "Question",
+  "admReportKindAnswer": "Answer",
+  "admReportCount": "{reports} reports · {reporters} people",
+  "@admReportCount": {
+    "placeholders": {
+      "reports": {
+        "type": "int"
+      },
+      "reporters": {
+        "type": "int"
+      }
+    }
+  },
+  "admReportReasons": "Reason: {reasons}",
+  "@admReportReasons": {
+    "placeholders": {
+      "reasons": {
+        "type": "String"
+      }
+    }
+  },
+  "admReportDeleted": "Post deleted",
+  "admReportAuthorSuspended": "Author suspended",
+  "admReportOpenPost": "Open post",
+  "admReportDismiss": "Dismiss",
+  "admReportResolve": "Resolved",
+  "admReportSuspend": "Suspend author",
+  "admReportDismissTitle": "Dismiss the report?",
+  "admReportDismissBody": "The reports are closed and no longer count towards automatic suspension. The action is logged.",
+  "admReportResolveTitle": "Mark as resolved?",
+  "admReportResolveBody": "Action has been taken (for example, the post was deleted). The action is logged.",
+  "admReportSuspendTitle": "Suspend the author?",
+  "admReportSuspendBody": "The author can no longer post in the community and their posts are hidden. The action is logged.",
+  "admSearchModeEmail": "Email",
+  "admSearchModeName": "Nickname",
+  "admSearchEmail": "Full email (exact match)",
+  "admSearchName": "Group nickname (at least 2 characters)",
+  "admUsersSearchNote": "Emails are not stored in plain text: an account is found only by its full email and is shown masked.",
+  "admSearch": "Search",
+  "admStatusActive": "Active",
+  "admStatusSuspended": "Suspended",
+  "admUserAdminTag": "Admin",
+  "admUserTitle": "User",
+  "admUserRole": "Role",
+  "admRoleChanged": "Role changed",
+  "admRoleSelfNote": "You cannot change your own role or status here.",
+  "admUserFacts": "Groups: {owned} (teacher) · {joined} (student) · messages: {threads} · complaints: {complaints}",
+  "@admUserFacts": {
+    "placeholders": {
+      "owned": {
+        "type": "int"
+      },
+      "joined": {
+        "type": "int"
+      },
+      "threads": {
+        "type": "int"
+      },
+      "complaints": {
+        "type": "int"
+      }
+    }
+  },
+  "admAccountTitle": "Account status",
+  "admAccountSuspend": "Suspend account",
+  "admAccountSuspendTitle": "Suspend the account?",
+  "admAccountSuspendBody": "The user is signed out on all devices and cannot sign in again (email code, Google, Apple). The app shows them the contact address. The action is logged.",
+  "admAccountReactivate": "Reactivate",
+  "admAccountReactivateTitle": "Reactivate the account?",
+  "admAccountReactivateBody": "The user can sign in again. The action is logged.",
+  "admAccountAdminNote": "An admin account cannot be suspended.",
+  "admUserCommunity": "Community status",
+  "admCommunityNone": "Regular member",
+  "admUserCommunityFacts": "Questions: {questions} · answers: {answers} · reporters: {reporters}",
+  "@admUserCommunityFacts": {
+    "placeholders": {
+      "questions": {
+        "type": "int"
+      },
+      "answers": {
+        "type": "int"
+      },
+      "reporters": {
+        "type": "int"
+      }
+    }
+  },
+  "admCommunitySuspend": "Suspend in community",
+  "admCommunitySuspendTitle": "Suspend in the community?",
+  "admCommunitySuspendBody": "The account can no longer post questions or answers and its posts are hidden. The rest of the app keeps working. The action is logged.",
+  "admErrOwner": "The owner account cannot be suspended.",
+  "admErrSelf": "You cannot apply this action to yourself.",
+  "admErrName": "Nickname must be 2–40 characters.",
+  "admAuditBy": "By: {actor}",
+  "@admAuditBy": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
+  "admAuditSystem": "System",
+  "adminActionReportDismissed": "Community report dismissed",
+  "adminActionReportResolved": "Community report resolved",
+  "adminActionCommunitySuspended": "Suspended in community",
+  "adminActionCommunityRestored": "Restored in community",
+  "adminActionCommunityRevoked": "Specialist verification revoked",
+  "adminActionAutoSuspended": "Automatically suspended after reports",
+  "adminActionPostDeleted": "Post deleted",
+  "adminActionPinned": "Question pin changed",
+  "adminActionAccountDeleted": "Account deleted",
+  "adminActionMfa": "2FA enabled",
+  "adminActionTeacher": "Teacher registered",
+  "adminActionRoleChanged": "Role changed",
+  "adminActionAccountSuspended": "Account suspended",
+  "adminActionAccountReactivated": "Account reactivated",
+  "adminActionComplaintNote": "Complaint note added",
+  "adminActionComplaintResolved": "Complaint resolved",
+  "adminActionComplaintReopened": "Complaint reopened",
+  "adminActionIdentityLinked": "Sign-in method linked",
+  "complaintFormTitle": "Send a complaint in the app",
+  "complaintFormBody": "Tell us about objectionable content, a bug or another problem — the LabGuide team will review it (usually within 24 hours).",
+  "complaintKindLabel": "Type",
+  "complaintText": "Text",
+  "complaintTextHint": "What happened? Which screen or post?",
+  "complaintTarget": "Reference: {ref}",
+  "@complaintTarget": {
+    "placeholders": {
+      "ref": {
+        "type": "String"
+      }
+    }
+  },
+  "complaintSend": "Send complaint",
+  "complaintSent": "Sent. Thank you — we will review it.",
+  "complaintTooShort": "Write at least 5 characters.",
+  "complaintRateLimited": "Too many complaints: up to 5 per hour. Try again in {minutes} min.",
+  "@complaintRateLimited": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "complaintAnonNote": "Without an account we cannot reply to you. If you need a reply, sign in or send an email.",
+  "complaintPhiNote": "Do not include patient names or other personal data.",
+  "complaintFailed": "Not sent. Check your connection and try again.",
+  "authAccountSuspended": "Your account has been suspended. If you have questions, write to: {email}",
+  "@authAccountSuspended": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "admSectionComplaints": "Complaints"
 }

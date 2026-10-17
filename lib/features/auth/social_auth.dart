@@ -116,6 +116,9 @@ enum SocialSignInStatus {
   /// Provayder yoki server hozir mavjud emas / sozlanmagan.
   unavailable,
   failed,
+
+  /// Admin hisobni to'xtatgan — kirish rad etildi.
+  accountSuspended,
 }
 
 @immutable

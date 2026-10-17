@@ -35,6 +35,8 @@ export interface Session {
   aal: 'aal1' | 'aal2';
   role: string;
   language: string;
+  /** Kirish usuli: otp (email kodi) | google | apple. */
+  via: string;
 }
 
 export const iso = (ms: number | null | undefined): string | null =>

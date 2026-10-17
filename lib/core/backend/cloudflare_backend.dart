@@ -8,6 +8,7 @@ import 'package:http/http.dart' as http;
 
 import '../../features/auth/otp_auth.dart';
 import '../../features/auth/social_auth.dart';
+import 'admin_console.dart';
 import 'admin_team.dart';
 import 'backend_models.dart';
 import 'community_backend.dart';
@@ -105,15 +106,18 @@ class _ApiResponse {
 /// Cloudflare Workers + D1 serveri (`cloudflare/`). Kod, limitlar va
 /// vakolatlar serverda; ilova faqat natijani ko'rsatadi.
 ///
-/// Hali ko'chirilmagan bo'limlar (murojaatlar, admin panel, tekshiruv,
-/// hamkorlar) `BackendFailure.unavailable` beradi — ishlayotgandek
-/// ko'rsatilmaydi.
+/// Hali ko'chirilmagan bo'limlar (skrinshot biriktirish, email ochish,
+/// reviewer berish, kontent tekshiruvi, hamkorlar) `BackendFailure.unavailable`
+/// beradi — ishlayotgandek ko'rsatilmaydi.
 class CloudflareLabBackend
     implements
         LabBackend,
         CommunityBackend,
         AdminTeamBackend,
-        SocialLoginBackend {
+        SocialLoginBackend,
+        AdminConsoleBackend,
+        ComplaintsBackend,
+        SupportAttachmentPolicy {
   CloudflareLabBackend(
     this.config, {
     SessionStore? sessionStore,
@@ -357,6 +361,9 @@ class CloudflareLabBackend
           OtpVerifyStatus.tooManyAttempts,
         ),
         'not_configured' => const OtpVerifyResult(OtpVerifyStatus.unavailable),
+        'account_suspended' => const OtpVerifyResult(
+          OtpVerifyStatus.accountSuspended,
+        ),
         _ => const OtpVerifyResult(OtpVerifyStatus.failed),
       };
     } on BackendException {
@@ -417,6 +424,9 @@ class CloudflareLabBackend
       return switch (r.error) {
         'email_not_verified' => const SocialSignInResult(
           SocialSignInStatus.emailNotVerified,
+        ),
+        'account_suspended' => const SocialSignInResult(
+          SocialSignInStatus.accountSuspended,
         ),
         'email_required' => const SocialSignInResult(
           SocialSignInStatus.emailRequired,
@@ -1091,46 +1101,123 @@ class CloudflareLabBackend
       _team('DELETE', '/v1/admin/admins/${_seg(id)}');
 
   // ------------------------------------------------------------------
-  // TODO(port): quyidagilar Cloudflare serveriga hali ko'chirilmagan
-  // (docs/BACKEND_CLOUDFLARE.md, “Reja”). Ishlayotgandek ko'rsatilmaydi.
+  /// Hali ko'chirilmagan amal (docs/BACKEND_CLOUDFLARE.md, “Reja”).
   Never _notYet() => throw const BackendException(
     BackendFailure.unavailable,
     'not ported to cloudflare yet',
   );
 
+  // ------------------------------------------- Taklif va yordam (support.ts)
+  /// Skrinshot (R2) bu serverda hali yo'q — ilova tanlash tugmasini yashiradi.
   @override
-  Future<List<SupportThread>> myThreads() async => _notYet();
+  bool get supportAttachments => false;
+
+  static List<SupportThread> _threads(Object? data) =>
+      _rows(data).map(SupportThread.fromJson).toList();
+
   @override
-  Future<List<SupportMessage>> messages(String threadId) async => _notYet();
+  Future<List<SupportThread>> myThreads() async =>
+      _threads((await _call('GET', '/v1/support/threads')).data);
+
+  @override
+  Future<List<SupportMessage>> messages(String threadId) async {
+    final r = await _call(
+      'GET',
+      '/v1/support/threads/${_seg(threadId)}/messages',
+    );
+    return _rows(r.data).map(SupportMessage.fromJson).toList();
+  }
+
   @override
   Future<String> createThread({
     required SupportKind kind,
     required String subject,
     required String body,
     SupportAttachment? attachment,
-  }) async => _notYet();
+  }) async {
+    if (attachment != null) _notYet();
+    final r = await _call(
+      'POST',
+      '/v1/support/threads',
+      body: {'kind': kind.name, 'subject': subject.trim(), 'body': body.trim()},
+    );
+    return r.map['id']! as String;
+  }
+
   @override
   Future<void> postMessage(
     String threadId,
     String body, {
     SupportAttachment? attachment,
-  }) async => _notYet();
+  }) async {
+    if (attachment != null) _notYet();
+    await _call(
+      'POST',
+      '/v1/support/threads/${_seg(threadId)}/messages',
+      body: {'body': body.trim()},
+    );
+  }
+
   @override
-  Future<void> markRead(String threadId) async => _notYet();
+  Future<void> markRead(String threadId) =>
+      _call('POST', '/v1/support/threads/${_seg(threadId)}/read');
+
   @override
   Future<Uint8List> attachment(String path) async => _notYet();
+
+  // -------------------------------------- egasi admin paneli (adminconsole.ts)
+  /// Admin yo'li: xato bo'lsa server kodi bilan ([AdminConsoleException]).
+  Future<_ApiResponse> _admin(
+    String method,
+    String path, {
+    Object? body,
+    Map<String, String>? query,
+  }) async {
+    final r = await _send(method, path, body: body, query: query);
+    if (r.ok) return r;
+    throw AdminConsoleException(
+      _failure(r.status),
+      r.error,
+      '$method $path ${r.status} ${r.error}',
+    );
+  }
+
   @override
-  Future<AdminStats> adminStats() async => _notYet();
+  Future<AdminStats> adminStats() async =>
+      AdminStats((await _admin('GET', '/v1/admin/stats')).map);
+
   @override
   Future<List<SupportThread>> adminThreads({SupportStatus? status}) async =>
-      _notYet();
+      _threads(
+        (await _admin(
+          'GET',
+          '/v1/admin/support/threads',
+          query: status == null
+              ? null
+              : {'status': supportStatusToWire(status)},
+        )).data,
+      );
+
   @override
-  Future<void> adminReply(String threadId, String body) async => _notYet();
+  Future<void> adminReply(String threadId, String body) => _admin(
+    'POST',
+    '/v1/admin/support/threads/${_seg(threadId)}/reply',
+    body: {'body': body.trim()},
+  );
+
   @override
-  Future<void> adminSetStatus(String threadId, SupportStatus status) async =>
-      _notYet();
+  Future<void> adminSetStatus(String threadId, SupportStatus status) => _admin(
+    'POST',
+    '/v1/admin/support/threads/${_seg(threadId)}/status',
+    body: {'status': supportStatusToWire(status)},
+  );
+
   @override
-  Future<void> adminMarkRead(String threadId) async => _notYet();
+  Future<void> adminMarkRead(String threadId) =>
+      _admin('POST', '/v1/admin/support/threads/${_seg(threadId)}/read');
+
+  /// [query] — to'liq email (server HMAC qilib aniq moslik qidiradi; qisman
+  /// qidiruv yo'q, chunki email saqlanmaydi).
   @override
   Future<AdminUserPage> adminUsers({
     String? query,
@@ -1138,14 +1225,189 @@ class CloudflareLabBackend
     String? language,
     int limit = 20,
     int offset = 0,
-  }) async => _notYet();
+  }) async {
+    final q = query?.trim() ?? '';
+    final r = await _admin(
+      'GET',
+      '/v1/admin/users',
+      query: {
+        if (q.isNotEmpty) 'email': q,
+        'role': ?role,
+        'language': ?language,
+        'limit': '$limit',
+        'offset': '$offset',
+      },
+    );
+    return AdminUserPage(
+      _rows(r.map['items']).map(AdminUserRow.fromJson).toList(),
+      (r.map['total'] as num?)?.toInt() ?? 0,
+    );
+  }
+
+  @override
+  Future<List<AuditEntry>> adminAudit({int limit = 50}) async => _rows(
+    (await _admin('GET', '/v1/admin/audit', query: {'limit': '$limit'})).data,
+  ).map(AuditEntry.fromJson).toList();
+
+  @override
+  Future<AdminUserDetail> adminUserDetail(String userId) async =>
+      AdminUserDetail.fromJson(
+        (await _admin('GET', '/v1/admin/users/${_seg(userId)}')).map,
+      );
+
+  @override
+  Future<AdminAccountPage> adminAccounts({
+    String? email,
+    String? name,
+    String? role,
+    AccountStatus? status,
+    int limit = 20,
+    int offset = 0,
+  }) async {
+    final e = email?.trim() ?? '';
+    final n = name?.trim() ?? '';
+    final r = await _admin(
+      'GET',
+      '/v1/admin/users',
+      query: {
+        if (e.isNotEmpty) 'email': e,
+        if (n.isNotEmpty) 'name': n,
+        'role': ?role,
+        'status': ?status?.name,
+        'limit': '$limit',
+        'offset': '$offset',
+      },
+    );
+    return AdminAccountPage(
+      _rows(r.map['items']).map(AdminAccountRow.fromJson).toList(),
+      (r.map['total'] as num?)?.toInt() ?? 0,
+    );
+  }
+
+  String _user(String id, String action) =>
+      '/v1/admin/users/${_seg(id)}/$action';
+
+  @override
+  Future<void> adminSetRole(String userId, String role) =>
+      _admin('POST', _user(userId, 'role'), body: {'role': role});
+
+  @override
+  Future<void> adminSuspendAccount(String userId) =>
+      _admin('POST', _user(userId, 'suspend'));
+
+  @override
+  Future<void> adminReactivateAccount(String userId) =>
+      _admin('POST', _user(userId, 'reactivate'));
+
+  @override
+  Future<void> adminSuspendCommunity(String userId) =>
+      _admin('POST', _user(userId, 'community/suspend'));
+
+  @override
+  Future<void> adminRestoreCommunity(String userId) =>
+      _admin('POST', _user(userId, 'community/restore'));
+
+  @override
+  Future<List<Complaint>> adminComplaints({
+    ComplaintStatus? status,
+    ComplaintKind? kind,
+  }) async => _rows(
+    (await _admin(
+      'GET',
+      '/v1/admin/complaints',
+      query: {'status': ?status?.name, 'kind': ?kind?.wire},
+    )).data,
+  ).map(Complaint.fromJson).toList();
+
+  @override
+  Future<Complaint> adminComplaint(String id) async => Complaint.fromJson(
+    (await _admin('GET', '/v1/admin/complaints/${_seg(id)}')).map,
+  );
+
+  @override
+  Future<Complaint> adminComplaintNote(String id, String note) async =>
+      Complaint.fromJson(
+        (await _admin(
+          'POST',
+          '/v1/admin/complaints/${_seg(id)}/note',
+          body: {'note': note.trim()},
+        )).map,
+      );
+
+  @override
+  Future<Complaint> adminSetComplaintStatus(
+    String id,
+    ComplaintStatus status,
+  ) async => Complaint.fromJson(
+    (await _admin(
+      'POST',
+      '/v1/admin/complaints/${_seg(id)}/status',
+      body: {'status': status.name},
+    )).map,
+  );
+
+  /// Mehmon ham yuboradi (token bo'lsa — hisob bilan).
+  @override
+  Future<void> submitComplaint({
+    required ComplaintKind kind,
+    required String body,
+    String? targetRef,
+    String? lang,
+  }) async {
+    final r = await _send(
+      'POST',
+      '/v1/complaints',
+      body: {
+        'kind': kind.wire,
+        'body': body.trim(),
+        if (targetRef != null && targetRef.isNotEmpty) 'target_ref': targetRef,
+        'lang': ?lang,
+      },
+      optionalAuth: true,
+    );
+    if (r.ok) return;
+    throw ComplaintException(
+      _failure(r.status),
+      retryAfter: _seconds(r.map['retry_after']),
+      detail: 'POST /v1/complaints ${r.status} ${r.error}',
+    );
+  }
+
+  @override
+  Future<List<ReportItem>> adminReports({
+    ReportStatus status = ReportStatus.open,
+  }) async => _rows(
+    (await _admin(
+      'GET',
+      '/v1/admin/reports',
+      query: {'status': status.name},
+    )).data,
+  ).map(ReportItem.fromJson).toList();
+
+  String _report(ReportItem r, String action) =>
+      '/v1/admin/reports/${_seg(r.kind)}/${_seg(r.id)}/$action';
+
+  @override
+  Future<void> dismissReport(ReportItem item) =>
+      _admin('POST', _report(item, 'dismiss'));
+
+  @override
+  Future<void> resolveReport(ReportItem item) =>
+      _admin('POST', _report(item, 'resolve'));
+
+  @override
+  Future<void> suspendReportAuthor(ReportItem item) =>
+      _admin('POST', _report(item, 'suspend-author'));
+
+  // ------------------------------------------------------------------
+  // TODO(port): quyidagilar Cloudflare serveriga hali ko'chirilmagan
+  // (docs/BACKEND_CLOUDFLARE.md, “Reja”). Ishlayotgandek ko'rsatilmaydi;
+  // admin panel bu qatorlarni yashiradi yoki “ulanmagan” deb belgilaydi.
   @override
   Future<String> adminRevealEmail(String userId) async => _notYet();
   @override
   Future<void> adminSetReviewer(String userId, {required bool enabled}) async =>
       _notYet();
-  @override
-  Future<List<AuditEntry>> adminAudit({int limit = 50}) async => _notYet();
   @override
   Future<void> submitReview({
     required String kind,

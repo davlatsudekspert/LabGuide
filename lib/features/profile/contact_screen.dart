@@ -11,15 +11,20 @@ import '../../core/build_flags.dart';
 import '../../core/contact.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
+import 'complaint_form.dart';
 
-/// “Aloqa va shikoyat” — serverni talab qilmaydigan, DOIM ochiq ekran:
+/// “Aloqa va shikoyat” — DOIM ochiq ekran. Server ulangan buildda tepada
+/// ilova ichidagi shikoyat shakli ([ComplaintForm], mehmon ham yuboradi);
 /// savol/taklif, shikoyat (va faqat hamkor UI yoqilgan test buildda —
-/// reklama) — hammasi `mailto:` (pochta ilovasi)
-/// orqali, manzil [Contact.email]'da. Pochta ilovasi bo'lmasa manzil
+/// reklama) — `mailto:` (pochta ilovasi) orqali ham,
+/// manzil [Contact.email]'da. Pochta ilovasi bo'lmasa manzil
 /// nusxalanadi. Xat matniga faqat ilova versiyasi va platforma qo'yiladi —
 /// shaxsiy ma'lumot yo'q.
 class ContactScreen extends StatelessWidget {
-  const ContactScreen({super.key});
+  const ContactScreen({super.key, this.targetRef});
+
+  /// Shikoyat shakli uchun ixtiyoriy ishora (`?ref=`: ekran/karta/post id).
+  final String? targetRef;
 
   Future<void> _copy(BuildContext context, {String? message}) async {
     final messenger = ScaffoldMessenger.of(context);
@@ -55,6 +60,10 @@ class ContactScreen extends StatelessWidget {
       subtitle: l.contactIntro,
       showProfile: false,
       children: [
+        if (services.complaints case final api?) ...[
+          ComplaintForm(api: api, targetRef: targetRef),
+          const SizedBox(height: 8),
+        ],
         LgPanel(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

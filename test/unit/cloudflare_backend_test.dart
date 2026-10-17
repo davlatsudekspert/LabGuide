@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
+import 'package:labguide/core/backend/admin_console.dart';
 import 'package:labguide/core/backend/admin_team.dart';
 import 'package:labguide/core/backend/backend_models.dart';
 import 'package:labguide/core/backend/cloudflare_backend.dart';
@@ -742,17 +743,27 @@ void main() {
 
   test("ko'chirilmagan bo'limlar — unavailable, hamkorlar bo'sh", () async {
     await signIn();
-    await expectLater(
-      backend.myThreads(),
-      throwsA(
-        isA<BackendException>().having(
-          (e) => e.failure,
-          'f',
-          BackendFailure.unavailable,
+    for (final call in [
+      () => backend.adminRevealEmail('u-2'),
+      () => backend.adminSetReviewer('u-2', enabled: true),
+      () => backend.contentReviews(),
+      () => backend.attachment('a/b.png'),
+      () => backend.adminPartners(),
+    ]) {
+      await expectLater(
+        call(),
+        throwsA(
+          isA<BackendException>().having(
+            (e) => e.failure,
+            'f',
+            BackendFailure.unavailable,
+          ),
         ),
-      ),
-    );
-    await expectLater(backend.adminStats(), throwsA(isA<BackendException>()));
+      );
+    }
+    // Skrinshot bu serverda yo'q — ilova tugmani yashiradi.
+    expect(backend.supportAttachments, isFalse);
+    expect(api.requests.where((r) => r.url.path.contains('reveal')), isEmpty);
     expect(await backend.partners(), isEmpty);
     expect(await backend.trackPartnerEvents(const []), 0);
   });
@@ -947,5 +958,291 @@ void main() {
         ),
       );
     });
+  });
+
+  group('egasi admin paneli va shikoyatlar', () {
+    Map<String, Object?> thread() => {
+      'id': 't-1',
+      'user_id': 'u-1',
+      'kind': 'bug',
+      'subject': 'QC grafigi',
+      'status': 'new',
+      'created_at': '2026-10-10T10:00:00.000Z',
+      'updated_at': '2026-10-10T10:00:00.000Z',
+      'last_user_message_at': '2026-10-10T10:00:00.000Z',
+      'last_admin_message_at': null,
+      'user_read_at': '2026-10-10T10:00:00.000Z',
+      'admin_read_at': null,
+    };
+
+    test('/v1/me panel_admin; to‘xtatilgan hisob — accountSuspended', () async {
+      api.on('POST', '/v1/auth/otp/verify', 403, {
+        'error': 'account_suspended',
+      });
+      final r = await backend.verifyCode('a@example.com', '123456');
+      expect(r.status, OtpVerifyStatus.accountSuspended);
+      expect(backend.hasSession, isFalse);
+      await signIn();
+      api.on('GET', '/v1/me', 200, {
+        'user_id': 'u-1',
+        'admin_account': true,
+        'aal': 'aal1',
+        'panel_admin': true,
+      });
+      final a = await backend.myAccess();
+      expect(a.panelAdmin, isTrue);
+      expect(a.aal2, isFalse);
+    });
+
+    test(
+      'Taklif va yordam: ro‘yxat, yangi murojaat, xabar, biriktirma yo‘q',
+      () async {
+        await signIn();
+        api.on('GET', '/v1/support/threads', 200, [thread()]);
+        api.on('POST', '/v1/support/threads', 201, {'id': 't-2'});
+        api.on('POST', '/v1/support/threads/t-1/messages', 201, {'id': 'm-2'});
+        api.on('GET', '/v1/support/threads/t-1/messages', 200, [
+          {
+            'id': 'm-1',
+            'thread_id': 't-1',
+            'from_admin': true,
+            'body': 'Rahmat',
+            'attachment_path': null,
+            'created_at': '2026-10-10T11:00:00.000Z',
+          },
+        ]);
+        expect((await backend.myThreads()).single.subject, 'QC grafigi');
+        final id = await backend.createThread(
+          kind: SupportKind.bug,
+          subject: ' QC ',
+          body: ' Nuqta yo‘q ',
+        );
+        expect(id, 't-2');
+        expect(jsonDecode(api.last('/v1/support/threads').body), {
+          'kind': 'bug',
+          'subject': 'QC',
+          'body': 'Nuqta yo‘q',
+        });
+        await backend.postMessage('t-1', 'yana');
+        expect((await backend.messages('t-1')).single.fromAdmin, isTrue);
+        await expectLater(
+          backend.createThread(
+            kind: SupportKind.bug,
+            subject: 'QC',
+            body: 'x',
+            attachment: SupportAttachment(
+              bytes: Uint8List(4),
+              mimeType: 'image/png',
+            ),
+          ),
+          throwsA(
+            isA<BackendException>().having(
+              (e) => e.failure,
+              'f',
+              BackendFailure.unavailable,
+            ),
+          ),
+        );
+      },
+    );
+
+    test(
+      'admin: statistika, foydalanuvchilar (email/taxallus), rol, to‘xtatish',
+      () async {
+        await signIn();
+        api.on('GET', '/v1/admin/stats', 200, {
+          'registered': 5,
+          'new_7d': 2,
+          'online_now': 1,
+          'new_by_day': [
+            {'day': '2026-10-09', 'n': 1},
+            {'day': '2026-10-10', 'n': 3},
+          ],
+          'groups': {'groups': 2, 'results': 9},
+          'complaints': {'open': 1, 'resolved': 4},
+          'community': {'reports_open': 3},
+          'support': {'awaiting_reply': 1},
+          'by_role': {'lab': 5},
+          'by_language': {'uz': 5},
+        });
+        final st = await backend.adminStats();
+        expect(st.registered, 5);
+        expect(st.onlineNow, 1);
+        expect(st.newByDay.map((d) => d.count), [1, 3]);
+        expect(st.groupsSection!['results'], 9);
+        expect(st.complaintsSection!['resolved'], 4);
+
+        api.on('GET', '/v1/admin/users', 200, {
+          'items': [
+            {
+              'user_id': 'u-2',
+              'email_masked': 'st***@example.com',
+              'role': 'student',
+              'language': 'uz',
+              'registered_on': '2026-10-01T00:00:00.000Z',
+              'last_seen_on': '2026-10-09',
+              'status': 'suspended',
+              'admin': false,
+            },
+          ],
+          'total': 1,
+        });
+        final page = await backend.adminAccounts(
+          email: ' St@Example.com ',
+          status: AccountStatus.suspended,
+        );
+        expect(page.rows.single.status, AccountStatus.suspended);
+        final q = api.last('/v1/admin/users').url.queryParameters;
+        expect(q['email'], 'St@Example.com');
+        expect(q['status'], 'suspended');
+        expect(q.containsKey('name'), isFalse);
+        await backend.adminAccounts(name: '50%_');
+        expect(api.last('/v1/admin/users').url.queryParameters['name'], '50%_');
+
+        api.on('POST', '/v1/admin/users/u-2/role', 200, {});
+        api.on('POST', '/v1/admin/users/u-2/suspend', 403, {'error': 'admin'});
+        api.on('POST', '/v1/admin/users/u-2/reactivate', 200, {});
+        await backend.adminSetRole('u-2', 'teacher');
+        expect(jsonDecode(api.last('/v1/admin/users/u-2/role').body), {
+          'role': 'teacher',
+        });
+        await expectLater(
+          backend.adminSuspendAccount('u-2'),
+          throwsA(
+            isA<AdminConsoleException>()
+                .having((e) => e.code, 'code', 'admin')
+                .having((e) => e.failure, 'f', BackendFailure.forbidden),
+          ),
+        );
+        await backend.adminReactivateAccount('u-2');
+        api.on('GET', '/v1/admin/stats', 403, {'error': 'forbidden'});
+        await expectLater(
+          backend.adminStats(),
+          throwsA(
+            isA<BackendException>().having(
+              (e) => e.failure,
+              'f',
+              BackendFailure.forbidden,
+            ),
+          ),
+        );
+      },
+    );
+
+    test(
+      'shikoyat: mehmon tokensiz, hisobli token bilan; 429 → retryAfter',
+      () async {
+        api.on('POST', '/v1/complaints', 201, {'id': 'c-1', 'status': 'open'});
+        await backend.submitComplaint(
+          kind: ComplaintKind.inappropriate,
+          body: ' Haqoratli post ',
+          targetRef: 'community:question:q1',
+          lang: 'uz',
+        );
+        final anon = api.last('/v1/complaints');
+        expect(anon.headers['authorization'], isNull);
+        expect(jsonDecode(anon.body), {
+          'kind': 'inappropriate',
+          'body': 'Haqoratli post',
+          'target_ref': 'community:question:q1',
+          'lang': 'uz',
+        });
+        await signIn();
+        await backend.submitComplaint(
+          kind: ComplaintKind.bug,
+          body: 'Xato bor',
+        );
+        expect(
+          api.last('/v1/complaints').headers['authorization'],
+          'Bearer tok-1',
+        );
+        api.on('POST', '/v1/complaints', 429, {
+          'error': 'rate_limited',
+          'retry_after': 1200,
+        });
+        await expectLater(
+          backend.submitComplaint(kind: ComplaintKind.bug, body: 'Xato bor'),
+          throwsA(
+            isA<ComplaintException>()
+                .having((e) => e.failure, 'f', BackendFailure.rateLimited)
+                .having(
+                  (e) => e.retryAfter,
+                  'retry',
+                  const Duration(minutes: 20),
+                ),
+          ),
+        );
+      },
+    );
+
+    test(
+      'admin shikoyatlari: ro‘yxat, izoh, holat; hamjamiyat shikoyatlari',
+      () async {
+        await signIn();
+        final c = {
+          'id': 'c-1',
+          'kind': 'bug',
+          'body': 'Xato',
+          'status': 'open',
+          'anonymous': true,
+          'user_id': null,
+          'email_masked': null,
+          'created_at': '2026-10-10T10:00:00.000Z',
+        };
+        api.on('GET', '/v1/admin/complaints', 200, [c]);
+        api.on('POST', '/v1/admin/complaints/c-1/note', 200, {
+          ...c,
+          'admin_note': 'ok',
+        });
+        api.on('POST', '/v1/admin/complaints/c-1/status', 200, {
+          ...c,
+          'status': 'resolved',
+          'resolved_at': '2026-10-10T12:00:00.000Z',
+        });
+        final list = await backend.adminComplaints(
+          status: ComplaintStatus.open,
+          kind: ComplaintKind.bug,
+        );
+        expect(list.single.anonymous, isTrue);
+        expect(api.last('/v1/admin/complaints').url.queryParameters, {
+          'status': 'open',
+          'kind': 'bug',
+        });
+        expect(
+          (await backend.adminComplaintNote('c-1', ' ok ')).adminNote,
+          'ok',
+        );
+        final r = await backend.adminSetComplaintStatus(
+          'c-1',
+          ComplaintStatus.resolved,
+        );
+        expect(r.status, ComplaintStatus.resolved);
+        expect(jsonDecode(api.last('/v1/admin/complaints/c-1/status').body), {
+          'status': 'resolved',
+        });
+
+        final report = {
+          'kind': 'question',
+          'id': 'q1',
+          'status': 'open',
+          'reports': 2,
+          'reporters': 2,
+          'reasons': ['spam'],
+          'excerpt': 'Savol',
+          'question_id': 'q1',
+          'post_deleted': false,
+          'author_status': 'none',
+          'last_at': '2026-10-10T10:00:00.000Z',
+        };
+        api.on('GET', '/v1/admin/reports', 200, [report]);
+        api.on('POST', '/v1/admin/reports/question/q1/dismiss', 200, {});
+        final items = await backend.adminReports();
+        await backend.dismissReport(items.single);
+        expect(
+          api.requests.last.url.path,
+          '/v1/admin/reports/question/q1/dismiss',
+        );
+      },
+    );
   });
 }

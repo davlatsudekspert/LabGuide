@@ -8,6 +8,7 @@ import 'package:material_ui/material_ui.dart';
 
 import '../../app/app_scope.dart';
 import '../../app/widgets/lg_page.dart';
+import '../../core/backend/admin_console.dart';
 import '../../core/backend/backend_models.dart';
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
@@ -247,6 +248,11 @@ class _AttachmentPicker extends StatelessWidget {
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context);
     final a = attachment;
+    // Server skrinshot qabul qilmaydi (Cloudflare: R2 hali yo'q) — tugma ham yo'q.
+    final Object backend = context.services.backend;
+    if (backend is SupportAttachmentPolicy && !backend.supportAttachments) {
+      return const SizedBox.shrink();
+    }
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [

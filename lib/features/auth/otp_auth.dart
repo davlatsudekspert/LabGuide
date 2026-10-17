@@ -50,6 +50,9 @@ enum OtpVerifyStatus {
   noActiveCode,
   unavailable,
   failed,
+
+  /// Admin hisobni to'xtatgan — kirish rad etildi (aloqa manzili ko'rsatiladi).
+  accountSuspended,
 }
 
 @immutable

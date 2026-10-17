@@ -183,28 +183,55 @@ export async function findOrCreateUser(
   return { id: user.id, created };
 }
 
-/** Yangi sessiya (faqat hash saqlanadi); token faqat javobda. */
+/**
+ * Yangi sessiya (faqat hash saqlanadi); token faqat javobda. To'xtatilgan
+ * hisobga sessiya berilmaydi (email kodi ham, Google/Apple ham shu yerdan
+ * o'tadi) — `403 account_suspended`. [via] — kirish usuli (admin panel faqat
+ * email kodi bilan ochilgan sessiyaga).
+ */
 export async function createSession(
   ctx: Ctx,
   userId: string,
+  via: 'otp' | 'google' | 'apple' = 'otp',
 ): Promise<{ token: string; user_id: string; expires_at: string | null }> {
+  const u = await ctx.db
+    .prepare('SELECT suspended_at FROM users WHERE id = ?1')
+    .bind(userId)
+    .first<{ suspended_at: number | null }>();
+  if (u?.suspended_at != null) throw new ApiError(403, 'account_suspended');
   const token = base64url(randomBytes(32));
   const expires = ctx.now + SESSION_TTL_DAYS * 86400_000;
   await ctx.db
     .prepare(
-      'INSERT INTO sessions (token_hash, user_id, created_at, expires_at, aal) VALUES (?1, ?2, ?3, ?4, ?5)',
+      'INSERT INTO sessions (token_hash, user_id, created_at, expires_at, aal, via) VALUES (?1, ?2, ?3, ?4, ?5, ?6)',
     )
-    .bind(await sha256Hex(token), userId, ctx.now, expires, 'aal1')
+    .bind(await sha256Hex(token), userId, ctx.now, expires, 'aal1', via)
     .run();
   return { token, user_id: userId, expires_at: iso(expires) };
 }
 
-/** Maxfiy LG_ADMIN_EMAILS — super adminlar (egasi). Kichik harf, bo'shsiz. */
-export function adminAllowlist(ctx: Ctx): string[] {
-  return (ctx.env.LG_ADMIN_EMAILS ?? '')
+/**
+ * Egasi qarori (admin panel spetsifikatsiyasi): ikkala secret ham bo'sh
+ * bo'lsa — standart egasi emaili. Secretni o'zgartirish vakolatni darhol
+ * o'zgartiradi (har so'rovda qayta tekshiriladi).
+ */
+export const DEFAULT_ADMIN_EMAILS = 'davlatsudekspert@gmail.com';
+
+const splitEmails = (raw: string | undefined) =>
+  (raw ?? '')
     .split(',')
     .map((s) => s.trim().toLowerCase())
     .filter(Boolean);
+
+/**
+ * Super adminlar (egasi): maxfiy `ADMIN_EMAILS`, bo'lmasa `LG_ADMIN_EMAILS`
+ * (eski nom), ikkalasi ham bo'sh bo'lsa — [DEFAULT_ADMIN_EMAILS]. Kichik harf.
+ */
+export function adminAllowlist(ctx: Ctx): string[] {
+  const primary = splitEmails(ctx.env.ADMIN_EMAILS);
+  if (primary.length) return primary;
+  const legacy = splitEmails(ctx.env.LG_ADMIN_EMAILS);
+  return legacy.length ? legacy : splitEmails(DEFAULT_ADMIN_EMAILS);
 }
 
 /**
@@ -301,14 +328,38 @@ export async function requireSession(ctx: Ctx): Promise<Session> {
   const th = await sha256Hex(m[1]);
   const row = await ctx.db
     .prepare(
-      `SELECT s.user_id, s.aal, u.role, u.language FROM sessions s
+      `SELECT s.user_id, s.aal, s.via, u.role, u.language, u.last_seen_at FROM sessions s
        JOIN users u ON u.id = s.user_id
-       WHERE s.token_hash = ?1 AND s.expires_at > ?2`,
+       WHERE s.token_hash = ?1 AND s.expires_at > ?2 AND u.suspended_at IS NULL`,
     )
     .bind(th, ctx.now)
-    .first<{ user_id: string; aal: 'aal1' | 'aal2'; role: string; language: string }>();
+    .first<{
+      user_id: string;
+      aal: 'aal1' | 'aal2';
+      via: string;
+      role: string;
+      language: string;
+      last_seen_at: number | null;
+    }>();
   if (!row) throw unauthorized();
-  return { userId: row.user_id, tokenHash: th, aal: row.aal, role: row.role, language: row.language };
+  // Faollik: faqat daqiqa aniqligida va daqiqasiga ko'pi bilan bir yozuv
+  // (“hozir onlayn” — oxirgi 5 daqiqa). IP/qurilma saqlanmaydi.
+  const minute = Math.floor(ctx.now / 60_000) * 60_000;
+  if (row.last_seen_at == null || row.last_seen_at < minute) {
+    const today = new Date(ctx.now + 5 * 3600_000).toISOString().slice(0, 10); // Asia/Tashkent
+    await ctx.db
+      .prepare('UPDATE users SET last_seen_at = ?2, last_seen_on = ?3 WHERE id = ?1')
+      .bind(row.user_id, minute, today)
+      .run();
+  }
+  return {
+    userId: row.user_id,
+    tokenHash: th,
+    aal: row.aal,
+    role: row.role,
+    language: row.language,
+    via: row.via,
+  };
 }
 
 export async function logout(ctx: Ctx): Promise<Response> {
@@ -326,13 +377,34 @@ export async function logoutAll(ctx: Ctx): Promise<Response> {
 async function flags(ctx: Ctx, userId: string) {
   const r = await ctx.db
     .prepare(
+      // Ro'yxat (secret) orqali berilgan vakolat ro'yxatdan chiqqanda darhol
+      // tushadi: bunday qator faqat hali ro'yxatda bo'lsa sanaladi (pastda).
       `SELECT EXISTS (SELECT 1 FROM admins WHERE user_id = ?1) AS admin,
+              (SELECT granted_reason FROM admins WHERE user_id = ?1) AS reason,
               EXISTS (SELECT 1 FROM reviewers WHERE user_id = ?1) AS reviewer,
               EXISTS (SELECT 1 FROM teacher_accounts WHERE user_id = ?1) AS teacher`,
     )
     .bind(userId)
-    .first<{ admin: number; reviewer: number; teacher: number }>();
-  return { admin: r?.admin === 1, reviewer: r?.reviewer === 1, teacher: r?.teacher === 1 };
+    .first<{ admin: number; reason: string | null; reviewer: number; teacher: number }>();
+  let admin = r?.admin === 1;
+  if (admin && r?.reason === 'verified allowlisted email') admin = await isSuperAdmin(ctx, userId);
+  return { admin, reviewer: r?.reviewer === 1, teacher: r?.teacher === 1 };
+}
+
+/**
+ * Admin panel (egasi qarori): email KODI bilan ochilgan sessiya, hisob emaili
+ * ADMIN_EMAILS da (har so'rovda HMAC bilan qayta tekshiriladi), hisob
+ * to'xtatilmagan (requireSession). TOTP talab qilinmaydi — egasining ongli
+ * qarori (docs/ADMIN_PANEL_GUIDE.md). Ilovadagi hech qanday belgi ishonilmaydi.
+ */
+export async function isPanelAdmin(ctx: Ctx, s: Session): Promise<boolean> {
+  return s.via === 'otp' && (await isSuperAdmin(ctx, s.userId));
+}
+
+export async function requirePanelAdmin(ctx: Ctx): Promise<Session> {
+  const s = await requireSession(ctx);
+  if (!(await isPanelAdmin(ctx, s))) throw forbidden();
+  return s;
 }
 
 /** Sessiya admin (server bergan vakolat + TOTP aal2) bo'lsa — true. */
@@ -363,6 +435,8 @@ export async function me(ctx: Ctx): Promise<Response> {
     admin: f.admin && s.aal === 'aal2',
     // Faqat LG_ADMIN_EMAILS (egasi): adminlarni qo'shish/olib tashlash (D-44).
     super_admin: f.admin && (await isSuperAdmin(ctx, s.userId)),
+    // Admin panel (ADMIN_EMAILS, email kodi bilan kirish; TOTP siz).
+    panel_admin: await isPanelAdmin(ctx, s),
     reviewer: f.reviewer,
     // Ustoz — faqat o'z guruhlari; admin vakolati emas.
     teacher: f.teacher,
@@ -407,6 +481,7 @@ export async function deleteAccount(ctx: Ctx): Promise<Response> {
     `DELETE FROM study_groups WHERE owner_id = ?1`,
     `DELETE FROM support_messages WHERE thread_id IN (SELECT id FROM support_threads WHERE user_id = ?1)`,
     `DELETE FROM support_threads WHERE user_id = ?1`,
+    `UPDATE complaints SET user_id = NULL WHERE user_id = ?1`,
     `UPDATE partner_requests SET user_id = NULL WHERE user_id = ?1`,
     `UPDATE content_reviews SET reviewer_id = NULL WHERE reviewer_id = ?1`,
     `DELETE FROM entitlements WHERE user_id = ?1`,

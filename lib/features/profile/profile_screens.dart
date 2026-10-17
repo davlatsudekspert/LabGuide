@@ -222,7 +222,7 @@ class ProfileScreen extends StatelessWidget {
             // Faqat server admin hisobi deb tasdiqlagan foydalanuvchiga
             // ko'rinadi; ichkarida yana 2FA va har RPC'da tekshiruv bor.
             // Hamjamiyat moderatsiyasi va adminlar — panel ichida (bitta kirish).
-            if (access.access.adminAccount)
+            if (access.access.adminAccount || access.access.panelAdmin)
               LgRow(
                 title: l.adminTitle,
                 subtitle: l.adminSub,

@@ -8563,4 +8563,484 @@ class AppLocalizationsUz extends AppLocalizations {
   @override
   String get urinLabCardBody =>
       'Yig‘ish, test-chiziq, cho‘kma rasmlari, natijani o‘qish, mashq';
+
+  @override
+  String get admPanelAccess =>
+      'Kirish: egasi emaili (ADMIN_EMAILS) va email kodi. Server har so‘rovda qayta tekshiradi.';
+
+  @override
+  String get admOverview => 'Umumiy ko‘rsatkichlar';
+
+  @override
+  String admOverviewSub(int total, int online, int week) {
+    return 'Ro‘yxatdan o‘tgan: $total · onlayn: $online · 7 kunda yangi: $week';
+  }
+
+  @override
+  String get admComplaintsRow => 'Ilova shikoyatlari';
+
+  @override
+  String admComplaintsRowSub(int count) {
+    return 'Ochiq: $count';
+  }
+
+  @override
+  String get admReportsRow => 'Hamjamiyat shikoyatlari';
+
+  @override
+  String admReportsRowSub(int count) {
+    return 'Ko‘rilmagan postlar: $count';
+  }
+
+  @override
+  String admEmailNote(String email) {
+    return 'Email orqali yozilgan shikoyat va savollar $email manziliga keladi — ularni pochtada ko‘ring (ilovaga tushmaydi).';
+  }
+
+  @override
+  String get admUsersSub =>
+      'Email yoki taxallus bo‘yicha qidirish, rol, to‘xtatish';
+
+  @override
+  String get admAuditSub => 'Har bir admin amali yoziladi';
+
+  @override
+  String get admStoreTitle => 'Yuklab olishlar va sotuvlar';
+
+  @override
+  String get admStoreBody =>
+      'Do‘kondan yuklab olishlar sonini server ko‘rmaydi — uni App Store Connect va Google Play Console ko‘rsatadi. Ilovada analitika SDK yo‘q (maxfiylik siyosati). Bu paneldagi sonlar — emailini tasdiqlab ro‘yxatdan o‘tgan hisoblar.';
+
+  @override
+  String get admSales => 'Sotuvlar: 0 (hozircha to‘lov yo‘q)';
+
+  @override
+  String get admAppStoreConnect => 'App Store Connect';
+
+  @override
+  String get admPlayConsole => 'Google Play Console';
+
+  @override
+  String get admStatsAccounts => 'Hisoblar';
+
+  @override
+  String get admOnlineNow => 'Hozir onlayn (5 daqiqa)';
+
+  @override
+  String get admSuspendedAccounts => 'To‘xtatilgan hisoblar';
+
+  @override
+  String get admStatsActiveNote =>
+      'Onlayn va faol — ilovadan serverga so‘rov yuborgan hisob. Faqat daqiqa va kun yoziladi; IP va qurilma saqlanmaydi.';
+
+  @override
+  String get admChartTitle => 'Yangi hisoblar — oxirgi 14 kun';
+
+  @override
+  String admChartBar(String date, int count) {
+    return '$date: $count ta yangi hisob';
+  }
+
+  @override
+  String admChartTotal(int count) {
+    return '14 kunda jami: $count';
+  }
+
+  @override
+  String get admStatsObjects => 'Asosiy obyektlar';
+
+  @override
+  String get admStatsGroupsCount => 'Guruhlar';
+
+  @override
+  String get admStatsTeachers => 'Ro‘yxatdan o‘tgan ustozlar';
+
+  @override
+  String get admStatsStudents => 'Guruhlardagi talabalar';
+
+  @override
+  String get admStatsAssignments => 'Test sessiyalari';
+
+  @override
+  String get admStatsResults => 'Test natijalari';
+
+  @override
+  String get admStatsQuestions => 'Hamjamiyat savollari';
+
+  @override
+  String get admStatsAnswers => 'Hamjamiyat javoblari';
+
+  @override
+  String get admStatsComplaintsOpen => 'Ochiq shikoyatlar';
+
+  @override
+  String get admStatsComplaintsResolved => 'Hal qilingan shikoyatlar';
+
+  @override
+  String get admStatsReportsOpen => 'Hamjamiyat: ko‘rilmagan shikoyatlar';
+
+  @override
+  String get admStatsAwaiting => 'Murojaatlar: javob kutmoqda';
+
+  @override
+  String admStatsUpdated(String time) {
+    return 'Yangilandi: $time';
+  }
+
+  @override
+  String get admComplaintsTitle => 'Ilova shikoyatlari';
+
+  @override
+  String get admApple12Note =>
+      'Nomaqbul kontent haqidagi shikoyatlarni tez ko‘rib chiqing (Apple 1.2 — o‘z vaqtida javob talab qilinadi; maqsad — 24 soat).';
+
+  @override
+  String get admFilterOpen => 'Ochiq';
+
+  @override
+  String get admFilterResolved => 'Hal qilingan';
+
+  @override
+  String get admAllKinds => 'Barcha turlar';
+
+  @override
+  String get complaintKindComplaint => 'Shikoyat';
+
+  @override
+  String get complaintKindInappropriate => 'Nomaqbul kontent';
+
+  @override
+  String get complaintKindBug => 'Xato';
+
+  @override
+  String get complaintKindAd => 'Reklama';
+
+  @override
+  String get complaintKindOther => 'Boshqa';
+
+  @override
+  String get admComplaintsEmpty => 'Bu ro‘yxatda shikoyat yo‘q';
+
+  @override
+  String get admComplaintAnon => 'Mehmon (hisobsiz)';
+
+  @override
+  String admComplaintFrom(String email) {
+    return 'Yuboruvchi: $email';
+  }
+
+  @override
+  String admComplaintTarget(String ref) {
+    return 'Ishora: $ref';
+  }
+
+  @override
+  String get admComplaintNote => 'Admin izohi';
+
+  @override
+  String get admComplaintNoteHint => 'Nima qilindi? (faqat adminlar ko‘radi)';
+
+  @override
+  String get admComplaintSaveNote => 'Izohni saqlash';
+
+  @override
+  String get admComplaintResolve => 'Hal qilindi';
+
+  @override
+  String get admComplaintReopen => 'Qayta ochish';
+
+  @override
+  String admComplaintResolvedOn(String date) {
+    return 'Hal qilingan: $date';
+  }
+
+  @override
+  String get admSaved => 'Saqlandi';
+
+  @override
+  String get admReportsEmpty => 'Bu ro‘yxatda shikoyat yo‘q';
+
+  @override
+  String get admReportOpen => 'Ochiq';
+
+  @override
+  String get admReportDismissed => 'Rad etilgan';
+
+  @override
+  String get admReportResolved => 'Hal qilingan';
+
+  @override
+  String get admReportKindQuestion => 'Savol';
+
+  @override
+  String get admReportKindAnswer => 'Javob';
+
+  @override
+  String admReportCount(int reports, int reporters) {
+    return '$reports ta shikoyat · $reporters kishi';
+  }
+
+  @override
+  String admReportReasons(String reasons) {
+    return 'Sabab: $reasons';
+  }
+
+  @override
+  String get admReportDeleted => 'Post o‘chirilgan';
+
+  @override
+  String get admReportAuthorSuspended => 'Muallif to‘xtatilgan';
+
+  @override
+  String get admReportOpenPost => 'Postni ochish';
+
+  @override
+  String get admReportDismiss => 'Asossiz';
+
+  @override
+  String get admReportResolve => 'Hal qilindi';
+
+  @override
+  String get admReportSuspend => 'Muallifni to‘xtatish';
+
+  @override
+  String get admReportDismissTitle => 'Shikoyat rad etilsinmi?';
+
+  @override
+  String get admReportDismissBody =>
+      'Shikoyatlar yopiladi va avtomatik to‘xtatishga sanalmaydi. Amal jurnalga yoziladi.';
+
+  @override
+  String get admReportResolveTitle => 'Hal qilindi deb belgilansinmi?';
+
+  @override
+  String get admReportResolveBody =>
+      'Chora ko‘rilgan (masalan, post o‘chirilgan). Amal jurnalga yoziladi.';
+
+  @override
+  String get admReportSuspendTitle => 'Muallif to‘xtatilsinmi?';
+
+  @override
+  String get admReportSuspendBody =>
+      'Muallif hamjamiyatda yoza olmaydi, postlari yashiriladi. Amal jurnalga yoziladi.';
+
+  @override
+  String get admSearchModeEmail => 'Email';
+
+  @override
+  String get admSearchModeName => 'Taxallus';
+
+  @override
+  String get admSearchEmail => 'To‘liq email (aniq moslik)';
+
+  @override
+  String get admSearchName => 'Guruhdagi taxallus (kamida 2 belgi)';
+
+  @override
+  String get admUsersSearchNote =>
+      'Email serverda ochiq saqlanmaydi: hisob faqat to‘liq email bo‘yicha topiladi va niqoblangan ko‘rinishda chiqadi.';
+
+  @override
+  String get admSearch => 'Qidirish';
+
+  @override
+  String get admStatusActive => 'Faol';
+
+  @override
+  String get admStatusSuspended => 'To‘xtatilgan';
+
+  @override
+  String get admUserAdminTag => 'Admin';
+
+  @override
+  String get admUserTitle => 'Foydalanuvchi';
+
+  @override
+  String get admUserRole => 'Rol';
+
+  @override
+  String get admRoleChanged => 'Rol o‘zgartirildi';
+
+  @override
+  String get admRoleSelfNote =>
+      'O‘z rolingizni va holatingizni bu yerda o‘zgartirib bo‘lmaydi.';
+
+  @override
+  String admUserFacts(int owned, int joined, int threads, int complaints) {
+    return 'Guruhlar: $owned (ustoz) · $joined (talaba) · murojaatlar: $threads · shikoyatlar: $complaints';
+  }
+
+  @override
+  String get admAccountTitle => 'Hisob holati';
+
+  @override
+  String get admAccountSuspend => 'Hisobni to‘xtatish';
+
+  @override
+  String get admAccountSuspendTitle => 'Hisob to‘xtatilsinmi?';
+
+  @override
+  String get admAccountSuspendBody =>
+      'Barcha qurilmalardan chiqariladi va qayta kira olmaydi (email kodi, Google, Apple). Ilova unga aloqa manzilini ko‘rsatadi. Amal jurnalga yoziladi.';
+
+  @override
+  String get admAccountReactivate => 'Qayta faollashtirish';
+
+  @override
+  String get admAccountReactivateTitle => 'Hisob qayta faollashtirilsinmi?';
+
+  @override
+  String get admAccountReactivateBody =>
+      'Foydalanuvchi yana kira oladi. Amal jurnalga yoziladi.';
+
+  @override
+  String get admAccountAdminNote => 'Admin hisobini to‘xtatib bo‘lmaydi.';
+
+  @override
+  String get admUserCommunity => 'Hamjamiyat holati';
+
+  @override
+  String get admCommunityNone => 'Oddiy a’zo';
+
+  @override
+  String admUserCommunityFacts(int questions, int answers, int reporters) {
+    return 'Savollar: $questions · javoblar: $answers · shikoyatchilar: $reporters';
+  }
+
+  @override
+  String get admCommunitySuspend => 'Hamjamiyatda to‘xtatish';
+
+  @override
+  String get admCommunitySuspendTitle => 'Hamjamiyatda to‘xtatilsinmi?';
+
+  @override
+  String get admCommunitySuspendBody =>
+      'Bu hisob savol va javob yoza olmaydi, postlari yashiriladi. Ilovaning qolgan qismi ishlaydi. Amal jurnalga yoziladi.';
+
+  @override
+  String get admErrOwner => 'Egasi hisobini to‘xtatib bo‘lmaydi.';
+
+  @override
+  String get admErrSelf => 'O‘zingizga bu amalni qo‘llab bo‘lmaydi.';
+
+  @override
+  String get admErrName => 'Taxallus 2–40 belgi bo‘lsin.';
+
+  @override
+  String admAuditBy(String actor) {
+    return 'Bajaruvchi: $actor';
+  }
+
+  @override
+  String get admAuditSystem => 'Tizim';
+
+  @override
+  String get adminActionReportDismissed => 'Hamjamiyat shikoyati rad etildi';
+
+  @override
+  String get adminActionReportResolved => 'Hamjamiyat shikoyati hal qilindi';
+
+  @override
+  String get adminActionCommunitySuspended => 'Hamjamiyatda to‘xtatildi';
+
+  @override
+  String get adminActionCommunityRestored => 'Hamjamiyatda tiklandi';
+
+  @override
+  String get adminActionCommunityRevoked => 'Mutaxassis tasdig‘i bekor qilindi';
+
+  @override
+  String get adminActionAutoSuspended =>
+      'Shikoyatlar bo‘yicha avtomatik to‘xtatildi';
+
+  @override
+  String get adminActionPostDeleted => 'Post o‘chirildi';
+
+  @override
+  String get adminActionPinned => 'Savol qadalishi o‘zgardi';
+
+  @override
+  String get adminActionAccountDeleted => 'Hisob o‘chirildi';
+
+  @override
+  String get adminActionMfa => '2FA yoqildi';
+
+  @override
+  String get adminActionTeacher => 'Ustoz ro‘yxatdan o‘tdi';
+
+  @override
+  String get adminActionRoleChanged => 'Rol o‘zgartirildi';
+
+  @override
+  String get adminActionAccountSuspended => 'Hisob to‘xtatildi';
+
+  @override
+  String get adminActionAccountReactivated => 'Hisob qayta faollashtirildi';
+
+  @override
+  String get adminActionComplaintNote => 'Shikoyatga izoh yozildi';
+
+  @override
+  String get adminActionComplaintResolved => 'Shikoyat hal qilindi';
+
+  @override
+  String get adminActionComplaintReopened => 'Shikoyat qayta ochildi';
+
+  @override
+  String get adminActionIdentityLinked => 'Kirish usuli bog‘landi';
+
+  @override
+  String get complaintFormTitle => 'Ilova ichidan shikoyat yuborish';
+
+  @override
+  String get complaintFormBody =>
+      'Nomaqbul kontent, xato yoki boshqa muammo haqida yozing — LabGuide jamoasi ko‘rib chiqadi (odatda 24 soat ichida).';
+
+  @override
+  String get complaintKindLabel => 'Turi';
+
+  @override
+  String get complaintText => 'Matn';
+
+  @override
+  String get complaintTextHint => 'Nima bo‘ldi? Qaysi ekran yoki post?';
+
+  @override
+  String complaintTarget(String ref) {
+    return 'Ishora: $ref';
+  }
+
+  @override
+  String get complaintSend => 'Shikoyat yuborish';
+
+  @override
+  String get complaintSent => 'Yuborildi. Rahmat — ko‘rib chiqamiz.';
+
+  @override
+  String get complaintTooShort => 'Kamida 5 belgi yozing.';
+
+  @override
+  String complaintRateLimited(int minutes) {
+    return 'Juda ko‘p yuborildi: soatiga 5 ta. $minutes daqiqadan keyin qayta urinib ko‘ring.';
+  }
+
+  @override
+  String get complaintAnonNote =>
+      'Hisobsiz yuborsangiz, sizga javob bera olmaymiz. Javob kerak bo‘lsa — hisobga kiring yoki email yozing.';
+
+  @override
+  String get complaintPhiNote =>
+      'Bemorning ismi yoki boshqa shaxsiy ma’lumotini yozmang.';
+
+  @override
+  String get complaintFailed =>
+      'Yuborilmadi. Internetni tekshirib, qayta urinib ko‘ring.';
+
+  @override
+  String authAccountSuspended(String email) {
+    return 'Hisobingiz to‘xtatilgan. Savol bo‘lsa, yozing: $email';
+  }
+
+  @override
+  String get admSectionComplaints => 'Shikoyatlar';
 }

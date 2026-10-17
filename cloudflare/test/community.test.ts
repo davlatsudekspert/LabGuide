@@ -574,7 +574,8 @@ describe('hamjamiyat: egasi va boshlang\'ich kontent', () => {
     const s2 = makeServer({ LG_ADMIN_EMAILS: 'boss@example.test' });
     const a2 = await s2.signInAdmin();
     await s2.env.DB.prepare('UPDATE users SET email_hash = ?1 WHERE id = ?2').bind('x'.repeat(64), a2.userId).run();
-    expect((await s2.call('POST', '/v1/admin/community/launch', { token: a2.token })).data.error).toBe('not_allowlisted');
+    // Ro'yxat orqali berilgan admin vakolati ro'yxatdan chiqqanda darhol tushadi (403).
+    expect((await s2.call('POST', '/v1/admin/community/launch', { token: a2.token })).status).toBe(403);
   });
 });
 

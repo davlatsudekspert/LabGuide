@@ -11,6 +11,8 @@ export interface Env {
   BREVO_API_KEY?: string;
   LG_SENDER_EMAIL?: string;
   LG_SENDER_NAME?: string;
+  /** Maxfiy: admin panel emaillari (vergul bilan). Bo'sh bo'lsa — LG_ADMIN_EMAILS. */
+  ADMIN_EMAILS?: string;
   /** Maxfiy: vergul bilan admin emaillari (faqat OTP tasdig'idan keyin). */
   LG_ADMIN_EMAILS?: string;
   /** Web build uchun ruxsat etilgan originlar (vergul bilan). Bo'sh — CORS yo'q. */

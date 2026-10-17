@@ -179,6 +179,12 @@ Quyidagi tekshiruvlar `lib/`, `ios/`, `.github/workflows/ci.yml`, `docs/` bo'yic
 | **Bloklash** | **Yo'q edi → ilova tomoni qo'shildi** | Muallif anonim (`author_hash` mijozga chiqmaydi), shuning uchun mijoz muallifni aniqlay olmasdi | **Qilindi:** `CommunityAuthor.ref`, mahalliy blok ro'yxati (`StoreKeys.communityBlocked`), savol/javob ostida “Foydalanuvchini bloklash”, ro'yxat/bosh sahifa/javoblardan yashirish, “Bloklanganlar” bo'limi (hammasini qaytarish), testlar. **Server o'zgarishi kerak (kichik):** `author()` javobiga `ref` qo'shish — pastdagi taklif. `ref` kelmaguncha tugma chiqmaydi |
 | **Aloqa ma'lumoti** | **Bor** | Profil → Aloqa (`ContactScreen`, `Contact.email = labguide@nfcstore.uz`) | **Qilindi:** hamjamiyat ro'yxati ostida to'g'ridan-to'g'ri “LabGuide bilan aloqa” havolasi. ASC “Support URL” va Play email maydonlarini to'ldiring |
 
+**Shikoyat va o'z vaqtida ko'rib chiqish (2026-10-17, admin panel):** Profil → Aloqa va shikoyat ekranida
+ilova ichidagi shikoyat shakli (turlar: shikoyat, nomaqbul kontent, xato, reklama, boshqa; mehmon ham; soatiga 5 ta;
+`POST /v1/complaints`). Egasi Admin panel → “Ilova shikoyatlari” va “Hamjamiyat shikoyatlari”da ko'radi, izoh
+yozadi, hal qiladi, post muallifini to'xtatadi yoki hisobni butunlay to'xtatadi; har amal jurnalda. Ichki maqsad —
+24 soat. Qo'llanma: `docs/ADMIN_PANEL_GUIDE.md`. App Review izohida shu yo'llarni ko'rsating.
+
 **Server taklifi (`ref`, taqiqlangan yo'l — boshqa muhandis uchun):** `cloudflare/src/community.ts` ichidagi `author()`
 funksiyasi javobiga qo'shing:
 `ref: await hmacHex(ctx.env.<mavjud sir>, 'blk:' + r.author_hash).then(h => h.slice(0, 16))` (ya'ni `author_hash` dan

@@ -46,8 +46,10 @@ describe('adminlar boshqaruvi (D-44)', () => {
     const h2 = await s.signInAdmin(email);
     expect((await s.call('GET', '/v1/me', { token: h2.token })).data).toMatchObject({ admin: true, super_admin: false });
     expect((await s.call('GET', '/v1/admin/community/members', { token: h2.token })).status).toBe(200);
-    // Hali ko'chirilmagan admin yo'llari ham vakolatdan o'tadi (501, 403 emas).
-    expect((await s.call('GET', '/v1/admin/stats', { token: h2.token })).status).toBe(501);
+    // Egasi admin paneli (statistika va h.k.) — faqat ADMIN_EMAILS; qo'shilgan admin emas.
+    expect((await s.call('GET', '/v1/admin/stats', { token: h2.token })).status).toBe(403);
+    // Hali ko'chirilmagan admin yo'llari vakolatdan o'tadi (501, 403 emas).
+    expect((await s.call('GET', '/v1/admin/teachers', { token: h2.token })).status).toBe(501);
     const l2 = await s.call('GET', '/v1/admin/admins', { token: h2.token });
     expect(l2.data.can_manage).toBe(false);
     expect(l2.data.admins.find((a: any) => a.id === r.data.id)).toMatchObject({ active: true, you: true });

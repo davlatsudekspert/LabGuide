@@ -21,11 +21,14 @@ Flutter ilova ──HTTPS/JSON──▶ Worker `labguide-api` (cloudflare/src) �
 | `cloudflare/src/app.ts` | marshrutlar, umumiy xato ishlovi (ichki tafsilot chiqmaydi), CORS, kunlik tozalash (cron) |
 | `cloudflare/src/auth.ts` | email OTP, sessiyalar, profil, admin TOTP, super admin tekshiruvi, hisobni o‘chirish |
 | `cloudflare/src/admins.ts` | adminlar boshqaruvi (D-44): super admin email bo‘yicha admin qo‘shadi/olib tashlaydi |
+| `cloudflare/src/adminconsole.ts` | egasi admin paneli: umumiy ko‘rsatkichlar, foydalanuvchilar (qidiruv, rol, hisobni to‘xtatish), hamjamiyat shikoyatlari, amallar tarixi |
+| `cloudflare/src/complaints.ts` | ilova ichidagi shikoyatlar (Profil → Aloqa va shikoyat; mehmon ham; Apple 1.2) va ularni admin ko‘rib chiqishi |
+| `cloudflare/src/support.ts` | “Taklif va yordam”: foydalanuvchi ↔ admin yozishmasi |
 | `cloudflare/src/community.ts` | hamjamiyat (D-43): mutaxassisni AI bilan tasdiqlash, savol-javob, ovoz, shikoyat, tarjima keshi, admin moderatsiyasi, egasi tasdig‘i va seed |
 | `cloudflare/src/groups.ts` | guruhlar, a’zolik, mavzular, savol-javob belgilari, test sessiyalari, natijalar |
 | `cloudflare/src/crypto.ts` | HMAC, SHA-256, AES-GCM, TOTP (faqat WebCrypto) |
 | `cloudflare/src/email.ts` | email yuboruvchi: Resend (standart) / Brevo, uz/ru/en matn |
-| `cloudflare/migrations/` | D1 sxemasi: `0001_auth`, `0002_classroom`, `0003_planned_ports` (faqat sxema), `0004_teacher_topics` (ustoz ro‘yxati, mavzu bosqichlari va testi), `0005_community` (hamjamiyat), `0006_admin_grants` (qo‘shilgan adminlar, D-44) |
+| `cloudflare/migrations/` | D1 sxemasi: `0001_auth`, `0002_classroom`, `0003_planned_ports` (faqat sxema), `0004_teacher_topics` (ustoz ro‘yxati, mavzu bosqichlari va testi), `0005_community` (hamjamiyat), `0006_admin_grants` (qo‘shilgan adminlar, D-44), `0007_billing`, `0008_social_login`, `0009_admin_console` (shikoyatlar, hisobni to‘xtatish, faollik daqiqasi, sessiya kirish usuli, hamjamiyat shikoyati holati; ko‘rinmas `users.plan`) |
 | `cloudflare/seed/` | `community_seed.json` (egasi tasdiqlagan 2 ta savol-javob), `community_seed.example.json` (sxema) |
 | `cloudflare/test/` | vitest + `@cloudflare/vitest-pool-workers` (haqiqiy workerd va lokal D1) |
 | `lib/core/backend/cloudflare_backend.dart` | ilova adapteri `CloudflareLabBackend` |
@@ -63,7 +66,7 @@ borligi ham bildirilmaydi), 409 holatga zid (masalan, ikkinchi topshirish),
 | `POST /v1/auth/apple/callback` | Apple (form POST) | faqat Android veb-oqimi (`APPLE_SIGNIN_SERVICE_ID` bo‘lsa): natijani ilovaga `intent://` bilan qaytaradi |
 | `POST /v1/auth/logout` | sessiya | joriy tokenni bekor qiladi |
 | `POST /v1/auth/logout-all` | sessiya | hamma qurilmalardan chiqish |
-| `GET /v1/me` | sessiya | `{user_id, role, language, admin_account, aal, admin, super_admin, reviewer, teacher, identities}` (`super_admin` — email `LG_ADMIN_EMAILS` da; `identities` — bog‘langan `google`/`apple`) |
+| `GET /v1/me` | sessiya | `{user_id, role, language, admin_account, aal, admin, super_admin, panel_admin, reviewer, teacher, identities}` (`super_admin` — email `ADMIN_EMAILS` da; `panel_admin` — egasi admin paneli: email kodi bilan kirgan va emaili `ADMIN_EMAILS` da; `identities` — bog‘langan `google`/`apple`) |
 | `POST /v1/me/teacher` | sessiya | ustoz sifatida ro‘yxat (`registerTeacher`) |
 | `PUT /v1/me/profile` `{role?, language?}` | sessiya | rol: `doctor/lab/student/teacher` (boshqasi — 400) |
 | `DELETE /v1/me` `{apple_authorization_code?}` | sessiya | hisob va unga bog‘liq hamma narsa o‘chadi. Apple bilan bog‘langan va `APPLE_SIGNIN_*` sozlangan bo‘lsa — kod almashtirilib Apple tokeni bekor qilinadi (saqlanmaydi); kod/sozlama yo‘q bo‘lsa ham hisob o‘chadi, natija `audit_log` da |
@@ -228,6 +231,58 @@ Qoidalar:
   admin qila olmaydi, aal1 rad, olib tashlangan admin darhol vakolatsiz, validatsiya,
   limitlar, ochiq email saqlanmaydi).
 
+### Egasi admin paneli — `adminconsole.ts`, `complaints.ts`, `support.ts`
+
+Ilovada: Profil → Admin panel. Egasi uchun qo‘llanma: `docs/ADMIN_PANEL_GUIDE.md`.
+
+**Kim admin (egasi qarori, 2026-10-17):** maxfiy `ADMIN_EMAILS` (vergul bilan;
+bo‘sh bo‘lsa eski nom `LG_ADMIN_EMAILS`; ikkalasi ham bo‘sh bo‘lsa — kodda
+yozilgan egasi emaili `DEFAULT_ADMIN_EMAILS`). Admin oddiy **email kodi** bilan
+kiradi; panel yo‘llari **TOTP so‘ramaydi** (`requirePanelAdmin`). Server **har
+so‘rovda**: sessiya email kodi bilan ochilganmi (`sessions.via = 'otp'`; Google/Apple
+sessiyasi — 403), hisob emailining HMAC i ro‘yxatdagi emaillardan biriga tengmi,
+hisob to‘xtatilmaganmi — tekshiradi. Secret o‘zgarsa vakolat **darhol** yo‘qoladi
+(mavjud sessiyada ham). Ilovadagi hech qanday belgi ishonilmaydi.
+
+> Xavfsizlik bo‘yicha ochiq aytiladi: TOTP (aal2) talab qilinmasligi avvalgi
+> dizayndan **zaifroq** (email qutisi buzilsa — panel ham ochiladi). Bu egasining
+> ongli qarori. Qo‘shimcha himoya: faqat email kodi (OTP) sessiyasi, har so‘rovda
+> qayta tekshiruv, audit, to‘xtatilgan hisob rad, admin to‘xtatilmaydi va o‘z rolini
+> o‘zgartira olmaydi, limitlar. Adminlar jamoasi (D-44) va hamjamiyat moderatsiyasi
+> (`/v1/admin/community/*`, `/v1/admin/admins`) avvalgidek **TOTP bilan**.
+
+| Metod va yo‘l | Kim | Nima |
+|---|---|---|
+| `GET /v1/admin/stats` | panel admin | faqat sonlar: `registered`, `new_today/7d/30d`, `online_now` (so‘nggi 5 daqiqa), `active_today/7d/30d`, `suspended_accounts`, `by_role`, `by_language`, `new_by_day` (14 Toshkent kuni), `groups{groups, teachers, students, assignments, results}`, `complaints{open, resolved}`, `community{questions, answers, verified, suspended, reports_open}`, `support{…, awaiting_reply}`. Yuklab olish/sotuv YO‘Q |
+| `GET /v1/admin/users?email=\|name=&role=&status=&language=&limit=&offset=` | panel admin | `email` — serverda HMAC, aniq moslik; `name` — guruhdagi taxallus (2–40, `LIKE`, `%` `_` `\` ekranlangan); `{items:[{user_id, email_masked, role, language, registered_on, last_seen_on, status, suspended_at, admin}], total}` |
+| `GET /v1/admin/users/:id` | panel admin | yuqoridagi + `you, teacher, groups_owned, groups_joined, support_threads, complaints, community{status, role, country, verified_at, is_owner, reporters, questions, answers}` |
+| `POST /v1/admin/users/:id/role` `{role}` | panel admin | `student/teacher/doctor/lab`; o‘ziniki — `403 self`; audit `role_changed` |
+| `POST /v1/admin/users/:id/suspend` | panel admin | hisobni to‘xtatish: hamma sessiyalari o‘chadi; email kodi, Google, Apple bilan kirish — `403 account_suspended`; admin (`ADMIN_EMAILS` yoki `admins`) — `403 admin`, o‘zi — `403 self`; audit `account_suspended` |
+| `POST /v1/admin/users/:id/reactivate` | panel admin | qayta kira oladi; audit `account_reactivated` |
+| `POST /v1/admin/users/:id/community/suspend` · `/restore` | panel admin | faqat hamjamiyatda yozishni to‘xtatish/tiklash (audit) |
+| `POST /v1/complaints` `{kind, body, target_ref?, lang?}` | **hamma** (mehmon ham; token bo‘lsa — hisob bilan, yaroqsiz token — 401) | `kind`: `complaint/inappropriate/bug/ad/other`; matn 5–2000; `target_ref` — `[A-Za-z0-9_.:/-]{1,200}`; **soatiga 5 ta** (hisob; mehmon — IP HMAC bo‘yicha), oshsa `429` + `Retry-After`. `201 {id, status}` |
+| `GET /v1/admin/complaints?status=open\|resolved&kind=` | panel admin | `[{id, kind, body, target_ref, lang, status, admin_note, anonymous, user_id, email_masked, created_at, updated_at, resolved_at}]` |
+| `GET /v1/admin/complaints/:id` · `POST …/note {note}` · `POST …/status {status}` | panel admin | izoh (≤ 2000), hal qilindi / qayta ochish; audit `complaint_note/resolved/reopened` |
+| `GET /v1/admin/reports?status=open\|dismissed\|resolved` | panel admin | hamjamiyat postlariga shikoyatlar post bo‘yicha guruhlangan (son, shikoyatchilar, sabablar, parcha, muallif holati — hash yo‘q) |
+| `POST /v1/admin/reports/:kind/:id/dismiss` · `/resolve` · `/suspend-author` | panel admin | asossiz (avtomatik to‘xtatishga sanalmaydi) / hal qilindi / muallifni hamjamiyatda to‘xtatish; audit |
+| `GET /v1/admin/audit?limit=` | panel admin | `[{at, action, actor_masked, target, details}]` — nishon faqat id yoki `question:<id>`; hash ko‘rinishidagi eski nishonlar chiqmaydi |
+| `GET/POST /v1/support/threads`, `GET/POST /v1/support/threads/:t/messages`, `POST /v1/support/threads/:t/read` | sessiya | o‘z murojaatlari (boshqasiniki — 404); kuniga 5 murojaat, soatiga 30 xabar; mavzu 3–120, xabar 1–4000; skrinshot — `400 attachments_unavailable` (R2 yo‘q) |
+| `GET /v1/admin/support/threads?status=`, `POST …/:t/reply {body}`, `POST …/:t/status {status}`, `POST …/:t/read` | panel admin | javobni inson yozadi; audit `support_reply/support_status` |
+
+Limitlar (panel admin): o‘qish 10 daqiqada 300, yozish soatiga 120. Faollik:
+`requireSession` hisobning `last_seen_at` (daqiqaga yaxlitlangan) va
+`last_seen_on` (kun) ni daqiqasiga ko‘pi bilan bir marta yangilaydi — IP/qurilma
+saqlanmaydi. `users.plan`/`pro_until` — kelajak uchun, hech bir API qaytarmaydi.
+
+**Apple 1.2 (foydalanuvchi kontenti):** ilovada nomaqbul kontent haqida
+xabar berish (hamjamiyatdagi “Shikoyat” + Profil → Aloqa va shikoyat shakli,
+mehmon ham), bloklash (hamjamiyat), admin ko‘rib chiqishi (Admin panel →
+Ilova shikoyatlari / Hamjamiyat shikoyatlari; maqsad — 24 soat ichida) va
+muallifni to‘xtatish. App Review izohida shu yo‘llarni ko‘rsating.
+
+Testlar: `cloudflare/test/adminconsole.test.ts`, `complaints.test.ts`,
+`support.test.ts`, `social.test.ts` (to‘xtatilgan hisob Google/Apple bilan ham kira olmaydi).
+
 ### Reja: hali ko‘chirilmagan (501)
 
 Bular uchun D1 jadvallari (`0003_planned_ports.sql`) bor, lekin endpointlar
@@ -237,8 +292,8 @@ ko‘rsatilmaydi. Hamkorlar ro‘yxati bo‘sh (reklama joylari chiqmaydi).
 
 | Bo‘lim | Yo‘l | Qolgan ish (manba: `supabase/migrations`) |
 |---|---|---|
-| Taklif va yordam | `/v1/support/*` | murojaat/xabar CRUD, o‘qilgan belgisi; skrinshot uchun yopiq R2 bucket (PNG/JPEG ≤ 5 MB, kuniga 10) |
-| Admin panel | `/v1/admin/*` (hozir ham admin+aal2 tekshiriladi) | statistika (faqat ro‘yxatdan o‘tganlar — mehmonlar serverga tushmaydi), foydalanuvchilar (`email_masked`), reviewer berish, audit o‘qish |
+| Murojaat skrinshoti | `/v1/support/*` biriktirma | yopiq R2 bucket (PNG/JPEG ≤ 5 MB, kuniga 10) — hozircha ilova tanlash tugmasini ko‘rsatmaydi |
+| Admin panel qoldig‘i | `/v1/admin/*` (vakolat tekshiriladi) | reviewer berish |
 | Kontent tekshiruvi | `/v1/reviews` | `content_reviews` |
 | Hamkorlar | `/v1/partners*` | feed, arizalar, kunlik umumiy hisoblagich, logo (R2) |
 
@@ -265,12 +320,18 @@ Eslatma: to‘liq emailni “ochish” (`adminRevealEmail`) bu serverda **bo‘l
   uchun. Guruh ochish huquqi — `POST /v1/me/teacher` bilan ro‘yxatdan o‘tgan
   ustoz hisobi (`teacher_accounts`; hisob faqat email kodi tasdiqlangach
   yaratiladi). Ustoz huquqi faqat o‘zi yaratgan guruhlarda; ustoz admin emas. **Admin** — hech bir API bermaydi: faqat maxfiy
-  `LG_ADMIN_EMAILS` dagi email kod bilan tasdiqlanganda (ro‘yxatdan chiqsa —
-  keyingi kirishda olinadi), super admin ilovada qo‘shgan email (D-44,
+  `ADMIN_EMAILS` (eski nom `LG_ADMIN_EMAILS`) dagi email kod bilan tasdiqlanganda (ro‘yxatdan chiqsa —
+  darhol: har so‘rovda qayta tekshiriladi), super admin ilovada qo‘shgan email (D-44,
   `admin_grants`; olib tashlansa — darhol) yoki egasi qo‘lda (`granted_reason='manual'`).
   Admin yo‘llari qo‘shimcha **TOTP (aal2)** talab qiladi; tasdiqlangan faktor
   bor bo‘lsa yangisini qo‘shib bo‘lmaydi; kodni qayta ishlatish rad etiladi.
-  Muhim amallar `audit_log` ga (faqat qo‘shiladi).
+  Muhim amallar `audit_log` ga (faqat qo‘shiladi). **Istisno — egasi admin
+  paneli** (yuqorida): egasi qarori bilan TOTP siz, faqat email kodi sessiyasi.
+- **Hisobni to‘xtatish:** `users.suspended_at` — sessiyalar o‘chadi,
+  `createSession` (email kodi, Google, Apple) `403 account_suspended`,
+  `requireSession` to‘xtatilgan hisobni tan olmaydi. Ilova “Hisobingiz
+  to‘xtatilgan, aloqa: …” deydi. Kod faqat email egaligi isbotlangach rad
+  etiladi (to‘xtatilganlik holati begonaga oshkor bo‘lmaydi).
 - **Ustoz–talaba:** a’zo bo‘lmaganga guruh borligi bildirilmaydi (404);
   talaba boshqa talabaning javobi, belgisi va a’zolar ro‘yxatini ko‘rmaydi;
   kalit faqat ustozga; ball serverda; admin ham guruh mavzusi/natijasini
@@ -288,7 +349,7 @@ Eslatma: to‘liq emailni “ochish” (`adminRevealEmail`) bu serverda **bo‘l
   rejada).
 - **AI:** server hech qanday avtomatik javob yubormaydi.
 
-Testlar (`cd cloudflare && npm test`): 74 ta — avvalgi 52 ta (boshqa ustoz
+Testlar (`cd cloudflare && npm test`): 174 ta (13 fayl). Dastlabki 74 tasi — avvalgi 52 ta (boshqa ustoz
 guruhi, talaba ↔ talaba, o‘zini admin qilish, TOTP, SQL injection, CORS, xato
 tafsiloti, limitlar, maxfiylik) va `contract.test.ts` dagi 22 ta ilova
 kontrakti testi (ustoz ro‘yxati, taxallus/raqam, mavzu bosqichlari, mavzuga
@@ -350,7 +411,9 @@ npm run typecheck
      `LG_SENDER_EMAIL`; **Variables:** `EMAIL_PROVIDER` (`resend` standart | `brevo`).
      Qiymatlar `wrangler secret put` orqali stdin’dan o‘tadi, logga chiqmaydi.
    - `LG_SERVER_SECRET` (5-qadam)
-   - ixtiyoriy: `LG_ADMIN_EMAILS` (masalan, egasining emaili — vergul bilan),
+   - `ADMIN_EMAILS` — admin panel egasi emaili(lari), vergul bilan (eski nom
+     `LG_ADMIN_EMAILS` ham ishlaydi; ikkalasi ham bo‘lmasa server kodda yozilgan
+     egasi emailini oladi — `docs/ADMIN_PANEL_GUIDE.md`); ixtiyoriy
      `CLOUDFLARE_D1_DATABASE_ID` (boshqa baza ishlatilsa)
    - ixtiyoriy, Google/Apple bilan kirish (D-56): `GOOGLE_CLIENT_IDS`,
      `APPLE_SIGNIN_TEAM_ID`, `APPLE_SIGNIN_KEY_ID`, `APPLE_SIGNIN_PRIVATE_KEY`,
@@ -363,8 +426,9 @@ npm run typecheck
 8. **Ilovani ulash:** Settings → Variables → **`LG_API_URL`** = summary’dagi
    URL. Keyingi `build`/`testflight`/`play_internal` buildlari shu serverga
    ulanadi (`LG_SUPABASE_*` bo‘lsa ham Cloudflare ustun).
-9. **Birinchi admin kirishi:** ilovada `LG_ADMIN_EMAILS` dagi email bilan
-   kiring → Admin panel → TOTP. Kalit yo‘qolsa:
+9. **Birinchi admin kirishi:** ilovada `ADMIN_EMAILS` dagi email bilan **email
+   kodi orqali** kiring → Profil → Admin panel (TOTP so‘ralmaydi). Hamjamiyat
+   moderatsiyasi va adminlar jamoasi uchun — TOTP (aal2). Kalit yo‘qolsa:
    `npx wrangler d1 execute labguide-db --remote --command "DELETE FROM totp_factors WHERE user_id = '<id>'"`.
    Qo‘lda admin berish: `INSERT INTO admins (user_id, granted_at, granted_reason) VALUES ('<id>', <ms>, 'manual')`.
 10. **Workers AI (hamjamiyat, D-43):** `wrangler.toml` da `[ai] binding = "AI"`

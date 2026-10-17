@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:material_ui/material_ui.dart';
 
 import '../core/backend/access_controller.dart';
+import '../core/backend/admin_console.dart';
 import '../core/backend/admin_team.dart';
 import '../core/backend/lab_backend.dart';
 import '../core/storage/kv_store.dart';
@@ -140,6 +141,14 @@ class AppServices {
   /// (hozircha faqat Cloudflare). Aks holda bo'lim ko'rinmaydi.
   AdminTeamBackend? get adminTeam =>
       backend is AdminTeamBackend ? backend as AdminTeamBackend : null;
+
+  /// Egasi admin paneli (foydalanuvchilar, shikoyatlar) — faqat Cloudflare.
+  AdminConsoleBackend? get adminConsole =>
+      backend is AdminConsoleBackend ? backend as AdminConsoleBackend : null;
+
+  /// Ilova ichidan shikoyat yuborish (Aloqa va shikoyat) — server bo'lsa.
+  ComplaintsBackend? get complaints =>
+      backend is ComplaintsBackend ? backend as ComplaintsBackend : null;
 
   /// Server vakolatlari va o'qilmagan javoblarni yangilash. Rol hali
   /// tanlanmagan bo'lsa profil yozilmaydi (taxminiy rol sanalmasin).
