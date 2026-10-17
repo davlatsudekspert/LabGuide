@@ -953,6 +953,19 @@ jobs:
               -configuration Release -destination 'generic/platform=iOS' \
               -archivePath build/ios/archive/Runner.xcarchive \
               archive CODE_SIGNING_ALLOWED=NO
+            # Imzosiz arxivda CODE_SIGN_ENTITLEMENTS imzoga kirmaydi, eksport esa
+            # entitlement'larni arxivdagi ilova imzosidan oladi — natijada IPA'da
+            # Sign in with Apple yo'qolardi. Shuning uchun ilovani ad-hoc ("-")
+            # imzo bilan entitlement'lar bilan belgilaymiz; eksport uni bulut
+            # sertifikati va App Store profili bilan qayta imzolaydi.
+            if [ "$LG_APPLE_SIGNIN" = true ]; then
+              codesign --force --sign - \
+                --entitlements ios/Runner/Runner.entitlements \
+                build/ios/archive/Runner.xcarchive/Products/Applications/Runner.app
+              codesign -d --entitlements :- \
+                build/ios/archive/Runner.xcarchive/Products/Applications/Runner.app 2>/dev/null \
+                | grep -q com.apple.developer.applesignin
+            fi
             xcodebuild -exportArchive \
               -archivePath build/ios/archive/Runner.xcarchive \
               -exportOptionsPlist "$SIGN_DIR/ExportOptions.plist" \
