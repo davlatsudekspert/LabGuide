@@ -5,6 +5,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:labguide/features/cytology/cytology_content.dart';
 import 'package:labguide/features/cytology/cytology_screens.dart';
 import 'package:labguide/features/settings/settings_controller.dart';
+import 'package:labguide/features/spermogram/spermogram_screens.dart';
 import 'package:labguide/l10n/gen/app_localizations.dart';
 import 'package:material_ui/material_ui.dart';
 
@@ -112,9 +113,10 @@ void main() {
     final l = lookupAppLocalizations(const Locale('uz'));
     await goTo(tester, '/lab');
     expect(find.text(l.cytoLabCardBody), findsOne);
+    expect(find.text(l.spermLabCardBody), findsOne);
     await tester.tap(find.text(l.spermTitle));
     await tester.pumpAndSettle();
-    expect(find.text(l.spermSoonTitle), findsOne);
+    expect(find.byType(SpermogramScreen), findsOne);
     expect(tester.takeException(), isNull);
   });
 

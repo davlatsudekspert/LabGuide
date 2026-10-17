@@ -2339,9 +2339,5 @@
   "cytoNoPhoto": "Haqiqiy mikrofoto hali qo‘shilmagan — faqat ruxsati tekshirilgan rasm qo‘shiladi.",
   "cytoLabCardBody": "Hujayralar sxemasi, tozalik darajasi, Bethesda va mashq",
   "spermTitle": "Spermogramma",
-  "spermLabCardBody": "Ko‘rsatkichlar, sanash va morfologiya — tayyorlanmoqda",
-  "spermSoonTitle": "Bo‘lim tayyorlanmoqda",
-  "spermSoonBody": "Spermogramma bo‘limi JSST qo‘llanmasi (6-nashr, 2021) asosida tayyorlanmoqda. Me’yorlar manba bilan tekshirilgach qo‘shiladi.",
-  "spermPlannedTitle": "Bo‘limda bo‘ladi",
-  "spermPlanned": "Asosiy ko‘rsatkichlar va JSST me’yorlari\nHarakatchanlik va morfologiyani sanash hisoblagichi\nAtamalar: oligo-, asteno-, terato-, azoospermiya\nMorfologiya sxemalari: bosh, bo‘yin, dum nuqsonlari\nPreanalitika: tayyorgarlik, namuna olish, tahlil vaqti\nMashq va o‘quv roligi"
+  "spermLabCardBody": "Me’yorlar (JSST 2021), sanash hisoblagichi, baholash va atamalar"
 }

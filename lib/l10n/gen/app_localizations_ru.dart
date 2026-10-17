@@ -8208,19 +8208,6 @@ class AppLocalizationsRu extends AppLocalizations {
   String get spermTitle => 'Спермограмма';
 
   @override
-  String get spermLabCardBody => 'Показатели, подсчёт и морфология — готовится';
-
-  @override
-  String get spermSoonTitle => 'Раздел готовится';
-
-  @override
-  String get spermSoonBody =>
-      'Раздел готовится по руководству ВОЗ (6-е изд., 2021). Нормы добавятся после сверки с источником.';
-
-  @override
-  String get spermPlannedTitle => 'В разделе будет';
-
-  @override
-  String get spermPlanned =>
-      'Основные показатели и нормы ВОЗ\nСчётчик подвижности и морфологии\nТермины: олиго-, астено-, терато-, азооспермия\nСхемы морфологии: дефекты головки, шейки, хвоста\nПреаналитика: подготовка, сбор, время анализа\nТренировка и обучающее видео';
+  String get spermLabCardBody =>
+      'Нормы ВОЗ 2021, счётчик, оценка результата и термины';
 }
