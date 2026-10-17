@@ -9056,4 +9056,75 @@ class AppLocalizationsUz extends AppLocalizations {
   @override
   String get bloodMorphLabCardBody =>
       'Eritrotsitlar, trombotsitlar, anemiyalar: haqiqiy mikrofotolar, yordamchi, mashq';
+
+  @override
+  String get lectureSearchLabel => 'Taqdimotlarni qidirish';
+
+  @override
+  String get lectureSearchHint =>
+      'Mavzu, tahlil yoki slayd sarlavhasi (masalan: glyukoza)';
+
+  @override
+  String get lectureFilterAll => 'Hammasi';
+
+  @override
+  String get lectureFilterProtocols => 'Amaliy protokollar';
+
+  @override
+  String lectureFilterModule(int n) {
+    return '$n-modul';
+  }
+
+  @override
+  String get lectureLangAll => 'Barcha tillar';
+
+  @override
+  String lectureDecksCount(int count) {
+    return '$count ta taqdimot';
+  }
+
+  @override
+  String lectureSlidesCount(int count) {
+    return '$count slayd';
+  }
+
+  @override
+  String lectureSlidesMatch(int count) {
+    return '$count ta slayd mos';
+  }
+
+  @override
+  String lectureMoreSlides(int count) {
+    return 'yana $count ta';
+  }
+
+  @override
+  String lectureResultsFound(int count) {
+    return '$count ta taqdimot topildi';
+  }
+
+  @override
+  String get lectureNoResultsTitle => 'Hech narsa topilmadi';
+
+  @override
+  String get lectureNoResultsBody =>
+      'Boshqa so‘z yoki filtrni sinab ko‘ring. Qidiruv o‘zbekcha (lotin yoki kirill), ruscha va inglizcha ishlaydi.';
+
+  @override
+  String get lectureClearFilters => 'Qidiruv va filtrni tozalash';
+
+  @override
+  String get lectureTopicsAutoTitle => 'Dastur mavzulari — avtomatik slaydlar';
+
+  @override
+  String get lectureTopicsAutoSub =>
+      'Tayyor taqdimoti yo‘q mavzular o‘quv dasturidan yig‘iladi';
+
+  @override
+  String lectureLangFallback(String wanted, String shown) {
+    return 'Bu taqdimot $wanted tilida yo‘q — $shown tilida ko‘rsatilmoqda';
+  }
+
+  @override
+  String get lectureDeckLoadFailed => 'Taqdimotni ochib bo‘lmadi';
 }

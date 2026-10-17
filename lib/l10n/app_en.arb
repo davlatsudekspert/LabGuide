@@ -5296,5 +5296,75 @@
   },
   "@bloodMorphLabCardBody": {
     "description": "Lab tab: blood morphology picture card subtitle"
-  }
+  },
+  "lectureSearchLabel": "Search presentations",
+  "lectureSearchHint": "Topic, test or slide title (e.g. glucose)",
+  "lectureFilterAll": "All",
+  "lectureFilterProtocols": "Practical protocols",
+  "lectureFilterModule": "Module {n}",
+  "@lectureFilterModule": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "lectureLangAll": "All languages",
+  "lectureDecksCount": "{count, plural, one{{count} presentation} other{{count} presentations}}",
+  "@lectureDecksCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "lectureSlidesCount": "{count, plural, one{{count} slide} other{{count} slides}}",
+  "@lectureSlidesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "lectureSlidesMatch": "{count, plural, one{{count} slide matches} other{{count} slides match}}",
+  "@lectureSlidesMatch": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "lectureMoreSlides": "+{count} more",
+  "@lectureMoreSlides": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "lectureResultsFound": "{count, plural, one{{count} presentation found} other{{count} presentations found}}",
+  "@lectureResultsFound": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "lectureNoResultsTitle": "Nothing found",
+  "lectureNoResultsBody": "Try another word or filter. Search works in Uzbek (Latin or Cyrillic), Russian and English.",
+  "lectureClearFilters": "Clear search and filters",
+  "lectureTopicsAutoTitle": "Curriculum topics — automatic slides",
+  "lectureTopicsAutoSub": "Topics without a ready presentation are assembled from the curriculum",
+  "lectureLangFallback": "This presentation is not available in {wanted}; shown in {shown}",
+  "@lectureLangFallback": {
+    "placeholders": {
+      "wanted": {
+        "type": "String"
+      },
+      "shown": {
+        "type": "String"
+      }
+    }
+  },
+  "lectureDeckLoadFailed": "Could not open the presentation"
 }

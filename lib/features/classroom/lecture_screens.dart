@@ -13,7 +13,9 @@ import '../../l10n/gen/app_localizations.dart';
 import '../differential/diff_eyes_free.dart' show DiffDevice;
 import 'classroom_screens.dart';
 import 'curriculum.dart';
+import 'lecture_catalog.dart';
 import 'lecture_decks.dart';
+import 'lecture_library.dart';
 import 'lecture_slide.dart';
 import 'lecture_templates.dart';
 import 'topic_questions.dart';
@@ -108,15 +110,35 @@ List<LectureSlide> buildLectureSlides(
   return slides;
 }
 
+String? _joinNote(List<String?> parts) {
+  final s = [
+    for (final p in parts)
+      if (p != null && p.isNotEmpty) p,
+  ].join('\n');
+  return s.isEmpty ? null : s;
+}
+
 /// Tayyor taqdimot slaydlari. Birinchi slaydda halol holat: qoralama va
-/// (boshqa tilda) "faqat o'zbekcha".
-List<LectureSlide> deckLectureSlides(BuildContext context, LectureDeck deck) {
+/// (til yo'q bo'lsa) "boshqa tilda ko'rsatilmoqda" ogohlantirishi. [wanted] —
+/// so'ralgan til (standart: ilova tili).
+List<LectureSlide> deckLectureSlides(
+  BuildContext context,
+  LectureDeck deck, {
+  String? wanted,
+}) {
   final l = AppLocalizations.of(context);
+  final want = wanted ?? _lang(context);
   // Rasmli slaydlarda "qoralama" yozuvi slaydning o'zida bor.
   final pictures = deck.slides.every((d) => d.image != null);
   final notice = [
     if (deck.draft && !pictures) l.lectureDraftNotice,
-    if (deck.lang != _lang(context)) l.lectureUzOnly,
+    if (deck.lang != want)
+      deck.lang == 'uz'
+          ? l.lectureUzOnly
+          : l.lectureLangFallback(
+              kDeckLangNames[want] ?? want,
+              kDeckLangNames[deck.lang] ?? deck.lang,
+            ),
   ].join('\n');
   return [
     for (final (i, d) in deck.slides.indexed)
@@ -124,16 +146,33 @@ List<LectureSlide> deckLectureSlides(BuildContext context, LectureDeck deck) {
         eyebrow: d.eyebrow,
         title: d.title,
         bullets: d.bullets,
-        note: i == 0 && notice.isNotEmpty ? notice : null,
+        note: _joinNote([if (i == 0) notice, d.footnote]),
         teacherNote: d.note,
         source: d.source,
         section: d.section,
         image: d.image,
+        template: switch (d.template) {
+          'title' => SlideTemplate.title,
+          'table' => SlideTemplate.table,
+          'figure' => SlideTemplate.figure,
+          'qa' => SlideTemplate.qa,
+          _ => SlideTemplate.bullets,
+        },
+        question: d.template == 'qa',
+        tableHeader: d.header,
+        tableRows: d.rows,
+        figure: d.figure,
+        figureCaption: d.caption,
+        options: d.options,
+        correctIndex: d.correct,
+        answerExplanation: d.explanation,
+        compact: d.compact,
       ),
   ];
 }
 
-/// O'quv dasturi mavzulari ro'yxati — ma'ruzani tanlash (serversiz).
+/// Ma'ruza bo'limi: BARCHA tayyor taqdimotlar (qidiruv va filtr bilan),
+/// avtomatik taqdimot kirishi va o'quv dasturi mavzulari (serversiz).
 class LectureListScreen extends StatelessWidget {
   const LectureListScreen({super.key});
 
@@ -147,40 +186,53 @@ class LectureListScreen extends StatelessWidget {
       subtitle: l.lectureListSub,
       showProfile: false,
       children: [
-        // Avtomatik taqdimot: mavzu yoki tahlillardan yig'iladi.
-        LgRow(
-          key: const ValueKey('lecture-auto-entry'),
-          title: l.autoPresTitle,
-          subtitle: l.autoPresEntrySub,
-          icon: Icons.auto_awesome_motion_outlined,
-          onTap: () => context.push('/learn/lecture/auto'),
-        ),
-        CurriculumGate(
-          builder: (context, cur) => FutureBuilder(
-            future: decks,
-            initialData: LectureDecks.peek(bundle),
-            builder: (context, snap) => Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                for (final m in cur.modules) ...[
-                  LgSectionTitle(m.title.of(_lang(context))),
-                  for (final (i, t) in m.topics.indexed)
-                    LgRow(
-                      title: t.title.of(_lang(context)),
-                      subtitle: [
-                        topicMeta(context, t),
-                        if (snap.data?[t.id] case final d?)
-                          l.lectureDeckReady(d.slides.length),
-                      ].join('\n'),
-                      icon: snap.data?[t.id] != null
-                          ? Icons.co_present_outlined
-                          : Icons.slideshow_outlined,
-                      divider: i < m.topics.length - 1,
-                      onTap: () => context.push('/learn/lecture/${t.id}'),
-                    ),
-                ],
-              ],
-            ),
+        LectureLibrary(
+          bundle: bundle,
+          // Avtomatik taqdimot: mavzu yoki tahlillardan yig'iladi.
+          autoEntry: LgRow(
+            key: const ValueKey('lecture-auto-entry'),
+            title: l.autoPresTitle,
+            subtitle: l.autoPresEntrySub,
+            icon: Icons.auto_awesome_motion_outlined,
+            onTap: () => context.push('/learn/lecture/auto'),
+          ),
+          topicsSection: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              LgSectionTitle(l.lectureTopicsAutoTitle),
+              Text(
+                l.lectureTopicsAutoSub,
+                style: Theme.of(context).textTheme.bodySmall,
+              ),
+              CurriculumGate(
+                builder: (context, cur) => FutureBuilder(
+                  future: decks,
+                  initialData: LectureDecks.peek(bundle),
+                  builder: (context, snap) => Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      for (final m in cur.modules) ...[
+                        LgSectionTitle(m.title.of(_lang(context))),
+                        for (final (i, t) in m.topics.indexed)
+                          LgRow(
+                            title: t.title.of(_lang(context)),
+                            subtitle: [
+                              topicMeta(context, t),
+                              if (snap.data?[t.id] case final d?)
+                                l.lectureDeckReady(d.slides.length),
+                            ].join('\n'),
+                            icon: snap.data?[t.id] != null
+                                ? Icons.co_present_outlined
+                                : Icons.slideshow_outlined,
+                            divider: i < m.topics.length - 1,
+                            onTap: () => context.push('/learn/lecture/${t.id}'),
+                          ),
+                      ],
+                    ],
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ],
@@ -189,13 +241,29 @@ class LectureListScreen extends StatelessWidget {
 }
 
 class LectureScreen extends StatefulWidget {
-  const LectureScreen({super.key, required this.topicId, this.generated});
+  const LectureScreen({
+    super.key,
+    required this.topicId,
+    this.generated,
+    this.deckId,
+    this.deckLang,
+    this.startSlide = 0,
+  });
 
   final String topicId;
 
   /// Avtomatik taqdimot: tayyor slaydlar (o'quv dasturi va tayyor decklar
   /// yuklanmaydi). Berilsa [topicId] e'tiborsiz.
   final List<LectureSlide>? generated;
+
+  /// Katalogdagi deck (index_v2.json); berilsa [topicId] e'tiborsiz. Til —
+  /// [deckLang] yoki ilova tili; deckda bu til bo'lmasa — ko'rinadigan
+  /// ogohlantirish bilan o'zbekcha.
+  final String? deckId;
+  final String? deckLang;
+
+  /// Boshlang'ich slayd (qidiruvda mos slayd sarlavhasi bosilganda).
+  final int startSlide;
 
   @override
   State<LectureScreen> createState() => _LectureScreenState();
@@ -211,10 +279,70 @@ class _LectureScreenState extends State<LectureScreen> {
   LectureDeck? _authored;
   final _focus = FocusNode(debugLabel: 'lecture');
 
+  // Katalog decki (deckId bilan ochilganda).
+  bool _catalogStarted = false;
+  bool _catalogFailed = false;
+  LectureDeck? _catalogDeck;
+  String _wantedLang = 'uz';
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (widget.deckId != null && !_catalogStarted) {
+      _catalogStarted = true;
+      _startCatalogDeck();
+    }
+  }
+
+  void _startCatalogDeck() {
+    final bundle = context.services.curriculum.bundle ?? rootBundle;
+    final wanted = widget.deckLang ?? _lang(context);
+    _wantedLang = wanted;
+    void done(LectureDeck? d) {
+      if (!mounted) return;
+      setState(() {
+        _catalogDeck = d;
+        _catalogFailed = d == null;
+        _deckLoaded = true;
+      });
+    }
+
+    final catalog = DeckCatalog.peek(bundle);
+    final entry = catalog?.byId(widget.deckId!);
+    if (catalog != null && entry == null) {
+      // Katalog yuklangan, lekin bunday deck yo'q — darhol halol xato.
+      _catalogFailed = true;
+      _deckLoaded = true;
+      return;
+    }
+    final ready = entry == null
+        ? null
+        : DeckCatalog.peekDeck(bundle, entry, entry.resolveLang(wanted));
+    if (ready != null) {
+      _catalogDeck = ready;
+      _deckLoaded = true;
+      return;
+    }
+    unawaited(() async {
+      try {
+        final c = await DeckCatalog.load(bundle);
+        final e = c.byId(widget.deckId!);
+        if (e == null) return done(null);
+        done(await DeckCatalog.loadDeck(bundle, e, e.resolveLang(wanted)));
+      } on Object {
+        done(null);
+      }
+    }());
+  }
+
   @override
   void initState() {
     super.initState();
     unawaited(DiffDevice.screenAwake.set(on: true));
+    if (widget.deckId != null) {
+      _index = widget.startSlide;
+      return;
+    }
     if (widget.generated != null) {
       _deckLoaded = true;
       return;
@@ -265,6 +393,23 @@ class _LectureScreenState extends State<LectureScreen> {
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context);
     final s = context.services;
+    if (widget.deckId != null) {
+      if (!_deckLoaded) {
+        return const Scaffold(body: Center(child: CircularProgressIndicator()));
+      }
+      final deck = _catalogDeck;
+      if (_catalogFailed || deck == null || deck.slides.isEmpty) {
+        return LgPage(
+          title: l.lectureTitle,
+          showProfile: false,
+          children: [
+            LgStateView(kind: StateKind.error, title: l.lectureDeckLoadFailed),
+          ],
+        );
+      }
+      final slides = deckLectureSlides(context, deck, wanted: _wantedLang);
+      return _deck(context, slides, _index.clamp(0, slides.length - 1));
+    }
     if (widget.generated case final slides? when slides.isNotEmpty) {
       return _deck(context, slides, _index.clamp(0, slides.length - 1));
     }

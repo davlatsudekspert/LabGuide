@@ -9169,4 +9169,98 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get bloodMorphLabCardBody =>
       'Red cells, platelets, anaemias: real micrographs, helper, practice';
+
+  @override
+  String get lectureSearchLabel => 'Search presentations';
+
+  @override
+  String get lectureSearchHint => 'Topic, test or slide title (e.g. glucose)';
+
+  @override
+  String get lectureFilterAll => 'All';
+
+  @override
+  String get lectureFilterProtocols => 'Practical protocols';
+
+  @override
+  String lectureFilterModule(int n) {
+    return 'Module $n';
+  }
+
+  @override
+  String get lectureLangAll => 'All languages';
+
+  @override
+  String lectureDecksCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count presentations',
+      one: '$count presentation',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String lectureSlidesCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count slides',
+      one: '$count slide',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String lectureSlidesMatch(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count slides match',
+      one: '$count slide matches',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String lectureMoreSlides(int count) {
+    return '+$count more';
+  }
+
+  @override
+  String lectureResultsFound(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count presentations found',
+      one: '$count presentation found',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get lectureNoResultsTitle => 'Nothing found';
+
+  @override
+  String get lectureNoResultsBody =>
+      'Try another word or filter. Search works in Uzbek (Latin or Cyrillic), Russian and English.';
+
+  @override
+  String get lectureClearFilters => 'Clear search and filters';
+
+  @override
+  String get lectureTopicsAutoTitle => 'Curriculum topics — automatic slides';
+
+  @override
+  String get lectureTopicsAutoSub =>
+      'Topics without a ready presentation are assembled from the curriculum';
+
+  @override
+  String lectureLangFallback(String wanted, String shown) {
+    return 'This presentation is not available in $wanted; shown in $shown';
+  }
+
+  @override
+  String get lectureDeckLoadFailed => 'Could not open the presentation';
 }

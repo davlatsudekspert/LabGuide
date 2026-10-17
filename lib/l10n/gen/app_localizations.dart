@@ -15843,6 +15843,114 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Red cells, platelets, anaemias: real micrographs, helper, practice'**
   String get bloodMorphLabCardBody;
+
+  /// No description provided for @lectureSearchLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Search presentations'**
+  String get lectureSearchLabel;
+
+  /// No description provided for @lectureSearchHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Topic, test or slide title (e.g. glucose)'**
+  String get lectureSearchHint;
+
+  /// No description provided for @lectureFilterAll.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get lectureFilterAll;
+
+  /// No description provided for @lectureFilterProtocols.
+  ///
+  /// In en, this message translates to:
+  /// **'Practical protocols'**
+  String get lectureFilterProtocols;
+
+  /// No description provided for @lectureFilterModule.
+  ///
+  /// In en, this message translates to:
+  /// **'Module {n}'**
+  String lectureFilterModule(int n);
+
+  /// No description provided for @lectureLangAll.
+  ///
+  /// In en, this message translates to:
+  /// **'All languages'**
+  String get lectureLangAll;
+
+  /// No description provided for @lectureDecksCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, one{{count} presentation} other{{count} presentations}}'**
+  String lectureDecksCount(int count);
+
+  /// No description provided for @lectureSlidesCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, one{{count} slide} other{{count} slides}}'**
+  String lectureSlidesCount(int count);
+
+  /// No description provided for @lectureSlidesMatch.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, one{{count} slide matches} other{{count} slides match}}'**
+  String lectureSlidesMatch(int count);
+
+  /// No description provided for @lectureMoreSlides.
+  ///
+  /// In en, this message translates to:
+  /// **'+{count} more'**
+  String lectureMoreSlides(int count);
+
+  /// No description provided for @lectureResultsFound.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, one{{count} presentation found} other{{count} presentations found}}'**
+  String lectureResultsFound(int count);
+
+  /// No description provided for @lectureNoResultsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing found'**
+  String get lectureNoResultsTitle;
+
+  /// No description provided for @lectureNoResultsBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Try another word or filter. Search works in Uzbek (Latin or Cyrillic), Russian and English.'**
+  String get lectureNoResultsBody;
+
+  /// No description provided for @lectureClearFilters.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear search and filters'**
+  String get lectureClearFilters;
+
+  /// No description provided for @lectureTopicsAutoTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Curriculum topics — automatic slides'**
+  String get lectureTopicsAutoTitle;
+
+  /// No description provided for @lectureTopicsAutoSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Topics without a ready presentation are assembled from the curriculum'**
+  String get lectureTopicsAutoSub;
+
+  /// No description provided for @lectureLangFallback.
+  ///
+  /// In en, this message translates to:
+  /// **'This presentation is not available in {wanted}; shown in {shown}'**
+  String lectureLangFallback(String wanted, String shown);
+
+  /// No description provided for @lectureDeckLoadFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not open the presentation'**
+  String get lectureDeckLoadFailed;
 }
 
 class _AppLocalizationsDelegate

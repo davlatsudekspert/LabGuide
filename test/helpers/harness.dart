@@ -16,6 +16,7 @@ import 'package:labguide/core/build_flags.dart';
 import 'package:labguide/core/storage/kv_store.dart';
 import 'package:labguide/features/auth/otp_auth.dart';
 import 'package:labguide/features/auth/social_auth.dart';
+import 'package:labguide/features/classroom/lecture_catalog.dart';
 import 'package:labguide/features/classroom/lecture_decks.dart';
 import 'package:labguide/features/daily/daily_reminder.dart';
 import 'package:labguide/features/settings/settings_controller.dart';
@@ -115,6 +116,10 @@ Future<AppServices> makeServices(
   // Tayyor taqdimotlar (Ma'ruza rejimi) — keshga oldindan.
   await tester.runAsync(
     () => LectureDecks.all(services.curriculum.bundle ?? rootBundle),
+  );
+  // Barcha taqdimotlar katalogi (Ma'ruza ro'yxati va qidiruv).
+  await tester.runAsync(
+    () => DeckCatalog.load(services.curriculum.bundle ?? rootBundle),
   );
   return services;
 }

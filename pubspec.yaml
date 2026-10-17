@@ -97,6 +97,7 @@ flutter:
     - assets/curriculum/
     - assets/lectures/
     - assets/lectures/d001/
+    - assets/lectures/decks/
 
   fonts:
     - family: Inter

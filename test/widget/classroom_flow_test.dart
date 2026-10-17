@@ -84,10 +84,15 @@ void main() {
     // Ma'ruza rejimi: ro'yxat → slaydlar; ekran yoqiq turadi.
     await goTo(tester, '/learn/lecture');
     expect(find.text('Buyrak va siydik'), findsOneWidget);
-    await tapScroll(
-      tester,
+    // Dastur mavzulari — ro'yxat oxirida (undan oldin barcha tayyor
+    // taqdimotlar): 250 px qadamli suruvchi o'rniga to'g'ridan-to'g'ri.
+    final topicRow = find.text(
       'Buyrak kasalliklarining laborator ko‘rsatkichlari',
     );
+    await tester.ensureVisible(topicRow);
+    await tester.pumpAndSettle();
+    await tester.tap(topicRow);
+    await tester.pumpAndSettle();
     expect(fakes.awake.calls, [true]);
     expect(
       find.text('Buyrak kasalliklarining laborator ko‘rsatkichlari'),

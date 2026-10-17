@@ -2,6 +2,8 @@
 
 Avtomatik: `python3 tool/slides/make_topic_decks.py --all --dry-run --report docs/DECKS_COVERAGE.md`. Qo‘lda tahrirlamang.
 
+**Ilova ichida:** shu mazmunning hammasi (98 kun mavzusi + amaliy protokollar, uz/ru/en) ilovaning Ma’ruza bo‘limida qidiruv bilan mavjud: `python3 tool/slides/export_app_decks.py` `assets/lectures/decks/` va `assets/lectures/index_v2.json` ni qayta yozadi (kontent o‘zgarganda ishga tushiring; `--check` dolzarbligini tekshiradi). PPTX fayllar repoga qo‘shilmaydi.
+
 Tillar: uz, ru, en. Bitta deck = bitta o‘quv kuni (amaliy + ma’ruza bir xil havolalarga ega, `dNNN-P` va `dNNN-L` bitta fayl). Kunlar: 143; deck: 98; kontentsiz (deck yo‘q): 45.
 
 ## Rasm va jadvallarni mavzuga bog‘lash qoidasi
