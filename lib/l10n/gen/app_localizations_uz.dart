@@ -8030,6 +8030,9 @@ class AppLocalizationsUz extends AppLocalizations {
   String get searchSectionLibrary => 'O‘quv materiallari';
 
   @override
+  String get searchSectionSections => 'Bo‘limlar';
+
+  @override
   String get diffAssessTitle => 'Me’yor bilan solishtirish';
 
   @override
@@ -8084,6 +8087,9 @@ class AppLocalizationsUz extends AppLocalizations {
   String diffAssessMaySuggest(String finding) {
     return 'Ishora qilishi mumkin: $finding';
   }
+
+  @override
+  String get diffAssessAboutFinding => 'Bu talqin haqida batafsil';
 
   @override
   String get diffAssessReferBody =>

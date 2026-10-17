@@ -45,7 +45,7 @@ UI = {
                 'en': 'What it is used for'},
     'physiology': {'uz': 'Fiziologiya', 'ru': 'Физиология', 'en': 'Physiology'},
     'limits': {'uz': 'Me’yor va qaror chegaralari',
-               'ru': 'Референсные значения и пороги принятия решений',
+               'ru': 'Референтные значения и пороги принятия решений',
                'en': 'Reference values and decision limits'},
     'results': {'uz': 'Natija talqini', 'ru': 'Интерпретация результата',
                 'en': 'Interpreting the result'},
@@ -1044,7 +1044,7 @@ GROUP_LABEL = {
     'cyto': {'uz': 'Sitologiya', 'ru': 'Цитология', 'en': 'Cytology'},
     'atlas': {'uz': 'Mikroskopik atlas', 'ru': 'Микроскопический атлас', 'en': 'Microscopy atlas'},
     'books': {'uz': 'Darslik bo‘yicha mazmun', 'ru': 'Материал из учебников', 'en': 'Textbook material'},
-    'oralref': {'uz': 'Me’yoriy qiymatlar', 'ru': 'Референсные значения', 'en': 'Reference values'},
+    'oralref': {'uz': 'Me’yoriy qiymatlar', 'ru': 'Референтные значения', 'en': 'Reference values'},
     'qa': {'uz': 'Mashq: savol-javob', 'ru': 'Практика: вопросы и ответы', 'en': 'Practice: Q&A'},
 }
 

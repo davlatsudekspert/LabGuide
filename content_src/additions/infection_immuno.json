@@ -1328,7 +1328,7 @@
    "notes": {
     "limitations": {
      "uz": "Manbada “yuqori”, “o‘rtacha” va “biroz oshgan” darajalar son bilan berilmagan: chegaralar laboratoriya va usulga bog‘liq — natija varaqasidagi laboratoriya referensiga qarang.",
-     "ru": "В источнике уровни «высокий», «умеренный» и «слегка повышенный» не заданы числами: границы зависят от лаборатории и метода — смотрите референс лаборатории в бланке результата.",
+     "ru": "В источнике уровни «высокий», «умеренный» и «слегка повышенный» не заданы числами: границы зависят от лаборатории и метода — смотрите референтный интервал лаборатории в бланке результата.",
      "en": "The source does not give numbers for “high”, “moderate” or “slightly high”: cut-offs depend on the laboratory and method — use the laboratory reference on the result report."
     }
    }
@@ -1507,7 +1507,7 @@
      ],
      "text": {
       "uz": "Me’yor oralig‘i yoshga, geografik hududga va yil fasliga bog‘liq; yuqori chegara tegishli yosh guruhidagi, yaqinda streptokokk infeksiyasini o‘tkazmagan odamlar zardobida titrni o‘lchab aniqlanadi. Har bir seriya bilan titri ma’lum standart zardob nazorat sifatida ishlatiladi. Shuning uchun universal son yo‘q — natija varaqasidagi laboratoriya referensiga qarang.",
-      "ru": "Диапазон нормы зависит от возраста, географического региона и сезона; верхнюю границу определяют, измеряя титры в сыворотках людей соответствующего возраста без недавней стрептококковой инфекции. С каждой серией определений в качестве контроля используют стандартную сыворотку с известным титром. Поэтому универсального числа нет — смотрите референс лаборатории в бланке результата.",
+      "ru": "Диапазон нормы зависит от возраста, географического региона и сезона; верхнюю границу определяют, измеряя титры в сыворотках людей соответствующего возраста без недавней стрептококковой инфекции. С каждой серией определений в качестве контроля используют стандартную сыворотку с известным титром. Поэтому универсального числа нет — смотрите референтный интервал лаборатории в бланке результата.",
       "en": "The normal range varies with age, geographic locale and season; the upper limit is set by measuring titres in sera from people of the right age group without a recent streptococcal infection. A reference serum with a known titre is run as a control with each set. So there is no universal number — use the laboratory reference on the result report."
      }
     },

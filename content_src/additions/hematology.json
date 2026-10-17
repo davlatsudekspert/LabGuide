@@ -268,7 +268,7 @@
      ],
      "text": {
       "uz": "Tahlil gemoglobin o‘zgarishi sababini ko‘rsatmaydi, lekin uning qanchalik past yoki yuqoriligi holat og‘irligini baholashga yordam beradi. Referens oraliq laboratoriya, yosh, irq va jinsga qarab farq qiladi; natija belgilar, kasallik tarixi va boshqa qon tahlillari bilan birga baholanadi.",
-      "ru": "Анализ не показывает причину отклонения, но степень снижения или повышения гемоглобина помогает оценить тяжесть состояния. Референсный интервал зависит от лаборатории, возраста, расы и пола; результат оценивают вместе с симптомами, анамнезом и другими анализами крови.",
+      "ru": "Анализ не показывает причину отклонения, но степень снижения или повышения гемоглобина помогает оценить тяжесть состояния. Референтный интервал зависит от лаборатории, возраста, расы и пола; результат оценивают вместе с симптомами, анамнезом и другими анализами крови.",
       "en": "The test cannot tell what causes an abnormal level, but how high or low it is helps judge severity. The reference range varies with the laboratory, age, race and sex; results are interpreted with symptoms, history and other blood tests."
      }
     },
@@ -3779,7 +3779,7 @@
      ],
      "text": {
       "uz": "Natija odatda foizda beriladi va laboratoriyaga qarab farq qiluvchi referens oraliq bilan solishtiriladi. RDW normal bo‘lsa ham eritrotsitlar odatdagidan katta yoki kichik bo‘lishi va anemiya bo‘lishi mumkin. RDW boshqa qon tahlillari bilan birga baholanadi: birgalikdagi natijalar temir tanqisligi, turli anemiyalar, talassemiya va o‘roqsimon hujayrali anemiyani aniqlashga yordam beradi.",
-      "ru": "Результат обычно выражают в процентах и сравнивают с референсным интервалом, который зависит от лаборатории. Даже при нормальном RDW эритроциты могут быть крупнее или мельче обычного и возможна анемия. RDW оценивают вместе с другими анализами крови: в сочетании они помогают выявить дефицит железа, разные анемии, талассемию и серповидноклеточную анемию.",
+      "ru": "Результат обычно выражают в процентах и сравнивают с референтным интервалом, который зависит от лаборатории. Даже при нормальном RDW эритроциты могут быть крупнее или мельче обычного и возможна анемия. RDW оценивают вместе с другими анализами крови: в сочетании они помогают выявить дефицит железа, разные анемии, талассемию и серповидноклеточную анемию.",
       "en": "Results are usually shown as a percentage and compared with a reference range that varies by lab. Even with a normal RDW, red cells may be larger or smaller than usual and anemia may be present. RDW is read together with other blood tests, which together help diagnose iron deficiency, different anemias, thalassemia and sickle cell anemia."
      }
     },
@@ -4038,7 +4038,7 @@
      ],
      "text": {
       "uz": "Zamonaviy analizatorlar retikulotsitlarni faqat sanamaydi: ulardagi RNK miqdori bo‘yicha yetuklik darajasini (eng yosh retikulotsitlar ulushi — IRF), hajmini va gemoglobin miqdorini (RET-He yoki CHr) ham o‘lchaydi. Bu parametrlarning nomi, usuli va referensi analizator turiga bog‘liq.",
-      "ru": "Современные анализаторы не только считают ретикулоциты: они измеряют их зрелость по содержанию РНК (доля самых молодых ретикулоцитов — IRF), объём и содержание гемоглобина (RET-He или CHr). Названия, метод и референсы этих параметров зависят от типа анализатора.",
+      "ru": "Современные анализаторы не только считают ретикулоциты: они измеряют их зрелость по содержанию РНК (доля самых молодых ретикулоцитов — IRF), объём и содержание гемоглобина (RET-He или CHr). Названия, метод и референтные интервалы этих параметров зависят от типа анализатора.",
       "en": "Modern analysers do more than count reticulocytes: they measure maturity by RNA content (the fraction of the youngest cells — IRF), cell volume and haemoglobin content (RET-He or CHr). Names, method and reference ranges depend on the analyser."
      }
     },
@@ -4076,7 +4076,7 @@
      ],
      "text": {
       "uz": "Retikulotsitlardagi gemoglobin (RET-He, CHr) oxirgi 3–4 kunda eritrotsit hosil qilish uchun mavjud bo‘lgan funksional temirni bilvosita aks ettiradi; pasayishi temir tanqis eritropoezga ishora qiladi. Aniq chegara analizator va laboratoriyaga bog‘liq — natija varaqasidagi referensga qarang.",
-      "ru": "Содержание гемоглобина в ретикулоцитах (RET-He, CHr) косвенно отражает функциональное железо, доступное для эритропоэза за последние 3–4 дня; снижение указывает на железодефицитный эритропоэз. Порог зависит от анализатора и лаборатории — смотрите референс на бланке.",
+      "ru": "Содержание гемоглобина в ретикулоцитах (RET-He, CHr) косвенно отражает функциональное железо, доступное для эритропоэза за последние 3–4 дня; снижение указывает на железодефицитный эритропоэз. Порог зависит от анализатора и лаборатории — смотрите референтный интервал на бланке.",
       "en": "Reticulocyte haemoglobin content (RET-He, CHr) indirectly reflects the functional iron available for red cell production over the previous 3–4 days; a low value points to iron-restricted erythropoiesis. The cut-off depends on the analyser and laboratory — use the reference on the report."
      }
     },

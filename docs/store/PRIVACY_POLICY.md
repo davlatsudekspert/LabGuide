@@ -1,10 +1,10 @@
 # LabGuide — maxfiylik siyosati / Политика конфиденциальности / Privacy Policy
 
-Kuchga kirgan sana / Дата вступления в силу / Effective date: **2026-10-10**
+Kuchga kirgan sana / Дата вступления в силу / Effective date: **2026-10-17**
 Aloqa / Контакт / Contact: **labguide@nfcstore.uz**
 
 > Eslatma (e’lon qilishdan oldin o‘chiriladi):
-> - **Egasi tasdiqlashi kerak:** sana (2026-10-10) va aloqa (labguide@nfcstore.uz) (aloqa manzili Cloudflare Email Routing orqali egasining Gmail’iga yo‘naltiriladi) hozircha
+> - **Egasi tasdiqlashi kerak:** sana (2026-10-17) va aloqa (labguide@nfcstore.uz) (aloqa manzili Cloudflare Email Routing orqali egasining Gmail’iga yo‘naltiriladi) hozircha
 >   taklif qilingan qiymatlar; aloqa manzili haqiqatan ishlashini va xatlarni qabul qilishini
 >   tekshiring.
 > - Matn **Cloudflare serveri** (Workers + D1, Sharqiy Yevropa; D-41, D-42,
@@ -38,13 +38,17 @@ quyidagi xizmatlar orqali qayta ishlanadi:
 - **Cloudflare, Inc.** — server (Workers) va ma’lumotlar bazasi (D1, Sharqiy Yevropa);
 - **Resend** — faqat kirish kodi xatini yuborish (email manzilingiz va 6 raqamli kod xat
   yuborish uchun unga uzatiladi; xizmat o‘z siyosatiga ko‘ra yetkazish jurnalini saqlashi mumkin);
+- **Brevo** — ixtiyoriy zaxira email xizmati: server Resend o‘rniga Brevo orqali yuborishga
+  sozlangan bo‘lsa, kirish kodi xati shu orqali ketadi (xuddi shu ma’lumot: email manzilingiz va
+  kod; har bir xat faqat bitta xizmat orqali yuboriladi; xizmat yetkazish jurnalini o‘z siyosatiga
+  ko‘ra saqlashi mumkin);
 - **Google LLC** va **Apple Inc.** — **faqat** “Google bilan kirish” yoki “Apple bilan kirish”ni
   o‘zingiz tanlasangiz: ular kirish (identifikatsiya) provayderi. Qurilmangizdagi tizim oynasida
   o‘z siyosatlariga ko‘ra sizni tasdiqlaydi va LabGuide’ga imzolangan identifikatsiya tokenini
   beradi; LabGuide ularga sizning ma’lumotingizni yubormaydi (faqat tokenning amal qilish
   kalitlarini o‘qiydi).
 
-Cloudflare va Resend ma’lumotni faqat LabGuide nomidan, xizmat ko‘rsatish uchun qayta ishlaydi; reklama uchun
+Cloudflare, Resend va Brevo ma’lumotni faqat LabGuide nomidan, xizmat ko‘rsatish uchun qayta ishlaydi; reklama uchun
 ishlatmaydi va sotmaydi.
 
 **Hisob bilan serverda nima saqlanadi va qancha vaqt.**
@@ -112,12 +116,12 @@ bosqichli himoyani (TOTP) talab qiladi. Qo‘shilgan admin emaili ham ochiq saql
 HMAC-hash va niqoblangan ko‘rinish (`ab***@gmail.com`), qo‘shilgan/olib tashlangan sana va kim
 qo‘shgani (ichki hash); olib tashlanganda vakolat darhol tugaydi;
 LabGuide egasi/administratori baza va uning zaxirasiga texnik kirish huquqiga ega, lekin to‘liq
-emailni tiklay olmaydi (u saqlanmaydi). Cloudflare va Resend xodimlari faqat o‘z xizmat
+emailni tiklay olmaydi (u saqlanmaydi). Cloudflare, Resend va Brevo xodimlari faqat o‘z xizmat
 shartlari doirasida kirishi mumkin.
 
 **Ma’lumot O‘zbekistondan tashqarida saqlanadi.** Cloudflare D1 bazasi Sharqiy Yevropa
 (EI) hududida joylashgan, ya’ni ma’lumotlaringiz **O‘zbekiston hududidan tashqarida**
-saqlanadi va qayta ishlanadi; Cloudflare, Resend, Google va Apple global infratuzilmada ishlaydi
+saqlanadi va qayta ishlanadi; Cloudflare, Resend (zaxirada Brevo), Google va Apple global infratuzilmada ishlaydi
 (ma’lumot AQShga ham uzatilishi mumkin). Email bilan (yoki Google / Apple orqali) kirib, shu shartlarga rozilik bildirasiz;
 rozi bo‘lmasangiz, hisobsiz (mehmon) foydalaning — asosiy imkoniyatlar qurilmada ishlaydi.
 Ma’lumot uzatishda shifrlanadi (HTTPS).
@@ -174,12 +178,16 @@ avtomatik o‘chirilmaydi.
 - **Cloudflare, Inc.** — сервер (Workers) и база данных (D1, Восточная Европа);
 - **Resend** — только отправка письма с кодом входа (ему передаются ваш email и 6-значный код;
   сервис может хранить журнал доставки по своей политике);
+- **Brevo** — необязательный резервный почтовый сервис: если сервер настроен отправлять письма
+  через Brevo вместо Resend, письмо с кодом входа уходит через него (те же данные: ваш email и
+  код; каждое письмо отправляется только через один сервис; сервис может хранить журнал доставки
+  по своей политике);
 - **Google LLC** и **Apple Inc.** — **только** если вы сами выбрали «Войти через Google» или «Войти с Apple»:
   они выступают провайдером входа (идентификации). Подтверждают вас в системном окне устройства по
   своим правилам и выдают LabGuide подписанный токен личности; LabGuide не отправляет им ваши
   данные (лишь читает публичные ключи для проверки подписи токена).
 
-Cloudflare и Resend обрабатывают данные только от имени LabGuide для оказания услуги; не используют их для
+Cloudflare, Resend и Brevo обрабатывают данные только от имени LabGuide для оказания услуги; не используют их для
 рекламы и не продают.
 
 **Что хранится на сервере и сколько.**
@@ -247,12 +255,12 @@ Cloudflare как сетевой сервис обрабатывает запр�
 виде — только HMAC-хеш и маскированный вид (`ab***@gmail.com`), даты добавления/удаления и кто
 добавил (внутренний хеш); при удалении права прекращаются сразу; владелец/администратор LabGuide
 имеет технический доступ к базе и её копиям, но не может восстановить полный email (он не
-хранится). Сотрудники Cloudflare и Resend могут получать доступ лишь в рамках условий своих
+хранится). Сотрудники Cloudflare, Resend и Brevo могут получать доступ лишь в рамках условий своих
 услуг.
 
 **Данные хранятся за пределами Узбекистана.** База Cloudflare D1 находится в Восточной Европе
 (ЕС), то есть ваши данные хранятся и обрабатываются **за пределами территории Узбекистана**;
-Cloudflare, Resend, Google и Apple работают на глобальной инфраструктуре (данные могут передаваться и в США).
+Cloudflare, Resend (в резерве — Brevo), Google и Apple работают на глобальной инфраструктуре (данные могут передаваться и в США).
 Входя по email (или через Google / Apple), вы соглашаетесь с этим; если не согласны, пользуйтесь без аккаунта (гостевой
 режим) — основные функции работают на устройстве. При передаче данные шифруются (HTTPS).
 
@@ -305,12 +313,16 @@ stays only on the teacher’s device.
 - **Cloudflare, Inc.** — the server (Workers) and database (D1, Eastern Europe);
 - **Resend** — only to send the sign-in code email (your email address and the 6-digit code are
   passed to it; it may keep a delivery log under its own policy);
+- **Brevo** — an optional fallback email service: if the server is configured to send through
+  Brevo instead of Resend, the sign-in code email goes through it (the same data: your email
+  address and the code; each email is sent through only one of the two services; it may keep a
+  delivery log under its own policy);
 - **Google LLC** and **Apple Inc.** — **only** if you choose “Sign in with Google” or “Sign in with Apple”:
   they act as the identity provider. They verify you in the system sheet on your device under their
   own policies and hand LabGuide a signed identity token; LabGuide does not send them your data
   (it only reads their public keys to verify the token’s signature).
 
-Cloudflare and Resend process data only on LabGuide’s behalf to provide the service; they do not use it for
+Cloudflare, Resend and Brevo process data only on LabGuide’s behalf to provide the service; they do not use it for
 advertising or sell it.
 
 **What the server stores, and for how long.**
@@ -377,12 +389,12 @@ an email the owner adds in the app, plus a verified email, and require two-facto
 masked form (`ab***@gmail.com`), the date added/removed and who added it (internal hash);
 removal ends the rights immediately; the LabGuide owner/administrator
 has technical access to the database and its backups but cannot recover a full email address
-(it is not stored). Cloudflare and Resend personnel may access data only as allowed by their
+(it is not stored). Cloudflare, Resend and Brevo personnel may access data only as allowed by their
 own service terms.
 
 **Data is stored outside Uzbekistan.** The Cloudflare D1 database is located in Eastern Europe
 (EU), so your data is stored and processed **outside the territory of Uzbekistan**; Cloudflare,
-Resend, Google and Apple run on global infrastructure (data may also be transferred to the US). By signing in
+Resend (Brevo as the fallback), Google and Apple run on global infrastructure (data may also be transferred to the US). By signing in
 with email (or with Google / Apple) you accept this; if you do not, use the app without an account (guest mode) — the
 core features work on the device. Data is encrypted in transit (HTTPS).
 

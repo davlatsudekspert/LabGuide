@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
+import '../../app/app_scope.dart';
 import '../../app/shell.dart';
 import '../../app/widgets/lg_page.dart';
 import '../../design/tokens.dart';
@@ -14,6 +15,9 @@ import '../content/ui/tests_screen.dart';
 import '../instruments/instrument_screens.dart';
 import '../library/library_catalog.dart';
 import '../library/library_widgets.dart';
+import '../settings/settings_controller.dart';
+import '../toifa/toifa_screens.dart' show toifaVisible;
+import 'search_sections.dart';
 
 /// Bosh sahifa tepasidagi qidiruv maydoni: bosilganda umumiy qidiruv
 /// ekrani ochiladi (klaviatura bosh sahifani surmaydi).
@@ -114,6 +118,13 @@ class _GlobalSearchScreenState extends State<GlobalSearchScreen> {
                           ? _conditions!
                           : _conditions = ConditionSearch(pack))
                       .search(q, lang: lang);
+              final sections = SectionSearch.instance.search(
+                q,
+                lang: lang,
+                toifa: toifaVisible(context),
+                teacher:
+                    context.services.settings.effectiveRole == AppRole.teacher,
+              );
               final library =
                   (_library?.pack == pack && _library!.lang == lang
                           ? _library!
@@ -123,6 +134,7 @@ class _GlobalSearchScreenState extends State<GlobalSearchScreen> {
                 builder: (context, catalog) {
                   final instruments = catalog.search(q);
                   final empty =
+                      sections.isEmpty &&
                       analytes.isEmpty &&
                       conditions.isEmpty &&
                       library.isEmpty &&
@@ -143,6 +155,17 @@ class _GlobalSearchScreenState extends State<GlobalSearchScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
+                        if (sections.isNotEmpty) ...[
+                          _Section(l.searchSectionSections, sections.length),
+                          for (final (i, x) in sections.indexed)
+                            LgRow(
+                              title: x.title(l),
+                              icon: x.icon,
+                              divider: i < sections.length - 1,
+                              onTap: () =>
+                                  openInTab(context, x.route, exact: true),
+                            ),
+                        ],
                         if (a.isNotEmpty) ...[
                           _Section(l.featureTests, analytes.length),
                           for (final (i, x) in a.indexed)

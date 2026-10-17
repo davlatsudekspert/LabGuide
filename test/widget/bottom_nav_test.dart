@@ -55,6 +55,21 @@ void main() {
     if (settle) await t.pumpAndSettle();
   }
 
+  /// Aniq [dy] px siljitish: barmoq ro'yxatning chap chetidagi bo'sh
+  /// (padding) yo'lagiga tushadi, shuning uchun uning ustida boshqa bosish
+  /// (InkWell/tugma) yo'q va jest darhol qabul qilinadi — yetkazilgan
+  /// siljish aynan [dy]. `WidgetTester.drag` esa kontentga bog'liq: barmoq
+  /// kartaga tushsa, birinchi ~18 px (slop) yutiladi, bo'sh joyga tushsa
+  /// to'liq yetkaziladi (Bosh sahifa tartibi o'zgarganda test shu sababli
+  /// buzilgan edi).
+  Future<void> scrollExact(WidgetTester t, double dy) async {
+    final r = t.getRect(pageScrollable());
+    final g = await t.startGesture(Offset(r.left + 4, r.center.dy));
+    await g.moveBy(Offset(0, dy));
+    await g.up();
+    await t.pumpAndSettle();
+  }
+
   Future<void> boot(
     WidgetTester t, {
     Size size = const Size(390, 844),
@@ -214,24 +229,28 @@ void main() {
   ) async {
     await boot(tester);
     final expanded = pillHeight(tester);
-    // Birinchi navbatda ro'yxatni biroz pastga (tepadan chiqish).
-    await scrollBy(tester, -30);
+    // Chegaradan (14 px) kichik surish — holat o'zgarmaydi.
+    await scrollExact(tester, -10);
     expect(pillHeight(tester), expanded, reason: '< threshold');
-    // Barmoq bilan 7 px pastga/7 px yuqoriga tebranish — holat o'zgarmaydi.
-    for (var i = 0; i < 4; i++) {
-      await scrollBy(tester, -7);
-      await scrollBy(tester, 7);
-    }
-    expect(pillHeight(tester), expanded);
     // Aniq pastga surish — ixcham.
-    await scrollBy(tester, -200);
+    await scrollExact(tester, -200);
     final compact = pillHeight(tester);
     expect(compact, lessThan(expanded));
     // Ixcham holatda mayda teskari harakat qaytarmaydi.
-    await scrollBy(tester, 8);
+    await scrollExact(tester, 8);
     expect(pillHeight(tester), compact);
-    await scrollBy(tester, -8);
+    await scrollExact(tester, -8);
     expect(pillHeight(tester), compact);
+    // Aniq yuqoriga surish — yana kengayadi (ro'yxat o'rtasida).
+    await scrollExact(tester, 40);
+    expect(pillHeight(tester), expanded);
+    // Kengaygan holatda barmoq 7 px pastga/7 px yuqoriga tebranadi —
+    // holat o'zgarmaydi.
+    for (var i = 0; i < 4; i++) {
+      await scrollExact(tester, -7);
+      await scrollExact(tester, 7);
+    }
+    expect(pillHeight(tester), expanded);
   });
 
   testWidgets('animated by default, instant under reduced motion', (

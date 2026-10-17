@@ -249,7 +249,7 @@ const Map<QcGuide, GuideContent> qcGuides = {
                 'namunalar ma’lumotnoma laboratoriyasida qayta ko‘riladi.',
             'ru':
                 'Перепроверка: просмотренные препараты или исследованные '
-                'образцы перепроверяются в референс-лаборатории.',
+                'образцы перепроверяются в референтной лаборатории.',
             'en':
                 'Rechecking/retesting: slides or samples already read are '
                 'rechecked by a reference laboratory.',

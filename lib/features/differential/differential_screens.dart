@@ -1577,8 +1577,77 @@ class DiffRecordScreen extends StatelessWidget {
 
 // ───────────────────────── Talqin ─────────────────────────
 
-class DiffInterpretScreen extends StatelessWidget {
-  const DiffInterpretScreen({super.key});
+/// "Talqin" sahifasi. [focusFinding] (`?finding=<id>`) berilsa — shu
+/// topilma kartasigacha surilib, ramka bilan ajratiladi (baho panelidagi
+/// har bir topilma o'z kartasiga olib keladi).
+class DiffInterpretScreen extends StatefulWidget {
+  const DiffInterpretScreen({super.key, this.focusFinding});
+
+  final String? focusFinding;
+
+  @override
+  State<DiffInterpretScreen> createState() => _DiffInterpretScreenState();
+}
+
+class _DiffInterpretScreenState extends State<DiffInterpretScreen> {
+  /// Har bir topilma kartasi uchun kalit (`ensureVisible` uchun).
+  final _cards = {for (final f in diffFindings) f.id: GlobalKey()};
+
+  /// Doim qurilgan blok: ro'yxatning Scrollable'ini topish uchun.
+  final _top = GlobalKey();
+
+  bool get _known => _cards.containsKey(widget.focusFinding);
+
+  @override
+  void initState() {
+    super.initState();
+    _scheduleReveal();
+  }
+
+  @override
+  void didUpdateWidget(DiffInterpretScreen old) {
+    super.didUpdateWidget(old);
+    if (old.focusFinding != widget.focusFinding) _scheduleReveal();
+  }
+
+  void _scheduleReveal() {
+    if (!_known) return;
+    WidgetsBinding.instance.addPostFrameCallback((_) => _reveal());
+  }
+
+  /// Ro'yxat dangasa quriladi: karta hali qurilmagan bo'lsa, u paydo
+  /// bo'lguncha ro'yxat bir ekran balandligida pastga suriladi.
+  Future<void> _reveal() async {
+    final id = widget.focusFinding;
+    final duration = LgMotion.of(context, LgMotion.page);
+    // Ro'yxat holati (karta olib tashlansa ham saqlanadi) birinchi qurilgan
+    // blokdan olinadi: surilganda u ko'rinish oynasidan chiqib ketadi.
+    final anchor = _top.currentContext;
+    final position = anchor == null
+        ? null
+        : Scrollable.maybeOf(anchor)?.position;
+    for (var i = 0; i < 40 && mounted && id == widget.focusFinding; i++) {
+      final target = _cards[id]?.currentContext;
+      if (target != null && target.mounted) {
+        await Scrollable.ensureVisible(
+          target,
+          alignment: 0.05,
+          duration: duration,
+        );
+        return;
+      }
+      if (position == null || position.pixels >= position.maxScrollExtent) {
+        return;
+      }
+      position.jumpTo(
+        (position.pixels + position.viewportDimension * 0.8).clamp(
+          0.0,
+          position.maxScrollExtent,
+        ),
+      );
+      await WidgetsBinding.instance.endOfFrame;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -1590,29 +1659,38 @@ class DiffInterpretScreen extends StatelessWidget {
       title: l.diffInterpretTitle,
       subtitle: l.diffTitle,
       children: [
-        LgNotice(l.diffInterpretIntro),
+        KeyedSubtree(key: _top, child: LgNotice(l.diffInterpretIntro)),
         LgNotice(l.diffAbsNote, kind: NoticeKind.info),
         for (final f in diffFindings)
-          LgPanel(
-            margin: const EdgeInsets.symmetric(vertical: 8),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Semantics(
-                  header: true,
-                  child: Text(f.title.of(lang), style: text.titleLarge),
+          KeyedSubtree(
+            key: _cards[f.id],
+            child: Semantics(
+              container: true,
+              selected: f.id == widget.focusFinding,
+              child: LgPanel(
+                key: ValueKey('diff-finding-${f.id}'),
+                outlined: f.id == widget.focusFinding,
+                margin: const EdgeInsets.symmetric(vertical: 8),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Semantics(
+                      header: true,
+                      child: Text(f.title.of(lang), style: text.titleLarge),
+                    ),
+                    const SizedBox(height: 6),
+                    Text(f.what.of(lang), style: text.bodyMedium),
+                    const SizedBox(height: 10),
+                    Text(
+                      l.diffPossibleCauses,
+                      style: text.labelLarge!.copyWith(color: p.brand),
+                    ),
+                    const SizedBox(height: 6),
+                    _Bullets([for (final c in f.causes) c.of(lang)]),
+                    _Sources(f.refs),
+                  ],
                 ),
-                const SizedBox(height: 6),
-                Text(f.what.of(lang), style: text.bodyMedium),
-                const SizedBox(height: 10),
-                Text(
-                  l.diffPossibleCauses,
-                  style: text.labelLarge!.copyWith(color: p.brand),
-                ),
-                const SizedBox(height: 6),
-                _Bullets([for (final c in f.causes) c.of(lang)]),
-                _Sources(f.refs),
-              ],
+              ),
             ),
           ),
         LgSectionTitle(l.diffRangesTitle),

@@ -112,7 +112,7 @@ Sampson) и не-ЛПВП, осмоляльность, HbA1c NGSP ↔ IFCC и eA
 
 Важно: LabGuide — учебный и справочный инструмент. Он не интерпретирует результаты, не ставит
 диагноз и не предлагает дозы препаратов. Результаты оцениваются с учётом клинической картины и
-референсных интервалов вашей лаборатории. Материалы основаны на источниках, но это ЧЕРНОВИК:
+референтных интервалов вашей лаборатории. Материалы основаны на источниках, но это ЧЕРНОВИК:
 независимую экспертную проверку они ещё не прошли.
 
 ### en
@@ -179,7 +179,7 @@ Nomda (title) bor so‘z keywords'da takrorlanmaydi (Apple ikkalasini birga hiso
   “collection” emas. Analitika/crash SDK yo‘q.
 - **`LG_API_URL` berilgan build** — email kirish va guruhlar ishlaydi. Shu build **birinchi**
   yuklanishidan oldin App Privacy quyidagi jadvalga o‘zgartiriladi (aks holda deklaratsiya
-  noto‘g‘ri bo‘ladi). Provayderlar: Cloudflare (server/baza, Sharqiy Yevropa) va Resend (faqat
+  noto‘g‘ri bo‘ladi). Provayderlar: Cloudflare (server/baza, Sharqiy Yevropa) va Resend (zaxirada Brevo) (faqat
   kirish kodi xati) — ikkalasi xizmat ko‘rsatuvchi, ma’lumot reklama/sotuv uchun berilmaydi.
 
 **Tracking: No** (boshqa kompaniyalar ma’lumoti bilan birlashtirilmaydi, reklama identifikatori
@@ -188,7 +188,7 @@ yo‘q). Hamma toifalar — **Linked to the user**, **not used for tracking**. M
 
 | App Store toifasi | Nima (kodda) | Maqsad |
 |---|---|---|
-| Contact Info → Email Address | kirish emaili (serverda faqat HMAC-hash + niqoblangan ko‘rinish; Resend orqali kod yuboriladi; Google/Apple bilan kirishda ham o‘sha email — provayder tasdiqlagani, D-56) | App Functionality |
+| Contact Info → Email Address | kirish emaili (serverda faqat HMAC-hash + niqoblangan ko‘rinish; Resend (zaxirada Brevo) orqali kod yuboriladi; Google/Apple bilan kirishda ham o‘sha email — provayder tasdiqlagani, D-56) | App Functionality |
 | Identifiers → User ID | ichki tasodifiy hisob id si (`users.id`); Google/Apple bilan kirishda provayder `sub` i ham (`auth_identities`, D-56) | App Functionality |
 | User Content → Other User Content | guruh taxallusi (yoki “Talaba NN”), test javoblari, har savol natijasi va ball | App Functionality |
 | Usage Data → Product Interaction | ilovadan oxirgi foydalangan **kun** (`last_seen_on`, vaqtsiz) | App Functionality |
@@ -230,7 +230,7 @@ ulashish — tizim oynasi, `NSPhotoLibraryAddUsageDescription` faqat “Save Ima
 → repo Settings → Pages → “Deploy from a branch”, `main` / `docs` — manzil
 `https://davlatsudekspert.github.io/LabGuide/store/PRIVACY_POLICY` (yoki o‘z saytingiz).
 Matnda sana (2026-10-10) va aloqa (labguide@nfcstore.uz) taklif qilingan — **egasi
-tasdiqlaydi**; hosting (Cloudflare, Sharqiy Yevropa) va email xizmati (Resend) kiritilgan.
+tasdiqlaydi**; hosting (Cloudflare, Sharqiy Yevropa) va email xizmati (Resend; zaxirada Brevo) kiritilgan.
 
 **Support / aloqa (App Store Connect “Support URL”, Play “Email address” / “Developer contact”):**
 qo‘llab-quvvatlash aloqasi — **labguide@nfcstore.uz** (ilovada: Profil → Aloqa va shikoyat; kodda
@@ -337,7 +337,7 @@ yuklanishidan **oldin** Data safety quyidagicha to‘ldiriladi (manba: `cloudfla
 | Savol | Javob |
 |---|---|
 | Ma’lumot to‘planadimi? | Ha (faqat email bilan kirilganda; mehmon rejimida hech narsa yuborilmaydi) |
-| Uchinchi tomonga beriladimi (sharing)? | **Yo‘q** (Cloudflare — server/baza, Resend — kod xati: xizmat ko‘rsatuvchi, LabGuide nomidan qayta ishlaydi; sharing emas) |
+| Uchinchi tomonga beriladimi (sharing)? | **Yo‘q** (Cloudflare — server/baza, Resend (zaxirada Brevo) — kod xati: xizmat ko‘rsatuvchi, LabGuide nomidan qayta ishlaydi; sharing emas) |
 | Uzatishda shifrlanganmi? | **Ha** (HTTPS) |
 | O‘chirishni so‘rash mumkinmi? | **Ha** — ilovada Profil → Maxfiylik → “Hisobni o‘chirish” va aloqa emaili labguide@nfcstore.uz |
 | Personal info → Email address | To‘planadi; sinf (guruh) uchun majburiy, umuman ilova uchun **ixtiyoriy** (mehmon rejimida yo‘q); Account management, App functionality (serverda faqat hash + niqoblangan ko‘rinish) |

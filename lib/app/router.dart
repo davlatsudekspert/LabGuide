@@ -728,8 +728,9 @@ GoRouter buildRouter(
                       ),
                       GoRoute(
                         path: 'interpret',
-                        builder: (context, state) =>
-                            const DiffInterpretScreen(),
+                        builder: (context, state) => DiffInterpretScreen(
+                          focusFinding: state.uri.queryParameters['finding'],
+                        ),
                       ),
                       GoRoute(
                         path: 'limits',

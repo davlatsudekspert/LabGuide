@@ -1578,7 +1578,7 @@
      ],
      "text": {
       "uz": "MedlinePlus misol sifatida quyidagi me’yorlarni keltiradi (laboratoriyaga qarab farq qiladi — natija varaqasidagi referensga qarang): hujayralar 0–5 leykotsit (hammasi mononuklear) va 0 eritrotsit; glyukoza 50–80 mg/dL (2,77–4,44 mmol/L) yoki qondagi qand darajasining 2/3 qismidan ko‘p; oqsil 15–60 mg/dL (0,15–0,6 g/L); ochilish bosimi 90–180 mm suv ustuni; ekmada bakteriya o‘smaydi, o‘sma hujayralari yo‘q.",
-      "ru": "MedlinePlus приводит в качестве примера такие нормы (зависят от лаборатории — ориентируйтесь на референс в бланке): клетки 0–5 лейкоцитов (все мононуклеары) и 0 эритроцитов; глюкоза 50–80 мг/дл (2,77–4,44 ммоль/л) или более 2/3 уровня глюкозы крови; белок 15–60 мг/дл (0,15–0,6 г/л); давление открытия 90–180 мм вод. ст.; в посеве бактерии не растут, опухолевых клеток нет.",
+      "ru": "MedlinePlus приводит в качестве примера такие нормы (зависят от лаборатории — ориентируйтесь на референтный интервал в бланке): клетки 0–5 лейкоцитов (все мононуклеары) и 0 эритроцитов; глюкоза 50–80 мг/дл (2,77–4,44 ммоль/л) или более 2/3 уровня глюкозы крови; белок 15–60 мг/дл (0,15–0,6 г/л); давление открытия 90–180 мм вод. ст.; в посеве бактерии не растут, опухолевых клеток нет.",
       "en": "MedlinePlus gives these example normal values (they vary by lab — use the reference on your report): cells 0–5 white blood cells (all mononuclear) and 0 red blood cells; glucose 50–80 mg/dL (2.77–4.44 mmol/L) or more than two-thirds of the blood sugar level; protein 15–60 mg/dL (0.15–0.6 g/L); opening pressure 90–180 mm of water; no bacteria grow in culture and no cancer cells are present."
      }
     },
@@ -2739,7 +2739,7 @@
      ],
      "text": {
       "uz": "Manbadagi misol referens interval (laboratoriyangiz intervali emas): 24 soatlik siydik hajmi — 800–2000 mL/24 soat, kuniga taxminan 2 litr suyuqlik ichilganda. MedlinePlus me’yoriy oraliqlar laboratoriyalar orasida farq qilishini aytadi — natijani laboratoriyaning o‘z referens intervali bilan solishtiring.",
-      "ru": "Пример референсного интервала из источника (не интервал вашей лаборатории): объём мочи за 24 часа — 800–2000 mL/24 ч при потреблении около 2 л жидкости в сутки. MedlinePlus указывает, что нормы различаются между лабораториями, — сравнивайте результат с референсным интервалом своей лаборатории.",
+      "ru": "Пример референтного интервала из источника (не интервал вашей лаборатории): объём мочи за 24 часа — 800–2000 мл/24 ч при потреблении около 2 л жидкости в сутки. MedlinePlus указывает, что нормы различаются между лабораториями, — сравнивайте результат с референтным интервалом своей лаборатории.",
       "en": "Example reference interval from the source (not your laboratory’s interval): 24-hour urine volume — 800–2,000 mL/24 h with a fluid intake of about 2 litres a day. MedlinePlus notes that normal ranges vary between laboratories — compare your result with your laboratory’s own reference interval."
      }
     },
@@ -2767,7 +2767,7 @@
      ],
      "text": {
       "uz": "Manbadagi misol referens interval (laboratoriyangiz intervali emas): 24 soatlik siydikdagi oqsil — 100 mg/24 soat dan kam (siydikdagi konsentratsiya sifatida — 10 mg/dL dan kam). Laboratoriyalar boshqa o‘lchov yoki boshqa namunadan foydalanishi mumkin — natijani laboratoriyaning o‘z referens intervali bilan solishtiring.",
-      "ru": "Пример референсного интервала из источника (не интервал вашей лаборатории): белок в моче за 24 часа — менее 100 mg/24 ч (как концентрация в моче — менее 10 mg/dL). Лаборатории могут использовать другие измерения или другие образцы — сравнивайте результат с референсным интервалом своей лаборатории.",
+      "ru": "Пример референтного интервала из источника (не интервал вашей лаборатории): белок в моче за 24 часа — менее 100 мг/24 ч (как концентрация в моче — менее 10 мг/дл). Лаборатории могут использовать другие измерения или другие образцы — сравнивайте результат с референтным интервалом своей лаборатории.",
       "en": "Example reference interval from the source (not your laboratory’s interval): 24-hour urine protein — less than 100 mg/24 h (as a urine concentration, less than 10 mg/dL). Laboratories may use different measurements or samples — compare your result with your laboratory’s own reference interval."
      }
     },
@@ -2885,7 +2885,7 @@
    "notes": {
     "results": {
      "uz": "Bu bo‘limdagi raqamlar manbadagi misol bo‘lib, faqat 24 soat davomida yig‘ilgan siydikka tegishli (hajm — mL/24 soat, oqsil — mg/24 soat). Ular asosiy me’yor emas: laboratoriyangiz natija varaqasidagi referens intervalga qarang. Bir martalik (tasodifiy) namunadagi nisbatlar — albumin/kreatinin nisbati (ACR, mg/g) va oqsil/kreatinin nisbati — boshqa ko‘rsatkich va boshqa birlikda; ularni bu qiymatlar bilan solishtirmang.",
-     "ru": "Цифры в этом разделе — пример из источника и относятся только к моче, собранной за 24 часа (объём — mL/24 ч, белок — mg/24 ч). Это не основная норма: ориентируйтесь на референсный интервал в бланке вашей лаборатории. Соотношения в разовой (случайной) порции — альбумин/креатинин (ACR, mg/g) и белок/креатинин — другие показатели в других единицах; не сравнивайте их с этими значениями.",
+     "ru": "Цифры в этом разделе — пример из источника и относятся только к моче, собранной за 24 часа (объём — мл/24 ч, белок — мг/24 ч). Это не основная норма: ориентируйтесь на референтный интервал в бланке вашей лаборатории. Соотношения в разовой (случайной) порции — альбумин/креатинин (ACR, мг/г) и белок/креатинин — другие показатели в других единицах; не сравнивайте их с этими значениями.",
      "en": "The numbers in this section are examples from the source and apply only to urine collected over 24 hours (volume in mL/24 h, protein in mg/24 h). They are not the primary norm: use the reference interval on your laboratory’s report. Ratios measured on a single (random) sample — albumin-to-creatinine ratio (ACR, mg/g) and protein-to-creatinine ratio — are different measures in different units; do not compare them with these values."
     }
    }

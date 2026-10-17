@@ -270,10 +270,10 @@ void main() {
       expect(examples, hasLength(2));
       expect(examples[0].text.of('en'), contains('800–2,000 mL/24 h'));
       expect(examples[0].text.of('uz'), contains('800–2000 mL/24 soat'));
-      expect(examples[0].text.of('ru'), contains('800–2000 mL/24 ч'));
+      expect(examples[0].text.of('ru'), contains('800–2000 мл/24 ч'));
       expect(examples[1].text.of('en'), contains('less than 100 mg/24 h'));
       expect(examples[1].text.of('uz'), contains('100 mg/24 soat dan kam'));
-      expect(examples[1].text.of('ru'), contains('менее 100 mg/24 ч'));
+      expect(examples[1].text.of('ru'), contains('менее 100 мг/24 ч'));
       for (final c in examples) {
         expect(c.refs.single.locator, 'Normal Results');
         expect(c.text.of('en'), contains('own reference interval'));

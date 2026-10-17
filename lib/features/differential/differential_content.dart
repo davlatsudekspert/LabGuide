@@ -951,7 +951,7 @@ const diffFindings = <DiffFinding>[
     title: _T({'uz': 'Limfotsitoz', 'ru': 'Лимфоцитоз', 'en': 'Lymphocytosis'}),
     what: _T({
       'uz': 'Limfotsitlar ulushi yoki soni ortgan. Bolalarda limfotsitlar ko‘pligi yoshga bog‘liq bo‘lishi mumkin — yosh referensiga qarang.',
-      'ru': 'Доля или число лимфоцитов увеличены. У детей преобладание лимфоцитов может быть возрастным — смотрите возрастной референс.',
+      'ru': 'Доля или число лимфоцитов увеличены. У детей преобладание лимфоцитов может быть возрастным — смотрите возрастной референтный интервал.',
       'en': 'Increased proportion or number of lymphocytes. In children a lymphocyte majority can be age-related — use age-specific references.',
     }),
     causes: [

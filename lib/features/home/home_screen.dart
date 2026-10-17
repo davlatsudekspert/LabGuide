@@ -190,22 +190,9 @@ class HomeScreen extends StatelessWidget {
             // ilova ochilganda birinchi ekranda. Faqat hamkor UI yoqilgan
             // (test) buildda; do'kon buildida umuman yo'q.
             if (BuildFlags.partnerAds) const HomePartnerPair(),
-            if (config.featuredConditions.isNotEmpty)
-              ConditionGuideCard(
-                base: '/home',
-                featured: config.featuredConditions,
-              ),
-            LgHeroCard(
-              compact: true,
-              image: kHeroImage,
-              title: config.heroTitle,
-              body: config.heroBody,
-              action: LgButton(
-                label: config.heroCta,
-                onPressed: () => openInTab(context, config.heroLocation),
-              ),
-            ),
-            const SizedBox(height: 8),
+            // Rolning tezkor tugmalari qidiruvdan keyin darhol: birinchi
+            // ekranda (rasm/shifokor qo'llanmasi kartasi ularni pastga
+            // surib yubormasin).
             LgTwoColumnGrid(
               children: [
                 for (var i = 0; i < config.actions.length; i++)
@@ -225,6 +212,22 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
               ],
+            ),
+            const SizedBox(height: 8),
+            if (config.featuredConditions.isNotEmpty)
+              ConditionGuideCard(
+                base: '/home',
+                featured: config.featuredConditions,
+              ),
+            LgHeroCard(
+              compact: true,
+              image: kHeroImage,
+              title: config.heroTitle,
+              body: config.heroBody,
+              action: LgButton(
+                label: config.heroCta,
+                onPressed: () => openInTab(context, config.heroLocation),
+              ),
             ),
             // Kunlik 5 ta savol — har kuni qaytish uchun ixcham karta.
             const DailyCard(),

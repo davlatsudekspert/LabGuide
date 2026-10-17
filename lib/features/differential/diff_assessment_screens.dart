@@ -141,6 +141,18 @@ class DiffAssessmentPanel extends StatelessWidget {
                         style: text.bodyMedium!.copyWith(color: p.brand),
                       ),
                       Text(f.what.of(lang), style: text.bodySmall),
+                      // Shu topilmaning o'z kartasiga (Talqin sahifasida
+                      // o'sha kartagacha surilib, ajratib ko'rsatiladi).
+                      Align(
+                        alignment: AlignmentDirectional.centerStart,
+                        child: TextButton.icon(
+                          key: ValueKey('diff-finding-link-${f.id}'),
+                          onPressed: () =>
+                              context.push('$base/interpret?finding=${f.id}'),
+                          icon: const Icon(Icons.menu_book_outlined),
+                          label: Text(l.diffAssessAboutFinding),
+                        ),
+                      ),
                     ],
                   ],
                 ),

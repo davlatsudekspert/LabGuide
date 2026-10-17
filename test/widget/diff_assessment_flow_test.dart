@@ -1,5 +1,9 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:go_router/go_router.dart';
 import 'package:labguide/features/differential/diff_assessment.dart';
+import 'package:labguide/app/app_scope.dart';
+import 'package:labguide/app/widgets/lg_page.dart';
+import 'package:labguide/design/widgets/lg_widgets.dart';
 import 'package:labguide/features/differential/diff_assessment_screens.dart';
 import 'package:labguide/features/differential/differential_content.dart';
 import 'package:labguide/features/settings/settings_controller.dart';
@@ -131,5 +135,134 @@ void main() {
     await tester.pumpAndSettle();
     expect(s.differential.limits, diffDefaultLimits);
     expect(tester.takeException(), isNull);
+  });
+
+  // ---- Talqin: har bir topilma o'z kartasiga olib boradi (?finding=<id>)
+  Finder card(String id) => find.byKey(ValueKey('diff-finding-$id'));
+
+  /// Qurilgan (ro'yxat dangasa) topilma kartalaridan ajratilganlar.
+  List<String> outlinedIds(WidgetTester t) => [
+    for (final w in t.widgetList<LgPanel>(find.byType(LgPanel)))
+      if (w.outlined && w.key is ValueKey<String>)
+        (w.key! as ValueKey<String>).value.replaceFirst('diff-finding-', ''),
+  ];
+
+  /// Kartaning boshi ko'rinadigan oynada: yuqorida va pastki menyudan
+  /// yetarlicha yuqori (qatlam ostida ham, ekran tagida ham emas).
+  void expectOnScreen(WidgetTester t, String id) {
+    final r = t.getRect(card(id));
+    final nav = t.getRect(find.byKey(const ValueKey('nav-pill')));
+    expect(r.top, greaterThan(0), reason: '$id top');
+    expect(r.top, lessThan(nav.top - 40), reason: '$id is not below the fold');
+  }
+
+  /// Dangasa ro'yxatda [f] qurilguncha suradi va ekranning o'rtasiga
+  /// keltiradi (pastki menyu bosishga xalaqit bermasin).
+  Future<void> reveal(WidgetTester t, Finder f) async {
+    await t.scrollUntilVisible(
+      f,
+      300,
+      scrollable: find
+          .descendant(
+            of: find.byType(LgPage).last,
+            matching: find.byType(Scrollable),
+          )
+          .first,
+    );
+    await Scrollable.ensureVisible(t.element(f), alignment: 0.4);
+    await t.pumpAndSettle();
+  }
+
+  /// Eng yuqori (ko'rinib turgan) sahifaning manzili.
+  Uri topUri(WidgetTester t) =>
+      GoRouterState.of(t.element(find.byType(LgPage).last)).uri;
+
+  Future<void> seedLymphocytosis(AppServices s) async {
+    for (var i = 0; i < 20; i++) {
+      s.differential.tap(DiffCell.segmented);
+    }
+    for (var i = 0; i < 80; i++) {
+      s.differential.tap(DiffCell.lymphocyte);
+    }
+    s.differential.setWbc(10);
+  }
+
+  testWidgets("baho kartasi o'z topilmasiga olib boradi va uni ajratadi", (
+    tester,
+  ) async {
+    final s = await makeServices(tester, language: AppLanguage.uz);
+    final l = lookupAppLocalizations(const Locale('uz'));
+    await seedLymphocytosis(s);
+    await pumpApp(tester, s, size: const Size(390, 844));
+    await goTo(tester, '/lab/differential/count');
+    final link = find.byKey(const ValueKey('diff-finding-link-lymphocytosis'));
+    await reveal(tester, link);
+    // Umumiy "Talqin" tugmasi ham joyida.
+    expect(find.text(l.diffInterpretTitle), findsOne);
+    await tester.tap(link);
+    await tester.pumpAndSettle();
+    final uri = topUri(tester);
+    expect(uri.path, '/lab/differential/interpret');
+    expect(uri.queryParameters['finding'], 'lymphocytosis');
+    expect(outlinedIds(tester), ['lymphocytosis']);
+    expectOnScreen(tester, 'lymphocytosis');
+    expect(tester.takeException(), isNull);
+  });
+
+  testWidgets('umumiy Talqin tugmasi: hech narsa ajratilmaydi', (tester) async {
+    final s = await makeServices(tester, language: AppLanguage.uz);
+    final l = lookupAppLocalizations(const Locale('uz'));
+    await seedLymphocytosis(s);
+    await pumpApp(tester, s, size: const Size(390, 844));
+    await goTo(tester, '/lab/differential/count');
+    final generic = find.text(l.diffInterpretTitle);
+    await reveal(tester, generic);
+    await tester.tap(generic);
+    await tester.pumpAndSettle();
+    final uri = topUri(tester);
+    expect(uri.path, '/lab/differential/interpret');
+    expect(uri.hasQuery, isFalse);
+    expect(outlinedIds(tester), isEmpty);
+  });
+
+  for (final f in diffFindings) {
+    testWidgets("?finding=${f.id}: o'sha karta ko'rinadi va ajratiladi", (
+      tester,
+    ) async {
+      final s = await makeServices(tester);
+      await pumpApp(tester, s, size: const Size(390, 844));
+      await goTo(tester, '/lab/differential/interpret?finding=${f.id}');
+      expect(outlinedIds(tester), [f.id]);
+      expectOnScreen(tester, f.id);
+      expect(tester.takeException(), isNull);
+    });
+  }
+
+  testWidgets("noma'lum ?finding= e'tiborga olinmaydi", (tester) async {
+    final s = await makeServices(tester);
+    await pumpApp(tester, s, size: const Size(390, 844));
+    await goTo(tester, '/lab/differential/interpret?finding=nope');
+    expect(outlinedIds(tester), isEmpty);
+    expect(tester.takeException(), isNull);
+  });
+
+  testWidgets('ruscha interfeys: havola va orqaga qaytish', (tester) async {
+    final s = await makeServices(tester, language: AppLanguage.ru);
+    final l = lookupAppLocalizations(const Locale('ru'));
+    await seedLymphocytosis(s);
+    await pumpApp(tester, s, size: const Size(390, 844));
+    await goTo(tester, '/lab/differential/count');
+    final link = find.byKey(const ValueKey('diff-finding-link-lymphocytosis'));
+    await reveal(tester, link);
+    expect(
+      find.descendant(of: link, matching: find.text(l.diffAssessAboutFinding)),
+      findsOne,
+    );
+    await tester.tap(link);
+    await tester.pumpAndSettle();
+    expect(outlinedIds(tester), ['lymphocytosis']);
+    routerOf(tester).pop();
+    await tester.pumpAndSettle();
+    expect(find.byType(DiffAssessmentPanel), findsOne);
   });
 }

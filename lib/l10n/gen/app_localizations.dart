@@ -14062,6 +14062,12 @@ abstract class AppLocalizations {
   /// **'Learning materials'**
   String get searchSectionLibrary;
 
+  /// No description provided for @searchSectionSections.
+  ///
+  /// In en, this message translates to:
+  /// **'Sections'**
+  String get searchSectionSections;
+
   /// No description provided for @diffAssessTitle.
   ///
   /// In en, this message translates to:
@@ -14157,6 +14163,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'May point to: {finding}'**
   String diffAssessMaySuggest(String finding);
+
+  /// No description provided for @diffAssessAboutFinding.
+  ///
+  /// In en, this message translates to:
+  /// **'More about this finding'**
+  String get diffAssessAboutFinding;
 
   /// No description provided for @diffAssessReferBody.
   ///

@@ -606,18 +606,18 @@ class AppLocalizationsRu extends AppLocalizations {
   String get analyteUnits => 'Единицы';
 
   @override
-  String get analyteRefIntervals => 'Референсные интервалы';
+  String get analyteRefIntervals => 'Референтные интервалы';
 
   @override
   String get analyteRefIntervalNone =>
-      'Референсный интервал здесь не приводится. Используйте интервал из бланка вашей лаборатории: он зависит от метода, образца и популяции.';
+      'Референтный интервал здесь не приводится. Используйте интервал из бланка вашей лаборатории: он зависит от метода, образца и популяции.';
 
   @override
   String get analyteDecisionLimits => 'Диагностические пороги';
 
   @override
   String get analyteDecisionNotRef =>
-      'Диагностические пороги — это не лабораторный референсный интервал.';
+      'Диагностические пороги — это не лабораторный референтный интервал.';
 
   @override
   String analyteSiNote(String unit, String mass) {
@@ -1291,7 +1291,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get diffDraftNote =>
-      'Раздел не прошёл проверку специалиста. Результат — не диагноз; референсы — на бланке вашей лаборатории.';
+      'Раздел не прошёл проверку специалиста. Результат — не диагноз; референтные интервалы — на бланке вашей лаборатории.';
 
   @override
   String get diffSchematicCaption =>
@@ -1432,7 +1432,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get diffCopyFooter =>
-      'LabGuide · ручной подсчёт. Референс — на бланке лаборатории.';
+      'LabGuide · ручной подсчёт. Референтный интервал — на бланке лаборатории.';
 
   @override
   String diffWbcLine(String value) {
@@ -1750,7 +1750,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get diffInterpretIntro =>
-      'Интерпретация всегда — вместе с референсом и клиникой. Референс — на бланке вашей лаборатории; причины ниже лишь возможные, это не диагноз.';
+      'Интерпретация всегда — вместе с референтным интервалом и клиникой. Референтный интервал — на бланке вашей лаборатории; причины ниже лишь возможные, это не диагноз.';
 
   @override
   String get diffPossibleCauses => 'Возможные причины';
@@ -1764,7 +1764,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get diffRangesBody =>
-      'В открытых источниках и учебнике СНГ примерные интервалы для взрослых (%) различаются. В отчёте используется только референс с бланка вашей лаборатории; у детей интервалы зависят от возраста.';
+      'В открытых источниках и учебнике СНГ примерные интервалы для взрослых (%) различаются. В отчёте используется только референтный интервал с бланка вашей лаборатории; у детей интервалы зависят от возраста.';
 
   @override
   String get diffRangesWho => 'ВОЗ 2003';
@@ -1777,7 +1777,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get diffRangesClassicNote =>
-      'Классические интервалы (учебники СНГ) даны только для сравнения: они ещё встречаются во многих бланках, но источники расходятся. Главное — референс на бланке вашей лаборатории.';
+      'Классические интервалы (учебники СНГ) даны только для сравнения: они ещё встречаются во многих бланках, но источники расходятся. Главное — референтный интервал на бланке вашей лаборатории.';
 
   @override
   String get refTitle => 'Таблицы и алгоритмы';
@@ -1985,7 +1985,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get mcClassicNote =>
-      'Это референсный интервал, а не диагностический порог. Главный — интервал на бланке вашей лаборатории; результат с ним автоматически не сравнивается.';
+      'Это референтный интервал, а не диагностический порог. Главный — интервал на бланке вашей лаборатории; результат с ним автоматически не сравнивается.';
 
   @override
   String get mfCells => 'Подсчитано клеток';
@@ -2268,7 +2268,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get ciUse =>
-      'Гемоглобин в одном эритроците прямо выражает MCH (среднее содержание гемоглобина, пг), а концентрацию гемоглобина в эритроците — MCHC. Гематологический анализатор выдаёт оба. Гипо-/гиперхромию оценивайте по ним и референсным интервалам вашей лаборатории.';
+      'Гемоглобин в одном эритроците прямо выражает MCH (среднее содержание гемоглобина, пг), а концентрацию гемоглобина в эритроците — MCHC. Гематологический анализатор выдаёт оба. Гипо-/гиперхромию оценивайте по ним и референтным интервалам вашей лаборатории.';
 
   @override
   String get dilC1 => 'C₁ · Исходная концентрация';
@@ -2407,7 +2407,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get calcNotDiagnosis =>
-      'Вспомогательный расчёт для обучения и проверки. Не ставит диагноз: интерпретируйте результат с учётом клинической картины и референсных интервалов вашей лаборатории.';
+      'Вспомогательный расчёт для обучения и проверки. Не ставит диагноз: интерпретируйте результат с учётом клинической картины и референтных интервалов вашей лаборатории.';
 
   @override
   String calcUnitCheck(String field, String value, String unit) {
@@ -4537,7 +4537,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get toifaReferenceTitle =>
-      'Референсный интервал (образец, зависит от лаборатории)';
+      'Референтный интервал (образец, зависит от лаборатории)';
 
   @override
   String get toifaCutoffTitle => 'Диагностический порог (руководство)';
@@ -6878,7 +6878,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get analyteTreatmentGoalsNotRef =>
-      'Цели лечения — не референсные интервалы и не диагностические пороги. Рекомендации по-разному определяют группы риска — сравнивайте значения только внутри одной таблицы.';
+      'Цели лечения — не референтные интервалы и не диагностические пороги. Рекомендации по-разному определяют группы риска — сравнивайте значения только внутри одной таблицы.';
 
   @override
   String analyteGoalHistorical(String current) {
@@ -7689,7 +7689,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get cmRulesB3 =>
-      'указывайте единицы точно: сначала СИ, в скобках традиционные (например, 7,0 mmol/L (126 mg/dL))';
+      'указывайте единицы точно: сначала СИ, в скобках традиционные (например, 7,0 ммоль/л (126 мг/дл))';
 
   @override
   String get cmRulesB4 => 'один пост — один вопрос';
@@ -8155,6 +8155,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String get searchSectionLibrary => 'Учебные материалы';
 
   @override
+  String get searchSectionSections => 'Разделы';
+
+  @override
   String get diffAssessTitle => 'Сравнение с нормой';
 
   @override
@@ -8209,6 +8212,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String diffAssessMaySuggest(String finding) {
     return 'Возможная трактовка: $finding';
   }
+
+  @override
+  String get diffAssessAboutFinding => 'Подробнее об этой трактовке';
 
   @override
   String get diffAssessReferBody =>

@@ -221,6 +221,7 @@ class LgPanel extends StatelessWidget {
     required this.child,
     this.padding = const EdgeInsets.all(16),
     this.soft = false,
+    this.outlined = false,
     this.margin = const EdgeInsets.symmetric(vertical: 6),
   });
 
@@ -228,6 +229,10 @@ class LgPanel extends StatelessWidget {
   final EdgeInsetsGeometry padding;
   final EdgeInsetsGeometry margin;
   final bool soft;
+
+  /// Ajratib ko'rsatish (masalan, havola bilan kelingan karta): brend
+  /// rangli ramka.
+  final bool outlined;
 
   @override
   Widget build(BuildContext context) {
@@ -238,6 +243,7 @@ class LgPanel extends StatelessWidget {
         decoration: BoxDecoration(
           color: soft ? p.soft : p.paper,
           borderRadius: BorderRadius.circular(LgRadius.card),
+          border: outlined ? Border.all(color: p.brand, width: 2) : null,
         ),
         child: Padding(padding: padding, child: child),
       ),

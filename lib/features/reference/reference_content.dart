@@ -1402,7 +1402,7 @@ const refTopics = <RefTopic>[
             _labelWhy,
             _T({
               'uz': 'Xalqaro reference usul — 37 °C dagi kinetik IFCC usuli; eski birliklarni U/L ga to‘g‘ridan-to‘g‘ri o‘tkazib bo‘lmaydi',
-              'ru': 'Международный референсный метод — кинетический метод IFCC при 37 °C; старые единицы нельзя напрямую перевести в Ед/л',
+              'ru': 'Международный референтный метод — кинетический метод IFCC при 37 °C; старые единицы нельзя напрямую перевести в Ед/л',
               'en': 'The international reference is the IFCC kinetic method at 37 °C; old units cannot be converted directly to U/L',
             }),
           ),

@@ -90,7 +90,7 @@ abstract final class SpermL {
   });
   static const limitsSub = _T({
     'uz': 'JSST 2021 pastki referens chegaralari, 95% IO',
-    'ru': 'Нижние референсные пределы ВОЗ 2021, 95% ДИ',
+    'ru': 'Нижние референтные пределы ВОЗ 2021, 95% ДИ',
     'en': 'WHO 2021 lower reference limits, 95% CI',
   });
   static const counterTitle = _T({
@@ -148,7 +148,7 @@ abstract final class SpermL {
         'Chegaralar, harakatchanlik toifalari, atamalar va preanalitika '
         'bo‘yicha savollar. Har javobdan keyin izoh ochiladi.',
     'ru':
-        'Вопросы о референсных пределах, категориях подвижности, терминах и '
+        'Вопросы о референтных пределах, категориях подвижности, терминах и '
         'преаналитике. После каждого ответа открывается пояснение.',
     'en':
         'Questions on reference limits, motility grades, terms and '
@@ -213,7 +213,7 @@ abstract final class SpermL {
         'ammo bunday birlashgan chegaralar hali ishlab chiqilmagan.',
     'ru':
         'ВОЗ предлагает многопараметрическую интерпретацию, но объединённые '
-        'референсные пределы для неё ещё не разработаны.',
+        'референтные пределы для неё ещё не разработаны.',
     'en':
         'WHO suggests a multiparametric interpretation, but combined '
         'reference limits for it have yet to be developed.',
@@ -835,7 +835,7 @@ const spermTerms = <SpermTerm, SpermTermInfo>{
       'ru':
           'Общее число (или концентрация) сперматозоидов, доля прогрессивно '
           'подвижных и морфологически нормальных сперматозоидов равны нижним '
-          'референсным пределам или выше их.',
+          'референтным пределам или выше их.',
       'en':
           'Total number (or concentration) of spermatozoa, and percentages of '
           'progressively motile and morphologically normal spermatozoa, equal '
@@ -854,7 +854,7 @@ const spermTerms = <SpermTerm, SpermTermInfo>{
           'chegaradan past. Umumiy songa doim ustunlik beriladi.',
       'ru':
           'Общее число (или концентрация) сперматозоидов ниже нижнего '
-          'референсного предела. Предпочтение всегда отдаётся общему числу.',
+          'референтного предела. Предпочтение всегда отдаётся общему числу.',
       'en':
           'Total number (or concentration) of spermatozoa below the lower '
           'reference limit. Total number always takes precedence.',
@@ -872,7 +872,7 @@ const spermTerms = <SpermTerm, SpermTermInfo>{
           'referens chegaradan past.',
       'ru':
           'Доля прогрессивно подвижных (PR) сперматозоидов ниже нижнего '
-          'референсного предела.',
+          'референтного предела.',
       'en':
           'Percentage of progressively motile (PR) spermatozoa below the lower '
           'reference limit.',
@@ -890,7 +890,7 @@ const spermTerms = <SpermTerm, SpermTermInfo>{
           'past.',
       'ru':
           'Доля морфологически нормальных сперматозоидов ниже нижнего '
-          'референсного предела.',
+          'референтного предела.',
       'en':
           'Percentage of morphologically normal spermatozoa below the lower '
           'reference limit.',
@@ -1370,7 +1370,7 @@ final spermQuiz = <SpermQuizItem>[
             'Referens populyatsiyaning 5% ida natija undan past; fertillik '
             'chegarasi emas',
         'ru':
-            'У 5% референсной популяции результат ниже; это не граница '
+            'У 5% референтной популяции результат ниже; это не граница '
             'фертильности',
         'en':
             'Only 5% of the reference population were below it; not a '

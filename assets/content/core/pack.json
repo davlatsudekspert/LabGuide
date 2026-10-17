@@ -3609,7 +3609,7 @@
      ],
      "text": {
       "uz": "MedlinePlus ensiklopediyasi misol sifatida bevosita bilirubin uchun 0,3 mg/dL (5,1 µmol/L) dan kam qiymatni keltiradi, lekin referens laboratoriya va usulga bog‘liq — natija varaqasidagi oraliqqa qarang. Sog‘lom odam siydigida bilirubin odatda bo‘lmaydi.",
-      "ru": "Энциклопедия MedlinePlus в качестве примера приводит для прямого билирубина значение меньше 0,3 мг/дл (5,1 мкмоль/л), но референс зависит от лаборатории и метода — смотрите интервал на бланке. В моче здорового человека билирубина обычно нет.",
+      "ru": "Энциклопедия MedlinePlus в качестве примера приводит для прямого билирубина значение меньше 0,3 мг/дл (5,1 мкмоль/л), но референтный интервал зависит от лаборатории и метода — смотрите интервал на бланке. В моче здорового человека билирубина обычно нет.",
       "en": "The MedlinePlus encyclopedia gives less than 0.3 mg/dL (5.1 µmol/L) as an example normal for direct bilirubin, but the reference depends on the laboratory and method — use the range on the report. Healthy urine normally contains no bilirubin."
      }
     }
@@ -4337,7 +4337,7 @@
      ],
      "note": {
       "uz": "Jadval izohiga ko‘ra, juda yuqori xavf < 70 mg/dL ixtiyoriy maqsadni afzal ko‘rishga asos bo‘ladi.",
-      "ru": "Согласно примечанию к таблице, очень высокий риск говорит в пользу факультативной цели < 70 mg/dL.",
+      "ru": "Согласно примечанию к таблице, очень высокий риск говорит в пользу факультативной цели < 70 мг/дл.",
       "en": "Per the table footnote, very high risk favours the optional goal of < 70 mg/dL."
      },
      "superseded_by": [
@@ -4615,7 +4615,7 @@
      "year": 2018,
      "population": {
       "uz": "Birlamchi profilaktika: 40–75 yosh, qandli diabetsiz, LDL-C ≥ 70 mg/dL, statin buyurilgan holatda",
-      "ru": "Первичная профилактика: 40–75 лет, без сахарного диабета, ХС ЛПНП ≥ 70 mg/dL, если статин назначен",
+      "ru": "Первичная профилактика: 40–75 лет, без сахарного диабета, ХС ЛПНП ≥ 70 мг/дл, если статин назначен",
       "en": "Primary prevention: age 40–75, no diabetes, LDL-C ≥ 70 mg/dL, when a statin is indicated"
      },
      "target_text": {
@@ -5039,7 +5039,7 @@
      ],
      "note": {
       "uz": "ATP III da non-HDL xolesterin triglitseridlar yuqori (≥ 200 mg/dL) bo‘lganda ikkinchi darajali maqsad; uning maqsadi LDL maqsadidan 30 mg/dL yuqori.",
-      "ru": "В ATP III холестерин не-ЛПВП — вторичная цель при высоких триглицеридах (≥ 200 mg/dL); его цель на 30 mg/dL выше цели для ЛПНП.",
+      "ru": "В ATP III холестерин не-ЛПВП — вторичная цель при высоких триглицеридах (≥ 200 мг/дл); его цель на 30 мг/дл выше цели для ЛПНП.",
       "en": "In ATP III, non-HDL cholesterol is a secondary target when triglycerides are high (≥ 200 mg/dL); its goal is 30 mg/dL above the LDL goal."
      },
      "superseded_by": [
@@ -8939,7 +8939,7 @@
      ],
      "text": {
       "uz": "Laboratoriyalar ko‘pincha turli metodlardan, shuning uchun turli referens oraliqlardan foydalanadi: natija boshqa joyda topilgan oraliq bilan emas, o‘z laboratoriyangiz blankidagi oraliq bilan solishtiriladi. Turli laboratoriyalar natijalarini bir-biri bilan solishtirib bo‘lmaydi; dinamikani bitta laboratoriyada kuzatgan ma’qul.",
-      "ru": "Лаборатории часто используют разные методы и поэтому разные референсные интервалы: результат сравнивают с интервалом в бланке своей лаборатории, а не с найденным в другом месте. Результаты разных лабораторий сравнивать между собой нельзя; динамику лучше отслеживать в одной лаборатории.",
+      "ru": "Лаборатории часто используют разные методы и поэтому разные референтные интервалы: результат сравнивают с интервалом в бланке своей лаборатории, а не с найденным в другом месте. Результаты разных лабораторий сравнивать между собой нельзя; динамику лучше отслеживать в одной лаборатории.",
       "en": "Labs often use different methods and therefore different reference ranges, so a result is compared with the range on your own lab report, not with ranges found elsewhere. Results from different labs can't be compared with each other, and trends are best followed in the same lab."
      }
     }
@@ -9186,7 +9186,7 @@
      ],
      "text": {
       "uz": "Laboratoriyalar ko‘pincha turli metodlardan, shuning uchun turli referens oraliqlardan foydalanadi: natija boshqa joyda topilgan oraliq bilan emas, o‘z laboratoriyangiz blankidagi oraliq bilan solishtiriladi. Turli laboratoriyalar natijalarini bir-biri bilan solishtirib bo‘lmaydi; dinamikani bitta laboratoriyada kuzatgan ma’qul.",
-      "ru": "Лаборатории часто используют разные методы и поэтому разные референсные интервалы: результат сравнивают с интервалом в бланке своей лаборатории, а не с найденным в другом месте. Результаты разных лабораторий сравнивать между собой нельзя; динамику лучше отслеживать в одной лаборатории.",
+      "ru": "Лаборатории часто используют разные методы и поэтому разные референтные интервалы: результат сравнивают с интервалом в бланке своей лаборатории, а не с найденным в другом месте. Результаты разных лабораторий сравнивать между собой нельзя; динамику лучше отслеживать в одной лаборатории.",
       "en": "Labs often use different methods and therefore different reference ranges, so a result is compared with the range on your own lab report, not with ranges found elsewhere. Results from different labs can't be compared with each other, and trends are best followed in the same lab."
      }
     }
@@ -9424,7 +9424,7 @@
      ],
      "text": {
       "uz": "Laboratoriyalar ko‘pincha turli metodlardan, shuning uchun turli referens oraliqlardan foydalanadi: natija boshqa joyda topilgan oraliq bilan emas, o‘z laboratoriyangiz blankidagi oraliq bilan solishtiriladi. Turli laboratoriyalar natijalarini bir-biri bilan solishtirib bo‘lmaydi; dinamikani bitta laboratoriyada kuzatgan ma’qul.",
-      "ru": "Лаборатории часто используют разные методы и поэтому разные референсные интервалы: результат сравнивают с интервалом в бланке своей лаборатории, а не с найденным в другом месте. Результаты разных лабораторий сравнивать между собой нельзя; динамику лучше отслеживать в одной лаборатории.",
+      "ru": "Лаборатории часто используют разные методы и поэтому разные референтные интервалы: результат сравнивают с интервалом в бланке своей лаборатории, а не с найденным в другом месте. Результаты разных лабораторий сравнивать между собой нельзя; динамику лучше отслеживать в одной лаборатории.",
       "en": "Labs often use different methods and therefore different reference ranges, so a result is compared with the range on your own lab report, not with ranges found elsewhere. Results from different labs can't be compared with each other, and trends are best followed in the same lab."
      }
     }
@@ -9634,7 +9634,7 @@
      ],
      "text": {
       "uz": "Laboratoriyalar ko‘pincha turli metodlardan, shuning uchun turli referens oraliqlardan foydalanadi: natija boshqa joyda topilgan oraliq bilan emas, o‘z laboratoriyangiz blankidagi oraliq bilan solishtiriladi. Turli laboratoriyalar natijalarini bir-biri bilan solishtirib bo‘lmaydi; dinamikani bitta laboratoriyada kuzatgan ma’qul.",
-      "ru": "Лаборатории часто используют разные методы и поэтому разные референсные интервалы: результат сравнивают с интервалом в бланке своей лаборатории, а не с найденным в другом месте. Результаты разных лабораторий сравнивать между собой нельзя; динамику лучше отслеживать в одной лаборатории.",
+      "ru": "Лаборатории часто используют разные методы и поэтому разные референтные интервалы: результат сравнивают с интервалом в бланке своей лаборатории, а не с найденным в другом месте. Результаты разных лабораторий сравнивать между собой нельзя; динамику лучше отслеживать в одной лаборатории.",
       "en": "Labs often use different methods and therefore different reference ranges, so a result is compared with the range on your own lab report, not with ranges found elsewhere. Results from different labs can't be compared with each other, and trends are best followed in the same lab."
      }
     }
@@ -9898,7 +9898,7 @@
      ],
      "text": {
       "uz": "Laboratoriyalar ko‘pincha turli metodlardan, shuning uchun turli referens oraliqlardan foydalanadi: natija boshqa joyda topilgan oraliq bilan emas, o‘z laboratoriyangiz blankidagi oraliq bilan solishtiriladi. Turli laboratoriyalar natijalarini bir-biri bilan solishtirib bo‘lmaydi; dinamikani bitta laboratoriyada kuzatgan ma’qul.",
-      "ru": "Лаборатории часто используют разные методы и поэтому разные референсные интервалы: результат сравнивают с интервалом в бланке своей лаборатории, а не с найденным в другом месте. Результаты разных лабораторий сравнивать между собой нельзя; динамику лучше отслеживать в одной лаборатории.",
+      "ru": "Лаборатории часто используют разные методы и поэтому разные референтные интервалы: результат сравнивают с интервалом в бланке своей лаборатории, а не с найденным в другом месте. Результаты разных лабораторий сравнивать между собой нельзя; динамику лучше отслеживать в одной лаборатории.",
       "en": "Labs often use different methods and therefore different reference ranges, so a result is compared with the range on your own lab report, not with ranges found elsewhere. Results from different labs can't be compared with each other, and trends are best followed in the same lab."
      }
     }
@@ -10147,7 +10147,7 @@
      ],
      "text": {
       "uz": "Laboratoriyalar ko‘pincha turli metodlardan, shuning uchun turli referens oraliqlardan foydalanadi: natija boshqa joyda topilgan oraliq bilan emas, o‘z laboratoriyangiz blankidagi oraliq bilan solishtiriladi. Turli laboratoriyalar natijalarini bir-biri bilan solishtirib bo‘lmaydi; dinamikani bitta laboratoriyada kuzatgan ma’qul.",
-      "ru": "Лаборатории часто используют разные методы и поэтому разные референсные интервалы: результат сравнивают с интервалом в бланке своей лаборатории, а не с найденным в другом месте. Результаты разных лабораторий сравнивать между собой нельзя; динамику лучше отслеживать в одной лаборатории.",
+      "ru": "Лаборатории часто используют разные методы и поэтому разные референтные интервалы: результат сравнивают с интервалом в бланке своей лаборатории, а не с найденным в другом месте. Результаты разных лабораторий сравнивать между собой нельзя; динамику лучше отслеживать в одной лаборатории.",
       "en": "Labs often use different methods and therefore different reference ranges, so a result is compared with the range on your own lab report, not with ranges found elsewhere. Results from different labs can't be compared with each other, and trends are best followed in the same lab."
      }
     }
@@ -10414,7 +10414,7 @@
      ],
      "text": {
       "uz": "Laboratoriyalar ko‘pincha turli metodlardan, shuning uchun turli referens oraliqlardan foydalanadi: natija boshqa joyda topilgan oraliq bilan emas, o‘z laboratoriyangiz blankidagi oraliq bilan solishtiriladi. Turli laboratoriyalar natijalarini bir-biri bilan solishtirib bo‘lmaydi; dinamikani bitta laboratoriyada kuzatgan ma’qul.",
-      "ru": "Лаборатории часто используют разные методы и поэтому разные референсные интервалы: результат сравнивают с интервалом в бланке своей лаборатории, а не с найденным в другом месте. Результаты разных лабораторий сравнивать между собой нельзя; динамику лучше отслеживать в одной лаборатории.",
+      "ru": "Лаборатории часто используют разные методы и поэтому разные референтные интервалы: результат сравнивают с интервалом в бланке своей лаборатории, а не с найденным в другом месте. Результаты разных лабораторий сравнивать между собой нельзя; динамику лучше отслеживать в одной лаборатории.",
       "en": "Labs often use different methods and therefore different reference ranges, so a result is compared with the range on your own lab report, not with ranges found elsewhere. Results from different labs can't be compared with each other, and trends are best followed in the same lab."
      }
     }
@@ -10640,7 +10640,7 @@
      ],
      "text": {
       "uz": "Laboratoriyalar ko‘pincha turli metodlardan, shuning uchun turli referens oraliqlardan foydalanadi: natija boshqa joyda topilgan oraliq bilan emas, o‘z laboratoriyangiz blankidagi oraliq bilan solishtiriladi. Turli laboratoriyalar natijalarini bir-biri bilan solishtirib bo‘lmaydi; dinamikani bitta laboratoriyada kuzatgan ma’qul.",
-      "ru": "Лаборатории часто используют разные методы и поэтому разные референсные интервалы: результат сравнивают с интервалом в бланке своей лаборатории, а не с найденным в другом месте. Результаты разных лабораторий сравнивать между собой нельзя; динамику лучше отслеживать в одной лаборатории.",
+      "ru": "Лаборатории часто используют разные методы и поэтому разные референтные интервалы: результат сравнивают с интервалом в бланке своей лаборатории, а не с найденным в другом месте. Результаты разных лабораторий сравнивать между собой нельзя; динамику лучше отслеживать в одной лаборатории.",
       "en": "Labs often use different methods and therefore different reference ranges, so a result is compared with the range on your own lab report, not with ranges found elsewhere. Results from different labs can't be compared with each other, and trends are best followed in the same lab."
      }
     }
@@ -10848,7 +10848,7 @@
      ],
      "text": {
       "uz": "Laboratoriyalar ko‘pincha turli metodlardan, shuning uchun turli referens oraliqlardan foydalanadi: natija boshqa joyda topilgan oraliq bilan emas, o‘z laboratoriyangiz blankidagi oraliq bilan solishtiriladi. Turli laboratoriyalar natijalarini bir-biri bilan solishtirib bo‘lmaydi; dinamikani bitta laboratoriyada kuzatgan ma’qul.",
-      "ru": "Лаборатории часто используют разные методы и поэтому разные референсные интервалы: результат сравнивают с интервалом в бланке своей лаборатории, а не с найденным в другом месте. Результаты разных лабораторий сравнивать между собой нельзя; динамику лучше отслеживать в одной лаборатории.",
+      "ru": "Лаборатории часто используют разные методы и поэтому разные референтные интервалы: результат сравнивают с интервалом в бланке своей лаборатории, а не с найденным в другом месте. Результаты разных лабораторий сравнивать между собой нельзя; динамику лучше отслеживать в одной лаборатории.",
       "en": "Labs often use different methods and therefore different reference ranges, so a result is compared with the range on your own lab report, not with ranges found elsewhere. Results from different labs can't be compared with each other, and trends are best followed in the same lab."
      }
     }
@@ -11073,7 +11073,7 @@
      ],
      "text": {
       "uz": "Laboratoriyalar ko‘pincha turli metodlardan, shuning uchun turli referens oraliqlardan foydalanadi: natija boshqa joyda topilgan oraliq bilan emas, o‘z laboratoriyangiz blankidagi oraliq bilan solishtiriladi. Turli laboratoriyalar natijalarini bir-biri bilan solishtirib bo‘lmaydi; dinamikani bitta laboratoriyada kuzatgan ma’qul.",
-      "ru": "Лаборатории часто используют разные методы и поэтому разные референсные интервалы: результат сравнивают с интервалом в бланке своей лаборатории, а не с найденным в другом месте. Результаты разных лабораторий сравнивать между собой нельзя; динамику лучше отслеживать в одной лаборатории.",
+      "ru": "Лаборатории часто используют разные методы и поэтому разные референтные интервалы: результат сравнивают с интервалом в бланке своей лаборатории, а не с найденным в другом месте. Результаты разных лабораторий сравнивать между собой нельзя; динамику лучше отслеживать в одной лаборатории.",
       "en": "Labs often use different methods and therefore different reference ranges, so a result is compared with the range on your own lab report, not with ranges found elsewhere. Results from different labs can't be compared with each other, and trends are best followed in the same lab."
      }
     }
@@ -11348,7 +11348,7 @@
      ],
      "text": {
       "uz": "Laboratoriyalar ko‘pincha turli metodlardan, shuning uchun turli referens oraliqlardan foydalanadi: natija boshqa joyda topilgan oraliq bilan emas, o‘z laboratoriyangiz blankidagi oraliq bilan solishtiriladi. Turli laboratoriyalar natijalarini bir-biri bilan solishtirib bo‘lmaydi; dinamikani bitta laboratoriyada kuzatgan ma’qul.",
-      "ru": "Лаборатории часто используют разные методы и поэтому разные референсные интервалы: результат сравнивают с интервалом в бланке своей лаборатории, а не с найденным в другом месте. Результаты разных лабораторий сравнивать между собой нельзя; динамику лучше отслеживать в одной лаборатории.",
+      "ru": "Лаборатории часто используют разные методы и поэтому разные референтные интервалы: результат сравнивают с интервалом в бланке своей лаборатории, а не с найденным в другом месте. Результаты разных лабораторий сравнивать между собой нельзя; динамику лучше отслеживать в одной лаборатории.",
       "en": "Labs often use different methods and therefore different reference ranges, so a result is compared with the range on your own lab report, not with ranges found elsewhere. Results from different labs can't be compared with each other, and trends are best followed in the same lab."
      }
     }
@@ -11641,7 +11641,7 @@
      ],
      "text": {
       "uz": "Laboratoriyalar ko‘pincha turli metodlardan, shuning uchun turli referens oraliqlardan foydalanadi: natija boshqa joyda topilgan oraliq bilan emas, o‘z laboratoriyangiz blankidagi oraliq bilan solishtiriladi. Turli laboratoriyalar natijalarini bir-biri bilan solishtirib bo‘lmaydi; dinamikani bitta laboratoriyada kuzatgan ma’qul.",
-      "ru": "Лаборатории часто используют разные методы и поэтому разные референсные интервалы: результат сравнивают с интервалом в бланке своей лаборатории, а не с найденным в другом месте. Результаты разных лабораторий сравнивать между собой нельзя; динамику лучше отслеживать в одной лаборатории.",
+      "ru": "Лаборатории часто используют разные методы и поэтому разные референтные интервалы: результат сравнивают с интервалом в бланке своей лаборатории, а не с найденным в другом месте. Результаты разных лабораторий сравнивать между собой нельзя; динамику лучше отслеживать в одной лаборатории.",
       "en": "Labs often use different methods and therefore different reference ranges, so a result is compared with the range on your own lab report, not with ranges found elsewhere. Results from different labs can't be compared with each other, and trends are best followed in the same lab."
      }
     }
@@ -11851,7 +11851,7 @@
      ],
      "text": {
       "uz": "Insulin tahlili odatda diabet tashxisi uchun ishlatilmaydi — diabet qondagi glyukozani o‘lchovchi testlar bilan aniqlanadi. Insulin glyukozaga qarab o‘zgargani uchun bitta natija odatda yetarli emas, boshqa tahlillar kerak bo‘ladi; referens oraliqlar laboratoriyalar orasida farq qiladi.",
-      "ru": "Анализ на инсулин обычно не используют для диагностики диабета — диабет выявляют по анализам глюкозы крови. Поскольку инсулин меняется в зависимости от глюкозы, одного результата обычно недостаточно и нужны другие анализы; референсные интервалы в разных лабораториях различаются.",
+      "ru": "Анализ на инсулин обычно не используют для диагностики диабета — диабет выявляют по анализам глюкозы крови. Поскольку инсулин меняется в зависимости от глюкозы, одного результата обычно недостаточно и нужны другие анализы; референтные интервалы в разных лабораториях различаются.",
       "en": "An insulin test is not usually used to diagnose diabetes — diabetes is diagnosed with blood glucose tests. Because insulin varies with glucose, one result is usually not enough by itself and other tests are needed; reference ranges vary between laboratories."
      }
     },
@@ -11897,7 +11897,7 @@
      ],
      "text": {
       "uz": "Laboratoriyalar ko‘pincha turli metodlardan, shuning uchun turli referens oraliqlardan foydalanadi: natija boshqa joyda topilgan oraliq bilan emas, o‘z laboratoriyangiz blankidagi oraliq bilan solishtiriladi. Turli laboratoriyalar natijalarini bir-biri bilan solishtirib bo‘lmaydi; dinamikani bitta laboratoriyada kuzatgan ma’qul.",
-      "ru": "Лаборатории часто используют разные методы и поэтому разные референсные интервалы: результат сравнивают с интервалом в бланке своей лаборатории, а не с найденным в другом месте. Результаты разных лабораторий сравнивать между собой нельзя; динамику лучше отслеживать в одной лаборатории.",
+      "ru": "Лаборатории часто используют разные методы и поэтому разные референтные интервалы: результат сравнивают с интервалом в бланке своей лаборатории, а не с найденным в другом месте. Результаты разных лабораторий сравнивать между собой нельзя; динамику лучше отслеживать в одной лаборатории.",
       "en": "Labs often use different methods and therefore different reference ranges, so a result is compared with the range on your own lab report, not with ranges found elsewhere. Results from different labs can't be compared with each other, and trends are best followed in the same lab."
      }
     }
@@ -12087,7 +12087,7 @@
      ],
      "text": {
       "uz": "Laboratoriyalar ko‘pincha turli metodlardan, shuning uchun turli referens oraliqlardan foydalanadi: natija boshqa joyda topilgan oraliq bilan emas, o‘z laboratoriyangiz blankidagi oraliq bilan solishtiriladi. Turli laboratoriyalar natijalarini bir-biri bilan solishtirib bo‘lmaydi; dinamikani bitta laboratoriyada kuzatgan ma’qul.",
-      "ru": "Лаборатории часто используют разные методы и поэтому разные референсные интервалы: результат сравнивают с интервалом в бланке своей лаборатории, а не с найденным в другом месте. Результаты разных лабораторий сравнивать между собой нельзя; динамику лучше отслеживать в одной лаборатории.",
+      "ru": "Лаборатории часто используют разные методы и поэтому разные референтные интервалы: результат сравнивают с интервалом в бланке своей лаборатории, а не с найденным в другом месте. Результаты разных лабораторий сравнивать между собой нельзя; динамику лучше отслеживать в одной лаборатории.",
       "en": "Labs often use different methods and therefore different reference ranges, so a result is compared with the range on your own lab report, not with ranges found elsewhere. Results from different labs can't be compared with each other, and trends are best followed in the same lab."
      }
     }
@@ -12318,7 +12318,7 @@
      ],
      "text": {
       "uz": "Laboratoriyalar ko‘pincha turli metodlardan, shuning uchun turli referens oraliqlardan foydalanadi: natija boshqa joyda topilgan oraliq bilan emas, o‘z laboratoriyangiz blankidagi oraliq bilan solishtiriladi. Turli laboratoriyalar natijalarini bir-biri bilan solishtirib bo‘lmaydi; dinamikani bitta laboratoriyada kuzatgan ma’qul.",
-      "ru": "Лаборатории часто используют разные методы и поэтому разные референсные интервалы: результат сравнивают с интервалом в бланке своей лаборатории, а не с найденным в другом месте. Результаты разных лабораторий сравнивать между собой нельзя; динамику лучше отслеживать в одной лаборатории.",
+      "ru": "Лаборатории часто используют разные методы и поэтому разные референтные интервалы: результат сравнивают с интервалом в бланке своей лаборатории, а не с найденным в другом месте. Результаты разных лабораторий сравнивать между собой нельзя; динамику лучше отслеживать в одной лаборатории.",
       "en": "Labs often use different methods and therefore different reference ranges, so a result is compared with the range on your own lab report, not with ranges found elsewhere. Results from different labs can't be compared with each other, and trends are best followed in the same lab."
      }
     }
@@ -12568,7 +12568,7 @@
      ],
      "text": {
       "uz": "Laboratoriyalar ko‘pincha turli metodlardan, shuning uchun turli referens oraliqlardan foydalanadi: natija boshqa joyda topilgan oraliq bilan emas, o‘z laboratoriyangiz blankidagi oraliq bilan solishtiriladi. Turli laboratoriyalar natijalarini bir-biri bilan solishtirib bo‘lmaydi; dinamikani bitta laboratoriyada kuzatgan ma’qul.",
-      "ru": "Лаборатории часто используют разные методы и поэтому разные референсные интервалы: результат сравнивают с интервалом в бланке своей лаборатории, а не с найденным в другом месте. Результаты разных лабораторий сравнивать между собой нельзя; динамику лучше отслеживать в одной лаборатории.",
+      "ru": "Лаборатории часто используют разные методы и поэтому разные референтные интервалы: результат сравнивают с интервалом в бланке своей лаборатории, а не с найденным в другом месте. Результаты разных лабораторий сравнивать между собой нельзя; динамику лучше отслеживать в одной лаборатории.",
       "en": "Labs often use different methods and therefore different reference ranges, so a result is compared with the range on your own lab report, not with ranges found elsewhere. Results from different labs can't be compared with each other, and trends are best followed in the same lab."
      }
     }
@@ -13911,7 +13911,7 @@
    "notes": {
     "limitations": {
      "uz": "Manbada “yuqori”, “o‘rtacha” va “biroz oshgan” darajalar son bilan berilmagan: chegaralar laboratoriya va usulga bog‘liq — natija varaqasidagi laboratoriya referensiga qarang.",
-     "ru": "В источнике уровни «высокий», «умеренный» и «слегка повышенный» не заданы числами: границы зависят от лаборатории и метода — смотрите референс лаборатории в бланке результата.",
+     "ru": "В источнике уровни «высокий», «умеренный» и «слегка повышенный» не заданы числами: границы зависят от лаборатории и метода — смотрите референтный интервал лаборатории в бланке результата.",
      "en": "The source does not give numbers for “high”, “moderate” or “slightly high”: cut-offs depend on the laboratory and method — use the laboratory reference on the result report."
     }
    }
@@ -14090,7 +14090,7 @@
      ],
      "text": {
       "uz": "Me’yor oralig‘i yoshga, geografik hududga va yil fasliga bog‘liq; yuqori chegara tegishli yosh guruhidagi, yaqinda streptokokk infeksiyasini o‘tkazmagan odamlar zardobida titrni o‘lchab aniqlanadi. Har bir seriya bilan titri ma’lum standart zardob nazorat sifatida ishlatiladi. Shuning uchun universal son yo‘q — natija varaqasidagi laboratoriya referensiga qarang.",
-      "ru": "Диапазон нормы зависит от возраста, географического региона и сезона; верхнюю границу определяют, измеряя титры в сыворотках людей соответствующего возраста без недавней стрептококковой инфекции. С каждой серией определений в качестве контроля используют стандартную сыворотку с известным титром. Поэтому универсального числа нет — смотрите референс лаборатории в бланке результата.",
+      "ru": "Диапазон нормы зависит от возраста, географического региона и сезона; верхнюю границу определяют, измеряя титры в сыворотках людей соответствующего возраста без недавней стрептококковой инфекции. С каждой серией определений в качестве контроля используют стандартную сыворотку с известным титром. Поэтому универсального числа нет — смотрите референтный интервал лаборатории в бланке результата.",
       "en": "The normal range varies with age, geographic locale and season; the upper limit is set by measuring titres in sera from people of the right age group without a recent streptococcal infection. A reference serum with a known titre is run as a control with each set. So there is no universal number — use the laboratory reference on the result report."
      }
     },
@@ -19587,7 +19587,7 @@
      ],
      "text": {
       "uz": "Tahlil gemoglobin o‘zgarishi sababini ko‘rsatmaydi, lekin uning qanchalik past yoki yuqoriligi holat og‘irligini baholashga yordam beradi. Referens oraliq laboratoriya, yosh, irq va jinsga qarab farq qiladi; natija belgilar, kasallik tarixi va boshqa qon tahlillari bilan birga baholanadi.",
-      "ru": "Анализ не показывает причину отклонения, но степень снижения или повышения гемоглобина помогает оценить тяжесть состояния. Референсный интервал зависит от лаборатории, возраста, расы и пола; результат оценивают вместе с симптомами, анамнезом и другими анализами крови.",
+      "ru": "Анализ не показывает причину отклонения, но степень снижения или повышения гемоглобина помогает оценить тяжесть состояния. Референтный интервал зависит от лаборатории, возраста, расы и пола; результат оценивают вместе с симптомами, анамнезом и другими анализами крови.",
       "en": "The test cannot tell what causes an abnormal level, but how high or low it is helps judge severity. The reference range varies with the laboratory, age, race and sex; results are interpreted with symptoms, history and other blood tests."
      }
     },
@@ -23098,7 +23098,7 @@
      ],
      "text": {
       "uz": "Natija odatda foizda beriladi va laboratoriyaga qarab farq qiluvchi referens oraliq bilan solishtiriladi. RDW normal bo‘lsa ham eritrotsitlar odatdagidan katta yoki kichik bo‘lishi va anemiya bo‘lishi mumkin. RDW boshqa qon tahlillari bilan birga baholanadi: birgalikdagi natijalar temir tanqisligi, turli anemiyalar, talassemiya va o‘roqsimon hujayrali anemiyani aniqlashga yordam beradi.",
-      "ru": "Результат обычно выражают в процентах и сравнивают с референсным интервалом, который зависит от лаборатории. Даже при нормальном RDW эритроциты могут быть крупнее или мельче обычного и возможна анемия. RDW оценивают вместе с другими анализами крови: в сочетании они помогают выявить дефицит железа, разные анемии, талассемию и серповидноклеточную анемию.",
+      "ru": "Результат обычно выражают в процентах и сравнивают с референтным интервалом, который зависит от лаборатории. Даже при нормальном RDW эритроциты могут быть крупнее или мельче обычного и возможна анемия. RDW оценивают вместе с другими анализами крови: в сочетании они помогают выявить дефицит железа, разные анемии, талассемию и серповидноклеточную анемию.",
       "en": "Results are usually shown as a percentage and compared with a reference range that varies by lab. Even with a normal RDW, red cells may be larger or smaller than usual and anemia may be present. RDW is read together with other blood tests, which together help diagnose iron deficiency, different anemias, thalassemia and sickle cell anemia."
      }
     },
@@ -23357,7 +23357,7 @@
      ],
      "text": {
       "uz": "Zamonaviy analizatorlar retikulotsitlarni faqat sanamaydi: ulardagi RNK miqdori bo‘yicha yetuklik darajasini (eng yosh retikulotsitlar ulushi — IRF), hajmini va gemoglobin miqdorini (RET-He yoki CHr) ham o‘lchaydi. Bu parametrlarning nomi, usuli va referensi analizator turiga bog‘liq.",
-      "ru": "Современные анализаторы не только считают ретикулоциты: они измеряют их зрелость по содержанию РНК (доля самых молодых ретикулоцитов — IRF), объём и содержание гемоглобина (RET-He или CHr). Названия, метод и референсы этих параметров зависят от типа анализатора.",
+      "ru": "Современные анализаторы не только считают ретикулоциты: они измеряют их зрелость по содержанию РНК (доля самых молодых ретикулоцитов — IRF), объём и содержание гемоглобина (RET-He или CHr). Названия, метод и референтные интервалы этих параметров зависят от типа анализатора.",
       "en": "Modern analysers do more than count reticulocytes: they measure maturity by RNA content (the fraction of the youngest cells — IRF), cell volume and haemoglobin content (RET-He or CHr). Names, method and reference ranges depend on the analyser."
      }
     },
@@ -23395,7 +23395,7 @@
      ],
      "text": {
       "uz": "Retikulotsitlardagi gemoglobin (RET-He, CHr) oxirgi 3–4 kunda eritrotsit hosil qilish uchun mavjud bo‘lgan funksional temirni bilvosita aks ettiradi; pasayishi temir tanqis eritropoezga ishora qiladi. Aniq chegara analizator va laboratoriyaga bog‘liq — natija varaqasidagi referensga qarang.",
-      "ru": "Содержание гемоглобина в ретикулоцитах (RET-He, CHr) косвенно отражает функциональное железо, доступное для эритропоэза за последние 3–4 дня; снижение указывает на железодефицитный эритропоэз. Порог зависит от анализатора и лаборатории — смотрите референс на бланке.",
+      "ru": "Содержание гемоглобина в ретикулоцитах (RET-He, CHr) косвенно отражает функциональное железо, доступное для эритропоэза за последние 3–4 дня; снижение указывает на железодефицитный эритропоэз. Порог зависит от анализатора и лаборатории — смотрите референтный интервал на бланке.",
       "en": "Reticulocyte haemoglobin content (RET-He, CHr) indirectly reflects the functional iron available for red cell production over the previous 3–4 days; a low value points to iron-restricted erythropoiesis. The cut-off depends on the analyser and laboratory — use the reference on the report."
      }
     },
@@ -27723,7 +27723,7 @@
      ],
      "text": {
       "uz": "MedlinePlus misol sifatida quyidagi me’yorlarni keltiradi (laboratoriyaga qarab farq qiladi — natija varaqasidagi referensga qarang): hujayralar 0–5 leykotsit (hammasi mononuklear) va 0 eritrotsit; glyukoza 50–80 mg/dL (2,77–4,44 mmol/L) yoki qondagi qand darajasining 2/3 qismidan ko‘p; oqsil 15–60 mg/dL (0,15–0,6 g/L); ochilish bosimi 90–180 mm suv ustuni; ekmada bakteriya o‘smaydi, o‘sma hujayralari yo‘q.",
-      "ru": "MedlinePlus приводит в качестве примера такие нормы (зависят от лаборатории — ориентируйтесь на референс в бланке): клетки 0–5 лейкоцитов (все мононуклеары) и 0 эритроцитов; глюкоза 50–80 мг/дл (2,77–4,44 ммоль/л) или более 2/3 уровня глюкозы крови; белок 15–60 мг/дл (0,15–0,6 г/л); давление открытия 90–180 мм вод. ст.; в посеве бактерии не растут, опухолевых клеток нет.",
+      "ru": "MedlinePlus приводит в качестве примера такие нормы (зависят от лаборатории — ориентируйтесь на референтный интервал в бланке): клетки 0–5 лейкоцитов (все мононуклеары) и 0 эритроцитов; глюкоза 50–80 мг/дл (2,77–4,44 ммоль/л) или более 2/3 уровня глюкозы крови; белок 15–60 мг/дл (0,15–0,6 г/л); давление открытия 90–180 мм вод. ст.; в посеве бактерии не растут, опухолевых клеток нет.",
       "en": "MedlinePlus gives these example normal values (they vary by lab — use the reference on your report): cells 0–5 white blood cells (all mononuclear) and 0 red blood cells; glucose 50–80 mg/dL (2.77–4.44 mmol/L) or more than two-thirds of the blood sugar level; protein 15–60 mg/dL (0.15–0.6 g/L); opening pressure 90–180 mm of water; no bacteria grow in culture and no cancer cells are present."
      }
     },
@@ -28884,7 +28884,7 @@
      ],
      "text": {
       "uz": "Manbadagi misol referens interval (laboratoriyangiz intervali emas): 24 soatlik siydik hajmi — 800–2000 mL/24 soat, kuniga taxminan 2 litr suyuqlik ichilganda. MedlinePlus me’yoriy oraliqlar laboratoriyalar orasida farq qilishini aytadi — natijani laboratoriyaning o‘z referens intervali bilan solishtiring.",
-      "ru": "Пример референсного интервала из источника (не интервал вашей лаборатории): объём мочи за 24 часа — 800–2000 mL/24 ч при потреблении около 2 л жидкости в сутки. MedlinePlus указывает, что нормы различаются между лабораториями, — сравнивайте результат с референсным интервалом своей лаборатории.",
+      "ru": "Пример референтного интервала из источника (не интервал вашей лаборатории): объём мочи за 24 часа — 800–2000 мл/24 ч при потреблении около 2 л жидкости в сутки. MedlinePlus указывает, что нормы различаются между лабораториями, — сравнивайте результат с референтным интервалом своей лаборатории.",
       "en": "Example reference interval from the source (not your laboratory’s interval): 24-hour urine volume — 800–2,000 mL/24 h with a fluid intake of about 2 litres a day. MedlinePlus notes that normal ranges vary between laboratories — compare your result with your laboratory’s own reference interval."
      }
     },
@@ -28912,7 +28912,7 @@
      ],
      "text": {
       "uz": "Manbadagi misol referens interval (laboratoriyangiz intervali emas): 24 soatlik siydikdagi oqsil — 100 mg/24 soat dan kam (siydikdagi konsentratsiya sifatida — 10 mg/dL dan kam). Laboratoriyalar boshqa o‘lchov yoki boshqa namunadan foydalanishi mumkin — natijani laboratoriyaning o‘z referens intervali bilan solishtiring.",
-      "ru": "Пример референсного интервала из источника (не интервал вашей лаборатории): белок в моче за 24 часа — менее 100 mg/24 ч (как концентрация в моче — менее 10 mg/dL). Лаборатории могут использовать другие измерения или другие образцы — сравнивайте результат с референсным интервалом своей лаборатории.",
+      "ru": "Пример референтного интервала из источника (не интервал вашей лаборатории): белок в моче за 24 часа — менее 100 мг/24 ч (как концентрация в моче — менее 10 мг/дл). Лаборатории могут использовать другие измерения или другие образцы — сравнивайте результат с референтным интервалом своей лаборатории.",
       "en": "Example reference interval from the source (not your laboratory’s interval): 24-hour urine protein — less than 100 mg/24 h (as a urine concentration, less than 10 mg/dL). Laboratories may use different measurements or samples — compare your result with your laboratory’s own reference interval."
      }
     },
@@ -29030,7 +29030,7 @@
    "notes": {
     "results": {
      "uz": "Bu bo‘limdagi raqamlar manbadagi misol bo‘lib, faqat 24 soat davomida yig‘ilgan siydikka tegishli (hajm — mL/24 soat, oqsil — mg/24 soat). Ular asosiy me’yor emas: laboratoriyangiz natija varaqasidagi referens intervalga qarang. Bir martalik (tasodifiy) namunadagi nisbatlar — albumin/kreatinin nisbati (ACR, mg/g) va oqsil/kreatinin nisbati — boshqa ko‘rsatkich va boshqa birlikda; ularni bu qiymatlar bilan solishtirmang.",
-     "ru": "Цифры в этом разделе — пример из источника и относятся только к моче, собранной за 24 часа (объём — mL/24 ч, белок — mg/24 ч). Это не основная норма: ориентируйтесь на референсный интервал в бланке вашей лаборатории. Соотношения в разовой (случайной) порции — альбумин/креатинин (ACR, mg/g) и белок/креатинин — другие показатели в других единицах; не сравнивайте их с этими значениями.",
+     "ru": "Цифры в этом разделе — пример из источника и относятся только к моче, собранной за 24 часа (объём — мл/24 ч, белок — мг/24 ч). Это не основная норма: ориентируйтесь на референтный интервал в бланке вашей лаборатории. Соотношения в разовой (случайной) порции — альбумин/креатинин (ACR, мг/г) и белок/креатинин — другие показатели в других единицах; не сравнивайте их с этими значениями.",
      "en": "The numbers in this section are examples from the source and apply only to urine collected over 24 hours (volume in mL/24 h, protein in mg/24 h). They are not the primary norm: use the reference interval on your laboratory’s report. Ratios measured on a single (random) sample — albumin-to-creatinine ratio (ACR, mg/g) and protein-to-creatinine ratio — are different measures in different units; do not compare them with these values."
     }
    }
@@ -35478,7 +35478,7 @@
      },
      "explanation": {
       "uz": "To‘g‘ri: shuning uchun natija o‘sha laboratoriyaning o‘z referens oralig‘i bilan solishtiriladi.",
-      "ru": "Верно: поэтому результат сравнивают с референсным диапазоном своей лаборатории.",
+      "ru": "Верно: поэтому результат сравнивают с референтным диапазоном своей лаборатории.",
       "en": "Correct: this is why a result is compared with the reporting laboratory's own reference range."
      }
     }
@@ -38674,12 +38674,12 @@
     {
      "text": {
       "uz": "Ikki natija o‘rtachasi referens oraliq bo‘ladi",
-      "ru": "Среднее двух результатов служит референсом",
+      "ru": "Среднее двух результатов служит референтным значением",
       "en": "Their average is used as the reference range"
      },
      "explanation": {
       "uz": "Noto‘g‘ri: referens oraliq laboratoriya blankidan olinadi; o‘rtacha qiymat ishlatilmaydi.",
-      "ru": "Неверно: референсный интервал берут из бланка лаборатории, а не как среднее двух значений.",
+      "ru": "Неверно: референтный интервал берут из бланка лаборатории, а не как среднее двух значений.",
       "en": "Incorrect: the reference range comes from the lab report, not from an average of two values."
      }
     }
@@ -50950,7 +50950,7 @@
     {
      "text": {
       "uz": "Yallig‘lanish va ayrim dorilar natijaga ta’sir qiladi; laboratoriyalar turli referenslardan foydalanadi.",
-      "ru": "На результат влияют воспаление и некоторые лекарства; лаборатории используют разные референсы.",
+      "ru": "На результат влияют воспаление и некоторые лекарства; лаборатории используют разные референтные интервалы.",
       "en": "Inflammation and certain medicines can affect results; laboratories use different reference ranges."
      },
      "refs": [

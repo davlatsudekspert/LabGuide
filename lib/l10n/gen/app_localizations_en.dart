@@ -8136,6 +8136,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get searchSectionLibrary => 'Learning materials';
 
   @override
+  String get searchSectionSections => 'Sections';
+
+  @override
   String get diffAssessTitle => 'Compared with reference';
 
   @override
@@ -8191,6 +8194,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String diffAssessMaySuggest(String finding) {
     return 'May point to: $finding';
   }
+
+  @override
+  String get diffAssessAboutFinding => 'More about this finding';
 
   @override
   String get diffAssessReferBody =>

@@ -268,7 +268,7 @@ const Map<ManualCalc, CalcInfo> manualCalcInfo = {
             'o‘z referens oralig‘idan.',
         'ru':
             'Каждая пара (белок, ЛДГ) должна быть в одних единицах и одним '
-            'методом. Верхняя граница ЛДГ — из референсного интервала вашей '
+            'методом. Верхняя граница ЛДГ — из референтного интервала вашей '
             'лаборатории.',
         'en':
             'Each pair (protein, LDH) must be in the same unit and by the same '

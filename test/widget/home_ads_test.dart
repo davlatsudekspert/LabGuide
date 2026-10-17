@@ -288,19 +288,15 @@ void main() {
             expect(rects[0].top, rects[1].top);
             expect(rects[0].width, closeTo(rects[1].width, 0.5));
             expect(rects[0].right, lessThan(rects[1].left));
-            // Qidiruv maydonidan keyin, hero/tezkor tugmalardan oldin.
+            // Qidiruv maydonidan keyin, tezkor tugmalar va herodan oldin.
             final search = tester.getBottomLeft(find.byType(HomeSearchField));
             expect(rects[0].top - search.dy, lessThanOrEqualTo(12));
-            // Doktorda hero/tugmalar (ostidagi “Kasallik bo'yicha tahlillar”
-            // kartasi bilan) birinchi ekrandan pastga tushadi — bu kutilgan.
-            if (role != AppRole.doctor) {
-              final hero = tester.getTopLeft(find.byType(LgHeroCard)).dy;
-              expect(hero, greaterThanOrEqualTo(rects[0].bottom));
-              // Tezkor amallarning birinchi qatori hech bo'lmasa qisman
-              // ko'rinadi.
-              final firstTile = tester.getTopLeft(find.byType(LgTile).first).dy;
-              expect(firstTile, lessThan(screen.height - 90));
-            }
+            final firstTile = tester.getTopLeft(find.byType(LgTile).first).dy;
+            expect(firstTile, greaterThanOrEqualTo(rects[0].bottom));
+            // Reklama yoqilgan buildda ham tezkor amallarning birinchi
+            // qatori (barcha rollarda, shifokorda ham) birinchi ekranda
+            // hech bo'lmasa qisman ko'rinadi.
+            expect(firstTile, lessThan(screen.height - 90));
             expect(tester.takeException(), isNull);
             await tester.pumpWidget(const SizedBox());
           }
@@ -326,7 +322,7 @@ void main() {
         },
       );
 
-      testWidgets('${role.name}: tartib — qidiruv, reklama, hero, tugmalar, '
+      testWidgets('${role.name}: tartib — qidiruv, reklama, tugmalar, hero, '
           'kunlik karta, tahlillar', (tester) async {
         final l = _l(AppLanguage.uz);
         final s = await makeServices(tester, role: role, partnerAds: true);
@@ -339,9 +335,9 @@ void main() {
         final daily = tester.getTopLeft(find.byType(DailyCard)).dy;
         final useful = tester.getTopLeft(find.text(l.homeUsefulTests)).dy;
         expect(ads, greaterThanOrEqualTo(search));
-        expect(hero, greaterThan(ads));
-        expect(firstTile, greaterThan(hero));
-        expect(daily, greaterThan(firstTile));
+        expect(firstTile, greaterThan(ads));
+        expect(hero, greaterThan(firstTile));
+        expect(daily, greaterThan(hero));
         expect(useful, greaterThan(daily));
         // Tugmalar orasida reklama yo'q.
         expect(
