@@ -82,10 +82,10 @@ env:
   # Cloudflare Worker API (sir emas; secret yoki repo variable). Berilsa
   # ilova shu serverga ulanadi (Supabase o'rniga), bo'sh — avvalgi holat.
   LG_API_URL: ${{ secrets.LG_API_URL || vars.LG_API_URL || 'https://labguide-api.davlatsudekspert.workers.dev' }}
-  # Hamkor (reklama) UI (lib/core/build_flags.dart): faqat TestFlight va Play ichki
-  # test buildlarida. `build` va kelajakdagi do'kon rejimlarida false — reklama UI
-  # kompilyatsiyadan chiqariladi (docs/PARTNERS.md).
-  LG_PARTNER_ADS: ${{ inputs.mode == 'testflight' || inputs.mode == 'play_internal' }}
+  # Hamkor (reklama) UI (lib/core/build_flags.dart): egasi qarori (2026-10-17) —
+  # hech bir buildda yoqilmaydi, reklama UI kompilyatsiyadan chiqariladi. Server
+  # tomoni (hamkorlar) Cloudflare'ga ko'chirilgach qayta ko'riladi (docs/PARTNERS.md).
+  LG_PARTNER_ADS: 'false'
   # Google / Apple bilan kirish (D-56, docs/AUTH_SOCIAL_LOGIN.md). OAuth client
   # ID lar sir emas (ochiq identifikator): repo variables. Bo'sh bo'lsa
   # tegishli tugma ilovada ko'rinmaydi. LG_APPLE_SIGNIN=true FAQAT egasi

@@ -32,7 +32,7 @@ Oxirida texnik tafsilotlar va qonunchilik bo‘yicha eslatma.
 
 #### Bosh sahifa joylari: build rejimiga qarab
 
-> Reklama do‘kon buildlaridan kompilyatsiyada chiqarib tashlanadi (`LG_PARTNER_ADS=false`, `lib/core/build_flags.dart`); `true` faqat TestFlight va Play ichki test buildlarida (ci.yml `testflight` / `play_internal`).
+> Reklama do‘kon buildlaridan kompilyatsiyada chiqarib tashlanadi (`LG_PARTNER_ADS=false`, `lib/core/build_flags.dart`); egasi qarori (2026-10-17): `true` hech bir buildda yoqilmaydi (ci.yml'da `LG_PARTNER_ADS: 'false'`); hamkor serveri Cloudflare'ga ko‘chirilgach qayta ko‘riladi.
 
 | Holat | Nima ko‘rinadi |
 |---|---|
