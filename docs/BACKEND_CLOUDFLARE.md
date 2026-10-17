@@ -201,12 +201,9 @@ ko‘rsatilmaydi. Hamkorlar ro‘yxati bo‘sh (reklama joylari chiqmaydi).
 | Kontent tekshiruvi | `/v1/reviews` | `content_reviews` |
 | Hamkorlar | `/v1/partners*` | feed, arizalar, kunlik umumiy hisoblagich, logo (R2) |
 
-**Pro obunalari — tayyor** (`src/billing.ts`, `migrations/0007_billing.sql`):
-`GET /v1/billing/status`, `GET /v1/billing/entitlements` (= `/v1/entitlements`),
-`POST /v1/billing/verify`, `POST /v1/billing/apple/notifications` (ASSN v2),
-`POST /v1/billing/google/rtdn` (Play RTDN). Kalitlar (`APPLE_IAP_*`,
-`GOOGLE_PLAY_SERVICE_ACCOUNT`) bo‘lmasa — `503 not_configured`. Egasi qadamlari:
-`docs/PRO_BILLING_PLAN.md`.
+**To‘lov — bu versiyada yo‘q** (D-58): `/v1/billing/*` endpointlari olib tashlandi
+(to‘liq ish `pro-later` branchida). Serverda faqat ko‘rinmas `users.plan`/`pro_until`
+ustunlari (`migrations/0010_user_plan.sql`) — hech bir endpoint ularni bermaydi.
 
 Eslatma: to‘liq emailni “ochish” (`adminRevealEmail`) bu serverda **bo‘lmaydi**
 — email saqlanmaydi.

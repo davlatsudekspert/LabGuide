@@ -2,7 +2,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
-import '../core/entitlements/feature.dart';
+import '../core/build_flags.dart';
 import '../features/admin/admin_screens.dart';
 import '../features/auth/ui/auth_screens.dart';
 import '../features/auth/ui/role_screen.dart';
@@ -18,7 +18,6 @@ import '../features/bloodgroup/bloodgroup_screens.dart';
 import '../features/histology/histology_screens.dart';
 import '../features/spermogram/spermogram_screens.dart';
 import '../features/daily/daily_screens.dart';
-import '../features/differential/differential_entry_points.dart';
 import '../features/differential/differential_quiz.dart';
 import '../features/differential/diff_assessment_screens.dart';
 import '../features/differential/differential_screens.dart';
@@ -176,14 +175,6 @@ GoRouter buildRouter(
             builder: (context, state) => const PacksScreen(),
           ),
           GoRoute(
-            path: 'purchase',
-            // `?feature=` — boshlash tugmasidan (qaysi imkoniyat uchun).
-            builder: (context, state) => PurchaseScreen(
-              feature: Feature.values
-                  .asNameMap()[state.uri.queryParameters['feature']],
-            ),
-          ),
-          GoRoute(
             path: 'privacy',
             builder: (context, state) => const PrivacyScreen(),
           ),
@@ -254,43 +245,47 @@ GoRouter buildRouter(
                 path: 'community',
                 builder: (context, state) => const AdminCommunityScreen(),
               ),
-              // Hamkorlar (reklama) va hamkorlik arizalari.
-              GoRoute(
-                path: 'partners',
-                builder: (context, state) => const AdminPartnersScreen(),
-                routes: [
-                  GoRoute(
-                    path: 'new',
-                    builder: (context, state) => const AdminPartnerEditScreen(),
-                  ),
-                  GoRoute(
-                    path: ':id',
-                    builder: (context, state) => AdminPartnerEditScreen(
-                      partnerId: state.pathParameters['id'],
+              if (BuildFlags.partnerAds) ...[
+                // Hamkorlar (reklama) va hamkorlik arizalari.
+                GoRoute(
+                  path: 'partners',
+                  builder: (context, state) => const AdminPartnersScreen(),
+                  routes: [
+                    GoRoute(
+                      path: 'new',
+                      builder: (context, state) =>
+                          const AdminPartnerEditScreen(),
                     ),
-                    routes: [
-                      GoRoute(
-                        path: 'stats',
-                        builder: (context, state) => AdminPartnerStatsScreen(
-                          partnerId: state.pathParameters['id']!,
-                        ),
+                    GoRoute(
+                      path: ':id',
+                      builder: (context, state) => AdminPartnerEditScreen(
+                        partnerId: state.pathParameters['id'],
                       ),
-                    ],
-                  ),
-                ],
-              ),
-              GoRoute(
-                path: 'partner-requests',
-                builder: (context, state) => const AdminPartnerRequestsScreen(),
-                routes: [
-                  GoRoute(
-                    path: ':id',
-                    builder: (context, state) => AdminPartnerRequestScreen(
-                      requestId: state.pathParameters['id']!,
+                      routes: [
+                        GoRoute(
+                          path: 'stats',
+                          builder: (context, state) => AdminPartnerStatsScreen(
+                            partnerId: state.pathParameters['id']!,
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
-                ],
-              ),
+                  ],
+                ),
+                GoRoute(
+                  path: 'partner-requests',
+                  builder: (context, state) =>
+                      const AdminPartnerRequestsScreen(),
+                  routes: [
+                    GoRoute(
+                      path: ':id',
+                      builder: (context, state) => AdminPartnerRequestScreen(
+                        requestId: state.pathParameters['id']!,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
             ],
           ),
           // Hamjamiyat (D-43): savol-javob, mutaxassis tasdig'i. Server
@@ -319,11 +314,13 @@ GoRouter buildRouter(
               ),
             ],
           ),
-          // Firmalar uchun: taklif, qoidalar va ariza.
-          GoRoute(
-            path: 'partnership',
-            builder: (context, state) => const BecomePartnerScreen(),
-          ),
+          if (BuildFlags.partnerAds) ...[
+            // Firmalar uchun: taklif, qoidalar va ariza.
+            GoRoute(
+              path: 'partnership',
+              builder: (context, state) => const BecomePartnerScreen(),
+            ),
+          ],
           GoRoute(
             path: 'auth',
             builder: (context, state) => const EmailScreen(),
@@ -598,11 +595,7 @@ GoRouter buildRouter(
                       ),
                       GoRoute(
                         path: 'history',
-                        builder: (context, state) => DiffHistoryScreen(
-                          visibleLimit: DiffEntryPoints.historyVisibleLimit(
-                            context,
-                          ),
-                        ),
+                        builder: (context, state) => const DiffHistoryScreen(),
                         routes: [
                           GoRoute(
                             path: ':id',
@@ -695,12 +688,14 @@ GoRouter buildRouter(
                       ),
                     ],
                   ),
-                  // Hamkor (reklama) sahifasi.
-                  GoRoute(
-                    path: 'partners/:id',
-                    builder: (context, state) =>
-                        PartnerScreen(partnerId: state.pathParameters['id']!),
-                  ),
+                  if (BuildFlags.partnerAds) ...[
+                    // Hamkor (reklama) sahifasi.
+                    GoRoute(
+                      path: 'partners/:id',
+                      builder: (context, state) =>
+                          PartnerScreen(partnerId: state.pathParameters['id']!),
+                    ),
+                  ],
                   GoRoute(
                     path: 'microscopy',
                     builder: (context, state) => const MicroscopyScreen(),
@@ -1050,7 +1045,7 @@ GoRouter buildRouter(
                     path: 'lecture',
                     builder: (context, state) => const LectureListScreen(),
                     routes: [
-                      // Avtomatik taqdimot (Ustoz Pro): tanlash → ko'rish →
+                      // Avtomatik taqdimot: tanlash → ko'rish →
                       // pleyer. ':topicId' dan OLDIN turishi shart.
                       GoRoute(
                         path: 'auto',

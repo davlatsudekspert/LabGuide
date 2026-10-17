@@ -16,9 +16,12 @@ import '../helpers/partner_fixtures.dart';
 
 /// Bosh sahifadagi ikki reklama joyi: 1 — laboratoriya xizmati, 2 — apparat
 /// firmasi. Uch holat:
-///  (a) haqiqiy faol hamkor — hamkor kartasi (+ hisoblagich);
-///  (b) hamkor yo'q, demo/test build — “Namuna / Demo” o'rni (hisoblagichsiz);
-///  (c) hamkor yo'q, do'kon build — hech narsa.
+///  (a) hamkor UI yoqilgan (test) build, haqiqiy faol hamkor — hamkor kartasi
+///      (+ hisoblagich);
+///  (b) hamkor UI yoqilgan build, hamkor yo'q — “Namuna / Demo” o'rni
+///      (hisoblagichsiz);
+///  (c) do'kon build (`LG_PARTNER_ADS` o'chiq) — hamkor bo'lsa ham hech
+///      narsa (reklama UI kompilyatsiyadan chiqariladi).
 
 /// Dastlabki ekran emas, butun bosh sahifa chiziladigan baland ekran.
 const _tall = Size(390, 6000);
@@ -92,7 +95,7 @@ void main() {
             tester,
             language: lang,
             backend: backend,
-            allFeaturesOpen: true,
+            partnerAds: true,
           );
           await pumpApp(tester, s, size: _tall);
           await goTo(tester, '/home');
@@ -121,7 +124,7 @@ void main() {
             tester,
             language: lang,
             backend: backend,
-            allFeaturesOpen: true,
+            partnerAds: true,
           );
           await pumpApp(tester, s, size: _tall);
           await goTo(tester, '/home');
@@ -142,7 +145,7 @@ void main() {
           tester,
           language: lang,
           backend: backend,
-          allFeaturesOpen: true,
+          partnerAds: true,
         );
         await pumpApp(tester, s, size: _tall);
         await goTo(tester, '/home');
@@ -160,11 +163,7 @@ void main() {
       testWidgets('(b) demo build, server sozlanmagan: namuna ko‘rinadi', (
         tester,
       ) async {
-        final s = await makeServices(
-          tester,
-          language: lang,
-          allFeaturesOpen: true,
-        );
+        final s = await makeServices(tester, language: lang, partnerAds: true);
         expect(s.partners.enabled, isFalse);
         await pumpApp(tester, s, size: _tall);
         await goTo(tester, '/home');
@@ -174,11 +173,7 @@ void main() {
       testWidgets('(b) “Reklama joylashtirish” — Hamkor bo‘lish sahifasi', (
         tester,
       ) async {
-        final s = await makeServices(
-          tester,
-          language: lang,
-          allFeaturesOpen: true,
-        );
+        final s = await makeServices(tester, language: lang, partnerAds: true);
         await pumpApp(tester, s, size: _tall);
         await goTo(tester, '/home');
         final cta = find.textContaining(l.homeAdDemoCta).first;
@@ -190,10 +185,14 @@ void main() {
         expect(find.text(l.partnerOfferTitle), findsOneWidget);
       });
 
-      testWidgets('(c) hamkor yo‘q + do‘kon build: hech narsa chizilmaydi', (
+      testWidgets('(c) do‘kon build: hamkor bo‘lsa ham reklama yo‘q', (
         tester,
       ) async {
         for (final backend in [
+          // Server ulangan, faol hamkorlar bor.
+          FakeLabBackend()
+            ..seedPartner(_lab())
+            ..seedPartner(_equipment()),
           // Server ulangan, faol hamkor yo'q.
           FakeLabBackend()
             ..seedPartner(_lab(id: 'd1', status: PartnerStatus.draft)),
@@ -204,43 +203,18 @@ void main() {
             tester,
             language: lang,
             backend: backend,
-            allFeaturesOpen: false,
           );
           await pumpApp(tester, s, size: _tall);
           await goTo(tester, '/home');
           _expectNoDemo(l);
+          expect(find.text('Sinov Laboratoriya MChJ'), findsNothing);
           expect(find.byType(PartnerTag), findsNothing);
           expect(find.text(l.partnerAdLabel), findsNothing);
+          expect(find.byType(HomePartnerPair), findsNothing);
           expect(find.byType(HomeAdSlotCard), findsNothing);
-          expect(
-            _sizeOf(find.byType(HomePartnerPair).evaluate().single).height,
-            0,
-          );
+          if (backend != null) expect(backend.partnerTrackCalls, 0);
           await tester.pumpWidget(const SizedBox());
         }
-      });
-
-      testWidgets('(c) do‘kon build, haqiqiy hamkor bor: u ko‘rinadi', (
-        tester,
-      ) async {
-        final backend = FakeLabBackend()..seedPartner(_lab());
-        final s = await makeServices(
-          tester,
-          language: lang,
-          backend: backend,
-          allFeaturesOpen: false,
-        );
-        await pumpApp(tester, s, size: _tall);
-        await goTo(tester, '/home');
-        expect(find.text('Sinov Laboratoriya MChJ'), findsOneWidget);
-        // Apparat joyida hamkor yo'q va build do'kon — demo ham yo'q;
-        // yagona karta to'liq kenglikda.
-        _expectNoDemo(l);
-        expect(find.byType(HomeAdSlotCard), findsOneWidget);
-        expect(
-          _sizeOf(find.byType(HomeAdSlotCard).evaluate().single).width,
-          greaterThan(300),
-        );
       });
 
       testWidgets('layout: 320 px, 1.3× shrift, demo va haqiqiy kartalar', (
@@ -259,7 +233,7 @@ void main() {
             tester,
             language: lang,
             backend: backend,
-            allFeaturesOpen: true,
+            partnerAds: true,
           );
           await pumpApp(tester, s, size: const Size(320, 6000), textScale: 1.3);
           await goTo(tester, '/home');
@@ -293,7 +267,7 @@ void main() {
               tester,
               role: role,
               backend: backend,
-              allFeaturesOpen: true,
+              partnerAds: true,
             );
             await pumpApp(tester, s);
             await goTo(tester, '/home');
@@ -337,11 +311,7 @@ void main() {
         '${role.name}: tor ekran (320) yoki katta shrift (1.3×) — ustma-ust',
         (tester) async {
           for (final (width, scale) in [(320.0, 1.0), (390.0, 1.3)]) {
-            final s = await makeServices(
-              tester,
-              role: role,
-              allFeaturesOpen: true,
-            );
+            final s = await makeServices(tester, role: role, partnerAds: true);
             await pumpApp(tester, s, size: Size(width, 3000), textScale: scale);
             await goTo(tester, '/home');
             final cards = find.byType(HomeAdSlotCard);
@@ -359,7 +329,7 @@ void main() {
       testWidgets('${role.name}: tartib — qidiruv, reklama, hero, tugmalar, '
           'kunlik karta, tahlillar', (tester) async {
         final l = _l(AppLanguage.uz);
-        final s = await makeServices(tester, role: role, allFeaturesOpen: true);
+        final s = await makeServices(tester, role: role, partnerAds: true);
         await pumpApp(tester, s, size: _tall);
         await goTo(tester, '/home');
         final search = tester.getBottomLeft(find.byType(HomeSearchField)).dy;
@@ -386,11 +356,7 @@ void main() {
       testWidgets('${role.name}: do‘kon build, hamkor yo‘q — reklama yo‘q', (
         tester,
       ) async {
-        final s = await makeServices(
-          tester,
-          role: role,
-          allFeaturesOpen: false,
-        );
+        final s = await makeServices(tester, role: role);
         await pumpApp(tester, s, size: _tall);
         await goTo(tester, '/home');
         expect(find.byType(LgTile), findsWidgets);
@@ -408,7 +374,7 @@ void main() {
         final s = await makeServices(
           tester,
           backend: backend,
-          allFeaturesOpen: true,
+          partnerAds: true,
         );
         await _signIn(tester, s);
         expect(backend.hasSession, isTrue);
@@ -427,11 +393,7 @@ void main() {
       final backend = FakeLabBackend()
         ..seedPartner(_lab())
         ..seedPartner(_equipment());
-      final s = await makeServices(
-        tester,
-        backend: backend,
-        allFeaturesOpen: false,
-      );
+      final s = await makeServices(tester, backend: backend, partnerAds: true);
       await _signIn(tester, s);
       await pumpApp(tester, s, size: _tall);
       await goTo(tester, '/home');

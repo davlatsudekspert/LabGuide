@@ -31,6 +31,7 @@ Future<AppServices> _start(
     themeMode: theme,
     role: role,
     backend: backend,
+    partnerAds: true,
   );
   await pumpApp(tester, s, textScale: textScale);
   await tester.runAsync(() async {

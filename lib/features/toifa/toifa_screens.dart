@@ -7,7 +7,6 @@ import 'package:material_ui/material_ui.dart';
 import '../../app/app_scope.dart';
 import '../../app/shell.dart';
 import '../../app/widgets/lg_page.dart';
-import '../../core/entitlements/feature.dart';
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
@@ -16,7 +15,6 @@ import '../learn/exam_question.dart';
 import '../learn/exam_screens.dart';
 import '../learn/exam_session.dart';
 import '../learn/exam_widgets.dart';
-import '../profile/pro_gate.dart';
 import '../share/result_share.dart';
 import 'toifa_bank.dart';
 import 'toifa_controller.dart';
@@ -512,9 +510,6 @@ class _ToifaTestScreenState extends State<ToifaTestScreen> {
     final l = AppLocalizations.of(context);
     setState(() => _tried = true);
     if (_minutesError(l) != null || _passError(l) != null) return;
-    // To'liq toifa banki — Pro (D-53); faqat boshlashdan oldin.
-    if (!await requireFeature(context, Feature.fullToifaBank)) return;
-    if (!mounted) return;
     final services = context.services;
     final exams = services.exams;
     if (exams.active != null) {
@@ -636,11 +631,7 @@ class ToifaPracticeListScreen extends StatelessWidget {
             title: l.toifaPracticeMixed(_roundSize()),
             subtitle: l.quizQuestionCount(bank.scorable.length),
             icon: Icons.shuffle_rounded,
-            onTap: () => pushGated(
-              context,
-              Feature.fullToifaBank,
-              '$toifaBase/practice/$_mixed',
-            ),
+            onTap: () => context.push('$toifaBase/practice/$_mixed'),
           ),
           if (mistakes > 0)
             LgRow(
@@ -660,11 +651,7 @@ class ToifaPracticeListScreen extends StatelessWidget {
                       ? l.quizQuestionCount(n)
                       : '${l.quizQuestionCount(n)} · ${l.quizMastered(m, n)}',
                   icon: Icons.label_outline_rounded,
-                  onTap: () => pushGated(
-                    context,
-                    Feature.fullToifaBank,
-                    '$toifaBase/practice/${t.id}',
-                  ),
+                  onTap: () => context.push('$toifaBase/practice/${t.id}'),
                   divider: i < topics.length - 1,
                 );
               },
@@ -675,9 +662,7 @@ class ToifaPracticeListScreen extends StatelessWidget {
   }
 }
 
-int _roundSize() => toifaAllows(ToifaFeature.extendedPractice)
-    ? ToifaFormat.practiceRound
-    : ToifaFreeProposal.practiceRound;
+int _roundSize() => ToifaFormat.practiceRound;
 
 /// Mavzu bo'yicha mashq: javobdan keyin darhol rasmiy kalit va (bo'lsa)
 /// LabGuide izohi. Variantlar ro'yxatdagi tartibda.

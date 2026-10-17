@@ -261,7 +261,7 @@ void main() {
   });
 
   testWidgets('profil: har bir qator', (tester) async {
-    final s = await start(tester, role: AppRole.lab);
+    final s = await start(tester, role: AppRole.lab, partnerAds: true);
     final w = Walk(tester, 'qa_profile');
     const sc = 'profile';
     await goTo(tester, '/tests/analyte/potassium');
@@ -295,7 +295,6 @@ void main() {
 
     await row(l.profileSignIn, 'kirish');
     await row(l.libPacks, 'paketlar');
-    await row(l.profilePurchase, 'xarid');
     await row(l.supportTitle, 'yordam');
     await row(l.partnerBecome, 'hamkor');
     await row(l.profilePrivacy, 'maxfiylik');

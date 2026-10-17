@@ -32,11 +32,13 @@ Oxirida texnik tafsilotlar va qonunchilik bo‘yicha eslatma.
 
 #### Bosh sahifa joylari: build rejimiga qarab
 
+> Reklama do‘kon buildlaridan kompilyatsiyada chiqarib tashlanadi (`LG_PARTNER_ADS=false`, `lib/core/build_flags.dart`); `true` faqat TestFlight va Play ichki test buildlarida (ci.yml `testflight` / `play_internal`).
+
 | Holat | Nima ko‘rinadi |
 |---|---|
-| Joy turiga mos **haqiqiy faol hamkor bor** (har qanday build) | Hamkor kartasi; ko‘rsatilish va “bog‘lanish” hisoblagichi `home_lab` / `home_equipment` joylari bo‘yicha (bitta qurilmadan kuniga bir marta; faqat hisobli foydalanuvchi). |
-| Hamkor **yo‘q**, **demo/test build** (`LG_ALL_FEATURES_OPEN=true` — TestFlight/CI, yoki debug) | Aniq belgilangan **“Namuna / Demo — reklama joyi”** kartasi: “Reklama” yorlig‘i, “Bu yerda hamkor laboratoriya xizmati / apparat firmasi reklamasi chiqadi” matni va “Reklama joylashtirish” (→ Hamkor bo‘lish sahifasi). Kompaniya nomi, logo, telefon, Telegram **yo‘q**; ko‘rsatilish ham, bosish ham **sanalmaydi**. |
-| Hamkor **yo‘q**, **do‘kon (release) build** | Hech narsa chizilmaydi (bo‘sh joy ham qoldirilmaydi). |
+| **Do‘kon build** (`LG_PARTNER_ADS=false`, standart; ci.yml `build` va kelajakdagi do‘kon rejimi) | Hech qanday reklama/hamkor UI yo‘q: bosh sahifa juftligi, Lab kartasi, apparat kartalari, hamkor sahifalari, “Hamkor bo‘lish”, Aloqa ekranidagi reklama bo‘limi, admin hamkor bo‘limlari; serverga hamkor so‘rovi va hisobot ham yo‘q. |
+| **Test build** (`LG_PARTNER_ADS=true`), joy turiga mos **haqiqiy faol hamkor bor** | Hamkor kartasi; ko‘rsatilish va “bog‘lanish” hisoblagichi `home_lab` / `home_equipment` joylari bo‘yicha (bitta qurilmadan kuniga bir marta; faqat hisobli foydalanuvchi). |
+| **Test build** (`LG_PARTNER_ADS=true`), hamkor **yo‘q** | Aniq belgilangan **“Namuna / Demo — reklama joyi”** kartasi: “Reklama” yorlig‘i, “Bu yerda hamkor laboratoriya xizmati / apparat firmasi reklamasi chiqadi” matni va “Reklama joylashtirish” (→ Hamkor bo‘lish sahifasi). Kompaniya nomi, logo, telefon, Telegram **yo‘q**; ko‘rsatilish ham, bosish ham **sanalmaydi**. |
 
 Demo karta soxta kompaniya emas, faqat joyni ko‘rsatuvchi namuna; u faqat
 ichki sinov buildlarida chiqadi, do‘kon foydalanuvchilariga ko‘rinmaydi.

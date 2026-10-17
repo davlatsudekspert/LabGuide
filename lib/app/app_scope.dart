@@ -5,7 +5,6 @@ import 'package:material_ui/material_ui.dart';
 import '../core/backend/access_controller.dart';
 import '../core/backend/admin_team.dart';
 import '../core/backend/lab_backend.dart';
-import '../core/entitlements/entitlement_service.dart';
 import '../core/storage/kv_store.dart';
 import '../features/auth/auth_controller.dart';
 import '../features/classroom/classroom_local.dart';
@@ -73,7 +72,6 @@ class AppServices {
     required this.backend,
     required this.access,
     required this.partners,
-    required this.entitlements,
     required this.toifa,
     required this.differential,
     required this.daily,
@@ -112,9 +110,6 @@ class AppServices {
 
   /// Hamkorlar (reklama) — faqat server ulangan buildda.
   final PartnersController partners;
-
-  /// Pro huquqlari (build rejimi, server, imzolangan oflayn kesh).
-  final EntitlementService entitlements;
 
   /// Toifa imtihoniga tayyorgarlik (faqat O'zbekiston foydalanuvchilariga).
   final ToifaController toifa;
@@ -167,7 +162,6 @@ class AppServices {
         access.clear();
       }
       community.reset();
-      unawaited(entitlements.refresh());
     });
     settings.addListener(() {
       if (settings.role == role && settings.language == language) return;
@@ -192,7 +186,6 @@ class AppServices {
     microscopy.resetInMemory();
     partners.resetInMemory();
     reading.resetInMemory();
-    entitlements.resetInMemory();
     toifa.resetInMemory();
     differential.resetInMemory();
     daily.resetInMemory();

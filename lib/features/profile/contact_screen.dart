@@ -7,13 +7,14 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../app/app_scope.dart';
 import '../../app/widgets/lg_page.dart';
 import '../../app/widgets/links.dart';
+import '../../core/build_flags.dart';
 import '../../core/contact.dart';
-import '../../core/entitlements/billing_catalog.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
 
 /// “Aloqa va shikoyat” — serverni talab qilmaydigan, DOIM ochiq ekran:
-/// savol/taklif, reklama, shikoyat — hammasi `mailto:` (pochta ilovasi)
+/// savol/taklif, shikoyat (va faqat hamkor UI yoqilgan test buildda —
+/// reklama) — hammasi `mailto:` (pochta ilovasi)
 /// orqali, manzil [Contact.email]'da. Pochta ilovasi bo'lmasa manzil
 /// nusxalanadi. Xat matniga faqat ilova versiyasi va platforma qo'yiladi —
 /// shaxsiy ma'lumot yo'q.
@@ -90,29 +91,32 @@ class ContactScreen extends StatelessWidget {
             ),
           ),
         ),
-        LgSectionTitle(l.contactAdTitle),
-        Text(l.contactAdBody, style: text.bodyLarge),
-        const SizedBox(height: 10),
-        LgButton.secondary(
-          key: const ValueKey('contact-mail-ad'),
-          label: l.contactAdAction,
-          icon: Icons.campaign_outlined,
-          onPressed: () => _mail(
-            context,
-            Contact.mailto(
-              subject: Contact.subjectAd,
-              body: l.contactMailBodyAd(version, platform),
+        // Reklama/hamkorlik — faqat hamkor UI yoqilgan (test) buildda.
+        if (BuildFlags.partnerAds) ...[
+          LgSectionTitle(l.contactAdTitle),
+          Text(l.contactAdBody, style: text.bodyLarge),
+          const SizedBox(height: 10),
+          LgButton.secondary(
+            key: const ValueKey('contact-mail-ad'),
+            label: l.contactAdAction,
+            icon: Icons.campaign_outlined,
+            onPressed: () => _mail(
+              context,
+              Contact.mailto(
+                subject: Contact.subjectAd,
+                body: l.contactMailBodyAd(version, platform),
+              ),
             ),
           ),
-        ),
-        // Ariza shakli faqat server ulangan buildda ishlaydi.
-        if (services.backend.isConfigured)
-          LgButton.link(
-            key: const ValueKey('contact-partner-link'),
-            label: l.partnerBecome,
-            icon: Icons.handshake_outlined,
-            onPressed: () => context.push('/profile/partnership'),
-          ),
+          // Ariza shakli faqat server ulangan buildda ishlaydi.
+          if (services.backend.isConfigured)
+            LgButton.link(
+              key: const ValueKey('contact-partner-link'),
+              label: l.partnerBecome,
+              icon: Icons.handshake_outlined,
+              onPressed: () => context.push('/profile/partnership'),
+            ),
+        ],
         LgSectionTitle(l.contactReportTitle),
         Text(l.contactReportBody, style: text.bodyLarge),
         const SizedBox(height: 8),
@@ -135,10 +139,10 @@ class ContactScreen extends StatelessWidget {
         const SizedBox(height: 16),
         LgRow(
           key: const ValueKey('contact-privacy'),
-          title: l.payPrivacy,
+          title: l.contactPrivacyPolicy,
           subtitle: l.contactPrivacyNote,
           icon: Icons.shield_outlined,
-          onTap: () => openExternalLink(context, BillingLinks.privacyPolicy),
+          onTap: () => openExternalLink(context, Contact.privacyPolicyUrl),
           divider: false,
         ),
       ],

@@ -7,7 +7,6 @@ import 'package:material_ui/material_ui.dart';
 import '../../app/app_scope.dart';
 import '../../app/widgets/lg_page.dart';
 import '../../core/backend/backend_models.dart';
-import '../../core/entitlements/feature.dart';
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
@@ -15,7 +14,6 @@ import '../classroom/qr_code_view.dart';
 import '../classroom/topic_questions.dart';
 import '../content/content_model.dart';
 import '../content/ui/content_widgets.dart';
-import '../profile/pro_gate.dart';
 import '../settings/settings_controller.dart';
 import '../support/support_screens.dart' show formatWhen;
 import 'exam_question.dart';
@@ -237,12 +235,7 @@ class _ClassesScreenState extends State<ClassesScreen> {
       caption: l.classesCreateSub,
       icon: Icons.school_outlined,
       highlighted: teacherFirst,
-      // Guruh ochish — Ustoz Pro; guruhga qo'shilish bepul.
-      onTap: () async {
-        if (await requireFeature(context, Feature.groups)) {
-          await _open('/learn/classes/new');
-        }
-      },
+      onTap: () => _open('/learn/classes/new'),
     );
     final join = LgTile(
       title: l.classesJoin,
@@ -823,12 +816,7 @@ class _GroupScreenState extends State<GroupScreen> with _AccountReload {
       LgButton(
         label: l.classesNewAssignment,
         icon: Icons.add_task_rounded,
-        // Yangi topshiriq — Ustoz Pro (mavjudlari ishlashda davom etadi).
-        onPressed: () async {
-          if (await requireFeature(context, Feature.assignments)) {
-            await _open('/learn/classes/g/${d.group.id}/assign');
-          }
-        },
+        onPressed: () => _open('/learn/classes/g/${d.group.id}/assign'),
       ),
       const SizedBox(height: 6),
       if (d.assignments.isEmpty)

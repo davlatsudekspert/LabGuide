@@ -8,7 +8,6 @@ import 'package:labguide/features/settings/settings_controller.dart';
 import 'package:labguide/l10n/gen/app_localizations.dart';
 import 'package:material_ui/material_ui.dart';
 
-import '../helpers/billing_fakes.dart';
 import '../helpers/diff_device_fakes.dart';
 import '../helpers/harness.dart';
 
@@ -229,24 +228,17 @@ void main() {
     expect(find.byKey(const ValueKey('auto-start')), findsNothing);
   });
 
-  testWidgets('Ustoz Pro: bepul foydalanuvchi uchun yopiq (do‘kon build)', (
+  testWidgets('avtomatik taqdimot hamma uchun ochiq (do‘kon build)', (
     tester,
   ) async {
     installDiffFakes();
     final l = lookupAppLocalizations(const Locale('uz'));
-    final s = await makeServices(
-      tester,
-      role: AppRole.teacher,
-      allFeaturesOpen: false,
-      purchases: FakePurchaseAdapter(available: true),
-      entitlementSource: FakeEntitlementSource(user: null),
-    );
+    final s = await makeServices(tester, role: AppRole.teacher);
     await pumpApp(tester, s, size: _tall);
     await goTo(tester, '/learn/lecture');
     await tester.tap(find.byKey(const ValueKey('lecture-auto-entry')));
     await tester.pumpAndSettle();
-    expect(find.text(l.payLockedTeacher), findsOneWidget);
-    expect(find.text(l.autoPresPickerSub), findsNothing);
+    expect(find.text(l.autoPresPickerSub), findsOneWidget);
   });
 
   group('televizor 1920×1080', () {

@@ -607,33 +607,5 @@ abstract final class ToifaFormat {
   static const practiceRound = 20;
 }
 
-/// Keyin Pro obunaga o'tishi mumkin bo'lgan imkoniyatlar.
-enum ToifaFeature {
-  /// To'liq savollar banki (barcha rasmiy test savollari).
-  fullBank,
-
-  /// Cheklanmagan natijalar tarixi.
-  unlimitedHistory,
-
-  /// Kengaytirilgan mashq (to'liq raundlar).
-  extendedPractice,
-}
-
-/// Imkoniyat ochiqmi — yagona tekshiruv nuqtasi. Hozir (TestFlight) hammasi
-/// ochiq. Tekshiruv faqat yangi test/bilet/mashq tuzilayotganda qilinadi:
-/// boshlangan test yoki bilet hech qachon to'xtatilmaydi. To'lov oynasi yo'q.
-bool toifaAllows(ToifaFeature feature) => true;
-
-/// Imkoniyat yopiq bo'lgandagi qiymatlar — faqat TAKLIF (egasi hali qaror
-/// qilmagan). Hozir [toifaAllows] doim true.
-abstract final class ToifaFreeProposal {
-  static const bankSize = 100;
-  static const historySize = 5;
-  static const practiceRound = 10;
-}
-
-/// Test uchun savollar to'plami ([ToifaFeature.fullBank] bo'yicha).
-List<ToifaTestQuestion> toifaTestPool(ToifaBank bank) =>
-    toifaAllows(ToifaFeature.fullBank)
-    ? bank.scorable
-    : bank.scorable.take(ToifaFreeProposal.bankSize).toList();
+/// Test uchun savollar to'plami: barcha rasmiy test savollari.
+List<ToifaTestQuestion> toifaTestPool(ToifaBank bank) => bank.scorable;

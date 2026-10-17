@@ -1,3 +1,5 @@
+> **FUTURE — not in the app; code on branch `pro-later`** (D-58).
+
 # LabGuide — to'lov tadqiqoti (App Store, Google Play, Click/Payme/Uzum)
 
 Tadqiqot sanasi: **2026-10-09**. Barcha URL'lar shu sanada ochib tekshirildi (agar boshqacha ko'rsatilmagan bo'lsa).

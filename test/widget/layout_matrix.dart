@@ -169,7 +169,6 @@ const appRoutes = [
   '/learn/lesson',
   '/profile',
   '/profile/role',
-  '/profile/purchase',
   '/profile/privacy',
   '/profile/contact',
   '/profile/support',
@@ -247,11 +246,14 @@ void runLayoutMatrix(AppLanguage lang) {
       await visitAll(['/welcome/auth/otp']);
       await tester.pumpWidget(const SizedBox());
 
-      // Asosiy ekranlar — har bir rolning bosh sahifasi bilan.
+      // Asosiy ekranlar — har bir rolning bosh sahifasi bilan. Hamkor UI
+      // yoqilgan (TestFlight/Play ichki test) build: reklama kartalari va
+      // hamkor sahifalari ham o'lchanadi; do'kon build — bularsiz qism.
       final s = await makeServices(
         tester,
         language: c.lang,
         themeMode: c.theme,
+        partnerAds: true,
       );
       await s.bookmarks.toggle('glucose-plasma-fasting');
       await pumpApp(tester, s, size: size, textScale: c.textScale);

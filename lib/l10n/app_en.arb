@@ -34,7 +34,7 @@
   "welcomeGetStarted": "Get started / sign up",
   "welcomeGuest": "Explore as guest",
   "welcomeSignIn": "Sign in",
-  "welcomeGuestNote": "No account is needed to read content. Sign-in is used for sync, classes and purchases.",
+  "welcomeGuestNote": "No account is needed to read content. Sign-in is used for sync and classes.",
   "authTitle": "Welcome",
   "authSubtitle": "Sign in or create an account with email.",
   "authEmailLabel": "Email",
@@ -2929,17 +2929,6 @@
   },
   "examHistoryClear": "Clear history",
   "examHistoryClearBody": "All exam results will be deleted from this device.",
-  "examHistoryHidden": "{count, plural, =1{1 older result is saved} other{{count} older results are saved}} — the free plan shows the last {limit}. Nothing has been deleted.",
-  "@examHistoryHidden": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      },
-      "limit": {
-        "type": "int"
-      }
-    }
-  },
   "examProgressLabel": "Recent results: {values}",
   "@examProgressLabel": {
     "placeholders": {
@@ -3382,8 +3371,6 @@
   "themeSystem": "System",
   "themeLight": "Light",
   "themeDark": "Dark",
-  "profilePurchase": "Subscription and restore",
-  "profilePurchaseSub": "Free · Pro",
   "profilePrivacy": "Privacy and data",
   "profilePrivacySub": "Data and account controls",
   "supportTitle": "Feedback & help",
@@ -3472,7 +3459,6 @@
       }
     }
   },
-  "adminBilling": "Free / Pro: billing not connected — no data",
   "adminInbox": "Requests",
   "adminAwaiting": "Awaiting reply: {count}",
   "@adminAwaiting": {
@@ -3549,26 +3535,6 @@
       }
     }
   },
-  "purchaseTitle": "LabGuide Pro",
-  "purchaseStatusTitle": "Status",
-  "purchaseStatusPro": "Pro is active · until {date}",
-  "@purchaseStatusPro": {
-    "placeholders": {
-      "date": {
-        "type": "String"
-      }
-    }
-  },
-  "purchaseStatusProNoEnd": "Pro is active",
-  "purchaseStatusOffline": "Offline: last checked {date}",
-  "@purchaseStatusOffline": {
-    "placeholders": {
-      "date": {
-        "type": "String"
-      }
-    }
-  },
-  "purchaseStatusFree": "Current plan: free",
   "privacyTitle": "Privacy and data",
   "privacyBody": "In guest mode the app sends nothing to a server: settings, bookmarks, QC records, your instruments and practice results stay on this device (they may be included in the device backup). If you sign in with email, data is stored on a Cloudflare server (Eastern Europe, outside Uzbekistan): your email only as a hash and a masked form (the sign-in code is sent by the Resend service), role, language, last active day; in a group — the group name, your nickname or sequence number (no name is asked), test answers and scores. A teacher sees only their own group, a student only themselves. No ads or tracking. You can delete your account at any time.",
   "privacyBodyLocal": "This build has no server connected: the app sends nothing to a server. Settings, bookmarks, QC records, your instruments and practice results stay on this device (they may be included in the device backup). No ads or tracking.",
@@ -4717,126 +4683,7 @@
   "cytoOtherSub": "Urine, serous fluids, sputum: reporting categories",
   "cytoOtherIntro": "A brief overview: only the names of the international reporting categories. Criteria and risk figures are in the sources.",
   "cytoCategoriesTitle": "Categories",
-  "payTierPro": "Pro",
-  "payTierProSub": "For lab staff, doctors, students and anyone preparing for the qualification exam",
-  "payTierTeacher": "Teacher Pro",
-  "payTierTeacherSub": "For teachers working with a group. Includes everything in Pro.",
-  "payFree": "Always free: all cards, calculators, pre-analytics, the differential counter, 5 daily questions and mistake review.",
-  "payFeatQuestions": "Unlimited questions: practice by topic and card mini-tests",
-  "payFeatExam": "Exam simulation (timed test)",
-  "payFeatToifa": "The full qualification exam bank: official test and practice by topic",
-  "payFeatWeak": "Weak-topic analysis in your results",
-  "payFeatAtlas": "Microscopy atlas practice",
-  "payFeatHistory": "Full results history",
-  "payFeatAllPro": "Everything in Pro",
-  "payFeatGroups": "Groups: add students, grades and results reports",
-  "payFeatAssignments": "Group assignments (timed tests)",
-  "payFeatLecture": "Lecture mode: automatic presentation for a topic",
-  "payPlanMonthly": "Monthly",
-  "payPlanYearly": "Yearly",
-  "payUnitDay": "day",
-  "payUnitWeek": "week",
-  "payUnitMonth": "month",
-  "payUnitYear": "year",
-  "payDays": "{count, plural, =1{1 day} other{{count} days}}",
-  "@payDays": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-  "payWeeks": "{count, plural, =1{1 week} other{{count} weeks}}",
-  "@payWeeks": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-  "payMonths": "{count, plural, =1{1 month} other{{count} months}}",
-  "@payMonths": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-  "payYears": "{count, plural, =1{1 year} other{{count} years}}",
-  "@payYears": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-  "payPricePer": "{price} / {period}",
-  "@payPricePer": {
-    "placeholders": {
-      "price": {
-        "type": "String"
-      },
-      "period": {
-        "type": "String"
-      }
-    }
-  },
-  "payTrial": "{trial} free, then {price}",
-  "@payTrial": {
-    "placeholders": {
-      "trial": {
-        "type": "String"
-      },
-      "price": {
-        "type": "String"
-      }
-    }
-  },
-  "payStartTrial": "Start free trial",
-  "paySubscribe": "Subscribe",
-  "payCurrent": "Active subscription",
-  "payRestore": "Restore purchases",
-  "payManage": "Manage or cancel subscription",
-  "payTerms": "Terms of Use (EULA)",
-  "payPrivacy": "Privacy Policy",
-  "payDisclosure": "Subscriptions renew automatically. Payment is charged to your {store} account when you confirm the purchase (after the free trial ends, if there is one). Unless cancelled at least 24 hours before the end of the current period, the subscription renews for the same period and price, and your account is charged within 24 hours before the period ends. You can manage and cancel the subscription in your {store} account settings. Any unused part of a free trial is forfeited when you buy a subscription.",
-  "@payDisclosure": {
-    "placeholders": {
-      "store": {
-        "type": "String"
-      }
-    }
-  },
-  "payGuestNote": "You don’t need an account to buy. Sign in to use the subscription on your other devices too.",
-  "payLockedPro": "This feature is part of Pro.",
-  "payLockedTeacher": "This feature is part of Teacher Pro.",
-  "payAllOpen": "All features are open right now.",
-  "payTestBuildOpen": "Test build: all features are open.",
-  "payStatusTeacher": "Teacher Pro is active · until {date}",
-  "@payStatusTeacher": {
-    "placeholders": {
-      "date": {
-        "type": "String"
-      }
-    }
-  },
-  "payStatusTeacherNoEnd": "Teacher Pro is active",
-  "payStatusDevice": "The subscription is active on this device. Sign in to use it on your other devices too.",
-  "paySuccess": "Your subscription is active. Thank you!",
-  "payRestored": "Purchase restored.",
-  "payPending": "Waiting for the payment to be approved. The subscription will unlock automatically once it is.",
-  "payNothingFound": "No active subscription was found to restore.",
-  "payOwnedByOther": "This purchase is linked to another LabGuide account. Sign in to that account.",
-  "payFailed": "The purchase didn’t complete. Check your connection and try again. If you were charged, tap “Restore purchases”.",
-  "payUnavailable": "The store isn’t responding right now. Please try again later.",
-  "payDeleteAccountNote": "Deleting your account doesn’t cancel your subscription: cancel it in your {store} settings.",
-  "@payDeleteAccountNote": {
-    "placeholders": {
-      "store": {
-        "type": "String"
-      }
-    }
-  },
+  "contactPrivacyPolicy": "Privacy Policy",
   "bloodGroupTitle": "Blood grouping",
   "bloodGroupLabCardBody": "ABO and RhD: methods, compatibility, discrepancies, practice",
   "@bloodGroupTitle": {

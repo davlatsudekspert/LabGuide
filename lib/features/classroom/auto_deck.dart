@@ -12,7 +12,7 @@ import '../tools/calc_info.dart';
 import 'curriculum.dart';
 import 'lecture_slide.dart';
 
-// Avtomatik taqdimot (Ustoz Pro, D-47): ustoz tanlagan mavzu yoki tahlillardan
+// Avtomatik taqdimot (D-47): ustoz tanlagan mavzu yoki tahlillardan
 // slaydlar YIG'ILADI — hech qanday LLM yoki tashqi chaqiruvsiz, faqat ilovada
 // allaqachon manbaga bog'langan mazmundan:
 //   * tahlil kartasi da'volari (maqsad, fiziologiya, oshishi/pasayishi,

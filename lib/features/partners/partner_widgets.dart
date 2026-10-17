@@ -671,9 +671,11 @@ class _LabPartnerCardState extends State<LabPartnerCard> {
 /// Har joy uchun:
 /// * haqiqiy faol hamkor bor — hamkor kartasi (kunlik aylanish,
 ///   ko'rsatilish/bog'lanish hisoblagichi bilan);
-/// * hamkor yo'q, demo/test build (`allFeaturesOpen`) — aniq “Namuna / Demo”
-///   belgili o'rin: kompaniya, telefon, Telegram yo'q, hisoblagich yo'q;
-/// * hamkor yo'q, do'kon (release) build — hech narsa chizilmaydi.
+/// * hamkor yo'q — aniq “Namuna / Demo” belgili o'rin: kompaniya, telefon,
+///   Telegram yo'q, hisoblagich yo'q.
+///
+/// Butun blok faqat hamkor UI yoqilgan buildda ([BuildFlags.partnerAds]:
+/// TestFlight / Play ichki test) chiziladi; do'kon buildida reklama yo'q.
 class HomePartnerPair extends StatefulWidget {
   const HomePartnerPair({super.key});
 
@@ -691,7 +693,6 @@ class _HomePartnerPairState extends State<HomePartnerPair> {
   @override
   Widget build(BuildContext context) {
     final controller = context.services.partners;
-    final demoBuild = context.services.entitlements.allFeaturesOpen;
     final media = MediaQuery.of(context);
     final scale = media.textScaler.scale(16) / 16;
     return ListenableBuilder(
@@ -702,10 +703,7 @@ class _HomePartnerPairState extends State<HomePartnerPair> {
             PartnerPlacement.homeLab,
             PartnerPlacement.homeEquipment,
           ])
-            if (controller.forHome(pl) case final p?)
-              (pl, p)
-            else if (demoBuild)
-              (pl, null),
+            if (controller.forHome(pl) case final p?) (pl, p) else (pl, null),
         ];
         if (slots.isEmpty) return const SizedBox.shrink();
         final tiles =

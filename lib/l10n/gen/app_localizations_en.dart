@@ -95,7 +95,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get welcomeGuestNote =>
-      'No account is needed to read content. Sign-in is used for sync, classes and purchases.';
+      'No account is needed to read content. Sign-in is used for sync and classes.';
 
   @override
   String get authTitle => 'Welcome';
@@ -5098,17 +5098,6 @@ class AppLocalizationsEn extends AppLocalizations {
       'All exam results will be deleted from this device.';
 
   @override
-  String examHistoryHidden(int count, int limit) {
-    String _temp0 = intl.Intl.pluralLogic(
-      count,
-      locale: localeName,
-      other: '$count older results are saved',
-      one: '1 older result is saved',
-    );
-    return '$_temp0 — the free plan shows the last $limit. Nothing has been deleted.';
-  }
-
-  @override
   String examProgressLabel(String values) {
     return 'Recent results: $values';
   }
@@ -5805,12 +5794,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get themeDark => 'Dark';
 
   @override
-  String get profilePurchase => 'Subscription and restore';
-
-  @override
-  String get profilePurchaseSub => 'Free · Pro';
-
-  @override
   String get profilePrivacy => 'Privacy and data';
 
   @override
@@ -6060,9 +6043,6 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get adminBilling => 'Free / Pro: billing not connected — no data';
-
-  @override
   String get adminInbox => 'Requests';
 
   @override
@@ -6177,28 +6157,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String profileVersion(String version) {
     return 'Version $version';
   }
-
-  @override
-  String get purchaseTitle => 'LabGuide Pro';
-
-  @override
-  String get purchaseStatusTitle => 'Status';
-
-  @override
-  String purchaseStatusPro(String date) {
-    return 'Pro is active · until $date';
-  }
-
-  @override
-  String get purchaseStatusProNoEnd => 'Pro is active';
-
-  @override
-  String purchaseStatusOffline(String date) {
-    return 'Offline: last checked $date';
-  }
-
-  @override
-  String get purchaseStatusFree => 'Current plan: free';
 
   @override
   String get privacyTitle => 'Privacy and data';
@@ -8338,212 +8296,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get cytoCategoriesTitle => 'Categories';
 
   @override
-  String get payTierPro => 'Pro';
-
-  @override
-  String get payTierProSub =>
-      'For lab staff, doctors, students and anyone preparing for the qualification exam';
-
-  @override
-  String get payTierTeacher => 'Teacher Pro';
-
-  @override
-  String get payTierTeacherSub =>
-      'For teachers working with a group. Includes everything in Pro.';
-
-  @override
-  String get payFree =>
-      'Always free: all cards, calculators, pre-analytics, the differential counter, 5 daily questions and mistake review.';
-
-  @override
-  String get payFeatQuestions =>
-      'Unlimited questions: practice by topic and card mini-tests';
-
-  @override
-  String get payFeatExam => 'Exam simulation (timed test)';
-
-  @override
-  String get payFeatToifa =>
-      'The full qualification exam bank: official test and practice by topic';
-
-  @override
-  String get payFeatWeak => 'Weak-topic analysis in your results';
-
-  @override
-  String get payFeatAtlas => 'Microscopy atlas practice';
-
-  @override
-  String get payFeatHistory => 'Full results history';
-
-  @override
-  String get payFeatAllPro => 'Everything in Pro';
-
-  @override
-  String get payFeatGroups =>
-      'Groups: add students, grades and results reports';
-
-  @override
-  String get payFeatAssignments => 'Group assignments (timed tests)';
-
-  @override
-  String get payFeatLecture =>
-      'Lecture mode: automatic presentation for a topic';
-
-  @override
-  String get payPlanMonthly => 'Monthly';
-
-  @override
-  String get payPlanYearly => 'Yearly';
-
-  @override
-  String get payUnitDay => 'day';
-
-  @override
-  String get payUnitWeek => 'week';
-
-  @override
-  String get payUnitMonth => 'month';
-
-  @override
-  String get payUnitYear => 'year';
-
-  @override
-  String payDays(int count) {
-    String _temp0 = intl.Intl.pluralLogic(
-      count,
-      locale: localeName,
-      other: '$count days',
-      one: '1 day',
-    );
-    return '$_temp0';
-  }
-
-  @override
-  String payWeeks(int count) {
-    String _temp0 = intl.Intl.pluralLogic(
-      count,
-      locale: localeName,
-      other: '$count weeks',
-      one: '1 week',
-    );
-    return '$_temp0';
-  }
-
-  @override
-  String payMonths(int count) {
-    String _temp0 = intl.Intl.pluralLogic(
-      count,
-      locale: localeName,
-      other: '$count months',
-      one: '1 month',
-    );
-    return '$_temp0';
-  }
-
-  @override
-  String payYears(int count) {
-    String _temp0 = intl.Intl.pluralLogic(
-      count,
-      locale: localeName,
-      other: '$count years',
-      one: '1 year',
-    );
-    return '$_temp0';
-  }
-
-  @override
-  String payPricePer(String price, String period) {
-    return '$price / $period';
-  }
-
-  @override
-  String payTrial(String trial, String price) {
-    return '$trial free, then $price';
-  }
-
-  @override
-  String get payStartTrial => 'Start free trial';
-
-  @override
-  String get paySubscribe => 'Subscribe';
-
-  @override
-  String get payCurrent => 'Active subscription';
-
-  @override
-  String get payRestore => 'Restore purchases';
-
-  @override
-  String get payManage => 'Manage or cancel subscription';
-
-  @override
-  String get payTerms => 'Terms of Use (EULA)';
-
-  @override
-  String get payPrivacy => 'Privacy Policy';
-
-  @override
-  String payDisclosure(String store) {
-    return 'Subscriptions renew automatically. Payment is charged to your $store account when you confirm the purchase (after the free trial ends, if there is one). Unless cancelled at least 24 hours before the end of the current period, the subscription renews for the same period and price, and your account is charged within 24 hours before the period ends. You can manage and cancel the subscription in your $store account settings. Any unused part of a free trial is forfeited when you buy a subscription.';
-  }
-
-  @override
-  String get payGuestNote =>
-      'You don’t need an account to buy. Sign in to use the subscription on your other devices too.';
-
-  @override
-  String get payLockedPro => 'This feature is part of Pro.';
-
-  @override
-  String get payLockedTeacher => 'This feature is part of Teacher Pro.';
-
-  @override
-  String get payAllOpen => 'All features are open right now.';
-
-  @override
-  String get payTestBuildOpen => 'Test build: all features are open.';
-
-  @override
-  String payStatusTeacher(String date) {
-    return 'Teacher Pro is active · until $date';
-  }
-
-  @override
-  String get payStatusTeacherNoEnd => 'Teacher Pro is active';
-
-  @override
-  String get payStatusDevice =>
-      'The subscription is active on this device. Sign in to use it on your other devices too.';
-
-  @override
-  String get paySuccess => 'Your subscription is active. Thank you!';
-
-  @override
-  String get payRestored => 'Purchase restored.';
-
-  @override
-  String get payPending =>
-      'Waiting for the payment to be approved. The subscription will unlock automatically once it is.';
-
-  @override
-  String get payNothingFound => 'No active subscription was found to restore.';
-
-  @override
-  String get payOwnedByOther =>
-      'This purchase is linked to another LabGuide account. Sign in to that account.';
-
-  @override
-  String get payFailed =>
-      'The purchase didn’t complete. Check your connection and try again. If you were charged, tap “Restore purchases”.';
-
-  @override
-  String get payUnavailable =>
-      'The store isn’t responding right now. Please try again later.';
-
-  @override
-  String payDeleteAccountNote(String store) {
-    return 'Deleting your account doesn’t cancel your subscription: cancel it in your $store settings.';
-  }
+  String get contactPrivacyPolicy => 'Privacy Policy';
 
   @override
   String get bloodGroupTitle => 'Blood grouping';

@@ -2,7 +2,6 @@
 
 import * as admins from './admins';
 import * as auth from './auth';
-import * as billing from './billing';
 import * as community from './community';
 import type { Ctx, Deps } from './context';
 import { deriveKeys, hex, hmac } from './crypto';
@@ -121,14 +120,6 @@ const routes: Route[] = [
   r('GET', '/v1/admin/admins', admins.listAdmins),
   r('POST', '/v1/admin/admins', admins.addAdmin),
   r('DELETE', '/v1/admin/admins/:id', admins.removeAdmin),
-
-  // Pro obunalari (D-46…D-53): do'kon xaridini serverda tekshirish.
-  r('GET', '/v1/billing/status', billing.status),
-  r('GET', '/v1/billing/entitlements', billing.entitlements),
-  r('GET', '/v1/entitlements', billing.entitlements),
-  r('POST', '/v1/billing/verify', billing.verify),
-  r('POST', '/v1/billing/apple/notifications', billing.appleNotification),
-  r('POST', '/v1/billing/google/rtdn', billing.googleNotification),
 
   // TODO(port): Supabase'dan ko'chiriladi — hozircha 501 (docs/BACKEND_CLOUDFLARE.md).
   r('*', '/v1/support(/.*)?', plannedSignedIn),

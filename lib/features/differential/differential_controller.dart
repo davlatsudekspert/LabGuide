@@ -222,7 +222,7 @@ class DifferentialController extends ChangeNotifier {
       label: label.trim(),
     );
     // Tarix hech qachon yashirincha qisqartirilmaydi — faqat foydalanuvchi
-    // o'chiradi. Ko'rsatish chegarasi (bo'lsa) UI'da: DiffEntryPoints.
+    // o'chiradi.
     _history.insert(0, record);
     notifyListeners();
     await _persistHistory();

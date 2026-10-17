@@ -6,7 +6,7 @@
 	     (UserDefaults, fayl vaqt belgilari, tizim yuklanish vaqti, bo'sh joy,
 	     klaviatura tillari) ishlatmaydi, shuning uchun NSPrivacyAccessedAPITypes
 	     bo'sh. Plaginlar (shared_preferences, flutter_secure_storage, share_plus,
-	     image_picker, in_app_purchase, ...) o'z manifestlarini olib keladi,
+	     image_picker, ...) o'z manifestlarini olib keladi,
 	     Flutter.framework ham. Yangi o'z kod qo'shilsa shu yerga sabab kodi
 	     yoziladi (docs/APPLE_2026_REQUIREMENTS.md). -->
 	<key>NSPrivacyTracking</key>

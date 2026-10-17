@@ -52,13 +52,6 @@ dependencies:
   share_plus: ^13.3.1
   # Guruh taklif kodi QR ko'rinishida (sof Dart, native kod yo'q). BSD-3.
   qr: ^4.0.0
-  # Pro obunalari: rasmiy Flutter plagini (BSD-3). iOS — StoreKit 2,
-  # Android — Play Billing. Narx/sinov faqat do'kondan; xarid serverda
-  # tekshiriladi (lib/core/entitlements/store_purchase_adapter.dart).
-  in_app_purchase: ^3.3.1
-  # Platformaga xos tafsilotlar (kirish taklifi, Play offer, tiklash).
-  in_app_purchase_android: ^0.5.4
-  in_app_purchase_storekit: ^0.4.14
 
 dev_dependencies:
   flutter_test:

@@ -5,7 +5,6 @@ import '../../app/app_scope.dart';
 import '../../app/shell.dart';
 import '../../app/widgets/lg_page.dart';
 import '../../app/widgets/links.dart';
-import '../../core/entitlements/feature.dart';
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
@@ -13,7 +12,6 @@ import '../auth/ui/welcome_screen.dart';
 import '../content/content_model.dart';
 import '../content/ui/content_widgets.dart';
 import '../daily/daily_screens.dart';
-import '../profile/pro_gate.dart';
 import '../reference/reference_screens.dart';
 import '../settings/settings_controller.dart';
 import '../toifa/toifa_screens.dart';
@@ -216,29 +214,19 @@ class _QuizScreenState extends State<QuizScreen> {
     _session = QuizSession(scope.questions);
   });
 
-  /// Yangi raund — cheksiz savollar Pro (D-53: bepulda kunlik 5 ta savol).
-  /// Xatolar ustida ishlash ([_start] to'g'ridan-to'g'ri) cheklanmaydi.
-  Future<void> _startGated(QuizScope scope) async {
-    if (!await requireFeature(context, Feature.unlimitedQuestions)) return;
-    if (mounted) _start(scope);
-  }
-
   @override
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context);
     final content = context.services.content;
-    // Paket yuklanishi kutilsa ham sarlavha (analit nomi) yangilanadi;
-    // obuna ochilsa — kartadan mini-test boshlanadi.
+    // Paket yuklanishi kutilsa ham sarlavha (analit nomi) yangilanadi va
+    // kartadan mini-test boshlanadi.
     return ListenableBuilder(
-      listenable: Listenable.merge([content, context.services.entitlements]),
+      listenable: content,
       builder: (context, _) {
         final analyteId = widget.analyteId;
         final loaded = content.pack;
-        // Kartadan mini-test — Pro; yopiq bo'lsa test boshlanmaydi.
-        if (analyteId != null &&
-            _session == null &&
-            loaded != null &&
-            context.services.entitlements.can(Feature.unlimitedQuestions)) {
+        // Kartadan mini-test.
+        if (analyteId != null && _session == null && loaded != null) {
           _scope = QuizScope(
             (_, lang) => loaded.analyte(analyteId)?.names.of(lang) ?? analyteId,
             questionsForAnalyte(loaded, analyteId),
@@ -264,20 +252,10 @@ class _QuizScreenState extends State<QuizScreen> {
         ContentGate(
           builder: (context, pack) {
             final session = _session;
-            if (session == null && analyteId != null) {
-              return LgStateView(
-                kind: StateKind.unavailable,
-                title: l.payFeatQuestions,
-                message: l.payLockedPro,
-                actionLabel: l.purchaseTitle,
-                onAction: () =>
-                    context.push(purchaseRoute(Feature.unlimitedQuestions)),
-              );
-            }
             if (session == null) {
               return _TopicPicker(
                 pack: pack,
-                onPick: _startGated,
+                onPick: _start,
                 onPickMistakes: _start,
               );
             }
@@ -287,8 +265,7 @@ class _QuizScreenState extends State<QuizScreen> {
             return session.finished
                 ? _QuizResult(
                     session: session,
-                    onRestart: () =>
-                        _startGated(_scope!.redraw?.call() ?? _scope!),
+                    onRestart: () => _start(_scope!.redraw?.call() ?? _scope!),
                     onRetryMistakes: () => _start(
                       QuizScope((l, _) => l.quizTopicMistakes, [
                         for (final (QuizQuestion q, _) in session.mistakes) q,
@@ -322,7 +299,7 @@ class _TopicPicker extends StatelessWidget {
   final ContentPack pack;
   final ValueChanged<QuizScope> onPick;
 
-  /// Xatolar ustida ishlash — cheklanmaydi (D-53).
+  /// Xatolar ustida ishlash.
   final ValueChanged<QuizScope> onPickMistakes;
 
   @override

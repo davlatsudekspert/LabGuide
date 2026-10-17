@@ -5,7 +5,7 @@ mos: ilova serverga ma’lumot yubormaydi, tashxis qo‘ymaydi, kontent manbali 
 Ilova o‘zgarsa (masalan, email kirish ulanganda), shu hujjat ham yangilanadi.
 
 **Va’da qilinmaydigan narsalar (hozir ishlamaydi):** email orqali kirish, guruhlar/sinflar,
-“Taklif va yordam” va hamkor statistikasi (server ulanmagan), pullik obuna/to‘lov (o‘chiq).
+“Taklif va yordam” va hamkor statistikasi (server ulanmagan), pullik obuna/to‘lov (bu versiyada to‘lov yo‘q, D-58).
 Tavsiflarda ular tilga olinmaydi; “qoralama / mutaxassis tekshiruvi kutilmoqda” holati
 tavsiflarda ochiq yoziladi — buni olib tashlamang. Rus/ingliz tavsifida O‘zbekistonga xos
 bo‘limlar (malaka toifasi) yo‘q: ular faqat o‘zbek tili yoki UZ mintaqasida ko‘rinadi.
