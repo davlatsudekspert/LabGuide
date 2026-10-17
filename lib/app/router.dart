@@ -10,6 +10,7 @@ import '../features/auth/ui/welcome_screen.dart';
 import '../features/content/ui/analyte_screen.dart';
 import '../features/content/ui/conditions_screens.dart';
 import '../features/content/ui/tests_screen.dart';
+import '../features/cytology/cytology_more_screens.dart';
 import '../features/cytology/cytology_screens.dart';
 import '../features/differential/diff_eyes_free_screens.dart';
 import '../features/spermogram/spermogram_screens.dart';
@@ -378,7 +379,8 @@ GoRouter buildRouter(
                     path: 'spermogram',
                     builder: (context, state) => const SpermogramScreen(),
                   ),
-                  // Sitologiya: hujayralar, tozalik darajasi, Bethesda, mashq.
+                  // Sitologiya: hujayralar, tozalik darajasi, Bethesda, mashq, namuna
+                  // sifati, reaktiv o'zgarishlar, yetilish indeksi, boshqa namunalar.
                   GoRoute(
                     path: 'cytology',
                     builder: (context, state) => const CytologyScreen(),
@@ -411,6 +413,23 @@ GoRouter buildRouter(
                       GoRoute(
                         path: 'quiz',
                         builder: (context, state) => const CytoQuizScreen(),
+                      ),
+                      GoRoute(
+                        path: 'adequacy',
+                        builder: (context, state) => const CytoAdequacyScreen(),
+                      ),
+                      GoRoute(
+                        path: 'reactive',
+                        builder: (context, state) => const CytoReactiveScreen(),
+                      ),
+                      GoRoute(
+                        path: 'maturation',
+                        builder: (context, state) =>
+                            const CytoMaturationScreen(),
+                      ),
+                      GoRoute(
+                        path: 'other',
+                        builder: (context, state) => const CytoOtherScreen(),
                       ),
                     ],
                   ),

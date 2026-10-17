@@ -1,6 +1,5 @@
 // ignore: unused_import
 import 'package:intl/intl.dart' as intl;
-
 import 'app_localizations.dart';
 
 // ignore_for_file: type=lint
@@ -75,15 +74,13 @@ class AppLocalizationsUz extends AppLocalizations {
   String get welcomeTitle => 'Biokimyo.\nTushunarli va amaliy.';
 
   @override
-  String get welcomeSubtitle =>
-      'Tahlillar, laboratoriya amaliyoti va o‘rganish — bir joyda.';
+  String get welcomeSubtitle => 'Tahlillar, laboratoriya amaliyoti va o‘rganish — bir joyda.';
 
   @override
   String get welcomeDevices => 'Telefon va planshet';
 
   @override
-  String get welcomeRoles =>
-      'Shifokor · laboratoriya mutaxassisi · talaba · ustoz';
+  String get welcomeRoles => 'Shifokor · laboratoriya mutaxassisi · talaba · ustoz';
 
   @override
   String get welcomeGetStarted => 'Boshlash / ro‘yxatdan o‘tish';
@@ -95,8 +92,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get welcomeSignIn => 'Kirish';
 
   @override
-  String get welcomeGuestNote =>
-      'Kontentni o‘qish uchun hisob shart emas. Kirish sinxronlash, guruhlar va xaridlar uchun kerak.';
+  String get welcomeGuestNote => 'Kontentni o‘qish uchun hisob shart emas. Kirish sinxronlash, guruhlar va xaridlar uchun kerak.';
 
   @override
   String get authTitle => 'Xush kelibsiz';
@@ -114,12 +110,10 @@ class AppLocalizationsUz extends AppLocalizations {
   String get authEmailInvalid => 'To‘g‘ri email manzil kiriting.';
 
   @override
-  String get authConsent =>
-      'Foydalanish shartlari va maxfiylik siyosatini qabul qilaman.';
+  String get authConsent => 'Foydalanish shartlari va maxfiylik siyosatini qabul qilaman.';
 
   @override
-  String get authConsentRequired =>
-      'Davom etish uchun shartlarni qabul qiling.';
+  String get authConsentRequired => 'Davom etish uchun shartlarni qabul qiling.';
 
   @override
   String get authGetCode => 'Kod olish';
@@ -128,15 +122,13 @@ class AppLocalizationsUz extends AppLocalizations {
   String get authViewTerms => 'Shartlarni ko‘rish';
 
   @override
-  String get authDemoNotice =>
-      'Debug build: demo kirish. Email yuborilmaydi; kod keyingi ekranda ko‘rsatiladi.';
+  String get authDemoNotice => 'Debug build: demo kirish. Email yuborilmaydi; kod keyingi ekranda ko‘rsatiladi.';
 
   @override
   String get authUnavailableTitle => 'Email orqali kirish hali ulanmagan';
 
   @override
-  String get authUnavailableBody =>
-      'Barcha o‘qish kontenti mehmon uchun ochiq. Email xizmati sozlangach kirish yoqiladi.';
+  String get authUnavailableBody => 'Barcha o‘qish kontenti mehmon uchun ochiq. Email xizmati sozlangach kirish yoqiladi.';
 
   @override
   String get authContinueGuest => 'Mehmon sifatida davom etish';
@@ -147,8 +139,7 @@ class AppLocalizationsUz extends AppLocalizations {
   }
 
   @override
-  String get authGenericError =>
-      'Nimadir xato ketdi. Ulanishni tekshirib, qayta urinib ko‘ring.';
+  String get authGenericError => 'Nimadir xato ketdi. Ulanishni tekshirib, qayta urinib ko‘ring.';
 
   @override
   String get otpTitle => 'Emailni tasdiqlash';
@@ -201,12 +192,10 @@ class AppLocalizationsUz extends AppLocalizations {
   String get rolesTitle => 'Sizga mos ish maydoni';
 
   @override
-  String get rolesSubtitle =>
-      'Asosiy yo‘nalishni tanlang. Keyin o‘zgartirish mumkin.';
+  String get rolesSubtitle => 'Asosiy yo‘nalishni tanlang. Keyin o‘zgartirish mumkin.';
 
   @override
-  String get rolesNote =>
-      'Rol faqat bosh sahifani moslaydi. U boshqa guruhlar yoki ma’lumotlarga ruxsat bermaydi.';
+  String get rolesNote => 'Rol faqat bosh sahifani moslaydi. U boshqa guruhlar yoki ma’lumotlarga ruxsat bermaydi.';
 
   @override
   String get roleDoctor => 'Shifokor';
@@ -242,8 +231,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get homeHeroDoctorTitle => 'Natijani kontekst bilan tushuning';
 
   @override
-  String get homeHeroDoctorBody =>
-      'Tahlil, ta’sir qiluvchi omillar va bog‘liq tekshiruvlar.';
+  String get homeHeroDoctorBody => 'Tahlil, ta’sir qiluvchi omillar va bog‘liq tekshiruvlar.';
 
   @override
   String get homeHeroDoctorCta => 'Tahlillarni ochish';
@@ -255,8 +243,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get condGuideEyebrow => 'Shifokor qo‘llanmasi';
 
   @override
-  String get condGuideBody =>
-      'Har bir holat uchun: avval qaysi tahlil, keyin qaysi — va natija nimaga ishora qilishi mumkin.';
+  String get condGuideBody => 'Har bir holat uchun: avval qaysi tahlil, keyin qaysi — va natija nimaga ishora qilishi mumkin.';
 
   @override
   String get condGuideSearch => 'Kasallik yoki tahlilni qidiring…';
@@ -275,8 +262,7 @@ class AppLocalizationsUz extends AppLocalizations {
   }
 
   @override
-  String get condListSubtitle =>
-      'Qaysi holatda qaysi tahlil — va natija nimaga ishora qilishi mumkin';
+  String get condListSubtitle => 'Qaysi holatda qaysi tahlil — va natija nimaga ishora qilishi mumkin';
 
   @override
   String get condSearchLabel => 'Holatlarni qidirish';
@@ -288,8 +274,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get condEmptyTitle => 'Holat topilmadi';
 
   @override
-  String get condEmptyBody =>
-      'Boshqa nom, so‘zlashuv nomi yoki tahlil nomi bilan qidiring (masalan, «qand kasalligi»).';
+  String get condEmptyBody => 'Boshqa nom, so‘zlashuv nomi yoki tahlil nomi bilan qidiring (masalan, «qand kasalligi»).';
 
   @override
   String get condTierFirstLine => 'Birinchi navbatda';
@@ -301,30 +286,25 @@ class AppLocalizationsUz extends AppLocalizations {
   String get condTierMonitoring => 'Kuzatuv';
 
   @override
-  String get condTierFirstLineHint =>
-      'Holat shubha qilinganda avval buyuriladi';
+  String get condTierFirstLineHint => 'Holat shubha qilinganda avval buyuriladi';
 
   @override
-  String get condTierAdditionalHint =>
-      'Aniqlashtirish, sababni izlash yoki farqlash uchun';
+  String get condTierAdditionalHint => 'Aniqlashtirish, sababni izlash yoki farqlash uchun';
 
   @override
-  String get condTierMonitoringHint =>
-      'Tashxisdan keyin yoki davolash davomida';
+  String get condTierMonitoringHint => 'Tashxisdan keyin yoki davolash davomida';
 
   @override
   String get condPatternsTitle => 'Natija naqshlari';
 
   @override
-  String get condPatternsHint =>
-      '«Mana bu chiqsa — mana bu ehtimoli bor». Talqin ehtimoliy: yakuniy xulosani shifokor klinik ma’lumotlar bilan birga chiqaradi.';
+  String get condPatternsHint => '«Mana bu chiqsa — mana bu ehtimoli bor». Talqin ehtimoliy: yakuniy xulosani shifokor klinik ma’lumotlar bilan birga chiqaradi.';
 
   @override
   String get condNotDiagnosticTitle => 'Tashxis qo‘yish vositasi emas';
 
   @override
-  String get condNotDiagnosticBody =>
-      'Qo‘llanma tahlillarni rejalashtirishga yordam beradi. Klinik baholash va yakuniy qaror — shifokorda. Matn manbalarga asoslangan qoralama, mustaqil ekspert tekshiruvi kutilmoqda.';
+  String get condNotDiagnosticBody => 'Qo‘llanma tahlillarni rejalashtirishga yordam beradi. Klinik baholash va yakuniy qaror — shifokorda. Matn manbalarga asoslangan qoralama, mustaqil ekspert tekshiruvi kutilmoqda.';
 
   @override
   String get condCautionsTitle => 'E’tibor bering';
@@ -347,15 +327,13 @@ class AppLocalizationsUz extends AppLocalizations {
   }
 
   @override
-  String get condReferralFooter =>
-      'LabGuide qo‘llanmasi (qoralama). Tashxis vositasi emas — yakuniy qaror shifokorda.';
+  String get condReferralFooter => 'LabGuide qo‘llanmasi (qoralama). Tashxis vositasi emas — yakuniy qaror shifokorda.';
 
   @override
   String get condAnalyteSection => 'Qaysi holatlarda tekshiriladi';
 
   @override
-  String get condTestsEntrySub =>
-      'Holatni tanlang — kerakli tahlillar va natija naqshlari';
+  String get condTestsEntrySub => 'Holatni tanlang — kerakli tahlillar va natija naqshlari';
 
   @override
   String get condSearchSection => 'Holatlar';
@@ -402,8 +380,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get homeHeroLabTitle => 'Ishonchli laboratoriya amaliyoti';
 
   @override
-  String get homeHeroLabBody =>
-      'Namuna, metodika va sifat nazorati — bir joyda.';
+  String get homeHeroLabBody => 'Namuna, metodika va sifat nazorati — bir joyda.';
 
   @override
   String get homeHeroLabCta => 'Sifat nazoratini ochish';
@@ -421,8 +398,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get homeHeroTeacherTitle => 'Bilimni darsga aylantiring';
 
   @override
-  String get homeHeroTeacherBody =>
-      'Guruhlar, izohli savollar va muddatli topshiriqlar.';
+  String get homeHeroTeacherBody => 'Guruhlar, izohli savollar va muddatli topshiriqlar.';
 
   @override
   String get homeHeroTeacherCta => 'Guruhlarni ochish';
@@ -534,8 +510,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get contentErrorTitle => 'Kontentni yuklab bo‘lmadi';
 
   @override
-  String get contentErrorBody =>
-      'Kontent paketi tekshiruvdan o‘tmadi. Tekshirilmagan ma’lumot hech qachon ko‘rsatilmaydi.';
+  String get contentErrorBody => 'Kontent paketi tekshiruvdan o‘tmadi. Tekshirilmagan ma’lumot hech qachon ko‘rsatilmaydi.';
 
   @override
   String get analyteSave => 'Saqlash';
@@ -556,16 +531,13 @@ class AppLocalizationsUz extends AppLocalizations {
   String get analyteStructureOnlyTitle => 'Kontent tayyorlanmoqda';
 
   @override
-  String get analyteStructureOnlyBody =>
-      'Bu kartada faqat tuzilma bor. Klinik matn manbalar bilan va mustaqil mutaxassis tekshiruvidan keyin qo‘shiladi — umumiy matn tayyor deb ko‘rsatilmaydi.';
+  String get analyteStructureOnlyBody => 'Bu kartada faqat tuzilma bor. Klinik matn manbalar bilan va mustaqil mutaxassis tekshiruvidan keyin qo‘shiladi — umumiy matn tayyor deb ko‘rsatilmaydi.';
 
   @override
-  String get analyteSampleNotice =>
-      'Ko‘rsatilgan manbalarga tayangan o‘quv namuna. Mustaqil mutaxassis tekshiruvi kutilmoqda — klinik qaror uchun emas.';
+  String get analyteSampleNotice => 'Ko‘rsatilgan manbalarga tayangan o‘quv namuna. Mustaqil mutaxassis tekshiruvi kutilmoqda — klinik qaror uchun emas.';
 
   @override
-  String get analyteNotWritten =>
-      'Hali yozilmagan: manba va tekshiruv talab qilinadi.';
+  String get analyteNotWritten => 'Hali yozilmagan: manba va tekshiruv talab qilinadi.';
 
   @override
   String get analyteAtAGlance => 'Bir qarashda';
@@ -589,15 +561,13 @@ class AppLocalizationsUz extends AppLocalizations {
   String get analyteRefIntervals => 'Referens intervallar';
 
   @override
-  String get analyteRefIntervalNone =>
-      'Bu yerda referens interval berilmagan. Laboratoriyangiz blankidagi intervaldan foydalaning: u metod, namuna va populyatsiyaga bog‘liq.';
+  String get analyteRefIntervalNone => 'Bu yerda referens interval berilmagan. Laboratoriyangiz blankidagi intervaldan foydalaning: u metod, namuna va populyatsiyaga bog‘liq.';
 
   @override
   String get analyteDecisionLimits => 'Diagnostik chegaralar';
 
   @override
-  String get analyteDecisionNotRef =>
-      'Diagnostik chegaralar laboratoriya referens intervali emas.';
+  String get analyteDecisionNotRef => 'Diagnostik chegaralar laboratoriya referens intervali emas.';
 
   @override
   String analyteSiNote(String unit, String mass) {
@@ -610,8 +580,7 @@ class AppLocalizationsUz extends AppLocalizations {
   }
 
   @override
-  String get analyteNoInterpretation =>
-      'LabGuide alohida natijani talqin qilmaydi, tashxis yoki doza taklif qilmaydi.';
+  String get analyteNoInterpretation => 'LabGuide alohida natijani talqin qilmaydi, tashxis yoki doza taklif qilmaydi.';
 
   @override
   String get analyteSources => 'Manbalar';
@@ -622,8 +591,7 @@ class AppLocalizationsUz extends AppLocalizations {
   }
 
   @override
-  String get analyteReuseRightsVerify =>
-      'Foydalanish huquqi: tarqatishdan oldin tekshirilishi kerak';
+  String get analyteReuseRightsVerify => 'Foydalanish huquqi: tarqatishdan oldin tekshirilishi kerak';
 
   @override
   String get analyteReview => 'Tekshiruv holati';
@@ -733,8 +701,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get labInstruments => 'Apparatlar va metodikalar';
 
   @override
-  String get labInstrumentsSub =>
-      'Biokimyo · gematologiya · immunokimyo · siydik';
+  String get labInstrumentsSub => 'Biokimyo · gematologiya · immunokimyo · siydik';
 
   @override
   String get labMicroscopySub => 'Tasvir va tuzilmalarni solishtirish';
@@ -770,16 +737,13 @@ class AppLocalizationsUz extends AppLocalizations {
   String get calCheck => 'Moslikni tekshirish';
 
   @override
-  String get calFieldsRequired =>
-      'Model, reagent REF va IFU versiyasini kiriting.';
+  String get calFieldsRequired => 'Model, reagent REF va IFU versiyasini kiriting.';
 
   @override
-  String get calNoMatchTitle =>
-      'Bu kombinatsiya uchun tasdiqlangan yo‘riqnoma yo‘q';
+  String get calNoMatchTitle => 'Bu kombinatsiya uchun tasdiqlangan yo‘riqnoma yo‘q';
 
   @override
-  String get calNoMatchBody =>
-      'Kalibrlash parametrlari faqat ishlab chiqaruvchi, model, reagent REF, IFU versiyasi va kalibrator lotiga mos tasdiqlangan IFUdan ko‘rsatiladi. Ishlab chiqaruvchining amaldagi IFUsidan foydalaning.';
+  String get calNoMatchBody => 'Kalibrlash parametrlari faqat ishlab chiqaruvchi, model, reagent REF, IFU versiyasi va kalibrator lotiga mos tasdiqlangan IFUdan ko‘rsatiladi. Ishlab chiqaruvchining amaldagi IFUsidan foydalaning.';
 
   @override
   String calCatalogCount(int count) {
@@ -787,8 +751,7 @@ class AppLocalizationsUz extends AppLocalizations {
   }
 
   @override
-  String get calBrandWarning =>
-      'Brend nomi (masalan, Mindray yoki HUMAN) barcha modellar bir xil degani emas. Reagent IFU va apparat qo‘llanmasi alohida hujjatlar.';
+  String get calBrandWarning => 'Brend nomi (masalan, Mindray yoki HUMAN) barcha modellar bir xil degani emas. Reagent IFU va apparat qo‘llanmasi alohida hujjatlar.';
 
   @override
   String get calWorkflow => 'Ish ketma-ketligi';
@@ -812,8 +775,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get calStep6 => 'Qaydlar va muammolarni tekshirish';
 
   @override
-  String get calNoServiceCodes =>
-      'Servis kodlari va xavfsizlikni chetlab o‘tuvchi usullar kiritilmaydi.';
+  String get calNoServiceCodes => 'Servis kodlari va xavfsizlikni chetlab o‘tuvchi usullar kiritilmaydi.';
 
   @override
   String get qcTitle => 'Sifat nazorati';
@@ -822,23 +784,19 @@ class AppLocalizationsUz extends AppLocalizations {
   String get qcChartTitle => 'Levey–Jennings';
 
   @override
-  String get qcChartBody =>
-      'Grafik uchun test, nazorat loti, daraja, o‘rtacha qiymat va SD kerak. Uydirma natijalar chizilmaydi.';
+  String get qcChartBody => 'Grafik uchun test, nazorat loti, daraja, o‘rtacha qiymat va SD kerak. Uydirma natijalar chizilmaydi.';
 
   @override
   String get qcEmptyTitle => 'Hali nazorat qaydlari yo‘q';
 
   @override
-  String get qcEmptyBody =>
-      'Levey–Jennings grafigini boshlash uchun nazorat darajalari bilan test qo‘shing. Ma’lumotlar faqat shu qurilmada saqlanadi.';
+  String get qcEmptyBody => 'Levey–Jennings grafigini boshlash uchun nazorat darajalari bilan test qo‘shing. Ma’lumotlar faqat shu qurilmada saqlanadi.';
 
   @override
-  String get qcIntro =>
-      'Har bir nazorat darajasining maqsadli o‘rtachasi va SD sini kiriting, so‘ng har bir seriyani qayd eting. Ilova Westgard qoidalarini tekshiradi; maqsadli qiymat yoki natija to‘qimaydi.';
+  String get qcIntro => 'Har bir nazorat darajasining maqsadli o‘rtachasi va SD sini kiriting, so‘ng har bir seriyani qayd eting. Ilova Westgard qoidalarini tekshiradi; maqsadli qiymat yoki natija to‘qimaydi.';
 
   @override
-  String get qcLoadError =>
-      'Saqlangan QC ma’lumotlarini o‘qib bo‘lmadi. Hech narsa ustidan yozilmadi.';
+  String get qcLoadError => 'Saqlangan QC ma’lumotlarini o‘qib bo‘lmadi. Hech narsa ustidan yozilmadi.';
 
   @override
   String get qcAddSet => 'Test qo‘shish';
@@ -903,12 +861,10 @@ class AppLocalizationsUz extends AppLocalizations {
   String get qcSave => 'Saqlash';
 
   @override
-  String get qcTargetNote =>
-      'Westgard va boshq. (1981) o‘rtacha va SD ni laboratoriyaning o‘z nazorat o‘lchovlaridan hisoblaydi — dastlab taxminan 20 ta (kuniga bitta seriya), so‘ng ma’lumot ko‘paygani sari qayta hisoblanadi. Ilova bu qiymatlarni bermaydi.';
+  String get qcTargetNote => 'Westgard va boshq. (1981) o‘rtacha va SD ni laboratoriyaning o‘z nazorat o‘lchovlaridan hisoblaydi — dastlab taxminan 20 ta (kuniga bitta seriya), so‘ng ma’lumot ko‘paygani sari qayta hisoblanadi. Ilova bu qiymatlarni bermaydi.';
 
   @override
-  String get qcManufacturerWarning =>
-      'Ishlab chiqaruvchi qiymatlari faqat yo‘l-yo‘riq; Westgard darslari laboratoriyaning o‘z nazorat ma’lumotlaridan hisoblangan chegaralarni tavsiya qiladi — varaqadagi oraliqlar ko‘pincha juda keng.';
+  String get qcManufacturerWarning => 'Ishlab chiqaruvchi qiymatlari faqat yo‘l-yo‘riq; Westgard darslari laboratoriyaning o‘z nazorat ma’lumotlaridan hisoblangan chegaralarni tavsiya qiladi — varaqadagi oraliqlar ko‘pincha juda keng.';
 
   @override
   String get qcErrName => 'Test nomini kiriting.';
@@ -994,8 +950,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get qcChangeTarget => 'Maqsad yoki lotni almashtirish';
 
   @override
-  String get qcChangeTargetBody =>
-      'Yangi nazorat loti boshlanganda yoki laboratoriya o‘rtacha va SD ni qayta hisoblaganda ishlating. Yangi qiymatlar tanlangan vaqtdan (odatda hozirdan) amal qiladi; oldingi seriyalar o‘sha paytdagi maqsad bilan baholanishda davom etadi.';
+  String get qcChangeTargetBody => 'Yangi nazorat loti boshlanganda yoki laboratoriya o‘rtacha va SD ni qayta hisoblaganda ishlating. Yangi qiymatlar tanlangan vaqtdan (odatda hozirdan) amal qiladi; oldingi seriyalar o‘sha paytdagi maqsad bilan baholanishda davom etadi.';
 
   @override
   String get qcErrTarget => 'O‘rtacha va noldan katta SD kiriting.';
@@ -1011,8 +966,7 @@ class AppLocalizationsUz extends AppLocalizations {
   }
 
   @override
-  String get qcRulesSource =>
-      'Qoidalar: Westgard ko‘p qoidali tartibi (Westgard JO va boshq., Clin Chem 1981; doi:10.1093/clinchem/27.3.493). O‘rganish va tekshirish vositasi — laboratoriyangizning QC tartibini almashtirmaydi.';
+  String get qcRulesSource => 'Qoidalar: Westgard ko‘p qoidali tartibi (Westgard JO va boshq., Clin Chem 1981; doi:10.1093/clinchem/27.3.493). O‘rganish va tekshirish vositasi — laboratoriyangizning QC tartibini almashtirmaydi.';
 
   @override
   String get qcGuidesTitle => 'Yo‘riqnomalar';
@@ -1085,8 +1039,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get qcRunTimeNow => 'hozir';
 
   @override
-  String get qcRunTimeHint =>
-      'Kechikib kiritilgan seriya uchun haqiqiy o‘lchash vaqtini tanlang — qoidalar seriyalarni vaqt tartibida tekshiradi.';
+  String get qcRunTimeHint => 'Kechikib kiritilgan seriya uchun haqiqiy o‘lchash vaqtini tanlang — qoidalar seriyalarni vaqt tartibida tekshiradi.';
 
   @override
   String qcShowAllRuns(int count) {
@@ -1094,8 +1047,7 @@ class AppLocalizationsUz extends AppLocalizations {
   }
 
   @override
-  String get qcRejectedExcluded =>
-      'Keyingi qoidalar va statistikada ishlatilmaydi';
+  String get qcRejectedExcluded => 'Keyingi qoidalar va statistikada ishlatilmaydi';
 
   @override
   String qcAtEntry(String verdict) {
@@ -1114,8 +1066,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get qcBackupTitle => 'Zaxira nusxa';
 
   @override
-  String get qcBackupBody =>
-      'QC ma’lumotlari faqat shu qurilmada saqlanadi. Zaxira nusxani (JSON) nusxalab, xavfsiz joyda saqlang; boshqa qurilmada buferdan tiklash mumkin.';
+  String get qcBackupBody => 'QC ma’lumotlari faqat shu qurilmada saqlanadi. Zaxira nusxani (JSON) nusxalab, xavfsiz joyda saqlang; boshqa qurilmada buferdan tiklash mumkin.';
 
   @override
   String get qcBackupCopy => 'Zaxira nusxani nusxalash';
@@ -1147,8 +1098,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get qcDiscard => 'O‘qib bo‘lmagan ma’lumotni o‘chirish';
 
   @override
-  String get qcDiscardConfirm =>
-      'Avval saqlangan matnni nusxalab oling. O‘chirilgandan keyin uni qaytarib bo‘lmaydi.';
+  String get qcDiscardConfirm => 'Avval saqlangan matnni nusxalab oling. O‘chirilgandan keyin uni qaytarib bo‘lmaydi.';
 
   @override
   String get preTitle => 'Namuna yo‘li';
@@ -1169,8 +1119,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get preStep5 => 'Tashish va qabul qilish';
 
   @override
-  String get preNotice =>
-      'Probirka rangi, vaqt va harorat aniq probirka, metod va yo‘riqnomaga bog‘lanadi. Yuqoridagi muddatlar — JSST jadvalidan umumiy yo‘naltirish; laboratoriyangiz qoidasi ustun.';
+  String get preNotice => 'Probirka rangi, vaqt va harorat aniq probirka, metod va yo‘riqnomaga bog‘lanadi. Yuqoridagi muddatlar — JSST jadvalidan umumiy yo‘naltirish; laboratoriyangiz qoidasi ustun.';
 
   @override
   String get diffTitle => 'Leykoformula';
@@ -1179,15 +1128,13 @@ class AppLocalizationsUz extends AppLocalizations {
   String get diffSubtitle => 'Hujayralarni tanish, sanash, talqin';
 
   @override
-  String get diffLabCardBody =>
-      'Qo‘lda sanash hisoblagichi, hujayralar atlasi va talqin';
+  String get diffLabCardBody => 'Qo‘lda sanash hisoblagichi, hujayralar atlasi va talqin';
 
   @override
   String get diffHeroTitle => 'Leykoformulani ishonch bilan o‘qing';
 
   @override
-  String get diffHeroBody =>
-      'Hujayralar sxemasi, katta tugmali hisoblagich, talqin va surtma texnikasi — bir joyda.';
+  String get diffHeroBody => 'Hujayralar sxemasi, katta tugmali hisoblagich, talqin va surtma texnikasi — bir joyda.';
 
   @override
   String get diffStartCount => 'Sanashni boshlash';
@@ -1209,15 +1156,13 @@ class AppLocalizationsUz extends AppLocalizations {
   String get diffConfusionsTitle => 'Ko‘p adashtiriladiganlar';
 
   @override
-  String get diffConfusionsSub =>
-      'Reaktiv limfotsit yoki monotsit? Tayoqcha yoki segment?';
+  String get diffConfusionsSub => 'Reaktiv limfotsit yoki monotsit? Tayoqcha yoki segment?';
 
   @override
   String get diffCounterTitle => 'Sanash hisoblagichi';
 
   @override
-  String get diffCounterSub =>
-      'Bosish +1, uzoq bosish −1; 100 yoki 200 hujayra';
+  String get diffCounterSub => 'Bosish +1, uzoq bosish −1; 100 yoki 200 hujayra';
 
   @override
   String get diffHistoryTitle => 'Saqlangan natijalar';
@@ -1231,8 +1176,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get diffInterpretTitle => 'Talqin';
 
   @override
-  String get diffInterpretSub =>
-      'Chapga siljish, neytrofiliya, limfotsitoz va boshqalar';
+  String get diffInterpretSub => 'Chapga siljish, neytrofiliya, limfotsitoz va boshqalar';
 
   @override
   String get diffTechniqueTitle => 'Surtma texnikasi va xatolar';
@@ -1249,8 +1193,7 @@ class AppLocalizationsUz extends AppLocalizations {
   }
 
   @override
-  String get diffLearnSub =>
-      'Hujayralar atlasi, hisoblagich va “Bu qaysi hujayra?” mashqi';
+  String get diffLearnSub => 'Hujayralar atlasi, hisoblagich va “Bu qaysi hujayra?” mashqi';
 
   @override
   String get diffSourcesTitle => 'Manbalar';
@@ -1259,16 +1202,13 @@ class AppLocalizationsUz extends AppLocalizations {
   String get diffDraftTag => 'Draft · mutaxassis tekshiruvida';
 
   @override
-  String get diffDraftNote =>
-      'Bo‘lim mutaxassis tekshiruvidan o‘tmagan. Natija tashxis emas; referens oraliqlar — laboratoriyangiz blankasida.';
+  String get diffDraftNote => 'Bo‘lim mutaxassis tekshiruvidan o‘tmagan. Natija tashxis emas; referens oraliqlar — laboratoriyangiz blankasida.';
 
   @override
-  String get diffSchematicCaption =>
-      'Sxematik rasm (LabGuide chizgan) — mikrofoto emas';
+  String get diffSchematicCaption => 'Sxematik rasm (LabGuide chizgan) — mikrofoto emas';
 
   @override
-  String get diffScaleNote =>
-      'Barcha sxemalar bir xil masshtabda; atrofdagi eritrotsitlar (~7,5 mkm) o‘lchamni taqqoslash uchun.';
+  String get diffScaleNote => 'Barcha sxemalar bir xil masshtabda; atrofdagi eritrotsitlar (~7,5 mkm) o‘lchamni taqqoslash uchun.';
 
   @override
   String get diffRelatedCards => 'Tahlil kartalari';
@@ -1295,8 +1235,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get diffReferTitle => 'Shifokor yoki gematologga yuboring';
 
   @override
-  String get diffReferBody =>
-      'Blast yoki aniqlab bo‘lmagan hujayra ko‘rsangiz — o‘zingiz talqin qilmang. Surtmani laboratoriyangiz tartibiga ko‘ra gematolog yoki shifokor ko‘rib chiqsin.';
+  String get diffReferBody => 'Blast yoki aniqlab bo‘lmagan hujayra ko‘rsangiz — o‘zingiz talqin qilmang. Surtmani laboratoriyangiz tartibiga ko‘ra gematolog yoki shifokor ko‘rib chiqsin.';
 
   @override
   String get diffCompareA => 'Chapda';
@@ -1351,8 +1290,7 @@ class AppLocalizationsUz extends AppLocalizations {
   }
 
   @override
-  String get diffDoneBody =>
-      'Sanash to‘xtatildi. Natijani tekshiring, saqlang yoki nusxalang.';
+  String get diffDoneBody => 'Sanash to‘xtatildi. Natijani tekshiring, saqlang yoki nusxalang.';
 
   @override
   String get diffBlocked => 'Maqsadga yetildi — bosish qo‘shilmadi';
@@ -1373,8 +1311,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get diffAbsNeedWbc => 'Mutlaq sonlar uchun WBC ni kiriting.';
 
   @override
-  String get diffOtherWarning =>
-      '“Boshqa” hujayralar sanaldi. Blast yoki noma’lum hujayra bo‘lsa — surtmani gematolog yoki shifokor ko‘rsin.';
+  String get diffOtherWarning => '“Boshqa” hujayralar sanaldi. Blast yoki noma’lum hujayra bo‘lsa — surtmani gematolog yoki shifokor ko‘rsin.';
 
   @override
   String get diffSave => 'Tarixga saqlash';
@@ -1400,8 +1337,7 @@ class AppLocalizationsUz extends AppLocalizations {
   }
 
   @override
-  String get diffCopyFooter =>
-      'LabGuide · qo‘lda sanash. Referens — laboratoriya blankasida.';
+  String get diffCopyFooter => 'LabGuide · qo‘lda sanash. Referens — laboratoriya blankasida.';
 
   @override
   String diffWbcLine(String value) {
@@ -1420,8 +1356,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get diffEfEntry => 'Mikroskop rejimi: ko‘rmasdan sanash';
 
   @override
-  String get diffEfEntrySub =>
-      'Ekran katta zonalarga bo‘linadi; har bosishda tovush va tebranish';
+  String get diffEfEntrySub => 'Ekran katta zonalarga bo‘linadi; har bosishda tovush va tebranish';
 
   @override
   String get diffEfTitle => 'Ko‘rmasdan sanash';
@@ -1475,8 +1410,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get diffEfHowTitle => 'Qanday ishlaydi';
 
   @override
-  String get diffEfHowBody =>
-      'Telefonni stolga qo‘ying va mikroskopdan ko‘z uzmasdan zonalarni bosing. Har bosishda qisqa tovush va hujayra turiga xos tebranish; har 10-hujayrada — ikki tonli signal va uzun tebranish; maqsadga (100 yoki 200) yetganda — uch notali signal va sanash to‘xtaydi. Sanash oddiy hisoblagich bilan umumiy.';
+  String get diffEfHowBody => 'Telefonni stolga qo‘ying va mikroskopdan ko‘z uzmasdan zonalarni bosing. Har bosishda qisqa tovush va hujayra turiga xos tebranish; har 10-hujayrada — ikki tonli signal va uzun tebranish; maqsadga (100 yoki 200) yetganda — uch notali signal va sanash to‘xtaydi. Sanash oddiy hisoblagich bilan umumiy.';
 
   @override
   String get diffEfZonesTitle => 'Zonalar';
@@ -1491,8 +1425,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get diffEfHandLeft => 'Chap qo‘l';
 
   @override
-  String get diffEfHandHint =>
-      '1-zona bosh barmoqqa eng yaqin — pastki burchakda.';
+  String get diffEfHandHint => '1-zona bosh barmoqqa eng yaqin — pastki burchakda.';
 
   @override
   String get diffEfOtherZone => '“Boshqa (blast…)” zonasi';
@@ -1504,15 +1437,13 @@ class AppLocalizationsUz extends AppLocalizations {
   String get diffEfUndoSwitch => 'Tepada katta “Bekor” zonasi';
 
   @override
-  String get diffEfUndoSwitchSub =>
-      'Ikki barmoq bilan bosish har doim oxirgi bosishni bekor qiladi';
+  String get diffEfUndoSwitchSub => 'Ikki barmoq bilan bosish har doim oxirgi bosishni bekor qiladi';
 
   @override
   String get diffEfOrderTitle => 'Zonalar tartibi';
 
   @override
-  String get diffEfOrderHint =>
-      '1 — bosh barmoqqa eng yaqin zona. Ko‘p uchraydigan hujayralarni yuqoriga qo‘ying.';
+  String get diffEfOrderHint => '1 — bosh barmoqqa eng yaqin zona. Ko‘p uchraydigan hujayralarni yuqoriga qo‘ying.';
 
   @override
   String diffEfMoveUp(String cell) {
@@ -1537,15 +1468,13 @@ class AppLocalizationsUz extends AppLocalizations {
   String get diffEfHaptics => 'Tebranish';
 
   @override
-  String get diffEfHapticsSub =>
-      'Telefon sozlamalarida tebranish o‘chirilgan bo‘lsa sezilmaydi';
+  String get diffEfHapticsSub => 'Telefon sozlamalarida tebranish o‘chirilgan bo‘lsa sezilmaydi';
 
   @override
   String get diffEfPatternsTitle => 'Tebranish naqshlari';
 
   @override
-  String get diffEfPatternsHint =>
-      'Qatorni bosib sinab ko‘ring. Sezilishi telefon modeliga bog‘liq.';
+  String get diffEfPatternsHint => 'Qatorni bosib sinab ko‘ring. Sezilishi telefon modeliga bog‘liq.';
 
   @override
   String diffEfPattern(int count, String strength) {
@@ -1583,8 +1512,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get diffEfAwake => 'Ekranni yoqiq ushlash';
 
   @override
-  String get diffEfAwakeSub =>
-      'Sanash paytida ekran o‘chmaydi — batareya tezroq sarflanadi';
+  String get diffEfAwakeSub => 'Sanash paytida ekran o‘chmaydi — batareya tezroq sarflanadi';
 
   @override
   String get diffVoiceTitle => 'Ovoz bilan sanash';
@@ -1596,8 +1524,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get diffVoiceSwitch => 'Ovozli buyruqlar';
 
   @override
-  String get diffVoiceSwitchSub =>
-      'Hujayra nomini ayting — +1; “bekor” — oxirgi bosishni bekor qiladi';
+  String get diffVoiceSwitchSub => 'Hujayra nomini ayting — +1; “bekor” — oxirgi bosishni bekor qiladi';
 
   @override
   String get diffVoiceLangLabel => 'Buyruqlar tili';
@@ -1615,8 +1542,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get diffVoiceLangEn => 'Inglizcha';
 
   @override
-  String get diffVoiceLangHint =>
-      'Avtomatik: ilova tili qurilmada mavjud bo‘lmasa — rus, keyin ingliz tili. O‘zbek tili Apple diktovka tillari ro‘yxatida yo‘q; Android’da qurilmaga bog‘liq.';
+  String get diffVoiceLangHint => 'Avtomatik: ilova tili qurilmada mavjud bo‘lmasa — rus, keyin ingliz tili. O‘zbek tili Apple diktovka tillari ro‘yxatida yo‘q; Android’da qurilmaga bog‘liq.';
 
   @override
   String get diffVoiceWordsTitle => 'Qaysi so‘zlarni aytish kerak';
@@ -1625,20 +1551,16 @@ class AppLocalizationsUz extends AppLocalizations {
   String get diffVoicePrivacyTitle => 'Ovoz qayerda qayta ishlanadi';
 
   @override
-  String get diffVoicePrivacyIos =>
-      'iOS: nutq faqat qurilmada tanilishi talab qilinadi. Bu til uchun qurilmada tanish bo‘lmasa, rejim ishlamaydi — ovoz serverga yuborilmaydi. LabGuide ovozni saqlamaydi va hech qayerga yubormaydi.';
+  String get diffVoicePrivacyIos => 'iOS: nutq faqat qurilmada tanilishi talab qilinadi. Bu til uchun qurilmada tanish bo‘lmasa, rejim ishlamaydi — ovoz serverga yuborilmaydi. LabGuide ovozni saqlamaydi va hech qayerga yubormaydi.';
 
   @override
-  String get diffVoicePrivacyAndroid =>
-      'Android: nutq faqat telefonning o‘zida (oflayn) tanilganda ishlaydi — Android 12+ va qurilmada oflayn tanish kerak. Bo‘lmasa rejim yoqilmaydi, ovoz serverga yuborilmaydi. LabGuide ovozni saqlamaydi va hech qayerga yubormaydi.';
+  String get diffVoicePrivacyAndroid => 'Android: nutq faqat telefonning o‘zida (oflayn) tanilganda ishlaydi — Android 12+ va qurilmada oflayn tanish kerak. Bo‘lmasa rejim yoqilmaydi, ovoz serverga yuborilmaydi. LabGuide ovozni saqlamaydi va hech qayerga yubormaydi.';
 
   @override
-  String get diffVoiceNoNames =>
-      'Faqat hujayra nomlarini ayting — bemor ismi yoki boshqa ma’lumotlarni aytmang.';
+  String get diffVoiceNoNames => 'Faqat hujayra nomlarini ayting — bemor ismi yoki boshqa ma’lumotlarni aytmang.';
 
   @override
-  String get diffVoiceAccuracy =>
-      'Tanish aniqligi shovqin, talaffuz va qurilmaga bog‘liq. Har buyruqdan keyin signalni tinglang; xato bo‘lsa “bekor” deng. Natijani saqlashdan oldin tekshiring.';
+  String get diffVoiceAccuracy => 'Tanish aniqligi shovqin, talaffuz va qurilmaga bog‘liq. Har buyruqdan keyin signalni tinglang; xato bo‘lsa “bekor” deng. Natijani saqlashdan oldin tekshiring.';
 
   @override
   String get diffVoiceConsentTitle => 'Ovozli buyruqlarni yoqasizmi?';
@@ -1670,20 +1592,16 @@ class AppLocalizationsUz extends AppLocalizations {
   }
 
   @override
-  String get diffVoicePermissionDenied =>
-      'Mikrofon yoki nutqni tanishga ruxsat berilmagan, shuning uchun ovozli buyruqlar ishlamaydi. Ruxsatni telefon sozlamalarida LabGuide uchun berish mumkin. Zonalar bilan sanash ishlayveradi.';
+  String get diffVoicePermissionDenied => 'Mikrofon yoki nutqni tanishga ruxsat berilmagan, shuning uchun ovozli buyruqlar ishlamaydi. Ruxsatni telefon sozlamalarida LabGuide uchun berish mumkin. Zonalar bilan sanash ishlayveradi.';
 
   @override
-  String get diffVoiceUnavailable =>
-      'Bu qurilmada nutqni tanish xizmati mavjud emas. Zonalar bilan sanash ishlayveradi.';
+  String get diffVoiceUnavailable => 'Bu qurilmada nutqni tanish xizmati mavjud emas. Zonalar bilan sanash ishlayveradi.';
 
   @override
-  String get diffVoiceLanguageUnavailable =>
-      'Tanlangan til uchun qurilmada nutqni tanish yo‘q. Sozlamalarda boshqa tilni tanlang.';
+  String get diffVoiceLanguageUnavailable => 'Tanlangan til uchun qurilmada nutqni tanish yo‘q. Sozlamalarda boshqa tilni tanlang.';
 
   @override
-  String get diffVoiceOnDeviceUnavailable =>
-      'Qurilmada (oflayn) nutqni tanish yo‘q. Ovoz serverga yuborilmasligi uchun ovozli buyruqlar o‘chirildi.';
+  String get diffVoiceOnDeviceUnavailable => 'Qurilmada (oflayn) nutqni tanish yo‘q. Ovoz serverga yuborilmasligi uchun ovozli buyruqlar o‘chirildi.';
 
   @override
   String get diffVoiceFailed => 'Nutqni tanish to‘xtadi. Qayta urinib ko‘ring.';
@@ -1695,8 +1613,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get diffHistoryEmptyTitle => 'Hali saqlangan natija yo‘q';
 
   @override
-  String get diffHistoryEmptyBody =>
-      'Sanashni tugatib, “Tarixga saqlash” ni bosing.';
+  String get diffHistoryEmptyBody => 'Sanashni tugatib, “Tarixga saqlash” ni bosing.';
 
   @override
   String get diffHistoryClear => 'Hammasini o‘chirish';
@@ -1713,26 +1630,22 @@ class AppLocalizationsUz extends AppLocalizations {
   String get diffDeleted => 'Natija o‘chirildi';
 
   @override
-  String get diffHistoryLocalNote =>
-      'Natijalar faqat shu qurilmada saqlanadi va serverga yuborilmaydi. Profil → “Lokal ma’lumotlarni o‘chirish” ularni ham o‘chiradi.';
+  String get diffHistoryLocalNote => 'Natijalar faqat shu qurilmada saqlanadi va serverga yuborilmaydi. Profil → “Lokal ma’lumotlarni o‘chirish” ularni ham o‘chiradi.';
 
   @override
-  String get diffInterpretIntro =>
-      'Talqin doim referens oraliq va klinik holat bilan birga qilinadi. Referens — laboratoriyangiz blankasida; quyidagi sabablar faqat ehtimoliy, tashxis emas.';
+  String get diffInterpretIntro => 'Talqin doim referens oraliq va klinik holat bilan birga qilinadi. Referens — laboratoriyangiz blankasida; quyidagi sabablar faqat ehtimoliy, tashxis emas.';
 
   @override
   String get diffPossibleCauses => 'Ehtimoliy sabablar';
 
   @override
-  String get diffAbsNote =>
-      'Bitta tur keskin ko‘paysa, boshqalarning foizi kamayadi. Shuning uchun mutlaq sonlarga (ulush × WBC) qarang.';
+  String get diffAbsNote => 'Bitta tur keskin ko‘paysa, boshqalarning foizi kamayadi. Shuning uchun mutlaq sonlarga (ulush × WBC) qarang.';
 
   @override
   String get diffRangesTitle => 'Nega ilova “me’yor” bermaydi?';
 
   @override
-  String get diffRangesBody =>
-      'Ochiq manbalar va MDH darsligida kattalar uchun misol oraliqlar (%) turlicha. Hisobotda faqat laboratoriyangiz blankasidagi referens ishlatiladi; bolalar uchun oraliqlar yoshga qarab boshqacha.';
+  String get diffRangesBody => 'Ochiq manbalar va MDH darsligida kattalar uchun misol oraliqlar (%) turlicha. Hisobotda faqat laboratoriyangiz blankasidagi referens ishlatiladi; bolalar uchun oraliqlar yoshga qarab boshqacha.';
 
   @override
   String get diffRangesWho => 'JSST 2003';
@@ -1744,23 +1657,19 @@ class AppLocalizationsUz extends AppLocalizations {
   String get diffRangesClassic => 'MDH darsligi (1984)';
 
   @override
-  String get diffRangesClassicNote =>
-      'Klassik (MDH darsliklari) oraliqlar faqat solishtirish uchun berilgan: ular hanuz ko‘p blankalarda uchraydi, lekin manbalar bir-biridan farq qiladi. Asosiy mezon — laboratoriyangiz blankasidagi referens.';
+  String get diffRangesClassicNote => 'Klassik (MDH darsliklari) oraliqlar faqat solishtirish uchun berilgan: ular hanuz ko‘p blankalarda uchraydi, lekin manbalar bir-biridan farq qiladi. Asosiy mezon — laboratoriyangiz blankasidagi referens.';
 
   @override
   String get refTitle => 'Jadvallar va algoritmlar';
 
   @override
-  String get refSub =>
-      'Anemiya, sariqlik, jigar sindromlari, parazitlar, eskirgan usullar';
+  String get refSub => 'Anemiya, sariqlik, jigar sindromlari, parazitlar, eskirgan usullar';
 
   @override
-  String get refIntro =>
-      'Kitoblar va rasmiy manbalarga asoslangan qisqa jadvallar. Har bo‘lim ostida manbalar ko‘rsatilgan.';
+  String get refIntro => 'Kitoblar va rasmiy manbalarga asoslangan qisqa jadvallar. Har bo‘lim ostida manbalar ko‘rsatilgan.';
 
   @override
-  String get refDraftNote =>
-      'Qoralama: mutaxassis tekshiruvidan o‘tmagan. Kitoblar faqat manba sifatida keltirilgan — matn va rasmlar ko‘chirilmagan. Xulosa — shifokorda.';
+  String get refDraftNote => 'Qoralama: mutaxassis tekshiruvidan o‘tmagan. Kitoblar faqat manba sifatida keltirilgan — matn va rasmlar ko‘chirilmagan. Xulosa — shifokorda.';
 
   @override
   String get refOpenSub => 'Jadval va algoritm';
@@ -1769,15 +1678,13 @@ class AppLocalizationsUz extends AppLocalizations {
   String get refNotFound => 'Bunday jadval topilmadi.';
 
   @override
-  String get analyteReuseCitationOnly =>
-      'Kitob: faqat manba sifatida keltirilgan, matn ko‘chirilmagan';
+  String get analyteReuseCitationOnly => 'Kitob: faqat manba sifatida keltirilgan, matn ko‘chirilmagan';
 
   @override
   String get diffQuizPrompt => 'Bu qaysi hujayra?';
 
   @override
-  String get diffQuizIntro =>
-      'Sxematik rasmga qarab hujayrani tanlang. Savollar har safar aralashtiriladi; javobdan keyin farqlovchi belgi ko‘rsatiladi.';
+  String get diffQuizIntro => 'Sxematik rasmga qarab hujayrani tanlang. Savollar har safar aralashtiriladi; javobdan keyin farqlovchi belgi ko‘rsatiladi.';
 
   @override
   String get diffQuizStart => 'Mashqni boshlash';
@@ -1786,15 +1693,13 @@ class AppLocalizationsUz extends AppLocalizations {
   String get diffRealSmear => 'Haqiqiy surtma';
 
   @override
-  String get diffRealSmearNote =>
-      'Mikroskopiya atlasidagi litsenziyali mikrofoto. Muallif va litsenziya — rasmni ochganda.';
+  String get diffRealSmearNote => 'Mikroskopiya atlasidagi litsenziyali mikrofoto. Muallif va litsenziya — rasmni ochganda.';
 
   @override
   String get diffAtlasRow => 'Haqiqiy qon surtmalari';
 
   @override
-  String get diffAtlasRowSub =>
-      'Mikroskopiya atlasidagi litsenziyali mikrofotolar';
+  String get diffAtlasRowSub => 'Mikroskopiya atlasidagi litsenziyali mikrofotolar';
 
   @override
   String diffQuizExtended(int count) {
@@ -1802,8 +1707,7 @@ class AppLocalizationsUz extends AppLocalizations {
   }
 
   @override
-  String get diffQuizExtendedIntro =>
-      'Rasmli savollarga qo‘shimcha: yadro, sitoplazma va donachalar tavsifidan hujayrani toping.';
+  String get diffQuizExtendedIntro => 'Rasmli savollarga qo‘shimcha: yadro, sitoplazma va donachalar tavsifidan hujayrani toping.';
 
   @override
   String get diffQuizDescribed => 'Tavsifga ko‘ra bu qaysi hujayra?';
@@ -1817,8 +1721,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get preOrderTitle => 'Probirkalar tartibi (venepunksiya)';
 
   @override
-  String get preOrderSub =>
-      'JSST 2010, 2.3-jadval (NCCLS 2003 konsensusi asosida). Laboratoriyangizning amaldagi tartibini tekshiring.';
+  String get preOrderSub => 'JSST 2010, 2.3-jadval (NCCLS 2003 konsensusi asosida). Laboratoriyangizning amaldagi tartibini tekshiring.';
 
   @override
   String preCap(String cap) {
@@ -1841,8 +1744,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get preTubeForTestTitle => 'Qaysi tahlilga qaysi probirka';
 
   @override
-  String get preTubeForTestSub =>
-      'Rang va o‘rin — yuqoridagi JSST tartibidan. Probirka turlari laboratoriyada farq qilishi mumkin.';
+  String get preTubeForTestSub => 'Rang va o‘rin — yuqoridagi JSST tartibidan. Probirka turlari laboratoriyada farq qilishi mumkin.';
 
   @override
   String preTubeSlot(String tube, int n) {
@@ -1859,8 +1761,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get preStabilityTitle => 'Namuna barqarorligi';
 
   @override
-  String get preStabilitySub =>
-      'Ajratilgan zardob yoki plazma qancha saqlanadi (JSST, WHO/DIL/LAB/99.1). Laboratoriyangiz va reagent yo‘riqnomasi ustun.';
+  String get preStabilitySub => 'Ajratilgan zardob yoki plazma qancha saqlanadi (JSST, WHO/DIL/LAB/99.1). Laboratoriyangiz va reagent yo‘riqnomasi ustun.';
 
   @override
   String get preStabilityRoom => '20–25 °C (xona)';
@@ -1872,8 +1773,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get preUrgentTitle => 'Saqlab bo‘lmaydi — darhol tekshiriladi';
 
   @override
-  String get preBooksNote =>
-      'Darsliklar (Selivanov 2005, Aripova 2007, Lyubina 1984) — qo‘shimcha manba. Raqamlar faqat JSST yoki MedlinePlus tasdiqlaganda ko‘rsatiladi.';
+  String get preBooksNote => 'Darsliklar (Selivanov 2005, Aripova 2007, Lyubina 1984) — qo‘shimcha manba. Raqamlar faqat JSST yoki MedlinePlus tasdiqlaganda ko‘rsatiladi.';
 
   @override
   String get calcTitle => 'Kalkulyatorlar';
@@ -1930,8 +1830,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get mcNechiporenko => 'Nechiporenko usuli';
 
   @override
-  String get mcNechiporenkoSub =>
-      '1 ml siydikdagi leykotsit, eritrotsit va silindrlar';
+  String get mcNechiporenkoSub => '1 ml siydikdagi leykotsit, eritrotsit va silindrlar';
 
   @override
   String get mcAddis => 'Kakovskiy–Addis usuli';
@@ -1952,8 +1851,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get mcClassicTitle => 'Klassik darslik oraliqlari';
 
   @override
-  String get mcClassicNote =>
-      'Bu referens interval, diagnostik chegara emas. Laboratoriyangiz blankasidagi oraliq asosiy; natija bu oraliq bilan avtomatik solishtirilmaydi.';
+  String get mcClassicNote => 'Bu referens interval, diagnostik chegara emas. Laboratoriyangiz blankasidagi oraliq asosiy; natija bu oraliq bilan avtomatik solishtirilmaydi.';
 
   @override
   String get mfCells => 'Sanalgan hujayralar';
@@ -2083,8 +1981,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get mfZimNight => 'Tungi porsiyalar (5–8)';
 
   @override
-  String get mfSameUnit =>
-      'Juftlikdagi ikki qiymat bir xil birlikda bo‘lsin (masalan, ikkalasi g/L, ikkalasi U/L).';
+  String get mfSameUnit => 'Juftlikdagi ikki qiymat bir xil birlikda bo‘lsin (masalan, ikkalasi g/L, ikkalasi U/L).';
 
   @override
   String get mrCellsPerUl => 'hujayra/µL';
@@ -2105,8 +2002,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get mrAbsolute => 'Mutlaq sonlar';
 
   @override
-  String get mrNoCorrection =>
-      'Yadroli eritrotsitlar kiritilmagan — WBC tuzatilmadi.';
+  String get mrNoCorrection => 'Yadroli eritrotsitlar kiritilmagan — WBC tuzatilmadi.';
 
   @override
   String get mrReticAbs => 'Mutlaq son';
@@ -2137,8 +2033,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get mrTransudate => 'Hech bir mezon bajarilmadi — transsudatga mos';
 
   @override
-  String get mrIncomplete =>
-      'Ikki mezon bajarilmadi; uchinchisi uchun LDH yuqori chegarasini kiriting';
+  String get mrIncomplete => 'Ikki mezon bajarilmadi; uchinchisi uchun LDH yuqori chegarasini kiriting';
 
   @override
   String get mrPerMlUrine => '1 ml siydikda';
@@ -2179,12 +2074,10 @@ class AppLocalizationsUz extends AppLocalizations {
   String get mrNotGiven => 'kiritilmagan';
 
   @override
-  String get mErrNoUrine =>
-      'Kamida bitta porsiyada siydik hajmi va zichligi kerak.';
+  String get mErrNoUrine => 'Kamida bitta porsiyada siydik hajmi va zichligi kerak.';
 
   @override
-  String get mErrSediment =>
-      'Cho‘kma hajmi sentrifugalangan siydikdan kam bo‘lishi kerak.';
+  String get mErrSediment => 'Cho‘kma hajmi sentrifugalangan siydikdan kam bo‘lishi kerak.';
 
   @override
   String get mrProteinRatio => 'Oqsil: suyuqlik ÷ zardob (> 0,5)';
@@ -2210,8 +2103,7 @@ class AppLocalizationsUz extends AppLocalizations {
   }
 
   @override
-  String get mErrReticGtExamined =>
-      'Retikulotsitlar ko‘rilgan eritrotsitlardan ko‘p bo‘la olmaydi.';
+  String get mErrReticGtExamined => 'Retikulotsitlar ko‘rilgan eritrotsitlardan ko‘p bo‘la olmaydi.';
 
   @override
   String mErrWhole(String field, String min, String max) {
@@ -2222,22 +2114,19 @@ class AppLocalizationsUz extends AppLocalizations {
   String get ciWhatTitle => 'Bu nima?';
 
   @override
-  String get ciWhat =>
-      'Rang ko‘rsatkichi — MDH laboratoriyalarida an’anaviy ishlatiladigan nisbiy ko‘rsatkich: bitta eritrotsitdagi gemoglobin miqdorini “normaga” nisbatan baholaydi. Eritrotsitlarning gipo-, normo- yoki giperxromligini ko‘rsatish uchun ishlatiladi.';
+  String get ciWhat => 'Rang ko‘rsatkichi — MDH laboratoriyalarida an’anaviy ishlatiladigan nisbiy ko‘rsatkich: bitta eritrotsitdagi gemoglobin miqdorini “normaga” nisbatan baholaydi. Eritrotsitlarning gipo-, normo- yoki giperxromligini ko‘rsatish uchun ishlatiladi.';
 
   @override
   String get ciWhyTitle => 'Nega ilova uni hisoblamaydi';
 
   @override
-  String get ciWhy =>
-      'Formulasi uchun biz tekshira oladigan birlamchi ochiq manba topilmadi. Ilova manbasiz raqam yoki formula bermaydi.';
+  String get ciWhy => 'Formulasi uchun biz tekshira oladigan birlamchi ochiq manba topilmadi. Ilova manbasiz raqam yoki formula bermaydi.';
 
   @override
   String get ciUseTitle => 'O‘rniga nima ishlatiladi';
 
   @override
-  String get ciUse =>
-      'Bitta eritrotsitdagi gemoglobinni MCH (o‘rtacha gemoglobin miqdori, pg) to‘g‘ridan-to‘g‘ri ifodalaydi, eritrotsitdagi gemoglobin konsentratsiyasini esa MCHC. Gematologik analizator ikkalasini ham beradi. Gipo-/giperxromiyani shu ko‘rsatkichlar va laboratoriyangiz referens intervallari bo‘yicha baholang.';
+  String get ciUse => 'Bitta eritrotsitdagi gemoglobinni MCH (o‘rtacha gemoglobin miqdori, pg) to‘g‘ridan-to‘g‘ri ifodalaydi, eritrotsitdagi gemoglobin konsentratsiyasini esa MCHC. Gematologik analizator ikkalasini ham beradi. Gipo-/giperxromiyani shu ko‘rsatkichlar va laboratoriyangiz referens intervallari bo‘yicha baholang.';
 
   @override
   String get dilC1 => 'C₁ · Boshlang‘ich konsentratsiya';
@@ -2249,8 +2138,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get dilV2 => 'V₂ · Yakuniy hajm (mL)';
 
   @override
-  String get dilNote =>
-      'C₁ va C₂ birliklari bir xil bo‘lsin. Oddiy suyultirish modeli: reaksiya, xavfsizlik va hajm o‘zgarishi hisoblanmaydi.';
+  String get dilNote => 'C₁ va C₂ birliklari bir xil bo‘lsin. Oddiy suyultirish modeli: reaksiya, xavfsizlik va hajm o‘zgarishi hisoblanmaydi.';
 
   @override
   String get dilCalculate => 'Hisoblash';
@@ -2261,8 +2149,7 @@ class AppLocalizationsUz extends AppLocalizations {
   }
 
   @override
-  String get dilResultBody =>
-      'Boshlang‘ich eritmadan olinadigan hajm. Umumiy hajmni V₂ gacha yetkazing.';
+  String get dilResultBody => 'Boshlang‘ich eritmadan olinadigan hajm. Umumiy hajmni V₂ gacha yetkazing.';
 
   @override
   String dilDiluent(String volume) {
@@ -2276,8 +2163,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get dilErrorInvalid => 'Har bir maydonga noldan katta son kiriting.';
 
   @override
-  String get dilErrorC2GtC1 =>
-      'C₂ C₁ dan katta bo‘lmaydi: suyultirish konsentratsiyani oshirmaydi.';
+  String get dilErrorC2GtC1 => 'C₂ C₁ dan katta bo‘lmaydi: suyultirish konsentratsiyani oshirmaydi.';
 
   @override
   String get dilErrorRange => 'Qiymatlar hisoblash oralig‘idan tashqarida.';
@@ -2286,8 +2172,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get ucTitle => 'Birliklarni o‘tkazish';
 
   @override
-  String get ucSubtitle =>
-      'Har bir moddaning o‘z koeffitsiyenti bor — mg/dL → mmol/L uchun bitta umumiy koeffitsiyent noto‘g‘ri.';
+  String get ucSubtitle => 'Har bir moddaning o‘z koeffitsiyenti bor — mg/dL → mmol/L uchun bitta umumiy koeffitsiyent noto‘g‘ri.';
 
   @override
   String get ucAnalyte => 'Modda';
@@ -2307,8 +2192,7 @@ class AppLocalizationsUz extends AppLocalizations {
   }
 
   @override
-  String get ucNotAvailable =>
-      'Bu modda uchun tasdiqlangan molyar massa yo‘q, shuning uchun o‘tkazish taklif qilinmaydi.';
+  String get ucNotAvailable => 'Bu modda uchun tasdiqlangan molyar massa yo‘q, shuning uchun o‘tkazish taklif qilinmaydi.';
 
   @override
   String get ucErrorInvalid => '0 yoki undan katta son kiriting.';
@@ -2371,12 +2255,10 @@ class AppLocalizationsUz extends AppLocalizations {
   String get calcOptional => 'ixtiyoriy';
 
   @override
-  String get calcCalciumCaution =>
-      'Albumin bo‘yicha tuzatilgan kalsiy ko‘pincha kalsiy holatini noto‘g‘ri baholaydi, ayniqsa albumin past bo‘lsa yoki buyrak faoliyati buzilganda. Imkon bo‘lsa, ionlashgan kalsiyni o‘lchang — u afzal.';
+  String get calcCalciumCaution => 'Albumin bo‘yicha tuzatilgan kalsiy ko‘pincha kalsiy holatini noto‘g‘ri baholaydi, ayniqsa albumin past bo‘lsa yoki buyrak faoliyati buzilganda. Imkon bo‘lsa, ionlashgan kalsiyni o‘lchang — u afzal.';
 
   @override
-  String get calcNotDiagnosis =>
-      'O‘rganish va tekshirish uchun hisob vositasi. Tashxis qo‘ymaydi: natijani klinik manzara va laboratoriyangiz referens intervallari bilan birga talqin qiling.';
+  String get calcNotDiagnosis => 'O‘rganish va tekshirish uchun hisob vositasi. Tashxis qo‘ymaydi: natijani klinik manzara va laboratoriyangiz referens intervallari bilan birga talqin qiling.';
 
   @override
   String calcUnitCheck(String field, String value, String unit) {
@@ -2432,8 +2314,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get fieldAlbumin => 'Zardob albumini';
 
   @override
-  String get fieldNormalAlbumin =>
-      'Laboratoriyangiz qabul qilgan normal albumin';
+  String get fieldNormalAlbumin => 'Laboratoriyangiz qabul qilgan normal albumin';
 
   @override
   String get fieldCalcium => 'Zardobdagi umumiy kalsiy';
@@ -2528,8 +2409,7 @@ class AppLocalizationsUz extends AppLocalizations {
   }
 
   @override
-  String get errEgfrAge =>
-      'CKD-EPI 2021 tenglamasi 18 yosh va undan katta ishtirokchilarda ishlab chiqilgan; bolalar uchun hisoblanmaydi.';
+  String get errEgfrAge => 'CKD-EPI 2021 tenglamasi 18 yosh va undan katta ishtirokchilarda ishlab chiqilgan; bolalar uchun hisoblanmaydi.';
 
   @override
   String errFriedewaldTg(String limit) {
@@ -2547,12 +2427,10 @@ class AppLocalizationsUz extends AppLocalizations {
   }
 
   @override
-  String get errHdlGeTc =>
-      'HDL xolesterin umumiy xolesteringa teng yoki undan katta bo‘lishi mumkin emas.';
+  String get errHdlGeTc => 'HDL xolesterin umumiy xolesteringa teng yoki undan katta bo‘lishi mumkin emas.';
 
   @override
-  String get errNotPositive =>
-      'Hisoblanmadi: natija musbat emas — qiymatlarni tekshiring.';
+  String get errNotPositive => 'Hisoblanmadi: natija musbat emas — qiymatlarni tekshiring.';
 
   @override
   String get errSexMissing => 'Jinsni tanlang.';
@@ -2561,8 +2439,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get micTitle => 'Mikroskopiya atlasi';
 
   @override
-  String get micSubtitle =>
-      'Siydik, qon va parazitlar — litsenziyali mikrofotolar';
+  String get micSubtitle => 'Siydik, qon va parazitlar — litsenziyali mikrofotolar';
 
   @override
   String get micAtlasError => 'Atlasni ochib bo‘lmadi';
@@ -2595,15 +2472,13 @@ class AppLocalizationsUz extends AppLocalizations {
   String get micNoResultsTitle => 'Hech narsa topilmadi';
 
   @override
-  String get micNoResultsBody =>
-      'Boshqa nom bilan yoki boshqa tilda yozib ko‘ring (uz, ru, en).';
+  String get micNoResultsBody => 'Boshqa nom bilan yoki boshqa tilda yozib ko‘ring (uz, ru, en).';
 
   @override
   String get micSections => 'Bo‘limlar';
 
   @override
-  String get micEduNotice =>
-      'O‘quv rasmlari — tashxis uchun emas. Har rasmda muallif, litsenziya va asl izoh bor. LabGuide tushuntirishlari — draft, mutaxassis tekshiruvi kutilmoqda.';
+  String get micEduNotice => 'O‘quv rasmlari — tashxis uchun emas. Har rasmda muallif, litsenziya va asl izoh bor. LabGuide tushuntirishlari — draft, mutaxassis tekshiruvi kutilmoqda.';
 
   @override
   String get micEduTag => 'O‘quv rasmi — tashxis uchun emas';
@@ -2726,16 +2601,13 @@ class AppLocalizationsUz extends AppLocalizations {
   }
 
   @override
-  String get micShareAlike =>
-      'CC BY-SA: bu rasmdan olingan moslashtirilgan nusxalar ham shu litsenziya ostida tarqatiladi.';
+  String get micShareAlike => 'CC BY-SA: bu rasmdan olingan moslashtirilgan nusxalar ham shu litsenziya ostida tarqatiladi.';
 
   @override
-  String get micCdcTerms =>
-      'Foydalanish shartlari (CDC PHIL sahifasidan, so‘zma-so‘z)';
+  String get micCdcTerms => 'Foydalanish shartlari (CDC PHIL sahifasidan, so‘zma-so‘z)';
 
   @override
-  String get micCdcFree =>
-      'Bepul manba: CDC Public Health Image Library (PHIL), wwwn.cdc.gov/phil';
+  String get micCdcFree => 'Bepul manba: CDC Public Health Image Library (PHIL), wwwn.cdc.gov/phil';
 
   @override
   String get micSameEntity => 'Shu turdagi boshqa rasmlar';
@@ -2758,8 +2630,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get micCreditsRow => 'Mualliflar va litsenziyalar';
 
   @override
-  String get micCreditsRowSub =>
-      'Har rasmning manbasi va foydalanish shartlari';
+  String get micCreditsRowSub => 'Har rasmning manbasi va foydalanish shartlari';
 
   @override
   String get micClose => 'Yopish';
@@ -2774,8 +2645,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get micZoomReset => 'Asl ko‘rinish';
 
   @override
-  String get micViewerHint =>
-      'Ikki barmoq bilan yoki ikki marta bosib kattalashtiring';
+  String get micViewerHint => 'Ikki barmoq bilan yoki ikki marta bosib kattalashtiring';
 
   @override
   String get micHeroEyebrow => 'Mashq';
@@ -2787,8 +2657,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get micQuizSubtitle => 'Mikroskopiya mashqi';
 
   @override
-  String get micQuizHeroBody =>
-      'Rasmga qarang va to‘g‘ri nomni tanlang: 4 variant, hammasi atlasdan. Javob darhol ko‘rinadi.';
+  String get micQuizHeroBody => 'Rasmga qarang va to‘g‘ri nomni tanlang: 4 variant, hammasi atlasdan. Javob darhol ko‘rinadi.';
 
   @override
   String get micQuizCta => 'Mashqni boshlash';
@@ -2815,8 +2684,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get micQuizNoBest => 'Hali natija yo‘q — birinchi raundni boshlang';
 
   @override
-  String get micQuizRules =>
-      'Variantlar faqat atlasdagi nomlardan olinadi. Aralash maydon va jurnal panellari mashqqa kirmaydi. Natija faqat shu qurilmada saqlanadi.';
+  String get micQuizRules => 'Variantlar faqat atlasdagi nomlardan olinadi. Aralash maydon va jurnal panellari mashqqa kirmaydi. Natija faqat shu qurilmada saqlanadi.';
 
   @override
   String micQuizProgress(int current, int total) {
@@ -2912,8 +2780,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get instNoResultsTitle => 'Model topilmadi';
 
   @override
-  String get instNoResultsBody =>
-      'Katalogda yo‘q apparatni pastdagi tugma bilan qo‘lda qo‘shishingiz mumkin.';
+  String get instNoResultsBody => 'Katalogda yo‘q apparatni pastdagi tugma bilan qo‘lda qo‘shishingiz mumkin.';
 
   @override
   String get instMine => 'Mening apparatlarim';
@@ -2932,15 +2799,13 @@ class AppLocalizationsUz extends AppLocalizations {
   }
 
   @override
-  String get instPlannedBody =>
-      'Bu ishlab chiqaruvchilarning modellari rasmiy manbalardan tekshirilgach qo‘shiladi.';
+  String get instPlannedBody => 'Bu ishlab chiqaruvchilarning modellari rasmiy manbalardan tekshirilgach qo‘shiladi.';
 
   @override
   String get instAddCustom => 'Ro‘yxatda yo‘q apparatni qo‘shish';
 
   @override
-  String get instAddCustomSub =>
-      'Ishlab chiqaruvchi va modelni o‘zingiz kiritasiz';
+  String get instAddCustomSub => 'Ishlab chiqaruvchi va modelni o‘zingiz kiritasiz';
 
   @override
   String get instCustomTag => 'Siz kiritgan';
@@ -2963,22 +2828,19 @@ class AppLocalizationsUz extends AppLocalizations {
   String get instStatusDevice => 'Apparat ma’lumoti mavjud';
 
   @override
-  String get instStatusDeviceSub =>
-      'Rasmiy sahifa, buklet yoki regulyator hujjatidan';
+  String get instStatusDeviceSub => 'Rasmiy sahifa, buklet yoki regulyator hujjatidan';
 
   @override
   String get instStatusIfu => 'Yo‘riqnoma mavjud';
 
   @override
-  String get instStatusIfuSub =>
-      'Rasmiy operator qo‘llanmasi versiyasi bilan solishtirilgan';
+  String get instStatusIfuSub => 'Rasmiy operator qo‘llanmasi versiyasi bilan solishtirilgan';
 
   @override
   String get instStatusExpert => 'Mutaxassis tekshirgan';
 
   @override
-  String get instStatusExpertSub =>
-      'Mustaqil laboratoriya mutaxassisi ko‘rib chiqqan';
+  String get instStatusExpertSub => 'Mustaqil laboratoriya mutaxassisi ko‘rib chiqqan';
 
   @override
   String get instStatusDone => 'bor';
@@ -3029,19 +2891,16 @@ class AppLocalizationsUz extends AppLocalizations {
   String get instMaintenance => 'Kundalik parvarish';
 
   @override
-  String get instMaintenanceNone =>
-      'Ishlab chiqaruvchi kundalik parvarish bosqichlarini ochiq e’lon qilmagan. Apparatingiz operator qo‘llanmasidagi “Maintenance” bo‘limiga amal qiling — LabGuide bosqichlarni taxmin qilmaydi.';
+  String get instMaintenanceNone => 'Ishlab chiqaruvchi kundalik parvarish bosqichlarini ochiq e’lon qilmagan. Apparatingiz operator qo‘llanmasidagi “Maintenance” bo‘limiga amal qiling — LabGuide bosqichlarni taxmin qilmaydi.';
 
   @override
-  String get instMaintenanceQuotes =>
-      'Ishlab chiqaruvchi ochiq manbada aytgani:';
+  String get instMaintenanceQuotes => 'Ishlab chiqaruvchi ochiq manbada aytgani:';
 
   @override
   String get instReagentSystem => 'Reagent tizimi';
 
   @override
-  String get instReagentOpen =>
-      'Ochiq — boshqa ishlab chiqaruvchi reagentlari uchun ham sozlash mumkin';
+  String get instReagentOpen => 'Ochiq — boshqa ishlab chiqaruvchi reagentlari uchun ham sozlash mumkin';
 
   @override
   String get instReagentPartly => 'Qisman ochiq — foydalanuvchi kanallari bor';
@@ -3058,8 +2917,7 @@ class AppLocalizationsUz extends AppLocalizations {
   }
 
   @override
-  String get instImageNone =>
-      'Litsenziyasi aniq rasm topilmadi — ishlab chiqaruvchi rasmini ruxsatsiz joylamaymiz.';
+  String get instImageNone => 'Litsenziyasi aniq rasm topilmadi — ishlab chiqaruvchi rasmini ruxsatsiz joylamaymiz.';
 
   @override
   String instImageCredit(String author, String license) {
@@ -3067,15 +2925,13 @@ class AppLocalizationsUz extends AppLocalizations {
   }
 
   @override
-  String get instIllustration =>
-      'Sxematik rasm (LabGuide chizgan) — yo‘nalishni bezash uchun, aniq apparat ko‘rinishi emas.';
+  String get instIllustration => 'Sxematik rasm (LabGuide chizgan) — yo‘nalishni bezash uchun, aniq apparat ko‘rinishi emas.';
 
   @override
   String get instImageMissing => 'Model rasmi hozircha mavjud emas';
 
   @override
-  String get instImageMissingSub =>
-      'Aynan shu modelning ruxsatli rasmi topilmadi. Tashqi ko‘rinishini ishlab chiqaruvchi sahifasida ko‘ring.';
+  String get instImageMissingSub => 'Aynan shu modelning ruxsatli rasmi topilmadi. Tashqi ko‘rinishini ishlab chiqaruvchi sahifasida ko‘ring.';
 
   @override
   String get instMakerSource => 'Ishlab chiqaruvchi manbasi';
@@ -3131,8 +2987,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get instManualVersion => 'Qo‘llanma versiyasi (ixtiyoriy)';
 
   @override
-  String get instManualVersionHint =>
-      'qo‘llanma muqovasidagi versiya yoki sana';
+  String get instManualVersionHint => 'qo‘llanma muqovasidagi versiya yoki sana';
 
   @override
   String get instSave => 'Saqlash';
@@ -3144,8 +2999,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get instRemove => 'Ro‘yxatdan olib tashlash';
 
   @override
-  String get instRemoveConfirm =>
-      'Apparat ro‘yxatdan olib tashlansinmi? Kalibrlash jurnalidagi yozuvlar qoladi.';
+  String get instRemoveConfirm => 'Apparat ro‘yxatdan olib tashlansinmi? Kalibrlash jurnalidagi yozuvlar qoladi.';
 
   @override
   String get instMaker => 'Ishlab chiqaruvchi';
@@ -3175,8 +3029,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get partnerOfficialTitle => 'Rasmiy hamkorlar';
 
   @override
-  String get partnerSectionNote =>
-      'Hamkor kompaniyalar o‘zi bergan ma’lumot. Yuqoridagi katalog ma’lumotlari, tartibi va tekshiruv holati hamkorlikka bog‘liq emas.';
+  String get partnerSectionNote => 'Hamkor kompaniyalar o‘zi bergan ma’lumot. Yuqoridagi katalog ma’lumotlari, tartibi va tekshiruv holati hamkorlikka bog‘liq emas.';
 
   @override
   String get partnerKindManufacturer => 'Ishlab chiqaruvchi';
@@ -3228,8 +3081,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get partnerNotFoundTitle => 'Hamkor topilmadi';
 
   @override
-  String get partnerNotFoundBody =>
-      'E’lon muddati tugagan yoki to‘xtatilgan bo‘lishi mumkin.';
+  String get partnerNotFoundBody => 'E’lon muddati tugagan yoki to‘xtatilgan bo‘lishi mumkin.';
 
   @override
   String get partnerContacts => 'Aloqa';
@@ -3246,75 +3098,61 @@ class AppLocalizationsUz extends AppLocalizations {
   }
 
   @override
-  String get partnerPageNote =>
-      'Bu sahifa — reklama. LabGuide hamkor mahsulotini tavsiya qilmaydi; katalog ma’lumotlari va tekshiruv holati hamkorlikka bog‘liq emas.';
+  String get partnerPageNote => 'Bu sahifa — reklama. LabGuide hamkor mahsulotini tavsiya qilmaydi; katalog ma’lumotlari va tekshiruv holati hamkorlikka bog‘liq emas.';
 
   @override
   String get partnerOfferTitle => 'Rasmiy aloqangiz — apparat kartasida';
 
   @override
-  String get partnerOfferBody =>
-      'Laboratoriya mutaxassisi apparat haqida o‘qiyotganda rasmiy distribyutor yoki servis markaziga bir bosishda qo‘ng‘iroq qila oladi. Ishlab chiqaruvchilar, rasmiy distribyutorlar va servis markazlari uchun.';
+  String get partnerOfferBody => 'Laboratoriya mutaxassisi apparat haqida o‘qiyotganda rasmiy distribyutor yoki servis markaziga bir bosishda qo‘ng‘iroq qila oladi. Ishlab chiqaruvchilar, rasmiy distribyutorlar va servis markazlari uchun.';
 
   @override
   String get partnerWhatTitle => 'Nima beriladi';
 
   @override
-  String get partnerWhatCard =>
-      'Apparat kartasida “Rasmiy hamkorlar” bo‘limi: logo, qisqa tavsif, hududlar, telefon va Telegram tugmalari.';
+  String get partnerWhatCard => 'Apparat kartasida “Rasmiy hamkorlar” bo‘limi: logo, qisqa tavsif, hududlar, telefon va Telegram tugmalari.';
 
   @override
-  String get partnerWhatCategory =>
-      'Yo‘nalish ichida (masalan, Biokimyo) ixcham “Hamkor” kartasi.';
+  String get partnerWhatCategory => 'Yo‘nalish ichida (masalan, Biokimyo) ixcham “Hamkor” kartasi.';
 
   @override
-  String get partnerWhatLabHome =>
-      'Lab bo‘limi bosh sahifasida navbat bilan bitta reklama kartasi.';
+  String get partnerWhatLabHome => 'Lab bo‘limi bosh sahifasida navbat bilan bitta reklama kartasi.';
 
   @override
-  String get partnerWhatPage =>
-      'Hamkor sahifasi: bog‘liq modellar, guvohnoma raqamlari, buklet.';
+  String get partnerWhatPage => 'Hamkor sahifasi: bog‘liq modellar, guvohnoma raqamlari, buklet.';
 
   @override
-  String get partnerWhatReport =>
-      'Hisobot: kun va joy bo‘yicha ko‘rsatilishlar va “bog‘lanish” bosilishlari (shaxsiy ma’lumotsiz).';
+  String get partnerWhatReport => 'Hisobot: kun va joy bo‘yicha ko‘rsatilishlar va “bog‘lanish” bosilishlari (shaxsiy ma’lumotsiz).';
 
   @override
   String get partnerAudienceTitle => 'Auditoriya';
 
   @override
-  String get partnerAudienceBody =>
-      'LabGuide laboratoriya mutaxassislari, shifokorlar, talabalar va ustozlar uchun — o‘zbek, rus va ingliz tillarida. Foydalanuvchilar soni va rollar taqsimotini kelishuv paytida server statistikasidan ko‘rsatamiz; taxminiy raqam aytmaymiz.';
+  String get partnerAudienceBody => 'LabGuide laboratoriya mutaxassislari, shifokorlar, talabalar va ustozlar uchun — o‘zbek, rus va ingliz tillarida. Foydalanuvchilar soni va rollar taqsimotini kelishuv paytida server statistikasidan ko‘rsatamiz; taxminiy raqam aytmaymiz.';
 
   @override
   String get partnerRulesTitle => 'Qoidalar';
 
   @override
-  String get partnerRule1 =>
-      'Har bir joyda aniq “Reklama” yoki “Hamkor” yorlig‘i turadi.';
+  String get partnerRule1 => 'Har bir joyda aniq “Reklama” yoki “Hamkor” yorlig‘i turadi.';
 
   @override
-  String get partnerRule2 =>
-      'Katalog faktlari, tartibi va tekshiruv holati hamkorlikka bog‘liq emas — pul evaziga o‘zgarmaydi.';
+  String get partnerRule2 => 'Katalog faktlari, tartibi va tekshiruv holati hamkorlikka bog‘liq emas — pul evaziga o‘zgarmaydi.';
 
   @override
-  String get partnerRule3 =>
-      'Tibbiy buyum reklamasi: apparat O‘zbekistonda ro‘yxatdan o‘tgan bo‘lishi kerak; guvohnoma raqami kartada ko‘rsatiladi.';
+  String get partnerRule3 => 'Tibbiy buyum reklamasi: apparat O‘zbekistonda ro‘yxatdan o‘tgan bo‘lishi kerak; guvohnoma raqami kartada ko‘rsatiladi.';
 
   @override
-  String get partnerRule4 =>
-      'Faqat tekshirsa bo‘ladigan ma’lumot: “eng yaxshi”, “100% aniq” kabi isbotsiz da’volar qabul qilinmaydi.';
+  String get partnerRule4 => 'Faqat tekshirsa bo‘ladigan ma’lumot: “eng yaxshi”, “100% aniq” kabi isbotsiz da’volar qabul qilinmaydi.';
 
   @override
-  String get partnerRule5 =>
-      'Foydalanuvchilarning shaxsiy ma’lumotlari hamkorga berilmaydi.';
+  String get partnerRule5 => 'Foydalanuvchilarning shaxsiy ma’lumotlari hamkorga berilmaydi.';
 
   @override
   String get partnerPriceTitle => 'Narx';
 
   @override
-  String get partnerPriceBody =>
-      'Narx kelishiladi — joylar, muddat va hududlarga qarab.';
+  String get partnerPriceBody => 'Narx kelishiladi — joylar, muddat va hududlarga qarab.';
 
   @override
   String get partnerHowTitle => 'Qanday ulanadi';
@@ -3326,12 +3164,10 @@ class AppLocalizationsUz extends AppLocalizations {
   String get partnerHow2 => 'Biz bog‘lanamiz va shartlarni kelishamiz.';
 
   @override
-  String get partnerHow3 =>
-      'Logo, tavsif (uz/ru/en), aloqa va guvohnoma raqamlarini yuborasiz.';
+  String get partnerHow3 => 'Logo, tavsif (uz/ru/en), aloqa va guvohnoma raqamlarini yuborasiz.';
 
   @override
-  String get partnerHow4 =>
-      'Tekshirilgach e’lon qilinadi; hisobotni muntazam yuboramiz.';
+  String get partnerHow4 => 'Tekshirilgach e’lon qilinadi; hisobotni muntazam yuboramiz.';
 
   @override
   String get partnerFormTitle => 'Ariza';
@@ -3361,26 +3197,22 @@ class AppLocalizationsUz extends AppLocalizations {
   String get partnerFormSend => 'Arizani yuborish';
 
   @override
-  String get partnerFormInvalid =>
-      'Kompaniya va mas’ul shaxsni kiriting, telefon yoki emailni to‘g‘ri yozing.';
+  String get partnerFormInvalid => 'Kompaniya va mas’ul shaxsni kiriting, telefon yoki emailni to‘g‘ri yozing.';
 
   @override
   String get partnerSentTitle => 'Ariza yuborildi';
 
   @override
-  String get partnerSentBody =>
-      'Javob shu sahifada, “Arizalaringiz” bo‘limida ko‘rinadi. Kerak bo‘lsa, ko‘rsatgan telefon yoki emailingiz orqali bog‘lanamiz.';
+  String get partnerSentBody => 'Javob shu sahifada, “Arizalaringiz” bo‘limida ko‘rinadi. Kerak bo‘lsa, ko‘rsatgan telefon yoki emailingiz orqali bog‘lanamiz.';
 
   @override
   String get partnerSendAnother => 'Yana ariza yuborish';
 
   @override
-  String get partnerFormSignIn =>
-      'Ariza yuborish uchun email bilan kiring — javob shu hisobga keladi.';
+  String get partnerFormSignIn => 'Ariza yuborish uchun email bilan kiring — javob shu hisobga keladi.';
 
   @override
-  String get partnerFormUnavailable =>
-      'Ariza yuborish hali ulanmagan: bu buildda server sozlanmagan.';
+  String get partnerFormUnavailable => 'Ariza yuborish hali ulanmagan: bu buildda server sozlanmagan.';
 
   @override
   String get partnerMyRequests => 'Arizalaringiz';
@@ -3462,8 +3294,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get adminPartnerLogoUpload => 'Logoni yuklash (PNG/JPEG, ≤ 1 MB)';
 
   @override
-  String get adminPartnerLogoTooLarge =>
-      'Logo 1 MB dan katta yoki PNG/JPEG emas.';
+  String get adminPartnerLogoTooLarge => 'Logo 1 MB dan katta yoki PNG/JPEG emas.';
 
   @override
   String adminPartnerSummary(String lang) {
@@ -3528,12 +3359,10 @@ class AppLocalizationsUz extends AppLocalizations {
   String get adminPartnerPausedMsg => 'To‘xtatildi';
 
   @override
-  String get adminPartnerPublishRules =>
-      'E’lon uchun: tavsif, kamida bitta aloqa va kamida bitta bog‘lanish kerak. Reklama har joyda “Reklama” yorlig‘i bilan chiqadi va katalog ma’lumotiga ta’sir qilmaydi.';
+  String get adminPartnerPublishRules => 'E’lon uchun: tavsif, kamida bitta aloqa va kamida bitta bog‘lanish kerak. Reklama har joyda “Reklama” yorlig‘i bilan chiqadi va katalog ma’lumotiga ta’sir qilmaydi.';
 
   @override
-  String get adminPartnerInvalid =>
-      'Ma’lumotni tekshiring: nom (2–120 belgi), telefon, Telegram (5–32 belgi), https havolalar, email, sanalar; e’lon uchun — tavsif, aloqa va bog‘lanish.';
+  String get adminPartnerInvalid => 'Ma’lumotni tekshiring: nom (2–120 belgi), telefon, Telegram (5–32 belgi), https havolalar, email, sanalar; e’lon uchun — tavsif, aloqa va bog‘lanish.';
 
   @override
   String get adminPartnerStats => 'Statistika';
@@ -3569,8 +3398,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get adminStatsEmpty => 'Hali hodisa yo‘q';
 
   @override
-  String get adminStatsNote =>
-      'Hisoblash: ko‘rsatilish — hamkor bloki ekranda chizilgan; bitta qurilmada kuniga har joy uchun bir marta. Faqat hisobga kirgan foydalanuvchilar sanaladi (mehmon va admin — yo‘q). Shaxsiy ma’lumot saqlanmaydi, faqat kunlik hisoblagich (Toshkent vaqti).';
+  String get adminStatsNote => 'Hisoblash: ko‘rsatilish — hamkor bloki ekranda chizilgan; bitta qurilmada kuniga har joy uchun bir marta. Faqat hisobga kirgan foydalanuvchilar sanaladi (mehmon va admin — yo‘q). Shaxsiy ma’lumot saqlanmaydi, faqat kunlik hisoblagich (Toshkent vaqti).';
 
   @override
   String get adminStatsCopy => 'Hisobotni nusxalash';
@@ -3612,8 +3440,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get calStepReagent => '3. Reagent';
 
   @override
-  String get calChooseInstrument =>
-      'Avval apparatni tanlang: saqlanganlardan yoki katalogdan.';
+  String get calChooseInstrument => 'Avval apparatni tanlang: saqlanganlardan yoki katalogdan.';
 
   @override
   String get calChange => 'O‘zgartirish';
@@ -3631,8 +3458,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get calReagentMakerName => 'Ishlab chiqaruvchi nomi';
 
   @override
-  String get calDifferentMaker =>
-      'Reagent ishlab chiqaruvchisi apparatnikidan boshqa. Moslikni reagent IFU’sidagi apparatlar (application) ro‘yxati va apparatning reagent tizimi bo‘yicha alohida tekshiring.';
+  String get calDifferentMaker => 'Reagent ishlab chiqaruvchisi apparatnikidan boshqa. Moslikni reagent IFU’sidagi apparatlar (application) ro‘yxati va apparatning reagent tizimi bo‘yicha alohida tekshiring.';
 
   @override
   String calValidated(String doc) {
@@ -3643,15 +3469,13 @@ class AppLocalizationsUz extends AppLocalizations {
   String get calRefListed => 'Kiritilgan REF shu ro‘yxatda bor.';
 
   @override
-  String get calRefNotListed =>
-      'Kiritilgan REF bu ro‘yxatda yo‘q — reagent qutisi va IFU’ni qayta tekshiring.';
+  String get calRefNotListed => 'Kiritilgan REF bu ro‘yxatda yo‘q — reagent qutisi va IFU’ni qayta tekshiring.';
 
   @override
   String get calShowGuide => 'Yo‘riqnomani ko‘rsatish';
 
   @override
-  String get calGuideNeeds =>
-      'Apparat, analit, reagent REF va IFU versiyasini kiriting. Lot bu bosqichda shart emas.';
+  String get calGuideNeeds => 'Apparat, analit, reagent REF va IFU versiyasini kiriting. Lot bu bosqichda shart emas.';
 
   @override
   String get calGuideFound => 'Tekshirilgan yo‘riqnoma topildi';
@@ -3660,28 +3484,22 @@ class AppLocalizationsUz extends AppLocalizations {
   String get calGuideNoneTitle => 'Tekshirilgan yo‘riqnoma hali yo‘q';
 
   @override
-  String get calGuideNoneBody =>
-      'Bu apparat + reagent REF + IFU versiyasi uchun LabGuide’da solishtirilgan yozuv yo‘q. Parametrlarni taxmin qilmaymiz — ularni quyidagi hujjatlardan oling:';
+  String get calGuideNoneBody => 'Bu apparat + reagent REF + IFU versiyasi uchun LabGuide’da solishtirilgan yozuv yo‘q. Parametrlarni taxmin qilmaymiz — ularni quyidagi hujjatlardan oling:';
 
   @override
-  String get calGuide1 =>
-      'Kalibrator nomi va REF — reagent IFU’sining “Calibration” bo‘limida.';
+  String get calGuide1 => 'Kalibrator nomi va REF — reagent IFU’sining “Calibration” bo‘limida.';
 
   @override
-  String get calGuide2 =>
-      'Kalibrlash nuqtalari soni va usuli — o‘sha bo‘limda.';
+  String get calGuide2 => 'Kalibrlash nuqtalari soni va usuli — o‘sha bo‘limda.';
 
   @override
-  String get calGuide3 =>
-      'Har lotning belgilangan qiymatlari — kalibratorning qiymatlar varag‘ida (lot raqami mos bo‘lsin).';
+  String get calGuide3 => 'Har lotning belgilangan qiymatlari — kalibratorning qiymatlar varag‘ida (lot raqami mos bo‘lsin).';
 
   @override
-  String get calGuide4 =>
-      'Qachon qayta kalibrlash kerakligi (lot almashganda, QC rad etilganda, muddat) — IFU’da.';
+  String get calGuide4 => 'Qachon qayta kalibrlash kerakligi (lot almashganda, QC rad etilganda, muddat) — IFU’da.';
 
   @override
-  String get calGuide5 =>
-      'Kalibrlashdan keyin QC o‘tkazing va natijani yozuvga kiriting.';
+  String get calGuide5 => 'Kalibrlashdan keyin QC o‘tkazing va natijani yozuvga kiriting.';
 
   @override
   String get calDocsWhere => 'Hujjatlarni qayerdan topish mumkin';
@@ -3717,8 +3535,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get calRemoveLevel => 'Darajani olib tashlash';
 
   @override
-  String get calValuesFromSheet =>
-      'Qiymatlarni aynan shu lotning qiymatlar varag‘idan ko‘chiring. LabGuide ularni taxmin qilmaydi va tekshirmaydi.';
+  String get calValuesFromSheet => 'Qiymatlarni aynan shu lotning qiymatlar varag‘idan ko‘chiring. LabGuide ularni taxmin qilmaydi va tekshirmaydi.';
 
   @override
   String get calPerformedOn => 'Bajarilgan sana';
@@ -3748,8 +3565,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get calLotRequired => 'Kalibrator lotini kiriting.';
 
   @override
-  String get calLevelInvalid =>
-      'Har daraja uchun nom, qiymat (son) va birlikni kiriting.';
+  String get calLevelInvalid => 'Har daraja uchun nom, qiymat (son) va birlikni kiriting.';
 
   @override
   String get calLog => 'Kalibrlash jurnali';
@@ -3761,8 +3577,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get calLogEmpty => 'Hali yozuv yo‘q';
 
   @override
-  String get calLogEmptyBody =>
-      'Kalibrlashdan keyin yozuv yarating — lot, qiymatlar va natija shu yerda saqlanadi.';
+  String get calLogEmptyBody => 'Kalibrlashdan keyin yozuv yarating — lot, qiymatlar va natija shu yerda saqlanadi.';
 
   @override
   String get calDeleteRecord => 'Yozuvni o‘chirish';
@@ -3827,12 +3642,10 @@ class AppLocalizationsUz extends AppLocalizations {
   String get booksEmptyTitle => 'Hali kitoblar yo‘q';
 
   @override
-  String get booksEmptyBody =>
-      'Kitoblar faqat tarqatish huquqi tasdiqlangandan keyin qo‘shiladi. O‘zingiz qo‘shgan PDF shaxsiy o‘rganish uchun qoladi va tarqatilmaydi.';
+  String get booksEmptyBody => 'Kitoblar faqat tarqatish huquqi tasdiqlangandan keyin qo‘shiladi. O‘zingiz qo‘shgan PDF shaxsiy o‘rganish uchun qoladi va tarqatilmaydi.';
 
   @override
-  String get booksCatalogNote =>
-      'Katalogdagi materiallar rasmiy sahifaga havola sifatida beriladi. To‘liq matn ilovaga faqat ochiq litsenziya yoki tarqatish ruxsati tasdiqlangandan keyin qo‘shiladi.';
+  String get booksCatalogNote => 'Katalogdagi materiallar rasmiy sahifaga havola sifatida beriladi. To‘liq matn ilovaga faqat ochiq litsenziya yoki tarqatish ruxsati tasdiqlangandan keyin qo‘shiladi.';
 
   @override
   String get booksResetFilters => 'Filtrlarni tozalash';
@@ -3870,8 +3683,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get packsUpcoming => 'Kutilayotgan paketlar';
 
   @override
-  String get packsUpcomingBody =>
-      'Yuklashdan oldin haqiqiy hajm ko‘rsatiladi. Paketlar kontent tekshiruvidan keyingina nashr etiladi.';
+  String get packsUpcomingBody => 'Yuklashdan oldin haqiqiy hajm ko‘rsatiladi. Paketlar kontent tekshiruvidan keyingina nashr etiladi.';
 
   @override
   String get packsBiochem => 'Biokimyo asoslari';
@@ -3892,8 +3704,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get packsOffline => 'Internetsiz ishlaydi';
 
   @override
-  String get packsCoreState =>
-      'Holat: draft — manbali o‘quv namunasi, mustaqil mutaxassis tekshiruvidan hali o‘tmagan';
+  String get packsCoreState => 'Holat: draft — manbali o‘quv namunasi, mustaqil mutaxassis tekshiruvidan hali o‘tmagan';
 
   @override
   String packsContents(int cards, int questions, int sources) {
@@ -3953,42 +3764,34 @@ class AppLocalizationsUz extends AppLocalizations {
   String get packsRemoveTitle => 'Paketni o‘chirasizmi?';
 
   @override
-  String get packsRemoveBody =>
-      'Paket qurilmadan o‘chiriladi. Keyin uni qayta yuklab olish mumkin.';
+  String get packsRemoveBody => 'Paket qurilmadan o‘chiriladi. Keyin uni qayta yuklab olish mumkin.';
 
   @override
-  String get packsFailNetwork =>
-      'Internetga ulanib bo‘lmadi. Aloqani tekshirib, qayta urinib ko‘ring.';
+  String get packsFailNetwork => 'Internetga ulanib bo‘lmadi. Aloqani tekshirib, qayta urinib ko‘ring.';
 
   @override
-  String get packsFailServer =>
-      'Server javob bermadi. Birozdan keyin qayta urinib ko‘ring.';
+  String get packsFailServer => 'Server javob bermadi. Birozdan keyin qayta urinib ko‘ring.';
 
   @override
-  String get packsFailIntegrity =>
-      'Paket tekshiruvdan o‘tmadi (hajm yoki SHA-256 mos emas) va o‘rnatilmadi. Avvalgi holat o‘zgarmadi.';
+  String get packsFailIntegrity => 'Paket tekshiruvdan o‘tmadi (hajm yoki SHA-256 mos emas) va o‘rnatilmadi. Avvalgi holat o‘zgarmadi.';
 
   @override
-  String get packsFailIncompatible =>
-      'Bu paket ilovaning yangiroq versiyasini talab qiladi.';
+  String get packsFailIncompatible => 'Bu paket ilovaning yangiroq versiyasini talab qiladi.';
 
   @override
-  String get packsFailStorage =>
-      'Qurilmaga yozib bo‘lmadi. Bo‘sh joyni tekshiring.';
+  String get packsFailStorage => 'Qurilmaga yozib bo‘lmadi. Bo‘sh joyni tekshiring.';
 
   @override
   String get packsPlanned => 'Rejalashtirilgan';
 
   @override
-  String get packsPlannedBody =>
-      'Kontent mustaqil tekshiruvdan o‘tgach nashr etiladi; hajmi yuklashdan oldin ko‘rsatiladi.';
+  String get packsPlannedBody => 'Kontent mustaqil tekshiruvdan o‘tgach nashr etiladi; hajmi yuklashdan oldin ko‘rsatiladi.';
 
   @override
   String get savedEmptyTitle => 'Hali xatcho‘p yo‘q';
 
   @override
-  String get savedEmptyBody =>
-      'Tahlil kartasida “Saqlash”ni bosing — u shu yerda turadi.';
+  String get savedEmptyBody => 'Tahlil kartasida “Saqlash”ni bosing — u shu yerda turadi.';
 
   @override
   String get sourcesTitle => 'Manbalar va litsenziyalar';
@@ -4000,8 +3803,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get sourcesMethods => 'Kalkulyatorlar, QC va preanalitika';
 
   @override
-  String get sourcesBody =>
-      'Nashr etiladigan har bir da’vo asl manba, murojaat sanasi, qamrov va tekshiruv holatiga bog‘lanadi.';
+  String get sourcesBody => 'Nashr etiladigan har bir da’vo asl manba, murojaat sanasi, qamrov va tekshiruv holatiga bog‘lanadi.';
 
   @override
   String get researchTitle => 'Ilmiy ish maydoni';
@@ -4025,8 +3827,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get researchSaved => 'Qoralama shu qurilmada saqlandi';
 
   @override
-  String get researchAutosave =>
-      'Qoralama yozish davomida shu qurilmada avtomatik saqlanadi.';
+  String get researchAutosave => 'Qoralama yozish davomida shu qurilmada avtomatik saqlanadi.';
 
   @override
   String get researchOutline => 'Reja tuzilmasi';
@@ -4044,8 +3845,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get researchStep4 => 'Natija, cheklov va xulosa';
 
   @override
-  String get researchNoFabrication =>
-      'LabGuide natija, bemor ma’lumoti yoki iqtibos to‘qimaydi. Faqat o‘z ma’lumotlaringiz va manbalaringizdan foydalaning.';
+  String get researchNoFabrication => 'LabGuide natija, bemor ma’lumoti yoki iqtibos to‘qimaydi. Faqat o‘z ma’lumotlaringiz va manbalaringizdan foydalaning.';
 
   @override
   String get learnTitle => 'Tushunib o‘rganing';
@@ -4057,8 +3857,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get learnHeroTitle => 'Molekuladan amaliyotgacha';
 
   @override
-  String get learnHeroBody =>
-      'Mavzu tanlab, savollar bilan bilimingizni tekshiring.';
+  String get learnHeroBody => 'Mavzu tanlab, savollar bilan bilimingizni tekshiring.';
 
   @override
   String get learnHeroCta => 'Mavzuni tanlash';
@@ -4087,36 +3886,39 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String toifaTopic(String topic) {
-    String _temp0 = intl.Intl.selectLogic(topic, {
-      'safety_ethics': 'Xavfsizlik va etika',
-      'qc_lab_management': 'Sifat nazorati va boshqaruv',
-      'preanalytics': 'Preanalitika',
-      'hematology_cells': 'Qon hujayralari',
-      'hemopoiesis_leukemia': 'Qon yaratilishi va leykozlar',
-      'anemias': 'Anemiyalar',
-      'hemostasis': 'Gemostaz',
-      'biochemistry_proteins_enzymes': 'Oqsillar va fermentlar',
-      'carbohydrates_diabetes': 'Uglevodlar va diabet',
-      'lipids': 'Lipidlar',
-      'liver_pigments': 'Jigar va pigmentlar',
-      'kidney_nitrogen': 'Buyrak va azot almashinuvi',
-      'water_electrolytes_acid_base': 'Suv-elektrolit va kislota-asos',
-      'minerals_vitamins': 'Minerallar va vitaminlar',
-      'hormones': 'Gormonlar',
-      'urinalysis': 'Siydik tahlili',
-      'stool_coprology': 'Koprologiya',
-      'csf_body_fluids': 'Likvor va biologik suyuqliklar',
-      'sputum_tb': 'Balg‘am va sil',
-      'cytology_gyn': 'Sitologiya',
-      'std_microscopy': 'JYYI mikroskopiyasi',
-      'parasitology': 'Parazitologiya',
-      'immunology_serology': 'Immunologiya va serologiya',
-      'molecular_pcr': 'Molekulyar diagnostika (PZR)',
-      'tumor_markers': 'O‘sma markerlari',
-      'cardiac_markers': 'Kardiomarkerlar',
-      'orphan_screening': 'Skrining va orfan kasalliklar',
-      'other': 'Boshqa mavzular',
-    });
+    String _temp0 = intl.Intl.selectLogic(
+      topic,
+      {
+        'safety_ethics': 'Xavfsizlik va etika',
+        'qc_lab_management': 'Sifat nazorati va boshqaruv',
+        'preanalytics': 'Preanalitika',
+        'hematology_cells': 'Qon hujayralari',
+        'hemopoiesis_leukemia': 'Qon yaratilishi va leykozlar',
+        'anemias': 'Anemiyalar',
+        'hemostasis': 'Gemostaz',
+        'biochemistry_proteins_enzymes': 'Oqsillar va fermentlar',
+        'carbohydrates_diabetes': 'Uglevodlar va diabet',
+        'lipids': 'Lipidlar',
+        'liver_pigments': 'Jigar va pigmentlar',
+        'kidney_nitrogen': 'Buyrak va azot almashinuvi',
+        'water_electrolytes_acid_base': 'Suv-elektrolit va kislota-asos',
+        'minerals_vitamins': 'Minerallar va vitaminlar',
+        'hormones': 'Gormonlar',
+        'urinalysis': 'Siydik tahlili',
+        'stool_coprology': 'Koprologiya',
+        'csf_body_fluids': 'Likvor va biologik suyuqliklar',
+        'sputum_tb': 'Balg‘am va sil',
+        'cytology_gyn': 'Sitologiya',
+        'std_microscopy': 'JYYI mikroskopiyasi',
+        'parasitology': 'Parazitologiya',
+        'immunology_serology': 'Immunologiya va serologiya',
+        'molecular_pcr': 'Molekulyar diagnostika (PZR)',
+        'tumor_markers': 'O‘sma markerlari',
+        'cardiac_markers': 'Kardiomarkerlar',
+        'orphan_screening': 'Skrining va orfan kasalliklar',
+        'other': 'Boshqa mavzular',
+      },
+    );
     return '$_temp0';
   }
 
@@ -4130,12 +3932,10 @@ class AppLocalizationsUz extends AppLocalizations {
   String get toifaEyebrow => 'KDL · malaka toifasi';
 
   @override
-  String get toifaEntryBody =>
-      'Rasmiy attestatsiya ro‘yxatidagi savollar: 50 savollik test, mavzu bo‘yicha mashq, og‘zaki bilet va xatolar ustida ishlash.';
+  String get toifaEntryBody => 'Rasmiy attestatsiya ro‘yxatidagi savollar: 50 savollik test, mavzu bo‘yicha mashq, og‘zaki bilet va xatolar ustida ishlash.';
 
   @override
-  String get toifaEntryBodyShort =>
-      'Test, og‘zaki bilet va xatolar ustida ishlash — rasmiy ro‘yxat asosida.';
+  String get toifaEntryBodyShort => 'Test, og‘zaki bilet va xatolar ustida ishlash — rasmiy ro‘yxat asosida.';
 
   @override
   String get toifaEntryTagTest => 'Test · 50 savol';
@@ -4163,8 +3963,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get toifaUzbekOnly => 'Rasmiy matn — o‘zbekcha';
 
   @override
-  String get toifaUzbekNotice =>
-      'Attestatsiya savollarining rasmiy matni o‘zbekcha. Interfeys tili rus yoki ingliz bo‘lsa — yordamchi tarjima ko‘rsatiladi, asl matnni istalgan vaqt ko‘rish mumkin. Baholash rasmiy o‘zbekcha matn va kalit bo‘yicha.';
+  String get toifaUzbekNotice => 'Attestatsiya savollarining rasmiy matni o‘zbekcha. Interfeys tili rus yoki ingliz bo‘lsa — yordamchi tarjima ko‘rsatiladi, asl matnni istalgan vaqt ko‘rish mumkin. Baholash rasmiy o‘zbekcha matn va kalit bo‘yicha.';
 
   @override
   String get toifaShowOriginal => 'Asl matnni ko‘rish';
@@ -4176,8 +3975,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get toifaOriginalTitle => 'Rasmiy matn (o‘zbekcha)';
 
   @override
-  String get toifaTranslationAux =>
-      'Tarjima yordamchi; baholash rasmiy o‘zbekcha matn bo‘yicha.';
+  String get toifaTranslationAux => 'Tarjima yordamchi; baholash rasmiy o‘zbekcha matn bo‘yicha.';
 
   @override
   String get toifaLoadError => 'Savollar bankini ochib bo‘lmadi';
@@ -4195,8 +3993,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get toifaCatHighest => 'Oliy toifa';
 
   @override
-  String get toifaCategoryHint =>
-      'Og‘zaki bilet shu toifa ro‘yxatidan tuziladi. Test savollari barcha toifalar uchun umumiy.';
+  String get toifaCategoryHint => 'Og‘zaki bilet shu toifa ro‘yxatidan tuziladi. Test savollari barcha toifalar uchun umumiy.';
 
   @override
   String get toifaReadyTest => 'Test';
@@ -4260,8 +4057,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get toifaAboutTitle => 'Manba va tekshiruv';
 
   @override
-  String get toifaListSource =>
-      'Manba: Rasmiy attestatsiya savollari ro‘yxati (KDL, 119)';
+  String get toifaListSource => 'Manba: Rasmiy attestatsiya savollari ro‘yxati (KDL, 119)';
 
   @override
   String toifaAboutList(int tests, int oral) {
@@ -4297,12 +4093,10 @@ class AppLocalizationsUz extends AppLocalizations {
   }
 
   @override
-  String get toifaFormatStep2 =>
-      'Har savolda bitta javob; variantlar ro‘yxatdagi tartibda.';
+  String get toifaFormatStep2 => 'Har savolda bitta javob; variantlar ro‘yxatdagi tartibda.';
 
   @override
-  String get toifaFormatStep3 =>
-      'Yakunda xatolar tahlili: rasmiy kalit va LabGuide izohi.';
+  String get toifaFormatStep3 => 'Yakunda xatolar tahlili: rasmiy kalit va LabGuide izohi.';
 
   @override
   String get toifaTimeLabel => 'Vaqt, daqiqa';
@@ -4311,12 +4105,10 @@ class AppLocalizationsUz extends AppLocalizations {
   String get toifaNoTime => 'Vaqtsiz';
 
   @override
-  String get toifaTimeHelper =>
-      'Rasmiy vaqt chegarasi ilovada belgilanmagan — o‘zingiz tanlang yoki bo‘sh qoldiring.';
+  String get toifaTimeHelper => 'Rasmiy vaqt chegarasi ilovada belgilanmagan — o‘zingiz tanlang yoki bo‘sh qoldiring.';
 
   @override
-  String get toifaTimeError =>
-      '1 dan 240 gacha daqiqa kiriting yoki bo‘sh qoldiring';
+  String get toifaTimeError => '1 dan 240 gacha daqiqa kiriting yoki bo‘sh qoldiring';
 
   @override
   String get toifaPassLabel => 'O‘tish chegarasi, %';
@@ -4325,16 +4117,13 @@ class AppLocalizationsUz extends AppLocalizations {
   String get toifaNoPass => 'Belgilanmagan';
 
   @override
-  String get toifaPassHelper =>
-      'Bu siz tanlagan chegara, rasmiy o‘tish bali emas.';
+  String get toifaPassHelper => 'Bu siz tanlagan chegara, rasmiy o‘tish bali emas.';
 
   @override
-  String get toifaPassError =>
-      '1 dan 100 gacha foiz kiriting yoki bo‘sh qoldiring';
+  String get toifaPassError => '1 dan 100 gacha foiz kiriting yoki bo‘sh qoldiring';
 
   @override
-  String get toifaScoringNotice =>
-      'Ball rasmiy kalit bo‘yicha hisoblanadi — imtihonda shu javob talab qilinadi. Kalit bahsli savollarda natijada LabGuide izohi ham ko‘rsatiladi.';
+  String get toifaScoringNotice => 'Ball rasmiy kalit bo‘yicha hisoblanadi — imtihonda shu javob talab qilinadi. Kalit bahsli savollarda natijada LabGuide izohi ham ko‘rsatiladi.';
 
   @override
   String get toifaTestStart => 'Testni boshlash';
@@ -4382,16 +4171,13 @@ class AppLocalizationsUz extends AppLocalizations {
   }
 
   @override
-  String get toifaScoredByOfficial =>
-      'Ball rasmiy kalit bo‘yicha hisoblanadi — imtihonda shu javob talab qilinadi.';
+  String get toifaScoredByOfficial => 'Ball rasmiy kalit bo‘yicha hisoblanadi — imtihonda shu javob talab qilinadi.';
 
   @override
-  String get toifaNoOfficialKey =>
-      'Ro‘yxatda kalit belgilanmagan — bu savol baholanmaydi.';
+  String get toifaNoOfficialKey => 'Ro‘yxatda kalit belgilanmagan — bu savol baholanmaydi.';
 
   @override
-  String get toifaNoteNoSource =>
-      'Izoh uchun manba ko‘rsatilmagan (tekshirilmadi).';
+  String get toifaNoteNoSource => 'Izoh uchun manba ko‘rsatilmagan (tekshirilmadi).';
 
   @override
   String get toifaRelatedCards => 'Bog‘liq kartalar';
@@ -4418,12 +4204,10 @@ class AppLocalizationsUz extends AppLocalizations {
   String get toifaOralStep2 => 'Javoblarni o‘ylab yoki yozib tayyorlaning.';
 
   @override
-  String get toifaOralStep3 =>
-      'Javob rejasini ko‘rib, o‘zingizni baholang: bildim, qisman yoki bilmadim.';
+  String get toifaOralStep3 => 'Javob rejasini ko‘rib, o‘zingizni baholang: bildim, qisman yoki bilmadim.';
 
   @override
-  String get toifaPlanDisclaimer =>
-      'Javob rejalari LabGuide tayyorlagan, mutaxassis tekshiruvi kutilmoqda. Ular rasmiy javob emas.';
+  String get toifaPlanDisclaimer => 'Javob rejalari LabGuide tayyorlagan, mutaxassis tekshiruvi kutilmoqda. Ular rasmiy javob emas.';
 
   @override
   String get toifaPickCategoryFirst => 'Avval toifani tanlang';
@@ -4435,8 +4219,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get toifaTicketTitle => 'Biletingiz';
 
   @override
-  String get toifaPrepHint =>
-      'Har savolga javobingizni tayyorlang. Tayyor bo‘lgach, javob rejalarini birma-bir ko‘rib, o‘zingizni baholaysiz.';
+  String get toifaPrepHint => 'Har savolga javobingizni tayyorlang. Tayyor bo‘lgach, javob rejalarini birma-bir ko‘rib, o‘zingizni baholaysiz.';
 
   @override
   String get toifaShowPlans => 'Javob rejasini ko‘rish';
@@ -4448,30 +4231,25 @@ class AppLocalizationsUz extends AppLocalizations {
   String get toifaNewTicket => 'Yangi bilet';
 
   @override
-  String get toifaNewTicketBody =>
-      'Joriy bilet o‘rniga yangi 5 ta savol olinadi. Berilgan baholar saqlanib qoladi.';
+  String get toifaNewTicketBody => 'Joriy bilet o‘rniga yangi 5 ta savol olinadi. Berilgan baholar saqlanib qoladi.';
 
   @override
-  String get toifaRevealHint =>
-      'Avval javobingizni eslang yoki yozib oling, so‘ng rejani oching.';
+  String get toifaRevealHint => 'Avval javobingizni eslang yoki yozib oling, so‘ng rejani oching.';
 
   @override
   String get toifaPlanTitle => 'Javob rejasi';
 
   @override
-  String get toifaPlanPending =>
-      'LabGuide tayyorlagan, mutaxassis tekshiruvi kutilmoqda';
+  String get toifaPlanPending => 'LabGuide tayyorlagan, mutaxassis tekshiruvi kutilmoqda';
 
   @override
   String get toifaPlanMissing => 'Bu savol uchun reja hali tayyorlanmagan.';
 
   @override
-  String get toifaPlanNotChecked =>
-      'Reja manbalar bilan to‘liq tekshirilmagan.';
+  String get toifaPlanNotChecked => 'Reja manbalar bilan to‘liq tekshirilmagan.';
 
   @override
-  String get toifaReferenceTitle =>
-      'Referens interval (namuna, laboratoriyaga qarab)';
+  String get toifaReferenceTitle => 'Referens interval (namuna, laboratoriyaga qarab)';
 
   @override
   String get toifaCutoffTitle => 'Diagnostik chegara (qo‘llanma)';
@@ -4486,8 +4264,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get toifaNeedsSource => 'Manba kerak — ustozdan aniqlashtirilmoqda';
 
   @override
-  String get toifaUnverifiedNote =>
-      'Izoh manba bilan tasdiqlanmagan — taklif berilmaydi.';
+  String get toifaUnverifiedNote => 'Izoh manba bilan tasdiqlanmagan — taklif berilmaydi.';
 
   @override
   String toifaAgentChecked(String date) {
@@ -4498,8 +4275,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get toifaHeld => 'Aniqlashtirilmoqda';
 
   @override
-  String get toifaHeldBody =>
-      'Savol matni aniqlashtirilguncha biletga va baholashga kirmaydi.';
+  String get toifaHeldBody => 'Savol matni aniqlashtirilguncha biletga va baholashga kirmaydi.';
 
   @override
   String toifaAboutHeld(int count) {
@@ -4513,8 +4289,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get toifaRateTitle => 'O‘zingizni baholang';
 
   @override
-  String get toifaRateHint =>
-      'Baho faqat shu qurilmada saqlanadi va “Xatolar ustida ishlash”da ko‘rinadi.';
+  String get toifaRateHint => 'Baho faqat shu qurilmada saqlanadi va “Xatolar ustida ishlash”da ko‘rinadi.';
 
   @override
   String get toifaRateKnew => 'Bildim';
@@ -4534,8 +4309,7 @@ class AppLocalizationsUz extends AppLocalizations {
   }
 
   @override
-  String get toifaRatingsSaved =>
-      'Baholar saqlandi. Savolni bosib rejani qayta ko‘rish va bahoni o‘zgartirish mumkin.';
+  String get toifaRatingsSaved => 'Baholar saqlandi. Savolni bosib rejani qayta ko‘rish va bahoni o‘zgartirish mumkin.';
 
   @override
   String get toifaRatingSaved => 'Baho saqlandi';
@@ -4547,8 +4321,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get toifaMistakesEmpty => 'Hozircha xato yo‘q';
 
   @override
-  String get toifaMistakesEmptyBody =>
-      'Test yoki mashqda xato qilgan savollaringiz va og‘zaki biletda “bilmadim” degan savollaringiz shu yerda yig‘iladi.';
+  String get toifaMistakesEmptyBody => 'Test yoki mashqda xato qilgan savollaringiz va og‘zaki biletda “bilmadim” degan savollaringiz shu yerda yig‘iladi.';
 
   @override
   String toifaMistakesTests(int count) {
@@ -4580,8 +4353,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get toifaReadyTitle => 'Taxminiy tayyorlik';
 
   @override
-  String get toifaReadyCaption =>
-      'Test va og‘zaki natijalar o‘rtachasi. LabGuide hisobi — rasmiy baho emas.';
+  String get toifaReadyCaption => 'Test va og‘zaki natijalar o‘rtachasi. LabGuide hisobi — rasmiy baho emas.';
 
   @override
   String toifaReadyTestDetail(int done, int total) {
@@ -4594,8 +4366,7 @@ class AppLocalizationsUz extends AppLocalizations {
   }
 
   @override
-  String get toifaProgressPickCategory =>
-      'Og‘zaki natija toifangiz ro‘yxati bo‘yicha hisoblanadi — toifani tanlang:';
+  String get toifaProgressPickCategory => 'Og‘zaki natija toifangiz ro‘yxati bo‘yicha hisoblanadi — toifani tanlang:';
 
   @override
   String get toifaRecentTests => 'So‘nggi testlar';
@@ -4607,8 +4378,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get toifaNotPassedShort => 'Chegaraga yetmadi';
 
   @override
-  String get toifaByTopicNote =>
-      'Eng zaif mavzular birinchi. Test — oxirgi javobi to‘g‘ri savollar; og‘zaki — “bildim” deb baholanganlar.';
+  String get toifaByTopicNote => 'Eng zaif mavzular birinchi. Test — oxirgi javobi to‘g‘ri savollar; og‘zaki — “bildim” deb baholanganlar.';
 
   @override
   String toifaBarTest(int done, int total) {
@@ -4673,8 +4443,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get quizSources => 'Manba';
 
   @override
-  String get quizReviewNote =>
-      'Mashq savollari mutaxassis tekshiruvini kutmoqda.';
+  String get quizReviewNote => 'Mashq savollari mutaxassis tekshiruvini kutmoqda.';
 
   @override
   String get quizMistakes => 'Xatolar ustida ishlash';
@@ -4714,8 +4483,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get dailyCardStart => 'Bugungi 5 ta savol';
 
   @override
-  String get dailyCardStartSub =>
-      '2–3 daqiqa. Har kuni yangi savollar, javobdan keyin izoh va manba.';
+  String get dailyCardStartSub => '2–3 daqiqa. Har kuni yangi savollar, javobdan keyin izoh va manba.';
 
   @override
   String dailyCardProgress(int count, int total) {
@@ -4765,20 +4533,16 @@ class AppLocalizationsUz extends AppLocalizations {
   String get dailyFreezeUsed => 'Bu haftalik muzlatish ishlatildi';
 
   @override
-  String get dailyFreezeRule =>
-      'Bir kunni o‘tkazib yuborsangiz, seriya uzilmaydi — haftasiga bir marta (muzlatish). Muzlatilgan kun seriyaga qo‘shilmaydi; ketma-ket ikki kun o‘tkazilsa, seriya qaytadan boshlanadi.';
+  String get dailyFreezeRule => 'Bir kunni o‘tkazib yuborsangiz, seriya uzilmaydi — haftasiga bir marta (muzlatish). Muzlatilgan kun seriyaga qo‘shilmaydi; ketma-ket ikki kun o‘tkazilsa, seriya qaytadan boshlanadi.';
 
   @override
-  String get dailyFreezeSaved =>
-      'Kecha o‘tkazib yuborildi — muzlatish seriyani saqlab qoldi.';
+  String get dailyFreezeSaved => 'Kecha o‘tkazib yuborildi — muzlatish seriyani saqlab qoldi.';
 
   @override
-  String get dailyStreakStart =>
-      'Bugungi savollarni bajaring — seriya shu kundan boshlanadi.';
+  String get dailyStreakStart => 'Bugungi savollarni bajaring — seriya shu kundan boshlanadi.';
 
   @override
-  String get dailyKeepStreak =>
-      'Seriyani saqlash uchun bugungi savollarni bajaring.';
+  String get dailyKeepStreak => 'Seriyani saqlash uchun bugungi savollarni bajaring.';
 
   @override
   String get dailyEmpty => 'Bugun uchun savol topilmadi';
@@ -4787,8 +4551,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get dailyReviewTitle => 'Bugungi savollar';
 
   @override
-  String get dailySourceToifa =>
-      'Savollar toifa imtihonining rasmiy ro‘yxatidan olinadi — faqat kaliti LabGuide tekshiruvidan o‘tganlari.';
+  String get dailySourceToifa => 'Savollar toifa imtihonining rasmiy ro‘yxatidan olinadi — faqat kaliti LabGuide tekshiruvidan o‘tganlari.';
 
   @override
   String get dailyReminderTitle => 'LabGuide: kunlik savol';
@@ -4817,8 +4580,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get dailyOfferTitle => 'Har kuni eslatib turaymi?';
 
   @override
-  String get dailyOfferBody =>
-      'Tanlagan vaqtingizda bitta bildirishnoma. Savollarni bajargan kuningiz eslatma kelmaydi. Istalgan payt o‘chirib qo‘yasiz.';
+  String get dailyOfferBody => 'Tanlagan vaqtingizda bitta bildirishnoma. Savollarni bajargan kuningiz eslatma kelmaydi. Istalgan payt o‘chirib qo‘yasiz.';
 
   @override
   String get dailyOfferYes => 'Eslatmani yoqish';
@@ -4827,12 +4589,10 @@ class AppLocalizationsUz extends AppLocalizations {
   String get dailyOfferNo => 'Kerak emas';
 
   @override
-  String get dailyReminderDenied =>
-      'Bildirishnomaga ruxsat berilmadi, eslatma o‘chiq qoldi. Telefon sozlamalarida LabGuide uchun bildirishnomalarni yoqib, qayta urinib ko‘ring.';
+  String get dailyReminderDenied => 'Bildirishnomaga ruxsat berilmadi, eslatma o‘chiq qoldi. Telefon sozlamalarida LabGuide uchun bildirishnomalarni yoqib, qayta urinib ko‘ring.';
 
   @override
-  String get dailyReminderUnavailable =>
-      'Bu qurilmada eslatmani yoqib bo‘lmadi.';
+  String get dailyReminderUnavailable => 'Bu qurilmada eslatmani yoqib bo‘lmadi.';
 
   @override
   String dailyReminderOnSnack(String time) {
@@ -4840,8 +4600,7 @@ class AppLocalizationsUz extends AppLocalizations {
   }
 
   @override
-  String get dailyReminderNote =>
-      'Eslatma faqat shu qurilmada rejalashtiriladi (server yo‘q). Telefon quvvatni tejash uchun uni bir necha daqiqa kechiktirishi mumkin. Ilova 7 kun ochilmasa, eslatmalar to‘xtaydi.';
+  String get dailyReminderNote => 'Eslatma faqat shu qurilmada rejalashtiriladi (server yo‘q). Telefon quvvatni tejash uchun uni bir necha daqiqa kechiktirishi mumkin. Ilova 7 kun ochilmasa, eslatmalar to‘xtaydi.';
 
   @override
   String get shareResult => 'Natijani ulashish';
@@ -4850,12 +4609,10 @@ class AppLocalizationsUz extends AppLocalizations {
   String get shareSheetTitle => 'Natija kartochkasi';
 
   @override
-  String get shareSheetBody =>
-      'Rasmda ismingiz yoki boshqa shaxsiy ma’lumot yo‘q.';
+  String get shareSheetBody => 'Rasmda ismingiz yoki boshqa shaxsiy ma’lumot yo‘q.';
 
   @override
-  String get shareFailed =>
-      'Ulashish oynasini ochib bo‘lmadi. Qayta urinib ko‘ring.';
+  String get shareFailed => 'Ulashish oynasini ochib bo‘lmadi. Qayta urinib ko‘ring.';
 
   @override
   String get shareKindDaily => 'Kunlik savol';
@@ -4898,8 +4655,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get classesSignInTitle => 'Guruhlar uchun hisobga kiring';
 
   @override
-  String get classesSignInBody =>
-      'Guruh yaratish, qo‘shilish va topshiriq yuborish hisobga bog‘langan. Kontentni o‘qish kirishsiz ochiq qoladi.';
+  String get classesSignInBody => 'Guruh yaratish, qo‘shilish va topshiriq yuborish hisobga bog‘langan. Kontentni o‘qish kirishsiz ochiq qoladi.';
 
   @override
   String get classesSignIn => 'Kirish';
@@ -4908,12 +4664,10 @@ class AppLocalizationsUz extends AppLocalizations {
   String get classesUnavailableTitle => 'Guruhlar serveri hali ulanmagan';
 
   @override
-  String get classesUnavailableBody =>
-      'Hech narsa yuborilmaydi va saqlanmaydi. Ulanganda ustoz faqat o‘z guruhini, talaba faqat o‘z natijasini ko‘radi — bu serverda tekshiriladi.';
+  String get classesUnavailableBody => 'Hech narsa yuborilmaydi va saqlanmaydi. Ulanganda ustoz faqat o‘z guruhini, talaba faqat o‘z natijasini ko‘radi — bu serverda tekshiriladi.';
 
   @override
-  String get examSubtitle =>
-      'Vaqtli sinov: mavzular, savollar soni va vaqtni tanlang. Internetsiz ishlaydi.';
+  String get examSubtitle => 'Vaqtli sinov: mavzular, savollar soni va vaqtni tanlang. Internetsiz ishlaydi.';
 
   @override
   String get examActiveTitle => 'Tugallanmagan imtihon';
@@ -4933,8 +4687,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get examDiscardTitle => 'Imtihon to‘xtatilsinmi?';
 
   @override
-  String get examDiscardBody =>
-      'Javoblar o‘chadi va natija tarixga yozilmaydi.';
+  String get examDiscardBody => 'Javoblar o‘chadi va natija tarixga yozilmaydi.';
 
   @override
   String get examDiscardAction => 'To‘xtatish';
@@ -4986,12 +4739,10 @@ class AppLocalizationsUz extends AppLocalizations {
   }
 
   @override
-  String get examDraftNotice =>
-      'Savollar hali mutaxassis tekshiruvidan o‘tmagan (qoralama). Natija — ichki sinov uchun, rasmiy baho emas.';
+  String get examDraftNotice => 'Savollar hali mutaxassis tekshiruvidan o‘tmagan (qoralama). Natija — ichki sinov uchun, rasmiy baho emas.';
 
   @override
-  String get examRulesNotice =>
-      'Savollar va variantlar tasodifiy tartibda. Yakunlashgacha javobni o‘zgartirish, savolni belgilab keyin qaytish mumkin. Vaqt ilova yopiq bo‘lsa ham davom etadi; tugasa, imtihon o‘zi yakunlanadi.';
+  String get examRulesNotice => 'Savollar va variantlar tasodifiy tartibda. Yakunlashgacha javobni o‘zgartirish, savolni belgilab keyin qaytish mumkin. Vaqt ilova yopiq bo‘lsa ham davom etadi; tugasa, imtihon o‘zi yakunlanadi.';
 
   @override
   String get examStart => 'Imtihonni boshlash';
@@ -5000,15 +4751,13 @@ class AppLocalizationsUz extends AppLocalizations {
   String get examReplaceTitle => 'Tugallanmagan imtihon bor';
 
   @override
-  String get examReplaceBody =>
-      'Yangisini boshlasangiz, oldingisi javoblari bilan o‘chadi.';
+  String get examReplaceBody => 'Yangisini boshlasangiz, oldingisi javoblari bilan o‘chadi.';
 
   @override
   String get examHistory => 'Natijalar tarixi';
 
   @override
-  String get examHistoryEmpty =>
-      'Hali imtihon topshirilmagan. Birinchi natijangiz shu yerda chiqadi — u faqat shu qurilmada saqlanadi.';
+  String get examHistoryEmpty => 'Hali imtihon topshirilmagan. Birinchi natijangiz shu yerda chiqadi — u faqat shu qurilmada saqlanadi.';
 
   @override
   String examHistoryStats(int count, int avg, int best) {
@@ -5024,8 +4773,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get examHistoryClear => 'Tarixni tozalash';
 
   @override
-  String get examHistoryClearBody =>
-      'Barcha imtihon natijalari shu qurilmadan o‘chiriladi.';
+  String get examHistoryClearBody => 'Barcha imtihon natijalari shu qurilmadan o‘chiriladi.';
 
   @override
   String examHistoryHidden(int count, int limit) {
@@ -5083,8 +4831,7 @@ class AppLocalizationsUz extends AppLocalizations {
   }
 
   @override
-  String get examFinishBodyAll =>
-      'Barcha savollarga javob berildi. Yakunlangach javoblarni o‘zgartirib bo‘lmaydi.';
+  String get examFinishBodyAll => 'Barcha savollarga javob berildi. Yakunlangach javoblarni o‘zgartirib bo‘lmaydi.';
 
   @override
   String get examFinishClassTitle => 'Test yakunlansinmi?';
@@ -5137,8 +4884,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get examNoActive => 'Faol imtihon yo‘q';
 
   @override
-  String get examNoActiveBody =>
-      'U yakunlangan yoki to‘xtatilgan. Yangi imtihonni sozlab boshlang.';
+  String get examNoActiveBody => 'U yakunlangan yoki to‘xtatilgan. Yangi imtihonni sozlab boshlang.';
 
   @override
   String get examNew => 'Yangi imtihon';
@@ -5220,12 +4966,10 @@ class AppLocalizationsUz extends AppLocalizations {
   String get examWhyWrong => 'Nega bu javob emas';
 
   @override
-  String get examNoSource =>
-      'Manba ko‘rsatilmagan — savol hali tekshirilmagan.';
+  String get examNoSource => 'Manba ko‘rsatilmagan — savol hali tekshirilmagan.';
 
   @override
-  String get examSourceMissing =>
-      'Bu imtihonning savollar banki ilovada topilmadi';
+  String get examSourceMissing => 'Bu imtihonning savollar banki ilovada topilmadi';
 
   @override
   String get examMultiHint => 'Bir nechta to‘g‘ri javob — hammasini belgilang';
@@ -5237,12 +4981,10 @@ class AppLocalizationsUz extends AppLocalizations {
   String get examByTopic => 'Mavzular bo‘yicha';
 
   @override
-  String get examByTopicNote =>
-      'Eng past natijali mavzu birinchi — shundan boshlang.';
+  String get examByTopicNote => 'Eng past natijali mavzu birinchi — shundan boshlang.';
 
   @override
-  String get classesSubtitle =>
-      'Ustoz guruh ochadi va topshiriq beradi, talabalar kod bilan qo‘shilib yechadi.';
+  String get classesSubtitle => 'Ustoz guruh ochadi va topshiriq beradi, talabalar kod bilan qo‘shilib yechadi.';
 
   @override
   String get classesTryExam => 'Internetsiz imtihonni ochish';
@@ -5251,12 +4993,10 @@ class AppLocalizationsUz extends AppLocalizations {
   String get classesLoading => 'Yuklanmoqda…';
 
   @override
-  String get classesInvalid =>
-      'Server ma’lumotni qabul qilmadi — maydonlarni tekshiring.';
+  String get classesInvalid => 'Server ma’lumotni qabul qilmadi — maydonlarni tekshiring.';
 
   @override
-  String get classesCodeNotFound =>
-      'Bu kod bilan guruh topilmadi. Kodni ustozdan qayta tekshirib oling.';
+  String get classesCodeNotFound => 'Bu kod bilan guruh topilmadi. Kodni ustozdan qayta tekshirib oling.';
 
   @override
   String get classesCreate => 'Guruh yaratish';
@@ -5271,8 +5011,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get classesJoinSub => 'Talaba uchun: ustoz bergan 8 belgili kod';
 
   @override
-  String get classesRoleNote =>
-      'Ilovadagi rol server huquqi bermaydi: guruhni faqat o‘zini ustoz sifatida ro‘yxatdan o‘tkazgan hisob ochadi va faqat o‘z guruhlarini boshqaradi.';
+  String get classesRoleNote => 'Ilovadagi rol server huquqi bermaydi: guruhni faqat o‘zini ustoz sifatida ro‘yxatdan o‘tkazgan hisob ochadi va faqat o‘z guruhlarini boshqaradi.';
 
   @override
   String get classesMine => 'Mening guruhlarim';
@@ -5281,8 +5020,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get classesEmpty => 'Hali guruh yo‘q';
 
   @override
-  String get classesEmptyBody =>
-      'Guruh yarating yoki ustozingiz bergan kod bilan qo‘shiling.';
+  String get classesEmptyBody => 'Guruh yarating yoki ustozingiz bergan kod bilan qo‘shiling.';
 
   @override
   String get classesRoleTeacher => 'Ustoz';
@@ -5296,8 +5034,7 @@ class AppLocalizationsUz extends AppLocalizations {
   }
 
   @override
-  String get classesCreateIntro =>
-      'Guruhni ochgan ustoz faqat shu guruhni boshqaradi. Talabalar siz bergan kod yoki QR bilan qo‘shiladi.';
+  String get classesCreateIntro => 'Guruhni ochgan ustoz faqat shu guruhni boshqaradi. Talabalar siz bergan kod yoki QR bilan qo‘shiladi.';
 
   @override
   String get classesGroupName => 'Guruh nomi';
@@ -5314,15 +5051,13 @@ class AppLocalizationsUz extends AppLocalizations {
   String get classesDisplayName => 'Taxallus (ixtiyoriy)';
 
   @override
-  String get classesDisplayNameHint =>
-      'Masalan, Yulduz — bo‘sh qoldirsangiz, tartib raqami';
+  String get classesDisplayNameHint => 'Masalan, Yulduz — bo‘sh qoldirsangiz, tartib raqami';
 
   @override
   String get classesDisplayNameHintTeacher => 'Masalan, Karimova N.A.';
 
   @override
-  String get classesDisplayNameNote =>
-      'Ism-familiya serverda saqlanmaydi: talabalar taxallus yoki tartib raqami bilan ko‘rinadi. Real ismni faqat o‘z qurilmangizda belgi sifatida yozishingiz mumkin.';
+  String get classesDisplayNameNote => 'Ism-familiya serverda saqlanmaydi: talabalar taxallus yoki tartib raqami bilan ko‘rinadi. Real ismni faqat o‘z qurilmangizda belgi sifatida yozishingiz mumkin.';
 
   @override
   String get classesCreateAction => 'Guruhni yaratish';
@@ -5340,8 +5075,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get classesCodeError => 'Kod 8 ta harf va raqamdan iborat';
 
   @override
-  String get classesJoinNote =>
-      'Haqiqiy ismingizni yozmang. Ustoz faqat taxallusingiz (yoki tartib raqamingiz) va topshiriq natijalaringizni ko‘radi; boshqa talabalar sizni ko‘rmaydi. Emailingiz ko‘rsatilmaydi.';
+  String get classesJoinNote => 'Haqiqiy ismingizni yozmang. Ustoz faqat taxallusingiz (yoki tartib raqamingiz) va topshiriq natijalaringizni ko‘radi; boshqa talabalar sizni ko‘rmaydi. Emailingiz ko‘rsatilmaydi.';
 
   @override
   String get classesJoinAction => 'Qo‘shilish';
@@ -5358,8 +5092,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get classesYouStudent => 'Siz — talaba';
 
   @override
-  String get classesGroupMissing =>
-      'Guruh topilmadi yoki siz endi a’zo emassiz';
+  String get classesGroupMissing => 'Guruh topilmadi yoki siz endi a’zo emassiz';
 
   @override
   String get classesBackToList => 'Guruhlar ro‘yxatiga';
@@ -5371,15 +5104,13 @@ class AppLocalizationsUz extends AppLocalizations {
   String get classesNewAssignment => 'Yangi topshiriq';
 
   @override
-  String get classesNoAssignmentsTeacher =>
-      'Hali topshiriq yo‘q. Savol bankidan mavzu va sonni tanlab topshiriq bering.';
+  String get classesNoAssignmentsTeacher => 'Hali topshiriq yo‘q. Savol bankidan mavzu va sonni tanlab topshiriq bering.';
 
   @override
   String get classesNoAssignmentsStudent => 'Hozircha topshiriq yo‘q';
 
   @override
-  String get classesNoAssignmentsStudentBody =>
-      'Ustoz topshiriq berganda shu yerda paydo bo‘ladi.';
+  String get classesNoAssignmentsStudentBody => 'Ustoz topshiriq berganda shu yerda paydo bo‘ladi.';
 
   @override
   String get classesNoDue => 'muddatsiz';
@@ -5419,8 +5150,7 @@ class AppLocalizationsUz extends AppLocalizations {
   }
 
   @override
-  String get classesRemoveBody =>
-      'U guruhni va yangi topshiriqlarni ko‘rmaydi. Topshirgan natijalari o‘chmaydi.';
+  String get classesRemoveBody => 'U guruhni va yangi topshiriqlarni ko‘rmaydi. Topshirgan natijalari o‘chmaydi.';
 
   @override
   String get classesRemoveAction => 'Chiqarish';
@@ -5443,8 +5173,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get classesStatusNew => 'Yangi';
 
   @override
-  String get classesStudentNote =>
-      'Ustoz faqat siz yozgan ismni va topshiriq natijalaringizni ko‘radi.';
+  String get classesStudentNote => 'Ustoz faqat siz yozgan ismni va topshiriq natijalaringizni ko‘radi.';
 
   @override
   String get classesLeave => 'Guruhdan chiqish';
@@ -5453,8 +5182,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get classesLeaveTitle => 'Guruhdan chiqasizmi?';
 
   @override
-  String get classesLeaveBody =>
-      'Qayta qo‘shilish uchun ustozdan kod kerak bo‘ladi. Topshirgan natijalaringiz ustozda qoladi.';
+  String get classesLeaveBody => 'Qayta qo‘shilish uchun ustozdan kod kerak bo‘ladi. Topshirgan natijalaringiz ustozda qoladi.';
 
   @override
   String get classesLeaveAction => 'Chiqish';
@@ -5463,8 +5191,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get classesInviteTitle => 'Taklif kodi';
 
   @override
-  String get classesInviteBody =>
-      'Talabalar: O‘rganish → Guruh va topshiriqlar → Kod bilan qo‘shilish.';
+  String get classesInviteBody => 'Talabalar: O‘rganish → Guruh va topshiriqlar → Kod bilan qo‘shilish.';
 
   @override
   String get classesCopyCode => 'Kodni nusxalash';
@@ -5481,8 +5208,7 @@ class AppLocalizationsUz extends AppLocalizations {
   }
 
   @override
-  String get classesNewAssignmentIntro =>
-      'Mavzu va sonni tanlang — savollar bankdan tasodifiy olinadi.';
+  String get classesNewAssignmentIntro => 'Mavzu va sonni tanlang — savollar bankdan tasodifiy olinadi.';
 
   @override
   String get classesAssignmentTitle => 'Topshiriq nomi';
@@ -5494,8 +5220,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get classesTimeLimit => 'Vaqt chegarasi, daqiqa';
 
   @override
-  String get classesTimeLimitHint =>
-      'Ixtiyoriy, 1–180. Vaqt talaba boshlagan paytdan hisoblanadi va serverda tekshiriladi.';
+  String get classesTimeLimitHint => 'Ixtiyoriy, 1–180. Vaqt talaba boshlagan paytdan hisoblanadi va serverda tekshiriladi.';
 
   @override
   String get classesNoLimit => 'Vaqtsiz';
@@ -5515,8 +5240,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get classesDuePick => 'Sana tanlash';
 
   @override
-  String get classesDueNoneBody =>
-      'Muddat yo‘q — talabalar istalgan vaqtda topshiradi.';
+  String get classesDueNoneBody => 'Muddat yo‘q — talabalar istalgan vaqtda topshiradi.';
 
   @override
   String classesDueAt(String date) {
@@ -5532,8 +5256,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get classesReshuffle => 'Boshqa savollar';
 
   @override
-  String get classesKeyNotice =>
-      'Talabalar to‘g‘ri javoblarni oldindan ko‘rmaydi — ball serverda hisoblanadi. Har talaba bir marta topshiradi.';
+  String get classesKeyNotice => 'Talabalar to‘g‘ri javoblarni oldindan ko‘rmaydi — ball serverda hisoblanadi. Har talaba bir marta topshiradi.';
 
   @override
   String get classesSendAssignment => 'Topshiriqni berish';
@@ -5545,12 +5268,10 @@ class AppLocalizationsUz extends AppLocalizations {
   String get classesSubmitted => 'Javoblar yuborildi';
 
   @override
-  String get classesSubmitNetwork =>
-      'Internet yo‘q — javoblar qurilmada saqlandi. Keyin qayta yuboring.';
+  String get classesSubmitNetwork => 'Internet yo‘q — javoblar qurilmada saqlandi. Keyin qayta yuboring.';
 
   @override
-  String get classesSubmitRejected =>
-      'Server javoblarni qabul qilmadi: vaqt yoki muddat tugagan, yoki topshiriq avval topshirilgan.';
+  String get classesSubmitRejected => 'Server javoblarni qabul qilmadi: vaqt yoki muddat tugagan, yoki topshiriq avval topshirilgan.';
 
   @override
   String get classesAssignmentMissing => 'Topshiriq topilmadi';
@@ -5574,8 +5295,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get classesPendingTitle => 'Javoblar hali yuborilmagan';
 
   @override
-  String get classesPendingBody =>
-      'Ular qurilmada saqlangan. Internet ulanganda qayta yuboring — server vaqt chegarasi ichida qabul qiladi.';
+  String get classesPendingBody => 'Ular qurilmada saqlangan. Internet ulanganda qayta yuboring — server vaqt chegarasi ichida qabul qiladi.';
 
   @override
   String get classesResend => 'Qayta yuborish';
@@ -5597,8 +5317,7 @@ class AppLocalizationsUz extends AppLocalizations {
   }
 
   @override
-  String get classesStartNoticeNoLimit =>
-      'Vaqt chegarasi yo‘q. Javoblar bir marta yuboriladi, qayta topshirib bo‘lmaydi; yuborish uchun internet kerak.';
+  String get classesStartNoticeNoLimit => 'Vaqt chegarasi yo‘q. Javoblar bir marta yuboriladi, qayta topshirib bo‘lmaydi; yuborish uchun internet kerak.';
 
   @override
   String get classesStart => 'Boshlash';
@@ -5729,8 +5448,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get supportEmptyTitle => 'Hali murojaat yo‘q';
 
   @override
-  String get supportEmptyBody =>
-      'Taklif, xatolik yoki savolingizni yozing — javob shu yerda ko‘rinadi.';
+  String get supportEmptyBody => 'Taklif, xatolik yoki savolingizni yozing — javob shu yerda ko‘rinadi.';
 
   @override
   String get supportKind => 'Turi';
@@ -5754,8 +5472,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get supportMessage => 'Xabar';
 
   @override
-  String get supportMessageHint =>
-      'Batafsil yozing: qaysi ekranda, nima qildingiz, nima kutgan edingiz';
+  String get supportMessageHint => 'Batafsil yozing: qaysi ekranda, nima qildingiz, nima kutgan edingiz';
 
   @override
   String get supportAttach => 'Skrinshot biriktirish (ixtiyoriy)';
@@ -5764,15 +5481,13 @@ class AppLocalizationsUz extends AppLocalizations {
   String get supportAttachRemove => 'Rasmni olib tashlash';
 
   @override
-  String get supportAttachTooLarge =>
-      'Rasm 5 MB dan katta. Kichikroq rasm tanlang.';
+  String get supportAttachTooLarge => 'Rasm 5 MB dan katta. Kichikroq rasm tanlang.';
 
   @override
   String get supportAttachType => 'Faqat PNG yoki JPEG rasm.';
 
   @override
-  String get supportPhiNotice =>
-      'Skrinshotda bemorning ismi, tug‘ilgan sanasi, karta raqami yoki boshqa shaxsiy ma’lumoti bo‘lmasin.';
+  String get supportPhiNotice => 'Skrinshotda bemorning ismi, tug‘ilgan sanasi, karta raqami yoki boshqa shaxsiy ma’lumoti bo‘lmasin.';
 
   @override
   String get supportSend => 'Yuborish';
@@ -5793,8 +5508,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get supportUser => 'Foydalanuvchi';
 
   @override
-  String get supportHumanReplies =>
-      'Javoblarni LabGuide jamoasi o‘zi yozadi; avtomatik javob yuborilmaydi.';
+  String get supportHumanReplies => 'Javoblarni LabGuide jamoasi o‘zi yozadi; avtomatik javob yuborilmaydi.';
 
   @override
   String get supportStatusNew => 'Yangi';
@@ -5820,26 +5534,22 @@ class AppLocalizationsUz extends AppLocalizations {
   String get supportSignInTitle => 'Murojaat uchun hisobga kiring';
 
   @override
-  String get supportSignInBody =>
-      'Javobni sizga yetkazish uchun email bilan kirish kerak. Qurilmadagi ma’lumotlaringiz o‘zgarmaydi.';
+  String get supportSignInBody => 'Javobni sizga yetkazish uchun email bilan kirish kerak. Qurilmadagi ma’lumotlaringiz o‘zgarmaydi.';
 
   @override
   String get supportUnavailableTitle => 'Server hali ulanmagan';
 
   @override
-  String get supportUnavailableBody =>
-      'Bu buildda hisoblar, murojaatlar va guruhlar serveri ulanmagan. Ulangach shu yerda ishlaydi.';
+  String get supportUnavailableBody => 'Bu buildda hisoblar, murojaatlar va guruhlar serveri ulanmagan. Ulangach shu yerda ishlaydi.';
 
   @override
   String get errNetwork => 'Internetga ulanib bo‘lmadi. Qayta urinib ko‘ring.';
 
   @override
-  String get errRateLimited =>
-      'Juda ko‘p so‘rov. Birozdan keyin urinib ko‘ring.';
+  String get errRateLimited => 'Juda ko‘p so‘rov. Birozdan keyin urinib ko‘ring.';
 
   @override
-  String get errInvalidSupport =>
-      'Mavzu kamida 3 belgi bo‘lsin, xabar bo‘sh bo‘lmasin.';
+  String get errInvalidSupport => 'Mavzu kamida 3 belgi bo‘lsin, xabar bo‘sh bo‘lmasin.';
 
   @override
   String get errForbidden => 'Bu amal uchun ruxsat yo‘q.';
@@ -5854,15 +5564,13 @@ class AppLocalizationsUz extends AppLocalizations {
   String get accountDelete => 'Hisobni o‘chirish';
 
   @override
-  String get accountDeleteSub =>
-      'Serverdagi hisob, murojaatlar va guruh a’zoligi o‘chadi';
+  String get accountDeleteSub => 'Serverdagi hisob, murojaatlar va guruh a’zoligi o‘chadi';
 
   @override
   String get accountDeleteTitle => 'Hisob o‘chirilsinmi?';
 
   @override
-  String get accountDeleteBody =>
-      'Hisobingiz, murojaatlaringiz, biriktirilgan rasmlar va guruh natijalari serverdan butunlay o‘chiriladi. Buni qaytarib bo‘lmaydi. Qurilmadagi QC qaydlari va xatcho‘plar alohida o‘chiriladi.';
+  String get accountDeleteBody => 'Hisobingiz, murojaatlaringiz, biriktirilgan rasmlar va guruh natijalari serverdan butunlay o‘chiriladi. Buni qaytarib bo‘lmaydi. Qurilmadagi QC qaydlari va xatcho‘plar alohida o‘chiriladi.';
 
   @override
   String get accountDeleted => 'Hisob o‘chirildi';
@@ -5877,12 +5585,10 @@ class AppLocalizationsUz extends AppLocalizations {
   String get adminMfaTitle => 'Ikki bosqichli himoya';
 
   @override
-  String get adminMfaEnrollBody =>
-      'Admin panel uchun autentifikator ilovasi kerak (Google Authenticator, Microsoft Authenticator, 1Password…). Kalitni ilovaga qo‘shing va u ko‘rsatgan 6 xonali kodni kiriting.';
+  String get adminMfaEnrollBody => 'Admin panel uchun autentifikator ilovasi kerak (Google Authenticator, Microsoft Authenticator, 1Password…). Kalitni ilovaga qo‘shing va u ko‘rsatgan 6 xonali kodni kiriting.';
 
   @override
-  String get adminMfaVerifyBody =>
-      'Autentifikator ilovasidagi 6 xonali kodni kiriting.';
+  String get adminMfaVerifyBody => 'Autentifikator ilovasidagi 6 xonali kodni kiriting.';
 
   @override
   String get adminMfaSecret => 'Kalit';
@@ -5900,8 +5606,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get adminMfaVerify => 'Tasdiqlash';
 
   @override
-  String get adminMfaWrong =>
-      'Kod noto‘g‘ri yoki eskirgan. Ilovadagi yangi kodni kiriting.';
+  String get adminMfaWrong => 'Kod noto‘g‘ri yoki eskirgan. Ilovadagi yangi kodni kiriting.';
 
   @override
   String get adminCopied => 'Nusxalandi';
@@ -5910,8 +5615,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get adminForbiddenTitle => 'Faqat admin uchun';
 
   @override
-  String get adminForbiddenBody =>
-      'Admin vakolatini server beradi — ilovadagi rol yoki email buni o‘zgartirmaydi.';
+  String get adminForbiddenBody => 'Admin vakolatini server beradi — ilovadagi rol yoki email buni o‘zgartirmaydi.';
 
   @override
   String get adminStats => 'Statistika';
@@ -5938,8 +5642,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get adminActive30 => '30 kunda faol';
 
   @override
-  String get adminDefinitions =>
-      'Ro‘yxatdan o‘tgan — emailini kod bilan tasdiqlagan hisob; mehmonlar va kodni tasdiqlamaganlar sanalmaydi. Yangi — email birinchi tasdiqlangan kun. Faol — davr ichida ilovani hisobiga kirgan holda kamida bir marta ochgan. Kunlar Toshkent vaqti bo‘yicha; “7 kun” bugun bilan birga.';
+  String get adminDefinitions => 'Ro‘yxatdan o‘tgan — emailini kod bilan tasdiqlagan hisob; mehmonlar va kodni tasdiqlamaganlar sanalmaydi. Yangi — email birinchi tasdiqlangan kun. Faol — davr ichida ilovani hisobiga kirgan holda kamida bir marta ochgan. Kunlar Toshkent vaqti bo‘yicha; “7 kun” bugun bilan birga.';
 
   @override
   String get adminByRole => 'Rollar bo‘yicha';
@@ -6060,8 +5763,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get profileSignOutTitle => 'Hisobdan chiqilsinmi?';
 
   @override
-  String get profileSignOutBody =>
-      'Xatcho‘plar, QC qaydlari, eslatmalar va mashq natijalari shu qurilmada qoladi. Qurilmadan boshqa odam foydalanadigan bo‘lsa, ularni ham o‘chiring.';
+  String get profileSignOutBody => 'Xatcho‘plar, QC qaydlari, eslatmalar va mashq natijalari shu qurilmada qoladi. Qurilmadan boshqa odam foydalanadigan bo‘lsa, ularni ham o‘chiring.';
 
   @override
   String get profileSignOutDelete => 'Chiqish va o‘chirish';
@@ -6075,16 +5777,13 @@ class AppLocalizationsUz extends AppLocalizations {
   String get purchaseTitle => 'LabGuide Pro';
 
   @override
-  String get purchaseFree =>
-      'Bepul: leykoformula hisoblagichi, foiz va mutlaq sonlar, asosiy qo‘llanmalar, tarixda oxirgi 3 natija.';
+  String get purchaseFree => 'Bepul: leykoformula hisoblagichi, foiz va mutlaq sonlar, asosiy qo‘llanmalar, tarixda oxirgi 3 natija.';
 
   @override
-  String get purchasePro =>
-      'Pro (oylik yoki yillik): cheksiz natijalar tarixi, PDF eksport, kengaytirilgan mashqlar, toifa imtihoniga to‘liq tayyorgarlik.';
+  String get purchasePro => 'Pro (oylik yoki yillik): cheksiz natijalar tarixi, PDF eksport, kengaytirilgan mashqlar, toifa imtihoniga to‘liq tayyorgarlik.';
 
   @override
-  String get purchaseNotice =>
-      'Do‘kon mahsulotlari ulanmagan. Narxlar App Store / Google Play’dan mahalliy valyutada olinadi. Bu yerda pul yechilmaydi va hali tayyor bo‘lmagan imkoniyat sotilmaydi.';
+  String get purchaseNotice => 'Do‘kon mahsulotlari ulanmagan. Narxlar App Store / Google Play’dan mahalliy valyutada olinadi. Bu yerda pul yechilmaydi va hali tayyor bo‘lmagan imkoniyat sotilmaydi.';
 
   @override
   String get purchaseSubscribe => 'Obuna bo‘lish';
@@ -6096,12 +5795,10 @@ class AppLocalizationsUz extends AppLocalizations {
   String get purchaseStatusTitle => 'Holat';
 
   @override
-  String get purchaseStatusAllOpen =>
-      'To‘lov hali yoqilmagan; TestFlight’da hamma imkoniyat ochiq.';
+  String get purchaseStatusAllOpen => 'To‘lov hali yoqilmagan; TestFlight’da hamma imkoniyat ochiq.';
 
   @override
-  String get purchaseStatusBillingOff =>
-      'To‘lov hali yoqilmagan. Bepul imkoniyatlar to‘liq ishlaydi; Pro narxi tasdiqlangach yoqiladi.';
+  String get purchaseStatusBillingOff => 'To‘lov hali yoqilmagan. Bepul imkoniyatlar to‘liq ishlaydi; Pro narxi tasdiqlangach yoqiladi.';
 
   @override
   String purchaseStatusPro(String date) {
@@ -6123,12 +5820,10 @@ class AppLocalizationsUz extends AppLocalizations {
   String get privacyTitle => 'Maxfiylik va ma’lumotlar';
 
   @override
-  String get privacyBody =>
-      'Mehmon rejimida ilova serverga hech narsa yubormaydi: sozlamalar, xatcho‘plar, QC qaydlari, apparatlaringiz va mashq natijalari shu qurilmada saqlanadi (qurilmaning o‘z zaxira nusxasiga kirishi mumkin). Email bilan kirsangiz, ma’lumotlar Cloudflare serverida (Sharqiy Yevropa, O‘zbekistondan tashqarida) saqlanadi: email faqat hash va niqoblangan ko‘rinishda (kirish kodi Resend xizmati orqali yuboriladi), rol, til, oxirgi faol kun; guruhda — guruh nomi, taxallusingiz yoki tartib raqamingiz (ism so‘ralmaydi), test javoblari va ballaringiz. Ustoz faqat o‘z guruhini ko‘radi, talaba faqat o‘zini. Reklama va kuzatuv yo‘q. Hisobni istalgan vaqtda o‘chirishingiz mumkin.';
+  String get privacyBody => 'Mehmon rejimida ilova serverga hech narsa yubormaydi: sozlamalar, xatcho‘plar, QC qaydlari, apparatlaringiz va mashq natijalari shu qurilmada saqlanadi (qurilmaning o‘z zaxira nusxasiga kirishi mumkin). Email bilan kirsangiz, ma’lumotlar Cloudflare serverida (Sharqiy Yevropa, O‘zbekistondan tashqarida) saqlanadi: email faqat hash va niqoblangan ko‘rinishda (kirish kodi Resend xizmati orqali yuboriladi), rol, til, oxirgi faol kun; guruhda — guruh nomi, taxallusingiz yoki tartib raqamingiz (ism so‘ralmaydi), test javoblari va ballaringiz. Ustoz faqat o‘z guruhini ko‘radi, talaba faqat o‘zini. Reklama va kuzatuv yo‘q. Hisobni istalgan vaqtda o‘chirishingiz mumkin.';
 
   @override
-  String get privacyBodyLocal =>
-      'Bu buildda server ulanmagan: ilova serverga hech narsa yubormaydi. Sozlamalar, xatcho‘plar, QC qaydlari, apparatlaringiz va mashq natijalari shu qurilmada saqlanadi (qurilmaning o‘z zaxira nusxasiga kirishi mumkin). Reklama va kuzatuv yo‘q.';
+  String get privacyBodyLocal => 'Bu buildda server ulanmagan: ilova serverga hech narsa yubormaydi. Sozlamalar, xatcho‘plar, QC qaydlari, apparatlaringiz va mashq natijalari shu qurilmada saqlanadi (qurilmaning o‘z zaxira nusxasiga kirishi mumkin). Reklama va kuzatuv yo‘q.';
 
   @override
   String get privacyTerms => 'Foydalanish shartlari';
@@ -6140,15 +5835,13 @@ class AppLocalizationsUz extends AppLocalizations {
   String get privacyDeleteLocal => 'Lokal ma’lumotlarni o‘chirish';
 
   @override
-  String get privacyDeleteLocalSub =>
-      'Sozlamalar, xatcho‘plar, qoralamalar, QC qaydlari va mashq natijalari';
+  String get privacyDeleteLocalSub => 'Sozlamalar, xatcho‘plar, qoralamalar, QC qaydlari va mashq natijalari';
 
   @override
   String get privacyDeleteConfirmTitle => 'Lokal ma’lumotlar o‘chirilsinmi?';
 
   @override
-  String get privacyDeleteConfirmBody =>
-      'Shu qurilmadagi sozlamalar, xatcho‘plar, qoralamalar, barcha QC qaydlari (seriyalar va maqsadlar) va mashq natijalari o‘chiriladi. Buni qaytarib bo‘lmaydi — kerak bo‘lsa, avval QC zaxira nusxasini oling (Laboratoriya → Sifat nazorati).';
+  String get privacyDeleteConfirmBody => 'Shu qurilmadagi sozlamalar, xatcho‘plar, qoralamalar, barcha QC qaydlari (seriyalar va maqsadlar) va mashq natijalari o‘chiriladi. Buni qaytarib bo‘lmaydi — kerak bo‘lsa, avval QC zaxira nusxasini oling (Laboratoriya → Sifat nazorati).';
 
   @override
   String get privacyDeleted => 'Lokal ma’lumotlar o‘chirildi';
@@ -6157,8 +5850,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get termsTitle => 'Foydalanish shartlari';
 
   @override
-  String get termsBody =>
-      'Yakuniy shartlar, maxfiylik siyosati va klinik foydalanish chegaralari nashrdan oldin tayyorlanadi. LabGuide — ma’lumotnoma va o‘quv vositasi: u tashxis qo‘ymaydi, dori buyurmaydi va laboratoriyangiz tartiblarini almashtirmaydi.';
+  String get termsBody => 'Yakuniy shartlar, maxfiylik siyosati va klinik foydalanish chegaralari nashrdan oldin tayyorlanadi. LabGuide — ma’lumotnoma va o‘quv vositasi: u tashxis qo‘ymaydi, dori buyurmaydi va laboratoriyangiz tartiblarini almashtirmaydi.';
 
   @override
   String citePage(String page) {
@@ -6263,8 +5955,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get libIntake => 'Materiallarni qo‘shish';
 
   @override
-  String get libIntakeSub =>
-      'Domla va muharrir uchun: nima yuboriladi, huquq, tekshiruv';
+  String get libIntakeSub => 'Domla va muharrir uchun: nima yuboriladi, huquq, tekshiruv';
 
   @override
   String get libContinueReading => 'O‘qishni davom ettirish';
@@ -6313,8 +6004,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get libFilteredEmptyTitle => 'Bu filtrlar bo‘yicha material yo‘q';
 
   @override
-  String get libFilteredEmptyBody =>
-      'Bitta filtrni olib tashlang yoki boshqa so‘z bilan qidiring — masalan, muallif familiyasi yoki “siydik”.';
+  String get libFilteredEmptyBody => 'Bitta filtrni olib tashlang yoki boshqa so‘z bilan qidiring — masalan, muallif familiyasi yoki “siydik”.';
 
   @override
   String get libOpenLink => 'Havola · tashqi sayt';
@@ -6345,12 +6035,10 @@ class AppLocalizationsUz extends AppLocalizations {
   String get libOpenPendingHint => 'Material hali olinmagan — ochib bo‘lmaydi';
 
   @override
-  String get libOpenReceivedHint =>
-      'Fayl qabul qilindi va tekshirilmoqda — hali ochilmaydi';
+  String get libOpenReceivedHint => 'Fayl qabul qilindi va tekshirilmoqda — hali ochilmaydi';
 
   @override
-  String get libOpenRecordHint =>
-      'Faylni tarqatish huquqi qayd etilmagan — ilovada ochilmaydi';
+  String get libOpenRecordHint => 'Faylni tarqatish huquqi qayd etilmagan — ilovada ochilmaydi';
 
   @override
   String get libOpenLinkShort => 'Havola';
@@ -6376,8 +6064,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get libItemCannotOpen => 'Ochib bo‘lmaydi';
 
   @override
-  String get libDownloadUnavailable =>
-      'Yuklab olish serveri hali ulanmagan — kitobni hozircha yuklab bo‘lmaydi.';
+  String get libDownloadUnavailable => 'Yuklab olish serveri hali ulanmagan — kitobni hozircha yuklab bo‘lmaydi.';
 
   @override
   String get libDetailsTitle => 'Ma’lumotlar';
@@ -6436,15 +6123,13 @@ class AppLocalizationsUz extends AppLocalizations {
   String get libItemNotFound => 'Material topilmadi';
 
   @override
-  String get libItemNotFoundBody =>
-      'Kontent paketi yangilangan bo‘lishi mumkin. Katalogga qayting.';
+  String get libItemNotFoundBody => 'Kontent paketi yangilangan bo‘lishi mumkin. Katalogga qayting.';
 
   @override
   String get libItemUnavailable => 'Material sizning tilingizda mavjud emas';
 
   @override
-  String get libItemUnavailableBody =>
-      'Bu material hozircha faqat boshqa tilda mavjud. Interfeys tilini o‘zgartiring yoki katalogga qayting.';
+  String get libItemUnavailableBody => 'Bu material hozircha faqat boshqa tilda mavjud. Interfeys tilini o‘zgartiring yoki katalogga qayting.';
 
   @override
   String get libBackToCatalog => 'Katalogga qaytish';
@@ -6464,8 +6149,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get readerTocEmpty => 'Bu faylda mundarija yo‘q';
 
   @override
-  String get readerTocEmptyBody =>
-      'Sahifaga o‘ting yoki kerakli joyga xatcho‘p qo‘ying.';
+  String get readerTocEmptyBody => 'Sahifaga o‘ting yoki kerakli joyga xatcho‘p qo‘ying.';
 
   @override
   String get readerBookmarks => 'Xatcho‘plar';
@@ -6494,8 +6178,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get readerBookmarksEmpty => 'Hali xatcho‘p yo‘q';
 
   @override
-  String get readerBookmarksEmptyBody =>
-      'Kerakli sahifada “Shu sahifani belgilash”ni bosing — keyin bir bosishda qaytasiz.';
+  String get readerBookmarksEmptyBody => 'Kerakli sahifada “Shu sahifani belgilash”ni bosing — keyin bir bosishda qaytasiz.';
 
   @override
   String readerPageLabel(int page) {
@@ -6531,8 +6214,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get libFieldProvidedBy => 'Kimdan';
 
   @override
-  String get libQueryEmptyBody =>
-      'Boshqa so‘z bilan qidiring — masalan, muallif familiyasi, “siydik” yoki “biokimyo”.';
+  String get libQueryEmptyBody => 'Boshqa so‘z bilan qidiring — masalan, muallif familiyasi, “siydik” yoki “biokimyo”.';
 
   @override
   String get readerZoomIn => 'Kattalashtirish';
@@ -6555,15 +6237,13 @@ class AppLocalizationsUz extends AppLocalizations {
   String get readerFileMissing => 'Fayl topilmadi';
 
   @override
-  String get readerFileMissingBody =>
-      'Bu fayl ilova ichida yo‘q. Ilovani yangilab ko‘ring.';
+  String get readerFileMissingBody => 'Bu fayl ilova ichida yo‘q. Ilovani yangilab ko‘ring.';
 
   @override
   String get readerFileCorrupted => 'Fayl tekshiruvdan o‘tmadi';
 
   @override
-  String get readerFileCorruptedBody =>
-      'Fayl hajmi yoki nazorat yig‘indisi katalogdagiga mos emas — u buzilgan yoki almashtirilgan bo‘lishi mumkin, shuning uchun ochilmadi.';
+  String get readerFileCorruptedBody => 'Fayl hajmi yoki nazorat yig‘indisi katalogdagiga mos emas — u buzilgan yoki almashtirilgan bo‘lishi mumkin, shuning uchun ochilmadi.';
 
   @override
   String get readerOpenFailed => 'PDF ochilmadi';
@@ -6572,8 +6252,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get readerBlockedTitle => 'Ilova ichida ochilmaydi';
 
   @override
-  String get readerBlockedRights =>
-      'Ilovada faqat to‘liq tarqatish huquqi qayd etilgan fayllar ochiladi. Bu material uchun bunday fayl yo‘q.';
+  String get readerBlockedRights => 'Ilovada faqat to‘liq tarqatish huquqi qayd etilgan fayllar ochiladi. Bu material uchun bunday fayl yo‘q.';
 
   @override
   String get readerBookmarkedPage => 'Bu sahifa belgilangan';
@@ -6593,31 +6272,25 @@ class AppLocalizationsUz extends AppLocalizations {
   String get intakeWhatTitle => '1. Nima yuboriladi';
 
   @override
-  String get intakeWhat1 =>
-      'Kitob, qo‘llanma, metodika yoki IFU fayli (PDF) va uning ma’lumotlari: nomi, muallif, yil va nashr, nashriyot, ISBN, til.';
+  String get intakeWhat1 => 'Kitob, qo‘llanma, metodika yoki IFU fayli (PDF) va uning ma’lumotlari: nomi, muallif, yil va nashr, nashriyot, ISBN, til.';
 
   @override
-  String get intakeWhat2 =>
-      'Test savollari: savol, variantlar, to‘g‘ri javob, har variant uchun izoh va manba sahifasi.';
+  String get intakeWhat2 => 'Test savollari: savol, variantlar, to‘g‘ri javob, har variant uchun izoh va manba sahifasi.';
 
   @override
-  String get intakeWhat3 =>
-      'Eski va yangi nashr bo‘lsa — ikkalasi ham: farqlar alohida ko‘rib chiqiladi.';
+  String get intakeWhat3 => 'Eski va yangi nashr bo‘lsa — ikkalasi ham: farqlar alohida ko‘rib chiqiladi.';
 
   @override
   String get intakeRightsTitle => '2. Tarqatish huquqi';
 
   @override
-  String get intakeRights1 =>
-      'Berilgan PDF o‘z-o‘zidan hammaga tarqatish huquqi degani emas.';
+  String get intakeRights1 => 'Berilgan PDF o‘z-o‘zidan hammaga tarqatish huquqi degani emas.';
 
   @override
-  String get intakeRights2 =>
-      'Fayl ilovada hammaga ochilishi uchun to‘liq huquq qayd etiladi: kim ruxsat bergan (muallif yoki nashriyot), qachon, kim qayd etgan va dalil — ruxsat xati yoki litsenziya havolasi.';
+  String get intakeRights2 => 'Fayl ilovada hammaga ochilishi uchun to‘liq huquq qayd etiladi: kim ruxsat bergan (muallif yoki nashriyot), qachon, kim qayd etgan va dalil — ruxsat xati yoki litsenziya havolasi.';
 
   @override
-  String get intakeRights3 =>
-      'Qayd bo‘lmasa, material faqat katalog yozuvi yoki shaxsiy foydalanish uchun qoladi.';
+  String get intakeRights3 => 'Qayd bo‘lmasa, material faqat katalog yozuvi yoki shaxsiy foydalanish uchun qoladi.';
 
   @override
   String get intakeReviewTitle => '3. Qanday tekshiriladi';
@@ -6629,20 +6302,16 @@ class AppLocalizationsUz extends AppLocalizations {
   String get intakeStep2 => 'Qabul qilindi — fayl keldi va ro‘yxatga yozildi.';
 
   @override
-  String get intakeStep3 =>
-      'Kataloglandi — nomi, muallif va nashr tekshirildi. Shundan keyingina undan iqtibos keltiriladi.';
+  String get intakeStep3 => 'Kataloglandi — nomi, muallif va nashr tekshirildi. Shundan keyingina undan iqtibos keltiriladi.';
 
   @override
-  String get intakeStep4 =>
-      'Bog‘landi — tahlil kartalari va darslarga sahifa raqami bilan bog‘landi.';
+  String get intakeStep4 => 'Bog‘landi — tahlil kartalari va darslarga sahifa raqami bilan bog‘landi.';
 
   @override
-  String get intakeStep5 =>
-      'Tasdiqlandi — domla ko‘rib chiqdi. Savollar shungacha “Qoralama” bo‘lib turadi.';
+  String get intakeStep5 => 'Tasdiqlandi — domla ko‘rib chiqdi. Savollar shungacha “Qoralama” bo‘lib turadi.';
 
   @override
-  String get intakeConflict =>
-      'Eski va yangi manba zid bo‘lsa, hech biri fakt sifatida yozilmaydi — ikkala pozitsiya tekshiruvchiga ko‘rsatiladi.';
+  String get intakeConflict => 'Eski va yangi manba zid bo‘lsa, hech biri fakt sifatida yozilmaydi — ikkala pozitsiya tekshiruvchiga ko‘rsatiladi.';
 
   @override
   String get intakeNeverTitle => 'Nima qilinmaydi';
@@ -6651,8 +6320,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get intakeNever1 => 'Kelmagan materialni “mavjud” deb ko‘rsatish.';
 
   @override
-  String get intakeNever2 =>
-      'Sahifa raqamini taxmin qilish yoki manbada yo‘q gapni yozish.';
+  String get intakeNever2 => 'Sahifa raqamini taxmin qilish yoki manbada yo‘q gapni yozish.';
 
   @override
   String get intakeNever3 => 'Huquqi qayd etilmagan kitobni hammaga tarqatish.';
@@ -6661,8 +6329,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get intakeContactTitle => '4. Bog‘lanish';
 
   @override
-  String get intakeContactBody =>
-      'Material haqida LabGuide jamoasiga yozing: nomi, muallif, nashr va huquq egasi. Faylni topshirish usuli jamoa bilan kelishiladi — ilova orqali PDF yuklab bo‘lmaydi.';
+  String get intakeContactBody => 'Material haqida LabGuide jamoasiga yozing: nomi, muallif, nashr va huquq egasi. Faylni topshirish usuli jamoa bilan kelishiladi — ilova orqali PDF yuklab bo‘lmaydi.';
 
   @override
   String get intakeContactAction => 'LabGuide jamoasiga yozish';
@@ -6680,15 +6347,13 @@ class AppLocalizationsUz extends AppLocalizations {
   String get rvGateTitle => 'Faqat tekshiruvchilar uchun';
 
   @override
-  String get rvGateBody =>
-      'Tekshiruvchi vakolatini admin beradi. Ilovadagi rol (masalan, “Ustoz”) bu huquqni bermaydi.';
+  String get rvGateBody => 'Tekshiruvchi vakolatini admin beradi. Ilovadagi rol (masalan, “Ustoz”) bu huquqni bermaydi.';
 
   @override
   String get rvSignInTitle => 'Tekshiruv uchun hisobga kiring';
 
   @override
-  String get rvAdminReadOnly =>
-      'Admin sifatida qarorlarni ko‘rasiz. Qaror yozish uchun hisobingizga tekshiruvchi vakolatini bering (Admin → Foydalanuvchilar).';
+  String get rvAdminReadOnly => 'Admin sifatida qarorlarni ko‘rasiz. Qaror yozish uchun hisobingizga tekshiruvchi vakolatini bering (Admin → Foydalanuvchilar).';
 
   @override
   String get rvTabCards => 'Kartalar';
@@ -6728,8 +6393,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get rvComment => 'Izoh';
 
   @override
-  String get rvCommentHint =>
-      'Nima noto‘g‘ri yoki nimani tekshirish kerak (manba, sahifa)';
+  String get rvCommentHint => 'Nima noto‘g‘ri yoki nimani tekshirish kerak (manba, sahifa)';
 
   @override
   String get rvCommentRequired => '“O‘zgartirish kerak” uchun izoh yozing.';
@@ -6741,8 +6405,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get rvSubmitted => 'Qaror yozildi';
 
   @override
-  String get rvNotAuto =>
-      'Qaror kartaning holatini o‘zi o‘zgartirmaydi: tahririyat ko‘rib chiqqach, keyingi kontent paketida “Tekshirilgan” bo‘ladi.';
+  String get rvNotAuto => 'Qaror kartaning holatini o‘zi o‘zgartirmaydi: tahririyat ko‘rib chiqqach, keyingi kontent paketida “Tekshirilgan” bo‘ladi.';
 
   @override
   String get rvHistory => 'Qarorlar tarixi';
@@ -6781,8 +6444,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get analyteSourcesChecked => 'Manbalar ko‘rilgan';
 
   @override
-  String get reviewDiscrepanciesBody =>
-      'Eski va yangi manbalar bir-biriga zid bo‘lsa, ikkala pozitsiya mutaxassis tekshiruvi uchun shu yerda ko‘rsatiladi. Hal qilinmaguncha hech biri fakt sifatida nashr etilmaydi.';
+  String get reviewDiscrepanciesBody => 'Eski va yangi manbalar bir-biriga zid bo‘lsa, ikkala pozitsiya mutaxassis tekshiruvi uchun shu yerda ko‘rsatiladi. Hal qilinmaguncha hech biri fakt sifatida nashr etilmaydi.';
 
   @override
   String get reviewNoDiscrepancies => 'Ochiq farqlar yo‘q.';
@@ -6817,12 +6479,10 @@ class AppLocalizationsUz extends AppLocalizations {
   String get analyteTreatmentGoals => 'Davolash maqsadi';
 
   @override
-  String get analyteTreatmentGoalsNotice =>
-      'Davolash maqsadi shifokor tomonidan bemorning to‘liq xavf baholashi asosida belgilanadi; ilova xavf toifasini aniqlamaydi.';
+  String get analyteTreatmentGoalsNotice => 'Davolash maqsadi shifokor tomonidan bemorning to‘liq xavf baholashi asosida belgilanadi; ilova xavf toifasini aniqlamaydi.';
 
   @override
-  String get analyteTreatmentGoalsNotRef =>
-      'Davolash maqsadi referens interval ham, diagnostik chegara ham emas. Qo‘llanmalar xavf guruhlarini turlicha belgilaydi — qiymatlarni faqat bitta jadval ichida solishtiring.';
+  String get analyteTreatmentGoalsNotRef => 'Davolash maqsadi referens interval ham, diagnostik chegara ham emas. Qo‘llanmalar xavf guruhlarini turlicha belgilaydi — qiymatlarni faqat bitta jadval ichida solishtiring.';
 
   @override
   String analyteGoalHistorical(String current) {
@@ -6862,12 +6522,10 @@ class AppLocalizationsUz extends AppLocalizations {
   String get classesTeacherRegisterEyebrow => 'Ustoz';
 
   @override
-  String get classesTeacherRegisterTitle =>
-      'O‘zingizni ustoz sifatida ro‘yxatdan o‘tkazing';
+  String get classesTeacherRegisterTitle => 'O‘zingizni ustoz sifatida ro‘yxatdan o‘tkazing';
 
   @override
-  String get classesTeacherRegisterBody =>
-      'Ustoz o‘z guruhini ochadi va faqat o‘z talabalari natijasini ko‘radi. Bu admin huquqi emas va boshqa guruhlarga ta’sir qilmaydi.';
+  String get classesTeacherRegisterBody => 'Ustoz o‘z guruhini ochadi va faqat o‘z talabalari natijasini ko‘radi. Bu admin huquqi emas va boshqa guruhlarga ta’sir qilmaydi.';
 
   @override
   String get classesTeacherRegister => 'Ustoz sifatida ro‘yxatdan o‘tish';
@@ -6876,8 +6534,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get classesLocalNameTitle => 'Belgi (faqat shu qurilmada)';
 
   @override
-  String get classesLocalNameBody =>
-      'Masalan, talabaning ismi. Serverga yuborilmaydi va talaba ko‘rmaydi.';
+  String get classesLocalNameBody => 'Masalan, talabaning ismi. Serverga yuborilmaydi va talaba ko‘rmaydi.';
 
   @override
   String get classesLocalNameHint => 'Bo‘sh — belgini o‘chirish';
@@ -6889,8 +6546,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get classroomPlanTitle => 'O‘quv rejasi';
 
   @override
-  String get classroomPlanSub =>
-      'Kunlar bo‘yicha mavzular: ma’ruza, savol-javob, test';
+  String get classroomPlanSub => 'Kunlar bo‘yicha mavzular: ma’ruza, savol-javob, test';
 
   @override
   String get classroomTopicsTitle => 'Mavzular';
@@ -6907,8 +6563,7 @@ class AppLocalizationsUz extends AppLocalizations {
   }
 
   @override
-  String get classroomStartNone =>
-      'Boshlanish sanasi belgilanmagan — jadval kun tartibi bilan';
+  String get classroomStartNone => 'Boshlanish sanasi belgilanmagan — jadval kun tartibi bilan';
 
   @override
   String classroomStartAt(String date) {
@@ -6916,8 +6571,7 @@ class AppLocalizationsUz extends AppLocalizations {
   }
 
   @override
-  String get classroomStartNote =>
-      'Sanalar taxminiy (yakshanba o‘tkaziladi, bayramlar hisobga olinmaydi) va faqat shu qurilmada saqlanadi.';
+  String get classroomStartNote => 'Sanalar taxminiy (yakshanba o‘tkaziladi, bayramlar hisobga olinmaydi) va faqat shu qurilmada saqlanadi.';
 
   @override
   String get classroomStartPick => 'Boshlanish sanasini belgilash';
@@ -6974,8 +6628,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get classroomNoCurriculumTitle => 'O‘quv dasturi hali qo‘shilmagan';
 
   @override
-  String get classroomNoCurriculumBody =>
-      'Kurs jadvali (modul → mavzu → materiallar) ilovaning keyingi versiyasida keladi. Hozircha guruh topshiriqlaridan foydalaning.';
+  String get classroomNoCurriculumBody => 'Kurs jadvali (modul → mavzu → materiallar) ilovaning keyingi versiyasida keladi. Hozircha guruh topshiriqlaridan foydalaning.';
 
   @override
   String get classroomCurriculumError => 'O‘quv dasturini o‘qib bo‘lmadi';
@@ -6984,8 +6637,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get classroomNoTopicsStudent => 'Ustoz hali mavzu ochmagan';
 
   @override
-  String get classroomNoTopicsStudentBody =>
-      'Mavzu ochilganda materiallar va test shu yerda chiqadi.';
+  String get classroomNoTopicsStudentBody => 'Mavzu ochilganda materiallar va test shu yerda chiqadi.';
 
   @override
   String get classroomTopicTitle => 'Mavzu';
@@ -6997,8 +6649,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get classroomTopicNotOpened => 'Bu mavzu hali ochilmagan';
 
   @override
-  String get classroomOpenNote =>
-      'Ochilgandan keyin talabalar mavzu materiallarini ko‘radi.';
+  String get classroomOpenNote => 'Ochilgandan keyin talabalar mavzu materiallarini ko‘radi.';
 
   @override
   String get classroomOpenTopic => 'Talabalarga ochish';
@@ -7012,8 +6663,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get classroomStageLecture => 'Ma’ruza';
 
   @override
-  String get classroomStageLectureBody =>
-      'Mavzuni katta ekranda slaydlar bilan ko‘rsating (internetsiz ham ishlaydi).';
+  String get classroomStageLectureBody => 'Mavzuni katta ekranda slaydlar bilan ko‘rsating (internetsiz ham ishlaydi).';
 
   @override
   String get classroomStageOral => 'Og‘zaki savol-javob';
@@ -7027,8 +6677,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get classroomStageTest => 'Guruh testi';
 
   @override
-  String get classroomStageTestBody =>
-      'Savollarni tanlang va testni boshlang — talabalarda darhol ochiladi.';
+  String get classroomStageTestBody => 'Savollarni tanlang va testni boshlang — talabalarda darhol ochiladi.';
 
   @override
   String get classroomStageDone => 'O‘tildi';
@@ -7052,8 +6701,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get classroomTestFinishTitle => 'Test yakunlansinmi?';
 
   @override
-  String get classroomTestFinishBody =>
-      'Yangi urinish qabul qilinmaydi. Boshlab qo‘yganlar javobini yuborishi uchun 2 daqiqa qoladi.';
+  String get classroomTestFinishBody => 'Yangi urinish qabul qilinmaydi. Boshlab qo‘yganlar javobini yuborishi uchun 2 daqiqa qoladi.';
 
   @override
   String classroomTestSubmitted(int done, int total) {
@@ -7070,12 +6718,10 @@ class AppLocalizationsUz extends AppLocalizations {
   String get classroomMaterials => 'Mavzu materiallari';
 
   @override
-  String get classroomNoMaterials =>
-      'Ilovada bu mavzuga bog‘langan material hali yo‘q.';
+  String get classroomNoMaterials => 'Ilovada bu mavzuga bog‘langan material hali yo‘q.';
 
   @override
-  String get classroomGapNote =>
-      'Ilovada bu mavzu bo‘yicha material kam — ustoz o‘z manbalaridan to‘ldiradi.';
+  String get classroomGapNote => 'Ilovada bu mavzu bo‘yicha material kam — ustoz o‘z manbalaridan to‘ldiradi.';
 
   @override
   String get classroomKindAnalyte => 'Tahlil kartasi';
@@ -7108,8 +6754,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get classroomToolDifferential => 'Leykoformula';
 
   @override
-  String get classroomOralNotice =>
-      'Savollar avtomatik tanlangan nomzodlar — javob rejasi mutaxassis tekshiruvini kutmoqda. “So‘raldi” va baholar faqat shu qurilmada saqlanadi.';
+  String get classroomOralNotice => 'Savollar avtomatik tanlangan nomzodlar — javob rejasi mutaxassis tekshiruvini kutmoqda. “So‘raldi” va baholar faqat shu qurilmada saqlanadi.';
 
   @override
   String get classroomOralEmpty => 'Bu mavzu uchun og‘zaki savol topilmadi';
@@ -7137,8 +6782,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get classroomOralGradeTitle => 'Kim qanday javob berdi';
 
   @override
-  String get classroomOralGradeNote =>
-      'Faqat shu qurilmada; serverga yuborilmaydi.';
+  String get classroomOralGradeNote => 'Faqat shu qurilmada; serverga yuborilmaydi.';
 
   @override
   String get classroomGradeKnew => 'Bildi';
@@ -7150,8 +6794,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get classroomGradeDidNot => 'Bilmadi';
 
   @override
-  String get classroomCandidatesNotice =>
-      'Nomzod savollar avtomatik tanlangan, kalitlari tekshirilmagan. Har birini ko‘rib chiqing: ball ko‘rsatilgan kalit bo‘yicha serverda hisoblanadi.';
+  String get classroomCandidatesNotice => 'Nomzod savollar avtomatik tanlangan, kalitlari tekshirilmagan. Har birini ko‘rib chiqing: ball ko‘rsatilgan kalit bo‘yicha serverda hisoblanadi.';
 
   @override
   String classroomCandidatesTitle(int picked, int total) {
@@ -7195,12 +6838,10 @@ class AppLocalizationsUz extends AppLocalizations {
   String get classroomTestAlready => 'Bu mavzu testi allaqachon boshlangan';
 
   @override
-  String get classroomTestNoCandidates =>
-      'Bu mavzu uchun test savoli topilmadi';
+  String get classroomTestNoCandidates => 'Bu mavzu uchun test savoli topilmadi';
 
   @override
-  String get classroomTestNoCandidatesBody =>
-      'Guruh topshirig‘ini qo‘lda tuzishingiz mumkin (Yangi topshiriq).';
+  String get classroomTestNoCandidatesBody => 'Guruh topshirig‘ini qo‘lda tuzishingiz mumkin (Yangi topshiriq).';
 
   @override
   String get lectureTitle => 'Ma’ruza';
@@ -7209,8 +6850,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get lectureListTitle => 'Ma’ruza rejimi';
 
   @override
-  String get lectureListSub =>
-      'Mavzuni tanlang — slaydlar katta ekranda, internetsiz';
+  String get lectureListSub => 'Mavzuni tanlang — slaydlar katta ekranda, internetsiz';
 
   @override
   String get lectureStart => 'Ma’ruzani boshlash';
@@ -7268,8 +6908,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get lectureEndTest => 'Guruh testi — ilovada, vaqt bilan';
 
   @override
-  String get lectureDraftNotice =>
-      'Ustoz tekshiruvi uchun qoralama — darsdan oldin mazmunni ko‘rib chiqing';
+  String get lectureDraftNotice => 'Ustoz tekshiruvi uchun qoralama — darsdan oldin mazmunni ko‘rib chiqing';
 
   @override
   String get lectureUzOnly => 'Bu taqdimot hozircha faqat o‘zbek tilida';
@@ -7292,8 +6931,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get cmTitle => 'Hamjamiyat · Savol-javob';
 
   @override
-  String get cmHomeSub =>
-      'Tasdiqlangan laboratoriya mutaxassislari javob beradi';
+  String get cmHomeSub => 'Tasdiqlangan laboratoriya mutaxassislari javob beradi';
 
   @override
   String get cmAsk => 'Savol berish';
@@ -7344,8 +6982,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get cmBadgeManual => '✓ Tasdiqlangan mutaxassis';
 
   @override
-  String get cmBadgeInfo =>
-      '“Hujjat avtomatik tekshirilgan” — hujjatni inson emas, sun’iy intellekt modeli tekshirgan. Noto‘g‘ri belgi haqida shikoyat qilish mumkin.';
+  String get cmBadgeInfo => '“Hujjat avtomatik tekshirilgan” — hujjatni inson emas, sun’iy intellekt modeli tekshirgan. Noto‘g‘ri belgi haqida shikoyat qilish mumkin.';
 
   @override
   String get cmMember => 'Foydalanuvchi';
@@ -7357,8 +6994,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get cmVerifyInfoTitle => 'Avtomatik tekshiruv — fayl saqlanmaydi';
 
   @override
-  String get cmVerifyInfo =>
-      'Hujjatni sun’iy intellekt modeli (Cloudflare Workers AI) avtomatik tekshiradi — uni inson ko‘rmaydi. Fayl hech qayerda saqlanmaydi va tekshiruvdan so‘ng darhol o‘chadi. Serverda faqat natija qoladi: rol, mamlakat, holat va sana. Avtomatik tekshiruv xato qilishi mumkin; boshqa foydalanuvchilar noto‘g‘ri belgi haqida shikoyat qilsa, belgi admin ko‘rib chiqquncha to‘xtatiladi.';
+  String get cmVerifyInfo => 'Hujjatni sun’iy intellekt modeli (Cloudflare Workers AI) avtomatik tekshiradi — uni inson ko‘rmaydi. Fayl hech qayerda saqlanmaydi va tekshiruvdan so‘ng darhol o‘chadi. Serverda faqat natija qoladi: rol, mamlakat, holat va sana. Avtomatik tekshiruv xato qilishi mumkin; boshqa foydalanuvchilar noto‘g‘ri belgi haqida shikoyat qilsa, belgi admin ko‘rib chiqquncha to‘xtatiladi.';
 
   @override
   String get cmVerifyRole => 'Kasbingiz';
@@ -7388,8 +7024,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get cmVerifyCountryError => '2 harfli mamlakat kodini kiriting';
 
   @override
-  String get cmVerifyDocHint =>
-      'Diplom, sertifikat yoki ish joyidan hujjat. JPEG yoki PNG surat, 5 MB gacha. PDF bo‘lsa — birinchi sahifasini suratga oling. Bemor ma’lumotini yoping.';
+  String get cmVerifyDocHint => 'Diplom, sertifikat yoki ish joyidan hujjat. JPEG yoki PNG surat, 5 MB gacha. PDF bo‘lsa — birinchi sahifasini suratga oling. Bemor ma’lumotini yoping.';
 
   @override
   String get cmVerifyCamera => 'Suratga olish';
@@ -7413,12 +7048,10 @@ class AppLocalizationsUz extends AppLocalizations {
   String get cmStatusVerified => 'Tasdiqlangan';
 
   @override
-  String get cmStatusRejected =>
-      'Hujjat qabul qilinmadi. Muassasa va mutaxassislik aniq ko‘rinadigan suratda qayta urinib ko‘ring.';
+  String get cmStatusRejected => 'Hujjat qabul qilinmadi. Muassasa va mutaxassislik aniq ko‘rinadigan suratda qayta urinib ko‘ring.';
 
   @override
-  String get cmStatusSuspended =>
-      'Foydalanuvchilar shikoyati sababli hamjamiyatdagi hisobingiz to‘xtatilgan. Admin ko‘rib chiqadi.';
+  String get cmStatusSuspended => 'Foydalanuvchilar shikoyati sababli hamjamiyatdagi hisobingiz to‘xtatilgan. Admin ko‘rib chiqadi.';
 
   @override
   String cmVerifiedAt(String date) {
@@ -7438,16 +7071,13 @@ class AppLocalizationsUz extends AppLocalizations {
   String get cmErrType => 'Faqat JPEG yoki PNG surat.';
 
   @override
-  String get cmErrAi =>
-      'Avtomatik tekshiruv hozir ishlamayapti. Keyinroq urinib ko‘ring.';
+  String get cmErrAi => 'Avtomatik tekshiruv hozir ishlamayapti. Keyinroq urinib ko‘ring.';
 
   @override
-  String get cmErrNotVerified =>
-      'Javob va ovoz faqat tasdiqlangan mutaxassislarga.';
+  String get cmErrNotVerified => 'Javob va ovoz faqat tasdiqlangan mutaxassislarga.';
 
   @override
-  String get cmErrContact =>
-      'Matndan email va telefon raqamini (va bemor ma’lumotini) olib tashlang.';
+  String get cmErrContact => 'Matndan email va telefon raqamini (va bemor ma’lumotini) olib tashlang.';
 
   @override
   String get cmErrLength => 'Sarlavha 10–200, matn 10–4000 belgi bo‘lsin.';
@@ -7456,8 +7086,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get cmErrAlreadyVerified => 'Siz allaqachon tasdiqlangansiz.';
 
   @override
-  String get cmErrRevoked =>
-      'Mutaxassis maqomingizni admin bekor qilgan. Avtomatik qayta tekshiruv mavjud emas.';
+  String get cmErrRevoked => 'Mutaxassis maqomingizni admin bekor qilgan. Avtomatik qayta tekshiruv mavjud emas.';
 
   @override
   String get cmAskTitleField => 'Savol sarlavhasi';
@@ -7466,8 +7095,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get cmAskBodyField => 'Batafsil';
 
   @override
-  String get cmAskNoPatient =>
-      'Bemorning ismi, telefoni va boshqa shaxsiy ma’lumotini yozmang. Javoblar — hamkasblar tajribasi, shaxsiy tibbiy maslahat emas.';
+  String get cmAskNoPatient => 'Bemorning ismi, telefoni va boshqa shaxsiy ma’lumotini yozmang. Javoblar — hamkasblar tajribasi, shaxsiy tibbiy maslahat emas.';
 
   @override
   String get cmAskSend => 'Savolni joylash';
@@ -7479,8 +7107,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get cmSignInTitle => 'Ishtirok etish uchun hisobga kiring';
 
   @override
-  String get cmSignInBody =>
-      'Hisobga kirgan har kim savol beradi. Tasdiqlangan mutaxassislar javob yozadi.';
+  String get cmSignInBody => 'Hisobga kirgan har kim savol beradi. Tasdiqlangan mutaxassislar javob yozadi.';
 
   @override
   String cmAnswers(int count) {
@@ -7500,8 +7127,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get cmAnswerSend => 'Javobni yuborish';
 
   @override
-  String get cmAnswerOnlySpecialists =>
-      'Javobni faqat tasdiqlangan mutaxassislar yozadi.';
+  String get cmAnswerOnlySpecialists => 'Javobni faqat tasdiqlangan mutaxassislar yozadi.';
 
   @override
   String get cmBest => 'Eng yaxshi javob';
@@ -7578,15 +7204,13 @@ class AppLocalizationsUz extends AppLocalizations {
   String get cmLoadMore => 'Yana ko‘rsatish';
 
   @override
-  String get cmNotAdvice =>
-      'Javoblar — hamkasblar tajribasi, shaxsiy tibbiy maslahat emas.';
+  String get cmNotAdvice => 'Javoblar — hamkasblar tajribasi, shaxsiy tibbiy maslahat emas.';
 
   @override
   String get cmRulesTitle => 'Hamjamiyat qoidalari';
 
   @override
-  String get cmRulesIntro =>
-      'LabGuide hamjamiyati — klinik laboratoriya diagnostikasi bo‘yicha tajriba almashish joyi.';
+  String get cmRulesIntro => 'LabGuide hamjamiyati — klinik laboratoriya diagnostikasi bo‘yicha tajriba almashish joyi.';
 
   @override
   String get cmRulesExpand => 'Qoidalarni ochish';
@@ -7598,12 +7222,10 @@ class AppLocalizationsUz extends AppLocalizations {
   String get cmRulesH1 => 'Nima muhokama qilinadi';
 
   @override
-  String get cmRulesA1 =>
-      'tahlil natijalarini talqin qilish (nomuvofiq natijalar, soxta oshish/pasayish)';
+  String get cmRulesA1 => 'tahlil natijalarini talqin qilish (nomuvofiq natijalar, soxta oshish/pasayish)';
 
   @override
-  String get cmRulesA2 =>
-      'preanalitika: qon olish, probirkalar, saqlash, gemoliz';
+  String get cmRulesA2 => 'preanalitika: qon olish, probirkalar, saqlash, gemoliz';
 
   @override
   String get cmRulesA3 => 'sifat nazorati (QC, Westgard qoidalari), kalibrovka';
@@ -7612,8 +7234,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get cmRulesA4 => 'analizatorlar va reagentlar bilan ishlash tajribasi';
 
   @override
-  String get cmRulesA5 =>
-      'gematologiya, mikroskopiya, biokimyo, immunologiya, siydik tahlili';
+  String get cmRulesA5 => 'gematologiya, mikroskopiya, biokimyo, immunologiya, siydik tahlili';
 
   @override
   String get cmRulesA6 => 'toifa imtihoni va o‘qish bo‘yicha savollar';
@@ -7622,16 +7243,13 @@ class AppLocalizationsUz extends AppLocalizations {
   String get cmRulesH2 => 'Qanday yozish kerak';
 
   @override
-  String get cmRulesB1 =>
-      'sarlavhada savolning mohiyati (masalan: “Kaliy yuqori, gemoliz yo‘q — nima sabab?”)';
+  String get cmRulesB1 => 'sarlavhada savolning mohiyati (masalan: “Kaliy yuqori, gemoliz yo‘q — nima sabab?”)';
 
   @override
-  String get cmRulesB2 =>
-      'batafsil qismida: qaysi tahlil, natija va birligi, usul yoki analizator, nima qilib ko‘rdingiz';
+  String get cmRulesB2 => 'batafsil qismida: qaysi tahlil, natija va birligi, usul yoki analizator, nima qilib ko‘rdingiz';
 
   @override
-  String get cmRulesB3 =>
-      'birliklarni aniq yozing: avval SI, qavs ichida an’anaviy (masalan 7,0 mmol/L (126 mg/dL))';
+  String get cmRulesB3 => 'birliklarni aniq yozing: avval SI, qavs ichida an’anaviy (masalan 7,0 mmol/L (126 mg/dL))';
 
   @override
   String get cmRulesB4 => 'bir postda — bitta savol';
@@ -7640,15 +7258,13 @@ class AppLocalizationsUz extends AppLocalizations {
   String get cmRulesH3 => 'Nima yozilmaydi';
 
   @override
-  String get cmRulesC1 =>
-      'bemorning ismi, telefoni, manzili, karta raqami va shaxsini aniqlaydigan har qanday ma’lumot';
+  String get cmRulesC1 => 'bemorning ismi, telefoni, manzili, karta raqami va shaxsini aniqlaydigan har qanday ma’lumot';
 
   @override
   String get cmRulesC2 => 'reklama, boshqa mavzular, haqoratli so‘zlar';
 
   @override
-  String get cmRulesC3 =>
-      'bemor uchun shaxsiy davolash tavsiyasi — bu yerda hamkasblar tajribasi, shifokor maslahati emas';
+  String get cmRulesC3 => 'bemor uchun shaxsiy davolash tavsiyasi — bu yerda hamkasblar tajribasi, shifokor maslahati emas';
 
   @override
   String get cmRulesH4 => 'Kim yoza oladi';
@@ -7657,23 +7273,19 @@ class AppLocalizationsUz extends AppLocalizations {
   String get cmRulesD1 => 'savolni — ro‘yxatdan o‘tgan har bir foydalanuvchi';
 
   @override
-  String get cmRulesD2Pre =>
-      'javobni — faqat “✓ Mutaxassis” belgisi bor tasdiqlangan mutaxassislar (';
+  String get cmRulesD2Pre => 'javobni — faqat “✓ Mutaxassis” belgisi bor tasdiqlangan mutaxassislar (';
 
   @override
   String get cmRulesD2Link => 'Profil → Mutaxassis tasdiqlash';
 
   @override
-  String get cmRulesD2Post =>
-      '; diplom yoki sertifikat rasmini yuklang; hujjat saqlanmaydi)';
+  String get cmRulesD2Post => '; diplom yoki sertifikat rasmini yuklang; hujjat saqlanmaydi)';
 
   @override
-  String get cmRulesD3 =>
-      'qoidaga zid post ko‘rsangiz — “Shikoyat” tugmasini bosing';
+  String get cmRulesD3 => 'qoidaga zid post ko‘rsangiz — “Shikoyat” tugmasini bosing';
 
   @override
-  String get cmRulesOutro =>
-      'Boshqa tildagi postlarni o‘qish uchun “Tarjima qilish” tugmasidan foydalaning. Hurmat va aniqlik — asosiy qoidamiz.';
+  String get cmRulesOutro => 'Boshqa tildagi postlarni o‘qish uchun “Tarjima qilish” tugmasidan foydalaning. Hurmat va aniqlik — asosiy qoidamiz.';
 
   @override
   String get cmAdminTitle => 'Hamjamiyat moderatsiyasi';
@@ -7714,8 +7326,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get cmLaunchTitle => 'Hamjamiyatni ishga tushirish';
 
   @override
-  String get cmLaunchBody =>
-      'Bir marta bosing: hisobingiz asoschi sifatida tasdiqlanadi va boshlang‘ich savol-javoblar qo‘shiladi. Qayta bossangiz, takrorlanmaydi.';
+  String get cmLaunchBody => 'Bir marta bosing: hisobingiz asoschi sifatida tasdiqlanadi va boshlang‘ich savol-javoblar qo‘shiladi. Qayta bossangiz, takrorlanmaydi.';
 
   @override
   String get cmLaunchButton => 'Ishga tushirish';
@@ -7726,16 +7337,13 @@ class AppLocalizationsUz extends AppLocalizations {
   }
 
   @override
-  String get cmLaunchAlready =>
-      'Hamjamiyat allaqachon ishga tushirilgan: asoschi tasdiqlangan, yangi narsa qo‘shilmadi.';
+  String get cmLaunchAlready => 'Hamjamiyat allaqachon ishga tushirilgan: asoschi tasdiqlangan, yangi narsa qo‘shilmadi.';
 
   @override
-  String get cmLaunchNotOwner =>
-      'Bu hisob asoschi sifatida ruxsat etilmagan. Asoschi emaili bilan kiring.';
+  String get cmLaunchNotOwner => 'Bu hisob asoschi sifatida ruxsat etilmagan. Asoschi emaili bilan kiring.';
 
   @override
-  String get cmLaunchMfaHint =>
-      'Hamjamiyatni ishga tushirish uchun avval ikki bosqichli himoyani tasdiqlang: autentifikator ilovasidagi 6 xonali kodni kiriting. Shundan keyin “Hamjamiyatni ishga tushirish” tugmasi chiqadi.';
+  String get cmLaunchMfaHint => 'Hamjamiyatni ishga tushirish uchun avval ikki bosqichli himoyani tasdiqlang: autentifikator ilovasidagi 6 xonali kodni kiriting. Shundan keyin “Hamjamiyatni ishga tushirish” tugmasi chiqadi.';
 
   @override
   String get diffFbSound => 'Bosishda tovush';
@@ -7756,22 +7364,19 @@ class AppLocalizationsUz extends AppLocalizations {
   String get admYouAdmin => 'Siz — admin';
 
   @override
-  String get adm2faOn =>
-      'Ikki bosqichli himoya (2FA) tasdiqlangan. Har bir admin amali uchun so‘raladi.';
+  String get adm2faOn => 'Ikki bosqichli himoya (2FA) tasdiqlangan. Har bir admin amali uchun so‘raladi.';
 
   @override
   String get admReportsQueue => 'Shikoyatlar va a’zolar';
 
   @override
-  String get admReportsSub =>
-      'To‘xtatilganlar navbati, tasdiqlangan va rad etilgan a’zolar';
+  String get admReportsSub => 'To‘xtatilganlar navbati, tasdiqlangan va rad etilgan a’zolar';
 
   @override
   String get admLaunchRow => 'Hamjamiyatni ishga tushirish';
 
   @override
-  String get admLaunchRowSub =>
-      'Asoschi tasdig‘i va boshlang‘ich savol-javoblar (bir marta)';
+  String get admLaunchRowSub => 'Asoschi tasdig‘i va boshlang‘ich savol-javoblar (bir marta)';
 
   @override
   String admPending(int count) {
@@ -7807,19 +7412,16 @@ class AppLocalizationsUz extends AppLocalizations {
   String get admTeamSubView => 'Ro‘yxat (o‘zgartirish — faqat egasi)';
 
   @override
-  String get admLegacyNote =>
-      'Statistika, foydalanuvchilar, amallar tarixi va hamkorlar bo‘limlari bu serverga hali ko‘chirilmagan — tayyor bo‘lganda shu yerda chiqadi.';
+  String get admLegacyNote => 'Statistika, foydalanuvchilar, amallar tarixi va hamkorlar bo‘limlari bu serverga hali ko‘chirilmagan — tayyor bo‘lganda shu yerda chiqadi.';
 
   @override
   String get admOther => 'Boshqa bo‘limlar';
 
   @override
-  String get admTeamIntro =>
-      'Admin barcha admin bo‘limlariga to‘liq kiradi: hamjamiyat moderatsiyasi, murojaatlar, kontent tekshiruvi. Vakolatni faqat server beradi va har amal uchun 2FA kodi so‘raladi.';
+  String get admTeamIntro => 'Admin barcha admin bo‘limlariga to‘liq kiradi: hamjamiyat moderatsiyasi, murojaatlar, kontent tekshiruvi. Vakolatni faqat server beradi va har amal uchun 2FA kodi so‘raladi.';
 
   @override
-  String get admTeamOwnerOnly =>
-      'Adminlarni faqat egasi (super admin) qo‘shadi va olib tashlaydi.';
+  String get admTeamOwnerOnly => 'Adminlarni faqat egasi (super admin) qo‘shadi va olib tashlaydi.';
 
   @override
   String get admAddTitle => 'Admin qo‘shish';
@@ -7828,8 +7430,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get admAddEmail => 'Email (masalan, Gmail)';
 
   @override
-  String get admAddHint =>
-      'Vakolat shu email bilan kirib, 2FA ni yoqqanda kuchga kiradi; hisobi bo‘lsa — darhol.';
+  String get admAddHint => 'Vakolat shu email bilan kirib, 2FA ni yoqqanda kuchga kiradi; hisobi bo‘lsa — darhol.';
 
   @override
   String get admAddButton => 'Admin qilish';
@@ -7854,8 +7455,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get admErrAlready => 'Bu email allaqachon admin.';
 
   @override
-  String get admErrSuper =>
-      'Bu email — egasi (super admin), u allaqachon admin.';
+  String get admErrSuper => 'Bu email — egasi (super admin), u allaqachon admin.';
 
   @override
   String admErrTooMany(int max) {
@@ -7876,8 +7476,7 @@ class AppLocalizationsUz extends AppLocalizations {
   }
 
   @override
-  String get admNotSignedIn =>
-      'Hali kirmagan — vakolat birinchi kirishda kuchga kiradi';
+  String get admNotSignedIn => 'Hali kirmagan — vakolat birinchi kirishda kuchga kiradi';
 
   @override
   String get admYou => 'Siz';
@@ -7899,8 +7498,7 @@ class AppLocalizationsUz extends AppLocalizations {
   }
 
   @override
-  String get admSuperNote =>
-      'Egasi maxfiy server sozlamasida (LG_ADMIN_EMAILS) — ilovadan olib tashlanmaydi.';
+  String get admSuperNote => 'Egasi maxfiy server sozlamasida (LG_ADMIN_EMAILS) — ilovadan olib tashlanmaydi.';
 
   @override
   String get admNoGranted => 'Hali qo‘shilgan admin yo‘q.';
@@ -7909,15 +7507,13 @@ class AppLocalizationsUz extends AppLocalizations {
   String get cmAdminRevokeTitle => 'Tasdiq bekor qilinsinmi?';
 
   @override
-  String get cmAdminRevokeBody =>
-      'A’zoning mutaxassis belgisi olinadi va u AI orqali qayta tasdiqlana olmaydi. Savol berishda davom etishi mumkin.';
+  String get cmAdminRevokeBody => 'A’zoning mutaxassis belgisi olinadi va u AI orqali qayta tasdiqlana olmaydi. Savol berishda davom etishi mumkin.';
 
   @override
   String get cmAdminRestoreTitle => 'A’zo tiklansinmi?';
 
   @override
-  String get cmAdminRestoreBody =>
-      'To‘xtatishdan oldingi holat qaytadi, postlari yana ko‘rinadi. Eski shikoyatlar qayta sanalmaydi.';
+  String get cmAdminRestoreBody => 'To‘xtatishdan oldingi holat qaytadi, postlari yana ko‘rinadi. Eski shikoyatlar qayta sanalmaydi.';
 
   @override
   String get adminActionGrantAdded => 'Admin qo‘shildi';
@@ -7935,15 +7531,13 @@ class AppLocalizationsUz extends AppLocalizations {
   String get cytoHeroTitle => 'Surtmani tushunib o‘qing';
 
   @override
-  String get cytoHeroBody =>
-      'Hujayralar rasmlari, tozalik darajasi, Bethesda tasnifi va mashq — bir joyda.';
+  String get cytoHeroBody => 'Hujayralar rasmlari, tozalik darajasi, Bethesda tasnifi va mashq — bir joyda.';
 
   @override
   String get cytoHeroCta => 'Hujayralarni ko‘rish';
 
   @override
-  String get cytoSchematicCaption =>
-      'Izohli sxema (LabGuide) — mikrofoto emas, masshtab va ranglar shartli.';
+  String get cytoSchematicCaption => 'Izohli sxema (LabGuide) — mikrofoto emas, masshtab va ranglar shartli.';
 
   @override
   String get cytoCellsTitle => 'Hujayralarni tanish';
@@ -7980,8 +7574,7 @@ class AppLocalizationsUz extends AppLocalizations {
   }
 
   @override
-  String get cytoQuizIntro =>
-      'Rasmga qarang va to‘g‘ri nomni tanlang: 4 variant. Javobdan keyin asosiy belgi ko‘rsatiladi.';
+  String get cytoQuizIntro => 'Rasmga qarang va to‘g‘ri nomni tanlang: 4 variant. Javobdan keyin asosiy belgi ko‘rsatiladi.';
 
   @override
   String get cytoQuizPrompt => 'Bu nima?';
@@ -8005,12 +7598,10 @@ class AppLocalizationsUz extends AppLocalizations {
   String get cytoRefer => 'Sitolog yoki shifokorga ko‘rsating';
 
   @override
-  String get cytoDraftNote =>
-      'Bo‘lim mutaxassis tekshiruvidan o‘tmagan. Bu o‘quv qo‘llanma: xulosani sitolog yoki shifokor beradi.';
+  String get cytoDraftNote => 'Bo‘lim mutaxassis tekshiruvidan o‘tmagan. Bu o‘quv qo‘llanma: xulosani sitolog yoki shifokor beradi.';
 
   @override
-  String get cytoDegreeIntro =>
-      'Mikroskopda ko‘rganingizni belgilang — ilova an’anaviy tasnif bo‘yicha darajani ko‘rsatadi. Eng og‘ir belgi hal qiladi.';
+  String get cytoDegreeIntro => 'Mikroskopda ko‘rganingizni belgilang — ilova an’anaviy tasnif bo‘yicha darajani ko‘rsatadi. Eng og‘ir belgi hal qiladi.';
 
   @override
   String get cytoLacto => 'Laktobatsillalar';
@@ -8051,16 +7642,13 @@ class AppLocalizationsUz extends AppLocalizations {
   String get cytoDegreeTable => 'Darajalar jadvali';
 
   @override
-  String get cytoDegreeNote =>
-      'An’anaviy tasnif (MDH mamlakatlari amaliyoti); chegaralar darsliklarda biroz farq qiladi, pH — taxminiy. Bakterial vaginoz uchun xalqaro mezonlar — Amsel va Nugent.';
+  String get cytoDegreeNote => 'An’anaviy tasnif (MDH mamlakatlari amaliyoti); chegaralar darsliklarda biroz farq qiladi, pH — taxminiy. Bakterial vaginoz uchun xalqaro mezonlar — Amsel va Nugent.';
 
   @override
-  String get cytoDegreeSourceNote =>
-      'Daraja jadvali — an\'anaviy o‘quv sxemasi; uning aniq manbasi mutaxassis tekshiruvini kutmoqda. Quyidagi manbalar bakterial vaginoz mezonlari (taqqoslash uchun), jadvalning o‘zini emas.';
+  String get cytoDegreeSourceNote => 'Daraja jadvali — an\'anaviy o‘quv sxemasi; uning aniq manbasi mutaxassis tekshiruvini kutmoqda. Quyidagi manbalar bakterial vaginoz mezonlari (taqqoslash uchun), jadvalning o‘zini emas.';
 
   @override
-  String get cytoBethesdaIntro =>
-      'Bachadon bo‘yni surtmasi xulosasi Bethesda tizimida shunday yoziladi. Keyingi qadamni shifokor belgilaydi.';
+  String get cytoBethesdaIntro => 'Bachadon bo‘yni surtmasi xulosasi Bethesda tizimida shunday yoziladi. Keyingi qadamni shifokor belgilaydi.';
 
   @override
   String get cytoMethod => 'Bo‘yoq / preparat';
@@ -8069,31 +7657,97 @@ class AppLocalizationsUz extends AppLocalizations {
   String get cytoMarksTitle => 'Rasmdagi belgilar';
 
   @override
-  String get cytoNoPhoto =>
-      'Haqiqiy mikrofoto hali qo‘shilmagan — faqat ruxsati tekshirilgan rasm qo‘shiladi.';
+  String get cytoNoPhoto => 'Haqiqiy mikrofoto hali qo‘shilmagan — faqat ruxsati tekshirilgan rasm qo‘shiladi.';
 
   @override
-  String get cytoLabCardBody =>
-      'Hujayralar sxemasi, tozalik darajasi, Bethesda va mashq';
+  String get cytoLabCardBody => 'Hujayralar sxemasi, tozalik darajasi, Bethesda va mashq';
 
   @override
   String get spermTitle => 'Spermogramma';
 
   @override
-  String get spermLabCardBody =>
-      'Ko‘rsatkichlar, sanash va morfologiya — tayyorlanmoqda';
+  String get spermLabCardBody => 'Ko‘rsatkichlar, sanash va morfologiya — tayyorlanmoqda';
 
   @override
   String get spermSoonTitle => 'Bo‘lim tayyorlanmoqda';
 
   @override
-  String get spermSoonBody =>
-      'Spermogramma bo‘limi JSST qo‘llanmasi (6-nashr, 2021) asosida tayyorlanmoqda. Me’yorlar manba bilan tekshirilgach qo‘shiladi.';
+  String get spermSoonBody => 'Spermogramma bo‘limi JSST qo‘llanmasi (6-nashr, 2021) asosida tayyorlanmoqda. Me’yorlar manba bilan tekshirilgach qo‘shiladi.';
 
   @override
   String get spermPlannedTitle => 'Bo‘limda bo‘ladi';
 
   @override
-  String get spermPlanned =>
-      'Asosiy ko‘rsatkichlar va JSST me’yorlari\nHarakatchanlik va morfologiyani sanash hisoblagichi\nAtamalar: oligo-, asteno-, terato-, azoospermiya\nMorfologiya sxemalari: bosh, bo‘yin, dum nuqsonlari\nPreanalitika: tayyorgarlik, namuna olish, tahlil vaqti\nMashq va o‘quv roligi';
+  String get spermPlanned => 'Asosiy ko‘rsatkichlar va JSST me’yorlari\nHarakatchanlik va morfologiyani sanash hisoblagichi\nAtamalar: oligo-, asteno-, terato-, azoospermiya\nMorfologiya sxemalari: bosh, bo‘yin, dum nuqsonlari\nPreanalitika: tayyorgarlik, namuna olish, tahlil vaqti\nMashq va o‘quv roligi';
+
+  @override
+  String get cytoAdequacyTitle => 'Namuna sifati';
+
+  @override
+  String get cytoAdequacySub => 'Bethesda 2014: yaroqli yoki yo‘q, ko‘p uchraydigan artefaktlar';
+
+  @override
+  String get cytoArtefactsTitle => 'Ko‘p uchraydigan artefaktlar';
+
+  @override
+  String get cytoReactiveTitle => 'Reaktiv o‘zgarishlar va atipiya farqi';
+
+  @override
+  String get cytoReactiveSub => 'Yallig‘lanish, repair, nur, BIV — ASC-US va LSIL bilan solishtirish';
+
+  @override
+  String get cytoReactiveIntro => 'Bethesda tizimida reaktiv hujayra o‘zgarishlari (yallig‘lanish va repair, limfotsitar servitsit, nur ta’siri, BIV) — NILM ichidagi o‘smaga aloqasiz topilmalar.';
+
+  @override
+  String get cytoCompareTitle => 'Yonma-yon solishtirish';
+
+  @override
+  String get cytoCompareNone => 'keltirilgan manbalarda alohida mezon yo‘q';
+
+  @override
+  String get cytoReactiveTypesTitle => 'Reaktiv o‘zgarish turlari';
+
+  @override
+  String get cytoMaturationTitle => 'Yetilish indeksi';
+
+  @override
+  String get cytoMaturationSub => 'Parabazal : oraliq : yuzaki — hisoblagich';
+
+  @override
+  String get cytoMiCalcTitle => 'Hisoblagich';
+
+  @override
+  String get cytoMiParabasal => 'Parabazal hujayralar';
+
+  @override
+  String get cytoMiIntermediate => 'Oraliq hujayralar';
+
+  @override
+  String get cytoMiSuperficial => 'Yuzaki hujayralar';
+
+  @override
+  String get cytoMiEmpty => 'Yakka hujayralar sonini kiriting (butun son); kamida bittasi 0 dan katta bo‘lsin.';
+
+  @override
+  String get cytoMiResult => 'Yetilish indeksi (parabazal : oraliq : yuzaki)';
+
+  @override
+  String cytoMiTotal(int n) {
+    return 'Sanalgan hujayralar: $n';
+  }
+
+  @override
+  String get cytoMiCaveat => 'Bu faqat arifmetika. Talqin yosh, sikl kuni, homiladorlik, gormonlar va yallig‘lanishga bog‘liq — uni sitolog yoki shifokor beradi.';
+
+  @override
+  String get cytoOtherTitle => 'Boshqa namunalar';
+
+  @override
+  String get cytoOtherSub => 'Siydik, seroz suyuqliklar, balg‘am: xulosa toifalari';
+
+  @override
+  String get cytoOtherIntro => 'Qisqa sharh: faqat xalqaro xulosa toifalarining nomlari. Mezonlar va xavf ko‘rsatkichlari — manbalarda.';
+
+  @override
+  String get cytoCategoriesTitle => 'Toifalar';
 }

@@ -2,7 +2,10 @@ import 'dart:io';
 import 'dart:math';
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:labguide/features/content/content_model.dart';
 import 'package:labguide/features/cytology/cytology_content.dart';
+import 'package:labguide/features/cytology/cytology_more.dart';
+import 'package:labguide/features/cytology/cytology_more_screens.dart';
 import 'package:labguide/features/cytology/cytology_screens.dart';
 import 'package:labguide/features/settings/settings_controller.dart';
 import 'package:labguide/l10n/gen/app_localizations.dart';
@@ -62,6 +65,92 @@ void main() {
       expect(cytoDegrees.map((d) => d.n), [1, 2, 3, 4]);
     });
 
+    test('Bethesda: 2014 toifalari, HSIL yo‘naltiruvchi emas, manbalar', () {
+      final codes = [for (final b in bethesdaItems) b.code];
+      expect(codes, containsAll(['AGC, favor neoplastic', 'Adenocarcinoma']));
+      expect(codes.toSet(), hasLength(codes.length));
+      for (final b in bethesdaItems) {
+        expect(b.refs, isNotEmpty, reason: b.code);
+        for (final t in [b.name, b.meaning]) {
+          for (final lang in ['uz', 'ru', 'en']) {
+            expect(t.of(lang).trim(), isNotEmpty, reason: '${b.code} $lang');
+          }
+        }
+      }
+      final hsil = bethesdaItems.firstWhere((b) => b.code == 'HSIL');
+      expect(hsil.meaning.of('en'), contains('clinician decides'));
+      expect(hsil.meaning.of('en'), contains('ASCCP 2019'));
+    });
+
+    test('qo‘shimcha sahifalar: 3 tilda matn to‘liq, manbalar bor', () {
+      void full(LocalizedText t, String why) {
+        for (final lang in ['uz', 'ru', 'en']) {
+          expect(t.of(lang).trim(), isNotEmpty, reason: '$why $lang');
+        }
+      }
+
+      for (final f in [
+        ...cytoAdequacy,
+        ...cytoArtefacts,
+        ...cytoReactiveTypes,
+        ...cytoMaturation,
+      ]) {
+        full(f.title, f.title.of('en'));
+        full(f.body, f.title.of('en'));
+        expect(f.refs, isNotEmpty, reason: f.title.of('en'));
+      }
+      expect(cytoCompareHeads, hasLength(3));
+      for (final r in cytoCompare) {
+        full(r.feature, r.feature.of('en'));
+        expect(r.cells, hasLength(cytoCompareHeads.length));
+        // Reaktiv va ASC-US ustunlari har qatorda to'ldirilgan.
+        expect(r.cells[0], isNotNull, reason: r.feature.of('en'));
+        expect(r.cells[1], isNotNull, reason: r.feature.of('en'));
+        for (final c in r.cells) {
+          if (c != null) full(c, r.feature.of('en'));
+        }
+        expect(r.refs, isNotEmpty, reason: r.feature.of('en'));
+      }
+      for (final s in cytoOtherSystems) {
+        full(s.title, s.title.of('en'));
+        full(s.system, s.title.of('en'));
+        if (s.note case final n?) full(n, s.title.of('en'));
+        expect(s.categories, isNotEmpty);
+        for (final c in s.categories) {
+          full(c, s.title.of('en'));
+        }
+        expect(s.refs, isNotEmpty, reason: s.title.of('en'));
+      }
+      for (final refs in [
+        cytoAdequacyRefs,
+        cytoReactiveRefs,
+        cytoMaturationRefs,
+      ]) {
+        expect(refs, isNotEmpty);
+      }
+      // Manba id lari takrorlanmaydi.
+      final ids = [for (final s in CytoSources.all) s.id];
+      expect(ids.toSet(), hasLength(ids.length));
+    });
+
+    test('yetilish indeksi: foizlar arifmetikasi', () {
+      final a = cytoMaturationIndex(0, 35, 65)!;
+      expect(a.parabasal, 0);
+      expect(a.intermediate, 35);
+      expect(a.superficial, 65);
+      final b = cytoMaturationIndex(1, 1, 1)!;
+      expect(b.parabasal, closeTo(33.333, 0.001));
+      expect(b.parabasal + b.intermediate + b.superficial, closeTo(100, 1e-9));
+      final c = cytoMaturationIndex(90, 10, 0)!;
+      expect(c.parabasal, 90);
+      expect(c.superficial, 0);
+      final d = cytoMaturationIndex(3, 0, 1)!;
+      expect(d.parabasal, 75);
+      expect(d.superficial, 25);
+      expect(cytoMaturationIndex(0, 0, 0), isNull);
+      expect(cytoMaturationIndex(-1, 5, 5), isNull);
+    });
+
     test(
       'mashq: to‘g‘ri javob — rasmdagi element, variantlar takrorlanmaydi',
       () {
@@ -96,6 +185,18 @@ void main() {
         await goTo(tester, '$cytoBase/$r');
         expect(tester.takeException(), isNull, reason: r);
       }
+      for (final (r, type, title) in [
+        ('adequacy', CytoAdequacyScreen, l.cytoAdequacyTitle),
+        ('reactive', CytoReactiveScreen, l.cytoReactiveTitle),
+        ('maturation', CytoMaturationScreen, l.cytoMaturationTitle),
+        ('other', CytoOtherScreen, l.cytoOtherTitle),
+      ]) {
+        await goTo(tester, '$cytoBase/$r');
+        expect(find.byType(type), findsOne, reason: r);
+        expect(find.text(title), findsWidgets, reason: r);
+        expect(find.text(l.cytoDraftNote), findsWidgets, reason: r);
+        expect(tester.takeException(), isNull, reason: r);
+      }
       for (final c in cytoCells) {
         await goTo(tester, '$cytoBase/cells/${c.id}');
         expect(find.text(c.name.of(lang.name)), findsWidgets, reason: c.id);
@@ -127,6 +228,24 @@ void main() {
     await tester.tap(find.text(l.cytoNone).first);
     await tester.pumpAndSettle();
     expect(find.text(l.cytoDegreeResult(4)), findsOne);
+  });
+
+  testWidgets('yetilish indeksi hisoblagichi foizlarni ko‘rsatadi', (
+    tester,
+  ) async {
+    final s = await makeServices(tester, language: AppLanguage.en);
+    await pumpApp(tester, s, size: const Size(390, 3200));
+    await goTo(tester, '$cytoBase/maturation');
+    final l = lookupAppLocalizations(const Locale('en'));
+    expect(find.text(l.cytoMiEmpty), findsOne);
+    final fields = find.byType(TextField);
+    await tester.enterText(fields.at(0), '1');
+    await tester.enterText(fields.at(1), '1');
+    await tester.enterText(fields.at(2), '2');
+    await tester.pumpAndSettle();
+    expect(find.text('25 : 25 : 50'), findsOne);
+    expect(find.text(l.cytoMiTotal(4)), findsOne);
+    expect(tester.takeException(), isNull);
   });
 
   testWidgets('mashq: javob berib, natijagacha', (tester) async {

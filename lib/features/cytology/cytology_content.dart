@@ -123,6 +123,129 @@ abstract final class CytoSources {
     url: 'https://www.cdc.gov/dpdx/trichomoniasis/',
   );
 
+  // ── Qo'shimcha sahifalar manbalari (ochiq to'liq matn, 17-oktabr tekshirildi;
+  // har da'vo joyi docs/CYTOLOGY_SOURCES.md da).
+  static const pangarkar2022 = CalcSource(
+    id: 'cyto-pangarkar-2022',
+    citation:
+        'Pangarkar MA. The Bethesda System for reporting cervical cytology. '
+        'CytoJournal. 2022. doi:10.25259/CMAS_03_07_2021',
+    url: 'https://doi.org/10.25259/CMAS_03_07_2021',
+  );
+  static const wang2023 = CalcSource(
+    id: 'cyto-wang-2023-jctp',
+    citation:
+        'Wang T, Zhang H, Liu Y, Zhao C. Updates in Cervical Cancer Screening '
+        'Guidelines, The Bethesda System for Reporting Cervical Cytology, and '
+        'Clinical Management Recommendations. J Clin Transl Pathol. 2023. '
+        'doi:10.14218/jctp.2023.00004',
+    url: 'https://doi.org/10.14218/jctp.2023.00004',
+  );
+  static const asccp2019 = CalcSource(
+    id: 'cyto-asccp-2019',
+    citation:
+        'Perkins RB, Guido RS, Castle PE, et al. 2019 ASCCP Risk-Based '
+        'Management Consensus Guidelines for Abnormal Cervical Cancer '
+        'Screening Tests and Cancer Precursors. J Low Genit Tract Dis. 2020. '
+        'doi:10.1097/LGT.0000000000000525',
+    url: 'https://doi.org/10.1097/LGT.0000000000000525',
+  );
+  static const capToday2026 = CalcSource(
+    id: 'cyto-captoday-unsat-2026',
+    citation:
+        'O’Conor C, Hegde P, Reynolds J. Cytopathology in focus: '
+        'Unsatisfactory Paps — recommendations, remedies. CAP Today. 2026',
+    url: 'https://www.captodayonline.com/?p=103445',
+  );
+  static const iarcUnsat = CalcSource(
+    id: 'cyto-iarc-atlas-unsatisfactory',
+    citation:
+        'IARC. Atlas of Colposcopy and Cytology: unsatisfactory specimen (A1). '
+        'International Agency for Research on Cancer',
+    url: 'https://screening.iarc.fr/atlascyto_list.php?cat=A1&lang=1',
+  );
+  static const iarcRepair = CalcSource(
+    id: 'cyto-iarc-atlas-repair',
+    citation:
+        'IARC. Atlas of Colposcopy and Cytology: inflammation and repair '
+        '(E1a). International Agency for Research on Cancer',
+    url: 'https://screening.iarc.fr/atlascyto_list.php?cat=E1a&lang=1',
+  );
+  static const kattoor2022 = CalcSource(
+    id: 'cyto-kattoor-kamal-2022',
+    citation:
+        'Kattoor J, Kamal MM. The gray zone squamous lesions: ASC-US / ASC-H. '
+        'CytoJournal. 2022. doi:10.25259/CMAS_03_10_2021',
+    url: 'https://doi.org/10.25259/CMAS_03_10_2021',
+  );
+  static const kamal2022 = CalcSource(
+    id: 'cyto-kamal-2022-inflammation',
+    citation:
+        'Kamal MM. The Pap smear in inflammation and repair. CytoJournal. '
+        '2022. doi:10.25259/CMAS_03_08_2021',
+    url: 'https://doi.org/10.25259/CMAS_03_08_2021',
+  );
+  static const poflee2022 = CalcSource(
+    id: 'cyto-poflee-bhatia-2022',
+    citation:
+        'Poflee SV, Bhatia JK. Cervical cytology: Radiation and other therapy '
+        'effects. CytoJournal. 2022. doi:10.25259/CMAS_03_12_2021',
+    url: 'https://doi.org/10.25259/CMAS_03_12_2021',
+  );
+  static const kamalTopiwala2022 = CalcSource(
+    id: 'cyto-kamal-topiwala-2022',
+    citation:
+        'Kamal M, Topiwala F. Nonneoplastic cervical cytology. CytoJournal. '
+        '2022. doi:10.25259/CMAS_03_06_2021',
+    url: 'https://doi.org/10.25259/CMAS_03_06_2021',
+  );
+  static const slhAbnormal = CalcSource(
+    id: 'cyto-wslh-abnormal',
+    citation:
+        'Wisconsin State Laboratory of Hygiene. Gynecologic Cytology 101: '
+        'Abnormal (precancerous) lesions of the female reproductive system',
+    url: 'https://www.slh.wisc.edu/clinical/cytology/resources-for-health-care-professionals/gynecologic-cytology-101/abnormal-precancerous-lesions-of-the-female-reproductive-system',
+  );
+  static const euroReactive = CalcSource(
+    id: 'cyto-eurocytology-reactive',
+    citation:
+        'Eurocytology. Cervical cytology, 9b: Reactive cytological changes',
+    url: 'https://www.eurocytology.eu/course/cervical-cytology-2/9b-normal-cytology-and-benign-reactive-changes/reactive-cytological-changes/',
+  );
+  static const wang2023Serous = CalcSource(
+    id: 'cyto-wang-chandra-cai-2023-serous',
+    citation:
+        'Wang M, Chandra A, Cai G. The International System for Reporting '
+        'Serous Fluid Cytopathology — An Updated Review. J Clin Transl '
+        'Pathol. 2023. doi:10.14218/jctp.2023.00025',
+    url: 'https://doi.org/10.14218/jctp.2023.00025',
+  );
+  static const wojcik2026 = CalcSource(
+    id: 'cyto-wojcik-2026-paris',
+    citation:
+        'Wojcik EM. The Paris system for reporting urinary cytology: what '
+        'worked and what still needs to be improved. Histopathology. 2026. '
+        'doi:10.1111/his.70038',
+    url: 'https://doi.org/10.1111/his.70038',
+  );
+  static const dolezal2024 = CalcSource(
+    id: 'cyto-dolezal-2024-who-lung',
+    citation:
+        'Dolezal D, Kholová I, Cai G. The World Health Organization Reporting '
+        'System for Lung Cytopathology — A Review of the First Edition. '
+        'J Clin Transl Pathol. 2024. doi:10.14218/jctp.2023.00068',
+    url: 'https://doi.org/10.14218/jctp.2023.00068',
+  );
+  static const grigoruk2024 = CalcSource(
+    id: 'cyto-grigoruk-2024',
+    citation:
+        'Григорук ОГ, Москвина ТА, Базулина ЛМ, Вихлянов ИВ. '
+        'Цитологическая диагностика железистых поражений цервикального '
+        'канала. Опухоли женской репродуктивной системы. 2024. '
+        'doi:10.17650/1994-4098-2024-20-4-101-110',
+    url: 'https://doi.org/10.17650/1994-4098-2024-20-4-101-110',
+  );
+
   static const all = [
     bethesda,
     nciAbnormal,
@@ -137,6 +260,9 @@ abstract final class CytoSources {
     iarcAtlas,
     dpdxTrich,
     DiffSources.who2003,
+    pangarkar2022,
+    wang2023,
+    asccp2019,
   ];
 }
 
@@ -673,14 +799,17 @@ const cytoCells = <CytoCell>[
     }),
     meaning: _T({
       'uz':
-          'Saraton oldi o‘zgarish ehtimoli yuqori; odatda kolposkopiya '
-          'tavsiya etiladi. Xulosani sitolog/shifokor beradi.',
+          'Saraton oldi o‘zgarish ehtimoli yuqori. Keyingi qadamni shifokor '
+          'ASCCP 2019 bo‘yicha belgilaydi — kolposkopiya yoki tezlashtirilgan '
+          'davolash. Xulosani sitolog beradi.',
       'ru':
-          'Высокая вероятность предракового поражения; обычно рекомендуется '
-          'кольпоскопия. Заключение даёт цитолог/врач.',
+          'Высокая вероятность предракового поражения. Тактику определяет '
+          'врач по ASCCP 2019 — кольпоскопия или ускоренное лечение. '
+          'Заключение даёт цитолог.',
       'en':
-          'High likelihood of a precancerous lesion; colposcopy is usually '
-          'recommended. The cytologist/clinician reports.',
+          'High likelihood of a precancerous lesion. The clinician decides '
+          'next steps per ASCCP 2019 — colposcopy or expedited treatment. '
+          'The cytologist reports.',
     }),
     confuse: _T({
       'uz': 'Parabazal va metaplastik hujayralar — ularning yadrosi tekis, xromatini mayda.',
@@ -691,6 +820,7 @@ const cytoCells = <CytoCell>[
     refs: [
       CalcRef(CytoSources.bethesda, 'Ch. 5'),
       CalcRef(CytoSources.nciAbnormal, ''),
+      CalcRef(CytoSources.asccp2019, 'Major changes, item 3; Section E.3'),
     ],
   ),
 ];
@@ -809,14 +939,28 @@ int cytoDegreeOf(CytoLacto lacto, CytoLeuko leuko, CytoFlora flora) {
 // ───────────────────────── Bethesda ─────────────────────────
 
 class BethesdaItem {
-  const BethesdaItem(this.code, this.name, this.meaning, {this.tone = 0});
+  const BethesdaItem(
+    this.code,
+    this.name,
+    this.meaning, {
+    this.tone = 0,
+    this.refs = const [],
+  });
   final String code;
   final LocalizedText name;
   final LocalizedText meaning;
 
   /// 0 — norma, 1 — kuzatish/qo'shimcha test, 2 — shifokorga tez.
   final int tone;
+
+  final List<CalcRef> refs;
 }
+
+/// Bethesda 2014 terminologiyasi ro'yxati (Pangarkar 2022 jadvali).
+const _tbsList = CalcRef(
+  CytoSources.pangarkar2022,
+  'The 2014 Bethesda System: Interpretation/result',
+);
 
 const bethesdaItems = <BethesdaItem>[
   BethesdaItem(
@@ -831,6 +975,7 @@ const bethesdaItems = <BethesdaItem>[
       'ru': 'Норма. Инфекции и реактивные изменения указываются отдельно.',
       'en': 'Normal. Organisms and reactive changes are reported separately.',
     }),
+    refs: [_tbsList],
   ),
   BethesdaItem(
     'ASC-US',
@@ -845,6 +990,7 @@ const bethesdaItems = <BethesdaItem>[
       'en': 'The commonest equivocal result; usually triaged with an HPV test.',
     }),
     tone: 1,
+    refs: [_tbsList, CalcRef(CytoSources.wang2023, 'ASC-US')],
   ),
   BethesdaItem(
     'LSIL',
@@ -859,6 +1005,7 @@ const bethesdaItems = <BethesdaItem>[
       'en': 'Usually HPV effect (koilocytes); often regresses. The clinician decides next steps.',
     }),
     tone: 1,
+    refs: [_tbsList, CalcRef(CytoSources.pangarkar2022, 'Introduction')],
   ),
   BethesdaItem(
     'ASC-H',
@@ -873,6 +1020,7 @@ const bethesdaItems = <BethesdaItem>[
       'en': 'A high-grade lesion is possible — colposcopy is usual.',
     }),
     tone: 2,
+    refs: [_tbsList, CalcRef(CytoSources.kattoor2022, 'Management guidelines')],
   ),
   BethesdaItem(
     'HSIL',
@@ -881,12 +1029,26 @@ const bethesdaItems = <BethesdaItem>[
       'ru': 'Плоскоклеточное интраэпителиальное поражение высокой степени',
       'en': 'High-grade squamous intraepithelial lesion',
     }),
+    // Yo'naltiruvchi emas: qaror — shifokorda (audit, 17-oktabr).
     _T({
-      'uz': 'Saraton oldi o‘zgarish ehtimoli yuqori — kolposkopiya va davolash rejasi.',
-      'ru': 'Высокая вероятность предрака — кольпоскопия и план лечения.',
-      'en': 'High likelihood of precancer — colposcopy and a treatment plan.',
+      'uz':
+          'Saraton oldi o‘zgarish ehtimoli yuqori. Keyingi qadamni shifokor '
+          'ASCCP 2019 bo‘yicha belgilaydi — kolposkopiya yoki tezlashtirilgan '
+          'davolash (biopsiyasiz).',
+      'ru':
+          'Высокая вероятность предрака. Тактику определяет врач по ASCCP '
+          '2019 — кольпоскопия или ускоренное лечение (без предварительной '
+          'биопсии).',
+      'en':
+          'High likelihood of precancer. The clinician decides next steps per '
+          'ASCCP 2019 — colposcopy or expedited treatment (without prior '
+          'biopsy).',
     }),
     tone: 2,
+    refs: [
+      _tbsList,
+      CalcRef(CytoSources.asccp2019, 'Major changes, item 3; Section E.3'),
+    ],
   ),
   BethesdaItem(
     'SCC',
@@ -901,20 +1063,69 @@ const bethesdaItems = <BethesdaItem>[
       'en': 'Urgent specialist referral.',
     }),
     tone: 2,
+    refs: [_tbsList],
   ),
   BethesdaItem(
     'AGC',
     _T({
-      'uz': 'Atipik bezli hujayralar',
-      'ru': 'Атипичные железистые клетки',
-      'en': 'Atypical glandular cells',
+      'uz':
+          'Atipik bezli hujayralar (endotservikal, endometrial yoki '
+          'aniqlanmagan — NOS)',
+      'ru':
+          'Атипичные железистые клетки (эндоцервикальные, эндометриальные или '
+          'без уточнения — NOS)',
+      'en':
+          'Atypical glandular cells (endocervical, endometrial or not '
+          'otherwise specified — NOS)',
     }),
     _T({
-      'uz': 'Bez epiteliysi o‘zgarishi; chuqurroq tekshiruv kerak.',
-      'ru': 'Изменения железистого эпителия; нужно углублённое обследование.',
-      'en': 'Glandular abnormality; needs fuller work-up.',
+      'uz':
+          'Bez epiteliysi o‘zgarishi; chuqurroq tekshiruvni shifokor belgilaydi '
+          '(ASCCP 2019: odatda kolposkopiya va endotservikal namuna; atipik '
+          'endometrial hujayralarda yondashuv boshqacha).',
+      'ru':
+          'Изменения железистого эпителия; объём обследования определяет врач '
+          '(ASCCP 2019: обычно кольпоскопия и эндоцервикальный забор; при '
+          'атипичных клетках эндометрия подход иной).',
+      'en':
+          'Glandular abnormality; the clinician decides the work-up (ASCCP '
+          '2019: usually colposcopy with endocervical sampling; a different '
+          'approach for atypical endometrial cells).',
     }),
     tone: 2,
+    refs: [_tbsList, CalcRef(CytoSources.asccp2019, 'Section G.1')],
+  ),
+  BethesdaItem(
+    'AGC, favor neoplastic',
+    _T({
+      'uz':
+          'Atipik bezli hujayralar, o‘sma (neoplaziya) foydasiga '
+          '(endotservikal yoki aniqlanmagan)',
+      'ru':
+          'Атипичные железистые клетки, подозрительные на опухолевые '
+          '(favor neoplastic; эндоцервикальные или без уточнения)',
+      'en':
+          'Atypical glandular cells, favor neoplastic (endocervical or not '
+          'otherwise specified)',
+    }),
+    _T({
+      'uz':
+          'O‘zgarish AIS yoki adenokarsinomaga yetmaydi, lekin o‘sma ehtimoli '
+          'bor. Tekshiruvni shifokor ASCCP 2019 bo‘yicha belgilaydi.',
+      'ru':
+          'Изменения не достигают AIS или аденокарциномы, но опухоль '
+          'вероятна. Обследование определяет врач по ASCCP 2019.',
+      'en':
+          'Falls short of AIS or adenocarcinoma, but neoplasia is likely. The '
+          'clinician decides the work-up per ASCCP 2019.',
+    }),
+    tone: 2,
+    refs: [
+      _tbsList,
+      CalcRef(CytoSources.wang2023, 'Atypical glandular cells'),
+      CalcRef(CytoSources.asccp2019, 'Section G.1'),
+      CalcRef(CytoSources.grigoruk2024, 'Резюме (ru term)'),
+    ],
   ),
   BethesdaItem(
     'AIS',
@@ -929,6 +1140,28 @@ const bethesdaItems = <BethesdaItem>[
       'en': 'Glandular precancer — specialist referral.',
     }),
     tone: 2,
+    refs: [_tbsList],
+  ),
+  BethesdaItem(
+    'Adenocarcinoma',
+    _T({
+      'uz':
+          'Adenokarsinoma (endotservikal, endometrial, bachadondan tashqari '
+          'yoki aniqlanmagan — NOS)',
+      'ru':
+          'Аденокарцинома (эндоцервикальная, эндометриальная, внематочная или '
+          'без уточнения — NOS)',
+      'en':
+          'Adenocarcinoma (endocervical, endometrial, extrauterine or not '
+          'otherwise specified — NOS)',
+    }),
+    _T({
+      'uz': 'Bezli xavfli o‘sma hujayralari — zudlik bilan mutaxassisga.',
+      'ru': 'Клетки железистой злокачественной опухоли — срочно к специалисту.',
+      'en': 'Malignant glandular cells — urgent specialist referral.',
+    }),
+    tone: 2,
+    refs: [_tbsList, CalcRef(CytoSources.asccp2019, 'Section G.1')],
   ),
 ];
 
