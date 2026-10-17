@@ -11,6 +11,8 @@ Manbalar:
                                         sitologiya, "Jadvallar" (extract_dart_content.py)
   tool/slides/data/books_extra.json   - (ixtiyoriy) ustoz kitoblaridan o'z
                                         so'zim bilan qisqa mazmun, sahifa/bo'lim bilan
+  tool/slides/data/books_extra_practice.json - (ixtiyoriy) kunga bog'lanmagan "Amaliy
+                                        mashg'ulot protokollari" to'plami (practice_decks.py)
 
 Render: make_topic_decks.py.
 """
@@ -206,6 +208,16 @@ class Repo:
         if os.path.exists(p):
             with open(p, encoding='utf-8') as f:
                 self.books = json.load(f)
+        self.books.setdefault('books', {})
+        self.books.setdefault('topics', {})
+        # amaliy mashg'ulot protokollari (kunga bog'lanmagan to'plam): alohida fayl;
+        # unda ko'rsatilgan qo'shimcha kitoblar (pack.json'da yo'q) Sources.book() uchun shu yerga qo'shiladi
+        p2 = os.path.join(HERE, 'data', 'books_extra_practice.json')
+        self.practice = {'books': {}, 'protocols': []}
+        if os.path.exists(p2):
+            with open(p2, encoding='utf-8') as f:
+                self.practice = json.load(f)
+            self.books['books'].update(self.practice.get('books', {}))
         self.an = {a['id']: a for a in self.pack['analytes']}
         self.cond = {c['id']: c for c in self.pack['conditions']}
         self.src = {s['id']: s for s in self.pack['sources']}
@@ -383,12 +395,15 @@ class Sources:
                 'url': None}
         return {'key': key, 'loc': f'№{n}' if n else ''}
 
-    # --- kitob (books_extra.json)
+    # --- kitob (books_extra*.json 'books' bo'limi)
     def book(self, book_id, loc):
         b = self.repo.books['books'][book_id]
         key = 'book:' + book_id
         if key not in self.entries:
-            self.entries[key] = {'short': b['short'], 'full': b['full'], 'url': None}
+            self.entries[key] = {'short': b['short'], 'full': b['full'], 'url': None, 'locs': []}
+        locs = self.entries[key].setdefault('locs', [])
+        if loc and loc not in locs:
+            locs.append(loc)    # foydalanilgan bo'lim/sahifalar "Adabiyotlar"da chiqadi (pack kitoblaridagi kabi)
         return {'key': key, 'loc': loc}
 
     def short_cite(self, ref, loc_max=44):
