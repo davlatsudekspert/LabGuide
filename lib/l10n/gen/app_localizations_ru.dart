@@ -8952,4 +8952,483 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get accountDeleteAppleCancelled =>
       'Ничего не удалено: подтверждение Apple отменено.';
+
+  @override
+  String get admPanelAccess =>
+      'Доступ: email владельца (ADMIN_EMAILS) и код из письма. Сервер проверяет каждый запрос.';
+
+  @override
+  String get admOverview => 'Общие показатели';
+
+  @override
+  String admOverviewSub(int total, int online, int week) {
+    return 'Зарегистрировано: $total · онлайн: $online · новых за 7 дней: $week';
+  }
+
+  @override
+  String get admComplaintsRow => 'Жалобы из приложения';
+
+  @override
+  String admComplaintsRowSub(int count) {
+    return 'Открытые: $count';
+  }
+
+  @override
+  String get admReportsRow => 'Жалобы в сообществе';
+
+  @override
+  String admReportsRowSub(int count) {
+    return 'Нерассмотренные посты: $count';
+  }
+
+  @override
+  String admEmailNote(String email) {
+    return 'Жалобы и вопросы по email приходят на $email — смотрите их в почте (в приложение они не попадают).';
+  }
+
+  @override
+  String get admUsersSub => 'Поиск по email или псевдониму, роль, приостановка';
+
+  @override
+  String get admAuditSub => 'Каждое действие админа записывается';
+
+  @override
+  String get admStoreTitle => 'Загрузки и продажи';
+
+  @override
+  String get admStoreBody =>
+      'Сервер не видит загрузки из магазинов — их показывают App Store Connect и Google Play Console. В приложении нет аналитических SDK (политика конфиденциальности). Числа в этой панели — аккаунты, подтвердившие email.';
+
+  @override
+  String get admSales => 'Продажи: 0 (оплаты пока нет)';
+
+  @override
+  String get admAppStoreConnect => 'App Store Connect';
+
+  @override
+  String get admPlayConsole => 'Google Play Console';
+
+  @override
+  String get admStatsAccounts => 'Аккаунты';
+
+  @override
+  String get admOnlineNow => 'Сейчас онлайн (5 минут)';
+
+  @override
+  String get admSuspendedAccounts => 'Приостановленные аккаунты';
+
+  @override
+  String get admStatsActiveNote =>
+      'Онлайн и активные — аккаунты, отправившие запрос на сервер. Хранятся только минута и день; IP и устройство не сохраняются.';
+
+  @override
+  String get admChartTitle => 'Новые аккаунты — последние 14 дней';
+
+  @override
+  String admChartBar(String date, int count) {
+    return '$date: новых аккаунтов — $count';
+  }
+
+  @override
+  String admChartTotal(int count) {
+    return 'Всего за 14 дней: $count';
+  }
+
+  @override
+  String get admStatsObjects => 'Основные объекты';
+
+  @override
+  String get admStatsGroupsCount => 'Группы';
+
+  @override
+  String get admStatsTeachers => 'Зарегистрированные преподаватели';
+
+  @override
+  String get admStatsStudents => 'Студенты в группах';
+
+  @override
+  String get admStatsAssignments => 'Тестовые сессии';
+
+  @override
+  String get admStatsResults => 'Результаты тестов';
+
+  @override
+  String get admStatsQuestions => 'Вопросы сообщества';
+
+  @override
+  String get admStatsAnswers => 'Ответы сообщества';
+
+  @override
+  String get admStatsComplaintsOpen => 'Открытые жалобы';
+
+  @override
+  String get admStatsComplaintsResolved => 'Решённые жалобы';
+
+  @override
+  String get admStatsReportsOpen => 'Сообщество: нерассмотренные жалобы';
+
+  @override
+  String get admStatsAwaiting => 'Обращения: ждут ответа';
+
+  @override
+  String admStatsUpdated(String time) {
+    return 'Обновлено: $time';
+  }
+
+  @override
+  String get admComplaintsTitle => 'Жалобы из приложения';
+
+  @override
+  String get admApple12Note =>
+      'Рассматривайте жалобы на неприемлемый контент быстро (Apple 1.2 требует своевременной реакции; цель — 24 часа).';
+
+  @override
+  String get admFilterOpen => 'Открытые';
+
+  @override
+  String get admFilterResolved => 'Решённые';
+
+  @override
+  String get admAllKinds => 'Все типы';
+
+  @override
+  String get complaintKindComplaint => 'Жалоба';
+
+  @override
+  String get complaintKindInappropriate => 'Неприемлемый контент';
+
+  @override
+  String get complaintKindBug => 'Ошибка';
+
+  @override
+  String get complaintKindAd => 'Реклама';
+
+  @override
+  String get complaintKindOther => 'Другое';
+
+  @override
+  String get admComplaintsEmpty => 'В этом списке жалоб нет';
+
+  @override
+  String get admComplaintAnon => 'Гость (без аккаунта)';
+
+  @override
+  String admComplaintFrom(String email) {
+    return 'Отправитель: $email';
+  }
+
+  @override
+  String admComplaintTarget(String ref) {
+    return 'Ссылка: $ref';
+  }
+
+  @override
+  String get admComplaintNote => 'Заметка админа';
+
+  @override
+  String get admComplaintNoteHint => 'Что сделано? (видят только админы)';
+
+  @override
+  String get admComplaintSaveNote => 'Сохранить заметку';
+
+  @override
+  String get admComplaintResolve => 'Решено';
+
+  @override
+  String get admComplaintReopen => 'Открыть снова';
+
+  @override
+  String admComplaintResolvedOn(String date) {
+    return 'Решено: $date';
+  }
+
+  @override
+  String get admSaved => 'Сохранено';
+
+  @override
+  String get admReportsEmpty => 'В этом списке жалоб нет';
+
+  @override
+  String get admReportOpen => 'Открытые';
+
+  @override
+  String get admReportDismissed => 'Отклонённые';
+
+  @override
+  String get admReportResolved => 'Решённые';
+
+  @override
+  String get admReportKindQuestion => 'Вопрос';
+
+  @override
+  String get admReportKindAnswer => 'Ответ';
+
+  @override
+  String admReportCount(int reports, int reporters) {
+    return 'Жалоб: $reports · людей: $reporters';
+  }
+
+  @override
+  String admReportReasons(String reasons) {
+    return 'Причина: $reasons';
+  }
+
+  @override
+  String get admReportDeleted => 'Пост удалён';
+
+  @override
+  String get admReportAuthorSuspended => 'Автор приостановлен';
+
+  @override
+  String get admReportOpenPost => 'Открыть пост';
+
+  @override
+  String get admReportDismiss => 'Необоснованна';
+
+  @override
+  String get admReportResolve => 'Решено';
+
+  @override
+  String get admReportSuspend => 'Приостановить автора';
+
+  @override
+  String get admReportDismissTitle => 'Отклонить жалобу?';
+
+  @override
+  String get admReportDismissBody =>
+      'Жалобы закрываются и не учитываются для автоматической приостановки. Действие записывается в журнал.';
+
+  @override
+  String get admReportResolveTitle => 'Отметить как решённую?';
+
+  @override
+  String get admReportResolveBody =>
+      'Меры приняты (например, пост удалён). Действие записывается в журнал.';
+
+  @override
+  String get admReportSuspendTitle => 'Приостановить автора?';
+
+  @override
+  String get admReportSuspendBody =>
+      'Автор не сможет писать в сообществе, его посты скрываются. Действие записывается в журнал.';
+
+  @override
+  String get admSearchModeEmail => 'Email';
+
+  @override
+  String get admSearchModeName => 'Псевдоним';
+
+  @override
+  String get admSearchEmail => 'Полный email (точное совпадение)';
+
+  @override
+  String get admSearchName => 'Псевдоним в группе (минимум 2 символа)';
+
+  @override
+  String get admUsersSearchNote =>
+      'Email не хранится на сервере в открытом виде: аккаунт находится только по полному email и показывается замаскированным.';
+
+  @override
+  String get admSearch => 'Искать';
+
+  @override
+  String get admStatusActive => 'Активен';
+
+  @override
+  String get admStatusSuspended => 'Приостановлен';
+
+  @override
+  String get admUserAdminTag => 'Админ';
+
+  @override
+  String get admUserTitle => 'Пользователь';
+
+  @override
+  String get admUserRole => 'Роль';
+
+  @override
+  String get admRoleChanged => 'Роль изменена';
+
+  @override
+  String get admRoleSelfNote => 'Свою роль и статус здесь изменить нельзя.';
+
+  @override
+  String admUserFacts(int owned, int joined, int threads, int complaints) {
+    return 'Группы: $owned (преподаватель) · $joined (студент) · обращения: $threads · жалобы: $complaints';
+  }
+
+  @override
+  String get admAccountTitle => 'Статус аккаунта';
+
+  @override
+  String get admAccountSuspend => 'Приостановить аккаунт';
+
+  @override
+  String get admAccountSuspendTitle => 'Приостановить аккаунт?';
+
+  @override
+  String get admAccountSuspendBody =>
+      'Пользователь выйдет на всех устройствах и не сможет войти снова (код из письма, Google, Apple). Приложение покажет ему контактный адрес. Действие записывается в журнал.';
+
+  @override
+  String get admAccountReactivate => 'Восстановить доступ';
+
+  @override
+  String get admAccountReactivateTitle => 'Восстановить аккаунт?';
+
+  @override
+  String get admAccountReactivateBody =>
+      'Пользователь снова сможет войти. Действие записывается в журнал.';
+
+  @override
+  String get admAccountAdminNote => 'Аккаунт админа нельзя приостановить.';
+
+  @override
+  String get admUserCommunity => 'Статус в сообществе';
+
+  @override
+  String get admCommunityNone => 'Обычный участник';
+
+  @override
+  String admUserCommunityFacts(int questions, int answers, int reporters) {
+    return 'Вопросы: $questions · ответы: $answers · пожаловались: $reporters';
+  }
+
+  @override
+  String get admCommunitySuspend => 'Приостановить в сообществе';
+
+  @override
+  String get admCommunitySuspendTitle => 'Приостановить в сообществе?';
+
+  @override
+  String get admCommunitySuspendBody =>
+      'Аккаунт не сможет писать вопросы и ответы, его посты скрываются. Остальное приложение работает. Действие записывается в журнал.';
+
+  @override
+  String get admErrOwner => 'Аккаунт владельца нельзя приостановить.';
+
+  @override
+  String get admErrSelf => 'Это действие нельзя применить к себе.';
+
+  @override
+  String get admErrName => 'Псевдоним: 2–40 символов.';
+
+  @override
+  String admAuditBy(String actor) {
+    return 'Исполнитель: $actor';
+  }
+
+  @override
+  String get admAuditSystem => 'Система';
+
+  @override
+  String get adminActionReportDismissed => 'Жалоба в сообществе отклонена';
+
+  @override
+  String get adminActionReportResolved => 'Жалоба в сообществе решена';
+
+  @override
+  String get adminActionCommunitySuspended => 'Приостановлен в сообществе';
+
+  @override
+  String get adminActionCommunityRestored => 'Восстановлен в сообществе';
+
+  @override
+  String get adminActionCommunityRevoked =>
+      'Подтверждение специалиста отменено';
+
+  @override
+  String get adminActionAutoSuspended =>
+      'Автоматически приостановлен по жалобам';
+
+  @override
+  String get adminActionPostDeleted => 'Пост удалён';
+
+  @override
+  String get adminActionPinned => 'Закрепление вопроса изменено';
+
+  @override
+  String get adminActionAccountDeleted => 'Аккаунт удалён';
+
+  @override
+  String get adminActionMfa => '2FA включена';
+
+  @override
+  String get adminActionTeacher => 'Преподаватель зарегистрирован';
+
+  @override
+  String get adminActionRoleChanged => 'Роль изменена';
+
+  @override
+  String get adminActionAccountSuspended => 'Аккаунт приостановлен';
+
+  @override
+  String get adminActionAccountReactivated => 'Аккаунт восстановлен';
+
+  @override
+  String get adminActionComplaintNote => 'Добавлена заметка к жалобе';
+
+  @override
+  String get adminActionComplaintResolved => 'Жалоба решена';
+
+  @override
+  String get adminActionComplaintReopened => 'Жалоба открыта снова';
+
+  @override
+  String get adminActionIdentityLinked => 'Привязан способ входа';
+
+  @override
+  String get complaintFormTitle => 'Отправить жалобу из приложения';
+
+  @override
+  String get complaintFormBody =>
+      'Напишите о неприемлемом контенте, ошибке или другой проблеме — команда LabGuide рассмотрит (обычно в течение 24 часов).';
+
+  @override
+  String get complaintKindLabel => 'Тип';
+
+  @override
+  String get complaintText => 'Текст';
+
+  @override
+  String get complaintTextHint => 'Что случилось? Какой экран или пост?';
+
+  @override
+  String complaintTarget(String ref) {
+    return 'Ссылка: $ref';
+  }
+
+  @override
+  String get complaintSend => 'Отправить жалобу';
+
+  @override
+  String get complaintSent => 'Отправлено. Спасибо — рассмотрим.';
+
+  @override
+  String get complaintTooShort => 'Напишите хотя бы 5 символов.';
+
+  @override
+  String complaintRateLimited(int minutes) {
+    return 'Слишком много отправок: не более 5 в час. Попробуйте через $minutes мин.';
+  }
+
+  @override
+  String get complaintAnonNote =>
+      'Без аккаунта мы не сможем вам ответить. Если нужен ответ — войдите или напишите на email.';
+
+  @override
+  String get complaintPhiNote =>
+      'Не указывайте имя пациента и другие личные данные.';
+
+  @override
+  String get complaintFailed =>
+      'Не отправлено. Проверьте интернет и попробуйте снова.';
+
+  @override
+  String authAccountSuspended(String email) {
+    return 'Ваш аккаунт приостановлен. Если есть вопросы, напишите: $email';
+  }
+
+  @override
+  String get admSectionComplaints => 'Жалобы';
 }

@@ -120,7 +120,8 @@ void main() {
     expect(find.text(_l.adminStats), findsOneWidget);
     // Ro'yxatdan o'tgan: A va admin (mehmon sanalmaydi), har biri bir marta.
     expect(backend.registeredCount, 2);
-    expect(find.text(_l.adminBilling), findsOneWidget);
+    // To'lov/Pro UI yo'q (ilova hozircha bepul — egasi qarori).
+    expect(find.text(_l.adminBilling), findsNothing);
     expect(find.text(_l.adminAwaiting(1)), findsOneWidget);
 
     await _tapText(tester, _l.adminInbox);

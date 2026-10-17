@@ -253,6 +253,9 @@ jobs:
           BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
           LG_SENDER_EMAIL: ${{ secrets.LG_SENDER_EMAIL }}
           LG_SERVER_SECRET: ${{ secrets.LG_SERVER_SECRET }}
+          # Admin panel egasi (docs/ADMIN_PANEL_GUIDE.md): ADMIN_EMAILS, eski nom —
+          # LG_ADMIN_EMAILS. Ikkalasi ham bo'lmasa server standart egasi emailini oladi.
+          ADMIN_EMAILS: ${{ secrets.ADMIN_EMAILS }}
           LG_ADMIN_EMAILS: ${{ secrets.LG_ADMIN_EMAILS }}
           # Pro obunalari (ixtiyoriy; docs/PRO_BILLING_PLAN.md). Bo'lmasa server
           # `503 not_configured` beradi va ilova to'lov oynasini ko'rsatmaydi.
@@ -281,10 +284,11 @@ jobs:
             if [ -n "${!k}" ]; then put "$k"; else echo "- secret $k: berilmagan" >> "$GITHUB_STEP_SUMMARY"; fi
           done
           put LG_SERVER_SECRET
-          if [ -n "$LG_ADMIN_EMAILS" ]; then
-            put LG_ADMIN_EMAILS
-          else
-            echo "- LG_ADMIN_EMAILS berilmagan: admin vakolati hech kimga berilmaydi" >> "$GITHUB_STEP_SUMMARY"
+          for k in ADMIN_EMAILS LG_ADMIN_EMAILS; do
+            if [ -n "${!k}" ]; then put "$k"; else echo "- secret $k: berilmagan" >> "$GITHUB_STEP_SUMMARY"; fi
+          done
+          if [ -z "$ADMIN_EMAILS$LG_ADMIN_EMAILS" ]; then
+            echo "- admin emaili berilmagan: server standart egasi emailini ishlatadi (docs/ADMIN_PANEL_GUIDE.md)" >> "$GITHUB_STEP_SUMMARY"
           fi
           # Pro obunalari: App Store kaliti uchala qiymat bilan birga ishlaydi.
           apple=0

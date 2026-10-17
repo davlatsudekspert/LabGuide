@@ -47,6 +47,7 @@ class AccessInfo {
     required this.reviewer,
     this.teacher = false,
     this.superAdmin = false,
+    this.panelAdmin = false,
   });
 
   factory AccessInfo.fromJson(Map<String, Object?> json) => AccessInfo(
@@ -55,6 +56,7 @@ class AccessInfo {
     reviewer: json['reviewer'] == true,
     teacher: json['teacher'] == true,
     superAdmin: json['super_admin'] == true,
+    panelAdmin: json['panel_admin'] == true,
   );
 
   static const none = AccessInfo(
@@ -74,6 +76,11 @@ class AccessInfo {
   /// Egasi (serverdagi maxfiy ro'yxat, D-44): faqat u adminlarni qo'shadi
   /// va olib tashlaydi. Faqat ko'rinish — server har amalda tekshiradi.
   final bool superAdmin;
+
+  /// Egasi admin paneli (Cloudflare): email kodi bilan kirgan va emaili
+  /// maxfiy `ADMIN_EMAILS` da — TOTP talab qilinmaydi (egasi qarori). Faqat
+  /// ko'rinish: server har so'rovda qayta tekshiradi.
+  final bool panelAdmin;
 
   /// Admin panelni ochish mumkin (hisob + ikki bosqichli tasdiq).
   bool get admin => adminAccount && aal2;
@@ -265,6 +272,7 @@ class AuditEntry {
     required this.action,
     required this.target,
     required this.details,
+    this.actorMasked,
   });
 
   factory AuditEntry.fromJson(Map<String, Object?> j) => AuditEntry(
@@ -272,12 +280,16 @@ class AuditEntry {
     action: j['action']! as String,
     target: j['target'] as String?,
     details: ((j['details'] as Map?) ?? const {}).cast<String, Object?>(),
+    actorMasked: j['actor_masked'] as String?,
   );
 
   final DateTime at;
   final String action;
   final String? target;
   final Map<String, Object?> details;
+
+  /// Bajaruvchi (niqoblangan email; tizim amali — `null`). Faqat Cloudflare.
+  final String? actorMasked;
 }
 
 enum ReviewDecision { approve, changes }

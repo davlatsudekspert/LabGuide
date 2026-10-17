@@ -63,8 +63,11 @@ describe('rollar', () => {
     const s = makeServer();
     const { token, userId } = await s.signIn('Boss@Example.test');
     const me = await s.call('GET', '/v1/me', { token });
-    expect(me.data).toMatchObject({ admin_account: true, admin: false, aal: 'aal1' });
-    expect((await s.call('GET', '/v1/admin/stats', { token })).status).toBe(403);
+    expect(me.data).toMatchObject({ admin_account: true, admin: false, aal: 'aal1', panel_admin: true });
+    // TOTP bilan himoyalangan admin yo'llari (moderatsiya) — aal1 da yopiq.
+    expect((await s.call('GET', '/v1/admin/community/members', { token })).status).toBe(403);
+    // Egasi admin paneli — egasi qarori bilan TOTP siz (email kodi + ADMIN_EMAILS).
+    expect((await s.call('GET', '/v1/admin/stats', { token })).status).toBe(200);
     const audit = await s.env.DB.prepare(`SELECT action FROM audit_log WHERE target = ?1`).bind(userId).all();
     expect(audit.results.map((r) => r.action)).toContain('admin_granted');
 
@@ -78,8 +81,9 @@ describe('rollar', () => {
     const ok = await s.call('POST', '/v1/auth/mfa/verify', { token, body: { code: await totpAt(secret, step) } });
     expect(ok.status).toBe(200);
     expect((await s.call('GET', '/v1/me', { token })).data).toMatchObject({ admin: true, aal: 'aal2' });
-    // Admin yo'llari vakolatdan o'tadi, lekin hali ko'chirilmagan — 501 (ishlayotgandek emas).
-    const st = await s.call('GET', '/v1/admin/stats', { token });
+    // Admin yo'llari vakolatdan o'tadi; hali ko'chirilmaganlari — 501 (ishlayotgandek emas).
+    expect((await s.call('GET', '/v1/admin/stats', { token })).status).toBe(200);
+    const st = await s.call('GET', '/v1/admin/teachers', { token });
     expect(st.status).toBe(501);
     expect(st.data.error).toBe('not_implemented');
 
@@ -89,10 +93,10 @@ describe('rollar', () => {
     expect((await s.call('POST', '/v1/auth/mfa/verify', { token: t2.token, body: { code: await totpAt(secret, step) } })).status).toBe(400);
     // Tasdiqlangan faktor bor — yangi faktor qo'shib bo'lmaydi (o'g'irlangan aal1 sessiyaga qarshi).
     expect((await s.call('POST', '/v1/auth/mfa/enroll', { token: t2.token })).status).toBe(403);
-    expect((await s.call('GET', '/v1/admin/stats', { token: t2.token })).status).toBe(403);
+    expect((await s.call('GET', '/v1/admin/community/members', { token: t2.token })).status).toBe(403);
     const now2 = Math.floor(s.clock.now / 30_000);
     expect((await s.call('POST', '/v1/auth/mfa/verify', { token: t2.token, body: { code: await totpAt(secret, now2) } })).status).toBe(200);
-    expect((await s.call('GET', '/v1/admin/stats', { token: t2.token })).status).toBe(501);
+    expect((await s.call('GET', '/v1/admin/community/members', { token: t2.token })).status).toBe(200);
   });
 
   it("allowlist'dan chiqarilgan email keyingi kirishda vakolatini yo'qotadi", async () => {

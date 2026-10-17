@@ -1,13 +1,16 @@
 // Marshrutlar va umumiy so'rov qayta ishlash (xatolar ichki ma'lumotsiz).
 
 import * as admins from './admins';
+import * as adminConsole from './adminconsole';
 import * as auth from './auth';
 import * as billing from './billing';
 import * as community from './community';
+import * as complaints from './complaints';
 import type { Ctx, Deps } from './context';
 import { deriveKeys, hex, hmac } from './crypto';
 import * as groups from './groups';
 import * as social from './social';
+import * as support from './support';
 import {
   ApiError,
   corsHeaders,
@@ -135,6 +138,9 @@ const routes: Route[] = [
   r('POST', '/v1/billing/verify', billing.verify),
   r('POST', '/v1/billing/apple/notifications', billing.appleNotification),
   r('POST', '/v1/billing/google/rtdn', billing.googleNotification),
+
+  // Taklif va yordam, shikoyatlar, egasi admin paneli (support.ts, complaints.ts, adminconsole.ts).
+  ...[...support.ROUTES, ...complaints.ROUTES, ...adminConsole.ROUTES].map(([m, p, h]) => r(m, p, h)),
 
   // TODO(port): Supabase'dan ko'chiriladi — hozircha 501 (docs/BACKEND_CLOUDFLARE.md).
   r('*', '/v1/support(/.*)?', plannedSignedIn),

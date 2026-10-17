@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:typed_data';
 
+import 'package:labguide/core/backend/admin_console.dart';
 import 'package:labguide/core/backend/admin_team.dart';
 import 'package:labguide/core/backend/backend_models.dart';
 import 'package:labguide/core/backend/lab_backend.dart';
@@ -128,7 +129,11 @@ class FakeLabBackend implements LabBackend {
 
   /// Super admin qo'shgan adminlar (D-44; faqat [FakeAdminTeamBackend]).
   final Map<String, ({String id, DateTime at})> _grants = {};
-  bool get _isAdmin => _isAdminAccount && _aal2;
+  bool get _isAdmin =>
+      (_isAdminAccount && _aal2) || (allowsPanelAdmin && _isSuperAdmin);
+
+  /// Egasi admin paneli (Cloudflare): ADMIN_EMAILS + email kodi, TOTP siz.
+  bool get allowsPanelAdmin => false;
   void _requireAdmin() {
     if (!_isAdmin) throw const BackendException(BackendFailure.forbidden);
   }
@@ -144,6 +149,7 @@ class FakeLabBackend implements LabBackend {
           reviewer: _current!.reviewer,
           teacher: _current!.teacher,
           superAdmin: _isSuperAdmin,
+          panelAdmin: allowsPanelAdmin && _isSuperAdmin,
         );
 
   @override
@@ -1493,4 +1499,408 @@ class FakeAdminTeamBackend extends FakeLabBackend implements AdminTeamBackend {
   @override
   Future<List<SupportThread>> myThreads() async =>
       legacyAdminApi ? super.myThreads() : _notYet();
+}
+
+/// Cloudflare egasi admin paneli soxtasi: ADMIN_EMAILS dagi email kod bilan
+/// kirsa — TOTP siz admin ([allowsPanelAdmin]); foydalanuvchilar (rol,
+/// to'xtatish), ilova shikoyatlari, hamjamiyat shikoyatlari, jurnal.
+/// Qoidalar serverdagidek: oddiy foydalanuvchi — `forbidden`, admin
+/// to'xtatilmaydi, o'z rolini o'zgartira olmaydi, to'xtatilgan hisob kira
+/// olmaydi, shikoyat — soatiga 5 ta (mehmon ham).
+class FakeAdminConsoleBackend extends FakeAdminTeamBackend
+    implements AdminConsoleBackend, ComplaintsBackend, SupportAttachmentPolicy {
+  FakeAdminConsoleBackend({super.adminEmails}) : super(legacyAdminApi: true);
+
+  @override
+  bool get allowsPanelAdmin => true;
+  @override
+  bool get supportAttachments => false;
+
+  final Set<String> _suspendedEmails = {};
+  final Map<String, String> nicknames = {};
+  final Map<String, String> communityStatus = {};
+  final List<Complaint> complaints = [];
+  final List<ReportItem> reports = [];
+  final Map<String, int> _complaintHits = {};
+
+  /// Keyingi admin o'qishi shu xato bilan tugaydi (xato holatini sinash).
+  BackendException? failNext;
+
+  /// Berilsa — admin o'qishlari shu tugaguncha kutadi (yuklanish holati).
+  Completer<void>? hold;
+
+  Future<void> _gate() async {
+    final h = hold;
+    if (h != null) await h.future;
+    final f = failNext;
+    if (f != null) {
+      failNext = null;
+      throw f;
+    }
+  }
+
+  void _panel() {
+    if (!_isAdmin) {
+      throw const AdminConsoleException(BackendFailure.forbidden, 'forbidden');
+    }
+  }
+
+  _User _byId(String id) => _users.values.firstWhere(
+    (u) => u.id == id,
+    orElse: () =>
+        throw const AdminConsoleException(BackendFailure.notFound, 'not_found'),
+  );
+
+  void _log(String action, String? target, [Map<String, Object?>? d]) =>
+      audit.add(
+        AuditEntry(
+          at: _now(),
+          action: action,
+          target: target,
+          details: d ?? const {},
+          actorMasked: _current == null
+              ? null
+              : FakeAdminTeamBackend.mask(_current!.email),
+        ),
+      );
+
+  @override
+  Future<OtpVerifyResult> verifyCode(String email, String code) async {
+    if (_suspendedEmails.contains(normalizeEmail(email))) {
+      return const OtpVerifyResult(OtpVerifyStatus.accountSuspended);
+    }
+    return super.verifyCode(email, code);
+  }
+
+  @override
+  Future<AdminStats> adminStats() async {
+    await _gate();
+    _panel();
+    final base = (await super.adminStats()).json;
+    final today = DateTime.utc(2026, 10, 17);
+    return AdminStats({
+      ...base,
+      'billing': null,
+      'online_now': _current == null ? 0 : 1,
+      'suspended_accounts': _suspendedEmails.length,
+      'new_by_day': [
+        for (var i = 13; i >= 0; i--)
+          {
+            'day': today
+                .subtract(Duration(days: i))
+                .toIso8601String()
+                .substring(0, 10),
+            'n': i == 0 ? _users.length : (i % 3),
+          },
+      ],
+      'groups': {
+        'groups': 2,
+        'teachers': 1,
+        'students': 7,
+        'assignments': 3,
+        'results': 12,
+      },
+      'complaints': {
+        'open': complaints
+            .where((c) => c.status == ComplaintStatus.open)
+            .length,
+        'resolved': complaints
+            .where((c) => c.status == ComplaintStatus.resolved)
+            .length,
+      },
+      'community': {
+        'questions': 4,
+        'answers': 6,
+        'verified': 1,
+        'suspended': communityStatus.values
+            .where((s) => s == 'suspended')
+            .length,
+        'reports_open': reports
+            .where((r) => r.status == ReportStatus.open)
+            .length,
+      },
+    });
+  }
+
+  AdminAccountRow _row(_User u) => AdminAccountRow(
+    userId: u.id,
+    emailMasked: FakeAdminTeamBackend.mask(u.email),
+    role: u.role ?? 'student',
+    language: u.language ?? 'uz',
+    registeredOn: DateTime.utc(2026, 10, 9),
+    lastSeenOn: DateTime.utc(2026, 10, 16),
+    status: _suspendedEmails.contains(u.email)
+        ? AccountStatus.suspended
+        : AccountStatus.active,
+    admin: adminEmails.contains(u.email),
+  );
+
+  @override
+  Future<AdminAccountPage> adminAccounts({
+    String? email,
+    String? name,
+    String? role,
+    AccountStatus? status,
+    int limit = 20,
+    int offset = 0,
+  }) async {
+    await _gate();
+    _panel();
+    if (email != null && !isValidEmail(email)) {
+      throw const AdminConsoleException(
+        BackendFailure.invalid,
+        'invalid_email',
+      );
+    }
+    if (name != null && (name.length < 2 || name.length > 40)) {
+      throw const AdminConsoleException(BackendFailure.invalid, 'invalid_name');
+    }
+    final rows = [
+      for (final u in _users.values)
+        if ((email == null || u.email == normalizeEmail(email)) &&
+            // Taxallus: `%`/`_` oddiy belgi (serverdagi LIKE ekranlash kabi).
+            (name == null ||
+                (nicknames[u.id]?.toLowerCase().contains(name.toLowerCase()) ??
+                    false)) &&
+            (role == null || (u.role ?? 'student') == role))
+          _row(u),
+    ].where((r) => status == null || r.status == status).toList();
+    return AdminAccountPage(
+      rows.skip(offset).take(limit).toList(),
+      rows.length,
+    );
+  }
+
+  @override
+  Future<AdminUserDetail> adminUserDetail(String userId) async {
+    await _gate();
+    _panel();
+    final u = _byId(userId);
+    return AdminUserDetail(
+      account: _row(u),
+      you: u.id == _current?.id,
+      teacher: u.teacher,
+      groupsOwned: 0,
+      groupsJoined: nicknames.containsKey(u.id) ? 1 : 0,
+      supportThreads: _threads.where((t) => t.userId == u.id).length,
+      complaints: complaints.where((c) => c.userId == u.id).length,
+      communityStatus: communityStatus[u.id] ?? 'none',
+      communityOwner: false,
+      reporters: 0,
+      questions: 0,
+      answers: 0,
+    );
+  }
+
+  @override
+  Future<void> adminSetRole(String userId, String role) async {
+    _panel();
+    final u = _byId(userId);
+    if (u.id == _current!.id) {
+      throw const AdminConsoleException(BackendFailure.forbidden, 'self');
+    }
+    final from = u.role;
+    u.role = role;
+    _log('role_changed', u.id, {'from': from, 'to': role});
+  }
+
+  @override
+  Future<void> adminSuspendAccount(String userId) async {
+    _panel();
+    final u = _byId(userId);
+    if (u.id == _current!.id) {
+      throw const AdminConsoleException(BackendFailure.forbidden, 'self');
+    }
+    if (adminEmails.contains(u.email)) {
+      throw const AdminConsoleException(BackendFailure.forbidden, 'admin');
+    }
+    if (_suspendedEmails.add(u.email)) _log('account_suspended', u.id);
+  }
+
+  @override
+  Future<void> adminReactivateAccount(String userId) async {
+    _panel();
+    final u = _byId(userId);
+    if (_suspendedEmails.remove(u.email)) _log('account_reactivated', u.id);
+  }
+
+  @override
+  Future<void> adminSuspendCommunity(String userId) async {
+    _panel();
+    communityStatus[_byId(userId).id] = 'suspended';
+    _log('community_suspended', userId);
+  }
+
+  @override
+  Future<void> adminRestoreCommunity(String userId) async {
+    _panel();
+    communityStatus[_byId(userId).id] = 'none';
+    _log('community_restored', userId);
+  }
+
+  @override
+  Future<void> submitComplaint({
+    required ComplaintKind kind,
+    required String body,
+    String? targetRef,
+    String? lang,
+  }) async {
+    if (body.trim().length < 5 || body.length > 2000) {
+      throw const ComplaintException(BackendFailure.invalid);
+    }
+    final key = _current?.id ?? 'guest';
+    final n = (_complaintHits[key] ?? 0) + 1;
+    _complaintHits[key] = n;
+    if (n > 5) {
+      throw const ComplaintException(
+        BackendFailure.rateLimited,
+        retryAfter: Duration(minutes: 30),
+      );
+    }
+    complaints.insert(
+      0,
+      Complaint(
+        id: _id('complaint'),
+        kind: kind,
+        body: body.trim(),
+        status: ComplaintStatus.open,
+        createdAt: _now(),
+        targetRef: targetRef,
+        anonymous: _current == null,
+        userId: _current?.id,
+        emailMasked: _current == null
+            ? null
+            : FakeAdminTeamBackend.mask(_current!.email),
+      ),
+    );
+  }
+
+  Complaint _complaint(String id) => complaints.firstWhere(
+    (c) => c.id == id,
+    orElse: () =>
+        throw const AdminConsoleException(BackendFailure.notFound, 'not_found'),
+  );
+
+  Complaint _replaceComplaint(
+    Complaint c, {
+    String? note,
+    ComplaintStatus? status,
+  }) {
+    final s = status ?? c.status;
+    final n = Complaint(
+      id: c.id,
+      kind: c.kind,
+      body: c.body,
+      status: s,
+      createdAt: c.createdAt,
+      targetRef: c.targetRef,
+      adminNote: note ?? c.adminNote,
+      anonymous: c.anonymous,
+      userId: c.userId,
+      emailMasked: c.emailMasked,
+      resolvedAt: s == ComplaintStatus.resolved ? _now() : null,
+    );
+    complaints[complaints.indexWhere((x) => x.id == c.id)] = n;
+    return n;
+  }
+
+  @override
+  Future<List<Complaint>> adminComplaints({
+    ComplaintStatus? status,
+    ComplaintKind? kind,
+  }) async {
+    await _gate();
+    _panel();
+    return complaints
+        .where(
+          (c) =>
+              (status == null || c.status == status) &&
+              (kind == null || c.kind == kind),
+        )
+        .toList();
+  }
+
+  @override
+  Future<Complaint> adminComplaint(String id) async {
+    await _gate();
+    _panel();
+    return _complaint(id);
+  }
+
+  @override
+  Future<Complaint> adminComplaintNote(String id, String note) async {
+    _panel();
+    final c = _replaceComplaint(_complaint(id), note: note.trim());
+    _log('complaint_note', id);
+    return c;
+  }
+
+  @override
+  Future<Complaint> adminSetComplaintStatus(
+    String id,
+    ComplaintStatus status,
+  ) async {
+    _panel();
+    final c = _replaceComplaint(_complaint(id), status: status);
+    _log(
+      status == ComplaintStatus.resolved
+          ? 'complaint_resolved'
+          : 'complaint_reopened',
+      id,
+    );
+    return c;
+  }
+
+  @override
+  Future<List<ReportItem>> adminReports({
+    ReportStatus status = ReportStatus.open,
+  }) async {
+    await _gate();
+    _panel();
+    return reports.where((r) => r.status == status).toList();
+  }
+
+  void _setReport(ReportItem r, ReportStatus status, {String? author}) {
+    reports[reports.indexWhere((x) => x.id == r.id)] = ReportItem(
+      kind: r.kind,
+      id: r.id,
+      status: status,
+      reports: r.reports,
+      reporters: r.reporters,
+      reasons: r.reasons,
+      excerpt: r.excerpt,
+      questionId: r.questionId,
+      postDeleted: r.postDeleted,
+      authorStatus: author ?? r.authorStatus,
+      lastAt: r.lastAt,
+    );
+  }
+
+  @override
+  Future<void> dismissReport(ReportItem item) async {
+    _panel();
+    _setReport(item, ReportStatus.dismissed);
+    _log('report_dismissed', '${item.kind}:${item.id}');
+  }
+
+  @override
+  Future<void> resolveReport(ReportItem item) async {
+    _panel();
+    _setReport(item, ReportStatus.resolved);
+    _log('report_resolved', '${item.kind}:${item.id}');
+  }
+
+  @override
+  Future<void> suspendReportAuthor(ReportItem item) async {
+    _panel();
+    _setReport(item, ReportStatus.resolved, author: 'suspended');
+    _log('community_suspended', '${item.kind}:${item.id}');
+  }
+
+  @override
+  Future<List<AuditEntry>> adminAudit({int limit = 50}) async {
+    await _gate();
+    _panel();
+    return audit.reversed.take(limit).toList();
+  }
 }

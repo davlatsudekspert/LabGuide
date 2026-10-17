@@ -15309,6 +15309,858 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Nothing was deleted: Apple confirmation was cancelled.'**
   String get accountDeleteAppleCancelled;
+
+  /// No description provided for @admPanelAccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Access: the owner email (ADMIN_EMAILS) and an email code. The server re-checks every request.'**
+  String get admPanelAccess;
+
+  /// No description provided for @admOverview.
+  ///
+  /// In en, this message translates to:
+  /// **'Overview'**
+  String get admOverview;
+
+  /// No description provided for @admOverviewSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Registered: {total} · online: {online} · new in 7 days: {week}'**
+  String admOverviewSub(int total, int online, int week);
+
+  /// No description provided for @admComplaintsRow.
+  ///
+  /// In en, this message translates to:
+  /// **'In-app complaints'**
+  String get admComplaintsRow;
+
+  /// No description provided for @admComplaintsRowSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Open: {count}'**
+  String admComplaintsRowSub(int count);
+
+  /// No description provided for @admReportsRow.
+  ///
+  /// In en, this message translates to:
+  /// **'Community reports'**
+  String get admReportsRow;
+
+  /// No description provided for @admReportsRowSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Unreviewed posts: {count}'**
+  String admReportsRowSub(int count);
+
+  /// No description provided for @admEmailNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Complaints and questions sent by email arrive at {email} — check them in the mailbox (they do not reach the app).'**
+  String admEmailNote(String email);
+
+  /// No description provided for @admUsersSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Search by email or nickname, role, suspension'**
+  String get admUsersSub;
+
+  /// No description provided for @admAuditSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Every admin action is recorded'**
+  String get admAuditSub;
+
+  /// No description provided for @admStoreTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Downloads and sales'**
+  String get admStoreTitle;
+
+  /// No description provided for @admStoreBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The server cannot see store downloads — App Store Connect and Google Play Console show them. The app has no analytics SDK (privacy policy). Numbers in this panel are accounts that confirmed their email.'**
+  String get admStoreBody;
+
+  /// No description provided for @admSales.
+  ///
+  /// In en, this message translates to:
+  /// **'Sales: 0 (no payments yet)'**
+  String get admSales;
+
+  /// No description provided for @admAppStoreConnect.
+  ///
+  /// In en, this message translates to:
+  /// **'App Store Connect'**
+  String get admAppStoreConnect;
+
+  /// No description provided for @admPlayConsole.
+  ///
+  /// In en, this message translates to:
+  /// **'Google Play Console'**
+  String get admPlayConsole;
+
+  /// No description provided for @admStatsAccounts.
+  ///
+  /// In en, this message translates to:
+  /// **'Accounts'**
+  String get admStatsAccounts;
+
+  /// No description provided for @admOnlineNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Online now (5 minutes)'**
+  String get admOnlineNow;
+
+  /// No description provided for @admSuspendedAccounts.
+  ///
+  /// In en, this message translates to:
+  /// **'Suspended accounts'**
+  String get admSuspendedAccounts;
+
+  /// No description provided for @admStatsActiveNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Online and active — accounts that made a request to the server. Only the minute and day are stored; no IP or device.'**
+  String get admStatsActiveNote;
+
+  /// No description provided for @admChartTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'New accounts — last 14 days'**
+  String get admChartTitle;
+
+  /// No description provided for @admChartBar.
+  ///
+  /// In en, this message translates to:
+  /// **'{date}: {count} new accounts'**
+  String admChartBar(String date, int count);
+
+  /// No description provided for @admChartTotal.
+  ///
+  /// In en, this message translates to:
+  /// **'Total in 14 days: {count}'**
+  String admChartTotal(int count);
+
+  /// No description provided for @admStatsObjects.
+  ///
+  /// In en, this message translates to:
+  /// **'Main objects'**
+  String get admStatsObjects;
+
+  /// No description provided for @admStatsGroupsCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Groups'**
+  String get admStatsGroupsCount;
+
+  /// No description provided for @admStatsTeachers.
+  ///
+  /// In en, this message translates to:
+  /// **'Registered teachers'**
+  String get admStatsTeachers;
+
+  /// No description provided for @admStatsStudents.
+  ///
+  /// In en, this message translates to:
+  /// **'Students in groups'**
+  String get admStatsStudents;
+
+  /// No description provided for @admStatsAssignments.
+  ///
+  /// In en, this message translates to:
+  /// **'Test sessions'**
+  String get admStatsAssignments;
+
+  /// No description provided for @admStatsResults.
+  ///
+  /// In en, this message translates to:
+  /// **'Test results'**
+  String get admStatsResults;
+
+  /// No description provided for @admStatsQuestions.
+  ///
+  /// In en, this message translates to:
+  /// **'Community questions'**
+  String get admStatsQuestions;
+
+  /// No description provided for @admStatsAnswers.
+  ///
+  /// In en, this message translates to:
+  /// **'Community answers'**
+  String get admStatsAnswers;
+
+  /// No description provided for @admStatsComplaintsOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'Open complaints'**
+  String get admStatsComplaintsOpen;
+
+  /// No description provided for @admStatsComplaintsResolved.
+  ///
+  /// In en, this message translates to:
+  /// **'Resolved complaints'**
+  String get admStatsComplaintsResolved;
+
+  /// No description provided for @admStatsReportsOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'Community: unreviewed reports'**
+  String get admStatsReportsOpen;
+
+  /// No description provided for @admStatsAwaiting.
+  ///
+  /// In en, this message translates to:
+  /// **'Messages: awaiting reply'**
+  String get admStatsAwaiting;
+
+  /// No description provided for @admStatsUpdated.
+  ///
+  /// In en, this message translates to:
+  /// **'Updated: {time}'**
+  String admStatsUpdated(String time);
+
+  /// No description provided for @admComplaintsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'In-app complaints'**
+  String get admComplaintsTitle;
+
+  /// No description provided for @admApple12Note.
+  ///
+  /// In en, this message translates to:
+  /// **'Handle reports of objectionable content promptly (Apple 1.2 requires timely action; target — 24 hours).'**
+  String get admApple12Note;
+
+  /// No description provided for @admFilterOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'Open'**
+  String get admFilterOpen;
+
+  /// No description provided for @admFilterResolved.
+  ///
+  /// In en, this message translates to:
+  /// **'Resolved'**
+  String get admFilterResolved;
+
+  /// No description provided for @admAllKinds.
+  ///
+  /// In en, this message translates to:
+  /// **'All types'**
+  String get admAllKinds;
+
+  /// No description provided for @complaintKindComplaint.
+  ///
+  /// In en, this message translates to:
+  /// **'Complaint'**
+  String get complaintKindComplaint;
+
+  /// No description provided for @complaintKindInappropriate.
+  ///
+  /// In en, this message translates to:
+  /// **'Inappropriate content'**
+  String get complaintKindInappropriate;
+
+  /// No description provided for @complaintKindBug.
+  ///
+  /// In en, this message translates to:
+  /// **'Bug'**
+  String get complaintKindBug;
+
+  /// No description provided for @complaintKindAd.
+  ///
+  /// In en, this message translates to:
+  /// **'Advertising'**
+  String get complaintKindAd;
+
+  /// No description provided for @complaintKindOther.
+  ///
+  /// In en, this message translates to:
+  /// **'Other'**
+  String get complaintKindOther;
+
+  /// No description provided for @admComplaintsEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No complaints in this list'**
+  String get admComplaintsEmpty;
+
+  /// No description provided for @admComplaintAnon.
+  ///
+  /// In en, this message translates to:
+  /// **'Guest (no account)'**
+  String get admComplaintAnon;
+
+  /// No description provided for @admComplaintFrom.
+  ///
+  /// In en, this message translates to:
+  /// **'From: {email}'**
+  String admComplaintFrom(String email);
+
+  /// No description provided for @admComplaintTarget.
+  ///
+  /// In en, this message translates to:
+  /// **'Reference: {ref}'**
+  String admComplaintTarget(String ref);
+
+  /// No description provided for @admComplaintNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Admin note'**
+  String get admComplaintNote;
+
+  /// No description provided for @admComplaintNoteHint.
+  ///
+  /// In en, this message translates to:
+  /// **'What was done? (admins only)'**
+  String get admComplaintNoteHint;
+
+  /// No description provided for @admComplaintSaveNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Save note'**
+  String get admComplaintSaveNote;
+
+  /// No description provided for @admComplaintResolve.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark resolved'**
+  String get admComplaintResolve;
+
+  /// No description provided for @admComplaintReopen.
+  ///
+  /// In en, this message translates to:
+  /// **'Reopen'**
+  String get admComplaintReopen;
+
+  /// No description provided for @admComplaintResolvedOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Resolved: {date}'**
+  String admComplaintResolvedOn(String date);
+
+  /// No description provided for @admSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Saved'**
+  String get admSaved;
+
+  /// No description provided for @admReportsEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No reports in this list'**
+  String get admReportsEmpty;
+
+  /// No description provided for @admReportOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'Open'**
+  String get admReportOpen;
+
+  /// No description provided for @admReportDismissed.
+  ///
+  /// In en, this message translates to:
+  /// **'Dismissed'**
+  String get admReportDismissed;
+
+  /// No description provided for @admReportResolved.
+  ///
+  /// In en, this message translates to:
+  /// **'Resolved'**
+  String get admReportResolved;
+
+  /// No description provided for @admReportKindQuestion.
+  ///
+  /// In en, this message translates to:
+  /// **'Question'**
+  String get admReportKindQuestion;
+
+  /// No description provided for @admReportKindAnswer.
+  ///
+  /// In en, this message translates to:
+  /// **'Answer'**
+  String get admReportKindAnswer;
+
+  /// No description provided for @admReportCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{reports} reports · {reporters} people'**
+  String admReportCount(int reports, int reporters);
+
+  /// No description provided for @admReportReasons.
+  ///
+  /// In en, this message translates to:
+  /// **'Reason: {reasons}'**
+  String admReportReasons(String reasons);
+
+  /// No description provided for @admReportDeleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Post deleted'**
+  String get admReportDeleted;
+
+  /// No description provided for @admReportAuthorSuspended.
+  ///
+  /// In en, this message translates to:
+  /// **'Author suspended'**
+  String get admReportAuthorSuspended;
+
+  /// No description provided for @admReportOpenPost.
+  ///
+  /// In en, this message translates to:
+  /// **'Open post'**
+  String get admReportOpenPost;
+
+  /// No description provided for @admReportDismiss.
+  ///
+  /// In en, this message translates to:
+  /// **'Dismiss'**
+  String get admReportDismiss;
+
+  /// No description provided for @admReportResolve.
+  ///
+  /// In en, this message translates to:
+  /// **'Resolved'**
+  String get admReportResolve;
+
+  /// No description provided for @admReportSuspend.
+  ///
+  /// In en, this message translates to:
+  /// **'Suspend author'**
+  String get admReportSuspend;
+
+  /// No description provided for @admReportDismissTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Dismiss the report?'**
+  String get admReportDismissTitle;
+
+  /// No description provided for @admReportDismissBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The reports are closed and no longer count towards automatic suspension. The action is logged.'**
+  String get admReportDismissBody;
+
+  /// No description provided for @admReportResolveTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark as resolved?'**
+  String get admReportResolveTitle;
+
+  /// No description provided for @admReportResolveBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Action has been taken (for example, the post was deleted). The action is logged.'**
+  String get admReportResolveBody;
+
+  /// No description provided for @admReportSuspendTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Suspend the author?'**
+  String get admReportSuspendTitle;
+
+  /// No description provided for @admReportSuspendBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The author can no longer post in the community and their posts are hidden. The action is logged.'**
+  String get admReportSuspendBody;
+
+  /// No description provided for @admSearchModeEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Email'**
+  String get admSearchModeEmail;
+
+  /// No description provided for @admSearchModeName.
+  ///
+  /// In en, this message translates to:
+  /// **'Nickname'**
+  String get admSearchModeName;
+
+  /// No description provided for @admSearchEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Full email (exact match)'**
+  String get admSearchEmail;
+
+  /// No description provided for @admSearchName.
+  ///
+  /// In en, this message translates to:
+  /// **'Group nickname (at least 2 characters)'**
+  String get admSearchName;
+
+  /// No description provided for @admUsersSearchNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Emails are not stored in plain text: an account is found only by its full email and is shown masked.'**
+  String get admUsersSearchNote;
+
+  /// No description provided for @admSearch.
+  ///
+  /// In en, this message translates to:
+  /// **'Search'**
+  String get admSearch;
+
+  /// No description provided for @admStatusActive.
+  ///
+  /// In en, this message translates to:
+  /// **'Active'**
+  String get admStatusActive;
+
+  /// No description provided for @admStatusSuspended.
+  ///
+  /// In en, this message translates to:
+  /// **'Suspended'**
+  String get admStatusSuspended;
+
+  /// No description provided for @admUserAdminTag.
+  ///
+  /// In en, this message translates to:
+  /// **'Admin'**
+  String get admUserAdminTag;
+
+  /// No description provided for @admUserTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'User'**
+  String get admUserTitle;
+
+  /// No description provided for @admUserRole.
+  ///
+  /// In en, this message translates to:
+  /// **'Role'**
+  String get admUserRole;
+
+  /// No description provided for @admRoleChanged.
+  ///
+  /// In en, this message translates to:
+  /// **'Role changed'**
+  String get admRoleChanged;
+
+  /// No description provided for @admRoleSelfNote.
+  ///
+  /// In en, this message translates to:
+  /// **'You cannot change your own role or status here.'**
+  String get admRoleSelfNote;
+
+  /// No description provided for @admUserFacts.
+  ///
+  /// In en, this message translates to:
+  /// **'Groups: {owned} (teacher) · {joined} (student) · messages: {threads} · complaints: {complaints}'**
+  String admUserFacts(int owned, int joined, int threads, int complaints);
+
+  /// No description provided for @admAccountTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Account status'**
+  String get admAccountTitle;
+
+  /// No description provided for @admAccountSuspend.
+  ///
+  /// In en, this message translates to:
+  /// **'Suspend account'**
+  String get admAccountSuspend;
+
+  /// No description provided for @admAccountSuspendTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Suspend the account?'**
+  String get admAccountSuspendTitle;
+
+  /// No description provided for @admAccountSuspendBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The user is signed out on all devices and cannot sign in again (email code, Google, Apple). The app shows them the contact address. The action is logged.'**
+  String get admAccountSuspendBody;
+
+  /// No description provided for @admAccountReactivate.
+  ///
+  /// In en, this message translates to:
+  /// **'Reactivate'**
+  String get admAccountReactivate;
+
+  /// No description provided for @admAccountReactivateTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Reactivate the account?'**
+  String get admAccountReactivateTitle;
+
+  /// No description provided for @admAccountReactivateBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The user can sign in again. The action is logged.'**
+  String get admAccountReactivateBody;
+
+  /// No description provided for @admAccountAdminNote.
+  ///
+  /// In en, this message translates to:
+  /// **'An admin account cannot be suspended.'**
+  String get admAccountAdminNote;
+
+  /// No description provided for @admUserCommunity.
+  ///
+  /// In en, this message translates to:
+  /// **'Community status'**
+  String get admUserCommunity;
+
+  /// No description provided for @admCommunityNone.
+  ///
+  /// In en, this message translates to:
+  /// **'Regular member'**
+  String get admCommunityNone;
+
+  /// No description provided for @admUserCommunityFacts.
+  ///
+  /// In en, this message translates to:
+  /// **'Questions: {questions} · answers: {answers} · reporters: {reporters}'**
+  String admUserCommunityFacts(int questions, int answers, int reporters);
+
+  /// No description provided for @admCommunitySuspend.
+  ///
+  /// In en, this message translates to:
+  /// **'Suspend in community'**
+  String get admCommunitySuspend;
+
+  /// No description provided for @admCommunitySuspendTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Suspend in the community?'**
+  String get admCommunitySuspendTitle;
+
+  /// No description provided for @admCommunitySuspendBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The account can no longer post questions or answers and its posts are hidden. The rest of the app keeps working. The action is logged.'**
+  String get admCommunitySuspendBody;
+
+  /// No description provided for @admErrOwner.
+  ///
+  /// In en, this message translates to:
+  /// **'The owner account cannot be suspended.'**
+  String get admErrOwner;
+
+  /// No description provided for @admErrSelf.
+  ///
+  /// In en, this message translates to:
+  /// **'You cannot apply this action to yourself.'**
+  String get admErrSelf;
+
+  /// No description provided for @admErrName.
+  ///
+  /// In en, this message translates to:
+  /// **'Nickname must be 2–40 characters.'**
+  String get admErrName;
+
+  /// No description provided for @admAuditBy.
+  ///
+  /// In en, this message translates to:
+  /// **'By: {actor}'**
+  String admAuditBy(String actor);
+
+  /// No description provided for @admAuditSystem.
+  ///
+  /// In en, this message translates to:
+  /// **'System'**
+  String get admAuditSystem;
+
+  /// No description provided for @adminActionReportDismissed.
+  ///
+  /// In en, this message translates to:
+  /// **'Community report dismissed'**
+  String get adminActionReportDismissed;
+
+  /// No description provided for @adminActionReportResolved.
+  ///
+  /// In en, this message translates to:
+  /// **'Community report resolved'**
+  String get adminActionReportResolved;
+
+  /// No description provided for @adminActionCommunitySuspended.
+  ///
+  /// In en, this message translates to:
+  /// **'Suspended in community'**
+  String get adminActionCommunitySuspended;
+
+  /// No description provided for @adminActionCommunityRestored.
+  ///
+  /// In en, this message translates to:
+  /// **'Restored in community'**
+  String get adminActionCommunityRestored;
+
+  /// No description provided for @adminActionCommunityRevoked.
+  ///
+  /// In en, this message translates to:
+  /// **'Specialist verification revoked'**
+  String get adminActionCommunityRevoked;
+
+  /// No description provided for @adminActionAutoSuspended.
+  ///
+  /// In en, this message translates to:
+  /// **'Automatically suspended after reports'**
+  String get adminActionAutoSuspended;
+
+  /// No description provided for @adminActionPostDeleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Post deleted'**
+  String get adminActionPostDeleted;
+
+  /// No description provided for @adminActionPinned.
+  ///
+  /// In en, this message translates to:
+  /// **'Question pin changed'**
+  String get adminActionPinned;
+
+  /// No description provided for @adminActionAccountDeleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Account deleted'**
+  String get adminActionAccountDeleted;
+
+  /// No description provided for @adminActionMfa.
+  ///
+  /// In en, this message translates to:
+  /// **'2FA enabled'**
+  String get adminActionMfa;
+
+  /// No description provided for @adminActionTeacher.
+  ///
+  /// In en, this message translates to:
+  /// **'Teacher registered'**
+  String get adminActionTeacher;
+
+  /// No description provided for @adminActionRoleChanged.
+  ///
+  /// In en, this message translates to:
+  /// **'Role changed'**
+  String get adminActionRoleChanged;
+
+  /// No description provided for @adminActionAccountSuspended.
+  ///
+  /// In en, this message translates to:
+  /// **'Account suspended'**
+  String get adminActionAccountSuspended;
+
+  /// No description provided for @adminActionAccountReactivated.
+  ///
+  /// In en, this message translates to:
+  /// **'Account reactivated'**
+  String get adminActionAccountReactivated;
+
+  /// No description provided for @adminActionComplaintNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Complaint note added'**
+  String get adminActionComplaintNote;
+
+  /// No description provided for @adminActionComplaintResolved.
+  ///
+  /// In en, this message translates to:
+  /// **'Complaint resolved'**
+  String get adminActionComplaintResolved;
+
+  /// No description provided for @adminActionComplaintReopened.
+  ///
+  /// In en, this message translates to:
+  /// **'Complaint reopened'**
+  String get adminActionComplaintReopened;
+
+  /// No description provided for @adminActionIdentityLinked.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign-in method linked'**
+  String get adminActionIdentityLinked;
+
+  /// No description provided for @complaintFormTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Send a complaint in the app'**
+  String get complaintFormTitle;
+
+  /// No description provided for @complaintFormBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Tell us about objectionable content, a bug or another problem — the LabGuide team will review it (usually within 24 hours).'**
+  String get complaintFormBody;
+
+  /// No description provided for @complaintKindLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Type'**
+  String get complaintKindLabel;
+
+  /// No description provided for @complaintText.
+  ///
+  /// In en, this message translates to:
+  /// **'Text'**
+  String get complaintText;
+
+  /// No description provided for @complaintTextHint.
+  ///
+  /// In en, this message translates to:
+  /// **'What happened? Which screen or post?'**
+  String get complaintTextHint;
+
+  /// No description provided for @complaintTarget.
+  ///
+  /// In en, this message translates to:
+  /// **'Reference: {ref}'**
+  String complaintTarget(String ref);
+
+  /// No description provided for @complaintSend.
+  ///
+  /// In en, this message translates to:
+  /// **'Send complaint'**
+  String get complaintSend;
+
+  /// No description provided for @complaintSent.
+  ///
+  /// In en, this message translates to:
+  /// **'Sent. Thank you — we will review it.'**
+  String get complaintSent;
+
+  /// No description provided for @complaintTooShort.
+  ///
+  /// In en, this message translates to:
+  /// **'Write at least 5 characters.'**
+  String get complaintTooShort;
+
+  /// No description provided for @complaintRateLimited.
+  ///
+  /// In en, this message translates to:
+  /// **'Too many complaints: up to 5 per hour. Try again in {minutes} min.'**
+  String complaintRateLimited(int minutes);
+
+  /// No description provided for @complaintAnonNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Without an account we cannot reply to you. If you need a reply, sign in or send an email.'**
+  String get complaintAnonNote;
+
+  /// No description provided for @complaintPhiNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Do not include patient names or other personal data.'**
+  String get complaintPhiNote;
+
+  /// No description provided for @complaintFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Not sent. Check your connection and try again.'**
+  String get complaintFailed;
+
+  /// No description provided for @authAccountSuspended.
+  ///
+  /// In en, this message translates to:
+  /// **'Your account has been suspended. If you have questions, write to: {email}'**
+  String authAccountSuspended(String email);
+
+  /// No description provided for @admSectionComplaints.
+  ///
+  /// In en, this message translates to:
+  /// **'Complaints'**
+  String get admSectionComplaints;
 }
 
 class _AppLocalizationsDelegate

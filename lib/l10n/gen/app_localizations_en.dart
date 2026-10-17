@@ -8912,4 +8912,483 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get accountDeleteAppleCancelled =>
       'Nothing was deleted: Apple confirmation was cancelled.';
+
+  @override
+  String get admPanelAccess =>
+      'Access: the owner email (ADMIN_EMAILS) and an email code. The server re-checks every request.';
+
+  @override
+  String get admOverview => 'Overview';
+
+  @override
+  String admOverviewSub(int total, int online, int week) {
+    return 'Registered: $total · online: $online · new in 7 days: $week';
+  }
+
+  @override
+  String get admComplaintsRow => 'In-app complaints';
+
+  @override
+  String admComplaintsRowSub(int count) {
+    return 'Open: $count';
+  }
+
+  @override
+  String get admReportsRow => 'Community reports';
+
+  @override
+  String admReportsRowSub(int count) {
+    return 'Unreviewed posts: $count';
+  }
+
+  @override
+  String admEmailNote(String email) {
+    return 'Complaints and questions sent by email arrive at $email — check them in the mailbox (they do not reach the app).';
+  }
+
+  @override
+  String get admUsersSub => 'Search by email or nickname, role, suspension';
+
+  @override
+  String get admAuditSub => 'Every admin action is recorded';
+
+  @override
+  String get admStoreTitle => 'Downloads and sales';
+
+  @override
+  String get admStoreBody =>
+      'The server cannot see store downloads — App Store Connect and Google Play Console show them. The app has no analytics SDK (privacy policy). Numbers in this panel are accounts that confirmed their email.';
+
+  @override
+  String get admSales => 'Sales: 0 (no payments yet)';
+
+  @override
+  String get admAppStoreConnect => 'App Store Connect';
+
+  @override
+  String get admPlayConsole => 'Google Play Console';
+
+  @override
+  String get admStatsAccounts => 'Accounts';
+
+  @override
+  String get admOnlineNow => 'Online now (5 minutes)';
+
+  @override
+  String get admSuspendedAccounts => 'Suspended accounts';
+
+  @override
+  String get admStatsActiveNote =>
+      'Online and active — accounts that made a request to the server. Only the minute and day are stored; no IP or device.';
+
+  @override
+  String get admChartTitle => 'New accounts — last 14 days';
+
+  @override
+  String admChartBar(String date, int count) {
+    return '$date: $count new accounts';
+  }
+
+  @override
+  String admChartTotal(int count) {
+    return 'Total in 14 days: $count';
+  }
+
+  @override
+  String get admStatsObjects => 'Main objects';
+
+  @override
+  String get admStatsGroupsCount => 'Groups';
+
+  @override
+  String get admStatsTeachers => 'Registered teachers';
+
+  @override
+  String get admStatsStudents => 'Students in groups';
+
+  @override
+  String get admStatsAssignments => 'Test sessions';
+
+  @override
+  String get admStatsResults => 'Test results';
+
+  @override
+  String get admStatsQuestions => 'Community questions';
+
+  @override
+  String get admStatsAnswers => 'Community answers';
+
+  @override
+  String get admStatsComplaintsOpen => 'Open complaints';
+
+  @override
+  String get admStatsComplaintsResolved => 'Resolved complaints';
+
+  @override
+  String get admStatsReportsOpen => 'Community: unreviewed reports';
+
+  @override
+  String get admStatsAwaiting => 'Messages: awaiting reply';
+
+  @override
+  String admStatsUpdated(String time) {
+    return 'Updated: $time';
+  }
+
+  @override
+  String get admComplaintsTitle => 'In-app complaints';
+
+  @override
+  String get admApple12Note =>
+      'Handle reports of objectionable content promptly (Apple 1.2 requires timely action; target — 24 hours).';
+
+  @override
+  String get admFilterOpen => 'Open';
+
+  @override
+  String get admFilterResolved => 'Resolved';
+
+  @override
+  String get admAllKinds => 'All types';
+
+  @override
+  String get complaintKindComplaint => 'Complaint';
+
+  @override
+  String get complaintKindInappropriate => 'Inappropriate content';
+
+  @override
+  String get complaintKindBug => 'Bug';
+
+  @override
+  String get complaintKindAd => 'Advertising';
+
+  @override
+  String get complaintKindOther => 'Other';
+
+  @override
+  String get admComplaintsEmpty => 'No complaints in this list';
+
+  @override
+  String get admComplaintAnon => 'Guest (no account)';
+
+  @override
+  String admComplaintFrom(String email) {
+    return 'From: $email';
+  }
+
+  @override
+  String admComplaintTarget(String ref) {
+    return 'Reference: $ref';
+  }
+
+  @override
+  String get admComplaintNote => 'Admin note';
+
+  @override
+  String get admComplaintNoteHint => 'What was done? (admins only)';
+
+  @override
+  String get admComplaintSaveNote => 'Save note';
+
+  @override
+  String get admComplaintResolve => 'Mark resolved';
+
+  @override
+  String get admComplaintReopen => 'Reopen';
+
+  @override
+  String admComplaintResolvedOn(String date) {
+    return 'Resolved: $date';
+  }
+
+  @override
+  String get admSaved => 'Saved';
+
+  @override
+  String get admReportsEmpty => 'No reports in this list';
+
+  @override
+  String get admReportOpen => 'Open';
+
+  @override
+  String get admReportDismissed => 'Dismissed';
+
+  @override
+  String get admReportResolved => 'Resolved';
+
+  @override
+  String get admReportKindQuestion => 'Question';
+
+  @override
+  String get admReportKindAnswer => 'Answer';
+
+  @override
+  String admReportCount(int reports, int reporters) {
+    return '$reports reports · $reporters people';
+  }
+
+  @override
+  String admReportReasons(String reasons) {
+    return 'Reason: $reasons';
+  }
+
+  @override
+  String get admReportDeleted => 'Post deleted';
+
+  @override
+  String get admReportAuthorSuspended => 'Author suspended';
+
+  @override
+  String get admReportOpenPost => 'Open post';
+
+  @override
+  String get admReportDismiss => 'Dismiss';
+
+  @override
+  String get admReportResolve => 'Resolved';
+
+  @override
+  String get admReportSuspend => 'Suspend author';
+
+  @override
+  String get admReportDismissTitle => 'Dismiss the report?';
+
+  @override
+  String get admReportDismissBody =>
+      'The reports are closed and no longer count towards automatic suspension. The action is logged.';
+
+  @override
+  String get admReportResolveTitle => 'Mark as resolved?';
+
+  @override
+  String get admReportResolveBody =>
+      'Action has been taken (for example, the post was deleted). The action is logged.';
+
+  @override
+  String get admReportSuspendTitle => 'Suspend the author?';
+
+  @override
+  String get admReportSuspendBody =>
+      'The author can no longer post in the community and their posts are hidden. The action is logged.';
+
+  @override
+  String get admSearchModeEmail => 'Email';
+
+  @override
+  String get admSearchModeName => 'Nickname';
+
+  @override
+  String get admSearchEmail => 'Full email (exact match)';
+
+  @override
+  String get admSearchName => 'Group nickname (at least 2 characters)';
+
+  @override
+  String get admUsersSearchNote =>
+      'Emails are not stored in plain text: an account is found only by its full email and is shown masked.';
+
+  @override
+  String get admSearch => 'Search';
+
+  @override
+  String get admStatusActive => 'Active';
+
+  @override
+  String get admStatusSuspended => 'Suspended';
+
+  @override
+  String get admUserAdminTag => 'Admin';
+
+  @override
+  String get admUserTitle => 'User';
+
+  @override
+  String get admUserRole => 'Role';
+
+  @override
+  String get admRoleChanged => 'Role changed';
+
+  @override
+  String get admRoleSelfNote =>
+      'You cannot change your own role or status here.';
+
+  @override
+  String admUserFacts(int owned, int joined, int threads, int complaints) {
+    return 'Groups: $owned (teacher) · $joined (student) · messages: $threads · complaints: $complaints';
+  }
+
+  @override
+  String get admAccountTitle => 'Account status';
+
+  @override
+  String get admAccountSuspend => 'Suspend account';
+
+  @override
+  String get admAccountSuspendTitle => 'Suspend the account?';
+
+  @override
+  String get admAccountSuspendBody =>
+      'The user is signed out on all devices and cannot sign in again (email code, Google, Apple). The app shows them the contact address. The action is logged.';
+
+  @override
+  String get admAccountReactivate => 'Reactivate';
+
+  @override
+  String get admAccountReactivateTitle => 'Reactivate the account?';
+
+  @override
+  String get admAccountReactivateBody =>
+      'The user can sign in again. The action is logged.';
+
+  @override
+  String get admAccountAdminNote => 'An admin account cannot be suspended.';
+
+  @override
+  String get admUserCommunity => 'Community status';
+
+  @override
+  String get admCommunityNone => 'Regular member';
+
+  @override
+  String admUserCommunityFacts(int questions, int answers, int reporters) {
+    return 'Questions: $questions · answers: $answers · reporters: $reporters';
+  }
+
+  @override
+  String get admCommunitySuspend => 'Suspend in community';
+
+  @override
+  String get admCommunitySuspendTitle => 'Suspend in the community?';
+
+  @override
+  String get admCommunitySuspendBody =>
+      'The account can no longer post questions or answers and its posts are hidden. The rest of the app keeps working. The action is logged.';
+
+  @override
+  String get admErrOwner => 'The owner account cannot be suspended.';
+
+  @override
+  String get admErrSelf => 'You cannot apply this action to yourself.';
+
+  @override
+  String get admErrName => 'Nickname must be 2–40 characters.';
+
+  @override
+  String admAuditBy(String actor) {
+    return 'By: $actor';
+  }
+
+  @override
+  String get admAuditSystem => 'System';
+
+  @override
+  String get adminActionReportDismissed => 'Community report dismissed';
+
+  @override
+  String get adminActionReportResolved => 'Community report resolved';
+
+  @override
+  String get adminActionCommunitySuspended => 'Suspended in community';
+
+  @override
+  String get adminActionCommunityRestored => 'Restored in community';
+
+  @override
+  String get adminActionCommunityRevoked => 'Specialist verification revoked';
+
+  @override
+  String get adminActionAutoSuspended =>
+      'Automatically suspended after reports';
+
+  @override
+  String get adminActionPostDeleted => 'Post deleted';
+
+  @override
+  String get adminActionPinned => 'Question pin changed';
+
+  @override
+  String get adminActionAccountDeleted => 'Account deleted';
+
+  @override
+  String get adminActionMfa => '2FA enabled';
+
+  @override
+  String get adminActionTeacher => 'Teacher registered';
+
+  @override
+  String get adminActionRoleChanged => 'Role changed';
+
+  @override
+  String get adminActionAccountSuspended => 'Account suspended';
+
+  @override
+  String get adminActionAccountReactivated => 'Account reactivated';
+
+  @override
+  String get adminActionComplaintNote => 'Complaint note added';
+
+  @override
+  String get adminActionComplaintResolved => 'Complaint resolved';
+
+  @override
+  String get adminActionComplaintReopened => 'Complaint reopened';
+
+  @override
+  String get adminActionIdentityLinked => 'Sign-in method linked';
+
+  @override
+  String get complaintFormTitle => 'Send a complaint in the app';
+
+  @override
+  String get complaintFormBody =>
+      'Tell us about objectionable content, a bug or another problem — the LabGuide team will review it (usually within 24 hours).';
+
+  @override
+  String get complaintKindLabel => 'Type';
+
+  @override
+  String get complaintText => 'Text';
+
+  @override
+  String get complaintTextHint => 'What happened? Which screen or post?';
+
+  @override
+  String complaintTarget(String ref) {
+    return 'Reference: $ref';
+  }
+
+  @override
+  String get complaintSend => 'Send complaint';
+
+  @override
+  String get complaintSent => 'Sent. Thank you — we will review it.';
+
+  @override
+  String get complaintTooShort => 'Write at least 5 characters.';
+
+  @override
+  String complaintRateLimited(int minutes) {
+    return 'Too many complaints: up to 5 per hour. Try again in $minutes min.';
+  }
+
+  @override
+  String get complaintAnonNote =>
+      'Without an account we cannot reply to you. If you need a reply, sign in or send an email.';
+
+  @override
+  String get complaintPhiNote =>
+      'Do not include patient names or other personal data.';
+
+  @override
+  String get complaintFailed =>
+      'Not sent. Check your connection and try again.';
+
+  @override
+  String authAccountSuspended(String email) {
+    return 'Your account has been suspended. If you have questions, write to: $email';
+  }
+
+  @override
+  String get admSectionComplaints => 'Complaints';
 }

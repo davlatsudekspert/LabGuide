@@ -609,3 +609,32 @@ async function signNoNonce(s: Server, key: TestKey) {
   });
   return { idToken, nonce: newNonce() };
 }
+
+describe('to‘xtatilgan hisob (admin panel)', () => {
+  it('Google va Apple yo‘li ham rad etadi (403 account_suspended); qayta faollashgach kiradi; Google sessiyasi admin panelni ochmaydi', async () => {
+    const { s, gKey, aKey } = await setup();
+    const owner = uniqueEmail('owner');
+    (s.env as unknown as Record<string, string>).ADMIN_EMAILS = owner;
+    const boss = await s.signIn(owner);
+    const email = uniqueEmail('susp');
+    const first = await login(s, 'google', await token(s, gKey, 'google', { email, sub: 'g-susp' }));
+    expect(first.status).toBe(200);
+    const uid = first.data.user_id as string;
+    expect((await s.call('POST', `/v1/admin/users/${uid}/suspend`, { token: boss.token })).status).toBe(200);
+    expect((await s.call('GET', '/v1/me', { token: first.data.token })).status).toBe(401);
+    const g = await login(s, 'google', await token(s, gKey, 'google', { email, sub: 'g-susp' }));
+    expect(g.status).toBe(403);
+    expect(g.data.error).toBe('account_suspended');
+    const a = await login(s, 'apple', await token(s, aKey, 'apple', { email }));
+    expect(a.status).toBe(403);
+    expect(a.data.error).toBe('account_suspended');
+    expect((await s.call('POST', `/v1/admin/users/${uid}/reactivate`, { token: boss.token })).status).toBe(200);
+    const ok = await login(s, 'google', await token(s, gKey, 'google', { email, sub: 'g-susp' }));
+    expect(ok.status).toBe(200);
+
+    // Egasining o'zi Google bilan kirsa — panel ochilmaydi (faqat email kodi).
+    const og = await login(s, 'google', await token(s, gKey, 'google', { email: owner }));
+    expect(og.status).toBe(200);
+    expect((await s.call('GET', '/v1/admin/stats', { token: og.data.token })).status).toBe(403);
+  });
+});

@@ -8,6 +8,7 @@ import 'package:material_ui/material_ui.dart';
 import '../../app/app_scope.dart';
 import '../../app/widgets/lg_page.dart';
 import '../../app/widgets/links.dart';
+import '../../core/backend/admin_console.dart';
 import '../../core/backend/admin_team.dart';
 import '../../core/backend/backend_models.dart';
 import '../../design/tokens.dart';
@@ -17,15 +18,26 @@ import '../auth/otp_auth.dart' show isValidEmail, normalizeEmail;
 import '../learn/exam_widgets.dart' show confirmDialog;
 import '../partners/partner_admin_screens.dart' show AdminPartnerRequestsRow;
 import '../support/support_screens.dart';
+import 'admin_console_screens.dart';
 
 /// Admin bo'limlariga kirish: server admin hisobi deb tasdiqlagan bo'lishi
 /// va sessiya ikki bosqichli (aal2) bo'lishi kerak. Aks holda — 2FA oynasi
 /// yoki “faqat admin uchun”. Bu faqat ko'rinish: serverdagi har funksiya
 /// vakolatni o'zi qayta tekshiradi.
 class AdminGate extends StatefulWidget {
-  const AdminGate({super.key, required this.child, this.mfaHint});
+  const AdminGate({
+    super.key,
+    required this.child,
+    this.mfaHint,
+    this.panel = false,
+  });
 
   final Widget child;
+
+  /// Egasi admin paneli bo'limi: server `panel_admin` bersa (email kodi +
+  /// ADMIN_EMAILS) TOTP so'ralmaydi — egasi qarori. Aks holda (yoki boshqa
+  /// serverda) — odatdagi admin + 2FA.
+  final bool panel;
 
   /// 2FA oynasi tepasida ko'rsatiladigan qisqa yo'l-yo'riq (ixtiyoriy).
   final String? mfaHint;
@@ -78,6 +90,9 @@ class _AdminGateState extends State<AdminGate> {
       );
     }
     if (a == null) return const LgStateView(kind: StateKind.loading, title: '');
+    if (widget.panel && a.panelAdmin) {
+      return _AdminAccessScope(access: a, child: widget.child);
+    }
     if (!a.adminAccount) {
       return LgStateView(
         kind: StateKind.unavailable,
@@ -337,7 +352,8 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
       children: [
         SignedInGate(
           child: AdminGate(
-            child: _AutoLoad(
+            panel: true,
+            child: AdminAutoLoad(
               onLoad: _load,
               child: Builder(builder: (context) => _dashboard(context, l)),
             ),
@@ -349,6 +365,7 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
 
   Widget _dashboard(BuildContext context, AppLocalizations l) {
     final services = context.services;
+    if (services.adminConsole != null) return _console(context, l);
     final access = AdminGate.accessOf(context);
     final stats = _stats.value;
     final pack = services.content.pack;
@@ -357,7 +374,10 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        _AdminStatusPanel(superAdmin: access?.superAdmin ?? false),
+        _AdminStatusPanel(
+          superAdmin: access?.superAdmin ?? false,
+          aal2: access?.aal2 ?? true,
+        ),
         if (services.community.available) ...[
           LgSectionTitle(l.cmAdminTitle),
           LgRow(
@@ -447,6 +467,151 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
     );
   }
 
+  /// Cloudflare: egasi admin paneli — ko'rsatkichlar, shikoyatlar,
+  /// murojaatlar, foydalanuvchilar, jurnal, do'kon konsollari. Serverda yo'q
+  /// bo'limlar (hamkorlar) “ulanmagan” deb belgilanadi.
+  Widget _console(BuildContext context, AppLocalizations l) {
+    final services = context.services;
+    final access = AdminGate.accessOf(context);
+    final stats = _stats.value;
+    final team = _team.value;
+    final superAdmin = access?.superAdmin ?? access?.panelAdmin ?? false;
+    final complaintsOpen = stats?.complaintsSection?['open'];
+    final reportsOpen = stats?.communitySection?['reports_open'];
+    final awaiting = stats?.support['awaiting_reply'];
+    String? statsError() =>
+        _stats.error == null ? null : backendErrorText(_stats.error!, l);
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        _AdminStatusPanel(superAdmin: superAdmin, aal2: access?.aal2 ?? false),
+        LgSectionTitle(l.admOverview),
+        LgRow(
+          key: const ValueKey('admin-row-stats'),
+          title: l.admOverview,
+          subtitle:
+              statsError() ??
+              (stats == null
+                  ? null
+                  : l.admOverviewSub(
+                      stats.registered,
+                      stats.onlineNow ?? 0,
+                      stats.new7d,
+                    )),
+          icon: Icons.insights_outlined,
+          divider: false,
+          onTap: () => _open('/profile/admin/stats'),
+        ),
+        LgSectionTitle(l.admSectionComplaints),
+        LgRow(
+          key: const ValueKey('admin-row-complaints'),
+          title: l.admComplaintsRow,
+          subtitle: complaintsOpen == null
+              ? statsError()
+              : l.admComplaintsRowSub(complaintsOpen),
+          icon: Icons.report_outlined,
+          trailing: _badge(complaintsOpen),
+          onTap: () => _open('/profile/admin/complaints'),
+        ),
+        LgRow(
+          key: const ValueKey('admin-row-community-reports'),
+          title: l.admReportsRow,
+          subtitle: reportsOpen == null
+              ? statsError()
+              : l.admReportsRowSub(reportsOpen),
+          icon: Icons.flag_outlined,
+          trailing: _badge(reportsOpen),
+          divider: services.community.available,
+          onTap: () => _open('/profile/admin/reports'),
+        ),
+        if (services.community.available) ...[
+          LgRow(
+            key: const ValueKey('admin-row-reports'),
+            title: l.admReportsQueue,
+            subtitle: l.admReportsSub,
+            icon: Icons.groups_outlined,
+            divider: access?.superAdmin ?? false,
+            onTap: () => _open('/profile/admin/community'),
+          ),
+          if (access?.superAdmin ?? false)
+            LgRow(
+              key: const ValueKey('admin-row-launch'),
+              title: l.admLaunchRow,
+              subtitle: l.admLaunchRowSub,
+              icon: Icons.rocket_launch_outlined,
+              divider: false,
+              onTap: () => _open('/profile/admin/community'),
+            ),
+        ],
+        const AdminEmailNote(),
+        LgSectionTitle(l.supportTitle),
+        LgRow(
+          key: const ValueKey('admin-row-inbox'),
+          title: l.adminInbox,
+          subtitle: awaiting == null ? statsError() : l.adminAwaiting(awaiting),
+          icon: Icons.inbox_outlined,
+          trailing: _badge(awaiting),
+          divider: false,
+          onTap: () => _open('/profile/admin/inbox'),
+        ),
+        LgSectionTitle(l.adminUsers),
+        LgRow(
+          key: const ValueKey('admin-row-users'),
+          title: l.adminUsers,
+          subtitle: l.admUsersSub,
+          icon: Icons.people_outline_rounded,
+          onTap: () => _open('/profile/admin/users'),
+        ),
+        LgRow(
+          key: const ValueKey('admin-row-audit'),
+          title: l.adminAudit,
+          subtitle: l.admAuditSub,
+          icon: Icons.history_rounded,
+          divider: false,
+          onTap: () => _open('/profile/admin/audit'),
+        ),
+        LgSectionTitle(l.admReview),
+        LgRow(
+          key: const ValueKey('admin-row-review'),
+          title: l.libReview,
+          subtitle: l.libReviewSub,
+          icon: Icons.rule_rounded,
+          divider: false,
+          onTap: () => _open('/profile/admin/review'),
+        ),
+        if (services.adminTeam != null) ...[
+          LgSectionTitle(l.admTeam),
+          LgRow(
+            key: const ValueKey('admin-row-team'),
+            title: team == null
+                ? l.admTeam
+                : l.admTeamCount(team.admins.length),
+            subtitle: _team.error != null
+                ? backendErrorText(_team.error!, l)
+                : team == null
+                ? null
+                : team.canManage
+                ? l.admTeamSubManage
+                : l.admTeamSubView,
+            icon: Icons.manage_accounts_outlined,
+            divider: false,
+            onTap: () => _open('/profile/admin/admins'),
+          ),
+        ],
+        LgSectionTitle(l.admOther),
+        // Hamkorlar (reklama) bu serverga hali ko'chirilmagan — bosilmaydi.
+        LgRow(
+          key: const ValueKey('admin-row-partners'),
+          title: l.adminPartners,
+          subtitle: l.admNotConnected,
+          icon: Icons.storefront_outlined,
+          divider: false,
+        ),
+        const StoreConsolesPanel(),
+      ],
+    );
+  }
+
   /// Kutilayotganlar soni matni (son hali yo'q — `null`).
   static String? _queueText(int? n, AppLocalizations l) => n == null
       ? null
@@ -504,7 +669,6 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
           ],
         ),
       ),
-      LgNotice(l.adminBilling, kind: NoticeKind.info),
       LgSectionTitle(l.admOther),
       LgRow(
         title: l.adminPartners,
@@ -530,9 +694,12 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
 
 /// Kim ekanligingiz va 2FA holati (panel faqat aal2 dan keyin ochiladi).
 class _AdminStatusPanel extends StatelessWidget {
-  const _AdminStatusPanel({required this.superAdmin});
+  const _AdminStatusPanel({required this.superAdmin, this.aal2 = true});
 
   final bool superAdmin;
+
+  /// `false` — egasi paneli TOTP siz ochilgan (ADMIN_EMAILS + email kodi).
+  final bool aal2;
 
   @override
   Widget build(BuildContext context) {
@@ -558,7 +725,10 @@ class _AdminStatusPanel extends StatelessWidget {
                   style: text.titleSmall,
                 ),
                 const SizedBox(height: 4),
-                Text(l.adm2faOn, style: text.bodySmall),
+                Text(
+                  aal2 ? l.adm2faOn : l.admPanelAccess,
+                  style: text.bodySmall,
+                ),
               ],
             ),
           ),
@@ -569,17 +739,17 @@ class _AdminStatusPanel extends StatelessWidget {
 }
 
 /// Bola birinchi marta chizilganda bir marta yuklaydi (AdminGate o'tgach).
-class _AutoLoad extends StatefulWidget {
-  const _AutoLoad({required this.onLoad, required this.child});
+class AdminAutoLoad extends StatefulWidget {
+  const AdminAutoLoad({super.key, required this.onLoad, required this.child});
 
   final Future<void> Function() onLoad;
   final Widget child;
 
   @override
-  State<_AutoLoad> createState() => _AutoLoadState();
+  State<AdminAutoLoad> createState() => AdminAutoLoadState();
 }
 
-class _AutoLoadState extends State<_AutoLoad> {
+class AdminAutoLoadState extends State<AdminAutoLoad> {
   @override
   void initState() {
     super.initState();
@@ -622,7 +792,8 @@ class _AdminInboxScreenState extends State<AdminInboxScreen> {
       children: [
         SignedInGate(
           child: AdminGate(
-            child: _AutoLoad(
+            panel: true,
+            child: AdminAutoLoad(
               onLoad: _load,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -768,7 +939,8 @@ class _AdminThreadScreenState extends State<AdminThreadScreen> {
       children: [
         SignedInGate(
           child: AdminGate(
-            child: _AutoLoad(
+            panel: true,
+            child: AdminAutoLoad(
               onLoad: () => _load(markRead: true),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -931,6 +1103,10 @@ class _AdminUsersScreenState extends State<AdminUsersScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // Cloudflare: email (HMAC) / taxallus qidiruvi, rol, to'xtatish.
+    if (context.services.adminConsole != null) {
+      return const AdminAccountsScreen();
+    }
     final l = AppLocalizations.of(context);
     final locale = Localizations.localeOf(context).toLanguageTag();
     final date = DateFormat.yMd(locale);
@@ -948,7 +1124,8 @@ class _AdminUsersScreenState extends State<AdminUsersScreen> {
       children: [
         SignedInGate(
           child: AdminGate(
-            child: _AutoLoad(
+            panel: true,
+            child: AdminAutoLoad(
               onLoad: _load,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -1087,6 +1264,25 @@ String auditActionLabel(String action, AppLocalizations l) => switch (action) {
   'partner_paused' => l.adminActionPartnerPaused,
   'partner_draft' => l.adminActionPartnerDraft,
   'partner_request' => l.adminActionPartnerRequest,
+  'report_dismissed' => l.adminActionReportDismissed,
+  'report_resolved' => l.adminActionReportResolved,
+  'community_suspended' => l.adminActionCommunitySuspended,
+  'community_restored' => l.adminActionCommunityRestored,
+  'community_revoked' => l.adminActionCommunityRevoked,
+  'community_auto_suspended' => l.adminActionAutoSuspended,
+  'community_question_deleted' ||
+  'community_answer_deleted' => l.adminActionPostDeleted,
+  'community_pin' || 'community_unpin' => l.adminActionPinned,
+  'account_deleted' => l.adminActionAccountDeleted,
+  'mfa_enrolled' => l.adminActionMfa,
+  'teacher_registered' => l.adminActionTeacher,
+  'role_changed' => l.adminActionRoleChanged,
+  'account_suspended' => l.adminActionAccountSuspended,
+  'account_reactivated' => l.adminActionAccountReactivated,
+  'complaint_note' => l.adminActionComplaintNote,
+  'complaint_resolved' => l.adminActionComplaintResolved,
+  'complaint_reopened' => l.adminActionComplaintReopened,
+  'identity_linked' => l.adminActionIdentityLinked,
   _ => action,
 };
 
@@ -1120,7 +1316,8 @@ class _AdminAuditScreenState extends State<AdminAuditScreen> {
       children: [
         SignedInGate(
           child: AdminGate(
-            child: _AutoLoad(
+            panel: true,
+            child: AdminAutoLoad(
               onLoad: _load,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -1138,7 +1335,11 @@ class _AdminAuditScreenState extends State<AdminAuditScreen> {
                     for (final (i, e) in entries.indexed)
                       LgRow(
                         title: auditActionLabel(e.action, l),
-                        subtitle: formatWhen(e.at, context),
+                        subtitle: [
+                          formatWhen(e.at, context),
+                          if (context.services.adminConsole != null)
+                            l.admAuditBy(e.actorMasked ?? l.admAuditSystem),
+                        ].join('\n'),
                         icon: Icons.history_rounded,
                         divider: i < entries.length - 1,
                       ),
@@ -1273,7 +1474,7 @@ class _AdminTeamScreenState extends State<AdminTeamScreen> {
         else
           SignedInGate(
             child: AdminGate(
-              child: _AutoLoad(
+              child: AdminAutoLoad(
                 onLoad: _load,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,

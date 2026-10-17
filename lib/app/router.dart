@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
 import '../core/entitlements/feature.dart';
+import '../features/admin/admin_console_screens.dart';
 import '../features/admin/admin_screens.dart';
 import '../features/auth/ui/auth_screens.dart';
 import '../features/auth/ui/role_screen.dart';
@@ -190,7 +191,8 @@ GoRouter buildRouter(
           // Aloqa va shikoyat: serversiz, doim ochiq (mailto).
           GoRoute(
             path: 'contact',
-            builder: (context, state) => const ContactScreen(),
+            builder: (context, state) =>
+                ContactScreen(targetRef: state.uri.queryParameters['ref']),
           ),
           GoRoute(
             path: 'support',
@@ -225,6 +227,33 @@ GoRouter buildRouter(
               GoRoute(
                 path: 'users',
                 builder: (context, state) => const AdminUsersScreen(),
+                routes: [
+                  GoRoute(
+                    path: ':id',
+                    builder: (context, state) =>
+                        AdminUserScreen(userId: state.pathParameters['id']!),
+                  ),
+                ],
+              ),
+              // Egasi admin paneli (Cloudflare): ko'rsatkichlar va shikoyatlar.
+              GoRoute(
+                path: 'stats',
+                builder: (context, state) => const AdminStatsScreen(),
+              ),
+              GoRoute(
+                path: 'complaints',
+                builder: (context, state) => const AdminComplaintsScreen(),
+                routes: [
+                  GoRoute(
+                    path: ':id',
+                    builder: (context, state) =>
+                        AdminComplaintScreen(id: state.pathParameters['id']!),
+                  ),
+                ],
+              ),
+              GoRoute(
+                path: 'reports',
+                builder: (context, state) => const AdminReportsScreen(),
               ),
               GoRoute(
                 path: 'audit',

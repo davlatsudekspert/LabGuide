@@ -6,6 +6,7 @@ import 'package:material_ui/material_ui.dart';
 
 import '../../../app/app_scope.dart';
 import '../../../app/widgets/lg_page.dart';
+import '../../../core/contact.dart';
 import '../../../design/tokens.dart';
 import '../../../design/widgets/lg_widgets.dart';
 import '../../../l10n/gen/app_localizations.dart';
@@ -96,6 +97,10 @@ class _EmailScreenState extends State<EmailScreen> {
       case SocialSignInStatus.unavailable:
       case SocialSignInStatus.failed:
         setState(() => _formError = (l) => l.authSocialFailed);
+      case SocialSignInStatus.accountSuspended:
+        setState(
+          () => _formError = (l) => l.authAccountSuspended(Contact.email),
+        );
     }
   }
 
@@ -344,6 +349,8 @@ class _OtpScreenState extends State<OtpScreen> {
         setState(() => _error = (l) => l.authUnavailableTitle);
       case OtpVerifyStatus.failed:
         setState(() => _error = (l) => l.authGenericError);
+      case OtpVerifyStatus.accountSuspended:
+        setState(() => _error = (l) => l.authAccountSuspended(Contact.email));
     }
   }
 

@@ -322,7 +322,7 @@ async function socialLogin(ctx: Ctx, provider: Provider): Promise<Response> {
     await syncAdmin(ctx, userId, email, { grant: false });
   }
 
-  const session = await createSession(ctx, userId);
+  const session = await createSession(ctx, userId, provider);
   return json({
     ...session,
     new_user: created,
