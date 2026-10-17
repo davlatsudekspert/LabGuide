@@ -8055,6 +8055,10 @@ class AppLocalizationsUz extends AppLocalizations {
       'An’anaviy tasnif (MDH mamlakatlari amaliyoti); chegaralar darsliklarda biroz farq qiladi, pH — taxminiy. Bakterial vaginoz uchun xalqaro mezonlar — Amsel va Nugent.';
 
   @override
+  String get cytoDegreeSourceNote =>
+      'Daraja jadvali — an\'anaviy o‘quv sxemasi; uning aniq manbasi mutaxassis tekshiruvini kutmoqda. Quyidagi manbalar bakterial vaginoz mezonlari (taqqoslash uchun), jadvalning o‘zini emas.';
+
+  @override
   String get cytoBethesdaIntro =>
       'Bachadon bo‘yni surtmasi xulosasi Bethesda tizimida shunday yoziladi. Keyingi qadamni shifokor belgilaydi.';
 

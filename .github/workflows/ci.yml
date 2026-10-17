@@ -295,7 +295,10 @@ jobs:
           cache: true
       # Ixtiyoriy: do'kon (upload) kaliti secretlarda bo'lsa — release imzo va
       # Google Play uchun AAB. Bo'lmasa APK debug kalit bilan (faqat sinov).
+      # Reliz kaliti faqat qo'lda ishga tushirilganda (workflow_dispatch):
+      # oddiy push/PR buildlari va ularning artefaktlari debug kalit bilan.
       - name: Android imzo kaliti (ixtiyoriy)
+        if: github.event_name == 'workflow_dispatch'
         env:
           KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
           KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
@@ -326,7 +329,7 @@ jobs:
             --build-number="${{ github.run_number }}" \
             --dart-define=LG_SUPABASE_URL="$LG_SUPABASE_URL" --dart-define=LG_SUPABASE_KEY="$LG_SUPABASE_KEY" --dart-define=LG_API_URL="$LG_API_URL" \
             --dart-define=LG_ALL_FEATURES_OPEN="$LG_ALL_FEATURES_OPEN"
-          if [ "$ANDROID_SIGNED" = true ]; then
+          if [ "${ANDROID_SIGNED:-false}" = true ]; then
             flutter build appbundle --release --build-number="${{ github.run_number }}" \
               --dart-define=LG_SUPABASE_URL="$LG_SUPABASE_URL" --dart-define=LG_SUPABASE_KEY="$LG_SUPABASE_KEY" --dart-define=LG_API_URL="$LG_API_URL" \
               --dart-define=LG_ALL_FEATURES_OPEN="$LG_ALL_FEATURES_OPEN"
@@ -336,13 +339,13 @@ jobs:
           for f in app-*-release.apk; do mv "$f" "LabGuide-$VERSION-${f#app-}"; done
           sha256sum LabGuide-*.apk | tee SHA256SUMS.txt
           {
-            if [ "$ANDROID_SIGNED" = true ]; then
+            if [ "${ANDROID_SIGNED:-false}" = true ]; then
               echo "## Android: release imzoli APK va AAB (Google Play uchun)"
             else
               echo "## Android: sinov APK'lari (debug kalit bilan imzolangan)"
             fi
             ls -la LabGuide-*.apk | awk '{print "- " $9 " — " $5 " bayt"}'
-            if [ "$ANDROID_SIGNED" = true ]; then
+            if [ "${ANDROID_SIGNED:-false}" = true ]; then
               echo "- AAB: \`app-release.aab\` · versionCode **${{ github.run_number }}** (artifact ichida)"
             else
               echo "- AAB yasalmadi: ANDROID_KEYSTORE_BASE64 va boshqa ANDROID_* secretlari yo'q"
@@ -366,7 +369,7 @@ jobs:
         run: |
           set -euo pipefail
           WHY=""
-          [ "$ANDROID_SIGNED" = true ] || WHY="$WHY ANDROID_KEYSTORE_BASE64/ANDROID_KEYSTORE_PASSWORD/ANDROID_KEY_ALIAS/ANDROID_KEY_PASSWORD (release imzo);"
+          [ "${ANDROID_SIGNED:-false}" = true ] || WHY="$WHY ANDROID_KEYSTORE_BASE64/ANDROID_KEYSTORE_PASSWORD/ANDROID_KEY_ALIAS/ANDROID_KEY_PASSWORD (release imzo);"
           [ -n "$PLAY_JSON" ] || WHY="$WHY GOOGLE_PLAY_SERVICE_ACCOUNT_JSON (Play Console API);"
           if [ -n "$WHY" ]; then
             echo "PLAY_READY=false" >> "$GITHUB_ENV"

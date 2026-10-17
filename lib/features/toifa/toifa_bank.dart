@@ -8,13 +8,15 @@ import '../settings/settings_controller.dart';
 /// Bo'lim faqat O'zbekiston foydalanuvchilariga: ilova tili o'zbekcha yoki
 /// qurilma mintaqasi (locale countryCode) — UZ. KDL malaka toifasi
 /// laboratoriya mutaxassisligi uchun — shifokor roliga ko'rsatilmaydi
-/// (egasi qarori, 2026-10-09).
+/// (egasi qarori, 2026-10-09), talabaga ham (talaba toifa topshirmaydi,
+/// egasi, 2026-10-12): kunlik savollar ham toifa bankidan olinmaydi.
 bool toifaAvailable(
   AppLanguage language,
   Iterable<Locale> deviceLocales, {
   AppRole? role,
 }) =>
     role != AppRole.doctor &&
+    role != AppRole.student &&
     (language == AppLanguage.uz ||
         deviceLocales.any((l) => l.countryCode?.toUpperCase() == 'UZ'));
 

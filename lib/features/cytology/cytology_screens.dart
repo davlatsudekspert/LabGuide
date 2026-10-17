@@ -375,6 +375,7 @@ class _CytoDegreeScreenState extends State<CytoDegreeScreen> {
       title: l.cytoDegreeTitle,
       subtitle: l.cytoTitle,
       children: [
+        LgNotice(l.cytoDraftNote),
         Text(l.cytoDegreeIntro, style: text.bodyMedium),
         group(
           l.cytoLacto,
@@ -447,6 +448,7 @@ class _CytoDegreeScreenState extends State<CytoDegreeScreen> {
             ),
           ),
         LgNotice(l.cytoDegreeNote),
+        LgNotice(l.cytoDegreeSourceNote),
         for (final (i, s) in [
           CytoSources.amsel,
           CytoSources.nugent,

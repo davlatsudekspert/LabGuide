@@ -55,13 +55,12 @@ void main() {
       expect(toifaAvailable(AppLanguage.ru, const [Locale('ru')]), false);
     });
 
-    test('shifokor roliga ko‘rsatilmaydi (UZ bo‘lsa ham)', () {
+    test('shifokor va talaba roliga ko‘rsatilmaydi (UZ bo‘lsa ham)', () {
       const uzLoc = [Locale('uz', 'UZ')];
-      expect(
-        toifaAvailable(AppLanguage.uz, uzLoc, role: AppRole.doctor),
-        false,
-      );
-      for (final r in [AppRole.lab, AppRole.student, AppRole.teacher]) {
+      for (final r in [AppRole.doctor, AppRole.student]) {
+        expect(toifaAvailable(AppLanguage.uz, uzLoc, role: r), false);
+      }
+      for (final r in [AppRole.lab, AppRole.teacher]) {
         expect(toifaAvailable(AppLanguage.uz, uzLoc, role: r), true);
       }
     });
@@ -93,6 +92,8 @@ void main() {
         await s.settings.setRole(AppRole.student);
         await goTo(tester, '/learn');
         expect(find.byType(ToifaEntryCard), findsNothing);
+        await goTo(tester, '/learn/toifa');
+        expect(find.byType(ToifaHubScreen), findsNothing);
         // Shifokor: bosh sahifada ham, O'rganishda ham yo'q, manzil yopiq.
         await s.settings.setRole(AppRole.doctor);
         await goTo(tester, '/home');

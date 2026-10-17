@@ -41,8 +41,13 @@ void main() {
 
     test('tozalik darajasi: eng og‘ir belgi hal qiladi', () {
       expect(cytoDegreeOf(CytoLacto.many, CytoLeuko.single, CytoFlora.none), 1);
+      // Leykotsitlar ko'p — laktobatsillalar ko'p bo'lsa ham norma emas.
       expect(
         cytoDegreeOf(CytoLacto.many, CytoLeuko.moderate, CytoFlora.none),
+        3,
+      );
+      expect(
+        cytoDegreeOf(CytoLacto.many, CytoLeuko.single, CytoFlora.mixed),
         2,
       );
       expect(

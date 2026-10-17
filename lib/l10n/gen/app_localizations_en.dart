@@ -8161,6 +8161,10 @@ class AppLocalizationsEn extends AppLocalizations {
       'A traditional scheme (used in CIS countries); textbooks differ slightly, pH is approximate. International criteria for bacterial vaginosis are Amsel and Nugent.';
 
   @override
+  String get cytoDegreeSourceNote =>
+      'The grade table is a traditional teaching scheme; its exact source is awaiting expert review. The sources below are bacterial vaginosis criteria (for comparison), not the table itself.';
+
+  @override
   String get cytoBethesdaIntro =>
       'This is how a cervical smear is reported in the Bethesda system. The clinician decides next steps.';
 

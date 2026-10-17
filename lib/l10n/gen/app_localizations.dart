@@ -14092,6 +14092,12 @@ abstract class AppLocalizations {
   /// **'A traditional scheme (used in CIS countries); textbooks differ slightly, pH is approximate. International criteria for bacterial vaginosis are Amsel and Nugent.'**
   String get cytoDegreeNote;
 
+  /// No description provided for @cytoDegreeSourceNote.
+  ///
+  /// In en, this message translates to:
+  /// **'The grade table is a traditional teaching scheme; its exact source is awaiting expert review. The sources below are bacterial vaginosis criteria (for comparison), not the table itself.'**
+  String get cytoDegreeSourceNote;
+
   /// No description provided for @cytoBethesdaIntro.
   ///
   /// In en, this message translates to:

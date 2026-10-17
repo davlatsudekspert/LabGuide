@@ -800,8 +800,9 @@ int cytoDegreeOf(CytoLacto lacto, CytoLeuko leuko, CytoFlora flora) {
     CytoFlora.pathogenic => 4,
   };
   var d = [a, b, c].reduce((x, y) => x > y ? x : y);
-  // Laktobatsillalar ko'p, boshqa belgilar "o'rtacha"dan oshmasa — II daraja.
-  if (d == 3 && lacto == CytoLacto.many) d = 2;
+  // Laktobatsillalar ko'p, leykotsitlar yakka, flora aralash — II daraja.
+  // Leykotsitlar ko'p bo'lsa (yallig'lanish belgisi) kamida III daraja.
+  if (d == 3 && lacto == CytoLacto.many && leuko == CytoLeuko.single) d = 2;
   return d;
 }
 
