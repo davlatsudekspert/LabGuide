@@ -1,0 +1,54 @@
+{
+ "pack_id": "sample",
+ "sources": [
+  {"id": "src-1", "kind": "web", "title": "Sample ALT page", "publisher": "Sample Publisher", "url": "https://example.org/alt", "source_date": "2023-07-17", "reuse_rights": "verify_before_distribution"},
+  {"id": "src-2", "kind": "book", "title": "Sample Book", "publisher": "Sample Press"}
+ ],
+ "groups": [{"id": "liver", "names": {"uz": "Jigar", "ru": "Печень", "en": "Liver"}}],
+ "analytes": [
+  {
+   "id": "alt", "status": "draft", "group": "liver",
+   "names": {"uz": "ALT", "ru": "АЛТ", "en": "ALT"},
+   "synonyms": ["ALT", "АЛТ"],
+   "specimen": {"uz": "Venoz qon", "ru": "Венозная кровь", "en": "Venous blood"},
+   "units": ["U/L"],
+   "reference_intervals": [],
+   "decision_limits": [{"unit": "U/L", "low": 7, "high": 56}],
+   "claims": [
+    {"section": "purpose", "refs": [{"source_id": "src-1", "locator": "What is it used for?"}],
+     "text": {"uz": "ALT jigar hujayralari shikastlanganda qonga chiqadigan ferment hisoblanadi.",
+              "ru": "АЛТ — фермент, который выходит в кровь при повреждении клеток печени.",
+              "en": "ALT is an enzyme released into the blood when liver cells are damaged."}},
+    {"section": "high_result", "refs": [{"source_id": "src-2", "locator": "Ch. 3"}],
+     "text": {"uz": "Yuqori ALT jigar kasalligini tasdiqlaydi.",
+              "ru": "Высокий уровень АЛТ подтверждает заболевание печени.",
+              "en": "A high ALT confirms liver disease."}}
+   ],
+   "review": {"state": "pending"}
+  },
+  {
+   "id": "ast", "status": "draft", "group": "liver",
+   "names": {"uz": "AST", "ru": "АСТ", "en": "AST"},
+   "claims": [
+    {"section": "purpose", "refs": [],
+     "text": {"uz": "AST jigar va yurak mushaklarida bo‘ladigan ferment.",
+              "ru": "АСТ — фермент печени и сердечной мышцы.",
+              "en": "AST is an enzyme found in liver and heart muscle."}}
+   ]
+  }
+ ],
+ "conditions": [
+  {"id": "cond-1", "names": {"uz": "Sinov holati", "ru": "Тестовое состояние", "en": "Sample condition"},
+   "summary": {"text": {"uz": "Skrining va kuzatuv haqida qisqa matn.", "ru": "Краткий текст о скрининге и наблюдении.", "en": "Short text about screening and follow-up."},
+               "refs": [{"source_id": "src-1", "locator": "Who should be tested?"}]},
+   "synonyms": ["x"]}
+ ],
+ "quiz": [
+  {"id": "q-1", "review_state": "pending", "correct_index": 0,
+   "refs": [{"source_id": "src-1", "locator": "Quiz"}],
+   "prompt": {"uz": "Savol?", "ru": "Вопрос?", "en": "Question?"},
+   "basis": {"uz": "Asos", "ru": "Основание", "en": "Basis"},
+   "options": [{"text": {"uz": "A", "ru": "А", "en": "A"}, "explanation": {"uz": "To‘g‘ri", "ru": "Верно", "en": "Correct"}}]}
+ ],
+ "library": [{"id": "lib-1", "title": "Not to be sent", "review_note": "do not feed into AI"}]
+}

@@ -1,0 +1,18 @@
+# tool/ai/run_task.py uchun: rasmiy Anthropic Python SDK va uning bog'liqliklari, aniq versiyalar bilan.
+# Yangilash: yangi virtual muhitda `pip install anthropic==<versiya>` -> `pip freeze` natijasini shu yerga qo'ying
+# va `python -m unittest discover -s tool/ai/tests` ni ishga tushiring (testlar SDK'siz ham o'tadi).
+anthropic==1.13.0
+annotated-types==0.8.0
+anyio==4.15.1
+docstring_parser==0.18.0
+h11==0.16.0
+httpcore2==2.13.1
+httpx2==2.13.1
+idna==3.20
+jiter==0.17.0
+pydantic==2.14.1
+pydantic_core==2.50.1
+sniffio==1.3.1
+truststore==0.10.5
+typing-inspection==0.4.4
+typing_extensions==4.16.0
