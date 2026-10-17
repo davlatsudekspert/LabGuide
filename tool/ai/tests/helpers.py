@@ -34,7 +34,7 @@ def make_root() -> tuple[tempfile.TemporaryDirectory, Path]:
     for rel in DART_PATHS:
         p = root / rel
         p.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copy(FIXTURES / "sample_content.dart", p)
+        shutil.copy(FIXTURES / "sample_content.dart.txt", p)
     return tmp, root
 
 

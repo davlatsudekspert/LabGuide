@@ -28,7 +28,7 @@ class TokenizerTests(unittest.TestCase):
 class DartExtractorTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.items = extract.extract_dart_text((FIXTURES / "sample_content.dart").read_text(), "cytology")
+        cls.items = extract.extract_dart_text((FIXTURES / "sample_content.dart.txt").read_text(), "cytology")
         cls.by_id = {i["id"]: i for i in cls.items}
 
     def test_short_ui_labels_dropped_long_notes_kept(self):
