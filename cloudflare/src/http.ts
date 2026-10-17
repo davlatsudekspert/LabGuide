@@ -39,7 +39,7 @@ export interface Env {
   APPLE_SIGNIN_TEAM_ID?: string;
   APPLE_SIGNIN_KEY_ID?: string;
   APPLE_SIGNIN_PRIVATE_KEY?: string;
-  /** Standart: APPLE_BUNDLE_ID yoki uz.labguide.app (iOS/macOS ilova). */
+  /** Standart: uz.labguide.app (iOS/macOS ilova). */
   APPLE_SIGNIN_CLIENT_ID?: string;
   /** Ixtiyoriy: Android veb-oqimi uchun Apple Services ID (qo'shimcha `aud`). */
   APPLE_SIGNIN_SERVICE_ID?: string;

@@ -23,7 +23,7 @@ import {
   normalizeEmail,
   syncAdmin,
 } from './auth';
-import { b64urlDecode, signJwt } from './billing';
+import { b64urlDecode, signJwt } from './jwt';
 import type { Ctx } from './context';
 import { safeEqual, sha256Hex } from './crypto';
 import { ApiError, badRequest, type Env, json, readJson } from './http';
@@ -60,7 +60,7 @@ export const googleLoginConfigured = (env: Env) => googleClientIds(env).length >
 export const appleSignInConfigured = (env: Env) =>
   Boolean(env.APPLE_SIGNIN_TEAM_ID && env.APPLE_SIGNIN_KEY_ID && env.APPLE_SIGNIN_PRIVATE_KEY);
 
-const appleClientId = (env: Env) => env.APPLE_SIGNIN_CLIENT_ID || env.APPLE_BUNDLE_ID || DEFAULT_BUNDLE;
+const appleClientId = (env: Env) => env.APPLE_SIGNIN_CLIENT_ID || DEFAULT_BUNDLE;
 
 const appleAudiences = (env: Env): string[] =>
   [appleClientId(env), env.APPLE_SIGNIN_SERVICE_ID].filter((x): x is string => Boolean(x));
@@ -354,7 +354,7 @@ export async function appleCallback(ctx: Ctx): Promise<Response> {
     const v = form.get(k);
     if (v) out.set(k, v);
   }
-  const pkg = ctx.env.GOOGLE_PLAY_PACKAGE || DEFAULT_BUNDLE;
+  const pkg = DEFAULT_BUNDLE;
   return new Response(null, {
     status: 307,
     headers: {
