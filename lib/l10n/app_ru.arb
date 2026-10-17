@@ -2626,5 +2626,7 @@
   "complaintPhiNote": "Не указывайте имя пациента и другие личные данные.",
   "complaintFailed": "Не отправлено. Проверьте интернет и попробуйте снова.",
   "authAccountSuspended": "Ваш аккаунт приостановлен. Если есть вопросы, напишите: {email}",
-  "admSectionComplaints": "Жалобы"
+  "admSectionComplaints": "Жалобы",
+  "bloodMorphTitle": "Морфология крови",
+  "bloodMorphLabCardBody": "Эритроциты, тромбоциты, анемии: настоящие микрофото, помощник, тренировка"
 }

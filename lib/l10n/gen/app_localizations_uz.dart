@@ -9043,4 +9043,11 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get admSectionComplaints => 'Shikoyatlar';
+
+  @override
+  String get bloodMorphTitle => 'Qon morfologiyasi';
+
+  @override
+  String get bloodMorphLabCardBody =>
+      'Eritrotsitlar, trombotsitlar, anemiyalar: haqiqiy mikrofotolar, yordamchi, mashq';
 }

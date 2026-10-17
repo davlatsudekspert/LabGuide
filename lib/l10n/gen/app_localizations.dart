@@ -15819,6 +15819,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Complaints'**
   String get admSectionComplaints;
+
+  /// Lab tab: blood morphology section title (peripheral blood film: red cells, platelets, anaemias)
+  ///
+  /// In en, this message translates to:
+  /// **'Blood morphology'**
+  String get bloodMorphTitle;
+
+  /// Lab tab: blood morphology picture card subtitle
+  ///
+  /// In en, this message translates to:
+  /// **'Red cells, platelets, anaemias: real micrographs, helper, practice'**
+  String get bloodMorphLabCardBody;
 }
 
 class _AppLocalizationsDelegate

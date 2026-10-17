@@ -2626,5 +2626,7 @@
   "complaintPhiNote": "Bemorning ismi yoki boshqa shaxsiy ma’lumotini yozmang.",
   "complaintFailed": "Yuborilmadi. Internetni tekshirib, qayta urinib ko‘ring.",
   "authAccountSuspended": "Hisobingiz to‘xtatilgan. Savol bo‘lsa, yozing: {email}",
-  "admSectionComplaints": "Shikoyatlar"
+  "admSectionComplaints": "Shikoyatlar",
+  "bloodMorphTitle": "Qon morfologiyasi",
+  "bloodMorphLabCardBody": "Eritrotsitlar, trombotsitlar, anemiyalar: haqiqiy mikrofotolar, yordamchi, mashq"
 }

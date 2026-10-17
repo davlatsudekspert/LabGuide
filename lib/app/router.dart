@@ -17,6 +17,7 @@ import '../features/cytology/cytology_screens.dart';
 import '../features/differential/diff_eyes_free_screens.dart';
 import '../features/bloodgroup/bloodgroup_screens.dart';
 import '../features/histology/histology_screens.dart';
+import '../features/bloodmorph/bloodmorph_screens.dart';
 import '../features/spermogram/spermogram_screens.dart';
 import '../features/urinalysis/urinalysis_screens.dart';
 import '../features/daily/daily_screens.dart';
@@ -523,6 +524,55 @@ GoRouter buildRouter(
                       GoRoute(
                         path: 'credits',
                         builder: (context, state) => const HistoCreditsScreen(),
+                      ),
+                    ],
+                  ),
+                  // Qon morfologiyasi: normal eritrotsit, o'zgarishlar
+                  // (mikrofotolar), trombotsitlar, retikulotsitlar, anemiya
+                  // yordamchisi, surtma sifati, mashq, rasm mualliflari.
+                  GoRoute(
+                    path: 'bloodmorph',
+                    builder: (context, state) => const BloodMorphScreen(),
+                    routes: [
+                      GoRoute(
+                        path: 'normal',
+                        builder: (context, state) => const BmNormalScreen(),
+                      ),
+                      GoRoute(
+                        path: 'rbc',
+                        builder: (context, state) => const BmFindingsScreen(),
+                        routes: [
+                          GoRoute(
+                            path: ':id',
+                            builder: (context, state) => BmFindingScreen(
+                              findingId: state.pathParameters['id']!,
+                            ),
+                          ),
+                        ],
+                      ),
+                      GoRoute(
+                        path: 'platelets',
+                        builder: (context, state) => const BmPlateletsScreen(),
+                      ),
+                      GoRoute(
+                        path: 'retic',
+                        builder: (context, state) => const BmReticScreen(),
+                      ),
+                      GoRoute(
+                        path: 'anemia',
+                        builder: (context, state) => const BmAnemiaScreen(),
+                      ),
+                      GoRoute(
+                        path: 'quality',
+                        builder: (context, state) => const BmQualityScreen(),
+                      ),
+                      GoRoute(
+                        path: 'quiz',
+                        builder: (context, state) => const BmQuizScreen(),
+                      ),
+                      GoRoute(
+                        path: 'credits',
+                        builder: (context, state) => const BmCreditsScreen(),
                       ),
                     ],
                   ),

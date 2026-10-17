@@ -87,6 +87,8 @@ flutter:
     - assets/histology/
     - assets/histology/img/
     - assets/urinalysis/
+    - assets/bloodmorph/
+    - assets/bloodmorph/img/
     - assets/differential/
     - assets/differential/sounds/
     - assets/microscopy/
