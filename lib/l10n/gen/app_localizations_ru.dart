@@ -8213,6 +8213,11 @@ class AppLocalizationsRu extends AppLocalizations {
   String get diffAssessAllNormal => 'Все показатели в пределах нормы.';
 
   @override
+  String diffAssessIncomplete(int counted, int target) {
+    return 'Сравнение появится, когда подсчёт будет завершён: сосчитано $counted из $target клеток. Доли по незавершённому подсчёту ненадёжны.';
+  }
+
+  @override
   String get diffFlagHigh => 'Повышено';
 
   @override
@@ -8246,7 +8251,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String diffAssessMaySuggest(String finding) {
-    return 'Может указывать на: $finding';
+    return 'Возможная трактовка: $finding';
   }
 
   @override
@@ -8275,7 +8280,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get diffLimitsSourceNote =>
-      'Значения по умолчанию — 95 % интервал для взрослых (Harrison’s Manual of Medicine, табл. 64-1); палочкоядерные — Любина 1984, табл. 6. У детей и в некоторых этнических группах (например, Duffy-отрицательных) норма другая.';
+      'Значения по умолчанию — 95 % интервал для взрослых (Harrison’s Manual of Medicine, 20-е изд., табл. 64-1); палочкоядерные — Любина 1984, табл. 6. Определения руководства MSD отличаются: эозинофилия > 0,5 ×10⁹/л (здесь верхняя граница по умолчанию 0,7), лимфопения < 1,0 ×10⁹/л (здесь нижняя граница по умолчанию 1,5). У детей и в некоторых этнических группах (например, Duffy-отрицательных) норма другая.';
 
   @override
   String get cytoAdequacyTitle => 'Качество образца';

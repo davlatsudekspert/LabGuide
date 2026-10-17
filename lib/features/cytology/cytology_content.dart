@@ -930,9 +930,17 @@ int cytoDegreeOf(CytoLacto lacto, CytoLeuko leuko, CytoFlora flora) {
     CytoFlora.pathogenic => 4,
   };
   var d = [a, b, c].reduce((x, y) => x > y ? x : y);
-  // Laktobatsillalar ko'p, leykotsitlar yakka, flora aralash — II daraja.
-  // Leykotsitlar ko'p bo'lsa (yallig'lanish belgisi) kamida III daraja.
-  if (d == 3 && lacto == CytoLacto.many && leuko == CytoLeuko.single) d = 2;
+  // II daraja — [cytoDegrees] dagi o'z matni bo'yicha: "laktobatsillalar
+  // kamroq, oz miqdorda boshqa flora, leykotsitlar yakka". Leykotsitlar yakka
+  // bo'lib, laktobatsillalar kamaygan (yoki aralash flora qo'shilgan), lekin
+  // laktobatsillalar yo'q emas va patogen flora yo'q — II. Leykotsitlar ko'p
+  // bo'lsa (yallig'lanish belgisi) kamida III daraja.
+  if (d == 3 &&
+      leuko == CytoLeuko.single &&
+      lacto != CytoLacto.none &&
+      flora != CytoFlora.pathogenic) {
+    d = 2;
+  }
   return d;
 }
 
@@ -1081,16 +1089,28 @@ const bethesdaItems = <BethesdaItem>[
     _T({
       'uz':
           'Bez epiteliysi o‘zgarishi; chuqurroq tekshiruvni shifokor belgilaydi '
-          '(ASCCP 2019: odatda kolposkopiya va endotservikal namuna; atipik '
-          'endometrial hujayralarda yondashuv boshqacha).',
+          '(ASCCP 2019, homilador bo‘lmaganlarda: kolposkopiya va endotservikal '
+          'namuna; 35 yosh va undan kattalarda, shuningdek 35 yoshgacha '
+          'endometriy o‘smasi xavfi oshganlarda — masalan, anormal bachadon '
+          'qon ketishi, surunkali anovulyatsiya belgilari yoki semizlik — '
+          'qo‘shimcha endometrial namuna; atipik endometrial hujayralarda '
+          'avval endometrial va endotservikal namuna).',
       'ru':
           'Изменения железистого эпителия; объём обследования определяет врач '
-          '(ASCCP 2019: обычно кольпоскопия и эндоцервикальный забор; при '
-          'атипичных клетках эндометрия подход иной).',
+          '(ASCCP 2019, у небеременных: кольпоскопия и эндоцервикальный забор; '
+          'в 35 лет и старше, а также до 35 лет при повышенном риске неоплазии '
+          'эндометрия — например, аномальном маточном кровотечении, признаках '
+          'хронической ановуляции или ожирении — дополнительно забор из '
+          'эндометрия; при атипичных клетках эндометрия — сначала '
+          'эндометриальный и эндоцервикальный забор).',
       'en':
           'Glandular abnormality; the clinician decides the work-up (ASCCP '
-          '2019: usually colposcopy with endocervical sampling; a different '
-          'approach for atypical endometrial cells).',
+          '2019, non-pregnant patients: colposcopy with endocervical sampling; '
+          'at age 35 or older, and under 35 at increased risk of endometrial '
+          'neoplasia — e.g. abnormal uterine bleeding, signs of chronic '
+          'anovulation or obesity — endometrial sampling as well; for '
+          'atypical endometrial cells, endometrial and endocervical sampling '
+          'first).',
     }),
     tone: 2,
     refs: [_tbsList, CalcRef(CytoSources.asccp2019, 'Section G.1')],

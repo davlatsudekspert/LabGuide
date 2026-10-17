@@ -54,9 +54,11 @@ class DiffLimit {
   int get hashCode => Object.hash(low, high);
 }
 
-/// Sukut me'yorlari: Harrison's Manual of Medicine, 64-1-jadval (95 %
-/// oraliq, kattalar). Tayoqchalar uchun mutlaq qiymat jadvalda yo'q —
-/// foizdagi yuqori chegara Lyubina 1984, 6-jadvaldan (1–6 %).
+/// Sukut me'yorlari: Harrison's Manual of Medicine, 20-nashr (2020),
+/// 64-1-jadval (95 % oraliq, kattalar). Tayoqchalar uchun mutlaq qiymat
+/// jadvalda yo'q — foizdagi yuqori chegara Lyubina 1984, 6-jadvaldan
+/// (1–6 %). MSD ta'riflari farq qiladi (eozinofiliya > 0,5; limfopeniya
+/// < 1,0 ×10⁹/l) — bu `diffLimitsSourceNote` da aytilgan.
 const diffDefaultLimits = <DiffMeasure, DiffLimit>{
   DiffMeasure.neutrophils: DiffLimit(low: 1.83, high: 7.25),
   DiffMeasure.lymphocytes: DiffLimit(low: 1.5, high: 4.0),
@@ -68,7 +70,7 @@ const diffDefaultLimits = <DiffMeasure, DiffLimit>{
 
 const diffDefaultLimitsRef = CalcRef(
   DiffSources.harrisonManual,
-  'Table 64-1: Normal values for leukocyte concentration in blood',
+  '20th ed., Table 64-1: Normal values for leukocyte concentration in blood',
 );
 
 /// Shoshilinch ko'rsatish kerak bo'lgan chegaralar (MSD Manual):
@@ -82,7 +84,11 @@ const diffNeutropeniaRef = CalcRef(
 );
 const diffEosinophiliaRef = CalcRef(
   DiffSources.msdEosinophilia,
-  'Moderate 1500–5000/mcL; severe > 5000/mcL',
+  'Eosinophilia > 500/mcL; moderate 1500–5000/mcL; severe > 5000/mcL',
+);
+const diffLymphocytopeniaRef = CalcRef(
+  DiffSources.msdLymphocytopenia,
+  'Lymphocytopenia < 1000/mcL (adults)',
 );
 
 enum DiffFlag { low, high }
@@ -134,6 +140,9 @@ class DiffAssessment {
     required this.results,
     required this.needsWbc,
     required this.refer,
+    this.incomplete = false,
+    this.counted = 0,
+    this.target = 0,
   });
 
   /// Tartib: [DiffMeasure.values]. Leykotsitlar soni kiritilmagan bo'lsa
@@ -146,6 +155,25 @@ class DiffAssessment {
   /// Shifokor/gematologga ko'rsatish kerak: "boshqa" hujayra (blast va
   /// h.k.), og'ir neytropeniya yoki yaqqol eozinofiliya.
   final bool refer;
+
+  /// Sanash maqsadga (100/200 hujayra, JSST 2003 §9.10) yetmagan: ulushlar
+  /// hali ishonchsiz — me'yor bilan solishtirilmaydi ([results] bo'sh).
+  /// "Boshqa" hujayra (blast) ulushga bog'liq emas — [refer] tugallanmagan
+  /// sanashda ham ko'rsatiladi.
+  final bool incomplete;
+
+  /// Sanalgan hujayralar va maqsad (tugallanmagan sanash izohi uchun).
+  final int counted;
+  final int target;
+
+  /// "Hammasi me'yorda" faqat to'liq baho, mutlaq sonlar bor va yo'llash
+  /// belgisi yo'q bo'lganda aytiladi (yo'llash bilan birga hech qachon).
+  bool get allNormal =>
+      !incomplete &&
+      !needsWbc &&
+      !refer &&
+      results.isNotEmpty &&
+      flagged.isEmpty;
 
   List<DiffMeasureResult> get flagged => [
     for (final r in results)
@@ -172,16 +200,24 @@ DiffAssessment assessDifferential(
   if (record.total == 0) {
     return const DiffAssessment(results: [], needsWbc: false, refer: false);
   }
+  final other = record.count(DiffCell.other) > 0;
+  if (record.total < record.target) {
+    return DiffAssessment(
+      results: const [],
+      needsWbc: false,
+      refer: other,
+      incomplete: true,
+      counted: record.total,
+      target: record.target,
+    );
+  }
   final hasWbc = record.wbc != null;
   final results = <DiffMeasureResult>[];
   for (final m in DiffMeasure.values) {
     if (!hasWbc && m != DiffMeasure.bandsPercent) continue;
     final limit = limits[m] ?? diffDefaultLimits[m]!;
     final v = _measureValue(record, m);
-    // Sanash aniqligi: 2 kasr (×10⁹/l) yoki 1 kasr (%) — ekrandagi bilan bir.
-    final shown = m == DiffMeasure.bandsPercent
-        ? (v * 10).roundToDouble() / 10
-        : (v * 100).roundToDouble() / 100;
+    final shown = _shown(m, v);
     final flag = shown > limit.high
         ? DiffFlag.high
         : (limit.low != null && shown < limit.low!)
@@ -191,14 +227,34 @@ DiffAssessment assessDifferential(
       DiffMeasureResult(measure: m, value: v, limit: limit, flag: flag),
     );
   }
-  var refer = record.count(DiffCell.other) > 0;
+  var refer = other;
   if (hasWbc) {
-    final n = _measureValue(record, DiffMeasure.neutrophils);
-    final e = _measureValue(record, DiffMeasure.eosinophils);
+    // Yo'llash chegaralari ham ekrandagi (yaxlitlangan) qiymat bo'yicha:
+    // 0,497 ekranda "0,50" — "< 0,5" deb yo'llanmaydi.
+    final n = _shown(
+      DiffMeasure.neutrophils,
+      _measureValue(record, DiffMeasure.neutrophils),
+    );
+    final e = _shown(
+      DiffMeasure.eosinophils,
+      _measureValue(record, DiffMeasure.eosinophils),
+    );
     if (n < diffSevereNeutropenia || e > diffMarkedEosinophilia) refer = true;
   }
-  return DiffAssessment(results: results, needsWbc: !hasWbc, refer: refer);
+  return DiffAssessment(
+    results: results,
+    needsWbc: !hasWbc,
+    refer: refer,
+    counted: record.total,
+    target: record.target,
+  );
 }
+
+/// Ekrandagi aniqlik: 2 kasr (×10⁹/l) yoki 1 kasr (%). Me'yor belgisi ham,
+/// yo'llash chegarasi ham shu qiymat bo'yicha — ko'rinadigan son bilan bir.
+double _shown(DiffMeasure m, double v) => m == DiffMeasure.bandsPercent
+    ? (v * 10).roundToDouble() / 10
+    : (v * 100).roundToDouble() / 100;
 
 String encodeDiffLimits(Map<DiffMeasure, DiffLimit> limits) => jsonEncode({
   for (final e in limits.entries)

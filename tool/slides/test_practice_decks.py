@@ -81,6 +81,60 @@ class PracticeData(unittest.TestCase):
             self.assertIn('safety', labels, p['id'])
         self.assertGreaterEqual(len(repo().practice['books']), 3)
 
+    def test_medical_audit_2026_10_17_unsafe_text_is_gone(self):
+        """docs/AUDIT_2026-10-17_NEW_SECTIONS_MEDICAL.md: xavfli/eskirgan matn qaytmasin (uch tilda)."""
+        bad = {
+            'en': [r'cap is put on the needle', r'needle is detached', r're-used lancets',
+                   r'single-use where possible', r'10–15 seconds', r'\bBlow the blood',
+                   r'earlobe;', r'big toe', r'swab moistened with alcohol on the puncture',
+                   r'within 45 minutes', r'later than 45 minutes', r'180–320',
+                   r'Primary thrombocytosis is above 400', r'from 2 to 72 hours',
+                   r'do not remove contact lenses'],
+            'ru': [r'надевают колпачок, иглу отсоединяют', r'повторно используемые ланцеты',
+                   r'10–15 секунд', r'[Вв]ыдувают', r'в течение 45 минут', r'180–320',
+                   r'через 2–72 часа', r'линзы не снимайте'],
+            'uz': [r'qalpoqchasi kiydiriladi', r'Qayta ishlatilgan lanset', r'10–15 soniya',
+                   r'puflab', r'45 daqiqa ichida', r'180–320', r'2 soatdan 72 soatgacha',
+                   r'linzani olmang'],
+        }
+        for p in pd.protocols(repo()):
+            for n, sl in enumerate(p['slides'], 1):
+                if sl['type'] != 'text':
+                    continue
+                for lg, pats in bad.items():
+                    text = '\n'.join(sl['bullets'][lg])
+                    for pat in pats:
+                        self.assertIsNone(re.search(pat, text), f'{p["id"]}#{n}/{lg}: {pat}')
+
+    def test_medical_audit_2026_10_17_who_rules_present(self):
+        prots = {p['id']: p for p in pd.protocols(repo())}
+
+        def text(pid, lg='en'):
+            return '\n'.join(b for s in prots[pid]['slides'] if s['type'] == 'text' for b in s['bullets'][lg])
+
+        bio = text('laboratoriya-biologik-xavfsizlik-sanepid')
+        self.assertIn('Do not recap or detach the needle', bio)
+        self.assertIn('sharps container', bio)
+        self.assertIn('at least 30 seconds', bio)
+        self.assertIn('as soon as possible', bio)
+        self.assertIn('no later than 72 hours', bio)
+        self.assertIn('28 days', bio)
+        self.assertIn('kamida 30 soniya', text('laboratoriya-biologik-xavfsizlik-sanepid', 'uz'))
+        self.assertIn('не менее 30 секунд', text('laboratoriya-biologik-xavfsizlik-sanepid', 'ru'))
+        cap = text('kapillyar-qon-olish')
+        self.assertIn('single-use lancets only', cap)
+        self.assertIn('clean dry gauze', cap)
+        self.assertIn('medial or lateral surface of the heel', cap)
+        for pid in ('gemoglobin-gemiglobintsianid', 'eritrotsitlarni-sanash-kamera', 'leykotsitlarni-sanash-kamera'):
+            self.assertIn('never by mouth', text(pid), pid)
+        # Har bir WHO 2010 iqtiboslangan slaydda bo'lim/sahifa bor.
+        who_refs = [r for p in pd.protocols(repo()) for s in p['slides'] for r in s.get('refs', [])
+                    if r.get('book') == 'who-phlebotomy-2010']
+        self.assertGreaterEqual(len(who_refs), 5)
+        for r in who_refs:
+            for lg in dc.LANGS:
+                self.assertRegex(r['loc'][lg], r'\d', r)
+
     def test_report_states_there_is_no_day_mapping(self):
         text = '\n'.join(pd.report_section(repo()))
         self.assertIn('kunma-kun mavzu yoki texnikani ko‘rsatmaydi', text)

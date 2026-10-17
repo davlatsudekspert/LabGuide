@@ -54,11 +54,11 @@ Tillar: uz, ru, en. Bitta deck = bitta o‘quv kuni (amaliy + ma’ruza bir xil 
 | d032 | Transsudat va ekssudatlarni tekshirishning klinik diagnostikasi | 29 | analit 2, me’yor qatori 1, kitob 4, Q&A 1+1+2 | — |
 | d033 | Xar xil kasalliklarda orqa miya suyuqligini laborator ko‘rsatkichlari | 22 | analit 1, kitob 4, Q&A 1+1+1 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q |
 | d034 | Attestatsiya 4. Umumklinik tekshiruv usullari modulidan | 48 | analit 2, me’yor qatori 10, Q&A 2+6+3 | — |
-| d035 | Sitologik tekshiruv usullari. Ayollar jinsiy a’zolari ajralmalarini mi | 72 | analit 3, sitologiya 13, me’yor qatori 3, Q&A 4+6+3 | — |
+| d035 | Sitologik tekshiruv usullari. Ayollar jinsiy a’zolari ajralmalarini mi | 73 | analit 3, sitologiya 13, me’yor qatori 3, Q&A 4+6+3 | — |
 | d036 | O‘smalar. O‘sma markerlari haqida umumiy ma’lumotlar. Yomon sifatli o‘ | 59 | analit 5, Q&A 4+6+3 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q |
-| d037 | Bachadon bo‘yinchasi va bachadon yomon sifatli o‘smalarining sitodiagn | 50 | analit 2, sitologiya 7, me’yor qatori 1, Q&A 2+6+3 | — |
+| d037 | Bachadon bo‘yinchasi va bachadon yomon sifatli o‘smalarining sitodiagn | 51 | analit 2, sitologiya 7, me’yor qatori 1, Q&A 2+6+3 | — |
 | d038 | Nafas organlari o‘smalari sitodiagnostikasi | 27 | analit 1, kitob 2, Q&A 2+3+1 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q; curriculum: gap bayrog‘i (havolalar yetarli emas) |
-| d039 | Attestatsiya 5. Sitologik tekshiruv usullari modulidan | 50 | analit 2, sitologiya 7, me’yor qatori 3, Q&A 2+6+3 | — |
+| d039 | Attestatsiya 5. Sitologik tekshiruv usullari modulidan | 51 | analit 2, sitologiya 7, me’yor qatori 3, Q&A 2+6+3 | — |
 | d040 | Klinik biokimyodan umumiy masalalar. Fizik-kimyoviy va kimyoviy usulla | 13 | kitob 4, Q&A 0+0+1 | curriculum: gap bayrog‘i (havolalar yetarli emas) |
 | d041 | Mindray BA-88A bioximik yarim avtomat analizator ishlash prinsiplari.  | 24 | kitob 2, Q&A 0+6+3 | — |
 | d042 | Aminokislotalar klassifikatsiyasi. Oddiy va murakkab oqsillar | 41 | analit 2, me’yor qatori 6, Q&A 4+6+3 | — |
@@ -180,7 +180,7 @@ Qoidalar: matn kitoblardan o‘z so‘zim bilan; har slaydda muallif + qisqa nom
 
 | Texnika (uz) | Guruh | Slayd (uz) | Manbalar |
 |---|---|---|---|
-| Kapillyar qon olish va gematologik tekshiruv uchun namuna tayyorlash | Gematologiya | 9 | 4 |
+| Kapillyar qon olish va gematologik tekshiruv uchun namuna tayyorlash | Gematologiya | 9 | 5 |
 | Gemoglobinni gemiglobintsianid (sianmetgemoglobin) usulida aniqlash | Gematologiya | 10 | 2 |
 | Eritrotsitlarni sanoq kamerasida (Goryaev) sanash | Gematologiya | 10 | 2 |
 | Leykotsitlarni sanoq kamerasida sanash | Gematologiya | 10 | 2 |
@@ -193,7 +193,7 @@ Qoidalar: matn kitoblardan o‘z so‘zim bilan; har slaydda muallif + qisqa nom
 | Najasning umumiy tahlili (koprogramma) | Umumklinik tekshiruvlar · najas va parazitologiya | 16 | 3 |
 | Najasda sodda jonivorlar va gijja tuxumlarini aniqlash | Umumklinik tekshiruvlar · najas va parazitologiya | 17 | 2 |
 | Perianal burmalardan namuna: ostritsa (Enterobius vermicularis) tuxumlari | Umumklinik tekshiruvlar · najas va parazitologiya | 9 | 2 |
-| Balg‘amni yig‘ish, ko‘rish va nativ mikroskopiya | Umumklinik va mikrobiologik tekshiruvlar · balg‘am, surtmalar | 10 | 3 |
+| Balg‘amni yig‘ish, ko‘rish va nativ mikroskopiya | Umumklinik va mikrobiologik tekshiruvlar · balg‘am, surtmalar | 10 | 4 |
 | Balg‘am surtmasini Gram va Sil–Nilsen usullarida bo‘yash | Umumklinik va mikrobiologik tekshiruvlar · balg‘am, surtmalar | 11 | 3 |
 | Urogenital surtmalar mikroskopiyasi: gonoreya va trixomoniaz | Umumklinik va mikrobiologik tekshiruvlar · balg‘am, surtmalar | 12 | 3 |
 | Zardob va plazma tayyorlash (biokimyoviy tekshiruv uchun) | Klinik biokimyo · fotometrik usullar | 10 | 1 |
@@ -203,9 +203,9 @@ Qoidalar: matn kitoblardan o‘z so‘zim bilan; har slaydda muallif + qisqa nom
 | Qon zardobida mochevinani fermentativ aniqlash (ureaza–GLDG) | Klinik biokimyo · fotometrik usullar | 9 | 1 |
 | Umumiy va bog‘langan bilirubinni diazo usulida aniqlash | Klinik biokimyo · fotometrik usullar | 9 | 1 |
 | Gemostaz tizimini tekshirish uchun qon olish va tayyorgarlik | Gematologiya · gemostaz | 8 | 2 |
-| Trombotsitlarni Fonio usulida sanash | Gematologiya · gemostaz | 9 | 2 |
+| Trombotsitlarni Fonio usulida sanash | Gematologiya · gemostaz | 9 | 3 |
 | Laboratoriya ichidagi sifat nazorati: bosqichlar va nazorat materiali | Laboratoriya tartibi · sifat va xavfsizlik | 10 | 1 |
-| Biologik material bilan xavfsiz ishlash va sanitar-epidemiologik tartib | Laboratoriya tartibi · sifat va xavfsizlik | 10 | 2 |
+| Biologik material bilan xavfsiz ishlash va sanitar-epidemiologik tartib | Laboratoriya tartibi · sifat va xavfsizlik | 10 | 3 |
 
 ### Manbalarda bor, lekin olinmagan
 
@@ -220,3 +220,4 @@ Qoidalar: matn kitoblardan o‘z so‘zim bilan; har slaydda muallif + qisqa nom
 - Sil–Nilsen bilan bo‘yalgan surtmani o‘qish (rang, baholash, hisoblash) manbada yo‘q; Gram safranin vaqti Aripova matnida «30–60 daqiqa» deb bosilgan (aniq xato) — ikkalasi ham to‘qib chiqarilmadi, laboratoriya yo‘riqnomasiga havola berildi.
 - Najas tahlili: namuna topshirish muddati manbalarda har xil (Kurbonova 8–12 soat; Aripov va b. 10–12 soat, muzlatgichda) — ikkala qiymat ochiq ko‘rsatilgan; qin tozalik darajalari jadvalidagi III daraja matni Kurbonovada noaniq berilgani uchun izohlab qisqartirilgan.
 - O‘qib bo‘lmagan manbalar: Sultonov .doc va likvor (CSF) hujjati skaner qilingan (matn qatlami yo‘q), “Sil kasalligida laborator tekshiruv usullari” materiali KDL / KDL WORD papkalarida topilmadi — ular asosida hech narsa yozilmadi.
+- Xalqaro manba bilan tasdiqlanmagan eski kitob raqamlari olib tashlandi (tibbiy audit, 2026-10-17): gemostaz uchun qonni 45 daqiqada yetkazish, trombotsitlar me’yori 180–320 × 10⁹/l, “birlamchi trombotsitoz — 400 dan ortiq”, “klinik belgilar 70 dan past / 700–900 da” (Kurbonova, 98–102-b.); igna qalpoqchasini kiydirish, qo‘l yuvish 10–15 soniya, postkontakt profilaktika “2 dan 72 soatgacha” va “ko‘zga sachraganda kontakt linzani olmang” JSST 2010 bo‘yicha almashtirildi.

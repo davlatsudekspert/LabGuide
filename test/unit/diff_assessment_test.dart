@@ -3,6 +3,7 @@ import 'package:labguide/core/storage/kv_store.dart';
 import 'package:labguide/features/differential/diff_assessment.dart';
 import 'package:labguide/features/differential/differential_content.dart';
 import 'package:labguide/features/differential/differential_controller.dart';
+import 'package:labguide/features/differential/differential_sources.dart';
 
 DiffRecord _rec(Map<DiffCell, int> counts, {double? wbc}) => DiffRecord(
   id: 'x',
@@ -63,8 +64,11 @@ void main() {
       isTrue,
     );
     final eo = assessDifferential(
-      _rec({DiffCell.segmented: 60, DiffCell.eosinophil: 20,
-          DiffCell.lymphocyte: 20}, wbc: 10),
+      _rec({
+        DiffCell.segmented: 60,
+        DiffCell.eosinophil: 20,
+        DiffCell.lymphocyte: 20,
+      }, wbc: 10),
     );
     expect(_of(eo, DiffMeasure.eosinophils).findingId, 'eosinophilia');
     expect(eo.refer, isTrue);
@@ -76,6 +80,80 @@ void main() {
       _rec({DiffCell.segmented: 725, DiffCell.lymphocyte: 275}, wbc: 10),
     );
     expect(_of(a, DiffMeasure.neutrophils).flag, isNull);
+  });
+
+  test('tugallanmagan sanash baholanmaydi (audit #3)', () {
+    // Bitta "tayoqcha" bosilgan: 100 % tayoqcha — lekin sanash tugamagan.
+    final one = assessDifferential(_rec({DiffCell.band: 1}, wbc: 6));
+    expect(one.incomplete, isTrue);
+    expect(one.results, isEmpty);
+    expect(one.flagged, isEmpty);
+    expect(one.refer, isFalse);
+    expect(one.allNormal, isFalse);
+    expect((one.counted, one.target), (1, 100));
+    // 99 / 100 — hali ham baho yo'q.
+    final almost = assessDifferential(
+      _rec({DiffCell.segmented: 60, DiffCell.lymphocyte: 39}, wbc: 6),
+    );
+    expect(almost.incomplete, isTrue);
+    expect(almost.results, isEmpty);
+    // Blast ulushga bog'liq emas: tugallanmagan sanashda ham yo'llash.
+    final blast = assessDifferential(
+      _rec({DiffCell.segmented: 4, DiffCell.other: 1}),
+    );
+    expect(blast.incomplete, isTrue);
+    expect(blast.refer, isTrue);
+    // 200 lik maqsad: 100 ta sanalganda hali tugallanmagan.
+    final r200 = DiffRecord(
+      id: 'x',
+      savedAt: DateTime.utc(2026, 10, 17),
+      target: 200,
+      counts: normal,
+      wbc: 6,
+    );
+    expect(assessDifferential(r200).incomplete, isTrue);
+    // Aynan maqsadga yetganda — baho bor.
+    expect(assessDifferential(_rec(normal, wbc: 6)).incomplete, isFalse);
+  });
+
+  test('yo‘llash va “hammasi me’yorda” birga chiqmaydi (audit #4)', () {
+    final a = assessDifferential(_rec({...normal, DiffCell.other: 1}, wbc: 6));
+    expect(a.refer, isTrue);
+    expect(a.flagged, isEmpty);
+    expect(a.allNormal, isFalse);
+    expect(assessDifferential(_rec(normal, wbc: 6)).allNormal, isTrue);
+    // WBC yo'q — "hammasi me'yorda" aytilmaydi.
+    expect(assessDifferential(_rec(normal)).allNormal, isFalse);
+  });
+
+  test('0,5 yo‘llash chegarasi ekrandagi yaxlitlangan qiymat bo‘yicha '
+      '(audit #13)', () {
+    // 497/1000 × 1,0 = 0,497 → ekranda 0,50: "< 0,5" emas.
+    final shownHalf = assessDifferential(
+      _rec({DiffCell.segmented: 497, DiffCell.lymphocyte: 503}, wbc: 1),
+    );
+    expect(_of(shownHalf, DiffMeasure.neutrophils).flag, DiffFlag.low);
+    expect(shownHalf.refer, isFalse);
+    // 494/1000 → 0,49 — og'ir neytropeniya, yo'llash.
+    final below = assessDifferential(
+      _rec({DiffCell.segmented: 494, DiffCell.lymphocyte: 506}, wbc: 1),
+    );
+    expect(below.refer, isTrue);
+    // Eozinofillar: 1,504 → ekranda 1,50 — "> 1,5" emas.
+    final eo = assessDifferential(
+      _rec({DiffCell.segmented: 812, DiffCell.eosinophil: 188}, wbc: 8),
+    );
+    expect(_of(eo, DiffMeasure.eosinophils).value, closeTo(1.504, 1e-9));
+    expect(eo.refer, isFalse);
+  });
+
+  test('Harrison nashri va MSD farqlari ko‘rsatilgan (audit #14)', () {
+    expect(DiffSources.harrisonManual.citation, contains('20th ed.'));
+    expect(DiffSources.harrisonManual.citation, contains('Table 64-1'));
+    expect(diffDefaultLimitsRef.locator, contains('20th ed., Table 64-1'));
+    expect(DiffSources.all, contains(DiffSources.msdLymphocytopenia));
+    expect(diffLymphocytopeniaRef.locator, contains('< 1000/mcL'));
+    expect(diffEosinophiliaRef.locator, contains('> 500/mcL'));
   });
 
   test('blanka me’yorlari saqlanadi, noto‘g‘risi e’tiborsiz', () async {

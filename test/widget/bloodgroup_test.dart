@@ -301,11 +301,58 @@ void main() {
       expect(withCtrl.flags, isEmpty);
     });
 
-    test('kuchsiz anti-A: musbat hisoblanadi, lekin belgilanadi', () {
+    test('kuchsiz anti-A/anti-B — anomaliya, guruh aytilmaydi (audit #5)', () {
+      // Teskari usul mos (AB) bo'lsa ham guruh tasdiqlanmaydi: BSH §4.7.1.
       final r = _read(antiA: _w, antiB: _p, a1: false, b: false);
       expect(r.forward, AboGroup.ab);
-      expect(r.group, AboGroup.ab);
+      expect(r.discrepancy, isFalse);
+      expect(r.anomaly, isTrue);
+      expect(r.group, isNull);
       expect(r.flags, {BgFlag.weakForward});
+      final a = _read(antiA: _w, antiB: _n, a1: false, b: true);
+      expect(a.group, isNull);
+      final b = _read(antiA: _n, antiB: _w, a1: true, b: false);
+      expect(b.group, isNull);
+    });
+
+    test('aralash maydon — anomaliya, guruh aytilmaydi (audit #5)', () {
+      const m = BgReaction.mixed;
+      final a = _read(antiA: m, antiB: _n, a1: false, b: true);
+      expect(a.flags, {BgFlag.mixedField});
+      expect(a.anomaly, isTrue);
+      expect(a.group, isNull);
+      final o = _read(antiA: _n, antiB: m, a1: true, b: false);
+      expect(o.group, isNull);
+      // Anti-D bilan aralash maydon: Rh "aralash maydon", ABO ham anomaliya.
+      final d = _read(antiA: _p, antiB: _n, antiD: m, a1: false, b: true);
+      expect(d.rh, RhResult.mixedField);
+      expect(d.flags, contains(BgFlag.mixedField));
+      expect(d.group, isNull);
+      // Har bir belgi uchun manbali izoh bor.
+      for (final f in BgFlag.values) {
+        expect(bgFlagInfo[f], isNotNull, reason: f.name);
+        expect(bgFlagInfo[f]!.refs, isNotEmpty, reason: f.name);
+      }
+      // Kuchsiz reaksiya izohi endi aralash maydonni o'zi da'vo qilmaydi.
+      expect(
+        bgFlagInfo[BgFlag.weakForward]!.text.of('en'),
+        isNot(contains('mixed field')),
+      );
+    });
+
+    test('16 ta oddiy kombinatsiya o‘zgarmagan: 4 ta mos naqsh', () {
+      var concordant = 0;
+      for (final aa in [_n, _p]) {
+        for (final bb in [_n, _p]) {
+          for (final a1 in [false, true]) {
+            for (final b in [false, true]) {
+              final r = _read(antiA: aa, antiB: bb, a1: a1, b: b);
+              if (r.group != null) concordant++;
+            }
+          }
+        }
+      }
+      expect(concordant, 4);
     });
   });
 
@@ -385,6 +432,27 @@ void main() {
     expect(find.byKey(const ValueKey('bg-res-discrepancy')), findsOne);
     expect(find.byKey(const ValueKey('bg-res-group')), findsNothing);
     expect(find.byKey(const ValueKey('bg-flag-aBothNegative')), findsOne);
+
+    // A guruh naqshi, lekin anti-A kuchsiz → anomaliya, guruh yo'q.
+    await tap('antiA-weak');
+    await tap('antiB-neg');
+    await tap('a1-neg');
+    await tap('b-pos');
+    expect(find.byKey(const ValueKey('bg-res-anomaly')), findsOne);
+    expect(find.byKey(const ValueKey('bg-res-group')), findsNothing);
+    expect(find.byKey(const ValueKey('bg-res-forward')), findsNothing);
+    expect(find.byKey(const ValueKey('bg-flag-weakForward')), findsOne);
+    // Aralash maydon.
+    await tap('antiA-mixed');
+    expect(find.byKey(const ValueKey('bg-res-anomaly')), findsOne);
+    expect(find.byKey(const ValueKey('bg-flag-mixedField')), findsOne);
+    expect(find.byKey(const ValueKey('bg-res-group')), findsNothing);
+    // Aniq musbat — A guruh.
+    await tap('antiA-pos');
+    expect(
+      tester.widget<Text>(find.byKey(const ValueKey('bg-res-group'))).data,
+      aboGroupNames[AboGroup.a]!.of('uz'),
+    );
 
     // Nazorat musbat → yaroqsiz.
     await tap('a1-pos');

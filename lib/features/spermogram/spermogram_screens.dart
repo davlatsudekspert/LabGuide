@@ -364,7 +364,11 @@ class _SpermCounterScreenState extends State<SpermCounterScreen> {
               badge: motilityGrades[g]!.letter,
               label: context.tr(motilityGrades[g]!.name),
               count: _motility.count(g),
-              percent: _motility.isEmpty ? null : '${pct[i]}%',
+              percent: _motility.isEmpty
+                  ? null
+                  : _motility.roundingUnresolved
+                  ? '${context.num(_motility.exactPercents[i], decimals: 1)}%'
+                  : '${pct[i]}%',
               onTap: () => _addGrade(g),
             ),
         ],
@@ -894,8 +898,30 @@ class _SpermAssessScreenState extends State<SpermAssessScreen> {
           below: a.below.contains(p),
         ),
       const SizedBox(height: 8),
-      if (shown.isNotEmpty && a.below.isEmpty)
+      if (shown.isNotEmpty && a.below.isEmpty && !a.azoospermiaSuspected)
         LgNotice(context.tr(SpermL.allAbove), kind: NoticeKind.info),
+      if (a.azoospermiaSuspected) ...[
+        LgSectionTitle(context.tr(SpermL.mayPoint)),
+        LgPanel(
+          key: const ValueKey('sperm-term-azoospermia-suspected'),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(context.tr(SpermL.azooSuspected), style: text.titleSmall),
+              const SizedBox(height: 4),
+              Text(context.tr(SpermL.azooSuspectedWhat), style: text.bodySmall),
+              const SizedBox(height: 4),
+              Text(context.tr(SpermL.azooNote), style: text.bodySmall),
+            ],
+          ),
+        ),
+      ],
+      if (a.vitalityLowOnly)
+        LgNotice(
+          context.tr(SpermL.necroNote),
+          key: const ValueKey('sperm-necro-not-applied'),
+          kind: NoticeKind.info,
+        ),
       if (a.terms.isNotEmpty) ...[
         LgSectionTitle(context.tr(SpermL.mayPoint)),
         for (final t in a.terms)
@@ -912,10 +938,6 @@ class _SpermAssessScreenState extends State<SpermAssessScreen> {
                     context.tr(spermTerms[t]!.definition),
                     style: text.bodySmall,
                   ),
-                  if (t == SpermTerm.azoospermia) ...[
-                    const SizedBox(height: 4),
-                    Text(context.tr(SpermL.azooNote), style: text.bodySmall),
-                  ],
                   if (t == SpermTerm.necrozoospermia) ...[
                     const SizedBox(height: 4),
                     Text(context.tr(SpermL.necroNote), style: text.bodySmall),

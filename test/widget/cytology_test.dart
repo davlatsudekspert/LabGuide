@@ -58,6 +58,14 @@ void main() {
         cytoDegreeOf(CytoLacto.few, CytoLeuko.moderate, CytoFlora.mixed),
         3,
       );
+      // II darajaning o'z matni: "laktobatsillalar kamroq ... leykotsitlar
+      // yakka" — kam laktobatsilla + yakka leykotsit II (audit #19).
+      expect(cytoDegreeOf(CytoLacto.few, CytoLeuko.single, CytoFlora.mixed), 2);
+      expect(cytoDegreeOf(CytoLacto.few, CytoLeuko.single, CytoFlora.none), 2);
+      expect(
+        cytoDegreeOf(CytoLacto.few, CytoLeuko.single, CytoFlora.pathogenic),
+        4,
+      );
       expect(cytoDegreeOf(CytoLacto.none, CytoLeuko.single, CytoFlora.none), 4);
       expect(
         cytoDegreeOf(CytoLacto.many, CytoLeuko.single, CytoFlora.pathogenic),
@@ -81,6 +89,14 @@ void main() {
       final hsil = bethesdaItems.firstWhere((b) => b.code == 'HSIL');
       expect(hsil.meaning.of('en'), contains('clinician decides'));
       expect(hsil.meaning.of('en'), contains('ASCCP 2019'));
+      // AGC: ASCCP 2019 G.1 — endometrial namuna 35+ yoki xavf oshganda
+      // (audit #12).
+      final agc = bethesdaItems.firstWhere((b) => b.code == 'AGC');
+      expect(agc.meaning.of('en'), contains('35 or older'));
+      expect(agc.meaning.of('en'), contains('endometrial sampling'));
+      expect(agc.meaning.of('ru'), contains('35 лет'));
+      expect(agc.meaning.of('uz'), contains('35 yosh'));
+      expect(agc.refs.map((r) => r.locator), contains('Section G.1'));
     });
 
     test('qo‘shimcha sahifalar: 3 tilda matn to‘liq, manbalar bor', () {

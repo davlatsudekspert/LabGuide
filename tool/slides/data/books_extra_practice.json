@@ -12,6 +12,18 @@
   "kdl-saidov-2017": {
    "short": "Saidov, Isajanov, 2017",
    "full": "Saidov S.A., Isajanov M.S. Qonning umumiy klinik va immunoferment tahlillari: referens ko‘rsatkichlari ahamiyati. Toshkent: Toshkent farmatsevtika instituti, 2017"
+  },
+  "who-phlebotomy-2010": {
+   "short": "WHO guidelines on drawing blood, 2010",
+   "full": "World Health Organization. WHO guidelines on drawing blood: best practices in phlebotomy. Geneva: WHO; 2010. ISBN 978-92-4-159922-1. https://iris.who.int/handle/10665/44294"
+  },
+  "msd-platelet-disorders": {
+   "short": "MSD Manual, 2026",
+   "full": "MSD Manual Professional Edition. Overview of Platelet Disorders. Last updated Jun 2026. https://www.msdmanuals.com/professional/hematology-and-oncology/thrombocytopenia-and-platelet-dysfunction/overview-of-platelet-disorders"
+  },
+  "geckler-1977": {
+   "short": "Geckler et al., 1977",
+   "full": "Geckler RW, Gremillion DH, McAllister CK, Ellenbogen C. Microscopic and bacteriological comparison of paired sputa and transtracheal aspirates. J Clin Microbiol. 1977;6(4):396–399. https://pmc.ncbi.nlm.nih.gov/articles/PMC274781/"
   }
  },
  "protocols": [
@@ -39,19 +51,19 @@
      "bullets": {
       "uz": [
        "Kapillyar qon olish eng oddiy usul, lekin ko‘p xatolarga ochiq: asosiy xato — qonning to‘qima suyuqligi bilan suyulib qolishi.",
-       "Kapillyar qon kattalar va bolalarda barmoq uchidan yoki quloq solinchog‘idan, chaqaloqlarda tovon yoki oyoq bosh barmog‘idan olinadi.",
+       "Kattalarda va taxminan 6 oylikdan katta bolalarda qon odatda barmoqdan olinadi; taxminan 6 oylikkacha chaqaloqlarda — tovonning ichki yoki tashqi (medial/lateral) yon yuzasidan; tovonning orqa qismi suyakka yaqin, undan olinmaydi. Quloq solinchog‘i faqat kamdan-kam — ommaviy skrining yoki tadqiqotlarda.",
        "Xalqaro standartlashtirish qo‘mitasi va JSST tavsiyasiga ko‘ra EChT uchun, shuningdek trombotsitlarni sanash uchun venoz qon afzal (trombotsitlar punksiya chetiga yopishib qoladi).",
        "Qon odatda ertalab, och qoringa, jismoniy zo‘riqish va diagnostik muolajalardan oldin olinadi."
       ],
       "ru": [
        "Капиллярная кровь — самый простой способ, но с ним допускают много ошибок: главная — разведение крови тканевой жидкостью.",
-       "У взрослых и детей кровь берут из кончика пальца или мочки уха, у новорождённых — из пятки или большого пальца ноги.",
+       "У взрослых и детей старше примерно 6 месяцев кровь обычно берут из пальца; у младенцев примерно до 6 месяцев — с медиальной или латеральной поверхности пятки; заднюю поверхность пятки (близко к кости) не используют. Мочку уха применяют лишь изредка — при массовом скрининге или в исследованиях.",
        "По рекомендации международного комитета по стандартизации в гематологии и ВОЗ для СОЭ и подсчёта тромбоцитов предпочтительна венозная кровь (тромбоциты прилипают к краям места прокола).",
        "Кровь обычно берут утром, натощак, до физической нагрузки и диагностических процедур."
       ],
       "en": [
        "Capillary sampling is the simplest method but error-prone; the main error is dilution of the blood with tissue fluid.",
-       "In adults and children blood is taken from the fingertip or earlobe; in newborns from the heel or the big toe.",
+       "In adults and in children older than about 6 months blood is usually taken from a finger; in infants up to about 6 months from the medial or lateral surface of the heel; the back of the heel (close to bone) is avoided. The earlobe is used only rarely, in mass screening or research.",
        "The international committee for standardisation in haematology and WHO recommend venous blood for ESR and for platelet counts (platelets stick to the edges of the puncture).",
        "Blood is usually taken in the morning, fasting, before exertion and diagnostic procedures."
       ]
@@ -74,6 +86,14 @@
         "ru": "гл. II, «Гематология»",
         "en": "ch. II, “Haematology”"
        }
+      },
+      {
+       "book": "who-phlebotomy-2010",
+       "loc": {
+        "uz": "7.1.1-bo‘lim, 7.1-jadval, 41-b.; 7.1.2, 42-b.",
+        "ru": "§7.1.1, табл. 7.1, с. 41; §7.1.2, с. 42",
+        "en": "§7.1.1, Table 7.1, p. 41; §7.1.2, p. 42"
+       }
       }
      ]
     },
@@ -87,22 +107,22 @@
      },
      "bullets": {
       "uz": [
-       "Steril o‘tkir lansetlar yoki maxsus ignalar (imkon bo‘lsa, bir marta ishlatiladigan), paxta va 70% li etil spirti.",
+       "Faqat steril, bir martalik lansetlar — har bir sanchish va har bir bemor uchun yangisi; paxta yoki doka va 70% li spirt.",
        "Qon miqdorini standartlash uchun noksimon plastik pipetka; u bo‘lmasa — kichik diametrli bir martalik naycha.",
        "Rezina qo‘lqop va aseptika qoidalari; teshiladigan teri qismi quruq va iliq bo‘lishi kerak.",
-       "Qayta ishlatilgan lanset yoki igna o‘tmaslashgan bo‘lsa, yangisiga almashtiriladi — aks holda qon olish bemor uchun og‘riqli bo‘ladi."
+       "Lanset va barmoq teshuvchi moslamalar qayta ishlatilmaydi: qayta ishlatiladigan barmoq teshuvchi moslamalar gepatit B tarqalishiga sabab bo‘lgan."
       ],
       "ru": [
-       "Стерильные острые ланцеты или специальные иглы (по возможности одноразовые), вата и 70% этиловый спирт.",
+       "Только стерильные одноразовые ланцеты — новый на каждый прокол и каждого пациента; вата или марля и 70% спирт.",
        "Грушевидная пластиковая пипетка для стандартизации объёма крови; при её отсутствии — тонкая одноразовая трубочка.",
        "Резиновые перчатки и соблюдение асептики; кожа в месте прокола должна быть сухой и тёплой.",
-       "Если повторно используемые ланцеты или иглы затупились, их заменяют новыми — иначе взятие крови болезненно для пациента."
+       "Ланцеты и устройства для прокола пальца повторно не используют: многоразовые устройства для прокола пальца становились причиной вспышек гепатита B."
       ],
       "en": [
-       "Sterile sharp lancets or special needles (single-use where possible), cotton wool and 70% ethyl alcohol.",
+       "Sterile single-use lancets only — a new one for every puncture and every patient; cotton wool or gauze and 70% alcohol.",
        "A pear-shaped plastic pipette to standardise the blood volume; if none is available, a small-bore single-use tube.",
        "Rubber gloves and aseptic technique; the skin to be punctured should be dry and warm.",
-       "If re-used lancets or needles have become blunt, replace them with new ones, otherwise sampling is painful for the patient."
+       "Lancets and finger-prick devices are never reused: reusable finger-prick devices have caused outbreaks of hepatitis B."
       ]
      },
      "numbered": false,
@@ -123,6 +143,14 @@
         "ru": "гл. II, «Гематология»",
         "en": "ch. II, “Haematology”"
        }
+      },
+      {
+       "book": "who-phlebotomy-2010",
+       "loc": {
+        "uz": "2.1.4-bo‘lim, 11-b.; 2.2-jadval, 12-b.; 7.2.1, 43-b.",
+        "ru": "§2.1.4, с. 11; табл. 2.2, с. 12; §7.2.1, с. 43",
+        "en": "§2.1.4, p. 11; Table 2.2, p. 12; §7.2.1, p. 43"
+       }
       }
      ]
     },
@@ -141,7 +169,7 @@
        "Steril lanset bilan barmoq uchining yon tomoniga tez va aniq sanchiladi (bu yerda sezgirlik kamroq).",
        "Birinchi qon tomchisi paxta tampon bilan artib olinadi.",
        "Barmoq iloji boricha yumshoq siqilib, keyingi tomchi plastik pipetka bilan yig‘iladi.",
-       "Qon olingach, sanchilgan joyga spirtga ho‘llangan paxta tampon bosiladi."
+       "Qon olingach, qon to‘xtaguncha sanchilgan joyga toza quruq doka yoki paxta tampon bilan mahkam bosiladi."
       ],
       "ru": [
        "Берут третий или четвёртый палец руки; из указательного и большого пальцев кровь не берут.",
@@ -149,7 +177,7 @@
        "Стерильным ланцетом делают быстрый точный прокол сбоку кончика пальца (там чувствительность ниже).",
        "Первую каплю крови стирают ватным тампоном.",
        "Палец по возможности слегка сжимают и собирают следующую каплю пластиковой пипеткой.",
-       "После взятия крови к месту прокола прижимают тампон со спиртом."
+       "После взятия крови к месту прокола плотно прижимают чистую сухую марлевую салфетку или ватный тампон до остановки кровотечения."
       ],
       "en": [
        "Use the third or fourth finger of the hand; do not use the index finger or the thumb.",
@@ -157,7 +185,7 @@
        "Puncture quickly and cleanly at the side of the fingertip with a sterile lancet (sensitivity is lower there).",
        "Wipe away the first drop of blood with a cotton swab.",
        "Squeeze the finger as gently as possible and collect the next drop with a plastic pipette.",
-       "After sampling, press a swab moistened with alcohol on the puncture site."
+       "After sampling, press firmly on the puncture site with a clean dry gauze or cotton-wool pad until the bleeding stops."
       ]
      },
      "numbered": true,
@@ -169,6 +197,14 @@
         "uz": "XII bob, 154–155-b.",
         "ru": "гл. XII, с. 154–155",
         "en": "ch. XII, pp. 154–155"
+       }
+      },
+      {
+       "book": "who-phlebotomy-2010",
+       "loc": {
+        "uz": "7.2.2-bo‘lim, 43-b.; 2.2.3, 15-b.",
+        "ru": "§7.2.2, с. 43; §2.2.3, с. 15",
+        "en": "§7.2.2, p. 43; §2.2.3, p. 15"
        }
       }
      ]
@@ -454,7 +490,7 @@
        "Asbob tarmoqqa ulanadi va reaktiv yo‘riqnomasidagi to‘lqin uzunligiga (kitoblarda 540–546 nm) sozlanganini tekshiring.",
        "Reaktivli probirkalar bemor yo‘llanmasidagi raqamlar bilan belgilanadi.",
        "Kalibrlangan pipetka qon bilan belgigacha to‘ldiriladi; havo pufakchalari yo‘qligi va qon sathi belgida ekani tekshiriladi, pipetka tashqarisi artiladi.",
-       "Qon reaktivli probirkaga puflab tushiriladi, pipetka reaktivda uch marta chayiladi; probirka kamida besh daqiqa tinch qoldiriladi.",
+       "Qon reaktivli probirkaga rezina noksimon yoki avtomatik pipetka yordamida chiqariladi (hech qachon og‘iz bilan emas), pipetka reaktivda uch marta chayiladi; probirka kamida besh daqiqa tinch qoldiriladi.",
        "Toza kyuvetaning yon tomonlariga barmoq tegizmay ushlab, qonsiz reaktiv bilan asbob nolga keltiriladi; kyuveta suvda chayiladi.",
        "Avval nazorat namunasi, so‘ng bemor namunasi o‘lchanadi; har o‘lchovdan oldin kyuveta suv bilan yuvib olinadi."
       ],
@@ -462,7 +498,7 @@
        "Включают прибор и проверяют, что он настроен на длину волны, указанную в инструкции к реактиву (в книгах — 540–546 нм).",
        "Пробирки с реактивом маркируют номерами из направления пациента.",
        "Калиброванную пипетку заполняют кровью до метки, проверяют отсутствие пузырьков и уровень крови на метке, протирают пипетку снаружи.",
-       "Кровь выдувают в пробирку с реактивом, пипетку трижды промывают в реактиве; пробирку оставляют в покое не менее пяти минут.",
+       "Кровь вытесняют в пробирку с реактивом резиновой грушей или автоматической пипеткой (никогда не ртом), пипетку трижды промывают в реактиве; пробирку оставляют в покое не менее пяти минут.",
        "Кювету берут, не касаясь пальцами боковых стенок; прибор обнуляют по реактиву без крови; кювету ополаскивают водой.",
        "Сначала измеряют контрольный образец, затем образец пациента; перед каждым измерением кювету промывают водой."
       ],
@@ -470,7 +506,7 @@
        "Switch the instrument on and check that it is set to the wavelength given in the reagent instructions (540–546 nm in the books).",
        "Label the reagent tubes with the numbers from the patient’s requisition.",
        "Fill the calibrated pipette with blood to the mark, check that there are no bubbles and that the blood is at the mark, and wipe the outside of the pipette.",
-       "Blow the blood into the reagent tube, rinse the pipette three times in the reagent; leave the tube undisturbed for at least five minutes.",
+       "Expel the blood into the reagent tube with a rubber bulb or an automatic pipette (never by mouth), rinse the pipette three times in the reagent; leave the tube undisturbed for at least five minutes.",
        "Hold the clean cuvette without touching its sides with the fingers; zero the instrument on reagent without blood; rinse the cuvette with water.",
        "Measure the control sample first, then the patient sample; rinse the cuvette with water before each measurement."
       ]
@@ -808,7 +844,7 @@
       "uz": [
        "Probirkalarga 4 ml dan suyultiruvchi quyiladi va bemor yo‘llanmasidagi raqam bilan belgilanadi.",
        "Pipetka 20 mkl gacha qon bilan to‘ldiriladi; pufakcha yo‘qligi va qon sathi belgida ekani tekshiriladi, pipetka tashqarisi artiladi.",
-       "Qon probirka tubiga puflab tushiriladi, pipetka suyuqlikning yuqori qatlamida chayiladi; aralashma yaxshilab aralashtiriladi (Aripova: 2 daqiqa).",
+       "Qon probirka tubiga rezina noksimon yoki avtomatik pipetka yordamida chiqariladi (hech qachon og‘iz bilan emas), pipetka suyuqlikning yuqori qatlamida chayiladi; aralashma yaxshilab aralashtiriladi (Aripova: 2 daqiqa).",
        "Qoplagich oyna kameraga kamalakrang Nyuton halqalari paydo bo‘lguncha ishqalab yopishtiriladi.",
        "Pipetkani kichik burchak ostida tutib kamera chetiga tekkizib to‘ldiring — tashib yubormang, pufakchalar bo‘lmasin.",
        "Hujayralar cho‘kishi uchun kamera tinch qoldiriladi (Aripova: 2 daqiqa; QVP: 1 daqiqa), so‘ng gorizontal stolchaga qo‘yiladi."
@@ -816,7 +852,7 @@
       "ru": [
        "В пробирки наливают по 4 мл разбавителя и маркируют номером из направления пациента.",
        "Пипетку заполняют кровью до 20 мкл; проверяют отсутствие пузырьков и уровень крови на метке, протирают пипетку снаружи.",
-       "Кровь выдувают на дно пробирки, пипетку промывают в верхнем слое жидкости; смесь тщательно перемешивают (по Арипова — 2 минуты).",
+       "Кровь вытесняют на дно пробирки резиновой грушей или автоматической пипеткой (никогда не ртом), пипетку промывают в верхнем слое жидкости; смесь тщательно перемешивают (по Арипова — 2 минуты).",
        "Покровное стекло притирают к камере до появления радужных колец Ньютона.",
        "Камеру заполняют, касаясь её края пипеткой под небольшим углом, — не переполнять, без пузырьков.",
        "Камеру оставляют в покое, чтобы клетки осели (Арипова — 2 минуты; QVP — 1 минута), затем ставят на горизонтальный столик."
@@ -824,7 +860,7 @@
       "en": [
        "Pour 4 mL of diluent into each tube and label it with the number from the patient’s requisition.",
        "Fill the pipette with blood to 20 µL; check for bubbles and that the blood is at the mark; wipe the pipette outside.",
-       "Blow the blood to the bottom of the tube, rinse the pipette in the upper layer of the liquid; mix the contents thoroughly (Aripova: 2 minutes).",
+       "Expel the blood to the bottom of the tube with a rubber bulb or an automatic pipette (never by mouth), rinse the pipette in the upper layer of the liquid; mix the contents thoroughly (Aripova: 2 minutes).",
        "Rub the cover glass onto the chamber until rainbow Newton’s rings appear.",
        "Fill by touching the edge of the chamber with the pipette held at a small angle — do not overfill, avoid bubbles.",
        "Leave the chamber to let the cells settle (Aripova: 2 minutes; QVP: 1 minute), then put it on a horizontal stage."
@@ -1167,7 +1203,7 @@
       "uz": [
        "Probirkalarga sirka kislotasi eritmasi quyiladi va yo‘llanma raqami bilan belgilanadi.",
        "20 mkl kapillyar qon pufakchasiz olinadi, pipetka tashqarisi artiladi, qon sathi tekshiriladi.",
-       "Qon kislotali probirkaga puflab tushiriladi (1:20), pipetka eritmada uch marta chayiladi.",
+       "Qon kislotali probirkaga (1:20) rezina noksimon yoki avtomatik pipetka yordamida chiqariladi (hech qachon og‘iz bilan emas), pipetka eritmada uch marta chayiladi.",
        "Aralashma kamida bir daqiqa yaxshilab aralashtiriladi (probirka tiqin bilan yopilib, ag‘darib silkitiladi).",
        "Qoplagich oyna Nyuton halqalari paydo bo‘lguncha ishqalab yopishtiriladi; kamera chetiga pipetka tekkizib to‘ldiriladi, toshirib yubormang.",
        "Hujayralar cho‘kishi uchun kamera tinch qoldiriladi (Aripova: 2 daqiqa; QVP: kamida 1 daqiqa)."
@@ -1175,7 +1211,7 @@
       "ru": [
        "В пробирки наливают раствор уксусной кислоты и маркируют номером из направления.",
        "Берут 20 мкл капиллярной крови без пузырьков, протирают пипетку снаружи, проверяют уровень крови.",
-       "Кровь выдувают в пробирку с кислотой (1:20), пипетку трижды промывают в растворе.",
+       "Кровь вытесняют в пробирку с кислотой (1:20) резиновой грушей или автоматической пипеткой (никогда не ртом), пипетку трижды промывают в растворе.",
        "Смесь тщательно перемешивают не менее минуты (пробирку закрывают пробкой и переворачивают).",
        "Покровное стекло притирают до колец Ньютона; камеру заполняют, коснувшись её края пипеткой, — без переполнения.",
        "Камеру оставляют, чтобы клетки осели (Арипова — 2 минуты; QVP — не менее 1 минуты)."
@@ -1183,7 +1219,7 @@
       "en": [
        "Pour the acetic acid solution into the tubes and label them with the requisition number.",
        "Take 20 µL of capillary blood without bubbles, wipe the pipette outside, check the blood level.",
-       "Blow the blood into the acid tube (1:20) and rinse the pipette three times in the solution.",
+       "Expel the blood into the acid tube (1:20) with a rubber bulb or an automatic pipette (never by mouth) and rinse the pipette three times in the solution.",
        "Mix the contents thoroughly for at least a minute (stopper the tube and invert it).",
        "Rub the cover glass on until Newton’s rings appear; fill the chamber by touching its edge with the pipette — do not overfill.",
        "Leave the chamber for the cells to settle (Aripova: 2 minutes; QVP: at least 1 minute)."
@@ -6773,19 +6809,19 @@
      },
      "bullets": {
       "uz": [
-       "Ko‘p yassi epiteliy (ko‘rish maydonida 25 tadan ortiq) materialning so‘lak bilan aralashganini bildiradi — natijani ehtiyotkorlik bilan talqin qiling yoki namunani qaytaring.",
+       "Ko‘p yassi epiteliy so‘lak aralashganini bildiradi: kichik kattalashtirishda (×100) ko‘rish maydonida 25 tadan ortiq — sifatsiz namuna; eng sifatli namunada yassi hujayralar 10 tadan kam, leykotsitlar 25 tadan ko‘p. Natijani ehtiyotkorlik bilan talqin qiling yoki namunani qaytaring.",
        "Suvsimon, ovqat yoki burun shilliqi aralashgan namuna yaroqsiz.",
        "Dori vositalari (masalan, rifampitsin) balg‘am rangini o‘zgartirishi mumkin.",
        "Tahlil ishonchli bo‘lishi uchun namuna sifatli bo‘lishi shart; Aripova laboratoriyada musbat balg‘amdan tayyorlangan bo‘yalmagan surtmalar to‘plami bo‘lishini va yangi bo‘yoq partiyasi har bir namuna bilan birga nazorat qilinishini tavsiya qiladi."
       ],
       "ru": [
-       "Много плоского эпителия (более 25 в поле зрения) означает, что материал смешан со слюной, — результат трактуйте осторожно или запросите повторную пробу.",
+       "Много плоского эпителия — признак примеси слюны: более 25 клеток в поле зрения малого увеличения (×100) — некачественная проба; в лучших пробах плоских клеток меньше 10, лейкоцитов больше 25. Трактуйте результат осторожно или запросите повторную пробу.",
        "Водянистая проба, с примесью пищи или носовой слизи непригодна.",
        "Лекарства (например, рифампицин) могут менять цвет мокроты.",
        "Для надёжного анализа необходим качественный образец; Арипова советует иметь в лаборатории набор неокрашенных мазков из положительной мокроты и контролировать новую партию красителя вместе с каждым образцом."
       ],
       "en": [
-       "A lot of squamous epithelium (more than 25 per field) means the material is mixed with saliva — interpret the result with care or ask for a repeat specimen.",
+       "Many squamous epithelial cells mean saliva contamination: more than 25 per low-power (×100) field — a poor specimen; the best specimens have fewer than 10 squamous cells and more than 25 leukocytes per field. Interpret with care or ask for a repeat specimen.",
        "A watery specimen, or one mixed with food or nasal mucus, is unsuitable.",
        "Drugs (for example rifampicin) can change the colour of sputum.",
        "A good specimen is essential for a reliable analysis; Aripova advises keeping in the laboratory a set of unstained smears made from positive sputum and checking each new batch of stain alongside every specimen."
@@ -6808,6 +6844,14 @@
         "uz": "XIII bob, 174-b.",
         "ru": "гл. XIII, с. 174",
         "en": "ch. XIII, p. 174"
+       }
+      },
+      {
+       "book": "geckler-1977",
+       "loc": {
+        "uz": "annotatsiya",
+        "ru": "аннотация",
+        "en": "abstract"
        }
       }
      ]
@@ -9924,21 +9968,21 @@
        "Qon bilak (qo‘l) venasidan keng tirqishli nina bilan olinadi.",
        "Qon 3,2% natriy sitratli plastik probirkaga olinadi; shisha probirkaga olish mumkin emas.",
        "Qon va 3,2% natriy sitrat nisbati 9:1 bo‘lishi kerak.",
-       "Olingan qon laboratoriyaga 45 daqiqa ichida yetkazib berilishi kerak."
+       "Qon laboratoriyaga zudlik bilan yetkaziladi; olishdan tahlilgacha ruxsat etilgan vaqt testga bog‘liq — laboratoriya tartibi va reagent yo‘riqnomasiga amal qiling."
       ],
       "ru": [
        "Длительность венозного стаза (жгута) не должна превышать 1 минуты.",
        "Кровь берут из вены предплечья иглой с широким просветом.",
        "Кровь набирают в пластиковую пробирку с 3,2% цитратом натрия; в стеклянную пробирку брать нельзя.",
        "Соотношение крови и 3,2% цитрата натрия должно быть 9:1.",
-       "Взятая кровь должна быть доставлена в лабораторию в течение 45 минут."
+       "Кровь быстро доставляют в лабораторию; допустимое время от взятия до исследования зависит от теста — следуйте порядку лаборатории и инструкции к реагенту."
       ],
       "en": [
        "Venous stasis (tourniquet) must not last longer than 1 minute.",
        "Blood is taken from a vein of the forearm with a wide-bore needle.",
        "Blood is drawn into a plastic tube containing 3.2% sodium citrate; a glass tube must not be used.",
        "The ratio of blood to 3.2% sodium citrate must be 9:1.",
-       "The blood must reach the laboratory within 45 minutes."
+       "Deliver the blood to the laboratory promptly; the time allowed from collection to testing depends on the test — follow the laboratory procedure and the reagent instructions."
       ]
      },
      "numbered": true,
@@ -9966,19 +10010,19 @@
       "uz": [
        "Uzoq turgan jgut yoki qo‘lni ko‘p harakatlantirish plazma omillarini sun’iy oshiradi.",
        "Qon va sitrat nisbatining 9:1 dan farq qilishi natijani buzadi.",
-       "Shisha probirka ishlatish yoki 45 daqiqadan kech yetkazish yaroqsiz material beradi.",
+       "Shisha probirka yoki test uchun ruxsat etilgan vaqtdan kechikish materialni yaroqsiz qiladi.",
        "Kapillyar qon barcha gemostaz tekshiruvlari uchun mos emas — faqat ko‘rsatilgan holatlarda."
       ],
       "ru": [
        "Длительно наложенный жгут или обильные движения руки искусственно повышают плазменные факторы.",
        "Отклонение соотношения крови и цитрата от 9:1 искажает результат.",
-       "Стеклянная пробирка или доставка позже 45 минут дают непригодный материал.",
+       "Стеклянная пробирка или задержка сверх допустимого для теста времени делают материал непригодным.",
        "Капиллярная кровь подходит не для всех исследований гемостаза — только в указанных случаях."
       ],
       "en": [
        "A tourniquet left on for long, or much arm movement, artificially raises the plasma factors.",
        "A blood-to-citrate ratio other than 9:1 distorts the result.",
-       "A glass tube, or delivery later than 45 minutes, gives unusable material.",
+       "A glass tube, or a delay beyond the time allowed for the test, makes the material unusable.",
        "Capillary blood is not suitable for all haemostasis tests — only in the cases stated."
       ]
      },
@@ -10072,19 +10116,19 @@
        "Trombotsitlar yadrosiz, 2–4 mkm diametrli hujayralar; ular gemostaz va qon ivishda ishtirok etadi.",
        "Trombotsitlar sonini sanash usullari: Fonio usuli, Goryaev kamerasida sanash va avtomatik gematologik analizator.",
        "Fonio usulida trombotsitlar qon surtmasida 1000 ta eritrotsitga nisbatan sanaladi, so‘ng 1 litr qondagi eritrotsitlar soniga ko‘paytiriladi.",
-       "Sog‘lom odamda trombotsitlar soni 180–320 × 10⁹/l."
+       "Me’yor oralig‘i manba va laboratoriyaga qarab farq qiladi (MSD qo‘llanmasi: 140–440 × 10⁹/l) — laboratoriya blankasidagi oraliqdan foydalaning."
       ],
       "ru": [
        "Тромбоциты — безъядерные клетки диаметром 2–4 мкм; они участвуют в гемостазе и свёртывании крови.",
        "Способы подсчёта тромбоцитов: метод Фонио, подсчёт в камере Горяева и автоматический гематологический анализатор.",
        "По методу Фонио тромбоциты считают в мазке крови на 1000 эритроцитов, затем умножают на число эритроцитов в 1 литре крови.",
-       "У здорового человека число тромбоцитов 180–320 × 10⁹/л."
+       "Референсный интервал различается по источникам и лабораториям (руководство MSD: 140–440 × 10⁹/л) — используйте интервал бланка лаборатории."
       ],
       "en": [
        "Platelets are non-nucleated cells 2–4 µm in diameter; they take part in haemostasis and blood clotting.",
        "Ways of counting platelets: the Fonio method, counting in a Goryaev chamber and an automatic haematology analyser.",
        "In the Fonio method platelets are counted in a blood smear against 1000 red cells and then multiplied by the red-cell count per litre of blood.",
-       "In a healthy person the platelet count is 180–320 × 10⁹/L."
+       "The reference interval differs between sources and laboratories (MSD Manual: 140–440 × 10⁹/L) — use the interval on the laboratory report form."
       ]
      },
      "numbered": false,
@@ -10096,6 +10140,14 @@
         "uz": "9-bob, 99, 102-b.",
         "ru": "гл. 9, с. 99, 102",
         "en": "ch. 9, pp. 99, 102"
+       }
+      },
+      {
+       "book": "msd-platelet-disorders",
+       "loc": {
+        "uz": "«Overview of Platelet Disorders»",
+        "ru": "«Overview of Platelet Disorders»",
+        "en": "“Overview of Platelet Disorders”"
        }
       }
      ]
@@ -10156,22 +10208,22 @@
       "uz": [
        "Trombotsitlar (× 10⁹/l) = eritrotsitlar (× 10¹²/l) × 1000 ta eritrotsitga to‘g‘ri keladigan trombotsitlar soni.",
        "Fonio usuli bo‘yicha me’yor: 1000 ta eritrotsitga nisbatan 45–70 ‰.",
-       "Absolyut trombotsitopeniya — trombotsitlar soni 150 × 10⁹/l dan kam; klinik namoyon bo‘lishi 70 × 10⁹/l dan kamayganda kuzatiladi.",
-       "Birlamchi trombotsitoz — 400 × 10⁹/l dan ortiq; xavfli klinik belgilar 700–900 × 10⁹/l darajasida paydo bo‘ladi.",
+       "Trombotsitopeniya — trombotsitlar sonining me’yor oralig‘idan kamayishi, trombotsitoz — undan ortishi.",
+       "Trombotsitoz reaktiv (ikkilamchi — masalan, yallig‘lanish, qon yo‘qotishda) yoki birlamchi (suyak ko‘migi kasalligi) bo‘lishi mumkin; faqat trombotsitlar soniga qarab ularni ajratib bo‘lmaydi.",
        "Sabablari ko‘p (qon kasalliklari, qon ketishi, yallig‘lanish, dori vositalari va boshqalar) — talqin klinik ma’lumot bilan birga qilinadi."
       ],
       "ru": [
        "Тромбоциты (× 10⁹/л) = эритроциты (× 10¹²/л) × число тромбоцитов на 1000 эритроцитов.",
        "Норма по методу Фонио: 45–70 ‰ на 1000 эритроцитов.",
-       "Абсолютная тромбоцитопения — число тромбоцитов менее 150 × 10⁹/л; клинические проявления появляются при снижении ниже 70 × 10⁹/л.",
-       "Первичный тромбоцитоз — более 400 × 10⁹/л; опасные клинические признаки возникают на уровне 700–900 × 10⁹/л.",
+       "Тромбоцитопения — снижение, тромбоцитоз — повышение числа тромбоцитов относительно референсного интервала.",
+       "Тромбоцитоз бывает реактивным (вторичным — например, при воспалении, кровопотере) или первичным (заболевание костного мозга); только по числу тромбоцитов их не различить.",
        "Причин много (болезни крови, кровопотеря, воспаление, лекарства и др.) — трактовка проводится вместе с клиническими данными."
       ],
       "en": [
        "Platelets (× 10⁹/L) = red cells (× 10¹²/L) × the number of platelets per 1000 red cells.",
        "Normal by the Fonio method: 45–70 ‰ against 1000 red cells.",
-       "Absolute thrombocytopenia is a platelet count below 150 × 10⁹/L; clinical signs appear when it falls below 70 × 10⁹/L.",
-       "Primary thrombocytosis is above 400 × 10⁹/L; dangerous clinical signs arise at 700–900 × 10⁹/L.",
+       "Thrombocytopenia is a fall, and thrombocytosis a rise, of the platelet count outside the reference interval.",
+       "Thrombocytosis may be reactive (secondary — e.g. in inflammation or blood loss) or primary (a bone-marrow disease); the platelet count alone does not tell them apart.",
        "There are many causes (blood diseases, blood loss, inflammation, drugs and others) — interpret together with the clinical data."
       ]
      },
@@ -10184,6 +10236,14 @@
         "uz": "9-bob, 100–102-b.",
         "ru": "гл. 9, с. 100–102",
         "en": "ch. 9, pp. 100–102"
+       }
+      },
+      {
+       "book": "msd-platelet-disorders",
+       "loc": {
+        "uz": "«Overview of Platelet Disorders»",
+        "ru": "«Overview of Platelet Disorders»",
+        "en": "“Overview of Platelet Disorders”"
        }
       }
      ]
@@ -10862,21 +10922,21 @@
      "bullets": {
       "uz": [
        "Bemor va biologik material bilan barcha muolajalar rezina qo‘lqopda bajariladi; namunalarni qayta ishlashda xalat, plastik fartuk, himoya ko‘zoynagi va niqob ham ishlatiladi.",
-       "Qo‘llar oqar suv ostida 10–15 soniya sovunlab yuviladi va shaxsiy sochiq bilan quritiladi, yoki 3–5 ml spirtli eritma bilan artiladi.",
+       "Qo‘llar oqar suv ostida kamida 30 soniya, bilak va barmoqlar orasi bilan birga sovunlab yuviladi va bir martalik sochiq bilan quritiladi yoki spirtli antiseptik bilan ishlov beriladi.",
        "Biologik material va kimyoviy reagentlar bilan ishlagandan keyin qo‘llarni diqqat bilan yuvish shart; qo‘lda kesilgan joy bo‘lsa, bog‘lam qo‘yiladi.",
        "Ish vaqtida zargarlik buyumlari (uzuklar) taqish, laboratoriya xonalarida ovqatlanish va bo‘yanish taqiqlanadi.",
        "Kimyoviy moddalar va namunalar saqlanadigan muzlatgichlarda oziq-ovqat saqlash qat’iyan taqiqlanadi."
       ],
       "ru": [
        "Все манипуляции с пациентом и биологическим материалом выполняют в резиновых перчатках; при обработке образцов используют также халат, пластиковый фартук, защитные очки и маску.",
-       "Руки моют с мылом под проточной водой 10–15 секунд и вытирают личным полотенцем либо протирают 3–5 мл спиртового раствора.",
+       "Руки моют с мылом под проточной водой не менее 30 секунд, включая запястья и межпальцевые промежутки, и вытирают одноразовым полотенцем либо обрабатывают спиртовым антисептиком.",
        "После работы с биологическим материалом и химическими реактивами руки обязательно тщательно моют; при порезах на руках накладывают повязку.",
        "Во время работы нельзя носить украшения (кольца); в лабораторных помещениях запрещено есть и краситься.",
        "В холодильниках для химикатов и образцов категорически запрещено хранить продукты питания."
       ],
       "en": [
        "All procedures on patients and biological material are done in rubber gloves; when processing specimens a gown, plastic apron, protective goggles and a mask are also used.",
-       "Hands are washed with soap under running water for 10–15 seconds and dried with a personal towel, or rubbed with 3–5 mL of alcohol solution.",
+       "Hands are washed with soap under running water for at least 30 seconds, including the wrists and the spaces between the fingers, and dried with a single-use towel, or treated with an alcohol hand rub.",
        "After work with biological material and chemical reagents the hands must be washed thoroughly; cuts on the hands are covered with a dressing.",
        "Jewellery (rings) must not be worn at work; eating and applying make-up are forbidden in laboratory rooms.",
        "Storing food in refrigerators for chemicals and specimens is strictly forbidden."
@@ -10899,6 +10959,14 @@
         "uz": "Ilova 1, «Sanitar-epidemiologik tartib»",
         "ru": "Приложение 1, «Санитарно-эпидемиологический режим»",
         "en": "Annex 1, “Sanitary-epidemiological regime”"
+       }
+      },
+      {
+       "book": "who-phlebotomy-2010",
+       "loc": {
+        "uz": "2.2-jadval, 12-b.",
+        "ru": "табл. 2.2, с. 12",
+        "en": "Table 2.2, p. 12"
        }
       }
      ]
@@ -10966,21 +11034,21 @@
      "bullets": {
       "uz": [
        "Pipetkaga materialni og‘iz bilan so‘rmang — rezina nok ishlating; qirrasi singan shisha idish va probirkalarni ishlatmang, utilizatsiya qiling.",
-       "Qon olishda ignaning qalpoqchasi kiydiriladi, igna shpritsdan ajratilib maxsus idishga solinadi.",
+       "Ignaga qalpoqcha kiydirilmaydi va igna qo‘l bilan ajratilmaydi: igna va shprits bir butun holda darhol qo‘l yetadigan joydagi teshilmaydigan o‘tkir chiqindilar idishiga tashlanadi; qalpoqcha kiydirish muqarrar bo‘lsa — faqat bir qo‘l bilan «cho‘mich» usulida.",
        "Barmoqdan qon faqat steril material va bir martalik skarifikatorlar bilan olinadi.",
        "Ish joyi tartibli bo‘lishi, stolda keraksiz buyumlar bo‘lmasligi, dezinfeksiya konteynerlari tahlil joyiga yaqin turishi kerak; elektr asboblar yerlanadi.",
        "Yozuvsiz reagentlarni saqlash, noma’lum moddalarni tatib yoki hidlab ko‘rish, zaharli, tez yonuvchi va portlovchi moddalarni ish stollarida saqlash taqiqlanadi."
       ],
       "ru": [
        "Не набирайте материал в пипетку ртом — используйте резиновую грушу; не пользуйтесь стеклянной посудой и пробирками с отбитыми краями, утилизируйте их.",
-       "При взятии крови на иглу надевают колпачок, иглу отсоединяют от шприца и помещают в специальный контейнер.",
+       "Колпачок на иглу не надевают и иглу руками не отсоединяют: иглу со шприцем сразу сбрасывают единым блоком в непрокалываемый контейнер для острых отходов в пределах досягаемости; если надеть колпачок неизбежно — только одной рукой (метод «зачерпывания»).",
        "Капиллярную кровь из пальца берут только стерильными материалами и одноразовыми скарификаторами.",
        "Рабочее место должно быть в порядке, без лишних предметов на столе, дезинфекционные контейнеры — рядом с местом анализа; электрические приборы заземляют.",
        "Запрещается хранить реактивы без надписей, пробовать на вкус и нюхать неизвестные вещества, держать на рабочих столах ядовитые, легковоспламеняющиеся и взрывоопасные вещества."
       ],
       "en": [
        "Never pipette material by mouth — use a rubber bulb; do not use glassware or tubes with chipped edges, discard them.",
-       "When blood is drawn the cap is put on the needle, the needle is detached from the syringe and put into a special container.",
+       "Do not recap or detach the needle by hand: discard the needle and syringe as one unit at once into a puncture-resistant sharps container within arm’s reach; if recapping is unavoidable, use only the one-hand scoop technique.",
        "Capillary blood from the finger is taken only with sterile materials and single-use scarifiers.",
        "The workplace must be tidy, with no unnecessary objects on the desk and the disinfection containers close to the place of analysis; electrical instruments are earthed.",
        "It is forbidden to keep unlabelled reagents, to taste or smell unknown substances, or to keep poisonous, highly flammable and explosive substances on work benches."
@@ -11011,6 +11079,14 @@
         "uz": "Ilova 1, «Laboratoriyada ishlashning texnika xavfsizligi qoidalari»",
         "ru": "Приложение 1, «Правила техники безопасности при работе в лаборатории»",
         "en": "Annex 1, “Laboratory safety rules”"
+       }
+      },
+      {
+       "book": "who-phlebotomy-2010",
+       "loc": {
+        "uz": "1.1-bo‘lim, 3-b.; 2.2-jadval, 12-b.",
+        "ru": "§1.1, с. 3; табл. 2.2, с. 12",
+        "en": "§1.1, p. 3; Table 2.2, p. 12"
        }
       }
      ]
@@ -11071,26 +11147,26 @@
       "uz": [
        "Igna yoki boshqa o‘tkir asbob bilan jarohatlansa: zararlangan joyni darhol oqar suvda sovunlab yuving; jarohatdan qon erkin oqib turishi kerak. Oqar suv bo‘lmasa, dezinfeksiyalovchi gel yoki eritma bilan ishlov bering.",
        "Qon yoki boshqa suyuqlik teriga sachrasa: kontakt joyini darhol oqar suvda sovunlab yuving.",
-       "Ko‘zga sachrasa: darhol oqar suv yoki fiziologik eritma bilan yuving, boshni orqaga tashlab; kontakt linzani olmang (himoya to‘sig‘i).",
+       "Ko‘zga sachrasa: darhol ko‘p miqdordagi oqar suv yoki fiziologik eritma bilan kamida 10 daqiqa yuving.",
        "Og‘izga tushsa: suyuqlikni chiqarib tashlang va og‘izni ko‘p marta suv yoki fiziologik eritma bilan chaying.",
        "Taqiqlanadi: kuchli ta’sir qiluvchi moddalar (spirt, yod) qo‘llash, jarohatni siqish va ishqalash, jarohatdan qonni so‘rish; ko‘z va og‘izni sovun yoki dezinfeksiyalovchi eritmalar bilan yuvish; teriga sachraganda bog‘lam qo‘yish.",
-       "Zudlik bilan rahbariyatga va shifokorga xabar bering: postkontakt profilaktikani shifokor tayinlaydi (Kurbonova: kontaktdan so‘ng 2 soatdan 72 soatgacha boshlanadi, davomiyligi 4 hafta)."
+       "Zudlik bilan rahbariyatga va shifokorga xabar bering: postkontakt profilaktikani shifokor tayinlaydi; u imkon qadar tez — ideal holda dastlabki soatlarda va 72 soatdan kechiktirmay boshlanadi, davomiyligi 28 kun."
       ],
       "ru": [
        "При уколе иглой или другим острым предметом: немедленно вымойте место с мылом под проточной водой; кровь должна свободно вытекать из раны. Если проточной воды нет, обработайте дезинфицирующим гелем или раствором.",
        "При попадании крови или другой жидкости на кожу: сразу вымойте место контакта с мылом под проточной водой.",
-       "При попадании в глаза: сразу промойте проточной водой или физраствором, запрокинув голову; контактные линзы не снимайте (защитный барьер).",
+       "При попадании в глаза: сразу промывайте большим количеством проточной воды или физраствора не менее 10 минут.",
        "При попадании в рот: выплюньте жидкость и многократно прополощите рот водой или физраствором.",
        "Запрещается: применять сильнодействующие средства (спирт, йод), сдавливать и тереть рану, отсасывать кровь из раны; промывать глаза и рот мылом или дезинфицирующими растворами; накладывать повязку при попадании на кожу.",
-       "Немедленно сообщите руководителю и врачу: постконтактную профилактику назначает врач (Курбонова: начинается через 2–72 часа после контакта, длительность 4 недели)."
+       "Немедленно сообщите руководителю и врачу: постконтактную профилактику назначает врач; её начинают как можно раньше — в идеале в первые часы и не позднее 72 часов, курс 28 дней."
       ],
       "en": [
        "After a needle-stick or other sharp injury: wash the site at once with soap under running water; blood should flow freely from the wound. If there is no running water, treat it with a disinfectant gel or solution.",
        "If blood or another fluid splashes on the skin: wash the contact site at once with soap under running water.",
-       "If it splashes in the eye: rinse at once with running water or saline, with the head tilted back; do not remove contact lenses (a protective barrier).",
+       "If it splashes in the eye: flush at once with plenty of running water or saline for at least 10 minutes.",
        "If it gets into the mouth: spit the fluid out and rinse the mouth many times with water or saline.",
        "Forbidden: using strong agents (alcohol, iodine), squeezing and rubbing the wound, sucking blood from the wound; washing the eyes and mouth with soap or disinfectant solutions; applying a dressing after a skin splash.",
-       "Report to your supervisor and a physician at once: post-exposure prophylaxis is prescribed by a physician (Kurbonova: started from 2 to 72 hours after contact, lasting 4 weeks)."
+       "Report to your supervisor and a physician at once: post-exposure prophylaxis is prescribed by a physician and started as soon as possible — ideally within the first hours and no later than 72 hours; the course lasts 28 days."
       ]
      },
      "numbered": false,
@@ -11102,6 +11178,14 @@
         "uz": "8-bob, 89–90-b.",
         "ru": "гл. 8, с. 89–90",
         "en": "ch. 8, pp. 89–90"
+       }
+      },
+      {
+       "book": "who-phlebotomy-2010",
+       "loc": {
+        "uz": "D ilova, 73–74-b.; 8.5.2, 53-b.",
+        "ru": "прил. D, с. 73–74; §8.5.2, с. 53",
+        "en": "Annex D, pp. 73–74; §8.5.2, p. 53"
        }
       }
      ]
@@ -11207,6 +11291,11 @@
    "uz": "O‘qib bo‘lmagan manbalar: Sultonov .doc va likvor (CSF) hujjati skaner qilingan (matn qatlami yo‘q), “Sil kasalligida laborator tekshiruv usullari” materiali KDL / KDL WORD papkalarida topilmadi — ular asosida hech narsa yozilmadi.",
    "ru": "Нечитаемые источники: документ Султонова (.doc) и документ по ликвору (CSF) — сканы без текстового слоя; материал «Лабораторные методы диагностики туберкулёза» в папках KDL / KDL WORD не найден — на их основе ничего не написано.",
    "en": "Unreadable sources: the Sultonov .doc and the CSF document are scans with no text layer, and the material “Laboratory methods in tuberculosis” was not found in the KDL / KDL WORD folders — nothing was written from them."
+  },
+  {
+   "uz": "Xalqaro manba bilan tasdiqlanmagan eski kitob raqamlari olib tashlandi (tibbiy audit, 2026-10-17): gemostaz uchun qonni 45 daqiqada yetkazish, trombotsitlar me’yori 180–320 × 10⁹/l, “birlamchi trombotsitoz — 400 dan ortiq”, “klinik belgilar 70 dan past / 700–900 da” (Kurbonova, 98–102-b.); igna qalpoqchasini kiydirish, qo‘l yuvish 10–15 soniya, postkontakt profilaktika “2 dan 72 soatgacha” va “ko‘zga sachraganda kontakt linzani olmang” JSST 2010 bo‘yicha almashtirildi.",
+   "ru": "Удалены числа из старых книг, не подтверждённые международным источником (медицинский аудит, 2026-10-17): доставка крови для гемостаза за 45 минут, норма тромбоцитов 180–320 × 10⁹/л, «первичный тромбоцитоз — более 400», «клинические признаки ниже 70 / при 700–900» (Курбонова, с. 98–102); надевание колпачка на иглу, мытьё рук 10–15 секунд, постконтактная профилактика «через 2–72 часа» и «при попадании в глаза линзы не снимать» заменены по ВОЗ 2010.",
+   "en": "Old-book numbers not confirmed by an international source were removed (medical audit, 2026-10-17): delivering haemostasis blood within 45 minutes, a platelet range of 180–320 × 10⁹/L, “primary thrombocytosis above 400”, “clinical signs below 70 / at 700–900” (Kurbonova, pp. 98–102); needle recapping, 10–15 s hand washing, PEP “from 2 to 72 hours” and “do not remove contact lenses after an eye splash” were replaced following WHO 2010."
   }
  ]
 }

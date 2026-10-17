@@ -14146,6 +14146,12 @@ abstract class AppLocalizations {
   /// **'All values are within the reference range.'**
   String get diffAssessAllNormal;
 
+  /// No description provided for @diffAssessIncomplete.
+  ///
+  /// In en, this message translates to:
+  /// **'The comparison appears when the count is complete: {counted} of {target} cells counted. Percentages from an incomplete count are not reliable.'**
+  String diffAssessIncomplete(int counted, int target);
+
   /// No description provided for @diffFlagHigh.
   ///
   /// In en, this message translates to:
@@ -14257,7 +14263,7 @@ abstract class AppLocalizations {
   /// No description provided for @diffLimitsSourceNote.
   ///
   /// In en, this message translates to:
-  /// **'Defaults are adult 95 % intervals (Harrison’s Manual of Medicine, Table 64-1); bands — Lyubina 1984, Table 6. Ranges differ in children and in some ethnic groups (e.g. Duffy-negative).'**
+  /// **'Defaults are adult 95 % intervals (Harrison’s Manual of Medicine, 20th ed., Table 64-1); bands — Lyubina 1984, Table 6. MSD Manual definitions differ: eosinophilia > 0.5 ×10⁹/L (default upper limit here 0.7) and lymphocytopenia < 1.0 ×10⁹/L (default lower limit here 1.5). Ranges differ in children and in some ethnic groups (e.g. Duffy-negative).'**
   String get diffLimitsSourceNote;
 
   /// No description provided for @cytoAdequacyTitle.

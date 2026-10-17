@@ -121,12 +121,48 @@ void main() {
       // 1/6, 5/6: 17 + 83 = 100.
       expect(roundedPercents([1, 5]), [17, 83]);
       for (final c in [
-        [3, 7, 11, 179],
         [1, 2, 3, 4],
         [66, 67, 67, 0],
       ]) {
         expect(roundedPercents(c).reduce((a, b) => a + b), 100, reason: '$c');
       }
+      // 101 → ustun guruh (67, birinchisi) 1 ga kamaytiriladi.
+      expect(roundedPercents([66, 67, 67, 0]), [33, 33, 34, 0]);
+    });
+
+    test('foizlar: faqat 99/101 tuzatiladi, x,5 lardan 102 — tuzatilmaydi '
+        '(audit #17, JSST §2.4.6.2)', () {
+      // 0,5 + 0,5 + 0,5 + 98,5 → 1 + 1 + 1 + 99 = 102.
+      expect(roundedPercents([1, 1, 1, 197]), [1, 1, 1, 99]);
+      // 1,5 + 3,5 + 5,5 + 89,5 → 2 + 4 + 6 + 90 = 102.
+      expect(roundedPercents([3, 7, 11, 179]), [2, 4, 6, 90]);
+      final m = MotilityCount();
+      for (final (g, n) in [
+        (MotilityGrade.rapid, 1),
+        (MotilityGrade.slow, 1),
+        (MotilityGrade.nonProgressive, 1),
+        (MotilityGrade.immotile, 197),
+      ]) {
+        for (var i = 0; i < n; i++) {
+          m.add(g);
+        }
+      }
+      expect(m.roundingUnresolved, true);
+      expect(m.exactPercents, [0.5, 0.5, 0.5, 98.5]);
+      final ok = MotilityCount()
+        ..add(MotilityGrade.rapid)
+        ..add(MotilityGrade.immotile);
+      expect(ok.roundingUnresolved, false);
+    });
+
+    test('uz: “ko‘pi bilan 60 daqiqa” (audit #16)', () {
+      final step = spermPreSteps.firstWhere(
+        (s) => s.title.of('en') == 'Time to analysis',
+      );
+      expect(step.body.of('uz'), contains('ko‘pi bilan 60 daqiqa'));
+      expect(step.body.of('uz'), isNot(contains('kamida 60')));
+      expect(step.body.of('ru'), contains('не позднее 60 минут'));
+      expect(step.body.of('en'), contains('no later than 60 minutes'));
     });
 
     test('harakatchanlik: PR = a + b, umumiy = a + b + c', () {
@@ -279,11 +315,25 @@ void main() {
     });
 
     test('azoospermiya, nekrozoospermiya, pH, xato', () {
+      // Konsentratsiya 0: atama emas, faqat shubha (audit #10, §2.4.8.8).
       final z = assessSperm(const SpermInput(volume: 2, concentration: 0));
-      expect(z.terms, [SpermTerm.azoospermia]);
+      expect(z.terms, isEmpty);
+      expect(z.terms, isNot(contains(SpermTerm.azoospermia)));
+      expect(z.azoospermiaSuspected, true);
+      expect(z.hasFindings, true);
+      // Nekrozoospermiya: tiriklik past VA harakatsizlar ko'p (audit #18).
       final n = assessSperm(const SpermInput(vitality: 40, totalMotility: 20));
       expect(n.terms, contains(SpermTerm.necrozoospermia));
+      expect(n.vitalityLowOnly, false);
       expect(n.below, {SpermParam.vitality, SpermParam.totalMotility});
+      final vOnly = assessSperm(const SpermInput(vitality: 40));
+      expect(vOnly.terms, isNot(contains(SpermTerm.necrozoospermia)));
+      expect(vOnly.vitalityLowOnly, true);
+      final motile = assessSperm(
+        const SpermInput(vitality: 40, totalMotility: 50),
+      );
+      expect(motile.terms, isNot(contains(SpermTerm.necrozoospermia)));
+      expect(motile.vitalityLowOnly, true);
       expect(assessSperm(const SpermInput(ph: 7.0)).lowPh, true);
       expect(assessSperm(const SpermInput(ph: 7.2)).lowPh, false);
       final e = assessSperm(
@@ -425,7 +475,12 @@ void main() {
       findsOne,
     );
     await enter('concentration', '0');
-    expect(find.byKey(const ValueKey('sperm-term-azoospermia')), findsOne);
+    expect(
+      find.byKey(const ValueKey('sperm-term-azoospermia-suspected')),
+      findsOne,
+    );
+    expect(find.byKey(const ValueKey('sperm-term-azoospermia')), findsNothing);
+    expect(find.text(SpermL.azooSuspected.of('uz')), findsOne);
   });
 
   testWidgets('mashq: javob berib, natijagacha', (tester) async {

@@ -335,14 +335,20 @@ abstract final class SpermL {
   });
   static const roundingNote = _T({
     'uz':
-        'Foizlar butun songa yaxlitlanadi; yig‘indi 99 yoki 101 bo‘lsa, eng '
-        'katta guruh tuzatiladi (JSST qoidasi).',
+        'Foizlar butun songa yaxlitlanadi; faqat yig‘indi 99 yoki 101 bo‘lsa, '
+        'ustun guruh tuzatiladi (JSST qoidasi). Bir nechta x,5 qiymat '
+        'yaxlitlanib yig‘indi boshqacha chiqsa, tuzatilmaydi — o‘nli qiymatlar '
+        'ko‘rsatiladi.',
     'ru':
-        'Проценты округляются до целых; если сумма 99 или 101, корректируется '
-        'доминирующая группа (правило ВОЗ).',
+        'Проценты округляются до целых; только если сумма 99 или 101, '
+        'корректируется доминирующая группа (правило ВОЗ). Если из-за '
+        'округления нескольких значений x,5 сумма иная, коррекции нет — '
+        'показаны значения с десятыми.',
     'en':
-        'Percentages are rounded to whole numbers; if the sum is 99 or 101, '
-        'the dominant group is adjusted (WHO rule).',
+        'Percentages are rounded to whole numbers; only if the sum is 99 or '
+        '101 is the dominant group adjusted (WHO rule). If rounding several '
+        'x.5 values gives another sum, nothing is adjusted — values with one '
+        'decimal are shown.',
   });
   static const morphHow = _T({
     'uz':
@@ -494,15 +500,32 @@ abstract final class SpermL {
   });
   static const necroNote = _T({
     'uz':
-        'Nekrozoospermiya ta’rifi: tirik spermatozoidlar ulushi past va '
-        'harakatsizlar ulushi yuqori — harakatsizlar ulushini ham hisobga '
-        'oling.',
+        'Nekrozoospermiya ta’rifi: tirik spermatozoidlar ulushi past VA '
+        'harakatsizlar ulushi yuqori. Bu yerda “yuqori” — umumiy '
+        'harakatchanlik pastki chegaradan (42 %) past, ya’ni harakatsizlar '
+        '58 % dan ko‘p; faqat tiriklik past bo‘lsa, atama qo‘llanmaydi.',
     'ru':
-        'Определение некрозооспермии: низкая доля живых и высокая доля '
-        'неподвижных сперматозоидов — учитывайте и долю неподвижных.',
+        'Определение некрозооспермии: низкая доля живых И высокая доля '
+        'неподвижных сперматозоидов. Здесь «высокая» — общая подвижность ниже '
+        'нижнего предела (42 %), то есть неподвижных больше 58 %; при одной '
+        'лишь низкой жизнеспособности термин не применяется.',
     'en':
-        'Necrozoospermia means a low percentage of live and a high '
-        'percentage of immotile spermatozoa — consider the immotile share too.',
+        'Necrozoospermia means a low percentage of live AND a high percentage '
+        'of immotile spermatozoa. Here “high” means total motility below its '
+        'lower limit (42 %), i.e. more than 58 % immotile; low vitality alone '
+        'does not give the term.',
+  });
+  static const azooSuspected = _T({
+    'uz': 'Azoospermiyaga shubha (sentrifugalangan cho‘kmada tasdiqlang)',
+    'ru':
+        'Подозрение на азооспермию (подтвердите в осадке после '
+        'центрифугирования)',
+    'en': 'Azoospermia suspected (confirm in a centrifuged sediment)',
+  });
+  static const azooSuspectedWhat = _T({
+    'uz': 'Nam preparatlarda spermatozoid topilmadi.',
+    'ru': 'В нативных препаратах сперматозоиды не найдены.',
+    'en': 'No spermatozoa were seen in the wet preparations.',
   });
   static const azooNote = _T({
     'uz':
@@ -1156,7 +1179,7 @@ const spermPreSteps = <SpermStep>[
       'uz':
           'Namunani laboratoriya yonidagi alohida xonada olish tavsiya '
           'etiladi. Tekshiruv ideal holda olishdan keyin 30 daqiqa ichida, '
-          'kamida 60 daqiqa ichida boshlanadi.',
+          'ko‘pi bilan 60 daqiqadan kechiktirmay boshlanadi.',
       'ru':
           'Сбор рекомендуется в отдельной комнате рядом с лабораторией. '
           'Исследование в идеале начинают в течение 30 минут после сбора, '
@@ -1164,7 +1187,7 @@ const spermPreSteps = <SpermStep>[
       'en':
           'Collection in a private room close to the laboratory is '
           'recommended. Ideally start the examination within 30 minutes of '
-          'collection, and at least within 60 minutes.',
+          'collection, and no later than 60 minutes.',
     }),
     refPatient,
   ),
