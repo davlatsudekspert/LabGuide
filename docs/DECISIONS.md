@@ -784,3 +784,22 @@ D-46 dagi paketlar aniqlashtirildi: shaxsiy **Pro** (laborant, shifokor, toifaga
 - **Kirish:** `/learn/lecture` → "Avtomatik taqdimot" → `/learn/lecture/auto` (tanlash) → `.../preview`
   (tartib, olib tashlash) → `.../play`. Ustoz Pro (`Feature.autoPresentation`): kirishda va "Boshlash"da
   tekshiriladi; TestFlight/`LG_ALL_FEATURES_OPEN` da ochiq.
+
+## D-55. AI yordamidagi sharh ishlari: faqat qo'lda, faqat taklif (2026-10-17)
+- Egasi repo secret'i `ANTHROPIC_API_KEY` ni fon AI ishlari uchun ishlatishga ruxsat berdi. Kalitni hech kim (chatda ham)
+  o'qiy olmaydi — u faqat GitHub Actions ichida mavjud.
+- **Ishga tushirish:** faqat `workflow_dispatch` (Actions → "AI tasks" → Run workflow); `pull_request`, `push`,
+  `schedule` bilan hech qachon. Standart `dry_run=true` (hech narsa chaqirilmaydi, token/narx taxmini ko'rsatiladi).
+  Bir vaqtda bitta ishga tushirish; elementlar soni qat'iy 60 dan oshmaydi; byudjet chegarasi (standart 3 USD, eng ko'pi 10).
+- **Natija:** `ai-reports` tarmog'iga (`docs/ai_reports/<sana>_<vazifa>_<target>.md/.json`) `github-actions[bot]` nomidan,
+  `main` ga hech qachon; avtomatik merge yo'q. Hisobotlar — TAKLIF: ilova mazmuni (`assets/`, `lib/`, l10n) avtomatik
+  o'zgarmaydi, test qoralamalari `ai_draft` holatida (ilova tanimaydi), odam ko'rib chiqmaguncha pack'ga kirmaydi.
+- **Qamrov:** `content_review` (ikkinchi fikr: raqam/birlik, uz/ru/en nomuvofiqligi, ortiqcha da'vo, ogohlantirish yo'qligi;
+  "tekshira olmayman" deydi, xotiradan tuzatmaydi), `ru_terminology`, `quiz_draft`, `translate_check`.
+  Model manba hujjatini ko'rmaydi (faqat ilova matni va havola ma'lumotlari), shuning uchun u mutaxassis
+  tekshiruvining o'rnini bosmaydi (D-47a dagi "ekspertiza kutilmoqda" holati o'zgarmaydi).
+- **Xavfsizlik:** kalit faqat bitta Python qadamining env'ida (huquq `contents: read`); push qiluvchi alohida ish
+  (`contents: write`) kalitsiz; action'lar commit SHA bilan mahkamlangan; kiritmalar shell'ga qo'shilmaydi.
+  Litsenziyasi AI'ga berishni taqiqlovchi kutubxona yozuvlari yuborilmaydi. Tafsilot: `tool/ai/README.md`.
+- **Qayta ko'rish:** birinchi haqiqiy ishga tushirishlardan keyin (aniq narx va foydali topilmalar ulushi);
+  Claude'ni ilova ichida (Pro, D-54) ishlatish alohida qaror bo'lib qoladi.
