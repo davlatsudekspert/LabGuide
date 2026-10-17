@@ -8849,4 +8849,11 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get homeAdDemoCta => 'Place an ad';
+
+  @override
+  String get urinTitle => 'Urinalysis';
+
+  @override
+  String get urinLabCardBody =>
+      'Collection, strip test, sediment pictures, result reader, practice';
 }

@@ -8887,4 +8887,11 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get homeAdDemoCta => 'Разместить рекламу';
+
+  @override
+  String get urinTitle => 'Анализ мочи';
+
+  @override
+  String get urinLabCardBody =>
+      'Сбор, тест-полоска, снимки осадка, чтение результата, тренировка';
 }
