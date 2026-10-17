@@ -4965,5 +4965,13 @@
         "type": "String"
       }
     }
+  },
+  "histoTitle": "Histology",
+  "histoLabCardBody": "Tissues and organs: real micrographs, key features, practice",
+  "@histoTitle": {
+    "description": "Lab tab: histology section title (tissues and organs)"
+  },
+  "@histoLabCardBody": {
+    "description": "Lab tab: histology picture card subtitle"
   }
 }

@@ -2493,5 +2493,7 @@
         "type": "String"
       }
     }
-  }
+  },
+  "histoTitle": "Gistologiya",
+  "histoLabCardBody": "To‘qimalar va a’zolar: haqiqiy mikrofotolar, belgilar, mashq"
 }

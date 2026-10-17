@@ -8598,4 +8598,11 @@ class AppLocalizationsUz extends AppLocalizations {
   String instSchematicSemantics(String kind) {
     return 'Sxematik tasvir: $kind';
   }
+
+  @override
+  String get histoTitle => 'Gistologiya';
+
+  @override
+  String get histoLabCardBody =>
+      'To‘qimalar va a’zolar: haqiqiy mikrofotolar, belgilar, mashq';
 }

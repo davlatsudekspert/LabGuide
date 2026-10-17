@@ -8737,4 +8737,11 @@ class AppLocalizationsEn extends AppLocalizations {
   String instSchematicSemantics(String kind) {
     return 'Schematic illustration: $kind';
   }
+
+  @override
+  String get histoTitle => 'Histology';
+
+  @override
+  String get histoLabCardBody =>
+      'Tissues and organs: real micrographs, key features, practice';
 }

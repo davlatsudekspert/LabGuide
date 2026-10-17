@@ -78,6 +78,8 @@ flutter:
     - assets/cytology/
     - assets/spermogram/
     - assets/bloodgroup/
+    - assets/histology/
+    - assets/histology/img/
     - assets/differential/
     - assets/differential/sounds/
     - assets/microscopy/

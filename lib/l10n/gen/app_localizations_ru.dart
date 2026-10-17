@@ -8773,4 +8773,11 @@ class AppLocalizationsRu extends AppLocalizations {
   String instSchematicSemantics(String kind) {
     return 'Схематичное изображение: $kind';
   }
+
+  @override
+  String get histoTitle => 'Гистология';
+
+  @override
+  String get histoLabCardBody =>
+      'Ткани и органы: настоящие микрофото, признаки, тренировка';
 }
