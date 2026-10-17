@@ -170,3 +170,53 @@ Bu kunlarda `links` bo‘sh yoki bog‘langan kontent yo‘q — slayd o‘ylab 
 | d140 | Laborator tekshiruv usullarini amaliyotda o‘zlashtirish | havolalar bo‘sh |
 | d141 | Laborator tekshiruv usullarini amaliyotda o‘zlashtirish | havolalar bo‘sh |
 | d142 | Laborator tekshiruv usullarini amaliyotda o‘zlashtirish | havolalar bo‘sh |
+
+
+## Amaliy mashg‘ulot protokollari (kunga bog‘lanmagan to‘plam)
+
+M9 modulining amaliy kunlari (`d091`–`d142`, jumladan yuqoridagi “Deck yo‘q” ro‘yxatidagilar) curriculumda bir xil umumiy nom bilan turadi. Dastur hujjati (`КЛД_ихтисослаштириш_864_кредит`: M9 — 324 soat, shundan ma’ruza 48, laboratoriya ishi 276 (`curriculum.json`da M9 — 330 soat: ma’ruza 48, amaliy 270, attestatsiya 6, qo‘shimcha 6); mavzu yoki texnika ro‘yxati yo‘q, faqat umumiy kompetensiyalar va jihozlar ro‘yxati) hamda dars jadvallari (Karimova, Turg‘unova T1/T2) bu kunlarda **kunma-kun mavzu yoki texnikani ko‘rsatmaydi**: aniq mavzu faqat ma’ruza kunlarida (d090, d095, d101, d106, d112, d116, d121, d127 — ular allaqachon alohida deck), qolganlari “Laborator tekshiruv usullarini amaliyotda o‘zlashtirish”. Shu sababli texnika taqdimotlari **hech bir kunga biriktirilmagan**: nomi texnikaga qarab berilgan raqamsiz to‘plam. Kun ↔ texnika moslik manbalarda yo‘q, shuning uchun o‘ylab topilmadi (ma’ruza kunlari oralig‘idagi kunlar o‘sha ma’ruza mavzusiga tegishli degan taxmin ham hujjatlarda tasdiqlanmagan — ishlatilmadi).
+
+Qoidalar: matn kitoblardan o‘z so‘zim bilan; har slaydda muallif + qisqa nom + bo‘lim/sahifa; oxirgi slayd — “Adabiyotlar”. Son, hajm, vaqt va konsentratsiya faqat manbada ko‘ringan joyda (sahifasi bilan); manbalar bir-biriga zid bo‘lsa — yangi/ishonchlisi yoki umuman olinmagan; eskirgan/xavfli usullar olinmagan. Faqat mavjud rasmlar (`assets/microscopy`) ishlatilgan (atlasda najas va balg‘am fotolari yo‘q — o‘sha protokollarda rasm slaydi yo‘q). “Qin tozalik darajalari” jadvali yuqoridagi sitologiya mavzu decklarida manbasi yo‘qligi uchun yo‘q; u faqat shu to‘plamdagi urogenital protokolda, Kurbonova (2023, 70-b.) manbasi bilan berilgan.
+
+| Texnika (uz) | Guruh | Slayd (uz) | Manbalar |
+|---|---|---|---|
+| Kapillyar qon olish va gematologik tekshiruv uchun namuna tayyorlash | Gematologiya | 9 | 4 |
+| Gemoglobinni gemiglobintsianid (sianmetgemoglobin) usulida aniqlash | Gematologiya | 10 | 2 |
+| Eritrotsitlarni sanoq kamerasida (Goryaev) sanash | Gematologiya | 10 | 2 |
+| Leykotsitlarni sanoq kamerasida sanash | Gematologiya | 10 | 2 |
+| Eritrotsitlarning cho‘kish tezligini (EChT) aniqlash | Gematologiya | 8 | 2 |
+| Yupqa qon surtmasini tayyorlash, qotirish va Romanovskiy–Gimza usulida bo‘yash | Gematologiya | 11 | 2 |
+| Leykotsitar formulani mikroskopda sanash (immersiya) | Gematologiya | 14 | 7 |
+| Siydikni yig‘ish, saqlash va fizik xossalarini aniqlash | Umumklinik tekshiruvlar · siydik | 8 | 4 |
+| Siydikni kimyoviy tekshirish: test-tilimchalar va sulfosalitsil sinamasi | Umumklinik tekshiruvlar · siydik | 10 | 3 |
+| Siydik cho‘kmasini mikroskopda tekshirish | Umumklinik tekshiruvlar · siydik | 13 | 9 |
+| Najasning umumiy tahlili (koprogramma) | Umumklinik tekshiruvlar · najas va parazitologiya | 16 | 3 |
+| Najasda sodda jonivorlar va gijja tuxumlarini aniqlash | Umumklinik tekshiruvlar · najas va parazitologiya | 17 | 2 |
+| Perianal burmalardan namuna: ostritsa (Enterobius vermicularis) tuxumlari | Umumklinik tekshiruvlar · najas va parazitologiya | 9 | 2 |
+| Balg‘amni yig‘ish, ko‘rish va nativ mikroskopiya | Umumklinik va mikrobiologik tekshiruvlar · balg‘am, surtmalar | 10 | 3 |
+| Balg‘am surtmasini Gram va Sil–Nilsen usullarida bo‘yash | Umumklinik va mikrobiologik tekshiruvlar · balg‘am, surtmalar | 11 | 3 |
+| Urogenital surtmalar mikroskopiyasi: gonoreya va trixomoniaz | Umumklinik va mikrobiologik tekshiruvlar · balg‘am, surtmalar | 12 | 3 |
+| Zardob va plazma tayyorlash (biokimyoviy tekshiruv uchun) | Klinik biokimyo · fotometrik usullar | 10 | 1 |
+| Biokimyoviy fotometriya asoslari va to‘plam bilan ishlash tartibi | Klinik biokimyo · fotometrik usullar | 9 | 1 |
+| Qon zardobida glyukozani fotometrik aniqlash (GOD-POD) | Klinik biokimyo · fotometrik usullar | 9 | 2 |
+| Alaninaminotransferaza (ALT) faolligini kinetik aniqlash | Klinik biokimyo · fotometrik usullar | 10 | 2 |
+| Qon zardobida mochevinani fermentativ aniqlash (ureaza–GLDG) | Klinik biokimyo · fotometrik usullar | 9 | 1 |
+| Umumiy va bog‘langan bilirubinni diazo usulida aniqlash | Klinik biokimyo · fotometrik usullar | 9 | 1 |
+| Gemostaz tizimini tekshirish uchun qon olish va tayyorgarlik | Gematologiya · gemostaz | 8 | 2 |
+| Trombotsitlarni Fonio usulida sanash | Gematologiya · gemostaz | 9 | 2 |
+| Laboratoriya ichidagi sifat nazorati: bosqichlar va nazorat materiali | Laboratoriya tartibi · sifat va xavfsizlik | 10 | 1 |
+| Biologik material bilan xavfsiz ishlash va sanitar-epidemiologik tartib | Laboratoriya tartibi · sifat va xavfsizlik | 10 | 2 |
+
+### Manbalarda bor, lekin olinmagan
+
+- Dastur va dars jadvallari M9 amaliy kunlarida kunma-kun mavzu yoki texnikani ko‘rsatmaydi — texnikalar kunlarga biriktirilmadi.
+- Najas: yashirin qon uchun gvayak (efir bilan), benzidin, Gregersen va amidopirin (piramidon) sinamalari hamda sterkobilin uchun sulema (simob xloridi) bilan Shmidt reaksiyasi olinmagan — yonuvchan efir, zaharli simob tuzi va eskirgan reaktivlar (Kurbonova, 42–43-b.; Aripova, 137-b.). Faqat tayyorgarlik qoidalari berilgan.
+- Siydik: qaynatish sinamasi (Aripova xavfli deb tavsiya etmaydi), issiq konsentrlangan reaktivlar, ammiak, nitroprussid yoki temir xlorid bilan klassik sinamalar (Geller, Gaynes, Lange, Garrison) va pH uchun metilen ko‘ki kabi eski usullar olinmagan.
+- Gemoglobin: Sali usuli standartlashmagani va hozir klinikada tavsiya etilmagani uchun olinmagan (Aripov va b., 2006).
+- Zardob ajratish: zardob ajralishini tezlatish uchun probirka devori bo‘ylab tayoqcha yurgizish (qo‘llanmada bor) gemolizni oshirishi mumkin bo‘lgani uchun olinmagan.
+- ALT: Aripova kitobidagi 2,4-dinitrofenilgidrazinli kolorimetrik usul (eskirgan) olinmagan; kinetik usul berilgan.
+- Birinchi yordam: 2006 yilgi qo‘llanmadagi “jarohatni 70% spirt yoki yod bilan dezinfeksiya qilish” tavsiyasi olinmagan — Kurbonova (2023) kuchli moddalarni qo‘llashni taqiqlaydi; yangiroq manba tanlandi.
+- Zaxm uchun Vasserman reaksiyasi (eskirgan serologik sinama) va oq treponemani qora maydonda ko‘rish usuli; xlamidioz (surtma emas, qirma olinadi) olinmagan.
+- Sil–Nilsen bilan bo‘yalgan surtmani o‘qish (rang, baholash, hisoblash) manbada yo‘q; Gram safranin vaqti Aripova matnida «30–60 daqiqa» deb bosilgan (aniq xato) — ikkalasi ham to‘qib chiqarilmadi, laboratoriya yo‘riqnomasiga havola berildi.
+- Najas tahlili: namuna topshirish muddati manbalarda har xil (Kurbonova 8–12 soat; Aripov va b. 10–12 soat, muzlatgichda) — ikkala qiymat ochiq ko‘rsatilgan; qin tozalik darajalari jadvalidagi III daraja matni Kurbonovada noaniq berilgani uchun izohlab qisqartirilgan.
+- O‘qib bo‘lmagan manbalar: Sultonov .doc va likvor (CSF) hujjati skaner qilingan (matn qatlami yo‘q), “Sil kasalligida laborator tekshiruv usullari” materiali KDL / KDL WORD papkalarida topilmadi — ular asosida hech narsa yozilmadi.

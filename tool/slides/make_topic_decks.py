@@ -904,7 +904,7 @@ def coverage_line(cov):
     return ', '.join(parts) or '—'
 
 
-def write_report(path, rows, nodeck, langs, totals):
+def write_report(path, rows, nodeck, langs, totals, extra=None):
     md = ['# Taqdimotlar qamrovi (mavzu bo‘yicha PPTX)', '',
           'Avtomatik: `python3 tool/slides/make_topic_decks.py --all --dry-run --report docs/DECKS_COVERAGE.md`. '
           'Qo‘lda tahrirlamang.', '',
@@ -948,6 +948,7 @@ def write_report(path, rows, nodeck, langs, totals):
     for r in nodeck:
         md.append(f'| {r["id"]} | {r["title"][:70]} | {"; ".join(r["missing"]) or "havolalar bo‘sh"} |')
     md.append('')
+    md += extra or []
     with open(path, 'w', encoding='utf-8') as f:
         f.write('\n'.join(md))
 
@@ -999,8 +1000,14 @@ def main(argv=None):
             print(f'{fn}  ({n} slayd)')
     print('decklar:', counts)
     if a.report:
+        extra = []
+        try:  # amaliy mashg'ulot protokollari (kunga bog'lanmagan) bo'limi
+            import practice_decks
+            extra = practice_decks.report_section(repo)
+        except Exception as e:  # hisobot baribir yoziladi
+            print('amaliy protokollar bo‘limi o‘tkazib yuborildi:', e)
         write_report(a.report, rows, nodeck, langs,
-                     {'days': len(days), 'decks': len(rows), 'nodeck': len(nodeck)})
+                     {'days': len(days), 'decks': len(rows), 'nodeck': len(nodeck)}, extra)
         print('hisobot:', a.report)
     if a.zip and made:
         first = langs[0]
