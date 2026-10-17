@@ -211,10 +211,11 @@ void main() {
           _expectNoDemo(l);
           expect(find.byType(PartnerTag), findsNothing);
           expect(find.text(l.partnerAdLabel), findsNothing);
-          expect(find.byType(HomePartnerSlot), findsNWidgets(2));
-          for (final slot in find.byType(HomePartnerSlot).evaluate()) {
-            expect(_sizeOf(slot).height, 0);
-          }
+          expect(find.byType(HomeAdSlotCard), findsNothing);
+          expect(
+            _sizeOf(find.byType(HomePartnerPair).evaluate().single).height,
+            0,
+          );
           await tester.pumpWidget(const SizedBox());
         }
       });
@@ -232,8 +233,14 @@ void main() {
         await pumpApp(tester, s, size: _tall);
         await goTo(tester, '/home');
         expect(find.text('Sinov Laboratoriya MChJ'), findsOneWidget);
-        // Apparat joyida hamkor yo'q va build do'kon — demo ham yo'q.
+        // Apparat joyida hamkor yo'q va build do'kon — demo ham yo'q;
+        // yagona karta to'liq kenglikda.
         _expectNoDemo(l);
+        expect(find.byType(HomeAdSlotCard), findsOneWidget);
+        expect(
+          _sizeOf(find.byType(HomeAdSlotCard).evaluate().single).width,
+          greaterThan(300),
+        );
       });
 
       testWidgets('layout: 320 px, 1.3× shrift, demo va haqiqiy kartalar', (
@@ -256,8 +263,8 @@ void main() {
           );
           await pumpApp(tester, s, size: const Size(320, 6000), textScale: 1.3);
           await goTo(tester, '/home');
-          expect(find.byType(HomePartnerSlot), findsNWidgets(2));
-          for (final card in find.byType(HomePartnerSlot).evaluate()) {
+          expect(find.byType(HomeAdSlotCard), findsNWidgets(2));
+          for (final card in find.byType(HomeAdSlotCard).evaluate()) {
             expect(_sizeOf(card).width, lessThanOrEqualTo(320));
             expect(_sizeOf(card).height, greaterThan(0));
           }
@@ -270,97 +277,107 @@ void main() {
 
   group('joylashuv', () {
     for (final role in AppRole.values) {
-      testWidgets('${role.name}: reklama tezkor tugmalar to‘ri ostida, ixcham; '
-          'tugmalar ko‘rinishi reklamaga bog‘liq emas', (tester) async {
-        // 390x844: do'kon buildda (reklamasiz) va demo/haqiqiy hamkor bilan
-        // birinchi ekrandagi tezkor tugmalar aynan bir xil.
-        Future<List<int>> visibleTiles({
-          required bool open,
-          bool real = false,
-        }) async {
-          final backend = FakeLabBackend();
-          if (real) {
-            backend
-              ..seedPartner(_lab())
-              ..seedPartner(_equipment());
+      testWidgets(
+        '${role.name}: 390x844, 1.0x — ikkala reklama yonma-yon, qidiruvdan '
+        'keyin, birinchi ekranda',
+        (tester) async {
+          const screen = Size(390, 844);
+          for (final real in [false, true]) {
+            final backend = FakeLabBackend();
+            if (real) {
+              backend
+                ..seedPartner(_lab())
+                ..seedPartner(_equipment());
+            }
+            final s = await makeServices(
+              tester,
+              role: role,
+              backend: backend,
+              allFeaturesOpen: true,
+            );
+            await pumpApp(tester, s);
+            await goTo(tester, '/home');
+            final cards = find.byType(HomeAdSlotCard);
+            expect(cards, findsNWidgets(2), reason: 'real=$real');
+            final rects = [
+              for (final e in cards.evaluate())
+                (e.renderObject! as RenderBox).localToGlobal(Offset.zero) &
+                    (e.renderObject! as RenderBox).size,
+            ];
+            // Pastki menyu (~90 px) ustiga chiqmaydi, ikkalasi ham ko'rinadi.
+            for (final (i, r) in rects.indexed) {
+              expect(r.height, inInclusiveRange(60, 104), reason: '$r');
+              expect(r.bottom, lessThanOrEqualTo(screen.height - 90));
+              expect(cards.at(i).hitTestable(), findsOne);
+            }
+            // Yonma-yon, teng kenglikda.
+            expect(rects[0].top, rects[1].top);
+            expect(rects[0].width, closeTo(rects[1].width, 0.5));
+            expect(rects[0].right, lessThan(rects[1].left));
+            // Qidiruv maydonidan keyin, hero/tezkor tugmalardan oldin.
+            final search = tester.getBottomLeft(find.byType(HomeSearchField));
+            expect(rects[0].top - search.dy, lessThanOrEqualTo(12));
+            // Doktorda hero/tugmalar (ostidagi “Kasallik bo'yicha tahlillar”
+            // kartasi bilan) birinchi ekrandan pastga tushadi — bu kutilgan.
+            if (role != AppRole.doctor) {
+              final hero = tester.getTopLeft(find.byType(LgHeroCard)).dy;
+              expect(hero, greaterThanOrEqualTo(rects[0].bottom));
+              // Tezkor amallarning birinchi qatori hech bo'lmasa qisman
+              // ko'rinadi.
+              final firstTile = tester.getTopLeft(find.byType(LgTile).first).dy;
+              expect(firstTile, lessThan(screen.height - 90));
+            }
+            expect(tester.takeException(), isNull);
+            await tester.pumpWidget(const SizedBox());
           }
-          final s = await makeServices(
-            tester,
-            role: role,
-            backend: backend,
-            allFeaturesOpen: open,
-          );
-          await pumpApp(tester, s);
-          await goTo(tester, '/home');
-          expect(find.byType(HomeSearchField).hitTestable(), findsOne);
-          final tiles = find.byType(LgTile);
-          final visible = [
-            for (var i = 0; i < tiles.evaluate().length; i++)
-              if (tiles.at(i).hitTestable().evaluate().isNotEmpty) i,
-          ];
-          expect(tester.takeException(), isNull);
-          await tester.pumpWidget(const SizedBox());
-          return visible;
-        }
+        },
+      );
 
-        final base = await visibleTiles(open: false);
-        expect(await visibleTiles(open: true), base);
-        expect(await visibleTiles(open: true, real: true), base);
-        expect(await visibleTiles(open: false, real: true), base);
-
-        // Joylashuv (baland ekranda): har ikkala joy to'rdan darhol keyin,
-        // bir qatorli ixcham (60..96 px).
-        for (final real in [false, true]) {
-          final backend = FakeLabBackend();
-          if (real) {
-            backend
-              ..seedPartner(_lab())
-              ..seedPartner(_equipment());
+      testWidgets(
+        '${role.name}: tor ekran (320) yoki katta shrift (1.3×) — ustma-ust',
+        (tester) async {
+          for (final (width, scale) in [(320.0, 1.0), (390.0, 1.3)]) {
+            final s = await makeServices(
+              tester,
+              role: role,
+              allFeaturesOpen: true,
+            );
+            await pumpApp(tester, s, size: Size(width, 3000), textScale: scale);
+            await goTo(tester, '/home');
+            final cards = find.byType(HomeAdSlotCard);
+            expect(cards, findsNWidgets(2));
+            final a = tester.getTopLeft(cards.first);
+            final b = tester.getTopLeft(cards.last);
+            expect(b.dx, a.dx);
+            expect(b.dy, greaterThan(a.dy));
+            expect(tester.takeException(), isNull);
+            await tester.pumpWidget(const SizedBox());
           }
-          final s = await makeServices(
-            tester,
-            role: role,
-            backend: backend,
-            allFeaturesOpen: true,
-          );
-          await pumpApp(tester, s, size: _tall);
-          await goTo(tester, '/home');
-          final grid = find.byType(LgTwoColumnGrid);
-          final gridBottom = tester.getBottomLeft(grid).dy;
-          final slots = find.byType(HomePartnerSlot).evaluate().toList();
-          expect(slots, hasLength(2));
-          var top = gridBottom;
-          for (final slot in slots) {
-            final box = slot.renderObject! as RenderBox;
-            final y = box.localToGlobal(Offset.zero).dy;
-            expect(y - top, lessThanOrEqualTo(12), reason: 'real=$real');
-            expect(box.size.height, inInclusiveRange(60, 96));
-            top = y + box.size.height;
-          }
-          await tester.pumpWidget(const SizedBox());
-        }
-      });
+        },
+      );
 
-      testWidgets('${role.name}: tartib — tugmalar, reklama 1-2, kunlik karta, '
-          'tahlillar', (tester) async {
+      testWidgets('${role.name}: tartib — qidiruv, reklama, hero, tugmalar, '
+          'kunlik karta, tahlillar', (tester) async {
         final l = _l(AppLanguage.uz);
         final s = await makeServices(tester, role: role, allFeaturesOpen: true);
         await pumpApp(tester, s, size: _tall);
         await goTo(tester, '/home');
-        final lastTile = tester.getBottomLeft(find.byType(LgTile).last).dy;
-        final labSlot = tester.getTopLeft(find.byType(HomePartnerSlot).first);
-        final eqSlot = tester.getTopLeft(find.byType(HomePartnerSlot).last);
+        final search = tester.getBottomLeft(find.byType(HomeSearchField)).dy;
+        final ads = tester.getTopLeft(find.byType(HomePartnerPair)).dy;
+        final hero = tester.getTopLeft(find.byType(LgHeroCard)).dy;
+        final firstTile = tester.getTopLeft(find.byType(LgTile).first).dy;
         final daily = tester.getTopLeft(find.byType(DailyCard)).dy;
         final useful = tester.getTopLeft(find.text(l.homeUsefulTests)).dy;
-        expect(labSlot.dy, greaterThanOrEqualTo(lastTile));
-        expect(eqSlot.dy, greaterThan(labSlot.dy));
-        expect(daily, greaterThan(eqSlot.dy));
+        expect(ads, greaterThanOrEqualTo(search));
+        expect(hero, greaterThan(ads));
+        expect(firstTile, greaterThan(hero));
+        expect(daily, greaterThan(firstTile));
         expect(useful, greaterThan(daily));
-        // Tugmalar orasida reklama yo'q: grid ichida HomePartnerSlot yo'q.
+        // Tugmalar orasida reklama yo'q.
         expect(
           find.descendant(
             of: find.byType(LgTwoColumnGrid),
-            matching: find.byType(HomePartnerSlot),
+            matching: find.byType(HomeAdSlotCard),
           ),
           findsNothing,
         );
@@ -378,9 +395,7 @@ void main() {
         await goTo(tester, '/home');
         expect(find.byType(LgTile), findsWidgets);
         expect(find.text(_l(AppLanguage.uz).partnerAdLabel), findsNothing);
-        for (final slot in find.byType(HomePartnerSlot).evaluate()) {
-          expect(_sizeOf(slot).height, 0);
-        }
+        expect(find.byType(HomeAdSlotCard), findsNothing);
       });
     }
   });

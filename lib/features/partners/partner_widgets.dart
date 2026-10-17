@@ -662,30 +662,26 @@ class _LabPartnerCardState extends State<LabPartnerCard> {
   }
 }
 
-/// Asosiy menyu (Bosh sahifa) reklama joyi: [PartnerPlacement.homeLab]
-/// (laboratoriya xizmati) yoki [PartnerPlacement.homeEquipment] (apparat
-/// firmasi). Bir qatorli ixcham karta — birinchi ekranda ikkalasi sig'ishi
-/// uchun.
+/// Asosiy menyu (Bosh sahifa) reklama joylari — qidiruvdan darhol keyin:
+/// 1 — laboratoriya xizmati ([PartnerPlacement.homeLab]), 2 — apparat firmasi
+/// ([PartnerPlacement.homeEquipment]). Ikkalasi yonma-yon bir juft ixcham
+/// karta (birinchi ekranda ko'rinadi); tor ekranda (< 360 px) yoki katta
+/// shriftda (> 1.15×) ustma-ust ixcham qatorlar.
 ///
+/// Har joy uchun:
 /// * haqiqiy faol hamkor bor — hamkor kartasi (kunlik aylanish,
 ///   ko'rsatilish/bog'lanish hisoblagichi bilan);
 /// * hamkor yo'q, demo/test build (`allFeaturesOpen`) — aniq “Namuna / Demo”
 ///   belgili o'rin: kompaniya, telefon, Telegram yo'q, hisoblagich yo'q;
 /// * hamkor yo'q, do'kon (release) build — hech narsa chizilmaydi.
-class HomePartnerSlot extends StatefulWidget {
-  const HomePartnerSlot({super.key, required this.placement})
-    : assert(
-        placement == PartnerPlacement.homeLab ||
-            placement == PartnerPlacement.homeEquipment,
-      );
-
-  final PartnerPlacement placement;
+class HomePartnerPair extends StatefulWidget {
+  const HomePartnerPair({super.key});
 
   @override
-  State<HomePartnerSlot> createState() => _HomePartnerSlotState();
+  State<HomePartnerPair> createState() => _HomePartnerPairState();
 }
 
-class _HomePartnerSlotState extends State<HomePartnerSlot> {
+class _HomePartnerPairState extends State<HomePartnerPair> {
   @override
   void initState() {
     super.initState();
@@ -696,20 +692,50 @@ class _HomePartnerSlotState extends State<HomePartnerSlot> {
   Widget build(BuildContext context) {
     final controller = context.services.partners;
     final demoBuild = context.services.entitlements.allFeaturesOpen;
+    final media = MediaQuery.of(context);
+    final scale = media.textScaler.scale(16) / 16;
     return ListenableBuilder(
       listenable: controller,
       builder: (context, _) {
-        final p = controller.forHome(widget.placement);
-        if (p != null) {
-          return _HomeAdPartnerRow(
-            // Hamkor almashganda ko'rsatilish yangidan sanalsin.
-            key: ValueKey(p.id),
-            partner: p,
-            placement: widget.placement,
+        final slots = <(PartnerPlacement, Partner?)>[
+          for (final pl in const [
+            PartnerPlacement.homeLab,
+            PartnerPlacement.homeEquipment,
+          ])
+            if (controller.forHome(pl) case final p?)
+              (pl, p)
+            else if (demoBuild)
+              (pl, null),
+        ];
+        if (slots.isEmpty) return const SizedBox.shrink();
+        final tiles =
+            slots.length == 2 && media.size.width >= 360 && scale <= 1.15;
+        Widget card((PartnerPlacement, Partner?) s) => HomeAdSlotCard(
+          // Hamkor almashganda ko'rsatilish yangidan sanalsin.
+          key: ValueKey('${s.$1.wire}/${s.$2?.id}'),
+          placement: s.$1,
+          partner: s.$2,
+          tile: tiles,
+        );
+        if (!tiles) {
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [for (final s in slots) card(s)],
           );
         }
-        if (!demoBuild) return const SizedBox.shrink();
-        return _HomeAdDemoRow(placement: widget.placement);
+        return Padding(
+          padding: const EdgeInsets.symmetric(vertical: 3),
+          child: IntrinsicHeight(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Expanded(child: card(slots[0])),
+                const SizedBox(width: 8),
+                Expanded(child: card(slots[1])),
+              ],
+            ),
+          ),
+        );
       },
     );
   }
@@ -738,10 +764,14 @@ class _MiniAdTag extends StatelessWidget {
               child: Icon(Icons.campaign_outlined, size: 12, color: p.amber),
             ),
             const SizedBox(width: 3),
-            Text(
-              text,
-              style: Theme.of(context).textTheme.labelSmall!
-                  .copyWith(color: p.amber, height: 1.1),
+            Flexible(
+              child: Text(
+                text,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: Theme.of(context).textTheme.labelSmall!
+                    .copyWith(color: p.amber, height: 1.1),
+              ),
             ),
           ],
         ),
@@ -750,44 +780,145 @@ class _MiniAdTag extends StatelessWidget {
   }
 }
 
-/// Bosh sahifa reklama qatori: chapda kvadrat belgi (logo/ikonka), o'rtada
-/// ikki-uch qator matn, birinchi qatorda “Reklama” yorlig'i.
-class _HomeAdRow extends StatelessWidget {
-  const _HomeAdRow({
+/// Bosh sahifadagi bitta reklama joyi kartasi: haqiqiy hamkor yoki (demo
+/// buildda hamkor yo'q bo'lsa) “Namuna / Demo” o'rni. [tile] — yonma-yon
+/// juftlikdagi tor karta; aks holda to'liq kenglikdagi bir qatorli karta.
+class HomeAdSlotCard extends StatelessWidget {
+  const HomeAdSlotCard({
+    super.key,
+    required this.placement,
+    required this.tile,
+    this.partner,
+  });
+
+  final PartnerPlacement placement;
+
+  /// `null` — namuna (faqat demo/test build).
+  final Partner? partner;
+  final bool tile;
+
+  @override
+  Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context);
+    final lang = Localizations.localeOf(context).languageCode;
+    final p = LgPalette.of(context);
+    final size = tile ? 20.0 : 44.0;
+    final partner = this.partner;
+    if (partner != null) {
+      final summary = partner.summaryOf(lang);
+      final kind = partnerKindLabel(partner.kind, l);
+      return _Impression(
+        partner: partner,
+        placement: placement,
+        child: _HomeAdFrame(
+          tile: tile,
+          leading: PartnerLogo(partner: partner, size: size),
+          title: partner.name,
+          body: summary.isEmpty ? kind : summary,
+          footer: '$kind · ${l.partnerMore}',
+          onTap: () => _openPartner(context, partner),
+        ),
+      );
+    }
+    // Namuna: soxta kompaniya emas — nom, logo, aloqa yo'q; ko'rsatilish ham
+    // sanalmaydi.
+    return _HomeAdFrame(
+      tile: tile,
+      demo: true,
+      leading: ExcludeSemantics(
+        child: Container(
+          width: size,
+          height: size,
+          decoration: BoxDecoration(
+            color: p.paper,
+            borderRadius: BorderRadius.circular(size * 0.28),
+            border: Border.all(color: p.line),
+          ),
+          child: Icon(
+            placement == PartnerPlacement.homeLab
+                ? Icons.biotech_outlined
+                : Icons.precision_manufacturing_outlined,
+            color: p.sub,
+            size: size * 0.55,
+          ),
+        ),
+      ),
+      title: l.homeAdDemoTitle,
+      body: placement == PartnerPlacement.homeLab
+          ? l.homeAdDemoLabBody
+          : l.homeAdDemoEquipmentBody,
+      footer: '${l.homeAdDemoCta} →',
+      onTap: () => context.push('/profile/partnership'),
+    );
+  }
+}
+
+/// Reklama kartasining ixcham “qobig'i”: [tile] — yonma-yon juftlik uchun
+/// (yorliq + belgi qatori, so'ng matn), aks holda chapda belgi, o'ngda matn.
+class _HomeAdFrame extends StatelessWidget {
+  const _HomeAdFrame({
+    required this.tile,
     required this.leading,
     required this.title,
     required this.body,
     required this.footer,
     required this.onTap,
-    this.dashed = false,
+    this.demo = false,
   });
 
+  final bool tile;
   final Widget leading;
   final String title;
   final String body;
   final String footer;
   final VoidCallback onTap;
 
-  /// Namuna (demo): yumshoq fon — haqiqiy kartadan ajralib turadi.
-  final bool dashed;
+  /// Namuna: yumshoq fon — haqiqiy kartadan ajralib turadi.
+  final bool demo;
 
   @override
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context);
     final text = Theme.of(context).textTheme;
     final p = LgPalette.of(context);
-    final radius = BorderRadius.circular(LgRadius.card);
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 3),
-      child: LgPressable(
-        onTap: onTap,
-        color: dashed ? p.soft : p.paper,
-        borderRadius: radius,
-        border: Border.all(color: p.line),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
+    final titleText = Text(
+      title,
+      maxLines: 1,
+      overflow: TextOverflow.ellipsis,
+      style: text.labelLarge,
+    );
+    final bodyText = Text(
+      body,
+      maxLines: 2,
+      overflow: TextOverflow.ellipsis,
+      style: text.bodySmall,
+    );
+    final footerText = Text(
+      footer,
+      maxLines: 1,
+      overflow: TextOverflow.ellipsis,
+      style: text.labelMedium!.copyWith(color: p.brand),
+    );
+    final Widget content = tile
+        ? Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Row(
+                children: [
+                  Flexible(child: _MiniAdTag(l.partnerAdLabel)),
+                  const Spacer(),
+                  leading,
+                ],
+              ),
+              const SizedBox(height: 1),
+              titleText,
+              bodyText,
+              const SizedBox(height: 1),
+              footerText,
+            ],
+          )
+        : Row(
             children: [
               leading,
               const SizedBox(width: 12),
@@ -800,111 +931,37 @@ class _HomeAdRow extends StatelessWidget {
                       children: [
                         _MiniAdTag(l.partnerAdLabel),
                         const SizedBox(width: 6),
-                        Expanded(
-                          child: Text(
-                            title,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: text.labelLarge,
-                          ),
-                        ),
+                        Expanded(child: titleText),
                       ],
                     ),
                     const SizedBox(height: 1),
-                    Text(
-                      body,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                      style: text.bodySmall,
-                    ),
+                    bodyText,
                     const SizedBox(height: 1),
-                    Text(
-                      footer,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: text.labelMedium!.copyWith(color: p.brand),
-                    ),
+                    footerText,
                   ],
                 ),
               ),
             ],
-          ),
+          );
+    final frame = LgPressable(
+      onTap: onTap,
+      color: demo ? p.soft : p.paper,
+      borderRadius: BorderRadius.circular(LgRadius.card),
+      border: Border.all(color: p.line),
+      child: Padding(
+        padding: EdgeInsets.symmetric(
+          horizontal: tile ? 10 : 12,
+          vertical: tile ? 5 : 6,
         ),
+        child: content,
       ),
     );
-  }
-}
-
-/// Haqiqiy hamkor: logo, nom, qisqa tavsif, tur · “Batafsil” → hamkor sahifasi.
-class _HomeAdPartnerRow extends StatelessWidget {
-  const _HomeAdPartnerRow({
-    super.key,
-    required this.partner,
-    required this.placement,
-  });
-
-  final Partner partner;
-  final PartnerPlacement placement;
-
-  @override
-  Widget build(BuildContext context) {
-    final l = AppLocalizations.of(context);
-    final lang = Localizations.localeOf(context).languageCode;
-    final summary = partner.summaryOf(lang);
-    final kind = partnerKindLabel(partner.kind, l);
-    return _Impression(
-      partner: partner,
-      placement: placement,
-      child: _HomeAdRow(
-        leading: PartnerLogo(partner: partner, size: 44),
-        title: partner.name,
-        body: summary.isEmpty ? kind : summary,
-        footer: '$kind · ${l.partnerMore}',
-        onTap: () => _openPartner(context, partner),
-      ),
-    );
-  }
-}
-
-/// Demo/test buildda hamkor yo'q joyni ko'rsatadigan namuna. Soxta kompaniya
-/// emas: nom, logo, aloqa yo'q; ko'rsatilish ham sanalmaydi.
-class _HomeAdDemoRow extends StatelessWidget {
-  const _HomeAdDemoRow({required this.placement});
-
-  final PartnerPlacement placement;
-
-  @override
-  Widget build(BuildContext context) {
-    final l = AppLocalizations.of(context);
-    final p = LgPalette.of(context);
-    final body = placement == PartnerPlacement.homeLab
-        ? l.homeAdDemoLabBody
-        : l.homeAdDemoEquipmentBody;
-    return _HomeAdRow(
-      dashed: true,
-      leading: ExcludeSemantics(
-        child: Container(
-          width: 44,
-          height: 44,
-          decoration: BoxDecoration(
-            color: p.paper,
-            borderRadius: BorderRadius.circular(44 * 0.28),
-            border: Border.all(color: p.line),
-          ),
-          child: Icon(
-            placement == PartnerPlacement.homeLab
-                ? Icons.biotech_outlined
-                : Icons.precision_manufacturing_outlined,
-            color: p.sub,
-            size: 22,
-          ),
-        ),
-      ),
-      title: l.homeAdDemoTitle,
-      body: body,
-      footer: '${l.homeAdDemoCta} →',
-      onTap: () => context.push('/profile/partnership'),
-    );
+    return tile
+        ? frame
+        : Padding(
+            padding: const EdgeInsets.symmetric(vertical: 3),
+            child: frame,
+          );
   }
 }
 
