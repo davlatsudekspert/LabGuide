@@ -1,0 +1,822 @@
+{
+ "_note": "Ustoz kitoblaridan (Drive 'KDL' papkasi) o'z so'zim bilan qisqa mazmun. Matn, jadval va rasm ko'chirilmagan; faqat g'oya va faktlar qayta bayon qilingan. Sahifa raqamlari kitobning bosma raqami (Aripova 2007 — elektron matndagi raqamlar bo'yicha); Najmitdinov 1998 elektron matnida sahifa raqami yo'q — bo'lim nomi ko'rsatilgan. Kitoblardagi eskirgan raqamlar (kunlik ehtiyoj, glyukoza chegaralari va h.k.) ataylab olinmagan. Ma'lumot manbasi: pack.json dagi book-aripova-2007 va book-najmitdinov-1998 yozuvlari.",
+ "topics": {
+  "d010": [
+   {
+    "title": {
+     "uz": "Qon hosil bo‘lishi nazariyalari (Najmitdinov bayoni)",
+     "ru": "Теории кроветворения (по изложению Наджимитдинова)",
+     "en": "Theories of blood formation (as presented by Najmitdinov)"
+    },
+    "bullets": {
+     "uz": [
+      "Unitar nazariya (Maksimov): barcha qon hujayralari bitta hujayradan — limfotsitga o‘xshash mononuklear hujayradan (limfoidotsit) kelib chiqadi.",
+      "Papengeym, Kryukov, Kassirskiy va boshqalar: barcha qon hujayralari asosan bitta ona hujayra — gemogistoblastdan; u gemotsitoblastga aylanib, undan megakariotsit (trombotsitlar manbai), limfotsit, monotsit, granulotsitlar (miyeloblast orqali) va eritroid qator hosil bo‘ladi.",
+      "Mo‘tadil-unitar nazariya: Kryukov va Kassirskiy monotsit gemotsitoblastsiz, to‘g‘ridan-to‘g‘ri gemogistoblastdan hosil bo‘lishini taklif qilib, unitar nazariyani shu bilan almashtirishni tavsiya etgan.",
+      "B12 vitamini va foliy kislotasi yetishmasa, gemotsitoblast megaloblastga aylanib, megalotsit hosil bo‘lishiga olib keladi.",
+      "Polifiletik nazariya (E. Undritz): har bir hujayra turining o‘z o‘tmishdoshi bor — megakariotsit megakarioblastdan, limfotsit limfoblastdan, monotsit monoblastdan, eozinofil, bazofil va neytrofil o‘z blastlaridan, eritrotsit eritroblastdan.",
+      "“Ildiz hujayra” nazariyasi (Chertkov, Vorobyov): barcha qon hujayralari morfologik jihatdan ajratib bo‘lmaydigan ildiz hujayradan. Kitob muallifi uni (1998) isbotlanmagan faraz deb baholaydi."
+     ],
+     "ru": [
+      "Унитарная теория (Максимов): все клетки крови происходят из одной клетки — лимфоцитоподобной мононуклеарной клетки (лимфоидоцита).",
+      "Папенгейм, Крюков, Кассирский и др.: все клетки крови происходят в основном из одной родоначальной клетки — гемогистобласта; он превращается в гемоцитобласт, из которого образуются мегакариоцит (источник тромбоцитов), лимфоцит, моноцит, гранулоциты (через миелобласт) и эритроидный ряд.",
+      "Умеренно-унитарная теория: Крюков и Кассирский предложили, что моноцит образуется непосредственно из гемогистобласта, минуя гемоцитобласт, и рекомендовали заменить унитарную теорию умеренно-унитарной.",
+      "При дефиците витамина B12 и фолиевой кислоты гемоцитобласт превращается в мегалобласт, что приводит к образованию мегалоцитов.",
+      "Полифилетическая теория (Э. Ундриц): у каждого вида клеток есть собственный предшественник — мегакариоцит из мегакариобласта, лимфоцит из лимфобласта, моноцит из монобласта, эозинофил, базофил и нейтрофил из своих бластов, эритроцит из эритробласта.",
+      "Теория «стволовой клетки» (Чертков, Воробьёв): все клетки крови происходят из морфологически неразличимой стволовой клетки. Автор книги (1998) оценивает её как недоказанную гипотезу."
+     ],
+     "en": [
+      "Unitary theory (Maksimov): all blood cells arise from a single cell — a lymphocyte-like mononuclear cell (lymphoidocyte).",
+      "Papenheim, Kryukov, Kassirsky and others: all blood cells arise mainly from one mother cell, the haemohistoblast; it becomes a haemocytoblast, which gives rise to the megakaryocyte (source of platelets), lymphocyte, monocyte, granulocytes (via the myeloblast) and the erythroid series.",
+      "Moderate unitary theory: Kryukov and Kassirsky proposed that the monocyte forms directly from the haemohistoblast, bypassing the haemocytoblast, and recommended replacing the unitary theory with this one.",
+      "When vitamin B12 and folic acid are lacking, the haemocytoblast turns into a megaloblast, leading to megalocytes.",
+      "Polyphyletic theory (E. Undritz): every cell type has its own precursor — the megakaryocyte from the megakaryoblast, lymphocyte from the lymphoblast, monocyte from the monoblast, eosinophil, basophil and neutrophil from their own blasts, the erythrocyte from the erythroblast.",
+      "“Stem cell” theory (Chertkov, Vorobyov): all blood cells derive from a morphologically indistinguishable stem cell. The author of the book (1998) regards it as an unproven hypothesis."
+     ]
+    },
+    "refs": [
+     {
+      "pack": "book-najmitdinov-1998",
+      "loc": {
+       "uz": "«Qon hosil bo‘lishi haqidagi nazariyalar» bo‘limi",
+       "ru": "раздел «Теории кроветворения»",
+       "en": "section on theories of blood formation"
+      }
+     }
+    ]
+   }
+  ],
+  "d017": [
+   {
+    "title": {
+     "uz": "Leykoz: ta’rif va sabablar (Najmitdinov bayoni)",
+     "ru": "Лейкоз: определение и причины (по Наджимитдинову)",
+     "en": "Leukaemia: definition and causes (Najmitdinov)"
+    },
+    "bullets": {
+     "uz": [
+      "Leykoz (oq qon kasalligi) — suyak ilig‘ining ayrim “ildizlari”dan o‘sib chiqadigan o‘smalar. Nomi o‘smaning dastlab leykotsit qatoridan topilganidan; keyin eritrotsit va trombotsit qatorlarida ham paydo bo‘lishi mumkinligi aniqlangan.",
+      "Kitobda eritromiyeloz (Di Gulmo kasalligi) va eritremiya (Vakez kasalligi) shu guruhga misol qilib keltiriladi; “leykoz” atamasi dunyo adabiyotida keng tarqalgani uchun saqlanib qolgan.",
+      "Kattalarda ham, bolalarda ham uchraydi.",
+      "Sababi aniq emas: kitobda virus, irsiy va nurlanish (ionlashtiruvchi nur) nazariyalari tilga olinadi; muallifga ko‘ra, ularning hech biri tasdiqlanmagan."
+     ],
+     "ru": [
+      "Лейкоз (белокровие) — опухоли, вырастающие из отдельных «корней» костного мозга. Название связано с тем, что опухоль сначала нашли в лейкоцитарном ряду; позже выяснилось, что она может возникать и в эритроцитарном, и в тромбоцитарном рядах.",
+      "В книге в качестве примеров этой группы приводятся эритромиелоз (болезнь Ди Гульельмо) и эритремия (болезнь Вакеза); термин «лейкоз» сохранён из-за его широкого распространения в мировой литературе.",
+      "Встречается как у взрослых, так и у детей.",
+      "Причина неизвестна: в книге упоминаются вирусная, наследственная и лучевая (ионизирующее излучение) теории; по мнению автора, ни одна из них не подтверждена."
+     ],
+     "en": [
+      "Leukaemia (“white-blood disease”) is a group of tumours growing from individual “roots” of the bone marrow. The name comes from the tumour first being found in the white-cell line; it was later shown that it can also arise in the red-cell and platelet lines.",
+      "The book gives erythromyelosis (Di Guglielmo disease) and erythraemia (Vaquez disease) as examples of this group; the term “leukaemia” is kept because it is so widespread in world literature.",
+      "It occurs in adults and in children.",
+      "The cause is not established: the book mentions virus, hereditary and radiation (ionizing radiation) theories; according to the author none of them has been confirmed."
+     ]
+    },
+    "refs": [
+     {
+      "pack": "book-najmitdinov-1998",
+      "loc": {
+       "uz": "«Leykoz (oq qon kasalliklari)» bobi, kirish va «Kasallikning sabablari»",
+       "ru": "глава «Лейкоз (белокровие)», введение и «Причины болезни»",
+       "en": "chapter “Leukaemia”, introduction and “Causes of the disease”"
+      }
+     }
+    ]
+   },
+   {
+    "title": {
+     "uz": "Leykozlar tasnifi (darslik, 1998)",
+     "ru": "Классификация лейкозов (учебник, 1998)",
+     "en": "Classification of leukaemias (textbook, 1998)"
+    },
+    "bullets": {
+     "uz": [
+      "Kitobda leykozlar kechishiga ko‘ra o‘tkir va surunkali turlarga bo‘linadi.",
+      "O‘tkir: saralanmagan (nodifferensial) hujayralar leykozi, gemotsitoblast, miyeloblast, monoblast, limfoblast leykoz, eritromiyeloz (Di Gulmo), megaloblast leykoz, plazmoblast leykoz.",
+      "Surunkali: surunkali miyeloleykoz, surunkali limfoleykoz, miyeloma (Rustitskiy–Kaler kasalligi), eritremiya (Vakez), osteomiyelosklerоz, surunkali megakariotsitar leykoz, limfogranulematoz (Xodjkin), makroglobulinemiya (Valdenstrem kasalligi)."
+     ],
+     "ru": [
+      "В книге лейкозы по течению делятся на острые и хронические.",
+      "Острые: недифференцированно-клеточный (из ретикулярных клеток), гемоцитобластный, миелобластный, монобластный, лимфобластный лейкоз, эритромиелоз (Ди Гульельмо), мегалобластный, плазмобластный лейкоз.",
+      "Хронические: хронический миелолейкоз, хронический лимфолейкоз, миеломная болезнь (Рустицкого–Калера), эритремия (Вакеза), остеомиелосклероз, хронический мегакариоцитарный лейкоз, лимфогранулематоз (болезнь Ходжкина), макроглобулинемия Вальденстрёма."
+     ],
+     "en": [
+      "The book divides leukaemias by course into acute and chronic forms.",
+      "Acute: undifferentiated-cell leukaemia (from reticular cells), haemocytoblastic, myeloblastic, monoblastic and lymphoblastic leukaemia, erythromyelosis (Di Guglielmo), megaloblastic and plasmoblastic leukaemia.",
+      "Chronic: chronic myeloid leukaemia, chronic lymphocytic leukaemia, myeloma (Rustitsky–Kahler disease), erythraemia (Vaquez), osteomyelosclerosis, chronic megakaryocytic leukaemia, lymphogranulomatosis (Hodgkin), Waldenström macroglobulinaemia."
+     ]
+    },
+    "refs": [
+     {
+      "pack": "book-najmitdinov-1998",
+      "loc": {
+       "uz": "«Leykozlar tasnifi» bo‘limi",
+       "ru": "раздел «Классификация лейкозов»",
+       "en": "section “Classification of leukaemias”"
+      }
+     }
+    ]
+   },
+   {
+    "title": {
+     "uz": "Leykoz patogenezi: to‘rt belgi (Najmitdinov bayoni)",
+     "ru": "Патогенез лейкоза: четыре признака (по Наджимитдинову)",
+     "en": "Pathogenesis of leukaemia: four features (Najmitdinov)"
+    },
+    "bullets": {
+     "uz": [
+      "Giperplaziya: genlardagi o‘zgarish tufayli “ildizlar”dan birida yosh (blast) hujayra juda tez ko‘payadi va yetilish xususiyatini yo‘qotadi — ilikda patologik yosh hujayralar klonni hosil qiladi.",
+      "Metaplaziya: patologik klon me’yoriy qon hosil bo‘lishini siqib chiqaradi; megakariotsitlar nobud bo‘lib trombotsitlar kamayadi (qon ketish sindromi), metaplastik anemiya rivojlanadi.",
+      "Anaplaziya: leykoz hujayralarining sitomorfologik va kimyoviy o‘zgarishi — yadro va yadrochalar shakli, xromosomalar soni va tuzilishi o‘zgaradi (masalan, surunkali miyeloleykozda Filadelfiya xromosomasi).",
+      "Geterotopik o‘choqlar: qon hujayralari me’yorda hosil bo‘lmaydigan a’zolarda (teri, mushak, nerv tolalari va boshqalar) qon hosil bo‘lish o‘choqlari paydo bo‘ladi; bu og‘riq va a’zolar zararlanishiga olib keladi.",
+      "Oqibatlari: immunitet pasayishi, nekrotik-yallig‘lanish o‘zgarishlari va infeksiyalar, isitma, qon ketish va anemiya."
+     ],
+     "ru": [
+      "Гиперплазия: из-за изменений в генах в одном из «корней» молодая (бластная) клетка очень быстро размножается и теряет способность созревать — в костном мозге образуется клон патологических молодых клеток.",
+      "Метаплазия: патологический клон вытесняет нормальное кроветворение; мегакариоциты погибают, тромбоцитов становится меньше (геморрагический синдром), развивается метапластическая анемия.",
+      "Анаплазия: цитоморфологические и химические изменения лейкозных клеток — меняются форма ядер и ядрышек, число и строение хромосом (например, филадельфийская хромосома при хроническом миелолейкозе).",
+      "Гетеротопные очаги: в органах, где кровь в норме не образуется (кожа, мышцы, нервные волокна и др.), появляются очаги кроветворения; это ведёт к боли и повреждению органов.",
+      "Следствия: снижение иммунитета, некротико-воспалительные изменения и инфекции, лихорадка, кровотечения и анемия."
+     ],
+     "en": [
+      "Hyperplasia: because of changes in genes, a young (blast) cell in one of the “roots” multiplies very fast and loses the ability to mature — a clone of pathological young cells forms in the marrow.",
+      "Metaplasia: the pathological clone crowds out normal blood formation; megakaryocytes die and platelets fall (haemorrhagic syndrome), and metaplastic anaemia develops.",
+      "Anaplasia: cytomorphological and chemical changes of leukaemic cells — the shape of nuclei and nucleoli and the number and structure of chromosomes change (for example the Philadelphia chromosome in chronic myeloid leukaemia).",
+      "Heterotopic foci: foci of blood formation appear in organs where blood is not normally made (skin, muscle, nerve fibres and others), causing pain and organ damage.",
+      "Consequences: reduced immunity, necrotic-inflammatory changes and infections, fever, bleeding and anaemia."
+     ]
+    },
+    "refs": [
+     {
+      "pack": "book-najmitdinov-1998",
+      "loc": {
+       "uz": "«Leykozlarning patogenezi» bo‘limi",
+       "ru": "раздел «Патогенез лейкозов»",
+       "en": "section “Pathogenesis of leukaemias”"
+      }
+     }
+    ]
+   }
+  ],
+  "d018": [
+   {
+    "title": {
+     "uz": "O‘tkir leykoz: klinikasi (Najmitdinov bayoni)",
+     "ru": "Острый лейкоз: клиника (по Наджимитдинову)",
+     "en": "Acute leukaemia: clinical picture (Najmitdinov)"
+    },
+    "bullets": {
+     "uz": [
+      "Boshlanishi ko‘pincha boshqa kasallik niqobida bo‘ladi: tez og‘irlashadigan angina (tomoq va bodomcha bezlarining yallig‘lanishi), burundan yoki hayz paytida kuchli qon ketish, o‘tkir kamqonlik, o‘tkir radikulit, pnevmoniya. Kitobda o‘tkir leykoz deyarli har qanday kasallik niqobini kiyishi mumkinligi ta’kidlanadi.",
+      "Avj olgan davrda: rangpar teri va shilliq qavatlar, qon ketish sindromi (petexiyalar va boshqa qon quyilishlar) — ilikdagi metaplaziya natijasida megakariotsitlar va trombotsitlar kamayishi bilan bog‘liq.",
+      "Anemiya ikki sababli: metaplastik va ko‘p qon ketishidan (postgemorragik).",
+      "Nekrotik-yallig‘lanish sindromi: angina, og‘iz bo‘shlig‘i, bronxit va pnevmoniya, boshqa a’zolarda yallig‘lanish va nekroz.",
+      "Jigar va ayniqsa taloq ko‘pincha kattalashadi; buyrak va siydik yo‘llarida yallig‘lanish o‘zgarishlari, og‘ir kechadigan radikulit va nerv tizimi belgilari uchraydi."
+     ],
+     "ru": [
+      "Начало часто маскируется под другую болезнь: быстро утяжеляющаяся ангина (воспаление горла и миндалин), носовое кровотечение или обильные месячные, острая анемия, острый радикулит, пневмония. В книге подчёркивается, что острый лейкоз может принимать маску почти любого заболевания.",
+      "В развёрнутой стадии: бледность кожи и слизистых, геморрагический синдром (петехии и другие кровоизлияния) — из-за метаплазии костного мозга и уменьшения мегакариоцитов и тромбоцитов.",
+      "Анемия имеет две причины: метапластическую и кровопотерю (постгеморрагическую).",
+      "Некротико-воспалительный синдром: ангина, поражение полости рта, бронхит и пневмония, воспаление и некроз в других органах.",
+      "Печень и особенно селезёнка часто увеличены; бывают воспалительные изменения почек и мочевых путей, тяжёлый радикулит и неврологические симптомы."
+     ],
+     "en": [
+      "The onset is often disguised as another illness: rapidly worsening tonsillitis (inflammation of the throat and tonsils), a nosebleed or heavy menstrual bleeding, acute anaemia, acute radiculitis or pneumonia. The book stresses that acute leukaemia can mimic almost any disease.",
+      "In the fully developed stage: pale skin and mucosae and a haemorrhagic syndrome (petechiae and other haemorrhages), related to marrow metaplasia with fewer megakaryocytes and platelets.",
+      "The anaemia has two causes: metaplastic and blood loss (post-haemorrhagic).",
+      "Necrotic-inflammatory syndrome: tonsillitis, mouth lesions, bronchitis and pneumonia, inflammation and necrosis in other organs.",
+      "The liver and especially the spleen are often enlarged; inflammatory changes of the kidneys and urinary tract, severe radiculitis and nervous-system signs occur."
+     ]
+    },
+    "refs": [
+     {
+      "pack": "book-najmitdinov-1998",
+      "loc": {
+       "uz": "«O‘tkir leykozning klinikasi» bo‘limi",
+       "ru": "раздел «Клиника острого лейкоза»",
+       "en": "section “Clinical picture of acute leukaemia”"
+      }
+     }
+    ]
+   },
+   {
+    "title": {
+     "uz": "O‘tkir leykoz: remissiya va laborator tashxis (Najmitdinov bayoni)",
+     "ru": "Острый лейкоз: ремиссия и лабораторная диагностика (по Наджимитдинову)",
+     "en": "Acute leukaemia: remission and laboratory diagnosis (Najmitdinov)"
+    },
+    "bullets": {
+     "uz": [
+      "Remissiya turlari: klinik (metaplastik anemiya, qon ketish sindromi va og‘riqlar yo‘qoladi, gemogramma o‘zgarishi qolishi mumkin), gematologik (gemogramma me’yorga yaqinlashadi, ayrim klinik belgilar qoladi), klinik-gematologik (ikkalasi ham).",
+      "Tashxis qon va ilik surtmalarini mikroskopda tekshirib, bemor hujayralari aniqlangach qo‘yiladi.",
+      "Gemogrammada turli darajadagi metaplastik anemiya va trombotsitopeniya bo‘ladi.",
+      "Leykotsitlar soni ko‘p bo‘lsa — leykemik, me’yorda bo‘lsa — subleykemik, kam bo‘lsa — aleykemik shakl.",
+      "Leykoformulada yosh (blast) hujayralar paydo bo‘ladi, yetilgan segment yadroli neytrofillar kamayadi, oraliq hujayralar (promielotsit, mielotsit, metamielotsit) ko‘rinmaydi — kitobda bu “leykemik o‘pirilish” deb ataladi (leykemik uzilish).",
+      "Differensial tashxis sitokimyoga asoslanadi: miyeloblast va limfoblast leykozni ajratish uchun peroksidaza reaksiyasi (Grexem–Knoll usuli) yoki polisaxaridlar reaksiyasi; bazofil leykozda — geparinni aniqlash (Undritz usuli).",
+      "Ilik surtmasida blast hujayralar ustun bo‘ladi; blastlar yadrosida kichik yadrochalar o‘rniga bir-ikkita yirik, shakli o‘zgargan yadrocha ko‘rinadi."
+     ],
+     "ru": [
+      "Виды ремиссии: клиническая (исчезают метапластическая анемия, геморрагический синдром и боли, изменения в гемограмме могут сохраняться), гематологическая (гемограмма приближается к норме, часть клинических признаков остаётся), клинико-гематологическая (и то и другое).",
+      "Диагноз ставят после микроскопического исследования мазков крови и костного мозга, когда выявлены клетки больного.",
+      "В гемограмме — метапластическая анемия и тромбоцитопения разной степени.",
+      "Если число лейкоцитов повышено — лейкемическая форма, нормальное — сублейкемическая, сниженное — алейкемическая.",
+      "В лейкоцитарной формуле появляются молодые (бластные) клетки, зрелых сегментоядерных нейтрофилов становится меньше, промежуточные клетки (промиелоциты, миелоциты, метамиелоциты) отсутствуют — в книге это называется «лейкемический провал» (hiatus leucaemicus).",
+      "Дифференциальная диагностика опирается на цитохимию: для отличия миелобластного лейкоза от лимфобластного — реакция на пероксидазу (метод Грэхема–Кнолля) или реакция на полисахариды; при базофильном лейкозе — выявление гепарина (метод Ундрица).",
+      "В мазке костного мозга преобладают бласты; в ядрах бластов вместо нескольких мелких видны одно-два крупных ядрышка изменённой формы."
+     ],
+     "en": [
+      "Types of remission: clinical (metaplastic anaemia, haemorrhagic syndrome and pain disappear; changes in the blood count may remain), haematological (the blood count approaches normal; some clinical signs remain), clinical-haematological (both).",
+      "The diagnosis is made by microscopy of blood and marrow smears once the patient's cells have been identified.",
+      "The blood count shows metaplastic anaemia and thrombocytopenia of varying degree.",
+      "A high white-cell count is the leukaemic form, a normal count is subleukaemic, a low count is aleukaemic.",
+      "In the differential young (blast) cells appear, mature segmented neutrophils fall, and intermediate cells (promyelocytes, myelocytes, metamyelocytes) are absent — the book calls this the “leukaemic gap” (hiatus leucaemicus).",
+      "Differential diagnosis relies on cytochemistry: peroxidase reaction (Graham–Knoll method) or a polysaccharide reaction to tell myeloblastic from lymphoblastic leukaemia; demonstration of heparin (Undritz method) in basophilic leukaemia.",
+      "Blasts predominate in the marrow smear; in blast nuclei one or two large, altered nucleoli replace several small ones."
+     ]
+    },
+    "refs": [
+     {
+      "pack": "book-najmitdinov-1998",
+      "loc": {
+       "uz": "«Remissiya davri» va «Tashxisi» bo‘limlari",
+       "ru": "разделы «Период ремиссии» и «Диагностика»",
+       "en": "sections “Remission” and “Diagnosis”"
+      }
+     }
+    ]
+   }
+  ],
+  "d044": [
+   {
+    "title": {
+     "uz": "Uglevodlarning vazifalari",
+     "ru": "Функции углеводов",
+     "en": "Functions of carbohydrates"
+    },
+    "bullets": {
+     "uz": [
+      "Energiya manbai: miya, qon hujayralari, buyrak va buyrak usti bezi faoliyati uchun zarur energiya glyukozaning oksidlanishidan olinadi; 1 g uglevod to‘liq parchalanganda taxminan 17 kJ (4,1 kkal) ajraladi.",
+      "Qurilish vazifasi: hujayra qobig‘i va hujayra ichi tuzilmalari tarkibiga kiradi; nukleoproteidlar, lipidlar va fermentlar sintezida ishtirok etadi.",
+      "Zaxira: o‘simliklarda kraxmal, hayvon va odamda glikogen; jigar va mushaklar glikogenning asosiy omborlari.",
+      "Himoya: bezlar ajratadigan shilliq (mukopolisaxaridlar) oshqozon, ichak, qizilo‘ngach, bronxlar devorini mexanik shikastlanishdan saqlaydi.",
+      "Tartibga solish: kletchatka (tola) oshqozon va ichak shilliq qavatini mexanik ta’sirlab, harakatini kuchaytiradi.",
+      "Maxsus vazifalar: nerv impulsini o‘tkazish, antitelolar hosil bo‘lishi, qon guruhlari spetsifikligi."
+     ],
+     "ru": [
+      "Источник энергии: энергия, необходимая для работы мозга, клеток крови, почек и надпочечников, получается при окислении глюкозы; при полном расщеплении 1 г углеводов выделяется около 17 кДж (4,1 ккал).",
+      "Пластическая функция: входят в состав клеточных оболочек и внутриклеточных структур; участвуют в синтезе нуклеопротеидов, липидов и ферментов.",
+      "Запас: в растениях — крахмал, у животных и человека — гликоген; печень и мышцы — основные депо гликогена.",
+      "Защитная функция: слизь (мукополисахариды), выделяемая железами, защищает стенки желудка, кишечника, пищевода, бронхов от механических повреждений.",
+      "Регуляторная функция: клетчатка механически раздражает слизистую желудка и кишечника и усиливает их моторику.",
+      "Специфические функции: проведение нервных импульсов, образование антител, специфичность групп крови."
+     ],
+     "en": [
+      "Energy source: the energy needed by the brain, blood cells, kidneys and adrenal glands comes from the oxidation of glucose; complete breakdown of 1 g of carbohydrate releases about 17 kJ (4.1 kcal).",
+      "Structural role: carbohydrates form part of cell membranes and intracellular structures and take part in the synthesis of nucleoproteins, lipids and enzymes.",
+      "Storage: starch in plants, glycogen in animals and humans; the liver and muscles are the main glycogen stores.",
+      "Protective role: mucus secreted by glands (mucopolysaccharides) protects the walls of the stomach, intestine, oesophagus and bronchi from mechanical damage.",
+      "Regulatory role: fibre mechanically stimulates the gastric and intestinal mucosa and increases motility.",
+      "Specific roles: nerve-impulse conduction, antibody formation, blood-group specificity."
+     ]
+    },
+    "refs": [
+     {
+      "pack": "book-aripova-2007",
+      "loc": {
+       "uz": "II bob, 21–22-b.",
+       "ru": "гл. II, с. 21–22",
+       "en": "Ch. II, pp. 21–22"
+      }
+     }
+    ]
+   },
+   {
+    "title": {
+     "uz": "Uglevodlar tasnifi",
+     "ru": "Классификация углеводов",
+     "en": "Classification of carbohydrates"
+    },
+    "bullets": {
+     "uz": [
+      "Monosaxaridlar — bitta qand molekulasi; uglerod atomlari soniga ko‘ra triozalar, tetrozalar, pentozalar, geksozalar. Geksozalarga glyukoza, fruktoza, galaktoza kiradi.",
+      "Glyukoza — asosiy uglevod, ko‘p uglevodlarning (laktoza, saxaroza, kraxmal va boshqalar) tarkibiga kiradi. Galaktoza glyukozaning fazoviy izomeri (to‘rtinchi uglerod atomida farq qiladi) va jigarda osonroq glyukozaga aylanadi. Fruktoza — meva qandi.",
+      "Oligosaxaridlar (disaxaridlar): saxaroza = glyukoza + fruktoza; laktoza (sut shakari) = glyukoza + galaktoza; maltoza = ikki glyukoza.",
+      "Polisaxaridlar: gomopolisaxaridlar bir turdagi monosaxariddan tuziladi — kraxmal va glikogen (glyukozadan), kletchatka (sellyuloza); geteropolisaxaridlarga mukopolisaxaridlar kiradi, masalan geparin.",
+      "Glikogen — odam va hayvonning asosiy zaxira uglevodi; tuzilishi amilopektinga o‘xshash, ammo ko‘proq tarmoqlangan; jigar, mushak, yurakda to‘planadi va glyukoza yetishmaganda tez parchalanadi."
+     ],
+     "ru": [
+      "Моносахариды — одна молекула сахара; по числу атомов углерода — триозы, тетрозы, пентозы, гексозы. К гексозам относятся глюкоза, фруктоза, галактоза.",
+      "Глюкоза — главный углевод, входит в состав многих углеводов (лактозы, сахарозы, крахмала и др.). Галактоза — пространственный изомер глюкозы (отличается у четвёртого атома углерода), легче превращается в глюкозу в печени. Фруктоза — плодовый сахар.",
+      "Олигосахариды (дисахариды): сахароза = глюкоза + фруктоза; лактоза (молочный сахар) = глюкоза + галактоза; мальтоза = две глюкозы.",
+      "Полисахариды: гомополисахариды состоят из моносахаридов одного вида — крахмал и гликоген (из глюкозы), клетчатка (целлюлоза); к гетерополисахаридам относятся мукополисахариды, например гепарин.",
+      "Гликоген — основной запасной углевод человека и животных; по строению напоминает амилопектин, но более разветвлён; накапливается в печени, мышцах, сердце и быстро расщепляется при нехватке глюкозы."
+     ],
+     "en": [
+      "Monosaccharides are single sugar molecules; by carbon number they are trioses, tetroses, pentoses and hexoses. Hexoses include glucose, fructose and galactose.",
+      "Glucose is the main carbohydrate and a building block of many others (lactose, sucrose, starch and more). Galactose is a spatial isomer of glucose (it differs at the fourth carbon atom) and is converted to glucose more easily in the liver. Fructose is fruit sugar.",
+      "Oligosaccharides (disaccharides): sucrose = glucose + fructose; lactose (milk sugar) = glucose + galactose; maltose = two glucose units.",
+      "Polysaccharides: homopolysaccharides consist of one kind of monosaccharide — starch and glycogen (from glucose), fibre (cellulose); heteropolysaccharides include the mucopolysaccharides, for example heparin.",
+      "Glycogen is the main storage carbohydrate of humans and animals; its structure resembles amylopectin but is more branched; it accumulates in the liver, muscle and heart and is broken down quickly when glucose is lacking."
+     ]
+    },
+    "refs": [
+     {
+      "pack": "book-aripova-2007",
+      "loc": {
+       "uz": "II bob, 23–25-b.",
+       "ru": "гл. II, с. 23–25",
+       "en": "Ch. II, pp. 23–25"
+      }
+     }
+    ]
+   },
+   {
+    "title": {
+     "uz": "Uglevodlarning hazm bo‘lishi va so‘rilishi",
+     "ru": "Переваривание и всасывание углеводов",
+     "en": "Digestion and absorption of carbohydrates"
+    },
+    "bullets": {
+     "uz": [
+      "Hazm og‘iz bo‘shlig‘ida so‘lak amilazasi va maltaza ta’sirida boshlanadi, ammo ovqat og‘izda qisqa turgani uchun bu bosqich cheklangan.",
+      "Oshqozonda uglevodlar hazm bo‘lmaydi — u yerda bu jarayonni katalizlovchi fermentlar yo‘q.",
+      "Asosiy hazm ingichka ichakda: oshqozon osti bezi shirasi va ichak shirasi fermentlari hamda kuchsiz ishqoriy muhit uglevodlar gidrolizi uchun maqbul.",
+      "Kletchatka ingichka ichakda parchalanmaydi: yo‘g‘on ichakka o‘tib, najas hosil bo‘lishida ishtirok etadi va chiqariladi.",
+      "Glyukoza jigardan qonga o‘tib, a’zo va to‘qimalarga yetkaziladi. Buyrak glyukozani deyarli to‘liq qayta so‘radi, shuning uchun me’yorda u siydik bilan yo‘qolmaydi."
+     ],
+     "ru": [
+      "Переваривание начинается в полости рта под действием амилазы слюны и мальтазы, но из-за непродолжительного пребывания пищи во рту этот этап ограничен.",
+      "В желудке углеводы не перевариваются — там нет ферментов, катализирующих этот процесс.",
+      "Основное переваривание — в тонкой кишке: ферменты сока поджелудочной железы и кишечного сока и слабощелочная среда благоприятны для гидролиза углеводов.",
+      "Клетчатка в тонкой кишке не расщепляется: переходит в толстую кишку, участвует в формировании кала и выводится.",
+      "Глюкоза из печени поступает в кровь и доставляется к органам и тканям. Почки почти полностью реабсорбируют глюкозу, поэтому в норме она не теряется с мочой."
+     ],
+     "en": [
+      "Digestion starts in the mouth under salivary amylase and maltase, but because food stays in the mouth only briefly this stage is limited.",
+      "Carbohydrates are not digested in the stomach — it has no enzymes that catalyse this process.",
+      "Most digestion takes place in the small intestine: pancreatic and intestinal juice enzymes and a weakly alkaline medium are favourable for carbohydrate hydrolysis.",
+      "Fibre is not broken down in the small intestine: it passes to the colon, helps form stool and is excreted.",
+      "Glucose passes from the liver into the blood and is delivered to organs and tissues. The kidney reabsorbs glucose almost completely, so normally it is not lost in the urine."
+     ]
+    },
+    "refs": [
+     {
+      "pack": "book-aripova-2007",
+      "loc": {
+       "uz": "II bob, 25–26-b.",
+       "ru": "гл. II, с. 25–26",
+       "en": "Ch. II, pp. 25–26"
+      }
+     }
+    ]
+   },
+   {
+    "title": {
+     "uz": "Qon glyukozasi va uning boshqarilishi",
+     "ru": "Глюкоза крови и её регуляция",
+     "en": "Blood glucose and its regulation"
+    },
+    "bullets": {
+     "uz": [
+      "Qondagi monosaxaridlarning ko‘p qismi glyukoza; to‘qimalardagi uglevod o‘zgarishlari glyukozadan boshlanadi, shu sababli u uglevod almashinuvining eng muhim ko‘rsatkichi.",
+      "Qon glyukozasi barqarorligi bilan ajralib turadi: uglevod almashinuvidagi har qanday o‘zgarish qondagi glyukoza miqdorining o‘zgarishi bilan ifodalanadi.",
+      "Boshqaruvda markaziy nerv tizimi (tashqi va ichki qo‘zg‘atuvchilarga javob) va gormonlar ishtirok etadi.",
+      "Insulin hujayra membranasining glyukoza uchun o‘tkazuvchanligini oshirib, glyukozaning hujayralarda ishlatilishini kuchaytiradi va qondagi miqdorini kamaytiradi.",
+      "Jigarning o‘rni alohida: glyukoza yetishmasa glikogen parchalanib, qon glyukoza bilan boyiydi; glyukoza ortiqcha bo‘lsa, jigar uni glikogenga aylantiradi."
+     ],
+     "ru": [
+      "Большая часть моносахаридов крови — глюкоза; превращения углеводов в тканях начинаются с глюкозы, поэтому она — важнейший показатель углеводного обмена.",
+      "Глюкоза крови отличается постоянством: любое изменение углеводного обмена проявляется изменением её содержания в крови.",
+      "В регуляции участвуют центральная нервная система (ответ на внешние и внутренние раздражители) и гормоны.",
+      "Инсулин повышает проницаемость клеточных мембран для глюкозы, усиливает её использование клетками и снижает её содержание в крови.",
+      "Особая роль принадлежит печени: при нехватке глюкозы гликоген расщепляется и кровь обогащается глюкозой; при избытке печень превращает глюкозу в гликоген."
+     ],
+     "en": [
+      "Most of the monosaccharides in blood are glucose; carbohydrate transformations in tissues start from glucose, so it is the most important indicator of carbohydrate metabolism.",
+      "Blood glucose is notably stable: any change in carbohydrate metabolism shows up as a change in its blood level.",
+      "The central nervous system (responding to external and internal stimuli) and hormones take part in regulation.",
+      "Insulin raises the permeability of cell membranes to glucose, increases its use by cells and lowers its level in the blood.",
+      "The liver has a special role: when glucose is lacking, glycogen is broken down and the blood is enriched with glucose; when glucose is in excess, the liver converts it to glycogen."
+     ]
+    },
+    "refs": [
+     {
+      "pack": "book-aripova-2007",
+      "loc": {
+       "uz": "II bob, 26–27-b.",
+       "ru": "гл. II, с. 26–27",
+       "en": "Ch. II, pp. 26–27"
+      }
+     }
+    ]
+   },
+   {
+    "title": {
+     "uz": "Uglevod almashinuvi buzilishi",
+     "ru": "Нарушения углеводного обмена",
+     "en": "Disorders of carbohydrate metabolism"
+    },
+    "bullets": {
+     "uz": [
+      "Giperglikemiya — qon glyukozasining oshishi: uglevodning ortiqcha kirishi yoki hujayralarda kam ishlatilishidan. Fiziologik (ko‘p uglevod iste’moli, qisqa muddatli) va patologik (qandli diabet, ruhiy kasalliklar, bosh miya o‘smasi va boshqalar) bo‘lishi mumkin.",
+      "Glyukozuriya — siydikda glyukoza paydo bo‘lishi: qondagi miqdor buyrak bo‘sag‘asidan oshganda buyrak kanalchalari ortiqchasini qayta so‘rib ulgurmaydi.",
+      "Gipoglikemiya — qon glyukozasining pasayishi: ortiqcha insulin (tashqaridan kiritilganda yoki ko‘p ishlab chiqarilganda), gipotalamusning ba’zi o‘smalari, jigar shikastlanishi, og‘ir jismoniy mehnat. Keskin pasayganda koma rivojlanadi.",
+      "Qandli diabet: asosiy sabab — insulin almashinuvi boshqaruvining buzilishi; glyukoza hujayraga kira olmaydi, qonda ortadi (giperglikemiya, glyukozuriya), hujayrada esa energiya ochligi bo‘ladi.",
+      "Kompensatsiya: glyukoneogenez kuchayadi, atsetil-KoA to‘planib keton (atseton) tanachalari hosil bo‘ladi — ketonemiya va ketonuriya; qon pH i kislotali tomonga siljiydi (atsidoz), nafasdan atseton hidi keladi, og‘ir holatda diabetik koma rivojlanadi."
+     ],
+     "ru": [
+      "Гипергликемия — повышение глюкозы крови: из-за избыточного поступления углеводов или недостаточного использования клетками. Бывает физиологической (много углеводов в пище, кратковременная) и патологической (сахарный диабет, психические болезни, опухоль мозга и др.).",
+      "Глюкозурия — появление глюкозы в моче: когда её содержание в крови превышает почечный порог, канальцы почек не успевают реабсорбировать избыток.",
+      "Гипогликемия — снижение глюкозы крови: избыток инсулина (введённого извне или избыточно выработанного), некоторые опухоли гипоталамуса, поражение печени, тяжёлая физическая работа. При резком снижении развивается кома.",
+      "Сахарный диабет: основная причина — нарушение регуляции обмена инсулина; глюкоза не проникает в клетки и накапливается в крови (гипергликемия, глюкозурия), а в клетках возникает энергетическое голодание.",
+      "Компенсация: усиливается глюконеогенез, накапливается ацетил-КоА и образуются кетоновые (ацетоновые) тела — кетонемия и кетонурия; pH крови смещается в кислую сторону (ацидоз), изо рта появляется запах ацетона, в тяжёлых случаях развивается диабетическая кома."
+     ],
+     "en": [
+      "Hyperglycaemia — raised blood glucose: from excessive carbohydrate intake or poor use by cells. It can be physiological (large carbohydrate intake, short-lived) or pathological (diabetes mellitus, mental illness, brain tumour and others).",
+      "Glucosuria — glucose appearing in the urine: when the blood level exceeds the renal threshold, the kidney tubules cannot reabsorb the excess.",
+      "Hypoglycaemia — lowered blood glucose: excess insulin (given from outside or overproduced), some hypothalamic tumours, liver damage, heavy physical work. A sharp fall leads to coma.",
+      "Diabetes mellitus: the main cause is disturbed regulation of insulin metabolism; glucose cannot enter cells and builds up in the blood (hyperglycaemia, glucosuria) while cells starve for energy.",
+      "Compensation: gluconeogenesis increases, acetyl-CoA accumulates and ketone (acetone) bodies form — ketonaemia and ketonuria; blood pH shifts to the acid side (acidosis), the breath smells of acetone, and in severe cases diabetic coma develops."
+     ]
+    },
+    "refs": [
+     {
+      "pack": "book-aripova-2007",
+      "loc": {
+       "uz": "II bob, 27–29-b.",
+       "ru": "гл. II, с. 27–29",
+       "en": "Ch. II, pp. 27–29"
+      }
+     }
+    ]
+   },
+   {
+    "title": {
+     "uz": "Uglevod almashinuvini klinikada tekshirish",
+     "ru": "Исследование углеводного обмена в клинике",
+     "en": "Laboratory assessment of carbohydrate metabolism"
+    },
+    "bullets": {
+     "uz": [
+      "Asosiy tekshiruv — qondagi glyukozani aniqlash. Kitob usullarni farqlaydi: Xagedorn–Yensen usuli o‘ziga xos emas (barcha qaytaruvchi moddalarni o‘lchaydi); ortotoluidin va glyukozooksidaza usullari haqiqiy glyukozani aniqlaydi.",
+      "Qandli yuklama usuli: och qoringa qon olinadi, glyukoza yuklamasi beriladi va belgilangan oraliqlarda qayta qon olinib qand egri chizig‘i tuziladi. Sog‘lom odamda o‘rtacha ko‘tarilish keyin me’yorga qaytadi; diabetda och qoringa miqdor yuqori, yuklamadan keyin esa uzoq vaqt baland qoladi. Kitobdagi yuklama miqdori va vaqtlari zamonaviy tavsiyalardan farq qilishi mumkin — amaldagi tartib uchun ilovadagi OGTT kartasiga qarang.",
+      "Sut kislotasi to‘qimalarning kislorod bilan ta’minlanishini aks ettiradi: uzoq jismoniy yuklama va nafas qisilishi bilan kechadigan kasalliklarda oshadi. Piruvat tiamin (B1) yetishmovchiligida (beri-beri) oshadi.",
+      "Keton tanachalari qandli diabet, och qolish, homiladorlik va toksikozlarda uchraydi.",
+      "Siydikda glyukoza me’yorda bo‘lmaydi: paydo bo‘lishi giperglikemiyani yoki buyrak shikastlanishini ko‘rsatadi."
+     ],
+     "ru": [
+      "Основное исследование — определение глюкозы в крови. Книга различает методы: метод Хагедорна–Иенсена неспецифичен (определяет все восстанавливающие вещества); ортотолуидиновый и глюкозооксидазный методы определяют истинную глюкозу.",
+      "Нагрузочная проба с глюкозой: натощак берут кровь, дают нагрузку глюкозой и через заданные промежутки времени повторно определяют сахар, строя «сахарную кривую». У здорового человека умеренный подъём затем возвращается к норме; при диабете натощак уровень повышен, а после нагрузки долго остаётся высоким. Дозы и время в книге могут отличаться от современных рекомендаций — актуальный порядок см. в карточке ПГТТ в приложении.",
+      "Молочная кислота отражает обеспеченность тканей кислородом: повышается при длительной физической нагрузке и болезнях с одышкой. Пируват повышается при дефиците тиамина (B1) — бери-бери.",
+      "Кетоновые тела встречаются при сахарном диабете, голодании, беременности и токсикозах.",
+      "Глюкозы в моче в норме нет: её появление указывает на гипергликемию или поражение почек."
+     ],
+     "en": [
+      "The main test is blood glucose. The book distinguishes methods: the Hagedorn–Jensen method is non-specific (it measures all reducing substances); the ortho-toluidine and glucose-oxidase methods measure true glucose.",
+      "Glucose loading test: blood is taken fasting, a glucose load is given and the sugar is measured again at set intervals to draw a sugar curve. In a healthy person a moderate rise returns to normal; in diabetes the fasting level is high and after the load stays high for a long time. The load and timings in the book may differ from current recommendations — see the OGTT card in the app for the current procedure.",
+      "Lactic acid reflects tissue oxygen supply: it rises after prolonged physical exertion and in diseases with breathlessness. Pyruvate rises in thiamine (B1) deficiency (beriberi).",
+      "Ketone bodies occur in diabetes mellitus, fasting, pregnancy and toxaemias.",
+      "Glucose is normally absent from urine: its appearance points to hyperglycaemia or kidney damage."
+     ]
+    },
+    "refs": [
+     {
+      "pack": "book-aripova-2007",
+      "loc": {
+       "uz": "II bob, 29–30-b.",
+       "ru": "гл. II, с. 29–30",
+       "en": "Ch. II, pp. 29–30"
+      }
+     }
+    ]
+   }
+  ],
+  "d047": [
+   {
+    "title": {
+     "uz": "Gomeostaz va suv almashinuvi",
+     "ru": "Гомеостаз и водный обмен",
+     "en": "Homeostasis and water balance"
+    },
+    "bullets": {
+     "uz": [
+      "Gomeostaz — ichki muhit (qon, limfa, orqa miya va hujayralararo suyuqlik) tarkibining doimiyligi; uni ko‘p jihatdan suv va mineral moddalar tarkibi belgilaydi. Ichki muhit ko‘rsatkichlari: osmotik bosim, pH, kislota-ishqor muvozanati.",
+      "Suv organizmning miqdoriy jihatdan eng ko‘p moddasi: kattalarda tana og‘irligining taxminan 50–60 % i (erkaklarda ko‘proq, ayollarda kamroq); qon, nerv to‘qimasi, mushak va jigarda ko‘p, biriktiruvchi to‘qima va suyakda nisbatan kam.",
+      "Taxminiy sutkalik balans: kirish 2,5 l (suyuqlik 1,2; ovqat 1,0; endogen suv 0,3), chiqish 2,5 l (siydik 1,4; o‘pka 0,5; teri 0,5; najas 0,1).",
+      "Suv almashinuvida buyrak, o‘pka, teri, me’da-ichak yo‘li va endokrin bezlar ishtirok etadi."
+     ],
+     "ru": [
+      "Гомеостаз — постоянство состава внутренней среды (кровь, лимфа, спинномозговая и межклеточная жидкость); во многом его определяет содержание воды и минеральных веществ. Показатели внутренней среды: осмотическое давление, pH, кислотно-основное равновесие.",
+      "Вода — самое многочисленное по количеству вещество организма: у взрослых около 50–60 % массы тела (у мужчин больше, у женщин меньше); много в крови, нервной ткани, мышцах и печени, относительно мало в соединительной ткани и костях.",
+      "Примерный суточный баланс: поступление 2,5 л (жидкость 1,2; пища 1,0; эндогенная вода 0,3), выведение 2,5 л (моча 1,4; лёгкие 0,5; кожа 0,5; кал 0,1).",
+      "В водном обмене участвуют почки, лёгкие, кожа, желудочно-кишечный тракт и эндокринные железы."
+     ],
+     "en": [
+      "Homeostasis is the constancy of the internal environment (blood, lymph, cerebrospinal and interstitial fluid); it is largely determined by the content of water and minerals. Indicators of the internal environment: osmotic pressure, pH, acid–base balance.",
+      "Water is the most abundant substance in the body: about 50–60 % of body mass in adults (more in men, less in women); plentiful in blood, nervous tissue, muscle and liver, relatively scarce in connective tissue and bone.",
+      "Approximate daily balance: intake 2.5 L (fluids 1.2; food 1.0; endogenous water 0.3), output 2.5 L (urine 1.4; lungs 0.5; skin 0.5; stool 0.1).",
+      "The kidneys, lungs, skin, gastrointestinal tract and endocrine glands take part in water balance."
+     ]
+    },
+    "refs": [
+     {
+      "pack": "book-aripova-2007",
+      "loc": {
+       "uz": "IX bob, 71–72-b.",
+       "ru": "гл. IX, с. 71–72",
+       "en": "Ch. IX, pp. 71–72"
+      }
+     }
+    ]
+   },
+   {
+    "title": {
+     "uz": "Suv almashinuvini boshqarish va uning buzilishi",
+     "ru": "Регуляция водного обмена и его нарушения",
+     "en": "Regulation of water balance and its disturbances"
+    },
+    "bullets": {
+     "uz": [
+      "Suv almashinuvini boshqaradigan bosh organ — buyrak: suv yetishmasa siydik kam va kuchli konsentrlangan, ortiqcha bo‘lsa ko‘p va suyultirilgan. Buyrakning siydik konsentratsiyasini o‘zgartirish qobiliyati buzilishi og‘ir buyrak kasalliklarida kuzatiladi.",
+      "Boshqaruv asosida osmotik bosimning doimiyligi yotadi; asosiy tizim — buyrak–gormonlar: vazopressin (antidiuretik gormon) va aldosteron.",
+      "Vazopressin sekretsiyasi plazma osmotik bosimiga bog‘liq: bosim oshsa ko‘payib, konsentrlangan siydik hisobiga suv yo‘qotilishini kamaytiradi; suv ushlanib osmotik bosim pasaygach sekretsiya to‘xtaydi.",
+      "Aldosteron: plazmada natriy kamayganda sekretsiyasi oshib, buyrakda natriyning qayta so‘rilishini tezlashtiradi (natriy ushlanadi); natriy oshganda ishlab chiqarilishi tormozlanadi.",
+      "Degidratatsiya (gipogidriya) me’da-ichak faoliyati buzilishi, qusish, kuchli terlash, buyrak kasalliklari va tuzlarning ortiqcha kirishida kuzatiladi.",
+      "Hujayra tashqarisi suyuqligining ko‘payishi (poligidriya) shish bilan namoyon bo‘ladi; siydik ajralishi kamayadi (oliguriya) yoki to‘xtaydi (anuriya) — buyrak va jigar kasalliklarida."
+     ],
+     "ru": [
+      "Главный орган регуляции водного обмена — почка: при нехватке воды моча скудная и сильно концентрированная, при избытке — обильная и разведённая. Нарушение способности почки менять концентрацию мочи наблюдается при тяжёлых заболеваниях почек.",
+      "В основе регуляции — постоянство осмотического давления; главная система — почки и гормоны: вазопрессин (антидиуретический гормон) и альдостерон.",
+      "Секреция вазопрессина зависит от осмотического давления плазмы: при его повышении она усиливается и снижает потерю воды за счёт концентрированной мочи; когда вода задержана и давление снизилось, секреция прекращается.",
+      "Альдостерон: при снижении натрия в плазме его секреция растёт и ускоряет реабсорбцию натрия в почках (натрий задерживается); при повышении натрия выработка тормозится.",
+      "Обезвоживание (дегидратация) наблюдается при нарушении работы ЖКТ, рвоте, обильном потоотделении, болезнях почек и избыточном поступлении солей.",
+      "Увеличение объёма внеклеточной жидкости (полигидрия) проявляется отёками; выделение мочи уменьшается (олигурия) или прекращается (анурия) — при болезнях почек и печени."
+     ],
+     "en": [
+      "The main organ regulating water balance is the kidney: when water is short, urine is scanty and highly concentrated; when water is in excess, it is abundant and dilute. Loss of the kidney's ability to change urine concentration is seen in severe kidney disease.",
+      "Regulation rests on keeping osmotic pressure constant; the main system is the kidney and hormones: vasopressin (antidiuretic hormone) and aldosterone.",
+      "Vasopressin secretion depends on plasma osmotic pressure: when pressure rises, secretion increases and reduces water loss through concentrated urine; once water is retained and pressure falls, secretion stops.",
+      "Aldosterone: when plasma sodium falls, its secretion rises and speeds up sodium reabsorption in the kidney (sodium is retained); when sodium rises, its production is suppressed.",
+      "Dehydration occurs with gastrointestinal disturbance, vomiting, profuse sweating, kidney disease and excessive salt intake.",
+      "An increase in extracellular fluid (polyhydria) shows as oedema; urine output falls (oliguria) or stops (anuria) — in kidney and liver disease."
+     ]
+    },
+    "refs": [
+     {
+      "pack": "book-aripova-2007",
+      "loc": {
+       "uz": "IX bob, 72–73-b.",
+       "ru": "гл. IX, с. 72–73",
+       "en": "Ch. IX, pp. 72–73"
+      }
+     }
+    ]
+   },
+   {
+    "title": {
+     "uz": "Mineral moddalarning ahamiyati",
+     "ru": "Значение минеральных веществ",
+     "en": "Role of minerals"
+    },
+    "bullets": {
+     "uz": [
+      "Mineral moddalar energiya manbai emas, ammo almashtirib bo‘lmaydi va faqat ovqat bilan kiradi; o‘simlik mahsulotlaridagi miqdori ko‘pincha tuproq tarkibiga bog‘liq (masalan, tuproqda yod yetishmasligi endemik bo‘qoq bilan bog‘liq).",
+      "Natriy, kaliy, xlor: asosiy ahamiyati osmotik bosimni saqlash; fermentlarni faollashtirish; nerv to‘qimasi bo‘ylab impuls o‘tkazish.",
+      "Kalsiy: suyakning asosiy komponenti; nerv va mushak qo‘zg‘alishi, membrana o‘tkazuvchanligi, mushak qisqarishi va qon ivishida ishtirok etadi. Yetishmasa suyak hosil bo‘lishi va o‘sish buziladi, talvasa paydo bo‘lishi mumkin.",
+      "Fosfor kalsiy bilan birga suyak to‘qimasining tuzilishida ishtirok etadi. Magniy nerv-mushak qo‘zg‘aluvchanligi va yurak ishini boshqaradi, ko‘p fermentlarni faollashtiradi.",
+      "Mikroelementlar (mis, rux, marganes, yod, kobalt, molibden va boshqalar) juda oz miqdorda kerak; ularning ahamiyati asosan ferment tizimlarini faollashtirish yoki tuzilishda ishtirok etishdan iborat."
+     ],
+     "ru": [
+      "Минеральные вещества не источник энергии, но незаменимы и поступают только с пищей; их содержание в растительных продуктах часто зависит от состава почвы (например, нехватка йода в почве связана с эндемическим зобом).",
+      "Натрий, калий, хлор: основная роль — поддержание осмотического давления; активация ферментов; проведение импульсов по нервной ткани.",
+      "Кальций: основной компонент кости; участвует в возбуждении нервной и мышечной ткани, проницаемости мембран, сокращении мышц и свёртывании крови. При недостатке нарушаются образование кости и рост, возможны судороги.",
+      "Фосфор вместе с кальцием участвует в построении костной ткани. Магний регулирует нервно-мышечную возбудимость и работу сердца, активирует многие ферменты.",
+      "Микроэлементы (медь, цинк, марганец, йод, кобальт, молибден и др.) нужны в ничтожных количествах; их значение в основном в активации ферментных систем или участии в структурах."
+     ],
+     "en": [
+      "Minerals are not an energy source but are indispensable and come only from food; their content in plant foods often depends on the soil (for example, iodine-poor soil is linked with endemic goitre).",
+      "Sodium, potassium and chloride: their main role is to maintain osmotic pressure; they activate enzymes and carry impulses along nervous tissue.",
+      "Calcium: a main component of bone; it takes part in nerve and muscle excitation, membrane permeability, muscle contraction and blood clotting. Deficiency disturbs bone formation and growth and can cause convulsions.",
+      "Phosphorus together with calcium builds bone tissue. Magnesium regulates neuromuscular excitability and heart function and activates many enzymes.",
+      "Trace elements (copper, zinc, manganese, iodine, cobalt, molybdenum and others) are needed in minute amounts; their importance lies mainly in activating enzyme systems or taking part in structures."
+     ]
+    },
+    "refs": [
+     {
+      "pack": "book-aripova-2007",
+      "loc": {
+       "uz": "IX bob, 73–75-b.",
+       "ru": "гл. IX, с. 73–75",
+       "en": "Ch. IX, pp. 73–75"
+      }
+     }
+    ]
+   }
+  ],
+  "d051": [
+   {
+    "title": {
+     "uz": "Vitaminlar: yetishmovchilik turlari",
+     "ru": "Витамины: виды недостаточности",
+     "en": "Vitamins: types of deficiency"
+    },
+    "bullets": {
+     "uz": [
+      "Vitaminlar organizmga juda oz miqdorda kerak, ammo almashinuvda muhim: fermentlar faoliyatida ishtirok etadi.",
+      "Avitaminoz — biror vitaminning butunlay yo‘qligi, o‘ziga xos og‘ir kasallik bilan kechadi. Gipovitaminoz — qisman yetishmovchilik: tez charchash, ish qobiliyati va infeksiyaga qarshilikning pasayishi, bolalarda o‘sish va rivojlanishning sekinlashishi. Gipervitaminoz — haddan ortiq iste’moldan intoksikatsiya.",
+      "Gipovitaminoz sabablari: bir xil sifatsiz ovqatlanish, ovqatni cheklash (masalan, ro‘za), homiladorlik va emizish davri, vitamin so‘rilishi va o‘zlashtirilishini buzuvchi kasalliklar, tashuvchi oqsillar sintezining buzilishi.",
+      "Yog‘da eriydigan vitaminlar (A, D, E, K) to‘planadi, shuning uchun ortiqcha dozasi zaharliroq; suvda eriydiganlar (B guruhi, C, P) ortiqchasi buyrak orqali osonroq chiqib ketadi."
+     ],
+     "ru": [
+      "Витамины нужны организму в очень малых количествах, но важны для обмена веществ: они участвуют в работе ферментов.",
+      "Авитаминоз — полное отсутствие какого-либо витамина, протекает с характерным тяжёлым заболеванием. Гиповитаминоз — частичная недостаточность: быстрая утомляемость, снижение работоспособности и сопротивляемости инфекциям, у детей — замедление роста и развития. Гипервитаминоз — интоксикация при чрезмерном потреблении.",
+      "Причины гиповитаминоза: однообразное неполноценное питание, ограничение пищи (например, пост), беременность и кормление грудью, болезни, нарушающие всасывание и усвоение витаминов, нарушение синтеза белков-переносчиков.",
+      "Жирорастворимые витамины (A, D, E, K) накапливаются, поэтому их избыток более токсичен; избыток водорастворимых (группа B, C, P) легче выводится почками."
+     ],
+     "en": [
+      "Vitamins are needed in very small amounts but matter greatly for metabolism: they take part in enzyme function.",
+      "Avitaminosis is the complete absence of a vitamin and causes a characteristic severe disease. Hypovitaminosis is partial deficiency: quick tiring, lower working capacity and resistance to infection, and slowed growth and development in children. Hypervitaminosis is intoxication from excessive intake.",
+      "Causes of hypovitaminosis: monotonous poor-quality diet, restricted eating (for example fasting), pregnancy and breastfeeding, diseases that impair vitamin absorption and utilisation, and impaired synthesis of carrier proteins.",
+      "Fat-soluble vitamins (A, D, E, K) accumulate, so an excess is more toxic; an excess of water-soluble vitamins (B group, C, P) is excreted more easily by the kidneys."
+     ]
+    },
+    "refs": [
+     {
+      "pack": "book-aripova-2007",
+      "loc": {
+       "uz": "IV bob, 40–41-b.",
+       "ru": "гл. IV, с. 40–41",
+       "en": "Ch. IV, pp. 40–41"
+      }
+     }
+    ]
+   },
+   {
+    "title": {
+     "uz": "Vitaminlar: yetishmaganda kuzatiladigan holatlar",
+     "ru": "Витамины: состояния при недостатке",
+     "en": "Vitamins: conditions seen in deficiency"
+    },
+    "table": {
+     "header": {
+      "uz": [
+       "Vitamin",
+       "Yetishmovchilikda kitobda tasvirlanadigan holat"
+      ],
+      "ru": [
+       "Витамин",
+       "Состояние при недостатке, описанное в книге"
+      ],
+      "en": [
+       "Vitamin",
+       "Condition described in the book for deficiency"
+      ]
+     },
+     "rows": {
+      "uz": [
+       [
+        "B1 (tiamin)",
+        "Asab buzilishi, tez charchash, ishtaha pasayishi; polinevrit (beri-beri)"
+       ],
+       [
+        "B2 (riboflavin)",
+        "Madorsizlik, ishtaha yo‘qolishi; og‘ir holda o‘sishdan to‘xtash, soch to‘kilishi, shox pardada tomirlar o‘sishi"
+       ],
+       [
+        "B6 (piridoksin)",
+        "Oqsil almashinuvi buzilishi; ishtaha yo‘qolishi, ko‘ngil aynishi, xotira pasayishi"
+       ],
+       [
+        "B12 (kobalamin)",
+        "Xavfli kamqonlik; oshqozonda xlorid kislota kamayishi, qon yaratish buzilishi. Manbasi faqat hayvon mahsulotlari"
+       ],
+       [
+        "PP (nikotinat)",
+        "Pellagra: teri, ichak va asab buzilishlari; teri o‘zgarishi quyosh ta’sirida ochiq joylarda"
+       ],
+       [
+        "C (askorbin kislota)",
+        "Singa (lavsha): terida va ichki a’zolarda nuqtasimon qon quyilishlar, milk qonashi"
+       ],
+       [
+        "A (retinol)",
+        "Shapko‘rlik; epiteliyning muguzlanishi"
+       ],
+       [
+        "D",
+        "Raxit: ichakda kalsiy va fosfor so‘rilishi buziladi, qonda kalsiy kamayadi"
+       ],
+       [
+        "K",
+        "Qon ivishining pasayishi, teri ostiga va a’zolarga qon quyilishi"
+       ],
+       [
+        "E",
+        "Odamda avitaminoz amalda uchramaydi — ovqatda keng tarqalgan"
+       ]
+      ],
+      "ru": [
+       [
+        "B1 (тиамин)",
+        "Расстройство нервной системы, быстрая утомляемость, снижение аппетита; полиневрит (бери-бери)"
+       ],
+       [
+        "B2 (рибофлавин)",
+        "Слабость, потеря аппетита; в тяжёлых случаях остановка роста, выпадение волос, врастание сосудов в роговицу"
+       ],
+       [
+        "B6 (пиридоксин)",
+        "Нарушение белкового обмена; потеря аппетита, тошнота, ухудшение памяти"
+       ],
+       [
+        "B12 (кобаламин)",
+        "Злокачественная (пернициозная) анемия; снижение соляной кислоты в желудке, нарушение кроветворения. Источник — только продукты животного происхождения"
+       ],
+       [
+        "PP (никотинат)",
+        "Пеллагра: поражение кожи, кишечника и нервной системы; изменения кожи на открытых солнцу участках"
+       ],
+       [
+        "C (аскорбиновая кислота)",
+        "Цинга: точечные кровоизлияния в коже и внутренних органах, кровоточивость дёсен"
+       ],
+       [
+        "A (ретинол)",
+        "Куриная слепота; ороговение эпителия"
+       ],
+       [
+        "D",
+        "Рахит: нарушается всасывание кальция и фосфора в кишечнике, кальций в крови снижается"
+       ],
+       [
+        "K",
+        "Снижение свёртываемости крови, кровоизлияния под кожу и в органы"
+       ],
+       [
+        "E",
+        "У человека авитаминоз практически не встречается — витамин широко распространён в пище"
+       ]
+      ],
+      "en": [
+       [
+        "B1 (thiamine)",
+        "Nervous disturbance, quick tiring, poor appetite; polyneuritis (beriberi)"
+       ],
+       [
+        "B2 (riboflavin)",
+        "Weakness, loss of appetite; in severe cases growth arrest, hair loss, vessel ingrowth into the cornea"
+       ],
+       [
+        "B6 (pyridoxine)",
+        "Disturbed protein metabolism; loss of appetite, nausea, memory loss"
+       ],
+       [
+        "B12 (cobalamin)",
+        "Pernicious anaemia; reduced gastric hydrochloric acid, disturbed blood formation. Source: animal products only"
+       ],
+       [
+        "PP (nicotinate)",
+        "Pellagra: skin, bowel and nervous disturbance; skin changes on sun-exposed areas"
+       ],
+       [
+        "C (ascorbic acid)",
+        "Scurvy: pinpoint haemorrhages in skin and internal organs, bleeding gums"
+       ],
+       [
+        "A (retinol)",
+        "Night blindness; keratinisation of epithelium"
+       ],
+       [
+        "D",
+        "Rickets: calcium and phosphorus absorption in the gut is impaired and blood calcium falls"
+       ],
+       [
+        "K",
+        "Reduced blood clotting, bleeding under the skin and into organs"
+       ],
+       [
+        "E",
+        "Deficiency practically does not occur in humans — it is widespread in food"
+       ]
+      ]
+     },
+     "widths": [
+      0.25,
+      0.75
+     ]
+    },
+    "refs": [
+     {
+      "pack": "book-aripova-2007",
+      "loc": {
+       "uz": "IV bob, 41–44-b.",
+       "ru": "гл. IV, с. 41–44",
+       "en": "Ch. IV, pp. 41–44"
+      }
+     }
+    ]
+   }
+  ]
+ }
+}
