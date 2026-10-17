@@ -5,7 +5,7 @@ import extract
 import llm
 import schemas
 import targets
-from helpers import FakeAPIError, FakeClient, make_root, resp
+from helpers import FakeAPIError, FakeClient, credit_error, make_root, resp
 
 SCHEMA = schemas.CONTENT_REVIEW
 OK = {"findings": [], "summary": "nothing"}
@@ -116,6 +116,42 @@ class LLMTests(unittest.TestCase):
         self.assertIsNone(llm.api_key_from_env({}))
         self.assertIsNone(llm.api_key_from_env({"ANTHROPIC_API_KEY": "  "}))
         self.assertEqual(llm.api_key_from_env({"ANTHROPIC_API_KEY": " k "}), "k")
+
+    # --- 2026-10-17 jonli ishga tushirish: kredit tugagan -> 400 invalid_request_error ---
+    def test_credit_balance_400_is_fatal_billing_and_not_retried(self):
+        c = FakeClient([credit_error()])
+        m, sleeps, _ = mk(c)
+        r = m.call("s", "u", SCHEMA, 100)
+        self.assertFalse(r.ok)
+        self.assertTrue(r.fatal)
+        self.assertEqual(r.fatal_reason, "billing")
+        self.assertEqual(len(c.calls), 1)
+        self.assertEqual(sleeps, [])
+        self.assertIn("BadRequestError", r.error)
+        self.assertIn("status=400", r.error)
+        self.assertIn("type=invalid_request_error", r.error)
+        self.assertIn("credit balance is too low", r.error)
+
+    def test_billing_error_type_is_fatal(self):
+        r = mk(FakeClient([FakeAPIError(400, "x", error_type="billing_error", error_message="no funds")]))[0].call("s", "u", SCHEMA, 1)
+        self.assertEqual(r.fatal_reason, "billing")
+
+    def test_overloaded_error_type_without_status_retried(self):
+        class OverloadedError(Exception):
+            body = {"type": "error", "error": {"type": "overloaded_error", "message": "Overloaded"}}
+
+        c = FakeClient([OverloadedError("Overloaded"), FakeAPIError(529, "Overloaded"), resp(OK)])
+        m, sleeps, _ = mk(c)
+        self.assertTrue(m.call("s", "u", SCHEMA, 100).ok)
+        self.assertEqual(len(sleeps), 2)
+
+    def test_describe_error_is_short_single_line_and_redacted(self):
+        key = "sk-ant-api03-SECRETSECRETSECRET"
+        e = FakeAPIError(400, "x", error_type="invalid_request_error", error_message=f"bad\n{key}\n" + "y" * 500)
+        d = llm.describe_error(e, key)
+        self.assertNotIn("SECRETSECRET", d)
+        self.assertNotIn("\n", d)
+        self.assertLess(len(d), 320)
 
 
 class TargetTests(unittest.TestCase):

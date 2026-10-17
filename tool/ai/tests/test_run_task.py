@@ -5,7 +5,7 @@ from pathlib import Path
 
 import helpers  # noqa: F401
 import run_task
-from helpers import FakeAPIError, FakeClient, REPO, make_root, resp
+from helpers import FakeAPIError, FakeClient, REPO, credit_error, make_root, resp
 
 KEY = "sk-ant-api03-TESTKEYTESTKEYTESTKEY"
 
@@ -232,6 +232,63 @@ class RealRunTests(RunBase):
         for p in self.root.rglob("*"):
             if p.is_file():
                 self.assertNotIn(b"TESTKEYTESTKEY", p.read_bytes(), str(p))
+
+
+class LiveRunRegressionTests(RunBase):
+    """2026-10-17 jonli ishga tushirishdagi nosozliklar (runs 39052903079, 39052906448)."""
+
+    def test_content_review_credit_exhausted_mid_run_aborts_once_and_logs_reason(self):
+        # 1-2 elementlar muvaffaqiyatli, keyin hisobda kredit tugaydi (logda "ok=False in=0 out=0" edi, sababsiz).
+        ok = resp({"findings": [], "summary": ""})
+        client = FakeClient([ok, ok, credit_error()])
+        rc = self.go(["--task", "content_review", "--target", "all-small", "--max-items", "6"], client=client)
+        self.assertEqual(rc, 0)
+        self.assertEqual(len(client.calls), 3)  # kredit xatosidan keyin boshqa chaqiruv yo'q
+        data = json.loads(next((self.root / "docs/ai_reports").glob("*.json")).read_text())
+        self.assertEqual(data["meta"]["status"], "partial")
+        self.assertEqual(data["meta"]["items_done"], 2)
+        self.assertEqual(data["meta"]["items_failed"], 1)
+        self.assertEqual(data["meta"]["items_aborted"], 3)
+        self.assertEqual(data["meta"]["abort_reason"], "billing")
+        log = self.log_text()
+        fail_line = next(l for l in self.logs if l.startswith("[3/"))
+        self.assertIn("ok=False", fail_line)
+        self.assertIn("BadRequestError", fail_line)
+        self.assertIn("credit balance is too low", fail_line)
+        self.assertIn("::error::", log)
+        self.assertNotIn("<item_json>", log)  # prompt logga tushmaydi
+        self.assertNotIn("TESTKEYTESTKEY", log)
+
+    def test_ru_terminology_credit_exhausted_from_start(self):
+        client = FakeClient([credit_error()])
+        rc = self.go(["--task", "ru_terminology", "--target", "pack", "--max-items", "6"], client=client)
+        self.assertEqual(rc, 1)
+        self.assertEqual(len(client.calls), 1)
+        data = json.loads(next((self.root / "docs/ai_reports").glob("*.json")).read_text())
+        self.assertEqual(data["meta"]["status"], "failed")
+        self.assertEqual(data["meta"]["abort_reason"], "billing")
+        self.assertTrue(any("Plans & Billing" in n or "kredit" in n for n in data["meta"]["notes"]))
+
+    def test_report_path_printed_relative_to_repo_matches_workflow_glob(self):
+        client = FakeClient([resp({"findings": [], "summary": ""})])
+        self.assertEqual(self.go(["--task", "content_review", "--target", "analyte:alt"], client=client), 0)
+        self.assertIn("report: `docs/ai_reports/2026-10-17_content_review_analyte-alt.md`", self.log_text())
+        self.assertTrue((self.root / "docs/ai_reports/2026-10-17_content_review_analyte-alt.md").exists())
+
+    def test_local_exception_in_post_processing_is_recorded_not_crash(self):
+        client = FakeClient([resp({"findings": [], "summary": ""})])
+        orig = run_task.post_process
+
+        def boom(*a, **k):
+            raise KeyError("severity")
+
+        run_task.post_process = boom
+        self.addCleanup(setattr, run_task, "post_process", orig)
+        rc = self.go(["--task", "content_review", "--target", "analyte:alt"], client=client)
+        self.assertEqual(rc, 1)
+        data = json.loads(next((self.root / "docs/ai_reports").glob("*.json")).read_text())
+        self.assertIn("KeyError", data["results"][0]["error"])
+        self.assertIn("KeyError", self.log_text())
 
 
 class RealRepoDryRunTests(unittest.TestCase):

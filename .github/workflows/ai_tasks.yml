@@ -6,7 +6,8 @@
 #   * `run` ishi: contents: read. ANTHROPIC_API_KEY FAQAT shu ishdagi bitta Python qadamining env'ida
 #     (dry_run=true bo'lsa umuman berilmaydi). Kalit diskka, artifact'ga, logga yozilmaydi.
 #   * `publish` ishi: contents: write, lekin kalit YO'Q va repodagi kod ishga tushmaydi — faqat
-#     tayyor hisobotlarni `ai-reports` tarmog'iga yuboradi (main'ga hech qachon).
+#     tayyor hisobotlarni `ai-reports` tarmog'iga yuboradi (main'ga hech qachon). Artifact checkout'dan KEYIN
+#     va ish papkasidan tashqariga (runner.temp) yuklanadi — checkout ish papkasini tozalaydi.
 #   * Barcha kiritmalar env orqali beriladi (${{ }} ni shell matniga qo'shilmaydi).
 #   * Uchinchi tomon action'lar commit SHA bo'yicha mahkamlangan (izohda versiya).
 #   * Natijalar — takliflar; ilova mazmuni avtomatik o'zgarmaydi va main'ga qo'shilmaydi (D-55).
@@ -47,9 +48,12 @@ on:
 
 permissions: {}
 
-# Bir vaqtda faqat bitta ishga tushirish (navbatga turadi, bekor qilinmaydi).
+# Har bir vazifa+target uchun alohida guruh. GitHub bitta guruhda faqat BITTA kutayotgan run'ni saqlaydi va
+# eskisini bekor qiladi — umumiy `ai-tasks` guruhida 3 ta dispatch'ning uchinchisi (translate_check) shu sabab
+# CANCELLED bo'lgan. Endi turli vazifalar parallel ishlaydi; bir xil vazifa+target qayta bosilsa navbatga turadi.
+# (Hisobot nomlari vazifa+target bo'yicha, publish esa ai-reports'ga force'siz yuboradi — pastga qarang.)
 concurrency:
-  group: ai-tasks
+  group: ai-tasks-${{ inputs.task }}-${{ inputs.target }}
   cancel-in-progress: false
 
 jobs:
@@ -138,22 +142,28 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0 # v5.0.0
-        with:
-          name: ai-report-${{ github.run_id }}
-          path: incoming
-
+      # Tartib muhim: actions/checkout ish papkasini tozalaydi ("Deleting the contents of ..."). Ilgari artifact
+      # avval `incoming/` ga yuklanib, checkout uni o'chirgan -> "Hisobot yo'q". Endi avval checkout, artifact esa
+      # ish papkasidan TASHQARIGA (runner.temp).
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
         with:
           fetch-depth: 1
 
+      # upload-artifact `path: docs/ai_reports/` fayllarni artifact ildiziga joylaydi -> bu yerda <path>/<fayl>.
+      - uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0 # v5.0.0
+        with:
+          name: ai-report-${{ github.run_id }}
+          path: ${{ runner.temp }}/ai-incoming
+
       - name: ai-reports tarmog'iga yuborish
+        env:
+          AI_INCOMING: ${{ runner.temp }}/ai-incoming
         run: |
           set -euo pipefail
           set +x
           # 1) Kiruvchi fayllarni tekshirish: faqat kutilgan nomlar, kalitga o'xshash matn yo'q.
           shopt -s nullglob
-          files=(incoming/*)
+          files=("$AI_INCOMING"/*)
           [ "${#files[@]}" -gt 0 ] || { echo "::error::Hisobot yo'q"; exit 1; }
           for f in "${files[@]}"; do
             b=$(basename "$f")
@@ -165,45 +175,58 @@ jobs:
             fi
           done
 
-          # 2) ai-reports tarmog'i (bo'lmasa yangi, tarixsiz).
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          if git ls-remote --exit-code --heads origin ai-reports > /dev/null 2>&1; then
-            git fetch --depth=1 origin ai-reports
-            git switch -C ai-reports FETCH_HEAD
-          else
-            git switch --orphan ai-reports
-            cat > README.md <<'EOF'
+
+          # 2-4) ai-reports'ning eng so'nggi holati ustiga commit. Turli vazifalar endi parallel ishlaydi, shuning
+          # uchun push rad etilsa (boshqa run oldinroq yubordi) — yangi uchidan qaytadan quriladi (force YO'Q).
+          pushed=false
+          for attempt in 1 2 3 4; do
+            # 2) ai-reports tarmog'i (bo'lmasa yangi, tarixsiz).
+            if git ls-remote --exit-code --heads origin ai-reports > /dev/null 2>&1; then
+              git fetch --depth=1 origin ai-reports
+              git switch --discard-changes -C ai-reports FETCH_HEAD
+              git clean -ffdq
+            else
+              git switch --discard-changes --orphan ai-reports
+              git clean -ffdq
+              cat > README.md <<'EOF'
           # ai-reports
 
           Bu tarmoq `AI tasks` workflow'i tomonidan avtomatik to'ldiriladi (docs/DECISIONS.md D-55).
           Ichida Claude modelining TAKLIFLARI bor - odam tekshiruvi shart. Bu tarmoqni main'ga
           qo'shmang (merge qilmang): kerakli xulosalarni qo'lda ko'chiring.
           EOF
-          fi
-
-          # 3) Nusxalash (mavjud fayl ustiga yozilmaydi: nomga run raqami qo'shiladi).
-          mkdir -p docs/ai_reports
-          for f in "${files[@]}"; do
-            b=$(basename "$f")
-            dest="docs/ai_reports/$b"
-            if [ -e "$dest" ]; then
-              dest="docs/ai_reports/${b%.*}_run${GITHUB_RUN_ID}.${b##*.}"
             fi
-            cp "$f" "$dest"
-          done
 
-          # 4) Faqat docs/ai_reports/** va README.md o'zgarishi mumkin.
-          git add docs/ai_reports
-          if [ -f README.md ]; then git add README.md; fi
-          bad=$(git diff --cached --name-only | grep -v -E '^(docs/ai_reports/[^/]+|README\.md)$' || true)
-          if [ -n "$bad" ]; then
-            echo "::error::Kutilmagan o'zgarishlar: $bad"; exit 1
-          fi
-          if git diff --cached --quiet; then
-            echo "O'zgarish yo'q"; exit 0
-          fi
-          git commit -m "ai-reports: run ${GITHUB_RUN_ID} (${#files[@]} file(s))"
-          # Aniq refspec: faqat ai-reports (main'ga hech qachon, force'siz).
-          git push origin HEAD:refs/heads/ai-reports
+            # 3) Nusxalash (mavjud fayl ustiga yozilmaydi: nomga run raqami qo'shiladi).
+            mkdir -p docs/ai_reports
+            for f in "${files[@]}"; do
+              b=$(basename "$f")
+              dest="docs/ai_reports/$b"
+              if [ -e "$dest" ]; then
+                dest="docs/ai_reports/${b%.*}_run${GITHUB_RUN_ID}.${b##*.}"
+              fi
+              cp "$f" "$dest"
+            done
+
+            # 4) Faqat docs/ai_reports/** va README.md o'zgarishi mumkin.
+            git add docs/ai_reports
+            if [ -f README.md ]; then git add README.md; fi
+            bad=$(git diff --cached --name-only | grep -v -E '^(docs/ai_reports/[^/]+|README\.md)$' || true)
+            if [ -n "$bad" ]; then
+              echo "::error::Kutilmagan o'zgarishlar: $bad"; exit 1
+            fi
+            if git diff --cached --quiet; then
+              echo "O'zgarish yo'q"; exit 0
+            fi
+            git commit -q -m "ai-reports: run ${GITHUB_RUN_ID} (${#files[@]} file(s))"
+            # Aniq refspec: faqat ai-reports (main'ga hech qachon, force'siz).
+            if git push origin HEAD:refs/heads/ai-reports; then
+              pushed=true; break
+            fi
+            echo "::warning::push rad etildi (urinish $attempt/4) - ai-reports yangilangan, qaytadan quriladi"
+            sleep $((attempt * 5))
+          done
+          [ "$pushed" = true ] || { echo "::error::ai-reports'ga yuborib bo'lmadi"; exit 1; }
           echo "Hisobotlar: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/tree/ai-reports/docs/ai_reports" >> "$GITHUB_STEP_SUMMARY"

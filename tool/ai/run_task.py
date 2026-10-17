@@ -43,6 +43,11 @@ DISCLAIMER = (
     "content was changed."
 )
 SEV_ORDER = {"critical": 0, "major": 1, "minor": 2, "info": 3}
+ABORT_MESSAGES = {
+    "auth": "Kalit/ruxsat xatosi tufayli to'xtatildi / aborted on auth error (401/403/404).",
+    "billing": ("API hisobida kredit tugagan - to'xtatildi (console.anthropic.com -> Plans & Billing). / "
+                "Aborted: Anthropic API credit balance too low."),
+}
 
 
 class ArgError(ValueError):
@@ -289,6 +294,7 @@ def run(
     records: list[dict[str, Any]] = []
     stopped_for_budget = False
     fatal = False
+    abort_reason: str | None = None
     consecutive_fail = 0
     for i, row in enumerate(rows):
         item = row["item"]
@@ -303,25 +309,37 @@ def run(
             records.append({"item_id": item["id"], "title": item["title"].get("en", ""), "origin": item["origin"],
                             "ok": False, "error": "skipped: budget cap", "skipped": "budget", "tokens_in": 0, "tokens_out": 0})
             continue
-        reply = client_llm.call(system, row["user"], schema, max_tokens)
-        cost = bud.record(reply.in_tokens, reply.out_tokens) if (reply.in_tokens or reply.out_tokens) else 0.0
         rec: dict[str, Any] = {"item_id": item["id"], "title": item["title"].get("en", ""), "origin": item["origin"],
-                               "tokens_in": reply.in_tokens, "tokens_out": reply.out_tokens,
-                               "cost_usd": round(cost, 6), "attempts": reply.attempts}
-        if reply.ok and reply.parsed is not None:
-            errs = schemas.validate(reply.parsed, schema)
-            if errs:
-                rec.update(ok=False, error="sxemaga mos emas: " + "; ".join(errs[:3]))
+                               "tokens_in": 0, "tokens_out": 0, "cost_usd": 0.0, "attempts": 0}
+        try:
+            reply = client_llm.call(system, row["user"], schema, max_tokens)
+            cost = bud.record(reply.in_tokens, reply.out_tokens) if (reply.in_tokens or reply.out_tokens) else 0.0
+            rec.update(tokens_in=reply.in_tokens, tokens_out=reply.out_tokens,
+                       cost_usd=round(cost, 6), attempts=reply.attempts)
+            if reply.ok and reply.parsed is not None:
+                errs = schemas.validate(reply.parsed, schema)
+                if errs:
+                    rec.update(ok=False, error="sxemaga mos emas: " + "; ".join(errs[:3]))
+                else:
+                    rec.update(ok=True, result=post_process(ns.task, item, reply.parsed, ns.options))
             else:
-                rec.update(ok=True, result=post_process(ns.task, item, reply.parsed, ns.options))
-        else:
-            rec.update(ok=False, error=reply.error)
-        fatal = fatal or reply.fatal
+                rec.update(ok=False, error=reply.error)
+            if reply.fatal and not fatal:
+                fatal, abort_reason = True, reply.fatal_reason or "auth"
+        except Exception as exc:  # noqa: BLE001 - mahalliy xato butun ishni yiqitmasin
+            rec.update(ok=False, error="mahalliy xato / local error: " + llm_mod.describe_error(exc, key, limit=160))
         consecutive_fail = 0 if rec["ok"] else consecutive_fail + 1
         records.append(rec)
-        # faqat sonlar:
-        log(f"[{i + 1}/{len(rows)}] {item['id']} ok={rec['ok']} in={reply.in_tokens} out={reply.out_tokens} "
-            f"spent=${bud.spent_usd:.4f}/${bud.cap_usd:.2f}")
+        # faqat sonlar; xato bo'lsa — qisqa sabab (klass/status/xabar boshi), prompt va kalit emas:
+        line = (f"[{i + 1}/{len(rows)}] {item['id']} ok={rec['ok']} in={rec['tokens_in']} out={rec['tokens_out']} "
+                f"spent=${bud.spent_usd:.4f}/${bud.cap_usd:.2f}")
+        if not rec["ok"]:
+            line += f" error={llm_mod.redact(str(rec.get('error') or ''), key)[:240]}"
+        log(line)
+        if fatal:
+            log(f"::error::{ABORT_MESSAGES.get(abort_reason, ABORT_MESSAGES['auth'])} Qolgan elementlar o'tkazib yuborildi.")
+        elif consecutive_fail == MAX_CONSECUTIVE_FAILURES:
+            log(f"::error::Ketma-ket {MAX_CONSECUTIVE_FAILURES} xato - ish to'xtatildi (sababi yuqoridagi `error=` qatorlarida).")
 
     done = sum(1 for r in records if r["ok"])
     skipped = sum(1 for r in records if r.get("skipped") == "budget")
@@ -338,11 +356,12 @@ def run(
         "status": status, "review_status": "ai_suggestions_unreviewed",
         "items_selected": len(records), "items_done": done, "items_failed": failed, "items_skipped_budget": skipped,
         "items_aborted": aborted,
+        "abort_reason": abort_reason or ("consecutive_failures" if aborted else None),
         "tokens_in": bud.in_tokens, "tokens_out": bud.out_tokens, "cost_usd": round(bud.spent_usd, 6),
         "budget_cap_usd": ns.budget_usd, "max_tokens": max_tokens, "run_url": run_url,
         "prices_usd_per_mtok": {"input": budget_mod.PRICES[ns.model][0], "output": budget_mod.PRICES[ns.model][1]},
         "notes": notes + (["Byudjet chegarasi tufayli to'xtatildi / stopped at budget cap"] if stopped_for_budget else [])
-                 + (["Kalit/ruxsat xatosi tufayli to'xtatildi / aborted on auth error"] if fatal else []),
+                 + ([ABORT_MESSAGES.get(abort_reason or "auth", ABORT_MESSAGES["auth"])] if fatal else []),
     }
     md = render_markdown(meta, records)
     js = json.dumps({"meta": meta, "disclaimer": DISCLAIMER, "results": records}, ensure_ascii=False, indent=1) + "\n"
@@ -358,9 +377,12 @@ def run(
     base = base if k == 1 else f"{base}_r{k}"
     (ns.out_path / f"{base}.md").write_text(md, encoding="utf-8")
     (ns.out_path / f"{base}.json").write_text(js, encoding="utf-8")
+    # repo ildiziga nisbatan (workflow `docs/ai_reports/` dan yig'adi; ilgari faqat `ai_reports/` chiqardi)
+    report_rel = ns.out_path.relative_to(ns.root_path).as_posix()
     summary = (f"## ai_tasks: {ns.task} / {ns.target}\n\n- status: **{status}**; items {done}/{len(records)} ok, "
                f"{failed} failed, {skipped} skipped\n- tokens in/out: {bud.in_tokens}/{bud.out_tokens}; "
-               f"cost ~${bud.spent_usd:.4f} of ${ns.budget_usd:.2f}\n- report: `{ns.out_path.name}/{base}.md`")
+               f"cost ~${bud.spent_usd:.4f} of ${ns.budget_usd:.2f}\n- report: `{report_rel}/{base}.md`"
+               + (f"\n- aborted: {ABORT_MESSAGES.get(abort_reason or 'auth', '')}" if fatal else ""))
     log(summary)
     write_summary(summary, env)
     return 0 if done > 0 else 1
