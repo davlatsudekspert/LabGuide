@@ -4,6 +4,8 @@ import 'tokens.dart';
 import 'transitions.dart';
 
 /// Tipografika shkalasi: 39 / 30 / 25 / 18 / 16 / 14 / 12 / 11 px.
+/// Sarlavhalarda harf oralig'i yumshatilgan (avval -1,7 / -1,2 / -0,9):
+/// katta matn "siqilgan" emas, osoyishta o'qiladi.
 /// Asosiy o'qish matni 16 px (bodyLarge). 11 px faqat qisqa yordamchi
 /// yozuvlar (eyebrow, tab nomi) uchun — undan kichik matn ishlatilmaydi.
 TextTheme _textTheme(LgPalette p) {
@@ -13,8 +15,8 @@ TextTheme _textTheme(LgPalette p) {
     displaySmall: TextStyle(
       fontFamily: family,
       fontSize: 39,
-      height: 1.08,
-      letterSpacing: -1.7,
+      height: 1.1,
+      letterSpacing: -1.1,
       fontWeight: FontWeight.w600,
       color: p.ink,
     ),
@@ -22,8 +24,8 @@ TextTheme _textTheme(LgPalette p) {
     headlineMedium: TextStyle(
       fontFamily: family,
       fontSize: 30,
-      height: 1.15,
-      letterSpacing: -1.2,
+      height: 1.18,
+      letterSpacing: -0.8,
       fontWeight: FontWeight.w600,
       color: p.ink,
     ),
@@ -31,8 +33,8 @@ TextTheme _textTheme(LgPalette p) {
     headlineSmall: TextStyle(
       fontFamily: family,
       fontSize: 25,
-      height: 1.2,
-      letterSpacing: -0.9,
+      height: 1.22,
+      letterSpacing: -0.6,
       fontWeight: FontWeight.w600,
       color: p.ink,
     ),
@@ -40,8 +42,8 @@ TextTheme _textTheme(LgPalette p) {
     titleLarge: TextStyle(
       fontFamily: family,
       fontSize: 18,
-      height: 1.3,
-      letterSpacing: -0.3,
+      height: 1.32,
+      letterSpacing: -0.2,
       fontWeight: FontWeight.w600,
       color: p.ink,
     ),
@@ -148,7 +150,11 @@ ThemeData buildLgTheme(Brightness brightness) {
     scaffoldBackgroundColor: p.bg,
     canvasColor: p.bg,
     dividerColor: p.line,
-    splashFactory: InkSparkle.splashFactory,
+    // Mayin bosish: sparkle o'rniga xira to'lqin, past shaffoflik.
+    splashFactory: InkRipple.splashFactory,
+    splashColor: p.brand.withValues(alpha: 0.08),
+    highlightColor: p.brand.withValues(alpha: 0.04),
+    hoverColor: p.brand.withValues(alpha: 0.04),
     extensions: [p],
     materialTapTargetSize: MaterialTapTargetSize.padded,
     visualDensity: VisualDensity.standard,
@@ -159,7 +165,9 @@ ThemeData buildLgTheme(Brightness brightness) {
       backgroundColor: p.ink,
       contentTextStyle: text.bodyMedium!.copyWith(color: p.bg),
       actionTextColor: p.soft,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(LgRadius.notice),
+      ),
     ),
     dialogTheme: DialogThemeData(
       backgroundColor: p.paper,

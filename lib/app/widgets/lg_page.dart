@@ -238,7 +238,10 @@ class _LgPageState extends State<LgPage> {
                             horizontal,
                             pinned ? 4 : 0,
                             horizontal,
-                            (insideShell ? 16 : 32) + bottomInset,
+                            // Shell ichida: panel (Lab tugmasi bilan) ustida
+                            // 24 px bo'sh joy — oxirgi tugma panelga
+                            // "yopishib" turmaydi.
+                            (insideShell ? 24 : 32) + bottomInset,
                           ),
                           // Birinchi o'rin doim band: qaror o'zgarganda
                           // kontent elementlarining indeksi (va holati —

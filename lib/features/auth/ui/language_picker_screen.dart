@@ -146,7 +146,11 @@ class _LanguagePickerScreenState extends State<LanguagePickerScreen>
                         begin: 0.8,
                         end: 1,
                       ).animate(logoAnim),
-                      child: const LgLogoHero(size: 104),
+                      child: const LgLogoHero(
+                        size: 104,
+                        halo: true,
+                        animate: false,
+                      ),
                     ),
                   ),
                   const SizedBox(height: LgSpace.lg),

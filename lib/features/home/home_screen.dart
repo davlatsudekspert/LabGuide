@@ -21,10 +21,14 @@ import '../toifa/toifa_screens.dart';
 
 /// Bosh sahifadagi bitta tezkor amal.
 class HomeAction {
-  const HomeAction(this.label, this.icon, this.location);
+  const HomeAction(this.label, this.icon, this.location, this.caption);
 
   final String label;
   final IconData icon;
+
+  /// Kartadagi bir qatorli izoh: ichida nima borligini aytadi (hamma
+  /// kartada bir xil "Ochish" emas).
+  final String caption;
 
   /// `context.go` bilan ochiladi: tegishli tab o'z stacki bilan tanlanadi.
   final String location;
@@ -61,18 +65,30 @@ class RoleHome {
       heroCta: l.homeHeroDoctorCta,
       heroLocation: '/tests',
       actions: [
-        HomeAction(l.featureTests, Icons.biotech_outlined, '/tests'),
+        HomeAction(
+          l.featureTests,
+          Icons.biotech_outlined,
+          '/tests',
+          l.homeTileTests,
+        ),
         HomeAction(
           l.featureCalculators,
           Icons.calculate_outlined,
           '/lab/calculators',
+          l.homeTileCalculators,
         ),
         HomeAction(
           l.featureSampleFactors,
           Icons.vaccines_outlined,
           '/lab/preanalytics',
+          l.homeTileSampling,
         ),
-        HomeAction(l.featureSaved, Icons.bookmark_outline, '/library/saved'),
+        HomeAction(
+          l.featureSaved,
+          Icons.bookmark_outline,
+          '/library/saved',
+          l.homeTileSaved,
+        ),
       ],
       usefulAnalytes: const ['glucose-plasma-fasting', 'creatinine', 'alt'],
       featuredConditions: const [
@@ -88,31 +104,41 @@ class RoleHome {
       heroCta: l.homeHeroLabCta,
       heroLocation: '/lab/qc',
       actions: [
-        HomeAction(l.featureQc, Icons.show_chart_rounded, '/lab/qc'),
+        HomeAction(
+          l.featureQc,
+          Icons.show_chart_rounded,
+          '/lab/qc',
+          l.labQcSub,
+        ),
         HomeAction(
           l.diffTitle,
           Icons.bubble_chart_outlined,
           '/lab/differential',
+          l.homeTileDiff,
         ),
         HomeAction(
           l.featureCalibration,
           Icons.tune_rounded,
           '/lab/calibration',
+          l.homeTileCalibration,
         ),
         HomeAction(
           l.featureCalculators,
           Icons.calculate_outlined,
           '/lab/calculators',
+          l.homeTileCalculators,
         ),
         HomeAction(
           l.featureSampling,
           Icons.science_outlined,
           '/lab/preanalytics',
+          l.homeTileSampling,
         ),
         HomeAction(
           l.labInstruments,
           Icons.precision_manufacturing_outlined,
           '/lab/instruments',
+          l.homeTileInstruments,
         ),
       ],
       usefulAnalytes: const [
@@ -127,16 +153,42 @@ class RoleHome {
       heroCta: l.homeHeroStudentCta,
       heroLocation: '/learn',
       actions: [
-        HomeAction(l.featureTests, Icons.menu_book_outlined, '/tests'),
-        HomeAction(l.featureQuiz, Icons.quiz_outlined, '/learn/quiz'),
+        HomeAction(
+          l.featureTests,
+          Icons.menu_book_outlined,
+          '/tests',
+          l.homeTileTests,
+        ),
+        HomeAction(
+          l.featureQuiz,
+          Icons.quiz_outlined,
+          '/learn/quiz',
+          l.analytePracticeSub,
+        ),
         HomeAction(
           l.featureMicroscopy,
           Icons.biotech_outlined,
           '/lab/microscopy',
+          l.labMicroscopySub,
         ),
-        HomeAction(l.featureExam, Icons.timer_outlined, '/learn/exam'),
-        HomeAction(l.dailyTitle, Icons.today_outlined, '/learn/daily'),
-        HomeAction(l.featureTopics, Icons.school_outlined, '/learn'),
+        HomeAction(
+          l.featureExam,
+          Icons.timer_outlined,
+          '/learn/exam',
+          l.homeTileExam,
+        ),
+        HomeAction(
+          l.dailyTitle,
+          Icons.today_outlined,
+          '/learn/daily',
+          l.homeTileDaily,
+        ),
+        HomeAction(
+          l.featureTopics,
+          Icons.school_outlined,
+          '/learn',
+          l.homeTileTopics,
+        ),
       ],
       usefulAnalytes: const ['glucose-plasma-fasting', 'hba1c', 'egfr'],
     ),
@@ -146,18 +198,30 @@ class RoleHome {
       heroCta: l.homeHeroTeacherCta,
       heroLocation: '/learn/classes',
       actions: [
-        HomeAction(l.featureClasses, Icons.groups_outlined, '/learn/classes'),
+        HomeAction(
+          l.featureClasses,
+          Icons.groups_outlined,
+          '/learn/classes',
+          l.homeTileClasses,
+        ),
         // Ma'ruza rejimi (D-45/47).
-        HomeAction(l.lectureTitle, Icons.co_present_outlined, '/learn/lecture'),
+        HomeAction(
+          l.lectureTitle,
+          Icons.co_present_outlined,
+          '/learn/lecture',
+          l.homeTileLecture,
+        ),
         HomeAction(
           l.featureSources,
           Icons.fact_check_outlined,
           '/library/sources',
+          l.libSourcesSub,
         ),
         HomeAction(
           l.featureResearch,
           Icons.edit_note_rounded,
           '/library/research',
+          l.libResearchSub,
         ),
       ],
       usefulAnalytes: const ['glucose-plasma-fasting', 'hba1c', 'crp'],
@@ -197,19 +261,22 @@ class HomeScreen extends StatelessWidget {
             LgTwoColumnGrid(
               children: [
                 for (var i = 0; i < config.actions.length; i++)
-                  LgTile(
-                    title: config.actions[i].label,
-                    caption: l.actionOpen,
-                    icon: config.actions[i].icon,
-                    highlighted: i == 0,
-                    // Yorliq bo'limning o'zini va'da qiladi (masalan,
-                    // "Kalkulyatorlar" — ro'yxat, oxirgi kalkulyator emas).
-                    // QC va kalibrlash — tab steki tiklanadi: kiritilgan,
-                    // hali saqlanmagan qiymatlar yo'qolmasin.
-                    onTap: () => openInTab(
-                      context,
-                      config.actions[i].location,
-                      exact: !_keepsStack(config.actions[i].location),
+                  LgFadeIn(
+                    delay: i * 0.08,
+                    child: LgTile(
+                      title: config.actions[i].label,
+                      caption: config.actions[i].caption,
+                      icon: config.actions[i].icon,
+                      highlighted: i == 0,
+                      // Yorliq bo'limning o'zini va'da qiladi (masalan,
+                      // "Kalkulyatorlar" — ro'yxat, oxirgi kalkulyator emas).
+                      // QC va kalibrlash — tab steki tiklanadi: kiritilgan,
+                      // hali saqlanmagan qiymatlar yo'qolmasin.
+                      onTap: () => openInTab(
+                        context,
+                        config.actions[i].location,
+                        exact: !_keepsStack(config.actions[i].location),
+                      ),
                     ),
                   ),
               ],

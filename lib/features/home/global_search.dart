@@ -29,32 +29,40 @@ class HomeSearchField extends StatelessWidget {
     final l = AppLocalizations.of(context);
     final p = LgPalette.of(context);
     final text = Theme.of(context).textTheme;
+    final dark = Theme.of(context).brightness == Brightness.dark;
     return Padding(
-      padding: const EdgeInsets.only(top: 2, bottom: 6),
-      child: LgPressable(
-        onTap: () => context.push('/home/search'),
-        color: p.paper,
-        borderRadius: BorderRadius.circular(LgRadius.card),
-        semanticLabel: l.homeSearchHint,
-        child: ExcludeSemantics(
-          child: Container(
-            constraints: const BoxConstraints(minHeight: 52),
-            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(LgRadius.card),
-              border: Border.all(color: p.line),
-            ),
-            child: Row(
-              children: [
-                Icon(Icons.search_rounded, color: p.sub),
-                const SizedBox(width: 10),
-                Expanded(
-                  child: Text(
-                    l.homeSearchHint,
-                    style: text.bodyLarge!.copyWith(color: p.sub),
+      padding: const EdgeInsets.only(top: 2, bottom: 8),
+      // Yumshoq soya bilan "suzuvchi" qidiruv; tunda soya o'rniga chet.
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(LgRadius.card),
+          boxShadow: LgShadow.card(context),
+        ),
+        child: LgPressable(
+          onTap: () => context.push('/home/search'),
+          color: p.paper,
+          borderRadius: BorderRadius.circular(LgRadius.card),
+          semanticLabel: l.homeSearchHint,
+          child: ExcludeSemantics(
+            child: Container(
+              constraints: const BoxConstraints(minHeight: 52),
+              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(LgRadius.card),
+                border: dark ? Border.all(color: p.line) : null,
+              ),
+              child: Row(
+                children: [
+                  Icon(Icons.search_rounded, color: p.brand),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: Text(
+                      l.homeSearchHint,
+                      style: text.bodyLarge!.copyWith(color: p.sub),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

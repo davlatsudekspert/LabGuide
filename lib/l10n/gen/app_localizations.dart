@@ -268,6 +268,120 @@ abstract class AppLocalizations {
   /// **'No account is needed to read content. Sign-in is used for sync and classes.'**
   String get welcomeGuestNote;
 
+  /// No description provided for @welcomeBenefitDoctorTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'For doctors'**
+  String get welcomeBenefitDoctorTitle;
+
+  /// No description provided for @welcomeBenefitDoctorBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Results, interfering factors and tests by condition'**
+  String get welcomeBenefitDoctorBody;
+
+  /// No description provided for @welcomeBenefitLabTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'For lab specialists'**
+  String get welcomeBenefitLabTitle;
+
+  /// No description provided for @welcomeBenefitLabBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Quality control, sampling, instruments and calculators'**
+  String get welcomeBenefitLabBody;
+
+  /// No description provided for @welcomeBenefitLearnTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'For students and teachers'**
+  String get welcomeBenefitLearnTitle;
+
+  /// No description provided for @welcomeBenefitLearnBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Topics, explained questions, exams and groups'**
+  String get welcomeBenefitLearnBody;
+
+  /// No description provided for @stateLoading.
+  ///
+  /// In en, this message translates to:
+  /// **'Loading…'**
+  String get stateLoading;
+
+  /// No description provided for @homeTileTests.
+  ///
+  /// In en, this message translates to:
+  /// **'Ranges, causes, meaning'**
+  String get homeTileTests;
+
+  /// No description provided for @homeTileCalculators.
+  ///
+  /// In en, this message translates to:
+  /// **'eGFR, ACR, dilution and more'**
+  String get homeTileCalculators;
+
+  /// No description provided for @homeTileSampling.
+  ///
+  /// In en, this message translates to:
+  /// **'Tubes, storage, transport'**
+  String get homeTileSampling;
+
+  /// No description provided for @homeTileSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Quick access to bookmarks'**
+  String get homeTileSaved;
+
+  /// No description provided for @homeTileDiff.
+  ///
+  /// In en, this message translates to:
+  /// **'Counter and cell atlas'**
+  String get homeTileDiff;
+
+  /// No description provided for @homeTileCalibration.
+  ///
+  /// In en, this message translates to:
+  /// **'Analyzer, reagent and IFU match'**
+  String get homeTileCalibration;
+
+  /// No description provided for @homeTileInstruments.
+  ///
+  /// In en, this message translates to:
+  /// **'Principles and methods'**
+  String get homeTileInstruments;
+
+  /// No description provided for @homeTileExam.
+  ///
+  /// In en, this message translates to:
+  /// **'Timed practice exam'**
+  String get homeTileExam;
+
+  /// No description provided for @homeTileDaily.
+  ///
+  /// In en, this message translates to:
+  /// **'5 questions every day'**
+  String get homeTileDaily;
+
+  /// No description provided for @homeTileTopics.
+  ///
+  /// In en, this message translates to:
+  /// **'Topic, explanation, practice'**
+  String get homeTileTopics;
+
+  /// No description provided for @homeTileClasses.
+  ///
+  /// In en, this message translates to:
+  /// **'Students and assignments'**
+  String get homeTileClasses;
+
+  /// No description provided for @homeTileLecture.
+  ///
+  /// In en, this message translates to:
+  /// **'Slides and screen casting'**
+  String get homeTileLecture;
+
   /// No description provided for @authTitle.
   ///
   /// In en, this message translates to:
