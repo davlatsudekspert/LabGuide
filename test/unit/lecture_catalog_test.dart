@@ -36,11 +36,11 @@ void main() {
   final catalog = _real();
 
   group('indeks va decklar', () {
-    test('98 kun mavzusi + 26 amaliy protokol, id takrorlanmaydi', () {
+    test('98 kun mavzusi + 27 amaliy protokol, id takrorlanmaydi', () {
       expect(catalog.decks.where((d) => d.kind == DeckKind.day).length, 98);
       expect(
         catalog.decks.where((d) => d.kind == DeckKind.protocol).length,
-        26,
+        27,
       );
       final ids = [for (final d in catalog.decks) d.id];
       expect(ids.toSet().length, ids.length);
@@ -399,15 +399,15 @@ void main() {
 
     test('filtr: modul, protokollar, til', () {
       final all = ids('');
-      expect(all.length, 124);
+      expect(all.length, 125);
       final m3 = ids('', f: const DeckFilter(module: 3));
       expect(m3.length, catalog.inModule(3).length);
       expect(m3.every((id) => catalog.byId(id)!.module == 3), isTrue);
       final prot = ids('', f: const DeckFilter(protocolsOnly: true));
-      expect(prot.length, 26);
+      expect(prot.length, 27);
       expect(
         ids('', f: const DeckFilter(lang: 'ru')).length,
-        123,
+        124,
         reason: 'd001 faqat uz',
       );
       expect(ids('glyukoza', f: const DeckFilter(module: 99)), isEmpty);
