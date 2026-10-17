@@ -8827,4 +8827,26 @@ class AppLocalizationsEn extends AppLocalizations {
   String contactMailBodyReport(String version, String platform) {
     return 'Section / card name (or advertiser):\nWhat is wrong:\n(Please do not include patient data.)\n\n\n---\nApp: LabGuide $version\nPlatform: $platform';
   }
+
+  @override
+  String get partnerKindLaboratory => 'Laboratory service';
+
+  @override
+  String get partnerPlacementHomeLab => 'Home: laboratory service';
+
+  @override
+  String get partnerPlacementHomeEquipment => 'Home: equipment firm';
+
+  @override
+  String get homeAdDemoTitle => 'Sample / Demo — ad slot';
+
+  @override
+  String get homeAdDemoLabBody =>
+      'A partner laboratory service ad will appear here';
+
+  @override
+  String get homeAdDemoEquipmentBody => 'An equipment firm ad will appear here';
+
+  @override
+  String get homeAdDemoCta => 'Place an ad';
 }

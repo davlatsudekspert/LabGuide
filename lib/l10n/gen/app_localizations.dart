@@ -15171,6 +15171,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Section / card name (or advertiser):\nWhat is wrong:\n(Please do not include patient data.)\n\n\n---\nApp: LabGuide {version}\nPlatform: {platform}'**
   String contactMailBodyReport(String version, String platform);
+
+  /// Partner type: a laboratory that provides testing services (home ad slot 1)
+  ///
+  /// In en, this message translates to:
+  /// **'Laboratory service'**
+  String get partnerKindLaboratory;
+
+  /// Admin statistics: ad placement on the Home tab for laboratory services
+  ///
+  /// In en, this message translates to:
+  /// **'Home: laboratory service'**
+  String get partnerPlacementHomeLab;
+
+  /// Admin statistics: ad placement on the Home tab for equipment firms
+  ///
+  /// In en, this message translates to:
+  /// **'Home: equipment firm'**
+  String get partnerPlacementHomeEquipment;
+
+  /// Home tab: title of the demo ad placeholder
+  ///
+  /// In en, this message translates to:
+  /// **'Sample / Demo — ad slot'**
+  String get homeAdDemoTitle;
+
+  /// Home tab: demo placeholder text for the laboratory service ad slot
+  ///
+  /// In en, this message translates to:
+  /// **'A partner laboratory service ad will appear here'**
+  String get homeAdDemoLabBody;
+
+  /// Home tab: demo placeholder text for the equipment firm ad slot
+  ///
+  /// In en, this message translates to:
+  /// **'An equipment firm ad will appear here'**
+  String get homeAdDemoEquipmentBody;
+
+  /// Home tab: button on the demo ad placeholder, opens the become-a-partner page
+  ///
+  /// In en, this message translates to:
+  /// **'Place an ad'**
+  String get homeAdDemoCta;
 }
 
 class _AppLocalizationsDelegate

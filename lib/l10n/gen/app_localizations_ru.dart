@@ -8863,4 +8863,28 @@ class AppLocalizationsRu extends AppLocalizations {
   String contactMailBodyReport(String version, String platform) {
     return 'Раздел / название карточки (или рекламодатель):\nЧто не так:\n(Не указывайте данные пациентов.)\n\n\n---\nПриложение: LabGuide $version\nПлатформа: $platform';
   }
+
+  @override
+  String get partnerKindLaboratory => 'Лабораторная служба';
+
+  @override
+  String get partnerPlacementHomeLab => 'Главная: лабораторная служба';
+
+  @override
+  String get partnerPlacementHomeEquipment =>
+      'Главная: фирма-поставщик оборудования';
+
+  @override
+  String get homeAdDemoTitle => 'Образец / Демо — рекламное место';
+
+  @override
+  String get homeAdDemoLabBody =>
+      'Здесь появится реклама партнёрской лабораторной службы';
+
+  @override
+  String get homeAdDemoEquipmentBody =>
+      'Здесь появится реклама фирмы-поставщика оборудования';
+
+  @override
+  String get homeAdDemoCta => 'Разместить рекламу';
 }

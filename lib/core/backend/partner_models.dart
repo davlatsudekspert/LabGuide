@@ -1,10 +1,13 @@
 import 'package:flutter/foundation.dart';
 
-/// Hamkor turi.
+/// Hamkor turi. [laboratory] — laboratoriya xizmati ko'rsatuvchi tashkilot
+/// (tahlil xizmati); qolganlari — apparat firmalari (ishlab chiqaruvchi,
+/// distribyutor, servis markazi).
 enum PartnerKind {
   manufacturer,
   distributor,
-  service;
+  service,
+  laboratory;
 
   static PartnerKind parse(String raw) => values.firstWhere(
     (k) => k.name == raw,
@@ -29,7 +32,13 @@ enum PartnerPlacement {
   card('card'),
   category('category'),
   labHome('lab_home'),
-  partnerPage('partner_page');
+  partnerPage('partner_page'),
+
+  /// Asosiy menyu (Bosh sahifa): laboratoriya xizmati reklama joyi.
+  homeLab('home_lab'),
+
+  /// Asosiy menyu (Bosh sahifa): apparat firmasi reklama joyi.
+  homeEquipment('home_equipment');
 
   const PartnerPlacement(this.wire);
   final String wire;

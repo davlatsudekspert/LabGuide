@@ -22,6 +22,7 @@ String partnerKindLabel(PartnerKind k, AppLocalizations l) => switch (k) {
   PartnerKind.manufacturer => l.partnerKindManufacturer,
   PartnerKind.distributor => l.partnerKindDistributor,
   PartnerKind.service => l.partnerKindService,
+  PartnerKind.laboratory => l.partnerKindLaboratory,
 };
 
 String partnerRegionsText(Partner p, String lang) =>
@@ -658,6 +659,309 @@ class _LabPartnerCardState extends State<LabPartnerCard> {
         );
       },
     );
+  }
+}
+
+/// Asosiy menyu (Bosh sahifa) reklama joylari — qidiruvdan darhol keyin:
+/// 1 — laboratoriya xizmati ([PartnerPlacement.homeLab]), 2 — apparat firmasi
+/// ([PartnerPlacement.homeEquipment]). Ikkalasi yonma-yon bir juft ixcham
+/// karta (birinchi ekranda ko'rinadi); tor ekranda (< 360 px) yoki katta
+/// shriftda (> 1.15×) ustma-ust ixcham qatorlar.
+///
+/// Har joy uchun:
+/// * haqiqiy faol hamkor bor — hamkor kartasi (kunlik aylanish,
+///   ko'rsatilish/bog'lanish hisoblagichi bilan);
+/// * hamkor yo'q, demo/test build (`allFeaturesOpen`) — aniq “Namuna / Demo”
+///   belgili o'rin: kompaniya, telefon, Telegram yo'q, hisoblagich yo'q;
+/// * hamkor yo'q, do'kon (release) build — hech narsa chizilmaydi.
+class HomePartnerPair extends StatefulWidget {
+  const HomePartnerPair({super.key});
+
+  @override
+  State<HomePartnerPair> createState() => _HomePartnerPairState();
+}
+
+class _HomePartnerPairState extends State<HomePartnerPair> {
+  @override
+  void initState() {
+    super.initState();
+    context.services.partners.refresh();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final controller = context.services.partners;
+    final demoBuild = context.services.entitlements.allFeaturesOpen;
+    final media = MediaQuery.of(context);
+    final scale = media.textScaler.scale(16) / 16;
+    return ListenableBuilder(
+      listenable: controller,
+      builder: (context, _) {
+        final slots = <(PartnerPlacement, Partner?)>[
+          for (final pl in const [
+            PartnerPlacement.homeLab,
+            PartnerPlacement.homeEquipment,
+          ])
+            if (controller.forHome(pl) case final p?)
+              (pl, p)
+            else if (demoBuild)
+              (pl, null),
+        ];
+        if (slots.isEmpty) return const SizedBox.shrink();
+        final tiles =
+            slots.length == 2 && media.size.width >= 360 && scale <= 1.15;
+        Widget card((PartnerPlacement, Partner?) s) => HomeAdSlotCard(
+          // Hamkor almashganda ko'rsatilish yangidan sanalsin.
+          key: ValueKey('${s.$1.wire}/${s.$2?.id}'),
+          placement: s.$1,
+          partner: s.$2,
+          tile: tiles,
+        );
+        if (!tiles) {
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [for (final s in slots) card(s)],
+          );
+        }
+        return Padding(
+          padding: const EdgeInsets.symmetric(vertical: 3),
+          child: IntrinsicHeight(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Expanded(child: card(slots[0])),
+                const SizedBox(width: 8),
+                Expanded(child: card(slots[1])),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
+
+/// Juda kichik “Reklama” yorlig'i (ikonka + matn: rangga tayanmaydi).
+class _MiniAdTag extends StatelessWidget {
+  const _MiniAdTag(this.text);
+
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    final p = LgPalette.of(context);
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        color: p.amberBg,
+        borderRadius: BorderRadius.circular(LgRadius.tag),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ExcludeSemantics(
+              child: Icon(Icons.campaign_outlined, size: 12, color: p.amber),
+            ),
+            const SizedBox(width: 3),
+            Flexible(
+              child: Text(
+                text,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: Theme.of(context).textTheme.labelSmall!
+                    .copyWith(color: p.amber, height: 1.1),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+/// Bosh sahifadagi bitta reklama joyi kartasi: haqiqiy hamkor yoki (demo
+/// buildda hamkor yo'q bo'lsa) “Namuna / Demo” o'rni. [tile] — yonma-yon
+/// juftlikdagi tor karta; aks holda to'liq kenglikdagi bir qatorli karta.
+class HomeAdSlotCard extends StatelessWidget {
+  const HomeAdSlotCard({
+    super.key,
+    required this.placement,
+    required this.tile,
+    this.partner,
+  });
+
+  final PartnerPlacement placement;
+
+  /// `null` — namuna (faqat demo/test build).
+  final Partner? partner;
+  final bool tile;
+
+  @override
+  Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context);
+    final lang = Localizations.localeOf(context).languageCode;
+    final p = LgPalette.of(context);
+    final size = tile ? 20.0 : 44.0;
+    final partner = this.partner;
+    if (partner != null) {
+      final summary = partner.summaryOf(lang);
+      final kind = partnerKindLabel(partner.kind, l);
+      return _Impression(
+        partner: partner,
+        placement: placement,
+        child: _HomeAdFrame(
+          tile: tile,
+          leading: PartnerLogo(partner: partner, size: size),
+          title: partner.name,
+          body: summary.isEmpty ? kind : summary,
+          footer: '$kind · ${l.partnerMore}',
+          onTap: () => _openPartner(context, partner),
+        ),
+      );
+    }
+    // Namuna: soxta kompaniya emas — nom, logo, aloqa yo'q; ko'rsatilish ham
+    // sanalmaydi.
+    return _HomeAdFrame(
+      tile: tile,
+      demo: true,
+      leading: ExcludeSemantics(
+        child: Container(
+          width: size,
+          height: size,
+          decoration: BoxDecoration(
+            color: p.paper,
+            borderRadius: BorderRadius.circular(size * 0.28),
+            border: Border.all(color: p.line),
+          ),
+          child: Icon(
+            placement == PartnerPlacement.homeLab
+                ? Icons.biotech_outlined
+                : Icons.precision_manufacturing_outlined,
+            color: p.sub,
+            size: size * 0.55,
+          ),
+        ),
+      ),
+      title: l.homeAdDemoTitle,
+      body: placement == PartnerPlacement.homeLab
+          ? l.homeAdDemoLabBody
+          : l.homeAdDemoEquipmentBody,
+      footer: '${l.homeAdDemoCta} →',
+      onTap: () => context.push('/profile/partnership'),
+    );
+  }
+}
+
+/// Reklama kartasining ixcham “qobig'i”: [tile] — yonma-yon juftlik uchun
+/// (yorliq + belgi qatori, so'ng matn), aks holda chapda belgi, o'ngda matn.
+class _HomeAdFrame extends StatelessWidget {
+  const _HomeAdFrame({
+    required this.tile,
+    required this.leading,
+    required this.title,
+    required this.body,
+    required this.footer,
+    required this.onTap,
+    this.demo = false,
+  });
+
+  final bool tile;
+  final Widget leading;
+  final String title;
+  final String body;
+  final String footer;
+  final VoidCallback onTap;
+
+  /// Namuna: yumshoq fon — haqiqiy kartadan ajralib turadi.
+  final bool demo;
+
+  @override
+  Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context);
+    final text = Theme.of(context).textTheme;
+    final p = LgPalette.of(context);
+    final titleText = Text(
+      title,
+      maxLines: 1,
+      overflow: TextOverflow.ellipsis,
+      style: text.labelLarge,
+    );
+    final bodyText = Text(
+      body,
+      maxLines: 2,
+      overflow: TextOverflow.ellipsis,
+      style: text.bodySmall,
+    );
+    final footerText = Text(
+      footer,
+      maxLines: 1,
+      overflow: TextOverflow.ellipsis,
+      style: text.labelMedium!.copyWith(color: p.brand),
+    );
+    final Widget content = tile
+        ? Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Row(
+                children: [
+                  Flexible(child: _MiniAdTag(l.partnerAdLabel)),
+                  const Spacer(),
+                  leading,
+                ],
+              ),
+              const SizedBox(height: 1),
+              titleText,
+              bodyText,
+              const SizedBox(height: 1),
+              footerText,
+            ],
+          )
+        : Row(
+            children: [
+              leading,
+              const SizedBox(width: 12),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Row(
+                      children: [
+                        _MiniAdTag(l.partnerAdLabel),
+                        const SizedBox(width: 6),
+                        Expanded(child: titleText),
+                      ],
+                    ),
+                    const SizedBox(height: 1),
+                    bodyText,
+                    const SizedBox(height: 1),
+                    footerText,
+                  ],
+                ),
+              ),
+            ],
+          );
+    final frame = LgPressable(
+      onTap: onTap,
+      color: demo ? p.soft : p.paper,
+      borderRadius: BorderRadius.circular(LgRadius.card),
+      border: Border.all(color: p.line),
+      child: Padding(
+        padding: EdgeInsets.symmetric(
+          horizontal: tile ? 10 : 12,
+          vertical: tile ? 5 : 6,
+        ),
+        child: content,
+      ),
+    );
+    return tile
+        ? frame
+        : Padding(
+            padding: const EdgeInsets.symmetric(vertical: 3),
+            child: frame,
+          );
   }
 }
 

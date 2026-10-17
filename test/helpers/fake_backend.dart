@@ -1011,6 +1011,12 @@ class FakeLabBackend implements LabBackend {
     return (impressions: i, contacts: c);
   }
 
+  /// Bitta joy bo'yicha ko'rsatilishlar yig'indisi.
+  int partnerImpressionsAt(String id, PartnerPlacement placement) => [
+    for (final e in _partnerEvents.entries)
+      if (e.key.$1 == id && e.key.$3 == placement) e.value[0],
+  ].fold(0, (a, b) => a + b);
+
   @override
   Future<List<Partner>> partners() async {
     partnerFeedCalls++;

@@ -12,6 +12,7 @@ import '../community/community_screens.dart';
 import '../content/ui/conditions_screens.dart';
 import '../content/ui/content_widgets.dart';
 import '../daily/daily_screens.dart';
+import '../partners/partner_widgets.dart';
 import 'global_search.dart';
 import '../settings/settings_controller.dart';
 import '../toifa/toifa_screens.dart';
@@ -183,6 +184,11 @@ class HomeScreen extends StatelessWidget {
           compactTitle: true,
           children: [
             const HomeSearchField(),
+            // Reklama joylari (“Reklama” yorlig'i bilan): 1 — laboratoriya
+            // xizmati, 2 — apparat firmasi; yonma-yon ixcham juftlik —
+            // ilova ochilganda birinchi ekranda. Haqiqiy hamkor yoki (faqat
+            // demo/test buildda) namuna bo'lmasa — hech narsa chizilmaydi.
+            const HomePartnerPair(),
             if (config.featuredConditions.isNotEmpty)
               ConditionGuideCard(
                 base: '/home',

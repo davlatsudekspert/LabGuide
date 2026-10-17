@@ -167,4 +167,63 @@ void main() {
     );
     expect(backend.partnerTotals('a').impressions, 100);
   });
+
+  test(
+    'bosh sahifa joylari: tur bo‘yicha ajratiladi, kunlik aylanish',
+    () async {
+      const lab = PartnerKind.laboratory;
+      final backend = FakeLabBackend()
+        ..seedPartner(testPartner(id: 'lab-a', kind: lab, links: const []))
+        ..seedPartner(testPartner(id: 'lab-b', kind: lab, links: const []))
+        ..seedPartner(testPartner(id: 'eq-m', kind: PartnerKind.manufacturer))
+        ..seedPartner(
+          testPartner(
+            id: 'eq-draft',
+            kind: PartnerKind.service,
+            status: PartnerStatus.draft,
+          ),
+        );
+      var now = DateTime.now().toUtc();
+      final c = PartnersController(
+        MemoryKeyValueStore(),
+        backend,
+        clock: () => now,
+      );
+      // Ro'yxat yuklanmaguncha — hech narsa.
+      expect(c.forHome(PartnerPlacement.homeLab), isNull);
+      await c.refresh(force: true);
+      final first = c.forHome(PartnerPlacement.homeLab)!;
+      expect(first.kind, lab);
+      // Apparat joyida laboratoriya yo'q; qoralama chiqmaydi.
+      expect(c.forHome(PartnerPlacement.homeEquipment)!.id, 'eq-m');
+      now = now.add(const Duration(days: 1));
+      expect(c.forHome(PartnerPlacement.homeLab)!.id, isNot(first.id));
+      // Joy faqat o'z turini oladi: laboratoriya hamkori yo'q bo'lsa — null.
+      final onlyEquipment = PartnersController(
+        MemoryKeyValueStore(),
+        FakeLabBackend()..seedPartner(testPartner()),
+      );
+      await onlyEquipment.refresh(force: true);
+      expect(onlyEquipment.forHome(PartnerPlacement.homeLab), isNull);
+      expect(onlyEquipment.forHome(PartnerPlacement.homeEquipment), isNotNull);
+    },
+  );
+
+  test('bosh sahifa joyi: sozlanmagan serverda hamkor yo‘q', () async {
+    final c = PartnersController(
+      MemoryKeyValueStore(),
+      const UnconfiguredBackend(),
+    );
+    await c.refresh(force: true);
+    expect(c.forHome(PartnerPlacement.homeLab), isNull);
+    expect(c.forHome(PartnerPlacement.homeEquipment), isNull);
+  });
+
+  test('yangi tur va joylar JSON/wire bilan mos', () {
+    final p = testPartner(kind: PartnerKind.laboratory, links: const []);
+    expect(Partner.fromJson(p.toJson()).kind, PartnerKind.laboratory);
+    expect(PartnerPlacement.homeLab.wire, 'home_lab');
+    expect(PartnerPlacement.homeEquipment.wire, 'home_equipment');
+    expect(PartnerPlacement.parse('home_lab'), PartnerPlacement.homeLab);
+  });
 }

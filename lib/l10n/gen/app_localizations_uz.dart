@@ -8688,4 +8688,27 @@ class AppLocalizationsUz extends AppLocalizations {
   String contactMailBodyReport(String version, String platform) {
     return 'Bo‘lim / karta nomi (yoki reklama bergan firma):\nNima noto‘g‘ri:\n(Bemor ma’lumotlarini yozmang.)\n\n\n---\nIlova: LabGuide $version\nPlatforma: $platform';
   }
+
+  @override
+  String get partnerKindLaboratory => 'Laboratoriya xizmati';
+
+  @override
+  String get partnerPlacementHomeLab => 'Bosh sahifa: laboratoriya xizmati';
+
+  @override
+  String get partnerPlacementHomeEquipment => 'Bosh sahifa: apparat firmasi';
+
+  @override
+  String get homeAdDemoTitle => 'Namuna / Demo — reklama joyi';
+
+  @override
+  String get homeAdDemoLabBody =>
+      'Bu yerda hamkor laboratoriya xizmati reklamasi chiqadi';
+
+  @override
+  String get homeAdDemoEquipmentBody =>
+      'Bu yerda apparat firmasi reklamasi chiqadi';
+
+  @override
+  String get homeAdDemoCta => 'Reklama joylashtirish';
 }
