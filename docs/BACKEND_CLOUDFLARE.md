@@ -299,7 +299,7 @@ ko‘rsatilmaydi. Hamkorlar ro‘yxati bo‘sh (reklama joylari chiqmaydi).
 
 **To‘lov — bu versiyada yo‘q** (D-58): `/v1/billing/*` endpointlari olib tashlandi
 (to‘liq ish `pro-later` branchida). Serverda faqat ko‘rinmas `users.plan`/`pro_until`
-ustunlari (`migrations/0010_user_plan.sql`) — hech bir endpoint ularni bermaydi.
+ustunlari (`migrations/0009_admin_console.sql`) — hech bir endpoint ularni bermaydi.
 
 Eslatma: to‘liq emailni “ochish” (`adminRevealEmail`) bu serverda **bo‘lmaydi**
 — email saqlanmaydi.

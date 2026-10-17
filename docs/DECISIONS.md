@@ -874,4 +874,4 @@ D-48 dagi **Ustoz Pro** qatorini (69 000 so'm/oy · 490 000 so'm/yil · $9.99/oy
 - Pro/payments removed from the shipping app (Apple 2.5.19/2.1); everything free; return as a complete update
   later; work kept on branch `pro-later`. Reklama UI do'kon buildidan ham chiqarildi (`LG_PARTNER_ADS=false`,
   faqat TestFlight/Play ichki test buildlarida `true` — docs/PARTNERS.md). Serverda faqat ko'rinmas `users.plan`
-  ustuni (`0010_user_plan.sql`), hech bir endpoint uni bermaydi.
+  ustuni (`0009_admin_console.sql`), hech bir endpoint uni bermaydi.
