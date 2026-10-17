@@ -219,6 +219,8 @@ class CommunityRulesLink extends StatelessWidget {
       expand: false,
       onPressed: () => showModalBottomSheet<void>(
         context: context,
+        // Tab paneli ham xiralashsin (oyna butun ekran ustida).
+        useRootNavigator: true,
         isScrollControlled: true,
         showDragHandle: true,
         builder: (sheet) => SafeArea(

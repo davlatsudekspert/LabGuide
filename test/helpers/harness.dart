@@ -165,6 +165,14 @@ GoRouter routerOf(WidgetTester tester) {
   );
 }
 
+/// Pastki menyuning [index]-tabini bosadi (0 Bosh, 1 Tahlillar, 2 Lab,
+/// 3 Kutubxona, 4 O'rganish). Menyu pastga scroll qilinganda ixcham bo'lib
+/// nomlarini yashiradi — shuning uchun matn orqali emas, kalit orqali.
+Future<void> tapNavTab(WidgetTester tester, int index) async {
+  await tester.tap(find.byKey(ValueKey('nav-tab-$index')));
+  await tester.pumpAndSettle();
+}
+
 Future<void> goTo(WidgetTester tester, String location) async {
   routerOf(tester).go(location);
   await tester.pumpAndSettle();

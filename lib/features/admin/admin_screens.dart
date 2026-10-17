@@ -891,6 +891,8 @@ class _AdminUsersScreenState extends State<AdminUsersScreen> {
     var reviewer = false;
     await showModalBottomSheet<void>(
       context: context,
+      // Tab paneli ham xiralashsin (oyna butun ekran ustida).
+      useRootNavigator: true,
       showDragHandle: true,
       builder: (context) => StatefulBuilder(
         builder: (context, setSheet) => Padding(
