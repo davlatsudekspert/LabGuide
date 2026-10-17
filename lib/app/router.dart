@@ -2,6 +2,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
+import '../core/entitlements/feature.dart';
 import '../features/admin/admin_screens.dart';
 import '../features/auth/ui/auth_screens.dart';
 import '../features/auth/ui/role_screen.dart';
@@ -171,7 +172,12 @@ GoRouter buildRouter(
           ),
           GoRoute(
             path: 'purchase',
-            builder: (context, state) => const PurchaseScreen(),
+            // `?feature=` — boshlash tugmasidan (qaysi imkoniyat uchun).
+            builder: (context, state) => PurchaseScreen(
+              feature: Feature.values.asNameMap()[state
+                  .uri
+                  .queryParameters['feature']],
+            ),
           ),
           GoRoute(
             path: 'privacy',

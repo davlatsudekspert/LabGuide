@@ -1,19 +1,39 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:supabase/supabase.dart';
 
+import '../backend/backend_models.dart';
+import '../backend/cloudflare_backend.dart';
 import '../backend/supabase_backend.dart';
 import 'entitlement_models.dart';
 import 'purchase_adapter.dart';
 
-/// Server tasdiqlagan obuna holati manbai. Ilova faqat O'QIYDI; yozish
-/// `verify-purchase` Edge Function (service role) ichida.
+/// Shu qurilmaning do'koni: `app_store` (iOS) yoki `play_store` (Android).
+String storePlatform() => defaultTargetPlatform == TargetPlatform.iOS ||
+        defaultTargetPlatform == TargetPlatform.macOS
+    ? 'app_store'
+    : 'play_store';
+
+/// Server tasdiqlagan obuna holati manbai. Ilova faqat O'QIYDI; yozishni
+/// server do'kon API'si bilan tekshirgandan keyin o'zi qiladi.
 abstract interface class EntitlementSource {
+  /// Server ulangan (huquqlarni o'qish mumkin).
   bool get isConfigured;
+
+  /// Shu qurilma do'koni uchun serverda xarid tekshiruvi sozlangan
+  /// ([probe] dan keyin ma'lum). `false` bo'lsa ilova to'lovni yoqmaydi.
+  bool get billingReady;
+
+  /// `app_store` yoki `play_store`.
+  String get platform;
   bool get hasSession;
   String? get userId;
+
+  /// Serverda to'lov sozlanganmi — bir marta (ilova ochilganda) so'raladi.
+  Future<void> probe();
 
   /// Joriy foydalanuvchining huquqlari (`my_entitlements()`).
   Future<EntitlementSnapshot> fetch();
@@ -32,6 +52,12 @@ class UnavailableEntitlementSource implements EntitlementSource {
   @override
   bool get isConfigured => false;
   @override
+  bool get billingReady => false;
+  @override
+  String get platform => storePlatform();
+  @override
+  Future<void> probe() async {}
+  @override
   bool get hasSession => false;
   @override
   String? get userId => null;
@@ -49,6 +75,10 @@ class UnavailableEntitlementSource implements EntitlementSource {
 }
 
 /// Supabase: o'qish RLS ostida (`my_entitlements`), tekshiruv Edge Function.
+///
+/// `verify-purchase` Edge Function hali yozilmagan (doim 503) — shuning
+/// uchun [billingReady] `false`: Supabase buildda to'lov oynasi yo'q.
+/// Ishlaydigan tekshiruv — Cloudflare Worker ([CloudflareEntitlementSource]).
 class SupabaseEntitlementSource implements EntitlementSource {
   SupabaseEntitlementSource(this.backend);
 
@@ -56,6 +86,12 @@ class SupabaseEntitlementSource implements EntitlementSource {
 
   @override
   bool get isConfigured => true;
+  @override
+  bool get billingReady => false;
+  @override
+  String get platform => storePlatform();
+  @override
+  Future<void> probe() async {}
   @override
   bool get hasSession => backend.hasSession;
   @override
@@ -122,5 +158,97 @@ class SupabaseEntitlementSource implements EntitlementSource {
     } on AuthException catch (e) {
       throw EntitlementException(EntitlementFailure.unauthorized, e.code);
     }
+  }
+}
+
+/// Cloudflare Worker (`cloudflare/src/billing.ts`): `GET /v1/billing/status`,
+/// `GET /v1/billing/entitlements`, `POST /v1/billing/verify`.
+class CloudflareEntitlementSource implements EntitlementSource {
+  CloudflareEntitlementSource(this.backend, {String? platform})
+    : platform = platform ?? storePlatform();
+
+  final CloudflareLabBackend backend;
+
+  @override
+  final String platform;
+
+  bool _billing = false;
+
+  @override
+  bool get isConfigured => true;
+  @override
+  bool get billingReady => _billing;
+  @override
+  bool get hasSession => backend.hasSession;
+  @override
+  String? get userId => backend.userId;
+
+  @override
+  Future<void> probe() async {
+    try {
+      final r = await backend.billing('GET', '/v1/billing/status', auth: false);
+      _billing = r.status == 200 && r.data[platform] == true;
+    } on Object catch (e) {
+      // Internet yo'q — to'lov yoqilmaydi (hamma imkoniyat ochiq qoladi).
+      debugPrint('billing status: $e');
+      _billing = false;
+    }
+  }
+
+  @override
+  Future<EntitlementSnapshot> fetch() =>
+      _snapshot(() => backend.billing('GET', '/v1/billing/entitlements'));
+
+  @override
+  Future<EntitlementSnapshot> verify(
+    List<PurchaseProof> proofs, {
+    required bool restore,
+  }) {
+    if (proofs.isEmpty) return fetch();
+    final body = <String, Object?>{
+      'platform': proofs.first.platform,
+      'restore': restore,
+      if (proofs.length == 1) ...{
+        'product_id': proofs.first.productId,
+        'token': proofs.first.token,
+      } else
+        'purchases': [
+          for (final p in proofs) {'product_id': p.productId, 'token': p.token},
+        ],
+    };
+    return _snapshot(
+      () => backend.billing('POST', '/v1/billing/verify', body: body),
+    );
+  }
+
+  static Future<EntitlementSnapshot> _snapshot(
+    Future<({int status, Map<String, Object?> data})> Function() run,
+  ) async {
+    final ({int status, Map<String, Object?> data}) r;
+    try {
+      r = await run();
+    } on BackendException catch (e) {
+      throw EntitlementException(switch (e.failure) {
+        BackendFailure.network => EntitlementFailure.network,
+        BackendFailure.unauthorized => EntitlementFailure.unauthorized,
+        BackendFailure.unavailable => EntitlementFailure.notConfigured,
+        _ => EntitlementFailure.unknown,
+      }, e.detail);
+    }
+    if (r.status >= 200 && r.status < 300) {
+      try {
+        return EntitlementSnapshot.fromJson(r.data);
+      } on Object catch (e) {
+        throw EntitlementException(EntitlementFailure.unknown, 'parse $e');
+      }
+    }
+    final code = r.data['error'] as String?;
+    throw EntitlementException(switch (r.status) {
+      503 || 501 => EntitlementFailure.notConfigured,
+      401 => EntitlementFailure.unauthorized,
+      409 when code == 'purchase_pending' => EntitlementFailure.pending,
+      502 || 504 => EntitlementFailure.network,
+      _ => EntitlementFailure.unknown,
+    }, '${r.status} $code');
   }
 }

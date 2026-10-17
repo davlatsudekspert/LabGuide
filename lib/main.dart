@@ -17,6 +17,8 @@ import 'core/backend/supabase_backend.dart';
 import 'core/entitlements/entitlement_cache.dart';
 import 'core/entitlements/entitlement_service.dart';
 import 'core/entitlements/entitlement_source.dart';
+import 'core/entitlements/purchase_adapter.dart';
+import 'core/entitlements/store_purchase_adapter.dart';
 import 'core/storage/kv_store.dart';
 import 'features/auth/auth_controller.dart';
 import 'features/auth/otp_auth.dart';
@@ -56,10 +58,10 @@ Future<void> main() async {
   );
   await services.auth.reconcileWithBackend();
   unawaited(services.refreshAccess());
-  // Pro: avval imzolangan kesh (oflayn ham), keyin serverdan.
-  unawaited(
-    services.entitlements.load().then((_) => services.entitlements.refresh()),
-  );
+  // Pro: avval imzolangan kesh (oflayn ham), keyin server to'lov sozlamasi,
+  // do'kon mahsulotlari va serverdagi holat. To'lov yoqilmagan bo'lsa
+  // (mahsulot yo'q / server sozlanmagan) hamma imkoniyat ochiq qoladi.
+  unawaited(services.entitlements.start());
   // Kontent fonda yuklanadi; ekranlar loading/error holatini ko'rsatadi.
   unawaited(services.content.load());
   // O'quv dasturi (asset bo'lmasa — “qo'shilmagan”, ma'ruza qatori yo'q).
@@ -82,6 +84,8 @@ AppServices createServices({
   LabBackend? backend,
   EntitlementKeyStore? entitlementKeys,
   bool? allFeaturesOpen,
+  PurchaseAdapter? purchases,
+  EntitlementSource? entitlementSource,
   ReminderScheduler? reminderScheduler,
   ResultSharer? sharer,
   DateTime Function()? clock,
@@ -120,12 +124,21 @@ AppServices createServices({
     backend: server,
     access: AccessController(server),
     partners: PartnersController(store, server),
-    // To'lov hali yoqilmagan: PurchaseAdapter — Unavailable (standart).
-    // TestFlight/CI va debug buildda hamma imkoniyat ochiq.
+    // Pro: do'kon (StoreKit 2 / Play Billing) + server tekshiruvi
+    // (Cloudflare `/v1/billing/*`). Do'kon mahsulotlari yoki server kalitlari
+    // bo'lmasa to'lov yoqilmaydi va hamma imkoniyat ochiq qoladi.
+    // TestFlight/CI va debug buildda ham hamma imkoniyat ochiq.
     entitlements: EntitlementService(
-      source: server is SupabaseLabBackend
-          ? SupabaseEntitlementSource(server)
-          : const UnavailableEntitlementSource(),
+      source: entitlementSource ?? switch (server) {
+        CloudflareLabBackend() => CloudflareEntitlementSource(server),
+        SupabaseLabBackend() => SupabaseEntitlementSource(server),
+        _ => const UnavailableEntitlementSource(),
+      },
+      purchases:
+          purchases ??
+          (StorePurchaseAdapter.supported
+              ? StorePurchaseAdapter()
+              : UnavailablePurchaseAdapter()),
       cache: EntitlementCacheStore(
         store,
         entitlementKeys ?? const SecureEntitlementKeyStore(),

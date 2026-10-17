@@ -245,6 +245,13 @@ jobs:
           LG_SENDER_EMAIL: ${{ secrets.LG_SENDER_EMAIL }}
           LG_SERVER_SECRET: ${{ secrets.LG_SERVER_SECRET }}
           LG_ADMIN_EMAILS: ${{ secrets.LG_ADMIN_EMAILS }}
+          # Pro obunalari (ixtiyoriy; docs/PRO_BILLING_PLAN.md). Bo'lmasa server
+          # `503 not_configured` beradi va ilova to'lov oynasini ko'rsatmaydi.
+          APPLE_IAP_KEY_ID: ${{ secrets.APPLE_IAP_KEY_ID }}
+          APPLE_IAP_ISSUER_ID: ${{ secrets.APPLE_IAP_ISSUER_ID }}
+          APPLE_IAP_PRIVATE_KEY: ${{ secrets.APPLE_IAP_PRIVATE_KEY }}
+          GOOGLE_PLAY_SERVICE_ACCOUNT: ${{ secrets.GOOGLE_PLAY_BILLING_SERVICE_ACCOUNT_JSON }}
+          PLAY_RTDN_TOKEN: ${{ secrets.PLAY_RTDN_TOKEN }}
         run: |
           set -euo pipefail
           put() {
@@ -261,6 +268,22 @@ jobs:
           else
             echo "- LG_ADMIN_EMAILS berilmagan: admin vakolati hech kimga berilmaydi" >> "$GITHUB_STEP_SUMMARY"
           fi
+          # Pro obunalari: App Store kaliti uchala qiymat bilan birga ishlaydi.
+          apple=0
+          for k in APPLE_IAP_KEY_ID APPLE_IAP_ISSUER_ID APPLE_IAP_PRIVATE_KEY; do
+            if [ -n "${!k}" ]; then apple=$((apple + 1)); fi
+          done
+          if [ "$apple" -eq 3 ]; then
+            for k in APPLE_IAP_KEY_ID APPLE_IAP_ISSUER_ID APPLE_IAP_PRIVATE_KEY; do put "$k"; done
+          elif [ "$apple" -gt 0 ]; then
+            echo "::warning::APPLE_IAP_* secretlaridan faqat $apple tasi berilgan — App Store to'lovi o'chiq qoladi"
+            echo "- APPLE_IAP_*: to'liq emas ($apple/3) — o'rnatilmadi" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "- APPLE_IAP_*: berilmagan — App Store to'lovi o'chiq" >> "$GITHUB_STEP_SUMMARY"
+          fi
+          for k in GOOGLE_PLAY_SERVICE_ACCOUNT PLAY_RTDN_TOKEN; do
+            if [ -n "${!k}" ]; then put "$k"; else echo "- secret $k: berilmagan" >> "$GITHUB_STEP_SUMMARY"; fi
+          done
       - name: Tekshiruv (health)
         if: steps.ready.outputs.ready == 'true'
         run: |

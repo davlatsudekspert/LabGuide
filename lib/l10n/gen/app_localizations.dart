@@ -10648,53 +10648,11 @@ abstract class AppLocalizations {
   /// **'LabGuide Pro'**
   String get purchaseTitle;
 
-  /// No description provided for @purchaseFree.
-  ///
-  /// In en, this message translates to:
-  /// **'Free: leukocyte differential counter, percentages and absolute counts, core guides, the last 3 results in history.'**
-  String get purchaseFree;
-
-  /// No description provided for @purchasePro.
-  ///
-  /// In en, this message translates to:
-  /// **'Pro (monthly or yearly): unlimited results history, PDF export, extended practice, full preparation for the qualification category exam.'**
-  String get purchasePro;
-
-  /// No description provided for @purchaseNotice.
-  ///
-  /// In en, this message translates to:
-  /// **'Store products aren\'t connected. Prices will come from the App Store / Google Play in your currency. Nothing is charged here, and features that aren\'t built yet are not sold.'**
-  String get purchaseNotice;
-
-  /// No description provided for @purchaseSubscribe.
-  ///
-  /// In en, this message translates to:
-  /// **'Subscribe'**
-  String get purchaseSubscribe;
-
-  /// No description provided for @purchaseRestore.
-  ///
-  /// In en, this message translates to:
-  /// **'Restore purchases'**
-  String get purchaseRestore;
-
   /// No description provided for @purchaseStatusTitle.
   ///
   /// In en, this message translates to:
   /// **'Status'**
   String get purchaseStatusTitle;
-
-  /// No description provided for @purchaseStatusAllOpen.
-  ///
-  /// In en, this message translates to:
-  /// **'Payments aren’t enabled yet; every feature is open in TestFlight.'**
-  String get purchaseStatusAllOpen;
-
-  /// No description provided for @purchaseStatusBillingOff.
-  ///
-  /// In en, this message translates to:
-  /// **'Payments aren’t enabled yet. Free features work fully; Pro will be switched on once the price is approved.'**
-  String get purchaseStatusBillingOff;
 
   /// No description provided for @purchaseStatusPro.
   ///
@@ -14439,6 +14397,312 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Categories'**
   String get cytoCategoriesTitle;
+
+  /// No description provided for @payTierPro.
+  ///
+  /// In en, this message translates to:
+  /// **'Pro'**
+  String get payTierPro;
+
+  /// No description provided for @payTierProSub.
+  ///
+  /// In en, this message translates to:
+  /// **'For lab staff, doctors, students and anyone preparing for the qualification exam'**
+  String get payTierProSub;
+
+  /// No description provided for @payTierTeacher.
+  ///
+  /// In en, this message translates to:
+  /// **'Teacher Pro'**
+  String get payTierTeacher;
+
+  /// No description provided for @payTierTeacherSub.
+  ///
+  /// In en, this message translates to:
+  /// **'For teachers working with a group. Includes everything in Pro.'**
+  String get payTierTeacherSub;
+
+  /// No description provided for @payFree.
+  ///
+  /// In en, this message translates to:
+  /// **'Always free: all cards, calculators, pre-analytics, the differential counter, 5 daily questions and mistake review.'**
+  String get payFree;
+
+  /// No description provided for @payFeatQuestions.
+  ///
+  /// In en, this message translates to:
+  /// **'Unlimited questions: practice by topic and card mini-tests'**
+  String get payFeatQuestions;
+
+  /// No description provided for @payFeatExam.
+  ///
+  /// In en, this message translates to:
+  /// **'Exam simulation (timed test)'**
+  String get payFeatExam;
+
+  /// No description provided for @payFeatToifa.
+  ///
+  /// In en, this message translates to:
+  /// **'The full qualification exam bank: official test and practice by topic'**
+  String get payFeatToifa;
+
+  /// No description provided for @payFeatWeak.
+  ///
+  /// In en, this message translates to:
+  /// **'Weak-topic analysis in your results'**
+  String get payFeatWeak;
+
+  /// No description provided for @payFeatAtlas.
+  ///
+  /// In en, this message translates to:
+  /// **'Microscopy atlas practice'**
+  String get payFeatAtlas;
+
+  /// No description provided for @payFeatHistory.
+  ///
+  /// In en, this message translates to:
+  /// **'Full results history'**
+  String get payFeatHistory;
+
+  /// No description provided for @payFeatAllPro.
+  ///
+  /// In en, this message translates to:
+  /// **'Everything in Pro'**
+  String get payFeatAllPro;
+
+  /// No description provided for @payFeatGroups.
+  ///
+  /// In en, this message translates to:
+  /// **'Groups: add students, grades and results reports'**
+  String get payFeatGroups;
+
+  /// No description provided for @payFeatAssignments.
+  ///
+  /// In en, this message translates to:
+  /// **'Group assignments (timed tests)'**
+  String get payFeatAssignments;
+
+  /// No description provided for @payFeatLecture.
+  ///
+  /// In en, this message translates to:
+  /// **'Lecture mode: automatic presentation for a topic'**
+  String get payFeatLecture;
+
+  /// No description provided for @payPlanMonthly.
+  ///
+  /// In en, this message translates to:
+  /// **'Monthly'**
+  String get payPlanMonthly;
+
+  /// No description provided for @payPlanYearly.
+  ///
+  /// In en, this message translates to:
+  /// **'Yearly'**
+  String get payPlanYearly;
+
+  /// No description provided for @payUnitDay.
+  ///
+  /// In en, this message translates to:
+  /// **'day'**
+  String get payUnitDay;
+
+  /// No description provided for @payUnitWeek.
+  ///
+  /// In en, this message translates to:
+  /// **'week'**
+  String get payUnitWeek;
+
+  /// No description provided for @payUnitMonth.
+  ///
+  /// In en, this message translates to:
+  /// **'month'**
+  String get payUnitMonth;
+
+  /// No description provided for @payUnitYear.
+  ///
+  /// In en, this message translates to:
+  /// **'year'**
+  String get payUnitYear;
+
+  /// No description provided for @payDays.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 day} other{{count} days}}'**
+  String payDays(int count);
+
+  /// No description provided for @payWeeks.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 week} other{{count} weeks}}'**
+  String payWeeks(int count);
+
+  /// No description provided for @payMonths.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 month} other{{count} months}}'**
+  String payMonths(int count);
+
+  /// No description provided for @payYears.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 year} other{{count} years}}'**
+  String payYears(int count);
+
+  /// No description provided for @payPricePer.
+  ///
+  /// In en, this message translates to:
+  /// **'{price} / {period}'**
+  String payPricePer(String price, String period);
+
+  /// No description provided for @payTrial.
+  ///
+  /// In en, this message translates to:
+  /// **'{trial} free, then {price}'**
+  String payTrial(String trial, String price);
+
+  /// No description provided for @payStartTrial.
+  ///
+  /// In en, this message translates to:
+  /// **'Start free trial'**
+  String get payStartTrial;
+
+  /// No description provided for @paySubscribe.
+  ///
+  /// In en, this message translates to:
+  /// **'Subscribe'**
+  String get paySubscribe;
+
+  /// No description provided for @payCurrent.
+  ///
+  /// In en, this message translates to:
+  /// **'Active subscription'**
+  String get payCurrent;
+
+  /// No description provided for @payRestore.
+  ///
+  /// In en, this message translates to:
+  /// **'Restore purchases'**
+  String get payRestore;
+
+  /// No description provided for @payManage.
+  ///
+  /// In en, this message translates to:
+  /// **'Manage or cancel subscription'**
+  String get payManage;
+
+  /// No description provided for @payTerms.
+  ///
+  /// In en, this message translates to:
+  /// **'Terms of Use (EULA)'**
+  String get payTerms;
+
+  /// No description provided for @payPrivacy.
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy Policy'**
+  String get payPrivacy;
+
+  /// No description provided for @payDisclosure.
+  ///
+  /// In en, this message translates to:
+  /// **'Subscriptions renew automatically. Payment is charged to your {store} account when you confirm the purchase (after the free trial ends, if there is one). Unless cancelled at least 24 hours before the end of the current period, the subscription renews for the same period and price, and your account is charged within 24 hours before the period ends. You can manage and cancel the subscription in your {store} account settings. Any unused part of a free trial is forfeited when you buy a subscription.'**
+  String payDisclosure(String store);
+
+  /// No description provided for @payGuestNote.
+  ///
+  /// In en, this message translates to:
+  /// **'You don’t need an account to buy. Sign in to use the subscription on your other devices too.'**
+  String get payGuestNote;
+
+  /// No description provided for @payLockedPro.
+  ///
+  /// In en, this message translates to:
+  /// **'This feature is part of Pro.'**
+  String get payLockedPro;
+
+  /// No description provided for @payLockedTeacher.
+  ///
+  /// In en, this message translates to:
+  /// **'This feature is part of Teacher Pro.'**
+  String get payLockedTeacher;
+
+  /// No description provided for @payAllOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'All features are open right now.'**
+  String get payAllOpen;
+
+  /// No description provided for @payTestBuildOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'Test build: all features are open.'**
+  String get payTestBuildOpen;
+
+  /// No description provided for @payStatusTeacher.
+  ///
+  /// In en, this message translates to:
+  /// **'Teacher Pro is active · until {date}'**
+  String payStatusTeacher(String date);
+
+  /// No description provided for @payStatusTeacherNoEnd.
+  ///
+  /// In en, this message translates to:
+  /// **'Teacher Pro is active'**
+  String get payStatusTeacherNoEnd;
+
+  /// No description provided for @payStatusDevice.
+  ///
+  /// In en, this message translates to:
+  /// **'The subscription is active on this device. Sign in to use it on your other devices too.'**
+  String get payStatusDevice;
+
+  /// No description provided for @paySuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Your subscription is active. Thank you!'**
+  String get paySuccess;
+
+  /// No description provided for @payRestored.
+  ///
+  /// In en, this message translates to:
+  /// **'Purchase restored.'**
+  String get payRestored;
+
+  /// No description provided for @payPending.
+  ///
+  /// In en, this message translates to:
+  /// **'Waiting for the payment to be approved. The subscription will unlock automatically once it is.'**
+  String get payPending;
+
+  /// No description provided for @payNothingFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No active subscription was found to restore.'**
+  String get payNothingFound;
+
+  /// No description provided for @payOwnedByOther.
+  ///
+  /// In en, this message translates to:
+  /// **'This purchase is linked to another LabGuide account. Sign in to that account.'**
+  String get payOwnedByOther;
+
+  /// No description provided for @payFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'The purchase didn’t complete. Check your connection and try again. If you were charged, tap “Restore purchases”.'**
+  String get payFailed;
+
+  /// No description provided for @payUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'The store isn’t responding right now. Please try again later.'**
+  String get payUnavailable;
+
+  /// No description provided for @payDeleteAccountNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Deleting your account doesn’t cancel your subscription: cancel it in your {store} settings.'**
+  String payDeleteAccountNote(String store);
 }
 
 class _AppLocalizationsDelegate

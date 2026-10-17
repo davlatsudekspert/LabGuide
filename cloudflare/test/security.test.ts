@@ -100,7 +100,7 @@ describe('HTTP qoidalari', () => {
   it("ko'chirilmagan funksiyalar — 501 (ishlayotgandek ko'rsatilmaydi)", async () => {
     const s = makeServer();
     const { token } = await s.signIn(uniqueEmail());
-    for (const p of ['/v1/support/threads', '/v1/entitlements', '/v1/reviews']) {
+    for (const p of ['/v1/support/threads', '/v1/reviews']) {
       const r = await s.call('GET', p, { token });
       expect(r.status, p).toBe(501);
       expect(r.data.error).toBe('not_implemented');

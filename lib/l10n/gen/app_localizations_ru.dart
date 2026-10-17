@@ -6199,33 +6199,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get purchaseTitle => 'LabGuide Pro';
 
   @override
-  String get purchaseFree =>
-      'Бесплатно: счётчик лейкоформулы, проценты и абсолютные числа, основные руководства, в истории последние 3 результата.';
-
-  @override
-  String get purchasePro =>
-      'Pro (помесячно или на год): неограниченная история результатов, экспорт в PDF, расширенные упражнения, полная подготовка к экзамену на категорию.';
-
-  @override
-  String get purchaseNotice =>
-      'Товары магазина не подключены. Цены будут получены из App Store / Google Play в вашей валюте. Здесь ничего не списывается, а неготовые функции не продаются.';
-
-  @override
-  String get purchaseSubscribe => 'Оформить подписку';
-
-  @override
-  String get purchaseRestore => 'Восстановить покупки';
-
-  @override
   String get purchaseStatusTitle => 'Статус';
-
-  @override
-  String get purchaseStatusAllOpen =>
-      'Оплата ещё не включена; в TestFlight открыты все возможности.';
-
-  @override
-  String get purchaseStatusBillingOff =>
-      'Оплата ещё не включена. Бесплатные возможности работают полностью; Pro включится после утверждения цены.';
 
   @override
   String purchaseStatusPro(String date) {
@@ -8383,4 +8357,221 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get cytoCategoriesTitle => 'Категории';
+
+  @override
+  String get payTierPro => 'Pro';
+
+  @override
+  String get payTierProSub =>
+      'Для лаборантов, врачей, студентов и тех, кто готовится к аттестации';
+
+  @override
+  String get payTierTeacher => 'Pro для преподавателя';
+
+  @override
+  String get payTierTeacherSub =>
+      'Для преподавателя, который работает с группой. Включает всё из Pro.';
+
+  @override
+  String get payFree =>
+      'Всегда бесплатно: все карточки, калькуляторы, преаналитика, лейкоформула, 5 вопросов в день и работа над ошибками.';
+
+  @override
+  String get payFeatQuestions =>
+      'Неограниченные вопросы: практика по темам и мини-тест по карточке';
+
+  @override
+  String get payFeatExam => 'Симуляция экзамена (тест на время)';
+
+  @override
+  String get payFeatToifa =>
+      'Полный банк аттестационных вопросов: официальный тест и практика по темам';
+
+  @override
+  String get payFeatWeak => 'Разбор слабых тем в результатах';
+
+  @override
+  String get payFeatAtlas => 'Практика по атласу микроскопии';
+
+  @override
+  String get payFeatHistory => 'Полная история результатов';
+
+  @override
+  String get payFeatAllPro => 'Всё, что входит в Pro';
+
+  @override
+  String get payFeatGroups =>
+      'Группы: добавление студентов, оценки и отчёты по результатам';
+
+  @override
+  String get payFeatAssignments => 'Задания для группы (тесты на время)';
+
+  @override
+  String get payFeatLecture =>
+      'Режим лекции: автоматическая презентация по теме';
+
+  @override
+  String get payPlanMonthly => 'Ежемесячно';
+
+  @override
+  String get payPlanYearly => 'Ежегодно';
+
+  @override
+  String get payUnitDay => 'день';
+
+  @override
+  String get payUnitWeek => 'неделя';
+
+  @override
+  String get payUnitMonth => 'месяц';
+
+  @override
+  String get payUnitYear => 'год';
+
+  @override
+  String payDays(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count дня',
+      many: '$count дней',
+      few: '$count дня',
+      one: '$count день',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String payWeeks(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count недели',
+      many: '$count недель',
+      few: '$count недели',
+      one: '$count неделя',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String payMonths(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count месяца',
+      many: '$count месяцев',
+      few: '$count месяца',
+      one: '$count месяц',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String payYears(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count года',
+      many: '$count лет',
+      few: '$count года',
+      one: '$count год',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String payPricePer(String price, String period) {
+    return '$price / $period';
+  }
+
+  @override
+  String payTrial(String trial, String price) {
+    return '$trial бесплатно, затем $price';
+  }
+
+  @override
+  String get payStartTrial => 'Начать бесплатный период';
+
+  @override
+  String get paySubscribe => 'Оформить подписку';
+
+  @override
+  String get payCurrent => 'Активная подписка';
+
+  @override
+  String get payRestore => 'Восстановить покупки';
+
+  @override
+  String get payManage => 'Управлять подпиской или отменить её';
+
+  @override
+  String get payTerms => 'Условия использования (EULA)';
+
+  @override
+  String get payPrivacy => 'Политика конфиденциальности';
+
+  @override
+  String payDisclosure(String store) {
+    return 'Подписка продлевается автоматически. Оплата списывается с вашей учётной записи $store при подтверждении покупки (если есть бесплатный период — после его окончания). Если не отменить подписку как минимум за 24 часа до конца текущего периода, она продлится на тот же срок и по той же цене, а оплата будет списана в течение 24 часов до окончания периода. Управлять подпиской и отменить её можно в настройках учётной записи $store. Неиспользованная часть бесплатного периода сгорает при покупке подписки.';
+  }
+
+  @override
+  String get payGuestNote =>
+      'Для покупки аккаунт не нужен. Если войти в аккаунт, подписка будет работать и на других ваших устройствах.';
+
+  @override
+  String get payLockedPro => 'Эта возможность входит в подписку Pro.';
+
+  @override
+  String get payLockedTeacher =>
+      'Эта возможность входит в подписку «Pro для преподавателя».';
+
+  @override
+  String get payAllOpen => 'Сейчас все возможности открыты.';
+
+  @override
+  String get payTestBuildOpen => 'Тестовая версия: все возможности открыты.';
+
+  @override
+  String payStatusTeacher(String date) {
+    return '«Pro для преподавателя» активна · до $date';
+  }
+
+  @override
+  String get payStatusTeacherNoEnd => '«Pro для преподавателя» активна';
+
+  @override
+  String get payStatusDevice =>
+      'Подписка активна на этом устройстве. Войдите в аккаунт, чтобы она работала и на других устройствах.';
+
+  @override
+  String get paySuccess => 'Подписка активирована. Спасибо!';
+
+  @override
+  String get payRestored => 'Покупка восстановлена.';
+
+  @override
+  String get payPending =>
+      'Ожидается подтверждение оплаты. После подтверждения подписка откроется автоматически.';
+
+  @override
+  String get payNothingFound =>
+      'Активная подписка для восстановления не найдена.';
+
+  @override
+  String get payOwnedByOther =>
+      'Эта покупка привязана к другому аккаунту LabGuide. Войдите в тот аккаунт.';
+
+  @override
+  String get payFailed =>
+      'Покупка не завершена. Проверьте интернет и попробуйте ещё раз. Если деньги списаны, нажмите «Восстановить покупки».';
+
+  @override
+  String get payUnavailable => 'Магазин сейчас не отвечает. Попробуйте позже.';
+
+  @override
+  String payDeleteAccountNote(String store) {
+    return 'Подписка не отменяется вместе с аккаунтом: отмените её в настройках $store.';
+  }
 }

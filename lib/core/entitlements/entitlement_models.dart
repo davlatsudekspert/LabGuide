@@ -60,6 +60,7 @@ class ServerEntitlement {
     this.expiresAt,
     this.ownership = 'purchased',
     this.environment = 'production',
+    this.token,
   });
 
   factory ServerEntitlement.fromJson(Map<String, Object?> j) {
@@ -84,6 +85,10 @@ class ServerEntitlement {
   final String ownership;
   final String environment;
 
+  /// Faqat qurilmadagi (mehmon) xarid uchun: do'kon tokeni — hisobga
+  /// kirilganda serverga yuboriladi. Keshga yozilmaydi.
+  final String? token;
+
   /// [t] paytida Pro beradimi.
   bool grantsAt(DateTime t) =>
       status.grants && (expiresAt == null || expiresAt!.isAfter(t));
@@ -107,7 +112,7 @@ class ServerEntitlement {
   };
 }
 
-/// `my_entitlements()` / `verify-purchase` javobi.
+/// `GET /v1/billing/entitlements` / `POST /v1/billing/verify` javobi.
 @immutable
 class EntitlementSnapshot {
   const EntitlementSnapshot({
@@ -134,8 +139,11 @@ class EntitlementSnapshot {
 }
 
 enum EntitlementFailure {
-  /// Server yoki to'lov sozlanmagan (narx tasdiqlanmagan).
+  /// Server yoki to'lov sozlanmagan (do'kon kalitlari yo'q).
   notConfigured,
+
+  /// Do'konda to'lov hali kutilmoqda (Play: naqd to'lov va h.k.).
+  pending,
   network,
   unauthorized,
   unknown,
