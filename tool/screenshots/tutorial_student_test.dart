@@ -1,9 +1,11 @@
 // Qo'llanma videosi “Talaba: testga qo'shilish” uchun kadrlar (uz, Klassik,
 // 390x844 @3x). Soxta server (FakeLabBackend): ustoz guruh va variantli
 // mavzu testini ilova orqali tayyorlaydi (kadrsiz), so'ng talaba O'rganish →
-// Guruh va topshiriqlar → QR skaner (soxta kamera kadri: ustoz telefonidagi
-// Test QR) → test → topshirish → natija; ustoz yakunlagach — javoblar.
-// Muqobil yo'l: “Kod bilan qo'shilish” (kod + taxallus) — alohida talaba.
+// Guruh va topshiriqlar (birinchi ekranda) → QR skaner (soxta kamera kadri:
+// ustoz telefonidagi Test QR) → taxallus so'raladi → test (“Muddat: …”) →
+// topshirish → natija izohi; ustoz yakunlagach — javoblar.
+// Muqobil yo'l: “Kod bilan qo'shilish” (kod + taxallus) — alohida talaba;
+// guruh sahifasidagi “Taxallusim” qatori.
 //
 //   flutter test tool/screenshots/tutorial_student_test.dart --update-goldens
 //   python3 tool/screenshots/tutorial_compose.py student
@@ -171,7 +173,7 @@ void main() {
     // 1. O'rganish → Guruh va topshiriqlar.
     await goTo(tester, '/learn');
     await w.snap('organish');
-    await w.tapText(l.classesTitle);
+    await w.tapKey('learn-classes');
     await w.snap('guruhlar');
 
     // 2. QR kodni skanerlash.
@@ -180,11 +182,24 @@ void main() {
     scanner.last!.emit(scanner.link);
     await tester.pump();
     await tester.pumpAndSettle();
+
+    // 3. Birinchi marta: taxallus so'raladi (ixtiyoriy) → Qo'shilish.
+    expect(find.byKey(const ValueKey('join-ask-nick')), findsOneWidget);
+    expect(await b.myGroups(), isEmpty, reason: 'hali qo‘shilmadi');
+    await w.snap('taxallus_sorov');
+    await tester.enterText(find.byType(TextField).last, 'Madina');
+    await tester.pumpAndSettle();
+    await w.snap('taxallus_yozildi');
+    await w.tapKey('join-submit', scrolledStep: 'taxallus_scroll');
+    await tester.pump(const Duration(seconds: 5));
+    await tester.pumpAndSettle();
     await w.snap('test_ochildi');
 
-    // 3. Test: Boshlash → savollar → Yakunlash.
+    // 4. Test: Boshlash → savollar → Yakunlash.
     await w.tapText(l.classesStart);
     await w.snap('savol_1');
+    // Vaqt chegarasiz, muddatli test: taymer emas, “Muddat: 19-okt, 23:59”.
+    expect(find.byKey(const ValueKey('exam-deadline-date')), findsOneWidget);
     final run = s.exams.assignmentSession(a.id, b.userId)!;
     for (var i = 0; i < run.length; i++) {
       final item = run.current;
@@ -223,8 +238,9 @@ void main() {
 
     await w.scroll(380);
     await w.snap('natija_past');
+    expect(find.textContaining('ustoz testni yakunlaganda'), findsOneWidget);
 
-    // 5. Muqobil: Kod bilan qo'shilish (kod + taxallus) — boshqa talaba.
+    // 6. Muqobil: Kod bilan qo'shilish (kod + taxallus) — boshqa talaba.
     await _signIn(tester, s, 'aziz@example.com');
     await goTo(tester, '/learn/classes');
     await w.snap('kod_guruhlar');
@@ -241,8 +257,9 @@ void main() {
     await w.tapKey('join-submit');
     await tester.pump(const Duration(seconds: 5));
     await w.snap('kod_guruh');
+    expect(find.byKey(const ValueKey('group-nickname')), findsOneWidget);
 
-    // 4. Ustoz testni yakunlaydi → javoblar ochiladi.
+    // 5. Ustoz testni yakunlaydi → javoblar ochiladi.
     await b.actAs(_teacher, () => b.closeAssignment(a.id));
     await _signIn(tester, s, 'madina@example.com');
     await goTo(tester, '/learn/classes');
