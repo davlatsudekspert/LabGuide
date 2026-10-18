@@ -72,7 +72,7 @@ void main() {
     (tester) async {
       final l = await _open(tester);
       final c = await _catalog(tester);
-      expect(c.decks.length, 170);
+      expect(c.decks.length, 189);
       // Har deck o'z qatorida (har deck bir marta).
       for (final d in c.decks) {
         expect(
@@ -95,7 +95,7 @@ void main() {
         expect(count, contains('UZ'));
       }
       final protos = c.protocols;
-      expect(protos.length, 27);
+      expect(protos.length, 46);
       expect(
         find.byKey(const ValueKey('lecture-group-protocols')),
         findsOneWidget,
@@ -105,7 +105,7 @@ void main() {
           tester,
           find.byKey(const ValueKey('lecture-group-count-protocols')),
         ),
-        contains(l.lectureDecksCount(27)),
+        contains(l.lectureDecksCount(46)),
       );
       expect(find.text(l.lectureFilterProtocols), findsWidgets);
       // d001 (muallif decki) shu ro'yxatda.
@@ -517,6 +517,40 @@ void main() {
       }
     },
   );
+
+  // Ishlab chiqaruvchi IFU siga asoslangan protokollar (docs/PROTOCOLS_COVERAGE.md,
+  // tool/slides/test_ifu_protocols.py): fotometrik (analizator jadvali bilan), lateks va ELISA
+  // namunalari telefonda (360×740, shrift ×1.3) har bir slaydi toshmasdan chiziladi.
+  for (final (id, lang) in [
+    ('kreatinin-yaffe-kinetik', AppLanguage.uz),
+    ('crb-lateks-agglyutinatsiya', AppLanguage.ru),
+    ('d-vitamini-25oh-elisa', AppLanguage.en),
+  ]) {
+    testWidgets('IFU protokoli $id (${lang.name}) — barcha slaydlar', (
+      tester,
+    ) async {
+      final deck = await _preload(tester, id, lang.name);
+      final l = await _open(
+        tester,
+        lang: lang,
+        size: const Size(360, 740),
+        textScale: 1.3,
+      );
+      final n = deck.slides.length;
+      expect(n, greaterThan(10));
+      expect(deck.slides.map((s) => s.template), contains('table'));
+      for (var i = 0; i < n; i++) {
+        await goTo(tester, '/learn/lecture');
+        await goTo(tester, '/learn/lecture/deck/$id?s=$i');
+        expect(
+          find.text(l.lectureCounter(i + 1, n)),
+          findsOneWidget,
+          reason: '$id/${lang.name} #$i',
+        );
+        expect(tester.takeException(), isNull, reason: '$id #$i');
+      }
+    });
+  }
 
   testWidgets('noma‘lum deck — halol xato holati', (tester) async {
     final l = await _open(tester);

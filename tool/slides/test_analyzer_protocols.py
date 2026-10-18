@@ -60,11 +60,17 @@ def slide_text(sl, lg):
     return '\n'.join(parts)
 
 
+def from_aripov(sl):
+    """Aripov 2006 manbali slayd. Ishlab chiqaruvchi IFU siga asoslangan protokollardagi analizator slaydlari
+    (refs: `ifu-*`) alohida tekshiriladi — test_ifu_protocols.py."""
+    return any(r.get('book') == 'kdl-qvp-2006' for r in sl.get('refs', []))
+
+
 def checked_slides():
     out = []
     for p in pd.protocols(repo()):
         for n, sl in enumerate(p['slides'], 1):
-            if p['id'] == GEN_ID or sl.get('label') == 'analyzer':
+            if p['id'] == GEN_ID or (sl.get('label') == 'analyzer' and from_aripov(sl)):
                 out.append((f'{p["id"]}#{n}', p, sl))
     return out
 
