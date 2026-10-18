@@ -72,7 +72,7 @@ void main() {
     (tester) async {
       final l = await _open(tester);
       final c = await _catalog(tester);
-      expect(c.decks.length, 125);
+      expect(c.decks.length, 170);
       // Har deck o'z qatorida (har deck bir marta).
       for (final d in c.decks) {
         expect(

@@ -12954,9 +12954,9 @@
  ],
  "skipped": [
   {
-   "uz": "Dastur va dars jadvallari M9 amaliy kunlarida kunma-kun mavzu yoki texnikani ko‘rsatmaydi — texnikalar kunlarga biriktirilmadi.",
-   "ru": "Программа и расписания не указывают тему или технику по дням практических занятий М9 — техники не привязаны к дням.",
-   "en": "The programme and timetables give no day-by-day topic or technique for the M9 practical days — techniques are not attached to days."
+   "uz": "Dastur va dars jadvallari M9 amaliy kunlarida kunma-kun mavzu yoki texnikani ko‘rsatmaydi — texnikalar kunlarga manba asosida biriktirilmadi; bog‘lanish faqat LabGuide tavsiya etgan amaliy reja sifatida (D-67).",
+   "ru": "Программа и расписания не указывают тему или технику по дням практических занятий М9 — по источникам техники к дням не привязаны; связь — только как рекомендованный LabGuide план практики (D-67).",
+   "en": "The programme and timetables give no day-by-day topic or technique for the M9 practical days — techniques are not attached to days by any source; the link is only the LabGuide recommended practical plan (D-67)."
   },
   {
    "uz": "Najas: yashirin qon uchun gvayak (efir bilan), benzidin, Gregersen va amidopirin (piramidon) sinamalari hamda sterkobilin uchun sulema (simob xloridi) bilan Shmidt reaksiyasi olinmagan — yonuvchan efir, zaharli simob tuzi va eskirgan reaktivlar (Kurbonova, 42–43-b.; Aripova, 137-b.). Faqat tayyorgarlik qoidalari berilgan.",

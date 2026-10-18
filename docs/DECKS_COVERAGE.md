@@ -2,9 +2,9 @@
 
 Avtomatik: `python3 tool/slides/make_topic_decks.py --all --dry-run --report docs/DECKS_COVERAGE.md`. Qo‘lda tahrirlamang.
 
-**Ilova ichida:** shu mazmunning hammasi (98 kun mavzusi + amaliy protokollar, uz/ru/en) ilovaning Ma’ruza bo‘limida qidiruv bilan mavjud: `python3 tool/slides/export_app_decks.py` `assets/lectures/decks/` va `assets/lectures/index_v2.json` ni qayta yozadi (kontent o‘zgarganda ishga tushiring; `--check` dolzarbligini tekshiradi). PPTX fayllar repoga qo‘shilmaydi.
+**Ilova ichida:** shu mazmunning hammasi (143 kun mavzusi + amaliy protokollar, uz/ru/en) ilovaning Ma’ruza bo‘limida qidiruv bilan mavjud: `python3 tool/slides/export_app_decks.py` `assets/lectures/decks/` va `assets/lectures/index_v2.json` ni qayta yozadi (kontent o‘zgarganda ishga tushiring; `--check` dolzarbligini tekshiradi). PPTX fayllar repoga qo‘shilmaydi.
 
-Tillar: uz. Bitta deck = bitta o‘quv kuni (amaliy + ma’ruza bir xil havolalarga ega, `dNNN-P` va `dNNN-L` bitta fayl). Kunlar: 143; deck: 98; kontentsiz (deck yo‘q): 45.
+Tillar: uz. Bitta deck = bitta o‘quv kuni (amaliy + ma’ruza bir xil havolalarga ega, `dNNN-P` va `dNNN-L` bitta fayl). Kunlar: 143; deck: 143; kontentsiz (deck yo‘q): 0.
 
 ## Rasm va jadvallarni mavzuga bog‘lash qoidasi
 
@@ -14,6 +14,7 @@ Tillar: uz. Bitta deck = bitta o‘quv kuni (amaliy + ma’ruza bir xil havolala
 - **Leykoformula hujayralari (sxema)** — 7 asosiy hujayra: `/lab/calculators/differential` vositasi yoki neytrofil/limfotsit/monotsit/eozinofil/bazofil analiti bor mavzularda; reaktiv limfotsit va toksik neytrofil — faqat differential vositali mavzularda; gipersegmentlangan neytrofil — B12/foliy/MMA analitli yoki sarlavhada “B-12”; blast — sarlavhada “leykoz” (surunkali leykozlardan tashqari); smudge hujayra — sarlavhada “limfoleykoz”. Adashtiriladigan juftliklar, talqin, surtma texnikasi va misol oraliqlari — differential vositali mavzularda.
 - **Sitologiya sxemalari** — `pap-test` → epiteliy hujayralari + Bethesda jadvali; `vaginal-wet-mount` → flora/yallig‘lanish sxemalari; `pap-test` yoki `hpv-test` → koilotsit, HSIL; surtma olish va bo‘yash — pap-test va vaginal-wet-mount birga bo‘lgan mavzuda. “Qin surtmasi tozalik darajalari” jadvali manbasi yo‘qligi uchun kiritilmagan.
 - **Darslik bo‘yicha qisqa mazmun** — `tool/slides/data/books_extra.json`: ustoz kitoblaridan o‘z so‘zim bilan (Aripova va b., 2007: d044, d047, d051, d052 — sahifalar bilan; Najmitdinov, 1998: d010, d017, d018 — elektron matnda sahifa raqami yo‘q, bo‘lim nomi bilan). Yupqa kunlar uchun qo‘shimcha (d001–d006, d009, d010, d019, d020, d032, d033, d038, d040, d041, d053, d063, d064, d078, d081, d083, d085, d086, d116, d143): Aripov va b., 2006; Yusupova va b., 2022 va Kurbonova, 2023 (bosma sahifa raqami bilan); Agzamxodjaev va b., 2016; muallifi/yili ko‘rsatilmagan ma’ruza matnlari (shunday belgilangan). Matn/rasm ko‘chirilmagan; kitobdagi eskirgan yoki o‘zaro zid raqamlar olinmagan. Kitoblar Drive MCP orqali o‘qildi; Najmitdinov matni dastlab leykoz bobining oxirida (sitokimyo) kesilgan edi, to‘liq matn keyin .doc orqali tiklandi (d021/d022 uchun kitob mazmuni hali qo‘shilmagan; surunkali mieloleykozning klinik bo‘limi manbada shikastlangan). Axloq/deontologiya (d001, d004), TORCH (d083, toksoplazmadan tashqari), SOE analizatorlari (d085) va Mindray (d041, d116) bo‘yicha o‘qiladigan manba topilmadi. DjVu atlaslar, Hodjibekov va Sultonov (o‘qib bo‘lmaydi) olinmadi.
+- **M9 amaliy kunlari (d091–d142): LabGuide tavsiya etgan amaliy reja** (D-67, `docs/M9_PRACTICAL_TOPICS.md`) — manbalarda kunma-kun mavzu yo‘q; `plan_source: "labguide_recommended"` kunlarda birinchi mazmun slaydi «Kun rejasi» (jadvaldagi umumiy nom, tavsiya, reja asoslangan darslik bobi — `plan_refs`), so‘ng `links.protocols` dagi amaliy protokol slaydlari (protokol decklari bilan bir xil matn; `id#1-4` — tanlangan slaydlar).
 - **Mikroskopik atlas fotolari** — `links.microscopy` (urine / blood / parasites); litsenziya va muallif har slaydda va “Adabiyotlar”da.
 - **Savol-javob** — curriculum nomzodlari (yo‘q bo‘lsa ilovadagi kabi analit/toifa mavzusi bo‘yicha): paket mashq savollari (manbasizlari tashlanadi), toifa testlari (faqat kaliti aniq: verdict `ok`, bitta javob, `unverified` emas), og‘zaki savollar (javob rejasi). Chegara: {'quiz': 6, 'test': 6, 'oral': 3}.
 - `bloodgroup/card.png` va `spermogram/card.png` — hech bir curriculum mavzusiga bog‘lanmagan (havolalarda yo‘q), shuning uchun ishlatilmadi.
@@ -112,13 +113,58 @@ Tillar: uz. Bitta deck = bitta o‘quv kuni (amaliy + ma’ruza bir xil havolala
 | d088 | Klinik laborator diagnostikada koagulometrik analizatorlar | ~28 | analit 3, Q&A 6+0+3 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q |
 | d089 | Attestatsiya 8. Turli kasalliklar laborator diagnostikasi modulidan | ~23 | analit 2, me’yor qatori 5, Q&A 2+3+3 | — |
 | d090 | Umumiy qon tahlilini amaliyotda o‘zlashtirish | ~57 | analit 6, jadval 1, me’yor qatori 20, Q&A 6+6+3 | — |
+| d091 | Kapillyar qon olish va gematologik tekshiruv uchun namuna tayyorlash | ~10 | protokol 1 | — |
+| d092 | Gemoglobinni gemiglobintsianid usulida aniqlash | ~17 | protokol 1, analit 1 | — |
+| d093 | Eritrotsitlarni sanoq kamerasida (Goryaev) sanash | ~16 | protokol 1, analit 1 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q |
+| d094 | Leykotsitlarni sanoq kamerasida sanash va EChTni aniqlash | ~24 | protokol 2, analit 2 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q |
 | d095 | Leykositar formulani amaliyotda o‘zlashtirish | ~78 | analit 5, hujayra 12, foto 8, me’yor qatori 9, Q&A 6+3+2 | — |
+| d096 | Yupqa qon surtmasini tayyorlash va yaroqliligini baholash | ~12 | protokol 1, analit 1 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q |
+| d097 | Surtmani qotirish va Romanovskiy–Gimza usulida bo‘yash | ~8 | protokol 1 | — |
+| d098 | Leykotsitar formulani immersion mikroskopda sanash texnikasi | ~9 | protokol 1 | — |
+| d099 | Me’yoriy leykotsitlarni aniqlash mezonlari (mikroskopik atlas bilan) | ~33 | protokol 1, analit 5, hujayra 7, foto 8 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q |
+| d100 | Trombotsitlarni Fonio usulida sanash | ~16 | protokol 1, analit 1 | — |
 | d101 | Umumiy siydik tahlilini amaliyotda o‘zlashtirish | ~38 | analit 2, foto 14, me’yor qatori 9, Q&A 4+5+3 | — |
+| d102 | Siydikni yig‘ish, saqlash va fizik xossalarini aniqlash | ~9 | protokol 1 | — |
+| d103 | Siydikni kimyoviy tekshirish: test-tilimchalar va sulfosalitsil sinama | ~14 | protokol 1, analit 1 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q |
+| d104 | Siydik cho‘kmasi: preparat tayyorlash, hujayralar va silindrlar | ~11 | protokol 1, analit 1 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q |
+| d105 | Siydik cho‘kmasi: kristallar, atlas va natijani izohlash | ~18 | protokol 1, foto 14 | — |
 | d106 | Umumiy balg‘am tahlilini amaliyotda o‘zlashtirish | ~29 | analit 2, me’yor qatori 1, Q&A 2+6+3 | — |
+| d107 | Balg‘amni yig‘ish va makroskopik ko‘rish | ~8 | protokol 1 | — |
+| d108 | Balg‘amning nativ mikroskopiyasi va namuna sifati | ~7 | protokol 1 | — |
+| d109 | Balg‘am surtmasini Gram usulida bo‘yash va ko‘rish | ~9 | protokol 1 | — |
+| d110 | Sil–Nilsen usulida bo‘yash: kislotaga chidamli bakteriyalarni qidirish | ~10 | protokol 1, analit 1 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q |
+| d111 | Urogenital surtmalar mikroskopiyasi: gonoreya va trixomoniaz | ~22 | protokol 1, analit 1, sitologiya 6 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q |
 | d112 | Umumiy axlat (najas) tahlilini amaliyotda o‘zlashtirish | ~39 | analit 3, jadval 1, me’yor qatori 2, Q&A 2+6+3 | — |
+| d113 | Najasning umumiy tahlili (koprogramma) | ~20 | protokol 1, analit 1 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q |
+| d114 | Najasda sodda jonivorlar va gijja tuxumlarini aniqlash | ~29 | protokol 1, analit 1, jadval 1, foto 2 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q |
+| d115 | Perianal namuna: ostritsa (Enterobius vermicularis) tuxumlarini aniqla | ~13 | protokol 1, analit 1 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q |
 | d116 | Mindray BA-88A bioximik yarim avtomat analizator ishlash prinsiplari.  | ~20 | kitob 2, Q&A 0+6+3 | — |
+| d117 | Zardob va plazma tayyorlash (biokimyoviy tekshiruv uchun) | ~11 | protokol 1 | — |
+| d118 | Biokimyoviy fotometriya asoslari va reaktivlar to‘plami bilan ishlash | ~10 | protokol 1 | — |
+| d119 | Yarim avtomat biokimyoviy analizator: test dasturi, kalibrovka va nazo | ~10 | protokol 1 | — |
+| d120 | Qon zardobida glyukozani GOD–POD usulida aniqlash (qo‘lda va analizato | ~16 | protokol 1, analit 1 | — |
 | d121 | Laktatdegidrogenaza, ishqoriy fosfataza fermentlar tekshiruvini amaliy | ~32 | analit 2, Q&A 5+6+1 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q |
+| d122 | LDG va ishqoriy fosfataza: namuna, faollikni o‘lchash va natija talqin | ~11 | protokol 1, analit 2 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q |
+| d123 | Alaninaminotransferaza (ALT) faolligini kinetik usulda aniqlash | ~16 | protokol 1, analit 1 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q |
+| d124 | Qon zardobida mochevinani ureaza–GLDG usulida aniqlash | ~15 | protokol 1, analit 1 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q |
+| d125 | Umumiy va bog‘langan bilirubinni diazo usulida aniqlash | ~22 | protokol 1, analit 2, jadval 1 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q |
+| d126 | Biokimyoviy analitik seriyada nazorat materiali bilan ishlash | ~8 | protokol 2 | — |
 | d127 | SRB, RF, ASLO lar tekshiruvini amaliyotda o‘zlashtirish | ~26 | analit 3, me’yor qatori 1, Q&A 3+3+1 | — |
+| d128 | SRB, RF va ASLO: namuna, usul cheklovlari va natija talqini | ~14 | protokol 1, analit 3 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q |
+| d129 | Yallig‘lanish ko‘rsatkichlari: SRB va EChTni birga baholash | ~17 | protokol 1, analit 2, holat 1 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q |
+| d130 | Gemostaz tizimini tekshirish uchun qon olish va tayyorgarlik | ~9 | protokol 1 | — |
+| d131 | Koagulogramma: PV/MNO, AChTV va fibrinogen natijalarini o‘qish | ~14 | analit 3 | me’yor/qaror chegaralari: kartalarda ham, toifa bankida ham yo‘q |
+| d132 | Venoz qon olish: probirkalar va yo‘llanma | ~6 | protokol 1 | — |
+| d133 | Laboratoriyadan oldingi (preanalitik) omillar va namuna xatolari | ~7 | protokol 2 | — |
+| d134 | Biologik material bilan xavfsiz ishlash va sanitar-epidemiologik tarti | ~11 | protokol 1 | — |
+| d135 | Laboratoriya ichidagi sifat nazorati: bosqichlar va nazorat materiali | ~7 | protokol 1 | — |
+| d136 | Nazorat kartasi (Levey–Jennings) va Westgard qoidalari bilan ishlash | ~5 | protokol 1 | — |
+| d137 | Analitik va yakuniy bosqich xatolari; asbob parvarishi | ~6 | protokol 2 | — |
+| d138 | Takrorlash: umumiy qon tahlili — sanash usullari va xatolar | ~12 | protokol 4 | — |
+| d139 | Takrorlash: qon surtmasi, leykoformula va trombotsitlar | ~14 | protokol 3, foto 8 | — |
+| d140 | Takrorlash: siydik va najas tahlili | ~9 | protokol 5 | — |
+| d141 | Takrorlash: balg‘am, surtmalar va fotometrik biokimyoviy usullar | ~10 | protokol 6 | — |
+| d142 | Yakuniy attestatsiyaga tayyorgarlik: amaliy ko‘nikmalar va xavfsizlik | ~6 | protokol 2 | — |
 | d143 | Attestatsiya. Laborator tekshiruv usullarini amaliyotda o‘zlashtirish  | ~21 | me’yor qatori 2, kitob 2, Q&A 0+6+3 | — |
 
 ## Deck yo‘q mavzular (kontent topilmadi)
@@ -127,56 +173,11 @@ Bu kunlarda `links` bo‘sh yoki bog‘langan kontent yo‘q — slayd o‘ylab 
 
 | Kun | Mavzu (uz) | Sabab |
 |---|---|---|
-| d091 | Laborator tekshiruv usullarini amaliyotda o‘zlashtirish | havolalar bo‘sh |
-| d092 | Laborator tekshiruv usullarini amaliyotda o‘zlashtirish | havolalar bo‘sh |
-| d093 | Laborator tekshiruv usullarini amaliyotda o‘zlashtirish | havolalar bo‘sh |
-| d094 | Laborator tekshiruv usullarini amaliyotda o‘zlashtirish | havolalar bo‘sh |
-| d096 | Laborator tekshiruv usullarini amaliyotda o‘zlashtirish | havolalar bo‘sh |
-| d097 | Laborator tekshiruv usullarini amaliyotda o‘zlashtirish | havolalar bo‘sh |
-| d098 | Laborator tekshiruv usullarini amaliyotda o‘zlashtirish | havolalar bo‘sh |
-| d099 | Laborator tekshiruv usullarini amaliyotda o‘zlashtirish | havolalar bo‘sh |
-| d100 | Laborator tekshiruv usullarini amaliyotda o‘zlashtirish | havolalar bo‘sh |
-| d102 | Laborator tekshiruv usullarini amaliyotda o‘zlashtirish | havolalar bo‘sh |
-| d103 | Laborator tekshiruv usullarini amaliyotda o‘zlashtirish | havolalar bo‘sh |
-| d104 | Laborator tekshiruv usullarini amaliyotda o‘zlashtirish | havolalar bo‘sh |
-| d105 | Laborator tekshiruv usullarini amaliyotda o‘zlashtirish | havolalar bo‘sh |
-| d107 | Laborator tekshiruv usullarini amaliyotda o‘zlashtirish | havolalar bo‘sh |
-| d108 | Laborator tekshiruv usullarini amaliyotda o‘zlashtirish | havolalar bo‘sh |
-| d109 | Laborator tekshiruv usullarini amaliyotda o‘zlashtirish | havolalar bo‘sh |
-| d110 | Laborator tekshiruv usullarini amaliyotda o‘zlashtirish | havolalar bo‘sh |
-| d111 | Laborator tekshiruv usullarini amaliyotda o‘zlashtirish | havolalar bo‘sh |
-| d113 | Laborator tekshiruv usullarini amaliyotda o‘zlashtirish | havolalar bo‘sh |
-| d114 | Laborator tekshiruv usullarini amaliyotda o‘zlashtirish | havolalar bo‘sh |
-| d115 | Laborator tekshiruv usullarini amaliyotda o‘zlashtirish | havolalar bo‘sh |
-| d117 | Laborator tekshiruv usullarini amaliyotda o‘zlashtirish | havolalar bo‘sh |
-| d118 | Laborator tekshiruv usullarini amaliyotda o‘zlashtirish | havolalar bo‘sh |
-| d119 | Laborator tekshiruv usullarini amaliyotda o‘zlashtirish | havolalar bo‘sh |
-| d120 | Laborator tekshiruv usullarini amaliyotda o‘zlashtirish | havolalar bo‘sh |
-| d122 | Laborator tekshiruv usullarini amaliyotda o‘zlashtirish | havolalar bo‘sh |
-| d123 | Laborator tekshiruv usullarini amaliyotda o‘zlashtirish | havolalar bo‘sh |
-| d124 | Laborator tekshiruv usullarini amaliyotda o‘zlashtirish | havolalar bo‘sh |
-| d125 | Laborator tekshiruv usullarini amaliyotda o‘zlashtirish | havolalar bo‘sh |
-| d126 | Laborator tekshiruv usullarini amaliyotda o‘zlashtirish | havolalar bo‘sh |
-| d128 | Laborator tekshiruv usullarini amaliyotda o‘zlashtirish | havolalar bo‘sh |
-| d129 | Laborator tekshiruv usullarini amaliyotda o‘zlashtirish | havolalar bo‘sh |
-| d130 | Laborator tekshiruv usullarini amaliyotda o‘zlashtirish | havolalar bo‘sh |
-| d131 | Laborator tekshiruv usullarini amaliyotda o‘zlashtirish | havolalar bo‘sh |
-| d132 | Laborator tekshiruv usullarini amaliyotda o‘zlashtirish | havolalar bo‘sh |
-| d133 | Laborator tekshiruv usullarini amaliyotda o‘zlashtirish | havolalar bo‘sh |
-| d134 | Laborator tekshiruv usullarini amaliyotda o‘zlashtirish | havolalar bo‘sh |
-| d135 | Laborator tekshiruv usullarini amaliyotda o‘zlashtirish | havolalar bo‘sh |
-| d136 | Laborator tekshiruv usullarini amaliyotda o‘zlashtirish | havolalar bo‘sh |
-| d137 | Laborator tekshiruv usullarini amaliyotda o‘zlashtirish | havolalar bo‘sh |
-| d138 | Laborator tekshiruv usullarini amaliyotda o‘zlashtirish | havolalar bo‘sh |
-| d139 | Laborator tekshiruv usullarini amaliyotda o‘zlashtirish | havolalar bo‘sh |
-| d140 | Laborator tekshiruv usullarini amaliyotda o‘zlashtirish | havolalar bo‘sh |
-| d141 | Laborator tekshiruv usullarini amaliyotda o‘zlashtirish | havolalar bo‘sh |
-| d142 | Laborator tekshiruv usullarini amaliyotda o‘zlashtirish | havolalar bo‘sh |
 
 
-## Amaliy mashg‘ulot protokollari (kunga bog‘lanmagan to‘plam)
+## Amaliy mashg‘ulot protokollari (alohida to‘plam)
 
-M9 modulining amaliy kunlari (`d091`–`d142`, jumladan yuqoridagi “Deck yo‘q” ro‘yxatidagilar) curriculumda bir xil umumiy nom bilan turadi. Dastur hujjati (`КЛД_ихтисослаштириш_864_кредит`: M9 — 324 soat, shundan ma’ruza 48, laboratoriya ishi 276 (`curriculum.json`da M9 — 330 soat: ma’ruza 48, amaliy 270, attestatsiya 6, qo‘shimcha 6); mavzu yoki texnika ro‘yxati yo‘q, faqat umumiy kompetensiyalar va jihozlar ro‘yxati) hamda dars jadvallari (Karimova, Turg‘unova T1/T2) bu kunlarda **kunma-kun mavzu yoki texnikani ko‘rsatmaydi**: aniq mavzu faqat ma’ruza kunlarida (d090, d095, d101, d106, d112, d116, d121, d127 — ular allaqachon alohida deck), qolganlari “Laborator tekshiruv usullarini amaliyotda o‘zlashtirish”. Shu sababli texnika taqdimotlari **hech bir kunga biriktirilmagan**: nomi texnikaga qarab berilgan raqamsiz to‘plam. Kun ↔ texnika moslik manbalarda yo‘q, shuning uchun o‘ylab topilmadi (ma’ruza kunlari oralig‘idagi kunlar o‘sha ma’ruza mavzusiga tegishli degan taxmin ham hujjatlarda tasdiqlanmagan — ishlatilmadi).
+M9 modulining amaliy kunlari (`d091`–`d142`) manbalarda bir xil umumiy nomda: dastur hujjati (`КЛД_ихтисослаштириш_864_кредит`: M9 — 324 soat, shundan ma’ruza 48, laboratoriya ishi 276; mavzu yoki texnika ro‘yxati yo‘q) va dars jadvallari bu kunlarda **kunma-kun mavzu ko‘rsatmaydi** — aniq mavzu faqat ma’ruza kunlarida (d090, d095, d101, d106, d112, d116, d121, d127). Protokollar texnika nomi bilan alohida to‘plamda qoladi; D-67 dan boshlab ular **LabGuide tavsiya etgan amaliy reja** (manbadagi moslik emas, tavsiya; `docs/M9_PRACTICAL_TOPICS.md`) orqali M9 kunlariga `links.protocols` bilan bog‘langan va o‘sha kunlarning decklarida «Kun rejasi» slaydidan keyin chiqadi.
 
 Qoidalar: matn kitoblardan o‘z so‘zim bilan; har slaydda muallif + qisqa nom + bo‘lim/sahifa; oxirgi slayd — “Adabiyotlar”. Son, hajm, vaqt va konsentratsiya faqat manbada ko‘ringan joyda (sahifasi bilan); manbalar bir-biriga zid bo‘lsa — yangi/ishonchlisi yoki umuman olinmagan; eskirgan/xavfli usullar olinmagan. Faqat mavjud rasmlar (`assets/microscopy`) ishlatilgan (atlasda najas va balg‘am fotolari yo‘q — o‘sha protokollarda rasm slaydi yo‘q). “Qin tozalik darajalari” jadvali yuqoridagi sitologiya mavzu decklarida manbasi yo‘qligi uchun yo‘q; u faqat shu to‘plamdagi urogenital protokolda, Kurbonova (2023, 70-b.) manbasi bilan berilgan.
 
@@ -212,7 +213,7 @@ Qoidalar: matn kitoblardan o‘z so‘zim bilan; har slaydda muallif + qisqa nom
 
 ### Manbalarda bor, lekin olinmagan
 
-- Dastur va dars jadvallari M9 amaliy kunlarida kunma-kun mavzu yoki texnikani ko‘rsatmaydi — texnikalar kunlarga biriktirilmadi.
+- Dastur va dars jadvallari M9 amaliy kunlarida kunma-kun mavzu yoki texnikani ko‘rsatmaydi — texnikalar kunlarga manba asosida biriktirilmadi; bog‘lanish faqat LabGuide tavsiya etgan amaliy reja sifatida (D-67).
 - Najas: yashirin qon uchun gvayak (efir bilan), benzidin, Gregersen va amidopirin (piramidon) sinamalari hamda sterkobilin uchun sulema (simob xloridi) bilan Shmidt reaksiyasi olinmagan — yonuvchan efir, zaharli simob tuzi va eskirgan reaktivlar (Kurbonova, 42–43-b.; Aripova, 137-b.). Faqat tayyorgarlik qoidalari berilgan.
 - Siydik: qaynatish sinamasi (Aripova xavfli deb tavsiya etmaydi), issiq konsentrlangan reaktivlar, ammiak, nitroprussid yoki temir xlorid bilan klassik sinamalar (Geller, Gaynes, Lange, Garrison) va pH uchun metilen ko‘ki kabi eski usullar olinmagan.
 - Gemoglobin: Sali usuli standartlashmagani va hozir klinikada tavsiya etilmagani uchun olinmagan (Aripov va b., 2006).

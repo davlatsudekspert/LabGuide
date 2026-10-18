@@ -2102,6 +2102,7 @@
   "classroomToolInstruments": "Apparatlar",
   "classroomToolCalibration": "Kalibrlash jurnali",
   "classroomToolDifferential": "Leykoformula",
+  "classroomPlanRecommended": "LabGuide tavsiya etgan amaliy reja",
   "classroomOralNotice": "Savollar avtomatik tanlangan nomzodlar; javob rejasi — o‘quv yordami. “So‘raldi” va baholar faqat shu qurilmada saqlanadi.",
   "classroomOralEmpty": "Bu mavzu uchun og‘zaki savol topilmadi",
   "classroomCandidate": "Nomzod savol {n}",

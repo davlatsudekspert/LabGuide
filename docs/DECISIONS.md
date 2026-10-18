@@ -1079,3 +1079,30 @@ D-48 dagi **Ustoz Pro** qatorini (69 000 so'm/oy · 490 000 so'm/yil · $9.99/oy
 - **O'zgarmadi:** tibbiy matn, raqamlar, manbalar ro'yxati; ichki ma'lumot modeli (`status: draft`,
   `isDraft`, tekshiruvchi navbati) — faqat foydalanuvchiga ko'rinadigan yozuvlar. Rasmli ma'ruza slaydlaridagi
   (JPG) matn qayta chizilmadi.
+
+## D-67. M9 amaliy kunlari: "LabGuide tavsiya etgan amaliy reja" (2026-10-18, egasi qarori)
+
+- **Muammo:** 9-modulning 45 ta amaliy kuni (d091–d142, ma'ruza kunlari d090/095/101/106/112/116/121/127 dan
+  tashqari) barcha dars jadvallarida (Karimova 2026; Turg'unova 2026-04-25 va 2026-05-10 nusxalari) faqat
+  "Laborator tekshiruv usullarini amaliyotda o'zlashtirish" deb yozilgan; dasturda (`КЛД_ихтисослаштириш_864`)
+  M9 — 324 soat (ma'ruza 48, laboratoriya ishi 276), mavzu/kun ro'yxati yo'q. Egasi: "amaliy jadval hujjati yo'q —
+  o'zing eng yaxshisini hal qil; kitoblardan foydalan".
+- **Qaror:** kunma-kun reja LabGuide tomonidan tuziladi va **tavsiya** sifatida ochiq belgilanadi:
+  `curriculum.json` da `plan_source: "labguide_recommended"`, `plan_block`, `plan_refs` (reja asoslangan darslik
+  bob/bo'lim/sahifa), `links.protocols` (amaliy protokollar; `id#1-4` — tanlangan slaydlar). Ilovada kun meta
+  qatorida "LabGuide tavsiya etgan amaliy reja" (ru/en), deckda sarlavha slaydida va birinchi "Kun rejasi"
+  slaydida (jadvaldagi umumiy nom, tavsiya, "ustoz o'zgartirishi mumkin", Manba — `plan_refs`).
+- **Tuzilish:** ma'ruzadan keyingi amaliy kunlar o'sha mavzuni mashq qiladi (A: UQT, B: surtma/leykoformula,
+  C: siydik, D: balg'am va surtmalar, E: najas/parazitologiya, F: yarim avtomat analizator, G: fermentlar va
+  fotometrik usullar, H: SRB/RF/ASLO → gemostaz → preanalitika → biologik xavfsizlik → ichki sifat nazorati →
+  takrorlash → attestatsiyaga tayyorgarlik); blok ichida namuna olish → tayyorlash/bo'yash → sanash/o'lchash →
+  talqin/QC. Tartib darsliklar bob tartibiga tayangan (Aripova 2007 X–XIII boblar; Kurbonova 2023 1–2, 5–6, 9–10,
+  12-boblar; Aripov va b. 2006 I va III boblar; WHO 2010; Selivanov 2005; Saidov 2017).
+- **Faqat mavjud manbali kontent:** 27 ta protokol, analit kartalari, lab bo'limlari, atlas, jadvallar. Yangi
+  tibbiy matn yo'q. Kun decklari: reja slaydi + protokol slaydlari + analit/atlas; savol-javob bloki va og'zaki
+  me'yor jadvali qo'yilmaydi (nomzodlar ma'ruza kunidan meros — mavzu testida ishlatiladi). Deck hajm byudjeti
+  13 → 16 MiB (+~2.8 MB).
+- **Manba:** `tool/curriculum/m9_plan.json` → `python3 tool/curriculum/apply_m9_plan.py` (curriculum.json va
+  `docs/M9_PRACTICAL_TOPICS.md`; `--check` testda). Kun soni (143) o'zgarmadi (D-42; jadval variantlari 142/144
+  kun faqat oxirida farq qiladi). Manbada kunma-kun mavzu paydo bo'lsa — reja o'sha manbaga moslanadi va
+  `plan_source` olib tashlanadi.

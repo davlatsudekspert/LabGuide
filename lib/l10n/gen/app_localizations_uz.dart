@@ -7261,6 +7261,9 @@ class AppLocalizationsUz extends AppLocalizations {
   String get classroomToolDifferential => 'Leykoformula';
 
   @override
+  String get classroomPlanRecommended => 'LabGuide tavsiya etgan amaliy reja';
+
+  @override
   String get classroomOralNotice =>
       'Savollar avtomatik tanlangan nomzodlar; javob rejasi — o‘quv yordami. “So‘raldi” va baholar faqat shu qurilmada saqlanadi.';
 

@@ -12712,6 +12712,12 @@ abstract class AppLocalizations {
   /// **'Differential count'**
   String get classroomToolDifferential;
 
+  /// Shown next to M9 practical-day topics whose title is a LabGuide recommendation (the timetable gives only a generic title); the teacher may change it.
+  ///
+  /// In en, this message translates to:
+  /// **'LabGuide recommended practical plan'**
+  String get classroomPlanRecommended;
+
   /// No description provided for @classroomOralNotice.
   ///
   /// In en, this message translates to:

@@ -882,6 +882,8 @@ def pick_days(repo, topics, all_):
 
 def coverage_line(cov):
     parts = []
+    if cov.get('protocols'):
+        parts.append(f'protokol {len(cov["protocols"])}')
     if cov['analytes']:
         parts.append(f'analit {len(cov["analytes"])}')
     if cov['conditions']:
@@ -908,7 +910,7 @@ def write_report(path, rows, nodeck, langs, totals, extra=None):
     md = ['# Taqdimotlar qamrovi (mavzu bo‘yicha PPTX)', '',
           'Avtomatik: `python3 tool/slides/make_topic_decks.py --all --dry-run --report docs/DECKS_COVERAGE.md`. '
           'Qo‘lda tahrirlamang.', '',
-          '**Ilova ichida:** shu mazmunning hammasi (98 kun mavzusi + amaliy protokollar, uz/ru/en) ilovaning '
+          f'**Ilova ichida:** shu mazmunning hammasi ({totals["decks"]} kun mavzusi + amaliy protokollar, uz/ru/en) ilovaning '
           'Ma’ruza bo‘limida qidiruv bilan mavjud: `python3 tool/slides/export_app_decks.py` '
           '`assets/lectures/decks/` va `assets/lectures/index_v2.json` ni qayta yozadi (kontent o‘zgarganda '
           'ishga tushiring; `--check` dolzarbligini tekshiradi). PPTX fayllar repoga qo‘shilmaydi.', '',
@@ -937,6 +939,10 @@ def write_report(path, rows, nodeck, langs, totals, extra=None):
           'to‘liq matn keyin .doc orqali tiklandi (d021/d022 uchun kitob mazmuni hali qo‘shilmagan; surunkali mieloleykozning klinik bo‘limi manbada shikastlangan). '
           'Axloq/deontologiya (d001, d004), TORCH (d083, toksoplazmadan tashqari), SOE analizatorlari (d085) va Mindray (d041, d116) '
           'bo‘yicha o‘qiladigan manba topilmadi. DjVu atlaslar, Hodjibekov va Sultonov (o‘qib bo‘lmaydi) olinmadi.',
+          '- **M9 amaliy kunlari (d091–d142): LabGuide tavsiya etgan amaliy reja** (D-67, `docs/M9_PRACTICAL_TOPICS.md`) — '
+          'manbalarda kunma-kun mavzu yo‘q; `plan_source: "labguide_recommended"` kunlarda birinchi mazmun slaydi «Kun rejasi» '
+          '(jadvaldagi umumiy nom, tavsiya, reja asoslangan darslik bobi — `plan_refs`), so‘ng `links.protocols` dagi amaliy '
+          'protokol slaydlari (protokol decklari bilan bir xil matn; `id#1-4` — tanlangan slaydlar).',
           '- **Mikroskopik atlas fotolari** — `links.microscopy` (urine / blood / parasites); litsenziya va muallif har slaydda va “Adabiyotlar”da.',
           '- **Savol-javob** — curriculum nomzodlari (yo‘q bo‘lsa ilovadagi kabi analit/toifa mavzusi bo‘yicha): paket mashq savollari '
           '(manbasizlari tashlanadi), toifa testlari (faqat kaliti aniq: verdict `ok`, bitta javob, `unverified` emas), og‘zaki savollar (javob rejasi). '
