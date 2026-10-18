@@ -564,6 +564,30 @@ describe('hisobni o‘chirish va Apple tokenini bekor qilish', () => {
     expect(s.fetchCalls.slice(before)).toHaveLength(0);
     expect(await tableCount(s, 'SELECT COUNT(*) AS n FROM auth_identities WHERE user_id = ?1', g.data.user_id)).toBe(0);
   });
+
+  it('egasi admin panelidan o‘chirsa — xuddi shu yo‘l: Apple bekor qilish urinib ko‘riladi (kod yo‘q → no_code, actor = admin)', async () => {
+    const { s, aKey } = await setup();
+    const owner = uniqueEmail('owner');
+    (s.env as unknown as Record<string, string>).ADMIN_EMAILS = owner;
+    const boss = await s.signIn(owner);
+    const email = uniqueEmail('del');
+    const r = await login(s, 'apple', await token(s, aKey, 'apple', { sub: 'apple-del-admin', email, verified: 'true' }));
+    expect(r.status).toBe(200);
+    const u = r.data as { token: string; user_id: string };
+    const before = s.fetchCalls.length;
+    const del = await s.call('POST', '/v1/admin/accounts/delete', { token: boss.token, body: { email, confirm_user_id: u.user_id } });
+    expect(del.status).toBe(200);
+    // Foydalanuvchining yangi kodi yo'q — Apple API ga so'rov yo'q, hisob baribir o'chadi.
+    expect(s.fetchCalls.slice(before).filter((c) => c.url.includes('/auth/'))).toHaveLength(0);
+    expect(await tableCount(s, 'SELECT COUNT(*) AS n FROM users WHERE id = ?1', u.user_id)).toBe(0);
+    expect(await tableCount(s, 'SELECT COUNT(*) AS n FROM auth_identities WHERE user_id = ?1', u.user_id)).toBe(0);
+    const log = await s.env.DB.prepare(`SELECT actor, details FROM audit_log WHERE action = 'apple_revoke' AND target = ?1`)
+      .bind(u.user_id)
+      .first<{ actor: string; details: string }>();
+    expect(log!.actor).toBe(boss.userId);
+    expect(JSON.parse(log!.details)).toEqual({ outcome: 'no_code', via: 'admin' });
+    expect((await s.call('GET', '/v1/me', { token: u.token })).status).toBe(401);
+  });
 });
 
 describe('Android uchun Apple qaytish manzili', () => {

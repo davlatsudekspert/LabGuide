@@ -37,7 +37,7 @@ describe('SQL injection — faqat parametrli so\'rovlar', () => {
       for (const expr of interpolated) {
         // Ruxsat: faqat modul ichidagi doimiy SQL bo'laklari (hamjamiyat:
         // community.ts dagi `const` bo'laklar — qiymat emas).
-        expect(['owned', 'ownedAssignments', 'a', 'AUTHOR_SELECT', 'VISIBLE', 'LIST_FROM', 'answers', 'myQuestions', 'affectedAnswers'], `${name}: ${expr}`).toContain(expr.trim());
+        expect(['owned', 'ownedAssignments', 'a', 'AUTHOR_SELECT', 'VISIBLE', 'LIST_FROM', 'answers', 'myQuestions', 'affectedAnswers', 'NOT_BLOCKED_Q', 'NOT_BLOCKED_A'], `${name}: ${expr}`).toContain(expr.trim());
       }
     }
   });
