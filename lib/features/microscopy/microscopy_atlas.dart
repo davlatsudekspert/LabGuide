@@ -128,8 +128,8 @@ class MicroEntity {
   /// “Bu nima?” mashqida javob/variant bo'la oladi.
   final bool quiz;
 
-  /// LabGuide'ning qisqa tushuntirishi — **draft**, mutaxassis tekshiruvi
-  /// kutilmoqda (hech qachon “tasdiqlangan” deb ko'rsatilmaydi).
+  /// LabGuide'ning qisqa tushuntirishi (manba izohi bilan solishtirilgan;
+  /// "Nimaga e'tibor berish" panelida).
   final LocalizedText? note;
 
   /// Litsenziyali rasm hali yo'q — sababi (halol ko'rsatiladi).

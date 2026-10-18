@@ -391,7 +391,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get condNotDiagnosticBody =>
-      'The guide helps plan testing. Clinical assessment and the final decision rest with the clinician. The text is a sourced draft awaiting independent expert review.';
+      'The guide helps plan testing. Clinical assessment and the final decision rest with the clinician. The text is based on the sources listed on each card.';
 
   @override
   String get condCautionsTitle => 'Keep in mind';
@@ -415,7 +415,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get condReferralFooter =>
-      'LabGuide guide (draft). Not a diagnostic tool — the final decision rests with the clinician.';
+      'LabGuide guide. Not a diagnostic tool — the final decision rests with the clinician.';
 
   @override
   String get condAnalyteSection => 'Conditions where it is ordered';
@@ -581,16 +581,13 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get statusDraft => 'Draft';
-
-  @override
   String get statusVerified => 'Verified';
 
   @override
   String get statusPublished => 'Published';
 
   @override
-  String get statusSourcedSample => 'Sourced sample';
+  String get statusSourcedSample => 'Source-based';
 
   @override
   String get statusStructureOnly => 'Structure only';
@@ -625,15 +622,11 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get analyteStructureOnlyBody =>
-      'This card shows the structure only. Clinical text is added after sourcing and independent expert review — generic text is never shown as ready.';
-
-  @override
-  String get analyteSampleNotice =>
-      'Learning sample based on the cited sources. Independent expert review is pending — not for clinical decisions.';
+      'This card shows the structure only for now. Clinical text is added together with its sources — generic text is never shown as ready.';
 
   @override
   String get analyteNotWritten =>
-      'Not written yet: requires sources and review.';
+      'Not written yet: the text is added together with its sources.';
 
   @override
   String get analyteAtAGlance => 'At a glance';
@@ -695,19 +688,13 @@ class AppLocalizationsEn extends AppLocalizations {
       'Reuse rights: verify before distribution';
 
   @override
-  String get analyteReview => 'Review status';
+  String get analyteReview => 'Preparation and sources';
 
   @override
   String get analyteReviewPending => 'Expert review pending';
 
   @override
   String get analyteReviewApproved => 'Reviewed';
-
-  @override
-  String get analyteReviewerNotAssigned => 'Reviewer not assigned';
-
-  @override
-  String get analyteTranslationPending => 'Translation review pending';
 
   @override
   String analyteContentVersion(String version) {
@@ -1333,13 +1320,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get diffSourcesTitle => 'Sources';
 
   @override
-  String get diffDraftTag => 'Draft · awaiting expert review';
-
-  @override
-  String get diffDraftNote =>
-      'This section has not been expert-reviewed. A result is not a diagnosis; reference intervals are on your laboratory’s report form.';
-
-  @override
   String get diffSchematicCaption =>
       'Schematic drawing (made by LabGuide) — not a micrograph';
 
@@ -1835,10 +1815,6 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get refIntro =>
       'Short tables based on textbooks and official sources. Sources are listed under each section.';
-
-  @override
-  String get refDraftNote =>
-      'Draft: not yet expert-reviewed. Books are cited as sources only — no text or figures were copied. The conclusion is the doctor’s.';
 
   @override
   String get refOpenSub => 'Table and algorithm';
@@ -2685,7 +2661,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get micEduNotice =>
-      'Teaching images — not for diagnosis. Every image shows its author, licence and original caption. LabGuide notes are drafts awaiting expert review.';
+      'Teaching images — not for diagnosis. Every image shows its author, licence and original caption.';
 
   @override
   String get micEduTag => 'Teaching image — not for diagnosis';
@@ -2755,9 +2731,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get micDraftTitle => 'What to look for';
-
-  @override
-  String get micDraftTag => 'Draft · awaiting expert review';
 
   @override
   String get micCreditTitle => 'Author and licence';
@@ -3981,10 +3954,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get packsOffline => 'Works offline';
 
   @override
-  String get packsCoreState =>
-      'Status: draft — sourced learning material, not yet independently reviewed';
-
-  @override
   String packsContents(int cards, int questions, int sources) {
     String _temp0 = intl.Intl.pluralLogic(
       cards,
@@ -4021,9 +3990,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get packsStatusTest => 'Test pack · not a clinical pack';
-
-  @override
-  String get packsStatusDraft => 'Draft · not expert-reviewed';
 
   @override
   String get packsStatusReviewed => 'Expert-reviewed';
@@ -4386,7 +4352,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String toifaAboutOral(int ready, int total) {
-    return 'Oral answer plans are prepared by LabGuide and await expert review ($ready / $total plans with sources).';
+    return 'Oral answer plans are a study aid prepared by LabGuide ($ready / $total plans with sources).';
   }
 
   @override
@@ -4679,7 +4645,7 @@ class AppLocalizationsEn extends AppLocalizations {
       'No key is marked in the list — this question is not scored.';
 
   @override
-  String get toifaNoteNoSource => 'No source for this note (not verified).';
+  String get toifaNoteNoSource => 'No source is given for this note.';
 
   @override
   String get toifaRelatedCards => 'Related cards';
@@ -4712,7 +4678,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get toifaPlanDisclaimer =>
-      'Answer plans are prepared by LabGuide and await expert review. They are not official answers.';
+      'Answer plans are a study aid prepared by LabGuide. They are not official answers.';
 
   @override
   String get toifaPickCategoryFirst => 'Choose a category first';
@@ -4748,14 +4714,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get toifaPlanTitle => 'Answer plan';
 
   @override
-  String get toifaPlanPending => 'Prepared by LabGuide, awaiting expert review';
+  String get toifaPlanPending => 'Prepared by LabGuide';
 
   @override
   String get toifaPlanMissing => 'The plan for this question is not ready yet.';
 
   @override
-  String get toifaPlanNotChecked =>
-      'The plan is not fully checked against sources.';
+  String get toifaPlanNotChecked => 'No source is attached to this plan yet.';
 
   @override
   String get toifaReferenceTitle =>
@@ -4779,7 +4744,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String toifaAgentChecked(String date) {
-    return 'Agent review: $date (not expert-approved)';
+    return 'Compared with sources: $date';
   }
 
   @override
@@ -4961,7 +4926,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get quizSources => 'Source';
 
   @override
-  String get quizReviewNote => 'Practice questions are pending expert review.';
+  String get quizReviewNote =>
+      'Practice questions are for learning; the result is not an official grade.';
 
   @override
   String get quizMistakes => 'Review your mistakes';
@@ -5300,10 +5266,6 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get examDraftNotice =>
-      'These questions haven’t been expert-reviewed yet (draft). The result is for internal testing, not an official grade.';
-
-  @override
   String get examRulesNotice =>
       'Questions and options are shuffled. Until you finish you can change answers and bookmark questions to revisit. The clock keeps running even if the app is closed; when time is up, the exam ends by itself.';
 
@@ -5526,8 +5488,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get examWhyWrong => 'Why not this answer';
 
   @override
-  String get examNoSource =>
-      'No source given — the question hasn’t been reviewed yet.';
+  String get examNoSource => 'No source is given for this question.';
 
   @override
   String get examSourceMissing =>
@@ -6948,8 +6909,7 @@ class AppLocalizationsEn extends AppLocalizations {
       'Linked — tied to test cards and lessons with page numbers.';
 
   @override
-  String get intakeStep5 =>
-      'Approved — a teacher reviewed it. Until then questions stay as “Draft”.';
+  String get intakeStep5 => 'Approved — a teacher reviewed it.';
 
   @override
   String get intakeConflict =>
@@ -7120,9 +7080,6 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get quizDraftTag => 'Draft · not reviewed';
-
-  @override
   String get lessonsTitle => 'Lesson topics';
 
   @override
@@ -7147,18 +7104,10 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get analyteAgentCheck => 'Automated/agent check';
-
-  @override
-  String analyteAgentCheckValue(String date) {
-    return '$date (not an expert approval)';
-  }
+  String get analyteAgentCheck => 'Compared with sources';
 
   @override
   String get analyteExpertApproval => 'Expert approval';
-
-  @override
-  String get analyteExpertApprovalPending => 'pending';
 
   @override
   String classesSeat(String n) {
@@ -7422,7 +7371,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get classroomOralNotice =>
-      'Questions are auto-picked candidates; answer outlines await expert review. “Asked” marks and grades stay on this device only.';
+      'Questions are auto-picked candidates; answer outlines are a study aid. “Asked” marks and grades stay on this device only.';
 
   @override
   String get classroomOralEmpty => 'No oral questions for this topic';
@@ -7464,7 +7413,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get classroomCandidatesNotice =>
-      'Candidate questions were auto-picked and their keys aren’t verified. Review each one: the score is computed on the server using the key shown.';
+      'Candidate questions were auto-picked. Look through each one and its key: the score is computed on the server using the key shown.';
 
   @override
   String classroomCandidatesTitle(int picked, int total) {
@@ -7580,7 +7529,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get lectureDraftNotice =>
-      'Draft for the teacher to review — check the content before class';
+      'The deck is based on sources — look through the content before class';
 
   @override
   String get lectureUzOnly => 'This presentation is in Uzbek only for now';
@@ -8314,10 +8263,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get cytoRefer => 'Show to a cytologist or clinician';
-
-  @override
-  String get cytoDraftNote =>
-      'This section has not been expert-reviewed. It is a learning aid: the cytologist or clinician reports.';
 
   @override
   String get cytoDegreeIntro =>
@@ -9829,4 +9774,38 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get admDeleteMismatch =>
       'This email does not belong to this account — check it and try again.';
+
+  @override
+  String analyteSourcesBased(String sources) {
+    return 'Based on sources: $sources';
+  }
+
+  @override
+  String get sourcesPanelTitle => 'Sources';
+
+  @override
+  String get sourcesDisclaimer =>
+      'Educational reference, not a diagnosis: a physician interprets results with clinical data; reference intervals depend on the laboratory and method.';
+
+  @override
+  String get refBooksNote =>
+      'Books are cited as sources only — no text or figures were copied. The conclusion is the doctor’s.';
+
+  @override
+  String sourceLine(String cite) {
+    return 'Source: $cite';
+  }
+
+  @override
+  String get packsCoreSources =>
+      'Source-based learning reference — every card lists its literature';
+
+  @override
+  String get examPracticeNotice =>
+      'The result is for internal practice, not an official grade.';
+
+  @override
+  String sourcesPanelMore(int count) {
+    return '+ $count more — in the list below';
+  }
 }

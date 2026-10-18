@@ -10,6 +10,7 @@ import '../content/content_model.dart';
 import '../content/ui/content_widgets.dart';
 import '../tools/calc_info.dart';
 import '../tools/clinical_calc_screens.dart' show CalcSourceTile;
+import '../tools/sources_panel.dart';
 import 'coag_content.dart';
 import 'coag_logic.dart';
 
@@ -33,16 +34,6 @@ extension on BuildContext {
   String get _lang => Localizations.localeOf(this).languageCode;
 
   String tr(LocalizedText t) => t.of(_lang);
-}
-
-class _DraftNotice extends StatelessWidget {
-  const _DraftNotice();
-
-  @override
-  Widget build(BuildContext context) {
-    final l = AppLocalizations.of(context);
-    return LgNotice(context.tr(CgL.draftNote), title: l.diffDraftTag);
-  }
 }
 
 class _Refs extends StatelessWidget {
@@ -150,7 +141,7 @@ class CoagulogramScreen extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 8),
-        const _DraftNotice(),
+        const SourcesPanel(cgLeadRefs),
         LgNotice(context.tr(CgL.notDiagnosis), kind: NoticeKind.info),
         for (final (i, (title, sub, icon)) in rows.indexed)
           LgRow(
@@ -210,7 +201,7 @@ class CgTestsScreen extends StatelessWidget {
       title: context.tr(CgL.testsTitle),
       subtitle: l.coagTitle,
       children: [
-        const _DraftNotice(),
+        const SourcesPanel(cgLeadRefs),
         LgSectionTitle(context.tr(CgL.generalTitle)),
         for (final f in cgTestsGeneral) _Bullet(_marked(context, f, refs)),
         for (final t in cgTests) ...[
@@ -263,7 +254,7 @@ class CgSampleScreen extends StatelessWidget {
       title: context.tr(CgL.sampleTitle),
       subtitle: l.coagTitle,
       children: [
-        const _DraftNotice(),
+        const SourcesPanel(cgLeadRefs),
         for (final s in cgSampleSections) ...[
           LgSectionTitle(context.tr(s.title)),
           for (final f in s.facts) _Bullet(_marked(context, f, refs)),
@@ -433,7 +424,7 @@ class _CgReaderScreenState extends State<CgReaderScreen> {
       title: context.tr(CgL.readerTitle),
       subtitle: l.coagTitle,
       children: [
-        const _DraftNotice(),
+        const SourcesPanel(cgLeadRefs),
         Text(context.tr(CgL.readerIntro), style: text.bodyMedium),
         _pair(
           'pt',
@@ -590,7 +581,7 @@ class _CgDicScreenState extends State<CgDicScreen> {
       title: context.tr(CgL.dicTitle),
       subtitle: l.coagTitle,
       children: [
-        const _DraftNotice(),
+        const SourcesPanel(cgLeadRefs),
         for (final f in cgDicIntro) _Bullet(_marked(context, f, refs)),
         const SizedBox(height: 4),
         Text(context.tr(CgL.dicPrecondition), style: text.titleSmall),
@@ -730,7 +721,7 @@ class CgMonitoringScreen extends StatelessWidget {
       title: context.tr(CgL.monitoringTitle),
       subtitle: l.coagTitle,
       children: [
-        const _DraftNotice(),
+        const SourcesPanel(cgLeadRefs),
         for (final s in cgMonitoringSections) ...[
           LgSectionTitle(context.tr(s.title)),
           for (final f in s.facts) _Bullet(_marked(context, f, refs)),

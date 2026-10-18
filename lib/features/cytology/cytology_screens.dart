@@ -11,6 +11,7 @@ import '../content/content_model.dart';
 import '../learn/quiz_session.dart';
 import '../tools/calc_info.dart';
 import '../tools/clinical_calc_screens.dart';
+import '../tools/sources_panel.dart';
 import 'cytology_content.dart';
 
 const cytoBase = '/lab/cytology';
@@ -28,7 +29,6 @@ class CytologyScreen extends StatelessWidget {
       children: [
         LgHeroCard(
           image: const AssetImage('assets/cytology/hero.png'),
-          tag: l.diffDraftTag,
           title: l.cytoHeroTitle,
           body: l.cytoHeroBody,
           action: LgButton(
@@ -97,7 +97,7 @@ class CytologyScreen extends StatelessWidget {
           onTap: () => context.push('$cytoBase/quiz'),
           divider: false,
         ),
-        LgNotice(l.cytoDraftNote),
+        LgNotice(l.sourcesDisclaimer, kind: NoticeKind.info),
         LgSectionTitle(l.diffSourcesTitle),
         for (final (i, s) in CytoSources.all.indexed)
           CalcSourceTile(index: i + 1, ref: CalcRef(s, '')),
@@ -399,7 +399,11 @@ class _CytoDegreeScreenState extends State<CytoDegreeScreen> {
       title: l.cytoDegreeTitle,
       subtitle: l.cytoTitle,
       children: [
-        LgNotice(l.cytoDraftNote),
+        const SourcesPanel([
+          CalcRef(CytoSources.amsel, ''),
+          CalcRef(CytoSources.nugent, ''),
+          CalcRef(CytoSources.cdcBv, ''),
+        ]),
         Text(l.cytoDegreeIntro, style: text.bodyMedium),
         group(
           l.cytoLacto,
@@ -521,7 +525,7 @@ class CytoBethesdaScreen extends StatelessWidget {
       title: l.cytoBethesdaTitle,
       subtitle: l.cytoTitle,
       children: [
-        LgNotice(l.cytoDraftNote),
+        SourcesPanel(bethesdaRefs()),
         Text(l.cytoBethesdaIntro, style: text.bodyMedium),
         const SizedBox(height: 10),
         for (final b in bethesdaItems)
@@ -554,7 +558,7 @@ class CytoBethesdaScreen extends StatelessWidget {
               ),
             ),
           ),
-        LgNotice(l.cytoDraftNote),
+        LgSectionTitle(l.diffSourcesTitle),
         for (final (i, r) in bethesdaRefs().indexed)
           CalcSourceTile(index: i + 1, ref: r),
       ],
@@ -595,7 +599,7 @@ class CytoTechniqueScreen extends StatelessWidget {
           Text(s.body.of(lang), style: text.bodyMedium),
         ],
         const SizedBox(height: 8),
-        LgNotice(l.cytoDraftNote),
+        LgNotice(l.sourcesDisclaimer, kind: NoticeKind.info),
         for (final (i, r) in cytoTechniqueRefs.indexed)
           CalcSourceTile(index: i + 1, ref: r),
       ],
@@ -789,10 +793,7 @@ class _Question extends StatelessWidget {
           spacing: 8,
           runSpacing: 6,
           crossAxisAlignment: WrapCrossAlignment.center,
-          children: [
-            LgEyebrow(l.quizProgress(session.index + 1, total)),
-            LgTag(l.quizDraftTag, tone: LgTone.warning),
-          ],
+          children: [LgEyebrow(l.quizProgress(session.index + 1, total))],
         ),
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 10),

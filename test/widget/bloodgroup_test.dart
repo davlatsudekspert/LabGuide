@@ -102,7 +102,6 @@ void main() {
       }
       for (final t in [
         BgL.subtitle,
-        BgL.draftNote,
         BgL.sopNote,
         BgL.noIssueNote,
         BgL.readerTrainingOnly,

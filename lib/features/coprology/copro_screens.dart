@@ -11,6 +11,7 @@ import '../content/content_model.dart';
 import '../content/ui/content_widgets.dart';
 import '../tools/calc_info.dart';
 import '../tools/clinical_calc_screens.dart' show CalcSourceTile;
+import '../tools/sources_panel.dart';
 import 'copro_content.dart';
 import 'copro_scheme.dart';
 
@@ -36,14 +37,13 @@ extension on BuildContext {
   String tr(LocalizedText t) => t.of(_lang);
 }
 
-class _DraftNotice extends StatelessWidget {
-  const _DraftNotice();
+/// "Manbalar" paneli (D-65); "Darslik" yorlig'i izohi bilan.
+class _SourcesNotice extends StatelessWidget {
+  const _SourcesNotice();
 
   @override
-  Widget build(BuildContext context) {
-    final l = AppLocalizations.of(context);
-    return LgNotice(context.tr(CpL.draftNote), title: l.diffDraftTag);
-  }
+  Widget build(BuildContext context) =>
+      SourcesPanel(cpLeadRefs, note: context.tr(CpL.textbookNote));
 }
 
 class _Refs extends StatelessWidget {
@@ -135,7 +135,7 @@ class _SectionsPage extends StatelessWidget {
       title: context.tr(title),
       subtitle: l.coproTitle,
       children: [
-        const _DraftNotice(),
+        const _SourcesNotice(),
         for (final s in sections) ...[
           LgSectionTitle(context.tr(s.title)),
           for (final f in s.facts) _Bullet(_marked(context, f, refs)),
@@ -184,7 +184,7 @@ class CoprologyScreen extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 8),
-        const _DraftNotice(),
+        const _SourcesNotice(),
         LgNotice(context.tr(CpL.notDiagnosis), kind: NoticeKind.info),
         for (final (i, (title, sub, icon)) in rows.indexed)
           LgRow(
@@ -302,7 +302,7 @@ class CpMicroScreen extends StatelessWidget {
       title: context.tr(CpL.microTitle),
       subtitle: l.coproTitle,
       children: [
-        const _DraftNotice(),
+        const _SourcesNotice(),
         for (final f in cpMicroIntro) _Bullet(_marked(context, f, refs)),
         LgSectionTitle(context.tr(CpL.microTitle)),
         for (final (i, e) in cpElements.indexed)
@@ -347,7 +347,7 @@ class CpElementScreen extends StatelessWidget {
       title: context.tr(e.name),
       subtitle: context.tr(CpL.microTitle),
       children: [
-        const _DraftNotice(),
+        const _SourcesNotice(),
         LgSectionTitle(context.tr(CpL.elementLookTitle)),
         for (final f in e.look) _Bullet(_marked(context, f, refs)),
         LgSectionTitle(context.tr(CpL.normalTitle)),
@@ -384,7 +384,7 @@ class CpParasitesScreen extends StatelessWidget {
       title: context.tr(CpL.parasitesTitle),
       subtitle: l.coproTitle,
       children: [
-        const _DraftNotice(),
+        const _SourcesNotice(),
         LgSectionTitle(context.tr(CpL.concentrationTitle)),
         for (final f in cpConcentration) _Bullet(_marked(context, f, refs)),
         LgSectionTitle(context.tr(CpL.parasiteListTitle)),
@@ -505,7 +505,7 @@ class CpParasiteScreen extends StatelessWidget {
       title: par.latin,
       subtitle: '${context.tr(par.common)} · ${context.tr(par.stage)}',
       children: [
-        const _DraftNotice(),
+        const _SourcesNotice(),
         LgPanel(
           key: ValueKey('copro-scheme-${par.id}'),
           soft: true,

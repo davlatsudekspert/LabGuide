@@ -17,6 +17,7 @@ import '../tools/calc_info.dart';
 import '../tools/clinical_calc_screens.dart' show CalcSourceTile;
 import '../tools/manual_calc_info.dart';
 import '../tools/manual_calc_screens.dart';
+import '../tools/sources_panel.dart';
 import 'urinalysis_content.dart';
 import 'urinalysis_logic.dart';
 
@@ -45,17 +46,6 @@ extension on BuildContext {
 
   /// Matn joriy tilda.
   String tr(LocalizedText t) => t.of(_lang);
-}
-
-/// Qoralama belgisi (gistologiya, qon guruhi kabi).
-class _DraftNotice extends StatelessWidget {
-  const _DraftNotice();
-
-  @override
-  Widget build(BuildContext context) {
-    final l = AppLocalizations.of(context);
-    return LgNotice(context.tr(UrL.draftNote), title: l.diffDraftTag);
-  }
 }
 
 /// Manbalar ro'yxati (takrorsiz, lokator bilan).
@@ -132,7 +122,7 @@ class _SectionsPage extends StatelessWidget {
       title: context.tr(title),
       subtitle: l.urinTitle,
       children: [
-        const _DraftNotice(),
+        const SourcesPanel(urLeadRefs),
         for (final s in sections) ...[
           LgSectionTitle(context.tr(s.title)),
           for (final f in s.facts) _Bullet(_marked(context, f, refs)),
@@ -226,7 +216,8 @@ class UrinalysisScreen extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 8),
-        const _DraftNotice(),
+        // Tashxis eslatmasi alohida (keyingi qator) — panelda takrorlanmaydi.
+        const SourcesPanel(urLeadRefs, disclaimer: false),
         LgNotice(context.tr(UrL.notDiagnosis), kind: NoticeKind.info),
         for (final (i, (title, sub, icon, path)) in rows.indexed)
           LgRow(
@@ -343,7 +334,7 @@ class UrStripScreen extends StatelessWidget {
       title: context.tr(UrL.stripTitle),
       subtitle: l.urinTitle,
       children: [
-        const _DraftNotice(),
+        const SourcesPanel(urLeadRefs),
         LgSectionTitle(context.tr(UrL.sectionGeneral)),
         for (final f in urStripGeneral) _Bullet(_marked(context, f, refs)),
         for (final p in urPads) ...[
@@ -384,7 +375,7 @@ class UrSedimentScreen extends StatelessWidget {
       title: context.tr(UrL.sedimentTitle),
       subtitle: l.urinTitle,
       children: [
-        const _DraftNotice(),
+        const SourcesPanel(urLeadRefs),
         LgSectionTitle(context.tr(UrL.preparationTitle)),
         for (final f in urSedimentIntro) _Bullet(_marked(context, f, refs)),
         const _CalcRow(ManualCalc.nechiporenko),
@@ -570,7 +561,7 @@ class UrElementScreen extends StatelessWidget {
       title: name,
       subtitle: context.tr(UrL.groups[element.group]!),
       children: [
-        const _DraftNotice(),
+        const SourcesPanel(urLeadRefs),
         if (element.pics.isEmpty)
           LgNotice(
             context.tr(UrL.noPhoto),
@@ -657,7 +648,7 @@ class _UrReaderScreenState extends State<UrReaderScreen> {
       title: context.tr(UrL.readerTitle),
       subtitle: l.urinTitle,
       children: [
-        const _DraftNotice(),
+        const SourcesPanel(urLeadRefs),
         Text(context.tr(UrL.readerIntro), style: text.bodyMedium),
         LgSectionTitle(context.tr(UrL.readerStrip)),
         _chips(UrFindingKind.strip),
@@ -857,10 +848,7 @@ class _Question extends StatelessWidget {
           spacing: 8,
           runSpacing: 6,
           crossAxisAlignment: WrapCrossAlignment.center,
-          children: [
-            LgEyebrow(l.quizProgress(session.index + 1, total)),
-            LgTag(l.quizDraftTag, tone: LgTone.warning),
-          ],
+          children: [LgEyebrow(l.quizProgress(session.index + 1, total))],
         ),
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 10),

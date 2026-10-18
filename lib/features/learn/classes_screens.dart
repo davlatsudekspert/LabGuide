@@ -1468,18 +1468,6 @@ class _NewAssignmentScreenState extends State<NewAssignmentScreen> {
                         Expanded(
                           child: Text(q.prompt(lang), style: text.bodyMedium),
                         ),
-                        if (q.isDraft) ...[
-                          const SizedBox(width: 6),
-                          Tooltip(
-                            message: l.quizDraftTag,
-                            child: Icon(
-                              Icons.pending_outlined,
-                              size: 18,
-                              color: LgPalette.of(context).amber,
-                              semanticLabel: l.quizDraftTag,
-                            ),
-                          ),
-                        ],
                       ],
                     ),
                   ),
@@ -1495,7 +1483,8 @@ class _NewAssignmentScreenState extends State<NewAssignmentScreen> {
           ),
         ],
         const SizedBox(height: 10),
-        if (drawn?.any((q) => q.isDraft) ?? false) LgNotice(l.examDraftNotice),
+        if (drawn?.any((q) => q.isDraft) ?? false)
+          LgNotice(l.examPracticeNotice, kind: NoticeKind.info),
         LgNotice(l.classesKeyNotice, kind: NoticeKind.info),
         if (_error != null)
           LgNotice(classesErrorText(_error!, l), kind: NoticeKind.error),
@@ -1875,7 +1864,7 @@ class _AssignmentScreenState extends State<AssignmentScreen>
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           if (a.questionIds.any((id) => byId[id]?.isDraft ?? false))
-            LgNotice(l.examDraftNotice),
+            LgNotice(l.examPracticeNotice, kind: NoticeKind.info),
           LgNotice(
             a.timeLimitMinutes == null
                 ? l.classesStartNoticeNoLimit

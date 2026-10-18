@@ -3,13 +3,14 @@
 App Store Connect’ga kiritiladigan matnlar va javoblar. Hammasi ilovaning haqiqiy holatiga
 mos: mehmon rejimida ilova serverga ma’lumot yubormaydi, hisob bilan nima saqlanishi —
 [PRIVACY_POLICY.md](PRIVACY_POLICY.md) (2026-10-17, kodga qarab tekshirilgan); ilova tashxis
-qo‘ymaydi, kontent manbali o‘quv namunasi. Ilova o‘zgarsa, shu hujjat ham yangilanadi.
+qo‘ymaydi, kontent ilmiy adabiyotga asoslangan o‘quv ma’lumotnomasi (D-65). Ilova o‘zgarsa, shu hujjat ham yangilanadi.
 
 **Va’da qilinmaydigan narsalar:** hamkor reklamasi va hamkor statistikasi (do‘kon buildida
 kompilyatsiyadan chiqarilgan, `LG_PARTNER_ADS`), murojaatga skrinshot biriktirish (serverda
 yo‘q), pullik obuna/to‘lov (bu versiyada to‘lov yo‘q, D-58).
-Tavsiflarda ular tilga olinmaydi; “qoralama / mutaxassis tekshiruvi kutilmoqda” holati
-tavsiflarda ochiq yoziladi — buni olib tashlamang. Rus/ingliz tavsifida O‘zbekistonga xos
+Tavsiflarda ular tilga olinmaydi. D-65 (2026-10-18, egasi qarori): kontent “qoralama” deb
+yozilmaydi — tavsifda manbalarga asoslangani va tibbiy eslatma (tashxis emas, natijani shifokor
+baholaydi, referens oraliqlar laboratoriyaga bog‘liq) yoziladi; eslatmani olib tashlamang. Rus/ingliz tavsifida O‘zbekistonga xos
 bo‘limlar (malaka toifasi) yo‘q: ular faqat o‘zbek tili yoki UZ mintaqasida ko‘rinadi.
 Tavsiflar 2026-10-10 holatiga yangilangan (119 karta, 43 holat).
 
@@ -35,11 +36,11 @@ doza bermaydi (Apple 1.4.1 bo‘yicha tibbiy ilovalarga qo‘shimcha talablar qo
 
 ## 3. Promotional text (≤ 170)
 
-- **uz:** Tahlillar atlasi (qoralama), klinik kalkulyatorlar, har kuni 5 ta savol, leykoformula va
+- **uz:** Tahlillar atlasi, klinik kalkulyatorlar, har kuni 5 ta savol, leykoformula va
   Westgard sifat nazorati — manbalari bilan, internetsiz.
-- **ru:** Атлас анализов (черновик), клинические калькуляторы, 5 вопросов в день, лейкоформула и
+- **ru:** Атлас анализов, клинические калькуляторы, 5 вопросов в день, лейкоформула и
   контроль качества по Вестгарду — с источниками, без интернета.
-- **en:** Lab test atlas (draft), clinical calculators, 5 daily questions, differential count and
+- **en:** Lab test atlas, clinical calculators, 5 daily questions, differential count and
   Westgard QC — with sources, fully offline.
 
 ## 4. Description (≤ 4000)
@@ -50,8 +51,7 @@ talaba va o‘qituvchi uchun.
 
 • Tahlillar atlasi: 119 ta karta (glyukoza, HbA1c, kreatinin, lipidlar, jigar fermentlari,
 elektrolitlar, gormonlar, gematologiya, siydik tahlili va boshqalar) va 43 ta holat. Har bir da’vo
-ochiq manbaga bog‘langan. Barcha kartalar QORALAMA: mustaqil mutaxassis tekshiruvi kutilmoqda
-(har kartada shunday yoziladi).
+manbaga bog‘langan: har kartada “Manba: muallif, yil, nom” ro‘yxati.
 • Birliklar: SI (mmol/L, µmol/L) yoki an’anaviy (mg/dL) — Profilda tanlanadi; kalkulyatorlar
 tanlangan tizimda boshlanadi. Moddaga xos birlik konvertori.
 • Klinik kalkulyatorlar: eGFR (CKD-EPI 2021) va KDIGO toifasi, albumin/kreatinin nisbati,
@@ -66,19 +66,19 @@ signallari), tarix va morfologiya atlasi.
 • Jadvallar va algoritmlar: anemiya, soxta KQT natijalari, sariqlik, jigar sindromlari,
 najas/parazitlar, eskirgan usullar.
 • Kunlik savol: har kuni 5 ta savol, har javobdan keyin izoh va manba, ketma-ket kunlar
-hisobi va ixtiyoriy mahalliy eslatma. Savollar qoralama.
+hisobi va ixtiyoriy mahalliy eslatma.
 • Ichki sifat nazorati: Levey–Jennings grafigi, Westgard qoidalari (1-2s, 1-3s, 2-2s, R-4s,
 4-1s, 10x), lot va maqsad tarixi, CSV eksport va zaxira nusxa.
 • Preanalitika, analizator katalogi, izohli testlar, kutubxona (ochiq va rasmiy manbalar).
-• Malaka toifasi imtihoniga tayyorgarlik (o‘zbek tilidagi savollar; qoralama, rasmiy natija emas).
+• Malaka toifasi imtihoniga tayyorgarlik (o‘zbek tilidagi savollar; mashq natijasi rasmiy baho emas).
 
 Uch tilda: o‘zbek, rus, ingliz. Internet shart emas. Hisobsiz (mehmon) ishlaydi — bu rejimda
 ilova serverga ma’lumot yubormaydi.
 
 Muhim: LabGuide o‘quv va ma’lumotnoma vositasi. U natijani talqin qilmaydi, tashxis qo‘ymaydi
 va dori dozasini taklif qilmaydi. Natijalar klinik manzara va laboratoriyangiz referens
-intervallari bilan birga baholanadi. Kontent manbalarga asoslangan QORALAMA o‘quv namunasi:
-mustaqil mutaxassis tekshiruvidan hali o‘tmagan.
+intervallari bilan birga baholanadi (referens oraliqlar laboratoriya va usulga bog‘liq).
+Kontent ilmiy adabiyotga asoslangan; manbalar ilovada ko‘rsatilgan.
 
 ### ru
 LabGuide — справочник по биохимии и клинической лабораторной диагностике для специалистов
@@ -86,8 +86,7 @@ LabGuide — справочник по биохимии и клиническо�
 
 • Атлас анализов: 119 карточек (глюкоза, HbA1c, креатинин, липиды, печёночные ферменты,
 электролиты, гормоны, гематология, анализ мочи и др.) и 43 состояния. Каждое утверждение связано
-с открытым источником. Все карточки — ЧЕРНОВИК: независимая экспертная проверка ещё не
-завершена (это указано в каждой карточке).
+с источником: в каждой карточке список «Источник: автор, год, название».
 • Единицы: СИ (ммоль/л, мкмоль/л) или обычные (мг/дл) — выбор в Профиле; калькуляторы
 открываются в выбранной системе. Конвертер единиц для конкретного вещества.
 • Клинические калькуляторы: рСКФ (CKD-EPI 2021) и категория KDIGO, отношение
@@ -103,7 +102,7 @@ Sampson) и не-ЛПВП, осмоляльность, HbA1c NGSP ↔ IFCC и eA
 • Таблицы и алгоритмы: анемии, ложные результаты ОАК, желтухи, печёночные синдромы,
 кал и паразиты, устаревшие методы.
 • Вопрос дня: 5 вопросов в день, после каждого ответа — пояснение и источник, серия дней и
-необязательное локальное напоминание. Вопросы — черновик.
+необязательное локальное напоминание.
 • Внутрилабораторный контроль качества: карта Леви–Дженнингса, правила Вестгарда (1-2s, 1-3s,
 2-2s, R-4s, 4-1s, 10x), история лотов и целевых значений, экспорт CSV и резервная копия.
 • Преаналитика, каталог анализаторов, тесты с пояснениями, библиотека (открытые и официальные
@@ -114,8 +113,8 @@ Sampson) и не-ЛПВП, осмоляльность, HbA1c NGSP ↔ IFCC и eA
 
 Важно: LabGuide — учебный и справочный инструмент. Он не интерпретирует результаты, не ставит
 диагноз и не предлагает дозы препаратов. Результаты оцениваются с учётом клинической картины и
-референтных интервалов вашей лаборатории. Материалы основаны на источниках, но это ЧЕРНОВИК:
-независимую экспертную проверку они ещё не прошли.
+референтных интервалов вашей лаборатории (интервалы зависят от лаборатории и метода).
+Материалы основаны на научной литературе; источники указаны в приложении.
 
 ### en
 LabGuide is a biochemistry and clinical laboratory companion for lab professionals, physicians,
@@ -123,7 +122,7 @@ students and teachers.
 
 • Lab test atlas: 119 cards (glucose, HbA1c, creatinine, lipids, liver enzymes, electrolytes,
 hormones, haematology, urinalysis and more) and 43 conditions. Every claim links to an open
-source. All cards are DRAFTS: independent expert review is still pending (each card says so).
+source: every card lists “Source: author, year, title”.
 • Units: SI (mmol/L, µmol/L) or conventional (mg/dL) — chosen in Profile; calculators start in the
 chosen system. Analyte-specific unit converter.
 • Clinical calculators: eGFR (CKD-EPI 2021) with KDIGO category, albumin/creatinine ratio,
@@ -138,7 +137,7 @@ sounds and vibration cues), history and a morphology atlas.
 • Tables and algorithms: anaemia, spurious CBC results, jaundice, liver syndromes, stool and
 parasites, obsolete methods.
 • Daily questions: 5 questions a day, an explanation and a source after each answer, a day
-streak and an optional local reminder. The questions are drafts.
+streak and an optional local reminder.
 • Internal quality control: Levey–Jennings chart, Westgard rules (1-2s, 1-3s, 2-2s, R-4s, 4-1s,
 10x), lot and target history, CSV export and backup.
 • Preanalytics, an instrument catalogue, explained quizzes and a library of open and official
@@ -149,8 +148,8 @@ in that mode the app sends no data to a server.
 
 Important: LabGuide is a learning and reference tool. It does not interpret results, make a
 diagnosis or suggest drug doses. Results are assessed together with the clinical picture and
-your laboratory’s reference intervals. Content is source-based but is a DRAFT: it has not yet
-passed independent expert review.
+your laboratory’s reference intervals (they depend on the laboratory and method). Content is
+based on the scientific literature; the sources are shown in the app.
 
 ## 5. Keywords (≤ 100 belgi, vergul bilan, bo‘shliqsiz) — 2026-10-12 yangilandi
 
@@ -283,13 +282,13 @@ tizim orqali foydalanadi, o‘z shifrlash algoritmi yo‘q.
 
 **What to Test** — CI (`mode=testflight`) har buildga en-US va ru matnini API orqali yozadi
 (App Store Connect o‘zbek tilini qo‘llamaydi). Har matn boshida ogohlantirish turadi:
-- uz: **QORALAMA build, ichki sinov uchun. Kontent manbalarga asoslangan, lekin mustaqil
-  mutaxassis tekshiruvidan HALI O‘TMAGAN — bemor bilan ishlashda foydalanmang.** Tekshiring:
+- uz: **Sinov build, ichki sinov uchun. Kontent — adabiyotga asoslangan o‘quv ma’lumotnomasi,
+  tashxis emas; bemor bo‘yicha qarorlarda foydalanmang.** Tekshiring:
   ochish → mehmon → rol va til → tahlillar atlasi → kalkulyatorlar → leykoformula → imtihon.
-- ru: **ЧЕРНОВАЯ сборка для внутреннего тестирования. Материалы ещё НЕ прошли независимую
-  экспертную проверку — не используйте их для работы с пациентами.**
-- en: **DRAFT build for internal testing. Content has NOT yet passed independent expert
-  review — do not use it for patient care.**
+- ru: **Тестовая сборка для внутреннего тестирования. Материалы — учебный справочник на основе
+  литературы, не диагноз; не используйте их для решений по пациентам.**
+- en: **Test build for internal testing. Content is an educational reference based on the
+  literature — not a diagnosis; do not use it for patient care decisions.**
 
 Qo‘shimcha (oldingi) yo‘riqnoma:
 - uz: Rolni tanlang va bosh sahifani ko‘ring. Tahlillar atlasida qidiring (lotin va kirill
@@ -313,8 +312,9 @@ Beta App Review, aloqa ma’lumotlari va maxfiylik siyosati havolasi kerak.
 
 Tayyor rasmlar: `docs/store/screenshots/<til>/NN_nom.png` (uz, ru, en; 1290×2796 px = 6.9"
 iPhone, yorug' mavzu, shrift 1.0; uz 8 ta, ru/en 7 tadan): `01_home`, `02_analyte_glucose`
-(manbalar va tekshiruv holati ko'rinadi), `03_leukoformula`, `04_daily_result`,
-`05_reference` (jadvallar va algoritmlar; “qoralama” belgisi saqlangan), `06_egfr`, `07_qc`
+(manbalar ko'rinadi), `03_leukoformula`, `04_daily_result`,
+`05_reference` (jadvallar va algoritmlar; D-65 dan oldin olingan — “qoralama” belgisi
+eski, keyingi yangilashda qayta olinadi), `06_egfr`, `07_qc`
 (Levey–Jennings), `08_toifa` (faqat uz).
 
 Qayta yaratish: `flutter test tool/screenshots/store_screenshots_test.dart --update-goldens
@@ -432,14 +432,14 @@ Faqat **ichki/yopiq test**. Production, App Store review, Play production — CI
      Privacy policy URL (14-bo‘lim) — ichki test uchun ham Play ba’zilarini so‘raydi.
 
 ### Release notes / “What’s new” (Play, internal)
-- uz: Qoralama sinov versiyasi. Kontent manbalarga asoslangan, lekin mustaqil mutaxassis
-  tekshiruvidan hali o‘tmagan — bemorlar bilan ishlashda foydalanmang. Tekshiring: mehmon
+- uz: Sinov versiyasi. Kontent — adabiyotga asoslangan o‘quv ma’lumotnomasi, tashxis emas;
+  bemor bo‘yicha qarorlarda foydalanmang. Tekshiring: mehmon
   rejimi, rol va til, tahlillar atlasi, kalkulyatorlar, leykoformula, imtihon.
-- ru: Черновая тестовая версия. Материалы основаны на источниках, но ещё не прошли
-  независимую экспертную проверку — не используйте для работы с пациентами. Проверьте:
+- ru: Тестовая версия. Материалы — учебный справочник на основе литературы, не диагноз;
+  не используйте для решений по пациентам. Проверьте:
   гостевой режим, роль и язык, атлас анализов, калькуляторы, лейкоформула, экзамен.
-- en: Draft test build. Content is source-based but has not yet passed independent expert
-  review — do not use it for patient care. Please check: guest mode, role and language, test
+- en: Test build. Content is an educational reference based on the literature — not a
+  diagnosis; do not use it for patient care decisions. Please check: guest mode, role and language, test
   atlas, calculators, differential count, exam.
 
 (CI release notes’ni API orqali yozmaydi — Play Console’da release sahifasiga qo‘lda qo‘ying.)

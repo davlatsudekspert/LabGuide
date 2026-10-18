@@ -6,9 +6,9 @@
 /// yozilmaydi. Rasmlar — Wikimedia Commons'dagi erkin litsenziyali mikrofotolar:
 /// litsenziya, muallif va asl izoh fayl sahifasidan tekshirilgan
 /// ([histoCheckedAt]); faqat kichraytirilgan (tool/histology_images.py).
-/// Bo'yoq faqat fayl sahifasida yozilgan bo'lsa ko'rsatiladi. Kontent
-/// mutaxassis tekshiruvidan o'tmagan — ekranda "qoralama" belgisi (sitologiya,
-/// spermogramma kabi). Manbalar jadvali: docs/HISTOLOGY_SOURCES.md.
+/// Bo'yoq faqat fayl sahifasida yozilgan bo'lsa ko'rsatiladi. Sahifa
+/// boshida — "Manbalar" paneli ([histoLeadRefs], D-65). Manbalar jadvali:
+/// docs/HISTOLOGY_SOURCES.md.
 library;
 
 import '../content/content_model.dart';
@@ -106,6 +106,14 @@ abstract final class HistoSources {
     commonsFiles,
   ];
 }
+
+/// Bo'lim asoslangan adabiyot — sahifa boshidagi "Manbalar" paneli (D-65).
+const histoLeadRefs = [
+  CalcRef(HistoSources.umich, ''),
+  CalcRef(HistoSources.hpaLiver, ''),
+  CalcRef(HistoSources.hpaKidney, ''),
+  CalcRef(HistoSources.boyd2020, ''),
+];
 
 const _hpaLiver = CalcRef(HistoSources.hpaLiver, 'Normal tissue — Liver');
 const _hpaKidney = CalcRef(HistoSources.hpaKidney, 'Normal tissue — Kidney');
@@ -3142,20 +3150,6 @@ abstract final class HisL {
     'uz': 'To‘qimalar va a’zolar: rasmlar, belgilar, mashq',
     'ru': 'Ткани и органы: снимки, признаки, тренировка',
     'en': 'Tissues and organs: pictures, features, practice',
-  });
-  static const draftNote = _T({
-    'uz':
-        'Qoralama: matn Michigan universiteti gistologiya qo‘llanmasi, '
-        'Human Protein Atlas va ochiq maqola bilan solishtirilgan, lekin '
-        'mutaxassis tekshiruvidan hali o‘tmagan.',
-    'ru':
-        'Черновик: текст сверен с руководством по гистологии Мичиганского '
-        'университета, Human Protein Atlas и открытой статьёй, но ещё не '
-        'прошёл экспертную проверку.',
-    'en':
-        'Draft: checked against the University of Michigan histology manual, '
-        'the Human Protein Atlas and an open-access paper, but not yet '
-        'reviewed by an expert.',
   });
   static const photoNote = _T({
     'uz':

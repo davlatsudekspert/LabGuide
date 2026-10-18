@@ -15,6 +15,7 @@ import '../learn/quiz_session.dart';
 import '../tools/calc_info.dart';
 import '../tools/clinical_calc_screens.dart' show CalcSourceTile;
 import '../tools/manual_calculators.dart';
+import '../tools/sources_panel.dart';
 import '../tools/tool_screens.dart' show formatResult, parseFieldNumber;
 import 'bloodmorph_content.dart';
 import 'bloodmorph_logic.dart';
@@ -33,17 +34,6 @@ extension on BuildContext {
 
   /// Matn joriy tilda.
   String tr(LocalizedText t) => t.of(_lang);
-}
-
-/// Qoralama belgisi (gistologiya/sitologiya kabi).
-class _DraftNotice extends StatelessWidget {
-  const _DraftNotice();
-
-  @override
-  Widget build(BuildContext context) {
-    final l = AppLocalizations.of(context);
-    return LgNotice(context.tr(BmL.draftNote), title: l.diffDraftTag);
-  }
 }
 
 /// Manbalar ro'yxati (takrorsiz, lokator bilan).
@@ -328,7 +318,7 @@ class BloodMorphScreen extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 8),
-        const _DraftNotice(),
+        const SourcesPanel(bmLeadRefs),
         Text(
           context.tr(BmL.photoNote),
           style: Theme.of(context).textTheme.bodySmall,
@@ -787,7 +777,7 @@ class _BmAnemiaScreenState extends State<BmAnemiaScreen> {
       title: context.tr(BmL.anemiaTitle),
       subtitle: AppLocalizations.of(context).bloodMorphTitle,
       children: [
-        const _DraftNotice(),
+        const SourcesPanel(bmLeadRefs),
         Text(context.tr(BmL.anemiaIntro), style: text.bodyMedium),
         LgSectionTitle(context.tr(BmL.populationTitle)),
         Wrap(
@@ -1176,10 +1166,7 @@ class _Question extends StatelessWidget {
           spacing: 8,
           runSpacing: 6,
           crossAxisAlignment: WrapCrossAlignment.center,
-          children: [
-            LgEyebrow(l.quizProgress(session.index + 1, total)),
-            LgTag(l.quizDraftTag, tone: LgTone.warning),
-          ],
+          children: [LgEyebrow(l.quizProgress(session.index + 1, total))],
         ),
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 10),

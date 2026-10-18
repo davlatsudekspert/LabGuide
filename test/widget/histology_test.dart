@@ -8,6 +8,7 @@ import 'package:labguide/features/histology/histology_content.dart';
 import 'package:labguide/features/histology/histology_screens.dart';
 import 'package:labguide/features/settings/settings_controller.dart';
 import 'package:labguide/features/tools/calc_info.dart';
+import 'package:labguide/features/tools/sources_panel.dart';
 import 'package:labguide/l10n/gen/app_localizations.dart';
 import 'package:material_ui/material_ui.dart';
 
@@ -89,7 +90,6 @@ void main() {
       }
       for (final t in [
         HisL.subtitle,
-        HisL.draftNote,
         HisL.photoNote,
         HisL.atlasTitle,
         HisL.atlasSub,
@@ -255,7 +255,12 @@ void main() {
       await tester.tap(card);
       await tester.pumpAndSettle();
       expect(find.byType(HistologyScreen), findsOne);
-      expect(find.text(HisL.draftNote.of(lang.name)), findsOne);
+      expect(
+        find.text(
+          l.sourceLine(shortCitation(HistoSources.umich, citePage: l.citePage)),
+        ),
+        findsOne,
+      );
       for (final r in _routes) {
         await goTo(tester, '$histoBase/$r');
         expect(tester.takeException(), isNull, reason: r);

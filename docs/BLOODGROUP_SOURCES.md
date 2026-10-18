@@ -1,6 +1,7 @@
 # Qon guruhi bo'limi — manbalar va tekshiruv (2026-10-17)
 
-Holat: **qoralama**. Mutaxassis (transfuziolog / laboratoriya rahbari) tekshiruvidan o'tmagan.
+Holat (D-65): har sahifada «Manbalar» paneli — `bgLeadRefs` (BSH 2012, JSST Module 3,
+UK Handbook of Transfusion Medicine 2013) va tibbiy eslatma.
 Ilovada har sahifada: "o'quv ma'lumotnomasi; laboratoriya SOP'i va me'yoriy talablar o'rnini
 bosmaydi; transfuziya qarori mahalliy protokol bo'yicha". Naqsh o'qish mashqi — "faqat o'quv,
 bemor uchun xulosa emas". Xatolar sahifasi — "nomuvofiqlik SOP bo'yicha hal bo'lmaguncha guruhga

@@ -440,7 +440,7 @@ class _MicroSectionScreenState extends State<MicroSectionScreen> {
 }
 
 /// Rasm kartasi: kattalashtirish, nomlar (uz/ru/en), asl izoh va tarjima,
-/// preparat, draft tushuntirish, muallif/litsenziya/manba.
+/// preparat, LabGuide tushuntirishi, muallif/litsenziya/manba.
 class MicroImageScreen extends StatelessWidget {
   const MicroImageScreen({super.key, required this.imageId});
 
@@ -511,7 +511,7 @@ class MicroImageScreen extends StatelessWidget {
             Text(l.micOnlySource, style: text.bodySmall),
             if (entity.note != null) ...[
               const SizedBox(height: 14),
-              _DraftNote(note: entity.note!.of(lang)),
+              _LookForNote(note: entity.note!.of(lang)),
             ],
             LgSectionTitle(l.micCreditTitle),
             _CreditPanel(image: image),
@@ -694,7 +694,7 @@ class _LabelNote extends StatelessWidget {
     return DecoratedBox(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(LgRadius.card),
-        border: Border.all(color: p.amber.withValues(alpha: 0.45)),
+        border: Border.all(color: p.line),
       ),
       child: Padding(
         padding: const EdgeInsets.all(16),
@@ -725,8 +725,10 @@ class _LabelNote extends StatelessWidget {
   }
 }
 
-class _DraftNote extends StatelessWidget {
-  const _DraftNote({required this.note});
+/// "Nimaga e'tibor berish" — LabGuide'ning qisqa tushuntirishi (manba —
+/// yuqoridagi asl izoh va pastdagi muallif/litsenziya; D-65).
+class _LookForNote extends StatelessWidget {
+  const _LookForNote({required this.note});
 
   final String note;
 
@@ -738,7 +740,7 @@ class _DraftNote extends StatelessWidget {
     return DecoratedBox(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(LgRadius.card),
-        border: Border.all(color: p.amber.withValues(alpha: 0.45)),
+        border: Border.all(color: p.line),
       ),
       child: Padding(
         padding: const EdgeInsets.all(16),
@@ -751,12 +753,6 @@ class _DraftNote extends StatelessWidget {
                 const SizedBox(width: 8),
                 Expanded(child: Text(l.micDraftTitle, style: text.titleMedium)),
               ],
-            ),
-            const SizedBox(height: 8),
-            LgTag(
-              l.micDraftTag,
-              tone: LgTone.warning,
-              icon: Icons.edit_note_rounded,
             ),
             const SizedBox(height: 10),
             Text(note, style: text.bodyMedium),

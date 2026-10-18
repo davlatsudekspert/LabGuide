@@ -7,7 +7,7 @@ Yo‘l: `/lab/coagulogram` (`tests`, `sample`, `reader`, `dic`, `monitoring`). K
 `assets/coagulogram/card.png` (sitrat probirkasi va sekundomer; matnsiz). Testlar:
 `test/unit/coagulogram_logic_test.dart`, `test/widget/coagulogram_test.dart`. Qaror: D-61.
 
-Holat: «qoralama» belgisi (mutaxassis tekshiruvigacha). Har sahifada «tashxis emas» eslatmasi.
+Holat (D-65): sahifa boshida «Manbalar» paneli (`cgLeadRefs`) va tibbiy eslatma. Har sahifada «tashxis emas» eslatmasi.
 Bog‘liq: pack kartalari `pt-inr`, `aptt`, `fibrinogen`, `d-dimer`, `coagulation-factors`, `protein-c-s`
 (havola, nusxa emas); amaliy protokol `gemostaz-uchun-venoz-qon-olish`.
 

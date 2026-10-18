@@ -168,7 +168,7 @@
   "condPatternsTitle": "Result patterns",
   "condPatternsHint": "“If you see this — this may be likely.” Interpretations are probabilistic: the clinician draws the final conclusion with the clinical picture.",
   "condNotDiagnosticTitle": "Not a diagnostic tool",
-  "condNotDiagnosticBody": "The guide helps plan testing. Clinical assessment and the final decision rest with the clinician. The text is a sourced draft awaiting independent expert review.",
+  "condNotDiagnosticBody": "The guide helps plan testing. Clinical assessment and the final decision rest with the clinician. The text is based on the sources listed on each card.",
   "condCautionsTitle": "Keep in mind",
   "condNoCard": "No card yet",
   "condCopyList": "Copy test list",
@@ -182,7 +182,7 @@
       }
     }
   },
-  "condReferralFooter": "LabGuide guide (draft). Not a diagnostic tool — the final decision rests with the clinician.",
+  "condReferralFooter": "LabGuide guide. Not a diagnostic tool — the final decision rests with the clinician.",
   "condAnalyteSection": "Conditions where it is ordered",
   "condTestsEntrySub": "Pick a condition — the tests and result patterns",
   "condSearchSection": "Conditions",
@@ -247,10 +247,9 @@
       }
     }
   },
-  "statusDraft": "Draft",
   "statusVerified": "Verified",
   "statusPublished": "Published",
-  "statusSourcedSample": "Sourced sample",
+  "statusSourcedSample": "Source-based",
   "statusStructureOnly": "Structure only",
   "contentLoading": "Loading content…",
   "contentErrorTitle": "Content couldn't be loaded",
@@ -261,9 +260,8 @@
   "analyteRemovedToast": "Removed from saved",
   "analyteNotFound": "This test card wasn't found.",
   "analyteStructureOnlyTitle": "Content in preparation",
-  "analyteStructureOnlyBody": "This card shows the structure only. Clinical text is added after sourcing and independent expert review — generic text is never shown as ready.",
-  "analyteSampleNotice": "Learning sample based on the cited sources. Independent expert review is pending — not for clinical decisions.",
-  "analyteNotWritten": "Not written yet: requires sources and review.",
+  "analyteStructureOnlyBody": "This card shows the structure only for now. Clinical text is added together with its sources — generic text is never shown as ready.",
+  "analyteNotWritten": "Not written yet: the text is added together with its sources.",
   "analyteAtAGlance": "At a glance",
   "analyteSpecimen": "Specimen",
   "analytePopulation": "Population",
@@ -304,11 +302,9 @@
     }
   },
   "analyteReuseRightsVerify": "Reuse rights: verify before distribution",
-  "analyteReview": "Review status",
+  "analyteReview": "Preparation and sources",
   "analyteReviewPending": "Expert review pending",
   "analyteReviewApproved": "Reviewed",
-  "analyteReviewerNotAssigned": "Reviewer not assigned",
-  "analyteTranslationPending": "Translation review pending",
   "analyteContentVersion": "Content version {version}",
   "@analyteContentVersion": {
     "placeholders": {
@@ -674,8 +670,6 @@
   },
   "diffLearnSub": "Cell atlas, tally counter and “Which cell is this?” practice",
   "diffSourcesTitle": "Sources",
-  "diffDraftTag": "Draft · awaiting expert review",
-  "diffDraftNote": "This section has not been expert-reviewed. A result is not a diagnosis; reference intervals are on your laboratory’s report form.",
   "diffSchematicCaption": "Schematic drawing (made by LabGuide) — not a micrograph",
   "diffScaleNote": "All schematics share one scale; the surrounding red cells (~7.5 µm) help compare size.",
   "diffRelatedCards": "Test cards",
@@ -956,7 +950,6 @@
   "refTitle": "Tables and algorithms",
   "refSub": "Anaemia, jaundice, liver patterns, parasites, obsolete methods",
   "refIntro": "Short tables based on textbooks and official sources. Sources are listed under each section.",
-  "refDraftNote": "Draft: not yet expert-reviewed. Books are cited as sources only — no text or figures were copied. The conclusion is the doctor’s.",
   "refOpenSub": "Table and algorithm",
   "refNotFound": "This table was not found.",
   "analyteReuseCitationOnly": "Book: cited as a source only, no text copied",
@@ -1436,7 +1429,7 @@
   "micNoResultsTitle": "Nothing found",
   "micNoResultsBody": "Try another name or another language (uz, ru, en).",
   "micSections": "Sections",
-  "micEduNotice": "Teaching images — not for diagnosis. Every image shows its author, licence and original caption. LabGuide notes are drafts awaiting expert review.",
+  "micEduNotice": "Teaching images — not for diagnosis. Every image shows its author, licence and original caption.",
   "micEduTag": "Teaching image — not for diagnosis",
   "micNoImageYet": "No licensed image yet",
   "micGapWhy": "Why not?",
@@ -1479,7 +1472,6 @@
   "micNotStated": "not stated in the source",
   "micOnlySource": "Only what the source states is shown.",
   "micDraftTitle": "What to look for",
-  "micDraftTag": "Draft · awaiting expert review",
   "micCreditTitle": "Author and licence",
   "micAuthor": "Author",
   "micAuthorPage": "Author page",
@@ -2106,7 +2098,6 @@
   "packsNotPublished": "Not published yet",
   "packsBuiltIn": "Built into the app",
   "packsOffline": "Works offline",
-  "packsCoreState": "Status: draft — sourced learning material, not yet independently reviewed",
   "packsContents": "Contents: {cards, plural, =1{1 card} other{{cards} cards}}, {questions, plural, =1{1 question} other{{questions} questions}}, {sources, plural, =1{1 source} other{{sources} sources}}",
   "@packsContents": {
     "placeholders": {
@@ -2126,7 +2117,6 @@
   "packsCatalogCached": "Showing the last saved catalogue",
   "packsCatalogEmpty": "No packs to download yet",
   "packsStatusTest": "Test pack · not a clinical pack",
-  "packsStatusDraft": "Draft · not expert-reviewed",
   "packsStatusReviewed": "Expert-reviewed",
   "packsMeta": "Version {version} · {size} · {languages}",
   "@packsMeta": {
@@ -2370,7 +2360,7 @@
       }
     }
   },
-  "toifaAboutOral": "Oral answer plans are prepared by LabGuide and await expert review ({ready} / {total} plans with sources).",
+  "toifaAboutOral": "Oral answer plans are a study aid prepared by LabGuide ({ready} / {total} plans with sources).",
   "@toifaAboutOral": {
     "placeholders": {
       "ready": {
@@ -2613,7 +2603,7 @@
   },
   "toifaScoredByOfficial": "Scoring follows the official key — that answer is what the exam expects.",
   "toifaNoOfficialKey": "No key is marked in the list — this question is not scored.",
-  "toifaNoteNoSource": "No source for this note (not verified).",
+  "toifaNoteNoSource": "No source is given for this note.",
   "toifaRelatedCards": "Related cards",
   "toifaOralSubtitle": "{count} questions · prepare and self-assess",
   "@toifaOralSubtitle": {
@@ -2645,7 +2635,7 @@
   },
   "toifaOralStep2": "Prepare your answers — in your head or on paper.",
   "toifaOralStep3": "Check the answer plan and rate yourself: knew, partly or didn’t know.",
-  "toifaPlanDisclaimer": "Answer plans are prepared by LabGuide and await expert review. They are not official answers.",
+  "toifaPlanDisclaimer": "Answer plans are a study aid prepared by LabGuide. They are not official answers.",
   "toifaPickCategoryFirst": "Choose a category first",
   "toifaDrawTicket": "Draw a ticket",
   "toifaTicketTitle": "Your ticket",
@@ -2656,16 +2646,16 @@
   "toifaNewTicketBody": "Five new questions replace the current ticket. Ratings you gave are kept.",
   "toifaRevealHint": "First recall or write down your answer, then open the plan.",
   "toifaPlanTitle": "Answer plan",
-  "toifaPlanPending": "Prepared by LabGuide, awaiting expert review",
+  "toifaPlanPending": "Prepared by LabGuide",
   "toifaPlanMissing": "The plan for this question is not ready yet.",
-  "toifaPlanNotChecked": "The plan is not fully checked against sources.",
+  "toifaPlanNotChecked": "No source is attached to this plan yet.",
   "toifaReferenceTitle": "Reference interval (specimen, lab-specific)",
   "toifaCutoffTitle": "Diagnostic cut-off (guideline)",
   "toifaWrongLabel": "Wrong",
   "toifaRightLabel": "Right",
   "toifaNeedsSource": "Source needed — being checked with a teacher",
   "toifaUnverifiedNote": "The note is not confirmed by a source — no answer is suggested.",
-  "toifaAgentChecked": "Agent review: {date} (not expert-approved)",
+  "toifaAgentChecked": "Compared with sources: {date}",
   "@toifaAgentChecked": {
     "placeholders": {
       "date": {
@@ -2849,7 +2839,7 @@
     }
   },
   "quizSources": "Source",
-  "quizReviewNote": "Practice questions are pending expert review.",
+  "quizReviewNote": "Practice questions are for learning; the result is not an official grade.",
   "quizMistakes": "Review your mistakes",
   "quizNoMistakes": "No mistakes — well done.",
   "quizYourAnswer": "Your answer",
@@ -3073,7 +3063,6 @@
       }
     }
   },
-  "examDraftNotice": "These questions haven’t been expert-reviewed yet (draft). The result is for internal testing, not an official grade.",
   "examRulesNotice": "Questions and options are shuffled. Until you finish you can change answers and bookmark questions to revisit. The clock keeps running even if the app is closed; when time is up, the exam ends by itself.",
   "examStart": "Start exam",
   "examReplaceTitle": "You have an unfinished exam",
@@ -3258,7 +3247,7 @@
   "examNoAnswer": "Not answered",
   "examWrongTag": "Wrong",
   "examWhyWrong": "Why not this answer",
-  "examNoSource": "No source given — the question hasn’t been reviewed yet.",
+  "examNoSource": "No source is given for this question.",
   "examSourceMissing": "This exam’s question bank isn’t available in the app",
   "examMultiHint": "Several correct answers — select all",
   "examNoExplanation": "No explanation has been written for this question yet.",
@@ -4021,7 +4010,7 @@
   "intakeStep2": "Received — the file arrived and was logged.",
   "intakeStep3": "Catalogued — title, author and edition were checked. Only then can it be cited.",
   "intakeStep4": "Linked — tied to test cards and lessons with page numbers.",
-  "intakeStep5": "Approved — a teacher reviewed it. Until then questions stay as “Draft”.",
+  "intakeStep5": "Approved — a teacher reviewed it.",
   "intakeConflict": "If an old and a new source disagree, neither is written as fact — both positions go to a reviewer.",
   "intakeNeverTitle": "What we never do",
   "intakeNever1": "Show a material that hasn’t arrived as “available”.",
@@ -4113,7 +4102,6 @@
       }
     }
   },
-  "quizDraftTag": "Draft · not reviewed",
   "lessonsTitle": "Lesson topics",
   "analyteTreatmentGoals": "Treatment goals",
   "analyteTreatmentGoalsNotice": "A treatment goal is set by a physician on the basis of the patient’s full risk assessment; the app does not determine a risk category.",
@@ -4138,17 +4126,8 @@
       }
     }
   },
-  "analyteAgentCheck": "Automated/agent check",
-  "analyteAgentCheckValue": "{date} (not an expert approval)",
-  "@analyteAgentCheckValue": {
-    "placeholders": {
-      "date": {
-        "type": "String"
-      }
-    }
-  },
+  "analyteAgentCheck": "Compared with sources",
   "analyteExpertApproval": "Expert approval",
-  "analyteExpertApprovalPending": "pending",
   "classesSeat": "Student {n}",
   "@classesSeat": {
     "placeholders": {
@@ -4300,7 +4279,7 @@
   "classroomToolInstruments": "Instruments",
   "classroomToolCalibration": "Calibration log",
   "classroomToolDifferential": "Differential count",
-  "classroomOralNotice": "Questions are auto-picked candidates; answer outlines await expert review. “Asked” marks and grades stay on this device only.",
+  "classroomOralNotice": "Questions are auto-picked candidates; answer outlines are a study aid. “Asked” marks and grades stay on this device only.",
   "classroomOralEmpty": "No oral questions for this topic",
   "classroomCandidate": "Candidate question {n}",
   "@classroomCandidate": {
@@ -4326,7 +4305,7 @@
   "classroomGradeKnew": "Knew",
   "classroomGradePartial": "Partly",
   "classroomGradeDidNot": "Didn’t know",
-  "classroomCandidatesNotice": "Candidate questions were auto-picked and their keys aren’t verified. Review each one: the score is computed on the server using the key shown.",
+  "classroomCandidatesNotice": "Candidate questions were auto-picked. Look through each one and its key: the score is computed on the server using the key shown.",
   "classroomCandidatesTitle": "Candidates · picked {picked}/{total}",
   "@classroomCandidatesTitle": {
     "placeholders": {
@@ -4408,7 +4387,7 @@
   "lectureEndTitle": "Questions and test",
   "lectureEndOral": "Oral questions — asked by the teacher",
   "lectureEndTest": "Class test — in the app, timed",
-  "lectureDraftNotice": "Draft for the teacher to review — check the content before class",
+  "lectureDraftNotice": "The deck is based on sources — look through the content before class",
   "lectureUzOnly": "This presentation is in Uzbek only for now",
   "lectureNotesShow": "Show teacher notes",
   "lectureNotesHide": "Hide teacher notes",
@@ -4775,7 +4754,6 @@
   "cytoMeaning": "What it means",
   "cytoConfuse": "Often confused with",
   "cytoRefer": "Show to a cytologist or clinician",
-  "cytoDraftNote": "This section has not been expert-reviewed. It is a learning aid: the cytologist or clinician reports.",
   "cytoDegreeIntro": "Mark what you see under the microscope — the app shows the grade by the traditional scheme. The worst feature decides.",
   "cytoLacto": "Lactobacilli",
   "cytoLeuko": "Leukocytes",
@@ -5754,5 +5732,52 @@
     }
   },
   "admDeleteDone": "Account deleted",
-  "admDeleteMismatch": "This email does not belong to this account — check it and try again."
+  "admDeleteMismatch": "This email does not belong to this account — check it and try again.",
+  "analyteSourcesBased": "Based on sources: {sources}",
+  "@analyteSourcesBased": {
+    "description": "Analyte card: one line listing the card sources (D-65).",
+    "placeholders": {
+      "sources": {
+        "type": "String"
+      }
+    }
+  },
+  "sourcesPanelTitle": "Sources",
+  "@sourcesPanelTitle": {
+    "description": "Title of the calm literature panel on lab sections (D-65)."
+  },
+  "sourcesDisclaimer": "Educational reference, not a diagnosis: a physician interprets results with clinical data; reference intervals depend on the laboratory and method.",
+  "@sourcesDisclaimer": {
+    "description": "One neutral medical-safety line under the sources panel (D-65)."
+  },
+  "refBooksNote": "Books are cited as sources only — no text or figures were copied. The conclusion is the doctor’s.",
+  "@refBooksNote": {
+    "description": "Reference tables: books are cited only (no copied text)."
+  },
+  "sourceLine": "Source: {cite}",
+  "@sourceLine": {
+    "description": "One literature line: Author, year, «title», chapter/page (D-65).",
+    "placeholders": {
+      "cite": {
+        "type": "String"
+      }
+    }
+  },
+  "packsCoreSources": "Source-based learning reference — every card lists its literature",
+  "@packsCoreSources": {
+    "description": "Core pack: content is source-based."
+  },
+  "examPracticeNotice": "The result is for internal practice, not an official grade.",
+  "@examPracticeNotice": {
+    "description": "Exam: the result is internal practice, not an official grade."
+  },
+  "sourcesPanelMore": "+ {count} more — in the list below",
+  "@sourcesPanelMore": {
+    "description": "Sources panel: how many more sources are in the full list below.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  }
 }

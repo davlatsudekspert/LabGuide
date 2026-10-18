@@ -36,13 +36,13 @@ String contentStateLabel(Analyte a, AppLocalizations l) =>
       ContentState.reviewed => switch (a.status) {
         ContentStatus.published => l.statusPublished,
         ContentStatus.verified => l.statusVerified,
-        ContentStatus.draft => l.statusDraft,
+        ContentStatus.draft => l.statusSourcedSample,
       },
     };
 
 LgTone contentStateTone(Analyte a) => switch (a.contentState) {
   ContentState.structureOnly => LgTone.neutral,
-  ContentState.sourcedSample => LgTone.warning,
+  ContentState.sourcedSample => LgTone.brand,
   ContentState.reviewed => LgTone.brand,
 };
 

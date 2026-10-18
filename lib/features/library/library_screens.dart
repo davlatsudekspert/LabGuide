@@ -501,7 +501,7 @@ class _CorePackCard extends StatelessWidget {
           ),
           check(Icons.wifi_off_rounded, l.packsOffline),
           check(Icons.verified_rounded, l.packsVerified),
-          check(Icons.rule_rounded, l.packsCoreState, color: p.amber),
+          check(Icons.menu_book_outlined, l.packsCoreSources),
           const SizedBox(height: 8),
           Text(
             l.packsContents(
@@ -554,9 +554,10 @@ class _CatalogPackCard extends StatelessWidget {
     final packs = context.services.packs;
     final installed = packs.installed(entry.packId);
     final job = packs.job(entry.packId);
-    final (String status, LgTone tone) = switch (entry.status) {
+    // D-65: manbali paket uchun "draft" belgisi ko'rsatilmaydi.
+    final (String? status, LgTone tone) = switch (entry.status) {
       PackStatus.test => (l.packsStatusTest, LgTone.warning),
-      PackStatus.draft => (l.packsStatusDraft, LgTone.warning),
+      PackStatus.draft => (null, LgTone.neutral),
       PackStatus.reviewed => (l.packsStatusReviewed, LgTone.brand),
     };
     final Widget action;
@@ -630,8 +631,10 @@ class _CatalogPackCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(entry.title.of(lang), style: text.titleMedium),
-          const SizedBox(height: 6),
-          LgTag(status, tone: tone, icon: Icons.science_outlined),
+          if (status != null) ...[
+            const SizedBox(height: 6),
+            LgTag(status, tone: tone, icon: Icons.science_outlined),
+          ],
           const SizedBox(height: 8),
           Text(entry.summary.of(lang), style: text.bodyMedium),
           const SizedBox(height: 6),

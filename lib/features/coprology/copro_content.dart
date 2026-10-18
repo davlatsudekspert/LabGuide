@@ -119,6 +119,14 @@ abstract final class CpSources {
   ];
 }
 
+/// Bo'lim asoslangan adabiyot — sahifa boshidagi "Manbalar" paneli (D-65).
+const cpLeadRefs = [
+  CalcRef(CpSources.kurbonova2023, ''),
+  CalcRef(CpSources.who2003, ''),
+  CalcRef(CpSources.merck, ''),
+  CalcRef(CpSources.dpdxProc, ''),
+];
+
 // ───────────────────────── Lokatorlar ─────────────────────────
 
 const _w = CpSources.who2003;
@@ -1861,19 +1869,12 @@ abstract final class CpL {
     'ru': 'Копрограмма, скрытая кровь, кишечные паразиты',
     'en': 'Coprogram, occult blood, intestinal parasites',
   });
-  static const draftNote = _T({
-    'uz':
-        'Qoralama: mutaxassis tekshiruvidan o‘tmagan. Har band manbali; '
-        '“Darslik” — domla darsligi (Kurbonova 2023), me’yorlar usulga '
-        'bog‘liq.',
-    'ru':
-        'Черновик: не проверен специалистом. Каждый пункт с источником; '
-        '«Учебник» — учебник кафедры (Kurbonova 2023), нормы зависят от '
-        'метода.',
-    'en':
-        'Draft: not yet expert-reviewed. Every point is sourced; “Textbook” '
-        'means the course textbook (Kurbonova 2023); norms depend on the '
-        'method.',
+
+  /// "Darslik" yorlig'i — manba turi (kafedra darsligi), ogohlantirish emas.
+  static const textbookNote = _T({
+    'uz': '“Darslik” — domla darsligi (Kurbonova 2023).',
+    'ru': '«Учебник» — учебник кафедры (Kurbonova 2023).',
+    'en': '“Textbook” means the course textbook (Kurbonova 2023).',
   });
   static const notDiagnosis = _T({
     'uz':
@@ -2021,7 +2022,7 @@ abstract final class CpL {
 
   static const all = <LocalizedText>[
     subtitle,
-    draftNote,
+    textbookNote,
     notDiagnosis,
     collectTitle,
     collectSub,

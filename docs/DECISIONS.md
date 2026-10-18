@@ -1036,3 +1036,46 @@ D-48 dagi **Ustoz Pro** qatorini (69 000 so'm/oy · 490 000 so'm/yil · $9.99/oy
   belgisi bilan. Karta rasmlari — `tool/illustrations/{coagulogram,coprology}/gen_*.py` → `render_card.cjs`.
 - **Tashxis emas:** o'qish yordamchisi va DIC natijasi ostida yo'llanma eslatmasi; "qoralama" belgisi domla
   tekshiruvigacha. Tafsilot: docs/COAGULOGRAM_SOURCES.md, docs/COPROLOGY_SOURCES.md.
+
+## D-65. "Qoralama / tekshirilmagan" belgilari o'rniga adabiyot: "Manba: Muallif, yil, «nom», bob/bet" (2026-10-18, egasi qarori)
+
+- **Qaror:** ilovadagi kontent ilmiy adabiyot bilan solishtirilgan; ekranda "Draft", "Qoralama",
+  "mutaxassis tekshiruvidan o'tmagan", "Mustaqil mutaxassis tekshiruvi kutilmoqda", "tekshirilmagan" kabi
+  yozuvlar ko'rsatilmaydi. O'rniga — yumshoq (amber emas) **"Manbalar" paneli**
+  (`lib/features/tools/sources_panel.dart`: `SourcesPanel`, `SourcesNote`, `shortCitation`): har qator
+  "Manba: <Muallif>, <yil>, «<nom>», <bob/bet>" (ru "Источник:", en "Source:"). Qatorlar bo'limning o'z
+  `CalcSource`/`CalcRef` ro'yxatidan olinadi (yangi manba qo'shilmadi); bob/bet faqat ma'lum bo'lsa
+  (masalan, JSST 2003, 7-bob, 233–252-bet — siydik tahlili). Sahifada manbalar ko'p bo'lsa — 4 tasi va
+  "+ yana N ta — pastdagi ro'yxatda".
+- **Tibbiy xavfsizlik eslatmasi saqlanadi** (Apple/tibbiy talab), bitta neytral qator (`sourcesDisclaimer`):
+  "O'quv ma'lumotnomasi, tashxis emas: natijani shifokor klinik ma'lumotlar bilan baholaydi; referens
+  oraliqlar laboratoriya va usulga bog'liq."
+- **Qayerda:** siydik tahlili, spermogramma, qon guruhi, gistologiya, qon morfologiyasi, koagulogramma
+  (`cgLeadRefs`), koprologiya (`cpLeadRefs`; "Darslik" — manba turi izohi, `CpL.textbookNote`), sitologiya
+  (+ qo'shimcha sahifalar), leykoformula, jadvallar va algoritmlar, mikroskopiya atlasi, analit kartalari ("Manbalarga
+  asoslangan: <karta manbalari>"), holatlar (shartlar) kartalari, paketlar, imtihon/mashq, toifa javob rejalari,
+  sinf (ustoz) ekranlari. Analit/holat kartasidagi "Tekshiruv holati" paneli "Tayyorlanishi va manbalar" bo'ldi:
+  tayyorlagan, manbalar ko'rilgan va solishtirilgan sanalar; "tasdiq kutilmoqda / tekshiruvchi tayinlanmagan /
+  tarjima tekshiruvi kutilmoqda" qatorlari olib tashlandi (tasdiqlangan bo'lsa — ijobiy qator qoladi).
+  Holat yorlig'i "Manbali namuna" → "Manbalarga asoslangan" (amber emas).
+- **Paketlar va imtihon:** "draft" holat chipi ko'rsatilmaydi (sinov paketi belgisi qoladi). Imtihonda
+  "Natija — ichki mashq uchun, rasmiy baho emas" (`examPracticeNotice`) qoladi; "tekshirilmagan" da'vosi yo'q.
+  Savollardagi "Qoralama · tekshirilmagan" tegi olib tashlandi.
+- **Kalitlar:** almashtirildi — `diffDraftTag`→`sourcesPanelTitle`, `diffDraftNote`→`sourcesDisclaimer`,
+  `micDraftTag`→`sourceLine`, `cytoDraftNote`→`sourcesPanelMore`, `analyteSampleNotice`→`analyteSourcesBased`,
+  `refDraftNote`→`refBooksNote`, `examDraftNotice`→`examPracticeNotice`, `packsCoreState`→`packsCoreSources`;
+  o'chirildi — `packsStatusDraft`, `quizDraftTag`, `statusDraft`, `analyteExpertApprovalPending`,
+  `analyteReviewerNotAssigned`, `analyteTranslationPending`, `analyteAgentCheckValue`; matni neytrallashtirildi —
+  `condNotDiagnosticBody`, `condReferralFooter`, `analyteStructureOnlyBody`, `analyteNotWritten`,
+  `analyteReview`, `analyteAgentCheck`, `statusSourcedSample`, `micEduNotice`, `quizReviewNote`, `examNoSource`,
+  `toifaAboutOral`, `toifaPlanDisclaimer`, `toifaPlanPending`, `toifaPlanNotChecked`, `toifaAgentChecked`,
+  `toifaNoteNoSource`, `classroomOralNotice`, `classroomCandidatesNotice`, `lectureDraftNotice`,
+  `cytoDegreeSourceNote`, `intakeStep5`. Bo'lim matnlaridagi `draftNote` (UrL, SpermL, BgL, HisL, BmL) o'rniga
+  `urLeadRefs`, `spermLeadRefs`, `bgLeadRefs`, `histoLeadRefs`, `bmLeadRefs`.
+- **Qaytib kelmasligi uchun:** `test/unit/no_draft_wording_test.dart` — uch tildagi barcha ARB qiymatlari va
+  `lib/` dagi ekran matnlari taqiqlangan so'zlar ro'yxati bilan tekshiriladi. Istisnolar (kontent holati haqida
+  emas): foydalanuvchining o'z qoralamasi (ilmiy ish), maxfiylik, paket butunligi (SHA-256), faqat tekshiruvchi/
+  admin ko'radigan ish oqimi (tekshiruv navbati, hamkor qoralamasi).
+- **O'zgarmadi:** tibbiy matn, raqamlar, manbalar ro'yxati; ichki ma'lumot modeli (`status: draft`,
+  `isDraft`, tekshiruvchi navbati) — faqat foydalanuvchiga ko'rinadigan yozuvlar. Rasmli ma'ruza slaydlaridagi
+  (JPG) matn qayta chizilmadi.

@@ -207,7 +207,7 @@ void main() {
       for (final r in coproRoutes) {
         await goTo(tester, '$coproBase/$r');
         expect(tester.takeException(), isNull, reason: r);
-        expect(find.text(CpL.draftNote.of(lang.name)), findsOne, reason: r);
+        expect(find.text(CpL.textbookNote.of(lang.name)), findsOne, reason: r);
       }
       for (final e in cpElements) {
         await goTo(tester, cpElementRoute(e.id));

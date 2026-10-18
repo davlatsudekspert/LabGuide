@@ -126,6 +126,14 @@ abstract final class CgSources {
   ];
 }
 
+/// Bo'lim asoslangan adabiyot — sahifa boshidagi "Manbalar" paneli (D-65).
+const cgLeadRefs = [
+  CalcRef(CgSources.wfhPart3, ''),
+  CalcRef(CgSources.wfhPart5, ''),
+  CalcRef(CgSources.magnette2016, ''),
+  CalcRef(CgSources.wada2014, ''),
+];
+
 // ───────────────────────── Lokatorlar ─────────────────────────
 
 const _w3 = CgSources.wfhPart3;
@@ -1794,17 +1802,6 @@ abstract final class CgL {
     'ru': 'ПВ/МНО, АЧТВ, ТВ, фибриноген, D-димер · проба · балл ДВС',
     'en': 'PT/INR, APTT, TT, fibrinogen, D-dimer · sample · DIC score',
   });
-  static const draftNote = _T({
-    'uz':
-        'Qoralama: mutaxassis tekshiruvidan o‘tmagan. Har band manbali; '
-        'me’yoriy oraliqlar laboratoriya usuliga bog‘liq.',
-    'ru':
-        'Черновик: не проверен специалистом. Каждый пункт с источником; '
-        'референтные интервалы зависят от метода лаборатории.',
-    'en':
-        'Draft: not yet expert-reviewed. Every point is sourced; reference '
-        'intervals depend on the laboratory method.',
-  });
   static const notDiagnosis = _T({
     'uz':
         'Ilova natija nimaga ishora qilishi mumkinligini manbasi bilan '
@@ -2085,7 +2082,6 @@ abstract final class CgL {
   /// Barcha matnlar (test: uch tilda to‘liq).
   static const all = <LocalizedText>[
     subtitle,
-    draftNote,
     notDiagnosis,
     testsTitle,
     testsSub,

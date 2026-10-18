@@ -61,8 +61,8 @@ Dashboard'dagi "Set up your app" ro'yxatidagi bo'limlar:
 
 Matnlar: `docs/store/APP_STORE.md` — 2 (qisqa shior), 3 (promo), 4 (to'liq tavsif; uz/ru/en).
 Play'da *Short description* ≤ 80 belgi (promo matndan qisqartiring), *Full description* ≤ 4000
-(APP_STORE.md 4-bo'lim matni). "Qoralama / mutaxassis tekshiruvi kutilmoqda" jumlasini
-olib tashlamang.
+(APP_STORE.md 4-bo'lim matni). Tibbiy eslatmani (tashxis emas; natijani shifokor baholaydi)
+olib tashlamang; kontent "qoralama" deb yozilmaydi (D-65).
 
 | Element | Fayl |
 |---|---|
@@ -80,7 +80,7 @@ email'i — egasining ommaviy emaili.
 3. **Upload**: `dist/LabGuide-0.1.0-20.aab` (egasi faylni o'zi tanlaydi).
 4. Release name: `0.1.0 (20)`.
 5. Release notes (APP_STORE.md 13-bo'lim):
-   - uz: Qoralama sinov versiyasi. Kontent manbalarga asoslangan, lekin mustaqil mutaxassis tekshiruvidan hali o'tmagan — bemorlar bilan ishlashda foydalanmang.
+   - uz: Sinov versiyasi. Kontent — adabiyotga asoslangan o'quv ma'lumotnomasi, tashxis emas; bemor bo'yicha qarorlarda foydalanmang.
    - ru / en matnlari ham o'sha bo'limda.
 6. **Testers** yorlig'i → email ro'yxati yarating (100 tagacha), tester emaillarini kiriting, saqlang.
 7. **Next → Save → Review release**; xatolar bo'lmasa **Start rollout to Internal testing**.

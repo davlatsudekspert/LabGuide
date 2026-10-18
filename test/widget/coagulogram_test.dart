@@ -10,6 +10,7 @@ import 'package:labguide/features/home/search_sections.dart';
 import 'package:labguide/design/widgets/lg_widgets.dart';
 import 'package:labguide/features/settings/settings_controller.dart';
 import 'package:labguide/features/tools/calc_info.dart';
+import 'package:labguide/features/tools/sources_panel.dart';
 import 'package:labguide/l10n/gen/app_localizations.dart';
 import 'package:material_ui/material_ui.dart';
 
@@ -150,7 +151,15 @@ void main() {
       for (final r in coagRoutes) {
         await goTo(tester, '$coagBase/$r');
         expect(tester.takeException(), isNull, reason: r);
-        expect(find.text(CgL.draftNote.of(lang.name)), findsOne, reason: r);
+        expect(
+          find.text(
+            l.sourceLine(
+              shortCitation(CgSources.magnette2016, citePage: l.citePage),
+            ),
+          ),
+          findsOne,
+          reason: r,
+        );
       }
     });
 

@@ -768,14 +768,14 @@ jobs:
                   enc = False if r is not None else None
               summary(f'- Eksport muvofiqligi (usesNonExemptEncryption): **{enc}**')
               notes = {
-                  'en-US': ("DRAFT build for internal testing. Content is source-based learning material that has NOT yet "
-                            "passed independent expert review - do not use it for patient care.\n"
+                  'en-US': ("Test build for internal testing. Content is an educational reference based on the cited "
+                            "literature - not a diagnosis; do not use it for patient care decisions.\n"
                             "Please check: open the app -> continue as guest -> pick role and language -> lab tests atlas "
                             "(search in Latin and Cyrillic) -> calculators (try wrong units on purpose) -> differential "
                             "(leukocyte) count -> practice exam. Switch language and theme. Send any error, crash or unclear "
                             "text with a screenshot."),
-                  'ru': ("ЧЕРНОВАЯ сборка для внутреннего тестирования. Материалы основаны на источниках, но ещё НЕ прошли "
-                         "независимую экспертную проверку — не используйте их для работы с пациентами.\n"
+                  'ru': ("Тестовая сборка для внутреннего тестирования. Материалы — учебный справочник на основе "
+                         "указанной литературы, не диагноз; не используйте их для решений по пациентам.\n"
                          "Проверьте: открыть приложение -> войти как гость -> выбрать роль и язык -> атлас анализов (поиск "
                          "латиницей и кириллицей) -> калькуляторы (намеренно перепутайте единицы) -> лейкоцитарная формула "
                          "-> тренировочный экзамен. Смените язык и тему. Ошибки, сбои и неточности присылайте со скриншотом."),

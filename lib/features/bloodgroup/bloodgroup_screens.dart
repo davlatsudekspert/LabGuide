@@ -11,6 +11,7 @@ import '../content/content_model.dart';
 import '../learn/quiz_session.dart';
 import '../tools/calc_info.dart';
 import '../tools/clinical_calc_screens.dart' show CalcSourceTile;
+import '../tools/sources_panel.dart';
 import 'bloodgroup_content.dart';
 import 'bloodgroup_logic.dart';
 
@@ -82,17 +83,16 @@ class _ItemCard extends StatelessWidget {
   }
 }
 
-/// Qoralama va SOP ogohlantirishlari (har sahifada).
+/// Manbalar paneli va SOP ogohlantirishi (har sahifada).
 class _Notices extends StatelessWidget {
   const _Notices();
 
   @override
   Widget build(BuildContext context) {
-    final l = AppLocalizations.of(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        LgNotice(context.tr(BgL.draftNote), title: l.diffDraftTag),
+        const SourcesPanel(bgLeadRefs),
         LgNotice(context.tr(BgL.sopNote), kind: NoticeKind.error),
       ],
     );
@@ -782,10 +782,7 @@ class _Question extends StatelessWidget {
           spacing: 8,
           runSpacing: 6,
           crossAxisAlignment: WrapCrossAlignment.center,
-          children: [
-            LgEyebrow(l.quizProgress(session.index + 1, total)),
-            LgTag(l.quizDraftTag, tone: LgTone.warning),
-          ],
+          children: [LgEyebrow(l.quizProgress(session.index + 1, total))],
         ),
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 10),

@@ -384,7 +384,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get condNotDiagnosticBody =>
-      'Qo‘llanma tahlillarni rejalashtirishga yordam beradi. Klinik baholash va yakuniy qaror — shifokorda. Matn manbalarga asoslangan qoralama, mustaqil ekspert tekshiruvi kutilmoqda.';
+      'Qo‘llanma tahlillarni rejalashtirishga yordam beradi. Klinik baholash va yakuniy qaror — shifokorda. Matn manbalarga asoslangan, manbalar har kartada ko‘rsatilgan.';
 
   @override
   String get condCautionsTitle => 'E’tibor bering';
@@ -408,7 +408,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get condReferralFooter =>
-      'LabGuide qo‘llanmasi (qoralama). Tashxis vositasi emas — yakuniy qaror shifokorda.';
+      'LabGuide qo‘llanmasi. Tashxis vositasi emas — yakuniy qaror shifokorda.';
 
   @override
   String get condAnalyteSection => 'Qaysi holatlarda tekshiriladi';
@@ -573,16 +573,13 @@ class AppLocalizationsUz extends AppLocalizations {
   }
 
   @override
-  String get statusDraft => 'Qoralama';
-
-  @override
   String get statusVerified => 'Tekshirilgan';
 
   @override
   String get statusPublished => 'Nashr etilgan';
 
   @override
-  String get statusSourcedSample => 'Manbali namuna';
+  String get statusSourcedSample => 'Manbalarga asoslangan';
 
   @override
   String get statusStructureOnly => 'Faqat tuzilma';
@@ -617,15 +614,11 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get analyteStructureOnlyBody =>
-      'Bu kartada faqat tuzilma bor. Klinik matn manbalar bilan va mustaqil mutaxassis tekshiruvidan keyin qo‘shiladi — umumiy matn tayyor deb ko‘rsatilmaydi.';
-
-  @override
-  String get analyteSampleNotice =>
-      'Ko‘rsatilgan manbalarga tayangan o‘quv namuna. Mustaqil mutaxassis tekshiruvi kutilmoqda — klinik qaror uchun emas.';
+      'Bu kartada hozircha faqat tuzilma bor. Klinik matn manbalar bilan birga qo‘shiladi — umumiy matn tayyor deb ko‘rsatilmaydi.';
 
   @override
   String get analyteNotWritten =>
-      'Hali yozilmagan: manba va tekshiruv talab qilinadi.';
+      'Hali yozilmagan: matn manbalar bilan birga qo‘shiladi.';
 
   @override
   String get analyteAtAGlance => 'Bir qarashda';
@@ -686,19 +679,13 @@ class AppLocalizationsUz extends AppLocalizations {
       'Foydalanish huquqi: tarqatishdan oldin tekshirilishi kerak';
 
   @override
-  String get analyteReview => 'Tekshiruv holati';
+  String get analyteReview => 'Tayyorlanishi va manbalar';
 
   @override
   String get analyteReviewPending => 'Mutaxassis tekshiruvi kutilmoqda';
 
   @override
   String get analyteReviewApproved => 'Tekshirilgan';
-
-  @override
-  String get analyteReviewerNotAssigned => 'Tekshiruvchi tayinlanmagan';
-
-  @override
-  String get analyteTranslationPending => 'Tarjima tekshiruvi kutilmoqda';
 
   @override
   String analyteContentVersion(String version) {
@@ -1316,13 +1303,6 @@ class AppLocalizationsUz extends AppLocalizations {
   String get diffSourcesTitle => 'Manbalar';
 
   @override
-  String get diffDraftTag => 'Draft · mutaxassis tekshiruvida';
-
-  @override
-  String get diffDraftNote =>
-      'Bo‘lim mutaxassis tekshiruvidan o‘tmagan. Natija tashxis emas; referens oraliqlar — laboratoriyangiz blankasida.';
-
-  @override
   String get diffSchematicCaption =>
       'Sxematik rasm (LabGuide chizgan) — mikrofoto emas';
 
@@ -1817,10 +1797,6 @@ class AppLocalizationsUz extends AppLocalizations {
   @override
   String get refIntro =>
       'Kitoblar va rasmiy manbalarga asoslangan qisqa jadvallar. Har bo‘lim ostida manbalar ko‘rsatilgan.';
-
-  @override
-  String get refDraftNote =>
-      'Qoralama: mutaxassis tekshiruvidan o‘tmagan. Kitoblar faqat manba sifatida keltirilgan — matn va rasmlar ko‘chirilmagan. Xulosa — shifokorda.';
 
   @override
   String get refOpenSub => 'Jadval va algoritm';
@@ -2663,7 +2639,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get micEduNotice =>
-      'O‘quv rasmlari — tashxis uchun emas. Har rasmda muallif, litsenziya va asl izoh bor. LabGuide tushuntirishlari — draft, mutaxassis tekshiruvi kutilmoqda.';
+      'O‘quv rasmlari — tashxis uchun emas. Har rasmda muallif, litsenziya va asl izoh bor.';
 
   @override
   String get micEduTag => 'O‘quv rasmi — tashxis uchun emas';
@@ -2733,9 +2709,6 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get micDraftTitle => 'Nimaga e’tibor berish';
-
-  @override
-  String get micDraftTag => 'Draft · mutaxassis tekshiruvi kutilmoqda';
 
   @override
   String get micCreditTitle => 'Muallif va litsenziya';
@@ -3952,10 +3925,6 @@ class AppLocalizationsUz extends AppLocalizations {
   String get packsOffline => 'Internetsiz ishlaydi';
 
   @override
-  String get packsCoreState =>
-      'Holat: draft — manbali o‘quv namunasi, mustaqil mutaxassis tekshiruvidan hali o‘tmagan';
-
-  @override
   String packsContents(int cards, int questions, int sources) {
     return 'Tarkib: $cards ta karta, $questions ta savol, $sources ta manba';
   }
@@ -3974,9 +3943,6 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get packsStatusTest => 'Sinov paketi · klinik paket emas';
-
-  @override
-  String get packsStatusDraft => 'Draft · mutaxassis tekshirmagan';
 
   @override
   String get packsStatusReviewed => 'Mutaxassis tekshirgan';
@@ -4340,7 +4306,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String toifaAboutOral(int ready, int total) {
-    return 'Og‘zaki javob rejalari — LabGuide tayyorlagan, mutaxassis tekshiruvi kutilmoqda ($ready / $total ta reja manbalar bilan).';
+    return 'Og‘zaki javob rejalari — LabGuide tayyorlagan o‘quv yordami ($ready / $total ta reja manbalar bilan).';
   }
 
   @override
@@ -4636,8 +4602,7 @@ class AppLocalizationsUz extends AppLocalizations {
       'Ro‘yxatda kalit belgilanmagan — bu savol baholanmaydi.';
 
   @override
-  String get toifaNoteNoSource =>
-      'Izoh uchun manba ko‘rsatilmagan (tekshirilmadi).';
+  String get toifaNoteNoSource => 'Izoh uchun manba ko‘rsatilmagan.';
 
   @override
   String get toifaRelatedCards => 'Bog‘liq kartalar';
@@ -4669,7 +4634,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get toifaPlanDisclaimer =>
-      'Javob rejalari LabGuide tayyorlagan, mutaxassis tekshiruvi kutilmoqda. Ular rasmiy javob emas.';
+      'Javob rejalari — LabGuide tayyorlagan o‘quv yordami. Ular rasmiy javob emas.';
 
   @override
   String get toifaPickCategoryFirst => 'Avval toifani tanlang';
@@ -4705,15 +4670,13 @@ class AppLocalizationsUz extends AppLocalizations {
   String get toifaPlanTitle => 'Javob rejasi';
 
   @override
-  String get toifaPlanPending =>
-      'LabGuide tayyorlagan, mutaxassis tekshiruvi kutilmoqda';
+  String get toifaPlanPending => 'LabGuide tayyorlagan';
 
   @override
   String get toifaPlanMissing => 'Bu savol uchun reja hali tayyorlanmagan.';
 
   @override
-  String get toifaPlanNotChecked =>
-      'Reja manbalar bilan to‘liq tekshirilmagan.';
+  String get toifaPlanNotChecked => 'Bu rejaga manba hali biriktirilmagan.';
 
   @override
   String get toifaReferenceTitle =>
@@ -4737,7 +4700,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String toifaAgentChecked(String date) {
-    return 'Agent tekshiruvi: $date (mutaxassis tasdig‘i emas)';
+    return 'Manbalar bilan solishtirilgan: $date';
   }
 
   @override
@@ -4920,7 +4883,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get quizReviewNote =>
-      'Mashq savollari mutaxassis tekshiruvini kutmoqda.';
+      'Mashq savollari o‘quv maqsadida; natija rasmiy baho emas.';
 
   @override
   String get quizMistakes => 'Xatolar ustida ishlash';
@@ -5232,10 +5195,6 @@ class AppLocalizationsUz extends AppLocalizations {
   }
 
   @override
-  String get examDraftNotice =>
-      'Savollar hali mutaxassis tekshiruvidan o‘tmagan (qoralama). Natija — ichki sinov uchun, rasmiy baho emas.';
-
-  @override
   String get examRulesNotice =>
       'Savollar va variantlar tasodifiy tartibda. Yakunlashgacha javobni o‘zgartirish, savolni belgilab keyin qaytish mumkin. Vaqt ilova yopiq bo‘lsa ham davom etadi; tugasa, imtihon o‘zi yakunlanadi.';
 
@@ -5456,8 +5415,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get examWhyWrong => 'Nega bu javob emas';
 
   @override
-  String get examNoSource =>
-      'Manba ko‘rsatilmagan — savol hali tekshirilmagan.';
+  String get examNoSource => 'Bu savolga manba ko‘rsatilmagan.';
 
   @override
   String get examSourceMissing =>
@@ -6844,8 +6802,7 @@ class AppLocalizationsUz extends AppLocalizations {
       'Bog‘landi — tahlil kartalari va darslarga sahifa raqami bilan bog‘landi.';
 
   @override
-  String get intakeStep5 =>
-      'Tasdiqlandi — domla ko‘rib chiqdi. Savollar shungacha “Qoralama” bo‘lib turadi.';
+  String get intakeStep5 => 'Tasdiqlandi — domla ko‘rib chiqdi.';
 
   @override
   String get intakeConflict =>
@@ -7015,9 +6972,6 @@ class AppLocalizationsUz extends AppLocalizations {
   }
 
   @override
-  String get quizDraftTag => 'Qoralama · tekshirilmagan';
-
-  @override
   String get lessonsTitle => 'Dars mavzulari';
 
   @override
@@ -7042,18 +6996,10 @@ class AppLocalizationsUz extends AppLocalizations {
   }
 
   @override
-  String get analyteAgentCheck => 'Avtomatik/agent tekshiruvi';
-
-  @override
-  String analyteAgentCheckValue(String date) {
-    return '$date (mutaxassis tasdig‘i emas)';
-  }
+  String get analyteAgentCheck => 'Manbalar bilan solishtirilgan';
 
   @override
   String get analyteExpertApproval => 'Mutaxassis tasdig‘i';
-
-  @override
-  String get analyteExpertApprovalPending => 'kutilmoqda';
 
   @override
   String classesSeat(String n) {
@@ -7316,7 +7262,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get classroomOralNotice =>
-      'Savollar avtomatik tanlangan nomzodlar — javob rejasi mutaxassis tekshiruvini kutmoqda. “So‘raldi” va baholar faqat shu qurilmada saqlanadi.';
+      'Savollar avtomatik tanlangan nomzodlar; javob rejasi — o‘quv yordami. “So‘raldi” va baholar faqat shu qurilmada saqlanadi.';
 
   @override
   String get classroomOralEmpty => 'Bu mavzu uchun og‘zaki savol topilmadi';
@@ -7358,7 +7304,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get classroomCandidatesNotice =>
-      'Nomzod savollar avtomatik tanlangan, kalitlari tekshirilmagan. Har birini ko‘rib chiqing: ball ko‘rsatilgan kalit bo‘yicha serverda hisoblanadi.';
+      'Nomzod savollar avtomatik tanlangan. Har birini va kalitini ko‘rib chiqing: ball ko‘rsatilgan kalit bo‘yicha serverda hisoblanadi.';
 
   @override
   String classroomCandidatesTitle(int picked, int total) {
@@ -7476,7 +7422,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get lectureDraftNotice =>
-      'Ustoz tekshiruvi uchun qoralama — darsdan oldin mazmunni ko‘rib chiqing';
+      'Taqdimot manbalarga asoslangan — darsdan oldin mazmunni ko‘rib chiqing';
 
   @override
   String get lectureUzOnly => 'Bu taqdimot hozircha faqat o‘zbek tilida';
@@ -8211,10 +8157,6 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get cytoRefer => 'Sitolog yoki shifokorga ko‘rsating';
-
-  @override
-  String get cytoDraftNote =>
-      'Bo‘lim mutaxassis tekshiruvidan o‘tmagan. Bu o‘quv qo‘llanma: xulosani sitolog yoki shifokor beradi.';
 
   @override
   String get cytoDegreeIntro =>
@@ -9696,4 +9638,38 @@ class AppLocalizationsUz extends AppLocalizations {
   @override
   String get admDeleteMismatch =>
       'Bu email shu hisobga tegishli emas — tekshirib, qayta kiriting.';
+
+  @override
+  String analyteSourcesBased(String sources) {
+    return 'Manbalarga asoslangan: $sources';
+  }
+
+  @override
+  String get sourcesPanelTitle => 'Manbalar';
+
+  @override
+  String get sourcesDisclaimer =>
+      'O‘quv ma’lumotnomasi, tashxis emas: natijani shifokor klinik ma’lumotlar bilan baholaydi; referens oraliqlar laboratoriya va usulga bog‘liq.';
+
+  @override
+  String get refBooksNote =>
+      'Kitoblar faqat manba sifatida keltirilgan — matn va rasmlar ko‘chirilmagan. Xulosa — shifokorda.';
+
+  @override
+  String sourceLine(String cite) {
+    return 'Manba: $cite';
+  }
+
+  @override
+  String get packsCoreSources =>
+      'Manbalarga asoslangan o‘quv ma’lumotnomasi — har kartada adabiyot ro‘yxati bor';
+
+  @override
+  String get examPracticeNotice =>
+      'Natija — ichki mashq uchun, rasmiy baho emas.';
+
+  @override
+  String sourcesPanelMore(int count) {
+    return '+ yana $count ta manba — pastdagi ro‘yxatda';
+  }
 }

@@ -457,11 +457,6 @@ class _ExamRunnerState extends State<ExamRunner> {
                                     LgEyebrow(
                                       l.quizProgress(s.index + 1, s.length),
                                     ),
-                                    if (q?.isDraft ?? false)
-                                      LgTag(
-                                        l.quizDraftTag,
-                                        tone: LgTone.warning,
-                                      ),
                                     // Rasmiy ro'yxatdagi raqam.
                                     if (q is OfficialKeyQuestion)
                                       LgTag(
@@ -1380,8 +1375,6 @@ class ExamReviewCard extends StatelessWidget {
             children: [
               LgEyebrow(l.examQuestionN(number)),
               if (showChosen) status,
-              if (q?.isDraft ?? false)
-                LgTag(l.quizDraftTag, tone: LgTone.neutral),
               if (check != null && check.flagged)
                 KeyVerdictTag(verdict: check.verdict),
             ],

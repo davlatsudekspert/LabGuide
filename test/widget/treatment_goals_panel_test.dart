@@ -115,14 +115,11 @@ void main() {
       expect(inPanel(find.text(en.analyteRefIntervals)), findsNothing);
       expect(find.text(en.analyteDecisionLimits), findsNothing);
 
-      // Kelib chiqishi: agent tekshiruvi ≠ mutaxassis tasdig'i.
+      // Tayyorlanishi: manbalar bilan solishtirilgan sana; "kutilmoqda"
+      // qatorlari yo'q (D-65).
       expect(find.text(en.analyteAgentCheck), findsOneWidget);
-      expect(
-        find.text(en.analyteAgentCheckValue('2026-10-09')),
-        findsOneWidget,
-      );
-      expect(find.text(en.analyteExpertApproval), findsOneWidget);
-      expect(find.text(en.analyteExpertApprovalPending), findsOneWidget);
+      expect(find.text('2026-10-09'), findsWidgets);
+      expect(find.text(en.analyteExpertApproval), findsNothing);
       expect(find.text(en.analyteReviewApproved), findsNothing);
     },
   );
@@ -182,10 +179,10 @@ void main() {
           )
           .hitTestable()
           .first;
-      final agent = find.text(l.analyteAgentCheckValue('2026-10-09'));
+      final agent = find.text(l.analyteAgentCheck);
       await tester.scrollUntilVisible(agent, 600, scrollable: scrollable);
       expect(agent, findsOneWidget);
-      expect(find.text(l.analyteExpertApprovalPending), findsOneWidget);
+      expect(find.text(l.analyteExpertApproval), findsNothing);
       expect(tester.takeException(), isNull);
     });
   }

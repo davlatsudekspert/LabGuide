@@ -389,9 +389,8 @@ class _Builder {
     final moduleTitle = module?.title.values[lang];
     if (topic != null && topicTitle == null) _langSkips++;
     final names = <String>[for (final a in analytes) ?a.names.values[lang]];
-    final draft = analytes.any((a) => !a.isReviewerApproved);
     final note = [
-      if (draft) l.analyteSampleNotice,
+      if (analytes.isNotEmpty) l.sourcesDisclaimer,
       if (_langSkips > 0) l.autoPresNoticeLang(_langSkips),
     ].join('\n');
     return AutoSlide(

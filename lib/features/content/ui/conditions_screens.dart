@@ -435,7 +435,7 @@ class _ConditionBody {
           LgTag(systemName(c.system, l), icon: systemIcon(c.system)),
           LgTag(
             c.isReviewerApproved ? l.statusVerified : l.statusSourcedSample,
-            tone: c.isReviewerApproved ? LgTone.brand : LgTone.warning,
+            tone: LgTone.brand,
             icon: Icons.menu_book_rounded,
           ),
         ],
@@ -532,26 +532,20 @@ class _ConditionBody {
     final approved = condition.isReviewerApproved;
     final dates = [for (final id in _sources) ?pack.source(id)?.accessed]
       ..sort();
-    final translationsPending = condition.translationReview.values.any(
-      (v) => v != 'approved',
-    );
     return LgPanel(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(l.analyteReview, style: text.titleMedium),
           const SizedBox(height: 6),
-          LgMetric(
-            label: l.analyteReview,
-            value: approved ? l.analyteReviewApproved : l.analyteReviewPending,
-          ),
-          if (!approved)
-            LgMetric(label: '—', value: l.analyteReviewerNotAssigned),
+          if (approved)
+            LgMetric(
+              label: l.analyteExpertApproval,
+              value: l.analyteReviewApproved,
+            ),
           LgMetric(label: l.analytePreparedBy, value: l.analyteEditorial),
           if (dates.isNotEmpty)
             LgMetric(label: l.analyteSourcesChecked, value: dates.last),
-          if (translationsPending)
-            LgMetric(label: 'UZ · RU · EN', value: l.analyteTranslationPending),
           Padding(
             padding: const EdgeInsets.only(top: 10),
             child: Text(

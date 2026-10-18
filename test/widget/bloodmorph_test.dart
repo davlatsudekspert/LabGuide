@@ -8,6 +8,7 @@ import 'package:labguide/features/bloodmorph/bloodmorph_logic.dart';
 import 'package:labguide/features/bloodmorph/bloodmorph_screens.dart';
 import 'package:labguide/features/content/content_model.dart';
 import 'package:labguide/features/settings/settings_controller.dart';
+import 'package:labguide/features/tools/sources_panel.dart';
 import 'package:labguide/l10n/gen/app_localizations.dart';
 import 'package:material_ui/material_ui.dart';
 
@@ -65,7 +66,6 @@ const _routes = [
 /// BmL dagi barcha matnlar (3 tilda bo'lishi shart).
 final _uiTexts = <LocalizedText>[
   BmL.subtitle,
-  BmL.draftNote,
   BmL.photoNote,
   BmL.normalTitle,
   BmL.normalSub,
@@ -507,7 +507,14 @@ void main() {
       await tester.tap(card);
       await tester.pumpAndSettle();
       expect(find.byType(BloodMorphScreen), findsOne);
-      expect(find.text(BmL.draftNote.of(lang.name)), findsOne);
+      expect(
+        find.text(
+          l.sourceLine(
+            shortCitation(BmSources.adewoyin2014, citePage: l.citePage),
+          ),
+        ),
+        findsOne,
+      );
       for (final r in _routes) {
         await goTo(tester, '$bmBase/$r');
         expect(tester.takeException(), isNull, reason: r);

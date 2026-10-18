@@ -112,8 +112,8 @@ List<LectureSlide> buildLectureSlides(
   return slides;
 }
 
-/// Tayyor taqdimot slaydlari. Birinchi slaydda halol holat: qoralama va
-/// (til yo'q bo'lsa) "boshqa tilda ko'rsatilmoqda" ogohlantirishi. [wanted] —
+/// Tayyor taqdimot slaydlari. Birinchi slaydda: "darsdan oldin ko'rib
+/// chiqing" eslatmasi va (til yo'q bo'lsa) "boshqa tilda ko'rsatilmoqda". [wanted] —
 /// so'ralgan til (standart: ilova tili).
 List<LectureSlide> deckLectureSlides(
   BuildContext context,
@@ -122,7 +122,7 @@ List<LectureSlide> deckLectureSlides(
 }) {
   final l = AppLocalizations.of(context);
   final want = wanted ?? _lang(context);
-  // Rasmli slaydlarda "qoralama" yozuvi slaydning o'zida bor.
+  // Rasmli slaydlarda eslatma slaydning o'zida bor.
   final pictures = deck.slides.every((d) => d.image != null);
   final notice = [
     if (deck.draft && !pictures) l.lectureDraftNotice,

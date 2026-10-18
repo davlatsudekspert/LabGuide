@@ -114,11 +114,15 @@ void main() {
     await tester.pumpAndSettle();
     expect(picker, findsNothing, reason: 'savol ochilgan, mavzu ro‘yxati yo‘q');
     await goTo(tester, '/tests/analyte/${plain.id}');
+    final scrollable = find.byType(Scrollable).hitTestable().first;
     await tester.scrollUntilVisible(
       find.text(uz.analytePractice),
       300,
-      scrollable: find.byType(Scrollable).hitTestable().first,
+      scrollable: scrollable,
     );
+    // Qator pastki menyu ostida qolmasin (karta boshida "Manbalar" paneli).
+    await tester.drag(scrollable, const Offset(0, -200));
+    await tester.pumpAndSettle();
     await tester.tap(find.text(uz.analytePractice));
     await tester.pumpAndSettle();
     expect(_location(tester), startsWith('/learn/quiz'));

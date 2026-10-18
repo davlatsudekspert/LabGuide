@@ -626,8 +626,6 @@ class _QuestionViewState extends State<_QuestionView> {
             LgEyebrow(l.quizProgress(i + 1, total)),
             if (s.mode == ExamMode.rework)
               LgTag(l.examReworkTitle, tone: LgTone.neutral),
-            if (q?.isDraft ?? false)
-              LgTag(l.quizDraftTag, tone: LgTone.warning),
           ],
         ),
         Padding(
