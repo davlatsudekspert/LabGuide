@@ -15,7 +15,7 @@ Map<String, ExamQuestion> classQuestionIndex(
   ToifaBank? bank,
 ) => {
   if (pack != null)
-    for (final q in PackQuestionSource.of(pack).questions) q.id: q,
+    for (final q in PackQuestionSource.of(pack).allById) q.id: q,
   if (bank != null)
     for (final q in bank.scorable) q.id: q,
 };

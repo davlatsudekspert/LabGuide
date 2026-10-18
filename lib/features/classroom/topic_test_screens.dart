@@ -181,7 +181,9 @@ class DeckTestBadge extends StatelessWidget {
           alignment: AlignmentDirectional.centerStart,
           child: LgPressable(
             key: ValueKey('deck-test-${deck.id}'),
-            onTap: () => openTopicTest(context, deck.id),
+            onTap: () => canAssignTests(context)
+                ? _teacherTestChoice(context, deck)
+                : openTopicTest(context, deck.id),
             borderRadius: BorderRadius.circular(LgRadius.button),
             border: Border.all(color: p.brand.withValues(alpha: 0.35)),
             semanticLabel: best == null
@@ -236,6 +238,52 @@ class DeckTestBadge extends StatelessWidget {
       },
     );
   }
+}
+
+/// Ustoz “Mavzu testi”ni bossa — asosiy maqsad talabalarga topshirish;
+/// o'zi yechib ko'rish ikkinchi variant.
+Future<void> _teacherTestChoice(BuildContext context, DeckEntry deck) async {
+  final l = AppLocalizations.of(context);
+  await showModalBottomSheet<void>(
+    context: context,
+    showDragHandle: true,
+    builder: (sheet) => SafeArea(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Padding(
+            padding: const EdgeInsets.fromLTRB(20, 0, 20, 8),
+            child: Text(
+              deck.title(_lang(context)),
+              style: Theme.of(sheet).textTheme.titleSmall,
+            ),
+          ),
+          ListTile(
+            key: const ValueKey('deck-test-choice-assign'),
+            leading: const Icon(Icons.group_add_outlined),
+            title: Text(l.topicTestAssign),
+            subtitle: Text(l.topicTestAssignSub),
+            onTap: () {
+              Navigator.pop(sheet);
+              openAssignDeckTest(context, deck.id);
+            },
+          ),
+          ListTile(
+            key: const ValueKey('deck-test-choice-self'),
+            leading: const Icon(Icons.quiz_outlined),
+            title: Text(l.topicTestSelf),
+            subtitle: Text(l.topicTestSelfSub),
+            onTap: () {
+              Navigator.pop(sheet);
+              openTopicTest(context, deck.id);
+            },
+          ),
+          const SizedBox(height: 8),
+        ],
+      ),
+    ),
+  );
 }
 
 /// Ro'yxatda deckni uzoq bosish — amallar: ochish, mavzu testi, guruhga

@@ -9653,6 +9653,17 @@ class AppLocalizationsEn extends AppLocalizations {
   String get topicTestAssign => 'Assign to a group';
 
   @override
+  String get topicTestAssignSub =>
+      'Students join by QR or code; you see the results';
+
+  @override
+  String get topicTestSelf => 'Try it myself';
+
+  @override
+  String get topicTestSelfSub =>
+      'Saved only on your device; not sent to students';
+
+  @override
   String get topicTestAssignIntro =>
       'Students take the test on their own phones before the deadline; the score is calculated on the server.';
 

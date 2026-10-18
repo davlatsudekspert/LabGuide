@@ -244,6 +244,28 @@ void main() {
     expect(find.byKey(const ValueKey('lecture-test-menu')), findsNothing);
   });
 
+  testWidgets('ustoz «Mavzu testi»ni bossa — avval talabalarga topshirish', (
+    tester,
+  ) async {
+    installDiffFakes();
+    final s = await makeServices(tester, role: AppRole.teacher);
+    await pumpApp(tester, s, size: _tall);
+    await goTo(tester, '/learn/lecture');
+    final badge = find.byKey(const ValueKey('deck-test-$_deck'));
+    await tester.ensureVisible(badge);
+    await tester.pumpAndSettle();
+    await tester.tap(badge);
+    await tester.pumpAndSettle();
+    final assign = find.byKey(const ValueKey('deck-test-choice-assign'));
+    final self = find.byKey(const ValueKey('deck-test-choice-self'));
+    expect(assign, findsOneWidget);
+    expect(self, findsOneWidget);
+    expect(tester.getTopLeft(assign).dy, lessThan(tester.getTopLeft(self).dy));
+    await tester.tap(self);
+    await tester.pumpAndSettle();
+    expect(find.byKey(const ValueKey('topic-test-intro')), findsOneWidget);
+  });
+
   testWidgets('ro‘yxatda uzoq bosish — amallar; menyudan test', (tester) async {
     installDiffFakes();
     final l = lookupAppLocalizations(const Locale('uz'));

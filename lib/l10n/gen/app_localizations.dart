@@ -16612,6 +16612,24 @@ abstract class AppLocalizations {
   /// **'Assign to a group'**
   String get topicTestAssign;
 
+  /// No description provided for @topicTestAssignSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Students join by QR or code; you see the results'**
+  String get topicTestAssignSub;
+
+  /// No description provided for @topicTestSelf.
+  ///
+  /// In en, this message translates to:
+  /// **'Try it myself'**
+  String get topicTestSelf;
+
+  /// No description provided for @topicTestSelfSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Saved only on your device; not sent to students'**
+  String get topicTestSelfSub;
+
   /// No description provided for @topicTestAssignIntro.
   ///
   /// In en, this message translates to:

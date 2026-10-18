@@ -240,6 +240,10 @@ class PackQuestionSource implements ExamQuestionSource {
   @override
   ExamQuestion? question(String id) => _byId[id];
 
+  /// Barcha savollar, deck matnidan olinganlari bilan — topshiriq va mavzu
+  /// testi savollarni id bo'yicha shu yerdan topadi.
+  Iterable<PackExamQuestion> get allById => _byId.values;
+
   @override
   List<ExamTopic> get topics => _topics ??= [
     ExamTopic(generalTopic, (l, _) => l.quizTopicGeneral, [
