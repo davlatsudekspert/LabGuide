@@ -5700,7 +5700,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get classesInviteBody =>
-      'Talabalar: O‘rganish → Guruh va topshiriqlar → Kod bilan qo‘shilish.';
+      'Talabalar QR kodni telefon kamerasi bilan skanerlaydi va “Ilovada ochish” ni bosadi — yoki: O‘rganish → Guruh va topshiriqlar → Kod bilan qo‘shilish.';
 
   @override
   String get classesCopyCode => 'Kodni nusxalash';

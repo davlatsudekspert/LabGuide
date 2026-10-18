@@ -1640,7 +1640,7 @@
   "classesLeaveBody": "Qayta qo‘shilish uchun ustozdan kod kerak bo‘ladi. Topshirgan natijalaringiz ustozda qoladi.",
   "classesLeaveAction": "Chiqish",
   "classesInviteTitle": "Taklif kodi",
-  "classesInviteBody": "Talabalar: O‘rganish → Guruh va topshiriqlar → Kod bilan qo‘shilish.",
+  "classesInviteBody": "Talabalar QR kodni telefon kamerasi bilan skanerlaydi va “Ilovada ochish” ni bosadi — yoki: O‘rganish → Guruh va topshiriqlar → Kod bilan qo‘shilish.",
   "classesCopyCode": "Kodni nusxalash",
   "classesCopyInvite": "Taklif matnini nusxalash",
   "classesCopied": "Nusxalandi",

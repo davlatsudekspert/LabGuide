@@ -13,6 +13,7 @@ const inviteCodeAlphabet = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
 const inviteHost = 'labguide.nfcstore.uz';
 
 final _codeRe = RegExp(r'^[A-HJ-NP-Z2-9]{8}$');
+
 /// Topshiriq id si (serverda UUID): faqat harf/raqam/chiziqcha, ≤ 64.
 final _assignmentRe = RegExp(r'^[a-z0-9][a-z0-9-]{0,63}$');
 

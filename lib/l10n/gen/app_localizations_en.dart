@@ -5783,7 +5783,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get classesInviteBody =>
-      'Students: Learn → Classes and assignments → Join with a code.';
+      'Students scan the QR with the phone camera and tap “Open in app” — or: Learn → Classes and assignments → Join with a code.';
 
   @override
   String get classesCopyCode => 'Copy code';

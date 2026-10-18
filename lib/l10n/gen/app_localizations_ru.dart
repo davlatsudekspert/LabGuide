@@ -5813,7 +5813,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get classesInviteBody =>
-      'Студентам: Обучение → Группы и задания → Вступить по коду.';
+      'Студенты сканируют QR камерой телефона и нажимают «Открыть в приложении» — или: Обучение → Группы и задания → Вступить по коду.';
 
   @override
   String get classesCopyCode => 'Скопировать код';

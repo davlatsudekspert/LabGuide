@@ -23,6 +23,7 @@ import 'package:labguide/app/app_scope.dart';
 import 'package:labguide/core/backend/cloudflare_backend.dart';
 import 'package:labguide/core/backend/supabase_backend.dart'
     show MemorySessionStore;
+import 'package:labguide/features/classroom/invite_link.dart';
 import 'package:labguide/features/classroom/topic_questions.dart';
 import 'package:labguide/features/learn/exam_session.dart';
 import 'package:labguide/features/settings/settings_controller.dart';
@@ -70,7 +71,11 @@ void main() {
 
     // Har foydalanuvchi — o'z ilova xizmatlari (alohida qurilma kabi); kirish
     // ilovaning o'z OTP oqimi orqali (kod mahalliy pochta qutisidan).
-    Future<AppServices> device(String who, AppRole role) async {
+    Future<AppServices> device(
+      String who,
+      AppRole? role, {
+      bool signIn = true,
+    }) async {
       final email = '$who.$stamp@example.test';
       final b = CloudflareLabBackend(
         ApiConfig(url: base),
@@ -80,6 +85,7 @@ void main() {
         httpClient: _FreshConnections(http.Client()),
       );
       final s = await makeServices(tester, backend: b, role: role);
+      if (!signIn) return s;
       await real(() async {
         await s.auth.requestCode(email);
         final v = await s.auth.verifyCode(await lastCode(email));
@@ -122,15 +128,15 @@ void main() {
 
     // harness.pumpApp kabi, lekin pumpAndSettle siz (Bosh sahifa kartalari
     // haqiqiy so'rov kutayotganda yuklanish animatsiyasi bor).
-    Future<void> show(AppServices s) async {
+    Future<void> show(AppServices s, {Size? tv}) async {
       await tester.pumpWidget(const SizedBox());
-      const ratio = 3.0;
+      // Telefon (390x844, 3x) yoki televizor/proyektor ([tv], 1x, chetsiz).
+      final ratio = tv == null ? 3.0 : 1.0;
       tester.view.devicePixelRatio = ratio;
-      tester.view.physicalSize = const Size(390, 844) * ratio;
-      tester.view.padding = const FakeViewPadding(
-        top: 47 * ratio,
-        bottom: 34 * ratio,
-      );
+      tester.view.physicalSize = (tv ?? const Size(390, 844)) * ratio;
+      tester.view.padding = tv == null
+          ? FakeViewPadding(top: 47 * ratio, bottom: 34 * ratio)
+          : FakeViewPadding.zero;
       addTearDown(tester.view.reset);
       await tester.pumpWidget(LabGuideApp(services: s));
       for (var i = 0; i < 5; i++) {
@@ -287,10 +293,189 @@ void main() {
     await waitFor(find.text(uz.classroomStatusTestDone));
     await w.snap('kech_guruh_royxati');
 
+    // --- 6. QR oqimi: skanerlash → (kirish) → taxallus → test → ustozda.
+    final key = await real(() => tb.assignmentKey(asg.id));
+    final old = await real(() => tb.createGroup('Eski guruh'));
+    final g2 = await real(() => tb.createGroup('Klinik lab 3-kurs'));
+    final a2 = await real(
+      () => tb.createAssignment(
+        groupId: g2.id,
+        title: 'Mavzu testi: Anemiyalar (QR)',
+        questionIds: asg.questionIds,
+        correctIndexes: key,
+        dueAt: DateTime.now().add(const Duration(days: 1)),
+        dayId: 'd013-L',
+        deckId: _deck,
+        revealAfterDue: true,
+      ),
+    );
+    final link = inviteUrl(g2.joinCode!, assignmentId: a2);
+    // Kamera havolani saytda ochadi; “Ilovada ochish” → labguide://app/j?...
+    final appLink = Uri.parse(link)
+        .replace(path: '/j')
+        .toString()
+        .replaceFirst(RegExp('^https://[^/]+'), '');
+
+    await show(t);
+    await go('/learn/classes/g/${g2.id}');
+    await waitFor(find.byKey(const ValueKey('invite-qr')));
+    await tester.ensureVisible(find.byKey(const ValueKey('invite-qr')));
+    await w.snap('qr_taklif_paneli');
+    await go('/learn/classes/g/${g2.id}/a/$a2');
+    await waitFor(find.byKey(const ValueKey('assignment-test-qr')));
+    await w.snap('qr_ustoz_topshiriq');
+    await tapKey('assignment-test-qr');
+    await tester.pumpAndSettle();
+    await w.snap('qr_test_dialog');
+    await tester.tap(find.text(uz.actionClose));
+    await tester.pumpAndSettle();
+
+    var taps = 0;
+    Future<void> tapCount(Finder f) async {
+      taps++;
+      await tester.ensureVisible(f);
+      await tester.pumpAndSettle();
+      await tester.tap(f);
+      await tester.pump();
+    }
+
+    Future<void> answer(
+      AppServices s, {
+      required bool mistakes,
+      int? only,
+    }) async {
+      final run = s.exams.assignmentSession(a2, s.backend.userId)!;
+      final n = only ?? run.length;
+      for (var i = 0; i < n; i++) {
+        final item = run.current;
+        final q = ClassQuestionSource.of(
+          s.content.pack!,
+          s.toifa.bank,
+        ).question(item.questionId)!;
+        final idx = mistakes && i.isOdd
+            ? item.order.firstWhere((o) => !item.correct.contains(o))
+            : item.correct.single;
+        await tapScroll(tester, q.option(idx, 'uz'));
+        if (i < run.length - 1) await tapScroll(tester, uz.examNext);
+      }
+      if (only != null) return;
+      await tapScroll(tester, uz.examFinish);
+      await tester.tap(find.text(uz.examFinish).hitTestable().last);
+      await tester.pump();
+      await waitFor(find.text(uz.classesServerScore));
+    }
+
+    // 6a. Yangi foydalanuvchi (hisobsiz, rol tanlanmagan).
+    final newEmail = 'dilnoza.$stamp@example.test';
+    final d1 = await device('dilnoza', null, signIn: false);
+    await show(d1);
+    await go(appLink);
+    await waitFor(find.text(uz.classesJoinSignInTitle));
+    await w.snap('qr_yangi_1_kirish_taklifi');
+    taps = 0;
+    await tapCount(find.text(uz.classesSignIn).hitTestable());
+    await waitFor(find.text(uz.authGetCode));
+    await tester.enterText(find.byType(TextField).first, newEmail);
+    await tapCount(find.byType(Checkbox));
+    await w.snap('qr_yangi_2_email');
+    await tapCount(find.text(uz.authGetCode));
+    await waitFor(find.text(uz.otpVerify));
+    final otp = await real(() => lastCode(newEmail));
+    // Ostidagi (ko'rinmas) email ekrani ham daraxtda — faqat ko'rinadigan maydon.
+    await tester.enterText(find.byType(TextField).hitTestable().last, otp);
+    // 6 raqam kiritilgach kod o'zi tekshiriladi (alohida bosish yo'q).
+    for (var i = 0; i < 20 && !d1.auth.hasAccount; i++) {
+      await tester.runAsync(
+        () => Future<void>.delayed(const Duration(milliseconds: 150)),
+      );
+      await tester.pump(const Duration(milliseconds: 50));
+    }
+    await waitFor(find.byKey(const ValueKey('join-submit')));
+    await tester.pumpAndSettle();
+    await tester.enterText(
+      find.byType(TextField).hitTestable().last,
+      'Dilnoza',
+    );
+    await tester.pump();
+    await w.snap('qr_yangi_3_taxallus');
+    await tapCount(find.byKey(const ValueKey('join-submit')));
+    await waitFor(find.text(uz.classesStart));
+    await w.snap('qr_yangi_4_test');
+    await tapCount(find.text(uz.classesStart).hitTestable());
+    await waitFor(find.text(uz.examNext));
+    await w.snap('qr_yangi_5_birinchi_savol');
+    final newTaps = taps;
+    expect(d1.settings.role, AppRole.student);
+    await answer(d1, mistakes: false);
+
+    // 6b. Kirgan talaba, oldingi guruhdagi taxallus oldindan to'ldiriladi.
+    final b2 = await device('bobur2', AppRole.student);
+    await real(() => b2.backend.joinGroup(old.joinCode!, displayName: 'Bobur'));
+    await show(b2);
+    await go(appLink);
+    await waitFor(find.byKey(const ValueKey('join-submit')));
+    await waitFor(find.widgetWithText(TextField, 'Bobur'));
+    await w.snap('qr_kirgan_taxallus_tayyor');
+    taps = 0;
+    await tapCount(find.byKey(const ValueKey('join-submit')));
+    await waitFor(find.text(uz.classesStart));
+    await tapCount(find.text(uz.classesStart).hitTestable());
+    await waitFor(find.text(uz.examNext));
+    final signedTaps = taps;
+    await answer(b2, mistakes: true);
+
+    // 6c. Kirgan talaba, taxallusni o'zi yozadi; testni yarim yo'lda qoldiradi.
+    final k2 = await device('kamola', AppRole.student);
+    await show(k2);
+    await go(appLink);
+    await waitFor(find.byKey(const ValueKey('join-submit')));
+    await tester.enterText(find.byType(TextField).last, 'Kamola');
+    await tester.pump();
+    await tapCount(find.byKey(const ValueKey('join-submit')));
+    await waitFor(find.text(uz.classesStart));
+    await tester.tap(find.text(uz.classesStart).hitTestable());
+    await tester.pump();
+    await waitFor(find.text(uz.examNext));
+    await answer(k2, mistakes: false, only: 2);
+
+    // 6d. Ustoz: katta ekran (1920x1080 va 1280x720) — jonli reyting.
+    final board = '/learn/classes/g/${g2.id}/a/$a2/board';
+    await show(t, tv: const Size(1920, 1080));
+    await go(board);
+    await waitFor(find.text('${uz.boardSubmitted}: 2 / 3'));
+    await w.snap('katta_ekran_1920x1080');
+    await show(t, tv: const Size(1280, 720));
+    await go(board);
+    await waitFor(find.text('${uz.boardSubmitted}: 2 / 3'));
+    await w.snap('katta_ekran_1280x720');
+    // Kamola topshiradi (o'z qurilmasidan) — ekran 5 s ichida o'zi yangilanadi.
+    await real(() => k2.backend.submitAssignment(a2, key));
+    await tester.pump(const Duration(seconds: 6));
+    await waitFor(find.text('${uz.boardSubmitted}: 3 / 3'));
+    await tester.pump(const Duration(seconds: 1));
+    await w.snap('katta_ekran_jonli_3_topshirdi');
+    // Ustoz yakunlaydi — eng qiyin savollar ekranda.
+    await real(() => tb.closeAssignment(a2));
+    await show(t, tv: const Size(1920, 1080));
+    await go(board);
+    await waitFor(find.text(uz.topicTestHardest));
+    await w.snap('katta_ekran_yakunlandi_eng_qiyin');
+    // Telefon: ustoz natijalari (nickname, ball).
+    await show(t);
+    await go('/learn/classes/g/${g2.id}/a/$a2');
+    await waitFor(find.byKey(const ValueKey('assignment-closed')));
+    await w.snap('qr_ustoz_natijalar');
+    // ignore: avoid_print
+    print(
+      'TAPS skanerdan birinchi savolgacha: yangi foydalanuvchi (email kodi) = '
+      '$newTaps; kirgan foydalanuvchi = $signedTaps',
+    );
+    expect(signedTaps, 2);
+
     // --- Tozalash: hisoblar o'chiriladi (ustoz bilan guruh ham).
     await tester.pumpWidget(const SizedBox());
     await real(() async {
-      for (final s in [a, b, c, t]) {
+      for (final s in [a, b, c, d1, b2, k2, t]) {
         await s.backend.deleteAccount();
       }
     });

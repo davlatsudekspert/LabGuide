@@ -9943,7 +9943,7 @@ abstract class AppLocalizations {
   /// No description provided for @classesInviteBody.
   ///
   /// In en, this message translates to:
-  /// **'Students: Learn → Classes and assignments → Join with a code.'**
+  /// **'Students scan the QR with the phone camera and tap “Open in app” — or: Learn → Classes and assignments → Join with a code.'**
   String get classesInviteBody;
 
   /// No description provided for @classesCopyCode.

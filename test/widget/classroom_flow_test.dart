@@ -6,6 +6,7 @@ import 'package:labguide/app/app_scope.dart';
 import 'package:labguide/core/backend/backend_models.dart';
 import 'package:labguide/features/classroom/classroom_local.dart';
 import 'package:labguide/features/classroom/curriculum.dart';
+import 'package:labguide/features/classroom/invite_link.dart';
 import 'package:labguide/features/classroom/qr_code_view.dart';
 import 'package:labguide/features/classroom/topic_questions.dart';
 import 'package:labguide/features/learn/exam_session.dart';
@@ -164,7 +165,8 @@ void main() {
     await goTo(tester, '/learn/classes/g/${g.id}');
     expect(find.byType(QrCodeView), findsOneWidget);
     final qr = tester.widget<QrCodeView>(find.byType(QrCodeView));
-    expect(qr.data, g.joinCode);
+    // QR — sayt havolasi (telefon kamerasi ochadi), xom kod emas.
+    expect(qr.data, inviteUrl(g.joinCode!));
     expect(
       qr.semanticLabel,
       uz.classesQrLabel(g.joinCode!.split('').join(' ')),

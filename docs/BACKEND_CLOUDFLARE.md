@@ -124,7 +124,7 @@ Kontrakt — `lib/core/backend/lab_backend.dart`; uning bajariladigan ta’rifi
 | `myAccess()` | `GET /v1/me` | sessiya | `teacher` maydoni qo‘shildi |
 | `myGroups()` | `GET /v1/groups` | sessiya | mening guruhlarim; kod faqat ustozga |
 | `createGroup(name, displayName:)` | `POST /v1/groups` `{name, display_name?}` | ro‘yxatdan o‘tgan ustoz | nom 3–80; ≤ 10 guruh (`429 limit_groups` → `rateLimited`); ustoz emas — `403` → `forbidden` (profil roli `teacher` yetmaydi) |
-| `joinGroup(code, displayName:)` | `POST /v1/groups/join` `{code, display_name?}` | sessiya | qayta qo‘shilish hech narsani o‘zgartirmaydi (taxallus ham); noto‘g‘ri kod — `notFound`; ≤ 200 a’zo (`429 group_full` → `rateLimited`); kod taxmini limiti → `rateLimited` |
+| `joinGroup(code, displayName:)` | `POST /v1/groups/join` `{code, display_name?}` | sessiya | qayta qo‘shilish hech narsani o‘zgartirmaydi (taxallus ham); noto‘g‘ri kod — `notFound`; ≤ 200 a’zo (`429 group_full` → `rateLimited`); kod taxmini limiti → `rateLimited`; taxallus guruhda yagona (katta-kichik farqsiz, `409 nickname_taken`) va so‘kinish filtri (`400 abusive_language`) — `setMyAlias` da ham; `GET /v1/groups` da `my_nickname` (yangi guruhda oldindan to‘ldirish) |
 | `setMyAlias(g, alias)` | `PUT /v1/groups/:g/alias` `{alias}` | a’zo | taxallus 2–24 (bo‘sh/null — tartib raqami); begona guruh `404` → `forbidden` |
 | `leaveGroup(g)` | `POST /v1/groups/:g/leave` | talaba | a’zo emas (`404`) — xato emas; ustoz — `400` → `invalid` |
 | `groupMembers(g)` | `GET /v1/groups/:g/members` | a’zo | `{user_id, member_role, display_name (faqat taxallus yoki null), seat_no (talaba raqami, ustozda null), label, joined_at}`; talaba — o‘zi va ustoz; begona — `404` → `[]` |
@@ -141,6 +141,8 @@ Kontrakt — `lib/core/backend/lab_backend.dart`; uning bajariladigan ta’rifi
 | `submissions(a)` | `GET /v1/assignments/:a/submissions` | a’zo | ustoz — hamma (har savol `correct`); talaba — faqat o‘zi (`reveal: after_due` bo‘lsa muddat o‘tguncha yoki test yakunlanguncha `correct: null`, ball bor; `submit` va guruh natijalarida ham shunday); begona ustoz va **admin** — `[]` |
 | `groupSubmissions(g)` | `GET /v1/groups/:g/submissions` | a’zo | xuddi shunday, guruh bo‘yicha |
 | `assignmentKey(a)` | `GET /v1/assignments/:a/key` | ustoz | to‘g‘ri javoblar; boshqalar — `forbidden` |
+| `closeAssignment(a)` | `POST /v1/assignments/:a/close` | ustoz | topshiriq sahifasidagi “Testni yakunlash”: yangi urinish yo‘q, boshlaganlarga 2 daqiqa; `after_due` javoblari ochiladi |
+| `assignmentProgress(a)` | `GET /v1/assignments/:a/progress` | ustoz | “Katta ekran”: testni boshlagan talabalar `[{user_id, started_at}]` (javoblar topshirilguncha serverda yo‘q); talaba — `403`, begona — `404` |
 
 Worker’da qo‘shimcha (ilova hozircha chaqirmaydi; `CloudflareLabBackend`
 ning interfeysdan tashqari metodlari sifatida saqlangan, vakolati o‘sha —

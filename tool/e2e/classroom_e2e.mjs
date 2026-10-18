@@ -46,11 +46,15 @@ async function call(method, path, { token, body, ip } = {}) {
   if (token) headers.authorization = `Bearer ${token}`;
   if (body !== undefined) headers['content-type'] = 'application/json';
   if (ip) headers['cf-connecting-ip'] = ip;
-  const res = await fetch(BASE + path, {
-    method,
-    headers,
-    body: body === undefined ? undefined : JSON.stringify(body),
-  });
+  const init = { method, headers, body: body === undefined ? undefined : JSON.stringify(body) };
+  // `wrangler dev` bo'sh turgan keep-alive ulanishni yopadi (so'rovlar orasida
+  // `wrangler d1 execute` bir necha soniya ishlaydi) — bir marta qayta urinish.
+  let res;
+  try {
+    res = await fetch(BASE + path, init);
+  } catch {
+    res = await fetch(BASE + path, init);
+  }
   const text = await res.text();
   let data = null;
   try {
@@ -126,6 +130,8 @@ async function main() {
   check(r.status === 201, `B qo'shildi (kod "${dashed}")`);
   r = await call('POST', '/v1/groups/join', { token: B.token, body: { code: CODE } });
   check(r.status === 200 && r.data.group_id === G, 'qayta qo\'shilish — 200, o\'zgarishsiz');
+  r = await call('POST', '/v1/groups/join', { token: C.token, body: { code: CODE, display_name: 'LOLA' } });
+  check(r.status === 409 && r.data?.error === 'nickname_taken', 'band taxallus (katta-kichik farqsiz) — 409');
   r = await call('POST', '/v1/groups/join', { token: C.token, body: { code: CODE } });
   check(r.status === 201, 'C qo\'shildi');
 
@@ -265,6 +271,10 @@ async function main() {
   check(JSON.stringify(hardest) === '[[2,1],[3,1],[5,1]]', `eng qiyin savollar: ${JSON.stringify(hardest)}`);
   r = await call('GET', `/v1/assignments/${TOPIC}/key`, { token: T.token });
   check(JSON.stringify(r.data.correct_indexes) === JSON.stringify(KEY), 'ustoz javob kalitini ko\'radi');
+  r = await call('GET', `/v1/assignments/${TOPIC}/progress`, { token: T.token });
+  check(r.status === 200 && r.data.length === 2, 'katta ekran: kim boshlagan (2)');
+  r = await call('GET', `/v1/assignments/${TOPIC}/progress`, { token: A.token });
+  check(r.status === 403, `talaba boshqalar holatini ko'rmaydi (${r.status})`);
 
   // ------------------------------------------------------------------ 7
   step('7. Ustoz testni yakunlaydi → javoblar ochiladi');
