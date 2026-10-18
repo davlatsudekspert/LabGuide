@@ -38,7 +38,8 @@ WSLH, CAP Today). Kod: `lib/features/cytology/cytology_more.dart`, Bethesda —
 | ASC-US — HPV testi yoki takroriy surtma bilan kuzatish | `wang2023` — ASC-US; `kattoor2022` — Abstract |
 | SIL ko'pincha o'z-o'zidan qaytadi | `pangarkar2022` — Introduction |
 | ASC-H — kolposkopiya | `kattoor2022` — Management guidelines |
-| ru: "атипичные железистые клетки, подозрительные на..." (favor neoplastic) | `grigoruk2024` — rezyume (ru/en parallel: "suspicious for adenocarcinoma (or favor for neoplastic)") |
+| ru: «атипичные железистые клетки, похожие на неопластичные» (AGC-FN) — ilovadagi asosiy atama | `krCin2024` — RF Minzdrav KR «Цервикальная интраэпителиальная неоплазия, эрозия и эктропион шейки матки», 2024, ID 597, «Список сокращений» (garant.ru matni, cp1251 dan o‘qildi) |
+| ru variant: «атипичные железистые клетки, подозрительные на аденокарциному (… favor neoplastic, AGC-FN)» — ikkinchi «Manba» qatori | `grigoruk2024` — to‘liq PDF, 103-b. |
 
 ## 2. Namuna sifati va artefaktlar
 
@@ -105,8 +106,9 @@ noto'g'ri tushunilishi mumkin; sikl kuniga bog'liq).
 - Reaktiv o'zgarishlar uchun "1,5–2×" chegarasi — topilmadi; o'rniga Kamal 2022 dagi "< 2×".
 - Parij tizimi siydik hajmi (25/30 ml) — sharhda ikki xil jadvalda turlicha; yozilmadi.
 - Seroz suyuqlik va o'pka toifalarining xavf foizlari (ROM) — qisqa sharh uchun kiritilmadi.
-- Ruscha rasmiy Bethesda 2014 tarjimasi topilmadi; "подозрительные на опухолевые" — Grigoruk 2024
-  dagi atamaga yaqin, mutaxassis tasdiqlashi kerak.
+- Bethesda kitobining (Nayar & Wilbur) ruscha nashri ochiq manbada topilmadi. Ruscha AGC-FN
+  atamasi 2026-10-18 da RF KR 597 (2024) va Grigoruk 2024 (103-b.) bilan hal qilindi — ikkalasi
+  ekranda «Источник» qatori bilan (pastdagi bo‘limga qarang).
 
 ## Manbalar orasidagi farq (mutaxassisga)
 
@@ -122,3 +124,28 @@ noto'g'ri tushunilishi mumkin; sikl kuniga bog'liq).
   sezgir emas (CDC STI Treatment Guidelines 2021 — Gonococcal Infections, Diagnostic Considerations).
 - Parij tizimi: «Non-urothelial» toifasi qo‘shildi (Wojcik 2026, Table 2).
 - Batafsil: `docs/AUDIT_2026-10-18_MEDICAL_REVIEW.md`.
+
+## 2026-10-18 adabiyot bo‘yicha tasdiqlash («mutaxassis» bandlari)
+
+### Qin surtmasining tozalik darajasi (I–IV)
+
+| Da’vo | Manba — joyi | Hukm |
+|---|---|---|
+| 4 daraja — A. Heurlein (1910) tasnifi; 1995-yilgi vaginal biotop tasnifi uning o‘rnini olgan; Heurlein va O. Jirovec (1948) «малоинформативны и имеют лишь историческое значение» | `roag2019` — РОАГ, «Клинические рекомендации по диагностике и лечению заболеваний, сопровождающихся патологическими выделениями из половых путей женщин», 2-е изд., М., 2019, «Бактериальный вагиноз — Классификация» (Таблица 4) — HTML matni (library.mededtech.ru) curl bilan olinib grep qilindi | tasdiqlandi |
+| Xalqaro BV mezonlari — Amsel (biri pH > 4,5) va Nugent (7–10 ball) | `roag2019` — o‘sha bo‘lim; `amsel`, `nugent` | tasdiqlandi |
+| O‘zbek darsligida «qin tozalik darajasi» — Hay–Ison shkalasi 0–IV | `kurbonova2023` — Kurbonova Z.Ch. «Klinik laboratoriya tashxisi», 2023, 6.5 Gardnerellyoz, 70-b. (Drive PDF matni; pdftotext sahifa raqami bilan) | tasdiqlandi (boshqa tizim — ziddiyat sifatida ikkalasi ko‘rsatildi) |
+| Hay–Ison asl ta’riflari (0, I, II, III, IV) | `isonHay2002` — Sex Transm Infect 2002;78(6):413–415, Abstract (PubMed 12473800) | tasdiqlandi |
+| Har darajaga pH oralig‘i (4,0–4,5 / 4,5–5,0 / 5,0–7,0 / 7,0–7,5) | ROAG 2019, Kurbonova 2023, Ison–Hay 2002 da yo‘q; Kishkun, Menshikov 1987 (Drive djvu 6,8 MB — MCP orqali yuklab bo‘lmadi), Novikova 2018 (Minsk, §21.1.1 «Анализ чистоты влагалищного содержимого», 292-b. — ochiq PDF faqat parcha) matnini ochib bo‘lmadi; WebSearch/CyberLeninka API: «степени чистоты» + pH, «Heurlein», «Хейрлейн» — darslik manbasi topilmadi | **olib tashlandi** (manbasiz raqam) |
+| Darajalar sifat tavsifi (laktobatsillalar/leykotsitlar/flora) | Heurlein 1910 asl matni (Helsingfors) ochiq emas; ikkilamchi saytlar (cirlab.ru) bilan mos | ochiq (ekranda «an’anaviy sxema» deb aytilgan) |
+
+Ekranda: jadval ostida `cytoDegreeCites` — 4 qator «Manba:/Источник:/Source:» (ROAG 2019,
+Kurbonova 2023 70-b., Ison–Hay 2002, pH yo‘qligi izohi); pastdagi ro‘yxat `cytoDegreeRefs`.
+
+### Bethesda «AGC, favor neoplastic» ruscha atamasi
+
+- Asosiy: «атипичные железистые клетки, похожие на неопластичные» — RF KR 597 (2024), «Список
+  сокращений».
+- Variant: «атипичные железистые клетки, подозрительные на аденокарциному» — Grigoruk 2024, 103-b.
+- Ikkalasi AGC-FN kartasida `BethesdaItem.cites` bilan ko‘rinadi. O‘zbekcha atama uchun o‘zbek
+  manbasi (Drive: «Бачадон бўйинчаси … цитодиагностикаси.doc») Bethesda toifalarini bermaydi —
+  o‘zbekcha nom o‘zgarmadi.

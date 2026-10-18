@@ -70,6 +70,12 @@ class _ItemCard extends StatelessWidget {
           Text(context.tr(item.title), style: text.titleSmall),
           const SizedBox(height: 6),
           Text(context.tr(item.body), style: text.bodyMedium),
+          // "Manba: …" — da'vo yonida (tibbiy ko'rik 2026-10-18).
+          for (final c in item.cites)
+            Padding(
+              padding: const EdgeInsets.only(top: 6),
+              child: Text(context.tr(c), style: text.bodySmall),
+            ),
         ],
       ),
     );

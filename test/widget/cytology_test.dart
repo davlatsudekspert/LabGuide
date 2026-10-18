@@ -300,4 +300,55 @@ void main() {
     expect(paris, hasLength(6));
     expect(paris.last.values['en'], startsWith('Non-urothelial'));
   });
+
+  test('adabiyot tekshiruvi 2026-10-18: tozalik darajasi va AGC-FN', () {
+    // Har darajaga pH oralig'i manbalarda yo'q — jadvalda pH yo'q.
+    for (final d in cytoDegrees) {
+      for (final lang in ['uz', 'ru', 'en']) {
+        expect(d.picture.of(lang), isNot(contains('pH')), reason: lang);
+      }
+    }
+    // Manba qatorlari: ROAG 2019 (Heurlein — tarixiy), Kurbonova 2023
+    // (Hay–Ison), Ison–Hay 2002; har biri 3 tilda va "Manba/Источник/Source".
+    expect(cytoDegreeCites, hasLength(4));
+    for (final c in cytoDegreeCites.take(3)) {
+      expect(c.of('uz'), startsWith('Manba:'));
+      expect(c.of('ru'), startsWith('Источник:'));
+      expect(c.of('en'), startsWith('Source:'));
+    }
+    expect(cytoDegreeCites[0].of('ru'), contains('Heurlein (1910)'));
+    expect(cytoDegreeCites[0].of('ru'), contains('историческое значение'));
+    expect(cytoDegreeCites[1].of('uz'), contains('70-b.'));
+    expect(cytoDegreeCites[1].of('uz'), contains('Hay–Ison'));
+    expect(
+      [for (final r in cytoDegreeRefs) r.source.id],
+      containsAll([
+        CytoSources.roag2019.id,
+        CytoSources.kurbonova2023.id,
+        CytoSources.isonHay2002.id,
+      ]),
+    );
+    // AGC-FN ruscha atamasi — RF KR 597 (2024); Grigoruk 2024 varianti ham.
+    final agc = bethesdaItems.firstWhere(
+      (b) => b.code == 'AGC, favor neoplastic',
+    );
+    expect(agc.name.of('ru'), contains('похожие на неопластичные'));
+    expect(agc.name.of('ru'), isNot(contains('подозрительные на опухолевые')));
+    expect(agc.cites, hasLength(2));
+    expect(agc.cites[0].of('ru'), contains('ID 597'));
+    expect(agc.cites[1].of('ru'), contains('подозрительные на аденокарциному'));
+    expect(agc.cites[1].of('ru'), contains('с. 103'));
+  });
+
+  testWidgets('tozalik darajasi ekranida manba qatorlari ko‘rinadi', (
+    tester,
+  ) async {
+    final s = await makeServices(tester, language: AppLanguage.ru);
+    await pumpApp(tester, s, size: const Size(390, 6000));
+    await goTo(tester, '$cytoBase/degree');
+    expect(find.byKey(const ValueKey('cyto-degree-cites')), findsOne);
+    expect(find.text(cytoDegreeCites.first.of('ru')), findsOne);
+    expect(find.textContaining('pH 4,0'), findsNothing);
+    expect(tester.takeException(), isNull);
+  });
 }

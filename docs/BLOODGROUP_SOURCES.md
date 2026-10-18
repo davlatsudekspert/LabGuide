@@ -18,6 +18,9 @@ rasm: `tool/illustrations/bloodgroup/gen_bloodgroup.py` → `assets/bloodgroup/c
 | WHO | WHO. Safe Blood and Blood Products. Module 3: Blood Group Serology (reprinted 2009) | who.int sahifasidagi CDN PDF to'liq matn; sahifa — kitobdagi bosma raqam (PDF − 9). |
 | HTM | Norfolk D (ed). Handbook of Transfusion Medicine, 5th ed. UK Blood Services, TSO 2013 | Infected Blood Inquiry arxividagi PDF nusxa (RLIT0000812); 2.1–2.2 jadvallar sahifa rasmi bilan ko'zda tekshirildi (OCR buzuq edi). transfusionguidelines.org dagi onlayn versiya endi ochilmadi. |
 | RU1134 | Приказ Минздрава России от 20.10.2020 № 1134н | legalacts.ru matni (п. 6–32 va ilova). legalacts: 2021-01-01 dan kuchda, 2027-01-01 gacha amal qiladi. |
+| AKS2018 | Аксельрод Б.А. и соавт. Клиническое использование эритроцитсодержащих компонентов донорской крови. Гематология и трансфузиология 2018;63(4):372–435 | CyberLeninka HTML matni (WebFetch): «Проба на индивидуальную совместимость — это реакция между сывороткой/плазмой реципиента и эритроцитами донора»; «большая/малая», «электрон…» — yo'q |
+| NAJM1998 | Наджимитдинов С.Т. Клиник гематология асослари, 1998 (Drive Word) | IV bob — o'zbekcha serologik atamalar |
+| UZ402 / PQ19 | lex.uz: Qonun 402-II (10-modda); PQ-19 20.01.2026 | sahifa matni curl bilan olindi |
 | RU363 | Приказ Минздрава РФ от 25.11.2002 № 363 | legalacts.ru matni — **faqat atamalar uchun** (цоликлоны, гемагглютинирующие сыворотки, 0(I)…AB(IV) belgilanishi). Hozirgi kuchi tekshirilmagan; undan protsedura raqamlari olinmagan. |
 | Hagman 2024 | Hagman JR et al. *Blood Transfus* 2024;22:106–110, doi:10.2450/bloodtransfus.584 (CC BY-NC-ND) | Europe PMC to'liq matn (PMC10920065), Introduction. |
 | Trummer 2026 | Trummer P et al. *Front Immunol* 2026;17:1888597, doi:10.3389/fimmu.2026.1888597 (CC BY) | Europe PMC to'liq matn (PMC13504806), §2.2. |
@@ -158,14 +161,27 @@ ABO discrepancies" (pullik), AABB Technical Manual (yopiq). Ulardan hech narsa o
 | 0(I), A(II), B(III), AB(IV) | ✔ RU363 Таблица 1 |
 | гелевые карты / колоночная агглютинация | ✘ rasmiy RF hujjatida tekshirilmadi (keng tarqalgan atama) |
 | твердофазный метод | ✘ tekshirilmadi |
-| «большая» / «малая» проба | ✘ tekshirilmadi — ilovada qo'shtirnoqda va izoh bilan |
-| солевая проба с немедленным центрифугированием (immediate spin) | ✘ tekshirilmadi — tarjima-tavsif |
-| электронная выдача (electronic issue) | ✘ tekshirilmadi — tarjima-tavsif |
+| «большая» / «малая» проба | ✘ RU1134 va Aksel'rod 2018 da **yo'q** → 2026-10-18 da olib tashlandi: «major/minor (термины ВОЗ)»; bemor zardobi + donor eritrotsitlari = «проба на индивидуальную совместимость» (RU1134 п. 17, 19; Aksel'rod 2018 «Проба на индивидуальную совместимость») |
+| проба на совместимость с использованием непрямого антиглобулинового теста | ✔ RU1134 п. 14 «г», 17 — IAT kartasi nomi shunga moslandi |
+| проба с немедленным центрифугированием (immediate spin) | ✘ RU1134 da yo'q — kartada «В приказе № 1134н такой пробы нет; русское название — перевод термина BSH» (BSH §7.4) |
+| электронная выдача (electronic issue) | ✘ RU1134 da yo'q — kartada «это практика Великобритании (BSH)» (BSH §7.5; HTM §2.7.3) |
 | смешанное поле, полиагглютинабельность, монетные столбики, вартонов студень, приобретённый B | ✘ RF me'yoriy hujjatida tekshirilmadi |
 
-O'zbekcha atamalar (kesishgan/kross usul, to'g'ri/teskari usul, tsoliklon, rulo va h.k.) rasmiy
-o'zbek manbasi bilan solishtirilmagan. **O'zbekiston SSV me'yorlari umuman tekshirilmagan** —
-ilovada RF buyrug'i faqat "MDH amaliyoti" misoli sifatida, manbasi bilan berilgan.
+O'zbekcha atamalar 2026-10-18 da Najmitdinov 1998 (Drive Word nusxasi, IV bob «Клиник
+трансфузиология асослари») bilan solishtirildi: «тўғри ёки бевосита усул» (standart zardoblar),
+«билвосита усул» (standart eritrotsitlar), «перекрест усули (чатиштириш)», «шахсий мослик»
+(individual moslik), «бевосита ва билвосита Кумбс синамалари». Ilovaga sinonim sifatida qo'shildi
+(«to'g'ri/teskari usul» qoldi, kesishgan usul kartasida darslik atamalari va manba). Tsoliklon,
+rulo — o'zbek darsligida topilmadi (ochiq).
+
+**O'zbekiston me'yorlari (2026-10-18):** lex.uz qidiruvi («qon quyish», «transfuziya»,
+«переливания крови», «гемотрансфузия», «qon komponentlari», «индивидуальной совместимости»,
+«qon xizmati»). Topildi: Qonun 402-II (30.08.2002, amaldagi tahrir) 10-modda — donor qoni va
+komponentlarini ishlatish tartibini SSV belgilaydi; PQ-19 (20.01.2026) 1-ilova 2-band — qon
+xizmati SOP'lari 2026-yil mayigacha. Transfuziyadan oldingi moslik sinamalari bo'yicha SSV
+buyrug'i ochiq bazada topilmadi; 180-son SSV buyrug'i (2025, bolalar aplastik anemiyasi
+protokoli) moslik sinamasini bermaydi. Ilovada yangi «O'zbekiston: me'yoriy hujjatlar»
+(`uz-rules`) kartasi.
 
 ## Tekshirib bo'lmagan va shuning uchun kiritilmagan narsalar
 

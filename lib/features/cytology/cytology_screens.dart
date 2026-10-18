@@ -445,8 +445,6 @@ class _CytoDegreeScreenState extends State<CytoDegreeScreen> {
                   tone: n <= 2 ? LgTone.brand : LgTone.warning,
                 ),
                 const SizedBox(height: 8),
-                Text('pH ${d.ph}', style: text.bodySmall),
-                const SizedBox(height: 4),
                 Text(d.picture.of(lang), style: text.bodyMedium),
               ],
             ),
@@ -461,8 +459,7 @@ class _CytoDegreeScreenState extends State<CytoDegreeScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    '${l.cytoDegreeResult(g.n)} · pH ${g.ph} · '
-                    '${g.meaning.of(lang)}',
+                    '${l.cytoDegreeResult(g.n)} · ${g.meaning.of(lang)}',
                     style: text.titleSmall,
                   ),
                   const SizedBox(height: 4),
@@ -472,14 +469,40 @@ class _CytoDegreeScreenState extends State<CytoDegreeScreen> {
             ),
           ),
         LgNotice(l.cytoDegreeNote),
+        CytoCiteLines(
+          cytoDegreeCites,
+          key: const ValueKey('cyto-degree-cites'),
+        ),
         LgNotice(l.cytoDegreeSourceNote),
-        for (final (i, s) in [
-          CytoSources.amsel,
-          CytoSources.nugent,
-          CytoSources.cdcBv,
-        ].indexed)
-          CalcSourceTile(index: i + 1, ref: CalcRef(s, '')),
+        for (final (i, r) in cytoDegreeRefs.indexed)
+          CalcSourceTile(index: i + 1, ref: r),
       ],
+    );
+  }
+}
+
+/// "Manba: muallif, yil, «nom», bo'lim, bet" qatorlari — da'vo yonida.
+class CytoCiteLines extends StatelessWidget {
+  const CytoCiteLines(this.cites, {super.key});
+
+  final List<LocalizedText> cites;
+
+  @override
+  Widget build(BuildContext context) {
+    final lang = Localizations.localeOf(context).languageCode;
+    final style = Theme.of(context).textTheme.bodySmall;
+    return Padding(
+      padding: const EdgeInsets.only(top: 6, bottom: 4),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          for (final c in cites)
+            Padding(
+              padding: const EdgeInsets.only(top: 4),
+              child: Text(c.of(lang), style: style),
+            ),
+        ],
+      ),
     );
   }
 }
@@ -526,6 +549,7 @@ class CytoBethesdaScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 6),
                   Text(b.meaning.of(lang), style: text.bodyMedium),
+                  if (b.cites.isNotEmpty) CytoCiteLines(b.cites),
                 ],
               ),
             ),

@@ -70,8 +70,9 @@ Har tuzatishga regressiya testi qo‘shildi (`test/widget/{cytology,bloodgroup,b
 | Bemor tayyorgarligi: hayzdan tashqari, 2 kun jinsiy aloqa/chayish/qin dorilari/spermitsidsiz | MedlinePlus Pap smear: «For two days before your test, you should not…» | OK |
 | Trixomonada: nok shakli, ekssentrik yadro, 4 oldingi xivchin, to‘lqinsimon membrana, aksostil; NAAT | CDC DPDx, CDC 2021 | OK |
 | Kandida psevdogifalari; kalit hujayra — Amsel mezonlaridan biri; laktobatsillalar sitolizi | CDC 2021 (BV, candidiasis); Kamal–Topiwala («cytolysis… intermediate cell») | OK |
-| Qin surtmasi tozalik darajalari I–IV va pH oraliqlari | ilovada «an’anaviy sxema, manbasi mutaxassisni kutmoqda» deb belgilangan; xalqaro birlamchi manba topilmadi | **mutaxassis** (o‘zgarishsiz, ekranda allaqachon ogohlantirish bor) |
-| Ruscha «атипичные железистые клетки, подозрительные на опухолевые» | Grigoruk 2024 rezyumesi; rasmiy RU Bethesda tarjimasi topilmadi | **mutaxassis** |
+| Qin surtmasi tozalik darajalari I–IV | РОАГ 2019 «Клинические рекомендации … патологическими выделениями из половых путей женщин», 2-е изд., «Бактериальный вагиноз — Классификация»: Heurlein (1910), 4 daraja, «лишь историческое значение»; Kurbonova 2023, 6.5, 70-b. (o‘zbek darsligi — Hay–Ison 0–IV); Ison & Hay 2002, Sex Transm Infect 78:413–415 | **tasdiqlandi (adabiyot: ROAG 2019; Kurbonova 2023, 70-b.; Ison–Hay 2002)** — ziddiyat ekranda ikkala qator bilan; darajalar matni — an’anaviy sxema (Heurlein asl matni ochiq emas) |
+| Har darajaga pH oralig‘i (4,0–4,5 … 7,0–7,5) | yuqoridagi uch manbada yo‘q; Menshikov 1987 (Drive djvu, MCP orqali yuklab bo‘lmadi), Novikova 2018 §21.1.1 (ochiq PDF faqat parcha), WebSearch/CyberLeninka API — darslik manbasi topilmadi | **olib tashlandi** (manbasiz raqam ilovada qolmadi) |
+| Ruscha AGC-FN atamasi | RF Minzdrav KR 597 (2024) «Цервикальная интраэпителиальная неоплазия, эрозия и эктропион шейки матки», «Список сокращений»: «атипичные железистые клетки, похожие на неопластичные»; Grigoruk 2024, 103-b.: «… подозрительные на аденокарциному» | **tasdiqlandi (adabiyot: KR 597 2024; Grigoruk 2024, 103-b.)** — atama KR 597 ga almashtirildi, ikkinchi variant ham ko‘rsatildi |
 
 ## 2. Spermogramma (`spermogram_logic.dart`, `spermogram_content.dart`)
 
@@ -108,8 +109,8 @@ Har tuzatishga regressiya testi qo‘shildi (`test/widget/{cytology,bloodgroup,b
 | Namunani saqlash muddati | BSH §3.9.2 | **tuzatildi** (#2) |
 | SAG-M < 20 mL plazma | HTM 2013 p. 8 | OK |
 | RF № 1134н: namuna ≤ 24 soat oldin, yorliq; kross usul; anti-D IgM; biologik sinama 15 daq 2 mL/daq (krioprecipitatdan tashqari); 48 soat 2–6 °C, ≥ 5 mL | 1134н п. 7, 11, 23, 28 (matn qayta grep) | OK |
-| O‘zbekiston SSV me’yorlari | tekshirilmagan; ilovada ochiq aytilgan | **mutaxassis** |
-| Ruscha atamalar «большая/малая проба», «солевая проба с немедленным центрифугированием», «электронная выдача» | RF me’yoriy matnida yo‘q; tarjima-tavsif | **mutaxassis** |
+| O‘zbekiston me’yorlari | lex.uz: Qonun 402-II, 10-modda (ishlatish tartibini SSV belgilaydi); PQ-19 (20.01.2026), 1-ilova 2-band (qon xizmati SOP — 2026-yil may); moslik sinamalari bo‘yicha SSV buyrug‘i ochiq bazada topilmadi (qidiruv so‘zlari BLOODGROUP_SOURCES.md da) | **qisman tasdiqlandi (adabiyot: Qonun 402-II; PQ-19)**; moslik sinamasi bo‘yicha milliy buyruq — **ochiq** |
+| Ruscha atamalar «большая/малая проба», «солевая проба с немедленным центрифугированием», «электронная выдача» | № 1134н п. 14 «г», 17, 19, 20 va Аксельрод 2018 (Гематология и трансфузиология 63(4):372–435) — «проба на индивидуальную совместимость», «проба на совместимость с использованием непрямого антиглобулинового теста»; «большая/малая», immediate spin, электронная выдача — yo‘q | **tuzatildi (adabiyot: № 1134н; Аксельрод 2018)** — «major/minor (термины ВОЗ)», IAT nomi 1134н bo‘yicha, immediate spin va electronic issue kartalarida «в приказе № 1134н нет» |
 
 ## 4. Gistologiya (`histology_content.dart`)
 
@@ -126,7 +127,8 @@ Har tuzatishga regressiya testi qo‘shildi (`test/widget/{cytology,bloodgroup,b
 | Buyrak: tanacha, proksimal (atsidofil, cho‘tkasimon hoshiya, eng ko‘p), distal (och, tor, past kubsimon) | Michigan p. 205–207 | OK |
 | O‘tuvchi epiteliy suv va tuzlarni deyarli o‘tkazmaydi | Michigan p. 19, 208, 210 («essentially impermeable to salts and water») | OK |
 | Rasmlar (11 ta) | oldingi auditda ko‘z bilan tekshirilgan; fayllar o‘zgarmagan | OK |
-| Ruscha/o‘zbekcha gistologik atamalar | darslik bilan solishtirilmadi (ruscha atamalar standart: «многорядный реснитчатый», «ШИК-реакция», «фолькмановы каналы» — to‘g‘ri) | **mutaxassis** (o‘zbekcha atamalar) |
+| O‘zbekcha gistologik atamalar | Zokirova N.B. «Gistologiya asoslari», Toshkent, 2025 (PDF, bet raqami bilan) | **tasdiqlandi / tuzatildi (adabiyot: Zokirova 2025)**: o‘tuvchi → o‘zgaruvchan epiteliy (28–30-b.), jiyak (12, 29, 118-b.), Kupfer (102-b.), siyrak tolali (39-b.), oraliq disk (78-b.), bazofil modda (14-b.) |
+| O‘zbekcha serologik atamalar | Najmitdinov 1998, IV bob: «тўғри ёки бевосита / билвосита усул», «перекрест (чатиштириш)», «шахсий мослик», «билвосита Кумбс синамаси» | **tasdiqlandi (adabiyot: Najmitdinov 1998)** — sinonim va «Manba» qatori bilan qo‘shildi |
 
 ## 5. Siydik tahlili (`urinalysis_content.dart`, `urinalysis_logic.dart`)
 
@@ -160,17 +162,17 @@ Har tuzatishga regressiya testi qo‘shildi (`test/widget/{cytology,bloodgroup,b
 | Trombotsit soni taxmini | JSST §9.14 + Adewoyin | **tuzatildi** (#1) |
 | Gigant trombotsit; analizator 1,5–3 µm bo‘yicha ajratadi; PTCP ≈ 0,1 %, 4–20 °C, ≥ 5 trombotsit to‘plami; satellitizm GPIIb-IIIa–FcγRIII | Cattaneo 2025 (to‘liq matn) | OK |
 | > 80 / < 20 ×10⁹/L retikulotsit yo‘l-yo‘riqlari | Takami 2026 Step 2 | OK |
-| Kurs darsligi raqamlari (6–9 µm, 7,2 µm; 5–10 ‰; I–V sinflar) | Najmitdinov 1998 — bu sessiyada qayta ochilmadi | **mutaxassis** (manba ko‘rsatilgan, ichki darslik) |
+| Kurs darsligi raqamlari (6–9 µm, 7,2 µm; < 6 / 9–12 / > 12 µm; 5–10 ‰; I–V sinflar; RDW 11,5–14,5 %) | Najmitdinov 1998 to‘liq Word matni; Saidov 2017 (32-bo‘lim, 36-b.) — so‘zma-so‘z topildi | **tasdiqlandi (adabiyot: Najmitdinov 1998; Saidov 2017)**; bitta nomuvofiqlik: «avval anizo-, keyin poykilotsitoz» — kitobda «birga»; bloodmorph bu ish doirasidan tashqari, BLOODMORPH_SOURCES.md da taklif |
 
 ## Tekshirib bo‘lmagan (yoki manba o‘zi shubhali) — ro‘yxat
 
-1. Qin surtmasi tozalik darajalari I–IV va pH (sitologiya) — xalqaro birlamchi manba yo‘q; ekranda
-   «an’anaviy sxema, mutaxassis kutilmoqda» deyilgan.
-2. LFB va Nissl moddasi (gistologiya) — yumshatildi; domla tasdiqlashi kerak.
-3. Ruscha Bethesda «favor neoplastic» tarjimasi; qon guruhi bo‘limidagi RF me’yorida yo‘q ruscha
-   atamalar; o‘zbekcha gistologik va serologik atamalar — rasmiy o‘zbek manbasi bilan solishtirilmadi.
-4. O‘zbekiston SSV qon guruhi/transfuziya me’yorlari — umuman tekshirilmagan (ilovada aytilgan).
-5. Najmitdinov 1998, Saidov 2017 (kurs darsliklari) raqamlari — bu ko‘rikda qayta ochilmadi.
+1. ~~Qin surtmasi tozalik darajalari~~ — 2026-10-18 adabiyot bilan hal qilindi (pastga qarang);
+   darajalarning har biri bo‘yicha Heurlein asl matni — ochiq.
+2. LFB va Nissl moddasi (gistologiya) — yumshatildi; bu ishda qayta ko‘rilmadi (ochiq).
+3. ~~Ruscha Bethesda «favor neoplastic»; RF me’yorida yo‘q ruscha atamalar; o‘zbekcha gistologik va
+   serologik atamalar~~ — hal qilindi (pastga qarang). Tsoliklon, rulo — o‘zbek darsligida topilmadi.
+4. O‘zbekiston: qonun va PQ-19 topildi; moslik sinamalari bo‘yicha SSV buyrug‘i — ochiq.
+5. ~~Najmitdinov 1998, Saidov 2017 raqamlari~~ — qayta ochildi, tasdiqlandi (1 nomuvofiqlik).
 6. JSST 2003 qo‘llanmasidagi boshqa jumlalar ham ehtiyot bilan: §9.14 dagi trombotsit nisbati xato
    ekani aniqlandi (#1) — shu kitobdan olingan boshqa raqamlar (o‘lchamlar, pH, retikulotsit) alohida
    solishtirildi va mos.
@@ -180,3 +182,24 @@ Har tuzatishga regressiya testi qo‘shildi (`test/widget/{cytology,bloodgroup,b
 - `flutter analyze` — muammo yo‘q.
 - Bo‘lim testlari (6 fayl) — hammasi o‘tdi; 4 ta yangi regressiya testi qo‘shildi.
 - To‘liq to‘plam (`flutter test --concurrency=3`) — 1587 o‘tdi, 1 o‘tkazib yuborilgan (skip), xato yo‘q.
+
+## Adabiyot bo‘yicha tasdiqlash — «mutaxassis» bandlari (2026-10-18, ikkinchi bosqich)
+
+Egasining ko‘rsatmasi: «ilmiy adabiyotdan o‘zing tekshir va tasdiqla». Har band uchun manba shu
+sessiyada ochildi (PubMed, WebFetch/curl, Google Drive «KDL» kitoblari, lex.uz). Ilovada har hal
+qilingan da’vo yonida «Manba: muallif, yil, «nom», bo‘lim, bet» qatori ko‘rinadi
+(`CytoDegree` jadvali ostida `cytoDegreeCites`, `BethesdaItem.cites`, `BgItem.cites`, gistologiyada
+fakt matni + [n] belgisi).
+
+| # | Band | Hukm | Manba (aniq joy) | O‘zgarish |
+|---|---|---|---|---|
+| 1 | Tozalik darajalari I–IV | tasdiqlandi (adabiyot: ROAG 2019; Kurbonova 2023, 70-b.; Ison–Hay 2002) | РОАГ 2019, «Бактериальный вагиноз — Классификация»; Kurbonova 2023 §6.5, 70-b.; Sex Transm Infect 2002;78:413 (PMID 12473800, doi:10.1136/sti.78.6.413) | Manba qatorlari qo‘shildi; Heurlein — «tarixiy», o‘zbek darsligida Hay–Ison — ziddiyat ikkala qator bilan |
+| 1a | Daraja bo‘yicha pH | ochiq → raqamlar olib tashlandi | Qidirildi: ROAG 2019, Kurbonova 2023, Ison–Hay 2002 (yo‘q); Menshikov 1987 djvu (yuklab bo‘lmadi); Novikova 2018 §21.1.1 (faqat mundarija); Kishkun — onlayn matn yo‘q; CyberLeninka API «Heurlein», «степени чистоты влагалищного содержимого» | `CytoDegree.ph` olib tashlandi; ARB izohlari yangilandi |
+| 2 | Ruscha AGC-FN | tasdiqlandi (adabiyot: KR 597 2024; Grigoruk 2024, 103-b.) | base.garant.ru/410436907 (KR ID 597, Список сокращений); Grigoruk 2024 PDF 103-b. | ru: «похожие на неопластичные» + ikkinchi variant qatori |
+| 3 | Ruscha transfuziya atamalari | tuzatildi (adabiyot: № 1134н п. 14 «г», 17, 19, 20; Аксельрод 2018) | 1134н matni; CyberLeninka (Аксельрод 2018, «Проба на индивидуальную совместимость») | «Большая/малая» olib tashlandi; IAT nomi; immediate spin/electronic issue — «в 1134н нет» |
+| 4 | O‘zbekcha atamalar | tuzatildi/tasdiqlandi (adabiyot: Zokirova 2025; Najmitdinov 1998) | Zokirova 2025 (14, 28–30, 39, 78, 102, 118-b.); Najmitdinov 1998 IV bob | 6 gistologik atama; serologik sinonimlar |
+| 5 | O‘zbekiston transfuziya me’yorlari | qisman (adabiyot: Qonun 402-II 10-modda; PQ-19 2026) — moslik bo‘yicha buyruq ochiq | lex.uz/docs/-46727; lex.uz/docs/-8011648; lex.uz qidiruvi (7 so‘z) | Yangi `uz-rules` kartasi |
+| 6 | Najmitdinov/Saidov raqamlari | tasdiqlandi (adabiyot: Najmitdinov 1998; Saidov 2017) | to‘liq Word matnlari, so‘zma-so‘z | 1 nomuvofiqlik (bloodmorph, doiradan tashqari) — BLOODMORPH_SOURCES.md |
+
+Regressiya testlari: `test/widget/{cytology,bloodgroup,histology}_test.dart` — «adabiyot tekshiruvi
+2026-10-18».

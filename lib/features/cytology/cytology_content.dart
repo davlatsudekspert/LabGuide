@@ -246,6 +246,49 @@ abstract final class CytoSources {
     url: 'https://doi.org/10.17650/1994-4098-2024-20-4-101-110',
   );
 
+  /// RF klinik tavsiyasi (Minzdrav, 2024, ID 597) — Bethesda atamalarining
+  /// ruscha nomlari "Список сокращений" da.
+  static const krCin2024 = CalcSource(
+    id: 'cyto-kr-597-2024',
+    citation:
+        'Российское общество акушеров-гинекологов; Российское общество '
+        'специалистов по профилактике и лечению опухолей репродуктивной '
+        'системы. Клинические рекомендации «Цервикальная интраэпителиальная '
+        'неоплазия, эрозия и эктропион шейки матки» (одобрены Научно-'
+        'практическим советом Минздрава России), 2024, ID 597',
+    url: 'https://base.garant.ru/410436907/',
+  );
+
+  /// ROAG 2019 — Heurlein (1910) darajalari "faqat tarixiy ahamiyatga ega".
+  static const roag2019 = CalcSource(
+    id: 'cyto-roag-2019-discharge',
+    citation:
+        'Российское общество акушеров-гинекологов (Прилепская В.Н., Кира Е.Ф. '
+        'и др.). Клинические рекомендации по диагностике и лечению '
+        'заболеваний, сопровождающихся патологическими выделениями из половых '
+        'путей женщин. 2-е изд. Москва; 2019. ISBN 978-5-89084-052-3',
+    url: 'https://library.mededtech.ru/rest/documents/Rek/',
+  );
+
+  /// Hay–Ison shkalasi (0–IV) — asl maqola.
+  static const isonHay2002 = CalcSource(
+    id: 'cyto-ison-hay-2002',
+    citation:
+        'Ison CA, Hay PE. Validation of a simplified grading of Gram stained '
+        'vaginal smears for use in genitourinary medicine clinics. Sex '
+        'Transm Infect. 2002;78(6):413–415. doi:10.1136/sti.78.6.413',
+    url: 'https://doi.org/10.1136/sti.78.6.413',
+  );
+
+  /// O'zbek darsligi (bosma; havolasiz).
+  static const kurbonova2023 = CalcSource(
+    id: 'book-kurbonova-2023',
+    citation:
+        'Kurbonova Z.Ch. Klinik laboratoriya tashxisi. Darslik. Toshkent: '
+        'Toshkent tibbiyot akademiyasi; 2023',
+    url: null,
+  );
+
   static const all = [
     bethesda,
     nciAbnormal,
@@ -847,20 +890,20 @@ enum CytoLeuko { single, moderate, many }
 enum CytoFlora { none, mixed, pathogenic }
 
 class CytoDegree {
-  const CytoDegree(this.n, this.ph, this.picture, this.meaning);
+  const CytoDegree(this.n, this.picture, this.meaning);
   final int n;
-  final String ph;
   final LocalizedText picture;
   final LocalizedText meaning;
 }
 
-/// An'anaviy (MDH amaliyotidagi) 4 darajali tasnif. Raqamli chegaralar
-/// darsliklarda biroz farq qiladi, shuning uchun bu yerda faqat sifat
-/// belgilari; pH — taxminiy. Mutaxassis tekshiruvi kutilmoqda.
+/// An'anaviy (MDH amaliyotidagi) 4 darajali tasnif — A. Heurlein (1910).
+/// Tibbiy ko'rik 2026-10-18: har darajaga alohida pH oralig'i ko'rib
+/// chiqilgan manbalarda (ROAG 2019, Kurbonova 2023, Ison–Hay 2002) yo'q —
+/// avvalgi "4,0–4,5 / 4,5–5,0 / 5,0–7,0 / 7,0–7,5" olib tashlandi.
+/// Manbalar ekranda [cytoDegreeCites] bilan ko'rsatiladi.
 const cytoDegrees = <CytoDegree>[
   CytoDegree(
     1,
-    '4,0–4,5',
     _T({
       'uz': 'Laktobatsillalar ko‘p, yassi epiteliy, leykotsitlar yakka yoki yo‘q.',
       'ru': 'Много лактобацилл, плоский эпителий, лейкоциты единичные или отсутствуют.',
@@ -870,7 +913,6 @@ const cytoDegrees = <CytoDegree>[
   ),
   CytoDegree(
     2,
-    '4,5–5,0',
     _T({
       'uz': 'Laktobatsillalar kamroq, oz miqdorda boshqa flora, leykotsitlar yakka.',
       'ru': 'Лактобацилл меньше, немного другой флоры, лейкоциты единичные.',
@@ -884,7 +926,6 @@ const cytoDegrees = <CytoDegree>[
   ),
   CytoDegree(
     3,
-    '5,0–7,0',
     _T({
       'uz': 'Laktobatsillalar oz, aralash (kokkli) flora ustun, leykotsitlar ko‘p.',
       'ru': 'Лактобацилл мало, преобладает смешанная (кокковая) флора, много лейкоцитов.',
@@ -898,7 +939,6 @@ const cytoDegrees = <CytoDegree>[
   ),
   CytoDegree(
     4,
-    '7,0–7,5',
     _T({
       'uz':
           'Laktobatsillalar yo‘q, patogen flora ko‘p (masalan, trixomonada), '
@@ -916,6 +956,117 @@ const cytoDegrees = <CytoDegree>[
       'en': 'Marked inflammation',
     }),
   ),
+];
+
+/// "Manba: …" qatorlari — tozalik darajasi ekranida jadval yonida ko'rinadi
+/// (tibbiy ko'rik 2026-10-18; har qator shu sessiyada ochilgan matn bilan
+/// solishtirilgan). Manbalar bir-biridan farq qiladi — ikkalasi ham
+/// ko'rsatiladi.
+const cytoDegreeCites = <LocalizedText>[
+  _T({
+    'uz':
+        'Manba: Rossiya akusher-ginekologlar jamiyati (ROAG), 2019, «Ayollar '
+        'jinsiy yo‘llaridan patologik ajralma bilan kechadigan kasalliklar '
+        'diagnostikasi va davolash bo‘yicha klinik tavsiyalar» (2-nashr), '
+        '«Bakterial vaginoz — Tasnif» bo‘limi: qin tozaligining 4 darajasi — '
+        'A. Heurlein (1910) tasnifi; uning o‘rniga 1995-yilgi vaginal biotop '
+        'tasnifi kelgan, Heurlein va O. Jirovec (1948) tasniflari «hozir kam '
+        'ma’lumot beradi va faqat tarixiy ahamiyatga ega». Bakterial vaginoz '
+        'mezonlari — Amsel (biri: pH > 4,5) va Nugent (7–10 ball).',
+    'ru':
+        'Источник: Российское общество акушеров-гинекологов (РОАГ), 2019, '
+        '«Клинические рекомендации по диагностике и лечению заболеваний, '
+        'сопровождающихся патологическими выделениями из половых путей '
+        'женщин» (2-е изд.), раздел «Бактериальный вагиноз — Классификация»: '
+        '4 степени чистоты влагалища — классификация A. Heurlein (1910); её '
+        'заменила классификация вагинального биотопа 1995 г., классификации '
+        'Heurlein и O. Jirovec (1948) «в настоящее время малоинформативны и '
+        'имеют лишь историческое значение». Критерии бактериального '
+        'вагиноза — Амсел (один из них: pH > 4,5) и Ньюджент (7–10 баллов).',
+    'en':
+        'Source: Russian Society of Obstetricians and Gynecologists (ROAG), '
+        '2019, “Clinical guidelines on diseases with pathological genital '
+        'discharge in women” (2nd ed.), section “Bacterial vaginosis — '
+        'Classification”: the 4 vaginal cleanliness grades are A. Heurlein’s '
+        '(1910) classification; it was replaced by the 1995 vaginal biotope '
+        'classification, and the Heurlein and O. Jirovec (1948) schemes “are '
+        'now of little informative value and of historical interest only”. '
+        'Bacterial vaginosis criteria — Amsel (one of them: pH > 4.5) and '
+        'Nugent (score 7–10).',
+  }),
+  _T({
+    'uz':
+        'Manba: Kurbonova Z.Ch., 2023, «Klinik laboratoriya tashxisi», 6.5 '
+        '(Gardnerellyoz), 70-b.: o‘zbek darsligi «qin tozalik darajasi»ni '
+        'Hay–Ison shkalasi bo‘yicha beradi — 0 (epiteliy bor, bakteriya '
+        'yo‘q), I (laktobatsillalar ustun), II (aralash flora), III '
+        '(bakterial vaginoz), IV (gramm-musbat kokklar). Bu Heurlein '
+        'darajalaridan boshqa tizim.',
+    'ru':
+        'Источник: Kurbonova Z.Ch., 2023, «Klinik laboratoriya tashxisi», '
+        '6.5 (гарднереллёз), с. 70: узбекский учебник даёт «степень чистоты '
+        'влагалища» по шкале Hay–Ison — 0 (эпителий без бактерий), I '
+        '(преобладают лактобациллы), II (смешанная флора), III '
+        '(бактериальный вагиноз), IV (грамположительные кокки). Это другая '
+        'система, не степени Heurlein.',
+    'en':
+        'Source: Kurbonova Z.Ch., 2023, “Klinik laboratoriya tashxisi”, 6.5 '
+        '(gardnerellosis), p. 70: the Uzbek textbook gives the “vaginal '
+        'cleanliness grade” on the Hay–Ison scale — 0 (epithelial cells, no '
+        'bacteria), I (lactobacilli predominate), II (mixed flora), III '
+        '(bacterial vaginosis), IV (Gram-positive cocci). This is a different '
+        'system from Heurlein’s grades.',
+  }),
+  _T({
+    'uz':
+        'Manba: Ison C.A., Hay P.E., 2002, «Validation of a simplified '
+        'grading of Gram stained vaginal smears…», Sex Transm Infect '
+        '78(6), 413–415-b.: Hay–Ison asl ta’rifi — I normal, II oraliq, III '
+        'bakterial vaginoz; 0 — faqat epiteliy, bakteriyasiz; IV — faqat '
+        'gramm-musbat kokklar.',
+    'ru':
+        'Источник: Ison C.A., Hay P.E., 2002, «Validation of a simplified '
+        'grading of Gram stained vaginal smears…», Sex Transm Infect 78(6), '
+        'с. 413–415: исходное определение Hay–Ison — I норма, II '
+        'промежуточная, III бактериальный вагиноз; 0 — только эпителий, без '
+        'бактерий; IV — только грамположительные кокки.',
+    'en':
+        'Source: Ison C.A., Hay P.E., 2002, “Validation of a simplified '
+        'grading of Gram stained vaginal smears…”, Sex Transm Infect 78(6), '
+        'pp. 413–415: the original Hay–Ison definitions — I normal, II '
+        'intermediate, III bacterial vaginosis; 0 epithelial cells only, no '
+        'bacteria; IV Gram-positive cocci only.',
+  }),
+  _T({
+    'uz':
+        'Har bir darajaga alohida pH oralig‘i ko‘rib chiqilgan manbalarda '
+        '(ROAG 2019, Kurbonova 2023, Ison–Hay 2002) berilmagan, shuning '
+        'uchun jadvalda pH yo‘q. Darajalar tavsifi — an’anaviy sxema; '
+        'Heurlein 1910 asl matni ochiq manbada topilmadi.',
+    'ru':
+        'Отдельные диапазоны pH для каждой степени в проверенных источниках '
+        '(РОАГ 2019, Kurbonova 2023, Ison–Hay 2002) не приводятся, поэтому в '
+        'таблице pH нет. Описание степеней — традиционная схема; исходный '
+        'текст Heurlein 1910 в открытом доступе не найден.',
+    'en':
+        'None of the sources checked (ROAG 2019, Kurbonova 2023, Ison–Hay '
+        '2002) gives a pH range per grade, so the table shows no pH. The '
+        'grade descriptions are the traditional scheme; Heurlein’s 1910 '
+        'original text was not found in open access.',
+  }),
+];
+
+/// Tozalik darajasi ekrani pastidagi manbalar ro'yxati.
+const cytoDegreeRefs = <CalcRef>[
+  CalcRef(
+    CytoSources.roag2019,
+    'Бактериальный вагиноз — Классификация (Таблица 4)',
+  ),
+  CalcRef(CytoSources.kurbonova2023, '6.5 Gardnerellyoz, p. 70'),
+  CalcRef(CytoSources.isonHay2002, 'Abstract, p. 413'),
+  CalcRef(CytoSources.amsel, ''),
+  CalcRef(CytoSources.nugent, ''),
+  CalcRef(CytoSources.cdcBv, ''),
 ];
 
 /// Belgilar bo'yicha daraja: eng og'ir belgi hal qiladi.
@@ -959,6 +1110,7 @@ class BethesdaItem {
     this.meaning, {
     this.tone = 0,
     this.refs = const [],
+    this.cites = const [],
   });
   final String code;
   final LocalizedText name;
@@ -968,6 +1120,10 @@ class BethesdaItem {
   final int tone;
 
   final List<CalcRef> refs;
+
+  /// Karta ichida ko'rinadigan "Manba: muallif, yil, «nom», bo'lim, bet"
+  /// qatorlari (atama yoki da'vo shu manbadan ekanini ko'rsatadi).
+  final List<LocalizedText> cites;
 }
 
 /// Bethesda 2014 terminologiyasi ro'yxati (Pangarkar 2022 jadvali).
@@ -1128,8 +1284,8 @@ const bethesdaItems = <BethesdaItem>[
           'Atipik bezli hujayralar, o‘sma (neoplaziya) foydasiga '
           '(endotservikal yoki aniqlanmagan)',
       'ru':
-          'Атипичные железистые клетки, подозрительные на опухолевые '
-          '(favor neoplastic; эндоцервикальные или без уточнения)',
+          'Атипичные железистые клетки, похожие на неопластичные '
+          '(AGC-FN, favor neoplastic; эндоцервикальные или без уточнения)',
       'en':
           'Atypical glandular cells, favor neoplastic (endocervical or not '
           'otherwise specified)',
@@ -1150,7 +1306,47 @@ const bethesdaItems = <BethesdaItem>[
       _tbsList,
       CalcRef(CytoSources.wang2023, 'Atypical glandular cells'),
       CalcRef(CytoSources.asccp2019, 'Section G.1'),
-      CalcRef(CytoSources.grigoruk2024, 'Резюме (ru term)'),
+      CalcRef(CytoSources.krCin2024, 'Список сокращений: AGC-FN'),
+      CalcRef(CytoSources.grigoruk2024, 'p. 103'),
+    ],
+    cites: [
+      _T({
+        'uz':
+            'Ruscha atama — manba: RF Sog‘liqni saqlash vazirligi klinik '
+            'tavsiyasi «Цервикальная интраэпителиальная неоплазия, эрозия и '
+            'эктропион шейки матки», 2024 (ID 597), «Список сокращений»: '
+            '«атипичные железистые клетки, похожие на неопластичные».',
+        'ru':
+            'Русский термин — источник: клинические рекомендации Минздрава '
+            'России «Цервикальная интраэпителиальная неоплазия, эрозия и '
+            'эктропион шейки матки», 2024 (ID 597), «Список сокращений»: '
+            '«атипичные железистые клетки, похожие на неопластичные».',
+        'en':
+            'Russian term — source: RF Ministry of Health clinical guideline '
+            '“Cervical intraepithelial neoplasia, erosion and ectropion of the '
+            'cervix”, 2024 (ID 597), list of abbreviations: «атипичные '
+            'железистые клетки, похожие на неопластичные».',
+      }),
+      _T({
+        'uz':
+            'Boshqa ruscha variant — manba: Grigoruk O.G. va hamm., 2024, '
+            '«Цитологическая диагностика железистых поражений цервикального '
+            'канала», Опухоли женской репродуктивной системы 20(4), 103-b.: '
+            '«атипичные железистые клетки, подозрительные на '
+            'аденокарциному».',
+        'ru':
+            'Другой вариант — источник: Григорук О.Г. и соавт., 2024, '
+            '«Цитологическая диагностика железистых поражений цервикального '
+            'канала», Опухоли женской репродуктивной системы 20(4), с. 103: '
+            '«атипичные железистые клетки, подозрительные на '
+            'аденокарциному».',
+        'en':
+            'Another Russian variant — source: Grigoruk O.G. et al., 2024, '
+            '“Cytological diagnosis of glandular lesions of the cervical '
+            'canal”, Tumors of Female Reproductive System 20(4), p. 103: '
+            '«атипичные железистые клетки, подозрительные на '
+            'аденокарциному».',
+      }),
     ],
   ),
   BethesdaItem(
