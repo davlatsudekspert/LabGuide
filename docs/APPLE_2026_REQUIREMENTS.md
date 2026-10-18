@@ -19,9 +19,10 @@ tekshiring.
    faqat `testflight`/`play_internal` buildlarida `true` (“Namuna / Demo” joylari bilan); `build` va
    kelajakdagi do'kon rejimida `false` — reklama UI kompilyatsiyadan chiqariladi. **Review uchun
    alohida `store` rejimi kerak** (3-bo'lim) — `LG_PARTNER_ADS` siz.
-3. **1.2 — “foydalanuvchini bloklash” yo'q edi.** Ilova tomoni tayyorlandi (mahalliy blok, test
-   bilan), lekin ishlashi uchun **serverda bitta kichik o'zgarish** kerak (`author.ref`, 4-bo'lim).
-   Server o'zgarmaguncha blok tugmasi ko'rinmaydi → 1.2 bajarilmagan hisoblanadi.
+3. **1.2 — endi to'liq (2026-10-18, D-62).** Server har savol/javob muallifiga `author.ref` beradi
+   (qaytarib bo'lmaydigan HMAC; id/email emas) → “Foydalanuvchini bloklash” tugmasi ishlaydi; blok
+   hisobga ham yoziladi (boshqa qurilmada va server ro'yxatlarida ham yashirin). So'kinish/haqorat
+   filtri (uz lotin+kirill, ru, en) savol va javob yaratishda rad etadi. Batafsil — 4-bo'lim.
 4. **Yosh reytingi savolnomasi** (4+/9+/13+/16+/18+, Apple 2025-07-24, muddat 2026-01-31 [V]) va
    **“Social media” savoli** (2026-09 dan yangi versiya yuborishda majburiy [V]): javoblar 6-bo'limda.
    Kutilgan natija: **13+** (tibbiy ma'lumot tufayli).
@@ -138,9 +139,11 @@ Quyidagi tekshiruvlar `lib/`, `ios/`, `.github/workflows/ci.yml`, `docs/` bo'yic
 > **Community Q&A (user-generated content, Profile → Community / Home card):** anyone can read; signed-in users
 > can ask questions (text only; no images, no direct messages, no feed or follow). Only specialists verified by
 > an automatic document check can answer or upvote. Safeguards (Guideline 1.2): rules card and sheet; server-side
-> blocking of e-mail/phone numbers in posts; **Report** on every post by others (reason list), a post is hidden
-> automatically after 3 reports and reviewed by an administrator; **Block user** hides all posts of that user on
-> the device; published contact `labguide@nfcstore.uz` (Profile → Contact, and a link on the Community screen);
+> blocking of e-mail/phone numbers in posts and a server-side profanity/abuse filter (Uzbek Latin and Cyrillic,
+> Russian, English — a post with abusive words is rejected with a clear message); **Report** on every post by others
+> (reason list), a post is hidden automatically after 3 reports and reviewed by an administrator; **Block user**
+> hides all posts of that user for this account (on this device immediately and on the server, so also on other
+> devices); published contact `labguide@nfcstore.uz` (Profile → Contact, and a link on the Community screen);
 > administrators can delete posts and suspend users. Demo specialist: [account with verified status] so you can
 > answer and upvote.
 >
@@ -174,9 +177,9 @@ Quyidagi tekshiruvlar `lib/`, `ios/`, `.github/workflows/ci.yml`, `docs/` bo'yic
 
 | Talab | Holat | Dalil (kod) | Qilingan ish / kerak |
 |---|---|---|---|
-| **Filtrlash** | **Qisman** | Server: email/telefon raqam bloklanadi (`contact_data`, `community.ts`), matn uzunligi, kunlik limitlar; **haqorat/NSFW so'zlar filtri yo'q**; UGC faqat matn (rasm yo'q) | Server tomonida minimal haqorat/ta'qib so'zlari ro'yxati (uz/ru/en) qo'shish — boshqa muhandis (`cloudflare/` taqiqlangan). Hozircha himoya: faqat tasdiqlangan mutaxassis javob beradi; 3 shikoyat → avtomatik to'xtatish; admin o'chiradi. 2026-10-16 yangilanish: NCII uchun — rasm/fayl yuklash yo'q, qoidalarda NCII taqiqi yozilsin (qoidalar kartasiga 1 band) |
+| **Filtrlash** | **Bor (2026-10-18, D-62)** | Server: email/telefon raqam (`contact_data`), matn uzunligi, kunlik limitlar; **so'z filtri** `cloudflare/src/moderation.ts` + ro'yxat `cloudflare/data/abuse_words.json` (uz lotin/kirill, ru, en): savol (sarlavha+matn) va javob yaratishda `400 abusive_language`, ilova uz/ru/en da tushunarli xabar (`cmErrAbusive`). Normallashtirish: katta-kichik harf, ё/е, o‘/g‘ apostroflari, lotin↔kirill o'xshash harflar, takror harflar, “с.у.к.а” kabi bo'lingan harflar. Moslik faqat butun so'z yoki aniq o'zak (so'z boshi) bo'yicha — tibbiy so'zlar (анализ, сукцинат, kalsiy, siydik, spermogramma, pH, бляшка, педикулёз…) testda o'tadi (`cloudflare/test/moderation.test.ts`). UGC faqat matn (rasm yo'q) — NCII yuklab bo'lmaydi | NCII taqiqi qoidalarda bor (`cmRulesC2`, 2026-10-18). Ro'yxatni kengaytirganda tibbiy so'zlar testi yashil qolsin |
 | **Shikoyat** | **Bor** | Har post (savol/javob) ostida “Shikoyat” (sabab ro'yxati: spam, noto'g'ri, haqorat, soxta mutaxassis, bemor ma'lumoti, boshqa); server 3 hisoblangan shikoyatda muallifni avtomatik to'xtatadi (`REPORT_THRESHOLD=3`), admin navbati va tiklash bor | **“Timely response”**: ichki SLA yozilsin (masalan 24 soat) va Privacy/qoidalarda aytilsin; admin navbati kunlik ko'riladi (egasi) |
-| **Bloklash** | **Yo'q edi → ilova tomoni qo'shildi** | Muallif anonim (`author_hash` mijozga chiqmaydi), shuning uchun mijoz muallifni aniqlay olmasdi | **Qilindi:** `CommunityAuthor.ref`, mahalliy blok ro'yxati (`StoreKeys.communityBlocked`), savol/javob ostida “Foydalanuvchini bloklash”, ro'yxat/bosh sahifa/javoblardan yashirish, “Bloklanganlar” bo'limi (hammasini qaytarish), testlar. **Server o'zgarishi kerak (kichik):** `author()` javobiga `ref` qo'shish — pastdagi taklif. `ref` kelmaguncha tugma chiqmaydi |
+| **Bloklash** | **Bor (2026-10-18, D-62)** | Server `author.ref` = HMAC(server kaliti, `author-ref:`+user_hash) ning 24 belgisi — barqaror, muallifga qaytarilmaydi (id, email, `user_hash` chiqmaydi; testda tekshirilgan). `POST/GET/DELETE /v1/community/blocks` (migratsiya `0011_community_blocks.sql`): blok hisobga yoziladi, server savollar ro'yxati va javoblarda shu ko'ruvchiga bloklangan muallifni ko'rsatmaydi; ilova lokal ro'yxatni ham saqlaydi va hisobdagilar bilan sinxronlaydi | Egasini (LabGuide jamoasi) va o'zini bloklab bo'lmaydi (unga shikoyat). Hisob o'chirilganda bloklar ham o'chadi |
 | **Aloqa ma'lumoti** | **Bor** | Profil → Aloqa (`ContactScreen`, `Contact.email = labguide@nfcstore.uz`) | **Qilindi:** hamjamiyat ro'yxati ostida to'g'ridan-to'g'ri “LabGuide bilan aloqa” havolasi. ASC “Support URL” va Play email maydonlarini to'ldiring |
 
 **Shikoyat va o'z vaqtida ko'rib chiqish (2026-10-17, admin panel):** Profil → Aloqa va shikoyat ekranida
@@ -185,11 +188,10 @@ ilova ichidagi shikoyat shakli (turlar: shikoyat, nomaqbul kontent, xato, reklam
 yozadi, hal qiladi, post muallifini to'xtatadi yoki hisobni butunlay to'xtatadi; har amal jurnalda. Ichki maqsad —
 24 soat. Qo'llanma: `docs/ADMIN_PANEL_GUIDE.md`. App Review izohida shu yo'llarni ko'rsating.
 
-**Server taklifi (`ref`, taqiqlangan yo'l — boshqa muhandis uchun):** `cloudflare/src/community.ts` ichidagi `author()`
-funksiyasi javobiga qo'shing:
-`ref: await hmacHex(ctx.env.<mavjud sir>, 'blk:' + r.author_hash).then(h => h.slice(0, 16))` (ya'ni `author_hash` dan
-qaytarib bo'lmaydigan qisqa hosila; ism/email emas, egasi (`owner`) uchun `null`). Test: bir muallif — bir xil `ref`,
-turli muallif — turli. Shundan so'ng ilovadagi tugma avtomatik chiqadi (qo'shimcha o'zgarish shart emas).
+**1.2 tekshiruv ro'yxati (2026-10-18):** filtr ✓ (server, uz/ru/en), shikoyat ✓ (har post, 3 shikoyat →
+avtomatik yashirish, admin navbati, ichki maqsad 24 soat), bloklash ✓ (`author.ref` + server bloklari), aloqa ✓
+(`labguide@nfcstore.uz`, hamjamiyat ekranidan havola), dasturchi kontentni olib tashlay oladi ✓ (admin postni
+o'chiradi, muallifni to'xtatadi, hisobni o'chiradi — D-63). NCII taqiqi qoidalar matniga qo'shildi (`cmRulesC2`).
 
 **5.1.2(i) — uchinchi tomon AI bilan ulashish [V guidelines matni]:** “You must clearly disclose where personal
 data will be shared with third parties, including with third-party AI, and obtain explicit permission before doing
@@ -407,7 +409,7 @@ yangilanish yuborish uchun ham kerak (2024-10-16 dan). Hujjat: `help/app-store-c
 
 **Review'dan oldin (blokerlar):**
 - [ ] `store` build rejimi (ci.yml, boshqa muhandis) — `LG_PARTNER_ADS` siz (`false`): reklama UI yo'q.
-- [ ] Serverda `author.ref` (blok uchun) — 4-bo'lim; shu bo'lmasa 1.2 to'liq emas.
+- [x] Serverda `author.ref` (blok uchun) va server bloklari — 4-bo'lim (D-62).
 - [ ] Review demo hisobi (sobit kod) va u Notes’da ochiq yozilishi.
 - [ ] Do'kon matni va **App Privacy** javobi build bilan mos: server ulanadi → “Data Not Collected” **emas**
       (`APP_STORE.md` §6 jadvali + `PrivacyInfo.xcprivacy`). “Ilova serverga ma'lumot yubormaydi” jumlasini olib tashlang.
@@ -416,7 +418,7 @@ yangilanish yuborish uchun ham kerak (2024-10-16 dan). Hujjat: `help/app-store-c
 - [ ] Yangi Apple shartlarini (DPLA, 2026-08-18 / 2026-10-13) Account Holder sifatida qabul qilish.
 - [ ] Notes for Review (3.3-bo'lim) — to'ldirib qo'yish.
 - [ ] Hamjamiyat qoidalariga: NCII/intim rasmlar taqiqi bandi (matn); shikoyatlarga javob muddati (masalan 24 soat).
-- [ ] Haqorat/NSFW filtri (server) — minimal ro'yxat.
+- [x] Haqorat filtri (server, uz/ru/en) — `cloudflare/data/abuse_words.json` (D-62).
 
 **Qaror kerak:**
 - [ ] Hujjat yuborishdan oldin AI roziligi belgisi (5.1.2(i)).

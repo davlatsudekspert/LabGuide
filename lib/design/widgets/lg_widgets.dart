@@ -2,6 +2,7 @@ import 'package:flutter/services.dart';
 import 'package:material_ui/material_ui.dart';
 
 import '../../l10n/gen/app_localizations.dart';
+import '../themes.dart';
 import '../tokens.dart';
 
 /// Bosilganda 180 ms ichida biroz kichrayadigan (0.97) yuzani beradi.
@@ -180,10 +181,13 @@ class LgButton extends StatelessWidget {
         vertical: 10,
       ),
     };
+    final radius = BorderRadius.circular(
+      LgStyle.of(context).controlRadius(LgRadius.button),
+    );
     Widget button = LgPressable(
       onTap: enabled ? onPressed : null,
       color: bg,
-      borderRadius: BorderRadius.circular(LgRadius.button),
+      borderRadius: radius,
       // Chegara oldingi qatlamda: fon ostida qolib ketmaydi (panel ichida ham ko'rinadi).
       border: kind == LgButtonKind.secondary
           ? Border.all(color: p.outline.withValues(alpha: 0.55))
@@ -199,7 +203,7 @@ class LgButton extends StatelessWidget {
     if (kind == LgButtonKind.primary && enabled) {
       button = DecoratedBox(
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(LgRadius.button),
+          borderRadius: radius,
           boxShadow: LgShadow.raised(context),
         ),
         child: button,
@@ -444,7 +448,7 @@ class LgEyebrow extends StatelessWidget {
       child: Text(
         text.toUpperCase(),
         style: Theme.of(context).textTheme.labelSmall!
-            .copyWith(color: p.brand, letterSpacing: 1.6),
+            .copyWith(color: p.accentInk, letterSpacing: 1.6),
       ),
     );
   }
@@ -464,15 +468,36 @@ class LgTag extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final p = LgPalette.of(context);
+    // Ivory: konturli pill, bosh harflar, keng harf oralig'i (ogohlantirish
+    // tegi esa to'ldirilganicha qoladi — holat ko'zga tashlanishi uchun).
+    final outlined = LgStyle.of(context).outlinedTags && tone != LgTone.warning;
     final (Color bg, Color fg) = switch (tone) {
-      LgTone.brand => (p.soft, p.brand),
+      LgTone.brand => (outlined ? Colors.transparent : p.soft, p.brand),
       LgTone.warning => (p.amberBg, p.amber),
-      LgTone.neutral => (p.bg, p.sub),
+      LgTone.neutral => (outlined ? Colors.transparent : p.bg, p.sub),
     };
+    final base = Theme.of(context).textTheme.labelMedium!.copyWith(color: fg);
+    final label = outlined
+        ? Text(
+            text.toUpperCase(),
+            semanticsLabel: text,
+            style: base.copyWith(
+              fontSize: 11,
+              letterSpacing: 1.1,
+              fontWeight: FontWeight.w600,
+            ),
+          )
+        : Text(text, style: base);
     return DecoratedBox(
       decoration: BoxDecoration(
         color: bg,
         borderRadius: BorderRadius.circular(LgRadius.tag),
+        border: outlined
+            ? Border.all(
+                color: tone == LgTone.brand ? p.brand : p.outline,
+                width: 0.8,
+              )
+            : null,
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 11, vertical: 6),
@@ -483,13 +508,7 @@ class LgTag extends StatelessWidget {
               Icon(icon, size: 14, color: fg),
               const SizedBox(width: 5),
             ],
-            Flexible(
-              child: Text(
-                text,
-                style: Theme.of(context).textTheme.labelMedium!
-                    .copyWith(color: fg),
-              ),
-            ),
+            Flexible(child: label),
           ],
         ),
       ),
@@ -705,6 +724,7 @@ class LgTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final p = LgPalette.of(context);
     final text = Theme.of(context).textTheme;
+    final ring = LgStyle.of(context).accentRing;
     return DecoratedBox(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(LgRadius.card),
@@ -726,10 +746,17 @@ class LgTile extends StatelessWidget {
                   child: Container(
                     width: 40,
                     height: 40,
-                    decoration: BoxDecoration(
-                      color: highlighted ? p.paper : p.soft,
-                      borderRadius: BorderRadius.circular(13),
-                    ),
+                    // Ivory: dumaloq belgi, ingichka oltin halqa.
+                    decoration: ring
+                        ? BoxDecoration(
+                            color: highlighted ? p.paper : p.soft,
+                            shape: BoxShape.circle,
+                            border: Border.all(color: p.accent),
+                          )
+                        : BoxDecoration(
+                            color: highlighted ? p.paper : p.soft,
+                            borderRadius: BorderRadius.circular(13),
+                          ),
                     child: Icon(icon, color: p.brand, size: 22),
                   ),
                 ),
@@ -861,7 +888,9 @@ class LgChoiceChip extends StatelessWidget {
       onTap: onTap,
       selected: selected,
       color: selected ? p.brand : p.paper,
-      borderRadius: BorderRadius.circular(LgRadius.chip),
+      borderRadius: BorderRadius.circular(
+        LgStyle.of(context).controlRadius(LgRadius.chip),
+      ),
       // Tanlanmagan chip chegarasi ko'rinsin (fon bilan 1.1:1 edi).
       border: selected ? null : Border.all(color: p.outline),
       child: ConstrainedBox(
@@ -1118,9 +1147,14 @@ class LgStateArt extends StatelessWidget {
 /// `pumpAndSettle` bilan ham muammo yo'q. Screen reader "Yuklanmoqda…"
 /// eshitadi.
 class LgSkeleton extends StatelessWidget {
-  const LgSkeleton({super.key, this.rows = 3});
+  const LgSkeleton({super.key, this.rows = 3, this.caption});
 
   final int rows;
+
+  /// Nima yuklanayotgani (masalan, "Guruhlar yuklanmoqda…"): kontur ustida
+  /// kichik xira matn va screen reader yorlig'i. `null` — umumiy
+  /// "Yuklanmoqda…" faqat ovozda.
+  final String? caption;
 
   @override
   Widget build(BuildContext context) {
@@ -1144,12 +1178,22 @@ class LgSkeleton extends StatelessWidget {
     return Semantics(
       container: true,
       liveRegion: true,
-      label: label,
+      label: caption ?? label,
       child: ExcludeSemantics(
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 12),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
+              if (caption != null)
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(4, 0, 4, 4),
+                  child: Text(
+                    caption!,
+                    style: Theme.of(context).textTheme.bodySmall
+                        ?.copyWith(color: p.sub),
+                  ),
+                ),
               for (var i = 0; i < rows; i++)
                 Container(
                   margin: const EdgeInsets.symmetric(vertical: 6),

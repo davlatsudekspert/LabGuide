@@ -941,3 +941,72 @@ D-48 dagi **Ustoz Pro** qatorini (69 000 so'm/oy · 490 000 so'm/yil · $9.99/oy
   yangi → muddati kelgan mustahkam → qolgan. Bilet ichida baho o'zgartirilsa quti biletdan oldingi holatdan
   hisoblanadi. Eski baholar (`toifa.oral`) birinchi o'qishda qutiga o'tkaziladi.
 - Savollar, kalitlar, javob rejalari o'zgarmadi (assets/toifa faqat o'qiladi).
+
+## D-62. Hamjamiyat moderatsiyasi: `author.ref`, server bloklari, so'z filtri (App Store 1.2) (2026-10-18)
+- **Muammo:** ilovadagi "Bloklash" tugmasi serverdan muallif belgisini (`author.ref`) kutardi — server bermagani
+  uchun tugma chiqmasdi; haqorat/so'kinish filtri yo'q edi → 1.2 to'liq bajarilmagan.
+- **`author.ref`** (`cloudflare/src/community.ts`): `HMAC(community kaliti, 'author-ref:' + user_hash)` ning 24 hex
+  belgisi. Barqaror (bir muallif — bir xil, mehmonga ham), lekin qaytarib bo'lmaydi: foydalanuvchi id si, email va
+  `user_hash` (admin yo'llaridagi kalit) chiqmaydi (test tekshiradi). Ko'ruvchiga xos emas — mehmon ham qurilmada
+  bloklay oladi; ilovadagi lokal blok ro'yxati shu belgilar bilan.
+- **Server bloklari** (migratsiya `0011_community_blocks.sql`, `(viewer_hash, author_hash)`): `POST /v1/community/blocks
+  {kind, id}` — post orqali (server `ref` ni muallifga qaytara olmaydi), `GET` — bloklangan belgilar (qurilmalar
+  sinxroni), `DELETE` — hammasi. Savollar ro'yxati va savol ichidagi javoblarda shu ko'ruvchiga bloklangan
+  muallif ko'rsatilmaydi (savolning o'zi ochilsa — ilova "yashirilgan" panelini ko'rsatadi). O'zini va egasini
+  (LabGuide) bloklab bo'lmaydi — unga shikoyat. Hisob o'chirilganda ikki tomondagi bloklar ham o'chadi. Ilova:
+  blok darhol lokal (oflayn ham) + kirgan bo'lsa serverga; ro'yxat ochilganda hisobdagi bloklar qo'shiladi;
+  "Hammasini qaytarish" serverda ham.
+- **So'z filtri** (`cloudflare/src/moderation.ts`, ro'yxat — ma'lumot fayli `cloudflare/data/abuse_words.json`):
+  savol (sarlavha + matn) va javob yaratishda `400 abusive_language`; ilova uz/ru/en da tushunarli xabar
+  (`cmErrAbusive`), topilgan so'z oshkor qilinmaydi. Normallashtirish: NFKC, kichik harf, ё→е, apostroflar
+  (o‘/g‘/ʼ) olib tashlanadi, lotin↔kirill o'xshash harflar (ikkala skelet), o'zbek kirill ў қ ғ ҳ → у к г х,
+  ъ/ь olib tashlanadi, takror harflar bittaga, "с.у.к.а" kabi bo'lingan harflar birlashtiriladi. Moslik FAQAT
+  butun so'z (`words`) yoki aniq o'zak — so'z boshi (`stems`; rus old qo'shimchalari bilan `ru_prefixed_stems`);
+  so'z ichidan qidirilmaydi. Shuning uchun "анализ", "сукцинат", "kalsiy", "siydik", "spermogramma", "pH",
+  "бляшка", "педикулёз", "себум", "sikl", "cocktail", "застрахуйте" o'tadi (`cloudflare/test/moderation.test.ts`;
+  qisqa xavfli o'zaklar ro'yxatda bo'lmasligi ham test qilinadi). Qoida: yangi so'z qo'shganda tibbiy so'zlar
+  testi yashil qolsin.
+- Natija: 1.2 — filtr, shikoyat, bloklash, aloqa ma'lumoti — hammasi bor (`docs/APPLE_2026_REQUIREMENTS.md` §4).
+
+## D-63. Egasi admin panelida hisobni email bo'yicha o'chirish (2026-10-18)
+- **Muammo:** maxfiylik siyosati email orqali o'chirish so'rovini taklif qilardi, lekin vosita yo'q edi
+  (faqat `wrangler d1 execute`).
+- **Yechim:** `POST /v1/admin/accounts/delete {email, confirm_user_id}` (panel admini, yozish limiti). Email serverda
+  HMAC qilinadi (aniq moslik; saqlanmaydi, javobga chiqmaydi), `confirm_user_id` — panel ko'rsatgan hisob: boshqa
+  hisob o'chmaydi (`confirmation_mismatch`). O'zini (`self`) va adminni (`admin`) o'chirib bo'lmaydi.
+- **Bir xil yo'l:** `auth.ts deleteUserData()` — o'zi o'chirish (`DELETE /v1/me`) ham, admin ham shuni chaqiradi
+  (guruhlar, natijalar, hamjamiyat, bloklar, murojaatlar, sessiyalar, identitetlar, Apple tokenini bekor qilish
+  urinishi). Admin holatida foydalanuvchining yangi Apple `authorizationCode` i yo'q (refresh token serverda
+  saqlanmaydi) → natija `no_code` jurnalda (`apple_revoke`, actor = admin, `via: admin`); siyosatda va qo'llanmada
+  foydalanuvchiga iPhone sozlamalaridan ham olib tashlash aytiladi. Jurnal: `account_deleted_by_admin`
+  (actor — admin, target — o'chirilgan id).
+- **Ilova:** Admin panel → Foydalanuvchilar → (email bo'yicha topib) hisob → "Hisobni o'chirish": to'liq email
+  qayta yoziladi → tasdiq oynasi → sahifa "o'chirildi" holatiga o'tadi, ro'yxatga qaytish.
+- **Siyosat:** email so'rovi admin vositasi bilan **30 kun ichida** bajariladi (uz/ru/en, `site/privacy`,
+  `site/delete-account`; `docs/ADMIN_PANEL_GUIDE.md` §5).
+
+## D-64. Tanlanadigan ilova mavzusi: Klassik va Ivory (2026-10-18, egasi talabi)
+- **Reestr:** `lib/design/themes.dart` — `LgThemeId { classic, ivory }`; har mavzuda kunduzgi va tungi
+  `LgPalette` (`tokens.dart`: `light/dark` — asl yashil, `ivoryLight/ivoryDark`) va `LgStyle` ThemeExtension
+  (serif sarlavha, konturli teglar, qora tanlangan tab, oltin halqa, pill tugma/chiplar, mavzu ekrani gradienti).
+  Standart — Klassik (o'zgarishsiz). Palitraga ikki token qo'shildi: `accent` (dekorativ: halqa, nuqta — matn
+  uchun emas) va `accentInk` (eyebrow matni, ≥ 4,5:1); Klassikda ikkalasi ham brend rangi — ko'rinish o'zgarmaydi.
+- **Ivory:** fon #F3F1EC, kartalar #FCFBF8, asosiy (tugma, tanlangan tab, Lab tugmasi) #141414, oltin #C9A86A
+  kam joyda (dumaloq belgilar halqasi, eyebrow #7A5A22), kulrang ikkinchi matn #5F5B54. Tungi Ivory — ko'mir fon
+  #0F1116, ivory matn/asosiy #F2EEE5/#EDE6D6, oltin #D2B57E; mavzu ekranining sarlavha kartasi chuqur
+  dengiz-qora gradientda. Barcha juftliklar WCAG AA — `app_flow_test` (matn ≥ 4,5:1, kontur ≥ 3:1) va
+  `bottom_nav_test` (shisha menyu) to'rt palitrani tekshiradi.
+- **Shrift:** katta sarlavhalar (displaySmall, headlineMedium, headlineSmall) faqat Ivory'da serif; asosiy matn
+  Inter. Tanlov — **Instrument Serif** (tor, yuqori kontrastli "fashion" serif; lotin, o‘ g‘ uchun U+2018 bor).
+  Kirill glyphi yo'q, shuning uchun ruscha interfeysda **Playfair Display** (variable, wght 500) asosiy, boshqa
+  tillarda kirill harflari fallback orqali Playfair'dan. Ikkalasi ham SIL Open Font License 1.1 (Google Fonts
+  repozitoriysidan): `assets/fonts/InstrumentSerif-Regular.ttf` + `InstrumentSerif-OFL.txt`,
+  `assets/fonts/PlayfairDisplay-Variable.ttf` + `PlayfairDisplay-OFL.txt` ("Playfair Display" — Reserved Font
+  Name; shrift o'zgartirilmagan). Hajm ~370 KB.
+- **Sozlama:** Profil → Tashqi ko‘rinish → **Mavzu** (`/profile/theme`): mavzu kartalari (nomi mavzuning o'z
+  sarlavha shriftida, 5 rang nuqtasi, logotipli dumaloq belgi — Ivory'da oltin halqa), kunduzgi/tungi/tizim
+  tanlovi (Profil'dagi chiplar ham qoldi). Kalit `settings.appTheme` (kv store), darhol butun ilovaga qo'llanadi,
+  `MaterialApp` 360 ms silliq o'tish (reduced motion — darhol). Lokal ma'lumot o'chirilsa — Klassik.
+- Boshqa ilovaning kodi, rasm yoki logotiplari ishlatilmadi — faqat uslub. Ma'ruza slaydlari o'z palitrasida qoladi.
+- Ko'rik: `tool/screenshots/walk_all_screens_test.dart` ga Ivory variantlari (uz · kunduzgi · 390, ru · tungi ·
+  320); layout matritsasiga har til uchun Ivory 320 px ×1,3.

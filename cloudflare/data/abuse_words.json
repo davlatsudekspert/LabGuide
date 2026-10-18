@@ -1,0 +1,49 @@
+{
+  "_comment": [
+    "Hamjamiyat so'z filtri (D-62, App Store 1.2): so'kinish, haqorat va kamsituvchi so'zlar (uz lotin/kirill, ru, en).",
+    "Har yozuv cloudflare/src/moderation.ts dagi normalizeToken() bilan matn bilan bir xil normallashtiriladi:",
+    "kichik harf, ё->е, apostroflar olib tashlanadi, ъ/ь olib tashlanadi, o'zbek kirill (ў қ ғ ҳ) -> у к г х, takror harflar bittaga.",
+    "words — faqat butun so'z; stems — so'z boshi (o'zak); ru_prefixed_stems — rus old qo'shimchalari (ru_prefixes) bilan ham.",
+    "Qisqa yoki tibbiy so'zga o'xshash o'zak QO'SHMANG: 'сук' (сукцинат), 'анал' (анализ), 'sik' (sikl), 'бля' (корабля, бляшка),",
+    "'педик' (педикулёз), 'ебу' (себум), 'cock' (cocktail), 'dick' (Dickens) — bunday so'zlar faqat 'words' ga.",
+    "Yangi so'z qo'shilsa: cloudflare/test/moderation.test.ts dagi tibbiy so'zlar testi yashil qolishi shart."
+  ],
+  "cyrillic": {
+    "words": [
+      "сука", "суки", "суке", "суку", "сукой", "сукин", "сукины", "сучка", "сучки", "сучке", "сучку", "сучара", "сучий",
+      "бля", "блять", "блядь", "бляди", "блядина", "блядский",
+      "жопа", "жопу", "жопой", "жопе", "жопы",
+      "говно", "говна", "говном", "говне",
+      "дебил", "дебилы", "дебилка", "дебилов",
+      "идиот", "идиоты", "идиотка",
+      "урод", "уроды", "уродина",
+      "хер", "херня", "нахер", "похер",
+      "педик", "педики",
+      "жалаб", "жалаблар", "қанжиқ", "сикай", "сикаман", "сикдим", "сикиш", "сиктир",
+      "ҳароми", "хароми", "қўтоқ", "итвачча", "аҳмоқ", "ахмоқ"
+    ],
+    "stems": [
+      "бляд", "блят",
+      "мудак", "мудач", "мудил", "мудоз",
+      "пидор", "пидар", "пидр",
+      "гандон", "гондон",
+      "шлюх", "залуп", "дроч", "ублюд", "долбоеб", "долбаеб", "далбаёб", "далбаеб", "мразь", "мрази",
+      "жалабл", "сикаман", "сикамиз", "сиктир", "падарлаънат", "падарлаанат", "итвачча", "ҳаромизода", "харомизода"
+    ],
+    "ru_prefixed_stems": ["хуй", "хуе", "хуё", "хуя", "хую", "хуи", "пизд", "ебат", "ебал", "ебан", "ебну", "ебуч", "ебло", "ебош", "ебись", "ебок"],
+    "ru_prefixes": ["", "за", "вы", "на", "у", "про", "раз", "разъ", "от", "отъ", "по", "при", "с", "съ", "до", "пере", "недо", "о", "об", "объ", "подъ", "ни", "а"]
+  },
+  "latin": {
+    "words": [
+      "shit", "shits", "shitty", "bullshit", "shithead", "dick", "dickhead", "cock", "cocksucker", "bastard", "bastards",
+      "asshole", "assholes", "retard", "retards", "wanker", "wankers", "nigger", "niggers", "nigga", "niggas",
+      "cyka", "suka", "blyat", "blyad",
+      "jalab", "jalablar", "qanjiq", "kanjiq", "sikay", "sikaman", "sikdim", "sikish", "sikib", "siktir",
+      "haromi", "xaromi", "qotaq", "qo'taq", "ko'tak", "ko'tingga", "itvachcha", "dalbayob", "dolboyob", "ahmoq"
+    ],
+    "stems": [
+      "fuck", "motherfuck", "cunt", "bitch", "whore", "slut", "faggot", "twat",
+      "jalabl", "sikaman", "sikamiz", "siktir", "dalbayob", "dalbayeb", "dolboyob", "padarlanat", "padarla'nat", "itvachcha", "haromizoda", "xaromizoda"
+    ]
+  }
+}

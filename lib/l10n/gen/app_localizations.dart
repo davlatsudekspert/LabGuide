@@ -10366,6 +10366,60 @@ abstract class AppLocalizations {
   /// **'Dark'**
   String get themeDark;
 
+  /// No description provided for @themeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Theme'**
+  String get themeTitle;
+
+  /// No description provided for @themeRowSub.
+  ///
+  /// In en, this message translates to:
+  /// **'App colours and title type'**
+  String get themeRowSub;
+
+  /// No description provided for @themeCurrent.
+  ///
+  /// In en, this message translates to:
+  /// **'Current theme'**
+  String get themeCurrent;
+
+  /// No description provided for @themeClassicName.
+  ///
+  /// In en, this message translates to:
+  /// **'Classic'**
+  String get themeClassicName;
+
+  /// No description provided for @themeClassicDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'LabGuide\'s signature green'**
+  String get themeClassicDesc;
+
+  /// No description provided for @themeIvoryName.
+  ///
+  /// In en, this message translates to:
+  /// **'Ivory'**
+  String get themeIvoryName;
+
+  /// No description provided for @themeIvoryDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Ivory, ink and gold with elegant serif titles'**
+  String get themeIvoryDesc;
+
+  /// No description provided for @themeModeSection.
+  ///
+  /// In en, this message translates to:
+  /// **'Light or dark'**
+  String get themeModeSection;
+
+  /// No description provided for @themeSelected.
+  ///
+  /// In en, this message translates to:
+  /// **'Selected'**
+  String get themeSelected;
+
   /// No description provided for @profilePrivacy.
   ///
   /// In en, this message translates to:
@@ -13687,7 +13741,7 @@ abstract class AppLocalizations {
   /// No description provided for @cmRulesC2.
   ///
   /// In en, this message translates to:
-  /// **'advertising, off-topic posts, abusive language'**
+  /// **'advertising, off-topic posts, abusive language; posting intimate or private images or material without the person’s consent is strictly prohibited'**
   String get cmRulesC2;
 
   /// No description provided for @cmRulesC3.
@@ -16773,6 +16827,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Review mistakes · {count}'**
   String topicTestReworkMistakes(int count);
+
+  /// No description provided for @cmErrAbusive.
+  ///
+  /// In en, this message translates to:
+  /// **'The text contains offensive or abusive language. Please rephrase it respectfully — the community rules require this.'**
+  String get cmErrAbusive;
+
+  /// No description provided for @admDeleteTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete account'**
+  String get admDeleteTitle;
+
+  /// No description provided for @admDeleteNote.
+  ///
+  /// In en, this message translates to:
+  /// **'For deletion requests received by email (completed within 30 days). To confirm, enter the user\'s full email — the server checks that it belongs to exactly this account. The account, group memberships, community posts, support threads and sign-in methods are deleted permanently; for Sign in with Apple users the server attempts to revoke the Apple token. This cannot be undone; the action is logged.'**
+  String get admDeleteNote;
+
+  /// No description provided for @admDeleteEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'User\'s full email'**
+  String get admDeleteEmail;
+
+  /// No description provided for @admDeleteButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete account permanently'**
+  String get admDeleteButton;
+
+  /// No description provided for @admDeleteConfirmTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete this account permanently?'**
+  String get admDeleteConfirmTitle;
+
+  /// No description provided for @admDeleteConfirmBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The account {email} and all data linked to it will be deleted. This cannot be undone.'**
+  String admDeleteConfirmBody(String email);
+
+  /// No description provided for @admDeleteDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Account deleted'**
+  String get admDeleteDone;
+
+  /// No description provided for @admDeleteMismatch.
+  ///
+  /// In en, this message translates to:
+  /// **'This email does not belong to this account — check it and try again.'**
+  String get admDeleteMismatch;
 }
 
 class _AppLocalizationsDelegate

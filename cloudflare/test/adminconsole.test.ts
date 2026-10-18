@@ -261,3 +261,61 @@ describe('hamjamiyat shikoyatlari navbati', () => {
     expect(log).toEqual(expect.arrayContaining(['report_dismissed', 'report_resolved', 'community_suspended']));
   });
 });
+
+describe('admin panel: hisobni email bo‘yicha o‘chirish (D-63)', () => {
+  const DEL = '/v1/admin/accounts/delete';
+
+  it('aniq email + tasdiq (id) → o‘zi o‘chirgandagi yo‘l; jurnalda account_deleted_by_admin; email/hash chiqmaydi', async () => {
+    const { s, boss } = await setup();
+    const email = uniqueEmail('victim');
+    const u = await s.signIn(email);
+    const t = await s.signInTeacher(uniqueEmail('t'));
+    const g = await s.call('POST', '/v1/groups', { token: t.token, body: { name: 'Guruh A' } });
+    expect((await s.call('POST', '/v1/groups/join', { token: u.token, body: { code: g.data.join_code, display_name: 'Ali' } })).status).toBe(201);
+    expect((await s.call('POST', '/v1/community/questions', {
+      token: u.token,
+      body: { title: 'Kaliy natijasi yuqori, nima qilish kerak?', body: 'Bemor shikoyatsiz, qayta tekshiraymi?' },
+    })).status).toBe(201);
+
+    // Panel avval shu email bo'yicha topadi (aniq HMAC qidiruv).
+    const found = await s.call('GET', `/v1/admin/users?email=${encodeURIComponent(email.toUpperCase())}`, { token: boss.token });
+    expect(found.data.total).toBe(1);
+    expect(found.data.items[0].user_id).toBe(u.userId);
+
+    const user = await s.signIn(uniqueEmail('plain'));
+    expect((await s.call('POST', DEL, { body: { email, confirm_user_id: u.userId } })).status).toBe(401);
+    expect((await s.call('POST', DEL, { token: user.token, body: { email, confirm_user_id: u.userId } })).status).toBe(403);
+    expect((await s.call('POST', DEL, { token: boss.token, body: { email: 'not-an-email', confirm_user_id: u.userId } })).data.error).toBe('invalid_email');
+    expect((await s.call('POST', DEL, { token: boss.token, body: { email } })).data.error).toBe('confirmation_required');
+    expect((await s.call('POST', DEL, { token: boss.token, body: { email, confirm_user_id: user.userId } })).data.error).toBe('confirmation_mismatch');
+    expect((await s.call('POST', DEL, { token: boss.token, body: { email: uniqueEmail('nobody'), confirm_user_id: u.userId } })).status).toBe(404);
+
+    const r = await s.call('POST', DEL, { token: boss.token, body: { email: ` ${email.toUpperCase()} `, confirm_user_id: u.userId } });
+    expect(r.status).toBe(200);
+    expect(r.data).toEqual({ deleted: true, user_id: u.userId, email_masked: expect.stringMatching(/^vi\*\*\*@/) });
+    expect(r.text).not.toContain(email);
+    expect(r.text).not.toMatch(HASH_RE);
+
+    const n = async (sql: string, ...a: unknown[]) => (await s.env.DB.prepare(sql).bind(...a).first<{ n: number }>())!.n;
+    expect(await n('SELECT COUNT(*) AS n FROM users WHERE id = ?1', u.userId)).toBe(0);
+    expect(await n('SELECT COUNT(*) AS n FROM sessions WHERE user_id = ?1', u.userId)).toBe(0);
+    expect(await n('SELECT COUNT(*) AS n FROM group_members WHERE user_id = ?1', u.userId)).toBe(0);
+    expect((await s.call('GET', '/v1/me', { token: u.token })).status).toBe(401);
+    const log = (await s.call('GET', '/v1/admin/audit', { token: boss.token })).data;
+    expect(log[0]).toMatchObject({ action: 'account_deleted_by_admin', target: u.userId, details: { via: 'admin_console' } });
+    expect(log[0].actor_masked).toMatch(/^ow\*\*\*@/);
+    // Qayta — endi topilmaydi.
+    expect((await s.call('POST', DEL, { token: boss.token, body: { email, confirm_user_id: u.userId } })).status).toBe(404);
+  });
+
+  it('o‘zini va boshqa adminni o‘chirib bo‘lmaydi', async () => {
+    const { s, owner, boss } = await setup();
+    expect((await s.call('POST', DEL, { token: boss.token, body: { email: owner, confirm_user_id: boss.userId } })).data.error).toBe('self');
+    const helperEmail = uniqueEmail('helper');
+    const helper = await s.signIn(helperEmail);
+    await s.env.DB.prepare(`INSERT INTO admins (user_id, granted_at, granted_reason) VALUES (?1, ?2, 'manual')`).bind(helper.userId, Date.now()).run();
+    const r = await s.call('POST', DEL, { token: boss.token, body: { email: helperEmail, confirm_user_id: helper.userId } });
+    expect(r.status).toBe(403);
+    expect(r.data.error).toBe('admin');
+  });
+});

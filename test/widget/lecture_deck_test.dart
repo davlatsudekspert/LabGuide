@@ -31,6 +31,17 @@ void main() {
             t['id']! as String,
       };
       expect(decks.keys, containsAll(['d001-P', 'd001-L']));
+      // Tarjimalar (index.json → translations): ru/en, bir xil slaydlar soni.
+      for (final lang in ['ru', 'en']) {
+        final t = (await LectureDecks.forTopic(
+          rootBundle,
+          'd001-L',
+          lang: lang,
+        ))!;
+        expect(t.lang, lang);
+        expect(t.slides.length, decks['d001-L']!.slides.length);
+        expect(t.topics, decks['d001-L']!.topics);
+      }
       for (final MapEntry(:key, :value) in decks.entries) {
         expect(ids, contains(key));
         expect(value.draft, isTrue, reason: 'tekshirilmagan — qoralama');
@@ -49,9 +60,12 @@ void main() {
     testWidgets('1-mavzu: tayyor taqdimot (${lang.name})', (tester) async {
       installDiffFakes();
       final l = lookupAppLocalizations(lang.locale);
+      // uz — rasmli muallif decki; ru/en — uning tarjimasi (matn shablonida).
       final deck = (await tester.runAsync(
-        () => LectureDecks.forTopic(rootBundle, 'd001-P'),
+        () => LectureDecks.forTopic(rootBundle, 'd001-P', lang: lang.name),
       ))!;
+      expect(deck.lang, lang.name);
+      final pictures = lang == AppLanguage.uz;
       final n = deck.slides.length;
       final s = await makeServices(
         tester,
@@ -68,15 +82,18 @@ void main() {
 
       await goTo(tester, '/learn/lecture/d001-P');
       expect(find.text(l.lectureCounter(1, n)), findsOneWidget);
-      Finder slideImage(int k) => find.byKey(ValueKey(deck.slides[k].image));
-      expect(slideImage(0), findsOneWidget);
-      // "Qoralama" yozuvi slayd rasmining o'zida; alohida ogohlantirish yo'q.
+      Finder slideView(int k) => pictures
+          ? find.byKey(ValueKey(deck.slides[k].image))
+          : find.text(deck.slides[k].title);
+      expect(slideView(0), findsWidgets);
+      // uz: "Qoralama" yozuvi slayd rasmining o'zida; ru/en (rasmsiz) —
+      // halol ogohlantirish slaydda. "Faqat o'zbekcha" endi yo'q.
       expect(deck.draft, isTrue);
-      expect(find.textContaining(l.lectureDraftNotice), findsNothing);
       expect(
-        find.textContaining(l.lectureUzOnly),
-        lang == AppLanguage.uz ? findsNothing : findsOneWidget,
+        find.textContaining(l.lectureDraftNotice),
+        pictures ? findsNothing : findsOneWidget,
       );
+      expect(find.textContaining(l.lectureUzOnly), findsNothing);
 
       // Ustoz izohi: yashirin, tugma bilan ochiladi va keyingi slaydda ham
       // ochiq qoladi.
@@ -86,7 +103,7 @@ void main() {
         await tester.pumpAndSettle();
       }
       final slide = deck.slides[withNote];
-      expect(slideImage(withNote), findsOneWidget);
+      expect(slideView(withNote), findsWidgets);
       expect(find.text(slide.note!), findsNothing);
       await tester.tap(find.byTooltip(l.lectureNotesShow));
       await tester.pumpAndSettle();
@@ -102,7 +119,7 @@ void main() {
         await tester.pumpAndSettle();
       }
       expect(find.text(l.lectureCounter(n, n)), findsOneWidget);
-      expect(slideImage(n - 1), findsOneWidget);
+      expect(slideView(n - 1), findsWidgets);
       await tester.tap(find.text(l.lectureNext));
       await tester.pumpAndSettle();
       expect(find.text(l.lectureCounter(n, n)), findsOneWidget);

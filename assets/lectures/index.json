@@ -1,4 +1,5 @@
 {
  "schema": 1,
- "decks": ["d001.json"]
+ "decks": ["d001.json"],
+ "translations": {"d001.json": {"ru": "d001.ru.json", "en": "d001.en.json"}}
 }

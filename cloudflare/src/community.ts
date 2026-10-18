@@ -16,6 +16,7 @@ import type { Ctx, Session } from './context';
 import { iso } from './context';
 import { hex, hmac } from './crypto';
 import { ApiError, badRequest, conflict, forbidden, json, notFound, readJson } from './http';
+import { guardAbuse } from './moderation';
 import { hit } from './ratelimit';
 import BUNDLED_SEED from '../seed/community_seed.json';
 
@@ -57,6 +58,24 @@ export const OWNER_VERIFICATION = {
 // ------------------------------------------------------------- helpers
 export async function userHash(ctx: Ctx, userId: string): Promise<string> {
   return hex(await hmac(ctx.keys.community, userId));
+}
+
+/**
+ * Muallifning ilovaga chiqadigan belgisi (`author.ref`, D-62): barqaror,
+ * lekin muallifga qaytarib bo'lmaydi — HMAC(server kaliti, user_hash) ning
+ * 24 belgisi. Foydalanuvchi id si, email yoki `user_hash` (admin
+ * yo'llaridagi kalit) chiqmaydi. Faqat "bloklash" uchun.
+ */
+export async function authorRef(ctx: Ctx, authorHash: string): Promise<string> {
+  return hex(await hmac(ctx.keys.community, `author-ref:${authorHash}`)).slice(0, 24);
+}
+
+type Refs = Map<string, string>;
+
+async function refsFor(ctx: Ctx, hashes: Iterable<string>): Promise<Refs> {
+  const uniq = [...new Set(hashes)];
+  const refs = await Promise.all(uniq.map((h) => authorRef(ctx, h)));
+  return new Map(uniq.map((h, i) => [h, refs[i]]));
 }
 
 interface Member {
@@ -166,7 +185,7 @@ interface AuthorCols {
 const AUTHOR_SELECT = `m.status AS m_status, m.method AS m_method, m.role AS m_role,
   m.country AS m_country, m.is_owner AS m_owner`;
 
-function author(ctx: Ctx, r: AuthorCols, v: Viewer | null) {
+function author(ctx: Ctx, r: AuthorCols, v: Viewer | null, refs: Refs) {
   const verified = r.m_status === 'verified';
   return {
     kind: r.m_owner === 1 ? 'owner' : verified ? 'specialist' : 'member',
@@ -176,6 +195,7 @@ function author(ctx: Ctx, r: AuthorCols, v: Viewer | null) {
     role: verified ? r.m_role : null,
     country: verified ? r.m_country : null,
     is_me: v?.hash === r.author_hash,
+    ref: refs.get(r.author_hash) ?? null,
   };
 }
 
@@ -425,7 +445,7 @@ interface QuestionRow extends AuthorCols {
 /** To'xtatilgan muallif postlari ommaga ko'rsatilmaydi (admin tiklaguncha). */
 const VISIBLE = `COALESCE(m.status, 'none') <> 'suspended'`;
 
-function questionJson(ctx: Ctx, q: QuestionRow, v: Viewer | null, full = false) {
+function questionJson(ctx: Ctx, q: QuestionRow, v: Viewer | null, refs: Refs, full = false) {
   return {
     id: q.id,
     title: q.title,
@@ -436,13 +456,22 @@ function questionJson(ctx: Ctx, q: QuestionRow, v: Viewer | null, full = false) 
     answer_count: q.answer_count,
     best_answer_id: q.best_answer_id,
     created_at: iso(q.created_at),
-    author: author(ctx, q, v),
+    author: author(ctx, q, v, refs),
   };
 }
 
-/** `?1` — mavzu (yoki NULL), `?2` — muallif (faqat "mening savollarim"). */
+/** Ko'ruvchi bloklagan muallif savoli (`?3` — ko'ruvchi hash yoki ''): unga ko'rsatilmaydi. */
+const NOT_BLOCKED_Q = `NOT EXISTS (SELECT 1 FROM community_blocks b WHERE b.viewer_hash = ?3 AND b.author_hash = q.author_hash)`;
+/** Xuddi shu, javoblar uchun (`?2` — ko'ruvchi hash yoki ''). */
+const NOT_BLOCKED_A = `NOT EXISTS (SELECT 1 FROM community_blocks b WHERE b.viewer_hash = ?2 AND b.author_hash = a.author_hash)`;
+
+/**
+ * `?1` — mavzu (yoki NULL), `?2` — muallif (faqat "mening savollarim"),
+ * `?3` — ko'ruvchi (bloklari; mehmon — '').
+ */
 const LIST_FROM = `FROM community_questions q LEFT JOIN community_members m ON m.user_hash = q.author_hash
-  WHERE ${VISIBLE} AND (?1 IS NULL OR q.topic = ?1) AND (?2 IS NULL OR q.author_hash = ?2)`;
+  WHERE ${VISIBLE} AND (?1 IS NULL OR q.topic = ?1) AND (?2 IS NULL OR q.author_hash = ?2)
+    AND ${NOT_BLOCKED_Q}`;
 
 export async function listQuestions(ctx: Ctx): Promise<Response> {
   const v = await optionalViewer(ctx);
@@ -453,7 +482,7 @@ export async function listQuestions(ctx: Ctx): Promise<Response> {
   if (mine && !v) throw new ApiError(401, 'unauthorized');
   const limit = Math.min(50, Math.max(1, Number(url.searchParams.get('limit') ?? 20) || 20));
   const offset = Math.min(5000, Math.max(0, Number(url.searchParams.get('offset') ?? 0) || 0));
-  const args = [topic, mine ? v!.hash : null];
+  const args = [topic, mine ? v!.hash : null, v?.hash ?? ''];
   const total = await ctx.db
     .prepare(`SELECT COUNT(*) AS n ${LIST_FROM}`)
     .bind(...args)
@@ -461,13 +490,14 @@ export async function listQuestions(ctx: Ctx): Promise<Response> {
   const rows = await ctx.db
     .prepare(
       `SELECT q.*, ${AUTHOR_SELECT} ${LIST_FROM}
-       ORDER BY q.pinned DESC, q.created_at DESC, q.id LIMIT ?3 OFFSET ?4`,
+       ORDER BY q.pinned DESC, q.created_at DESC, q.id LIMIT ?4 OFFSET ?5`,
     )
     .bind(...args, limit, offset)
     .all<QuestionRow>();
   const n = total?.n ?? 0;
+  const refs = await refsFor(ctx, rows.results.map((q) => q.author_hash));
   return json({
-    items: rows.results.map((q) => questionJson(ctx, q, v)),
+    items: rows.results.map((q) => questionJson(ctx, q, v, refs)),
     total: n,
     next_offset: offset + rows.results.length < n ? offset + rows.results.length : null,
   });
@@ -481,6 +511,7 @@ export async function createQuestion(ctx: Ctx): Promise<Response> {
   const text = str(body.body, 'body', 10, 4000);
   const topic = parseTopic(body.topic);
   guardPii(title, text);
+  guardAbuse(title, text);
   await hit(ctx.db, `cask:${v.hash.slice(0, 32)}`, 5, 86400, ctx.now);
   const lang = detectLang(`${title}\n${text}`, LANGS.has(body.lang as string) ? body.lang : undefined);
   const id = crypto.randomUUID();
@@ -526,14 +557,15 @@ export async function getQuestion(ctx: Ctx, id: string): Promise<Response> {
       `SELECT a.*, ${AUTHOR_SELECT},
          EXISTS (SELECT 1 FROM community_votes x WHERE x.answer_id = a.id AND x.voter_hash = ?2) AS voted
        FROM community_answers a LEFT JOIN community_members m ON m.user_hash = a.author_hash
-       WHERE a.question_id = ?1 AND ${VISIBLE}
+       WHERE a.question_id = ?1 AND ${VISIBLE} AND ${NOT_BLOCKED_A}
        ORDER BY (a.id = ?3) DESC, a.upvotes DESC, a.created_at ASC LIMIT 200`,
     )
     .bind(q.id, v?.hash ?? '', q.best_answer_id ?? '')
     .all<AnswerRow>();
   const verified = isVerified(v?.member ?? null);
+  const refs = await refsFor(ctx, [q.author_hash, ...answers.results.map((a) => a.author_hash)]);
   return json({
-    question: questionJson(ctx, q, v, true),
+    question: questionJson(ctx, q, v, refs, true),
     answers: answers.results.map((a) => ({
       id: a.id,
       body: a.body,
@@ -542,7 +574,7 @@ export async function getQuestion(ctx: Ctx, id: string): Promise<Response> {
       voted: a.voted === 1,
       is_best: a.id === q.best_answer_id,
       created_at: iso(a.created_at),
-      author: author(ctx, a, v),
+      author: author(ctx, a, v, refs),
     })),
     viewer: {
       signed_in: v !== null,
@@ -562,6 +594,7 @@ export async function createAnswer(ctx: Ctx, qid: string): Promise<Response> {
   const body = await readJson(ctx.req);
   const text = str(body.body, 'body', 10, 4000);
   guardPii(text);
+  guardAbuse(text);
   await hit(ctx.db, `canswer:${v.hash.slice(0, 32)}`, 20, 86400, ctx.now);
   const lang = detectLang(text, LANGS.has(body.lang as string) ? body.lang : undefined);
   const id = crypto.randomUUID();
@@ -747,6 +780,60 @@ async function maybeSuspend(ctx: Ctx, target: string): Promise<void> {
     .bind(target, ctx.now)
     .run();
   await audit(ctx, null, 'community_auto_suspended', target.slice(0, 16), { threshold: REPORT_THRESHOLD });
+}
+
+// ---------------------------------------------------------------- blocks
+/**
+ * `POST /v1/community/blocks {kind, id}` — shu post muallifini bloklash
+ * (D-62). Ilova `author.ref` ni biladi, lekin server uni muallifga qaytara
+ * olmaydi — shuning uchun post orqali. Bloklangan muallif savol va javoblari
+ * shu ko'ruvchiga server ro'yxatlarida chiqmaydi. O'zini va egasini
+ * (LabGuide jamoasi) bloklab bo'lmaydi — ularga shikoyat.
+ */
+export async function block(ctx: Ctx): Promise<Response> {
+  const v = await viewer(ctx);
+  const body = await readJson(ctx.req);
+  const kind = body.kind;
+  if (kind !== 'question' && kind !== 'answer') throw badRequest('invalid_kind');
+  if (typeof body.id !== 'string' || !ID_RE.test(body.id)) throw badRequest('invalid_id');
+  const post = await ctx.db
+    .prepare(
+      kind === 'question'
+        ? 'SELECT author_hash FROM community_questions WHERE id = ?1'
+        : 'SELECT author_hash FROM community_answers WHERE id = ?1',
+    )
+    .bind(body.id)
+    .first<{ author_hash: string }>();
+  if (!post) throw notFound();
+  if (post.author_hash === v.hash) throw badRequest('own_post');
+  if ((await member(ctx, post.author_hash))?.is_owner === 1) throw forbidden('owner');
+  await hit(ctx.db, `cblock:${v.hash.slice(0, 32)}`, 100, 86400, ctx.now);
+  await ctx.db
+    .prepare(
+      `INSERT INTO community_blocks (viewer_hash, author_hash, created_at) VALUES (?1, ?2, ?3)
+       ON CONFLICT DO NOTHING`,
+    )
+    .bind(v.hash, post.author_hash, ctx.now)
+    .run();
+  return json({ blocked: true, ref: await authorRef(ctx, post.author_hash) });
+}
+
+/** `GET /v1/community/blocks` — bloklanganlar belgilari (boshqa qurilma bilan sinxron). */
+export async function listBlocks(ctx: Ctx): Promise<Response> {
+  const v = await viewer(ctx);
+  const rows = await ctx.db
+    .prepare('SELECT author_hash FROM community_blocks WHERE viewer_hash = ?1 ORDER BY created_at LIMIT 1000')
+    .bind(v.hash)
+    .all<{ author_hash: string }>();
+  const refs = await refsFor(ctx, rows.results.map((r) => r.author_hash));
+  return json({ refs: [...refs.values()] });
+}
+
+/** `DELETE /v1/community/blocks` — hammasini blokdan chiqarish. */
+export async function clearBlocks(ctx: Ctx): Promise<Response> {
+  const v = await viewer(ctx);
+  await ctx.db.prepare('DELETE FROM community_blocks WHERE viewer_hash = ?1').bind(v.hash).run();
+  return json({ refs: [] });
 }
 
 // ------------------------------------------------------------ translation
@@ -1081,6 +1168,7 @@ export function communityDeleteStatements(db: D1Database, h: string): D1Prepared
     `DELETE FROM community_answers WHERE author_hash = ?1 OR question_id IN (${myQuestions})`,
     `DELETE FROM community_questions WHERE author_hash = ?1`,
     `DELETE FROM community_reports WHERE reporter_hash = ?1 OR target_user_hash = ?1`,
+    `DELETE FROM community_blocks WHERE viewer_hash = ?1 OR author_hash = ?1`,
     `DELETE FROM community_members WHERE user_hash = ?1`,
   ].map((q) => db.prepare(q).bind(h));
 }

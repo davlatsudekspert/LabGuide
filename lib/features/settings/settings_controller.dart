@@ -1,6 +1,9 @@
 import 'package:material_ui/material_ui.dart';
 
 import '../../core/storage/kv_store.dart';
+import '../../design/themes.dart';
+
+export '../../design/themes.dart' show LgThemeId;
 
 /// Foydalanuvchi tanlagan yo'nalish. Bu faqat UI afzalligi: hech qanday
 /// ruxsat bermaydi (haqiqiy vakolat serverda tekshiriladi).
@@ -66,6 +69,9 @@ class SettingsController extends ChangeNotifier {
           UnitSystem.tryParse(_store.getString(StoreKeys.unitSystem)) ??
           UnitSystem.fromSystem(systemLocales),
       _themeMode = _parseTheme(_store.getString(StoreKeys.themeMode)),
+      _appTheme =
+          LgThemeId.tryParse(_store.getString(StoreKeys.appTheme)) ??
+          LgThemeId.classic,
       _role = _parseRole(_store.getString(StoreKeys.role)),
       _onboarded = _store.getBool(StoreKeys.onboarded) ?? false,
       // Migratsiya: onboarding tugatgan foydalanuvchi tilni tanlagan deb
@@ -79,6 +85,7 @@ class SettingsController extends ChangeNotifier {
   AppLanguage _language;
   UnitSystem _unitSystem;
   ThemeMode _themeMode;
+  LgThemeId _appTheme;
   AppRole? _role;
   bool _onboarded;
   bool _languageChosen;
@@ -86,6 +93,10 @@ class SettingsController extends ChangeNotifier {
   AppLanguage get language => _language;
   UnitSystem get unitSystem => _unitSystem;
   ThemeMode get themeMode => _themeMode;
+
+  /// Tanlangan mavzu (Klassik / Ivory) — D-64. Kunduzgi/tungi rejim
+  /// ([themeMode]) undan mustaqil.
+  LgThemeId get appTheme => _appTheme;
 
   /// Onboardingda hali tanlanmagan bo'lsa `null`.
   AppRole? get role => _role;
@@ -131,6 +142,13 @@ class SettingsController extends ChangeNotifier {
     await _store.setString(StoreKeys.themeMode, value.name);
   }
 
+  Future<void> setAppTheme(LgThemeId value) async {
+    if (_appTheme == value) return;
+    _appTheme = value;
+    notifyListeners();
+    await _store.setString(StoreKeys.appTheme, value.name);
+  }
+
   Future<void> setRole(AppRole value) async {
     if (_role == value) return;
     _role = value;
@@ -158,6 +176,7 @@ class SettingsController extends ChangeNotifier {
     _language = AppLanguage.fromSystem(systemLocales);
     _unitSystem = UnitSystem.fromSystem(systemLocales);
     _themeMode = ThemeMode.system;
+    _appTheme = LgThemeId.classic;
     _role = null;
     _onboarded = false;
     _languageChosen = false;

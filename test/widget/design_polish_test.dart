@@ -8,6 +8,7 @@ import 'package:labguide/app/widgets/lg_page.dart';
 import 'package:labguide/design/theme.dart';
 import 'package:labguide/design/widgets/lg_widgets.dart';
 import 'package:labguide/features/home/home_screen.dart';
+import 'package:labguide/features/toifa/toifa_screens.dart';
 import 'package:labguide/features/settings/settings_controller.dart';
 import 'package:labguide/l10n/gen/app_localizations.dart';
 import 'package:material_ui/material_ui.dart';
@@ -161,4 +162,60 @@ void main() {
       }
     });
   }
+
+  // Taklif 6: Toifa kartasi Kunlik savol kartasi uslubida — qattiq chegara
+  // yo'q, yumshoq soya (LgShadow); tunda soya o'rniga juda xira chet.
+  for (final dark in [false, true]) {
+    testWidgets(
+      'toifa kirish kartasi: chegarasiz, soya (${dark ? 'tun' : 'kun'})',
+      (tester) async {
+        final s = await makeServices(
+          tester,
+          themeMode: dark ? ThemeMode.dark : ThemeMode.light,
+        );
+        tester.platformDispatcher.localesTestValue = [const Locale('uz')];
+        await pumpApp(tester, s, size: const Size(390, 2400));
+        final box = find
+            .descendant(
+              of: find.byType(ToifaEntryCard),
+              matching: find.byType(DecoratedBox),
+            )
+            .first;
+        final d = tester.widget<DecoratedBox>(box).decoration as BoxDecoration;
+        if (dark) {
+          expect(d.boxShadow ?? const [], isEmpty);
+          expect(d.border, isNotNull);
+        } else {
+          expect(d.border, isNull);
+          expect(d.boxShadow, isNotEmpty);
+        }
+        expect(tester.takeException(), isNull);
+      },
+    );
+  }
+
+  // Taklif 7: sarlavhali yuklanish (sinflar) — spinner o'rniga kontur, sarlavha
+  // kichik izoh va screen reader yorlig'i sifatida.
+  testWidgets('sarlavhali yuklanish — skeleton (izoh bilan)', (tester) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: buildLgTheme(Brightness.light),
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
+        locale: const Locale('en'),
+        home: Scaffold(
+          body: SingleChildScrollView(
+            child: LgSkeleton(caption: _l(AppLanguage.en).classesLoading),
+          ),
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+    expect(find.byType(CircularProgressIndicator), findsNothing);
+    expect(find.text(_l(AppLanguage.en).classesLoading), findsOneWidget);
+    expect(
+      find.bySemanticsLabel(_l(AppLanguage.en).classesLoading),
+      findsOneWidget,
+    );
+  });
 }

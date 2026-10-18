@@ -276,6 +276,78 @@ void main() {
     expect(find.byKey(const ValueKey('admin-suspend')), findsNothing);
   });
 
+  testWidgets('hisobni o‘chirish (D-63): to‘liq email qayta kiritiladi, '
+      'tasdiq oynasi, jurnal; o‘zi/admin uchun panel yo‘q', (tester) async {
+    final l = _l(AppLanguage.uz);
+    final lab = await _seeded();
+    final s = await _setup(tester, lab);
+    await _signIn(tester, s, _owner);
+    final userId = (await lab.adminAccounts(email: _user)).rows.single.userId;
+    // Emailda kelgan so'rov: ro'yxatda aniq email bo'yicha topiladi va ochiladi.
+    await goTo(tester, '/profile/admin/users');
+    await tester.enterText(
+      find.descendant(
+        of: find.byKey(const ValueKey('admin-user-search')),
+        matching: find.byType(TextField),
+      ),
+      _user,
+    );
+    await _tap(tester, find.byKey(const ValueKey('admin-user-search-button')));
+    await _tap(tester, find.text('st***@example.com'));
+    await _see(tester, find.text(l.admDeleteTitle));
+    final field = find.descendant(
+      of: find.byKey(const ValueKey('admin-delete-email')),
+      matching: find.byType(TextField),
+    );
+    final button = find.byKey(const ValueKey('admin-delete-account'));
+    // Bo'sh maydon — tugma o'chiq.
+    await _see(tester, button);
+    expect(tester.widget<LgButton>(button).onPressed, isNull);
+
+    // Boshqa hisobning emaili — server rad etadi (tasdiq oynasidan keyin).
+    await tester.enterText(field, _owner);
+    await _tap(tester, button);
+    expect(find.text(l.admDeleteConfirmTitle), findsOneWidget);
+    expect(
+      find.text(l.admDeleteConfirmBody('st***@example.com')),
+      findsOneWidget,
+    );
+    await tester.tap(find.text(l.admDeleteButton).last);
+    await tester.pumpAndSettle();
+    expect(find.text(l.admDeleteMismatch), findsOneWidget);
+    expect(lab.deletedByAdmin, isEmpty);
+
+    // Bekor qilish — hech narsa o'chmaydi.
+    await tester.enterText(field, '  STUDENT.ONE@example.com ');
+    await _tap(tester, button);
+    await tester.tap(find.text(l.actionCancel).last);
+    await tester.pumpAndSettle();
+    expect(lab.deletedByAdmin, isEmpty);
+
+    // To'g'ri email + tasdiq — o'chadi, jurnalda.
+    await _tap(tester, button);
+    await tester.tap(find.text(l.admDeleteButton).last);
+    await tester.pumpAndSettle();
+    expect(lab.deletedByAdmin, [userId]);
+    expect(find.text(l.admDeleteDone), findsWidgets);
+    expect(
+      lab.audit.map((e) => e.action),
+      contains('account_deleted_by_admin'),
+    );
+    expect((await lab.adminAccounts(email: _user)).rows, isEmpty);
+    // Sahifa "o'chirildi" holatida; ro'yxatga qaytish tugmasi.
+    expect(find.byKey(const ValueKey('admin-user-deleted')), findsOneWidget);
+    await _tap(tester, find.text(l.adminUsers).last);
+    expect(find.text(l.adminNoUsers), findsOneWidget);
+    expect(find.text('st***@example.com'), findsNothing);
+
+    // O'zi — o'chirish paneli yo'q.
+    final me = (await lab.adminAccounts(email: _owner)).rows.single.userId;
+    await goTo(tester, '/profile/admin/users/$me');
+    await _see(tester, find.text(l.admRoleSelfNote));
+    expect(find.byKey(const ValueKey('admin-delete-account')), findsNothing);
+  });
+
   testWidgets('oddiy foydalanuvchi panelni ochmaydi; yo‘ldan kirsa ham — '
       '“faqat admin uchun”', (tester) async {
     final l = _l(AppLanguage.uz);

@@ -397,6 +397,34 @@ class FakeCommunityBackend implements CommunityBackend {
     }
   }
 
+  /// Serverdagi bloklar (ko'ruvchi uid → muallif uid lari).
+  final Map<String, Set<String>> blocks = {};
+
+  @override
+  Future<String?> blockAuthor({
+    required PostKind kind,
+    required String id,
+  }) async {
+    final uid = _uid;
+    final author = kind == PostKind.question ? _q(id).author : _a(id).author;
+    if (author == uid) {
+      throw const CommunityException(BackendFailure.invalid, 'own_post');
+    }
+    if (_members[author]?.owner == true) {
+      throw const CommunityException(BackendFailure.forbidden, 'owner');
+    }
+    (blocks[uid] ??= {}).add(author);
+    return 'ref-$author';
+  }
+
+  @override
+  Future<List<String>> blockedRefs() async => [
+    for (final a in blocks[_uid] ?? const <String>{}) 'ref-$a',
+  ];
+
+  @override
+  Future<void> clearBlocks() async => blocks.remove(_uid);
+
   @override
   Future<PostTranslation> translate({
     required PostKind kind,

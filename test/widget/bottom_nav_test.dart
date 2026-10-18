@@ -103,6 +103,8 @@ void main() {
   for (final (name, p, brightness) in [
     ('light', LgPalette.light, Brightness.light),
     ('dark', LgPalette.dark, Brightness.dark),
+    ('ivory light', LgPalette.ivoryLight, Brightness.light),
+    ('ivory dark', LgPalette.ivoryDark, Brightness.dark),
   ]) {
     test(
       'glass keeps ≥ 4.5:1 text/icon contrast over any backdrop ($name)',

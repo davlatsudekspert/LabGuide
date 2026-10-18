@@ -21,6 +21,9 @@ abstract interface class KeyValueStore {
 abstract final class StoreKeys {
   static const language = 'settings.language';
   static const themeMode = 'settings.theme';
+
+  /// Ilova mavzusi (`classic` / `ivory`) — D-64.
+  static const appTheme = 'settings.appTheme';
   static const unitSystem = 'settings.unitSystem';
   static const role = 'settings.role';
   static const onboarded = 'settings.onboarded';
@@ -103,6 +106,7 @@ abstract final class StoreKeys {
   static const all = <String>{
     language,
     themeMode,
+    appTheme,
     unitSystem,
     role,
     onboarded,

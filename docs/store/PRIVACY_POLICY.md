@@ -1,6 +1,6 @@
 # LabGuide — maxfiylik siyosati / Политика конфиденциальности / Privacy Policy
 
-Kuchga kirgan sana / Дата вступления в силу / Effective date: **2026-10-17**\
+Kuchga kirgan sana / Дата вступления в силу / Effective date: **2026-10-18**\
 Aloqa / Контакт / Contact: **labguide@nfcstore.uz**
 
 ## O‘zbekcha
@@ -175,8 +175,13 @@ post qabul qilinmaydi; bemor ma’lumotini yozmang.
   ko‘rinadi; egasi admin panelida shikoyatlar post bo‘yicha umumlashtirib ko‘rsatiladi
   (shikoyatchi kimligi ko‘rsatilmaydi). Kamida 3 ta turli foydalanuvchi shikoyati hisobning
   hamjamiyatda yozishini administrator ko‘rib chiqquncha to‘xtatadi. Administrator postni
-  o‘chirishi yoki qadashi, hisobni hamjamiyatda to‘xtatishi yoki tiklashi mumkin. Har bir
-  foydalanuvchi muallifni o‘z qurilmasida bloklashi mumkin.
+  o‘chirishi yoki qadashi, hisobni hamjamiyatda to‘xtatishi yoki tiklashi mumkin.
+- **So‘z filtri:** savol va javob yuborilganda server matnni haqorat va so‘kinish so‘zlari
+  ro‘yxati bilan solishtiradi; topilsa, post saqlanmaydi (matn ham, natija ham yozilmaydi).
+- **Bloklash:** har bir foydalanuvchi muallifni bloklashi mumkin. Blok qurilmada va — hisob bilan
+  kirgan bo‘lsangiz — serverda saqlanadi (sizning va muallifning hamjamiyat identifikatorlari
+  juftligi; email yoki ism emas), shunda uning postlari boshqa qurilmangizda ham ko‘rinmaydi.
+  Muallifga bloklangani bildirilmaydi. “Hammasini qaytarish” bloklarni o‘chiradi.
 
 Hamjamiyat ma’lumotlari hisob o‘chirilguncha (yoki administrator postni o‘chirguncha) saqlanadi.
 
@@ -217,8 +222,8 @@ Profil → Maxfiylik va ma’lumotlar → “Hisobni o‘chirish” serverdan bu
 barcha sessiyalar, Google va Apple bog‘lanishlari, ustoz va admin yozuvlari, guruhlardagi a’zolik
 va taxallus, test javoblari, urinishlar va ballar, ustoz belgilari, “Taklif va yordam” murojaatlari
 va ulardagi xabarlar, hamjamiyatdagi savol va javoblaringiz (va savollaringizga yozilgan javoblar),
-ularning tarjimalari, ovozlaringiz, siz yuborgan va sizga qarshi hamjamiyat shikoyatlari, mutaxassis
-tasdig‘i holati. Agar siz ustoz bo‘lsangiz — **siz yaratgan guruhlar ham o‘chadi**: a’zolari,
+ularning tarjimalari, ovozlaringiz, siz yuborgan va sizga qarshi hamjamiyat shikoyatlari, siz
+qo‘ygan va sizga qo‘yilgan bloklar, mutaxassis tasdig‘i holati. Agar siz ustoz bo‘lsangiz — **siz yaratgan guruhlar ham o‘chadi**: a’zolari,
 mavzulari, topshiriqlari, javob kalitlari va barcha talabalar natijalari. Shundan so‘ng qurilmadagi
 lokal ma’lumotlar ham tozalanadi. O‘chirilgan ma’lumot Cloudflare D1 ning avtomatik tiklash
 nusxalarida (Time Travel) cheklangan muddat qolishi mumkin, so‘ng o‘z-o‘zidan yo‘qoladi.
@@ -234,8 +239,13 @@ nusxalarida (Time Travel) cheklangan muddat qolishi mumkin, so‘ng o‘z-o‘zi
   agar sizni administrator qilib qo‘shilgan bo‘lsa — niqoblangan email bilan admin vakolati tarixi.
 - Guruhdan chiqish faqat a’zolikni o‘chiradi; natijalaringiz hisobingiz yoki guruh o‘chirilguncha
   ustozda qoladi.
-- Ilovaga kira olmasangiz (masalan, hisob to‘xtatilgan bo‘lsa), hisobga bog‘langan email
-  manzilidan labguide@nfcstore.uz ga yozing — so‘rov qo‘lda ko‘rib chiqiladi.
+- **Email orqali so‘rov:** ilovaga kira olmasangiz (masalan, hisob to‘xtatilgan bo‘lsa yoki
+  qurilma yo‘qolgan bo‘lsa), hisobga bog‘langan email manzilidan labguide@nfcstore.uz ga “hisobni
+  o‘chirish” deb yozing. Administrator hisobni shu emailning aniq mosligi bo‘yicha topadi va admin
+  panelidagi o‘chirish vositasi bilan **30 kun ichida** o‘chiradi — yuqoridagi bilan bir xil hajmda
+  (amal xavfsizlik jurnaliga ichki identifikator bilan yoziladi) va bajarilganini javob xatida
+  bildiradi. Apple bilan kirgan hisobda bu holda Apple ruxsatini server bekor qila olmasligi mumkin
+  (buning uchun ilovadagi Apple tasdig‘i kerak) — LabGuide’ni iPhone Sozlamalaridan ham olib tashlang.
 
 ### 11. Saqlash muddati (qisqacha)
 
@@ -447,8 +457,13 @@ Cloudflare, Resend и Brevo обрабатывают данные только �
   администраторы; в панели владельца жалобы показываются сгруппированными по записи (кто
   пожаловался, не показывается). Жалобы не менее 3 разных пользователей приостанавливают
   возможность писать в сообществе до проверки администратором. Администратор может удалить или
-  закрепить запись, приостановить или восстановить аккаунт в сообществе. Каждый пользователь может
-  заблокировать автора на своём устройстве.
+  закрепить запись, приостановить или восстановить аккаунт в сообществе.
+- **Фильтр слов:** при отправке вопроса или ответа сервер сверяет текст со списком оскорбительных и
+  нецензурных слов; если они найдены, запись не сохраняется (ни текст, ни результат проверки).
+- **Блокировка:** каждый пользователь может заблокировать автора. Блокировка хранится на устройстве
+  и — если вы вошли в аккаунт — на сервере (пара идентификаторов сообщества ваш/автора; не email и
+  не имя), поэтому его записи не видны и на другом вашем устройстве. Автор о блокировке не
+  уведомляется. «Вернуть всех» удаляет блокировки.
 
 Данные сообщества хранятся до удаления аккаунта (или до удаления записи администратором).
 
@@ -489,7 +504,8 @@ Workers AI), Resend, Brevo, Google, Apple и GitHub работают на гло
 все сессии, привязки Google и Apple, записи преподавателя и администратора, участие и псевдоним в
 группах, ответы на тесты, попытки и баллы, отметки преподавателя, обращения «Предложения и помощь» и
 сообщения в них, ваши вопросы и ответы в сообществе (и ответы на ваши вопросы), их переводы, ваши
-голоса, жалобы сообщества, отправленные вами и на вас, статус подтверждения специалиста. Если вы
+голоса, жалобы сообщества, отправленные вами и на вас, поставленные вами и на вас блокировки,
+статус подтверждения специалиста. Если вы
 преподаватель — **созданные вами группы тоже удаляются**: их участники, темы, задания, ключи
 ответов и результаты всех студентов. После этого очищаются и локальные данные на устройстве.
 Удалённые данные могут ограниченное время оставаться в автоматических точках восстановления
@@ -506,8 +522,14 @@ Cloudflare D1 (Time Travel), после чего исчезают сами.
   вас добавляли администратором — история прав администратора с маскированным email.
 - Выход из группы удаляет только участие; ваши результаты остаются у преподавателя до удаления
   аккаунта или группы.
-- Если вы не можете войти в приложение (например, аккаунт приостановлен), напишите на
-  labguide@nfcstore.uz с email, привязанного к аккаунту, — запрос рассматривается вручную.
+- **Запрос по email:** если вы не можете войти в приложение (например, аккаунт приостановлен или
+  устройство утеряно), напишите «удалить аккаунт» на labguide@nfcstore.uz с email, привязанного к
+  аккаунту. Администратор находит аккаунт по точному совпадению этого email и удаляет его
+  инструментом удаления в панели администратора **в течение 30 дней** — в том же объёме, что и выше
+  (действие записывается в журнал безопасности с внутренним идентификатором), и сообщает об этом в
+  ответном письме. Для аккаунта, связанного с Apple, сервер в этом случае может не суметь отозвать
+  доступ Apple (для этого нужно подтверждение Apple в приложении) — уберите LabGuide и в настройках
+  iPhone.
 
 ### 11. Сроки хранения (кратко)
 
@@ -722,7 +744,14 @@ patient data.
   administrators; the owner’s panel shows reports grouped by post (who reported is not shown).
   Reports from at least 3 different users suspend the account’s ability to post in the community
   until an administrator reviews it. An administrator can delete or pin a post, and suspend or
-  restore an account in the community. Each user can block an author on their own device.
+  restore an account in the community.
+- **Word filter:** when a question or answer is sent, the server checks the text against a list of
+  abusive and profane words; if one is found, the post is not saved (neither the text nor the check
+  result is stored).
+- **Blocking:** each user can block an author. The block is kept on the device and — if you are
+  signed in — on the server (a pair of your and the author’s community identifiers; not an email
+  or name), so their posts are hidden on your other devices too. The author is not notified.
+  “Unblock all” removes the blocks.
 
 Community data is kept until the account is deleted (or an administrator deletes the post).
 
@@ -762,7 +791,8 @@ Profile → Privacy and data → “Delete account” permanently removes from t
 all sessions, Google and Apple links, teacher and admin records, group memberships and nicknames,
 test answers, attempts and scores, teacher marks about you, “Feedback & help” requests and their
 messages, your community questions and answers (and answers to your questions), their translations,
-your votes, community reports made by you and about you, and your specialist verification status.
+your votes, community reports made by you and about you, blocks you set and blocks set on you, and
+your specialist verification status.
 If you are a teacher, **the groups you created are deleted too**: their members, topics,
 assignments, answer keys and all students’ results. Local data on the device is then cleared as
 well. Deleted data may remain for a limited time in Cloudflare D1’s automatic restore points (Time
@@ -779,8 +809,13 @@ Travel) and then disappears on its own.
   you were added as an administrator — the administrator-rights history with a masked email.
 - Leaving a group removes only your membership; your results stay with the teacher until your
   account or the group is deleted.
-- If you cannot sign in to the app (for example, the account is suspended), write to
-  labguide@nfcstore.uz from the email linked to the account — the request is handled manually.
+- **Request by email:** if you cannot sign in to the app (for example, the account is suspended or
+  the device is lost), write “delete my account” to labguide@nfcstore.uz from the email linked to
+  the account. An administrator finds the account by an exact match of that email and deletes it
+  with the deletion tool in the admin panel **within 30 days** — to the same extent as above (the
+  action is recorded in the security log with an internal identifier) — and confirms by reply. For
+  an account linked to Apple the server may then be unable to revoke Apple access (that needs the
+  Apple confirmation in the app) — also remove LabGuide in iPhone Settings.
 
 ### 11. Retention (summary)
 

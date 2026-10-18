@@ -2,7 +2,8 @@ import 'package:material_ui/material_ui.dart';
 
 /// LabGuide rang tokenlari — prototype.html (v5) dagi `--bg/--paper/...`
 /// o'zgaruvchilarining aynan o'zi. Kunduzgi: iliq ivory + forest yashil;
-/// tungi: chuqur yashil-qora + yumshoq lime aksent.
+/// tungi: chuqur yashil-qora + yumshoq lime aksent. Boshqa mavzular
+/// ([ivoryLight], [ivoryDark]) — `themes.dart` dagi reestrda (D-64).
 @immutable
 class LgPalette extends ThemeExtension<LgPalette> {
   const LgPalette({
@@ -19,6 +20,8 @@ class LgPalette extends ThemeExtension<LgPalette> {
     required this.amberBg,
     required this.danger,
     required this.shadow,
+    required this.accent,
+    required this.accentInk,
   });
 
   /// Ekran foni.
@@ -62,6 +65,13 @@ class LgPalette extends ThemeExtension<LgPalette> {
   /// Soyalar uchun asosiy rang (shaffofligi alohida beriladi).
   final Color shadow;
 
+  /// Dekorativ aksent (Ivory'da oltin): ingichka halqa, nuqta, chiziq.
+  /// Matn uchun EMAS — kunduzgi fonda kontrasti 3:1 dan past bo'lishi mumkin.
+  final Color accent;
+
+  /// Aksent rangidagi kichik matn (eyebrow): fon/panel/soft ustida ≥ 4,5:1.
+  final Color accentInk;
+
   static const light = LgPalette(
     bg: Color(0xFFF3F3EC),
     paper: Color(0xFFFFFEF9),
@@ -76,6 +86,8 @@ class LgPalette extends ThemeExtension<LgPalette> {
     amberBg: Color(0xFFFFF1DB),
     danger: Color(0xFF9A2B1F),
     shadow: Color(0xFF194C40),
+    accent: Color(0xFF194C40),
+    accentInk: Color(0xFF194C40),
   );
 
   static const dark = LgPalette(
@@ -92,6 +104,47 @@ class LgPalette extends ThemeExtension<LgPalette> {
     amberBg: Color(0xFF3F3324),
     danger: Color(0xFFFFB4A6),
     shadow: Color(0xFF000000),
+    accent: Color(0xFFBFE0A8),
+    accentInk: Color(0xFFBFE0A8),
+  );
+
+  /// Ivory (D-64): fil suyagi fon, oq-iliq kartalar, deyarli qora asosiy
+  /// rang (tugma, tanlangan tab, Lab), oltin aksent kam joyda.
+  static const ivoryLight = LgPalette(
+    bg: Color(0xFFF3F1EC),
+    paper: Color(0xFFFCFBF8),
+    ink: Color(0xFF141414),
+    sub: Color(0xFF5F5B54),
+    line: Color(0xFFE5E1D8),
+    outline: Color(0xFF8A847A),
+    brand: Color(0xFF141414),
+    onBrand: Color(0xFFF8F5EE),
+    soft: Color(0xFFEAE6DD),
+    amber: Color(0xFF7B4D0B),
+    amberBg: Color(0xFFF8EDDA),
+    danger: Color(0xFF9A2B1F),
+    shadow: Color(0xFF3A332A),
+    accent: Color(0xFFC9A86A),
+    accentInk: Color(0xFF7A5A22),
+  );
+
+  /// Ivory tungi: ko'mir/siyoh fon, ivory matn va asosiy rang, oltin aksent.
+  static const ivoryDark = LgPalette(
+    bg: Color(0xFF0F1116),
+    paper: Color(0xFF1A1C22),
+    ink: Color(0xFFF2EEE5),
+    sub: Color(0xFFB4AEA3),
+    line: Color(0xFF2B2E35),
+    outline: Color(0xFF75706A),
+    brand: Color(0xFFEDE6D6),
+    onBrand: Color(0xFF141414),
+    soft: Color(0xFF272A31),
+    amber: Color(0xFFF0C586),
+    amberBg: Color(0xFF3A3226),
+    danger: Color(0xFFFFB4A6),
+    shadow: Color(0xFF000000),
+    accent: Color(0xFFD2B57E),
+    accentInk: Color(0xFFD9BF8C),
   );
 
   static LgPalette of(BuildContext context) =>
@@ -112,6 +165,8 @@ class LgPalette extends ThemeExtension<LgPalette> {
     Color? amberBg,
     Color? danger,
     Color? shadow,
+    Color? accent,
+    Color? accentInk,
   }) {
     return LgPalette(
       bg: bg ?? this.bg,
@@ -127,6 +182,8 @@ class LgPalette extends ThemeExtension<LgPalette> {
       amberBg: amberBg ?? this.amberBg,
       danger: danger ?? this.danger,
       shadow: shadow ?? this.shadow,
+      accent: accent ?? this.accent,
+      accentInk: accentInk ?? this.accentInk,
     );
   }
 
@@ -147,6 +204,8 @@ class LgPalette extends ThemeExtension<LgPalette> {
       amberBg: Color.lerp(amberBg, other.amberBg, t)!,
       danger: Color.lerp(danger, other.danger, t)!,
       shadow: Color.lerp(shadow, other.shadow, t)!,
+      accent: Color.lerp(accent, other.accent, t)!,
+      accentInk: Color.lerp(accentInk, other.accentInk, t)!,
     );
   }
 }
