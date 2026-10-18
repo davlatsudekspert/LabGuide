@@ -3582,6 +3582,15 @@
   "themeSystem": "System",
   "themeLight": "Light",
   "themeDark": "Dark",
+  "themeTitle": "Theme",
+  "themeRowSub": "App colours and title type",
+  "themeCurrent": "Current theme",
+  "themeClassicName": "Classic",
+  "themeClassicDesc": "LabGuide's signature green",
+  "themeIvoryName": "Ivory",
+  "themeIvoryDesc": "Ivory, ink and gold with elegant serif titles",
+  "themeModeSection": "Light or dark",
+  "themeSelected": "Selected",
   "profilePrivacy": "Privacy and data",
   "profilePrivacySub": "Data and account controls",
   "supportTitle": "Feedback & help",
@@ -4576,7 +4585,7 @@
   "cmRulesB4": "one post — one question",
   "cmRulesH3": "What is not allowed",
   "cmRulesC1": "a patient’s name, phone, address, card number or any data that identifies a person",
-  "cmRulesC2": "advertising, off-topic posts, abusive language",
+  "cmRulesC2": "advertising, off-topic posts, abusive language; posting intimate or private images or material without the person’s consent is strictly prohibited",
   "cmRulesC3": "personal treatment advice for a patient — this is colleagues’ experience, not a doctor’s advice",
   "cmRulesH4": "Who can write",
   "cmRulesD1": "questions — any registered user",
@@ -5197,6 +5206,22 @@
   },
   "urinTitle": "Urinalysis",
   "urinLabCardBody": "Collection, strip test, sediment pictures, result reader, practice",
+  "coagTitle": "Coagulogram",
+  "coagLabCardBody": "PT/INR, APTT, fibrinogen, D-dimer, sample rules, DIC score",
+  "coproTitle": "Stool analysis and parasites",
+  "coproLabCardBody": "Coprogram, occult blood, egg and cyst key (schematic)",
+  "@coagTitle": {
+    "description": "Lab tab: title of the coagulogram (haemostasis tests) section and its picture card"
+  },
+  "@coagLabCardBody": {
+    "description": "Lab tab: one-line description on the coagulogram picture card"
+  },
+  "@coproTitle": {
+    "description": "Lab tab: title of the stool analysis (coprology) and intestinal parasites section"
+  },
+  "@coproLabCardBody": {
+    "description": "Lab tab: one-line description on the coprology picture card"
+  },
   "@urinTitle": {
     "description": "Lab tab: title of the urinalysis section and its picture card"
   },
@@ -5738,5 +5763,21 @@
         "type": "int"
       }
     }
-  }
+  },
+  "cmErrAbusive": "The text contains offensive or abusive language. Please rephrase it respectfully — the community rules require this.",
+  "admDeleteTitle": "Delete account",
+  "admDeleteNote": "For deletion requests received by email (completed within 30 days). To confirm, enter the user's full email — the server checks that it belongs to exactly this account. The account, group memberships, community posts, support threads and sign-in methods are deleted permanently; for Sign in with Apple users the server attempts to revoke the Apple token. This cannot be undone; the action is logged.",
+  "admDeleteEmail": "User's full email",
+  "admDeleteButton": "Delete account permanently",
+  "admDeleteConfirmTitle": "Delete this account permanently?",
+  "admDeleteConfirmBody": "The account {email} and all data linked to it will be deleted. This cannot be undone.",
+  "@admDeleteConfirmBody": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "admDeleteDone": "Account deleted",
+  "admDeleteMismatch": "This email does not belong to this account — check it and try again."
 }

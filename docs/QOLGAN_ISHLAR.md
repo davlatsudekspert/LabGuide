@@ -26,10 +26,18 @@ Shu ro'yxat bo'yicha ketamiz. Bajarilgani `[x]`.
 - [ ] Ma'ruza: tik telefonda slaydni barmoq bilan kattalashtirish (pinch-zoom) — surish bilan to'qnashmasligi kerak
 - [ ] **Har mavzudan keyin test** (mavzu testi): ma'ruza oxirida "Mavzu testi", ustoz guruhga bir bosishda topshiradi, natijalar ko'rinadi, xato qilingan savol → tegishli slaydga havola
 - [ ] 32 ta mavzuda test savollari yo'q (test_gap) — tekshirilgan kontentdan savollar tuzish (AI loyiha + inson tekshiruvi)
-- [ ] Yangi bo'limlar 2-to'lqin: koagulogramma, parazitologiya, koprologiya; 3-to'lqin: IFA, likvor, balg'am
+- [x] Yangi bo'limlar 2-to'lqin: koagulogramma (testlar, namuna/sitrat hisoblagichi, PT/APTT o'qish yordamchisi, ISTH DIC bali, monitoring) va koprologiya + parazitologiya (koprogramma elementlari, yashirin qon, boyitish, 7 parazit sxemasi) (D-61)
+- [ ] Koagulogramma/koprologiya: mutaxassis (domla) tekshiruvi — keyin "qoralama" belgisini olib tashlash; ISTH 2001 asl maqolasi (Taylor va boshq.) bilan DIC jadvalini solishtirish (bu muhitda ochilmadi)
+- [ ] Koprologiya: DPDx yoki boshqa erkin litsenziyali mikrofotolar (har rasm uchun muallif/litsenziya tekshirilsa) — hozir faqat sxema
+- [ ] Yangi bo'limlar 3-to'lqin: IFA, likvor, balg'am
 - [ ] Hamkor reklamasi: serverda hamkorlar ko'chirilmagan (hozir faqat test buildlarda namuna)
-- [ ] Moderatsiya: bloklash tugmasi uchun serverda `author.ref`, so'z filtri (Apple 1.2)
-- [ ] Ma'ruza 1-mavzu ruscha/inglizcha; rasmiy ruscha toifa matni; domla 529 savoli (kalit tasdiqlangach)
+- [x] Moderatsiya: serverda `author.ref` + server bloklari (migratsiya 0011), so'z filtri uz/ru/en (Apple 1.2) (D-62)
+- [x] Admin panel: hisobni email bo'yicha o'chirish (o'zi o'chirgandagi yo'l, jurnal); siyosat — email so'rovi 30 kun ichida (D-63)
+- [x] Dizayn takliflari 6–7: Toifa kartalari Kunlik karta uslubida (soya, chegarasiz); sinflar yuklanishi — skeleton
+- [ ] Hamjamiyat qoidalari matniga NCII (intim rasmlar) taqiqi bandi — egasi (Apple 2026-10-16)
+- [x] Ma'ruza 1-mavzu (d001) ruscha/inglizcha — muallif deckining aynan tarjimasi (`assets/lectures/d001.ru.json`, `d001.en.json`; rasmsiz — rasmlar uz matnli PPTX render, ilova matn shablonida chizadi; ustoz tekshiruvi kerak, qoralama)
+- [ ] d001 ru/en uchun PPTX rasmlari (ixtiyoriy: `tool/slides/make_m1.py` ni ru/en ga moslab soffice bilan render)
+- [ ] Rasmiy ruscha toifa matni; domla 529 savoli (kalit tasdiqlangach)
 - [ ] 45 ta umumiy amaliyot kuni — manbada mavzu yo'q, jadvaldan mavzu kerak
 - [ ] Ikki ekranli rejim (TV), tahlil varaqasini rasmdan o'qish (qurilmada), marketing rejasi, rolik (ru/en, sitologiya)
 - [ ] Pro/to'lov: faqat to'liq yangi versiya sifatida (kod `pro-later` tarmog'ida; qoidalar egasining xabarida)

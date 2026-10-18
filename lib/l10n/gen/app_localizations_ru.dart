@@ -6051,6 +6051,34 @@ class AppLocalizationsRu extends AppLocalizations {
   String get themeDark => 'Тёмная';
 
   @override
+  String get themeTitle => 'Тема';
+
+  @override
+  String get themeRowSub => 'Цвета приложения и шрифт заголовков';
+
+  @override
+  String get themeCurrent => 'Текущая тема';
+
+  @override
+  String get themeClassicName => 'Классика';
+
+  @override
+  String get themeClassicDesc => 'Фирменная зелёная палитра LabGuide';
+
+  @override
+  String get themeIvoryName => 'Ivory';
+
+  @override
+  String get themeIvoryDesc =>
+      'Слоновая кость, чёрный и золото, изящные заголовки с засечками';
+
+  @override
+  String get themeModeSection => 'Светлая или тёмная';
+
+  @override
+  String get themeSelected => 'Выбрано';
+
+  @override
   String get profilePrivacy => 'Конфиденциальность и данные';
 
   @override
@@ -7924,7 +7952,8 @@ class AppLocalizationsRu extends AppLocalizations {
       'имя, телефон, адрес, номер карты пациента и любые данные, позволяющие установить личность';
 
   @override
-  String get cmRulesC2 => 'реклама, посторонние темы, оскорбления';
+  String get cmRulesC2 =>
+      'реклама, посторонние темы, оскорбления; публикация интимных или личных изображений и материалов без согласия человека строго запрещена';
 
   @override
   String get cmRulesC3 =>
@@ -8937,6 +8966,20 @@ class AppLocalizationsRu extends AppLocalizations {
       'Сбор, тест-полоска, снимки осадка, чтение результата, тренировка';
 
   @override
+  String get coagTitle => 'Коагулограмма';
+
+  @override
+  String get coagLabCardBody =>
+      'ПВ/МНО, АЧТВ, фибриноген, D-димер, проба, балл ДВС';
+
+  @override
+  String get coproTitle => 'Копрология и паразиты';
+
+  @override
+  String get coproLabCardBody =>
+      'Копрограмма, скрытая кровь, ключ яиц и цист (схемы)';
+
+  @override
   String get admPanelAccess =>
       'Доступ: email владельца (ADMIN_EMAILS) и код из письма. Сервер проверяет каждый запрос.';
 
@@ -9771,4 +9814,36 @@ class AppLocalizationsRu extends AppLocalizations {
   String topicTestReworkMistakes(int count) {
     return 'Повторить ошибки · $count';
   }
+
+  @override
+  String get cmErrAbusive =>
+      'В тексте есть оскорбительные или нецензурные слова. Пожалуйста, перепишите его уважительно — этого требуют правила сообщества.';
+
+  @override
+  String get admDeleteTitle => 'Удаление аккаунта';
+
+  @override
+  String get admDeleteNote =>
+      'Для запросов на удаление, пришедших по email (выполняется в течение 30 дней). Для подтверждения введите полный email пользователя — сервер проверит, что он принадлежит именно этому аккаунту. Аккаунт, участие в группах, посты в сообществе, обращения и способы входа удаляются полностью; если пользователь входил через Apple, сервер попытается отозвать токен Apple. Отменить нельзя; действие записывается в журнал.';
+
+  @override
+  String get admDeleteEmail => 'Полный email пользователя';
+
+  @override
+  String get admDeleteButton => 'Удалить аккаунт навсегда';
+
+  @override
+  String get admDeleteConfirmTitle => 'Удалить аккаунт навсегда?';
+
+  @override
+  String admDeleteConfirmBody(String email) {
+    return 'Аккаунт $email и все связанные с ним данные будут удалены. Это действие нельзя отменить.';
+  }
+
+  @override
+  String get admDeleteDone => 'Аккаунт удалён';
+
+  @override
+  String get admDeleteMismatch =>
+      'Этот email не принадлежит этому аккаунту — проверьте и введите снова.';
 }

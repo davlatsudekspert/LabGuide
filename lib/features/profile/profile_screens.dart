@@ -13,6 +13,7 @@ import '../auth/auth_controller.dart';
 import '../auth/social_auth.dart';
 import '../auth/ui/role_screen.dart';
 import '../settings/settings_controller.dart';
+import '../settings/theme_screen.dart' show LgThemeIdL10n;
 import '../community/community_screens.dart';
 import '../support/support_screens.dart';
 
@@ -157,6 +158,15 @@ class ProfileScreen extends StatelessWidget {
               ],
             ),
             LgSectionTitle(l.profileAppearance),
+            LgRow(
+              key: const ValueKey('profile-theme-row'),
+              title: l.themeTitle,
+              subtitle: '${settings.appTheme.title(l)} · ${l.themeRowSub}',
+              icon: Icons.palette_outlined,
+              onTap: () => context.push('/profile/theme'),
+              divider: false,
+            ),
+            const SizedBox(height: 4),
             Wrap(
               spacing: 6,
               runSpacing: 6,

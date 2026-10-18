@@ -593,15 +593,25 @@ class _LectureScreenState extends State<LectureScreen> {
             body: Center(child: CircularProgressIndicator()),
           );
         }
-        final slides = _authored != null
-            ? deckLectureSlides(context, _authored!)
+        // Muallif decki ilova tilida bo'lsa (tarjima, masalan d001.ru.json)
+        // — o'sha; bo'lmasa asosiy (o'zbekcha) deck "faqat o'zbekcha" bilan.
+        final authored = _authored == null
+            ? null
+            : LectureDecks.localized(
+                context.services.curriculum.bundle ?? rootBundle,
+                widget.topicId,
+                _authored!,
+                _lang(context),
+              );
+        final slides = authored != null
+            ? deckLectureSlides(context, authored)
             : buildLectureSlides(context, cur, t);
         final i = _index.clamp(0, slides.length - 1);
         return _deck(
           context,
           slides,
           i,
-          _authored?.title ?? t.title.of(_lang(context)),
+          authored?.title ?? t.title.of(_lang(context)),
         );
       },
     );

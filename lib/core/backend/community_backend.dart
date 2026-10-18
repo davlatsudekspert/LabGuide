@@ -50,6 +50,17 @@ abstract interface class CommunityBackend {
     required ReportReason reason,
   });
 
+  /// Shu post muallifini bloklash (D-62): server bloklangan muallif
+  /// postlarini shu hisobga boshqa qurilmada ham ko'rsatmaydi. Muallif
+  /// [CommunityAuthor.ref] ini qaytaradi. O'zini/egasini — xato.
+  Future<String?> blockAuthor({required PostKind kind, required String id});
+
+  /// Hisob bloklagan mualliflar belgilari (qurilmalar orasida sinxron).
+  Future<List<String>> blockedRefs();
+
+  /// Hammasini blokdan chiqarish.
+  Future<void> clearBlocks();
+
   /// Mashina tarjimasi (serverda keshlanadi).
   Future<PostTranslation> translate({
     required PostKind kind,

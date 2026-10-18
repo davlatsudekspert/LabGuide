@@ -1018,6 +1018,28 @@ class CloudflareLabBackend
   );
 
   @override
+  Future<String?> blockAuthor({
+    required PostKind kind,
+    required String id,
+  }) async {
+    final r = await _c(
+      'POST',
+      '/v1/community/blocks',
+      body: {'kind': kind.name, 'id': id},
+    );
+    return r.map['ref'] as String?;
+  }
+
+  @override
+  Future<List<String>> blockedRefs() async {
+    final r = await _c('GET', '/v1/community/blocks');
+    return [for (final x in (r.map['refs'] as List? ?? const [])) '$x'];
+  }
+
+  @override
+  Future<void> clearBlocks() => _c('DELETE', '/v1/community/blocks');
+
+  @override
   Future<PostTranslation> translate({
     required PostKind kind,
     required String id,
@@ -1302,6 +1324,16 @@ class CloudflareLabBackend
   @override
   Future<void> adminReactivateAccount(String userId) =>
       _admin('POST', _user(userId, 'reactivate'));
+
+  @override
+  Future<void> adminDeleteAccount({
+    required String email,
+    required String confirmUserId,
+  }) => _admin(
+    'POST',
+    '/v1/admin/accounts/delete',
+    body: {'email': email.trim(), 'confirm_user_id': confirmUserId},
+  );
 
   @override
   Future<void> adminSuspendCommunity(String userId) =>

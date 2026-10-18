@@ -8,6 +8,7 @@ import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:labguide/features/bloodgroup/bloodgroup_content.dart';
+import 'package:labguide/features/coprology/copro_content.dart';
 import 'package:labguide/features/histology/histology_content.dart';
 import 'package:labguide/features/tools/calc_info.dart';
 import 'package:labguide/features/tools/sources_panel.dart';
@@ -156,6 +157,13 @@ void main() {
           'Любина А.Я., Ильичева Л.П., Катасонова Т.В., '
           'Петросова С.А., 1984, «Клинические лабораторные исследования»',
         ),
+      );
+    });
+
+    test('o‘zbek darsligi: ikki harfli initsial', () {
+      expect(
+        shortCitation(CpSources.kurbonova2023),
+        'Kurbonova Z.Ch., 2023, «Klinik laboratoriya tashxisi: darslik»',
       );
     });
 

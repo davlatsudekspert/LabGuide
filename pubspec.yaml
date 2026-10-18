@@ -93,6 +93,8 @@ flutter:
     - assets/urinalysis/
     - assets/bloodmorph/
     - assets/bloodmorph/img/
+    - assets/coagulogram/
+    - assets/coprology/
     - assets/differential/
     - assets/differential/sounds/
     - assets/microscopy/
@@ -114,3 +116,11 @@ flutter:
           weight: 600
         - asset: assets/fonts/Inter-700.ttf
           weight: 700
+    # Ivory mavzusidagi katta sarlavhalar uchun (D-64). Instrument Serif —
+    # lotin (o‘ g‘ bilan); kirill glyphlari Playfair Display'dan.
+    - family: InstrumentSerif
+      fonts:
+        - asset: assets/fonts/InstrumentSerif-Regular.ttf
+    - family: PlayfairDisplay
+      fonts:
+        - asset: assets/fonts/PlayfairDisplay-Variable.ttf

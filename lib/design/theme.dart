@@ -1,14 +1,49 @@
 import 'package:material_ui/material_ui.dart';
 
+import 'themes.dart';
 import 'tokens.dart';
 import 'transitions.dart';
+
+/// Ivory mavzusining sarlavha shriftlari (D-64, OFL). Instrument Serif —
+/// tor, yuqori kontrastli; kirill glyphi yo'q, shuning uchun ruscha
+/// interfeysda Playfair Display asosiy, boshqa tillarda esa kirill harflari
+/// (masalan, kontent nomlari) Playfair'dan olinadi.
+const kSerifLatin = 'InstrumentSerif';
+const kSerifCyrillic = 'PlayfairDisplay';
+
+/// Serif sarlavha uslubi: [base] o'lchami [scale] ga ko'paytiriladi
+/// (Instrument Serif tor va past x-balandlikli — Inter bilan bir xil
+/// "vazn"da ko'rinishi uchun kattaroq), qalinlik 400, harf oralig'i yumshoq.
+TextStyle lgSerif(TextStyle base, {required bool cyrillic}) {
+  final scale = cyrillic ? 1.0 : 1.16;
+  final size = base.fontSize! * scale;
+  return base.copyWith(
+    fontFamily: cyrillic ? kSerifCyrillic : kSerifLatin,
+    fontFamilyFallback: const [kSerifCyrillic],
+    fontSize: size,
+    fontWeight: cyrillic ? FontWeight.w500 : FontWeight.w400,
+    fontVariations: cyrillic ? const [FontVariation('wght', 500)] : null,
+    letterSpacing: cyrillic ? -0.4 : -0.2,
+    height: 1.08,
+  );
+}
 
 /// Tipografika shkalasi: 39 / 30 / 25 / 18 / 16 / 14 / 12 / 11 px.
 /// Sarlavhalarda harf oralig'i yumshatilgan (avval -1,7 / -1,2 / -0,9):
 /// katta matn "siqilgan" emas, osoyishta o'qiladi.
 /// Asosiy o'qish matni 16 px (bodyLarge). 11 px faqat qisqa yordamchi
 /// yozuvlar (eyebrow, tab nomi) uchun — undan kichik matn ishlatilmaydi.
-TextTheme _textTheme(LgPalette p) {
+TextTheme _textTheme(LgPalette p, LgStyle style, {required bool cyrillic}) {
+  final t = _baseTextTheme(p);
+  if (!style.serifDisplay) return t;
+  return t.copyWith(
+    displaySmall: lgSerif(t.displaySmall!, cyrillic: cyrillic),
+    headlineMedium: lgSerif(t.headlineMedium!, cyrillic: cyrillic),
+    headlineSmall: lgSerif(t.headlineSmall!, cyrillic: cyrillic),
+  );
+}
+
+TextTheme _baseTextTheme(LgPalette p) {
   const family = 'Inter';
   return TextTheme(
     // Sahifa sarlavhasi.
@@ -108,8 +143,15 @@ TextTheme _textTheme(LgPalette p) {
   );
 }
 
-ThemeData buildLgTheme(Brightness brightness) {
-  final p = brightness == Brightness.light ? LgPalette.light : LgPalette.dark;
+/// [theme] — tanlangan mavzu (D-64); [cyrillic] — interfeys tili ruscha
+/// (serif sarlavha shrifti tanlovi uchun).
+ThemeData buildLgTheme(
+  Brightness brightness, {
+  LgThemeId theme = LgThemeId.classic,
+  bool cyrillic = false,
+}) {
+  final p = theme.palette(brightness);
+  final style = theme.style(brightness);
   final scheme = ColorScheme(
     brightness: brightness,
     primary: p.brand,
@@ -139,7 +181,7 @@ ThemeData buildLgTheme(Brightness brightness) {
     onInverseSurface: p.bg,
     inversePrimary: p.soft,
   );
-  final text = _textTheme(p);
+  final text = _textTheme(p, style, cyrillic: cyrillic);
 
   return ThemeData(
     useMaterial3: true,
@@ -155,7 +197,7 @@ ThemeData buildLgTheme(Brightness brightness) {
     splashColor: p.brand.withValues(alpha: 0.08),
     highlightColor: p.brand.withValues(alpha: 0.04),
     hoverColor: p.brand.withValues(alpha: 0.04),
-    extensions: [p],
+    extensions: [p, style],
     materialTapTargetSize: MaterialTapTargetSize.padded,
     visualDensity: VisualDensity.standard,
     focusColor: p.brand.withValues(alpha: 0.12),

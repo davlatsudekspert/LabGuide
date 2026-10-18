@@ -209,7 +209,14 @@ String _trimDot(String s) {
       word.toUpperCase() == word &&
       word != word.toLowerCase();
   // "A.N." — oldida nuqta; "С." — lotin bo'lmagan (kirill) initsial.
-  final initial = capital && (before == '.' || word.codeUnitAt(0) > 0x7f);
+  // "Kurbonova Z.Ch." — o'zbek lotin initsiali ikki harfli (Ch, Sh, G').
+  final digraph =
+      word.length == 2 &&
+      before == '.' &&
+      word[0].toUpperCase() == word[0] &&
+      word[0] != word[0].toLowerCase();
+  final initial =
+      (capital && (before == '.' || word.codeUnitAt(0) > 0x7f)) || digraph;
   final keep = word == 'al' || word == 'ed' || word == 'eds' || initial;
   return keep ? t : body;
 }

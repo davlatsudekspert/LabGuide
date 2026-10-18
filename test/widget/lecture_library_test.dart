@@ -108,7 +108,7 @@ void main() {
         contains(l.lectureDecksCount(27)),
       );
       expect(find.text(l.lectureFilterProtocols), findsWidgets);
-      // d001 (muallif decki) shu ro'yxatda, faqat o'zbekcha.
+      // d001 (muallif decki) shu ro'yxatda.
       expect(
         find.descendant(
           of: find.byKey(const ValueKey('deck-d001')),
@@ -327,11 +327,11 @@ void main() {
       expect(find.text(l.lectureTopicsAutoTitle), findsOneWidget);
     });
 
-    testWidgets('til filtri: RU da faqat o‘zbekcha d001 yo‘q', (tester) async {
+    testWidgets('til filtri: RU da d001 ham bor (tarjima)', (tester) async {
       await _open(tester);
       expect(find.byKey(const ValueKey('deck-d001')), findsOneWidget);
       await _tapKey(tester, 'lecture-lang-ru');
-      expect(find.byKey(const ValueKey('deck-d001')), findsNothing);
+      expect(find.byKey(const ValueKey('deck-d001')), findsOneWidget);
       expect(find.byKey(const ValueKey('deck-d002')), findsOneWidget);
       await _tapKey(tester, 'lecture-lang-all');
       expect(find.byKey(const ValueKey('deck-d001')), findsOneWidget);
@@ -386,18 +386,22 @@ void main() {
     );
   }
 
-  testWidgets(
-    'til yo‘q: d001 ruscha ilovada o‘zbekcha + ko‘rinadigan ogohlantirish',
-    (tester) async {
-      final deck = await _preload(tester, 'd001', 'ru');
-      expect(deck.lang, 'uz');
-      expect(deck.slides.length, 30);
-      final l = await _open(tester, lang: AppLanguage.ru);
-      await _tapKey(tester, 'deck-d001');
-      expect(find.text(l.lectureCounter(1, 30)), findsOneWidget);
-      expect(find.textContaining(l.lectureUzOnly), findsOneWidget);
-    },
-  );
+  for (final lang in [AppLanguage.ru, AppLanguage.en]) {
+    testWidgets(
+      'd001 ${lang.name}: muallif deckining tarjimasi, ogohlantirishsiz',
+      (tester) async {
+        final deck = await _preload(tester, 'd001', lang.name);
+        expect(deck.lang, lang.name);
+        expect(deck.slides.length, 30);
+        expect(deck.slides.every((s) => s.image == null), isTrue);
+        final l = await _open(tester, lang: lang);
+        await _tapKey(tester, 'deck-d001');
+        expect(find.text(l.lectureCounter(1, 30)), findsOneWidget);
+        expect(find.text(deck.slides.first.title), findsWidgets);
+        expect(find.textContaining(l.lectureUzOnly), findsNothing);
+      },
+    );
+  }
 
   testWidgets('d001 o‘zbekcha ilovada ogohlantirishsiz, 30 slayd', (
     tester,

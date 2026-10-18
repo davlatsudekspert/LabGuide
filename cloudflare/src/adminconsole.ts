@@ -17,7 +17,7 @@
 // * SQL faqat parametrli (`?1`); ro'yxat qiymatlari `json_each(?)` bilan.
 // * Limitlar: o'qish 10 daqiqada 300, yozish soatiga 120.
 
-import { adminAllowlist, audit, emailHash, normalizeEmail, requirePanelAdmin } from './auth';
+import { adminAllowlist, audit, deleteUserData, emailHash, normalizeEmail, requirePanelAdmin } from './auth';
 import { userHash } from './community';
 import type { Ctx, Session } from './context';
 import { iso } from './context';
@@ -364,6 +364,42 @@ export async function reactivateAccount(ctx: Ctx, id: string): Promise<Response>
   return json(userJson({ ...u, suspended_at: null }));
 }
 
+/**
+ * POST /v1/admin/accounts/delete {email, confirm_user_id} — egasi hisobni
+ * aniq email bo'yicha o'chiradi (D-63; emailda kelgan o'chirish so'rovlari,
+ * maxfiylik siyosati: 30 kun ichida).
+ *
+ * * Email serverda HMAC qilinadi (aniq moslik; email saqlanmaydi, logga
+ *   tushmaydi). `confirm_user_id` — panel avval shu email bo'yicha topib
+ *   ko'rsatgan hisob id si: boshqa hisob (yoki eskirgan sahifa) o'chirilmaydi.
+ * * O'zini va adminni (ADMIN_EMAILS yoki admin vakolati) o'chirib bo'lmaydi.
+ * * O'chirish — o'zi o'chirgandagi bilan BIR XIL yo'l (`deleteUserData`):
+ *   Apple tokeni (kod yo'q — `no_code` jurnalda), guruhlar, hamjamiyat,
+ *   murojaatlar, sessiyalar. Jurnal: `account_deleted_by_admin`.
+ */
+export async function deleteAccountByEmail(ctx: Ctx): Promise<Response> {
+  const s = await admin(ctx, true);
+  const body = await readJson(ctx.req);
+  const email = normalizeEmail(body.email);
+  if (!email) throw badRequest('invalid_email');
+  const confirm = typeof body.confirm_user_id === 'string' ? body.confirm_user_id : '';
+  if (!UUID_RE.test(confirm)) throw badRequest('confirmation_required');
+  const u = await ctx.db
+    .prepare(
+      `SELECT id, email_masked, email_hash IN (SELECT value FROM json_each(?2)) AS is_admin
+       FROM users WHERE email_hash = ?1`,
+    )
+    .bind(await emailHash(ctx, email), await adminHashes(ctx))
+    .first<{ id: string; email_masked: string; is_admin: number }>();
+  if (!u) throw notFound();
+  if (u.id !== confirm) throw conflict('confirmation_mismatch');
+  if (u.id === s.userId) throw forbidden('self');
+  const isAdmin = await ctx.db.prepare('SELECT 1 AS ok FROM admins WHERE user_id = ?1').bind(u.id).first();
+  if (u.is_admin === 1 || isAdmin) throw forbidden('admin');
+  await deleteUserData(ctx, u.id, s.userId);
+  return json({ deleted: true, user_id: u.id, email_masked: u.email_masked });
+}
+
 // ------------------------------------------------------ hamjamiyat holati
 /** To'xtatish: a'zo yozuvi bo'lmasa ham (oddiy foydalanuvchi) yaratiladi. Egasi — yo'q. */
 async function suspendHash(ctx: Ctx, h: string): Promise<boolean> {
@@ -574,6 +610,7 @@ export const ROUTES: [string, string, Handler][] = [
   ['POST', '/v1/admin/users/:u/role', setRole],
   ['POST', '/v1/admin/users/:u/suspend', suspendAccount],
   ['POST', '/v1/admin/users/:u/reactivate', reactivateAccount],
+  ['POST', '/v1/admin/accounts/delete', deleteAccountByEmail],
   ['POST', '/v1/admin/users/:u/community/suspend', suspendUser],
   ['POST', '/v1/admin/users/:u/community/restore', restoreUser],
   ['GET', '/v1/admin/reports', reports],

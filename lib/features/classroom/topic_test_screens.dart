@@ -1126,7 +1126,7 @@ class _AssignDeckTestScreenState extends State<AssignDeckTestScreen> {
           onAction: _load,
         );
       }
-      return LgStateView(kind: StateKind.loading, title: l.classesLoading);
+      return LgSkeleton(caption: l.classesLoading);
     }
     if (groups.isEmpty) {
       return LgStateView(

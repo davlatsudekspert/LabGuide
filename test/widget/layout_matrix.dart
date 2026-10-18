@@ -170,6 +170,7 @@ const appRoutes = [
   '/learn/lesson',
   '/profile',
   '/profile/role',
+  '/profile/theme',
   '/profile/privacy',
   '/profile/contact',
   '/profile/support',
@@ -188,6 +189,7 @@ typedef Config = ({
   double textScale,
   AppLanguage lang,
   ThemeMode theme,
+  LgThemeId appTheme,
 });
 
 List<Config> configs() {
@@ -200,12 +202,33 @@ List<Config> configs() {
           textScale: scale,
           lang: lang,
           theme: ThemeMode.light,
+          appTheme: LgThemeId.classic,
         ));
       }
     }
     // Eng og'ir holat: tor ekran + juda katta shrift.
-    out.add((width: 320, textScale: 2.0, lang: lang, theme: ThemeMode.light));
-    out.add((width: 390, textScale: 1.0, lang: lang, theme: ThemeMode.dark));
+    out.add((
+      width: 320,
+      textScale: 2.0,
+      lang: lang,
+      theme: ThemeMode.light,
+      appTheme: LgThemeId.classic,
+    ));
+    out.add((
+      width: 390,
+      textScale: 1.0,
+      lang: lang,
+      theme: ThemeMode.dark,
+      appTheme: LgThemeId.classic,
+    ));
+    // Ivory mavzusi (D-64): serif sarlavhalar tor ekranda ham sig'adi.
+    out.add((
+      width: 320,
+      textScale: 1.3,
+      lang: lang,
+      theme: lang == AppLanguage.ru ? ThemeMode.dark : ThemeMode.light,
+      appTheme: LgThemeId.ivory,
+    ));
   }
   return out;
 }
@@ -218,7 +241,8 @@ void runLayoutMatrix(AppLanguage lang) {
 
   for (final c in configs().where((c) => c.lang == lang)) {
     final name =
-        '${c.lang.name} ${c.width.toInt()}px ×${c.textScale} ${c.theme.name}';
+        '${c.lang.name} ${c.width.toInt()}px ×${c.textScale} ${c.theme.name}'
+        '${c.appTheme == LgThemeId.classic ? '' : ' ${c.appTheme.name}'}';
 
     testWidgets('no layout errors: $name', (tester) async {
       Future<void> visitAll(List<String> routes) async {
@@ -235,6 +259,7 @@ void runLayoutMatrix(AppLanguage lang) {
         tester,
         language: c.lang,
         themeMode: c.theme,
+        appTheme: c.appTheme,
         onboarded: false,
         role: null,
       );
@@ -254,6 +279,7 @@ void runLayoutMatrix(AppLanguage lang) {
         tester,
         language: c.lang,
         themeMode: c.theme,
+        appTheme: c.appTheme,
         partnerAds: true,
       );
       await s.bookmarks.toggle('glucose-plasma-fasting');

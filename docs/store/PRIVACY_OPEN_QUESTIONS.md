@@ -51,11 +51,10 @@ quyidagilar **egasi yoki yurist qarori** — taxmin bilan yozilmagan.
 
 ## C. Jarayon (kodda vosita yo‘q)
 
-11. **Email orqali hisobni o‘chirish.** Siyosat va `site/delete-account/` email bilan so‘rovni
-    taklif qiladi (“qo‘lda ko‘rib chiqiladi”). Admin panelda **hisobni o‘chirish tugmasi yo‘q** —
-    egasi buni `wrangler d1 execute` bilan qo‘lda (auth.ts `deleteAccount` dagi barcha jadvallar
-    tartibida) qilishi yoki alohida admin endpoint qo‘shishi kerak. Javob muddati (masalan, 30 kun)
-    va shaxsni tasdiqlash usuli (shu emaildan yozish yetarlimi) yozilmagan.
+11. ~~**Email orqali hisobni o‘chirish.**~~ **Hal qilindi (2026-10-18, D-63):** admin panelida
+    hisobni to‘liq email bo‘yicha o‘chirish vositasi (`POST /v1/admin/accounts/delete`, o‘zi
+    o‘chirgandagi bilan bir xil yo‘l, jurnalda); siyosat va `site/delete-account/` — “30 kun ichida”.
+    Shaxsni tasdiqlash: xat hisobga bog‘langan emaildan kelishi (`docs/ADMIN_PANEL_GUIDE.md` §5).
 12. **Ilova ichidagi shikoyatlar va jurnal muddati.** `complaints` matni avtomatik o‘chirilmaydi
     (hisob o‘chirilganda faqat `user_id = NULL`); `audit_log` va `admin_grants` ham muddatsiz.
     Siyosat buni ochiq aytadi. Saqlash muddatini (masalan, 1–2 yil) belgilash va tozalashni

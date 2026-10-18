@@ -97,9 +97,28 @@ class _LabGuideAppState extends State<LabGuideApp> {
           debugShowCheckedModeBanner: false,
           routerConfig: _router,
           scaffoldMessengerKey: _messenger,
-          theme: buildLgTheme(Brightness.light),
-          darkTheme: buildLgTheme(Brightness.dark),
+          theme: buildLgTheme(
+            Brightness.light,
+            theme: _settings.appTheme,
+            cyrillic: _settings.language == AppLanguage.ru,
+          ),
+          darkTheme: buildLgTheme(
+            Brightness.dark,
+            theme: _settings.appTheme,
+            cyrillic: _settings.language == AppLanguage.ru,
+          ),
           themeMode: _settings.themeMode,
+          // Mavzu almashganda ranglar silliq o'tadi (D-64).
+          // Reduced motion — darhol.
+          themeAnimationDuration:
+              WidgetsBinding
+                  .instance
+                  .platformDispatcher
+                  .accessibilityFeatures
+                  .disableAnimations
+              ? Duration.zero
+              : const Duration(milliseconds: 360),
+          themeAnimationCurve: Curves.easeOutCubic,
           locale: _settings.language.locale,
           supportedLocales: AppLocalizations.supportedLocales,
           localizationsDelegates: const [

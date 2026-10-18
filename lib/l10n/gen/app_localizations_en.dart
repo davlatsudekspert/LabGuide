@@ -6028,6 +6028,33 @@ class AppLocalizationsEn extends AppLocalizations {
   String get themeDark => 'Dark';
 
   @override
+  String get themeTitle => 'Theme';
+
+  @override
+  String get themeRowSub => 'App colours and title type';
+
+  @override
+  String get themeCurrent => 'Current theme';
+
+  @override
+  String get themeClassicName => 'Classic';
+
+  @override
+  String get themeClassicDesc => 'LabGuide\'s signature green';
+
+  @override
+  String get themeIvoryName => 'Ivory';
+
+  @override
+  String get themeIvoryDesc => 'Ivory, ink and gold with elegant serif titles';
+
+  @override
+  String get themeModeSection => 'Light or dark';
+
+  @override
+  String get themeSelected => 'Selected';
+
+  @override
   String get profilePrivacy => 'Privacy and data';
 
   @override
@@ -7907,7 +7934,8 @@ class AppLocalizationsEn extends AppLocalizations {
       'a patient’s name, phone, address, card number or any data that identifies a person';
 
   @override
-  String get cmRulesC2 => 'advertising, off-topic posts, abusive language';
+  String get cmRulesC2 =>
+      'advertising, off-topic posts, abusive language; posting intimate or private images or material without the person’s consent is strictly prohibited';
 
   @override
   String get cmRulesC3 =>
@@ -8908,6 +8936,20 @@ class AppLocalizationsEn extends AppLocalizations {
       'Collection, strip test, sediment pictures, result reader, practice';
 
   @override
+  String get coagTitle => 'Coagulogram';
+
+  @override
+  String get coagLabCardBody =>
+      'PT/INR, APTT, fibrinogen, D-dimer, sample rules, DIC score';
+
+  @override
+  String get coproTitle => 'Stool analysis and parasites';
+
+  @override
+  String get coproLabCardBody =>
+      'Coprogram, occult blood, egg and cyst key (schematic)';
+
+  @override
   String get admPanelAccess =>
       'Access: the owner email (ADMIN_EMAILS) and an email code. The server re-checks every request.';
 
@@ -9734,4 +9776,36 @@ class AppLocalizationsEn extends AppLocalizations {
   String topicTestReworkMistakes(int count) {
     return 'Review mistakes · $count';
   }
+
+  @override
+  String get cmErrAbusive =>
+      'The text contains offensive or abusive language. Please rephrase it respectfully — the community rules require this.';
+
+  @override
+  String get admDeleteTitle => 'Delete account';
+
+  @override
+  String get admDeleteNote =>
+      'For deletion requests received by email (completed within 30 days). To confirm, enter the user\'s full email — the server checks that it belongs to exactly this account. The account, group memberships, community posts, support threads and sign-in methods are deleted permanently; for Sign in with Apple users the server attempts to revoke the Apple token. This cannot be undone; the action is logged.';
+
+  @override
+  String get admDeleteEmail => 'User\'s full email';
+
+  @override
+  String get admDeleteButton => 'Delete account permanently';
+
+  @override
+  String get admDeleteConfirmTitle => 'Delete this account permanently?';
+
+  @override
+  String admDeleteConfirmBody(String email) {
+    return 'The account $email and all data linked to it will be deleted. This cannot be undone.';
+  }
+
+  @override
+  String get admDeleteDone => 'Account deleted';
+
+  @override
+  String get admDeleteMismatch =>
+      'This email does not belong to this account — check it and try again.';
 }

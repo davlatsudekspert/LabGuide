@@ -1,0 +1,338 @@
+{
+ "schema": 1,
+ "topics": [
+  "d001-P",
+  "d001-L"
+ ],
+ "lang": "en",
+ "status": "draft",
+ "title": "Organization of laboratory services. Medical ethics and deontology",
+ "slides": [
+  {
+   "eyebrow": "Module 1 · Topic 1",
+   "title": "Organization of laboratory services. Medical ethics and deontology",
+   "bullets": [
+    "Practical class (4 hours) + values and ethics class (2 hours)"
+   ]
+  },
+  {
+   "title": "Aims and plan of the class",
+   "bullets": [
+    "Laboratory service — tasks, structure, the specimen pathway",
+    "Quality system — the 12 elements of WHO LQMS, ISO 15189",
+    "Safety — general, fire, biological; hand hygiene and PPE",
+    "Medical ethics and deontology — principles, confidentiality, honesty",
+    "Values and ethics class — professional duty, teamwork, responsibility to the patient",
+    "Wrap-up — case scenarios, mini-test and oral questions"
+   ],
+   "note": "By the end of the class students should be able to name the phases of the testing process, the elements of the quality system, the main safety rules and the principles of ethics."
+  },
+  {
+   "eyebrow": "Section 1",
+   "title": "Organization of laboratory services",
+   "bullets": [
+    "The laboratory is an integral part of the diagnostic process"
+   ],
+   "section": true
+  },
+  {
+   "title": "Tasks of the clinical laboratory",
+   "bullets": [
+    "Diagnosis — A reliable result to detect and confirm disease",
+    "Monitoring — Following treatment effectiveness and the course of disease",
+    "Screening — Early detection of hidden disease, assessment of risk factors",
+    "Emergency care — Timely communication of critical results to the physician",
+    "Quality and safety — Accurate results, staff and patient safety",
+    "Education and research — Training staff, introducing new methods"
+   ],
+   "note": "Laboratory results underpin many clinical decisions — so the cost of an error is high. Example: if a potassium result is wrong (haemolysis), the wrong treatment may be started."
+  },
+  {
+   "title": "The laboratory team: who does what",
+   "bullets": [
+    "Head of laboratory — Responsible for organizing the work, the quality system and safety",
+    "Clinical laboratory physician — Clinical review and validation of results, consultation with physicians",
+    "Laboratory technician — Specimen reception, performing tests, QC, equipment care",
+    "Support staff — Cleaning, disinfection, orderly waste collection"
+   ],
+   "note": "General roles. Exact staff positions and job descriptions follow the institution and current regulations: the teacher should use the structure of their own institution as an example."
+  },
+  {
+   "title": "The testing process: three phases",
+   "bullets": [
+    "1. Pre-analytical — Test request, patient preparation, specimen collection, labelling, transport, reception",
+    "2. Analytical — Measurement, calibration, internal quality control (QC), equipment maintenance",
+    "3. Post-analytical — Result review and validation, reporting, notification of critical values"
+   ],
+   "note": "The literature shows that the largest share of laboratory errors occurs in the pre-analytical phase (about 60–70 %; Plebani M., Clin Chem Lab Med 2006). In the app: Lab → Pre-analytics (order of draw, WHO).",
+   "source": "Most errors arise in the pre-analytical phase (Plebani, 2006)."
+  },
+  {
+   "title": "The specimen pathway: from request to result",
+   "bullets": [
+    "1. Request — Physician referral, type of test",
+    "2. Identification — At least 2 identifiers: full name, date of birth or ID",
+    "3. Collection — Correct tube and order",
+    "4. Labelling — At the patient’s side, immediately",
+    "5. Transport — Time and temperature conditions",
+    "6. Reception — Checking, registration",
+    "7. Analysis — With QC",
+    "8. Report — Validation, critical value"
+   ],
+   "note": "An error can happen at every step. Ask students to name one possible error for each step (for example: wrong patient, wrong tube, long transport, unlabelled specimen).",
+   "source": "The most dangerous error is the wrong patient: always identify with at least 2 identifiers."
+  },
+  {
+   "title": "Specimen labelling and reception",
+   "bullets": [
+    "Labelling — at least 2 identifiers, date and time of collection, the collecting staff member",
+    "When — the tube is labelled at the patient’s side, immediately after collection",
+    "Rejection — unlabelled or wrongly labelled specimen",
+    "Rejection — wrong tube, insufficient volume, clotted (in an anticoagulant tube)",
+    "Rejection — transport conditions breached (time, temperature); haemolysis — depending on the test",
+    "Recording — every rejection is recorded as an incident and the ward is notified"
+   ],
+   "note": "Rejection criteria must be in the laboratory’s written procedure (SOP). Discussion: “An unlabelled tube arrived, but the nurse knows whose it is” — is it accepted? (No.)"
+  },
+  {
+   "title": "Quality system — the 12 elements of WHO LQMS",
+   "bullets": [
+    "Organization — Structure, management",
+    "Personnel — Qualification, training",
+    "Equipment — Calibration, maintenance",
+    "Purchasing and inventory — Reagents, expiry",
+    "Process control — QC, specimen",
+    "Information — Results, confidentiality",
+    "Documents — SOPs, logs",
+    "Occurrences — Recording errors",
+    "Assessment — Audit, EQA",
+    "Improvement — Corrective actions",
+    "Customer service — Physician and patient feedback",
+    "Facilities and safety — Layout, protection"
+   ],
+   "note": "Source: WHO. Laboratory Quality Management System: Handbook. 2011. International standard: ISO 15189:2022 — quality and competence of medical laboratories.",
+   "source": "Source: WHO LQMS Handbook (2011); ISO 15189:2022"
+  },
+  {
+   "title": "Documents and records",
+   "bullets": [
+    "SOP — for every test and process: written, approved, available at the workstation",
+    "Logs — QC results, equipment maintenance, temperature, reagent lots",
+    "Traceability — answers “who, when, with which instrument and reagent”",
+    "Occurrences — errors and nonconformities are not hidden; they are recorded and analysed",
+    "Rule — “Not written down — not done”"
+   ],
+   "note": "Practical task: the group drafts the structure of an SOP for one simple test (for example, glucose): purpose, specimen, reagent, instrument, QC, calculation, reference interval, safety."
+  },
+  {
+   "eyebrow": "Section 2",
+   "title": "Laboratory safety",
+   "bullets": [
+    "Protecting staff, patients and the environment"
+   ],
+   "section": true
+  },
+  {
+   "title": "The general safety system",
+   "bullets": [
+    "Organizational — Written safety plan and SOPs, a responsible person, training at the start of work and periodically, emergency drills",
+    "Electrical — A damaged socket/instrument is labelled and taken out of service; plugging in with wet hands is prohibited; disconnect from power for repairs",
+    "Fire — Flammable solvents in minimal amounts, in a dedicated cabinet; open flames are never left unattended; corridors kept clear"
+   ],
+   "note": "Based on the outline of qualification-exam oral question kdl-o-006. Every staff member must know where the emergency equipment is: fire extinguisher, alarm, exit routes, emergency shower/eyewash, first-aid kit."
+  },
+  {
+   "title": "In case of fire: RACE and PASS",
+   "bullets": [
+    "RACE — actions — Rescue — get people out; Alarm — raise the alarm; Confine — close the door to contain; Evacuate/Extinguish — leave or put it out",
+    "PASS — extinguisher — Pull — pull the pin; Aim — at the base of the fire; Squeeze — squeeze the lever; Sweep — sweep side to side",
+    "Extinguisher class — A — ordinary combustibles; B — flammable liquids/gases; C — energized equipment; If clothing catches fire — “stop, drop and roll”"
+   ],
+   "note": "kdl-o-006. Practical exercise: students point out the fire extinguisher, emergency shower and exit route in the laboratory."
+  },
+  {
+   "title": "Biosafety: the basics",
+   "bullets": [
+    "Basis — a risk assessment for every task: information → assessment → control → measures → review",
+    "BSL levels — work with blood, body fluids and tissues is usually done under BSL-2 conditions",
+    "Every specimen is treated as potentially infectious (standard precautions)"
+   ],
+   "note": "kdl-o-007; source: WHO Laboratory Biosafety Manual, 4th ed. (2020). BSL-1 — agents that do not cause disease in healthy adults; BSL-2 — HBV, HIV, Salmonella, etc.; BSL-3/4 — serious agents transmitted by the airborne route.",
+   "source": "Source: WHO Laboratory Biosafety Manual, 4th edition (2020)"
+  },
+  {
+   "title": "Prohibited in the laboratory",
+   "bullets": [
+    "Food and drink — Eating, drinking or storing food in the work area",
+    "Smoking — Smoking and applying cosmetics",
+    "Mouth pipetting — Mechanical pipettes only",
+    "“Clean” surfaces with gloves — Touching doors, phones or keyboards with gloves on",
+    "Lab coat outside — Lab coats and gloves are not worn outside the laboratory",
+    "Working unprotected — Working without eye and face protection when there is a splash risk"
+   ],
+   "note": "kdl-o-007 outline; WHO Laboratory Biosafety Manual (2020) — good microbiological practice. Students find the warning signs in the laboratory and explain what they mean."
+  },
+  {
+   "title": "Hand hygiene",
+   "bullets": [
+    "Alcohol-based hand rub — 20–30 seconds, until hands are dry",
+    "Soap and water — 40–60 seconds; when hands are visibly soiled",
+    "When — at the start of work and when leaving the laboratory",
+    "When — before putting on and after removing gloves",
+    "When — after handling biological material, before eating",
+    "Remember — gloves do not replace hand hygiene"
+   ],
+   "note": "Source: WHO Guidelines on Hand Hygiene in Health Care (2009). Practical exercise: students demonstrate the hand-rub technique (palms, between the fingers, thumbs, fingertips, wrists).",
+   "source": "Source: WHO Guidelines on Hand Hygiene in Health Care (2009)"
+  },
+  {
+   "title": "Personal protective equipment: putting on and removing",
+   "bullets": [
+    "Putting on: Hand hygiene → Gown → Mask → Goggles / face shield → Gloves",
+    "Removing: Gloves → Goggles / face shield → Gown → Mask → Hand hygiene"
+   ],
+   "note": "Source: CDC — Sequence for putting on / removing PPE. When removing, the most contaminated item (gloves) comes off first; do not touch the outer surface.",
+   "source": "Source: CDC, Sequence for putting on and removing PPE. Removal — starting with the most contaminated."
+  },
+  {
+   "title": "Biosafety: practice",
+   "bullets": [
+    "Sharps — needles are never recapped; straight into a puncture-resistant container",
+    "Aerosols — centrifuge and open tubes in sealed buckets or in a biological safety cabinet",
+    "Spills — follow a ready procedure: contain, disinfect, clean up",
+    "Work surfaces — disinfect at the end of work and after every spill"
+   ],
+   "note": "kdl-o-007. Decontamination: infectious material is decontaminated before disposal (preferably by autoclaving).",
+   "source": "Source: WHO Laboratory Biosafety Manual, 4th edition (2020)"
+  },
+  {
+   "title": "Needlestick injury or blood on a mucous membrane",
+   "bullets": [
+    "1. Immediately — Skin — wash with running water and soap; eyes/mucosa — rinse with plenty of water",
+    "2. Report — Inform the supervisor immediately, record the incident",
+    "3. Prophylaxis — Post-exposure assessment and prophylaxis according to the institution’s procedure — as soon as possible"
+   ],
+   "note": "kdl-o-007: staff health — occupational health requirements (including vaccination), the post-exposure prophylaxis procedure. Specific drugs and time limits follow the institution’s protocol and current national guidance — the teacher should explain the local procedure.",
+   "source": "Every laboratory must have a written post-exposure procedure known to all staff."
+  },
+  {
+   "title": "Medical waste",
+   "bullets": [
+    "Sharps — Needles, lancets, glass — puncture-resistant container; closed when ¾ full",
+    "Infectious — Bag/container with the biohazard symbol; decontaminate before disposal (autoclave)",
+    "Chemical — Reagent residues — separately, according to the label and safety data sheet",
+    "National requirements — Waste classes, colours and procedures — per the current sanitary rules"
+   ],
+   "note": "Source: WHO, Safe management of wastes from health-care activities (2014). Waste classes and colours are set by the country’s sanitary rules — the teacher should state the current national procedure.",
+   "source": "Source: WHO, Safe management of wastes from health-care activities (2014)"
+  },
+  {
+   "eyebrow": "Section 3",
+   "title": "Medical ethics and deontology",
+   "bullets": [
+    "Professional duty and conduct"
+   ],
+   "section": true
+  },
+  {
+   "title": "Concepts and core principles",
+   "bullets": [
+    "Medical ethics — Moral principles in relation to patients, colleagues and society",
+    "Deontology — The study of professional duty and rules of conduct",
+    "Patient’s interest — Putting the patient’s interest first, doing no harm",
+    "Autonomy — Patient rights and voluntary informed consent",
+    "Non-discrimination — Care based only on medical need",
+    "Justice — The same quality and attention for every patient"
+   ],
+   "note": "Based on the kdl-o-037 outline."
+  },
+  {
+   "title": "Confidentiality in the laboratory",
+   "bullets": [
+    "Medical secrecy — results and patient data only for authorized persons",
+    "Without time limit — the obligation continues even after the patient’s death",
+    "Telephone — results are not given to outsiders by phone",
+    "Forms — not left in the open; screens are locked",
+    "Electronic system — personal login; passwords are never shared",
+    "Social media — no posting of results or specimen photos"
+   ],
+   "note": "Discussion: “My neighbour asked for her friend’s test result” — how does the laboratory technician answer?"
+  },
+  {
+   "title": "Professional honesty and accountability",
+   "bullets": [
+    "Competence — Continuous learning and professional development; do not perform an unfamiliar method on your own",
+    "Honesty — Errors are not hidden — they are recorded and corrected. “Adjusting” a result is prohibited",
+    "Critical result — A life-threatening value is reported to the physician immediately and recorded",
+    "Colleagues — Respect and clear communication; a colleague is not criticized in front of a patient"
+   ],
+   "note": "kdl-o-037. In Uzbekistan the code of ethics for medical workers was approved by Ministry of Health order No. 88 of 24 March 2022 — the teacher should check the text on lex.uz and read out its main requirements.",
+   "source": "Code of ethics for medical workers (Ministry of Health, 2022, order No. 88) — check the text on lex.uz"
+  },
+  {
+   "eyebrow": "Section 4",
+   "title": "Values and ethics class",
+   "bullets": [
+    "A profession is a responsibility"
+   ],
+   "section": true
+  },
+  {
+   "title": "The laboratory technician — unseen, but decisive",
+   "bullets": [
+    "Behind every tube is a person: a child, a mother, an elderly patient",
+    "Accuracy is care: a correctly labelled specimen saves lives",
+    "Teamwork — trust between the laboratory, the clinic and the patient",
+    "Never stop learning — medicine changes every year",
+    "Honesty — saying “I don’t know, I will find out” is professional courage"
+   ],
+   "note": "The teacher is encouraged to share one story from their own experience. Discussion: “Why did I choose this profession?”"
+  },
+  {
+   "title": "Practical scenarios (discussion)",
+   "bullets": [
+    "1 — A specimen arrived unlabelled. What do you do?",
+    "2 — Potassium 7.2 mmol/L, the specimen is haemolysed. Do you release the result?",
+    "3 — A colleague wants to send results even though QC is “out”.",
+    "4 — You got a needlestick injury. Your first 3 actions?",
+    "5 — A patient’s relative asked for the result by phone."
+   ],
+   "note": "Expected answers: 1) not accepted, recollection is requested, the incident is recorded; 2) haemolysis falsely raises potassium — report with a comment or recollect the specimen, inform the physician; 3) patient results are not released until QC meets the requirements — the cause is found and fixed; 4) wash, inform the supervisor, follow the post-exposure procedure; 5) results are not given to an unauthorized person."
+  },
+  {
+   "title": "Mini-test",
+   "bullets": [
+    "1. In which phase do most laboratory errors occur?",
+    "2. At which biosafety level is work with blood usually done?",
+    "3. What is removed first when taking off PPE?",
+    "4. How long does hand rubbing with an alcohol-based antiseptic take?"
+   ],
+   "note": "Answers: 1 — A (pre-analytical); 2 — B (BSL-2); 3 — C (gloves); 4 — B (20–30 seconds). Group test in the app: Learn → Groups → topic → test."
+  },
+  {
+   "title": "Review questions (qualification category — oral)",
+   "bullets": [
+    "kdl-o-006 — General safety, electrical and fire safety",
+    "kdl-o-007 — Biosafety: risk assessment, BSL, PPE, waste",
+    "kdl-o-037 — Medical ethics and deontology, confidentiality",
+    "In the app — Learn → Category → Oral questions: with an answer outline"
+   ],
+   "note": "Questions from the LabGuide qualification-category bank (official questions). Answer outlines are available in the app."
+  },
+  {
+   "title": "Sources",
+   "bullets": [
+    "WHO. Laboratory Quality Management System: Handbook. Geneva: WHO; 2011.",
+    "WHO. Laboratory Biosafety Manual, 4th edition. Geneva: WHO; 2020.",
+    "WHO. Guidelines on Hand Hygiene in Health Care. Geneva: WHO; 2009.",
+    "WHO. Safe management of wastes from health-care activities, 2nd ed. Geneva: WHO; 2014.",
+    "CDC. Sequence for putting on and removing personal protective equipment (PPE).",
+    "ISO 15189:2022. Medical laboratories — Requirements for quality and competence.",
+    "Plebani M. Errors in clinical laboratories or errors in laboratory medicine? Clin Chem Lab Med. 2006;44(6):750–759.",
+    "Ministry of Health of the Republic of Uzbekistan, order No. 88 of 24 March 2022 — code of ethics for medical workers (text: lex.uz).",
+    "LabGuide qualification-category bank: kdl-o-006, kdl-o-007, kdl-o-037. Icons: Material Icons (Apache 2.0)."
+   ],
+   "note": "The teacher reviews the content and adds local procedures (institution SOPs, post-exposure protocol, waste classes)."
+  }
+ ]
+}
