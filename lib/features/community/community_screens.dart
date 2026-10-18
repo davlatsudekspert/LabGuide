@@ -46,6 +46,8 @@ String communityErrorText(Object e, AppLocalizations l) {
         return l.cmStatusSuspended;
       case 'contact_data':
         return l.cmErrContact;
+      case 'abusive_language':
+        return l.cmErrAbusive;
       case 'too_large':
         return l.cmErrTooLarge;
       case 'pdf_not_supported' || 'unsupported_media_type':
@@ -506,7 +508,9 @@ class _CommunityListScreenState extends State<CommunityListScreen> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (mounted) _reload();
+      if (!mounted) return;
+      unawaited(context.services.community.syncBlocks());
+      _reload();
     });
   }
 
@@ -914,7 +918,11 @@ class _QuestionScreenState extends State<QuestionScreen> {
     );
   }
 
-  Future<void> _block(CommunityAuthor author) async {
+  Future<void> _block(
+    CommunityAuthor author, {
+    required PostKind kind,
+    required String postId,
+  }) async {
     final l = AppLocalizations.of(context);
     final community = context.services.community;
     final ok =
@@ -938,7 +946,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
         ) ==
         true;
     if (!ok || !mounted) return;
-    await community.block(author);
+    await community.block(author, kind: kind, postId: postId);
     if (mounted) _snack(context, l.cmBlockedDone);
   }
 
@@ -1053,7 +1061,11 @@ class _QuestionScreenState extends State<QuestionScreen> {
                           label: l.cmBlock,
                           icon: Icons.block_rounded,
                           expand: false,
-                          onPressed: () => _block(q.author),
+                          onPressed: () => _block(
+                            q.author,
+                            kind: PostKind.question,
+                            postId: q.id,
+                          ),
                         ),
                       if (t.admin) ...[
                         LgButton.link(
@@ -1233,7 +1245,8 @@ class _QuestionScreenState extends State<QuestionScreen> {
                   label: l.cmBlock,
                   icon: Icons.block_rounded,
                   expand: false,
-                  onPressed: () => _block(a.author),
+                  onPressed: () =>
+                      _block(a.author, kind: PostKind.answer, postId: a.id),
                 ),
               if (t.admin)
                 LgButton.link(

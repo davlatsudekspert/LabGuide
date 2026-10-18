@@ -1755,6 +1755,43 @@ class FakeAdminConsoleBackend extends FakeAdminTeamBackend
   }
 
   @override
+  Future<void> adminDeleteAccount({
+    required String email,
+    required String confirmUserId,
+  }) async {
+    _panel();
+    if (!isValidEmail(email)) {
+      throw const AdminConsoleException(
+        BackendFailure.invalid,
+        'invalid_email',
+      );
+    }
+    final u = _users[normalizeEmail(email)];
+    if (u == null) {
+      throw const AdminConsoleException(BackendFailure.notFound, 'not_found');
+    }
+    if (u.id != confirmUserId) {
+      throw const AdminConsoleException(
+        BackendFailure.invalid,
+        'confirmation_mismatch',
+      );
+    }
+    if (u.id == _current!.id) {
+      throw const AdminConsoleException(BackendFailure.forbidden, 'self');
+    }
+    if (adminEmails.contains(u.email)) {
+      throw const AdminConsoleException(BackendFailure.forbidden, 'admin');
+    }
+    _users.remove(u.email);
+    _threads.removeWhere((t) => t.userId == u.id);
+    deletedByAdmin.add(u.id);
+    _log('account_deleted_by_admin', u.id, {'via': 'admin_console'});
+  }
+
+  /// Admin panelidan o'chirilgan hisoblar (testlar tekshiradi).
+  final List<String> deletedByAdmin = [];
+
+  @override
   Future<void> adminSuspendCommunity(String userId) async {
     _panel();
     communityStatus[_byId(userId).id] = 'suspended';

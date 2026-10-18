@@ -9755,4 +9755,36 @@ class AppLocalizationsEn extends AppLocalizations {
   String topicTestReworkMistakes(int count) {
     return 'Review mistakes · $count';
   }
+
+  @override
+  String get cmErrAbusive =>
+      'The text contains offensive or abusive language. Please rephrase it respectfully — the community rules require this.';
+
+  @override
+  String get admDeleteTitle => 'Delete account';
+
+  @override
+  String get admDeleteNote =>
+      'For deletion requests received by email (completed within 30 days). To confirm, enter the user\'s full email — the server checks that it belongs to exactly this account. The account, group memberships, community posts, support threads and sign-in methods are deleted permanently; for Sign in with Apple users the server attempts to revoke the Apple token. This cannot be undone; the action is logged.';
+
+  @override
+  String get admDeleteEmail => 'User\'s full email';
+
+  @override
+  String get admDeleteButton => 'Delete account permanently';
+
+  @override
+  String get admDeleteConfirmTitle => 'Delete this account permanently?';
+
+  @override
+  String admDeleteConfirmBody(String email) {
+    return 'The account $email and all data linked to it will be deleted. This cannot be undone.';
+  }
+
+  @override
+  String get admDeleteDone => 'Account deleted';
+
+  @override
+  String get admDeleteMismatch =>
+      'This email does not belong to this account — check it and try again.';
 }

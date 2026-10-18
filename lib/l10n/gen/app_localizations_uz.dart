@@ -9621,4 +9621,36 @@ class AppLocalizationsUz extends AppLocalizations {
   String topicTestReworkMistakes(int count) {
     return 'Xatolarni takrorlash · $count';
   }
+
+  @override
+  String get cmErrAbusive =>
+      'Matnda haqoratli yoki so‘kinish so‘zlari bor. Iltimos, hurmat bilan qayta yozing — hamjamiyat qoidalari shuni talab qiladi.';
+
+  @override
+  String get admDeleteTitle => 'Hisobni o‘chirish';
+
+  @override
+  String get admDeleteNote =>
+      'Email orqali kelgan o‘chirish so‘rovi uchun (30 kun ichida bajariladi). Tasdiq uchun foydalanuvchining to‘liq emailini kiriting — server uning aynan shu hisobga tegishliligini tekshiradi. Hisob, guruh a’zoligi, hamjamiyat postlari, murojaatlar va kirish usullari butunlay o‘chadi; Apple bilan kirgan bo‘lsa, Apple tokenini bekor qilish urinib ko‘riladi. Qaytarib bo‘lmaydi; amal jurnalga yoziladi.';
+
+  @override
+  String get admDeleteEmail => 'Foydalanuvchining to‘liq emaili';
+
+  @override
+  String get admDeleteButton => 'Hisobni butunlay o‘chirish';
+
+  @override
+  String get admDeleteConfirmTitle => 'Hisob butunlay o‘chirilsinmi?';
+
+  @override
+  String admDeleteConfirmBody(String email) {
+    return '$email hisobi va unga bog‘liq hamma ma’lumot o‘chiriladi. Bu amalni qaytarib bo‘lmaydi.';
+  }
+
+  @override
+  String get admDeleteDone => 'Hisob o‘chirildi';
+
+  @override
+  String get admDeleteMismatch =>
+      'Bu email shu hisobga tegishli emas — tekshirib, qayta kiriting.';
 }

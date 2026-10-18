@@ -16773,6 +16773,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Review mistakes · {count}'**
   String topicTestReworkMistakes(int count);
+
+  /// No description provided for @cmErrAbusive.
+  ///
+  /// In en, this message translates to:
+  /// **'The text contains offensive or abusive language. Please rephrase it respectfully — the community rules require this.'**
+  String get cmErrAbusive;
+
+  /// No description provided for @admDeleteTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete account'**
+  String get admDeleteTitle;
+
+  /// No description provided for @admDeleteNote.
+  ///
+  /// In en, this message translates to:
+  /// **'For deletion requests received by email (completed within 30 days). To confirm, enter the user\'s full email — the server checks that it belongs to exactly this account. The account, group memberships, community posts, support threads and sign-in methods are deleted permanently; for Sign in with Apple users the server attempts to revoke the Apple token. This cannot be undone; the action is logged.'**
+  String get admDeleteNote;
+
+  /// No description provided for @admDeleteEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'User\'s full email'**
+  String get admDeleteEmail;
+
+  /// No description provided for @admDeleteButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete account permanently'**
+  String get admDeleteButton;
+
+  /// No description provided for @admDeleteConfirmTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete this account permanently?'**
+  String get admDeleteConfirmTitle;
+
+  /// No description provided for @admDeleteConfirmBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The account {email} and all data linked to it will be deleted. This cannot be undone.'**
+  String admDeleteConfirmBody(String email);
+
+  /// No description provided for @admDeleteDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Account deleted'**
+  String get admDeleteDone;
+
+  /// No description provided for @admDeleteMismatch.
+  ///
+  /// In en, this message translates to:
+  /// **'This email does not belong to this account — check it and try again.'**
+  String get admDeleteMismatch;
 }
 
 class _AppLocalizationsDelegate
