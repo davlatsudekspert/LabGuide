@@ -2247,9 +2247,9 @@
     "en": "Intracellular Gram-negative diplococci."
    },
    "meaning": {
-    "uz": "Erkaklarda uretra surtmasida gonoreya uchun yuqori ishonchli. Ayollarda servikal surtma sezgirligi past — NAAT tavsiya etiladi.",
-    "ru": "У мужчин в мазке из уретры — высокодостоверно для гонореи. У женщин чувствительность мазка низкая — рекомендуется МАНК.",
-    "en": "Highly reliable for gonorrhoea in male urethral smears. Low sensitivity in cervical smears — NAAT is recommended."
+    "uz": "Simptomli erkaklarda uretra surtmasida — gonoreya uchun diagnostik; simptomsiz erkaklarda manfiy surtma infeksiyani istisno qilmaydi. Endotservikal surtmada Gram sezgirligi past — NAAT tavsiya etiladi.",
+    "ru": "У мужчин с симптомами в мазке из уретры — диагностически для гонореи; у мужчин без симптомов отрицательный мазок инфекцию не исключает. В мазке из цервикального канала чувствительность окраски по Граму низкая — рекомендуется МАНК.",
+    "en": "Diagnostic for gonorrhoea in urethral smears from symptomatic men; in asymptomatic men a negative smear does not rule it out. Gram stain is insensitive on endocervical smears — NAAT is recommended."
    },
    "refer": true,
    "refs": [
@@ -2320,13 +2320,12 @@
  "cytoDegrees": [
   {
    "n": 1,
-   "ph": "4,0–4,5",
-   "picture": {
+   "ph": {
     "uz": "Laktobatsillalar ko‘p, yassi epiteliy, leykotsitlar yakka yoki yo‘q.",
     "ru": "Много лактобацилл, плоский эпителий, лейкоциты единичные или отсутствуют.",
     "en": "Abundant lactobacilli, squamous cells, rare or no leukocytes."
    },
-   "meaning": {
+   "picture": {
     "uz": "Norma",
     "ru": "Норма",
     "en": "Normal"
@@ -2334,13 +2333,12 @@
   },
   {
    "n": 2,
-   "ph": "4,5–5,0",
-   "picture": {
+   "ph": {
     "uz": "Laktobatsillalar kamroq, oz miqdorda boshqa flora, leykotsitlar yakka.",
     "ru": "Лактобацилл меньше, немного другой флоры, лейкоциты единичные.",
     "en": "Fewer lactobacilli, a little other flora, rare leukocytes."
    },
-   "meaning": {
+   "picture": {
     "uz": "Norma chegarasida",
     "ru": "Вариант нормы",
     "en": "Within normal"
@@ -2348,13 +2346,12 @@
   },
   {
    "n": 3,
-   "ph": "5,0–7,0",
-   "picture": {
+   "ph": {
     "uz": "Laktobatsillalar oz, aralash (kokkli) flora ustun, leykotsitlar ko‘p.",
     "ru": "Лактобацилл мало, преобладает смешанная (кокковая) флора, много лейкоцитов.",
     "en": "Few lactobacilli, mixed (coccal) flora predominates, many leukocytes."
    },
-   "meaning": {
+   "picture": {
     "uz": "Yallig‘lanish belgisi",
     "ru": "Признак воспаления",
     "en": "Suggests inflammation"
@@ -2362,13 +2359,12 @@
   },
   {
    "n": 4,
-   "ph": "7,0–7,5",
-   "picture": {
+   "ph": {
     "uz": "Laktobatsillalar yo‘q, patogen flora ko‘p (masalan, trixomonada), leykotsitlar juda ko‘p.",
     "ru": "Лактобацилл нет, много патогенной флоры (например, трихомонады), лейкоцитов очень много.",
     "en": "No lactobacilli, abundant pathogenic flora (e.g. trichomonads), very many leukocytes."
    },
-   "meaning": {
+   "picture": {
     "uz": "Yaqqol yallig‘lanish",
     "ru": "Выраженное воспаление",
     "en": "Marked inflammation"
@@ -2563,7 +2559,7 @@
    "code": "AGC, favor neoplastic",
    "name": {
     "uz": "Atipik bezli hujayralar, o‘sma (neoplaziya) foydasiga (endotservikal yoki aniqlanmagan)",
-    "ru": "Атипичные железистые клетки, подозрительные на опухолевые (favor neoplastic; эндоцервикальные или без уточнения)",
+    "ru": "Атипичные железистые клетки, похожие на неопластичные (AGC-FN, favor neoplastic; эндоцервикальные или без уточнения)",
     "en": "Atypical glandular cells, favor neoplastic (endocervical or not otherwise specified)"
    },
    "meaning": {
@@ -2592,10 +2588,28 @@
      "locator": "Section G.1"
     },
     {
+     "source_id": "cyto-kr-597-2024",
+     "citation": "Российское общество акушеров-гинекологов; Российское общество специалистов по профилактике и лечению опухолей репродуктивной системы. Клинические рекомендации «Цервикальная интраэпителиальная неоплазия, эрозия и эктропион шейки матки» (одобрены Научно-практическим советом Минздрава России), 2024, ID 597",
+     "url": "https://base.garant.ru/410436907/",
+     "locator": "Список сокращений: AGC-FN"
+    },
+    {
      "source_id": "cyto-grigoruk-2024",
      "citation": "Григорук ОГ, Москвина ТА, Базулина ЛМ, Вихлянов ИВ. Цитологическая диагностика железистых поражений цервикального канала. Опухоли женской репродуктивной системы. 2024. doi:10.17650/1994-4098-2024-20-4-101-110",
      "url": "https://doi.org/10.17650/1994-4098-2024-20-4-101-110",
-     "locator": "Резюме (ru term)"
+     "locator": "p. 103"
+    }
+   ],
+   "cites": [
+    {
+     "uz": "Ruscha atama — manba: RF Sog‘liqni saqlash vazirligi klinik tavsiyasi «Цервикальная интраэпителиальная неоплазия, эрозия и эктропион шейки матки», 2024 (ID 597), «Список сокращений»: «атипичные железистые клетки, похожие на неопластичные».",
+     "ru": "Русский термин — источник: клинические рекомендации Минздрава России «Цервикальная интраэпителиальная неоплазия, эрозия и эктропион шейки матки», 2024 (ID 597), «Список сокращений»: «атипичные железистые клетки, похожие на неопластичные».",
+     "en": "Russian term — source: RF Ministry of Health clinical guideline “Cervical intraepithelial neoplasia, erosion and ectropion of the cervix”, 2024 (ID 597), list of abbreviations: «атипичные железистые клетки, похожие на неопластичные»."
+    },
+    {
+     "uz": "Boshqa ruscha variant — manba: Grigoruk O.G. va hamm., 2024, «Цитологическая диагностика железистых поражений цервикального канала», Опухоли женской репродуктивной системы 20(4), 103-b.: «атипичные железистые клетки, подозрительные на аденокарциному».",
+     "ru": "Другой вариант — источник: Григорук О.Г. и соавт., 2024, «Цитологическая диагностика железистых поражений цервикального канала», Опухоли женской репродуктивной системы 20(4), с. 103: «атипичные железистые клетки, подозрительные на аденокарциному».",
+     "en": "Another Russian variant — source: Grigoruk O.G. et al., 2024, “Cytological diagnosis of glandular lesions of the cervical canal”, Tumors of Female Reproductive System 20(4), p. 103: «атипичные железистые клетки, подозрительные на аденокарциному»."
     }
    ]
   },
@@ -5793,7 +5807,7 @@
    "id": "transitional",
    "group": "epithelium",
    "name": {
-    "uz": "O‘tuvchi epiteliy",
+    "uz": "O‘zgaruvchan epiteliy",
     "ru": "Переходный эпителий",
     "en": "Transitional epithelium"
    },
@@ -5813,7 +5827,7 @@
    "id": "loose_ct",
    "group": "connective",
    "name": {
-    "uz": "G‘ovak tolali biriktiruvchi to‘qima",
+    "uz": "Siyrak tolali biriktiruvchi to‘qima",
     "ru": "Рыхлая волокнистая соединительная ткань",
     "en": "Loose connective tissue"
    },
