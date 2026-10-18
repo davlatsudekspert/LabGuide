@@ -377,4 +377,11 @@ void main() {
       }
     }
   });
+
+  test('tibbiy ko‘rib chiqish 2026-10-18: LFB asosan miyelin', () {
+    final lfb = histoStains.firstWhere((s) => s.id == 'luxol').facts.first;
+    expect(lfb.text.values['en'], startsWith('Stains mainly myelin'));
+    expect(lfb.text.values['ru'], contains('в основном миелин'));
+    expect(lfb.text.values['uz'], contains('asosan miyelinni'));
+  });
 }

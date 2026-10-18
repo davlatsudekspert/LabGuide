@@ -697,4 +697,18 @@ void main() {
     expect(find.byType(BloodMorphScreen), findsOne);
     expect(tester.takeException(), isNull);
   });
+
+  test('tibbiy ko‘rib chiqish 2026-10-18: trombotsit/eritrotsit nisbati', () {
+    // "1 per 500–1000 red cells" (WHO 2003 9.14) contradicts its own
+    // reference range; replaced with Adewoyin 2014 (7–15 per x100 field).
+    for (final f in bmPlateletIntro) {
+      for (final v in f.text.values.values) {
+        expect(v, isNot(contains('500–1000')));
+      }
+    }
+    final estimate = bmPlateletIntro[1].text.values;
+    expect(estimate['en'], contains('7–15'));
+    expect(estimate['ru'], contains('15–20 ×10⁹/л'));
+    expect(estimate['uz'], contains('15–20 ×10⁹/L'));
+  });
 }

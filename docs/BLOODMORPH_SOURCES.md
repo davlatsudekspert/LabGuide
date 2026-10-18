@@ -66,7 +66,8 @@ ma’lumoti — kontent paketidagi kartalarda (havola, takrorlanmaydi), anemiya 
 | Xauell–Jolli | binafsha donacha (DNK); splenektomiya/aspleniya, gemolitik, megaloblast; trombotsitdan farqi | WHO p. 309; Adewoyin |
 | Tanga ustunchalari | tanga kabi; ko‘kish fon — paraproteinemiya, makroglobulinemiya | Adewoyin |
 | Agglyutinatsiya | to‘dalar; sovuq agglyutininlar, Valdenström; RBC ↓, MCV/MCHC ↑ | MSD Table; Adewoyin; Takami Table 4 |
-| Trombotsitlar (normal) | megakariotsit bo‘lagi, ≈ 1/3 eritrotsit, binafsha-pushti; 20 maydon, 1:500–1000 | Adewoyin Platelet morphology; WHO Table 9.10, p. 321 |
+| Trombotsitlar (normal) | megakariotsit bo‘lagi, ≈ 1/3 eritrotsit, binafsha-pushti; 20 maydon, nisbat × RBC; ×100 maydonda 7–15, 1 trombotsit/maydon ≈ 15–20 ×10⁹/L | Adewoyin Platelet morphology; WHO 9.14, p. 321 |
+| (2026-10-18 tuzatish) | JSST 9.14 dagi «500–1000 eritrotsitga bitta trombotsit — me’yor» olib tashlandi: JSST ning o‘z Table 9.13 (kattalar 1,7–4,0 ×10⁵/mm³) va eritrotsit soni (4–5 ×10¹²/L) bilan nisbat ≈ 1:10–1:30 chiqadi; 1:500–1000 og‘ir trombotsitopeniyaga (≈ 5–10 ×10⁹/L) mos — manbadagi xato | WHO p. 321; Adewoyin |
 | Gigant | ≈ eritrotsit kattaligida; tug‘ma/orttirilgan trombotsitopeniya; yuqori IPF — MYH9; analizator sanamaydi, qo‘lda sanash | Adewoyin; Cattaneo Abstract, Presence of large/giant…; Takami Table 4, 5 |
 | To‘plamlar (PTCP) | ≥ 5 trombotsit; chetlar, dum; EDTA, harorat/vaqt, antitana; zararsiz; ~0,1 %; 4–20 °C; WBC soxta ↑; tashxis faqat surtmada; darhol sanash; sitrat/geparin har doim emas | Cattaneo (Abstract, Epidemiology, Mechanism, Diagnosis); Adewoyin; Takami Step 5 |
 | Satellitizm | neytrofil atrofida; IgG ko‘prigi GPIIb-IIIa–FcγRIII; faqat EDTA; soni soxta ↓ | Cattaneo Abstract, Platelet satellitism |

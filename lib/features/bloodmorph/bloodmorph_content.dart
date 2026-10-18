@@ -2238,19 +2238,26 @@ const bmPlateletIntro = <BmFact>[
   BmFact(
     _T({
       'uz':
-          'Taxminiy baholash: ×100 obyektivda 20 ta maydonda trombotsitlar '
-          'sanaladi va maydondagi eritrotsitlar taxmin qilinadi; 500–1000 '
-          'eritrotsitga bitta trombotsit — taxminan me’yor.',
+          'Taxminiy baholash (JSST): ×100 obyektivda 20 ta maydonda '
+          'trombotsitlar sanaladi va maydondagi eritrotsitlar taxmin '
+          'qilinadi; trombotsit/eritrotsit nisbati eritrotsitlar soniga '
+          'ko‘paytirilib, trombotsitlar soni taxmin qilinadi. Adewoyin: '
+          'normada ×100 maydonda taxminan 7–15 trombotsit; maydondagi bitta '
+          'trombotsit qonda taxminan 15–20 ×10⁹/L ga to‘g‘ri keladi.',
       'ru':
-          'Ориентировочная оценка: под объективом ×100 считают тромбоциты в '
-          '20 полях и прикидывают число эритроцитов в поле; один тромбоцит '
-          'на 500–1000 эритроцитов — примерно норма.',
+          'Ориентировочная оценка (ВОЗ): под объективом ×100 считают '
+          'тромбоциты в 20 полях и прикидывают число эритроцитов в поле; '
+          'отношение тромбоциты/эритроциты умножают на число эритроцитов. '
+          'Adewoyin: в норме около 7–15 тромбоцитов в поле ×100; один '
+          'тромбоцит в поле соответствует примерно 15–20 ×10⁹/л в крови.',
       'en':
-          'Rough estimate: with the ×100 objective count platelets in 20 '
-          'fields and estimate red cells per field; about one platelet per '
-          '500–1000 red cells is normal.',
+          'Rough estimate (WHO): with the ×100 objective count platelets in '
+          '20 fields and estimate red cells per field; multiply the '
+          'platelet/red cell ratio by the red cell count. Adewoyin: normally '
+          'about 7–15 platelets per ×100 field; one platelet per field '
+          'corresponds to roughly 15–20 ×10⁹/L in the blood.',
     }),
-    [_wPlt],
+    [_wPlt, _aPlt],
   ),
   BmFact(
     _T({

@@ -499,4 +499,18 @@ void main() {
     expect(find.byType(BloodGroupScreen), findsOne);
     expect(tester.takeException(), isNull);
   });
+
+  test(
+    'tibbiy ko‘rib chiqish 2026-10-18: namuna transfuziyadan keyin saqlanadi',
+    () {
+      // BSH 2012 §3.9.2: "at least 3 days post-transfusion".
+      final records = bgQuality.firstWhere((i) => i.id == 'records').body;
+      expect(records.values['en'], contains('3 days post-transfusion'));
+      expect(records.values['ru'], contains('3 дней после трансфузии'));
+      expect(
+        records.values['uz'],
+        contains('transfuziyadan keyin kamida 3 kun'),
+      );
+    },
+  );
 }

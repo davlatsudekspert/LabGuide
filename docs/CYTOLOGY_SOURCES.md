@@ -90,7 +90,7 @@ noto'g'ri tushunilishi mumkin; sikl kuniga bog'liq).
 
 | Da'vo | Manba — joyi |
 |---|---|
-| Parij tizimi 2-nashr: Unsatisfactory, NHGUC, AUC, SHGUC, HGUC; LGUN NHGUC ichiga kiritilgan; asosiy maqsad HGUC | `wojcik2026` — Tables 2–3, TPS 2.0 matni |
+| Parij tizimi 2-nashr: Unsatisfactory, NHGUC, AUC, SHGUC, HGUC, Non-urothelial (ilgari «other malignancies»; 2026-10-18 qo‘shildi — avval ro‘yxat to‘liq emas edi); LGUN NHGUC ichiga kiritilgan; asosiy maqsad HGUC | `wojcik2026` — Tables 2–3, TPS 2.0 matni |
 | Seroz suyuqliklar xalqaro tizimi (IAC + ASC, 2020): ND, NFM, AUS, SFM, MAL | `wang2023Serous` — Abstract, Table 1 |
 | JSST o'pka sitopatologiyasi tizimi (IAC + IARC): 5 toifa | `dolezal2024` — Introduction |
 | Balg'am yetarliligi: bir nechta alveolyar makrofag va kiprikli bronx hujayralari, ≥ 2 surtmaga hajm | `dolezal2024` — Insufficient/Inadequate/Non-diagnostic |
@@ -114,3 +114,11 @@ noto'g'ri tushunilishi mumkin; sikl kuniga bog'liq).
   an'anaviy 8 000–12 000, suyuq asosli 5 000. Ilovada ikkinchisi (Bethesda 2014 bilan mos).
 - ASC-US yadro o'lchami: Kattoor 2022 va WSLH — 2,5–3×; Wang 2023 — "2–3 times the area".
   Ilovada 2,5–3×.
+
+## 2026-10-18 tibbiy ko‘rib chiqish tuzatishlari
+
+- Gonokokk kartasi: «erkak uretra surtmasida yuqori ishonchli» → CDC 2021 so‘zi bilan: simptomli
+  erkaklarda diagnostik, simptomsiz erkaklarda manfiy surtma istisno qilmaydi; endotservikal Gram
+  sezgir emas (CDC STI Treatment Guidelines 2021 — Gonococcal Infections, Diagnostic Considerations).
+- Parij tizimi: «Non-urothelial» toifasi qo‘shildi (Wojcik 2026, Table 2).
+- Batafsil: `docs/AUDIT_2026-10-18_MEDICAL_REVIEW.md`.

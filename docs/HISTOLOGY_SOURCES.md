@@ -132,3 +132,11 @@ Ruscha atamalar ruscha Vikipediya maqolalari bilan solishtirildi (Эпители
 - Jigar uchun «Liver (254 13).jpg» — faylda H&E deyilgan, lekin ranglari sariq-yashil,
   shuning uchun olinmadi.
 - Fibroz, sirroz va boshqa patologiya — bo‘lim faqat normal gistologiya.
+
+## 2026-10-18 tibbiy ko‘rib chiqish tuzatishlari
+
+- LFB: «miyelin va Nissl moddasini bo‘yaydi» → «asosan miyelinni (Klyuver–Barrera usulida
+  hujayralar va Nissl moddasi uchun qo‘shimcha bo‘yoq bilan)». Michigan p. 9 Nissl deydi, lekin u
+  keltirgan Klüver & Barrera 1953 — «Combined Staining of Cells and Fibers»; mutaxassis tasdig‘i kerak.
+- Jigar: uz «o‘rtacha oltitagacha» → «o‘rtacha oltita» (HPA Liver: «on average by six portal tracts»).
+- Batafsil: `docs/AUDIT_2026-10-18_MEDICAL_REVIEW.md`.

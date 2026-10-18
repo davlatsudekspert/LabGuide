@@ -288,4 +288,16 @@ void main() {
     }
     expect(find.text(l.quizDoneTitle), findsOne);
   });
+
+  test('tibbiy ko‘rib chiqish 2026-10-18: gonokokk va Parij tizimi', () {
+    // CDC 2021: Gram surtma faqat simptomli erkaklarda diagnostik.
+    final gono = cytoCell('gonococcus')!.meaning;
+    expect(gono.values['en'], contains('symptomatic men'));
+    expect(gono.values['ru'], contains('с симптомами'));
+    expect(gono.values['uz'], contains('Simptomli'));
+    // TPS 2.0 (Wojcik 2026, Table 2): Non-urothelial toifasi ham bor.
+    final paris = cytoOtherSystems.first.categories;
+    expect(paris, hasLength(6));
+    expect(paris.last.values['en'], startsWith('Non-urothelial'));
+  });
 }
