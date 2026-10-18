@@ -3808,6 +3808,9 @@ class AppLocalizationsEn extends AppLocalizations {
       'Enter a name, a numeric value and a unit for each level.';
 
   @override
+  String get instSaveFailed => 'Couldn’t save. Please try again.';
+
+  @override
   String get calLog => 'Calibration log';
 
   @override

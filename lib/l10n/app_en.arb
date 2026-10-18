@@ -2019,6 +2019,10 @@
   "calRecordSaved": "Calibration record saved",
   "calLotRequired": "Enter the calibrator lot.",
   "calLevelInvalid": "Enter a name, a numeric value and a unit for each level.",
+  "instSaveFailed": "Couldn’t save. Please try again.",
+  "@instSaveFailed": {
+    "description": "Shown when an instrument or calibration record could not be saved (storage error)."
+  },
   "calLog": "Calibration log",
   "calLogSub": "Lot, values and outcome — on this device",
   "calLogEmpty": "No records yet",

@@ -99,8 +99,12 @@ double? citrateVolumeMl({required double hctPercent, required double bloodMl}) {
 }
 
 /// Kiritilgan matndan son (vergul ham qabul qilinadi). Bo'sh — `null`.
+/// "NaN", "Infinity" va cheksizlikka toshgan son (1e400) ham `null`:
+/// aks holda maydon xato ko'rsatmay, natija jimgina yo'qolardi (Lab auditi
+/// 2026-10-18).
 double? cgParse(String text) {
   final t = text.trim().replaceAll(',', '.');
   if (t.isEmpty) return null;
-  return double.tryParse(t);
+  final v = double.tryParse(t);
+  return v == null || !v.isFinite ? null : v;
 }

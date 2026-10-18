@@ -169,19 +169,19 @@ const _wOccult = CalcRef(
   '4.6 Chemical test for occult blood in stools, p. 157',
 );
 
-const _kPurpose = CalcRef(_k, '2-bob, najas tahlili, 38-b.');
-const _kMacro = CalcRef(_k, '2.1 Makroskopik tekshirish, 38–39-b.');
-const _kColour = CalcRef(_k, '2.1 Najas rangi, 39–40-b.');
-const _kAdmix = CalcRef(_k, '2.1 Patologik aralashmalar, 41-b.');
-const _kReaction = CalcRef(_k, '2.2 Najas reaksiyasi, 41–42-b.');
-const _kMicroTable = CalcRef(_k, '2.3 Najas mikroskopiyasi (jadval), 44–45-b.');
-const _kMuscle = CalcRef(_k, '2.3 Mushak tolasi, 45-b.');
-const _kConn = CalcRef(_k, '2.3 Biriktiruvchi to‘qima, 46-b.');
-const _kFat = CalcRef(_k, '2.3 Neytral yog‘ va yog‘ kislotalari, 46-b.');
-const _kStarch = CalcRef(_k, '2.3 Kraxmal, 46-b.');
-const _kMucus = CalcRef(_k, '2.3 Shilliq, 46–47-b.');
-const _kLeuko = CalcRef(_k, '2.3 Leykotsitlar, 47-b.');
-const _kRbc = CalcRef(_k, '2.3 Eritrotsitlar, 47-b.');
+const _kPurpose = CalcRef(_k, '2-bob, najas tahlili, p. 38');
+const _kMacro = CalcRef(_k, '2.1 Makroskopik tekshirish, p. 38–39');
+const _kColour = CalcRef(_k, '2.1 Najas rangi, p. 39–40');
+const _kAdmix = CalcRef(_k, '2.1 Patologik aralashmalar, p. 41');
+const _kReaction = CalcRef(_k, '2.2 Najas reaksiyasi, p. 41–42');
+const _kMicroTable = CalcRef(_k, '2.3 Najas mikroskopiyasi (jadval), p. 44–45');
+const _kMuscle = CalcRef(_k, '2.3 Mushak tolasi, p. 45');
+const _kConn = CalcRef(_k, '2.3 Biriktiruvchi to‘qima, p. 46');
+const _kFat = CalcRef(_k, '2.3 Neytral yog‘ va yog‘ kislotalari, p. 46');
+const _kStarch = CalcRef(_k, '2.3 Kraxmal, p. 46');
+const _kMucus = CalcRef(_k, '2.3 Shilliq, p. 46–47');
+const _kLeuko = CalcRef(_k, '2.3 Leykotsitlar, p. 47');
+const _kRbc = CalcRef(_k, '2.3 Eritrotsitlar, p. 47');
 
 const _mlOpCollect = CalcRef(
   CpSources.mlOp,

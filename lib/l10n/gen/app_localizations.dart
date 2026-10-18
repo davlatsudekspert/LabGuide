@@ -6790,6 +6790,12 @@ abstract class AppLocalizations {
   /// **'Enter a name, a numeric value and a unit for each level.'**
   String get calLevelInvalid;
 
+  /// Shown when an instrument or calibration record could not be saved (storage error).
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn’t save. Please try again.'**
+  String get instSaveFailed;
+
   /// No description provided for @calLog.
   ///
   /// In en, this message translates to:
