@@ -1,6 +1,9 @@
 // Qo'llanma videosi “Ustoz: testni boshlash” uchun kadrlar (uz, Klassik,
 // 390x844 @3x; katta ekran — 1920x1080). Soxta server (FakeLabBackend):
-// uch talaba boshqa “qurilmadan” qo'shiladi va topshiradi (actAs).
+// uch talaba boshqa “qurilmadan” qo'shiladi, testni ochadi va topshiradi
+// (actAs). Oqim — cd3ba59 dan keyingi UI: rol “Ustoz” bir bosishda ustoz
+// qiladi, O'rganishda “Guruh va topshiriqlar” tepada, guruh sahifasida
+// “Mavzu testi berish” → mavzu qidiruvi → Guruhga topshirish.
 //
 //   flutter test tool/screenshots/tutorial_teacher_test.dart --update-goldens
 //   python3 tool/screenshots/tutorial_compose.py teacher
@@ -41,7 +44,7 @@ Future<void> _studentSubmits(
   await b.submitAssignment(a.id, answers, questionIds: ids);
 });
 
-/// Talaba [minutes] daqiqa oldin testni ochgan (vaqt ustunida ko'rinadi).
+/// Talaba [minutes] daqiqa oldin testni ochgan (“Yechmoqda”, vaqt ustuni).
 Future<void> _studentStarts(
   FakeLabBackend b,
   String email,
@@ -67,21 +70,21 @@ void main() {
     await tester.pumpAndSettle();
     final w = TutorialWalk(tester, 'teacher');
 
-    // 1. Profil → rol “Ustoz”.
+    // 1. Profil → rol “Ustoz” (kirgan hisob: “Davom etish” ustoz qiladi).
     await goTo(tester, '/profile/role');
     await w.snap('rol');
     await w.tapText(l.roleTeacher);
     await w.snap('rol_ustoz');
-    await w.tapText(l.actionContinue);
+    await w.tapKey('role-continue');
+    expect(s.access.access.teacher, isTrue);
 
-    // 2. O'rganish → Guruh va topshiriqlar → Guruh yaratish.
+    // 2. O'rganish → Guruh va topshiriqlar (birinchi ekranda) → Guruh yaratish.
     await goTo(tester, '/learn');
     await w.snap('organish');
-    await w.tapText(l.classesTitle);
+    await w.tapKey('learn-classes');
     await w.snap('guruhlar');
     await w.tapText(l.classesCreate);
-    await w.snap('ustoz_royxat');
-    await w.tapText(l.classesTeacherRegister);
+    expect(find.text(l.classesTeacherRegister), findsNothing);
     await w.snap('guruh_nomi_bosh');
     await tester.enterText(find.byType(TextField).first, 'Gematologiya 2-kurs');
     await tester.pumpAndSettle();
@@ -103,30 +106,23 @@ void main() {
     await goTo(tester, '/learn/classes/g/${g.id}');
     await w.snap('guruh_talabalar');
 
-    // 4. Mavzu testi → Guruhga topshirish.
-    await goTo(tester, '/learn/lecture');
-    await w.snap('maruza_royxat');
-    final badge = find.byKey(const ValueKey('deck-test-$_deck'));
-    await tester.scrollUntilVisible(
-      badge,
-      300,
-      scrollable: find
-          .byWidgetPredicate(
-            (w) => w is Scrollable && w.axisDirection == AxisDirection.down,
-          )
-          .first,
+    // 4. Guruh sahifasi → “Mavzu testi berish” → mavzu → Guruhga topshirish.
+    await w.tapKey('group-topic-test');
+    await w.snap('mavzu_qidiruv');
+    await tester.enterText(
+      find.byKey(const ValueKey('deck-pick-search')),
+      'anemiya',
     );
     await tester.pumpAndSettle();
-    await w.snap('maruza_mavzu');
-    await w.tap(badge);
-    await w.snap('mavzu_testi');
-    await w.tapKey('topic-test-assign');
+    await w.snap('mavzu_topildi');
+    await w.tapKey('deck-pick-$_deck');
     await w.snap('topshirish_bosh');
     await w.tapText('5');
     await w.snap('topshirish_5_savol');
     await w.scroll(330);
     await w.snap('variant_muddat');
     await w.tapKey('assign-due-d1');
+    await w.snap('muddat_1kun');
     await w.tapKey('assign-reveal-after');
     await w.snap('muddat_natija_sozlandi');
     await w.tapKey('assign-send');
@@ -137,33 +133,36 @@ void main() {
     await tester.ensureVisible(sent);
     await tester.pumpAndSettle();
     await w.snap('yuborildi');
-    // “Yuborilganlar” qatorini bosish (root navigator ustidan push) debug
-    // rejimida “duplicate page key” assertion beradi — docs/TUTORIAL_VIDEOS.md.
-    // Qo'llanmada: guruh sahifasi → topshiriq.
-    await goTo(tester, '/learn/classes/g/${g.id}');
-    await w.snap('guruh_topshiriq');
-    await w.tap(find.text(a.title).hitTestable());
+    // “Yuborilgan testlar” qatori → natijalar sahifasi (go, orqaga — guruh).
+    await w.tap(sent);
 
-    // 5. Topshiriq sahifasi → Test QR.
+    // 5. Topshiriq sahifasi: tepada Test QR va Katta ekran.
     await w.snap('topshiriq_ustoz');
     await w.tapKey('assignment-test-qr');
     await w.snap('test_qr');
     await w.tapText(l.actionClose);
 
-    // 6. Talabalar yechadi va topshiradi — natijalar o'zi yangilanadi.
+    // 6. Talabalar testni ochadi (“Yechmoqda”) va topshiradi — natijalar
+    // o'zi yangilanadi.
     final key = await b.assignmentKey(a.id);
     final base = '/learn/classes/g/${g.id}/a/${a.id}';
     await _studentStarts(b, 'lola@example.com', a.id, 7);
     await _studentStarts(b, 'aziz@example.com', a.id, 6);
     await _studentStarts(b, 'bobur@example.com', a.id, 5);
-    await _studentSubmits(b, 'lola@example.com', a, key, wrong: 0);
     await tester.pump(const Duration(seconds: 11));
-    await w.scroll(430);
-    await w.snap('natija_1');
+    await tester.pumpAndSettle();
+    final results = find.text(l.classesResults);
+    await tester.ensureVisible(results);
+    await tester.pumpAndSettle();
+    await w.snap('natija_yechmoqda');
+    expect(find.text(l.boardStarted), findsWidgets);
+    await _studentSubmits(b, 'lola@example.com', a, key, wrong: 0);
     await _studentSubmits(b, 'aziz@example.com', a, key, wrong: 1);
     await tester.pump(const Duration(seconds: 11));
-    await w.scroll(-430);
+    await tester.pumpAndSettle();
     await w.snap('natija_2');
+    await w.scroll(-2000);
+    await w.snap('natija_2_tepa');
 
     // 7. Katta ekran (proyektor, 1920x1080) — jonli.
     w.markTap(tester.getCenter(find.byKey(const ValueKey('assignment-board'))));

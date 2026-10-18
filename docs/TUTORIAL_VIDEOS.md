@@ -8,8 +8,13 @@ to‘q sariq doira, o‘tishlar 0,3 s, boshida va oxirida kartochka (`labguide.n
 
 | Video | Davomiyligi | Format |
 |---|---|---|
-| `labguide_teacher_test.mp4` — “Ustoz: testni boshlash” | 90 s | 1080x1920, H.264, 30 fps, ~6,6 MB |
-| `labguide_student_test.mp4` — “Talaba: testga qo‘shilish” | 56 s | 1080x1920, H.264, 30 fps, ~4,4 MB |
+| `labguide_teacher_test.mp4` — “Ustoz: testni boshlash” | 90 s | 1080x1920, H.264, 30 fps, ~6,8 MB |
+| `labguide_student_test.mp4` — “Talaba: testga qo‘shilish” | 61 s | 1080x1920, H.264, 30 fps, ~4,7 MB |
+
+2026-10-18 qayta yozildi: cd3ba59 (sinf UX, 9 ta tuzatish) dan keyingi UI — “Guruh va topshiriqlar”
+O‘rganish tepasida, rol “Ustoz” bir bosishda ustoz qiladi, guruh sahifasidan «Mavzu testi berish», Test QR /
+Katta ekran topshiriq sahifasi tepasida, ustoz natijalarida “Yechmoqda”, QR bilan qo‘shilishda taxallus
+so‘raladi, savol ekranida “Muddat: 19-okt 23:59”, natija izohi “…yoki ustoz testni yakunlaganda”.
 
 Videolar repoga qo‘shilmaydi (faqat skriptlar).
 
@@ -34,42 +39,45 @@ python3 tool/screenshots/tutorial_compose.py student [--out DIR] [--preview]
 
 | # | Ekran | Yozuv (izoh) |
 |---|---|---|
-| — | Kartochka | LabGuide — Ustoz: testni boshlash (Guruh → test → QR → natijalar) |
-| 1 | Profil → Rol | Profil → Rol: «Ustoz» (Avval email bilan hisobga kiring) · «Ustoz»ni tanlab, «Davom etish» |
-| 2 | O‘rganish | O‘rganish → «Guruh va topshiriqlar» |
-| 3 | Guruh va topshiriqlar | «Guruh yaratish» · Bir marta: ustoz sifatida ro‘yxatdan o‘ting |
-| 4 | Guruh yaratish | Guruh nomini yozing → «Guruhni yaratish» |
-| 5 | Guruh sahifasi | Guruh tayyor: taklif kodi va QR (Talabalar QR ni skanerlaydi yoki 8 belgili kodni yozadi) · Talabalar qo‘shildi |
-| 6 | Ma’ruza rejimi | Testni tanlang: O‘rganish → «Ma’ruza rejimi» · Mavzu ostidagi «Mavzu testi» |
-| 7 | Mavzu testi | «Guruhga topshirish» |
-| 8 | Guruhga topshirish | Guruh tanlangan — savollar sonini belgilang · 5 ta savol · har talabaga boshqa savollar (Variantli test) |
-| 9 | 〃 | Muddat va javoblar qachon ochilishi · Muddat: 1 kun · Javoblar: muddat tugagach (Ball darhol, to‘g‘ri javoblar — keyin) |
-| 10 | 〃 | «Topshiriqni berish» |
-| 11 | Guruh sahifasi | Guruh sahifasida testni oching |
-| 12 | Topshiriq (ustoz) | «Test QR» — talabalarga ko‘rsating · Talabalar skanerlaydi → test darhol ochiladi |
-| 13 | Natijalar | Natijalar o‘zi yangilanadi (Har 10 soniyada) · 2 / 3 topshirdi — «Katta ekran» |
-| 14 | Katta ekran | Katta ekran: jonli reyting (Kim yechmoqda, kim topshirdi) · Hamma topshirdi: 3 / 3 |
-| 15 | Topshiriq (ustoz) | «Testni yakunlash» · Tasdiqlang — yangi urinish qabul qilinmaydi · Test yakunlandi — talabalarga javoblar ochildi |
-| 16 | Natijalar / katta ekran | Natijalar taqsimoti va eng qiyin savollar · Katta ekranda — birga muhokama qiling |
+| — | Kartochka | LabGuide — Ustoz: testni boshlash (Guruh → Mavzu testi → QR → natijalar) |
+| 1 | Profil → Rol | Profil → Rol: «Ustoz / tadqiqotchi» (Avval email bilan hisobga kiring) · «Davom etish» — hisob ustoz bo‘ladi (Faqat o‘z guruhlaringizni boshqarasiz) |
+| 2 | O‘rganish | O‘rganish → «Guruh va topshiriqlar» (Ro‘yxatning eng tepasida) |
+| 3 | Guruh va topshiriqlar → Guruh yaratish | «Guruh yaratish» · Guruh nomini yozing → «Guruhni yaratish» |
+| 4 | Guruh sahifasi | Guruh tayyor: taklif kodi va QR (Talabalar QR ni skanerlaydi yoki 8 belgili kodni yozadi) |
+| 5 | Guruh sahifasi | Talabalar qo‘shildi → «Mavzu testi berish» (Ro‘yxatda taxalluslari bilan) |
+| 6 | Mavzu testi berish (`DeckTestPickerScreen`) | Mavzuni qidiring (Faqat testi tayyor mavzular) · Mavzuni tanlang |
+| 7 | Guruhga topshirish | Guruh tanlangan — savollar sonini belgilang · 5 ta savol · har talabaga boshqa savollar (Variantli test) |
+| 8 | 〃 | Topshirish muddati: «1 kun» · To‘g‘ri javoblar: «Muddat tugagach» (Ball darhol, to‘g‘ri javoblar — keyin) |
+| 9 | 〃 | «Topshiriqni berish» · Yuborildi — natijalarni oching («Yuborilgan testlar» qatori) |
+| 10 | Topshiriq (ustoz) | Tepada: «Test QR» va «Katta ekran» («Talaba ko‘rinishida sinash» — testni o‘zingiz sinang) · Talabalar skanerlaydi → test darhol ochiladi |
+| 11 | Natijalar | Testni ochganlar — «Yechmoqda» (Natijalar har 10 soniyada o‘zi yangilanadi) · Topshirganlar ball bilan ko‘rinadi |
+| 12 | Katta ekran | 2 / 3 topshirdi — «Katta ekran» · Katta ekran: jonli reyting (Kim yechmoqda, kim topshirdi) · Hamma topshirdi: 3 / 3 |
+| 13 | Topshiriq (ustoz) | «Testni yakunlash» · Tasdiqlang — yangi urinish qabul qilinmaydi · Test yakunlandi — talabalarga javoblar ochildi |
+| 14 | Natijalar / katta ekran | Natijalar taqsimoti va eng qiyin savollar · Katta ekranda — birga muhokama qiling |
 | — | Kartochka | labguide.nfcstore.uz · Savol va takliflar: ilovada «Yordam va aloqa» |
 
 ## Talaba videosi — qadamlar va yozuvlar
 
 | # | Ekran | Yozuv (izoh) |
 |---|---|---|
-| — | Kartochka | LabGuide — Talaba: testga qo‘shilish (QR yoki kod → test → natija) |
-| 1 | O‘rganish | «O‘rganish» bo‘limini oching (Avval email bilan hisobga kiring) · «Guruh va topshiriqlar» |
+| — | Kartochka | LabGuide — Talaba: testga qo‘shilish (QR → taxallus → test → natija) |
+| 1 | O‘rganish | O‘rganish → «Guruh va topshiriqlar» (Avval email bilan hisobga kiring) |
 | 2 | Guruh va topshiriqlar | «QR kodni skanerlash» |
-| 3 | Skaner | Ustoz ko‘rsatgan QR kodga kamerani qarating (Kod topilishi bilan guruhga qo‘shilasiz) |
-| yoki | Kod bilan qo‘shilish | Kamera ishlamasa: «Kod bilan qo‘shilish» · 8 belgili kod + taxallus → «Qo‘shilish» (Taxallus ixtiyoriy — haqiqiy ism shart emas) · Guruhda testni tanlab, «Boshlash» |
-| 4 | Topshiriq | Test ochildi — «Boshlash» (Savollar soni va muddat ko‘rsatilgan) |
-| 5 | Savol | Javobni tanlang · So‘ng «Keyingi» · Har bir savolga javob bering |
-| 6 | Oxirgi savol | Oxirgi savoldan so‘ng «Yakunlash» · Tasdiqlang — javoblar ustozga yuboriladi |
-| 7 | Natija | Ball darhol ko‘rinadi · To‘g‘ri javoblar keyinroq ochiladi (Muddat tugagach yoki ustoz testni yakunlagach) |
-| 8 | Natija (yakunlangach) | Ustoz yakunladi: xatolar tahlili (Sizning javobingiz va to‘g‘ri javob, manbasi bilan) |
+| 3 | Skaner | Ustoz ko‘rsatgan QR kodga kamerani qarating (Kod topilishi bilan davom etadi) |
+| 4 | Kod bilan qo‘shilish (taxallus so‘rovi) | Birinchi marta: taxallusingizni yozing (Ustoz natijangizni shu nom bilan ko‘radi) · «Qo‘shilish» (Taxallus ixtiyoriy — haqiqiy ism shart emas) |
+| 5 | Topshiriq | Test darhol ochildi — «Boshlash» (Savollar soni va muddat ko‘rsatilgan) |
+| 6 | Savol | Javobni tanlang (Pastda — topshirish muddati) · So‘ng «Keyingi» · Har bir savolga javob bering |
+| 7 | Oxirgi savol | Oxirgi savoldan so‘ng «Yakunlash» · Tasdiqlang — javoblar ustozga yuboriladi |
+| 8 | Natija | Ball darhol ko‘rinadi · To‘g‘ri javoblar keyinroq ochiladi (Muddat tugagach yoki ustoz testni yakunlaganda) |
+| 9 | Natija (yakunlangach) | Ustoz yakunladi: xatolar tahlili (Sizning javobingiz va to‘g‘ri javob, manbasi bilan) |
+| yoki | Kod bilan qo‘shilish | Kamera ishlamasa: «Kod bilan qo‘shilish» · 8 belgili kod + taxallus → «Qo‘shilish» · Guruhda «Taxallusim» — istalgan payt o‘zgartiring (Testni tanlab, «Boshlash») |
 | — | Kartochka | labguide.nfcstore.uz |
 
-## Yozib olishda ko‘zga tashlangan UX muammolari
+## Birinchi yozuvda (0b39fbe) topilgan UX muammolari
+
+Quyidagi 9 band cd3ba59 da tuzatildi (batafsil — `docs/BUGS_2026-10-18_IPHONE.md`, 3-bo‘lim; testlar —
+`test/widget/classroom_ux_test.dart`); videolar shu tuzatishlardan keyin qayta yozildi. Ro‘yxat tarix uchun
+qoldirildi.
 
 1. **“Guruh va topshiriqlar” birinchi ekranda ko‘rinmaydi.** O‘rganish tabida (ustoz va talaba rolida ham)
    qatorga yetish uchun katta “Molekuladan amaliyotgacha” va “Kunlik savol” kartalaridan pastga surish kerak.
@@ -98,3 +106,5 @@ python3 tool/screenshots/tutorial_compose.py student [--out DIR] [--preview]
 9. **Topshiriq sarlavhasi juda uzun.** “Mavzu testi: Anemiyalar. Klassifikatsiyasi, etiologiyasi va
    patogenezi” ustoz topshiriq sahifasida 4 qator egallaydi va «Test QR» / «Katta ekran» tugmalarini pastga
    suradi (390x844 da ekranning pastki qismida).
+
+Qayta yozishda yangi muammo topilmadi (kadrlarda overflow chiziqlari, debug banner yoki eski UI yo‘q).

@@ -166,6 +166,5 @@ muammolari"). Testlar: `test/widget/classroom_ux_test.dart`.
    "Test QR" va "Katta ekran" ko'rsatkichlardan oldinga, ekran tepasiga
    ko'chirildi.
 
-Eslatma: `tool/screenshots/tutorial_*` kadr skriptlari eski oqimni
-(taxallussiz QR, O'rganishdagi qator joyi, tugmalar tartibi) yozib oladi —
-videolarni qayta yig'ishdan oldin skriptlarni yangilash kerak.
+Eslatma: `tool/screenshots/tutorial_*` kadr skriptlari yangi oqimga
+moslandi va ikkala video qayta yozildi (`docs/TUTORIAL_VIDEOS.md`).
