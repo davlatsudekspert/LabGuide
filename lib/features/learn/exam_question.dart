@@ -210,7 +210,9 @@ class PackQuestionSource implements ExamQuestionSource {
                 if (groupIds.contains(t)) t else ?groupOf[t],
             }.toList();
       final e = PackExamQuestion(q, topics);
-      _questions.add(e);
+      // Deck matnidan olingan savollar umumiy imtihon hovuziga kirmaydi:
+      // ular faqat mavzu testida id bo'yicha olinadi.
+      if (!q.isDerived) _questions.add(e);
       _byId[q.id] = e;
     }
   }

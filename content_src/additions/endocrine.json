@@ -3851,6 +3851,20 @@
       "ru": "Лаборатории часто используют разные методы и поэтому разные референтные интервалы: результат сравнивают с интервалом в бланке своей лаборатории, а не с найденным в другом месте. Результаты разных лабораторий сравнивать между собой нельзя; динамику лучше отслеживать в одной лаборатории.",
       "en": "Labs often use different methods and therefore different reference ranges, so a result is compared with the range on your own lab report, not with ranges found elsewhere. Results from different labs can't be compared with each other, and trends are best followed in the same lab."
      }
+    },
+    {
+     "section": "limitations",
+     "refs": [
+      {
+       "source_id": "ods-vitamin-d",
+       "locator": "Assessing vitamin D status"
+      }
+     ],
+     "text": {
+      "uz": "Qanday o‘lchanadi: qondagi 25(OH)D laboratoriyalarda turli usullar bilan aniqlanadi — eng keng tarqalgan ikkitasi antitelolarga asoslangan (immunologik) yoki xromatografik usullardir. Bu usullar natijalari sezilarli farq qiladi, shuning uchun qo‘llangan usul va laboratoriyaga qarab natija soxta past yoki soxta yuqori chiqishi mumkin. Xalqaro D vitamini standartlash dasturi (VDSP) 25(OH)D o‘lchashni standartlash tartiblarini ishlab chiqqan.",
+      "ru": "Как измеряют: 25(OH)D в крови лаборатории определяют разными методами — два самых распространённых основаны на антителах (иммунологические) или на хроматографии. Результаты этих методов заметно различаются, поэтому в зависимости от метода и лаборатории результат может оказаться ложно низким или ложно высоким. Международная программа стандартизации витамина D (VDSP) разработала процедуры стандартизации измерения 25(OH)D.",
+      "en": "How it is measured: laboratories measure blood 25(OH)D with different assays — the two most common involve antibodies (immunoassays) or chromatography. These assays vary considerably, so depending on the assay and the laboratory a result can be falsely low or falsely high. The international Vitamin D Standardization Program (VDSP) has developed procedures for standardizing the laboratory measurement of 25(OH)D."
+     }
     }
    ],
    "decision_limits": [],
@@ -3858,7 +3872,8 @@
    "source_ids": [
     "medline-vitamin-d",
     "niddk-primary-hyperparathyroidism",
-    "medline-how-to-understand-results"
+    "medline-how-to-understand-results",
+    "ods-vitamin-d"
    ],
    "related": [
     "pth",
@@ -4241,6 +4256,19 @@
    "note": null,
    "reuse_rights": "verify_before_distribution",
    "review_note": "MedlinePlus medical test pages are produced by NLM and are in the public domain (medlineplus.gov/about/using/usingcontent/, checked 2026-10-09); credit: 'Courtesy of MedlinePlus from the National Library of Medicine'."
+  },
+  {
+   "id": "ods-vitamin-d",
+   "kind": "web",
+   "title": "Vitamin D — Fact Sheet for Health Professionals",
+   "publisher": "NIH Office of Dietary Supplements (ODS)",
+   "url": "https://ods.od.nih.gov/factsheets/VitaminD-HealthProfessional/",
+   "accessed": "2026-10-18",
+   "source_date": "2025-06-27",
+   "jurisdiction": "US",
+   "note": "Section “Assessing vitamin D status”. The live page blocked automated access on 2026-10-18 (HTTP 403), so the text was read through the r.jina.ai reader proxy; the page shows “Updated: June 27, 2025”.",
+   "reuse_rights": "verify_before_distribution",
+   "review_note": null
   }
  ],
  "quiz": [

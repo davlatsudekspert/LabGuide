@@ -25,6 +25,7 @@ typedef _Row = ({
   int n,
   int toifa,
   int pack,
+  int derived,
   int excluded,
   String? deck,
 });
@@ -50,7 +51,9 @@ String buildCoverage() {
       () {
         final pool = verifiedTopicQuestions(t, pack, bank);
         final toifaOk = pool.whereType<ToifaTestQuestion>().length;
-        final packOk = pool.length - toifaOk;
+        final derivedIds = t.derivedQuizCandidates.toSet();
+        final derivedOk = pool.where((q) => derivedIds.contains(q.id)).length;
+        final packOk = pool.length - toifaOk - derivedOk;
         final toifaExcluded =
             t.testCandidates.where((id) => bank.test(id) != null).length -
             toifaOk;
@@ -59,12 +62,18 @@ String buildCoverage() {
                 .where((id) => source.question(id) != null)
                 .length -
             packOk;
+        final derivedExcluded =
+            t.derivedQuizCandidates
+                .where((id) => source.question(id) != null)
+                .length -
+            derivedOk;
         return (
           t: t,
           n: pool.length,
           toifa: toifaOk,
           pack: packOk,
-          excluded: toifaExcluded + packExcluded,
+          derived: derivedOk,
+          excluded: toifaExcluded + packExcluded + derivedExcluded,
           deck: catalog.byTopic(t.id)?.id,
         );
       }(),
@@ -72,14 +81,14 @@ String buildCoverage() {
   String table(Iterable<_Row> list) {
     final b = StringBuffer()
       ..writeln(
-        '| Mavzu | Nomi | Toifa (ok) | Paket (manbali) | Jami | Chiqarilgan nomzod | test_gap | Deck |',
+        '| Mavzu | Nomi | Toifa (ok) | Paket (manbali) | Deck matnidan | Jami | Chiqarilgan nomzod | test_gap | Deck |',
       )
-      ..writeln('|---|---|---:|---:|---:|---:|:-:|---|');
+      ..writeln('|---|---|---:|---:|---:|---:|---:|:-:|---|');
     for (final r in list) {
       final t = r.t;
       b.writeln(
         '| ${t.id} | ${_cell(t.title.of('uz'))} | ${r.toifa} | ${r.pack} | '
-        '**${r.n}** | ${r.excluded} | ${t.testGap ? 'ha' : ''} | '
+        '${r.derived} | **${r.n}** | ${r.excluded} | ${t.testGap ? 'ha' : ''} | '
         '${r.deck ?? '—'} |',
       );
     }
@@ -124,7 +133,15 @@ String buildCoverage() {
       'manbasi (`refs`) ko‘rsatilgan.',
     )
     ..writeln(
-      '- Har ikkalasida: bitta to‘g‘ri javob, uchala tilda variantlar '
+      '- **Deck matnidan** — `test_candidates.derived_quiz_ids` dagi paket '
+      'savoli (`provenance: derived`, manba fayli '
+      '`content_src/additions/derived_topic_quiz.json`): har biri deck '
+      'slaydidagi manbali gapdan olingan; `derived_from` da deck, slayd '
+      'sarlavhasi, asl manba yorlig‘i va o‘sha gap (uz/ru/en) saqlangan, '
+      '`test/unit/derived_quiz_test.dart` gap slaydda borligini tekshiradi.',
+    )
+    ..writeln(
+      '- Hammasida: bitta to‘g‘ri javob, uchala tilda variantlar '
       'takrorlanmaydi.',
     )
     ..writeln()
@@ -186,7 +203,16 @@ String buildCoverage() {
     ..writeln('## Yangi savollar qanday qo‘shiladi')
     ..writeln()
     ..writeln(
-      'Bu ishda tibbiy savollar yozilmadi. Qoralama uchun `tool/ai` '
+      'Deck matnidan olingan savollar faqat deck slaydidagi manbali gapga '
+      'tayanadi: kalit va xato variantlar o‘sha manbadan; noaniq, eskirgan '
+      'yoki ilovadagi boshqa gapga zid savollar ikkinchi (taqrizchi) '
+      'bosqichda o‘chirilgan. Ular ham `review_state: pending` — mutaxassis '
+      'ko‘rigi kutilmoqda. Slaydlarida manba ko‘rsatilmagan deck (d001) uchun '
+      'bunday savol yozilmaydi.',
+    )
+    ..writeln()
+    ..writeln(
+      'Boshqa yo‘l: qoralama uchun `tool/ai` '
       '(AI yordamida qoralama) bor, lekin uning natijasi **mutaxassis '
       'tekshiruvisiz** testga kirmaydi: savol bankka manbasi bilan qo‘shilib, '
       'kaliti tekshirilgach (`verdict: ok` yoki `refs`), mavzuning '

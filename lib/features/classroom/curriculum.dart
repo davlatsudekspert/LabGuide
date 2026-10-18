@@ -138,6 +138,7 @@ class CurriculumTopic {
     this.oralCandidates = const [],
     this.testCandidates = const [],
     this.packQuizCandidates = const [],
+    this.derivedQuizCandidates = const [],
     this.testGap = false,
     this.oralGap = false,
   });
@@ -171,6 +172,9 @@ class CurriculumTopic {
       packQuizCandidates: testMap == null
           ? const []
           : _ids(testMap['pack_quiz_ids']),
+      derivedQuizCandidates: testMap == null
+          ? const []
+          : _ids(testMap['derived_quiz_ids']),
       testGap: j['test_gap'] == true,
       oralGap: j['oral_gap'] == true,
     );
@@ -202,6 +206,12 @@ class CurriculumTopic {
 
   /// Kontent paketi mashq savollari id lari — nomzod.
   final List<String> packQuizCandidates;
+
+  /// Deck slaydidagi manbali matndan olingan (provenance `derived`) paket
+  /// savollari id lari — faqat mavzu testi uchun. Alohida kalit: deck
+  /// generatori `pack_quiz_ids` ni slayd mini-testiga qo'yadi, bu savollar
+  /// esa o'sha slayd matnidan olingani uchun deckka qaytarilmaydi.
+  final List<String> derivedQuizCandidates;
   final bool testGap;
   final bool oralGap;
 }

@@ -662,6 +662,7 @@ class QuizQuestion {
     required this.refs,
     required this.reviewState,
     this.topicIds = const [],
+    this.provenance,
   });
 
   factory QuizQuestion.fromJson(Map<String, Object?> json) {
@@ -682,6 +683,7 @@ class QuizQuestion {
       refs: SourceRef.listFromJson(json),
       reviewState: ReviewState.parse(json['review_state'] as String),
       topicIds: _strings(json['topic_ids'], 'topic_ids'),
+      provenance: json['provenance'] as String?,
     );
   }
 
@@ -702,9 +704,16 @@ class QuizQuestion {
   /// Bog'liq dars mavzulari yoki analitlar.
   final List<String> topicIds;
 
+  /// Kelib chiqishi: `derived` — deck slaydidagi manbali gapdan olingan
+  /// mavzu testi savoli (faqat curriculum `derived_quiz_ids` orqali
+  /// ishlatiladi, umumiy mashq ro'yxatlariga kirmaydi).
+  final String? provenance;
+
   List<String> get sourceIds => [for (final r in refs) r.sourceId];
 
   bool get isDraft => reviewState != ReviewState.approved;
+
+  bool get isDerived => provenance == 'derived';
 }
 
 /// Kutubxona elementi turkumlari (domla materiallarini saralash uchun).
