@@ -9561,7 +9561,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String topicTestAnswersLater(String date) {
-    return 'To‘g‘ri javoblar muddat tugagach ochiladi ($date)';
+    return 'To‘g‘ri javoblar muddat tugagach ($date) yoki ustoz testni yakunlaganda ochiladi';
   }
 
   @override
@@ -9878,4 +9878,52 @@ class AppLocalizationsUz extends AppLocalizations {
   String classesPreviewResult(int correct, int total) {
     return 'Sinov tugadi: $correct / $total to‘g‘ri. Natija yuborilmadi.';
   }
+
+  @override
+  String get classesGiveTopicTest => 'Mavzu testi berish';
+
+  @override
+  String get classesGiveTopicTestSub =>
+      'Mavzuni tanlang — keyingi sahifada savollar soni, variantli test, muddat va javoblar qachon ochilishi.';
+
+  @override
+  String get classesTopicSearchHint => 'Mavzuni qidiring (masalan, anemiya)';
+
+  @override
+  String get classesTopicNoMatch => 'Testi tayyor mavzu topilmadi';
+
+  @override
+  String classesTopicQuestions(int count) {
+    return '$count ta savol';
+  }
+
+  @override
+  String examDeadlineAt(String date) {
+    return 'Muddat: $date';
+  }
+
+  @override
+  String get classesScanAskNick =>
+      'Qo‘shilishdan oldin taxallusingizni yozing — ustoz natijangizni shu nom bilan ko‘radi (ixtiyoriy: bo‘sh qoldirsangiz, tartib raqami). So‘ng «Qo‘shilish».';
+
+  @override
+  String get classesMyNickname => 'Taxallusim';
+
+  @override
+  String get classesNoNickname => 'Yo‘q — ustozda tartib raqamingiz ko‘rinadi';
+
+  @override
+  String get classesNicknameSaved => 'Taxallus saqlandi';
+
+  @override
+  String get classesNicknameNote =>
+      'Haqiqiy ismingizni yozmang. Bo‘sh qoldirsangiz — tartib raqami.';
+
+  @override
+  String get rolesTeacherRegisterNote =>
+      '«Davom etish» hisobingizni ustoz sifatida ro‘yxatdan o‘tkazadi: faqat o‘zingiz ochgan guruhlarni boshqarasiz va ularning natijalarini ko‘rasiz (admin huquqi emas).';
+
+  @override
+  String get rolesTeacherSignInNote =>
+      'Guruh ochish uchun hisobga kiring — kirgan hisob guruh yaratishda bir bosishda ustoz sifatida ro‘yxatdan o‘tadi.';
 }

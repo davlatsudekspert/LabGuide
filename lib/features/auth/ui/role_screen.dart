@@ -45,8 +45,35 @@ class RoleScreen extends StatefulWidget {
 class _RoleScreenState extends State<RoleScreen> {
   late AppRole _selected = context.services.settings.effectiveRole;
 
+  bool _busy = false;
+
+  /// Kirgan hisob “Ustoz”ni tanlasa — shu bosishda serverda ustoz sifatida
+  /// ro'yxatdan o'tadi (D-42: o'z-o'zini ro'yxatdan o'tkazish, OTP sessiya
+  /// shart; huquq — faqat o'z guruhlari). Avval bu guruh yaratishda alohida
+  /// qadam edi. Xato bo'lsa — guruh yaratishdagi tugma qoladi.
+  bool get _registersTeacher {
+    final s = context.services;
+    return _selected == AppRole.teacher &&
+        s.backend.isConfigured &&
+        s.auth.hasAccount &&
+        !s.access.access.teacher;
+  }
+
   Future<void> _continue() async {
-    final settings = context.services.settings;
+    final services = context.services;
+    final settings = services.settings;
+    if (_registersTeacher) {
+      setState(() => _busy = true);
+      try {
+        await services.backend.registerTeacher();
+        await services.refreshAccess();
+      } on Object {
+        // Tarmoq: guruh yaratish sahifasida qayta taklif qilinadi.
+      } finally {
+        if (mounted) setState(() => _busy = false);
+      }
+      if (!mounted) return;
+    }
     await settings.setRole(_selected);
     if (widget.onboarding) {
       // Router redirect onboarding tugagach /home ga olib o'tadi.
@@ -70,9 +97,23 @@ class _RoleScreenState extends State<RoleScreen> {
             selected: role == _selected,
             onTap: () => setState(() => _selected = role),
           ),
+        if (_selected == AppRole.teacher &&
+            context.services.backend.isConfigured)
+          LgNotice(
+            context.services.auth.hasAccount
+                ? l.rolesTeacherRegisterNote
+                : l.rolesTeacherSignInNote,
+            key: const ValueKey('role-teacher-note'),
+            kind: NoticeKind.info,
+          ),
         LgNotice(l.rolesNote, kind: NoticeKind.info),
         const SizedBox(height: 8),
-        LgButton(label: l.actionContinue, onPressed: _continue),
+        LgButton(
+          key: const ValueKey('role-continue'),
+          label: l.actionContinue,
+          busy: _busy,
+          onPressed: _continue,
+        ),
       ],
     );
   }

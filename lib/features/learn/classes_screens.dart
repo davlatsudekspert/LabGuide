@@ -7,6 +7,7 @@ import 'package:material_ui/material_ui.dart';
 import '../../app/app_scope.dart';
 import '../../app/widgets/lg_page.dart';
 import '../../core/backend/backend_models.dart';
+import '../../core/backend/lab_backend.dart' show LabBackend;
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
@@ -336,7 +337,11 @@ class _ClassesScreenState extends State<ClassesScreen> {
 // ------------------------------------------------------- yaratish / qo'shilish
 
 class CreateGroupScreen extends StatefulWidget {
-  const CreateGroupScreen({super.key});
+  const CreateGroupScreen({super.key, this.popOnCreate = false});
+
+  /// Boshqa sahifadan (masalan, “Guruhga topshirish”) ochilgan: yaratilgach
+  /// guruh sahifasiga o'tmay, chaqirgan sahifaga qaytadi.
+  final bool popOnCreate;
 
   @override
   State<CreateGroupScreen> createState() => _CreateGroupScreenState();
@@ -396,7 +401,11 @@ class _CreateGroupScreenState extends State<CreateGroupScreen> {
       final g = await context.services.backend.createGroup(_name.text.trim());
       if (!mounted) return;
       showSnack(context, AppLocalizations.of(context).classesCreated);
-      context.pushReplacement('/learn/classes/g/${g.id}');
+      if (widget.popOnCreate) {
+        context.pop(g);
+      } else {
+        context.pushReplacement('/learn/classes/g/${g.id}');
+      }
     } on Object catch (e) {
       if (mounted) setState(() => _error = e);
     } finally {
@@ -555,6 +564,11 @@ class _JoinGroupScreenState extends State<JoinGroupScreen> {
   );
   final _display = TextEditingController();
   final _codeFocus = FocusNode();
+  final _nickFocus = FocusNode();
+
+  /// QR'dan keldi, lekin taxallus yo'q: darhol qo'shilmay, avval taxallus
+  /// so'raladi (aks holda ustozda faqat “Talaba 07” ko'rinardi).
+  bool _askNick = false;
   late String? _assignment = widget.assignmentId;
   late bool _autoJoin = widget.autoJoin;
   bool _tried = false;
@@ -589,6 +603,7 @@ class _JoinGroupScreenState extends State<JoinGroupScreen> {
     _code.dispose();
     _display.dispose();
     _codeFocus.dispose();
+    _nickFocus.dispose();
     super.dispose();
   }
 
@@ -610,10 +625,11 @@ class _JoinGroupScreenState extends State<JoinGroupScreen> {
     try {
       await _loadNickname();
     } finally {
-      // QR skanerdan kelgan bo'lsa — taxallusdan keyin bir marta qo'shiladi.
+      // QR skanerdan kelgan bo'lsa — taxallusdan keyin bir marta qo'shiladi
+      // (taxallus hali yo'q bo'lsa — avval so'raladi).
       if (_autoJoin && mounted && _codeOk) {
         _autoJoin = false;
-        unawaited(_submit());
+        _submitOrAskNick();
       }
     }
   }
@@ -663,12 +679,24 @@ class _JoinGroupScreenState extends State<JoinGroupScreen> {
           _assignment = invite.assignmentId;
           _error = null;
         });
-        if (!_busy) await _submit();
+        if (!_busy) _submitOrAskNick();
       case QrScanTypeInstead():
         _codeFocus.requestFocus();
       case null:
         break;
     }
+  }
+
+  /// QR bilan: oldingi guruhdagi taxallus bo'lsa — darhol qo'shiladi;
+  /// bo'lmasa — taxallus maydoni ochiladi (ixtiyoriy, bo'sh qoldirsa ham
+  /// “Qo'shilish” ishlaydi).
+  void _submitOrAskNick() {
+    if (normalizeNickname(_display.text).isNotEmpty) {
+      unawaited(_submit());
+      return;
+    }
+    setState(() => _askNick = true);
+    _nickFocus.requestFocus();
   }
 
   bool get _codeOk =>
@@ -839,9 +867,18 @@ class _JoinGroupScreenState extends State<JoinGroupScreen> {
                   ),
                   const SizedBox(height: 6),
                   Text(l.classesScanTip, style: text.bodySmall),
+                  if (_askNick) ...[
+                    const SizedBox(height: 10),
+                    LgNotice(
+                      l.classesScanAskNick,
+                      key: const ValueKey('join-ask-nick'),
+                      kind: NoticeKind.info,
+                    ),
+                  ],
                   LgField(
                     label: l.classesDisplayName,
                     controller: _display,
+                    focusNode: _nickFocus,
                     hint: l.classesDisplayNameHint,
                     maxLength: 24,
                     textInputAction: TextInputAction.done,
@@ -1135,7 +1172,16 @@ class _GroupScreenState extends State<GroupScreen> with _AccountReload {
     final inviteFirst = students.isEmpty;
     final assignments = [
       LgSectionTitle(l.classesAssignments),
+      // Mavzu testi (variantli, “javoblar qachon ochiladi” bilan) —
+      // to'g'ridan-to'g'ri: mavzuni qidirib tanlash → “Guruhga topshirish”.
       LgButton(
+        key: const ValueKey('group-topic-test'),
+        label: l.classesGiveTopicTest,
+        icon: Icons.quiz_outlined,
+        onPressed: () => _open('/learn/classes/g/${d.group.id}/topic-test'),
+      ),
+      const SizedBox(height: 8),
+      LgButton.secondary(
         label: l.classesNewAssignment,
         icon: Icons.add_task_rounded,
         onPressed: () => _open('/learn/classes/g/${d.group.id}/assign'),
@@ -1292,6 +1338,15 @@ class _GroupScreenState extends State<GroupScreen> with _AccountReload {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
+        // Ustoz ko'radigan nom: taxallus (yo'q bo'lsa — tartib raqami).
+        // QR bilan darhol qo'shilgan talaba uni keyin shu yerda qo'yadi.
+        LgRow(
+          key: const ValueKey('group-nickname'),
+          title: l.classesMyNickname,
+          subtitle: d.group.myNickname ?? l.classesNoNickname,
+          icon: Icons.badge_outlined,
+          onTap: () => _editNickname(d.group),
+        ),
         _planRow(d.group),
         if (d.assignments.isNotEmpty)
           LgPanel(
@@ -1380,6 +1435,26 @@ class _GroupScreenState extends State<GroupScreen> with _AccountReload {
     );
   }
 
+  Future<void> _editNickname(StudyGroup g) async {
+    final l = AppLocalizations.of(context);
+    final alias = await showDialog<String>(
+      context: context,
+      builder: (context) => _NicknameDialog(initial: g.myNickname ?? ''),
+    );
+    if (alias == null || !mounted) return;
+    try {
+      await context.services.backend.setMyAlias(
+        g.id,
+        alias.isEmpty ? null : alias,
+      );
+      if (!mounted) return;
+      showSnack(context, l.classesNicknameSaved);
+      await _load();
+    } on Object catch (e) {
+      if (mounted) showSnack(context, classesErrorText(e, l));
+    }
+  }
+
   Future<void> _leave(StudyGroup g) async {
     final l = AppLocalizations.of(context);
     final ok = await confirmDialog(
@@ -1395,6 +1470,84 @@ class _GroupScreenState extends State<GroupScreen> with _AccountReload {
     } on Object catch (e) {
       if (mounted) showSnack(context, classesErrorText(e, l));
     }
+  }
+}
+
+/// Taxallusni o'zgartirish: server qoidasi bilan bir xil tekshiruv; bo'sh —
+/// tartib raqami. Natija — normallashtirilgan taxallus ('' — o'chirish).
+class _NicknameDialog extends StatefulWidget {
+  const _NicknameDialog({required this.initial});
+
+  final String initial;
+
+  @override
+  State<_NicknameDialog> createState() => _NicknameDialogState();
+}
+
+class _NicknameDialogState extends State<_NicknameDialog> {
+  late final _c = TextEditingController(text: widget.initial);
+  bool _tried = false;
+
+  @override
+  void dispose() {
+    _c.dispose();
+    super.dispose();
+  }
+
+  String? _error(AppLocalizations l) {
+    if (!_tried) return null;
+    final n = normalizeNickname(_c.text).length;
+    if (n != 0 && (n < 2 || n > 24)) return l.classesLengthError(2, 24);
+    return nicknameAllowed(_c.text) ? null : l.classesNicknameInvalid;
+  }
+
+  void _save() {
+    setState(() => _tried = true);
+    if (_error(AppLocalizations.of(context)) != null) return;
+    Navigator.of(context).pop(normalizeNickname(_c.text));
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context);
+    return AlertDialog(
+      title: Text(l.classesMyNickname),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          TextField(
+            key: const ValueKey('nickname-field'),
+            controller: _c,
+            autofocus: true,
+            maxLength: 24,
+            textInputAction: TextInputAction.done,
+            onSubmitted: (_) => _save(),
+            onChanged: (_) => setState(() {}),
+            decoration: InputDecoration(
+              hintText: l.classesDisplayNameHint,
+              errorText: _error(l),
+              errorMaxLines: 4,
+            ),
+          ),
+          Text(
+            l.classesNicknameNote,
+            style: Theme.of(context).textTheme.bodySmall,
+          ),
+        ],
+      ),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.of(context).pop(),
+          child: Text(MaterialLocalizations.of(context).cancelButtonLabel),
+        ),
+        TextButton(
+          key: const ValueKey('nickname-save'),
+          onPressed: _save,
+          child: Text(MaterialLocalizations.of(context).saveButtonLabel),
+        ),
+      ],
+    );
   }
 }
 
@@ -1946,12 +2099,17 @@ class _AssignmentData {
     required this.submissions,
     required this.members,
     required this.key,
+    this.started = const {},
   });
 
   final StudyGroup group;
   final GroupAssignment assignment;
   final List<GroupSubmission> submissions;
   final List<GroupMember> members;
+
+  /// Ustoz: testni boshlagan (hali topshirmagan bo'lishi mumkin) talabalar —
+  /// katta ekrandagi “Yechmoqda” bilan bir xil manba (progress endpoint).
+  final Set<String> started;
 
   /// Faqat ustozda.
   final List<int>? key;
@@ -1983,7 +2141,21 @@ Future<_AssignmentData?> _loadAssignment(
     submissions: await backend.submissions(assignmentId),
     members: group.isTeacher ? await backend.groupMembers(groupId) : const [],
     key: group.isTeacher ? await backend.assignmentKey(assignmentId) : null,
+    started: group.isTeacher
+        ? await _startedOf(backend, assignmentId)
+        : const {},
   );
+}
+
+/// Boshlaganlar (progress); xato bo'lsa — bo'sh (natijalar baribir ko'rinadi).
+Future<Set<String>> _startedOf(LabBackend backend, String assignmentId) async {
+  try {
+    return {
+      for (final a in await backend.assignmentProgress(assignmentId)) a.userId,
+    };
+  } on Object {
+    return const {};
+  }
 }
 
 class AssignmentScreen extends StatefulWidget {
@@ -2254,6 +2426,8 @@ class _AssignmentScreenState extends State<AssignmentScreen>
   ) {
     return LgPage(
       title: d?.assignment.title ?? l.classesAssignments,
+      // Uzun mavzu nomi 4 qator olib, “Test QR”ni pastga surardi.
+      titleMaxLines: 2,
       subtitle: d == null ? null : _assignmentMeta(context, d.assignment),
       showProfile: false,
       children: [
@@ -2335,6 +2509,10 @@ class _AssignmentScreenState extends State<AssignmentScreen>
             Text(
               local!.remaining(services.exams.now()) == null
                   ? l.examAnsweredOf(local.answeredCount, local.length)
+                  // Vaqt chegarasiz: muddat sana bilan, taymer emas.
+                  : deadlineShownAsDate(local, services.exams.now()) != null
+                  ? '${l.examAnsweredOf(local.answeredCount, local.length)} · '
+                        '${l.examDeadlineAt(formatDeadline(local.deadline!, context))}'
                   : l.examActiveBody(
                       local.answeredCount,
                       local.length,
@@ -2528,6 +2706,32 @@ class _AssignmentScreenState extends State<AssignmentScreen>
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
+        // “Test QR” va “Katta ekran” — darsda birinchi kerak bo'ladigan
+        // amallar: ko'rsatkichlardan oldin, ekran tepasida.
+        if (d.group.joinCode case final code?) ...[
+          Row(
+            children: [
+              Expanded(
+                child: LgButton.secondary(
+                  key: const ValueKey('assignment-test-qr'),
+                  label: l.classesTestQr,
+                  icon: Icons.qr_code_2_rounded,
+                  onPressed: () => showTestQr(context, d.group, code, a),
+                ),
+              ),
+              const SizedBox(width: 8),
+              Expanded(
+                child: LgButton.secondary(
+                  key: const ValueKey('assignment-board'),
+                  label: l.boardOpen,
+                  icon: Icons.tv_rounded,
+                  onPressed: () => context.push('$_base/board'),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 8),
+        ],
         _metrics(
           a,
           extra: [
@@ -2562,30 +2766,6 @@ class _AssignmentScreenState extends State<AssignmentScreen>
           ),
         ],
         const SizedBox(height: 12),
-        if (d.group.joinCode case final code?) ...[
-          Row(
-            children: [
-              Expanded(
-                child: LgButton.secondary(
-                  key: const ValueKey('assignment-test-qr'),
-                  label: l.classesTestQr,
-                  icon: Icons.qr_code_2_rounded,
-                  onPressed: () => showTestQr(context, d.group, code, a),
-                ),
-              ),
-              const SizedBox(width: 8),
-              Expanded(
-                child: LgButton.secondary(
-                  key: const ValueKey('assignment-board'),
-                  label: l.boardOpen,
-                  icon: Icons.tv_rounded,
-                  onPressed: () => context.push('$_base/board'),
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 8),
-        ],
         // Ustoz o'z guruhiga talaba bo'lib qo'shila olmaydi (server rol
         // bo'yicha): testni talaba ko'rinishida shu yerda sinab ko'radi.
         LgButton.secondary(
@@ -2643,6 +2823,7 @@ class _AssignmentScreenState extends State<AssignmentScreen>
                   _ResultRow(
                     name: memberLabel(context, widget.groupId, m),
                     submission: subs[m.userId],
+                    solving: d.started.contains(m.userId),
                     onTap: subs[m.userId] == null
                         ? null
                         : () => context.push('$_base/s/${m.userId}'),
@@ -2852,11 +3033,15 @@ class _ResultRow extends StatelessWidget {
     required this.name,
     required this.submission,
     required this.onTap,
+    this.solving = false,
   });
 
   final String name;
   final GroupSubmission? submission;
   final VoidCallback? onTap;
+
+  /// Boshlagan, hali topshirmagan (katta ekrandagi kabi “Yechmoqda”).
+  final bool solving;
 
   @override
   Widget build(BuildContext context) {
@@ -2886,8 +3071,11 @@ class _ResultRow extends StatelessWidget {
             const SizedBox(width: 8),
             if (s == null)
               Text(
-                l.classesNotSubmitted,
-                style: text.bodySmall!.copyWith(color: p.sub),
+                solving ? l.boardStarted : l.classesNotSubmitted,
+                style: text.bodySmall!.copyWith(
+                  color: solving ? p.brand : p.sub,
+                  fontWeight: solving ? FontWeight.w600 : null,
+                ),
               )
             else
               Text.rich(

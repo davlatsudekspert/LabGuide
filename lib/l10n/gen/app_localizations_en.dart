@@ -9697,7 +9697,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String topicTestAnswersLater(String date) {
-    return 'Correct answers open after the deadline ($date)';
+    return 'Correct answers open after the deadline ($date) or when the teacher closes the test';
   }
 
   @override
@@ -10016,4 +10016,52 @@ class AppLocalizationsEn extends AppLocalizations {
   String classesPreviewResult(int correct, int total) {
     return 'Trial finished: $correct / $total correct. Nothing was submitted.';
   }
+
+  @override
+  String get classesGiveTopicTest => 'Give a topic test';
+
+  @override
+  String get classesGiveTopicTestSub =>
+      'Pick a topic — the next page sets the number of questions, variants, due date and when answers open.';
+
+  @override
+  String get classesTopicSearchHint => 'Search topics (e.g. anaemia)';
+
+  @override
+  String get classesTopicNoMatch => 'No topic with a ready test found';
+
+  @override
+  String classesTopicQuestions(int count) {
+    return '$count questions';
+  }
+
+  @override
+  String examDeadlineAt(String date) {
+    return 'Due: $date';
+  }
+
+  @override
+  String get classesScanAskNick =>
+      'Before joining, enter a nickname — your teacher sees your result under it (optional: leave empty to show your seat number). Then tap “Join”.';
+
+  @override
+  String get classesMyNickname => 'My nickname';
+
+  @override
+  String get classesNoNickname => 'None — your teacher sees your seat number';
+
+  @override
+  String get classesNicknameSaved => 'Nickname saved';
+
+  @override
+  String get classesNicknameNote =>
+      'Don\'t use your real name. Leave empty to show your seat number.';
+
+  @override
+  String get rolesTeacherRegisterNote =>
+      '“Continue” registers your account as a teacher: you manage only the groups you create and see their results (not admin rights).';
+
+  @override
+  String get rolesTeacherSignInNote =>
+      'Sign in to create groups — the signed-in account registers as a teacher with one tap when creating a group.';
 }

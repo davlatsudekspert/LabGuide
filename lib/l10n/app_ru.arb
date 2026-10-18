@@ -2771,7 +2771,7 @@
   "topicTestSent": "Тест отправлен, групп: {count}",
   "topicTestTitle": "Тест по теме: {title}",
   "topicTestSentList": "Отправленные тесты",
-  "topicTestAnswersLater": "Правильные ответы откроются после срока ({date})",
+  "topicTestAnswersLater": "Правильные ответы откроются после срока ({date}) или когда преподаватель завершит тест",
   "topicTestDistribution": "Распределение результатов",
   "topicTestHardest": "Самые трудные вопросы",
   "topicTestAssignedTitle": "Заданные тесты",
@@ -2858,5 +2858,18 @@
   "classesSwitchAccount": "Войти с другим аккаунтом",
   "classesPreviewAsStudent": "Пройти как студент",
   "classesPreviewNote": "Пробный режим: ответы не отправляются на сервер и не попадают в результаты.",
-  "classesPreviewResult": "Проба завершена: {correct} / {total} верно. Результат не отправлен."
+  "classesPreviewResult": "Проба завершена: {correct} / {total} верно. Результат не отправлен.",
+  "classesGiveTopicTest": "Дать тест по теме",
+  "classesGiveTopicTestSub": "Выберите тему — на следующей странице: число вопросов, варианты, срок и когда открыть ответы.",
+  "classesTopicSearchHint": "Поиск темы (например, анемия)",
+  "classesTopicNoMatch": "Нет темы с готовым тестом",
+  "classesTopicQuestions": "Вопросов: {count}",
+  "examDeadlineAt": "Срок: {date}",
+  "classesScanAskNick": "Перед вступлением укажите псевдоним — под ним преподаватель увидит ваш результат (необязательно: без него — номер по порядку). Затем «Вступить».",
+  "classesMyNickname": "Мой псевдоним",
+  "classesNoNickname": "Нет — преподаватель видит ваш номер",
+  "classesNicknameSaved": "Псевдоним сохранён",
+  "classesNicknameNote": "Не пишите настоящее имя. Если оставить пустым — номер по порядку.",
+  "rolesTeacherRegisterNote": "«Продолжить» зарегистрирует аккаунт как преподавателя: вы управляете только своими группами и видите их результаты (это не права администратора).",
+  "rolesTeacherSignInNote": "Чтобы создать группу, войдите в аккаунт — регистрация преподавателя займёт одно нажатие при создании группы."
 }

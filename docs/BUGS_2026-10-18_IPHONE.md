@@ -120,3 +120,52 @@ Har bir ehtimoliy yo'l kod va mahalliy Worker (`wrangler dev --local`,
   talaba ko'rinishida sinash (hech narsa yuborilmaydi), ikkinchi hisob +
   `’`, noto'g'ri taxallus va 0/O/1/I kod, onboarding'dan keyingi taklif,
   server xatolari matni.
+
+## 3. Qo'llanma videolarida topilgan sinf UX muammolari
+
+Manba: `docs/TUTORIAL_VIDEOS.md` ("Yozib olishda ko'zga tashlangan UX
+muammolari"). Testlar: `test/widget/classroom_ux_test.dart`.
+
+1. **"Guruh va topshiriqlar" birinchi ekranda.** O'rganish tabida ustoz va
+   talaba rolida qator katta kartalardan OLDIN turadi (`learn-classes`);
+   laborant va boshqa rollarda — avvalgi joyida.
+2. **Guruh sahifasidan "Mavzu testi berish".** Ustoz guruh sahifasida
+   asosiy tugma → mavzuni qidirish (`DeckTestPickerScreen`, faqat testi
+   tayyor mavzular) → xuddi o'sha "Guruhga topshirish" sahifasi (savollar
+   soni, variantli test, muddat, javoblar qachon ochiladi), guruh oldindan
+   tanlangan (`?g=`). "Yangi topshiriq" (oddiy bank) ikkinchi tugma bo'lib
+   qoldi.
+3. **Navigator "duplicate page key".** "Guruhga topshirish" root
+   navigatorda, natija sahifasi esa O'rganish tabi (shell) ichida: `push`
+   shell sahifasini ikkinchi marta qo'shardi. "Yuborilgan testlar" qatori
+   endi `go` bilan ochiladi (orqaga — guruh sahifasi). Xuddi shu xato
+   guruhsiz ustozdagi "Guruh yaratish" tugmasida ham bor edi: guruh endi
+   root'dagi `…/assign/group` sahifasida yaratiladi va topshirishga
+   qaytadi.
+4. **QR bilan taxallussiz qo'shilish.** Taxallusi hali yo'q talaba QR
+   skanerlasa, darhol qo'shilmaydi: taxallus maydoni ochiladi (ixtiyoriy) va
+   izoh ko'rsatiladi. Oldingi guruhdagi taxallus bo'lsa — avvalgidek darhol.
+   Talaba guruh sahifasida "Taxallusim" qatoridan taxallusni o'zgartiradi
+   (`setMyAlias`, server qoidasi bilan bir xil tekshiruv).
+5. **"41:09:54" taymeri.** Vaqt chegarasi yo'q, faqat muddatli testda savol
+   ekranida "Muddat: 20-okt, 18:00" (oxirgi soatda — taymer); "Davom
+   ettirish" panelida ham. Vaqt chegarali testda taymer o'zgarmadi.
+6. **"Topshirmagan" ↔ "Yechmoqda".** Ustozning natijalar jadvali katta ekran
+   bilan bir xil manbadan (`assignmentProgress`) — boshlagan talaba
+   "Yechmoqda".
+7. **Natija izohi:** "To'g'ri javoblar muddat tugagach (…) yoki ustoz testni
+   yakunlaganda ochiladi" (uz/ru/en).
+8. **Ustoz bo'lish — bir qadam.** D-42 bo'yicha ustoz o'zini o'zi ro'yxatdan
+   o'tkazadi (OTP sessiya shart, huquq — faqat o'z guruhlari, admin emas).
+   Kirgan hisob rol ekranida "Ustoz"ni tanlasa, izoh ko'rsatiladi va
+   "Davom etish" shu so'rovni (`POST /v1/me/teacher`) yuboradi — server
+   tekshiruvi o'zgarmagan. Kirmagan bo'lsa — nima bo'lishini tushuntiradi;
+   guruh yaratishdagi tugma zaxira sifatida qoladi.
+9. **Uzun topshiriq nomi.** Ustoz/talaba topshiriq sahifasida katta sarlavha
+   2 qator + "…" (`LgPage.titleMaxLines`); bosilsa to'liq nom dialogda.
+   "Test QR" va "Katta ekran" ko'rsatkichlardan oldinga, ekran tepasiga
+   ko'chirildi.
+
+Eslatma: `tool/screenshots/tutorial_*` kadr skriptlari eski oqimni
+(taxallussiz QR, O'rganishdagi qator joyi, tugmalar tartibi) yozib oladi —
+videolarni qayta yig'ishdan oldin skriptlarni yangilash kerak.

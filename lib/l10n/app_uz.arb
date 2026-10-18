@@ -2771,7 +2771,7 @@
   "topicTestSent": "Test yuborildi: {count} ta guruh",
   "topicTestTitle": "Mavzu testi: {title}",
   "topicTestSentList": "Yuborilgan testlar",
-  "topicTestAnswersLater": "To‘g‘ri javoblar muddat tugagach ochiladi ({date})",
+  "topicTestAnswersLater": "To‘g‘ri javoblar muddat tugagach ({date}) yoki ustoz testni yakunlaganda ochiladi",
   "topicTestDistribution": "Natijalar taqsimoti",
   "topicTestHardest": "Eng qiyin savollar",
   "topicTestAssignedTitle": "Topshirilgan testlar",
@@ -2858,5 +2858,18 @@
   "classesSwitchAccount": "Boshqa hisob bilan kirish",
   "classesPreviewAsStudent": "Talaba ko‘rinishida sinash",
   "classesPreviewNote": "Sinov rejimi: javoblar serverga yuborilmaydi va natijalar ro‘yxatida ko‘rinmaydi.",
-  "classesPreviewResult": "Sinov tugadi: {correct} / {total} to‘g‘ri. Natija yuborilmadi."
+  "classesPreviewResult": "Sinov tugadi: {correct} / {total} to‘g‘ri. Natija yuborilmadi.",
+  "classesGiveTopicTest": "Mavzu testi berish",
+  "classesGiveTopicTestSub": "Mavzuni tanlang — keyingi sahifada savollar soni, variantli test, muddat va javoblar qachon ochilishi.",
+  "classesTopicSearchHint": "Mavzuni qidiring (masalan, anemiya)",
+  "classesTopicNoMatch": "Testi tayyor mavzu topilmadi",
+  "classesTopicQuestions": "{count} ta savol",
+  "examDeadlineAt": "Muddat: {date}",
+  "classesScanAskNick": "Qo‘shilishdan oldin taxallusingizni yozing — ustoz natijangizni shu nom bilan ko‘radi (ixtiyoriy: bo‘sh qoldirsangiz, tartib raqami). So‘ng «Qo‘shilish».",
+  "classesMyNickname": "Taxallusim",
+  "classesNoNickname": "Yo‘q — ustozda tartib raqamingiz ko‘rinadi",
+  "classesNicknameSaved": "Taxallus saqlandi",
+  "classesNicknameNote": "Haqiqiy ismingizni yozmang. Bo‘sh qoldirsangiz — tartib raqami.",
+  "rolesTeacherRegisterNote": "«Davom etish» hisobingizni ustoz sifatida ro‘yxatdan o‘tkazadi: faqat o‘zingiz ochgan guruhlarni boshqarasiz va ularning natijalarini ko‘rasiz (admin huquqi emas).",
+  "rolesTeacherSignInNote": "Guruh ochish uchun hisobga kiring — kirgan hisob guruh yaratishda bir bosishda ustoz sifatida ro‘yxatdan o‘tadi."
 }

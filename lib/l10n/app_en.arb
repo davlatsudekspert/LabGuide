@@ -5679,7 +5679,7 @@
     }
   },
   "topicTestSentList": "Sent tests",
-  "topicTestAnswersLater": "Correct answers open after the deadline ({date})",
+  "topicTestAnswersLater": "Correct answers open after the deadline ({date}) or when the teacher closes the test",
   "@topicTestAnswersLater": {
     "placeholders": {
       "date": {
@@ -5901,5 +5901,32 @@
         "type": "int"
       }
     }
-  }
+  },
+  "classesGiveTopicTest": "Give a topic test",
+  "classesGiveTopicTestSub": "Pick a topic — the next page sets the number of questions, variants, due date and when answers open.",
+  "classesTopicSearchHint": "Search topics (e.g. anaemia)",
+  "classesTopicNoMatch": "No topic with a ready test found",
+  "classesTopicQuestions": "{count} questions",
+  "@classesTopicQuestions": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "examDeadlineAt": "Due: {date}",
+  "@examDeadlineAt": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "classesScanAskNick": "Before joining, enter a nickname — your teacher sees your result under it (optional: leave empty to show your seat number). Then tap “Join”.",
+  "classesMyNickname": "My nickname",
+  "classesNoNickname": "None — your teacher sees your seat number",
+  "classesNicknameSaved": "Nickname saved",
+  "classesNicknameNote": "Don't use your real name. Leave empty to show your seat number.",
+  "rolesTeacherRegisterNote": "“Continue” registers your account as a teacher: you manage only the groups you create and see their results (not admin rights).",
+  "rolesTeacherSignInNote": "Sign in to create groups — the signed-in account registers as a teacher with one tap when creating a group."
 }

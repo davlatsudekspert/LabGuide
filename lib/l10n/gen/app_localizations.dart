@@ -16687,7 +16687,7 @@ abstract class AppLocalizations {
   /// No description provided for @topicTestAnswersLater.
   ///
   /// In en, this message translates to:
-  /// **'Correct answers open after the deadline ({date})'**
+  /// **'Correct answers open after the deadline ({date}) or when the teacher closes the test'**
   String topicTestAnswersLater(String date);
 
   /// No description provided for @topicTestDistribution.
@@ -17211,6 +17211,84 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Trial finished: {correct} / {total} correct. Nothing was submitted.'**
   String classesPreviewResult(int correct, int total);
+
+  /// No description provided for @classesGiveTopicTest.
+  ///
+  /// In en, this message translates to:
+  /// **'Give a topic test'**
+  String get classesGiveTopicTest;
+
+  /// No description provided for @classesGiveTopicTestSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick a topic — the next page sets the number of questions, variants, due date and when answers open.'**
+  String get classesGiveTopicTestSub;
+
+  /// No description provided for @classesTopicSearchHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search topics (e.g. anaemia)'**
+  String get classesTopicSearchHint;
+
+  /// No description provided for @classesTopicNoMatch.
+  ///
+  /// In en, this message translates to:
+  /// **'No topic with a ready test found'**
+  String get classesTopicNoMatch;
+
+  /// No description provided for @classesTopicQuestions.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} questions'**
+  String classesTopicQuestions(int count);
+
+  /// No description provided for @examDeadlineAt.
+  ///
+  /// In en, this message translates to:
+  /// **'Due: {date}'**
+  String examDeadlineAt(String date);
+
+  /// No description provided for @classesScanAskNick.
+  ///
+  /// In en, this message translates to:
+  /// **'Before joining, enter a nickname — your teacher sees your result under it (optional: leave empty to show your seat number). Then tap “Join”.'**
+  String get classesScanAskNick;
+
+  /// No description provided for @classesMyNickname.
+  ///
+  /// In en, this message translates to:
+  /// **'My nickname'**
+  String get classesMyNickname;
+
+  /// No description provided for @classesNoNickname.
+  ///
+  /// In en, this message translates to:
+  /// **'None — your teacher sees your seat number'**
+  String get classesNoNickname;
+
+  /// No description provided for @classesNicknameSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Nickname saved'**
+  String get classesNicknameSaved;
+
+  /// No description provided for @classesNicknameNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Don\'t use your real name. Leave empty to show your seat number.'**
+  String get classesNicknameNote;
+
+  /// No description provided for @rolesTeacherRegisterNote.
+  ///
+  /// In en, this message translates to:
+  /// **'“Continue” registers your account as a teacher: you manage only the groups you create and see their results (not admin rights).'**
+  String get rolesTeacherRegisterNote;
+
+  /// No description provided for @rolesTeacherSignInNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in to create groups — the signed-in account registers as a teacher with one tap when creating a group.'**
+  String get rolesTeacherSignInNote;
 }
 
 class _AppLocalizationsDelegate

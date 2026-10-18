@@ -1254,6 +1254,13 @@ GoRouter buildRouter(
                               groupId: state.pathParameters['gid']!,
                             ),
                           ),
+                          // Guruh sahifasidan mavzu testi: mavzuni tanlash.
+                          GoRoute(
+                            path: 'topic-test',
+                            builder: (context, state) => DeckTestPickerScreen(
+                              groupId: state.pathParameters['gid']!,
+                            ),
+                          ),
                           GoRoute(
                             path: 'a/:aid',
                             builder: (context, state) => AssignmentScreen(
@@ -1347,7 +1354,20 @@ GoRouter buildRouter(
                             parentNavigatorKey: rootKey,
                             builder: (context, state) => AssignDeckTestScreen(
                               deckId: state.pathParameters['deckId']!,
+                              initialGroupId: state.uri.queryParameters['g'],
                             ),
+                            routes: [
+                              // Guruhsiz ustoz: guruh shu yerda yaratiladi
+                              // (root navigatorda — shell ichidagi
+                              // /learn/classes/new ga push “duplicate page
+                              // key” beradi), so'ng topshirishga qaytadi.
+                              GoRoute(
+                                path: 'group',
+                                parentNavigatorKey: rootKey,
+                                builder: (context, state) =>
+                                    const CreateGroupScreen(popOnCreate: true),
+                              ),
+                            ],
                           ),
                         ],
                       ),

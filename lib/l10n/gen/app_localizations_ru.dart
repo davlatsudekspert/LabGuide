@@ -9736,7 +9736,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String topicTestAnswersLater(String date) {
-    return 'Правильные ответы откроются после срока ($date)';
+    return 'Правильные ответы откроются после срока ($date) или когда преподаватель завершит тест';
   }
 
   @override
@@ -10056,4 +10056,52 @@ class AppLocalizationsRu extends AppLocalizations {
   String classesPreviewResult(int correct, int total) {
     return 'Проба завершена: $correct / $total верно. Результат не отправлен.';
   }
+
+  @override
+  String get classesGiveTopicTest => 'Дать тест по теме';
+
+  @override
+  String get classesGiveTopicTestSub =>
+      'Выберите тему — на следующей странице: число вопросов, варианты, срок и когда открыть ответы.';
+
+  @override
+  String get classesTopicSearchHint => 'Поиск темы (например, анемия)';
+
+  @override
+  String get classesTopicNoMatch => 'Нет темы с готовым тестом';
+
+  @override
+  String classesTopicQuestions(int count) {
+    return 'Вопросов: $count';
+  }
+
+  @override
+  String examDeadlineAt(String date) {
+    return 'Срок: $date';
+  }
+
+  @override
+  String get classesScanAskNick =>
+      'Перед вступлением укажите псевдоним — под ним преподаватель увидит ваш результат (необязательно: без него — номер по порядку). Затем «Вступить».';
+
+  @override
+  String get classesMyNickname => 'Мой псевдоним';
+
+  @override
+  String get classesNoNickname => 'Нет — преподаватель видит ваш номер';
+
+  @override
+  String get classesNicknameSaved => 'Псевдоним сохранён';
+
+  @override
+  String get classesNicknameNote =>
+      'Не пишите настоящее имя. Если оставить пустым — номер по порядку.';
+
+  @override
+  String get rolesTeacherRegisterNote =>
+      '«Продолжить» зарегистрирует аккаунт как преподавателя: вы управляете только своими группами и видите их результаты (это не права администратора).';
+
+  @override
+  String get rolesTeacherSignInNote =>
+      'Чтобы создать группу, войдите в аккаунт — регистрация преподавателя займёт одно нажатие при создании группы.';
 }
