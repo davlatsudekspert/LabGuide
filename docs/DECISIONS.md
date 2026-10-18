@@ -1050,8 +1050,9 @@ D-48 dagi **Ustoz Pro** qatorini (69 000 so'm/oy · 490 000 so'm/yil · $9.99/oy
 - **Tibbiy xavfsizlik eslatmasi saqlanadi** (Apple/tibbiy talab), bitta neytral qator (`sourcesDisclaimer`):
   "O'quv ma'lumotnomasi, tashxis emas: natijani shifokor klinik ma'lumotlar bilan baholaydi; referens
   oraliqlar laboratoriya va usulga bog'liq."
-- **Qayerda:** siydik tahlili, spermogramma, qon guruhi, gistologiya, qon morfologiyasi, sitologiya (+ qo'shimcha
-  sahifalar), leykoformula, jadvallar va algoritmlar, mikroskopiya atlasi, analit kartalari ("Manbalarga
+- **Qayerda:** siydik tahlili, spermogramma, qon guruhi, gistologiya, qon morfologiyasi, koagulogramma
+  (`cgLeadRefs`), koprologiya (`cpLeadRefs`; "Darslik" — manba turi izohi, `CpL.textbookNote`), sitologiya
+  (+ qo'shimcha sahifalar), leykoformula, jadvallar va algoritmlar, mikroskopiya atlasi, analit kartalari ("Manbalarga
   asoslangan: <karta manbalari>"), holatlar (shartlar) kartalari, paketlar, imtihon/mashq, toifa javob rejalari,
   sinf (ustoz) ekranlari. Analit/holat kartasidagi "Tekshiruv holati" paneli "Tayyorlanishi va manbalar" bo'ldi:
   tayyorlagan, manbalar ko'rilgan va solishtirilgan sanalar; "tasdiq kutilmoqda / tekshiruvchi tayinlanmagan /
