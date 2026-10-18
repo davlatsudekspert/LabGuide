@@ -527,10 +527,16 @@ jobs:
           REV="com.googleusercontent.apps.${LG_GOOGLE_IOS_CLIENT_ID%.apps.googleusercontent.com}"
           PB=/usr/libexec/PlistBuddy
           P=ios/Runner/Info.plist
-          $PB -c 'Add :CFBundleURLTypes array' "$P"
-          $PB -c 'Add :CFBundleURLTypes:0 dict' "$P"
-          $PB -c 'Add :CFBundleURLTypes:0:CFBundleURLSchemes array' "$P"
-          $PB -c "Add :CFBundleURLTypes:0:CFBundleURLSchemes:0 string $REV" "$P"
+          # Info.plist'da allaqachon URL turlari bo'lishi mumkin (guruhga qo'shilish
+          # sxemasi "labguide") — massiv yo'q bo'lsagina yaratiladi, Google sxemasi
+          # oxiriga yangi element sifatida qo'shiladi.
+          $PB -c 'Print :CFBundleURLTypes' "$P" >/dev/null 2>&1 || $PB -c 'Add :CFBundleURLTypes array' "$P"
+          N=$($PB -c 'Print :CFBundleURLTypes' "$P" | grep -c '^    Dict {' || true)
+          $PB -c "Add :CFBundleURLTypes:$N dict" "$P"
+          $PB -c "Add :CFBundleURLTypes:$N:CFBundleURLSchemes array" "$P"
+          $PB -c "Add :CFBundleURLTypes:$N:CFBundleURLSchemes:0 string $REV" "$P"
+          $PB -c 'Print :CFBundleURLTypes' "$P" | grep -q "$REV"
+          $PB -c 'Print :CFBundleURLTypes' "$P" | grep -q 'labguide'
           echo "- Google (iOS): URL sxemasi qo'shildi" >> "$GITHUB_STEP_SUMMARY"
 
       # ---------- IMZOSIZ TEKSHIRUV ----------
