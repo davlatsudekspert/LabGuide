@@ -356,10 +356,13 @@ class _Board extends StatelessWidget {
                 spacing: 10 * k,
                 runSpacing: 6 * k,
                 children: [
-                  _Counter(
-                    k: k,
-                    label: l.quizQuestionCount(a.questionIds.length),
-                  ),
+                  _Counter(k: k, label: l.quizQuestionCount(a.questionCount)),
+                  if (a.isVariant)
+                    _Counter(
+                      key: const ValueKey('board-variant'),
+                      k: k,
+                      label: l.variantLabel,
+                    ),
                   _Counter(k: k, label: '${l.boardJoined}: $joined'),
                   _Counter(
                     k: k,
@@ -669,18 +672,8 @@ class _SidePanel extends StatelessWidget {
         if (students.contains(s.userId)) s,
     ];
     if (subs.isEmpty) return const [];
-    bool right(GroupSubmission s, int i) =>
-        s.correct?[i] ??
-        (data.key != null &&
-            i < s.answers.length &&
-            s.answers[i] == data.key![i]);
-    final wrong =
-        [
-          for (var i = 0; i < a.questionIds.length; i++)
-            (i, subs.where((s) => !right(s, i)).length),
-        ].where((e) => e.$2 > 0).toList()..sort(
-          (x, y) => y.$2 != x.$2 ? y.$2.compareTo(x.$2) : x.$1.compareTo(y.$1),
-        );
+    // Har savol — faqat u tushgan talabalar orasida (variantli test, D-66).
+    final wrong = hardestTallies(tallyQuestions(a, subs, data.key));
     final pack = context.services.content.pack;
     final byId = pack == null
         ? const <String, Never>{}
@@ -695,9 +688,9 @@ class _SidePanel extends StatelessWidget {
         ),
       ),
       SizedBox(height: 8 * k),
-      for (final (i, n) in wrong.take(3))
+      for (final t in wrong.take(3))
         Padding(
-          key: ValueKey('board-hardest-$i'),
+          key: ValueKey('board-hardest-${t.index}'),
           padding: EdgeInsets.only(bottom: 10 * k),
           child: Container(
             padding: EdgeInsets.all(10 * k),
@@ -709,7 +702,11 @@ class _SidePanel extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  '${l.examQuestionN(i + 1)} · ${l.classesWrongOf(n, subs.length)}',
+                  [
+                    l.examQuestionN(t.index + 1),
+                    l.classesWrongOf(t.wrong, t.received),
+                    if (a.isVariant) l.variantReceived(t.received),
+                  ].join(' · '),
                   style: TextStyle(
                     fontSize: 15 * k,
                     fontWeight: FontWeight.w700,
@@ -718,7 +715,7 @@ class _SidePanel extends StatelessWidget {
                 ),
                 SizedBox(height: 4 * k),
                 Text(
-                  byId[a.questionIds[i]]?.prompt(lang) ?? l.examQuestionMissing,
+                  byId[t.questionId]?.prompt(lang) ?? l.examQuestionMissing,
                   maxLines: 3,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(fontSize: 16 * k, color: p.ink),

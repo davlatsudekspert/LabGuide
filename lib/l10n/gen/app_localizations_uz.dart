@@ -9750,4 +9750,42 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get actionClose => 'Yopish';
+
+  @override
+  String get variantToggle => 'Har bir talabaga boshqa savollar';
+
+  @override
+  String variantOnBody(int pool, int n) {
+    return 'Har talabaga mavzudagi $pool ta savoldan $n tasi tushadi — kichik mavzular bo‘yicha teng taqsimlanadi.';
+  }
+
+  @override
+  String get variantOffBody =>
+      'Hamma talabaga bir xil savollar (tartibi aralashtiriladi).';
+
+  @override
+  String variantDisabledBody(int pool, int need) {
+    return 'Mavzuda $pool ta savol bor — har talabaga boshqa to‘plam uchun kamida $need ta kerak (savollar sonidan 2 barobar). Savollar sonini kamaytiring.';
+  }
+
+  @override
+  String get variantUnsupported => 'Variantli test bu serverda qo‘llanmaydi.';
+
+  @override
+  String variantPoolTitle(int pool) {
+    return 'Savollar hovuzi ($pool)';
+  }
+
+  @override
+  String get variantLabel => 'Variantli test';
+
+  @override
+  String variantPerStudent(int n, int pool) {
+    return 'Har talabaga $n ta savol, hovuzda $pool ta';
+  }
+
+  @override
+  String variantReceived(int n) {
+    return '$n ta talabaga tushdi';
+  }
 }

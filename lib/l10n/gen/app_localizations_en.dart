@@ -9886,4 +9886,43 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get actionClose => 'Close';
+
+  @override
+  String get variantToggle => 'Different questions for each student';
+
+  @override
+  String variantOnBody(int pool, int n) {
+    return 'Each student gets $n of the topic’s $pool questions, balanced across sub-topics.';
+  }
+
+  @override
+  String get variantOffBody =>
+      'Everyone gets the same questions (in shuffled order).';
+
+  @override
+  String variantDisabledBody(int pool, int need) {
+    return 'This topic has $pool questions — different sets need at least $need (twice the question count). Lower the question count.';
+  }
+
+  @override
+  String get variantUnsupported =>
+      'Variant tests are not supported by this server.';
+
+  @override
+  String variantPoolTitle(int pool) {
+    return 'Question pool ($pool)';
+  }
+
+  @override
+  String get variantLabel => 'Variant test';
+
+  @override
+  String variantPerStudent(int n, int pool) {
+    return '$n questions per student from a pool of $pool';
+  }
+
+  @override
+  String variantReceived(int n) {
+    return 'Given to $n students';
+  }
 }

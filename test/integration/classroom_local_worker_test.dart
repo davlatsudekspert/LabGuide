@@ -175,5 +175,46 @@ void main() {
       expect(await s2.groupTopics(g.id), isEmpty);
       expect(await s2.groupSubmissions(g.id), isEmpty);
     });
+
+    // D-66: Dart tanlovi (variant_draw.dart) haqiqiy Worker bergan to'plam
+    // bilan aynan bir xil; 3 talaba — 3 xil to'plam.
+    test('variantli test: ilova va server bir xil to\'plam', () async {
+      final teacher = await login('vustoz.$stamp@example.test', 'uz');
+      await teacher.touchProfile(role: 'teacher', language: 'uz');
+      await teacher.registerTeacher();
+      final g = await teacher.createGroup('Variant guruh');
+      final pool = [for (var i = 1; i <= 12; i++) 'vq.$i'];
+      final key = [for (var i = 0; i < 12; i++) i % 4];
+      final aid = await teacher.createAssignment(
+        groupId: g.id,
+        title: 'Variantli test',
+        questionIds: pool,
+        correctIndexes: key,
+        perStudent: 4,
+        poolTopics: [for (var i = 0; i < 12; i++) 'hem-${i % 3}'],
+      );
+      final sets = <String>{};
+      for (var n = 0; n < 3; n++) {
+        final st = await login('vs$n.$stamp@example.test', 'uz');
+        await st.joinGroup(g.joinCode!);
+        final a = (await st.assignments(g.id)).single;
+        expect(a.isVariant, isTrue);
+        final start = await st.startAssignment(aid);
+        final mine = a.questionIdsFor(st.userId);
+        expect(start.questionIds, mine);
+        sets.add((mine.toList()..sort()).join(','));
+        final sub = await st.submitAssignment(aid, [
+          for (final q in mine.reversed) key[pool.indexOf(q)],
+        ], questionIds: mine.reversed.toList());
+        expect((sub.score, sub.total), (4, 4));
+        expect(sub.questionIds, mine);
+      }
+      expect(sets, hasLength(3));
+      final a = (await teacher.assignments(g.id)).single;
+      final subs = await teacher.submissions(aid);
+      final tally = tallyQuestions(a, subs, await teacher.assignmentKey(aid));
+      expect(tally.fold<int>(0, (n, t) => n + t.received), 12);
+      expect(hardestTallies(tally), isEmpty);
+    });
   });
 }

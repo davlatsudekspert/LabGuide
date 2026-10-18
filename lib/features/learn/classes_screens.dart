@@ -815,7 +815,7 @@ _StudentStatus _statusFor(
 String _assignmentMeta(BuildContext context, GroupAssignment a) {
   final l = AppLocalizations.of(context);
   return [
-    l.quizQuestionCount(a.questionIds.length),
+    l.quizQuestionCount(a.questionCount),
     if (a.timeLimitMinutes != null) l.examMinutes(a.timeLimitMinutes!),
     a.dueAt == null
         ? l.classesNoDue
@@ -1709,6 +1709,7 @@ Future<SubmitOutcome> submitAssignmentSession(
     await services.backend.submitAssignment(
       s.assignmentId!,
       s.submissionAnswers(),
+      questionIds: s.submissionQuestionIds(),
     );
     await recordExamProgress(services, s);
     await services.exams.removeAssignment(s.assignmentId!);
@@ -1909,7 +1910,11 @@ class _AssignmentScreenState extends State<AssignmentScreen>
           ? null
           : Duration(minutes: a.timeLimitMinutes!);
       final due = a.dueAt?.add(localNow.difference(start.serverNow));
-      final questions = [for (final id in a.questionIds) byId[id]!];
+      // Variantli test: shu talabaning to'plami (server bergani; ilova ham
+      // aynan shuni hisoblaydi — D-66).
+      final ids =
+          start.questionIds ?? a.questionIdsFor(services.backend.userId);
+      final questions = [for (final id in ids) byId[id]!];
       await exams.startAssignment(
         ExamSession.build(
           id: exams.newId(),
@@ -2040,10 +2045,7 @@ class _AssignmentScreenState extends State<AssignmentScreen>
     return Column(
       children: [
         ...extra,
-        LgMetric(
-          label: l.classesMetricQuestions,
-          value: '${a.questionIds.length}',
-        ),
+        LgMetric(label: l.classesMetricQuestions, value: '${a.questionCount}'),
         LgMetric(
           label: l.classesMetricLimit,
           value: a.timeLimitMinutes == null
@@ -2068,7 +2070,8 @@ class _AssignmentScreenState extends State<AssignmentScreen>
     final mine = d.submissions.where((s) => s.userId == me).firstOrNull;
     if (mine != null) return _studentResult(a, mine, pack);
     final byId = _byId(context, pack);
-    final missing = a.questionIds.where((id) => !byId.containsKey(id)).length;
+    final myIds = a.questionIdsFor(me);
+    final missing = myIds.where((id) => !byId.containsKey(id)).length;
     final local = services.exams.assignmentSession(a.id, me);
     final status = _statusFor(context, a, mine);
     final Widget action = switch (status) {
@@ -2125,7 +2128,7 @@ class _AssignmentScreenState extends State<AssignmentScreen>
       _ => Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          if (a.questionIds.any((id) => byId[id]?.isDraft ?? false))
+          if (myIds.any((id) => byId[id]?.isDraft ?? false))
             LgNotice(l.examPracticeNotice, kind: NoticeKind.info),
           LgNotice(
             a.timeLimitMinutes == null
@@ -2156,10 +2159,11 @@ class _AssignmentScreenState extends State<AssignmentScreen>
   ) {
     final l = AppLocalizations.of(context);
     final byId = _byId(context, pack);
+    final ids = a.questionIdsOf(mine);
     bool isRight(int i) =>
         mine.correct?[i] ??
-        (byId[a.questionIds[i]]?.correct.contains(mine.answers[i]) ?? false);
-    final all = [for (var i = 0; i < a.questionIds.length; i++) i];
+        (byId[ids[i]]?.correct.contains(mine.answers[i]) ?? false);
+    final all = [for (var i = 0; i < ids.length; i++) i];
     final wrong = [
       for (final i in all)
         if (!isRight(i)) i,
@@ -2220,7 +2224,7 @@ class _AssignmentScreenState extends State<AssignmentScreen>
         else
           for (final i in shown)
             () {
-              final q = byId[a.questionIds[i]];
+              final q = byId[ids[i]];
               final chosen = i < mine.answers.length && mine.answers[i] >= 0
                   ? mine.answers[i]
                   : null;
@@ -2275,8 +2279,8 @@ class _AssignmentScreenState extends State<AssignmentScreen>
         }
         return sy.percent.compareTo(sx.percent);
       });
-    bool right(GroupSubmission s, int i) =>
-        s.correct?[i] ?? (d.key != null && s.answers[i] == d.key![i]);
+    // Savol bo'yicha — faqat savol tushgan talabalar orasida (D-66).
+    final tally = tallyQuestions(a, subs.values, d.key);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -2293,6 +2297,26 @@ class _AssignmentScreenState extends State<AssignmentScreen>
             ),
           ],
         ),
+        if (a.isVariant) ...[
+          const SizedBox(height: 8),
+          Wrap(
+            spacing: 8,
+            runSpacing: 8,
+            crossAxisAlignment: WrapCrossAlignment.center,
+            children: [
+              LgTag(
+                l.variantLabel,
+                key: const ValueKey('assignment-variant'),
+                icon: Icons.shuffle_rounded,
+                tone: LgTone.brand,
+              ),
+              Text(
+                l.variantPerStudent(a.questionCount, a.questionIds.length),
+                style: text.bodySmall,
+              ),
+            ],
+          ),
+        ],
         const SizedBox(height: 12),
         if (d.group.joinCode case final code?) ...[
           Row(
@@ -2374,63 +2398,75 @@ class _AssignmentScreenState extends State<AssignmentScreen>
         if (subs.isNotEmpty) ...[
           LgSectionTitle(l.topicTestDistribution),
           _Distribution(percents: [for (final s in subs.values) s.percent]),
-          ..._hardestQuestions(context, d, byId, subs.values.toList(), right),
+          ..._hardestQuestions(context, d, byId, tally),
         ],
         LgSectionTitle(l.classesByQuestion),
         if (subs.isEmpty)
           Text(l.classesByQuestionEmpty, style: text.bodyMedium)
         else
-          for (var i = 0; i < a.questionIds.length; i++)
-            () {
-              final q = byId[a.questionIds[i]];
-              final wrong = subs.values.where((s) => !right(s, i)).length;
-              final rate = 1 - wrong / subs.length;
-              final key = d.key?[i];
-              return LgPanel(
-                padding: const EdgeInsets.all(16),
-                child: Semantics(
-                  container: true,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Row(
-                        children: [
-                          Expanded(child: LgEyebrow(l.examQuestionN(i + 1))),
-                          LgTag(
-                            l.classesWrongOf(wrong, subs.length),
-                            tone: wrong == 0 ? LgTone.brand : LgTone.warning,
+          for (final t in tally)
+            if (t.received > 0 || !a.isVariant)
+              () {
+                final i = t.index;
+                final q = byId[t.questionId];
+                final wrong = t.wrong;
+                final rate = t.rate;
+                final key = d.key?[i];
+                return LgPanel(
+                  padding: const EdgeInsets.all(16),
+                  child: Semantics(
+                    container: true,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Row(
+                          children: [
+                            Expanded(child: LgEyebrow(l.examQuestionN(i + 1))),
+                            LgTag(
+                              l.classesWrongOf(wrong, t.received),
+                              tone: wrong == 0 ? LgTone.brand : LgTone.warning,
+                            ),
+                          ],
+                        ),
+                        if (a.isVariant) ...[
+                          const SizedBox(height: 4),
+                          Text(
+                            l.variantReceived(t.received),
+                            key: ValueKey('received-$i'),
+                            style: text.bodySmall,
                           ),
                         ],
-                      ),
-                      const SizedBox(height: 6),
-                      Text(
-                        q?.prompt(lang) ?? l.examQuestionMissing,
-                        style: text.bodyMedium,
-                      ),
-                      if (q != null && key != null && key < q.optionCount) ...[
                         const SizedBox(height: 6),
                         Text(
-                          '${l.quizCorrectAnswer}: ${q.option(key, lang)}',
-                          style: text.bodySmall!.copyWith(color: p.brand),
+                          q?.prompt(lang) ?? l.examQuestionMissing,
+                          style: text.bodyMedium,
                         ),
-                      ],
-                      const SizedBox(height: 10),
-                      ExcludeSemantics(
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(4),
-                          child: LinearProgressIndicator(
-                            value: rate,
-                            minHeight: 6,
-                            color: p.brand,
-                            backgroundColor: p.amberBg,
+                        if (q != null &&
+                            key != null &&
+                            key < q.optionCount) ...[
+                          const SizedBox(height: 6),
+                          Text(
+                            '${l.quizCorrectAnswer}: ${q.option(key, lang)}',
+                            style: text.bodySmall!.copyWith(color: p.brand),
+                          ),
+                        ],
+                        const SizedBox(height: 10),
+                        ExcludeSemantics(
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(4),
+                            child: LinearProgressIndicator(
+                              value: rate,
+                              minHeight: 6,
+                              color: p.brand,
+                              backgroundColor: p.amberBg,
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-              );
-            }(),
+                );
+              }(),
       ],
     );
   }
@@ -2442,27 +2478,21 @@ List<Widget> _hardestQuestions(
   BuildContext context,
   _AssignmentData d,
   Map<String, ExamQuestion> byId,
-  List<GroupSubmission> subs,
-  bool Function(GroupSubmission s, int i) right,
+  List<QuestionTally> tally,
 ) {
   final l = AppLocalizations.of(context);
   final text = Theme.of(context).textTheme;
   final lang = Localizations.localeOf(context).languageCode;
   final a = d.assignment;
-  final wrong =
-      [
-        for (var i = 0; i < a.questionIds.length; i++)
-          (i, subs.where((s) => !right(s, i)).length),
-      ].where((e) => e.$2 > 0).toList()..sort(
-        (x, y) => y.$2 != x.$2 ? y.$2.compareTo(x.$2) : x.$1.compareTo(y.$1),
-      );
+  final wrong = hardestTallies(tally);
   if (wrong.isEmpty) return const [];
   final deck = deckOfAssignment(context, a);
   return [
     LgSectionTitle(l.topicTestHardest),
-    for (final (i, n) in wrong.take(5))
+    for (final t in wrong.take(5))
       () {
-        final q = byId[a.questionIds[i]];
+        final i = t.index;
+        final q = byId[t.questionId];
         return LgPanel(
           key: ValueKey('hardest-$i'),
           padding: const EdgeInsets.fromLTRB(16, 14, 16, 4),
@@ -2472,9 +2502,16 @@ List<Widget> _hardestQuestions(
               Row(
                 children: [
                   Expanded(child: LgEyebrow(l.examQuestionN(i + 1))),
-                  LgTag(l.classesWrongOf(n, subs.length), tone: LgTone.warning),
+                  LgTag(
+                    l.classesWrongOf(t.wrong, t.received),
+                    tone: LgTone.warning,
+                  ),
                 ],
               ),
+              if (a.isVariant) ...[
+                const SizedBox(height: 4),
+                Text(l.variantReceived(t.received), style: text.bodySmall),
+              ],
               const SizedBox(height: 6),
               Text(
                 q?.prompt(lang) ?? l.examQuestionMissing,
@@ -2729,6 +2766,7 @@ class _StudentResultScreenState extends State<StudentResultScreen>
                     final byId = _byId(context, pack);
                     final a = d.assignment;
                     final unanswered = s!.answers.where((x) => x < 0).length;
+                    final ids = a.questionIdsOf(s);
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
@@ -2743,14 +2781,15 @@ class _StudentResultScreenState extends State<StudentResultScreen>
                           ),
                         ),
                         LgSectionTitle(l.examAnalysis),
-                        for (var i = 0; i < a.questionIds.length; i++)
+                        for (var i = 0; i < ids.length; i++)
                           ExamReviewCard(
                             number: i + 1,
-                            question: byId[a.questionIds[i]],
+                            question: byId[ids[i]],
                             chosen: i < s.answers.length && s.answers[i] >= 0
                                 ? [s.answers[i]]
                                 : null,
-                            correct: [d.key![i]],
+                            // Kalit hovuz tartibida (variantli testda ham).
+                            correct: [d.key![a.questionIds.indexOf(ids[i])]],
                             chosenLabel: l.classesStudentAnswer,
                           ),
                       ],

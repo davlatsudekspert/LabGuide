@@ -142,6 +142,8 @@ class CloudflareLabBackend
   @override
   bool get isConfigured => true;
   @override
+  bool get supportsVariantTests => true;
+  @override
   bool get isAvailable => true;
   @override
   bool get isDemo => false;
@@ -785,6 +787,8 @@ class CloudflareLabBackend
     String? dayId,
     String? deckId,
     bool revealAfterDue = false,
+    int? perStudent,
+    List<String?>? poolTopics,
     bool start = true,
   }) async {
     final m = (await _call(
@@ -800,6 +804,8 @@ class CloudflareLabBackend
         'start': start,
         'deck_id': ?deckId,
         if (revealAfterDue) 'reveal': 'after_due',
+        'per_student': ?perStudent,
+        if (perStudent != null) 'pool_topics': ?poolTopics,
       },
       notFound: BackendFailure.forbidden,
     )).map;
@@ -839,12 +845,13 @@ class CloudflareLabBackend
   @override
   Future<GroupSubmission> submitAssignment(
     String assignmentId,
-    List<int> answers,
-  ) async {
+    List<int> answers, {
+    List<String>? questionIds,
+  }) async {
     final r = await _call(
       'POST',
       '/v1/assignments/${_seg(assignmentId)}/submit',
-      body: {'answers': answers},
+      body: {'answers': answers, 'question_ids': ?questionIds},
       notFound: BackendFailure.forbidden,
     );
     return GroupSubmission.fromJson(r.map);

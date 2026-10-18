@@ -100,6 +100,10 @@ class SupabaseLabBackend implements LabBackend {
 
   @override
   bool get isConfigured => true;
+
+  /// Supabase sxemasida `per_student` yo'q (asosiy server — Cloudflare).
+  @override
+  bool get supportsVariantTests => false;
   @override
   bool get isAvailable => true;
   @override
@@ -756,7 +760,13 @@ class SupabaseLabBackend implements LabBackend {
     String? dayId,
     String? deckId,
     bool revealAfterDue = false,
+    int? perStudent,
+    List<String?>? poolTopics,
   }) async {
+    // Variantli test bu serverda yo'q ([supportsVariantTests] — false).
+    if (perStudent != null) {
+      throw const BackendException(BackendFailure.invalid, 'per_student');
+    }
     final id = await _guard(
       () => client.rpc<Object?>(
         'create_assignment',
@@ -787,8 +797,9 @@ class SupabaseLabBackend implements LabBackend {
   @override
   Future<GroupSubmission> submitAssignment(
     String assignmentId,
-    List<int> answers,
-  ) async {
+    List<int> answers, {
+    List<String>? questionIds,
+  }) async {
     final data = await _guard(
       () => client.rpc<Object?>(
         'submit_assignment',

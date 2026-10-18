@@ -113,6 +113,18 @@ Rasmlar: `tool/screenshots/out/walk/classroom_live_uz/` (git’da emas — qayta
   “x/N javob berildi” ko‘rsatilmaydi: server javoblarni faqat topshirilganda oladi (har
   javobni yuborish — bepul tarif yozuv limitiga og‘ir); o‘rniga “yechmoqda…” (`/progress`).
 
+### Qo‘shimcha: variantli test (D-66, keyinroq)
+
+Egasi savoli: “bir mavzuda hamma har xil savol oladimi?” — avval **yo‘q** edi (hammaga bir xil
+to‘plam, faqat savollar va variantlar tartibi aralashardi). Endi “Guruhga topshirish”da
+**“Har bir talabaga boshqa savollar”**: hovuz ≥ 2 × N bo‘lsa standart yoqiq, aks holda o‘chiq
+va sababi yoziladi. Skriptga **6b-qadam** qo‘shildi (hovuz 12, har talabaga 4, 3 talaba):
+server bergan to‘plam skriptdagi mustaqil hisob bilan bir xil, 3 talaba — 3 xil to‘plam, har
+kichik mavzudan kamida 1 ta, begona savol id si bilan yuborish — `400 invalid_questions`, ustoz
+natijalarida har talabaning `question_ids` si, eng qiyin savollar faqat ularni olganlar orasida.
+Mahalliy Worker’da qayta ishga tushirildi: **97 tekshiruv, hammasi o‘tdi**. Dart mijoz ham
+(`test/integration/classroom_local_worker_test.dart`) shu Worker bilan bir xil to‘plamni hisobladi.
+
 ## 6. Qilinmagan va sababi
 
 * **Ilova ichidagi kamera skaneri (mobile_scanner)** qo‘shilmadi: yangi native plagin

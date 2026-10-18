@@ -2823,5 +2823,14 @@
   "boardAnswersAfterClose": "To‘g‘ri javoblar test yakunlangach ko‘rsatiladi.",
   "boardEmpty": "Hali hech kim yo‘q — QR ni skanerlang.",
   "boardClose": "Katta ekrandan chiqish",
-  "actionClose": "Yopish"
+  "actionClose": "Yopish",
+  "variantToggle": "Har bir talabaga boshqa savollar",
+  "variantOnBody": "Har talabaga mavzudagi {pool} ta savoldan {n} tasi tushadi — kichik mavzular bo‘yicha teng taqsimlanadi.",
+  "variantOffBody": "Hamma talabaga bir xil savollar (tartibi aralashtiriladi).",
+  "variantDisabledBody": "Mavzuda {pool} ta savol bor — har talabaga boshqa to‘plam uchun kamida {need} ta kerak (savollar sonidan 2 barobar). Savollar sonini kamaytiring.",
+  "variantUnsupported": "Variantli test bu serverda qo‘llanmaydi.",
+  "variantPoolTitle": "Savollar hovuzi ({pool})",
+  "variantLabel": "Variantli test",
+  "variantPerStudent": "Har talabaga {n} ta savol, hovuzda {pool} ta",
+  "variantReceived": "{n} ta talabaga tushdi"
 }

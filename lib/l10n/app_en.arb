@@ -5802,5 +5802,58 @@
   "boardAnswersAfterClose": "Correct answers appear after the test is closed.",
   "boardEmpty": "Nobody yet — scan the QR.",
   "boardClose": "Exit big screen",
-  "actionClose": "Close"
+  "actionClose": "Close",
+  "variantToggle": "Different questions for each student",
+  "variantOnBody": "Each student gets {n} of the topic’s {pool} questions, balanced across sub-topics.",
+  "@variantOnBody": {
+    "placeholders": {
+      "pool": {
+        "type": "int"
+      },
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "variantOffBody": "Everyone gets the same questions (in shuffled order).",
+  "variantDisabledBody": "This topic has {pool} questions — different sets need at least {need} (twice the question count). Lower the question count.",
+  "@variantDisabledBody": {
+    "placeholders": {
+      "pool": {
+        "type": "int"
+      },
+      "need": {
+        "type": "int"
+      }
+    }
+  },
+  "variantUnsupported": "Variant tests are not supported by this server.",
+  "variantPoolTitle": "Question pool ({pool})",
+  "@variantPoolTitle": {
+    "placeholders": {
+      "pool": {
+        "type": "int"
+      }
+    }
+  },
+  "variantLabel": "Variant test",
+  "variantPerStudent": "{n} questions per student from a pool of {pool}",
+  "@variantPerStudent": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      },
+      "pool": {
+        "type": "int"
+      }
+    }
+  },
+  "variantReceived": "Given to {n} students",
+  "@variantReceived": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  }
 }

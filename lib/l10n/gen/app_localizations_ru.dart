@@ -9924,4 +9924,43 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get actionClose => 'Закрыть';
+
+  @override
+  String get variantToggle => 'Каждому студенту — свои вопросы';
+
+  @override
+  String variantOnBody(int pool, int n) {
+    return 'Каждый студент получает $n из $pool вопросов темы — поровну по подтемам.';
+  }
+
+  @override
+  String get variantOffBody =>
+      'Всем одни и те же вопросы (в перемешанном порядке).';
+
+  @override
+  String variantDisabledBody(int pool, int need) {
+    return 'В теме $pool вопросов — для разных наборов нужно не меньше $need (вдвое больше числа вопросов). Уменьшите число вопросов.';
+  }
+
+  @override
+  String get variantUnsupported =>
+      'Этот сервер не поддерживает вариантные тесты.';
+
+  @override
+  String variantPoolTitle(int pool) {
+    return 'Пул вопросов ($pool)';
+  }
+
+  @override
+  String get variantLabel => 'Вариантный тест';
+
+  @override
+  String variantPerStudent(int n, int pool) {
+    return '$n вопросов каждому из пула в $pool';
+  }
+
+  @override
+  String variantReceived(int n) {
+    return 'Попался $n студентам';
+  }
 }

@@ -17001,6 +17001,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Close'**
   String get actionClose;
+
+  /// No description provided for @variantToggle.
+  ///
+  /// In en, this message translates to:
+  /// **'Different questions for each student'**
+  String get variantToggle;
+
+  /// No description provided for @variantOnBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Each student gets {n} of the topic’s {pool} questions, balanced across sub-topics.'**
+  String variantOnBody(int pool, int n);
+
+  /// No description provided for @variantOffBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Everyone gets the same questions (in shuffled order).'**
+  String get variantOffBody;
+
+  /// No description provided for @variantDisabledBody.
+  ///
+  /// In en, this message translates to:
+  /// **'This topic has {pool} questions — different sets need at least {need} (twice the question count). Lower the question count.'**
+  String variantDisabledBody(int pool, int need);
+
+  /// No description provided for @variantUnsupported.
+  ///
+  /// In en, this message translates to:
+  /// **'Variant tests are not supported by this server.'**
+  String get variantUnsupported;
+
+  /// No description provided for @variantPoolTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Question pool ({pool})'**
+  String variantPoolTitle(int pool);
+
+  /// No description provided for @variantLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Variant test'**
+  String get variantLabel;
+
+  /// No description provided for @variantPerStudent.
+  ///
+  /// In en, this message translates to:
+  /// **'{n} questions per student from a pool of {pool}'**
+  String variantPerStudent(int n, int pool);
+
+  /// No description provided for @variantReceived.
+  ///
+  /// In en, this message translates to:
+  /// **'Given to {n} students'**
+  String variantReceived(int n);
 }
 
 class _AppLocalizationsDelegate

@@ -28,7 +28,7 @@ Flutter ilova ──HTTPS/JSON──▶ Worker `labguide-api` (cloudflare/src) �
 | `cloudflare/src/groups.ts` | guruhlar, a’zolik, mavzular, savol-javob belgilari, test sessiyalari, natijalar |
 | `cloudflare/src/crypto.ts` | HMAC, SHA-256, AES-GCM, TOTP (faqat WebCrypto) |
 | `cloudflare/src/email.ts` | email yuboruvchi: Resend (standart) / Brevo, uz/ru/en matn |
-| `cloudflare/migrations/` | D1 sxemasi: `0001_auth`, `0002_classroom`, `0003_planned_ports` (faqat sxema), `0004_teacher_topics` (ustoz ro‘yxati, mavzu bosqichlari va testi), `0005_community` (hamjamiyat), `0006_admin_grants` (qo‘shilgan adminlar, D-44), `0007_billing`, `0008_social_login`, `0009_admin_console` (shikoyatlar, hisobni to‘xtatish, faollik daqiqasi, sessiya kirish usuli, hamjamiyat shikoyati holati; ko‘rinmas `users.plan`), `0010_assignment_deck` (topshiriqda `deck_id` va `reveal`: taqdimotdan mavzu testi) |
+| `cloudflare/migrations/` | D1 sxemasi: `0001_auth`, `0002_classroom`, `0003_planned_ports` (faqat sxema), `0004_teacher_topics` (ustoz ro‘yxati, mavzu bosqichlari va testi), `0005_community` (hamjamiyat), `0006_admin_grants` (qo‘shilgan adminlar, D-44), `0007_billing`, `0008_social_login`, `0009_admin_console` (shikoyatlar, hisobni to‘xtatish, faollik daqiqasi, sessiya kirish usuli, hamjamiyat shikoyati holati; ko‘rinmas `users.plan`), `0010_assignment_deck` (topshiriqda `deck_id` va `reveal`: taqdimotdan mavzu testi), `0011_community_blocks`, `0012_assignment_variants` (variantli test, D-66: `assignments.per_student`, `assignments.pool_topics`, `submissions.question_ids`) |
 | `cloudflare/seed/` | `community_seed.json` (egasi tasdiqlagan 2 ta savol-javob), `community_seed.example.json` (sxema) |
 | `cloudflare/test/` | vitest + `@cloudflare/vitest-pool-workers` (haqiqiy workerd va lokal D1) |
 | `lib/core/backend/cloudflare_backend.dart` | ilova adapteri `CloudflareLabBackend` |
@@ -134,15 +134,25 @@ Kontrakt — `lib/core/backend/lab_backend.dart`; uning bajariladigan ta’rifi
 | `markTopicStage(g, t, stage)` | `POST /v1/groups/:g/topics/:t/stage` `{stage: lecture\|oral}` | ustoz | mavzu ochiladi; vaqt bir marta yoziladi; boshqa stage — `invalid` |
 | `startTopicTest(...)` | `POST /v1/groups/:g/topics/:t/test` `{title, question_ids, correct_indexes, time_limit_minutes?}` | ustoz | topshiriq yaratiladi va ochiladi (`topic_id`); mavzuga **bitta** test — ikkinchisi `409 test_exists` → `invalid` (tekshiruv va yozuv bitta tranzaksiyada) |
 | `finishTopicTest(g, t)` | `POST /v1/groups/:g/topics/:t/finish` | ustoz | `status=closed`, `due_at=hozir`; yangi urinish yo‘q; testi yo‘q — `404 no_test` → `notFound`; begona — `forbidden` |
-| `assignments(g)` | `GET /v1/groups/:g/assignments` | a’zo | `topic_id`, `deck_id`, `reveal` bilan; kalit yo‘q; qoralamani faqat ustoz ko‘radi; begona — `[]` |
-| `createAssignment(...)` | `POST /v1/groups/:g/assignments` `{title, question_ids, correct_indexes, day_id?, deck_id?, reveal?, due_at?, time_limit_minutes?, start?}` | ustoz | sarlavha 3–120, savollar 1–50, vaqt 1–180; `start:false` — qoralama; `deck_id` — taqdimot (mavzu id qoidasi, 1–80); `reveal`: `now` (standart) yoki `after_due` (muddat shart) |
-| `startAssignment(a)` | `POST /v1/assignments/:a/start` | talaba | boshlanish vaqti (bir marta) + `server_now`; yakunlangan/muddati o‘tgan — `409` → `invalid`; talaba emas — `forbidden` |
-| `submitAssignment(a, answers)` | `POST /v1/assignments/:a/submit` `{answers}` | talaba | ball serverda; bir marta; **boshlangandan limit + 2 daqiqa**; yakunlangan test — yakunlanishdan oldin boshlaganlarga + 2 daqiqa; kech/takror — `409` → `invalid` |
+| `assignments(g)` | `GET /v1/groups/:g/assignments` | a’zo | `topic_id`, `deck_id`, `reveal`, `per_student`, `pool_topics` bilan; kalit yo‘q; qoralamani faqat ustoz ko‘radi; begona — `[]` |
+| `createAssignment(...)` | `POST /v1/groups/:g/assignments` `{title, question_ids, correct_indexes, day_id?, deck_id?, reveal?, due_at?, time_limit_minutes?, start?}` | ustoz | sarlavha 3–120, savollar 1–50, vaqt 1–180; `start:false` — qoralama; `deck_id` — taqdimot (mavzu id qoidasi, 1–80); `reveal`: `now` (standart) yoki `after_due` (muddat shart); **variantli test (D-66)**: `per_student` 1–50 — `question_ids` endi hovuz (takrorsiz, ≤ 60, kamida 2 × `per_student`, aks holda `400 invalid_per_student`), `correct_indexes` — butun hovuz kaliti; `pool_topics?` — hovuz bilan parallel mavzu id lari (muvozanat uchun; `400 invalid_pool_topics`). Jadvaldagi mavzu testi (`/topics/:t/test`) variantli bo‘lmaydi |
+| `startAssignment(a)` | `POST /v1/assignments/:a/start` | talaba | boshlanish vaqti (bir marta) + `server_now` + `question_ids` (variantli testda shu talabaning to‘plami, oddiyda `null`); yakunlangan/muddati o‘tgan — `409` → `invalid`; talaba emas — `forbidden` |
+| `submitAssignment(a, answers, questionIds?)` | `POST /v1/assignments/:a/submit` `{answers, question_ids?}` | talaba | ball serverda; bir marta; variantli testda `question_ids` shart va aynan shu talabaning to‘plami bo‘lishi kerak (istalgan tartibda; begona/takror/yetishmagan — `400 invalid_questions`), javoblar tanlov tartibida saqlanadi, `total = per_student`, javobda va natijalarda `question_ids`; oddiy testda `question_ids` e’tiborsiz; **boshlangandan limit + 2 daqiqa**; yakunlangan test — yakunlanishdan oldin boshlaganlarga + 2 daqiqa; kech/takror — `409` → `invalid` |
 | `submissions(a)` | `GET /v1/assignments/:a/submissions` | a’zo | ustoz — hamma (har savol `correct`); talaba — faqat o‘zi (`reveal: after_due` bo‘lsa muddat o‘tguncha yoki test yakunlanguncha `correct: null`, ball bor; `submit` va guruh natijalarida ham shunday); begona ustoz va **admin** — `[]` |
 | `groupSubmissions(g)` | `GET /v1/groups/:g/submissions` | a’zo | xuddi shunday, guruh bo‘yicha |
 | `assignmentKey(a)` | `GET /v1/assignments/:a/key` | ustoz | to‘g‘ri javoblar; boshqalar — `forbidden` |
 | `closeAssignment(a)` | `POST /v1/assignments/:a/close` | ustoz | topshiriq sahifasidagi “Testni yakunlash”: yangi urinish yo‘q, boshlaganlarga 2 daqiqa; `after_due` javoblari ochiladi |
 | `assignmentProgress(a)` | `GET /v1/assignments/:a/progress` | ustoz | “Katta ekran”: testni boshlagan talabalar `[{user_id, started_at}]` (javoblar topshirilguncha serverda yo‘q); talaba — `403`, begona — `404` |
+
+**Variantli test tanlovi (D-66, `src/variants.ts` ↔ `lib/core/backend/variant_draw.dart`).**
+Talaba to‘plami saqlanmaydi — har safar deterministik hisoblanadi: seed = `"<topshiriq id>:<user id>"`;
+har savolga `h = hex(SHA-256(seed + ":" + savolId))`; savollar `pool_topics` bo‘yicha qatlamlarga
+bo‘linadi (yo‘q — bitta qatlam), qatlam ichida `h` bo‘yicha; qatlamlar `hex(SHA-256(seed + "#" + mavzu))`
+bo‘yicha tartiblanadi; so‘ng navbatma-navbat (har qatlamdan 1-chi, keyin 2-chi …) `per_student` ta. Natijada har
+talaba mavzular bo‘yicha deyarli teng (±1) ulush oladi. Ikki til uchun umumiy vektorlar —
+`cloudflare/test/variant_vectors.json` (vitest va `test/unit/variant_draw_test.dart` ikkalasi tekshiradi).
+Ustoz natijalari (savol bo‘yicha, eng qiyin savollar, katta ekran) har savolni **faqat u tushgan talabalar orasida**
+hisoblaydi (`submissions.question_ids` bo‘yicha; ilovada `tallyQuestions`).
 
 Worker’da qo‘shimcha (ilova hozircha chaqirmaydi; `CloudflareLabBackend`
 ning interfeysdan tashqari metodlari sifatida saqlangan, vakolati o‘sha —
