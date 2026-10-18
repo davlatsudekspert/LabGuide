@@ -1115,6 +1115,7 @@
   "calRecordSaved": "Kalibrlash yozuvi saqlandi",
   "calLotRequired": "Kalibrator lotini kiriting.",
   "calLevelInvalid": "Har daraja uchun nom, qiymat (son) va birlikni kiriting.",
+  "instSaveFailed": "Saqlab bo‘lmadi. Qayta urinib ko‘ring.",
   "calLog": "Kalibrlash jurnali",
   "calLogSub": "Lot, qiymatlar va natija — shu qurilmada",
   "calLogEmpty": "Hali yozuv yo‘q",

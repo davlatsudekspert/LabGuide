@@ -17,6 +17,7 @@ import '../tools/clinical_calc_screens.dart' show CalcSourceTile;
 import '../tools/manual_calculators.dart';
 import '../tools/sources_panel.dart';
 import '../tools/tool_screens.dart' show formatResult, parseFieldNumber;
+import '../lab/lab_links.dart';
 import 'bloodmorph_content.dart';
 import 'bloodmorph_logic.dart';
 
@@ -244,8 +245,7 @@ class _RelatedCards extends StatelessWidget {
               AnalyteRow(
                 analyte: a,
                 divider: i < cards.length - 1,
-                onTap: () =>
-                    openInTab(context, '/tests/analyte/${a.id}', exact: true),
+                onTap: () => openLabAnalyte(context, a.id),
               ),
           ],
         );

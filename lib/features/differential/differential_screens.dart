@@ -5,7 +5,6 @@ import 'package:intl/intl.dart';
 import 'package:material_ui/material_ui.dart';
 
 import '../../app/app_scope.dart';
-import '../../app/shell.dart';
 import '../../app/widgets/lg_page.dart';
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
@@ -15,6 +14,7 @@ import '../microscopy/microscopy_widgets.dart';
 import '../tools/calc_info.dart';
 import '../tools/clinical_calc_screens.dart';
 import '../tools/tool_screens.dart';
+import '../lab/lab_links.dart';
 import 'diff_assessment_screens.dart';
 import 'diff_eyes_free.dart';
 import 'differential_content.dart';
@@ -233,8 +233,7 @@ class _RelatedCards extends StatelessWidget {
               AnalyteRow(
                 analyte: a,
                 divider: i < cards.length - 1,
-                onTap: () =>
-                    openInTab(context, '/tests/analyte/${a.id}', exact: true),
+                onTap: () => openLabAnalyte(context, a.id),
               ),
           ],
         );

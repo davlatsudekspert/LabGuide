@@ -447,6 +447,9 @@ GoRouter buildRouter(
                 path: '/lab',
                 builder: (context, state) => const LabScreen(),
                 routes: [
+                  // Lab bo'limlaridagi "Bog'liq kartalar" — kartasi shu tab
+                  // ichida, "orqaga" bo'limga qaytaradi (D-03, Lab auditi).
+                  ...analyteRoutes(),
                   GoRoute(
                     path: 'calibration',
                     builder: (context, state) => CalibrationScreen(

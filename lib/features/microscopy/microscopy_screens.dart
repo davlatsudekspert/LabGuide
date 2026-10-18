@@ -2,7 +2,6 @@ import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
 import '../../app/app_scope.dart';
-import '../../app/shell.dart';
 import '../../app/widgets/lg_page.dart';
 import '../../app/widgets/links.dart';
 import '../../design/tokens.dart';
@@ -11,6 +10,7 @@ import '../../l10n/gen/app_localizations.dart';
 import '../content/content_model.dart';
 import '../content/ui/content_widgets.dart';
 import '../content/ui/tests_screen.dart' show SearchBox;
+import '../lab/lab_links.dart';
 import 'microscopy_atlas.dart';
 import 'microscopy_controller.dart';
 import 'microscopy_widgets.dart';
@@ -106,11 +106,7 @@ class _MicroscopyScreenState extends State<MicroscopyScreen> {
                   return AnalyteRow(
                     analyte: card,
                     divider: false,
-                    onTap: () => openInTab(
-                      context,
-                      '/tests/analyte/${card.id}',
-                      exact: true,
-                    ),
+                    onTap: () => openLabAnalyte(context, card.id),
                   );
                 },
               ),

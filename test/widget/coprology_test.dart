@@ -155,11 +155,15 @@ void main() {
           expect(localizePages(r.locator, (p) => '$p-bet'), contains('-bet'));
         }
         if (r.source == CpSources.kurbonova2023) {
+          // Bet raqami interfeys tiliga o'giriladigan shaklda (Lab auditi
+          // 2026-10-18: ru/en da o'zbekcha "46-b." qolardi).
           expect(
             r.locator,
-            matches(RegExp(r'\d+(–\d+)?-b\.$')),
+            matches(RegExp(r'p\. \d+(–\d+)?$')),
             reason: r.locator,
           );
+          expect(localizePages(r.locator, (p) => '$p-bet'), contains('-bet'));
+          expect(localizePages(r.locator, (p) => 'с. $p'), contains('с. '));
         }
       }
     });
