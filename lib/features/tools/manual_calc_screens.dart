@@ -1,3 +1,4 @@
+import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 import 'package:material_ui/material_ui.dart';
 
@@ -170,9 +171,13 @@ class _ManualPage extends StatelessWidget {
     required this.onCalculate,
     required this.result,
     this.resultKey,
+    this.related = const [],
   });
 
   final ManualCalc calc;
+
+  /// Bog'liq vositalar (masalan, leykoformula hisoblagichi) — natijadan keyin.
+  final List<Widget> related;
 
   /// Natija bloki — hisobdan keyin unga suriladi.
   final Key? resultKey;
@@ -204,6 +209,7 @@ class _ManualPage extends StatelessWidget {
         ),
         const SizedBox(height: 6),
         LgNotice(l.calcNotDiagnosis, kind: NoticeKind.info),
+        ...related,
         ..._infoSections(context, calc),
       ],
     );
@@ -536,6 +542,18 @@ class _DifferentialCalcScreenState extends State<DifferentialCalcScreen>
     final o = outcome;
     return _ManualPage(
       calc: ManualCalc.differential,
+      // Hujayralarni sanash kerak bo'lsa — Leykoformula hisoblagichi.
+      related: [
+        const SizedBox(height: 6),
+        LgRow(
+          key: const ValueKey('mc-diff-counter'),
+          title: l.diffTitle,
+          subtitle: l.diffCounterTitle,
+          icon: Icons.exposure_plus_1_rounded,
+          onTap: () => context.push('/lab/differential/count'),
+          divider: false,
+        ),
+      ],
       inputs: [
         field(ManualField.wbc),
         for (final f in differentialFields)

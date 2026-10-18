@@ -32,6 +32,10 @@ class LabScreen extends StatelessWidget {
       subtitle: l.labSubtitle,
       showBrand: true,
       children: [
+        // Ikki guruh (sarlavha bilan): rasmli bo'limlar va atlaslar, so'ng
+        // kundalik ish vositalari (QC, kalibrlash, preanalitika, kalkulyator,
+        // apparatlar). Mikroskopiya atlasi — atlas, shuning uchun 1-guruhda.
+        LgSectionTitle(l.labSectionsTitle),
         // Rasmli katta bo'limlar: leykoformula, sitologiya, spermogramma,
         // qon guruhi, gistologiya, siydik tahlili, qon morfologiyasi.
         const DifferentialEntryCard(),
@@ -83,6 +87,15 @@ class LabScreen extends StatelessWidget {
           body: l.coproLabCardBody,
           route: coproBase,
         ),
+        LgRow(
+          key: const ValueKey('lab-microscopy'),
+          title: l.micTitle,
+          subtitle: l.labMicroscopySub,
+          icon: Icons.biotech_outlined,
+          onTap: () => context.push('/lab/microscopy'),
+          divider: false,
+        ),
+        LgSectionTitle(l.labToolsTitle),
         LgHeroCard(
           eyebrow: l.labHeroEyebrow,
           title: l.labHeroTitle,
@@ -115,12 +128,6 @@ class LabScreen extends StatelessWidget {
           subtitle: l.labInstrumentsSub,
           icon: Icons.precision_manufacturing_outlined,
           onTap: () => context.push('/lab/instruments'),
-        ),
-        LgRow(
-          title: l.micTitle,
-          subtitle: l.labMicroscopySub,
-          icon: Icons.biotech_outlined,
-          onTap: () => context.push('/lab/microscopy'),
           divider: false,
         ),
         // Faqat hamkor UI yoqilgan buildda va haqiqiy faol hamkor bo'lsa —

@@ -22,6 +22,9 @@ import 'differential_controller.dart';
 import 'differential_quiz.dart';
 import 'differential_sources.dart';
 
+/// Leykoformula: mutlaq sonlar kalkulyatori (foizlar + WBC → ×10⁹/L).
+const diffAbsoluteCalcRoute = '/lab/calculators/differential';
+
 const _base = '/lab/differential';
 
 /// Hujayra kartalari id lari (asosiy beshta tur). Kontent paketida bo'lsa
@@ -162,6 +165,16 @@ class DifferentialScreen extends StatelessWidget {
             subtitle: l.diffCounterSub,
             icon: Icons.exposure_plus_1_rounded,
             onTap: () => context.push('$_base/count'),
+          ),
+          // Foizlar tayyor bo'lsa (sanalmagan) — mutlaq sonlar kalkulyatori
+          // (Kalkulyatorlar bo'limidagi o'sha ekran; ikki vosita bir-biriga
+          // havola beradi).
+          LgRow(
+            key: const ValueKey('diff-abs-calc'),
+            title: l.mcDiff,
+            subtitle: l.mcDiffSub,
+            icon: Icons.donut_small_outlined,
+            onTap: () => context.push(diffAbsoluteCalcRoute),
           ),
           LgRow(
             title: l.diffHistoryTitle,

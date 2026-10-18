@@ -79,7 +79,7 @@ class RoleHome {
           l.homeTileCalculators,
         ),
         HomeAction(
-          l.featureSampleFactors,
+          l.labPreanalytics,
           Icons.vaccines_outlined,
           '/lab/preanalytics',
           l.homeTileSampling,
@@ -130,7 +130,7 @@ class RoleHome {
           l.homeTileCalculators,
         ),
         HomeAction(
-          l.featureSampling,
+          l.labPreanalytics,
           Icons.science_outlined,
           '/lab/preanalytics',
           l.homeTileSampling,
@@ -161,7 +161,7 @@ class RoleHome {
           l.homeTileTests,
         ),
         HomeAction(
-          l.featureQuiz,
+          l.learnQuiz,
           Icons.quiz_outlined,
           '/learn/quiz',
           l.analytePracticeSub,
