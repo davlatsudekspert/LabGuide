@@ -33,6 +33,8 @@ const NICK_RE = /^[\p{L}\p{N}][\p{L}\p{N} ._'-]{0,22}[\p{L}\p{N}.]$/u;
 
 const MAX_GROUPS_PER_TEACHER = 10;
 const MAX_MEMBERS = 200;
+/** Tipografik apostroflar (’ ‘ ʼ ʻ ` ´ ′) — taxallusda ' ga almashtiriladi. */
+const APOSTROPHES = /[\u2018\u2019\u02BC\u02BB`\u00B4\u2032]/g;
 const MAX_TOPICS = 300;
 const GRACE_MS = 2 * 60_000;
 const STAGES = new Set(['lecture', 'oral']);
@@ -73,7 +75,10 @@ export function uuidParam(v: string): string {
 export function nickname(v: unknown): string | null {
   if (v == null || v === '') return null;
   if (typeof v !== 'string') throw badRequest('invalid_nickname');
-  const t = v.trim().replace(/\s+/g, ' ');
+  // iPhone klaviaturasi (Smart Punctuation) ' ni ’ ga aylantiradi; o'zbekcha
+  // oʻ/gʻ ham turli belgilar bilan yoziladi — hammasi bitta ' ga keltiriladi
+  // (aks holda "G’ayrat" rad etilardi va taxallus yagonaligi buzilardi).
+  const t = v.trim().replace(/\s+/g, ' ').replace(APOSTROPHES, "'");
   if (t === '') return null;
   // Email yoki havola emas: faqat harf, raqam, bo'sh joy va . _ ' -
   if (!NICK_RE.test(t)) throw badRequest('invalid_nickname');
@@ -287,10 +292,13 @@ export async function joinGroup(ctx: Ctx): Promise<Response> {
   const body = await readJson(ctx.req);
   const gid = await groupByCode(ctx, body.code);
   // Qayta qo'shilish hech narsani o'zgartirmaydi (taxallus ham tekshirilmaydi).
-  if (await membership(ctx, gid, s.userId)) return json({ group_id: gid });
+  // `role` — ilova ustoz o'z guruhiga "talaba bo'lib" kirmoqchi bo'lganini
+  // aniq aytishi uchun (ustoz shu hisobda talaba bo'lolmaydi).
+  const m = await membership(ctx, gid, s.userId);
+  if (m) return json({ group_id: gid, role: m.role, already_member: true });
   const nick = nickname(body.display_name);
   await addStudent(ctx, gid, s.userId, nick);
-  return json({ group_id: gid }, 201);
+  return json({ group_id: gid, role: 'student', already_member: false }, 201);
 }
 
 export async function leaveGroup(ctx: Ctx, gid: string): Promise<Response> {

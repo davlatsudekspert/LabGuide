@@ -9561,7 +9561,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String topicTestAnswersLater(String date) {
-    return 'To‘g‘ri javoblar muddat tugagach ochiladi ($date)';
+    return 'To‘g‘ri javoblar muddat tugagach ($date) yoki ustoz testni yakunlaganda ochiladi';
   }
 
   @override
@@ -9841,4 +9841,89 @@ class AppLocalizationsUz extends AppLocalizations {
   String learnSectionQuizRow(String section) {
     return '$section — mashq';
   }
+
+  @override
+  String get classesNicknameInvalid =>
+      'Taxallusda faqat harf, raqam, bo‘shliq va . _ \' - bo‘lishi mumkin; harf yoki raqam bilan boshlanib tugasin (emoji va !?@ kabi belgilarsiz).';
+
+  @override
+  String get classesGroupFull =>
+      'Guruh to‘lgan (200 kishi) — ustozingizga ayting.';
+
+  @override
+  String get classesCodeAmbiguous =>
+      'Kodda 0, O, 1 va I belgilari bo‘lmaydi. Kodni ustozdan qayta tekshiring yoki QR’ni skanerlang.';
+
+  @override
+  String get classesOwnGroupTitle => 'Siz bu guruhning ustozisiz';
+
+  @override
+  String get classesOwnGroupBody =>
+      'Bu hisob guruhni ochgan, shuning uchun unga talaba bo‘lib qo‘shila olmaydi (Profildagi rolni almashtirish buni o‘zgartirmaydi). Talaba sifatida sinash uchun boshqa hisob bilan kiring yoki testni talaba ko‘rinishida sinab ko‘ring.';
+
+  @override
+  String get classesOwnGroupOpen => 'Ustoz sifatida ochish';
+
+  @override
+  String get classesSwitchAccount => 'Boshqa hisob bilan kirish';
+
+  @override
+  String get classesPreviewAsStudent => 'Talaba ko‘rinishida sinash';
+
+  @override
+  String get classesPreviewNote =>
+      'Sinov rejimi: javoblar serverga yuborilmaydi va natijalar ro‘yxatida ko‘rinmaydi.';
+
+  @override
+  String classesPreviewResult(int correct, int total) {
+    return 'Sinov tugadi: $correct / $total to‘g‘ri. Natija yuborilmadi.';
+  }
+
+  @override
+  String get classesGiveTopicTest => 'Mavzu testi berish';
+
+  @override
+  String get classesGiveTopicTestSub =>
+      'Mavzuni tanlang — keyingi sahifada savollar soni, variantli test, muddat va javoblar qachon ochilishi.';
+
+  @override
+  String get classesTopicSearchHint => 'Mavzuni qidiring (masalan, anemiya)';
+
+  @override
+  String get classesTopicNoMatch => 'Testi tayyor mavzu topilmadi';
+
+  @override
+  String classesTopicQuestions(int count) {
+    return '$count ta savol';
+  }
+
+  @override
+  String examDeadlineAt(String date) {
+    return 'Muddat: $date';
+  }
+
+  @override
+  String get classesScanAskNick =>
+      'Qo‘shilishdan oldin taxallusingizni yozing — ustoz natijangizni shu nom bilan ko‘radi (ixtiyoriy: bo‘sh qoldirsangiz, tartib raqami). So‘ng «Qo‘shilish».';
+
+  @override
+  String get classesMyNickname => 'Taxallusim';
+
+  @override
+  String get classesNoNickname => 'Yo‘q — ustozda tartib raqamingiz ko‘rinadi';
+
+  @override
+  String get classesNicknameSaved => 'Taxallus saqlandi';
+
+  @override
+  String get classesNicknameNote =>
+      'Haqiqiy ismingizni yozmang. Bo‘sh qoldirsangiz — tartib raqami.';
+
+  @override
+  String get rolesTeacherRegisterNote =>
+      '«Davom etish» hisobingizni ustoz sifatida ro‘yxatdan o‘tkazadi: faqat o‘zingiz ochgan guruhlarni boshqarasiz va ularning natijalarini ko‘rasiz (admin huquqi emas).';
+
+  @override
+  String get rolesTeacherSignInNote =>
+      'Guruh ochish uchun hisobga kiring — kirgan hisob guruh yaratishda bir bosishda ustoz sifatida ro‘yxatdan o‘tadi.';
 }

@@ -880,9 +880,16 @@ class _Sent {
 }
 
 class AssignDeckTestScreen extends StatefulWidget {
-  const AssignDeckTestScreen({super.key, required this.deckId});
+  const AssignDeckTestScreen({
+    super.key,
+    required this.deckId,
+    this.initialGroupId,
+  });
 
   final String deckId;
+
+  /// Guruh sahifasidan kelindi (`?g=`): shu guruh oldindan tanlangan.
+  final String? initialGroupId;
 
   @override
   State<AssignDeckTestScreen> createState() => _AssignDeckTestScreenState();
@@ -905,6 +912,7 @@ class _AssignDeckTestScreenState extends State<AssignDeckTestScreen> {
   bool _busy = false;
   bool _tried = false;
   bool _countInit = false;
+  bool _initialPicked = false;
   String? _uid;
 
   /// “Har bir talabaga boshqa savollar” (D-66): null — avtomatik (mumkin
@@ -968,9 +976,15 @@ class _AssignDeckTestScreenState extends State<AssignDeckTestScreen> {
       setState(() {
         _groups = groups;
         _sent = sent;
-        // Bitta guruh bo'lsa — darhol tanlangan.
-        if (groups.length == 1 && _picked.isEmpty) {
-          _picked.add(groups.single.id);
+        // Guruh sahifasidan kelingan yoki bitta guruh — darhol tanlangan.
+        final initial = widget.initialGroupId;
+        if (_picked.isEmpty && !_initialPicked) {
+          _initialPicked = true;
+          if (initial != null && groups.any((g) => g.id == initial)) {
+            _picked.add(initial);
+          } else if (groups.length == 1) {
+            _picked.add(groups.single.id);
+          }
         }
       });
     } on Object catch (e) {
@@ -1179,7 +1193,9 @@ class _AssignDeckTestScreenState extends State<AssignDeckTestScreen> {
         message: l.topicTestNoGroupsBody,
         actionLabel: l.topicTestCreateGroup,
         onAction: () async {
-          await context.push('/learn/classes/new');
+          await context.push(
+            '${topicTestLocation(widget.deckId)}/assign/group',
+          );
           if (mounted) await _load();
         },
       );
@@ -1399,12 +1415,14 @@ class _AssignDeckTestScreenState extends State<AssignDeckTestScreen> {
               ].join(' · '),
               icon: Icons.insights_outlined,
               divider: i < _sent.length - 1,
-              onTap: () async {
-                await context.push(
-                  '/learn/classes/g/${x.group.id}/a/${x.assignment.id}',
-                );
-                if (mounted) await _load();
-              },
+              // Bu sahifa root navigatorda (to'liq ekran), natija sahifasi
+              // esa O'rganish tabi ichida: `push` shell sahifasini ikkinchi
+              // marta qo'shib, Navigator “duplicate page key” assertion
+              // berardi. `go` tab stekini URL bo'yicha quradi: orqaga —
+              // guruh sahifasi.
+              onTap: () => context.go(
+                '/learn/classes/g/${x.group.id}/a/${x.assignment.id}',
+              ),
             ),
         ],
       ],
@@ -1415,6 +1433,117 @@ class _AssignDeckTestScreenState extends State<AssignDeckTestScreen> {
 // =============================================================================
 // Talaba: Bosh sahifa / O'rganish — berilgan testlar
 // =============================================================================
+
+/// Guruh sahifasidan “Mavzu testi berish”: mavzuni qidirib tanlash. Faqat
+/// testi tayyor mavzular; tanlangach — xuddi shu “Guruhga topshirish”
+/// sahifasi (variant, muddat, javoblar qachon ochiladi), guruh tanlangan.
+class DeckTestPickerScreen extends StatefulWidget {
+  const DeckTestPickerScreen({super.key, required this.groupId});
+
+  final String groupId;
+
+  @override
+  State<DeckTestPickerScreen> createState() => _DeckTestPickerScreenState();
+}
+
+class _DeckTestPickerScreenState extends State<DeckTestPickerScreen> {
+  final _query = TextEditingController();
+
+  @override
+  void dispose() {
+    _query.dispose();
+    super.dispose();
+  }
+
+  bool _matches(DeckEntry d, String lang, String q) {
+    if (q.isEmpty) return true;
+    final hay = '${d.title(lang)} ${d.title('uz')} ${d.keywords}'.toLowerCase();
+    return q.split(RegExp(r'\s+')).every(hay.contains);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context);
+    final lang = _lang(context);
+    final bundle = _bundle(context);
+    return LgPage(
+      title: l.classesGiveTopicTest,
+      subtitle: l.classesGiveTopicTestSub,
+      showProfile: false,
+      children: [
+        TextField(
+          key: const ValueKey('deck-pick-search'),
+          controller: _query,
+          textInputAction: TextInputAction.search,
+          decoration: InputDecoration(
+            hintText: l.classesTopicSearchHint,
+            prefixIcon: const Icon(Icons.search_rounded),
+          ),
+          onChanged: (_) => setState(() {}),
+        ),
+        const SizedBox(height: 8),
+        FutureBuilder<DeckCatalog>(
+          future: DeckCatalog.load(bundle),
+          initialData: DeckCatalog.peek(bundle),
+          builder: (context, snap) {
+            final c = snap.data;
+            if (c == null) {
+              return snap.hasError
+                  ? LgStateView(
+                      kind: StateKind.error,
+                      title: l.lectureDeckLoadFailed,
+                    )
+                  : LgSkeleton(caption: l.classesLoading);
+            }
+            return CurriculumGate(
+              builder: (context, cur) => ContentGate(
+                builder: (context, pack) => ToifaBankGate(
+                  builder: (context, bank) {
+                    final pools = DeckPools.of(cur, pack, bank);
+                    final q = _query.text.trim().toLowerCase();
+                    final shown = [
+                      for (final d in c.decks)
+                        if (pools.state(d) == DeckTestState.ready &&
+                            _matches(d, lang, q))
+                          d,
+                    ];
+                    if (shown.isEmpty) {
+                      return LgStateView(
+                        kind: StateKind.empty,
+                        title: l.classesTopicNoMatch,
+                      );
+                    }
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        for (final (i, d) in shown.take(60).indexed)
+                          LgRow(
+                            key: ValueKey('deck-pick-${d.id}'),
+                            title: d.title(lang),
+                            subtitle: l.classesTopicQuestions(
+                              pools.pool(d).length,
+                            ),
+                            icon: Icons.quiz_outlined,
+                            divider: i < shown.length - 1 && i < 59,
+                            onTap: () => context.push(
+                              Uri(
+                                path: '${topicTestLocation(d.id)}/assign',
+                                queryParameters: {'g': widget.groupId},
+                              ).toString(),
+                            ),
+                          ),
+                      ],
+                    );
+                  },
+                ),
+              ),
+            );
+          },
+        ),
+      ],
+    );
+  }
+}
 
 class _Open {
   const _Open(this.group, this.assignment);

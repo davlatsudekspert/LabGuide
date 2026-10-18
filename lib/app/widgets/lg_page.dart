@@ -27,7 +27,12 @@ class LgPage extends StatefulWidget {
     this.showProfile = true,
     this.leadingHero,
     this.compactTitle = false,
+    this.titleMaxLines,
   });
+
+  /// Katta sarlavha qatorlari chegarasi (masalan, uzun topshiriq nomi
+  /// tugmalarni pastga surmasin): oshsa “…”, bosilganda to'liq nom.
+  final int? titleMaxLines;
 
   final String title;
   final String? subtitle;
@@ -134,6 +139,7 @@ class _LgPageState extends State<LgPage> {
         changed = _logic.onScroll(
           pixels: metrics.pixels,
           delta: n.scrollDelta ?? 0,
+          minScrollExtent: metrics.minScrollExtent,
           maxScrollExtent: metrics.maxScrollExtent,
           collapsibleExtent: _largeTitleExtent,
         );
@@ -169,6 +175,7 @@ class _LgPageState extends State<LgPage> {
       subtitle: widget.subtitle,
       leadingHero: widget.leadingHero,
       compact: widget.compactTitle,
+      maxLines: widget.titleMaxLines,
     );
 
     return Scaffold(
@@ -274,6 +281,7 @@ class _LargeTitle extends StatelessWidget {
     this.subtitle,
     this.leadingHero,
     this.compact = false,
+    this.maxLines,
   });
 
   final String title;
@@ -281,6 +289,7 @@ class _LargeTitle extends StatelessWidget {
   final String? subtitle;
   final Widget? leadingHero;
   final bool compact;
+  final int? maxLines;
 
   @override
   Widget build(BuildContext context) {
@@ -312,6 +321,7 @@ class _LargeTitle extends StatelessWidget {
             child: FitLongWordText(
               title,
               textScaler: scaler,
+              maxLines: maxLines,
               minFontSize: compact ? 20 : 24,
               // Telefonda ixcham: sarlavha ekranning katta qismini egallamaydi.
               // O'lcham mavzu shkalasiga nisbatan (39 — bazaviy displaySmall):
@@ -677,12 +687,16 @@ class FitLongWordText extends StatelessWidget {
     required this.style,
     required this.minFontSize,
     this.textScaler,
+    this.maxLines,
   });
 
   final String text;
   final TextStyle style;
   final double minFontSize;
   final TextScaler? textScaler;
+
+  /// Qatorlar chegarasi: oshsa “…” va bosilganda to'liq matn (dialog).
+  final int? maxLines;
 
   @override
   Widget build(BuildContext context) {
@@ -707,19 +721,65 @@ class FitLongWordText extends StatelessWidget {
           size = (base * constraints.maxWidth / widest).floorToDouble();
           if (size < minFontSize) size = minFontSize;
         }
-        return Text(
+        final shown = size == base
+            ? style
+            : style.copyWith(
+                fontSize: size,
+                letterSpacing: (style.letterSpacing ?? 0) * size / base,
+              );
+        final lines = maxLines;
+        if (lines == null) {
+          return Text(text, textScaler: scaler, style: shown);
+        }
+        final painter = TextPainter(
+          text: TextSpan(text: text, style: shown),
+          textDirection: Directionality.of(context),
+          textScaler: scaler,
+          maxLines: lines,
+        )..layout(maxWidth: constraints.maxWidth);
+        final cut = painter.didExceedMaxLines;
+        painter.dispose();
+        final label = Text(
           text,
           textScaler: scaler,
-          style: size == base
-              ? style
-              : style.copyWith(
-                  fontSize: size,
-                  letterSpacing: (style.letterSpacing ?? 0) * size / base,
-                ),
+          style: shown,
+          maxLines: lines,
+          overflow: TextOverflow.ellipsis,
+        );
+        if (!cut) return label;
+        return Semantics(
+          label: text,
+          button: true,
+          excludeSemantics: true,
+          onTap: () => _showFull(context),
+          child: GestureDetector(
+            key: const ValueKey('lg-title-full'),
+            behavior: HitTestBehavior.opaque,
+            onTap: () => _showFull(context),
+            child: label,
+          ),
         );
       },
     );
   }
+}
+
+extension on FitLongWordText {
+  void _showFull(BuildContext context) => showDialog<void>(
+    context: context,
+    builder: (context) => AlertDialog(
+      content: SelectableText(
+        text,
+        style: Theme.of(context).textTheme.titleLarge,
+      ),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.of(context).pop(),
+          child: Text(MaterialLocalizations.of(context).closeButtonLabel),
+        ),
+      ],
+    ),
+  );
 }
 
 /// Yig'ilgan sarlavha: tor ekranda 80% gacha kichrayib sig'sa — to'liq

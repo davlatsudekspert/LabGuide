@@ -3,6 +3,7 @@ import 'dart:math' as math;
 
 import 'package:flutter/foundation.dart' show listEquals;
 import 'package:flutter/services.dart';
+import 'package:intl/intl.dart' show DateFormat;
 import 'package:material_ui/material_ui.dart';
 
 import '../../app/app_scope.dart';
@@ -983,8 +984,26 @@ class _FlagButton extends StatelessWidget {
   }
 }
 
+/// Vaqt chegarasi YO'Q, faqat muddati bor topshiriq: muddat oxirgi soatgacha
+/// sana/vaqt matni bo'lib ko'rsatiladi (“Muddat: 20-okt, 18:00”). Ilgari
+/// “41:09:54” kabi taymer chiqib, talabaga vaqt chegarasi bordek tuyulardi.
+/// Oxirgi soatda — odatdagi taymer (qancha qolgani muhim).
+DateTime? deadlineShownAsDate(ExamSession s, DateTime now) {
+  final d = s.deadline;
+  final left = s.remaining(now);
+  if (s.limit != null || d == null || left == null) return null;
+  return left > const Duration(hours: 1) ? d : null;
+}
+
+/// “20-okt, 18:00” (joriy til formatida).
+String formatDeadline(DateTime d, BuildContext context) {
+  final locale = Localizations.localeOf(context).toLanguageTag();
+  return DateFormat.MMMd(locale).add_Hm().format(d.toLocal());
+}
+
 /// Qolgan vaqt (vaqtsiz imtihonda — o'tgan vaqt). Oxirgi daqiqada rang va
-/// belgi o'zgaradi.
+/// belgi o'zgaradi. Vaqt chegarasiz, muddatli topshiriqda — muddat sanasi
+/// ([deadlineShownAsDate]).
 class TimerPill extends StatelessWidget {
   const TimerPill({super.key, required this.session, required this.now});
 
@@ -996,6 +1015,37 @@ class TimerPill extends StatelessWidget {
     final l = AppLocalizations.of(context);
     final p = LgPalette.of(context);
     final left = session.remaining(now);
+    final due = deadlineShownAsDate(session, now);
+    if (due != null) {
+      final text = l.examDeadlineAt(formatDeadline(due, context));
+      return Semantics(
+        label: text,
+        child: ExcludeSemantics(
+          child: DecoratedBox(
+            key: const ValueKey('exam-deadline-date'),
+            decoration: BoxDecoration(
+              color: p.soft,
+              borderRadius: BorderRadius.circular(LgRadius.tag),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 7),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(Icons.event_outlined, size: 18, color: p.brand),
+                  const SizedBox(width: 6),
+                  Text(
+                    text,
+                    style: Theme.of(context).textTheme.titleSmall!
+                        .copyWith(color: p.brand),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      );
+    }
     final urgent = left != null && left.inSeconds < 60;
     final value = formatClock(left ?? session.spent(now));
     final fg = urgent ? p.amber : p.brand;

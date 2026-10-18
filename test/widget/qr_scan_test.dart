@@ -127,6 +127,11 @@ void main() {
     expect(haptics, ['HapticFeedbackType.mediumImpact']);
     expect(find.byKey(const ValueKey('qr-scan-screen')), findsNothing);
     expect(cam.disposed, isTrue);
+    // Taxallus hali yo'q — avval so'raladi (ustozda faqat tartib raqami
+    // ko'rinmasin; docs/BUGS_2026-10-18_IPHONE.md 3.4), so'ng qo'shiladi.
+    expect(find.byKey(const ValueKey('join-ask-nick')), findsOneWidget);
+    await tester.enterText(find.byType(TextField).last, 'Lola');
+    await _tapKey(tester, 'join-submit');
     // Qo'shildi va test sahifasi ochildi.
     expect(find.text(uz.classesStart), findsOneWidget);
     expect(find.text('Mavzu testi'), findsWidgets);
@@ -152,7 +157,10 @@ void main() {
     await _tapKey(tester, 'classes-scan');
     qr.last!.emit('  ${t.code.toLowerCase()}\n');
     await tester.pumpAndSettle();
-    // Qo'shilish ekrani o'zi yuboradi → guruh sahifasi (test emas).
+    // Taxallussiz talaba: avval taxallus so'raladi (ixtiyoriy — bo'sh
+    // qoldirib qo'shilsa ham bo'ladi) → guruh sahifasi (test emas).
+    expect(find.byKey(const ValueKey('join-ask-nick')), findsOneWidget);
+    await _tapKey(tester, 'join-submit');
     expect(find.byKey(const ValueKey('join-submit')), findsNothing);
     expect(find.text('Gematologiya A'), findsWidgets);
     expect(find.text(uz.classesStart), findsNothing);

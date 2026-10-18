@@ -41,10 +41,23 @@ class LearnScreen extends StatelessWidget {
   }
 
   Widget _page(BuildContext context, AppLocalizations l, int quizCount) {
+    // Ustoz va talaba uchun guruhlar — asosiy ish joyi: birinchi ekranda,
+    // katta kartalardan oldin (qo'llanma videosi, 2026-10-18).
+    final role = context.services.settings.role;
+    final classesFirst = role == AppRole.teacher || role == AppRole.student;
+    final classes = LgRow(
+      key: const ValueKey('learn-classes'),
+      title: l.classesTitle,
+      subtitle: l.learnClassesSub,
+      icon: Icons.groups_outlined,
+      onTap: () => context.push('/learn/classes'),
+      divider: !classesFirst,
+    );
     return LgPage(
       title: l.learnTitle,
       showBrand: true,
       children: [
+        if (classesFirst) ...[classes, const SizedBox(height: 12)],
         LgHeroCard(
           image: kHeroImage,
           tag: l.learnHeroTag,
@@ -86,12 +99,7 @@ class LearnScreen extends StatelessWidget {
             );
           },
         ),
-        LgRow(
-          title: l.classesTitle,
-          subtitle: l.learnClassesSub,
-          icon: Icons.groups_outlined,
-          onTap: () => context.push('/learn/classes'),
-        ),
+        if (!classesFirst) classes,
         // Ma'ruza rejimi — faqat o'quv dasturi ilovada bo'lsa (serversiz).
         if (context.services.curriculum.curriculum != null)
           LgRow(

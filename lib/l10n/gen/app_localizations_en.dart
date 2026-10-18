@@ -9697,7 +9697,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String topicTestAnswersLater(String date) {
-    return 'Correct answers open after the deadline ($date)';
+    return 'Correct answers open after the deadline ($date) or when the teacher closes the test';
   }
 
   @override
@@ -9979,4 +9979,89 @@ class AppLocalizationsEn extends AppLocalizations {
   String learnSectionQuizRow(String section) {
     return '$section — practice';
   }
+
+  @override
+  String get classesNicknameInvalid =>
+      'A nickname may contain only letters, digits, spaces and . _ \' -, and must start and end with a letter or digit (no emoji or symbols like !?@).';
+
+  @override
+  String get classesGroupFull =>
+      'The group is full (200 people) — tell your teacher.';
+
+  @override
+  String get classesCodeAmbiguous =>
+      'Codes never contain 0, O, 1 or I. Check the code with your teacher or scan the QR.';
+
+  @override
+  String get classesOwnGroupTitle => 'You are this group\'s teacher';
+
+  @override
+  String get classesOwnGroupBody =>
+      'This account created the group, so it can\'t join it as a student (switching the role in Profile doesn\'t change that). To try it as a student, sign in with another account or take the test in student view.';
+
+  @override
+  String get classesOwnGroupOpen => 'Open as teacher';
+
+  @override
+  String get classesSwitchAccount => 'Sign in with another account';
+
+  @override
+  String get classesPreviewAsStudent => 'Try as a student';
+
+  @override
+  String get classesPreviewNote =>
+      'Trial mode: answers are not sent to the server and don\'t appear in the results.';
+
+  @override
+  String classesPreviewResult(int correct, int total) {
+    return 'Trial finished: $correct / $total correct. Nothing was submitted.';
+  }
+
+  @override
+  String get classesGiveTopicTest => 'Give a topic test';
+
+  @override
+  String get classesGiveTopicTestSub =>
+      'Pick a topic — the next page sets the number of questions, variants, due date and when answers open.';
+
+  @override
+  String get classesTopicSearchHint => 'Search topics (e.g. anaemia)';
+
+  @override
+  String get classesTopicNoMatch => 'No topic with a ready test found';
+
+  @override
+  String classesTopicQuestions(int count) {
+    return '$count questions';
+  }
+
+  @override
+  String examDeadlineAt(String date) {
+    return 'Due: $date';
+  }
+
+  @override
+  String get classesScanAskNick =>
+      'Before joining, enter a nickname — your teacher sees your result under it (optional: leave empty to show your seat number). Then tap “Join”.';
+
+  @override
+  String get classesMyNickname => 'My nickname';
+
+  @override
+  String get classesNoNickname => 'None — your teacher sees your seat number';
+
+  @override
+  String get classesNicknameSaved => 'Nickname saved';
+
+  @override
+  String get classesNicknameNote =>
+      'Don\'t use your real name. Leave empty to show your seat number.';
+
+  @override
+  String get rolesTeacherRegisterNote =>
+      '“Continue” registers your account as a teacher: you manage only the groups you create and see their results (not admin rights).';
+
+  @override
+  String get rolesTeacherSignInNote =>
+      'Sign in to create groups — the signed-in account registers as a teacher with one tap when creating a group.';
 }

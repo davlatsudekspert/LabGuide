@@ -9736,7 +9736,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String topicTestAnswersLater(String date) {
-    return 'Правильные ответы откроются после срока ($date)';
+    return 'Правильные ответы откроются после срока ($date) или когда преподаватель завершит тест';
   }
 
   @override
@@ -10019,4 +10019,89 @@ class AppLocalizationsRu extends AppLocalizations {
   String learnSectionQuizRow(String section) {
     return '$section — тренировка';
   }
+
+  @override
+  String get classesNicknameInvalid =>
+      'В псевдониме допустимы только буквы, цифры, пробел и . _ \' -; он должен начинаться и заканчиваться буквой или цифрой (без эмодзи и знаков вроде !?@).';
+
+  @override
+  String get classesGroupFull =>
+      'Группа заполнена (200 человек) — сообщите преподавателю.';
+
+  @override
+  String get classesCodeAmbiguous =>
+      'В коде нет символов 0, O, 1 и I. Уточните код у преподавателя или отсканируйте QR.';
+
+  @override
+  String get classesOwnGroupTitle => 'Вы преподаватель этой группы';
+
+  @override
+  String get classesOwnGroupBody =>
+      'Этот аккаунт создал группу, поэтому не может вступить в неё как студент (смена роли в профиле этого не меняет). Чтобы проверить как студент, войдите с другим аккаунтом или пройдите тест в режиме студента.';
+
+  @override
+  String get classesOwnGroupOpen => 'Открыть как преподаватель';
+
+  @override
+  String get classesSwitchAccount => 'Войти с другим аккаунтом';
+
+  @override
+  String get classesPreviewAsStudent => 'Пройти как студент';
+
+  @override
+  String get classesPreviewNote =>
+      'Пробный режим: ответы не отправляются на сервер и не попадают в результаты.';
+
+  @override
+  String classesPreviewResult(int correct, int total) {
+    return 'Проба завершена: $correct / $total верно. Результат не отправлен.';
+  }
+
+  @override
+  String get classesGiveTopicTest => 'Дать тест по теме';
+
+  @override
+  String get classesGiveTopicTestSub =>
+      'Выберите тему — на следующей странице: число вопросов, варианты, срок и когда открыть ответы.';
+
+  @override
+  String get classesTopicSearchHint => 'Поиск темы (например, анемия)';
+
+  @override
+  String get classesTopicNoMatch => 'Нет темы с готовым тестом';
+
+  @override
+  String classesTopicQuestions(int count) {
+    return 'Вопросов: $count';
+  }
+
+  @override
+  String examDeadlineAt(String date) {
+    return 'Срок: $date';
+  }
+
+  @override
+  String get classesScanAskNick =>
+      'Перед вступлением укажите псевдоним — под ним преподаватель увидит ваш результат (необязательно: без него — номер по порядку). Затем «Вступить».';
+
+  @override
+  String get classesMyNickname => 'Мой псевдоним';
+
+  @override
+  String get classesNoNickname => 'Нет — преподаватель видит ваш номер';
+
+  @override
+  String get classesNicknameSaved => 'Псевдоним сохранён';
+
+  @override
+  String get classesNicknameNote =>
+      'Не пишите настоящее имя. Если оставить пустым — номер по порядку.';
+
+  @override
+  String get rolesTeacherRegisterNote =>
+      '«Продолжить» зарегистрирует аккаунт как преподавателя: вы управляете только своими группами и видите их результаты (это не права администратора).';
+
+  @override
+  String get rolesTeacherSignInNote =>
+      'Чтобы создать группу, войдите в аккаунт — регистрация преподавателя займёт одно нажатие при создании группы.';
 }

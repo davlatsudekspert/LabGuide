@@ -427,6 +427,29 @@ async function main() {
   r = await call('POST', '/v1/auth/otp/request', { body: { email: fresh } });
   check(r.status === 429 && r.data?.retry_after > 0, `kodni 60 s ichida qayta so'rash — 429 (retry_after ${r.data?.retry_after})`);
 
+  // ---------------------------------------------------------------- 9b
+  // docs/BUGS_2026-10-18_IPHONE.md: "talaba sifatida qo'shila olmayman".
+  step('9b. iPhone: ustoz o\'z guruhiga, ikkinchi hisob, apostrof');
+  const membersBefore = (await call('GET', `/v1/groups/${G}/members`, { token: T.token })).data.length;
+  r = await call('POST', '/v1/groups/join', { token: T.token, body: { code: CODE.toLowerCase(), display_name: 'Ali' } });
+  check(
+    r.status === 200 && r.data.role === 'teacher' && r.data.already_member === true,
+    `ustoz o'z guruhiga kod bilan — 200, role=teacher (${r.status} ${r.data?.role})`,
+  );
+  r = await call('GET', `/v1/groups/${G}/members`, { token: T.token });
+  check(r.data.length === membersBefore, 'ustoz talaba bo\'lib qo\'shilmadi (a\'zolar soni o\'zgarmadi)');
+  const E = await login('ikkinchi-telefon');
+  r = await call('POST', '/v1/groups/join', {
+    token: E.token,
+    body: { code: ` ${CODE.slice(0, 4).toLowerCase()} ${CODE.slice(4)} `, display_name: 'G’ayrat' },
+  });
+  check(r.status === 201 && r.data.role === 'student', `ikkinchi hisob: bo'shliqli kod + iPhone apostrofi — 201 (${r.status})`);
+  r = await call('GET', `/v1/groups/${G}/members`, { token: T.token });
+  check(r.data.some((m) => m.display_name === "G'ayrat"), 'taxallus apostrofi \' ga keltirildi');
+  r = await call('POST', '/v1/groups/join', { token: X.token, body: { code: CODE, display_name: 'Ali 🙂' } });
+  check(r.status === 400 && r.data?.error === 'invalid_nickname', `emoji taxallus — 400 invalid_nickname (${r.status})`);
+  await call('DELETE', '/v1/me', { token: E.token });
+
   // ----------------------------------------------------------------- 10
   step('10. Chiqarish, chiqish, hisobni o\'chirish, tozalash');
   r = await call('DELETE', `/v1/groups/${G}/members/${B.id}`, { token: T.token });

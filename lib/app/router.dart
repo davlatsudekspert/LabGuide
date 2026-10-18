@@ -85,6 +85,10 @@ GoRouter buildRouter(
   final rootKey = GlobalKey<NavigatorState>(debugLabel: 'root');
   final tabMemory = TabMemory();
 
+  /// Onboarding paytida ochilgan taklif havolasi (`/j?c=..`): onboarding
+  /// tugagach qo'shilish ekrani ochiladi.
+  String? pendingInvite;
+
   List<RouteBase> analyteRoutes() => [
     GoRoute(
       path: 'analyte/:id',
@@ -137,12 +141,17 @@ GoRouter buildRouter(
       // Taklif havolasi (QR → sayt → “Ilovada ochish”: labguide://app/j?c=..
       // yoki https://labguide.nfcstore.uz/j/?c=..&a=..) — qo'shilish ekrani.
       final path = state.uri.path;
-      if (settings.onboarded && (path == '/j' || path == '/j/')) {
+      if (path == '/j' || path == '/j/') {
         final q = state.uri.queryParameters;
-        return Uri(
+        final join = Uri(
           path: '/learn/classes/join',
           queryParameters: {'code': ?q['c'], 'a': ?q['a']},
         ).toString();
+        if (settings.onboarded) return join;
+        // Yangi o'rnatilgan ilova (ikkinchi telefon/hisob): taklif
+        // onboarding tugaguncha eslab qolinadi — avval kod yo'qolib,
+        // talaba bosh sahifaga tushib qolardi.
+        pendingInvite = join;
       }
       final loc = state.matchedLocation;
       final inOnboarding = loc.startsWith('/welcome') || loc == '/terms';
@@ -151,7 +160,11 @@ GoRouter buildRouter(
         return loc == '/welcome/language' ? null : '/welcome/language';
       }
       if (!settings.onboarded && !inOnboarding) return '/welcome';
-      if (settings.onboarded && loc.startsWith('/welcome')) return '/home';
+      if (settings.onboarded && loc.startsWith('/welcome')) {
+        final invite = pendingInvite;
+        pendingInvite = null;
+        return invite ?? '/home';
+      }
       return null;
     },
     routes: [
@@ -1241,6 +1254,13 @@ GoRouter buildRouter(
                               groupId: state.pathParameters['gid']!,
                             ),
                           ),
+                          // Guruh sahifasidan mavzu testi: mavzuni tanlash.
+                          GoRoute(
+                            path: 'topic-test',
+                            builder: (context, state) => DeckTestPickerScreen(
+                              groupId: state.pathParameters['gid']!,
+                            ),
+                          ),
                           GoRoute(
                             path: 'a/:aid',
                             builder: (context, state) => AssignmentScreen(
@@ -1334,7 +1354,20 @@ GoRouter buildRouter(
                             parentNavigatorKey: rootKey,
                             builder: (context, state) => AssignDeckTestScreen(
                               deckId: state.pathParameters['deckId']!,
+                              initialGroupId: state.uri.queryParameters['g'],
                             ),
+                            routes: [
+                              // Guruhsiz ustoz: guruh shu yerda yaratiladi
+                              // (root navigatorda — shell ichidagi
+                              // /learn/classes/new ga push “duplicate page
+                              // key” beradi), so'ng topshirishga qaytadi.
+                              GoRoute(
+                                path: 'group',
+                                parentNavigatorKey: rootKey,
+                                builder: (context, state) =>
+                                    const CreateGroupScreen(popOnCreate: true),
+                              ),
+                            ],
                           ),
                         ],
                       ),
