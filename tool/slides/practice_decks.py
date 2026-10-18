@@ -233,6 +233,12 @@ def report_section(repo):
           '(atlasda najas va balg‘am fotolari yo‘q — o‘sha protokollarda rasm slaydi yo‘q). “Qin tozalik '
           'darajalari” jadvali yuqoridagi sitologiya mavzu decklarida manbasi yo‘qligi uchun yo‘q; u faqat shu '
           'to‘plamdagi urogenital protokolda, Kurbonova (2023, 70-b.) manbasi bilan berilgan.', '',
+          'Kurs kitoblarida usuli yo‘q 19 ta test (kreatinin … D vitamini; `docs/PROTOCOLS_COVERAGE.md`) protokollari '
+          'ishlab chiqaruvchi o‘z saytida ochiq e’lon qilgan **to‘plam yo‘riqnomasi (IFU)** asosida yozilgan: 18 tasi '
+          'SPINREACT, D vitamini — Immusmol ELISA IFU si. Har protokol bitta to‘plamga tayanadi va birinchi slaydda '
+          '«misol sifatida shu IFU; laboratoriya to‘plami IFU si ustun» deb aytadi; har sondagi qiymat IFU sahifasidan '
+          '(so‘zma-so‘z parchalar — `tool/slides/data/ifu_source_excerpts.json`, tekshiruv — '
+          '`tool/slides/test_ifu_protocols.py`).', '',
           '| Texnika (uz) | Guruh | Slayd (uz) | Manbalar |', '|---|---|---|---|']
     for p in ps:
         deck, cov = build_practice_deck(repo, p, 'uz')

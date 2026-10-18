@@ -25,8 +25,8 @@ Map<String, Object?> _json(String path) =>
 
 /// 2026-10-18 holati (kamaymasligi kerak).
 const _minDayDecks = 98;
-const _minProtocolDecks = 27;
-const _minDeckFiles = 372;
+const _minProtocolDecks = 46; // +19 IFU protokoli (2026-10-18)
+const _minDeckFiles = 564;
 
 /// Mavzu testi 10 savoldan kam bo'lishi mumkin bo'lgan decklar — sababi bilan
 /// (docs/TOPIC_TEST_COVERAGE.md).
@@ -77,7 +77,7 @@ void main() {
       expect(SlideCanvasMetrics.width / SlideCanvasMetrics.height, 16 / 9);
     });
 
-    test('decklar soni kamaymaydi (98 kun + 27 protokol)', () {
+    test('decklar soni kamaymaydi (98 kun + 46 protokol)', () {
       expect(
         catalog.decks.where((d) => d.kind == DeckKind.day).length,
         greaterThanOrEqualTo(_minDayDecks),

@@ -10,6 +10,7 @@ import 'package:labguide/app/app.dart';
 import 'package:labguide/app/app_scope.dart';
 import 'package:labguide/core/backend/lab_backend.dart';
 import 'package:labguide/core/storage/kv_store.dart';
+import 'package:labguide/features/classroom/qr_scanner.dart';
 import 'package:labguide/features/settings/settings_controller.dart';
 import 'package:material_ui/material_ui.dart';
 
@@ -79,6 +80,7 @@ Future<AppServices> start(
   LabBackend? backend,
   bool? partnerAds,
   MemoryKeyValueStore? store,
+  QrScanner? qrScanner,
 }) async {
   final s = await makeServices(
     tester,
@@ -89,6 +91,7 @@ Future<AppServices> start(
     role: role,
     backend: backend,
     partnerAds: partnerAds,
+    qrScanner: qrScanner,
   );
   await pumpApp(tester, s, textScale: textScale, size: size);
   // Rasmlarni oldindan dekod qilish (testda real async kerak).
