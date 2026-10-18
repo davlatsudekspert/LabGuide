@@ -2108,7 +2108,7 @@ const urElements = <UrElement>[
     id: 'transitional',
     group: UrGroup.cells,
     name: _T({
-      'uz': 'O‘tuvchi epiteliy (urotelial)',
+      'uz': 'O‘zgaruvchan epiteliy (urotelial)',
       'ru': 'Переходный эпителий (уротелий)',
       'en': 'Transitional (urothelial) cells',
     }),

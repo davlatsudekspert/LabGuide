@@ -1147,16 +1147,14 @@ const bmNormalSections = <BmSection>[
       BmFact(
         _T({
           'uz':
-              'Kurs adabiyotida: anemiya og‘irlashgan sari avval anizotsitoz, '
-              'so‘ng poykilotsitoz, eng og‘ir holatda shizotsitlar qo‘shiladi.',
+              'Kurs adabiyotida: anizotsitoz bilan birga doimo poykilotsitoz '
+              'kuzatiladi; og‘ir anemiyalarda shizotsitlar ham uchraydi.',
           'ru':
-              'В учебнике курса: по мере утяжеления анемии сначала появляется '
-              'анизоцитоз, затем пойкилоцитоз, в самых тяжёлых случаях — '
-              'шизоциты.',
+              'В учебнике курса: вместе с анизоцитозом всегда наблюдается '
+              'пойкилоцитоз; при тяжёлых анемиях встречаются и шизоциты.',
           'en':
-              'In the course textbook: as anaemia worsens, anisocytosis comes '
-              'first, then poikilocytosis, and in the most severe cases '
-              'schistocytes.',
+              'In the course textbook: anisocytosis is always accompanied by '
+              'poikilocytosis; in severe anaemias schistocytes also appear.',
         }),
         [_najRbc],
       ),
