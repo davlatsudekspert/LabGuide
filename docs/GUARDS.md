@@ -115,6 +115,7 @@ qatlamlarini ishga tushiradi» — Python qadamlari yoki worker testlari olib ta
 | D-66 variant tanlovi: umumiy vektorlar (Dart = TS) | `classroom_guard_test.dart :: umumiy vektorlar o‘chirilmagan va Dart tanlovi mos`; `test/unit/variant_draw_test.dart`; `cloudflare/test/variants.test.ts` |
 | «Muddat tugagach» — javoblar yashiriladi | `classroom_guard_test.dart :: "muddat tugagach": server correct: null …`; `cloudflare/test/groups.test.ts :: after_due: …`; `variants.test.ts :: after_due: …` |
 | «Katta ekran» faqat taxallus / «Talaba NN» | `classroom_guard_test.dart :: Katta ekran: faqat taxallus yoki "Talaba NN"; ustoz va email yo‘q`; `groups.test.ts :: a'zo ismi: taxallus yoki 'Talaba NN'; …` |
+| D-68 ilova ichidagi QR skaner: qo‘shilish ekranida tugma (qo‘llansa), plagin faqat `qr_scanner.dart` da (interfeys ortida), Android `CAMERA` + kamera majburiy emas, iOS `NSCameraUsageDescription` (uz/ru/en) QR ni tilga oladi, deployment target ≥ 12.0 | `classroom_guard_test.dart :: Ilova ichidagi QR skaner (D-68) …`; `test/widget/qr_scan_test.dart`; `test/unit/invite_link_test.dart :: skanerlangan QR matni` |
 
 ### Tibbiy tuzatishlar
 

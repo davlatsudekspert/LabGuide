@@ -20,6 +20,7 @@ import 'features/auth/otp_auth.dart';
 import 'features/auth/social_auth.dart';
 import 'features/classroom/classroom_local.dart';
 import 'features/classroom/curriculum.dart';
+import 'features/classroom/qr_scanner.dart';
 import 'features/classroom/topic_test.dart';
 import 'features/community/community_controller.dart';
 import 'features/content/content_controller.dart';
@@ -82,6 +83,7 @@ AppServices createServices({
   Curriculum? curriculum,
   CommunityBackend? community,
   SocialAuthService? socialAuth,
+  QrScanner? qrScanner,
 }) {
   const config = AppConfig(appVersion: _appVersion, showDebugBadge: kDebugMode);
   final server = backend ?? _defaultBackend();
@@ -140,6 +142,7 @@ AppServices createServices({
     curriculum: CurriculumController(bundle: bundle, curriculum: curriculum),
     classroom: ClassroomLocal(store),
     topicTests: TopicTestController(store, clock: clock),
+    qrScanner: qrScanner ?? const MobileQrScanner(),
     // Hamjamiyat faqat Cloudflare serveri (LG_API_URL) bilan; aks holda
     // UI umuman ko'rinmaydi.
     community: CommunityController(

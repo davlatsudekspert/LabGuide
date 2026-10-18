@@ -2,17 +2,25 @@
 //
 // QR havola formati, havoladan kodni ajratish, variantli test vektorlari
 // (D-66), "muddat tugagach" javoblarni yashirish shartnomasi va "Katta ekran"
-// faqat taxallus ko'rsatishi. Jadval: docs/GUARDS.md.
+// faqat taxallus ko'rsatishi, ilova ichidagi QR skaner (D-68): tugma,
+// kamera ruxsatlari. Jadval: docs/GUARDS.md.
 import 'dart:convert';
 import 'dart:io';
-import 'dart:ui' show Locale;
+import 'dart:ui' show Locale, Size;
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:labguide/core/backend/backend_models.dart';
 import 'package:labguide/core/backend/variant_draw.dart';
 import 'package:labguide/features/classroom/board_screen.dart';
 import 'package:labguide/features/classroom/invite_link.dart';
+import 'package:labguide/features/classroom/qr_scanner.dart';
+import 'package:labguide/features/settings/settings_controller.dart';
 import 'package:labguide/l10n/gen/app_localizations.dart';
+import 'package:material_ui/material_ui.dart' show ValueKey;
+
+import '../helpers/fake_backend.dart';
+import '../helpers/fake_qr_scanner.dart';
+import '../helpers/harness.dart';
 
 const _aid = '0f8b2c4e-1d2a-4b3c-9d8e-7f6a5b4c3d2e';
 
@@ -218,5 +226,91 @@ void main() {
         expect(src, isNot(contains('.email')));
       },
     );
+  });
+
+  group('Ilova ichidagi QR skaner (D-68)', () {
+    testWidgets('qo‘shilish ekranida "QR kodni skanerlash" (qo‘llansa)', (
+      tester,
+    ) async {
+      final b = FakeLabBackend();
+      final s = await makeServices(
+        tester,
+        backend: b,
+        role: AppRole.student,
+        qrScanner: FakeQrScanner(),
+      );
+      await pumpApp(tester, s, size: const Size(390, 1600));
+      await s.auth.signOut();
+      await s.auth.requestCode('guard@example.com');
+      await s.auth.verifyCode(FakeLabBackend.otpCode);
+      await goTo(tester, '/learn/classes/join');
+      expect(find.byKey(const ValueKey('join-scan')), findsOneWidget);
+      expect(
+        find.text(lookupAppLocalizations(const Locale('uz')).qrScanAction),
+        findsOneWidget,
+      );
+    });
+
+    test('plagin: faqat Android/iOS; skaner interfeys ortida', () {
+      expect(const MobileQrScanner().isSupported, isTrue); // test: android
+      final src = File(
+        'lib/features/classroom/qr_scanner.dart',
+      ).readAsStringSync();
+      expect(src, contains('!kIsWeb'));
+      // Plagin faqat shu faylda — ekranlar interfeysni ishlatadi.
+      for (final f in Directory('lib').listSync(recursive: true)) {
+        if (f is! File || !f.path.endsWith('.dart')) continue;
+        if (f.path.endsWith('qr_scanner.dart')) continue;
+        expect(
+          f.readAsStringSync(),
+          isNot(contains('package:mobile_scanner')),
+          reason: f.path,
+        );
+      }
+    });
+
+    test('Android: CAMERA ruxsati, kamera majburiy emas', () {
+      final m = File(
+        'android/app/src/main/AndroidManifest.xml',
+      ).readAsStringSync();
+      expect(m, contains('android.permission.CAMERA'));
+      expect(
+        RegExp(
+          r'<uses-feature\s+android:name="android.hardware.camera"\s+'
+          r'android:required="false"',
+        ).hasMatch(m),
+        isTrue,
+      );
+    });
+
+    test('iOS: NSCameraUsageDescription QR skanerni tilga oladi', () {
+      final plist = File('ios/Runner/Info.plist').readAsStringSync();
+      final m = RegExp(
+        r'<key>NSCameraUsageDescription</key>\s*<string>([^<]+)</string>',
+      ).firstMatch(plist);
+      expect(m, isNotNull);
+      expect(m![1], contains('QR'));
+      for (final lang in ['uz', 'ru', 'en']) {
+        final strings = File(
+          'ios/Runner/$lang.lproj/InfoPlist.strings',
+        ).readAsStringSync();
+        expect(
+          RegExp(r'"NSCameraUsageDescription" = "[^"]*QR').hasMatch(strings),
+          isTrue,
+          reason: lang,
+        );
+      }
+    });
+
+    test('iOS deployment target plagin talabidan past emas (12.0)', () {
+      final pbx = File(
+        'ios/Runner.xcodeproj/project.pbxproj',
+      ).readAsStringSync();
+      final targets = RegExp(
+        r'IPHONEOS_DEPLOYMENT_TARGET = ([0-9.]+);',
+      ).allMatches(pbx).map((m) => double.parse(m[1]!));
+      expect(targets, isNotEmpty);
+      expect(targets.every((t) => t >= 12.0), isTrue);
+    });
   });
 }

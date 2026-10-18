@@ -11,8 +11,9 @@ LabGuide — klinik laboratoriya bo‘yicha o‘quv va ma’lumotnoma ilovasi (t
 shifokorlar va laboratoriya mutaxassislari uchun). Asosiy imkoniyatlar hisobsiz (mehmon rejimida)
 ishlaydi va ma’lumotlar qurilmangizda qoladi. Hisob ixtiyoriy: u ustoz guruhlari, hamjamiyat
 (savol-javob) va “Taklif va yordam” murojaatlari uchun kerak. Ilovada reklama yo‘q; analitika va
-kuzatuv (tracking) SDK lari, reklama identifikatori, joylashuv va kontaktlarga kirish yo‘q.
-Ma’lumotlaringiz sotilmaydi va reklama uchun boshqalarga berilmaydi.
+kuzatuv (tracking) SDK lari, reklama identifikatori, joylashuv va kontaktlarga kirish yo‘q
+(Android’dagi QR skaner kutubxonasining texnik diagnostikasi — 14-bo‘lim). Kamera faqat siz
+ochgan QR skanerda va hujjat suratida ishlatiladi. Ma’lumotlaringiz sotilmaydi va reklama uchun boshqalarga berilmaydi.
 
 ### 1. Qurilmada saqlanadigan ma’lumotlar
 
@@ -277,6 +278,17 @@ tanlagan joyga yuboriladi; rasmda shaxsiy ma’lumot yo‘q. “Rasmni saqlash�
 kutubxonasiga faqat shu rasm qo‘shiladi. Mutaxassis hujjati uchun kamera yoki galereyadan rasm faqat
 siz suratga olganingizda yoki tanlaganingizda o‘qiladi va faqat tekshiruvga yuboriladi (7-bo‘lim).
 
+Ilova ichidagi **QR skaner** (ustoz bergan guruh yoki test QR kodi) kamerani faqat siz skanerni
+ochganingizda ishlatadi. Kamera kadri qurilmaning o‘zida o‘qiladi; rasm saqlanmaydi va hech qayerga
+yuborilmaydi. QR dan faqat taklif kodi (va test identifikatori) olinadi va guruhga qo‘shilish uchun
+serverga yuboriladi (5-bo‘lim) — xuddi kodni qo‘lda yozgandagidek. iPhone’da QR Apple’ning tizim
+vositasi bilan o‘qiladi. Android’da Google ML Kit kutubxonasi (qurilmada ishlaydi) ishlatiladi;
+Google ma’lumotiga ko‘ra ML Kit Google’ga texnik diagnostika (qurilma va ilova versiyasi,
+unumdorlik ko‘rsatkichlari, foydalanuvchini aniqlash uchun mo‘ljallanmagan o‘rnatish
+identifikatori) yuborishi mumkin — kamera tasviri yoki QR matni emas. Kamera ruxsatini tizim
+sozlamalarida istalgan vaqtda o‘chirishingiz mumkin; skanersiz kodni yozish yoki havolani qo‘yish
+ham ishlaydi.
+
 ### 15. Bolalar
 
 Ilova bolalarga mo‘ljallanmagan va ulardan ataylab ma’lumot to‘plamaydi.
@@ -295,7 +307,8 @@ LabGuide — учебное и справочное приложение по к
 (гостевой режим), а данные остаются на устройстве. Аккаунт необязателен: он нужен для групп
 преподавателя, сообщества (вопросы и ответы) и обращений «Предложения и помощь». В приложении нет
 рекламы; нет SDK аналитики и отслеживания (tracking), рекламного идентификатора, доступа к
-геолокации и контактам. Данные не продаются и не передаются другим для рекламы.
+геолокации и контактам (о технической диагностике библиотеки QR-сканера на Android — раздел 14).
+Камера используется только в открытом вами QR-сканере и для фото документа. Данные не продаются и не передаются другим для рекламы.
 
 ### 1. Данные на устройстве
 
@@ -561,6 +574,17 @@ iPhone, и на Android (Android 12+); если офлайн-распознав�
 камеры или изображение из галереи читается, только когда вы сами снимаете или выбираете его, и
 отправляется только на проверку (раздел 7).
 
+Встроенный **QR-сканер** (QR-код группы или теста от преподавателя) использует камеру, только когда
+вы сами открываете сканер. Кадр обрабатывается на самом устройстве; изображение не сохраняется и
+никуда не отправляется. Из QR-кода берётся только код приглашения (и идентификатор теста), который
+отправляется на сервер для вступления в группу (раздел 5) — так же, как при ручном вводе кода. На
+iPhone QR-код читается системным средством Apple. На Android используется библиотека Google ML Kit
+(работает на устройстве); по данным Google, ML Kit может отправлять Google техническую диагностику
+(версии устройства и приложения, показатели производительности, идентификатор установки, не
+предназначенный для идентификации пользователя) — но не изображение с камеры и не текст QR-кода.
+Доступ к камере можно в любой момент отключить в системных настройках; без сканера можно ввести код
+или вставить ссылку.
+
 ### 15. Дети
 
 Приложение не предназначено для детей и намеренно не собирает их данные.
@@ -578,7 +602,9 @@ LabGuide is a learning and reference app for clinical laboratory diagnostics (fo
 teachers, physicians and laboratory specialists). The core features work without an account (guest
 mode) and your data stays on your device. An account is optional: it is needed for teacher groups,
 the community (Q&A) and “Feedback & help” requests. The app contains no ads, and has no analytics or
-tracking SDKs, no advertising identifier and no access to location or contacts. Your data is not
+tracking SDKs, no advertising identifier and no access to location or contacts (for the QR
+scanner library’s technical diagnostics on Android, see section 14). The camera is used only in the
+QR scanner you open and for a document photo. Your data is not
 sold or shared with others for advertising.
 
 ### 1. Data stored on your device
@@ -845,6 +871,16 @@ they are local notifications scheduled on the device (no push server). A result 
 only to the destination you choose; it contains no personal data. If you choose “Save Image”, only
 that image is added to your photo library. For a specialist document, a camera photo or a gallery image
 is read only when you take or pick it yourself, and is sent only for the check (section 7).
+
+The in-app **QR scanner** (a group or test QR code from your teacher) uses the camera only while you
+have the scanner open. The camera image is read on the device itself; it is not saved and not sent
+anywhere. Only the invite code (and test identifier) is taken from the QR code and sent to the
+server to join the group (section 5) — the same as typing the code. On iPhone the QR code is read by
+Apple’s system framework. On Android the Google ML Kit library (running on the device) is used;
+according to Google, ML Kit may send Google technical diagnostics (device and app versions,
+performance metrics, a per-installation identifier not intended to identify the user) — not the
+camera image or the QR text. You can turn camera access off in system settings at any time; typing
+the code or pasting the link works without the scanner.
 
 ### 15. Children
 

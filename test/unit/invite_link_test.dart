@@ -91,4 +91,45 @@ void main() {
       }
     });
   });
+
+  // Ilova ichidagi skaner (D-68) QR matnini shu funksiyaga beradi.
+  group('skanerlangan QR matni', () {
+    test('ustoz QR lari: guruh, test, ilova sxemasi, xom kod', () {
+      expect(
+        parseInvite(inviteUrl('ABCD2345')),
+        const InviteTarget('ABCD2345'),
+      );
+      expect(
+        parseInvite(inviteUrl('ABCD2345', assignmentId: _a)),
+        const InviteTarget('ABCD2345', assignmentId: _a),
+      );
+      expect(
+        parseInvite('labguide://app/j?c=ABCD2345&a=$_a'),
+        const InviteTarget('ABCD2345', assignmentId: _a),
+      );
+      // Ba'zi generatorlar oxiriga yangi qator/bo'shliq qo'shadi.
+      expect(parseInvite('ABCD2345\n'), const InviteTarget('ABCD2345'));
+      expect(
+        parseInvite(' ${inviteUrl('ABCD2345')}\r\n'),
+        const InviteTarget('ABCD2345'),
+      );
+      // http (https emas) va katta harfli xost ham o'qiladi.
+      expect(
+        parseInvite('HTTP://LABGUIDE.NFCSTORE.UZ/j/?c=abcd2345'),
+        const InviteTarget('ABCD2345'),
+      );
+    });
+
+    test('begona QR lar — null', () {
+      for (final junk in [
+        'WIFI:S:Lab;T:WPA;P:secret;;',
+        'BEGIN:VCARD\nFN:Lola\nEND:VCARD',
+        'https://example.com/menu',
+        'tel:+998901234567',
+        '4601234567893', // EAN-13 shtrix-kod raqami
+      ]) {
+        expect(parseInvite(junk), isNull, reason: junk);
+      }
+    });
+  });
 }

@@ -16888,6 +16888,78 @@ abstract class AppLocalizations {
   /// **'Scan the QR code with your phone camera and tap “Open in app” on the page that opens — the code fills in by itself.'**
   String get classesScanTip;
 
+  /// No description provided for @qrScanAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Scan QR code'**
+  String get qrScanAction;
+
+  /// No description provided for @qrScanHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Fit the group or test QR code from your teacher inside the frame'**
+  String get qrScanHint;
+
+  /// No description provided for @qrScanTorchOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Turn on flashlight'**
+  String get qrScanTorchOn;
+
+  /// No description provided for @qrScanTorchOff.
+  ///
+  /// In en, this message translates to:
+  /// **'Turn off flashlight'**
+  String get qrScanTorchOff;
+
+  /// No description provided for @qrScanTypeCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Type or paste the code'**
+  String get qrScanTypeCode;
+
+  /// No description provided for @qrScanNotInvite.
+  ///
+  /// In en, this message translates to:
+  /// **'This QR code is not a LabGuide group invite'**
+  String get qrScanNotInvite;
+
+  /// No description provided for @qrScanDeniedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Camera access is off'**
+  String get qrScanDeniedTitle;
+
+  /// No description provided for @qrScanDeniedBody.
+  ///
+  /// In en, this message translates to:
+  /// **'To read the QR code, allow LabGuide to use the camera in Settings. The camera image is read on the phone only — it is not saved or sent. Or type the code yourself or paste the link.'**
+  String get qrScanDeniedBody;
+
+  /// No description provided for @qrScanOpenSettings.
+  ///
+  /// In en, this message translates to:
+  /// **'Open settings'**
+  String get qrScanOpenSettings;
+
+  /// No description provided for @qrScanFailedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn’t open the camera'**
+  String get qrScanFailedTitle;
+
+  /// No description provided for @qrScanFailedBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Type the code yourself or paste the link from your teacher.'**
+  String get qrScanFailedBody;
+
+  /// No description provided for @qrScanStarting.
+  ///
+  /// In en, this message translates to:
+  /// **'Opening camera…'**
+  String get qrScanStarting;
+
   /// No description provided for @classesJoinOpensTest.
   ///
   /// In en, this message translates to:

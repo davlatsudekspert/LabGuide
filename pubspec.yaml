@@ -69,6 +69,11 @@ dependencies:
   # (Cast/Miracast) sozlamasini ochish uchun intent. BSD-3 (plus_plugins),
   # sof Java, minSdk 19; iOS'da ishlatilmaydi (yo'riqnoma oynasi). 2026-07-23.
   android_intent_plus: 6.1.0
+  # Ilova ichidagi QR skaner (D-68): guruhga qo'shilish / testni ochish.
+  # BSD-3. Android — CameraX + ML Kit (bundled, oflayn), minSdk 23 (bizda
+  # 24); iOS — AVFoundation/Vision, iOS 12+ (bizda 15), SwiftPM paketi bor.
+  # 7.4.2 — 2026-09-14 (kamida 2 hafta oldingi).
+  mobile_scanner: 7.4.2
 
 dev_dependencies:
   flutter_test:

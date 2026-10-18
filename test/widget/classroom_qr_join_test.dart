@@ -3,8 +3,8 @@
 //   kirgach shu ekran → taxallus → qo'shiladi → test darhol ochiladi;
 // - “Havolani qo'yish” (bufer) va kod maydoniga butun havolani qo'yish;
 // - taxallus oldingi guruhdan oldindan to'ldiriladi, band taxallus — aniq xato;
-// - QR havola formatida (kamera saytni ochadi); skaner tugmasi yo'q
-//   (o'rnatilmagan — hisobotga qarang), o'rniga kamera yo'riqnomasi;
+// - QR havola formatida (telefon kamerasi saytni ochadi) — kamera
+//   yo'riqnomasi; ilova ichidagi skaner (D-68) — test/widget/qr_scan_test.dart;
 // - ustoz: “Test QR”, “Katta ekran”, natijalar o'zi yangilanadi.
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -93,7 +93,7 @@ void main() {
     await _signIn(tester, s, 'new.student@example.com');
     expect(find.text(t.code), findsOneWidget);
     expect(find.byKey(const ValueKey('join-opens-test')), findsOneWidget);
-    // Skaner plagini yo'q — kamera yo'riqnomasi va “Havolani qo'yish”.
+    // Kamera yo'riqnomasi va “Havolani qo'yish” (skaner — qr_scan_test).
     expect(find.text(uz.classesScanTip), findsOneWidget);
     expect(find.byKey(const ValueKey('join-paste')), findsOneWidget);
     await tester.enterText(find.byType(TextField).last, 'Lola');

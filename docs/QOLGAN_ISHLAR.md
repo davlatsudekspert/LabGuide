@@ -41,3 +41,5 @@ Shu ro'yxat bo'yicha ketamiz. Bajarilgani `[x]`.
 - [ ] 45 ta umumiy amaliyot kuni — manbada mavzu yo'q, jadvaldan mavzu kerak
 - [ ] Ikki ekranli rejim (TV), tahlil varaqasini rasmdan o'qish (qurilmada), marketing rejasi, rolik (ru/en, sitologiya)
 - [ ] Pro/to'lov: faqat to'liq yangi versiya sifatida (kod `pro-later` tarmog'ida; qoidalar egasining xabarida)
+- [x] Ilova ichidagi QR skaner (guruhga qo'shilish / testni ochish): `mobile_scanner` 7.4.2, ramka, chiroq, ruxsat yo'q holati ("Sozlamalarni ochish" + kodni yozish), Android `CAMERA`, iOS kamera matni, maxfiylik siyosati (D-68)
+- [ ] QR skaner: CI build (Android + iOS) va haqiqiy qurilmada sinov (ruxsat oynasi, rad etib sozlamadan qaytish, chiroq, kichik ekran); Play Data safety — ML Kit diagnostikasi (egasi qarori, D-68)

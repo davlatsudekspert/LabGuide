@@ -12,6 +12,7 @@ import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
 import '../classroom/invite_link.dart';
 import '../classroom/qr_code_view.dart';
+import '../classroom/qr_scan_screen.dart';
 import '../classroom/topic_questions.dart';
 import '../classroom/topic_test_screens.dart' show SlideLink, deckOfAssignment;
 import '../content/content_model.dart';
@@ -206,9 +207,30 @@ class _ClassesScreenState extends State<ClassesScreen> {
     }
   }
 
-  Future<void> _open(String location) async {
-    await context.push(location);
+  Future<void> _open(String location, {Object? extra}) async {
+    await context.push(location, extra: extra);
     if (mounted) await _load();
+  }
+
+  /// QR skaner (D-68): topilgan taklif bilan qo'shilish ekrani darhol
+  /// qo'shiladi (taxallus ixtiyoriy) va test bo'lsa — uni ochadi.
+  Future<void> _scan() async {
+    final outcome = await openInviteScanner(context);
+    if (!mounted) return;
+    switch (outcome) {
+      case QrScanInvite(:final invite):
+        await _open(
+          Uri(
+            path: '/learn/classes/join',
+            queryParameters: {'code': invite.code, 'a': ?invite.assignmentId},
+          ).toString(),
+          extra: JoinGroupScreen.autoJoinExtra,
+        );
+      case QrScanTypeInstead():
+        await _open('/learn/classes/join');
+      case null:
+        break;
+    }
   }
 
   @override
@@ -264,6 +286,15 @@ class _ClassesScreenState extends State<ClassesScreen> {
         LgTwoColumnGrid(
           children: teacherFirst ? [create, join] : [join, create],
         ),
+        if (context.services.qrScanner.isSupported) ...[
+          LgButton.secondary(
+            key: const ValueKey('classes-scan'),
+            label: l.qrScanAction,
+            icon: Icons.qr_code_scanner_rounded,
+            onPressed: _scan,
+          ),
+          const SizedBox(height: 10),
+        ],
         Text(l.classesRoleNote, style: text.bodySmall),
         LgSectionTitle(l.classesMine),
         _loadState(context, _groups, _load, (groups) {
@@ -489,13 +520,25 @@ class _CodeFormatter extends TextInputFormatter {
 }
 
 class JoinGroupScreen extends StatefulWidget {
-  const JoinGroupScreen({super.key, this.initialCode, this.assignmentId});
+  const JoinGroupScreen({
+    super.key,
+    this.initialCode,
+    this.assignmentId,
+    this.autoJoin = false,
+  });
+
+  /// Route `extra`: QR skanerdan kelindi — darhol qo'shiladi. Faqat ilova
+  /// ichidan beriladi (havola/deep link bilan avtomatik qo'shilish yo'q).
+  static const autoJoinExtra = 'qr-scan-auto-join';
 
   /// QR yoki havoladan kelgan kod (`/learn/classes/join?code=...&a=...`).
   final String? initialCode;
 
   /// “Test QR”: qo'shilgach darhol ochiladigan test.
   final String? assignmentId;
+
+  /// QR skanerdan kelgan: taxallus oldindan to'ldirilgach — darhol qo'shilish.
+  final bool autoJoin;
 
   @override
   State<JoinGroupScreen> createState() => _JoinGroupScreenState();
@@ -507,7 +550,9 @@ class _JoinGroupScreenState extends State<JoinGroupScreen> {
     text: normalizeInviteCode(widget.initialCode) ?? '',
   );
   final _display = TextEditingController();
+  final _codeFocus = FocusNode();
   late String? _assignment = widget.assignmentId;
+  late bool _autoJoin = widget.autoJoin;
   bool _tried = false;
   bool _busy = false;
   bool _nickLoaded = false;
@@ -529,6 +574,7 @@ class _JoinGroupScreenState extends State<JoinGroupScreen> {
   void dispose() {
     _code.dispose();
     _display.dispose();
+    _codeFocus.dispose();
     super.dispose();
   }
 
@@ -547,6 +593,18 @@ class _JoinGroupScreenState extends State<JoinGroupScreen> {
   Future<void> _prefillNickname() async {
     if (_nickLoaded) return;
     _nickLoaded = true;
+    try {
+      await _loadNickname();
+    } finally {
+      // QR skanerdan kelgan bo'lsa — taxallusdan keyin bir marta qo'shiladi.
+      if (_autoJoin && mounted && _codeOk) {
+        _autoJoin = false;
+        unawaited(_submit());
+      }
+    }
+  }
+
+  Future<void> _loadNickname() async {
     try {
       final groups = await context.services.backend.myGroups();
       final nick = groups
@@ -575,6 +633,27 @@ class _JoinGroupScreenState extends State<JoinGroupScreen> {
       _assignment = invite.assignmentId ?? _assignment;
       _error = null;
     });
+  }
+
+  /// QR skaner (D-68): taklif topilsa — maydon to'ldiriladi va darhol
+  /// qo'shiladi; "Kodni yozish" — kod maydoniga fokus.
+  Future<void> _scan() async {
+    final outcome = await openInviteScanner(context);
+    if (!mounted) return;
+    switch (outcome) {
+      case QrScanInvite(:final invite):
+        setState(() {
+          _code.text = invite.code;
+          // Skanerlangan QR ustun: unda test bo'lmasa — avvalgisi ham yo'q.
+          _assignment = invite.assignmentId;
+          _error = null;
+        });
+        if (!_busy) await _submit();
+      case QrScanTypeInstead():
+        _codeFocus.requestFocus();
+      case null:
+        break;
+    }
   }
 
   bool get _codeOk => _code.text.length == 8;
@@ -656,6 +735,7 @@ class _JoinGroupScreenState extends State<JoinGroupScreen> {
                           TextField(
                             key: const ValueKey('join-code'),
                             controller: _code,
+                            focusNode: _codeFocus,
                             autocorrect: false,
                             enableSuggestions: false,
                             textCapitalization: TextCapitalization.characters,
@@ -683,6 +763,15 @@ class _JoinGroupScreenState extends State<JoinGroupScreen> {
                     ),
                   ),
                   const SizedBox(height: 8),
+                  if (context.services.qrScanner.isSupported) ...[
+                    LgButton(
+                      key: const ValueKey('join-scan'),
+                      label: l.qrScanAction,
+                      icon: Icons.qr_code_scanner_rounded,
+                      onPressed: _busy ? null : _scan,
+                    ),
+                    const SizedBox(height: 8),
+                  ],
                   LgButton.secondary(
                     key: const ValueKey('join-paste'),
                     label: l.classesPasteLink,

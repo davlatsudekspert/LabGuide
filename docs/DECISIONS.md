@@ -1127,3 +1127,29 @@ D-48 dagi **Ustoz Pro** qatorini (69 000 so'm/oy · 490 000 so'm/yil · $9.99/oy
   `docs/M9_PRACTICAL_TOPICS.md`; `--check` testda). Kun soni (143) o'zgarmadi (D-42; jadval variantlari 142/144
   kun faqat oxirida farq qiladi). Manbada kunma-kun mavzu paydo bo'lsa — reja o'sha manbaga moslanadi va
   `plan_source` olib tashlanadi.
+
+## D-68. Ilova ichidagi QR skaner: guruhga qo'shilish va testni ochish (2026-10-18)
+
+- **Muammo:** QR faqat telefonning o'z kamerasi orqali ishlardi (QR → sayt `site/j/` → "Ilovada ochish"),
+  ilovada skaner yo'q edi (E2E_CLASSROOM_2026-10-18, 6-bo'lim: CI build bilan keyin qo'shish).
+- **Qaror:** `mobile_scanner` **7.4.2** (BSD-3, 2026-09-14). Android: CameraX + bundled ML Kit (oflayn, Play
+  Services shart emas), plagin minSdk 23 — bizda 24; iOS: AVFoundation/Vision, iOS 12+ — bizda 15.0, SwiftPM
+  paketi bor (CocoaPods kerak emas). **Deployment target / minSdk / ci.yml o'zgarmadi.**
+- **UI:** "QR kodni skanerlash" — qo'shilish ekranida (asosiy tugma) va "Guruh va topshiriqlar" da (qo'shilish
+  plitkasi ostida). To'liq ekranli skaner: ramka, chiroq, "Kodni yozish yoki qo'yish" zaxira yo'li; ruxsat yo'q —
+  "Sozlamalarni ochish" (Android `APPLICATION_DETAILS_SETTINGS`, iOS `app-settings:`), qaytganda qayta urinish.
+  O'qilgan matn mavjud `parseInvite` bilan (sayt havolasi, `labguide://app/j`, xom kod); begona QR — xabar, skaner
+  ochiq qoladi. Topilsa — tebranish (`HapticFeedback.mediumImpact`), skaner yopiladi, darhol qo'shiladi (taxallus
+  ixtiyoriy, oldingi guruhdan to'ldiriladi), `a=` bo'lsa — test ochiladi. Avtomatik qo'shilish faqat ilova
+  ichidan (`GoRouter extra`), deep link bilan emas.
+- **Platforma:** faqat Android/iOS; veb/desktop — tugma ko'rinmaydi. Plagin faqat
+  `lib/features/classroom/qr_scanner.dart` da, `QrScanner` interfeysi ortida (`AppServices.qrScanner`); testlar
+  soxta skaner bilan (`test/helpers/fake_qr_scanner.dart`).
+- **Ruxsatlar:** Android `CAMERA` + `android.hardware.camera` `required="false"` (kamerasiz qurilmalar ham
+  o'rnatadi). image_picker (hujjat surati) Android'da manifestda `CAMERA` bo'lsa ruxsatni o'zi so'raydi. iOS
+  `NSCameraUsageDescription` (Info.plist va uz/ru/en `InfoPlist.strings`) QR skanerni ham tilga oladi.
+- **Maxfiylik:** kadr qurilmada o'qiladi, saqlanmaydi, yuborilmaydi (siyosat 14-bo'lim, "Qisqacha"). Android'da
+  ML Kit Google'ga SDK diagnostikasini yuboradi (Google data disclosure) — siyosatda ochiq yozildi; Play Data
+  safety belgilari egasi qarori (`docs/store/APP_STORE.md` 12-bo'lim, `PRIVACY_OPEN_QUESTIONS.md` 5a).
+- **Tekshiruv:** native qism faqat CI build'da (Android + iOS) tekshiriladi — bu muhitda build yo'q. Qorovul:
+  `test/guards/classroom_guard_test.dart :: Ilova ichidagi QR skaner (D-68)`.

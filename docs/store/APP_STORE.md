@@ -210,7 +210,8 @@ egasi ehtiyotkorlik uchun *Photos → App Functionality, Linked* deb belgilashni
 (qaror egasida). Tarjima uchun post matni Workers AI ga yuboriladi — bu allaqachon e’lon
 qilingan User Content; tarjima keshlanadi. Ilovada kamera/galereya uchun
 `NSCameraUsageDescription` / `NSPhotoLibraryUsageDescription` matnlari (mavjud image_picker)
-hujjat tasdig‘ini ham qamrashini tekshiring.
+hujjat tasdig‘ini ham, D-68 dan ilova ichidagi QR skanerni ham qamraydi (kadr qurilmada o‘qiladi,
+saqlanmaydi — App Privacy’da yangi toifa yo‘q).
 
 Rol va til sozlamasi ham hisobda saqlanadi — alohida App Store toifasi yo‘q, shuning uchun
 yuqoridagilarga kiritilgan (talab bo‘lsa Other Data Types). **Diagnostics** (crash/performance)
@@ -355,7 +356,7 @@ yuklanishidan **oldin** Data safety quyidagicha to‘ldiriladi (manba: `cloudfla
 | Messages → Other in-app messages | To‘planadi; ixtiyoriy; “Taklif va yordam” murojaatlari (hisob bilan) va ilova ichidagi shikoyatlar (mehmondan ham, identifikatorsiz); App functionality. Shared: No |
 | App activity → Other user-generated content (hamjamiyat, D-43) | To‘planadi; ixtiyoriy; savol/javob matni (**ilova ichida hamma ko‘radi**, muallif ismsiz), ovoz, shikoyat; App functionality |
 | Photos and videos → Photos (hamjamiyat, D-43) | Ixtiyoriy; mutaxassis hujjati surati — **ephemeral processing: Yes** (faqat AI tekshiruvi vaqtida, saqlanmaydi); App functionality (hisobni tasdiqlash) |
-| Location, Contacts, Financial, Health, Device or other IDs, Diagnostics | To‘planmaydi (skrinshot biriktirish serverda yo‘q; hamkor reklamasi do‘kon buildida yo‘q) |
+| Location, Contacts, Financial, Health, Device or other IDs, Diagnostics | LabGuide o‘zi to‘plamaydi (skrinshot biriktirish serverda yo‘q; hamkor reklamasi do‘kon buildida yo‘q). **D-68 dan:** Android QR skaneridagi Google ML Kit SDK diagnostikasi — quyidagi izoh |
 
 **Ovozli buyruqlar (RECORD_AUDIO, ixtiyoriy, eksperimental):** Android’da rejim faqat
 qurilmada oflayn tanish mavjud bo‘lsa yoqiladi (`MainActivity` →
@@ -363,6 +364,19 @@ qurilmada oflayn tanish mavjud bo‘lsa yoqiladi (`MainActivity` →
 shu holda `createOnDeviceSpeechRecognizer` ishlatadi). Ovoz qurilmadan chiqmaydi, ilova uni
 saqlamaydi — Data safety’da **Audio qo‘shilmaydi** (egasi qarori, 2026-10-09). Kunlik eslatma
 (`POST_NOTIFICATIONS`) va ulashish ma’lumot to‘plamaydi.
+
+**QR skaner (CAMERA, D-68, `mobile_scanner`):** kamera kadri faqat qurilmada o‘qiladi, saqlanmaydi
+va yuborilmaydi — *Photos and videos* **qo‘shilmaydi**. QR dan olingan taklif kodi kod qo‘lda
+yozilgandagi kabi guruhga qo‘shilish so‘roviga ketadi (yangi toifa yo‘q). Android’da bundled
+Google ML Kit (barcode-scanning 17.3.0) Google’ga SDK diagnostikasini yuboradi (Google “ML Kit
+Android data disclosure”: qurilma/ilova ma’lumoti, unumdorlik ko‘rsatkichlari, API sozlamasi,
+foydalanuvchini aniqlash uchun mo‘ljallanmagan o‘rnatish identifikatori; HTTPS, uchinchi tomonga
+berilmaydi). Play SDK ma’lumotini ilova to‘plagan deb hisoblaydi — tavsiya: *App info and
+performance → Diagnostics* va *Device or other IDs* — **Collected, Shared: No**, maqsad *Analytics*
+(Google’ning o‘z xizmati uchun), ixtiyoriy (faqat skaner ochilganda). Bu `LG_API_URL` bo‘sh
+buildga ham tegishli (“No” javobi endi to‘g‘ri bo‘lmasligi mumkin) — yakuniy qaror egasida
+(`PRIVACY_OPEN_QUESTIONS.md`). iOS: Apple Vision, uchinchi tomon SDK yo‘q; `NSCameraUsageDescription`
+(uz/ru/en `InfoPlist.strings`) QR skanerni ham qamraydi.
 
 Reklama: do‘kon buildida hamkor e’lonlari yo‘q (`LG_PARTNER_ADS=false`) — Play Console → App
 content → **Ads: No**. Hisobni o‘chirish havolasi (Play talabi, “Delete account URL”):
