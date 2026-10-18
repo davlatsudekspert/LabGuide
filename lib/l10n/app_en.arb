@@ -5172,6 +5172,22 @@
   },
   "urinTitle": "Urinalysis",
   "urinLabCardBody": "Collection, strip test, sediment pictures, result reader, practice",
+  "coagTitle": "Coagulogram",
+  "coagLabCardBody": "PT/INR, APTT, fibrinogen, D-dimer, sample rules, DIC score",
+  "coproTitle": "Stool analysis and parasites",
+  "coproLabCardBody": "Coprogram, occult blood, egg and cyst key (schematic)",
+  "@coagTitle": {
+    "description": "Lab tab: title of the coagulogram (haemostasis tests) section and its picture card"
+  },
+  "@coagLabCardBody": {
+    "description": "Lab tab: one-line description on the coagulogram picture card"
+  },
+  "@coproTitle": {
+    "description": "Lab tab: title of the stool analysis (coprology) and intestinal parasites section"
+  },
+  "@coproLabCardBody": {
+    "description": "Lab tab: one-line description on the coprology picture card"
+  },
   "@urinTitle": {
     "description": "Lab tab: title of the urinalysis section and its picture card"
   },

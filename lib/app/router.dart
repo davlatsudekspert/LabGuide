@@ -20,6 +20,8 @@ import '../features/histology/histology_screens.dart';
 import '../features/bloodmorph/bloodmorph_screens.dart';
 import '../features/spermogram/spermogram_screens.dart';
 import '../features/urinalysis/urinalysis_screens.dart';
+import '../features/coagulogram/coag_screens.dart';
+import '../features/coprology/copro_screens.dart';
 import '../features/daily/daily_screens.dart';
 import '../features/differential/differential_quiz.dart';
 import '../features/differential/diff_assessment_screens.dart';
@@ -615,6 +617,79 @@ GoRouter buildRouter(
                       GoRoute(
                         path: 'quiz',
                         builder: (context, state) => const UrQuizScreen(),
+                      ),
+                    ],
+                  ),
+                  // Koagulogramma: testlar, namuna talablari va sitrat
+                  // hisoblagichi, PT/APTT o'qish yordamchisi, ISTH DIC bali,
+                  // antikoagulyant monitoringi.
+                  GoRoute(
+                    path: 'coagulogram',
+                    builder: (context, state) => const CoagulogramScreen(),
+                    routes: [
+                      GoRoute(
+                        path: 'tests',
+                        builder: (context, state) => const CgTestsScreen(),
+                      ),
+                      GoRoute(
+                        path: 'sample',
+                        builder: (context, state) => const CgSampleScreen(),
+                      ),
+                      GoRoute(
+                        path: 'reader',
+                        builder: (context, state) => const CgReaderScreen(),
+                      ),
+                      GoRoute(
+                        path: 'dic',
+                        builder: (context, state) => const CgDicScreen(),
+                      ),
+                      GoRoute(
+                        path: 'monitoring',
+                        builder: (context, state) => const CgMonitoringScreen(),
+                      ),
+                    ],
+                  ),
+                  // Koprologiya va parazitologiya: yig'ish, makroskopiya,
+                  // koprogramma elementlari, yashirin qon, parazitlar (sxema).
+                  GoRoute(
+                    path: 'coprology',
+                    builder: (context, state) => const CoprologyScreen(),
+                    routes: [
+                      GoRoute(
+                        path: 'collect',
+                        builder: (context, state) => const CpCollectScreen(),
+                      ),
+                      GoRoute(
+                        path: 'macro',
+                        builder: (context, state) => const CpMacroScreen(),
+                      ),
+                      GoRoute(
+                        path: 'micro',
+                        builder: (context, state) => const CpMicroScreen(),
+                        routes: [
+                          GoRoute(
+                            path: ':id',
+                            builder: (context, state) => CpElementScreen(
+                              elementId: state.pathParameters['id']!,
+                            ),
+                          ),
+                        ],
+                      ),
+                      GoRoute(
+                        path: 'occult',
+                        builder: (context, state) => const CpOccultScreen(),
+                      ),
+                      GoRoute(
+                        path: 'parasites',
+                        builder: (context, state) => const CpParasitesScreen(),
+                        routes: [
+                          GoRoute(
+                            path: ':id',
+                            builder: (context, state) => CpParasiteScreen(
+                              parasiteId: state.pathParameters['id']!,
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),

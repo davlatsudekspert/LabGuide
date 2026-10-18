@@ -941,3 +941,29 @@ D-48 dagi **Ustoz Pro** qatorini (69 000 so'm/oy · 490 000 so'm/yil · $9.99/oy
   yangi → muddati kelgan mustahkam → qolgan. Bilet ichida baho o'zgartirilsa quti biletdan oldingi holatdan
   hisoblanadi. Eski baholar (`toifa.oral`) birinchi o'qishda qutiga o'tkaziladi.
 - Savollar, kalitlar, javob rejalari o'zgarmadi (assets/toifa faqat o'qiladi).
+
+## D-61. Koagulogramma va koprologiya + parazitologiya bo'limlari (2026-10-18, 2-to'lqin)
+- **Tuzilishi** — siydik tahlili/spermogramma namunasida: `lib/features/coagulogram/` (`coag_content.dart` — matn
+  va manbalar, `coag_logic.dart` — ISTH DIC bali, PT/APTT birikmasi, sitrat formulasi, `coag_screens.dart`) va
+  `lib/features/coprology/` (`copro_content.dart`, `copro_scheme.dart` — vektor sxemalar va o'lcham diagrammasi,
+  `copro_screens.dart`). Yo'llar `/lab/coagulogram/{tests,sample,reader,dic,monitoring}` va
+  `/lab/coprology/{collect,macro,micro/:id,occult,parasites/:id}`. Lab tabida ikki rasmli karta (qon morfologiyasidan
+  keyin), umumiy qidiruvda ikki bo'lim, ARB: `coagTitle`, `coagLabCardBody`, `coproTitle`, `coproLabCardBody`;
+  qolgan matn — kontent faylidagi `LocalizedText` (3 til).
+- **Nol xato qoidasi:** har da'vo `CgFact`/`CpFact` + `CalcRef` (manba + bo'lim/bet). Manbalar shu sessiyada
+  ochilgan: WFH laboratoriya qo'llanmasi 3-nashr (3- va 5-qism), Magnette 2016, Toh 2016, Iba 2019, Wada 2014,
+  CHEST 2012 (Ageno; Garcia), MedlinePlus, JSST 2003 (4-bob), CDC DPDx, Merck Manual; koprogramma talqinlari
+  (mushak tolasi, biriktiruvchi to'qima, kraxmal, shilliq, me'yor raqamlari) xalqaro ochiq manbada topilmadi —
+  faqat domla darsligidan (Kurbonova 2023, url yo'q) va matnda "Darslik/Учебник/Textbook" deb belgilanadi (test
+  tekshiradi). Manbalar farq qilsa (to'ldirish ≥ 80 % / > 90 %, sentrifuga rejimi, parazit o'lchamlari) — ikkalasi.
+- **Me'yorlar:** PT/APTT/TT oralig'i laboratoriyaga bog'liq — "me'yor" raqami berilmaydi, faqat manba misoli izoh
+  bilan. INR maqsadi (≈ 2,0–3,0) va geparin APTT oralig'i (1,5–2,5 × nazorat, tasdiqlanmagan) manbadagi kabi.
+- **ISTH DIC bali:** Taylor 2001 asl maqolasi (Thieme) ochilmadi — chegaralar Toh 2016 (ISTH SSC a'zosi) va Iba
+  2019 jadvallaridan (bir xil): trombotsit ≥ 100/≥ 50/< 50 → 0/1/2, marker 0/2/3, PT uzayishi < 3 / ≥ 3 / ≥ 6 s →
+  0/1/2, fibrinogen < 1 g/l → 1; ≥ 5 — ochiq DIC bilan mos (har kuni takrorlash). Bal faqat "asosiy kasallik bor"
+  deb belgilanganda hisoblanadi. PT uzayishi nimaga nisbatan ekani ochilgan jadvallarda yo'q — ekranda aytiladi.
+- **Rasmlar:** DPDx sahifalaridagi ayrim rasmlar uchinchi tomonlarga tegishli (masalan, Leiden universiteti) —
+  shuning uchun mikrofoto olinmadi; 7 parazit uchun ilovaning o'z `CustomPainter` sxemasi, "Sxema (foto emas)"
+  belgisi bilan. Karta rasmlari — `tool/illustrations/{coagulogram,coprology}/gen_*.py` → `render_card.cjs`.
+- **Tashxis emas:** o'qish yordamchisi va DIC natijasi ostida yo'llanma eslatmasi; "qoralama" belgisi domla
+  tekshiruvigacha. Tafsilot: docs/COAGULOGRAM_SOURCES.md, docs/COPROLOGY_SOURCES.md.

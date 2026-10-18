@@ -15382,6 +15382,30 @@ abstract class AppLocalizations {
   /// **'Collection, strip test, sediment pictures, result reader, practice'**
   String get urinLabCardBody;
 
+  /// Lab tab: title of the coagulogram (haemostasis tests) section and its picture card
+  ///
+  /// In en, this message translates to:
+  /// **'Coagulogram'**
+  String get coagTitle;
+
+  /// Lab tab: one-line description on the coagulogram picture card
+  ///
+  /// In en, this message translates to:
+  /// **'PT/INR, APTT, fibrinogen, D-dimer, sample rules, DIC score'**
+  String get coagLabCardBody;
+
+  /// Lab tab: title of the stool analysis (coprology) and intestinal parasites section
+  ///
+  /// In en, this message translates to:
+  /// **'Stool analysis and parasites'**
+  String get coproTitle;
+
+  /// Lab tab: one-line description on the coprology picture card
+  ///
+  /// In en, this message translates to:
+  /// **'Coprogram, occult blood, egg and cyst key (schematic)'**
+  String get coproLabCardBody;
+
   /// No description provided for @admPanelAccess.
   ///
   /// In en, this message translates to:

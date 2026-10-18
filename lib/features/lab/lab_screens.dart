@@ -15,6 +15,8 @@ import '../cytology/cytology_screens.dart';
 import '../histology/histology_screens.dart';
 import '../spermogram/spermogram_screens.dart';
 import '../urinalysis/urinalysis_screens.dart';
+import '../coagulogram/coag_screens.dart';
+import '../coprology/copro_screens.dart';
 import '../tools/calc_info.dart';
 import '../tools/clinical_calc_screens.dart';
 import 'preanalytics_info.dart';
@@ -68,6 +70,18 @@ class LabScreen extends StatelessWidget {
           title: l.bloodMorphTitle,
           body: l.bloodMorphLabCardBody,
           route: bmBase,
+        ),
+        LabFeatureCard(
+          image: coagCardImage,
+          title: l.coagTitle,
+          body: l.coagLabCardBody,
+          route: coagBase,
+        ),
+        LabFeatureCard(
+          image: coproCardImage,
+          title: l.coproTitle,
+          body: l.coproLabCardBody,
+          route: coproBase,
         ),
         LgHeroCard(
           eyebrow: l.labHeroEyebrow,

@@ -8817,6 +8817,20 @@ class AppLocalizationsUz extends AppLocalizations {
       'Yig‘ish, test-chiziq, cho‘kma rasmlari, natijani o‘qish, mashq';
 
   @override
+  String get coagTitle => 'Koagulogramma';
+
+  @override
+  String get coagLabCardBody =>
+      'PT/INR, APTT, fibrinogen, D-dimer, namuna, DIC bali';
+
+  @override
+  String get coproTitle => 'Najas tahlili va parazitlar';
+
+  @override
+  String get coproLabCardBody =>
+      'Koprogramma, yashirin qon, tuxum va sistalar kaliti (sxema)';
+
+  @override
   String get admPanelAccess =>
       'Kirish: egasi emaili (ADMIN_EMAILS) va email kodi. Server har so‘rovda qayta tekshiradi.';
 

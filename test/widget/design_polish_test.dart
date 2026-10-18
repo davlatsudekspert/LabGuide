@@ -140,8 +140,14 @@ void main() {
           find.descendant(of: list, matching: find.byType(Scrollable)).first,
         );
         final pos = scrollable.position;
-        pos.jumpTo(pos.maxScrollExtent);
-        await tester.pumpAndSettle();
+        // Dangasa ro'yxatda maxScrollExtent avval taxminiy — u barqaror
+        // bo'lguncha oxiriga sakrash (uzun Lab ro'yxati).
+        for (var i = 0; i < 5; i++) {
+          final before = pos.maxScrollExtent;
+          pos.jumpTo(before);
+          await tester.pumpAndSettle();
+          if (pos.maxScrollExtent == before) break;
+        }
         // Panel egallagan joy (Lab tugmasi bilan) — sahifa MediaQuery'sidagi
         // pastki padding.
         final inset = MediaQuery.paddingOf(tester.element(page)).bottom;

@@ -8958,6 +8958,20 @@ class AppLocalizationsRu extends AppLocalizations {
       'Сбор, тест-полоска, снимки осадка, чтение результата, тренировка';
 
   @override
+  String get coagTitle => 'Коагулограмма';
+
+  @override
+  String get coagLabCardBody =>
+      'ПВ/МНО, АЧТВ, фибриноген, D-димер, проба, балл ДВС';
+
+  @override
+  String get coproTitle => 'Копрология и паразиты';
+
+  @override
+  String get coproLabCardBody =>
+      'Копрограмма, скрытая кровь, ключ яиц и цист (схемы)';
+
+  @override
   String get admPanelAccess =>
       'Доступ: email владельца (ADMIN_EMAILS) и код из письма. Сервер проверяет каждый запрос.';
 
