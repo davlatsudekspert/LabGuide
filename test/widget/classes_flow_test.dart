@@ -120,11 +120,21 @@ void main() {
     );
     expect(find.text(uz.classesYouTeacher(1)), findsOneWidget);
 
-    // 2. Topshiriq: mavzu, son, vaqt, muddat — savol bankidan.
-    await tapScroll(tester, uz.classesNewAssignment);
-    await enterField(tester, uz.classesAssignmentTitle, '1-mavzu: buyrak');
+    // 2. Umumiy test: mavzu (analizlar bo'yicha), son, vaqt, muddat — savol
+    // bankidan; guruh sahifasidan kelingani uchun guruh tanlangan.
+    await tapScroll(tester, uz.classesGiveGeneralTest);
     await tapScroll(tester, 'Buyrak funksiyasi · 8');
+    // Standart sarlavha tanlovdan; ustoz o'zgartirishi mumkin.
+    expect(
+      find.text(uz.generalTestTitle('Analizlar · Buyrak funksiyasi')),
+      findsOneWidget,
+    );
+    await enterField(tester, uz.classesAssignmentTitle, '1-mavzu: buyrak');
     await enterField(tester, uz.examCount, '3');
+    // Hovuz 8 ≥ 2 × 3 — variant avtomatik yoqiq; bu yerda oddiy test.
+    await tester.ensureVisible(find.byKey(const ValueKey('assign-variant')));
+    await tester.tap(find.byKey(const ValueKey('assign-variant')));
+    await tester.pumpAndSettle();
     await tapScroll(tester, uz.examMinutes(10));
     await tapScroll(tester, uz.classesDueDays(1));
     expect(find.text(uz.classesPreview(3)), findsOneWidget);

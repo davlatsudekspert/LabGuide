@@ -101,8 +101,8 @@ describe('variantli topshiriq (0012: per_student, pool_topics)', () => {
       [
         {
           per_student: 3,
-          question_ids: Array.from({ length: 61 }, (_, i) => `x${i}`),
-          correct_indexes: Array.from({ length: 61 }, () => 0),
+          question_ids: Array.from({ length: 101 }, (_, i) => `x${i}`),
+          correct_indexes: Array.from({ length: 101 }, () => 0),
         },
         'invalid_questions',
       ],
@@ -112,11 +112,12 @@ describe('variantli topshiriq (0012: per_student, pool_topics)', () => {
       expect(r.status, JSON.stringify(patch)).toBe(400);
       expect(r.data.error, JSON.stringify(patch)).toBe(code);
     }
-    // 60 talik hovuz — ruxsat (oddiy testda 50 dan ortiq emas).
-    const big = Array.from({ length: 60 }, (_, i) => `x${i}`);
+    // 100 talik hovuz — ruxsat: 50 savollik variantli umumiy test (oddiy
+    // testda 50 dan ortiq emas).
+    const big = Array.from({ length: 100 }, (_, i) => `x${i}`);
     const ok = await s.call('POST', `/v1/groups/${g.id}/assignments`, {
       token: t.token,
-      body: { ...base, question_ids: big, correct_indexes: big.map(() => 1), per_student: 30 },
+      body: { ...base, question_ids: big, correct_indexes: big.map(() => 1), per_student: 50 },
     });
     expect(ok.status).toBe(201);
     const plain = await s.call('POST', `/v1/groups/${g.id}/assignments`, {

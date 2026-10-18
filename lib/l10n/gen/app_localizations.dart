@@ -9712,12 +9712,6 @@ abstract class AppLocalizations {
   /// **'Assignments'**
   String get classesAssignments;
 
-  /// No description provided for @classesNewAssignment.
-  ///
-  /// In en, this message translates to:
-  /// **'New assignment'**
-  String get classesNewAssignment;
-
   /// No description provided for @classesNoAssignmentsTeacher.
   ///
   /// In en, this message translates to:
@@ -9898,23 +9892,11 @@ abstract class AppLocalizations {
   /// **'Join the class “{name}” in the LabGuide app: Learn → Classes and assignments → Join with a code. Code: {code}'**
   String classesInviteText(String name, String code);
 
-  /// No description provided for @classesNewAssignmentIntro.
-  ///
-  /// In en, this message translates to:
-  /// **'Pick topics and a number — questions are drawn from the bank at random.'**
-  String get classesNewAssignmentIntro;
-
   /// No description provided for @classesAssignmentTitle.
   ///
   /// In en, this message translates to:
   /// **'Assignment title'**
   String get classesAssignmentTitle;
-
-  /// No description provided for @classesAssignmentTitleHint.
-  ///
-  /// In en, this message translates to:
-  /// **'e.g. Topic 1'**
-  String get classesAssignmentTitleHint;
 
   /// No description provided for @classesTimeLimit.
   ///
@@ -9922,23 +9904,11 @@ abstract class AppLocalizations {
   /// **'Time limit, minutes'**
   String get classesTimeLimit;
 
-  /// No description provided for @classesTimeLimitHint.
-  ///
-  /// In en, this message translates to:
-  /// **'Optional, 1–180. Time runs from when the student starts and is checked on the server.'**
-  String get classesTimeLimitHint;
-
   /// No description provided for @classesNoLimit.
   ///
   /// In en, this message translates to:
   /// **'No limit'**
   String get classesNoLimit;
-
-  /// No description provided for @classesDueTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Due date'**
-  String get classesDueTitle;
 
   /// No description provided for @classesDueNone.
   ///
@@ -9993,12 +9963,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Set assignment'**
   String get classesSendAssignment;
-
-  /// No description provided for @classesAssignmentCreated.
-  ///
-  /// In en, this message translates to:
-  /// **'Assignment set'**
-  String get classesAssignmentCreated;
 
   /// No description provided for @classesSubmitted.
   ///
@@ -17331,6 +17295,132 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Sign in to create groups — the signed-in account registers as a teacher with one tap when creating a group.'**
   String get rolesTeacherSignInNote;
+
+  /// No description provided for @classesGiveGeneralTest.
+  ///
+  /// In en, this message translates to:
+  /// **'Give a general test'**
+  String get classesGiveGeneralTest;
+
+  /// No description provided for @generalTestSub.
+  ///
+  /// In en, this message translates to:
+  /// **'From several topics — up to 50 questions'**
+  String get generalTestSub;
+
+  /// No description provided for @generalTestIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick topics — questions are spread evenly across them. Students take the test on their phones; the server scores it.'**
+  String get generalTestIntro;
+
+  /// No description provided for @generalTestSources.
+  ///
+  /// In en, this message translates to:
+  /// **'Where questions come from'**
+  String get generalTestSources;
+
+  /// No description provided for @generalTestSearchHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search topics (e.g. anaemia)'**
+  String get generalTestSearchHint;
+
+  /// No description provided for @generalSourceToifa.
+  ///
+  /// In en, this message translates to:
+  /// **'Category exam questions'**
+  String get generalSourceToifa;
+
+  /// No description provided for @generalSourceToifaSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Official CLD list, keys checked'**
+  String get generalSourceToifaSub;
+
+  /// No description provided for @generalSourceLecture.
+  ///
+  /// In en, this message translates to:
+  /// **'Lecture topics'**
+  String get generalSourceLecture;
+
+  /// No description provided for @generalSourceLectureSub.
+  ///
+  /// In en, this message translates to:
+  /// **'A whole module or single days'**
+  String get generalSourceLectureSub;
+
+  /// No description provided for @generalSourcePack.
+  ///
+  /// In en, this message translates to:
+  /// **'By lab tests'**
+  String get generalSourcePack;
+
+  /// No description provided for @generalSourcePackSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Questions from test cards'**
+  String get generalSourcePackSub;
+
+  /// No description provided for @generalSourceToifaShort.
+  ///
+  /// In en, this message translates to:
+  /// **'Category'**
+  String get generalSourceToifaShort;
+
+  /// No description provided for @generalSourceLectureShort.
+  ///
+  /// In en, this message translates to:
+  /// **'Lectures'**
+  String get generalSourceLectureShort;
+
+  /// No description provided for @generalSourcePackShort.
+  ///
+  /// In en, this message translates to:
+  /// **'Lab tests'**
+  String get generalSourcePackShort;
+
+  /// No description provided for @generalSelectAll.
+  ///
+  /// In en, this message translates to:
+  /// **'Select all'**
+  String get generalSelectAll;
+
+  /// No description provided for @generalAllShort.
+  ///
+  /// In en, this message translates to:
+  /// **'all'**
+  String get generalAllShort;
+
+  /// No description provided for @generalDays.
+  ///
+  /// In en, this message translates to:
+  /// **'Days · {count}'**
+  String generalDays(int count);
+
+  /// No description provided for @generalSelected.
+  ///
+  /// In en, this message translates to:
+  /// **'Selected: {topics} topics · {questions} questions'**
+  String generalSelected(int topics, int questions);
+
+  /// No description provided for @generalPickTopic.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick at least one topic'**
+  String get generalPickTopic;
+
+  /// No description provided for @generalTestTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'General test: {topics}'**
+  String generalTestTitle(String topics);
+
+  /// No description provided for @generalTestNameHint.
+  ///
+  /// In en, this message translates to:
+  /// **'E.g. Midterm 1'**
+  String get generalTestNameHint;
 }
 
 class _AppLocalizationsDelegate

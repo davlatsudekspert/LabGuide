@@ -5559,9 +5559,6 @@ class AppLocalizationsUz extends AppLocalizations {
   String get classesAssignments => 'Topshiriqlar';
 
   @override
-  String get classesNewAssignment => 'Yangi topshiriq';
-
-  @override
   String get classesNoAssignmentsTeacher =>
       'Hali topshiriq yo‘q. Savol bankidan mavzu va sonni tanlab topshiriq bering.';
 
@@ -5672,27 +5669,13 @@ class AppLocalizationsUz extends AppLocalizations {
   }
 
   @override
-  String get classesNewAssignmentIntro =>
-      'Mavzu va sonni tanlang — savollar bankdan tasodifiy olinadi.';
-
-  @override
   String get classesAssignmentTitle => 'Topshiriq nomi';
-
-  @override
-  String get classesAssignmentTitleHint => 'Masalan, 1-mavzu';
 
   @override
   String get classesTimeLimit => 'Vaqt chegarasi, daqiqa';
 
   @override
-  String get classesTimeLimitHint =>
-      'Ixtiyoriy, 1–180. Vaqt talaba boshlagan paytdan hisoblanadi va serverda tekshiriladi.';
-
-  @override
   String get classesNoLimit => 'Vaqtsiz';
-
-  @override
-  String get classesDueTitle => 'Topshirish muddati';
 
   @override
   String get classesDueNone => 'Muddatsiz';
@@ -5728,9 +5711,6 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get classesSendAssignment => 'Topshiriqni berish';
-
-  @override
-  String get classesAssignmentCreated => 'Topshiriq berildi';
 
   @override
   String get classesSubmitted => 'Javoblar yuborildi';
@@ -9952,4 +9932,75 @@ class AppLocalizationsUz extends AppLocalizations {
   @override
   String get rolesTeacherSignInNote =>
       'Guruh ochish uchun hisobga kiring — kirgan hisob guruh yaratishda bir bosishda ustoz sifatida ro‘yxatdan o‘tadi.';
+
+  @override
+  String get classesGiveGeneralTest => 'Umumiy test berish';
+
+  @override
+  String get generalTestSub => 'Bir nechta mavzudan — 50 tagacha savol';
+
+  @override
+  String get generalTestIntro =>
+      'Mavzularni tanlang — savollar ular orasida teng taqsimlanadi. Talabalar testni o‘z telefonida topshiradi, ball serverda hisoblanadi.';
+
+  @override
+  String get generalTestSources => 'Savollar qayerdan';
+
+  @override
+  String get generalTestSearchHint => 'Mavzuni qidiring (masalan, anemiya)';
+
+  @override
+  String get generalSourceToifa => 'Toifa savollari';
+
+  @override
+  String get generalSourceToifaSub =>
+      'Rasmiy KDL ro‘yxati, kalitlari tekshirilgan';
+
+  @override
+  String get generalSourceLecture => 'Ma’ruza mavzulari';
+
+  @override
+  String get generalSourceLectureSub => 'Butun modul yoki alohida kun';
+
+  @override
+  String get generalSourcePack => 'Analizlar bo‘yicha';
+
+  @override
+  String get generalSourcePackSub => 'Analiz kartalari savollari';
+
+  @override
+  String get generalSourceToifaShort => 'Toifa';
+
+  @override
+  String get generalSourceLectureShort => 'Ma’ruza';
+
+  @override
+  String get generalSourcePackShort => 'Analizlar';
+
+  @override
+  String get generalSelectAll => 'Hammasini tanlash';
+
+  @override
+  String get generalAllShort => 'hammasi';
+
+  @override
+  String generalDays(int count) {
+    return 'Kunlar · $count';
+  }
+
+  @override
+  String generalSelected(int topics, int questions) {
+    return 'Tanlandi: $topics ta mavzu · $questions ta savol';
+  }
+
+  @override
+  String get generalPickTopic => 'Kamida bitta mavzuni tanlang';
+
+  @override
+  String generalTestTitle(String topics) {
+    return 'Umumiy test: $topics';
+  }
+
+  @override
+  String get generalTestNameHint => 'Masalan, 1-oraliq nazorat';
 }

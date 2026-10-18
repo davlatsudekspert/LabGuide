@@ -261,11 +261,16 @@ void main() {
     await w.snap('nusxalandi');
     await _waitSnack(tester);
     await w.scroll(-2000);
-    await w.tapScroll(l.classesNewAssignment);
+    await w.tapScroll(l.classesGiveGeneralTest);
     await w.snap('topshiriq_yangi');
-    await w.enter(l.classesAssignmentTitle, 'Тема 1: почки');
     await w.tapScroll('Функция почек · 8');
+    await w.enter(l.classesAssignmentTitle, 'Тема 1: почки');
     await w.enter(l.examCount, '4');
+    // Hovuz 8 = 2 × 4 — variant avtomatik yoqiq; bu sahnada oddiy test.
+    final variant = find.byKey(const ValueKey('assign-variant'));
+    await tester.ensureVisible(variant);
+    await tester.tap(variant);
+    await tester.pumpAndSettle();
     await w.tapScroll(l.examMinutes(20));
     await w.tapScroll(l.classesDueDays(3));
     await w.snap('topshiriq_vaqt_muddat');

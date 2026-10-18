@@ -5675,9 +5675,6 @@ class AppLocalizationsRu extends AppLocalizations {
   String get classesAssignments => 'Задания';
 
   @override
-  String get classesNewAssignment => 'Новое задание';
-
-  @override
   String get classesNoAssignmentsTeacher =>
       'Заданий пока нет. Выберите темы и число вопросов из банка и дайте задание.';
 
@@ -5788,27 +5785,13 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get classesNewAssignmentIntro =>
-      'Выберите темы и число вопросов — они берутся из банка случайно.';
-
-  @override
   String get classesAssignmentTitle => 'Название задания';
-
-  @override
-  String get classesAssignmentTitleHint => 'Например, Тема 1';
 
   @override
   String get classesTimeLimit => 'Ограничение времени, мин';
 
   @override
-  String get classesTimeLimitHint =>
-      'Необязательно, 1–180. Время идёт с момента начала и проверяется на сервере.';
-
-  @override
   String get classesNoLimit => 'Без ограничения';
-
-  @override
-  String get classesDueTitle => 'Срок сдачи';
 
   @override
   String get classesDueNone => 'Без срока';
@@ -5851,9 +5834,6 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get classesSendAssignment => 'Дать задание';
-
-  @override
-  String get classesAssignmentCreated => 'Задание отправлено';
 
   @override
   String get classesSubmitted => 'Ответы отправлены';
@@ -10130,4 +10110,74 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get rolesTeacherSignInNote =>
       'Чтобы создать группу, войдите в аккаунт — регистрация преподавателя займёт одно нажатие при создании группы.';
+
+  @override
+  String get classesGiveGeneralTest => 'Дать общий тест';
+
+  @override
+  String get generalTestSub => 'Из нескольких тем — до 50 вопросов';
+
+  @override
+  String get generalTestIntro =>
+      'Выберите темы — вопросы распределятся между ними поровну. Студенты сдают тест на своём телефоне, балл считает сервер.';
+
+  @override
+  String get generalTestSources => 'Откуда вопросы';
+
+  @override
+  String get generalTestSearchHint => 'Найти тему (например, анемия)';
+
+  @override
+  String get generalSourceToifa => 'Вопросы на категорию';
+
+  @override
+  String get generalSourceToifaSub => 'Официальный список КДЛ, ключи проверены';
+
+  @override
+  String get generalSourceLecture => 'Темы лекций';
+
+  @override
+  String get generalSourceLectureSub => 'Весь модуль или отдельный день';
+
+  @override
+  String get generalSourcePack => 'По анализам';
+
+  @override
+  String get generalSourcePackSub => 'Вопросы карточек анализов';
+
+  @override
+  String get generalSourceToifaShort => 'Категория';
+
+  @override
+  String get generalSourceLectureShort => 'Лекции';
+
+  @override
+  String get generalSourcePackShort => 'Анализы';
+
+  @override
+  String get generalSelectAll => 'Выбрать все';
+
+  @override
+  String get generalAllShort => 'все';
+
+  @override
+  String generalDays(int count) {
+    return 'Дни · $count';
+  }
+
+  @override
+  String generalSelected(int topics, int questions) {
+    return 'Выбрано тем: $topics · вопросов: $questions';
+  }
+
+  @override
+  String get generalPickTopic => 'Выберите хотя бы одну тему';
+
+  @override
+  String generalTestTitle(String topics) {
+    return 'Общий тест: $topics';
+  }
+
+  @override
+  String get generalTestNameHint => 'Например, 1-й рубежный контроль';
 }

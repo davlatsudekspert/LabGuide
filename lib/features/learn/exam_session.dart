@@ -125,8 +125,9 @@ class ExamSession {
         ExamItem(
           questionId: q.id,
           // Rasmiy savollarda variantlar tartibi saqlanadi (“Hammasi
-          // to'g'ri” kabi variantlar o'z o'rnida bo'lishi kerak).
-          order: shuffleOptions
+          // to'g'ri” kabi variantlar o'z o'rnida bo'lishi kerak) — aralash
+          // testda ham (umumiy test: toifa + paket savollari).
+          order: shuffleOptions && q is! OfficialKeyQuestion
               ? (List.generate(q.optionCount, (k) => k)..shuffle(random))
               : List.generate(q.optionCount, (k) => k),
           correct: q.correct.toList()..sort(),

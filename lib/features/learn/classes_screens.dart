@@ -11,6 +11,8 @@ import '../../core/backend/lab_backend.dart' show LabBackend;
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
+import '../classroom/general_test_screen.dart'
+    show generalTestLocation, groupGeneralTestLocation;
 import '../classroom/invite_link.dart';
 import '../classroom/qr_code_view.dart';
 import '../classroom/qr_scan_screen.dart';
@@ -143,12 +145,6 @@ String memberLabel(BuildContext context, String groupId, GroupMember m) {
   final local = context.services.classroom.localName(groupId, m.userId);
   return local == null ? base : '$local · $base';
 }
-
-/// Topshiriq uchun savollar: server kaliti har savolga bitta javob saqlaydi.
-List<ExamQuestion> _assignablePool(ContentPack pack, Set<String> topics) => [
-  for (final q in examPool(PackQuestionSource.of(pack), topics))
-    if (q.correct.length == 1) q,
-];
 
 bool _ready(BuildContext context) =>
     context.services.backend.isConfigured && context.services.auth.hasAccount;
@@ -326,6 +322,16 @@ class _ClassesScreenState extends State<ClassesScreen> {
                   divider: i < groups.length - 1,
                   onTap: () => _open('/learn/classes/g/${g.id}'),
                 ),
+              // Ustoz: umumiy test — bir nechta mavzudan, guruh(lar) tanlanadi.
+              if (groups.any((g) => g.isTeacher)) ...[
+                const SizedBox(height: 12),
+                LgButton.secondary(
+                  key: const ValueKey('classes-general-test'),
+                  label: l.classesGiveGeneralTest,
+                  icon: Icons.add_task_rounded,
+                  onPressed: () => _open(generalTestLocation),
+                ),
+              ],
             ],
           );
         }),
@@ -1181,10 +1187,13 @@ class _GroupScreenState extends State<GroupScreen> with _AccountReload {
         onPressed: () => _open('/learn/classes/g/${d.group.id}/topic-test'),
       ),
       const SizedBox(height: 8),
+      // Umumiy test: bir nechta mavzudan (toifa, ma'ruza, analizlar) 50
+      // tagacha savol — shu guruh oldindan tanlangan.
       LgButton.secondary(
-        label: l.classesNewAssignment,
+        key: const ValueKey('group-general-test'),
+        label: l.classesGiveGeneralTest,
         icon: Icons.add_task_rounded,
-        onPressed: () => _open('/learn/classes/g/${d.group.id}/assign'),
+        onPressed: () => _open(groupGeneralTestLocation(d.group.id)),
       ),
       const SizedBox(height: 6),
       if (d.assignments.isEmpty)
@@ -1705,284 +1714,6 @@ class _InviteCard extends StatelessWidget {
   }
 }
 
-// --------------------------------------------------------- yangi topshiriq
-
-enum _Due { none, d1, d3, d7, custom }
-
-class NewAssignmentScreen extends StatefulWidget {
-  const NewAssignmentScreen({super.key, required this.groupId});
-
-  final String groupId;
-
-  @override
-  State<NewAssignmentScreen> createState() => _NewAssignmentScreenState();
-}
-
-class _NewAssignmentScreenState extends State<NewAssignmentScreen> {
-  /// Server chegarasi: bitta topshiriqda 1–50 savol.
-  static const maxQuestions = 50;
-
-  final _title = TextEditingController();
-  final _count = TextEditingController(text: '10');
-  final _minutes = TextEditingController();
-  Set<String> _topics = {};
-  _Due _due = _Due.none;
-  DateTime? _customDue;
-  List<ExamQuestion>? _drawn;
-  bool _tried = false;
-  bool _busy = false;
-  Object? _error;
-
-  @override
-  void dispose() {
-    _title.dispose();
-    _count.dispose();
-    _minutes.dispose();
-    super.dispose();
-  }
-
-  int? _int(TextEditingController c) => int.tryParse(c.text.trim());
-
-  int _max(ContentPack pack) {
-    final n = _assignablePool(pack, _topics).length;
-    return n < maxQuestions ? n : maxQuestions;
-  }
-
-  bool _countOk(ContentPack pack) {
-    final n = _int(_count);
-    return n != null && n >= 1 && n <= _max(pack);
-  }
-
-  bool get _minutesOk {
-    if (_minutes.text.trim().isEmpty) return true;
-    final n = _int(_minutes);
-    return n != null && n >= 1 && n <= 180;
-  }
-
-  bool get _titleOk {
-    final n = _title.text.trim().length;
-    return n >= 3 && n <= 120;
-  }
-
-  /// Muddat — tanlangan kunning oxiri (23:59, qurilma vaqti).
-  DateTime? get _dueAt {
-    final now = context.services.exams.now();
-    DateTime endOf(int days) =>
-        DateTime(now.year, now.month, now.day + days, 23, 59);
-    return switch (_due) {
-      _Due.none => null,
-      _Due.d1 => endOf(1),
-      _Due.d3 => endOf(3),
-      _Due.d7 => endOf(7),
-      _Due.custom => _customDue,
-    };
-  }
-
-  void _redraw(ContentPack pack) {
-    final n = _int(_count);
-    _drawn = n == null || !_countOk(pack)
-        ? null
-        : drawQuestions(
-            _assignablePool(pack, _topics),
-            n,
-            context.services.exams.random,
-          );
-  }
-
-  Future<void> _pickDate() async {
-    final now = context.services.exams.now();
-    final date = await showDatePicker(
-      context: context,
-      initialDate: _customDue ?? now.add(const Duration(days: 1)),
-      firstDate: now,
-      lastDate: now.add(const Duration(days: 365)),
-    );
-    if (date == null || !mounted) return;
-    setState(() {
-      _due = _Due.custom;
-      _customDue = DateTime(date.year, date.month, date.day, 23, 59);
-    });
-  }
-
-  Future<void> _submit(ContentPack pack) async {
-    setState(() => _tried = true);
-    final drawn = _drawn;
-    if (!_titleOk || !_countOk(pack) || !_minutesOk || drawn == null) return;
-    setState(() {
-      _busy = true;
-      _error = null;
-    });
-    try {
-      await context.services.backend.createAssignment(
-        groupId: widget.groupId,
-        title: _title.text.trim(),
-        questionIds: [for (final q in drawn) q.id],
-        correctIndexes: [for (final q in drawn) q.correct.single],
-        dueAt: _dueAt,
-        timeLimitMinutes: _minutes.text.trim().isEmpty ? null : _int(_minutes),
-      );
-      if (!mounted) return;
-      showSnack(context, AppLocalizations.of(context).classesAssignmentCreated);
-      context.pop(true);
-    } on Object catch (e) {
-      if (mounted) setState(() => _error = e);
-    } finally {
-      if (mounted) setState(() => _busy = false);
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final l = AppLocalizations.of(context);
-    return LgPage(
-      title: l.classesNewAssignment,
-      subtitle: l.classesNewAssignmentIntro,
-      showProfile: false,
-      children: [ClassesGate(child: ContentGate(builder: _form))],
-    );
-  }
-
-  Widget _form(BuildContext context, ContentPack pack) {
-    final l = AppLocalizations.of(context);
-    final text = Theme.of(context).textTheme;
-    final lang = Localizations.localeOf(context).languageCode;
-    if (_drawn == null && _countOk(pack)) _redraw(pack);
-    final max = _max(pack);
-    final drawn = _drawn;
-    final due = _dueAt;
-    void changed() => setState(() => _redraw(pack));
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        LgField(
-          label: l.classesAssignmentTitle,
-          controller: _title,
-          hint: l.classesAssignmentTitleHint,
-          maxLength: 120,
-          textInputAction: TextInputAction.next,
-          errorText: _tried && !_titleOk ? l.classesLengthError(3, 120) : null,
-          onChanged: (_) => setState(() {}),
-        ),
-        LgSectionTitle(l.examTopics),
-        TopicChips(
-          source: PackQuestionSource.of(pack),
-          selected: _topics,
-          onChanged: (t) {
-            _topics = t;
-            changed();
-          },
-        ),
-        LgSectionTitle(l.examSettings),
-        NumberPresetField(
-          label: l.examCount,
-          controller: _count,
-          hint: '10',
-          helper: l.examCountHint(max),
-          errorText: _tried && !_countOk(pack) ? l.examCountError(max) : null,
-          presets: [
-            for (final n in [5, 10, 20])
-              if (n < max) ('$n', '$n'),
-            (l.examCountAll(max), '$max'),
-          ],
-          onChanged: changed,
-        ),
-        const SizedBox(height: 6),
-        NumberPresetField(
-          label: l.classesTimeLimit,
-          controller: _minutes,
-          hint: l.classesNoLimit,
-          helper: l.classesTimeLimitHint,
-          errorText: _tried && !_minutesOk ? l.examTimeError : null,
-          presets: [
-            (l.classesNoLimit, ''),
-            for (final n in [10, 20, 30]) (l.examMinutes(n), '$n'),
-          ],
-          onChanged: () => setState(() {}),
-        ),
-        LgSectionTitle(l.classesDueTitle),
-        Wrap(
-          spacing: 8,
-          runSpacing: 8,
-          children: [
-            for (final (d, label) in [
-              (_Due.none, l.classesDueNone),
-              (_Due.d1, l.classesDueDays(1)),
-              (_Due.d3, l.classesDueDays(3)),
-              (_Due.d7, l.classesDueDays(7)),
-            ])
-              LgChoiceChip(
-                label: label,
-                selected: _due == d,
-                onTap: () => setState(() => _due = d),
-              ),
-            LgChoiceChip(
-              label: l.classesDuePick,
-              selected: _due == _Due.custom,
-              onTap: _pickDate,
-            ),
-          ],
-        ),
-        const SizedBox(height: 10),
-        Text(
-          due == null
-              ? l.classesDueNoneBody
-              : l.classesDueAt(formatWhen(due, context)),
-          style: text.bodyMedium,
-        ),
-        LgSectionTitle(l.classesPreview(drawn?.length ?? 0)),
-        if (drawn == null)
-          Text(l.examCountError(max), style: text.bodyMedium)
-        else
-          LgPanel(
-            padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                for (final (i, q) in drawn.indexed)
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 8),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          width: 28,
-                          child: Text('${i + 1}.', style: text.labelLarge),
-                        ),
-                        Expanded(
-                          child: Text(q.prompt(lang), style: text.bodyMedium),
-                        ),
-                      ],
-                    ),
-                  ),
-              ],
-            ),
-          ),
-        if (drawn != null) ...[
-          const SizedBox(height: 4),
-          LgButton.secondary(
-            label: l.classesReshuffle,
-            icon: Icons.shuffle_rounded,
-            onPressed: changed,
-          ),
-        ],
-        const SizedBox(height: 10),
-        if (drawn?.any((q) => q.isDraft) ?? false)
-          LgNotice(l.examPracticeNotice, kind: NoticeKind.info),
-        LgNotice(l.classesKeyNotice, kind: NoticeKind.info),
-        if (_error != null)
-          LgNotice(classesErrorText(_error!, l), kind: NoticeKind.error),
-        const SizedBox(height: 12),
-        LgButton(
-          label: l.classesSendAssignment,
-          icon: Icons.send_rounded,
-          busy: _busy,
-          onPressed: () => _submit(pack),
-        ),
-      ],
-    );
-  }
-}
-
 // ------------------------------------------------------------- topshiriq
 
 /// “Test QR”: talaba skanerlaydi → kiradi → taxallus → shu test ochiladi.
@@ -2293,8 +2024,8 @@ class _AssignmentScreenState extends State<AssignmentScreen>
           id: exams.newId(),
           mode: ExamMode.assignment,
           questions: questions,
-          // Rasmiy (toifa) savollarda variantlar tartibi saqlanadi.
-          shuffleOptions: !questions.any((q) => q is OfficialKeyQuestion),
+          // Rasmiy (toifa) savollarda variantlar tartibi saqlanadi
+          // (ExamSession.build har savol uchun o'zi hal qiladi).
           sourceId: _packOnly(pack, a)
               ? PackQuestionSource.sourceId
               : ClassQuestionSource.sourceId,
@@ -2339,7 +2070,6 @@ class _AssignmentScreenState extends State<AssignmentScreen>
       id: exams.newId(),
       mode: ExamMode.exam,
       questions: questions,
-      shuffleOptions: !questions.any((q) => q is OfficialKeyQuestion),
       sourceId: _packOnly(pack, a)
           ? PackQuestionSource.sourceId
           : ClassQuestionSource.sourceId,
