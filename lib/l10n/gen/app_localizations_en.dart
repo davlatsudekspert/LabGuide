@@ -9979,4 +9979,41 @@ class AppLocalizationsEn extends AppLocalizations {
   String learnSectionQuizRow(String section) {
     return '$section — practice';
   }
+
+  @override
+  String get classesNicknameInvalid =>
+      'A nickname may contain only letters, digits, spaces and . _ \' -, and must start and end with a letter or digit (no emoji or symbols like !?@).';
+
+  @override
+  String get classesGroupFull =>
+      'The group is full (200 people) — tell your teacher.';
+
+  @override
+  String get classesCodeAmbiguous =>
+      'Codes never contain 0, O, 1 or I. Check the code with your teacher or scan the QR.';
+
+  @override
+  String get classesOwnGroupTitle => 'You are this group\'s teacher';
+
+  @override
+  String get classesOwnGroupBody =>
+      'This account created the group, so it can\'t join it as a student (switching the role in Profile doesn\'t change that). To try it as a student, sign in with another account or take the test in student view.';
+
+  @override
+  String get classesOwnGroupOpen => 'Open as teacher';
+
+  @override
+  String get classesSwitchAccount => 'Sign in with another account';
+
+  @override
+  String get classesPreviewAsStudent => 'Try as a student';
+
+  @override
+  String get classesPreviewNote =>
+      'Trial mode: answers are not sent to the server and don\'t appear in the results.';
+
+  @override
+  String classesPreviewResult(int correct, int total) {
+    return 'Trial finished: $correct / $total correct. Nothing was submitted.';
+  }
 }

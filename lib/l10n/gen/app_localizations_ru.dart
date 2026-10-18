@@ -10019,4 +10019,41 @@ class AppLocalizationsRu extends AppLocalizations {
   String learnSectionQuizRow(String section) {
     return '$section — тренировка';
   }
+
+  @override
+  String get classesNicknameInvalid =>
+      'В псевдониме допустимы только буквы, цифры, пробел и . _ \' -; он должен начинаться и заканчиваться буквой или цифрой (без эмодзи и знаков вроде !?@).';
+
+  @override
+  String get classesGroupFull =>
+      'Группа заполнена (200 человек) — сообщите преподавателю.';
+
+  @override
+  String get classesCodeAmbiguous =>
+      'В коде нет символов 0, O, 1 и I. Уточните код у преподавателя или отсканируйте QR.';
+
+  @override
+  String get classesOwnGroupTitle => 'Вы преподаватель этой группы';
+
+  @override
+  String get classesOwnGroupBody =>
+      'Этот аккаунт создал группу, поэтому не может вступить в неё как студент (смена роли в профиле этого не меняет). Чтобы проверить как студент, войдите с другим аккаунтом или пройдите тест в режиме студента.';
+
+  @override
+  String get classesOwnGroupOpen => 'Открыть как преподаватель';
+
+  @override
+  String get classesSwitchAccount => 'Войти с другим аккаунтом';
+
+  @override
+  String get classesPreviewAsStudent => 'Пройти как студент';
+
+  @override
+  String get classesPreviewNote =>
+      'Пробный режим: ответы не отправляются на сервер и не попадают в результаты.';
+
+  @override
+  String classesPreviewResult(int correct, int total) {
+    return 'Проба завершена: $correct / $total верно. Результат не отправлен.';
+  }
 }

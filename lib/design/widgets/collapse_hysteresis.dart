@@ -10,6 +10,16 @@
 /// * Kontent ixchamlashgandan keyin ham scroll qilinadigan bo'lib qolmasa,
 ///   ixchamlashtirilmaydi — aks holda viewport kattalashib offset nolga
 ///   qisiladi va holat "tebranadi".
+/// * Faqat chegaralar ([minScrollExtent]..[maxScrollExtent]) ICHIDAGI
+///   harakat hisoblanadi. iOS'dagi overscroll (ro'yxat oxiridan cho'zish)
+///   va undan qaytish (bounce) — foydalanuvchi yo'nalishi emas, fizika:
+///   uni teskari scroll deb sanash ro'yxat oxirida sarlavhani kengaytirib,
+///   kontentni pastga "tushirib yuborardi" (iPhone xatosi, 2026-10-18).
+/// * Ixchamlashish viewportni [collapsibleExtent] ga kattalashtiradi va
+///   maxScrollExtent shuncha kamayadi. Joriy offset yangi chegaradan
+///   oshib ketadigan bo'lsa (ro'yxat oxiriga yaqin), ixchamlashtirilmaydi:
+///   aks holda pozitsiya chegaradan tashqarida qolib, fizika uni orqaga
+///   qaytarardi — foydalanuvchi qo'yib yuborgan joy siljirdi.
 ///
 /// Sof Dart: widgetdan ajratilgan, unit testda aniq ketma-ketlik bilan
 /// tekshiriladi.
@@ -38,13 +48,21 @@ class CollapseHysteresis {
     required double delta,
     required double maxScrollExtent,
     required double collapsibleExtent,
+    double minScrollExtent = 0,
   }) {
-    if (delta.isNaN || pixels.isNaN) return false;
+    if (delta.isNaN || pixels.isNaN || maxScrollExtent.isNaN) return false;
 
-    if (pixels <= topSnap) {
+    if (pixels <= minScrollExtent + topSnap) {
       _accumulated = 0;
       return _set(false);
     }
+    // Faqat chegaralar ichidagi qism: overscroll va bounce hisobga
+    // olinmaydi.
+    final upper = maxScrollExtent < minScrollExtent
+        ? minScrollExtent
+        : maxScrollExtent;
+    double inRange(double v) => v.clamp(minScrollExtent, upper);
+    delta = inRange(pixels) - inRange(pixels - delta);
     if (delta == 0) return false;
 
     if (_accumulated != 0 && (delta > 0) != (_accumulated > 0)) {
@@ -53,9 +71,11 @@ class CollapseHysteresis {
     _accumulated += delta;
 
     if (!_collapsed && _accumulated >= threshold) {
+      final collapsedMax = maxScrollExtent - collapsibleExtent;
       final stillScrollable =
-          maxScrollExtent - collapsibleExtent >= threshold + topSnap;
+          collapsedMax - minScrollExtent >= threshold + topSnap;
       if (!stillScrollable) return false;
+      if (collapsibleExtent > 0 && pixels > collapsedMax) return false;
       _accumulated = 0;
       return _set(true);
     }

@@ -9841,4 +9841,41 @@ class AppLocalizationsUz extends AppLocalizations {
   String learnSectionQuizRow(String section) {
     return '$section — mashq';
   }
+
+  @override
+  String get classesNicknameInvalid =>
+      'Taxallusda faqat harf, raqam, bo‘shliq va . _ \' - bo‘lishi mumkin; harf yoki raqam bilan boshlanib tugasin (emoji va !?@ kabi belgilarsiz).';
+
+  @override
+  String get classesGroupFull =>
+      'Guruh to‘lgan (200 kishi) — ustozingizga ayting.';
+
+  @override
+  String get classesCodeAmbiguous =>
+      'Kodda 0, O, 1 va I belgilari bo‘lmaydi. Kodni ustozdan qayta tekshiring yoki QR’ni skanerlang.';
+
+  @override
+  String get classesOwnGroupTitle => 'Siz bu guruhning ustozisiz';
+
+  @override
+  String get classesOwnGroupBody =>
+      'Bu hisob guruhni ochgan, shuning uchun unga talaba bo‘lib qo‘shila olmaydi (Profildagi rolni almashtirish buni o‘zgartirmaydi). Talaba sifatida sinash uchun boshqa hisob bilan kiring yoki testni talaba ko‘rinishida sinab ko‘ring.';
+
+  @override
+  String get classesOwnGroupOpen => 'Ustoz sifatida ochish';
+
+  @override
+  String get classesSwitchAccount => 'Boshqa hisob bilan kirish';
+
+  @override
+  String get classesPreviewAsStudent => 'Talaba ko‘rinishida sinash';
+
+  @override
+  String get classesPreviewNote =>
+      'Sinov rejimi: javoblar serverga yuborilmaydi va natijalar ro‘yxatida ko‘rinmaydi.';
+
+  @override
+  String classesPreviewResult(int correct, int total) {
+    return 'Sinov tugadi: $correct / $total to‘g‘ri. Natija yuborilmadi.';
+  }
 }

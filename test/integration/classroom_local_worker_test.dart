@@ -117,6 +117,17 @@ void main() {
       expect(sm.where((m) => !m.isTeacher), hasLength(1));
       expect(sm.every((m) => m.alias != 'Lola'), isTrue);
 
+      // iPhone xatosi (2026-10-18): ustoz o'z kodini kiritsa — guruh id,
+      // lekin u ustozligicha qoladi (ilova “Siz bu guruhning ustozisiz”).
+      expect(await teacher.joinGroup(g.joinCode!.toLowerCase()), g.id);
+      final ownGroup = (await teacher.myGroups()).single;
+      expect(ownGroup.isTeacher, isTrue);
+      expect(await teacher.groupMembers(g.id), hasLength(3));
+      // iPhone apostrofi bilan taxallus.
+      await s2.setMyAlias(g.id, 'G’ayrat');
+      expect((await s2.myGroups()).single.myNickname, "G'ayrat");
+      await s2.setMyAlias(g.id, null);
+
       // Mavzu: ochilmagan -> ochiq; talaba ocha olmaydi.
       expect(await s1.groupTopics(g.id), isEmpty);
       await expectLater(

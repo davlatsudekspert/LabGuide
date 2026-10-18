@@ -5881,5 +5881,25 @@
         "type": "String"
       }
     }
+  },
+  "classesNicknameInvalid": "A nickname may contain only letters, digits, spaces and . _ ' -, and must start and end with a letter or digit (no emoji or symbols like !?@).",
+  "classesGroupFull": "The group is full (200 people) — tell your teacher.",
+  "classesCodeAmbiguous": "Codes never contain 0, O, 1 or I. Check the code with your teacher or scan the QR.",
+  "classesOwnGroupTitle": "You are this group's teacher",
+  "classesOwnGroupBody": "This account created the group, so it can't join it as a student (switching the role in Profile doesn't change that). To try it as a student, sign in with another account or take the test in student view.",
+  "classesOwnGroupOpen": "Open as teacher",
+  "classesSwitchAccount": "Sign in with another account",
+  "classesPreviewAsStudent": "Try as a student",
+  "classesPreviewNote": "Trial mode: answers are not sent to the server and don't appear in the results.",
+  "classesPreviewResult": "Trial finished: {correct} / {total} correct. Nothing was submitted.",
+  "@classesPreviewResult": {
+    "placeholders": {
+      "correct": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
   }
 }

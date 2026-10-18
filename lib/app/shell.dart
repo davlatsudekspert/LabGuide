@@ -171,6 +171,7 @@ class _AppShellState extends State<AppShell> {
         _hysteresis.onScroll(
           pixels: metrics.pixels,
           delta: n.scrollDelta ?? 0,
+          minScrollExtent: metrics.minScrollExtent,
           maxScrollExtent: metrics.maxScrollExtent,
           // Panel ro'yxat viewportini o'zgartirmaydi.
           collapsibleExtent: 0,

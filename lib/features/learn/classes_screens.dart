@@ -30,6 +30,10 @@ import 'exam_widgets.dart';
 String classesErrorText(Object e, AppLocalizations l) => switch (e) {
   BackendException(code: 'nickname_taken') => l.classesNicknameTaken,
   BackendException(code: 'abusive_language') => l.classesNicknameAbusive,
+  // Avval umumiy “Server ma'lumotni qabul qilmadi” / “Juda ko'p so'rov”
+  // chiqardi — talaba nima qilishni bilmasdi (iPhone xatosi, 2026-10-18).
+  BackendException(code: 'invalid_nickname') => l.classesNicknameInvalid,
+  BackendException(code: 'group_full') => l.classesGroupFull,
   BackendException(failure: BackendFailure.network) => l.errNetwork,
   BackendException(failure: BackendFailure.rateLimited) => l.errRateLimited,
   BackendException(failure: BackendFailure.invalid) => l.classesInvalid,
@@ -558,6 +562,16 @@ class _JoinGroupScreenState extends State<JoinGroupScreen> {
   bool _nickLoaded = false;
   Object? _error;
 
+  /// Shu hisobning guruhlari (taxallus va “o'z guruhi” tekshiruvi uchun).
+  List<StudyGroup>? _myGroups;
+
+  /// Kiritilgan kod — shu hisob USTOZ bo'lgan guruhniki: talaba bo'lib
+  /// qo'shilib bo'lmaydi, aniq sabab va yo'l ko'rsatiladi.
+  StudyGroup? _ownGroup;
+
+  StudyGroup? _teacherGroupFor(String code) =>
+      _myGroups?.where((g) => g.isTeacher && g.joinCode == code).firstOrNull;
+
   /// Ekran ochiq turganda yangi havola/QR kodi kelsa — maydon yangilanadi.
   @override
   void didUpdateWidget(JoinGroupScreen old) {
@@ -607,6 +621,7 @@ class _JoinGroupScreenState extends State<JoinGroupScreen> {
   Future<void> _loadNickname() async {
     try {
       final groups = await context.services.backend.myGroups();
+      _myGroups = groups;
       final nick = groups
           .where((g) => !g.isTeacher && (g.myNickname ?? '').isNotEmpty)
           .map((g) => g.myNickname!)
@@ -656,28 +671,71 @@ class _JoinGroupScreenState extends State<JoinGroupScreen> {
     }
   }
 
-  bool get _codeOk => _code.text.length == 8;
+  bool get _codeOk =>
+      _code.text.length == 8 && !inviteCodeHasAmbiguous(_code.text);
 
-  /// Taxallus ixtiyoriy: bo'sh — tartib raqami ko'rinadi.
-  bool get _nameOk {
-    final n = _display.text.trim().length;
+  String? _codeError(AppLocalizations l) {
+    final c = _code.text;
+    // 0/O/1/I — serverda hech qachon bo'lmaydi: “topilmadi” o'rniga sabab.
+    if ((c.length == 8 || _tried) && inviteCodeHasAmbiguous(c)) {
+      return l.classesCodeAmbiguous;
+    }
+    return _tried && c.length != 8 ? l.classesCodeError : null;
+  }
+
+  bool get _nameLengthOk {
+    final n = normalizeNickname(_display.text).length;
     return n == 0 || (n >= 2 && n <= 24);
+  }
+
+  /// Taxallus ixtiyoriy: bo'sh — tartib raqami ko'rinadi. Belgilar server
+  /// qoidasi bilan bir xil tekshiriladi (iPhone apostrofi ’ — ruxsat).
+  bool get _nameOk => _nameLengthOk && nicknameAllowed(_display.text);
+
+  String? _nameError(AppLocalizations l) {
+    if (!_tried) return null;
+    if (!_nameLengthOk) return l.classesLengthError(2, 24);
+    return nicknameAllowed(_display.text) ? null : l.classesNicknameInvalid;
   }
 
   Future<void> _submit() async {
     setState(() => _tried = true);
     if (!_codeOk || !_nameOk) return;
+    // Ustoz o'z guruhi kodini kiritdi — serverga bormasdan aniq javob.
+    final own = _teacherGroupFor(_code.text);
+    if (own != null) {
+      setState(() {
+        _ownGroup = own;
+        _error = null;
+      });
+      return;
+    }
     setState(() {
       _busy = true;
       _error = null;
+      _ownGroup = null;
     });
     final services = context.services;
     try {
-      final alias = _display.text.trim();
+      final alias = normalizeNickname(_display.text);
       final id = await services.backend.joinGroup(
         _code.text,
         displayName: alias.isEmpty ? null : alias,
       );
+      // Guruhlar ro'yxati yuklanmagan bo'lsa (tarmoq) — server “qo'shildi”
+      // deganda ham bu ustozning o'z guruhi bo'lishi mumkin: tekshiriladi.
+      if (_myGroups == null) {
+        try {
+          _myGroups = await services.backend.myGroups();
+        } on Object {
+          // Tekshirib bo'lmadi — oddiy yo'l (guruh sahifasi rolni ko'rsatadi).
+        }
+      }
+      final mine = _myGroups?.where((g) => g.id == id).firstOrNull;
+      if (mine != null && mine.isTeacher) {
+        if (mounted) setState(() => _ownGroup = mine);
+        return;
+      }
       // Havola orqali kelgan yangi foydalanuvchi: rol tanlanmagan bo'lsa —
       // talaba (alohida rol ekrani yo'q).
       if (services.settings.role == null) {
@@ -749,12 +807,13 @@ class _JoinGroupScreenState extends State<JoinGroupScreen> {
                                 FontFeature.tabularFigures(),
                               ],
                             ),
-                            onChanged: (_) => setState(() => _error = null),
+                            onChanged: (_) => setState(() {
+                              _error = null;
+                              _ownGroup = null;
+                            }),
                             decoration: InputDecoration(
                               hintText: 'ABCD2345',
-                              errorText: _tried && !_codeOk
-                                  ? l.classesCodeError
-                                  : null,
+                              errorText: _codeError(l),
                               errorMaxLines: 3,
                             ),
                           ),
@@ -787,9 +846,7 @@ class _JoinGroupScreenState extends State<JoinGroupScreen> {
                     maxLength: 24,
                     textInputAction: TextInputAction.done,
                     onSubmitted: (_) => _submit(),
-                    errorText: _tried && !_nameOk
-                        ? l.classesLengthError(2, 24)
-                        : null,
+                    errorText: _nameError(l),
                     onChanged: (_) => setState(() => _error = null),
                   ),
                   const SizedBox(height: 8),
@@ -807,6 +864,10 @@ class _JoinGroupScreenState extends State<JoinGroupScreen> {
                       classesErrorText(_error!, l),
                       kind: NoticeKind.error,
                     ),
+                  if (_ownGroup case final own?) ...[
+                    const SizedBox(height: 12),
+                    _OwnGroupPanel(group: own, assignmentId: _assignment),
+                  ],
                   const SizedBox(height: 16),
                   LgButton(
                     key: const ValueKey('join-submit'),
@@ -821,6 +882,57 @@ class _JoinGroupScreenState extends State<JoinGroupScreen> {
           ),
         ),
       ],
+    );
+  }
+}
+
+/// Ustoz o'z guruhi kodini (yoki test QR'ini) talaba sifatida ochmoqchi
+/// bo'ldi. Server bu hisobni talaba qilmaydi — sabab va keyingi qadamlar.
+class _OwnGroupPanel extends StatelessWidget {
+  const _OwnGroupPanel({required this.group, this.assignmentId});
+
+  final StudyGroup group;
+  final String? assignmentId;
+
+  @override
+  Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context);
+    final text = Theme.of(context).textTheme;
+    final a = assignmentId;
+    final base = '/learn/classes/g/${group.id}';
+    return LgPanel(
+      key: const ValueKey('join-own-group'),
+      soft: true,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Semantics(
+            liveRegion: true,
+            child: Text(l.classesOwnGroupTitle, style: text.titleMedium),
+          ),
+          const SizedBox(height: 6),
+          Text(l.classesOwnGroupBody, style: text.bodyMedium),
+          const SizedBox(height: 12),
+          LgButton(
+            key: const ValueKey('join-own-open'),
+            label: a == null
+                ? l.classesOwnGroupOpen
+                : l.classesPreviewAsStudent,
+            icon: a == null ? Icons.school_outlined : Icons.visibility_outlined,
+            // Test bilan kelgan bo'lsa — test sahifasi (u yerda “Talaba
+            // ko'rinishida sinash”), aks holda guruh sahifasi.
+            onPressed: () =>
+                context.pushReplacement(a == null ? base : '$base/a/$a'),
+          ),
+          const SizedBox(height: 8),
+          LgButton.secondary(
+            key: const ValueKey('join-own-switch'),
+            label: l.classesSwitchAccount,
+            icon: Icons.switch_account_outlined,
+            onPressed: () => context.push('/profile'),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -2036,6 +2148,49 @@ class _AssignmentScreenState extends State<AssignmentScreen>
     }
   }
 
+  /// Ustoz testni talaba ko'rinishida sinaydi: xuddi shu savollar va vaqt
+  /// cheklovi, lekin sessiya faqat xotirada — serverga hech narsa
+  /// yuborilmaydi va natijalar ro'yxatiga tushmaydi.
+  Future<void> _preview(GroupAssignment a, ContentPack pack) async {
+    final services = context.services;
+    final l = AppLocalizations.of(context);
+    final byId = _byId(context, pack);
+    final questions = [
+      for (final id in a.questionIdsFor(services.backend.userId)) ?byId[id],
+    ];
+    if (questions.isEmpty) {
+      showSnack(context, l.classesOutdatedPack(a.questionCount));
+      return;
+    }
+    final exams = services.exams;
+    final session = ExamSession.build(
+      id: exams.newId(),
+      mode: ExamMode.exam,
+      questions: questions,
+      shuffleOptions: !questions.any((q) => q is OfficialKeyQuestion),
+      sourceId: _packOnly(pack, a)
+          ? PackQuestionSource.sourceId
+          : ClassQuestionSource.sourceId,
+      random: exams.random,
+      startedAt: exams.now(),
+      limit: a.timeLimitMinutes == null
+          ? null
+          : Duration(minutes: a.timeLimitMinutes!),
+      title: a.title,
+    );
+    final done = await Navigator.of(context, rootNavigator: true).push(
+      MaterialPageRoute<ExamSession>(
+        builder: (context) => _AssignmentPreviewRun(session: session),
+      ),
+    );
+    if (done != null && mounted) {
+      showSnack(
+        context,
+        l.classesPreviewResult(done.correctCount, done.length),
+      );
+    }
+  }
+
   /// Ustoz testni yakunlaydi: yangi urinish yo'q; “muddat tugagach”
   /// tanlangan bo'lsa — to'g'ri javoblar talabalarga darhol ochiladi.
   Future<void> _close(GroupAssignment a) async {
@@ -2431,6 +2586,17 @@ class _AssignmentScreenState extends State<AssignmentScreen>
           ),
           const SizedBox(height: 8),
         ],
+        // Ustoz o'z guruhiga talaba bo'lib qo'shila olmaydi (server rol
+        // bo'yicha): testni talaba ko'rinishida shu yerda sinab ko'radi.
+        LgButton.secondary(
+          key: const ValueKey('assignment-preview'),
+          label: l.classesPreviewAsStudent,
+          icon: Icons.visibility_outlined,
+          onPressed: () => _preview(a, pack),
+        ),
+        const SizedBox(height: 6),
+        Text(l.classesPreviewNote, style: text.bodySmall),
+        const SizedBox(height: 10),
         if (a.closed)
           LgNotice(
             l.classroomStatusTestDone,
@@ -2893,6 +3059,30 @@ class _StudentResultScreenState extends State<StudentResultScreen>
 
 /// Topshiriqni yechish (to'liq ekran, imtihon UI'si). Yakunlanganda
 /// javoblar serverga yuboriladi; internet bo'lmasa qurilmada qoladi.
+/// Ustozning “talaba ko'rinishida sinash” sahifasi: [ExamRunner] xuddi
+/// talabadagidek, lekin yakunda faqat natija qaytariladi (yuborilmaydi).
+class _AssignmentPreviewRun extends StatelessWidget {
+  const _AssignmentPreviewRun({required this.session});
+
+  final ExamSession session;
+
+  @override
+  Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context);
+    return ExamRunner(
+      key: const ValueKey('assignment-preview-run'),
+      session: session,
+      title:
+          '${session.title ?? l.classesAssignments} · '
+          '${l.classesPreviewAsStudent}',
+      onFinish: ({required timedOut}) async {
+        session.finish(context.services.exams.now(), timedOut: timedOut);
+        Navigator.of(context).pop(session);
+      },
+    );
+  }
+}
+
 class AssignmentRunScreen extends StatefulWidget {
   const AssignmentRunScreen({
     super.key,

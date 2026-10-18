@@ -17151,6 +17151,66 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{section} — practice'**
   String learnSectionQuizRow(String section);
+
+  /// No description provided for @classesNicknameInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'A nickname may contain only letters, digits, spaces and . _ \' -, and must start and end with a letter or digit (no emoji or symbols like !?@).'**
+  String get classesNicknameInvalid;
+
+  /// No description provided for @classesGroupFull.
+  ///
+  /// In en, this message translates to:
+  /// **'The group is full (200 people) — tell your teacher.'**
+  String get classesGroupFull;
+
+  /// No description provided for @classesCodeAmbiguous.
+  ///
+  /// In en, this message translates to:
+  /// **'Codes never contain 0, O, 1 or I. Check the code with your teacher or scan the QR.'**
+  String get classesCodeAmbiguous;
+
+  /// No description provided for @classesOwnGroupTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'You are this group\'s teacher'**
+  String get classesOwnGroupTitle;
+
+  /// No description provided for @classesOwnGroupBody.
+  ///
+  /// In en, this message translates to:
+  /// **'This account created the group, so it can\'t join it as a student (switching the role in Profile doesn\'t change that). To try it as a student, sign in with another account or take the test in student view.'**
+  String get classesOwnGroupBody;
+
+  /// No description provided for @classesOwnGroupOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'Open as teacher'**
+  String get classesOwnGroupOpen;
+
+  /// No description provided for @classesSwitchAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in with another account'**
+  String get classesSwitchAccount;
+
+  /// No description provided for @classesPreviewAsStudent.
+  ///
+  /// In en, this message translates to:
+  /// **'Try as a student'**
+  String get classesPreviewAsStudent;
+
+  /// No description provided for @classesPreviewNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Trial mode: answers are not sent to the server and don\'t appear in the results.'**
+  String get classesPreviewNote;
+
+  /// No description provided for @classesPreviewResult.
+  ///
+  /// In en, this message translates to:
+  /// **'Trial finished: {correct} / {total} correct. Nothing was submitted.'**
+  String classesPreviewResult(int correct, int total);
 }
 
 class _AppLocalizationsDelegate

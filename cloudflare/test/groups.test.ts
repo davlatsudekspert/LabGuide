@@ -400,3 +400,87 @@ describe('taqdimotdan mavzu testi (0010: deck_id, reveal)', () => {
     expect((await s.call('GET', `/v1/assignments/${aid}/progress`, { token: tB.token })).status).toBe(404);
   });
 });
+
+// iPhone xatosi (2026-10-18, docs/BUGS_2026-10-18_IPHONE.md): "talaba
+// sifatida testga qo'shila olmayman".
+describe("qo'shilish: iPhone xatolari", () => {
+  it("ustoz o'z guruhiga kod bilan kirsa — role: teacher (talaba bo'lib qolmaydi)", async () => {
+    const { s, tA, gA } = await classroom();
+    const r = await s.call('POST', '/v1/groups/join', { token: tA.token, body: { code: gA.join_code, display_name: 'Ali' } });
+    expect(r.status).toBe(200);
+    expect(r.data).toMatchObject({ group_id: gA.id, role: 'teacher', already_member: true });
+    // Ustoz talaba qatoriga qo'shilmaydi.
+    const m = (await s.call('GET', `/v1/groups/${gA.id}/members`, { token: tA.token })).data;
+    const mine = m.filter((x: any) => x.user_id === tA.userId);
+    expect(mine).toHaveLength(1);
+    expect(mine[0].member_role).toBe('teacher');
+  });
+
+  it('ikkinchi hisob: yangi talaba 201 + role: student; qayta — already_member', async () => {
+    const { s, gA } = await classroom();
+    const st = await s.signIn(uniqueEmail('second'));
+    const c = gA.join_code as string;
+    const first = await s.call('POST', '/v1/groups/join', {
+      token: st.token,
+      body: { code: ` ${c.slice(0, 4).toLowerCase()} ${c.slice(4)} ` },
+    });
+    expect(first.status).toBe(201);
+    expect(first.data).toMatchObject({ group_id: gA.id, role: 'student', already_member: false });
+    const again = await s.call('POST', '/v1/groups/join', { token: st.token, body: { code: c } });
+    expect(again.status).toBe(200);
+    expect(again.data).toMatchObject({ role: 'student', already_member: true });
+  });
+
+  it("kod: kichik harf, bo'shliq va chiziqcha bilan ham topiladi", async () => {
+    const { s, gA } = await classroom();
+    const c = gA.join_code as string;
+    for (const variant of [c.toLowerCase(), `${c.slice(0, 4)}-${c.slice(4)}`, `${c.slice(0, 4)} ${c.slice(4)}`]) {
+      const st = await s.signIn(uniqueEmail('v'));
+      const r = await s.call('POST', '/v1/groups/join', { token: st.token, body: { code: variant } });
+      expect(r.status, variant).toBe(201);
+    }
+  });
+
+  it("taxallus: iPhone apostrofi (’ ‘ ʻ ʼ) qabul qilinadi va ' ga keltiriladi", async () => {
+    const { s, tA, gA } = await classroom();
+    const a = await s.signIn(uniqueEmail('ap1'));
+    const r = await s.call('POST', '/v1/groups/join', { token: a.token, body: { code: gA.join_code, display_name: 'G’ayrat' } });
+    expect(r.status, r.text).toBe(201);
+    const m = (await s.call('GET', `/v1/groups/${gA.id}/members`, { token: tA.token })).data;
+    expect(m.map((x: any) => x.display_name)).toContain("G'ayrat");
+    // Boshqa apostrof bilan yozilgan xuddi shu taxallus — band.
+    const b = await s.signIn(uniqueEmail('ap2'));
+    const dup = await s.call('POST', '/v1/groups/join', { token: b.token, body: { code: gA.join_code, display_name: 'Gʻayrat' } });
+    expect(dup.status).toBe(409);
+    expect(dup.data.error).toBe('nickname_taken');
+    for (const ok of ['O‘tkir', 'Shoʼira', "Ma'mura"]) {
+      const u = await s.signIn(uniqueEmail('ap'));
+      const res = await s.call('POST', '/v1/groups/join', { token: u.token, body: { code: gA.join_code, display_name: ok } });
+      expect(res.status, ok).toBe(201);
+    }
+  });
+
+  it("so'kinish filtri oddiy o'zbek ismlarini rad etmaydi", async () => {
+    const { s, gB } = await classroom();
+    const names = [
+      'Ali', 'Lola', 'Dilnoza', 'Sardor', 'Shahnoza', 'Muhabbat', 'Jasur', 'Sanjar', 'Bekzod', 'Xurshid',
+      'Zafar', 'Asal', 'Kamola', 'Nodira', 'Sevara', 'Sitora', 'Dildora', 'Hasan', 'Husan', 'Sherzod',
+      'Gulnora', 'Mohira', 'Nigora', 'Feruza', 'Ozoda', 'Shoxrux', 'Suhrob', 'Ulug‘bek', 'Laylo', 'Malika',
+    ];
+    for (const n of names) {
+      const u = await s.signIn(uniqueEmail('nm'));
+      const r = await s.call('POST', '/v1/groups/join', { token: u.token, body: { code: gB.join_code, display_name: n } });
+      expect(r.status, `${n}: ${r.text}`).toBe(201);
+    }
+  });
+
+  it("noto'g'ri taxallus — 400 invalid_nickname (ilova aniq sabab ko'rsatadi)", async () => {
+    const { s, gA } = await classroom();
+    const u = await s.signIn(uniqueEmail('bad'));
+    for (const bad of ['Ali!', '-Ali', 'Ali 🙂']) {
+      const r = await s.call('POST', '/v1/groups/join', { token: u.token, body: { code: gA.join_code, display_name: bad } });
+      expect(r.status, bad).toBe(400);
+      expect(r.data.error, bad).toBe('invalid_nickname');
+    }
+  });
+});

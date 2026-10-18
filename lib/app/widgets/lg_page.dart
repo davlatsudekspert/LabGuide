@@ -134,6 +134,7 @@ class _LgPageState extends State<LgPage> {
         changed = _logic.onScroll(
           pixels: metrics.pixels,
           delta: n.scrollDelta ?? 0,
+          minScrollExtent: metrics.minScrollExtent,
           maxScrollExtent: metrics.maxScrollExtent,
           collapsibleExtent: _largeTitleExtent,
         );

@@ -76,6 +76,54 @@ void main() {
       expect(h.collapsed, isFalse);
     });
 
+    // iPhone xatosi (2026-10-18): ro'yxat oxiridagi bounce teskari scroll
+    // deb sanalib, sarlavha kengayar va kontent pastga tushib ketardi.
+    test('overscroll and bounce-back at the end are ignored', () {
+      final h = CollapseHysteresis();
+      step(h, 100, 30);
+      expect(h.collapsed, isTrue);
+      // Oxirgacha (2000) va undan 150 px o'tib — chegaradan tashqari.
+      expect(step(h, 2150, 200), isFalse);
+      // Bounce: 2150 → 2000 orqaga, katta manfiy deltalar.
+      for (final p in [2120.0, 2080.0, 2040.0, 2010.0, 2000.0]) {
+        expect(step(h, p, p - (p + 30)), isFalse);
+      }
+      expect(h.collapsed, isTrue);
+      // Ro'yxat ichida haqiqiy teskari scroll — kengayadi.
+      step(h, 1990, -10);
+      expect(step(h, 1985, -5), isTrue);
+      expect(h.collapsed, isFalse);
+    });
+
+    test('overscroll at the top (negative pixels) keeps it expanded', () {
+      final h = CollapseHysteresis();
+      expect(step(h, -40, -40), isFalse);
+      expect(step(h, -10, 30), isFalse);
+      expect(h.collapsed, isFalse);
+    });
+
+    test('does not collapse when the shrunk extent would cut the offset', () {
+      final h = CollapseHysteresis();
+      // max 300, sarlavha 120 → yig'ilsa max 180; offset 250 > 180:
+      // pozitsiya chegaradan chiqib, fizika uni orqaga qaytarardi.
+      h.onScroll(
+        pixels: 250,
+        delta: 30,
+        maxScrollExtent: 300,
+        collapsibleExtent: 120,
+      );
+      expect(h.collapsed, isFalse);
+      // Yuqoriroqda — yig'iladi.
+      final h2 = CollapseHysteresis();
+      h2.onScroll(
+        pixels: 150,
+        delta: 30,
+        maxScrollExtent: 300,
+        collapsibleExtent: 120,
+      );
+      expect(h2.collapsed, isTrue);
+    });
+
     test('NaN input is ignored', () {
       final h = CollapseHysteresis();
       expect(step(h, double.nan, 50), isFalse);

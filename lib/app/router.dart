@@ -85,6 +85,10 @@ GoRouter buildRouter(
   final rootKey = GlobalKey<NavigatorState>(debugLabel: 'root');
   final tabMemory = TabMemory();
 
+  /// Onboarding paytida ochilgan taklif havolasi (`/j?c=..`): onboarding
+  /// tugagach qo'shilish ekrani ochiladi.
+  String? pendingInvite;
+
   List<RouteBase> analyteRoutes() => [
     GoRoute(
       path: 'analyte/:id',
@@ -137,12 +141,17 @@ GoRouter buildRouter(
       // Taklif havolasi (QR → sayt → “Ilovada ochish”: labguide://app/j?c=..
       // yoki https://labguide.nfcstore.uz/j/?c=..&a=..) — qo'shilish ekrani.
       final path = state.uri.path;
-      if (settings.onboarded && (path == '/j' || path == '/j/')) {
+      if (path == '/j' || path == '/j/') {
         final q = state.uri.queryParameters;
-        return Uri(
+        final join = Uri(
           path: '/learn/classes/join',
           queryParameters: {'code': ?q['c'], 'a': ?q['a']},
         ).toString();
+        if (settings.onboarded) return join;
+        // Yangi o'rnatilgan ilova (ikkinchi telefon/hisob): taklif
+        // onboarding tugaguncha eslab qolinadi — avval kod yo'qolib,
+        // talaba bosh sahifaga tushib qolardi.
+        pendingInvite = join;
       }
       final loc = state.matchedLocation;
       final inOnboarding = loc.startsWith('/welcome') || loc == '/terms';
@@ -151,7 +160,11 @@ GoRouter buildRouter(
         return loc == '/welcome/language' ? null : '/welcome/language';
       }
       if (!settings.onboarded && !inOnboarding) return '/welcome';
-      if (settings.onboarded && loc.startsWith('/welcome')) return '/home';
+      if (settings.onboarded && loc.startsWith('/welcome')) {
+        final invite = pendingInvite;
+        pendingInvite = null;
+        return invite ?? '/home';
+      }
       return null;
     },
     routes: [

@@ -97,3 +97,33 @@ InviteTarget? parseInvite(String? text) {
   };
   return found.length == 1 ? InviteTarget(found.single) : null;
 }
+
+/// Kod yaroqli alifbodan tashqari (0, O, 1, I) belgini o'z ichiga oladimi.
+/// Bunday kod serverda hech qachon bo'lmaydi — "topilmadi" o'rniga aniq
+/// sabab ko'rsatiladi.
+bool inviteCodeHasAmbiguous(String code) =>
+    RegExp('[01OI]').hasMatch(code.toUpperCase());
+
+/// Tipografik apostroflar: iPhone (Smart Punctuation) ' ni ’ ga aylantiradi;
+/// o'zbekcha oʻ/gʻ turli belgilar bilan yoziladi. Server bilan bir xil
+/// (`cloudflare/src/groups.ts` APOSTROPHES).
+final _apostrophes = RegExp('[‘’ʼʻ`´′]');
+
+/// Server qoidasi (`NICK_RE`): harf/raqam bilan boshlanadi, harf/raqam/nuqta
+/// bilan tugaydi; ichida faqat harf, raqam, bo'shliq va . _ ' -; 2–24 belgi.
+final _nicknameRe = RegExp(
+  r"^[\p{L}\p{N}][\p{L}\p{N} ._'-]{0,22}[\p{L}\p{N}.]$",
+  unicode: true,
+);
+
+/// Taxallusni server kabi normallashtiradi: chetdagi bo'shliqlar,
+/// takroriy bo'shliqlar va apostroflar.
+String normalizeNickname(String raw) =>
+    raw.trim().replaceAll(RegExp(r'\s+'), ' ').replaceAll(_apostrophes, "'");
+
+/// Normallashtirilgan taxallus server qoidasiga mosmi (bo'sh — mos: tartib
+/// raqami ishlatiladi).
+bool nicknameAllowed(String raw) {
+  final n = normalizeNickname(raw);
+  return n.isEmpty || _nicknameRe.hasMatch(n);
+}

@@ -7,6 +7,8 @@ import 'package:labguide/core/backend/backend_models.dart';
 import 'package:labguide/core/backend/lab_backend.dart';
 import 'package:labguide/core/backend/partner_models.dart';
 import 'package:labguide/features/auth/otp_auth.dart';
+import 'package:labguide/features/classroom/invite_link.dart'
+    show nicknameAllowed, normalizeNickname;
 
 class _User {
   _User(this.id, this.email);
@@ -594,9 +596,18 @@ class FakeLabBackend implements LabBackend {
 
   /// Taxallus: bo'sh — null (tartib raqami ko'rinadi); email ishlatilmaydi.
   String? _aliasOf(String? alias) {
-    final a = alias?.trim() ?? '';
+    // Worker kabi: apostroflar (iPhone ’) normallashtiriladi, belgilar
+    // `NICK_RE` bo'yicha tekshiriladi (`400 invalid_nickname`).
+    final a = normalizeNickname(alias ?? '');
     if (a.isEmpty) return null;
     _checkLength(a, 2, 24); // ilova maydoni va Worker: 2–24
+    if (!nicknameAllowed(a)) {
+      throw const BackendException(
+        BackendFailure.invalid,
+        'invalid nickname',
+        'invalid_nickname',
+      );
+    }
     return a;
   }
 
@@ -673,13 +684,19 @@ class FakeLabBackend implements LabBackend {
   Future<String> joinGroup(String code, {String? displayName}) async {
     final u = _require();
     final g = _groups
-        .where((g) => g.code == code.trim().toUpperCase())
+        .where(
+          (g) => g.code == code.toUpperCase().replaceAll(RegExp(r'[\s-]'), ''),
+        )
         .firstOrNull;
     if (g == null) throw const BackendException(BackendFailure.notFound);
     if (_isMember(g.id)) return g.id; // SQL: qayta qo'shilish o'zgartirmaydi
     final shown = _aliasOf(displayName);
     if (_members.where((m) => m.groupId == g.id).length >= 200) {
-      throw const BackendException(BackendFailure.rateLimited);
+      throw const BackendException(
+        BackendFailure.rateLimited,
+        'group full',
+        'group_full',
+      );
     }
     // Server kabi: taxallus guruhda yagona (katta-kichik harf farqsiz).
     if (shown != null &&
