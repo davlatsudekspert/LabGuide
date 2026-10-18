@@ -138,7 +138,7 @@ class LearnScreen extends StatelessWidget {
           onTap: () => openInTab(context, '/lab/cytology', exact: true),
           divider: lessonPlanVisible(context),
         ),
-        // Dars rejasi — ustoz ish maydoni: faqat ustoz va admin (D-68 Q5).
+        // Dars rejasi — ustoz ish maydoni: faqat ustoz va admin (D-69 Q5).
         // "Ilmiy ish maydoni" (Kutubxona) alohida qoladi.
         if (lessonPlanVisible(context))
           LgRow(
@@ -150,7 +150,7 @@ class LearnScreen extends StatelessWidget {
             divider: false,
           ),
         // Lab bo'limlarining mashqlari — bir joyda, bir xil ko'rinishda
-        // (D-68 Q8). Mashqi bor har bo'lim; koagulogramma va koprologiyada
+        // (D-69 Q8). Mashqi bor har bo'lim; koagulogramma va koprologiyada
         // hozircha mashq yo'q.
         LgSectionTitle(l.learnSectionQuizzesTitle),
         for (final (i, q) in kLabSectionQuizzes.indexed)
@@ -166,7 +166,7 @@ class LearnScreen extends StatelessWidget {
   }
 }
 
-/// "Dars rejasi" qatori: ustoz yoki server tasdiqlagan admin (D-68 Q5).
+/// "Dars rejasi" qatori: ustoz yoki server tasdiqlagan admin (D-69 Q5).
 bool lessonPlanVisible(BuildContext context) {
   final s = context.services;
   final a = s.access.access;

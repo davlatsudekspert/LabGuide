@@ -190,7 +190,7 @@ class ProfileScreen extends StatelessWidget {
               icon: Icons.download_for_offline_outlined,
               onTap: () => context.push('/profile/packs'),
             ),
-            // Yagona “Yordam va aloqa” (D-68 Q6): ichida ilova ichidagi
+            // Yagona “Yordam va aloqa” (D-69 Q6): ichida ilova ichidagi
             // yozishma va email/shikoyat. Serverga bog'liq emas — doim
             // ko'rinadi (email yo'li doim ishlaydi).
             LgRow(

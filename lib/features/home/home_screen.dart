@@ -55,7 +55,7 @@ class RoleHome {
   final String heroBody;
 
   /// Hero tugmasi: oxirgi ochilgan narsa bo'lmasa — rolning boshlang'ich
-  /// amali (1-plitkadan farqli, D-68 Q3). Tarix bo'lsa — “Davom ettirish”.
+  /// amali (1-plitkadan farqli, D-69 Q3). Tarix bo'lsa — “Davom ettirish”.
   final String heroCta;
   final String heroLocation;
   final List<HomeAction> actions;
@@ -71,7 +71,7 @@ class RoleHome {
       heroBody: l.homeHeroDoctorBody,
       heroCta: l.homeHeroDoctorCta,
       // Tahlil qidiruvi (maydon fokusda) — 1-plitka "Tahlillar" ro'yxatini
-      // takrorlamaydi (D-68 Q3).
+      // takrorlamaydi (D-69 Q3).
       heroLocation: '/tests?search=1',
       actions: [
         HomeAction(
@@ -187,7 +187,7 @@ class RoleHome {
           l.homeTileExam,
         ),
         // "Kunlik savol" plitkasi yo'q: shu sahifada Kunlik karta bor
-        // (D-68 Q3).
+        // (D-69 Q3).
         HomeAction(
           l.featureTopics,
           Icons.school_outlined,
@@ -329,7 +329,7 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-/// Bosh sahifa hero kartasi (D-68 Q3): “Davom ettirish” — oxirgi ochilgan
+/// Bosh sahifa hero kartasi (D-69 Q3): “Davom ettirish” — oxirgi ochilgan
 /// taqdimot, mavzu testi yoki bo'lim (shu qurilma tarixi); tarix bo'lmasa —
 /// rolning boshlang'ich amali: talaba — kunlik savollar, ustoz — guruhlar,
 /// laborant — bugungi toifa mashg'uloti (toifa ko'rinsa) yoki QC, shifokor —

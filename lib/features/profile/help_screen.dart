@@ -6,7 +6,7 @@ import '../../app/widgets/lg_page.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
 
-/// Profildagi yagona “Yordam va aloqa” kirishi (D-68 Q6): ichida ikki aniq
+/// Profildagi yagona “Yordam va aloqa” kirishi (D-69 Q6): ichida ikki aniq
 /// yo'l — ilova ichidagi yozishma (`/profile/support`, javob ilovaga keladi)
 /// va email / shikoyat (`/profile/contact`, serversiz doim ochiq). Ikkala
 /// manzil o'zgarmagan: boshqa joylardagi havolalar (hamjamiyatdagi shikoyat,

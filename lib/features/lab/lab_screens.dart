@@ -32,7 +32,7 @@ class LabScreen extends StatelessWidget {
       subtitle: l.labSubtitle,
       showBrand: true,
       children: [
-        // Ikki guruh (sarlavha bilan, D-68 Q2): avval kundalik ish vositalari
+        // Ikki guruh (sarlavha bilan, D-69 Q2): avval kundalik ish vositalari
         // (leykoformula, kalibrlash, QC, preanalitika, kalkulyator,
         // apparatlar), so'ng rasmli bo'limlar va atlaslar.
         LgSectionTitle(l.labToolsTitle),

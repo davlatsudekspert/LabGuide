@@ -104,7 +104,7 @@ abstract final class StoreKeys {
   static const lectureOrientation = 'lecture.orientation';
 
   /// Bosh sahifadagi “Davom ettirish”: oxirgi ochilgan taqdimot, mavzu testi
-  /// yoki bo'lim (`kind:id`) — faqat shu qurilmada (D-68 Q3).
+  /// yoki bo'lim (`kind:id`) — faqat shu qurilmada (D-69 Q3).
   static const homeResume = 'home.resume';
 
   static const all = <String>{

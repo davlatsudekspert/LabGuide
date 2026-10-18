@@ -204,7 +204,7 @@ GoRouter buildRouter(
             path: 'privacy',
             builder: (context, state) => const PrivacyScreen(),
           ),
-          // Yordam va aloqa (D-68 Q6): ilova ichidagi yozishma va email —
+          // Yordam va aloqa (D-69 Q6): ilova ichidagi yozishma va email —
           // bitta kirish. Ikkala manzil (`support`, `contact`) o'zgarmagan.
           GoRoute(
             path: 'help',
@@ -1357,7 +1357,7 @@ GoRouter buildRouter(
                       ),
                       // Mavzu manzili (eski havolalar, guruh darsi): tayyor
                       // taqdimoti bo'lsa — o'sha deckka yo'naltiriladi
-                      // (D-45, D-68); bo'lmasa avtomatik slaydlar.
+                      // (D-45, D-69); bo'lmasa avtomatik slaydlar.
                       GoRoute(
                         path: ':topicId',
                         parentNavigatorKey: rootKey,

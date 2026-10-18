@@ -616,7 +616,7 @@ class _GroupTopicScreenState extends State<GroupTopicScreen>
           body: l.classroomStageLectureBody,
           done: gt?.lectureDoneAt != null,
           children: [
-            // D-45/D-68: mavzuning tayyor (16:9) taqdimoti bo'lsa — Ma'ruza
+            // D-45/D-69: mavzuning tayyor (16:9) taqdimoti bo'lsa — Ma'ruza
             // shuni ochadi (Ma'ruza ro'yxatidagi o'sha deck); avtomatik
             // slaydlar faqat deck yo'q bo'lsa.
             _LectureButtons(topicId: t.id, groupId: widget.groupId),
@@ -1420,7 +1420,7 @@ class _LectureButtons extends StatelessWidget {
             onPressed: auto,
           );
         }
-        // Tayyor taqdimot bor — faqat u (D-68: avtomatik slaydlar ikkinchi
+        // Tayyor taqdimot bor — faqat u (D-69: avtomatik slaydlar ikkinchi
         // tugma sifatida ko'rsatilmaydi).
         return LgButton(
           key: const ValueKey('group-lecture-deck'),

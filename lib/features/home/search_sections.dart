@@ -464,7 +464,7 @@ const kSearchSections = <SearchSection>[
     route: '/learn/lecture',
     icon: Icons.co_present_outlined,
     title: _lecture,
-    // Hamma rolga (D-68 Q4): O'rganish tabidagi "Ma'ruza" qatori bilan bir
+    // Hamma rolga (D-69 Q4): O'rganish tabidagi "Ma'ruza" qatori bilan bir
     // xil — talaba ham mavzu taqdimoti va testini shu yerdan ochadi.
     synonyms: [
       'maruza',

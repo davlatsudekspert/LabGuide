@@ -6,7 +6,7 @@ import '../../l10n/gen/app_localizations.dart';
 import '../classroom/lecture_catalog.dart';
 import 'search_sections.dart';
 
-// Bosh sahifadagi “Davom ettirish” (D-68 Q3): oxirgi ochilgan taqdimot,
+// Bosh sahifadagi “Davom ettirish” (D-69 Q3): oxirgi ochilgan taqdimot,
 // mavzu testi yoki bo'lim — faqat shu qurilmada (StoreKeys.homeResume).
 // Yozuv router manzilidan olinadi (app.dart → ResumeHistory.note), shuning
 // uchun har ekran o'zi yozishi shart emas.

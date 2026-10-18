@@ -223,7 +223,7 @@ SlideRange? _range(Map<String, Object?>? j) {
 
 /// Ma'ruza bo'limi: BARCHA tayyor taqdimotlar (qidiruv va filtr bilan) va
 /// avtomatik taqdimot kirishi (serversiz). O'quv dasturining har mavzusi
-/// uchun tayyor 16:9 taqdimot bor (D-68, Q1) — mavzular ro'yxati ikkinchi
+/// uchun tayyor 16:9 taqdimot bor (D-69, Q1) — mavzular ro'yxati ikkinchi
 /// marta (avtomatik slaydlar bilan) ko'rsatilmaydi.
 class LectureListScreen extends StatelessWidget {
   const LectureListScreen({super.key});
@@ -253,7 +253,7 @@ class LectureListScreen extends StatelessWidget {
   }
 }
 
-/// `/learn/lecture/<topicId>` uchun yo'naltirish (D-45, D-68): mavzuning
+/// `/learn/lecture/<topicId>` uchun yo'naltirish (D-45, D-69): mavzuning
 /// katalogda tayyor taqdimoti bo'lsa — o'sha deck (`/learn/lecture/deck/<id>`);
 /// bo'lmasa `null` (avtomatik slaydlar — zaxira).
 String? lectureTopicRedirect(DeckCatalog? catalog, String topicId) {
