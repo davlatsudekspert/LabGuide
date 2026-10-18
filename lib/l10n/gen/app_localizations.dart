@@ -15055,7 +15055,7 @@ abstract class AppLocalizations {
   /// No description provided for @contactRowSub.
   ///
   /// In en, this message translates to:
-  /// **'Questions, advertising, report a problem'**
+  /// **'Questions, complaints, report a problem'**
   String get contactRowSub;
 
   /// No description provided for @contactTitle.
@@ -15139,13 +15139,13 @@ abstract class AppLocalizations {
   /// No description provided for @contactReportBody.
   ///
   /// In en, this message translates to:
-  /// **'Tell us about wrong medical content, an inappropriate advertisement or inappropriate user content.'**
+  /// **'Tell us about wrong medical content or inappropriate user content.'**
   String get contactReportBody;
 
   /// No description provided for @contactReportHint.
   ///
   /// In en, this message translates to:
-  /// **'Please name the section or card (and the advertiser, for an ad) so we can find it quickly.'**
+  /// **'Please name the section or card so we can find it quickly.'**
   String get contactReportHint;
 
   /// No description provided for @contactReportAction.
@@ -15181,7 +15181,7 @@ abstract class AppLocalizations {
   /// Prefilled email body (no personal data)
   ///
   /// In en, this message translates to:
-  /// **'Section / card name (or advertiser):\nWhat is wrong:\n(Please do not include patient data.)\n\n\n---\nApp: LabGuide {version}\nPlatform: {platform}'**
+  /// **'Section / card name:\nWhat is wrong:\n(Please do not include patient data.)\n\n\n---\nApp: LabGuide {version}\nPlatform: {platform}'**
   String contactMailBodyReport(String version, String platform);
 
   /// Partner type: a laboratory that provides testing services (home ad slot 1)
@@ -17137,7 +17137,7 @@ abstract class AppLocalizations {
   /// No description provided for @helpIntro.
   ///
   /// In en, this message translates to:
-  /// **'Choose what suits you: an in-app message thread (the reply arrives here) or email (complaint, advertising, privacy request).'**
+  /// **'Choose what suits you: an in-app message thread (the reply arrives here) or email (complaint, privacy request).'**
   String get helpIntro;
 
   /// No description provided for @learnSectionQuizzesTitle.

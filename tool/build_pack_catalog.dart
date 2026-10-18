@@ -92,18 +92,19 @@ void main() {
           'en': 'Test pack',
         },
         'summary': {
+          // D-65: foydalanuvchiga "draft/черновой" so'zi ko'rsatilmaydi
+          // (audit 2026-10-18, tablar).
           'uz':
               'Yuklab olish, tekshirish va yangilashni sinash uchun. Ichida '
-              'asosiy paketdagi bitta draft kartaning nusxasi bor — klinik '
-              'paket emas.',
+              'asosiy paketdagi bitta kartaning nusxasi bor — klinik paket '
+              'emas.',
           'ru':
               'Для проверки загрузки, контроля целостности и обновления. '
-              'Внутри — копия одной черновой карточки из основного пакета; '
-              'это не клинический пакет.',
+              'Внутри — копия одной карточки из основного пакета; это не '
+              'клинический пакет.',
           'en':
               'For testing download, integrity checks and updates. Contains '
-              'a copy of one draft card from the core pack — not a clinical '
-              'pack.',
+              'a copy of one card from the core pack — not a clinical pack.',
         },
       },
     ],

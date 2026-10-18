@@ -8749,7 +8749,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get contactRowTitle => 'Контакты и жалобы';
 
   @override
-  String get contactRowSub => 'Вопросы, реклама, сообщить об ошибке';
+  String get contactRowSub => 'Вопросы, жалобы, сообщить об ошибке';
 
   @override
   String get contactTitle => 'Связь';
@@ -8796,11 +8796,11 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get contactReportBody =>
-      'Сообщите о неверных медицинских данных, неуместной рекламе или неуместном пользовательском контенте.';
+      'Сообщите о неверных медицинских данных или неуместном пользовательском контенте.';
 
   @override
   String get contactReportHint =>
-      'Укажите в письме раздел или карточку (для рекламы — рекламодателя), чтобы мы быстрее нашли.';
+      'Укажите в письме раздел или карточку, чтобы мы быстрее нашли.';
 
   @override
   String get contactReportAction => 'Отправить жалобу';
@@ -8825,7 +8825,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String contactMailBodyReport(String version, String platform) {
-    return 'Раздел / название карточки (или рекламодатель):\nЧто не так:\n(Не указывайте данные пациентов.)\n\n\n---\nПриложение: LabGuide $version\nПлатформа: $platform';
+    return 'Раздел / название карточки:\nЧто не так:\n(Не указывайте данные пациентов.)\n\n\n---\nПриложение: LabGuide $version\nПлатформа: $platform';
   }
 
   @override
@@ -10010,7 +10010,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get helpIntro =>
-      'Выберите удобный способ: переписка в приложении (ответ придёт сюда) или email (жалоба, реклама, запрос о конфиденциальности).';
+      'Выберите удобный способ: переписка в приложении (ответ придёт сюда) или email (жалоба, запрос о конфиденциальности).';
 
   @override
   String get learnSectionQuizzesTitle => 'Тренировки по разделам';

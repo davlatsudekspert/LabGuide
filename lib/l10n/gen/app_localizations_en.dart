@@ -8722,7 +8722,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get contactRowTitle => 'Contact & reports';
 
   @override
-  String get contactRowSub => 'Questions, advertising, report a problem';
+  String get contactRowSub => 'Questions, complaints, report a problem';
 
   @override
   String get contactTitle => 'Contact';
@@ -8769,11 +8769,11 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get contactReportBody =>
-      'Tell us about wrong medical content, an inappropriate advertisement or inappropriate user content.';
+      'Tell us about wrong medical content or inappropriate user content.';
 
   @override
   String get contactReportHint =>
-      'Please name the section or card (and the advertiser, for an ad) so we can find it quickly.';
+      'Please name the section or card so we can find it quickly.';
 
   @override
   String get contactReportAction => 'Send a report';
@@ -8798,7 +8798,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String contactMailBodyReport(String version, String platform) {
-    return 'Section / card name (or advertiser):\nWhat is wrong:\n(Please do not include patient data.)\n\n\n---\nApp: LabGuide $version\nPlatform: $platform';
+    return 'Section / card name:\nWhat is wrong:\n(Please do not include patient data.)\n\n\n---\nApp: LabGuide $version\nPlatform: $platform';
   }
 
   @override
@@ -9970,7 +9970,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get helpIntro =>
-      'Choose what suits you: an in-app message thread (the reply arrives here) or email (complaint, advertising, privacy request).';
+      'Choose what suits you: an in-app message thread (the reply arrives here) or email (complaint, privacy request).';
 
   @override
   String get learnSectionQuizzesTitle => 'Section practice';

@@ -8608,7 +8608,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get contactRowTitle => 'Aloqa va shikoyat';
 
   @override
-  String get contactRowSub => 'Savol, reklama, xato haqida xabar';
+  String get contactRowSub => 'Savol, shikoyat, xato haqida xabar';
 
   @override
   String get contactTitle => 'Aloqa';
@@ -8655,11 +8655,11 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get contactReportBody =>
-      'Noto‘g‘ri tibbiy ma’lumot, nomaqbul reklama yoki nomaqbul foydalanuvchi kontenti haqida yozing.';
+      'Noto‘g‘ri tibbiy ma’lumot yoki nomaqbul foydalanuvchi kontenti haqida yozing.';
 
   @override
   String get contactReportHint =>
-      'Xatda bo‘lim yoki karta nomini (reklama bo‘lsa — reklama bergan firmani) yozing: tezroq topamiz.';
+      'Xatda bo‘lim yoki karta nomini yozing: tezroq topamiz.';
 
   @override
   String get contactReportAction => 'Shikoyat yuborish';
@@ -8684,7 +8684,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String contactMailBodyReport(String version, String platform) {
-    return 'Bo‘lim / karta nomi (yoki reklama bergan firma):\nNima noto‘g‘ri:\n(Bemor ma’lumotlarini yozmang.)\n\n\n---\nIlova: LabGuide $version\nPlatforma: $platform';
+    return 'Bo‘lim / karta nomi:\nNima noto‘g‘ri:\n(Bemor ma’lumotlarini yozmang.)\n\n\n---\nIlova: LabGuide $version\nPlatforma: $platform';
   }
 
   @override
@@ -9832,7 +9832,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get helpIntro =>
-      'Qulay yo‘lni tanlang: ilova ichidagi yozishma (javob shu yerga keladi) yoki email (shikoyat, reklama, maxfiylik so‘rovi).';
+      'Qulay yo‘lni tanlang: ilova ichidagi yozishma (javob shu yerga keladi) yoki email (shikoyat, maxfiylik so‘rovi).';
 
   @override
   String get learnSectionQuizzesTitle => 'Bo‘lim mashqlari';

@@ -5000,7 +5000,7 @@
     "description": "Lab tab: histology picture card subtitle"
   },
   "contactRowTitle": "Contact & reports",
-  "contactRowSub": "Questions, advertising, report a problem",
+  "contactRowSub": "Questions, complaints, report a problem",
   "contactTitle": "Contact",
   "contactIntro": "Works without internet or an account: the message is sent from your mail app.",
   "contactEmailLabel": "Email",
@@ -5014,8 +5014,8 @@
   "contactAdBody": "Laboratory equipment makers, distributors and service companies can advertise in LabGuide.\nWrite to us, or use the partner form if it is available in your version.",
   "contactAdAction": "Write about advertising",
   "contactReportTitle": "Report a problem",
-  "contactReportBody": "Tell us about wrong medical content, an inappropriate advertisement or inappropriate user content.",
-  "contactReportHint": "Please name the section or card (and the advertiser, for an ad) so we can find it quickly.",
+  "contactReportBody": "Tell us about wrong medical content or inappropriate user content.",
+  "contactReportHint": "Please name the section or card so we can find it quickly.",
   "contactReportAction": "Send a report",
   "contactResponseNote": "We read every report and fix confirmed errors, but we cannot promise a reply time. This address is not for medical emergencies.",
   "contactPrivacyNote": "If you write to us, we see your email address and what you write.",
@@ -5043,7 +5043,7 @@
       }
     }
   },
-  "contactMailBodyReport": "Section / card name (or advertiser):\nWhat is wrong:\n(Please do not include patient data.)\n\n\n---\nApp: LabGuide {version}\nPlatform: {platform}",
+  "contactMailBodyReport": "Section / card name:\nWhat is wrong:\n(Please do not include patient data.)\n\n\n---\nApp: LabGuide {version}\nPlatform: {platform}",
   "@contactMailBodyReport": {
     "description": "Prefilled email body (no personal data)",
     "placeholders": {
@@ -5872,7 +5872,7 @@
   "homeHeroLabToifaCta": "Today’s category practice",
   "helpTitle": "Help & contact",
   "helpSub": "In the app or by email — question, suggestion, complaint",
-  "helpIntro": "Choose what suits you: an in-app message thread (the reply arrives here) or email (complaint, advertising, privacy request).",
+  "helpIntro": "Choose what suits you: an in-app message thread (the reply arrives here) or email (complaint, privacy request).",
   "learnSectionQuizzesTitle": "Section practice",
   "learnSectionQuizRow": "{section} — practice",
   "@learnSectionQuizRow": {
