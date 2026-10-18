@@ -58,8 +58,13 @@ List<String> drawVariant({
   return out;
 }
 
-/// Variantli test hovuzi chegarasi (server bilan bir xil).
+/// Mavzu testining variantli hovuzi (ko'p bo'lsa — tasodifiy shuncha).
 const kVariantPoolMax = 60;
+
+/// Server qabul qiladigan eng katta variantli hovuz (`MAX_POOL`): 50
+/// savollik variantli umumiy test uchun 100. Eski server (deploydan oldin)
+/// 60 dan kattasini `invalid_questions` bilan rad etadi.
+const kVariantPoolServerMax = 100;
 
 /// Variantli rejim mumkinmi: hovuz kamida 2 × [perStudent].
 bool variantAllowed(int poolSize, int perStudent) =>

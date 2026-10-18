@@ -5642,9 +5642,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get classesAssignments => 'Assignments';
 
   @override
-  String get classesNewAssignment => 'New assignment';
-
-  @override
   String get classesNoAssignmentsTeacher =>
       'No assignments yet. Pick topics and a number of questions from the bank to set one.';
 
@@ -5755,27 +5752,13 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get classesNewAssignmentIntro =>
-      'Pick topics and a number — questions are drawn from the bank at random.';
-
-  @override
   String get classesAssignmentTitle => 'Assignment title';
-
-  @override
-  String get classesAssignmentTitleHint => 'e.g. Topic 1';
 
   @override
   String get classesTimeLimit => 'Time limit, minutes';
 
   @override
-  String get classesTimeLimitHint =>
-      'Optional, 1–180. Time runs from when the student starts and is checked on the server.';
-
-  @override
   String get classesNoLimit => 'No limit';
-
-  @override
-  String get classesDueTitle => 'Due date';
 
   @override
   String get classesDueNone => 'No due date';
@@ -5817,9 +5800,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get classesSendAssignment => 'Set assignment';
-
-  @override
-  String get classesAssignmentCreated => 'Assignment set';
 
   @override
   String get classesSubmitted => 'Answers submitted';
@@ -10087,4 +10067,74 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get rolesTeacherSignInNote =>
       'Sign in to create groups — the signed-in account registers as a teacher with one tap when creating a group.';
+
+  @override
+  String get classesGiveGeneralTest => 'Give a general test';
+
+  @override
+  String get generalTestSub => 'From several topics — up to 50 questions';
+
+  @override
+  String get generalTestIntro =>
+      'Pick topics — questions are spread evenly across them. Students take the test on their phones; the server scores it.';
+
+  @override
+  String get generalTestSources => 'Where questions come from';
+
+  @override
+  String get generalTestSearchHint => 'Search topics (e.g. anaemia)';
+
+  @override
+  String get generalSourceToifa => 'Category exam questions';
+
+  @override
+  String get generalSourceToifaSub => 'Official CLD list, keys checked';
+
+  @override
+  String get generalSourceLecture => 'Lecture topics';
+
+  @override
+  String get generalSourceLectureSub => 'A whole module or single days';
+
+  @override
+  String get generalSourcePack => 'By lab tests';
+
+  @override
+  String get generalSourcePackSub => 'Questions from test cards';
+
+  @override
+  String get generalSourceToifaShort => 'Category';
+
+  @override
+  String get generalSourceLectureShort => 'Lectures';
+
+  @override
+  String get generalSourcePackShort => 'Lab tests';
+
+  @override
+  String get generalSelectAll => 'Select all';
+
+  @override
+  String get generalAllShort => 'all';
+
+  @override
+  String generalDays(int count) {
+    return 'Days · $count';
+  }
+
+  @override
+  String generalSelected(int topics, int questions) {
+    return 'Selected: $topics topics · $questions questions';
+  }
+
+  @override
+  String get generalPickTopic => 'Pick at least one topic';
+
+  @override
+  String generalTestTitle(String topics) {
+    return 'General test: $topics';
+  }
+
+  @override
+  String get generalTestNameHint => 'E.g. Midterm 1';
 }

@@ -155,6 +155,7 @@ const appRoutes = [
   '/learn/toifa/progress',
   '/learn/classes',
   '/learn/classes/new',
+  '/learn/classes/test',
   '/learn/classes/join',
   '/learn/classes/g/x',
   '/learn/classes/g/x/assign',

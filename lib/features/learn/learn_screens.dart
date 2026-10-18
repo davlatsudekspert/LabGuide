@@ -10,6 +10,7 @@ import '../../design/widgets/lg_widgets.dart';
 import '../../design/widgets/reveal_on_mount.dart';
 import '../../l10n/gen/app_localizations.dart';
 import '../auth/ui/welcome_screen.dart';
+import '../classroom/general_test_screen.dart' show generalTestLocation;
 import '../classroom/topic_test_screens.dart' show AssignedTestsCard;
 import '../content/content_model.dart';
 import '../content/ui/content_widgets.dart';
@@ -52,13 +53,28 @@ class LearnScreen extends StatelessWidget {
       subtitle: l.learnClassesSub,
       icon: Icons.groups_outlined,
       onTap: () => context.push('/learn/classes'),
-      divider: !classesFirst,
+      divider: !classesFirst || role == AppRole.teacher,
     );
+    // Ustozga: guruhga umumiy test (bir nechta mavzudan, 50 tagacha savol).
+    final generalTest = role == AppRole.teacher
+        ? LgRow(
+            key: const ValueKey('learn-general-test'),
+            title: l.classesGiveGeneralTest,
+            subtitle: l.generalTestSub,
+            icon: Icons.add_task_rounded,
+            onTap: () => context.push(generalTestLocation),
+            divider: !classesFirst,
+          )
+        : null;
     return LgPage(
       title: l.learnTitle,
       showBrand: true,
       children: [
-        if (classesFirst) ...[classes, const SizedBox(height: 12)],
+        if (classesFirst) ...[
+          classes,
+          ?generalTest,
+          const SizedBox(height: 12),
+        ],
         LgHeroCard(
           image: kHeroImage,
           tag: l.learnHeroTag,
@@ -100,7 +116,7 @@ class LearnScreen extends StatelessWidget {
             );
           },
         ),
-        if (!classesFirst) classes,
+        if (!classesFirst) ...[classes, ?generalTest],
         // Ma'ruza rejimi — faqat o'quv dasturi ilovada bo'lsa (serversiz).
         if (context.services.curriculum.curriculum != null)
           LgRow(

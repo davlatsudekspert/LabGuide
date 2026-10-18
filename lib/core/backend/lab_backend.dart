@@ -136,7 +136,7 @@ abstract interface class LabBackend implements OtpAuthAdapter {
   /// [dayId] — o'quv dasturi mavzusi, [deckId] — taqdimot (mavzu testi);
   /// [revealAfterDue] — to'g'ri javoblar talabaga muddat tugagach (muddat
   /// bo'lishi shart). [perStudent] — variantli test (D-66): [questionIds] —
-  /// hovuz (≤ 60), har talabaga undan [perStudent] ta savol
+  /// hovuz (≤ 100), har talabaga undan [perStudent] ta savol
   /// ([drawVariant]); [poolTopics] — hovuz savollari mavzulari (muvozanat).
   Future<String> createAssignment({
     required String groupId,

@@ -654,8 +654,11 @@ interface AssignmentRow {
   pool_topics: string | null;
 }
 
-/** Variantli test hovuzi chegarasi (D-66). */
-const MAX_POOL = 60;
+/**
+ * Variantli test hovuzi chegarasi (D-66): 50 savollik variantli umumiy test
+ * uchun hovuz kamida 100 (2 × 50) bo'lishi kerak.
+ */
+const MAX_POOL = 100;
 
 /** Talabaga tushgan savollar: variantli testda — deterministik tanlov, aks holda — hammasi. */
 async function studentQuestionIds(a: AssignmentRow, uid: string): Promise<string[]> {
@@ -724,7 +727,7 @@ export async function listAssignments(ctx: Ctx, gid: string): Promise<Response> 
 /**
  * Topshiriq maydonlari (kontrakt: sarlavha 3–120, savol 1–50, vaqt 1–180).
  * Variantli test (`per_student`, D-66): `question_ids` — hovuz (takrorsiz,
- * ≤ 60), `per_student` 1–50 va hovuz kamida 2 × `per_student`;
+ * ≤ 100), `per_student` 1–50 va hovuz kamida 2 × `per_student`;
  * `pool_topics` — ixtiyoriy, hovuz bilan parallel mavzu id lari.
  */
 function parseAssignment(ctx: Ctx, body: Record<string, unknown>) {

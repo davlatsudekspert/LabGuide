@@ -3312,7 +3312,6 @@
   "classesGroupMissing": "Class not found, or you’re no longer a member",
   "classesBackToList": "Back to classes",
   "classesAssignments": "Assignments",
-  "classesNewAssignment": "New assignment",
   "classesNoAssignmentsTeacher": "No assignments yet. Pick topics and a number of questions from the bank to set one.",
   "classesNoAssignmentsStudent": "No assignments yet",
   "classesNoAssignmentsStudentBody": "When your teacher sets one, it will appear here.",
@@ -3407,13 +3406,9 @@
       }
     }
   },
-  "classesNewAssignmentIntro": "Pick topics and a number — questions are drawn from the bank at random.",
   "classesAssignmentTitle": "Assignment title",
-  "classesAssignmentTitleHint": "e.g. Topic 1",
   "classesTimeLimit": "Time limit, minutes",
-  "classesTimeLimitHint": "Optional, 1–180. Time runs from when the student starts and is checked on the server.",
   "classesNoLimit": "No limit",
-  "classesDueTitle": "Due date",
   "classesDueNone": "No due date",
   "classesDueDays": "{count, plural, =1{1 day} other{{count} days}}",
   "@classesDueDays": {
@@ -3444,7 +3439,6 @@
   "classesReshuffle": "Reshuffle",
   "classesKeyNotice": "Students can’t see the answer key in advance — the server does the scoring. Each student submits once.",
   "classesSendAssignment": "Set assignment",
-  "classesAssignmentCreated": "Assignment set",
   "classesSubmitted": "Answers submitted",
   "classesSubmitNetwork": "No connection — answers are saved on this device. Send them again later.",
   "classesSubmitRejected": "The server didn’t accept the answers: time or the due date ran out, or it was already submitted.",
@@ -5935,5 +5929,50 @@
   "classesNicknameSaved": "Nickname saved",
   "classesNicknameNote": "Don't use your real name. Leave empty to show your seat number.",
   "rolesTeacherRegisterNote": "“Continue” registers your account as a teacher: you manage only the groups you create and see their results (not admin rights).",
-  "rolesTeacherSignInNote": "Sign in to create groups — the signed-in account registers as a teacher with one tap when creating a group."
+  "rolesTeacherSignInNote": "Sign in to create groups — the signed-in account registers as a teacher with one tap when creating a group.",
+  "classesGiveGeneralTest": "Give a general test",
+  "generalTestSub": "From several topics — up to 50 questions",
+  "generalTestIntro": "Pick topics — questions are spread evenly across them. Students take the test on their phones; the server scores it.",
+  "generalTestSources": "Where questions come from",
+  "generalTestSearchHint": "Search topics (e.g. anaemia)",
+  "generalSourceToifa": "Category exam questions",
+  "generalSourceToifaSub": "Official CLD list, keys checked",
+  "generalSourceLecture": "Lecture topics",
+  "generalSourceLectureSub": "A whole module or single days",
+  "generalSourcePack": "By lab tests",
+  "generalSourcePackSub": "Questions from test cards",
+  "generalSourceToifaShort": "Category",
+  "generalSourceLectureShort": "Lectures",
+  "generalSourcePackShort": "Lab tests",
+  "generalSelectAll": "Select all",
+  "generalAllShort": "all",
+  "generalDays": "Days · {count}",
+  "@generalDays": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "generalSelected": "Selected: {topics} topics · {questions} questions",
+  "@generalSelected": {
+    "placeholders": {
+      "topics": {
+        "type": "int"
+      },
+      "questions": {
+        "type": "int"
+      }
+    }
+  },
+  "generalPickTopic": "Pick at least one topic",
+  "generalTestTitle": "General test: {topics}",
+  "@generalTestTitle": {
+    "placeholders": {
+      "topics": {
+        "type": "String"
+      }
+    }
+  },
+  "generalTestNameHint": "E.g. Midterm 1"
 }

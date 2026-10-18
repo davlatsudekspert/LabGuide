@@ -20,6 +20,7 @@ import '../learn/exam_widgets.dart';
 import '../learn/learn_screens.dart' show QuizOptionButton, QuizOptionState;
 import '../settings/settings_controller.dart';
 import '../support/support_screens.dart' show formatWhen;
+import 'assign_controls.dart';
 import 'classroom_screens.dart' show CurriculumGate;
 import 'lecture_catalog.dart';
 import 'lecture_library.dart' show openDeck;
@@ -916,8 +917,6 @@ class _ResultView extends StatelessWidget {
 // Ustoz: guruhga topshirish
 // =============================================================================
 
-enum _Due { none, d1, d3, d7, custom }
-
 class _Sent {
   const _Sent(this.group, this.assignment, this.done, this.students);
 
@@ -948,11 +947,10 @@ class _AssignDeckTestScreenState extends State<AssignDeckTestScreen> {
 
   final _count = TextEditingController();
   final Set<String> _picked = {};
-  _Due _due = _Due.d1;
+  AssignDue _due = AssignDue.d1;
 
   /// Har talabaga vaqt (daqiqa); null — vaqtsiz.
-  int? _limit = 10;
-  static const _limits = [10, 15, 20, 30, 45, 60];
+  int? _limit = kAssignDefaultLimit;
   DateTime? _customDue;
   bool _afterDue = false;
   List<ExamQuestion>? _drawn;
@@ -1046,18 +1044,8 @@ class _AssignDeckTestScreenState extends State<AssignDeckTestScreen> {
     }
   }
 
-  DateTime? get _dueAt {
-    final now = context.services.exams.now();
-    DateTime endOf(int days) =>
-        DateTime(now.year, now.month, now.day + days, 23, 59);
-    return switch (_due) {
-      _Due.none => null,
-      _Due.d1 => endOf(1),
-      _Due.d3 => endOf(3),
-      _Due.d7 => endOf(7),
-      _Due.custom => _customDue,
-    };
-  }
+  DateTime? get _dueAt =>
+      assignDueAt(_due, _customDue, context.services.exams.now());
 
   int _max(List<ExamQuestion> pool) =>
       pool.length < maxQuestions ? pool.length : maxQuestions;
@@ -1111,17 +1099,15 @@ class _AssignDeckTestScreenState extends State<AssignDeckTestScreen> {
   }
 
   Future<void> _pickDate() async {
-    final now = context.services.exams.now();
-    final date = await showDatePicker(
-      context: context,
-      initialDate: _customDue ?? now.add(const Duration(days: 1)),
-      firstDate: now,
-      lastDate: now.add(const Duration(days: 365)),
+    final picked = await pickAssignDueDate(
+      context,
+      context.services.exams.now(),
+      _customDue,
     );
-    if (date == null || !mounted) return;
+    if (picked == null || !mounted) return;
     setState(() {
-      _due = _Due.custom;
-      _customDue = DateTime(date.year, date.month, date.day, 23, 59);
+      _due = AssignDue.custom;
+      _customDue = picked;
     });
   }
 
@@ -1219,7 +1205,6 @@ class _AssignDeckTestScreenState extends State<AssignDeckTestScreen> {
   Widget _body(BuildContext context, DeckEntry deck, List<ExamQuestion> pool) {
     final l = AppLocalizations.of(context);
     final text = Theme.of(context).textTheme;
-    final lang = _lang(context);
     if (deck.topics.isEmpty || pool.length < kTopicTestMin) {
       return LgStateView(
         kind: StateKind.empty,
@@ -1303,107 +1288,24 @@ class _AssignDeckTestScreenState extends State<AssignDeckTestScreen> {
           ],
           onChanged: () => setState(() => _redraw(pool)),
         ),
-        SwitchListTile.adaptive(
-          key: const ValueKey('assign-variant'),
-          contentPadding: EdgeInsets.zero,
-          title: Text(l.variantToggle),
-          subtitle: Text(
-            !context.services.backend.supportsVariantTests
-                ? l.variantUnsupported
-                : !canVariant
-                ? l.variantDisabledBody(variantPool.length, n < 1 ? 2 : n * 2)
-                : variant
-                ? l.variantOnBody(variantPool.length, n)
-                : l.variantOffBody,
-            key: const ValueKey('assign-variant-note'),
-          ),
+        AssignVariantSwitch(
+          supported: context.services.backend.supportsVariantTests,
+          allowed: canVariant,
           value: variant,
-          onChanged: canVariant
-              ? (v) => setState(() => _variantChoice = v)
-              : null,
+          poolSize: variantPool.length,
+          count: n,
+          onChanged: (v) => setState(() => _variantChoice = v),
         ),
-        LgSectionTitle(l.classesTimeLimit),
-        Wrap(
-          spacing: 8,
-          runSpacing: 8,
-          children: [
-            for (final m in _limits)
-              LgChoiceChip(
-                key: ValueKey('assign-limit-$m'),
-                label: l.examMinutes(m),
-                selected: _limit == m,
-                onTap: () => setState(() => _limit = m),
-              ),
-            LgChoiceChip(
-              key: const ValueKey('assign-limit-none'),
-              label: l.classesNoLimit,
-              selected: _limit == null,
-              onTap: () => setState(() => _limit = null),
-            ),
-          ],
+        AssignTimingControls(
+          limit: _limit,
+          onLimit: (m) => setState(() => _limit = m),
+          due: _due,
+          dueAt: due,
+          onDue: (d) => setState(() => _due = d),
+          onPickDate: _pickDate,
+          afterDue: _afterDue,
+          onAfterDue: (v) => setState(() => _afterDue = v),
         ),
-        const SizedBox(height: 10),
-        Text(
-          _limit == null
-              ? l.topicTestLimitNoneBody
-              : l.topicTestLimitBody(_limit!),
-          key: const ValueKey('assign-limit-note'),
-          style: text.bodyMedium,
-        ),
-        LgSectionTitle(l.topicTestOpenFor),
-        Wrap(
-          spacing: 8,
-          runSpacing: 8,
-          children: [
-            for (final (d, label) in [
-              (_Due.none, l.classesDueNone),
-              (_Due.d1, l.classesDueDays(1)),
-              (_Due.d3, l.classesDueDays(3)),
-              (_Due.d7, l.classesDueDays(7)),
-            ])
-              LgChoiceChip(
-                key: ValueKey('assign-due-${d.name}'),
-                label: label,
-                selected: _due == d,
-                onTap: () => setState(() => _due = d),
-              ),
-            LgChoiceChip(
-              label: l.classesDuePick,
-              selected: _due == _Due.custom,
-              onTap: _pickDate,
-            ),
-          ],
-        ),
-        const SizedBox(height: 10),
-        Text(
-          due == null
-              ? l.classesDueNoneBody
-              : l.classesDueAt(formatWhen(due, context)),
-          style: text.bodyMedium,
-        ),
-        LgSectionTitle(l.topicTestReveal),
-        Wrap(
-          spacing: 8,
-          runSpacing: 8,
-          children: [
-            LgChoiceChip(
-              key: const ValueKey('assign-reveal-now'),
-              label: l.topicTestRevealNow,
-              selected: !_afterDue,
-              onTap: () => setState(() => _afterDue = false),
-            ),
-            LgChoiceChip(
-              key: const ValueKey('assign-reveal-after'),
-              label: l.topicTestRevealAfterDue,
-              selected: _afterDue,
-              onTap: () => setState(() => _afterDue = true),
-            ),
-          ],
-        ),
-        if (needsDue) ...[
-          const SizedBox(height: 8),
-          LgNotice(l.topicTestRevealNeedsDue, kind: NoticeKind.error),
-        ],
         LgSectionTitle(
           variant
               ? l.variantPoolTitle(variantPool.length)
@@ -1412,56 +1314,13 @@ class _AssignDeckTestScreenState extends State<AssignDeckTestScreen> {
         if (drawn == null)
           Text(l.examCountError(max), style: text.bodyMedium)
         else if (variant)
-          LgPanel(
+          AssignQuestionList(
             key: const ValueKey('assign-variant-pool'),
-            padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                for (final (i, q) in variantPool.indexed)
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 6),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          width: 28,
-                          child: Text('${i + 1}.', style: text.labelLarge),
-                        ),
-                        Expanded(
-                          child: Text(q.prompt(lang), style: text.bodyMedium),
-                        ),
-                      ],
-                    ),
-                  ),
-              ],
-            ),
+            questions: variantPool,
+            dense: true,
           )
         else ...[
-          LgPanel(
-            padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                for (final (i, q) in drawn.indexed)
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 8),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          width: 28,
-                          child: Text('${i + 1}.', style: text.labelLarge),
-                        ),
-                        Expanded(
-                          child: Text(q.prompt(lang), style: text.bodyMedium),
-                        ),
-                      ],
-                    ),
-                  ),
-              ],
-            ),
-          ),
+          AssignQuestionList(questions: drawn),
           const SizedBox(height: 4),
           LgButton.secondary(
             label: l.classesReshuffle,

@@ -806,7 +806,7 @@ class FakeLabBackend implements LabBackend {
         (deckId != null && !_topicId.hasMatch(deckId))) {
       throw const BackendException(BackendFailure.invalid);
     }
-    // D-66: variantli testda hovuz ≤ 60, takrorsiz, kamida 2 × perStudent.
+    // D-66: variantli testda hovuz ≤ 100, takrorsiz, kamida 2 × perStudent.
     if (perStudent != null &&
         (perStudent < 1 ||
             perStudent > 50 ||
@@ -816,7 +816,7 @@ class FakeLabBackend implements LabBackend {
       throw const BackendException(BackendFailure.invalid, 'per_student');
     }
     if (questionIds.isEmpty ||
-        questionIds.length > (perStudent == null ? 50 : 60) ||
+        questionIds.length > (perStudent == null ? 50 : 100) ||
         questionIds.length != correctIndexes.length ||
         correctIndexes.any((i) => i < 0) ||
         (timeLimitMinutes != null &&

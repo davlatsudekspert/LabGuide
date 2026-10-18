@@ -34,6 +34,7 @@ import '../features/instruments/instrument_screens.dart';
 import '../features/lab/lab_screens.dart';
 import '../features/classroom/board_screen.dart';
 import '../features/classroom/classroom_screens.dart';
+import '../features/classroom/general_test_screen.dart';
 import '../features/community/community_screens.dart';
 import '../features/classroom/auto_deck.dart' show AutoDeckSpec;
 import '../features/classroom/auto_deck_screens.dart';
@@ -1203,6 +1204,11 @@ GoRouter buildRouter(
                         path: 'new',
                         builder: (context, state) => const CreateGroupScreen(),
                       ),
+                      // Umumiy test: bir nechta mavzudan, guruh(lar) tanlanadi.
+                      GoRoute(
+                        path: 'test',
+                        builder: (context, state) => const GeneralTestScreen(),
+                      ),
                       GoRoute(
                         path: 'join',
                         builder: (context, state) => JoinGroupScreen(
@@ -1248,10 +1254,11 @@ GoRouter buildRouter(
                               ),
                             ],
                           ),
+                          // Umumiy test (shu guruh oldindan tanlangan).
                           GoRoute(
                             path: 'assign',
-                            builder: (context, state) => NewAssignmentScreen(
-                              groupId: state.pathParameters['gid']!,
+                            builder: (context, state) => GeneralTestScreen(
+                              initialGroupId: state.pathParameters['gid']!,
                             ),
                           ),
                           // Guruh sahifasidan mavzu testi: mavzuni tanlash.
