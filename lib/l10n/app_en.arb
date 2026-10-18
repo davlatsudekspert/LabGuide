@@ -50,7 +50,6 @@
   "homeTileCalibration": "Analyzer, reagent and IFU match",
   "homeTileInstruments": "Principles and methods",
   "homeTileExam": "Timed practice exam",
-  "homeTileDaily": "5 questions every day",
   "homeTileTopics": "Topic, explanation, practice",
   "homeTileClasses": "Students and assignments",
   "homeTileLecture": "Slides and screen casting",
@@ -132,7 +131,7 @@
   "homeFocusTag": "Your focus",
   "homeHeroDoctorTitle": "Understand the result in context",
   "homeHeroDoctorBody": "Tests, influencing factors and related investigations.",
-  "homeHeroDoctorCta": "Explore tests",
+  "homeHeroDoctorCta": "Search tests",
   "condGuideTitle": "Tests by condition",
   "condGuideEyebrow": "Clinician’s guide",
   "condGuideBody": "For each condition: which tests come first, which follow — and what a result may point to.",
@@ -210,7 +209,7 @@
   "homeHeroLabCta": "Open quality control",
   "homeHeroStudentTitle": "Learn biochemistry with understanding",
   "homeHeroStudentBody": "Topic → explanation → practice → review.",
-  "homeHeroStudentCta": "Start learning",
+  "homeHeroStudentCta": "Start daily questions",
   "homeHeroTeacherTitle": "Turn knowledge into teaching",
   "homeHeroTeacherBody": "Classes, explained questions and assignments with deadlines.",
   "homeHeroTeacherCta": "Open classes",
@@ -332,7 +331,6 @@
   "labSubtitle": "A clear path at every stage.",
   "labHeroEyebrow": "Instrument → reagent → method",
   "labHeroTitle": "Calibration",
-  "classroomLectureAuto": "Automatic slides",
   "labSectionsTitle": "Sections and atlases",
   "labToolsTitle": "Work tools",
   "labHeroBody": "Instructions and controls matched to the exact model.",
@@ -4396,14 +4394,6 @@
   "lectureNotesShow": "Show teacher notes",
   "lectureNotesHide": "Hide teacher notes",
   "lectureTeacherNote": "Teacher note",
-  "lectureDeckReady": "Ready presentation · {count} slides",
-  "@lectureDeckReady": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
   "cmTitle": "Community · Q&A",
   "cmHomeSub": "Questions answered by verified lab specialists",
   "cmAsk": "Ask a question",
@@ -5544,8 +5534,6 @@
   "lectureNoResultsTitle": "Nothing found",
   "lectureNoResultsBody": "Try another word or filter. Search works in Uzbek (Latin or Cyrillic), Russian and English.",
   "lectureClearFilters": "Clear search and filters",
-  "lectureTopicsAutoTitle": "Curriculum topics — automatic slides",
-  "lectureTopicsAutoSub": "Topics without a ready presentation are assembled from the curriculum",
   "lectureLangFallback": "This presentation is not available in {wanted}; shown in {shown}",
   "@lectureLangFallback": {
     "placeholders": {
@@ -5857,6 +5845,28 @@
     "placeholders": {
       "n": {
         "type": "int"
+      }
+    }
+  },
+  "homeResumeCta": "Continue",
+  "homeResumeBody": "Last opened: {title}",
+  "@homeResumeBody": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "homeHeroLabToifaCta": "Today’s category practice",
+  "helpTitle": "Help & contact",
+  "helpSub": "In the app or by email — question, suggestion, complaint",
+  "helpIntro": "Choose what suits you: an in-app message thread (the reply arrives here) or email (complaint, advertising, privacy request).",
+  "learnSectionQuizzesTitle": "Section practice",
+  "learnSectionQuizRow": "{section} — practice",
+  "@learnSectionQuizRow": {
+    "placeholders": {
+      "section": {
+        "type": "String"
       }
     }
   }

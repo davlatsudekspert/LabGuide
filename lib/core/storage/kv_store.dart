@@ -103,6 +103,10 @@ abstract final class StoreKeys {
   /// har safar so'raladi) — faqat shu qurilmada.
   static const lectureOrientation = 'lecture.orientation';
 
+  /// Bosh sahifadagi “Davom ettirish”: oxirgi ochilgan taqdimot, mavzu testi
+  /// yoki bo'lim (`kind:id`) — faqat shu qurilmada (D-68 Q3).
+  static const homeResume = 'home.resume';
+
   static const all = <String>{
     language,
     themeMode,
@@ -147,6 +151,7 @@ abstract final class StoreKeys {
     classroomLocal,
     topicTests,
     lectureOrientation,
+    homeResume,
     communityRulesOpen,
     communityBlocked,
   };

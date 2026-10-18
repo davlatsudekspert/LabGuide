@@ -146,9 +146,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get homeTileExam => 'Timed practice exam';
 
   @override
-  String get homeTileDaily => '5 questions every day';
-
-  @override
   String get homeTileTopics => 'Topic, explanation, practice';
 
   @override
@@ -302,7 +299,7 @@ class AppLocalizationsEn extends AppLocalizations {
       'Tests, influencing factors and related investigations.';
 
   @override
-  String get homeHeroDoctorCta => 'Explore tests';
+  String get homeHeroDoctorCta => 'Search tests';
 
   @override
   String get condGuideTitle => 'Tests by condition';
@@ -482,7 +479,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get homeHeroStudentBody => 'Topic → explanation → practice → review.';
 
   @override
-  String get homeHeroStudentCta => 'Start learning';
+  String get homeHeroStudentCta => 'Start daily questions';
 
   @override
   String get homeHeroTeacherTitle => 'Turn knowledge into teaching';
@@ -757,9 +754,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get labHeroTitle => 'Calibration';
-
-  @override
-  String get classroomLectureAuto => 'Automatic slides';
 
   @override
   String get labSectionsTitle => 'Sections and atlases';
@@ -7547,11 +7541,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get lectureTeacherNote => 'Teacher note';
 
   @override
-  String lectureDeckReady(int count) {
-    return 'Ready presentation · $count slides';
-  }
-
-  @override
   String get cmTitle => 'Community · Q&A';
 
   @override
@@ -9484,13 +9473,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get lectureClearFilters => 'Clear search and filters';
 
   @override
-  String get lectureTopicsAutoTitle => 'Curriculum topics — automatic slides';
-
-  @override
-  String get lectureTopicsAutoSub =>
-      'Topics without a ready presentation are assembled from the curriculum';
-
-  @override
   String lectureLangFallback(String wanted, String shown) {
     return 'This presentation is not available in $wanted; shown in $shown';
   }
@@ -9927,5 +9909,35 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String variantReceived(int n) {
     return 'Given to $n students';
+  }
+
+  @override
+  String get homeResumeCta => 'Continue';
+
+  @override
+  String homeResumeBody(String title) {
+    return 'Last opened: $title';
+  }
+
+  @override
+  String get homeHeroLabToifaCta => 'Today’s category practice';
+
+  @override
+  String get helpTitle => 'Help & contact';
+
+  @override
+  String get helpSub =>
+      'In the app or by email — question, suggestion, complaint';
+
+  @override
+  String get helpIntro =>
+      'Choose what suits you: an in-app message thread (the reply arrives here) or email (complaint, advertising, privacy request).';
+
+  @override
+  String get learnSectionQuizzesTitle => 'Section practice';
+
+  @override
+  String learnSectionQuizRow(String section) {
+    return '$section — practice';
   }
 }

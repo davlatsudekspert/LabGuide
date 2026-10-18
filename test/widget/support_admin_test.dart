@@ -28,6 +28,22 @@ Future<void> _signOut(WidgetTester tester, AppServices s) async {
   await tester.pumpAndSettle();
 }
 
+String _loc(WidgetTester tester) => routerOf(tester).state.matchedLocation;
+
+/// Profil → “Yordam va aloqa” (D-68 Q6). Profil uzun (Birliklar qatori) —
+/// qator ro'yxatda pastroqda.
+Future<void> _openHelp(WidgetTester tester) async {
+  final f = find.byKey(const ValueKey('profile-help'));
+  await tester.scrollUntilVisible(
+    f,
+    300,
+    scrollable: find.byType(Scrollable).first,
+  );
+  await tester.pumpAndSettle();
+  await tester.tap(f);
+  await tester.pumpAndSettle();
+}
+
 Future<void> _tapText(WidgetTester tester, String text) async {
   final f = find.text(text).last;
   await tester.ensureVisible(f);
@@ -52,15 +68,15 @@ void main() {
     final services = await makeServices(tester);
     await pumpApp(tester, services);
     await goTo(tester, '/profile');
-    // Profil uzaygan (Birliklar qatori) — qator ro'yxatda pastroqda.
-    final sub = find.text('${_l.supportSub} · ${_l.notAvailableYet}');
-    await tester.scrollUntilVisible(
-      sub,
-      300,
-      scrollable: find.byType(Scrollable).first,
-    );
-    expect(sub, findsOneWidget);
     expect(find.text(_l.adminTitle), findsNothing);
+    // Yagona “Yordam va aloqa” kirishi (D-68 Q6) — ichida ikki yo'l.
+    await _openHelp(tester);
+    expect(_loc(tester), '/profile/help');
+    expect(
+      find.text('${_l.supportSub} · ${_l.notAvailableYet}'),
+      findsOneWidget,
+    );
+    expect(find.text(_l.contactRowTitle), findsOneWidget);
     await _tapText(tester, _l.supportTitle);
     expect(find.text(_l.supportUnavailableTitle), findsOneWidget);
     expect(find.text(_l.supportNew), findsNothing);
@@ -87,6 +103,7 @@ void main() {
     await _signIn(tester, services, _a);
     await goTo(tester, '/profile');
     expect(find.text(_l.adminTitle), findsNothing);
+    await _openHelp(tester);
     await _tapText(tester, _l.supportTitle);
     expect(find.text(_l.supportEmptyTitle), findsOneWidget);
     await _tapText(tester, _l.supportNew);
@@ -167,6 +184,9 @@ void main() {
     await _signOut(tester, services);
     await _signIn(tester, services, _a);
     await goTo(tester, '/profile');
+    expect(find.text(_l.supportUnreadCount(1)), findsOneWidget);
+    await _openHelp(tester);
+    // O'qilmagan javob belgisi ichkaridagi yozishma qatorida ham.
     expect(find.text(_l.supportUnreadCount(1)), findsOneWidget);
     await _tapText(tester, _l.supportTitle);
     await _tapText(tester, 'QC grafigi');

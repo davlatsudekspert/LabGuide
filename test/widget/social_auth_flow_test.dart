@@ -92,28 +92,32 @@ void main() {
     expect(find.text(uz.authSignInGoogle), findsOneWidget);
   });
 
-  testWidgets('server javob bermasa yoki platforma qo‘llamasa: o‘lik tugma yo‘q', (
-    tester,
-  ) async {
-    final dead = await setup(tester, server: FakeSocialBackend()..status = null);
-    await pumpApp(tester, dead.services);
-    await goTo(tester, '/welcome/auth');
-    expect(appleButton, findsNothing);
-    expect(find.text(uz.authSignInGoogle), findsNothing);
-    await tester.pumpWidget(const SizedBox());
+  testWidgets(
+    'server javob bermasa yoki platforma qo‘llamasa: o‘lik tugma yo‘q',
+    (tester) async {
+      final dead = await setup(
+        tester,
+        server: FakeSocialBackend()..status = null,
+      );
+      await pumpApp(tester, dead.services);
+      await goTo(tester, '/welcome/auth');
+      expect(appleButton, findsNothing);
+      expect(find.text(uz.authSignInGoogle), findsNothing);
+      await tester.pumpWidget(const SizedBox());
 
-    final unsupported = await setup(
-      tester,
-      providers: [
-        FakeSocialProvider(SocialProvider.apple, supported: false),
-        FakeSocialProvider(SocialProvider.google),
-      ],
-    );
-    await pumpApp(tester, unsupported.services);
-    await goTo(tester, '/welcome/auth');
-    expect(appleButton, findsNothing);
-    expect(find.text(uz.authSignInGoogle), findsOneWidget);
-  });
+      final unsupported = await setup(
+        tester,
+        providers: [
+          FakeSocialProvider(SocialProvider.apple, supported: false),
+          FakeSocialProvider(SocialProvider.google),
+        ],
+      );
+      await pumpApp(tester, unsupported.services);
+      await goTo(tester, '/welcome/auth');
+      expect(appleButton, findsNothing);
+      expect(find.text(uz.authSignInGoogle), findsOneWidget);
+    },
+  );
 
   testWidgets('shart qabul qilinmaguncha provayder ochilmaydi', (tester) async {
     final google = FakeSocialProvider(SocialProvider.google);
@@ -176,35 +180,36 @@ void main() {
     expect(s.services.auth.hasAccount, isTrue);
   });
 
-  testWidgets('xatolar mahalliy matn bilan; til almashsa matn ham yangilanadi', (
-    tester,
-  ) async {
-    final apple = FakeSocialProvider(
-      SocialProvider.apple,
-      error: const SocialAuthException('apple: failed'),
-    );
-    final s = await setup(tester, providers: [apple]);
-    await pumpApp(tester, s.services);
-    await goTo(tester, '/welcome/auth');
-    await tapText(tester, uz.authConsent);
-    await tester.tap(appleButton);
-    await tester.pumpAndSettle();
-    expect(find.text(uz.authSocialFailed), findsOneWidget);
-    expect(s.services.auth.hasAccount, isFalse);
-    await s.services.settings.setLanguage(AppLanguage.ru);
-    await tester.pumpAndSettle();
-    expect(find.text(ru.authSocialFailed), findsOneWidget);
+  testWidgets(
+    'xatolar mahalliy matn bilan; til almashsa matn ham yangilanadi',
+    (tester) async {
+      final apple = FakeSocialProvider(
+        SocialProvider.apple,
+        error: const SocialAuthException('apple: failed'),
+      );
+      final s = await setup(tester, providers: [apple]);
+      await pumpApp(tester, s.services);
+      await goTo(tester, '/welcome/auth');
+      await tapText(tester, uz.authConsent);
+      await tester.tap(appleButton);
+      await tester.pumpAndSettle();
+      expect(find.text(uz.authSocialFailed), findsOneWidget);
+      expect(s.services.auth.hasAccount, isFalse);
+      await s.services.settings.setLanguage(AppLanguage.ru);
+      await tester.pumpAndSettle();
+      expect(find.text(ru.authSocialFailed), findsOneWidget);
 
-    // Server tomoni rad etsa: email tasdiqlanmagan.
-    apple.error = null;
-    s.server.result = const SocialSignInResult(
-      SocialSignInStatus.emailNotVerified,
-    );
-    await tester.tap(appleButton);
-    await tester.pumpAndSettle();
-    expect(find.text(ru.authSocialEmailUnverified), findsOneWidget);
-    expect(s.services.auth.hasAccount, isFalse);
-  });
+      // Server tomoni rad etsa: email tasdiqlanmagan.
+      apple.error = null;
+      s.server.result = const SocialSignInResult(
+        SocialSignInStatus.emailNotVerified,
+      );
+      await tester.tap(appleButton);
+      await tester.pumpAndSettle();
+      expect(find.text(ru.authSocialEmailUnverified), findsOneWidget);
+      expect(s.services.auth.hasAccount, isFalse);
+    },
+  );
 
   testWidgets('Profildan kirish: profilga qaytiladi', (tester) async {
     final s = await setup(
@@ -220,7 +225,9 @@ void main() {
     expect(routerOf(tester).state.matchedLocation, isNot('/profile/auth'));
   });
 
-  testWidgets('mehmon rejimi hamon mavjud (tugmalar bilan ham)', (tester) async {
+  testWidgets('mehmon rejimi hamon mavjud (tugmalar bilan ham)', (
+    tester,
+  ) async {
     final s = await setup(tester);
     await pumpApp(tester, s.services);
     expect(find.text(uz.welcomeGuest), findsOneWidget);
@@ -230,26 +237,32 @@ void main() {
   });
 
   for (final lang in AppLanguage.values) {
-    testWidgets('320 px × 1.3 (${lang.name}): overflow yo‘q, ikkala tugma ko‘rinadi', (
-      tester,
-    ) async {
-      final s = await setup(tester, language: lang);
-      await pumpApp(tester, s.services, size: const Size(320, 3200), textScale: 1.3);
-      await goTo(tester, '/welcome/auth');
-      expect(tester.takeException(), isNull);
-      final l = lookupAppLocalizations(lang.locale);
-      expect(find.text(l.authSignInGoogle), findsOneWidget);
-      expect(find.text(l.authSignInApple), findsOneWidget);
-      // Xato xabari bilan ham.
-      await tapText(tester, l.authSignInGoogle);
-      expect(tester.takeException(), isNull);
-      await s.services.settings.setThemeMode(ThemeMode.dark);
-      await tester.pumpAndSettle();
-      expect(tester.takeException(), isNull);
-      final apple = tester.getSize(appleButton);
-      expect(apple.width, lessThanOrEqualTo(320));
-      expect(apple.height, kSocialHeight);
-    });
+    testWidgets(
+      '320 px × 1.3 (${lang.name}): overflow yo‘q, ikkala tugma ko‘rinadi',
+      (tester) async {
+        final s = await setup(tester, language: lang);
+        await pumpApp(
+          tester,
+          s.services,
+          size: const Size(320, 3200),
+          textScale: 1.3,
+        );
+        await goTo(tester, '/welcome/auth');
+        expect(tester.takeException(), isNull);
+        final l = lookupAppLocalizations(lang.locale);
+        expect(find.text(l.authSignInGoogle), findsOneWidget);
+        expect(find.text(l.authSignInApple), findsOneWidget);
+        // Xato xabari bilan ham.
+        await tapText(tester, l.authSignInGoogle);
+        expect(tester.takeException(), isNull);
+        await s.services.settings.setThemeMode(ThemeMode.dark);
+        await tester.pumpAndSettle();
+        expect(tester.takeException(), isNull);
+        final apple = tester.getSize(appleButton);
+        expect(apple.width, lessThanOrEqualTo(320));
+        expect(apple.height, kSocialHeight);
+      },
+    );
   }
 
   group('hisobni o‘chirish va Apple', () {
@@ -271,24 +284,29 @@ void main() {
         backend: lab,
         socialAuth: SocialAuthService(providers: [apple], backend: lab),
       );
-      await tester.runAsync(() => services.auth.requestCode('apple@example.com'));
-      await tester.runAsync(() => services.auth.verifyCode(FakeLabBackend.otpCode));
+      await tester.runAsync(
+        () => services.auth.requestCode('apple@example.com'),
+      );
+      await tester.runAsync(
+        () => services.auth.verifyCode(FakeLabBackend.otpCode),
+      );
       return (services, lab, apple);
     }
 
-    testWidgets('Apple bilan bog‘langan hisob: Apple tasdig‘i so‘raladi, kod serverga ketadi', (
-      tester,
-    ) async {
-      final (s, lab, apple) = await account(tester);
-      await pumpApp(tester, s);
-      await goTo(tester, '/profile/privacy');
-      await tapText(tester, uz.accountDelete);
-      expect(find.textContaining(uz.accountDeleteAppleNote), findsOneWidget);
-      await tester.tap(find.text(uz.actionDelete));
-      await tester.pumpAndSettle();
-      expect(apple.calls, 1);
-      expect(lab.deletions, ['apple-auth-code']);
-    });
+    testWidgets(
+      'Apple bilan bog‘langan hisob: Apple tasdig‘i so‘raladi, kod serverga ketadi',
+      (tester) async {
+        final (s, lab, apple) = await account(tester);
+        await pumpApp(tester, s);
+        await goTo(tester, '/profile/privacy');
+        await tapText(tester, uz.accountDelete);
+        expect(find.textContaining(uz.accountDeleteAppleNote), findsOneWidget);
+        await tester.tap(find.text(uz.actionDelete));
+        await tester.pumpAndSettle();
+        expect(apple.calls, 1);
+        expect(lab.deletions, ['apple-auth-code']);
+      },
+    );
 
     testWidgets('Apple tasdig‘i bekor qilinsa — hech narsa o‘chirilmaydi', (
       tester,
@@ -320,7 +338,9 @@ void main() {
       expect(lab.deletions, [null]);
     });
 
-    testWidgets('Apple bilan bog‘lanmagan hisob: Apple so‘ralmaydi', (tester) async {
+    testWidgets('Apple bilan bog‘lanmagan hisob: Apple so‘ralmaydi', (
+      tester,
+    ) async {
       final (s, lab, apple) = await account(tester, appleLinked: false);
       await pumpApp(tester, s);
       await goTo(tester, '/profile/privacy');
@@ -347,7 +367,10 @@ class _LinkedLab extends FakeLabBackend implements SocialLoginBackend {
 
   @override
   Future<SocialSignInResult> socialSignIn(SocialCredential credential) async =>
-      const SocialSignInResult(SocialSignInStatus.success, email: 'x@example.com');
+      const SocialSignInResult(
+        SocialSignInStatus.success,
+        email: 'x@example.com',
+      );
 
   @override
   Future<Set<SocialProvider>> linkedProviders() async => linked;

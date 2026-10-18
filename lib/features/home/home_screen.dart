@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart' show rootBundle;
 import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
@@ -9,6 +10,7 @@ import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
 import '../auth/ui/role_screen.dart';
 import '../auth/ui/welcome_screen.dart';
+import '../classroom/lecture_catalog.dart';
 import '../classroom/topic_test_screens.dart' show AssignedTestsCard;
 import '../community/community_screens.dart';
 import '../content/ui/conditions_screens.dart';
@@ -16,6 +18,7 @@ import '../content/ui/content_widgets.dart';
 import '../daily/daily_screens.dart';
 import '../partners/partner_widgets.dart';
 import 'global_search.dart';
+import 'resume_history.dart';
 import '../settings/settings_controller.dart';
 import '../toifa/toifa_screens.dart';
 import '../toifa/toifa_today.dart' show ToifaTodayCard;
@@ -50,6 +53,9 @@ class RoleHome {
 
   final String heroTitle;
   final String heroBody;
+
+  /// Hero tugmasi: oxirgi ochilgan narsa bo'lmasa — rolning boshlang'ich
+  /// amali (1-plitkadan farqli, D-68 Q3). Tarix bo'lsa — “Davom ettirish”.
   final String heroCta;
   final String heroLocation;
   final List<HomeAction> actions;
@@ -64,7 +70,9 @@ class RoleHome {
       heroTitle: l.homeHeroDoctorTitle,
       heroBody: l.homeHeroDoctorBody,
       heroCta: l.homeHeroDoctorCta,
-      heroLocation: '/tests',
+      // Tahlil qidiruvi (maydon fokusda) — 1-plitka "Tahlillar" ro'yxatini
+      // takrorlamaydi (D-68 Q3).
+      heroLocation: '/tests?search=1',
       actions: [
         HomeAction(
           l.featureTests,
@@ -152,7 +160,7 @@ class RoleHome {
       heroTitle: l.homeHeroStudentTitle,
       heroBody: l.homeHeroStudentBody,
       heroCta: l.homeHeroStudentCta,
-      heroLocation: '/learn',
+      heroLocation: '/learn/daily',
       actions: [
         HomeAction(
           l.featureTests,
@@ -178,12 +186,8 @@ class RoleHome {
           '/learn/exam',
           l.homeTileExam,
         ),
-        HomeAction(
-          l.dailyTitle,
-          Icons.today_outlined,
-          '/learn/daily',
-          l.homeTileDaily,
-        ),
+        // "Kunlik savol" plitkasi yo'q: shu sahifada Kunlik karta bor
+        // (D-68 Q3).
         HomeAction(
           l.featureTopics,
           Icons.school_outlined,
@@ -288,16 +292,7 @@ class HomeScreen extends StatelessWidget {
                 base: '/home',
                 featured: config.featuredConditions,
               ),
-            LgHeroCard(
-              compact: true,
-              image: kHeroImage,
-              title: config.heroTitle,
-              body: config.heroBody,
-              action: LgButton(
-                label: config.heroCta,
-                onPressed: () => openInTab(context, config.heroLocation),
-              ),
-            ),
+            _HomeHero(config: config, role: role),
             // Kunlik 5 ta savol — har kuni qaytish uchun ixcham karta.
             const DailyCard(),
             // Talabaga guruhda berilgan testlar (muddati bilan).
@@ -330,6 +325,82 @@ class HomeScreen extends StatelessWidget {
           ],
         );
       },
+    );
+  }
+}
+
+/// Bosh sahifa hero kartasi (D-68 Q3): “Davom ettirish” — oxirgi ochilgan
+/// taqdimot, mavzu testi yoki bo'lim (shu qurilma tarixi); tarix bo'lmasa —
+/// rolning boshlang'ich amali: talaba — kunlik savollar, ustoz — guruhlar,
+/// laborant — bugungi toifa mashg'uloti (toifa ko'rinsa) yoki QC, shifokor —
+/// tahlil qidiruvi.
+class _HomeHero extends StatelessWidget {
+  const _HomeHero({required this.config, required this.role});
+
+  final RoleHome config;
+  final AppRole role;
+
+  @override
+  Widget build(BuildContext context) {
+    final services = context.services;
+    final history = ResumeHistory.of(services.store);
+    final bundle = services.curriculum.bundle ?? rootBundle;
+    return ListenableBuilder(
+      listenable: history,
+      builder: (context, _) {
+        final last = history.last;
+        if (last == null || !last.fullScreen) return _card(context, last, null);
+        return FutureBuilder<DeckCatalog>(
+          future: DeckCatalog.load(bundle),
+          initialData: DeckCatalog.peek(bundle),
+          builder: (context, snap) => _card(context, last, snap.data),
+        );
+      },
+    );
+  }
+
+  Widget _card(BuildContext context, ResumeEntry? last, DeckCatalog? catalog) {
+    final l = AppLocalizations.of(context);
+    final lang = Localizations.localeOf(context).languageCode;
+    // Toifa bo'limi yopiq foydalanuvchiga toifa yozuvi ko'rsatilmaydi.
+    final usable =
+        last != null &&
+        !(last.kind == ResumeKind.section &&
+            last.id == 'toifa' &&
+            !toifaVisible(context));
+    final title = usable ? resumeTitle(last, l, lang, catalog) : null;
+    final location = usable ? last.location : null;
+    if (title != null && location != null) {
+      final fullScreen = last!.fullScreen;
+      return LgHeroCard(
+        compact: true,
+        image: kHeroImage,
+        title: config.heroTitle,
+        body: l.homeResumeBody(title),
+        action: LgButton(
+          key: const ValueKey('home-hero-cta'),
+          label: l.homeResumeCta,
+          icon: Icons.play_arrow_rounded,
+          // Bo'lim — o'z tabida, ichkaridagi ochiq sahifasi bilan
+          // (stek tiklanadi); taqdimot va test — to'liq ekran.
+          onPressed: () => fullScreen
+              ? context.push(location)
+              : openInTab(context, location),
+        ),
+      );
+    }
+    final toifa = role == AppRole.lab && toifaVisible(context);
+    return LgHeroCard(
+      compact: true,
+      image: kHeroImage,
+      title: config.heroTitle,
+      body: config.heroBody,
+      action: LgButton(
+        key: const ValueKey('home-hero-cta'),
+        label: toifa ? l.homeHeroLabToifaCta : config.heroCta,
+        onPressed: () =>
+            openInTab(context, toifa ? toifaBase : config.heroLocation),
+      ),
     );
   }
 }

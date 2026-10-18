@@ -291,7 +291,7 @@ void main() {
 
   group('filtr chiplari', () {
     testWidgets('modul, amaliy protokollar, hammasi', (tester) async {
-      final l = await _open(tester);
+      await _open(tester);
       final c = await _catalog(tester);
       await _tapKey(tester, 'lecture-filter-m3');
       for (final d in c.decks) {
@@ -304,8 +304,6 @@ void main() {
       }
       expect(find.byKey(const ValueKey('lecture-group-m3')), findsOneWidget);
       expect(find.byKey(const ValueKey('lecture-group-m4')), findsNothing);
-      // Filtr paytida o'quv dasturi mavzulari bo'limi yashirin.
-      expect(find.text(l.lectureTopicsAutoTitle), findsNothing);
 
       await _tapKey(tester, 'lecture-filter-protocols');
       expect(
@@ -324,7 +322,9 @@ void main() {
         find.byKey(const ValueKey('lecture-group-protocols')),
         findsOneWidget,
       );
-      expect(find.text(l.lectureTopicsAutoTitle), findsOneWidget);
+      // D-68 (Q1): "Dastur mavzulari — avtomatik slaydlar" ro'yxati yo'q —
+      // har mavzuning tayyor decki yuqoridagi guruhlarda.
+      expect(find.text('Dastur mavzulari — avtomatik slaydlar'), findsNothing);
     });
 
     testWidgets('til filtri: RU da d001 ham bor (tarjima)', (tester) async {

@@ -11,6 +11,7 @@ import 'package:labguide/l10n/gen/app_localizations.dart';
 import 'package:material_ui/material_ui.dart';
 
 import '../helpers/harness.dart';
+import '../helpers/learn_helpers.dart';
 
 const _langs = ['uz', 'ru', 'en'];
 
@@ -351,8 +352,8 @@ void main() {
       await pumpApp(tester, s);
       final l = lookupAppLocalizations(Locale(lang.name));
       await goTo(tester, '/lab');
-      await tester.tap(find.text(l.spermTitle));
-      await tester.pumpAndSettle();
+      // Lab tabida bo'limlar ish vositalaridan keyin (D-68 Q2) — surib.
+      await tapScroll(tester, l.spermTitle);
       expect(find.byType(SpermogramScreen), findsOne);
       expect(find.text(SpermL.limitsTitle.of(lang.name)), findsOne);
       for (final r in [

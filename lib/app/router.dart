@@ -1,4 +1,5 @@
 import 'package:flutter/scheduler.dart';
+import 'package:flutter/services.dart' show rootBundle;
 import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
@@ -51,6 +52,7 @@ import '../features/partners/partner_admin_screens.dart';
 import '../features/partners/partner_widgets.dart';
 import '../features/library/pdf_reader_screen.dart';
 import '../features/profile/contact_screen.dart';
+import '../features/profile/help_screen.dart';
 import '../features/profile/profile_screens.dart';
 import '../features/settings/theme_screen.dart';
 import '../features/qc/qc_guides.dart';
@@ -67,6 +69,7 @@ import '../features/tools/clinical_calc_screens.dart';
 import '../features/tools/manual_calc_info.dart';
 import '../features/tools/manual_calc_screens.dart';
 import '../features/tools/tool_screens.dart';
+import 'app_scope.dart';
 import 'shell.dart';
 
 /// Yo'llar xaritasi.
@@ -200,6 +203,12 @@ GoRouter buildRouter(
           GoRoute(
             path: 'privacy',
             builder: (context, state) => const PrivacyScreen(),
+          ),
+          // Yordam va aloqa (D-68 Q6): ilova ichidagi yozishma va email —
+          // bitta kirish. Ikkala manzil (`support`, `contact`) o'zgarmagan.
+          GoRoute(
+            path: 'help',
+            builder: (context, state) => const HelpContactScreen(),
           ),
           // Aloqa va shikoyat: serversiz, doim ochiq (mailto).
           GoRoute(
@@ -411,7 +420,9 @@ GoRouter buildRouter(
             routes: [
               GoRoute(
                 path: '/tests',
-                builder: (context, state) => const TestsScreen(),
+                builder: (context, state) => TestsScreen(
+                  focusSearch: state.uri.queryParameters['search'] == '1',
+                ),
                 routes: [...analyteRoutes(), ...conditionRoutes()],
               ),
             ],
@@ -1342,9 +1353,17 @@ GoRouter buildRouter(
                               0,
                         ),
                       ),
+                      // Mavzu manzili (eski havolalar, guruh darsi): tayyor
+                      // taqdimoti bo'lsa — o'sha deckka yo'naltiriladi
+                      // (D-45, D-68); bo'lmasa avtomatik slaydlar.
                       GoRoute(
                         path: ':topicId',
                         parentNavigatorKey: rootKey,
+                        redirect: (context, state) =>
+                            resolveLectureTopicRedirect(
+                              context.services.curriculum.bundle ?? rootBundle,
+                              state.pathParameters['topicId']!,
+                            ),
                         builder: (context, state) => LectureScreen(
                           topicId: state.pathParameters['topicId']!,
                         ),

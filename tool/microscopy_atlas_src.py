@@ -85,7 +85,7 @@ SECTIONS = [
     },
     {
         "id": "parasites",
-        "name": t("Parazitlar", "Паразиты", "Parasites"),
+        "name": t("Qon parazitlari (bezgak)", "Кровяные паразиты (малярия)", "Blood parasites (malaria)"),
         "sub": t(
             "Bezgak: yupqa va qalin surtma",
             "Малярия: тонкий и толстый мазок",

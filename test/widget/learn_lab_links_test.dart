@@ -5,6 +5,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:labguide/app/shell.dart';
 import 'package:labguide/features/settings/settings_controller.dart';
+import 'package:labguide/features/toifa/toifa_today.dart' show ToifaTodayCard;
 import 'package:labguide/l10n/gen/app_localizations_uz.dart';
 import 'package:material_ui/material_ui.dart';
 
@@ -95,8 +96,26 @@ void main() {
     await pumpApp(tester, s);
     await goTo(tester, '/learn/toifa/practice/anemias');
     await _tab(tester, uz.navHome);
-    // Bo'lim ochilgan — bosh sahifada "Bugun" kartasi (D-60).
-    await tapScroll(tester, uz.toifaContinue);
+    // Bo'lim ochilgan — bosh sahifada "Bugun" kartasi (D-60). Hero ham
+    // "Davom ettirish" (D-68 Q3) — shuning uchun kartaning o'z tugmasi.
+    await tester.scrollUntilVisible(
+      find.byType(ToifaTodayCard),
+      300,
+      scrollable: find
+          .byWidgetPredicate(
+            (w) => w is Scrollable && w.axisDirection == AxisDirection.down,
+          )
+          .hitTestable()
+          .first,
+    );
+    final btn = find.descendant(
+      of: find.byType(ToifaTodayCard),
+      matching: find.text(uz.toifaContinue),
+    );
+    await tester.ensureVisible(btn);
+    await tester.pumpAndSettle();
+    await tester.tap(btn);
+    await tester.pumpAndSettle();
     expect(_loc(tester), '/learn/toifa');
   });
 }

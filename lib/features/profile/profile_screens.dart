@@ -190,19 +190,21 @@ class ProfileScreen extends StatelessWidget {
               icon: Icons.download_for_offline_outlined,
               onTap: () => context.push('/profile/packs'),
             ),
+            // Yagona “Yordam va aloqa” (D-68 Q6): ichida ilova ichidagi
+            // yozishma va email/shikoyat. Serverga bog'liq emas — doim
+            // ko'rinadi (email yo'li doim ishlaydi).
             LgRow(
-              title: l.supportTitle,
-              subtitle: services.backend.isConfigured
-                  ? l.supportSub
-                  : '${l.supportSub} · ${l.notAvailableYet}',
-              icon: Icons.forum_outlined,
+              key: const ValueKey('profile-help'),
+              title: l.helpTitle,
+              subtitle: l.helpSub,
+              icon: Icons.support_agent_outlined,
               trailing: access.unreadReplies > 0
                   ? LgTag(
                       l.supportUnreadCount(access.unreadReplies),
                       tone: LgTone.brand,
                     )
                   : null,
-              onTap: () => context.push('/profile/support'),
+              onTap: () => context.push('/profile/help'),
             ),
             // Hamjamiyat — faqat server ulangan buildda.
             if (services.community.available) ...[
@@ -239,13 +241,6 @@ class ProfileScreen extends StatelessWidget {
                 icon: Icons.admin_panel_settings_outlined,
                 onTap: () => context.push('/profile/admin'),
               ),
-            // Serverga bog'liq emas — doim ko'rinadi.
-            LgRow(
-              title: l.contactRowTitle,
-              subtitle: l.contactRowSub,
-              icon: Icons.mail_outline_rounded,
-              onTap: () => context.push('/profile/contact'),
-            ),
             LgRow(
               title: l.profilePrivacy,
               subtitle: l.profilePrivacySub,

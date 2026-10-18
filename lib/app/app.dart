@@ -3,6 +3,7 @@ import 'package:material_ui/material_ui.dart';
 
 import '../design/theme.dart';
 import '../features/daily/daily_screens.dart';
+import '../features/home/resume_history.dart';
 import '../features/settings/settings_controller.dart';
 import '../features/toifa/toifa_screens.dart' show toifaBase;
 import '../l10n/gen/app_localizations.dart';
@@ -68,7 +69,12 @@ class _LabGuideAppState extends State<LabGuideApp> {
   }
 
   void _onRoute() {
-    final location = _router.routeInformationProvider.value.uri.path;
+    final uri = _router.routeInformationProvider.value.uri;
+    final location = uri.path;
+    // Bosh sahifadagi “Davom ettirish” uchun oxirgi taqdimot/test/bo'lim.
+    if (_settings.onboarded) {
+      ResumeHistory.of(widget.services.store).note(uri);
+    }
     if (_location != null && location != _location) {
       _messenger.currentState?.hideCurrentSnackBar();
     }

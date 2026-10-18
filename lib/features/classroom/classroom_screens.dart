@@ -616,9 +616,9 @@ class _GroupTopicScreenState extends State<GroupTopicScreen>
           body: l.classroomStageLectureBody,
           done: gt?.lectureDoneAt != null,
           children: [
-            // D-45: mavzuning tayyor (16:9) taqdimoti bo'lsa — Ma'ruza shuni
-            // ochadi (Ma'ruza ro'yxatidagi o'sha deck); avtomatik slaydlar
-            // ikkinchi tugmada qoladi.
+            // D-45/D-68: mavzuning tayyor (16:9) taqdimoti bo'lsa — Ma'ruza
+            // shuni ochadi (Ma'ruza ro'yxatidagi o'sha deck); avtomatik
+            // slaydlar faqat deck yo'q bo'lsa.
             _LectureButtons(topicId: t.id, groupId: widget.groupId),
             if (gt?.lectureDoneAt == null) ...[
               const SizedBox(height: 8),
@@ -1394,8 +1394,8 @@ class _TopicTestSetupScreenState extends State<TopicTestSetupScreen>
   }
 }
 
-/// Guruh darsining 1-bosqichi tugmalari: tayyor taqdimot (katalogda bo'lsa)
-/// va avtomatik slaydlar.
+/// Guruh darsining 1-bosqichi tugmasi: tayyor taqdimot (katalogda bo'lsa),
+/// aks holda avtomatik slaydlar (zaxira).
 class _LectureButtons extends StatelessWidget {
   const _LectureButtons({required this.topicId, required this.groupId});
 
@@ -1414,28 +1414,19 @@ class _LectureButtons extends StatelessWidget {
         final deck = snap.data?.byTopic(topicId);
         if (deck == null) {
           return LgButton(
+            key: const ValueKey('group-lecture-auto'),
             label: l.lectureStart,
             icon: Icons.slideshow_outlined,
             onPressed: auto,
           );
         }
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            LgButton(
-              key: const ValueKey('group-lecture-deck'),
-              label: l.lectureStart,
-              icon: Icons.co_present_outlined,
-              onPressed: () => openDeck(context, deck.id),
-            ),
-            const SizedBox(height: 8),
-            LgButton.secondary(
-              key: const ValueKey('group-lecture-auto'),
-              label: l.classroomLectureAuto,
-              icon: Icons.slideshow_outlined,
-              onPressed: auto,
-            ),
-          ],
+        // Tayyor taqdimot bor — faqat u (D-68: avtomatik slaydlar ikkinchi
+        // tugma sifatida ko'rsatilmaydi).
+        return LgButton(
+          key: const ValueKey('group-lecture-deck'),
+          label: l.lectureStart,
+          icon: Icons.co_present_outlined,
+          onPressed: () => openDeck(context, deck.id),
         );
       },
     );

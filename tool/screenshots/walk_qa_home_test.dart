@@ -295,7 +295,7 @@ void main() {
 
     await row(l.profileSignIn, 'kirish');
     await row(l.libPacks, 'paketlar');
-    await row(l.supportTitle, 'yordam');
+    await row(l.helpTitle, 'yordam');
     await row(l.partnerBecome, 'hamkor');
     await row(l.profilePrivacy, 'maxfiylik');
 

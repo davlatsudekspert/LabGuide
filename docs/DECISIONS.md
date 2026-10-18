@@ -1127,3 +1127,38 @@ D-48 dagi **Ustoz Pro** qatorini (69 000 so'm/oy · 490 000 so'm/yil · $9.99/oy
   `docs/M9_PRACTICAL_TOPICS.md`; `--check` testda). Kun soni (143) o'zgarmadi (D-42; jadval variantlari 142/144
   kun faqat oxirida farq qiladi). Manbada kunma-kun mavzu paydo bo'lsa — reja o'sha manbaga moslanadi va
   `plan_source` olib tashlanadi.
+
+## D-68. Ilova xaritasi savollari Q1–Q8 bo'yicha qarorlar (2026-10-18, egasi topshirig'i: "eng yaxshisini hal qil")
+
+Manba: `docs/APP_MAP_2026-10-18.md` §4. Har qaror minimal o'zgarish bilan; eski manzillar ishlayveradi.
+
+- **Q1 — bitta mavzu, bitta ma'ruza:** o'quv dasturining 188 mavzusining hammasi uchun katalogda tayyor 16:9
+  taqdimot bor. Ma'ruza ro'yxatining pastki "Dastur mavzulari — avtomatik slaydlar" bo'limi olib tashlandi.
+  `/learn/lecture/<topicId>` tayyor deckka yo'naltiriladi (`/learn/lecture/deck/<id>`, router `redirect`);
+  deck yo'q bo'lsa — avtomatik slaydlar (zaxira). Guruh darsida "Avtomatik slaydlar" ikkinchi tugmasi faqat deck
+  yo'q bo'lsa (o'shanda u asosiy tugma). "Avtomatik taqdimot" (mavzu/tahlillardan yig'ish) qoladi.
+- **Q2 — Lab tabi tartibi:** avval "Ish vositalari" (Leykoformula birinchi, so'ng kalibrlash, QC, preanalitika,
+  kalkulyatorlar, apparatlar), keyin "Bo'limlar va atlaslar" (rasmli bo'limlar, mikroskopiya atlasi).
+- **Q3 — bosh sahifa hero:** hero tugmasi 1-plitkani takrorlamaydi. Shu qurilmada oxirgi ochilgan taqdimot,
+  mavzu testi yoki bo'lim bo'lsa — "Davom ettirish" (izohda nomi; `StoreKeys.homeResume`, router manzilidan
+  yoziladi). Tarix bo'lmasa — rolning boshlang'ich amali: talaba — kunlik savollar, ustoz — guruhlar, laborant —
+  bugungi toifa mashg'uloti (toifa ko'rinsa) yoki QC, shifokor — tahlil qidiruvi (`/tests?search=1`, maydon
+  fokusda). Talabadagi "Kunlik savol" plitkasi olib tashlandi (shu sahifada Kunlik karta bor). Eslatma: ustoz va
+  (toifasiz) laborantda tarix bo'lmagan birinchi ochilishda zaxira amal 1-plitka bilan bir manzil — topshiriqdagi
+  qaror shunday; tarix paydo bo'lgach hero "Davom ettirish" bo'ladi.
+- **Q4 — Ma'ruza qidiruvda hamma rolga** (O'rganish tabidagi qator bilan bir xil; `teacherOnly` olib tashlandi).
+- **Q5 — "Dars rejasi"** O'rganish tabida faqat ustozga va server tasdiqlagan adminga ko'rinadi. "Ilmiy ish
+  maydoni" (Kutubxona) alohida qoladi, birlashtirilmadi.
+- **Q6 — "Yordam va aloqa":** Profilda bitta kirish (`/profile/help`), ichida ikki aniq yo'l: ilova ichidagi
+  yozishma ("Taklif va yordam", `/profile/support`, o'qilmagan javob belgisi bilan) va email/shikoyat ("Aloqa va
+  shikoyat", `/profile/contact`). Ikkala manzil va boshqa joylardagi havolalar (hamjamiyatdagi shikoyat,
+  kontent so'rovi) o'zgarmadi.
+- **Q7 — atlas bo'limi nomi:** "Parazitlar" → "Qon parazitlari (bezgak)" / "Кровяные паразиты (малярия)" /
+  "Blood parasites (malaria)" (`assets/microscopy/atlas.json`, manba `tool/microscopy_atlas_src.py`). Koprologiyadagi
+  "Parazitlar" (ichak parazitlari) o'zgarmadi.
+- **Q8 — "Bo'lim mashqlari":** O'rganish tabida mashqi bor har Lab bo'limining mashqi bitta guruhda, bir xil
+  ko'rinishda ("<bo'lim> — mashq"): leykoformula, mikroskopiya, sitologiya, spermogramma, qon guruhi, gistologiya,
+  siydik tahlili, qon morfologiyasi. Koagulogramma va koprologiyada hozircha mashq yo'q — mashq qo'shilsa,
+  `kLabSectionQuizzes` ga qo'shiladi.
+- **Testlar:** `test/widget/app_map_test.dart` (Q2, Q3, Q5, Q6, Q7, Q8), `lecture_deck_test.dart` (Q1
+  yo'naltirish va zaxira), `global_search_test.dart` (Q4), `tab_memory_test.dart` (Q3 hero).

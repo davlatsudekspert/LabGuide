@@ -48,7 +48,9 @@ void main() {
     // Bosh tabga o'tib, “Sifat nazorati” tezkor tugmasini bosish.
     await tester.tap(find.text(en.navHome).last);
     await tester.pumpAndSettle();
-    await tester.tap(find.text(en.homeHeroLabCta).first);
+    // Hero: QC oxirgi ochilgan bo'lim — “Continue” (D-68 Q3).
+    expect(find.text(en.homeResumeBody(en.featureQc)), findsOneWidget);
+    await tester.tap(find.byKey(const ValueKey('home-hero-cta')));
     await tester.pumpAndSettle();
     // Ochiq to'plam joyida — ro'yxatga qaytarib yuborilmadi.
     expect(find.text(en.qcAddRun), findsOneWidget);
@@ -87,7 +89,9 @@ void main() {
 
     await tester.tap(find.text(en.navHome).last);
     await tester.pumpAndSettle();
-    await tester.tap(find.text(en.homeHeroLabCta).first);
+    // Hero: QC oxirgi ochilgan bo'lim — “Continue” (D-68 Q3).
+    expect(find.text(en.homeResumeBody(en.featureQc)), findsOneWidget);
+    await tester.tap(find.byKey(const ValueKey('home-hero-cta')));
     await tester.pumpAndSettle();
     expect(find.text(en.qcAddRun), findsOneWidget);
     expect(
@@ -139,11 +143,24 @@ void main() {
     await pumpApp(tester, s, size: const Size(390, 1600));
     await goTo(tester, '/tests/analyte/potassium');
     await goTo(tester, '/home');
+    // Shifokor hero: tahlil qidiruvi (1-plitka "Tests" ro'yxatidan farqli,
+    // D-68 Q3) — qidiruv maydoni fokusda.
     await tester.tap(find.text(en.homeHeroDoctorCta).first);
     await tester.pumpAndSettle();
     expect(find.byType(TestsScreen), findsOneWidget);
     expect(find.byType(AnalyteScreen), findsNothing);
     expect(routerOf(tester).state.matchedLocation, '/tests');
+    expect(
+      tester.widget<TestsScreen>(find.byType(TestsScreen)).focusSearch,
+      isTrue,
+    );
+    expect(
+      tester
+          .widget<EditableText>(find.byType(EditableText).first)
+          .focusNode
+          .hasFocus,
+      isTrue,
+    );
 
     await goTo(tester, '/tests/analyte/potassium');
     await goTo(tester, '/home');
@@ -179,7 +196,9 @@ void main() {
     expect(routerOf(tester).state.matchedLocation, '/lab/calculators');
   });
 
-  testWidgets('student hero opens the Learn root, not its last open page', (
+  // D-68 Q3: talaba hero — tarix bo'lmasa kunlik savollar (1-plitka emas);
+  // bo'lim ochilgach — “Continue” o'sha bo'limga.
+  testWidgets('student hero: daily questions, then resumes the last section', (
     tester,
   ) async {
     final s = await makeServices(
@@ -192,8 +211,16 @@ void main() {
     await goTo(tester, '/home');
     await tester.tap(find.text(en.homeHeroStudentCta).first);
     await tester.pumpAndSettle();
-    expect(find.byType(LearnScreen), findsOneWidget);
-    expect(routerOf(tester).state.matchedLocation, '/learn');
+    expect(routerOf(tester).state.matchedLocation, '/learn/daily');
+
+    await goTo(tester, '/lab/microscopy');
+    await goTo(tester, '/home');
+    expect(find.text(en.homeHeroStudentCta), findsNothing);
+    expect(find.text(en.homeResumeBody(en.micTitle)), findsOneWidget);
+    await tester.tap(find.byKey(const ValueKey('home-hero-cta')));
+    await tester.pumpAndSettle();
+    expect(routerOf(tester).state.matchedLocation, '/lab/microscopy');
+    expect(find.byType(LearnScreen), findsNothing);
   });
 
   // Kutubxona → Saqlanganlar (bo'sh) → “Tests”: Tahlillar ro'yxati ochiladi,

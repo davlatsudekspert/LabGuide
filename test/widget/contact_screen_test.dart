@@ -133,6 +133,10 @@ void main() {
     await goTo(tester, '/profile');
     final l = _l(tester);
     expect(s.backend.isConfigured, isFalse);
+    // D-68 Q6: Profil → “Yordam va aloqa” → email/shikoyat.
+    expect(find.text(l.contactRowTitle), findsNothing);
+    await tester.tap(find.text(l.helpTitle));
+    await tester.pumpAndSettle();
     await tester.tap(find.text(l.contactRowTitle));
     await tester.pumpAndSettle();
     expect(find.byKey(const ValueKey('contact-email')), findsOneWidget);
