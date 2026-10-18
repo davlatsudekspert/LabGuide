@@ -109,6 +109,9 @@ qatlamlarini ishga tushiradi» — Python qadamlari yoki worker testlari olib ta
 |---|---|
 | QR havola formati `labguide.nfcstore.uz/j/?c=KOD[&a=TEST]` | `test/guards/classroom_guard_test.dart :: format: …`; `test/unit/invite_link_test.dart` |
 | Havoladan/matndan kodni ajratish | `classroom_guard_test.dart :: kod ajratiladi: sayt, ilova havolasi, xom kod, taklif matni`, `sayt sahifasi site/j/ …`; `tool/site/test_guards.py :: test_join_page_opens_app` |
+| Android: `labguide://app/j` intent-filter (QR → «Ilovada ochish») | `classroom_guard_test.dart :: Android: labguide://app/j intent-filter saqlanadi` |
+| iOS: Info.plist da `labguide` URL sxemasi | `classroom_guard_test.dart :: iOS: Info.plist da "labguide" URL sxemasi saqlanadi` |
+| CI (iOS): Google sxemasi mavjud `CFBundleURLTypes` oxiriga qo‘shiladi (shartsiz `Add … array` yo‘q), so‘ng ikkala sxema tekshiriladi | `classroom_guard_test.dart :: ci.yml: Google (iOS) sxemasi mavjud CFBundleURLTypes ga qo‘shiladi …` |
 | D-66 variant tanlovi: umumiy vektorlar (Dart = TS) | `classroom_guard_test.dart :: umumiy vektorlar o‘chirilmagan va Dart tanlovi mos`; `test/unit/variant_draw_test.dart`; `cloudflare/test/variants.test.ts` |
 | «Muddat tugagach» — javoblar yashiriladi | `classroom_guard_test.dart :: "muddat tugagach": server correct: null …`; `cloudflare/test/groups.test.ts :: after_due: …`; `variants.test.ts :: after_due: …` |
 | «Katta ekran» faqat taxallus / «Talaba NN» | `classroom_guard_test.dart :: Katta ekran: faqat taxallus yoki "Talaba NN"; ustoz va email yo‘q`; `groups.test.ts :: a'zo ismi: taxallus yoki 'Talaba NN'; …` |

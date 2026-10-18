@@ -46,6 +46,74 @@ void main() {
       expect(page, contains("'labguide://app/j?c='"));
       expect(page, contains('URLSearchParams'));
     });
+
+    test('Android: labguide://app/j intent-filter saqlanadi', () {
+      final manifest = File('android/app/src/main/AndroidManifest.xml')
+          .readAsStringSync();
+      final filter =
+          RegExp(
+                r'<intent-filter>((?:(?!</intent-filter>).)*?)</intent-filter>',
+                dotAll: true,
+              )
+              .allMatches(manifest)
+              .map((m) => m[1]!)
+              .where((f) => f.contains('android:scheme="labguide"'));
+      expect(filter, hasLength(1));
+      final f = filter.single;
+      expect(f, contains('android:host="app"'));
+      expect(f, contains('android.intent.action.VIEW'));
+      expect(f, contains('android.intent.category.BROWSABLE'));
+      expect(f, contains('android.intent.category.DEFAULT'));
+    });
+
+    test('iOS: Info.plist da "labguide" URL sxemasi saqlanadi', () {
+      final plist = File('ios/Runner/Info.plist').readAsStringSync();
+      expect(
+        RegExp(
+          r'<key>CFBundleURLTypes</key>\s*<array>.*?<key>CFBundleURLSchemes</key>'
+          r'\s*<array>\s*<string>labguide</string>',
+          dotAll: true,
+        ).hasMatch(plist),
+        isTrue,
+      );
+    });
+
+    test('ci.yml: Google (iOS) sxemasi mavjud CFBundleURLTypes ga qo‘shiladi '
+        '(labguide o‘chmaydi), so‘ng ikkalasi tekshiriladi', () {
+      final yml = File('.github/workflows/ci.yml').readAsStringSync();
+      final start = yml.indexOf('- name: Google kirishi (iOS) sozlamasi');
+      expect(start, isNonNegative);
+      final next = yml.indexOf('\n      - name:', start + 10);
+      final step = yml.substring(start, next < 0 ? yml.length : next);
+      // Massiv faqat yo'q bo'lsa yaratiladi: har bir 'Add :CFBundleURLTypes
+      // array' qatori oldin Print bilan tekshiradi (`Print … || … Add`).
+      final addLines = step
+          .split('\n')
+          .where((l) => l.contains('Add :CFBundleURLTypes array'))
+          .toList();
+      for (final l in addLines) {
+        expect(
+          RegExp(
+            r"Print :CFBundleURLTypes'[^|\n]*\|\|[^\n]*Add :CFBundleURLTypes array",
+          ).hasMatch(l),
+          isTrue,
+          reason: 'shartsiz Add: $l',
+        );
+      }
+      // Yangi element oxiriga ($N) qo'shiladi — 0-element (labguide) ustiga emas.
+      expect(step, contains(r'Add :CFBundleURLTypes:$N dict'));
+      expect(step, isNot(contains('Add :CFBundleURLTypes:0 dict')));
+      expect(step, isNot(contains('Delete :CFBundleURLTypes')));
+      // Yakunda ikkala sxema tekshiriladi.
+      expect(
+        step,
+        contains('Print :CFBundleURLTypes\' "\$P" | grep -q "\$REV"'),
+      );
+      expect(
+        step,
+        contains('Print :CFBundleURLTypes\' "\$P" | grep -q \'labguide\''),
+      );
+    });
   });
 
   group('variantli test (D-66)', () {
