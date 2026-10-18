@@ -17,6 +17,7 @@ import '../learn/exam_widgets.dart';
 import 'assign_controls.dart';
 import 'curriculum.dart';
 import 'general_test.dart';
+import 'topic_questions.dart' show fitAssignmentTitle;
 
 // “Umumiy test berish”: ustoz bir nechta manbadan (toifa, ma'ruza, analizlar)
 // mavzular tanlab, guruhga 50 tagacha savollik test beradi. Boshqaruvlar —
@@ -235,7 +236,7 @@ class _GeneralTestScreenState extends State<GeneralTestScreen> {
     final topicOf = stratumOf(strata);
     final l = AppLocalizations.of(context);
     final backend = context.services.backend;
-    final title = _title.text.trim();
+    final title = fitAssignmentTitle(_title.text);
     setState(() {
       _busy = true;
       _error = null;

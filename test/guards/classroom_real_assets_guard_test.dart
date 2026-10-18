@@ -35,41 +35,12 @@ import 'package:labguide/features/learn/exam_session.dart';
 import 'package:labguide/features/toifa/toifa_bank.dart';
 import 'package:labguide/l10n/gen/app_localizations.dart';
 
+import '../helpers/server_rules.dart';
+
 Map<String, Object?> _json(String path) =>
     (jsonDecode(File(path).readAsStringSync()) as Map).cast<String, Object?>();
 
 const _fixture = 'cloudflare/test/real_deck_assignments.json';
-
-/// Server qoidalari — groups.ts manbasidan (regex va chegaralar).
-class _Server {
-  _Server(String src) {
-    RegExp re(String name) {
-      final m = RegExp('const $name = /(.+)/;').firstMatch(src);
-      if (m == null) throw StateError('groups.ts: $name topilmadi');
-      return RegExp(m.group(1)!);
-    }
-
-    int num(String pattern) {
-      final m = RegExp(pattern).firstMatch(src);
-      if (m == null) throw StateError('groups.ts: $pattern topilmadi');
-      return int.parse(m.group(1)!);
-    }
-
-    idRe = re('ID_RE');
-    topicRe = re('TOPIC_RE');
-    maxPool = num(r'const MAX_POOL = (\d+);');
-    maxQuestions = num(r'const maxQs = perStudent == null \? (\d+) :');
-    maxKey = num(r'Number.isInteger\(k\) && k >= 0 && k <= (\d+)');
-    titleMax = num(r"str\(body.title, 3, (\d+), 'invalid_title'\)");
-  }
-
-  late final RegExp idRe;
-  late final RegExp topicRe;
-  late final int maxPool;
-  late final int maxQuestions;
-  late final int maxKey;
-  late final int titleMax;
-}
 
 /// Ustoz ekrani (AssignDeckTestScreen) nima yuboradi — o'sha qoidalar bilan.
 class _Assign {
@@ -141,7 +112,7 @@ void main() {
   final catalog = DeckCatalog.parse(
     File('assets/lectures/index_v2.json').readAsStringSync(),
   );
-  final server = _Server(File('cloudflare/src/groups.ts').readAsStringSync());
+  final server = ServerRules.load();
   final vectors = _json('cloudflare/test/variant_vectors.json');
   // Umumiy vektorlardagi (topshiriq, talaba) juftlari.
   final pairs = {
@@ -161,7 +132,9 @@ void main() {
   final packSource = PackQuestionSource.of(pack); // run (faqat paket)
 
   test('server qoidalari o‘qildi va ilova chegaralari mos', () {
-    expect(server.maxPool, kVariantPoolMax);
+    // Mavzu testi hovuzi ≤ server chegarasi (umumiy test — 100 gacha).
+    expect(kVariantPoolMax, lessThanOrEqualTo(server.maxPool));
+    expect(kVariantPoolServerMax, server.maxPool);
     expect(server.maxQuestions, 50);
     expect(server.titleMax, 120);
     expect(kAssignmentTitleMax, server.titleMax);
@@ -206,7 +179,9 @@ void main() {
         }
       }
       if (a.fixed.length > server.maxQuestions) problems.add('${d.id}: >50');
-      if (a.variantPool.length > server.maxPool) problems.add('${d.id}: >60');
+      if (a.variantPool.length > server.maxPool) {
+        problems.add('${d.id}: >${server.maxPool}');
+      }
     }
     expect(problems, isEmpty);
   });

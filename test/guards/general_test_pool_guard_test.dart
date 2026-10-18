@@ -14,6 +14,10 @@ import 'package:labguide/features/classroom/topic_questions.dart';
 import 'package:labguide/features/content/content_model.dart';
 import 'package:labguide/features/learn/exam_question.dart';
 import 'package:labguide/features/toifa/toifa_bank.dart';
+import 'package:labguide/l10n/gen/app_localizations.dart';
+import 'package:material_ui/material_ui.dart' show Locale;
+
+import '../helpers/server_rules.dart';
 
 Map<String, Object?> _json(String path) =>
     (jsonDecode(File(path).readAsStringSync()) as Map).cast<String, Object?>();
@@ -29,6 +33,7 @@ void main() {
   );
   final catalog = GeneralCatalog.of(cur, pack, bank);
   final index = classQuestionIndex(pack, bank);
+  final server = ServerRules.load();
 
   test('har manba mavzusi: id indeksda, server kaliti oralig‘ida', () {
     final problems = <String>[];
@@ -46,8 +51,9 @@ void main() {
           problems.add('$where: bitta javob emas ${q.id}');
           continue;
         }
+        if (!server.idRe.hasMatch(q.id)) problems.add('$where: id ${q.id}');
         final k = hit.correct.single;
-        if (k < 0 || k >= hit.optionCount || k > 20) {
+        if (k < 0 || k >= hit.optionCount || k > server.maxKey) {
           problems.add('$where: kalit $k oraliqda emas ${q.id}');
         }
         // Indeksdagi savol — xuddi shu kalit (ustoz yuborgan = server).
@@ -94,13 +100,18 @@ void main() {
     );
     expect(catalog.lectureDays.length, greaterThan(100));
     expect(catalog.packGroups, isNotEmpty);
-    // Mavzu kalitlari server `pool_topics` qoidasiga mos.
-    for (final t in catalog.all) {
-      expect(variantTopic([t.key]), t.key, reason: t.key);
+    // Mavzu kalitlari server `pool_topics` qoidasiga (TOPIC_RE) mos.
+    for (final key in [
+      for (final t in catalog.all) t.key,
+      for (final m in catalog.modules) m.key,
+    ]) {
+      expect(variantTopic([key]), key, reason: key);
+      expect(server.topicRe.hasMatch(key), isTrue, reason: key);
     }
-    for (final m in catalog.modules) {
-      expect(variantTopic([m.key]), m.key, reason: m.key);
-    }
+    // 50 savollik variantli test: hovuz 100 — server qabul qiladi.
+    expect(kGeneralTestMax, server.maxQuestions);
+    expect(kGeneralVariantPoolMax, server.maxPool);
+    expect(variantAllowed(kGeneralVariantPoolMax, kGeneralTestMax), isTrue);
   });
 
   test(
@@ -123,6 +134,34 @@ void main() {
       final small = strata.first.questions.length;
       final fromFirst = a.where(strata.first.questions.contains).length;
       expect(fromFirst, small < 15 ? small : 15);
+    },
+  );
+
+  test(
+    'standart sarlavha (uz/ru/en) server chegarasida — har manba va hammasi',
+    () {
+      final problems = <String>[];
+      final sets = <String, Set<String>>{
+        for (final t in catalog.all) t.key: {t.key},
+        for (final s in GeneralSource.values)
+          'all:${s.name}': {for (final t in catalog.topicsOf(s)) t.key},
+        'all': {for (final t in catalog.all) t.key},
+        'mix': {
+          ...catalog.toifa.take(4).map((t) => t.key),
+          for (final d in catalog.modules.last.days.take(3)) d.key,
+          ...catalog.packGroups.take(2).map((t) => t.key),
+        },
+      };
+      for (final lang in ['uz', 'ru', 'en']) {
+        final l = lookupAppLocalizations(Locale(lang));
+        for (final e in sets.entries) {
+          final t = generalTestTitle(l, lang, catalog, e.value);
+          if (t.trim().length < 3 || t.length > server.titleMax) {
+            problems.add('${e.key}/$lang: ${t.length}');
+          }
+        }
+      }
+      expect(problems, isEmpty);
     },
   );
 }

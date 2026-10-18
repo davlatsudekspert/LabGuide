@@ -364,6 +364,5 @@ String generalTestTitle(
   );
   var t = l.generalTestTitle(parts.join(' + '));
   if (more) t = '$t…';
-  if (t.length > 120) t = '${t.substring(0, 119).trimRight()}…';
-  return t;
+  return fitAssignmentTitle(t);
 }
