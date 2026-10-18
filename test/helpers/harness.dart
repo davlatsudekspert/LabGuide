@@ -37,6 +37,13 @@ Future<void> loadAppFonts() async {
     inter.addFont(file('assets/fonts/Inter-$w.ttf'));
   }
   await inter.load();
+  // Ivory mavzusining sarlavha shriftlari (D-64).
+  await (FontLoader(
+    'InstrumentSerif',
+  )..addFont(file('assets/fonts/InstrumentSerif-Regular.ttf'))).load();
+  await (FontLoader(
+    'PlayfairDisplay',
+  )..addFont(file('assets/fonts/PlayfairDisplay-Variable.ttf'))).load();
   final icons = FontLoader('MaterialIcons')
     ..addFont(rootBundle.load('fonts/MaterialIcons-Regular.otf'));
   await icons.load();
@@ -53,6 +60,8 @@ Future<AppServices> makeServices(
   // Mavjud testlar /welcome'dan boshlanadi; til tanlash ekrani alohida sinaladi.
   bool languageChosen = true,
   ThemeMode themeMode = ThemeMode.light,
+  // Ilova mavzusi (D-64): berilmasa — ombordagi (yangi omborda Klassik).
+  LgThemeId? appTheme,
   AssetBundle? bundle,
   http.Client? httpClient,
   LabBackend? backend,
@@ -102,6 +111,7 @@ Future<AppServices> makeServices(
     await services.settings.setLanguage(language);
   }
   await services.settings.setThemeMode(themeMode);
+  if (appTheme != null) await services.settings.setAppTheme(appTheme);
   if (role != null) await services.settings.setRole(role);
   if (onboarded) {
     await services.auth.continueAsGuest();

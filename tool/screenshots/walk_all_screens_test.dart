@@ -70,6 +70,7 @@ const routes = [
   '/learn/exam',
   '/profile',
   '/profile/role',
+  '/profile/theme',
   '/profile/privacy',
   '/profile/contact',
   '/profile/support',
@@ -82,8 +83,9 @@ Future<void> _tour(
   required AppLanguage lang,
   required ThemeMode theme,
   required Size size,
+  LgThemeId appTheme = LgThemeId.classic,
 }) async {
-  await start(tester, lang: lang, theme: theme, size: size);
+  await start(tester, lang: lang, theme: theme, size: size, appTheme: appTheme);
   final w = Walk(tester, name);
   for (final r in routes) {
     await goTo(tester, r);
@@ -122,6 +124,29 @@ void main() {
       lang: AppLanguage.ru,
       theme: ThemeMode.dark,
       size: const Size(320, 640),
+    );
+  });
+
+  // Ivory mavzusi (D-64): uz · kunduzgi · 390 va ru · tungi · 320.
+  testWidgets('hamma ekran: Ivory · uz · kunduzgi · 390', (tester) async {
+    await _tour(
+      tester,
+      'all_ivory_uz_light_390',
+      lang: AppLanguage.uz,
+      theme: ThemeMode.light,
+      size: const Size(390, 844),
+      appTheme: LgThemeId.ivory,
+    );
+  });
+
+  testWidgets('hamma ekran: Ivory · ru · tungi · 320', (tester) async {
+    await _tour(
+      tester,
+      'all_ivory_ru_dark_320',
+      lang: AppLanguage.ru,
+      theme: ThemeMode.dark,
+      size: const Size(320, 640),
+      appTheme: LgThemeId.ivory,
     );
   });
 }

@@ -941,3 +941,29 @@ D-48 dagi **Ustoz Pro** qatorini (69 000 so'm/oy · 490 000 so'm/yil · $9.99/oy
   yangi → muddati kelgan mustahkam → qolgan. Bilet ichida baho o'zgartirilsa quti biletdan oldingi holatdan
   hisoblanadi. Eski baholar (`toifa.oral`) birinchi o'qishda qutiga o'tkaziladi.
 - Savollar, kalitlar, javob rejalari o'zgarmadi (assets/toifa faqat o'qiladi).
+
+## D-64. Tanlanadigan ilova mavzusi: Klassik va Ivory (2026-10-18, egasi talabi)
+- **Reestr:** `lib/design/themes.dart` — `LgThemeId { classic, ivory }`; har mavzuda kunduzgi va tungi
+  `LgPalette` (`tokens.dart`: `light/dark` — asl yashil, `ivoryLight/ivoryDark`) va `LgStyle` ThemeExtension
+  (serif sarlavha, konturli teglar, qora tanlangan tab, oltin halqa, pill tugma/chiplar, mavzu ekrani gradienti).
+  Standart — Klassik (o'zgarishsiz). Palitraga ikki token qo'shildi: `accent` (dekorativ: halqa, nuqta — matn
+  uchun emas) va `accentInk` (eyebrow matni, ≥ 4,5:1); Klassikda ikkalasi ham brend rangi — ko'rinish o'zgarmaydi.
+- **Ivory:** fon #F3F1EC, kartalar #FCFBF8, asosiy (tugma, tanlangan tab, Lab tugmasi) #141414, oltin #C9A86A
+  kam joyda (dumaloq belgilar halqasi, eyebrow #7A5A22), kulrang ikkinchi matn #5F5B54. Tungi Ivory — ko'mir fon
+  #0F1116, ivory matn/asosiy #F2EEE5/#EDE6D6, oltin #D2B57E; mavzu ekranining sarlavha kartasi chuqur
+  dengiz-qora gradientda. Barcha juftliklar WCAG AA — `app_flow_test` (matn ≥ 4,5:1, kontur ≥ 3:1) va
+  `bottom_nav_test` (shisha menyu) to'rt palitrani tekshiradi.
+- **Shrift:** katta sarlavhalar (displaySmall, headlineMedium, headlineSmall) faqat Ivory'da serif; asosiy matn
+  Inter. Tanlov — **Instrument Serif** (tor, yuqori kontrastli "fashion" serif; lotin, o‘ g‘ uchun U+2018 bor).
+  Kirill glyphi yo'q, shuning uchun ruscha interfeysda **Playfair Display** (variable, wght 500) asosiy, boshqa
+  tillarda kirill harflari fallback orqali Playfair'dan. Ikkalasi ham SIL Open Font License 1.1 (Google Fonts
+  repozitoriysidan): `assets/fonts/InstrumentSerif-Regular.ttf` + `InstrumentSerif-OFL.txt`,
+  `assets/fonts/PlayfairDisplay-Variable.ttf` + `PlayfairDisplay-OFL.txt` ("Playfair Display" — Reserved Font
+  Name; shrift o'zgartirilmagan). Hajm ~370 KB.
+- **Sozlama:** Profil → Tashqi ko‘rinish → **Mavzu** (`/profile/theme`): mavzu kartalari (nomi mavzuning o'z
+  sarlavha shriftida, 5 rang nuqtasi, logotipli dumaloq belgi — Ivory'da oltin halqa), kunduzgi/tungi/tizim
+  tanlovi (Profil'dagi chiplar ham qoldi). Kalit `settings.appTheme` (kv store), darhol butun ilovaga qo'llanadi,
+  `MaterialApp` 360 ms silliq o'tish (reduced motion — darhol). Lokal ma'lumot o'chirilsa — Klassik.
+- Boshqa ilovaning kodi, rasm yoki logotiplari ishlatilmadi — faqat uslub. Ma'ruza slaydlari o'z palitrasida qoladi.
+- Ko'rik: `tool/screenshots/walk_all_screens_test.dart` ga Ivory variantlari (uz · kunduzgi · 390, ru · tungi ·
+  320); layout matritsasiga har til uchun Ivory 320 px ×1,3.

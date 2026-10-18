@@ -6038,6 +6038,33 @@ class AppLocalizationsEn extends AppLocalizations {
   String get themeDark => 'Dark';
 
   @override
+  String get themeTitle => 'Theme';
+
+  @override
+  String get themeRowSub => 'App colours and title type';
+
+  @override
+  String get themeCurrent => 'Current theme';
+
+  @override
+  String get themeClassicName => 'Classic';
+
+  @override
+  String get themeClassicDesc => 'LabGuide\'s signature green';
+
+  @override
+  String get themeIvoryName => 'Ivory';
+
+  @override
+  String get themeIvoryDesc => 'Ivory, ink and gold with elegant serif titles';
+
+  @override
+  String get themeModeSection => 'Light or dark';
+
+  @override
+  String get themeSelected => 'Selected';
+
+  @override
   String get profilePrivacy => 'Privacy and data';
 
   @override

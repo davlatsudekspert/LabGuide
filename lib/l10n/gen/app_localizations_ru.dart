@@ -6061,6 +6061,34 @@ class AppLocalizationsRu extends AppLocalizations {
   String get themeDark => 'Тёмная';
 
   @override
+  String get themeTitle => 'Тема';
+
+  @override
+  String get themeRowSub => 'Цвета приложения и шрифт заголовков';
+
+  @override
+  String get themeCurrent => 'Текущая тема';
+
+  @override
+  String get themeClassicName => 'Классика';
+
+  @override
+  String get themeClassicDesc => 'Фирменная зелёная палитра LabGuide';
+
+  @override
+  String get themeIvoryName => 'Ivory';
+
+  @override
+  String get themeIvoryDesc =>
+      'Слоновая кость, чёрный и золото, изящные заголовки с засечками';
+
+  @override
+  String get themeModeSection => 'Светлая или тёмная';
+
+  @override
+  String get themeSelected => 'Выбрано';
+
+  @override
   String get profilePrivacy => 'Конфиденциальность и данные';
 
   @override

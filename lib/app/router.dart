@@ -49,6 +49,7 @@ import '../features/partners/partner_widgets.dart';
 import '../features/library/pdf_reader_screen.dart';
 import '../features/profile/contact_screen.dart';
 import '../features/profile/profile_screens.dart';
+import '../features/settings/theme_screen.dart';
 import '../features/qc/qc_guides.dart';
 import '../features/qc/qc_guides_info.dart';
 import '../features/qc/qc_screens.dart';
@@ -177,6 +178,11 @@ GoRouter buildRouter(
           GoRoute(
             path: 'packs',
             builder: (context, state) => const PacksScreen(),
+          ),
+          // Mavzu tanlash (D-64).
+          GoRoute(
+            path: 'theme',
+            builder: (context, state) => const ThemeScreen(),
           ),
           GoRoute(
             path: 'privacy',
