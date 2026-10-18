@@ -3779,6 +3779,9 @@ class AppLocalizationsUz extends AppLocalizations {
       'Har daraja uchun nom, qiymat (son) va birlikni kiriting.';
 
   @override
+  String get instSaveFailed => 'Saqlab bo‘lmadi. Qayta urinib ko‘ring.';
+
+  @override
   String get calLog => 'Kalibrlash jurnali';
 
   @override

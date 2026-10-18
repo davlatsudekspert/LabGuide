@@ -9,6 +9,7 @@ import '../../app/shell.dart';
 import '../../app/widgets/lg_page.dart';
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
+import '../../design/widgets/reveal_on_mount.dart';
 import '../../l10n/gen/app_localizations.dart';
 import '../content/ui/content_widgets.dart';
 import '../learn/exam_question.dart';
@@ -922,10 +923,14 @@ class ToifaDrillScreen extends StatelessWidget {
           ),
         ),
       if (answered) ...[
-        LgNotice(
-          correct ? l.toifaPracticeRight : l.toifaPracticeWrong,
-          title: correct ? l.quizCorrect : l.quizIncorrect,
-          kind: correct ? NoticeKind.info : NoticeKind.warning,
+        // Kichik ekranda izoh (va “Keyingi”) pastda qolmasin — ko'rinadigan
+        // joyga suriladi (audit 2026-10-18).
+        RevealOnMount(
+          child: LgNotice(
+            correct ? l.toifaPracticeRight : l.toifaPracticeWrong,
+            title: correct ? l.quizCorrect : l.quizIncorrect,
+            kind: correct ? NoticeKind.info : NoticeKind.warning,
+          ),
         ),
         KeyCheckNote(question: q),
         const OfficialListSource(),
@@ -1244,10 +1249,14 @@ class _ToifaPracticeScreenState extends State<ToifaPracticeScreen> {
           ),
         ),
       if (answered) ...[
-        LgNotice(
-          correct ? l.toifaPracticeRight : l.toifaPracticeWrong,
-          title: correct ? l.quizCorrect : l.quizIncorrect,
-          kind: correct ? NoticeKind.info : NoticeKind.warning,
+        // Kichik ekranda izoh (va “Keyingi”) pastda qolmasin — ko'rinadigan
+        // joyga suriladi (audit 2026-10-18).
+        RevealOnMount(
+          child: LgNotice(
+            correct ? l.toifaPracticeRight : l.toifaPracticeWrong,
+            title: correct ? l.quizCorrect : l.quizIncorrect,
+            kind: correct ? NoticeKind.info : NoticeKind.warning,
+          ),
         ),
         KeyCheckNote(question: q),
         const OfficialListSource(),

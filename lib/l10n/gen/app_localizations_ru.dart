@@ -3824,6 +3824,9 @@ class AppLocalizationsRu extends AppLocalizations {
       'Для каждого уровня укажите название, значение (число) и единицу.';
 
   @override
+  String get instSaveFailed => 'Не удалось сохранить. Попробуйте ещё раз.';
+
+  @override
   String get calLog => 'Журнал калибровок';
 
   @override

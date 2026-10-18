@@ -52,6 +52,17 @@ class ClassQuestionSource implements ExamQuestionSource {
   List<ExamTopic> get topics => const [];
 }
 
+/// Topshiriq sarlavhasi uchun server chegarasi (groups.ts: 3–120 belgi).
+const kAssignmentTitleMax = 120;
+
+/// Sarlavha serverga sig'adi: uzun mavzu nomi “…” bilan qisqartiriladi
+/// (aks holda server `invalid_title` bilan rad etadi).
+String fitAssignmentTitle(String title) {
+  final t = title.trim();
+  if (t.length <= kAssignmentTitleMax) return t;
+  return '${t.substring(0, kAssignmentTitleMax - 1).trimRight()}…';
+}
+
 /// Server kaliti har savolga bitta javob saqlaydi.
 bool assignable(ExamQuestion q) => q.correct.length == 1;
 

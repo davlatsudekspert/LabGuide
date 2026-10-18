@@ -432,7 +432,9 @@ class _InstrumentFormState extends State<_InstrumentForm> {
             );
       if (mounted) Navigator.of(context).pop(saved);
     } on Object catch (e) {
-      if (mounted) setState(() => _error = '$e');
+      // Foydalanuvchiga texnik matn emas — tushunarli xabar.
+      debugPrint('instrument not saved: $e');
+      if (mounted) setState(() => _error = l.instSaveFailed);
     } finally {
       if (mounted) setState(() => _busy = false);
     }

@@ -78,6 +78,9 @@ Future<AppServices> makeServices(
   SocialAuthService? socialAuth,
   // Ilova ichidagi QR skaner (berilmasa — soxta, Android kabi "qo'llanadi").
   QrScanner? qrScanner,
+  // false — toifa banki oldindan yuklanmaydi (ilova sovuq ochilgandek:
+  // bank faqat kerakli sahifa so'raganda yuklanadi).
+  bool loadToifa = true,
 }) async {
   final s = store ?? MemoryKeyValueStore();
   if (partnerAds != null) {
@@ -125,7 +128,7 @@ Future<AppServices> makeServices(
   await tester.runAsync(services.content.load);
   await tester.runAsync(services.instruments.ensureCatalog);
   await tester.runAsync(services.microscopy.ensureAtlas);
-  await tester.runAsync(services.toifa.ensureLoaded);
+  if (loadToifa) await tester.runAsync(services.toifa.ensureLoaded);
   // O'quv dasturi asset'i (bundle'da bo'lmasa — “qo'shilmagan” holati).
   await tester.runAsync(services.curriculum.ensureLoaded);
   // Tayyor taqdimotlar (Ma'ruza rejimi) — keshga oldindan.

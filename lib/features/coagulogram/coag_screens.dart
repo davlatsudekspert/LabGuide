@@ -1,7 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
-import '../../app/shell.dart';
 import '../../app/widgets/lg_page.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
@@ -11,6 +10,7 @@ import '../content/ui/content_widgets.dart';
 import '../tools/calc_info.dart';
 import '../tools/clinical_calc_screens.dart' show CalcSourceTile;
 import '../tools/sources_panel.dart';
+import '../lab/lab_links.dart';
 import 'coag_content.dart';
 import 'coag_logic.dart';
 
@@ -166,11 +166,7 @@ class CoagulogramScreen extends StatelessWidget {
                     key: ValueKey('coag-card-${card.id}'),
                     analyte: card,
                     divider: i < cards.length - 1,
-                    onTap: () => openInTab(
-                      context,
-                      '/tests/analyte/${card.id}',
-                      exact: true,
-                    ),
+                    onTap: () => openLabAnalyte(context, card.id),
                   ),
               ],
             );
@@ -222,8 +218,7 @@ class CgTestsScreen extends StatelessWidget {
                     alignment: AlignmentDirectional.centerStart,
                     child: TextButton(
                       key: ValueKey('coag-test-card-$id'),
-                      onPressed: () =>
-                          openInTab(context, '/tests/analyte/$id', exact: true),
+                      onPressed: () => openLabAnalyte(context, id),
                       child: Text(context.tr(CgL.openCard)),
                     ),
                   ),
@@ -283,6 +278,18 @@ class CitrateCalculator extends StatefulWidget {
 class _CitrateCalculatorState extends State<CitrateCalculator> {
   final _hct = TextEditingController();
   final _vol = TextEditingController(text: '4.5');
+  bool _volLocalized = false;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // Standart hajm interfeys tilining o'nlik belgisi bilan (uz/ru: "4,5"),
+    // natija kabi. Foydalanuvchi o'zgartirgan bo'lsa — tegilmaydi.
+    if (_volLocalized) return;
+    _volLocalized = true;
+    final lang = Localizations.localeOf(context).languageCode;
+    if (lang != 'en' && _vol.text == '4.5') _vol.text = '4,5';
+  }
 
   @override
   void dispose() {

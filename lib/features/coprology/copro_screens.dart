@@ -1,7 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
-import '../../app/shell.dart';
 import '../../app/widgets/lg_page.dart';
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
@@ -12,6 +11,7 @@ import '../content/ui/content_widgets.dart';
 import '../tools/calc_info.dart';
 import '../tools/clinical_calc_screens.dart' show CalcSourceTile;
 import '../tools/sources_panel.dart';
+import '../lab/lab_links.dart';
 import 'copro_content.dart';
 import 'copro_scheme.dart';
 
@@ -210,11 +210,7 @@ class CoprologyScreen extends StatelessWidget {
                     key: ValueKey('copro-card-${card.id}'),
                     analyte: card,
                     divider: i < cards.length - 1,
-                    onTap: () => openInTab(
-                      context,
-                      '/tests/analyte/${card.id}',
-                      exact: true,
-                    ),
+                    onTap: () => openLabAnalyte(context, card.id),
                   ),
               ],
             );
@@ -280,7 +276,7 @@ class _AnalyteLink extends StatelessWidget {
       alignment: AlignmentDirectional.centerStart,
       child: TextButton(
         key: ValueKey('copro-analyte-$id'),
-        onPressed: () => openInTab(context, '/tests/analyte/$id', exact: true),
+        onPressed: () => openLabAnalyte(context, id),
         child: Text(context.tr(CpL.openCard)),
       ),
     );

@@ -117,6 +117,31 @@ qatlamlarini ishga tushiradi» — Python qadamlari yoki worker testlari olib ta
 | «Katta ekran» faqat taxallus / «Talaba NN» | `classroom_guard_test.dart :: Katta ekran: faqat taxallus yoki "Talaba NN"; ustoz va email yo‘q`; `groups.test.ts :: a'zo ismi: taxallus yoki 'Talaba NN'; …` |
 | D-68 ilova ichidagi QR skaner: qo‘shilish ekranida tugma (qo‘llansa), plagin faqat `qr_scanner.dart` da (interfeys ortida), Android `CAMERA` + kamera majburiy emas, iOS `NSCameraUsageDescription` (uz/ru/en) QR ni tilga oladi, deployment target ≥ 12.0 | `classroom_guard_test.dart :: Ilova ichidagi QR skaner (D-68) …`; `test/widget/qr_scan_test.dart`; `test/unit/invite_link_test.dart :: skanerlangan QR matni` |
 
+### Test va quiz bo‘limlari — haqiqiy asset’lar bilan (2026-10-18)
+
+Saboq: soxta paketli testlar deck matnidan olingan savollar indeksga kirmay qolganini
+ushlamagan (iPhone’da «savol to‘plamda yo‘q»). Quyidagi qorovullar faqat ilova bilan keladigan
+fayllarni o‘qiydi (`pack.json`, `curriculum.json`, `assets/toifa/*.json`, `index_v2.json`) va
+**har bir** tayyor deck / savol bo‘yicha yuradi (namuna emas). Batafsil:
+`docs/AUDIT_2026-10-18_TESTS.md`.
+
+| Qaror / ish | Qorovul |
+|---|---|
+| Deck matnidan olingan savollar topshiriq indeksida (bbe5529) | `test/guards/class_question_index_guard_test.dart`; `test/guards/topic_tests_all_decks_guard_test.dart :: har tayyor deck, har savol: ekranda topiladi …` |
+| Mavzu testi: tayyor decklar ≥ 142, «tayyorlanmoqda» faqat ro‘yxatdagilar (d001) | `topic_tests_all_decks_guard_test.dart :: decklar holati …` |
+| Mavzu testi sessiyasi (drawTopicTest + buildTopicTestSession): har savol chiqadi, tartib/kalit/ball, xatolarni takrorlash | `topic_tests_all_decks_guard_test.dart :: sessiya ilovadagidek quriladi …` |
+| «Slaydni ko‘rish» — slayd deck ichida (uz/ru/en) | `topic_tests_all_decks_guard_test.dart :: “Slaydni ko‘rish” …` |
+| Natija qayta ochilgandan keyin saqlanadi (har deck) | `topic_tests_all_decks_guard_test.dart :: natija qayta ishga tushirishdan keyin saqlanadi …`; `test/widget/topic_test_real_decks_test.dart` (iPhone, d040/d118/d048) |
+| Sinf: id/kalit/sarlavha/mavzu server qoidalariga mos (qoidalar `cloudflare/src/groups.ts` dan o‘qiladi) | `test/guards/classroom_real_assets_guard_test.dart :: har tayyor deck: id, kalit, sarlavha …`, `server qoidalari o‘qildi …` |
+| Sinf: ustoz, «Talaba ko‘rinishida sinash», talaba, katta ekran, natijalar qidiruvi har savolni topadi | `classroom_real_assets_guard_test.dart :: har tayyor deck, har savol: ustoz, …`; `test/widget/classroom_real_decks_test.dart` |
+| Sinf: oddiy va variantli rejimda server balli = ilova kaliti (umumiy vektor juftlari) | `classroom_real_assets_guard_test.dart :: oddiy rejim …`, `variantli rejim …`; `cloudflare/test/real_decks.test.ts` (fixture `cloudflare/test/real_deck_assignments.json`, Dart qorovuli bilan sinxron) |
+| Jadvaldagi mavzu testi sarlavhasi ≤ 120 (tuzatish) | `classroom_real_assets_guard_test.dart :: dars jadvalidagi mavzu testi …` |
+| Katta ekran toifa banki yuklanmagan holda ochilsa ham savol matni (tuzatish) | `test/widget/classroom_real_decks_test.dart :: katta ekran ilova tiklanganda …` |
+| Toifa: har savol — kalit oralig‘i, takrorsiz id/raqam, bo‘sh variant yo‘q, ru/en; takror matn faqat ma’lum juftlar | `test/guards/toifa_real_assets_guard_test.dart` |
+| Toifa: 50 savollik test (imtihon/mashq), qayta ochilganda davom, kunlik hisob va seriya; bilet (5 savol, yozuvsiz) | `toifa_real_assets_guard_test.dart`; `test/widget/toifa_iphone_real_test.dart` (iPhone) |
+| O‘rganish → Mashq, Imtihon, toifa mavzulari, kunlik savollar: har mavzu savol beradi, har savol topiladi | `test/guards/quiz_modes_real_assets_guard_test.dart` |
+| Toifa mashqi, mavzu mashqi va «Xatolar ustida ishlash»: javob izohi kichik ekranda ko‘rinadigan joyga suriladi (RevealOnMount) | `test/widget/toifa_feedback_reveal_test.dart` (360×640 ×1.3, iOS; katta ekranda surilmaydi) |
+
 ### Tablar auditi (2026-10-18, `docs/AUDIT_2026-10-18_TABS.md`)
 
 | Qaror / ish | Qorovul |
@@ -153,6 +178,18 @@ qatlamlarini ishga tushiradi» — Python qadamlari yoki worker testlari olib ta
 | 7 | Gemoxromatoz: «qo‘llab-quvvatlaydi», «tasdiqlaydi» emas | **yangi:** `medical_guard_test.dart :: #7 gemoxromatoz …` |
 | 8 | Android imzo faqat qo‘lda ishga tushirilganda | **yangi:** `repo_registry_guard_test.dart :: Android release imzosi faqat qo‘lda …` |
 | — | Ruscha terminologiya (референтный, ммоль/л) | `test/unit/ru_terminology_test.dart` |
+
+### Lab bo‘limi auditi (2026-10-18)
+
+`docs/AUDIT_2026-10-18_LAB.md`:
+
+| Qaror / ish | Qorovul |
+|---|---|
+| Lab tabining HAR sahifasi (≈ 360 manzil: hujayra/element/parazit/namuna, kalkulyator, apparat modeli, atlas rasmi, 46 protokol, mavjud bo‘lmagan id, QC/kalibrlash/tarix ma’lumoti bilan) 390×844 va 360×640, ×1,0/×1,3, kunduzgi/tungi, uz/ru/en — oxirigacha scroll: overflow yo‘q, cheksiz animatsiya yo‘q, ARB kaliti yo‘q, «Draft/Qoralama/null/NaN/TODO» yo‘q, ru/en da «46-b.» yo‘q | `test/widget/lab_audit_{uz,ru,en}_test.dart` (`lab_audit_matrix.dart`, manzillar — `lab_audit_routes.dart`) |
+| QC: 1-2s, 1-3s, 2-2s, R-4s, 4-1s, 10x ishga tushadi va sahifalari ochiladi | `lab_audit_matrix.dart :: seedLabData` (+ `test/unit/qc_rules_test.dart`) |
+| «Bog‘liq kartalar» Lab ichida (`/lab/analyte/:id`), orqaga — bo‘limga (D-03); protokol taqdimoti yopilganda — Lab bo‘limiga | `test/widget/lab_audit_nav_test.dart` |
+| Uzun Lab sahifalari: scroll joyida (iOS), bounce oxirga, oxirgi kontent menyu ustida; tab almashganda qiymat/sanoq saqlanadi | `test/widget/lab_audit_scroll_state_test.dart` |
+| Sitrat: `NaN/Infinity/1e400` → xato; standart hajm tilning o‘nlik belgisida; kalibrlash: cheksiz/manfiy qiymat rad, saqlash xatosi tarjima qilingan; koprologiya bet raqami tilda | `test/widget/lab_audit_fixes_test.dart :: #1 … #5` |
 
 ### Reyestrlar va til
 

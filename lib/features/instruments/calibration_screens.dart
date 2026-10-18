@@ -826,8 +826,12 @@ class _RecordFormState extends State<_RecordForm> {
     final levels = <CalibratorLevel>[];
     for (final f in _levels) {
       final v = parseFieldNumber(context, f.value.text);
+      // Cheksiz (1e400) yoki manfiy qiymat — kiritish xatosi: cheksiz son
+      // JSON ga yozilmaydi va saqlashda xom xato chiqarardi (Lab auditi).
       if (f.name.text.trim().isEmpty ||
           v == null ||
+          !v.isFinite ||
+          v < 0 ||
           f.unit.text.trim().isEmpty) {
         setState(() => _error = l.calLevelInvalid);
         return;
@@ -857,7 +861,9 @@ class _RecordFormState extends State<_RecordForm> {
         ),
       );
     } on Object catch (e) {
-      if (mounted) setState(() => _error = '$e');
+      // Foydalanuvchiga texnik matn emas — tushunarli xabar.
+      debugPrint('calibration record not saved: $e');
+      if (mounted) setState(() => _error = l.instSaveFailed);
     } finally {
       if (mounted) setState(() => _busy = false);
     }
