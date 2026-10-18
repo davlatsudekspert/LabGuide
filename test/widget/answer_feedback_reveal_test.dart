@@ -18,6 +18,9 @@ final uz = lookupAppLocalizations(const Locale('uz'));
 
 const _small = Size(360, 640);
 
+/// Kunlik savollar sanaga bog'liq — test har kuni bir xil to'plamda.
+DateTime _dailyAt = DateTime(2026, 10, 18, 10, 30);
+
 final _ios = TargetPlatformVariant.only(TargetPlatform.iOS);
 
 /// Izohli testda birinchi variantni bosish (harfsiz tugmalar).
@@ -74,7 +77,7 @@ void main() {
   testWidgets('kunlik savollar: javobdan keyin izoh ko‘rinadi (360×640 ×1.3)', (
     tester,
   ) async {
-    final s = await makeServices(tester);
+    final s = await makeServices(tester, clock: () => _dailyAt);
     await pumpApp(tester, s, size: _small, textScale: 1.3);
     await goTo(tester, '/learn/daily');
     await tapScroll(tester, 'A');
