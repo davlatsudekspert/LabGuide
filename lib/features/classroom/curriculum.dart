@@ -75,6 +75,7 @@ class CurriculumLinks {
     this.reference = const [],
     this.tools = const [],
     this.microscopy = const [],
+    this.protocols = const [],
     this.toifaTopic,
     this.gap = false,
   });
@@ -93,6 +94,11 @@ class CurriculumLinks {
           if (t.startsWith('/lab/') || t.startsWith('/learn/')) t,
       ],
       microscopy: _ids(j['microscopy']),
+      // `id` yoki `id#1-4` (protokolning tanlangan slaydlari) — faqat id olinadi.
+      protocols: [
+        for (final p in _ids(j['protocols']))
+          if (p.split('#').first.trim() case final id when id.isNotEmpty) id,
+      ],
       toifaTopic: switch (j['toifa_topic']) {
         final String s when s.isNotEmpty => s,
         _ => null,
@@ -108,6 +114,9 @@ class CurriculumLinks {
 
   /// Atlas bo'limlari (`blood`, `urine`, `parasites`...).
   final List<String> microscopy;
+
+  /// Amaliy mashg'ulot protokollari (deck id lari, `assets/lectures/decks`).
+  final List<String> protocols;
   final String? toifaTopic;
 
   /// Ilovada bu mavzu bo'yicha material yetarli emas (halol belgi).
@@ -141,6 +150,7 @@ class CurriculumTopic {
     this.derivedQuizCandidates = const [],
     this.testGap = false,
     this.oralGap = false,
+    this.planSource,
   });
 
   factory CurriculumTopic.fromJson(
@@ -177,6 +187,10 @@ class CurriculumTopic {
           : _ids(testMap['derived_quiz_ids']),
       testGap: j['test_gap'] == true,
       oralGap: j['oral_gap'] == true,
+      planSource: switch (j['plan_source']) {
+        final String s when s.trim().isNotEmpty => s.trim(),
+        _ => null,
+      },
     );
   }
 
@@ -214,6 +228,15 @@ class CurriculumTopic {
   final List<String> derivedQuizCandidates;
   final bool testGap;
   final bool oralGap;
+
+  /// Mavzu manbasi: `null` — ustoz jadvali/dasturi; `labguide_recommended` —
+  /// manbada kunma-kun mavzu yo'q, sarlavha va havolalar LabGuide tavsiyasi
+  /// (M9 amaliy kunlari, D-67). Ilova buni ochiq belgilaydi.
+  final String? planSource;
+
+  static const recommendedPlan = 'labguide_recommended';
+
+  bool get isRecommendedPlan => planSource == recommendedPlan;
 }
 
 @immutable

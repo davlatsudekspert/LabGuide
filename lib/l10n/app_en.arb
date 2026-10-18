@@ -4279,6 +4279,10 @@
   "classroomToolInstruments": "Instruments",
   "classroomToolCalibration": "Calibration log",
   "classroomToolDifferential": "Differential count",
+  "classroomPlanRecommended": "LabGuide recommended practical plan",
+  "@classroomPlanRecommended": {
+    "description": "Shown next to M9 practical-day topics whose title is a LabGuide recommendation (the timetable gives only a generic title); the teacher may change it."
+  },
   "classroomOralNotice": "Questions are auto-picked candidates; answer outlines are a study aid. “Asked” marks and grades stay on this device only.",
   "classroomOralEmpty": "No oral questions for this topic",
   "classroomCandidate": "Candidate question {n}",

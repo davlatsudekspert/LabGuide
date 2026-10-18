@@ -7370,6 +7370,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get classroomToolDifferential => 'Differential count';
 
   @override
+  String get classroomPlanRecommended => 'LabGuide recommended practical plan';
+
+  @override
   String get classroomOralNotice =>
       'Questions are auto-picked candidates; answer outlines are a study aid. “Asked” marks and grades stay on this device only.';
 

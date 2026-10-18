@@ -307,5 +307,56 @@ class Render(unittest.TestCase):
                     self.assertTrue(sh._element.nvPicPr.cNvPr.get('descr') is not None)
 
 
+class RecommendedPlan(unittest.TestCase):
+    """M9 amaliy kunlari: LabGuide tavsiya etgan amaliy reja (D-67)."""
+
+    def planned(self):
+        return [d for d in repo().days.values() if dc.is_planned(d)]
+
+    def test_all_45_practical_days_planned_and_fresh(self):
+        days = self.planned()
+        self.assertEqual(len(days), 45)
+        self.assertEqual(days[0].id, 'd091')
+        self.assertEqual(days[-1].id, 'd142')
+        for d in days:
+            self.assertNotEqual(d.title('uz'), 'Laborator tekshiruv usullarini amaliyotda o‘zlashtirish', d.id)
+            self.assertTrue(d.main.get('plan_refs'), d.id)
+        sys.path.insert(0, os.path.join(REPO, 'tool', 'curriculum'))
+        import apply_m9_plan as ap
+        self.assertEqual(ap.validate(ap.load(ap.PLAN), ap.load(ap.PRACTICE), ap.load(ap.PACK)), [])
+        import subprocess
+        r = subprocess.run([sys.executable, ap.__file__, '--check'], capture_output=True, text=True)
+        self.assertEqual(r.returncode, 0, 'eskirgan: python3 tool/curriculum/apply_m9_plan.py\n' + r.stdout)
+
+    def test_deck_starts_with_plan_slide_and_protocols(self):
+        for d in self.planned():
+            for lg in dc.LANGS:
+                deck, cov = dc.build_deck(repo(), d, lg)
+                self.assertIsNotNone(deck, d.id)
+                body = deck.content_slides
+                self.assertEqual(body[0].eyebrow, dc.T('plan_label', lg), d.id)
+                self.assertTrue(body[0].sources, f'{d.id}: reja manbasi (plan_refs) yo‘q')
+                self.assertIn(dc.T('plan_label', lg), deck.slides[0].data['lines'])
+                self.assertFalse([m for m in cov['missing'] if m.startswith('protokol')], d.id)
+                if d.links.get('protocols'):
+                    self.assertTrue(cov.get('protocols'), d.id)
+                kinds = {s.kind for s in deck.slides}
+                self.assertNotIn('qa_q', kinds, d.id)
+
+    def test_protocol_selection_matches_protocol_slides(self):
+        d = repo().days[96]   # qon-surtmasi-tayyorlash-boyash#1-4
+        deck, _ = dc.build_deck(repo(), d, 'uz')
+        p = next(x for x in repo().practice['protocols'] if x['id'] == 'qon-surtmasi-tayyorlash-boyash')
+        want = [dc.L(s['title'], 'uz') for s in p['slides'][:4]]
+        got = [s.title for s in deck.content_slides[1:5]]
+        self.assertEqual(got, want)
+
+    def test_unplanned_days_unchanged(self):
+        for d in repo().days.values():
+            if not dc.is_planned(d):
+                self.assertFalse(d.links.get('protocols'), d.id)
+                self.assertNotIn('plan_refs', d.main, d.id)
+
+
 if __name__ == '__main__':
     unittest.main()

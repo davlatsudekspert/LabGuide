@@ -136,9 +136,11 @@ class PracticeData(unittest.TestCase):
                 self.assertRegex(r['loc'][lg], r'\d', r)
 
     def test_report_states_there_is_no_day_mapping(self):
+        # Manbada kun <-> texnika moslik yo'q; bog'lanish faqat LabGuide tavsiyasi sifatida (D-67).
         text = '\n'.join(pd.report_section(repo()))
-        self.assertIn('kunma-kun mavzu yoki texnikani ko‘rsatmaydi', text)
-        self.assertIn('hech bir kunga biriktirilmagan', text)
+        self.assertIn('kunma-kun mavzu ko‘rsatmaydi', text)
+        self.assertIn('LabGuide tavsiya etgan amaliy reja', text)
+        self.assertIn('manbadagi moslik emas', text)
         self.assertIn('Manbalarda bor, lekin olinmagan', text)
         self.assertNotIn('qoralama', text.lower())
 

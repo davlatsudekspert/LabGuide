@@ -127,6 +127,8 @@ String topicMeta(BuildContext context, CurriculumTopic t, {DateTime? start}) {
     if (date != null) _day(context, date),
     topicTypeLabel(t.type, l),
     if (t.hours != null) l.classroomHours(t.hours!),
+    // Manbada kunma-kun mavzu yo'q — sarlavha LabGuide tavsiyasi (D-67).
+    if (t.isRecommendedPlan) l.classroomPlanRecommended,
   ].join(' · ');
 }
 
@@ -977,6 +979,10 @@ String? _toolTitle(String path, AppLocalizations l) {
     '/lab/instruments' => l.classroomToolInstruments,
     '/lab/calibration' => l.classroomToolCalibration,
     '/lab/differential' => l.classroomToolDifferential,
+    '/lab/urinalysis' => l.urinTitle,
+    '/lab/coprology' => l.coproTitle,
+    '/lab/coagulogram' => l.coagTitle,
+    '/lab/bloodmorph' => l.bloodMorphTitle,
     _ => null,
   };
 }

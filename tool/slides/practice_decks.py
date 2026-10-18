@@ -1,12 +1,12 @@
-"""Amaliy mashg'ulot protokollari (kunga bog'lanmagan to'plam): texnika bo'yicha
-PPTX taqdimotlar.
+"""Amaliy mashg'ulot protokollari: texnika bo'yicha PPTX taqdimotlar (alohida to'plam).
 
-Nima uchun alohida: curriculum.json dagi M9 "Laborator tekshiruv usullarini
-amaliyotda o'zlashtirish" kunlari (d091-d142 va h.k.) bir xil umumiy nomda; dastur
-(KLD_ixtisoslashtirish_864) ham, dars jadvallari ham ularda kunma-kun aniq mavzu
-yoki texnikani ko'rsatmaydi. Shuning uchun texnika taqdimotlari hech bir kunga
-BIRIKTIRILMAYDI: "Amaliy mashg'ulot protokollari" nomli raqamsiz to'plam, har biri
-texnika nomi bilan. Kun <-> mavzu moslik o'ylab topilmaydi.
+curriculum.json dagi M9 "Laborator tekshiruv usullarini amaliyotda o'zlashtirish"
+kunlari (d091-d142) manbalarda (dastur KLD_ixtisoslashtirish_864, dars jadvallari)
+bir xil umumiy nomda — kunma-kun mavzu yo'q. Protokollar o'z to'plamida qoladi;
+D-67 dan boshlab ular LabGuide tavsiya etgan amaliy reja (tool/curriculum/m9_plan.json,
+`plan_source: "labguide_recommended"`) orqali M9 kunlariga `links.protocols` bilan
+bog'langan (kun decki shu protokol slaydlarini oladi — deck_content.protocol_slides).
+Bu manbadagi moslik emas, tavsiya — ilovada va hujjatda shunday belgilangan.
 
 Manba: tool/slides/data/books_extra_practice.json
   "books":     pack.json'da yo'q kitoblar (qisqa va to'liq bibliografiya)
@@ -218,19 +218,14 @@ def report_section(repo):
     ps = protocols(repo)
     if not ps:
         return []
-    md = ['', '## Amaliy mashg‘ulot protokollari (kunga bog‘lanmagan to‘plam)', '',
-          'M9 modulining amaliy kunlari (`d091`–`d142`, jumladan yuqoridagi “Deck yo‘q” ro‘yxatidagilar) '
-          'curriculumda bir xil umumiy nom bilan turadi. Dastur hujjati (`КЛД_ихтисослаштириш_864_кредит`: '
-          'M9 — 324 soat, shundan ma’ruza 48, laboratoriya ishi 276 (`curriculum.json`da M9 — 330 soat: '
-          'ma’ruza 48, amaliy 270, attestatsiya 6, qo‘shimcha 6); mavzu yoki texnika ro‘yxati yo‘q, '
-          'faqat umumiy kompetensiyalar va jihozlar ro‘yxati) hamda dars jadvallari (Karimova, Turg‘unova '
-          'T1/T2) bu kunlarda **kunma-kun mavzu yoki texnikani ko‘rsatmaydi**: aniq mavzu faqat '
-          'ma’ruza kunlarida (d090, d095, d101, d106, d112, d116, d121, d127 — ular allaqachon alohida '
-          'deck), qolganlari “Laborator tekshiruv usullarini amaliyotda o‘zlashtirish”. Shu sababli '
-          'texnika taqdimotlari **hech bir kunga biriktirilmagan**: nomi texnikaga qarab berilgan raqamsiz '
-          'to‘plam. Kun ↔ texnika moslik manbalarda yo‘q, shuning uchun o‘ylab topilmadi '
-          '(ma’ruza kunlari oralig‘idagi kunlar o‘sha ma’ruza mavzusiga tegishli degan taxmin ham '
-          'hujjatlarda tasdiqlanmagan — ishlatilmadi).', '',
+    md = ['', '## Amaliy mashg‘ulot protokollari (alohida to‘plam)', '',
+          'M9 modulining amaliy kunlari (`d091`–`d142`) manbalarda bir xil umumiy nomda: dastur hujjati '
+          '(`КЛД_ихтисослаштириш_864_кредит`: M9 — 324 soat, shundan ma’ruza 48, laboratoriya ishi 276; mavzu yoki '
+          'texnika ro‘yxati yo‘q) va dars jadvallari bu kunlarda **kunma-kun mavzu ko‘rsatmaydi** — aniq mavzu faqat '
+          'ma’ruza kunlarida (d090, d095, d101, d106, d112, d116, d121, d127). Protokollar texnika nomi bilan alohida '
+          'to‘plamda qoladi; D-67 dan boshlab ular **LabGuide tavsiya etgan amaliy reja** (manbadagi moslik emas, '
+          'tavsiya; `docs/M9_PRACTICAL_TOPICS.md`) orqali M9 kunlariga `links.protocols` bilan bog‘langan va o‘sha '
+          'kunlarning decklarida «Kun rejasi» slaydidan keyin chiqadi.', '',
           'Qoidalar: matn kitoblardan o‘z so‘zim bilan; har slaydda muallif + qisqa nom + bo‘lim/sahifa; '
           'oxirgi slayd — “Adabiyotlar”. Son, hajm, vaqt va konsentratsiya faqat manbada ko‘ringan joyda '
           '(sahifasi bilan); manbalar bir-biriga zid bo‘lsa — yangi/ishonchlisi yoki umuman olinmagan; '

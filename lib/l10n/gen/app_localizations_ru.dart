@@ -7385,6 +7385,10 @@ class AppLocalizationsRu extends AppLocalizations {
   String get classroomToolDifferential => 'Лейкоформула';
 
   @override
+  String get classroomPlanRecommended =>
+      'Рекомендованный LabGuide план практики';
+
+  @override
   String get classroomOralNotice =>
       'Вопросы — автоматически подобранные кандидаты; план ответа — учебная помощь. Отметки «задан» и оценки хранятся только на этом устройстве.';
 

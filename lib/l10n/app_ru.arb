@@ -2102,6 +2102,7 @@
   "classroomToolInstruments": "Анализаторы",
   "classroomToolCalibration": "Журнал калибровки",
   "classroomToolDifferential": "Лейкоформула",
+  "classroomPlanRecommended": "Рекомендованный LabGuide план практики",
   "classroomOralNotice": "Вопросы — автоматически подобранные кандидаты; план ответа — учебная помощь. Отметки «задан» и оценки хранятся только на этом устройстве.",
   "classroomOralEmpty": "Для этой темы нет устных вопросов",
   "classroomCandidate": "Вопрос-кандидат {n}",

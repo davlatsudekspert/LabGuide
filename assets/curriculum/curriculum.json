@@ -8833,7 +8833,11 @@
     {
      "id": "d091-P",
      "n": 91,
-     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "title_uz": "Kapillyar qon olish va gematologik tekshiruv uchun namuna tayyorlash",
+     "title_ru": "Взятие капиллярной крови и подготовка образца для гематологического исследования",
+     "title_en": "Capillary blood collection and specimen preparation for haematology",
+     "plan_source": "labguide_recommended",
+     "plan_block": "A",
      "type": "practical",
      "hours": 6,
      "week": 16,
@@ -8841,78 +8845,361 @@
       "analytes": [],
       "conditions": [],
       "reference": [],
-      "tools": [],
+      "tools": [
+       "/lab/preanalytics"
+      ],
       "microscopy": [],
-      "toifa_topic": null,
+      "protocols": [
+       "kapillyar-qon-olish"
+      ],
+      "toifa_topic": "hematology_cells",
       "gap": false
      },
+     "plan_refs": [
+      {
+       "pack": "book-aripova-2007",
+       "loc": {
+        "uz": "XII bob, 148–149, 154–155-b.",
+        "ru": "гл. XII, с. 148–149, 154–155",
+        "en": "ch. XII, pp. 148–149, 154–155"
+       }
+      },
+      {
+       "book": "who-phlebotomy-2010",
+       "loc": {
+        "uz": "7.1–7.2-bo‘limlar, 41–43-b.",
+        "ru": "разд. 7.1–7.2, с. 41–43",
+        "en": "sections 7.1–7.2, pp. 41–43"
+       }
+      }
+     ],
+     "oral_candidates": {
+      "count": 12,
+      "ids": [
+       "kdl-o-002",
+       "kdl-o-003",
+       "kdl-o-005",
+       "kdl-o-017",
+       "kdl-o-018",
+       "kdl-o-019",
+       "kdl-o-022",
+       "kdl-o-023",
+       "kdl-o-160",
+       "kdl-o-173",
+       "kdl-o-263",
+       "kdl-o-264"
+      ]
+     },
+     "test_candidates": {
+      "count": 15,
+      "ids": [
+       "kdl-t-004",
+       "kdl-t-011",
+       "kdl-t-012",
+       "kdl-t-013",
+       "kdl-t-030",
+       "kdl-t-032",
+       "kdl-t-047",
+       "kdl-t-052",
+       "kdl-t-233",
+       "kdl-t-238",
+       "kdl-t-242",
+       "kdl-t-243",
+       "kdl-t-273",
+       "kdl-t-330",
+       "kdl-t-331"
+      ],
+      "pack_quiz_ids": [
+       "hemoglobin-q1",
+       "hemoglobin-q2",
+       "hematocrit-q1",
+       "hematocrit-q2",
+       "rbc-count-q1",
+       "rbc-count-q2",
+       "wbc-count-q1",
+       "wbc-count-q2",
+       "platelets-q1",
+       "platelets-q2",
+       "mcv-q1",
+       "mcv-q2",
+       "books-anemia-mcv"
+      ],
+      "pack_quiz_count": 13
+     },
      "test_gap": false,
-     "oral_gap": false,
-     "title_ru": "Практическое освоение лабораторных методов исследования",
-     "title_en": "Hands-on practice of laboratory testing methods"
+     "oral_gap": false
     },
     {
      "id": "d092-P",
      "n": 92,
-     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "title_uz": "Gemoglobinni gemiglobintsianid usulida aniqlash",
+     "title_ru": "Определение гемоглобина гемиглобинцианидным методом",
+     "title_en": "Haemoglobin measurement by the haemiglobincyanide method",
+     "plan_source": "labguide_recommended",
+     "plan_block": "A",
      "type": "practical",
      "hours": 6,
      "week": 17,
      "links": {
-      "analytes": [],
+      "analytes": [
+       "hemoglobin"
+      ],
       "conditions": [],
       "reference": [],
       "tools": [],
       "microscopy": [],
-      "toifa_topic": null,
+      "protocols": [
+       "gemoglobin-gemiglobintsianid"
+      ],
+      "toifa_topic": "hematology_cells",
       "gap": false
      },
+     "plan_refs": [
+      {
+       "pack": "book-aripova-2007",
+       "loc": {
+        "uz": "XII bob, 149–150, 156–157-b.",
+        "ru": "гл. XII, с. 149–150, 156–157",
+        "en": "ch. XII, pp. 149–150, 156–157"
+       }
+      },
+      {
+       "book": "kdl-qvp-2006",
+       "loc": {
+        "uz": "I bob, «1.5. Gemoglobin va uni aniqlash»",
+        "ru": "гл. I, «1.5. Гемоглобин и его определение»",
+        "en": "ch. I, “1.5. Haemoglobin and its measurement”"
+       }
+      }
+     ],
+     "oral_candidates": {
+      "count": 12,
+      "ids": [
+       "kdl-o-002",
+       "kdl-o-003",
+       "kdl-o-005",
+       "kdl-o-017",
+       "kdl-o-018",
+       "kdl-o-019",
+       "kdl-o-022",
+       "kdl-o-023",
+       "kdl-o-160",
+       "kdl-o-173",
+       "kdl-o-263",
+       "kdl-o-264"
+      ]
+     },
+     "test_candidates": {
+      "count": 15,
+      "ids": [
+       "kdl-t-004",
+       "kdl-t-011",
+       "kdl-t-012",
+       "kdl-t-013",
+       "kdl-t-030",
+       "kdl-t-032",
+       "kdl-t-047",
+       "kdl-t-052",
+       "kdl-t-233",
+       "kdl-t-238",
+       "kdl-t-242",
+       "kdl-t-243",
+       "kdl-t-273",
+       "kdl-t-330",
+       "kdl-t-331"
+      ],
+      "pack_quiz_ids": [
+       "hemoglobin-q1",
+       "hemoglobin-q2"
+      ],
+      "pack_quiz_count": 2
+     },
      "test_gap": false,
-     "oral_gap": false,
-     "title_ru": "Практическое освоение лабораторных методов исследования",
-     "title_en": "Hands-on practice of laboratory testing methods"
+     "oral_gap": false
     },
     {
      "id": "d093-P",
      "n": 93,
-     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "title_uz": "Eritrotsitlarni sanoq kamerasida (Goryaev) sanash",
+     "title_ru": "Подсчёт эритроцитов в счётной камере (Горяева)",
+     "title_en": "Red-cell count in a counting chamber (Goryaev)",
+     "plan_source": "labguide_recommended",
+     "plan_block": "A",
      "type": "practical",
      "hours": 6,
      "week": 17,
      "links": {
-      "analytes": [],
+      "analytes": [
+       "rbc-count"
+      ],
       "conditions": [],
       "reference": [],
-      "tools": [],
+      "tools": [
+       "/lab/calculators/chamber"
+      ],
       "microscopy": [],
-      "toifa_topic": null,
+      "protocols": [
+       "eritrotsitlarni-sanash-kamera"
+      ],
+      "toifa_topic": "hematology_cells",
       "gap": false
      },
+     "plan_refs": [
+      {
+       "pack": "book-aripova-2007",
+       "loc": {
+        "uz": "XII bob, 151, 160–162-b.",
+        "ru": "гл. XII, с. 151, 160–162",
+        "en": "ch. XII, pp. 151, 160–162"
+       }
+      },
+      {
+       "book": "kdl-qvp-2006",
+       "loc": {
+        "uz": "II bob, «Gematologiya · Eritrotsitlar»",
+        "ru": "гл. II, «Гематология · Эритроциты»",
+        "en": "ch. II, “Haematology · Red cells”"
+       }
+      }
+     ],
+     "oral_candidates": {
+      "count": 12,
+      "ids": [
+       "kdl-o-002",
+       "kdl-o-003",
+       "kdl-o-005",
+       "kdl-o-017",
+       "kdl-o-018",
+       "kdl-o-019",
+       "kdl-o-022",
+       "kdl-o-023",
+       "kdl-o-160",
+       "kdl-o-173",
+       "kdl-o-263",
+       "kdl-o-264"
+      ]
+     },
+     "test_candidates": {
+      "count": 15,
+      "ids": [
+       "kdl-t-004",
+       "kdl-t-011",
+       "kdl-t-012",
+       "kdl-t-013",
+       "kdl-t-030",
+       "kdl-t-032",
+       "kdl-t-047",
+       "kdl-t-052",
+       "kdl-t-233",
+       "kdl-t-238",
+       "kdl-t-242",
+       "kdl-t-243",
+       "kdl-t-273",
+       "kdl-t-330",
+       "kdl-t-331"
+      ],
+      "pack_quiz_ids": [
+       "rbc-count-q1",
+       "rbc-count-q2"
+      ],
+      "pack_quiz_count": 2
+     },
      "test_gap": false,
-     "oral_gap": false,
-     "title_ru": "Практическое освоение лабораторных методов исследования",
-     "title_en": "Hands-on practice of laboratory testing methods"
+     "oral_gap": false
     },
     {
      "id": "d094-P",
      "n": 94,
-     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "title_uz": "Leykotsitlarni sanoq kamerasida sanash va EChTni aniqlash",
+     "title_ru": "Подсчёт лейкоцитов в счётной камере и определение СОЭ",
+     "title_en": "White-cell count in a counting chamber and ESR",
+     "plan_source": "labguide_recommended",
+     "plan_block": "A",
      "type": "practical",
      "hours": 6,
      "week": 17,
      "links": {
-      "analytes": [],
+      "analytes": [
+       "wbc-count",
+       "esr"
+      ],
       "conditions": [],
       "reference": [],
-      "tools": [],
+      "tools": [
+       "/lab/calculators/chamber"
+      ],
       "microscopy": [],
-      "toifa_topic": null,
+      "protocols": [
+       "leykotsitlarni-sanash-kamera",
+       "echt-aniqlash"
+      ],
+      "toifa_topic": "hematology_cells",
       "gap": false
      },
+     "plan_refs": [
+      {
+       "pack": "book-aripova-2007",
+       "loc": {
+        "uz": "XII bob, 150–152, 157–159, 162–163-b.",
+        "ru": "гл. XII, с. 150–152, 157–159, 162–163",
+        "en": "ch. XII, pp. 150–152, 157–159, 162–163"
+       }
+      },
+      {
+       "book": "kdl-qvp-2006",
+       "loc": {
+        "uz": "II bob, «Gematologiya · Leykotsitlar», «EChT»",
+        "ru": "гл. II, «Гематология · Лейкоциты», «СОЭ»",
+        "en": "ch. II, “Haematology · White cells”, “ESR”"
+       }
+      }
+     ],
+     "oral_candidates": {
+      "count": 12,
+      "ids": [
+       "kdl-o-002",
+       "kdl-o-003",
+       "kdl-o-005",
+       "kdl-o-017",
+       "kdl-o-018",
+       "kdl-o-019",
+       "kdl-o-022",
+       "kdl-o-023",
+       "kdl-o-160",
+       "kdl-o-173",
+       "kdl-o-263",
+       "kdl-o-264"
+      ]
+     },
+     "test_candidates": {
+      "count": 15,
+      "ids": [
+       "kdl-t-004",
+       "kdl-t-011",
+       "kdl-t-012",
+       "kdl-t-013",
+       "kdl-t-030",
+       "kdl-t-032",
+       "kdl-t-047",
+       "kdl-t-052",
+       "kdl-t-233",
+       "kdl-t-238",
+       "kdl-t-242",
+       "kdl-t-243",
+       "kdl-t-273",
+       "kdl-t-330",
+       "kdl-t-331"
+      ],
+      "pack_quiz_ids": [
+       "wbc-count-q1",
+       "wbc-count-q2",
+       "esr-q1",
+       "esr-q2"
+      ],
+      "pack_quiz_count": 4
+     },
      "test_gap": false,
-     "oral_gap": false,
-     "title_ru": "Практическое освоение лабораторных методов исследования",
-     "title_en": "Hands-on practice of laboratory testing methods"
+     "oral_gap": false
     },
     {
      "id": "d095-L",
@@ -8983,28 +9270,70 @@
     {
      "id": "d096-P",
      "n": 96,
-     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "title_uz": "Yupqa qon surtmasini tayyorlash va yaroqliligini baholash",
+     "title_ru": "Приготовление тонкого мазка крови и оценка его пригодности",
+     "title_en": "Preparing a thin blood film and judging its quality",
+     "plan_source": "labguide_recommended",
+     "plan_block": "B",
      "type": "practical",
      "hours": 6,
      "week": 17,
      "links": {
-      "analytes": [],
+      "analytes": [
+       "blood-smear"
+      ],
       "conditions": [],
       "reference": [],
-      "tools": [],
+      "tools": [
+       "/lab/bloodmorph"
+      ],
       "microscopy": [],
-      "toifa_topic": null,
+      "protocols": [
+       "qon-surtmasi-tayyorlash-boyash#1-4"
+      ],
+      "toifa_topic": "hematology_cells",
       "gap": false
      },
+     "plan_refs": [
+      {
+       "pack": "book-aripova-2007",
+       "loc": {
+        "uz": "XII bob, 153–154, 163–164-b.",
+        "ru": "гл. XII, с. 153–154, 163–164",
+        "en": "ch. XII, pp. 153–154, 163–164"
+       }
+      }
+     ],
+     "oral_candidates": {
+      "count": 2,
+      "ids": [
+       "kdl-o-018",
+       "kdl-o-173"
+      ]
+     },
+     "test_candidates": {
+      "count": 3,
+      "ids": [
+       "kdl-t-035",
+       "kdl-t-052",
+       "kdl-t-273"
+      ],
+      "pack_quiz_ids": [
+       "blood-smear-q1"
+      ],
+      "pack_quiz_count": 1
+     },
      "test_gap": false,
-     "oral_gap": false,
-     "title_ru": "Практическое освоение лабораторных методов исследования",
-     "title_en": "Hands-on practice of laboratory testing methods"
+     "oral_gap": false
     },
     {
      "id": "d097-P",
      "n": 97,
-     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "title_uz": "Surtmani qotirish va Romanovskiy–Gimza usulida bo‘yash",
+     "title_ru": "Фиксация мазка и окраска по Романовскому–Гимзе",
+     "title_en": "Fixing the film and Romanowsky–Giemsa staining",
+     "plan_source": "labguide_recommended",
+     "plan_block": "B",
      "type": "practical",
      "hours": 6,
      "week": 17,
@@ -9012,20 +9341,65 @@
       "analytes": [],
       "conditions": [],
       "reference": [],
-      "tools": [],
+      "tools": [
+       "/lab/bloodmorph"
+      ],
       "microscopy": [],
-      "toifa_topic": null,
+      "protocols": [
+       "qon-surtmasi-tayyorlash-boyash#5-8"
+      ],
+      "toifa_topic": "hematology_cells",
       "gap": false
      },
+     "plan_refs": [
+      {
+       "pack": "book-aripova-2007",
+       "loc": {
+        "uz": "XII bob, 153, 164–165-b.",
+        "ru": "гл. XII, с. 153, 164–165",
+        "en": "ch. XII, pp. 153, 164–165"
+       }
+      }
+     ],
+     "oral_candidates": {
+      "count": 2,
+      "ids": [
+       "kdl-o-018",
+       "kdl-o-173"
+      ]
+     },
+     "test_candidates": {
+      "count": 3,
+      "ids": [
+       "kdl-t-035",
+       "kdl-t-052",
+       "kdl-t-273"
+      ],
+      "pack_quiz_ids": [
+       "neutrophils-q1",
+       "neutrophils-q2",
+       "lymphocytes-q1",
+       "lymphocytes-q2",
+       "monocytes-q1",
+       "monocytes-q2",
+       "eosinophils-q1",
+       "eosinophils-q2",
+       "basophils-q1",
+       "basophils-q2"
+      ],
+      "pack_quiz_count": 10
+     },
      "test_gap": false,
-     "oral_gap": false,
-     "title_ru": "Практическое освоение лабораторных методов исследования",
-     "title_en": "Hands-on practice of laboratory testing methods"
+     "oral_gap": false
     },
     {
      "id": "d098-P",
      "n": 98,
-     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "title_uz": "Leykotsitar formulani immersion mikroskopda sanash texnikasi",
+     "title_ru": "Техника подсчёта лейкоцитарной формулы с иммерсией",
+     "title_en": "Counting the leukocyte differential under oil immersion",
+     "plan_source": "labguide_recommended",
+     "plan_block": "B",
      "type": "practical",
      "hours": 6,
      "week": 18,
@@ -9033,57 +9407,194 @@
       "analytes": [],
       "conditions": [],
       "reference": [],
-      "tools": [],
+      "tools": [
+       "/lab/differential"
+      ],
       "microscopy": [],
-      "toifa_topic": null,
+      "protocols": [
+       "leykoformula-sanash-mikroskop#1-3,8-9"
+      ],
+      "toifa_topic": "hematology_cells",
       "gap": false
      },
+     "plan_refs": [
+      {
+       "pack": "book-aripova-2007",
+       "loc": {
+        "uz": "XII bob, 152–153, 165–166-b.",
+        "ru": "гл. XII, с. 152–153, 165–166",
+        "en": "ch. XII, pp. 152–153, 165–166"
+       }
+      },
+      {
+       "book": "kdl-qvp-2006",
+       "loc": {
+        "uz": "II bob, «Gematologiya · Leykotsitlar mikroskopiyasi»",
+        "ru": "гл. II, «Гематология · Микроскопия лейкоцитов»",
+        "en": "ch. II, “Haematology · White-cell microscopy”"
+       }
+      }
+     ],
+     "oral_candidates": {
+      "count": 2,
+      "ids": [
+       "kdl-o-018",
+       "kdl-o-173"
+      ]
+     },
+     "test_candidates": {
+      "count": 3,
+      "ids": [
+       "kdl-t-035",
+       "kdl-t-052",
+       "kdl-t-273"
+      ],
+      "pack_quiz_ids": [
+       "neutrophils-q1",
+       "neutrophils-q2",
+       "lymphocytes-q1",
+       "lymphocytes-q2",
+       "monocytes-q1",
+       "monocytes-q2",
+       "eosinophils-q1",
+       "eosinophils-q2",
+       "basophils-q1",
+       "basophils-q2"
+      ],
+      "pack_quiz_count": 10
+     },
      "test_gap": false,
-     "oral_gap": false,
-     "title_ru": "Практическое освоение лабораторных методов исследования",
-     "title_en": "Hands-on practice of laboratory testing methods"
+     "oral_gap": false
     },
     {
      "id": "d099-P",
      "n": 99,
-     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "title_uz": "Me’yoriy leykotsitlarni aniqlash mezonlari (mikroskopik atlas bilan)",
+     "title_ru": "Критерии распознавания нормальных лейкоцитов (с микроскопическим атласом)",
+     "title_en": "Criteria for identifying normal leukocytes (with the microscopy atlas)",
+     "plan_source": "labguide_recommended",
+     "plan_block": "B",
      "type": "practical",
      "hours": 6,
      "week": 18,
      "links": {
-      "analytes": [],
+      "analytes": [
+       "neutrophils",
+       "lymphocytes",
+       "monocytes",
+       "eosinophils",
+       "basophils"
+      ],
       "conditions": [],
       "reference": [],
       "tools": [],
-      "microscopy": [],
-      "toifa_topic": null,
+      "microscopy": [
+       "blood"
+      ],
+      "protocols": [
+       "leykoformula-sanash-mikroskop#4-7"
+      ],
+      "toifa_topic": "hematology_cells",
       "gap": false
      },
+     "plan_refs": [
+      {
+       "pack": "book-aripova-2007",
+       "loc": {
+        "uz": "XII bob, 166–169-b.",
+        "ru": "гл. XII, с. 166–169",
+        "en": "ch. XII, pp. 166–169"
+       }
+      }
+     ],
+     "oral_candidates": {
+      "count": 2,
+      "ids": [
+       "kdl-o-018",
+       "kdl-o-173"
+      ]
+     },
+     "test_candidates": {
+      "count": 3,
+      "ids": [
+       "kdl-t-035",
+       "kdl-t-052",
+       "kdl-t-273"
+      ],
+      "pack_quiz_ids": [
+       "neutrophils-q1",
+       "neutrophils-q2",
+       "lymphocytes-q1",
+       "lymphocytes-q2",
+       "monocytes-q1",
+       "monocytes-q2",
+       "eosinophils-q1",
+       "eosinophils-q2",
+       "basophils-q1",
+       "basophils-q2"
+      ],
+      "pack_quiz_count": 10
+     },
      "test_gap": false,
-     "oral_gap": false,
-     "title_ru": "Практическое освоение лабораторных методов исследования",
-     "title_en": "Hands-on practice of laboratory testing methods"
+     "oral_gap": false
     },
     {
      "id": "d100-P",
      "n": 100,
-     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "title_uz": "Trombotsitlarni Fonio usulida sanash",
+     "title_ru": "Подсчёт тромбоцитов по Фонио",
+     "title_en": "Platelet count by the Fonio method",
+     "plan_source": "labguide_recommended",
+     "plan_block": "B",
      "type": "practical",
      "hours": 6,
      "week": 18,
      "links": {
-      "analytes": [],
+      "analytes": [
+       "platelets"
+      ],
       "conditions": [],
       "reference": [],
       "tools": [],
       "microscopy": [],
-      "toifa_topic": null,
+      "protocols": [
+       "trombotsitlarni-sanash-fonio"
+      ],
+      "toifa_topic": "hematology_cells",
       "gap": false
      },
+     "plan_refs": [
+      {
+       "book": "kdl-kurbonova-2023",
+       "loc": {
+        "uz": "9-bob, 99–102-b.",
+        "ru": "гл. 9, с. 99–102",
+        "en": "ch. 9, pp. 99–102"
+       }
+      }
+     ],
+     "oral_candidates": {
+      "count": 2,
+      "ids": [
+       "kdl-o-018",
+       "kdl-o-173"
+      ]
+     },
+     "test_candidates": {
+      "count": 3,
+      "ids": [
+       "kdl-t-035",
+       "kdl-t-052",
+       "kdl-t-273"
+      ],
+      "pack_quiz_ids": [
+       "platelets-q1",
+       "platelets-q2"
+      ],
+      "pack_quiz_count": 2
+     },
      "test_gap": false,
-     "oral_gap": false,
-     "title_ru": "Практическое освоение лабораторных методов исследования",
-     "title_en": "Hands-on practice of laboratory testing methods"
+     "oral_gap": false
     },
     {
      "id": "d101-L",
@@ -9149,7 +9660,11 @@
     {
      "id": "d102-P",
      "n": 102,
-     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "title_uz": "Siydikni yig‘ish, saqlash va fizik xossalarini aniqlash",
+     "title_ru": "Сбор и хранение мочи, определение физических свойств",
+     "title_en": "Urine collection, storage and physical properties",
+     "plan_source": "labguide_recommended",
+     "plan_block": "C",
      "type": "practical",
      "hours": 6,
      "week": 18,
@@ -9157,62 +9672,222 @@
       "analytes": [],
       "conditions": [],
       "reference": [],
-      "tools": [],
+      "tools": [
+       "/lab/urinalysis"
+      ],
       "microscopy": [],
-      "toifa_topic": null,
+      "protocols": [
+       "siydik-yigish-fizik-xossalar"
+      ],
+      "toifa_topic": "urinalysis",
       "gap": false
      },
+     "plan_refs": [
+      {
+       "pack": "book-aripova-2007",
+       "loc": {
+        "uz": "X bob, 83–87-b.",
+        "ru": "гл. X, с. 83–87",
+        "en": "ch. X, pp. 83–87"
+       }
+      },
+      {
+       "book": "kdl-kurbonova-2023",
+       "loc": {
+        "uz": "1-bob, 1.3, 10–17-b.",
+        "ru": "гл. 1, 1.3, с. 10–17",
+        "en": "ch. 1, 1.3, pp. 10–17"
+       }
+      }
+     ],
+     "oral_candidates": {
+      "count": 6,
+      "ids": [
+       "kdl-o-042",
+       "kdl-o-043",
+       "kdl-o-044",
+       "kdl-o-045",
+       "kdl-o-046",
+       "kdl-o-047"
+      ]
+     },
+     "test_candidates": {
+      "count": 6,
+      "ids": [
+       "kdl-t-051",
+       "kdl-t-250",
+       "kdl-t-284",
+       "kdl-t-320",
+       "kdl-t-426",
+       "kdl-t-427"
+      ],
+      "pack_quiz_ids": [
+       "urine-chemistry-q1",
+       "urine-chemistry-q2",
+       "urine-microscopy-q1",
+       "urine-microscopy-q2"
+      ],
+      "pack_quiz_count": 4
+     },
      "test_gap": false,
-     "oral_gap": false,
-     "title_ru": "Практическое освоение лабораторных методов исследования",
-     "title_en": "Hands-on practice of laboratory testing methods"
+     "oral_gap": false
     },
     {
      "id": "d103-P",
      "n": 103,
-     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "title_uz": "Siydikni kimyoviy tekshirish: test-tilimchalar va sulfosalitsil sinamasi",
+     "title_ru": "Химическое исследование мочи: тест-полоски и проба с сульфосалициловой кислотой",
+     "title_en": "Chemical urinalysis: dipsticks and the sulfosalicylic acid test",
+     "plan_source": "labguide_recommended",
+     "plan_block": "C",
      "type": "practical",
      "hours": 6,
      "week": 19,
      "links": {
-      "analytes": [],
+      "analytes": [
+       "urine-chemistry"
+      ],
       "conditions": [],
       "reference": [],
-      "tools": [],
+      "tools": [
+       "/lab/urinalysis"
+      ],
       "microscopy": [],
-      "toifa_topic": null,
+      "protocols": [
+       "siydik-kimyoviy-tekshiruv"
+      ],
+      "toifa_topic": "urinalysis",
       "gap": false
      },
+     "plan_refs": [
+      {
+       "pack": "book-aripova-2007",
+       "loc": {
+        "uz": "X bob, 79–92-b.",
+        "ru": "гл. X, с. 79–92",
+        "en": "ch. X, pp. 79–92"
+       }
+      },
+      {
+       "book": "kdl-kurbonova-2023",
+       "loc": {
+        "uz": "1-bob, 1.4, 17–23-b.",
+        "ru": "гл. 1, 1.4, с. 17–23",
+        "en": "ch. 1, 1.4, pp. 17–23"
+       }
+      }
+     ],
+     "oral_candidates": {
+      "count": 6,
+      "ids": [
+       "kdl-o-042",
+       "kdl-o-043",
+       "kdl-o-044",
+       "kdl-o-045",
+       "kdl-o-046",
+       "kdl-o-047"
+      ]
+     },
+     "test_candidates": {
+      "count": 6,
+      "ids": [
+       "kdl-t-051",
+       "kdl-t-250",
+       "kdl-t-284",
+       "kdl-t-320",
+       "kdl-t-426",
+       "kdl-t-427"
+      ],
+      "pack_quiz_ids": [
+       "urine-chemistry-q1",
+       "urine-chemistry-q2"
+      ],
+      "pack_quiz_count": 2
+     },
      "test_gap": false,
-     "oral_gap": false,
-     "title_ru": "Практическое освоение лабораторных методов исследования",
-     "title_en": "Hands-on practice of laboratory testing methods"
+     "oral_gap": false
     },
     {
      "id": "d104-P",
      "n": 104,
-     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "title_uz": "Siydik cho‘kmasi: preparat tayyorlash, hujayralar va silindrlar",
+     "title_ru": "Осадок мочи: приготовление препарата, клетки и цилиндры",
+     "title_en": "Urine sediment: preparation, cells and casts",
+     "plan_source": "labguide_recommended",
+     "plan_block": "C",
      "type": "practical",
      "hours": 6,
      "week": 19,
      "links": {
-      "analytes": [],
+      "analytes": [
+       "urine-microscopy"
+      ],
       "conditions": [],
       "reference": [],
       "tools": [],
       "microscopy": [],
-      "toifa_topic": null,
+      "protocols": [
+       "siydik-chokmasi-mikroskopiya#1-4"
+      ],
+      "toifa_topic": "urinalysis",
       "gap": false
      },
+     "plan_refs": [
+      {
+       "pack": "book-aripova-2007",
+       "loc": {
+        "uz": "X bob, 92–97-b.",
+        "ru": "гл. X, с. 92–97",
+        "en": "ch. X, pp. 92–97"
+       }
+      },
+      {
+       "book": "kdl-kurbonova-2023",
+       "loc": {
+        "uz": "1-bob, 1.5, 24-b.",
+        "ru": "гл. 1, 1.5, с. 24",
+        "en": "ch. 1, 1.5, p. 24"
+       }
+      }
+     ],
+     "oral_candidates": {
+      "count": 6,
+      "ids": [
+       "kdl-o-042",
+       "kdl-o-043",
+       "kdl-o-044",
+       "kdl-o-045",
+       "kdl-o-046",
+       "kdl-o-047"
+      ]
+     },
+     "test_candidates": {
+      "count": 6,
+      "ids": [
+       "kdl-t-051",
+       "kdl-t-250",
+       "kdl-t-284",
+       "kdl-t-320",
+       "kdl-t-426",
+       "kdl-t-427"
+      ],
+      "pack_quiz_ids": [
+       "urine-microscopy-q1",
+       "urine-microscopy-q2"
+      ],
+      "pack_quiz_count": 2
+     },
      "test_gap": false,
-     "oral_gap": false,
-     "title_ru": "Практическое освоение лабораторных методов исследования",
-     "title_en": "Hands-on practice of laboratory testing methods"
+     "oral_gap": false
     },
     {
      "id": "d105-P",
      "n": 105,
-     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "title_uz": "Siydik cho‘kmasi: kristallar, atlas va natijani izohlash",
+     "title_ru": "Осадок мочи: кристаллы, атлас и интерпретация результата",
+     "title_en": "Urine sediment: crystals, atlas and interpretation",
+     "plan_source": "labguide_recommended",
+     "plan_block": "C",
      "type": "practical",
      "hours": 6,
      "week": 19,
@@ -9220,15 +9895,67 @@
       "analytes": [],
       "conditions": [],
       "reference": [],
-      "tools": [],
-      "microscopy": [],
-      "toifa_topic": null,
+      "tools": [
+       "/lab/calculators/nechiporenko"
+      ],
+      "microscopy": [
+       "urine"
+      ],
+      "protocols": [
+       "siydik-chokmasi-mikroskopiya#5-8"
+      ],
+      "toifa_topic": "urinalysis",
       "gap": false
      },
+     "plan_refs": [
+      {
+       "pack": "book-aripova-2007",
+       "loc": {
+        "uz": "X bob, 97–99-b.",
+        "ru": "гл. X, с. 97–99",
+        "en": "ch. X, pp. 97–99"
+       }
+      },
+      {
+       "book": "kdl-kurbonova-2023",
+       "loc": {
+        "uz": "1-bob, 1.5–1.6, 24, 29–30-b.",
+        "ru": "гл. 1, 1.5–1.6, с. 24, 29–30",
+        "en": "ch. 1, 1.5–1.6, pp. 24, 29–30"
+       }
+      }
+     ],
+     "oral_candidates": {
+      "count": 6,
+      "ids": [
+       "kdl-o-042",
+       "kdl-o-043",
+       "kdl-o-044",
+       "kdl-o-045",
+       "kdl-o-046",
+       "kdl-o-047"
+      ]
+     },
+     "test_candidates": {
+      "count": 6,
+      "ids": [
+       "kdl-t-051",
+       "kdl-t-250",
+       "kdl-t-284",
+       "kdl-t-320",
+       "kdl-t-426",
+       "kdl-t-427"
+      ],
+      "pack_quiz_ids": [
+       "urine-chemistry-q1",
+       "urine-chemistry-q2",
+       "urine-microscopy-q1",
+       "urine-microscopy-q2"
+      ],
+      "pack_quiz_count": 4
+     },
      "test_gap": false,
-     "oral_gap": false,
-     "title_ru": "Практическое освоение лабораторных методов исследования",
-     "title_en": "Hands-on practice of laboratory testing methods"
+     "oral_gap": false
     },
     {
      "id": "d106-L",
@@ -9291,7 +10018,11 @@
     {
      "id": "d107-P",
      "n": 107,
-     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "title_uz": "Balg‘amni yig‘ish va makroskopik ko‘rish",
+     "title_ru": "Сбор мокроты и макроскопическое исследование",
+     "title_en": "Sputum collection and macroscopic examination",
+     "plan_source": "labguide_recommended",
+     "plan_block": "D",
      "type": "practical",
      "hours": 6,
      "week": 19,
@@ -9301,18 +10032,67 @@
       "reference": [],
       "tools": [],
       "microscopy": [],
-      "toifa_topic": null,
+      "protocols": [
+       "balgam-yigish-baholash#1-4"
+      ],
+      "toifa_topic": "sputum_tb",
       "gap": false
      },
+     "plan_refs": [
+      {
+       "book": "kdl-kurbonova-2023",
+       "loc": {
+        "uz": "5-bob, 62–63-b.",
+        "ru": "гл. 5, с. 62–63",
+        "en": "ch. 5, pp. 62–63"
+       }
+      },
+      {
+       "pack": "book-aripova-2007",
+       "loc": {
+        "uz": "XIII bob, 173–175-b.",
+        "ru": "гл. XIII, с. 173–175",
+        "en": "ch. XIII, pp. 173–175"
+       }
+      }
+     ],
+     "oral_candidates": {
+      "count": 4,
+      "ids": [
+       "kdl-o-051",
+       "kdl-o-052",
+       "kdl-o-175",
+       "kdl-o-270"
+      ]
+     },
+     "test_candidates": {
+      "count": 7,
+      "ids": [
+       "kdl-t-016",
+       "kdl-t-017",
+       "kdl-t-018",
+       "kdl-t-153",
+       "kdl-t-154",
+       "kdl-t-279",
+       "kdl-t-283"
+      ],
+      "pack_quiz_ids": [
+       "sputum-afb-q1",
+       "sputum-afb-q2"
+      ],
+      "pack_quiz_count": 2
+     },
      "test_gap": false,
-     "oral_gap": false,
-     "title_ru": "Практическое освоение лабораторных методов исследования",
-     "title_en": "Hands-on practice of laboratory testing methods"
+     "oral_gap": false
     },
     {
      "id": "d108-P",
      "n": 108,
-     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "title_uz": "Balg‘amning nativ mikroskopiyasi va namuna sifati",
+     "title_ru": "Нативная микроскопия мокроты и качество образца",
+     "title_en": "Native sputum microscopy and specimen quality",
+     "plan_source": "labguide_recommended",
+     "plan_block": "D",
      "type": "practical",
      "hours": 6,
      "week": 19,
@@ -9322,18 +10102,59 @@
       "reference": [],
       "tools": [],
       "microscopy": [],
-      "toifa_topic": null,
+      "protocols": [
+       "balgam-yigish-baholash#5-7"
+      ],
+      "toifa_topic": "sputum_tb",
       "gap": false
      },
+     "plan_refs": [
+      {
+       "book": "kdl-kurbonova-2023",
+       "loc": {
+        "uz": "5-bob, 62–64-b.",
+        "ru": "гл. 5, с. 62–64",
+        "en": "ch. 5, pp. 62–64"
+       }
+      }
+     ],
+     "oral_candidates": {
+      "count": 4,
+      "ids": [
+       "kdl-o-051",
+       "kdl-o-052",
+       "kdl-o-175",
+       "kdl-o-270"
+      ]
+     },
+     "test_candidates": {
+      "count": 7,
+      "ids": [
+       "kdl-t-016",
+       "kdl-t-017",
+       "kdl-t-018",
+       "kdl-t-153",
+       "kdl-t-154",
+       "kdl-t-279",
+       "kdl-t-283"
+      ],
+      "pack_quiz_ids": [
+       "sputum-afb-q1",
+       "sputum-afb-q2"
+      ],
+      "pack_quiz_count": 2
+     },
      "test_gap": false,
-     "oral_gap": false,
-     "title_ru": "Практическое освоение лабораторных методов исследования",
-     "title_en": "Hands-on practice of laboratory testing methods"
+     "oral_gap": false
     },
     {
      "id": "d109-P",
      "n": 109,
-     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "title_uz": "Balg‘am surtmasini Gram usulida bo‘yash va ko‘rish",
+     "title_ru": "Окраска мазка мокроты по Граму и его просмотр",
+     "title_en": "Gram staining and reading a sputum smear",
+     "plan_source": "labguide_recommended",
+     "plan_block": "D",
      "type": "practical",
      "hours": 6,
      "week": 20,
@@ -9343,55 +10164,190 @@
       "reference": [],
       "tools": [],
       "microscopy": [],
-      "toifa_topic": null,
+      "protocols": [
+       "balgam-surtmasi-gram-sil-nilsen#1-5"
+      ],
+      "toifa_topic": "sputum_tb",
       "gap": false
      },
+     "plan_refs": [
+      {
+       "pack": "book-aripova-2007",
+       "loc": {
+        "uz": "XIII bob, 175–176-b.",
+        "ru": "гл. XIII, с. 175–176",
+        "en": "ch. XIII, pp. 175–176"
+       }
+      },
+      {
+       "book": "kdl-kurbonova-2023",
+       "loc": {
+        "uz": "6-bob, 67-b.",
+        "ru": "гл. 6, с. 67",
+        "en": "ch. 6, p. 67"
+       }
+      }
+     ],
+     "oral_candidates": {
+      "count": 4,
+      "ids": [
+       "kdl-o-051",
+       "kdl-o-052",
+       "kdl-o-175",
+       "kdl-o-270"
+      ]
+     },
+     "test_candidates": {
+      "count": 7,
+      "ids": [
+       "kdl-t-016",
+       "kdl-t-017",
+       "kdl-t-018",
+       "kdl-t-153",
+       "kdl-t-154",
+       "kdl-t-279",
+       "kdl-t-283"
+      ],
+      "pack_quiz_ids": [
+       "sputum-afb-q1",
+       "sputum-afb-q2"
+      ],
+      "pack_quiz_count": 2
+     },
      "test_gap": false,
-     "oral_gap": false,
-     "title_ru": "Практическое освоение лабораторных методов исследования",
-     "title_en": "Hands-on practice of laboratory testing methods"
+     "oral_gap": false
     },
     {
      "id": "d110-P",
      "n": 110,
-     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "title_uz": "Sil–Nilsen usulida bo‘yash: kislotaga chidamli bakteriyalarni qidirish",
+     "title_ru": "Окраска по Цилю–Нильсену: поиск кислотоустойчивых бактерий",
+     "title_en": "Ziehl–Neelsen staining: searching for acid-fast bacilli",
+     "plan_source": "labguide_recommended",
+     "plan_block": "D",
      "type": "practical",
      "hours": 6,
      "week": 20,
      "links": {
-      "analytes": [],
+      "analytes": [
+       "sputum-afb"
+      ],
       "conditions": [],
       "reference": [],
       "tools": [],
       "microscopy": [],
-      "toifa_topic": null,
+      "protocols": [
+       "balgam-surtmasi-gram-sil-nilsen#6-8"
+      ],
+      "toifa_topic": "sputum_tb",
       "gap": false
      },
+     "plan_refs": [
+      {
+       "pack": "book-aripova-2007",
+       "loc": {
+        "uz": "XIII bob, 174, 176–177-b.",
+        "ru": "гл. XIII, с. 174, 176–177",
+        "en": "ch. XIII, pp. 174, 176–177"
+       }
+      }
+     ],
+     "oral_candidates": {
+      "count": 4,
+      "ids": [
+       "kdl-o-051",
+       "kdl-o-052",
+       "kdl-o-175",
+       "kdl-o-270"
+      ]
+     },
+     "test_candidates": {
+      "count": 7,
+      "ids": [
+       "kdl-t-016",
+       "kdl-t-017",
+       "kdl-t-018",
+       "kdl-t-153",
+       "kdl-t-154",
+       "kdl-t-279",
+       "kdl-t-283"
+      ],
+      "pack_quiz_ids": [
+       "sputum-afb-q1",
+       "sputum-afb-q2"
+      ],
+      "pack_quiz_count": 2
+     },
      "test_gap": false,
-     "oral_gap": false,
-     "title_ru": "Практическое освоение лабораторных методов исследования",
-     "title_en": "Hands-on practice of laboratory testing methods"
+     "oral_gap": false
     },
     {
      "id": "d111-P",
      "n": 111,
-     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "title_uz": "Urogenital surtmalar mikroskopiyasi: gonoreya va trixomoniaz",
+     "title_ru": "Микроскопия урогенитальных мазков: гонорея и трихомониаз",
+     "title_en": "Urogenital smear microscopy: gonorrhoea and trichomoniasis",
+     "plan_source": "labguide_recommended",
+     "plan_block": "D",
      "type": "practical",
      "hours": 6,
      "week": 20,
      "links": {
-      "analytes": [],
+      "analytes": [
+       "vaginal-wet-mount"
+      ],
       "conditions": [],
       "reference": [],
       "tools": [],
       "microscopy": [],
-      "toifa_topic": null,
+      "protocols": [
+       "urogenital-surtma-mikroskopiya"
+      ],
+      "toifa_topic": "std_microscopy",
       "gap": false
      },
+     "plan_refs": [
+      {
+       "book": "kdl-kurbonova-2023",
+       "loc": {
+        "uz": "6-bob, 6.1–6.2, 65–70-b.",
+        "ru": "гл. 6, 6.1–6.2, с. 65–70",
+        "en": "ch. 6, 6.1–6.2, pp. 65–70"
+       }
+      }
+     ],
+     "oral_candidates": {
+      "count": 11,
+      "ids": [
+       "kdl-o-120",
+       "kdl-o-121",
+       "kdl-o-122",
+       "kdl-o-123",
+       "kdl-o-124",
+       "kdl-o-125",
+       "kdl-o-126",
+       "kdl-o-129",
+       "kdl-o-130",
+       "kdl-o-161",
+       "kdl-o-280"
+      ]
+     },
+     "test_candidates": {
+      "count": 4,
+      "ids": [
+       "kdl-t-055",
+       "kdl-t-120",
+       "kdl-t-321",
+       "kdl-t-332"
+      ],
+      "pack_quiz_ids": [
+       "vaginal-wet-mount-q1",
+       "vaginal-wet-mount-q2"
+      ],
+      "pack_quiz_count": 2
+     },
      "test_gap": false,
-     "oral_gap": false,
-     "title_ru": "Практическое освоение лабораторных методов исследования",
-     "title_en": "Hands-on practice of laboratory testing methods"
+     "oral_gap": false
     },
     {
      "id": "d112-L",
@@ -9457,65 +10413,246 @@
     {
      "id": "d113-P",
      "n": 113,
-     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "title_uz": "Najasning umumiy tahlili (koprogramma)",
+     "title_ru": "Общий анализ кала (копрограмма)",
+     "title_en": "General stool analysis (coprogram)",
+     "plan_source": "labguide_recommended",
+     "plan_block": "E",
      "type": "practical",
      "hours": 6,
      "week": 20,
      "links": {
-      "analytes": [],
+      "analytes": [
+       "stool-analysis"
+      ],
       "conditions": [],
       "reference": [],
-      "tools": [],
+      "tools": [
+       "/lab/coprology"
+      ],
       "microscopy": [],
-      "toifa_topic": null,
+      "protocols": [
+       "koprogramma-najas-tahlili"
+      ],
+      "toifa_topic": "stool_coprology",
       "gap": false
      },
+     "plan_refs": [
+      {
+       "book": "kdl-kurbonova-2023",
+       "loc": {
+        "uz": "2-bob, 2.1–2.3, 38–48-b.",
+        "ru": "гл. 2, 2.1–2.3, с. 38–48",
+        "en": "ch. 2, 2.1–2.3, pp. 38–48"
+       }
+      },
+      {
+       "book": "kdl-qvp-2006",
+       "loc": {
+        "uz": "II bob, «3. Najas»",
+        "ru": "гл. II, «3. Кал»",
+        "en": "ch. II, “3. Stool”"
+       }
+      }
+     ],
+     "oral_candidates": {
+      "count": 4,
+      "ids": [
+       "kdl-o-039",
+       "kdl-o-040",
+       "kdl-o-041",
+       "kdl-o-281"
+      ]
+     },
+     "test_candidates": {
+      "count": 6,
+      "ids": [
+       "kdl-t-019",
+       "kdl-t-020",
+       "kdl-t-021",
+       "kdl-t-033",
+       "kdl-t-249",
+       "kdl-t-349"
+      ],
+      "pack_quiz_ids": [],
+      "pack_quiz_count": 0
+     },
      "test_gap": false,
-     "oral_gap": false,
-     "title_ru": "Практическое освоение лабораторных методов исследования",
-     "title_en": "Hands-on practice of laboratory testing methods"
+     "oral_gap": false
     },
     {
      "id": "d114-P",
      "n": 114,
-     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "title_uz": "Najasda sodda jonivorlar va gijja tuxumlarini aniqlash",
+     "title_ru": "Выявление простейших и яиц гельминтов в кале",
+     "title_en": "Detecting protozoa and helminth eggs in stool",
+     "plan_source": "labguide_recommended",
+     "plan_block": "E",
      "type": "practical",
      "hours": 6,
      "week": 20,
      "links": {
-      "analytes": [],
+      "analytes": [
+       "stool-ova-parasites"
+      ],
       "conditions": [],
-      "reference": [],
-      "tools": [],
-      "microscopy": [],
-      "toifa_topic": null,
+      "reference": [
+       "stool-parasites"
+      ],
+      "tools": [
+       "/lab/coprology"
+      ],
+      "microscopy": [
+       "parasites"
+      ],
+      "protocols": [
+       "najas-parazitologik-tekshiruv"
+      ],
+      "toifa_topic": "parasitology",
       "gap": false
      },
+     "plan_refs": [
+      {
+       "pack": "book-aripova-2007",
+       "loc": {
+        "uz": "XI bob, 116–137-b.",
+        "ru": "гл. XI, с. 116–137",
+        "en": "ch. XI, pp. 116–137"
+       }
+      }
+     ],
+     "oral_candidates": {
+      "count": 12,
+      "ids": [
+       "kdl-o-131",
+       "kdl-o-132",
+       "kdl-o-133",
+       "kdl-o-134",
+       "kdl-o-135",
+       "kdl-o-136",
+       "kdl-o-137",
+       "kdl-o-138",
+       "kdl-o-139",
+       "kdl-o-140",
+       "kdl-o-141",
+       "kdl-o-142"
+      ]
+     },
+     "test_candidates": {
+      "count": 20,
+      "ids": [
+       "kdl-t-152",
+       "kdl-t-192",
+       "kdl-t-340",
+       "kdl-t-341",
+       "kdl-t-342",
+       "kdl-t-343",
+       "kdl-t-344",
+       "kdl-t-345",
+       "kdl-t-346",
+       "kdl-t-347",
+       "kdl-t-348",
+       "kdl-t-350",
+       "kdl-t-351",
+       "kdl-t-352",
+       "kdl-t-353",
+       "kdl-t-354",
+       "kdl-t-355",
+       "kdl-t-356",
+       "kdl-t-357",
+       "kdl-t-358"
+      ],
+      "pack_quiz_ids": [
+       "stool-ova-parasites-q1"
+      ],
+      "pack_quiz_count": 1
+     },
      "test_gap": false,
-     "oral_gap": false,
-     "title_ru": "Практическое освоение лабораторных методов исследования",
-     "title_en": "Hands-on practice of laboratory testing methods"
+     "oral_gap": false
     },
     {
      "id": "d115-P",
      "n": 115,
-     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "title_uz": "Perianal namuna: ostritsa (Enterobius vermicularis) tuxumlarini aniqlash",
+     "title_ru": "Перианальный соскоб: выявление яиц остриц (Enterobius vermicularis)",
+     "title_en": "Perianal sample: detecting pinworm (Enterobius vermicularis) eggs",
+     "plan_source": "labguide_recommended",
+     "plan_block": "E",
      "type": "practical",
      "hours": 6,
      "week": 21,
      "links": {
-      "analytes": [],
+      "analytes": [
+       "pinworm-test"
+      ],
       "conditions": [],
       "reference": [],
       "tools": [],
       "microscopy": [],
-      "toifa_topic": null,
+      "protocols": [
+       "perianal-namuna-ostritsa"
+      ],
+      "toifa_topic": "parasitology",
       "gap": false
      },
+     "plan_refs": [
+      {
+       "pack": "book-aripova-2007",
+       "loc": {
+        "uz": "XI bob, 119–121-b.",
+        "ru": "гл. XI, с. 119–121",
+        "en": "ch. XI, pp. 119–121"
+       }
+      }
+     ],
+     "oral_candidates": {
+      "count": 12,
+      "ids": [
+       "kdl-o-131",
+       "kdl-o-132",
+       "kdl-o-133",
+       "kdl-o-134",
+       "kdl-o-135",
+       "kdl-o-136",
+       "kdl-o-137",
+       "kdl-o-138",
+       "kdl-o-139",
+       "kdl-o-140",
+       "kdl-o-141",
+       "kdl-o-142"
+      ]
+     },
+     "test_candidates": {
+      "count": 20,
+      "ids": [
+       "kdl-t-152",
+       "kdl-t-192",
+       "kdl-t-340",
+       "kdl-t-341",
+       "kdl-t-342",
+       "kdl-t-343",
+       "kdl-t-344",
+       "kdl-t-345",
+       "kdl-t-346",
+       "kdl-t-347",
+       "kdl-t-348",
+       "kdl-t-350",
+       "kdl-t-351",
+       "kdl-t-352",
+       "kdl-t-353",
+       "kdl-t-354",
+       "kdl-t-355",
+       "kdl-t-356",
+       "kdl-t-357",
+       "kdl-t-358"
+      ],
+      "pack_quiz_ids": [
+       "pinworm-test-q1"
+      ],
+      "pack_quiz_count": 1
+     },
      "test_gap": false,
-     "oral_gap": false,
-     "title_ru": "Практическое освоение лабораторных методов исследования",
-     "title_en": "Hands-on practice of laboratory testing methods"
+     "oral_gap": false
     },
     {
      "id": "d116-L",
@@ -9573,7 +10710,11 @@
     {
      "id": "d117-P",
      "n": 117,
-     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "title_uz": "Zardob va plazma tayyorlash (biokimyoviy tekshiruv uchun)",
+     "title_ru": "Получение сыворотки и плазмы (для биохимического исследования)",
+     "title_en": "Preparing serum and plasma (for biochemistry)",
+     "plan_source": "labguide_recommended",
+     "plan_block": "F",
      "type": "practical",
      "hours": 6,
      "week": 21,
@@ -9581,20 +10722,76 @@
       "analytes": [],
       "conditions": [],
       "reference": [],
-      "tools": [],
+      "tools": [
+       "/lab/preanalytics"
+      ],
       "microscopy": [],
-      "toifa_topic": null,
+      "protocols": [
+       "zardob-plazma-tayyorlash"
+      ],
+      "toifa_topic": "preanalytics",
       "gap": false
      },
+     "plan_refs": [
+      {
+       "book": "kdl-qvp-2006",
+       "loc": {
+        "uz": "I bob, «Klinik-laborator tekshiruvlar uchun material; zardobni ajratib olish»",
+        "ru": "гл. I, «Материал для исследований; получение сыворотки»",
+        "en": "ch. I, “Material for laboratory tests; separating serum”"
+       }
+      }
+     ],
+     "oral_candidates": {
+      "count": 8,
+      "ids": [
+       "kdl-o-008",
+       "kdl-o-009",
+       "kdl-o-010",
+       "kdl-o-011",
+       "kdl-o-012",
+       "kdl-o-013",
+       "kdl-o-154",
+       "kdl-o-189"
+      ]
+     },
+     "test_candidates": {
+      "count": 19,
+      "ids": [
+       "kdl-t-022",
+       "kdl-t-041",
+       "kdl-t-143",
+       "kdl-t-144",
+       "kdl-t-145",
+       "kdl-t-146",
+       "kdl-t-147",
+       "kdl-t-148",
+       "kdl-t-149",
+       "kdl-t-150",
+       "kdl-t-160",
+       "kdl-t-179",
+       "kdl-t-360",
+       "kdl-t-366",
+       "kdl-t-367",
+       "kdl-t-393",
+       "kdl-t-394",
+       "kdl-t-395",
+       "kdl-t-398"
+      ],
+      "pack_quiz_ids": [],
+      "pack_quiz_count": 0
+     },
      "test_gap": false,
-     "oral_gap": false,
-     "title_ru": "Практическое освоение лабораторных методов исследования",
-     "title_en": "Hands-on practice of laboratory testing methods"
+     "oral_gap": false
     },
     {
      "id": "d118-P",
      "n": 118,
-     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "title_uz": "Biokimyoviy fotometriya asoslari va reaktivlar to‘plami bilan ishlash",
+     "title_ru": "Основы биохимической фотометрии и работа с набором реагентов",
+     "title_en": "Basics of biochemical photometry and working with a reagent kit",
+     "plan_source": "labguide_recommended",
+     "plan_block": "F",
      "type": "practical",
      "hours": 6,
      "week": 22,
@@ -9602,20 +10799,81 @@
       "analytes": [],
       "conditions": [],
       "reference": [],
-      "tools": [],
+      "tools": [
+       "/lab/instruments"
+      ],
       "microscopy": [],
-      "toifa_topic": null,
+      "protocols": [
+       "fotometriya-asoslari-biokimyo"
+      ],
+      "toifa_topic": "biochemistry_proteins_enzymes",
       "gap": false
      },
+     "plan_refs": [
+      {
+       "book": "kdl-qvp-2006",
+       "loc": {
+        "uz": "I bob, «Fotometriyaning asosiy tushunchalari», «Screen Master Plus fotometri»",
+        "ru": "гл. I, «Основные понятия фотометрии», «Фотометр Screen Master Plus»",
+        "en": "ch. I, “Basic concepts of photometry”, “Screen Master Plus photometer”"
+       }
+      }
+     ],
+     "oral_candidates": {
+      "count": 12,
+      "ids": [
+       "kdl-o-074",
+       "kdl-o-075",
+       "kdl-o-076",
+       "kdl-o-087",
+       "kdl-o-088",
+       "kdl-o-089",
+       "kdl-o-090",
+       "kdl-o-102",
+       "kdl-o-103",
+       "kdl-o-104",
+       "kdl-o-105",
+       "kdl-o-169"
+      ]
+     },
+     "test_candidates": {
+      "count": 20,
+      "ids": [
+       "kdl-t-001",
+       "kdl-t-026",
+       "kdl-t-059",
+       "kdl-t-060",
+       "kdl-t-061",
+       "kdl-t-062",
+       "kdl-t-064",
+       "kdl-t-065",
+       "kdl-t-066",
+       "kdl-t-067",
+       "kdl-t-068",
+       "kdl-t-070",
+       "kdl-t-092",
+       "kdl-t-099",
+       "kdl-t-100",
+       "kdl-t-166",
+       "kdl-t-170",
+       "kdl-t-182",
+       "kdl-t-263",
+       "kdl-t-264"
+      ],
+      "pack_quiz_ids": [],
+      "pack_quiz_count": 0
+     },
      "test_gap": false,
-     "oral_gap": false,
-     "title_ru": "Практическое освоение лабораторных методов исследования",
-     "title_en": "Hands-on practice of laboratory testing methods"
+     "oral_gap": false
     },
     {
      "id": "d119-P",
      "n": 119,
-     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "title_uz": "Yarim avtomat biokimyoviy analizator: test dasturi, kalibrovka va nazorat",
+     "title_ru": "Полуавтоматический биохимический анализатор: программа теста, калибровка и контроль",
+     "title_en": "Semi-automatic biochemistry analyser: test programme, calibration and control",
+     "plan_source": "labguide_recommended",
+     "plan_block": "F",
      "type": "practical",
      "hours": 6,
      "week": 22,
@@ -9623,36 +10881,155 @@
       "analytes": [],
       "conditions": [],
       "reference": [],
-      "tools": [],
+      "tools": [
+       "/lab/instruments",
+       "/lab/calibration"
+      ],
       "microscopy": [],
-      "toifa_topic": null,
+      "protocols": [
+       "yarim-avtomat-biokimyo-analizator"
+      ],
+      "toifa_topic": "qc_lab_management",
       "gap": false
      },
+     "plan_refs": [
+      {
+       "book": "kdl-qvp-2006",
+       "loc": {
+        "uz": "I bob, «Hospitex Diagnostics to‘plamlari yordamida biokimyoviy tekshiruvlar»; III bob, 3.2-jadval",
+        "ru": "гл. I, «Биохимические исследования наборами Hospitex Diagnostics»; гл. III, табл. 3.2",
+        "en": "ch. I, “Biochemical tests with Hospitex Diagnostics kits”; ch. III, table 3.2"
+       }
+      }
+     ],
+     "oral_candidates": {
+      "count": 12,
+      "ids": [
+       "kdl-o-150",
+       "kdl-o-151",
+       "kdl-o-152",
+       "kdl-o-153",
+       "kdl-o-155",
+       "kdl-o-156",
+       "kdl-o-157",
+       "kdl-o-182",
+       "kdl-o-183",
+       "kdl-o-184",
+       "kdl-o-185",
+       "kdl-o-186"
+      ]
+     },
+     "test_candidates": {
+      "count": 20,
+      "ids": [
+       "kdl-t-002",
+       "kdl-t-042",
+       "kdl-t-045",
+       "kdl-t-048",
+       "kdl-t-057",
+       "kdl-t-097",
+       "kdl-t-098",
+       "kdl-t-113",
+       "kdl-t-123",
+       "kdl-t-138",
+       "kdl-t-157",
+       "kdl-t-158",
+       "kdl-t-159",
+       "kdl-t-162",
+       "kdl-t-163",
+       "kdl-t-164",
+       "kdl-t-205",
+       "kdl-t-271",
+       "kdl-t-280",
+       "kdl-t-287"
+      ],
+      "pack_quiz_ids": [],
+      "pack_quiz_count": 0
+     },
      "test_gap": false,
-     "oral_gap": false,
-     "title_ru": "Практическое освоение лабораторных методов исследования",
-     "title_en": "Hands-on practice of laboratory testing methods"
+     "oral_gap": false
     },
     {
      "id": "d120-P",
      "n": 120,
-     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "title_uz": "Qon zardobida glyukozani GOD–POD usulida aniqlash (qo‘lda va analizatorda)",
+     "title_ru": "Определение глюкозы в сыворотке методом ГОД–ПОД (вручную и на анализаторе)",
+     "title_en": "Serum glucose by the GOD–POD method (manual and on the analyser)",
+     "plan_source": "labguide_recommended",
+     "plan_block": "F",
      "type": "practical",
      "hours": 6,
      "week": 22,
      "links": {
-      "analytes": [],
+      "analytes": [
+       "glucose-plasma-fasting"
+      ],
       "conditions": [],
       "reference": [],
       "tools": [],
       "microscopy": [],
-      "toifa_topic": null,
+      "protocols": [
+       "glyukoza-gox-pod-fotometrik"
+      ],
+      "toifa_topic": "carbohydrates_diabetes",
       "gap": false
      },
+     "plan_refs": [
+      {
+       "book": "kdl-qvp-2006",
+       "loc": {
+        "uz": "I bob, «1.3. Glyukoza va uning aniqlanishi»; «Glyukozani aniqlash uchun dastur tuzish»",
+        "ru": "гл. I, «1.3. Глюкоза и её определение»; «Составление программы для глюкозы»",
+        "en": "ch. I, “1.3. Glucose and its measurement”; “Programming the glucose test”"
+       }
+      }
+     ],
+     "oral_candidates": {
+      "count": 12,
+      "ids": [
+       "kdl-o-078",
+       "kdl-o-079",
+       "kdl-o-080",
+       "kdl-o-081",
+       "kdl-o-096",
+       "kdl-o-097",
+       "kdl-o-171",
+       "kdl-o-178",
+       "kdl-o-206",
+       "kdl-o-208",
+       "kdl-o-226",
+       "kdl-o-236"
+      ]
+     },
+     "test_candidates": {
+      "count": 20,
+      "ids": [
+       "kdl-t-003",
+       "kdl-t-024",
+       "kdl-t-071",
+       "kdl-t-072",
+       "kdl-t-073",
+       "kdl-t-074",
+       "kdl-t-094",
+       "kdl-t-095",
+       "kdl-t-107",
+       "kdl-t-108",
+       "kdl-t-109",
+       "kdl-t-173",
+       "kdl-t-176",
+       "kdl-t-196",
+       "kdl-t-198",
+       "kdl-t-203",
+       "kdl-t-204",
+       "kdl-t-208",
+       "kdl-t-266",
+       "kdl-t-304"
+      ],
+      "pack_quiz_ids": [],
+      "pack_quiz_count": 0
+     },
      "test_gap": false,
-     "oral_gap": false,
-     "title_ru": "Практическое освоение лабораторных методов исследования",
-     "title_en": "Hands-on practice of laboratory testing methods"
+     "oral_gap": false
     },
     {
      "id": "d121-L",
@@ -9713,91 +11090,312 @@
     {
      "id": "d122-P",
      "n": 122,
-     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "title_uz": "LDG va ishqoriy fosfataza: namuna, faollikni o‘lchash va natija talqini",
+     "title_ru": "ЛДГ и щелочная фосфатаза: образец, измерение активности и интерпретация",
+     "title_en": "LDH and alkaline phosphatase: specimen, activity measurement and interpretation",
+     "plan_source": "labguide_recommended",
+     "plan_block": "G",
      "type": "practical",
      "hours": 6,
      "week": 22,
      "links": {
-      "analytes": [],
+      "analytes": [
+       "ldh",
+       "alp"
+      ],
       "conditions": [],
       "reference": [],
       "tools": [],
       "microscopy": [],
-      "toifa_topic": null,
+      "protocols": [
+       "zardob-plazma-tayyorlash#5"
+      ],
+      "toifa_topic": "biochemistry_proteins_enzymes",
       "gap": false
      },
+     "plan_refs": [
+      {
+       "pack": "book-aripova-2007",
+       "loc": {
+        "uz": "V bob, 5.1.3–5.1.4 (kasalliklar diagnostikasida fermentlar; fermentlarni klinikada tekshirish), 51–52-b.",
+        "ru": "гл. V, 5.1.3–5.1.4 (ферменты в диагностике; клиническое исследование ферментов), с. 51–52",
+        "en": "ch. V, 5.1.3–5.1.4 (enzymes in diagnosis; clinical enzyme testing), pp. 51–52"
+       }
+      }
+     ],
+     "oral_candidates": {
+      "count": 1,
+      "ids": [
+       "kdl-o-104"
+      ]
+     },
+     "test_candidates": {
+      "count": 13,
+      "ids": [
+       "kdl-t-301",
+       "kdl-t-369",
+       "kdl-t-379",
+       "kdl-t-380",
+       "kdl-t-388",
+       "kdl-t-401",
+       "kdl-t-403",
+       "kdl-t-411",
+       "kdl-t-413",
+       "kdl-t-414",
+       "kdl-t-418",
+       "kdl-t-419",
+       "kdl-t-422"
+      ],
+      "pack_quiz_ids": [
+       "ldh-q1",
+       "ldh-q2",
+       "alp-q1",
+       "alp-q2"
+      ],
+      "pack_quiz_count": 4
+     },
      "test_gap": false,
-     "oral_gap": false,
-     "title_ru": "Практическое освоение лабораторных методов исследования",
-     "title_en": "Hands-on practice of laboratory testing methods"
+     "oral_gap": false
     },
     {
      "id": "d123-P",
      "n": 123,
-     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "title_uz": "Alaninaminotransferaza (ALT) faolligini kinetik usulda aniqlash",
+     "title_ru": "Кинетическое определение активности аланинаминотрансферазы (АЛТ)",
+     "title_en": "Kinetic measurement of alanine aminotransferase (ALT) activity",
+     "plan_source": "labguide_recommended",
+     "plan_block": "G",
      "type": "practical",
      "hours": 6,
      "week": 22,
      "links": {
-      "analytes": [],
+      "analytes": [
+       "alt"
+      ],
       "conditions": [],
       "reference": [],
       "tools": [],
       "microscopy": [],
-      "toifa_topic": null,
+      "protocols": [
+       "alt-kinetik-fotometrik"
+      ],
+      "toifa_topic": "biochemistry_proteins_enzymes",
       "gap": false
      },
+     "plan_refs": [
+      {
+       "book": "kdl-qvp-2006",
+       "loc": {
+        "uz": "I bob, «Aminotransferazalar va ularni aniqlash usullari»",
+        "ru": "гл. I, «Аминотрансферазы и методы их определения»",
+        "en": "ch. I, “Aminotransferases and their measurement”"
+       }
+      },
+      {
+       "pack": "book-aripova-2007",
+       "loc": {
+        "uz": "V bob, 5.1.4, 52–54-b.",
+        "ru": "гл. V, 5.1.4, с. 52–54",
+        "en": "ch. V, 5.1.4, pp. 52–54"
+       }
+      }
+     ],
+     "oral_candidates": {
+      "count": 1,
+      "ids": [
+       "kdl-o-104"
+      ]
+     },
+     "test_candidates": {
+      "count": 13,
+      "ids": [
+       "kdl-t-301",
+       "kdl-t-369",
+       "kdl-t-379",
+       "kdl-t-380",
+       "kdl-t-388",
+       "kdl-t-401",
+       "kdl-t-403",
+       "kdl-t-411",
+       "kdl-t-413",
+       "kdl-t-414",
+       "kdl-t-418",
+       "kdl-t-419",
+       "kdl-t-422"
+      ],
+      "pack_quiz_ids": [
+       "alt-q1",
+       "alt-q2"
+      ],
+      "pack_quiz_count": 2
+     },
      "test_gap": false,
-     "oral_gap": false,
-     "title_ru": "Практическое освоение лабораторных методов исследования",
-     "title_en": "Hands-on practice of laboratory testing methods"
+     "oral_gap": false
     },
     {
      "id": "d124-P",
      "n": 124,
-     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "title_uz": "Qon zardobida mochevinani ureaza–GLDG usulida aniqlash",
+     "title_ru": "Определение мочевины в сыворотке уреазно-ГлДГ методом",
+     "title_en": "Serum urea by the urease–GLDH method",
+     "plan_source": "labguide_recommended",
+     "plan_block": "G",
      "type": "practical",
      "hours": 6,
      "week": 23,
      "links": {
-      "analytes": [],
+      "analytes": [
+       "urea"
+      ],
       "conditions": [],
       "reference": [],
       "tools": [],
       "microscopy": [],
-      "toifa_topic": null,
+      "protocols": [
+       "mochevina-ureaza-gldg"
+      ],
+      "toifa_topic": "kidney_nitrogen",
       "gap": false
      },
+     "plan_refs": [
+      {
+       "book": "kdl-qvp-2006",
+       "loc": {
+        "uz": "I bob, «Mochevinani aniqlash»",
+        "ru": "гл. I, «Определение мочевины»",
+        "en": "ch. I, “Measuring urea”"
+       }
+      }
+     ],
+     "oral_candidates": {
+      "count": 7,
+      "ids": [
+       "kdl-o-092",
+       "kdl-o-093",
+       "kdl-o-094",
+       "kdl-o-107",
+       "kdl-o-113",
+       "kdl-o-218",
+       "kdl-o-219"
+      ]
+     },
+     "test_candidates": {
+      "count": 10,
+      "ids": [
+       "kdl-t-031",
+       "kdl-t-063",
+       "kdl-t-102",
+       "kdl-t-103",
+       "kdl-t-180",
+       "kdl-t-207",
+       "kdl-t-241",
+       "kdl-t-265",
+       "kdl-t-312",
+       "kdl-t-313"
+      ],
+      "pack_quiz_ids": [
+       "urea-q1",
+       "urea-q2"
+      ],
+      "pack_quiz_count": 2
+     },
      "test_gap": false,
-     "oral_gap": false,
-     "title_ru": "Практическое освоение лабораторных методов исследования",
-     "title_en": "Hands-on practice of laboratory testing methods"
+     "oral_gap": false
     },
     {
      "id": "d125-P",
      "n": 125,
-     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "title_uz": "Umumiy va bog‘langan bilirubinni diazo usulida aniqlash",
+     "title_ru": "Определение общего и прямого билирубина диазометодом",
+     "title_en": "Total and direct bilirubin by the diazo method",
+     "plan_source": "labguide_recommended",
+     "plan_block": "G",
      "type": "practical",
      "hours": 6,
      "week": 23,
      "links": {
-      "analytes": [],
+      "analytes": [
+       "bilirubin-total",
+       "bilirubin-direct"
+      ],
       "conditions": [],
-      "reference": [],
+      "reference": [
+       "jaundice"
+      ],
       "tools": [],
       "microscopy": [],
-      "toifa_topic": null,
+      "protocols": [
+       "bilirubin-umumiy-bogllangan"
+      ],
+      "toifa_topic": "liver_pigments",
       "gap": false
      },
+     "plan_refs": [
+      {
+       "book": "kdl-qvp-2006",
+       "loc": {
+        "uz": "I bob, «Bilirubin va uni aniqlash»",
+        "ru": "гл. I, «Билирубин и его определение»",
+        "en": "ch. I, “Bilirubin and its measurement”"
+       }
+      }
+     ],
+     "oral_candidates": {
+      "count": 8,
+      "ids": [
+       "kdl-o-077",
+       "kdl-o-095",
+       "kdl-o-110",
+       "kdl-o-111",
+       "kdl-o-149",
+       "kdl-o-174",
+       "kdl-o-223",
+       "kdl-o-227"
+      ]
+     },
+     "test_candidates": {
+      "count": 20,
+      "ids": [
+       "kdl-t-056",
+       "kdl-t-083",
+       "kdl-t-090",
+       "kdl-t-091",
+       "kdl-t-106",
+       "kdl-t-165",
+       "kdl-t-169",
+       "kdl-t-171",
+       "kdl-t-178",
+       "kdl-t-181",
+       "kdl-t-199",
+       "kdl-t-201",
+       "kdl-t-217",
+       "kdl-t-218",
+       "kdl-t-296",
+       "kdl-t-303",
+       "kdl-t-315",
+       "kdl-t-318",
+       "kdl-t-333",
+       "kdl-t-382"
+      ],
+      "pack_quiz_ids": [
+       "bilirubin-total-q1",
+       "bilirubin-total-q2",
+       "bilirubin-direct-q1",
+       "bilirubin-direct-q2"
+      ],
+      "pack_quiz_count": 4
+     },
      "test_gap": false,
-     "oral_gap": false,
-     "title_ru": "Практическое освоение лабораторных методов исследования",
-     "title_en": "Hands-on practice of laboratory testing methods"
+     "oral_gap": false
     },
     {
      "id": "d126-P",
      "n": 126,
-     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "title_uz": "Biokimyoviy analitik seriyada nazorat materiali bilan ishlash",
+     "title_ru": "Работа с контрольным материалом в биохимической аналитической серии",
+     "title_en": "Using control material in a biochemistry analytical run",
+     "plan_source": "labguide_recommended",
+     "plan_block": "G",
      "type": "practical",
      "hours": 6,
      "week": 23,
@@ -9805,15 +11403,74 @@
       "analytes": [],
       "conditions": [],
       "reference": [],
-      "tools": [],
+      "tools": [
+       "/lab/qc",
+       "/lab/calibration"
+      ],
       "microscopy": [],
-      "toifa_topic": null,
+      "protocols": [
+       "yarim-avtomat-biokimyo-analizator#3-5",
+       "ichki-sifat-nazorati-laboratoriya#4"
+      ],
+      "toifa_topic": "qc_lab_management",
       "gap": false
      },
+     "plan_refs": [
+      {
+       "book": "kdl-qvp-2006",
+       "loc": {
+        "uz": "III bob, «Laboratoriya ichidagi sifat nazorati», 3.2-jadval",
+        "ru": "гл. III, «Внутрилабораторный контроль качества», табл. 3.2",
+        "en": "ch. III, “Internal quality control”, table 3.2"
+       }
+      }
+     ],
+     "oral_candidates": {
+      "count": 12,
+      "ids": [
+       "kdl-o-150",
+       "kdl-o-151",
+       "kdl-o-152",
+       "kdl-o-153",
+       "kdl-o-155",
+       "kdl-o-156",
+       "kdl-o-157",
+       "kdl-o-182",
+       "kdl-o-183",
+       "kdl-o-184",
+       "kdl-o-185",
+       "kdl-o-186"
+      ]
+     },
+     "test_candidates": {
+      "count": 20,
+      "ids": [
+       "kdl-t-002",
+       "kdl-t-042",
+       "kdl-t-045",
+       "kdl-t-048",
+       "kdl-t-057",
+       "kdl-t-097",
+       "kdl-t-098",
+       "kdl-t-113",
+       "kdl-t-123",
+       "kdl-t-138",
+       "kdl-t-157",
+       "kdl-t-158",
+       "kdl-t-159",
+       "kdl-t-162",
+       "kdl-t-163",
+       "kdl-t-164",
+       "kdl-t-205",
+       "kdl-t-271",
+       "kdl-t-280",
+       "kdl-t-287"
+      ],
+      "pack_quiz_ids": [],
+      "pack_quiz_count": 0
+     },
      "test_gap": false,
-     "oral_gap": false,
-     "title_ru": "Практическое освоение лабораторных методов исследования",
-     "title_en": "Hands-on practice of laboratory testing methods"
+     "oral_gap": false
     },
     {
      "id": "d127-L",
@@ -9869,49 +11526,141 @@
     {
      "id": "d128-P",
      "n": 128,
-     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "title_uz": "SRB, RF va ASLO: namuna, usul cheklovlari va natija talqini",
+     "title_ru": "СРБ, РФ и АСЛО: образец, ограничения метода и интерпретация",
+     "title_en": "CRP, RF and ASO: specimen, method limitations and interpretation",
+     "plan_source": "labguide_recommended",
+     "plan_block": "H",
      "type": "practical",
      "hours": 6,
      "week": 23,
      "links": {
-      "analytes": [],
+      "analytes": [
+       "crp",
+       "rheumatoid-factor",
+       "aso"
+      ],
       "conditions": [],
       "reference": [],
       "tools": [],
       "microscopy": [],
-      "toifa_topic": null,
+      "protocols": [
+       "zardob-plazma-tayyorlash#3"
+      ],
+      "toifa_topic": "immunology_serology",
       "gap": false
      },
+     "plan_refs": [
+      {
+       "book": "kdl-kurbonova-2023",
+       "loc": {
+        "uz": "10-bob, 10.1–10.2 (mundarija bo‘yicha 116–121-b.)",
+        "ru": "гл. 10, 10.1–10.2 (по оглавлению с. 116–121)",
+        "en": "ch. 10, 10.1–10.2 (contents pages 116–121)"
+       }
+      }
+     ],
+     "oral_candidates": {
+      "count": 1,
+      "ids": [
+       "kdl-o-091"
+      ]
+     },
+     "test_candidates": {
+      "count": 3,
+      "ids": [
+       "kdl-t-086",
+       "kdl-t-093",
+       "kdl-t-167"
+      ],
+      "pack_quiz_ids": [
+       "crp-q1",
+       "crp-q2",
+       "aso-q1"
+      ],
+      "pack_quiz_count": 3
+     },
      "test_gap": false,
-     "oral_gap": false,
-     "title_ru": "Практическое освоение лабораторных методов исследования",
-     "title_en": "Hands-on practice of laboratory testing methods"
+     "oral_gap": false
     },
     {
      "id": "d129-P",
      "n": 129,
-     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "title_uz": "Yallig‘lanish ko‘rsatkichlari: SRB va EChTni birga baholash",
+     "title_ru": "Показатели воспаления: совместная оценка СРБ и СОЭ",
+     "title_en": "Inflammation markers: reading CRP and ESR together",
+     "plan_source": "labguide_recommended",
+     "plan_block": "H",
      "type": "practical",
      "hours": 6,
      "week": 23,
      "links": {
-      "analytes": [],
-      "conditions": [],
+      "analytes": [
+       "crp",
+       "esr"
+      ],
+      "conditions": [
+       "rheumatoid-arthritis"
+      ],
       "reference": [],
       "tools": [],
       "microscopy": [],
-      "toifa_topic": null,
+      "protocols": [
+       "echt-aniqlash#1,4"
+      ],
+      "toifa_topic": "immunology_serology",
       "gap": false
      },
+     "plan_refs": [
+      {
+       "book": "kdl-kurbonova-2023",
+       "loc": {
+        "uz": "10-bob, 10.1–10.2 (mundarija bo‘yicha 116–121-b.)",
+        "ru": "гл. 10, 10.1–10.2 (по оглавлению с. 116–121)",
+        "en": "ch. 10, 10.1–10.2 (contents pages 116–121)"
+       }
+      },
+      {
+       "pack": "book-aripova-2007",
+       "loc": {
+        "uz": "XII bob, 152, 162–163-b.",
+        "ru": "гл. XII, с. 152, 162–163",
+        "en": "ch. XII, pp. 152, 162–163"
+       }
+      }
+     ],
+     "oral_candidates": {
+      "count": 1,
+      "ids": [
+       "kdl-o-091"
+      ]
+     },
+     "test_candidates": {
+      "count": 3,
+      "ids": [
+       "kdl-t-086",
+       "kdl-t-093",
+       "kdl-t-167"
+      ],
+      "pack_quiz_ids": [
+       "crp-q1",
+       "crp-q2",
+       "esr-q1",
+       "esr-q2"
+      ],
+      "pack_quiz_count": 4
+     },
      "test_gap": false,
-     "oral_gap": false,
-     "title_ru": "Практическое освоение лабораторных методов исследования",
-     "title_en": "Hands-on practice of laboratory testing methods"
+     "oral_gap": false
     },
     {
      "id": "d130-P",
      "n": 130,
-     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "title_uz": "Gemostaz tizimini tekshirish uchun qon olish va tayyorgarlik",
+     "title_ru": "Взятие крови и подготовка к исследованию системы гемостаза",
+     "title_en": "Blood collection and preparation for haemostasis testing",
+     "plan_source": "labguide_recommended",
+     "plan_block": "H",
      "type": "practical",
      "hours": 6,
      "week": 24,
@@ -9919,41 +11668,172 @@
       "analytes": [],
       "conditions": [],
       "reference": [],
-      "tools": [],
+      "tools": [
+       "/lab/coagulogram"
+      ],
       "microscopy": [],
-      "toifa_topic": null,
+      "protocols": [
+       "gemostaz-uchun-venoz-qon-olish"
+      ],
+      "toifa_topic": "hemostasis",
       "gap": false
      },
+     "plan_refs": [
+      {
+       "book": "kdl-kurbonova-2023",
+       "loc": {
+        "uz": "9-bob, 95, 98-b.",
+        "ru": "гл. 9, с. 95, 98",
+        "en": "ch. 9, pp. 95, 98"
+       }
+      }
+     ],
+     "oral_candidates": {
+      "count": 12,
+      "ids": [
+       "kdl-o-114",
+       "kdl-o-115",
+       "kdl-o-116",
+       "kdl-o-117",
+       "kdl-o-168",
+       "kdl-o-176",
+       "kdl-o-192",
+       "kdl-o-209",
+       "kdl-o-210",
+       "kdl-o-211",
+       "kdl-o-212",
+       "kdl-o-213"
+      ]
+     },
+     "test_candidates": {
+      "count": 20,
+      "ids": [
+       "kdl-t-014",
+       "kdl-t-058",
+       "kdl-t-121",
+       "kdl-t-122",
+       "kdl-t-124",
+       "kdl-t-125",
+       "kdl-t-126",
+       "kdl-t-127",
+       "kdl-t-128",
+       "kdl-t-129",
+       "kdl-t-130",
+       "kdl-t-131",
+       "kdl-t-132",
+       "kdl-t-133",
+       "kdl-t-134",
+       "kdl-t-135",
+       "kdl-t-136",
+       "kdl-t-137",
+       "kdl-t-139",
+       "kdl-t-140"
+      ],
+      "pack_quiz_ids": [],
+      "pack_quiz_count": 0
+     },
      "test_gap": false,
-     "oral_gap": false,
-     "title_ru": "Практическое освоение лабораторных методов исследования",
-     "title_en": "Hands-on practice of laboratory testing methods"
+     "oral_gap": false
     },
     {
      "id": "d131-P",
      "n": 131,
-     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "title_uz": "Koagulogramma: PV/MNO, AChTV va fibrinogen natijalarini o‘qish",
+     "title_ru": "Коагулограмма: чтение результатов ПВ/МНО, АЧТВ и фибриногена",
+     "title_en": "Coagulogram: reading PT/INR, aPTT and fibrinogen",
+     "plan_source": "labguide_recommended",
+     "plan_block": "H",
      "type": "practical",
      "hours": 6,
      "week": 24,
      "links": {
-      "analytes": [],
+      "analytes": [
+       "pt-inr",
+       "aptt",
+       "fibrinogen"
+      ],
       "conditions": [],
       "reference": [],
-      "tools": [],
+      "tools": [
+       "/lab/coagulogram"
+      ],
       "microscopy": [],
-      "toifa_topic": null,
+      "protocols": [],
+      "toifa_topic": "hemostasis",
       "gap": false
      },
+     "plan_refs": [
+      {
+       "book": "kdl-kurbonova-2023",
+       "loc": {
+        "uz": "9-bob, 9.2 (koagulyatsion gemostazni tekshirish; mundarija bo‘yicha 108-b.)",
+        "ru": "гл. 9, 9.2 (исследование коагуляционного гемостаза; по оглавлению с. 108)",
+        "en": "ch. 9, 9.2 (testing coagulation haemostasis; contents page 108)"
+       }
+      }
+     ],
+     "oral_candidates": {
+      "count": 12,
+      "ids": [
+       "kdl-o-114",
+       "kdl-o-115",
+       "kdl-o-116",
+       "kdl-o-117",
+       "kdl-o-168",
+       "kdl-o-176",
+       "kdl-o-192",
+       "kdl-o-209",
+       "kdl-o-210",
+       "kdl-o-211",
+       "kdl-o-212",
+       "kdl-o-213"
+      ]
+     },
+     "test_candidates": {
+      "count": 20,
+      "ids": [
+       "kdl-t-014",
+       "kdl-t-058",
+       "kdl-t-121",
+       "kdl-t-122",
+       "kdl-t-124",
+       "kdl-t-125",
+       "kdl-t-126",
+       "kdl-t-127",
+       "kdl-t-128",
+       "kdl-t-129",
+       "kdl-t-130",
+       "kdl-t-131",
+       "kdl-t-132",
+       "kdl-t-133",
+       "kdl-t-134",
+       "kdl-t-135",
+       "kdl-t-136",
+       "kdl-t-137",
+       "kdl-t-139",
+       "kdl-t-140"
+      ],
+      "pack_quiz_ids": [
+       "pt-inr-q1",
+       "pt-inr-q2",
+       "aptt-q1",
+       "aptt-q2",
+       "fibrinogen-q1",
+       "fibrinogen-q2"
+      ],
+      "pack_quiz_count": 6
+     },
      "test_gap": false,
-     "oral_gap": false,
-     "title_ru": "Практическое освоение лабораторных методов исследования",
-     "title_en": "Hands-on practice of laboratory testing methods"
+     "oral_gap": false
     },
     {
      "id": "d132-P",
      "n": 132,
-     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "title_uz": "Venoz qon olish: probirkalar va yo‘llanma",
+     "title_ru": "Взятие венозной крови: пробирки и направление",
+     "title_en": "Venous blood collection: tubes and request form",
+     "plan_source": "labguide_recommended",
+     "plan_block": "H",
      "type": "practical",
      "hours": 6,
      "week": 24,
@@ -9961,20 +11841,84 @@
       "analytes": [],
       "conditions": [],
       "reference": [],
-      "tools": [],
+      "tools": [
+       "/lab/preanalytics"
+      ],
       "microscopy": [],
-      "toifa_topic": null,
+      "protocols": [
+       "kapillyar-qon-olish#5-6"
+      ],
+      "toifa_topic": "preanalytics",
       "gap": false
      },
+     "plan_refs": [
+      {
+       "pack": "book-selivanov-2005",
+       "loc": {
+        "uz": "§1.1–1.2",
+        "ru": "§1.1–1.2",
+        "en": "§1.1–1.2"
+       }
+      },
+      {
+       "book": "kdl-saidov-2017",
+       "loc": {
+        "uz": "«Qon olishda mijozni tayyorlash qoidalari», 5-b.",
+        "ru": "«Правила подготовки пациента к взятию крови», с. 5",
+        "en": "“Preparing the patient for blood collection”, p. 5"
+       }
+      }
+     ],
+     "oral_candidates": {
+      "count": 8,
+      "ids": [
+       "kdl-o-008",
+       "kdl-o-009",
+       "kdl-o-010",
+       "kdl-o-011",
+       "kdl-o-012",
+       "kdl-o-013",
+       "kdl-o-154",
+       "kdl-o-189"
+      ]
+     },
+     "test_candidates": {
+      "count": 19,
+      "ids": [
+       "kdl-t-022",
+       "kdl-t-041",
+       "kdl-t-143",
+       "kdl-t-144",
+       "kdl-t-145",
+       "kdl-t-146",
+       "kdl-t-147",
+       "kdl-t-148",
+       "kdl-t-149",
+       "kdl-t-150",
+       "kdl-t-160",
+       "kdl-t-179",
+       "kdl-t-360",
+       "kdl-t-366",
+       "kdl-t-367",
+       "kdl-t-393",
+       "kdl-t-394",
+       "kdl-t-395",
+       "kdl-t-398"
+      ],
+      "pack_quiz_ids": [],
+      "pack_quiz_count": 0
+     },
      "test_gap": false,
-     "oral_gap": false,
-     "title_ru": "Практическое освоение лабораторных методов исследования",
-     "title_en": "Hands-on practice of laboratory testing methods"
+     "oral_gap": false
     },
     {
      "id": "d133-P",
      "n": 133,
-     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "title_uz": "Laboratoriyadan oldingi (preanalitik) omillar va namuna xatolari",
+     "title_ru": "Преаналитические факторы и ошибки образца",
+     "title_en": "Pre-analytical factors and specimen errors",
+     "plan_source": "labguide_recommended",
+     "plan_block": "H",
      "type": "practical",
      "hours": 6,
      "week": 24,
@@ -9982,20 +11926,77 @@
       "analytes": [],
       "conditions": [],
       "reference": [],
-      "tools": [],
+      "tools": [
+       "/lab/preanalytics"
+      ],
       "microscopy": [],
-      "toifa_topic": null,
+      "protocols": [
+       "ichki-sifat-nazorati-laboratoriya#5",
+       "zardob-plazma-tayyorlash#5-6"
+      ],
+      "toifa_topic": "preanalytics",
       "gap": false
      },
+     "plan_refs": [
+      {
+       "book": "kdl-qvp-2006",
+       "loc": {
+        "uz": "III bob, «Dastlabki bosqich; laboratoriyagacha bo‘lgan omillar» (3.3-jadval)",
+        "ru": "гл. III, «Преаналитический этап» (табл. 3.3)",
+        "en": "ch. III, “Pre-analytical phase” (table 3.3)"
+       }
+      }
+     ],
+     "oral_candidates": {
+      "count": 8,
+      "ids": [
+       "kdl-o-008",
+       "kdl-o-009",
+       "kdl-o-010",
+       "kdl-o-011",
+       "kdl-o-012",
+       "kdl-o-013",
+       "kdl-o-154",
+       "kdl-o-189"
+      ]
+     },
+     "test_candidates": {
+      "count": 19,
+      "ids": [
+       "kdl-t-022",
+       "kdl-t-041",
+       "kdl-t-143",
+       "kdl-t-144",
+       "kdl-t-145",
+       "kdl-t-146",
+       "kdl-t-147",
+       "kdl-t-148",
+       "kdl-t-149",
+       "kdl-t-150",
+       "kdl-t-160",
+       "kdl-t-179",
+       "kdl-t-360",
+       "kdl-t-366",
+       "kdl-t-367",
+       "kdl-t-393",
+       "kdl-t-394",
+       "kdl-t-395",
+       "kdl-t-398"
+      ],
+      "pack_quiz_ids": [],
+      "pack_quiz_count": 0
+     },
      "test_gap": false,
-     "oral_gap": false,
-     "title_ru": "Практическое освоение лабораторных методов исследования",
-     "title_en": "Hands-on practice of laboratory testing methods"
+     "oral_gap": false
     },
     {
      "id": "d134-P",
      "n": 134,
-     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "title_uz": "Biologik material bilan xavfsiz ishlash va sanitar-epidemiologik tartib",
+     "title_ru": "Безопасная работа с биоматериалом и санитарно-эпидемиологический режим",
+     "title_en": "Safe handling of biological material and infection-control routine",
+     "plan_source": "labguide_recommended",
+     "plan_block": "H",
      "type": "practical",
      "hours": 6,
      "week": 24,
@@ -10005,18 +12006,55 @@
       "reference": [],
       "tools": [],
       "microscopy": [],
-      "toifa_topic": null,
+      "protocols": [
+       "laboratoriya-biologik-xavfsizlik-sanepid"
+      ],
+      "toifa_topic": "safety_ethics",
       "gap": false
      },
-     "test_gap": false,
-     "oral_gap": false,
-     "title_ru": "Практическое освоение лабораторных методов исследования",
-     "title_en": "Hands-on practice of laboratory testing methods"
+     "plan_refs": [
+      {
+       "book": "kdl-qvp-2006",
+       "loc": {
+        "uz": "Kirish qismi, «Biologik material bilan xavfsiz ishlash qoidalari»; Ilova 1",
+        "ru": "Введение, «Правила безопасной работы с биоматериалом»; Прилож. 1",
+        "en": "Introduction, “Rules for safe work with biological material”; Annex 1"
+       }
+      },
+      {
+       "book": "kdl-kurbonova-2023",
+       "loc": {
+        "uz": "8-bob, 89–90-b.",
+        "ru": "гл. 8, с. 89–90",
+        "en": "ch. 8, pp. 89–90"
+       }
+      }
+     ],
+     "oral_candidates": {
+      "count": 3,
+      "ids": [
+       "kdl-o-006",
+       "kdl-o-007",
+       "kdl-o-037"
+      ]
+     },
+     "test_candidates": {
+      "count": 0,
+      "ids": [],
+      "pack_quiz_ids": [],
+      "pack_quiz_count": 0
+     },
+     "test_gap": true,
+     "oral_gap": false
     },
     {
      "id": "d135-P",
      "n": 135,
-     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "title_uz": "Laboratoriya ichidagi sifat nazorati: bosqichlar va nazorat materiali",
+     "title_ru": "Внутрилабораторный контроль качества: этапы и контрольный материал",
+     "title_en": "Internal quality control: phases and control material",
+     "plan_source": "labguide_recommended",
+     "plan_block": "H",
      "type": "practical",
      "hours": 6,
      "week": 24,
@@ -10024,20 +12062,81 @@
       "analytes": [],
       "conditions": [],
       "reference": [],
-      "tools": [],
+      "tools": [
+       "/lab/qc"
+      ],
       "microscopy": [],
-      "toifa_topic": null,
+      "protocols": [
+       "ichki-sifat-nazorati-laboratoriya#1-3"
+      ],
+      "toifa_topic": "qc_lab_management",
       "gap": false
      },
+     "plan_refs": [
+      {
+       "book": "kdl-qvp-2006",
+       "loc": {
+        "uz": "III bob, «Laboratoriya ichidagi sifat nazorati»",
+        "ru": "гл. III, «Внутрилабораторный контроль качества»",
+        "en": "ch. III, “Internal quality control”"
+       }
+      }
+     ],
+     "oral_candidates": {
+      "count": 12,
+      "ids": [
+       "kdl-o-150",
+       "kdl-o-151",
+       "kdl-o-152",
+       "kdl-o-153",
+       "kdl-o-155",
+       "kdl-o-156",
+       "kdl-o-157",
+       "kdl-o-182",
+       "kdl-o-183",
+       "kdl-o-184",
+       "kdl-o-185",
+       "kdl-o-186"
+      ]
+     },
+     "test_candidates": {
+      "count": 20,
+      "ids": [
+       "kdl-t-002",
+       "kdl-t-042",
+       "kdl-t-045",
+       "kdl-t-048",
+       "kdl-t-057",
+       "kdl-t-097",
+       "kdl-t-098",
+       "kdl-t-113",
+       "kdl-t-123",
+       "kdl-t-138",
+       "kdl-t-157",
+       "kdl-t-158",
+       "kdl-t-159",
+       "kdl-t-162",
+       "kdl-t-163",
+       "kdl-t-164",
+       "kdl-t-205",
+       "kdl-t-271",
+       "kdl-t-280",
+       "kdl-t-287"
+      ],
+      "pack_quiz_ids": [],
+      "pack_quiz_count": 0
+     },
      "test_gap": false,
-     "oral_gap": false,
-     "title_ru": "Практическое освоение лабораторных методов исследования",
-     "title_en": "Hands-on practice of laboratory testing methods"
+     "oral_gap": false
     },
     {
      "id": "d136-P",
      "n": 136,
-     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "title_uz": "Nazorat kartasi (Levey–Jennings) va Westgard qoidalari bilan ishlash",
+     "title_ru": "Контрольная карта (Леви–Дженнингс) и правила Вестгарда",
+     "title_en": "Control chart (Levey–Jennings) and Westgard rules",
+     "plan_source": "labguide_recommended",
+     "plan_block": "H",
      "type": "practical",
      "hours": 6,
      "week": 25,
@@ -10045,20 +12144,81 @@
       "analytes": [],
       "conditions": [],
       "reference": [],
-      "tools": [],
+      "tools": [
+       "/lab/qc"
+      ],
       "microscopy": [],
-      "toifa_topic": null,
+      "protocols": [
+       "ichki-sifat-nazorati-laboratoriya#3"
+      ],
+      "toifa_topic": "qc_lab_management",
       "gap": false
      },
+     "plan_refs": [
+      {
+       "book": "kdl-qvp-2006",
+       "loc": {
+        "uz": "III bob, «Laboratoriya ichidagi sifat nazorati»",
+        "ru": "гл. III, «Внутрилабораторный контроль качества»",
+        "en": "ch. III, “Internal quality control”"
+       }
+      }
+     ],
+     "oral_candidates": {
+      "count": 12,
+      "ids": [
+       "kdl-o-150",
+       "kdl-o-151",
+       "kdl-o-152",
+       "kdl-o-153",
+       "kdl-o-155",
+       "kdl-o-156",
+       "kdl-o-157",
+       "kdl-o-182",
+       "kdl-o-183",
+       "kdl-o-184",
+       "kdl-o-185",
+       "kdl-o-186"
+      ]
+     },
+     "test_candidates": {
+      "count": 20,
+      "ids": [
+       "kdl-t-002",
+       "kdl-t-042",
+       "kdl-t-045",
+       "kdl-t-048",
+       "kdl-t-057",
+       "kdl-t-097",
+       "kdl-t-098",
+       "kdl-t-113",
+       "kdl-t-123",
+       "kdl-t-138",
+       "kdl-t-157",
+       "kdl-t-158",
+       "kdl-t-159",
+       "kdl-t-162",
+       "kdl-t-163",
+       "kdl-t-164",
+       "kdl-t-205",
+       "kdl-t-271",
+       "kdl-t-280",
+       "kdl-t-287"
+      ],
+      "pack_quiz_ids": [],
+      "pack_quiz_count": 0
+     },
      "test_gap": false,
-     "oral_gap": false,
-     "title_ru": "Практическое освоение лабораторных методов исследования",
-     "title_en": "Hands-on practice of laboratory testing methods"
+     "oral_gap": false
     },
     {
      "id": "d137-P",
      "n": 137,
-     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "title_uz": "Analitik va yakuniy bosqich xatolari; asbob parvarishi",
+     "title_ru": "Ошибки аналитического и постаналитического этапов; уход за прибором",
+     "title_en": "Analytical and post-analytical errors; instrument care",
+     "plan_source": "labguide_recommended",
+     "plan_block": "H",
      "type": "practical",
      "hours": 6,
      "week": 25,
@@ -10066,20 +12226,83 @@
       "analytes": [],
       "conditions": [],
       "reference": [],
-      "tools": [],
+      "tools": [
+       "/lab/qc",
+       "/lab/instruments"
+      ],
       "microscopy": [],
-      "toifa_topic": null,
+      "protocols": [
+       "ichki-sifat-nazorati-laboratoriya#6",
+       "yarim-avtomat-biokimyo-analizator#5"
+      ],
+      "toifa_topic": "qc_lab_management",
       "gap": false
      },
+     "plan_refs": [
+      {
+       "book": "kdl-qvp-2006",
+       "loc": {
+        "uz": "III bob, «Analitik bosqich; yakuniy bosqich» (3.4-jadval)",
+        "ru": "гл. III, «Аналитический и заключительный этапы» (табл. 3.4)",
+        "en": "ch. III, “Analytical and final phases” (table 3.4)"
+       }
+      }
+     ],
+     "oral_candidates": {
+      "count": 12,
+      "ids": [
+       "kdl-o-150",
+       "kdl-o-151",
+       "kdl-o-152",
+       "kdl-o-153",
+       "kdl-o-155",
+       "kdl-o-156",
+       "kdl-o-157",
+       "kdl-o-182",
+       "kdl-o-183",
+       "kdl-o-184",
+       "kdl-o-185",
+       "kdl-o-186"
+      ]
+     },
+     "test_candidates": {
+      "count": 20,
+      "ids": [
+       "kdl-t-002",
+       "kdl-t-042",
+       "kdl-t-045",
+       "kdl-t-048",
+       "kdl-t-057",
+       "kdl-t-097",
+       "kdl-t-098",
+       "kdl-t-113",
+       "kdl-t-123",
+       "kdl-t-138",
+       "kdl-t-157",
+       "kdl-t-158",
+       "kdl-t-159",
+       "kdl-t-162",
+       "kdl-t-163",
+       "kdl-t-164",
+       "kdl-t-205",
+       "kdl-t-271",
+       "kdl-t-280",
+       "kdl-t-287"
+      ],
+      "pack_quiz_ids": [],
+      "pack_quiz_count": 0
+     },
      "test_gap": false,
-     "oral_gap": false,
-     "title_ru": "Практическое освоение лабораторных методов исследования",
-     "title_en": "Hands-on practice of laboratory testing methods"
+     "oral_gap": false
     },
     {
      "id": "d138-P",
      "n": 138,
-     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "title_uz": "Takrorlash: umumiy qon tahlili — sanash usullari va xatolar",
+     "title_ru": "Повторение: общий анализ крови — методы подсчёта и ошибки",
+     "title_en": "Review: complete blood count — counting methods and errors",
+     "plan_source": "labguide_recommended",
+     "plan_block": "H",
      "type": "practical",
      "hours": 6,
      "week": 25,
@@ -10087,20 +12310,93 @@
       "analytes": [],
       "conditions": [],
       "reference": [],
-      "tools": [],
+      "tools": [
+       "/lab/calculators/chamber"
+      ],
       "microscopy": [],
-      "toifa_topic": null,
+      "protocols": [
+       "gemoglobin-gemiglobintsianid#4-5",
+       "eritrotsitlarni-sanash-kamera#4-5",
+       "leykotsitlarni-sanash-kamera#4-5",
+       "echt-aniqlash#4"
+      ],
+      "toifa_topic": "hematology_cells",
       "gap": false
      },
+     "plan_refs": [
+      {
+       "pack": "book-aripova-2007",
+       "loc": {
+        "uz": "XII bob, 149–163-b.",
+        "ru": "гл. XII, с. 149–163",
+        "en": "ch. XII, pp. 149–163"
+       }
+      }
+     ],
+     "oral_candidates": {
+      "count": 12,
+      "ids": [
+       "kdl-o-002",
+       "kdl-o-003",
+       "kdl-o-005",
+       "kdl-o-017",
+       "kdl-o-018",
+       "kdl-o-019",
+       "kdl-o-022",
+       "kdl-o-023",
+       "kdl-o-160",
+       "kdl-o-173",
+       "kdl-o-263",
+       "kdl-o-264"
+      ]
+     },
+     "test_candidates": {
+      "count": 15,
+      "ids": [
+       "kdl-t-004",
+       "kdl-t-011",
+       "kdl-t-012",
+       "kdl-t-013",
+       "kdl-t-030",
+       "kdl-t-032",
+       "kdl-t-047",
+       "kdl-t-052",
+       "kdl-t-233",
+       "kdl-t-238",
+       "kdl-t-242",
+       "kdl-t-243",
+       "kdl-t-273",
+       "kdl-t-330",
+       "kdl-t-331"
+      ],
+      "pack_quiz_ids": [
+       "hemoglobin-q1",
+       "hemoglobin-q2",
+       "hematocrit-q1",
+       "hematocrit-q2",
+       "rbc-count-q1",
+       "rbc-count-q2",
+       "wbc-count-q1",
+       "wbc-count-q2",
+       "platelets-q1",
+       "platelets-q2",
+       "mcv-q1",
+       "mcv-q2",
+       "books-anemia-mcv"
+      ],
+      "pack_quiz_count": 13
+     },
      "test_gap": false,
-     "oral_gap": false,
-     "title_ru": "Практическое освоение лабораторных методов исследования",
-     "title_en": "Hands-on practice of laboratory testing methods"
+     "oral_gap": false
     },
     {
      "id": "d139-P",
      "n": 139,
-     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "title_uz": "Takrorlash: qon surtmasi, leykoformula va trombotsitlar",
+     "title_ru": "Повторение: мазок крови, лейкоформула и тромбоциты",
+     "title_en": "Review: blood film, differential and platelets",
+     "plan_source": "labguide_recommended",
+     "plan_block": "H",
      "type": "practical",
      "hours": 6,
      "week": 25,
@@ -10109,19 +12405,74 @@
       "conditions": [],
       "reference": [],
       "tools": [],
-      "microscopy": [],
-      "toifa_topic": null,
+      "microscopy": [
+       "blood"
+      ],
+      "protocols": [
+       "qon-surtmasi-tayyorlash-boyash#4,6",
+       "leykoformula-sanash-mikroskop#4,8",
+       "trombotsitlarni-sanash-fonio#3,5"
+      ],
+      "toifa_topic": "hematology_cells",
       "gap": false
      },
+     "plan_refs": [
+      {
+       "pack": "book-aripova-2007",
+       "loc": {
+        "uz": "XII bob, 153–169-b.",
+        "ru": "гл. XII, с. 153–169",
+        "en": "ch. XII, pp. 153–169"
+       }
+      },
+      {
+       "book": "kdl-kurbonova-2023",
+       "loc": {
+        "uz": "9-bob, 98–102-b.",
+        "ru": "гл. 9, с. 98–102",
+        "en": "ch. 9, pp. 98–102"
+       }
+      }
+     ],
+     "oral_candidates": {
+      "count": 2,
+      "ids": [
+       "kdl-o-018",
+       "kdl-o-173"
+      ]
+     },
+     "test_candidates": {
+      "count": 3,
+      "ids": [
+       "kdl-t-035",
+       "kdl-t-052",
+       "kdl-t-273"
+      ],
+      "pack_quiz_ids": [
+       "neutrophils-q1",
+       "neutrophils-q2",
+       "lymphocytes-q1",
+       "lymphocytes-q2",
+       "monocytes-q1",
+       "monocytes-q2",
+       "eosinophils-q1",
+       "eosinophils-q2",
+       "basophils-q1",
+       "basophils-q2"
+      ],
+      "pack_quiz_count": 10
+     },
      "test_gap": false,
-     "oral_gap": false,
-     "title_ru": "Практическое освоение лабораторных методов исследования",
-     "title_en": "Hands-on practice of laboratory testing methods"
+     "oral_gap": false
     },
     {
      "id": "d140-P",
      "n": 140,
-     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "title_uz": "Takrorlash: siydik va najas tahlili",
+     "title_ru": "Повторение: анализ мочи и кала",
+     "title_en": "Review: urine and stool analysis",
+     "plan_source": "labguide_recommended",
+     "plan_block": "H",
      "type": "practical",
      "hours": 6,
      "week": 25,
@@ -10129,20 +12480,79 @@
       "analytes": [],
       "conditions": [],
       "reference": [],
-      "tools": [],
+      "tools": [
+       "/lab/urinalysis",
+       "/lab/coprology"
+      ],
       "microscopy": [],
-      "toifa_topic": null,
+      "protocols": [
+       "siydik-yigish-fizik-xossalar#2",
+       "siydik-kimyoviy-tekshiruv#4",
+       "siydik-chokmasi-mikroskopiya#7",
+       "koprogramma-najas-tahlili#11",
+       "najas-parazitologik-tekshiruv#13"
+      ],
+      "toifa_topic": "urinalysis",
       "gap": false
      },
+     "plan_refs": [
+      {
+       "pack": "book-aripova-2007",
+       "loc": {
+        "uz": "X–XI bob, 79–137-b.",
+        "ru": "гл. X–XI, с. 79–137",
+        "en": "ch. X–XI, pp. 79–137"
+       }
+      },
+      {
+       "book": "kdl-kurbonova-2023",
+       "loc": {
+        "uz": "1–2-boblar, 10–48-b.",
+        "ru": "гл. 1–2, с. 10–48",
+        "en": "ch. 1–2, pp. 10–48"
+       }
+      }
+     ],
+     "oral_candidates": {
+      "count": 6,
+      "ids": [
+       "kdl-o-042",
+       "kdl-o-043",
+       "kdl-o-044",
+       "kdl-o-045",
+       "kdl-o-046",
+       "kdl-o-047"
+      ]
+     },
+     "test_candidates": {
+      "count": 6,
+      "ids": [
+       "kdl-t-051",
+       "kdl-t-250",
+       "kdl-t-284",
+       "kdl-t-320",
+       "kdl-t-426",
+       "kdl-t-427"
+      ],
+      "pack_quiz_ids": [
+       "urine-chemistry-q1",
+       "urine-chemistry-q2",
+       "urine-microscopy-q1",
+       "urine-microscopy-q2"
+      ],
+      "pack_quiz_count": 4
+     },
      "test_gap": false,
-     "oral_gap": false,
-     "title_ru": "Практическое освоение лабораторных методов исследования",
-     "title_en": "Hands-on practice of laboratory testing methods"
+     "oral_gap": false
     },
     {
      "id": "d141-P",
      "n": 141,
-     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "title_uz": "Takrorlash: balg‘am, surtmalar va fotometrik biokimyoviy usullar",
+     "title_ru": "Повторение: мокрота, мазки и фотометрические биохимические методы",
+     "title_en": "Review: sputum, smears and photometric biochemistry methods",
+     "plan_source": "labguide_recommended",
+     "plan_block": "H",
      "type": "practical",
      "hours": 6,
      "week": 25,
@@ -10152,18 +12562,90 @@
       "reference": [],
       "tools": [],
       "microscopy": [],
-      "toifa_topic": null,
+      "protocols": [
+       "balgam-yigish-baholash#6",
+       "balgam-surtmasi-gram-sil-nilsen#7",
+       "glyukoza-gox-pod-fotometrik#5",
+       "alt-kinetik-fotometrik#5",
+       "mochevina-ureaza-gldg#5",
+       "bilirubin-umumiy-bogllangan#5"
+      ],
+      "toifa_topic": "biochemistry_proteins_enzymes",
       "gap": false
      },
+     "plan_refs": [
+      {
+       "pack": "book-aripova-2007",
+       "loc": {
+        "uz": "XIII bob, 173–177-b.",
+        "ru": "гл. XIII, с. 173–177",
+        "en": "ch. XIII, pp. 173–177"
+       }
+      },
+      {
+       "book": "kdl-qvp-2006",
+       "loc": {
+        "uz": "I bob (biokimyoviy usullar); III bob «Ichki sifat nazorati»",
+        "ru": "гл. I (биохимические методы); гл. III «Внутренний контроль качества»",
+        "en": "ch. I (biochemical methods); ch. III “Internal quality control”"
+       }
+      }
+     ],
+     "oral_candidates": {
+      "count": 12,
+      "ids": [
+       "kdl-o-074",
+       "kdl-o-075",
+       "kdl-o-076",
+       "kdl-o-087",
+       "kdl-o-088",
+       "kdl-o-089",
+       "kdl-o-090",
+       "kdl-o-102",
+       "kdl-o-103",
+       "kdl-o-104",
+       "kdl-o-105",
+       "kdl-o-169"
+      ]
+     },
+     "test_candidates": {
+      "count": 20,
+      "ids": [
+       "kdl-t-001",
+       "kdl-t-026",
+       "kdl-t-059",
+       "kdl-t-060",
+       "kdl-t-061",
+       "kdl-t-062",
+       "kdl-t-064",
+       "kdl-t-065",
+       "kdl-t-066",
+       "kdl-t-067",
+       "kdl-t-068",
+       "kdl-t-070",
+       "kdl-t-092",
+       "kdl-t-099",
+       "kdl-t-100",
+       "kdl-t-166",
+       "kdl-t-170",
+       "kdl-t-182",
+       "kdl-t-263",
+       "kdl-t-264"
+      ],
+      "pack_quiz_ids": [],
+      "pack_quiz_count": 0
+     },
      "test_gap": false,
-     "oral_gap": false,
-     "title_ru": "Практическое освоение лабораторных методов исследования",
-     "title_en": "Hands-on practice of laboratory testing methods"
+     "oral_gap": false
     },
     {
      "id": "d142-P",
      "n": 142,
-     "title_uz": "Laborator tekshiruv usullarini amaliyotda o‘zlashtirish",
+     "title_uz": "Yakuniy attestatsiyaga tayyorgarlik: amaliy ko‘nikmalar va xavfsizlik",
+     "title_ru": "Подготовка к итоговой аттестации: практические навыки и безопасность",
+     "title_en": "Preparing for the final assessment: practical skills and safety",
+     "plan_source": "labguide_recommended",
+     "plan_block": "H",
      "type": "practical",
      "hours": 6,
      "week": 26,
@@ -10171,15 +12653,82 @@
       "analytes": [],
       "conditions": [],
       "reference": [],
-      "tools": [],
+      "tools": [
+       "/lab/qc",
+       "/lab/preanalytics"
+      ],
       "microscopy": [],
-      "toifa_topic": null,
+      "protocols": [
+       "laboratoriya-biologik-xavfsizlik-sanepid#4",
+       "ichki-sifat-nazorati-laboratoriya#1"
+      ],
+      "toifa_topic": "other",
       "gap": false
      },
+     "plan_refs": [
+      {
+       "book": "kdl-kurbonova-2023",
+       "loc": {
+        "uz": "12-bob «Analitik qism»: testlar va vaziyatli masalalar (mundarija bo‘yicha 163–181-b.)",
+        "ru": "гл. 12 «Аналитическая часть»: тесты и ситуационные задачи (по оглавлению с. 163–181)",
+        "en": "ch. 12 “Analytical part”: tests and case problems (contents pages 163–181)"
+       }
+      }
+     ],
+     "oral_candidates": {
+      "count": 15,
+      "ids": [
+       "kdl-o-008",
+       "kdl-o-009",
+       "kdl-o-010",
+       "kdl-o-011",
+       "kdl-o-012",
+       "kdl-o-013",
+       "kdl-o-150",
+       "kdl-o-151",
+       "kdl-o-152",
+       "kdl-o-153",
+       "kdl-o-154",
+       "kdl-o-155",
+       "kdl-o-156",
+       "kdl-o-157",
+       "kdl-o-182"
+      ]
+     },
+     "test_candidates": {
+      "count": 25,
+      "ids": [
+       "kdl-t-002",
+       "kdl-t-022",
+       "kdl-t-041",
+       "kdl-t-042",
+       "kdl-t-045",
+       "kdl-t-048",
+       "kdl-t-057",
+       "kdl-t-097",
+       "kdl-t-098",
+       "kdl-t-113",
+       "kdl-t-123",
+       "kdl-t-138",
+       "kdl-t-143",
+       "kdl-t-144",
+       "kdl-t-145",
+       "kdl-t-146",
+       "kdl-t-147",
+       "kdl-t-148",
+       "kdl-t-149",
+       "kdl-t-150",
+       "kdl-t-157",
+       "kdl-t-158",
+       "kdl-t-159",
+       "kdl-t-160",
+       "kdl-t-162"
+      ],
+      "pack_quiz_ids": [],
+      "pack_quiz_count": 0
+     },
      "test_gap": false,
-     "oral_gap": false,
-     "title_ru": "Практическое освоение лабораторных методов исследования",
-     "title_en": "Hands-on practice of laboratory testing methods"
+     "oral_gap": false
     },
     {
      "id": "d143-A",

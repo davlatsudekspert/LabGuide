@@ -33,6 +33,39 @@ void main() {
     }
   });
 
+  test('M9 practical days carry the LabGuide recommended plan (D-67)', () {
+    final c = Curriculum.parse(raw);
+    final planned = [
+      for (final t in c.topics)
+        if (t.isRecommendedPlan) t,
+    ];
+    expect(planned.length, 45);
+    expect(planned.first.id, 'd091-P');
+    expect(planned.last.id, 'd142-P');
+    for (final t in planned) {
+      expect(t.moduleId, 'M9', reason: t.id);
+      expect(t.type, CurriculumTopicType.practical, reason: t.id);
+      expect(
+        t.title.of('uz'),
+        isNot('Laborator tekshiruv usullarini amaliyotda o‘zlashtirish'),
+        reason: t.id,
+      );
+      expect(
+        t.links.protocols.isNotEmpty || t.links.analytes.isNotEmpty,
+        isTrue,
+        reason: t.id,
+      );
+    }
+    // Ma'ruza va attestatsiya kunlari — manbadagi sarlavha, tavsiya emas.
+    for (final id in ['d090-L', 'd095-L', 'd127-L', 'd143-A']) {
+      expect(c.topic(id)!.isRecommendedPlan, isFalse, reason: id);
+    }
+    // protokol selektori (`id#1-4`) — faqat id.
+    expect(c.topic('d096-P')!.links.protocols, [
+      'qon-surtmasi-tayyorlash-boyash',
+    ]);
+  });
+
   test('every module and topic has non-empty title_ru and title_en', () {
     final j = jsonDecode(raw) as Map<String, Object?>;
     for (final m in (j['modules']! as List).cast<Map<String, Object?>>()) {

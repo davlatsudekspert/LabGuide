@@ -36,8 +36,8 @@ void main() {
   final catalog = _real();
 
   group('indeks va decklar', () {
-    test('98 kun mavzusi + 27 amaliy protokol, id takrorlanmaydi', () {
-      expect(catalog.decks.where((d) => d.kind == DeckKind.day).length, 98);
+    test('143 kun mavzusi (45 tasi M9 tavsiya etilgan amaliy reja) + 27 amaliy protokol, id takrorlanmaydi', () {
+      expect(catalog.decks.where((d) => d.kind == DeckKind.day).length, 143);
       expect(
         catalog.decks.where((d) => d.kind == DeckKind.protocol).length,
         27,
@@ -207,13 +207,14 @@ void main() {
     });
 
     // 13 MiB: vizual shablonlar va litsenziyali fotolar ~0.5 MB qo'shdi
+    // 16 MiB (D-67): M9 ning 45 ta amaliy kuni decklari ~2.8 MB qo'shdi
     // (tool/slides/test_export_app_decks.py SIZE_BUDGET bilan bir xil).
-    test('hajm: yangi assetlar 13 MB dan oshmaydi', () {
+    test('hajm: yangi assetlar 16 MB dan oshmaydi', () {
       var bytes = File('assets/lectures/index_v2.json').lengthSync();
       for (final f in Directory('assets/lectures/decks').listSync()) {
         if (f is File) bytes += f.lengthSync();
       }
-      expect(bytes, lessThan(13 * 1024 * 1024));
+      expect(bytes, lessThan(16 * 1024 * 1024));
     });
 
     test(
@@ -423,7 +424,7 @@ void main() {
 
     test('filtr: modul, protokollar, til', () {
       final all = ids('');
-      expect(all.length, 125);
+      expect(all.length, 170);
       final m3 = ids('', f: const DeckFilter(module: 3));
       expect(m3.length, catalog.inModule(3).length);
       expect(m3.every((id) => catalog.byId(id)!.module == 3), isTrue);
@@ -431,7 +432,7 @@ void main() {
       expect(prot.length, 27);
       expect(
         ids('', f: const DeckFilter(lang: 'ru')).length,
-        125,
+        170,
         reason: 'd001 ham ru da (tarjima)',
       );
       expect(ids('glyukoza', f: const DeckFilter(module: 99)), isEmpty);

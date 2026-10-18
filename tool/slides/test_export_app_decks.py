@@ -26,7 +26,9 @@ TEMPLATES = {'title', 'bullets', 'table', 'figure', 'qa',
 # Hajm byudjeti: 13 MiB. 12 MiB edi; vizual shablonlar (raqam kartalari, chegaralar
 # diagrammasi, ikki ustun, qadamlar, litsenziyali atlas fotolari va ularning manbalari,
 # sarlavha/yon rasm kreditlari, bo'lim kategoriyalari) ~0.5 MB qo'shdi (2026-10-17).
-SIZE_BUDGET = 13 * 1024 * 1024
+# 16 MiB (2026-10-18, D-67): M9 ning 45 ta amaliy kuni (LabGuide tavsiya etgan reja) o'z decklarini
+# oldi — protokol slaydlari + analit kartalari, uz/ru/en, ~2.8 MB (savol-javob bloksiz).
+SIZE_BUDGET = 16 * 1024 * 1024
 _cache = {}
 
 
@@ -347,12 +349,16 @@ class Visuals(unittest.TestCase):
                 for lg in dc.LANGS:
                     allowed.add(f[lg])
         n = 0
+        protos = {p['id'] for p in pd.protocols(repo)}
+        # protokol decklaridagi misollar (D-67: M9 kun decklari protokol slaydlarini oladi)
+        proto_ex = {s['ex'] for did, lg, j, i, s in self._all()
+                    if did in protos and s.get('template') == 'example'}
         for did, lg, j, i, s in self._all():
             if s.get('template') != 'example':
                 continue
             w = f'{did}.{lg}#{i}'
             self.assertIn('src', s, w)
-            ok = any(s['ex'] in a for a in allowed) or did in {p['id'] for p in pd.protocols(repo)}
+            ok = any(s['ex'] in a for a in allowed) or did in protos or s['ex'] in proto_ex
             self.assertTrue(ok, w)
             n += 1
         self.assertGreater(n, 5)

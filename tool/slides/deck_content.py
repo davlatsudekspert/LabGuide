@@ -178,6 +178,26 @@ UI = {
     'book_extra': {'uz': 'Darslik bo‘yicha qisqa mazmun',
                    'ru': 'Краткое содержание по учебнику',
                    'en': 'Short summary from the textbook'},
+    # M9 amaliy kunlari: LabGuide tavsiya etgan amaliy reja (D-67, curriculum `plan_source`)
+    'plan_label': {'uz': 'LabGuide tavsiya etgan amaliy reja',
+                   'ru': 'Рекомендованный LabGuide план практики',
+                   'en': 'LabGuide recommended practical plan'},
+    'plan_title': {'uz': 'Kun rejasi', 'ru': 'План дня', 'en': 'Plan for the day'},
+    'plan_schedule': {'uz': 'Dars jadvalida', 'ru': 'В расписании', 'en': 'In the timetable'},
+    'plan_schedule_text': {
+        'uz': '«Laborator tekshiruv usullarini amaliyotda o‘zlashtirish» — kunning aniq mavzusi ko‘rsatilmagan.',
+        'ru': '«Практическое освоение лабораторных методов исследования» — конкретная тема дня не указана.',
+        'en': '“Hands-on practice of laboratory testing methods” — no specific topic is given for the day.'},
+    'plan_recommended': {'uz': 'LabGuide tavsiyasi', 'ru': 'Рекомендация LabGuide',
+                         'en': 'LabGuide recommendation'},
+    'plan_teacher': {'uz': 'Ustoz mavzuni guruh rejasiga moslab o‘zgartirishi mumkin.',
+                     'ru': 'Преподаватель может изменить тему под план группы.',
+                     'en': 'The teacher may change the topic to fit the group plan.'},
+    'plan_practice': {'uz': 'Mashq qilinadi', 'ru': 'Отрабатывается', 'en': 'Practised today'},
+    'plan_basis': {'uz': 'Reja asosi', 'ru': 'Основа плана', 'en': 'Basis of the plan'},
+    'plan_after': {'uz': '{d} ma’ruzasidan keyingi amaliyot bloki, {i}/{n}-kun',
+                   'ru': 'Практический блок после лекции {d}, день {i}/{n}',
+                   'en': 'Practical block after lecture {d}, day {i} of {n}'},
 }
 
 
@@ -956,6 +976,97 @@ def book_slides(repo, src, day, lang):
     return out
 
 
+# ------------------------- M9: LabGuide tavsiya etgan amaliy reja (D-67) -----
+
+PLAN_RECOMMENDED = 'labguide_recommended'
+
+
+def parse_protocol_spec(spec):
+    """'id' yoki 'id#1-4,8' -> (id, [slayd raqamlari, 1 dan] yoki None — hammasi)."""
+    pid, _, sel = spec.partition('#')
+    if not sel:
+        return pid, None
+    out = []
+    for part in sel.split(','):
+        a, _, b = part.partition('-')
+        out += list(range(int(a), int(b or a) + 1))
+    return pid, out
+
+
+def _practice_protocol(repo, pid):
+    for p in repo.practice.get('protocols', []):
+        if p['id'] == pid:
+            return p
+    return None
+
+
+def is_planned(day):
+    return day.main.get('plan_source') == PLAN_RECOMMENDED
+
+
+def _plan_block_position(repo, day):
+    """(ma'ruza kuni id, kunning blokdagi o'rni, blokdagi kunlar soni) yoki None."""
+    blk = day.main.get('plan_block')
+    if not blk:
+        return None
+    same = [d for d in repo.days.values() if d.main.get('plan_block') == blk and is_planned(d)]
+    if day not in same:
+        return None
+    first = same[0].n
+    lect = [d for d in repo.days.values() if d.n < first and any(t['type'] == 'lecture' for t in d.topics)]
+    if not lect:
+        return None
+    return lect[-1].id, same.index(day) + 1, len(same)
+
+
+def plan_slides(repo, src, day, lang):
+    """Kun rejasi slaydi: jadvaldagi umumiy nom, LabGuide tavsiyasi, mashq qilinadigan protokollar
+    va reja asoslangan darslik bobi (`plan_refs` — "Manba" qatorida). Faqat plan_source bo'lgan kunlarda."""
+    if not is_planned(day):
+        return []
+    blocks = [{'label': T('plan_schedule', lang), 'text': T('plan_schedule_text', lang)},
+              {'label': T('plan_recommended', lang), 'text': f'{day.title(lang)}. {T("plan_teacher", lang)}'}]
+    names = []
+    for spec in day.links.get('protocols', []):
+        p = _practice_protocol(repo, parse_protocol_spec(spec)[0])
+        if p and L(p['title'], lang) not in names:
+            names.append(L(p['title'], lang))
+    names += [L(repo.an[a]['names'], lang) for a in day.links['analytes'] if a in repo.an]
+    if names:
+        blocks.append({'label': T('plan_practice', lang), 'text': '; '.join(names) + '.'})
+    pos = _plan_block_position(repo, day)
+    if pos:
+        blocks.append({'label': T('plan_basis', lang), 'text': T('plan_after', lang, d=pos[0], i=pos[1], n=pos[2]) + '.'})
+    refs = []
+    for r in day.main.get('plan_refs') or []:
+        if 'book' in r:
+            refs.append(src.book(r['book'], L(r['loc'], lang)))
+        else:
+            refs.append(src.pack(r['pack'], L(r['loc'], lang)))
+    return [Slide('text', title=T('plan_title', lang), eyebrow=T('plan_label', lang),
+                  data={'blocks': blocks, 'chips': []}, sources=dedupe(refs),
+                  names=[day.title(lang)])]
+
+
+def protocol_slides(repo, src, day, lang):
+    """Kunga bog'langan amaliy protokollar (`links.protocols`) slaydlari — protokol decklaridagi
+    bilan bir xil (practice_decks._slides), kerak bo'lsa tanlangan slaydlar."""
+    import practice_decks  # aylanma importdan qochish (practice_decks deck_content'ni import qiladi)
+    out, used = [], []
+    for spec in day.links.get('protocols', []):
+        pid, sel = parse_protocol_spec(spec)
+        p = _practice_protocol(repo, pid)
+        if p is None:
+            continue
+        part = dict(p, slides=[p['slides'][i - 1] for i in sel] if sel else p['slides'])
+        sl = practice_decks._slides(repo, src, part, lang)
+        for s in sl:
+            s.names = [L(p['title'], lang)]
+        out += sl
+        used.append(pid)
+    return out, used
+
+
 # ------------------------------------------- ishlangan misollar (Dart) ------
 
 # Kalkulyator -> (manual_calc_info.dart kaliti, sarlavha: ilova ARB kaliti yoki matnning
@@ -1107,6 +1218,17 @@ def collect(repo, day, lang):
            'atlas': 0, 'qa': {}, 'oral_reference': 0, 'books': 0, 'missing': []}
     groups = []  # (guruh kaliti, [slaydlar])
 
+    pl = plan_slides(repo, src, day, lang)
+    if pl:
+        groups.append(('plan', pl))
+    prs, used = protocol_slides(repo, src, day, lang)
+    for spec in L_.get('protocols', []):
+        if parse_protocol_spec(spec)[0] not in used:
+            cov['missing'].append(f'protokol {spec}: topilmadi')
+    if prs:
+        cov['protocols'] = used
+        groups.append(('protocols', prs))
+
     an_slides, seen_purpose = [], set()
     for aid in L_['analytes']:
         a = repo.an.get(aid)
@@ -1170,11 +1292,13 @@ def collect(repo, day, lang):
     if bs:
         cov['books'] = len(bs)
         groups.append(('books', bs))
-    ors = oral_reference_slides(repo, src, day, lang)
+    # Tavsiya etilgan reja kunlarida (D-67) savol-javob va og'zaki me'yor jadvali deckka qo'yilmaydi:
+    # nomzodlar ma'ruza kunidan meros (o'sha deckda bor) — savollar mavzu testida ishlatiladi; hajm byudjeti.
+    ors = [] if is_planned(day) else oral_reference_slides(repo, src, day, lang)
     if ors:
         cov['oral_reference'] = len(ors[0].data['rows'])
         groups.append(('oralref', ors))
-    qs, counts = qa_slides(repo, src, day, lang)
+    qs, counts = ([], {}) if is_planned(day) else qa_slides(repo, src, day, lang)
     cov['qa'] = counts
     if qs:
         groups.append(('qa', qs))
@@ -1186,6 +1310,8 @@ def collect(repo, day, lang):
 
 
 GROUP_LABEL = {
+    'plan': {'uz': 'Kun rejasi', 'ru': 'План дня', 'en': 'Plan for the day'},
+    'protocols': {'uz': 'Amaliy protokollar', 'ru': 'Практические протоколы', 'en': 'Practical protocols'},
     'analytes': {'uz': 'Tahlillar', 'ru': 'Исследования', 'en': 'Tests'},
     'conditions': {'uz': 'Holatlar', 'ru': 'Состояния', 'en': 'Conditions'},
     'reftopics': {'uz': 'Jadvallar va algoritmlar', 'ru': 'Таблицы и алгоритмы', 'en': 'Tables and algorithms'},
@@ -1210,6 +1336,8 @@ def build_deck(repo, day, lang):
     for t in day.topics:
         key = {'practical': 'h_practical', 'lecture': 'h_lecture', 'attestation': 'h_attestation'}[t['type']]
         title_lines.append(T(key, lang, h=t['hours']))
+    if is_planned(day):
+        title_lines.append(T('plan_label', lang))
     slides = [Slide('title', title=day.title(lang),
                     eyebrow=T('module_topic', lang, m=day.module_no, n=day.n),
                     data={'lines': title_lines,
