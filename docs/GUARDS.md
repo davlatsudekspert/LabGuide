@@ -140,6 +140,7 @@ fayllarni o‘qiydi (`pack.json`, `curriculum.json`, `assets/toifa/*.json`, `ind
 | Toifa: har savol — kalit oralig‘i, takrorsiz id/raqam, bo‘sh variant yo‘q, ru/en; takror matn faqat ma’lum juftlar | `test/guards/toifa_real_assets_guard_test.dart` |
 | Toifa: 50 savollik test (imtihon/mashq), qayta ochilganda davom, kunlik hisob va seriya; bilet (5 savol, yozuvsiz) | `toifa_real_assets_guard_test.dart`; `test/widget/toifa_iphone_real_test.dart` (iPhone) |
 | O‘rganish → Mashq, Imtihon, toifa mavzulari, kunlik savollar: har mavzu savol beradi, har savol topiladi | `test/guards/quiz_modes_real_assets_guard_test.dart` |
+| Toifa mashqi, mavzu mashqi va «Xatolar ustida ishlash»: javob izohi kichik ekranda ko‘rinadigan joyga suriladi (RevealOnMount) | `test/widget/toifa_feedback_reveal_test.dart` (360×640 ×1.3, iOS; katta ekranda surilmaydi) |
 
 ### Tablar auditi (2026-10-18, `docs/AUDIT_2026-10-18_TABS.md`)
 

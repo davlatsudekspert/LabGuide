@@ -51,7 +51,19 @@ Qorovullar **namuna emas, har bir tayyor deck va har bir savol** bo‘yicha yura
   tiklanganda to‘g‘ridan-to‘g‘ri ochilsa …` (`makeServices(loadToifa: false)`). Tuzatishsiz
   yiqiladi (tekshirildi).
 
-### 1.3 Kichik o‘zgarishlar (xulq o‘zgarmagan)
+### 1.3 Toifa mashqida javob izohi kichik ekranda ko‘rinmasdi
+
+* **Qayerda:** `lib/features/toifa/toifa_screens.dart` — 50 savollik mashq rejimi
+  (`ToifaDrillScreen`) va mavzu bo‘yicha mashq / «Xatolar ustida ishlash»
+  (`ToifaPracticeScreen`).
+* **Sabab:** 360×640, ×1.3 da variant bosilgach «To‘g‘ri / xato» izohi va «Keyingi» tugmasi
+  ekrandan pastda qolardi — foydalanuvchi natijani ko‘rmasdan qo‘lda surishi kerak edi.
+* **Tuzatish:** ikkala izoh `RevealOnMount` (04e0eda, tablar auditi) bilan o‘raldi; katta
+  ekranda ro‘yxat qimirlamaydi.
+* **Regressiya testi:** `test/widget/toifa_feedback_reveal_test.dart` (iOS, 360×640 ×1.3: mashq,
+  aralash mashq, xatolar; 390×2400 — surilmaydi). Tuzatishsiz yiqiladi (tekshirildi).
+
+### 1.4 Kichik o‘zgarishlar (xulq o‘zgarmagan)
 
 * `topicAssignmentTitle()` — «Guruhga topshirish» sarlavhasi alohida funksiyaga chiqarildi
   (uch tilda sinash uchun).
@@ -137,6 +149,6 @@ Domlaning tekshirilmagan 529 savoli qo‘shilmadi.
 ## 7. Natijalar
 
 * `flutter analyze` — toza.
-* `flutter test` — NATIJA_FLUTTER.
+* `flutter test` — 1885 o‘tdi, 1 o‘tkazib yuborilgan (`~1`, avvaldan), 0 yiqilgan.
 * `cloudflare`: `npx tsc --noEmit` — toza; `npx vitest run` — 16 fayl, 209 test, hammasi o‘tdi.
-* `bash tool/run_guards.sh` — NATIJA_GUARDS.
+* `bash tool/run_guards.sh` — `--quick` rejimida o‘tdi (Python: slides 89, site 7, ai 93; `test/guards` 85; Worker qorovuli 7). To‘liq rejimning qolgan qadamlari (analyze, to‘liq `flutter test`, to‘liq vitest) alohida ishga tushirildi — yuqorida.
