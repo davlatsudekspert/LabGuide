@@ -85,6 +85,11 @@ DeckEntry? deckOfAssignment(BuildContext context, GroupAssignment a) {
       (a.topicId == null ? null : c.byTopic(a.topicId!));
 }
 
+/// Topshiriq sarlavhasi: server 3–120 belgi qabul qiladi (trim'dan keyin) —
+/// uzun deck nomi qisqartiriladi.
+String topicAssignmentTitle(AppLocalizations l, DeckEntry deck, String lang) =>
+    fitAssignmentTitle(l.topicTestTitle(deck.title(lang)));
+
 /// “Slaydni ko'rish” havolasi (moslik bo'lmasa — “Taqdimotni boshidan”).
 class SlideLink extends StatelessWidget {
   const SlideLink({super.key, required this.question, required this.deck});
@@ -1125,12 +1130,8 @@ class _AssignDeckTestScreenState extends State<AssignDeckTestScreen> {
     });
   }
 
-  String _title(DeckEntry deck) {
-    final l = AppLocalizations.of(context);
-    var t = l.topicTestTitle(deck.title(_lang(context)));
-    if (t.length > 120) t = '${t.substring(0, 119).trimRight()}…';
-    return t;
-  }
+  String _title(DeckEntry deck) =>
+      topicAssignmentTitle(AppLocalizations.of(context), deck, _lang(context));
 
   Future<void> _send(DeckEntry deck, List<ExamQuestion> pool) async {
     setState(() => _tried = true);

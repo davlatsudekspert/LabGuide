@@ -175,6 +175,10 @@ class _AssignmentBoardScreenState extends State<AssignmentBoardScreen> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
+      // Eng qiyin savollar matni toifa bankidan ham olinadi: katta ekran
+      // to'g'ridan-to'g'ri (masalan, ilova tiklanganda) ochilsa, bank hali
+      // yuklanmagan bo'ladi — aks holda “savol to'plamda yo'q” chiqardi.
+      unawaited(context.services.toifa.ensureLoaded());
       // Jadval va ekran holati savoli parallel (dialog ortida jadval tayyor).
       unawaited(_load());
       await _enter();
@@ -285,7 +289,15 @@ class _AssignmentBoardScreenState extends State<AssignmentBoardScreen> {
                     ? const CircularProgressIndicator()
                     : Text(classesErrorText(_error!, l)),
               )
-            : _Board(data: d, onExit: () => context.pop()),
+            // Paket/bank yuklanganda savol matnlari darhol yangilanadi.
+            : ListenableBuilder(
+                listenable: Listenable.merge([
+                  context.services.content,
+                  context.services.toifa,
+                ]),
+                builder: (context, _) =>
+                    _Board(data: d, onExit: () => context.pop()),
+              ),
       ),
     );
   }
