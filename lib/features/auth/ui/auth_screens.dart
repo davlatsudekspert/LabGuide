@@ -6,6 +6,7 @@ import 'package:material_ui/material_ui.dart';
 
 import '../../../app/app_scope.dart';
 import '../../../app/widgets/lg_page.dart';
+import '../../../app/widgets/links.dart';
 import '../../../core/contact.dart';
 import '../../../design/tokens.dart';
 import '../../../design/widgets/lg_widgets.dart';
@@ -459,6 +460,17 @@ class TermsScreen extends StatelessWidget {
         Text(l.termsBody, style: Theme.of(context).textTheme.bodyLarge),
         const SizedBox(height: LgSpace.lg),
         LgNotice(l.analyteNoInterpretation, kind: NoticeKind.info),
+        const SizedBox(height: LgSpace.md),
+        // Kirishda "shartlar va maxfiylik siyosatini qabul qilaman" —
+        // siyosatning o'ziga havola shu yerda (audit 2026-10-18, tablar).
+        LgRow(
+          key: const ValueKey('terms-privacy-link'),
+          title: l.contactPrivacyPolicy,
+          subtitle: l.contactPrivacyNote,
+          icon: Icons.shield_outlined,
+          onTap: () => openExternalLink(context, Contact.privacyPolicyUrl),
+          divider: false,
+        ),
       ],
     );
   }

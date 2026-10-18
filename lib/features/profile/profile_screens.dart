@@ -5,7 +5,9 @@ import 'package:material_ui/material_ui.dart';
 
 import '../../app/app_scope.dart';
 import '../../app/widgets/lg_page.dart';
+import '../../app/widgets/links.dart';
 import '../../core/build_flags.dart';
+import '../../core/contact.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../learn/exam_question.dart' show keepUnitsTogether;
 import '../../l10n/gen/app_localizations.dart';
@@ -408,6 +410,14 @@ class PrivacyScreen extends StatelessWidget {
           subtitle: l.privacyTermsSub,
           icon: Icons.description_outlined,
           onTap: () => context.push('/terms'),
+        ),
+        // Maxfiylik siyosatining o'zi (sayt) — audit 2026-10-18 (tablar).
+        LgRow(
+          key: const ValueKey('privacy-policy-link'),
+          title: l.contactPrivacyPolicy,
+          subtitle: l.contactPrivacyNote,
+          icon: Icons.shield_outlined,
+          onTap: () => openExternalLink(context, Contact.privacyPolicyUrl),
         ),
         LgRow(
           title: l.privacyDeleteLocal,

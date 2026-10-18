@@ -7,6 +7,7 @@ import '../../app/widgets/lg_page.dart';
 import '../../app/widgets/links.dart';
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
+import '../../design/widgets/reveal_on_mount.dart';
 import '../../l10n/gen/app_localizations.dart';
 import '../auth/ui/welcome_screen.dart';
 import '../classroom/topic_test_screens.dart' show AssignedTestsCard;
@@ -547,16 +548,19 @@ class _QuizQuestion extends StatelessWidget {
             ),
           ),
         if (answered) ...[
-          LgNotice(
-            [
-              q.options[answer].explanation.of(lang),
-              if (answer != q.correctIndex)
-                q.options[q.correctIndex].explanation.of(lang),
-            ].join('\n\n'),
-            title: answer == q.correctIndex ? l.quizCorrect : l.quizIncorrect,
-            kind: answer == q.correctIndex
-                ? NoticeKind.info
-                : NoticeKind.warning,
+          // Kichik ekranda izoh pastda qolmasin (audit 2026-10-18).
+          RevealOnMount(
+            child: LgNotice(
+              [
+                q.options[answer].explanation.of(lang),
+                if (answer != q.correctIndex)
+                  q.options[q.correctIndex].explanation.of(lang),
+              ].join('\n\n'),
+              title: answer == q.correctIndex ? l.quizCorrect : l.quizIncorrect,
+              kind: answer == q.correctIndex
+                  ? NoticeKind.info
+                  : NoticeKind.warning,
+            ),
           ),
           Text(
             l.quizBasis(q.basis.of(lang)),
