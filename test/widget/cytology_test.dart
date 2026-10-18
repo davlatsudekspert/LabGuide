@@ -13,6 +13,7 @@ import 'package:labguide/l10n/gen/app_localizations.dart';
 import 'package:material_ui/material_ui.dart';
 
 import '../helpers/harness.dart';
+import '../helpers/learn_helpers.dart';
 
 void main() {
   setUpAll(loadAppFonts);
@@ -195,8 +196,8 @@ void main() {
       await pumpApp(tester, s);
       final l = lookupAppLocalizations(Locale(lang.name));
       await goTo(tester, '/lab');
-      await tester.tap(find.text(l.cytoTitle));
-      await tester.pumpAndSettle();
+      // Lab tabida bo'limlar ish vositalaridan keyin (D-69 Q2) — surib.
+      await tapScroll(tester, l.cytoTitle);
       expect(find.byType(CytologyScreen), findsOne);
       for (final r in ['cells', 'degree', 'bethesda', 'technique', 'quiz']) {
         await goTo(tester, '$cytoBase/$r');

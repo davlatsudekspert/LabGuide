@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/services.dart';
@@ -7,6 +8,7 @@ import 'package:labguide/core/backend/backend_models.dart';
 import 'package:labguide/features/classroom/classroom_local.dart';
 import 'package:labguide/features/classroom/curriculum.dart';
 import 'package:labguide/features/classroom/invite_link.dart';
+import 'package:labguide/features/classroom/lecture_catalog.dart';
 import 'package:labguide/features/classroom/qr_code_view.dart';
 import 'package:labguide/features/classroom/topic_questions.dart';
 import 'package:labguide/features/learn/exam_session.dart';
@@ -67,7 +69,14 @@ void main() {
     tester,
   ) async {
     final fakes = installDiffFakes();
-    final s = await makeServices(tester, role: AppRole.teacher);
+    // Katalogda deck yo'q bundle: mavzu manzili avtomatik slaydlarga
+    // (zaxira) tushadi — haqiqiy katalogda har mavzuning tayyor decki bor va
+    // `/learn/lecture/<topicId>` o'shanga yo'naltiriladi (D-68 Q1).
+    final s = await makeServices(
+      tester,
+      role: AppRole.teacher,
+      bundle: _NoDecks(),
+    );
     s.curriculum.use(_fixture());
     await pumpApp(tester, s, size: _tall);
     expect(s.backend.isConfigured, isFalse);
@@ -82,18 +91,8 @@ void main() {
       expect(find.text(uz.classroomOpenTopic), findsNothing);
     }
 
-    // Ma'ruza rejimi: ro'yxat → slaydlar; ekran yoqiq turadi.
-    await goTo(tester, '/learn/lecture');
-    expect(find.text('Buyrak va siydik'), findsOneWidget);
-    // Dastur mavzulari — ro'yxat oxirida (undan oldin barcha tayyor
-    // taqdimotlar): 250 px qadamli suruvchi o'rniga to'g'ridan-to'g'ri.
-    final topicRow = find.text(
-      'Buyrak kasalliklarining laborator ko‘rsatkichlari',
-    );
-    await tester.ensureVisible(topicRow);
-    await tester.pumpAndSettle();
-    await tester.tap(topicRow);
-    await tester.pumpAndSettle();
+    // Ma'ruza rejimi (mavzu manzili) → avtomatik slaydlar; ekran yoqiq.
+    await goTo(tester, '/learn/lecture/$_topic');
     expect(fakes.awake.calls, [true]);
     expect(
       find.text('Buyrak kasalliklarining laborator ko‘rsatkichlari'),
@@ -141,8 +140,9 @@ void main() {
       bundle: _WithoutCurriculum(),
     );
     await pumpApp(tester, s, size: _tall);
-    await goTo(tester, '/learn/lecture');
-    expect(find.text(uz.classroomNoCurriculumTitle), findsOneWidget);
+    // Ma'ruza ro'yxati (tayyor decklar katalogi) o'quv dasturiga bog'liq emas
+    // (D-68 Q1: dastur mavzulari bo'limi olib tashlandi) — guruh rejasi esa
+    // halol "qo'shilmagan" holatini ko'rsatadi.
     await _signIn(tester, s, 'teacher@example.com');
     await b.registerTeacher();
     final g = await b.createGroup('KLD');
@@ -329,8 +329,9 @@ void main() {
       );
       await pumpApp(tester, s, size: _tall);
       await goTo(tester, '/learn/lecture');
+      // Katalog: modul sarlavhasi "2. …", deck nomi — tanlangan tilda.
       expect(find.text(topic), findsWidgets);
-      expect(find.text(module), findsWidgets);
+      expect(find.text('2. $module'), findsWidgets);
     });
   }
 
@@ -362,6 +363,14 @@ void main() {
         await _signIn(tester, s, 'teacher@example.com');
         await b.openTopic(g.id, _topic);
         await b.markTopicStage(g.id, _topic, TopicStage.lecture);
+        // `/learn/lecture/$_topic` tayyor deckka yo'naltiriladi (D-68 Q1);
+        // pleyer deck faylini asinxron yuklaydi — oldindan keshga.
+        final bundle = s.curriculum.bundle ?? rootBundle;
+        final catalog = DeckCatalog.peek(bundle)!;
+        final deck = catalog.byTopic(_topic)!;
+        await tester.runAsync(
+          () => DeckCatalog.loadDeck(bundle, deck, deck.resolveLang(lang.name)),
+        );
         Future<void> visit(List<String> routes) async {
           for (final r in routes) {
             await goTo(tester, r);
@@ -402,6 +411,23 @@ class _WithoutCurriculum extends CachingAssetBundle {
   Future<ByteData> load(String key) {
     if (key == CurriculumLoader.assetPath) {
       throw FlutterError('Unable to load asset: $key');
+    }
+    return rootBundle.load(key);
+  }
+}
+
+/// Ilova asset'lari, faqat taqdimotlar katalogi bo'sh (avtomatik slaydlar
+/// zaxirasi uchun).
+class _NoDecks extends CachingAssetBundle {
+  @override
+  Future<ByteData> load(String key) async {
+    if (key == DeckCatalog.indexPath) {
+      final j =
+          jsonDecode(await rootBundle.loadString(key)) as Map<String, Object?>;
+      j['decks'] = <Object>[];
+      return ByteData.sublistView(
+        Uint8List.fromList(utf8.encode(jsonEncode(j))),
+      );
     }
     return rootBundle.load(key);
   }

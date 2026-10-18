@@ -358,12 +358,6 @@ abstract class AppLocalizations {
   /// **'Timed practice exam'**
   String get homeTileExam;
 
-  /// No description provided for @homeTileDaily.
-  ///
-  /// In en, this message translates to:
-  /// **'5 questions every day'**
-  String get homeTileDaily;
-
   /// No description provided for @homeTileTopics.
   ///
   /// In en, this message translates to:
@@ -643,7 +637,7 @@ abstract class AppLocalizations {
   /// No description provided for @homeHeroDoctorCta.
   ///
   /// In en, this message translates to:
-  /// **'Explore tests'**
+  /// **'Search tests'**
   String get homeHeroDoctorCta;
 
   /// No description provided for @condGuideTitle.
@@ -943,7 +937,7 @@ abstract class AppLocalizations {
   /// No description provided for @homeHeroStudentCta.
   ///
   /// In en, this message translates to:
-  /// **'Start learning'**
+  /// **'Start daily questions'**
   String get homeHeroStudentCta;
 
   /// No description provided for @homeHeroTeacherTitle.
@@ -1443,12 +1437,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Calibration'**
   String get labHeroTitle;
-
-  /// No description provided for @classroomLectureAuto.
-  ///
-  /// In en, this message translates to:
-  /// **'Automatic slides'**
-  String get classroomLectureAuto;
 
   /// No description provided for @labSectionsTitle.
   ///
@@ -13024,12 +13012,6 @@ abstract class AppLocalizations {
   /// **'Teacher note'**
   String get lectureTeacherNote;
 
-  /// No description provided for @lectureDeckReady.
-  ///
-  /// In en, this message translates to:
-  /// **'Ready presentation · {count} slides'**
-  String lectureDeckReady(int count);
-
   /// No description provided for @cmTitle.
   ///
   /// In en, this message translates to:
@@ -16324,18 +16306,6 @@ abstract class AppLocalizations {
   /// **'Clear search and filters'**
   String get lectureClearFilters;
 
-  /// No description provided for @lectureTopicsAutoTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Curriculum topics — automatic slides'**
-  String get lectureTopicsAutoTitle;
-
-  /// No description provided for @lectureTopicsAutoSub.
-  ///
-  /// In en, this message translates to:
-  /// **'Topics without a ready presentation are assembled from the curriculum'**
-  String get lectureTopicsAutoSub;
-
   /// No description provided for @lectureLangFallback.
   ///
   /// In en, this message translates to:
@@ -17133,6 +17103,54 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Given to {n} students'**
   String variantReceived(int n);
+
+  /// No description provided for @homeResumeCta.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get homeResumeCta;
+
+  /// No description provided for @homeResumeBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Last opened: {title}'**
+  String homeResumeBody(String title);
+
+  /// No description provided for @homeHeroLabToifaCta.
+  ///
+  /// In en, this message translates to:
+  /// **'Today’s category practice'**
+  String get homeHeroLabToifaCta;
+
+  /// No description provided for @helpTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Help & contact'**
+  String get helpTitle;
+
+  /// No description provided for @helpSub.
+  ///
+  /// In en, this message translates to:
+  /// **'In the app or by email — question, suggestion, complaint'**
+  String get helpSub;
+
+  /// No description provided for @helpIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose what suits you: an in-app message thread (the reply arrives here) or email (complaint, advertising, privacy request).'**
+  String get helpIntro;
+
+  /// No description provided for @learnSectionQuizzesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Section practice'**
+  String get learnSectionQuizzesTitle;
+
+  /// No description provided for @learnSectionQuizRow.
+  ///
+  /// In en, this message translates to:
+  /// **'{section} — practice'**
+  String learnSectionQuizRow(String section);
 }
 
 class _AppLocalizationsDelegate

@@ -33,9 +33,9 @@
   {
    "id": "parasites",
    "name": {
-    "uz": "Parazitlar",
-    "ru": "Паразиты",
-    "en": "Parasites"
+    "uz": "Qon parazitlari (bezgak)",
+    "ru": "Кровяные паразиты (малярия)",
+    "en": "Blood parasites (malaria)"
    },
    "sub": {
     "uz": "Bezgak: yupqa va qalin surtma",

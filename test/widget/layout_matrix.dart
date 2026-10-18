@@ -172,6 +172,7 @@ const appRoutes = [
   '/profile/role',
   '/profile/theme',
   '/profile/privacy',
+  '/profile/help',
   '/profile/contact',
   '/profile/support',
   '/profile/admin',

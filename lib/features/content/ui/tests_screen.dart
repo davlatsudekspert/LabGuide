@@ -12,7 +12,11 @@ import 'conditions_screens.dart';
 import 'content_widgets.dart';
 
 class TestsScreen extends StatefulWidget {
-  const TestsScreen({super.key});
+  const TestsScreen({super.key, this.focusSearch = false});
+
+  /// `/tests?search=1` (shifokor bosh sahifasidagi “Tahlilni qidirish”):
+  /// qidiruv maydoni darhol fokusda.
+  final bool focusSearch;
 
   @override
   State<TestsScreen> createState() => _TestsScreenState();
@@ -20,13 +24,31 @@ class TestsScreen extends StatefulWidget {
 
 class _TestsScreenState extends State<TestsScreen> {
   final _query = TextEditingController();
+  final _focus = FocusNode();
   String? _group;
   AnalyteSearch? _search;
   ConditionSearch? _conditionSearch;
 
   @override
+  void initState() {
+    super.initState();
+    if (widget.focusSearch) _requestFocus();
+  }
+
+  @override
+  void didUpdateWidget(TestsScreen old) {
+    super.didUpdateWidget(old);
+    if (widget.focusSearch && !old.focusSearch) _requestFocus();
+  }
+
+  void _requestFocus() => WidgetsBinding.instance.addPostFrameCallback((_) {
+    if (mounted) _focus.requestFocus();
+  });
+
+  @override
   void dispose() {
     _query.dispose();
+    _focus.dispose();
     super.dispose();
   }
 
@@ -47,6 +69,7 @@ class _TestsScreenState extends State<TestsScreen> {
         const ConditionsEntryRow(base: '/tests'),
         SearchBox(
           controller: _query,
+          focusNode: _focus,
           label: l.testsSearchLabel,
           hint: l.testsSearchHint,
           onChanged: (_) => setState(() {}),
@@ -136,6 +159,7 @@ class SearchBox extends StatelessWidget {
     required this.hint,
     required this.onChanged,
     this.autofocus = false,
+    this.focusNode,
   });
 
   final TextEditingController controller;
@@ -143,6 +167,7 @@ class SearchBox extends StatelessWidget {
   final String hint;
   final ValueChanged<String> onChanged;
   final bool autofocus;
+  final FocusNode? focusNode;
 
   @override
   Widget build(BuildContext context) {
@@ -155,6 +180,7 @@ class SearchBox extends StatelessWidget {
         textField: true,
         child: TextField(
           controller: controller,
+          focusNode: focusNode,
           onChanged: onChanged,
           autofocus: autofocus,
           textInputAction: TextInputAction.search,

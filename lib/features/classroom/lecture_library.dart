@@ -34,17 +34,12 @@ class LectureLibrary extends StatefulWidget {
     super.key,
     required this.bundle,
     required this.autoEntry,
-    required this.topicsSection,
   });
 
   final AssetBundle bundle;
 
   /// "Avtomatik taqdimot" kirish qatori (qidiruv yo'q paytda ko'rinadi).
   final Widget autoEntry;
-
-  /// Tayyor taqdimoti yo'q mavzular (o'quv dasturi bo'yicha avtomatik slaydlar);
-  /// qidiruv va filtr yo'q paytda ko'rinadi.
-  final Widget topicsSection;
 
   @override
   State<LectureLibrary> createState() => _LectureLibraryState();
@@ -94,7 +89,6 @@ class _LectureLibraryState extends State<LectureLibrary> {
       initialData: DeckCatalog.peek(widget.bundle),
       builder: (context, snap) {
         final catalog = snap.data;
-        final browsing = _query.trim().isEmpty && _filter.isEmpty;
         return Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -124,7 +118,6 @@ class _LectureLibraryState extends State<LectureLibrary> {
                     )
             else
               _results(context, catalog),
-            if (browsing) widget.topicsSection,
           ],
         );
       },

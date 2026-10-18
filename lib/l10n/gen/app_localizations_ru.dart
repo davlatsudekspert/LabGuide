@@ -147,9 +147,6 @@ class AppLocalizationsRu extends AppLocalizations {
   String get homeTileExam => 'Пробный экзамен на время';
 
   @override
-  String get homeTileDaily => '5 вопросов каждый день';
-
-  @override
   String get homeTileTopics => 'Тема, разбор и практика';
 
   @override
@@ -306,7 +303,7 @@ class AppLocalizationsRu extends AppLocalizations {
       'Анализ, влияющие факторы и связанные исследования.';
 
   @override
-  String get homeHeroDoctorCta => 'Открыть анализы';
+  String get homeHeroDoctorCta => 'Найти анализ';
 
   @override
   String get condGuideTitle => 'Анализы по заболеваниям';
@@ -491,7 +488,7 @@ class AppLocalizationsRu extends AppLocalizations {
       'Тема → объяснение → практика → повторение.';
 
   @override
-  String get homeHeroStudentCta => 'Начать обучение';
+  String get homeHeroStudentCta => 'Начать вопросы дня';
 
   @override
   String get homeHeroTeacherTitle => 'От знаний к занятию';
@@ -768,9 +765,6 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get labHeroTitle => 'Калибровка';
-
-  @override
-  String get classroomLectureAuto => 'Автоматические слайды';
 
   @override
   String get labSectionsTitle => 'Разделы и атласы';
@@ -7564,11 +7558,6 @@ class AppLocalizationsRu extends AppLocalizations {
   String get lectureTeacherNote => 'Заметка для преподавателя';
 
   @override
-  String lectureDeckReady(int count) {
-    return 'Готовая презентация · $count слайдов';
-  }
-
-  @override
   String get cmTitle => 'Сообщество · Вопросы и ответы';
 
   @override
@@ -9524,13 +9513,6 @@ class AppLocalizationsRu extends AppLocalizations {
   String get lectureClearFilters => 'Сбросить поиск и фильтры';
 
   @override
-  String get lectureTopicsAutoTitle => 'Темы программы — автоматические слайды';
-
-  @override
-  String get lectureTopicsAutoSub =>
-      'Для тем без готовой презентации слайды собираются из учебной программы';
-
-  @override
   String lectureLangFallback(String wanted, String shown) {
     return 'Эта презентация недоступна на языке «$wanted» — показана на языке «$shown»';
   }
@@ -10006,5 +9988,35 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String variantReceived(int n) {
     return 'Попался $n студентам';
+  }
+
+  @override
+  String get homeResumeCta => 'Продолжить';
+
+  @override
+  String homeResumeBody(String title) {
+    return 'Последнее открытое: $title';
+  }
+
+  @override
+  String get homeHeroLabToifaCta => 'Занятие на сегодня: категория';
+
+  @override
+  String get helpTitle => 'Помощь и связь';
+
+  @override
+  String get helpSub =>
+      'В приложении или по email — вопрос, предложение, жалоба';
+
+  @override
+  String get helpIntro =>
+      'Выберите удобный способ: переписка в приложении (ответ придёт сюда) или email (жалоба, реклама, запрос о конфиденциальности).';
+
+  @override
+  String get learnSectionQuizzesTitle => 'Тренировки по разделам';
+
+  @override
+  String learnSectionQuizRow(String section) {
+    return '$section — тренировка';
   }
 }

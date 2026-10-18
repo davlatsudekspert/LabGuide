@@ -221,8 +221,10 @@ SlideRange? _range(Map<String, Object?>? j) {
   );
 }
 
-/// Ma'ruza bo'limi: BARCHA tayyor taqdimotlar (qidiruv va filtr bilan),
-/// avtomatik taqdimot kirishi va o'quv dasturi mavzulari (serversiz).
+/// Ma'ruza bo'limi: BARCHA tayyor taqdimotlar (qidiruv va filtr bilan) va
+/// avtomatik taqdimot kirishi (serversiz). O'quv dasturining har mavzusi
+/// uchun tayyor 16:9 taqdimot bor (D-68, Q1) — mavzular ro'yxati ikkinchi
+/// marta (avtomatik slaydlar bilan) ko'rsatilmaydi.
 class LectureListScreen extends StatelessWidget {
   const LectureListScreen({super.key});
 
@@ -230,7 +232,6 @@ class LectureListScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context);
     final bundle = context.services.curriculum.bundle ?? rootBundle;
-    final decks = LectureDecks.all(bundle);
     return LgPage(
       title: l.lectureListTitle,
       subtitle: l.lectureListSub,
@@ -246,48 +247,34 @@ class LectureListScreen extends StatelessWidget {
             icon: Icons.auto_awesome_motion_outlined,
             onTap: () => context.push('/learn/lecture/auto'),
           ),
-          topicsSection: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              LgSectionTitle(l.lectureTopicsAutoTitle),
-              Text(
-                l.lectureTopicsAutoSub,
-                style: Theme.of(context).textTheme.bodySmall,
-              ),
-              CurriculumGate(
-                builder: (context, cur) => FutureBuilder(
-                  future: decks,
-                  initialData: LectureDecks.peek(bundle),
-                  builder: (context, snap) => Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      for (final m in cur.modules) ...[
-                        LgSectionTitle(m.title.of(_lang(context))),
-                        for (final (i, t) in m.topics.indexed)
-                          LgRow(
-                            title: t.title.of(_lang(context)),
-                            subtitle: [
-                              topicMeta(context, t),
-                              if (snap.data?[t.id] case final d?)
-                                l.lectureDeckReady(d.slides.length),
-                            ].join('\n'),
-                            icon: snap.data?[t.id] != null
-                                ? Icons.co_present_outlined
-                                : Icons.slideshow_outlined,
-                            divider: i < m.topics.length - 1,
-                            onTap: () => context.push('/learn/lecture/${t.id}'),
-                          ),
-                      ],
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
         ),
       ],
     );
   }
+}
+
+/// `/learn/lecture/<topicId>` uchun yo'naltirish (D-45, D-68): mavzuning
+/// katalogda tayyor taqdimoti bo'lsa — o'sha deck (`/learn/lecture/deck/<id>`);
+/// bo'lmasa `null` (avtomatik slaydlar — zaxira).
+String? lectureTopicRedirect(DeckCatalog? catalog, String topicId) {
+  final deck = catalog?.byTopic(topicId);
+  return deck == null ? null : '/learn/lecture/deck/${deck.id}';
+}
+
+/// Router uchun: katalog yuklanmagan bo'lsa — yuklab (xato bo'lsa — zaxira).
+Future<String?> resolveLectureTopicRedirect(
+  AssetBundle bundle,
+  String topicId,
+) async {
+  var catalog = DeckCatalog.peek(bundle);
+  if (catalog == null) {
+    try {
+      catalog = await DeckCatalog.load(bundle);
+    } on Object {
+      return null;
+    }
+  }
+  return lectureTopicRedirect(catalog, topicId);
 }
 
 class LectureScreen extends StatefulWidget {

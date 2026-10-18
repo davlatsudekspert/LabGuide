@@ -33,6 +33,7 @@ class LearnScreen extends StatelessWidget {
         context.services.exams,
         context.services.settings,
         context.services.curriculum,
+        context.services.access,
       ]),
       builder: (context, _) =>
           _page(context, l, content.pack?.quiz.length ?? 0),
@@ -135,18 +136,103 @@ class LearnScreen extends StatelessWidget {
           subtitle: l.cytoSubtitle,
           icon: Icons.blur_on_rounded,
           onTap: () => openInTab(context, '/lab/cytology', exact: true),
+          divider: lessonPlanVisible(context),
         ),
-        LgRow(
-          title: l.learnLessonPlan,
-          subtitle: l.learnLessonPlanSub,
-          icon: Icons.co_present_outlined,
-          onTap: () => context.push('/learn/lesson'),
-          divider: false,
-        ),
+        // Dars rejasi — ustoz ish maydoni: faqat ustoz va admin (D-68 Q5).
+        // "Ilmiy ish maydoni" (Kutubxona) alohida qoladi.
+        if (lessonPlanVisible(context))
+          LgRow(
+            key: const ValueKey('learn-lesson-plan'),
+            title: l.learnLessonPlan,
+            subtitle: l.learnLessonPlanSub,
+            icon: Icons.co_present_outlined,
+            onTap: () => context.push('/learn/lesson'),
+            divider: false,
+          ),
+        // Lab bo'limlarining mashqlari — bir joyda, bir xil ko'rinishda
+        // (D-68 Q8). Mashqi bor har bo'lim; koagulogramma va koprologiyada
+        // hozircha mashq yo'q.
+        LgSectionTitle(l.learnSectionQuizzesTitle),
+        for (final (i, q) in kLabSectionQuizzes.indexed)
+          LgRow(
+            key: ValueKey('learn-section-quiz-${q.id}'),
+            title: l.learnSectionQuizRow(q.title(l)),
+            icon: q.icon,
+            onTap: () => openInTab(context, q.route, exact: true),
+            divider: i < kLabSectionQuizzes.length - 1,
+          ),
       ],
     );
   }
 }
+
+/// "Dars rejasi" qatori: ustoz yoki server tasdiqlagan admin (D-68 Q5).
+bool lessonPlanVisible(BuildContext context) {
+  final s = context.services;
+  final a = s.access.access;
+  return s.settings.effectiveRole == AppRole.teacher ||
+      a.adminAccount ||
+      a.panelAdmin;
+}
+
+/// O'rganish tabidagi "Bo'lim mashqlari": mashqi bor har bir Lab bo'limi.
+typedef LabSectionQuiz = ({
+  String id,
+  String route,
+  IconData icon,
+  String Function(AppLocalizations l) title,
+});
+
+final kLabSectionQuizzes = <LabSectionQuiz>[
+  (
+    id: 'differential',
+    route: '/lab/differential/quiz',
+    icon: Icons.bubble_chart_outlined,
+    title: (l) => l.diffTitle,
+  ),
+  (
+    id: 'microscopy',
+    route: '/lab/microscopy/quiz',
+    icon: Icons.biotech_outlined,
+    title: (l) => l.micTitle,
+  ),
+  (
+    id: 'cytology',
+    route: '/lab/cytology/quiz',
+    icon: Icons.blur_on_rounded,
+    title: (l) => l.cytoTitle,
+  ),
+  (
+    id: 'spermogram',
+    route: '/lab/spermogram/quiz',
+    icon: Icons.water_drop_outlined,
+    title: (l) => l.spermTitle,
+  ),
+  (
+    id: 'bloodgroup',
+    route: '/lab/bloodgroup/quiz',
+    icon: Icons.bloodtype_outlined,
+    title: (l) => l.bloodGroupTitle,
+  ),
+  (
+    id: 'histology',
+    route: '/lab/histology/quiz',
+    icon: Icons.grid_view_rounded,
+    title: (l) => l.histoTitle,
+  ),
+  (
+    id: 'urinalysis',
+    route: '/lab/urinalysis/quiz',
+    icon: Icons.science_outlined,
+    title: (l) => l.urinTitle,
+  ),
+  (
+    id: 'bloodmorph',
+    route: '/lab/bloodmorph/quiz',
+    icon: Icons.circle_outlined,
+    title: (l) => l.bloodMorphTitle,
+  ),
+];
 
 /// Mashq to'plami: mavzu (guruh yoki bitta analit), umumiy laboratoriya
 /// hisoblari yoki aralash tasodifiy savollar.

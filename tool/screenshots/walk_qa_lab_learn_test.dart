@@ -438,7 +438,7 @@ void main() {
       l.learnQuiz,
       l.learnExam,
       l.refTitle,
-      l.learnLessonPlan,
+      // "Dars rejasi" — faqat ustoz va admin (D-68 Q5); talabada yo'q.
     ]) {
       await tapScroll(tester, row);
       await _step(w, 'row_$row');

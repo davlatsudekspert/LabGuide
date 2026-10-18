@@ -17,6 +17,7 @@ import '../features/content/content_controller.dart';
 import '../features/daily/daily_controller.dart';
 import '../features/daily/daily_reminder.dart';
 import '../features/differential/differential_controller.dart';
+import '../features/home/resume_history.dart';
 import '../features/instruments/instruments_controller.dart';
 import '../features/learn/exam_controller.dart';
 import '../features/learn/quiz_progress.dart';
@@ -211,6 +212,7 @@ class AppServices {
     classroom.resetInMemory();
     topicTests.resetInMemory();
     community.resetInMemory();
+    ResumeHistory.of(store).resetInMemory();
     await reminders.reset();
     await packs.removeAll();
     settings.resetToDefaults(systemLocales);

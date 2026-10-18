@@ -147,9 +147,6 @@ class AppLocalizationsUz extends AppLocalizations {
   String get homeTileExam => 'Vaqtli sinov imtihoni';
 
   @override
-  String get homeTileDaily => 'Har kuni 5 ta savol';
-
-  @override
   String get homeTileTopics => 'Mavzu, izoh va mashq';
 
   @override
@@ -306,7 +303,7 @@ class AppLocalizationsUz extends AppLocalizations {
       'Tahlil, ta’sir qiluvchi omillar va bog‘liq tekshiruvlar.';
 
   @override
-  String get homeHeroDoctorCta => 'Tahlillarni ochish';
+  String get homeHeroDoctorCta => 'Tahlilni qidirish';
 
   @override
   String get condGuideTitle => 'Kasallik bo‘yicha tahlillar';
@@ -475,7 +472,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get homeHeroStudentBody => 'Mavzu → izoh → mashq → takrorlash.';
 
   @override
-  String get homeHeroStudentCta => 'O‘rganishni boshlash';
+  String get homeHeroStudentCta => 'Kunlik savollarni boshlash';
 
   @override
   String get homeHeroTeacherTitle => 'Bilimni darsga aylantiring';
@@ -748,9 +745,6 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get labHeroTitle => 'Kalibrlash';
-
-  @override
-  String get classroomLectureAuto => 'Avtomatik slaydlar';
 
   @override
   String get labSectionsTitle => 'Bo‘limlar va atlaslar';
@@ -7440,11 +7434,6 @@ class AppLocalizationsUz extends AppLocalizations {
   String get lectureTeacherNote => 'Ustoz uchun izoh';
 
   @override
-  String lectureDeckReady(int count) {
-    return 'Tayyor taqdimot · $count slayd';
-  }
-
-  @override
   String get cmTitle => 'Hamjamiyat · Savol-javob';
 
   @override
@@ -9348,13 +9337,6 @@ class AppLocalizationsUz extends AppLocalizations {
   String get lectureClearFilters => 'Qidiruv va filtrni tozalash';
 
   @override
-  String get lectureTopicsAutoTitle => 'Dastur mavzulari — avtomatik slaydlar';
-
-  @override
-  String get lectureTopicsAutoSub =>
-      'Tayyor taqdimoti yo‘q mavzular o‘quv dasturidan yig‘iladi';
-
-  @override
   String lectureLangFallback(String wanted, String shown) {
     return 'Bu taqdimot $wanted tilida yo‘q — $shown tilida ko‘rsatilmoqda';
   }
@@ -9829,5 +9811,34 @@ class AppLocalizationsUz extends AppLocalizations {
   @override
   String variantReceived(int n) {
     return '$n ta talabaga tushdi';
+  }
+
+  @override
+  String get homeResumeCta => 'Davom ettirish';
+
+  @override
+  String homeResumeBody(String title) {
+    return 'Oxirgi ochilgan: $title';
+  }
+
+  @override
+  String get homeHeroLabToifaCta => 'Bugungi toifa mashg‘uloti';
+
+  @override
+  String get helpTitle => 'Yordam va aloqa';
+
+  @override
+  String get helpSub => 'Ilovada yozish yoki email — savol, taklif, shikoyat';
+
+  @override
+  String get helpIntro =>
+      'Qulay yo‘lni tanlang: ilova ichidagi yozishma (javob shu yerga keladi) yoki email (shikoyat, reklama, maxfiylik so‘rovi).';
+
+  @override
+  String get learnSectionQuizzesTitle => 'Bo‘lim mashqlari';
+
+  @override
+  String learnSectionQuizRow(String section) {
+    return '$section — mashq';
   }
 }

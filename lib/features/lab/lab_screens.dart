@@ -32,13 +32,51 @@ class LabScreen extends StatelessWidget {
       subtitle: l.labSubtitle,
       showBrand: true,
       children: [
-        // Ikki guruh (sarlavha bilan): rasmli bo'limlar va atlaslar, so'ng
-        // kundalik ish vositalari (QC, kalibrlash, preanalitika, kalkulyator,
-        // apparatlar). Mikroskopiya atlasi — atlas, shuning uchun 1-guruhda.
-        LgSectionTitle(l.labSectionsTitle),
-        // Rasmli katta bo'limlar: leykoformula, sitologiya, spermogramma,
-        // qon guruhi, gistologiya, siydik tahlili, qon morfologiyasi.
+        // Ikki guruh (sarlavha bilan, D-68 Q2): avval kundalik ish vositalari
+        // (leykoformula, kalibrlash, QC, preanalitika, kalkulyator,
+        // apparatlar), so'ng rasmli bo'limlar va atlaslar.
+        LgSectionTitle(l.labToolsTitle),
+        // Leykoformula (hisoblagich) — kundalik ishning eng ko'p
+        // ishlatiladigan vositasi, shuning uchun birinchi.
         const DifferentialEntryCard(),
+        LgHeroCard(
+          eyebrow: l.labHeroEyebrow,
+          title: l.labHeroTitle,
+          body: l.labHeroBody,
+          action: LgButton(
+            label: l.labHeroCta,
+            onPressed: () => context.push('/lab/calibration'),
+          ),
+        ),
+        LgRow(
+          title: l.featureQc,
+          subtitle: l.labQcSub,
+          icon: Icons.show_chart_rounded,
+          onTap: () => context.push('/lab/qc'),
+        ),
+        LgRow(
+          title: l.labPreanalytics,
+          subtitle: l.labPreanalyticsSub,
+          icon: Icons.science_outlined,
+          onTap: () => context.push('/lab/preanalytics'),
+        ),
+        LgRow(
+          title: l.featureCalculators,
+          subtitle: l.labCalculatorsSub,
+          icon: Icons.calculate_outlined,
+          onTap: () => context.push('/lab/calculators'),
+        ),
+        LgRow(
+          title: l.labInstruments,
+          subtitle: l.labInstrumentsSub,
+          icon: Icons.precision_manufacturing_outlined,
+          onTap: () => context.push('/lab/instruments'),
+          divider: false,
+        ),
+        LgSectionTitle(l.labSectionsTitle),
+        // Rasmli bo'limlar: sitologiya, spermogramma, qon guruhi,
+        // gistologiya, siydik tahlili, qon morfologiyasi, koagulogramma,
+        // koprologiya; so'ng mikroskopiya atlasi.
         LabFeatureCard(
           image: 'assets/cytology/hero.png',
           title: l.cytoTitle,
@@ -93,41 +131,6 @@ class LabScreen extends StatelessWidget {
           subtitle: l.labMicroscopySub,
           icon: Icons.biotech_outlined,
           onTap: () => context.push('/lab/microscopy'),
-          divider: false,
-        ),
-        LgSectionTitle(l.labToolsTitle),
-        LgHeroCard(
-          eyebrow: l.labHeroEyebrow,
-          title: l.labHeroTitle,
-          body: l.labHeroBody,
-          action: LgButton(
-            label: l.labHeroCta,
-            onPressed: () => context.push('/lab/calibration'),
-          ),
-        ),
-        LgRow(
-          title: l.featureQc,
-          subtitle: l.labQcSub,
-          icon: Icons.show_chart_rounded,
-          onTap: () => context.push('/lab/qc'),
-        ),
-        LgRow(
-          title: l.labPreanalytics,
-          subtitle: l.labPreanalyticsSub,
-          icon: Icons.science_outlined,
-          onTap: () => context.push('/lab/preanalytics'),
-        ),
-        LgRow(
-          title: l.featureCalculators,
-          subtitle: l.labCalculatorsSub,
-          icon: Icons.calculate_outlined,
-          onTap: () => context.push('/lab/calculators'),
-        ),
-        LgRow(
-          title: l.labInstruments,
-          subtitle: l.labInstrumentsSub,
-          icon: Icons.precision_manufacturing_outlined,
-          onTap: () => context.push('/lab/instruments'),
           divider: false,
         ),
         // Faqat hamkor UI yoqilgan buildda va haqiqiy faol hamkor bo'lsa —

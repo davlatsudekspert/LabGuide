@@ -5,7 +5,10 @@ import 'dart:io';
 
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:labguide/features/classroom/lecture_catalog.dart';
 import 'package:labguide/features/classroom/lecture_decks.dart';
+import 'package:labguide/features/classroom/lecture_screens.dart'
+    show lectureTopicRedirect;
 import 'package:labguide/features/settings/settings_controller.dart';
 import 'package:labguide/l10n/gen/app_localizations.dart';
 import 'package:material_ui/material_ui.dart';
@@ -75,12 +78,22 @@ void main() {
       await pumpApp(tester, s, size: _tall);
 
       await goTo(tester, '/learn/lecture');
-      expect(
-        find.textContaining(l.lectureDeckReady(n)),
-        findsNWidgets(2), // amaliy (d001-P) va ma'ruza (d001-L)
-      );
+      // D-69 (Q1): ro'yxatda tayyor taqdimot bitta qator (d001) — mavzular
+      // avtomatik slaydlar bilan ikkinchi marta sanalmaydi.
+      expect(find.byKey(const ValueKey('deck-d001')), findsOneWidget);
 
+      // Eski mavzu manzili tayyor deckka yo'naltiriladi. Deck fayli oldindan
+      // keshga (pleyer uni asinxron yuklaydi).
+      final entry = DeckCatalog.peek(rootBundle)!.byId('d001')!;
+      await tester.runAsync(
+        () => DeckCatalog.loadDeck(
+          rootBundle,
+          entry,
+          entry.resolveLang(lang.name),
+        ),
+      );
       await goTo(tester, '/learn/lecture/d001-P');
+      expect(routerOf(tester).state.uri.toString(), '/learn/lecture/deck/d001');
       expect(find.text(l.lectureCounter(1, n)), findsOneWidget);
       Finder slideView(int k) => pictures
           ? find.byKey(ValueKey(deck.slides[k].image))
@@ -126,12 +139,38 @@ void main() {
     });
   }
 
-  testWidgets('tayyor taqdimotsiz mavzu — avtomatik slaydlar', (tester) async {
+  test('mavzu → tayyor deck yo‘naltirish; deck yo‘q bo‘lsa — null', () {
+    final catalog = DeckCatalog.parse(
+      File('assets/lectures/index_v2.json').readAsStringSync(),
+    );
+    expect(lectureTopicRedirect(catalog, 'd003-L'), '/learn/lecture/deck/d003');
+    expect(lectureTopicRedirect(catalog, 'd001-P'), '/learn/lecture/deck/d001');
+    expect(lectureTopicRedirect(catalog, 'yoq-mavzu'), isNull);
+    expect(lectureTopicRedirect(null, 'd003-L'), isNull);
+    // O'quv dasturining har mavzusi uchun tayyor deck bor (D-69, Q1).
+    final cur = jsonDecode(
+      File('assets/curriculum/curriculum.json').readAsStringSync(),
+    ) as Map<String, Object?>;
+    for (final m in (cur['modules']! as List).cast<Map<String, Object?>>()) {
+      for (final t in (m['topics']! as List).cast<Map<String, Object?>>()) {
+        expect(catalog.byTopic(t['id']! as String), isNotNull, reason: '$t');
+      }
+    }
+  });
+
+  testWidgets('tayyor taqdimotsiz mavzu — avtomatik slaydlar (zaxira)', (
+    tester,
+  ) async {
     installDiffFakes();
     final l = lookupAppLocalizations(const Locale('uz'));
-    final s = await makeServices(tester, role: AppRole.teacher);
+    final s = await makeServices(
+      tester,
+      role: AppRole.teacher,
+      bundle: _NoDecksBundle(),
+    );
     await pumpApp(tester, s, size: _tall);
     await goTo(tester, '/learn/lecture/d003-L');
+    expect(routerOf(tester).state.uri.toString(), '/learn/lecture/d003-L');
     expect(find.textContaining(l.lectureDraftNotice), findsNothing);
     expect(find.byTooltip(l.lectureNotesShow), findsNothing);
     expect(find.textContaining(' / '), findsWidgets);
@@ -148,7 +187,7 @@ void main() {
       final n = deck.slides.length;
       final s = await makeServices(tester, role: AppRole.teacher);
       await pumpApp(tester, s, size: const Size(960, 540));
-      await goTo(tester, '/learn/lecture/d001-P');
+      await goTo(tester, '/learn/lecture/deck/d001');
       final img = find.byKey(ValueKey(deck.slides.first.image));
       expect(img, findsOneWidget);
       // Keng ekran: slayd + yon panel (aylantirish shart emas).
@@ -187,4 +226,20 @@ void main() {
       expect(tester.takeException(), isNull);
     },
   );
+}
+
+/// Katalogda birorta deck yo'q bundle — avtomatik slaydlar zaxirasini
+/// sinash uchun (haqiqiy katalogda har mavzuning decki bor).
+class _NoDecksBundle extends CachingAssetBundle {
+  @override
+  Future<ByteData> load(String key) async {
+    if (key == DeckCatalog.indexPath) {
+      final j =
+          jsonDecode(await rootBundle.loadString(key)) as Map<String, Object?>;
+      j['decks'] = <Object>[];
+      final bytes = utf8.encode(jsonEncode(j));
+      return ByteData.sublistView(Uint8List.fromList(bytes));
+    }
+    return rootBundle.load(key);
+  }
 }

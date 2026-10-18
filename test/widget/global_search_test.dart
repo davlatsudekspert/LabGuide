@@ -275,15 +275,14 @@ void main() {
       expect(l.toifaTitle, isNotEmpty);
     });
 
-    testWidgets('ma\'ruza faqat ustozga', (tester) async {
-      var l = await openSearch(tester, role: AppRole.teacher);
-      await type(tester, 'maruza');
-      expect(find.widgetWithText(LgRow, l.lectureTitle), findsOneWidget);
-      await tester.pumpWidget(const SizedBox());
-      l = await openSearch(tester, role: AppRole.lab);
-      await type(tester, 'maruza');
-      expect(find.widgetWithText(LgRow, l.lectureTitle), findsNothing);
-    });
+    // D-69 Q4: Ma'ruza hamma rolga (O'rganish tabidagi qator bilan bir xil).
+    for (final role in AppRole.values) {
+      testWidgets('ma\'ruza qidiruvda: ${role.name}', (tester) async {
+        final l = await openSearch(tester, role: role);
+        await type(tester, 'maruza');
+        expect(find.widgetWithText(LgRow, l.lectureTitle), findsOneWidget);
+      });
+    }
 
     testWidgets('bir belgilik so\'rov bo\'limlarga shovqin bermaydi', (
       tester,
@@ -329,7 +328,7 @@ void main() {
     });
     test('cheklangan bo\'limlar', () {
       expect(ids('toifa', toifa: false), isEmpty);
-      expect(ids('maruza'), isEmpty);
+      expect(ids('maruza'), ['lecture']);
       expect(ids('maruza', teacher: true), ['lecture']);
     });
   });
