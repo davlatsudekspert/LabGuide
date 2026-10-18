@@ -117,6 +117,30 @@ qatlamlarini ishga tushiradi» — Python qadamlari yoki worker testlari olib ta
 | «Katta ekran» faqat taxallus / «Talaba NN» | `classroom_guard_test.dart :: Katta ekran: faqat taxallus yoki "Talaba NN"; ustoz va email yo‘q`; `groups.test.ts :: a'zo ismi: taxallus yoki 'Talaba NN'; …` |
 | D-68 ilova ichidagi QR skaner: qo‘shilish ekranida tugma (qo‘llansa), plagin faqat `qr_scanner.dart` da (interfeys ortida), Android `CAMERA` + kamera majburiy emas, iOS `NSCameraUsageDescription` (uz/ru/en) QR ni tilga oladi, deployment target ≥ 12.0 | `classroom_guard_test.dart :: Ilova ichidagi QR skaner (D-68) …`; `test/widget/qr_scan_test.dart`; `test/unit/invite_link_test.dart :: skanerlangan QR matni` |
 
+### Test va quiz bo‘limlari — haqiqiy asset’lar bilan (2026-10-18)
+
+Saboq: soxta paketli testlar deck matnidan olingan savollar indeksga kirmay qolganini
+ushlamagan (iPhone’da «savol to‘plamda yo‘q»). Quyidagi qorovullar faqat ilova bilan keladigan
+fayllarni o‘qiydi (`pack.json`, `curriculum.json`, `assets/toifa/*.json`, `index_v2.json`) va
+**har bir** tayyor deck / savol bo‘yicha yuradi (namuna emas). Batafsil:
+`docs/AUDIT_2026-10-18_TESTS.md`.
+
+| Qaror / ish | Qorovul |
+|---|---|
+| Deck matnidan olingan savollar topshiriq indeksida (bbe5529) | `test/guards/class_question_index_guard_test.dart`; `test/guards/topic_tests_all_decks_guard_test.dart :: har tayyor deck, har savol: ekranda topiladi …` |
+| Mavzu testi: tayyor decklar ≥ 142, «tayyorlanmoqda» faqat ro‘yxatdagilar (d001) | `topic_tests_all_decks_guard_test.dart :: decklar holati …` |
+| Mavzu testi sessiyasi (drawTopicTest + buildTopicTestSession): har savol chiqadi, tartib/kalit/ball, xatolarni takrorlash | `topic_tests_all_decks_guard_test.dart :: sessiya ilovadagidek quriladi …` |
+| «Slaydni ko‘rish» — slayd deck ichida (uz/ru/en) | `topic_tests_all_decks_guard_test.dart :: “Slaydni ko‘rish” …` |
+| Natija qayta ochilgandan keyin saqlanadi (har deck) | `topic_tests_all_decks_guard_test.dart :: natija qayta ishga tushirishdan keyin saqlanadi …`; `test/widget/topic_test_real_decks_test.dart` (iPhone, d040/d118/d048) |
+| Sinf: id/kalit/sarlavha/mavzu server qoidalariga mos (qoidalar `cloudflare/src/groups.ts` dan o‘qiladi) | `test/guards/classroom_real_assets_guard_test.dart :: har tayyor deck: id, kalit, sarlavha …`, `server qoidalari o‘qildi …` |
+| Sinf: ustoz, «Talaba ko‘rinishida sinash», talaba, katta ekran, natijalar qidiruvi har savolni topadi | `classroom_real_assets_guard_test.dart :: har tayyor deck, har savol: ustoz, …`; `test/widget/classroom_real_decks_test.dart` |
+| Sinf: oddiy va variantli rejimda server balli = ilova kaliti (umumiy vektor juftlari) | `classroom_real_assets_guard_test.dart :: oddiy rejim …`, `variantli rejim …`; `cloudflare/test/real_decks.test.ts` (fixture `cloudflare/test/real_deck_assignments.json`, Dart qorovuli bilan sinxron) |
+| Jadvaldagi mavzu testi sarlavhasi ≤ 120 (tuzatish) | `classroom_real_assets_guard_test.dart :: dars jadvalidagi mavzu testi …` |
+| Katta ekran toifa banki yuklanmagan holda ochilsa ham savol matni (tuzatish) | `test/widget/classroom_real_decks_test.dart :: katta ekran ilova tiklanganda …` |
+| Toifa: har savol — kalit oralig‘i, takrorsiz id/raqam, bo‘sh variant yo‘q, ru/en; takror matn faqat ma’lum juftlar | `test/guards/toifa_real_assets_guard_test.dart` |
+| Toifa: 50 savollik test (imtihon/mashq), qayta ochilganda davom, kunlik hisob va seriya; bilet (5 savol, yozuvsiz) | `toifa_real_assets_guard_test.dart`; `test/widget/toifa_iphone_real_test.dart` (iPhone) |
+| O‘rganish → Mashq, Imtihon, toifa mavzulari, kunlik savollar: har mavzu savol beradi, har savol topiladi | `test/guards/quiz_modes_real_assets_guard_test.dart` |
+
 ### Tibbiy tuzatishlar
 
 `docs/AUDIT_2026-10-18_MEDICAL_REVIEW.md`:

@@ -1194,6 +1194,11 @@ class _TopicOralScreenState extends State<TopicOralScreen>
 
 // ------------------------------------------------------------ mavzu testi
 
+/// Jadvaldagi mavzu testi sarlavhasi (serverga yuboriladi; uzun mavzu
+/// nomi qisqartiriladi — server 120 belgidan uzunini rad etadi).
+String classroomTestTitle(AppLocalizations l, CurriculumTopic t, String lang) =>
+    fitAssignmentTitle(l.classroomTestTitle(t.title.of(lang)));
+
 class TopicTestSetupScreen extends StatefulWidget {
   const TopicTestSetupScreen({
     super.key,
@@ -1280,7 +1285,7 @@ class _TopicTestSetupScreenState extends State<TopicTestSetupScreen>
       await services.backend.startTopicTest(
         groupId: widget.groupId,
         topicId: t.id,
-        title: l.classroomTestTitle(t.title.of(_lang(context))),
+        title: classroomTestTitle(l, t, _lang(context)),
         questionIds: [for (final q in chosen) q.id],
         correctIndexes: [for (final q in chosen) q.correct.single],
         timeLimitMinutes: _minutes,
