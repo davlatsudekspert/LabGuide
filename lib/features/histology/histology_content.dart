@@ -2492,7 +2492,7 @@ const histoItems = <HistoItem>[
         _T({
           'uz':
               'Klassik bo‘lakcha markazida markaziy vena, chetida portal '
-              'yo‘llar (o‘rtacha oltitagacha).',
+              'yo‘llar (o‘rtacha oltita).',
           'ru':
               'В центре классической дольки — центральная вена, по периферии '
               '— портальные тракты (в среднем около шести).',
@@ -3039,14 +3039,19 @@ const histoStains = <HistoStain>[
       HistoFact(
         _T({
           'uz':
-              'Nerv to‘qimasida miyelin va Nissl moddasini bo‘yaydi; '
-              'demiyelinizatsiyani aniqlashda ishlatiladi.',
+              'Nerv to‘qimasida asosan miyelinni bo‘yaydi (klassik '
+              'Klyuver–Barrera usulida hujayralar va Nissl moddasi uchun '
+              'qo‘shimcha bo‘yoq bilan birga); demiyelinizatsiyani aniqlashda '
+              'ishlatiladi.',
           'ru':
-              'В нервной ткани окрашивает миелин и вещество Ниссля; '
-              'используется для выявления демиелинизации.',
+              'В нервной ткани окрашивает в основном миелин (в классическом '
+              'методе Клювера — Барреры — вместе с дополнительным красителем '
+              'для клеток и вещества Ниссля); используется для выявления '
+              'демиелинизации.',
           'en':
-              'Stains myelin and Nissl substance in nervous tissue; used to '
-              'detect demyelination.',
+              'Stains mainly myelin in nervous tissue (the classic '
+              'Klüver–Barrera method adds a counterstain for cells and Nissl '
+              'substance); used to detect demyelination.',
         }),
         [CalcRef(HistoSources.umich, 'p. 9')],
       ),

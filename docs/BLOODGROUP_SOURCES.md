@@ -126,7 +126,7 @@ ABO discrepancies" (pullik), AABB Technical Manual (yopiq). Ulardan hech narsa o
 | Reagent QC (BSH): seriyada, lot almashganda, analizator ishga tushganda, ≥ har 12 soat; nazorat xatosi | BSH §4.4, Table 2, p. 11 |
 | Reagent qaydlari | WHO §7.11, p. 81; BSH §2.3.6, p. 6 |
 | Audit izi | BSH §2.1.4, p. 5 |
-| Namunani ≥ 3 kun saqlash | BSH §3.9.2, p. 8 |
+| Namunani transfuziyadan keyin ≥ 3 kun saqlash ("at least 3 days post-transfusion") | BSH §3.9.2, p. 8 |
 | RF: probirka va birlik qoldig'i (≥ 5 mL) 48 soat 2–6 °C | RU1134 п. 28 |
 
 ### 6. Mashq va naqsh o'qish

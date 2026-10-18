@@ -2048,7 +2048,8 @@ const bgQuality = <BgItem>[
           'muammolar (JSST). BSH: barcha reagentlarning seriya va muddati qayd '
           'etiladi; tizim to‘liq audit izini — dastlabki natijalar, '
           'nazoratlar, talqin, o‘zgartirishlar va mas’ul xodimlarni — saqlaydi. '
-          'Transfuziyadan oldingi namuna kamida 3 kun saqlanadi (BSH); RF № '
+          'Transfuziyadan oldingi namuna transfuziyadan keyin kamida 3 kun '
+          'saqlanadi (BSH); RF № '
           '1134n: bemor probirkasi va donor birligi qoldig‘i (≥5 mL) 48 soat '
           '2–6 °C da.',
       'ru':
@@ -2057,14 +2058,16 @@ const bgQuality = <BgItem>[
           '(ВОЗ). BSH: регистрируют серии и сроки всех реагентов; система '
           'хранит полный аудиторский след — исходные результаты, контроли, '
           'интерпретации, исправления и ответственных. Претрансфузионный '
-          'образец хранят не менее 3 дней (BSH); приказ № 1134н: пробирку '
+          'образец хранят не менее 3 дней после трансфузии (BSH); приказ '
+          '№ 1134н: пробирку '
           'реципиента и остаток компонента (не менее 5 мл) — 48 ч при 2–6 °C.',
       'en':
           'For each reagent: arrival date, source, storage, date into use, '
           'batch number, expiry and problems (WHO). BSH: record batch numbers '
           'and expiry of all reagents; the system keeps a full audit trail of '
           'original results, controls, interpretations, amendments and staff. '
-          'Keep the pre-transfusion sample at least 3 days (BSH); RF Order '
+          'Keep the pre-transfusion sample at least 3 days post-transfusion '
+          '(BSH); RF Order '
           '1134n: the recipient tube and the unit residue (≥5 mL) 48 h at '
           '2–6 °C.',
     }),

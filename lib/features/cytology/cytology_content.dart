@@ -758,14 +758,20 @@ const cytoCells = <CytoCell>[
     }),
     meaning: _T({
       'uz':
-          'Erkaklarda uretra surtmasida gonoreya uchun yuqori ishonchli. '
-          'Ayollarda servikal surtma sezgirligi past — NAAT tavsiya etiladi.',
+          'Simptomli erkaklarda uretra surtmasida — gonoreya uchun '
+          'diagnostik; simptomsiz erkaklarda manfiy surtma infeksiyani '
+          'istisno qilmaydi. Endotservikal surtmada Gram sezgirligi past — '
+          'NAAT tavsiya etiladi.',
       'ru':
-          'У мужчин в мазке из уретры — высокодостоверно для гонореи. У '
-          'женщин чувствительность мазка низкая — рекомендуется МАНК.',
+          'У мужчин с симптомами в мазке из уретры — диагностически для '
+          'гонореи; у мужчин без симптомов отрицательный мазок инфекцию не '
+          'исключает. В мазке из цервикального канала чувствительность '
+          'окраски по Граму низкая — рекомендуется МАНК.',
       'en':
-          'Highly reliable for gonorrhoea in male urethral smears. Low '
-          'sensitivity in cervical smears — NAAT is recommended.',
+          'Diagnostic for gonorrhoea in urethral smears from symptomatic '
+          'men; in asymptomatic men a negative smear does not rule it out. '
+          'Gram stain is insensitive on endocervical smears — NAAT is '
+          'recommended.',
     }),
     refer: true,
     refs: [CalcRef(CytoSources.cdcGono, ''), CalcRef(DiffSources.who2003, '')],

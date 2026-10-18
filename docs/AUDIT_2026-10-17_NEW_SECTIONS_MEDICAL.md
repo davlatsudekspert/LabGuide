@@ -67,3 +67,10 @@ BSH 2012 PDF, ASCCP 2019 Perkins et al. 2020 full text, Harrison's Manual 20th e
 | 18 | fixed | Necrozoospermia only with low vitality AND total motility below its lower limit (immotile > 58 %); vitality alone → info note. |
 | 19 | fixed | Degree II rule aligned with its own text: single leukocytes + fewer lactobacilli and/or some mixed flora (no pathogenic flora, lactobacilli present) → II. |
 | 20 | fixed / removed | Haemostasis "45 min" removed (CLSI H21 primary text not reachable → no number); platelets 180–320, "primary thrombocytosis > 400", "signs < 70 / 700–900" removed — MSD 2026 reference interval 140–440 shown as source-specific; sputum ">25 per field" kept but made specific (×100 low-power field) with Geckler 1977 (the >25 SEC/LPF cut-off is in that paper; < 10 SEC + > 25 WBC = best quality); kidney "10–20 h" removed (renal compensation "much more slowly"); blood eye-splash "do not remove contact lenses" removed → WHO Annex D flush ≥ 10 min (chemical-splash slide unchanged). Removed numbers listed in the protocol set's "not included" notes. |
+
+## Follow-up (2026-10-18)
+
+Independent full review of the six sections against re-opened primary sources:
+`docs/AUDIT_2026-10-18_MEDICAL_REVIEW.md` (6 corrections: platelet/red-cell ratio from WHO 2003 §9.14,
+BSH sample retention "post-transfusion", CDC Gram-stain wording, Paris System non-urothelial
+category, LFB/Nissl wording, uz "up to six" portal tracts).

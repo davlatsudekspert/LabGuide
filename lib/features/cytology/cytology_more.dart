@@ -857,6 +857,15 @@ const cytoOtherSystems = <CytoSystem>[
         'ru': 'Положительный в отношении HGUC (HGUC)',
         'en': 'Positive for high-grade urothelial carcinoma (HGUC)',
       }),
+      _T({
+        'uz':
+            'Urotelial bo‘lmagan xavfli o‘smalar (Non-urothelial; ilgari '
+            '"boshqa xavfli o‘smalar")',
+        'ru':
+            'Неуротелиальные злокачественные опухоли (Non-urothelial; ранее '
+            '«другие злокачественные опухоли»)',
+        'en': 'Non-urothelial malignancies (previously "other malignancies")',
+      }),
     ],
     note: _T({
       'uz':
