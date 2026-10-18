@@ -13687,7 +13687,7 @@ abstract class AppLocalizations {
   /// No description provided for @cmRulesC2.
   ///
   /// In en, this message translates to:
-  /// **'advertising, off-topic posts, abusive language'**
+  /// **'advertising, off-topic posts, abusive language; posting intimate or private images or material without the person’s consent is strictly prohibited'**
   String get cmRulesC2;
 
   /// No description provided for @cmRulesC3.

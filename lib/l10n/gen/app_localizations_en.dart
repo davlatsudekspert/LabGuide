@@ -7929,7 +7929,8 @@ class AppLocalizationsEn extends AppLocalizations {
       'a patient’s name, phone, address, card number or any data that identifies a person';
 
   @override
-  String get cmRulesC2 => 'advertising, off-topic posts, abusive language';
+  String get cmRulesC2 =>
+      'advertising, off-topic posts, abusive language; posting intimate or private images or material without the person’s consent is strictly prohibited';
 
   @override
   String get cmRulesC3 =>

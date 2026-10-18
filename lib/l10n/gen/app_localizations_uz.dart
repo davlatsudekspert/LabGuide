@@ -7823,7 +7823,8 @@ class AppLocalizationsUz extends AppLocalizations {
       'bemorning ismi, telefoni, manzili, karta raqami va shaxsini aniqlaydigan har qanday ma’lumot';
 
   @override
-  String get cmRulesC2 => 'reklama, boshqa mavzular, haqoratli so‘zlar';
+  String get cmRulesC2 =>
+      'reklama, boshqa mavzular, haqoratli so‘zlar; intim yoki shaxsiy rasm va materiallarni egasining roziligisiz joylash qat’iyan taqiqlanadi';
 
   @override
   String get cmRulesC3 =>
