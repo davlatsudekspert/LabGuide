@@ -672,7 +672,7 @@ bool _packOnly(ContentPack? pack, GroupAssignment a) {
   return a.questionIds.every((id) => source.question(id) != null);
 }
 
-enum _StudentStatus { fresh, inProgress, pending, done, overdue }
+enum _StudentStatus { fresh, inProgress, pending, done, overdue, closed }
 
 _StudentStatus _statusFor(
   BuildContext context,
@@ -685,6 +685,9 @@ _StudentStatus _statusFor(
   if (local != null) {
     return local.finished ? _StudentStatus.pending : _StudentStatus.inProgress;
   }
+  // Ustoz yakunlagan test: “Boshlash” ko'rsatilmaydi (server baribir rad
+  // etadi — `not_open`).
+  if (a.closed) return _StudentStatus.closed;
   final due = a.dueAt;
   if (due != null && services.exams.now().isAfter(due)) {
     return _StudentStatus.overdue;
@@ -1029,6 +1032,10 @@ class _GroupScreenState extends State<GroupScreen> with _AccountReload {
                 ),
                 _StudentStatus.overdue => (
                   l.classesStatusOverdue,
+                  LgTone.neutral,
+                ),
+                _StudentStatus.closed => (
+                  l.classroomStatusTestDone,
                   LgTone.neutral,
                 ),
                 _StudentStatus.fresh => (l.classesStatusNew, LgTone.warning),
@@ -1732,6 +1739,29 @@ class _AssignmentScreenState extends State<AssignmentScreen>
     }
   }
 
+  /// Ustoz testni yakunlaydi: yangi urinish yo'q; “muddat tugagach”
+  /// tanlangan bo'lsa — to'g'ri javoblar talabalarga darhol ochiladi.
+  Future<void> _close(GroupAssignment a) async {
+    final l = AppLocalizations.of(context);
+    final ok = await confirmDialog(
+      context,
+      title: l.classroomTestFinishTitle,
+      body: l.classroomTestFinishBody,
+      action: l.classroomTestFinish,
+    );
+    if (!ok || !mounted) return;
+    setState(() => _busy = true);
+    try {
+      await context.services.backend.closeAssignment(a.id);
+      if (mounted) showSnack(context, l.classroomStatusTestDone);
+    } on Object catch (e) {
+      if (mounted) showSnack(context, classesErrorText(e, l));
+    } finally {
+      if (mounted) setState(() => _busy = false);
+    }
+    if (mounted) await _load();
+  }
+
   Future<void> _resend(ExamSession s) async {
     setState(() => _busy = true);
     final outcome = await submitAssignmentSession(context.services, s);
@@ -1867,6 +1897,12 @@ class _AssignmentScreenState extends State<AssignmentScreen>
         title: l.classesOverdueTitle,
         message: l.classesOverdueBody,
       ),
+      _StudentStatus.closed => LgStateView(
+        key: const ValueKey('assignment-closed'),
+        kind: StateKind.unavailable,
+        title: l.classroomStatusTestDone,
+        message: l.classesOverdueBody,
+      ),
       _ when missing > 0 => LgNotice(
         l.classesOutdatedPack(missing),
         kind: NoticeKind.error,
@@ -1924,7 +1960,12 @@ class _AssignmentScreenState extends State<AssignmentScreen>
       badges: [LgTag(l.classesServerScore, icon: Icons.verified_outlined)],
     );
     // Ustoz “muddat tugagach” tanlagan: to'g'ri javoblar hozircha yopiq.
-    if (!a.answersOpen(context.services.exams.now()) && a.dueAt != null) {
+    // Server (`correct: null`) hal qiladi: qurilma soati oldinda bo'lsa ham
+    // javoblar lokal kalitdan ochib yuborilmaydi.
+    final hidden =
+        !a.answersOpen(context.services.exams.now()) ||
+        (a.revealAfterDue && mine.correct == null);
+    if (hidden && a.dueAt != null) {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -2037,6 +2078,21 @@ class _AssignmentScreenState extends State<AssignmentScreen>
             ),
           ],
         ),
+        const SizedBox(height: 12),
+        if (a.closed)
+          LgNotice(
+            l.classroomStatusTestDone,
+            key: const ValueKey('assignment-closed'),
+            kind: NoticeKind.info,
+          )
+        else
+          LgButton.secondary(
+            key: const ValueKey('assignment-close'),
+            label: l.classroomTestFinish,
+            icon: Icons.stop_circle_outlined,
+            busy: _busy,
+            onPressed: () => _close(a),
+          ),
         LgSectionTitle(l.classesResults),
         if (students.isEmpty)
           Text(l.classesNoStudents, style: text.bodyMedium)

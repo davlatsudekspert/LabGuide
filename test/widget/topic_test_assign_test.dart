@@ -6,6 +6,7 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:labguide/app/app_scope.dart';
+import 'package:labguide/core/backend/backend_models.dart';
 import 'package:labguide/features/classroom/lecture_catalog.dart';
 import 'package:labguide/features/classroom/topic_questions.dart';
 import 'package:labguide/features/classroom/topic_test.dart';
@@ -215,6 +216,85 @@ void main() {
       expect(tester.takeException(), isNull);
     },
   );
+
+  // E2E (docs/E2E_CLASSROOM_2026-10-18.md): deckdan berilgan testni ustoz
+  // topshiriq sahifasidan yakunlay olmasdi; boshlamagan talabaga yakunlangan
+  // test “Boshlash” bilan ko'rinardi; qurilma soati oldinda bo'lsa javoblar
+  // server yopiq desa ham lokal kalitdan ochilardi.
+  testWidgets('ustoz testni yakunlaydi; yakunlangan test va javoblar holati', (
+    tester,
+  ) async {
+    installDiffFakes();
+    final b = FakeLabBackend();
+    final s = await makeServices(tester, backend: b, role: AppRole.teacher);
+    await pumpApp(tester, s, size: _tall);
+    await _signIn(tester, s, 'teacher@example.com');
+    await b.registerTeacher();
+    final g = await b.createGroup('Gematologiya A');
+    final c = (await tester.runAsync(() => DeckCatalog.load(rootBundle)))!;
+    final pool = deckQuestionPool(
+      c.byId(_deck)!,
+      s.curriculum.curriculum,
+      s.content.pack,
+      s.toifa.bank,
+    ).take(3).toList();
+    final due = b.groupClock().add(const Duration(days: 3));
+    final aid = await b.createAssignment(
+      groupId: g.id,
+      title: 'Mavzu testi',
+      questionIds: [for (final q in pool) q.id],
+      correctIndexes: [for (final q in pool) q.correct.single],
+      dueAt: due,
+      dayId: 'd013-L',
+      deckId: _deck,
+      revealAfterDue: true,
+    );
+    await _signIn(tester, s, 'late@example.com');
+    await b.joinGroup(g.joinCode!);
+    await _signIn(tester, s, 'student@example.com');
+    await b.joinGroup(g.joinCode!);
+    await b.startAssignment(aid);
+    await b.submitAssignment(aid, [for (final q in pool) q.correct.single]);
+    final page = '/learn/classes/g/${g.id}/a/$aid';
+    final later0 = uz.topicTestAnswersLater('#').split('(').first.trim();
+
+    // Qurilma soati muddatdan o'tgan, server esa hali yopiq (correct: null)
+    // — javoblar ochilmaydi.
+    final realNow = s.exams.now;
+    s.exams.now = () => due.add(const Duration(hours: 1));
+    await goTo(tester, page);
+    expect(find.textContaining(later0), findsOneWidget);
+    expect(find.text(uz.examAnalysis), findsNothing);
+    s.exams.now = realNow;
+
+    // Ustoz: “Testni yakunlash” (tasdiq bilan).
+    await _signIn(tester, s, 'teacher@example.com');
+    await goTo(tester, page);
+    expect(find.byKey(const ValueKey('assignment-closed')), findsNothing);
+    await _tapKey(tester, 'assignment-close');
+    expect(find.text(uz.classroomTestFinishTitle), findsOneWidget);
+    await tester.tap(find.text(uz.classroomTestFinish).hitTestable().last);
+    await tester.pumpAndSettle();
+    expect(find.byKey(const ValueKey('assignment-closed')), findsOneWidget);
+    expect(find.byKey(const ValueKey('assignment-close')), findsNothing);
+    expect((await b.assignments(g.id)).single.closed, isTrue);
+
+    // Boshlamagan talaba: “Test yakunlandi”, “Boshlash” yo'q; ro'yxatda ham.
+    await _signIn(tester, s, 'late@example.com');
+    await goTo(tester, page);
+    expect(find.byKey(const ValueKey('assignment-closed')), findsOneWidget);
+    expect(find.text(uz.classesStart), findsNothing);
+    await expectLater(b.startAssignment(aid), throwsA(isA<BackendException>()));
+    await goTo(tester, '/learn/classes/g/${g.id}');
+    expect(find.text(uz.classroomStatusTestDone), findsOneWidget);
+    expect(find.text(uz.classesStatusNew), findsNothing);
+
+    // Topshirgan talaba: yakunlangach javoblar tahlili ochiq.
+    await _signIn(tester, s, 'student@example.com');
+    await goTo(tester, page);
+    expect(find.text(uz.examAnalysis), findsOneWidget);
+    expect(find.textContaining(later0), findsNothing);
+  });
 
   testWidgets('guruh yo‘q — guruh ochish taklifi', (tester) async {
     installDiffFakes();

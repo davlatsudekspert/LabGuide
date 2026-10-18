@@ -920,6 +920,12 @@ class SupabaseLabBackend implements LabBackend {
     ),
   );
 
+  /// Supabase sxemasida topshiriq holati (yakunlash) yo'q — asosiy server
+  /// Cloudflare; ishlayotgandek ko'rsatilmaydi.
+  @override
+  Future<void> closeAssignment(String assignmentId) async =>
+      throw const BackendException(BackendFailure.unavailable);
+
   // ----------------------------------------------------------- partners
   static const _logoBucket = 'partner-logos';
   static const _logoMaxBytes = 1024 * 1024;

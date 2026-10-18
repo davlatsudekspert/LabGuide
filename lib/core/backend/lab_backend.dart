@@ -181,6 +181,11 @@ abstract interface class LabBackend implements OtpAuthAdapter {
   /// Testni yakunlash (yangi urinish qabul qilinmaydi).
   Future<void> finishTopicTest(String groupId, String topicId);
 
+  /// Topshiriqni (masalan, taqdimotdan “Guruhga topshirish”) ustoz
+  /// yakunlaydi: yangi urinish yo'q, boshlaganlarga 2 daqiqa qoladi;
+  /// “muddat tugagach” tanlangan bo'lsa — javoblar talabalarga ochiladi.
+  Future<void> closeAssignment(String assignmentId);
+
   // --- Hamkorlar (reklama)
 
   /// E'lon qilingan va bugun faol hamkorlar (mehmon ham o'qiydi).
@@ -384,6 +389,8 @@ class UnconfiguredBackend implements LabBackend {
   }) async => _no();
   @override
   Future<void> finishTopicTest(String groupId, String topicId) async => _no();
+  @override
+  Future<void> closeAssignment(String assignmentId) async => _no();
 
   // --- Hamkorlar: server yo'q — reklama joylari umuman chiqmaydi.
   @override

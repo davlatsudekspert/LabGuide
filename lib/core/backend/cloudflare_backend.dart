@@ -812,7 +812,9 @@ class CloudflareLabBackend
     notFound: BackendFailure.forbidden,
   );
 
-  /// Ustoz test sessiyasini yakunlaydi (ilova [finishTopicTest] ishlatadi).
+  /// Ustoz topshiriqni yakunlaydi (topshiriq sahifasidagi “Testni
+  /// yakunlash”; mavzu jadvalidagi test — [finishTopicTest]).
+  @override
   Future<void> closeAssignment(String assignmentId) => _call(
     'POST',
     '/v1/assignments/${_seg(assignmentId)}/close',
