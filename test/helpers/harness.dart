@@ -152,12 +152,12 @@ Future<void> pumpApp(
   Brightness platformBrightness = Brightness.light,
   bool reduceMotion = false,
   bool notch = true,
+  double ratio = 3.0,
 }) async {
-  const ratio = 3.0;
   tester.view.devicePixelRatio = ratio;
   tester.view.physicalSize = size * ratio;
   if (notch) {
-    tester.view.padding = const FakeViewPadding(
+    tester.view.padding = FakeViewPadding(
       top: 47 * ratio,
       bottom: 34 * ratio,
     );

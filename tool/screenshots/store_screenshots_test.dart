@@ -23,6 +23,10 @@ import '../../test/helpers/learn_helpers.dart';
 /// 430×932 pt × 3 = 1290×2796 px (App Store 6.9" o'lchamlaridan biri).
 const _size = Size(430, 932);
 
+/// `--dart-define=LG_SHOT_IPAD=true` — iPad Pro 13" (1032×1376 pt × 2 = 2064×2752 px).
+const _ipad = bool.fromEnvironment('LG_SHOT_IPAD');
+const _ipadSize = Size(1032, 1376);
+
 typedef StoreShot = ({
   String name,
   String route,
@@ -205,7 +209,13 @@ void main() {
       if (shot.name == '08_toifa' && lang != AppLanguage.uz) continue;
       testWidgets('${lang.name} ${shot.name}', (tester) async {
         final s = await makeServices(tester, language: lang);
-        await pumpApp(tester, s, size: _size);
+        await pumpApp(
+          tester,
+          s,
+          size: _ipad ? _ipadSize : _size,
+          ratio: _ipad ? 2 : 3,
+          notch: !_ipad,
+        );
         if (shot.route != '/home') await goTo(tester, shot.route);
         await tester.runAsync(() async {
           final ctx = tester.element(find.byType(Scaffold).first);
@@ -216,7 +226,9 @@ void main() {
         await tester.pumpAndSettle();
         await expectLater(
           find.byType(LabGuideApp),
-          matchesGoldenFile('out/store/${lang.name}/${shot.name}.png'),
+          matchesGoldenFile(
+            'out/store${_ipad ? '_ipad' : ''}/${lang.name}/${shot.name}.png',
+          ),
         );
       });
     }
