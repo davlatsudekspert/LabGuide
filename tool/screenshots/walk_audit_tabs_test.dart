@@ -80,19 +80,39 @@ Future<void> _tour(
 
 void main() {
   setUpAll(loadAppFonts);
-  testWidgets('uz 390 light', (t) => _tour(t, 'uz390',
-      lang: AppLanguage.uz, theme: ThemeMode.light, size: const Size(390, 844)));
-  testWidgets('ru 360 x1.3 dark', (t) => _tour(t, 'ru360',
+  testWidgets(
+    'uz 390 light',
+    (t) => _tour(
+      t,
+      'uz390',
+      lang: AppLanguage.uz,
+      theme: ThemeMode.light,
+      size: const Size(390, 844),
+    ),
+  );
+  testWidgets(
+    'ru 360 x1.3 dark',
+    (t) => _tour(
+      t,
+      'ru360',
       lang: AppLanguage.ru,
       theme: ThemeMode.dark,
       size: const Size(360, 640),
-      textScale: 1.3));
-  testWidgets('en 360 x1.3 ivory', (t) => _tour(t, 'en360',
+      textScale: 1.3,
+    ),
+  );
+  testWidgets(
+    'en 360 x1.3 ivory',
+    (t) => _tour(
+      t,
+      'en360',
       lang: AppLanguage.en,
       theme: ThemeMode.light,
       size: const Size(360, 640),
       textScale: 1.3,
-      appTheme: LgThemeId.ivory));
+      appTheme: LgThemeId.ivory,
+    ),
+  );
   for (final (lang, size, scale) in [
     (AppLanguage.uz, const Size(390, 844), 1.0),
     (AppLanguage.ru, const Size(360, 640), 1.3),
@@ -100,8 +120,12 @@ void main() {
   ]) {
     testWidgets('onboarding ${lang.name} ${size.width.toInt()}', (t) async {
       debugDefaultTargetPlatformOverride = TargetPlatform.iOS;
-      final s = await makeServices(t,
-          language: lang, onboarded: false, role: null);
+      final s = await makeServices(
+        t,
+        language: lang,
+        onboarded: false,
+        role: null,
+      );
       await pumpApp(t, s, size: size, textScale: scale);
       final w = Walk(t, 'audit_onb_${lang.name}${size.width.toInt()}');
       await w.snap('start');
@@ -118,8 +142,12 @@ void main() {
 
   testWidgets('flows ru 360 x1.3', (t) async {
     debugDefaultTargetPlatformOverride = TargetPlatform.iOS;
-    final s = await start(t,
-        lang: AppLanguage.uz, size: const Size(360, 640), textScale: 1.3);
+    final s = await start(
+      t,
+      lang: AppLanguage.uz,
+      size: const Size(360, 640),
+      textScale: 1.3,
+    );
     final w = Walk(t, 'audit_flows');
     final l = lookupAppLocalizations(const Locale('uz'));
     // Toifa: mashq rejimi — darhol javob.
@@ -130,8 +158,10 @@ void main() {
     await w.snap('drill_q1');
     final d = s.toifa.activeDrill!;
     final q = s.toifa.bank!.test(d.ids[0])!;
-    final wrong = List.generate(q.optionCount, (i) => i)
-        .firstWhere((i) => i != d.keys[0]);
+    final wrong = List.generate(
+      q.optionCount,
+      (i) => i,
+    ).firstWhere((i) => i != d.keys[0]);
     await tapScroll(t, q.options[wrong]);
     await w.snap('drill_wrong');
     await w.scroll(400);
