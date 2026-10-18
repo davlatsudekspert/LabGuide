@@ -136,6 +136,11 @@ def apply(plan, cur, pack, tests, oral):
                 new['oral_candidates'] = {'count': len(o_ids), 'ids': o_ids}
                 new['test_candidates'] = {'count': len(t_ids), 'ids': t_ids, 'pack_quiz_ids': pq,
                                           'pack_quiz_count': len(pq)}
+                # Deck matnidan olingan savollar (derived_topic_quiz.json generatori yozadi) —
+                # reja qayta qo'llanganda saqlanadi.
+                drv = (t.get('test_candidates') or {}).get('derived_quiz_ids')
+                if drv:
+                    new['test_candidates']['derived_quiz_ids'] = drv
                 new['test_gap'] = not t_ids and not pq
                 new['oral_gap'] = not o_ids
                 continue

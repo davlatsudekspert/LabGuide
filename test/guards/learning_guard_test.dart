@@ -200,7 +200,7 @@ void main() {
       final derivedIds = {
         for (final t in cur.topics) ...t.derivedQuizCandidates,
       };
-      expect(derivedIds.length, greaterThanOrEqualTo(235));
+      expect(derivedIds.length, greaterThanOrEqualTo(306));
       final raw = _json('assets/content/core/pack.json');
       final quiz = [
         for (final q in (raw['quiz']! as List).cast<Map<String, Object?>>())
