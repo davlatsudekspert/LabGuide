@@ -948,7 +948,11 @@ class _AssignDeckTestScreenState extends State<AssignDeckTestScreen> {
 
   final _count = TextEditingController();
   final Set<String> _picked = {};
-  _Due _due = _Due.d3;
+  _Due _due = _Due.d1;
+
+  /// Har talabaga vaqt (daqiqa); null — vaqtsiz.
+  int? _limit = 10;
+  static const _limits = [10, 15, 20, 30, 45, 60];
   DateTime? _customDue;
   bool _afterDue = false;
   List<ExamQuestion>? _drawn;
@@ -1155,6 +1159,7 @@ class _AssignDeckTestScreenState extends State<AssignDeckTestScreen> {
           questionIds: [for (final q in source) q.id],
           correctIndexes: [for (final q in source) q.correct.single],
           dueAt: due,
+          timeLimitMinutes: _limit,
           dayId: topic,
           deckId: deck.id,
           revealAfterDue: _afterDue,
@@ -1317,7 +1322,35 @@ class _AssignDeckTestScreenState extends State<AssignDeckTestScreen> {
               ? (v) => setState(() => _variantChoice = v)
               : null,
         ),
-        LgSectionTitle(l.classesDueTitle),
+        LgSectionTitle(l.classesTimeLimit),
+        Wrap(
+          spacing: 8,
+          runSpacing: 8,
+          children: [
+            for (final m in _limits)
+              LgChoiceChip(
+                key: ValueKey('assign-limit-$m'),
+                label: l.examMinutes(m),
+                selected: _limit == m,
+                onTap: () => setState(() => _limit = m),
+              ),
+            LgChoiceChip(
+              key: const ValueKey('assign-limit-none'),
+              label: l.classesNoLimit,
+              selected: _limit == null,
+              onTap: () => setState(() => _limit = null),
+            ),
+          ],
+        ),
+        const SizedBox(height: 10),
+        Text(
+          _limit == null
+              ? l.topicTestLimitNoneBody
+              : l.topicTestLimitBody(_limit!),
+          key: const ValueKey('assign-limit-note'),
+          style: text.bodyMedium,
+        ),
+        LgSectionTitle(l.topicTestOpenFor),
         Wrap(
           spacing: 8,
           runSpacing: 8,

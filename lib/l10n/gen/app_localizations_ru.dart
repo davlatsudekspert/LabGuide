@@ -9693,6 +9693,18 @@ class AppLocalizationsRu extends AppLocalizations {
   String get topicTestAssign => 'Задать группе';
 
   @override
+  String topicTestLimitBody(int minutes) {
+    return 'Каждому студенту даётся $minutes мин с момента начала. Когда время выйдет, ответы отправятся сами.';
+  }
+
+  @override
+  String get topicTestLimitNoneBody =>
+      'Без ограничения времени — студент решает тест в любое время до срока.';
+
+  @override
+  String get topicTestOpenFor => 'Сколько тест открыт';
+
+  @override
   String get topicTestAssignSub =>
       'Студенты подключаются по QR или коду, результаты видите вы';
 

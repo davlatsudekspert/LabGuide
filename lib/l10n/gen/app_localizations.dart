@@ -16612,6 +16612,24 @@ abstract class AppLocalizations {
   /// **'Assign to a group'**
   String get topicTestAssign;
 
+  /// No description provided for @topicTestLimitBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Each student gets {minutes} min from the moment they start. When time runs out, answers are submitted automatically.'**
+  String topicTestLimitBody(int minutes);
+
+  /// No description provided for @topicTestLimitNoneBody.
+  ///
+  /// In en, this message translates to:
+  /// **'No time limit — students can take the test any time before the deadline.'**
+  String get topicTestLimitNoneBody;
+
+  /// No description provided for @topicTestOpenFor.
+  ///
+  /// In en, this message translates to:
+  /// **'How long the test stays open'**
+  String get topicTestOpenFor;
+
   /// No description provided for @topicTestAssignSub.
   ///
   /// In en, this message translates to:

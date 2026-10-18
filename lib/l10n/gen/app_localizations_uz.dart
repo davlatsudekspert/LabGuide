@@ -9517,6 +9517,18 @@ class AppLocalizationsUz extends AppLocalizations {
   String get topicTestAssign => 'Guruhga topshirish';
 
   @override
+  String topicTestLimitBody(int minutes) {
+    return 'Har bir talabaga boshlagan paytidan $minutes daqiqa beriladi. Vaqt tugasa, javoblar o‘zi yuboriladi.';
+  }
+
+  @override
+  String get topicTestLimitNoneBody =>
+      'Vaqt chegarasi yo‘q — talaba testni muddat ichida istalgan vaqtda yechadi.';
+
+  @override
+  String get topicTestOpenFor => 'Test qancha vaqt ochiq turadi';
+
+  @override
   String get topicTestAssignSub =>
       'Talabalar QR yoki kod bilan qo\'shilib yechadi, natijalar sizda chiqadi';
 

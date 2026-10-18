@@ -9653,6 +9653,18 @@ class AppLocalizationsEn extends AppLocalizations {
   String get topicTestAssign => 'Assign to a group';
 
   @override
+  String topicTestLimitBody(int minutes) {
+    return 'Each student gets $minutes min from the moment they start. When time runs out, answers are submitted automatically.';
+  }
+
+  @override
+  String get topicTestLimitNoneBody =>
+      'No time limit — students can take the test any time before the deadline.';
+
+  @override
+  String get topicTestOpenFor => 'How long the test stays open';
+
+  @override
   String get topicTestAssignSub =>
       'Students join by QR or code; you see the results';
 

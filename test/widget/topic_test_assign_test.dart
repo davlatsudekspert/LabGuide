@@ -116,6 +116,8 @@ void main() {
         expect(a.topicId, 'd013-L');
         expect(a.revealAfterDue, isTrue);
         expect(a.dueAt, isNotNull);
+        // Standart: har talabaga 10 daqiqa (ustoz daqiqani tanlaydi).
+        expect(a.timeLimitMinutes, 10);
         expect(a.questionIds.length, 5);
         expect(pool.containsAll(a.questionIds), isTrue);
         expect(a.title, uz.topicTestTitle(c.byId(_deck)!.title('uz')));
