@@ -9517,6 +9517,17 @@ class AppLocalizationsUz extends AppLocalizations {
   String get topicTestAssign => 'Guruhga topshirish';
 
   @override
+  String get topicTestAssignSub =>
+      'Talabalar QR yoki kod bilan qo\'shilib yechadi, natijalar sizda chiqadi';
+
+  @override
+  String get topicTestSelf => 'O\'zim yechib ko\'rish';
+
+  @override
+  String get topicTestSelfSub =>
+      'Faqat sizda saqlanadi, talabalarga yuborilmaydi';
+
+  @override
   String get topicTestAssignIntro =>
       'Talabalar testni o‘z telefonida muddatgacha topshiradi; ball serverda hisoblanadi.';
 

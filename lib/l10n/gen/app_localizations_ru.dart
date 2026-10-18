@@ -9693,6 +9693,17 @@ class AppLocalizationsRu extends AppLocalizations {
   String get topicTestAssign => 'Задать группе';
 
   @override
+  String get topicTestAssignSub =>
+      'Студенты подключаются по QR или коду, результаты видите вы';
+
+  @override
+  String get topicTestSelf => 'Пройти самому';
+
+  @override
+  String get topicTestSelfSub =>
+      'Сохраняется только у вас, студентам не отправляется';
+
+  @override
   String get topicTestAssignIntro =>
       'Студенты сдают тест на своём телефоне до срока; балл считается на сервере.';
 
