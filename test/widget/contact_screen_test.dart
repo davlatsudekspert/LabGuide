@@ -142,6 +142,30 @@ void main() {
     expect(find.byKey(const ValueKey('contact-email')), findsOneWidget);
   });
 
+  // Audit 2026-10-18 (tablar): ro'yxatdan o'tishda "shartlar va maxfiylik
+  // siyosatini qabul qilaman" belgisi bor, lekin "Foydalanish shartlari" va
+  // Profil → "Maxfiylik va ma'lumotlar" sahifalarida siyosatning o'ziga
+  // havola yo'q edi (faqat "Aloqa" ichida).
+  for (final (route, key) in [
+    ('/profile/privacy', 'privacy-policy-link'),
+    ('/terms', 'terms-privacy-link'),
+  ]) {
+    testWidgets('audit: $route links to the privacy policy', (tester) async {
+      final fakes = _Fakes(tester);
+      final s = await makeServices(tester, language: AppLanguage.ru);
+      await pumpApp(tester, s, size: const Size(360, 640), textScale: 1.3);
+      await goTo(tester, route);
+      final row = find.byKey(ValueKey(key));
+      await tester.scrollUntilVisible(row, 200);
+      await tester.pumpAndSettle();
+      expect(find.text(_l(tester).contactPrivacyPolicy), findsOneWidget);
+      await tester.tap(row);
+      await tester.pumpAndSettle();
+      expect(fakes.launched, [Contact.privacyPolicyUrl]);
+      expect(tester.takeException(), isNull);
+    });
+  }
+
   testWidgets('copy button puts the email on the clipboard', (tester) async {
     final f = _Fakes(tester);
     await _openContact(tester);

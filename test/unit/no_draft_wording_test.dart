@@ -105,6 +105,33 @@ void main() {
     }
   });
 
+  // Audit 2026-10-18 (tablar): Kutubxona → Oflayn paketlar sahifasida
+  // katalogdagi paket izohi "bitta draft kartaning nusxasi" deb ko'rsatilardi.
+  test(
+    'paketlar katalogi (packs/index.json) matnlarida qoralama so‘zi yo‘q',
+    () {
+      final index = jsonDecode(
+        File('packs/index.json').readAsStringSync(),
+      ) as Map<String, Object?>;
+      final hits = <String>[];
+      for (final pack
+          in (index['packs']! as List).cast<Map<String, Object?>>()) {
+        for (final field in ['title', 'summary']) {
+          final texts = (pack[field]! as Map).cast<String, String>();
+          for (final MapEntry(:key, :value) in texts.entries) {
+            final v = value.toLowerCase();
+            for (final w in [..._forbidden, 'чернов']) {
+              if (v.contains(w)) {
+                hits.add('${pack['pack_id']}.$field.$key: "$w"');
+              }
+            }
+          }
+        }
+      }
+      expect(hits, isEmpty, reason: hits.join('\n'));
+    },
+  );
+
   test('lib/ ekran matnlarida qoralama belgisi yo‘q', () {
     final hits = <String>[];
     final files = Directory('lib')

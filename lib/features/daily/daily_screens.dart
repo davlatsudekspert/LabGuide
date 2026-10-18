@@ -7,6 +7,7 @@ import '../../app/shell.dart';
 import '../../app/widgets/lg_page.dart';
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
+import '../../design/widgets/reveal_on_mount.dart';
 import '../../l10n/gen/app_localizations.dart';
 import '../content/ui/content_widgets.dart';
 import '../learn/exam_question.dart';
@@ -413,7 +414,14 @@ class _DailyScreenState extends State<DailyScreen> {
             onTap: answered ? null : () => _answer(set, q, i),
           ),
         ),
-      if (answered) ..._feedback(context, q, answer),
+      if (answered)
+        // Kichik ekranda izoh pastda qolmasin (audit 2026-10-18).
+        RevealOnMount(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: _feedback(context, q, answer),
+          ),
+        ),
       if (answered) ...[
         const SizedBox(height: 14),
         LgButton(

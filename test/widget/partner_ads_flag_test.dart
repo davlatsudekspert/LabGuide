@@ -5,6 +5,7 @@ import 'package:labguide/core/build_flags.dart';
 import 'package:labguide/features/partners/become_partner_screen.dart';
 import 'package:labguide/features/partners/partner_admin_screens.dart';
 import 'package:labguide/features/partners/partner_widgets.dart';
+import 'package:labguide/features/settings/settings_controller.dart';
 import 'package:labguide/l10n/gen/app_localizations.dart';
 import 'package:material_ui/material_ui.dart';
 
@@ -118,6 +119,29 @@ void main() {
     }
     // Serverga hamkor so'rovi ham, ko'rsatilish hisoboti ham yuborilmagan.
     expect(backend.partnerTrackCalls, 0);
+  });
+
+  // Audit 2026-10-18 (tablar): do'kon buildida reklama yo'q (D-58), lekin
+  // "Yordam va aloqa" va "Aloqa va shikoyat" matnlari "reklama" haqida
+  // yozishni taklif qilardi — foydalanuvchini chalg'itadi.
+  testWidgets('do‘kon build: yordam/aloqa matnlarida reklama so‘zi yo‘q '
+      '(uz/ru/en)', (tester) async {
+    final ad = RegExp(r'reklam|реклам|advertis|\bads?\b', caseSensitive: false);
+    for (final lang in AppLanguage.values) {
+      final s = await makeServices(tester, language: lang);
+      await pumpApp(tester, s, size: _tall);
+      for (final route in ['/profile/help', '/profile/contact']) {
+        await goTo(tester, route);
+        final hits = [
+          for (final e in find.byType(RichText).evaluate())
+            if ((e.widget as RichText).text.toPlainText() case final t
+                when ad.hasMatch(t))
+              t,
+        ];
+        expect(hits, isEmpty, reason: '${lang.name} $route');
+      }
+      await tester.pumpWidget(const SizedBox());
+    }
   });
 
   testWidgets('test build (LG_PARTNER_ADS=true): hamkor UI hozirgidek', (

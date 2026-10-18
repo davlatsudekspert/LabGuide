@@ -719,7 +719,12 @@ class FitLongWordText extends StatelessWidget {
         var size = base;
         if (widest > constraints.maxWidth && widest > 0) {
           size = (base * constraints.maxWidth / widest).floorToDouble();
-          if (size < minFontSize) size = minFontSize;
+          // Pastki chegara — ekranda ko'rinadigan o'lcham (masshtabdan
+          // keyin): ×1.3 da [minFontSize] masshtabdan oldin qo'llansa, uzun
+          // so'z ("Конфиденциальность") baribir o'rtasidan bo'linardi
+          // (audit 2026-10-18, tablar).
+          final floor = minFontSize * minFontSize / scaler.scale(minFontSize);
+          if (size < floor) size = floor;
         }
         final shown = size == base
             ? style

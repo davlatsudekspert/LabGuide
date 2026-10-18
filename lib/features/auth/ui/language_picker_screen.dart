@@ -124,6 +124,14 @@ class _LanguagePickerScreenState extends State<LanguagePickerScreen>
     );
     final logoAnim = _step(0, 0.4);
     final headAnim = _step(0.25, 0.55);
+    // Kichik telefon yoki katta shrift: logo va globus belgisi yashiriladi —
+    // uchala til kartasi (jumladan pastdagi "O‘zbekcha") surmasdan ko‘rinadi
+    // (audit 2026-10-18: 360×640 ×1.3 va 320×568 da ko‘rinmasdi). Logo
+    // keyingi (xush kelibsiz) ekranda bor.
+    final mq = MediaQuery.of(context);
+    final available = mq.size.height - mq.padding.vertical;
+    final scale = mq.textScaler.scale(16) / 16;
+    final compact = available < 190 + 440 * scale;
     return Scaffold(
       backgroundColor: p.bg,
       body: SafeArea(
@@ -139,27 +147,35 @@ class _LanguagePickerScreenState extends State<LanguagePickerScreen>
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  FadeTransition(
-                    opacity: logoAnim,
-                    child: ScaleTransition(
-                      scale: Tween<double>(
-                        begin: 0.8,
-                        end: 1,
-                      ).animate(logoAnim),
-                      child: const LgLogoHero(
-                        size: 104,
-                        halo: true,
-                        animate: false,
+                  if (!compact) ...[
+                    FadeTransition(
+                      opacity: logoAnim,
+                      child: ScaleTransition(
+                        scale: Tween<double>(
+                          begin: 0.8,
+                          end: 1,
+                        ).animate(logoAnim),
+                        child: const LgLogoHero(
+                          size: 104,
+                          halo: true,
+                          animate: false,
+                        ),
                       ),
                     ),
-                  ),
-                  const SizedBox(height: LgSpace.lg),
+                    const SizedBox(height: LgSpace.lg),
+                  ],
                   FadeTransition(
                     opacity: headAnim,
                     child: Column(
                       children: [
-                        Icon(Icons.language_rounded, size: 28, color: p.brand),
-                        const SizedBox(height: LgSpace.sm),
+                        if (!compact) ...[
+                          Icon(
+                            Icons.language_rounded,
+                            size: 28,
+                            color: p.brand,
+                          ),
+                          const SizedBox(height: LgSpace.sm),
+                        ],
                         Text(
                           'Choose language · Выберите язык · Tilni tanlang',
                           textAlign: TextAlign.center,
@@ -168,7 +184,7 @@ class _LanguagePickerScreenState extends State<LanguagePickerScreen>
                       ],
                     ),
                   ),
-                  const SizedBox(height: LgSpace.lg),
+                  SizedBox(height: compact ? LgSpace.sm : LgSpace.lg),
                   for (var i = 0; i < LanguagePickerScreen.options.length; i++)
                     _StaggeredIn(
                       animation: _step(0.4 + i * 0.12, 0.7 + i * 0.12),

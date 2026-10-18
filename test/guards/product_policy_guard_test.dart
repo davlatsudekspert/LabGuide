@@ -138,6 +138,16 @@ void main() {
         _read('lib/features/profile/contact_screen.dart'),
         contains('Contact.privacyPolicyUrl'),
       );
+      // Audit 2026-10-18 (tablar): Profil → Maxfiylik va Foydalanish
+      // shartlari sahifalarida ham siyosat havolasi bor.
+      expect(
+        _read('lib/features/profile/profile_screens.dart'),
+        contains('Contact.privacyPolicyUrl'),
+      );
+      expect(
+        _read('lib/features/auth/ui/auth_screens.dart'),
+        contains('Contact.privacyPolicyUrl'),
+      );
     });
 
     test('hisobni o‘chirish ilovada bor (Apple 5.1.1(v), D-63)', () {

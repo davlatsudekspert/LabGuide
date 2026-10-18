@@ -5,6 +5,7 @@ import 'package:labguide/core/storage/kv_store.dart';
 import 'package:labguide/features/auth/ui/language_picker_screen.dart';
 import 'package:labguide/features/auth/ui/welcome_screen.dart';
 import 'package:labguide/app/app.dart';
+import 'package:labguide/design/widgets/lg_widgets.dart';
 import 'package:labguide/features/settings/settings_controller.dart';
 import 'package:labguide/l10n/gen/app_localizations.dart';
 import 'package:labguide/l10n/gen/app_localizations_ru.dart';
@@ -35,6 +36,48 @@ void main() {
     expect(find.text('Добро пожаловать'), findsOneWidget);
     expect(find.text('Xush kelibsiz'), findsOneWidget);
     expect(s.settings.languageChosen, isFalse);
+  });
+
+  // Audit 2026-10-18 (tablar): kichik telefon + katta shrift — "O‘zbekcha"
+  // kartasi ekrandan pastda qolib, surilmaguncha ko‘rinmasdi.
+  for (final (w, h, scale) in [
+    (360.0, 640.0, 1.3),
+    (320.0, 568.0, 1.0),
+    (390.0, 844.0, 1.3),
+  ]) {
+    testWidgets('audit: all three languages visible without scrolling '
+        '${w.toInt()}×${h.toInt()} ×$scale', (tester) async {
+      final s = await makeServices(
+        tester,
+        onboarded: false,
+        languageChosen: false,
+        role: null,
+      );
+      await pumpApp(tester, s, size: Size(w, h), textScale: scale);
+      final screen = tester.getRect(find.byType(LanguagePickerScreen));
+      final safeBottom = screen.bottom - 34;
+      for (final n in ['English', 'Русский', 'O‘zbekcha']) {
+        final card = find.ancestor(
+          of: find.text(n),
+          matching: find.byType(LgPressable),
+        );
+        final r = tester.getRect(card.first);
+        expect(r.bottom, lessThanOrEqualTo(safeBottom), reason: n);
+        expect(r.top, greaterThanOrEqualTo(screen.top + 47), reason: n);
+      }
+      expect(tester.takeException(), isNull);
+    });
+  }
+
+  testWidgets('audit: iPhone 390×844 keeps the logo', (tester) async {
+    final s = await makeServices(
+      tester,
+      onboarded: false,
+      languageChosen: false,
+      role: null,
+    );
+    await pumpApp(tester, s);
+    expect(find.byType(LgLogoHero), findsOneWidget);
   });
 
   testWidgets('tapping Русский switches locale and opens Russian welcome', (

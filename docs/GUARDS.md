@@ -141,6 +141,17 @@ fayllarni o‘qiydi (`pack.json`, `curriculum.json`, `assets/toifa/*.json`, `ind
 | Toifa: 50 savollik test (imtihon/mashq), qayta ochilganda davom, kunlik hisob va seriya; bilet (5 savol, yozuvsiz) | `toifa_real_assets_guard_test.dart`; `test/widget/toifa_iphone_real_test.dart` (iPhone) |
 | O‘rganish → Mashq, Imtihon, toifa mavzulari, kunlik savollar: har mavzu savol beradi, har savol topiladi | `test/guards/quiz_modes_real_assets_guard_test.dart` |
 
+### Tablar auditi (2026-10-18, `docs/AUDIT_2026-10-18_TABS.md`)
+
+| Qaror / ish | Qorovul |
+|---|---|
+| Til tanlash: kichik telefonda uchala til (O‘zbekcha ham) surmasdan ko‘rinadi | `test/widget/language_picker_test.dart :: audit: all three languages visible without scrolling …`, `audit: iPhone 390×844 keeps the logo` |
+| Javobdan keyin izoh avtomatik ko‘rinadi (izohli test, kunlik savollar) | `test/widget/answer_feedback_reveal_test.dart` (360×640 ×1.3, iOS; katta ekranda surilmaydi) |
+| Sarlavhadagi uzun so‘z o‘rtasidan bo‘linmaydi (`FitLongWordText`) | `test/widget/title_word_break_test.dart` (uz/ru/en × 360/320 ×1.3, 390) |
+| D-58: do‘kon buildida yordam/aloqa matnlarida «reklama» yo‘q | `test/widget/partner_ads_flag_test.dart :: do‘kon build: yordam/aloqa matnlarida reklama so‘zi yo‘q` |
+| D-65: paketlar katalogida «draft/черновой» yo‘q | `test/unit/no_draft_wording_test.dart :: paketlar katalogi (packs/index.json) …` |
+| Maxfiylik siyosati havolasi Profil → Maxfiylik va «Foydalanish shartlari»da | `product_policy_guard_test.dart :: maxfiylik siyosati havolasi …`; `test/widget/contact_screen_test.dart :: audit: /profile/privacy …`, `audit: /terms …` |
+
 ### Tibbiy tuzatishlar
 
 `docs/AUDIT_2026-10-18_MEDICAL_REVIEW.md`:
