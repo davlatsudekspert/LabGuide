@@ -775,7 +775,7 @@ abstract class AppLocalizations {
   /// No description provided for @condNotDiagnosticBody.
   ///
   /// In en, this message translates to:
-  /// **'The guide helps plan testing. Clinical assessment and the final decision rest with the clinician. The text is a sourced draft awaiting independent expert review.'**
+  /// **'The guide helps plan testing. Clinical assessment and the final decision rest with the clinician. The text is based on the sources listed on each card.'**
   String get condNotDiagnosticBody;
 
   /// No description provided for @condCautionsTitle.
@@ -817,7 +817,7 @@ abstract class AppLocalizations {
   /// No description provided for @condReferralFooter.
   ///
   /// In en, this message translates to:
-  /// **'LabGuide guide (draft). Not a diagnostic tool — the final decision rests with the clinician.'**
+  /// **'LabGuide guide. Not a diagnostic tool — the final decision rests with the clinician.'**
   String get condReferralFooter;
 
   /// No description provided for @condAnalyteSection.
@@ -1120,12 +1120,6 @@ abstract class AppLocalizations {
   /// **'{count, plural, one{{count} test} other{{count} tests}}'**
   String testsResultCount(int count);
 
-  /// No description provided for @statusDraft.
-  ///
-  /// In en, this message translates to:
-  /// **'Draft'**
-  String get statusDraft;
-
   /// No description provided for @statusVerified.
   ///
   /// In en, this message translates to:
@@ -1141,7 +1135,7 @@ abstract class AppLocalizations {
   /// No description provided for @statusSourcedSample.
   ///
   /// In en, this message translates to:
-  /// **'Sourced sample'**
+  /// **'Source-based'**
   String get statusSourcedSample;
 
   /// No description provided for @statusStructureOnly.
@@ -1207,19 +1201,19 @@ abstract class AppLocalizations {
   /// No description provided for @analyteStructureOnlyBody.
   ///
   /// In en, this message translates to:
-  /// **'This card shows the structure only. Clinical text is added after sourcing and independent expert review — generic text is never shown as ready.'**
+  /// **'This card shows the structure only for now. Clinical text is added together with its sources — generic text is never shown as ready.'**
   String get analyteStructureOnlyBody;
 
-  /// No description provided for @analyteSampleNotice.
+  /// Analyte card: one line listing the card sources (D-65).
   ///
   /// In en, this message translates to:
-  /// **'Learning sample based on the cited sources. Independent expert review is pending — not for clinical decisions.'**
-  String get analyteSampleNotice;
+  /// **'Based on sources: {sources}'**
+  String analyteSourcesBased(String sources);
 
   /// No description provided for @analyteNotWritten.
   ///
   /// In en, this message translates to:
-  /// **'Not written yet: requires sources and review.'**
+  /// **'Not written yet: the text is added together with its sources.'**
   String get analyteNotWritten;
 
   /// No description provided for @analyteAtAGlance.
@@ -1321,7 +1315,7 @@ abstract class AppLocalizations {
   /// No description provided for @analyteReview.
   ///
   /// In en, this message translates to:
-  /// **'Review status'**
+  /// **'Preparation and sources'**
   String get analyteReview;
 
   /// No description provided for @analyteReviewPending.
@@ -1335,18 +1329,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Reviewed'**
   String get analyteReviewApproved;
-
-  /// No description provided for @analyteReviewerNotAssigned.
-  ///
-  /// In en, this message translates to:
-  /// **'Reviewer not assigned'**
-  String get analyteReviewerNotAssigned;
-
-  /// No description provided for @analyteTranslationPending.
-  ///
-  /// In en, this message translates to:
-  /// **'Translation review pending'**
-  String get analyteTranslationPending;
 
   /// No description provided for @analyteContentVersion.
   ///
@@ -2416,17 +2398,17 @@ abstract class AppLocalizations {
   /// **'Sources'**
   String get diffSourcesTitle;
 
-  /// No description provided for @diffDraftTag.
+  /// Title of the calm literature panel on lab sections (D-65).
   ///
   /// In en, this message translates to:
-  /// **'Draft · awaiting expert review'**
-  String get diffDraftTag;
+  /// **'Sources'**
+  String get sourcesPanelTitle;
 
-  /// No description provided for @diffDraftNote.
+  /// One neutral medical-safety line under the sources panel (D-65).
   ///
   /// In en, this message translates to:
-  /// **'This section has not been expert-reviewed. A result is not a diagnosis; reference intervals are on your laboratory’s report form.'**
-  String get diffDraftNote;
+  /// **'Educational reference, not a diagnosis: a physician interprets results with clinical data; reference intervals depend on the laboratory and method.'**
+  String get sourcesDisclaimer;
 
   /// No description provided for @diffSchematicCaption.
   ///
@@ -3292,11 +3274,11 @@ abstract class AppLocalizations {
   /// **'Short tables based on textbooks and official sources. Sources are listed under each section.'**
   String get refIntro;
 
-  /// No description provided for @refDraftNote.
+  /// Reference tables: books are cited only (no copied text).
   ///
   /// In en, this message translates to:
-  /// **'Draft: not yet expert-reviewed. Books are cited as sources only — no text or figures were copied. The conclusion is the doctor’s.'**
-  String get refDraftNote;
+  /// **'Books are cited as sources only — no text or figures were copied. The conclusion is the doctor’s.'**
+  String get refBooksNote;
 
   /// No description provided for @refOpenSub.
   ///
@@ -4801,7 +4783,7 @@ abstract class AppLocalizations {
   /// No description provided for @micEduNotice.
   ///
   /// In en, this message translates to:
-  /// **'Teaching images — not for diagnosis. Every image shows its author, licence and original caption. LabGuide notes are drafts awaiting expert review.'**
+  /// **'Teaching images — not for diagnosis. Every image shows its author, licence and original caption.'**
   String get micEduNotice;
 
   /// No description provided for @micEduTag.
@@ -4930,11 +4912,11 @@ abstract class AppLocalizations {
   /// **'What to look for'**
   String get micDraftTitle;
 
-  /// No description provided for @micDraftTag.
+  /// One literature line: Author, year, «title», chapter/page (D-65).
   ///
   /// In en, this message translates to:
-  /// **'Draft · awaiting expert review'**
-  String get micDraftTag;
+  /// **'Source: {cite}'**
+  String sourceLine(String cite);
 
   /// No description provided for @micCreditTitle.
   ///
@@ -7102,11 +7084,11 @@ abstract class AppLocalizations {
   /// **'Works offline'**
   String get packsOffline;
 
-  /// No description provided for @packsCoreState.
+  /// Core pack: content is source-based.
   ///
   /// In en, this message translates to:
-  /// **'Status: draft — sourced learning material, not yet independently reviewed'**
-  String get packsCoreState;
+  /// **'Source-based learning reference — every card lists its literature'**
+  String get packsCoreSources;
 
   /// No description provided for @packsContents.
   ///
@@ -7143,12 +7125,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Test pack · not a clinical pack'**
   String get packsStatusTest;
-
-  /// No description provided for @packsStatusDraft.
-  ///
-  /// In en, this message translates to:
-  /// **'Draft · not expert-reviewed'**
-  String get packsStatusDraft;
 
   /// No description provided for @packsStatusReviewed.
   ///
@@ -7699,7 +7675,7 @@ abstract class AppLocalizations {
   /// No description provided for @toifaAboutOral.
   ///
   /// In en, this message translates to:
-  /// **'Oral answer plans are prepared by LabGuide and await expert review ({ready} / {total} plans with sources).'**
+  /// **'Oral answer plans are a study aid prepared by LabGuide ({ready} / {total} plans with sources).'**
   String toifaAboutOral(int ready, int total);
 
   /// No description provided for @toifaTestSubtitle.
@@ -8167,7 +8143,7 @@ abstract class AppLocalizations {
   /// No description provided for @toifaNoteNoSource.
   ///
   /// In en, this message translates to:
-  /// **'No source for this note (not verified).'**
+  /// **'No source is given for this note.'**
   String get toifaNoteNoSource;
 
   /// No description provided for @toifaRelatedCards.
@@ -8215,7 +8191,7 @@ abstract class AppLocalizations {
   /// No description provided for @toifaPlanDisclaimer.
   ///
   /// In en, this message translates to:
-  /// **'Answer plans are prepared by LabGuide and await expert review. They are not official answers.'**
+  /// **'Answer plans are a study aid prepared by LabGuide. They are not official answers.'**
   String get toifaPlanDisclaimer;
 
   /// No description provided for @toifaPickCategoryFirst.
@@ -8281,7 +8257,7 @@ abstract class AppLocalizations {
   /// No description provided for @toifaPlanPending.
   ///
   /// In en, this message translates to:
-  /// **'Prepared by LabGuide, awaiting expert review'**
+  /// **'Prepared by LabGuide'**
   String get toifaPlanPending;
 
   /// No description provided for @toifaPlanMissing.
@@ -8293,7 +8269,7 @@ abstract class AppLocalizations {
   /// No description provided for @toifaPlanNotChecked.
   ///
   /// In en, this message translates to:
-  /// **'The plan is not fully checked against sources.'**
+  /// **'No source is attached to this plan yet.'**
   String get toifaPlanNotChecked;
 
   /// No description provided for @toifaReferenceTitle.
@@ -8335,7 +8311,7 @@ abstract class AppLocalizations {
   /// No description provided for @toifaAgentChecked.
   ///
   /// In en, this message translates to:
-  /// **'Agent review: {date} (not expert-approved)'**
+  /// **'Compared with sources: {date}'**
   String toifaAgentChecked(String date);
 
   /// No description provided for @toifaHeld.
@@ -8623,7 +8599,7 @@ abstract class AppLocalizations {
   /// No description provided for @quizReviewNote.
   ///
   /// In en, this message translates to:
-  /// **'Practice questions are pending expert review.'**
+  /// **'Practice questions are for learning; the result is not an official grade.'**
   String get quizReviewNote;
 
   /// No description provided for @quizMistakes.
@@ -9148,11 +9124,11 @@ abstract class AppLocalizations {
   /// **'{count} min'**
   String examMinutes(int count);
 
-  /// No description provided for @examDraftNotice.
+  /// Exam: the result is internal practice, not an official grade.
   ///
   /// In en, this message translates to:
-  /// **'These questions haven’t been expert-reviewed yet (draft). The result is for internal testing, not an official grade.'**
-  String get examDraftNotice;
+  /// **'The result is for internal practice, not an official grade.'**
+  String get examPracticeNotice;
 
   /// No description provided for @examRulesNotice.
   ///
@@ -9529,7 +9505,7 @@ abstract class AppLocalizations {
   /// No description provided for @examNoSource.
   ///
   /// In en, this message translates to:
-  /// **'No source given — the question hasn’t been reviewed yet.'**
+  /// **'No source is given for this question.'**
   String get examNoSource;
 
   /// No description provided for @examSourceMissing.
@@ -11929,7 +11905,7 @@ abstract class AppLocalizations {
   /// No description provided for @intakeStep5.
   ///
   /// In en, this message translates to:
-  /// **'Approved — a teacher reviewed it. Until then questions stay as “Draft”.'**
+  /// **'Approved — a teacher reviewed it.'**
   String get intakeStep5;
 
   /// No description provided for @intakeConflict.
@@ -12226,12 +12202,6 @@ abstract class AppLocalizations {
   /// **'Field: {field}'**
   String reviewField(String field);
 
-  /// No description provided for @quizDraftTag.
-  ///
-  /// In en, this message translates to:
-  /// **'Draft · not reviewed'**
-  String get quizDraftTag;
-
   /// No description provided for @lessonsTitle.
   ///
   /// In en, this message translates to:
@@ -12271,26 +12241,14 @@ abstract class AppLocalizations {
   /// No description provided for @analyteAgentCheck.
   ///
   /// In en, this message translates to:
-  /// **'Automated/agent check'**
+  /// **'Compared with sources'**
   String get analyteAgentCheck;
-
-  /// No description provided for @analyteAgentCheckValue.
-  ///
-  /// In en, this message translates to:
-  /// **'{date} (not an expert approval)'**
-  String analyteAgentCheckValue(String date);
 
   /// No description provided for @analyteExpertApproval.
   ///
   /// In en, this message translates to:
   /// **'Expert approval'**
   String get analyteExpertApproval;
-
-  /// No description provided for @analyteExpertApprovalPending.
-  ///
-  /// In en, this message translates to:
-  /// **'pending'**
-  String get analyteExpertApprovalPending;
 
   /// No description provided for @classesSeat.
   ///
@@ -12745,7 +12703,7 @@ abstract class AppLocalizations {
   /// No description provided for @classroomOralNotice.
   ///
   /// In en, this message translates to:
-  /// **'Questions are auto-picked candidates; answer outlines await expert review. “Asked” marks and grades stay on this device only.'**
+  /// **'Questions are auto-picked candidates; answer outlines are a study aid. “Asked” marks and grades stay on this device only.'**
   String get classroomOralNotice;
 
   /// No description provided for @classroomOralEmpty.
@@ -12817,7 +12775,7 @@ abstract class AppLocalizations {
   /// No description provided for @classroomCandidatesNotice.
   ///
   /// In en, this message translates to:
-  /// **'Candidate questions were auto-picked and their keys aren’t verified. Review each one: the score is computed on the server using the key shown.'**
+  /// **'Candidate questions were auto-picked. Look through each one and its key: the score is computed on the server using the key shown.'**
   String get classroomCandidatesNotice;
 
   /// No description provided for @classroomCandidatesTitle.
@@ -13021,7 +12979,7 @@ abstract class AppLocalizations {
   /// No description provided for @lectureDraftNotice.
   ///
   /// In en, this message translates to:
-  /// **'Draft for the teacher to review — check the content before class'**
+  /// **'The deck is based on sources — look through the content before class'**
   String get lectureDraftNotice;
 
   /// No description provided for @lectureUzOnly.
@@ -14302,11 +14260,11 @@ abstract class AppLocalizations {
   /// **'Show to a cytologist or clinician'**
   String get cytoRefer;
 
-  /// No description provided for @cytoDraftNote.
+  /// Sources panel: how many more sources are in the full list below.
   ///
   /// In en, this message translates to:
-  /// **'This section has not been expert-reviewed. It is a learning aid: the cytologist or clinician reports.'**
-  String get cytoDraftNote;
+  /// **'+ {count} more — in the list below'**
+  String sourcesPanelMore(int count);
 
   /// No description provided for @cytoDegreeIntro.
   ///
@@ -14395,7 +14353,7 @@ abstract class AppLocalizations {
   /// No description provided for @cytoDegreeSourceNote.
   ///
   /// In en, this message translates to:
-  /// **'The grade table is a traditional teaching scheme; its exact source is awaiting expert review. The sources below are bacterial vaginosis criteria (for comparison), not the table itself.'**
+  /// **'The grade table is a traditional teaching scheme. The sources below are bacterial vaginosis criteria (for comparison), not the table itself.'**
   String get cytoDegreeSourceNote;
 
   /// No description provided for @cytoBethesdaIntro.

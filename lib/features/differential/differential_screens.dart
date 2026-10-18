@@ -124,7 +124,6 @@ class DifferentialScreen extends StatelessWidget {
         children: [
           LgHeroCard(
             image: AssetImage(cellImage('hero')),
-            tag: l.diffDraftTag,
             title: l.diffHeroTitle,
             body: l.diffHeroBody,
             action: LgButton(
@@ -189,7 +188,7 @@ class DifferentialScreen extends StatelessWidget {
             onTap: () => context.push('$_base/quiz'),
             divider: false,
           ),
-          LgNotice(l.diffDraftNote),
+          LgNotice(l.sourcesDisclaimer, kind: NoticeKind.info),
           const _RelatedCards(),
           LgSectionTitle(l.diffSourcesTitle),
           for (final (i, s) in DiffSources.all.indexed)
@@ -1798,7 +1797,7 @@ class DiffTechniqueScreen extends StatelessWidget {
           _Sources(s.refs),
         ],
         const SizedBox(height: 8),
-        LgNotice(l.diffDraftNote),
+        LgNotice(l.sourcesDisclaimer, kind: NoticeKind.info),
       ],
     );
   }

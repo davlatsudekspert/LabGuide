@@ -187,7 +187,7 @@ class _ExamSetupScreenState extends State<ExamSetupScreen> {
           onChanged: () => setState(() {}),
         ),
         const SizedBox(height: 14),
-        if (drafts) LgNotice(l.examDraftNotice),
+        if (drafts) LgNotice(l.examPracticeNotice, kind: NoticeKind.info),
         LgNotice(l.examRulesNotice, kind: NoticeKind.info),
         const SizedBox(height: 12),
         LgButton(

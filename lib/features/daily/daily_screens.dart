@@ -384,7 +384,6 @@ class _DailyScreenState extends State<DailyScreen> {
           LgEyebrow(l.quizProgress(index + 1, set.ids.length)),
           if (official != null)
             LgTag(l.toifaListNumber(official.number), tone: LgTone.neutral),
-          if (q.isDraft) LgTag(l.quizDraftTag, tone: LgTone.warning),
           if (official != null) const UzbekOnlyTag(),
         ],
       ),

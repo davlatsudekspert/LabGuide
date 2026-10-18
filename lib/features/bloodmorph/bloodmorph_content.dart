@@ -9,9 +9,9 @@
 /// mikrofotolar: litsenziya, muallif va asl izoh fayl sahifasidan
 /// tekshirilgan ([bmCheckedAt]); faqat kichraytirilgan
 /// (tool/bloodmorph_images.py). Leykotsitlar — leykoformula bo'limida,
-/// analit kartalari — kontent paketida (takrorlanmaydi). Kontent mutaxassis
-/// tekshiruvidan o'tmagan — ekranda "qoralama" belgisi (gistologiya,
-/// sitologiya kabi). Manbalar jadvali: docs/BLOODMORPH_SOURCES.md.
+/// analit kartalari — kontent paketida (takrorlanmaydi). Sahifa boshida —
+/// "Manbalar" paneli ([bmLeadRefs], D-65). Manbalar jadvali:
+/// docs/BLOODMORPH_SOURCES.md.
 library;
 
 import '../content/content_model.dart';
@@ -113,6 +113,14 @@ abstract final class BmSources {
     commonsFiles,
   ];
 }
+
+/// Bo'lim asoslangan adabiyot — sahifa boshidagi "Manbalar" paneli (D-65).
+const bmLeadRefs = [
+  CalcRef(BmSources.who2003, '9.10–9.14, p. 299–321'),
+  CalcRef(BmSources.adewoyin2014, ''),
+  CalcRef(BmSources.msdAnemia, ''),
+  CalcRef(BmSources.saidov2017, ''),
+];
 
 // ── Lokatorlar ──
 const _wLook = CalcRef(BmSources.who2003, '9.10.4, p. 305');
@@ -3644,20 +3652,6 @@ abstract final class BmL {
     'uz': 'Periferik qon surtmasi: eritrotsitlar, trombotsitlar, anemiyalar',
     'ru': 'Мазок периферической крови: эритроциты, тромбоциты, анемии',
     'en': 'Peripheral blood film: red cells, platelets, anaemias',
-  });
-  static const draftNote = _T({
-    'uz':
-        'Qoralama: matn ochiq manbalar (JSST qo‘llanmasi, sharhlar, MSD) va '
-        'kurs adabiyoti asosida yozilgan, mutaxassis tekshiruvidan hali '
-        'o‘tmagan. Bu o‘quv qo‘llanma — tashxis qo‘ymaydi.',
-    'ru':
-        'Черновик: текст основан на открытых источниках (руководство ВОЗ, '
-        'обзоры, MSD) и литературе курса и ещё не проверен экспертом. Это '
-        'учебное пособие — диагноз оно не ставит.',
-    'en':
-        'Draft: the text is based on open sources (WHO manual, reviews, MSD) '
-        'and course literature and has not yet been expert-reviewed. This is '
-        'a learning aid — it does not make a diagnosis.',
   });
   static const photoNote = _T({
     'uz':

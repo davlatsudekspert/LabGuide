@@ -91,8 +91,8 @@ void main() {
     expect(exam.limit, const Duration(minutes: 10));
     expect(exam.topicIds, ['kidney']);
     expect(exam.items.every((i) => i.topicIds.contains('kidney')), isTrue);
-    // Hamma savol qoralama — belgisi ko'rinadi.
-    expect(find.text(uz.quizDraftTag), findsOneWidget);
+    // D-65: "qoralama" belgisi ko'rsatilmaydi.
+    expect(find.textContaining('Qoralama'), findsNothing);
     expect(find.text(uz.examAnsweredOf(0, 3)), findsOneWidget);
 
     await answerCurrent(tester, s, exam, correct: true);

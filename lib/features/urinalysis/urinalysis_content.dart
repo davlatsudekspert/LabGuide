@@ -9,8 +9,8 @@
 /// ikkalasi ham ko'rsatiladi. Rasmlar — faqat mikroskopiya atlasidagi erkin
 /// litsenziyali fotolar (id bo'yicha havola, nusxa olinmaydi; muallif va
 /// litsenziya atlasdan o'qiladi). Rasmi yo'q element — "rasm hozircha yo'q".
-/// Kontent mutaxassis tekshiruvidan o'tmagan — ekranda "qoralama" belgisi
-/// (gistologiya, qon guruhi kabi). Manbalar jadvali: docs/URINALYSIS_SOURCES.md.
+/// Har sahifa boshida — bo'lim adabiyoti ("Manbalar" paneli, [urLeadRefs],
+/// D-65). Manbalar jadvali: docs/URINALYSIS_SOURCES.md.
 library;
 
 import '../content/content_model.dart';
@@ -50,6 +50,14 @@ abstract final class UrSources {
 
   static const all = [who2003, delanghe2014, simerville2005, hitzeman2022];
 }
+
+/// Bo'lim asoslangan adabiyot — sahifa boshidagi "Manbalar" paneli (D-65).
+const urLeadRefs = [
+  CalcRef(UrSources.who2003, 'Ch. 7 Examination of urine, p. 233–252'),
+  CalcRef(UrSources.delanghe2014, ''),
+  CalcRef(UrSources.simerville2005, ''),
+  CalcRef(UrSources.hitzeman2022, ''),
+];
 
 // ───────────────────────── Lokatorlar ─────────────────────────
 
@@ -4221,20 +4229,6 @@ abstract final class UrL {
     'ru': 'Сбор, физические свойства, полоска, осадок, чтение, тренировка',
     'en': 'Collection, physical, strip, sediment, reading, practice',
   });
-  static const draftNote = _T({
-    'uz':
-        'Qoralama: matn JSST qo‘llanmasi (2003), Delanghe va Speeckaert '
-        '(2014) hamda AAFP sharhlari (2005, 2022) bilan solishtirilgan, '
-        'lekin mutaxassis tekshiruvidan hali o‘tmagan.',
-    'ru':
-        'Черновик: текст сверен с руководством ВОЗ (2003), статьёй Delanghe '
-        'и Speeckaert (2014) и обзорами AAFP (2005, 2022), но ещё не прошёл '
-        'экспертную проверку.',
-    'en':
-        'Draft: checked against the WHO manual (2003), Delanghe and '
-        'Speeckaert (2014) and the AAFP reviews (2005, 2022), but not yet '
-        'reviewed by an expert.',
-  });
   static const notDiagnosis = _T({
     'uz':
         'Bu o‘quv qo‘llanma: “ishora qilishi mumkin” — tashxis emas. Natijani '
@@ -4507,7 +4501,6 @@ abstract final class UrL {
   /// Barcha matnlar (test: uch tilda to‘liq).
   static const all = <LocalizedText>[
     subtitle,
-    draftNote,
     notDiagnosis,
     collectTitle,
     collectSub,

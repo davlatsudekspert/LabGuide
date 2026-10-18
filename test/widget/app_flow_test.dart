@@ -185,7 +185,7 @@ void main() {
     // Tahlillar → glyukoza kartasi.
     await tapText(tester, uz.navTests);
     await tapText(tester, 'Och qoringa plazma glyukozasi');
-    expect(find.text(uz.analyteSampleNotice), findsOneWidget);
+    expect(find.textContaining(uz.analyteSourcesBased('')), findsOneWidget);
     // Lab tab: ro'yxatni pastga suramiz.
     await tapText(tester, uz.navLab);
     final labList = find.byType(Scrollable).hitTestable().first;
@@ -196,7 +196,7 @@ void main() {
     // Tahlillarga qaytganda karta hali ochiq (Lab ro'yxati pastga surilgani
     // uchun menyu ixcham: tab kalit bilan bosiladi).
     await tapNavTab(tester, 1);
-    expect(find.text(uz.analyteSampleNotice), findsOneWidget);
+    expect(find.textContaining(uz.analyteSourcesBased('')), findsOneWidget);
     // Lab ga qaytganda scroll joyida.
     await tapText(tester, uz.navLab);
     expect(
@@ -211,7 +211,7 @@ void main() {
     await tester.tap(find.text(uz.navTests));
     await tester.pumpAndSettle();
     expect(find.text(uz.testsTitle), findsWidgets);
-    expect(find.text(uz.analyteSampleNotice), findsNothing);
+    expect(find.textContaining(uz.analyteSourcesBased('')), findsNothing);
   });
 
   testWidgets('Android back: card → list → Home tab', (tester) async {
@@ -308,7 +308,16 @@ void main() {
     // JSST IFG chegarasi qo'shilgani uchun karta uzunroq (audit 2026-10-11).
     await pumpApp(tester, s, size: const Size(390, 5200));
     await goTo(tester, '/tests/analyte/glucose-plasma-fasting');
-    expect(find.text(en.analyteSampleNotice), findsOneWidget);
+    // D-65: karta boshida — adabiyot (muallif/nashriyot, yil, «nom»).
+    expect(find.textContaining(en.analyteSourcesBased('')), findsOneWidget);
+    expect(
+      find.textContaining(
+        'MedlinePlus · U.S. National Library of Medicine, 2023, '
+        '«Blood Glucose Test»',
+      ),
+      findsOneWidget,
+    );
+    expect(find.text(en.sourcesDisclaimer), findsOneWidget);
     expect(find.text(en.analyteRefIntervalNone), findsOneWidget);
     expect(find.textContaining('100–125 mg/dL'), findsOneWidget);
     expect(find.textContaining('≥ 126 mg/dL'), findsOneWidget);
@@ -324,7 +333,8 @@ void main() {
     expect(find.text(en.analyteDecisionNotRef), findsOneWidget);
     expect(find.textContaining('MedlinePlus'), findsWidgets);
     expect(find.textContaining('NIDDK'), findsWidgets);
-    expect(find.text(en.analyteExpertApprovalPending), findsOneWidget);
+    // "Mutaxassis tasdig'i kutilmoqda" kabi qatorlar yo'q (D-65).
+    expect(find.text(en.analyteExpertApproval), findsNothing);
     expect(find.text(en.analyteReviewApproved), findsNothing);
   });
 
@@ -350,16 +360,16 @@ void main() {
     expect(find.text(en.analyteStructureOnlyTitle), findsOneWidget);
     expect(find.text(en.statusStructureOnly), findsOneWidget);
     expect(find.text(en.analyteDecisionLimits), findsNothing);
-    expect(find.text(en.analyteSampleNotice), findsNothing);
+    expect(find.textContaining(en.analyteSourcesBased('')), findsNothing);
   });
 
-  testWidgets('sourced card: sample notice, cited claims, strict limits', (
+  testWidgets('sourced card: sources notice, cited claims, strict limits', (
     tester,
   ) async {
     final s = await makeServices(tester, language: AppLanguage.en);
     await pumpApp(tester, s, size: const Size(390, 6000));
     await goTo(tester, '/tests/analyte/egfr');
-    expect(find.text(en.analyteSampleNotice), findsOneWidget);
+    expect(find.textContaining(en.analyteSourcesBased('')), findsOneWidget);
     expect(find.text(en.analyteStructureOnlyTitle), findsNothing);
     // Manba “less than 60” deydi — “≤ 60” emas.
     expect(find.textContaining('< 60 mL/min/1.73 m²'), findsWidgets);
@@ -377,7 +387,7 @@ void main() {
     await tapText(tester, en.analytePractice);
     // Eyebrow katta harflarda ko'rsatiladi.
     expect(find.text(en.quizProgress(1, 2).toUpperCase()), findsOneWidget);
-    expect(find.text(en.quizDraftTag), findsOneWidget);
+    expect(find.textContaining('Draft'), findsNothing);
     // Mavzu tanlovi yo'q — to'g'ridan-to'g'ri shu analit savollari.
     expect(find.text(en.quizChooseTopic), findsNothing);
     expect(find.text('Creatinine'), findsWidgets);
@@ -600,7 +610,7 @@ void main() {
     expect(find.text(en.quizChooseTopic), findsOneWidget);
     expect(find.text(en.quizTopicMixed(10)), findsOneWidget);
     await tapText(tester, en.quizTopicGeneral);
-    expect(find.text(en.quizDraftTag), findsOneWidget);
+    expect(find.textContaining('Draft'), findsNothing);
     // 1-savol: to'g'ri.
     await tapText(tester, 'C₁V₁ = C₂V₂');
     expect(find.text(en.quizCorrect), findsOneWidget);

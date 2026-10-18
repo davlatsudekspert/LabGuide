@@ -17,6 +17,7 @@ import '../../settings/settings_controller.dart';
 import '../../tools/calc_info.dart';
 import '../../tools/clinical_calc_screens.dart';
 import '../../tools/clinical_calculators.dart';
+import '../../tools/sources_panel.dart';
 import '../../tools/tool_screens.dart';
 import '../content_model.dart';
 import 'conditions_screens.dart';
@@ -235,7 +236,7 @@ class _AnalyteBody {
       if (structureOnly)
         LgNotice(l.analyteStructureOnlyBody, title: l.analyteStructureOnlyTitle)
       else
-        LgNotice(l.analyteSampleNotice),
+        _sourcesNotice(l),
       if (!structureOnly) _glance(context, l),
       if (structureOnly)
         _structureOutline(context, l)
@@ -316,6 +317,19 @@ class _AnalyteBody {
       // Hamjamiyat savollari (server ulanmagan buildda — yo'q).
       CommunityTopicLink(topic: 'analyte:${analyte.id}'),
     ];
+  }
+
+  /// Karta boshida: qaysi adabiyotga asoslangani (D-65) va bitta qisqa
+  /// tibbiy xavfsizlik eslatmasi.
+  Widget _sourcesNotice(AppLocalizations l) {
+    final cites = [
+      for (final id in analyte.sourceIds)
+        if (pack.source(id) case final s?) contentSourceCitation(s, pack),
+    ];
+    return SourcesNote(
+      lines: [if (cites.isNotEmpty) l.analyteSourcesBased(cites.join('; '))],
+      footer: [l.sourcesDisclaimer],
+    );
   }
 
   Widget _glance(BuildContext context, AppLocalizations l) {
@@ -736,39 +750,27 @@ class _AnalyteBody {
     return dates.isEmpty ? null : dates.last;
   }
 
+  /// Tayyorlanishi: kim tayyorlagan, manbalar qachon ko'rilgan va
+  /// solishtirilgan (D-65: "kutilmoqda / tayinlanmagan" qatorlari yo'q).
   Widget _review(BuildContext context, AppLocalizations l, TextTheme text) {
     final approved = analyte.isReviewerApproved;
-    final translationsPending = analyte.translationReview.values.any(
-      (v) => v != 'approved',
-    );
     return LgPanel(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(l.analyteReview, style: text.titleMedium),
           const SizedBox(height: 6),
-          // Mustaqil mutaxassis tasdig'i va avtomatik (agent) tekshiruvi —
-          // alohida qatorlar: agent tekshiruvi tasdiq o'rnini bosmaydi.
-          LgMetric(
-            label: l.analyteExpertApproval,
-            value: approved
-                ? l.analyteReviewApproved
-                : l.analyteExpertApprovalPending,
-          ),
-          if (!approved)
-            LgMetric(label: '—', value: l.analyteReviewerNotAssigned),
-          // Bir kunda bir nechta tekshiruv (turli audit) — bitta qator.
-          for (final date in {for (final c in analyte.agentChecks) c.date})
+          if (approved)
             LgMetric(
-              label: l.analyteAgentCheck,
-              value: l.analyteAgentCheckValue(date),
+              label: l.analyteExpertApproval,
+              value: l.analyteReviewApproved,
             ),
-          // Kelib chiqishi: kim tayyorlagan va manbalar qachon ko'rilgan.
+          // Bir kunda bir nechta solishtirish (turli audit) — bitta qator.
+          for (final date in {for (final c in analyte.agentChecks) c.date})
+            LgMetric(label: l.analyteAgentCheck, value: date),
           LgMetric(label: l.analytePreparedBy, value: l.analyteEditorial),
           if (_lastAccessed() case final date?)
             LgMetric(label: l.analyteSourcesChecked, value: date),
-          if (translationsPending)
-            LgMetric(label: 'UZ · RU · EN', value: l.analyteTranslationPending),
           Padding(
             padding: const EdgeInsets.only(top: 10),
             child: Text(

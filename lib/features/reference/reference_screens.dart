@@ -5,8 +5,11 @@ import '../../app/widgets/lg_page.dart';
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
+import '../tools/calc_info.dart';
 import '../tools/clinical_calc_screens.dart';
+import '../tools/sources_panel.dart';
 import 'reference_content.dart';
+import 'reference_sources.dart';
 
 /// O'rganish tabidagi manzil.
 const refBase = '/learn/reference';
@@ -35,11 +38,20 @@ class RefListScreen extends StatelessWidget {
             divider: i < refTopics.length - 1,
           ),
         const SizedBox(height: 8),
-        LgNotice(l.refDraftNote),
+        SourcesPanel(refLeadRefs, note: l.refBooksNote),
       ],
     );
   }
 }
+
+/// Jadvallar asoslangan asosiy adabiyot — ro'yxat ostidagi "Manbalar"
+/// paneli (D-65); har jadvalning to'liq manbalari — blok ostida.
+const refLeadRefs = [
+  CalcRef(RefSources.who2003, ''),
+  CalcRef(RefSources.whoHb2024, ''),
+  CalcRef(RefSources.dolgov2009, ''),
+  CalcRef(RefSources.lyubina1984, ''),
+];
 
 /// Bitta jadval: bloklar kartalarda, har blok ostida manbalar.
 class RefTopicScreen extends StatelessWidget {
@@ -67,9 +79,10 @@ class RefTopicScreen extends StatelessWidget {
           style: Theme.of(context).textTheme.bodyLarge,
         ),
         const SizedBox(height: 4),
+        SourcesPanel([
+          for (final b in topic.blocks) ...b.refs,
+        ], note: l.refBooksNote),
         for (final b in topic.blocks) _BlockCard(block: b, lang: lang),
-        const SizedBox(height: 8),
-        LgNotice(l.refDraftNote),
       ],
     );
   }

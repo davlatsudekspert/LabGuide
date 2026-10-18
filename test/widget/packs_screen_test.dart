@@ -41,7 +41,7 @@ void main() {
       findsOneWidget,
     );
     expect(find.text(en.packsOffline), findsOneWidget);
-    expect(find.text(en.packsCoreState), findsOneWidget);
+    expect(find.text(en.packsCoreSources), findsOneWidget);
 
     // Katalog: sinov paketi aniq belgilangan, klinik deb ko'rsatilmaydi.
     await waitFor(tester, () => s.packs.catalogState == CatalogState.ready);

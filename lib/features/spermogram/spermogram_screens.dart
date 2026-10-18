@@ -13,6 +13,7 @@ import '../content/content_model.dart';
 import '../learn/quiz_session.dart';
 import '../tools/calc_info.dart';
 import '../tools/clinical_calc_screens.dart' show CalcSourceTile;
+import '../tools/sources_panel.dart';
 import '../tools/tool_screens.dart' show formatResult, parseFieldNumber;
 import 'spermogram_content.dart';
 import 'spermogram_logic.dart';
@@ -109,7 +110,7 @@ class SpermogramScreen extends StatelessWidget {
             ),
           ),
         ),
-        LgNotice(context.tr(SpermL.draftNote), title: l.diffDraftTag),
+        const SourcesPanel(spermLeadRefs),
         for (final (i, (title, sub, icon, path)) in rows.indexed)
           LgRow(
             key: ValueKey('sperm-row-$path'),
@@ -826,7 +827,7 @@ class _SpermAssessScreenState extends State<SpermAssessScreen> {
       title: context.tr(SpermL.assessTitle),
       subtitle: l.spermTitle,
       children: [
-        LgNotice(context.tr(SpermL.draftNote), title: l.diffDraftTag),
+        const SourcesPanel(spermLeadRefs),
         Text(context.tr(SpermL.assessIntro), style: text.bodyMedium),
         for (final f in _Field.values)
           LgField(
@@ -1083,7 +1084,7 @@ class SpermPreScreen extends StatelessWidget {
           Text(context.tr(s.body), style: text.bodyMedium),
         ],
         const SizedBox(height: 8),
-        LgNotice(context.tr(SpermL.draftNote), title: l.diffDraftTag),
+        LgNotice(l.sourcesDisclaimer, kind: NoticeKind.info),
         _Refs(refs),
       ],
     );
@@ -1211,10 +1212,7 @@ class _Question extends StatelessWidget {
           spacing: 8,
           runSpacing: 6,
           crossAxisAlignment: WrapCrossAlignment.center,
-          children: [
-            LgEyebrow(l.quizProgress(session.index + 1, total)),
-            LgTag(l.quizDraftTag, tone: LgTone.warning),
-          ],
+          children: [LgEyebrow(l.quizProgress(session.index + 1, total))],
         ),
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 10),

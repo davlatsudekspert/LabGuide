@@ -4,7 +4,7 @@
 ///
 /// Faktlar o'z so'zimiz bilan; har blok ostida manba ([RefSources]).
 /// Kitobdagi bilim rasmiy/ochiq manba bilan solishtirilgan; tasdiqlanmagan
-/// raqam yozilmagan. Kontent mutaxassis tekshiruvidan o'tmagan (draft).
+/// raqam yozilmagan. Ekranda — "Manbalar" paneli (D-65).
 library;
 
 import 'package:material_ui/material_ui.dart';

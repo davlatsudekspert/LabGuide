@@ -9,8 +9,8 @@ biriktiruvchi to‘qima, d007 — jigar, d008 — buyrak. Muskul va nerv to‘qi
 klassifikatsiyani to‘ldirish uchun qo‘shildi. Qon va suyak iligi hujayralari — leykoformula
 bo‘limida, bu yerda takrorlanmaydi.
 
-Holat: ekranda «qoralama» belgisi (sitologiya, spermogramma, qon guruhi kabi) —
-mutaxassis (domla) tekshiruvidan keyin olib tashlanadi.
+Holat (D-65): sahifa boshida «Manbalar» paneli — `histoLeadRefs` (Michigan qo‘llanmasi,
+Human Protein Atlas, Boyd 2020) va bitta tibbiy eslatma.
 
 ## 1. Matn manbalari (hammasi shu sessiyada ochilib o‘qildi)
 

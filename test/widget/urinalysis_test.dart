@@ -331,15 +331,18 @@ void main() {
       await tester.tap(card);
       await tester.pumpAndSettle();
       expect(find.byType(UrinalysisScreen), findsOne);
-      expect(find.text(UrL.draftNote.of(lang.name)), findsOne);
+      // D-65: "Manbalar" paneli — muallif, yil, «nom» (qoralama emas).
+      final delanghe = find.text(
+        l.sourceLine(
+          'Delanghe J, Speeckaert M, 2014, '
+          '«Preanalytical requirements of urinalysis»',
+        ),
+      );
+      expect(delanghe, findsOne);
       for (final r in _routes) {
         await goTo(tester, '$urinBase/$r');
         expect(tester.takeException(), isNull, reason: r);
-        expect(
-          find.text(UrL.draftNote.of(lang.name)),
-          r == 'quiz' ? findsNothing : findsOne,
-          reason: r,
-        );
+        expect(delanghe, r == 'quiz' ? findsNothing : findsOne, reason: r);
       }
       for (final e in urElements) {
         await goTo(tester, urElementRoute(e.id));

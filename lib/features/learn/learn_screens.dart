@@ -79,9 +79,6 @@ class LearnScreen extends StatelessWidget {
                 for (final lesson in pack.lessons)
                   LgRow(
                     title: lesson.title.of(lang),
-                    subtitle: lesson.reviewState == ReviewState.approved
-                        ? null
-                        : l.quizDraftTag,
                     icon: Icons.menu_book_outlined,
                   ),
               ],
@@ -406,10 +403,7 @@ class _QuizQuestion extends StatelessWidget {
           spacing: 8,
           runSpacing: 6,
           crossAxisAlignment: WrapCrossAlignment.center,
-          children: [
-            LgEyebrow(l.quizProgress(session.index + 1, total)),
-            if (q.isDraft) LgTag(l.quizDraftTag, tone: LgTone.warning),
-          ],
+          children: [LgEyebrow(l.quizProgress(session.index + 1, total))],
         ),
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 10),

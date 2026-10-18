@@ -211,7 +211,7 @@ void main() {
         await goTo(tester, '$cytoBase/$r');
         expect(find.byType(type), findsOne, reason: r);
         expect(find.text(title), findsWidgets, reason: r);
-        expect(find.text(l.cytoDraftNote), findsWidgets, reason: r);
+        expect(find.text(l.sourcesDisclaimer), findsWidgets, reason: r);
         expect(tester.takeException(), isNull, reason: r);
       }
       for (final c in cytoCells) {

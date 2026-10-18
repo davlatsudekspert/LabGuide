@@ -12,6 +12,7 @@ import '../content/content_model.dart';
 import '../learn/quiz_session.dart';
 import '../tools/calc_info.dart';
 import '../tools/clinical_calc_screens.dart' show CalcSourceTile;
+import '../tools/sources_panel.dart';
 import 'histology_content.dart';
 
 const histoBase = '/lab/histology';
@@ -22,17 +23,6 @@ extension on BuildContext {
 
   /// Matn joriy tilda.
   String tr(LocalizedText t) => t.of(_lang);
-}
-
-/// Qoralama belgisi (sitologiya/spermogramma/qon guruhi kabi).
-class _DraftNotice extends StatelessWidget {
-  const _DraftNotice();
-
-  @override
-  Widget build(BuildContext context) {
-    final l = AppLocalizations.of(context);
-    return LgNotice(context.tr(HisL.draftNote), title: l.diffDraftTag);
-  }
 }
 
 /// Manbalar ro'yxati (takrorsiz, lokator bilan).
@@ -227,7 +217,7 @@ class HistologyScreen extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 8),
-        const _DraftNotice(),
+        const SourcesPanel(histoLeadRefs),
         Text(
           context.tr(HisL.photoNote),
           style: Theme.of(context).textTheme.bodySmall,
@@ -734,10 +724,7 @@ class _Question extends StatelessWidget {
           spacing: 8,
           runSpacing: 6,
           crossAxisAlignment: WrapCrossAlignment.center,
-          children: [
-            LgEyebrow(l.quizProgress(session.index + 1, total)),
-            LgTag(l.quizDraftTag, tone: LgTone.warning),
-          ],
+          children: [LgEyebrow(l.quizProgress(session.index + 1, total))],
         ),
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 10),

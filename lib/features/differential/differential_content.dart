@@ -3,8 +3,7 @@
 ///
 /// Manbalar — [DiffSources] (JSST 2003 qo'llanmasi, MedlinePlus, NCI,
 /// ochiq maqolalar). Faktlar o'z so'zlarimiz bilan; manbada yo'q raqam
-/// yozilmaydi. Kontent mutaxassis tekshiruvidan o'tmagan — ekranda
-/// "draft" deb belgilanadi.
+/// yozilmaydi. Ekranda — manbalar ro'yxati va tibbiy eslatma (D-65).
 library;
 
 import '../content/content_model.dart';

@@ -7,8 +7,8 @@ Yo‘l: `/lab/urinalysis` (`collect`, `physical`, `strip`, `sediment`, `sediment
 `assets/urinalysis/card.png` (idish va test-chiziq; matnsiz, ranglar shartli — hech qaysi
 natijani ko‘rsatmaydi). Test: `test/widget/urinalysis_test.dart`.
 
-Holat: ekranda «qoralama» belgisi (`diffDraftTag`, gistologiya/qon guruhi kabi) —
-mutaxassis (domla) tekshiruvidan keyin olib tashlanadi. Har sahifada «ishora qilishi
+Holat (D-65): har sahifa boshida «Manbalar» paneli — `urLeadRefs` (JSST 2003, 7-bob,
+233–252-bet; Delanghe va Speeckaert 2014; AAFP 2005, 2022) va bitta tibbiy eslatma. Har sahifada «ishora qilishi
 mumkin — tashxis emas» eslatmasi; o‘qish yordamchisi oxirida yo‘llanma eslatmasi.
 
 ## 1. Matn manbalari (hammasi shu sessiyada ochib o‘qildi)

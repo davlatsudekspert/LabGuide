@@ -238,10 +238,7 @@ class _Question extends StatelessWidget {
           spacing: 8,
           runSpacing: 6,
           crossAxisAlignment: WrapCrossAlignment.center,
-          children: [
-            LgEyebrow(l.quizProgress(session.index + 1, total)),
-            LgTag(l.quizDraftTag, tone: LgTone.warning),
-          ],
+          children: [LgEyebrow(l.quizProgress(session.index + 1, total))],
         ),
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 10),

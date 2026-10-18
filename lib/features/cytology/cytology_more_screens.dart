@@ -7,6 +7,7 @@ import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
 import '../tools/calc_info.dart';
 import '../tools/clinical_calc_screens.dart';
+import '../tools/sources_panel.dart';
 import '../tools/tool_screens.dart' show formatResult;
 import 'cytology_more.dart';
 
@@ -95,7 +96,7 @@ class CytoAdequacyScreen extends StatelessWidget {
       title: l.cytoAdequacyTitle,
       subtitle: l.cytoTitle,
       children: [
-        LgNotice(l.cytoDraftNote),
+        const SourcesPanel(cytoAdequacyRefs),
         for (final f in cytoAdequacy) _FactPanel(f),
         LgSectionTitle(l.cytoArtefactsTitle),
         for (final f in cytoArtefacts) _FactPanel(f),
@@ -120,7 +121,7 @@ class CytoReactiveScreen extends StatelessWidget {
       title: l.cytoReactiveTitle,
       subtitle: l.cytoTitle,
       children: [
-        LgNotice(l.cytoDraftNote),
+        const SourcesPanel(cytoReactiveRefs),
         Text(l.cytoReactiveIntro, style: text.bodyMedium),
         LgSectionTitle(l.cytoCompareTitle),
         // Telefon ekrani uchun: har belgi — alohida panel, ustunlar qatorma-qator.
@@ -219,7 +220,7 @@ class _CytoMaturationScreenState extends State<CytoMaturationScreen> {
       title: l.cytoMaturationTitle,
       subtitle: l.cytoTitle,
       children: [
-        LgNotice(l.cytoDraftNote),
+        const SourcesPanel(cytoMaturationRefs),
         for (final f in cytoMaturation) _FactPanel(f),
         LgSectionTitle(l.cytoMiCalcTitle),
         field(l.cytoMiParabasal, _p),
@@ -280,7 +281,7 @@ class CytoOtherScreen extends StatelessWidget {
       title: l.cytoOtherTitle,
       subtitle: l.cytoTitle,
       children: [
-        LgNotice(l.cytoDraftNote),
+        SourcesPanel([for (final s in cytoOtherSystems) ...s.refs]),
         Text(l.cytoOtherIntro, style: text.bodyMedium),
         for (final sys in cytoOtherSystems) ...[
           LgSectionTitle(sys.title.of(lang)),

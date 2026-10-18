@@ -53,7 +53,7 @@ void main() {
     expect(find.text(l.micTranslation), findsOneWidget);
     expect(find.text('CDC/ Dr. F. Gilbert'), findsOneWidget);
     expect(find.text(l.micSourcePage), findsOneWidget);
-    expect(find.text(l.micDraftTag), findsOneWidget);
+    expect(find.text(l.micDraftTitle), findsOneWidget);
     expect(find.text('1000X'), findsOneWidget);
     expect(find.text(l.micNotStated), findsOneWidget); // bo'yoq yozilmagan
 

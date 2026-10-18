@@ -8,8 +8,8 @@ karta va raqamli sxema: `tool/illustrations/bloodmorph/gen_bloodmorph.py` →
 `render.cjs --bloodmorph`. Testlar: `test/widget/bloodmorph_test.dart`. Vizual o‘tish:
 `tool/screenshots/walk_bloodmorph_test.dart`.
 
-Holat: ekranda «qoralama» belgisi (gistologiya, sitologiya kabi) — mutaxassis (domla)
-tekshiruvidan keyin olib tashlanadi. Leykotsitlar — leykoformula bo‘limida (havola), analit
+Holat (D-65): sahifa boshida «Manbalar» paneli — `bmLeadRefs` (JSST 2003, 9.10–9.14;
+Adewoyin 2014; MSD; Saidov 2017) va bitta tibbiy eslatma. Leykotsitlar — leykoformula bo‘limida (havola), analit
 ma’lumoti — kontent paketidagi kartalarda (havola, takrorlanmaydi), anemiya jadvali —
 «Jadvallar va algoritmlar → Anemiya» (havola), retikulotsit hisobi — mavjud kalkulyator
 (`/lab/calculators/reticulocytes`; ishlangan misol shu funksiya bilan hisoblanadi).

@@ -6,8 +6,8 @@
 /// Medicine (5-nashr, 2013) PDF'i, RF SSV buyrug'i № 1134n (2020) matni va
 /// ikki ochiq maqola. Manbada yo'q raqam yoki qadam yozilmaydi; lokatorda
 /// bo'lim va sahifa. Ro'yxat va tekshirilmagan narsalar —
-/// docs/BLOODGROUP_SOURCES.md. Kontent mutaxassis tekshiruvidan o'tmagan —
-/// "qoralama"; ilova laboratoriya SOP'i o'rnini bosmaydi.
+/// docs/BLOODGROUP_SOURCES.md. Sahifa boshida — "Manbalar" paneli
+/// ([bgLeadRefs], D-65); ilova laboratoriya SOP'i o'rnini bosmaydi.
 library;
 
 import '../content/content_model.dart';
@@ -84,6 +84,13 @@ abstract final class BgSources {
     trummer2026,
   ];
 }
+
+/// Bo'lim asoslangan adabiyot — sahifa boshidagi "Manbalar" paneli (D-65).
+const bgLeadRefs = [
+  CalcRef(BgSources.bsh2012, ''),
+  CalcRef(BgSources.who, ''),
+  CalcRef(BgSources.htm2013, ''),
+];
 
 // ───────────────────────── Lokatorlar ─────────────────────────
 
@@ -167,17 +174,6 @@ abstract final class BgL {
     'uz': 'ABO va RhD: usullar, moslik, xatolar',
     'ru': 'AB0 и RhD: методы, совместимость, ошибки',
     'en': 'ABO and RhD: methods, compatibility, errors',
-  });
-  static const draftNote = _T({
-    'uz':
-        'Qoralama: matn BSH 2012, JSST va UK qo‘llanmalari bilan '
-        'solishtirilgan, lekin mutaxassis tekshiruvidan hali o‘tmagan.',
-    'ru':
-        'Черновик: текст сверен с руководствами BSH 2012, ВОЗ и UK, но ещё '
-        'не прошёл экспертную проверку.',
-    'en':
-        'Draft: checked against the BSH 2012, WHO and UK texts but not yet '
-        'reviewed by an expert.',
   });
   static const sopNote = _T({
     'uz':

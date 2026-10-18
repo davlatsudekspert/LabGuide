@@ -3,7 +3,7 @@
 /// Har bir raqam va da'vo shu sessiyada birlamchi manbadan tekshirilgan:
 /// JSST 2021 qo'llanmasi (6-nashr) PDF'i, JSST 2010 (5-nashr) — atamalar
 /// jadvali, EAU qo'llanmasi. Manbada yo'q raqam yozilmaydi; lokatorda
-/// bo'lim va sahifa. Kontent mutaxassis tekshiruvidan o'tmagan — "draft".
+/// bo'lim va sahifa. Sahifa boshida — "Manbalar" paneli ([spermLeadRefs], D-65).
 library;
 
 import '../content/content_model.dart';
@@ -39,6 +39,13 @@ abstract final class SpermSources {
   static const all = [who2021, who2010, eau];
 }
 
+/// Bo'lim asoslangan adabiyot — sahifa boshidagi "Manbalar" paneli (D-65).
+const spermLeadRefs = [
+  CalcRef(SpermSources.who2021, ''),
+  CalcRef(SpermSources.who2010, ''),
+  CalcRef(SpermSources.eau, ''),
+];
+
 // Tez-tez ishlatiladigan lokatorlar.
 const refTable83 = CalcRef(SpermSources.who2021, 'Table 8.3, p. 213');
 const refNotThreshold = CalcRef(SpermSources.who2021, '§8.1.3, p. 214');
@@ -69,19 +76,6 @@ abstract final class SpermL {
     'ru': 'По руководству ВОЗ 2021',
     'en': 'Based on the WHO 2021 manual',
   });
-  static const draftNote = _T({
-    'uz':
-        'Qoralama: matn JSST qo‘llanmasi (6-nashr, 2021) bilan solishtirilgan, '
-        'lekin mutaxassis tekshiruvidan hali o‘tmagan. Natijani shifokor '
-        'baholaydi.',
-    'ru':
-        'Черновик: текст сверен с руководством ВОЗ (6-е изд., 2021), но ещё '
-        'не прошёл экспертную проверку. Результат оценивает врач.',
-    'en':
-        'Draft: checked against the WHO manual (6th ed., 2021) but not yet '
-        'reviewed by an expert. Results are interpreted by a clinician.',
-  });
-
   // Hub qatorlari.
   static const limitsTitle = _T({
     'uz': 'Asosiy ko‘rsatkichlar',

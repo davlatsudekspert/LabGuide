@@ -399,7 +399,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get condNotDiagnosticBody =>
-      'Справочник помогает планировать обследование. Клиническая оценка и окончательное решение — за врачом. Текст — черновик на основе источников, ожидает независимой экспертной проверки.';
+      'Справочник помогает планировать обследование. Клиническая оценка и окончательное решение — за врачом. Текст основан на источниках, они указаны в каждой карточке.';
 
   @override
   String get condCautionsTitle => 'Важно учитывать';
@@ -423,7 +423,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get condReferralFooter =>
-      'Справочник LabGuide (черновик). Не инструмент диагностики — окончательное решение за врачом.';
+      'Справочник LabGuide. Не инструмент диагностики — окончательное решение за врачом.';
 
   @override
   String get condAnalyteSection => 'При каких состояниях назначают';
@@ -593,16 +593,13 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get statusDraft => 'Черновик';
-
-  @override
   String get statusVerified => 'Проверено';
 
   @override
   String get statusPublished => 'Опубликовано';
 
   @override
-  String get statusSourcedSample => 'Пример с источниками';
+  String get statusSourcedSample => 'На основе источников';
 
   @override
   String get statusStructureOnly => 'Только структура';
@@ -637,15 +634,16 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get analyteStructureOnlyBody =>
-      'В карточке пока только структура. Клинический текст добавляется после подбора источников и независимой экспертизы — общий текст не выдаётся за готовый.';
+      'В карточке пока только структура. Клинический текст добавляется вместе с источниками — общий текст не выдаётся за готовый.';
 
   @override
-  String get analyteSampleNotice =>
-      'Учебный пример на основе указанных источников. Ожидает независимой экспертизы — не для клинических решений.';
+  String analyteSourcesBased(String sources) {
+    return 'Основано на источниках: $sources';
+  }
 
   @override
   String get analyteNotWritten =>
-      'Ещё не написано: требуются источники и проверка.';
+      'Ещё не написано: текст добавляется вместе с источниками.';
 
   @override
   String get analyteAtAGlance => 'Кратко';
@@ -706,19 +704,13 @@ class AppLocalizationsRu extends AppLocalizations {
       'Права на использование: необходимо проверить перед распространением';
 
   @override
-  String get analyteReview => 'Статус проверки';
+  String get analyteReview => 'Подготовка и источники';
 
   @override
   String get analyteReviewPending => 'Ожидает экспертизы';
 
   @override
   String get analyteReviewApproved => 'Проверено';
-
-  @override
-  String get analyteReviewerNotAssigned => 'Рецензент не назначен';
-
-  @override
-  String get analyteTranslationPending => 'Проверка перевода ожидается';
 
   @override
   String analyteContentVersion(String version) {
@@ -1347,11 +1339,11 @@ class AppLocalizationsRu extends AppLocalizations {
   String get diffSourcesTitle => 'Источники';
 
   @override
-  String get diffDraftTag => 'Черновик · на проверке у специалиста';
+  String get sourcesPanelTitle => 'Источники';
 
   @override
-  String get diffDraftNote =>
-      'Раздел не прошёл проверку специалиста. Результат — не диагноз; референтные интервалы — на бланке вашей лаборатории.';
+  String get sourcesDisclaimer =>
+      'Учебный справочник, не диагноз: результат оценивает врач с учётом клинических данных; референтные интервалы зависят от лаборатории и метода.';
 
   @override
   String get diffSchematicCaption =>
@@ -1851,8 +1843,8 @@ class AppLocalizationsRu extends AppLocalizations {
       'Краткие таблицы по книгам и официальным источникам. Под каждым разделом указаны источники.';
 
   @override
-  String get refDraftNote =>
-      'Черновик: экспертная проверка не пройдена. Книги приведены только как источники — текст и рисунки не копировались. Заключение — за врачом.';
+  String get refBooksNote =>
+      'Книги приведены только как источники — текст и рисунки не копировались. Заключение — за врачом.';
 
   @override
   String get refOpenSub => 'Таблица и алгоритм';
@@ -2702,7 +2694,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get micEduNotice =>
-      'Учебные изображения — не для диагностики. У каждого снимка указаны автор, лицензия и исходная подпись. Пояснения LabGuide — черновик, ожидают проверки специалиста.';
+      'Учебные изображения — не для диагностики. У каждого снимка указаны автор, лицензия и исходная подпись.';
 
   @override
   String get micEduTag => 'Учебный снимок — не для диагностики';
@@ -2774,7 +2766,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String get micDraftTitle => 'На что обратить внимание';
 
   @override
-  String get micDraftTag => 'Черновик · ожидает проверки специалиста';
+  String sourceLine(String cite) {
+    return 'Источник: $cite';
+  }
 
   @override
   String get micCreditTitle => 'Автор и лицензия';
@@ -3997,8 +3991,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get packsOffline => 'Работает без интернета';
 
   @override
-  String get packsCoreState =>
-      'Статус: черновик — учебный материал с источниками, ещё не прошёл независимую экспертную проверку';
+  String get packsCoreSources =>
+      'Учебный справочник на основе источников — в каждой карточке список литературы';
 
   @override
   String packsContents(int cards, int questions, int sources) {
@@ -4040,9 +4034,6 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get packsStatusTest => 'Тестовый пакет · не клинический';
-
-  @override
-  String get packsStatusDraft => 'Черновик · не проверен экспертом';
 
   @override
   String get packsStatusReviewed => 'Проверен экспертом';
@@ -4408,7 +4399,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String toifaAboutOral(int ready, int total) {
-    return 'Планы устных ответов подготовлены LabGuide и ждут проверки специалистом ($ready / $total планов с источниками).';
+    return 'Планы устных ответов — учебная помощь, подготовленная LabGuide ($ready / $total планов с источниками).';
   }
 
   @override
@@ -4701,8 +4692,7 @@ class AppLocalizationsRu extends AppLocalizations {
       'Ключ в списке не отмечен — вопрос не оценивается.';
 
   @override
-  String get toifaNoteNoSource =>
-      'Источник для пояснения не указан (не проверено).';
+  String get toifaNoteNoSource => 'Источник для пояснения не указан.';
 
   @override
   String get toifaRelatedCards => 'Связанные карточки';
@@ -4734,7 +4724,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get toifaPlanDisclaimer =>
-      'Планы ответов подготовлены LabGuide и ждут проверки специалистом. Это не официальные ответы.';
+      'Планы ответов — учебная помощь, подготовленная LabGuide. Это не официальные ответы.';
 
   @override
   String get toifaPickCategoryFirst => 'Сначала выберите категорию';
@@ -4770,14 +4760,13 @@ class AppLocalizationsRu extends AppLocalizations {
   String get toifaPlanTitle => 'План ответа';
 
   @override
-  String get toifaPlanPending =>
-      'Подготовлено LabGuide, ждёт проверки специалистом';
+  String get toifaPlanPending => 'Подготовлено LabGuide';
 
   @override
   String get toifaPlanMissing => 'План для этого вопроса ещё не подготовлен.';
 
   @override
-  String get toifaPlanNotChecked => 'План не полностью проверен по источникам.';
+  String get toifaPlanNotChecked => 'К этому плану источник ещё не привязан.';
 
   @override
   String get toifaReferenceTitle =>
@@ -4801,7 +4790,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String toifaAgentChecked(String date) {
-    return 'Проверка агентом: $date (не подтверждено специалистом)';
+    return 'Сверено с источниками: $date';
   }
 
   @override
@@ -4983,7 +4972,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get quizSources => 'Источник';
 
   @override
-  String get quizReviewNote => 'Учебные вопросы ожидают экспертной проверки.';
+  String get quizReviewNote =>
+      'Учебные вопросы — для тренировки; результат не является официальной оценкой.';
 
   @override
   String get quizMistakes => 'Разбор ошибок';
@@ -5337,8 +5327,8 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get examDraftNotice =>
-      'Вопросы ещё не проверены специалистом (черновик). Результат — для внутренней проверки, это не официальная оценка.';
+  String get examPracticeNotice =>
+      'Результат — для внутренней тренировки, это не официальная оценка.';
 
   @override
   String get examRulesNotice =>
@@ -5562,7 +5552,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get examWhyWrong => 'Почему не этот ответ';
 
   @override
-  String get examNoSource => 'Источник не указан — вопрос ещё не проверен.';
+  String get examNoSource => 'Для этого вопроса источник не указан.';
 
   @override
   String get examSourceMissing =>
@@ -6936,8 +6926,7 @@ class AppLocalizationsRu extends AppLocalizations {
       'Связан — привязан к карточкам анализов и урокам с номером страницы.';
 
   @override
-  String get intakeStep5 =>
-      'Подтверждён — преподаватель проверил. До этого вопросы остаются «Черновиком».';
+  String get intakeStep5 => 'Подтверждён — преподаватель проверил.';
 
   @override
   String get intakeConflict =>
@@ -7108,9 +7097,6 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get quizDraftTag => 'Черновик · не проверено';
-
-  @override
   String get lessonsTitle => 'Темы занятий';
 
   @override
@@ -7135,18 +7121,10 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get analyteAgentCheck => 'Автоматическая/агентная проверка';
-
-  @override
-  String analyteAgentCheckValue(String date) {
-    return '$date (не экспертное подтверждение)';
-  }
+  String get analyteAgentCheck => 'Сверено с источниками';
 
   @override
   String get analyteExpertApproval => 'Подтверждение эксперта';
-
-  @override
-  String get analyteExpertApprovalPending => 'ожидается';
 
   @override
   String classesSeat(String n) {
@@ -7409,7 +7387,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get classroomOralNotice =>
-      'Вопросы — автоматически подобранные кандидаты; план ответа ждёт проверки специалистом. Отметки «задан» и оценки хранятся только на этом устройстве.';
+      'Вопросы — автоматически подобранные кандидаты; план ответа — учебная помощь. Отметки «задан» и оценки хранятся только на этом устройстве.';
 
   @override
   String get classroomOralEmpty => 'Для этой темы нет устных вопросов';
@@ -7451,7 +7429,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get classroomCandidatesNotice =>
-      'Вопросы-кандидаты подобраны автоматически, ключи не проверены. Просмотрите каждый: балл считается на сервере по показанному ключу.';
+      'Вопросы-кандидаты подобраны автоматически. Просмотрите каждый вопрос и его ключ: балл считается на сервере по показанному ключу.';
 
   @override
   String classroomCandidatesTitle(int picked, int total) {
@@ -7568,7 +7546,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get lectureDraftNotice =>
-      'Черновик для проверки преподавателем — просмотрите перед занятием';
+      'Презентация основана на источниках — просмотрите содержание перед занятием';
 
   @override
   String get lectureUzOnly => 'Эта презентация пока только на узбекском языке';
@@ -8307,8 +8285,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String get cytoRefer => 'Покажите цитологу или врачу';
 
   @override
-  String get cytoDraftNote =>
-      'Раздел не проверен специалистом. Это учебный материал: заключение даёт цитолог или врач.';
+  String sourcesPanelMore(int count) {
+    return '+ ещё $count — в списке ниже';
+  }
 
   @override
   String get cytoDegreeIntro =>
@@ -8358,7 +8337,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get cytoDegreeSourceNote =>
-      'Таблица степеней — традиционная учебная схема; её точный источник ожидает проверки специалистом. Источники ниже — критерии бактериального вагиноза (для сравнения), а не сама таблица.';
+      'Таблица степеней — традиционная учебная схема. Источники ниже — критерии бактериального вагиноза (для сравнения), а не сама таблица.';
 
   @override
   String get cytoBethesdaIntro =>
