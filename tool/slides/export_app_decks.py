@@ -15,10 +15,11 @@ Ishga tushirish (kontent o'zgarganda qayta):
   python3 tool/slides/export_app_decks.py            # fayllarni qayta yozadi
   python3 tool/slides/export_app_decks.py --check    # yozmasdan, fayllar dolzarbligini tekshiradi
 
-d001 (muallif tayyorlagan, rasmli, faqat uz) — assets/lectures/d001.json o'z joyida
-qoladi va indeksda uz uchun shu fayl ko'rsatiladi (`f` maydoni); generatorning d001 decki
-(boshqa, yupqaroq mazmun) eksport qilinmaydi. Ilovada d001 ru/en da "faqat o'zbekcha"
-belgisi bilan ochiladi.
+d001 (muallif tayyorlagan, rasmli uz) — assets/lectures/d001.json o'z joyida qoladi;
+ru/en — uning aynan tarjimasi (assets/lectures/d001.ru.json, d001.en.json; rasmsiz, chunki
+rasmlar uz matnli PPTX render — ilova matn shablonida chizadi). Indeksda har til uchun shu
+fayllar ko'rsatiladi (`f` maydoni); generatorning d001 decki (boshqa, yupqaroq mazmun)
+eksport qilinmaydi.
 
 PPTX slayd turlari -> ilova shablonlari (title, bullets, table, figure, qa):
   title    -> title        outline  -> bullets      text    -> bullets
@@ -52,8 +53,13 @@ DECK_DIR = os.path.join(OUT_DIR, 'decks')
 SCHEMA = 2
 LANGS = dc.LANGS
 
-# d001 — muallif tayyorlagan rasmli deck (uz); indeksda shu fayl ishlatiladi.
-AUTHORED = {('d001', 'uz'): 'assets/lectures/d001.json'}
+# d001 — muallif tayyorlagan rasmli deck (uz) va uning ru/en tarjimalari (2026-10-18);
+# indeksda shu fayllar ishlatiladi.
+AUTHORED = {
+    ('d001', 'uz'): 'assets/lectures/d001.json',
+    ('d001', 'ru'): 'assets/lectures/d001.ru.json',
+    ('d001', 'en'): 'assets/lectures/d001.en.json',
+}
 
 # ------------------------------------------------------- 16:9 kanvas byudjeti ----
 # Ilova slaydni 1280×720 kanvasda chizadi (lib/features/classroom/lecture_canvas.dart —

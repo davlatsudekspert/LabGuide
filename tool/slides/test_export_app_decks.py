@@ -92,7 +92,13 @@ class Index(unittest.TestCase):
                     want.add((d['id'], lg))
         self.assertEqual(want, set(files))
         self.assertEqual(index['decks'][0]['id'], 'd001')
-        self.assertEqual(index['decks'][0]['l'], ['uz'])
+        # d001: muallif decki (uz) va uning ru/en tarjimalari — hammasi `f` orqali.
+        self.assertEqual(index['decks'][0]['l'], ['uz', 'ru', 'en'])
+        self.assertEqual(index['decks'][0]['f'], {
+            'uz': 'assets/lectures/d001.json',
+            'ru': 'assets/lectures/d001.ru.json',
+            'en': 'assets/lectures/d001.en.json',
+        })
 
 
 class Decks(unittest.TestCase):
@@ -498,6 +504,29 @@ class Canvas16x9(unittest.TestCase):
             j = json.load(f)
         self.assertEqual(len(j['slides']), 30)
         self.assertEqual(j['lang'], 'uz')
+
+    def test_authored_d001_translations_match_uz(self):
+        """ru/en — uz deckning aynan tarjimasi: slaydlar soni, tartibi, maydonlari va bandlar
+        soni bir xil (rasm yo'q: rasmlar uz matnli); raqamlar va manba kodlari saqlangan."""
+        def load(name):
+            with open(os.path.join(REPO, 'assets', 'lectures', name), encoding='utf-8') as f:
+                return json.load(f)
+        uz = load('d001.json')
+        for lg in ('ru', 'en'):
+            j = load(f'd001.{lg}.json')
+            self.assertEqual(j['lang'], lg)
+            self.assertEqual(j['topics'], uz['topics'])
+            self.assertEqual(len(j['slides']), len(uz['slides']))
+            for i, (a, b) in enumerate(zip(uz['slides'], j['slides']), 1):
+                w = f'{lg}#{i}'
+                self.assertEqual(set(b), set(a) - {'image'}, w)
+                self.assertEqual(len(b['bullets']), len(a['bullets']), w)
+                self.assertEqual(b.get('section'), a.get('section'), w)
+                for key in ('bullets', 'note', 'source'):
+                    ua = json.dumps(a.get(key), ensure_ascii=False)
+                    tb = json.dumps(b.get(key), ensure_ascii=False)
+                    for code in set(re.findall(r'kdl-o-\d{3}|BSL-\d|ISO \d+(?::\d{4})?|20[0-2]\d', ua)):
+                        self.assertIn(code, tb, f'{w} {key}: {code}')
 
 
 if __name__ == '__main__':
