@@ -384,4 +384,40 @@ void main() {
     expect(lfb.text.values['ru'], contains('в основном миелин'));
     expect(lfb.text.values['uz'], contains('asosan miyelinni'));
   });
+
+  test(
+    'adabiyot tekshiruvi 2026-10-18: o‘zbekcha atamalar darslik bo‘yicha',
+    () {
+      HistoItem item(String id) => histoItems.firstWhere((i) => i.id == id);
+      // Zokirova 2025, 28–30-b.: "o'zgaruvchan epiteliy".
+      final tr = item('transitional');
+      expect(tr.name.of('uz'), 'O‘zgaruvchan epiteliy');
+      expect(
+        tr.look.first.text.of('uz'),
+        contains('Manba: Zokirova N.B., 2025'),
+      );
+      expect(tr.look.first.text.of('ru'), contains('Источник: Zokirova'));
+      expect(tr.look.first.text.of('en'), contains('Source: Zokirova'));
+      expect(
+        tr.refs.map((r) => r.source.id),
+        contains(HistoSources.zokirova2025.id),
+      );
+      for (final i in histoItems) {
+        for (final f in [
+          ...i.look,
+          i.key,
+          i.function,
+          if (i.where != null) i.where!,
+          if (i.confuse != null) i.confuse!,
+        ]) {
+          expect(f.text.of('uz'), isNot(contains('O‘tuvchi epiteliy')));
+        }
+      }
+      // Jiyak (cho'tkasimon hoshiya) — 118-b.
+      final kidneyFacts = [for (final i in histoItems) ...i.look]
+          .where((f) => f.text.of('uz').contains('Proksimal kanalchalar'));
+      expect(kidneyFacts.single.text.of('uz'), contains('jiyak'));
+      expect(kidneyFacts.single.text.of('uz'), contains('118-b.'));
+    },
+  );
 }

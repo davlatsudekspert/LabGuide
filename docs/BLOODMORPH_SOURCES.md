@@ -168,3 +168,20 @@ shizotsit rasmida tomchisimon shakl, akantotsit ↔ exinotsit) ataylab tanlanmag
 - Pappenxaym tanachalari, «bite»/«blister» hujayralar, Kabo halqalari — qamrovda yo‘q yoki mos
   rasm tanlanmadi; faqat «Kiritmalar» matnida eslatilgan (manbali).
 - Shizotsitlar uchun ICSH miqdoriy chegarasi (%), RDW uchun yagona son — manbasiz, yozilmadi.
+
+## 2026-10-18 Najmitdinov 1998 / Saidov 2017 raqamlari qayta ochildi
+
+Najmitdinov — Drive Word nusxasining to‘liq matni (1,03 mln belgi, `najm.txt`); Saidov — Drive
+Word matni. Har raqam so‘zma-so‘z topildi:
+
+| Ilovada | Kitob matni | Hukm |
+|---|---|---|
+| Normal eritrotsit 6–9 µm, o‘rtacha 7,2 µm | «Нормал эритроцитнинг катталиги 6—9 микронгача бўлиб, диаметри 7,2 микронга тенг» (Кириш, 3-расм matni) | tasdiqlandi |
+| < 6 µm mikrotsit; 9–12 µm makrotsit; > 12 µm megalotsit | «6 микрондан кам … микроцитлар»; «9—12 микронга баробар бўлса макроцит, 12 микрондан ҳам каттароқ булса, мегалоцит» | tasdiqlandi |
+| Nishonsimon: yakka hujayralar normal surtmada ham | «ягона нишонсимон эритроцитлар нормал қон суртмаларида ҳам, анемия касалликларида ҳам учраш[и мумкин]» (9-расм matni) | tasdiqlandi |
+| Tomchisimon/noksimon — poykilotsit shakli | «чузинчоқ, ноксимон эритроцитлар» (пойкилоцитоз) | tasdiqlandi |
+| Retikulotsitlar I–V sinf; sog‘lomda IV–V; regeneratsiyada III, II, og‘irda I | «5 синфга бўлиш мумкин … Соғлом одамнинг қонида фақат IV ва V синфга оид … ёш ретикулоцитлар (III, II, огир анемияларда эса I синфга оид)» (14-расм matni) | tasdiqlandi |
+| Retikulotsit normasi 5–10 ‰ | «Соғлом одамнинг қонидаги ретикулоцитларнинг сони 5—10% (промилли) га баробар» | tasdiqlandi |
+| Rang ko‘rsatkichi (reference bo‘limi) | «бир единица … ранг кўрсаткичи … Нормада у 0,9—1,1» | tasdiqlandi (ilovada faqat havola) |
+| RDW kattalar 11,5–14,5 % | Saidov 2017: «Катталар 11,5 – 14,5 %» (32-bo‘lim; mundarija bo‘yicha 36-b.) | tasdiqlandi |
+| «Avval anizotsitoz, keyin poykilotsitoz, eng og‘irida shizotsitlar» (ketma-ketlik) | Kitobda: «анизоцитоз … билан бирга доимо пойкилоцитоз … кузатилади … оғир даражали анемияларда эса шизоцитлар» — ketma-ketlik emas, **birga** | **nomuvofiq** — `bloodmorph_content.dart` (~1151-qator) bu ish doirasidan tashqarida; tuzatish taklifi: «anizotsitoz bilan birga doimo poykilotsitoz kuzatiladi; og‘ir anemiyalarda shizotsitlar» |

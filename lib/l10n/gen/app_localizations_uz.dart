@@ -8231,11 +8231,11 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get cytoDegreeNote =>
-      'An’anaviy tasnif (MDH mamlakatlari amaliyoti); chegaralar darsliklarda biroz farq qiladi, pH — taxminiy. Bakterial vaginoz uchun xalqaro mezonlar — Amsel va Nugent.';
+      'An’anaviy tasnif (A. Heurlein, 1910; MDH mamlakatlari amaliyoti). Rossiya tavsiyalari (ROAG 2019) uni faqat tarixiy ahamiyatga ega deb hisoblaydi; bakterial vaginoz uchun xalqaro mezonlar — Amsel va Nugent.';
 
   @override
   String get cytoDegreeSourceNote =>
-      'Daraja jadvali — an\'anaviy o‘quv sxemasi; uning aniq manbasi mutaxassis tekshiruvini kutmoqda. Quyidagi manbalar bakterial vaginoz mezonlari (taqqoslash uchun), jadvalning o‘zini emas.';
+      'Quyida tasnif va bakterial vaginoz mezonlari manbalari; ular farq qilgan joyda ikkalasi ham ko‘rsatilgan.';
 
   @override
   String get cytoBethesdaIntro =>

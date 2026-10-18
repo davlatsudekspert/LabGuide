@@ -35,7 +35,7 @@ Histology Guide va SIU — Cloudflare to‘sig‘i. Shuning uchun ular ishlatilm
 | Bir qavatli prizmatik | baland hujayra, yadrolar asosda bir qator; qadahsimon hujayra — shilliq H&E bilan bo‘yalmaydi; mikrovorsinkali hoshiya; qiya kesimda ko‘p qator ko‘rinishi | UM p. 16–17, 20, 24 |
 | Ko‘p qatorli kiprikli | yadrolar turli darajada, hamma hujayra bazal membranada; kipriklar, qadahsimon hujayralar; traxeya | UM p. 18–19 |
 | Ko‘p qavatli yassi | qavatlar, bazal qavat yangilaydi; muguzlanmaydigan/muguzlanuvchi; qizilo‘ngach, qin, halqum, teri; ishqalanishdan himoya | UM p. 18, 20, 32 |
-| O‘tuvchi | gumbazsimon yuza hujayralar; cho‘zilganda yupqalashadi; faqat siydik yo‘llari; suv/tuz o‘tkazmaydi | UM p. 19, 22, 208, 210 |
+| O‘zgaruvchan (o‘tuvchi) | gumbazsimon yuza hujayralar; cho‘zilganda yupqalashadi; faqat siydik yo‘llari; suv/tuz o‘tkazmaydi | UM p. 19, 22, 208, 210 |
 | G‘ovak biriktiruvchi | siyrak to‘lqinsimon tolalar; asosiy modda; fibroblast; plazmatik hujayralar | UM p. 26–28, 33 |
 | Zich shakllangan (pay) | parallel tolalar, hujayra kam (fibroblastlar); qisqarish yoriqlari; I tip kollagen; silliq muskul/nervdan farqi | UM p. 26, 30, 33, 50 |
 | Yog‘ to‘qimasi | bitta lipid tomchisi, chetdagi yadro, kollagen tasmalar; energiya, izolyatsiya, leptin; qo‘ng‘ir yog‘ — ko‘p tomchili | HPA Adipose; UM p. 28–29, 32–33 |
@@ -113,10 +113,9 @@ Ruscha atamalar ruscha Vikipediya maqolalari bilan solishtirildi (Эпители
 - Vikipediya darslik emas — ruscha atamalarni rus tilidagi gistologiya darsligi
   (masalan, Афанасьев Ю. И. va boshq. «Гистология, эмбриология, цитология») bilan
   solishtirish kerak. Bu muhitda darslik matni yo‘q edi.
-- O‘zbekcha atamalar (bir qavatli prizmatik, ko‘p qatorli kiprikli, o‘tuvchi epiteliy,
-  g‘ovak tolali va zich shakllangan biriktiruvchi to‘qima, interkalyar disklar, koptokcha,
-  Bouman–Shumlyanskiy kapsulasi va h.k.) o‘zbek tilidagi gistologiya darsligi bilan
-  solishtirilmagan.
+- O‘zbekcha atamalar 2026-10-18 da Zokirova N.B. «Gistologiya asoslari» (Toshkent, 2025, ISBN
+  978-9910-02-646-1; ochiq PDF, pdftotext — PDF beti = bosma bet) bilan solishtirildi (pastga
+  qarang).
 - «Плёночный препарат» (tissue spread) va «тотальный препарат» (whole mount) — ruscha
   tarjima tanlovi, manba bilan tasdiqlanmagan.
 
@@ -140,3 +139,22 @@ Ruscha atamalar ruscha Vikipediya maqolalari bilan solishtirildi (Эпители
   keltirgan Klüver & Barrera 1953 — «Combined Staining of Cells and Fibers»; mutaxassis tasdig‘i kerak.
 - Jigar: uz «o‘rtacha oltitagacha» → «o‘rtacha oltita» (HPA Liver: «on average by six portal tracts»).
 - Batafsil: `docs/AUDIT_2026-10-18_MEDICAL_REVIEW.md`.
+
+## 2026-10-18 o‘zbekcha atamalar — darslik bilan solishtirish
+
+Manba: `zokirova2025` (ilova kartalarida «Manba: Zokirova N.B., 2025, …» qatori yoki [n] belgisi).
+Qo‘shimcha: Drive «5. ЭПИТЕЛИЙ ТУКИМАСИ.doc» (ma’ruza matni, muallifsiz) — xuddi shu atamalar.
+
+| Ilovada (oldin) | Darslikda | Joyi | Hukm |
+|---|---|---|---|
+| O‘tuvchi epiteliy | O‘zgaruvchan epiteliy | 28–30, 119-b. | **tuzatildi** (nom + «Manba» qatori) |
+| cho‘tkasimon hoshiya (proksimal kanalcha, ichak) | jiyak (jiyakli enterosit, proksimal bo‘lim) | 12, 29, 97, 118-b. | **tuzatildi**: «jiyak (cho‘tkasimon hoshiya)» |
+| Kupffer hujayralari | Kupfer hujayralari (yulduzsimon makrofaglar) | 102-b. | **tuzatildi**: «Kupfer (Kupffer)» |
+| G‘ovak tolali biriktiruvchi to‘qima | Siyrak tolali biriktiruvchi to‘qima | 39-b. | **tuzatildi** |
+| interkalyar disklar | oraliq disk | 78-b. | **tuzatildi**: «oraliq (interkalyar) disklar» |
+| Nissl moddasi | bazofil modda | 14-b. | sinonim qo‘shildi |
+| bir qavatli prizmatik; ko‘p qatorli kiprikli; ko‘p qavatli yassi muguzlanmaydigan/muguzlanuvchi | xuddi shunday (muguzlanadigan/muguzlanuvchi ikkalasi) | 28–29, 86-b. | tasdiqlandi |
+| gialin / elastik / tolali tog‘ay; perixondriy; zich shakllangan; osteon, Gavers, Folkman; sinusoid, triada, bo‘lakcha; koptokcha, Shumlyanskiy kapsulasi | xuddi shunday | 42–47, 101–102, 117–118-b. | tasdiqlandi |
+
+Ilova tashqarisida (boshqa bo‘lim, bu ishda o‘zgartirilmadi): `urinalysis_content.dart` —
+«O‘tuvchi epiteliy (urotelial)».

@@ -117,7 +117,12 @@ void main() {
         _full(t, 'BgL');
       }
       for (final s in BgSources.all) {
-        expect(s.url, startsWith('https://'), reason: s.id);
+        // Bosma kitob (Najmitdinov 1998) — havolasiz, faqat bibliografiya.
+        if (s.id.startsWith('book-')) {
+          expect(s.url, isNull, reason: s.id);
+        } else {
+          expect(s.url, startsWith('https://'), reason: s.id);
+        }
         expect(s.citation, isNotEmpty);
       }
       expect(
@@ -513,4 +518,44 @@ void main() {
       );
     },
   );
+
+  test('adabiyot tekshiruvi 2026-10-18: ruscha atamalar va O‘zbekiston', () {
+    BgItem item(String id) => bgCompat.firstWhere((i) => i.id == id);
+    // RF 1134n va 2018 tavsiyasida "большая/малая проба" yo'q.
+    final mm = item('major-minor');
+    expect(mm.title.of('ru'), isNot(contains('Большая')));
+    expect(mm.body.of('ru'), isNot(contains('«Большая»')));
+    expect(mm.body.of('ru'), contains('проба на индивидуальную совместимость'));
+    expect(mm.body.of('uz'), contains('shaxsiy moslik'));
+    expect(item('iat').title.of('ru'), contains('непрямым антиглобулиновым'));
+    expect(item('iat').title.of('uz'), contains('bilvosita Kumbs'));
+    expect(item('immediate-spin').title.of('ru'), isNot(contains('Солевая')));
+    expect(item('electronic').body.of('ru'), contains('№ 1134н электронной'));
+    // O'zbekiston kartasi: qonun 402-II va PQ-19, manba qatorlari bilan.
+    final uz = item('uz-rules');
+    expect(uz.body.of('uz'), contains('402-II'));
+    expect(uz.body.of('uz'), contains('lex.uz'));
+    expect(
+      [for (final r in uz.refs) r.source.id],
+      [BgSources.uzLaw402.id, BgSources.uzPq19.id],
+    );
+    // Har tekshirilgan karta manbani ko'rinadigan qilib beradi.
+    for (final id in [
+      'major-minor',
+      'iat',
+      'immediate-spin',
+      'electronic',
+      'uz-rules',
+    ]) {
+      final c = item(id).cites;
+      expect(c, isNotEmpty, reason: id);
+      for (final t in c) {
+        expect(t.of('uz'), contains('Manba'), reason: id);
+        expect(t.of('ru'), contains('Источник'), reason: id);
+        expect(t.of('en'), contains('Source'), reason: id);
+      }
+    }
+    final cross = bgBasics.firstWhere((i) => i.id == 'cross-method');
+    expect(cross.body.of('uz'), contains('perekrest (chatishtirish)'));
+  });
 }

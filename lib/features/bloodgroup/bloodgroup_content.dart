@@ -11,6 +11,7 @@
 library;
 
 import '../content/content_model.dart';
+import '../reference/reference_sources.dart';
 import '../tools/calc_info.dart';
 import 'bloodgroup_logic.dart';
 
@@ -74,12 +75,51 @@ abstract final class BgSources {
     url: 'https://doi.org/10.3389/fimmu.2026.1888597',
   );
 
+  /// RF milliy klinik tavsiyasi (2018) — "Проба на индивидуальную
+  /// совместимость" ta'rifi.
+  static const akselrod2018 = CalcSource(
+    id: 'bg-akselrod-2018',
+    citation:
+        'Аксельрод Б.А., Балашова Е.Н., Баутин А.Е. и др. Клиническое '
+        'использование эритроцитсодержащих компонентов донорской крови. '
+        'Гематология и трансфузиология. 2018;63(4):372–435. '
+        'doi:10.25837/HAT.2019.62.39.006',
+    url: 'https://doi.org/10.25837/HAT.2019.62.39.006',
+  );
+
+  /// O'zbek darsligi (bosma; havolasiz) — o'zbekcha serologik atamalar.
+  static const najmitdinov1998 = RefSources.najmitdinov1998;
+
+  /// O'zbekiston qonuni (lex.uz).
+  static const uzLaw402 = CalcSource(
+    id: 'bg-uz-law-402-ii',
+    citation:
+        'Oʻzbekiston Respublikasining 30.08.2002 yildagi 402-II-son '
+        '«Qon va uning tarkibiy qismlari donorligi toʻgʻrisida»gi Qonuni '
+        '(amaldagi tahrir, lex.uz)',
+    url: 'https://lex.uz/docs/-46727',
+  );
+
+  /// O'zbekiston Prezidenti qarori PQ-19 (20.01.2026).
+  static const uzPq19 = CalcSource(
+    id: 'bg-uz-pq-19-2026',
+    citation:
+        'Oʻzbekiston Respublikasi Prezidentining 20.01.2026 yildagi PQ-19-son '
+        '«2026–2030-yillarda qon bilan ishlash xizmatini yanada '
+        'takomillashtirish chora-tadbirlari toʻgʻrisida»gi qarori (lex.uz)',
+    url: 'https://lex.uz/docs/-8011648',
+  );
+
   static const all = [
     bsh2012,
     who,
     htm2013,
     ru1134,
     ru363,
+    akselrod2018,
+    najmitdinov1998,
+    uzLaw402,
+    uzPq19,
     hagman2024,
     trummer2026,
   ];
@@ -158,6 +198,24 @@ const refRu1134Sample = CalcRef(BgSources.ru1134, 'п. 7');
 const refRu1134Bedside = CalcRef(BgSources.ru1134, 'п. 19, 23');
 const refRu1134Retain = CalcRef(BgSources.ru1134, 'п. 28');
 const refRu363Terms = CalcRef(BgSources.ru363, '§3.1, Таблица 1');
+const refRu1134Iat = CalcRef(BgSources.ru1134, 'п. 14 «г», 17');
+const refAkselrodCompat = CalcRef(
+  BgSources.akselrod2018,
+  'Иммуногематология переливания ЭСК — Проба на индивидуальную совместимость',
+);
+const refNajmGroups = CalcRef(
+  BgSources.najmitdinov1998,
+  'IV боб: Стандарт зардоблар билан ABO тизими қон гуруҳини аниқлаш',
+);
+const refNajmTransfusion = CalcRef(
+  BgSources.najmitdinov1998,
+  'IV боб: Қон қуйиш операцияси — қоидалар, 3–4-банд',
+);
+const refUzLaw402 = CalcRef(BgSources.uzLaw402, '10-modda');
+const refUzPq19 = CalcRef(
+  BgSources.uzPq19,
+  '1-ilova («Yo‘l xaritasi»), 2-band, 1–2-kichik band',
+);
 const refHagman = CalcRef(BgSources.hagman2024, 'Introduction');
 const refTrummer = CalcRef(BgSources.trummer2026, '§2.2');
 
@@ -619,11 +677,21 @@ const aboGroupNames = <AboGroup, LocalizedText>{
 
 /// Bitta mavzu kartasi: sarlavha, matn va manbalar.
 class BgItem {
-  const BgItem(this.id, this.title, this.body, this.refs);
+  const BgItem(
+    this.id,
+    this.title,
+    this.body,
+    this.refs, {
+    this.cites = const [],
+  });
   final String id;
   final LocalizedText title;
   final LocalizedText body;
   final List<CalcRef> refs;
+
+  /// Karta ichida ko'rinadigan "Manba: muallif, yil, «nom», bo'lim, bet"
+  /// qatorlari (tibbiy ko'rik 2026-10-18 da tekshirilgan da'volar uchun).
+  final List<LocalizedText> cites;
 }
 
 // ───────────────────────── 1. Asoslar ─────────────────────────
@@ -759,8 +827,11 @@ const bgBasics = <BgItem>[
           'antitelali reagentlar va standart eritrotsitlar bilan — '
           'o‘tkazishni talab qiladi (ya’ni to‘g‘ri va teskari usul birga); '
           'chaqaloqlarda — faqat to‘g‘ri usulda, periferik qondan. RhD '
-          'tasdig‘i — anti-D IgM reagenti bilan. O‘zbekiston me’yorlari bu '
-          'bo‘limda tekshirilmagan — o‘z SOP’ingizga qarang.',
+          'tasdig‘i — anti-D IgM reagenti bilan. O‘zbek darsligida: '
+          'standart zardoblar bilan aniqlash — «to‘g‘ri yoki bevosita '
+          'usul», standart eritrotsitlar bilan — «bilvosita usul», ikkalasi '
+          'birga — «perekrest (chatishtirish) usuli». O‘zbekiston me’yorlari '
+          'holati — «O‘zbekiston: me’yoriy hujjatlar» kartasida.',
       'ru':
           'Приказ Минздрава России № 1134н (2020): подтверждающее определение '
           'группы крови по системе AB0 в лаборатории проводится перекрёстным '
@@ -768,16 +839,35 @@ const bgBasics = <BgItem>[
           'стандартными эритроцитами (то есть прямой и обратный метод '
           'вместе); новорождённым — прямым методом, из периферической крови. '
           'Подтверждение резус-принадлежности — реагентами с анти-D IgM. '
-          'Нормы Узбекистана в разделе не проверялись — см. свой СОП.',
+          'Нормы Узбекистана — см. карточку «Узбекистан: нормативные '
+          'документы».',
       'en':
           'RF Ministry of Health Order 1134n (2020) requires laboratory '
           'confirmatory ABO grouping by the cross method — reagents containing '
           'anti-A and anti-B plus reagent red cells (i.e. forward and reverse '
           'together); newborns — forward only, from peripheral blood. RhD is '
-          'confirmed with an anti-D IgM reagent. Uzbek national rules were '
-          'not verified for this section — see your SOP.',
+          'confirmed with an anti-D IgM reagent. For Uzbekistan, see the '
+          '“Uzbekistan: regulations” card.',
     }),
-    [refRu1134Lab],
+    [refRu1134Lab, refNajmGroups],
+    cites: [
+      _T({
+        'uz':
+            'Manba: RF SSV buyrug‘i № 1134n, 2020, 11-band; o‘zbekcha '
+            'atamalar — Najmitdinov S.T., 1998, «Klinik gematologiya '
+            'asoslari», IV bob, «Standart zardoblar bilan ABO tizimi qon '
+            'guruhini aniqlash» — kirish qismi.',
+        'ru':
+            'Источник: приказ Минздрава России № 1134н, 2020, п. 11; '
+            'узбекские термины — Наджимитдинов С.Т., 1998, «Клиник '
+            'гематология асослари», гл. IV, «Стандарт зардоблар билан ABO '
+            'тизими қон гуруҳини аниқлаш» — вводная часть.',
+        'en':
+            'Source: RF Ministry of Health Order 1134n, 2020, item 11; Uzbek '
+            'terms — Najmitdinov S.T., 1998, “Klinik gematologiya asoslari”, '
+            'ch. IV, “ABO grouping with standard sera” — introduction.',
+      }),
+    ],
   ),
   BgItem(
     'subgroups',
@@ -1221,36 +1311,92 @@ const bgCompat = <BgItem>[
   BgItem(
     'major-minor',
     _T({
-      'uz': 'Katta va kichik moslik sinamasi',
-      'ru': '«Большая» и «малая» проба',
-      'en': 'Major and minor crossmatch',
+      'uz': 'Moslik sinamasi: major va minor (JSST atamalari)',
+      'ru': 'Проба на совместимость: major и minor (термины ВОЗ)',
+      'en': 'Major and minor crossmatch (WHO terms)',
     }),
     _T({
       'uz':
-          'Katta (asosiy) sinama — bemor zardobi + donor eritrotsitlari: '
-          'bemorda donor hujayralariga qarshi antitela bormi. Kichik sinama — '
-          'bemor eritrotsitlari + donor zardobi. JSST: kichik sinama '
-          'ko‘pincha endi kerak emas, chunki donor zardobi guruhlashda '
-          'antitelaga tekshiriladi.',
+          'Major sinama — bemor zardobi + donor eritrotsitlari: bemorda donor '
+          'hujayralariga qarshi antitela bormi. Minor sinama — bemor '
+          'eritrotsitlari + donor zardobi. JSST: minor sinama ko‘pincha endi '
+          'kerak emas, chunki donor zardobi guruhlashda antitelaga '
+          'tekshiriladi. RF me’yorida (№ 1134n) va 2018-yilgi milliy '
+          'tavsiyada bemor zardobi + donor eritrotsitlari sinamasi «проба на '
+          'индивидуальную совместимость» deyiladi; «katta/kichik» nomlari '
+          'u yerda yo‘q. O‘zbek darsligida — «shaxsiy moslik».',
       'ru':
-          '«Большая» (основная) проба — сыворотка реципиента + эритроциты '
-          'донора: нет ли у реципиента антител к клеткам донора. «Малая» — '
-          'эритроциты реципиента + сыворотка донора. ВОЗ: малая проба в '
-          'большинстве случаев больше не нужна — сыворотку донора проверяют '
-          'на антитела при типировании.',
+          'Major — сыворотка реципиента + эритроциты донора: нет ли у '
+          'реципиента антител к клеткам донора. Minor — эритроциты '
+          'реципиента + сыворотка донора. ВОЗ: minor в большинстве случаев '
+          'больше не нужна — сыворотку донора проверяют на антитела при '
+          'типировании. В нормативах РФ (приказ № 1134н) и национальных '
+          'рекомендациях 2018 г. реакция сыворотки реципиента с эритроцитами '
+          'донора называется «проба на индивидуальную совместимость»; '
+          'названий «большая/малая проба» там нет.',
       'en':
           'Major crossmatch — patient serum + donor red cells: does the '
           'patient have antibodies to the donor cells? Minor — patient red '
           'cells + donor serum. WHO: the minor crossmatch is mostly no longer '
-          'needed because donor serum is checked for antibodies at grouping.',
+          'needed because donor serum is checked for antibodies at grouping. '
+          'Russian regulations (Order 1134n) and the 2018 national guideline '
+          'call the patient-serum + donor-cell reaction the “individual '
+          'compatibility test” (проба на индивидуальную совместимость); they '
+          'do not use “major/minor”.',
     }),
-    [refWhoCompat],
+    [refWhoCompat, refRu1134Bedside, refAkselrodCompat, refNajmTransfusion],
+    cites: [
+      _T({
+        'uz':
+            'Manba: JSST, 2009, «Safe Blood and Blood Products. Module 3: '
+            'Blood Group Serology», §6.1, 42-b. (major/minor).',
+        'ru':
+            'Источник: ВОЗ, 2009, «Safe Blood and Blood Products. Module 3: '
+            'Blood Group Serology», §6.1, с. 42 (major/minor).',
+        'en':
+            'Source: WHO, 2009, “Safe Blood and Blood Products. Module 3: '
+            'Blood Group Serology”, §6.1, p. 42 (major/minor).',
+      }),
+      _T({
+        'uz':
+            'Manba: RF SSV buyrug‘i № 1134n, 2020, 17 va 19-bandlar; '
+            'Aksel’rod B.A. va hamm., 2018, «Клиническое использование '
+            'эритроцитсодержащих компонентов донорской крови», Гематология и '
+            'трансфузиология 63(4), «Проба на индивидуальную совместимость» '
+            'bo‘limi.',
+        'ru':
+            'Источник: приказ Минздрава России № 1134н, 2020, п. 17 и 19; '
+            'Аксельрод Б.А. и соавт., 2018, «Клиническое использование '
+            'эритроцитсодержащих компонентов донорской крови», Гематология и '
+            'трансфузиология 63(4), раздел «Проба на индивидуальную '
+            'совместимость».',
+        'en':
+            'Source: RF Ministry of Health Order 1134n, 2020, items 17 and 19; '
+            'Akselrod B.A. et al., 2018, “Clinical use of red blood cell '
+            'components”, Gematologiya i Transfuziologiya 63(4), section '
+            '“Individual compatibility test”.',
+      }),
+      _T({
+        'uz':
+            'Manba: Najmitdinov S.T., 1998, «Klinik gematologiya asoslari», '
+            'IV bob, «Qon quyish operatsiyasi» — qoidalar, 3-band '
+            '(«shaxsiy moslik»).',
+        'ru':
+            'Источник (узбекский термин «shaxsiy moslik»): Наджимитдинов '
+            'С.Т., 1998, «Клиник гематология асослари», гл. IV, «Қон қуйиш '
+            'операцияси» — правила, п. 3.',
+        'en':
+            'Source (Uzbek term “shaxsiy moslik”): Najmitdinov S.T., 1998, '
+            '“Klinik gematologiya asoslari”, ch. IV, “Blood transfusion '
+            'operation” — rules, item 3.',
+      }),
+    ],
   ),
   BgItem(
     'iat',
     _T({
-      'uz': 'Antiglobulin (IAT) sinamasi',
-      'ru': 'Проба с непрямым антиглобулиновым тестом',
+      'uz': 'Bilvosita antiglobulin (bilvosita Kumbs, IAT) sinamasi',
+      'ru': 'Проба на совместимость с непрямым антиглобулиновым тестом',
       'en': 'Antiglobulin (IAT) crossmatch',
     }),
     _T({
@@ -1279,13 +1425,36 @@ const bgCompat = <BgItem>[
           'IAT (IgG antibodies); agglutination or haemolysis means '
           'incompatible — the unit is not used.',
     }),
-    [refBshIat, refWhoCrossmatch],
+    [refBshIat, refWhoCrossmatch, refRu1134Iat, refNajmTransfusion],
+    cites: [
+      _T({
+        'uz':
+            'Manba (ruscha nom): RF SSV buyrug‘i № 1134n, 2020, 14-band «г» '
+            'va 17-band — «проба на совместимость с использованием непрямого '
+            'антиглобулинового теста». O‘zbekcha nom — Najmitdinov S.T., '
+            '1998, «Klinik gematologiya asoslari», IV bob, «Qon quyish '
+            'operatsiyasi», 4-band («bilvosita Kumbs sinamasi»).',
+        'ru':
+            'Источник (русское название): приказ Минздрава России № 1134н, '
+            '2020, п. 14 «г» и п. 17 — «проба на совместимость с '
+            'использованием непрямого антиглобулинового теста». Узбекское '
+            'название — Наджимитдинов С.Т., 1998, «Клиник гематология '
+            'асослари», гл. IV, «Қон қуйиш операцияси», п. 4 («bilvosita '
+            'Kumbs sinamasi»).',
+        'en':
+            'Source (Russian name): RF Ministry of Health Order 1134n, 2020, '
+            'item 14(г) and item 17 — “compatibility test using the indirect '
+            'antiglobulin test”. Uzbek name — Najmitdinov S.T., 1998, “Klinik '
+            'gematologiya asoslari”, ch. IV, “Blood transfusion operation”, '
+            'item 4 (“bilvosita Kumbs sinamasi”).',
+      }),
+    ],
   ),
   BgItem(
     'immediate-spin',
     _T({
-      'uz': 'Darhol sentrifugalash (immediate spin)',
-      'ru': 'Солевая проба с немедленным центрифугированием',
+      'uz': 'Darhol sentrifugalash sinamasi (immediate spin)',
+      'ru': 'Проба с немедленным центрифугированием (immediate spin)',
       'en': 'Immediate-spin (saline spin) crossmatch',
     }),
     _T({
@@ -1293,25 +1462,51 @@ const bgCompat = <BgItem>[
           'Asosan ABO nomosligini tez aniqlash uchun. Kuchsiz anti-A yoki '
           'anti-B bo‘lgan bemorlarda unga tayanib bo‘lmaydi; IgG antitelalarni '
           'aniqlamaydi, shuning uchun IAT o‘rnini bosmaydi. Kelishilgan '
-          'standart nazoratlari yo‘q (BSH).',
+          'standart nazoratlari yo‘q (BSH). RF me’yorida (№ 1134n) bunday '
+          'sinama yo‘q: u yerda — shifokorning plastinkadagi (xona '
+          'haroratida) sinamasi va laboratoriyada IAT.',
       'ru':
           'В основном — быстрое выявление несовместимости по AB0. У пациентов '
           'со слабыми анти-A или анти-B на неё нельзя полагаться; IgG-антитела '
           'не выявляет, поэтому НАТ не заменяет. Согласованных стандартных '
-          'контролей нет (BSH).',
+          'контролей нет (BSH). В приказе № 1134н такой пробы нет: там — '
+          'проба врача на плоскости (при комнатной температуре) и НАТ в '
+          'лаборатории; русское название здесь — перевод английского '
+          'термина BSH.',
       'en':
           'Used mainly as a rapid check for ABO incompatibility. It cannot be '
           'relied on in patients with weak anti-A or anti-B and does not '
           'detect IgG antibodies, so it does not replace the IAT. There are no '
-          'agreed standard controls (BSH).',
+          'agreed standard controls (BSH). Russian Order 1134n has no such '
+          'test: it uses the physician’s slide (plane) test at room '
+          'temperature and the IAT in the laboratory.',
     }),
-    [refBshIs],
+    [refBshIs, refRu1134Bedside, refRu1134Iat],
+    cites: [
+      _T({
+        'uz':
+            'Manba: Milkins C. va hamm. (BSH), 2013, «Guidelines for '
+            'pre-transfusion compatibility procedures…», Transfus Med 23(1), '
+            '§7.4, 18-b.; RF SSV buyrug‘i № 1134n, 2020, 14 «г», 17, 19, '
+            '20-bandlar (immediate spin yo‘q).',
+        'ru':
+            'Источник: Milkins C. и соавт. (BSH), 2013, «Guidelines for '
+            'pre-transfusion compatibility procedures…», Transfus Med 23(1), '
+            '§7.4, с. 18; приказ Минздрава России № 1134н, 2020, п. 14 «г», '
+            '17, 19, 20 (immediate spin нет).',
+        'en':
+            'Source: Milkins C. et al. (BSH), 2013, “Guidelines for '
+            'pre-transfusion compatibility procedures…”, Transfus Med 23(1), '
+            '§7.4, p. 18; RF Order 1134n, 2020, items 14(г), 17, 19, 20 (no '
+            'immediate spin).',
+      }),
+    ],
   ),
   BgItem(
     'electronic',
     _T({
-      'uz': 'Elektron berish (kompyuter moslik tanlovi)',
-      'ru': 'Электронная выдача (компьютерный подбор)',
+      'uz': 'Elektron berish (electronic issue, kompyuter moslik tanlovi)',
+      'ru': 'Электронная выдача (electronic issue, компьютерный подбор)',
       'en': 'Electronic issue (computer crossmatch)',
     }),
     _T({
@@ -1324,7 +1519,8 @@ const bgCompat = <BgItem>[
           'talablariga mos. Qo‘llanmaydi: antitela bo‘lsa yoki bo‘lgan bo‘lsa, '
           'skrining musbat, ABO nomos ildiz hujayra transplantatsiyasi, '
           'so‘nggi 3 oyda ABO nomos qattiq a’zo transplantatsiyasi, onada IgG '
-          'antitela bo‘lgan chaqaloq yoki homila.',
+          'antitela bo‘lgan chaqaloq yoki homila. RF me’yorida (№ 1134n) '
+          'elektron berish yo‘q — bu Buyuk Britaniya (BSH) amaliyoti.',
       'ru':
           'Совместимость определяет лабораторная информационная система без '
           'серологической пробы с эритроцитами донора. Условия BSH: группа и '
@@ -1335,7 +1531,9 @@ const bgCompat = <BgItem>[
           'есть или были антитела, положительный скрининг, AB0-несовместимая '
           'трансплантация стволовых клеток, AB0-несовместимая трансплантация '
           'органа за последние 3 месяца, плод или новорождённый при IgG-'
-          'антителах у матери.',
+          'антителах у матери. В приказе № 1134н электронной выдачи нет — '
+          'это практика Великобритании (BSH); русское название — перевод '
+          'термина electronic issue.',
       'en':
           'The LIMS determines compatibility without serological testing of '
           'donor cells. BSH criteria: fully automated group and screen with '
@@ -1345,9 +1543,29 @@ const bgCompat = <BgItem>[
           'rules. Not used with current or past antibodies, a positive screen, '
           'ABO-incompatible stem cell transplant, ABO-incompatible solid organ '
           'transplant in the last 3 months, or a neonate/fetus whose mother has '
-          'an IgG red cell antibody.',
+          'an IgG red cell antibody. Russian Order 1134n has no electronic '
+          'issue — it is UK (BSH) practice.',
     }),
-    [refBshEi, refHtmEi],
+    [refBshEi, refHtmEi, refRu1134Bedside],
+    cites: [
+      _T({
+        'uz':
+            'Manba: Milkins C. va hamm. (BSH), 2013, Transfus Med 23(1), §7.5, '
+            '18–19-b.; Norfolk D. (tahr.), 2013, «Handbook of Transfusion '
+            'Medicine», 5-nashr, §2.7.3, 11-b.; RF SSV buyrug‘i № 1134n, '
+            '2020 — elektron berish nazarda tutilmagan.',
+        'ru':
+            'Источник: Milkins C. и соавт. (BSH), 2013, Transfus Med 23(1), '
+            '§7.5, с. 18–19; Norfolk D. (ред.), 2013, «Handbook of '
+            'Transfusion Medicine», 5-е изд., §2.7.3, с. 11; приказ Минздрава '
+            'России № 1134н, 2020 — электронная выдача не предусмотрена.',
+        'en':
+            'Source: Milkins C. et al. (BSH), 2013, Transfus Med 23(1), §7.5, '
+            'pp. 18–19; Norfolk D. (ed.), 2013, “Handbook of Transfusion '
+            'Medicine”, 5th ed., §2.7.3, p. 11; RF Order 1134n, 2020 — no '
+            'electronic issue.',
+      }),
+    ],
   ),
   BgItem(
     'bedside-ru',
@@ -1380,6 +1598,75 @@ const bgCompat = <BgItem>[
           '(except cryoprecipitate). Other countries’ rules differ.',
     }),
     [refRu1134Bedside],
+  ),
+  BgItem(
+    'uz-rules',
+    _T({
+      'uz': 'O‘zbekiston: me’yoriy hujjatlar',
+      'ru': 'Узбекистан: нормативные документы',
+      'en': 'Uzbekistan: regulations',
+    }),
+    _T({
+      'uz':
+          'Qonun (402-II, 10-modda): donor qoni va uning tarkibiy qismlarini '
+          'ishlatish tartibini Sog‘liqni saqlash vazirligi belgilaydi. '
+          'PQ-19 (2026) qon xizmati uchun standart operatsion jarayonlar '
+          '(tayyorlash, qayta ishlash, laboratoriya tekshiruvlari) 2026-yil '
+          'mayigacha ishlab chiqilishini belgilagan. Transfuziyadan oldingi '
+          'moslik sinamalari bo‘yicha SSV buyrug‘i lex.uz ochiq bazasida '
+          'topilmadi (2026-10-18) — muassasangizdagi amaldagi yo‘riqnoma va '
+          'SOP’ga amal qiling.',
+      'ru':
+          'Закон (402-II, ст. 10): порядок использования донорской крови и её '
+          'компонентов устанавливает Министерство здравоохранения. ПП-19 '
+          '(2026) предусматривает разработку стандартных операционных '
+          'процедур службы крови (заготовка, переработка, лабораторные '
+          'исследования) до мая 2026 г. Приказ Минздрава о пробах на '
+          'совместимость перед трансфузией в открытой базе lex.uz не найден '
+          '(2026-10-18) — следуйте действующей инструкции и СОП своего '
+          'учреждения.',
+      'en':
+          'Law 402-II, Article 10: the Ministry of Health sets the procedure '
+          'for using donor blood and its components. Resolution PQ-19 (2026) '
+          'orders standard operating procedures for the blood service '
+          '(collection, processing, laboratory testing) by May 2026. No '
+          'Ministry of Health order on pre-transfusion compatibility testing '
+          'was found in the open lex.uz database (2026-10-18) — follow your '
+          'institution’s current instruction and SOP.',
+    }),
+    [refUzLaw402, refUzPq19],
+    cites: [
+      _T({
+        'uz':
+            'Manba: Oʻzbekiston Respublikasi Qonuni, 2002 (amaldagi tahrir), '
+            '«Qon va uning tarkibiy qismlari donorligi toʻgʻrisida», 402-II, '
+            '10-modda (lex.uz).',
+        'ru':
+            'Источник: Закон Республики Узбекистан, 2002 (действующая '
+            'редакция), «Қон ва унинг таркибий қисмлари донорлиги '
+            'тўғрисида» (о донорстве крови и её компонентов), 402-II, ст. 10 '
+            '(lex.uz).',
+        'en':
+            'Source: Law of the Republic of Uzbekistan, 2002 (current '
+            'version), “On donation of blood and its components”, 402-II, '
+            'Article 10 (lex.uz).',
+      }),
+      _T({
+        'uz':
+            'Manba: Oʻzbekiston Respublikasi Prezidentining qarori, 2026, '
+            'PQ-19, «2026–2030-yillarda qon bilan ishlash xizmatini yanada '
+            'takomillashtirish chora-tadbirlari toʻgʻrisida», 1-ilova, '
+            '2-band (lex.uz).',
+        'ru':
+            'Источник: Постановление Президента Республики Узбекистан, 2026, '
+            'ПП-19, «О мерах по дальнейшему совершенствованию службы крови в '
+            '2026–2030 годах», приложение 1, п. 2 (lex.uz).',
+        'en':
+            'Source: Presidential Resolution of the Republic of Uzbekistan, '
+            '2026, PQ-19, “On measures to further improve the blood service in '
+            '2026–2030”, Annex 1, item 2 (lex.uz).',
+      }),
+    ],
   ),
   BgItem(
     'group-o',

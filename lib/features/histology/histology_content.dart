@@ -81,8 +81,21 @@ abstract final class HistoSources {
     url: 'https://commons.wikimedia.org/',
   );
 
+  /// O'zbek tilidagi o'quv qo'llanma — o'zbekcha gistologik atamalar
+  /// manbasi (tibbiy ko'rik 2026-10-18; PDF matni bet raqami bilan o'qildi).
+  static const zokirova2025 = CalcSource(
+    id: 'histo-zokirova-2025',
+    citation:
+        'Zokirova N.B. Gistologiya asoslari. O‘quv qo‘llanma. Toshkent: '
+        'Tibbiyot nashriyoti matbaa uyi; 2025. ISBN 978-9910-02-646-1',
+    url:
+        'https://portfolio.afu.uz/storage/documents/'
+        'c3SFUAvuBlXdjJHGkYTXuB4eVmkn3FguZZqvHpPk.pdf',
+  );
+
   static const all = [
     umich,
+    zokirova2025,
     hpaLiver,
     hpaKidney,
     hpaAdipose,
@@ -910,15 +923,23 @@ const histoItems = <HistoItem>[
         _T({
           'uz':
               'Uchki yuzada to‘qroq chiziq — mikrovorsinkalardan iborat '
-              'hoshiya (“cho‘tkasimon” yoki “chiziqli” hoshiya).',
+              'jiyak (“cho‘tkasimon” yoki “chiziqli” hoshiya). Manba '
+              '(«jiyak»): Zokirova N.B., 2025, «Gistologiya asoslari», 12, '
+              '29-b.',
           'ru':
               'На апикальной поверхности — более тёмная полоска: каёмка из '
-              'микроворсинок (щёточная, или исчерченная, каёмка).',
+              'микроворсинок (щёточная, или исчерченная, каёмка; узбекский '
+              'термин «jiyak» — источник: Zokirova N.B., 2025, «Gistologiya '
+              'asoslari», с. 12, 29).',
           'en':
               'A darker line at the apex: the microvillous (striated or '
-              'brush) border.',
+              'brush) border (Uzbek term “jiyak” — source: Zokirova N.B., '
+              '2025, “Gistologiya asoslari”, pp. 12, 29).',
         }),
-        [CalcRef(HistoSources.umich, 'p. 16–17, 20')],
+        [
+          CalcRef(HistoSources.umich, 'p. 16–17, 20'),
+          CalcRef(HistoSources.zokirova2025, 'p. 12, 29'),
+        ],
       ),
     ],
     key: HistoFact(
@@ -1159,8 +1180,8 @@ const histoItems = <HistoItem>[
     confuse: HistoFact(
       _T({
         'uz':
-            'O‘tuvchi epiteliy — uning yuzasida katta gumbazsimon hujayralar '
-            'bo‘ladi va u faqat siydik yo‘llarida uchraydi.',
+            'O‘zgaruvchan epiteliy — uning yuzasida katta gumbazsimon '
+            'hujayralar bo‘ladi va u faqat siydik yo‘llarida uchraydi.',
         'ru':
             'Переходный эпителий — на поверхности крупные куполообразные '
             'клетки; встречается только в мочевых путях.',
@@ -1175,12 +1196,33 @@ const histoItems = <HistoItem>[
     id: 'transitional',
     group: HistoGroup.epithelium,
     name: _T({
-      'uz': 'O‘tuvchi epiteliy',
+      'uz': 'O‘zgaruvchan epiteliy',
       'ru': 'Переходный эпителий',
       'en': 'Transitional epithelium',
     }),
     image: _imgTransitional,
     look: [
+      HistoFact(
+        _T({
+          'uz':
+              'Nomi: o‘zbek darsligida — «o‘zgaruvchan epiteliy» (ruscha '
+              '«переходный»); bazal, oraliq va yuza qavatlari bor, a’zo '
+              'tarang tortilganda yupqalashadi. Manba: Zokirova N.B., 2025, '
+              '«Gistologiya asoslari», Epiteliy to‘qimasi, 28–30-b.',
+          'ru':
+              'Название в узбекском учебнике — «o‘zgaruvchan epiteliy» '
+              '(переходный эпителий); есть базальный, промежуточный и '
+              'поверхностный слои, при растяжении органа эпителий '
+              'истончается. Источник: Zokirova N.B., 2025, «Gistologiya '
+              'asoslari», Эпителиальная ткань, с. 28–30.',
+          'en':
+              'Uzbek textbook name: “o‘zgaruvchan epiteliy” (transitional '
+              'epithelium); it has basal, intermediate and surface layers and '
+              'thins when the organ is stretched. Source: Zokirova N.B., 2025, '
+              '“Gistologiya asoslari”, Epithelial tissue, pp. 28–30.',
+        }),
+        [CalcRef(HistoSources.zokirova2025, 'p. 28–30')],
+      ),
       HistoFact(
         _T({
           'uz':
@@ -1265,7 +1307,7 @@ const histoItems = <HistoItem>[
     id: 'loose_ct',
     group: HistoGroup.connective,
     name: _T({
-      'uz': 'G‘ovak tolali biriktiruvchi to‘qima',
+      'uz': 'Siyrak tolali biriktiruvchi to‘qima',
       'ru': 'Рыхлая волокнистая соединительная ткань',
       'en': 'Loose connective tissue',
     }),
@@ -1283,7 +1325,10 @@ const histoItems = <HistoItem>[
               'Sparse, wavy fibres, single or in small groups, running in '
               'different directions.',
         }),
-        [CalcRef(HistoSources.umich, 'p. 26')],
+        [
+          CalcRef(HistoSources.umich, 'p. 26'),
+          CalcRef(HistoSources.zokirova2025, 'p. 39'),
+        ],
       ),
       HistoFact(
         _T({
@@ -2030,7 +2075,7 @@ const histoItems = <HistoItem>[
       _T({
         'uz':
             'Yurak muskuli — tolalari shoxlangan, yadrosi markazda, '
-            'interkalyar disklar bor.',
+            'oraliq (interkalyar) disklar bor.',
         'ru':
             'Сердечная мышечная ткань — волокна ветвятся, ядро в центре, '
             'есть вставочные диски.',
@@ -2094,11 +2139,16 @@ const histoItems = <HistoItem>[
     ],
     key: HistoFact(
       _T({
-        'uz': 'Shoxlangan tolalar + markaziy yadro + interkalyar disklar.',
+        'uz':
+            'Shoxlangan tolalar + markaziy yadro + oraliq (interkalyar) '
+            'disklar.',
         'ru': 'Ветвящиеся волокна + центральное ядро + вставочные диски.',
         'en': 'Branched fibres + central nucleus + intercalated discs.',
       }),
-      [CalcRef(HistoSources.umich, 'p. 48')],
+      [
+        CalcRef(HistoSources.umich, 'p. 48'),
+        CalcRef(HistoSources.zokirova2025, 'p. 78'),
+      ],
     ),
     function: HistoFact(
       _T({
@@ -2119,8 +2169,8 @@ const histoItems = <HistoItem>[
     confuse: HistoFact(
       _T({
         'uz':
-            'Tayyorlashdagi ko‘ndalang yoriqlar — ular interkalyar disk '
-            'emas. Skelet muskulida esa yadrolar chetda.',
+            'Tayyorlashdagi ko‘ndalang yoriqlar — ular oraliq (interkalyar) '
+            'disk emas. Skelet muskulida esa yadrolar chetda.',
         'ru':
             'Поперечные разрывы волокон при обработке — это не вставочные '
             'диски. В скелетной мышце ядра лежат по периферии.',
@@ -2273,8 +2323,8 @@ const histoItems = <HistoItem>[
       HistoFact(
         _T({
           'uz':
-              'Sitoplazmada Nissl moddasi — ribosoma va donador '
-              'endoplazmatik to‘r to‘dalari (bazofil).',
+              'Sitoplazmada Nissl moddasi (darslikda — «bazofil modda») — '
+              'ribosoma va donador endoplazmatik to‘r to‘dalari (bazofil).',
           'ru':
               'В цитоплазме вещество Ниссля (тигроид) — скопления рибосом и '
               'гранулярной ЭПС (базофильные).',
@@ -2282,7 +2332,10 @@ const histoItems = <HistoItem>[
               'Nissl substance in the cytoplasm — basophilic clusters of '
               'ribosomes and rough ER.',
         }),
-        [CalcRef(HistoSources.umich, 'p. 10, 57')],
+        [
+          CalcRef(HistoSources.umich, 'p. 10, 57'),
+          CalcRef(HistoSources.zokirova2025, 'p. 14'),
+        ],
       ),
       HistoFact(
         _T({
@@ -2532,11 +2585,25 @@ const histoItems = <HistoItem>[
       ),
       HistoFact(
         _T({
-          'uz': 'Sinusoid devorida Kupffer hujayralari (makrofaglar).',
-          'ru': 'В стенке синусоидов — клетки Купфера (макрофаги).',
-          'en': 'Kupffer cells (macrophages) line the sinusoids.',
+          'uz':
+              'Sinusoid devorida Kupfer (Kupffer) hujayralari — yulduzsimon '
+              'makrofaglar. Manba («Kupfer hujayralari»): Zokirova N.B., '
+              '2025, «Gistologiya asoslari», Jigar va o‘t qopini tuzilishi, '
+              '102-b.',
+          'ru':
+              'В стенке синусоидов — клетки Купфера (звёздчатые макрофаги; '
+              'узбекское написание «Kupfer hujayralari» — источник: Zokirova '
+              'N.B., 2025, «Gistologiya asoslari», с. 102).',
+          'en':
+              'Kupffer cells (stellate macrophages) line the sinusoids (Uzbek '
+              'spelling “Kupfer hujayralari” — source: Zokirova N.B., 2025, '
+              '“Gistologiya asoslari”, p. 102).',
         }),
-        [CalcRef(HistoSources.umich, 'p. 197'), _hpaLiver],
+        [
+          CalcRef(HistoSources.umich, 'p. 197'),
+          _hpaLiver,
+          CalcRef(HistoSources.zokirova2025, 'p. 102'),
+        ],
       ),
       HistoFact(
         _T({
@@ -2668,15 +2735,24 @@ const histoItems = <HistoItem>[
         _T({
           'uz':
               'Proksimal kanalchalar — eng ko‘p, yirik, to‘qroq pushti '
-              '(atsidofil); bo‘shlig‘i tomonida cho‘tkasimon hoshiya.',
+              '(atsidofil); bo‘shlig‘i tomonida jiyak (cho‘tkasimon '
+              'hoshiya). Manba («jiyak»): Zokirova N.B., 2025, «Gistologiya '
+              'asoslari», Nefron gistofiziologiyasi, 118-b.',
           'ru':
               'Проксимальные канальцы — самые многочисленные, крупные, более '
-              'розовые (ацидофильные); со стороны просвета щёточная каёмка.',
+              'розовые (ацидофильные); со стороны просвета щёточная каёмка '
+              '(узбекский термин «jiyak» — источник: Zokirova N.B., 2025, '
+              '«Gistologiya asoslari», с. 118).',
           'en':
               'Proximal tubules are the most numerous, large and deeper pink '
-              '(acidophilic), with a luminal brush border.',
+              '(acidophilic), with a luminal brush border (Uzbek term “jiyak” '
+              '— source: Zokirova N.B., 2025, “Gistologiya asoslari”, p. 118).',
         }),
-        [CalcRef(HistoSources.umich, 'p. 206'), _hpaKidney],
+        [
+          CalcRef(HistoSources.umich, 'p. 206'),
+          _hpaKidney,
+          CalcRef(HistoSources.zokirova2025, 'p. 118'),
+        ],
       ),
       HistoFact(
         _T({

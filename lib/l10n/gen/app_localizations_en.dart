@@ -8335,11 +8335,11 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get cytoDegreeNote =>
-      'A traditional scheme (used in CIS countries); textbooks differ slightly, pH is approximate. International criteria for bacterial vaginosis are Amsel and Nugent.';
+      'A traditional scheme (A. Heurlein, 1910; used in CIS countries). Russian guidelines (ROAG 2019) regard it as of historical interest only; the international criteria for bacterial vaginosis are Amsel and Nugent.';
 
   @override
   String get cytoDegreeSourceNote =>
-      'The grade table is a traditional teaching scheme; its exact source is awaiting expert review. The sources below are bacterial vaginosis criteria (for comparison), not the table itself.';
+      'Sources for the classification and for the bacterial vaginosis criteria are listed below; where they disagree, both are shown.';
 
   @override
   String get cytoBethesdaIntro =>
