@@ -1118,9 +1118,14 @@ class LgStateArt extends StatelessWidget {
 /// `pumpAndSettle` bilan ham muammo yo'q. Screen reader "Yuklanmoqda…"
 /// eshitadi.
 class LgSkeleton extends StatelessWidget {
-  const LgSkeleton({super.key, this.rows = 3});
+  const LgSkeleton({super.key, this.rows = 3, this.caption});
 
   final int rows;
+
+  /// Nima yuklanayotgani (masalan, "Guruhlar yuklanmoqda…"): kontur ustida
+  /// kichik xira matn va screen reader yorlig'i. `null` — umumiy
+  /// "Yuklanmoqda…" faqat ovozda.
+  final String? caption;
 
   @override
   Widget build(BuildContext context) {
@@ -1144,12 +1149,22 @@ class LgSkeleton extends StatelessWidget {
     return Semantics(
       container: true,
       liveRegion: true,
-      label: label,
+      label: caption ?? label,
       child: ExcludeSemantics(
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 12),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
+              if (caption != null)
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(4, 0, 4, 4),
+                  child: Text(
+                    caption!,
+                    style: Theme.of(context).textTheme.bodySmall
+                        ?.copyWith(color: p.sub),
+                  ),
+                ),
               for (var i = 0; i < rows; i++)
                 Container(
                   margin: const EdgeInsets.symmetric(vertical: 6),

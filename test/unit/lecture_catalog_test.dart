@@ -50,7 +50,8 @@ void main() {
         expect(d.day, isNotNull, reason: d.id);
         expect(d.topics, isNotEmpty, reason: d.id);
       }
-      expect(catalog.byId('d001')!.languages, ['uz']);
+      // d001: muallif decki (uz) va uning ru/en tarjimalari.
+      expect(catalog.byId('d001')!.languages, ['uz', 'ru', 'en']);
       expect(catalog.byTopic('d001-L')?.id, 'd001');
     });
 
@@ -234,14 +235,37 @@ void main() {
 
   group('DeckEntry', () {
     test('resolveLang: so‘ralgan til → o‘zbekcha → birinchi mavjud', () {
+      const uzOnly = DeckEntry(
+        id: 'x',
+        kind: DeckKind.day,
+        titles: {'uz': 'X'},
+        slideCounts: {'uz': 3},
+        languages: ['uz'],
+        runs: {},
+        keywords: '',
+      );
+      expect(uzOnly.resolveLang('uz'), 'uz');
+      expect(uzOnly.resolveLang('ru'), 'uz');
+      expect(uzOnly.resolveLang('en'), 'uz');
+      const enOnly = DeckEntry(
+        id: 'y',
+        kind: DeckKind.protocol,
+        titles: {'en': 'Y'},
+        slideCounts: {'en': 2},
+        languages: ['en'],
+        runs: {},
+        keywords: '',
+      );
+      expect(enOnly.resolveLang('ru'), 'en');
       final d = catalog.byId('d001')!;
-      expect(d.resolveLang('uz'), 'uz');
-      expect(d.resolveLang('ru'), 'uz');
-      expect(d.resolveLang('en'), 'uz');
       final full = catalog.byId('d012')!;
       expect(full.resolveLang('ru'), 'ru');
       expect(full.path('en'), 'assets/lectures/decks/d012.en.json');
       expect(d.path('uz'), 'assets/lectures/d001.json');
+      expect(d.resolveLang('ru'), 'ru');
+      expect(d.path('ru'), 'assets/lectures/d001.ru.json');
+      expect(d.path('en'), 'assets/lectures/d001.en.json');
+      expect(d.slides('en'), 30);
       expect(full.slides('ru'), full.slideCounts['ru']);
     });
   });
@@ -407,8 +431,8 @@ void main() {
       expect(prot.length, 27);
       expect(
         ids('', f: const DeckFilter(lang: 'ru')).length,
-        124,
-        reason: 'd001 faqat uz',
+        125,
+        reason: 'd001 ham ru da (tarjima)',
       );
       expect(ids('glyukoza', f: const DeckFilter(module: 99)), isEmpty);
       expect(ids('glyukoza', f: const DeckFilter(protocolsOnly: true)), [

@@ -464,10 +464,21 @@ export async function updateProfile(ctx: Ctx): Promise<Response> {
 /** Hisob va unga bog'liq hamma narsa o'chiriladi (audit jurnalida faqat id). */
 export async function deleteAccount(ctx: Ctx): Promise<Response> {
   const s = await requireSession(ctx);
-  const u = s.userId;
+  await deleteUserData(ctx, s.userId);
+  return noContent();
+}
+
+/**
+ * Hisobni o'chirishning YAGONA yo'li: o'zi o'chirganda (`DELETE /v1/me`) ham,
+ * egasi admin panelidan o'chirganda ham (D-63, [adminActor]). Apple tokeni
+ * bekor qilinadi (imkon bo'lsa), so'ng hamma ma'lumot bitta batch da.
+ * Jurnal: o'zi — `account_deleted` (actor = o'zi); admin —
+ * `account_deleted_by_admin` (actor = admin, target = o'chirilgan id).
+ */
+export async function deleteUserData(ctx: Ctx, u: string, adminActor?: string): Promise<void> {
   // Apple (App Store 5.1.1(v)): hisob o'chirilganda Apple tokeni bekor qilinadi.
   // Muvaffaqiyatsizlik hisobni o'chirishga to'sqinlik qilmaydi (natija jurnalda).
-  await revokeAppleOnDelete(ctx, u);
+  await revokeAppleOnDelete(ctx, u, adminActor);
   const owned = `SELECT id FROM study_groups WHERE owner_id = ?1`;
   const ownedAssignments = `SELECT id FROM assignments WHERE group_id IN (${owned})`;
   const stmts = [
@@ -492,14 +503,22 @@ export async function deleteAccount(ctx: Ctx): Promise<Response> {
     `DELETE FROM sessions WHERE user_id = ?1`,
     `DELETE FROM auth_identities WHERE user_id = ?1`,
     `DELETE FROM users WHERE id = ?1`,
-    `INSERT INTO audit_log (at, actor, action, target, details) VALUES (?2, ?1, 'account_deleted', ?1, '{}')`,
   ];
   await ctx.db.batch([
-    // Hamjamiyat: savollar, javoblar, ovozlar, shikoyatlar, tasdiq holati.
+    // Hamjamiyat: savollar, javoblar, ovozlar, shikoyatlar, bloklar, tasdiq holati.
     ...communityDeleteStatements(ctx.db, await userHash(ctx, u)),
-    ...stmts.map((q) => (q.includes('?2') ? ctx.db.prepare(q).bind(u, ctx.now) : ctx.db.prepare(q).bind(u))),
+    ...stmts.map((q) => ctx.db.prepare(q).bind(u)),
+    adminActor
+      ? ctx.db
+          .prepare(
+            `INSERT INTO audit_log (at, actor, action, target, details)
+             VALUES (?1, ?2, 'account_deleted_by_admin', ?3, '{"via":"admin_console"}')`,
+          )
+          .bind(ctx.now, adminActor, u)
+      : ctx.db
+          .prepare(`INSERT INTO audit_log (at, actor, action, target, details) VALUES (?2, ?1, 'account_deleted', ?1, '{}')`)
+          .bind(u, ctx.now),
   ]);
-  return noContent();
 }
 
 // ------------------------------------------------------------ admin TOTP

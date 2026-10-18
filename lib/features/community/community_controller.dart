@@ -116,17 +116,58 @@ class CommunityController extends ChangeNotifier {
     }
   }
 
-  Future<void> block(CommunityAuthor a) async {
+  /// Muallifni bloklash: darhol shu qurilmada yashiriladi; hisob bilan
+  /// kirilgan bo'lsa ([kind] + [postId] bilan) serverga ham yoziladi
+  /// (D-62) — boshqa qurilmada ham, server ro'yxatlarida ham yashirin.
+  /// Server xatosi lokal blokni bekor qilmaydi.
+  Future<void> block(
+    CommunityAuthor a, {
+    PostKind? kind,
+    String? postId,
+  }) async {
     final ref = a.ref;
     if (ref == null || !canBlock(a)) return;
     if (_blocked.add(ref)) {
       notifyListeners();
       await _saveBlocked();
     }
+    final api = this.api;
+    if (api != null && api.hasSession && kind != null && postId != null) {
+      try {
+        await api.blockAuthor(kind: kind, id: postId);
+      } on Object {
+        // Tarmoq/server xatosi: lokal blok ishlayveradi.
+      }
+    }
   }
 
-  /// Hammasini blokdan chiqarish (“Bloklanganlar” bo'limidan).
+  /// Hisobdagi (server) bloklarni shu qurilmaga qo'shish. Xato — jim.
+  Future<void> syncBlocks() async {
+    final api = this.api;
+    if (api == null || !api.hasSession) return;
+    try {
+      final refs = await api.blockedRefs();
+      final before = _blocked.length;
+      _blocked.addAll(refs);
+      if (_blocked.length != before) {
+        notifyListeners();
+        await _saveBlocked();
+      }
+    } on Object {
+      // Server bo'lmasa ham lokal bloklar ishlaydi.
+    }
+  }
+
+  /// Hammasini blokdan chiqarish (“Bloklanganlar” bo'limidan) — serverda ham.
   Future<void> unblockAll() async {
+    final api = this.api;
+    if (api != null && api.hasSession) {
+      try {
+        await api.clearBlocks();
+      } on Object {
+        // Lokal tozalash baribir bajariladi.
+      }
+    }
     if (_blocked.isEmpty) return;
     _blocked.clear();
     notifyListeners();

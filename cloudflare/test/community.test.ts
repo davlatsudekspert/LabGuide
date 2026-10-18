@@ -607,3 +607,89 @@ describe("hamjamiyat: hisobni o'chirish", () => {
     expect(await count('SELECT COUNT(*) AS n FROM community_members')).toBe(membersBefore - 1);
   });
 });
+
+describe('hamjamiyat: author.ref va bloklash (D-62, App Store 1.2)', () => {
+  it('ref: barqaror, muallifga qaytarilmaydi (id/email/user_hash emas), mehmonga ham bir xil', async () => {
+    const s = makeServer();
+    const email = uniqueEmail('author');
+    const a = await s.signIn(email);
+    const b = await s.signIn(uniqueEmail());
+    const q1 = await ask(s, a.token);
+    const q2 = await ask(s, a.token, { title: 'Ikkinchi savol: natriy past chiqdi, sabab?' });
+    const qb = await ask(s, b.token);
+    const list = await s.call('GET', '/v1/community/questions?limit=50', { token: b.token });
+    const byId = new Map<string, any>(list.data.items.map((q: any) => [q.id, q]));
+    const ref1 = byId.get(q1.data.id).author.ref as string;
+    expect(ref1).toMatch(/^[0-9a-f]{24}$/);
+    expect(byId.get(q2.data.id).author.ref).toBe(ref1);
+    expect(byId.get(qb.data.id).author.ref).not.toBe(ref1);
+    const guest = await s.call('GET', `/v1/community/questions/${q1.data.id}`);
+    expect(guest.data.question.author.ref).toBe(ref1);
+    const hash = (await s.env.DB.prepare('SELECT author_hash FROM community_questions WHERE id = ?1').bind(q1.data.id).first<{ author_hash: string }>())!.author_hash;
+    const raw = JSON.stringify(list.data);
+    for (const secret of [a.userId, email, hash, hash.slice(0, 24)]) expect(raw).not.toContain(secret);
+  });
+
+  it('bloklash: shu ko‘ruvchiga savol va javoblar ko‘rinmaydi; boshqalarga — ko‘rinadi; sinxron va bekor qilish', async () => {
+    const s = makeServer();
+    const bad = await specialist(s);
+    const viewer = await s.signIn(uniqueEmail());
+    const other = await s.signIn(uniqueEmail());
+    const badQ = await ask(s, bad.token);
+    const vQ = await ask(s, viewer.token);
+    const ans = await s.call('POST', `/v1/community/questions/${vQ.data.id}/answers`, { token: bad.token, body: { body: 'Muallif javobi, bloklanadi.' } });
+    expect(ans.status).toBe(201);
+    const ref = (await s.call('GET', `/v1/community/questions/${badQ.data.id}`)).data.question.author.ref;
+
+    // Mehmon bloklay olmaydi; o'zini bloklab bo'lmaydi; noto'g'ri tana — 400.
+    expect((await s.call('POST', '/v1/community/blocks', { body: { kind: 'question', id: badQ.data.id } })).status).toBe(401);
+    expect((await s.call('POST', '/v1/community/blocks', { token: viewer.token, body: { kind: 'question', id: vQ.data.id } })).data.error).toBe('own_post');
+    expect((await s.call('POST', '/v1/community/blocks', { token: viewer.token, body: { kind: 'x', id: 'y' } })).status).toBe(400);
+    expect((await s.call('POST', '/v1/community/blocks', { token: viewer.token, body: { kind: 'answer', id: 'nope' } })).status).toBe(404);
+
+    const blk = await s.call('POST', '/v1/community/blocks', { token: viewer.token, body: { kind: 'answer', id: ans.data.id } });
+    expect(blk.status).toBe(200);
+    expect(blk.data).toEqual({ blocked: true, ref });
+    expect((await s.call('GET', '/v1/community/blocks', { token: viewer.token })).data).toEqual({ refs: [ref] });
+
+    const ids = async (token?: string) =>
+      (await s.call('GET', '/v1/community/questions?limit=50', { token })).data.items.map((q: any) => q.id);
+    expect(await ids(viewer.token)).not.toContain(badQ.data.id);
+    expect(await ids(other.token)).toContain(badQ.data.id);
+    expect(await ids()).toContain(badQ.data.id);
+    const thread = await s.call('GET', `/v1/community/questions/${vQ.data.id}`, { token: viewer.token });
+    expect(thread.data.answers).toEqual([]);
+    expect((await s.call('GET', `/v1/community/questions/${vQ.data.id}`, { token: other.token })).data.answers).toHaveLength(1);
+
+    expect((await s.call('DELETE', '/v1/community/blocks', { token: viewer.token })).data).toEqual({ refs: [] });
+    expect(await ids(viewer.token)).toContain(badQ.data.id);
+  });
+
+  it('egasini (LabGuide) bloklab bo‘lmaydi — unga shikoyat', async () => {
+    const s = makeServer();
+    const boss = await s.signInAdmin();
+    expect((await s.call('POST', '/v1/admin/community/launch', { token: boss.token })).status).toBe(200);
+    const q = await ask(s, boss.token);
+    const u = await s.signIn(uniqueEmail());
+    const r = await s.call('POST', '/v1/community/blocks', { token: u.token, body: { kind: 'question', id: q.data.id } });
+    expect(r.status).toBe(403);
+    expect(r.data.error).toBe('owner');
+  });
+
+  it('hisob o‘chirilganda ikki tomondagi bloklar ham o‘chadi', async () => {
+    const s = makeServer();
+    const a = await s.signIn(uniqueEmail());
+    const b = await s.signIn(uniqueEmail());
+    const qa = await ask(s, a.token);
+    const qb = await ask(s, b.token);
+    expect((await s.call('POST', '/v1/community/blocks', { token: b.token, body: { kind: 'question', id: qa.data.id } })).status).toBe(200);
+    expect((await s.call('POST', '/v1/community/blocks', { token: a.token, body: { kind: 'question', id: qb.data.id } })).status).toBe(200);
+    const blocksOf = async (h: string) =>
+      (await s.env.DB.prepare('SELECT COUNT(*) AS n FROM community_blocks WHERE viewer_hash = ?1 OR author_hash = ?1').bind(h).first<{ n: number }>())!.n;
+    const aHash = (await s.env.DB.prepare('SELECT author_hash FROM community_questions WHERE id = ?1').bind(qa.data.id).first<{ author_hash: string }>())!.author_hash;
+    expect(await blocksOf(aHash)).toBe(2);
+    expect((await s.call('DELETE', '/v1/me', { token: a.token })).status).toBe(204);
+    expect(await blocksOf(aHash)).toBe(0);
+    expect((await s.call('GET', '/v1/community/blocks', { token: b.token })).data.refs).toEqual([]);
+  });
+});

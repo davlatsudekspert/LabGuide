@@ -82,7 +82,12 @@ class ToifaEntryCard extends StatelessWidget {
                 end: Alignment.bottomRight,
                 colors: [p.soft, p.paper],
               ),
-              border: Border.all(color: p.brand.withValues(alpha: 0.25)),
+              // Kunlik savol kartasi uslubi: qattiq chegara o'rniga yumshoq
+              // soya; tungi rejimda (soya ko'rinmaydi) — juda xira chet.
+              border: Theme.of(context).brightness == Brightness.dark
+                  ? Border.all(color: p.brand.withValues(alpha: 0.14))
+                  : null,
+              boxShadow: LgShadow.card(context),
             ),
             child: Padding(
               padding: const EdgeInsets.fromLTRB(20, 20, 20, 18),

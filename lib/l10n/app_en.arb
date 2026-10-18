@@ -5713,5 +5713,21 @@
         "type": "int"
       }
     }
-  }
+  },
+  "cmErrAbusive": "The text contains offensive or abusive language. Please rephrase it respectfully — the community rules require this.",
+  "admDeleteTitle": "Delete account",
+  "admDeleteNote": "For deletion requests received by email (completed within 30 days). To confirm, enter the user's full email — the server checks that it belongs to exactly this account. The account, group memberships, community posts, support threads and sign-in methods are deleted permanently; for Sign in with Apple users the server attempts to revoke the Apple token. This cannot be undone; the action is logged.",
+  "admDeleteEmail": "User's full email",
+  "admDeleteButton": "Delete account permanently",
+  "admDeleteConfirmTitle": "Delete this account permanently?",
+  "admDeleteConfirmBody": "The account {email} and all data linked to it will be deleted. This cannot be undone.",
+  "@admDeleteConfirmBody": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "admDeleteDone": "Account deleted",
+  "admDeleteMismatch": "This email does not belong to this account — check it and try again."
 }

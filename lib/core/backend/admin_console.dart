@@ -32,6 +32,16 @@ abstract interface class AdminConsoleBackend {
   Future<void> adminSuspendAccount(String userId);
   Future<void> adminReactivateAccount(String userId);
 
+  /// Hisobni butunlay o'chirish (D-63): [email] — foydalanuvchining to'liq
+  /// emaili (server HMAC bilan aniq solishtiradi), [confirmUserId] — panel
+  /// ko'rsatgan hisob id si (boshqa hisob o'chirilmaydi). O'zi o'chirgandagi
+  /// yo'l: guruhlar, hamjamiyat, murojaatlar, Apple tokeni. O'zini va adminni
+  /// emas. Xato kodlari: `confirmation_mismatch`, `not_found`, `self`, `admin`.
+  Future<void> adminDeleteAccount({
+    required String email,
+    required String confirmUserId,
+  });
+
   /// Hamjamiyatda yozishni to'xtatish / tiklash.
   Future<void> adminSuspendCommunity(String userId);
   Future<void> adminRestoreCommunity(String userId);

@@ -73,7 +73,7 @@ class _CurriculumGateState extends State<CurriculumGate> {
             kind: StateKind.error,
             title: l.classroomCurriculumError,
           ),
-          _ => LgStateView(kind: StateKind.loading, title: l.classesLoading),
+          _ => LgSkeleton(caption: l.classesLoading),
         };
       },
     );
@@ -267,7 +267,7 @@ mixin _PlanLoader<T extends StatefulWidget> on State<T> {
     }
     final d = data;
     if (d == null) {
-      return LgStateView(kind: StateKind.loading, title: l.classesLoading);
+      return LgSkeleton(caption: l.classesLoading);
     }
     return builder(d);
   }

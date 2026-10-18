@@ -102,7 +102,7 @@ Widget _loadState<T>(
   }
   final data = s.data;
   if (data == null) {
-    return LgStateView(kind: StateKind.loading, title: l.classesLoading);
+    return LgSkeleton(caption: l.classesLoading);
   }
   return builder(data);
 }

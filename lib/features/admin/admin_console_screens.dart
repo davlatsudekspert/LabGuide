@@ -59,6 +59,8 @@ String adminConsoleErrorText(Object e, AppLocalizations l) => switch (e) {
   AdminConsoleException(code: 'owner') => l.admErrOwner,
   AdminConsoleException(code: 'invalid_email') => l.admInvalidEmail,
   AdminConsoleException(code: 'invalid_name') => l.admErrName,
+  AdminConsoleException(code: 'confirmation_mismatch' || 'not_found') =>
+    l.admDeleteMismatch,
   _ => backendErrorText(e, l),
 };
 
@@ -1206,6 +1208,9 @@ class _AdminUserScreenState extends State<AdminUserScreen> {
   Object? _error;
   bool _busy = false;
 
+  /// Hisob shu sahifadan o'chirildi (D-63): ma'lumot endi yo'q.
+  bool _deleted = false;
+
   @override
   void didUpdateWidget(AdminUserScreen old) {
     super.didUpdateWidget(old);
@@ -1269,6 +1274,17 @@ class _AdminUserScreenState extends State<AdminUserScreen> {
       children: [
         if (api == null)
           _unavailable(l)
+        else if (_deleted)
+          LgStateView(
+            key: const ValueKey('admin-user-deleted'),
+            kind: StateKind.success,
+            title: l.admDeleteDone,
+            actionLabel: l.adminUsers,
+            // Ro'yxatdan ochilgan bo'lsa — orqaga (ro'yxat qayta yuklanadi).
+            onAction: () => context.canPop()
+                ? context.pop()
+                : context.go('/profile/admin/users'),
+          )
         else
           SignedInGate(
             child: AdminGate(
@@ -1397,6 +1413,17 @@ class _AdminUserScreenState extends State<AdminUserScreen> {
               done: l.cmAdminDone,
             ),
           ),
+        if (!locked) ...[
+          LgSectionTitle(l.admDeleteTitle),
+          AdminDeleteAccountPanel(
+            key: ValueKey('admin-delete-${a.userId}'),
+            account: a,
+            api: api,
+            onDeleted: () {
+              if (mounted) setState(() => _deleted = true);
+            },
+          ),
+        ],
         LgSectionTitle(l.admUserCommunity),
         Text(
           '${communityStatusLabel(u.communityStatus, l)}\n'
@@ -1432,6 +1459,98 @@ class _AdminUserScreenState extends State<AdminUserScreen> {
                     done: l.cmAdminDone,
                   ),
                 ),
+      ],
+    );
+  }
+}
+
+/// Hisobni butunlay o'chirish (D-63): emailda kelgan so'rov bo'yicha egasi
+/// foydalanuvchining TO'LIQ emailini qayta kiritadi — server uni HMAC qilib
+/// shu hisob bilan solishtiradi (`confirm_user_id`), so'ng tasdiq oynasi.
+/// O'chirish yo'li — foydalanuvchi o'zi o'chirgandagi bilan bir xil.
+class AdminDeleteAccountPanel extends StatefulWidget {
+  const AdminDeleteAccountPanel({
+    super.key,
+    required this.account,
+    required this.api,
+    required this.onDeleted,
+  });
+
+  final AdminAccountRow account;
+  final AdminConsoleBackend api;
+
+  /// Hisob o'chirildi — sahifa "o'chirildi" holatiga o'tadi.
+  final VoidCallback onDeleted;
+
+  @override
+  State<AdminDeleteAccountPanel> createState() =>
+      _AdminDeleteAccountPanelState();
+}
+
+class _AdminDeleteAccountPanelState extends State<AdminDeleteAccountPanel> {
+  final _email = TextEditingController();
+  bool _busy = false;
+  String? _error;
+
+  @override
+  void dispose() {
+    _email.dispose();
+    super.dispose();
+  }
+
+  Future<void> _delete() async {
+    final l = AppLocalizations.of(context);
+    final email = _email.text.trim();
+    if (_busy || email.isEmpty) return;
+    final ok = await confirmDialog(
+      context,
+      title: l.admDeleteConfirmTitle,
+      body: l.admDeleteConfirmBody(widget.account.emailMasked),
+      action: l.admDeleteButton,
+    );
+    if (!ok || !mounted) return;
+    setState(() => _busy = true);
+    try {
+      await widget.api.adminDeleteAccount(
+        email: email,
+        confirmUserId: widget.account.userId,
+      );
+      if (mounted) _snack(context, l.admDeleteDone);
+      widget.onDeleted();
+    } on Object catch (e) {
+      if (mounted) setState(() => _error = adminConsoleErrorText(e, l));
+    } finally {
+      if (mounted) setState(() => _busy = false);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context);
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        LgNotice(l.admDeleteNote, kind: NoticeKind.warning),
+        const SizedBox(height: 8),
+        LgField(
+          key: const ValueKey('admin-delete-email'),
+          label: l.admDeleteEmail,
+          controller: _email,
+          keyboardType: TextInputType.emailAddress,
+          textInputAction: TextInputAction.done,
+          errorText: _error,
+          // Tugma holati va eski xato matni yozish bilan yangilanadi.
+          onChanged: (_) => setState(() => _error = null),
+          onSubmitted: (_) => _delete(),
+        ),
+        const SizedBox(height: 8),
+        LgButton.secondary(
+          key: const ValueKey('admin-delete-account'),
+          label: l.admDeleteButton,
+          icon: Icons.delete_forever_outlined,
+          busy: _busy,
+          onPressed: _email.text.trim().isEmpty ? null : _delete,
+        ),
       ],
     );
   }

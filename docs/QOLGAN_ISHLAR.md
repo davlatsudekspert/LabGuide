@@ -28,8 +28,13 @@ Shu ro'yxat bo'yicha ketamiz. Bajarilgani `[x]`.
 - [ ] 32 ta mavzuda test savollari yo'q (test_gap) — tekshirilgan kontentdan savollar tuzish (AI loyiha + inson tekshiruvi)
 - [ ] Yangi bo'limlar 2-to'lqin: koagulogramma, parazitologiya, koprologiya; 3-to'lqin: IFA, likvor, balg'am
 - [ ] Hamkor reklamasi: serverda hamkorlar ko'chirilmagan (hozir faqat test buildlarda namuna)
-- [ ] Moderatsiya: bloklash tugmasi uchun serverda `author.ref`, so'z filtri (Apple 1.2)
-- [ ] Ma'ruza 1-mavzu ruscha/inglizcha; rasmiy ruscha toifa matni; domla 529 savoli (kalit tasdiqlangach)
+- [x] Moderatsiya: serverda `author.ref` + server bloklari (migratsiya 0011), so'z filtri uz/ru/en (Apple 1.2) (D-62)
+- [x] Admin panel: hisobni email bo'yicha o'chirish (o'zi o'chirgandagi yo'l, jurnal); siyosat — email so'rovi 30 kun ichida (D-63)
+- [x] Dizayn takliflari 6–7: Toifa kartalari Kunlik karta uslubida (soya, chegarasiz); sinflar yuklanishi — skeleton
+- [ ] Hamjamiyat qoidalari matniga NCII (intim rasmlar) taqiqi bandi — egasi (Apple 2026-10-16)
+- [x] Ma'ruza 1-mavzu (d001) ruscha/inglizcha — muallif deckining aynan tarjimasi (`assets/lectures/d001.ru.json`, `d001.en.json`; rasmsiz — rasmlar uz matnli PPTX render, ilova matn shablonida chizadi; ustoz tekshiruvi kerak, qoralama)
+- [ ] d001 ru/en uchun PPTX rasmlari (ixtiyoriy: `tool/slides/make_m1.py` ni ru/en ga moslab soffice bilan render)
+- [ ] Rasmiy ruscha toifa matni; domla 529 savoli (kalit tasdiqlangach)
 - [ ] 45 ta umumiy amaliyot kuni — manbada mavzu yo'q, jadvaldan mavzu kerak
 - [ ] Ikki ekranli rejim (TV), tahlil varaqasini rasmdan o'qish (qurilmada), marketing rejasi, rolik (ru/en, sitologiya)
 - [ ] Pro/to'lov: faqat to'liq yangi versiya sifatida (kod `pro-later` tarmog'ida; qoidalar egasining xabarida)

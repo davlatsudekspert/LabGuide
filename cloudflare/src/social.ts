@@ -433,8 +433,12 @@ export async function revokeAppleToken(ctx: Ctx, expectedSub: string, code: stri
  * Hisobni o'chirishdan oldin: Apple identiteti bo'lsa tokenni bekor qiladi.
  * Natija `audit_log` ga (faqat ichki id va natija nomi) yoziladi; sozlama
  * yoki kod yo'q bo'lsa — hisob baribir o'chiriladi.
+ *
+ * [adminActor] — egasi admin panelidan o'chirganda (D-63): foydalanuvchining
+ * yangi Apple `authorizationCode` i yo'q (Apple refresh tokeni serverda
+ * saqlanmaydi), shuning uchun natija odatda `no_code`; tana o'qilmaydi.
  */
-export async function revokeAppleOnDelete(ctx: Ctx, userId: string): Promise<void> {
+export async function revokeAppleOnDelete(ctx: Ctx, userId: string, adminActor?: string): Promise<void> {
   const apple = await ctx.db
     .prepare(`SELECT provider_sub FROM auth_identities WHERE user_id = ?1 AND provider = 'apple'`)
     .bind(userId)
@@ -442,7 +446,7 @@ export async function revokeAppleOnDelete(ctx: Ctx, userId: string): Promise<voi
   if (apple.results.length === 0) return;
 
   let code: string | null = null;
-  if ((ctx.req.headers.get('content-type') ?? '').toLowerCase().startsWith('application/json')) {
+  if (!adminActor && (ctx.req.headers.get('content-type') ?? '').toLowerCase().startsWith('application/json')) {
     try {
       const b = await readJson(ctx.req, 4096);
       if (typeof b.apple_authorization_code === 'string' && b.apple_authorization_code.length <= 2048) {
@@ -458,5 +462,5 @@ export async function revokeAppleOnDelete(ctx: Ctx, userId: string): Promise<voi
     if (outcome === 'revoked') break;
   }
   if (outcome !== 'revoked') console.warn(`apple revoke skipped: ${outcome}`);
-  await audit(ctx, userId, 'apple_revoke', userId, { outcome });
+  await audit(ctx, adminActor ?? userId, 'apple_revoke', userId, adminActor ? { outcome, via: 'admin' } : { outcome });
 }

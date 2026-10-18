@@ -9792,4 +9792,36 @@ class AppLocalizationsRu extends AppLocalizations {
   String topicTestReworkMistakes(int count) {
     return 'Повторить ошибки · $count';
   }
+
+  @override
+  String get cmErrAbusive =>
+      'В тексте есть оскорбительные или нецензурные слова. Пожалуйста, перепишите его уважительно — этого требуют правила сообщества.';
+
+  @override
+  String get admDeleteTitle => 'Удаление аккаунта';
+
+  @override
+  String get admDeleteNote =>
+      'Для запросов на удаление, пришедших по email (выполняется в течение 30 дней). Для подтверждения введите полный email пользователя — сервер проверит, что он принадлежит именно этому аккаунту. Аккаунт, участие в группах, посты в сообществе, обращения и способы входа удаляются полностью; если пользователь входил через Apple, сервер попытается отозвать токен Apple. Отменить нельзя; действие записывается в журнал.';
+
+  @override
+  String get admDeleteEmail => 'Полный email пользователя';
+
+  @override
+  String get admDeleteButton => 'Удалить аккаунт навсегда';
+
+  @override
+  String get admDeleteConfirmTitle => 'Удалить аккаунт навсегда?';
+
+  @override
+  String admDeleteConfirmBody(String email) {
+    return 'Аккаунт $email и все связанные с ним данные будут удалены. Это действие нельзя отменить.';
+  }
+
+  @override
+  String get admDeleteDone => 'Аккаунт удалён';
+
+  @override
+  String get admDeleteMismatch =>
+      'Этот email не принадлежит этому аккаунту — проверьте и введите снова.';
 }

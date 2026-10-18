@@ -244,25 +244,57 @@ abstract final class LectureDecks {
   /// Yuklangan bo'lsa — darhol (birinchi kadrda) qaytaradi.
   static Map<String, LectureDeck>? peek(AssetBundle bundle) => _loaded[bundle];
 
+  /// Muallif deckining tarjimalari (`index.json` → `translations`):
+  /// kalit — `'<topic>.<til>'`. [all] bilan birga yuklanadi.
+  static final _translations = Expando<Map<String, LectureDeck>>();
+
   static Future<LectureDeck?> forTopic(
     AssetBundle bundle,
+    String topicId, {
+    String? lang,
+  }) async {
+    final deck = (await all(bundle))[topicId];
+    return deck == null || lang == null
+        ? deck
+        : localized(bundle, topicId, deck, lang);
+  }
+
+  /// [deck] (mavzuning asosiy, odatda o'zbekcha decki) ning [lang] dagi
+  /// tarjimasi bo'lsa — o'sha, aks holda [deck] ning o'zi. Sinxron: tarjimalar
+  /// [all] bilan birga yuklangan.
+  static LectureDeck localized(
+    AssetBundle bundle,
     String topicId,
-  ) async => (await all(bundle))[topicId];
+    LectureDeck deck,
+    String lang,
+  ) => deck.lang == lang
+      ? deck
+      : _translations[bundle]?['$topicId.$lang'] ?? deck;
 
   static Future<Map<String, LectureDeck>> _load(AssetBundle bundle) async {
     final byTopic = <String, LectureDeck>{};
+    final translated = <String, LectureDeck>{};
     final index = jsonDecode(
       await bundle.loadString('assets/lectures/index.json'),
     ) as Map<String, Object?>;
+    Future<LectureDeck> read(String f) async => LectureDeck.fromJson(
+      jsonDecode(await bundle.loadString('assets/lectures/$f'))
+          as Map<String, Object?>,
+    );
+    final tr = (index['translations'] as Map?)?.cast<String, Object?>() ?? {};
     for (final f in (index['decks']! as List).cast<String>()) {
-      final deck = LectureDeck.fromJson(
-        jsonDecode(await bundle.loadString('assets/lectures/$f'))
-            as Map<String, Object?>,
-      );
+      final deck = await read(f);
+      for (final e in ((tr[f] as Map?) ?? const {}).entries) {
+        final t = await read(e.value as String);
+        for (final topic in t.topics) {
+          translated['$topic.${t.lang}'] = t;
+        }
+      }
       for (final t in deck.topics) {
         byTopic[t] = deck;
       }
     }
+    _translations[bundle] = translated;
     return byTopic;
   }
 }

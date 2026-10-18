@@ -2,6 +2,7 @@ import 'dart:typed_data';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:labguide/app/app_scope.dart';
+import 'package:labguide/core/backend/backend_models.dart';
 import 'package:labguide/core/backend/community_backend.dart';
 import 'package:labguide/core/storage/kv_store.dart';
 import 'package:labguide/features/community/community_controller.dart';
@@ -448,7 +449,9 @@ void main() {
   });
 
   group('1.2: foydalanuvchini bloklash', () {
-    Future<(AppServices, String)> setupBad(WidgetTester tester) async {
+    Future<(AppServices, String, FakeCommunityBackend)> setupBad(
+      WidgetTester tester,
+    ) async {
       final (s, lab, community) = await _setup(tester);
       await lab.requestCode('bad@example.com');
       await lab.verifyCode('bad@example.com', FakeLabBackend.otpCode);
@@ -462,13 +465,13 @@ void main() {
       final ref = 'ref-${lab.userId}';
       await lab.signOut();
       await pumpApp(tester, s);
-      return (s, ref);
+      return (s, ref, community);
     }
 
     testWidgets(
       'bloklash: post yashirinadi, qurilmada saqlanadi, qaytariladi',
       (tester) async {
-        final (s, ref) = await setupBad(tester);
+        final (s, ref, community) = await setupBad(tester);
         final l = _l(AppLanguage.uz);
         await _signIn(tester, s, 'reader@example.com');
         await goTo(tester, '/profile/community');
@@ -481,6 +484,10 @@ void main() {
         await tester.pumpAndSettle();
         expect(find.text(l.cmBlockedDone), findsOneWidget);
         expect(s.store.getStringList(StoreKeys.communityBlocked), [ref]);
+        // Hisobga ham yozildi (D-62): boshqa qurilmada ham yashirin.
+        expect(community.blocks.values.expand((x) => x).map((u) => 'ref-$u'), [
+          ref,
+        ]);
         // Savol va javob (ikkalasi ham shu muallifniki) yashirilgan.
         expect(find.text(l.cmBlockedHidden), findsWidgets);
         expect(find.text('Haqoratli javob matni shu yerda.'), findsNothing);
@@ -493,6 +500,7 @@ void main() {
 
         await _tap(tester, find.byKey(const ValueKey('cm-unblock-all')));
         expect(s.store.getStringList(StoreKeys.communityBlocked), isEmpty);
+        expect(community.blocks.values.expand((x) => x), isEmpty);
         await _see(tester, find.text('Shubhali savol matni bu yerda'));
       },
     );
@@ -500,7 +508,7 @@ void main() {
     testWidgets(
       'egasi (LabGuide jamoasi) bloklanmaydi, blok tugmasi chiqmaydi',
       (tester) async {
-        final (s, _) = await setupBad(tester);
+        final (s, _, _) = await setupBad(tester);
         final l = _l(AppLanguage.uz);
         await _signIn(tester, s, 'reader2@example.com');
         await goTo(tester, '/profile/community');
@@ -518,6 +526,61 @@ void main() {
       await goTo(tester, '/profile/community');
       await _tap(tester, find.byKey(const ValueKey('cm-contact-link')));
       expect(find.text(l.contactTitle), findsWidgets);
+    });
+
+    test(
+      'controller: hisobdagi bloklar yangi qurilmaga sinxronlanadi',
+      () async {
+        final lab = FakeLabBackend();
+        final api = FakeCommunityBackend(lab);
+        await lab.requestCode('bad2@example.com');
+        await lab.verifyCode('bad2@example.com', FakeLabBackend.otpCode);
+        final badId = lab.userId!;
+        final qid = api.seedQuestion(
+          author: badId,
+          title: 'Yana bir shubhali savol',
+          body: 'Matn bu yerda yetarlicha uzun.',
+        );
+        await lab.signOut();
+        await lab.requestCode('reader3@example.com');
+        await lab.verifyCode('reader3@example.com', FakeLabBackend.otpCode);
+        final bad = CommunityAuthor(kind: AuthorKind.member, ref: 'ref-$badId');
+        // 1-qurilma: bloklaydi (lokal + server).
+        final phone = CommunityController(api, store: MemoryKeyValueStore());
+        await phone.block(bad, kind: PostKind.question, postId: qid);
+        expect(phone.isBlocked(bad), isTrue);
+        // 2-qurilma (bo'sh ombor): sinxrondan keyin ham yashirin.
+        final tablet = CommunityController(api, store: MemoryKeyValueStore());
+        expect(tablet.isBlocked(bad), isFalse);
+        await tablet.syncBlocks();
+        expect(tablet.isBlocked(bad), isTrue);
+        // Hammasini qaytarish — serverda ham.
+        await tablet.unblockAll();
+        expect(await api.blockedRefs(), isEmpty);
+        // Mehmon: server chaqirilmaydi, lokal blok ishlaydi.
+        await lab.signOut();
+        final guest = CommunityController(api, store: MemoryKeyValueStore());
+        await guest.syncBlocks();
+        await guest.block(bad, kind: PostKind.question, postId: qid);
+        expect(guest.isBlocked(bad), isTrue);
+        expect(api.blocks.values.expand((x) => x), isEmpty);
+      },
+    );
+
+    test('server so\'z filtri xatosi — tushunarli matn (uz/ru/en)', () {
+      for (final lang in AppLanguage.values) {
+        final l = _l(lang);
+        expect(
+          communityErrorText(
+            const CommunityException(
+              BackendFailure.invalid,
+              'abusive_language',
+            ),
+            l,
+          ),
+          l.cmErrAbusive,
+        );
+      }
     });
 
     test('controller: saqlash, o\'zini/belgisizni bloklamaslik', () async {
