@@ -22,7 +22,10 @@ Faylni tekshirish: `sha256sum LabGuide-0.1.0-20.aab` (yuqoridagi qiymat bilan bi
 **Ruxsatlar (haqiqiy, AAB manifestidan):** `INTERNET`, `RECORD_AUDIO` (ixtiyoriy ovozli buyruqlar,
 faqat qurilmada oflayn tanish bo'lsa yoqiladi), `POST_NOTIFICATIONS` (kunlik eslatma),
 `RECEIVE_BOOT_COMPLETED` (eslatmani qayta ishga tushirishdan keyin tiklash), `VIBRATE`.
-Kamera, joylashuv, kontaktlar, xotira ruxsatlari **yo'q**.
+Kamera, joylashuv, kontaktlar, xotira ruxsatlari **yo'q**. **Keyingi buildlardan (D-68):**
+`CAMERA` qo'shiladi (ilova ichidagi QR skaner, faqat skaner ochilganda so'raladi;
+`android.hardware.camera` — `required="false"`). Data safety izohi: APP_STORE.md 12-bo'lim
+("QR skaner").
 
 **Kalit haqida:** upload kaliti (`.jks`) va parollari repoda yo'q. Ularni xavfsiz joyda (parol
 menejeri + zaxira nusxa) saqlang. Play App Signing'da yo'qolsa upload key'ni Play orqali

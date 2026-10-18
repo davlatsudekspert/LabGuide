@@ -132,6 +132,7 @@ Mahalliy Worker’da qayta ishga tushirildi: **97 tekshiruv, hammasi o‘tdi**. 
   Android/iOS build qilib tekshirib bo‘lmaydi (diskda joy yo‘q, macOS yo‘q), CI build’ini
   buzish xavfi bor. O‘rniga: telefonning o‘z kamerasi QR’ni o‘qiydi → sayt → “Ilovada ochish”,
   hamda “Havolani qo‘yish”. Kamera skaneri keyin alohida, CI build bilan qo‘shilishi mumkin.
+  **Yangilanish:** D-68 da qo‘shildi (`mobile_scanner` 7.4.2, native qism CI build’da tekshiriladi).
 * **Universal Links / App Links (https havola to‘g‘ridan-to‘g‘ri ilovani ochishi)**: iOS
   Associated Domains entitlement’i va Android `assetlinks.json` uchun imzo sertifikati
   barmoq izi kerak (Play App Signing) — bu muhitda yo‘q. Hozircha custom scheme

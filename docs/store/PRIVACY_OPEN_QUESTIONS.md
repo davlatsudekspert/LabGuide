@@ -22,6 +22,14 @@ quyidagilar **egasi yoki yurist qarori** — taxmin bilan yozilmagan.
    deb yozadi — yoqilmagan bo‘lsa ham to‘g‘ri, lekin Google OAuth “In production” uchun siyosat
    va bosh sahifa havolalari kerak (`site/`).
 
+5a. **QR skaner va Google ML Kit diagnostikasi (D-68).** Android’da QR skaner bundled Google
+   ML Kit ishlatadi; Google ma’lumotiga ko‘ra u Google’ga texnik diagnostika (qurilma/ilova
+   ma’lumoti, unumdorlik, o‘rnatish identifikatori) yuboradi — kamera tasviri yoki QR matni emas.
+   Siyosatda (14-bo‘lim va “Qisqacha”) shunday yozildi. Play Data safety’da *Diagnostics* va
+   *Device or other IDs* ni belgilash (server ulanmagan buildda ham) — egasi qarori
+   (APP_STORE.md 12-bo‘lim tavsiyasi). Diagnostikani butunlay istamasangiz — skanerni Android’da
+   o‘chirish yoki boshqa (ML Kitsiz) kutubxona kerak.
+
 ## B. Huquqiy (yurist bilan; bu huquqiy maslahat emas)
 
 5. **O‘zbekiston, “Shaxsga doir ma’lumotlar to‘g‘risida”gi qonun (O‘RQ-547).** Qonun O‘zbekiston

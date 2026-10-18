@@ -18,6 +18,7 @@ import 'package:labguide/features/auth/otp_auth.dart';
 import 'package:labguide/features/auth/social_auth.dart';
 import 'package:labguide/features/classroom/lecture_catalog.dart';
 import 'package:labguide/features/classroom/lecture_decks.dart';
+import 'package:labguide/features/classroom/qr_scanner.dart';
 import 'package:labguide/features/daily/daily_reminder.dart';
 import 'package:labguide/features/settings/settings_controller.dart';
 import 'package:labguide/features/share/result_share.dart';
@@ -25,6 +26,7 @@ import 'package:labguide/main.dart';
 import 'package:material_ui/material_ui.dart';
 
 import 'daily_fakes.dart';
+import 'fake_qr_scanner.dart';
 
 /// Haqiqiy Inter va Material Icons shriftlarini yuklaydi: overflow
 /// tekshiruvi test shriftida (har harf = kvadrat) emas, ilovadagi kabi
@@ -74,6 +76,8 @@ Future<AppServices> makeServices(
   CommunityBackend? community,
   // Google / Apple kirish tugmalari (soxta provayderlar; berilmasa — yo'q).
   SocialAuthService? socialAuth,
+  // Ilova ichidagi QR skaner (berilmasa — soxta, Android kabi "qo'llanadi").
+  QrScanner? qrScanner,
 }) async {
   final s = store ?? MemoryKeyValueStore();
   if (partnerAds != null) {
@@ -104,6 +108,7 @@ Future<AppServices> makeServices(
     clock: clock,
     community: community,
     socialAuth: socialAuth ?? SocialAuthService.none(),
+    qrScanner: qrScanner ?? FakeQrScanner(),
   );
   if (languageChosen) {
     await services.settings.chooseLanguage(language);

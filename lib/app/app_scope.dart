@@ -10,6 +10,7 @@ import '../core/storage/kv_store.dart';
 import '../features/auth/auth_controller.dart';
 import '../features/classroom/classroom_local.dart';
 import '../features/classroom/curriculum.dart';
+import '../features/classroom/qr_scanner.dart';
 import '../features/classroom/topic_test.dart';
 import '../features/community/community_controller.dart';
 import '../features/content/content_controller.dart';
@@ -83,6 +84,7 @@ class AppServices {
     required this.classroom,
     required this.community,
     required this.topicTests,
+    this.qrScanner = const MobileQrScanner(),
   });
 
   final AppConfig config;
@@ -141,6 +143,9 @@ class AppServices {
 
   /// Mavzu testlari (taqdimot oxirida): qoralama va natijalar (qurilmada).
   final TopicTestController topicTests;
+
+  /// Ilova ichidagi QR skaner (D-68; testlarda — soxta skaner).
+  final QrScanner qrScanner;
 
   /// Adminlar boshqaruvi (D-44) — server bu imkoniyatga ega bo'lsa
   /// (hozircha faqat Cloudflare). Aks holda bo'lim ko'rinmaydi.

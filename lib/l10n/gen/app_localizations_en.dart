@@ -9824,6 +9824,45 @@ class AppLocalizationsEn extends AppLocalizations {
       'Scan the QR code with your phone camera and tap “Open in app” on the page that opens — the code fills in by itself.';
 
   @override
+  String get qrScanAction => 'Scan QR code';
+
+  @override
+  String get qrScanHint =>
+      'Fit the group or test QR code from your teacher inside the frame';
+
+  @override
+  String get qrScanTorchOn => 'Turn on flashlight';
+
+  @override
+  String get qrScanTorchOff => 'Turn off flashlight';
+
+  @override
+  String get qrScanTypeCode => 'Type or paste the code';
+
+  @override
+  String get qrScanNotInvite => 'This QR code is not a LabGuide group invite';
+
+  @override
+  String get qrScanDeniedTitle => 'Camera access is off';
+
+  @override
+  String get qrScanDeniedBody =>
+      'To read the QR code, allow LabGuide to use the camera in Settings. The camera image is read on the phone only — it is not saved or sent. Or type the code yourself or paste the link.';
+
+  @override
+  String get qrScanOpenSettings => 'Open settings';
+
+  @override
+  String get qrScanFailedTitle => 'Couldn’t open the camera';
+
+  @override
+  String get qrScanFailedBody =>
+      'Type the code yourself or paste the link from your teacher.';
+
+  @override
+  String get qrScanStarting => 'Opening camera…';
+
+  @override
   String get classesJoinOpensTest =>
       'After joining, your teacher’s test opens right away.';
 

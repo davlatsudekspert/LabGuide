@@ -9688,6 +9688,45 @@ class AppLocalizationsUz extends AppLocalizations {
       'QR kodni telefon kamerasi bilan skanerlang va ochilgan sahifada “Ilovada ochish” ni bosing — kod shu yerga o‘zi tushadi.';
 
   @override
+  String get qrScanAction => 'QR kodni skanerlash';
+
+  @override
+  String get qrScanHint =>
+      'Ustoz bergan guruh yoki test QR kodini ramka ichiga to‘g‘rilang';
+
+  @override
+  String get qrScanTorchOn => 'Chiroqni yoqish';
+
+  @override
+  String get qrScanTorchOff => 'Chiroqni o‘chirish';
+
+  @override
+  String get qrScanTypeCode => 'Kodni yozish yoki qo‘yish';
+
+  @override
+  String get qrScanNotInvite => 'Bu QR kod LabGuide guruh taklifi emas';
+
+  @override
+  String get qrScanDeniedTitle => 'Kameraga ruxsat berilmagan';
+
+  @override
+  String get qrScanDeniedBody =>
+      'QR kodni o‘qish uchun sozlamalarda LabGuide’ga kamera ruxsatini bering. Kamera kadri faqat telefonda o‘qiladi — rasm saqlanmaydi va yuborilmaydi. Yoki kodni qo‘lda yozing yoki havolani qo‘ying.';
+
+  @override
+  String get qrScanOpenSettings => 'Sozlamalarni ochish';
+
+  @override
+  String get qrScanFailedTitle => 'Kamerani ochib bo‘lmadi';
+
+  @override
+  String get qrScanFailedBody =>
+      'Kodni qo‘lda yozing yoki ustoz yuborgan havolani qo‘ying.';
+
+  @override
+  String get qrScanStarting => 'Kamera ochilmoqda…';
+
+  @override
   String get classesJoinOpensTest =>
       'Qo‘shilgach ustoz bergan test darhol ochiladi.';
 

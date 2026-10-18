@@ -9863,6 +9863,46 @@ class AppLocalizationsRu extends AppLocalizations {
       'Отсканируйте QR-код камерой телефона и нажмите «Открыть в приложении» на открывшейся странице — код подставится сам.';
 
   @override
+  String get qrScanAction => 'Сканировать QR-код';
+
+  @override
+  String get qrScanHint =>
+      'Наведите рамку на QR-код группы или теста от преподавателя';
+
+  @override
+  String get qrScanTorchOn => 'Включить фонарик';
+
+  @override
+  String get qrScanTorchOff => 'Выключить фонарик';
+
+  @override
+  String get qrScanTypeCode => 'Ввести или вставить код';
+
+  @override
+  String get qrScanNotInvite =>
+      'Этот QR-код не является приглашением в группу LabGuide';
+
+  @override
+  String get qrScanDeniedTitle => 'Нет доступа к камере';
+
+  @override
+  String get qrScanDeniedBody =>
+      'Чтобы прочитать QR-код, разрешите LabGuide доступ к камере в настройках. Кадр обрабатывается только на телефоне — изображение не сохраняется и не отправляется. Или введите код вручную либо вставьте ссылку.';
+
+  @override
+  String get qrScanOpenSettings => 'Открыть настройки';
+
+  @override
+  String get qrScanFailedTitle => 'Не удалось открыть камеру';
+
+  @override
+  String get qrScanFailedBody =>
+      'Введите код вручную или вставьте ссылку от преподавателя.';
+
+  @override
+  String get qrScanStarting => 'Камера открывается…';
+
+  @override
   String get classesJoinOpensTest =>
       'После вступления сразу откроется тест от преподавателя.';
 

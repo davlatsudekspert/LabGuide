@@ -1184,6 +1184,8 @@ GoRouter buildRouter(
                         builder: (context, state) => JoinGroupScreen(
                           initialCode: state.uri.queryParameters['code'],
                           assignmentId: state.uri.queryParameters['a'],
+                          autoJoin:
+                              state.extra == JoinGroupScreen.autoJoinExtra,
                         ),
                       ),
                       GoRoute(
