@@ -110,6 +110,18 @@ Apple foydalanuvchi kontenti bor ilovadan: xabar berish yo‘li, bloklash va
     **Qayta faollashtirish** — yana kira oladi. Adminni to‘xtatib bo‘lmaydi.
   - **Hamjamiyatda to‘xtatish / Tiklash** — faqat savol-javob yozishni
     to‘xtatadi, ilovaning qolgan qismi ishlaydi.
+  - **Hisobni o‘chirish** (D-63) — emailda kelgan o‘chirish so‘rovi uchun
+    (maxfiylik siyosati: **30 kun ichida**). Avval xat kelgan emailni Email
+    qidiruvida toping (xat aynan shu manzildan kelganiga ishonch hosil qiling),
+    hisobni oching, pastdagi “Hisobni o‘chirish” maydoniga **to‘liq emailni
+    qayta** yozing → “Hisobni butunlay o‘chirish” → tasdiq. Server emailni shu
+    hisob bilan solishtiradi (boshqa hisob o‘chmaydi). O‘chirish — foydalanuvchi
+    o‘zi o‘chirgandagi bilan bir xil: guruhlar, natijalar, hamjamiyat postlari,
+    bloklar, murojaatlar, sessiyalar, Google/Apple bog‘lanishi. Apple hisobida
+    server Apple ruxsatini bekor qila olmaydi (ilovadagi Apple tasdig‘i kerak) —
+    jurnalda `apple_revoke: no_code`; javob xatida foydalanuvchiga iPhone
+    Sozlamalaridan ham olib tashlashni ayting. Jurnal: `account_deleted_by_admin`.
+    O‘zingizni va boshqa adminni o‘chirib bo‘lmaydi. Qaytarib bo‘lmaydi.
 
 ## 6. Amallar tarixi
 
