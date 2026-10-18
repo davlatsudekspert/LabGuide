@@ -34,7 +34,7 @@ Shu ro'yxat bo'yicha ketamiz. Bajarilgani `[x]`.
 - [x] Moderatsiya: serverda `author.ref` + server bloklari (migratsiya 0011), so'z filtri uz/ru/en (Apple 1.2) (D-62)
 - [x] Admin panel: hisobni email bo'yicha o'chirish (o'zi o'chirgandagi yo'l, jurnal); siyosat — email so'rovi 30 kun ichida (D-63)
 - [x] Dizayn takliflari 6–7: Toifa kartalari Kunlik karta uslubida (soya, chegarasiz); sinflar yuklanishi — skeleton
-- [ ] Hamjamiyat qoidalari matniga NCII (intim rasmlar) taqiqi bandi — egasi (Apple 2026-10-16)
+- [x] Hamjamiyat qoidalari matniga NCII (intim rasmlar) taqiqi bandi — egasi (Apple 2026-10-16) (`cmRulesC2`, uz/ru/en; qorovul: `test/guards/product_policy_guard_test.dart`)
 - [x] Ma'ruza 1-mavzu (d001) ruscha/inglizcha — muallif deckining aynan tarjimasi (`assets/lectures/d001.ru.json`, `d001.en.json`; rasmsiz — rasmlar uz matnli PPTX render, ilova matn shablonida chizadi; ustoz tekshiruvi kerak, qoralama)
 - [ ] d001 ru/en uchun PPTX rasmlari (ixtiyoriy: `tool/slides/make_m1.py` ni ru/en ga moslab soffice bilan render)
 - [ ] Rasmiy ruscha toifa matni; domla 529 savoli (kalit tasdiqlangach)

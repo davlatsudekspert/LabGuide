@@ -231,14 +231,14 @@ ulashish — tizim oynasi, `NSPhotoLibraryAddUsageDescription` faqat “Save Ima
 
 **Privacy Policy URL** — majburiy. Matn: [PRIVACY_POLICY.md](PRIVACY_POLICY.md), sahifa
 `site/privacy/index.html` (`python3 tool/site/build_site.py` bilan yasaladi). Taklif qilingan
-manzil: `https://nfcstore.uz/labguide/privacy/` (joylash — `site/README.md`). Matnda sana
+manzil: `https://labguide.nfcstore.uz/privacy/` (joylash — `site/README.md`). Matnda sana
 (2026-10-17) va aloqa (labguide@nfcstore.uz) — **egasi tasdiqlaydi**; ochiq savollar:
 [PRIVACY_OPEN_QUESTIONS.md](PRIVACY_OPEN_QUESTIONS.md).
 
 **Support / aloqa (App Store Connect “Support URL”, Play “Email address” / “Developer contact”):**
 qo‘llab-quvvatlash aloqasi — **labguide@nfcstore.uz** (ilovada: Profil → Aloqa va shikoyat; kodda
 `lib/core/contact.dart`). App Store Connect “Support URL” maydoni URL talab qiladi: bosh sahifa
-`https://nfcstore.uz/labguide/` (`site/index.html`, unda aloqa emaili bor) — `mailto:` emas, haqiqiy
+`https://labguide.nfcstore.uz/` (`site/index.html`, unda aloqa emaili bor) — `mailto:` emas, haqiqiy
 sahifa bering. Play Console Store listing → Contact details → Email: shu manzil. **Egasi manzil
 ishlashini tasdiqlamaguncha (Cloudflare Email Routing → Gmail, sinov xati bilan) topshirmang.**
 Manzil o‘zgarsa — `Contact.email`, PRIVACY_POLICY.md va do‘kon maydonlarini birga yangilang.
@@ -247,7 +247,7 @@ Manzil o‘zgarsa — `Contact.email`, PRIVACY_POLICY.md va do‘kon maydonlarin
 o‘chirish” (server: `DELETE /v1/me`, `cloudflare/src/auth.ts` `deleteAccount` — profil, sessiyalar,
 Google/Apple bog‘lanishi, a’zolik, javoblar va ball, murojaatlar, hamjamiyat ma’lumotlari; ustozning
 guruhlari ham; ilova ichidagi shikoyat matni hisobdan uzilib qoladi; Apple tokeni bekor qilinadi).
-Veb yo‘riqnoma: `https://nfcstore.uz/labguide/delete-account/` (`site/delete-account/index.html`).
+Veb yo‘riqnoma: `https://labguide.nfcstore.uz/delete-account/` (`site/delete-account/index.html`).
 
 ## 7. Age rating
 
@@ -366,7 +366,7 @@ saqlamaydi — Data safety’da **Audio qo‘shilmaydi** (egasi qarori, 2026-10-
 
 Reklama: do‘kon buildida hamkor e’lonlari yo‘q (`LG_PARTNER_ADS=false`) — Play Console → App
 content → **Ads: No**. Hisobni o‘chirish havolasi (Play talabi, “Delete account URL”):
-`https://nfcstore.uz/labguide/delete-account/` (`site/delete-account/index.html`) + ilovadagi tugma.
+`https://labguide.nfcstore.uz/delete-account/` (`site/delete-account/index.html`) + ilovadagi tugma.
 
 
 ## 13. Test tarqatish: holat va egasidan kerakli amallar
@@ -450,13 +450,13 @@ Faqat **ichki/yopiq test**. Production, App Store review, Play production — CI
 yo‘riqnomasi). Siyosat sahifasi `docs/store/PRIVACY_POLICY.md` dan
 `python3 tool/site/build_site.py` bilan yasaladi; `python3 tool/site/check_site.py` ichki
 izoh, taqiqlangan so‘zlar va buzuq havolalarni tekshiradi. Joylash (Cloudflare Pages yoki
-istalgan statik hosting, taklif: `https://nfcstore.uz/labguide/`) — `site/README.md`.
+istalgan statik hosting, taklif: `https://labguide.nfcstore.uz/`) — `site/README.md`.
 
 | Maydon | Manzil |
 |---|---|
-| Privacy policy (App Store, Play, Google OAuth) | `https://nfcstore.uz/labguide/privacy/` |
-| Homepage / Support URL (Google OAuth, App Store) | `https://nfcstore.uz/labguide/` |
-| Delete account URL (Play Data safety) | `https://nfcstore.uz/labguide/delete-account/` |
+| Privacy policy (App Store, Play, Google OAuth) | `https://labguide.nfcstore.uz/privacy/` |
+| Homepage / Support URL (Google OAuth, App Store) | `https://labguide.nfcstore.uz/` |
+| Delete account URL (Play Data safety) | `https://labguide.nfcstore.uz/delete-account/` |
 
 Sayt joylanmaguncha zaxira: `https://github.com/davlatsudekspert/LabGuide/blob/main/docs/store/PRIVACY_POLICY.md`
 (ichki izohsiz). Google OAuth “In production” uchun domen (`nfcstore.uz`) Google Search Console’da

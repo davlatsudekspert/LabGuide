@@ -103,6 +103,23 @@ jobs:
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v5
+      # Qorovul (guard) qatlamlari — docs/GUARDS.md, lokal: tool/run_guards.sh.
+      # Python qatlami tez (~40 s) va flutter'dan oldin: xato bo'lsa darhol.
+      - uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
+        with:
+          python-version: "3.12"
+      - name: Python qorovullari (slaydlar, sayt, AI vositalari)
+        run: |
+          set -euo pipefail
+          # python-pptx: tool/slides PPTX testlari (bo'lmasa ular o'tkazib yuboriladi).
+          python -m pip install --quiet --no-cache-dir --disable-pip-version-check python-pptx==1.0.2
+          python -m unittest discover -s tool/slides -p 'test_*.py'
+          python tool/site/check_site.py
+          python tool/site/check_site.py --self-test
+          python -m unittest discover -s tool/site -p 'test_*.py'
+          # tool/ai: faqat oflayn testlar (SDK va API kaliti kerak emas).
+          python -m unittest discover -s tool/ai/tests
+          echo "- Python qorovullari (slides, site, ai): o'tdi" >> "$GITHUB_STEP_SUMMARY"
       - uses: subosito/flutter-action@v2
         with:
           flutter-version: ${{ env.FLUTTER_VERSION }}

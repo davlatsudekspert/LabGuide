@@ -35,17 +35,17 @@ bo‘lsin (ilovada yo‘q narsani yozmang).
 
 ## Joylash
 
-Taklif qilingan manzil — egasining domeni ostida: **`https://nfcstore.uz/labguide/`**.
+Taklif qilingan manzil — egasining domeni ostida: **`https://labguide.nfcstore.uz/`**.
 
 | Sahifa | Manzil | Qayerga beriladi |
 |---|---|---|
-| Bosh sahifa | `https://nfcstore.uz/labguide/` | Google OAuth → Branding → *Application home page*; App Store → *Support URL* |
-| Maxfiylik siyosati | `https://nfcstore.uz/labguide/privacy/` | Google OAuth → *Privacy policy link*; App Store Connect → *Privacy Policy URL*; Play Console → *Privacy policy* |
-| Hisobni o‘chirish | `https://nfcstore.uz/labguide/delete-account/` | Play Console → Data safety → *Delete account URL* |
+| Bosh sahifa | `https://labguide.nfcstore.uz/` | Google OAuth → Branding → *Application home page*; App Store → *Support URL* |
+| Maxfiylik siyosati | `https://labguide.nfcstore.uz/privacy/` | Google OAuth → *Privacy policy link*; App Store Connect → *Privacy Policy URL*; Play Console → *Privacy policy* |
+| Hisobni o‘chirish | `https://labguide.nfcstore.uz/delete-account/` | Play Console → Data safety → *Delete account URL* |
 
 Sahifalar bir-biriga nisbiy havola bilan ulangan (`../style.css`, `privacy/index.html`), shuning
 uchun sayt istalgan papkada ishlaydi (`/labguide/`, domen ildizi yoki kompyuterda oddiy fayl).
-Manzil oxiridagi `/` muhim: `…/labguide/privacy` (sleshsiz) ochilsa, ko‘pchilik hosting uni o‘zi
+Manzil oxiridagi `/` muhim: `…/privacy` (sleshsiz) ochilsa, ko‘pchilik hosting uni o‘zi
 `…/privacy/` ga yo‘naltiradi; do‘kon va Google maydonlariga doim sleshli manzilni yozing.
 
 ### 1-variant: Cloudflare Pages (tavsiya)
@@ -57,15 +57,11 @@ Manzil oxiridagi `/` muhim: `…/labguide/privacy` (sleshsiz) ochilsa, ko‘pchi
    Git bilan: *Build command* bo‘sh, *Build output directory* — `site`.
 2. Natija: `https://labguide-site.pages.dev/` — sinab ko‘ring (uchala sahifa, telefonda, qorong‘i
    mavzuda).
-3. **`/labguide/` yo‘li ostida chiqarish.** Pages loyihasi odatda butun (sub)domenga ulanadi.
-   Ikki yo‘l:
-   - **a)** Asosiy `nfcstore.uz` sayti ham shu Pages loyihasida bo‘lsa — `site/` ichidagi fayllarni
-     o‘sha loyihaning `labguide/` papkasiga joylang.
-   - **b)** Asosiy sayt boshqa joyda bo‘lsa — Cloudflare’da `nfcstore.uz/labguide/*` yo‘liga
-     kichik Worker marshruti qo‘ying, u so‘rovni `labguide-site.pages.dev` ga uzatadi (yo‘l
-     boshidagi `/labguide` olib tashlanadi). Yoki oddiyroq: alohida subdomen
-     (`labguide.nfcstore.uz`) → Pages → *Custom domains*; unda manzillar
-     `https://labguide.nfcstore.uz/`, `…/privacy/`, `…/delete-account/` bo‘ladi.
+3. **Subdomen `labguide.nfcstore.uz`** → Pages → *Custom domains*. Ilova (maxfiylik havolasi
+   `lib/core/contact.dart`, QR/taklif havolasi `…/j/?c=KOD`) aynan shu manzilni ishlatadi, shuning
+   uchun boshqa yo‘l (masalan, `nfcstore.uz/labguide/`) tanlanmasin — aks holda ilovadagi havolalar
+   ishlamaydi (`tool/site/test_guards.py` tekshiradi). Manzillar: `https://labguide.nfcstore.uz/`,
+   `…/privacy/`, `…/delete-account/`, `…/j/`.
 4. HTTPS Cloudflare tomonidan avtomatik.
 
 ### 2-variant: istalgan statik hosting
