@@ -71,7 +71,7 @@ quyidagilar **egasi yoki yurist qarori** — taxmin bilan yozilmagan.
 ## D. Kodda / boshqa hujjatlarda nomuvofiqlik (bu o‘zgarishda tegilmagan)
 
 16. `lib/core/contact.dart` `privacyPolicyUrl` hali GitHub’dagi `.md` ga ishora qiladi. `site/`
-    joylangach `https://nfcstore.uz/labguide/privacy/` ga almashtiring (App Store Connect / Play
+    joylangach `https://labguide.nfcstore.uz/privacy/` ga almashtiring (App Store Connect / Play
     Console maydonlari bilan bir xil bo‘lsin).
 17. Ilova matnlari (`lib/l10n/app_*.arb`): `privacyBody` faqat Resend va “oxirgi faol kun”ni
     aytadi (endi daqiqagacha yaxlitlangan faollik vaqti ham saqlanadi; Google/Apple, murojaatlar,
