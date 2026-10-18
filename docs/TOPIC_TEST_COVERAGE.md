@@ -16,20 +16,20 @@ Hujjat `test/unit/topic_test_coverage_test.dart` bilan ilovadagi aynan shu qoida
 | | Mavzular |
 |---|---:|
 | Jami mavzu | 188 |
-| 0 ta savol | 3 |
+| 0 ta savol | 2 |
 | 1–2 ta (test o‘tkazilmaydi) | 0 |
-| 3–4 ta | 1 |
-| **< 5 ta (jami, 0 bilan)** | 4 |
-| 5–9 ta | 14 |
-| **≥ 10 ta** (to‘liq 10 savollik test) | 170 |
+| 3–4 ta | 0 |
+| **< 5 ta (jami, 0 bilan)** | 2 |
+| 5–9 ta | 0 |
+| **≥ 10 ta** (to‘liq 10 savollik test) | 186 |
 | `test_gap: true` belgisi | 33 |
 
 Taqdimotlar (170 ta):
 
 | Holat | Decklar |
 |---|---:|
-| Test tayyor (≥ 3 savol) | 141 |
-| “Savollar tayyorlanmoqda” (< 3) | 2 |
+| Test tayyor (≥ 3 savol) | 142 |
+| “Savollar tayyorlanmoqda” (< 3) | 1 |
 | Tugma yo‘q — amaliy protokol, mavzuga bog‘lanmagan | 27 |
 
 Amaliy protokol decklari (`index_v2.json` da `topics: []`) hech qaysi mavzu yoki analitga bog‘lanmagan — ularda test tugmasi ko‘rsatilmaydi. Bog‘lash uchun eksportga (`tool/slides/export_app_decks.py`) mavzu/analit havolasi qo‘shilishi kerak (mutaxassis tanlovi bilan).
@@ -42,13 +42,12 @@ Deck matnidan olingan savollar faqat deck slaydidagi manbali gapga tayanadi: kal
 
 Boshqa yo‘l: qoralama uchun `tool/ai` (AI yordamida qoralama) bor, lekin uning natijasi **mutaxassis tekshiruvisiz** testga kirmaydi: savol bankka manbasi bilan qo‘shilib, kaliti tekshirilgach (`verdict: ok` yoki `refs`), mavzuning `test_candidates` ro‘yxatiga yoziladi — shundan keyin test o‘zi paydo bo‘ladi.
 
-## 0 ta savol (3)
+## 0 ta savol (2)
 
 | Mavzu | Nomi | Toifa (ok) | Paket (manbali) | Deck matnidan | Jami | Chiqarilgan nomzod | test_gap | Deck |
 |---|---|---:|---:|---:|---:|---:|:-:|---|
 | d001-P | Laborator xizmatni tashkillashtirish. Tibbiy etika va deontologiya. Ma’naviyat darsi | 0 | 0 | 0 | **0** | 0 | ha | d001 |
 | d001-L | Ma’naviyat darsi | 0 | 0 | 0 | **0** | 0 | ha | d001 |
-| d134-P | Biologik material bilan xavfsiz ishlash va sanitar-epidemiologik tartib | 0 | 0 | 0 | **0** | 0 | ha | d134 |
 
 `test_gap` belgisi yo‘q, lekin savoli 0 ta mavzular: 0 ta (asosan 91–142-kunlar amaliyoti: curriculum’da nomzod ro‘yxati bo‘sh).
 
@@ -57,32 +56,17 @@ Boshqa yo‘l: qoralama uchun `tool/ai` (AI yordamida qoralama) bor, lekin uning
 | Mavzu | Nomi | Toifa (ok) | Paket (manbali) | Deck matnidan | Jami | Chiqarilgan nomzod | test_gap | Deck |
 |---|---|---:|---:|---:|---:|---:|:-:|---|
 
-## 3–4 ta savol (1)
+## 3–4 ta savol (0)
 
 | Mavzu | Nomi | Toifa (ok) | Paket (manbali) | Deck matnidan | Jami | Chiqarilgan nomzod | test_gap | Deck |
 |---|---|---:|---:|---:|---:|---:|:-:|---|
-| d096-P | Yupqa qon surtmasini tayyorlash va yaroqliligini baholash | 3 | 1 | 0 | **4** | 0 |  | d096 |
 
-## 5–9 ta savol (14)
+## 5–9 ta savol (0)
 
 | Mavzu | Nomi | Toifa (ok) | Paket (manbali) | Deck matnidan | Jami | Chiqarilgan nomzod | test_gap | Deck |
 |---|---|---:|---:|---:|---:|---:|:-:|---|
-| d100-P | Trombotsitlarni Fonio usulida sanash | 3 | 2 | 0 | **5** | 0 |  | d100 |
-| d102-P | Siydikni yig‘ish, saqlash va fizik xossalarini aniqlash | 5 | 4 | 0 | **9** | 1 |  | d102 |
-| d103-P | Siydikni kimyoviy tekshirish: test-tilimchalar va sulfosalitsil sinamasi | 5 | 2 | 0 | **7** | 1 |  | d103 |
-| d104-P | Siydik cho‘kmasi: preparat tayyorlash, hujayralar va silindrlar | 5 | 2 | 0 | **7** | 1 |  | d104 |
-| d105-P | Siydik cho‘kmasi: kristallar, atlas va natijani izohlash | 5 | 4 | 0 | **9** | 1 |  | d105 |
-| d107-P | Balg‘amni yig‘ish va makroskopik ko‘rish | 6 | 2 | 0 | **8** | 1 |  | d107 |
-| d108-P | Balg‘amning nativ mikroskopiyasi va namuna sifati | 6 | 2 | 0 | **8** | 1 |  | d108 |
-| d109-P | Balg‘am surtmasini Gram usulida bo‘yash va ko‘rish | 6 | 2 | 0 | **8** | 1 |  | d109 |
-| d110-P | Sil–Nilsen usulida bo‘yash: kislotaga chidamli bakteriyalarni qidirish | 6 | 2 | 0 | **8** | 1 |  | d110 |
-| d111-P | Urogenital surtmalar mikroskopiyasi: gonoreya va trixomoniaz | 4 | 2 | 0 | **6** | 0 |  | d111 |
-| d113-P | Najasning umumiy tahlili (koprogramma) | 6 | 0 | 0 | **6** | 0 |  | d113 |
-| d128-P | SRB, RF va ASLO: namuna, usul cheklovlari va natija talqini | 3 | 3 | 0 | **6** | 0 |  | d128 |
-| d129-P | Yallig‘lanish ko‘rsatkichlari: SRB va EChTni birga baholash | 3 | 4 | 0 | **7** | 0 |  | d129 |
-| d140-P | Takrorlash: siydik va najas tahlili | 5 | 4 | 0 | **9** | 1 |  | d140 |
 
-## ≥ 10 ta savol (170)
+## ≥ 10 ta savol (186)
 
 | Mavzu | Nomi | Toifa (ok) | Paket (manbali) | Deck matnidan | Jami | Chiqarilgan nomzod | test_gap | Deck |
 |---|---|---:|---:|---:|---:|---:|:-:|---|
@@ -132,9 +116,9 @@ Boshqa yo‘l: qoralama uchun `tool/ai` (AI yordamida qoralama) bor, lekin uning
 | d025-P | Najasni mikroskopik tekshirish. Klinik diagnostik ahamiyati | 7 | 3 | 10 | **20** | 0 |  | d025 |
 | d025-L | Najasni mikroskopik tekshirish. Klinik diagnostik ahamiyati | 7 | 3 | 10 | **20** | 0 |  | d025 |
 | d026-P | Najasni mikroskopik tekshirish. Klinik diagnostik ahamiyati (2-kun) | 7 | 2 | 7 | **16** | 0 |  | d026 |
-| d027-P | Siydikni tekshirish. Klinik diagnostik ahamiyati | 7 | 8 | 4 | **19** | 1 |  | d027 |
-| d027-L | Siydikni tekshirish. Klinik diagnostik ahamiyati | 7 | 8 | 4 | **19** | 1 |  | d027 |
-| d028-P | Siydikni tekshirish. Klinik diagnostik ahamiyati (2-kun) | 7 | 8 | 4 | **19** | 1 |  | d028 |
+| d027-P | Siydikni tekshirish. Klinik diagnostik ahamiyati | 7 | 8 | 5 | **20** | 1 |  | d027 |
+| d027-L | Siydikni tekshirish. Klinik diagnostik ahamiyati | 7 | 8 | 5 | **20** | 1 |  | d027 |
+| d028-P | Siydikni tekshirish. Klinik diagnostik ahamiyati (2-kun) | 7 | 8 | 5 | **20** | 1 |  | d028 |
 | d029-P | Bronxial astma, pnevmoniya, bronxit va boshqa nafas yo‘llari kasalliklarida balg‘amni tekshirish | 7 | 2 | 6 | **15** | 1 |  | d029 |
 | d029-L | Bronxial astma, pnevmoniya, bronxit va boshqa nafas yo‘llari kasalliklarida balg‘amni tekshirish | 7 | 2 | 6 | **15** | 1 |  | d029 |
 | d030-P | Sil kasalligida balg‘amni tekshirish va uning klinik diagnostik ahamiyati | 7 | 2 | 6 | **15** | 1 |  | d030 |
@@ -222,18 +206,30 @@ Boshqa yo‘l: qoralama uchun `tool/ai` (AI yordamida qoralama) bor, lekin uning
 | d091-P | Kapillyar qon olish va gematologik tekshiruv uchun namuna tayyorlash | 14 | 13 | 0 | **27** | 1 |  | d091 |
 | d092-P | Gemoglobinni gemiglobintsianid usulida aniqlash | 14 | 2 | 0 | **16** | 1 |  | d092 |
 | d093-P | Eritrotsitlarni sanoq kamerasida (Goryaev) sanash | 14 | 2 | 0 | **16** | 1 |  | d093 |
-| d094-P | Leykotsitlarni sanoq kamerasida sanash va EChTni aniqlash | 14 | 4 | 0 | **18** | 1 |  | d094 |
+| d094-P | Leykotsitlarni sanoq kamerasida sanash va EChTni aniqlash | 14 | 4 | 3 | **21** | 1 |  | d094 |
 | d095-L | Leykositar formulani amaliyotda o‘zlashtirish | 3 | 10 | 5 | **18** | 0 |  | d095 |
+| d096-P | Yupqa qon surtmasini tayyorlash va yaroqliligini baholash | 3 | 1 | 9 | **13** | 0 |  | d096 |
 | d097-P | Surtmani qotirish va Romanovskiy–Gimza usulida bo‘yash | 3 | 10 | 0 | **13** | 0 |  | d097 |
 | d098-P | Leykotsitar formulani immersion mikroskopda sanash texnikasi | 3 | 10 | 0 | **13** | 0 |  | d098 |
-| d099-P | Me’yoriy leykotsitlarni aniqlash mezonlari (mikroskopik atlas bilan) | 3 | 10 | 0 | **13** | 0 |  | d099 |
+| d099-P | Me’yoriy leykotsitlarni aniqlash mezonlari (mikroskopik atlas bilan) | 3 | 10 | 4 | **17** | 0 |  | d099 |
+| d100-P | Trombotsitlarni Fonio usulida sanash | 3 | 2 | 7 | **12** | 0 |  | d100 |
 | d101-L | Umumiy siydik tahlilini amaliyotda o‘zlashtirish | 5 | 4 | 4 | **13** | 1 |  | d101 |
+| d102-P | Siydikni yig‘ish, saqlash va fizik xossalarini aniqlash | 5 | 4 | 5 | **14** | 1 |  | d102 |
+| d103-P | Siydikni kimyoviy tekshirish: test-tilimchalar va sulfosalitsil sinamasi | 5 | 2 | 4 | **11** | 1 |  | d103 |
+| d104-P | Siydik cho‘kmasi: preparat tayyorlash, hujayralar va silindrlar | 5 | 2 | 6 | **13** | 1 |  | d104 |
+| d105-P | Siydik cho‘kmasi: kristallar, atlas va natijani izohlash | 5 | 4 | 5 | **14** | 1 |  | d105 |
 | d106-L | Umumiy balg‘am tahlilini amaliyotda o‘zlashtirish | 6 | 2 | 6 | **14** | 1 |  | d106 |
+| d107-P | Balg‘amni yig‘ish va makroskopik ko‘rish | 6 | 2 | 4 | **12** | 1 |  | d107 |
+| d108-P | Balg‘amning nativ mikroskopiyasi va namuna sifati | 6 | 2 | 5 | **13** | 1 |  | d108 |
+| d109-P | Balg‘am surtmasini Gram usulida bo‘yash va ko‘rish | 6 | 2 | 5 | **13** | 1 |  | d109 |
+| d110-P | Sil–Nilsen usulida bo‘yash: kislotaga chidamli bakteriyalarni qidirish | 6 | 2 | 4 | **12** | 1 |  | d110 |
+| d111-P | Urogenital surtmalar mikroskopiyasi: gonoreya va trixomoniaz | 4 | 2 | 8 | **14** | 0 |  | d111 |
 | d112-L | Umumiy axlat (najas) tahlilini amaliyotda o‘zlashtirish | 6 | 2 | 7 | **15** | 0 |  | d112 |
-| d114-P | Najasda sodda jonivorlar va gijja tuxumlarini aniqlash | 16 | 1 | 0 | **17** | 4 |  | d114 |
+| d113-P | Najasning umumiy tahlili (koprogramma) | 6 | 0 | 6 | **12** | 0 |  | d113 |
+| d114-P | Najasda sodda jonivorlar va gijja tuxumlarini aniqlash | 16 | 1 | 7 | **24** | 4 |  | d114 |
 | d115-P | Perianal namuna: ostritsa (Enterobius vermicularis) tuxumlarini aniqlash | 16 | 1 | 0 | **17** | 4 |  | d115 |
 | d116-L | Mindray BA-88A bioximik yarim avtomat analizator ishlash prinsiplari. Bioximik analizatorni dasturlashni amaliyotda o‘zlashtirish | 0 | 0 | 12 | **12** | 0 | ha | d116 |
-| d117-P | Zardob va plazma tayyorlash (biokimyoviy tekshiruv uchun) | 14 | 0 | 0 | **14** | 5 |  | d117 |
+| d117-P | Zardob va plazma tayyorlash (biokimyoviy tekshiruv uchun) | 14 | 0 | 1 | **15** | 5 |  | d117 |
 | d118-P | Biokimyoviy fotometriya asoslari va reaktivlar to‘plami bilan ishlash | 18 | 0 | 0 | **18** | 2 |  | d118 |
 | d119-P | Yarim avtomat biokimyoviy analizator: test dasturi, kalibrovka va nazorat | 17 | 0 | 0 | **17** | 3 |  | d119 |
 | d120-P | Qon zardobida glyukozani GOD–POD usulida aniqlash (qo‘lda va analizatorda) | 18 | 0 | 0 | **18** | 2 |  | d120 |
@@ -244,20 +240,24 @@ Boshqa yo‘l: qoralama uchun `tool/ai` (AI yordamida qoralama) bor, lekin uning
 | d125-P | Umumiy va bog‘langan bilirubinni diazo usulida aniqlash | 15 | 4 | 0 | **19** | 5 |  | d125 |
 | d126-P | Biokimyoviy analitik seriyada nazorat materiali bilan ishlash | 17 | 0 | 0 | **17** | 3 |  | d126 |
 | d127-L | SRB, RF, ASLO lar tekshiruvini amaliyotda o‘zlashtirish | 0 | 3 | 8 | **11** | 0 |  | d127 |
-| d130-P | Gemostaz tizimini tekshirish uchun qon olish va tayyorgarlik | 18 | 0 | 0 | **18** | 2 |  | d130 |
+| d128-P | SRB, RF va ASLO: namuna, usul cheklovlari va natija talqini | 3 | 3 | 8 | **14** | 0 |  | d128 |
+| d129-P | Yallig‘lanish ko‘rsatkichlari: SRB va EChTni birga baholash | 3 | 4 | 4 | **11** | 0 |  | d129 |
+| d130-P | Gemostaz tizimini tekshirish uchun qon olish va tayyorgarlik | 18 | 0 | 1 | **19** | 2 |  | d130 |
 | d131-P | Koagulogramma: PV/MNO, AChTV va fibrinogen natijalarini o‘qish | 18 | 6 | 0 | **24** | 2 |  | d131 |
 | d132-P | Venoz qon olish: probirkalar va yo‘llanma | 14 | 0 | 0 | **14** | 5 |  | d132 |
 | d133-P | Laboratoriyadan oldingi (preanalitik) omillar va namuna xatolari | 14 | 0 | 0 | **14** | 5 |  | d133 |
+| d134-P | Biologik material bilan xavfsiz ishlash va sanitar-epidemiologik tartib | 0 | 0 | 11 | **11** | 0 | ha | d134 |
 | d135-P | Laboratoriya ichidagi sifat nazorati: bosqichlar va nazorat materiali | 17 | 0 | 0 | **17** | 3 |  | d135 |
 | d136-P | Nazorat kartasi (Levey–Jennings) va Westgard qoidalari bilan ishlash | 17 | 0 | 0 | **17** | 3 |  | d136 |
 | d137-P | Analitik va yakuniy bosqich xatolari; asbob parvarishi | 17 | 0 | 0 | **17** | 3 |  | d137 |
-| d138-P | Takrorlash: umumiy qon tahlili — sanash usullari va xatolar | 14 | 13 | 0 | **27** | 1 |  | d138 |
-| d139-P | Takrorlash: qon surtmasi, leykoformula va trombotsitlar | 3 | 10 | 0 | **13** | 0 |  | d139 |
+| d138-P | Takrorlash: umumiy qon tahlili — sanash usullari va xatolar | 14 | 13 | 1 | **28** | 1 |  | d138 |
+| d139-P | Takrorlash: qon surtmasi, leykoformula va trombotsitlar | 3 | 10 | 5 | **18** | 0 |  | d139 |
+| d140-P | Takrorlash: siydik va najas tahlili | 5 | 4 | 3 | **12** | 1 |  | d140 |
 | d141-P | Takrorlash: balg‘am, surtmalar va fotometrik biokimyoviy usullar | 18 | 0 | 0 | **18** | 2 |  | d141 |
-| d142-P | Yakuniy attestatsiyaga tayyorgarlik: amaliy ko‘nikmalar va xavfsizlik | 21 | 0 | 0 | **21** | 4 |  | d142 |
+| d142-P | Yakuniy attestatsiyaga tayyorgarlik: amaliy ko‘nikmalar va xavfsizlik | 21 | 0 | 1 | **22** | 4 |  | d142 |
 | d143-A | Attestatsiya. Laborator tekshiruv usullarini amaliyotda o‘zlashtirish (yakuniy) | 21 | 0 | 2 | **23** | 4 |  | d143 |
 
-## `test_gap` belgisi bor, lekin bir nechta savol topilgan (30)
+## `test_gap` belgisi bor, lekin bir nechta savol topilgan (31)
 
 Belgi curriculum’da “savollar yetarli emas” degani; bu mavzularda tekshirilgan savol bor, lekin test uchun kamida 3 ta kerak.
 
@@ -293,6 +293,7 @@ Belgi curriculum’da “savollar yetarli emas” degani; bu mavzularda tekshiri
 | d086-P | Klinik laborator diagnostikada bioximik analizatorlar | 0 | 0 | 12 | **12** | 0 | ha | d086 |
 | d087-P | Klinik laborator diagnostikada urino analizatorlar | 0 | 2 | 10 | **12** | 0 | ha | d087 |
 | d116-L | Mindray BA-88A bioximik yarim avtomat analizator ishlash prinsiplari. Bioximik analizatorni dasturlashni amaliyotda o‘zlashtirish | 0 | 0 | 12 | **12** | 0 | ha | d116 |
+| d134-P | Biologik material bilan xavfsiz ishlash va sanitar-epidemiologik tartib | 0 | 0 | 11 | **11** | 0 | ha | d134 |
 
 ## Taqdimotlar bo‘yicha
 
@@ -324,8 +325,8 @@ Belgi curriculum’da “savollar yetarli emas” degani; bu mavzularda tekshiri
 | d024 | d024-P, d024-L | 10 | tayyor |
 | d025 | d025-P, d025-L | 20 | tayyor |
 | d026 | d026-P | 16 | tayyor |
-| d027 | d027-P, d027-L | 19 | tayyor |
-| d028 | d028-P | 19 | tayyor |
+| d027 | d027-P, d027-L | 20 | tayyor |
+| d028 | d028-P | 20 | tayyor |
 | d029 | d029-P, d029-L | 15 | tayyor |
 | d030 | d030-P, d030-L | 15 | tayyor |
 | d031 | d031-P | 15 | tayyor |
@@ -391,30 +392,30 @@ Belgi curriculum’da “savollar yetarli emas” degani; bu mavzularda tekshiri
 | d091 | d091-P | 27 | tayyor |
 | d092 | d092-P | 16 | tayyor |
 | d093 | d093-P | 16 | tayyor |
-| d094 | d094-P | 18 | tayyor |
+| d094 | d094-P | 21 | tayyor |
 | d095 | d095-L | 18 | tayyor |
-| d096 | d096-P | 4 | tayyor |
+| d096 | d096-P | 13 | tayyor |
 | d097 | d097-P | 13 | tayyor |
 | d098 | d098-P | 13 | tayyor |
-| d099 | d099-P | 13 | tayyor |
-| d100 | d100-P | 5 | tayyor |
+| d099 | d099-P | 17 | tayyor |
+| d100 | d100-P | 12 | tayyor |
 | d101 | d101-L | 13 | tayyor |
-| d102 | d102-P | 9 | tayyor |
-| d103 | d103-P | 7 | tayyor |
-| d104 | d104-P | 7 | tayyor |
-| d105 | d105-P | 9 | tayyor |
+| d102 | d102-P | 14 | tayyor |
+| d103 | d103-P | 11 | tayyor |
+| d104 | d104-P | 13 | tayyor |
+| d105 | d105-P | 14 | tayyor |
 | d106 | d106-L | 14 | tayyor |
-| d107 | d107-P | 8 | tayyor |
-| d108 | d108-P | 8 | tayyor |
-| d109 | d109-P | 8 | tayyor |
-| d110 | d110-P | 8 | tayyor |
-| d111 | d111-P | 6 | tayyor |
+| d107 | d107-P | 12 | tayyor |
+| d108 | d108-P | 13 | tayyor |
+| d109 | d109-P | 13 | tayyor |
+| d110 | d110-P | 12 | tayyor |
+| d111 | d111-P | 14 | tayyor |
 | d112 | d112-L | 15 | tayyor |
-| d113 | d113-P | 6 | tayyor |
-| d114 | d114-P | 17 | tayyor |
+| d113 | d113-P | 12 | tayyor |
+| d114 | d114-P | 24 | tayyor |
 | d115 | d115-P | 17 | tayyor |
 | d116 | d116-L | 12 | tayyor |
-| d117 | d117-P | 14 | tayyor |
+| d117 | d117-P | 15 | tayyor |
 | d118 | d118-P | 18 | tayyor |
 | d119 | d119-P | 17 | tayyor |
 | d120 | d120-P | 18 | tayyor |
@@ -425,21 +426,21 @@ Belgi curriculum’da “savollar yetarli emas” degani; bu mavzularda tekshiri
 | d125 | d125-P | 19 | tayyor |
 | d126 | d126-P | 17 | tayyor |
 | d127 | d127-L | 11 | tayyor |
-| d128 | d128-P | 6 | tayyor |
-| d129 | d129-P | 7 | tayyor |
-| d130 | d130-P | 18 | tayyor |
+| d128 | d128-P | 14 | tayyor |
+| d129 | d129-P | 11 | tayyor |
+| d130 | d130-P | 19 | tayyor |
 | d131 | d131-P | 24 | tayyor |
 | d132 | d132-P | 14 | tayyor |
 | d133 | d133-P | 14 | tayyor |
-| d134 | d134-P | 0 | tayyorlanmoqda |
+| d134 | d134-P | 11 | tayyor |
 | d135 | d135-P | 17 | tayyor |
 | d136 | d136-P | 17 | tayyor |
 | d137 | d137-P | 17 | tayyor |
-| d138 | d138-P | 27 | tayyor |
-| d139 | d139-P | 13 | tayyor |
-| d140 | d140-P | 9 | tayyor |
+| d138 | d138-P | 28 | tayyor |
+| d139 | d139-P | 18 | tayyor |
+| d140 | d140-P | 12 | tayyor |
 | d141 | d141-P | 18 | tayyor |
-| d142 | d142-P | 21 | tayyor |
+| d142 | d142-P | 22 | tayyor |
 | d143 | d143-A | 23 | tayyor |
 | kapillyar-qon-olish | — | 0 | tugma yo‘q |
 | gemoglobin-gemiglobintsianid | — | 0 | tugma yo‘q |
