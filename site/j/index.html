@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LabGuide — guruhga qo‘shilish</title>
+<meta name="description" content="LabGuide guruhiga qo‘shilish — Вступить в группу LabGuide — Join a LabGuide group.">
+<meta name="color-scheme" content="light dark">
+<meta name="robots" content="noindex">
+<link rel="icon" href="../logo.png">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<a class="skip" href="#main">Asosiy matnga o‘tish</a>
+<header class="top">
+<div class="wrap">
+<a class="brand" href="../index.html"><img src="../logo.png" alt="" width="36" height="36">LabGuide</a>
+<ul class="langs" aria-label="Til / Язык / Language">
+<li><a href="#uz" hreflang="uz">UZ</a></li>
+<li><a href="#ru" hreflang="ru">RU</a></li>
+<li><a href="#en" hreflang="en">EN</a></li>
+</ul>
+</div>
+</header>
+<main id="main" class="wrap">
+
+<div class="card join-code" aria-live="polite">
+<p class="lead">Taklif kodi · Код приглашения · Invite code</p>
+<p class="code" id="code">— — — —</p>
+<p><a class="btn" id="open" href="labguide://app/j">Ilovada ochish · Открыть в приложении · Open in app</a></p>
+</div>
+
+<section id="uz" lang="uz">
+<h1>Guruhga qo‘shilish</h1>
+<ol class="steps">
+<li>Telefoningizda LabGuide o‘rnatilgan bo‘lsa — yuqoridagi <strong>Ilovada ochish</strong> tugmasini bosing:
+kod ilovaga o‘zi tushadi, kirgach taxallusingizni yozasiz va ustoz bergan test ochiladi.</li>
+<li>Tugma ishlamasa: LabGuide ilovasida <strong>O‘rganish → Guruh va topshiriqlar → Kod bilan qo‘shilish</strong>
+ni oching va yuqoridagi kodni kiriting (yoki shu sahifa havolasini nusxalab, <strong>Havolani qo‘yish</strong> ni bosing).</li>
+<li>Ilova hali yo‘q bo‘lsa — App Store yoki Google Play’da <strong>LabGuide</strong> ni qidiring.</li>
+</ol>
+<p>Kod faqat guruhga qo‘shilish uchun. Guruhda ustoz faqat taxallusingizni va topshiriq natijalaringizni
+ko‘radi; boshqa talabalar sizni ko‘rmaydi.</p>
+</section>
+
+<section id="ru" lang="ru">
+<h2>Вступить в группу</h2>
+<ol class="steps">
+<li>Если LabGuide уже установлен — нажмите <strong>Открыть в приложении</strong> выше: код подставится сам,
+после входа введите псевдоним, и откроется тест от преподавателя.</li>
+<li>Если кнопка не сработала: в приложении LabGuide откройте <strong>Обучение → Группы и задания → Вступить по коду</strong>
+и введите код выше (или скопируйте ссылку этой страницы и нажмите <strong>Вставить ссылку</strong>).</li>
+<li>Если приложения ещё нет — найдите <strong>LabGuide</strong> в App Store или Google Play.</li>
+</ol>
+<p>Код нужен только для вступления в группу. Преподаватель видит только ваш псевдоним и результаты
+заданий; другие студенты вас не видят.</p>
+</section>
+
+<section id="en" lang="en">
+<h2>Join a group</h2>
+<ol class="steps">
+<li>If LabGuide is installed, tap <strong>Open in app</strong> above: the code fills in by itself, you sign in,
+type a nickname, and your teacher’s test opens.</li>
+<li>If the button does not work: in the LabGuide app open <strong>Learn → Groups and assignments → Join with a code</strong>
+and enter the code above (or copy this page’s link and tap <strong>Paste link</strong>).</li>
+<li>No app yet? Search for <strong>LabGuide</strong> in the App Store or Google Play.</li>
+</ol>
+<p>The code is only for joining the group. The teacher sees only your nickname and assignment results;
+other students do not see you.</p>
+</section>
+
+</main>
+<footer class="foot">
+<div class="wrap">
+<p><a href="../index.html">LabGuide</a> · <a href="../privacy/index.html">Maxfiylik · Конфиденциальность · Privacy</a></p>
+</div>
+</footer>
+<script>
+// Faqat shu sahifa: ?c=KOD&a=TEST dan kodni ko'rsatadi va "Ilovada ochish"
+// havolasini tuzadi. Tashqi so'rov yo'q, hech narsa saqlanmaydi.
+(function () {
+  var q = new URLSearchParams(location.search);
+  var c = (q.get('c') || '').toUpperCase().replace(/[\s-]/g, '');
+  if (!/^[A-HJ-NP-Z2-9]{8}$/.test(c)) return;
+  var a = (q.get('a') || '').toLowerCase();
+  var link = 'labguide://app/j?c=' + c;
+  if (/^[a-z0-9][a-z0-9-]{0,63}$/.test(a)) link += '&a=' + a;
+  document.getElementById('code').textContent = c.slice(0, 4) + ' ' + c.slice(4);
+  document.getElementById('open').setAttribute('href', link);
+})();
+</script>
+</body>
+</html>

@@ -103,6 +103,20 @@ class FakeLabBackend implements LabBackend {
   @override
   Future<void> restoreSession() async {}
 
+  /// Faqat test: boshqa qurilmadagi foydalanuvchi nomidan amal (ilovadagi
+  /// joriy sessiya o'zgarmaydi) — masalan, ustoz sahifasi ochiq turganda
+  /// talaba topshiradi.
+  Future<T> actAs<T>(String email, Future<T> Function() body) async {
+    final key = normalizeEmail(email);
+    final prev = _current;
+    _current = _users.putIfAbsent(key, () => _User(_id('user'), key));
+    try {
+      return await body();
+    } finally {
+      _current = prev;
+    }
+  }
+
   @override
   Future<void> signOut() async {
     _current = null;
@@ -619,6 +633,7 @@ class FakeLabBackend implements LabBackend {
             joinCode: m.teacher ? g.code : null,
             isTeacher: m.teacher,
             memberCount: _members.where((x) => x.groupId == g.id).length,
+            myNickname: m.alias,
           ),
     ];
   }
@@ -660,6 +675,19 @@ class FakeLabBackend implements LabBackend {
     final shown = _aliasOf(displayName);
     if (_members.where((m) => m.groupId == g.id).length >= 200) {
       throw const BackendException(BackendFailure.rateLimited);
+    }
+    // Server kabi: taxallus guruhda yagona (katta-kichik harf farqsiz).
+    if (shown != null &&
+        _members.any(
+          (m) =>
+              m.groupId == g.id &&
+              m.alias?.toLowerCase() == shown.toLowerCase(),
+        )) {
+      throw const BackendException(
+        BackendFailure.invalid,
+        'nickname taken',
+        'nickname_taken',
+      );
     }
     _members.add(
       _Member(
@@ -807,6 +835,20 @@ class FakeLabBackend implements LabBackend {
     }
     final started = _attempts.putIfAbsent(key, () => now);
     return AssignmentStart(startedAt: started, serverNow: now);
+  }
+
+  @override
+  Future<List<AssignmentAttempt>> assignmentProgress(
+    String assignmentId,
+  ) async {
+    _require();
+    final a = _assignments.where((a) => a.info.id == assignmentId).firstOrNull;
+    if (a == null || !_owns(a.info.groupId)) return const [];
+    return [
+      for (final e in _attempts.entries)
+        if (e.key.$1 == assignmentId)
+          AssignmentAttempt(userId: e.key.$2, startedAt: e.value),
+    ];
   }
 
   @override

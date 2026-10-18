@@ -9682,4 +9682,82 @@ class AppLocalizationsUz extends AppLocalizations {
   @override
   String get admDeleteMismatch =>
       'Bu email shu hisobga tegishli emas — tekshirib, qayta kiriting.';
+
+  @override
+  String get classesPasteLink => 'Havolani qo‘yish';
+
+  @override
+  String get classesPasteNoCode =>
+      'Nusxada taklif kodi topilmadi. Ustoz yuborgan havola yoki kodni nusxalang.';
+
+  @override
+  String get classesScanTip =>
+      'QR kodni telefon kamerasi bilan skanerlang va ochilgan sahifada “Ilovada ochish” ni bosing — kod shu yerga o‘zi tushadi.';
+
+  @override
+  String get classesJoinOpensTest =>
+      'Qo‘shilgach ustoz bergan test darhol ochiladi.';
+
+  @override
+  String get classesJoinSignInTitle => 'Guruhga qo‘shilish uchun kiring';
+
+  @override
+  String get classesJoinSignInBody =>
+      'Google, Apple yoki email kodi bilan — bir daqiqa. Natijangiz ustozga shu hisob orqali boradi; taklif kodi saqlanib qoladi.';
+
+  @override
+  String get classesNicknameTaken =>
+      'Bu taxallus guruhda band — boshqasini yozing.';
+
+  @override
+  String get classesNicknameAbusive =>
+      'Taxallusda nojo‘ya so‘z bor — boshqasini yozing.';
+
+  @override
+  String get classesTestQr => 'Test QR';
+
+  @override
+  String get classesTestQrBody =>
+      'Talabalar skanerlaydi → kiradi → taxallus → shu test ochiladi. Natijalar shu sahifada o‘zi yangilanadi.';
+
+  @override
+  String get classesInviteLink => 'Havolani nusxalash';
+
+  @override
+  String get classesLiveNote =>
+      'Natijalar har 10 soniyada o‘zi yangilanadi. Pastga torting — hozir yangilash.';
+
+  @override
+  String get boardOpen => 'Katta ekran';
+
+  @override
+  String get boardJoined => 'Guruhda';
+
+  @override
+  String get boardStarted => 'Yechmoqda';
+
+  @override
+  String get boardSubmitted => 'Topshirdi';
+
+  @override
+  String get boardStatusWaiting => 'Kutilmoqda';
+
+  @override
+  String get boardStatusSolving => 'Yechmoqda…';
+
+  @override
+  String get boardScan => 'Skanerlang va qo‘shiling';
+
+  @override
+  String get boardAnswersAfterClose =>
+      'To‘g‘ri javoblar test yakunlangach ko‘rsatiladi.';
+
+  @override
+  String get boardEmpty => 'Hali hech kim yo‘q — QR ni skanerlang.';
+
+  @override
+  String get boardClose => 'Katta ekrandan chiqish';
+
+  @override
+  String get actionClose => 'Yopish';
 }

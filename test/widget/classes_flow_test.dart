@@ -78,7 +78,7 @@ void main() {
     expect(find.text(uz.classesSignInTitle), findsOneWidget);
     expect(find.text(uz.classesCreate), findsNothing);
     await goTo(tester, '/learn/classes/join');
-    expect(find.text(uz.classesSignInTitle), findsOneWidget);
+    expect(find.text(uz.classesJoinSignInTitle), findsOneWidget);
     expect(find.text(uz.classesJoinAction), findsNothing);
   });
 

@@ -26,12 +26,16 @@ enum BackendFailure {
 }
 
 class BackendException implements Exception {
-  const BackendException(this.failure, [this.detail]);
+  const BackendException(this.failure, [this.detail, this.code]);
 
   final BackendFailure failure;
 
   /// Faqat log uchun.
   final String? detail;
+
+  /// Server xato kodi (masalan, `nickname_taken`) — aniq matn ko'rsatish
+  /// uchun; bo'lmasa null.
+  final String? code;
 
   @override
   String toString() => 'BackendException(${failure.name}: $detail)';
@@ -359,6 +363,7 @@ class StudyGroup {
     required this.joinCode,
     required this.isTeacher,
     required this.memberCount,
+    this.myNickname,
   });
 
   final String id;
@@ -368,6 +373,10 @@ class StudyGroup {
   final String? joinCode;
   final bool isTeacher;
   final int memberCount;
+
+  /// Shu guruhdagi o'z taxallusim (yo'q — null): yangi guruhga qo'shilishda
+  /// taxallus maydonini oldindan to'ldirish uchun.
+  final String? myNickname;
 }
 
 @immutable
@@ -430,6 +439,23 @@ class GroupAssignment {
   final DateTime? dueAt;
   final int? timeLimitMinutes;
   final DateTime createdAt;
+}
+
+@immutable
+/// Katta ekran: talaba testni boshlagan vaqt (javoblar topshirilguncha
+/// serverda yo'q).
+@immutable
+class AssignmentAttempt {
+  const AssignmentAttempt({required this.userId, required this.startedAt});
+
+  factory AssignmentAttempt.fromJson(Map<String, Object?> j) =>
+      AssignmentAttempt(
+        userId: j['user_id']! as String,
+        startedAt: DateTime.parse(j['started_at']! as String),
+      );
+
+  final String userId;
+  final DateTime startedAt;
 }
 
 @immutable

@@ -16881,6 +16881,144 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'This email does not belong to this account — check it and try again.'**
   String get admDeleteMismatch;
+
+  /// No description provided for @classesPasteLink.
+  ///
+  /// In en, this message translates to:
+  /// **'Paste link'**
+  String get classesPasteLink;
+
+  /// No description provided for @classesPasteNoCode.
+  ///
+  /// In en, this message translates to:
+  /// **'No invite code in the copied text. Copy the link or code your teacher sent.'**
+  String get classesPasteNoCode;
+
+  /// No description provided for @classesScanTip.
+  ///
+  /// In en, this message translates to:
+  /// **'Scan the QR code with your phone camera and tap “Open in app” on the page that opens — the code fills in by itself.'**
+  String get classesScanTip;
+
+  /// No description provided for @classesJoinOpensTest.
+  ///
+  /// In en, this message translates to:
+  /// **'After joining, your teacher’s test opens right away.'**
+  String get classesJoinOpensTest;
+
+  /// No description provided for @classesJoinSignInTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in to join the group'**
+  String get classesJoinSignInTitle;
+
+  /// No description provided for @classesJoinSignInBody.
+  ///
+  /// In en, this message translates to:
+  /// **'With Google, Apple or an email code — it takes a minute. Your result reaches the teacher through this account; the invite code is kept.'**
+  String get classesJoinSignInBody;
+
+  /// No description provided for @classesNicknameTaken.
+  ///
+  /// In en, this message translates to:
+  /// **'This nickname is taken in the group — choose another.'**
+  String get classesNicknameTaken;
+
+  /// No description provided for @classesNicknameAbusive.
+  ///
+  /// In en, this message translates to:
+  /// **'The nickname contains an inappropriate word — choose another.'**
+  String get classesNicknameAbusive;
+
+  /// No description provided for @classesTestQr.
+  ///
+  /// In en, this message translates to:
+  /// **'Test QR'**
+  String get classesTestQr;
+
+  /// No description provided for @classesTestQrBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Students scan → sign in → nickname → this test opens. Results on this page update by themselves.'**
+  String get classesTestQrBody;
+
+  /// No description provided for @classesInviteLink.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy link'**
+  String get classesInviteLink;
+
+  /// No description provided for @classesLiveNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Results refresh every 10 seconds. Pull down to refresh now.'**
+  String get classesLiveNote;
+
+  /// No description provided for @boardOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'Big screen'**
+  String get boardOpen;
+
+  /// No description provided for @boardJoined.
+  ///
+  /// In en, this message translates to:
+  /// **'In group'**
+  String get boardJoined;
+
+  /// No description provided for @boardStarted.
+  ///
+  /// In en, this message translates to:
+  /// **'Solving'**
+  String get boardStarted;
+
+  /// No description provided for @boardSubmitted.
+  ///
+  /// In en, this message translates to:
+  /// **'Submitted'**
+  String get boardSubmitted;
+
+  /// No description provided for @boardStatusWaiting.
+  ///
+  /// In en, this message translates to:
+  /// **'Waiting'**
+  String get boardStatusWaiting;
+
+  /// No description provided for @boardStatusSolving.
+  ///
+  /// In en, this message translates to:
+  /// **'Solving…'**
+  String get boardStatusSolving;
+
+  /// No description provided for @boardScan.
+  ///
+  /// In en, this message translates to:
+  /// **'Scan to join'**
+  String get boardScan;
+
+  /// No description provided for @boardAnswersAfterClose.
+  ///
+  /// In en, this message translates to:
+  /// **'Correct answers appear after the test is closed.'**
+  String get boardAnswersAfterClose;
+
+  /// No description provided for @boardEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Nobody yet — scan the QR.'**
+  String get boardEmpty;
+
+  /// No description provided for @boardClose.
+  ///
+  /// In en, this message translates to:
+  /// **'Exit big screen'**
+  String get boardClose;
+
+  /// No description provided for @actionClose.
+  ///
+  /// In en, this message translates to:
+  /// **'Close'**
+  String get actionClose;
 }
 
 class _AppLocalizationsDelegate

@@ -36,6 +36,15 @@
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+            <!-- Guruh taklifi: QR → labguide.nfcstore.uz/j/ → “Ilovada ochish”
+                 (labguide://app/j?c=KOD&a=TEST). Faqat qo'shilish ekranini
+                 ochadi; kod serverda tekshiriladi. -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="labguide" android:host="app"/>
+            </intent-filter>
         </activity>
         <!-- flutter_local_notifications: rejalashtirilgan eslatmani ko'rsatish
              va qayta yoqilgandan/yangilangandan keyin tiklash. -->

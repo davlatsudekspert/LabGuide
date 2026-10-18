@@ -926,6 +926,11 @@ class SupabaseLabBackend implements LabBackend {
   Future<void> closeAssignment(String assignmentId) async =>
       throw const BackendException(BackendFailure.unavailable);
 
+  @override
+  Future<List<AssignmentAttempt>> assignmentProgress(
+    String assignmentId,
+  ) async => const [];
+
   // ----------------------------------------------------------- partners
   static const _logoBucket = 'partner-logos';
   static const _logoMaxBytes = 1024 * 1024;

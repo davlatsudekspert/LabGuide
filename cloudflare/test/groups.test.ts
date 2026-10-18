@@ -371,4 +371,32 @@ describe('taqdimotdan mavzu testi (0010: deck_id, reveal)', () => {
     await s.call('POST', `/v1/assignments/${a}/close`, { token: tA.token });
     expect((await s.call('GET', `/v1/assignments/${a}/submissions`, { token: s1.token })).data[0].correct).toEqual([true, true]);
   });
+
+  it("taxallus: guruhda yagona (katta-kichik farqsiz), so'kinish rad etiladi; my_nickname", async () => {
+    const { s, gA, s1, s3 } = await classroom();
+    // s2 — 'Lola' (classroom()); s3 boshqa guruhda.
+    const dup = await s.call('POST', '/v1/groups/join', { token: s3.token, body: { code: gA.join_code, display_name: 'LOLA' } });
+    expect(dup.status).toBe(409);
+    expect(dup.data.error).toBe('nickname_taken');
+    const bad = await s.call('POST', '/v1/groups/join', { token: s3.token, body: { code: gA.join_code, display_name: 'jalab' } });
+    expect(bad.data.error).toBe('abusive_language');
+    expect((await s.call('POST', '/v1/groups/join', { token: s3.token, body: { code: gA.join_code, display_name: 'Dilnoza' } })).status).toBe(201);
+    // Taxallusni o'zgartirish: band — 409, o'zinikini qayta yozish — ok.
+    expect((await s.call('PUT', `/v1/groups/${gA.id}/alias`, { token: s1.token, body: { alias: 'lola' } })).data.error).toBe('nickname_taken');
+    expect((await s.call('PUT', `/v1/groups/${gA.id}/alias`, { token: s3.token, body: { alias: 'dilnoza' } })).status).toBe(200);
+    const mine = (await s.call('GET', '/v1/groups', { token: s3.token })).data;
+    expect(mine.find((g: { id: string }) => g.id === gA.id).my_nickname).toBe('dilnoza');
+    expect((await s.call('GET', '/v1/groups', { token: s1.token })).data[0].my_nickname).toBeNull();
+  });
+
+  it("katta ekran: kim boshlagan — faqat guruh egasi-ustoz", async () => {
+    const { s, tA, tB, s1, s2, aid } = await classroom();
+    await s.call('POST', `/v1/assignments/${aid}/start`, { token: s1.token });
+    const p = await s.call('GET', `/v1/assignments/${aid}/progress`, { token: tA.token });
+    expect(p.status).toBe(200);
+    expect(p.data.map((x: { user_id: string }) => x.user_id)).toEqual([s1.userId]);
+    expect(typeof p.data[0].started_at).toBe('string');
+    expect((await s.call('GET', `/v1/assignments/${aid}/progress`, { token: s2.token })).status).toBe(403);
+    expect((await s.call('GET', `/v1/assignments/${aid}/progress`, { token: tB.token })).status).toBe(404);
+  });
 });

@@ -84,7 +84,9 @@ class AdminTeam {
 /// Server xato kodi bilan (`already_admin`, `already_super_admin`,
 /// `too_many_admins`, `invalid_email`, `not_super_admin`).
 class AdminTeamException extends BackendException {
-  const AdminTeamException(super.failure, this.code, [super.detail]);
-
-  final String? code;
+  const AdminTeamException(
+    BackendFailure failure,
+    String? code, [
+    String? detail,
+  ]) : super(failure, detail, code);
 }

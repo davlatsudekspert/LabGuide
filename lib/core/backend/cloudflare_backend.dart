@@ -238,7 +238,7 @@ class CloudflareLabBackend
     } else {
       failure = _failure(r.status);
     }
-    throw BackendException(failure, '$method $path ${r.status} $code');
+    throw BackendException(failure, '$method $path ${r.status} $code', code);
   }
 
   static BackendFailure _failure(int status) => switch (status) {
@@ -566,6 +566,7 @@ class CloudflareLabBackend
           joinCode: g['join_code'] as String?,
           isTeacher: g['is_teacher'] == true,
           memberCount: (g['member_count'] as num?)?.toInt() ?? 0,
+          myNickname: g['my_nickname'] as String?,
         ),
     ];
   }
@@ -874,6 +875,15 @@ class CloudflareLabBackend
         (i! as num).toInt(),
     ];
   }
+
+  /// Katta ekran: kim boshlagan (faqat ustoz).
+  @override
+  Future<List<AssignmentAttempt>> assignmentProgress(
+    String assignmentId,
+  ) async =>
+      (await _list('/v1/assignments/${_seg(assignmentId)}/progress'))
+          .map(AssignmentAttempt.fromJson)
+          .toList();
 
   static String _seg(String v) => Uri.encodeComponent(v);
 
