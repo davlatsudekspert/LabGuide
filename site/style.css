@@ -356,3 +356,17 @@ ol.steps li {
     color: #000;
   }
 }
+
+/* Guruhga qo‘shilish (j/): katta kod */
+.join-code {
+  text-align: center;
+}
+
+.join-code .code {
+  font-size: 2.6rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  color: var(--brand);
+  font-variant-numeric: tabular-nums;
+  margin: 0.2em 0 0.4em;
+}

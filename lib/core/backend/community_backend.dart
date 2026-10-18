@@ -97,9 +97,11 @@ class CommunityLaunchResult {
 
 /// Server xato kodi bilan (masalan, `not_verified`, `contact_data`).
 class CommunityException extends BackendException {
-  const CommunityException(super.failure, this.code, [super.detail]);
-
-  final String? code;
+  const CommunityException(
+    BackendFailure failure,
+    String? code, [
+    String? detail,
+  ]) : super(failure, detail, code);
 }
 
 enum SpecialistRole {

@@ -5774,7 +5774,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get classesInviteBody =>
-      'Студентам: Обучение → Группы и задания → Вступить по коду.';
+      'Студенты сканируют QR камерой телефона и нажимают «Открыть в приложении» — или: Обучение → Группы и задания → Вступить по коду.';
 
   @override
   String get classesCopyCode => 'Скопировать код';
@@ -9846,4 +9846,82 @@ class AppLocalizationsRu extends AppLocalizations {
   String sourcesPanelMore(int count) {
     return '+ ещё $count — в списке ниже';
   }
+
+  @override
+  String get classesPasteLink => 'Вставить ссылку';
+
+  @override
+  String get classesPasteNoCode =>
+      'В скопированном тексте нет кода приглашения. Скопируйте ссылку или код от преподавателя.';
+
+  @override
+  String get classesScanTip =>
+      'Отсканируйте QR-код камерой телефона и нажмите «Открыть в приложении» на открывшейся странице — код подставится сам.';
+
+  @override
+  String get classesJoinOpensTest =>
+      'После вступления сразу откроется тест от преподавателя.';
+
+  @override
+  String get classesJoinSignInTitle => 'Войдите, чтобы вступить в группу';
+
+  @override
+  String get classesJoinSignInBody =>
+      'Через Google, Apple или код на email — это минута. Результат попадёт к преподавателю через этот аккаунт; код приглашения сохранится.';
+
+  @override
+  String get classesNicknameTaken =>
+      'Этот псевдоним в группе занят — выберите другой.';
+
+  @override
+  String get classesNicknameAbusive =>
+      'В псевдониме недопустимое слово — выберите другой.';
+
+  @override
+  String get classesTestQr => 'QR теста';
+
+  @override
+  String get classesTestQrBody =>
+      'Студенты сканируют → входят → псевдоним → открывается этот тест. Результаты на этой странице обновляются сами.';
+
+  @override
+  String get classesInviteLink => 'Скопировать ссылку';
+
+  @override
+  String get classesLiveNote =>
+      'Результаты обновляются каждые 10 секунд. Потяните вниз — обновить сейчас.';
+
+  @override
+  String get boardOpen => 'Большой экран';
+
+  @override
+  String get boardJoined => 'В группе';
+
+  @override
+  String get boardStarted => 'Решают';
+
+  @override
+  String get boardSubmitted => 'Сдали';
+
+  @override
+  String get boardStatusWaiting => 'Ожидание';
+
+  @override
+  String get boardStatusSolving => 'Решает…';
+
+  @override
+  String get boardScan => 'Сканируйте и вступайте';
+
+  @override
+  String get boardAnswersAfterClose =>
+      'Правильные ответы покажем после завершения теста.';
+
+  @override
+  String get boardEmpty => 'Пока никого — сканируйте QR.';
+
+  @override
+  String get boardClose => 'Выйти из большого экрана';
+
+  @override
+  String get actionClose => 'Закрыть';
 }

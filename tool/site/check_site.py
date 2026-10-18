@@ -51,6 +51,9 @@ BANNED: list[tuple[str, re.Pattern[str]]] = [
     ('qaror raqami', re.compile(r'\bD-\d{2}\b')),
 ]
 
+# Ichki (inline) skriptga ruxsat etilgan sahifalar.
+SCRIPT_PAGES = {'j/index.html'}
+
 RESOURCE_ATTRS = {('link', 'href'), ('img', 'src'), ('script', 'src'), ('source', 'src'), ('iframe', 'src')}
 TEXT_ATTRS = {'title', 'alt', 'aria-label'}
 
@@ -61,6 +64,7 @@ class Page(HTMLParser):
         self.text: list[str] = []
         self.ids: set[str] = set()
         self.refs: list[tuple[str, str, str]] = []  # (tag, attr, url)
+        self.scripts = 0
         self.html_lang = False
         self.title = False
         self.viewport = False
@@ -70,6 +74,8 @@ class Page(HTMLParser):
         a = {k: (v or '') for k, v in attrs}
         if tag in ('script', 'style'):
             self._skip += 1
+        if tag == 'script':
+            self.scripts += 1
         if tag == 'html' and a.get('lang'):
             self.html_lang = True
         if tag == 'title':
@@ -118,6 +124,10 @@ def check_site(site: Path, check_fresh: bool = True) -> list[str]:
             errors.append(f'{rel}: <title> yo‘q')
         if not page.viewport:
             errors.append(f'{rel}: viewport meta yo‘q')
+        # JavaScript faqat taklif sahifasida (j/: ?c= kodini ko'rsatish, tashqi
+        # so'rovsiz); qolgan sahifalar JS siz.
+        if page.scripts and rel.as_posix() not in SCRIPT_PAGES:
+            errors.append(f'{rel}: <script> taqiqlangan (faqat {", ".join(sorted(SCRIPT_PAGES))})')
         text = ' '.join(' '.join(page.text).split())
         for name, rx in BANNED:
             for m in rx.finditer(text):
@@ -203,6 +213,7 @@ Profil sahifasi. Provider.</p><a href="#a">x</a><a href="mailto:a@b.uz">m</a>
         'buzuq #id': (good.replace('href="#a"', 'href="#zz"'), 'buzuq #id'),
         'tashqi CSS': (good.replace('href="style.css"', 'href="https://cdn.example.com/x.css"'), 'tashqi resurs'),
         'ildiz havola': (good.replace('sub/index.html#b', '/privacy/'), 'ildizdan'),
+        'skript': (good.replace('</body>', '<script>var x = 1;</script></body>'), '<script> taqiqlangan'),
     }
     for name, (html_text, expect) in cases.items():
         with tempfile.TemporaryDirectory() as d:

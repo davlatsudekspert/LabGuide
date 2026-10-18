@@ -1,7 +1,7 @@
 # LabGuide sayti (statik)
 
 Google OAuth (“In production” uchun bosh sahifa va maxfiylik siyosati havolasi), App Store va
-Google Play uchun ochiq sahifalar. Oddiy HTML + CSS: JavaScript yo‘q, tashqi so‘rov yo‘q
+Google Play uchun ochiq sahifalar. Oddiy HTML + CSS: JavaScript yo‘q (yagona istisno — `j/`, quyida), tashqi so‘rov yo‘q
 (shrift — tizimniki), internetsiz ham ochiladi, telefonda moslashadi, yorug‘/qorong‘i mavzu
 qurilma sozlamasiga ko‘ra (`prefers-color-scheme`).
 
@@ -10,6 +10,7 @@ qurilma sozlamasiga ko‘ra (`prefers-color-scheme`).
 | `index.html` | Bosh sahifa (uz/ru/en): LabGuide nima, “tibbiy qurilma emas” ogohlantirishi, aloqa, havolalar |
 | `privacy/index.html` | Maxfiylik siyosati — **avtomatik yasaladi**, qo‘lda tahrirlamang |
 | `delete-account/index.html` | Hisobni o‘chirish yo‘riqnomasi (ilovada va email orqali) |
+| `j/index.html` | Guruh taklifi QR havolasi (`j/?c=KOD&a=TEST`): kod katta harfda va “Ilovada ochish” (`labguide://app/j?...`). Kichik ichki skript faqat `?c=` ni o‘qiydi — tashqi so‘rov yo‘q, hech narsa saqlanmaydi (`check_site.py` skriptni faqat shu sahifaga ruxsat etadi) |
 | `style.css` | Umumiy uslub (ranglar ilova palitrasidan, `lib/design/tokens.dart`) |
 | `logo.png` | Ilova belgisi, 192 px (`tool/icons/icon_1024.png` dan) |
 | `robots.txt` | Qidiruv tizimlariga ruxsat |

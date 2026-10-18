@@ -101,6 +101,7 @@ const routes: Route[] = [
   r('POST', '/v1/assignments/:a/submit', groups.submitAssignment),
   r('GET', '/v1/assignments/:a/submissions', groups.listSubmissions),
   r('GET', '/v1/assignments/:a/key', groups.assignmentKey),
+  r('GET', '/v1/assignments/:a/progress', groups.assignmentProgress),
 
   // Hamjamiyat (D-43)
   r('GET', '/v1/community/me', community.me),

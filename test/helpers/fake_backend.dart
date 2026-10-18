@@ -103,6 +103,20 @@ class FakeLabBackend implements LabBackend {
   @override
   Future<void> restoreSession() async {}
 
+  /// Faqat test: boshqa qurilmadagi foydalanuvchi nomidan amal (ilovadagi
+  /// joriy sessiya o'zgarmaydi) — masalan, ustoz sahifasi ochiq turganda
+  /// talaba topshiradi.
+  Future<T> actAs<T>(String email, Future<T> Function() body) async {
+    final key = normalizeEmail(email);
+    final prev = _current;
+    _current = _users.putIfAbsent(key, () => _User(_id('user'), key));
+    try {
+      return await body();
+    } finally {
+      _current = prev;
+    }
+  }
+
   @override
   Future<void> signOut() async {
     _current = null;
@@ -619,6 +633,7 @@ class FakeLabBackend implements LabBackend {
             joinCode: m.teacher ? g.code : null,
             isTeacher: m.teacher,
             memberCount: _members.where((x) => x.groupId == g.id).length,
+            myNickname: m.alias,
           ),
     ];
   }
@@ -660,6 +675,19 @@ class FakeLabBackend implements LabBackend {
     final shown = _aliasOf(displayName);
     if (_members.where((m) => m.groupId == g.id).length >= 200) {
       throw const BackendException(BackendFailure.rateLimited);
+    }
+    // Server kabi: taxallus guruhda yagona (katta-kichik harf farqsiz).
+    if (shown != null &&
+        _members.any(
+          (m) =>
+              m.groupId == g.id &&
+              m.alias?.toLowerCase() == shown.toLowerCase(),
+        )) {
+      throw const BackendException(
+        BackendFailure.invalid,
+        'nickname taken',
+        'nickname_taken',
+      );
     }
     _members.add(
       _Member(
@@ -801,8 +829,51 @@ class FakeLabBackend implements LabBackend {
     if (!_attempts.containsKey(key) && due != null && now.isAfter(due)) {
       throw const BackendException(BackendFailure.invalid, 'past due');
     }
+    // Server kabi: yakunlangan testni yangidan boshlab bo'lmaydi.
+    if (!_attempts.containsKey(key) && a.closedAt != null) {
+      throw const BackendException(BackendFailure.invalid, 'not open');
+    }
     final started = _attempts.putIfAbsent(key, () => now);
     return AssignmentStart(startedAt: started, serverNow: now);
+  }
+
+  @override
+  Future<List<AssignmentAttempt>> assignmentProgress(
+    String assignmentId,
+  ) async {
+    _require();
+    final a = _assignments.where((a) => a.info.id == assignmentId).firstOrNull;
+    if (a == null || !_owns(a.info.groupId)) return const [];
+    return [
+      for (final e in _attempts.entries)
+        if (e.key.$1 == assignmentId)
+          AssignmentAttempt(userId: e.key.$2, startedAt: e.value),
+    ];
+  }
+
+  @override
+  Future<void> closeAssignment(String assignmentId) async {
+    _require();
+    final a = _assignments.where((a) => a.info.id == assignmentId).firstOrNull;
+    if (a == null || !_owns(a.info.groupId)) {
+      throw const BackendException(BackendFailure.forbidden);
+    }
+    if (a.closedAt != null) return;
+    a.closedAt = groupClock();
+    final i = a.info;
+    a.info = GroupAssignment(
+      id: i.id,
+      groupId: i.groupId,
+      title: i.title,
+      questionIds: i.questionIds,
+      dueAt: i.dueAt,
+      timeLimitMinutes: i.timeLimitMinutes,
+      createdAt: i.createdAt,
+      topicId: i.topicId,
+      deckId: i.deckId,
+      revealAfterDue: i.revealAfterDue,
+      closed: true,
+    );
   }
 
   @override
@@ -814,6 +885,14 @@ class FakeLabBackend implements LabBackend {
     final u = _current!;
     final now = groupClock();
     final started = _attempts[(assignmentId, u.id)];
+    // Yakunlangan: faqat yakunlanishdan oldin boshlaganlarga 2 daqiqa.
+    final closedAt = a.closedAt;
+    if (closedAt != null &&
+        (started == null ||
+            started.isAfter(closedAt) ||
+            now.isAfter(closedAt.add(submitGrace)))) {
+      throw const BackendException(BackendFailure.invalid, 'closed');
+    }
     final due = a.info.dueAt;
     if (due != null) {
       final grace = started != null && !started.isAfter(due)
@@ -1359,6 +1438,9 @@ class _Assignment {
   _Assignment(this.info, this.key);
   GroupAssignment info;
   final List<int> key;
+
+  /// Ustoz yakunlagan vaqt ([FakeLabBackend.closeAssignment]).
+  DateTime? closedAt;
 }
 
 /// Cloudflare serveriga o'xshash soxta server: adminlar boshqaruvi (D-44)

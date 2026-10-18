@@ -3394,7 +3394,7 @@
   "classesLeaveBody": "To rejoin you’ll need the teacher’s code. Results you’ve submitted stay with the teacher.",
   "classesLeaveAction": "Leave",
   "classesInviteTitle": "Invite code",
-  "classesInviteBody": "Students: Learn → Classes and assignments → Join with a code.",
+  "classesInviteBody": "Students scan the QR with the phone camera and tap “Open in app” — or: Learn → Classes and assignments → Join with a code.",
   "classesCopyCode": "Copy code",
   "classesCopyInvite": "Copy invitation text",
   "classesCopied": "Copied",
@@ -5779,5 +5779,28 @@
         "type": "int"
       }
     }
-  }
+  },
+  "classesPasteLink": "Paste link",
+  "classesPasteNoCode": "No invite code in the copied text. Copy the link or code your teacher sent.",
+  "classesScanTip": "Scan the QR code with your phone camera and tap “Open in app” on the page that opens — the code fills in by itself.",
+  "classesJoinOpensTest": "After joining, your teacher’s test opens right away.",
+  "classesJoinSignInTitle": "Sign in to join the group",
+  "classesJoinSignInBody": "With Google, Apple or an email code — it takes a minute. Your result reaches the teacher through this account; the invite code is kept.",
+  "classesNicknameTaken": "This nickname is taken in the group — choose another.",
+  "classesNicknameAbusive": "The nickname contains an inappropriate word — choose another.",
+  "classesTestQr": "Test QR",
+  "classesTestQrBody": "Students scan → sign in → nickname → this test opens. Results on this page update by themselves.",
+  "classesInviteLink": "Copy link",
+  "classesLiveNote": "Results refresh every 10 seconds. Pull down to refresh now.",
+  "boardOpen": "Big screen",
+  "boardJoined": "In group",
+  "boardStarted": "Solving",
+  "boardSubmitted": "Submitted",
+  "boardStatusWaiting": "Waiting",
+  "boardStatusSolving": "Solving…",
+  "boardScan": "Scan to join",
+  "boardAnswersAfterClose": "Correct answers appear after the test is closed.",
+  "boardEmpty": "Nobody yet — scan the QR.",
+  "boardClose": "Exit big screen",
+  "actionClose": "Close"
 }

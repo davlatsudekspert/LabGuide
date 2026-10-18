@@ -5744,7 +5744,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get classesInviteBody =>
-      'Students: Learn → Classes and assignments → Join with a code.';
+      'Students scan the QR with the phone camera and tap “Open in app” — or: Learn → Classes and assignments → Join with a code.';
 
   @override
   String get classesCopyCode => 'Copy code';
@@ -9808,4 +9808,82 @@ class AppLocalizationsEn extends AppLocalizations {
   String sourcesPanelMore(int count) {
     return '+ $count more — in the list below';
   }
+
+  @override
+  String get classesPasteLink => 'Paste link';
+
+  @override
+  String get classesPasteNoCode =>
+      'No invite code in the copied text. Copy the link or code your teacher sent.';
+
+  @override
+  String get classesScanTip =>
+      'Scan the QR code with your phone camera and tap “Open in app” on the page that opens — the code fills in by itself.';
+
+  @override
+  String get classesJoinOpensTest =>
+      'After joining, your teacher’s test opens right away.';
+
+  @override
+  String get classesJoinSignInTitle => 'Sign in to join the group';
+
+  @override
+  String get classesJoinSignInBody =>
+      'With Google, Apple or an email code — it takes a minute. Your result reaches the teacher through this account; the invite code is kept.';
+
+  @override
+  String get classesNicknameTaken =>
+      'This nickname is taken in the group — choose another.';
+
+  @override
+  String get classesNicknameAbusive =>
+      'The nickname contains an inappropriate word — choose another.';
+
+  @override
+  String get classesTestQr => 'Test QR';
+
+  @override
+  String get classesTestQrBody =>
+      'Students scan → sign in → nickname → this test opens. Results on this page update by themselves.';
+
+  @override
+  String get classesInviteLink => 'Copy link';
+
+  @override
+  String get classesLiveNote =>
+      'Results refresh every 10 seconds. Pull down to refresh now.';
+
+  @override
+  String get boardOpen => 'Big screen';
+
+  @override
+  String get boardJoined => 'In group';
+
+  @override
+  String get boardStarted => 'Solving';
+
+  @override
+  String get boardSubmitted => 'Submitted';
+
+  @override
+  String get boardStatusWaiting => 'Waiting';
+
+  @override
+  String get boardStatusSolving => 'Solving…';
+
+  @override
+  String get boardScan => 'Scan to join';
+
+  @override
+  String get boardAnswersAfterClose =>
+      'Correct answers appear after the test is closed.';
+
+  @override
+  String get boardEmpty => 'Nobody yet — scan the QR.';
+
+  @override
+  String get boardClose => 'Exit big screen';
+
+  @override
+  String get actionClose => 'Close';
 }

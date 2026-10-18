@@ -31,6 +31,7 @@ import '../features/home/home_screen.dart';
 import '../features/instruments/calibration_screens.dart';
 import '../features/instruments/instrument_screens.dart';
 import '../features/lab/lab_screens.dart';
+import '../features/classroom/board_screen.dart';
 import '../features/classroom/classroom_screens.dart';
 import '../features/community/community_screens.dart';
 import '../features/classroom/auto_deck.dart' show AutoDeckSpec;
@@ -130,6 +131,16 @@ GoRouter buildRouter(
     // yangilanish endigina yopilgan sahifani qaytarib qo'yishi mumkin.
     refreshListenable: refresh,
     redirect: (context, state) {
+      // Taklif havolasi (QR → sayt → “Ilovada ochish”: labguide://app/j?c=..
+      // yoki https://labguide.nfcstore.uz/j/?c=..&a=..) — qo'shilish ekrani.
+      final path = state.uri.path;
+      if (settings.onboarded && (path == '/j' || path == '/j/')) {
+        final q = state.uri.queryParameters;
+        return Uri(
+          path: '/learn/classes/join',
+          queryParameters: {'code': ?q['c'], 'a': ?q['a']},
+        ).toString();
+      }
       final loc = state.matchedLocation;
       final inOnboarding = loc.startsWith('/welcome') || loc == '/terms';
       // Birinchi ishga tushirish: avval til tanlanadi, so'ng welcome.
@@ -1172,6 +1183,7 @@ GoRouter buildRouter(
                         path: 'join',
                         builder: (context, state) => JoinGroupScreen(
                           initialCode: state.uri.queryParameters['code'],
+                          assignmentId: state.uri.queryParameters['a'],
                         ),
                       ),
                       GoRoute(
@@ -1228,6 +1240,17 @@ GoRouter buildRouter(
                                 parentNavigatorKey: rootKey,
                                 builder: (context, state) =>
                                     AssignmentRunScreen(
+                                      groupId: state.pathParameters['gid']!,
+                                      assignmentId:
+                                          state.pathParameters['aid']!,
+                                    ),
+                              ),
+                              // “Katta ekran” (proyektor): to'liq ekran.
+                              GoRoute(
+                                path: 'board',
+                                parentNavigatorKey: rootKey,
+                                builder: (context, state) =>
+                                    AssignmentBoardScreen(
                                       groupId: state.pathParameters['gid']!,
                                       assignmentId:
                                           state.pathParameters['aid']!,

@@ -10,6 +10,7 @@ import '../../core/backend/backend_models.dart';
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
+import '../classroom/invite_link.dart';
 import '../classroom/qr_code_view.dart';
 import '../classroom/topic_questions.dart';
 import '../classroom/topic_test_screens.dart' show SlideLink, deckOfAssignment;
@@ -26,6 +27,8 @@ import 'exam_widgets.dart';
 // qanday server huquqi bermaydi. Server ulanmagan buildda — halol holat.
 
 String classesErrorText(Object e, AppLocalizations l) => switch (e) {
+  BackendException(code: 'nickname_taken') => l.classesNicknameTaken,
+  BackendException(code: 'abusive_language') => l.classesNicknameAbusive,
   BackendException(failure: BackendFailure.network) => l.errNetwork,
   BackendException(failure: BackendFailure.rateLimited) => l.errRateLimited,
   BackendException(failure: BackendFailure.invalid) => l.classesInvalid,
@@ -39,9 +42,18 @@ String classesErrorText(Object e, AppLocalizations l) => switch (e) {
 
 /// Server ulanmagan — halol holat; hisob yo'q — kirish taklifi.
 class ClassesGate extends StatelessWidget {
-  const ClassesGate({super.key, required this.child});
+  const ClassesGate({
+    super.key,
+    required this.child,
+    this.signInTitle,
+    this.signInBody,
+  });
 
   final Widget child;
+
+  /// Hisobsiz holat matni (standart — umumiy “Guruhlar uchun kiring”).
+  final String? signInTitle;
+  final String? signInBody;
 
   @override
   Widget build(BuildContext context) {
@@ -65,8 +77,8 @@ class ClassesGate extends StatelessWidget {
           ? child
           : LgStateView(
               kind: StateKind.empty,
-              title: l.classesSignInTitle,
-              message: l.classesSignInBody,
+              title: signInTitle ?? l.classesSignInTitle,
+              message: signInBody ?? l.classesSignInBody,
               actionLabel: l.classesSignIn,
               onAction: () => context.push('/profile/auth'),
             ),
@@ -441,13 +453,29 @@ class _CreateGroupScreenState extends State<CreateGroupScreen> {
   }
 }
 
-/// Taklif kodi: faqat ruxsat etilgan 32 belgi, katta harf.
+/// Taklif kodi: faqat ruxsat etilgan 32 belgi, katta harf. Butun havola
+/// yoki taklif matni qo'yilsa (paste) — kod (va test id) shu yerda
+/// ajratiladi ([onInvite]).
 class _CodeFormatter extends TextInputFormatter {
+  _CodeFormatter({this.onInvite});
+
+  final void Function(InviteTarget invite)? onInvite;
+
   @override
   TextEditingValue formatEditUpdate(
     TextEditingValue oldValue,
     TextEditingValue newValue,
   ) {
+    if (newValue.text.length - oldValue.text.length > 1) {
+      final invite = parseInvite(newValue.text);
+      if (invite != null) {
+        onInvite?.call(invite);
+        return TextEditingValue(
+          text: invite.code,
+          selection: TextSelection.collapsed(offset: invite.code.length),
+        );
+      }
+    }
     final clean = newValue.text.toUpperCase().replaceAll(
       RegExp('[^A-Z0-9]'),
       '',
@@ -461,27 +489,28 @@ class _CodeFormatter extends TextInputFormatter {
 }
 
 class JoinGroupScreen extends StatefulWidget {
-  const JoinGroupScreen({super.key, this.initialCode});
+  const JoinGroupScreen({super.key, this.initialCode, this.assignmentId});
 
-  /// QR yoki havoladan kelgan kod (`/learn/classes/join?code=...`).
+  /// QR yoki havoladan kelgan kod (`/learn/classes/join?code=...&a=...`).
   final String? initialCode;
+
+  /// “Test QR”: qo'shilgach darhol ochiladigan test.
+  final String? assignmentId;
 
   @override
   State<JoinGroupScreen> createState() => _JoinGroupScreenState();
 }
 
 class _JoinGroupScreenState extends State<JoinGroupScreen> {
+  late final _formatter = _CodeFormatter(onInvite: _adopt);
   late final _code = TextEditingController(
-    text: _CodeFormatter()
-        .formatEditUpdate(
-          TextEditingValue.empty,
-          TextEditingValue(text: widget.initialCode ?? ''),
-        )
-        .text,
+    text: normalizeInviteCode(widget.initialCode) ?? '',
   );
   final _display = TextEditingController();
+  late String? _assignment = widget.assignmentId;
   bool _tried = false;
   bool _busy = false;
+  bool _nickLoaded = false;
   Object? _error;
 
   /// Ekran ochiq turganda yangi havola/QR kodi kelsa — maydon yangilanadi.
@@ -490,9 +519,8 @@ class _JoinGroupScreenState extends State<JoinGroupScreen> {
     super.didUpdateWidget(old);
     final c = widget.initialCode;
     if (c != null && c != old.initialCode) {
-      _code.text = _CodeFormatter()
-          .formatEditUpdate(TextEditingValue.empty, TextEditingValue(text: c))
-          .text;
+      _code.text = normalizeInviteCode(c) ?? '';
+      _assignment = widget.assignmentId;
       _error = null;
     }
   }
@@ -502,6 +530,51 @@ class _JoinGroupScreenState extends State<JoinGroupScreen> {
     _code.dispose();
     _display.dispose();
     super.dispose();
+  }
+
+  void _adopt(InviteTarget invite) {
+    // Formatter ichidan: kadrdan keyin (build paytida setState emas).
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      setState(() {
+        _assignment = invite.assignmentId ?? _assignment;
+        _error = null;
+      });
+    });
+  }
+
+  /// Oldingi guruhdagi taxallus — yangi guruhda ham (o'zgartirish mumkin).
+  Future<void> _prefillNickname() async {
+    if (_nickLoaded) return;
+    _nickLoaded = true;
+    try {
+      final groups = await context.services.backend.myGroups();
+      final nick = groups
+          .where((g) => !g.isTeacher && (g.myNickname ?? '').isNotEmpty)
+          .map((g) => g.myNickname!)
+          .firstOrNull;
+      if (nick != null && mounted && _display.text.isEmpty) {
+        setState(() => _display.text = nick);
+      }
+    } on Object {
+      // Majburiy emas — talaba o'zi yozadi.
+    }
+  }
+
+  Future<void> _paste() async {
+    final l = AppLocalizations.of(context);
+    final data = await Clipboard.getData(Clipboard.kTextPlain);
+    if (!mounted) return;
+    final invite = parseInvite(data?.text);
+    if (invite == null) {
+      showSnack(context, l.classesPasteNoCode);
+      return;
+    }
+    setState(() {
+      _code.text = invite.code;
+      _assignment = invite.assignmentId ?? _assignment;
+      _error = null;
+    });
   }
 
   bool get _codeOk => _code.text.length == 8;
@@ -519,15 +592,24 @@ class _JoinGroupScreenState extends State<JoinGroupScreen> {
       _busy = true;
       _error = null;
     });
+    final services = context.services;
     try {
       final alias = _display.text.trim();
-      final id = await context.services.backend.joinGroup(
+      final id = await services.backend.joinGroup(
         _code.text,
         displayName: alias.isEmpty ? null : alias,
       );
+      // Havola orqali kelgan yangi foydalanuvchi: rol tanlanmagan bo'lsa —
+      // talaba (alohida rol ekrani yo'q).
+      if (services.settings.role == null) {
+        await services.settings.setRole(AppRole.student);
+      }
       if (!mounted) return;
       showSnack(context, AppLocalizations.of(context).classesJoined);
-      context.pushReplacement('/learn/classes/g/$id');
+      final a = _assignment;
+      context.pushReplacement(
+        a == null ? '/learn/classes/g/$id' : '/learn/classes/g/$id/a/$a',
+      );
     } on Object catch (e) {
       if (mounted) setState(() => _error = e);
     } finally {
@@ -546,72 +628,107 @@ class _JoinGroupScreenState extends State<JoinGroupScreen> {
       showProfile: false,
       children: [
         ClassesGate(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 14),
-                child: MergeSemantics(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 7),
-                        child: Text(
-                          l.classesCode,
-                          style: text.titleSmall!.copyWith(fontSize: 14),
-                        ),
+          // Havola/QR bilan kelgan, hali kirmagan talaba: kod saqlanadi,
+          // kirgach shu ekranga qaytadi.
+          signInTitle: l.classesJoinSignInTitle,
+          signInBody: l.classesJoinSignInBody,
+          child: Builder(
+            builder: (context) {
+              WidgetsBinding.instance.addPostFrameCallback(
+                (_) => _prefillNickname(),
+              );
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 14),
+                    child: MergeSemantics(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 7),
+                            child: Text(
+                              l.classesCode,
+                              style: text.titleSmall!.copyWith(fontSize: 14),
+                            ),
+                          ),
+                          TextField(
+                            key: const ValueKey('join-code'),
+                            controller: _code,
+                            autocorrect: false,
+                            enableSuggestions: false,
+                            textCapitalization: TextCapitalization.characters,
+                            keyboardType: TextInputType.visiblePassword,
+                            textInputAction: TextInputAction.next,
+                            inputFormatters: [_formatter],
+                            style: text.headlineSmall!.copyWith(
+                              letterSpacing: 4,
+                              color: p.ink,
+                              fontFeatures: const [
+                                FontFeature.tabularFigures(),
+                              ],
+                            ),
+                            onChanged: (_) => setState(() => _error = null),
+                            decoration: InputDecoration(
+                              hintText: 'ABCD2345',
+                              errorText: _tried && !_codeOk
+                                  ? l.classesCodeError
+                                  : null,
+                              errorMaxLines: 3,
+                            ),
+                          ),
+                        ],
                       ),
-                      TextField(
-                        controller: _code,
-                        autocorrect: false,
-                        enableSuggestions: false,
-                        textCapitalization: TextCapitalization.characters,
-                        keyboardType: TextInputType.visiblePassword,
-                        textInputAction: TextInputAction.next,
-                        inputFormatters: [_CodeFormatter()],
-                        style: text.headlineSmall!.copyWith(
-                          letterSpacing: 4,
-                          color: p.ink,
-                          fontFeatures: const [FontFeature.tabularFigures()],
-                        ),
-                        onChanged: (_) => setState(() => _error = null),
-                        decoration: InputDecoration(
-                          hintText: 'ABCD2345',
-                          errorText: _tried && !_codeOk
-                              ? l.classesCodeError
-                              : null,
-                          errorMaxLines: 3,
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
-                ),
-              ),
-              LgField(
-                label: l.classesDisplayName,
-                controller: _display,
-                hint: l.classesDisplayNameHint,
-                maxLength: 24,
-                textInputAction: TextInputAction.done,
-                onSubmitted: (_) => _submit(),
-                errorText: _tried && !_nameOk
-                    ? l.classesLengthError(2, 24)
-                    : null,
-                onChanged: (_) => setState(() {}),
-              ),
-              const SizedBox(height: 8),
-              Text(l.classesJoinNote, style: text.bodySmall),
-              if (_error != null)
-                LgNotice(classesErrorText(_error!, l), kind: NoticeKind.error),
-              const SizedBox(height: 16),
-              LgButton(
-                label: l.classesJoinAction,
-                icon: Icons.login_rounded,
-                busy: _busy,
-                onPressed: _submit,
-              ),
-            ],
+                  const SizedBox(height: 8),
+                  LgButton.secondary(
+                    key: const ValueKey('join-paste'),
+                    label: l.classesPasteLink,
+                    icon: Icons.content_paste_rounded,
+                    onPressed: _paste,
+                  ),
+                  const SizedBox(height: 6),
+                  Text(l.classesScanTip, style: text.bodySmall),
+                  LgField(
+                    label: l.classesDisplayName,
+                    controller: _display,
+                    hint: l.classesDisplayNameHint,
+                    maxLength: 24,
+                    textInputAction: TextInputAction.done,
+                    onSubmitted: (_) => _submit(),
+                    errorText: _tried && !_nameOk
+                        ? l.classesLengthError(2, 24)
+                        : null,
+                    onChanged: (_) => setState(() => _error = null),
+                  ),
+                  const SizedBox(height: 8),
+                  Text(l.classesJoinNote, style: text.bodySmall),
+                  if (_assignment != null) ...[
+                    const SizedBox(height: 10),
+                    LgNotice(
+                      l.classesJoinOpensTest,
+                      key: const ValueKey('join-opens-test'),
+                      kind: NoticeKind.info,
+                    ),
+                  ],
+                  if (_error != null)
+                    LgNotice(
+                      classesErrorText(_error!, l),
+                      kind: NoticeKind.error,
+                    ),
+                  const SizedBox(height: 16),
+                  LgButton(
+                    key: const ValueKey('join-submit'),
+                    label: l.classesJoinAction,
+                    icon: Icons.login_rounded,
+                    busy: _busy,
+                    onPressed: _submit,
+                  ),
+                ],
+              );
+            },
           ),
         ),
       ],
@@ -672,7 +789,7 @@ bool _packOnly(ContentPack? pack, GroupAssignment a) {
   return a.questionIds.every((id) => source.question(id) != null);
 }
 
-enum _StudentStatus { fresh, inProgress, pending, done, overdue }
+enum _StudentStatus { fresh, inProgress, pending, done, overdue, closed }
 
 _StudentStatus _statusFor(
   BuildContext context,
@@ -685,6 +802,9 @@ _StudentStatus _statusFor(
   if (local != null) {
     return local.finished ? _StudentStatus.pending : _StudentStatus.inProgress;
   }
+  // Ustoz yakunlagan test: “Boshlash” ko'rsatilmaydi (server baribir rad
+  // etadi — `not_open`).
+  if (a.closed) return _StudentStatus.closed;
   final due = a.dueAt;
   if (due != null && services.exams.now().isAfter(due)) {
     return _StudentStatus.overdue;
@@ -1031,6 +1151,10 @@ class _GroupScreenState extends State<GroupScreen> with _AccountReload {
                   l.classesStatusOverdue,
                   LgTone.neutral,
                 ),
+                _StudentStatus.closed => (
+                  l.classroomStatusTestDone,
+                  LgTone.neutral,
+                ),
                 _StudentStatus.fresh => (l.classesStatusNew, LgTone.warning),
               };
               return _AssignmentTile(
@@ -1197,8 +1321,11 @@ class _InviteCard extends StatelessWidget {
           ),
           const SizedBox(height: 12),
           Center(
+            // Telefon kamerasi havolani ochadi (site/j/: kod + “Ilovada
+            // ochish”); ilovada “Havolani qo'yish” ham shu havolani o'qiydi.
             child: QrCodeView(
-              data: code,
+              key: const ValueKey('invite-qr'),
+              data: inviteUrl(code),
               semanticLabel: l.classesQrLabel(code.split('').join(' ')),
             ),
           ),
@@ -1214,7 +1341,9 @@ class _InviteCard extends StatelessWidget {
           LgButton.secondary(
             label: l.classesCopyInvite,
             icon: Icons.ios_share_rounded,
-            onPressed: () => copy(l.classesInviteText(group.name, code)),
+            onPressed: () => copy(
+              '${l.classesInviteText(group.name, code)}\n${inviteUrl(code)}',
+            ),
           ),
         ],
       ),
@@ -1502,6 +1631,70 @@ class _NewAssignmentScreenState extends State<NewAssignmentScreen> {
 
 // ------------------------------------------------------------- topshiriq
 
+/// “Test QR”: talaba skanerlaydi → kiradi → taxallus → shu test ochiladi.
+/// Katta QR (proyektorda ham o'qiladi), kod va havolani nusxalash.
+Future<void> showTestQr(
+  BuildContext context,
+  StudyGroup group,
+  String code,
+  GroupAssignment a,
+) {
+  final l = AppLocalizations.of(context);
+  final url = inviteUrl(code, assignmentId: a.id);
+  final spaced = '${code.substring(0, 4)} ${code.substring(4)}';
+  return showDialog<void>(
+    context: context,
+    builder: (context) {
+      final text = Theme.of(context).textTheme;
+      final side = (MediaQuery.sizeOf(context).shortestSide * 0.62).clamp(
+        180.0,
+        420.0,
+      );
+      return AlertDialog(
+        key: const ValueKey('test-qr-dialog'),
+        title: Text(a.title, maxLines: 2, overflow: TextOverflow.ellipsis),
+        content: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              QrCodeView(
+                data: url,
+                size: side,
+                semanticLabel: l.classesQrLabel(code.split('').join(' ')),
+              ),
+              const SizedBox(height: 12),
+              Text(
+                spaced,
+                style: text.headlineMedium!.copyWith(
+                  letterSpacing: 3,
+                  fontFeatures: const [FontFeature.tabularFigures()],
+                ),
+              ),
+              const SizedBox(height: 4),
+              Text(group.name, style: text.bodyMedium),
+              const SizedBox(height: 10),
+              Text(l.classesTestQrBody, style: text.bodySmall),
+            ],
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () async {
+              await Clipboard.setData(ClipboardData(text: url));
+              if (context.mounted) showSnack(context, l.classesCopied);
+            },
+            child: Text(l.classesInviteLink),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.pop(context),
+            child: Text(l.actionClose),
+          ),
+        ],
+      );
+    },
+  );
+}
+
 /// Javoblarni yuborish natijasi.
 enum SubmitOutcome { sent, network, rejected, failed }
 
@@ -1612,6 +1805,10 @@ class _AssignmentScreenState extends State<AssignmentScreen>
   bool _busy = false;
   bool _all = false;
 
+  /// Ustoz natijalari ochiq turganda — har [liveEvery] da jim yangilanadi.
+  static const liveEvery = Duration(seconds: 10);
+  Timer? _live;
+
   String get _base =>
       '/learn/classes/g/${widget.groupId}/a/${widget.assignmentId}';
 
@@ -1621,13 +1818,23 @@ class _AssignmentScreenState extends State<AssignmentScreen>
     WidgetsBinding.instance.addPostFrameCallback((_) => _load());
   }
 
-  Future<void> _load() async {
+  @override
+  void dispose() {
+    _live?.cancel();
+    super.dispose();
+  }
+
+  /// [quiet] — jonli yangilanish: yuklanish holati va tarmoq xatosi
+  /// ko'rsatilmaydi (oldingi natijalar qoladi).
+  Future<void> _load({bool quiet = false}) async {
     if (!mounted || !_ready(context)) return;
-    setState(() {
-      _data
-        ..loading = true
-        ..error = null;
-    });
+    if (!quiet) {
+      setState(() {
+        _data
+          ..loading = true
+          ..error = null;
+      });
+    }
     try {
       final d = await _loadAssignment(
         context,
@@ -1637,13 +1844,27 @@ class _AssignmentScreenState extends State<AssignmentScreen>
       if (!mounted) return;
       setState(() {
         _missing = d == null;
-        _data.data = d;
+        _data
+          ..data = d
+          ..error = null;
       });
+      _syncLive(d);
       if (d != null && !d.group.isTeacher) await _settleExpired(d);
     } on Object catch (e) {
-      if (mounted) setState(() => _data.error = e);
+      if (mounted && !quiet) setState(() => _data.error = e);
     } finally {
-      if (mounted) setState(() => _data.loading = false);
+      if (mounted && !quiet) setState(() => _data.loading = false);
+    }
+  }
+
+  /// Faqat ustoz va hali yakunlanmagan test uchun.
+  void _syncLive(_AssignmentData? d) {
+    final on = d != null && d.group.isTeacher && !d.assignment.closed;
+    if (!on) {
+      _live?.cancel();
+      _live = null;
+    } else {
+      _live ??= Timer.periodic(liveEvery, (_) => _load(quiet: true));
     }
   }
 
@@ -1721,6 +1942,29 @@ class _AssignmentScreenState extends State<AssignmentScreen>
     }
   }
 
+  /// Ustoz testni yakunlaydi: yangi urinish yo'q; “muddat tugagach”
+  /// tanlangan bo'lsa — to'g'ri javoblar talabalarga darhol ochiladi.
+  Future<void> _close(GroupAssignment a) async {
+    final l = AppLocalizations.of(context);
+    final ok = await confirmDialog(
+      context,
+      title: l.classroomTestFinishTitle,
+      body: l.classroomTestFinishBody,
+      action: l.classroomTestFinish,
+    );
+    if (!ok || !mounted) return;
+    setState(() => _busy = true);
+    try {
+      await context.services.backend.closeAssignment(a.id);
+      if (mounted) showSnack(context, l.classroomStatusTestDone);
+    } on Object catch (e) {
+      if (mounted) showSnack(context, classesErrorText(e, l));
+    } finally {
+      if (mounted) setState(() => _busy = false);
+    }
+    if (mounted) await _load();
+  }
+
   Future<void> _resend(ExamSession s) async {
     setState(() => _busy = true);
     final outcome = await submitAssignmentSession(context.services, s);
@@ -1747,6 +1991,18 @@ class _AssignmentScreenState extends State<AssignmentScreen>
   Widget _page(BuildContext context) {
     final l = AppLocalizations.of(context);
     final d = _data.data;
+    return RefreshIndicator(
+      onRefresh: _load,
+      notificationPredicate: (n) => n.depth == 0 && d?.group.isTeacher == true,
+      child: _pageBody(context, l, d),
+    );
+  }
+
+  Widget _pageBody(
+    BuildContext context,
+    AppLocalizations l,
+    _AssignmentData? d,
+  ) {
     return LgPage(
       title: d?.assignment.title ?? l.classesAssignments,
       subtitle: d == null ? null : _assignmentMeta(context, d.assignment),
@@ -1856,6 +2112,12 @@ class _AssignmentScreenState extends State<AssignmentScreen>
         title: l.classesOverdueTitle,
         message: l.classesOverdueBody,
       ),
+      _StudentStatus.closed => LgStateView(
+        key: const ValueKey('assignment-closed'),
+        kind: StateKind.unavailable,
+        title: l.classroomStatusTestDone,
+        message: l.classesOverdueBody,
+      ),
       _ when missing > 0 => LgNotice(
         l.classesOutdatedPack(missing),
         kind: NoticeKind.error,
@@ -1913,7 +2175,12 @@ class _AssignmentScreenState extends State<AssignmentScreen>
       badges: [LgTag(l.classesServerScore, icon: Icons.verified_outlined)],
     );
     // Ustoz “muddat tugagach” tanlagan: to'g'ri javoblar hozircha yopiq.
-    if (!a.answersOpen(context.services.exams.now()) && a.dueAt != null) {
+    // Server (`correct: null`) hal qiladi: qurilma soati oldinda bo'lsa ham
+    // javoblar lokal kalitdan ochib yuborilmaydi.
+    final hidden =
+        !a.answersOpen(context.services.exams.now()) ||
+        (a.revealAfterDue && mine.correct == null);
+    if (hidden && a.dueAt != null) {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -2026,6 +2293,48 @@ class _AssignmentScreenState extends State<AssignmentScreen>
             ),
           ],
         ),
+        const SizedBox(height: 12),
+        if (d.group.joinCode case final code?) ...[
+          Row(
+            children: [
+              Expanded(
+                child: LgButton.secondary(
+                  key: const ValueKey('assignment-test-qr'),
+                  label: l.classesTestQr,
+                  icon: Icons.qr_code_2_rounded,
+                  onPressed: () => showTestQr(context, d.group, code, a),
+                ),
+              ),
+              const SizedBox(width: 8),
+              Expanded(
+                child: LgButton.secondary(
+                  key: const ValueKey('assignment-board'),
+                  label: l.boardOpen,
+                  icon: Icons.tv_rounded,
+                  onPressed: () => context.push('$_base/board'),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 8),
+        ],
+        if (a.closed)
+          LgNotice(
+            l.classroomStatusTestDone,
+            key: const ValueKey('assignment-closed'),
+            kind: NoticeKind.info,
+          )
+        else ...[
+          LgButton.secondary(
+            key: const ValueKey('assignment-close'),
+            label: l.classroomTestFinish,
+            icon: Icons.stop_circle_outlined,
+            busy: _busy,
+            onPressed: () => _close(a),
+          ),
+          const SizedBox(height: 6),
+          Text(l.classesLiveNote, style: text.bodySmall),
+        ],
         LgSectionTitle(l.classesResults),
         if (students.isEmpty)
           Text(l.classesNoStudents, style: text.bodyMedium)

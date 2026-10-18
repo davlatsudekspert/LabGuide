@@ -84,9 +84,11 @@ abstract interface class SupportAttachmentPolicy {
 /// Server xato kodi bilan (`self`, `admin`, `owner`, `invalid_email`,
 /// `invalid_name`, `not_suspended`, …).
 class AdminConsoleException extends BackendException {
-  const AdminConsoleException(super.failure, this.code, [super.detail]);
-
-  final String? code;
+  const AdminConsoleException(
+    BackendFailure failure,
+    String? code, [
+    String? detail,
+  ]) : super(failure, detail, code);
 }
 
 class ComplaintException extends BackendException {

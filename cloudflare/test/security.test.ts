@@ -78,6 +78,16 @@ describe('HTTP qoidalari', () => {
     expect((await s.call('POST', '/v1/auth/otp/request', { raw: big, headers: { 'content-type': 'application/json' } })).status).toBe(413);
   });
 
+  it("ishlab chiqarish entry'sida mahalliy pochta qutisi (/__outbox) yo'q", async () => {
+    // Kirish kodlarini o'qish faqat dev/local.ts (wrangler dev --local) da;
+    // deploy qilinadigan src/index.ts uni hech qachon bermaydi.
+    const { default: worker } = await import('../src/index');
+    const { env } = await import('cloudflare:test');
+    const res = await worker.fetch(new Request('https://api.example.test/__outbox'), env as Env);
+    expect(res.status).toBe(404);
+    expect(await res.text()).not.toContain('code');
+  });
+
   it("ichki xato tafsiloti javobga chiqmaydi", async () => {
     const s = makeServer();
     const broken = {

@@ -16,6 +16,7 @@ import {
   notFound,
   readJson,
 } from './http';
+import { guardAbuse } from './moderation';
 import { hit } from './ratelimit';
 
 // Adashtiradigan 0/O/1/I siz — QR va qo'lda yozish uchun.
@@ -68,14 +69,68 @@ export function uuidParam(v: string): string {
   return v;
 }
 
-function nickname(v: unknown): string | null {
+export function nickname(v: unknown): string | null {
   if (v == null || v === '') return null;
   if (typeof v !== 'string') throw badRequest('invalid_nickname');
   const t = v.trim().replace(/\s+/g, ' ');
   if (t === '') return null;
   // Email yoki havola emas: faqat harf, raqam, bo'sh joy va . _ ' -
   if (!NICK_RE.test(t)) throw badRequest('invalid_nickname');
+  // Guruh ekranida (katta ekran ham) ko'rinadi — so'kinish filtri.
+  guardAbuse(t);
   return t;
+}
+
+/**
+ * Taxallus guruhda yagona (katta-kichik harf farqsiz) — ustoz va katta ekran
+ * natijalarni adashtirmasin. [except] — o'zi (taxallusni o'zgartirganda).
+ */
+export async function requireFreeNickname(ctx: Ctx, gid: string, nick: string | null, except?: string): Promise<void> {
+  if (nick == null) return;
+  const rows = await ctx.db
+    .prepare('SELECT user_id, nickname FROM group_members WHERE group_id = ?1 AND nickname IS NOT NULL')
+    .bind(gid)
+    .all<{ user_id: string; nickname: string }>();
+  const key = nick.toLocaleLowerCase();
+  if (rows.results.some((r) => r.user_id !== except && r.nickname.toLocaleLowerCase() === key)) {
+    throw conflict('nickname_taken');
+  }
+}
+
+/** Talabani guruhga qo'shadi (joy bor-yo'qligi tekshiriladi). */
+export async function addStudent(ctx: Ctx, gid: string, uid: string, nick: string | null): Promise<void> {
+  const n = await ctx.db
+    .prepare('SELECT COUNT(*) AS n FROM group_members WHERE group_id = ?1')
+    .bind(gid)
+    .first<{ n: number }>();
+  if ((n?.n ?? 0) >= MAX_MEMBERS) throw new ApiError(429, 'group_full');
+  await requireFreeNickname(ctx, gid, nick);
+  // Tartib raqami atomar oshiriladi ("Talaba NN").
+  const no = await ctx.db
+    .prepare(
+      'UPDATE study_groups SET next_member_no = next_member_no + 1 WHERE id = ?1 RETURNING next_member_no - 1 AS no',
+    )
+    .bind(gid)
+    .first<{ no: number }>();
+  await ctx.db
+    .prepare(
+      `INSERT INTO group_members (group_id, user_id, member_role, member_no, nickname, joined_at)
+       VALUES (?1, ?2, 'student', ?3, ?4, ?5) ON CONFLICT DO NOTHING`,
+    )
+    .bind(gid, uid, no?.no ?? 0, nick, ctx.now)
+    .run();
+}
+
+/** Taklif kodi bo'yicha guruh id si (noto'g'ri/yo'q — 404). */
+export async function groupByCode(ctx: Ctx, raw: unknown): Promise<string> {
+  const code = typeof raw === 'string' ? raw.toUpperCase().replace(/[\s-]/g, '') : '';
+  if (!CODE_RE.test(code)) throw notFound();
+  const g = await ctx.db
+    .prepare('SELECT id FROM study_groups WHERE join_code = ?1')
+    .bind(code)
+    .first<{ id: string }>();
+  if (!g) throw notFound();
+  return g.id;
 }
 
 export function displayName(role: Role, no: number, nick: string | null): string {
@@ -185,6 +240,8 @@ export async function listGroups(ctx: Ctx): Promise<Response> {
         is_teacher: teacher,
         member_count: g.member_count,
         my_display_name: displayName(g.member_role, g.member_no, g.nickname),
+        // O'z taxallusi (yo'q — null): yangi guruhda oldindan to'ldirish uchun.
+        my_nickname: g.nickname,
         created_at: iso(g.created_at),
       };
     }),
@@ -227,36 +284,12 @@ export async function joinGroup(ctx: Ctx): Promise<Response> {
   await hit(ctx.db, `join-user:${s.userId}`, 10, 900, ctx.now);
   await hit(ctx.db, `join-ip:${ctx.ipTag}`, 100, 3600, ctx.now);
   const body = await readJson(ctx.req);
-  const code = typeof body.code === 'string' ? body.code.toUpperCase().replace(/[\s-]/g, '') : '';
-  if (!CODE_RE.test(code)) throw notFound();
-  const g = await ctx.db
-    .prepare('SELECT id FROM study_groups WHERE join_code = ?1')
-    .bind(code)
-    .first<{ id: string }>();
-  if (!g) throw notFound();
+  const gid = await groupByCode(ctx, body.code);
   // Qayta qo'shilish hech narsani o'zgartirmaydi (taxallus ham tekshirilmaydi).
-  if (await membership(ctx, g.id, s.userId)) return json({ group_id: g.id });
+  if (await membership(ctx, gid, s.userId)) return json({ group_id: gid });
   const nick = nickname(body.display_name);
-  const n = await ctx.db
-    .prepare('SELECT COUNT(*) AS n FROM group_members WHERE group_id = ?1')
-    .bind(g.id)
-    .first<{ n: number }>();
-  if ((n?.n ?? 0) >= MAX_MEMBERS) throw new ApiError(429, 'group_full');
-  // Tartib raqami atomar oshiriladi ("Talaba NN").
-  const no = await ctx.db
-    .prepare(
-      'UPDATE study_groups SET next_member_no = next_member_no + 1 WHERE id = ?1 RETURNING next_member_no - 1 AS no',
-    )
-    .bind(g.id)
-    .first<{ no: number }>();
-  await ctx.db
-    .prepare(
-      `INSERT INTO group_members (group_id, user_id, member_role, member_no, nickname, joined_at)
-       VALUES (?1, ?2, 'student', ?3, ?4, ?5) ON CONFLICT DO NOTHING`,
-    )
-    .bind(g.id, s.userId, no?.no ?? 0, nick, ctx.now)
-    .run();
-  return json({ group_id: g.id }, 201);
+  await addStudent(ctx, gid, s.userId, nick);
+  return json({ group_id: gid }, 201);
 }
 
 export async function leaveGroup(ctx: Ctx, gid: string): Promise<Response> {
@@ -276,6 +309,7 @@ export async function setAlias(ctx: Ctx, gid: string): Promise<Response> {
   await requireMember(ctx, s, gid);
   const body = await readJson(ctx.req);
   const nick = nickname(body.alias);
+  await requireFreeNickname(ctx, gid, nick, s.userId);
   await ctx.db
     .prepare('UPDATE group_members SET nickname = ?3 WHERE group_id = ?1 AND user_id = ?2')
     .bind(gid, s.userId, nick)
@@ -904,4 +938,23 @@ export async function assignmentKey(ctx: Ctx, aid: string): Promise<Response> {
     .bind(a.id)
     .first<{ correct_indexes: string }>();
   return json({ correct_indexes: JSON.parse(k!.correct_indexes) as number[] });
+}
+
+/**
+ * Katta ekran: kim testni boshlagan (yechmoqda). Faqat ustoz; javoblar
+ * topshirilgunga qadar serverda yo'q — faqat boshlangan vaqt.
+ */
+export async function assignmentProgress(ctx: Ctx, aid: string): Promise<Response> {
+  const s = await requireSession(ctx);
+  const { a, teacher } = await loadAssignment(ctx, s, aid);
+  if (!teacher) throw forbidden();
+  const rows = await ctx.db
+    .prepare(
+      `SELECT t.user_id, t.started_at FROM assignment_attempts t
+       JOIN group_members m ON m.group_id = ?2 AND m.user_id = t.user_id AND m.member_role = 'student'
+       WHERE t.assignment_id = ?1 ORDER BY t.started_at`,
+    )
+    .bind(a.id, a.group_id)
+    .all<{ user_id: string; started_at: number }>();
+  return json(rows.results.map((r) => ({ user_id: r.user_id, started_at: iso(r.started_at) })));
 }
