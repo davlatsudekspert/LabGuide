@@ -1091,8 +1091,8 @@ GoRouter buildRouter(
                     ],
                   ),
                   // Toifa imtihoniga tayyorgarlik — faqat O'zbekiston
-                  // foydalanuvchilariga (til uz yoki mintaqa UZ), shifokor
-                  // rolidan tashqari; boshqalar
+                  // foydalanuvchilariga (til uz yoki mintaqa UZ), shifokor va
+                  // talaba rolidan tashqari (D-40, D-60); boshqalar
                   // to'g'ridan-to'g'ri manzil bilan ham kira olmaydi.
                   GoRoute(
                     path: 'toifa',

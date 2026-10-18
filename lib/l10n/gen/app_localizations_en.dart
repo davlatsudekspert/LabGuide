@@ -507,9 +507,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get featureCalculators => 'Calculators';
 
   @override
-  String get featureSampleFactors => 'Sample factors';
-
-  @override
   String get featureSaved => 'Saved';
 
   @override
@@ -519,13 +516,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get featureQc => 'Quality control (QC)';
 
   @override
-  String get featureSampling => 'Sampling';
-
-  @override
   String get featureTopics => 'Topics';
-
-  @override
-  String get featureQuiz => 'Quiz';
 
   @override
   String get featureMicroscopy => 'Microscopy';
@@ -765,7 +756,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String get labHeroEyebrow => 'Instrument → reagent → method';
 
   @override
-  String get labHeroTitle => 'Calibration and methods';
+  String get labHeroTitle => 'Calibration';
+
+  @override
+  String get classroomLectureAuto => 'Automatic slides';
+
+  @override
+  String get labSectionsTitle => 'Sections and atlases';
+
+  @override
+  String get labToolsTitle => 'Work tools';
 
   @override
   String get labHeroBody =>
@@ -785,7 +785,7 @@ class AppLocalizationsEn extends AppLocalizations {
       'Collecting, storing and transporting samples';
 
   @override
-  String get labCalculatorsSub => 'Dilution and units';
+  String get labCalculatorsSub => 'eGFR, ACR, dilution and more';
 
   @override
   String get labInstruments => 'Instruments and methods';
@@ -1216,7 +1216,7 @@ class AppLocalizationsEn extends AppLocalizations {
       'Copy the saved text first. Once deleted, it cannot be recovered.';
 
   @override
-  String get preTitle => 'Specimen journey';
+  String get preTitle => 'Preanalytics';
 
   @override
   String get preStep1 => 'Prepare for testing';

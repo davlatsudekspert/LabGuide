@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/services.dart' show rootBundle;
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 import 'package:material_ui/material_ui.dart';
@@ -23,6 +24,8 @@ import '../tools/manual_calc_info.dart';
 import '../tools/manual_calc_screens.dart';
 import 'classroom_local.dart';
 import 'curriculum.dart';
+import 'lecture_catalog.dart';
+import 'lecture_library.dart' show openDeck;
 import 'topic_questions.dart';
 
 // Guruh darslari o'quv dasturi bo'yicha: jadval (hafta/kun → mavzu →
@@ -613,12 +616,10 @@ class _GroupTopicScreenState extends State<GroupTopicScreen>
           body: l.classroomStageLectureBody,
           done: gt?.lectureDoneAt != null,
           children: [
-            LgButton(
-              label: l.lectureStart,
-              icon: Icons.slideshow_outlined,
-              onPressed: () =>
-                  context.push('/learn/lecture/${t.id}?g=${widget.groupId}'),
-            ),
+            // D-45: mavzuning tayyor (16:9) taqdimoti bo'lsa — Ma'ruza shuni
+            // ochadi (Ma'ruza ro'yxatidagi o'sha deck); avtomatik slaydlar
+            // ikkinchi tugmada qoladi.
+            _LectureButtons(topicId: t.id, groupId: widget.groupId),
             if (gt?.lectureDoneAt == null) ...[
               const SizedBox(height: 8),
               LgButton.secondary(
@@ -1389,6 +1390,54 @@ class _TopicTestSetupScreenState extends State<TopicTestSetupScreen>
           onPressed: () => _start(t, pool),
         ),
       ],
+    );
+  }
+}
+
+/// Guruh darsining 1-bosqichi tugmalari: tayyor taqdimot (katalogda bo'lsa)
+/// va avtomatik slaydlar.
+class _LectureButtons extends StatelessWidget {
+  const _LectureButtons({required this.topicId, required this.groupId});
+
+  final String topicId;
+  final String groupId;
+
+  @override
+  Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context);
+    final bundle = context.services.curriculum.bundle ?? rootBundle;
+    void auto() => context.push('/learn/lecture/$topicId?g=$groupId');
+    return FutureBuilder<DeckCatalog>(
+      future: DeckCatalog.load(bundle),
+      initialData: DeckCatalog.peek(bundle),
+      builder: (context, snap) {
+        final deck = snap.data?.byTopic(topicId);
+        if (deck == null) {
+          return LgButton(
+            label: l.lectureStart,
+            icon: Icons.slideshow_outlined,
+            onPressed: auto,
+          );
+        }
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            LgButton(
+              key: const ValueKey('group-lecture-deck'),
+              label: l.lectureStart,
+              icon: Icons.co_present_outlined,
+              onPressed: () => openDeck(context, deck.id),
+            ),
+            const SizedBox(height: 8),
+            LgButton.secondary(
+              key: const ValueKey('group-lecture-auto'),
+              label: l.classroomLectureAuto,
+              icon: Icons.slideshow_outlined,
+              onPressed: auto,
+            ),
+          ],
+        );
+      },
     );
   }
 }

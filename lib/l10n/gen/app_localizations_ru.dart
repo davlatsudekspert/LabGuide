@@ -516,9 +516,6 @@ class AppLocalizationsRu extends AppLocalizations {
   String get featureCalculators => 'Калькуляторы';
 
   @override
-  String get featureSampleFactors => 'Факторы образца';
-
-  @override
   String get featureSaved => 'Сохранённое';
 
   @override
@@ -528,13 +525,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get featureQc => 'Контроль качества (QC)';
 
   @override
-  String get featureSampling => 'Взятие образца';
-
-  @override
   String get featureTopics => 'Темы';
-
-  @override
-  String get featureQuiz => 'Тест';
 
   @override
   String get featureMicroscopy => 'Микроскопия';
@@ -776,7 +767,16 @@ class AppLocalizationsRu extends AppLocalizations {
   String get labHeroEyebrow => 'Прибор → реагент → метод';
 
   @override
-  String get labHeroTitle => 'Калибровка и методики';
+  String get labHeroTitle => 'Калибровка';
+
+  @override
+  String get classroomLectureAuto => 'Автоматические слайды';
+
+  @override
+  String get labSectionsTitle => 'Разделы и атласы';
+
+  @override
+  String get labToolsTitle => 'Рабочие инструменты';
 
   @override
   String get labHeroBody => 'Инструкции и контроль для конкретной модели.';
@@ -794,7 +794,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get labPreanalyticsSub => 'Взятие, хранение и доставка образца';
 
   @override
-  String get labCalculatorsSub => 'Разведения и единицы';
+  String get labCalculatorsSub => 'eGFR, ACR, разведение и др.';
 
   @override
   String get labInstruments => 'Приборы и методики';
@@ -1229,7 +1229,7 @@ class AppLocalizationsRu extends AppLocalizations {
       'Сначала скопируйте сохранённый текст. После удаления его нельзя вернуть.';
 
   @override
-  String get preTitle => 'Путь образца';
+  String get preTitle => 'Преаналитика';
 
   @override
   String get preStep1 => 'Подготовка к анализу';

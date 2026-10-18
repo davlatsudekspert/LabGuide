@@ -988,12 +988,6 @@ abstract class AppLocalizations {
   /// **'Calculators'**
   String get featureCalculators;
 
-  /// No description provided for @featureSampleFactors.
-  ///
-  /// In en, this message translates to:
-  /// **'Sample factors'**
-  String get featureSampleFactors;
-
   /// No description provided for @featureSaved.
   ///
   /// In en, this message translates to:
@@ -1012,23 +1006,11 @@ abstract class AppLocalizations {
   /// **'Quality control (QC)'**
   String get featureQc;
 
-  /// No description provided for @featureSampling.
-  ///
-  /// In en, this message translates to:
-  /// **'Sampling'**
-  String get featureSampling;
-
   /// No description provided for @featureTopics.
   ///
   /// In en, this message translates to:
   /// **'Topics'**
   String get featureTopics;
-
-  /// No description provided for @featureQuiz.
-  ///
-  /// In en, this message translates to:
-  /// **'Quiz'**
-  String get featureQuiz;
 
   /// No description provided for @featureMicroscopy.
   ///
@@ -1459,8 +1441,26 @@ abstract class AppLocalizations {
   /// No description provided for @labHeroTitle.
   ///
   /// In en, this message translates to:
-  /// **'Calibration and methods'**
+  /// **'Calibration'**
   String get labHeroTitle;
+
+  /// No description provided for @classroomLectureAuto.
+  ///
+  /// In en, this message translates to:
+  /// **'Automatic slides'**
+  String get classroomLectureAuto;
+
+  /// No description provided for @labSectionsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Sections and atlases'**
+  String get labSectionsTitle;
+
+  /// No description provided for @labToolsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Work tools'**
+  String get labToolsTitle;
 
   /// No description provided for @labHeroBody.
   ///
@@ -1495,7 +1495,7 @@ abstract class AppLocalizations {
   /// No description provided for @labCalculatorsSub.
   ///
   /// In en, this message translates to:
-  /// **'Dilution and units'**
+  /// **'eGFR, ACR, dilution and more'**
   String get labCalculatorsSub;
 
   /// No description provided for @labInstruments.
@@ -2215,7 +2215,7 @@ abstract class AppLocalizations {
   /// No description provided for @preTitle.
   ///
   /// In en, this message translates to:
-  /// **'Specimen journey'**
+  /// **'Preanalytics'**
   String get preTitle;
 
   /// No description provided for @preStep1.

@@ -500,9 +500,6 @@ class AppLocalizationsUz extends AppLocalizations {
   String get featureCalculators => 'Kalkulyatorlar';
 
   @override
-  String get featureSampleFactors => 'Namuna omillari';
-
-  @override
   String get featureSaved => 'Saqlanganlar';
 
   @override
@@ -512,13 +509,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get featureQc => 'Sifat nazorati (QC)';
 
   @override
-  String get featureSampling => 'Namuna olish';
-
-  @override
   String get featureTopics => 'Mavzular';
-
-  @override
-  String get featureQuiz => 'Test';
 
   @override
   String get featureMicroscopy => 'Mikroskopiya';
@@ -756,7 +747,16 @@ class AppLocalizationsUz extends AppLocalizations {
   String get labHeroEyebrow => 'Apparat → reagent → usul';
 
   @override
-  String get labHeroTitle => 'Kalibrlash va metodika';
+  String get labHeroTitle => 'Kalibrlash';
+
+  @override
+  String get classroomLectureAuto => 'Avtomatik slaydlar';
+
+  @override
+  String get labSectionsTitle => 'Bo‘limlar va atlaslar';
+
+  @override
+  String get labToolsTitle => 'Ish vositalari';
 
   @override
   String get labHeroBody => 'Aniq modelga mos yo‘riqnoma va nazorat.';
@@ -774,7 +774,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get labPreanalyticsSub => 'Namunani olish, saqlash va tashish';
 
   @override
-  String get labCalculatorsSub => 'Suyultirish va birliklar';
+  String get labCalculatorsSub => 'eGFR, ACR, suyultirish va boshqalar';
 
   @override
   String get labInstruments => 'Apparatlar va metodikalar';
@@ -1198,7 +1198,7 @@ class AppLocalizationsUz extends AppLocalizations {
       'Avval saqlangan matnni nusxalab oling. O‘chirilgandan keyin uni qaytarib bo‘lmaydi.';
 
   @override
-  String get preTitle => 'Namuna yo‘li';
+  String get preTitle => 'Preanalitika';
 
   @override
   String get preStep1 => 'Tahlilga tayyorlash';
