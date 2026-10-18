@@ -119,7 +119,19 @@
       "count": 0,
       "ids": [],
       "pack_quiz_ids": [],
-      "pack_quiz_count": 0
+      "pack_quiz_count": 0,
+      "derived_quiz_ids": [
+       "drv-d002-01",
+       "drv-d002-02",
+       "drv-d002-03",
+       "drv-d002-04",
+       "drv-d002-05",
+       "drv-d002-06",
+       "drv-d002-07",
+       "drv-d002-08",
+       "drv-d002-09",
+       "drv-d002-10"
+      ]
      },
      "test_gap": true,
      "oral_gap": true,
@@ -152,7 +164,19 @@
       "count": 0,
       "ids": [],
       "pack_quiz_ids": [],
-      "pack_quiz_count": 0
+      "pack_quiz_count": 0,
+      "derived_quiz_ids": [
+       "drv-d002-01",
+       "drv-d002-02",
+       "drv-d002-03",
+       "drv-d002-04",
+       "drv-d002-05",
+       "drv-d002-06",
+       "drv-d002-07",
+       "drv-d002-08",
+       "drv-d002-09",
+       "drv-d002-10"
+      ]
      },
      "test_gap": true,
      "oral_gap": true,
@@ -221,7 +245,13 @@
        "kdl-t-361"
       ],
       "pack_quiz_ids": [],
-      "pack_quiz_count": 0
+      "pack_quiz_count": 0,
+      "derived_quiz_ids": [
+       "drv-d002-07",
+       "drv-d002-08",
+       "drv-d002-09",
+       "drv-d002-10"
+      ]
      },
      "test_gap": false,
      "oral_gap": false,
@@ -290,7 +320,13 @@
        "kdl-t-361"
       ],
       "pack_quiz_ids": [],
-      "pack_quiz_count": 0
+      "pack_quiz_count": 0,
+      "derived_quiz_ids": [
+       "drv-d002-07",
+       "drv-d002-08",
+       "drv-d002-09",
+       "drv-d002-10"
+      ]
      },
      "test_gap": false,
      "oral_gap": false,
@@ -364,7 +400,11 @@
        "kdl-t-361"
       ],
       "pack_quiz_ids": [],
-      "pack_quiz_count": 0
+      "pack_quiz_count": 0,
+      "derived_quiz_ids": [
+       "drv-d002-07",
+       "drv-d002-08"
+      ]
      },
      "test_gap": false,
      "oral_gap": false,
@@ -412,7 +452,22 @@
       "count": 0,
       "ids": [],
       "pack_quiz_ids": [],
-      "pack_quiz_count": 0
+      "pack_quiz_count": 0,
+      "derived_quiz_ids": [
+       "drv-d005-01",
+       "drv-d005-02",
+       "drv-d005-03",
+       "drv-d005-04",
+       "drv-d005-05",
+       "drv-d005-06",
+       "drv-d005-07",
+       "drv-d005-08",
+       "drv-d005-09",
+       "drv-d005-10",
+       "drv-d005-11",
+       "drv-d005-12",
+       "drv-d006-02"
+      ]
      },
      "test_gap": true,
      "oral_gap": true,
@@ -443,7 +498,22 @@
       "count": 0,
       "ids": [],
       "pack_quiz_ids": [],
-      "pack_quiz_count": 0
+      "pack_quiz_count": 0,
+      "derived_quiz_ids": [
+       "drv-d005-01",
+       "drv-d005-02",
+       "drv-d005-03",
+       "drv-d005-04",
+       "drv-d005-05",
+       "drv-d005-06",
+       "drv-d005-07",
+       "drv-d005-08",
+       "drv-d005-09",
+       "drv-d005-10",
+       "drv-d005-11",
+       "drv-d005-12",
+       "drv-d006-02"
+      ]
      },
      "test_gap": true,
      "oral_gap": true,
@@ -474,7 +544,19 @@
       "count": 0,
       "ids": [],
       "pack_quiz_ids": [],
-      "pack_quiz_count": 0
+      "pack_quiz_count": 0,
+      "derived_quiz_ids": [
+       "drv-d006-01",
+       "drv-d006-02",
+       "drv-d006-03",
+       "drv-d006-04",
+       "drv-d006-05",
+       "drv-d006-06",
+       "drv-d006-07",
+       "drv-d006-08",
+       "drv-d006-09",
+       "drv-d006-10"
+      ]
      },
      "test_gap": true,
      "oral_gap": true,
@@ -505,7 +587,19 @@
       "count": 0,
       "ids": [],
       "pack_quiz_ids": [],
-      "pack_quiz_count": 0
+      "pack_quiz_count": 0,
+      "derived_quiz_ids": [
+       "drv-d006-01",
+       "drv-d006-02",
+       "drv-d006-03",
+       "drv-d006-04",
+       "drv-d006-05",
+       "drv-d006-06",
+       "drv-d006-07",
+       "drv-d006-08",
+       "drv-d006-09",
+       "drv-d006-10"
+      ]
      },
      "test_gap": true,
      "oral_gap": true,
@@ -803,7 +897,17 @@
        "urine-microscopy-q1",
        "urine-microscopy-q2"
       ],
-      "pack_quiz_count": 14
+      "pack_quiz_count": 14,
+      "derived_quiz_ids": [
+       "drv-d057-04",
+       "drv-d072-01",
+       "drv-d072-04",
+       "drv-d072-05",
+       "drv-d087-01",
+       "drv-d087-02",
+       "drv-d087-03",
+       "drv-d087-04"
+      ]
      },
      "test_gap": false,
      "oral_gap": false,
@@ -895,7 +999,17 @@
        "urine-microscopy-q1",
        "urine-microscopy-q2"
       ],
-      "pack_quiz_count": 14
+      "pack_quiz_count": 14,
+      "derived_quiz_ids": [
+       "drv-d057-04",
+       "drv-d072-01",
+       "drv-d072-04",
+       "drv-d072-05",
+       "drv-d087-01",
+       "drv-d087-02",
+       "drv-d087-03",
+       "drv-d087-04"
+      ]
      },
      "test_gap": false,
      "oral_gap": false,
@@ -959,7 +1073,10 @@
        "kdl-t-427"
       ],
       "pack_quiz_ids": [],
-      "pack_quiz_count": 0
+      "pack_quiz_count": 0,
+      "derived_quiz_ids": [
+       "drv-d006-01"
+      ]
      },
      "test_gap": false,
      "oral_gap": false,
@@ -1020,7 +1137,18 @@
        "reticulocytes-q2",
        "books-irf"
       ],
-      "pack_quiz_count": 3
+      "pack_quiz_count": 3,
+      "derived_quiz_ids": [
+       "drv-d010-01",
+       "drv-d010-02",
+       "drv-d010-03",
+       "drv-d010-04",
+       "drv-d010-05",
+       "drv-d010-06",
+       "drv-d010-07",
+       "drv-d010-08",
+       "drv-d010-09"
+      ]
      },
      "test_gap": false,
      "oral_gap": false,
@@ -1064,7 +1192,18 @@
        "reticulocytes-q2",
        "books-irf"
       ],
-      "pack_quiz_count": 3
+      "pack_quiz_count": 3,
+      "derived_quiz_ids": [
+       "drv-d010-01",
+       "drv-d010-02",
+       "drv-d010-03",
+       "drv-d010-04",
+       "drv-d010-05",
+       "drv-d010-06",
+       "drv-d010-07",
+       "drv-d010-08",
+       "drv-d010-09"
+      ]
      },
      "test_gap": false,
      "oral_gap": false,
@@ -1281,7 +1420,14 @@
        "basophils-q2",
        "blood-smear-q1"
       ],
-      "pack_quiz_count": 13
+      "pack_quiz_count": 13,
+      "derived_quiz_ids": [
+       "drv-d021-05",
+       "drv-d021-06",
+       "drv-d021-07",
+       "drv-d021-08",
+       "drv-d076-09"
+      ]
      },
      "test_gap": false,
      "oral_gap": false,
@@ -1358,7 +1504,14 @@
        "basophils-q2",
        "blood-smear-q1"
       ],
-      "pack_quiz_count": 13
+      "pack_quiz_count": 13,
+      "derived_quiz_ids": [
+       "drv-d021-05",
+       "drv-d021-06",
+       "drv-d021-07",
+       "drv-d021-08",
+       "drv-d076-09"
+      ]
      },
      "test_gap": false,
      "oral_gap": false,
@@ -1726,7 +1879,11 @@
        "mcv-q2",
        "books-anemia-mcv"
       ],
-      "pack_quiz_count": 5
+      "pack_quiz_count": 5,
+      "derived_quiz_ids": [
+       "drv-d010-07",
+       "drv-d010-08"
+      ]
      },
      "test_gap": false,
      "oral_gap": false,
@@ -1786,7 +1943,11 @@
        "mcv-q2",
        "books-anemia-mcv"
       ],
-      "pack_quiz_count": 5
+      "pack_quiz_count": 5,
+      "derived_quiz_ids": [
+       "drv-d010-07",
+       "drv-d010-08"
+      ]
      },
      "test_gap": false,
      "oral_gap": false,
@@ -2190,7 +2351,12 @@
        "kdl-t-454"
       ],
       "pack_quiz_ids": [],
-      "pack_quiz_count": 0
+      "pack_quiz_count": 0,
+      "derived_quiz_ids": [
+       "drv-d020-07",
+       "drv-d020-08",
+       "drv-d020-09"
+      ]
      },
      "test_gap": false,
      "oral_gap": false,
@@ -2242,7 +2408,12 @@
        "kdl-t-454"
       ],
       "pack_quiz_ids": [],
-      "pack_quiz_count": 0
+      "pack_quiz_count": 0,
+      "derived_quiz_ids": [
+       "drv-d020-07",
+       "drv-d020-08",
+       "drv-d020-09"
+      ]
      },
      "test_gap": false,
      "oral_gap": false,
@@ -2277,7 +2448,18 @@
        "kdl-t-174"
       ],
       "pack_quiz_ids": [],
-      "pack_quiz_count": 0
+      "pack_quiz_count": 0,
+      "derived_quiz_ids": [
+       "drv-d020-01",
+       "drv-d020-02",
+       "drv-d020-03",
+       "drv-d020-04",
+       "drv-d020-05",
+       "drv-d020-06",
+       "drv-d020-07",
+       "drv-d020-08",
+       "drv-d020-09"
+      ]
      },
      "test_gap": true,
      "oral_gap": false,
@@ -2312,7 +2494,18 @@
        "kdl-t-174"
       ],
       "pack_quiz_ids": [],
-      "pack_quiz_count": 0
+      "pack_quiz_count": 0,
+      "derived_quiz_ids": [
+       "drv-d020-01",
+       "drv-d020-02",
+       "drv-d020-03",
+       "drv-d020-04",
+       "drv-d020-05",
+       "drv-d020-06",
+       "drv-d020-07",
+       "drv-d020-08",
+       "drv-d020-09"
+      ]
      },
      "test_gap": true,
      "oral_gap": false,
@@ -2352,7 +2545,18 @@
        "lymphocytes-q1",
        "lymphocytes-q2"
       ],
-      "pack_quiz_count": 2
+      "pack_quiz_count": 2,
+      "derived_quiz_ids": [
+       "drv-d021-01",
+       "drv-d021-02",
+       "drv-d021-03",
+       "drv-d021-04",
+       "drv-d021-05",
+       "drv-d021-06",
+       "drv-d021-07",
+       "drv-d021-08",
+       "drv-d076-09"
+      ]
      },
      "test_gap": false,
      "oral_gap": false,
@@ -2392,7 +2596,18 @@
        "lymphocytes-q1",
        "lymphocytes-q2"
       ],
-      "pack_quiz_count": 2
+      "pack_quiz_count": 2,
+      "derived_quiz_ids": [
+       "drv-d021-01",
+       "drv-d021-02",
+       "drv-d021-03",
+       "drv-d021-04",
+       "drv-d021-05",
+       "drv-d021-06",
+       "drv-d021-07",
+       "drv-d021-08",
+       "drv-d076-09"
+      ]
      },
      "test_gap": false,
      "oral_gap": false,
@@ -2437,7 +2652,13 @@
        "total-protein-q1",
        "total-protein-q2"
       ],
-      "pack_quiz_count": 4
+      "pack_quiz_count": 4,
+      "derived_quiz_ids": [
+       "drv-d022-01",
+       "drv-d022-02",
+       "drv-d022-03",
+       "drv-d022-04"
+      ]
      },
      "test_gap": false,
      "oral_gap": false,
@@ -2482,7 +2703,13 @@
        "total-protein-q1",
        "total-protein-q2"
       ],
-      "pack_quiz_count": 4
+      "pack_quiz_count": 4,
+      "derived_quiz_ids": [
+       "drv-d022-01",
+       "drv-d022-02",
+       "drv-d022-03",
+       "drv-d022-04"
+      ]
      },
      "test_gap": false,
      "oral_gap": false,
@@ -2614,7 +2841,18 @@
       "pack_quiz_ids": [
        "h-pylori-tests-q1"
       ],
-      "pack_quiz_count": 1
+      "pack_quiz_count": 1,
+      "derived_quiz_ids": [
+       "drv-d024-01",
+       "drv-d024-02",
+       "drv-d024-03",
+       "drv-d024-04",
+       "drv-d024-05",
+       "drv-d024-06",
+       "drv-d024-07",
+       "drv-d024-08",
+       "drv-d024-10"
+      ]
      },
      "test_gap": true,
      "oral_gap": false,
@@ -2651,7 +2889,18 @@
       "pack_quiz_ids": [
        "h-pylori-tests-q1"
       ],
-      "pack_quiz_count": 1
+      "pack_quiz_count": 1,
+      "derived_quiz_ids": [
+       "drv-d024-01",
+       "drv-d024-02",
+       "drv-d024-03",
+       "drv-d024-04",
+       "drv-d024-05",
+       "drv-d024-06",
+       "drv-d024-07",
+       "drv-d024-08",
+       "drv-d024-10"
+      ]
      },
      "test_gap": true,
      "oral_gap": false,
@@ -2706,7 +2955,19 @@
        "fecal-occult-blood-q1",
        "h-pylori-tests-q1"
       ],
-      "pack_quiz_count": 3
+      "pack_quiz_count": 3,
+      "derived_quiz_ids": [
+       "drv-d024-01",
+       "drv-d024-06",
+       "drv-d024-10",
+       "drv-d080-01",
+       "drv-d080-02",
+       "drv-d080-03",
+       "drv-d080-04",
+       "drv-d080-05",
+       "drv-d080-06",
+       "drv-d080-07"
+      ]
      },
      "test_gap": false,
      "oral_gap": false,
@@ -2761,7 +3022,19 @@
        "fecal-occult-blood-q1",
        "h-pylori-tests-q1"
       ],
-      "pack_quiz_count": 3
+      "pack_quiz_count": 3,
+      "derived_quiz_ids": [
+       "drv-d024-01",
+       "drv-d024-06",
+       "drv-d024-10",
+       "drv-d080-01",
+       "drv-d080-02",
+       "drv-d080-03",
+       "drv-d080-04",
+       "drv-d080-05",
+       "drv-d080-06",
+       "drv-d080-07"
+      ]
      },
      "test_gap": false,
      "oral_gap": false,
@@ -2814,7 +3087,16 @@
        "stool-ova-parasites-q1",
        "fecal-occult-blood-q1"
       ],
-      "pack_quiz_count": 2
+      "pack_quiz_count": 2,
+      "derived_quiz_ids": [
+       "drv-d080-01",
+       "drv-d080-02",
+       "drv-d080-03",
+       "drv-d080-04",
+       "drv-d080-05",
+       "drv-d080-06",
+       "drv-d080-07"
+      ]
      },
      "test_gap": false,
      "oral_gap": false,
@@ -2882,7 +3164,13 @@
        "urine-24h-q1",
        "urine-culture-q1"
       ],
-      "pack_quiz_count": 8
+      "pack_quiz_count": 8,
+      "derived_quiz_ids": [
+       "drv-d087-01",
+       "drv-d087-02",
+       "drv-d087-03",
+       "drv-d087-04"
+      ]
      },
      "test_gap": false,
      "oral_gap": false,
@@ -2950,7 +3238,13 @@
        "urine-24h-q1",
        "urine-culture-q1"
       ],
-      "pack_quiz_count": 8
+      "pack_quiz_count": 8,
+      "derived_quiz_ids": [
+       "drv-d087-01",
+       "drv-d087-02",
+       "drv-d087-03",
+       "drv-d087-04"
+      ]
      },
      "test_gap": false,
      "oral_gap": false,
@@ -3018,7 +3312,13 @@
        "urine-24h-q1",
        "urine-culture-q1"
       ],
-      "pack_quiz_count": 8
+      "pack_quiz_count": 8,
+      "derived_quiz_ids": [
+       "drv-d087-01",
+       "drv-d087-02",
+       "drv-d087-03",
+       "drv-d087-04"
+      ]
      },
      "test_gap": false,
      "oral_gap": false,
@@ -3069,7 +3369,15 @@
        "sputum-afb-q1",
        "sputum-afb-q2"
       ],
-      "pack_quiz_count": 2
+      "pack_quiz_count": 2,
+      "derived_quiz_ids": [
+       "drv-d029-01",
+       "drv-d029-02",
+       "drv-d029-03",
+       "drv-d029-04",
+       "drv-d029-05",
+       "drv-d029-06"
+      ]
      },
      "test_gap": false,
      "oral_gap": false,
@@ -3120,7 +3428,15 @@
        "sputum-afb-q1",
        "sputum-afb-q2"
       ],
-      "pack_quiz_count": 2
+      "pack_quiz_count": 2,
+      "derived_quiz_ids": [
+       "drv-d029-01",
+       "drv-d029-02",
+       "drv-d029-03",
+       "drv-d029-04",
+       "drv-d029-05",
+       "drv-d029-06"
+      ]
      },
      "test_gap": false,
      "oral_gap": false,
@@ -3172,7 +3488,15 @@
        "sputum-afb-q1",
        "sputum-afb-q2"
       ],
-      "pack_quiz_count": 2
+      "pack_quiz_count": 2,
+      "derived_quiz_ids": [
+       "drv-d029-01",
+       "drv-d029-02",
+       "drv-d029-03",
+       "drv-d029-04",
+       "drv-d029-05",
+       "drv-d029-06"
+      ]
      },
      "test_gap": false,
      "oral_gap": false,
@@ -3224,7 +3548,15 @@
        "sputum-afb-q1",
        "sputum-afb-q2"
       ],
-      "pack_quiz_count": 2
+      "pack_quiz_count": 2,
+      "derived_quiz_ids": [
+       "drv-d029-01",
+       "drv-d029-02",
+       "drv-d029-03",
+       "drv-d029-04",
+       "drv-d029-05",
+       "drv-d029-06"
+      ]
      },
      "test_gap": false,
      "oral_gap": false,
@@ -3276,7 +3608,15 @@
        "sputum-afb-q1",
        "sputum-afb-q2"
       ],
-      "pack_quiz_count": 2
+      "pack_quiz_count": 2,
+      "derived_quiz_ids": [
+       "drv-d029-01",
+       "drv-d029-02",
+       "drv-d029-03",
+       "drv-d029-04",
+       "drv-d029-05",
+       "drv-d029-06"
+      ]
      },
      "test_gap": false,
      "oral_gap": false,
@@ -3319,7 +3659,19 @@
       "pack_quiz_ids": [
        "pleural-fluid-analysis-q1"
       ],
-      "pack_quiz_count": 1
+      "pack_quiz_count": 1,
+      "derived_quiz_ids": [
+       "drv-d032-01",
+       "drv-d032-02",
+       "drv-d032-03",
+       "drv-d032-04",
+       "drv-d032-05",
+       "drv-d032-06",
+       "drv-d032-07",
+       "drv-d032-08",
+       "drv-d032-09",
+       "drv-d032-10"
+      ]
      },
      "test_gap": true,
      "oral_gap": false,
@@ -3362,7 +3714,19 @@
       "pack_quiz_ids": [
        "pleural-fluid-analysis-q1"
       ],
-      "pack_quiz_count": 1
+      "pack_quiz_count": 1,
+      "derived_quiz_ids": [
+       "drv-d032-01",
+       "drv-d032-02",
+       "drv-d032-03",
+       "drv-d032-04",
+       "drv-d032-05",
+       "drv-d032-06",
+       "drv-d032-07",
+       "drv-d032-08",
+       "drv-d032-09",
+       "drv-d032-10"
+      ]
      },
      "test_gap": true,
      "oral_gap": false,
@@ -3401,7 +3765,19 @@
       "pack_quiz_ids": [
        "csf-analysis-q1"
       ],
-      "pack_quiz_count": 1
+      "pack_quiz_count": 1,
+      "derived_quiz_ids": [
+       "drv-d033-01",
+       "drv-d033-02",
+       "drv-d033-03",
+       "drv-d033-04",
+       "drv-d033-05",
+       "drv-d033-06",
+       "drv-d033-07",
+       "drv-d033-08",
+       "drv-d033-09",
+       "drv-d033-10"
+      ]
      },
      "test_gap": true,
      "oral_gap": false,
@@ -3440,7 +3816,19 @@
       "pack_quiz_ids": [
        "csf-analysis-q1"
       ],
-      "pack_quiz_count": 1
+      "pack_quiz_count": 1,
+      "derived_quiz_ids": [
+       "drv-d033-01",
+       "drv-d033-02",
+       "drv-d033-03",
+       "drv-d033-04",
+       "drv-d033-05",
+       "drv-d033-06",
+       "drv-d033-07",
+       "drv-d033-08",
+       "drv-d033-09",
+       "drv-d033-10"
+      ]
      },
      "test_gap": true,
      "oral_gap": false,
@@ -3510,7 +3898,13 @@
        "urine-chemistry-q1",
        "urine-chemistry-q2"
       ],
-      "pack_quiz_count": 2
+      "pack_quiz_count": 2,
+      "derived_quiz_ids": [
+       "drv-d087-01",
+       "drv-d087-02",
+       "drv-d087-03",
+       "drv-d087-04"
+      ]
      },
      "test_gap": false,
      "oral_gap": false,
@@ -3587,7 +3981,13 @@
        "vaginal-wet-mount-q1",
        "vaginal-wet-mount-q2"
       ],
-      "pack_quiz_count": 4
+      "pack_quiz_count": 4,
+      "derived_quiz_ids": [
+       "drv-d077-04",
+       "drv-d077-05",
+       "drv-d077-06",
+       "drv-d077-07"
+      ]
      },
      "test_gap": false,
      "oral_gap": false,
@@ -3771,7 +4171,10 @@
        "pap-test-q1",
        "pap-test-q2"
       ],
-      "pack_quiz_count": 2
+      "pack_quiz_count": 2,
+      "derived_quiz_ids": [
+       "drv-d077-07"
+      ]
      },
      "test_gap": false,
      "oral_gap": false,
@@ -3813,7 +4216,15 @@
        "sputum-afb-q1",
        "sputum-afb-q2"
       ],
-      "pack_quiz_count": 2
+      "pack_quiz_count": 2,
+      "derived_quiz_ids": [
+       "drv-d029-03",
+       "drv-d029-04",
+       "drv-d029-05",
+       "drv-d029-06",
+       "drv-d038-04",
+       "drv-d038-06"
+      ]
      },
      "test_gap": false,
      "oral_gap": false,
@@ -3888,7 +4299,10 @@
        "pap-test-q1",
        "pap-test-q2"
       ],
-      "pack_quiz_count": 2
+      "pack_quiz_count": 2,
+      "derived_quiz_ids": [
+       "drv-d077-07"
+      ]
      },
      "test_gap": false,
      "oral_gap": false,
@@ -3943,7 +4357,21 @@
        "kdl-t-400"
       ],
       "pack_quiz_ids": [],
-      "pack_quiz_count": 0
+      "pack_quiz_count": 0,
+      "derived_quiz_ids": [
+       "drv-d040-01",
+       "drv-d040-02",
+       "drv-d040-03",
+       "drv-d040-04",
+       "drv-d040-05",
+       "drv-d040-06",
+       "drv-d040-07",
+       "drv-d040-08",
+       "drv-d040-09",
+       "drv-d040-10",
+       "drv-d040-11",
+       "drv-d086-03"
+      ]
      },
      "test_gap": true,
      "oral_gap": false,
@@ -3982,7 +4410,21 @@
       "count": 0,
       "ids": [],
       "pack_quiz_ids": [],
-      "pack_quiz_count": 0
+      "pack_quiz_count": 0,
+      "derived_quiz_ids": [
+       "drv-d041-01",
+       "drv-d041-02",
+       "drv-d041-03",
+       "drv-d041-04",
+       "drv-d041-05",
+       "drv-d041-06",
+       "drv-d041-07",
+       "drv-d041-08",
+       "drv-d041-09",
+       "drv-d041-10",
+       "drv-d041-11",
+       "drv-d086-04"
+      ]
      },
      "test_gap": true,
      "oral_gap": false,
@@ -4481,7 +4923,13 @@
        "insulin-q2",
        "c-peptide-q1"
       ],
-      "pack_quiz_count": 9
+      "pack_quiz_count": 9,
+      "derived_quiz_ids": [
+       "drv-d060-01",
+       "drv-d060-02",
+       "drv-d060-03",
+       "drv-d060-04"
+      ]
      },
      "test_gap": false,
      "oral_gap": false,
@@ -4732,7 +5180,13 @@
        "phosphate-q1",
        "phosphate-q2"
       ],
-      "pack_quiz_count": 12
+      "pack_quiz_count": 12,
+      "derived_quiz_ids": [
+       "drv-d063-05",
+       "drv-d063-06",
+       "drv-d063-07",
+       "drv-d063-08"
+      ]
      },
      "test_gap": false,
      "oral_gap": false,
@@ -4803,7 +5257,13 @@
        "phosphate-q1",
        "phosphate-q2"
       ],
-      "pack_quiz_count": 12
+      "pack_quiz_count": 12,
+      "derived_quiz_ids": [
+       "drv-d063-05",
+       "drv-d063-06",
+       "drv-d063-07",
+       "drv-d063-08"
+      ]
      },
      "test_gap": false,
      "oral_gap": false,
@@ -5448,7 +5908,19 @@
        "uric-acid-q1",
        "uric-acid-q2"
       ],
-      "pack_quiz_count": 8
+      "pack_quiz_count": 8,
+      "derived_quiz_ids": [
+       "drv-d056-01",
+       "drv-d056-02",
+       "drv-d056-04",
+       "drv-d057-01",
+       "drv-d057-02",
+       "drv-d057-03",
+       "drv-d057-04",
+       "drv-d072-01",
+       "drv-d072-04",
+       "drv-d072-05"
+      ]
      },
      "test_gap": false,
      "oral_gap": false,
@@ -5512,7 +5984,19 @@
        "uric-acid-q1",
        "uric-acid-q2"
       ],
-      "pack_quiz_count": 8
+      "pack_quiz_count": 8,
+      "derived_quiz_ids": [
+       "drv-d056-01",
+       "drv-d056-02",
+       "drv-d056-04",
+       "drv-d057-01",
+       "drv-d057-02",
+       "drv-d057-03",
+       "drv-d057-04",
+       "drv-d072-01",
+       "drv-d072-04",
+       "drv-d072-05"
+      ]
      },
      "test_gap": false,
      "oral_gap": false,
@@ -5560,7 +6044,13 @@
        "urea-q1",
        "urea-q2"
       ],
-      "pack_quiz_count": 2
+      "pack_quiz_count": 2,
+      "derived_quiz_ids": [
+       "drv-d056-01",
+       "drv-d056-02",
+       "drv-d056-03",
+       "drv-d056-04"
+      ]
      },
      "test_gap": false,
      "oral_gap": false,
@@ -5608,7 +6098,13 @@
        "egfr-q1",
        "egfr-q2"
       ],
-      "pack_quiz_count": 4
+      "pack_quiz_count": 4,
+      "derived_quiz_ids": [
+       "drv-d057-01",
+       "drv-d057-02",
+       "drv-d057-03",
+       "drv-d057-04"
+      ]
      },
      "test_gap": false,
      "oral_gap": false,
@@ -5804,7 +6300,10 @@
        "ogtt-q1",
        "ogtt-q2"
       ],
-      "pack_quiz_count": 2
+      "pack_quiz_count": 2,
+      "derived_quiz_ids": [
+       "drv-d060-05"
+      ]
      },
      "test_gap": false,
      "oral_gap": false,
@@ -5854,7 +6353,14 @@
        "fructosamine-q1",
        "fructosamine-q2"
       ],
-      "pack_quiz_count": 4
+      "pack_quiz_count": 4,
+      "derived_quiz_ids": [
+       "drv-d060-01",
+       "drv-d060-02",
+       "drv-d060-03",
+       "drv-d060-04",
+       "drv-d060-05"
+      ]
      },
      "test_gap": false,
      "oral_gap": false,
@@ -6131,7 +6637,17 @@
        "kdl-t-194"
       ],
       "pack_quiz_ids": [],
-      "pack_quiz_count": 0
+      "pack_quiz_count": 0,
+      "derived_quiz_ids": [
+       "drv-d063-01",
+       "drv-d063-02",
+       "drv-d063-03",
+       "drv-d063-04",
+       "drv-d063-05",
+       "drv-d063-06",
+       "drv-d063-07",
+       "drv-d063-08"
+      ]
      },
      "test_gap": false,
      "oral_gap": true,
@@ -6175,7 +6691,17 @@
        "kdl-t-194"
       ],
       "pack_quiz_ids": [],
-      "pack_quiz_count": 0
+      "pack_quiz_count": 0,
+      "derived_quiz_ids": [
+       "drv-d063-01",
+       "drv-d063-02",
+       "drv-d063-03",
+       "drv-d063-04",
+       "drv-d063-05",
+       "drv-d063-06",
+       "drv-d063-07",
+       "drv-d063-08"
+      ]
      },
      "test_gap": false,
      "oral_gap": true,
@@ -6219,7 +6745,18 @@
        "kdl-t-194"
       ],
       "pack_quiz_ids": [],
-      "pack_quiz_count": 0
+      "pack_quiz_count": 0,
+      "derived_quiz_ids": [
+       "drv-d063-05",
+       "drv-d063-06",
+       "drv-d063-07",
+       "drv-d063-08",
+       "drv-d064-01",
+       "drv-d064-02",
+       "drv-d064-03",
+       "drv-d064-04",
+       "drv-d064-05"
+      ]
      },
      "test_gap": false,
      "oral_gap": true,
@@ -6414,7 +6951,11 @@
        "calcium-q1",
        "calcium-q2"
       ],
-      "pack_quiz_count": 6
+      "pack_quiz_count": 6,
+      "derived_quiz_ids": [
+       "drv-d063-07",
+       "drv-d063-08"
+      ]
      },
      "test_gap": false,
      "oral_gap": false,
@@ -6525,7 +7066,10 @@
        "fibrinogen-q1",
        "fibrinogen-q2"
       ],
-      "pack_quiz_count": 5
+      "pack_quiz_count": 5,
+      "derived_quiz_ids": [
+       "drv-d070-09"
+      ]
      },
      "test_gap": false,
      "oral_gap": false,
@@ -6577,7 +7121,10 @@
        "fibrinogen-q1",
        "fibrinogen-q2"
       ],
-      "pack_quiz_count": 5
+      "pack_quiz_count": 5,
+      "derived_quiz_ids": [
+       "drv-d070-09"
+      ]
      },
      "test_gap": false,
      "oral_gap": false,
@@ -6624,7 +7171,18 @@
        "anti-ccp-q1",
        "aso-q1"
       ],
-      "pack_quiz_count": 4
+      "pack_quiz_count": 4,
+      "derived_quiz_ids": [
+       "drv-d070-01",
+       "drv-d070-02",
+       "drv-d070-03",
+       "drv-d070-04",
+       "drv-d070-05",
+       "drv-d070-06",
+       "drv-d070-07",
+       "drv-d070-08",
+       "drv-d070-09"
+      ]
      },
      "test_gap": false,
      "oral_gap": false,
@@ -6731,7 +7289,17 @@
        "uric-acid-q1",
        "uric-acid-q2"
       ],
-      "pack_quiz_count": 2
+      "pack_quiz_count": 2,
+      "derived_quiz_ids": [
+       "drv-d072-01",
+       "drv-d072-02",
+       "drv-d072-03",
+       "drv-d072-04",
+       "drv-d072-05",
+       "drv-d072-06",
+       "drv-d072-07",
+       "drv-d072-08"
+      ]
      },
      "test_gap": true,
      "oral_gap": false,
@@ -7181,7 +7749,20 @@
        "eosinophils-q1",
        "eosinophils-q2"
       ],
-      "pack_quiz_count": 2
+      "pack_quiz_count": 2,
+      "derived_quiz_ids": [
+       "drv-d021-07",
+       "drv-d021-08",
+       "drv-d076-01",
+       "drv-d076-02",
+       "drv-d076-03",
+       "drv-d076-04",
+       "drv-d076-05",
+       "drv-d076-06",
+       "drv-d076-07",
+       "drv-d076-08",
+       "drv-d076-09"
+      ]
      },
      "test_gap": true,
      "oral_gap": false,
@@ -7231,7 +7812,16 @@
        "vaginal-wet-mount-q1",
        "vaginal-wet-mount-q2"
       ],
-      "pack_quiz_count": 3
+      "pack_quiz_count": 3,
+      "derived_quiz_ids": [
+       "drv-d077-01",
+       "drv-d077-02",
+       "drv-d077-03",
+       "drv-d077-04",
+       "drv-d077-05",
+       "drv-d077-06",
+       "drv-d077-07"
+      ]
      },
      "test_gap": false,
      "oral_gap": false,
@@ -7274,7 +7864,18 @@
       "pack_quiz_ids": [
        "blood-smear-q1"
       ],
-      "pack_quiz_count": 1
+      "pack_quiz_count": 1,
+      "derived_quiz_ids": [
+       "drv-d078-01",
+       "drv-d078-02",
+       "drv-d078-03",
+       "drv-d078-04",
+       "drv-d078-05",
+       "drv-d078-06",
+       "drv-d078-07",
+       "drv-d078-08",
+       "drv-d078-09"
+      ]
      },
      "test_gap": true,
      "oral_gap": false,
@@ -7317,7 +7918,18 @@
       "pack_quiz_ids": [
        "blood-smear-q1"
       ],
-      "pack_quiz_count": 1
+      "pack_quiz_count": 1,
+      "derived_quiz_ids": [
+       "drv-d078-01",
+       "drv-d078-02",
+       "drv-d078-03",
+       "drv-d078-04",
+       "drv-d078-05",
+       "drv-d078-06",
+       "drv-d078-07",
+       "drv-d078-08",
+       "drv-d078-09"
+      ]
      },
      "test_gap": true,
      "oral_gap": false,
@@ -7354,7 +7966,23 @@
       "pack_quiz_ids": [
        "hiv-test-q1"
       ],
-      "pack_quiz_count": 1
+      "pack_quiz_count": 1,
+      "derived_quiz_ids": [
+       "drv-d076-01",
+       "drv-d076-02",
+       "drv-d076-03",
+       "drv-d076-04",
+       "drv-d076-05",
+       "drv-d079-01",
+       "drv-d079-02",
+       "drv-d079-03",
+       "drv-d079-04",
+       "drv-d079-05",
+       "drv-d079-06",
+       "drv-d079-07",
+       "drv-d079-08",
+       "drv-d079-09"
+      ]
      },
      "test_gap": true,
      "oral_gap": true,
@@ -7391,7 +8019,23 @@
       "pack_quiz_ids": [
        "hiv-test-q1"
       ],
-      "pack_quiz_count": 1
+      "pack_quiz_count": 1,
+      "derived_quiz_ids": [
+       "drv-d076-01",
+       "drv-d076-02",
+       "drv-d076-03",
+       "drv-d076-04",
+       "drv-d076-05",
+       "drv-d079-01",
+       "drv-d079-02",
+       "drv-d079-03",
+       "drv-d079-04",
+       "drv-d079-05",
+       "drv-d079-06",
+       "drv-d079-07",
+       "drv-d079-08",
+       "drv-d079-09"
+      ]
      },
      "test_gap": true,
      "oral_gap": true,
@@ -7440,7 +8084,19 @@
        "pinworm-test-q1",
        "stool-ova-parasites-q1"
       ],
-      "pack_quiz_count": 2
+      "pack_quiz_count": 2,
+      "derived_quiz_ids": [
+       "drv-d080-01",
+       "drv-d080-02",
+       "drv-d080-03",
+       "drv-d080-04",
+       "drv-d080-05",
+       "drv-d080-06",
+       "drv-d080-07",
+       "drv-d080-08",
+       "drv-d080-09",
+       "drv-d080-10"
+      ]
      },
      "test_gap": false,
      "oral_gap": false,
@@ -7489,7 +8145,19 @@
        "pinworm-test-q1",
        "stool-ova-parasites-q1"
       ],
-      "pack_quiz_count": 2
+      "pack_quiz_count": 2,
+      "derived_quiz_ids": [
+       "drv-d080-01",
+       "drv-d080-02",
+       "drv-d080-03",
+       "drv-d080-04",
+       "drv-d080-05",
+       "drv-d080-06",
+       "drv-d080-07",
+       "drv-d080-08",
+       "drv-d080-09",
+       "drv-d080-10"
+      ]
      },
      "test_gap": false,
      "oral_gap": false,
@@ -7531,7 +8199,17 @@
       "pack_quiz_ids": [
        "stool-ova-parasites-q1"
       ],
-      "pack_quiz_count": 1
+      "pack_quiz_count": 1,
+      "derived_quiz_ids": [
+       "drv-d080-01",
+       "drv-d080-02",
+       "drv-d080-03",
+       "drv-d080-04",
+       "drv-d080-05",
+       "drv-d080-06",
+       "drv-d080-07",
+       "drv-d080-10"
+      ]
      },
      "test_gap": true,
      "oral_gap": false,
@@ -7571,7 +8249,20 @@
       "pack_quiz_ids": [
        "stool-ova-parasites-q1"
       ],
-      "pack_quiz_count": 1
+      "pack_quiz_count": 1,
+      "derived_quiz_ids": [
+       "drv-d080-01",
+       "drv-d080-02",
+       "drv-d080-03",
+       "drv-d080-04",
+       "drv-d080-05",
+       "drv-d080-06",
+       "drv-d080-07",
+       "drv-d082-01",
+       "drv-d082-02",
+       "drv-d082-03",
+       "drv-d082-04"
+      ]
      },
      "test_gap": true,
      "oral_gap": false,
@@ -7609,7 +8300,20 @@
       "count": 0,
       "ids": [],
       "pack_quiz_ids": [],
-      "pack_quiz_count": 0
+      "pack_quiz_count": 0,
+      "derived_quiz_ids": [
+       "drv-d083-01",
+       "drv-d083-02",
+       "drv-d083-03",
+       "drv-d083-04",
+       "drv-d083-05",
+       "drv-d083-06",
+       "drv-d083-07",
+       "drv-d083-08",
+       "drv-d083-09",
+       "drv-d083-10",
+       "drv-d083-11"
+      ]
      },
      "test_gap": true,
      "oral_gap": false,
@@ -7647,7 +8351,20 @@
       "count": 0,
       "ids": [],
       "pack_quiz_ids": [],
-      "pack_quiz_count": 0
+      "pack_quiz_count": 0,
+      "derived_quiz_ids": [
+       "drv-d083-01",
+       "drv-d083-02",
+       "drv-d083-03",
+       "drv-d083-04",
+       "drv-d083-05",
+       "drv-d083-06",
+       "drv-d083-07",
+       "drv-d083-08",
+       "drv-d083-09",
+       "drv-d083-10",
+       "drv-d083-11"
+      ]
      },
      "test_gap": true,
      "oral_gap": false,
@@ -7707,7 +8424,12 @@
        "rdw-q2",
        "books-anemia-mcv"
       ],
-      "pack_quiz_count": 9
+      "pack_quiz_count": 9,
+      "derived_quiz_ids": [
+       "drv-d041-07",
+       "drv-d041-08",
+       "drv-d041-11"
+      ]
      },
      "test_gap": false,
      "oral_gap": false,
@@ -7745,7 +8467,19 @@
       "count": 0,
       "ids": [],
       "pack_quiz_ids": [],
-      "pack_quiz_count": 0
+      "pack_quiz_count": 0,
+      "derived_quiz_ids": [
+       "drv-d041-06",
+       "drv-d041-07",
+       "drv-d041-08",
+       "drv-d041-09",
+       "drv-d041-10",
+       "drv-d041-11",
+       "drv-d085-01",
+       "drv-d085-02",
+       "drv-d085-03",
+       "drv-d085-04"
+      ]
      },
      "test_gap": true,
      "oral_gap": false,
@@ -7784,7 +8518,21 @@
       "count": 0,
       "ids": [],
       "pack_quiz_ids": [],
-      "pack_quiz_count": 0
+      "pack_quiz_count": 0,
+      "derived_quiz_ids": [
+       "drv-d041-01",
+       "drv-d041-02",
+       "drv-d041-06",
+       "drv-d041-07",
+       "drv-d041-08",
+       "drv-d041-09",
+       "drv-d041-10",
+       "drv-d041-11",
+       "drv-d086-01",
+       "drv-d086-02",
+       "drv-d086-03",
+       "drv-d086-04"
+      ]
      },
      "test_gap": true,
      "oral_gap": false,
@@ -7827,7 +8575,19 @@
        "urine-chemistry-q1",
        "urine-chemistry-q2"
       ],
-      "pack_quiz_count": 2
+      "pack_quiz_count": 2,
+      "derived_quiz_ids": [
+       "drv-d041-06",
+       "drv-d041-07",
+       "drv-d041-08",
+       "drv-d041-09",
+       "drv-d041-10",
+       "drv-d041-11",
+       "drv-d087-01",
+       "drv-d087-02",
+       "drv-d087-03",
+       "drv-d087-04"
+      ]
      },
      "test_gap": true,
      "oral_gap": false,
@@ -7878,7 +8638,15 @@
        "fibrinogen-q1",
        "fibrinogen-q2"
       ],
-      "pack_quiz_count": 6
+      "pack_quiz_count": 6,
+      "derived_quiz_ids": [
+       "drv-d041-06",
+       "drv-d041-07",
+       "drv-d041-08",
+       "drv-d041-09",
+       "drv-d041-10",
+       "drv-d041-11"
+      ]
      },
      "test_gap": false,
      "oral_gap": false,
@@ -7935,7 +8703,25 @@
        "hiv-test-q1",
        "syphilis-tests-q1"
       ],
-      "pack_quiz_count": 2
+      "pack_quiz_count": 2,
+      "derived_quiz_ids": [
+       "drv-d076-01",
+       "drv-d076-02",
+       "drv-d076-03",
+       "drv-d076-04",
+       "drv-d076-05",
+       "drv-d077-01",
+       "drv-d077-02",
+       "drv-d077-03",
+       "drv-d079-01",
+       "drv-d079-02",
+       "drv-d079-04",
+       "drv-d079-05",
+       "drv-d079-06",
+       "drv-d079-07",
+       "drv-d079-08",
+       "drv-d079-09"
+      ]
      },
      "test_gap": false,
      "oral_gap": false,
@@ -8180,7 +8966,14 @@
        "basophils-q1",
        "basophils-q2"
       ],
-      "pack_quiz_count": 10
+      "pack_quiz_count": 10,
+      "derived_quiz_ids": [
+       "drv-d021-05",
+       "drv-d021-06",
+       "drv-d021-07",
+       "drv-d021-08",
+       "drv-d076-09"
+      ]
      },
      "test_gap": false,
      "oral_gap": false,
@@ -8340,7 +9133,13 @@
        "urine-microscopy-q1",
        "urine-microscopy-q2"
       ],
-      "pack_quiz_count": 4
+      "pack_quiz_count": 4,
+      "derived_quiz_ids": [
+       "drv-d087-01",
+       "drv-d087-02",
+       "drv-d087-03",
+       "drv-d087-04"
+      ]
      },
      "test_gap": false,
      "oral_gap": false,
@@ -8474,7 +9273,15 @@
        "sputum-afb-q1",
        "sputum-afb-q2"
       ],
-      "pack_quiz_count": 2
+      "pack_quiz_count": 2,
+      "derived_quiz_ids": [
+       "drv-d029-01",
+       "drv-d029-02",
+       "drv-d029-03",
+       "drv-d029-04",
+       "drv-d029-05",
+       "drv-d029-06"
+      ]
      },
      "test_gap": false,
      "oral_gap": false,
@@ -8631,7 +9438,16 @@
        "stool-ova-parasites-q1",
        "fecal-occult-blood-q1"
       ],
-      "pack_quiz_count": 2
+      "pack_quiz_count": 2,
+      "derived_quiz_ids": [
+       "drv-d080-01",
+       "drv-d080-02",
+       "drv-d080-03",
+       "drv-d080-04",
+       "drv-d080-05",
+       "drv-d080-06",
+       "drv-d080-07"
+      ]
      },
      "test_gap": false,
      "oral_gap": false,
@@ -8733,7 +9549,21 @@
       "count": 0,
       "ids": [],
       "pack_quiz_ids": [],
-      "pack_quiz_count": 0
+      "pack_quiz_count": 0,
+      "derived_quiz_ids": [
+       "drv-d041-01",
+       "drv-d041-02",
+       "drv-d041-03",
+       "drv-d041-04",
+       "drv-d041-05",
+       "drv-d041-06",
+       "drv-d041-07",
+       "drv-d041-08",
+       "drv-d041-09",
+       "drv-d041-10",
+       "drv-d041-11",
+       "drv-d086-04"
+      ]
      },
      "test_gap": true,
      "oral_gap": false,
@@ -9019,7 +9849,17 @@
        "crp-q2",
        "aso-q1"
       ],
-      "pack_quiz_count": 3
+      "pack_quiz_count": 3,
+      "derived_quiz_ids": [
+       "drv-d070-01",
+       "drv-d070-02",
+       "drv-d070-03",
+       "drv-d070-04",
+       "drv-d070-05",
+       "drv-d070-06",
+       "drv-d070-07",
+       "drv-d070-09"
+      ]
      },
      "test_gap": false,
      "oral_gap": false,
@@ -9410,7 +10250,11 @@
        "kdl-t-162"
       ],
       "pack_quiz_ids": [],
-      "pack_quiz_count": 0
+      "pack_quiz_count": 0,
+      "derived_quiz_ids": [
+       "drv-d002-07",
+       "drv-d002-08"
+      ]
      },
      "test_gap": false,
      "oral_gap": false,

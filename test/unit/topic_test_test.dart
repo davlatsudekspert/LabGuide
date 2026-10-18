@@ -147,7 +147,10 @@ void main() {
             expect(t.testCandidates, contains(q.id));
           } else {
             expect(q.refs, isNotEmpty, reason: q.id);
-            expect(t.packQuizCandidates, contains(q.id));
+            expect([
+              ...t.packQuizCandidates,
+              ...t.derivedQuizCandidates,
+            ], contains(q.id));
           }
         }
         total += pool.length;

@@ -94,15 +94,17 @@ void main() {
         final s = pack.source(id)!;
         expect(s.kind, 'web', reason: id);
         expect(s.url, startsWith('https://'), reason: id);
-        expect(s.accessed, '2026-10-09', reason: id);
+        // 2026-10-18: NIH ODS (vitamin D o'lchash usullari) qo'shilgan.
+        expect(s.accessed, anyOf('2026-10-09', '2026-10-18'), reason: id);
         expect(s.sourceDate, isNotNull, reason: id);
-        // Faqat ochiq davlat manbalari (MedlinePlus, NIH, FDA).
+        // Faqat ochiq davlat manbalari (MedlinePlus, NIH, NIH ODS, FDA).
         expect(
           Uri.parse(s.url!).host,
           anyOf(
             'medlineplus.gov',
             'www.niddk.nih.gov',
             'www.nichd.nih.gov',
+            'ods.od.nih.gov',
             'www.fda.gov',
           ),
           reason: id,

@@ -220,7 +220,13 @@ void main() {
     test('mavzular: umumiy hisoblar va analit guruhlari', () {
       final pack = _pack();
       final src = PackQuestionSource.of(pack);
-      expect(src.questions.length, pack.quiz.length);
+      // Deck matnidan olingan savollar (provenance `derived`) umumiy hovuzda
+      // emas — faqat mavzu testida id bo'yicha.
+      final practice = pack.quiz.where((q) => !q.isDerived).length;
+      expect(src.questions.length, practice);
+      for (final q in pack.quiz.where((q) => q.isDerived)) {
+        expect(src.question(q.id), isNotNull, reason: q.id);
+      }
       final general = src.topics.firstWhere(
         (t) => t.id == PackQuestionSource.generalTopic,
       );
@@ -237,11 +243,11 @@ void main() {
       // Tanlangan mavzular savollari takrorlanmaydi.
       final pool = examPool(src, {'kidney', 'general'});
       expect(pool.map((q) => q.id).toSet().length, pool.length);
-      expect(examPool(src, const {}).length, pack.quiz.length);
+      expect(examPool(src, const {}).length, practice);
       // Draft holati saqlanadi (hech biri “tasdiqlangan” deb ko'rsatilmaydi).
       expect(
         src.questions.where((q) => q.isDraft).length,
-        pack.quiz.where((q) => q.isDraft).length,
+        pack.quiz.where((q) => q.isDraft && !q.isDerived).length,
       );
     });
   });

@@ -19,7 +19,10 @@ import 'lecture_catalog.dart';
 // * toifa banki — curriculum `test_candidates.ids` dagi, rasmiy kaliti bor
 //   (`scorable`), LabGuide tekshiruvi `ok` va izohi tasdiqlangan savollar;
 // * kontent paketi — `test_candidates.pack_quiz_ids` dagi, manbasi (`refs`)
-//   ko'rsatilgan mashq savollari.
+//   ko'rsatilgan mashq savollari;
+// * deck matnidan olingan savollar — `test_candidates.derived_quiz_ids` dagi
+//   paket savollari (provenance `derived`): har biri deck slaydidagi manbali
+//   gapga bog'langan (`derived_from`) va xuddi shu filtrlardan o'tadi.
 //
 // Variantlari takrorlanadigan savol (biror tilda ikki variant bir xil)
 // testga qo'yilmaydi. Natijalar va boshlangan test faqat qurilmada.
@@ -61,7 +64,7 @@ bool hasUniqueOptions(ExamQuestion q) {
 }
 
 /// Bitta o'quv dasturi mavzusining tekshirilgan savollari (curriculum
-/// tartibida: avval toifa, keyin paket), takrorsiz.
+/// tartibida: avval toifa, keyin paket, keyin deck matnidan olingan), takrorsiz.
 List<ExamQuestion> verifiedTopicQuestions(
   CurriculumTopic topic,
   ContentPack? pack,
@@ -80,7 +83,10 @@ List<ExamQuestion> verifiedTopicQuestions(
   }
   if (pack != null) {
     final source = PackQuestionSource.of(pack);
-    for (final id in topic.packQuizCandidates) {
+    for (final id in [
+      ...topic.packQuizCandidates,
+      ...topic.derivedQuizCandidates,
+    ]) {
       add(source.question(id));
     }
   }

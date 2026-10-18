@@ -309,15 +309,20 @@ class _TopicPicker extends StatelessWidget {
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context);
     final lang = Localizations.localeOf(context).languageCode;
-    final general = [
+    // Deck matnidan olingan savollar faqat mavzu testida (curriculum).
+    final practice = [
       for (final q in pack.quiz)
+        if (!q.isDerived) q,
+    ];
+    final general = [
+      for (final q in practice)
         if (q.topicIds.isEmpty) q,
     ];
     final groups = [
       for (final g in pack.groups) (g, questionsForGroup(pack, g.id)),
     ].where((e) => e.$2.isNotEmpty).toList();
-    final mixedSize = pack.quiz.length < kMixedQuizSize
-        ? pack.quiz.length
+    final mixedSize = practice.length < kMixedQuizSize
+        ? practice.length
         : kMixedQuizSize;
     final progress = context.services.quizProgress;
     String sub(List<QuizQuestion> qs) {
@@ -333,7 +338,7 @@ class _TopicPicker extends StatelessWidget {
     };
     QuizScope mixed() => QuizScope(
       (l, _) => l.quizTopicMixed(mixedSize),
-      (List.of(pack.quiz)..shuffle()).take(mixedSize).toList(),
+      (List.of(practice)..shuffle()).take(mixedSize).toList(),
       redraw: mixed,
     );
     return Column(
@@ -354,7 +359,7 @@ class _TopicPicker extends StatelessWidget {
           ),
         LgRow(
           title: l.quizTopicMixed(mixedSize),
-          subtitle: l.quizQuestionCount(pack.quiz.length),
+          subtitle: l.quizQuestionCount(practice.length),
           icon: Icons.shuffle_rounded,
           onTap: () => onPick(mixed()),
         ),

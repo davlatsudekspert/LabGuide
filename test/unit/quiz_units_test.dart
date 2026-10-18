@@ -43,6 +43,15 @@ const bareAllowed = <String, String>{
   // Koeffitsientning o'zi haqida ("glyukoza ≈ 18,0 mg/dL har 1 mmol/L ga") —
   // laboratoriya natijasi emas.
   'unit-factor': 'conversion factor statement',
+  // Plevra suyuqligidagi oqsil chegarasi (30 g/L) — manba (Kurbonova, 2023)
+  // va deck slaydidagi ko'rinishda; qon analiti natijasi emas.
+  'drv-d032-04': 'effusion protein cut-off quoted as in the source',
+  // Asos ortiqligi (BE ±2,5 mmol/L) — kislota-ishqor ko'rsatkichi, konvensional
+  // birligi yo'q.
+  'drv-d063-02': 'base excess has no conventional-unit equivalent',
+  // JSST usuli: leykotsitlar soni noma'lum bo'lsa 8000/µL deb olinadi —
+  // hisoblash konstantasi.
+  'drv-d078-02': 'WHO parasitaemia formula constant (8000 leukocytes/µL)',
 };
 
 /// Raqam: o'nlik ("7,0", "7.0") yoki minglik guruhli butun son ("15 000",
