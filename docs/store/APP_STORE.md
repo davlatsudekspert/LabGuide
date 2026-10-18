@@ -475,3 +475,20 @@ istalgan statik hosting, taklif: `https://labguide.nfcstore.uz/`) — `site/READ
 Sayt joylanmaguncha zaxira: `https://github.com/davlatsudekspert/LabGuide/blob/main/docs/store/PRIVACY_POLICY.md`
 (ichki izohsiz). Google OAuth “In production” uchun domen (`nfcstore.uz`) Google Search Console’da
 tasdiqlangan bo‘lishi kerak. Ochiq savollar: [PRIVACY_OPEN_QUESTIONS.md](PRIVACY_OPEN_QUESTIONS.md).
+
+## 15. Keyingi reliz (Pro bilan) uchun do'kon qidiruvi rejasi — 2026-10-18
+
+Muammo: App Store Connect'da faqat English (US) sahifa bor (Apple o'zbek tilini do'kon
+tili sifatida qo'llamaydi), ruscha sahifa ochilmagan. Shu sabab "laborant", "КДЛ",
+"лаборант" qidiruvi LabGuide'ni topmasligi mumkin. 1.0 tekshiruvda bo'lgani uchun
+tegilmadi — Pro relizi bilan birga qilinadi:
+
+1. English (US) keywords — o'zbekcha so'zlar qo'shiladi (100 belgigacha, nomdagi
+   so'zlar takrorlanmaydi), masalan:
+   `laborant,tahlil,KDL,toifa,klinik laboratoriya,biokimyo,leykoformula,Westgard,eGFR`
+2. Russian localization ochiladi: nom `LabGuide: КДЛ и биохимия`, subtitle
+   `Клиническая лаборатория`, keywords 5-bo'limdagi ru qatori
+   (`КДЛ,лаборант,анализы,биохимия,...`), ruscha skrinshotlar (docs/store/screenshots/ru).
+3. Google Play: to'liq tavsifda "laborant / лаборант / KDL / КДЛ" so'zlari tabiiy
+   matnda 2–3 martadan.
+4. iPad uchun moslashtirilgan (ikki ustunli) ko'rinish va yangi iPad skrinshotlari.
