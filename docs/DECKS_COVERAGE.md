@@ -181,6 +181,8 @@ M9 modulining amaliy kunlari (`d091`–`d142`) manbalarda bir xil umumiy nomda: 
 
 Qoidalar: matn kitoblardan o‘z so‘zim bilan; har slaydda muallif + qisqa nom + bo‘lim/sahifa; oxirgi slayd — “Adabiyotlar”. Son, hajm, vaqt va konsentratsiya faqat manbada ko‘ringan joyda (sahifasi bilan); manbalar bir-biriga zid bo‘lsa — yangi/ishonchlisi yoki umuman olinmagan; eskirgan/xavfli usullar olinmagan. Faqat mavjud rasmlar (`assets/microscopy`) ishlatilgan (atlasda najas va balg‘am fotolari yo‘q — o‘sha protokollarda rasm slaydi yo‘q). “Qin tozalik darajalari” jadvali yuqoridagi sitologiya mavzu decklarida manbasi yo‘qligi uchun yo‘q; u faqat shu to‘plamdagi urogenital protokolda, Kurbonova (2023, 70-b.) manbasi bilan berilgan.
 
+Kurs kitoblarida usuli yo‘q 19 ta test (kreatinin … D vitamini; `docs/PROTOCOLS_COVERAGE.md`) protokollari ishlab chiqaruvchi o‘z saytida ochiq e’lon qilgan **to‘plam yo‘riqnomasi (IFU)** asosida yozilgan: 18 tasi SPINREACT, D vitamini — Immusmol ELISA IFU si. Har protokol bitta to‘plamga tayanadi va birinchi slaydda «misol sifatida shu IFU; laboratoriya to‘plami IFU si ustun» deb aytadi; har sondagi qiymat IFU sahifasidan (so‘zma-so‘z parchalar — `tool/slides/data/ifu_source_excerpts.json`, tekshiruv — `tool/slides/test_ifu_protocols.py`).
+
 | Texnika (uz) | Guruh | Slayd (uz) | Manbalar |
 |---|---|---|---|
 | Kapillyar qon olish va gematologik tekshiruv uchun namuna tayyorlash | Gematologiya | 9 | 5 |
@@ -210,6 +212,25 @@ Qoidalar: matn kitoblardan o‘z so‘zim bilan; har slaydda muallif + qisqa nom
 | Trombotsitlarni Fonio usulida sanash | Gematologiya · gemostaz | 9 | 3 |
 | Laboratoriya ichidagi sifat nazorati: bosqichlar va nazorat materiali | Laboratoriya tartibi · sifat va xavfsizlik | 10 | 1 |
 | Biologik material bilan xavfsiz ishlash va sanitar-epidemiologik tartib | Laboratoriya tartibi · sifat va xavfsizlik | 10 | 3 |
+| Kreatinin: Yaffe kinetik usuli (ishqoriy pikrat) | Klinik biokimyo · fotometrik usullar | 12 | 2 |
+| Umumiy oqsil: biuret usuli | Klinik biokimyo · fotometrik usullar | 12 | 2 |
+| Albumin: bromkrezol yashili (BCG) usuli | Klinik biokimyo · fotometrik usullar | 12 | 2 |
+| Umumiy xolesterin: CHOD-PAP (CHOD-POD) fermentativ usuli | Klinik biokimyo · fotometrik usullar | 12 | 2 |
+| Triglitseridlar: GPO-PAP (GPO-POD) fermentativ usuli | Klinik biokimyo · fotometrik usullar | 12 | 2 |
+| YZLP xolesterini (HDL-C): to‘g‘ridan-to‘g‘ri fermentativ usul | Klinik biokimyo · fotometrik usullar | 12 | 2 |
+| Aspartataminotransferaza (AST): kinetik UV usuli (IFCC tavsiyasi) | Klinik biokimyo · fotometrik usullar | 12 | 2 |
+| Ishqoriy fosfataza (IF): p-nitrofenilfosfat kinetik usuli (DGKC) | Klinik biokimyo · fotometrik usullar | 12 | 2 |
+| Gamma-glutamiltransferaza (GGT): kinetik usul (karboksi substrat) | Klinik biokimyo · fotometrik usullar | 12 | 2 |
+| α-amilaza: CNPG3 kinetik usuli | Klinik biokimyo · fotometrik usullar | 12 | 2 |
+| Siydik kislotasi: urikaza-PAP (urikaza-POD) usuli | Klinik biokimyo · fotometrik usullar | 12 | 2 |
+| Kalsiy: arsenazo III usuli | Klinik biokimyo · fotometrik usullar | 12 | 2 |
+| Zardob temiri: ferrozin usuli | Klinik biokimyo · fotometrik usullar | 12 | 2 |
+| Noorganik fosfor (fosfat): fosfomolibdat UV usuli | Klinik biokimyo · fotometrik usullar | 12 | 2 |
+| Magniy: ksilidil ko‘ki usuli | Klinik biokimyo · fotometrik usullar | 12 | 2 |
+| C-reaktiv oqsil (CRB): lateks-agglyutinatsiya sinamasi | Klinik immunologiya · lateks-agglyutinatsiya | 11 | 2 |
+| Revmatoid omil (RF): lateks-agglyutinatsiya sinamasi | Klinik immunologiya · lateks-agglyutinatsiya | 11 | 2 |
+| Antistreptolizin O (ASLO): lateks-agglyutinatsiya sinamasi | Klinik immunologiya · lateks-agglyutinatsiya | 11 | 2 |
+| D vitamini (25-OH D umumiy): raqobatli ELISA | Klinik immunologiya · immunoferment tahlil (ELISA) | 13 | 1 |
 
 ### Manbalarda bor, lekin olinmagan
 

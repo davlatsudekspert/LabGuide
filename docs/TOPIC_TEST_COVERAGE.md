@@ -24,13 +24,13 @@ Hujjat `test/unit/topic_test_coverage_test.dart` bilan ilovadagi aynan shu qoida
 | **≥ 10 ta** (to‘liq 10 savollik test) | 186 |
 | `test_gap: true` belgisi | 33 |
 
-Taqdimotlar (170 ta):
+Taqdimotlar (189 ta):
 
 | Holat | Decklar |
 |---|---:|
 | Test tayyor (≥ 3 savol) | 142 |
 | “Savollar tayyorlanmoqda” (< 3) | 1 |
-| Tugma yo‘q — amaliy protokol, mavzuga bog‘lanmagan | 27 |
+| Tugma yo‘q — amaliy protokol, mavzuga bog‘lanmagan | 46 |
 
 Amaliy protokol decklari (`index_v2.json` da `topics: []`) hech qaysi mavzu yoki analitga bog‘lanmagan — ularda test tugmasi ko‘rsatilmaydi. Bog‘lash uchun eksportga (`tool/slides/export_app_decks.py`) mavzu/analit havolasi qo‘shilishi kerak (mutaxassis tanlovi bilan).
 
@@ -469,3 +469,22 @@ Belgi curriculum’da “savollar yetarli emas” degani; bu mavzularda tekshiri
 | trombotsitlarni-sanash-fonio | — | 0 | tugma yo‘q |
 | ichki-sifat-nazorati-laboratoriya | — | 0 | tugma yo‘q |
 | laboratoriya-biologik-xavfsizlik-sanepid | — | 0 | tugma yo‘q |
+| kreatinin-yaffe-kinetik | — | 0 | tugma yo‘q |
+| umumiy-oqsil-biuret | — | 0 | tugma yo‘q |
+| albumin-bromkrezol-yashil | — | 0 | tugma yo‘q |
+| umumiy-xolesterin-chod-pap | — | 0 | tugma yo‘q |
+| triglitseridlar-gpo-pap | — | 0 | tugma yo‘q |
+| yzlp-xolesterin-hdl | — | 0 | tugma yo‘q |
+| ast-kinetik-ifcc | — | 0 | tugma yo‘q |
+| ishqoriy-fosfataza-kinetik | — | 0 | tugma yo‘q |
+| ggt-kinetik | — | 0 | tugma yo‘q |
+| alfa-amilaza-cnpg3 | — | 0 | tugma yo‘q |
+| siydik-kislotasi-urikaza-pap | — | 0 | tugma yo‘q |
+| kalsiy-arsenazo-iii | — | 0 | tugma yo‘q |
+| temir-ferrozin | — | 0 | tugma yo‘q |
+| fosfor-fosfomolibdat-uv | — | 0 | tugma yo‘q |
+| magniy-ksilidil-kok | — | 0 | tugma yo‘q |
+| crb-lateks-agglyutinatsiya | — | 0 | tugma yo‘q |
+| revmatoid-omil-lateks | — | 0 | tugma yo‘q |
+| aslo-lateks | — | 0 | tugma yo‘q |
+| d-vitamini-25oh-elisa | — | 0 | tugma yo‘q |
