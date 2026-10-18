@@ -26,7 +26,10 @@ Shu ro'yxat bo'yicha ketamiz. Bajarilgani `[x]`.
 - [ ] Ma'ruza: tik telefonda slaydni barmoq bilan kattalashtirish (pinch-zoom) — surish bilan to'qnashmasligi kerak
 - [ ] **Har mavzudan keyin test** (mavzu testi): ma'ruza oxirida "Mavzu testi", ustoz guruhga bir bosishda topshiradi, natijalar ko'rinadi, xato qilingan savol → tegishli slaydga havola
 - [ ] 32 ta mavzuda test savollari yo'q (test_gap) — tekshirilgan kontentdan savollar tuzish (AI loyiha + inson tekshiruvi)
-- [ ] Yangi bo'limlar 2-to'lqin: koagulogramma, parazitologiya, koprologiya; 3-to'lqin: IFA, likvor, balg'am
+- [x] Yangi bo'limlar 2-to'lqin: koagulogramma (testlar, namuna/sitrat hisoblagichi, PT/APTT o'qish yordamchisi, ISTH DIC bali, monitoring) va koprologiya + parazitologiya (koprogramma elementlari, yashirin qon, boyitish, 7 parazit sxemasi) (D-61)
+- [ ] Koagulogramma/koprologiya: mutaxassis (domla) tekshiruvi — keyin "qoralama" belgisini olib tashlash; ISTH 2001 asl maqolasi (Taylor va boshq.) bilan DIC jadvalini solishtirish (bu muhitda ochilmadi)
+- [ ] Koprologiya: DPDx yoki boshqa erkin litsenziyali mikrofotolar (har rasm uchun muallif/litsenziya tekshirilsa) — hozir faqat sxema
+- [ ] Yangi bo'limlar 3-to'lqin: IFA, likvor, balg'am
 - [ ] Hamkor reklamasi: serverda hamkorlar ko'chirilmagan (hozir faqat test buildlarda namuna)
 - [x] Moderatsiya: serverda `author.ref` + server bloklari (migratsiya 0011), so'z filtri uz/ru/en (Apple 1.2) (D-62)
 - [x] Admin panel: hisobni email bo'yicha o'chirish (o'zi o'chirgandagi yo'l, jurnal); siyosat — email so'rovi 30 kun ichida (D-63)

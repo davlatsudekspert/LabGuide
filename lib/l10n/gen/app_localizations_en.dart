@@ -8957,6 +8957,20 @@ class AppLocalizationsEn extends AppLocalizations {
       'Collection, strip test, sediment pictures, result reader, practice';
 
   @override
+  String get coagTitle => 'Coagulogram';
+
+  @override
+  String get coagLabCardBody =>
+      'PT/INR, APTT, fibrinogen, D-dimer, sample rules, DIC score';
+
+  @override
+  String get coproTitle => 'Stool analysis and parasites';
+
+  @override
+  String get coproLabCardBody =>
+      'Coprogram, occult blood, egg and cyst key (schematic)';
+
+  @override
   String get admPanelAccess =>
       'Access: the owner email (ADMIN_EMAILS) and an email code. The server re-checks every request.';
 

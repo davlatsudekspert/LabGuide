@@ -93,6 +93,8 @@ flutter:
     - assets/urinalysis/
     - assets/bloodmorph/
     - assets/bloodmorph/img/
+    - assets/coagulogram/
+    - assets/coprology/
     - assets/differential/
     - assets/differential/sounds/
     - assets/microscopy/

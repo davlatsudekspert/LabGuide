@@ -10,6 +10,8 @@ import '../microscopy/microscopy_widgets.dart';
 import '../spermogram/spermogram_screens.dart';
 import '../toifa/toifa_screens.dart' show toifaBase;
 import '../urinalysis/urinalysis_screens.dart';
+import '../coagulogram/coag_screens.dart';
+import '../coprology/copro_screens.dart';
 
 /// Umumiy qidiruvdagi “Bo'limlar” guruhi uchun bitta bo'lim: laboratoriya
 /// bo'limlari va vositalari (leykoformula, sitologiya, QC, kalibrlash, …).
@@ -213,6 +215,85 @@ const kSearchSections = <SearchSection>[
     ],
   ),
   SearchSection(
+    id: 'coagulogram',
+    route: coagBase,
+    icon: Icons.timer_outlined,
+    title: _coag,
+    synonyms: [
+      'koagulogramma',
+      'koagulogram',
+      'gemostaz',
+      'gemostazogramma',
+      'qon ivishi',
+      'ivish tizimi',
+      'protrombin vaqti',
+      'inr',
+      'aptt',
+      'trombin vaqti',
+      'd-dimer',
+      'dic bali',
+      'coagulogram',
+      'coagulation',
+      'haemostasis',
+      'hemostasis',
+      'prothrombin time',
+      'thrombin time',
+      'clotting tests',
+      'коагулограмма',
+      'гемостаз',
+      'гемостазиограмма',
+      'свертываемость',
+      'свёртываемость',
+      'протромбиновое время',
+      'мно',
+      'ачтв',
+      'тромбиновое время',
+      'д-димер',
+      'двс',
+    ],
+  ),
+  SearchSection(
+    id: 'coprology',
+    route: coproBase,
+    icon: Icons.bug_report_outlined,
+    title: _copro,
+    synonyms: [
+      'koprogramma',
+      'koprologiya',
+      'najas',
+      'najas tahlili',
+      'najas tekshiruvi',
+      'gijja',
+      'gijja tuxumlari',
+      'parazitlar',
+      'yashirin qon',
+      'lyamblya',
+      'askarida',
+      'ostritsa',
+      'coprogram',
+      'coprology',
+      'stool analysis',
+      'stool test',
+      'faeces',
+      'feces',
+      'ova and parasites',
+      'intestinal parasites',
+      'occult blood',
+      'giardia',
+      'pinworm',
+      'копрограмма',
+      'копрология',
+      'анализ кала',
+      'кал на яйца глист',
+      'яйца гельминтов',
+      'кишечные паразиты',
+      'скрытая кровь',
+      'лямблии',
+      'аскарида',
+      'острица',
+    ],
+  ),
+  SearchSection(
     id: 'qc',
     route: '/lab/qc',
     icon: Icons.show_chart_rounded,
@@ -403,6 +484,8 @@ String _bloodGroup(AppLocalizations l) => l.bloodGroupTitle;
 String _histo(AppLocalizations l) => l.histoTitle;
 String _urin(AppLocalizations l) => l.urinTitle;
 String _bloodMorph(AppLocalizations l) => l.bloodMorphTitle;
+String _coag(AppLocalizations l) => l.coagTitle;
+String _copro(AppLocalizations l) => l.coproTitle;
 String _qc(AppLocalizations l) => l.featureQc;
 String _preanalytics(AppLocalizations l) => l.labPreanalytics;
 String _calibration(AppLocalizations l) => l.featureCalibration;
