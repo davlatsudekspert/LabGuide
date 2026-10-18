@@ -760,8 +760,16 @@ void main() {
     await expectLater(tester, meetsGuideline(labeledTapTargetGuideline));
   });
 
-  test('palette text contrast meets WCAG AA (≥ 4.5:1) in both themes', () {
-    for (final p in [LgPalette.light, LgPalette.dark]) {
+  // Barcha mavzular (Klassik, Ivory — D-64), kunduzgi va tungi.
+  final palettes = {
+    'classic light': LgPalette.light,
+    'classic dark': LgPalette.dark,
+    'ivory light': LgPalette.ivoryLight,
+    'ivory dark': LgPalette.ivoryDark,
+  };
+
+  test('palette text contrast meets WCAG AA (≥ 4.5:1) in every theme', () {
+    for (final MapEntry(key: theme, value: p) in palettes.entries) {
       final pairs = {
         'ink/bg': (p.ink, p.bg),
         'ink/paper': (p.ink, p.paper),
@@ -776,19 +784,27 @@ void main() {
         'amber/amberBg': (p.amber, p.amberBg),
         'danger/paper': (p.danger, p.paper),
         'danger/amberBg': (p.danger, p.amberBg),
+        // Eyebrow (aksent matn).
+        'accentInk/bg': (p.accentInk, p.bg),
+        'accentInk/paper': (p.accentInk, p.paper),
+        'accentInk/soft': (p.accentInk, p.soft),
+        // Ivory: tanlangan chip/tab va qora tugma.
+        'onBrand/brand (chip)': (p.onBrand, p.brand),
+        // Snackbar.
+        'bg/ink': (p.bg, p.ink),
       };
       for (final MapEntry(key: name, value: (fg, bg)) in pairs.entries) {
         expect(
           contrastRatio(fg, bg),
           greaterThanOrEqualTo(4.5),
-          reason: '$name ${p == LgPalette.light ? 'light' : 'dark'}',
+          reason: '$name $theme',
         );
       }
     }
   });
 
-  test('control boundaries meet WCAG 1.4.11 (≥ 3:1) in both themes', () {
-    for (final p in [LgPalette.light, LgPalette.dark]) {
+  test('control boundaries meet WCAG 1.4.11 (≥ 3:1) in every theme', () {
+    for (final MapEntry(key: theme, value: p) in palettes.entries) {
       for (final MapEntry(key: name, value: bg) in {
         'bg': p.bg,
         'paper': p.paper,
@@ -796,7 +812,7 @@ void main() {
         expect(
           contrastRatio(p.outline, bg),
           greaterThanOrEqualTo(3),
-          reason: 'outline/$name ${p == LgPalette.light ? 'light' : 'dark'}',
+          reason: 'outline/$name $theme',
         );
       }
     }

@@ -5,6 +5,7 @@ import 'package:flutter/rendering.dart' show ScrollDirection;
 import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
+import '../design/themes.dart';
 import '../design/tokens.dart';
 import '../design/widgets/collapse_hysteresis.dart';
 import '../l10n/gen/app_localizations.dart';
@@ -585,7 +586,9 @@ class _NavItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final p = LgPalette.of(context);
     final text = Theme.of(context).textTheme;
-    final color = _tabColor(p, selected);
+    // Ivory: tanlangan tab — asosiy rangli (qora) kapsula.
+    final solid = LgStyle.of(context).solidSelection;
+    final color = selected && solid ? p.onBrand : _tabColor(p, selected);
     final duration = LgMotion.of(context, const Duration(milliseconds: 180));
     // excludeSemantics ichki InkWell'ning tap amalini ham olib tashlaydi —
     // shuning uchun onTap shu yerda qayta beriladi (aks holda TalkBack'da
@@ -613,7 +616,9 @@ class _NavItem extends StatelessWidget {
                 duration: duration,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  color: selected ? p.soft : Colors.transparent,
+                  color: selected
+                      ? (solid ? p.brand : p.soft)
+                      : Colors.transparent,
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Column(
@@ -714,7 +719,12 @@ class _LabButton extends StatelessWidget {
                     color: p.brand,
                     border: Border.all(
                       width: selected ? 4 : 3,
-                      color: selected
+                      color: LgStyle.of(context).accentRing
+                          // Ivory: ingichka oltin halqa.
+                          ? (selected
+                                ? p.accent
+                                : p.accent.withValues(alpha: 0.7))
+                          : selected
                           ? p.brand.withValues(alpha: dark ? 0.45 : 0.32)
                           : p.paper.withValues(alpha: 0.9),
                     ),

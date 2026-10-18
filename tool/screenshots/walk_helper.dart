@@ -72,6 +72,7 @@ Future<AppServices> start(
   WidgetTester tester, {
   AppLanguage lang = AppLanguage.uz,
   ThemeMode theme = ThemeMode.light,
+  LgThemeId appTheme = LgThemeId.classic,
   double textScale = 1,
   AppRole role = AppRole.lab,
   Size size = const Size(390, 844),
@@ -84,6 +85,7 @@ Future<AppServices> start(
     store: store,
     language: lang,
     themeMode: theme,
+    appTheme: appTheme,
     role: role,
     backend: backend,
     partnerAds: partnerAds,

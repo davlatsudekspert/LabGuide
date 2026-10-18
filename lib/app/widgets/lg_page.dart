@@ -301,7 +301,7 @@ class _LargeTitle extends StatelessWidget {
               child: Text(
                 eyebrow!.toUpperCase(),
                 style: text.labelSmall!.copyWith(
-                  color: p.brand,
+                  color: p.accentInk,
                   letterSpacing: 1.6,
                 ),
               ),
@@ -314,8 +314,13 @@ class _LargeTitle extends StatelessWidget {
               textScaler: scaler,
               minFontSize: compact ? 20 : 24,
               // Telefonda ixcham: sarlavha ekranning katta qismini egallamaydi.
+              // O'lcham mavzu shkalasiga nisbatan (39 — bazaviy displaySmall):
+              // Ivory'ning tor serif shrifti biroz kattaroq chiqadi (D-64).
               style: text.displaySmall!.copyWith(
-                fontSize: compact ? (narrow ? 22 : 24) : (narrow ? 28 : 32),
+                fontSize:
+                    text.displaySmall!.fontSize! /
+                    39 *
+                    (compact ? (narrow ? 22 : 24) : (narrow ? 28 : 32)),
               ),
             ),
           ),
@@ -540,7 +545,7 @@ class _BrandText extends StatelessWidget {
                 textScaler: MediaQuery.textScalerOf(context)
                     .clamp(maxScaleFactor: 1.3),
                 style: text.headlineSmall!.copyWith(
-                  fontSize: 23,
+                  fontSize: text.headlineSmall!.fontSize! / 25 * 23,
                   letterSpacing: -1,
                   height: 1.1,
                   color: p.ink,

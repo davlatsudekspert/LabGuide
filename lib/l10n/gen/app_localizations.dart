@@ -10366,6 +10366,60 @@ abstract class AppLocalizations {
   /// **'Dark'**
   String get themeDark;
 
+  /// No description provided for @themeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Theme'**
+  String get themeTitle;
+
+  /// No description provided for @themeRowSub.
+  ///
+  /// In en, this message translates to:
+  /// **'App colours and title type'**
+  String get themeRowSub;
+
+  /// No description provided for @themeCurrent.
+  ///
+  /// In en, this message translates to:
+  /// **'Current theme'**
+  String get themeCurrent;
+
+  /// No description provided for @themeClassicName.
+  ///
+  /// In en, this message translates to:
+  /// **'Classic'**
+  String get themeClassicName;
+
+  /// No description provided for @themeClassicDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'LabGuide\'s signature green'**
+  String get themeClassicDesc;
+
+  /// No description provided for @themeIvoryName.
+  ///
+  /// In en, this message translates to:
+  /// **'Ivory'**
+  String get themeIvoryName;
+
+  /// No description provided for @themeIvoryDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Ivory, ink and gold with elegant serif titles'**
+  String get themeIvoryDesc;
+
+  /// No description provided for @themeModeSection.
+  ///
+  /// In en, this message translates to:
+  /// **'Light or dark'**
+  String get themeModeSection;
+
+  /// No description provided for @themeSelected.
+  ///
+  /// In en, this message translates to:
+  /// **'Selected'**
+  String get themeSelected;
+
   /// No description provided for @profilePrivacy.
   ///
   /// In en, this message translates to:

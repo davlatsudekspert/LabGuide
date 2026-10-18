@@ -5941,6 +5941,34 @@ class AppLocalizationsUz extends AppLocalizations {
   String get themeDark => 'Tungi';
 
   @override
+  String get themeTitle => 'Mavzu';
+
+  @override
+  String get themeRowSub => 'Ilova ranglari va sarlavha shrifti';
+
+  @override
+  String get themeCurrent => 'Joriy mavzu';
+
+  @override
+  String get themeClassicName => 'Klassik';
+
+  @override
+  String get themeClassicDesc => 'LabGuide yashil ranglari';
+
+  @override
+  String get themeIvoryName => 'Ivory';
+
+  @override
+  String get themeIvoryDesc =>
+      'Fil suyagi, qora va oltin, nafis serif sarlavhalar';
+
+  @override
+  String get themeModeSection => 'Kunduzgi yoki tungi';
+
+  @override
+  String get themeSelected => 'Tanlangan';
+
+  @override
   String get profilePrivacy => 'Maxfiylik va ma’lumotlar';
 
   @override
