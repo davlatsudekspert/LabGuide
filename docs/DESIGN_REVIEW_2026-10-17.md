@@ -220,6 +220,10 @@ Tibbiy mazmun va raqamlar o'zgartirilmadi. `classroom`, `toifa`,
    tablar orasida ziddiyat beradi; foyda kichik, xavf o'rtacha.
 6. **Toifa kartasi** (bosh sahifa, laborant) hali chegarali — `lib/features/toifa`
    ga tegilmadi; Kunlik savol kartasi bilan bir xil uslubga keltirish kerak.
+   **Bajarildi (2026-10-18):** `ToifaEntryCard` va `ToifaTodayCard` — chegara o'rniga
+   `LgShadow.card`, tunda xira chet (Kunlik karta bilan bir xil); test `design_polish_test`.
+   Shu bilan birga sarlavhali yuklanish holatlari (sinflar, mavzu testi) —
+   `LgSkeleton(caption: …)` (spinner o'rniga kontur, sarlavha izoh va ovozli yorliq).
 7. **Store skrinshotlari** (`store_screenshots_test.dart`) yangi dizayn bilan
    qayta olinishi kerak — do'kon sahifasi birinchi taassurotning bir qismi.
 
