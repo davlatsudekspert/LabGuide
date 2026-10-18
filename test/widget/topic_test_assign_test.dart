@@ -92,8 +92,14 @@ void main() {
       expect(find.text(uz.topicTestRevealNeedsDue), findsOneWidget);
       await _tapKey(tester, 'assign-due-d3');
       expect(find.text(uz.topicTestRevealNeedsDue), findsNothing);
-      // Savollar soni: 5.
+      // Savollar soni: 5. Variantli rejim (hovuz ≥ 10 — standart yoqiq)
+      // bu yerda o'chiriladi: hammaga bir xil to'plam (variantli oqim —
+      // variant_test_assign_test.dart).
       await tapScroll(tester, '5');
+      final variant = find.byKey(const ValueKey('assign-variant'));
+      if (tester.widget<SwitchListTile>(variant).value) {
+        await _tapKey(tester, 'assign-variant');
+      }
       await _tapKey(tester, 'assign-send');
       expect(find.text(uz.topicTestSent(2)), findsOneWidget);
 

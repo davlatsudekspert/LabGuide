@@ -1,5 +1,7 @@
 import 'package:flutter/foundation.dart';
 
+import 'variant_draw.dart';
+
 /// Server bilan ishlashda yuz beradigan xato turlari — UI shu bo'yicha
 /// tushunarli xabar tanlaydi.
 enum BackendFailure {
@@ -393,6 +395,8 @@ class GroupAssignment {
     this.deckId,
     this.revealAfterDue = false,
     this.closed = false,
+    this.perStudent,
+    this.poolTopics,
   });
 
   factory GroupAssignment.fromJson(Map<String, Object?> j) => GroupAssignment(
@@ -407,7 +411,40 @@ class GroupAssignment {
     deckId: j['deck_id'] as String?,
     revealAfterDue: j['reveal'] == 'after_due',
     closed: j['status'] == 'closed',
+    perStudent: (j['per_student'] as num?)?.toInt(),
+    poolTopics: (j['pool_topics'] as List?)?.cast<String?>(),
   );
+
+  /// Variantli test (D-66): har talabaga hovuzdan shuncha savol; null —
+  /// oddiy test (hammaga [questionIds] to'liq).
+  final int? perStudent;
+
+  /// Variantli testda hovuz savollarining mavzu id lari ([questionIds] bilan
+  /// parallel; null — bitta qatlam).
+  final List<String?>? poolTopics;
+
+  bool get isVariant => perStudent != null;
+
+  /// Bitta talabaga tushadigan savollar soni.
+  int get questionCount => perStudent ?? questionIds.length;
+
+  /// [userId] talabaga tushgan savollar (server bilan bir xil tanlov).
+  List<String> questionIdsFor(String? userId) {
+    final n = perStudent;
+    if (n == null || userId == null) return questionIds;
+    return drawVariant(
+      assignmentId: id,
+      userId: userId,
+      pool: questionIds,
+      poolTopics: poolTopics,
+      count: n,
+    );
+  }
+
+  /// Topshirilgan javoblar qaysi savollarga ([GroupSubmission.answers]
+  /// tartibida).
+  List<String> questionIdsOf(GroupSubmission s) =>
+      s.questionIds ?? questionIdsFor(s.userId);
 
   final String id;
   final String groupId;
@@ -468,6 +505,7 @@ class GroupSubmission {
     required this.submittedAt,
     this.answers = const [],
     this.correct,
+    this.questionIds,
   });
 
   factory GroupSubmission.fromJson(Map<String, Object?> j) => GroupSubmission(
@@ -481,7 +519,12 @@ class GroupSubmission {
         (a as num?)?.toInt() ?? -1,
     ],
     correct: (j['correct'] as List?)?.map((c) => c == true).toList(),
+    questionIds: (j['question_ids'] as List?)?.cast<String>(),
   );
+
+  /// Variantli testda talabaga tushgan savollar ([answers] shu tartibda);
+  /// oddiy testda null — topshiriq tartibi.
+  final List<String>? questionIds;
 
   final String assignmentId;
   final String userId;
@@ -497,6 +540,78 @@ class GroupSubmission {
 
   int get percent => total == 0 ? 0 : (score * 100 / total).round();
 }
+
+/// Savol bo'yicha yig'ma: [index] — topshiriq (hovuz) tartibi; [received] —
+/// savol tushgan (topshirgan) talabalar; [wrong] — ulardan xato qilganlar.
+@immutable
+class QuestionTally {
+  const QuestionTally({
+    required this.index,
+    required this.questionId,
+    required this.received,
+    required this.wrong,
+  });
+
+  final int index;
+  final String questionId;
+  final int received;
+  final int wrong;
+
+  /// To'g'ri javob ulushi (savol hech kimga tushmagan — 1).
+  double get rate => received == 0 ? 1 : 1 - wrong / received;
+}
+
+/// Har savol bo'yicha natija — faqat shu savol tushgan talabalar orasida
+/// (variantli testda har talaba o'z to'plamini oladi, D-66). [key] —
+/// ustozdagi kalit (hovuz tartibida); server `correct` bermagan eski
+/// yozuvlarda shu bilan solishtiriladi.
+List<QuestionTally> tallyQuestions(
+  GroupAssignment a,
+  Iterable<GroupSubmission> subs,
+  List<int>? key,
+) {
+  final at = {for (final (i, q) in a.questionIds.indexed) q: i};
+  final got = List.filled(a.questionIds.length, 0);
+  final wrong = List.filled(a.questionIds.length, 0);
+  for (final s in subs) {
+    final ids = a.questionIdsOf(s);
+    for (var j = 0; j < ids.length; j++) {
+      final i = at[ids[j]];
+      if (i == null) continue;
+      got[i]++;
+      final c = s.correct;
+      final right = c != null && j < c.length
+          ? c[j]
+          : key != null &&
+                i < key.length &&
+                j < s.answers.length &&
+                s.answers[j] == key[i];
+      if (!right) wrong[i]++;
+    }
+  }
+  return [
+    for (var i = 0; i < a.questionIds.length; i++)
+      QuestionTally(
+        index: i,
+        questionId: a.questionIds[i],
+        received: got[i],
+        wrong: wrong[i],
+      ),
+  ];
+}
+
+/// Eng qiyin savollar: xato ulushi bo'yicha (teng — xatolar soni, keyin
+/// tartib); xatosiz savollar kirmaydi.
+List<QuestionTally> hardestTallies(List<QuestionTally> t) =>
+    [
+      for (final x in t)
+        if (x.wrong > 0) x,
+    ]..sort((x, y) {
+      final r = x.rate.compareTo(y.rate);
+      if (r != 0) return r;
+      if (x.wrong != y.wrong) return y.wrong.compareTo(x.wrong);
+      return x.index.compareTo(y.index);
+    });
 
 /// Guruh a'zosi. Ism-familiya serverda saqlanmaydi: ko'rinadigan nom —
 /// talaba o'zi tanlagan taxallus ([alias], ixtiyoriy) yoki guruhdagi tartib
@@ -587,12 +702,21 @@ class GroupTopic {
 /// Topshiriq boshlangan vaqt (server soati) — vaqt chegarasi shundan.
 @immutable
 class AssignmentStart {
-  const AssignmentStart({required this.startedAt, required this.serverNow});
+  const AssignmentStart({
+    required this.startedAt,
+    required this.serverNow,
+    this.questionIds,
+  });
 
   factory AssignmentStart.fromJson(Map<String, Object?> j) => AssignmentStart(
     startedAt: DateTime.parse(j['started_at']! as String),
     serverNow: DateTime.parse(j['server_now']! as String),
+    questionIds: (j['question_ids'] as List?)?.cast<String>(),
   );
+
+  /// Variantli testda server hisoblagan shu talaba to'plami (ilova ham
+  /// aynan shuni hisoblaydi); oddiy testda null.
+  final List<String>? questionIds;
 
   final DateTime startedAt;
 

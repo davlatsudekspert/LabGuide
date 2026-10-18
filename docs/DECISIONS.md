@@ -1079,3 +1079,24 @@ D-48 dagi **Ustoz Pro** qatorini (69 000 so'm/oy · 490 000 so'm/yil · $9.99/oy
 - **O'zgarmadi:** tibbiy matn, raqamlar, manbalar ro'yxati; ichki ma'lumot modeli (`status: draft`,
   `isDraft`, tekshiruvchi navbati) — faqat foydalanuvchiga ko'rinadigan yozuvlar. Rasmli ma'ruza slaydlaridagi
   (JPG) matn qayta chizilmadi.
+
+## D-66. Variantli mavzu testi: "Har bir talabaga boshqa savollar" (2026-10-18, egasi savoli)
+
+- **Muammo:** taqdimotdan "Guruhga topshirish" hammaga bir xil savollar to'plamini berardi (faqat tartib va
+  variantlar aralashardi) — yonma-yon o'tirgan talabalar javob almashishi oson edi.
+- **Qaror:** ixtiyoriy rejim (`AssignDeckTestScreen` dagi kalit). Mavzu hovuzi (≤ 60, ko'p bo'lsa — tasodifiy
+  60 tasi) kamida 2 × N bo'lsa **standart yoqiq**, aks holda o'chiq va bosib bo'lmaydi (tushuntirish bilan);
+  Supabase serverida yo'q (`LabBackend.supportsVariantTests`). Topshiriq hovuzni (`question_ids`), butun
+  hovuz kalitini, `per_student = N` va `pool_topics` ni saqlaydi (migratsiya `0012_assignment_variants`).
+- **Tanlov:** talaba to'plami saqlanmaydi, server va ilovada bir xil hisoblanadi — SHA-256(`aid:uid:savolId`)
+  bo'yicha saralash, mavzu (birinchi `topicIds`) qatlamlari bo'yicha navbatma-navbat (qatlamlar tartibi ham
+  talabaga qarab SHA-256 bilan). Shu sababli **adolat**: har talaba har kichik mavzudan deyarli teng (±1)
+  savol oladi, "ortiqcha" savol beradigan mavzu talabadan talabaga almashadi — qiyinlik aralashmasi
+  taqqoslanadi (har savol qiyinligini o'lchab bo'lmaydi; mavzu — eng yaqin ishonchli o'lchov). Umumiy test
+  vektorlari: `cloudflare/test/variant_vectors.json` (TS va Dart ikkalasi tekshiradi).
+- **Server:** `start` talaba to'plamini qaytaradi; `submit` da `question_ids` aynan shu to'plam bo'lishi shart
+  (aks holda `400 invalid_questions`); ball — faqat o'z savollari bo'yicha, `total = N`; `submissions.question_ids`
+  saqlanadi. `reveal` (muddat tugagach) o'zgarmadi. Jadvaldagi mavzu testi variantli emas.
+- **Ustoz natijalari:** "Variantli test" yorlig'i va "har talabaga N ta, hovuzda M ta"; savol bo'yicha va eng
+  qiyin savollar (topshiriq sahifasi va "Katta ekran") — har savol faqat u tushgan talabalar orasida, "n ta
+  talabaga tushdi" bilan; eng qiyinlar xato ulushi bo'yicha. Talaba ekranida alohida belgi yo'q.

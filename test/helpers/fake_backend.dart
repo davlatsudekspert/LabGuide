@@ -49,6 +49,11 @@ class FakeLabBackend implements LabBackend {
 
   @override
   bool get isConfigured => true;
+
+  /// Variantli test (D-66) qo'llanadimi — widget testlari o'chirib ko'radi.
+  bool variantTests = true;
+  @override
+  bool get supportsVariantTests => variantTests;
   @override
   bool get isAvailable => true;
   @override
@@ -770,6 +775,8 @@ class FakeLabBackend implements LabBackend {
     String? dayId,
     String? deckId,
     bool revealAfterDue = false,
+    int? perStudent,
+    List<String?>? poolTopics,
   }) async {
     _require();
     if (!_isTeacher(groupId)) {
@@ -782,8 +789,17 @@ class FakeLabBackend implements LabBackend {
         (deckId != null && !_topicId.hasMatch(deckId))) {
       throw const BackendException(BackendFailure.invalid);
     }
+    // D-66: variantli testda hovuz ≤ 60, takrorsiz, kamida 2 × perStudent.
+    if (perStudent != null &&
+        (perStudent < 1 ||
+            perStudent > 50 ||
+            questionIds.toSet().length != questionIds.length ||
+            questionIds.length < perStudent * 2 ||
+            (poolTopics != null && poolTopics.length != questionIds.length))) {
+      throw const BackendException(BackendFailure.invalid, 'per_student');
+    }
     if (questionIds.isEmpty ||
-        questionIds.length > 50 ||
+        questionIds.length > (perStudent == null ? 50 : 60) ||
         questionIds.length != correctIndexes.length ||
         correctIndexes.any((i) => i < 0) ||
         (timeLimitMinutes != null &&
@@ -802,6 +818,10 @@ class FakeLabBackend implements LabBackend {
       topicId: topicId ?? dayId,
       deckId: deckId,
       revealAfterDue: revealAfterDue,
+      perStudent: perStudent,
+      poolTopics: perStudent == null || poolTopics == null
+          ? null
+          : List.unmodifiable(poolTopics),
     );
     _assignments.add(_Assignment(a, List.unmodifiable(correctIndexes)));
     return a.id;
@@ -834,7 +854,13 @@ class FakeLabBackend implements LabBackend {
       throw const BackendException(BackendFailure.invalid, 'not open');
     }
     final started = _attempts.putIfAbsent(key, () => now);
-    return AssignmentStart(startedAt: started, serverNow: now);
+    return AssignmentStart(
+      startedAt: started,
+      serverNow: now,
+      questionIds: a.info.isVariant
+          ? a.info.questionIdsFor(_current!.id)
+          : null,
+    );
   }
 
   @override
@@ -872,6 +898,8 @@ class FakeLabBackend implements LabBackend {
       topicId: i.topicId,
       deckId: i.deckId,
       revealAfterDue: i.revealAfterDue,
+      perStudent: i.perStudent,
+      poolTopics: i.poolTopics,
       closed: true,
     );
   }
@@ -879,8 +907,9 @@ class FakeLabBackend implements LabBackend {
   @override
   Future<GroupSubmission> submitAssignment(
     String assignmentId,
-    List<int> answers,
-  ) async {
+    List<int> answers, {
+    List<String>? questionIds,
+  }) async {
     final a = _forStudent(assignmentId);
     final u = _current!;
     final now = groupClock();
@@ -908,25 +937,42 @@ class FakeLabBackend implements LabBackend {
             now.isAfter(started.add(Duration(minutes: limit) + submitGrace)))) {
       throw const BackendException(BackendFailure.invalid, 'time over');
     }
-    if (answers.length != a.key.length) {
+    // Server kabi: variantli testda kalit — talabaga tushgan savollarniki;
+    // javoblar aynan shu to'plamga (istalgan tartibda) bo'lishi shart.
+    final info = a.info;
+    final mine = info.questionIdsFor(u.id);
+    final key = info.isVariant
+        ? [for (final q in mine) a.key[info.questionIds.indexOf(q)]]
+        : a.key;
+    if (answers.length != key.length) {
       throw const BackendException(BackendFailure.invalid);
+    }
+    var ordered = answers;
+    if (info.isVariant) {
+      final ids = questionIds;
+      if (ids == null ||
+          ids.length != mine.length ||
+          ids.toSet().length != ids.length ||
+          !ids.every(mine.contains)) {
+        throw const BackendException(BackendFailure.invalid, 'questions');
+      }
+      ordered = [for (final q in mine) answers[ids.indexOf(q)]];
     }
     if (_submissions.any(
       (s) => s.assignmentId == assignmentId && s.userId == u.id,
     )) {
       throw const BackendException(BackendFailure.invalid, 'already');
     }
-    final correct = [
-      for (var i = 0; i < a.key.length; i++) answers[i] == a.key[i],
-    ];
+    final correct = [for (var i = 0; i < key.length; i++) ordered[i] == key[i]];
     final s = GroupSubmission(
       assignmentId: assignmentId,
       userId: u.id,
       score: correct.where((c) => c).length,
-      total: a.key.length,
+      total: key.length,
       submittedAt: now.toUtc(),
-      answers: List.unmodifiable(answers),
+      answers: List.unmodifiable(ordered),
       correct: List.unmodifiable(correct),
+      questionIds: info.isVariant ? List.unmodifiable(mine) : null,
     );
     _submissions.add(s);
     return _forViewer(s);
@@ -946,6 +992,7 @@ class FakeLabBackend implements LabBackend {
       total: s.total,
       submittedAt: s.submittedAt,
       answers: s.answers,
+      questionIds: s.questionIds,
     );
   }
 
@@ -1083,6 +1130,8 @@ class FakeLabBackend implements LabBackend {
         topicId: i.topicId,
         deckId: i.deckId,
         revealAfterDue: i.revealAfterDue,
+        perStudent: i.perStudent,
+        poolTopics: i.poolTopics,
       );
     }
   }

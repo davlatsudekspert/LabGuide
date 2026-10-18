@@ -373,6 +373,16 @@ class ExamSession {
     return out;
   }
 
+  /// [submissionAnswers] qaysi savollarga (o'sha tartibda). Variantli
+  /// testda server aynan shu talabaning to'plami ekanini tekshiradi.
+  List<String> submissionQuestionIds() {
+    final out = List<String>.filled(items.length, '');
+    for (final it in items) {
+      out[it.position] = it.questionId;
+    }
+    return out;
+  }
+
   Map<String, Object?> toJson() => {
     'id': id,
     'mode': mode.name,

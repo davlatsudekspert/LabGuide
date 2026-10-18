@@ -18,6 +18,7 @@ import {
 } from './http';
 import { guardAbuse } from './moderation';
 import { hit } from './ratelimit';
+import { drawVariant } from './variants';
 
 // Adashtiradigan 0/O/1/I siz — QR va qo'lda yozish uchun.
 const CODE_ALPHABET = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
@@ -503,6 +504,8 @@ export async function startTopicTest(ctx: Ctx, gid: string, raw: string): Promis
   const topic = topicId(decodeSeg(raw));
   const body = await readJson(ctx.req);
   const p = parseAssignment(ctx, body);
+  // Jadvaldagi mavzu testi — doim oddiy (variantli test faqat topshiriq orqali).
+  if (p.perStudent != null) throw badRequest('invalid_per_student');
   await ensureTopic(ctx, gid, topic);
   const aid = crypto.randomUUID();
   const [ins] = await ctx.db.batch([
@@ -637,6 +640,21 @@ interface AssignmentRow {
   /** 0010: taqdimot (deck) id si va javoblar qachon ochiladi. */
   deck_id: string | null;
   reveal: 'now' | 'after_due';
+  /** 0012: variantli test — har talabaga hovuzdan shuncha savol (NULL — oddiy). */
+  per_student: number | null;
+  /** 0012: hovuz savollarining mavzu id lari (JSON, `question_ids` bilan parallel). */
+  pool_topics: string | null;
+}
+
+/** Variantli test hovuzi chegarasi (D-66). */
+const MAX_POOL = 60;
+
+/** Talabaga tushgan savollar: variantli testda — deterministik tanlov, aks holda — hammasi. */
+async function studentQuestionIds(a: AssignmentRow, uid: string): Promise<string[]> {
+  const pool = JSON.parse(a.question_ids) as string[];
+  if (a.per_student == null) return pool;
+  const topics = a.pool_topics == null ? null : (JSON.parse(a.pool_topics) as (string | null)[]);
+  return drawVariant(a.id, uid, pool, topics, a.per_student);
 }
 
 /**
@@ -664,6 +682,8 @@ function assignmentJson(a: AssignmentRow) {
     created_at: iso(a.created_at),
     deck_id: a.deck_id ?? null,
     reveal: a.reveal ?? 'now',
+    per_student: a.per_student ?? null,
+    pool_topics: a.pool_topics == null ? null : (JSON.parse(a.pool_topics) as (string | null)[]),
   };
 }
 
@@ -693,13 +713,41 @@ export async function listAssignments(ctx: Ctx, gid: string): Promise<Response> 
   return json(rows.results.map(assignmentJson));
 }
 
-/** Topshiriq maydonlari (kontrakt: sarlavha 3–120, savol 1–50, vaqt 1–180). */
+/**
+ * Topshiriq maydonlari (kontrakt: sarlavha 3–120, savol 1–50, vaqt 1–180).
+ * Variantli test (`per_student`, D-66): `question_ids` — hovuz (takrorsiz,
+ * ≤ 60), `per_student` 1–50 va hovuz kamida 2 × `per_student`;
+ * `pool_topics` — ixtiyoriy, hovuz bilan parallel mavzu id lari.
+ */
 function parseAssignment(ctx: Ctx, body: Record<string, unknown>) {
   const title = str(body.title, 3, 120, 'invalid_title');
   const qs = body.question_ids;
   const key = body.correct_indexes;
-  if (!Array.isArray(qs) || qs.length < 1 || qs.length > 50) throw badRequest('invalid_questions');
+  let perStudent: number | null = null;
+  if (body.per_student != null) {
+    const n = body.per_student;
+    if (!Number.isInteger(n) || (n as number) < 1 || (n as number) > 50) throw badRequest('invalid_per_student');
+    perStudent = n as number;
+  }
+  const maxQs = perStudent == null ? 50 : MAX_POOL;
+  if (!Array.isArray(qs) || qs.length < 1 || qs.length > maxQs) throw badRequest('invalid_questions');
   const questionIds = qs.map((q) => id(q, 'invalid_questions'));
+  let poolTopics: (string | null)[] | null = null;
+  if (perStudent != null) {
+    if (new Set(questionIds).size !== questionIds.length) throw badRequest('invalid_questions');
+    if (questionIds.length < perStudent * 2) throw badRequest('invalid_per_student');
+    if (body.pool_topics != null) {
+      const t = body.pool_topics;
+      if (
+        !Array.isArray(t) ||
+        t.length !== questionIds.length ||
+        !t.every((x) => x === null || (typeof x === 'string' && TOPIC_RE.test(x)))
+      ) {
+        throw badRequest('invalid_pool_topics');
+      }
+      poolTopics = t as (string | null)[];
+    }
+  }
   if (
     !Array.isArray(key) ||
     key.length !== qs.length ||
@@ -729,14 +777,14 @@ function parseAssignment(ctx: Ctx, body: Record<string, unknown>) {
   if (reveal !== 'now' && reveal !== 'after_due') throw badRequest('invalid_reveal');
   // "Muddat tugagach" — muddat bo'lishi shart (aks holda javob hech qachon ochilmaydi).
   if (reveal === 'after_due' && due == null) throw badRequest('invalid_reveal');
-  return { title, questionIds, key: key as number[], limit, due, deck, reveal };
+  return { title, questionIds, key: key as number[], limit, due, deck, reveal, perStudent, poolTopics };
 }
 
 export async function createAssignment(ctx: Ctx, gid: string): Promise<Response> {
   const s = await requireSession(ctx);
   await requireTeacher(ctx, s, gid);
   const body = await readJson(ctx.req);
-  const { title, questionIds, key, limit, due, deck, reveal } = parseAssignment(ctx, body);
+  const { title, questionIds, key, limit, due, deck, reveal, perStudent, poolTopics } = parseAssignment(ctx, body);
   const day = body.day_id == null ? null : topicId(body.day_id);
   // Standart: darhol ochiladi (eski oqim); `start: false` — qoralama.
   const open = body.start !== false;
@@ -744,8 +792,8 @@ export async function createAssignment(ctx: Ctx, gid: string): Promise<Response>
   await ctx.db.batch([
     ctx.db
       .prepare(
-        `INSERT INTO assignments (id, group_id, title, day_id, question_ids, time_limit_minutes, due_at, status, opened_at, created_at, deck_id, reveal)
-         VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12)`,
+        `INSERT INTO assignments (id, group_id, title, day_id, question_ids, time_limit_minutes, due_at, status, opened_at, created_at, deck_id, reveal, per_student, pool_topics)
+         VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14)`,
       )
       .bind(
         aid,
@@ -760,6 +808,8 @@ export async function createAssignment(ctx: Ctx, gid: string): Promise<Response>
         ctx.now,
         deck,
         reveal,
+        perStudent,
+        poolTopics == null ? null : JSON.stringify(poolTopics),
       ),
     ctx.db
       .prepare('INSERT INTO assignment_keys (assignment_id, correct_indexes) VALUES (?1, ?2)')
@@ -816,6 +866,9 @@ export async function startAssignment(ctx: Ctx, aid: string): Promise<Response> 
     time_limit_minutes: a.time_limit_minutes,
     due_at: iso(a.due_at),
     status: a.status,
+    // Variantli test: shu talabaga tushgan savollar (ilova ham aynan shuni
+    // hisoblaydi — D-66); oddiy testda null.
+    question_ids: a.per_student == null ? null : await studentQuestionIds(a, s.userId),
   });
 }
 
@@ -847,22 +900,56 @@ export async function submitAssignment(ctx: Ctx, aid: string): Promise<Response>
       .bind(a.id)
       .first<{ correct_indexes: string }>())!.correct_indexes,
   ) as number[];
-  const answers = body.answers;
+  // Talaba kaliti: oddiy testda — butun kalit; variantli testda — o'ziga
+  // tushgan savollar (tanlov tartibida) kaliti.
+  const pool = JSON.parse(a.question_ids) as string[];
+  const mine = await studentQuestionIds(a, s.userId);
+  const at = new Map(pool.map((q, i) => [q, i]));
+  const myKey = a.per_student == null ? key : mine.map((q) => key[at.get(q)!]);
+  let raw = body.answers;
   if (
-    !Array.isArray(answers) ||
-    answers.length !== key.length ||
-    !answers.every((x) => Number.isInteger(x) && x >= -1 && x <= 20)
+    !Array.isArray(raw) ||
+    raw.length !== myKey.length ||
+    !raw.every((x) => Number.isInteger(x) && x >= -1 && x <= 20)
   ) {
     throw badRequest('invalid_answers');
   }
-  const correct = key.map((k, i) => answers[i] === k);
+  if (a.per_student != null) {
+    // Javoblar qaysi savollarga — aynan shu talabaning to'plami bo'lishi shart
+    // (istalgan tartibda); begona/takror id — rad etiladi.
+    const ids = body.question_ids;
+    const pos = new Map(mine.map((q, i) => [q, i]));
+    if (
+      !Array.isArray(ids) ||
+      ids.length !== mine.length ||
+      new Set(ids).size !== ids.length ||
+      !ids.every((q) => typeof q === 'string' && pos.has(q))
+    ) {
+      throw badRequest('invalid_questions');
+    }
+    const ordered = new Array<number>(mine.length);
+    const given = raw as number[];
+    ids.forEach((q, i) => (ordered[pos.get(q as string)!] = given[i]));
+    raw = ordered;
+  }
+  const answers = raw as number[];
+  const correct = myKey.map((k, i) => answers[i] === k);
   const score = correct.filter(Boolean).length;
   const r = await ctx.db
     .prepare(
-      `INSERT INTO submissions (assignment_id, user_id, answers, correct, score, total, submitted_at)
-       VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7) ON CONFLICT DO NOTHING`,
+      `INSERT INTO submissions (assignment_id, user_id, answers, correct, score, total, submitted_at, question_ids)
+       VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8) ON CONFLICT DO NOTHING`,
     )
-    .bind(a.id, s.userId, JSON.stringify(answers), JSON.stringify(correct), score, key.length, ctx.now)
+    .bind(
+      a.id,
+      s.userId,
+      JSON.stringify(answers),
+      JSON.stringify(correct),
+      score,
+      myKey.length,
+      ctx.now,
+      a.per_student == null ? null : JSON.stringify(mine),
+    )
     .run();
   if (!r.meta.changes) throw conflict('already_submitted');
   return json(
@@ -870,8 +957,9 @@ export async function submitAssignment(ctx: Ctx, aid: string): Promise<Response>
       assignment_id: a.id,
       user_id: s.userId,
       score,
-      total: key.length,
+      total: myKey.length,
       answers,
+      question_ids: a.per_student == null ? null : mine,
       // "Muddat tugagach" — har savol bo'yicha natija hozircha yopiq.
       correct: revealed(a, ctx.now) ? correct : null,
       submitted_at: iso(ctx.now),
@@ -888,6 +976,8 @@ interface SubmissionRow {
   score: number;
   total: number;
   submitted_at: number;
+  /** 0012: variantli testda talabaga tushgan savollar (javoblar shu tartibda). */
+  question_ids: string | null;
 }
 
 /** [hide] — talabaga javoblar hali ochilmagan (`after_due`): `correct` — null. */
@@ -899,6 +989,7 @@ const submissionJson = (r: SubmissionRow, hide = false) => ({
   answers: JSON.parse(r.answers) as number[],
   correct: hide ? null : (JSON.parse(r.correct) as boolean[]),
   submitted_at: iso(r.submitted_at),
+  question_ids: r.question_ids == null ? null : (JSON.parse(r.question_ids) as string[]),
 });
 
 /** Ustoz — topshiriq bo'yicha hamma; talaba — faqat o'zi. */

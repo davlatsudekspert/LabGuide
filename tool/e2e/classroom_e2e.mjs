@@ -15,6 +15,7 @@
 // Faqat 127.0.0.1/localhost ga ruxsat — masofaviy serverga hech qachon.
 
 import { execFileSync } from 'node:child_process';
+import { webcrypto } from 'node:crypto';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -86,6 +87,34 @@ async function login(name) {
 }
 
 const iso = (ms) => new Date(ms).toISOString();
+
+// Variantli test (D-66): Worker (src/variants.ts) va ilova
+// (lib/core/backend/variant_draw.dart) bilan bir xil tanlov — uchinchi,
+// mustaqil nusxa: server bergan to'plam shu bilan solishtiriladi.
+async function sha256hex(s) {
+  const d = await webcrypto.subtle.digest('SHA-256', new TextEncoder().encode(s));
+  return [...new Uint8Array(d)].map((b) => b.toString(16).padStart(2, '0')).join('');
+}
+async function drawVariant(aid, uid, pool, topics, count) {
+  const seed = `${aid}:${uid}`;
+  const cmp = (a, b) => (a < b ? -1 : a > b ? 1 : 0);
+  const strata = new Map();
+  for (let i = 0; i < pool.length; i++) {
+    const t = topics?.[i] ?? '';
+    if (!strata.has(t)) strata.set(t, []);
+    strata.get(t).push({ id: pool[i], h: await sha256hex(`${seed}:${pool[i]}`) });
+  }
+  const kh = new Map();
+  for (const k of strata.keys()) kh.set(k, await sha256hex(`${seed}#${k}`));
+  const lists = [...strata.keys()]
+    .sort((a, b) => cmp(kh.get(a), kh.get(b)) || cmp(a, b))
+    .map((k) => strata.get(k).sort((x, y) => cmp(x.h, y.h) || cmp(x.id, y.id)));
+  const out = [];
+  for (let r = 0; out.length < Math.min(count, pool.length); r++) {
+    for (const l of lists) if (r < l.length && out.length < count) out.push(l[r].id);
+  }
+  return out;
+}
 
 async function main() {
   const health = await call('GET', '/__outbox').catch(() => null);
@@ -276,6 +305,87 @@ async function main() {
   r = await call('GET', `/v1/assignments/${TOPIC}/progress`, { token: A.token });
   check(r.status === 403, `talaba boshqalar holatini ko'rmaydi (${r.status})`);
 
+  // ----------------------------------------------------------------- 6b
+  step('6b. Variantli test: har talabaga boshqa savollar (3 talaba)');
+  const VPOOL = Array.from({ length: 12 }, (_, i) => `var.q${String(i + 1).padStart(2, '0')}`);
+  const VKEY = VPOOL.map((_, i) => i % 4);
+  const VTOP = VPOOL.map((_, i) => (i < 6 ? 'hem-1' : i < 10 ? 'hem-2' : 'hem-3'));
+  r = await call('POST', `/v1/groups/${G}/assignments`, {
+    token: T.token,
+    body: { title: 'Variantli test', question_ids: VPOOL, correct_indexes: VKEY, per_student: 7, pool_topics: VTOP },
+  });
+  check(r.status === 400 && r.data?.error === 'invalid_per_student', 'hovuz < 2 × N — 400 invalid_per_student');
+  r = await call('POST', `/v1/groups/${G}/assignments`, {
+    token: T.token,
+    body: {
+      title: 'Variantli test',
+      question_ids: VPOOL,
+      correct_indexes: VKEY,
+      per_student: 4,
+      pool_topics: VTOP,
+      deck_id: 'hem-cbc',
+      day_id: 'd001-L',
+    },
+  });
+  check(r.status === 201, 'variantli test topshirildi (hovuz 12, har talabaga 4)');
+  const VAR = r.data.id;
+  r = await call('GET', `/v1/groups/${G}/assignments`, { token: A.token });
+  const vseen = r.data.find((a) => a.id === VAR);
+  check(vseen.per_student === 4 && vseen.question_ids.length === 12, 'talaba ro\'yxatida: per_student=4, hovuz 12');
+  const vsets = {};
+  for (const s of [A, B, C]) {
+    r = await call('POST', `/v1/assignments/${VAR}/start`, { token: s.token });
+    const expected = await drawVariant(VAR, s.id, VPOOL, VTOP, 4);
+    vsets[s.id] = r.data.question_ids;
+    check(
+      r.status === 200 && JSON.stringify(r.data.question_ids) === JSON.stringify(expected),
+      `${s.name}: to'plam = mahalliy hisob (${r.data.question_ids?.join(', ')})`,
+    );
+    const by = (t) => r.data.question_ids.filter((q) => VTOP[VPOOL.indexOf(q)] === t).length;
+    check(by('hem-1') >= 1 && by('hem-2') >= 1 && by('hem-3') >= 1, `${s.name}: har kichik mavzudan kamida 1 ta`);
+  }
+  const distinct = new Set(Object.values(vsets).map((x) => [...x].sort().join(','))).size;
+  check(distinct === 3, `3 talaba — 3 xil to'plam (${distinct})`);
+  const aSet = vsets[A.id];
+  const foreign = VPOOL.find((q) => !aSet.includes(q));
+  r = await call('POST', `/v1/assignments/${VAR}/submit`, {
+    token: A.token,
+    body: { answers: [0, 0, 0, 0], question_ids: [...aSet.slice(0, 3), foreign] },
+  });
+  check(r.status === 400 && r.data?.error === 'invalid_questions', 'begona savol id si bilan yuborish — 400');
+  r = await call('POST', `/v1/assignments/${VAR}/submit`, { token: A.token, body: { answers: [0, 0, 0, 0] } });
+  check(r.status === 400, 'question_ids siz yuborish — 400');
+  const answersFor = (ids, right) => ids.map((q) => (right ? VKEY[VPOOL.indexOf(q)] : (VKEY[VPOOL.indexOf(q)] + 1) % 4));
+  const aRev = [...aSet].reverse();
+  r = await call('POST', `/v1/assignments/${VAR}/submit`, { token: A.token, body: { answers: answersFor(aRev, true), question_ids: aRev } });
+  check(r.status === 201 && r.data.score === 4 && r.data.total === 4, 'A: 4/4 (o\'z to\'plami, teskari tartibda)');
+  r = await call('POST', `/v1/assignments/${VAR}/submit`, {
+    token: B.token,
+    body: { answers: answersFor(vsets[B.id], false), question_ids: vsets[B.id] },
+  });
+  check(r.status === 201 && r.data.score === 0, 'B: 0/4');
+  r = await call('GET', `/v1/assignments/${VAR}/submissions`, { token: T.token });
+  check(
+    r.data.length === 2 && r.data.every((x) => JSON.stringify(x.question_ids) === JSON.stringify(vsets[x.user_id])),
+    'ustoz natijalari: har talabaning question_ids si',
+  );
+  const vt = new Map();
+  for (const x of r.data) {
+    x.question_ids.forEach((q, j) => {
+      const e = vt.get(q) ?? { got: 0, wrong: 0 };
+      e.got++;
+      if (!x.correct[j]) e.wrong++;
+      vt.set(q, e);
+    });
+  }
+  check([...vt.values()].reduce((n, e) => n + e.got, 0) === 8, 'savol bo\'yicha: jami 8 ta tushish (2 × 4)');
+  const vhard = [...vt.entries()].filter(([, e]) => e.wrong > 0).map(([q]) => q);
+  check(vhard.every((q) => vsets[B.id].includes(q)), `eng qiyin savollar faqat B ga tushganlardan (${vhard.join(', ')})`);
+  r = await call('GET', `/v1/assignments/${VAR}/progress`, { token: T.token });
+  check(r.status === 200 && r.data.length === 3, 'katta ekran: 3 talaba boshlagan');
+  const vrow = sql(`SELECT per_student, pool_topics FROM assignments WHERE id = '${VAR}'`)[0];
+  check(vrow.per_student === 4 && JSON.parse(vrow.pool_topics).length === 12, 'D1: per_student=4, pool_topics saqlangan');
+
   // ------------------------------------------------------------------ 7
   step('7. Ustoz testni yakunlaydi → javoblar ochiladi');
   r = await call('POST', `/v1/assignments/${TOPIC}/close`, { token: T.token });
@@ -334,7 +444,7 @@ async function main() {
   check(r.status === 400 && r.data?.error === 'teacher_cannot_leave', 'ustoz o\'z guruhidan chiqolmaydi');
   r = await call('POST', `/v1/groups/${G}/leave`, { token: C.token });
   check(r.status === 204, 'C guruhdan chiqdi');
-  check(sql(`SELECT COUNT(*) AS n FROM submissions WHERE user_id = '${B.id}'`)[0].n === 2,
+  check(sql(`SELECT COUNT(*) AS n FROM submissions WHERE user_id = '${B.id}'`)[0].n === 3,
     'maxfiylik siyosati: chiqarilgan talaba natijalari guruh/hisob o\'chguncha qoladi');
 
   r = await call('DELETE', '/v1/me', { token: A.token });
@@ -358,9 +468,9 @@ async function main() {
     `SELECT (SELECT COUNT(*) FROM study_groups WHERE id='${G}') +
             (SELECT COUNT(*) FROM group_members WHERE group_id='${G}') +
             (SELECT COUNT(*) FROM assignments WHERE group_id='${G}') +
-            (SELECT COUNT(*) FROM assignment_keys WHERE assignment_id IN ('${TOPIC}','${PLAIN}','${SHORT}')) +
-            (SELECT COUNT(*) FROM submissions WHERE assignment_id IN ('${TOPIC}','${PLAIN}','${SHORT}')) +
-            (SELECT COUNT(*) FROM assignment_attempts WHERE assignment_id IN ('${TOPIC}','${PLAIN}','${SHORT}')) AS n`,
+            (SELECT COUNT(*) FROM assignment_keys WHERE assignment_id IN ('${TOPIC}','${PLAIN}','${SHORT}','${VAR}')) +
+            (SELECT COUNT(*) FROM submissions WHERE assignment_id IN ('${TOPIC}','${PLAIN}','${SHORT}','${VAR}')) +
+            (SELECT COUNT(*) FROM assignment_attempts WHERE assignment_id IN ('${TOPIC}','${PLAIN}','${SHORT}','${VAR}')) AS n`,
   )[0].n;
   check(leftG === 0, 'ustoz o\'chganda guruh, topshiriqlar, kalitlar va barcha talabalar natijalari o\'chdi');
   r = await call('GET', '/v1/groups', { token: B.token });

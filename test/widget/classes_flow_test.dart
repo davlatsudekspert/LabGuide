@@ -23,10 +23,15 @@ class _FlakyBackend extends FakeLabBackend {
   @override
   Future<GroupSubmission> submitAssignment(
     String assignmentId,
-    List<int> answers,
-  ) async {
+    List<int> answers, {
+    List<String>? questionIds,
+  }) async {
     if (offline) throw const BackendException(BackendFailure.network);
-    return super.submitAssignment(assignmentId, answers);
+    return super.submitAssignment(
+      assignmentId,
+      answers,
+      questionIds: questionIds,
+    );
   }
 }
 

@@ -36,6 +36,9 @@ class BackendConfig {
 abstract interface class LabBackend implements OtpAuthAdapter {
   bool get isConfigured;
 
+  /// Variantli test (D-66, `per_student`) qo'llanadimi (Cloudflare — ha).
+  bool get supportsVariantTests;
+
   /// Sessiya bormi (token qurilmada, server tasdiqlagan).
   bool get hasSession;
   String? get sessionEmail;
@@ -132,7 +135,9 @@ abstract interface class LabBackend implements OtpAuthAdapter {
 
   /// [dayId] — o'quv dasturi mavzusi, [deckId] — taqdimot (mavzu testi);
   /// [revealAfterDue] — to'g'ri javoblar talabaga muddat tugagach (muddat
-  /// bo'lishi shart).
+  /// bo'lishi shart). [perStudent] — variantli test (D-66): [questionIds] —
+  /// hovuz (≤ 60), har talabaga undan [perStudent] ta savol
+  /// ([drawVariant]); [poolTopics] — hovuz savollari mavzulari (muvozanat).
   Future<String> createAssignment({
     required String groupId,
     required String title,
@@ -143,16 +148,21 @@ abstract interface class LabBackend implements OtpAuthAdapter {
     String? dayId,
     String? deckId,
     bool revealAfterDue = false,
+    int? perStudent,
+    List<String?>? poolTopics,
   });
 
   /// Talaba topshiriqni boshlaydi (qayta chaqirilsa — o'sha vaqt qaytadi).
   Future<AssignmentStart> startAssignment(String assignmentId);
 
   /// Javoblar (topshiriq tartibida, javobsiz — -1). Ball serverda.
+  /// [questionIds] — javoblar qaysi savollarga (variantli testda shart:
+  /// aynan shu talabaning to'plami).
   Future<GroupSubmission> submitAssignment(
     String assignmentId,
-    List<int> answers,
-  );
+    List<int> answers, {
+    List<String>? questionIds,
+  });
 
   /// Talaba — faqat o'zini, ustoz — guruhdagi hammani ko'radi.
   Future<List<GroupSubmission>> submissions(String assignmentId);
@@ -228,6 +238,8 @@ class UnconfiguredBackend implements LabBackend {
 
   @override
   bool get isConfigured => false;
+  @override
+  bool get supportsVariantTests => false;
   @override
   bool get isAvailable => false;
   @override
@@ -358,14 +370,17 @@ class UnconfiguredBackend implements LabBackend {
     String? dayId,
     String? deckId,
     bool revealAfterDue = false,
+    int? perStudent,
+    List<String?>? poolTopics,
   }) async => _no();
   @override
   Future<AssignmentStart> startAssignment(String assignmentId) async => _no();
   @override
   Future<GroupSubmission> submitAssignment(
     String assignmentId,
-    List<int> answers,
-  ) async => _no();
+    List<int> answers, {
+    List<String>? questionIds,
+  }) async => _no();
   @override
   Future<List<GroupSubmission>> submissions(String assignmentId) async => _no();
   @override

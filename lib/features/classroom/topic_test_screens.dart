@@ -7,6 +7,7 @@ import 'package:material_ui/material_ui.dart';
 import '../../app/app_scope.dart';
 import '../../app/widgets/lg_page.dart';
 import '../../core/backend/backend_models.dart';
+import '../../core/backend/variant_draw.dart';
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
@@ -906,6 +907,14 @@ class _AssignDeckTestScreenState extends State<AssignDeckTestScreen> {
   bool _countInit = false;
   String? _uid;
 
+  /// “Har bir talabaga boshqa savollar” (D-66): null — avtomatik (mumkin
+  /// bo'lsa yoqiq); ustoz bosgach — uning tanlovi.
+  bool? _variantChoice;
+
+  /// Variantli test hovuzi (≤ [kVariantPoolMax]); bir marta tanlanadi.
+  List<ExamQuestion>? _variantPool;
+  List<ExamQuestion>? _variantPoolFor;
+
   @override
   void initState() {
     super.initState();
@@ -994,6 +1003,35 @@ class _AssignDeckTestScreenState extends State<AssignDeckTestScreen> {
     return n != null && n >= 1 && n <= _max(pool);
   }
 
+  /// Mavzu hovuzi (id bo'yicha); [kVariantPoolMax] dan ko'p bo'lsa —
+  /// tasodifiy [kVariantPoolMax] tasi (bir marta).
+  List<ExamQuestion> _poolFor(List<ExamQuestion> pool) {
+    if (!identical(_variantPoolFor, pool) || _variantPool == null) {
+      _variantPoolFor = pool;
+      final sorted = [...pool]..sort((a, b) => a.id.compareTo(b.id));
+      _variantPool = sorted.length <= kVariantPoolMax
+          ? sorted
+          : (drawTopicTest(
+              sorted,
+              count: kVariantPoolMax,
+              seed: context.services.topicTests.nextSeed(),
+            )..sort((a, b) => a.id.compareTo(b.id)));
+    }
+    return _variantPool!;
+  }
+
+  /// Variantli rejim mumkinmi: server qo'llaydi va hovuz ≥ 2 × N.
+  bool _variantAllowed(List<ExamQuestion> pool) {
+    final n = _n;
+    return context.services.backend.supportsVariantTests &&
+        _countOk(pool) &&
+        n != null &&
+        variantAllowed(_poolFor(pool).length, n);
+  }
+
+  bool _variantOn(List<ExamQuestion> pool) =>
+      _variantAllowed(pool) && (_variantChoice ?? true);
+
   void _redraw(List<ExamQuestion> pool) {
     final n = _n;
     _drawnFor = n;
@@ -1034,6 +1072,8 @@ class _AssignDeckTestScreenState extends State<AssignDeckTestScreen> {
     final due = _dueAt;
     if (_picked.isEmpty || drawn == null || !_countOk(pool)) return;
     if (_afterDue && due == null) return;
+    final variant = _variantOn(pool);
+    final source = variant ? _poolFor(pool) : drawn;
     final l = AppLocalizations.of(context);
     final backend = context.services.backend;
     final topic = deck.topics.firstWhere(
@@ -1050,12 +1090,16 @@ class _AssignDeckTestScreenState extends State<AssignDeckTestScreen> {
         await backend.createAssignment(
           groupId: g,
           title: _title(deck),
-          questionIds: [for (final q in drawn) q.id],
-          correctIndexes: [for (final q in drawn) q.correct.single],
+          questionIds: [for (final q in source) q.id],
+          correctIndexes: [for (final q in source) q.correct.single],
           dueAt: due,
           dayId: topic,
           deckId: deck.id,
           revealAfterDue: _afterDue,
+          perStudent: variant ? _n : null,
+          poolTopics: variant
+              ? [for (final q in source) variantTopic(q.topicIds)]
+              : null,
         );
         sent++;
         _picked.remove(g);
@@ -1150,6 +1194,10 @@ class _AssignDeckTestScreenState extends State<AssignDeckTestScreen> {
     final drawn = _drawn;
     final due = _dueAt;
     final needsDue = _afterDue && due == null;
+    final variantPool = _poolFor(pool);
+    final canVariant = _variantAllowed(pool);
+    final variant = _variantOn(pool);
+    final n = _n ?? 0;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -1185,6 +1233,25 @@ class _AssignDeckTestScreenState extends State<AssignDeckTestScreen> {
             (l.examCountAll(max), '$max'),
           ],
           onChanged: () => setState(() => _redraw(pool)),
+        ),
+        SwitchListTile.adaptive(
+          key: const ValueKey('assign-variant'),
+          contentPadding: EdgeInsets.zero,
+          title: Text(l.variantToggle),
+          subtitle: Text(
+            !context.services.backend.supportsVariantTests
+                ? l.variantUnsupported
+                : !canVariant
+                ? l.variantDisabledBody(variantPool.length, n < 1 ? 2 : n * 2)
+                : variant
+                ? l.variantOnBody(variantPool.length, n)
+                : l.variantOffBody,
+            key: const ValueKey('assign-variant-note'),
+          ),
+          value: variant,
+          onChanged: canVariant
+              ? (v) => setState(() => _variantChoice = v)
+              : null,
         ),
         LgSectionTitle(l.classesDueTitle),
         Wrap(
@@ -1240,9 +1307,39 @@ class _AssignDeckTestScreenState extends State<AssignDeckTestScreen> {
           const SizedBox(height: 8),
           LgNotice(l.topicTestRevealNeedsDue, kind: NoticeKind.error),
         ],
-        LgSectionTitle(l.classesPreview(drawn?.length ?? 0)),
+        LgSectionTitle(
+          variant
+              ? l.variantPoolTitle(variantPool.length)
+              : l.classesPreview(drawn?.length ?? 0),
+        ),
         if (drawn == null)
           Text(l.examCountError(max), style: text.bodyMedium)
+        else if (variant)
+          LgPanel(
+            key: const ValueKey('assign-variant-pool'),
+            padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                for (final (i, q) in variantPool.indexed)
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 6),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          width: 28,
+                          child: Text('${i + 1}.', style: text.labelLarge),
+                        ),
+                        Expanded(
+                          child: Text(q.prompt(lang), style: text.bodyMedium),
+                        ),
+                      ],
+                    ),
+                  ),
+              ],
+            ),
+          )
         else ...[
           LgPanel(
             padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
