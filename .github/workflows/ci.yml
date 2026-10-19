@@ -44,9 +44,9 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: "build — imzosiz tekshiruv; testflight — imzo + TestFlight'ga yuklash; play_internal — imzoli AAB + Google Play ichki test; deploy_api — Cloudflare server"
+        description: "build — imzosiz tekshiruv; testflight — imzo + TestFlight'ga yuklash; play_internal — imzoli AAB + Google Play ichki test; deploy_api — Cloudflare server; deploy_site — labguide.nfcstore.uz sayti (site/)"
         type: choice
-        options: [build, testflight, play_internal, deploy_api, play_listing]
+        options: [build, testflight, play_internal, deploy_api, play_listing, deploy_site]
         default: build
       play_status:
         description: "play_internal uchun reliz holati: draft (yangi/qoralama ilova uchun shart) yoki completed"
@@ -98,7 +98,7 @@ env:
 
 jobs:
   tests:
-    if: inputs.mode != 'deploy_api' && inputs.mode != 'play_listing'
+    if: inputs.mode != 'deploy_api' && inputs.mode != 'play_listing' && inputs.mode != 'deploy_site'
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
@@ -139,7 +139,7 @@ jobs:
   # Supabase migratsiyalari va RLS qabul testlari lokal PostgreSQL'da
   # (2 oddiy hisob + admin; statistika, murojaatlar, ruxsatlar, guruhlar).
   backend:
-    if: inputs.mode != 'deploy_api' && inputs.mode != 'play_listing'
+    if: inputs.mode != 'deploy_api' && inputs.mode != 'play_listing' && inputs.mode != 'deploy_site'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -152,7 +152,7 @@ jobs:
 
   # Cloudflare Worker (cloudflare/): tiplar va vitest (workerd + lokal D1).
   worker:
-    if: inputs.mode != 'play_listing'
+    if: inputs.mode != 'play_listing' && inputs.mode != 'deploy_site'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     defaults:
@@ -339,6 +339,66 @@ jobs:
             echo "- URL: $API_URL"
             echo "- Ilovani ulash: repo variable \`LG_API_URL\` = shu URL (keyingi build'da)."
           } >> "$GITHUB_STEP_SUMMARY"
+
+  # deploy_site: site/ → Cloudflare Worker (static assets) "tiny-grass-e36a",
+  # labguide.nfcstore.uz shu workerga ulangan (custom domain dashboardda, tegilmaydi).
+  # Deploydan keyin sahifalar tekshiriladi; biror sahifa ochilmasa — avvalgi
+  # versiyaga qaytariladi (wrangler rollback).
+  deploy_site:
+    if: inputs.mode == 'deploy_site'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    concurrency:
+      group: deploy-site
+      cancel-in-progress: false
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      SITE_WORKER: tiny-grass-e36a
+      SITE_URL: https://labguide.nfcstore.uz
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Sayt tekshiruvi
+        run: python3 tool/site/check_site.py
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: cloudflare/package-lock.json
+      - name: Wrangler
+        working-directory: cloudflare
+        run: npm ci
+      - name: Deploy (static assets)
+        working-directory: cloudflare
+        run: |
+          mkdir -p ../.site_dist
+          cp -R ../site/. ../.site_dist/
+          rm -f ../.site_dist/README.md
+          npx wrangler deploy --name "$SITE_WORKER" --assets ../.site_dist \
+            --compatibility-date 2025-01-01 --keep-vars
+      - name: Tekshiruv (sahifalar ochiladimi) — bo'lmasa rollback
+        working-directory: cloudflare
+        run: |
+          ok=1
+          for path in / /privacy/ /delete-account/ "/j/?c=TEST1234"; do
+            code=""
+            for i in 1 2 3 4 5 6; do
+              code=$(curl -s -o /dev/null -w '%{http_code}' "$SITE_URL$path")
+              [ "$code" = 200 ] && break
+              sleep 10
+            done
+            echo "$code $SITE_URL$path"
+            [ "$code" = 200 ] || ok=0
+          done
+          if [ "$ok" != 1 ]; then
+            echo "::error::Sayt sahifalari ochilmadi — rollback"
+            npx wrangler rollback --name "$SITE_WORKER" -y --message "auto-rollback" || true
+            exit 1
+          fi
+          echo "## Sayt yangilandi: $SITE_URL (/, /privacy/, /delete-account/, /j/)" >> "$GITHUB_STEP_SUMMARY"
 
   android:
     needs: tests
