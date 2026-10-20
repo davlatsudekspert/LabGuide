@@ -53,6 +53,11 @@ on:
         type: choice
         options: [draft, completed]
         default: draft
+      play_track:
+        description: "play_internal uchun trek: internal (ichki) yoki alpha (yopiq sinov)"
+        type: choice
+        options: [internal, alpha]
+        default: internal
       apple_setup:
         description: "testflight uchun: bundle ID va App Store profilini API orqali yaratish (yo'q bo'lsa)"
         type: boolean
@@ -520,7 +525,7 @@ jobs:
           serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}
           packageName: uz.labguide.app
           releaseFiles: build/app/outputs/bundle/release/app-release.aab
-          tracks: internal
+          tracks: ${{ inputs.play_track || 'internal' }}
           status: ${{ inputs.play_status || 'draft' }}
           releaseName: "${{ github.run_number }} (draft kontent)"
 
