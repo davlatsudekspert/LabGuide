@@ -39,14 +39,14 @@ class LabScreen extends StatelessWidget {
         // Leykoformula (hisoblagich) — kundalik ishning eng ko'p
         // ishlatiladigan vositasi, shuning uchun birinchi.
         const DifferentialEntryCard(),
-        LgHeroCard(
-          eyebrow: l.labHeroEyebrow,
+        // Kalibrlash — boshqa vositalar kabi bir xil qator (katta kartochka
+        // rasmli bo'limlar tartibini buzayotgan edi).
+        LgRow(
+          key: const ValueKey('lab-calibration'),
           title: l.labHeroTitle,
-          body: l.labHeroBody,
-          action: LgButton(
-            label: l.labHeroCta,
-            onPressed: () => context.push('/lab/calibration'),
-          ),
+          subtitle: l.labHeroBody,
+          icon: Icons.tune_rounded,
+          onTap: () => context.push('/lab/calibration'),
         ),
         LgRow(
           title: l.featureQc,
