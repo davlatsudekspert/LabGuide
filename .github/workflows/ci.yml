@@ -544,8 +544,8 @@ jobs:
           fi
 
   ios:
+    if: github.event_name == 'workflow_dispatch' || startsWith(github.ref, 'refs/tags/v')
     needs: tests
-    if: inputs.mode != 'play_internal' && inputs.mode != 'deploy_api'
     runs-on: macos-15
     timeout-minutes: 75
     defaults:
