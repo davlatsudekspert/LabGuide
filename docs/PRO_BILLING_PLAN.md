@@ -188,7 +188,7 @@ Matnlar uz/ru/en (`pay*` kalitlari, ARB oxirida).
 | `GET /v1/billing/entitlements` (= `/v1/entitlements`) | sessiya | `{server_time, items[], owned_by_other}` |
 | `POST /v1/billing/verify` | sessiya | `{platform, product_id, token}` yoki `{platform, purchases:[…]}` (tiklash, ≤ 10) |
 | `POST /v1/billing/apple/notifications` | Apple | ASSN v2 `{signedPayload}` |
-| `POST /v1/billing/google/rtdn[?token=…]` | Pub/Sub | RTDN push; `PLAY_RTDN_TOKEN` bo‘lsa token majburiy |
+| `POST /v1/billing/google/rtdn[?token=…]` | Pub/Sub | RTDN push; D-75: Pub/Sub OIDC (`PLAY_RTDN_AUDIENCE`) yoki `PLAY_RTDN_TOKEN` majburiy (hech biri — 503), `messageId` takrori tashlanadi |
 
 `entitlements`: `platform`, `original_transaction_id`, `user_id`, `product_id`,
 `status`, `started_at`, `expires_at`, `ownership`, `environment`, `latest_token`,
@@ -331,3 +331,8 @@ D-73 §3 va `docs/ADMIN_PANEL_GUIDE.md` §8. Migratsiya `0014_pro_grants.sql` �
 - Ilova: Profil → **Obuna** (`/profile/subscription`, faqat `BuildFlags.proEnabled`): rejalar, USD narxlar (katalog),
   holat, sinov qoidasi, tiklash; to‘lov oynasi (`/profile/purchase`) shu ekrandan.
 - Eslatma: 9-bo‘limdagi 7/14 kunlik do‘kon sinovi ESKIRGAN (D-71/D-73); 30 kun mexanizmi — D-74 ochiq qaror #1.
+
+## D-75 yangilanishi
+Do'kon tekshiruvchilari injeksiya qilinadi, Apple JWS imzosi tekshiriladi, sandbox faqat `LG_BILLING_SANDBOX=true`, Play'da
+obuna + base plan (`monthly`/`yearly`) kanonik id'ga moslanadi, sinov `TRIAL_PLATFORMS` (standart `android`).
+Batafsil: `docs/DECISIONS.md` D-75, `docs/PRO_READINESS_2026-10-24.md`, `docs/PRO_TEST_ENVIRONMENT.md`.

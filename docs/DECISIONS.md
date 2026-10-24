@@ -662,6 +662,8 @@ Egasi so‘rovi: boshqa odamlarni Gmail/email bo‘yicha admin qilish va olib ta
 - Qolgan mavzular va PPTX yuklash (Ustoz Pro) — 17-oktabr rejasi.
 
 ## D-46. Pro yo'nalishi: Ustoz Pro + Talaba Pro, butun dunyo (2026-10-12, egasi tasdiqladi)
+> **SUPERSEDED (D-73/D-74, 2026-10-24):** narxlar, tariflar, sinov va Pro tafsilotlari D-73/D-74 (va D-75) bilan almashtirilgan. Quyidagi matn — tarix sifatida saqlangan.
+
 - Maqsad: ilova butun dunyoda foydalanilsin va sotib olinsin (uz/ru/en, keyin boshqa tillar).
 - **Bepul:** barcha kartalar, kalkulyatorlar, preanalitika, sanagich, ochiq manbalar, kuniga
   10–20 savol, toifa namunalari, hamjamiyatni o'qish/savol berish.
@@ -697,6 +699,8 @@ Egasi so‘rovi: boshqa odamlarni Gmail/email bo‘yicha admin qilish va olib ta
 rejim → offline tushuntirishlar/og'zaki mashq → online AI Ustoz → telefon ichidagi model.
 
 ## D-48. Narxlar (2026-10-12, egasi tasdiqladi: "narxlar maqul")
+> **SUPERSEDED (D-73/D-74, 2026-10-24):** narxlar, tariflar, sinov va Pro tafsilotlari D-73/D-74 (va D-75) bilan almashtirilgan. Quyidagi matn — tarix sifatida saqlangan.
+
 D-46 dagi paketlar aniqlashtirildi: shaxsiy **Pro** (laborant, shifokor, toifaga tayyorlanuvchi)
 + talabaga chegirma; **Ustoz Pro**; **Muassasa** (shartnoma).
 
@@ -713,6 +717,8 @@ D-46 dagi paketlar aniqlashtirildi: shaxsiy **Pro** (laborant, shifokor, toifaga
   ("To'lov hali yoqilmagan" yozuvi yashiriladi) — Apple 3.1.1/2.1.
 
 ## D-49. Pro tafsilotlari (2026-10-12, egasi javoblari)
+> **SUPERSEDED (D-73/D-74, 2026-10-24):** narxlar, tariflar, sinov va Pro tafsilotlari D-73/D-74 (va D-75) bilan almashtirilgan. Quyidagi matn — tarix sifatida saqlangan.
+
 - Bepul sinov: Pro — 7 kun, Ustoz Pro — 14 kun (egasi rozi, 2026-10-12). 1 oy emas.
 - Bepul foydalanuvchi: kuniga 2 ta savol (egasi qarori). Tavsiya: xatolarni qayta ishlash cheklanmasin.
 - Ilk foydalanuvchilarga chegirma: yo'q.
@@ -724,6 +730,8 @@ D-46 dagi paketlar aniqlashtirildi: shaxsiy **Pro** (laborant, shifokor, toifaga
   faqat slaydni chiqaradi (ikki ekranli rejim). Chromecast uchun alohida Cast qabul qiluvchi — keyin.
 
 ## D-50. Talaba narxi (A varianti), reklama roliklari, ustoz-elchi (2026-10-12)
+> **SUPERSEDED (D-73/D-74, 2026-10-24):** narxlar, tariflar, sinov va Pro tafsilotlari D-73/D-74 (va D-75) bilan almashtirilgan. Quyidagi matn — tarix sifatida saqlangan.
+
 - Talaba chegirmasi (D-48 ni almashtiradi): **9 000 so'm/oy · 49 000 so'm/yil**; xalqaro **$1.49/oy · $9.99/yil**.
   3–4 oydan keyin natijaga qarab ko'riladi (Play narx tajribasi).
 - Reklama roliklari **uz/ru/en**: maqsad — talaba (kelajakdagi shifokor, laborant, biokimyogar) ilova
@@ -805,6 +813,8 @@ D-46 dagi paketlar aniqlashtirildi: shaxsiy **Pro** (laborant, shifokor, toifaga
   Claude'ni ilova ichida (Pro, D-54) ishlatish alohida qaror bo'lib qoladi.
 
 ## D-57. Ustoz Pro narxi: Pro'dan qimmat, lekin D-48 dagidan arzon (2026-10-17, egasi qarori)
+> **SUPERSEDED (D-73/D-74, 2026-10-24):** narxlar, tariflar, sinov va Pro tafsilotlari D-73/D-74 (va D-75) bilan almashtirilgan. Quyidagi matn — tarix sifatida saqlangan.
+
 D-48 dagi **Ustoz Pro** qatorini (69 000 so'm/oy · 490 000 so'm/yil · $9.99/oy · $69.99/yil) almashtiradi.
 (D-56 raqami boshqa ish uchun band qilingan, shuning uchun D-57.)
 
@@ -1469,3 +1479,55 @@ xavfi); (2) Mutaxassis ustoz panelini olsinmi (hozir ha); (3) saqlash muddati 24
 sinovi uchun qanday tasdiq (hozir `teacher_accounts` / hamjamiyat tasdig'i); (5) qo'shimcha email aliaslari va bir
 martalik domenlar ro'yxati; (6) attestatsiya yo'q qurilmalar (Huawei/AOSP, web) — sinov yo'q (hozir) yoki boshqa yo'l;
 (7) D-73 §5 dagi qolgan qarorlar.
+
+## D-75. Pro tayyorligi: do'kon tekshiruvi, bildirishnomalar, sandbox, oflayn, sinov platformasi (2026-10-24; Pro YOQILMAGAN)
+`pro-next` tarmog'ida. **Hech narsa deploy qilinmadi, yoqilmadi, do'konga yuborilmadi, push qilinmadi; production D1 ga
+migratsiya qo'llanmadi** (`0016_billing_notifications.sql` — faqat fayl). `BuildFlags.proEnabled` standart `false`,
+`LG_BILLING_ENABLED` o'chiq (yo'llar 404), `ProGatePolicy.gated` BO'SH, `LG_BILLING_SANDBOX` o'chiq,
+`TRIAL_PLATFORMS` standart `android`. Mavjud bepul foydalanuvchilar huquqi o'zgarmadi. Narxlar — D-73 (yagona manba
+`pro_catalog.dart`). To'liq audit: `docs/PRO_READINESS_2026-10-24.md`; test muhiti: `docs/PRO_TEST_ENVIRONMENT.md`;
+Apple'ga savol loyihasi: `docs/APPLE_REVIEW_QUESTION_DRAFT.md` (yuborilmagan).
+
+**Server.** Injeksiya qilinadigan `StoreVerifier` (`deps.storeVerifiers`; haqiqiy App Store Server API / Play
+Developer API, kalitsiz `503 store_verifier_not_configured`). Apple JWS — x5c zanjiri Apple Root CA - G3 ga pin
+(SHA-256 `63343abf…3e9179`, `src/x509.ts`), Apple OID, muddat, ES256; tranzaksiya muhiti host bilan mos. ASSN V2 va
+RTDN: imzo / Pub/Sub OIDC (yoki URL token; hech biri bo'lmasa 503), `notificationUUID`/`messageId` bo'yicha takror
+tashlanadi, `audit_log` ga `billing_notification`; REFUND/REVOKE/REVOKED/voided — darhol `revoked`; grace — Pro bor;
+billing retry/hold/pause/expired — yo'q; holat har doim do'kon API'sidan qayta o'qiladi. `LG_BILLING_SANDBOX=true`
+bo'lmasa sandbox/test xaridi `403 sandbox_not_allowed`, sandbox bildirishnomasi e'tiborsiz. Play: obuna
+(`uz.labguide.<daraja>`) + base plan (`monthly`/`yearly`) → kanonik id `uz.labguide.<daraja>.<davr>` (App Store id
+bilan bir xil); eski D-46 id'lari alias. `restore: true` — hisobning qatorlari do'kondan qayta o'qiladi. Javobda
+`offline_until` = min(hozir + 7 kun, huquq tugashi). Sinov: `TRIAL_PLATFORMS` (standart `android`) — iOS
+`403 trial_not_available_on_platform`; `GET /v1/billing/status` → `trial: {android, ios, platforms}` (platforma ×
+attestatsiya) va `sandbox`.
+
+**Ilova.** Play'da faqat asosiy reja (sinov/chegirma takliflari tanlanmaydi), do'kon kirish taklifi ko'rsatilmaydi
+(`ProTrialConfig.storeIntroOffersAllowed = false`, mexanizm `serverGranted`, 30 kun). Oflayn: kesh chegarasi min(7 kun,
+`offline_until`), qurilma kaliti bilan HMAC; uzaytirilmaydi; bepul imkoniyatlar hech qachon yopilmaydi. Ilova qayta
+ochilganda yangilash (5 daqiqalik throttle) + kirish/ishga tushishda. Sinov tugmasi faqat server imkoniyat so'rovi
+VA attestatsiya bo'lsa; aks holda oddiy izoh; sinov kodi xarid boshlamaydi. “Obuna” ekrani POLICY_REVIEW bo'yicha
+(do'kon narxi eng ko'zga tashlanadi, yillik — yillik, boshqarish/bekor, tiklash, shartlar, maxfiylik, sinov matni
+“to'lov usuli yo'q, pul yechilmaydi, bepul imkoniyatlar davom etadi”, “Pro tugadi”). Debug soxta xarid
+(`LG_FAKE_PURCHASES`, release'da imkonsiz). Admin grantlar hisobga bog'langan (platformaga emas) — shuning uchun
+`ADMIN_GRANTS_PLATFORMS` qo'shilmadi; iOS'dagi xavf Apple savolida (2-savol).
+
+**Testlar.** `cloudflare/test/billing.test.ts`, `billing_lifecycle.test.ts`, `x509.test.ts`, `trial.test.ts`,
+`guards.test.ts`; ilova `test/unit/pro_readiness_d75_test.dart`, `test/widget/subscription_screen_test.dart`,
+`test/guards/pro_flag_default_guard_test.dart` (D-75 guruhi), `entitlements_flow_test.dart`.
+
+**Egasi qarorlari (OCHIQ).**
+1. iOS sinovi: Apple'ga savol yuborish; javobga qarab variant A (iOS'da vaqtli sinov yo'q) yoki B (1 oylik App Store
+   kirish taklifi — avtomatik pullik, egasi qoidasiga zid); ijobiy bo'lsa `TRIAL_PLATFORMS=android,ios` + DeviceCheck.
+2. Family Sharing — ishga tushirishda O'CHIQ (yoqilsa qaytarib bo'lmaydi).
+3. Sinov xeshlarini hisob o'chirilgandan keyin 24 oy saqlash — yurist tekshiruvi (Apple 5.1.1(v) bo'yicha NOANIQ).
+4. Play Integrity “device recall” beta'ga yozilish; haqiqiy Play Integrity / DeviceCheck tekshiruvchilari (kalitlar,
+   native plaginlar) — hozir YO'Q.
+5. Do'kon mahsulotlari: App Store — bitta guruh, 6 mahsulot; Play — 3 obuna × 2 base plan, sinov offer'isiz.
+6. Kalitlar (Worker secretlari): `APPLE_IAP_*`, `GOOGLE_PLAY_SERVICE_ACCOUNT`, `PLAY_RTDN_AUDIENCE`/
+   `PLAY_RTDN_SERVICE_ACCOUNT` (yoki `PLAY_RTDN_TOKEN`), ixtiyoriy `APPLE_SUBSCRIPTION_GROUP_ID`.
+7. Migratsiyalar 0013–0016 ni qo'llash (avval test D1, keyin production — egasi `deploy_api` bilan).
+8. `LG_BILLING_ENABLED` ni qachon yoqish; App Review sandbox xaridlari uchun `LG_BILLING_SANDBOX` siyosati
+   (production'da o'chiq bo'lsa review xaridi rad etiladi).
+9. Play Data safety (“Device or other IDs”, “Purchase history”, firibgarlikka qarshi) va App Privacy (“Device ID”,
+   “Purchase History”) deklaratsiyalari, maxfiylik siyosati §10a nashri.
+10. D-73/D-74 dagi boshqa ochiq qarorlar (nima pullik bo'ladi — hozir hech narsa; Mutaxassis → ustoz paneli va h.k.).

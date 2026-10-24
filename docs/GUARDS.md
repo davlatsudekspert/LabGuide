@@ -57,6 +57,8 @@ qatlamlarini ishga tushiradi» — Python qadamlari yoki worker testlari olib ta
 | D-58/D-71 (pro-next): proEnabled=false bo‘lsa paywall yo‘q; Pro kodi ruxsat etilgan fayllarda; marshrut va Profil qatori bayroq ortida; iOS IAP yo‘q | `product_policy_guard_test.dart :: D-58/D-71 …` (standart bayroq, Pro kodi oqib chiqmaydi, marshrut/Profil bayroq ortida, iOS) |
 | D-71: Pro standart O‘CHIQ; yopish ro‘yxati bo‘sh; bepul davr o‘chiq; narxlar TAKLIF; eski narx/sinov yo‘q | `test/guards/pro_flag_default_guard_test.dart`; `test/widget/pro_flag_off_test.dart` |
 | D-71: billing yo‘llari LG_BILLING_ENABLED bo‘lmasa 404 | `cloudflare/test/guards.test.ts :: qorovul: billing inert` |
+| D-75: sandbox xaridi bayroqsiz rad; iOS sinovi standart yopiq; kalitsiz 503 store_verifier_not_configured | `cloudflare/test/guards.test.ts :: qorovul: Pro to‘lov standartlari (D-75)` |
+| D-75: soxta (debug) xarid release’da imkonsiz; narx yagona manbada; do‘kon sinov taklifi yo‘q | `test/guards/pro_flag_default_guard_test.dart :: D-75 …` |
 | D-74: sinov va `/v1/pro/*` yo‘llari bayroqsiz 404; bayroq bilan attestatsiyasiz 503; Talaba rejasi ustoz panelini ochmaydi; sinov bir telefonga bir marta | `cloudflare/test/guards.test.ts`, `cloudflare/test/trial.test.ts`, `cloudflare/test/tiers.test.ts` |
 | D-74: “Obuna” qatori va `/profile/subscription` faqat `BuildFlags.proEnabled`; matritsa server bilan bir xil | `product_policy_guard_test.dart`, `test/widget/subscription_screen_test.dart`, `test/unit/plan_matrix_test.dart` |
 | D-58: serverda billing yo‘llari yo‘q, `/v1/me` `plan` bermaydi | `cloudflare/test/guards.test.ts :: D-58: Pro / to‘lov / obuna yo‘llari yo‘q`, `D-58: /v1/me tarifni (plan) bermaydi` |
