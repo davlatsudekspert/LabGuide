@@ -4645,6 +4645,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get toifaNoteNoSource => 'No source is given for this note.';
 
   @override
+  String get toifaNoGuaranteeNote =>
+      'Questions are based on official preparation materials. There is no guarantee that these exact questions will appear in the exam; the app is not affiliated with the examination body.';
+
+  @override
   String get toifaRelatedCards => 'Related cards';
 
   @override

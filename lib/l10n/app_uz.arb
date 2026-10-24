@@ -1334,6 +1334,7 @@
   "toifaScoredByOfficial": "Ball rasmiy kalit bo‘yicha hisoblanadi — imtihonda shu javob talab qilinadi.",
   "toifaNoOfficialKey": "Ro‘yxatda kalit belgilanmagan — bu savol baholanmaydi.",
   "toifaNoteNoSource": "Izoh uchun manba ko‘rsatilmagan.",
+  "toifaNoGuaranteeNote": "Savollar rasmiy tayyorgarlik materiallari asosida. Imtihonda aynan shu savollar tushishiga kafolat berilmaydi; ilova rasmiy imtihon organi bilan bog‘liq emas.",
   "toifaRelatedCards": "Bog‘liq kartalar",
   "toifaOralSubtitle": "{count} ta savol · tayyorlanish va o‘zini baholash",
   "toifaOralPool": "{category}: ro‘yxatda {count} ta savol",

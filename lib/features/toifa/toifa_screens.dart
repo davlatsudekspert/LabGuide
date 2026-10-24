@@ -329,6 +329,11 @@ class _ToifaHubScreenState extends State<ToifaHubScreen> {
           kind: NoticeKind.info,
         ),
       const ToifaTodayCard(),
+      Text(
+        l.toifaNoGuaranteeNote,
+        key: const ValueKey('toifa-hub-no-guarantee'),
+        style: text.bodySmall,
+      ),
       LgSectionTitle(l.toifaYourCategory),
       const ToifaCategoryPicker(),
       const SizedBox(height: 8),
@@ -699,6 +704,12 @@ class _ToifaTestScreenState extends State<ToifaTestScreen> {
         label: practice ? l.toifaDrillStart : l.toifaTestStart,
         icon: Icons.play_arrow_rounded,
         onPressed: () => _start(bank),
+      ),
+      const SizedBox(height: 8),
+      Text(
+        l.toifaNoGuaranteeNote,
+        key: const ValueKey('toifa-no-guarantee'),
+        style: Theme.of(context).textTheme.bodySmall,
       ),
       ExamHistory(exams: exams, sourceId: ToifaQuestionSource.sourceId),
     ];

@@ -4667,6 +4667,10 @@ class AppLocalizationsRu extends AppLocalizations {
   String get toifaNoteNoSource => 'Источник для пояснения не указан.';
 
   @override
+  String get toifaNoGuaranteeNote =>
+      'Вопросы составлены по официальным материалам для подготовки. Гарантии, что именно эти вопросы попадутся на экзамене, нет; приложение не связано с экзаменационным органом.';
+
+  @override
   String get toifaRelatedCards => 'Связанные карточки';
 
   @override
