@@ -13,6 +13,10 @@ import 'package:labguide/app/widgets/lg_page.dart';
 import 'package:labguide/core/backend/community_backend.dart';
 import 'package:labguide/core/backend/lab_backend.dart';
 import 'package:labguide/core/build_flags.dart';
+import 'package:labguide/core/entitlements/entitlement_cache.dart';
+import 'package:labguide/core/entitlements/entitlement_source.dart';
+import 'package:labguide/core/entitlements/feature.dart';
+import 'package:labguide/core/entitlements/purchase_adapter.dart';
 import 'package:labguide/core/storage/kv_store.dart';
 import 'package:labguide/features/auth/otp_auth.dart';
 import 'package:labguide/features/auth/social_auth.dart';
@@ -70,6 +74,15 @@ Future<AppServices> makeServices(
   // Hamkor (reklama) UI: `null` — build bayrog'i (standart o'chiq, do'kon
   // build kabi); `true` — TestFlight/Play ichki test build kabi.
   bool? partnerAds,
+  // Pro (D-71): `null` — build bayrog'i (standart o'chiq = bepul reliz).
+  // `true` — Pro qatlami yoqilgan (pro-next sinov buildi).
+  bool? proEnabled,
+  bool? allFeaturesOpen,
+  // Pro yoqilganda: soxta do'kon va server (test/helpers/billing_fakes.dart).
+  PurchaseAdapter? purchases,
+  EntitlementSource? entitlementSource,
+  // Haqiqatan yopiladigan imkoniyatlar (berilmasa — `ProGatePolicy.gated`).
+  Set<Feature>? gatedFeatures,
   ReminderScheduler? reminderScheduler,
   ResultSharer? sharer,
   DateTime Function()? clock,
@@ -83,6 +96,10 @@ Future<AppServices> makeServices(
   bool loadToifa = true,
 }) async {
   final s = store ?? MemoryKeyValueStore();
+  if (proEnabled != null) {
+    BuildFlags.debugProEnabledOverride = proEnabled;
+    addTearDown(() => BuildFlags.debugProEnabledOverride = null);
+  }
   if (partnerAds != null) {
     BuildFlags.debugPartnerAdsOverride = partnerAds;
     addTearDown(() => BuildFlags.debugPartnerAdsOverride = null);
@@ -112,6 +129,11 @@ Future<AppServices> makeServices(
     community: community,
     socialAuth: socialAuth ?? SocialAuthService.none(),
     qrScanner: qrScanner ?? FakeQrScanner(),
+    entitlementKeys: MemoryEntitlementKeyStore(),
+    allFeaturesOpen: allFeaturesOpen,
+    purchases: purchases,
+    entitlementSource: entitlementSource,
+    gatedFeatures: gatedFeatures,
   );
   if (languageChosen) {
     await services.settings.chooseLanguage(language);
@@ -157,10 +179,7 @@ Future<void> pumpApp(
   tester.view.devicePixelRatio = ratio;
   tester.view.physicalSize = size * ratio;
   if (notch) {
-    tester.view.padding = FakeViewPadding(
-      top: 47 * ratio,
-      bottom: 34 * ratio,
-    );
+    tester.view.padding = FakeViewPadding(top: 47 * ratio, bottom: 34 * ratio);
   }
   tester.platformDispatcher.textScaleFactorTestValue = textScale;
   tester.platformDispatcher.platformBrightnessTestValue = platformBrightness;

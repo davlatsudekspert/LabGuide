@@ -44,74 +44,168 @@ final _payWords = RegExp(
 const _payAllow = {'partnerPriceTitle', 'partnerPriceBody', 'admSales'};
 
 void main() {
-  group('D-58: ilovada Pro / to‘lov / obuna yo‘q', () {
-    test('ARB matnlarida to‘lov so‘zlari yo‘q (uz/ru/en)', () {
-      for (final lang in ['uz', 'ru', 'en']) {
-        final bad = [
-          for (final e in _arb(lang).entries)
-            if (!_payAllow.contains(e.key) && _payWords.hasMatch(e.value))
-              '${e.key}: ${e.value}',
-        ];
-        expect(bad, isEmpty, reason: lang);
-      }
-    });
+  // pro-next (D-71): Pro kodi mavjud, lekin `BuildFlags.proEnabled == false`
+  // (standart) bo'lganda ilova D-58 bilan bir xil — paywall yo'q. `main` dagi
+  // qat'iy D-58 qorovuli bu yerda "bayroq ortidagi Pro" qorovuliga aylandi.
+  group(
+    'D-58/D-71: proEnabled=false bo‘lsa ilovada Pro / to‘lov / obuna yo‘q',
+    () {
+      test('standart: Pro bayrog‘i o‘chiq', () {
+        BuildFlags.debugProEnabledOverride = null;
+        expect(BuildFlags.proEnabled, isFalse);
+      });
 
-    test(
-      'ruxsat ro‘yxatidagi kalitlar hali mavjud (eskirgan istisno yo‘q)',
-      () {
-        final uz = _arb('uz');
-        for (final k in _payAllow) {
-          expect(uz.containsKey(k), isTrue, reason: k);
-        }
-      },
-    );
-
-    test('xarid plaginlari va Pro kodi yo‘q (pubspec, lib/)', () {
-      final pubspec = _read('pubspec.yaml');
-      for (final p in [
-        'in_app_purchase',
-        'purchases_flutter',
-        'revenuecat',
-        'flutter_inapp_purchase',
-        'pay:',
-      ]) {
-        expect(pubspec.contains(p), isFalse, reason: p);
-      }
-      final code = RegExp(
-        r'in_app_purchase|purchases_flutter|InAppPurchase|SKPayment|'
-        r'Paywall|ProScreen|ProPlan|isPro\b|proUnlocked|subscriptionStatus',
+      test(
+        'ARB: `pro*` kalitlaridan tashqari matnlarda to‘lov so‘zlari yo‘q',
+        () {
+          for (final lang in ['uz', 'ru', 'en']) {
+            final bad = [
+              for (final e in _arb(lang).entries)
+                if (!e.key.startsWith('pro') &&
+                    !_payAllow.contains(e.key) &&
+                    _payWords.hasMatch(e.value))
+                  '${e.key}: ${e.value}',
+            ];
+            expect(bad, isEmpty, reason: lang);
+          }
+        },
       );
-      for (final f in _libDart()) {
-        final m = code.firstMatch(f.readAsStringSync());
-        expect(m, isNull, reason: '${f.path}: ${m?[0]}');
-      }
-    });
 
-    test('marshrutlarda Pro/xarid sahifasi yo‘q', () {
-      final router = _read('lib/app/router.dart');
-      for (final p in [
-        "path: 'pro'",
-        "'/pro'",
-        'paywall',
-        'subscription',
-        'purchase',
-        'billing',
-      ]) {
-        expect(router.contains(p), isFalse, reason: p);
-      }
-    });
+      test('`pro*` kalitlari uch tilda bir xil; ichida narx raqami yo‘q', () {
+        final keys = {
+          for (final lang in ['uz', 'ru', 'en'])
+            lang: _arb(lang).keys.where((k) => k.startsWith('pro')).toSet(),
+        };
+        expect(keys['uz'], isNotEmpty);
+        expect(keys['ru'], keys['uz']);
+        expect(keys['en'], keys['uz']);
+        for (final lang in ['uz', 'ru', 'en']) {
+          for (final e in _arb(
+            lang,
+          ).entries.where((e) => e.key.startsWith('pro'))) {
+            expect(
+              RegExp(
+                r"\$\s?\d|\d\s?(usd|so['‘ʼ’]m|сум)\b",
+                caseSensitive: false,
+              ).hasMatch(e.value),
+              isFalse,
+              reason: '$lang ${e.key}: narx ilovada qotirilmaydi',
+            );
+          }
+        }
+      });
 
-    test('iOS: In-App Purchase imkoniyati yoqilmagan', () {
-      for (final path in [
-        'ios/Runner/Runner.entitlements',
-        'ios/Runner/Info.plist',
-      ]) {
-        final f = File(path);
-        if (!f.existsSync()) continue;
-        expect(f.readAsStringSync(), isNot(contains('in-app-payments')));
-      }
-    });
-  });
+      test(
+        'ruxsat ro‘yxatidagi kalitlar hali mavjud (eskirgan istisno yo‘q)',
+        () {
+          final uz = _arb('uz');
+          for (final k in _payAllow) {
+            expect(uz.containsKey(k), isTrue, reason: k);
+          }
+        },
+      );
+
+      test('Pro kodi faqat ruxsat etilgan fayllarda (oqib chiqmasin)', () {
+        // Pro qatlami shu fayllarda; boshqa hech qaysi lib/ fayli xarid
+        // plaginiga, paywall/ProScreen/isPro ga tegmaydi.
+        const allowed = [
+          'lib/core/entitlements/',
+          'lib/features/profile/purchase_screen.dart',
+          'lib/features/profile/pro_gate.dart',
+        ];
+        final code = RegExp(
+          r'in_app_purchase|purchases_flutter|InAppPurchase|SKPayment|'
+          r'Paywall|ProScreen|ProPlan|isPro\b|proUnlocked|subscriptionStatus',
+        );
+        for (final f in _libDart()) {
+          final path = f.path.replaceAll(r'\', '/');
+          if (allowed.any(path.contains)) continue;
+          final m = code.firstMatch(f.readAsStringSync());
+          expect(m, isNull, reason: '${f.path}: ${m?[0]}');
+        }
+      });
+
+      test('xarid plaginlari faqat in_app_purchase* (boshqa SDK yo‘q)', () {
+        final pubspec = _read('pubspec.yaml');
+        for (final p in [
+          'purchases_flutter',
+          'revenuecat',
+          'flutter_inapp_purchase',
+          'pay:',
+        ]) {
+          expect(pubspec.contains(p), isFalse, reason: p);
+        }
+      });
+
+      test('plagin faqat entitlements/ da import qilinadi va main.dart faqat '
+          'bayroq ortida ishga tushiradi', () {
+        for (final f in _libDart()) {
+          final path = f.path.replaceAll(r'\', '/');
+          if (path.startsWith('lib/core/entitlements/')) continue;
+          expect(
+            f.readAsStringSync().contains('package:in_app_purchase'),
+            isFalse,
+            reason: path,
+          );
+        }
+        final main = _read('lib/main.dart');
+        expect(
+          main,
+          contains(
+            'if (BuildFlags.proEnabled) unawaited(services.entitlements.start());',
+          ),
+        );
+        expect(
+          main,
+          contains('BuildFlags.proEnabled\n        ? EntitlementService('),
+        );
+        expect(main, contains(': EntitlementService.disabled()'));
+      });
+
+      test(
+        'marshrut: /profile/purchase faqat `if (BuildFlags.proEnabled)` ichida',
+        () {
+          final router = _read('lib/app/router.dart');
+          expect(
+            RegExp(
+              r"if \(BuildFlags\.proEnabled\)\s+GoRoute\(\s+path: 'purchase'",
+            ).hasMatch(router),
+            isTrue,
+          );
+          expect(RegExp(r"path: 'purchase'").allMatches(router), hasLength(1));
+          for (final p in [
+            "path: 'pro'",
+            "'/pro'",
+            'paywall',
+            'subscription',
+            'billing',
+          ]) {
+            expect(router.contains(p), isFalse, reason: p);
+          }
+        },
+      );
+
+      test('Profil: obuna qatori `BuildFlags.proEnabled` ortida', () {
+        final profile = _read('lib/features/profile/profile_screens.dart');
+        expect(
+          RegExp(r'if \(BuildFlags\.proEnabled &&\s+\(ent\.purchasesEnabled')
+              .hasMatch(profile),
+          isTrue,
+        );
+      });
+
+      test('iOS: In-App Purchase imkoniyati yoqilmagan', () {
+        for (final path in [
+          'ios/Runner/Runner.entitlements',
+          'ios/Runner/Info.plist',
+        ]) {
+          final f = File(path);
+          if (!f.existsSync()) continue;
+          expect(f.readAsStringSync(), isNot(contains('in-app-payments')));
+        }
+      });
+    },
+  );
 
   group('hamkor reklamasi (LG_PARTNER_ADS)', () {
     test('standart build: bayroq o‘chiq, release buildda o‘zgarmas', () {
