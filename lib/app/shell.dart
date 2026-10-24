@@ -310,8 +310,14 @@ class _GlassTabBar extends StatelessWidget {
     final margin = narrow ? 4.0 : 12.0;
     final fullWidth = math.min(width - 2 * margin, _Nav.maxWidth);
     final compactWidth = math.min(fullWidth, _Nav.compactWidth);
-    // Home indikatori ustida suzadi: xavfsiz hududning yarmi (kamida 8).
-    final gap = math.max(8.0, media.padding.bottom / 2);
+    // iOS: home indikatori ustida suzadi — xavfsiz hududning yarmi (kamida 8).
+    // Android: 3 tugmali tizim paneli shaffof emas va bosiladi — menyu
+    // butunlay uning ustida tursin (to'liq xavfsiz hudud), aks holda
+    // tugmalar bir-birining ustiga tushadi.
+    final android = Theme.of(context).platform == TargetPlatform.android;
+    final gap = android
+        ? math.max(8.0, media.padding.bottom)
+        : math.max(8.0, media.padding.bottom / 2);
 
     // Nomning bir qatorli balandligi: masshtab katta bo'lsa panel o'sadi.
     final labelStyle = tabLabelStyle(text, selected: true);
