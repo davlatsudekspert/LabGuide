@@ -1286,3 +1286,88 @@ Ustoz $5.99 (oylik); yillik, 30 kunlik bepul davr va pullik funksiyalar — ALOH
 huquqi egasi qarorisiz cheklanmaydi; billing/paywall/server faollashtirilmaydi. To'liq matn: `docs/PRO_PROPOSAL_D72.md`.
 Kodga o'zgarish kiritilmadi (D-71 holati o'zgarmaydi).
 
+
+## D-73. Pro: egasi narxlari (3 daraja), admin tomonidan Pro berish (2026-10-24; narxlar EGASI QARORI, Pro YOQILMAGAN)
+`pro-next` tarmog'ida. `main` va bepul reliz o'zgarmaydi. **Hech narsa deploy qilinmadi, yoqilmadi, do'konga yuborilmadi;
+production D1 ga migratsiya qo'llanmadi** (0014 — faqat fayl). `BuildFlags.proEnabled` standart `false`,
+server `LG_BILLING_ENABLED` o'chiq (billing va admin grant yo'llari 404), `ProGatePolicy.gated` BO'SH,
+`ProTrialConfig.freeTrialDays = null` — mavjud bepul foydalanuvchilar huquqi o'zgarmaydi.
+
+**1. Narxlar — OWNER-DECIDED 2026-10-24 (lekin ENABLED EMAS).** D-71/D-72 dagi taklif narxlar va tariflar ularni
+almashtirib bekor qiladi (Standart 3.99, eski Ustoz 5.99, yillik `null`). Narx kodda MA'LUMOT
+(`lib/core/entitlements/pro_catalog.dart`, `ProPricing`); ekran narxni do'kondan oladi.
+| Daraja | Oylik (USD) | Yillik (USD) |
+|---|---|---|
+| Talaba (Student) | 1.49 | 9.99 |
+| Ustoz (Teacher) | 2.49 | 24.99 |
+| Mutaxassis (Specialist) | 3.49 | 34.99 |
+Yillik narx belgilangani uchun yillik mahsulot ro'yxatda (`annualOffered`), lekin hammasi baribir bayroq ortida.
+Eski-narx qorovuli o'z kuchida: 29 000 so'm, $4.99, $6.99, 7/14 kunlik sinov — endi 3.99 va 5.99 ham taqiqlangan
+(`pro_flag_default_guard_test`). Hozirgi 9.99 va 34.99 yangi yillik narxlar bo'lgani uchun taqiqdan olindi.
+
+**Daraja → ilova darajasi (`ProTier`) moslashi** (tayyorgarlik; hech narsa yopilmagani uchun amalda ta'sirsiz):
+Talaba → Pro; Ustoz → Ustoz Pro; Mutaxassis → Ustoz Pro darajasi (eng qimmat reja kamroq bermasin). Server
+huquqni hal qilishda tartib: Talaba < Ustoz < Mutaxassis (narx tartibi). Bu moslash — ochiq qaror.
+
+**Mahsulot id'lari** (do'konlarda HECH QANDAY mahsulot hali yaratilmagan, shuning uchun nomlarni almashtirish bepul):
+| Yangi id | Daraja | Eski id (alias sifatida qoldi) |
+|---|---|---|
+| `uz.labguide.student.monthly` / `.yearly` | Talaba | `uz.labguide.pro.student.monthly` / `.yearly` |
+| `uz.labguide.teacher.monthly` / `.yearly` | Ustoz | `uz.labguide.teacherpro.monthly` / `.yearly` |
+| `uz.labguide.specialist.monthly` / `.yearly` | Mutaxassis | `uz.labguide.pro.monthly` / `.yearly` (eski «Oddiy/Pro» → Mutaxassis) |
+Eski id'lar `BillingCatalog.legacyAliases` va serverdagi `BILLING_PRODUCTS` da faqat o'qish uchun alias (eski server
+qatori / kesh buzilmasin); yangi do'kon mahsuloti ularda YARATILMAYDI. Unit test ilova va server ro'yxatini solishtiradi.
+
+**2. Bepul sinov.** `freeTrialDays` = `null`, mexanizm (`undecided`) o'zgarmadi: 30 kunlik davr hali qaror qilinmagan,
+hech narsa yozilmadi.
+
+**3. Admin tomonidan Pro berish** (faqat `LG_BILLING_ENABLED=true` bo'lganda mavjud; bo'lmasa 404, hatto admin
+tokeni bilan ham).
+- Yo'llar: `POST /v1/admin/pro-grants {email, tier: student|teacher|specialist, durationDays?: 30|90|365|null,
+  note?, mode?: replace|extend}`, `DELETE /v1/admin/pro-grants/:id`, `GET /v1/admin/pro-grants` (faol va kutilayotgan).
+- Vakolat: serverda berilgan admin roli (`admins`) VA TOTP (aal2) — mavjud `requireAdmin` modeli. Oddiy foydalanuvchi
+  403, TOTP siz admin 403, tokensiz 401. Egasi paneli (TOTP siz, `ADMIN_EMAILS`) bu amalga YETMAYDI: Pro berish —
+  “Adminlar boshqaruvi” kabi 2FA talab qiladi.
+- Email: trim + kichik harf (`normalizeEmail`), yaroqsiz email 400; saqlashda faqat HMAC + niqob (`ab***@…`), javob va
+  jurnalda to'liq email yo'q. Daraja/muddat/izoh tekshiriladi (izoh ≤ 200 belgi, boshqaruv belgilarisiz).
+- Hisob yo'q bo'lsa grant KUTILMOQDA (`starts_at IS NULL`); hisob ochilganda yoki birinchi kirishda
+  (`findOrCreateUser`, email kodi ham Google/Apple ham) qo'llanadi — muddat shu paytdan; jurnal `pro_grant_applied`.
+  Hisob bor bo'lsa — darhol. Kirish hech qachon grant xatosi tufayli to'xtamaydi.
+- Qayta berish aniq: `replace` (standart; daraja/muddat/izoh yangilanadi, muddat hozirdan, bitta faol qator) yoki
+  `extend` (mavjud tugashidan uzaytiradi, yuqori daraja qoladi; kutilayotganga 409 `pending_cannot_extend`,
+  muddatsiz so'rovga `duration_required`). Bir emailga bitta faol grant (unique indeks).
+- Huquqni hal qilish (`resolveAccess`, `GET /v1/billing/entitlements` da `resolved`): faqat hozir amaldagilar;
+  YUQORI daraja yutadi, teng darajada UZOQROQ muddat (muddatsiz — eng uzoq), to'liq tenglikda DO'KON. Admin grant
+  do'kon obunasini hech qachon bosib o'tmaydi va uni o'chirmaydi; grant qatori `source: admin_grant`,
+  `platform: admin_grant`, `ownership: granted`. Muddat tugasa `expired` (huquq yo'q); bekor qilinsa qator darhol yo'qoladi.
+- Audit (`audit_log`): `pro_grant_created|replaced|extended|revoked|applied` — kim (actor), nishon grant id, ichida
+  niqoblangan email, daraja, `until`, hisob id si. Izoh jurnalga yozilmaydi.
+- Limit: berish soatiga 30, bekor soatiga 60, ro'yxat 10 daqiqada 60 (har admin uchun); faol grantlar ≤ 2000.
+- Hisob o'chirilsa shu emailning grantlari ham o'chadi (`deleteUserData`).
+- Ilova: Admin panelda “Pro berish” qatori → ekran (email, daraja, muddat, izoh, uzaytirish tanlovi, tasdiq oynasi;
+  faol/kutilayotgan ro'yxat; qaytarib olish — tasdiq bilan). FAQAT `BuildFlags.proEnabled` VA admin (AdminGate: admin
+  roli + TOTP) bo'lganda; bayroq o'chiq bo'lsa `services.proGrants == null`, qator ham yo'l ham yo'q — panel avvalgidek.
+  Klient `admin_grant` qatorini taniydi (`ServerEntitlement.isAdminGrant`, `ProSource.adminGrant`), eng yaxshisini
+  serverdagi qoida bilan tanlaydi.
+- Migratsiya `cloudflare/migrations/0014_pro_grants.sql` — FAYL. Qo'llash egasi `deploy_api` ni ishga tushirganda
+  (CI bu ishda ishga tushirilmadi). 0007 raqami band bo'lib qoladi.
+
+**4. Regressiya qorovullari.** `proEnabled` standart false; `ProGatePolicy.gated` bo'sh va hech bir bepul imkoniyat
+unda yo'q; bayroq o'chiq — paywall/obuna qatori/admin “Pro berish” yo'q (`admin_pro_grant_test`,
+`pro_flag_default_guard_test`, `product_policy_guard_test`); admin grant yo'llari bayroqsiz 404
+(`cloudflare/test/progrants.test.ts`, `guards.test.ts`); billing va grant kodi `app.ts` da faqat `billingRoutes` ichida.
+
+**5. HALI OCHIQ (egasi qarori kerak).**
+1. 30 kunlik bepul davr mexanizmi: do'kon kirish taklifi (a) yoki server `trial_until` (b) yoki yo'q (c).
+2. Nima pullik bo'ladi (`ProGatePolicy.gated`), va har daraja nimani ochadi (Talaba/Ustoz/Mutaxassis farqi, yuqoridagi
+   moslash to'g'rimi).
+3. Mavjud bepul foydalanuvchilar (grandfathering): hozirgi huquq saqlanishi — tavsiya HA, qaror emas.
+4. Mehmon xaridi qoidasi: hisobsiz sotib olish mumkinmi (eski kod ruxsat bergan).
+5. UZS narx pog'onalari (Play UZS; Apple UZ — USD qabul) va yillik narxning mahalliy yaxlitlanishi.
+6. Do'kon mahsulotlari va kalitlari (yuqoridagi yangi id'lar bilan App Store Connect / Play Console), `deploy_api`
+   qachon va kim; `APPLE_IAP_*`, `GOOGLE_PLAY_SERVICE_ACCOUNT`.
+7. Maxfiylik siyosati / Foydalanish shartlari matni (obuna va admin bergan Pro), Play Data safety / App Privacy yangilanishi.
+8. Talaba tasdig'i (usuli; hozir `studentVerified=false`, talaba mahsulotlari ko'rinmaydi).
+9. Admin grant siyosati: kim bera oladi (hozir har aal2 admin), maksimal muddat/ro'yxat hajmi, kutilayotgan grantning
+   amal qilish muddati (hozir cheksiz), grant haqida foydalanuvchiga xabar (hozir yo'q).
+10. `pro-next` → `main` qoidasi va `pro-later` arxiv tegi (D-71 #7).
