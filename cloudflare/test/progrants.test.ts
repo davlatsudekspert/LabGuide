@@ -2,7 +2,7 @@
 // LG_BILLING_ENABLED=true bo'lmasa 404; vakolat — admin roli + TOTP (aal2).
 import { describe, expect, it } from 'vitest';
 import { GRANT_PER_HOUR } from '../src/progrants';
-import { BILLING_PRODUCTS, resolveAccess } from '../src/billing';
+import { BILLING_PRODUCTS, canonicalProduct, PLAY_SUBSCRIPTIONS, PLANS, resolveAccess } from '../src/billing';
 import { makeServer as baseServer, uniqueEmail } from './helpers';
 
 const DAY = 86400_000;
@@ -304,10 +304,10 @@ describe('admin grant: audit va chegaralar', () => {
 });
 
 describe('huquqni hal qilish: do‘kon obunasini bosib o‘tmaydi', () => {
-  const store = (plan: 'student' | 'teacher' | 'specialist', exp: number | null, granting = true) => ({
+  const store = (plan: 'student' | 'teacher' | 'specialist' | 'premium', exp: number | null, granting = true) => ({
     source: 'store' as const, plan, granting, expiresAt: exp,
   });
-  const adm = (plan: 'student' | 'teacher' | 'specialist', exp: number | null) => ({
+  const adm = (plan: 'student' | 'teacher' | 'specialist' | 'premium', exp: number | null) => ({
     source: 'admin_grant' as const, plan, granting: true, expiresAt: exp,
   });
   const now = 1_000_000;
@@ -348,15 +348,73 @@ describe('huquqni hal qilish: do‘kon obunasini bosib o‘tmaydi', () => {
   });
 });
 
-describe('mahsulot id lari (D-73)', () => {
-  it('uch daraja x oy/yil; eski id lar mos darajaga alias', () => {
-    for (const plan of ['student', 'teacher', 'specialist']) {
+describe('mahsulot id lari (D-73, D-76)', () => {
+  it('to‘rt daraja x oy/yil (Premium qo‘shildi); eski id lar mos darajaga alias', () => {
+    expect(PLANS).toEqual(['student', 'teacher', 'specialist', 'premium']);
+    for (const plan of PLANS) {
       for (const period of ['monthly', 'yearly']) {
         expect(BILLING_PRODUCTS[`uz.labguide.${plan}.${period}`]?.plan, `${plan} ${period}`).toBe(plan);
+        expect(canonicalProduct(`uz.labguide.${plan}`, period)).toBe(`uz.labguide.${plan}.${period}`);
       }
+      expect(PLAY_SUBSCRIPTIONS[`uz.labguide.${plan}`]).toBe(plan);
     }
+    expect(BILLING_PRODUCTS['uz.labguide.premium.monthly'].plan).toBe('premium');
+    expect(BILLING_PRODUCTS['uz.labguide.premium.yearly'].plan).toBe('premium');
     expect(BILLING_PRODUCTS['uz.labguide.pro.monthly'].plan).toBe('specialist');
     expect(BILLING_PRODUCTS['uz.labguide.pro.student.yearly'].plan).toBe('student');
     expect(BILLING_PRODUCTS['uz.labguide.teacherpro.monthly'].plan).toBe('teacher');
+  });
+
+  it('katalogda yo‘q mahsulot qatori — eng past daraja (student), Lab/ustoz paneli emas', async () => {
+    const s = makeServer();
+    const u = await s.signIn(uniqueEmail('unknown-prod'));
+    await s.env.DB.prepare(
+      `INSERT INTO entitlements (platform, original_transaction_id, user_id, product_id, status, started_at, expires_at,
+         latest_token, event_at, updated_at) VALUES ('play_store', ?1, ?2, 'uz.labguide.mystery', 'active', ?3, ?4, 't', ?3, ?3)`,
+    ).bind(`tx-${u.userId}`, u.userId, s.clock.now, s.clock.now + 10 * DAY).run();
+    expect((await ents(s, u.token)).data.resolved).toMatchObject({ source: 'store', plan: 'student' });
+    expect((await s.call('GET', '/v1/pro/check/lab', { token: u.token })).data.error).toBe('tier_insufficient');
+  });
+});
+
+describe('admin grant: to‘rt reja (D-76)', () => {
+  it('Premium beriladi va qo‘llanadi; jurnalda daraja', async () => {
+    const { s, boss } = await setup();
+    const email = uniqueEmail('prem-grant');
+    const u = await s.signIn(email);
+    let id = '';
+    for (const tier of PLANS) {
+      const g = await grant(s, boss.token, { email, tier, durationDays: 30 });
+      expect(g.status, tier).toBe(tier === 'student' ? 201 : 200);
+      expect(g.data.tier).toBe(tier);
+      id = g.data.id;
+      expect((await ents(s, u.token)).data.resolved).toMatchObject({ source: 'admin_grant', plan: tier });
+    }
+    const row = await s.env.DB.prepare('SELECT tier FROM pro_grants WHERE id = ?1').bind(id).first<{ tier: string }>();
+    expect(row!.tier).toBe('premium');
+  });
+
+  it('extend: daraja faqat imkoniyat to‘plami kengaysa almashadi; Ustoz ↔ Mutaxassis — 409 tier_not_comparable', async () => {
+    const { s, boss } = await setup();
+    const email = uniqueEmail('ext-mix');
+    await s.signIn(email);
+    const a = await grant(s, boss.token, { email, tier: 'teacher', durationDays: 30 });
+    expect(a.status).toBe(201);
+    const bad = await grant(s, boss.token, { email, tier: 'specialist', durationDays: 30, mode: 'extend' });
+    expect(bad.status).toBe(409);
+    expect(bad.data.error).toBe('tier_not_comparable');
+    const up = await grant(s, boss.token, { email, tier: 'premium', durationDays: 30, mode: 'extend' });
+    expect(up.status).toBe(200);
+    expect(up.data).toMatchObject({ tier: 'premium', extended: true });
+    // Premium'ni pastroq daraja bilan uzaytirish darajani pasaytirmaydi.
+    const keep = await grant(s, boss.token, { email, tier: 'specialist', durationDays: 30, mode: 'extend' });
+    expect(keep.data).toMatchObject({ tier: 'premium', extended: true });
+  });
+
+  it('noma’lum daraja — 400 invalid_tier', async () => {
+    const { s, boss } = await setup();
+    const r = await grant(s, boss.token, { email: uniqueEmail('gold'), tier: 'gold', durationDays: 30 });
+    expect(r.status).toBe(400);
+    expect(r.data.error).toBe('invalid_tier');
   });
 });

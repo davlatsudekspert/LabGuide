@@ -11,12 +11,16 @@
 // * Do'kon obunasini bosib o'tmaydi (billing.ts `resolveAccess`).
 
 import { audit, emailHash, maskEmail, normalizeEmail, requireAdmin } from './auth';
-import { PLAN_RANK, PLANS, type Plan } from './billing';
+import { PLANS, type Plan } from './billing';
 import { userHash } from './community';
 import type { Ctx } from './context';
 import { iso } from './context';
 import { badRequest, conflict, json, noContent, notFound, readJson } from './http';
 import { hit } from './ratelimit';
+import { TIER_CAPABILITIES } from './tiers';
+
+/** [a] reja [b] ning hamma imkoniyatini ochadimi (D-76 matritsasi bo'yicha). */
+const covers = (a: Plan, b: Plan): boolean => TIER_CAPABILITIES[b].every((c) => TIER_CAPABILITIES[a].includes(c));
 
 export const GRANT_PER_HOUR = 30;
 export const REVOKE_PER_HOUR = 60;
@@ -168,7 +172,11 @@ export async function createGrant(ctx: Ctx): Promise<Response> {
     const base = cur.expires_at == null ? null : Math.max(cur.expires_at, now);
     // Muddatsiz grant uzaytirishda o'zgarmaydi (faqat daraja ko'tarilishi mumkin).
     const expires = base == null ? null : base + days * DAY;
-    const higher = PLAN_RANK[tier] >= PLAN_RANK[cur.tier] ? tier : cur.tier;
+    // Daraja faqat imkoniyat to'plami KENGAYSA almashadi (D-76: matritsa
+    // zinapoya emas). Ustoz ↔ Mutaxassis kabi solishtirib bo'lmaydigan
+    // juftlikda jim tanlov yo'q — admin `replace` bilan aniq tanlaydi.
+    const higher = covers(tier, cur.tier) ? tier : covers(cur.tier, tier) ? cur.tier : null;
+    if (higher == null) throw conflict('tier_not_comparable');
     await ctx.db
       .prepare(
         `UPDATE pro_grants SET tier = ?2, expires_at = ?3, note = COALESCE(?4, note), updated_at = ?5

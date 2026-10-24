@@ -41,6 +41,26 @@ async function startTrial(
   });
 }
 
+/** Hamjamiyatda hujjat bilan tasdiqlangan mutaxassis (AI soxtasi, community.test.ts dagidek). */
+async function verifySpecialist(s: Srv, token: string) {
+  s.setAi(async () => ({
+    response: {
+      is_document: true,
+      document_type: 'diploma',
+      field_is_lab_or_medical: true,
+      institution_visible: true,
+      issue_year: 2015,
+      confidence: 0.92,
+    },
+  }));
+  const r = await s.call('POST', '/v1/community/verify?role=laborant&country=UZ', {
+    token,
+    raw: new Uint8Array([0xff, 0xd8, 0xff, 0xe0, 1, 2, 3]),
+    headers: { 'content-type': 'image/jpeg' },
+  });
+  expect(r.data.status).toBe('verified');
+}
+
 const ents = (s: Srv, token: string) => s.call('GET', '/v1/billing/entitlements', { token });
 const dev = () => `device-${crypto.randomUUID()}`;
 
@@ -94,12 +114,13 @@ describe('trial: bayroq va sozlama', () => {
 });
 
 describe('trial: berish va suiiste’mol cheklovlari', () => {
-  it('birinchi sinov: 201, 30 kun, source=trial; resolver va jurnal', async () => {
+  it('birinchi sinov: 201, 7 kun (D-76), source=trial; resolver va jurnal', async () => {
     const s = makeServer();
     const email = uniqueEmail('first');
     const u = await s.signIn(email);
     const r = await startTrial(s, u.token, email, dev());
     expect(r.status).toBe(201);
+    expect(TRIAL_DAYS).toBe(7);
     expect(r.data.resolved).toEqual({
       source: 'trial',
       plan: 'student',
@@ -309,10 +330,47 @@ describe('trial: daraja hisobga ruxsat etilgan bo‘lishi kerak (D-74 (f))', () 
     const bad = await startTrial(s, u.token, email, dev(), { tier: 'gold' });
     expect(bad.status).toBe(400);
   });
+
+  it('tasdiqlangan mutaxassis — Mutaxassis sinovi (Lab, ustoz panelisiz), 7 kun', async () => {
+    const s = makeServer();
+    const email = uniqueEmail('spec-ok');
+    const u = await s.signIn(email, { role: 'lab' });
+    await verifySpecialist(s, u.token);
+    const r = await startTrial(s, u.token, email, dev(), { tier: 'specialist' });
+    expect(r.status).toBe(201);
+    expect(r.data.resolved).toMatchObject({ source: 'trial', plan: 'specialist', expires_at: new Date(s.clock.now + 7 * DAY).toISOString() });
+    expect((await s.call('GET', '/v1/pro/check/lab', { token: u.token })).status).toBe(200);
+    expect((await s.call('GET', '/v1/pro/check/teacher_panel', { token: u.token })).data.error).toBe('tier_insufficient');
+  });
+
+  it('Premium sinovi (D-76): ustoz + tasdiqlangan mutaxassis bo‘lsa; faqat bittasi bo‘lsa 403 plan_not_allowed', async () => {
+    const s = makeServer();
+    // Faqat serverda ustoz.
+    const te = uniqueEmail('prem-teacher');
+    const t = await s.signInTeacher(te);
+    expect((await startTrial(s, t.token, te, dev(), { tier: 'premium' })).data.error).toBe('plan_not_allowed');
+    // Faqat tasdiqlangan mutaxassis.
+    const se = uniqueEmail('prem-spec');
+    const sp = await s.signIn(se, { role: 'lab' });
+    await verifySpecialist(s, sp.token);
+    expect((await startTrial(s, sp.token, se, dev(), { tier: 'premium' })).data.error).toBe('plan_not_allowed');
+    // Ikkalasi ham.
+    const be = uniqueEmail('prem-both');
+    const b = await s.signInTeacher(be);
+    await verifySpecialist(s, b.token);
+    const r = await startTrial(s, b.token, be, dev(), { tier: 'premium' });
+    expect(r.status).toBe(201);
+    expect(r.data.resolved).toMatchObject({ source: 'trial', plan: 'premium', expires_at: new Date(s.clock.now + 7 * DAY).toISOString() });
+    const row = await s.env.DB.prepare('SELECT tier FROM pro_trials WHERE user_id = ?1').bind(b.userId).first<{ tier: string }>();
+    expect(row!.tier).toBe('premium');
+    for (const c of ['learner', 'teacher_panel', 'lab']) {
+      expect((await s.call('GET', `/v1/pro/check/${c}`, { token: b.token })).status, c).toBe(200);
+    }
+  });
 });
 
 describe('trial: muddat va pullik obuna (D-74 (g))', () => {
-  it('30 kundan keyin huquq yo‘q (expired), qayta sinov yo‘q', async () => {
+  it('7 kundan keyin huquq yo‘q (expired), qayta sinov yo‘q', async () => {
     const s = makeServer();
     const email = uniqueEmail('exp');
     const u = await s.signIn(email);
@@ -424,7 +482,7 @@ describe('trial: platforma (D-75, TRIAL_PLATFORMS standart android)', () => {
     expect(s.fetchCalls).toEqual([]);
     const rows = await s.env.DB.prepare('SELECT COUNT(*) AS n FROM entitlements WHERE user_id = ?1').bind(u.userId).first<{ n: number }>();
     expect(rows!.n).toBe(0);
-    // 30 kundan keyin: sinov tugaydi, do'kon obunasi paydo bo'lmaydi (avtomatik pullik yo'q).
+    // 7 kundan keyin: sinov tugaydi, do'kon obunasi paydo bo'lmaydi (avtomatik pullik yo'q).
     s.clock.now += (TRIAL_DAYS + 1) * DAY;
     const e = (await ents(s, u.token)).data;
     expect(e.resolved).toBeNull();

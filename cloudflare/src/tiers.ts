@@ -1,4 +1,4 @@
-// Reja ↔ panel ajratish (D-74). INERT: LG_BILLING_ENABLED=true bo'lmasa
+// Reja ↔ panel ajratish (D-74; to'rt reja va `lab` imkoniyati — D-76). INERT: LG_BILLING_ENABLED=true bo'lmasa
 // `requireTier` ishlatadigan yo'llar umuman yo'q (app.ts → 404).
 //
 // Qoida: pullik imkoniyat qarori FAQAT serverda saqlangan huquqdan
@@ -12,7 +12,7 @@
 // kelajakdagi Pro-only yo'llar uchun.
 
 import { requireSession } from './auth';
-import { loadAccess, type Plan, type ResolvedAccess } from './billing';
+import { liveAccess, loadAccess, type AccessItem, type Plan, type ResolvedAccess } from './billing';
 import type { Ctx, Session } from './context';
 import { ApiError, billingEnabled, json } from './http';
 
@@ -23,25 +23,43 @@ import { ApiError, billingEnabled, json } from './http';
  * to'plamidagini ocha oladi.
  * - `learner`  — talaba tomonidagi Pro (mashq, tarix va h.k.).
  * - `teacher_panel` — ustoz paneli Pro qismi (guruh/topshiriq kengaytmalari).
- * - `specialist` — mutaxassis (laborant/shifokor) Pro qismi.
+ * - `lab` — butun Lab bo'limi (apparatlar, yo'nalish kartalari,
+ *   koagulogramma, kalibrlash, QC, kalkulyatorlar, leykoformula sanash va
+ *   baholash va h.k. — D-76). Ilovada: `ProGatePolicy.plannedLabGate`.
  */
-export type Capability = 'learner' | 'teacher_panel' | 'specialist';
-export const CAPABILITIES: readonly Capability[] = ['learner', 'teacher_panel', 'specialist'];
+export type Capability = 'learner' | 'teacher_panel' | 'lab';
+export const CAPABILITIES: readonly Capability[] = ['learner', 'teacher_panel', 'lab'];
 
 /**
- * Daraja × imkoniyat matritsasi (D-74, MA'LUMOT). Ilova nusxasi:
- * lib/core/entitlements/plan_matrix.dart (faqat UI ko'rsatmasi uchun; test
- * ikkalasini solishtiradi). Mutaxassis Ustoz imkoniyatlarini ham oladi —
- * D-73 qoidasi ("eng qimmat reja kamroq bermasin"); bu ochiq qaror.
+ * Daraja × imkoniyat matritsasi (D-76, egasi qarori, MA'LUMOT). Ilova
+ * nusxasi: lib/core/entitlements/plan_matrix.dart (test ikkalasini
+ * solishtiradi). Bu ZINAPOYA EMAS — to'plam:
+ * - Ustoz = Talaba + ustoz paneli (Lab YO'Q);
+ * - Mutaxassis = Talaba + butun Lab (ustoz paneli YO'Q; D-73/D-74 dagi
+ *   "Mutaxassis Ustozni ham qamraydi" qoidasi BEKOR);
+ * - Premium = hammasi.
  */
 export const TIER_CAPABILITIES: Record<Plan, readonly Capability[]> = {
   student: ['learner'],
   teacher: ['learner', 'teacher_panel'],
-  specialist: ['learner', 'teacher_panel', 'specialist'],
+  specialist: ['learner', 'lab'],
+  premium: ['learner', 'teacher_panel', 'lab'],
 };
 
 export const tierAllows = (plan: Plan | null | undefined, cap: Capability): boolean =>
   plan != null && TIER_CAPABILITIES[plan].includes(cap);
+
+/**
+ * Hozir amaldagi BARCHA huquq qatorlari ochadigan imkoniyatlar (birlashma).
+ * Matritsa zinapoya bo'lmagani uchun faqat "eng yuqori" rejaga qaralmaydi:
+ * masalan, Ustoz obunasi + Mutaxassis admin granti = ustoz paneli + Lab.
+ * Sinov amaldagi do'kon obunasi bo'lsa hisobga olinmaydi (`liveAccess`).
+ */
+export function accessCapabilities(items: AccessItem[], now: number): Capability[] {
+  const have = new Set<Capability>();
+  for (const i of liveAccess(items, now)) for (const c of TIER_CAPABILITIES[i.plan]) have.add(c);
+  return CAPABILITIES.filter((c) => have.has(c));
+}
 
 export const parseCapability = (raw: unknown): Capability | null =>
   typeof raw === 'string' && (CAPABILITIES as readonly string[]).includes(raw) ? (raw as Capability) : null;
@@ -51,7 +69,7 @@ export const parseCapability = (raw: unknown): Capability | null =>
  * - bayroq o'chiq → 404 (yo'l yo'qdek);
  * - sessiya yo'q → 401;
  * - amaldagi huquq yo'q → 403 `plan_required`;
- * - daraja bu imkoniyatni ochmaydi → 403 `tier_insufficient`.
+ * - amaldagi hech bir reja bu imkoniyatni ochmaydi → 403 `tier_insufficient`.
  */
 export async function requireTier(
   ctx: Ctx,
@@ -59,9 +77,9 @@ export async function requireTier(
 ): Promise<{ session: Session; access: ResolvedAccess }> {
   if (!billingEnabled(ctx.env)) throw new ApiError(404, 'not_found');
   const session = await requireSession(ctx);
-  const { resolved } = await loadAccess(ctx, session.userId);
+  const { access, resolved } = await loadAccess(ctx, session.userId);
   if (!resolved) throw new ApiError(403, 'plan_required', { capability: cap });
-  if (!tierAllows(resolved.plan, cap)) {
+  if (!accessCapabilities(access, ctx.now).includes(cap)) {
     throw new ApiError(403, 'tier_insufficient', { capability: cap, plan: resolved.plan });
   }
   return { session, access: resolved };
@@ -73,12 +91,12 @@ export async function requireTier(
  */
 export async function access(ctx: Ctx): Promise<Response> {
   const s = await requireSession(ctx);
-  const { resolved } = await loadAccess(ctx, s.userId);
+  const { access: items, resolved } = await loadAccess(ctx, s.userId);
   return json({
     plan: resolved?.plan ?? null,
     source: resolved?.source ?? null,
     expires_at: resolved?.expiresAt == null ? null : new Date(resolved.expiresAt).toISOString(),
-    capabilities: resolved ? TIER_CAPABILITIES[resolved.plan] : [],
+    capabilities: accessCapabilities(items, ctx.now),
   });
 }
 

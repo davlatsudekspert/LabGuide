@@ -40,9 +40,14 @@ import { JwsError, verifyAppleJws } from './x509';
 export type Platform = 'app_store' | 'play_store';
 export type Status = 'active' | 'grace_period' | 'billing_retry' | 'paused' | 'expired' | 'revoked';
 
-/** Pullik daraja (D-73): Talaba, Ustoz, Mutaxassis. Tartib = narx tartibi. */
-export type Plan = 'student' | 'teacher' | 'specialist';
-export const PLAN_RANK: Record<Plan, number> = { student: 1, teacher: 2, specialist: 3 };
+/**
+ * Pullik daraja (D-73, D-76): Talaba, Ustoz, Mutaxassis, Premium. Tartib =
+ * narx tartibi (faqat ko'rsatish va tenglikni hal qilish uchun). Imkoniyat
+ * qarori darajalar zinapoyasi EMAS — `tiers.ts` `TIER_CAPABILITIES` to'plami
+ * (Mutaxassis ustoz panelini, Ustoz Lab'ni ochmaydi).
+ */
+export type Plan = 'student' | 'teacher' | 'specialist' | 'premium';
+export const PLAN_RANK: Record<Plan, number> = { student: 1, teacher: 2, specialist: 3, premium: 4 };
 export const PLANS = Object.keys(PLAN_RANK) as Plan[];
 
 /**
@@ -59,6 +64,9 @@ export const BILLING_PRODUCTS: Record<string, { plan: Plan }> = {
   'uz.labguide.teacher.yearly': { plan: 'teacher' },
   'uz.labguide.specialist.monthly': { plan: 'specialist' },
   'uz.labguide.specialist.yearly': { plan: 'specialist' },
+  // Premium (D-76): hamma imkoniyat (learner + teacher_panel + lab).
+  'uz.labguide.premium.monthly': { plan: 'premium' },
+  'uz.labguide.premium.yearly': { plan: 'premium' },
   // Eski id'lar (D-46…D-72) — alias.
   'uz.labguide.pro.monthly': { plan: 'specialist' },
   'uz.labguide.pro.yearly': { plan: 'specialist' },
@@ -80,6 +88,7 @@ export const PLAY_SUBSCRIPTIONS: Record<string, Plan> = {
   'uz.labguide.student': 'student',
   'uz.labguide.teacher': 'teacher',
   'uz.labguide.specialist': 'specialist',
+  'uz.labguide.premium': 'premium',
 };
 export const PLAY_BASE_PLANS = ['monthly', 'yearly'] as const;
 
@@ -611,6 +620,17 @@ export interface ResolvedAccess {
 }
 
 /**
+ * HOZIR amal qilayotgan huquq qatorlari: muddati o'tmagan, huquq beradigan;
+ * amaldagi do'kon obunasi bo'lsa bepul sinov qatorlari tashlanadi (sinov
+ * pullik obunani hech qachon bosib o'tmaydi). `resolveAccess` va imkoniyat
+ * qarori (`tiers.ts` `accessCapabilities`) shu to'plamdan.
+ */
+export function liveAccess(items: AccessItem[], now: number): AccessItem[] {
+  const live = items.filter((i) => i.granting && (i.expiresAt == null || i.expiresAt > now));
+  return live.some((i) => i.source === 'store') ? live.filter((i) => i.source !== 'trial') : live;
+}
+
+/**
  * Huquqni hal qilish: faqat HOZIR amal qilayotganlar orasidan eng yuqori
  * daraja, tenglikda eng uzoq muddat (`null` = muddatsiz eng uzoq), to'liq
  * tenglikda DO'KON. Admin grant do'kon obunasini hech qachon bosib o'tmaydi
@@ -621,8 +641,7 @@ export interface ResolvedAccess {
  * ham sinov yutqazadi. Muddati o'tgan sinov hech narsa bermaydi.
  */
 export function resolveAccess(items: AccessItem[], now: number): ResolvedAccess | null {
-  let live = items.filter((i) => i.granting && (i.expiresAt == null || i.expiresAt > now));
-  if (live.some((i) => i.source === 'store')) live = live.filter((i) => i.source !== 'trial');
+  const live = liveAccess(items, now);
   const end = (i: AccessItem) => i.expiresAt ?? Number.POSITIVE_INFINITY;
   // Tenglikda ustunlik: do'kon > admin grant > sinov.
   const prio = (i: AccessItem) => (i.source === 'store' ? 2 : i.source === 'admin_grant' ? 1 : 0);
@@ -701,7 +720,9 @@ export async function loadAccess(
   const access: AccessItem[] = [
     ...rows.map((r) => ({
       source: 'store' as const,
-      plan: BILLING_PRODUCTS[r.product_id]?.plan ?? ('specialist' as Plan),
+      // Katalogda yo'q (eski/sinov) mahsulot — eng past daraja (D-76: Lab yoki
+      // ustoz panelini hech qachon ochmaydi; ilova `BillingCatalog.tierOf` bilan bir xil).
+      plan: BILLING_PRODUCTS[r.product_id]?.plan ?? ('student' as Plan),
       granting: r.status === 'active' || r.status === 'grace_period',
       expiresAt: r.expires_at,
     })),

@@ -1,4 +1,4 @@
-// 30 kunlik bepul sinov — BIR TELEFONGA BIR MARTA (D-74). INERT:
+// 7 kunlik bepul sinov — BIR TELEFONGA BIR MARTA (D-74; muddat D-76). INERT:
 // * LG_BILLING_ENABLED=true bo'lmasa yo'llar umuman yo'q (app.ts → 404);
 // * qurilma attestatsiyasi tekshiruvchisi (`deps.attestation`) sozlanmagan
 //   bo'lsa — `503 device_attestation_not_configured` (production'da HECH
@@ -16,7 +16,7 @@
 // (e) limitlar (hisob, IP);
 // (f) so'ralgan daraja hisobga ruxsat etilgan bo'lishi kerak (Ustoz —
 //     serverda ustoz sifatida ro'yxatdan o'tgan; Mutaxassis — tasdiqlangan
-//     mutaxassis); aks holda 403 `plan_not_allowed`;
+//     mutaxassis; Premium — ikkalasi ham); aks holda 403 `plan_not_allowed`;
 // (g) muddat huquqni hal qilishda (`source: trial`) hisobga olinadi va
 //     pullik obunani hech qachon bosib o'tmaydi (billing.ts `resolveAccess`).
 
@@ -27,8 +27,10 @@ import type { Ctx } from './context';
 import { base64url, hex, hmac, randomBytes, sha256Hex } from './crypto';
 import { ApiError, badRequest, conflict, type Env, forbidden, json, readJson } from './http';
 import { hit } from './ratelimit';
+import { TIER_CAPABILITIES } from './tiers';
 
-export const TRIAL_DAYS = 30;
+/** Sinov uzunligi — HAMMA reja uchun 7 kun (D-76, egasi qarori; D-75 dagi 30 kun bekor). */
+export const TRIAL_DAYS = 7;
 /**
  * Sinov yozuvi (faqat HMAC lar) saqlanish muddati: sinov boshlangandan
  * 730 kun (24 oy). Shundan keyin kunlik tozalash o'chiradi — o'sha qurilma
@@ -227,20 +229,27 @@ function parseAttestation(raw: unknown): Omit<AttestationInput, 'nonce'> & { non
 
 /**
  * Daraja hisob uchun ruxsat etilganmi (D-74 (f)). Qaror serverdagi
- * yozuvlardan: Ustoz — `teacher_accounts` (serverda ustoz sifatida
- * ro'yxatdan o'tgan); Mutaxassis — hamjamiyatda hujjat bilan tasdiqlangan
- * mutaxassis (`community_members.status = 'verified'`). Talaba — har hisob.
+ * yozuvlardan va reja ochadigan imkoniyatlardan (`TIER_CAPABILITIES`):
+ * ustoz paneli bor reja (Ustoz, Premium) — `teacher_accounts` (serverda
+ * ustoz sifatida ro'yxatdan o'tgan); Lab bor reja (Mutaxassis, Premium) —
+ * hamjamiyatda hujjat bilan tasdiqlangan mutaxassis
+ * (`community_members.status = 'verified'`). Talaba — har hisob. Shunday
+ * qilib Premium sinovi ikkala shartni ham talab qiladi (D-76; ochiq qaror).
  */
 async function planAllowed(ctx: Ctx, userId: string, tier: Plan): Promise<boolean> {
-  if (tier === 'student') return true;
-  if (tier === 'teacher') {
-    return (await ctx.db.prepare('SELECT 1 AS x FROM teacher_accounts WHERE user_id = ?1').bind(userId).first()) != null;
+  const caps = TIER_CAPABILITIES[tier];
+  if (caps.includes('teacher_panel')) {
+    const t = await ctx.db.prepare('SELECT 1 AS x FROM teacher_accounts WHERE user_id = ?1').bind(userId).first();
+    if (t == null) return false;
   }
-  const m = await ctx.db
-    .prepare(`SELECT 1 AS x FROM community_members WHERE user_hash = ?1 AND status = 'verified'`)
-    .bind(await userHash(ctx, userId))
-    .first();
-  return m != null;
+  if (caps.includes('lab')) {
+    const m = await ctx.db
+      .prepare(`SELECT 1 AS x FROM community_members WHERE user_hash = ?1 AND status = 'verified'`)
+      .bind(await userHash(ctx, userId))
+      .first();
+    if (m == null) return false;
+  }
+  return true;
 }
 
 /**
