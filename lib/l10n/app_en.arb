@@ -5988,8 +5988,8 @@
   "labDirSectionSub": "Platform and test on separate cards",
   "labDirTb": "Tuberculosis (TB) diagnostics",
   "labDirHiv": "HIV laboratory diagnostics",
-  "labDirTag": "Reference — pending expert review",
-  "labDirNotVerified": "Not verified",
+  "labDirTag": "Reference",
+  "labDirNotVerified": "Not added yet",
   "labDirKindPlatform": "Platform (instrument)",
   "labDirKindTest": "Test",
   "labDirKindMethod": "Method",
@@ -6004,7 +6004,7 @@
   "labDirBiosafety": "Biosafety",
   "labDirModels": "Models confirmed by an official source",
   "labDirLinked": "Linked cards",
-  "labDirStatusLine": "Audit status: NEEDS_REVIEW · not reviewed by an expert",
+  "labDirStatusLine": "Audit status: NEEDS_REVIEW",
   "labDirDisclaimer": "Educational reference only. The app does not diagnose and is not an operating protocol; decisions rest with an authorised laboratory and clinician.",
   "labDirEmpty": "No cards in this direction."
 }

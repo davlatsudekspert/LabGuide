@@ -10169,10 +10169,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get labDirHiv => 'HIV laboratory diagnostics';
 
   @override
-  String get labDirTag => 'Reference — pending expert review';
+  String get labDirTag => 'Reference';
 
   @override
-  String get labDirNotVerified => 'Not verified';
+  String get labDirNotVerified => 'Not added yet';
 
   @override
   String get labDirKindPlatform => 'Platform (instrument)';
@@ -10217,8 +10217,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get labDirLinked => 'Linked cards';
 
   @override
-  String get labDirStatusLine =>
-      'Audit status: NEEDS_REVIEW · not reviewed by an expert';
+  String get labDirStatusLine => 'Audit status: NEEDS_REVIEW';
 
   @override
   String get labDirDisclaimer =>

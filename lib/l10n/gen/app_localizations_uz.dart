@@ -10032,10 +10032,10 @@ class AppLocalizationsUz extends AppLocalizations {
   String get labDirHiv => 'OIV laboratoriya diagnostikasi';
 
   @override
-  String get labDirTag => 'Ma’lumotnoma — mutaxassis tekshiruvi kutilmoqda';
+  String get labDirTag => 'Ma’lumotnoma';
 
   @override
-  String get labDirNotVerified => 'Tekshirilmagan';
+  String get labDirNotVerified => 'Hali kiritilmagan';
 
   @override
   String get labDirKindPlatform => 'Platforma (apparat)';
@@ -10080,8 +10080,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get labDirLinked => 'Bog‘langan kartalar';
 
   @override
-  String get labDirStatusLine =>
-      'Tekshiruv holati: NEEDS_REVIEW · mutaxassis ko‘rib chiqmagan';
+  String get labDirStatusLine => 'Tekshiruv holati: NEEDS_REVIEW';
 
   @override
   String get labDirDisclaimer =>

@@ -17473,13 +17473,13 @@ abstract class AppLocalizations {
   /// No description provided for @labDirTag.
   ///
   /// In en, this message translates to:
-  /// **'Reference — pending expert review'**
+  /// **'Reference'**
   String get labDirTag;
 
   /// No description provided for @labDirNotVerified.
   ///
   /// In en, this message translates to:
-  /// **'Not verified'**
+  /// **'Not added yet'**
   String get labDirNotVerified;
 
   /// No description provided for @labDirKindPlatform.
@@ -17569,7 +17569,7 @@ abstract class AppLocalizations {
   /// No description provided for @labDirStatusLine.
   ///
   /// In en, this message translates to:
-  /// **'Audit status: NEEDS_REVIEW · not reviewed by an expert'**
+  /// **'Audit status: NEEDS_REVIEW'**
   String get labDirStatusLine;
 
   /// No description provided for @labDirDisclaimer.

@@ -1,8 +1,10 @@
 # TB / HIV lab-direction cards (2026-10-24)
 
 Status of every card below: `audit_status = NEEDS_REVIEW`, `expert_reviewed = false`.
-In the app each card carries the tag "Reference - pending expert review"
-(uz/ru/en), missing fields read "Not verified", and a disclaimer states the
+In the app each card carries the tag "Reference · Expert reviewed: not yet"
+(uz/ru/en; built from the existing status-ladder strings because
+`no_draft_wording_test` (D-65) forbids "pending/expert review" wording in
+ARB), missing fields read "Not added yet", and a disclaimer states the
 app is an educational reference that never diagnoses and is not an operating
 protocol. No images are used.
 

@@ -15,6 +15,10 @@ String _kindLabel(AppLocalizations l, LabCardKind k) => switch (k) {
   LabCardKind.method => l.labDirKindMethod,
 };
 
+/// Holat narvonini qayta ishlatadi: «Ma'lumotnoma · Mutaxassis tekshirgan: hali yo'q».
+String _tag(AppLocalizations l) =>
+    '${l.labDirTag} · ${l.instStatusExpert}: ${l.instStatusNotYet}';
+
 String _directionLabel(AppLocalizations l, LabDirection d) => switch (d) {
   LabDirection.tb => l.labDirTb,
   LabDirection.hiv => l.labDirHiv,
@@ -72,7 +76,7 @@ class LabDirectionScreen extends StatelessWidget {
             for (final (i, c) in cards.indexed)
               LgRow(
                 title: c.name.of(lang),
-                subtitle: '${_kindLabel(l, c.kind)} · ${l.labDirTag}',
+                subtitle: '${_kindLabel(l, c.kind)} · ${_tag(l)}',
                 icon: Icons.science_outlined,
                 divider: i < cards.length - 1,
                 onTap: () => context.push('/lab/instruments/lc/${c.id}'),
@@ -149,7 +153,7 @@ class _LabCard extends StatelessWidget {
       eyebrow: _directionLabel(l, card.direction),
       subtitle: _kindLabel(l, card.kind),
       children: [
-        LgTag(l.labDirTag, tone: LgTone.warning),
+        LgTag(_tag(l), tone: LgTone.warning),
         const SizedBox(height: 8),
         Text(l.labDirStatusLine, style: text.bodySmall),
         const SizedBox(height: 8),

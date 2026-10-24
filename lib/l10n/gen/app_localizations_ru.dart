@@ -10209,10 +10209,10 @@ class AppLocalizationsRu extends AppLocalizations {
   String get labDirHiv => 'Лабораторная диагностика ВИЧ';
 
   @override
-  String get labDirTag => 'Справочно — ожидает проверки специалистом';
+  String get labDirTag => 'Справочно';
 
   @override
-  String get labDirNotVerified => 'Не проверено';
+  String get labDirNotVerified => 'Пока не добавлено';
 
   @override
   String get labDirKindPlatform => 'Платформа (прибор)';
@@ -10257,8 +10257,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get labDirLinked => 'Связанные карточки';
 
   @override
-  String get labDirStatusLine =>
-      'Статус проверки: NEEDS_REVIEW · специалист не рассматривал';
+  String get labDirStatusLine => 'Статус аудита: NEEDS_REVIEW';
 
   @override
   String get labDirDisclaimer =>
