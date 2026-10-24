@@ -8,15 +8,34 @@
 // * Bildirishnomalar (ASSN v2 / RTDN) tanasiga ishonilmaydi: undan faqat
 //   identifikator olinadi va holat do'kon API'sidan qayta o'qiladi.
 // * Bitta xarid faqat bitta hisobga bog'lanadi (`owned_by_other`).
-// * Kalitlar (secret) bo'lmasa — aniq `503 not_configured`; ilova to'lovni
-//   "yoqilmagan" deb hisoblaydi va to'lov oynasini ko'rsatmaydi.
+// * Kalitlar (secret) bo'lmasa — aniq `503 store_verifier_not_configured`;
+//   ilova to'lovni "yoqilmagan" deb hisoblaydi va to'lov oynasini ko'rsatmaydi.
+// * Tekshiruvchilar INJEKSIYA qilinadi (`deps.storeVerifiers`, D-75): testlarda
+//   soxta, production'da quyidagi haqiqiy App Store Server API / Play Developer
+//   API tekshiruvchilari.
+// * Sandbox (Apple Sandbox, Play litsenziya testeri) faqat
+//   `LG_BILLING_SANDBOX=true` bo'lsa qabul qilinadi (D-75).
+//
+// Rasmiy hujjatlar (2026-10-24):
+// * App Store Server API — Get Transaction Info / Get All Subscription Statuses:
+//   https://developer.apple.com/documentation/appstoreserverapi
+// * App Store Server Notifications V2 (notificationType, subtype, notificationUUID):
+//   https://developer.apple.com/documentation/appstoreservernotifications
+// * Play Developer API purchases.subscriptionsv2.get va acknowledge:
+//   https://developers.google.com/android-publisher/api-ref/rest/v3/purchases.subscriptionsv2
+//   https://developers.google.com/android-publisher/api-ref/rest/v3/purchases.subscriptions/acknowledge
+// * RTDN: https://developer.android.com/google/play/billing/rtdn-reference
+//   (messageId bo'yicha takrorni tashlash, holatni doim subscriptionsv2.get dan o'qish).
 
-import { requireSession } from './auth';
+import { audit, requireSession } from './auth';
 import type { Ctx } from './context';
 import { iso } from './context';
 import { base64url, safeEqual, sha256Hex } from './crypto';
 import { ApiError, badRequest, type Env, json, readJson } from './http';
 import { hit } from './ratelimit';
+import { verifyGooglePushJwt } from './social';
+import { trialStatus } from './trial';
+import { JwsError, verifyAppleJws } from './x509';
 
 export type Platform = 'app_store' | 'play_store';
 export type Status = 'active' | 'grace_period' | 'billing_retry' | 'paused' | 'expired' | 'revoked';
@@ -49,6 +68,30 @@ export const BILLING_PRODUCTS: Record<string, { plan: Plan }> = {
   'uz.labguide.teacherpro.yearly': { plan: 'teacher' },
 };
 
+/**
+ * Google Play: bitta obuna (masalan `uz.labguide.student`) ichida ikkita base
+ * plan — `monthly` (P1M) va `yearly` (P1Y) (docs/PRO_BILLING_PLAN.md §2,
+ * STORE_SETUP_STEPS B.2–B.3). Ilova va server ichida KANONIK id ishlatiladi:
+ * `<obuna>.<base plan>` = `uz.labguide.student.monthly` — App Store mahsulot
+ * id si bilan bir xil. Play'da 6 ta alohida obuna yaratilsa ham (har birida
+ * bitta base plan) o'sha id'lar mos keladi.
+ */
+export const PLAY_SUBSCRIPTIONS: Record<string, Plan> = {
+  'uz.labguide.student': 'student',
+  'uz.labguide.teacher': 'teacher',
+  'uz.labguide.specialist': 'specialist',
+};
+export const PLAY_BASE_PLANS = ['monthly', 'yearly'] as const;
+
+/** Do'kon (product, basePlan) → kanonik id; noma'lum bo'lsa `null`. */
+export function canonicalProduct(productId: string, basePlanId?: string | null): string | null {
+  if (BILLING_PRODUCTS[productId]) return productId;
+  if (PLAY_SUBSCRIPTIONS[productId] && basePlanId && (PLAY_BASE_PLANS as readonly string[]).includes(basePlanId)) {
+    return `${productId}.${basePlanId}`;
+  }
+  return null;
+}
+
 const DEFAULT_BUNDLE = 'uz.labguide.app';
 const MAX_RESTORE = 10;
 
@@ -71,6 +114,22 @@ export interface Verified {
   linkedToken?: string | null;
   /** Play: hali tasdiqlanmagan (acknowledge kerak). */
   needsAck?: boolean;
+  /** Play: do'kondagi obuna id si (acknowledge yo'li uchun; kanonik id emas). */
+  storeProductId?: string;
+}
+
+/**
+ * Do'kon xaridini tekshiruvchi (D-75) — injeksiya qilinadi
+ * (`ctx.deps.storeVerifiers`). Haqiqiy: [AppStoreServerApiVerifier],
+ * [PlayDeveloperApiVerifier]; testlarda soxta (test/fake_store.ts).
+ */
+export interface StoreVerifier {
+  /** Kalitlar sozlanganmi. `false` → `503 store_verifier_not_configured`. */
+  configured(env: Env): boolean;
+  /** Identifikator (App Store transactionId / Play purchaseToken) bo'yicha holat. */
+  verify(ctx: Ctx, token: string, expectedProduct?: string): Promise<Verified>;
+  /** Play: serverda tasdiqlash (ixtiyoriy). */
+  acknowledge?(ctx: Ctx, v: Verified): Promise<void>;
 }
 
 const doFetch = (ctx: Ctx): typeof fetch => ctx.deps.fetch ?? fetch;
@@ -79,11 +138,28 @@ export const appleConfigured = (env: Env) =>
   Boolean(env.APPLE_IAP_KEY_ID && env.APPLE_IAP_ISSUER_ID && env.APPLE_IAP_PRIVATE_KEY);
 export const googleConfigured = (env: Env) => Boolean(env.GOOGLE_PLAY_SERVICE_ACCOUNT);
 
-function configured(env: Env, platform: Platform): boolean {
-  return platform === 'app_store' ? appleConfigured(env) : googleConfigured(env);
+/** Sandbox / test xaridlari qabul qilinadimi (faqat `LG_BILLING_SANDBOX=true`). */
+export const sandboxAllowed = (env: Env) => env.LG_BILLING_SANDBOX === 'true';
+
+export function verifierFor(ctx: Ctx, platform: Platform): StoreVerifier {
+  return (
+    ctx.deps.storeVerifiers?.[platform] ??
+    (platform === 'app_store' ? AppStoreServerApiVerifier : PlayDeveloperApiVerifier)
+  );
 }
 
-const notConfigured = () => new ApiError(503, 'not_configured');
+function configured(ctx: Ctx, platform: Platform): boolean {
+  return verifierFor(ctx, platform).configured(ctx.env);
+}
+
+const notConfigured = () => new ApiError(503, 'store_verifier_not_configured');
+const sandboxRejected = () => new ApiError(403, 'sandbox_not_allowed');
+
+/** Tekshiruvdan keyingi umumiy qoida: production'da sandbox xaridi rad. */
+function acceptEnvironment(ctx: Ctx, v: Verified): Verified {
+  if (v.environment === 'sandbox' && !sandboxAllowed(ctx.env)) throw sandboxRejected();
+  return v;
+}
 const storeUnavailable = () => new ApiError(502, 'store_unavailable');
 
 // ------------------------------------------------------------ JWT/JWS
@@ -123,6 +199,16 @@ export function decodeJws<T = Record<string, unknown>>(jws: unknown): T {
     return JSON.parse(b64urlDecode(parts[1])) as T;
   } catch {
     throw badRequest('invalid_jws');
+  }
+}
+
+/** Apple JWS: x5c zanjiri (Apple Root CA - G3 pin) + ES256 imzo (src/x509.ts). */
+async function appleJws<T>(ctx: Ctx, jws: unknown): Promise<T> {
+  try {
+    return await verifyAppleJws<T>(jws, { rootSha256: ctx.env.APPLE_ROOT_CA_SHA256, at: ctx.now });
+  } catch (e) {
+    if (e instanceof JwsError) throw new ApiError(401, 'invalid_signature');
+    throw e;
   }
 }
 
@@ -188,9 +274,13 @@ async function appleJwt(ctx: Ctx): Promise<string> {
   );
 }
 
-/** Avval production, topilmasa (4040010) — sandbox (Apple tavsiyasi). */
+/**
+ * Avval production, topilmasa (4040010) — sandbox (Apple tavsiyasi), LEKIN
+ * sandbox faqat `LG_BILLING_SANDBOX=true` bo'lsa so'raladi (D-75).
+ */
 async function appleGet(ctx: Ctx, path: string, jwt: string): Promise<{ env: 'production' | 'sandbox'; body: any }> {
-  for (const env of ['production', 'sandbox'] as const) {
+  const envs = sandboxAllowed(ctx.env) ? (['production', 'sandbox'] as const) : (['production'] as const);
+  for (const env of envs) {
     let res: Response;
     try {
       res = await doFetch(ctx)(`${APPLE_HOSTS[env]}${path}`, {
@@ -200,7 +290,7 @@ async function appleGet(ctx: Ctx, path: string, jwt: string): Promise<{ env: 'pr
       throw storeUnavailable();
     }
     if (res.ok) return { env, body: await res.json() };
-    if (res.status === 404 && env === 'production') continue;
+    if (res.status === 404 && env === 'production' && envs.length > 1) continue;
     if (res.status === 404 || res.status === 400) throw badRequest('purchase_not_found');
     if (res.status === 401) throw new ApiError(503, 'store_auth_failed');
     throw storeUnavailable();
@@ -223,10 +313,13 @@ export async function verifyApple(ctx: Ctx, transactionId: string, expectedProdu
   const bundle = ctx.env.APPLE_BUNDLE_ID || DEFAULT_BUNDLE;
 
   const tx = await appleGet(ctx, `/inApps/v1/transactions/${transactionId}`, jwt);
-  const info = decodeJws<AppleTransaction>(tx.body?.signedTransactionInfo);
+  // Javob TLS orqali kelgan bo'lsa ham imzo tekshiriladi (Apple tavsiyasi).
+  const info = await appleJws<AppleTransaction>(ctx, tx.body?.signedTransactionInfo);
   if (info.bundleId !== bundle) throw badRequest('wrong_bundle');
   if (!info.productId || !BILLING_PRODUCTS[info.productId]) throw badRequest('unknown_product');
   if (expectedProduct && expectedProduct !== info.productId) throw badRequest('product_mismatch');
+  checkEnvironment(info.environment, tx.env);
+  const group = ctx.env.APPLE_SUBSCRIPTION_GROUP_ID;
   const originalId = String(info.originalTransactionId ?? '');
   if (!originalId) throw badRequest('purchase_not_found');
 
@@ -234,11 +327,12 @@ export async function verifyApple(ctx: Ctx, transactionId: string, expectedProdu
   const subs = await appleGet(ctx, `/inApps/v1/subscriptions/${transactionId}`, jwt);
   let status: Status | null = null;
   let latest = info;
-  for (const group of (subs.body?.data as any[]) ?? []) {
-    for (const last of (group?.lastTransactions as any[]) ?? []) {
+  for (const g of (subs.body?.data as any[]) ?? []) {
+    if (group && String(g?.subscriptionGroupIdentifier) !== group) continue;
+    for (const last of (g?.lastTransactions as any[]) ?? []) {
       if (String(last?.originalTransactionId) !== originalId) continue;
       status = APPLE_STATUS[Number(last.status)] ?? null;
-      const t = decodeJws<AppleTransaction>(last.signedTransactionInfo);
+      const t = await appleJws<AppleTransaction>(ctx, last.signedTransactionInfo);
       if (t.bundleId === bundle && t.productId && BILLING_PRODUCTS[t.productId]) latest = t;
     }
   }
@@ -255,12 +349,29 @@ export async function verifyApple(ctx: Ctx, transactionId: string, expectedProdu
     startedAt: latest.originalPurchaseDate ?? info.originalPurchaseDate ?? latest.purchaseDate ?? null,
     expiresAt: latest.expiresDate ?? null,
     ownership: latest.inAppOwnershipType === 'FAMILY_SHARED' ? 'family_shared' : 'purchased',
-    environment: (latest.environment ?? tx.env).toLowerCase() === 'sandbox' ? 'sandbox' : 'production',
+    environment: (latest.environment ?? tx.env).toLowerCase() === 'production' ? 'production' : 'sandbox',
     eventAt: latest.signedDate ?? ctx.now,
     latestToken: String(latest.transactionId ?? transactionId),
     accountHint: latest.appAccountToken?.toLowerCase() ?? info.appAccountToken?.toLowerCase() ?? null,
   };
 }
+
+/**
+ * Tranzaksiya `environment` (`Production` / `Sandbox` / `Xcode` /
+ * `LocalTesting`) so'ralgan host bilan mos bo'lishi shart; production host
+ * javobidagi sandbox tranzaksiya — rad.
+ */
+function checkEnvironment(txEnv: string | undefined, host: 'production' | 'sandbox'): void {
+  const e = (txEnv ?? '').toLowerCase();
+  if (host === 'production' && e !== 'production') throw badRequest('environment_mismatch');
+  if (host === 'sandbox' && e !== 'sandbox') throw badRequest('environment_mismatch');
+}
+
+/** App Store Server API tekshiruvchisi (haqiqiy). Kalitsiz — 503. */
+export const AppStoreServerApiVerifier: StoreVerifier = {
+  configured: appleConfigured,
+  verify: verifyApple,
+};
 
 // ------------------------------------------------------------ Google Play
 interface ServiceAccount {
@@ -344,10 +455,12 @@ export async function verifyGoogle(ctx: Ctx, token: string, expectedProduct?: st
   if (!res.ok) throw storeUnavailable();
   const sub = (await res.json()) as any;
 
-  const items = ((sub.lineItems as any[]) ?? []).filter((i) => i?.productId && BILLING_PRODUCTS[i.productId]);
+  const items = ((sub.lineItems as any[]) ?? [])
+    .map((i) => ({ ...i, canonical: i?.productId ? canonicalProduct(String(i.productId), i.offerDetails?.basePlanId) : null }))
+    .filter((i) => i.canonical);
   if (items.length === 0) throw badRequest('unknown_product');
-  const item = (expectedProduct ? items.find((i) => i.productId === expectedProduct) : null) ?? items[0];
-  if (expectedProduct && item.productId !== expectedProduct) throw badRequest('product_mismatch');
+  const item = (expectedProduct ? items.find((i) => i.canonical === expectedProduct) : null) ?? items[0];
+  if (expectedProduct && item.canonical !== expectedProduct) throw badRequest('product_mismatch');
 
   const state = String(sub.subscriptionState ?? '');
   if (state === 'SUBSCRIPTION_STATE_PENDING') throw new ApiError(409, 'purchase_pending');
@@ -358,7 +471,8 @@ export async function verifyGoogle(ctx: Ctx, token: string, expectedProduct?: st
   return {
     platform: 'play_store',
     originalId: token,
-    productId: item.productId,
+    productId: item.canonical,
+    storeProductId: String(item.productId),
     status,
     startedAt: Number.isFinite(startedAt) ? startedAt : null,
     expiresAt: Number.isFinite(expiresAt) ? expiresAt : null,
@@ -378,7 +492,7 @@ async function acknowledgeGoogle(ctx: Ctx, v: Verified): Promise<void> {
   try {
     const access = await googleAccessToken(ctx);
     const res = await doFetch(ctx)(
-      `${playBase(ctx.env)}/subscriptions/${encodeURIComponent(v.productId)}/tokens/${encodeURIComponent(v.latestToken)}:acknowledge`,
+      `${playBase(ctx.env)}/subscriptions/${encodeURIComponent(v.storeProductId ?? v.productId)}/tokens/${encodeURIComponent(v.latestToken)}:acknowledge`,
       {
         method: 'POST',
         headers: { authorization: `Bearer ${access}`, 'content-type': 'application/json' },
@@ -391,6 +505,13 @@ async function acknowledgeGoogle(ctx: Ctx, v: Verified): Promise<void> {
     console.error('play acknowledge error', e instanceof Error ? e.name : typeof e);
   }
 }
+
+/** Play Developer API tekshiruvchisi (haqiqiy). Kalitsiz — 503. */
+export const PlayDeveloperApiVerifier: StoreVerifier = {
+  configured: googleConfigured,
+  verify: verifyGoogle,
+  acknowledge: acknowledgeGoogle,
+};
 
 // ------------------------------------------------------------ saqlash
 /** Ilova xaridda bergan hisob belgisi (Play `obfuscatedAccountId`). */
@@ -636,15 +757,36 @@ export async function snapshot(ctx: Ctx, userId: string, ownedByOther = false, s
       // Shu hisob bepul sinovdan foydalanganmi (D-74; qurilma bo'yicha holat bu yerda ko'rinmaydi).
       trial_used: trials.length > 0,
       owned_by_other: ownedByOther,
+      // Oflayn kesh chegarasi (D-75): ilova keshni shu vaqtdan keyin huquq
+      // sifatida ISHLATMAYDI — min(hozir + 7 kun, amaldagi huquq tugashi).
+      offline_until: iso(offlineUntil(ctx.now, resolved)),
     },
     status,
   );
 }
 
+/** Oflayn huquq uchun maksimal muddat (D-75). */
+export const OFFLINE_MAX_MS = 7 * 86400_000;
+
+export function offlineUntil(now: number, resolved: ResolvedAccess | null): number {
+  const cap = now + OFFLINE_MAX_MS;
+  if (!resolved) return now;
+  return resolved.expiresAt == null ? cap : Math.min(cap, resolved.expiresAt);
+}
+
 // ------------------------------------------------------------ endpointlar
-/** Ochiq: to'lov serverda sozlanganmi (ilova to'lov oynasini shunga qarab ko'rsatadi). */
+/**
+ * Ochiq: to'lov serverda sozlanganmi (ilova to'lov oynasini shunga qarab
+ * ko'rsatadi) va bepul sinov qaysi platformada mavjud (D-75 imkoniyat
+ * so'rovi: platforma `TRIAL_PLATFORMS` da VA qurilma attestatsiyasi sozlangan).
+ */
 export async function status(ctx: Ctx): Promise<Response> {
-  return json({ app_store: appleConfigured(ctx.env), play_store: googleConfigured(ctx.env) });
+  return json({
+    app_store: configured(ctx, 'app_store'),
+    play_store: configured(ctx, 'play_store'),
+    sandbox: sandboxAllowed(ctx.env),
+    trial: trialStatus(ctx),
+  });
 }
 
 export async function entitlements(ctx: Ctx): Promise<Response> {
@@ -668,15 +810,22 @@ function parseProduct(raw: unknown): string | undefined {
   return raw;
 }
 
+async function verifyOne(ctx: Ctx, platform: Platform, token: string, productId?: string): Promise<Verified> {
+  return acceptEnvironment(ctx, await verifierFor(ctx, platform).verify(ctx, token, productId));
+}
+
 /**
  * POST /v1/billing/verify — xarid yoki tiklash.
  * `{platform, product_id, token}` yoki `{platform, purchases: [{product_id, token}]}`.
+ * `restore: true` (D-75) — qo'shimcha ravishda hisobning shu platformadagi
+ * mavjud obuna qatorlari ham do'kondan QAYTA o'qiladi (boshqa qurilmada
+ * bekor/yangilangan holat shu yerda sinxronlanadi).
  */
 export async function verify(ctx: Ctx): Promise<Response> {
   const s = await requireSession(ctx);
   const body = await readJson(ctx.req);
   const platform = parsePlatform(body.platform);
-  if (!configured(ctx.env, platform)) throw notConfigured();
+  if (!configured(ctx, platform)) throw notConfigured();
   await hit(ctx.db, `billing-user:${(await sha256Hex(s.userId)).slice(0, 32)}`, 30, 3600, ctx.now);
   await hit(ctx.db, `billing-ip:${ctx.ipTag}`, 120, 3600, ctx.now);
 
@@ -694,7 +843,7 @@ export async function verify(ctx: Ctx): Promise<Response> {
   for (const p of list) {
     let v: Verified;
     try {
-      v = platform === 'app_store' ? await verifyApple(ctx, p.token, p.productId) : await verifyGoogle(ctx, p.token, p.productId);
+      v = await verifyOne(ctx, platform, p.token, p.productId);
     } catch (e) {
       // Tiklashda bitta yaroqsiz xarid qolganlarini to'xtatmaydi.
       if (e instanceof ApiError && list.length > 1 && e.status < 500) {
@@ -705,84 +854,239 @@ export async function verify(ctx: Ctx): Promise<Response> {
     }
     verified++;
     if (await claim(ctx, s.userId, v)) {
-      if (v.platform === 'play_store' && v.needsAck && (v.status === 'active' || v.status === 'grace_period')) {
-        await acknowledgeGoogle(ctx, v);
+      if (v.needsAck && (v.status === 'active' || v.status === 'grace_period')) {
+        await verifierFor(ctx, platform).acknowledge?.(ctx, v);
       }
     } else {
       ownedByOther = true;
     }
   }
+  if (body.restore === true) await resync(ctx, s.userId, platform, new Set(list.map((p) => p.token)));
   if (verified === 0 && lastError) throw lastError;
   return snapshot(ctx, s.userId, ownedByOther);
 }
 
 /**
- * App Store Server Notifications v2. Tanadagi `signedPayload` dan faqat
- * transactionId olinadi; holat App Store Server API'dan qayta o'qiladi.
+ * Tiklash: hisobning shu platformadagi qatorlarini do'kondan qayta o'qish
+ * (eng ko'pi [MAX_RESTORE]). Xato bo'lsa qator o'zgarmaydi (hech qachon
+ * huquq QO'SHILMAYDI — faqat do'kon aytgan holat yoziladi).
+ */
+async function resync(ctx: Ctx, userId: string, platform: Platform, skip: Set<string>): Promise<void> {
+  const rows = (
+    await ctx.db
+      .prepare('SELECT latest_token FROM entitlements WHERE user_id = ?1 AND platform = ?2 ORDER BY updated_at DESC LIMIT ?3')
+      .bind(userId, platform, MAX_RESTORE)
+      .all<{ latest_token: string }>()
+  ).results;
+  for (const r of rows) {
+    if (skip.has(r.latest_token)) continue;
+    try {
+      await applyUpdate(ctx, acceptEnvironment(ctx, await verifierFor(ctx, platform).verify(ctx, r.latest_token)));
+    } catch (e) {
+      console.error('billing resync', e instanceof ApiError ? e.code : e instanceof Error ? e.name : typeof e);
+    }
+  }
+}
+
+// ------------------------------------------------------- bildirishnomalar
+/** Bildirishnoma jurnali saqlanish muddati (takrorni tashlash uchun). */
+export const NOTIFICATION_RETENTION_DAYS = 90;
+
+/** Takror (o'sha id) — `true`. Id `source:id` ko'rinishida saqlanadi. */
+async function seen(ctx: Ctx, id: string): Promise<boolean> {
+  return (await ctx.db.prepare('SELECT 1 AS x FROM billing_notifications WHERE id = ?1').bind(id).first()) != null;
+}
+
+async function record(
+  ctx: Ctx,
+  id: string,
+  n: { source: 'app_store' | 'play_store'; type: string; subtype?: string | null; environment?: string | null; outcome: string },
+  details: Record<string, unknown> = {},
+): Promise<void> {
+  await ctx.db
+    .prepare(
+      `INSERT INTO billing_notifications (id, source, type, subtype, environment, outcome, received_at)
+       VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7) ON CONFLICT (id) DO NOTHING`,
+    )
+    .bind(id, n.source, n.type.slice(0, 64), n.subtype?.slice(0, 64) ?? null, n.environment ?? null, n.outcome, ctx.now)
+    .run();
+  // Jurnal: tur, natija, holat. Token / tranzaksiya id / foydalanuvchi emaili yozilmaydi.
+  await audit(ctx, null, 'billing_notification', id, { source: n.source, type: n.type, subtype: n.subtype ?? null, outcome: n.outcome, ...details });
+}
+
+/** Apple bildirishnoma turi → majburiy holat (faqat cheklovchi tomonga). */
+const APPLE_FORCED: Record<string, Status> = { REFUND: 'revoked', REVOKE: 'revoked' };
+
+/**
+ * App Store Server Notifications V2. `signedPayload` imzosi (x5c → Apple Root
+ * CA - G3) tekshiriladi, `notificationUUID` bo'yicha takror tashlanadi,
+ * tranzaksiya holati App Store Server API'dan QAYTA o'qiladi; REFUND / REVOKE —
+ * huquq darhol olinadi (`revoked`). DID_RENEW, EXPIRED, DID_FAIL_TO_RENEW
+ * (subtype GRACE_PERIOD → grace, bo'sh → billing_retry), GRACE_PERIOD_EXPIRED
+ * — holat API'dan (grace davrida huquq bor; billing retry / expired — yo'q).
  */
 export async function appleNotification(ctx: Ctx): Promise<Response> {
-  if (!appleConfigured(ctx.env)) throw notConfigured();
+  if (!configured(ctx, 'app_store')) throw notConfigured();
   await hit(ctx.db, `billing-assn:${ctx.ipTag}`, 600, 3600, ctx.now);
   const body = await readJson(ctx.req);
-  const payload = decodeJws<{ data?: { bundleId?: string; signedTransactionInfo?: string } }>(body.signedPayload);
+  const payload = await appleJws<{
+    notificationType?: string;
+    subtype?: string;
+    notificationUUID?: string;
+    data?: { bundleId?: string; environment?: string; signedTransactionInfo?: string };
+  }>(ctx, body.signedPayload);
+  const uuid = String(payload.notificationUUID ?? '');
+  if (!/^[0-9A-Fa-f-]{8,64}$/.test(uuid)) throw badRequest('invalid_notification');
+  const id = `app_store:${uuid.toLowerCase()}`;
+  if (await seen(ctx, id)) return json({ ok: true, duplicate: true });
+  const type = String(payload.notificationType ?? 'UNKNOWN');
+  const subtype = payload.subtype ?? null;
   const bundle = ctx.env.APPLE_BUNDLE_ID || DEFAULT_BUNDLE;
-  if (!payload.data?.signedTransactionInfo || payload.data.bundleId !== bundle) {
+  const envRaw = String(payload.data?.environment ?? '').toLowerCase();
+  const environment = envRaw === 'production' ? 'production' : 'sandbox';
+  const base = { source: 'app_store' as const, type, subtype, environment };
+  if (payload.data?.bundleId !== bundle || !payload.data?.signedTransactionInfo || type === 'TEST') {
     // Bizga tegishli emas yoki tranzaksiyasiz (masalan, TEST) — qayta yuborilmasin.
+    await record(ctx, id, { ...base, outcome: 'ignored' });
     return json({ ok: true, ignored: true });
   }
-  const hinted = decodeJws<AppleTransaction>(payload.data.signedTransactionInfo);
-  const id = String(hinted.transactionId ?? '');
-  if (!/^\d{1,32}$/.test(id)) return json({ ok: true, ignored: true });
+  if (environment === 'sandbox' && !sandboxAllowed(ctx.env)) {
+    await record(ctx, id, { ...base, outcome: 'sandbox_ignored' });
+    return json({ ok: true, ignored: true });
+  }
+  const hinted = await appleJws<AppleTransaction>(ctx, payload.data.signedTransactionInfo);
+  const txId = String(hinted.transactionId ?? '');
+  if (!/^\d{1,32}$/.test(txId)) {
+    await record(ctx, id, { ...base, outcome: 'ignored' });
+    return json({ ok: true, ignored: true });
+  }
   let v: Verified;
   try {
-    v = await verifyApple(ctx, id);
+    v = acceptEnvironment(ctx, await verifierFor(ctx, 'app_store').verify(ctx, txId));
   } catch (e) {
-    if (e instanceof ApiError && e.status < 500) return json({ ok: true, ignored: true });
+    if (e instanceof ApiError && e.status < 500) {
+      await record(ctx, id, { ...base, outcome: 'ignored' }, { reason: e.code });
+      return json({ ok: true, ignored: true });
+    }
     throw e;
   }
+  if (APPLE_FORCED[type]) v = { ...v, status: APPLE_FORCED[type], eventAt: Math.max(v.eventAt, ctx.now) };
   let updated = await applyUpdate(ctx, v);
   if (!updated && v.accountHint) {
     // Ilova hali tekshirtirmagan xarid: appAccountToken — mavjud hisob id si.
     const user = await ctx.db.prepare('SELECT id FROM users WHERE id = ?1').bind(v.accountHint).first<{ id: string }>();
     if (user) updated = await claim(ctx, user.id, v);
   }
+  await record(ctx, id, { ...base, outcome: updated ? 'updated' : 'no_row' }, { status: v.status });
   return json({ ok: true, updated });
 }
 
+/** RTDN `subscriptionNotification.notificationType` → majburiy holat. 12 = SUBSCRIPTION_REVOKED. */
+const PLAY_FORCED: Record<number, Status> = { 12: 'revoked' };
+/** Hujjatdagi nomlar (jurnal uchun), https://developer.android.com/google/play/billing/rtdn-reference */
+const PLAY_TYPES: Record<number, string> = {
+  1: 'SUBSCRIPTION_RECOVERED',
+  2: 'SUBSCRIPTION_RENEWED',
+  3: 'SUBSCRIPTION_CANCELED',
+  4: 'SUBSCRIPTION_PURCHASED',
+  5: 'SUBSCRIPTION_ON_HOLD',
+  6: 'SUBSCRIPTION_IN_GRACE_PERIOD',
+  7: 'SUBSCRIPTION_RESTARTED',
+  9: 'SUBSCRIPTION_DEFERRED',
+  10: 'SUBSCRIPTION_PAUSED',
+  11: 'SUBSCRIPTION_PAUSE_SCHEDULE_CHANGED',
+  12: 'SUBSCRIPTION_REVOKED',
+  13: 'SUBSCRIPTION_EXPIRED',
+  17: 'SUBSCRIPTION_ITEMS_CHANGED',
+  18: 'SUBSCRIPTION_CANCELLATION_SCHEDULED',
+  19: 'SUBSCRIPTION_PRICE_CHANGE_UPDATED',
+  20: 'SUBSCRIPTION_PENDING_PURCHASE_CANCELED',
+  22: 'SUBSCRIPTION_PRICE_STEP_UP_CONSENT_UPDATED',
+};
+
+/** RTDN push autentifikatsiyasi: OIDC (tavsiya) yoki URL token. Hech biri sozlanmagan — 503. */
+async function rtdnAuthorized(ctx: Ctx): Promise<void> {
+  const audience = ctx.env.PLAY_RTDN_AUDIENCE ?? '';
+  const token = ctx.env.PLAY_RTDN_TOKEN ?? '';
+  if (!audience && !token) throw new ApiError(503, 'rtdn_auth_not_configured');
+  if (audience) {
+    const auth = ctx.req.headers.get('authorization') ?? '';
+    const jwt = auth.startsWith('Bearer ') ? auth.slice(7) : '';
+    if (!jwt || !(await verifyGooglePushJwt(ctx, jwt, audience, ctx.env.PLAY_RTDN_SERVICE_ACCOUNT ?? null))) {
+      throw new ApiError(401, 'invalid_push_token');
+    }
+  }
+  if (token) {
+    const got = new URL(ctx.req.url).searchParams.get('token') ?? '';
+    if (!safeEqual(got, token)) throw new ApiError(403, 'forbidden');
+  }
+}
+
 /**
- * Google Play RTDN (Pub/Sub push). Sozlangan bo'lsa `?token=` tekshiriladi;
- * holat baribir Play Developer API'dan qayta o'qiladi.
+ * Google Play RTDN (Pub/Sub push). Autentifikatsiya (OIDC va/yoki token),
+ * `message.messageId` bo'yicha takror tashlanadi, holat Play Developer
+ * API'dan (`subscriptionsv2.get`) QAYTA o'qiladi. SUBSCRIPTION_REVOKED va
+ * `voidedPurchaseNotification` (refund / chargeback) — huquq darhol olinadi;
+ * ON_HOLD / PAUSED / EXPIRED — API holati huquq bermaydi; IN_GRACE_PERIOD — beradi.
  */
 export async function googleNotification(ctx: Ctx): Promise<Response> {
-  if (!googleConfigured(ctx.env)) throw notConfigured();
-  const expected = ctx.env.PLAY_RTDN_TOKEN ?? '';
-  if (expected) {
-    const got = new URL(ctx.req.url).searchParams.get('token') ?? '';
-    if (!safeEqual(got, expected)) throw new ApiError(403, 'forbidden');
-  }
+  if (!configured(ctx, 'play_store')) throw notConfigured();
+  await rtdnAuthorized(ctx);
   await hit(ctx.db, `billing-rtdn:${ctx.ipTag}`, 600, 3600, ctx.now);
   const body = await readJson(ctx.req);
-  const message = (body.message ?? {}) as { data?: string };
+  const message = (body.message ?? {}) as { data?: string; messageId?: string; message_id?: string };
+  const messageId = String(message.messageId ?? message.message_id ?? '');
+  if (!/^[A-Za-z0-9._:-]{1,128}$/.test(messageId)) throw badRequest('invalid_notification');
+  const id = `play_store:${messageId}`;
+  if (await seen(ctx, id)) return json({ ok: true, duplicate: true });
   let n: any;
   try {
     n = JSON.parse(b64urlDecode(String(message.data ?? '')));
   } catch {
+    await record(ctx, id, { source: 'play_store', type: 'UNPARSEABLE', outcome: 'ignored' });
     return json({ ok: true, ignored: true });
   }
-  if (n?.packageName !== (ctx.env.GOOGLE_PLAY_PACKAGE || DEFAULT_BUNDLE)) return json({ ok: true, ignored: true });
+  const code = Number(n?.subscriptionNotification?.notificationType);
+  const type = n?.voidedPurchaseNotification
+    ? 'VOIDED_PURCHASE'
+    : n?.testNotification
+      ? 'TEST'
+      : n?.subscriptionNotification
+        ? (PLAY_TYPES[code] ?? `SUBSCRIPTION_${code}`)
+        : 'OTHER';
+  const base = { source: 'play_store' as const, type };
+  if (n?.packageName !== (ctx.env.GOOGLE_PLAY_PACKAGE || DEFAULT_BUNDLE)) {
+    await record(ctx, id, { ...base, outcome: 'ignored' });
+    return json({ ok: true, ignored: true });
+  }
   const token: unknown = n.subscriptionNotification?.purchaseToken ?? n.voidedPurchaseNotification?.purchaseToken;
-  if (typeof token !== 'string') return json({ ok: true, ignored: true });
+  if (typeof token !== 'string') {
+    await record(ctx, id, { ...base, outcome: 'ignored' });
+    return json({ ok: true, ignored: true });
+  }
   let v: Verified;
   try {
-    v = await verifyGoogle(ctx, token);
+    v = await verifierFor(ctx, 'play_store').verify(ctx, token);
   } catch (e) {
-    if (e instanceof ApiError && e.status < 500) return json({ ok: true, ignored: true });
+    if (e instanceof ApiError && e.status < 500) {
+      await record(ctx, id, { ...base, outcome: 'ignored' }, { reason: e.code });
+      return json({ ok: true, ignored: true });
+    }
     throw e;
   }
-  // Qaytarilgan xarid: Play holati ham huquq bermasa — `revoked` (davr hisoblanmaydi).
-  if (n.voidedPurchaseNotification && v.status !== 'active' && v.status !== 'grace_period') {
-    v = { ...v, status: 'revoked' };
+  if (v.environment === 'sandbox' && !sandboxAllowed(ctx.env)) {
+    await record(ctx, id, { ...base, environment: 'sandbox', outcome: 'sandbox_ignored' });
+    return json({ ok: true, ignored: true });
   }
+  // Refund / chargeback (voided) va REVOKED — huquq darhol olinadi (D-75).
+  const forced = n.voidedPurchaseNotification ? 'revoked' : PLAY_FORCED[code];
+  if (forced) v = { ...v, status: forced };
   const updated = await applyUpdate(ctx, v);
+  await record(ctx, id, { ...base, environment: v.environment, outcome: updated ? 'updated' : 'no_row' }, { status: v.status });
   return json({ ok: true, updated });
 }
+
+/** Kunlik tozalash: eski bildirishnoma id lari (faqat bayroq yoqilganda). */
+export const notificationCleanupStatements = (db: D1Database, now: number): D1PreparedStatement[] => [
+  db.prepare('DELETE FROM billing_notifications WHERE received_at < ?1').bind(now - NOTIFICATION_RETENTION_DAYS * 86400_000),
+];

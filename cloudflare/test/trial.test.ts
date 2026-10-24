@@ -9,8 +9,11 @@ import { makeServer as baseServer, uniqueEmail } from './helpers';
 const DAY = 86400_000;
 type Srv = ReturnType<typeof baseServer>;
 
-function makeServer(verifier: FakeDeviceAttestationVerifier | typeof RejectingVerifier | null = new FakeDeviceAttestationVerifier()) {
-  const s = baseServer({ LG_BILLING_ENABLED: 'true' } as never);
+function makeServer(
+  verifier: FakeDeviceAttestationVerifier | typeof RejectingVerifier | null = new FakeDeviceAttestationVerifier(),
+  extra: Record<string, string> = {},
+) {
+  const s = baseServer({ LG_BILLING_ENABLED: 'true', ...extra } as never);
   if (verifier) s.setAttestation(verifier);
   return s;
 }
@@ -217,14 +220,14 @@ describe('trial: berish va suiiste’mol cheklovlari', () => {
     const ch = await challenge(s2, u2.token);
     const wrong = await s2.call('POST', '/v1/billing/trial/start', {
       token: u2.token,
-      body: { tier: 'student', email: e2, attestation: { platform: 'ios', token: `fake:${dev()}:other`, nonce: ch.data.nonce } },
+      body: { tier: 'student', email: e2, attestation: { platform: 'android', token: `fake:${dev()}:other`, nonce: ch.data.nonce } },
     });
     expect(wrong.status).toBe(403);
     expect(wrong.data.error).toBe('device_attestation_failed');
     // Nonce bir martalik: qayta ishlatib bo'lmaydi.
     const reuse = await s2.call('POST', '/v1/billing/trial/start', {
       token: u2.token,
-      body: { tier: 'student', email: e2, attestation: { platform: 'ios', token: `fake:x:${ch.data.nonce}`, nonce: ch.data.nonce } },
+      body: { tier: 'student', email: e2, attestation: { platform: 'android', token: `fake:x:${ch.data.nonce}`, nonce: ch.data.nonce } },
     });
     expect(reuse.status).toBe(400);
     expect(reuse.data.error).toBe('invalid_nonce');
@@ -253,7 +256,8 @@ describe('trial: berish va suiiste’mol cheklovlari', () => {
 
   it('platforma bayrog‘i (DeviceCheck/device recall) “ishlatilgan” desa — rad', async () => {
     const v = new FakeDeviceAttestationVerifier(true);
-    const s = makeServer(v);
+    // DeviceCheck (iOS) — faqat egasi Apple roziligidan keyin iOS ni yoqqanda (D-75).
+    const s = makeServer(v, { TRIAL_PLATFORMS: 'android,ios' });
     const phone = dev();
     const a = uniqueEmail('flag');
     const ua = await s.signIn(a);
@@ -368,5 +372,64 @@ describe('trial: saqlash muddati', () => {
     s.clock.now = base + (TRIAL_RETENTION_DAYS + 1) * DAY;
     await s.app.scheduled(s.env);
     expect(await count()).toBe(0);
+  });
+});
+
+describe('trial: platforma (D-75, TRIAL_PLATFORMS standart android)', () => {
+  it('iOS standart bo‘yicha — 403 trial_not_available_on_platform; nonce sarflanmaydi, yozuv yo‘q', async () => {
+    const fake = new FakeDeviceAttestationVerifier();
+    const s = makeServer(fake);
+    const email = uniqueEmail('ios-blocked');
+    const u = await s.signIn(email);
+    // Challenge platforma bilan so'ralsa — darhol rad.
+    const chIos = await s.call('POST', '/v1/billing/trial/challenge', { token: u.token, body: { platform: 'ios' } });
+    expect(chIos.status).toBe(403);
+    expect(chIos.data.error).toBe('trial_not_available_on_platform');
+    const r = await startTrial(s, u.token, email, dev(), { platform: 'ios' });
+    expect(r.status).toBe(403);
+    expect(r.data.error).toBe('trial_not_available_on_platform');
+    // Attestatsiya tekshiruvchisi umuman chaqirilmadi, sinov yozilmadi.
+    expect(fake.seen).toEqual([]);
+    const n = await s.env.DB.prepare('SELECT COUNT(*) AS n FROM pro_trials WHERE user_id = ?1').bind(u.userId).first<{ n: number }>();
+    expect(n!.n).toBe(0);
+    expect((await ents(s, u.token)).data.resolved).toBeNull();
+    // Android (soxta tekshiruvchi bilan) — ruxsat.
+    const a = await startTrial(s, u.token, email, dev(), { platform: 'android' });
+    expect(a.status, a.text).toBe(201);
+  });
+
+  it('imkoniyat so‘rovi: status.trial — platforma × attestatsiya', async () => {
+    const off = makeServer(null);
+    expect((await off.call('GET', '/v1/billing/status')).data.trial).toEqual({ android: false, ios: false, platforms: ['android'] });
+    const on = makeServer();
+    expect((await on.call('GET', '/v1/billing/status')).data.trial).toEqual({ android: true, ios: false, platforms: ['android'] });
+    const both = makeServer(new FakeDeviceAttestationVerifier(), { TRIAL_PLATFORMS: 'android, ios' });
+    expect((await both.call('GET', '/v1/billing/status')).data.trial).toEqual({ android: true, ios: true, platforms: ['android', 'ios'] });
+    const none = makeServer(new FakeDeviceAttestationVerifier(), { TRIAL_PLATFORMS: 'web' });
+    expect((await none.call('GET', '/v1/billing/status')).data.trial).toEqual({ android: false, ios: false, platforms: [] });
+  });
+
+  it('egasi Apple roziligidan keyin TRIAL_PLATFORMS=android,ios — iOS sinovi ishlaydi', async () => {
+    const s = makeServer(new FakeDeviceAttestationVerifier(), { TRIAL_PLATFORMS: 'android,ios' });
+    const email = uniqueEmail('ios-ok');
+    const u = await s.signIn(email);
+    expect((await startTrial(s, u.token, email, dev(), { platform: 'ios' })).status).toBe(201);
+  });
+
+  it('sinov hech qachon do‘kon xaridini boshlamaydi va pul yechmaydi: hech qanday do‘kon so‘rovi yo‘q', async () => {
+    const s = makeServer();
+    const email = uniqueEmail('nocharge');
+    const u = await s.signIn(email);
+    expect((await startTrial(s, u.token, email, dev())).status).toBe(201);
+    expect(s.fetchCalls).toEqual([]);
+    const rows = await s.env.DB.prepare('SELECT COUNT(*) AS n FROM entitlements WHERE user_id = ?1').bind(u.userId).first<{ n: number }>();
+    expect(rows!.n).toBe(0);
+    // 30 kundan keyin: sinov tugaydi, do'kon obunasi paydo bo'lmaydi (avtomatik pullik yo'q).
+    s.clock.now += (TRIAL_DAYS + 1) * DAY;
+    const e = (await ents(s, u.token)).data;
+    expect(e.resolved).toBeNull();
+    expect(e.items.every((i: any) => i.source === 'trial')).toBe(true);
+    // Bepul yo'llar ishlaydi.
+    expect((await s.call('GET', '/v1/me', { token: u.token })).status).toBe(200);
   });
 });

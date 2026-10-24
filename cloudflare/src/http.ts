@@ -48,6 +48,36 @@ export interface Env {
   /** Maxfiy (ixtiyoriy): RTDN push URL'idagi `?token=` qiymati. */
   PLAY_RTDN_TOKEN?: string;
   /**
+   * RTDN (Pub/Sub push) OIDC tekshiruvi (D-75, tavsiya etiladi): push
+   * subscription'dagi "audience" qiymati. Berilsa `Authorization: Bearer`
+   * JWT (Google imzosi, iss accounts.google.com, aud, email_verified) majburiy.
+   * Na shu, na `PLAY_RTDN_TOKEN` bo'lsa — RTDN `503 rtdn_auth_not_configured`.
+   */
+  PLAY_RTDN_AUDIENCE?: string;
+  /** Push subscription'ning service account emaili (JWT `email` bilan solishtiriladi). */
+  PLAY_RTDN_SERVICE_ACCOUNT?: string;
+  /**
+   * Sandbox / test xaridlari (D-75): faqat `'true'` bo'lsa Apple Sandbox va
+   * Play litsenziya testeri xaridlari qabul qilinadi (muhit `sandbox` deb
+   * yoziladi). Aks holda (production) sandbox xaridi `403 sandbox_not_allowed`,
+   * sandbox bildirishnomasi e'tiborsiz.
+   */
+  LG_BILLING_SANDBOX?: string;
+  /**
+   * Apple Root CA barmoq izi (SHA-256, hex) — JWS zanjiri shu root'ga pin
+   * qilinadi. Standart: Apple Root CA - G3 (src/x509.ts). Maxfiy emas;
+   * faqat testlar va Apple root almashtirsa o'zgartiriladi.
+   */
+  APPLE_ROOT_CA_SHA256?: string;
+  /** Ixtiyoriy: App Store obuna guruhi id si — berilsa tranzaksiya guruhi tekshiriladi. */
+  APPLE_SUBSCRIPTION_GROUP_ID?: string;
+  /**
+   * Bepul sinov ruxsat etilgan platformalar (D-75), vergul bilan: `android`,
+   * `ios`. Standart — faqat `android`. iOS faqat Apple yozma javobidan keyin
+   * egasi tomonidan qo'shiladi (docs/APPLE_REVIEW_QUESTION_DRAFT.md).
+   */
+  TRIAL_PLATFORMS?: string;
+  /**
    * Google bilan kirish (src/social.ts): ruxsat etilgan OAuth client ID lar
    * (ID tokendagi `aud`), vergul/bo'shliq bilan. Bo'sh — Google kirishi
    * `503 not_configured`, ilova tugmani ko'rsatmaydi.

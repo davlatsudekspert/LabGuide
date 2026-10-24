@@ -3,6 +3,7 @@
 // soxta `fetch` (haqiqiy tarmoqqa murojaat yo'q); kalitlar test ichida yaratiladi.
 
 import { describe, expect, it } from 'vitest';
+import { appleChain, tamper } from './apple_jws_fixture';
 import { makeServer as baseServer, uniqueEmail } from './helpers';
 
 // Billing yo'llari faqat LG_BILLING_ENABLED=true bo'lganda mavjud (D-71, inert).
@@ -16,8 +17,10 @@ const DAY = 86400_000;
 
 const b64 = (v: unknown) =>
   btoa(JSON.stringify(v)).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
-/** Do'kon imzolagan JWS ko'rinishi (server faqat yuklamani o'qiydi). */
-const jws = (payload: unknown) => `${b64({ alg: 'ES256', x5c: [] })}.${b64(payload)}.c2ln`;
+/** Imzosiz (soxta) JWS — server rad etishi kerak (D-75). */
+const unsignedJws = (payload: unknown) => `${b64({ alg: 'ES256', x5c: [] })}.${b64(payload)}.c2ln`;
+/** Test zanjiri bilan imzolangan JWS (apple_jws_fixture.ts; server shu root'ga pin). */
+const jws = async (payload: unknown) => (await appleChain()).sign(payload);
 
 function pem(der: ArrayBuffer): string {
   const s = btoa(String.fromCharCode(...new Uint8Array(der)));
@@ -82,7 +85,7 @@ function appleStore(txs: AppleTx[]) {
       appAccountToken: tx.appAccountToken,
       signedDate: tx.signedDate ?? tx.expiresDate - 30 * DAY,
     };
-    if (m![1] === 'transactions') return reply({ signedTransactionInfo: jws(info) });
+    if (m![1] === 'transactions') return reply({ signedTransactionInfo: await jws(info) });
     return reply({
       environment: 'Sandbox',
       bundleId: info.bundleId,
@@ -93,8 +96,8 @@ function appleStore(txs: AppleTx[]) {
             {
               originalTransactionId: tx.originalTransactionId,
               status: tx.status ?? 1,
-              signedTransactionInfo: jws(info),
-              signedRenewalInfo: jws({}),
+              signedTransactionInfo: await jws(info),
+              signedRenewalInfo: await jws({}),
             },
           ],
         },
@@ -103,9 +106,13 @@ function appleStore(txs: AppleTx[]) {
   };
 }
 
-async function appleServer() {
+async function appleServer(extra: Record<string, string> = {}) {
   const key = await appleKey();
   const s = makeServer({
+    // Mock tranzaksiyalari sandbox'da — faqat LG_BILLING_SANDBOX=true bilan qabul (D-75).
+    LG_BILLING_SANDBOX: 'true',
+    APPLE_ROOT_CA_SHA256: (await appleChain()).rootSha256,
+    ...extra,
     APPLE_IAP_KEY_ID: 'KEY123ABCD',
     APPLE_IAP_ISSUER_ID: '57246542-96fe-1a63-e053-0824d011072a',
     APPLE_IAP_PRIVATE_KEY: key.pem,
@@ -118,7 +125,12 @@ describe('billing: sozlanmagan server', () => {
     const s = makeServer();
     const st = await s.call('GET', '/v1/billing/status');
     expect(st.status).toBe(200);
-    expect(st.data).toEqual({ app_store: false, play_store: false });
+    expect(st.data).toEqual({
+      app_store: false,
+      play_store: false,
+      sandbox: false,
+      trial: { android: false, ios: false, platforms: ['android'] },
+    });
 
     expect((await s.call('GET', '/v1/billing/entitlements')).status).toBe(401);
     const { token } = await s.signIn(uniqueEmail('bill'));
@@ -127,7 +139,7 @@ describe('billing: sozlanmagan server', () => {
       body: { platform: 'app_store', product_id: 'uz.labguide.pro.monthly', token: '2000000001' },
     });
     expect(v.status).toBe(503);
-    expect(v.data.error).toBe('not_configured');
+    expect(v.data.error).toBe('store_verifier_not_configured');
     const e = await s.call('GET', '/v1/billing/entitlements', { token });
     expect(e.status).toBe(200);
     expect(e.data.items).toEqual([]);
@@ -150,7 +162,7 @@ describe('billing: App Store', () => {
     const { s, key } = await appleServer();
     const exp = s.clock.now + 20 * DAY;
     s.setFetch(appleStore([{ transactionId: '2000000101', originalTransactionId: '2000000100', expiresDate: exp }]));
-    expect((await s.call('GET', '/v1/billing/status')).data).toEqual({ app_store: true, play_store: false });
+    expect((await s.call('GET', '/v1/billing/status')).data).toMatchObject({ app_store: true, play_store: false, sandbox: true });
     const u = await s.signIn(uniqueEmail('ios'));
     const r = await s.call('POST', '/v1/billing/verify', {
       token: u.token,
@@ -248,7 +260,7 @@ describe('billing: App Store', () => {
     expect(n!.n).toBe(0);
   });
 
-  it('ASSN v2: refund — holat API dan qayta o‘qiladi va revoked bo‘ladi; soxta tana ishonilmaydi', async () => {
+  it('ASSN v2: imzo (x5c → pin root) tekshiriladi; refund — holat API dan qayta o‘qiladi va darhol revoked; takror tashlanadi', async () => {
     const { s } = await appleServer();
     const tx: AppleTx = { transactionId: '2000000501', originalTransactionId: '2000000500', expiresDate: s.clock.now + 9 * DAY };
     s.setFetch(appleStore([tx]));
@@ -257,26 +269,97 @@ describe('billing: App Store', () => {
       token: u.token,
       body: { platform: 'app_store', product_id: 'uz.labguide.pro.monthly', token: '2000000501' },
     });
-    // Bildirishnomada "faol" deyilgan, lekin API qaytarilgan deydi — API ustun.
-    tx.status = 5;
-    tx.revocationDate = s.clock.now;
-    tx.signedDate = s.clock.now;
-    const payload = jws({
+    const note = {
       notificationType: 'REFUND',
-      data: { bundleId: 'uz.labguide.app', signedTransactionInfo: jws({ transactionId: '2000000501', status: 1 }) },
-    });
-    const n = await s.call('POST', '/v1/billing/apple/notifications', { body: { signedPayload: payload } });
+      notificationUUID: '8b0d9a1e-0000-4000-8000-000000000501',
+      data: {
+        bundleId: 'uz.labguide.app',
+        environment: 'Sandbox',
+        signedTransactionInfo: await jws({ transactionId: '2000000501' }),
+      },
+    };
+    // Imzosiz, buzilgan yoki boshqa root bilan imzolangan tana — 401, hech narsa o'zgarmaydi.
+    for (const bad of [unsignedJws(note), tamper(await jws(note)), await (await appleChain()).signForeign(note)]) {
+      const r = await s.call('POST', '/v1/billing/apple/notifications', { body: { signedPayload: bad } });
+      expect(r.status).toBe(401);
+      expect(r.data.error).toBe('invalid_signature');
+    }
+    expect((await s.call('GET', '/v1/billing/entitlements', { token: u.token })).data.items[0].status).toBe('active');
+
+    // REFUND — API hali "faol" desa ham huquq darhol olinadi (D-75).
+    const signed = await jws(note);
+    const n = await s.call('POST', '/v1/billing/apple/notifications', { body: { signedPayload: signed } });
     expect(n.status, n.text).toBe(200);
     expect(n.data.updated).toBe(true);
     const snap = await s.call('GET', '/v1/billing/entitlements', { token: u.token });
     expect(snap.data.items[0].status).toBe('revoked');
+    expect(snap.data.resolved).toBeNull();
+    // Takror (o'sha notificationUUID) — qayta ishlanmaydi.
+    const fetches = s.fetchCalls.length;
+    const dup = await s.call('POST', '/v1/billing/apple/notifications', { body: { signedPayload: signed } });
+    expect(dup.data.duplicate).toBe(true);
+    expect(s.fetchCalls.length).toBe(fetches);
+    const log = await s.env.DB.prepare(`SELECT details FROM audit_log WHERE action = 'billing_notification' AND target = ?1`)
+      .bind('app_store:8b0d9a1e-0000-4000-8000-000000000501')
+      .first<{ details: string }>();
+    expect(JSON.parse(log!.details)).toMatchObject({ source: 'app_store', type: 'REFUND', outcome: 'updated', status: 'revoked' });
+    expect(log!.details).not.toContain('2000000501');
 
     // Boshqa ilovaning bildirishnomasi — e'tiborsiz (do'kon qayta yubormasin: 200).
     const other = await s.call('POST', '/v1/billing/apple/notifications', {
-      body: { signedPayload: jws({ data: { bundleId: 'com.other', signedTransactionInfo: jws({ transactionId: '1' }) } }) },
+      body: {
+        signedPayload: await jws({
+          notificationType: 'DID_RENEW',
+          notificationUUID: '8b0d9a1e-0000-4000-8000-000000000502',
+          data: { bundleId: 'com.other', environment: 'Sandbox', signedTransactionInfo: await jws({ transactionId: '1' }) },
+        }),
+      },
     });
     expect(other.status).toBe(200);
     expect(other.data.ignored).toBe(true);
+  });
+
+  it('LG_BILLING_SANDBOX yo‘q (production): sandbox host so‘ralmaydi, sandbox bildirishnomasi e’tiborsiz', async () => {
+    const { s } = await appleServer({ LG_BILLING_SANDBOX: '' });
+    s.setFetch(appleStore([{ transactionId: '2000000551', originalTransactionId: '2000000550', expiresDate: s.clock.now + DAY }]));
+    expect((await s.call('GET', '/v1/billing/status')).data.sandbox).toBe(false);
+    const u = await s.signIn(uniqueEmail('prod'));
+    const r = await s.call('POST', '/v1/billing/verify', {
+      token: u.token,
+      body: { platform: 'app_store', product_id: 'uz.labguide.pro.monthly', token: '2000000551' },
+    });
+    expect(r.status).toBe(400);
+    expect(r.data.error).toBe('purchase_not_found');
+    expect(s.fetchCalls.every((c) => !c.url.startsWith(APPLE_SANDBOX))).toBe(true);
+    const n = await s.call('POST', '/v1/billing/apple/notifications', {
+      body: {
+        signedPayload: await jws({
+          notificationType: 'DID_RENEW',
+          notificationUUID: '8b0d9a1e-0000-4000-8000-000000000551',
+          data: { bundleId: 'uz.labguide.app', environment: 'Sandbox', signedTransactionInfo: await jws({ transactionId: '2000000551' }) },
+        }),
+      },
+    });
+    expect(n.data.ignored).toBe(true);
+  });
+
+  it('production host sandbox tranzaksiyasini qaytarsa — environment_mismatch', async () => {
+    const { s } = await appleServer({ LG_BILLING_SANDBOX: '' });
+    const info = {
+      transactionId: '2000000561',
+      originalTransactionId: '2000000560',
+      bundleId: 'uz.labguide.app',
+      productId: 'uz.labguide.student.monthly',
+      expiresDate: s.clock.now + DAY,
+      environment: 'Sandbox',
+    };
+    s.setFetch(async (url) => (url.startsWith(APPLE_PROD) ? reply({ signedTransactionInfo: await jws(info) }) : reply({}, 404)));
+    const u = await s.signIn(uniqueEmail('mism'));
+    const r = await s.call('POST', '/v1/billing/verify', {
+      token: u.token,
+      body: { platform: 'app_store', product_id: 'uz.labguide.student.monthly', token: '2000000561' },
+    });
+    expect(r.data.error).toBe('environment_mismatch');
   });
 
   it('eski hodisa yangisining ustidan yozilmaydi', async () => {
@@ -314,7 +397,8 @@ describe('billing: App Store', () => {
 describe('billing: Google Play', () => {
   async function playServer(extra: Record<string, string> = {}) {
     const sa = await googleKey();
-    return makeServer({ GOOGLE_PLAY_SERVICE_ACCOUNT: sa, ...extra } as never);
+    // `active()` — test xaridi (testPurchase): faqat LG_BILLING_SANDBOX=true bilan (D-75).
+    return makeServer({ GOOGLE_PLAY_SERVICE_ACCOUNT: sa, LG_BILLING_SANDBOX: 'true', ...extra } as never);
   }
 
   function playStore(s: ReturnType<typeof makeServer>, subs: Record<string, any>) {
@@ -408,7 +492,60 @@ describe('billing: Google Play', () => {
     expect(r.data.owned_by_other).toBe(true);
   });
 
-  it('RTDN: token talab qilinadi; holat API dan qayta o‘qiladi (refund → revoked)', async () => {
+  it('base plan: obuna `uz.labguide.student` + base plan `yearly` → kanonik id; acknowledge obuna id si bilan', async () => {
+    const s = await playServer();
+    const token = 'play-token-baseplan-0001';
+    const acks = playStore(s, {
+      [token]: {
+        ...active(s, 'uz.labguide.student'),
+        lineItems: [
+          {
+            productId: 'uz.labguide.student',
+            offerDetails: { basePlanId: 'yearly' },
+            expiryTime: new Date(s.clock.now + 300 * DAY).toISOString(),
+          },
+        ],
+      },
+    });
+    const u = await s.signIn(uniqueEmail('baseplan'));
+    const r = await s.call('POST', '/v1/billing/verify', {
+      token: u.token,
+      body: { platform: 'play_store', product_id: 'uz.labguide.student.yearly', token },
+    });
+    expect(r.status, r.text).toBe(200);
+    expect(r.data.items[0].product_id).toBe('uz.labguide.student.yearly');
+    expect(r.data.resolved.plan).toBe('student');
+    expect(acks).toEqual([`uz.labguide.student:${token}`]);
+    // Noma'lum base plan — mahsulot tanilmaydi.
+    const t2 = 'play-token-baseplan-0002';
+    playStore(s, {
+      [t2]: { ...active(s), lineItems: [{ productId: 'uz.labguide.student', offerDetails: { basePlanId: 'weekly' }, expiryTime: new Date(s.clock.now + DAY).toISOString() }] },
+    });
+    const bad = await s.call('POST', '/v1/billing/verify', { token: u.token, body: { platform: 'play_store', token: t2 } });
+    expect(bad.data.error).toBe('unknown_product');
+  });
+
+  it('test xaridi (testPurchase) production rejimida — 403 sandbox_not_allowed, hech narsa yozilmaydi', async () => {
+    const s = await playServer({ LG_BILLING_SANDBOX: '' });
+    const token = 'play-token-test-purchase-1';
+    playStore(s, { [token]: active(s, 'uz.labguide.teacher.monthly') });
+    const u = await s.signIn(uniqueEmail('testbuy'));
+    const r = await s.call('POST', '/v1/billing/verify', {
+      token: u.token,
+      body: { platform: 'play_store', product_id: 'uz.labguide.teacher.monthly', token },
+    });
+    expect(r.status).toBe(403);
+    expect(r.data.error).toBe('sandbox_not_allowed');
+    const n = await s.env.DB.prepare('SELECT COUNT(*) AS n FROM entitlements WHERE user_id = ?1').bind(u.userId).first<{ n: number }>();
+    expect(n!.n).toBe(0);
+  });
+
+  it('RTDN: autentifikatsiya majburiy; voided (refund) — darhol revoked; messageId takrori tashlanadi', async () => {
+    const noAuth = await playServer();
+    const unauth = await noAuth.call('POST', '/v1/billing/google/rtdn', { body: { message: { messageId: '1', data: '' } } });
+    expect(unauth.status).toBe(503);
+    expect(unauth.data.error).toBe('rtdn_auth_not_configured');
+
     const s = await playServer({ PLAY_RTDN_TOKEN: 'rtdn-secret-token' });
     const token = 'play-token-rtdn-00000001';
     const subs: Record<string, any> = { [token]: active(s, 'uz.labguide.pro.yearly') };
@@ -418,25 +555,25 @@ describe('billing: Google Play', () => {
       token: u.token,
       body: { platform: 'play_store', product_id: 'uz.labguide.pro.yearly', token },
     });
-    const msg = (n: unknown) => ({ message: { data: btoa(JSON.stringify(n)), messageId: '1' }, subscription: 'x' });
-    const voided = msg({ packageName: 'uz.labguide.app', voidedPurchaseNotification: { purchaseToken: token } });
+    const msg = (n: unknown, id: string) => ({ message: { data: btoa(JSON.stringify(n)), messageId: id }, subscription: 'x' });
+    const voided = msg({ packageName: 'uz.labguide.app', voidedPurchaseNotification: { purchaseToken: token, refundType: 1 } }, '1001');
     expect((await s.call('POST', '/v1/billing/google/rtdn', { body: voided })).status).toBe(403);
     expect((await s.call('POST', '/v1/billing/google/rtdn?token=wrong', { body: voided })).status).toBe(403);
-
-    // API hali faol desa — refund xabariga ishonilmaydi.
-    const keep = await s.call('POST', '/v1/billing/google/rtdn?token=rtdn-secret-token', { body: voided });
-    expect(keep.status).toBe(200);
     expect((await s.call('GET', '/v1/billing/entitlements', { token: u.token })).data.items[0].status).toBe('active');
 
-    subs[token] = { ...subs[token], subscriptionState: 'SUBSCRIPTION_STATE_EXPIRED' };
-    s.clock.now += 1000;
+    // Refund: API hali faol desa ham huquq darhol olinadi (egasi qoidasi, D-75).
     const r = await s.call('POST', '/v1/billing/google/rtdn?token=rtdn-secret-token', { body: voided });
+    expect(r.status).toBe(200);
     expect(r.data.updated).toBe(true);
-    expect((await s.call('GET', '/v1/billing/entitlements', { token: u.token })).data.items[0].status).toBe('revoked');
+    const snap = (await s.call('GET', '/v1/billing/entitlements', { token: u.token })).data;
+    expect(snap.items[0].status).toBe('revoked');
+    expect(snap.resolved).toBeNull();
+    const dup = await s.call('POST', '/v1/billing/google/rtdn?token=rtdn-secret-token', { body: voided });
+    expect(dup.data.duplicate).toBe(true);
 
     // Boshqa paket — e'tiborsiz.
     const other = await s.call('POST', '/v1/billing/google/rtdn?token=rtdn-secret-token', {
-      body: msg({ packageName: 'com.other', subscriptionNotification: { purchaseToken: token } }),
+      body: msg({ packageName: 'com.other', subscriptionNotification: { purchaseToken: token, notificationType: 2 } }, '1002'),
     });
     expect(other.data.ignored).toBe(true);
   });

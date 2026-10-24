@@ -170,3 +170,30 @@ describe('qorovul: billing inert (D-71, pro-next)', () => {
     expect(r.status).not.toBe(404);
   });
 });
+
+describe('qorovul: Pro to‘lov standartlari (D-75)', () => {
+  it('sandbox xaridi bayroqsiz qabul qilinmaydi; iOS sinovi standart yopiq; wrangler.toml ularni yoqmaydi', async () => {
+    const { sandboxAllowed } = await import('../src/billing');
+    const { trialPlatforms, trialPlatformAllowed } = await import('../src/trial');
+    expect(sandboxAllowed({} as never)).toBe(false);
+    expect(sandboxAllowed({ LG_BILLING_SANDBOX: 'false' } as never)).toBe(false);
+    expect(trialPlatforms({} as never)).toEqual(['android']);
+    expect(trialPlatformAllowed({} as never, 'ios')).toBe(false);
+    // Repo konfiguratsiyasi production o'zgaruvchilarini yoqmaydi.
+    const toml = (await import('../wrangler.toml?raw')).default as string;
+    expect(toml).not.toMatch(/LG_BILLING_ENABLED\s*=\s*"true"/);
+    expect(toml).not.toMatch(/LG_BILLING_SANDBOX\s*=\s*"true"/);
+    expect(toml).not.toMatch(/TRIAL_PLATFORMS\s*=.*ios/);
+  });
+
+  it('kalitsiz do‘kon tekshiruvchisi — 503 store_verifier_not_configured (bayroq yoqilgan bo‘lsa ham)', async () => {
+    const s = makeServer({ LG_BILLING_ENABLED: 'true' } as never);
+    const { token } = await s.signIn(uniqueEmail('g75'));
+    for (const platform of ['app_store', 'play_store']) {
+      const r = await s.call('POST', '/v1/billing/verify', { token, body: { platform, token: '2000000001' } });
+      expect(r.status).toBe(503);
+      expect(r.data.error).toBe('store_verifier_not_configured');
+    }
+    expect(s.fetchCalls).toEqual([]);
+  });
+});

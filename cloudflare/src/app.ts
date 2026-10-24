@@ -236,6 +236,8 @@ export function createApp(deps: Deps) {
         env.DB.prepare('DELETE FROM rate_limits WHERE window_start < ?1').bind(now - 86400_000),
         // Bepul sinov jadvallari faqat bayroq yoqilganda mavjud (0015 migratsiyasi).
         ...(billingEnabled(env) ? trial.trialCleanupStatements(env.DB, now) : []),
+        // Do'kon bildirishnomalari jurnali (0016) — ham faqat bayroq bilan.
+        ...(billingEnabled(env) ? billing.notificationCleanupStatements(env.DB, now) : []),
       ]);
     },
   };

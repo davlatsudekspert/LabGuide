@@ -96,6 +96,42 @@ export const UnconfiguredVerifier: DeviceAttestationVerifier = {
 
 const verifierOf = (ctx: Ctx): DeviceAttestationVerifier => ctx.deps.attestation ?? UnconfiguredVerifier;
 
+// ------------------------------------------------------ platforma (D-75)
+/**
+ * Sinov ruxsat etilgan platformalar (`TRIAL_PLATFORMS`, standart `android`).
+ * iOS: Apple App Review 3.1.1 bo'yicha server bergan kartasiz sinov NOANIQ —
+ * Apple yozma javobidan keyin egasi `TRIAL_PLATFORMS=android,ios` qiladi
+ * (docs/APPLE_REVIEW_QUESTION_DRAFT.md). Noma'lum qiymatlar e'tiborsiz.
+ */
+export function trialPlatforms(env: Env): AttestationPlatform[] {
+  const raw = env.TRIAL_PLATFORMS ?? 'android';
+  const out = new Set<AttestationPlatform>();
+  for (const p of raw.split(/[\s,]+/)) {
+    const v = p.trim().toLowerCase();
+    if (v === 'android' || v === 'ios') out.add(v);
+  }
+  return [...out];
+}
+
+export const trialPlatformAllowed = (env: Env, p: AttestationPlatform) => trialPlatforms(env).includes(p);
+
+/**
+ * Imkoniyat so'rovi (`GET /v1/billing/status` → `trial`): har platforma uchun
+ * sinov hozir boshlanishi mumkinmi (platforma ruxsat etilgan VA qurilma
+ * attestatsiyasi sozlangan). Ilova "Sinovni boshlash" tugmasini faqat shu
+ * `true` bo'lsa ko'rsatadi.
+ */
+export function trialStatus(ctx: Ctx): { android: boolean; ios: boolean; platforms: AttestationPlatform[] } {
+  const att = verifierOf(ctx).configured(ctx.env);
+  return {
+    android: att && trialPlatformAllowed(ctx.env, 'android'),
+    ios: att && trialPlatformAllowed(ctx.env, 'ios'),
+    platforms: trialPlatforms(ctx.env),
+  };
+}
+
+const platformBlocked = () => new ApiError(403, 'trial_not_available_on_platform');
+
 function notConfigured(): ApiError {
   return new ApiError(503, 'device_attestation_not_configured');
 }
@@ -147,6 +183,21 @@ const trialKey = async (ctx: Ctx, kind: 'email' | 'device', v: string) =>
 export async function challenge(ctx: Ctx): Promise<Response> {
   const s = await requireSession(ctx);
   if (!verifierOf(ctx).configured(ctx.env)) throw notConfigured();
+  // Ixtiyoriy `{platform}` — ruxsat etilmagan platformaga nonce ham berilmaydi.
+  const raw = await ctx.req.text();
+  if (raw.length > 1024) throw badRequest('invalid_json');
+  if (raw) {
+    let platform: unknown;
+    try {
+      platform = (JSON.parse(raw) as Record<string, unknown>)?.platform;
+    } catch {
+      throw badRequest('invalid_json');
+    }
+    if (platform != null) {
+      if (platform !== 'ios' && platform !== 'android') throw badRequest('invalid_platform');
+      if (!trialPlatformAllowed(ctx.env, platform)) throw platformBlocked();
+    }
+  }
   await hit(ctx.db, `trial-ch:${(await sha256Hex(s.userId)).slice(0, 32)}`, CHALLENGE_PER_HOUR_USER, 3600, ctx.now);
   const nonce = base64url(randomBytes(32));
   const expires = ctx.now + CHALLENGE_TTL_SEC * 1000;
@@ -206,6 +257,8 @@ export async function start(ctx: Ctx): Promise<Response> {
   const body = await readJson(ctx.req, 24 * 1024);
   const tier = parseTier(body.tier ?? body.plan);
   const att = parseAttestation(body.attestation);
+  // iOS (standart) — 403, nonce sarflanmaydi, hech narsa yozilmaydi (D-75).
+  if (!trialPlatformAllowed(ctx.env, att.platform)) throw platformBlocked();
 
   // Tasdiqlangan email: hisob emaili (OTP yoki provayder `email_verified`
   // bilan yaratilgan `users.email_hash`) bilan bir xil bo'lishi shart.
