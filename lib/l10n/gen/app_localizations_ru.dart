@@ -10195,4 +10195,74 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get generalTestNameHint => 'Например, 1-й рубежный контроль';
+
+  @override
+  String get calSafeKind => 'Тип записи';
+
+  @override
+  String get calSafeKindTraining => 'Учебная';
+
+  @override
+  String get calSafeKindLab => 'Лабораторная';
+
+  @override
+  String get calSafeTrainingTag => 'Учебная';
+
+  @override
+  String get calSafeTrainingNote =>
+      'Учебная запись: это не лабораторное свидетельство.';
+
+  @override
+  String get calSafeApprovedBy => 'Утвердил (имя / должность)';
+
+  @override
+  String get calSafeApprovedAt => 'Дата утверждения';
+
+  @override
+  String get calSafeApproverRequired =>
+      'Для «Принято» укажите имя или должность уполномоченного лица.';
+
+  @override
+  String get calSafeQcAfter => 'КК после калибровки';
+
+  @override
+  String get calSafeQcPass => 'КК пройден';
+
+  @override
+  String get calSafeQcFail => 'КК не пройден';
+
+  @override
+  String get calSafeQcNotRun => 'КК не проводился';
+
+  @override
+  String get calSafeQcNotRunWarn => 'КК после калибровки не проводился';
+
+  @override
+  String get calSafeQcPassRequired =>
+      '«Принято» возможно только при пройденном КК после калибровки.';
+
+  @override
+  String get calSafeSopRef => 'Ссылка на СОП (необязательно)';
+
+  @override
+  String get calSafeLegacyTag => 'Старая запись, не проверена';
+
+  @override
+  String get calSafeHistory => 'История';
+
+  @override
+  String get calSafeHistoryEmpty => 'Записей истории нет.';
+
+  @override
+  String get calSafeAuditCreated => 'Создано';
+
+  @override
+  String get calSafeAuditEdited => 'Изменено';
+
+  @override
+  String get calSafeAuditDeleted => 'Удалено';
+
+  @override
+  String get calSafeHistoryNote =>
+      'История сохраняется и после удаления записи. Её стирает только «удалить локальные данные».';
 }

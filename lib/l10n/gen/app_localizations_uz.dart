@@ -10018,4 +10018,74 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get generalTestNameHint => 'Masalan, 1-oraliq nazorat';
+
+  @override
+  String get calSafeKind => 'Yozuv turi';
+
+  @override
+  String get calSafeKindTraining => 'O\'quv';
+
+  @override
+  String get calSafeKindLab => 'Laboratoriya';
+
+  @override
+  String get calSafeTrainingTag => 'O\'quv';
+
+  @override
+  String get calSafeTrainingNote =>
+      'O\'quv yozuvi: bu laboratoriya dalili emas.';
+
+  @override
+  String get calSafeApprovedBy => 'Tasdiqlagan (ism / lavozim)';
+
+  @override
+  String get calSafeApprovedAt => 'Tasdiqlangan sana';
+
+  @override
+  String get calSafeApproverRequired =>
+      '«Qabul qilindi» uchun vakolatli shaxsning ismi yoki lavozimini kiriting.';
+
+  @override
+  String get calSafeQcAfter => 'Kalibrlashdan keyingi QC';
+
+  @override
+  String get calSafeQcPass => 'QC o\'tdi';
+
+  @override
+  String get calSafeQcFail => 'QC o\'tmadi';
+
+  @override
+  String get calSafeQcNotRun => 'QC o\'tkazilmagan';
+
+  @override
+  String get calSafeQcNotRunWarn => 'Kalibrlashdan keyin QC o\'tkazilmagan';
+
+  @override
+  String get calSafeQcPassRequired =>
+      '«Qabul qilindi» faqat kalibrlashdan keyingi QC o\'tgandagina mumkin.';
+
+  @override
+  String get calSafeSopRef => 'SOP havolasi (ixtiyoriy)';
+
+  @override
+  String get calSafeLegacyTag => 'Eski yozuv, tasdiqlanmagan';
+
+  @override
+  String get calSafeHistory => 'Tarix';
+
+  @override
+  String get calSafeHistoryEmpty => 'Tarix yozuvlari yo\'q.';
+
+  @override
+  String get calSafeAuditCreated => 'Yaratildi';
+
+  @override
+  String get calSafeAuditEdited => 'Tahrirlandi';
+
+  @override
+  String get calSafeAuditDeleted => 'O\'chirildi';
+
+  @override
+  String get calSafeHistoryNote =>
+      'Yozuv o\'chirilsa ham tarix qoladi. Uni faqat «lokal ma\'lumotni o\'chirish» tozalaydi.';
 }

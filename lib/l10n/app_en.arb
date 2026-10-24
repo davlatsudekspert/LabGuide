@@ -5983,5 +5983,27 @@
       }
     }
   },
-  "generalTestNameHint": "E.g. Midterm 1"
+  "generalTestNameHint": "E.g. Midterm 1",
+  "calSafeKind": "Record type",
+  "calSafeKindTraining": "Training",
+  "calSafeKindLab": "Laboratory",
+  "calSafeTrainingTag": "Training",
+  "calSafeTrainingNote": "Training record: this is not laboratory evidence.",
+  "calSafeApprovedBy": "Approved by (name / role)",
+  "calSafeApprovedAt": "Approved on",
+  "calSafeApproverRequired": "\"Accepted\" needs the name or role of the authorised person.",
+  "calSafeQcAfter": "QC after calibration",
+  "calSafeQcPass": "QC passed",
+  "calSafeQcFail": "QC failed",
+  "calSafeQcNotRun": "QC not run",
+  "calSafeQcNotRunWarn": "QC not run after calibration",
+  "calSafeQcPassRequired": "\"Accepted\" is possible only when QC after calibration passed.",
+  "calSafeSopRef": "SOP reference (optional)",
+  "calSafeLegacyTag": "Legacy, unverified",
+  "calSafeHistory": "History",
+  "calSafeHistoryEmpty": "No history entries.",
+  "calSafeAuditCreated": "Created",
+  "calSafeAuditEdited": "Edited",
+  "calSafeAuditDeleted": "Deleted",
+  "calSafeHistoryNote": "History stays even after a record is deleted. It is removed only by \"delete local data\"."
 }

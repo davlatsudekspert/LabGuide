@@ -17445,6 +17445,138 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'E.g. Midterm 1'**
   String get generalTestNameHint;
+
+  /// No description provided for @calSafeKind.
+  ///
+  /// In en, this message translates to:
+  /// **'Record type'**
+  String get calSafeKind;
+
+  /// No description provided for @calSafeKindTraining.
+  ///
+  /// In en, this message translates to:
+  /// **'Training'**
+  String get calSafeKindTraining;
+
+  /// No description provided for @calSafeKindLab.
+  ///
+  /// In en, this message translates to:
+  /// **'Laboratory'**
+  String get calSafeKindLab;
+
+  /// No description provided for @calSafeTrainingTag.
+  ///
+  /// In en, this message translates to:
+  /// **'Training'**
+  String get calSafeTrainingTag;
+
+  /// No description provided for @calSafeTrainingNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Training record: this is not laboratory evidence.'**
+  String get calSafeTrainingNote;
+
+  /// No description provided for @calSafeApprovedBy.
+  ///
+  /// In en, this message translates to:
+  /// **'Approved by (name / role)'**
+  String get calSafeApprovedBy;
+
+  /// No description provided for @calSafeApprovedAt.
+  ///
+  /// In en, this message translates to:
+  /// **'Approved on'**
+  String get calSafeApprovedAt;
+
+  /// No description provided for @calSafeApproverRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'\"Accepted\" needs the name or role of the authorised person.'**
+  String get calSafeApproverRequired;
+
+  /// No description provided for @calSafeQcAfter.
+  ///
+  /// In en, this message translates to:
+  /// **'QC after calibration'**
+  String get calSafeQcAfter;
+
+  /// No description provided for @calSafeQcPass.
+  ///
+  /// In en, this message translates to:
+  /// **'QC passed'**
+  String get calSafeQcPass;
+
+  /// No description provided for @calSafeQcFail.
+  ///
+  /// In en, this message translates to:
+  /// **'QC failed'**
+  String get calSafeQcFail;
+
+  /// No description provided for @calSafeQcNotRun.
+  ///
+  /// In en, this message translates to:
+  /// **'QC not run'**
+  String get calSafeQcNotRun;
+
+  /// No description provided for @calSafeQcNotRunWarn.
+  ///
+  /// In en, this message translates to:
+  /// **'QC not run after calibration'**
+  String get calSafeQcNotRunWarn;
+
+  /// No description provided for @calSafeQcPassRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'\"Accepted\" is possible only when QC after calibration passed.'**
+  String get calSafeQcPassRequired;
+
+  /// No description provided for @calSafeSopRef.
+  ///
+  /// In en, this message translates to:
+  /// **'SOP reference (optional)'**
+  String get calSafeSopRef;
+
+  /// No description provided for @calSafeLegacyTag.
+  ///
+  /// In en, this message translates to:
+  /// **'Legacy, unverified'**
+  String get calSafeLegacyTag;
+
+  /// No description provided for @calSafeHistory.
+  ///
+  /// In en, this message translates to:
+  /// **'History'**
+  String get calSafeHistory;
+
+  /// No description provided for @calSafeHistoryEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No history entries.'**
+  String get calSafeHistoryEmpty;
+
+  /// No description provided for @calSafeAuditCreated.
+  ///
+  /// In en, this message translates to:
+  /// **'Created'**
+  String get calSafeAuditCreated;
+
+  /// No description provided for @calSafeAuditEdited.
+  ///
+  /// In en, this message translates to:
+  /// **'Edited'**
+  String get calSafeAuditEdited;
+
+  /// No description provided for @calSafeAuditDeleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Deleted'**
+  String get calSafeAuditDeleted;
+
+  /// No description provided for @calSafeHistoryNote.
+  ///
+  /// In en, this message translates to:
+  /// **'History stays even after a record is deleted. It is removed only by \"delete local data\".'**
+  String get calSafeHistoryNote;
 }
 
 class _AppLocalizationsDelegate

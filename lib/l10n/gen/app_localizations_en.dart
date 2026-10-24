@@ -10155,4 +10155,74 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get generalTestNameHint => 'E.g. Midterm 1';
+
+  @override
+  String get calSafeKind => 'Record type';
+
+  @override
+  String get calSafeKindTraining => 'Training';
+
+  @override
+  String get calSafeKindLab => 'Laboratory';
+
+  @override
+  String get calSafeTrainingTag => 'Training';
+
+  @override
+  String get calSafeTrainingNote =>
+      'Training record: this is not laboratory evidence.';
+
+  @override
+  String get calSafeApprovedBy => 'Approved by (name / role)';
+
+  @override
+  String get calSafeApprovedAt => 'Approved on';
+
+  @override
+  String get calSafeApproverRequired =>
+      '\"Accepted\" needs the name or role of the authorised person.';
+
+  @override
+  String get calSafeQcAfter => 'QC after calibration';
+
+  @override
+  String get calSafeQcPass => 'QC passed';
+
+  @override
+  String get calSafeQcFail => 'QC failed';
+
+  @override
+  String get calSafeQcNotRun => 'QC not run';
+
+  @override
+  String get calSafeQcNotRunWarn => 'QC not run after calibration';
+
+  @override
+  String get calSafeQcPassRequired =>
+      '\"Accepted\" is possible only when QC after calibration passed.';
+
+  @override
+  String get calSafeSopRef => 'SOP reference (optional)';
+
+  @override
+  String get calSafeLegacyTag => 'Legacy, unverified';
+
+  @override
+  String get calSafeHistory => 'History';
+
+  @override
+  String get calSafeHistoryEmpty => 'No history entries.';
+
+  @override
+  String get calSafeAuditCreated => 'Created';
+
+  @override
+  String get calSafeAuditEdited => 'Edited';
+
+  @override
+  String get calSafeAuditDeleted => 'Deleted';
+
+  @override
+  String get calSafeHistoryNote =>
+      'History stays even after a record is deleted. It is removed only by \"delete local data\".';
 }
