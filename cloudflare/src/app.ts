@@ -3,6 +3,7 @@
 import * as admins from './admins';
 import * as adminConsole from './adminconsole';
 import * as auth from './auth';
+import * as billing from './billing';
 import * as community from './community';
 import * as complaints from './complaints';
 import type { Ctx, Deps } from './context';
@@ -144,6 +145,21 @@ const routes: Route[] = [
   r('*', '/v1/admin(/.*)?', plannedAdmin),
 ];
 
+/**
+ * Pro obunalari (D-46…D-53, D-71). INERT: `LG_BILLING_ENABLED=true` bo'lmasa
+ * bu yo'llar umuman yo'q (404) — bepul reliz bilan bir xil xatti-harakat.
+ */
+const billingRoutes: Route[] = [
+  r('GET', '/v1/billing/status', billing.status),
+  r('GET', '/v1/billing/entitlements', billing.entitlements),
+  r('GET', '/v1/entitlements', billing.entitlements),
+  r('POST', '/v1/billing/verify', billing.verify),
+  r('POST', '/v1/billing/apple/notifications', billing.appleNotification),
+  r('POST', '/v1/billing/google/rtdn', billing.googleNotification),
+];
+
+export const billingEnabled = (env: Env) => env.LG_BILLING_ENABLED === 'true';
+
 const MIN_SECRET = 32;
 
 export function createApp(deps: Deps) {
@@ -158,7 +174,7 @@ export function createApp(deps: Deps) {
         const url = new URL(req.url);
         let match: { route: Route; params: string[] } | null = null;
         let pathKnown = false;
-        for (const route of routes) {
+        for (const route of billingEnabled(env) ? [...billingRoutes, ...routes] : routes) {
           const m = route.pattern.exec(url.pathname);
           if (!m) continue;
           pathKnown = true;

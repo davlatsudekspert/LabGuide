@@ -107,3 +107,20 @@ describe('qorovul: hamjamiyat so‘z filtri (D-62)', () => {
     expect(r.text).not.toContain('сука');
   });
 });
+
+describe('qorovul: billing inert (D-71, pro-next)', () => {
+  it('LG_BILLING_ENABLED bo‘lmasa billing yo‘llari 404', async () => {
+    const s = makeServer();
+    for (const p of ['/v1/billing/status', '/v1/billing/entitlements', '/v1/entitlements', '/v1/billing/verify']) {
+      for (const m of ['GET', 'POST']) {
+        expect((await s.call(m, p, m === 'GET' ? {} : { body: {} })).status, `${m} ${p}`).toBe(404);
+      }
+    }
+  });
+
+  it('LG_BILLING_ENABLED=true bo‘lsa yo‘l bor (kalitlar yo‘q — 503 yoki 401)', async () => {
+    const s = makeServer({ LG_BILLING_ENABLED: 'true' } as never);
+    const r = await s.call('GET', '/v1/billing/status', {});
+    expect(r.status).not.toBe(404);
+  });
+});
