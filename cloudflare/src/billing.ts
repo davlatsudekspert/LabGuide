@@ -472,14 +472,20 @@ async function applyUpdate(ctx: Ctx, v: Verified): Promise<boolean> {
   return (r.meta.changes ?? 0) > 0;
 }
 
-/** Huquq manbai: do'kon obunasi yoki admin grant (D-73). */
-export type AccessSource = 'store' | 'admin_grant';
+/** Huquq manbai: do'kon obunasi, admin grant (D-73) yoki bepul sinov (D-74). */
+export type AccessSource = 'store' | 'admin_grant' | 'trial';
 
 export interface AccessItem {
   source: AccessSource;
   plan: Plan;
-  /** Huquq beradigan holatdami (do'kon: active/grace_period; grant: bekor qilinmagan). */
+  /** Huquq beradigan holatdami (do'kon: active/grace_period; grant/sinov: bekor qilinmagan). */
   granting: boolean;
+  expiresAt: number | null;
+}
+
+export interface ResolvedAccess {
+  source: AccessSource;
+  plan: Plan;
   expiresAt: number | null;
 }
 
@@ -488,17 +494,24 @@ export interface AccessItem {
  * daraja, tenglikda eng uzoq muddat (`null` = muddatsiz eng uzoq), to'liq
  * tenglikda DO'KON. Admin grant do'kon obunasini hech qachon bosib o'tmaydi
  * va uning o'rnini egallamaydi (obuna alohida qator bo'lib qoladi).
+ *
+ * Bepul sinov (D-74, `trial`) PULLIK obunani hech qachon bosib o'tmaydi:
+ * amaldagi do'kon obunasi bo'lsa sinov qatori hisobga olinmaydi; tenglikda
+ * ham sinov yutqazadi. Muddati o'tgan sinov hech narsa bermaydi.
  */
-export function resolveAccess(items: AccessItem[], now: number): { source: AccessSource; plan: Plan; expiresAt: number | null } | null {
-  const live = items.filter((i) => i.granting && (i.expiresAt == null || i.expiresAt > now));
+export function resolveAccess(items: AccessItem[], now: number): ResolvedAccess | null {
+  let live = items.filter((i) => i.granting && (i.expiresAt == null || i.expiresAt > now));
+  if (live.some((i) => i.source === 'store')) live = live.filter((i) => i.source !== 'trial');
   const end = (i: AccessItem) => i.expiresAt ?? Number.POSITIVE_INFINITY;
+  // Tenglikda ustunlik: do'kon > admin grant > sinov.
+  const prio = (i: AccessItem) => (i.source === 'store' ? 2 : i.source === 'admin_grant' ? 1 : 0);
   let best: AccessItem | null = null;
   for (const i of live) {
     if (
       !best ||
       PLAN_RANK[i.plan] > PLAN_RANK[best.plan] ||
       (PLAN_RANK[i.plan] === PLAN_RANK[best.plan] &&
-        (end(i) > end(best) || (end(i) === end(best) && i.source === 'store' && best.source !== 'store')))
+        (end(i) > end(best) || (end(i) === end(best) && prio(i) > prio(best))))
     ) {
       best = i;
     }
@@ -506,79 +519,126 @@ export function resolveAccess(items: AccessItem[], now: number): { source: Acces
   return best && { source: best.source, plan: best.plan, expiresAt: best.expiresAt };
 }
 
-async function snapshot(ctx: Ctx, userId: string, ownedByOther = false): Promise<Response> {
-  const rows = await ctx.db
-    .prepare(
-      `SELECT product_id, platform, status, started_at, expires_at, ownership, environment, updated_at
-       FROM entitlements WHERE user_id = ?1 ORDER BY COALESCE(expires_at, 0) DESC`,
-    )
-    .bind(userId)
-    .all<{
-      product_id: string;
-      platform: string;
-      status: string;
-      started_at: number | null;
-      expires_at: number | null;
-      ownership: string;
-      environment: string;
-      updated_at: number;
-    }>();
-  // Admin grant (D-73): faqat qo'llangan (hisob bor), bekor qilinmagan qatorlar.
-  const grants = await ctx.db
-    .prepare(
-      `SELECT g.tier, g.starts_at, g.expires_at, g.updated_at
-       FROM pro_grants g JOIN users u ON u.email_hash = g.email_hmac
-       WHERE u.id = ?1 AND g.revoked_at IS NULL AND g.starts_at IS NOT NULL
-       ORDER BY COALESCE(g.expires_at, 9007199254740991) DESC`,
-    )
-    .bind(userId)
-    .all<{ tier: Plan; starts_at: number; expires_at: number | null; updated_at: number }>();
+interface StoreRow {
+  product_id: string;
+  platform: string;
+  status: string;
+  started_at: number | null;
+  expires_at: number | null;
+  ownership: string;
+  environment: string;
+  updated_at: number;
+}
+interface GrantRow {
+  tier: Plan;
+  starts_at: number;
+  expires_at: number | null;
+  updated_at: number;
+}
+interface TrialRow {
+  tier: Plan;
+  started_at: number;
+  expires_at: number;
+}
 
+/**
+ * Hisobning SERVERDAGI huquq manbalari (do'kon, admin grant, sinov). Qaror
+ * faqat shu yerdan olinadi — ilovadagi rol yoki lokal sozlamadan EMAS.
+ */
+export async function loadAccess(
+  ctx: Ctx,
+  userId: string,
+): Promise<{ rows: StoreRow[]; grants: GrantRow[]; trials: TrialRow[]; access: AccessItem[]; resolved: ResolvedAccess | null }> {
+  const rows = (
+    await ctx.db
+      .prepare(
+        `SELECT product_id, platform, status, started_at, expires_at, ownership, environment, updated_at
+         FROM entitlements WHERE user_id = ?1 ORDER BY COALESCE(expires_at, 0) DESC`,
+      )
+      .bind(userId)
+      .all<StoreRow>()
+  ).results;
+  // Admin grant (D-73): faqat qo'llangan (hisob bor), bekor qilinmagan qatorlar.
+  const grants = (
+    await ctx.db
+      .prepare(
+        `SELECT g.tier, g.starts_at, g.expires_at, g.updated_at
+         FROM pro_grants g JOIN users u ON u.email_hash = g.email_hmac
+         WHERE u.id = ?1 AND g.revoked_at IS NULL AND g.starts_at IS NOT NULL
+         ORDER BY COALESCE(g.expires_at, 9007199254740991) DESC`,
+      )
+      .bind(userId)
+      .all<GrantRow>()
+  ).results;
+  // Bepul sinov (D-74): hisobga bitta; muddati o'tgani ham tarix sifatida qaytadi.
+  const trials = (
+    await ctx.db
+      .prepare('SELECT tier, started_at, expires_at FROM pro_trials WHERE user_id = ?1 ORDER BY started_at DESC')
+      .bind(userId)
+      .all<TrialRow>()
+  ).results;
   const access: AccessItem[] = [
-    ...rows.results.map((r) => ({
+    ...rows.map((r) => ({
       source: 'store' as const,
       plan: BILLING_PRODUCTS[r.product_id]?.plan ?? ('specialist' as Plan),
       granting: r.status === 'active' || r.status === 'grace_period',
       expiresAt: r.expires_at,
     })),
-    ...grants.results.map((g) => ({
-      source: 'admin_grant' as const,
-      plan: g.tier,
-      granting: true,
-      expiresAt: g.expires_at,
-    })),
+    ...grants.map((g) => ({ source: 'admin_grant' as const, plan: g.tier, granting: true, expiresAt: g.expires_at })),
+    ...trials.map((t) => ({ source: 'trial' as const, plan: t.tier, granting: true, expiresAt: t.expires_at })),
   ];
-  const resolved = resolveAccess(access, ctx.now);
-  return json({
-    server_time: iso(ctx.now),
-    items: [
-      ...rows.results.map((r) => ({
-        product_id: r.product_id,
-        platform: r.platform,
-        source: 'store',
-        status: r.status,
-        started_at: iso(r.started_at),
-        expires_at: iso(r.expires_at),
-        ownership: r.ownership,
-        environment: r.environment,
-        updated_at: iso(r.updated_at),
-      })),
-      ...grants.results.map((g) => ({
-        product_id: `admin_grant.${g.tier}`,
-        platform: 'admin_grant',
-        source: 'admin_grant',
-        plan: g.tier,
-        status: g.expires_at != null && g.expires_at <= ctx.now ? 'expired' : 'active',
-        started_at: iso(g.starts_at),
-        expires_at: iso(g.expires_at),
-        ownership: 'granted',
-        environment: 'production',
-        updated_at: iso(g.updated_at),
-      })),
-    ],
-    resolved: resolved && { source: resolved.source, plan: resolved.plan, expires_at: iso(resolved.expiresAt) },
-    owned_by_other: ownedByOther,
-  });
+  return { rows, grants, trials, access, resolved: resolveAccess(access, ctx.now) };
+}
+
+export async function snapshot(ctx: Ctx, userId: string, ownedByOther = false, status = 200): Promise<Response> {
+  const { rows, grants, trials, resolved } = await loadAccess(ctx, userId);
+  return json(
+    {
+      server_time: iso(ctx.now),
+      items: [
+        ...rows.map((r) => ({
+          product_id: r.product_id,
+          platform: r.platform,
+          source: 'store',
+          status: r.status,
+          started_at: iso(r.started_at),
+          expires_at: iso(r.expires_at),
+          ownership: r.ownership,
+          environment: r.environment,
+          updated_at: iso(r.updated_at),
+        })),
+        ...grants.map((g) => ({
+          product_id: `admin_grant.${g.tier}`,
+          platform: 'admin_grant',
+          source: 'admin_grant',
+          plan: g.tier,
+          status: g.expires_at != null && g.expires_at <= ctx.now ? 'expired' : 'active',
+          started_at: iso(g.starts_at),
+          expires_at: iso(g.expires_at),
+          ownership: 'granted',
+          environment: 'production',
+          updated_at: iso(g.updated_at),
+        })),
+        ...trials.map((t) => ({
+          product_id: `trial.${t.tier}`,
+          platform: 'trial',
+          source: 'trial',
+          plan: t.tier,
+          status: t.expires_at <= ctx.now ? 'expired' : 'active',
+          started_at: iso(t.started_at),
+          expires_at: iso(t.expires_at),
+          ownership: 'trial',
+          environment: 'production',
+          updated_at: iso(t.started_at),
+        })),
+      ],
+      resolved: resolved && { source: resolved.source, plan: resolved.plan, expires_at: iso(resolved.expiresAt) },
+      // Shu hisob bepul sinovdan foydalanganmi (D-74; qurilma bo'yicha holat bu yerda ko'rinmaydi).
+      trial_used: trials.length > 0,
+      owned_by_other: ownedByOther,
+    },
+    status,
+  );
 }
 
 // ------------------------------------------------------------ endpointlar

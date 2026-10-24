@@ -29,6 +29,7 @@ import { communityDeleteStatements, userHash } from './community';
 import { hit } from './ratelimit';
 import { applyPendingGrants } from './progrants';
 import { revokeAppleOnDelete } from './social';
+import { trialDeleteStatements } from './trial';
 
 export const OTP_TTL_SEC = 600;
 export const OTP_MAX_ATTEMPTS = 5;
@@ -514,6 +515,9 @@ export async function deleteUserData(ctx: Ctx, u: string, adminActor?: string): 
   await ctx.db.batch([
     // Hamjamiyat: savollar, javoblar, ovozlar, shikoyatlar, bloklar, tasdiq holati.
     ...communityDeleteStatements(ctx.db, await userHash(ctx, u)),
+    // Bepul sinov (D-74): yozuv QOLADI (qayta ro'yxatdan o'tish sinovni
+    // qaytarmasin), faqat hisob id si uziladi. Jadval faqat bayroq bilan.
+    ...(billingEnabled(ctx.env) ? trialDeleteStatements(ctx.db, u, ctx.now) : []),
     ...stmts.map((q) => ctx.db.prepare(q).bind(u)),
     adminActor
       ? ctx.db

@@ -1,6 +1,7 @@
 import type { Keys } from './crypto';
 import type { CodeSender } from './email';
 import type { Env } from './http';
+import type { DeviceAttestationVerifier } from './trial';
 
 export interface Deps {
   sendCode: CodeSender;
@@ -16,6 +17,12 @@ export interface Deps {
    * testlarda soxta — haqiqiy do'konga hech qachon murojaat qilinmaydi.
    */
   fetch?: typeof fetch;
+  /**
+   * Bepul sinov uchun qurilma attestatsiyasi tekshiruvchisi (D-74). Standart:
+   * YO'Q → `503 device_attestation_not_configured`. Production (index.ts) da
+   * hech narsa ulanmagan; testlarda — soxta (test/fake_attestation.ts).
+   */
+  attestation?: DeviceAttestationVerifier;
 }
 
 export interface Ctx {

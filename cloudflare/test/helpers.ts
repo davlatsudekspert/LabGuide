@@ -3,6 +3,7 @@ import { createApp } from '../src/app';
 import type { CodeSender } from '../src/email';
 import { totpAt } from '../src/crypto';
 import type { Env } from '../src/http';
+import type { DeviceAttestationVerifier } from '../src/trial';
 
 export function unbase32(s: string): Uint8Array {
   const A = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
@@ -54,7 +55,12 @@ export function makeServer(overrides: Partial<Env> = {}) {
   let fetchImpl: FetchFn = async (url) => {
     throw new Error(`fetch not mocked in this test: ${url}`);
   };
+  // Qurilma attestatsiyasi (D-74): standart — yo'q (503); testda soxta.
+  let attestationImpl: DeviceAttestationVerifier | undefined;
   const app = createApp({
+    get attestation() {
+      return attestationImpl;
+    },
     sendCode: sender,
     now: () => clock.now,
     fetch: (async (input: RequestInfo | URL, init?: RequestInit) => {
@@ -160,6 +166,9 @@ export function makeServer(overrides: Partial<Env> = {}) {
     },
     setAi: (fn: AiFn) => {
       aiImpl = fn;
+    },
+    setAttestation: (v: DeviceAttestationVerifier | undefined) => {
+      attestationImpl = v;
     },
     signInAdmin,
     signInTeacher,

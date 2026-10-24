@@ -12,6 +12,8 @@ import { deriveKeys, hex, hmac } from './crypto';
 import * as groups from './groups';
 import * as social from './social';
 import * as support from './support';
+import * as tiers from './tiers';
+import * as trial from './trial';
 import {
   ApiError,
   billingEnabled,
@@ -162,6 +164,12 @@ const billingRoutes: Route[] = [
   r('GET', '/v1/admin/pro-grants', proGrants.listGrants),
   r('POST', '/v1/admin/pro-grants', proGrants.createGrant),
   r('DELETE', '/v1/admin/pro-grants/:id', proGrants.revokeGrant),
+  // Bepul sinov — bir telefonga bir marta (D-74); attestatsiya sozlanmagan — 503.
+  r('POST', '/v1/billing/trial/challenge', trial.challenge),
+  r('POST', '/v1/billing/trial/start', trial.start),
+  // Reja ↔ panel ajratish (D-74): serverdagi daraja va `requireTier` tekshiruvi.
+  r('GET', '/v1/pro/access', tiers.access),
+  r('GET', '/v1/pro/check/:capability', tiers.check),
 ];
 
 export { billingEnabled };
@@ -226,6 +234,8 @@ export function createApp(deps: Deps) {
         env.DB.prepare('DELETE FROM sessions WHERE expires_at < ?1').bind(now),
         env.DB.prepare('DELETE FROM auth_replay WHERE expires_at < ?1').bind(now),
         env.DB.prepare('DELETE FROM rate_limits WHERE window_start < ?1').bind(now - 86400_000),
+        // Bepul sinov jadvallari faqat bayroq yoqilganda mavjud (0015 migratsiyasi).
+        ...(billingEnabled(env) ? trial.trialCleanupStatements(env.DB, now) : []),
       ]);
     },
   };

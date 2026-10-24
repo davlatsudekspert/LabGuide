@@ -111,7 +111,17 @@ describe('qorovul: hamjamiyat so‘z filtri (D-62)', () => {
 describe('qorovul: billing inert (D-71, pro-next)', () => {
   it('LG_BILLING_ENABLED bo‘lmasa billing yo‘llari 404', async () => {
     const s = makeServer();
-    for (const p of ['/v1/billing/status', '/v1/billing/entitlements', '/v1/entitlements', '/v1/billing/verify']) {
+    for (const p of [
+      '/v1/billing/status',
+      '/v1/billing/entitlements',
+      '/v1/entitlements',
+      '/v1/billing/verify',
+      // D-74: bepul sinov va reja ↔ panel tekshiruvi.
+      '/v1/billing/trial/challenge',
+      '/v1/billing/trial/start',
+      '/v1/pro/access',
+      '/v1/pro/check/teacher_panel',
+    ]) {
       for (const m of ['GET', 'POST']) {
         expect((await s.call(m, p, m === 'GET' ? {} : { body: {} })).status, `${m} ${p}`).toBe(404);
       }
@@ -137,6 +147,21 @@ describe('qorovul: billing inert (D-71, pro-next)', () => {
     const u = await s.signIn(uniqueEmail('guard-me'));
     const me = await s.call('GET', '/v1/me', { token: u.token });
     expect(me.text).not.toMatch(/pro_grant|admin_grant|entitlement/);
+  });
+
+  it('LG_BILLING_ENABLED bo‘lmasa hisobni o‘chirish va kunlik tozalash sinov jadvaliga tegmaydi (D-74)', async () => {
+    const s = makeServer();
+    const u = await s.signIn(uniqueEmail('guard-del'));
+    expect((await s.call('DELETE', '/v1/me', { token: u.token })).status).toBe(204);
+    await s.app.scheduled(s.env);
+  });
+
+  it('bayroq yoqilgan, lekin attestatsiya sozlanmagan — sinov 503 (production holati, D-74)', async () => {
+    const s = makeServer({ LG_BILLING_ENABLED: 'true' } as never);
+    const u = await s.signIn(uniqueEmail('guard-trial'));
+    const r = await s.call('POST', '/v1/billing/trial/challenge', { token: u.token });
+    expect(r.status).toBe(503);
+    expect(r.data.error).toBe('device_attestation_not_configured');
   });
 
   it('LG_BILLING_ENABLED=true bo‘lsa yo‘l bor (kalitlar yo‘q — 503 yoki 401)', async () => {
