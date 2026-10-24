@@ -28,7 +28,13 @@ class LgPage extends StatefulWidget {
     this.leadingHero,
     this.compactTitle = false,
     this.titleMaxLines,
+    this.buildAllChildren = false,
   });
+
+  /// Savol sahifalari: ro'yxat bolalari hammasi darhol quriladi — javobdan
+  /// keyingi izoh uzun savolda ekrandan pastda bo'lsa ham quriladi va
+  /// `RevealOnMount` uni ko'rinadigan joyga suradi (ro'yxat kalta).
+  final bool buildAllChildren;
 
   /// Katta sarlavha qatorlari chegarasi (masalan, uzun topshiriq nomi
   /// tugmalarni pastga surmasin): oshsa “…”, bosilganda to'liq nom.
@@ -239,6 +245,9 @@ class _LgPageState extends State<LgPage> {
                         controller: _scroll,
                         child: ListView(
                           controller: _scroll,
+                          scrollCacheExtent: widget.buildAllChildren
+                              ? const ScrollCacheExtent.pixels(6000)
+                              : null,
                           keyboardDismissBehavior:
                               ScrollViewKeyboardDismissBehavior.onDrag,
                           padding: EdgeInsets.fromLTRB(

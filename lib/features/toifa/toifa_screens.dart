@@ -230,6 +230,7 @@ class _ToifaPage extends StatelessWidget {
         ]),
         builder: (context, _) => LgPage(
           key: pageKey == null ? null : ValueKey(pageKey!()),
+          buildAllChildren: true,
           title: title,
           subtitle: subtitle,
           showProfile: false,
@@ -1162,6 +1163,7 @@ class _ToifaPracticeScreenState extends State<ToifaPracticeScreen> {
         final round = _round!;
         return LgPage(
           key: ValueKey((_index, _finished)),
+          buildAllChildren: true,
           title: l.toifaPracticeTitle,
           subtitle: _title(l, bank),
           showProfile: false,

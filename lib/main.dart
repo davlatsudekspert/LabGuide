@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:io';
+import 'dart:math' show Random;
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
@@ -110,6 +111,7 @@ AppServices createServices({
   EntitlementSource? entitlementSource,
   Set<Feature>? gatedFeatures,
   DeviceAttestor? attestor,
+  Random? dailyRandom,
 }) {
   const config = AppConfig(appVersion: _appVersion, showDebugBadge: kDebugMode);
   final server = backend ?? _defaultBackend();
@@ -118,7 +120,7 @@ AppServices createServices({
     systemLocales: systemLocales,
     clock: clock,
   );
-  final daily = DailyController(store, clock: clock);
+  final daily = DailyController(store, clock: clock, random: dailyRandom);
   final toifa = ToifaController(store, bundle: bundle, clock: clock);
   return AppServices(
     config: config,
