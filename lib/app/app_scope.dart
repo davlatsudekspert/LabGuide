@@ -6,6 +6,8 @@ import '../core/backend/access_controller.dart';
 import '../core/backend/admin_console.dart';
 import '../core/backend/admin_team.dart';
 import '../core/backend/lab_backend.dart';
+import '../core/build_flags.dart';
+import '../core/entitlements/entitlement_service.dart';
 import '../core/storage/kv_store.dart';
 import '../features/auth/auth_controller.dart';
 import '../features/classroom/classroom_local.dart';
@@ -76,6 +78,7 @@ class AppServices {
     required this.backend,
     required this.access,
     required this.partners,
+    required this.entitlements,
     required this.toifa,
     required this.differential,
     required this.daily,
@@ -116,6 +119,11 @@ class AppServices {
 
   /// Hamkorlar (reklama) — faqat server ulangan buildda.
   final PartnersController partners;
+
+  /// Pro huquqlari. `BuildFlags.proEnabled == false` bo'lsa — o'chirilgan
+  /// (`EntitlementService.disabled()`): `can()` doim `true`, hech narsa
+  /// ishga tushmaydi (D-71).
+  final EntitlementService entitlements;
 
   /// Toifa imtihoniga tayyorgarlik (faqat O'zbekiston foydalanuvchilariga).
   final ToifaController toifa;
@@ -182,6 +190,7 @@ class AppServices {
         access.clear();
       }
       community.reset();
+      if (BuildFlags.proEnabled) unawaited(entitlements.refresh());
     });
     settings.addListener(() {
       if (settings.role == role && settings.language == language) return;
@@ -205,6 +214,7 @@ class AppServices {
     instruments.resetInMemory();
     microscopy.resetInMemory();
     partners.resetInMemory();
+    entitlements.resetInMemory();
     reading.resetInMemory();
     toifa.resetInMemory();
     differential.resetInMemory();

@@ -254,6 +254,20 @@ class CloudflareLabBackend
     _ => BackendFailure.unknown,
   };
 
+  /// Pro obunalari (`/v1/billing/*`, D-71): holat kodi va JSON. Xato statusda
+  /// istisno tashlamaydi — `CloudflareEntitlementSource` o'zi talqin qiladi
+  /// (masalan, `503 not_configured` — to'lov yoqilmagan). Faqat
+  /// `BuildFlags.proEnabled` da chaqiriladi.
+  Future<({int status, Map<String, Object?> data})> billing(
+    String method,
+    String path, {
+    Object? body,
+    bool auth = true,
+  }) async {
+    final r = await _send(method, path, body: body, auth: auth);
+    return (status: r.status, data: r.map);
+  }
+
   /// Ro'yxat o'qish: a'zo bo'lmagan guruh (404) — bo'sh ro'yxat, xuddi
   /// Supabase RLS dagi kabi (begona ustoz va admin ham hech narsa ko'rmaydi).
   Future<List<Map<String, Object?>>> _list(String path) async {
