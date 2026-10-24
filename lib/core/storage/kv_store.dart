@@ -25,6 +25,9 @@ abstract final class StoreKeys {
   /// Ilova mavzusi (`classic` / `ivory`) — D-64.
   static const appTheme = 'settings.appTheme';
   static const unitSystem = 'settings.unitSystem';
+
+  /// Toifa (KDL attestatsiya) bo'limi: `auto` / `uz` / `none` — tildan mustaqil.
+  static const attestationRegion = 'settings.attestationRegion';
   static const role = 'settings.role';
   static const onboarded = 'settings.onboarded';
   static const languageChosen = 'settings.languageChosen';
@@ -116,6 +119,7 @@ abstract final class StoreKeys {
     themeMode,
     appTheme,
     unitSystem,
+    attestationRegion,
     role,
     onboarded,
     languageChosen,

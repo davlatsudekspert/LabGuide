@@ -55,6 +55,94 @@ void main() {
       expect(toifaAvailable(AppLanguage.ru, const [Locale('ru')]), false);
     });
 
+    // `auto` — 6 ta kombinatsiya uchun AVVALGI xatti-harakat (o‘zgarmagan).
+    test('auto: 6 kombinatsiya avvalgidek', () {
+      const auto = AttestationRegion.auto;
+      for (final (lang, locales, visible) in [
+        (AppLanguage.uz, const [Locale('en', 'US')], true),
+        (AppLanguage.ru, const [Locale('ru', 'UZ')], true),
+        (AppLanguage.en, const [Locale('uz', 'UZ')], true),
+        (AppLanguage.ru, const [Locale('ru', 'RU')], false),
+        (AppLanguage.en, const [Locale('en', 'US')], false),
+        (AppLanguage.ru, const [Locale('ru')], false),
+      ]) {
+        expect(toifaAvailable(lang, locales, region: auto), visible);
+        // region berilmasa ham auto bilan bir xil.
+        expect(toifaAvailable(lang, locales), visible);
+      }
+    });
+
+    test('uz: til va mintaqadan qat‘i nazar ko‘rinadi; none: yashirin', () {
+      for (final lang in AppLanguage.values) {
+        for (final locales in [
+          const [Locale('ru', 'RU')],
+          const [Locale('en', 'US')],
+          const [Locale('uz', 'UZ')],
+          const <Locale>[],
+        ]) {
+          expect(
+            toifaAvailable(lang, locales, region: AttestationRegion.uz),
+            true,
+            reason: '$lang $locales',
+          );
+          expect(
+            toifaAvailable(lang, locales, region: AttestationRegion.none),
+            false,
+            reason: '$lang $locales',
+          );
+        }
+      }
+    });
+
+    test('rol cheklovi sozlamadan kuchli: uz bo‘lsa ham shifokor/talaba yo‘q', () {
+      for (final r in [AppRole.doctor, AppRole.student]) {
+        expect(
+          toifaAvailable(
+            AppLanguage.ru,
+            const [Locale('ru', 'RU')],
+            role: r,
+            region: AttestationRegion.uz,
+          ),
+          false,
+        );
+      }
+      for (final r in [AppRole.lab, AppRole.teacher]) {
+        expect(
+          toifaAvailable(
+            AppLanguage.ru,
+            const [Locale('ru', 'RU')],
+            role: r,
+            region: AttestationRegion.uz,
+          ),
+          true,
+        );
+      }
+    });
+
+    test('sozlama saqlanadi va qayta ochilganda tiklanadi; standart — auto', () async {
+      final store = MemoryKeyValueStore();
+      final a = SettingsController(store, systemLocales: const [Locale('ru', 'RU')]);
+      expect(a.attestationRegion, AttestationRegion.auto);
+      await a.setAttestationRegion(AttestationRegion.uz);
+      expect(store.getString(StoreKeys.attestationRegion), 'uz');
+      final b = SettingsController(store, systemLocales: const [Locale('en', 'US')]);
+      expect(b.attestationRegion, AttestationRegion.uz);
+      await b.setAttestationRegion(AttestationRegion.none);
+      expect(
+        SettingsController(store, systemLocales: const []).attestationRegion,
+        AttestationRegion.none,
+      );
+      // Noma'lum qiymat — auto.
+      await store.setString(StoreKeys.attestationRegion, 'xx');
+      expect(
+        SettingsController(store, systemLocales: const []).attestationRegion,
+        AttestationRegion.auto,
+      );
+      // Lokal ma'lumotlarni tozalash — auto.
+      b.resetToDefaults(const [Locale('ru', 'RU')]);
+      expect(b.attestationRegion, AttestationRegion.auto);
+    });
+
     test('shifokor va talaba roliga ko‘rsatilmaydi (UZ bo‘lsa ham)', () {
       const uzLoc = [Locale('uz', 'UZ')];
       for (final r in [AppRole.doctor, AppRole.student]) {
@@ -104,6 +192,85 @@ void main() {
         expect(find.byType(ToifaHubScreen), findsNothing);
       });
     }
+  });
+
+  group('tildan mustaqil: attestationRegion', () {
+    testWidgets('ru til + ru_RU qurilma + sozlama uz → bo‘lim ko‘rinadi', (
+      tester,
+    ) async {
+      final s = await makeServices(tester, language: AppLanguage.ru);
+      tester.platformDispatcher.localesTestValue = const [Locale('ru', 'RU')];
+      await pumpApp(tester, s, size: _tall);
+      // auto — yashirin (avvalgidek).
+      expect(find.byType(ToifaEntryCard), findsNothing);
+      await s.settings.setAttestationRegion(AttestationRegion.uz);
+      await tester.pumpAndSettle();
+      expect(find.byType(ToifaEntryCard), findsOne);
+      await goTo(tester, '/learn');
+      expect(find.byType(ToifaEntryCard), findsOne);
+      await goTo(tester, '/learn/toifa');
+      expect(find.byType(ToifaHubScreen), findsOne);
+      // Interfeys ruscha qoladi; rasmiy matn belgisi saqlanadi.
+      expect(find.text(ru.toifaUzbekOnly), findsWidgets);
+      expect(find.text(ru.toifaTitle), findsWidgets);
+      // Savol ruscha yordamchi tarjima bilan ko‘rsatiladi.
+      final q = s.toifa.bank!.oralQuestion('kdl-o-001')!;
+      final tr = q.translations['ru'];
+      expect(tr, isNotNull);
+      await goTo(tester, '/learn/toifa/oral/q/kdl-o-001');
+      expect(find.text(tr!.text), findsWidgets);
+      expect(find.text(ru.toifaUzbekOnly), findsWidgets);
+    });
+
+    testWidgets('none: uz til + UZ qurilma bo‘lsa ham yashirin, manzil yopiq', (
+      tester,
+    ) async {
+      final s = await makeServices(tester);
+      tester.platformDispatcher.localesTestValue = const [Locale('uz', 'UZ')];
+      await pumpApp(tester, s, size: _tall);
+      expect(find.byType(ToifaEntryCard), findsOne);
+      await s.settings.setAttestationRegion(AttestationRegion.none);
+      await tester.pumpAndSettle();
+      expect(find.byType(ToifaEntryCard), findsNothing);
+      await goTo(tester, '/learn');
+      expect(find.byType(ToifaEntryCard), findsNothing);
+      await goTo(tester, '/learn/toifa');
+      expect(find.byType(ToifaHubScreen), findsNothing);
+      expect(find.byType(LearnScreen), findsOne);
+    });
+
+    testWidgets('uz sozlamasi shifokor/talabaga bo‘limni ochmaydi', (
+      tester,
+    ) async {
+      final s = await makeServices(tester, language: AppLanguage.ru);
+      tester.platformDispatcher.localesTestValue = const [Locale('ru', 'RU')];
+      await s.settings.setAttestationRegion(AttestationRegion.uz);
+      await pumpApp(tester, s, size: _tall);
+      for (final r in [AppRole.student, AppRole.doctor]) {
+        await s.settings.setRole(r);
+        await goTo(tester, '/learn');
+        expect(find.byType(ToifaEntryCard), findsNothing);
+        await goTo(tester, '/learn/toifa');
+        expect(find.byType(ToifaHubScreen), findsNothing);
+      }
+    });
+
+    testWidgets('profil: tanlov qatori bo‘limni almashtiradi', (tester) async {
+      final s = await makeServices(tester, language: AppLanguage.ru);
+      tester.platformDispatcher.localesTestValue = const [Locale('ru', 'RU')];
+      await pumpApp(tester, s, size: _tall);
+      await goTo(tester, '/profile');
+      expect(find.text(ru.profileAttestation), findsOne);
+      await tapScroll(tester, ru.profileAttestationUz);
+      expect(s.settings.attestationRegion, AttestationRegion.uz);
+      await goTo(tester, '/learn');
+      expect(find.byType(ToifaEntryCard), findsOne);
+      await goTo(tester, '/profile');
+      await tapScroll(tester, ru.profileAttestationNone);
+      expect(s.settings.attestationRegion, AttestationRegion.none);
+      await goTo(tester, '/learn');
+      expect(find.byType(ToifaEntryCard), findsNothing);
+    });
   });
 
   group('bank', () {

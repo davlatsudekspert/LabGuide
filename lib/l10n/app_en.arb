@@ -63,7 +63,7 @@
   "authGetCode": "Get code",
   "authViewTerms": "View terms",
   "authDemoNotice": "Debug build: demo sign-in. No email is sent; the code is shown on the next screen.",
-  "authUnavailableTitle": "Email sign-in isn't connected yet",
+  "authUnavailableTitle": "Email sign-in isn’t connected yet",
   "authUnavailableBody": "All reading content is available to guests. Sign-in will be enabled once the email service is configured.",
   "authContinueGuest": "Continue as guest",
   "authRateLimited": "Too many requests. Try again in {seconds} s.",
@@ -118,7 +118,7 @@
   "otpResent": "A new code was issued.",
   "rolesTitle": "Your workspace",
   "rolesSubtitle": "Choose your main role. You can change it later.",
-  "rolesNote": "The role only adapts the home screen. It doesn't grant access to other people's classes or data.",
+  "rolesNote": "The role only adapts the home screen. It doesn’t grant access to other people’s classes or data.",
   "roleDoctor": "Physician",
   "roleDoctorDesc": "Results and clinical context",
   "roleLab": "Laboratory professional",
@@ -248,13 +248,13 @@
   "statusSourcedSample": "Source-based",
   "statusStructureOnly": "Structure only",
   "contentLoading": "Loading content…",
-  "contentErrorTitle": "Content couldn't be loaded",
+  "contentErrorTitle": "Content couldn’t be loaded",
   "contentErrorBody": "The content pack failed verification. Unverified data is never shown.",
   "analyteSave": "Save",
   "analyteSaved": "Saved",
   "analyteSavedToast": "Added to saved",
   "analyteRemovedToast": "Removed from saved",
-  "analyteNotFound": "This test card wasn't found.",
+  "analyteNotFound": "This test card wasn’t found.",
   "analyteStructureOnlyTitle": "Content in preparation",
   "analyteStructureOnlyBody": "This card shows the structure only for now. Clinical text is added together with its sources — generic text is never shown as ready.",
   "analyteNotWritten": "Not written yet: the text is added together with its sources.",
@@ -265,7 +265,7 @@
   "analyteMethodNotSet": "Not specified — depends on the reagent IFU",
   "analyteUnits": "Units",
   "analyteRefIntervals": "Reference intervals",
-  "analyteRefIntervalNone": "No reference interval is given here. Use the interval on your laboratory's report: it depends on the method, specimen and population.",
+  "analyteRefIntervalNone": "No reference interval is given here. Use the interval on your laboratory’s report: it depends on the method, specimen and population.",
   "analyteDecisionLimits": "Diagnostic thresholds",
   "analyteDecisionNotRef": "Diagnostic thresholds are not laboratory reference intervals.",
   "analyteSiNote": "{unit} values are not given by the source — they are converted from the source’s mg/dL thresholds using the molar mass ({mass} g/mol) and rounded. The source’s mg/dL value is the threshold.",
@@ -287,7 +287,7 @@
       }
     }
   },
-  "analyteNoInterpretation": "LabGuide doesn't interpret individual results or suggest diagnoses or doses.",
+  "analyteNoInterpretation": "LabGuide doesn’t interpret individual results or suggest diagnoses or doses.",
   "analyteSources": "Sources",
   "analyteSourceAccessed": "Accessed {date}",
   "@analyteSourceAccessed": {
@@ -354,7 +354,7 @@
   "calCheck": "Check match",
   "calFieldsRequired": "Fill in the model, reagent REF and IFU revision.",
   "calNoMatchTitle": "No verified instructions for this combination",
-  "calNoMatchBody": "Calibration parameters are shown only from a verified IFU that matches the manufacturer, model, reagent REF, IFU revision and calibrator lot. Use the manufacturer's current IFU.",
+  "calNoMatchBody": "Calibration parameters are shown only from a verified IFU that matches the manufacturer, model, reagent REF, IFU revision and calibrator lot. Use the manufacturer’s current IFU.",
   "calCatalogCount": "Verified IFU records in this build: {count}",
   "@calCatalogCount": {
     "placeholders": {
@@ -363,7 +363,7 @@
       }
     }
   },
-  "calBrandWarning": "A brand name (e.g. Mindray or HUMAN) doesn't mean all models share settings. The reagent IFU and the instrument manual are separate documents.",
+  "calBrandWarning": "A brand name (e.g. Mindray or HUMAN) doesn’t mean all models share settings. The reagent IFU and the instrument manual are separate documents.",
   "calWorkflow": "Workflow",
   "calStep1": "Model, reagent and instruction revision",
   "calStep2": "Calibrator lot and assigned values",
@@ -613,7 +613,7 @@
   "preStep3": "Collect and identify",
   "preStep4": "Separate and store",
   "preStep5": "Transport and receive",
-  "preNotice": "Tube colour, time and temperature depend on the specific tube, method and instructions. The times above are general guidance from the WHO table; your laboratory’s rules take priority.",
+  "preNotice": "Tube color, time and temperature depend on the specific tube, method and instructions. The times above are general guidance from the WHO table; your laboratory’s rules take priority.",
   "diffTitle": "Differential count",
   "diffSubtitle": "Identify, count and interpret white cells",
   "diffLabCardBody": "Manual count tally, cell atlas and interpretation",
@@ -677,8 +677,8 @@
   "diffGranules": "Granules",
   "diffKeySign": "Key sign",
   "diffSeenIn": "When it is seen",
-  "diffReferTitle": "Refer to a physician or haematologist",
-  "diffReferBody": "If you see a blast or a cell you cannot identify, do not interpret it yourself. Have a haematologist or physician review the smear according to your laboratory’s procedure.",
+  "diffReferTitle": "Refer to a physician or hematologist",
+  "diffReferBody": "If you see a blast or a cell you cannot identify, do not interpret it yourself. Have a hematologist or physician review the smear according to your laboratory’s procedure.",
   "diffCompareA": "Left",
   "diffCompareB": "Right",
   "diffFeature": "Feature",
@@ -716,7 +716,7 @@
   "diffColCount": "Count",
   "diffColAbs": "×10⁹/L",
   "diffAbsNeedWbc": "Enter the WBC to see absolute counts.",
-  "diffOtherWarning": "“Other” cells were counted. If they are blasts or unidentified cells, have a haematologist or physician review the smear.",
+  "diffOtherWarning": "“Other” cells were counted. If they are blasts or unidentified cells, have a hematologist or physician review the smear.",
   "diffSave": "Save to history",
   "diffSaved": "Result saved (on this device only)",
   "diffLabelField": "Sample label (optional, no patient names)",
@@ -946,7 +946,7 @@
   "diffRangesClassic": "Former-USSR textbook (1984)",
   "diffRangesClassicNote": "The classic (former-USSR textbook) ranges are shown for comparison only: many local report forms still use them, but sources differ. Your laboratory’s report form is what counts.",
   "refTitle": "Tables and algorithms",
-  "refSub": "Anaemia, jaundice, liver patterns, parasites, obsolete methods",
+  "refSub": "Anemia, jaundice, liver patterns, parasites, obsolete methods",
   "refIntro": "Short tables based on textbooks and official sources. Sources are listed under each section.",
   "refOpenSub": "Table and algorithm",
   "refNotFound": "This table was not found.",
@@ -955,7 +955,7 @@
   "diffQuizIntro": "Pick the cell from the schematic. Questions are shuffled each time; after answering you see the distinguishing sign.",
   "diffQuizStart": "Start practice",
   "diffRealSmear": "Real smear",
-  "diffRealSmearNote": "A licensed micrograph from the microscopy atlas. Author and licence are shown when you open it.",
+  "diffRealSmearNote": "A licensed micrograph from the microscopy atlas. Author and license are shown when you open it.",
   "diffAtlasRow": "Real blood smears",
   "diffAtlasRowSub": "Licensed micrographs from the microscopy atlas",
   "diffQuizExtended": "Extended practice ({count} questions)",
@@ -988,10 +988,10 @@
   },
   "preHaemolysisTitle": "Causes of hemolysis",
   "preTourniquetTitle": "Tourniquet",
-  "preIdTitle": "Patient identification and labelling",
+  "preIdTitle": "Patient identification and labeling",
   "prePatientTitle": "Patient preparation",
   "preTubeForTestTitle": "Which tube for which test",
-  "preTubeForTestSub": "Colour and position follow the WHO order above. Tubes may differ between laboratories.",
+  "preTubeForTestSub": "Color and position follow the WHO order above. Tubes may differ between laboratories.",
   "preTubeSlot": "{tube} · no. {n} in the order of draw",
   "@preTubeSlot": {
     "placeholders": {
@@ -1026,7 +1026,7 @@
   "mcReticSub": "%, corrected % and RPI",
   "mcLight": "Light’s criteria",
   "mcLightSub": "Pleural fluid: exudate or transudate",
-  "mcColour": "Colour index",
+  "mcColour": "Color index",
   "mcColourSub": "Why the app recommends MCH and MCHC",
   "mcNechiporenko": "Nechiporenko count",
   "mcNechiporenkoSub": "Leukocytes, erythrocytes and casts per 1 ml of urine",
@@ -1053,7 +1053,7 @@
   "mfNrbc": "Nucleated RBCs per 100 leukocytes",
   "mfReticCounted": "Reticulocytes counted",
   "mfRbcExamined": "Erythrocytes examined",
-  "mfHct": "Haematocrit (Hct)",
+  "mfHct": "Hematocrit (Hct)",
   "mfRbc": "Erythrocytes (RBC)",
   "mfMaturation": "Maturation factor",
   "mfMaturationAuto": "Auto",
@@ -1180,15 +1180,15 @@
     }
   },
   "ciWhatTitle": "What is it?",
-  "ciWhat": "The colour index is a relative measure traditionally used in CIS laboratories: it rates the haemoglobin content of one red cell against a “normal” value. It is used to describe hypo-, normo- or hyperchromia.",
+  "ciWhat": "The color index is a relative measure traditionally used in CIS laboratories: it rates the hemoglobin content of one red cell against a “normal” value. It is used to describe hypo-, normo- or hyperchromia.",
   "ciWhyTitle": "Why the app does not calculate it",
   "ciWhy": "We found no primary open source for its formula that we could verify. The app gives no numbers or formulas without a source.",
   "ciUseTitle": "What to use instead",
-  "ciUse": "The haemoglobin in one red cell is expressed directly by the MCH (mean cell haemoglobin, pg), and its concentration in the cell by the MCHC. Haematology analysers report both. Judge hypo-/hyperchromia by these and your laboratory’s reference intervals.",
+  "ciUse": "The hemoglobin in one red cell is expressed directly by the MCH (mean cell hemoglobin, pg), and its concentration in the cell by the MCHC. Hematology analyzers report both. Judge hypo-/hyperchromia by these and your laboratory’s reference intervals.",
   "dilC1": "C₁ · Stock concentration",
   "dilC2": "C₂ · Target concentration",
   "dilV2": "V₂ · Final volume (mL)",
-  "dilNote": "Use the same units for C₁ and C₂. Simple dilution model: reactions, safety and volume changes are not modelled.",
+  "dilNote": "Use the same units for C₁ and C₂. Simple dilution model: reactions, safety and volume changes are not modeled.",
   "dilCalculate": "Calculate",
   "dilResult": "V₁ = {volume} mL",
   "@dilResult": {
@@ -1209,7 +1209,7 @@
   },
   "dilNoDilution": "C₂ equals C₁: no dilution is needed.",
   "dilErrorInvalid": "Enter a number greater than zero in every field.",
-  "dilErrorC2GtC1": "C₂ can't exceed C₁: dilution can't raise the concentration.",
+  "dilErrorC2GtC1": "C₂ can’t exceed C₁: dilution can’t raise the concentration.",
   "dilErrorRange": "The values are outside the calculable range.",
   "ucTitle": "Unit conversion",
   "ucSubtitle": "Each substance has its own factor — one shared mg/dL → mmol/L factor would be wrong.",
@@ -1246,7 +1246,7 @@
   "calcHba1cSub": "NGSP ↔ IFCC · ADAG",
   "calcFormulaTag": "Published formula",
   "calcOptional": "optional",
-  "calcCalciumCaution": "Albumin-adjusted calcium often misclassifies calcium status, especially with low albumin or kidney impairment. Where available, measure ionised calcium — it is preferred.",
+  "calcCalciumCaution": "Albumin-adjusted calcium often misclassifies calcium status, especially with low albumin or kidney impairment. Where available, measure ionized calcium — it is preferred.",
   "@calcCalciumCaution": {
     "description": "Always-visible warning on the albumin-corrected calcium calculator."
   },
@@ -1391,7 +1391,7 @@
       }
     }
   },
-  "errHdlGeTc": "HDL cholesterol can't be equal to or greater than total cholesterol.",
+  "errHdlGeTc": "HDL cholesterol can’t be equal to or greater than total cholesterol.",
   "errNotPositive": "Not calculated: the result is not positive — check the values.",
   "errSexMissing": "Choose sex.",
   "micTitle": "Microscopy atlas",
@@ -1427,12 +1427,12 @@
   "micNoResultsTitle": "Nothing found",
   "micNoResultsBody": "Try another name or another language (uz, ru, en).",
   "micSections": "Sections",
-  "micEduNotice": "Teaching images — not for diagnosis. Every image shows its author, licence and original caption.",
+  "micEduNotice": "Teaching images — not for diagnosis. Every image shows its author, license and original caption.",
   "micEduTag": "Teaching image — not for diagnosis",
   "micNoImageYet": "No licensed image yet",
   "micGapWhy": "Why not?",
   "micAllGroups": "All",
-  "micSectionQuiz": "Practise this section",
+  "micSectionQuiz": "Practice this section",
   "micZoom": "Zoom",
   "micOpenFull": "{name} — open full screen",
   "@micOpenFull": {
@@ -1470,16 +1470,16 @@
   "micNotStated": "not stated in the source",
   "micOnlySource": "Only what the source states is shown.",
   "micDraftTitle": "What to look for",
-  "micCreditTitle": "Author and licence",
+  "micCreditTitle": "Author and license",
   "micAuthor": "Author",
   "micAuthorPage": "Author page",
   "micLabelBySource": "Named per the source caption",
   "micLabelNoQuiz": "Not used in the quiz",
   "micCredit": "Source",
   "micOwnWork": "Own work",
-  "micLicense": "Licence",
+  "micLicense": "License",
   "micSourceDate": "Date in the source",
-  "micLicenseText": "Licence text: {license}",
+  "micLicenseText": "License text: {license}",
   "@micLicenseText": {
     "placeholders": {
       "license": {
@@ -1517,13 +1517,13 @@
       }
     }
   },
-  "micShareAlike": "CC BY-SA: adapted versions of this image are shared under the same licence.",
+  "micShareAlike": "CC BY-SA: adapted versions of this image are shared under the same license.",
   "micCdcTerms": "Terms of use (from the CDC PHIL page, verbatim)",
   "micCdcFree": "Free source: CDC Public Health Image Library (PHIL), wwwn.cdc.gov/phil",
   "micSameEntity": "More images of this type",
   "micCreditsTitle": "Image credits",
-  "micCreditsSub": "Licences and sources",
-  "micCreditsIntro": "Each image’s licence, author and original caption were re-checked on the source page ({date}). Images are only downscaled: not cropped, no text added, EXIF removed. Only CC0, CC BY, CC BY-SA, public domain and CDC PHIL images are used.",
+  "micCreditsSub": "Licenses and sources",
+  "micCreditsIntro": "Each image’s license, author and original caption were re-checked on the source page ({date}). Images are only downscaled: not cropped, no text added, EXIF removed. Only CC0, CC BY, CC BY-SA, public domain and CDC PHIL images are used.",
   "@micCreditsIntro": {
     "placeholders": {
       "date": {
@@ -1531,8 +1531,8 @@
       }
     }
   },
-  "micLicenseTexts": "Licence texts",
-  "micCreditsRow": "Authors and licences",
+  "micLicenseTexts": "License texts",
+  "micCreditsRow": "Authors and licenses",
   "micCreditsRowSub": "Source and terms of use for every image",
   "micClose": "Close",
   "micZoomIn": "Zoom in",
@@ -1597,7 +1597,7 @@
     }
   },
   "micQuizPromptArrow": "What is the cell marked by the arrowhead?",
-  "micQuizPromptCentre": "What is the cell in the centre?",
+  "micQuizPromptCentre": "What is the cell in the center?",
   "micQuizPromptField": "What is mainly shown in this field?",
   "micQuizCorrect": "Correct!",
   "micQuizWrong": "Not quite. Correct answer: {answer}",
@@ -1612,7 +1612,7 @@
   "micQuizTapToZoom": "Tap the image to zoom",
   "micQuizResultGreat": "Excellent!",
   "micQuizResultGood": "Good result",
-  "micQuizResultKeep": "Keep practising",
+  "micQuizResultKeep": "Keep practicing",
   "micQuizScore": "{correct} of {total} correct",
   "@micQuizScore": {
     "placeholders": {
@@ -1795,10 +1795,10 @@
   "partnerAdLabel": "Ad",
   "partnerLabel": "Partner",
   "partnerOfficialTitle": "Official partners",
-  "partnerSectionNote": "Information provided by the partner companies. The catalogue data above, its order and review status do not depend on partnerships.",
+  "partnerSectionNote": "Information provided by the partner companies. The catalog data above, its order and review status do not depend on partnerships.",
   "partnerKindManufacturer": "Manufacturer",
   "partnerKindDistributor": "Official distributor",
-  "partnerKindService": "Service centre",
+  "partnerKindService": "Service center",
   "partnerCall": "Call",
   "partnerTelegram": "Telegram",
   "partnerWebsite": "Website",
@@ -1837,9 +1837,9 @@
       }
     }
   },
-  "partnerPageNote": "This page is an advertisement. LabGuide does not endorse partner products; catalogue data and review status do not depend on partnerships.",
+  "partnerPageNote": "This page is an advertisement. LabGuide does not endorse partner products; catalog data and review status do not depend on partnerships.",
   "partnerOfferTitle": "Your contacts, right on the instrument card",
-  "partnerOfferBody": "A lab specialist reading about an instrument can call its official distributor or service centre in one tap. For manufacturers, official distributors and service centres.",
+  "partnerOfferBody": "A lab specialist reading about an instrument can call its official distributor or service center in one tap. For manufacturers, official distributors and service centers.",
   "partnerWhatTitle": "What you get",
   "partnerWhatCard": "An “Official partners” section on the instrument card: logo, short description, regions, call and Telegram buttons.",
   "partnerWhatCategory": "A compact “Partner” card inside the instrument category (e.g. Chemistry).",
@@ -1850,7 +1850,7 @@
   "partnerAudienceBody": "LabGuide serves laboratory specialists, doctors, students and teachers in Uzbek, Russian and English. We show user numbers and the role breakdown from server statistics during negotiation; we don’t quote estimates.",
   "partnerRulesTitle": "Rules",
   "partnerRule1": "Every placement carries a clear “Ad” or “Partner” label.",
-  "partnerRule2": "Catalogue facts, their order and review status do not depend on partnerships and cannot be bought.",
+  "partnerRule2": "Catalog facts, their order and review status do not depend on partnerships and cannot be bought.",
   "partnerRule3": "Medical device ads: the instrument must be registered in Uzbekistan; the certificate number is shown on the card.",
   "partnerRule4": "Verifiable information only: unproven claims such as “the best” or “100% accurate” are not accepted.",
   "partnerRule5": "Users’ personal data is never shared with partners.",
@@ -1928,7 +1928,7 @@
   "adminPartnerTelegram": "Telegram (username)",
   "adminPartnerWebsite": "Website (https://…)",
   "adminPartnerBrochure": "Brochure link (https://…)",
-  "adminPartnerLinks": "Catalogue links",
+  "adminPartnerLinks": "Catalog links",
   "adminPartnerMakers": "Manufacturers (all models)",
   "adminPartnerModels": "Models",
   "adminPartnerAddModel": "Add a model",
@@ -1943,7 +1943,7 @@
   "adminPartnerPause": "Pause",
   "adminPartnerPublished": "Published",
   "adminPartnerPausedMsg": "Paused",
-  "adminPartnerPublishRules": "To publish: a description, at least one contact and at least one link. The ad always carries an “Ad” label and never changes catalogue data.",
+  "adminPartnerPublishRules": "To publish: a description, at least one contact and at least one link. The ad always carries an “Ad” label and never changes catalog data.",
   "adminPartnerInvalid": "Check the data: name (2–120 characters), phone, Telegram (5–32 characters), https links, email, dates; to publish — description, contact and a link.",
   "adminPartnerStats": "Statistics",
   "adminStatsImpressions": "Impressions",
@@ -2051,11 +2051,11 @@
   "libPacksSub": "Installed and upcoming packs",
   "libSavedSub": "Bookmarked tests",
   "libResearchSub": "Question, plan, real data and sources",
-  "libSources": "Sources and licences",
+  "libSources": "Sources and licenses",
   "libSourcesSub": "Review and reuse conditions",
   "booksEmptyTitle": "No books yet",
-  "booksEmptyBody": "Books are added only with confirmed distribution rights. A PDF you add yourself stays for personal study and isn't shared.",
-  "booksCatalogNote": "Catalog items link to their official pages. Full text is added to the app only under an open licence or with confirmed distribution rights.",
+  "booksEmptyBody": "Books are added only with confirmed distribution rights. A PDF you add yourself stays for personal study and isn’t shared.",
+  "booksCatalogNote": "Catalog items link to their official pages. Full text is added to the app only under an open license or with confirmed distribution rights.",
   "booksResetFilters": "Clear filters",
   "packsInstalled": "Installed",
   "packsCoreTitle": "Core content",
@@ -2083,7 +2083,7 @@
       }
     }
   },
-  "packsLicence": "Licence: {licence}",
+  "packsLicence": "License: {licence}",
   "@packsLicence": {
     "placeholders": {
       "licence": {
@@ -2115,8 +2115,8 @@
     }
   },
   "packsDownloadable": "Packs to download",
-  "packsCatalogLoading": "Loading catalogue…",
-  "packsCatalogCached": "Showing the last saved catalogue",
+  "packsCatalogLoading": "Loading catalog…",
+  "packsCatalogCached": "Showing the last saved catalog",
   "packsCatalogEmpty": "No packs to download yet",
   "packsStatusTest": "Test pack · not a clinical pack",
   "packsStatusReviewed": "Expert-reviewed",
@@ -2181,7 +2181,7 @@
   "packsPlannedBody": "Published after independent review; the size is shown before download.",
   "savedEmptyTitle": "No bookmarks yet",
   "savedEmptyBody": "Select Save on a test card to keep it here.",
-  "sourcesTitle": "Sources and licences",
+  "sourcesTitle": "Sources and licenses",
   "sourcesContent": "Analyte cards",
   "sourcesMethods": "Calculators, QC and preanalytics",
   "sourcesBody": "Every published claim links to its original source, access date, scope and review status.",
@@ -2216,7 +2216,7 @@
   },
   "learnExam": "Exam mode",
   "learnExamSub": "Time, topic and questions",
-  "toifaTopic": "{topic, select, safety_ethics{Safety and ethics} qc_lab_management{Quality control and management} preanalytics{Preanalytics} hematology_cells{Blood cells} hemopoiesis_leukemia{Haematopoiesis and leukaemia} anemias{Anaemias} hemostasis{Haemostasis} biochemistry_proteins_enzymes{Proteins and enzymes} carbohydrates_diabetes{Carbohydrates and diabetes} lipids{Lipids} liver_pigments{Liver and pigments} kidney_nitrogen{Kidney and nitrogen metabolism} water_electrolytes_acid_base{Water, electrolytes and acid–base} minerals_vitamins{Minerals and vitamins} hormones{Hormones} urinalysis{Urinalysis} stool_coprology{Stool examination} csf_body_fluids{CSF and body fluids} sputum_tb{Sputum and tuberculosis} cytology_gyn{Cytology} std_microscopy{STI microscopy} parasitology{Parasitology} immunology_serology{Immunology and serology} molecular_pcr{Molecular diagnostics (PCR)} tumor_markers{Tumour markers} cardiac_markers{Cardiac markers} orphan_screening{Screening and rare diseases} other{Other topics}}",
+  "toifaTopic": "{topic, select, safety_ethics{Safety and ethics} qc_lab_management{Quality control and management} preanalytics{Preanalytics} hematology_cells{Blood cells} hemopoiesis_leukemia{Hematopoiesis and leukemia} anemias{Anaemias} hemostasis{Haemostasis} biochemistry_proteins_enzymes{Proteins and enzymes} carbohydrates_diabetes{Carbohydrates and diabetes} lipids{Lipids} liver_pigments{Liver and pigments} kidney_nitrogen{Kidney and nitrogen metabolism} water_electrolytes_acid_base{Water, electrolytes and acid–base} minerals_vitamins{Minerals and vitamins} hormones{Hormones} urinalysis{Urinalysis} stool_coprology{Stool examination} csf_body_fluids{CSF and body fluids} sputum_tb{Sputum and tuberculosis} cytology_gyn{Cytology} std_microscopy{STI microscopy} parasitology{Parasitology} immunology_serology{Immunology and serology} molecular_pcr{Molecular diagnostics (PCR)} tumor_markers{Tumor markers} cardiac_markers{Cardiac markers} orphan_screening{Screening and rare diseases} other{Other topics}}",
   "@toifaTopic": {
     "placeholders": {
       "topic": {
@@ -2402,7 +2402,7 @@
   "toifaPassLabel": "Pass mark, %",
   "toifaNoPass": "Not set",
   "toifaPassHelper": "This is your own threshold, not the official pass mark.",
-  "toifaPassError": "Enter 1 to 100 % or leave empty",
+  "toifaPassError": "Enter 1 to 100% or leave empty",
   "toifaScoringNotice": "Scoring follows the official key — that is what the exam expects. Where the key is disputed, the results also show a LabGuide note.",
   "toifaTestStart": "Start test",
   "toifaTodayEyebrow": "Today",
@@ -2725,7 +2725,7 @@
       }
     }
   },
-  "toifaMoreMistakes": "{count} more mistakes — practise them via Redo mistakes.",
+  "toifaMoreMistakes": "{count} more mistakes — practice them via Redo mistakes.",
   "@toifaMoreMistakes": {
     "placeholders": {
       "count": {
@@ -2995,8 +2995,8 @@
   "classesSignInTitle": "Sign in to use classes",
   "classesSignInBody": "Creating, joining and submitting assignments is tied to an account. Reading content stays open without sign-in.",
   "classesSignIn": "Sign in",
-  "classesUnavailableTitle": "The class server isn't connected yet",
-  "classesUnavailableBody": "Nothing is sent or stored. When it's connected, teachers see only their own classes and students see only their own results — checked on the server.",
+  "classesUnavailableTitle": "The class server isn’t connected yet",
+  "classesUnavailableBody": "Nothing is sent or stored. When it’s connected, teachers see only their own classes and students see only their own results — checked on the server.",
   "examSubtitle": "A timed test: pick topics, number of questions and time. Works offline.",
   "examActiveTitle": "Unfinished exam",
   "examActiveBody": "{answered}/{total} answered · {time} left",
@@ -3128,7 +3128,7 @@
       }
     }
   },
-  "examReworkTitle": "Practise your mistakes",
+  "examReworkTitle": "Practice your mistakes",
   "examQuestionMissing": "This question isn’t in the current content pack.",
   "examMap": "Question map",
   "examFinish": "Finish",
@@ -3198,7 +3198,7 @@
   "examBand90": "Excellent!",
   "examBand70": "Good result!",
   "examBand50": "Not bad — review your mistakes",
-  "examBand0": "Keep practising — you’ve got this",
+  "examBand0": "Keep practicing — you’ve got this",
   "examCorrectN": "Correct",
   "examWrongN": "Wrong",
   "examSkippedN": "Unanswered",
@@ -3221,7 +3221,7 @@
     }
   },
   "examDeltaSame": "Same as last attempt",
-  "examReworkMistakes": "Practise mistakes · {count}",
+  "examReworkMistakes": "Practice mistakes · {count}",
   "@examReworkMistakes": {
     "placeholders": {
       "count": {
@@ -3541,15 +3541,20 @@
   "profileUnits": "Units",
   "profileUnitsSi": "SI (mmol/L, µmol/L)",
   "profileUnitsConventional": "Conventional (mg/dL)",
+  "profileAttestation": "Qualification category (attestation)",
+  "profileAttestationAuto": "Automatic",
+  "profileAttestationUz": "Uzbekistan",
+  "profileAttestationNone": "Hide",
+  "profileAttestationNote": "Shows the Uzbekistan qualification-category exam prep section in any interface language. Automatic: shown when the language is Uzbek or the device region is Uzbekistan.",
   "profileAppearance": "Appearance",
   "themeSystem": "System",
   "themeLight": "Light",
   "themeDark": "Dark",
   "themeTitle": "Theme",
-  "themeRowSub": "App colours and title type",
+  "themeRowSub": "App colors and title type",
   "themeCurrent": "Current theme",
   "themeClassicName": "Classic",
-  "themeClassicDesc": "LabGuide's signature green",
+  "themeClassicDesc": "LabGuide’s signature green",
   "themeIvoryName": "Ivory",
   "themeIvoryDesc": "Ivory, ink and gold with elegant serif titles",
   "themeModeSection": "Light or dark",
@@ -3729,7 +3734,7 @@
   "privacyDeleteConfirmBody": "Settings, bookmarks, drafts, all QC records (runs and targets) and practice progress on this device will be removed. This can’t be undone — if needed, copy a QC backup first (Lab → Quality control).",
   "privacyDeleted": "Local data deleted",
   "termsTitle": "Terms of use",
-  "termsBody": "LabGuide is a free clinical laboratory reference and learning app. By using the app you agree to these terms.\n\n1. Medical limitation. LabGuide does not diagnose, prescribe treatment or medicines, and does not replace your laboratory's approved procedures, reagent and analyzer instructions (IFU) or a physician's judgement. Every item shows its source; when making decisions, rely on the original source and your institution's rules.\n\n2. Account. Some features (groups, tests, community, support requests) require signing up with email. You are responsible for your account's security and for actions taken through it. You can delete your account at any time: Profile → Delete account.\n\n3. Teacher and student groups. When a student joins a group, the teacher sees their nickname (or seat number) and test results. Teachers use groups for educational purposes only.\n\n4. User content. You are responsible for what you post in the community and in support requests. Abuse, illegal content, advertising, other people's personal data and non-consensual intimate images are strictly prohibited. Such content is removed, and the offending account may be restricted or deleted. You can report any message with “Report”.\n\n5. Copyright. The app's texts, slides, tests and design belong to the LabGuide authors; external sources are shown with their own licences. They may not be copied or distributed for commercial purposes.\n\n6. Service. The app is provided “as is”; outages and errors may occur, and we fix them as quickly as we can. We will notify you in the app if these terms change.\n\n7. Privacy. How your data is used is described in the privacy policy: labguide.nfcstore.uz/privacy\n\n8. Contact: labguide@nfcstore.uz",
+  "termsBody": "LabGuide is a free clinical laboratory reference and learning app. By using the app you agree to these terms.\n\n1. Medical limitation. LabGuide does not diagnose, prescribe treatment or medicines, and does not replace your laboratory’s approved procedures, reagent and analyzer instructions (IFU) or a physician’s judgment. Every item shows its source; when making decisions, rely on the original source and your institution’s rules.\n\n2. Account. Some features (groups, tests, community, support requests) require signing up with email. You are responsible for your account’s security and for actions taken through it. You can delete your account at any time: Profile → Delete account.\n\n3. Teacher and student groups. When a student joins a group, the teacher sees their nickname (or seat number) and test results. Teachers use groups for educational purposes only.\n\n4. User content. You are responsible for what you post in the community and in support requests. Abuse, illegal content, advertising, other people’s personal data and non-consensual intimate images are strictly prohibited. Such content is removed, and the offending account may be restricted or deleted. You can report any message with “Report”.\n\n5. Copyright. The app’s texts, slides, tests and design belong to the LabGuide authors; external sources are shown with their own licenses. They may not be copied or distributed for commercial purposes.\n\n6. Service. The app is provided “as is”; outages and errors may occur, and we fix them as quickly as we can. We will notify you in the app if these terms change.\n\n7. Privacy. How your data is used is described in the privacy policy: labguide.nfcstore.uz/privacy\n\n8. Contact: labguide@nfcstore.uz",
   "citePage": "p. {page}",
   "@citePage": {
     "placeholders": {
@@ -3754,7 +3759,7 @@
   "kindArticle": "Article",
   "kindQuestionSet": "Question set",
   "kindWebsite": "Website",
-  "libAccessOpen": "Open licence · {licence}",
+  "libAccessOpen": "Open license · {licence}",
   "@libAccessOpen": {
     "placeholders": {
       "licence": {
@@ -3763,9 +3768,9 @@
     }
   },
   "libAccessFree": "Free to read · link only",
-  "libAccessCatalog": "Catalogue record only",
+  "libAccessCatalog": "Catalog record only",
   "libOpenSource": "Open the official page",
-  "libChecked": "Page and licence checked: {date}",
+  "libChecked": "Page and license checked: {date}",
   "@libChecked": {
     "placeholders": {
       "date": {
@@ -3897,7 +3902,7 @@
   "libFieldPages": "Pages",
   "libStateNotReceived": "Not received yet",
   "libStateReceived": "Received, being checked",
-  "libStateCataloged": "Catalogued",
+  "libStateCataloged": "Cataloged",
   "libStateLinked": "Linked to cards",
   "libStateReviewed": "Approved by a teacher",
   "libProvidedByTeacher": "Provided by a teacher",
@@ -4004,12 +4009,12 @@
   "intakeWhat3": "If there is an old and a new edition — both: differences are reviewed separately.",
   "intakeRightsTitle": "2. Distribution rights",
   "intakeRights1": "A shared PDF does not by itself mean it may be distributed to everyone.",
-  "intakeRights2": "For a file to open in the app for everyone, the rights are fully recorded: who granted them (author or publisher), when, who recorded it, and the evidence — a permission letter or a licence link.",
+  "intakeRights2": "For a file to open in the app for everyone, the rights are fully recorded: who granted them (author or publisher), when, who recorded it, and the evidence — a permission letter or a license link.",
   "intakeRights3": "Without that record, the material stays a catalog entry only or for personal use.",
   "intakeReviewTitle": "3. How it is checked",
   "intakeStep1": "Pending — the material hasn’t arrived yet.",
   "intakeStep2": "Received — the file arrived and was logged.",
-  "intakeStep3": "Catalogued — title, author and edition were checked. Only then can it be cited.",
+  "intakeStep3": "Cataloged — title, author and edition were checked. Only then can it be cited.",
   "intakeStep4": "Linked — tied to test cards and lessons with page numbers.",
   "intakeStep5": "Approved — a teacher reviewed it.",
   "intakeConflict": "If an old and a new source disagree, neither is written as fact — both positions go to a reviewer.",
@@ -4087,7 +4092,7 @@
       }
     }
   },
-  "reviewCatalog": "Catalogued materials: {count}",
+  "reviewCatalog": "Cataloged materials: {count}",
   "@reviewCatalog": {
     "placeholders": {
       "count": {
@@ -4532,14 +4537,14 @@
   "cmRulesCollapse": "Collapse rules",
   "cmRulesH1": "What is discussed",
   "cmRulesA1": "interpreting test results (inconsistent results, spurious increases/decreases)",
-  "cmRulesA2": "pre-analytics: blood collection, tubes, storage, haemolysis",
+  "cmRulesA2": "pre-analytics: blood collection, tubes, storage, hemolysis",
   "cmRulesA3": "quality control (QC, Westgard rules), calibration",
-  "cmRulesA4": "experience working with analysers and reagents",
-  "cmRulesA5": "haematology, microscopy, biochemistry, immunology, urinalysis",
+  "cmRulesA4": "experience working with analyzers and reagents",
+  "cmRulesA5": "hematology, microscopy, biochemistry, immunology, urinalysis",
   "cmRulesA6": "questions about the qualification exam (toifa) and study",
   "cmRulesH2": "How to write",
-  "cmRulesB1": "put the essence of the question in the title (for example: “Potassium high, no haemolysis — what is the cause?”)",
-  "cmRulesB2": "in the details: which test, the result and its unit, the method or analyser, what you have already tried",
+  "cmRulesB1": "put the essence of the question in the title (for example: “Potassium high, no hemolysis — what is the cause?”)",
+  "cmRulesB2": "in the details: which test, the result and its unit, the method or analyzer, what you have already tried",
   "cmRulesB3": "state units precisely: SI first, conventional in parentheses (for example 7.0 mmol/L (126 mg/dL))",
   "cmRulesB4": "one post — one question",
   "cmRulesH3": "What is not allowed",
@@ -4586,7 +4591,7 @@
   },
   "cmLaunchDone": "Done: founder confirmed. Added {questions} questions and {answers} answers.",
   "cmLaunchAlready": "The community is already launched: founder confirmed, nothing new was added.",
-  "cmLaunchNotOwner": "This account is not allowed as founder. Sign in with the founder's email.",
+  "cmLaunchNotOwner": "This account is not allowed as founder. Sign in with the founder’s email.",
   "cmLaunchMfaHint": "To launch the community, first confirm two-step protection: enter the 6-digit code from your authenticator app. The “Launch the community” button appears after that.",
   "diffFbSound": "Sound on tap",
   "diffFbHaptics": "Vibration on tap",
@@ -4714,11 +4719,11 @@
   "adminActionGrantAdded": "Admin added",
   "adminActionGrantRemoved": "Admin removed",
   "cytoTitle": "Cytology",
-  "cytoSubtitle": "Gynaecological smear: cells and reports",
+  "cytoSubtitle": "Gynecological smear: cells and reports",
   "cytoHeroTitle": "Read a smear with confidence",
   "cytoHeroBody": "Cell drawings, cleanliness grade, the Bethesda system and practice — in one place.",
   "cytoHeroCta": "View cells",
-  "cytoSchematicCaption": "Annotated diagram (LabGuide) — not a micrograph; scale and colours are approximate.",
+  "cytoSchematicCaption": "Annotated diagram (LabGuide) — not a micrograph; scale and colors are approximate.",
   "cytoCellsTitle": "Cells and organisms",
   "cytoCellsSub": "{n} items: drawing and key feature",
   "@cytoCellsSub": {
@@ -4819,7 +4824,7 @@
   "diffLimitsHigh": "Upper limit",
   "diffLimitsInvalid": "Invalid range: the lower limit must be below the upper.",
   "diffLimitsReset": "Restore source values",
-  "diffLimitsSourceNote": "Defaults are adult 95 % intervals (Harrison’s Manual of Medicine, 20th ed., Table 64-1); bands — Lyubina 1984, Table 6. MSD Manual definitions differ: eosinophilia > 0.5 ×10⁹/L (default upper limit here 0.7) and lymphocytopenia < 1.0 ×10⁹/L (default lower limit here 1.5). Ranges differ in children and in some ethnic groups (e.g. Duffy-negative).",
+  "diffLimitsSourceNote": "Defaults are adult 95% intervals (Harrison’s Manual of Medicine, 20th ed., Table 64-1); bands — Lyubina 1984, Table 6. MSD Manual definitions differ: eosinophilia > 0.5 ×10⁹/L (default upper limit here 0.7) and lymphocytopenia < 1.0 ×10⁹/L (default lower limit here 1.5). Ranges differ in children and in some ethnic groups (e.g. Duffy-negative).",
   "@diffAssessRange": {
     "placeholders": {
       "range": {
@@ -4835,8 +4840,8 @@
     }
   },
   "cytoAdequacyTitle": "Specimen adequacy",
-  "cytoAdequacySub": "Bethesda 2014: satisfactory or not, common artefacts",
-  "cytoArtefactsTitle": "Common artefacts",
+  "cytoAdequacySub": "Bethesda 2014: satisfactory or not, common artifacts",
+  "cytoArtefactsTitle": "Common artifacts",
   "cytoReactiveTitle": "Reactive changes vs atypia",
   "cytoReactiveSub": "Inflammation, repair, radiation, IUD vs ASC-US and LSIL",
   "cytoReactiveIntro": "In the Bethesda system reactive cellular changes (inflammation including repair, lymphocytic cervicitis, radiation, IUD) are non-neoplastic findings within NILM.",
@@ -4864,7 +4869,7 @@
   "cytoOtherSub": "Urine, serous fluids, sputum: reporting categories",
   "cytoOtherIntro": "A brief overview: only the names of the international reporting categories. Criteria and risk figures are in the sources.",
   "cytoCategoriesTitle": "Categories",
-  "contactPrivacyPolicy": "Privacy Policy",
+  "contactPrivacyPolicy": "Privacy policy",
   "bloodGroupTitle": "Blood grouping",
   "bloodGroupLabCardBody": "ABO and RhD: methods, compatibility, discrepancies, practice",
   "@bloodGroupTitle": {
@@ -4975,7 +4980,7 @@
   "autoPresColValue": "Value",
   "autoPresColTarget": "Target",
   "autoPresColTube": "Tube",
-  "autoPresColCap": "Cap colour",
+  "autoPresColCap": "Cap color",
   "autoPresShowAnswer": "Show answer",
   "autoPresHideAnswer": "Hide answer",
   "autoPresAnswerLabel": "Answer",
@@ -5129,7 +5134,7 @@
   "authSocialEmailUnverified": "This account’s email isn’t verified, so it can’t be used to sign in. Use the email code instead.",
   "authSocialEmailRequired": "This account didn’t share an email address. Use the email code instead.",
   "accountDeleteAppleNote": "You signed in with Apple, so Apple will ask you to confirm before the account is deleted. This also disconnects LabGuide from your Apple ID.",
-  "accountDeleteAppleCancelled": "Nothing was deleted: Apple confirmation was cancelled.",
+  "accountDeleteAppleCancelled": "Nothing was deleted: Apple confirmation was canceled.",
   "@authOr": {
     "description": "Divider text between the email form and the Google/Apple sign-in buttons"
   },
@@ -5161,7 +5166,7 @@
   "coproTitle": "Stool analysis and parasites",
   "coproLabCardBody": "Coprogram, occult blood, egg and cyst key (schematic)",
   "@coagTitle": {
-    "description": "Lab tab: title of the coagulogram (haemostasis tests) section and its picture card"
+    "description": "Lab tab: title of the coagulogram (hemostasis tests) section and its picture card"
   },
   "@coagLabCardBody": {
     "description": "Lab tab: one-line description on the coagulogram picture card"
@@ -5474,9 +5479,9 @@
   },
   "admSectionComplaints": "Complaints",
   "bloodMorphTitle": "Blood morphology",
-  "bloodMorphLabCardBody": "Red cells, platelets, anaemias: real micrographs, helper, practice",
+  "bloodMorphLabCardBody": "Red cells, platelets, anemias: real micrographs, helper, practice",
   "@bloodMorphTitle": {
-    "description": "Lab tab: blood morphology section title (peripheral blood film: red cells, platelets, anaemias)"
+    "description": "Lab tab: blood morphology section title (peripheral blood film: red cells, platelets, anemias)"
   },
   "@bloodMorphLabCardBody": {
     "description": "Lab tab: blood morphology picture card subtitle"
@@ -5721,8 +5726,8 @@
   },
   "cmErrAbusive": "The text contains offensive or abusive language. Please rephrase it respectfully — the community rules require this.",
   "admDeleteTitle": "Delete account",
-  "admDeleteNote": "For deletion requests received by email (completed within 30 days). To confirm, enter the user's full email — the server checks that it belongs to exactly this account. The account, group memberships, community posts, support threads and sign-in methods are deleted permanently; for Sign in with Apple users the server attempts to revoke the Apple token. This cannot be undone; the action is logged.",
-  "admDeleteEmail": "User's full email",
+  "admDeleteNote": "For deletion requests received by email (completed within 30 days). To confirm, enter the user’s full email — the server checks that it belongs to exactly this account. The account, group memberships, community posts, support threads and sign-in methods are deleted permanently; for Sign in with Apple users the server attempts to revoke the Apple token. This cannot be undone; the action is logged.",
+  "admDeleteEmail": "User’s full email",
   "admDeleteButton": "Delete account permanently",
   "admDeleteConfirmTitle": "Delete this account permanently?",
   "admDeleteConfirmBody": "The account {email} and all data linked to it will be deleted. This cannot be undone.",
@@ -5895,12 +5900,12 @@
   "classesNicknameInvalid": "A nickname may contain only letters, digits, spaces and . _ ' -, and must start and end with a letter or digit (no emoji or symbols like !?@).",
   "classesGroupFull": "The group is full (200 people) — tell your teacher.",
   "classesCodeAmbiguous": "Codes never contain 0, O, 1 or I. Check the code with your teacher or scan the QR.",
-  "classesOwnGroupTitle": "You are this group's teacher",
-  "classesOwnGroupBody": "This account created the group, so it can't join it as a student (switching the role in Profile doesn't change that). To try it as a student, sign in with another account or take the test in student view.",
+  "classesOwnGroupTitle": "You are this group’s teacher",
+  "classesOwnGroupBody": "This account created the group, so it can’t join it as a student (switching the role in Profile doesn’t change that). To try it as a student, sign in with another account or take the test in student view.",
   "classesOwnGroupOpen": "Open as teacher",
   "classesSwitchAccount": "Sign in with another account",
   "classesPreviewAsStudent": "Try as a student",
-  "classesPreviewNote": "Trial mode: answers are not sent to the server and don't appear in the results.",
+  "classesPreviewNote": "Trial mode: answers are not sent to the server and don’t appear in the results.",
   "classesPreviewResult": "Trial finished: {correct} / {total} correct. Nothing was submitted.",
   "@classesPreviewResult": {
     "placeholders": {
@@ -5914,7 +5919,7 @@
   },
   "classesGiveTopicTest": "Give a topic test",
   "classesGiveTopicTestSub": "Pick a topic — the next page sets the number of questions, variants, due date and when answers open.",
-  "classesTopicSearchHint": "Search topics (e.g. anaemia)",
+  "classesTopicSearchHint": "Search topics (e.g. anemia)",
   "classesTopicNoMatch": "No topic with a ready test found",
   "classesTopicQuestions": "{count} questions",
   "@classesTopicQuestions": {
@@ -5936,14 +5941,14 @@
   "classesMyNickname": "My nickname",
   "classesNoNickname": "None — your teacher sees your seat number",
   "classesNicknameSaved": "Nickname saved",
-  "classesNicknameNote": "Don't use your real name. Leave empty to show your seat number.",
+  "classesNicknameNote": "Don’t use your real name. Leave empty to show your seat number.",
   "rolesTeacherRegisterNote": "“Continue” registers your account as a teacher: you manage only the groups you create and see their results (not admin rights).",
   "rolesTeacherSignInNote": "Sign in to create groups — the signed-in account registers as a teacher with one tap when creating a group.",
   "classesGiveGeneralTest": "Give a general test",
   "generalTestSub": "From several topics — up to 50 questions",
   "generalTestIntro": "Pick topics — questions are spread evenly across them. Students take the test on their phones; the server scores it.",
   "generalTestSources": "Where questions come from",
-  "generalTestSearchHint": "Search topics (e.g. anaemia)",
+  "generalTestSearchHint": "Search topics (e.g. anemia)",
   "generalSourceToifa": "Category exam questions",
   "generalSourceToifaSub": "Official CLD list, keys checked",
   "generalSourceLecture": "Lecture topics",
@@ -5991,13 +5996,13 @@
   "calSafeTrainingNote": "Training record: this is not laboratory evidence.",
   "calSafeApprovedBy": "Approved by (name / role)",
   "calSafeApprovedAt": "Approved on",
-  "calSafeApproverRequired": "\"Accepted\" needs the name or role of the authorised person.",
+  "calSafeApproverRequired": "“Accepted” needs the name or role of the authorized person.",
   "calSafeQcAfter": "QC after calibration",
   "calSafeQcPass": "QC passed",
   "calSafeQcFail": "QC failed",
   "calSafeQcNotRun": "QC not run",
   "calSafeQcNotRunWarn": "QC not run after calibration",
-  "calSafeQcPassRequired": "\"Accepted\" is possible only when QC after calibration passed.",
+  "calSafeQcPassRequired": "“Accepted” is possible only when QC after calibration passed.",
   "calSafeSopRef": "SOP reference (optional)",
   "calSafeLegacyTag": "Legacy, unverified",
   "calSafeHistory": "History",
@@ -6005,8 +6010,8 @@
   "calSafeAuditCreated": "Created",
   "calSafeAuditEdited": "Edited",
   "calSafeAuditDeleted": "Deleted",
-  "calSafeHistoryNote": "History stays even after a record is deleted. It is removed only by \"delete local data\".",
-"labDirSection": "Laboratory directions (reference)",
+  "calSafeHistoryNote": "History stays even after a record is deleted. It is removed only by “delete local data”.",
+  "labDirSection": "Laboratory directions (reference)",
   "labDirSectionSub": "Platform and test on separate cards",
   "labDirTb": "Tuberculosis (TB) diagnostics",
   "labDirHiv": "HIV laboratory diagnostics",

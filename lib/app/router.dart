@@ -1141,6 +1141,7 @@ GoRouter buildRouter(
                           settings.language,
                           SchedulerBinding.instance.platformDispatcher.locales,
                           role: settings.role,
+                          region: settings.attestationRegion,
                         )
                         ? null
                         : '/learn',
