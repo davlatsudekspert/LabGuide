@@ -6063,5 +6063,31 @@
   "imgDiagramPhotometryAlt": "Diagram, principle of absorbance photometry in six steps: light source and wavelength; optical path through the cuvette; the sample absorbs light; the detector measures transmitted light; calculate absorbance A = log10(I0/I); quantify with a verified calibration. Beer–Lambert linearity has limits; the reagent IFU sets wavelengths, blanks and calibration.",
   "imgDiagramEducationalFeedbackAlt": "Diagram, teacher–student learning loop in six steps: the teacher chooses a topic; creates an evidence-linked assignment; the student studies the materials; completes the assessment; receives explained feedback; the teacher reviews progress and adapts. A product workflow diagram, not a scientific image.",
   "imgDiagramCaption": "General diagram drawn for LabGuide. Your instrument’s IFU and your laboratory SOP take precedence.",
-  "imgDiagramTapToZoom": "Tap the diagram to enlarge"
+  "imgDiagramTapToZoom": "Tap the diagram to enlarge",
+  "stepUpTitle": "Confirm it's you",
+  "stepUpBodyEmail": "This action needs a fresh confirmation. Enter the 6-digit code sent to {email}.",
+  "@stepUpBodyEmail": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "stepUpBodyEmailNoAddress": "This action needs a fresh confirmation. Enter the 6-digit code sent to your email.",
+  "stepUpBodyTotp": "This action needs a fresh confirmation. Enter the 6-digit code from your authenticator app.",
+  "stepUpConfirm": "Confirm",
+  "stepUpCancelled": "Not done: this action needs a fresh confirmation code.",
+  "admRevokeSessions": "Sign out of all devices",
+  "admRevokeSessionsBody": "The user is signed out on every device. The account stays active and they can sign in again.",
+  "admRevokeSessionsDone": "Sessions ended: {count}.",
+  "@admRevokeSessionsDone": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "profileSignOutAll": "Sign out of all devices",
+  "profileSignOutAllBody": "You will be signed out on this phone and on every other device where you signed in. Data on this device is kept.",
+  "profileSignOutAllDone": "Signed out on all devices."
 }

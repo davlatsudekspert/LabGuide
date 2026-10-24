@@ -2977,5 +2977,17 @@
   "imgDiagramPhotometryAlt": "Absorbsion fotometriya tamoyili sxemasi, olti qadam: yorug‘lik manbai va to‘lqin uzunligi; kyuveta orqali optik yo‘l; namuna yorug‘likni yutadi; detektor o‘tgan nurni o‘lchaydi; absorbsiya A = log10(I0/I); tasdiqlangan kalibrovka bilan miqdorini topish. Buger–Lambert–Ber qonunining chiziqli sohasi cheklangan; parametrlarni reagent IFU belgilaydi.",
   "imgDiagramEducationalFeedbackAlt": "Ustoz–talaba o‘quv jarayoni sxemasi, olti qadam: ustoz mavzuni tanlaydi; manbali topshiriq tuzadi; talaba materialni o‘rganadi; testni bajaradi; izohli tahlilni oladi; ustoz natijani ko‘rib, rejalashtiradi. Ilova jarayoni sxemasi, ilmiy mikrofoto emas.",
   "imgDiagramCaption": "LabGuide uchun chizilgan umumiy sxema. Apparatingiz IFU si va laboratoriya SOP i ustun.",
-  "imgDiagramTapToZoom": "Kattalashtirish uchun sxemani bosing"
+  "imgDiagramTapToZoom": "Kattalashtirish uchun sxemani bosing",
+  "stepUpTitle": "Shaxsingizni tasdiqlang",
+  "stepUpBodyEmail": "Bu amal uchun yangi tasdiq kerak. {email} manziliga yuborilgan 6 xonali kodni kiriting.",
+  "stepUpBodyEmailNoAddress": "Bu amal uchun yangi tasdiq kerak. Emailingizga yuborilgan 6 xonali kodni kiriting.",
+  "stepUpBodyTotp": "Bu amal uchun yangi tasdiq kerak. Autentifikator ilovasidagi 6 xonali kodni kiriting.",
+  "stepUpConfirm": "Tasdiqlash",
+  "stepUpCancelled": "Bajarilmadi: bu amal uchun yangi tasdiq kodi kerak.",
+  "admRevokeSessions": "Barcha qurilmalardan chiqarish",
+  "admRevokeSessionsBody": "Foydalanuvchi barcha qurilmalardan chiqariladi. Hisob faol qoladi — u qayta kira oladi.",
+  "admRevokeSessionsDone": "Tugatilgan sessiyalar: {count}.",
+  "profileSignOutAll": "Barcha qurilmalardan chiqish",
+  "profileSignOutAllBody": "Shu telefonda va hisobingizga kirilgan boshqa barcha qurilmalarda chiqasiz. Shu qurilmadagi ma’lumotlar saqlanadi.",
+  "profileSignOutAllDone": "Barcha qurilmalardan chiqildi."
 }

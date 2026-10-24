@@ -10411,4 +10411,49 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get imgDiagramTapToZoom => 'Tap the diagram to enlarge';
+
+  @override
+  String get stepUpTitle => 'Confirm it\'s you';
+
+  @override
+  String stepUpBodyEmail(String email) {
+    return 'This action needs a fresh confirmation. Enter the 6-digit code sent to $email.';
+  }
+
+  @override
+  String get stepUpBodyEmailNoAddress =>
+      'This action needs a fresh confirmation. Enter the 6-digit code sent to your email.';
+
+  @override
+  String get stepUpBodyTotp =>
+      'This action needs a fresh confirmation. Enter the 6-digit code from your authenticator app.';
+
+  @override
+  String get stepUpConfirm => 'Confirm';
+
+  @override
+  String get stepUpCancelled =>
+      'Not done: this action needs a fresh confirmation code.';
+
+  @override
+  String get admRevokeSessions => 'Sign out of all devices';
+
+  @override
+  String get admRevokeSessionsBody =>
+      'The user is signed out on every device. The account stays active and they can sign in again.';
+
+  @override
+  String admRevokeSessionsDone(int count) {
+    return 'Sessions ended: $count.';
+  }
+
+  @override
+  String get profileSignOutAll => 'Sign out of all devices';
+
+  @override
+  String get profileSignOutAllBody =>
+      'You will be signed out on this phone and on every other device where you signed in. Data on this device is kept.';
+
+  @override
+  String get profileSignOutAllDone => 'Signed out on all devices.';
 }

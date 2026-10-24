@@ -1,6 +1,9 @@
-import { describe, expect, it } from 'vitest';
+import { beforeEach, describe, expect, it } from 'vitest';
 import { DEFAULT_ADMIN_EMAILS } from '../src/auth';
-import { makeServer, uniqueEmail } from './helpers';
+import { makeServer, uniqueEmail, setAutoStepUp } from './helpers';
+
+// Eski testlar: step-up so'ralsa ilovadagidek bir marta tasdiqlab qaytaradi (stepup.test.ts — alohida).
+beforeEach(() => setAutoStepUp(true));
 
 type Server = ReturnType<typeof makeServer>;
 const DAY = 86400_000;

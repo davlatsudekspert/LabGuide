@@ -1,5 +1,8 @@
-import { afterEach, describe, expect, it, vi } from 'vitest';
-import { makeServer, uniqueEmail } from './helpers';
+import { beforeEach, afterEach, describe, expect, it, vi } from 'vitest';
+import { makeServer, uniqueEmail, setAutoStepUp } from './helpers';
+
+// Eski testlar: step-up so'ralsa ilovadagidek bir marta tasdiqlab qaytaradi (stepup.test.ts — alohida).
+beforeEach(() => setAutoStepUp(true));
 
 const MARKER = 'SECRET-DIPLOMA-MARKER-9f3a';
 

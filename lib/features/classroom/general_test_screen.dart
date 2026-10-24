@@ -224,6 +224,8 @@ class _GeneralTestScreenState extends State<GeneralTestScreen> {
     List<GeneralStratum> strata,
     List<ExamQuestion> pool,
   ) async {
+    // Ikki marta bosish — har guruhga bitta test (so'rov idempotent emas).
+    if (_busy) return;
     setState(() => _tried = true);
     final drawn = _drawn;
     final due = _dueAt;

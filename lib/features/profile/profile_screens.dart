@@ -6,8 +6,10 @@ import 'package:material_ui/material_ui.dart';
 import '../../app/app_scope.dart';
 import '../../app/widgets/lg_page.dart';
 import '../../app/widgets/links.dart';
+import '../../core/backend/step_up.dart';
 import '../../core/build_flags.dart';
 import '../../core/contact.dart';
+import '../../core/single_flight.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../learn/exam_question.dart' show keepUnitsTogether;
 import '../../l10n/gen/app_localizations.dart';
@@ -34,7 +36,11 @@ class ProfileScreen extends StatelessWidget {
   /// ham o'chirish tanlovi (keyingi foydalanuvchi oldingisining QC qaydlari
   /// va xatcho'plarini ko'rmasligi uchun). Mehmon uchun bu “boshidan
   /// sozlash” — ma'lumot o'sha odamniki, o'chirilmaydi.
-  Future<void> _signOut(BuildContext context) async {
+  /// Ikki marta bosish: bitta dialog, bitta chiqish (qulf dialogdan oldin).
+  Future<void> _signOut(BuildContext context) =>
+      SingleFlight.run(#profileSignOut, () => _signOutOnce(context));
+
+  Future<void> _signOutOnce(BuildContext context) async {
     final services = context.services;
     if (services.auth.hasAccount) {
       final l = AppLocalizations.of(context);
@@ -69,6 +75,48 @@ class ProfileScreen extends StatelessWidget {
     await services.auth.signOut();
     await services.settings.resetOnboarding();
   }
+
+  /// Hamma qurilmalardan chiqish (server `logout-all`): shu va boshqa
+  /// qurilmalardagi sessiyalar o'chadi; shu qurilmadagi ma'lumot saqlanadi.
+  /// Xato (internet yo'q) bo'lsa — hech qayerda chiqilmagan, xabar ko'rsatiladi.
+  Future<void> _signOutAll(BuildContext context) => SingleFlight.run(
+    #profileSignOutAll,
+    () async {
+      final services = context.services;
+      final l = AppLocalizations.of(context);
+      final messenger = ScaffoldMessenger.of(context);
+      final backend = services.backend;
+      if (backend is! SessionsBackend) return;
+      final ok = await showDialog<bool>(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text(l.profileSignOutAll),
+          content: Text(l.profileSignOutAllBody),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(false),
+              child: Text(l.actionCancel),
+            ),
+            TextButton(
+              key: const ValueKey('sign-out-all-confirm'),
+              onPressed: () => Navigator.of(context).pop(true),
+              child: Text(l.profileSignOutAll),
+            ),
+          ],
+        ),
+      );
+      if (ok != true) return;
+      try {
+        await (backend as SessionsBackend).signOutEverywhere();
+      } on Object catch (e) {
+        messenger.showSnackBar(SnackBar(content: Text(backendErrorText(e, l))));
+        return;
+      }
+      await services.auth.signOut();
+      await services.settings.resetOnboarding();
+      messenger.showSnackBar(SnackBar(content: Text(l.profileSignOutAllDone)));
+    },
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -284,6 +332,15 @@ class ProfileScreen extends StatelessWidget {
                   : Icons.restart_alt_rounded,
               onPressed: () => _signOut(context),
             ),
+            if (auth.hasAccount &&
+                services.backend is SessionsBackend &&
+                services.backend.hasSession)
+              LgButton.link(
+                key: const ValueKey('profile-sign-out-all'),
+                label: l.profileSignOutAll,
+                icon: Icons.devices_other_outlined,
+                onPressed: () => _signOutAll(context),
+              ),
             const SizedBox(height: 16),
             Center(
               child: Text(
@@ -338,7 +395,14 @@ class PrivacyScreen extends StatelessWidget {
 
   /// Serverdagi hisobni o'chirish (Edge Function, service role faqat
   /// serverda). Muvaffaqiyatdan keyin qurilmadagi ma'lumot ham tozalanadi.
-  Future<void> _confirmDeleteAccount(BuildContext context) async {
+  /// Ikki marta bosish — bitta dialog va bitta o'chirish so'rovi (dialogdan
+  /// oldin tarmoq so'rovi bor: qulf darhol qo'yiladi).
+  Future<void> _confirmDeleteAccount(BuildContext context) => SingleFlight.run(
+    #accountDelete,
+    () => _confirmDeleteAccountOnce(context),
+  );
+
+  Future<void> _confirmDeleteAccountOnce(BuildContext context) async {
     final l = AppLocalizations.of(context);
     final services = context.services;
     final messenger = ScaffoldMessenger.of(context);

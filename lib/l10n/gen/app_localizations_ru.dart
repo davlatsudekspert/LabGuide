@@ -10451,4 +10451,49 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get imgDiagramTapToZoom => 'Нажмите на схему, чтобы увеличить';
+
+  @override
+  String get stepUpTitle => 'Подтвердите, что это вы';
+
+  @override
+  String stepUpBodyEmail(String email) {
+    return 'Для этого действия нужно повторное подтверждение. Введите 6-значный код, отправленный на $email.';
+  }
+
+  @override
+  String get stepUpBodyEmailNoAddress =>
+      'Для этого действия нужно повторное подтверждение. Введите 6-значный код из письма.';
+
+  @override
+  String get stepUpBodyTotp =>
+      'Для этого действия нужно повторное подтверждение. Введите 6-значный код из приложения-аутентификатора.';
+
+  @override
+  String get stepUpConfirm => 'Подтвердить';
+
+  @override
+  String get stepUpCancelled =>
+      'Не выполнено: для этого действия нужен новый код подтверждения.';
+
+  @override
+  String get admRevokeSessions => 'Завершить сеансы на всех устройствах';
+
+  @override
+  String get admRevokeSessionsBody =>
+      'Пользователь выйдет на всех устройствах. Аккаунт останется активным, войти снова можно.';
+
+  @override
+  String admRevokeSessionsDone(int count) {
+    return 'Завершено сеансов: $count.';
+  }
+
+  @override
+  String get profileSignOutAll => 'Выйти на всех устройствах';
+
+  @override
+  String get profileSignOutAllBody =>
+      'Вы выйдете из аккаунта на этом телефоне и на всех других устройствах. Данные на этом устройстве сохранятся.';
+
+  @override
+  String get profileSignOutAllDone => 'Выполнен выход на всех устройствах.';
 }

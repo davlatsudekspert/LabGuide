@@ -6,6 +6,7 @@ import '../../app/app_scope.dart';
 import '../../app/widgets/lg_page.dart';
 import '../../app/widgets/diagram_figure.dart';
 import '../../app/widgets/links.dart';
+import '../../core/single_flight.dart';
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
@@ -840,6 +841,8 @@ class _RecordFormState extends State<_RecordForm> {
   }
 
   Future<void> _save() async {
+    // Ikki marta "Saqlash" — bitta yozuv (va bitta `pop`).
+    if (_busy) return;
     final l = AppLocalizations.of(context);
     FocusScope.of(context).unfocus();
     if (_lot.text.trim().isEmpty) {
@@ -1237,7 +1240,12 @@ class CalibrationRecordScreen extends StatelessWidget {
 
   final String recordId;
 
-  Future<void> _delete(BuildContext context) async {
+  Future<void> _delete(BuildContext context) => SingleFlight.run((
+    #calibrationDelete,
+    recordId,
+  ), () => _deleteOnce(context));
+
+  Future<void> _deleteOnce(BuildContext context) async {
     final l = AppLocalizations.of(context);
     final instruments = context.services.instruments;
     final ok = await showDialog<bool>(

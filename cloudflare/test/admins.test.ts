@@ -1,12 +1,17 @@
-import { describe, expect, it } from 'vitest';
+import { beforeEach, describe, expect, it } from 'vitest';
 import { GRANT_ADD_PER_HOUR, MAX_ACTIVE_GRANTS } from '../src/admins';
-import { makeServer, uniqueEmail } from './helpers';
+import { makeServer, uniqueEmail, setAutoStepUp } from './helpers';
+
+// Eski testlar: step-up so'ralsa ilovadagidek bir marta tasdiqlab qaytaradi (stepup.test.ts — alohida).
+beforeEach(() => setAutoStepUp(true));
 
 /** Har test o'z super admini bilan (umumiy D1 da bir-biriga ta'sir qilmaydi). */
 async function setup() {
   const owner = uniqueEmail('owner');
   const s = makeServer({ LG_ADMIN_EMAILS: owner });
   const boss = await s.signInAdmin(owner);
+  // Adminlarni o'zgartirish — step-up (10 daqiqa); bir marta oldindan.
+  await s.stepUp(boss.token, owner);
   return { s, owner, boss };
 }
 

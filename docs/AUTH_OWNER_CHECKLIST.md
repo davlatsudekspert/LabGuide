@@ -31,7 +31,10 @@ Shuning uchun iPhone’da Google kerak bo‘lsa, avval Apple’ni sozlang (2-ban
    - `LG_GOOGLE_CLIENT_ID` — Web client ID;
    - `LG_GOOGLE_IOS_CLIENT_ID` — iOS client ID, **faqat** `LG_APPLE_SIGNIN=true` bo‘lgan buildda;
    - `LG_APPLE_SIGNIN` — 2-band tugagach `true`.
-   CI profilda Apple imkoniyatini topmasa `LG_APPLE_SIGNIN` ni o‘chiradi — endi bu iPhone’da Google’ni ham yashiradi.
+   Google variable’laridan biri to‘ldirilgan, Apple esa o‘chiq bo‘lsa (`LG_APPLE_SIGNIN` `true` emas yoki profilda
+   Sign in with Apple yo‘q) — TestFlight job **xato bilan to‘xtaydi** va summary’da nimani yoqish kerakligini yozadi
+   (App ID imkoniyati → profilni qayta yaratish → `LG_APPLE_SIGNIN=true`, yoki Google variable’larini bo‘shatish).
+   Google sozlanmagan bo‘lsa — CI Apple’ni o‘chirib, build’ni davom ettiradi.
    TestFlight job summary’da ikkala qator bo‘lishi kerak: “Sign in with Apple: entitlement …” va
    “Google (iOS): URL sxemasi …”.
 7. **Server qayta joylanishi (deploy).** Kod xati endi ilova tilida (uz/ru/en) yuboriladi. Bu Worker yangilangandan
