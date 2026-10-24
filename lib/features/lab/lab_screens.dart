@@ -2,6 +2,7 @@ import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
 import '../../app/widgets/lg_page.dart';
+import '../../app/widgets/diagram_figure.dart';
 import '../../core/build_flags.dart';
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
@@ -166,6 +167,8 @@ class PreanalyticsScreen extends StatelessWidget {
       title: l.preTitle,
       children: [
         LgSteps([l.preStep1, l.preStep2, l.preStep3, l.preStep4, l.preStep5]),
+        const SizedBox(height: 12),
+        const DiagramFigure(topic: DiagramTopic.preanalytics),
         LgSectionTitle(l.prePatientTitle),
         cited(patientPrep),
         LgSectionTitle(l.preOrderTitle),

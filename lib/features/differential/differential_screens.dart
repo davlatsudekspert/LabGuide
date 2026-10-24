@@ -6,6 +6,7 @@ import 'package:material_ui/material_ui.dart';
 
 import '../../app/app_scope.dart';
 import '../../app/widgets/lg_page.dart';
+import '../../app/widgets/diagram_figure.dart';
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
@@ -141,7 +142,9 @@ class DifferentialScreen extends StatelessWidget {
             l.diffSchematicCaption,
             style: Theme.of(context).textTheme.bodySmall,
           ),
-          const SizedBox(height: 6),
+          const SizedBox(height: 12),
+          const DiagramFigure(topic: DiagramTopic.differentialCount),
+          const SizedBox(height: 12),
           LgRow(
             title: l.diffCellsTitle,
             subtitle: l.diffCellsSub(cellGuides.length),

@@ -10244,4 +10244,35 @@ class AppLocalizationsUz extends AppLocalizations {
   @override
   String get labDirPlatformClassNote =>
       'Sinf/texnologiya bo‘yicha ma’lumot — aniq model uchun tasdiqlanmagan';
+
+  @override
+  String get imgDiagramCalibrationOverviewAlt =>
+      'Kalibrlashning umumiy tartibi sxemasi, olti qadam: apparat va usulni aniqlash; reagent, REF va IFU versiyasini tekshirish; mos lotdagi kalibratorni tayyorlash; aniq apparat yo‘riqnomasiga rioya qilish; kalibrlash va mustaqil QC ni baholash; natijani qayd etish, qaror SOP bo‘yicha. Apparat monitori surati emas.';
+
+  @override
+  String get imgDiagramDifferentialCountAlt =>
+      'Qo‘lda leykoformula sanog‘i sxemasi, olti qadam: surtma va hujayra taqsimotini baholash; belgilangan joyda hujayralarni tanish; SOP belgilagan sondagi hujayrani sanash; foiz ulushlarini hisoblash; WBC asosida mutlaq sonlarni hisoblash; atipik hujayralarni qayta ko‘rib, xulosa qilish.';
+
+  @override
+  String get imgDiagramQcDecisionAlt =>
+      'Sifat nazorati bo‘yicha qaror qabul qilish sxemasi, olti qadam: nazorat materialini o‘lchash; lot maqsad qiymati va SD bilan solishtirish; tasdiqlangan QC qoidalarini tekshirish; QC buzilsa, sababini aniqlash; zarur bo‘lsa, tuzatib QC ni takrorlash; QC o‘tsa, natijani chiqarish SOP iga amal qilish. QC nazoratdan chiqsa, sabab SOP bo‘yicha bartaraf etilmaguncha bemor natijasini chiqarmang.';
+
+  @override
+  String get imgDiagramPreanalyticsAlt =>
+      'Preanalitika va namuna sifati sxemasi, olti qadam: bemor shaxsini to‘g‘ri aniqlash; buyurilgan tahlillarni tekshirish; mos probirka va usulni tanlash; olayotganda namunani belgilash; SOP dagi vaqt va haroratda yetkazish; tahlildan oldin yaroqliligini baholash. Namunaviy jarayon sxemasi.';
+
+  @override
+  String get imgDiagramPhotometryAlt =>
+      'Absorbsion fotometriya tamoyili sxemasi, olti qadam: yorug‘lik manbai va to‘lqin uzunligi; kyuveta orqali optik yo‘l; namuna yorug‘likni yutadi; detektor o‘tgan nurni o‘lchaydi; absorbsiya A = log10(I0/I); tasdiqlangan kalibrovka bilan miqdorini topish. Buger–Lambert–Ber qonunining chiziqli sohasi cheklangan; parametrlarni reagent IFU belgilaydi.';
+
+  @override
+  String get imgDiagramEducationalFeedbackAlt =>
+      'Ustoz–talaba o‘quv jarayoni sxemasi, olti qadam: ustoz mavzuni tanlaydi; manbali topshiriq tuzadi; talaba materialni o‘rganadi; testni bajaradi; izohli tahlilni oladi; ustoz natijani ko‘rib, rejalashtiradi. Ilova jarayoni sxemasi, ilmiy mikrofoto emas.';
+
+  @override
+  String get imgDiagramCaption =>
+      'LabGuide uchun chizilgan umumiy sxema. Apparatingiz IFU si va laboratoriya SOP i ustun.';
+
+  @override
+  String get imgDiagramTapToZoom => 'Kattalashtirish uchun sxemani bosing';
 }

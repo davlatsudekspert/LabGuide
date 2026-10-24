@@ -4,6 +4,7 @@ import 'package:material_ui/material_ui.dart';
 
 import '../../app/app_scope.dart';
 import '../../app/widgets/lg_page.dart';
+import '../../app/widgets/diagram_figure.dart';
 import '../../app/widgets/links.dart';
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
@@ -248,6 +249,8 @@ class _CalibrationScreenState extends State<CalibrationScreen> {
       title: l.calTitle,
       subtitle: l.calSubtitle,
       children: [
+        const DiagramFigure(topic: DiagramTopic.calibrationOverview),
+        const SizedBox(height: 12),
         CatalogGate(
           builder: (context, catalog) => ContentGate(
             builder: (context, pack) => ListenableBuilder(
