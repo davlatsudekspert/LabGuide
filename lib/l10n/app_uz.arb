@@ -1824,7 +1824,7 @@
   "privacyBody": "Asosiy bo‘limlar hisobsiz (mehmon rejimida) ishlaydi: sozlamalar, xatcho‘plar, QC qaydlari, apparatlaringiz va mashq natijalari shu qurilmada saqlanadi. Hisob ixtiyoriy (email kodi, Google yoki Apple bilan) — guruhlar, hamjamiyat va “Taklif va yordam” uchun kerak. Bunda ma’lumotlar Cloudflare serverida (Sharqiy Yevropa, O‘zbekistondan tashqarida) saqlanadi: email faqat hash va niqoblangan ko‘rinishda, kirish usuli, rol, til, oxirgi faollik vaqti (daqiqagacha); guruhda — taxallus yoki tartib raqami, test javoblari va ballar; murojaat va shikoyat matnlari. Google/Apple’dan faqat hisob identifikatori va email olinadi, token saqlanmaydi. Ustoz faqat o‘z guruhini ko‘radi. Reklama, analitika va kuzatuv yo‘q. To‘liq matn — “Maxfiylik siyosati” havolasida.",
   "privacyBodyLocal": "Bu buildda server ulanmagan: ilova serverga hech narsa yubormaydi. Sozlamalar, xatcho‘plar, QC qaydlari, apparatlaringiz va mashq natijalari shu qurilmada saqlanadi (qurilmaning o‘z zaxira nusxasiga kirishi mumkin). Reklama va kuzatuv yo‘q.",
   "privacyTerms": "Foydalanish shartlari",
-  "privacyTermsSub": "Yakuniy matn tayyorlanadi",
+  "privacyTermsSub": "Ilovadan va hisobingizdan foydalanish qoidalari",
   "privacyDeleteLocal": "Lokal ma’lumotlarni o‘chirish",
   "privacyDeleteLocalSub": "Sozlamalar, xatcho‘plar, qoralamalar, QC qaydlari va mashq natijalari",
   "privacyDeleteConfirmTitle": "Lokal ma’lumotlar o‘chirilsinmi?",

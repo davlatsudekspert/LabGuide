@@ -6307,7 +6307,8 @@ class AppLocalizationsUz extends AppLocalizations {
   String get privacyTerms => 'Foydalanish shartlari';
 
   @override
-  String get privacyTermsSub => 'Yakuniy matn tayyorlanadi';
+  String get privacyTermsSub =>
+      'Ilovadan va hisobingizdan foydalanish qoidalari';
 
   @override
   String get privacyDeleteLocal => 'Lokal ma’lumotlarni o‘chirish';

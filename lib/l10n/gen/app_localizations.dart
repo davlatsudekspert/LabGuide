@@ -11047,7 +11047,7 @@ abstract class AppLocalizations {
   /// No description provided for @privacyTermsSub.
   ///
   /// In en, this message translates to:
-  /// **'Final text to be prepared'**
+  /// **'Rules for using the app and your account'**
   String get privacyTermsSub;
 
   /// No description provided for @privacyDeleteLocal.

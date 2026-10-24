@@ -6429,7 +6429,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get privacyTerms => 'Условия использования';
 
   @override
-  String get privacyTermsSub => 'Окончательный текст будет подготовлен';
+  String get privacyTermsSub => 'Правила пользования приложением и аккаунтом';
 
   @override
   String get privacyDeleteLocal => 'Удалить локальные данные';

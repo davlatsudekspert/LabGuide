@@ -6413,7 +6413,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get privacyTerms => 'Terms of use';
 
   @override
-  String get privacyTermsSub => 'Final text to be prepared';
+  String get privacyTermsSub => 'Rules for using the app and your account';
 
   @override
   String get privacyDeleteLocal => 'Delete local data';

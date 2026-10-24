@@ -3727,7 +3727,7 @@
   "privacyBody": "The core features work without an account (guest mode): settings, bookmarks, QC records, your instruments and practice results stay on this device. An account is optional (email code, Google or Apple) and is needed for groups, the community and “Feedback & help”. Then data is stored on a Cloudflare server (Eastern Europe, outside Uzbekistan): your email only as a hash and a masked form, sign-in method, role, language, last activity time (to the minute); in a group — your nickname or sequence number, test answers and scores; the text of requests and complaints. From Google/Apple only the account identifier and email are used; the token is not stored. A teacher sees only their own group. No ads, analytics or tracking. Full text: the “Privacy policy” link.",
   "privacyBodyLocal": "This build has no server connected: the app sends nothing to a server. Settings, bookmarks, QC records, your instruments and practice results stay on this device (they may be included in the device backup). No ads or tracking.",
   "privacyTerms": "Terms of use",
-  "privacyTermsSub": "Final text to be prepared",
+  "privacyTermsSub": "Rules for using the app and your account",
   "privacyDeleteLocal": "Delete local data",
   "privacyDeleteLocalSub": "Settings, bookmarks, drafts, QC records and practice progress",
   "privacyDeleteConfirmTitle": "Delete local data?",
