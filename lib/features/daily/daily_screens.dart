@@ -348,6 +348,7 @@ class _DailyScreenState extends State<DailyScreen> {
           final index = _index ?? set.nextIndex;
           return LgPage(
             key: ValueKey((index, showResult)),
+            buildAllChildren: true,
             title: l.dailyTitle,
             subtitle: subtitle,
             showProfile: false,

@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'dart:math' show Random;
 
 import 'package:crypto/crypto.dart';
 import 'package:flutter/services.dart';
@@ -81,6 +82,9 @@ Future<AppServices> makeServices(
   // false — toifa banki oldindan yuklanmaydi (ilova sovuq ochilgandek:
   // bank faqat kerakli sahifa so'raganda yuklanadi).
   bool loadToifa = true,
+  // Kunlik savollar to'plami qurilma urug'iga bog'liq (DailyController);
+  // test har doim bir xil to'plam oladi.
+  int dailySeed = 20261024,
 }) async {
   final s = store ?? MemoryKeyValueStore();
   if (partnerAds != null) {
@@ -109,6 +113,7 @@ Future<AppServices> makeServices(
     reminderScheduler: reminderScheduler ?? FakeReminderScheduler(),
     sharer: sharer ?? FakeResultSharer(),
     clock: clock,
+    dailyRandom: Random(dailySeed),
     community: community,
     socialAuth: socialAuth ?? SocialAuthService.none(),
     qrScanner: qrScanner ?? FakeQrScanner(),

@@ -358,6 +358,7 @@ class _QuizScreenState extends State<QuizScreen> {
       // boshlanadi: aks holda ro'yxat pastidagi mavzu (masalan, "Gormonlar")
       // tanlansa, eski scroll tufayli savolning boshi ko'rinmay qolardi.
       key: ValueKey((current == null, current?.index, current?.finished)),
+      buildAllChildren: true,
       title: l.learnQuiz,
       subtitle: _scope?.title(l, Localizations.localeOf(context).languageCode),
       children: [
