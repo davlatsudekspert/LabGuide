@@ -54,7 +54,9 @@ qatlamlarini ishga tushiradi» — Python qadamlari yoki worker testlari olib ta
 | Qaror / ish | Qorovul |
 |---|---|
 | D-58: Pro/to‘lov/obuna ilovada yo‘q — ARB matnlari | `test/guards/product_policy_guard_test.dart :: D-58 … ARB matnlarida to‘lov so‘zlari yo‘q (uz/ru/en)` (istisno: hamkor narxi, admin «Sotuvlar: 0») |
-| D-58: xarid plaginlari, Pro kodi, marshrut, iOS IAP yo‘q | `product_policy_guard_test.dart :: xarid plaginlari va Pro kodi yo‘q`, `marshrutlarda Pro/xarid sahifasi yo‘q`, `iOS: In-App Purchase imkoniyati yoqilmagan` |
+| D-58/D-71 (pro-next): proEnabled=false bo‘lsa paywall yo‘q; Pro kodi ruxsat etilgan fayllarda; marshrut va Profil qatori bayroq ortida; iOS IAP yo‘q | `product_policy_guard_test.dart :: D-58/D-71 …` (standart bayroq, Pro kodi oqib chiqmaydi, marshrut/Profil bayroq ortida, iOS) |
+| D-71: Pro standart O‘CHIQ; yopish ro‘yxati bo‘sh; bepul davr o‘chiq; narxlar TAKLIF; eski narx/sinov yo‘q | `test/guards/pro_flag_default_guard_test.dart`; `test/widget/pro_flag_off_test.dart` |
+| D-71: billing yo‘llari LG_BILLING_ENABLED bo‘lmasa 404 | `cloudflare/test/guards.test.ts :: qorovul: billing inert` |
 | D-58: serverda billing yo‘llari yo‘q, `/v1/me` `plan` bermaydi | `cloudflare/test/guards.test.ts :: D-58: Pro / to‘lov / obuna yo‘llari yo‘q`, `D-58: /v1/me tarifni (plan) bermaydi` |
 | D-58: saytda to‘lov so‘zlari yo‘q | `tool/site/check_site.py` (BANNED), `tool/site/test_guards.py :: test_no_payment_words_on_site` |
 | Hamkor reklamasi o‘chiq (LG_PARTNER_ADS): kod standarti | `product_policy_guard_test.dart :: standart build: bayroq o‘chiq, release buildda o‘zgarmas`; `test/widget/partner_ads_flag_test.dart :: do‘kon build: hech qayerda reklama/hamkor UI yo‘q` |

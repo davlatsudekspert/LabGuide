@@ -1,4 +1,8 @@
-> **FUTURE — not in the app; code on branch `pro-later`** (D-58).
+> **FUTURE — not in the free app (D-58).** Kod `pro-next` tarmog'ida, bayroq ortida
+> (`LG_PRO_ENABLED`, server `LG_BILLING_ENABLED`; D-71). `pro-later` — eski surat.
+> **Narxlar va sinov muddatlari bu hujjatda ESKIRGAN** (29 000 so'm/$4.99, Ustoz $6.99, 7/14 kun):
+> amaldagi TAKLIF va ochiq qarorlar — D-71. Bu hujjatdagi yopish ro'yxati (§1) `main` dagi
+> bepul imkoniyatlar bilan ziddiyatda: hech narsa yopilmaydi.
 
 # Pro obuna: huquqlar, xarid va server tekshiruvi
 

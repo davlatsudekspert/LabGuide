@@ -1205,3 +1205,77 @@ Manba: `docs/APP_MAP_2026-10-18.md` §4. Har qaror minimal o'zgarish bilan; eski
   rejadagi "til mamlakatga bog'lanmasin" bilan ziddiyat: ruscha tilli va rus mintaqali foydalanuvchi ko'rmaydi.
   Variant: sozlamalarda ochiq tanlov.
 
+
+## D-71. Pro tarmog'i (`pro-next`): haqiqiy holat, bayroqlar, TAKLIF narxlar (2026-10-24, TASDIQLANMAGAN)
+Bu yozuv faqat `pro-next` tarmog'ida. Bepul reliz (`main`) o'zgarmaydi: D-58 u yerda kuchda.
+
+**Tarmoq haqiqati.** `pro-later` — jonli tarmoq emas, `7141aff` (D-58 olib tashlash) dan bir commit oldingi
+`main` surati; `main` ning ajdodi, hech narsa birlashtirmaydi. Shuning uchun Pro kodi `7141aff^` dan
+(`git show 7141aff^:<yo'l>`) qo'lda qayta tiklandi va joriy `main` (router, learn/exam/toifa/classes, profil, ARB)
+bilan solishtirib moslandi. `pro-next` = `origin/main c8c9430` + shu ish. `pro-later` arxiv bo'lib qoladi.
+
+**Bayroqlar (hammasi standart O'CHIQ).**
+- Ilova: `BuildFlags.proEnabled` (`--dart-define=LG_PRO_ENABLED=true`, standart `false`, release'da doimiy).
+  O'chiq bo'lsa: `EntitlementService.disabled()` (do'kon yo'q, server yo'q, `can()` doim `true`), `start()`
+  chaqirilmaydi, `in_app_purchase` ishga tushmaydi, `/profile/purchase` yo'li ro'yxatda yo'q, Profil'da obuna
+  qatori yo'q, billing so'rovi ketmaydi. Testlar: `test/widget/pro_flag_off_test.dart`,
+  `test/guards/pro_flag_default_guard_test.dart`, `product_policy_guard_test.dart`.
+- Server: `LG_BILLING_ENABLED=true` (Worker env). Bo'lmasa `/v1/billing/*`, `/v1/entitlements` — 404
+  (`cloudflare/test/guards.test.ts`). Do'kon kalitlari (`APPLE_IAP_*`, `GOOGLE_PLAY_SERVICE_ACCOUNT`) ham kerak.
+  Migratsiya 0007 → `0013_billing.sql` (0007 raqami D-58 da band deb belgilangan; eski 0003 `entitlements` jadvalini
+  almashtiradi — hech qachon yozilmagan). CI (`ci.yml`) tegilmagan: `deploy_api` billing secretlarini o'rnatmaydi.
+- Yopiladigan imkoniyatlar: `ProGatePolicy.gated` — BO'SH. Boshlash nuqtalari ulangan (`requireFeature`), lekin
+  hech narsa yopilmaydi.
+- Bepul davr: `ProTrialConfig.freeTrialDays` = `null` (o'chiq).
+
+**TAKLIF narxlar (egasi tasdiqlamagan; `lib/core/entitlements/pro_catalog.dart`, MA'LUMOT — UI'da qotirilmagan).**
+| Reja | Oylik (USD) | Yillik |
+|---|---|---|
+| Talaba (`...pro.student.monthly`) | 1.49 | belgilanmagan (null) |
+| Oddiy / Pro (`...pro.monthly`) | 3.99 | belgilanmagan (null) |
+| Ustoz Pro (`...teacherpro.monthly`) | 5.99 | belgilanmagan (null) |
+Foydalanuvchi ko'radigan narx doim do'kondan (mahalliy valyuta). Yillik narx `null` bo'lsa yillik mahsulot to'lov
+oynasida ko'rsatilmaydi. TODO(owner): yillik narxlar. ESKIRGAN va hech qayerda faol emas: 29 000 so'm/$4.99,
+Ustoz $6.99, talaba 9 000 so'm, yillik 199 000/269 000 so'm, 7/14 kunlik sinov (D-48, D-49, D-50, D-57). Tekshiruv:
+`pro_flag_default_guard_test.dart :: eski narxlar …`.
+
+**30 kunlik bepul foydalanish — mexanizm OCHIQ qaror.** Faqat `freeTrialDays` (nullable; `null` = o'chiq; `> 0` =
+kunlar) va `ProTrialMechanism` ilgagi bor. Variantlar: (a) do'kon-native kirish taklifi (Apple Introductory Offer /
+Google Play free-trial offer): kunlar do'konda sozlanadi, ilova `StoreProduct.freeTrial` ni do'kondan o'qiydi,
+karta/Apple ID olinadi, 3.1.2 matni do'konnikidan — shu ilova kodida allaqachon ishlaydi; (b) server beradigan
+sinov huquqi (kartasiz): serverda `trial_until` kerak — HALI YO'Q, 3.1.2 matni va suiiste'mol cheklovi alohida
+loyihalanadi; (c) yo'q. Tanlov bo'lmaguncha `freeTrialDays` ni yoqmang.
+
+**Rejadagi yopish ro'yxati bilan ZIDDIYAT (hech narsa yopilmadi).** `docs/PRO_BILLING_PLAN.md` §1 (D-46/D-53) bugun
+`main` da BEPUL bo'lgan imkoniyatlarni yopardi: cheksiz savollar (mavzu mashqi, kartadan mini-test), imtihon
+simulyatsiyasi, to'liq toifa banki, zaif mavzular tahlili, atlas mashqi, to'liq tarix (`unlimitedHistory`),
+guruh ochish, topshiriqlar, ma'ruza/avto-taqdimot. D-53 "bepul — kunlik 5 savol" `main` da yo'q. Yopish =
+bor imkoniyatni olib qo'yish (foydalanuvchi e'tirozi, mavjud ustozlar). Qaror: standart — hech narsa yopilmaydi;
+egasi ro'yxatni (va mavjud foydalanuvchilarni saqlab qolishni) belgilaguncha `ProGatePolicy.gated` bo'sh.
+Ulangan boshlash nuqtalari: imtihon boshlash, toifa test/mashq boshlash, mavzu mashqi raundi, atlas mashqi raundi,
+guruh ochish, avto-taqdimot boshlash, tarix ko'rinishi (`historyView`), zaif mavzular. UlanMAGAN (eski reja
+ularga ega edi, qayta ulash kerak bo'lsa): topshiriq yaratish (endi `topic_test_screens`/`general_test_screen`),
+ma'ruza ro'yxati qatorlari (`lecture_screens`, `classroom_screens`), toifa mashq qatorlari, kartadan mini-test
+"yopiq" holati, `toifaAllows`.
+
+**Saqlangan ilgaklar (hammasi o'chiq).** StoreKit 2/Play Billing (`in_app_purchase` 3.3), xaridni tiklash,
+yangilash/bekor/grace/billing retry/refund holatlari, mehmon xaridi: eski kod hisobsiz xaridga RUXSAT bergan (qurilmada
+ishlaydi, hisobga kirilganda bog'lanadi; App Store 5.1.1) — "mehmon xarid qila olmaydi" qoidasi kodda YO'Q (egasi
+xohlasa — ochiq qaror #10), HMAC imzolangan 7 kunlik oflayn kesh, "bitta xarid —
+bitta hisob" (`owned_by_other`), ASSN v2/RTDN.
+
+**HALI YO'Q:** talaba tasdig'i (`studentVerified=false`, talaba mahsulotlari ko'rinmaydi), referral/ustoz-elchi
+(D-50 g'oya), mintaqaviy narx (faqat do'kon narxlari; Apple UZ — USD, Play UZS tasdiqlanmagan), maxfiylik
+siyosati/foydalanish shartlarida obuna bo'limi (`PRIVACY_POLICY.md`, `site/privacy`), Data safety/App Privacy
+(xarid tarixi) yangilanishi, x5c zanjirini Apple Root CA bilan tekshirish (eski cheklov), do'kon mahsulotlari va
+kalitlari, sandbox matritsasi (xarid/tiklash/bekor/grace/refund/boshqa hisob).
+
+**Ogohlantirish.** `pubspec.yaml` da `in_app_purchase` bor: bu tarmoqdan yig'ilgan Android build manifestga
+`com.android.vending.BILLING` ruxsatini qo'shadi (plagin birlashtiradi) — bepul reliz FAQAT `main` dan yig'iladi.
+`pro-next` ni `main` ga qo'shish: do'konlarda bepul reliz tasdiqlangandan keyin, egasi roziligi bilan, 
+`product_policy_guard_test` (D-58 qatiy variantiga qaytarilgan nusxa bilan) qayta ko'rib chiqilgach.
+
+**Egasi qarorlari (ochiq):** (1) narxlar USD 1.49/3.99/5.99 — ha/yo'q/tahrir; (2) yillik narxlar yoki yillik yo'q;
+(3) Play UZS narx pog'onalari, Apple UZ = USD qabul; (4) 30 kun: (a)/(b)/(c); (5) talaba — tasdiqdan keyin yoki
+ochiq; (6) qaysi imkoniyatlar yopiladi, mavjud foydalanuvchilar (grandfathering); (7) `pro-next` → `main` qoidasi,
+`pro-later` ni arxiv tegi qilish; (8) do'kon kalitlari kimda va `deploy_api` qachon; (9) maxfiylik/shartlar matni; (10) mehmon xarid qila olsinmi yoki avval hisob shartmi.
