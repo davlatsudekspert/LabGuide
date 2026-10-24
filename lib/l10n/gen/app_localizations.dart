@@ -17871,6 +17871,54 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No cards in this direction.'**
   String get labDirEmpty;
+
+  /// No description provided for @imgDiagramCalibrationOverviewAlt.
+  ///
+  /// In en, this message translates to:
+  /// **'Diagram, general calibration workflow in six steps: confirm instrument and method; verify reagent, REF and IFU revision; prepare a lot-matched calibrator; follow the verified instrument interface; evaluate the calibration and independent QC; record results and release per SOP. Not an instrument screenshot.'**
+  String get imgDiagramCalibrationOverviewAlt;
+
+  /// No description provided for @imgDiagramDifferentialCountAlt.
+  ///
+  /// In en, this message translates to:
+  /// **'Diagram, manual leukocyte differential in six steps: inspect the smear and cell distribution; classify cells in the prescribed area; count to the local SOP target; calculate relative percentages; use WBC for absolute counts; review abnormal cells and report.'**
+  String get imgDiagramDifferentialCountAlt;
+
+  /// No description provided for @imgDiagramQcDecisionAlt.
+  ///
+  /// In en, this message translates to:
+  /// **'Diagram, quality-control decision workflow in six steps: measure the control(s); compare with lot targets and SD; evaluate the approved QC rules; if QC fails, investigate the cause; if needed, correct the cause and rerun QC; if QC passes, follow the release SOP. If QC is out of control, do not release patient results until the issue is resolved under SOP.'**
+  String get imgDiagramQcDecisionAlt;
+
+  /// No description provided for @imgDiagramPreanalyticsAlt.
+  ///
+  /// In en, this message translates to:
+  /// **'Diagram, preanalytics and specimen integrity in six steps: correct patient identification; confirm requested tests; select the proper tube and method; label at collection; transport per the temperature and time SOP; assess acceptance before analysis. Example process map.'**
+  String get imgDiagramPreanalyticsAlt;
+
+  /// No description provided for @imgDiagramPhotometryAlt.
+  ///
+  /// In en, this message translates to:
+  /// **'Diagram, principle of absorbance photometry in six steps: light source and wavelength; optical path through the cuvette; the sample absorbs light; the detector measures transmitted light; calculate absorbance A = log10(I0/I); quantify with a verified calibration. Beer–Lambert linearity has limits; the reagent IFU sets wavelengths, blanks and calibration.'**
+  String get imgDiagramPhotometryAlt;
+
+  /// No description provided for @imgDiagramEducationalFeedbackAlt.
+  ///
+  /// In en, this message translates to:
+  /// **'Diagram, teacher–student learning loop in six steps: the teacher chooses a topic; creates an evidence-linked assignment; the student studies the materials; completes the assessment; receives explained feedback; the teacher reviews progress and adapts. A product workflow diagram, not a scientific image.'**
+  String get imgDiagramEducationalFeedbackAlt;
+
+  /// No description provided for @imgDiagramCaption.
+  ///
+  /// In en, this message translates to:
+  /// **'General diagram drawn for LabGuide. Your instrument’s IFU and your laboratory SOP take precedence.'**
+  String get imgDiagramCaption;
+
+  /// No description provided for @imgDiagramTapToZoom.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap the diagram to enlarge'**
+  String get imgDiagramTapToZoom;
 }
 
 class _AppLocalizationsDelegate

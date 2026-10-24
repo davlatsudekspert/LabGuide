@@ -5,6 +5,7 @@ import 'package:material_ui/material_ui.dart';
 
 import '../../app/app_scope.dart';
 import '../../app/widgets/lg_page.dart';
+import '../../app/widgets/diagram_figure.dart';
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
@@ -176,6 +177,9 @@ class QcScreen extends StatelessWidget {
                 ],
               ),
             ),
+            const SizedBox(height: 12),
+            const DiagramFigure(topic: DiagramTopic.qcDecision),
+            const SizedBox(height: 12),
             if (qc.loadError != null) ...[
               LgStateView(kind: StateKind.error, title: l.qcLoadError),
               const SizedBox(height: 10),
