@@ -2,18 +2,65 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 import 'package:labguide/core/entitlements/billing_catalog.dart';
+import 'package:labguide/core/entitlements/device_attestor.dart';
+import 'package:labguide/core/entitlements/pro_catalog.dart';
 import 'package:labguide/core/entitlements/entitlement_models.dart';
 import 'package:labguide/core/entitlements/entitlement_source.dart';
 import 'package:labguide/core/entitlements/purchase_adapter.dart';
 
 /// Server o'rnida: javob yoki xato (internet yo'q). [billing] — serverda
 /// do'kon kalitlari sozlanganmi (`GET /v1/billing/status`).
-class FakeEntitlementSource implements EntitlementSource {
+class FakeEntitlementSource implements EntitlementSource, TrialSource {
   FakeEntitlementSource({
     this.user = 'user-a',
     this.billing = true,
     this.platform = 'app_store',
+    this.trialOffered = false,
   });
+
+  /// Server imkoniyat so'rovi (D-75): shu platformada sinov bormi.
+  @override
+  bool trialOffered;
+
+  /// Sinov so'rovlari (kuzatish uchun).
+  final trialStarts = <ProPlan>[];
+  String? trialError;
+
+  @override
+  Future<String> trialChallenge() async => 'n' * 43;
+
+  @override
+  Future<EntitlementSnapshot> startTrial({
+    required ProPlan plan,
+    required String email,
+    required String nonce,
+    required DeviceAttestation attestation,
+  }) async {
+    trialStarts.add(plan);
+    if (trialError != null) {
+      throw EntitlementException(EntitlementFailure.unknown, trialError);
+    }
+    final now = DateTime.now().toUtc();
+    snapshot = EntitlementSnapshot(
+      serverTime: now,
+      trialUsed: true,
+      items: [
+        ServerEntitlement(
+          productId: 'trial.${plan.wire}',
+          platform: 'trial',
+          source: ServerEntitlement.trialSource,
+          plan: plan,
+          status: EntitlementStatus.active,
+          startedAt: now,
+          expiresAt: now.add(
+            const Duration(days: ProTrialConfig.serverTrialDays),
+          ),
+          ownership: 'trial',
+        ),
+      ],
+    );
+    return snapshot!;
+  }
 
   String? user;
   bool billing;
@@ -117,47 +164,49 @@ class FakePurchaseAdapter extends ChangeNotifier implements PurchaseAdapter {
   Stream<PurchaseProof> get updates => _updates.stream;
 }
 
+/// Soxta attestatsiya (testlar): har doim "mavjud".
+class FakeDeviceAttestor implements DeviceAttestor {
+  @override
+  bool get available => true;
+  @override
+  Future<DeviceAttestation> attest(String nonce) async =>
+      DeviceAttestation(platform: 'android', token: 'fake:phone:$nonce');
+}
+
 /// Do'kondagi kabi mahsulotlar (narx — do'kon formatida, ilovada qotirilmagan).
-/// Qiymatlar — egasi narxlari (D-73, 2026-10-24; Pro hali YOQILMAGAN);
-/// `freeTrial` esa faqat "do'kon kirish taklifi qaytardi" holatini sinash
-/// uchun fixture (30 kun — ilova uni do'kondan o'qiydi, o'zi hech narsa
-/// belgilamaydi).
-List<StoreProduct> storeProducts() => const [
-  StoreProduct(
-    id: BillingCatalog.specialistMonthly,
-    title: 'LabGuide Mutaxassis',
-    displayPrice: r'$3.49',
-    period: StorePeriod(1, StorePeriodUnit.month),
-    freeTrial: StorePeriod(30, StorePeriodUnit.day),
-  ),
-  StoreProduct(
-    id: BillingCatalog.specialistYearly,
-    title: 'LabGuide Mutaxassis',
-    displayPrice: r'$34.99',
-    period: StorePeriod(1, StorePeriodUnit.year),
-  ),
-  StoreProduct(
-    id: BillingCatalog.studentMonthly,
-    title: 'LabGuide Talaba',
-    displayPrice: r'$1.49',
-    period: StorePeriod(1, StorePeriodUnit.month),
-  ),
-  StoreProduct(
-    id: BillingCatalog.studentYearly,
-    title: 'LabGuide Talaba',
-    displayPrice: r'$9.99',
-    period: StorePeriod(1, StorePeriodUnit.year),
-  ),
-  StoreProduct(
-    id: BillingCatalog.teacherMonthly,
-    title: 'LabGuide Ustoz',
-    displayPrice: r'$2.49',
-    period: StorePeriod(1, StorePeriodUnit.month),
-  ),
-  StoreProduct(
-    id: BillingCatalog.teacherYearly,
-    title: 'LabGuide Ustoz',
-    displayPrice: r'$24.99',
-    period: StorePeriod(1, StorePeriodUnit.year),
-  ),
-];
+/// Narxlar YAGONA manbadan — `ProPricing.plans` (D-73, egasi narxlari); bu
+/// yerda qotirilmaydi (D-75: UI, server va testlarda zid narx bo'lmasin).
+/// `freeTrial` — "do'kon kirish taklifi qaytardi" holati: ilova uni
+/// ko'rsatmasligini sinash uchun (D-75, `storeIntroOffersAllowed = false`).
+List<StoreProduct> storeProducts() {
+  final out = <StoreProduct>[];
+  for (final id in [
+    BillingCatalog.specialistMonthly,
+    BillingCatalog.specialistYearly,
+    BillingCatalog.studentMonthly,
+    BillingCatalog.studentYearly,
+    BillingCatalog.teacherMonthly,
+    BillingCatalog.teacherYearly,
+  ]) {
+    final spec = ProPricing.plans.firstWhere(
+      (p) => p.monthlyProductId == id || p.yearlyProductId == id,
+    );
+    final yearly = spec.yearlyProductId == id;
+    out.add(
+      StoreProduct(
+        id: id,
+        title: 'LabGuide ${spec.plan.name}',
+        displayPrice:
+            '\$${(yearly ? spec.yearlyUsd! : spec.monthlyUsd).toStringAsFixed(2)}',
+        period: StorePeriod(
+          1,
+          yearly ? StorePeriodUnit.year : StorePeriodUnit.month,
+        ),
+        freeTrial: id == BillingCatalog.specialistMonthly
+            ? const StorePeriod(30, StorePeriodUnit.day)
+            : null,
+      ),
+    );
+  }
+  return out;
+}

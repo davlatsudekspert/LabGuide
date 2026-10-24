@@ -10686,4 +10686,68 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get proPrivacyTrialNote =>
       'Pro (только когда Pro включён, сейчас не активен): бесплатный пробный период на 30 дней даётся один раз на один телефон. Для этого на сервере хранятся даты, план, платформа и только необратимые хеши с ключом от вашего email (в канонической форме) и идентификатора устройства — сам email, идентификатор устройства и токен аттестации не хранятся. При удалении аккаунта запись отвязывается от него, но хранится 24 месяца, чтобы пробный период не выдавался повторно, затем удаляется автоматически.';
+
+  @override
+  String proSubTrialBody(int days) {
+    return '$days дней Pro бесплатно. Способ оплаты не нужен, деньги не списываются. После окончания все бесплатные функции продолжают работать; чтобы сохранить Pro, можно отдельно оформить подписку.';
+  }
+
+  @override
+  String proSubTrialStart(String plan) {
+    return 'Начать пробный период: $plan';
+  }
+
+  @override
+  String get proSubTrialConfirmTitle => 'Начать пробный период?';
+
+  @override
+  String proSubTrialConfirmBody(String plan, String date) {
+    return '$plan Pro бесплатно до $date. Без способа оплаты, ничего не списывается, и пробный период не превращается в платную подписку. После этой даты бесплатные функции продолжают работать.';
+  }
+
+  @override
+  String get proSubTrialConfirm => 'Начать';
+
+  @override
+  String get proSubTrialCancel => 'Не сейчас';
+
+  @override
+  String proSubTrialStarted(String date) {
+    return 'Пробный период начат — Pro до $date.';
+  }
+
+  @override
+  String get proSubTrialNotOnPlatform =>
+      'На этом устройстве пробный период пока недоступен. Все бесплатные функции работают как обычно.';
+
+  @override
+  String get proSubTrialHasAccess =>
+      'У вас уже есть Pro, пробный период не нужен.';
+
+  @override
+  String get proSubTrialPlanNotAllowed =>
+      'Пробный период этого плана — только для преподавателей и подтверждённых специалистов. Попробуйте план «Студент».';
+
+  @override
+  String get proSubTrialEmail =>
+      'Для пробного периода нужен подтверждённый email вашего аккаунта.';
+
+  @override
+  String get proSubTrialDevice =>
+      'Не удалось проверить это устройство, поэтому пробный период здесь не начнётся.';
+
+  @override
+  String get proSubTrialSubscribed => 'У вас уже есть действующая подписка.';
+
+  @override
+  String get proSubEnded =>
+      'Pro закончился. Все бесплатные функции работают, ваши данные сохранены.';
+
+  @override
+  String get proSubPriceYearlyNote =>
+      'Годовой план оплачивается раз в год по указанной цене.';
+
+  @override
+  String get proSubWithoutSubscription =>
+      'Приложением можно пользоваться без подписки: бесплатные функции остаются бесплатными.';
 }

@@ -7,7 +7,6 @@ import 'package:labguide/core/entitlements/device_attestor.dart';
 import 'package:labguide/core/entitlements/entitlement_cache.dart';
 import 'package:labguide/core/entitlements/entitlement_models.dart';
 import 'package:labguide/core/entitlements/entitlement_service.dart';
-import 'package:labguide/core/entitlements/entitlement_source.dart';
 import 'package:labguide/core/entitlements/pro_catalog.dart';
 import 'package:labguide/core/storage/kv_store.dart';
 
@@ -48,7 +47,9 @@ EntitlementSnapshot _snap(
   'trial_used': used,
 });
 
-class _TrialServer extends FakeEntitlementSource implements TrialSource {
+class _TrialServer extends FakeEntitlementSource {
+  _TrialServer() : super(trialOffered: true);
+
   String? errorCode;
   Map<String, Object?>? last;
 

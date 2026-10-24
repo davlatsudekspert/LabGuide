@@ -83,9 +83,43 @@ abstract final class BillingCatalog {
 
   static final ids = {for (final p in all) p.id};
 
-  /// Eski id ham yangisiga o'giriladi ([legacyAliases]).
+  /// Google Play: bitta obuna = bitta daraja, ichida ikkita base plan
+  /// (`monthly` P1M, `yearly` P1Y). Ilova va server ichida KANONIK id —
+  /// `<obuna>.<base plan>` (= App Store mahsulot id si). Server nusxasi:
+  /// `cloudflare/src/billing.ts` `PLAY_SUBSCRIPTIONS` / `canonicalProduct`.
+  static const playSubscriptions = <String, ProPlan>{
+    'uz.labguide.student': ProPlan.student,
+    'uz.labguide.teacher': ProPlan.teacher,
+    'uz.labguide.specialist': ProPlan.specialist,
+  };
+
+  static const playBasePlans = <String, BillingPeriod>{
+    'monthly': BillingPeriod.month,
+    'yearly': BillingPeriod.year,
+  };
+
+  /// Do'konga so'raladigan id'lar: App Store — 6 mahsulot; Play — 3 obuna
+  /// (base plan'lar ichida). Ikkalasi ham bir to'plamda (do'kon tanimaganini
+  /// shunchaki qaytarmaydi).
+  static final storeQueryIds = {...ids, ...playSubscriptions.keys};
+
+  /// Do'kon (mahsulot, base plan) → kanonik id; noma'lum — `null`.
+  static String? canonical(String productId, {String? basePlanId}) {
+    final key = legacyAliases[productId] ?? productId;
+    if (ids.contains(key)) return key;
+    if (playSubscriptions.containsKey(productId) &&
+        playBasePlans.containsKey(basePlanId)) {
+      return '$productId.$basePlanId';
+    }
+    return null;
+  }
+
+  /// Eski id ham yangisiga o'giriladi ([legacyAliases]). Play obuna id si
+  /// (base plan noma'lum) — shu darajaning oylik mahsuloti (faqat daraja uchun).
   static BillingProduct? byId(String id) {
-    final key = legacyAliases[id] ?? id;
+    final key =
+        legacyAliases[id] ??
+        (playSubscriptions.containsKey(id) ? '$id.monthly' : id);
     for (final p in all) {
       if (p.id == key) return p;
     }

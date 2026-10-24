@@ -10473,4 +10473,68 @@ class AppLocalizationsUz extends AppLocalizations {
   @override
   String get proPrivacyTrialNote =>
       'Pro (faqat Pro yoqilganda, hozir faol emas): 30 kunlik bepul sinov bir telefonga bir marta beriladi. Buning uchun serverda sinov sanalari, reja, platforma va emailingiz (kanonik ko‘rinishda) hamda qurilma belgisining faqat kalitli, qaytarib bo‘lmaydigan xeshi saqlanadi — xom email, qurilma identifikatori yoki attestatsiya tokeni saqlanmaydi. Hisob o‘chirilganda yozuv hisobdan uziladi, lekin sinov qayta berilmasligi uchun 24 oy saqlanadi, so‘ng avtomatik o‘chiriladi.';
+
+  @override
+  String proSubTrialBody(int days) {
+    return '$days kun Pro — bepul. To‘lov usuli kerak emas va hech qanday pul yechilmaydi. Sinov tugagach barcha bepul imkoniyatlar ishlashda davom etadi; Pro’ni saqlash uchun alohida obuna bo‘lishingiz mumkin.';
+  }
+
+  @override
+  String proSubTrialStart(String plan) {
+    return 'Bepul sinovni boshlash: $plan';
+  }
+
+  @override
+  String get proSubTrialConfirmTitle => 'Bepul sinov boshlansinmi?';
+
+  @override
+  String proSubTrialConfirmBody(String plan, String date) {
+    return '$plan Pro $date gacha bepul. To‘lov usuli yo‘q, pul yechilmaydi va sinov pullik obunaga aylanmaydi. Shu sanadan keyin bepul imkoniyatlar davom etadi.';
+  }
+
+  @override
+  String get proSubTrialConfirm => 'Sinovni boshlash';
+
+  @override
+  String get proSubTrialCancel => 'Hozir emas';
+
+  @override
+  String proSubTrialStarted(String date) {
+    return 'Bepul sinov boshlandi — Pro $date gacha.';
+  }
+
+  @override
+  String get proSubTrialNotOnPlatform =>
+      'Bu qurilmada bepul sinov hozircha mavjud emas. Barcha bepul imkoniyatlar odatdagidek ishlaydi.';
+
+  @override
+  String get proSubTrialHasAccess =>
+      'Sizda Pro allaqachon bor, sinov kerak emas.';
+
+  @override
+  String get proSubTrialPlanNotAllowed =>
+      'Bu reja sinovi faqat ustozlar va tasdiqlangan mutaxassislar uchun. Talaba rejasini sinab ko‘ring.';
+
+  @override
+  String get proSubTrialEmail =>
+      'Sinov uchun hisobingizning tasdiqlangan emaili kerak.';
+
+  @override
+  String get proSubTrialDevice =>
+      'Bu qurilmani tasdiqlab bo‘lmadi, shuning uchun sinov bu yerda boshlanmaydi.';
+
+  @override
+  String get proSubTrialSubscribed => 'Sizda amaldagi obuna bor.';
+
+  @override
+  String get proSubEnded =>
+      'Pro muddati tugadi. Barcha bepul imkoniyatlar ishlaydi, ma’lumotlaringiz saqlanadi.';
+
+  @override
+  String get proSubPriceYearlyNote =>
+      'Yillik reja narxi yiliga bir marta, ko‘rsatilgan summada olinadi.';
+
+  @override
+  String get proSubWithoutSubscription =>
+      'Ilovadan obunasiz foydalanish mumkin: bepul imkoniyatlar bepul qoladi.';
 }

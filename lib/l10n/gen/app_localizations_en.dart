@@ -10634,4 +10634,69 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get proPrivacyTrialNote =>
       'Pro (only when Pro is enabled; not active now): the 30-day free trial is given once per phone. To enforce this the server keeps the dates, plan, platform and only one-way keyed hashes of your email (in canonical form) and of a device identifier — the email itself, any device identifier and the attestation token are not stored. When you delete your account the record is unlinked from it but kept for 24 months so the trial is not given again, then deleted automatically.';
+
+  @override
+  String proSubTrialBody(int days) {
+    return '$days days of Pro, free. No payment method is needed and nothing is charged. When it ends, every free feature keeps working; to keep Pro you can subscribe separately.';
+  }
+
+  @override
+  String proSubTrialStart(String plan) {
+    return 'Start free trial: $plan';
+  }
+
+  @override
+  String get proSubTrialConfirmTitle => 'Start the free trial?';
+
+  @override
+  String proSubTrialConfirmBody(String plan, String date) {
+    return '$plan Pro is free until $date. No payment method, nothing is charged, and it does not turn into a paid subscription. After that date the free features continue.';
+  }
+
+  @override
+  String get proSubTrialConfirm => 'Start trial';
+
+  @override
+  String get proSubTrialCancel => 'Not now';
+
+  @override
+  String proSubTrialStarted(String date) {
+    return 'Free trial started — Pro until $date.';
+  }
+
+  @override
+  String get proSubTrialNotOnPlatform =>
+      'The free trial is not available on this device yet. All free features work as usual.';
+
+  @override
+  String get proSubTrialHasAccess =>
+      'You already have Pro, so a trial is not needed.';
+
+  @override
+  String get proSubTrialPlanNotAllowed =>
+      'This plan\'s trial is only for teachers and verified specialists. Try the Student plan.';
+
+  @override
+  String get proSubTrialEmail =>
+      'The trial needs the verified email of your account.';
+
+  @override
+  String get proSubTrialDevice =>
+      'This device could not be verified, so the trial cannot start here.';
+
+  @override
+  String get proSubTrialSubscribed =>
+      'You already have an active subscription.';
+
+  @override
+  String get proSubEnded =>
+      'Pro has ended. Every free feature keeps working and your data stays.';
+
+  @override
+  String get proSubPriceYearlyNote =>
+      'The yearly plan is billed once a year at the price shown.';
+
+  @override
+  String get proSubWithoutSubscription =>
+      'You can use the app without a subscription: free features stay free.';
 }

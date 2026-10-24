@@ -7,6 +7,8 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:labguide/app/app_scope.dart';
 import 'package:labguide/core/entitlements/entitlement_models.dart';
+import 'package:labguide/core/entitlements/entitlement_service.dart';
+import 'package:labguide/core/entitlements/feature.dart';
 import 'package:labguide/core/entitlements/pro_catalog.dart';
 import 'package:labguide/features/profile/subscription_screen.dart';
 import 'package:labguide/features/settings/settings_controller.dart';
@@ -14,6 +16,7 @@ import 'package:labguide/l10n/gen/app_localizations.dart';
 import 'package:material_ui/material_ui.dart';
 
 import '../helpers/billing_fakes.dart';
+import '../helpers/fake_backend.dart';
 import '../helpers/harness.dart';
 
 AppLocalizations _l(AppLanguage lang) => lookupAppLocalizations(lang.locale);
@@ -38,14 +41,24 @@ Future<AppServices> _svc(
   bool? proEnabled = true,
   AppLanguage language = AppLanguage.uz,
   FakeEntitlementSource? source,
+  FakePurchaseAdapter? purchases,
+  bool attest = false,
 }) => makeServices(
   tester,
   language: language,
   proEnabled: proEnabled,
   allFeaturesOpen: false,
-  purchases: FakePurchaseAdapter(),
+  backend: FakeLabBackend(),
+  purchases: purchases ?? FakePurchaseAdapter(),
   entitlementSource: source ?? FakeEntitlementSource(user: null),
+  attestor: attest ? FakeDeviceAttestor() : null,
 );
+
+Future<void> _signIn(WidgetTester tester, AppServices s) async {
+  await s.auth.requestCode('trial.user@example.test');
+  await s.auth.verifyCode(FakeLabBackend.otpCode);
+  await tester.pumpAndSettle();
+}
 
 void main() {
   testWidgets('bayroq o‘chiq (standart): Profil’da “Obuna” yo‘q, yo‘l yo‘q', (
@@ -123,9 +136,17 @@ void main() {
       ),
       findsOneWidget,
     );
-    expect(find.text(uz.proSubTrialOncePerPhone), findsOneWidget);
+    // Server bu platformada sinov taklif qilmaydi (standart): qoida va sinov
+    // matni ko'rsatilmaydi, faqat oddiy izoh (mehmon).
+    expect(find.text(uz.proSubTrialOncePerPhone), findsNothing);
     expect(find.text(uz.proSubTrialGuest), findsOneWidget);
     expect(find.text(uz.proPayRestore), findsOneWidget);
+    // Do'kon qoidalari (D-75): boshqarish/bekor qilish, shartlar, maxfiylik.
+    for (final k in ['sub-manage', 'sub-terms', 'sub-privacy', 'sub-without']) {
+      expect(find.byKey(ValueKey(k)), findsOneWidget, reason: k);
+    }
+    // Boshqa to'lov usuli / web narx yo'q.
+    expect(find.textContaining('http'), findsNothing);
     expect(tester.takeException(), isNull);
   });
 
@@ -192,4 +213,107 @@ void main() {
       expect(tester.takeException(), isNull);
     });
   }
+
+  group('D-75: sinov tugmasi faqat imkoniyat so‘rovi + attestatsiya bilan', () {
+    testWidgets('server sinovni taklif qilmaydi (iOS standart): tugma yo‘q, '
+        'oddiy izoh', (tester) async {
+      final src = FakeEntitlementSource(trialOffered: false);
+      final s = await _svc(tester, source: src, attest: true);
+      await s.entitlements.start();
+      await pumpApp(tester, s, size: const Size(390, 2600));
+      await _signIn(tester, s);
+      await goTo(tester, '/profile/subscription');
+      final uz = _l(AppLanguage.uz);
+      expect(find.text(uz.proSubTrialNotOnPlatform), findsOneWidget);
+      expect(find.byKey(const ValueKey('sub-trial-body')), findsNothing);
+      for (final p in ProPlan.values) {
+        expect(find.byKey(ValueKey('sub-trial-start-${p.name}')), findsNothing);
+      }
+    });
+
+    testWidgets('attestatsiya sozlanmagan (production standart): tugma yo‘q', (
+      tester,
+    ) async {
+      final src = FakeEntitlementSource(trialOffered: true);
+      final s = await _svc(tester, source: src);
+      await s.entitlements.start();
+      await pumpApp(tester, s, size: const Size(390, 2600));
+      await goTo(tester, '/profile/subscription');
+      final uz = _l(AppLanguage.uz);
+      expect(find.text(uz.proSubTrialNotActive), findsOneWidget);
+      expect(
+        find.byKey(const ValueKey('sub-trial-start-student')),
+        findsNothing,
+      );
+    });
+
+    testWidgets('Android + soxta attestatsiya: matn, tasdiq oynasi, sinov '
+        'boshlanadi; hech qanday xarid boshlanmaydi', (tester) async {
+      final src = FakeEntitlementSource(
+        trialOffered: true,
+        platform: 'play_store',
+      );
+      final shop = FakePurchaseAdapter();
+      final s = await _svc(tester, source: src, purchases: shop, attest: true);
+      await s.entitlements.start();
+      await pumpApp(tester, s, size: const Size(390, 2800));
+      await _signIn(tester, s);
+      await goTo(tester, '/profile/subscription');
+      final uz = _l(AppLanguage.uz);
+      expect(
+        find.text(uz.proSubTrialBody(ProTrialConfig.serverTrialDays)),
+        findsOneWidget,
+      );
+      expect(find.text(uz.proSubTrialOncePerPhone), findsOneWidget);
+      final start = find.byKey(const ValueKey('sub-trial-start-student'));
+      await tester.ensureVisible(start);
+      await tester.pumpAndSettle();
+      await tester.tap(start);
+      await tester.pumpAndSettle();
+      // Tasdiq: tugash sanasi, to'lov usuli yo'q, pul yechilmaydi.
+      final body = tester.widget<Text>(
+        find.byKey(const ValueKey('sub-trial-confirm-body')),
+      );
+      expect(body.data, startsWith('${uz.proPayTierStudent} Pro '));
+      expect(body.data, contains('pul yechilmaydi'));
+      await tester.tap(find.byKey(const ValueKey('sub-trial-confirm')));
+      await tester.pumpAndSettle();
+      expect(src.trialStarts, [ProPlan.student]);
+      expect(s.entitlements.proSource, ProSource.trial);
+      // Sinov kodi do'kon xaridini boshlamaydi, tranzaksiya yakunlamaydi.
+      expect(shop.bought, isEmpty);
+      expect(shop.finished, isEmpty);
+      expect(
+        find.byKey(const ValueKey('sub-trial-start-student')),
+        findsNothing,
+      );
+    });
+  });
+
+  testWidgets('Pro tugadi: “Pro tugadi, bepul imkoniyatlar ishlaydi”; '
+      'barcha imkoniyatlar ochiq', (tester) async {
+    final past = DateTime.now().toUtc().subtract(const Duration(days: 1));
+    final src = FakeEntitlementSource()
+      ..snapshot = EntitlementSnapshot.fromJson({
+        'server_time': DateTime.now().toUtc().toIso8601String(),
+        'items': [
+          {
+            ..._item('trial', 'student'),
+            'status': 'expired',
+            'expires_at': past.toIso8601String(),
+          },
+        ],
+        'trial_used': true,
+      });
+    final s = await _svc(tester, source: src);
+    await s.entitlements.start();
+    await pumpApp(tester, s, size: const Size(390, 2400));
+    await goTo(tester, '/profile/subscription');
+    final uz = _l(AppLanguage.uz);
+    expect(find.text(uz.proSubStatusFree), findsOneWidget);
+    expect(find.byKey(const ValueKey('sub-ended')), findsOneWidget);
+    for (final f in Feature.values) {
+      expect(s.entitlements.can(f), isTrue, reason: f.name);
+    }
+  });
 }

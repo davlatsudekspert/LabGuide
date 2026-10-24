@@ -103,28 +103,37 @@ abstract final class ProPricing {
   }
 }
 
-/// Bepul foydalanish davri sozlamasi (D-71/D-73, ochiq qaror).
+/// Bepul foydalanish davri sozlamasi (D-71/D-73 → D-75).
 ///
-/// [freeTrialDays] semantikasi:
-/// * `null` (standart) — **o'chiq**: hech qanday bepul davr taklif qilinmaydi
-///   va hech bir mexanizm yoqilmaydi. Eski 7/14 kun bu yerda YO'Q.
-/// * `> 0` — bepul davr uzunligi (kun). MEXANIZM qaror qilinmagan, ikki variant:
-///   (a) do'kon-native kirish taklifi (Apple Introductory Offer / Google Play
-///   free-trial offer): kunlar do'konda sozlanadi, ilova uni do'kondan o'qiydi
-///   (`StoreProduct.freeTrial`), karta/Apple ID olinadi, 3.1.2 matni do'kondan;
-///   (b) server tomonidan beriladigan sinov huquqi (kartasiz): serverda
-///   `trial_until` yoziladi — HALI YO'Q (faqat shu sozlama va
-///   [ProTrialMechanism] ilgagi bor).
-/// Ilova hozir [freeTrialDays] ni faqat HUJJAT/TEKSHIRUV uchun o'qiydi:
-/// to'lov oynasidagi sinov yozuvi har doim do'kon javobidan olinadi.
+/// D-75: 30 kunlik sinov — SERVER beradigan, kartasiz sinov (M1,
+/// [ProTrialMechanism.serverGranted]). Server qoidasi: `cloudflare/src/trial.ts`
+/// (`TRIAL_DAYS`, `TRIAL_PLATFORMS` — standart faqat Android; iOS Apple
+/// yozma javobidan keyin). Ilova sinov tugmasini faqat server imkoniyat
+/// so'rovi (`GET /v1/billing/status` → `trial.<platforma>`) `true` desa va
+/// qurilma attestatsiyasi sozlangan bo'lsa ko'rsatadi.
+///
+/// * [freeTrialDays] — DO'KON kirish taklifi (Apple Introductory Offer /
+///   Play free-trial offer) kunlari: `null` = YO'Q. Ikki marta sinov bo'lmasin
+///   (POLICY_REVIEW §4 "Trial stacking"): do'kon sinov taklifi ilovada
+///   ko'rsatilmaydi va tanlanmaydi ([storeIntroOffersAllowed] = false).
+/// * [serverTrialDays] — server sinovi uzunligi (faqat matn uchun; qaror
+///   serverda). Sinov hech qachon xarid boshlamaydi va pul yechmaydi.
 abstract final class ProTrialConfig {
   static const int? freeTrialDays = null;
-  static const ProTrialMechanism mechanism = ProTrialMechanism.undecided;
+  static const ProTrialMechanism mechanism = ProTrialMechanism.serverGranted;
 
-  static bool get enabled => (freeTrialDays ?? 0) > 0;
+  /// Server sinovi (D-74/D-75) — `cloudflare/src/trial.ts` `TRIAL_DAYS` bilan bir xil.
+  static const int serverTrialDays = 30;
+
+  /// Do'kon kirish taklifi (bepul sinov) ko'rsatilsinmi/tanlansinmi: YO'Q.
+  static const bool storeIntroOffersAllowed = false;
+
+  /// Do'kon-native sinov yoqilganmi (hozir — yo'q).
+  static bool get enabled =>
+      storeIntroOffersAllowed && (freeTrialDays ?? 0) > 0;
 }
 
-/// Bepul davr mexanizmi — egasi qarori kutilmoqda.
+/// Bepul davr mexanizmi (D-75: server bergan sinov).
 enum ProTrialMechanism { undecided, storeIntroOffer, serverGranted }
 
 /// Qaysi pullik imkoniyatlar HAQIQATAN yopiladi (D-71). Standart: **bo'sh** —

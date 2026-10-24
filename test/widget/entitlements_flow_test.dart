@@ -189,10 +189,13 @@ void main() {
 
       final monthly = uz.proPayPricePer(r'$3.49', uz.proPayUnitMonth);
       expect(find.text(monthly), findsOneWidget);
+      // D-75: do'kon sinov taklifi (avtomatik pullik) ko'rsatilmaydi, hatto
+      // do'kon qaytarsa ham — 30 kunlik sinov faqat server sinovi.
       expect(
         find.text(uz.proPayTrial(uz.proPayDays(30), monthly)),
-        findsOneWidget,
+        findsNothing,
       );
+      expect(find.text(uz.proPayStartTrial), findsNothing);
       // Yillik narxlar belgilangan (D-73): Ustoz va Mutaxassis uchun yillik reja.
       expect(find.text(uz.proPayPlanYearly), findsNWidgets(2));
       expect(
@@ -234,9 +237,11 @@ void main() {
         -300,
         scrollable: find.byType(Scrollable).hitTestable().first,
       );
-      await tester.ensureVisible(find.text(uz.proPayStartTrial).first);
+      // Tartib: Ustoz oylik, Ustoz yillik, Mutaxassis oylik (Talaba yashirin).
+      final specialistBuy = find.text(uz.proPaySubscribe).at(2);
+      await tester.ensureVisible(specialistBuy);
       await tester.pumpAndSettle();
-      await tester.tap(find.text(uz.proPayStartTrial).first);
+      await tester.tap(specialistBuy);
       await tester.pumpAndSettle();
       expect(shop.bought.single.$1, BillingCatalog.specialistMonthly);
       expect(find.text(uz.proPaySuccess), findsOneWidget);

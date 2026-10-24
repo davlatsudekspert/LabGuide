@@ -13,6 +13,7 @@ import 'package:labguide/app/widgets/lg_page.dart';
 import 'package:labguide/core/backend/community_backend.dart';
 import 'package:labguide/core/backend/lab_backend.dart';
 import 'package:labguide/core/build_flags.dart';
+import 'package:labguide/core/entitlements/device_attestor.dart';
 import 'package:labguide/core/entitlements/entitlement_cache.dart';
 import 'package:labguide/core/entitlements/entitlement_source.dart';
 import 'package:labguide/core/entitlements/feature.dart';
@@ -83,6 +84,7 @@ Future<AppServices> makeServices(
   EntitlementSource? entitlementSource,
   // Haqiqatan yopiladigan imkoniyatlar (berilmasa — `ProGatePolicy.gated`).
   Set<Feature>? gatedFeatures,
+  DeviceAttestor? attestor,
   ReminderScheduler? reminderScheduler,
   ResultSharer? sharer,
   DateTime Function()? clock,
@@ -134,6 +136,7 @@ Future<AppServices> makeServices(
     purchases: purchases,
     entitlementSource: entitlementSource,
     gatedFeatures: gatedFeatures,
+    attestor: attestor,
   );
   if (languageChosen) {
     await services.settings.chooseLanguage(language);

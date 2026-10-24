@@ -3019,5 +3019,21 @@
   "proSubTrialUsed": "Bu hisob bepul sinovdan foydalangan.",
   "proSubTrialNotActive": "Bepul sinov hali yoqilmagan.",
   "proSubTrialGuest": "Bepul sinov uchun hisobga kiring.",
-  "proPrivacyTrialNote": "Pro (faqat Pro yoqilganda, hozir faol emas): 30 kunlik bepul sinov bir telefonga bir marta beriladi. Buning uchun serverda sinov sanalari, reja, platforma va emailingiz (kanonik ko‘rinishda) hamda qurilma belgisining faqat kalitli, qaytarib bo‘lmaydigan xeshi saqlanadi — xom email, qurilma identifikatori yoki attestatsiya tokeni saqlanmaydi. Hisob o‘chirilganda yozuv hisobdan uziladi, lekin sinov qayta berilmasligi uchun 24 oy saqlanadi, so‘ng avtomatik o‘chiriladi."
+  "proPrivacyTrialNote": "Pro (faqat Pro yoqilganda, hozir faol emas): 30 kunlik bepul sinov bir telefonga bir marta beriladi. Buning uchun serverda sinov sanalari, reja, platforma va emailingiz (kanonik ko‘rinishda) hamda qurilma belgisining faqat kalitli, qaytarib bo‘lmaydigan xeshi saqlanadi — xom email, qurilma identifikatori yoki attestatsiya tokeni saqlanmaydi. Hisob o‘chirilganda yozuv hisobdan uziladi, lekin sinov qayta berilmasligi uchun 24 oy saqlanadi, so‘ng avtomatik o‘chiriladi.",
+  "proSubTrialBody": "{days} kun Pro — bepul. To‘lov usuli kerak emas va hech qanday pul yechilmaydi. Sinov tugagach barcha bepul imkoniyatlar ishlashda davom etadi; Pro’ni saqlash uchun alohida obuna bo‘lishingiz mumkin.",
+  "proSubTrialStart": "Bepul sinovni boshlash: {plan}",
+  "proSubTrialConfirmTitle": "Bepul sinov boshlansinmi?",
+  "proSubTrialConfirmBody": "{plan} Pro {date} gacha bepul. To‘lov usuli yo‘q, pul yechilmaydi va sinov pullik obunaga aylanmaydi. Shu sanadan keyin bepul imkoniyatlar davom etadi.",
+  "proSubTrialConfirm": "Sinovni boshlash",
+  "proSubTrialCancel": "Hozir emas",
+  "proSubTrialStarted": "Bepul sinov boshlandi — Pro {date} gacha.",
+  "proSubTrialNotOnPlatform": "Bu qurilmada bepul sinov hozircha mavjud emas. Barcha bepul imkoniyatlar odatdagidek ishlaydi.",
+  "proSubTrialHasAccess": "Sizda Pro allaqachon bor, sinov kerak emas.",
+  "proSubTrialPlanNotAllowed": "Bu reja sinovi faqat ustozlar va tasdiqlangan mutaxassislar uchun. Talaba rejasini sinab ko‘ring.",
+  "proSubTrialEmail": "Sinov uchun hisobingizning tasdiqlangan emaili kerak.",
+  "proSubTrialDevice": "Bu qurilmani tasdiqlab bo‘lmadi, shuning uchun sinov bu yerda boshlanmaydi.",
+  "proSubTrialSubscribed": "Sizda amaldagi obuna bor.",
+  "proSubEnded": "Pro muddati tugadi. Barcha bepul imkoniyatlar ishlaydi, ma’lumotlaringiz saqlanadi.",
+  "proSubPriceYearlyNote": "Yillik reja narxi yiliga bir marta, ko‘rsatilgan summada olinadi.",
+  "proSubWithoutSubscription": "Ilovadan obunasiz foydalanish mumkin: bepul imkoniyatlar bepul qoladi."
 }

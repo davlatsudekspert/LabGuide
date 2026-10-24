@@ -6337,5 +6337,52 @@
   "proSubTrialUsed": "This account has already used its free trial.",
   "proSubTrialNotActive": "The free trial is not switched on yet.",
   "proSubTrialGuest": "Sign in to use the free trial.",
-  "proPrivacyTrialNote": "Pro (only when Pro is enabled; not active now): the 30-day free trial is given once per phone. To enforce this the server keeps the dates, plan, platform and only one-way keyed hashes of your email (in canonical form) and of a device identifier — the email itself, any device identifier and the attestation token are not stored. When you delete your account the record is unlinked from it but kept for 24 months so the trial is not given again, then deleted automatically."
+  "proPrivacyTrialNote": "Pro (only when Pro is enabled; not active now): the 30-day free trial is given once per phone. To enforce this the server keeps the dates, plan, platform and only one-way keyed hashes of your email (in canonical form) and of a device identifier — the email itself, any device identifier and the attestation token are not stored. When you delete your account the record is unlinked from it but kept for 24 months so the trial is not given again, then deleted automatically.",
+  "proSubTrialBody": "{days} days of Pro, free. No payment method is needed and nothing is charged. When it ends, every free feature keeps working; to keep Pro you can subscribe separately.",
+  "@proSubTrialBody": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "proSubTrialStart": "Start free trial: {plan}",
+  "@proSubTrialStart": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "proSubTrialConfirmTitle": "Start the free trial?",
+  "proSubTrialConfirmBody": "{plan} Pro is free until {date}. No payment method, nothing is charged, and it does not turn into a paid subscription. After that date the free features continue.",
+  "@proSubTrialConfirmBody": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "proSubTrialConfirm": "Start trial",
+  "proSubTrialCancel": "Not now",
+  "proSubTrialStarted": "Free trial started — Pro until {date}.",
+  "@proSubTrialStarted": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "proSubTrialNotOnPlatform": "The free trial is not available on this device yet. All free features work as usual.",
+  "proSubTrialHasAccess": "You already have Pro, so a trial is not needed.",
+  "proSubTrialPlanNotAllowed": "This plan's trial is only for teachers and verified specialists. Try the Student plan.",
+  "proSubTrialEmail": "The trial needs the verified email of your account.",
+  "proSubTrialDevice": "This device could not be verified, so the trial cannot start here.",
+  "proSubTrialSubscribed": "You already have an active subscription.",
+  "proSubEnded": "Pro has ended. Every free feature keeps working and your data stays.",
+  "proSubPriceYearlyNote": "The yearly plan is billed once a year at the price shown.",
+  "proSubWithoutSubscription": "You can use the app without a subscription: free features stay free."
 }

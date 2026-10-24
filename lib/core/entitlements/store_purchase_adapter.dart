@@ -10,6 +10,7 @@ import 'package:in_app_purchase_storekit/store_kit_2_wrappers.dart';
 import 'package:in_app_purchase_storekit/store_kit_wrappers.dart';
 
 import 'billing_catalog.dart';
+import 'pro_catalog.dart';
 import 'purchase_adapter.dart';
 
 /// Haqiqiy do'kon: rasmiy `in_app_purchase` plagini (iOS — StoreKit 2,
@@ -24,7 +25,7 @@ import 'purchase_adapter.dart';
 class StorePurchaseAdapter extends ChangeNotifier implements PurchaseAdapter {
   StorePurchaseAdapter({InAppPurchase? iap, Set<String>? productIds})
     : _iapOverride = iap,
-      _ids = productIds ?? BillingCatalog.ids;
+      _ids = productIds ?? BillingCatalog.storeQueryIds;
 
   final InAppPurchase? _iapOverride;
   final Set<String> _ids;
@@ -130,7 +131,10 @@ class StorePurchaseAdapter extends ChangeNotifier implements PurchaseAdapter {
           title: d.title,
           displayPrice: d.price,
           period: period,
-          freeTrial: await _iosTrial(d.id, legacy),
+          // D-75: do'kon kirish taklifi (avtomatik pullikka o'tadi) ko'rsatilmaydi.
+          freeTrial: ProTrialConfig.storeIntroOffersAllowed
+              ? await _iosTrial(d.id, legacy)
+              : null,
         ),
       );
     }
@@ -172,64 +176,47 @@ class StorePurchaseAdapter extends ChangeNotifier implements PurchaseAdapter {
 
   // ------------------------------------------------------------ Android
   /// Play har taklif (base plan / offer) uchun alohida yozuv beradi.
-  /// Tanlov: bepul sinovli taklif (Play faqat haqli foydalanuvchiga
-  /// qaytaradi), bo'lmasa — asosiy reja. Boshqa (chegirmali) takliflar
-  /// ko'rsatilmaydi: narx har doim to'liq davr narxi.
+  /// D-75: faqat ASOSIY REJA (base plan, `offerId == null`) olinadi — bepul
+  /// sinov va chegirmali takliflar ko'rsatilmaydi va tanlanmaydi (30 kunlik
+  /// sinov server beradi; Play sinovi bilan ikki marta sinov bo'lmasin).
+  /// Mahsulot id si kanonik: `uz.labguide.student` + base plan `yearly` →
+  /// `uz.labguide.student.yearly` ([BillingCatalog.canonical]).
   List<StoreProduct> _androidProducts(List<ProductDetails> list) {
-    final best = <String, (GooglePlayProductDetails, StorePeriod?)>{};
+    final out = <StoreProduct>[];
     for (final d in list) {
       if (d is! GooglePlayProductDetails || !_ids.contains(d.id)) continue;
       final i = d.subscriptionIndex;
       final offers = d.productDetails.subscriptionOfferDetails;
       if (i == null || offers == null || i >= offers.length) continue;
       final offer = offers[i];
+      if (offer.offerId != null) continue;
+      final id = BillingCatalog.canonical(d.id, basePlanId: offer.basePlanId);
+      if (id == null || _details.containsKey(id)) continue;
       final phases = offer.pricingPhases;
       if (phases.isEmpty) continue;
-      final trialPhase = phases
-          .where((p) => p.priceAmountMicros == 0)
-          .firstOrNull;
-      final paidIntro = phases.any(
-        (p) =>
-            p.priceAmountMicros > 0 &&
-            p.recurrenceMode != RecurrenceMode.infiniteRecurring,
+      // Asosiy rejada faqat cheksiz takrorlanuvchi to'liq narx bo'ladi.
+      final recurring = phases.lastWhere(
+        (p) => p.recurrenceMode == RecurrenceMode.infiniteRecurring,
+        orElse: () => phases.last,
       );
-      if (paidIntro) continue;
-      if (offer.offerId != null && trialPhase == null) continue;
-      StorePeriod? trial;
-      if (trialPhase != null) {
-        final p = StorePeriod.parseIso(trialPhase.billingPeriod);
-        if (p != null) {
-          final cycles = trialPhase.billingCycleCount < 1
-              ? 1
-              : trialPhase.billingCycleCount;
-          trial = StorePeriod(p.count * cycles, p.unit);
-        }
-      }
-      final current = best[d.id];
-      if (current == null || (current.$2 == null && trial != null)) {
-        best[d.id] = (d, trial);
-      }
+      if (recurring.priceAmountMicros <= 0) continue;
+      _details[id] = d;
+      out.add(
+        StoreProduct(
+          id: id,
+          title: d.title,
+          displayPrice: recurring.formattedPrice,
+          period: StorePeriod.parseIso(recurring.billingPeriod),
+        ),
+      );
     }
-    return [
-      for (final MapEntry(key: id, value: (d, trial)) in best.entries)
-        () {
-          _details[id] = d;
-          final offer =
-              d.productDetails.subscriptionOfferDetails![d.subscriptionIndex!];
-          final recurring = offer.pricingPhases.lastWhere(
-            (p) => p.recurrenceMode == RecurrenceMode.infiniteRecurring,
-            orElse: () => offer.pricingPhases.last,
-          );
-          return StoreProduct(
-            id: id,
-            title: d.title,
-            displayPrice: recurring.formattedPrice,
-            period: StorePeriod.parseIso(recurring.billingPeriod),
-            freeTrial: trial,
-          );
-        }(),
-    ];
+    return out;
   }
+
+  /// Do'kon `productID` (Play'da obuna id si) [_buyingId] (kanonik) ga mosmi.
+  static bool _same(String storeId, String? canonicalId) =>
+      canonicalId != null &&
+      (storeId == canonicalId || canonicalId.startsWith('$storeId.'));
 
   // ------------------------------------------------------------ oqim
   PurchaseProof? _proof(PurchaseDetails p) {
@@ -244,9 +231,14 @@ class StorePurchaseAdapter extends ChangeNotifier implements PurchaseAdapter {
           : DateTime.fromMillisecondsSinceEpoch(n, isUtc: true);
     }
 
+    // Kanonik id: App Store'da o'zi; Play'da obuna id si — base plan
+    // xarid paytida ma'lum ([_buyingId]); tiklashda server aniqlaydi.
+    final canonical =
+        BillingCatalog.canonical(p.productID) ??
+        (_same(p.productID, _buyingId) ? _buyingId! : p.productID);
     return PurchaseProof(
       platform: _ios ? 'app_store' : 'play_store',
-      productId: p.productID,
+      productId: canonical,
       token: token,
       purchasedAt: ms(p.transactionDate),
       expiresAt: p is SK2PurchaseDetails ? ms(p.expirationDate) : null,
@@ -260,7 +252,7 @@ class StorePurchaseAdapter extends ChangeNotifier implements PurchaseAdapter {
         if (p.pendingCompletePurchase) unawaited(_complete(p));
         continue;
       }
-      final buyingThis = _buying != null && _buyingId == p.productID;
+      final buyingThis = _buying != null && _same(p.productID, _buyingId);
       switch (p.status) {
         case PurchaseStatus.pending:
           if (buyingThis) _settle(error: const PurchasePendingException());

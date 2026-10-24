@@ -156,16 +156,15 @@ void main() {
           );
         }
         final main = _read('lib/main.dart');
+        // D-75: start() va ilova qaytishidagi yangilash bitta bayroq blokida.
         expect(
-          main,
-          contains(
-            'if (BuildFlags.proEnabled) unawaited(services.entitlements.start());',
-          ),
+          RegExp(
+            r'if \(BuildFlags\.proEnabled\) \{\s*unawaited\(services\.entitlements\.start\(\)\);\s*'
+            r'// [^\n]*\n\s*// [^\n]*\n\s*AppLifecycleListener\(',
+          ).hasMatch(main),
+          isTrue,
         );
-        expect(
-          main,
-          contains('BuildFlags.proEnabled\n        ? EntitlementService('),
-        );
+        expect(main, contains('BuildFlags.proEnabled\n        ? _entitlements('));
         expect(main, contains(': EntitlementService.disabled()'));
       });
 

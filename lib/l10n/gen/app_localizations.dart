@@ -18177,6 +18177,102 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Pro (only when Pro is enabled; not active now): the 30-day free trial is given once per phone. To enforce this the server keeps the dates, plan, platform and only one-way keyed hashes of your email (in canonical form) and of a device identifier — the email itself, any device identifier and the attestation token are not stored. When you delete your account the record is unlinked from it but kept for 24 months so the trial is not given again, then deleted automatically.'**
   String get proPrivacyTrialNote;
+
+  /// No description provided for @proSubTrialBody.
+  ///
+  /// In en, this message translates to:
+  /// **'{days} days of Pro, free. No payment method is needed and nothing is charged. When it ends, every free feature keeps working; to keep Pro you can subscribe separately.'**
+  String proSubTrialBody(int days);
+
+  /// No description provided for @proSubTrialStart.
+  ///
+  /// In en, this message translates to:
+  /// **'Start free trial: {plan}'**
+  String proSubTrialStart(String plan);
+
+  /// No description provided for @proSubTrialConfirmTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Start the free trial?'**
+  String get proSubTrialConfirmTitle;
+
+  /// No description provided for @proSubTrialConfirmBody.
+  ///
+  /// In en, this message translates to:
+  /// **'{plan} Pro is free until {date}. No payment method, nothing is charged, and it does not turn into a paid subscription. After that date the free features continue.'**
+  String proSubTrialConfirmBody(String plan, String date);
+
+  /// No description provided for @proSubTrialConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Start trial'**
+  String get proSubTrialConfirm;
+
+  /// No description provided for @proSubTrialCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Not now'**
+  String get proSubTrialCancel;
+
+  /// No description provided for @proSubTrialStarted.
+  ///
+  /// In en, this message translates to:
+  /// **'Free trial started — Pro until {date}.'**
+  String proSubTrialStarted(String date);
+
+  /// No description provided for @proSubTrialNotOnPlatform.
+  ///
+  /// In en, this message translates to:
+  /// **'The free trial is not available on this device yet. All free features work as usual.'**
+  String get proSubTrialNotOnPlatform;
+
+  /// No description provided for @proSubTrialHasAccess.
+  ///
+  /// In en, this message translates to:
+  /// **'You already have Pro, so a trial is not needed.'**
+  String get proSubTrialHasAccess;
+
+  /// No description provided for @proSubTrialPlanNotAllowed.
+  ///
+  /// In en, this message translates to:
+  /// **'This plan\'s trial is only for teachers and verified specialists. Try the Student plan.'**
+  String get proSubTrialPlanNotAllowed;
+
+  /// No description provided for @proSubTrialEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'The trial needs the verified email of your account.'**
+  String get proSubTrialEmail;
+
+  /// No description provided for @proSubTrialDevice.
+  ///
+  /// In en, this message translates to:
+  /// **'This device could not be verified, so the trial cannot start here.'**
+  String get proSubTrialDevice;
+
+  /// No description provided for @proSubTrialSubscribed.
+  ///
+  /// In en, this message translates to:
+  /// **'You already have an active subscription.'**
+  String get proSubTrialSubscribed;
+
+  /// No description provided for @proSubEnded.
+  ///
+  /// In en, this message translates to:
+  /// **'Pro has ended. Every free feature keeps working and your data stays.'**
+  String get proSubEnded;
+
+  /// No description provided for @proSubPriceYearlyNote.
+  ///
+  /// In en, this message translates to:
+  /// **'The yearly plan is billed once a year at the price shown.'**
+  String get proSubPriceYearlyNote;
+
+  /// No description provided for @proSubWithoutSubscription.
+  ///
+  /// In en, this message translates to:
+  /// **'You can use the app without a subscription: free features stay free.'**
+  String get proSubWithoutSubscription;
 }
 
 class _AppLocalizationsDelegate

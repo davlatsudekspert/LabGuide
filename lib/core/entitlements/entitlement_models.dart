@@ -165,6 +165,7 @@ class EntitlementSnapshot {
     required this.items,
     this.ownedByOther = false,
     this.trialUsed = false,
+    this.offlineUntil,
   });
 
   factory EntitlementSnapshot.fromJson(Map<String, Object?> j) =>
@@ -176,6 +177,9 @@ class EntitlementSnapshot {
         ],
         ownedByOther: j['owned_by_other'] == true,
         trialUsed: j['trial_used'] == true,
+        offlineUntil: j['offline_until'] is String
+            ? DateTime.tryParse(j['offline_until']! as String)?.toUtc()
+            : null,
       );
 
   final DateTime serverTime;
@@ -186,6 +190,11 @@ class EntitlementSnapshot {
 
   /// Shu hisob bepul sinovdan foydalangan (D-74).
   final bool trialUsed;
+
+  /// Server bergan oflayn chegarasi (D-75, server soati bilan):
+  /// min(javob vaqti + 7 kun, amaldagi huquq tugashi). Ilova keshni bundan
+  /// keyin huquq sifatida ishlatmaydi. `null` — eski server (faqat lokal 7 kun).
+  final DateTime? offlineUntil;
 }
 
 enum EntitlementFailure {

@@ -52,12 +52,23 @@ void main() {
       }
     });
 
-    test('hech qaysi imkoniyat yopilmaydi; bepul davr o‘chiq', () {
-      expect(ProGatePolicy.gated, isEmpty);
-      expect(ProTrialConfig.freeTrialDays, isNull);
-      expect(ProTrialConfig.enabled, isFalse);
-      expect(ProTrialConfig.mechanism, ProTrialMechanism.undecided);
-    });
+    test(
+      'hech qaysi imkoniyat yopilmaydi; do‘kon sinov taklifi yo‘q (D-75)',
+      () {
+        expect(ProGatePolicy.gated, isEmpty);
+        // Do'kon kirish taklifi (avtomatik pullikka o'tadi) — yo'q.
+        expect(ProTrialConfig.freeTrialDays, isNull);
+        expect(ProTrialConfig.enabled, isFalse);
+        expect(ProTrialConfig.storeIntroOffersAllowed, isFalse);
+        // 30 kunlik sinov — faqat server beradigan, kartasiz (D-75).
+        expect(ProTrialConfig.mechanism, ProTrialMechanism.serverGranted);
+        expect(ProTrialConfig.serverTrialDays, 30);
+        expect(
+          _read('cloudflare/src/trial.ts'),
+          contains('export const TRIAL_DAYS = 30;'),
+        );
+      },
+    );
 
     test('narx katalogi: egasi narxlari (D-73), uch daraja, yillik bor', () {
       final byPlan = {for (final p in ProPricing.plans) p.plan: p};
@@ -77,12 +88,15 @@ void main() {
       }
     });
 
-    test('hech qaysi bepul imkoniyat yopilmaydi (gated faqat pullik daraja)', () {
-      for (final f in Feature.values.where((f) => !f.pro)) {
-        expect(ProGatePolicy.gated.contains(f), isFalse, reason: f.name);
-      }
-      expect(ProGatePolicy.gated, isEmpty);
-    });
+    test(
+      'hech qaysi bepul imkoniyat yopilmaydi (gated faqat pullik daraja)',
+      () {
+        for (final f in Feature.values.where((f) => !f.pro)) {
+          expect(ProGatePolicy.gated.contains(f), isFalse, reason: f.name);
+        }
+        expect(ProGatePolicy.gated, isEmpty);
+      },
+    );
 
     test('admin grant: Pro bayrog‘isiz xizmat yo‘q, yo‘l yo‘q', () {
       BuildFlags.debugProEnabledOverride = null;
@@ -169,4 +183,121 @@ void main() {
       }
     });
   });
+
+  group(
+    'D-75: soxta xarid release’da imkonsiz, sandbox/sinov standartlari',
+    () {
+      test(
+        'BuildFlags.fakePurchases: release’da doimiy false, standart false',
+        () {
+          expect(kFakePurchasesRequested, isFalse);
+          expect(BuildFlags.fakePurchases, isFalse);
+          final src = _read('lib/core/build_flags.dart');
+          expect(
+            src,
+            contains(
+              "const bool kFakePurchasesRequested = bool.fromEnvironment('LG_FAKE_PURCHASES');",
+            ),
+            reason: 'defaultValue qo‘shilmasin',
+          );
+          expect(
+            src,
+            contains('!kReleaseMode && kFakePurchasesRequested && proEnabled'),
+            reason: 'kReleaseMode const: release’da kod olib tashlanadi',
+          );
+          final fake = _read('lib/core/entitlements/debug_fake_purchases.dart');
+          expect(fake, contains('if (kReleaseMode) {'));
+          expect(RegExp(r'_debugOnly\(\);').allMatches(fake).length, 3);
+        },
+      );
+
+      test(
+        'soxta adapter faqat main.dart da va faqat fakePurchases ortida',
+        () {
+          for (final f
+              in Directory('lib')
+                  .listSync(recursive: true)
+                  .whereType<File>()
+                  .where((f) => f.path.endsWith('.dart'))) {
+            final path = f.path.replaceAll(r'\', '/');
+            if (path.endsWith('debug_fake_purchases.dart')) continue;
+            final text = f.readAsStringSync();
+            if (!text.contains('DebugFake')) continue;
+            expect(path, 'lib/main.dart', reason: 'DebugFake* boshqa joyda');
+            final uses = RegExp(r'DebugFake\w+\(').allMatches(text).length;
+            final guarded = RegExp(
+              r'fake\s*\?\s*DebugFake|fake \? DebugFakeDeviceAttestor|\(fake\s*\?\s*DebugFake',
+            ).allMatches(text).length;
+            expect(guarded, uses, reason: 'har chaqiruv `fake ?` ortida');
+            expect(text, contains('final fake = BuildFlags.fakePurchases;'));
+          }
+        },
+      );
+
+      test(
+        'CI/skriptlar va do‘kon build buyruqlari LG_FAKE_PURCHASES ni yoqmaydi',
+        () {
+          for (final dir in ['.github', 'tool', 'scripts', 'ios', 'android']) {
+            final d = Directory(dir);
+            if (!d.existsSync()) continue;
+            for (final f
+                in d
+                    .listSync(recursive: true)
+                    .whereType<File>()
+                    .where(
+                      (f) => RegExp(
+                        r'\.(ya?ml|sh|py|dart|json|toml|gradle|kts|xcconfig)$',
+                      ).hasMatch(f.path),
+                    )) {
+              expect(
+                f.readAsStringSync().contains('LG_FAKE_PURCHASES'),
+                isFalse,
+                reason: f.path,
+              );
+            }
+          }
+        },
+      );
+
+      test('server standartlari: sandbox bayroqsiz rad, iOS sinovi yopiq', () {
+        final billing = _read('cloudflare/src/billing.ts');
+        expect(billing, contains("env.LG_BILLING_SANDBOX === 'true'"));
+        expect(billing, contains("new ApiError(403, 'sandbox_not_allowed')"));
+        expect(
+          billing,
+          contains("new ApiError(503, 'store_verifier_not_configured')"),
+        );
+        final trial = _read('cloudflare/src/trial.ts');
+        expect(trial, contains("env.TRIAL_PLATFORMS ?? 'android'"));
+        expect(trial, contains("'trial_not_available_on_platform'"));
+        final toml = _read('cloudflare/wrangler.toml');
+        expect(
+          RegExp(r'LG_BILLING_SANDBOX\s*=\s*"true"').hasMatch(toml),
+          isFalse,
+        );
+        expect(
+          RegExp(r'LG_BILLING_ENABLED\s*=\s*"true"').hasMatch(toml),
+          isFalse,
+        );
+      });
+
+      test('narx yagona manbada: ilova UI va server narx qotirmaydi', () {
+        // Narx faqat pro_catalog.dart da (USD) — ekranlar u yerdan yoki do'kondan.
+        for (final path in [
+          'lib/features/profile/subscription_screen.dart',
+          'lib/features/profile/purchase_screen.dart',
+          'cloudflare/src/billing.ts',
+          'cloudflare/src/trial.ts',
+          'cloudflare/src/tiers.ts',
+        ]) {
+          expect(
+            RegExp(r'\b(1\.49|9\.99|2\.49|24\.99|3\.49|34\.99)\b')
+                .hasMatch(_read(path)),
+            isFalse,
+            reason: path,
+          );
+        }
+      });
+    },
+  );
 }

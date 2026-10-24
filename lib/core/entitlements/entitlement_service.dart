@@ -59,6 +59,27 @@ enum BillingOutcome {
   failed,
 }
 
+/// Sinov tugmasi nega yo'q (D-75; UI oddiy izoh beradi).
+enum TrialBlock {
+  /// Sinov boshlash mumkin.
+  none,
+
+  /// Hisob yo'q (mehmon).
+  guest,
+
+  /// Shu hisob/telefon sinovdan foydalangan.
+  used,
+
+  /// Amaldagi Pro bor (obuna, admin yoki sinov).
+  hasAccess,
+
+  /// Server bu platformada sinov bermaydi (iOS — Apple javobigacha).
+  notOnPlatform,
+
+  /// Qurilma attestatsiyasi (Play Integrity / DeviceCheck) sozlanmagan.
+  notConfigured,
+}
+
 /// Bepul sinovni boshlash natijasi (D-74).
 enum TrialOutcome {
   /// Sinov yoqilmagan: server bayrog'i o'chiq, attestatsiya sozlanmagan yoki
@@ -191,10 +212,20 @@ class EntitlementService extends ChangeNotifier {
   bool get busy => _busy;
 
   /// To'lov oynasida ko'rsatiladigan mahsulotlar (narx do'kondan).
+  /// D-75: do'kon kirish taklifi (bepul sinov — avtomatik pullikka o'tadi)
+  /// ko'rsatilmaydi; 30 kunlik sinov faqat server sinovi (ikki marta sinov yo'q).
   List<StoreProduct> get offeredProducts => [
     for (final p in purchases.loaded)
       if (p.catalog case final c?)
-        if (BillingCatalog.offered(c, studentVerified: studentVerified)) p,
+        if (BillingCatalog.offered(c, studentVerified: studentVerified))
+          ProTrialConfig.storeIntroOffersAllowed || p.freeTrial == null
+              ? p
+              : StoreProduct(
+                  id: p.id,
+                  title: p.title,
+                  displayPrice: p.displayPrice,
+                  period: p.period,
+                ),
   ];
 
   bool _cacheValid(DateTime t) {
@@ -307,15 +338,34 @@ class EntitlementService extends ChangeNotifier {
       _trialUsed || (_cache?.items.any((e) => e.isTrial) ?? false);
   bool _trialUsed = false;
 
-  /// Bepul sinovni boshlash mumkinmi: hisob, server sinov manbai va qurilma
-  /// attestatsiyasi (D-74). Bugun hech bir buildda attestatsiya yo'q →
-  /// `false`.
+  /// Bepul sinovni boshlash mumkinmi: hisob, server imkoniyat so'rovi shu
+  /// platformada sinov bor desa ([TrialSource.trialOffered] — D-75: iOS
+  /// standart yopiq) va qurilma attestatsiyasi (D-74). Bugun hech bir buildda
+  /// attestatsiya yo'q → `false`.
   bool get trialAvailable =>
       attestor.available &&
-      source is TrialSource &&
+      _trialSource?.trialOffered == true &&
       source.hasSession &&
       !trialUsed &&
       activeEntitlement == null;
+
+  /// Server shu platformada sinov beradimi (D-75 imkoniyat so'rovi).
+  bool get trialOfferedHere => _trialSource?.trialOffered == true;
+
+  TrialSource? get _trialSource => switch (source) {
+    final TrialSource t => t,
+    _ => null,
+  };
+
+  /// Nima uchun sinov tugmasi yo'q (UI uchun oddiy izoh).
+  TrialBlock get trialBlock {
+    if (!source.hasSession) return TrialBlock.guest;
+    if (trialUsed) return TrialBlock.used;
+    if (activeEntitlement != null) return TrialBlock.hasAccess;
+    if (_trialSource?.trialOffered != true) return TrialBlock.notOnPlatform;
+    if (!attestor.available) return TrialBlock.notConfigured;
+    return TrialBlock.none;
+  }
 
   /// Bepul sinovni boshlash: nonce → qurilma attestatsiyasi → server.
   /// [email] — hisobning tasdiqlangan emaili (server tekshiradi).
@@ -324,11 +374,13 @@ class EntitlementService extends ChangeNotifier {
     required String email,
   }) async {
     final user = source.userId;
-    final src = switch (source) {
-      final TrialSource t => t,
-      _ => null,
-    };
-    if (!attestor.available || src == null || user == null) {
+    final src = _trialSource;
+    // Sinov kodi HECH QACHON do'kon xaridini boshlamaydi (purchases.buy yo'q):
+    // to'lov usuli so'ralmaydi, pul yechilmaydi (D-75).
+    if (!attestor.available ||
+        src == null ||
+        !src.trialOffered ||
+        user == null) {
       return TrialOutcome.unavailable;
     }
     if (_busy) return TrialOutcome.failed;
@@ -473,11 +525,19 @@ class EntitlementService extends ChangeNotifier {
 
   Future<void> _accept(String user, EntitlementSnapshot snap) async {
     final t = now();
+    // Oflayn chegarasi (D-75): min(lokal [offlineTtl] (7 kun), server bergan
+    // `offline_until` — qurilma soatiga o'girilgan). Oflaynda hech qachon
+    // uzaytirilmaydi: yangi chegara faqat serverning yangi javobi bilan.
+    var until = t.add(offlineTtl);
+    if (snap.offlineUntil case final server?) {
+      final local = server.subtract(snap.serverTime.difference(t.toUtc()));
+      if (local.isBefore(until)) until = local;
+    }
     _cache = EntitlementCache(
       userId: user,
       serverTime: snap.serverTime,
       receivedAt: t,
-      validUntil: t.add(offlineTtl),
+      validUntil: until,
       items: snap.items,
     );
     if (snap.trialUsed) _trialUsed = true;
@@ -638,6 +698,22 @@ class EntitlementService extends ChangeNotifier {
       notifyListeners();
     }
   }
+
+  /// Ilova oldingi planga qaytganda (D-75): serverdan yangilash, lekin
+  /// [resumeThrottle] dan tez-tez emas. Boshqa qurilmadagi xarid/bekor qilish
+  /// shu yerda ko'rinadi. Xato bo'lsa kesh qoladi (huquq UZAYTIRILMAYDI).
+  Future<void> onResume() async {
+    final t = now();
+    final last = _lastResume;
+    if (last != null && t.difference(last) < resumeThrottle) return;
+    _lastResume = t;
+    await refresh();
+  }
+
+  DateTime? _lastResume;
+
+  /// Ilova qayta ochilganda server so'rovlari orasidagi eng kam vaqt.
+  static const resumeThrottle = Duration(minutes: 5);
 
   /// "Lokal ma'lumotlarni o'chirish" dan keyin.
   void resetInMemory() {

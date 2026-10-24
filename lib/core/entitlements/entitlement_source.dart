@@ -8,6 +8,7 @@ import 'package:supabase/supabase.dart';
 import '../backend/backend_models.dart';
 import '../backend/cloudflare_backend.dart';
 import '../backend/supabase_backend.dart';
+import 'billing_catalog.dart';
 import 'device_attestor.dart';
 import 'entitlement_models.dart';
 import 'pro_catalog.dart';
@@ -52,6 +53,12 @@ abstract interface class EntitlementSource {
 /// `LG_BILLING_ENABLED=true` va qurilma attestatsiyasi sozlanganda javob
 /// beradi (aks holda 404/503 → [EntitlementFailure.notConfigured]).
 abstract interface class TrialSource {
+  /// Server imkoniyat so'rovi (D-75, `GET /v1/billing/status` → `trial`):
+  /// shu qurilma platformasida sinov HOZIR boshlanishi mumkinmi (platforma
+  /// `TRIAL_PLATFORMS` da VA server attestatsiyasi sozlangan). [probe] dan
+  /// keyin ma'lum; standart `false` (iOS — Apple yozma javobigacha `false`).
+  bool get trialOffered;
+
   /// `POST /v1/billing/trial/challenge` — bir martalik nonce.
   Future<String> trialChallenge();
 
@@ -193,6 +200,13 @@ class CloudflareEntitlementSource implements EntitlementSource, TrialSource {
   final String platform;
 
   bool _billing = false;
+  bool _trial = false;
+
+  @override
+  bool get trialOffered => _trial;
+
+  /// `ios` / `android` — server `trial` xaritasidagi kalit.
+  String get _trialKey => platform == 'app_store' ? 'ios' : 'android';
 
   @override
   bool get isConfigured => true;
@@ -208,10 +222,13 @@ class CloudflareEntitlementSource implements EntitlementSource, TrialSource {
     try {
       final r = await backend.billing('GET', '/v1/billing/status', auth: false);
       _billing = r.status == 200 && r.data[platform] == true;
+      final trial = r.data['trial'];
+      _trial = r.status == 200 && trial is Map && trial[_trialKey] == true;
     } on Object catch (e) {
       // Internet yo'q — to'lov yoqilmaydi (hamma imkoniyat ochiq qoladi).
       debugPrint('billing status: $e');
       _billing = false;
+      _trial = false;
     }
   }
 
@@ -228,12 +245,15 @@ class CloudflareEntitlementSource implements EntitlementSource, TrialSource {
     final body = <String, Object?>{
       'platform': proofs.first.platform,
       'restore': restore,
+      // Play tiklashda base plan noma'lum bo'lishi mumkin (obuna id si) —
+      // `product_id` yuborilmaydi, server do'kondan aniqlaydi.
       if (proofs.length == 1) ...{
-        'product_id': proofs.first.productId,
+        'product_id': ?_canonical(proofs.first.productId),
         'token': proofs.first.token,
       } else
         'purchases': [
-          for (final p in proofs) {'product_id': p.productId, 'token': p.token},
+          for (final p in proofs)
+            {'product_id': ?_canonical(p.productId), 'token': p.token},
         ],
     };
     return _snapshot(
@@ -276,6 +296,9 @@ class CloudflareEntitlementSource implements EntitlementSource, TrialSource {
       },
     ),
   );
+
+  static String? _canonical(String id) =>
+      BillingCatalog.ids.contains(id) ? id : null;
 
   static EntitlementFailure _failure(BackendException e) => switch (e.failure) {
     BackendFailure.network => EntitlementFailure.network,
