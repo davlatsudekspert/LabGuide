@@ -174,4 +174,18 @@ void main() {
       expect(_locked, opens ? findsNothing : findsOneWidget);
     });
   }
+
+  testWidgets('Lab yopiq to‘lov oynasi: faqat Labni ochadigan rejalar', (
+    tester,
+  ) async {
+    final s = await _gated(tester);
+    await pumpApp(tester, s, size: _tall);
+    await goTo(tester, '/lab/qc/new');
+    expect(_locked, findsOneWidget);
+    expect(find.text(uz.proPayTierSpecialist), findsOneWidget);
+    expect(find.text(uz.proPayTierPremium), findsOneWidget);
+    // Talaba va Ustoz Labni ochmaydi — bu oynada ko'rsatilmaydi.
+    expect(find.text(uz.proPayTierStudent), findsNothing);
+    expect(find.text(uz.proPayTierTeacher), findsNothing);
+  });
 }

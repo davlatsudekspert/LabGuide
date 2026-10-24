@@ -326,17 +326,20 @@ class _PurchaseBody extends StatelessWidget {
         if (ent.gated.isEmpty)
           LgNotice(l.proNothingGated, kind: NoticeKind.info),
         ..._status(context, l),
+        // Yopiq imkoniyatdan kelganda — faqat uni OCHADIGAN rejalar (masalan,
+        // Lab uchun Ustoz rejasi taklif qilinmaydi: u Labni ochmaydi).
         for (final plan in ProPlan.values)
-          ..._tier(
-            context,
-            l,
-            plan: plan,
-            plans: [
-              for (final p in products)
-                if (p.catalog!.plan == plan) p,
-            ],
-            owned: owned,
-          ),
+          if (locked == null || plan.tier.covers(locked))
+            ..._tier(
+              context,
+              l,
+              plan: plan,
+              plans: [
+                for (final p in products)
+                  if (p.catalog!.plan == plan) p,
+              ],
+              owned: owned,
+            ),
         const SizedBox(height: 8),
         Text(l.proPayFree, style: text.bodySmall),
         const SizedBox(height: 10),

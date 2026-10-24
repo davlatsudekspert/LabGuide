@@ -1,3 +1,5 @@
+import 'dart:io';
+
 // Foydalanuvchi sifatida bosqichma-bosqich o'tish uchun yordamchi: har
 // qadamda ekran rasmi (tool/screenshots/out/walk/<ssenariy>/NN_<qadam>.png).
 //
@@ -99,6 +101,29 @@ Future<AppServices> start(
     final ctx = tester.element(find.byType(Scaffold).first);
     for (final n in ['chemistry', 'hematology', 'immunoassay', 'urinalysis']) {
       await precacheImage(AssetImage('assets/instruments/img/$n.png'), ctx);
+    }
+    // Ilovadagi barcha rasm assetlari (Lab bo'limlari, atlas, sxemalar) —
+    // testda Image.asset o'zi dekod qilib ulgurmaydi, rasm bo'sh chiqardi.
+    // Standart kesh 100 MB — barcha rasm sig'masdan eskilari chiqib ketardi.
+    PaintingBinding.instance.imageCache
+      ..maximumSizeBytes = 2 << 30
+      ..maximumSize = 5000;
+    for (final dir in ['assets']) {
+      final d = Directory(dir);
+      if (!d.existsSync()) {
+        continue;
+      }
+      for (final f in d.listSync(recursive: true).whereType<File>()) {
+        final ext = f.path.split('.').last.toLowerCase();
+        if (ext != 'png' && ext != 'webp' && ext != 'jpg' && ext != 'jpeg') {
+          continue;
+        }
+        try {
+          await precacheImage(AssetImage(f.path), ctx);
+        } catch (_) {
+          // Dekod bo'lmaydigan asset — ekranda ham bo'sh chiqadi, ko'rik shuni ko'rsatadi.
+        }
+      }
     }
     await precacheImage(const AssetImage('assets/images/logo_mark.png'), ctx);
     await precacheImage(
