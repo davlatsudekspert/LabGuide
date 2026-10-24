@@ -895,7 +895,12 @@ void main() {
       ),
     );
 
-    IfuQuery q({String? maker = 'Mindray', String lot = 'LOT9'}) => IfuQuery(
+    IfuQuery q({
+      String? maker = 'Mindray',
+      String lot = 'LOT9',
+      String? analyte,
+    }) => IfuQuery(
+      analyteId: analyte,
       manufacturer: maker,
       model: ' bs-240 ',
       reagentRef: 'ref-1',
@@ -912,6 +917,17 @@ void main() {
       expect(matchIfu(const [record], q(lot: 'LOT1')).record, isNull);
       expect(matchIfu(const [record], q(maker: 'HUMAN')).record, isNull);
       expect(matchIfu(const [record], q(maker: null)).record, isNull);
+    });
+
+    test('boshqa analitning IFU yozuvi mos emas (audit P0-3)', () {
+      expect(
+        matchIfu(const [record], q(analyte: record.analyteId)).record,
+        same(record),
+      );
+      expect(
+        matchIfu(const [record], q(analyte: 'other-analyte')).record,
+        isNull,
+      );
     });
 
     test('incomplete query never matches', () {

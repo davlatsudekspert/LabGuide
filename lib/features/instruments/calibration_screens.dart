@@ -204,6 +204,7 @@ class _CalibrationScreenState extends State<CalibrationScreen> {
           model: model,
           reagentRef: _ref.text,
           ifuRevision: _ifu.text,
+          analyteId: _analyteId,
         ),
       );
     });
@@ -789,7 +790,9 @@ class _RecordFormState extends State<_RecordForm> {
   final List<_LevelFields> _levels = [_LevelFields('1')];
   DateTime _performedOn = DateTime.now();
   DateTime? _lotExpiry;
-  CalibrationOutcome _outcome = CalibrationOutcome.accepted;
+  // Standart — kutilmoqda: «qabul qilindi» faqat vakolatli shaxs QC va
+  // mezonni tekshirgach, ongli tanlanadi (audit 2026-10-24 P0-2).
+  CalibrationOutcome _outcome = CalibrationOutcome.pending;
   String? _error;
   bool _busy = false;
 

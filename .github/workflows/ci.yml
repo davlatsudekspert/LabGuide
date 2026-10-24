@@ -544,7 +544,13 @@ jobs:
           fi
 
   ios:
-    if: github.event_name == 'workflow_dispatch' || startsWith(github.ref, 'refs/tags/v')
+    # macOS daqiqalari pullik: faqat iOS kerak bo'lgan rejimlarda (build,
+    # testflight) yoki v* tegida ishga tushadi; play_internal, deploy_api,
+    # deploy_site, play_listing rejimlarida va oddiy push'da — yo'q.
+    if: >-
+      (github.event_name == 'workflow_dispatch' &&
+      (inputs.mode == 'build' || inputs.mode == 'testflight')) ||
+      startsWith(github.ref, 'refs/tags/v')
     needs: tests
     runs-on: macos-15
     timeout-minutes: 75

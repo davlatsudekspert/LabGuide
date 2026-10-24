@@ -229,16 +229,11 @@ DiffAssessment assessDifferential(
   }
   var refer = other;
   if (hasWbc) {
-    // Yo'llash chegaralari ham ekrandagi (yaxlitlangan) qiymat bo'yicha:
-    // 0,497 ekranda "0,50" — "< 0,5" deb yo'llanmaydi.
-    final n = _shown(
-      DiffMeasure.neutrophils,
-      _measureValue(record, DiffMeasure.neutrophils),
-    );
-    final e = _shown(
-      DiffMeasure.eosinophils,
-      _measureValue(record, DiffMeasure.eosinophils),
-    );
+    // Yo'llash chegaralari YAXLITLANMAGAN qiymat bo'yicha (xavfsizlik):
+    // 0,497 ekranda "0,50" ko'rinsa ham < 0,5 — yo'llanadi (audit 2026-10-24
+    // P0-1). Me'yor belgilari esa ekrandagi qiymat bo'yicha qoladi.
+    final n = _measureValue(record, DiffMeasure.neutrophils);
+    final e = _measureValue(record, DiffMeasure.eosinophils);
     if (n < diffSevereNeutropenia || e > diffMarkedEosinophilia) refer = true;
   }
   return DiffAssessment(

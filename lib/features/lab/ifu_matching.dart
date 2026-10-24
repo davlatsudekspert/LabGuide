@@ -11,6 +11,7 @@ class IfuQuery {
     required this.reagentRef,
     required this.ifuRevision,
     this.calibratorLot = '',
+    this.analyteId,
   });
 
   /// `null` — "boshqa" ishlab chiqaruvchi (katalogda bo'lmaydi).
@@ -19,6 +20,10 @@ class IfuQuery {
   final String reagentRef;
   final String ifuRevision;
   final String calibratorLot;
+
+  /// Tanlangan analit: berilsa, IFU yozuvi shu analit uchun bo'lishi shart
+  /// (boshqa analitning qo'llanmasi ko'rsatilmaydi).
+  final String? analyteId;
 
   /// Model, reagent REF va IFU versiyasisiz moslik qidirilmaydi.
   bool get isComplete =>
@@ -48,6 +53,7 @@ IfuMatch matchIfu(List<IfuRecord> catalog, IfuQuery q) {
   for (final r in catalog) {
     final b = r.binding;
     if (!b.isBound) continue;
+    if (q.analyteId != null && r.analyteId != q.analyteId) continue;
     final same =
         _norm(b.manufacturer) == _norm(q.manufacturer) &&
         _norm(b.model) == _norm(q.model) &&

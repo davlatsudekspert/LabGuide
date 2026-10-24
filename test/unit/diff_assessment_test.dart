@@ -126,25 +126,24 @@ void main() {
     expect(assessDifferential(_rec(normal)).allNormal, isFalse);
   });
 
-  test('0,5 yo‘llash chegarasi ekrandagi yaxlitlangan qiymat bo‘yicha '
-      '(audit #13)', () {
-    // 497/1000 × 1,0 = 0,497 → ekranda 0,50: "< 0,5" emas.
-    final shownHalf = assessDifferential(
-      _rec({DiffCell.segmented: 497, DiffCell.lymphocyte: 503}, wbc: 1),
-    );
-    expect(_of(shownHalf, DiffMeasure.neutrophils).flag, DiffFlag.low);
-    expect(shownHalf.refer, isFalse);
-    // 494/1000 → 0,49 — og'ir neytropeniya, yo'llash.
-    final below = assessDifferential(
-      _rec({DiffCell.segmented: 494, DiffCell.lymphocyte: 506}, wbc: 1),
-    );
-    expect(below.refer, isTrue);
-    // Eozinofillar: 1,504 → ekranda 1,50 — "> 1,5" emas.
+  test('0,5 yo‘llash chegarasi YAXLITLANMAGAN qiymat bo‘yicha '
+      '(audit 2026-10-24 P0-1)', () {
+    bool refers(int seg) => assessDifferential(
+      _rec({DiffCell.segmented: seg, DiffCell.lymphocyte: 1000 - seg}, wbc: 1),
+    ).refer;
+    // ANC = seg/1000 × 1,0: 0,494 / 0,497 / 0,499 < 0,5 — yo'llanadi.
+    expect(refers(494), isTrue);
+    expect(refers(497), isTrue);
+    expect(refers(499), isTrue);
+    // 0,500 va 0,504 — chegaradan past emas.
+    expect(refers(500), isFalse);
+    expect(refers(504), isFalse);
+    // Eozinofillar: 1,504 > 1,5 — yo'llanadi (ekranda 1,50 bo'lsa ham).
     final eo = assessDifferential(
       _rec({DiffCell.segmented: 812, DiffCell.eosinophil: 188}, wbc: 8),
     );
     expect(_of(eo, DiffMeasure.eosinophils).value, closeTo(1.504, 1e-9));
-    expect(eo.refer, isFalse);
+    expect(eo.refer, isTrue);
   });
 
   test('Harrison nashri va MSD farqlari ko‘rsatilgan (audit #14)', () {

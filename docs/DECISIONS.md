@@ -1188,3 +1188,20 @@ Manba: `docs/APP_MAP_2026-10-18.md` §4. Har qaror minimal o'zgarish bilan; eski
   `kLabSectionQuizzes` ga qo'shiladi.
 - **Testlar:** `test/widget/app_map_test.dart` (Q2, Q3, Q5, Q6, Q7, Q8), `lecture_deck_test.dart` (Q1
   yo'naltirish va zaxira), `global_search_test.dart` (Q4), `tab_memory_test.dart` (Q3 hero).
+
+## D-70. Audit 2026-10-24 bo'yicha P0 tuzatishlar va Pro narxlari (TAKLIF — egasi tasdig'ini kutadi)
+- **ANC / eozinofil yo'llash chegarasi** endi YAXLITLANMAGAN qiymat bo'yicha (0,497 ekranda "0,50" bo'lsa ham
+  `< 0,5` — yo'llanadi). D-audit #13 dagi "ekrandagi qiymat" qarori bekor qilindi (xavfsizlik tomoniga).
+  Test: `test/unit/diff_assessment_test.dart`. Shifokor/mutaxassis siyosatini tasdiqlashi kerak.
+- **Kalibrovka yozuvi** standart holati `pending` (avval `accepted`). Tasdiqlovchi, kalibrovkadan keyingi QC,
+  SOP havola va o'zgarmas audit izi — keyingi bosqich (hali yo'q).
+- **IFU moslash** analitni ham tekshiradi (`IfuQuery.analyteId`). Reagent ishlab chiqaruvchisi tekshiruvi hali yo'q.
+- **CI:** `ios` (macOS, pullik) job faqat `build`/`testflight` rejimlarida yoki `v*` tegida ishga tushadi.
+- **Pro narxlari — TAKLIF, YOQILMAGAN:** Talaba $1.49/oy (rejalashtirilgan bazaviy), Oddiy $3.99/oy, Ustoz $5.99/oy
+  (taklif). Yillik narxlar va 30 kunlik bepul foydalanish mexanizmi TASDIQLANMAGAN. D-49 (7/14 kunlik sinov),
+  D-57 (Ustoz $6.99) va 29 000 so'm/$4.99 eskirgan hisoblanadi, lekin egasi tasdiqlamaguncha kodda o'zgarmaydi.
+  Pro faqat main'dan yangi alohida tarmoqda tayyorlanadi (`pro-later` — eski surat); bepul reliz o'zgarmaydi.
+- **Ochiq (egasi qarori):** Toifa bo'limi hozir til UZ yoki qurilma mintaqasi UZ bo'lsa ko'rinadi (D-40). Master
+  rejadagi "til mamlakatga bog'lanmasin" bilan ziddiyat: ruscha tilli va rus mintaqali foydalanuvchi ko'rmaydi.
+  Variant: sozlamalarda ochiq tanlov.
+
