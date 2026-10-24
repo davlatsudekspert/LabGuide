@@ -959,22 +959,43 @@ jobs:
       # "Sign in with Apple" entitlement (ios/Runner/Runner.entitlements) —
       # OCHIQ YOZILGAN, TestFlight'ni buzmaslik uchun: faqat egasi App ID'da
       # imkoniyatni yoqib, repo variable LG_APPLE_SIGNIN=true qo'ygandagina
-      # IPA'ga qo'shiladi (docs/AUTH_SOCIAL_LOGIN.md). Qo'lda imzoda profil
-      # imkoniyatni o'z ichiga olmagan bo'lsa — entitlement qo'shilmaydi,
-      # ogohlantirish chiqadi va ilovada Apple tugmasi yashirin qoladi.
+      # IPA'ga qo'shiladi (docs/AUTH_SOCIAL_LOGIN.md).
+      # App Store 4.8: iOS'da Google bo'lsa, Sign in with Apple ham bo'lishi
+      # SHART. Google (LG_GOOGLE_IOS_CLIENT_ID yoki LG_GOOGLE_CLIENT_ID)
+      # sozlangan, Apple esa o'chiq bo'lib qolsa (LG_APPLE_SIGNIN != true yoki
+      # qo'lda imzo profilida imkoniyat yo'q) — job XATO bilan to'xtaydi
+      # (yashil "ogohlantirish" bilan noto'g'ri build chiqmaydi). Google
+      # sozlanmagan bo'lsa — avvalgidek: Apple o'chiriladi, build davom etadi.
       - name: Sign in with Apple — entitlement qarori
         if: env.MODE == 'testflight'
         run: |
           set -euo pipefail
-          if [ "$LG_APPLE_SIGNIN" != true ]; then
-            echo "LG_APPLE_SIGNIN=false" >> "$GITHUB_ENV"
-            echo "- Sign in with Apple: o'chiq (LG_APPLE_SIGNIN=true emas) — entitlement qo'shilmaydi" >> "$GITHUB_STEP_SUMMARY"
-            exit 0
+          GOOGLE_IOS=false
+          if [ -n "${LG_GOOGLE_IOS_CLIENT_ID:-}" ] || [ -n "${LG_GOOGLE_CLIENT_ID:-}" ]; then
+            GOOGLE_IOS=true
           fi
-          if [ "$SIGNING" = manual ] && ! grep -q 'com.apple.developer.applesignin' "$SIGN_DIR/profile.plist"; then
-            echo "::warning::App Store profilida Sign in with Apple yo'q — App ID'da imkoniyatni yoqing va profilni qayta yarating. Hozircha entitlement qo'shilmaydi."
+          REASON=""
+          if [ "$LG_APPLE_SIGNIN" != true ]; then
+            REASON="LG_APPLE_SIGNIN=true emas"
+          elif [ "$SIGNING" = manual ] && ! grep -q 'com.apple.developer.applesignin' "$SIGN_DIR/profile.plist"; then
+            REASON="App Store profilida Sign in with Apple (com.apple.developer.applesignin) yo'q"
+          fi
+          if [ -n "$REASON" ] && [ "$GOOGLE_IOS" = true ]; then
+            MSG="Google bilan kirish (iOS) sozlangan, lekin Sign in with Apple o'chiq: $REASON. App Store 4.8 bo'yicha bunday build rad etiladi. Tuzatish: (1) developer.apple.com → Identifiers → uz.labguide.app → Sign In with Apple imkoniyatini yoqing; (2) App Store profilini qayta yarating (developer.apple.com → Profiles → Edit → Save; CI uni API orqali yuklab oladi); (3) repo variable LG_APPLE_SIGNIN=true qo'ying. Yoki Google'ni iOS'da o'chiring: LG_GOOGLE_IOS_CLIENT_ID va LG_GOOGLE_CLIENT_ID variable'larini bo'shating."
+            echo "::error::$MSG"
+            {
+              echo "### Sign in with Apple — build to'xtatildi"
+              echo ""
+              echo "$MSG"
+            } >> "$GITHUB_STEP_SUMMARY"
+            exit 1
+          fi
+          if [ -n "$REASON" ]; then
             echo "LG_APPLE_SIGNIN=false" >> "$GITHUB_ENV"
-            echo "- Sign in with Apple: profilda imkoniyat yo'q — o'chirildi (build buzilmadi)" >> "$GITHUB_STEP_SUMMARY"
+            if [ "$LG_APPLE_SIGNIN" = true ]; then
+              echo "::warning::$REASON — App ID'da imkoniyatni yoqing va profilni qayta yarating. Google sozlanmagan, shuning uchun build davom etadi (Apple tugmasi yashirin)."
+            fi
+            echo "- Sign in with Apple: o'chiq ($REASON) — entitlement qo'shilmaydi; Google (iOS) ham sozlanmagan" >> "$GITHUB_STEP_SUMMARY"
             exit 0
           fi
           echo "- Sign in with Apple: entitlement IPA'ga qo'shiladi" >> "$GITHUB_STEP_SUMMARY"

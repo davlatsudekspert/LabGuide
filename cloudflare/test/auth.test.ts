@@ -1,4 +1,6 @@
 import { describe, expect, it } from 'vitest';
+import { otpLanguage } from '../src/auth';
+import { composeMessage } from '../src/email';
 import { makeServer, uniqueEmail } from './helpers';
 
 describe('email OTP', () => {
@@ -12,6 +14,49 @@ describe('email OTP', () => {
     expect(s.outbox[0].to).toBe(email);
     expect(s.outbox[0].code).toMatch(/^\d{6}$/);
     expect(r.text).not.toContain(s.outbox[0].code);
+  });
+
+  it('xat tili: ilova yuborgan uz|ru|en; yo‘q yoki noto‘g‘ri — uz', async () => {
+    const s = makeServer();
+    const cases: [unknown, string][] = [
+      ['uz', 'uz'],
+      ['ru', 'ru'],
+      ['en', 'en'],
+      [' RU ', 'ru'],
+      ['de', 'uz'],
+      ['', 'uz'],
+      [42, 'uz'],
+      [null, 'uz'],
+      [undefined, 'uz'],
+    ];
+    for (const [i, [language, want]] of cases.entries()) {
+      const email = uniqueEmail(`lang${i}`);
+      const body: Record<string, unknown> = { email };
+      if (language !== undefined) body.language = language;
+      const r = await s.call('POST', '/v1/auth/otp/request', { body });
+      expect(r.status).toBe(200);
+      expect(s.outbox.at(-1)).toMatchObject({ to: email, lang: want });
+    }
+  });
+
+  it('xat matni har tilda: kod, muddat va "so‘ramagan bo‘lsangiz" qatori', () => {
+    const uz = composeMessage('123456', otpLanguage('uz'));
+    const ru = composeMessage('123456', otpLanguage('ru'));
+    const en = composeMessage('123456', otpLanguage('en'));
+    const fallback = composeMessage('123456', otpLanguage('fr'));
+    expect(uz.subject).toBe('LabGuide: kirish kodi');
+    expect(ru.subject).toBe('LabGuide: код входа');
+    expect(en.subject).toBe('LabGuide: sign-in code');
+    expect(fallback).toEqual(uz);
+    for (const m of [uz, ru, en]) {
+      expect(m.text).toContain('123456');
+      expect(m.text).toMatch(/10 (daqiqa|минут|minutes)/);
+      expect(m.html).toContain('<strong');
+    }
+    expect(uz.text).toContain('so‘ramagan');
+    expect(uz.text).not.toContain("'");
+    expect(ru.text).toContain('не запрашивали');
+    expect(en.text).toContain('did not request');
   });
 
   it('kod va email bazada ochiq holda saqlanmaydi (faqat HMAC)', async () => {

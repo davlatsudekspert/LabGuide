@@ -1232,7 +1232,7 @@ bilan solishtirib moslandi. `pro-next` = `origin/main c8c9430` + shu ish. `pro-l
   `test/guards/pro_flag_default_guard_test.dart`, `product_policy_guard_test.dart`.
 - Server: `LG_BILLING_ENABLED=true` (Worker env). Bo'lmasa `/v1/billing/*`, `/v1/entitlements` — 404
   (`cloudflare/test/guards.test.ts`). Do'kon kalitlari (`APPLE_IAP_*`, `GOOGLE_PLAY_SERVICE_ACCOUNT`) ham kerak.
-  Migratsiya 0007 → `0013_billing.sql` (0007 raqami D-58 da band deb belgilangan; eski 0003 `entitlements` jadvalini
+  Migratsiya 0007 → `0014_billing.sql` (dastlab `0013_billing.sql`; audit birlashmasida 0014 ga ko'chirildi, 0013 — `0013_admin_step_up`) (0007 raqami D-58 da band deb belgilangan; eski 0003 `entitlements` jadvalini
   almashtiradi — hech qachon yozilmagan). CI (`ci.yml`) tegilmagan: `deploy_api` billing secretlarini o'rnatmaydi.
 - Yopiladigan imkoniyatlar: `ProGatePolicy.gated` — BO'SH. Boshlash nuqtalari ulangan (`requireFeature`), lekin
   hech narsa yopilmaydi.
@@ -1299,7 +1299,7 @@ Kodga o'zgarish kiritilmadi (D-71 holati o'zgarmaydi).
 
 ## D-73. Pro: egasi narxlari (3 daraja), admin tomonidan Pro berish (2026-10-24; narxlar EGASI QARORI, Pro YOQILMAGAN)
 `pro-next` tarmog'ida. `main` va bepul reliz o'zgarmaydi. **Hech narsa deploy qilinmadi, yoqilmadi, do'konga yuborilmadi;
-production D1 ga migratsiya qo'llanmadi** (0014 — faqat fayl). `BuildFlags.proEnabled` standart `false`,
+production D1 ga migratsiya qo'llanmadi** (0015 — faqat fayl). `BuildFlags.proEnabled` standart `false`,
 server `LG_BILLING_ENABLED` o'chiq (billing va admin grant yo'llari 404), `ProGatePolicy.gated` BO'SH,
 `ProTrialConfig.freeTrialDays = null` — mavjud bepul foydalanuvchilar huquqi o'zgarmaydi.
 
@@ -1359,7 +1359,7 @@ tokeni bilan ham).
   roli + TOTP) bo'lganda; bayroq o'chiq bo'lsa `services.proGrants == null`, qator ham yo'l ham yo'q — panel avvalgidek.
   Klient `admin_grant` qatorini taniydi (`ServerEntitlement.isAdminGrant`, `ProSource.adminGrant`), eng yaxshisini
   serverdagi qoida bilan tanlaydi.
-- Migratsiya `cloudflare/migrations/0014_pro_grants.sql` — FAYL. Qo'llash egasi `deploy_api` ni ishga tushirganda
+- Migratsiya `cloudflare/migrations/0015_pro_grants.sql` — FAYL. Qo'llash egasi `deploy_api` ni ishga tushirganda
   (CI bu ishda ishga tushirilmadi). 0007 raqami band bo'lib qoladi.
 
 **4. Regressiya qorovullari.** `proEnabled` standart false; `ProGatePolicy.gated` bo'sh va hech bir bepul imkoniyat
@@ -1384,7 +1384,7 @@ unda yo'q; bayroq o'chiq — paywall/obuna qatori/admin “Pro berish” yo'q (`
 
 ## D-74. Pro: reja ↔ panel ajratish (server), 30 kunlik sinov — bir telefonga bir marta, “Obuna” ekrani (2026-10-24; Pro YOQILMAGAN)
 `pro-next` tarmog'ida. **Hech narsa deploy qilinmadi, yoqilmadi, do'konga yuborilmadi; production D1 ga migratsiya
-qo'llanmadi** (`0015_pro_trials.sql` — faqat fayl). `BuildFlags.proEnabled` standart `false`; server yo'llari
+qo'llanmadi** (`0016_pro_trials.sql` — faqat fayl). `BuildFlags.proEnabled` standart `false`; server yo'llari
 (`/v1/billing/trial/*`, `/v1/pro/*`) `LG_BILLING_ENABLED=true` bo'lmasa 404; qurilma attestatsiyasi tekshiruvchisi
 production'da ULANMAGAN — sinov `503 device_attestation_not_configured`. `ProGatePolicy.gated` BO'SH (bugun bepul
 hech narsa pullik bo'lmadi), mavjud bepul foydalanuvchilar va bepul ustoz paneli (guruhlar, topshiriqlar) o'zgarmadi.
@@ -1467,7 +1467,7 @@ Testlar: `test/widget/subscription_screen_test.dart` (bayroq on/off, 320px/1.3 u
 2. Google: Play Console → App integrity → Play Integrity API (Google Cloud loyihasini bog'lash), tokenni
    `decodeIntegrityToken` bilan ochish uchun service account (secret), kerak bo'lsa “device recall” (beta); Android
    native plagin (Integrity API, nonce = server challenge).
-3. Server: haqiqiy `DeviceAttestationVerifier` ni yozish va `index.ts` da ulash; `0013`/`0014`/`0015` migratsiyalarini
+3. Server: haqiqiy `DeviceAttestationVerifier` ni yozish va `index.ts` da ulash; `0014`/`0015`/`0016` migratsiyalarini
    qo'llash; `LG_BILLING_ENABLED=true`; `deploy_api`.
 4. Do'kon mahsulotlari (D-73 id'lari) va kalitlar (`APPLE_IAP_*`, `GOOGLE_PLAY_SERVICE_ACCOUNT`).
 5. Maxfiylik siyosati (§10a ni nashr qilish), App Privacy (Device ID — firibgarlikka qarshi), Play Data safety
@@ -1482,7 +1482,7 @@ martalik domenlar ro'yxati; (6) attestatsiya yo'q qurilmalar (Huawei/AOSP, web) 
 
 ## D-75. Pro tayyorligi: do'kon tekshiruvi, bildirishnomalar, sandbox, oflayn, sinov platformasi (2026-10-24; Pro YOQILMAGAN)
 `pro-next` tarmog'ida. **Hech narsa deploy qilinmadi, yoqilmadi, do'konga yuborilmadi, push qilinmadi; production D1 ga
-migratsiya qo'llanmadi** (`0016_billing_notifications.sql` — faqat fayl). `BuildFlags.proEnabled` standart `false`,
+migratsiya qo'llanmadi** (`0017_billing_notifications.sql` — faqat fayl). `BuildFlags.proEnabled` standart `false`,
 `LG_BILLING_ENABLED` o'chiq (yo'llar 404), `ProGatePolicy.gated` BO'SH, `LG_BILLING_SANDBOX` o'chiq,
 `TRIAL_PLATFORMS` standart `android`. Mavjud bepul foydalanuvchilar huquqi o'zgarmadi. Narxlar — D-73 (yagona manba
 `pro_catalog.dart`). To'liq audit: `docs/PRO_READINESS_2026-10-24.md`; test muhiti: `docs/PRO_TEST_ENVIRONMENT.md`;
@@ -1525,7 +1525,7 @@ VA attestatsiya bo'lsa; aks holda oddiy izoh; sinov kodi xarid boshlamaydi. “O
 5. Do'kon mahsulotlari: App Store — bitta guruh, 6 mahsulot; Play — 3 obuna × 2 base plan, sinov offer'isiz.
 6. Kalitlar (Worker secretlari): `APPLE_IAP_*`, `GOOGLE_PLAY_SERVICE_ACCOUNT`, `PLAY_RTDN_AUDIENCE`/
    `PLAY_RTDN_SERVICE_ACCOUNT` (yoki `PLAY_RTDN_TOKEN`), ixtiyoriy `APPLE_SUBSCRIPTION_GROUP_ID`.
-7. Migratsiyalar 0013–0016 ni qo'llash (avval test D1, keyin production — egasi `deploy_api` bilan).
+7. Migratsiyalar 0014–0017 ni qo'llash (avval test D1, keyin production — egasi `deploy_api` bilan).
 8. `LG_BILLING_ENABLED` ni qachon yoqish; App Review sandbox xaridlari uchun `LG_BILLING_SANDBOX` siyosati
    (production'da o'chiq bo'lsa review xaridi rad etiladi).
 9. Play Data safety (“Device or other IDs”, “Purchase history”, firibgarlikka qarshi) va App Privacy (“Device ID”,

@@ -36,6 +36,6 @@
   "assets/instruments/schematic/immunoassay_1200.png": "immunoanalizatorlar alohida mavzu sifatida yo'q",
   "assets/instruments/schematic/hematology3_1200.png": "d084 uchun hematology5 tanlangan; bir deckda ikki o'xshash sxema shart emas",
   "assets/instruments/img/*.png": "katalog modellari rasmi (mavzuga emas, aniq modelga tegishli)",
-  "assets/images/molecular_hero.webp": "bezak rasm (kirish ekrani) — mazmunga aloqasi yo'q"
+  "assets/images/hero_schematic.webp": "LabGuide'ning o'z sxematik rasmi (tool/images/gen_hero_schematic.py), bezak"
  }
 }

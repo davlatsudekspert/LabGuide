@@ -64,7 +64,7 @@ Future<void> precacheLogos(WidgetTester tester) async {
     for (final p in ['logo_mark', 'logo_mark_large']) {
       await precacheImage(AssetImage('assets/images/$p.png'), ctx);
     }
-    await precacheImage(const AssetImage('assets/images/molecular_hero.webp'), ctx);
+    await precacheImage(const AssetImage('assets/images/hero_schematic.webp'), ctx);
     for (final n in ['chemistry', 'hematology', 'immunoassay', 'urinalysis']) {
       await precacheImage(AssetImage('assets/instruments/img/$n.png'), ctx);
     }

@@ -16,6 +16,7 @@ import 'community_backend.dart';
 import 'lab_backend.dart';
 import 'partner_models.dart';
 import 'pro_grants.dart';
+import 'step_up.dart';
 import 'supabase_backend.dart' show SessionStore;
 
 /// Cloudflare Worker API manzili (build vaqtida, repoda yo'q):
@@ -120,7 +121,9 @@ class CloudflareLabBackend
         SocialLoginBackend,
         AdminConsoleBackend,
         ComplaintsBackend,
-        SupportAttachmentPolicy {
+        SupportAttachmentPolicy,
+        StepUpBackend,
+        SessionsBackend {
   CloudflareLabBackend(
     this.config, {
     SessionStore? sessionStore,
@@ -138,6 +141,8 @@ class CloudflareLabBackend
   final Duration timeout;
 
   final _sessionLost = StreamController<void>.broadcast();
+  StepUpPrompt? _stepUpPrompt;
+  Future<bool>? _pendingStepUp;
   String? _token;
   String? _email;
   String? _userId;
@@ -169,6 +174,7 @@ class CloudflareLabBackend
     bool optionalAuth = false,
     Uint8List? bytes,
     String? contentType,
+    bool stepUpRetry = true,
   }) async {
     final req = http.Request(method, config.resolve(path, query));
     req.headers['accept'] = 'application/json';
@@ -212,6 +218,30 @@ class CloudflareLabBackend
       // Server sessiyani tan olmadi (muddati o'tgan / boshqa qurilmada chiqilgan).
       await _clearSession();
       _sessionLost.add(null);
+    }
+    // Admin step-up: ilova kodni so'raydi, tasdiqlansa so'rov BIR marta
+    // qaytariladi (ikkinchi marta yana step_up_required bo'lsa — xato sifatida).
+    final prompt = _stepUpPrompt;
+    if (stepUpRetry &&
+        prompt != null &&
+        res.statusCode == 403 &&
+        out.error == 'step_up_required') {
+      final action = out.map['action'] as String?;
+      final ok = await (_pendingStepUp ??= prompt(action)
+          .whenComplete(() => _pendingStepUp = null));
+      if (ok && _token != null) {
+        return _send(
+          method,
+          path,
+          body: body,
+          query: query,
+          auth: auth,
+          optionalAuth: optionalAuth,
+          bytes: bytes,
+          contentType: contentType,
+          stepUpRetry: false,
+        );
+      }
     }
     return out;
   }
@@ -324,7 +354,7 @@ class CloudflareLabBackend
   }
 
   @override
-  Future<OtpRequestResult> requestCode(String email) async {
+  Future<OtpRequestResult> requestCode(String email, {String? language}) async {
     if (!isValidEmail(email)) {
       return const OtpRequestResult(OtpRequestStatus.invalidEmail);
     }
@@ -332,7 +362,11 @@ class CloudflareLabBackend
       final r = await _send(
         'POST',
         '/v1/auth/otp/request',
-        body: {'email': normalizeEmail(email)},
+        // Kod xati ilova tilida (server uz|ru|en ni tekshiradi, aks holda uz).
+        body: {
+          'email': normalizeEmail(email),
+          if (language != null && language.isNotEmpty) 'language': language,
+        },
         auth: false,
       );
       return switch (r.status) {
@@ -510,6 +544,47 @@ class CloudflareLabBackend
   Future<void> deleteAccount() async {
     await _call('DELETE', '/v1/me');
     await _clearSession();
+  }
+
+  /// `POST /v1/auth/logout-all`: hamma qurilmalardagi sessiyalar o'chadi.
+  /// Xato bo'lsa (masalan, internet yo'q) — bu qurilmada ham chiqilmaydi,
+  /// foydalanuvchi qayta urinadi (aks holda boshqa qurilmalar ochiq qolardi).
+  @override
+  Future<void> signOutEverywhere() async {
+    await _call('POST', '/v1/auth/logout-all');
+    await _clearSession();
+  }
+
+  // ---------------------------------------------------------- step-up
+  @override
+  StepUpPrompt? get stepUpPrompt => _stepUpPrompt;
+  @override
+  set stepUpPrompt(StepUpPrompt? prompt) => _stepUpPrompt = prompt;
+
+  StepUpException _stepUpError(_ApiResponse r, String path) => StepUpException(
+    _failure(r.status),
+    r.error,
+    attemptsLeft: (r.map['attempts_left'] as num?)?.toInt(),
+    retryAfter: _seconds(r.map['retry_after']),
+    detail: 'POST $path ${r.status} ${r.error}',
+  );
+
+  @override
+  Future<StepUpChallenge> requestStepUp() async {
+    final r = await _send('POST', '/v1/auth/step-up', stepUpRetry: false);
+    if (!r.ok) throw _stepUpError(r, '/v1/auth/step-up');
+    return StepUpChallenge.fromJson(r.map);
+  }
+
+  @override
+  Future<void> verifyStepUp(String code) async {
+    final r = await _send(
+      'POST',
+      '/v1/auth/step-up/verify',
+      body: {'code': code.trim()},
+      stepUpRetry: false,
+    );
+    if (!r.ok) throw _stepUpError(r, '/v1/auth/step-up/verify');
   }
 
   // ------------------------------------------------------------ access
@@ -1405,6 +1480,13 @@ class CloudflareLabBackend
   @override
   Future<void> adminReactivateAccount(String userId) =>
       _admin('POST', _user(userId, 'reactivate'));
+
+  @override
+  Future<int> adminRevokeSessions(String userId) async =>
+      ((await _admin('POST', _user(userId, 'sessions/revoke'))).map['revoked']
+              as num?)
+          ?.toInt() ??
+      0;
 
   @override
   Future<void> adminDeleteAccount({

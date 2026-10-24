@@ -312,6 +312,9 @@ void main() {
         levels: const [CalibratorLevel(name: '1', value: 5.55, unit: 'mmol/L')],
         performedOn: DateTime(2026, 10, 9),
         outcome: CalibrationOutcome.accepted,
+        kind: CalibrationKind.lab,
+        qcAfter: QcAfter.pass,
+        approvedBy: 'Lab head',
       );
 
       final b = InstrumentsController(store, bundle: rootBundle);

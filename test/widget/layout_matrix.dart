@@ -64,6 +64,13 @@ const appRoutes = [
   '/lab/instruments/c/hematology/human',
   '/lab/instruments/m/human-humalyzer-4000',
   '/lab/instruments/m/roche-cobas-u-411',
+  // 22 yo‘nalishli ma’lumotnoma kartalari (platforma, test, caveat bilan).
+  '/lab/instruments/d/hiv',
+  '/lab/instruments/d/bacteriology',
+  '/lab/instruments/lc/hiv-rna-viral-load',
+  '/lab/instruments/lc/a3-mol-realtime-pcr-platform',
+  '/lab/instruments/lc/a3-bac-vitek2-platform',
+  '/lab/instruments/lc/a2-test-arterial-blood-gas-panel',
   '/lab/microscopy',
   '/lab/differential',
   '/lab/differential/cells',

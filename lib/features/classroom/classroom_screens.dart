@@ -8,6 +8,7 @@ import 'package:material_ui/material_ui.dart';
 import '../../app/app_scope.dart';
 import '../../app/widgets/lg_page.dart';
 import '../../core/backend/backend_models.dart';
+import '../../core/single_flight.dart';
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
@@ -277,15 +278,18 @@ mixin _PlanLoader<T extends StatefulWidget> on State<T> {
     return builder(d);
   }
 
-  Future<void> act(Future<void> Function() run) async {
-    final l = AppLocalizations.of(context);
-    try {
-      await run();
-    } on Object catch (e) {
-      if (mounted) showSnack(context, classesErrorText(e, l));
-    }
-    if (mounted) await reload();
-  }
+  /// Ustoz amali (mavzuni ochish, bosqich, testni yakunlash): bitta amal
+  /// tugamaguncha keyingisi boshlanmaydi (ikki marta bosish).
+  Future<void> act(Future<void> Function() run) =>
+      SingleFlight.run((#classroomAct, this), () async {
+        final l = AppLocalizations.of(context);
+        try {
+          await run();
+        } on Object catch (e) {
+          if (mounted) showSnack(context, classesErrorText(e, l));
+        }
+        if (mounted) await reload();
+      });
 
   Future<void> open(String location) async {
     await context.push(location);
@@ -703,7 +707,10 @@ class _GroupTopicScreenState extends State<GroupTopicScreen>
     );
   }
 
-  Future<void> _finishTest(CurriculumTopic t) async {
+  Future<void> _finishTest(CurriculumTopic t) =>
+      SingleFlight.run((#finishTopicTest, t.id), () => _finishTestOnce(t));
+
+  Future<void> _finishTestOnce(CurriculumTopic t) async {
     final l = AppLocalizations.of(context);
     final ok = await confirmDialog(
       context,
@@ -1272,6 +1279,7 @@ class _TopicTestSetupScreenState extends State<TopicTestSetupScreen>
   }
 
   Future<void> _start(CurriculumTopic t, List<ExamQuestion> pool) async {
+    if (_busy) return;
     setState(() => _tried = true);
     final chosen = [
       for (final q in pool)

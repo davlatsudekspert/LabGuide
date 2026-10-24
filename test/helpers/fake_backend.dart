@@ -7,6 +7,7 @@ import 'package:labguide/core/backend/backend_models.dart';
 import 'package:labguide/core/backend/lab_backend.dart';
 import 'package:labguide/core/backend/partner_models.dart';
 import 'package:labguide/core/backend/pro_grants.dart';
+import 'package:labguide/core/backend/step_up.dart';
 import 'package:labguide/core/entitlements/pro_catalog.dart';
 import 'package:labguide/features/auth/otp_auth.dart';
 import 'package:labguide/features/classroom/invite_link.dart'
@@ -30,7 +31,7 @@ class _User {
 ///
 /// Bitta obyekt ko'p foydalanuvchini saqlaydi — chiqib, boshqa email bilan
 /// kirish mumkin (qabul tekshiruvi kabi).
-class FakeLabBackend implements LabBackend {
+class FakeLabBackend implements LabBackend, SessionsBackend {
   FakeLabBackend({this.adminEmails = const {'davlatsudekspert@gmail.com'}});
 
   final Set<String> adminEmails;
@@ -47,6 +48,20 @@ class FakeLabBackend implements LabBackend {
   final Map<String, Uint8List> _files = {};
   final List<AuditEntry> audit = [];
   final _lost = StreamController<void>.broadcast();
+
+  /// Amal chaqiruvlari soni (ikki marta bosish testlari: aynan bitta chaqiruv).
+  final Map<String, int> calls = {};
+  int callCount(String name) => calls[name] ?? 0;
+
+  /// Berilsa — sanalgan amallar shu tugaguncha "yo'lda" turadi (ikkinchi
+  /// bosish birinchisi tugamasdan keladi).
+  Completer<void>? inFlight;
+
+  Future<void> enter(String name) async {
+    calls[name] = (calls[name] ?? 0) + 1;
+    final h = inFlight;
+    if (h != null) await h.future;
+  }
 
   String _id(String p) => '$p-${++_seq}';
   DateTime _now() => DateTime.now().toUtc().add(Duration(microseconds: _seq));
@@ -78,8 +93,13 @@ class FakeLabBackend implements LabBackend {
     _lost.add(null);
   }
 
+  /// Oxirgi OTP so'rovidagi til (testlar uchun).
+  String? lastOtpLanguage;
+
   @override
-  Future<OtpRequestResult> requestCode(String email) async {
+  Future<OtpRequestResult> requestCode(String email, {String? language}) async {
+    await enter('requestCode');
+    lastOtpLanguage = language;
     if (!isValidEmail(email)) {
       return const OtpRequestResult(OtpRequestStatus.invalidEmail);
     }
@@ -93,6 +113,7 @@ class FakeLabBackend implements LabBackend {
 
   @override
   Future<OtpVerifyResult> verifyCode(String email, String code) async {
+    await enter('verifyCode');
     final key = normalizeEmail(email);
     if (_pendingCodes[key] == null) {
       return const OtpVerifyResult(OtpVerifyStatus.noActiveCode);
@@ -128,12 +149,27 @@ class FakeLabBackend implements LabBackend {
 
   @override
   Future<void> signOut() async {
+    await enter('signOut');
+    _current = null;
+    _aal2 = false;
+  }
+
+  /// Hamma qurilmalardan chiqish: shu foydalanuvchining boshqa "qurilma"
+  /// sessiyalari ham o'chadi ([otherDeviceSessions] — test uchun hisob).
+  final Map<String, int> otherDeviceSessions = {};
+
+  @override
+  Future<void> signOutEverywhere() async {
+    await enter('signOutEverywhere');
+    final u = _require();
+    otherDeviceSessions.remove(u.email);
     _current = null;
     _aal2 = false;
   }
 
   @override
   Future<void> deleteAccount() async {
+    await enter('deleteAccount');
     final u = _require();
     _users.remove(u.email);
     _threads.removeWhere((t) => t.userId == u.id);
@@ -416,6 +452,7 @@ class FakeLabBackend implements LabBackend {
 
   @override
   Future<void> adminReply(String threadId, String body) async {
+    await enter('adminReply');
     _requireAdmin();
     final t = _thread(threadId);
     final now = _now();
@@ -658,11 +695,13 @@ class FakeLabBackend implements LabBackend {
 
   @override
   Future<void> registerTeacher() async {
+    await enter('registerTeacher');
     _require().teacher = true;
   }
 
   @override
   Future<StudyGroup> createGroup(String name, {String? displayName}) async {
+    await enter('createGroup');
     final u = _require();
     if (!u.teacher) throw const BackendException(BackendFailure.forbidden);
     _checkLength(name, 3, 80);
@@ -684,6 +723,7 @@ class FakeLabBackend implements LabBackend {
 
   @override
   Future<String> joinGroup(String code, {String? displayName}) async {
+    await enter('joinGroup');
     final u = _require();
     final g = _groups
         .where(
@@ -735,6 +775,7 @@ class FakeLabBackend implements LabBackend {
 
   @override
   Future<void> leaveGroup(String groupId) async {
+    await enter('leaveGroup');
     final u = _require();
     _members.removeWhere(
       (m) => m.groupId == groupId && m.userId == u.id && !m.teacher,
@@ -763,6 +804,7 @@ class FakeLabBackend implements LabBackend {
 
   @override
   Future<void> deleteGroup(String groupId) async {
+    await enter('deleteGroup');
     _require();
     if (!_isTeacher(groupId)) {
       throw const BackendException(BackendFailure.forbidden);
@@ -780,6 +822,7 @@ class FakeLabBackend implements LabBackend {
 
   @override
   Future<void> removeMember(String groupId, String userId) async {
+    await enter('removeMember');
     _require();
     if (!_isTeacher(groupId)) {
       throw const BackendException(BackendFailure.forbidden);
@@ -814,6 +857,7 @@ class FakeLabBackend implements LabBackend {
     int? perStudent,
     List<String?>? poolTopics,
   }) async {
+    await enter('createAssignment');
     _require();
     if (!_isTeacher(groupId)) {
       throw const BackendException(BackendFailure.forbidden);
@@ -878,6 +922,7 @@ class FakeLabBackend implements LabBackend {
 
   @override
   Future<AssignmentStart> startAssignment(String assignmentId) async {
+    await enter('startAssignment');
     final a = _forStudent(assignmentId);
     final now = groupClock();
     final key = (assignmentId, _current!.id);
@@ -915,6 +960,7 @@ class FakeLabBackend implements LabBackend {
 
   @override
   Future<void> closeAssignment(String assignmentId) async {
+    await enter('closeAssignment');
     _require();
     final a = _assignments.where((a) => a.info.id == assignmentId).firstOrNull;
     if (a == null || !_owns(a.info.groupId)) {
@@ -946,6 +992,7 @@ class FakeLabBackend implements LabBackend {
     List<int> answers, {
     List<String>? questionIds,
   }) async {
+    await enter('submitAssignment');
     final a = _forStudent(assignmentId);
     final u = _current!;
     final now = groupClock();
@@ -1090,6 +1137,7 @@ class FakeLabBackend implements LabBackend {
 
   @override
   Future<void> openTopic(String groupId, String topicId) async {
+    await enter('openTopic');
     _requireOwner(groupId);
     if (!_topicId.hasMatch(topicId)) {
       throw const BackendException(BackendFailure.invalid);
@@ -1128,6 +1176,7 @@ class FakeLabBackend implements LabBackend {
     required List<int> correctIndexes,
     int? timeLimitMinutes,
   }) async {
+    await enter('startTopicTest');
     await openTopic(groupId, topicId);
     final t = _topics[(groupId, topicId)]!;
     if (t.testAssignmentId != null) {
@@ -1147,6 +1196,7 @@ class FakeLabBackend implements LabBackend {
 
   @override
   Future<void> finishTopicTest(String groupId, String topicId) async {
+    await enter('finishTopicTest');
     _requireOwner(groupId);
     final id = _topics[(groupId, topicId)]?.testAssignmentId;
     if (id == null) throw const BackendException(BackendFailure.notFound);
@@ -1600,6 +1650,7 @@ class FakeAdminTeamBackend extends FakeLabBackend
 
   @override
   Future<AdminEntry> addAdmin(String email) async {
+    await enter('addAdmin');
     _requireSuper();
     addCalls.add(email);
     if (!isValidEmail(email)) {
@@ -1640,6 +1691,7 @@ class FakeAdminTeamBackend extends FakeLabBackend
 
   @override
   Future<void> removeAdmin(String id) async {
+    await enter('removeAdmin');
     _requireSuper();
     final key = _grants.entries
         .where((g) => g.value.id == id)
@@ -1829,8 +1881,86 @@ class FakeAdminTeamBackend extends FakeLabBackend
 /// to'xtatilmaydi, o'z rolini o'zgartira olmaydi, to'xtatilgan hisob kira
 /// olmaydi, shikoyat — soatiga 5 ta (mehmon ham).
 class FakeAdminConsoleBackend extends FakeAdminTeamBackend
-    implements AdminConsoleBackend, ComplaintsBackend, SupportAttachmentPolicy {
+    implements
+        AdminConsoleBackend,
+        ComplaintsBackend,
+        SupportAttachmentPolicy,
+        StepUpBackend {
   FakeAdminConsoleBackend({super.adminEmails}) : super(legacyAdminApi: true);
+
+  // ------------------------------------------------------------ step-up
+  /// true: xavfli amallar serverdagidek step-up talab qiladi.
+  bool requireStepUp = false;
+  bool _steppedUp = false;
+  static const stepUpCode = '246810';
+  int stepUpRequests = 0;
+  int stepUpVerifies = 0;
+  StepUpPrompt? _prompt;
+
+  @override
+  StepUpPrompt? get stepUpPrompt => _prompt;
+  @override
+  set stepUpPrompt(StepUpPrompt? prompt) => _prompt = prompt;
+
+  @override
+  Future<StepUpChallenge> requestStepUp() async {
+    stepUpRequests++;
+    _panel();
+    return StepUpChallenge(
+      method: StepUpMethod.email,
+      emailMasked: FakeAdminTeamBackend.mask(_current!.email),
+      retryAfter: const Duration(seconds: 60),
+    );
+  }
+
+  @override
+  Future<void> verifyStepUp(String code) async {
+    stepUpVerifies++;
+    if (code.trim() != stepUpCode) {
+      throw const StepUpException(
+        BackendFailure.invalid,
+        'invalid_code',
+        attemptsLeft: 4,
+      );
+    }
+    _steppedUp = true;
+    _log('step_up_verified', _current?.id, {'method': 'email'});
+  }
+
+  /// CloudflareLabBackend dagidek: `step_up_required` → ilova so'rovchisi →
+  /// tasdiqlansa BIR marta davom etadi. [once] — tasdiq shu amal bilan tugaydi.
+  Future<void> _stepUp(String action, {bool once = false}) async {
+    if (!requireStepUp) return;
+    if (!_steppedUp) {
+      final p = _prompt;
+      final ok = p != null && await p(action);
+      if (!ok || !_steppedUp) {
+        _log('step_up_required', null, {'action': action});
+        throw const AdminConsoleException(
+          BackendFailure.forbidden,
+          'step_up_required',
+        );
+      }
+    }
+    if (once) _steppedUp = false;
+  }
+
+  /// Boshqa qurilmalardagi sessiyalar (admin bekor qilishi uchun).
+  final Map<String, int> sessionsByUser = {};
+
+  @override
+  Future<int> adminRevokeSessions(String userId) async {
+    await enter('adminRevokeSessions');
+    _panel();
+    final u = _byId(userId);
+    if (u.id == _current!.id) {
+      throw const AdminConsoleException(BackendFailure.forbidden, 'self');
+    }
+    await _stepUp('sessions_revoke', once: true);
+    final n = sessionsByUser.remove(u.id) ?? 0;
+    _log('sessions_revoked', u.id, {'sessions': n});
+    return n;
+  }
 
   @override
   bool get allowsPanelAdmin => true;
@@ -2015,11 +2145,13 @@ class FakeAdminConsoleBackend extends FakeAdminTeamBackend
 
   @override
   Future<void> adminSetRole(String userId, String role) async {
+    await enter('adminSetRole');
     _panel();
     final u = _byId(userId);
     if (u.id == _current!.id) {
       throw const AdminConsoleException(BackendFailure.forbidden, 'self');
     }
+    await _stepUp('role');
     final from = u.role;
     u.role = role;
     _log('role_changed', u.id, {'from': from, 'to': role});
@@ -2027,6 +2159,7 @@ class FakeAdminConsoleBackend extends FakeAdminTeamBackend
 
   @override
   Future<void> adminSuspendAccount(String userId) async {
+    await enter('adminSuspendAccount');
     _panel();
     final u = _byId(userId);
     if (u.id == _current!.id) {
@@ -2035,13 +2168,16 @@ class FakeAdminConsoleBackend extends FakeAdminTeamBackend
     if (adminEmails.contains(u.email)) {
       throw const AdminConsoleException(BackendFailure.forbidden, 'admin');
     }
+    await _stepUp('account_status');
     if (_suspendedEmails.add(u.email)) _log('account_suspended', u.id);
   }
 
   @override
   Future<void> adminReactivateAccount(String userId) async {
+    await enter('adminReactivateAccount');
     _panel();
     final u = _byId(userId);
+    await _stepUp('account_status');
     if (_suspendedEmails.remove(u.email)) _log('account_reactivated', u.id);
   }
 
@@ -2050,6 +2186,7 @@ class FakeAdminConsoleBackend extends FakeAdminTeamBackend
     required String email,
     required String confirmUserId,
   }) async {
+    await enter('adminDeleteAccount');
     _panel();
     if (!isValidEmail(email)) {
       throw const AdminConsoleException(
@@ -2073,6 +2210,7 @@ class FakeAdminConsoleBackend extends FakeAdminTeamBackend
     if (adminEmails.contains(u.email)) {
       throw const AdminConsoleException(BackendFailure.forbidden, 'admin');
     }
+    await _stepUp('account_delete', once: true);
     _users.remove(u.email);
     _threads.removeWhere((t) => t.userId == u.id);
     deletedByAdmin.add(u.id);
@@ -2084,14 +2222,18 @@ class FakeAdminConsoleBackend extends FakeAdminTeamBackend
 
   @override
   Future<void> adminSuspendCommunity(String userId) async {
+    await enter('adminSuspendCommunity');
     _panel();
+    await _stepUp('community_status');
     communityStatus[_byId(userId).id] = 'suspended';
     _log('community_suspended', userId);
   }
 
   @override
   Future<void> adminRestoreCommunity(String userId) async {
+    await enter('adminRestoreCommunity');
     _panel();
+    await _stepUp('community_status');
     communityStatus[_byId(userId).id] = 'none';
     _log('community_restored', userId);
   }
@@ -2236,6 +2378,7 @@ class FakeAdminConsoleBackend extends FakeAdminTeamBackend
 
   @override
   Future<void> dismissReport(ReportItem item) async {
+    await enter('dismissReport');
     _panel();
     _setReport(item, ReportStatus.dismissed);
     _log('report_dismissed', '${item.kind}:${item.id}');
@@ -2243,6 +2386,7 @@ class FakeAdminConsoleBackend extends FakeAdminTeamBackend
 
   @override
   Future<void> resolveReport(ReportItem item) async {
+    await enter('resolveReport');
     _panel();
     _setReport(item, ReportStatus.resolved);
     _log('report_resolved', '${item.kind}:${item.id}');
@@ -2250,7 +2394,9 @@ class FakeAdminConsoleBackend extends FakeAdminTeamBackend
 
   @override
   Future<void> suspendReportAuthor(ReportItem item) async {
+    await enter('suspendReportAuthor');
     _panel();
+    await _stepUp('community_status');
     _setReport(item, ReportStatus.resolved, author: 'suspended');
     _log('community_suspended', '${item.kind}:${item.id}');
   }

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart' show defaultTargetPlatform;
 import 'package:material_ui/material_ui.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
@@ -32,6 +33,13 @@ class SocialSignInButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Himoya qatlami: chaqiruvchi qanday ro'yxat bermasin, iOS'da Apple'siz
+    // Google chizilmaydi (yagona qoida — [visibleSocialProviders]).
+    final providers = visibleSocialProviders(
+      platform: defaultTargetPlatform,
+      appleAvailable: this.providers.contains(SocialProvider.apple),
+      googleAvailable: this.providers.contains(SocialProvider.google),
+    );
     if (providers.isEmpty) return const SizedBox.shrink();
     final l = AppLocalizations.of(context);
     final p = LgPalette.of(context);
@@ -148,9 +156,7 @@ class _GoogleButton extends StatelessWidget {
           child: InkWell(
             onTap: onPressed,
             child: ConstrainedBox(
-              constraints: const BoxConstraints(
-                minHeight: kSocialButtonHeight,
-              ),
+              constraints: const BoxConstraints(minHeight: kSocialButtonHeight),
               child: Padding(
                 padding: const EdgeInsets.symmetric(
                   horizontal: 16,
@@ -244,7 +250,12 @@ class _GPainter extends CustomPainter {
     canvas.save();
     canvas.scale(size.width / 48, size.height / 48);
     for (final (color, path) in _parsed) {
-      canvas.drawPath(path, Paint()..color = color..isAntiAlias = true);
+      canvas.drawPath(
+        path,
+        Paint()
+          ..color = color
+          ..isAntiAlias = true,
+      );
     }
     canvas.restore();
   }
@@ -256,9 +267,10 @@ class _GPainter extends CustomPainter {
 /// Eng sodda SVG yo'l o'qigichi: M m L l H h V v C c S s Z z (G belgisi uchun
 /// yetarli). Ilovada SVG paketi yo'q — qo'shimcha bog'liqlik kerak emas.
 Path parseSvgPath(String d) {
-  final tokens = RegExp(
-    r'[A-Za-z]|-?(?:\d+\.?\d*|\.\d+)(?:[eE][-+]?\d+)?',
-  ).allMatches(d).map((m) => m[0]!).toList();
+  final tokens = RegExp(r'[A-Za-z]|-?(?:\d+\.?\d*|\.\d+)(?:[eE][-+]?\d+)?')
+      .allMatches(d)
+      .map((m) => m[0]!)
+      .toList();
   final path = Path();
   var i = 0;
   var cmd = '';

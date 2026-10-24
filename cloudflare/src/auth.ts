@@ -35,6 +35,15 @@ export const OTP_TTL_SEC = 600;
 export const OTP_MAX_ATTEMPTS = 5;
 export const OTP_RESEND_SEC = 60;
 export const SESSION_TTL_DAYS = 60;
+/**
+ * Admin vakolati sessiya ichida qisqa (oddiy foydalanish 60 kun qoladi):
+ * oxirgi yangi tasdiqdan (email kodi bilan kirish, TOTP, step-up) 12 soat
+ * va 30 daqiqa harakatsizlik. Undan keyin admin yo'llari
+ * `403 step_up_required` (reason `admin_session_expired`), TOTP sessiyasi
+ * esa aal1 ga tushadi (eski ilova TOTP ni qayta so'raydi).
+ */
+export const ADMIN_SESSION_MAX_SEC = 12 * 3600;
+export const ADMIN_IDLE_SEC = 30 * 60;
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 const ROLES = new Set(['doctor', 'lab', 'student', 'teacher']);
@@ -62,11 +71,21 @@ async function codeHash(ctx: Ctx, eh: string, code: string): Promise<string> {
 const tag = (h: string) => h.slice(0, 32);
 
 // ------------------------------------------------------------------ OTP
+/**
+ * Kod xati tili: ilova `language` (uz|ru|en) yuboradi. Yo'q yoki noto'g'ri
+ * bo'lsa — `uz` (eski klientlar bilan moslik).
+ */
+export function otpLanguage(raw: unknown): 'uz' | 'ru' | 'en' {
+  if (typeof raw !== 'string') return 'uz';
+  const v = raw.trim().toLowerCase();
+  return LANGS.has(v) ? (v as 'uz' | 'ru' | 'en') : 'uz';
+}
+
 export async function requestCode(ctx: Ctx): Promise<Response> {
   const body = await readJson(ctx.req);
   const email = normalizeEmail(body.email);
   if (!email) throw badRequest('invalid_email');
-  const lang = typeof body.language === 'string' && LANGS.has(body.language) ? body.language : 'uz';
+  const lang = otpLanguage(body.language);
   const eh = await emailHash(ctx, email);
 
   const prev = await ctx.db
@@ -208,9 +227,11 @@ export async function createSession(
   const expires = ctx.now + SESSION_TTL_DAYS * 86400_000;
   await ctx.db
     .prepare(
-      'INSERT INTO sessions (token_hash, user_id, created_at, expires_at, aal, via) VALUES (?1, ?2, ?3, ?4, ?5, ?6)',
+      `INSERT INTO sessions (token_hash, user_id, created_at, expires_at, aal, via, admin_auth_at)
+       VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7)`,
     )
-    .bind(await sha256Hex(token), userId, ctx.now, expires, 'aal1', via)
+    // Email kodi bilan kirish — yangi tasdiq (admin oynasi shu paytdan).
+    .bind(await sha256Hex(token), userId, ctx.now, expires, 'aal1', via, via === 'otp' ? ctx.now : null)
     .run();
   return { token, user_id: userId, expires_at: iso(expires) };
 }
@@ -333,7 +354,8 @@ export async function requireSession(ctx: Ctx): Promise<Session> {
   const th = await sha256Hex(m[1]);
   const row = await ctx.db
     .prepare(
-      `SELECT s.user_id, s.aal, s.via, u.role, u.language, u.last_seen_at FROM sessions s
+      `SELECT s.user_id, s.aal, s.via, s.created_at, s.admin_auth_at, s.admin_seen_at, s.step_up_at,
+              s.step_up_used, u.role, u.language, u.last_seen_at FROM sessions s
        JOIN users u ON u.id = s.user_id
        WHERE s.token_hash = ?1 AND s.expires_at > ?2 AND u.suspended_at IS NULL`,
     )
@@ -342,6 +364,11 @@ export async function requireSession(ctx: Ctx): Promise<Session> {
       user_id: string;
       aal: 'aal1' | 'aal2';
       via: string;
+      created_at: number;
+      admin_auth_at: number | null;
+      admin_seen_at: number | null;
+      step_up_at: number | null;
+      step_up_used: string | null;
       role: string;
       language: string;
       last_seen_at: number | null;
@@ -364,7 +391,36 @@ export async function requireSession(ctx: Ctx): Promise<Session> {
     role: row.role,
     language: row.language,
     via: row.via,
+    createdAt: row.created_at,
+    adminAuthAt: row.admin_auth_at,
+    adminSeenAt: row.admin_seen_at,
+    stepUpAt: row.step_up_at,
+    stepUpUsed: row.step_up_used ?? '',
   };
+}
+
+/**
+ * Admin oynasi ochiqmi: oxirgi yangi tasdiqdan [ADMIN_SESSION_MAX_SEC] va
+ * oxirgi admin so'rovidan [ADMIN_IDLE_SEC] o'tmagan. Eski sessiya (NULL) — yo'q.
+ */
+export function adminWindowOpen(ctx: Ctx, s: Session): boolean {
+  const auth = s.adminAuthAt;
+  if (auth == null) return false;
+  if (ctx.now - auth > ADMIN_SESSION_MAX_SEC * 1000) return false;
+  const seen = Math.max(auth, s.adminSeenAt ?? auth);
+  return ctx.now - seen <= ADMIN_IDLE_SEC * 1000;
+}
+
+/** Admin so'rovi: harakatsizlik hisoblagichini yangilaydi (daqiqasiga ko'pi bilan bir yozuv). */
+async function touchAdmin(ctx: Ctx, s: Session): Promise<void> {
+  if (s.adminSeenAt != null && ctx.now - s.adminSeenAt < 60_000) return;
+  await ctx.db.prepare('UPDATE sessions SET admin_seen_at = ?2 WHERE token_hash = ?1').bind(s.tokenHash, ctx.now).run();
+  s.adminSeenAt = ctx.now;
+}
+
+/** `403 step_up_required` — admin oynasi yopilgan (12 soat / 30 daqiqa). */
+export function adminExpired(): ApiError {
+  return new ApiError(403, 'step_up_required', { reason: 'admin_session_expired' });
 }
 
 export async function logout(ctx: Ctx): Promise<Response> {
@@ -373,9 +429,14 @@ export async function logout(ctx: Ctx): Promise<Response> {
   return noContent();
 }
 
+/** Hamma qurilmalardan chiqish (o'zi): hamma sessiyalar va step-up kodlari o'chadi. */
 export async function logoutAll(ctx: Ctx): Promise<Response> {
   const s = await requireSession(ctx);
-  await ctx.db.prepare('DELETE FROM sessions WHERE user_id = ?1').bind(s.userId).run();
+  const [r] = await ctx.db.batch([
+    ctx.db.prepare('DELETE FROM sessions WHERE user_id = ?1').bind(s.userId),
+    ctx.db.prepare('DELETE FROM step_up_challenges WHERE user_id = ?1').bind(s.userId),
+  ]);
+  await audit(ctx, s.userId, 'sessions_revoked_self', s.userId, { sessions: r.meta.changes ?? 0 });
   return noContent();
 }
 
@@ -406,27 +467,52 @@ export async function isPanelAdmin(ctx: Ctx, s: Session): Promise<boolean> {
   return s.via === 'otp' && (await isSuperAdmin(ctx, s.userId));
 }
 
+/**
+ * Panel yo'li: [isPanelAdmin] + admin oynasi ochiq (12 soat / 30 daqiqa).
+ * Oyna yopilgan — `403 step_up_required` (reason `admin_session_expired`):
+ * ilova step-up kodini so'raydi va so'rovni bir marta qaytaradi.
+ */
 export async function requirePanelAdmin(ctx: Ctx): Promise<Session> {
   const s = await requireSession(ctx);
   if (!(await isPanelAdmin(ctx, s))) throw forbidden();
+  if (!adminWindowOpen(ctx, s)) throw adminExpired();
+  await touchAdmin(ctx, s);
   return s;
 }
 
-/** Sessiya admin (server bergan vakolat + TOTP aal2) bo'lsa — true. */
+/**
+ * Amaldagi AAL: TOTP (aal2) faqat admin oynasi ichida; oyna yopilsa — aal1
+ * (eski ilova ham TOTP ni qayta so'raydi).
+ */
+export function effectiveAal(ctx: Ctx, s: Session): 'aal1' | 'aal2' {
+  return s.aal === 'aal2' && adminWindowOpen(ctx, s) ? 'aal2' : 'aal1';
+}
+
+/** Sessiya admin (server bergan vakolat + TOTP aal2, oyna ochiq) bo'lsa — true. */
 export async function isAdminSession(ctx: Ctx, s: Session): Promise<boolean> {
-  return s.aal === 'aal2' && (await flags(ctx, s.userId)).admin;
+  return effectiveAal(ctx, s) === 'aal2' && (await flags(ctx, s.userId)).admin;
 }
 
 export async function requireAdmin(ctx: Ctx): Promise<Session> {
   const s = await requireSession(ctx);
   const f = await flags(ctx, s.userId);
   if (!f.admin || s.aal !== 'aal2') throw forbidden();
+  // TOTP bor edi, lekin admin oynasi yopilgan — qayta tasdiq (step-up / TOTP).
+  if (effectiveAal(ctx, s) !== 'aal2') throw adminExpired();
+  await touchAdmin(ctx, s);
   return s;
+}
+
+/** Admin hisobi (vakolat bor; AAL va oyna tekshirilmaydi) — TOTP va step-up yo'llari uchun. */
+export async function isAdminAccount(ctx: Ctx, userId: string): Promise<boolean> {
+  return (await flags(ctx, userId)).admin;
 }
 
 export async function me(ctx: Ctx): Promise<Response> {
   const s = await requireSession(ctx);
   const f = await flags(ctx, s.userId);
+  const aal = effectiveAal(ctx, s);
+  const panel = await isPanelAdmin(ctx, s);
   const ids = await ctx.db
     .prepare('SELECT DISTINCT provider FROM auth_identities WHERE user_id = ?1 ORDER BY provider')
     .bind(s.userId)
@@ -436,12 +522,14 @@ export async function me(ctx: Ctx): Promise<Response> {
     role: s.role,
     language: s.language,
     admin_account: f.admin,
-    aal: s.aal,
-    admin: f.admin && s.aal === 'aal2',
+    aal,
+    admin: f.admin && aal === 'aal2',
     // Faqat LG_ADMIN_EMAILS (egasi): adminlarni qo'shish/olib tashlash (D-44).
     super_admin: f.admin && (await isSuperAdmin(ctx, s.userId)),
     // Admin panel (ADMIN_EMAILS, email kodi bilan kirish; TOTP siz).
-    panel_admin: await isPanelAdmin(ctx, s),
+    panel_admin: panel,
+    // Admin oynasi (12 soat / 30 daqiqa) ochiqmi; yopiq bo'lsa panel step-up so'raydi.
+    admin_fresh: (panel || f.admin) && adminWindowOpen(ctx, s),
     reviewer: f.reviewer,
     // Ustoz — faqat o'z guruhlari; admin vakolati emas.
     teacher: f.teacher,
@@ -508,6 +596,7 @@ export async function deleteUserData(ctx: Ctx, u: string, adminActor?: string): 
     `DELETE FROM reviewers WHERE user_id = ?1`,
     `DELETE FROM teacher_accounts WHERE user_id = ?1`,
     `DELETE FROM admins WHERE user_id = ?1`,
+    `DELETE FROM step_up_challenges WHERE user_id = ?1`,
     `DELETE FROM sessions WHERE user_id = ?1`,
     `DELETE FROM auth_identities WHERE user_id = ?1`,
     `DELETE FROM users WHERE id = ?1`,
@@ -545,7 +634,7 @@ export async function mfaStatus(ctx: Ctx): Promise<Response> {
     .prepare('SELECT verified FROM totp_factors WHERE user_id = ?1')
     .bind(s.userId)
     .first<{ verified: number }>();
-  return json({ verified_factor_id: f?.verified === 1 ? s.userId : null, aal: s.aal });
+  return json({ verified_factor_id: f?.verified === 1 ? s.userId : null, aal: effectiveAal(ctx, s) });
 }
 
 /**
@@ -575,14 +664,16 @@ export async function mfaEnroll(ctx: Ctx): Promise<Response> {
   });
 }
 
-export async function mfaVerify(ctx: Ctx): Promise<Response> {
-  const s = await requireAdminAccount(ctx);
-  const body = await readJson(ctx.req);
-  const code = typeof body.code === 'string' ? body.code.trim() : '';
-  await hit(ctx.db, `mfa:${s.userId}`, 5, 600, ctx.now);
+/**
+ * Admin TOTP kodini tekshiradi (±1 qadam; shu yoki oldingi qadam qayta qabul
+ * qilinmaydi). mfaVerify ham, step-up ham shu yerdan (yangi omil yo'q).
+ * Muvaffaqiyat — `{ firstVerify }`; aks holda `400 invalid_code`/`no_factor`.
+ */
+export async function checkTotp(ctx: Ctx, userId: string, rawCode: unknown): Promise<{ firstVerify: boolean }> {
+  const code = typeof rawCode === 'string' ? rawCode.trim() : '';
   const f = await ctx.db
     .prepare('SELECT secret_enc, verified, last_step FROM totp_factors WHERE user_id = ?1')
-    .bind(s.userId)
+    .bind(userId)
     .first<{ secret_enc: string; verified: number; last_step: number }>();
   if (!f) throw badRequest('no_factor');
   if (!/^\d{6}$/.test(code)) throw badRequest('invalid_code');
@@ -596,10 +687,31 @@ export async function mfaVerify(ctx: Ctx): Promise<Response> {
   // Qayta ishlatishga qarshi: shu yoki oldingi qadam boshqa qabul qilinmaydi.
   const upd = await ctx.db
     .prepare('UPDATE totp_factors SET verified = 1, last_step = ?2 WHERE user_id = ?1 AND last_step < ?2')
-    .bind(s.userId, matched)
+    .bind(userId, matched)
     .run();
   if (!upd.meta.changes) throw badRequest('invalid_code');
-  await ctx.db.prepare(`UPDATE sessions SET aal = 'aal2' WHERE token_hash = ?1`).bind(s.tokenHash).run();
-  if (f.verified !== 1) await audit(ctx, s.userId, 'mfa_enrolled', s.userId);
+  return { firstVerify: f.verified !== 1 };
+}
+
+/** Faktorning tasdiqlanganmi (step-up usulini tanlash uchun). */
+export async function hasVerifiedTotp(ctx: Ctx, userId: string): Promise<boolean> {
+  const f = await ctx.db
+    .prepare('SELECT verified FROM totp_factors WHERE user_id = ?1')
+    .bind(userId)
+    .first<{ verified: number }>();
+  return f?.verified === 1;
+}
+
+export async function mfaVerify(ctx: Ctx): Promise<Response> {
+  const s = await requireAdminAccount(ctx);
+  const body = await readJson(ctx.req);
+  await hit(ctx.db, `mfa:${s.userId}`, 5, 600, ctx.now);
+  const { firstVerify } = await checkTotp(ctx, s.userId, body.code);
+  // TOTP — yangi tasdiq: admin oynasi shu paytdan (12 soat / 30 daqiqa).
+  await ctx.db
+    .prepare(`UPDATE sessions SET aal = 'aal2', admin_auth_at = ?2, admin_seen_at = ?2 WHERE token_hash = ?1`)
+    .bind(s.tokenHash, ctx.now)
+    .run();
+  if (firstVerify) await audit(ctx, s.userId, 'mfa_enrolled', s.userId);
   return json({ aal: 'aal2' });
 }

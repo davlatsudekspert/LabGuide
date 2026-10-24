@@ -4,6 +4,7 @@ import 'package:material_ui/material_ui.dart';
 import '../../app/app_scope.dart';
 import '../../app/shell.dart';
 import '../../app/widgets/lg_page.dart';
+import '../../app/widgets/diagram_figure.dart';
 import '../../app/widgets/links.dart';
 import '../../core/entitlements/feature.dart';
 import '../../design/tokens.dart';
@@ -813,6 +814,8 @@ class _QuizResult extends StatelessWidget {
                 ],
               ),
             ),
+        const SizedBox(height: 16),
+        const DiagramFigure(topic: DiagramTopic.educationalFeedback),
       ],
     );
   }

@@ -79,8 +79,9 @@ class AuthController extends ChangeNotifier {
     await _store.setString(StoreKeys.session, 'guest');
   }
 
-  Future<OtpRequestResult> requestCode(String email) async {
-    final result = await adapter.requestCode(email);
+  /// [language] — ilova tili (`uz`/`ru`/`en`); kod xati shu tilda keladi.
+  Future<OtpRequestResult> requestCode(String email, {String? language}) async {
+    final result = await adapter.requestCode(email, language: language);
     if (result.status == OtpRequestStatus.sent) {
       _pendingEmail = normalizeEmail(email);
       _lastRequest = result;

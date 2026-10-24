@@ -6291,7 +6291,8 @@ class AppLocalizationsUz extends AppLocalizations {
   String get privacyTerms => 'Foydalanish shartlari';
 
   @override
-  String get privacyTermsSub => 'Yakuniy matn tayyorlanadi';
+  String get privacyTermsSub =>
+      'Ilovadan va hisobingizdan foydalanish qoidalari';
 
   @override
   String get privacyDeleteLocal => 'Lokal ma’lumotlarni o‘chirish';
@@ -9528,10 +9529,10 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get topicTestAssignSub =>
-      'Talabalar QR yoki kod bilan qo\'shilib yechadi, natijalar sizda chiqadi';
+      'Talabalar QR yoki kod bilan qo‘shilib yechadi, natijalar sizda chiqadi';
 
   @override
-  String get topicTestSelf => 'O\'zim yechib ko\'rish';
+  String get topicTestSelf => 'O‘zim yechib ko‘rish';
 
   @override
   String get topicTestSelfSub =>
@@ -10031,7 +10032,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get proPayTierTeacherSub =>
-      'Guruh bilan ishlaydigan ustoz uchun. Pro’dagi hamma imkoniyat ham kiradi.';
+      'Guruh bilan ishlaydigan ustoz uchun. Pro tarifidagi hamma imkoniyat ham kiradi.';
 
   @override
   String get proPayFree =>
@@ -10058,7 +10059,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get proPayFeatHistory => 'Natijalarning to‘liq tarixi';
 
   @override
-  String get proPayFeatAllPro => 'Pro’dagi hamma imkoniyat';
+  String get proPayFeatAllPro => 'Pro tarifidagi hamma imkoniyat';
 
   @override
   String get proPayFeatGroups =>
@@ -10476,7 +10477,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String proSubTrialBody(int days) {
-    return '$days kun Pro — bepul. To‘lov usuli kerak emas va hech qanday pul yechilmaydi. Sinov tugagach barcha bepul imkoniyatlar ishlashda davom etadi; Pro’ni saqlash uchun alohida obuna bo‘lishingiz mumkin.';
+    return '$days kun Pro — bepul. To‘lov usuli kerak emas va hech qanday pul yechilmaydi. Sinov tugagach barcha bepul imkoniyatlar ishlashda davom etadi; Pro tarifini saqlash uchun alohida obuna bo‘lishingiz mumkin.';
   }
 
   @override
@@ -10537,4 +10538,305 @@ class AppLocalizationsUz extends AppLocalizations {
   @override
   String get proSubWithoutSubscription =>
       'Ilovadan obunasiz foydalanish mumkin: bepul imkoniyatlar bepul qoladi.';
+
+  @override
+  String get profileAttestation => 'Malaka toifasi (attestatsiya)';
+
+  @override
+  String get profileAttestationAuto => 'Avtomatik';
+
+  @override
+  String get profileAttestationUz => 'O‘zbekiston';
+
+  @override
+  String get profileAttestationNone => 'Yashirish';
+
+  @override
+  String get profileAttestationNote =>
+      'Malaka toifasi imtihoniga tayyorgarlik bo‘limini interfeys tilidan qat’i nazar ko‘rsatadi. Avtomatik: til o‘zbekcha yoki qurilma mintaqasi O‘zbekiston bo‘lsa ko‘rinadi.';
+
+  @override
+  String get calSafeKind => 'Yozuv turi';
+
+  @override
+  String get calSafeKindTraining => 'O‘quv';
+
+  @override
+  String get calSafeKindLab => 'Laboratoriya';
+
+  @override
+  String get calSafeTrainingTag => 'O‘quv';
+
+  @override
+  String get calSafeTrainingNote =>
+      'O‘quv yozuvi: bu laboratoriya dalili emas.';
+
+  @override
+  String get calSafeApprovedBy => 'Tasdiqlagan (ism / lavozim)';
+
+  @override
+  String get calSafeApprovedAt => 'Tasdiqlangan sana';
+
+  @override
+  String get calSafeApproverRequired =>
+      '«Qabul qilindi» uchun vakolatli shaxsning ismi yoki lavozimini kiriting.';
+
+  @override
+  String get calSafeQcAfter => 'Kalibrlashdan keyingi QC';
+
+  @override
+  String get calSafeQcPass => 'QC o‘tdi';
+
+  @override
+  String get calSafeQcFail => 'QC o‘tmadi';
+
+  @override
+  String get calSafeQcNotRun => 'QC o‘tkazilmagan';
+
+  @override
+  String get calSafeQcNotRunWarn => 'Kalibrlashdan keyin QC o‘tkazilmagan';
+
+  @override
+  String get calSafeQcPassRequired =>
+      '«Qabul qilindi» faqat kalibrlashdan keyingi QC o‘tgandagina mumkin.';
+
+  @override
+  String get calSafeSopRef => 'SOP havolasi (ixtiyoriy)';
+
+  @override
+  String get calSafeLegacyTag => 'Eski yozuv, tasdiqlanmagan';
+
+  @override
+  String get calSafeHistory => 'Tarix';
+
+  @override
+  String get calSafeHistoryEmpty => 'Tarix yozuvlari yo‘q.';
+
+  @override
+  String get calSafeAuditCreated => 'Yaratildi';
+
+  @override
+  String get calSafeAuditEdited => 'Tahrirlandi';
+
+  @override
+  String get calSafeAuditDeleted => 'O‘chirildi';
+
+  @override
+  String get calSafeHistoryNote =>
+      'Yozuv o‘chirilsa ham tarix qoladi. Uni faqat «Lokal ma’lumotlarni o‘chirish» tozalaydi.';
+
+  @override
+  String get labDirSection => 'Laboratoriya yo‘nalishlari (ma’lumotnoma)';
+
+  @override
+  String get labDirSectionSub => 'Platforma va test alohida kartalarda';
+
+  @override
+  String get labDirTb => 'Sil (TB) diagnostikasi';
+
+  @override
+  String get labDirHiv => 'OIV laboratoriya diagnostikasi';
+
+  @override
+  String get labDirTag => 'Ma’lumotnoma';
+
+  @override
+  String get labDirNotVerified => 'Hali kiritilmagan';
+
+  @override
+  String get labDirKindPlatform => 'Platforma (apparat)';
+
+  @override
+  String get labDirKindTest => 'Test';
+
+  @override
+  String get labDirKindMethod => 'Usul';
+
+  @override
+  String get labDirVsTest => 'Platforma va test';
+
+  @override
+  String get labDirTechnology => 'Texnologiya';
+
+  @override
+  String get labDirSpecimens => 'Namunalar';
+
+  @override
+  String get labDirTasks => 'Vazifalar';
+
+  @override
+  String get labDirPrinciple => 'Ishlash tamoyili';
+
+  @override
+  String get labDirLimitations => 'Cheklovlar';
+
+  @override
+  String get labDirQc => 'Sifat nazorati va kalibrlash';
+
+  @override
+  String get labDirErrors => 'Preanalitik va analitik xatolar';
+
+  @override
+  String get labDirBiosafety => 'Biologik xavfsizlik';
+
+  @override
+  String get labDirModels => 'Rasmiy manbada tasdiqlangan modellar';
+
+  @override
+  String get labDirLinked => 'Bog‘langan kartalar';
+
+  @override
+  String get labDirStatusNeedsReview =>
+      'Tekshiruv holati: manbalar quyida keltirilgan; mutaxassis xulosasi hali kiritilmagan';
+
+  @override
+  String get labDirManufacturerNote =>
+      'Ishlab chiqaruvchi sahifasi (reklama materiali), yo‘riqnoma emas';
+
+  @override
+  String get labDirVirology => 'Virusologiya';
+
+  @override
+  String get labDirBacteriology => 'Bakteriologiya';
+
+  @override
+  String get labDirMycology => 'Mikologiya';
+
+  @override
+  String get labDirParasitology => 'Parazitologiya';
+
+  @override
+  String get labDirHematology => 'Gematologiya';
+
+  @override
+  String get labDirCoagulation => 'Koagulologiya (gemostaz)';
+
+  @override
+  String get labDirTransfusion => 'Transfuziologiya';
+
+  @override
+  String get labDirBiochemistry => 'Klinik biokimyo';
+
+  @override
+  String get labDirImmunology => 'Immunologiya';
+
+  @override
+  String get labDirUrinalysis => 'Siydik tahlili';
+
+  @override
+  String get labDirCytology => 'Sitologiya';
+
+  @override
+  String get labDirHistology => 'Gistologiya';
+
+  @override
+  String get labDirOncology => 'Onkologiya';
+
+  @override
+  String get labDirGenetics => 'Genetika';
+
+  @override
+  String get labDirMolecular => 'Molekulyar diagnostika';
+
+  @override
+  String get labDirToxicology => 'Toksikologiya';
+
+  @override
+  String get labDirReproductive => 'Reproduktiv tibbiyot';
+
+  @override
+  String get labDirNeonatal => 'Neonatal laboratoriya diagnostikasi';
+
+  @override
+  String get labDirTransplant => 'Transplantologiya';
+
+  @override
+  String get labDirGeneral => 'Umumiy laboratoriya';
+
+  @override
+  String get labDirDisclaimer =>
+      'Faqat o‘quv ma’lumotnomasi. Ilova tashxis qo‘ymaydi va amaliy protokol emas; qaror — vakolatli laboratoriya va shifokorniki.';
+
+  @override
+  String get labDirEmpty => 'Bu yo‘nalishda kartalar yo‘q.';
+
+  @override
+  String get labDirPlatformClassNote =>
+      'Sinf/texnologiya bo‘yicha ma’lumot — aniq model uchun tasdiqlanmagan';
+
+  @override
+  String get imgDiagramCalibrationOverviewAlt =>
+      'Kalibrlashning umumiy tartibi sxemasi, olti qadam: apparat va usulni aniqlash; reagent, REF va IFU versiyasini tekshirish; mos lotdagi kalibratorni tayyorlash; aniq apparat yo‘riqnomasiga rioya qilish; kalibrlash va mustaqil QC ni baholash; natijani qayd etish, qaror SOP bo‘yicha. Apparat monitori surati emas.';
+
+  @override
+  String get imgDiagramDifferentialCountAlt =>
+      'Qo‘lda leykoformula sanog‘i sxemasi, olti qadam: surtma va hujayra taqsimotini baholash; belgilangan joyda hujayralarni tanish; SOP belgilagan sondagi hujayrani sanash; foiz ulushlarini hisoblash; WBC asosida mutlaq sonlarni hisoblash; atipik hujayralarni qayta ko‘rib, xulosa qilish.';
+
+  @override
+  String get imgDiagramQcDecisionAlt =>
+      'Sifat nazorati bo‘yicha qaror qabul qilish sxemasi, olti qadam: nazorat materialini o‘lchash; lot maqsad qiymati va SD bilan solishtirish; tasdiqlangan QC qoidalarini tekshirish; QC buzilsa, sababini aniqlash; zarur bo‘lsa, tuzatib QC ni takrorlash; QC o‘tsa, natijani chiqarish SOP iga amal qilish. QC nazoratdan chiqsa, sabab SOP bo‘yicha bartaraf etilmaguncha bemor natijasini chiqarmang.';
+
+  @override
+  String get imgDiagramPreanalyticsAlt =>
+      'Preanalitika va namuna sifati sxemasi, olti qadam: bemor shaxsini to‘g‘ri aniqlash; buyurilgan tahlillarni tekshirish; mos probirka va usulni tanlash; olayotganda namunani belgilash; SOP dagi vaqt va haroratda yetkazish; tahlildan oldin yaroqliligini baholash. Namunaviy jarayon sxemasi.';
+
+  @override
+  String get imgDiagramPhotometryAlt =>
+      'Absorbsion fotometriya tamoyili sxemasi, olti qadam: yorug‘lik manbai va to‘lqin uzunligi; kyuveta orqali optik yo‘l; namuna yorug‘likni yutadi; detektor o‘tgan nurni o‘lchaydi; absorbsiya A = log10(I0/I); tasdiqlangan kalibrovka bilan miqdorini topish. Buger–Lambert–Ber qonunining chiziqli sohasi cheklangan; parametrlarni reagent IFU belgilaydi.';
+
+  @override
+  String get imgDiagramEducationalFeedbackAlt =>
+      'Ustoz–talaba o‘quv jarayoni sxemasi, olti qadam: ustoz mavzuni tanlaydi; manbali topshiriq tuzadi; talaba materialni o‘rganadi; testni bajaradi; izohli tahlilni oladi; ustoz natijani ko‘rib, rejalashtiradi. Ilova jarayoni sxemasi, ilmiy mikrofoto emas.';
+
+  @override
+  String get imgDiagramCaption =>
+      'LabGuide uchun chizilgan umumiy sxema. Apparatingiz IFU si va laboratoriya SOP i ustun.';
+
+  @override
+  String get imgDiagramTapToZoom => 'Kattalashtirish uchun sxemani bosing';
+
+  @override
+  String get stepUpTitle => 'Shaxsingizni tasdiqlang';
+
+  @override
+  String stepUpBodyEmail(String email) {
+    return 'Bu amal uchun yangi tasdiq kerak. $email manziliga yuborilgan 6 xonali kodni kiriting.';
+  }
+
+  @override
+  String get stepUpBodyEmailNoAddress =>
+      'Bu amal uchun yangi tasdiq kerak. Emailingizga yuborilgan 6 xonali kodni kiriting.';
+
+  @override
+  String get stepUpBodyTotp =>
+      'Bu amal uchun yangi tasdiq kerak. Autentifikator ilovasidagi 6 xonali kodni kiriting.';
+
+  @override
+  String get stepUpConfirm => 'Tasdiqlash';
+
+  @override
+  String get stepUpCancelled =>
+      'Bajarilmadi: bu amal uchun yangi tasdiq kodi kerak.';
+
+  @override
+  String get admRevokeSessions => 'Barcha qurilmalardan chiqarish';
+
+  @override
+  String get admRevokeSessionsBody =>
+      'Foydalanuvchi barcha qurilmalardan chiqariladi. Hisob faol qoladi — u qayta kira oladi.';
+
+  @override
+  String admRevokeSessionsDone(int count) {
+    return 'Tugatilgan sessiyalar: $count.';
+  }
+
+  @override
+  String get profileSignOutAll => 'Barcha qurilmalardan chiqish';
+
+  @override
+  String get profileSignOutAllBody =>
+      'Shu telefonda va hisobingizga kirilgan boshqa barcha qurilmalarda chiqasiz. Shu qurilmadagi ma’lumotlar saqlanadi.';
+
+  @override
+  String get profileSignOutAllDone => 'Barcha qurilmalardan chiqildi.';
 }

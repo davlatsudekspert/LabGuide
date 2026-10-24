@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 
 import '../content/content_model.dart';
+import 'lab_direction_card.dart';
 
 /// Apparat yo'nalishi (laboratoriya bo'limi).
 enum InstrumentCategory {
@@ -111,6 +112,26 @@ enum ManualAccess {
   };
 }
 
+/// Manba turi. Ma'lumotnoma kartalari uchun majburiy; eski model manbalarida
+/// ko'rsatilmagan (`null`).
+enum SourceType {
+  officialAgency,
+  journal,
+  manufacturerIfu,
+  manufacturerMarketing;
+
+  static SourceType parse(String raw) => switch (raw) {
+    'official_agency' => officialAgency,
+    'journal' => journal,
+    'manufacturer_ifu' => manufacturerIfu,
+    'manufacturer_marketing' => manufacturerMarketing,
+    _ => throw FormatException('unknown source type: $raw'),
+  };
+
+  /// Kartani yolg'iz o'zi asoslay oladigan tur (marketing — yo'q).
+  bool get isAuthoritative => this == officialAgency || this == journal;
+}
+
 @immutable
 class CatalogSource {
   const CatalogSource({
@@ -119,6 +140,7 @@ class CatalogSource {
     required this.url,
     required this.accessed,
     this.docRef,
+    this.type,
   });
 
   factory CatalogSource.fromJson(Map<String, Object?> j) {
@@ -132,12 +154,16 @@ class CatalogSource {
       url: url,
       accessed: j['accessed']! as String,
       docRef: j['doc_ref'] as String?,
+      type: j['type'] == null ? null : SourceType.parse(j['type']! as String),
     );
   }
 
   final String id;
   final String title;
   final String url;
+
+  /// official_agency | journal | manufacturer_ifu | manufacturer_marketing.
+  final SourceType? type;
   final String accessed;
 
   /// Hujjat raqami/versiyasi (masalan, “981015/2021-11”, “P/N …”).
@@ -531,6 +557,7 @@ class InstrumentCatalog {
     required this.makers,
     required this.sources,
     required this.models,
+    this.labCards = const [],
   });
 
   factory InstrumentCatalog.fromJson(
@@ -551,6 +578,10 @@ class InstrumentCatalog {
         for (final s in list('sources').map(CatalogSource.fromJson)) s.id: s,
       },
       models: list('models').map(InstrumentModel.fromJson).toList(),
+      // Ixtiyoriy kalit: eski fayllarda yo'q (orqaga mos).
+      labCards: json['lab_cards'] == null
+          ? const []
+          : list('lab_cards').map(LabDirectionCard.fromJson).toList(),
     );
     catalog._validate(knownAnalytes);
     return catalog;
@@ -562,8 +593,34 @@ class InstrumentCatalog {
   final Map<String, CatalogSource> sources;
   final List<InstrumentModel> models;
 
+  /// TB/OIV yo'nalish kartalari (platforma va test alohida).
+  final List<LabDirectionCard> labCards;
+
   void _validate(Set<String> knownAnalytes) {
     final makerIds = {for (final m in makers) m.id};
+    final cardIds = <String>{};
+    for (final c in labCards) {
+      if (!cardIds.add(c.id)) throw FormatException('duplicate card: ${c.id}');
+    }
+    for (final c in labCards) {
+      for (final s in c.allSourceIds) {
+        if (!sources.containsKey(s)) {
+          throw FormatException('${c.id}: unknown source $s');
+        }
+      }
+      // Marketing manba yolg'iz o'zi kartani asoslay olmaydi.
+      if (c.isPublic &&
+          !c.allSourceIds.any(
+            (s) => sources[s]!.type?.isAuthoritative ?? false,
+          )) {
+        throw FormatException('${c.id}: needs an official or journal source');
+      }
+      for (final l in c.linked) {
+        if (!cardIds.contains(l) || l == c.id) {
+          throw FormatException('${c.id}: bad link $l');
+        }
+      }
+    }
     final ids = <String>{};
     for (final m in models) {
       if (!ids.add(m.id)) throw FormatException('duplicate model: ${m.id}');
@@ -610,6 +667,27 @@ class InstrumentCatalog {
     (m) => m.id == id,
     orElse: () => throw StateError('maker $id'),
   );
+
+  /// Ommaga ko'rinadigan kartalar (NEEDS_SOURCE stublar chiqarib tashlangan).
+  List<LabDirectionCard> get publicLabCards => [
+    for (final c in labCards)
+      if (c.isPublic) c,
+  ];
+
+  /// Ommaviy karta; stub yoki noma'lum id uchun `null` (chuqur havola xavfsiz).
+  LabDirectionCard? labCard(String id) =>
+      publicLabCards.where((c) => c.id == id).firstOrNull;
+
+  /// Hech bo'lmaganda bitta ommaviy kartasi bor yo'nalishlar (enum tartibida).
+  List<LabDirection> get publicLabDirections => [
+    for (final d in LabDirection.values)
+      if (publicLabCards.any((c) => c.direction == d)) d,
+  ];
+
+  List<LabDirectionCard> labCardsIn(LabDirection d) => [
+    for (final c in publicLabCards)
+      if (c.direction == d) c,
+  ];
 
   InstrumentModel? model(String id) =>
       models.where((m) => m.id == id).firstOrNull;

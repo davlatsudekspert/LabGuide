@@ -17,6 +17,7 @@ import '../helpers/learn_helpers.dart';
 
 final en = lookupAppLocalizations(const Locale('en'));
 final uz = lookupAppLocalizations(const Locale('uz'));
+final ru = lookupAppLocalizations(const Locale('ru'));
 
 /// Bugungi 5 savolning hammasiga birinchi variant bilan javob.
 Future<void> answerAll(WidgetTester tester, AppLocalizations l) async {
@@ -141,6 +142,40 @@ void main() {
     );
     expect(again.daily.todaySet!.ids, set.ids);
     expect(again.daily.streak.current, 1);
+  });
+
+  testWidgets('kunlik manba: ru til + ru_RU + auto — kontent paketi', (
+    tester,
+  ) async {
+    tester.platformDispatcher.localesTestValue = const [Locale('ru', 'RU')];
+    final s = await makeServices(tester, language: AppLanguage.ru);
+    await pumpApp(tester, s, size: const Size(390, 1400));
+    await goTo(tester, kDailyLocation);
+    expect(s.daily.todaySet!.sourceId, isNot(ToifaQuestionSource.sourceId));
+  });
+
+  testWidgets('kunlik manba: ru til + ru_RU + sozlama uz — toifa banki', (
+    tester,
+  ) async {
+    tester.platformDispatcher.localesTestValue = const [Locale('ru', 'RU')];
+    final s = await makeServices(tester, language: AppLanguage.ru);
+    await s.settings.setAttestationRegion(AttestationRegion.uz);
+    await pumpApp(tester, s, size: const Size(390, 1400));
+    await goTo(tester, kDailyLocation);
+    expect(s.daily.todaySet!.sourceId, ToifaQuestionSource.sourceId);
+    expect(find.text(ru.dailySourceToifa), findsOneWidget);
+  });
+
+  testWidgets('kunlik manba: uz til + UZ qurilma + none — toifa emas', (
+    tester,
+  ) async {
+    tester.platformDispatcher.localesTestValue = const [Locale('uz', 'UZ')];
+    final s = await makeServices(tester);
+    await s.settings.setAttestationRegion(AttestationRegion.none);
+    await pumpApp(tester, s, size: const Size(390, 1400));
+    await goTo(tester, kDailyLocation);
+    expect(s.daily.todaySet!.sourceId, isNot(ToifaQuestionSource.sourceId));
+    expect(find.text(uz.dailySourceToifa), findsNothing);
   });
 
   testWidgets('uz shifokor: toifa emas, kontent paketi savollari', (

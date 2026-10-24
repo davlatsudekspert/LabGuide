@@ -8,6 +8,7 @@ import '../../../app/app_scope.dart';
 import '../../../app/widgets/lg_page.dart';
 import '../../../app/widgets/links.dart';
 import '../../../core/contact.dart';
+import '../../../core/single_flight.dart';
 import '../../../design/tokens.dart';
 import '../../../design/widgets/lg_widgets.dart';
 import '../../../l10n/gen/app_localizations.dart';
@@ -112,6 +113,8 @@ class _EmailScreenState extends State<EmailScreen> {
   }
 
   Future<void> _submit() async {
+    // Klaviatura "Done" ham, tugma ham: bitta kod so'rovi (qulf sinxron).
+    if (_busy || _socialBusy != null) return;
     setState(() {
       _emailError = isValidEmail(_email.text)
           ? null
@@ -123,7 +126,10 @@ class _EmailScreenState extends State<EmailScreen> {
 
     setState(() => _busy = true);
     final base = GoRouterState.of(context).matchedLocation;
-    final result = await context.services.auth.requestCode(_email.text);
+    final result = await context.services.auth.requestCode(
+      _email.text,
+      language: context.services.settings.language.name,
+    );
     if (!mounted) return;
     setState(() => _busy = false);
     switch (result.status) {
@@ -154,8 +160,11 @@ class _EmailScreenState extends State<EmailScreen> {
       context.pop();
       return;
     }
-    await context.services.auth.continueAsGuest();
-    if (mounted) await context.push('/welcome/role');
+    // Ikki marta bosish — rol ekrani ikki marta ochilmaydi.
+    await SingleFlight.run(#authContinueGuest, () async {
+      await context.services.auth.continueAsGuest();
+      if (mounted) await context.push('/welcome/role');
+    });
   }
 
   @override
@@ -269,6 +278,7 @@ class OtpScreen extends StatefulWidget {
 class _OtpScreenState extends State<OtpScreen> {
   final _code = TextEditingController();
   bool _busy = false;
+  bool _resending = false;
   _Msg? _error;
   Timer? _ticker;
   DateTime? _resendAt;
@@ -359,8 +369,18 @@ class _OtpScreenState extends State<OtpScreen> {
     final l = AppLocalizations.of(context);
     final auth = context.services.auth;
     final email = _email;
-    if (email == null) return;
-    final result = await auth.requestCode(email);
+    // Ikki marta bosish — bitta yangi kod (ikkinchisi serverda 429 bo'lardi).
+    if (email == null || _resending) return;
+    setState(() => _resending = true);
+    final OtpRequestResult result;
+    try {
+      result = await auth.requestCode(
+        email,
+        language: context.services.settings.language.name,
+      );
+    } finally {
+      if (mounted) setState(() => _resending = false);
+    }
     if (!mounted) return;
     switch (result.status) {
       case OtpRequestStatus.sent:
@@ -440,7 +460,7 @@ class _OtpScreenState extends State<OtpScreen> {
         LgButton(label: l.otpVerify, busy: _busy, onPressed: _verify),
         LgButton.link(
           label: seconds > 0 ? l.otpResendIn(seconds) : l.otpResend,
-          onPressed: seconds > 0 ? null : _resend,
+          onPressed: seconds > 0 || _resending ? null : _resend,
         ),
       ],
     );

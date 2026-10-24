@@ -202,7 +202,7 @@ fayllarni o‘qiydi (`pack.json`, `curriculum.json`, `assets/toifa/*.json`, `ind
 | Qaror / ish | Qorovul |
 |---|---|
 | `docs/DECISIONS.md` raqamlari takrorsiz, D-01…D-66 uzilishsiz, asosiy qarorlar o‘chirilmaydi | `repo_registry_guard_test.dart :: qaror raqamlari takrorlanmaydi`, `D-01 … oxirgisigacha uzilishsiz; …`, `asosiy egasi qarorlari matnda turibdi` |
-| Migratsiyalar: D1 `NNNN_` takrorsiz, uzilishsiz (0007 — olib tashlangan billing, band) | `repo_registry_guard_test.dart :: Cloudflare D1: …` |
+| Migratsiyalar: D1 `NNNN_` takrorsiz, uzilishsiz (0007 — olib tashlangan billing, band); 0013 — `0013_admin_step_up` (asosiy liniya), Pro 0014–0017 | `repo_registry_guard_test.dart :: Cloudflare D1: …` |
 | Migratsiyalar: Supabase vaqt belgisi takrorsiz | `repo_registry_guard_test.dart :: Supabase: 14 xonali vaqt belgisi, takrorsiz` |
 | ARB kalitlari uz = ru = en | `test/unit/arb_parity_test.dart`; `repo_registry_guard_test.dart :: uz/ru/en kalitlari bir xil` |
 | uz/en ARB da kirill harfi yo‘q | `repo_registry_guard_test.dart :: uz va en qiymatlarida kirill harfi yo‘q` |

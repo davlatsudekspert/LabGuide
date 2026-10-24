@@ -29,9 +29,20 @@ export type AiFn = (model: string, input: Record<string, unknown>) => Promise<un
 export interface Sent {
   to: string;
   code: string;
+  /** Xat tili (`sendCode` ga berilgan). */
+  lang?: string;
 }
 
 let serverSeq = 0;
+/**
+ * Eski testlar uchun: `403 step_up_required` kelsa, xuddi ilovadagidek bir
+ * marta step-up qilib so'rovni qaytaradi (sanaladi: `autoStepUps`). Standart
+ * o'chiq; step-up ning o'z testlari (stepup.test.ts) uni yoqmaydi.
+ */
+let autoStepUp = false;
+export const setAutoStepUp = (on: boolean) => {
+  autoStepUp = on;
+};
 const totpSecrets = new Map<string, Uint8Array>();
 
 /** Ilova + soxta pochta qutisi + boshqariladigan soat. */
@@ -41,9 +52,9 @@ export function makeServer(overrides: Partial<Env> = {}) {
   // Har server soati oldingisidan 2 soat keyin boshlanadi: testlar bir-birining
   // kodlari va limitlariga (umumiy D1) ta'sir qilmaydi.
   const clock = { now: Date.UTC(2026, 9, 10, 9, 0, 0) + ++serverSeq * 2 * 3600_000 };
-  const sender: CodeSender = async (_env, to, code) => {
+  const sender: CodeSender = async (_env, to, code, lang) => {
     if (mailMode !== 'sent') return mailMode;
-    outbox.push({ to, code });
+    outbox.push({ to, code, lang });
     return 'sent';
   };
   // Workers AI soxtasi: haqiqiy AI hech qachon chaqirilmaydi.
@@ -79,6 +90,8 @@ export function makeServer(overrides: Partial<Env> = {}) {
   });
   const testEnv = { ...env, ...overrides } as Env;
   let ipSeq = 0;
+  const tokenEmails = new Map<string, string>();
+  const autoStepUps: { method: string; path: string; action: string }[] = [];
 
   async function call(
     method: string,
@@ -114,6 +127,11 @@ export function makeServer(overrides: Partial<Env> = {}) {
     } catch {
       data = text;
     }
+    if (autoStepUp && res.status === 403 && data?.error === 'step_up_required' && opts.token && tokenEmails.has(opts.token)) {
+      autoStepUps.push({ method, path, action: data.action ?? data.reason });
+      await stepUp(opts.token, tokenEmails.get(opts.token)!);
+      return call(method, path, opts);
+    }
     return { status: res.status, data, headers: res.headers, text };
   }
 
@@ -126,6 +144,7 @@ export function makeServer(overrides: Partial<Env> = {}) {
     const v = await call('POST', '/v1/auth/otp/verify', { body: { email, code }, ip });
     if (v.status !== 200) throw new Error(`verify ${v.status} ${v.text}`);
     const token = v.data.token as string;
+    tokenEmails.set(token, email.trim().toLowerCase());
     if (profile) {
       const p = await call('PUT', '/v1/me/profile', { token, body: profile });
       if (p.status !== 200) throw new Error(`profile ${p.status}`);
@@ -161,8 +180,35 @@ export function makeServer(overrides: Partial<Env> = {}) {
     return u;
   }
 
+  /**
+   * Admin step-up (stepup.ts): TOTP faktori bo'lsa — TOTP (soat bir qadam
+   * oldinga), aks holda email kodi (qutidan). Qayta yuborish limiti — soat oldinga.
+   */
+  async function stepUp(token: string, email: string) {
+    let r = await call('POST', '/v1/auth/step-up', { token });
+    if (r.status === 429 && typeof r.data?.retry_after === 'number' && r.data.retry_after <= 60) {
+      clock.now += r.data.retry_after * 1000;
+      r = await call('POST', '/v1/auth/step-up', { token });
+    }
+    if (r.status !== 200) throw new Error(`step-up ${r.status} ${r.text}`);
+    let code: string;
+    if (r.data.method === 'totp') {
+      const secret = totpSecrets.get(email) ?? totpSecrets.get(email.trim().toLowerCase());
+      if (!secret) throw new Error('no TOTP secret for ' + email);
+      clock.now += 31_000;
+      code = await totpAt(secret, Math.floor(clock.now / 30_000));
+    } else {
+      code = outbox.filter((m) => m.to === email.trim().toLowerCase()).at(-1)!.code;
+    }
+    const v = await call('POST', '/v1/auth/step-up/verify', { token, body: { code } });
+    if (v.status !== 200) throw new Error(`step-up verify ${v.status} ${v.text}`);
+    return r.data.method as 'totp' | 'email';
+  }
+
   return {
     app,
+    stepUp,
+    autoStepUps,
     aiCalls,
     fetchCalls,
     setFetch: (fn: FetchFn) => {

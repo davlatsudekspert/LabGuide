@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'dart:convert';
+
 import 'package:material_ui/material_ui.dart';
 
 import '../../core/storage/kv_store.dart';
@@ -36,6 +39,28 @@ enum AppLanguage {
   }
 }
 
+/// Malaka toifasi (KDL attestatsiyasi) bo'limi qaysi mintaqa uchun
+/// ko'rsatilishi — ilova TILIDAN mustaqil foydalanuvchi sozlamasi
+/// (egasi talabi, 2026-10-24: Uzbekistondagi rus tilli foydalanuvchi ham
+/// barcha materialni ruscha ko'radi, toifa esa alohida boshqariladi).
+///
+/// * [auto] — avvalgi xatti-harakat: ilova tili o'zbekcha YOKI qurilma
+///   mintaqasi UZ bo'lsa ko'rinadi (mavjud foydalanuvchilar uchun o'zgarmaydi);
+/// * [uz] — til va mintaqadan qat'i nazar ko'rinadi;
+/// * [none] — hech qachon ko'rinmaydi.
+enum AttestationRegion {
+  auto,
+  uz,
+  none;
+
+  static AttestationRegion? tryParse(String? code) {
+    for (final r in values) {
+      if (r.name == code) return r;
+    }
+    return null;
+  }
+}
+
 /// Laboratoriya birliklari tizimi: SI (mmol/L, µmol/L, g/L) yoki
 /// konvensional (mg/dL, g/dL). Faqat ko'rsatish va kalkulyatorlarning
 /// boshlang'ich birligiga ta'sir qiladi; manbadagi raqamlar o'zgarmaydi.
@@ -61,29 +86,47 @@ enum UnitSystem {
 }
 
 class SettingsController extends ChangeNotifier {
-  SettingsController(this._store, {required Iterable<Locale> systemLocales})
-    : _language =
-          AppLanguage.tryParse(_store.getString(StoreKeys.language)) ??
-          AppLanguage.fromSystem(systemLocales),
-      _unitSystem =
-          UnitSystem.tryParse(_store.getString(StoreKeys.unitSystem)) ??
-          UnitSystem.fromSystem(systemLocales),
-      _themeMode = _parseTheme(_store.getString(StoreKeys.themeMode)),
-      _appTheme =
-          LgThemeId.tryParse(_store.getString(StoreKeys.appTheme)) ??
-          LgThemeId.classic,
-      _role = _parseRole(_store.getString(StoreKeys.role)),
-      _onboarded = _store.getBool(StoreKeys.onboarded) ?? false,
-      // Migratsiya: onboarding tugatgan foydalanuvchi tilni tanlagan deb
-      // hisoblanadi — eski o'rnatmalarda til tanlash ekrani chiqmaydi.
-      _languageChosen =
-          (_store.getBool(StoreKeys.languageChosen) ?? false) ||
-          (_store.getBool(StoreKeys.onboarded) ?? false);
+  SettingsController(
+    this._store, {
+    required Iterable<Locale> systemLocales,
+    DateTime Function()? clock,
+  }) : _clock = clock ?? DateTime.now,
+       _language =
+           AppLanguage.tryParse(_store.getString(StoreKeys.language)) ??
+           AppLanguage.fromSystem(systemLocales),
+       _unitSystem =
+           UnitSystem.tryParse(_store.getString(StoreKeys.unitSystem)) ??
+           UnitSystem.fromSystem(systemLocales),
+       _attestationRegion =
+           AttestationRegion.tryParse(
+             _store.getString(StoreKeys.attestationRegion),
+           ) ??
+           AttestationRegion.auto,
+       _themeMode = _parseTheme(_store.getString(StoreKeys.themeMode)),
+       _appTheme =
+           LgThemeId.tryParse(_store.getString(StoreKeys.appTheme)) ??
+           LgThemeId.classic,
+       _role = _parseRole(_store.getString(StoreKeys.role)),
+       _onboarded = _store.getBool(StoreKeys.onboarded) ?? false,
+       // Migratsiya: onboarding tugatgan foydalanuvchi tilni tanlagan deb
+       // hisoblanadi — eski o'rnatmalarda til tanlash ekrani chiqmaydi.
+       _languageChosen =
+           (_store.getBool(StoreKeys.languageChosen) ?? false) ||
+           (_store.getBool(StoreKeys.onboarded) ?? false);
 
   final KeyValueStore _store;
+  final DateTime Function() _clock;
+
+  /// Kutilayotgan taklif shuncha vaqt saqlanadi.
+  static const pendingInviteTtl = Duration(hours: 24);
+
+  /// Faqat qo'shilish ekraniga yo'l saqlanadi/qaytariladi (ombordagi boshqa
+  /// qiymat ixtiyoriy sahifaga yo'naltirmasin).
+  static const _invitePath = '/learn/classes/join';
 
   AppLanguage _language;
   UnitSystem _unitSystem;
+  AttestationRegion _attestationRegion;
   ThemeMode _themeMode;
   LgThemeId _appTheme;
   AppRole? _role;
@@ -92,6 +135,9 @@ class SettingsController extends ChangeNotifier {
 
   AppLanguage get language => _language;
   UnitSystem get unitSystem => _unitSystem;
+
+  /// Toifa (KDL attestatsiya) bo'limi sozlamasi; standart — [AttestationRegion.auto].
+  AttestationRegion get attestationRegion => _attestationRegion;
   ThemeMode get themeMode => _themeMode;
 
   /// Tanlangan mavzu (Klassik / Ivory) — D-64. Kunduzgi/tungi rejim
@@ -135,6 +181,13 @@ class SettingsController extends ChangeNotifier {
     await _store.setString(StoreKeys.unitSystem, value.name);
   }
 
+  Future<void> setAttestationRegion(AttestationRegion value) async {
+    if (_attestationRegion == value) return;
+    _attestationRegion = value;
+    notifyListeners();
+    await _store.setString(StoreKeys.attestationRegion, value.name);
+  }
+
   Future<void> setThemeMode(ThemeMode value) async {
     if (_themeMode == value) return;
     _themeMode = value;
@@ -165,16 +218,60 @@ class SettingsController extends ChangeNotifier {
   }
 
   /// Chiqishda: welcome qayta ko'rsatiladi, til va mavzu saqlanadi.
+  /// Kutilayotgan taklif ham o'chiriladi (boshqa hisob uchun ochilmasin).
   Future<void> resetOnboarding() async {
     _onboarded = false;
     notifyListeners();
     await _store.setBool(StoreKeys.onboarded, false);
+    await clearPendingInvite();
   }
+
+  /// Onboarding/kirishdan oldin ochilgan taklif havolasi (qo'shilish ekrani
+  /// yo'li). Ombordan o'qiladi — OS ilovani yopib qo'ysa ham saqlanadi.
+  /// 24 soatdan eski yoki buzilgan yozuv — `null` (va o'chiriladi).
+  String? get pendingInvite {
+    final raw = _store.getString(StoreKeys.pendingInvite);
+    if (raw == null) return null;
+    try {
+      final j = (jsonDecode(raw) as Map).cast<String, Object?>();
+      final loc = j['loc'];
+      final at = j['at'];
+      if (loc is String &&
+          at is int &&
+          loc.startsWith(_invitePath) &&
+          _clock().difference(DateTime.fromMillisecondsSinceEpoch(at)) <
+              pendingInviteTtl) {
+        return loc;
+      }
+    } on Object catch (_) {
+      // Buzilgan yozuv — pastda o'chiriladi.
+    }
+    unawaited(clearPendingInvite());
+    return null;
+  }
+
+  Future<void> setPendingInvite(String location) async {
+    if (!location.startsWith(_invitePath)) return;
+    await _store.setString(
+      StoreKeys.pendingInvite,
+      jsonEncode({'loc': location, 'at': _clock().millisecondsSinceEpoch}),
+    );
+  }
+
+  /// Taklifni bir marta oladi va o'chiradi.
+  String? takePendingInvite() {
+    final invite = pendingInvite;
+    if (invite != null) unawaited(clearPendingInvite());
+    return invite;
+  }
+
+  Future<void> clearPendingInvite() => _store.remove(StoreKeys.pendingInvite);
 
   /// Lokal ma'lumotlar o'chirilgandan keyin xotiradagi holatni tozalash.
   void resetToDefaults(Iterable<Locale> systemLocales) {
     _language = AppLanguage.fromSystem(systemLocales);
     _unitSystem = UnitSystem.fromSystem(systemLocales);
+    _attestationRegion = AttestationRegion.auto;
     _themeMode = ThemeMode.system;
     _appTheme = LgThemeId.classic;
     _role = null;

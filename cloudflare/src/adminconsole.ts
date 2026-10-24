@@ -14,6 +14,9 @@
 //   qidiruv — LIKE, `%`, `_` va `\` ekranlanadi (hammani sanab chiqib bo'lmaydi).
 // * Admin to'xtatilmaydi va o'z rolini o'zgartira olmaydi.
 // * Har yozish amali audit_log ga (faqat id va qisqa tafsilot).
+// * Admin oynasi qisqa (auth.ts: 12 soat / 30 daqiqa) va xavfli amallar
+//   (rol, to'xtatish/qayta faollashtirish, o'chirish, hamjamiyat holati,
+//   sessiyalarni bekor qilish) — STEP-UP (stepup.ts): `403 step_up_required`.
 // * SQL faqat parametrli (`?1`); ro'yxat qiymatlari `json_each(?)` bilan.
 // * Limitlar: o'qish 10 daqiqada 300, yozish soatiga 120.
 
@@ -24,6 +27,7 @@ import { iso } from './context';
 import { sha256Hex } from './crypto';
 import { badRequest, conflict, forbidden, json, notFound, readJson } from './http';
 import { hit } from './ratelimit';
+import { requireStepUp } from './stepup';
 
 export const READS_PER_10_MIN = 300;
 export const WRITES_PER_HOUR = 120;
@@ -326,6 +330,7 @@ export async function setRole(ctx: Ctx, id: string): Promise<Response> {
   const role = typeof body.role === 'string' && ROLES.has(body.role) ? body.role : null;
   if (!role) throw badRequest('invalid_role');
   if (role !== u.role) {
+    await requireStepUp(ctx, s, 'role');
     await ctx.db.prepare('UPDATE users SET role = ?2 WHERE id = ?1').bind(u.id, role).run();
     await audit(ctx, s.userId, 'role_changed', u.id, { from: u.role, to: role });
   }
@@ -344,6 +349,7 @@ export async function suspendAccount(ctx: Ctx, id: string): Promise<Response> {
   const isAdmin = await ctx.db.prepare('SELECT 1 AS ok FROM admins WHERE user_id = ?1').bind(u.id).first();
   if (u.is_admin === 1 || isAdmin) throw forbidden('admin');
   if (u.suspended_at == null) {
+    await requireStepUp(ctx, s, 'account_status');
     await ctx.db.batch([
       ctx.db.prepare('UPDATE users SET suspended_at = ?2 WHERE id = ?1 AND suspended_at IS NULL').bind(u.id, ctx.now),
       ctx.db.prepare('DELETE FROM sessions WHERE user_id = ?1').bind(u.id),
@@ -358,6 +364,7 @@ export async function reactivateAccount(ctx: Ctx, id: string): Promise<Response>
   const s = await admin(ctx, true);
   const u = await targetUser(ctx, id);
   if (u.suspended_at != null) {
+    await requireStepUp(ctx, s, 'account_status');
     await ctx.db.prepare('UPDATE users SET suspended_at = NULL WHERE id = ?1').bind(u.id).run();
     await audit(ctx, s.userId, 'account_reactivated', u.id);
   }
@@ -396,8 +403,28 @@ export async function deleteAccountByEmail(ctx: Ctx): Promise<Response> {
   if (u.id === s.userId) throw forbidden('self');
   const isAdmin = await ctx.db.prepare('SELECT 1 AS ok FROM admins WHERE user_id = ?1').bind(u.id).first();
   if (u.is_admin === 1 || isAdmin) throw forbidden('admin');
+  await requireStepUp(ctx, s, 'account_delete');
   await deleteUserData(ctx, u.id, s.userId);
   return json({ deleted: true, user_id: u.id, email_masked: u.email_masked });
+}
+
+/**
+ * POST /v1/admin/users/:id/sessions/revoke — foydalanuvchining HAMMA
+ * qurilmalardagi sessiyalarini bekor qilish (hisob to'xtatilmaydi, qayta kira
+ * oladi). Step-up (bir martalik). O'zingiznikini — `POST /v1/auth/logout-all`.
+ */
+export async function revokeSessions(ctx: Ctx, id: string): Promise<Response> {
+  const s = await admin(ctx, true);
+  const u = await targetUser(ctx, id);
+  if (u.id === s.userId) throw forbidden('self');
+  await requireStepUp(ctx, s, 'sessions_revoke');
+  const [r] = await ctx.db.batch([
+    ctx.db.prepare('DELETE FROM sessions WHERE user_id = ?1').bind(u.id),
+    ctx.db.prepare('DELETE FROM step_up_challenges WHERE user_id = ?1').bind(u.id),
+  ]);
+  const n = r.meta.changes ?? 0;
+  await audit(ctx, s.userId, 'sessions_revoked', u.id, { sessions: n });
+  return json({ revoked: n });
 }
 
 // ------------------------------------------------------ hamjamiyat holati
@@ -426,6 +453,7 @@ export async function suspendUser(ctx: Ctx, id: string): Promise<Response> {
   const s = await admin(ctx, true);
   const u = await targetUser(ctx, id);
   const h = await userHash(ctx, u.id);
+  await requireStepUp(ctx, s, 'community_status');
   if (await suspendHash(ctx, h)) await audit(ctx, s.userId, 'community_suspended', u.id, { via: 'users' });
   return json({ status: 'suspended' });
 }
@@ -440,6 +468,7 @@ export async function restoreUser(ctx: Ctx, id: string): Promise<Response> {
     .bind(h)
     .first<{ status: string; prev_status: string | null }>();
   if (m?.status !== 'suspended') throw conflict('not_suspended');
+  await requireStepUp(ctx, s, 'community_status');
   const back = m.prev_status ?? 'none';
   await ctx.db
     .prepare(
@@ -559,6 +588,7 @@ export async function suspendAuthor(ctx: Ctx, kind: string, id: string): Promise
     .bind(kind, id)
     .first<{ h: string }>();
   if (!t) throw notFound();
+  await requireStepUp(ctx, s, 'community_status');
   if (await suspendHash(ctx, t.h)) {
     await audit(ctx, s.userId, 'community_suspended', `${kind}:${id}`, { via: 'report' });
   }
@@ -610,6 +640,7 @@ export const ROUTES: [string, string, Handler][] = [
   ['POST', '/v1/admin/users/:u/role', setRole],
   ['POST', '/v1/admin/users/:u/suspend', suspendAccount],
   ['POST', '/v1/admin/users/:u/reactivate', reactivateAccount],
+  ['POST', '/v1/admin/users/:u/sessions/revoke', revokeSessions],
   ['POST', '/v1/admin/accounts/delete', deleteAccountByEmail],
   ['POST', '/v1/admin/users/:u/community/suspend', suspendUser],
   ['POST', '/v1/admin/users/:u/community/restore', restoreUser],

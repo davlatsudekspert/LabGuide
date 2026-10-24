@@ -35,10 +35,36 @@ kelgan haqiqiy sonlar ko‘rinadi — soxta yoki taxminiy raqam yo‘q.
    “Autentifikatorda ochish” → Google Authenticator / 1Password → 6 xonali kodni
    kiriting. Kalit yo‘qolsa: `docs/BACKEND_CLOUDFLARE.md`, 9-qadam.
 
+### Qisqa admin oynasi va qayta tasdiq (step-up) — 2026-10-24 dan
+
+- Ilovadagi oddiy kirish 60 kun saqlanadi, lekin **admin panel** vakolati qisqa:
+  email kodi bilan kirgandan (yoki oxirgi tasdiqdan) **12 soat** o‘tsa yoki panel
+  **30 daqiqa** ishlatilmasa, panel “Shaxsingizni tasdiqlang” oynasini ochadi.
+- **Xavfli amallar** — rolni o‘zgartirish, hisobni to‘xtatish / qayta faollashtirish,
+  hisobni o‘chirish, hamjamiyatda to‘xtatish / tiklash, muallifni to‘xtatish,
+  postni o‘chirish, boshlang‘ich kontentni e’lon qilish, admin qo‘shish / olib
+  tashlash, “Barcha qurilmalardan chiqarish” — har biri oldidan **yangi kod**
+  so‘raladi (10 daqiqa amal qiladi). Hisobni o‘chirish va sessiyalarni bekor
+  qilish — **har biri uchun alohida kod**.
+- Kod qayerdan: autentifikator (TOTP) sozlangan bo‘lsa — **faqat** undan
+  (email kodi bilan almashtirib bo‘lmaydi); sozlanmagan bo‘lsa — `ADMIN_EMAILS`
+  dagi emailingizga 6 xonali kod keladi (xat — oddiy kirish kodi xati bilan bir xil).
+  Kod faqat shu qurilmadagi sessiya uchun, 10 daqiqa, 5 urinish, bir martalik;
+  soatiga 5 ta kod.
+- Har so‘rov, tasdiq, xato va rad etilgan amal **“Amallar tarixi”**ga yoziladi
+  (`step_up_requested / step_up_verified / step_up_failed / step_up_required`).
+- Foydalanuvchi sahifasida **“Barcha qurilmalardan chiqarish”**: uning hamma
+  sessiyalari tugaydi (hisob to‘xtatilmaydi). O‘zingiz uchun: Profil → “Barcha
+  qurilmalardan chiqish”.
+- Server yangilanishi kerak: `deploy_api` (migratsiya `0013_admin_step_up`
+  ham qo‘llanadi). Eski ilova versiyasi panelda “ruxsat yo‘q” deydi — ilovani yangilang.
+
 ### Xavfsizlik — ochiq aytiladi
 
-Panel uchun TOTP talab qilinmasligi avvalgi dizayndan **zaifroq**: email qutingiz
-buzilsa, panel ham ochiladi. Bu sizning ongli qaroringiz. Shuning uchun:
+Panelga kirish uchun TOTP talab qilinmasligi avvalgi dizayndan **zaifroq**: email
+qutingiz buzilsa, panel ham ochiladi (step-up kodi ham o‘sha emailga keladi —
+u o‘g‘irlangan **sessiya tokeni**dan himoya qiladi, email buzilishidan emas;
+bunga qarshi — autentifikatorni sozlang: shunda step-up faqat TOTP bilan). Bu sizning ongli qaroringiz. Shuning uchun:
 - Gmail’da **2 bosqichli tekshiruv** albatta yoqilgan bo‘lsin;
 - server **har so‘rovda** emailni maxfiy ro‘yxat bilan solishtiradi (secret
   o‘zgarsa — darhol), faqat email kodi sessiyasini tan oladi, to‘xtatilgan
@@ -136,7 +162,7 @@ skrinshot biriktirish ham hozircha yo‘q (tugma ko‘rinmaydi).
 
 ## 8. Pro berish (D-73) — HOZIR O‘CHIQ
 > **Holat: tayyor, lekin yoqilmagan.** Bo‘lim faqat Pro build bayrog‘i (`LG_PRO_ENABLED=true`) bilan yig‘ilgan ilovada VA
-> serverda `LG_BILLING_ENABLED=true` bo‘lganda mavjud; migratsiya `0014_pro_grants.sql` hali production’ga qo‘llanmagan.
+> serverda `LG_BILLING_ENABLED=true` bo‘lganda mavjud; migratsiya `0015_pro_grants.sql` hali production’ga qo‘llanmagan.
 > Bayroq o‘chiq (standart) bo‘lsa bu bo‘lim ilovada ham, serverda ham (404) yo‘q — panel yuqoridagidek ishlaydi.
 
 Nima qiladi: admin istalgan email manziliga Pro huquqini beradi (Talaba, Ustoz yoki Mutaxassis darajasi; 30/90/365 kun

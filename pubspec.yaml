@@ -97,6 +97,7 @@ flutter:
     - assets/instruments/
     - assets/instruments/img/
     - assets/instruments/schematic/
+    - assets/diagrams/
     - assets/cytology/
     - assets/spermogram/
     - assets/bloodgroup/

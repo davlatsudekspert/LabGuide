@@ -21,8 +21,8 @@ flutter run --dart-define=LG_PRO_ENABLED=true --dart-define=LG_FAKE_PURCHASES=tr
 
 ## 2. Test serveri (staging Worker) — haqiqiy sandbox xaridlari
 Faqat ALOHIDA test Worker va test D1 bazasida (production emas).
-1. Migratsiyalarni test D1 ga qo‘llang: `0013_billing`, `0014_pro_grants`, `0015_pro_trials`,
-   `0016_billing_notifications` (production D1 ga emas).
+1. Migratsiyalarni test D1 ga qo‘llang: `0014_billing`, `0015_pro_grants`, `0016_pro_trials`,
+   `0017_billing_notifications` (production D1 ga emas).
 2. Test Worker o‘zgaruvchilari:
    - `LG_BILLING_ENABLED=true` — billing yo‘llari ochiladi;
    - `LG_BILLING_SANDBOX=true` — Apple Sandbox va Play litsenziya testeri xaridlari qabul qilinadi

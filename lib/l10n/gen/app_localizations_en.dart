@@ -186,7 +186,7 @@ class AppLocalizationsEn extends AppLocalizations {
       'Debug build: demo sign-in. No email is sent; the code is shown on the next screen.';
 
   @override
-  String get authUnavailableTitle => 'Email sign-in isn\'t connected yet';
+  String get authUnavailableTitle => 'Email sign-in isn’t connected yet';
 
   @override
   String get authUnavailableBody =>
@@ -259,7 +259,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get rolesNote =>
-      'The role only adapts the home screen. It doesn\'t grant access to other people\'s classes or data.';
+      'The role only adapts the home screen. It doesn’t grant access to other people’s classes or data.';
 
   @override
   String get roleDoctor => 'Physician';
@@ -584,7 +584,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get contentLoading => 'Loading content…';
 
   @override
-  String get contentErrorTitle => 'Content couldn\'t be loaded';
+  String get contentErrorTitle => 'Content couldn’t be loaded';
 
   @override
   String get contentErrorBody =>
@@ -603,7 +603,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get analyteRemovedToast => 'Removed from saved';
 
   @override
-  String get analyteNotFound => 'This test card wasn\'t found.';
+  String get analyteNotFound => 'This test card wasn’t found.';
 
   @override
   String get analyteStructureOnlyTitle => 'Content in preparation';
@@ -640,7 +640,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get analyteRefIntervalNone =>
-      'No reference interval is given here. Use the interval on your laboratory\'s report: it depends on the method, specimen and population.';
+      'No reference interval is given here. Use the interval on your laboratory’s report: it depends on the method, specimen and population.';
 
   @override
   String get analyteDecisionLimits => 'Diagnostic thresholds';
@@ -661,7 +661,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get analyteNoInterpretation =>
-      'LabGuide doesn\'t interpret individual results or suggest diagnoses or doses.';
+      'LabGuide doesn’t interpret individual results or suggest diagnoses or doses.';
 
   @override
   String get analyteSources => 'Sources';
@@ -831,7 +831,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get calNoMatchBody =>
-      'Calibration parameters are shown only from a verified IFU that matches the manufacturer, model, reagent REF, IFU revision and calibrator lot. Use the manufacturer\'s current IFU.';
+      'Calibration parameters are shown only from a verified IFU that matches the manufacturer, model, reagent REF, IFU revision and calibrator lot. Use the manufacturer’s current IFU.';
 
   @override
   String calCatalogCount(int count) {
@@ -840,7 +840,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get calBrandWarning =>
-      'A brand name (e.g. Mindray or HUMAN) doesn\'t mean all models share settings. The reagent IFU and the instrument manual are separate documents.';
+      'A brand name (e.g. Mindray or HUMAN) doesn’t mean all models share settings. The reagent IFU and the instrument manual are separate documents.';
 
   @override
   String get calWorkflow => 'Workflow';
@@ -1229,7 +1229,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get preNotice =>
-      'Tube colour, time and temperature depend on the specific tube, method and instructions. The times above are general guidance from the WHO table; your laboratory’s rules take priority.';
+      'Tube color, time and temperature depend on the specific tube, method and instructions. The times above are general guidance from the WHO table; your laboratory’s rules take priority.';
 
   @override
   String get diffTitle => 'Differential count';
@@ -1343,11 +1343,11 @@ class AppLocalizationsEn extends AppLocalizations {
   String get diffSeenIn => 'When it is seen';
 
   @override
-  String get diffReferTitle => 'Refer to a physician or haematologist';
+  String get diffReferTitle => 'Refer to a physician or hematologist';
 
   @override
   String get diffReferBody =>
-      'If you see a blast or a cell you cannot identify, do not interpret it yourself. Have a haematologist or physician review the smear according to your laboratory’s procedure.';
+      'If you see a blast or a cell you cannot identify, do not interpret it yourself. Have a hematologist or physician review the smear according to your laboratory’s procedure.';
 
   @override
   String get diffCompareA => 'Left';
@@ -1425,7 +1425,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get diffOtherWarning =>
-      '“Other” cells were counted. If they are blasts or unidentified cells, have a haematologist or physician review the smear.';
+      '“Other” cells were counted. If they are blasts or unidentified cells, have a hematologist or physician review the smear.';
 
   @override
   String get diffSave => 'Save to history';
@@ -1804,7 +1804,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get refSub =>
-      'Anaemia, jaundice, liver patterns, parasites, obsolete methods';
+      'Anemia, jaundice, liver patterns, parasites, obsolete methods';
 
   @override
   String get refIntro =>
@@ -1835,7 +1835,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get diffRealSmearNote =>
-      'A licensed micrograph from the microscopy atlas. Author and licence are shown when you open it.';
+      'A licensed micrograph from the microscopy atlas. Author and license are shown when you open it.';
 
   @override
   String get diffAtlasRow => 'Real blood smears';
@@ -1880,7 +1880,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get preTourniquetTitle => 'Tourniquet';
 
   @override
-  String get preIdTitle => 'Patient identification and labelling';
+  String get preIdTitle => 'Patient identification and labeling';
 
   @override
   String get prePatientTitle => 'Patient preparation';
@@ -1890,7 +1890,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get preTubeForTestSub =>
-      'Colour and position follow the WHO order above. Tubes may differ between laboratories.';
+      'Color and position follow the WHO order above. Tubes may differ between laboratories.';
 
   @override
   String preTubeSlot(String tube, int n) {
@@ -1969,7 +1969,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get mcLightSub => 'Pleural fluid: exudate or transudate';
 
   @override
-  String get mcColour => 'Colour index';
+  String get mcColour => 'Color index';
 
   @override
   String get mcColourSub => 'Why the app recommends MCH and MCHC';
@@ -2052,7 +2052,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get mfRbcExamined => 'Erythrocytes examined';
 
   @override
-  String get mfHct => 'Haematocrit (Hct)';
+  String get mfHct => 'Hematocrit (Hct)';
 
   @override
   String get mfRbc => 'Erythrocytes (RBC)';
@@ -2270,7 +2270,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get ciWhat =>
-      'The colour index is a relative measure traditionally used in CIS laboratories: it rates the haemoglobin content of one red cell against a “normal” value. It is used to describe hypo-, normo- or hyperchromia.';
+      'The color index is a relative measure traditionally used in CIS laboratories: it rates the hemoglobin content of one red cell against a “normal” value. It is used to describe hypo-, normo- or hyperchromia.';
 
   @override
   String get ciWhyTitle => 'Why the app does not calculate it';
@@ -2284,7 +2284,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get ciUse =>
-      'The haemoglobin in one red cell is expressed directly by the MCH (mean cell haemoglobin, pg), and its concentration in the cell by the MCHC. Haematology analysers report both. Judge hypo-/hyperchromia by these and your laboratory’s reference intervals.';
+      'The hemoglobin in one red cell is expressed directly by the MCH (mean cell hemoglobin, pg), and its concentration in the cell by the MCHC. Hematology analyzers report both. Judge hypo-/hyperchromia by these and your laboratory’s reference intervals.';
 
   @override
   String get dilC1 => 'C₁ · Stock concentration';
@@ -2297,7 +2297,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get dilNote =>
-      'Use the same units for C₁ and C₂. Simple dilution model: reactions, safety and volume changes are not modelled.';
+      'Use the same units for C₁ and C₂. Simple dilution model: reactions, safety and volume changes are not modeled.';
 
   @override
   String get dilCalculate => 'Calculate';
@@ -2325,7 +2325,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get dilErrorC2GtC1 =>
-      'C₂ can\'t exceed C₁: dilution can\'t raise the concentration.';
+      'C₂ can’t exceed C₁: dilution can’t raise the concentration.';
 
   @override
   String get dilErrorRange => 'The values are outside the calculable range.';
@@ -2420,7 +2420,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get calcCalciumCaution =>
-      'Albumin-adjusted calcium often misclassifies calcium status, especially with low albumin or kidney impairment. Where available, measure ionised calcium — it is preferred.';
+      'Albumin-adjusted calcium often misclassifies calcium status, especially with low albumin or kidney impairment. Where available, measure ionized calcium — it is preferred.';
 
   @override
   String get calcNotDiagnosis =>
@@ -2595,7 +2595,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get errHdlGeTc =>
-      'HDL cholesterol can\'t be equal to or greater than total cholesterol.';
+      'HDL cholesterol can’t be equal to or greater than total cholesterol.';
 
   @override
   String get errNotPositive =>
@@ -2655,7 +2655,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get micEduNotice =>
-      'Teaching images — not for diagnosis. Every image shows its author, licence and original caption.';
+      'Teaching images — not for diagnosis. Every image shows its author, license and original caption.';
 
   @override
   String get micEduTag => 'Teaching image — not for diagnosis';
@@ -2670,7 +2670,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get micAllGroups => 'All';
 
   @override
-  String get micSectionQuiz => 'Practise this section';
+  String get micSectionQuiz => 'Practice this section';
 
   @override
   String get micZoom => 'Zoom';
@@ -2727,7 +2727,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get micDraftTitle => 'What to look for';
 
   @override
-  String get micCreditTitle => 'Author and licence';
+  String get micCreditTitle => 'Author and license';
 
   @override
   String get micAuthor => 'Author';
@@ -2748,14 +2748,14 @@ class AppLocalizationsEn extends AppLocalizations {
   String get micOwnWork => 'Own work';
 
   @override
-  String get micLicense => 'Licence';
+  String get micLicense => 'License';
 
   @override
   String get micSourceDate => 'Date in the source';
 
   @override
   String micLicenseText(String license) {
-    return 'Licence text: $license';
+    return 'License text: $license';
   }
 
   @override
@@ -2776,7 +2776,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get micShareAlike =>
-      'CC BY-SA: adapted versions of this image are shared under the same licence.';
+      'CC BY-SA: adapted versions of this image are shared under the same license.';
 
   @override
   String get micCdcTerms => 'Terms of use (from the CDC PHIL page, verbatim)';
@@ -2792,18 +2792,18 @@ class AppLocalizationsEn extends AppLocalizations {
   String get micCreditsTitle => 'Image credits';
 
   @override
-  String get micCreditsSub => 'Licences and sources';
+  String get micCreditsSub => 'Licenses and sources';
 
   @override
   String micCreditsIntro(String date) {
-    return 'Each image’s licence, author and original caption were re-checked on the source page ($date). Images are only downscaled: not cropped, no text added, EXIF removed. Only CC0, CC BY, CC BY-SA, public domain and CDC PHIL images are used.';
+    return 'Each image’s license, author and original caption were re-checked on the source page ($date). Images are only downscaled: not cropped, no text added, EXIF removed. Only CC0, CC BY, CC BY-SA, public domain and CDC PHIL images are used.';
   }
 
   @override
-  String get micLicenseTexts => 'Licence texts';
+  String get micLicenseTexts => 'License texts';
 
   @override
-  String get micCreditsRow => 'Authors and licences';
+  String get micCreditsRow => 'Authors and licenses';
 
   @override
   String get micCreditsRowSub => 'Source and terms of use for every image';
@@ -2884,7 +2884,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get micQuizPromptArrow => 'What is the cell marked by the arrowhead?';
 
   @override
-  String get micQuizPromptCentre => 'What is the cell in the centre?';
+  String get micQuizPromptCentre => 'What is the cell in the center?';
 
   @override
   String get micQuizPromptField => 'What is mainly shown in this field?';
@@ -2910,7 +2910,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get micQuizResultGood => 'Good result';
 
   @override
-  String get micQuizResultKeep => 'Keep practising';
+  String get micQuizResultKeep => 'Keep practicing';
 
   @override
   String micQuizScore(int correct, int total) {
@@ -3233,7 +3233,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get partnerSectionNote =>
-      'Information provided by the partner companies. The catalogue data above, its order and review status do not depend on partnerships.';
+      'Information provided by the partner companies. The catalog data above, its order and review status do not depend on partnerships.';
 
   @override
   String get partnerKindManufacturer => 'Manufacturer';
@@ -3242,7 +3242,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get partnerKindDistributor => 'Official distributor';
 
   @override
-  String get partnerKindService => 'Service centre';
+  String get partnerKindService => 'Service center';
 
   @override
   String get partnerCall => 'Call';
@@ -3304,14 +3304,14 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get partnerPageNote =>
-      'This page is an advertisement. LabGuide does not endorse partner products; catalogue data and review status do not depend on partnerships.';
+      'This page is an advertisement. LabGuide does not endorse partner products; catalog data and review status do not depend on partnerships.';
 
   @override
   String get partnerOfferTitle => 'Your contacts, right on the instrument card';
 
   @override
   String get partnerOfferBody =>
-      'A lab specialist reading about an instrument can call its official distributor or service centre in one tap. For manufacturers, official distributors and service centres.';
+      'A lab specialist reading about an instrument can call its official distributor or service center in one tap. For manufacturers, official distributors and service centers.';
 
   @override
   String get partnerWhatTitle => 'What you get';
@@ -3352,7 +3352,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get partnerRule2 =>
-      'Catalogue facts, their order and review status do not depend on partnerships and cannot be bought.';
+      'Catalog facts, their order and review status do not depend on partnerships and cannot be bought.';
 
   @override
   String get partnerRule3 =>
@@ -3540,7 +3540,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get adminPartnerBrochure => 'Brochure link (https://…)';
 
   @override
-  String get adminPartnerLinks => 'Catalogue links';
+  String get adminPartnerLinks => 'Catalog links';
 
   @override
   String get adminPartnerMakers => 'Manufacturers (all models)';
@@ -3586,7 +3586,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get adminPartnerPublishRules =>
-      'To publish: a description, at least one contact and at least one link. The ad always carries an “Ad” label and never changes catalogue data.';
+      'To publish: a description, at least one contact and at least one link. The ad always carries an “Ad” label and never changes catalog data.';
 
   @override
   String get adminPartnerInvalid =>
@@ -3877,7 +3877,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get libResearchSub => 'Question, plan, real data and sources';
 
   @override
-  String get libSources => 'Sources and licences';
+  String get libSources => 'Sources and licenses';
 
   @override
   String get libSourcesSub => 'Review and reuse conditions';
@@ -3887,11 +3887,11 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get booksEmptyBody =>
-      'Books are added only with confirmed distribution rights. A PDF you add yourself stays for personal study and isn\'t shared.';
+      'Books are added only with confirmed distribution rights. A PDF you add yourself stays for personal study and isn’t shared.';
 
   @override
   String get booksCatalogNote =>
-      'Catalog items link to their official pages. Full text is added to the app only under an open licence or with confirmed distribution rights.';
+      'Catalog items link to their official pages. Full text is added to the app only under an open license or with confirmed distribution rights.';
 
   @override
   String get booksResetFilters => 'Clear filters';
@@ -3919,7 +3919,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String packsLicence(String licence) {
-    return 'Licence: $licence';
+    return 'License: $licence';
   }
 
   @override
@@ -3977,10 +3977,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get packsDownloadable => 'Packs to download';
 
   @override
-  String get packsCatalogLoading => 'Loading catalogue…';
+  String get packsCatalogLoading => 'Loading catalog…';
 
   @override
-  String get packsCatalogCached => 'Showing the last saved catalogue';
+  String get packsCatalogCached => 'Showing the last saved catalog';
 
   @override
   String get packsCatalogEmpty => 'No packs to download yet';
@@ -4059,7 +4059,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get savedEmptyBody => 'Select Save on a test card to keep it here.';
 
   @override
-  String get sourcesTitle => 'Sources and licences';
+  String get sourcesTitle => 'Sources and licenses';
 
   @override
   String get sourcesContent => 'Analyte cards';
@@ -4161,7 +4161,7 @@ class AppLocalizationsEn extends AppLocalizations {
       'qc_lab_management': 'Quality control and management',
       'preanalytics': 'Preanalytics',
       'hematology_cells': 'Blood cells',
-      'hemopoiesis_leukemia': 'Haematopoiesis and leukaemia',
+      'hemopoiesis_leukemia': 'Hematopoiesis and leukemia',
       'anemias': 'Anaemias',
       'hemostasis': 'Haemostasis',
       'biochemistry_proteins_enzymes': 'Proteins and enzymes',
@@ -4181,7 +4181,7 @@ class AppLocalizationsEn extends AppLocalizations {
       'parasitology': 'Parasitology',
       'immunology_serology': 'Immunology and serology',
       'molecular_pcr': 'Molecular diagnostics (PCR)',
-      'tumor_markers': 'Tumour markers',
+      'tumor_markers': 'Tumor markers',
       'cardiac_markers': 'Cardiac markers',
       'orphan_screening': 'Screening and rare diseases',
       'other': 'Other topics',
@@ -4397,7 +4397,7 @@ class AppLocalizationsEn extends AppLocalizations {
       'This is your own threshold, not the official pass mark.';
 
   @override
-  String get toifaPassError => 'Enter 1 to 100 % or leave empty';
+  String get toifaPassError => 'Enter 1 to 100% or leave empty';
 
   @override
   String get toifaScoringNotice =>
@@ -4817,7 +4817,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String toifaMoreMistakes(int count) {
-    return '$count more mistakes — practise them via Redo mistakes.';
+    return '$count more mistakes — practice them via Redo mistakes.';
   }
 
   @override
@@ -5176,11 +5176,11 @@ class AppLocalizationsEn extends AppLocalizations {
   String get classesSignIn => 'Sign in';
 
   @override
-  String get classesUnavailableTitle => 'The class server isn\'t connected yet';
+  String get classesUnavailableTitle => 'The class server isn’t connected yet';
 
   @override
   String get classesUnavailableBody =>
-      'Nothing is sent or stored. When it\'s connected, teachers see only their own classes and students see only their own results — checked on the server.';
+      'Nothing is sent or stored. When it’s connected, teachers see only their own classes and students see only their own results — checked on the server.';
 
   @override
   String get examSubtitle =>
@@ -5326,7 +5326,7 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get examReworkTitle => 'Practise your mistakes';
+  String get examReworkTitle => 'Practice your mistakes';
 
   @override
   String get examQuestionMissing =>
@@ -5427,7 +5427,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get examBand50 => 'Not bad — review your mistakes';
 
   @override
-  String get examBand0 => 'Keep practising — you’ve got this';
+  String get examBand0 => 'Keep practicing — you’ve got this';
 
   @override
   String get examCorrectN => 'Correct';
@@ -5459,7 +5459,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String examReworkMistakes(int count) {
-    return 'Practise mistakes · $count';
+    return 'Practice mistakes · $count';
   }
 
   @override
@@ -5994,7 +5994,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get themeTitle => 'Theme';
 
   @override
-  String get themeRowSub => 'App colours and title type';
+  String get themeRowSub => 'App colors and title type';
 
   @override
   String get themeCurrent => 'Current theme';
@@ -6003,7 +6003,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get themeClassicName => 'Classic';
 
   @override
-  String get themeClassicDesc => 'LabGuide\'s signature green';
+  String get themeClassicDesc => 'LabGuide’s signature green';
 
   @override
   String get themeIvoryName => 'Ivory';
@@ -6397,7 +6397,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get privacyTerms => 'Terms of use';
 
   @override
-  String get privacyTermsSub => 'Final text to be prepared';
+  String get privacyTermsSub => 'Rules for using the app and your account';
 
   @override
   String get privacyDeleteLocal => 'Delete local data';
@@ -6421,7 +6421,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get termsBody =>
-      'LabGuide is a free clinical laboratory reference and learning app. By using the app you agree to these terms.\n\n1. Medical limitation. LabGuide does not diagnose, prescribe treatment or medicines, and does not replace your laboratory\'s approved procedures, reagent and analyzer instructions (IFU) or a physician\'s judgement. Every item shows its source; when making decisions, rely on the original source and your institution\'s rules.\n\n2. Account. Some features (groups, tests, community, support requests) require signing up with email. You are responsible for your account\'s security and for actions taken through it. You can delete your account at any time: Profile → Delete account.\n\n3. Teacher and student groups. When a student joins a group, the teacher sees their nickname (or seat number) and test results. Teachers use groups for educational purposes only.\n\n4. User content. You are responsible for what you post in the community and in support requests. Abuse, illegal content, advertising, other people\'s personal data and non-consensual intimate images are strictly prohibited. Such content is removed, and the offending account may be restricted or deleted. You can report any message with “Report”.\n\n5. Copyright. The app\'s texts, slides, tests and design belong to the LabGuide authors; external sources are shown with their own licences. They may not be copied or distributed for commercial purposes.\n\n6. Service. The app is provided “as is”; outages and errors may occur, and we fix them as quickly as we can. We will notify you in the app if these terms change.\n\n7. Privacy. How your data is used is described in the privacy policy: labguide.nfcstore.uz/privacy\n\n8. Contact: labguide@nfcstore.uz';
+      'LabGuide is a free clinical laboratory reference and learning app. By using the app you agree to these terms.\n\n1. Medical limitation. LabGuide does not diagnose, prescribe treatment or medicines, and does not replace your laboratory’s approved procedures, reagent and analyzer instructions (IFU) or a physician’s judgment. Every item shows its source; when making decisions, rely on the original source and your institution’s rules.\n\n2. Account. Some features (groups, tests, community, support requests) require signing up with email. You are responsible for your account’s security and for actions taken through it. You can delete your account at any time: Profile → Delete account.\n\n3. Teacher and student groups. When a student joins a group, the teacher sees their nickname (or seat number) and test results. Teachers use groups for educational purposes only.\n\n4. User content. You are responsible for what you post in the community and in support requests. Abuse, illegal content, advertising, other people’s personal data and non-consensual intimate images are strictly prohibited. Such content is removed, and the offending account may be restricted or deleted. You can report any message with “Report”.\n\n5. Copyright. The app’s texts, slides, tests and design belong to the LabGuide authors; external sources are shown with their own licenses. They may not be copied or distributed for commercial purposes.\n\n6. Service. The app is provided “as is”; outages and errors may occur, and we fix them as quickly as we can. We will notify you in the app if these terms change.\n\n7. Privacy. How your data is used is described in the privacy policy: labguide.nfcstore.uz/privacy\n\n8. Contact: labguide@nfcstore.uz';
 
   @override
   String citePage(String page) {
@@ -6478,21 +6478,21 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String libAccessOpen(String licence) {
-    return 'Open licence · $licence';
+    return 'Open license · $licence';
   }
 
   @override
   String get libAccessFree => 'Free to read · link only';
 
   @override
-  String get libAccessCatalog => 'Catalogue record only';
+  String get libAccessCatalog => 'Catalog record only';
 
   @override
   String get libOpenSource => 'Open the official page';
 
   @override
   String libChecked(String date) {
-    return 'Page and licence checked: $date';
+    return 'Page and license checked: $date';
   }
 
   @override
@@ -6684,7 +6684,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get libStateReceived => 'Received, being checked';
 
   @override
-  String get libStateCataloged => 'Catalogued';
+  String get libStateCataloged => 'Cataloged';
 
   @override
   String get libStateLinked => 'Linked to cards';
@@ -6877,7 +6877,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get intakeRights2 =>
-      'For a file to open in the app for everyone, the rights are fully recorded: who granted them (author or publisher), when, who recorded it, and the evidence — a permission letter or a licence link.';
+      'For a file to open in the app for everyone, the rights are fully recorded: who granted them (author or publisher), when, who recorded it, and the evidence — a permission letter or a license link.';
 
   @override
   String get intakeRights3 =>
@@ -6894,7 +6894,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get intakeStep3 =>
-      'Catalogued — title, author and edition were checked. Only then can it be cited.';
+      'Cataloged — title, author and edition were checked. Only then can it be cited.';
 
   @override
   String get intakeStep4 =>
@@ -7063,7 +7063,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String reviewCatalog(int count) {
-    return 'Catalogued materials: $count';
+    return 'Cataloged materials: $count';
   }
 
   @override
@@ -7853,17 +7853,17 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get cmRulesA2 =>
-      'pre-analytics: blood collection, tubes, storage, haemolysis';
+      'pre-analytics: blood collection, tubes, storage, hemolysis';
 
   @override
   String get cmRulesA3 => 'quality control (QC, Westgard rules), calibration';
 
   @override
-  String get cmRulesA4 => 'experience working with analysers and reagents';
+  String get cmRulesA4 => 'experience working with analyzers and reagents';
 
   @override
   String get cmRulesA5 =>
-      'haematology, microscopy, biochemistry, immunology, urinalysis';
+      'hematology, microscopy, biochemistry, immunology, urinalysis';
 
   @override
   String get cmRulesA6 =>
@@ -7874,11 +7874,11 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get cmRulesB1 =>
-      'put the essence of the question in the title (for example: “Potassium high, no haemolysis — what is the cause?”)';
+      'put the essence of the question in the title (for example: “Potassium high, no hemolysis — what is the cause?”)';
 
   @override
   String get cmRulesB2 =>
-      'in the details: which test, the result and its unit, the method or analyser, what you have already tried';
+      'in the details: which test, the result and its unit, the method or analyzer, what you have already tried';
 
   @override
   String get cmRulesB3 =>
@@ -7983,7 +7983,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get cmLaunchNotOwner =>
-      'This account is not allowed as founder. Sign in with the founder\'s email.';
+      'This account is not allowed as founder. Sign in with the founder’s email.';
 
   @override
   String get cmLaunchMfaHint =>
@@ -8179,7 +8179,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get cytoTitle => 'Cytology';
 
   @override
-  String get cytoSubtitle => 'Gynaecological smear: cells and reports';
+  String get cytoSubtitle => 'Gynecological smear: cells and reports';
 
   @override
   String get cytoHeroTitle => 'Read a smear with confidence';
@@ -8193,7 +8193,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get cytoSchematicCaption =>
-      'Annotated diagram (LabGuide) — not a micrograph; scale and colours are approximate.';
+      'Annotated diagram (LabGuide) — not a micrograph; scale and colors are approximate.';
 
   @override
   String get cytoCellsTitle => 'Cells and organisms';
@@ -8431,17 +8431,17 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get diffLimitsSourceNote =>
-      'Defaults are adult 95 % intervals (Harrison’s Manual of Medicine, 20th ed., Table 64-1); bands — Lyubina 1984, Table 6. MSD Manual definitions differ: eosinophilia > 0.5 ×10⁹/L (default upper limit here 0.7) and lymphocytopenia < 1.0 ×10⁹/L (default lower limit here 1.5). Ranges differ in children and in some ethnic groups (e.g. Duffy-negative).';
+      'Defaults are adult 95% intervals (Harrison’s Manual of Medicine, 20th ed., Table 64-1); bands — Lyubina 1984, Table 6. MSD Manual definitions differ: eosinophilia > 0.5 ×10⁹/L (default upper limit here 0.7) and lymphocytopenia < 1.0 ×10⁹/L (default lower limit here 1.5). Ranges differ in children and in some ethnic groups (e.g. Duffy-negative).';
 
   @override
   String get cytoAdequacyTitle => 'Specimen adequacy';
 
   @override
   String get cytoAdequacySub =>
-      'Bethesda 2014: satisfactory or not, common artefacts';
+      'Bethesda 2014: satisfactory or not, common artifacts';
 
   @override
-  String get cytoArtefactsTitle => 'Common artefacts';
+  String get cytoArtefactsTitle => 'Common artifacts';
 
   @override
   String get cytoReactiveTitle => 'Reactive changes vs atypia';
@@ -8514,7 +8514,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get cytoCategoriesTitle => 'Categories';
 
   @override
-  String get contactPrivacyPolicy => 'Privacy Policy';
+  String get contactPrivacyPolicy => 'Privacy policy';
 
   @override
   String get bloodGroupTitle => 'Blood grouping';
@@ -8671,7 +8671,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get autoPresColTube => 'Tube';
 
   @override
-  String get autoPresColCap => 'Cap colour';
+  String get autoPresColCap => 'Cap color';
 
   @override
   String get autoPresShowAnswer => 'Show answer';
@@ -8882,7 +8882,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get accountDeleteAppleCancelled =>
-      'Nothing was deleted: Apple confirmation was cancelled.';
+      'Nothing was deleted: Apple confirmation was canceled.';
 
   @override
   String get urinTitle => 'Urinalysis';
@@ -9389,7 +9389,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get bloodMorphLabCardBody =>
-      'Red cells, platelets, anaemias: real micrographs, helper, practice';
+      'Red cells, platelets, anemias: real micrographs, helper, practice';
 
   @override
   String get lectureSearchLabel => 'Search presentations';
@@ -9758,10 +9758,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get admDeleteNote =>
-      'For deletion requests received by email (completed within 30 days). To confirm, enter the user\'s full email — the server checks that it belongs to exactly this account. The account, group memberships, community posts, support threads and sign-in methods are deleted permanently; for Sign in with Apple users the server attempts to revoke the Apple token. This cannot be undone; the action is logged.';
+      'For deletion requests received by email (completed within 30 days). To confirm, enter the user’s full email — the server checks that it belongs to exactly this account. The account, group memberships, community posts, support threads and sign-in methods are deleted permanently; for Sign in with Apple users the server attempts to revoke the Apple token. This cannot be undone; the action is logged.';
 
   @override
-  String get admDeleteEmail => 'User\'s full email';
+  String get admDeleteEmail => 'User’s full email';
 
   @override
   String get admDeleteButton => 'Delete account permanently';
@@ -10014,11 +10014,11 @@ class AppLocalizationsEn extends AppLocalizations {
       'Codes never contain 0, O, 1 or I. Check the code with your teacher or scan the QR.';
 
   @override
-  String get classesOwnGroupTitle => 'You are this group\'s teacher';
+  String get classesOwnGroupTitle => 'You are this group’s teacher';
 
   @override
   String get classesOwnGroupBody =>
-      'This account created the group, so it can\'t join it as a student (switching the role in Profile doesn\'t change that). To try it as a student, sign in with another account or take the test in student view.';
+      'This account created the group, so it can’t join it as a student (switching the role in Profile doesn’t change that). To try it as a student, sign in with another account or take the test in student view.';
 
   @override
   String get classesOwnGroupOpen => 'Open as teacher';
@@ -10031,7 +10031,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get classesPreviewNote =>
-      'Trial mode: answers are not sent to the server and don\'t appear in the results.';
+      'Trial mode: answers are not sent to the server and don’t appear in the results.';
 
   @override
   String classesPreviewResult(int correct, int total) {
@@ -10046,7 +10046,7 @@ class AppLocalizationsEn extends AppLocalizations {
       'Pick a topic — the next page sets the number of questions, variants, due date and when answers open.';
 
   @override
-  String get classesTopicSearchHint => 'Search topics (e.g. anaemia)';
+  String get classesTopicSearchHint => 'Search topics (e.g. anemia)';
 
   @override
   String get classesTopicNoMatch => 'No topic with a ready test found';
@@ -10076,7 +10076,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get classesNicknameNote =>
-      'Don\'t use your real name. Leave empty to show your seat number.';
+      'Don’t use your real name. Leave empty to show your seat number.';
 
   @override
   String get rolesTeacherRegisterNote =>
@@ -10100,7 +10100,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get generalTestSources => 'Where questions come from';
 
   @override
-  String get generalTestSearchHint => 'Search topics (e.g. anaemia)';
+  String get generalTestSearchHint => 'Search topics (e.g. anemia)';
 
   @override
   String get generalSourceToifa => 'Category exam questions';
@@ -10699,4 +10699,305 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get proSubWithoutSubscription =>
       'You can use the app without a subscription: free features stay free.';
+
+  @override
+  String get profileAttestation => 'Qualification category (attestation)';
+
+  @override
+  String get profileAttestationAuto => 'Automatic';
+
+  @override
+  String get profileAttestationUz => 'Uzbekistan';
+
+  @override
+  String get profileAttestationNone => 'Hide';
+
+  @override
+  String get profileAttestationNote =>
+      'Shows the Uzbekistan qualification-category exam prep section in any interface language. Automatic: shown when the language is Uzbek or the device region is Uzbekistan.';
+
+  @override
+  String get calSafeKind => 'Record type';
+
+  @override
+  String get calSafeKindTraining => 'Training';
+
+  @override
+  String get calSafeKindLab => 'Laboratory';
+
+  @override
+  String get calSafeTrainingTag => 'Training';
+
+  @override
+  String get calSafeTrainingNote =>
+      'Training record: this is not laboratory evidence.';
+
+  @override
+  String get calSafeApprovedBy => 'Approved by (name / role)';
+
+  @override
+  String get calSafeApprovedAt => 'Approved on';
+
+  @override
+  String get calSafeApproverRequired =>
+      '“Accepted” needs the name or role of the authorized person.';
+
+  @override
+  String get calSafeQcAfter => 'QC after calibration';
+
+  @override
+  String get calSafeQcPass => 'QC passed';
+
+  @override
+  String get calSafeQcFail => 'QC failed';
+
+  @override
+  String get calSafeQcNotRun => 'QC not run';
+
+  @override
+  String get calSafeQcNotRunWarn => 'QC not run after calibration';
+
+  @override
+  String get calSafeQcPassRequired =>
+      '“Accepted” is possible only when QC after calibration passed.';
+
+  @override
+  String get calSafeSopRef => 'SOP reference (optional)';
+
+  @override
+  String get calSafeLegacyTag => 'Legacy, unverified';
+
+  @override
+  String get calSafeHistory => 'History';
+
+  @override
+  String get calSafeHistoryEmpty => 'No history entries.';
+
+  @override
+  String get calSafeAuditCreated => 'Created';
+
+  @override
+  String get calSafeAuditEdited => 'Edited';
+
+  @override
+  String get calSafeAuditDeleted => 'Deleted';
+
+  @override
+  String get calSafeHistoryNote =>
+      'History stays even after a record is deleted. It is removed only by “delete local data”.';
+
+  @override
+  String get labDirSection => 'Laboratory directions (reference)';
+
+  @override
+  String get labDirSectionSub => 'Platform and test on separate cards';
+
+  @override
+  String get labDirTb => 'Tuberculosis (TB) diagnostics';
+
+  @override
+  String get labDirHiv => 'HIV laboratory diagnostics';
+
+  @override
+  String get labDirTag => 'Reference';
+
+  @override
+  String get labDirNotVerified => 'Not added yet';
+
+  @override
+  String get labDirKindPlatform => 'Platform (instrument)';
+
+  @override
+  String get labDirKindTest => 'Test';
+
+  @override
+  String get labDirKindMethod => 'Method';
+
+  @override
+  String get labDirVsTest => 'Platform vs test';
+
+  @override
+  String get labDirTechnology => 'Technology';
+
+  @override
+  String get labDirSpecimens => 'Specimens';
+
+  @override
+  String get labDirTasks => 'Tasks';
+
+  @override
+  String get labDirPrinciple => 'Principle';
+
+  @override
+  String get labDirLimitations => 'Limitations';
+
+  @override
+  String get labDirQc => 'QC and calibration';
+
+  @override
+  String get labDirErrors => 'Preanalytic and analytic errors';
+
+  @override
+  String get labDirBiosafety => 'Biosafety';
+
+  @override
+  String get labDirModels => 'Models confirmed by an official source';
+
+  @override
+  String get labDirLinked => 'Linked cards';
+
+  @override
+  String get labDirStatusNeedsReview =>
+      'Check status: sources are listed below; specialist sign-off not yet recorded';
+
+  @override
+  String get labDirManufacturerNote =>
+      'Manufacturer page (marketing material), not an instruction';
+
+  @override
+  String get labDirVirology => 'Virology';
+
+  @override
+  String get labDirBacteriology => 'Bacteriology';
+
+  @override
+  String get labDirMycology => 'Mycology';
+
+  @override
+  String get labDirParasitology => 'Parasitology';
+
+  @override
+  String get labDirHematology => 'Haematology';
+
+  @override
+  String get labDirCoagulation => 'Coagulation (haemostasis)';
+
+  @override
+  String get labDirTransfusion => 'Transfusion medicine';
+
+  @override
+  String get labDirBiochemistry => 'Clinical biochemistry';
+
+  @override
+  String get labDirImmunology => 'Immunology';
+
+  @override
+  String get labDirUrinalysis => 'Urinalysis';
+
+  @override
+  String get labDirCytology => 'Cytology';
+
+  @override
+  String get labDirHistology => 'Histology';
+
+  @override
+  String get labDirOncology => 'Oncology';
+
+  @override
+  String get labDirGenetics => 'Genetics';
+
+  @override
+  String get labDirMolecular => 'Molecular diagnostics';
+
+  @override
+  String get labDirToxicology => 'Toxicology';
+
+  @override
+  String get labDirReproductive => 'Reproductive medicine';
+
+  @override
+  String get labDirNeonatal => 'Neonatal laboratory diagnostics';
+
+  @override
+  String get labDirTransplant => 'Transplantation';
+
+  @override
+  String get labDirGeneral => 'General laboratory';
+
+  @override
+  String get labDirDisclaimer =>
+      'Educational reference only. The app does not diagnose and is not an operating protocol; decisions rest with an authorised laboratory and clinician.';
+
+  @override
+  String get labDirEmpty => 'No cards in this direction.';
+
+  @override
+  String get labDirPlatformClassNote =>
+      'Class/technology reference — not verified for a specific model';
+
+  @override
+  String get imgDiagramCalibrationOverviewAlt =>
+      'Diagram, general calibration workflow in six steps: confirm instrument and method; verify reagent, REF and IFU revision; prepare a lot-matched calibrator; follow the verified instrument interface; evaluate the calibration and independent QC; record results and release per SOP. Not an instrument screenshot.';
+
+  @override
+  String get imgDiagramDifferentialCountAlt =>
+      'Diagram, manual leukocyte differential in six steps: inspect the smear and cell distribution; classify cells in the prescribed area; count to the local SOP target; calculate relative percentages; use WBC for absolute counts; review abnormal cells and report.';
+
+  @override
+  String get imgDiagramQcDecisionAlt =>
+      'Diagram, quality-control decision workflow in six steps: measure the control(s); compare with lot targets and SD; evaluate the approved QC rules; if QC fails, investigate the cause; if needed, correct the cause and rerun QC; if QC passes, follow the release SOP. If QC is out of control, do not release patient results until the issue is resolved under SOP.';
+
+  @override
+  String get imgDiagramPreanalyticsAlt =>
+      'Diagram, preanalytics and specimen integrity in six steps: correct patient identification; confirm requested tests; select the proper tube and method; label at collection; transport per the temperature and time SOP; assess acceptance before analysis. Example process map.';
+
+  @override
+  String get imgDiagramPhotometryAlt =>
+      'Diagram, principle of absorbance photometry in six steps: light source and wavelength; optical path through the cuvette; the sample absorbs light; the detector measures transmitted light; calculate absorbance A = log10(I0/I); quantify with a verified calibration. Beer–Lambert linearity has limits; the reagent IFU sets wavelengths, blanks and calibration.';
+
+  @override
+  String get imgDiagramEducationalFeedbackAlt =>
+      'Diagram, teacher–student learning loop in six steps: the teacher chooses a topic; creates an evidence-linked assignment; the student studies the materials; completes the assessment; receives explained feedback; the teacher reviews progress and adapts. A product workflow diagram, not a scientific image.';
+
+  @override
+  String get imgDiagramCaption =>
+      'General diagram drawn for LabGuide. Your instrument’s IFU and your laboratory SOP take precedence.';
+
+  @override
+  String get imgDiagramTapToZoom => 'Tap the diagram to enlarge';
+
+  @override
+  String get stepUpTitle => 'Confirm it\'s you';
+
+  @override
+  String stepUpBodyEmail(String email) {
+    return 'This action needs a fresh confirmation. Enter the 6-digit code sent to $email.';
+  }
+
+  @override
+  String get stepUpBodyEmailNoAddress =>
+      'This action needs a fresh confirmation. Enter the 6-digit code sent to your email.';
+
+  @override
+  String get stepUpBodyTotp =>
+      'This action needs a fresh confirmation. Enter the 6-digit code from your authenticator app.';
+
+  @override
+  String get stepUpConfirm => 'Confirm';
+
+  @override
+  String get stepUpCancelled =>
+      'Not done: this action needs a fresh confirmation code.';
+
+  @override
+  String get admRevokeSessions => 'Sign out of all devices';
+
+  @override
+  String get admRevokeSessionsBody =>
+      'The user is signed out on every device. The account stays active and they can sign in again.';
+
+  @override
+  String admRevokeSessionsDone(int count) {
+    return 'Sessions ended: $count.';
+  }
+
+  @override
+  String get profileSignOutAll => 'Sign out of all devices';
+
+  @override
+  String get profileSignOutAllBody =>
+      'You will be signed out on this phone and on every other device where you signed in. Data on this device is kept.';
+
+  @override
+  String get profileSignOutAllDone => 'Signed out on all devices.';
 }

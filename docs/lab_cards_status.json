@@ -1,0 +1,887 @@
+{
+ "generated": "2026-10-24",
+ "branch": "fix/audit-cards",
+ "public_cards": 45,
+ "hidden_stubs": 19,
+ "directions_covered": [
+  "bacteriology",
+  "biochemistry",
+  "coagulation",
+  "general",
+  "genetics",
+  "hematology",
+  "hiv",
+  "immunology",
+  "molecular",
+  "neonatal",
+  "reproductive",
+  "tb",
+  "toxicology",
+  "transfusion"
+ ],
+ "note": "Machine-readable summary of assets/instruments/catalog.json lab_cards. Nothing is expert-reviewed.",
+ "cards": [
+  {
+   "id": "tb-genexpert-platform",
+   "direction": "tb",
+   "kind": "platform",
+   "status": "NEEDS_REVIEW",
+   "expert_reviewed": false,
+   "source_ids": [
+    "cdc-xpert-mtb-rif"
+   ],
+   "caveat": "The source is narrow or single; expert review is pending. This card is not presented as verified.",
+   "linked": [
+    "tb-xpert-mtb-rif-tests"
+   ],
+   "models_verified": false
+  },
+  {
+   "id": "tb-xpert-mtb-rif-tests",
+   "direction": "tb",
+   "kind": "test",
+   "status": "NEEDS_REVIEW",
+   "expert_reviewed": false,
+   "source_ids": [
+    "cdc-xpert-mtb-rif",
+    "who-tbksp-alg1"
+   ],
+   "caveat": null,
+   "linked": [
+    "tb-genexpert-platform"
+   ],
+   "models_verified": false
+  },
+  {
+   "id": "tb-lamp-test",
+   "direction": "tb",
+   "kind": "test",
+   "status": "NEEDS_REVIEW",
+   "expert_reviewed": false,
+   "source_ids": [
+    "who-tbksp-alg1"
+   ],
+   "caveat": null,
+   "linked": [],
+   "models_verified": false
+  },
+  {
+   "id": "tb-truenat-test",
+   "direction": "tb",
+   "kind": "test",
+   "status": "NEEDS_REVIEW",
+   "expert_reviewed": false,
+   "source_ids": [
+    "who-tbksp-alg1"
+   ],
+   "caveat": null,
+   "linked": [],
+   "models_verified": false
+  },
+  {
+   "id": "hiv-agab-immunoassay-algorithm",
+   "direction": "hiv",
+   "kind": "test",
+   "status": "NEEDS_REVIEW",
+   "expert_reviewed": false,
+   "source_ids": [
+    "cdc-hiv-lab-algorithm-2014",
+    "cdc-hiv-test-types",
+    "who-hiv-factsheet"
+   ],
+   "caveat": null,
+   "linked": [
+    "a1-geenius-hiv-confirm-test"
+   ],
+   "models_verified": false
+  },
+  {
+   "id": "hiv-rna-viral-load",
+   "direction": "hiv",
+   "kind": "test",
+   "status": "NEEDS_REVIEW",
+   "expert_reviewed": false,
+   "source_ids": [
+    "a3-fda-alinity-hiv1",
+    "a3-fda-cobas-hiv1",
+    "a3-who-hiv-vl-brief-2023"
+   ],
+   "caveat": null,
+   "linked": [
+    "a3-mol-realtime-pcr-platform"
+   ],
+   "models_verified": false
+  },
+  {
+   "id": "a1-geenius-hiv-confirm-test",
+   "direction": "hiv",
+   "kind": "test",
+   "status": "NEEDS_REVIEW",
+   "expert_reviewed": false,
+   "source_ids": [
+    "a1-fda-geenius-ifu",
+    "cdc-hiv-lab-algorithm-2014"
+   ],
+   "caveat": null,
+   "linked": [
+    "hiv-agab-immunoassay-algorithm"
+   ],
+   "models_verified": false
+  },
+  {
+   "id": "a1-realtime-pcr-method",
+   "direction": "molecular",
+   "kind": "method",
+   "status": "NEEDS_REVIEW",
+   "expert_reviewed": false,
+   "source_ids": [
+    "a1-sp-pcr"
+   ],
+   "caveat": null,
+   "linked": [
+    "a3-mol-realtime-pcr-platform"
+   ],
+   "models_verified": false
+  },
+  {
+   "id": "a1-autoclave-platform",
+   "direction": "general",
+   "kind": "platform",
+   "status": "NEEDS_REVIEW",
+   "expert_reviewed": false,
+   "source_ids": [
+    "a1-cdc-steam"
+   ],
+   "caveat": null,
+   "linked": [],
+   "models_verified": false
+  },
+  {
+   "id": "a1-blood-culture-platform",
+   "direction": "bacteriology",
+   "kind": "platform",
+   "status": "NEEDS_REVIEW",
+   "expert_reviewed": false,
+   "source_ids": [
+    "a1-fda-k173873",
+    "a1-pmc-bloodculture"
+   ],
+   "caveat": null,
+   "linked": [],
+   "models_verified": false
+  },
+  {
+   "id": "a1-coagulation-analyzer-platform",
+   "direction": "coagulation",
+   "kind": "platform",
+   "status": "NEEDS_REVIEW",
+   "expert_reviewed": false,
+   "source_ids": [
+    "a1-sp-pt"
+   ],
+   "caveat": "The source is narrow or single; expert review is pending. This card is not presented as verified.",
+   "linked": [
+    "a1-pt-inr-test"
+   ],
+   "models_verified": false
+  },
+  {
+   "id": "a1-pt-inr-test",
+   "direction": "coagulation",
+   "kind": "test",
+   "status": "NEEDS_REVIEW",
+   "expert_reviewed": false,
+   "source_ids": [
+    "a1-sp-pt"
+   ],
+   "caveat": null,
+   "linked": [
+    "a1-coagulation-analyzer-platform"
+   ],
+   "models_verified": false
+  },
+  {
+   "id": "a1-elisa-method",
+   "direction": "immunology",
+   "kind": "method",
+   "status": "NEEDS_REVIEW",
+   "expert_reviewed": false,
+   "source_ids": [
+    "a1-sp-elisa"
+   ],
+   "caveat": null,
+   "linked": [
+    "a1-elisa-reader-platform"
+   ],
+   "models_verified": false
+  },
+  {
+   "id": "a1-elisa-reader-platform",
+   "direction": "immunology",
+   "kind": "platform",
+   "status": "NEEDS_REVIEW",
+   "expert_reviewed": false,
+   "source_ids": [
+    "a1-sp-elisa"
+   ],
+   "caveat": "The source is narrow or single; expert review is pending. This card is not presented as verified.",
+   "linked": [
+    "a1-elisa-method"
+   ],
+   "models_verified": false
+  },
+  {
+   "id": "a1-bsc-class2-platform",
+   "direction": "general",
+   "kind": "platform",
+   "status": "NEEDS_REVIEW",
+   "expert_reviewed": false,
+   "source_ids": [
+    "a1-who-lbm4-bsc"
+   ],
+   "caveat": null,
+   "linked": [],
+   "models_verified": false
+  },
+  {
+   "id": "a2-platform-blood-gas-ise-analyzer",
+   "direction": "biochemistry",
+   "kind": "platform",
+   "status": "NEEDS_REVIEW",
+   "expert_reviewed": false,
+   "source_ids": [
+    "a2-pmc-bga-croatia"
+   ],
+   "caveat": "The practice rules come from one national guideline (Croatia); expert review is pending. This card is not presented as verified.",
+   "linked": [
+    "a2-test-arterial-blood-gas-panel"
+   ],
+   "models_verified": false
+  },
+  {
+   "id": "a2-test-arterial-blood-gas-panel",
+   "direction": "biochemistry",
+   "kind": "test",
+   "status": "NEEDS_REVIEW",
+   "expert_reviewed": false,
+   "source_ids": [
+    "a2-pmc-bga-croatia"
+   ],
+   "caveat": "The practice rules come from one national guideline (Croatia); expert review is pending. This card is not presented as verified.",
+   "linked": [
+    "a2-platform-blood-gas-ise-analyzer"
+   ],
+   "models_verified": false
+  },
+  {
+   "id": "a2-method-calibrators-control-materials",
+   "direction": "general",
+   "kind": "method",
+   "status": "NEEDS_REVIEW",
+   "expert_reviewed": false,
+   "source_ids": [
+    "a2-who-qms"
+   ],
+   "caveat": null,
+   "linked": [],
+   "models_verified": false
+  },
+  {
+   "id": "a2-platform-lab-fridge-freezer-monitoring",
+   "direction": "general",
+   "kind": "platform",
+   "status": "NEEDS_REVIEW",
+   "expert_reviewed": false,
+   "source_ids": [
+    "a2-cdc-vaccine-storage",
+    "a2-who-lbm4",
+    "a2-who-qms"
+   ],
+   "caveat": null,
+   "linked": [],
+   "models_verified": false
+  },
+  {
+   "id": "a2-test-hba1c",
+   "direction": "biochemistry",
+   "kind": "test",
+   "status": "NEEDS_REVIEW",
+   "expert_reviewed": false,
+   "source_ids": [
+    "a2-pmc-hba1c-review",
+    "a2-pmc-hba1c-variants"
+   ],
+   "caveat": "The source is narrow or single; expert review is pending. This card is not presented as verified.",
+   "linked": [
+    "a2-platform-hba1c-analyzer"
+   ],
+   "models_verified": false
+  },
+  {
+   "id": "a2-platform-hba1c-analyzer",
+   "direction": "biochemistry",
+   "kind": "platform",
+   "status": "NEEDS_REVIEW",
+   "expert_reviewed": false,
+   "source_ids": [
+    "a2-pmc-hba1c-review"
+   ],
+   "caveat": "The source is narrow or single; expert review is pending. This card is not presented as verified.",
+   "linked": [
+    "a2-test-hba1c"
+   ],
+   "models_verified": false
+  },
+  {
+   "id": "a2-platform-led-fluorescence-microscope",
+   "direction": "tb",
+   "kind": "platform",
+   "status": "NEEDS_REVIEW",
+   "expert_reviewed": false,
+   "source_ids": [
+    "a2-who-led"
+   ],
+   "caveat": null,
+   "linked": [
+    "a2-method-auramine-smear-microscopy-tb"
+   ],
+   "models_verified": false
+  },
+  {
+   "id": "a2-method-auramine-smear-microscopy-tb",
+   "direction": "tb",
+   "kind": "method",
+   "status": "NEEDS_REVIEW",
+   "expert_reviewed": false,
+   "source_ids": [
+    "a2-who-led"
+   ],
+   "caveat": null,
+   "linked": [
+    "a2-platform-led-fluorescence-microscope"
+   ],
+   "models_verified": false
+  },
+  {
+   "id": "a2-method-newborn-screening-dbs-qa",
+   "direction": "neonatal",
+   "kind": "method",
+   "status": "NEEDS_REVIEW",
+   "expert_reviewed": false,
+   "source_ids": [
+    "a2-cdc-nsqap"
+   ],
+   "caveat": null,
+   "linked": [],
+   "models_verified": false
+  },
+  {
+   "id": "a2-test-semen-analysis-who6",
+   "direction": "reproductive",
+   "kind": "test",
+   "status": "NEEDS_REVIEW",
+   "expert_reviewed": false,
+   "source_ids": [
+    "a2-who-semen6"
+   ],
+   "caveat": null,
+   "linked": [
+    "a2-platform-casa"
+   ],
+   "models_verified": false
+  },
+  {
+   "id": "a2-platform-casa",
+   "direction": "reproductive",
+   "kind": "platform",
+   "status": "NEEDS_REVIEW",
+   "expert_reviewed": false,
+   "source_ids": [
+    "a2-who-semen6"
+   ],
+   "caveat": null,
+   "linked": [
+    "a2-test-semen-analysis-who6"
+   ],
+   "models_verified": false
+  },
+  {
+   "id": "a2-test-urine-drug-immunoassay-screen",
+   "direction": "toxicology",
+   "kind": "test",
+   "status": "NEEDS_REVIEW",
+   "expert_reviewed": false,
+   "source_ids": [
+    "a2-pmc-urine-drug"
+   ],
+   "caveat": null,
+   "linked": [],
+   "models_verified": false
+  },
+  {
+   "id": "a3-trf-gel-card-system",
+   "direction": "transfusion",
+   "kind": "platform",
+   "status": "NEEDS_REVIEW",
+   "expert_reviewed": false,
+   "source_ids": [
+    "a3-who-bg-module3"
+   ],
+   "caveat": null,
+   "linked": [],
+   "models_verified": false
+  },
+  {
+   "id": "a3-hem-esr-analyzer",
+   "direction": "hematology",
+   "kind": "platform",
+   "status": "NEEDS_REVIEW",
+   "expert_reviewed": false,
+   "source_ids": [
+    "a3-statpearls-esr"
+   ],
+   "caveat": null,
+   "linked": [],
+   "models_verified": false
+  },
+  {
+   "id": "a3-tox-gc-ms",
+   "direction": "toxicology",
+   "kind": "platform",
+   "status": "NEEDS_REVIEW",
+   "expert_reviewed": false,
+   "source_ids": [
+    "a3-statpearls-ms"
+   ],
+   "caveat": null,
+   "linked": [],
+   "models_verified": false
+  },
+  {
+   "id": "a3-tox-lc-ms",
+   "direction": "toxicology",
+   "kind": "platform",
+   "status": "NEEDS_REVIEW",
+   "expert_reviewed": false,
+   "source_ids": [
+    "a3-statpearls-ms"
+   ],
+   "caveat": null,
+   "linked": [],
+   "models_verified": false
+  },
+  {
+   "id": "a3-gen-gravimetric-pipette-calibration",
+   "direction": "general",
+   "kind": "method",
+   "status": "NEEDS_REVIEW",
+   "expert_reviewed": false,
+   "source_ids": [
+    "a3-nist-sop14"
+   ],
+   "caveat": null,
+   "linked": [],
+   "models_verified": false
+  },
+  {
+   "id": "a3-coag-platelet-aggregometry-tem",
+   "direction": "coagulation",
+   "kind": "platform",
+   "status": "NEEDS_REVIEW",
+   "expert_reviewed": false,
+   "source_ids": [
+    "a3-statpearls-coag-eval"
+   ],
+   "caveat": null,
+   "linked": [],
+   "models_verified": false
+  },
+  {
+   "id": "a3-tox-tlc",
+   "direction": "toxicology",
+   "kind": "method",
+   "status": "NEEDS_REVIEW",
+   "expert_reviewed": false,
+   "source_ids": [
+    "a3-unodc-cocaine-2012"
+   ],
+   "caveat": "The source is narrow or single; expert review is pending. This card is not presented as verified.",
+   "linked": [],
+   "models_verified": false
+  },
+  {
+   "id": "a3-gen-fish-molecular-genetics",
+   "direction": "genetics",
+   "kind": "method",
+   "status": "NEEDS_REVIEW",
+   "expert_reviewed": false,
+   "source_ids": [
+    "a3-statpearls-molgen"
+   ],
+   "caveat": null,
+   "linked": [],
+   "models_verified": false
+  },
+  {
+   "id": "a3-bio-electrophoresis",
+   "direction": "biochemistry",
+   "kind": "platform",
+   "status": "NEEDS_REVIEW",
+   "expert_reviewed": false,
+   "source_ids": [
+    "a3-statpearls-electrophoresis"
+   ],
+   "caveat": null,
+   "linked": [],
+   "models_verified": false
+  },
+  {
+   "id": "a3-bio-osmometer",
+   "direction": "biochemistry",
+   "kind": "platform",
+   "status": "NEEDS_REVIEW",
+   "expert_reviewed": false,
+   "source_ids": [
+    "a3-statpearls-osmometer"
+   ],
+   "caveat": null,
+   "linked": [],
+   "models_verified": false
+  },
+  {
+   "id": "a3-tb-bactec-mgit960-platform",
+   "direction": "tb",
+   "kind": "platform",
+   "status": "NEEDS_REVIEW",
+   "expert_reviewed": false,
+   "source_ids": [
+    "a1-pmc-mgit",
+    "a3-who-tb-dst-2018"
+   ],
+   "caveat": "The source is narrow or single; expert review is pending. This card is not presented as verified.",
+   "linked": [
+    "a3-tb-mgit-culture-dst-method"
+   ],
+   "models_verified": false
+  },
+  {
+   "id": "a3-tb-mgit-culture-dst-method",
+   "direction": "tb",
+   "kind": "method",
+   "status": "NEEDS_REVIEW",
+   "expert_reviewed": false,
+   "source_ids": [
+    "a3-who-tb-dst-2018"
+   ],
+   "caveat": null,
+   "linked": [
+    "a3-tb-bactec-mgit960-platform"
+   ],
+   "models_verified": false
+  },
+  {
+   "id": "a3-hiv-cd4-flow-method",
+   "direction": "hiv",
+   "kind": "method",
+   "status": "NEEDS_REVIEW",
+   "expert_reviewed": false,
+   "source_ids": [
+    "a3-cdc-mmwr-rr2-2003",
+    "a3-who-poc-cd4-tpp-2020"
+   ],
+   "caveat": "The main source is dated (CDC MMWR, 2003); expert review is pending. This card is not presented as verified.",
+   "linked": [
+    "a3-imm-flow-cytometer-platform"
+   ],
+   "models_verified": false
+  },
+  {
+   "id": "a3-imm-flow-cytometer-platform",
+   "direction": "immunology",
+   "kind": "platform",
+   "status": "NEEDS_REVIEW",
+   "expert_reviewed": false,
+   "source_ids": [
+    "a3-statpearls-flow"
+   ],
+   "caveat": null,
+   "linked": [
+    "a3-hiv-cd4-flow-method"
+   ],
+   "models_verified": false
+  },
+  {
+   "id": "a3-mol-realtime-pcr-platform",
+   "direction": "molecular",
+   "kind": "platform",
+   "status": "NEEDS_REVIEW",
+   "expert_reviewed": false,
+   "source_ids": [
+    "a1-sp-pcr",
+    "a3-fda-cobas-hiv1"
+   ],
+   "caveat": "The source is narrow or single; expert review is pending. This card is not presented as verified.",
+   "linked": [
+    "hiv-rna-viral-load",
+    "a1-realtime-pcr-method"
+   ],
+   "models_verified": false
+  },
+  {
+   "id": "a3-bac-vitek2-platform",
+   "direction": "bacteriology",
+   "kind": "platform",
+   "status": "NEEDS_REVIEW",
+   "expert_reviewed": false,
+   "source_ids": [
+    "a1-fda-k230864",
+    "a3-fda-k201675"
+   ],
+   "caveat": "The source is narrow or single; expert review is pending. This card is not presented as verified.",
+   "linked": [
+    "a3-bac-ast-method"
+   ],
+   "models_verified": false
+  },
+  {
+   "id": "a3-bac-ast-method",
+   "direction": "bacteriology",
+   "kind": "method",
+   "status": "NEEDS_REVIEW",
+   "expert_reviewed": false,
+   "source_ids": [
+    "a1-eucast-dd",
+    "a3-eucast-dd-qc",
+    "a3-fda-k201675"
+   ],
+   "caveat": "The source is narrow or single; expert review is pending. This card is not presented as verified.",
+   "linked": [
+    "a3-bac-vitek2-platform"
+   ],
+   "models_verified": false
+  },
+  {
+   "id": "a3-bac-maldi-tof-platform",
+   "direction": "bacteriology",
+   "kind": "platform",
+   "status": "NEEDS_REVIEW",
+   "expert_reviewed": false,
+   "source_ids": [
+    "a1-fda-k163536",
+    "a3-fda-k181412"
+   ],
+   "caveat": "The source is narrow or single; expert review is pending. This card is not presented as verified.",
+   "linked": [],
+   "models_verified": false
+  },
+  {
+   "id": "a1-na-extraction-method",
+   "direction": "molecular",
+   "kind": "method",
+   "status": "NEEDS_SOURCE_HIDDEN",
+   "expert_reviewed": false,
+   "source_ids": [],
+   "caveat": null,
+   "linked": [],
+   "models_verified": false
+  },
+  {
+   "id": "a1-mindray-ba-88a-platform",
+   "direction": "biochemistry",
+   "kind": "platform",
+   "status": "NEEDS_SOURCE_HIDDEN",
+   "expert_reviewed": false,
+   "source_ids": [],
+   "caveat": null,
+   "linked": [],
+   "models_verified": false
+  },
+  {
+   "id": "a2-platform-centrifuge",
+   "direction": "general",
+   "kind": "platform",
+   "status": "NEEDS_SOURCE_HIDDEN",
+   "expert_reviewed": false,
+   "source_ids": [],
+   "caveat": null,
+   "linked": [],
+   "models_verified": false
+  },
+  {
+   "id": "a2-platform-microbiology-incubator",
+   "direction": "bacteriology",
+   "kind": "platform",
+   "status": "NEEDS_SOURCE_HIDDEN",
+   "expert_reviewed": false,
+   "source_ids": [],
+   "caveat": null,
+   "linked": [],
+   "models_verified": false
+  },
+  {
+   "id": "a3-hiv-genotyping-stub",
+   "direction": "hiv",
+   "kind": "platform",
+   "status": "NEEDS_SOURCE_HIDDEN",
+   "expert_reviewed": false,
+   "source_ids": [],
+   "caveat": null,
+   "linked": [],
+   "models_verified": false
+  },
+  {
+   "id": "a3-light-microscope-stub",
+   "direction": "general",
+   "kind": "platform",
+   "status": "NEEDS_SOURCE_HIDDEN",
+   "expert_reviewed": false,
+   "source_ids": [],
+   "caveat": null,
+   "linked": [],
+   "models_verified": false
+  },
+  {
+   "id": "a3-tb-lamp-platform-stub",
+   "direction": "tb",
+   "kind": "platform",
+   "status": "NEEDS_SOURCE_HIDDEN",
+   "expert_reviewed": false,
+   "source_ids": [],
+   "caveat": null,
+   "linked": [],
+   "models_verified": false
+  },
+  {
+   "id": "a3-truenat-platform-stub",
+   "direction": "tb",
+   "kind": "platform",
+   "status": "NEEDS_SOURCE_HIDDEN",
+   "expert_reviewed": false,
+   "source_ids": [],
+   "caveat": null,
+   "linked": [],
+   "models_verified": false
+  },
+  {
+   "id": "a3-hiv-poc-cd4-device-stub",
+   "direction": "hiv",
+   "kind": "platform",
+   "status": "NEEDS_SOURCE_HIDDEN",
+   "expert_reviewed": false,
+   "source_ids": [],
+   "caveat": null,
+   "linked": [],
+   "models_verified": false
+  },
+  {
+   "id": "a3-cytocentrifuge-lbc-stub",
+   "direction": "cytology",
+   "kind": "platform",
+   "status": "NEEDS_SOURCE_HIDDEN",
+   "expert_reviewed": false,
+   "source_ids": [],
+   "caveat": null,
+   "linked": [],
+   "models_verified": false
+  },
+  {
+   "id": "a3-hla-luminex-stub",
+   "direction": "transplant",
+   "kind": "method",
+   "status": "NEEDS_SOURCE_HIDDEN",
+   "expert_reviewed": false,
+   "source_ids": [],
+   "caveat": null,
+   "linked": [],
+   "models_verified": false
+  },
+  {
+   "id": "a3-ihc-autostainer-stub",
+   "direction": "histology",
+   "kind": "platform",
+   "status": "NEEDS_SOURCE_HIDDEN",
+   "expert_reviewed": false,
+   "source_ids": [],
+   "caveat": null,
+   "linked": [],
+   "models_verified": false
+  },
+  {
+   "id": "a3-lis-lims-stub",
+   "direction": "general",
+   "kind": "method",
+   "status": "NEEDS_SOURCE_HIDDEN",
+   "expert_reviewed": false,
+   "source_ids": [],
+   "caveat": null,
+   "linked": [],
+   "models_verified": false
+  },
+  {
+   "id": "a3-microtome-processor-stub",
+   "direction": "histology",
+   "kind": "platform",
+   "status": "NEEDS_SOURCE_HIDDEN",
+   "expert_reviewed": false,
+   "source_ids": [],
+   "caveat": null,
+   "linked": [],
+   "models_verified": false
+  },
+  {
+   "id": "a3-nephelometer-stub",
+   "direction": "immunology",
+   "kind": "platform",
+   "status": "NEEDS_SOURCE_HIDDEN",
+   "expert_reviewed": false,
+   "source_ids": [],
+   "caveat": null,
+   "linked": [],
+   "models_verified": false
+  },
+  {
+   "id": "a3-ngs-sequencer-stub",
+   "direction": "genetics",
+   "kind": "platform",
+   "status": "NEEDS_SOURCE_HIDDEN",
+   "expert_reviewed": false,
+   "source_ids": [],
+   "caveat": null,
+   "linked": [],
+   "models_verified": false
+  },
+  {
+   "id": "a3-prenatal-screening-stub",
+   "direction": "reproductive",
+   "kind": "method",
+   "status": "NEEDS_SOURCE_HIDDEN",
+   "expert_reviewed": false,
+   "source_ids": [],
+   "caveat": null,
+   "linked": [],
+   "models_verified": false
+  },
+  {
+   "id": "a3-uv-vis-stub",
+   "direction": "toxicology",
+   "kind": "platform",
+   "status": "NEEDS_SOURCE_HIDDEN",
+   "expert_reviewed": false,
+   "source_ids": [],
+   "caveat": null,
+   "linked": [],
+   "models_verified": false
+  },
+  {
+   "id": "a3-water-purification-stub",
+   "direction": "general",
+   "kind": "platform",
+   "status": "NEEDS_SOURCE_HIDDEN",
+   "expert_reviewed": false,
+   "source_ids": [],
+   "caveat": null,
+   "linked": [],
+   "models_verified": false
+  }
+ ]
+}

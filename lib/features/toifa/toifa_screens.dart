@@ -26,12 +26,14 @@ import 'toifa_today.dart';
 
 export 'toifa_today.dart' show toifaBase;
 
-/// Bo'lim shu foydalanuvchiga ko'rinadimi: ilova tili o'zbekcha yoki
-/// qurilma mintaqasi UZ; shifokor roliga emas.
+/// Bo'lim shu foydalanuvchiga ko'rinadimi: `attestationRegion` sozlamasi
+/// (auto: til uz yoki mintaqa UZ; uz: doim; none: yashirin); shifokor va
+/// talaba roliga emas.
 bool toifaVisible(BuildContext context) => toifaAvailable(
   context.services.settings.language,
   SchedulerBinding.instance.platformDispatcher.locales,
   role: context.services.settings.role,
+  region: context.services.settings.attestationRegion,
 );
 
 String _lang(BuildContext context) =>

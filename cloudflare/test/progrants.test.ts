@@ -116,7 +116,7 @@ describe('admin grant: tekshiruv', () => {
 
 describe('admin grant: kutilayotgan (hisob yo‘q) → hisob ochilganda qo‘llanadi', () => {
   it('pending → kirishda faol, muddat kirish paytidan', async () => {
-    const { s, boss } = await setup();
+    const { s, owner, boss } = await setup();
     const email = uniqueEmail('later');
     const g = await grant(s, boss.token, { email, tier: 'specialist', durationDays: 30 });
     expect(g.status).toBe(201);
@@ -131,6 +131,8 @@ describe('admin grant: kutilayotgan (hisob yo‘q) → hisob ochilganda qo‘lla
     expect(e.data.items[0]).toMatchObject({ source: 'admin_grant', platform: 'admin_grant', plan: 'specialist', status: 'active', ownership: 'granted' });
     expect(Date.parse(e.data.items[0].expires_at)).toBe(s.clock.now + 30 * DAY);
     expect(e.data.resolved).toMatchObject({ source: 'admin_grant', plan: 'specialist' });
+    // Admin oynasi (12 soat / 30 daqiqa, 0013_admin_step_up) yopildi — egasi qayta kiradi.
+    boss.token = (await s.signInAdmin(owner)).token;
     expect((await mine(s, boss.token, g.data.id))[0]).toMatchObject({ status: 'active' });
     const applied = await audits(s, 'pro_grant_applied', g.data.id);
     expect(applied).toHaveLength(1);
@@ -163,7 +165,7 @@ describe('admin grant: kutilayotgan (hisob yo‘q) → hisob ochilganda qo‘lla
 
 describe('admin grant: muddat va bekor qilish', () => {
   it('muddat tugasa huquq yo‘qoladi (resolved null), ro‘yxatdan tushadi', async () => {
-    const { s, boss } = await setup();
+    const { s, owner, boss } = await setup();
     const email = uniqueEmail('exp');
     const u = await s.signIn(email);
     const g = await grant(s, boss.token, { email, tier: 'student', durationDays: 30 });
@@ -173,6 +175,8 @@ describe('admin grant: muddat va bekor qilish', () => {
     const e = await ents(s, u.token);
     expect(e.data.items[0].status).toBe('expired');
     expect(e.data.resolved).toBeNull();
+    // Admin oynasi (12 soat / 30 daqiqa, 0013_admin_step_up) yopildi — egasi qayta kiradi.
+    boss.token = (await s.signInAdmin(owner)).token;
     expect(await mine(s, boss.token, g.data.id)).toEqual([]);
   });
 
@@ -211,12 +215,14 @@ describe('admin grant: muddat va bekor qilish', () => {
 
 describe('admin grant: qayta berish (idempotent) va uzaytirish', () => {
   it('replace: bitta faol qator, yangi daraja/muddat hozirdan; audit pro_grant_replaced', async () => {
-    const { s, boss } = await setup();
+    const { s, owner, boss } = await setup();
     const email = uniqueEmail('re');
     const u = await s.signIn(email);
     const a = await grant(s, boss.token, { email, tier: 'student', durationDays: 30 });
     expect(a.status).toBe(201);
     s.clock.now += 5 * DAY;
+    // Admin oynasi (12 soat / 30 daqiqa, 0013_admin_step_up) yopildi — egasi qayta kiradi.
+    boss.token = (await s.signInAdmin(owner)).token;
     const b = await grant(s, boss.token, { email, tier: 'teacher', durationDays: 90 });
     expect(b.status).toBe(200);
     expect(b.data).toMatchObject({ id: a.data.id, tier: 'teacher', replaced: true, extended: false });

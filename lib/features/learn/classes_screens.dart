@@ -9,6 +9,7 @@ import '../../app/widgets/lg_page.dart';
 import '../../core/backend/backend_models.dart';
 import '../../core/backend/lab_backend.dart' show LabBackend;
 import '../../core/entitlements/feature.dart';
+import '../../core/single_flight.dart';
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
@@ -389,6 +390,7 @@ class _CreateGroupScreenState extends State<CreateGroupScreen> {
   }
 
   Future<void> _register() async {
+    if (_registering) return;
     setState(() {
       _registering = true;
       _error = null;
@@ -405,6 +407,8 @@ class _CreateGroupScreenState extends State<CreateGroupScreen> {
   }
 
   Future<void> _submit() async {
+    // Ikki marta bosish / Enter — bitta guruh (server so'rovi idempotent emas).
+    if (_busy) return;
     setState(() => _tried = true);
     if (!_nameOk) return;
     setState(() {
@@ -741,6 +745,8 @@ class _JoinGroupScreenState extends State<JoinGroupScreen> {
   }
 
   Future<void> _submit() async {
+    // Tugma, Enter va QR avtomatik yuborish — bitta qo'shilish so'rovi.
+    if (_busy) return;
     setState(() => _tried = true);
     if (!_codeOk || !_nameOk) return;
     // Ustoz o'z guruhi kodini kiritdi — serverga bormasdan aniq javob.
@@ -1289,7 +1295,10 @@ class _GroupScreenState extends State<GroupScreen> with _AccountReload {
 
   /// Ustoz guruhni o'chiradi: topshiriqlar va natijalar ham o'chadi,
   /// shuning uchun tasdiq so'raladi.
-  Future<void> _deleteGroup(StudyGroup g) async {
+  Future<void> _deleteGroup(StudyGroup g) =>
+      SingleFlight.run((#deleteGroup, g.id), () => _deleteGroupOnce(g));
+
+  Future<void> _deleteGroupOnce(StudyGroup g) async {
     final l = AppLocalizations.of(context);
     final ok = await confirmDialog(
       context,
@@ -1348,7 +1357,13 @@ class _GroupScreenState extends State<GroupScreen> with _AccountReload {
     if (mounted) setState(() {});
   }
 
-  Future<void> _remove(StudyGroup g, GroupMember m) async {
+  Future<void> _remove(StudyGroup g, GroupMember m) => SingleFlight.run((
+    #removeMember,
+    g.id,
+    m.userId,
+  ), () => _removeOnce(g, m));
+
+  Future<void> _removeOnce(StudyGroup g, GroupMember m) async {
     final l = AppLocalizations.of(context);
     final ok = await confirmDialog(
       context,
@@ -1498,7 +1513,10 @@ class _GroupScreenState extends State<GroupScreen> with _AccountReload {
     }
   }
 
-  Future<void> _leave(StudyGroup g) async {
+  Future<void> _leave(StudyGroup g) =>
+      SingleFlight.run((#leaveGroup, g.id), () => _leaveOnce(g));
+
+  Future<void> _leaveOnce(StudyGroup g) async {
     final l = AppLocalizations.of(context);
     final ok = await confirmDialog(
       context,
@@ -1820,7 +1838,19 @@ enum SubmitOutcome { sent, network, rejected, failed }
 /// Topshiriq javoblarini serverga yuboradi. Qabul qilinsa yoki server rad
 /// etsa (vaqt/muddat tugagan, avval topshirilgan) lokal nusxa o'chiriladi;
 /// tarmoq xatosida saqlanib qoladi — keyin qayta yuboriladi.
+///
+/// Bir vaqtda ikki chaqiruv (ikki marta bosish, avtomatik + qo'lda yuborish)
+/// bitta so'rovni bo'lishadi: ikkinchisi "allaqachon topshirilgan" xatosi
+/// bilan lokal nusxani o'chirib yubormaydi.
 Future<SubmitOutcome> submitAssignmentSession(
+  AppServices services,
+  ExamSession s,
+) => SingleFlight.share((
+  #submitAssignment,
+  s.assignmentId,
+), () => _submitAssignmentSession(services, s));
+
+Future<SubmitOutcome> _submitAssignmentSession(
   AppServices services,
   ExamSession s,
 ) async {
@@ -2033,6 +2063,7 @@ class _AssignmentScreenState extends State<AssignmentScreen>
   }
 
   Future<void> _start(GroupAssignment a, ContentPack pack) async {
+    if (_busy) return;
     final services = context.services;
     final byId = _byId(context, pack);
     setState(() => _busy = true);
@@ -2129,7 +2160,10 @@ class _AssignmentScreenState extends State<AssignmentScreen>
 
   /// Ustoz testni yakunlaydi: yangi urinish yo'q; “muddat tugagach”
   /// tanlangan bo'lsa — to'g'ri javoblar talabalarga darhol ochiladi.
-  Future<void> _close(GroupAssignment a) async {
+  Future<void> _close(GroupAssignment a) =>
+      SingleFlight.run((#closeAssignment, a.id), () => _closeOnce(a));
+
+  Future<void> _closeOnce(GroupAssignment a) async {
     final l = AppLocalizations.of(context);
     final ok = await confirmDialog(
       context,
@@ -2151,6 +2185,7 @@ class _AssignmentScreenState extends State<AssignmentScreen>
   }
 
   Future<void> _resend(ExamSession s) async {
+    if (_busy) return;
     setState(() => _busy = true);
     final outcome = await submitAssignmentSession(context.services, s);
     if (!mounted) return;
@@ -3053,6 +3088,8 @@ class _AssignmentRunScreenState extends State<AssignmentRunScreen> {
   bool _sending = false;
 
   Future<void> _finish(ExamSession s, {required bool timedOut}) async {
+    // Ikki marta "Yakunlash" (yoki vaqt tugashi + bosish) — bitta yakun.
+    if (_sending) return;
     final services = context.services;
     setState(() => _sending = true);
     await services.exams.finishAssignment(s, timedOut: timedOut);

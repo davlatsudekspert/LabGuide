@@ -1,7 +1,7 @@
 # Pro bepul sinovi — suiiste'molga qarshi eslatmalar (D-74)
 
 > Holat: **o'chiq**. Hech narsa deploy qilinmagan. `LG_BILLING_ENABLED` o'chiq (yo'llar 404), qurilma attestatsiyasi
-> tekshiruvchisi ulanmagan (503 `device_attestation_not_configured`), `0015_pro_trials.sql` — faqat fayl.
+> tekshiruvchisi ulanmagan (503 `device_attestation_not_configured`), `0016_pro_trials.sql` — faqat fayl.
 
 ## 1. Maqsad
 30 kunlik bepul sinov **bir telefonga bir marta** (hisobga emas). Shu bilan birga bitta hisobga va bitta kanonik
@@ -63,6 +63,6 @@ deklaratsiyalari (App Privacy, Data safety “Device or other IDs”) — egasi 
 ## 7. Kodda qayerda
 - Server: `cloudflare/src/trial.ts` (oqim, `canonicalEmail`, interfeys, tozalash), `billing.ts` (`loadAccess`,
   `resolveAccess` — `trial`), `auth.ts` (`deleteUserData` → yozuvni uzish), `app.ts` (yo'llar, kunlik tozalash),
-  `migrations/0015_pro_trials.sql`. Testlar: `cloudflare/test/trial.test.ts`, `fake_attestation.ts`.
+  `migrations/0016_pro_trials.sql`. Testlar: `cloudflare/test/trial.test.ts`, `fake_attestation.ts`.
 - Ilova: `lib/core/entitlements/device_attestor.dart`, `entitlement_source.dart` (`TrialSource`),
   `entitlement_service.dart` (`startTrial`, `TrialOutcome`), `features/profile/subscription_screen.dart`.

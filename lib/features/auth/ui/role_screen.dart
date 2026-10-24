@@ -60,26 +60,31 @@ class _RoleScreenState extends State<RoleScreen> {
   }
 
   Future<void> _continue() async {
+    // Ikki marta bosish — bitta ro'yxatdan o'tish, bitta yakunlash va bitta
+    // `pop` (ikkinchi `pop` profil sahifasini ham yopib yuborardi).
+    if (_busy) return;
+    setState(() => _busy = true);
     final services = context.services;
     final settings = services.settings;
-    if (_registersTeacher) {
-      setState(() => _busy = true);
-      try {
-        await services.backend.registerTeacher();
-        await services.refreshAccess();
-      } on Object {
-        // Tarmoq: guruh yaratish sahifasida qayta taklif qilinadi.
-      } finally {
-        if (mounted) setState(() => _busy = false);
+    try {
+      if (_registersTeacher) {
+        try {
+          await services.backend.registerTeacher();
+          await services.refreshAccess();
+        } on Object {
+          // Tarmoq: guruh yaratish sahifasida qayta taklif qilinadi.
+        }
+        if (!mounted) return;
       }
-      if (!mounted) return;
-    }
-    await settings.setRole(_selected);
-    if (widget.onboarding) {
-      // Router redirect onboarding tugagach /home ga olib o'tadi.
-      await settings.completeOnboarding();
-    } else if (mounted) {
-      context.pop();
+      await settings.setRole(_selected);
+      if (widget.onboarding) {
+        // Router redirect onboarding tugagach /home ga olib o'tadi.
+        await settings.completeOnboarding();
+      } else if (mounted) {
+        context.pop();
+      }
+    } finally {
+      if (mounted) setState(() => _busy = false);
     }
   }
 

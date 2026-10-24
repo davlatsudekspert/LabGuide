@@ -25,6 +25,9 @@ abstract final class StoreKeys {
   /// Ilova mavzusi (`classic` / `ivory`) — D-64.
   static const appTheme = 'settings.appTheme';
   static const unitSystem = 'settings.unitSystem';
+
+  /// Toifa (KDL attestatsiya) bo'limi: `auto` / `uz` / `none` — tildan mustaqil.
+  static const attestationRegion = 'settings.attestationRegion';
   static const role = 'settings.role';
   static const onboarded = 'settings.onboarded';
   static const languageChosen = 'settings.languageChosen';
@@ -42,6 +45,10 @@ abstract final class StoreKeys {
   static const packsCatalog = 'packs.catalog';
   static const myInstruments = 'instruments.mine';
   static const calibrationLog = 'instruments.calibrations';
+
+  /// Kalibrlash jurnalining faqat qo'shiladigan tarixi (yaratildi / tahrir /
+  /// o'chirildi). «Lokal ma'lumotni o'chirish» uni ham tozalaydi.
+  static const calibrationAudit = 'instruments.calibrationAudit';
   static const microscopyQuiz = 'microscopy.quiz';
 
   /// Hamkorlar ro'yxati keshi (internetsiz ham oxirgisi ko'rinadi).
@@ -110,11 +117,18 @@ abstract final class StoreKeys {
   /// yoki bo'lim (`kind:id`) — faqat shu qurilmada (D-69 Q3).
   static const homeResume = 'home.resume';
 
+  /// Kirish/onboarding'dan oldin ochilgan guruh taklifi (`/j?c=..`):
+  /// `{"loc": "/learn/classes/join?..", "at": <ms>}`. Ilova fonda yopilsa
+  /// ham (email ilovasiga o'tilganda) yo'qolmasin; 24 soatdan keyin eskiradi,
+  /// ishlatilgach yoki chiqishda o'chiriladi.
+  static const pendingInvite = 'onboarding.pendingInvite';
+
   static const all = <String>{
     language,
     themeMode,
     appTheme,
     unitSystem,
+    attestationRegion,
     role,
     onboarded,
     languageChosen,
@@ -132,6 +146,7 @@ abstract final class StoreKeys {
     packsCatalog,
     myInstruments,
     calibrationLog,
+    calibrationAudit,
     microscopyQuiz,
     partnersCache,
     libraryReading,
@@ -156,6 +171,7 @@ abstract final class StoreKeys {
     topicTests,
     lectureOrientation,
     homeResume,
+    pendingInvite,
     communityRulesOpen,
     communityBlocked,
   };

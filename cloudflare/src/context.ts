@@ -51,6 +51,16 @@ export interface Session {
   language: string;
   /** Kirish usuli: otp (email kodi) | google | apple. */
   via: string;
+  /** Sessiya ochilgan vaqt (ms). */
+  createdAt: number;
+  /** Shu sessiyada oxirgi yangi tasdiq (email kodi / TOTP / step-up); NULL — yo'q. */
+  adminAuthAt: number | null;
+  /** Oxirgi admin so'rovi (harakatsizlik muddati uchun). */
+  adminSeenAt: number | null;
+  /** Oxirgi step-up tasdig'i (xavfli admin amallari uchun). */
+  stepUpAt: number | null;
+  /** Shu step-up bilan bajarilgan bir martalik amal turlari (`cls,` ro'yxati). */
+  stepUpUsed: string;
 }
 
 export const iso = (ms: number | null | undefined): string | null =>

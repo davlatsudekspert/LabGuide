@@ -122,7 +122,7 @@ Future<List<String>> seedLabData(WidgetTester tester, AppServices s) async {
       calibratorLot: 'L-77',
       levels: const [CalibratorLevel(name: '1', value: 5.55, unit: 'mmol/L')],
       performedOn: DateTime(2026, 10, 1),
-      outcome: CalibrationOutcome.accepted,
+      outcome: CalibrationOutcome.pending,
       note: 'Audit',
     );
     routes

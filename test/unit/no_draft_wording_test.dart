@@ -96,6 +96,46 @@ void main() {
     expect(hits, isEmpty, reason: hits.join('\n'));
   });
 
+  // Audit 2026-10-24 (kirish): Profil → Maxfiylik → "Foydalanish shartlari"
+  // qatori "Yakuniy matn tayyorlanadi" deb turardi, matn esa bor edi
+  // (App Review 2.1: tugallanmagan ilova taassuroti). Kirish, profil va
+  // maxfiylik ekranlarida "tayyorlanadi / tez orada" kabi vaqtinchalik
+  // matn bo'lmasin.
+  test('kirish / profil / maxfiylik matnlarida "tayyorlanadi" yo‘q', () {
+    const prefixes = ['auth', 'otp', 'profile', 'privacy', 'terms', 'welcome'];
+    const placeholders = [
+      'tayyorlanadi',
+      'tayyorlanmoqda',
+      'tez orada',
+      'keyingi versiya',
+      'будет подготовлен',
+      'готовится',
+      'скоро появится',
+      'в следующей версии',
+      'to be prepared',
+      'coming soon',
+      'will be prepared',
+      'next version',
+      'final text',
+      'окончательный текст',
+      'yakuniy matn',
+    ];
+    final hits = <String>[];
+    for (final lang in ['uz', 'ru', 'en']) {
+      final arb = jsonDecode(
+        File('lib/l10n/app_$lang.arb').readAsStringSync(),
+      ) as Map<String, Object?>;
+      for (final MapEntry(:key, :value) in arb.entries) {
+        if (value is! String || !prefixes.any(key.startsWith)) continue;
+        final v = value.toLowerCase();
+        for (final w in placeholders) {
+          if (v.contains(w)) hits.add('$lang.$key: "$w"');
+        }
+      }
+    }
+    expect(hits, isEmpty, reason: hits.join('\n'));
+  });
+
   test('ruxsat ro‘yxatidagi kalitlar mavjud (eskirgan istisno qolmasin)', () {
     final arb = jsonDecode(
       File('lib/l10n/app_en.arb').readAsStringSync(),

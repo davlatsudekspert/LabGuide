@@ -99,7 +99,8 @@ void main() {
     });
 
     test('server o‘chirgan yoki platforma qo‘llamaydigan tugma yashiriladi', () async {
-      debugDefaultTargetPlatformOverride = TargetPlatform.iOS;
+      // Android: Google Apple'siz ham ko‘rinadi (iOS — pastdagi 4.8 matritsasi).
+      debugDefaultTargetPlatformOverride = TargetPlatform.android;
       final backend = FakeSocialBackend(
         status: const SocialServerStatus(google: true),
       );
@@ -158,6 +159,78 @@ void main() {
         ),
       );
       expect(await web.available(), [SocialProvider.apple]);
+    });
+  });
+
+  group('App Store 4.8: iOS’da Google faqat Apple bilan (yagona qoida)', () {
+    // {iOS, Android} × {Apple bor/yo‘q} × {Google bor/yo‘q}.
+    const apple = SocialProvider.apple;
+    const google = SocialProvider.google;
+    const expected = <(TargetPlatform, bool, bool), List<SocialProvider>>{
+      (TargetPlatform.iOS, true, true): [apple, google],
+      (TargetPlatform.iOS, true, false): [apple],
+      (TargetPlatform.iOS, false, true): [],
+      (TargetPlatform.iOS, false, false): [],
+      (TargetPlatform.android, true, true): [apple, google],
+      (TargetPlatform.android, true, false): [apple],
+      (TargetPlatform.android, false, true): [google],
+      (TargetPlatform.android, false, false): [],
+    };
+
+    for (final MapEntry(key: (platform, appleOn, googleOn), value: want)
+        in expected.entries) {
+      final name =
+          '${platform.name} apple=${appleOn ? 'on' : 'off'} '
+          'google=${googleOn ? 'on' : 'off'} → $want';
+
+      test('visibleSocialProviders: $name', () {
+        expect(
+          visibleSocialProviders(
+            platform: platform,
+            appleAvailable: appleOn,
+            googleAvailable: googleOn,
+          ),
+          want,
+        );
+      });
+
+      test('available() — build sozlamasi: $name', () async {
+        debugDefaultTargetPlatformOverride = platform;
+        final s = SocialAuthService(
+          providers: [
+            FakeSocialProvider(apple, supported: appleOn),
+            FakeSocialProvider(google, supported: googleOn),
+          ],
+          backend: FakeSocialBackend(),
+        );
+        expect(await s.available(), want);
+      });
+
+      test('available() — server holati: $name', () async {
+        debugDefaultTargetPlatformOverride = platform;
+        final s = SocialAuthService(
+          providers: [FakeSocialProvider(apple), FakeSocialProvider(google)],
+          backend: FakeSocialBackend(
+            status: SocialServerStatus(
+              apple: appleOn,
+              google: googleOn,
+              appleWeb: appleOn,
+            ),
+          ),
+        );
+        expect(await s.available(), want);
+      });
+    }
+
+    test('Android: Apple veb-oqimi sozlanmagan — Google baribir ko‘rinadi', () async {
+      debugDefaultTargetPlatformOverride = TargetPlatform.android;
+      final s = SocialAuthService(
+        providers: [FakeSocialProvider(apple), FakeSocialProvider(google)],
+        backend: FakeSocialBackend(
+          status: const SocialServerStatus(apple: true, google: true),
+        ),
+      );
+      expect(await s.available(), [google]);
     });
   });
 

@@ -866,7 +866,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get calStep4 => 'Калибровка по инструкции';
 
   @override
-  String get calStep5 => 'QC после калибровки';
+  String get calStep5 => 'КК после калибровки';
 
   @override
   String get calStep6 => 'Записи и поиск неисправностей';
@@ -3748,11 +3748,11 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get calGuide4 =>
-      'Когда нужна повторная калибровка (смена лота, отказ QC, срок) — в IFU.';
+      'Когда нужна повторная калибровка (смена лота, КК не пройден, срок) — в IFU.';
 
   @override
   String get calGuide5 =>
-      'После калибровки проведите QC и внесите результат в запись.';
+      'После калибровки проведите КК и внесите результат в запись.';
 
   @override
   String get calDocsWhere => 'Где найти документы';
@@ -6407,13 +6407,13 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get privacyBodyLocal =>
-      'В этой сборке сервер не подключён: приложение ничего не отправляет на сервер. Настройки, закладки, записи QC, ваши приборы и результаты тренировок хранятся на этом устройстве (могут попадать в системную резервную копию). Без рекламы и отслеживания.';
+      'В этой сборке сервер не подключён: приложение ничего не отправляет на сервер. Настройки, закладки, записи КК, ваши приборы и результаты тренировок хранятся на этом устройстве (могут попадать в системную резервную копию). Без рекламы и отслеживания.';
 
   @override
   String get privacyTerms => 'Условия использования';
 
   @override
-  String get privacyTermsSub => 'Окончательный текст будет подготовлен';
+  String get privacyTermsSub => 'Правила пользования приложением и аккаунтом';
 
   @override
   String get privacyDeleteLocal => 'Удалить локальные данные';
@@ -8371,7 +8371,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get diffAssessNote =>
-      'Это не диагноз: результат сопоставлен с нормой бланка и показано, на что он может указывать. Заключение даёт врач.';
+      'Это не диагноз: результат сопоставлен с референтным интервалом бланка и показано, на что он может указывать. Заключение даёт врач.';
 
   @override
   String get diffAssessNeedWbc =>
@@ -8430,7 +8430,7 @@ class AppLocalizationsRu extends AppLocalizations {
       'Бласты или неопознанные клетки, тяжёлая нейтропения (< 0,5 ×10⁹/л) или выраженная эозинофилия (> 1,5 ×10⁹/л): срочно покажите результат и мазок врачу или гематологу.';
 
   @override
-  String get diffLimitsTitle => 'Нормы бланка';
+  String get diffLimitsTitle => 'Референтные интервалы бланка';
 
   @override
   String get diffLimitsSub =>
@@ -10750,4 +10750,305 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get proSubWithoutSubscription =>
       'Приложением можно пользоваться без подписки: бесплатные функции остаются бесплатными.';
+
+  @override
+  String get profileAttestation => 'Квалификационная категория (аттестация)';
+
+  @override
+  String get profileAttestationAuto => 'Автоматически';
+
+  @override
+  String get profileAttestationUz => 'Узбекистан';
+
+  @override
+  String get profileAttestationNone => 'Скрыть';
+
+  @override
+  String get profileAttestationNote =>
+      'Показывает раздел подготовки к экзамену на квалификационную категорию (Узбекистан) на любом языке интерфейса. Автоматически: раздел виден, если язык узбекский или регион устройства — Узбекистан.';
+
+  @override
+  String get calSafeKind => 'Тип записи';
+
+  @override
+  String get calSafeKindTraining => 'Учебная';
+
+  @override
+  String get calSafeKindLab => 'Лабораторная';
+
+  @override
+  String get calSafeTrainingTag => 'Учебная';
+
+  @override
+  String get calSafeTrainingNote =>
+      'Учебная запись: это не лабораторное свидетельство.';
+
+  @override
+  String get calSafeApprovedBy => 'Утвердил (имя / должность)';
+
+  @override
+  String get calSafeApprovedAt => 'Дата утверждения';
+
+  @override
+  String get calSafeApproverRequired =>
+      'Для «Принята» укажите имя или должность уполномоченного лица.';
+
+  @override
+  String get calSafeQcAfter => 'КК после калибровки';
+
+  @override
+  String get calSafeQcPass => 'КК пройден';
+
+  @override
+  String get calSafeQcFail => 'КК не пройден';
+
+  @override
+  String get calSafeQcNotRun => 'КК не проводился';
+
+  @override
+  String get calSafeQcNotRunWarn => 'КК после калибровки не проводился';
+
+  @override
+  String get calSafeQcPassRequired =>
+      '«Принята» возможна только при пройденном КК после калибровки.';
+
+  @override
+  String get calSafeSopRef => 'Ссылка на СОП (необязательно)';
+
+  @override
+  String get calSafeLegacyTag => 'Старая запись, не проверена';
+
+  @override
+  String get calSafeHistory => 'История';
+
+  @override
+  String get calSafeHistoryEmpty => 'Записей истории нет.';
+
+  @override
+  String get calSafeAuditCreated => 'Создано';
+
+  @override
+  String get calSafeAuditEdited => 'Изменено';
+
+  @override
+  String get calSafeAuditDeleted => 'Удалено';
+
+  @override
+  String get calSafeHistoryNote =>
+      'История сохраняется и после удаления записи. Её стирает только «удалить локальные данные».';
+
+  @override
+  String get labDirSection => 'Направления лаборатории (справочник)';
+
+  @override
+  String get labDirSectionSub => 'Платформа и тест — в отдельных карточках';
+
+  @override
+  String get labDirTb => 'Диагностика туберкулёза (ТБ)';
+
+  @override
+  String get labDirHiv => 'Лабораторная диагностика ВИЧ';
+
+  @override
+  String get labDirTag => 'Справочно';
+
+  @override
+  String get labDirNotVerified => 'Пока не добавлено';
+
+  @override
+  String get labDirKindPlatform => 'Платформа (прибор)';
+
+  @override
+  String get labDirKindTest => 'Тест';
+
+  @override
+  String get labDirKindMethod => 'Метод';
+
+  @override
+  String get labDirVsTest => 'Платформа и тест';
+
+  @override
+  String get labDirTechnology => 'Технология';
+
+  @override
+  String get labDirSpecimens => 'Образцы';
+
+  @override
+  String get labDirTasks => 'Задачи';
+
+  @override
+  String get labDirPrinciple => 'Принцип';
+
+  @override
+  String get labDirLimitations => 'Ограничения';
+
+  @override
+  String get labDirQc => 'Контроль качества и калибровка';
+
+  @override
+  String get labDirErrors => 'Преаналитические и аналитические ошибки';
+
+  @override
+  String get labDirBiosafety => 'Биобезопасность';
+
+  @override
+  String get labDirModels => 'Модели, подтверждённые официальным источником';
+
+  @override
+  String get labDirLinked => 'Связанные карточки';
+
+  @override
+  String get labDirStatusNeedsReview =>
+      'Статус проверки: источники указаны ниже; заключение специалиста пока не внесено';
+
+  @override
+  String get labDirManufacturerNote =>
+      'Страница производителя (рекламный материал), не инструкция';
+
+  @override
+  String get labDirVirology => 'Вирусология';
+
+  @override
+  String get labDirBacteriology => 'Бактериология';
+
+  @override
+  String get labDirMycology => 'Микология';
+
+  @override
+  String get labDirParasitology => 'Паразитология';
+
+  @override
+  String get labDirHematology => 'Гематология';
+
+  @override
+  String get labDirCoagulation => 'Коагулология (гемостаз)';
+
+  @override
+  String get labDirTransfusion => 'Трансфузиология';
+
+  @override
+  String get labDirBiochemistry => 'Клиническая биохимия';
+
+  @override
+  String get labDirImmunology => 'Иммунология';
+
+  @override
+  String get labDirUrinalysis => 'Анализ мочи';
+
+  @override
+  String get labDirCytology => 'Цитология';
+
+  @override
+  String get labDirHistology => 'Гистология';
+
+  @override
+  String get labDirOncology => 'Онкология';
+
+  @override
+  String get labDirGenetics => 'Генетика';
+
+  @override
+  String get labDirMolecular => 'Молекулярная диагностика';
+
+  @override
+  String get labDirToxicology => 'Токсикология';
+
+  @override
+  String get labDirReproductive => 'Репродуктивная медицина';
+
+  @override
+  String get labDirNeonatal => 'Неонатальная лабораторная диагностика';
+
+  @override
+  String get labDirTransplant => 'Трансплантология';
+
+  @override
+  String get labDirGeneral => 'Общая лаборатория';
+
+  @override
+  String get labDirDisclaimer =>
+      'Только учебный справочник. Приложение не ставит диагноз и не является рабочим протоколом; решение за уполномоченной лабораторией и врачом.';
+
+  @override
+  String get labDirEmpty => 'В этом направлении нет карточек.';
+
+  @override
+  String get labDirPlatformClassNote =>
+      'Справка по классу/технологии — для конкретной модели не подтверждено';
+
+  @override
+  String get imgDiagramCalibrationOverviewAlt =>
+      'Схема общего порядка калибровки в шесть шагов: уточнить прибор и метод; проверить реагент, REF и версию IFU; подготовить калибратор с нужным лотом; следовать инструкции конкретного прибора; оценить калибровку и независимый КК; записать результат, решение по СОП. Это не снимок экрана прибора.';
+
+  @override
+  String get imgDiagramDifferentialCountAlt =>
+      'Схема ручной лейкоцитарной формулы в шесть шагов: оценить мазок и распределение клеток; распознавать клетки в заданной зоне; подсчитать число по СОП; рассчитать процентные доли; по WBC получить абсолютные значения; проверить атипичные клетки и оформить результат.';
+
+  @override
+  String get imgDiagramQcDecisionAlt =>
+      'Схема принятия решения по контролю качества в шесть шагов: измерить контрольные материалы; сверить с целями лота и SD; применить утверждённые правила КК; если КК не прошёл, найти причину; при необходимости исправить и повторить КК; при приемлемом КК действовать по СОП. Если КК вне контроля, не выдавать результаты пациентов до устранения причины по СОП.';
+
+  @override
+  String get imgDiagramPreanalyticsAlt =>
+      'Схема преаналитики и качества пробы в шесть шагов: точно идентифицировать пациента; проверить назначенные исследования; выбрать пробирку и метод; маркировать при взятии; перевезти по температуре и срокам СОП; оценить пригодность до анализа. Типовая схема процесса.';
+
+  @override
+  String get imgDiagramPhotometryAlt =>
+      'Схема принципа абсорбционной фотометрии в шесть шагов: источник света и длина волны; оптический путь через кювету; образец поглощает свет; детектор измеряет прошедший свет; поглощение A = log10(I0/I); количественный расчёт по калибровке. У закона Бугера–Ламберта–Бера есть область линейности; параметры задаёт IFU реагента.';
+
+  @override
+  String get imgDiagramEducationalFeedbackAlt =>
+      'Схема обучения «преподаватель и студент» в шесть шагов: преподаватель выбирает тему; создаёт задание с источниками; студент изучает материалы; проходит проверку знаний; получает разбор ошибок; преподаватель оценивает и корректирует. Продуктовая схема, не научное изображение.';
+
+  @override
+  String get imgDiagramCaption =>
+      'Общая схема LabGuide. Приоритет — у IFU вашего прибора и СОП вашей лаборатории.';
+
+  @override
+  String get imgDiagramTapToZoom => 'Нажмите на схему, чтобы увеличить';
+
+  @override
+  String get stepUpTitle => 'Подтвердите, что это вы';
+
+  @override
+  String stepUpBodyEmail(String email) {
+    return 'Для этого действия нужно повторное подтверждение. Введите 6-значный код, отправленный на $email.';
+  }
+
+  @override
+  String get stepUpBodyEmailNoAddress =>
+      'Для этого действия нужно повторное подтверждение. Введите 6-значный код из письма.';
+
+  @override
+  String get stepUpBodyTotp =>
+      'Для этого действия нужно повторное подтверждение. Введите 6-значный код из приложения-аутентификатора.';
+
+  @override
+  String get stepUpConfirm => 'Подтвердить';
+
+  @override
+  String get stepUpCancelled =>
+      'Не выполнено: для этого действия нужен новый код подтверждения.';
+
+  @override
+  String get admRevokeSessions => 'Завершить сеансы на всех устройствах';
+
+  @override
+  String get admRevokeSessionsBody =>
+      'Пользователь выйдет на всех устройствах. Аккаунт останется активным, войти снова можно.';
+
+  @override
+  String admRevokeSessionsDone(int count) {
+    return 'Завершено сеансов: $count.';
+  }
+
+  @override
+  String get profileSignOutAll => 'Выйти на всех устройствах';
+
+  @override
+  String get profileSignOutAllBody =>
+      'Вы выйдете из аккаунта на этом телефоне и на всех других устройствах. Данные на этом устройстве сохранятся.';
+
+  @override
+  String get profileSignOutAllDone => 'Выполнен выход на всех устройствах.';
 }

@@ -439,7 +439,7 @@ abstract class AppLocalizations {
   /// No description provided for @authUnavailableTitle.
   ///
   /// In en, this message translates to:
-  /// **'Email sign-in isn\'t connected yet'**
+  /// **'Email sign-in isn’t connected yet'**
   String get authUnavailableTitle;
 
   /// No description provided for @authUnavailableBody.
@@ -559,7 +559,7 @@ abstract class AppLocalizations {
   /// No description provided for @rolesNote.
   ///
   /// In en, this message translates to:
-  /// **'The role only adapts the home screen. It doesn\'t grant access to other people\'s classes or data.'**
+  /// **'The role only adapts the home screen. It doesn’t grant access to other people’s classes or data.'**
   String get rolesNote;
 
   /// No description provided for @roleDoctor.
@@ -1129,7 +1129,7 @@ abstract class AppLocalizations {
   /// No description provided for @contentErrorTitle.
   ///
   /// In en, this message translates to:
-  /// **'Content couldn\'t be loaded'**
+  /// **'Content couldn’t be loaded'**
   String get contentErrorTitle;
 
   /// No description provided for @contentErrorBody.
@@ -1165,7 +1165,7 @@ abstract class AppLocalizations {
   /// No description provided for @analyteNotFound.
   ///
   /// In en, this message translates to:
-  /// **'This test card wasn\'t found.'**
+  /// **'This test card wasn’t found.'**
   String get analyteNotFound;
 
   /// No description provided for @analyteStructureOnlyTitle.
@@ -1231,7 +1231,7 @@ abstract class AppLocalizations {
   /// No description provided for @analyteRefIntervalNone.
   ///
   /// In en, this message translates to:
-  /// **'No reference interval is given here. Use the interval on your laboratory\'s report: it depends on the method, specimen and population.'**
+  /// **'No reference interval is given here. Use the interval on your laboratory’s report: it depends on the method, specimen and population.'**
   String get analyteRefIntervalNone;
 
   /// No description provided for @analyteDecisionLimits.
@@ -1261,7 +1261,7 @@ abstract class AppLocalizations {
   /// No description provided for @analyteNoInterpretation.
   ///
   /// In en, this message translates to:
-  /// **'LabGuide doesn\'t interpret individual results or suggest diagnoses or doses.'**
+  /// **'LabGuide doesn’t interpret individual results or suggest diagnoses or doses.'**
   String get analyteNoInterpretation;
 
   /// No description provided for @analyteSources.
@@ -1579,7 +1579,7 @@ abstract class AppLocalizations {
   /// No description provided for @calNoMatchBody.
   ///
   /// In en, this message translates to:
-  /// **'Calibration parameters are shown only from a verified IFU that matches the manufacturer, model, reagent REF, IFU revision and calibrator lot. Use the manufacturer\'s current IFU.'**
+  /// **'Calibration parameters are shown only from a verified IFU that matches the manufacturer, model, reagent REF, IFU revision and calibrator lot. Use the manufacturer’s current IFU.'**
   String get calNoMatchBody;
 
   /// No description provided for @calCatalogCount.
@@ -1591,7 +1591,7 @@ abstract class AppLocalizations {
   /// No description provided for @calBrandWarning.
   ///
   /// In en, this message translates to:
-  /// **'A brand name (e.g. Mindray or HUMAN) doesn\'t mean all models share settings. The reagent IFU and the instrument manual are separate documents.'**
+  /// **'A brand name (e.g. Mindray or HUMAN) doesn’t mean all models share settings. The reagent IFU and the instrument manual are separate documents.'**
   String get calBrandWarning;
 
   /// No description provided for @calWorkflow.
@@ -2239,7 +2239,7 @@ abstract class AppLocalizations {
   /// No description provided for @preNotice.
   ///
   /// In en, this message translates to:
-  /// **'Tube colour, time and temperature depend on the specific tube, method and instructions. The times above are general guidance from the WHO table; your laboratory’s rules take priority.'**
+  /// **'Tube color, time and temperature depend on the specific tube, method and instructions. The times above are general guidance from the WHO table; your laboratory’s rules take priority.'**
   String get preNotice;
 
   /// No description provided for @diffTitle.
@@ -2437,13 +2437,13 @@ abstract class AppLocalizations {
   /// No description provided for @diffReferTitle.
   ///
   /// In en, this message translates to:
-  /// **'Refer to a physician or haematologist'**
+  /// **'Refer to a physician or hematologist'**
   String get diffReferTitle;
 
   /// No description provided for @diffReferBody.
   ///
   /// In en, this message translates to:
-  /// **'If you see a blast or a cell you cannot identify, do not interpret it yourself. Have a haematologist or physician review the smear according to your laboratory’s procedure.'**
+  /// **'If you see a blast or a cell you cannot identify, do not interpret it yourself. Have a hematologist or physician review the smear according to your laboratory’s procedure.'**
   String get diffReferBody;
 
   /// No description provided for @diffCompareA.
@@ -2587,7 +2587,7 @@ abstract class AppLocalizations {
   /// No description provided for @diffOtherWarning.
   ///
   /// In en, this message translates to:
-  /// **'“Other” cells were counted. If they are blasts or unidentified cells, have a haematologist or physician review the smear.'**
+  /// **'“Other” cells were counted. If they are blasts or unidentified cells, have a hematologist or physician review the smear.'**
   String get diffOtherWarning;
 
   /// No description provided for @diffSave.
@@ -3235,7 +3235,7 @@ abstract class AppLocalizations {
   /// No description provided for @refSub.
   ///
   /// In en, this message translates to:
-  /// **'Anaemia, jaundice, liver patterns, parasites, obsolete methods'**
+  /// **'Anemia, jaundice, liver patterns, parasites, obsolete methods'**
   String get refSub;
 
   /// No description provided for @refIntro.
@@ -3289,7 +3289,7 @@ abstract class AppLocalizations {
   /// No description provided for @diffRealSmearNote.
   ///
   /// In en, this message translates to:
-  /// **'A licensed micrograph from the microscopy atlas. Author and licence are shown when you open it.'**
+  /// **'A licensed micrograph from the microscopy atlas. Author and license are shown when you open it.'**
   String get diffRealSmearNote;
 
   /// No description provided for @diffAtlasRow.
@@ -3361,7 +3361,7 @@ abstract class AppLocalizations {
   /// No description provided for @preIdTitle.
   ///
   /// In en, this message translates to:
-  /// **'Patient identification and labelling'**
+  /// **'Patient identification and labeling'**
   String get preIdTitle;
 
   /// No description provided for @prePatientTitle.
@@ -3379,7 +3379,7 @@ abstract class AppLocalizations {
   /// No description provided for @preTubeForTestSub.
   ///
   /// In en, this message translates to:
-  /// **'Colour and position follow the WHO order above. Tubes may differ between laboratories.'**
+  /// **'Color and position follow the WHO order above. Tubes may differ between laboratories.'**
   String get preTubeForTestSub;
 
   /// No description provided for @preTubeSlot.
@@ -3529,7 +3529,7 @@ abstract class AppLocalizations {
   /// No description provided for @mcColour.
   ///
   /// In en, this message translates to:
-  /// **'Colour index'**
+  /// **'Color index'**
   String get mcColour;
 
   /// No description provided for @mcColourSub.
@@ -3691,7 +3691,7 @@ abstract class AppLocalizations {
   /// No description provided for @mfHct.
   ///
   /// In en, this message translates to:
-  /// **'Haematocrit (Hct)'**
+  /// **'Hematocrit (Hct)'**
   String get mfHct;
 
   /// No description provided for @mfRbc.
@@ -4087,7 +4087,7 @@ abstract class AppLocalizations {
   /// No description provided for @ciWhat.
   ///
   /// In en, this message translates to:
-  /// **'The colour index is a relative measure traditionally used in CIS laboratories: it rates the haemoglobin content of one red cell against a “normal” value. It is used to describe hypo-, normo- or hyperchromia.'**
+  /// **'The color index is a relative measure traditionally used in CIS laboratories: it rates the hemoglobin content of one red cell against a “normal” value. It is used to describe hypo-, normo- or hyperchromia.'**
   String get ciWhat;
 
   /// No description provided for @ciWhyTitle.
@@ -4111,7 +4111,7 @@ abstract class AppLocalizations {
   /// No description provided for @ciUse.
   ///
   /// In en, this message translates to:
-  /// **'The haemoglobin in one red cell is expressed directly by the MCH (mean cell haemoglobin, pg), and its concentration in the cell by the MCHC. Haematology analysers report both. Judge hypo-/hyperchromia by these and your laboratory’s reference intervals.'**
+  /// **'The hemoglobin in one red cell is expressed directly by the MCH (mean cell hemoglobin, pg), and its concentration in the cell by the MCHC. Hematology analyzers report both. Judge hypo-/hyperchromia by these and your laboratory’s reference intervals.'**
   String get ciUse;
 
   /// No description provided for @dilC1.
@@ -4135,7 +4135,7 @@ abstract class AppLocalizations {
   /// No description provided for @dilNote.
   ///
   /// In en, this message translates to:
-  /// **'Use the same units for C₁ and C₂. Simple dilution model: reactions, safety and volume changes are not modelled.'**
+  /// **'Use the same units for C₁ and C₂. Simple dilution model: reactions, safety and volume changes are not modeled.'**
   String get dilNote;
 
   /// No description provided for @dilCalculate.
@@ -4177,7 +4177,7 @@ abstract class AppLocalizations {
   /// No description provided for @dilErrorC2GtC1.
   ///
   /// In en, this message translates to:
-  /// **'C₂ can\'t exceed C₁: dilution can\'t raise the concentration.'**
+  /// **'C₂ can’t exceed C₁: dilution can’t raise the concentration.'**
   String get dilErrorC2GtC1;
 
   /// No description provided for @dilErrorRange.
@@ -4357,7 +4357,7 @@ abstract class AppLocalizations {
   /// Always-visible warning on the albumin-corrected calcium calculator.
   ///
   /// In en, this message translates to:
-  /// **'Albumin-adjusted calcium often misclassifies calcium status, especially with low albumin or kidney impairment. Where available, measure ionised calcium — it is preferred.'**
+  /// **'Albumin-adjusted calcium often misclassifies calcium status, especially with low albumin or kidney impairment. Where available, measure ionized calcium — it is preferred.'**
   String get calcCalciumCaution;
 
   /// No description provided for @calcNotDiagnosis.
@@ -4657,7 +4657,7 @@ abstract class AppLocalizations {
   /// No description provided for @errHdlGeTc.
   ///
   /// In en, this message translates to:
-  /// **'HDL cholesterol can\'t be equal to or greater than total cholesterol.'**
+  /// **'HDL cholesterol can’t be equal to or greater than total cholesterol.'**
   String get errHdlGeTc;
 
   /// No description provided for @errNotPositive.
@@ -4747,7 +4747,7 @@ abstract class AppLocalizations {
   /// No description provided for @micEduNotice.
   ///
   /// In en, this message translates to:
-  /// **'Teaching images — not for diagnosis. Every image shows its author, licence and original caption.'**
+  /// **'Teaching images — not for diagnosis. Every image shows its author, license and original caption.'**
   String get micEduNotice;
 
   /// No description provided for @micEduTag.
@@ -4777,7 +4777,7 @@ abstract class AppLocalizations {
   /// No description provided for @micSectionQuiz.
   ///
   /// In en, this message translates to:
-  /// **'Practise this section'**
+  /// **'Practice this section'**
   String get micSectionQuiz;
 
   /// No description provided for @micZoom.
@@ -4879,7 +4879,7 @@ abstract class AppLocalizations {
   /// No description provided for @micCreditTitle.
   ///
   /// In en, this message translates to:
-  /// **'Author and licence'**
+  /// **'Author and license'**
   String get micCreditTitle;
 
   /// No description provided for @micAuthor.
@@ -4921,7 +4921,7 @@ abstract class AppLocalizations {
   /// No description provided for @micLicense.
   ///
   /// In en, this message translates to:
-  /// **'Licence'**
+  /// **'License'**
   String get micLicense;
 
   /// No description provided for @micSourceDate.
@@ -4933,7 +4933,7 @@ abstract class AppLocalizations {
   /// No description provided for @micLicenseText.
   ///
   /// In en, this message translates to:
-  /// **'Licence text: {license}'**
+  /// **'License text: {license}'**
   String micLicenseText(String license);
 
   /// No description provided for @micSourcePage.
@@ -4963,7 +4963,7 @@ abstract class AppLocalizations {
   /// No description provided for @micShareAlike.
   ///
   /// In en, this message translates to:
-  /// **'CC BY-SA: adapted versions of this image are shared under the same licence.'**
+  /// **'CC BY-SA: adapted versions of this image are shared under the same license.'**
   String get micShareAlike;
 
   /// No description provided for @micCdcTerms.
@@ -4993,25 +4993,25 @@ abstract class AppLocalizations {
   /// No description provided for @micCreditsSub.
   ///
   /// In en, this message translates to:
-  /// **'Licences and sources'**
+  /// **'Licenses and sources'**
   String get micCreditsSub;
 
   /// No description provided for @micCreditsIntro.
   ///
   /// In en, this message translates to:
-  /// **'Each image’s licence, author and original caption were re-checked on the source page ({date}). Images are only downscaled: not cropped, no text added, EXIF removed. Only CC0, CC BY, CC BY-SA, public domain and CDC PHIL images are used.'**
+  /// **'Each image’s license, author and original caption were re-checked on the source page ({date}). Images are only downscaled: not cropped, no text added, EXIF removed. Only CC0, CC BY, CC BY-SA, public domain and CDC PHIL images are used.'**
   String micCreditsIntro(String date);
 
   /// No description provided for @micLicenseTexts.
   ///
   /// In en, this message translates to:
-  /// **'Licence texts'**
+  /// **'License texts'**
   String get micLicenseTexts;
 
   /// No description provided for @micCreditsRow.
   ///
   /// In en, this message translates to:
-  /// **'Authors and licences'**
+  /// **'Authors and licenses'**
   String get micCreditsRow;
 
   /// No description provided for @micCreditsRowSub.
@@ -5137,7 +5137,7 @@ abstract class AppLocalizations {
   /// No description provided for @micQuizPromptCentre.
   ///
   /// In en, this message translates to:
-  /// **'What is the cell in the centre?'**
+  /// **'What is the cell in the center?'**
   String get micQuizPromptCentre;
 
   /// No description provided for @micQuizPromptField.
@@ -5185,7 +5185,7 @@ abstract class AppLocalizations {
   /// No description provided for @micQuizResultKeep.
   ///
   /// In en, this message translates to:
-  /// **'Keep practising'**
+  /// **'Keep practicing'**
   String get micQuizResultKeep;
 
   /// No description provided for @micQuizScore.
@@ -5743,7 +5743,7 @@ abstract class AppLocalizations {
   /// No description provided for @partnerSectionNote.
   ///
   /// In en, this message translates to:
-  /// **'Information provided by the partner companies. The catalogue data above, its order and review status do not depend on partnerships.'**
+  /// **'Information provided by the partner companies. The catalog data above, its order and review status do not depend on partnerships.'**
   String get partnerSectionNote;
 
   /// No description provided for @partnerKindManufacturer.
@@ -5761,7 +5761,7 @@ abstract class AppLocalizations {
   /// No description provided for @partnerKindService.
   ///
   /// In en, this message translates to:
-  /// **'Service centre'**
+  /// **'Service center'**
   String get partnerKindService;
 
   /// No description provided for @partnerCall.
@@ -5869,7 +5869,7 @@ abstract class AppLocalizations {
   /// No description provided for @partnerPageNote.
   ///
   /// In en, this message translates to:
-  /// **'This page is an advertisement. LabGuide does not endorse partner products; catalogue data and review status do not depend on partnerships.'**
+  /// **'This page is an advertisement. LabGuide does not endorse partner products; catalog data and review status do not depend on partnerships.'**
   String get partnerPageNote;
 
   /// No description provided for @partnerOfferTitle.
@@ -5881,7 +5881,7 @@ abstract class AppLocalizations {
   /// No description provided for @partnerOfferBody.
   ///
   /// In en, this message translates to:
-  /// **'A lab specialist reading about an instrument can call its official distributor or service centre in one tap. For manufacturers, official distributors and service centres.'**
+  /// **'A lab specialist reading about an instrument can call its official distributor or service center in one tap. For manufacturers, official distributors and service centers.'**
   String get partnerOfferBody;
 
   /// No description provided for @partnerWhatTitle.
@@ -5947,7 +5947,7 @@ abstract class AppLocalizations {
   /// No description provided for @partnerRule2.
   ///
   /// In en, this message translates to:
-  /// **'Catalogue facts, their order and review status do not depend on partnerships and cannot be bought.'**
+  /// **'Catalog facts, their order and review status do not depend on partnerships and cannot be bought.'**
   String get partnerRule2;
 
   /// No description provided for @partnerRule3.
@@ -6289,7 +6289,7 @@ abstract class AppLocalizations {
   /// No description provided for @adminPartnerLinks.
   ///
   /// In en, this message translates to:
-  /// **'Catalogue links'**
+  /// **'Catalog links'**
   String get adminPartnerLinks;
 
   /// No description provided for @adminPartnerMakers.
@@ -6379,7 +6379,7 @@ abstract class AppLocalizations {
   /// No description provided for @adminPartnerPublishRules.
   ///
   /// In en, this message translates to:
-  /// **'To publish: a description, at least one contact and at least one link. The ad always carries an “Ad” label and never changes catalogue data.'**
+  /// **'To publish: a description, at least one contact and at least one link. The ad always carries an “Ad” label and never changes catalog data.'**
   String get adminPartnerPublishRules;
 
   /// No description provided for @adminPartnerInvalid.
@@ -6925,7 +6925,7 @@ abstract class AppLocalizations {
   /// No description provided for @libSources.
   ///
   /// In en, this message translates to:
-  /// **'Sources and licences'**
+  /// **'Sources and licenses'**
   String get libSources;
 
   /// No description provided for @libSourcesSub.
@@ -6943,13 +6943,13 @@ abstract class AppLocalizations {
   /// No description provided for @booksEmptyBody.
   ///
   /// In en, this message translates to:
-  /// **'Books are added only with confirmed distribution rights. A PDF you add yourself stays for personal study and isn\'t shared.'**
+  /// **'Books are added only with confirmed distribution rights. A PDF you add yourself stays for personal study and isn’t shared.'**
   String get booksEmptyBody;
 
   /// No description provided for @booksCatalogNote.
   ///
   /// In en, this message translates to:
-  /// **'Catalog items link to their official pages. Full text is added to the app only under an open licence or with confirmed distribution rights.'**
+  /// **'Catalog items link to their official pages. Full text is added to the app only under an open license or with confirmed distribution rights.'**
   String get booksCatalogNote;
 
   /// No description provided for @booksResetFilters.
@@ -6991,7 +6991,7 @@ abstract class AppLocalizations {
   /// No description provided for @packsLicence.
   ///
   /// In en, this message translates to:
-  /// **'Licence: {licence}'**
+  /// **'License: {licence}'**
   String packsLicence(String licence);
 
   /// No description provided for @packsVerified.
@@ -7063,13 +7063,13 @@ abstract class AppLocalizations {
   /// No description provided for @packsCatalogLoading.
   ///
   /// In en, this message translates to:
-  /// **'Loading catalogue…'**
+  /// **'Loading catalog…'**
   String get packsCatalogLoading;
 
   /// No description provided for @packsCatalogCached.
   ///
   /// In en, this message translates to:
-  /// **'Showing the last saved catalogue'**
+  /// **'Showing the last saved catalog'**
   String get packsCatalogCached;
 
   /// No description provided for @packsCatalogEmpty.
@@ -7195,7 +7195,7 @@ abstract class AppLocalizations {
   /// No description provided for @sourcesTitle.
   ///
   /// In en, this message translates to:
-  /// **'Sources and licences'**
+  /// **'Sources and licenses'**
   String get sourcesTitle;
 
   /// No description provided for @sourcesContent.
@@ -7363,7 +7363,7 @@ abstract class AppLocalizations {
   /// No description provided for @toifaTopic.
   ///
   /// In en, this message translates to:
-  /// **'{topic, select, safety_ethics{Safety and ethics} qc_lab_management{Quality control and management} preanalytics{Preanalytics} hematology_cells{Blood cells} hemopoiesis_leukemia{Haematopoiesis and leukaemia} anemias{Anaemias} hemostasis{Haemostasis} biochemistry_proteins_enzymes{Proteins and enzymes} carbohydrates_diabetes{Carbohydrates and diabetes} lipids{Lipids} liver_pigments{Liver and pigments} kidney_nitrogen{Kidney and nitrogen metabolism} water_electrolytes_acid_base{Water, electrolytes and acid–base} minerals_vitamins{Minerals and vitamins} hormones{Hormones} urinalysis{Urinalysis} stool_coprology{Stool examination} csf_body_fluids{CSF and body fluids} sputum_tb{Sputum and tuberculosis} cytology_gyn{Cytology} std_microscopy{STI microscopy} parasitology{Parasitology} immunology_serology{Immunology and serology} molecular_pcr{Molecular diagnostics (PCR)} tumor_markers{Tumour markers} cardiac_markers{Cardiac markers} orphan_screening{Screening and rare diseases} other{Other topics}}'**
+  /// **'{topic, select, safety_ethics{Safety and ethics} qc_lab_management{Quality control and management} preanalytics{Preanalytics} hematology_cells{Blood cells} hemopoiesis_leukemia{Hematopoiesis and leukemia} anemias{Anaemias} hemostasis{Haemostasis} biochemistry_proteins_enzymes{Proteins and enzymes} carbohydrates_diabetes{Carbohydrates and diabetes} lipids{Lipids} liver_pigments{Liver and pigments} kidney_nitrogen{Kidney and nitrogen metabolism} water_electrolytes_acid_base{Water, electrolytes and acid–base} minerals_vitamins{Minerals and vitamins} hormones{Hormones} urinalysis{Urinalysis} stool_coprology{Stool examination} csf_body_fluids{CSF and body fluids} sputum_tb{Sputum and tuberculosis} cytology_gyn{Cytology} std_microscopy{STI microscopy} parasitology{Parasitology} immunology_serology{Immunology and serology} molecular_pcr{Molecular diagnostics (PCR)} tumor_markers{Tumor markers} cardiac_markers{Cardiac markers} orphan_screening{Screening and rare diseases} other{Other topics}}'**
   String toifaTopic(String topic);
 
   /// No description provided for @toifaTitle.
@@ -7711,7 +7711,7 @@ abstract class AppLocalizations {
   /// No description provided for @toifaPassError.
   ///
   /// In en, this message translates to:
-  /// **'Enter 1 to 100 % or leave empty'**
+  /// **'Enter 1 to 100% or leave empty'**
   String get toifaPassError;
 
   /// No description provided for @toifaScoringNotice.
@@ -8389,7 +8389,7 @@ abstract class AppLocalizations {
   /// No description provided for @toifaMoreMistakes.
   ///
   /// In en, this message translates to:
-  /// **'{count} more mistakes — practise them via Redo mistakes.'**
+  /// **'{count} more mistakes — practice them via Redo mistakes.'**
   String toifaMoreMistakes(int count);
 
   /// No description provided for @toifaNothingHere.
@@ -8953,13 +8953,13 @@ abstract class AppLocalizations {
   /// No description provided for @classesUnavailableTitle.
   ///
   /// In en, this message translates to:
-  /// **'The class server isn\'t connected yet'**
+  /// **'The class server isn’t connected yet'**
   String get classesUnavailableTitle;
 
   /// No description provided for @classesUnavailableBody.
   ///
   /// In en, this message translates to:
-  /// **'Nothing is sent or stored. When it\'s connected, teachers see only their own classes and students see only their own results — checked on the server.'**
+  /// **'Nothing is sent or stored. When it’s connected, teachers see only their own classes and students see only their own results — checked on the server.'**
   String get classesUnavailableBody;
 
   /// No description provided for @examSubtitle.
@@ -9187,7 +9187,7 @@ abstract class AppLocalizations {
   /// No description provided for @examReworkTitle.
   ///
   /// In en, this message translates to:
-  /// **'Practise your mistakes'**
+  /// **'Practice your mistakes'**
   String get examReworkTitle;
 
   /// No description provided for @examQuestionMissing.
@@ -9361,7 +9361,7 @@ abstract class AppLocalizations {
   /// No description provided for @examBand0.
   ///
   /// In en, this message translates to:
-  /// **'Keep practising — you’ve got this'**
+  /// **'Keep practicing — you’ve got this'**
   String get examBand0;
 
   /// No description provided for @examCorrectN.
@@ -9415,7 +9415,7 @@ abstract class AppLocalizations {
   /// No description provided for @examReworkMistakes.
   ///
   /// In en, this message translates to:
-  /// **'Practise mistakes · {count}'**
+  /// **'Practice mistakes · {count}'**
   String examReworkMistakes(int count);
 
   /// No description provided for @examAnalysis.
@@ -10291,7 +10291,7 @@ abstract class AppLocalizations {
   /// No description provided for @themeRowSub.
   ///
   /// In en, this message translates to:
-  /// **'App colours and title type'**
+  /// **'App colors and title type'**
   String get themeRowSub;
 
   /// No description provided for @themeCurrent.
@@ -10309,7 +10309,7 @@ abstract class AppLocalizations {
   /// No description provided for @themeClassicDesc.
   ///
   /// In en, this message translates to:
-  /// **'LabGuide\'s signature green'**
+  /// **'LabGuide’s signature green'**
   String get themeClassicDesc;
 
   /// No description provided for @themeIvoryName.
@@ -11017,7 +11017,7 @@ abstract class AppLocalizations {
   /// No description provided for @privacyTermsSub.
   ///
   /// In en, this message translates to:
-  /// **'Final text to be prepared'**
+  /// **'Rules for using the app and your account'**
   String get privacyTermsSub;
 
   /// No description provided for @privacyDeleteLocal.
@@ -11059,7 +11059,7 @@ abstract class AppLocalizations {
   /// No description provided for @termsBody.
   ///
   /// In en, this message translates to:
-  /// **'LabGuide is a free clinical laboratory reference and learning app. By using the app you agree to these terms.\n\n1. Medical limitation. LabGuide does not diagnose, prescribe treatment or medicines, and does not replace your laboratory\'s approved procedures, reagent and analyzer instructions (IFU) or a physician\'s judgement. Every item shows its source; when making decisions, rely on the original source and your institution\'s rules.\n\n2. Account. Some features (groups, tests, community, support requests) require signing up with email. You are responsible for your account\'s security and for actions taken through it. You can delete your account at any time: Profile → Delete account.\n\n3. Teacher and student groups. When a student joins a group, the teacher sees their nickname (or seat number) and test results. Teachers use groups for educational purposes only.\n\n4. User content. You are responsible for what you post in the community and in support requests. Abuse, illegal content, advertising, other people\'s personal data and non-consensual intimate images are strictly prohibited. Such content is removed, and the offending account may be restricted or deleted. You can report any message with “Report”.\n\n5. Copyright. The app\'s texts, slides, tests and design belong to the LabGuide authors; external sources are shown with their own licences. They may not be copied or distributed for commercial purposes.\n\n6. Service. The app is provided “as is”; outages and errors may occur, and we fix them as quickly as we can. We will notify you in the app if these terms change.\n\n7. Privacy. How your data is used is described in the privacy policy: labguide.nfcstore.uz/privacy\n\n8. Contact: labguide@nfcstore.uz'**
+  /// **'LabGuide is a free clinical laboratory reference and learning app. By using the app you agree to these terms.\n\n1. Medical limitation. LabGuide does not diagnose, prescribe treatment or medicines, and does not replace your laboratory’s approved procedures, reagent and analyzer instructions (IFU) or a physician’s judgment. Every item shows its source; when making decisions, rely on the original source and your institution’s rules.\n\n2. Account. Some features (groups, tests, community, support requests) require signing up with email. You are responsible for your account’s security and for actions taken through it. You can delete your account at any time: Profile → Delete account.\n\n3. Teacher and student groups. When a student joins a group, the teacher sees their nickname (or seat number) and test results. Teachers use groups for educational purposes only.\n\n4. User content. You are responsible for what you post in the community and in support requests. Abuse, illegal content, advertising, other people’s personal data and non-consensual intimate images are strictly prohibited. Such content is removed, and the offending account may be restricted or deleted. You can report any message with “Report”.\n\n5. Copyright. The app’s texts, slides, tests and design belong to the LabGuide authors; external sources are shown with their own licenses. They may not be copied or distributed for commercial purposes.\n\n6. Service. The app is provided “as is”; outages and errors may occur, and we fix them as quickly as we can. We will notify you in the app if these terms change.\n\n7. Privacy. How your data is used is described in the privacy policy: labguide.nfcstore.uz/privacy\n\n8. Contact: labguide@nfcstore.uz'**
   String get termsBody;
 
   /// No description provided for @citePage.
@@ -11167,7 +11167,7 @@ abstract class AppLocalizations {
   /// No description provided for @libAccessOpen.
   ///
   /// In en, this message translates to:
-  /// **'Open licence · {licence}'**
+  /// **'Open license · {licence}'**
   String libAccessOpen(String licence);
 
   /// No description provided for @libAccessFree.
@@ -11179,7 +11179,7 @@ abstract class AppLocalizations {
   /// No description provided for @libAccessCatalog.
   ///
   /// In en, this message translates to:
-  /// **'Catalogue record only'**
+  /// **'Catalog record only'**
   String get libAccessCatalog;
 
   /// No description provided for @libOpenSource.
@@ -11191,7 +11191,7 @@ abstract class AppLocalizations {
   /// No description provided for @libChecked.
   ///
   /// In en, this message translates to:
-  /// **'Page and licence checked: {date}'**
+  /// **'Page and license checked: {date}'**
   String libChecked(String date);
 
   /// No description provided for @libItemPack.
@@ -11527,7 +11527,7 @@ abstract class AppLocalizations {
   /// No description provided for @libStateCataloged.
   ///
   /// In en, this message translates to:
-  /// **'Catalogued'**
+  /// **'Cataloged'**
   String get libStateCataloged;
 
   /// No description provided for @libStateLinked.
@@ -11857,7 +11857,7 @@ abstract class AppLocalizations {
   /// No description provided for @intakeRights2.
   ///
   /// In en, this message translates to:
-  /// **'For a file to open in the app for everyone, the rights are fully recorded: who granted them (author or publisher), when, who recorded it, and the evidence — a permission letter or a licence link.'**
+  /// **'For a file to open in the app for everyone, the rights are fully recorded: who granted them (author or publisher), when, who recorded it, and the evidence — a permission letter or a license link.'**
   String get intakeRights2;
 
   /// No description provided for @intakeRights3.
@@ -11887,7 +11887,7 @@ abstract class AppLocalizations {
   /// No description provided for @intakeStep3.
   ///
   /// In en, this message translates to:
-  /// **'Catalogued — title, author and edition were checked. Only then can it be cited.'**
+  /// **'Cataloged — title, author and edition were checked. Only then can it be cited.'**
   String get intakeStep3;
 
   /// No description provided for @intakeStep4.
@@ -12187,7 +12187,7 @@ abstract class AppLocalizations {
   /// No description provided for @reviewCatalog.
   ///
   /// In en, this message translates to:
-  /// **'Catalogued materials: {count}'**
+  /// **'Cataloged materials: {count}'**
   String reviewCatalog(int count);
 
   /// No description provided for @reviewField.
@@ -13567,7 +13567,7 @@ abstract class AppLocalizations {
   /// No description provided for @cmRulesA2.
   ///
   /// In en, this message translates to:
-  /// **'pre-analytics: blood collection, tubes, storage, haemolysis'**
+  /// **'pre-analytics: blood collection, tubes, storage, hemolysis'**
   String get cmRulesA2;
 
   /// No description provided for @cmRulesA3.
@@ -13579,13 +13579,13 @@ abstract class AppLocalizations {
   /// No description provided for @cmRulesA4.
   ///
   /// In en, this message translates to:
-  /// **'experience working with analysers and reagents'**
+  /// **'experience working with analyzers and reagents'**
   String get cmRulesA4;
 
   /// No description provided for @cmRulesA5.
   ///
   /// In en, this message translates to:
-  /// **'haematology, microscopy, biochemistry, immunology, urinalysis'**
+  /// **'hematology, microscopy, biochemistry, immunology, urinalysis'**
   String get cmRulesA5;
 
   /// No description provided for @cmRulesA6.
@@ -13603,13 +13603,13 @@ abstract class AppLocalizations {
   /// No description provided for @cmRulesB1.
   ///
   /// In en, this message translates to:
-  /// **'put the essence of the question in the title (for example: “Potassium high, no haemolysis — what is the cause?”)'**
+  /// **'put the essence of the question in the title (for example: “Potassium high, no hemolysis — what is the cause?”)'**
   String get cmRulesB1;
 
   /// No description provided for @cmRulesB2.
   ///
   /// In en, this message translates to:
-  /// **'in the details: which test, the result and its unit, the method or analyser, what you have already tried'**
+  /// **'in the details: which test, the result and its unit, the method or analyzer, what you have already tried'**
   String get cmRulesB2;
 
   /// No description provided for @cmRulesB3.
@@ -13789,7 +13789,7 @@ abstract class AppLocalizations {
   /// No description provided for @cmLaunchNotOwner.
   ///
   /// In en, this message translates to:
-  /// **'This account is not allowed as founder. Sign in with the founder\'s email.'**
+  /// **'This account is not allowed as founder. Sign in with the founder’s email.'**
   String get cmLaunchNotOwner;
 
   /// No description provided for @cmLaunchMfaHint.
@@ -14119,7 +14119,7 @@ abstract class AppLocalizations {
   /// No description provided for @cytoSubtitle.
   ///
   /// In en, this message translates to:
-  /// **'Gynaecological smear: cells and reports'**
+  /// **'Gynecological smear: cells and reports'**
   String get cytoSubtitle;
 
   /// No description provided for @cytoHeroTitle.
@@ -14143,7 +14143,7 @@ abstract class AppLocalizations {
   /// No description provided for @cytoSchematicCaption.
   ///
   /// In en, this message translates to:
-  /// **'Annotated diagram (LabGuide) — not a micrograph; scale and colours are approximate.'**
+  /// **'Annotated diagram (LabGuide) — not a micrograph; scale and colors are approximate.'**
   String get cytoSchematicCaption;
 
   /// No description provided for @cytoCellsTitle.
@@ -14563,7 +14563,7 @@ abstract class AppLocalizations {
   /// No description provided for @diffLimitsSourceNote.
   ///
   /// In en, this message translates to:
-  /// **'Defaults are adult 95 % intervals (Harrison’s Manual of Medicine, 20th ed., Table 64-1); bands — Lyubina 1984, Table 6. MSD Manual definitions differ: eosinophilia > 0.5 ×10⁹/L (default upper limit here 0.7) and lymphocytopenia < 1.0 ×10⁹/L (default lower limit here 1.5). Ranges differ in children and in some ethnic groups (e.g. Duffy-negative).'**
+  /// **'Defaults are adult 95% intervals (Harrison’s Manual of Medicine, 20th ed., Table 64-1); bands — Lyubina 1984, Table 6. MSD Manual definitions differ: eosinophilia > 0.5 ×10⁹/L (default upper limit here 0.7) and lymphocytopenia < 1.0 ×10⁹/L (default lower limit here 1.5). Ranges differ in children and in some ethnic groups (e.g. Duffy-negative).'**
   String get diffLimitsSourceNote;
 
   /// No description provided for @cytoAdequacyTitle.
@@ -14575,13 +14575,13 @@ abstract class AppLocalizations {
   /// No description provided for @cytoAdequacySub.
   ///
   /// In en, this message translates to:
-  /// **'Bethesda 2014: satisfactory or not, common artefacts'**
+  /// **'Bethesda 2014: satisfactory or not, common artifacts'**
   String get cytoAdequacySub;
 
   /// No description provided for @cytoArtefactsTitle.
   ///
   /// In en, this message translates to:
-  /// **'Common artefacts'**
+  /// **'Common artifacts'**
   String get cytoArtefactsTitle;
 
   /// No description provided for @cytoReactiveTitle.
@@ -14707,7 +14707,7 @@ abstract class AppLocalizations {
   /// No description provided for @contactPrivacyPolicy.
   ///
   /// In en, this message translates to:
-  /// **'Privacy Policy'**
+  /// **'Privacy policy'**
   String get contactPrivacyPolicy;
 
   /// Lab tab: blood group determination methods section title
@@ -14959,7 +14959,7 @@ abstract class AppLocalizations {
   /// No description provided for @autoPresColCap.
   ///
   /// In en, this message translates to:
-  /// **'Cap colour'**
+  /// **'Cap color'**
   String get autoPresColCap;
 
   /// No description provided for @autoPresShowAnswer.
@@ -15313,7 +15313,7 @@ abstract class AppLocalizations {
   /// Snackbar when the user cancels the Apple confirmation during account deletion
   ///
   /// In en, this message translates to:
-  /// **'Nothing was deleted: Apple confirmation was cancelled.'**
+  /// **'Nothing was deleted: Apple confirmation was canceled.'**
   String get accountDeleteAppleCancelled;
 
   /// Lab tab: title of the urinalysis section and its picture card
@@ -15328,7 +15328,7 @@ abstract class AppLocalizations {
   /// **'Collection, strip test, sediment pictures, result reader, practice'**
   String get urinLabCardBody;
 
-  /// Lab tab: title of the coagulogram (haemostasis tests) section and its picture card
+  /// Lab tab: title of the coagulogram (hemostasis tests) section and its picture card
   ///
   /// In en, this message translates to:
   /// **'Coagulogram'**
@@ -16204,7 +16204,7 @@ abstract class AppLocalizations {
   /// **'Complaints'**
   String get admSectionComplaints;
 
-  /// Lab tab: blood morphology section title (peripheral blood film: red cells, platelets, anaemias)
+  /// Lab tab: blood morphology section title (peripheral blood film: red cells, platelets, anemias)
   ///
   /// In en, this message translates to:
   /// **'Blood morphology'**
@@ -16213,7 +16213,7 @@ abstract class AppLocalizations {
   /// Lab tab: blood morphology picture card subtitle
   ///
   /// In en, this message translates to:
-  /// **'Red cells, platelets, anaemias: real micrographs, helper, practice'**
+  /// **'Red cells, platelets, anemias: real micrographs, helper, practice'**
   String get bloodMorphLabCardBody;
 
   /// No description provided for @lectureSearchLabel.
@@ -16783,13 +16783,13 @@ abstract class AppLocalizations {
   /// No description provided for @admDeleteNote.
   ///
   /// In en, this message translates to:
-  /// **'For deletion requests received by email (completed within 30 days). To confirm, enter the user\'s full email — the server checks that it belongs to exactly this account. The account, group memberships, community posts, support threads and sign-in methods are deleted permanently; for Sign in with Apple users the server attempts to revoke the Apple token. This cannot be undone; the action is logged.'**
+  /// **'For deletion requests received by email (completed within 30 days). To confirm, enter the user’s full email — the server checks that it belongs to exactly this account. The account, group memberships, community posts, support threads and sign-in methods are deleted permanently; for Sign in with Apple users the server attempts to revoke the Apple token. This cannot be undone; the action is logged.'**
   String get admDeleteNote;
 
   /// No description provided for @admDeleteEmail.
   ///
   /// In en, this message translates to:
-  /// **'User\'s full email'**
+  /// **'User’s full email'**
   String get admDeleteEmail;
 
   /// No description provided for @admDeleteButton.
@@ -17203,13 +17203,13 @@ abstract class AppLocalizations {
   /// No description provided for @classesOwnGroupTitle.
   ///
   /// In en, this message translates to:
-  /// **'You are this group\'s teacher'**
+  /// **'You are this group’s teacher'**
   String get classesOwnGroupTitle;
 
   /// No description provided for @classesOwnGroupBody.
   ///
   /// In en, this message translates to:
-  /// **'This account created the group, so it can\'t join it as a student (switching the role in Profile doesn\'t change that). To try it as a student, sign in with another account or take the test in student view.'**
+  /// **'This account created the group, so it can’t join it as a student (switching the role in Profile doesn’t change that). To try it as a student, sign in with another account or take the test in student view.'**
   String get classesOwnGroupBody;
 
   /// No description provided for @classesOwnGroupOpen.
@@ -17233,7 +17233,7 @@ abstract class AppLocalizations {
   /// No description provided for @classesPreviewNote.
   ///
   /// In en, this message translates to:
-  /// **'Trial mode: answers are not sent to the server and don\'t appear in the results.'**
+  /// **'Trial mode: answers are not sent to the server and don’t appear in the results.'**
   String get classesPreviewNote;
 
   /// No description provided for @classesPreviewResult.
@@ -17257,7 +17257,7 @@ abstract class AppLocalizations {
   /// No description provided for @classesTopicSearchHint.
   ///
   /// In en, this message translates to:
-  /// **'Search topics (e.g. anaemia)'**
+  /// **'Search topics (e.g. anemia)'**
   String get classesTopicSearchHint;
 
   /// No description provided for @classesTopicNoMatch.
@@ -17305,7 +17305,7 @@ abstract class AppLocalizations {
   /// No description provided for @classesNicknameNote.
   ///
   /// In en, this message translates to:
-  /// **'Don\'t use your real name. Leave empty to show your seat number.'**
+  /// **'Don’t use your real name. Leave empty to show your seat number.'**
   String get classesNicknameNote;
 
   /// No description provided for @rolesTeacherRegisterNote.
@@ -17347,7 +17347,7 @@ abstract class AppLocalizations {
   /// No description provided for @generalTestSearchHint.
   ///
   /// In en, this message translates to:
-  /// **'Search topics (e.g. anaemia)'**
+  /// **'Search topics (e.g. anemia)'**
   String get generalTestSearchHint;
 
   /// No description provided for @generalSourceToifa.
@@ -18273,6 +18273,558 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'You can use the app without a subscription: free features stay free.'**
   String get proSubWithoutSubscription;
+
+  /// No description provided for @profileAttestation.
+  ///
+  /// In en, this message translates to:
+  /// **'Qualification category (attestation)'**
+  String get profileAttestation;
+
+  /// No description provided for @profileAttestationAuto.
+  ///
+  /// In en, this message translates to:
+  /// **'Automatic'**
+  String get profileAttestationAuto;
+
+  /// No description provided for @profileAttestationUz.
+  ///
+  /// In en, this message translates to:
+  /// **'Uzbekistan'**
+  String get profileAttestationUz;
+
+  /// No description provided for @profileAttestationNone.
+  ///
+  /// In en, this message translates to:
+  /// **'Hide'**
+  String get profileAttestationNone;
+
+  /// No description provided for @profileAttestationNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Shows the Uzbekistan qualification-category exam prep section in any interface language. Automatic: shown when the language is Uzbek or the device region is Uzbekistan.'**
+  String get profileAttestationNote;
+
+  /// No description provided for @calSafeKind.
+  ///
+  /// In en, this message translates to:
+  /// **'Record type'**
+  String get calSafeKind;
+
+  /// No description provided for @calSafeKindTraining.
+  ///
+  /// In en, this message translates to:
+  /// **'Training'**
+  String get calSafeKindTraining;
+
+  /// No description provided for @calSafeKindLab.
+  ///
+  /// In en, this message translates to:
+  /// **'Laboratory'**
+  String get calSafeKindLab;
+
+  /// No description provided for @calSafeTrainingTag.
+  ///
+  /// In en, this message translates to:
+  /// **'Training'**
+  String get calSafeTrainingTag;
+
+  /// No description provided for @calSafeTrainingNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Training record: this is not laboratory evidence.'**
+  String get calSafeTrainingNote;
+
+  /// No description provided for @calSafeApprovedBy.
+  ///
+  /// In en, this message translates to:
+  /// **'Approved by (name / role)'**
+  String get calSafeApprovedBy;
+
+  /// No description provided for @calSafeApprovedAt.
+  ///
+  /// In en, this message translates to:
+  /// **'Approved on'**
+  String get calSafeApprovedAt;
+
+  /// No description provided for @calSafeApproverRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'“Accepted” needs the name or role of the authorized person.'**
+  String get calSafeApproverRequired;
+
+  /// No description provided for @calSafeQcAfter.
+  ///
+  /// In en, this message translates to:
+  /// **'QC after calibration'**
+  String get calSafeQcAfter;
+
+  /// No description provided for @calSafeQcPass.
+  ///
+  /// In en, this message translates to:
+  /// **'QC passed'**
+  String get calSafeQcPass;
+
+  /// No description provided for @calSafeQcFail.
+  ///
+  /// In en, this message translates to:
+  /// **'QC failed'**
+  String get calSafeQcFail;
+
+  /// No description provided for @calSafeQcNotRun.
+  ///
+  /// In en, this message translates to:
+  /// **'QC not run'**
+  String get calSafeQcNotRun;
+
+  /// No description provided for @calSafeQcNotRunWarn.
+  ///
+  /// In en, this message translates to:
+  /// **'QC not run after calibration'**
+  String get calSafeQcNotRunWarn;
+
+  /// No description provided for @calSafeQcPassRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'“Accepted” is possible only when QC after calibration passed.'**
+  String get calSafeQcPassRequired;
+
+  /// No description provided for @calSafeSopRef.
+  ///
+  /// In en, this message translates to:
+  /// **'SOP reference (optional)'**
+  String get calSafeSopRef;
+
+  /// No description provided for @calSafeLegacyTag.
+  ///
+  /// In en, this message translates to:
+  /// **'Legacy, unverified'**
+  String get calSafeLegacyTag;
+
+  /// No description provided for @calSafeHistory.
+  ///
+  /// In en, this message translates to:
+  /// **'History'**
+  String get calSafeHistory;
+
+  /// No description provided for @calSafeHistoryEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No history entries.'**
+  String get calSafeHistoryEmpty;
+
+  /// No description provided for @calSafeAuditCreated.
+  ///
+  /// In en, this message translates to:
+  /// **'Created'**
+  String get calSafeAuditCreated;
+
+  /// No description provided for @calSafeAuditEdited.
+  ///
+  /// In en, this message translates to:
+  /// **'Edited'**
+  String get calSafeAuditEdited;
+
+  /// No description provided for @calSafeAuditDeleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Deleted'**
+  String get calSafeAuditDeleted;
+
+  /// No description provided for @calSafeHistoryNote.
+  ///
+  /// In en, this message translates to:
+  /// **'History stays even after a record is deleted. It is removed only by “delete local data”.'**
+  String get calSafeHistoryNote;
+
+  /// No description provided for @labDirSection.
+  ///
+  /// In en, this message translates to:
+  /// **'Laboratory directions (reference)'**
+  String get labDirSection;
+
+  /// No description provided for @labDirSectionSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Platform and test on separate cards'**
+  String get labDirSectionSub;
+
+  /// No description provided for @labDirTb.
+  ///
+  /// In en, this message translates to:
+  /// **'Tuberculosis (TB) diagnostics'**
+  String get labDirTb;
+
+  /// No description provided for @labDirHiv.
+  ///
+  /// In en, this message translates to:
+  /// **'HIV laboratory diagnostics'**
+  String get labDirHiv;
+
+  /// No description provided for @labDirTag.
+  ///
+  /// In en, this message translates to:
+  /// **'Reference'**
+  String get labDirTag;
+
+  /// No description provided for @labDirNotVerified.
+  ///
+  /// In en, this message translates to:
+  /// **'Not added yet'**
+  String get labDirNotVerified;
+
+  /// No description provided for @labDirKindPlatform.
+  ///
+  /// In en, this message translates to:
+  /// **'Platform (instrument)'**
+  String get labDirKindPlatform;
+
+  /// No description provided for @labDirKindTest.
+  ///
+  /// In en, this message translates to:
+  /// **'Test'**
+  String get labDirKindTest;
+
+  /// No description provided for @labDirKindMethod.
+  ///
+  /// In en, this message translates to:
+  /// **'Method'**
+  String get labDirKindMethod;
+
+  /// No description provided for @labDirVsTest.
+  ///
+  /// In en, this message translates to:
+  /// **'Platform vs test'**
+  String get labDirVsTest;
+
+  /// No description provided for @labDirTechnology.
+  ///
+  /// In en, this message translates to:
+  /// **'Technology'**
+  String get labDirTechnology;
+
+  /// No description provided for @labDirSpecimens.
+  ///
+  /// In en, this message translates to:
+  /// **'Specimens'**
+  String get labDirSpecimens;
+
+  /// No description provided for @labDirTasks.
+  ///
+  /// In en, this message translates to:
+  /// **'Tasks'**
+  String get labDirTasks;
+
+  /// No description provided for @labDirPrinciple.
+  ///
+  /// In en, this message translates to:
+  /// **'Principle'**
+  String get labDirPrinciple;
+
+  /// No description provided for @labDirLimitations.
+  ///
+  /// In en, this message translates to:
+  /// **'Limitations'**
+  String get labDirLimitations;
+
+  /// No description provided for @labDirQc.
+  ///
+  /// In en, this message translates to:
+  /// **'QC and calibration'**
+  String get labDirQc;
+
+  /// No description provided for @labDirErrors.
+  ///
+  /// In en, this message translates to:
+  /// **'Preanalytic and analytic errors'**
+  String get labDirErrors;
+
+  /// No description provided for @labDirBiosafety.
+  ///
+  /// In en, this message translates to:
+  /// **'Biosafety'**
+  String get labDirBiosafety;
+
+  /// No description provided for @labDirModels.
+  ///
+  /// In en, this message translates to:
+  /// **'Models confirmed by an official source'**
+  String get labDirModels;
+
+  /// No description provided for @labDirLinked.
+  ///
+  /// In en, this message translates to:
+  /// **'Linked cards'**
+  String get labDirLinked;
+
+  /// No description provided for @labDirStatusNeedsReview.
+  ///
+  /// In en, this message translates to:
+  /// **'Check status: sources are listed below; specialist sign-off not yet recorded'**
+  String get labDirStatusNeedsReview;
+
+  /// No description provided for @labDirManufacturerNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Manufacturer page (marketing material), not an instruction'**
+  String get labDirManufacturerNote;
+
+  /// No description provided for @labDirVirology.
+  ///
+  /// In en, this message translates to:
+  /// **'Virology'**
+  String get labDirVirology;
+
+  /// No description provided for @labDirBacteriology.
+  ///
+  /// In en, this message translates to:
+  /// **'Bacteriology'**
+  String get labDirBacteriology;
+
+  /// No description provided for @labDirMycology.
+  ///
+  /// In en, this message translates to:
+  /// **'Mycology'**
+  String get labDirMycology;
+
+  /// No description provided for @labDirParasitology.
+  ///
+  /// In en, this message translates to:
+  /// **'Parasitology'**
+  String get labDirParasitology;
+
+  /// No description provided for @labDirHematology.
+  ///
+  /// In en, this message translates to:
+  /// **'Haematology'**
+  String get labDirHematology;
+
+  /// No description provided for @labDirCoagulation.
+  ///
+  /// In en, this message translates to:
+  /// **'Coagulation (haemostasis)'**
+  String get labDirCoagulation;
+
+  /// No description provided for @labDirTransfusion.
+  ///
+  /// In en, this message translates to:
+  /// **'Transfusion medicine'**
+  String get labDirTransfusion;
+
+  /// No description provided for @labDirBiochemistry.
+  ///
+  /// In en, this message translates to:
+  /// **'Clinical biochemistry'**
+  String get labDirBiochemistry;
+
+  /// No description provided for @labDirImmunology.
+  ///
+  /// In en, this message translates to:
+  /// **'Immunology'**
+  String get labDirImmunology;
+
+  /// No description provided for @labDirUrinalysis.
+  ///
+  /// In en, this message translates to:
+  /// **'Urinalysis'**
+  String get labDirUrinalysis;
+
+  /// No description provided for @labDirCytology.
+  ///
+  /// In en, this message translates to:
+  /// **'Cytology'**
+  String get labDirCytology;
+
+  /// No description provided for @labDirHistology.
+  ///
+  /// In en, this message translates to:
+  /// **'Histology'**
+  String get labDirHistology;
+
+  /// No description provided for @labDirOncology.
+  ///
+  /// In en, this message translates to:
+  /// **'Oncology'**
+  String get labDirOncology;
+
+  /// No description provided for @labDirGenetics.
+  ///
+  /// In en, this message translates to:
+  /// **'Genetics'**
+  String get labDirGenetics;
+
+  /// No description provided for @labDirMolecular.
+  ///
+  /// In en, this message translates to:
+  /// **'Molecular diagnostics'**
+  String get labDirMolecular;
+
+  /// No description provided for @labDirToxicology.
+  ///
+  /// In en, this message translates to:
+  /// **'Toxicology'**
+  String get labDirToxicology;
+
+  /// No description provided for @labDirReproductive.
+  ///
+  /// In en, this message translates to:
+  /// **'Reproductive medicine'**
+  String get labDirReproductive;
+
+  /// No description provided for @labDirNeonatal.
+  ///
+  /// In en, this message translates to:
+  /// **'Neonatal laboratory diagnostics'**
+  String get labDirNeonatal;
+
+  /// No description provided for @labDirTransplant.
+  ///
+  /// In en, this message translates to:
+  /// **'Transplantation'**
+  String get labDirTransplant;
+
+  /// No description provided for @labDirGeneral.
+  ///
+  /// In en, this message translates to:
+  /// **'General laboratory'**
+  String get labDirGeneral;
+
+  /// No description provided for @labDirDisclaimer.
+  ///
+  /// In en, this message translates to:
+  /// **'Educational reference only. The app does not diagnose and is not an operating protocol; decisions rest with an authorised laboratory and clinician.'**
+  String get labDirDisclaimer;
+
+  /// No description provided for @labDirEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No cards in this direction.'**
+  String get labDirEmpty;
+
+  /// No description provided for @labDirPlatformClassNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Class/technology reference — not verified for a specific model'**
+  String get labDirPlatformClassNote;
+
+  /// No description provided for @imgDiagramCalibrationOverviewAlt.
+  ///
+  /// In en, this message translates to:
+  /// **'Diagram, general calibration workflow in six steps: confirm instrument and method; verify reagent, REF and IFU revision; prepare a lot-matched calibrator; follow the verified instrument interface; evaluate the calibration and independent QC; record results and release per SOP. Not an instrument screenshot.'**
+  String get imgDiagramCalibrationOverviewAlt;
+
+  /// No description provided for @imgDiagramDifferentialCountAlt.
+  ///
+  /// In en, this message translates to:
+  /// **'Diagram, manual leukocyte differential in six steps: inspect the smear and cell distribution; classify cells in the prescribed area; count to the local SOP target; calculate relative percentages; use WBC for absolute counts; review abnormal cells and report.'**
+  String get imgDiagramDifferentialCountAlt;
+
+  /// No description provided for @imgDiagramQcDecisionAlt.
+  ///
+  /// In en, this message translates to:
+  /// **'Diagram, quality-control decision workflow in six steps: measure the control(s); compare with lot targets and SD; evaluate the approved QC rules; if QC fails, investigate the cause; if needed, correct the cause and rerun QC; if QC passes, follow the release SOP. If QC is out of control, do not release patient results until the issue is resolved under SOP.'**
+  String get imgDiagramQcDecisionAlt;
+
+  /// No description provided for @imgDiagramPreanalyticsAlt.
+  ///
+  /// In en, this message translates to:
+  /// **'Diagram, preanalytics and specimen integrity in six steps: correct patient identification; confirm requested tests; select the proper tube and method; label at collection; transport per the temperature and time SOP; assess acceptance before analysis. Example process map.'**
+  String get imgDiagramPreanalyticsAlt;
+
+  /// No description provided for @imgDiagramPhotometryAlt.
+  ///
+  /// In en, this message translates to:
+  /// **'Diagram, principle of absorbance photometry in six steps: light source and wavelength; optical path through the cuvette; the sample absorbs light; the detector measures transmitted light; calculate absorbance A = log10(I0/I); quantify with a verified calibration. Beer–Lambert linearity has limits; the reagent IFU sets wavelengths, blanks and calibration.'**
+  String get imgDiagramPhotometryAlt;
+
+  /// No description provided for @imgDiagramEducationalFeedbackAlt.
+  ///
+  /// In en, this message translates to:
+  /// **'Diagram, teacher–student learning loop in six steps: the teacher chooses a topic; creates an evidence-linked assignment; the student studies the materials; completes the assessment; receives explained feedback; the teacher reviews progress and adapts. A product workflow diagram, not a scientific image.'**
+  String get imgDiagramEducationalFeedbackAlt;
+
+  /// No description provided for @imgDiagramCaption.
+  ///
+  /// In en, this message translates to:
+  /// **'General diagram drawn for LabGuide. Your instrument’s IFU and your laboratory SOP take precedence.'**
+  String get imgDiagramCaption;
+
+  /// No description provided for @imgDiagramTapToZoom.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap the diagram to enlarge'**
+  String get imgDiagramTapToZoom;
+
+  /// No description provided for @stepUpTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm it\'s you'**
+  String get stepUpTitle;
+
+  /// No description provided for @stepUpBodyEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'This action needs a fresh confirmation. Enter the 6-digit code sent to {email}.'**
+  String stepUpBodyEmail(String email);
+
+  /// No description provided for @stepUpBodyEmailNoAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'This action needs a fresh confirmation. Enter the 6-digit code sent to your email.'**
+  String get stepUpBodyEmailNoAddress;
+
+  /// No description provided for @stepUpBodyTotp.
+  ///
+  /// In en, this message translates to:
+  /// **'This action needs a fresh confirmation. Enter the 6-digit code from your authenticator app.'**
+  String get stepUpBodyTotp;
+
+  /// No description provided for @stepUpConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm'**
+  String get stepUpConfirm;
+
+  /// No description provided for @stepUpCancelled.
+  ///
+  /// In en, this message translates to:
+  /// **'Not done: this action needs a fresh confirmation code.'**
+  String get stepUpCancelled;
+
+  /// No description provided for @admRevokeSessions.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign out of all devices'**
+  String get admRevokeSessions;
+
+  /// No description provided for @admRevokeSessionsBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The user is signed out on every device. The account stays active and they can sign in again.'**
+  String get admRevokeSessionsBody;
+
+  /// No description provided for @admRevokeSessionsDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Sessions ended: {count}.'**
+  String admRevokeSessionsDone(int count);
+
+  /// No description provided for @profileSignOutAll.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign out of all devices'**
+  String get profileSignOutAll;
+
+  /// No description provided for @profileSignOutAllBody.
+  ///
+  /// In en, this message translates to:
+  /// **'You will be signed out on this phone and on every other device where you signed in. Data on this device is kept.'**
+  String get profileSignOutAllBody;
+
+  /// No description provided for @profileSignOutAllDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Signed out on all devices.'**
+  String get profileSignOutAllDone;
 }
 
 class _AppLocalizationsDelegate

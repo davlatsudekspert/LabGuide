@@ -3,6 +3,7 @@ import 'package:material_ui/material_ui.dart';
 
 import '../../app/app_scope.dart';
 import '../../app/widgets/lg_page.dart';
+import '../../app/widgets/diagram_figure.dart';
 import '../../app/widgets/links.dart';
 import '../../core/build_flags.dart';
 import '../../design/tokens.dart';
@@ -13,6 +14,7 @@ import '../partners/partner_widgets.dart';
 import 'instrument_catalog.dart';
 import 'instrument_image.dart';
 import 'instruments_controller.dart';
+import 'lab_direction_screens.dart' show LabDirectionRows;
 
 IconData categoryIcon(InstrumentCategory c) => switch (c) {
   InstrumentCategory.chemistry => Icons.science_outlined,
@@ -158,6 +160,7 @@ class _InstrumentsScreenState extends State<InstrumentsScreen> {
                       onTap: () =>
                           context.push('/lab/instruments/c/${c.category.name}'),
                     ),
+                  LabDirectionRows(catalog: catalog),
                   const SizedBox(height: 6),
                   _AddCustomRow(divider: true),
                   LgRow(
@@ -671,6 +674,13 @@ class _InstrumentCard extends StatelessWidget {
               ? null
               : catalog.sources[model.officialPage!],
         ),
+        // Fotometrik (yutilish o'lchaydigan) apparatlar — fotometriya
+        // tamoyili sxemasi (umumiy; modelga xos emas).
+        if (model.schematic == InstrumentSchematic.photometer ||
+            model.schematic == InstrumentSchematic.chemistry) ...[
+          const SizedBox(height: 12),
+          const DiagramFigure(topic: DiagramTopic.photometry),
+        ],
         const SizedBox(height: 12),
         ListenableBuilder(
           listenable: instruments,

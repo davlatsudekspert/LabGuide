@@ -162,8 +162,8 @@ void main() {
                   f.path.endsWith('.arb'),
             ),
         File('cloudflare/src/billing.ts'),
-        File('cloudflare/migrations/0013_billing.sql'),
-        File('cloudflare/migrations/0014_pro_grants.sql'),
+        File('cloudflare/migrations/0014_billing.sql'),
+        File('cloudflare/migrations/0015_pro_grants.sql'),
         File('cloudflare/src/progrants.ts'),
       ];
       for (final f in files) {

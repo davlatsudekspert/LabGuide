@@ -319,8 +319,10 @@ void main() {
       // 4. Jurnal → yozuv.
       // “Saqlandi” xabaridagi tugma jurnalni ochadi.
       await _tap(tester, find.widgetWithText(SnackBarAction, l.calLog));
-      expect(find.textContaining('L-77'), findsOneWidget);
-      await _tap(tester, find.textContaining('L-77'));
+      // Jurnal qatori (tarix bo'limi ham lotni eslatadi).
+      final row = find.textContaining('${l.calLot} L-77');
+      expect(row, findsOneWidget);
+      await _tap(tester, row);
       expect(find.text('5,55 mmol/L'), findsOneWidget);
       await _seek(tester, find.text(l.calUserEntered));
 
@@ -378,7 +380,7 @@ void main() {
       calibratorLot: 'L',
       levels: const [CalibratorLevel(name: '1', value: 1, unit: 'mmol/L')],
       performedOn: DateTime(2026, 10, 9),
-      outcome: CalibrationOutcome.accepted,
+      outcome: CalibrationOutcome.pending,
     );
     await tester.runAsync(() => services.deleteLocalData(const [Locale('uz')]));
     expect(services.instruments.mine, isEmpty);

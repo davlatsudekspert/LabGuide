@@ -4,7 +4,9 @@ import 'package:material_ui/material_ui.dart';
 
 import '../../app/app_scope.dart';
 import '../../app/widgets/lg_page.dart';
+import '../../app/widgets/diagram_figure.dart';
 import '../../app/widgets/links.dart';
+import '../../core/single_flight.dart';
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
@@ -248,6 +250,8 @@ class _CalibrationScreenState extends State<CalibrationScreen> {
       title: l.calTitle,
       subtitle: l.calSubtitle,
       children: [
+        const DiagramFigure(topic: DiagramTopic.calibrationOverview),
+        const SizedBox(height: 12),
         CatalogGate(
           builder: (context, catalog) => ContentGate(
             builder: (context, pack) => ListenableBuilder(
@@ -445,6 +449,10 @@ class _CalibrationScreenState extends State<CalibrationScreen> {
                             performedOn: draft.performedOn,
                             outcome: draft.outcome,
                             note: draft.note,
+                            kind: draft.kind,
+                            qcAfter: draft.qcAfter,
+                            approvedBy: draft.approvedBy,
+                            sopRef: draft.sopRef,
                           );
                           if (!mounted) return;
                           setState(() {
@@ -746,6 +754,10 @@ class _RecordDraft {
     required this.levels,
     required this.performedOn,
     required this.outcome,
+    required this.kind,
+    required this.qcAfter,
+    this.approvedBy,
+    this.sopRef,
     this.calibratorName,
     this.lotExpiry,
     this.note,
@@ -755,6 +767,10 @@ class _RecordDraft {
   final List<CalibratorLevel> levels;
   final DateTime performedOn;
   final CalibrationOutcome outcome;
+  final CalibrationKind kind;
+  final QcAfter qcAfter;
+  final String? approvedBy;
+  final String? sopRef;
   final String? calibratorName;
   final DateTime? lotExpiry;
   final String? note;
@@ -787,18 +803,23 @@ class _RecordFormState extends State<_RecordForm> {
   final _calibrator = TextEditingController();
   final _lot = TextEditingController();
   final _note = TextEditingController();
+  final _approvedBy = TextEditingController();
+  final _sopRef = TextEditingController();
   final List<_LevelFields> _levels = [_LevelFields('1')];
   DateTime _performedOn = DateTime.now();
   DateTime? _lotExpiry;
   // Standart — kutilmoqda: «qabul qilindi» faqat vakolatli shaxs QC va
   // mezonni tekshirgach, ongli tanlanadi (audit 2026-10-24 P0-2).
   CalibrationOutcome _outcome = CalibrationOutcome.pending;
+  // Standart — o'quv yozuvi va QC o'tkazilmagan (audit 2026-10-24 P0).
+  CalibrationKind _kind = CalibrationKind.training;
+  QcAfter _qcAfter = QcAfter.notRun;
   String? _error;
   bool _busy = false;
 
   @override
   void dispose() {
-    for (final c in [_calibrator, _lot, _note]) {
+    for (final c in [_calibrator, _lot, _note, _approvedBy, _sopRef]) {
       c.dispose();
     }
     for (final f in _levels) {
@@ -820,10 +841,26 @@ class _RecordFormState extends State<_RecordForm> {
   }
 
   Future<void> _save() async {
+    // Ikki marta "Saqlash" — bitta yozuv (va bitta `pop`).
+    if (_busy) return;
     final l = AppLocalizations.of(context);
     FocusScope.of(context).unfocus();
     if (_lot.text.trim().isEmpty) {
       setState(() => _error = l.calLotRequired);
+      return;
+    }
+    final issue = validateCalibrationAcceptance(
+      outcome: _outcome,
+      approvedBy: _approvedBy.text,
+      qcAfter: _qcAfter,
+    );
+    if (issue != null) {
+      setState(
+        () => _error = switch (issue) {
+          CalibrationIssue.approverRequired => l.calSafeApproverRequired,
+          CalibrationIssue.qcPassRequired => l.calSafeQcPassRequired,
+        },
+      );
       return;
     }
     final levels = <CalibratorLevel>[];
@@ -858,6 +895,10 @@ class _RecordFormState extends State<_RecordForm> {
           levels: levels,
           performedOn: _performedOn,
           outcome: _outcome,
+          kind: _kind,
+          qcAfter: _qcAfter,
+          approvedBy: _approvedBy.text,
+          sopRef: _sopRef.text,
           calibratorName: _calibrator.text,
           lotExpiry: _lotExpiry,
           note: _note.text,
@@ -965,6 +1006,60 @@ class _RecordFormState extends State<_RecordForm> {
             label: Text('${l.calPerformedOn}: ${date.format(_performedOn)}'),
           ),
           const SizedBox(height: 10),
+          Text(l.calSafeKind, style: text.titleSmall),
+          const SizedBox(height: 6),
+          Wrap(
+            spacing: 6,
+            runSpacing: 6,
+            children: [
+              for (final k in CalibrationKind.values)
+                LgChoiceChip(
+                  label: kindLabel(k, l),
+                  selected: _kind == k,
+                  onTap: () => setState(() => _kind = k),
+                ),
+            ],
+          ),
+          if (_kind == CalibrationKind.training)
+            Padding(
+              padding: const EdgeInsets.only(top: 6),
+              child: Text(l.calSafeTrainingNote, style: text.bodySmall),
+            ),
+          const SizedBox(height: 10),
+          Text(l.calSafeQcAfter, style: text.titleSmall),
+          const SizedBox(height: 6),
+          Wrap(
+            spacing: 6,
+            runSpacing: 6,
+            children: [
+              for (final q in QcAfter.values)
+                LgChoiceChip(
+                  label: qcLabel(q, l),
+                  selected: _qcAfter == q,
+                  onTap: () => setState(() {
+                    _qcAfter = q;
+                    // QC o'tmagan bo'lsa «qabul qilindi» qoladigan bo'lmaydi.
+                    if (q != QcAfter.pass &&
+                        _outcome == CalibrationOutcome.accepted) {
+                      _outcome = CalibrationOutcome.pending;
+                    }
+                  }),
+                ),
+            ],
+          ),
+          if (_qcAfter == QcAfter.notRun)
+            Padding(
+              padding: const EdgeInsets.only(top: 6),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: LgTag(
+                  l.calSafeQcNotRunWarn,
+                  tone: LgTone.warning,
+                  icon: Icons.warning_amber_rounded,
+                ),
+              ),
+            ),
+          const SizedBox(height: 10),
           Text(l.calOutcome, style: text.titleSmall),
           const SizedBox(height: 6),
           Wrap(
@@ -972,12 +1067,38 @@ class _RecordFormState extends State<_RecordForm> {
             runSpacing: 6,
             children: [
               for (final o in CalibrationOutcome.values)
-                LgChoiceChip(
-                  label: outcomeLabel(o, l),
-                  selected: _outcome == o,
-                  onTap: () => setState(() => _outcome = o),
+                Opacity(
+                  opacity:
+                      o == CalibrationOutcome.accepted &&
+                          _qcAfter != QcAfter.pass
+                      ? 0.45
+                      : 1,
+                  child: LgChoiceChip(
+                    label: outcomeLabel(o, l),
+                    selected: _outcome == o,
+                    onTap: () => setState(() {
+                      if (o == CalibrationOutcome.accepted &&
+                          _qcAfter != QcAfter.pass) {
+                        // QC o'tmagan / o'tkazilmagan: tanlab bo'lmaydi.
+                        _error = l.calSafeQcPassRequired;
+                        return;
+                      }
+                      _error = null;
+                      _outcome = o;
+                    }),
+                  ),
                 ),
             ],
+          ),
+          LgField(
+            label: l.calSafeApprovedBy,
+            controller: _approvedBy,
+            textInputAction: TextInputAction.next,
+          ),
+          LgField(
+            label: l.calSafeSopRef,
+            controller: _sopRef,
+            textInputAction: TextInputAction.next,
           ),
           LgField(
             label: l.calNote,
@@ -1004,6 +1125,55 @@ String outcomeLabel(CalibrationOutcome o, AppLocalizations l) => switch (o) {
   CalibrationOutcome.rejected => l.calOutcomeRejected,
   CalibrationOutcome.pending => l.calOutcomePending,
 };
+
+String kindLabel(CalibrationKind k, AppLocalizations l) => switch (k) {
+  CalibrationKind.training => l.calSafeKindTraining,
+  CalibrationKind.lab => l.calSafeKindLab,
+};
+
+String qcLabel(QcAfter q, AppLocalizations l) => switch (q) {
+  QcAfter.pass => l.calSafeQcPass,
+  QcAfter.fail => l.calSafeQcFail,
+  QcAfter.notRun => l.calSafeQcNotRun,
+};
+
+String auditActionLabel(CalibrationAuditAction a, AppLocalizations l) =>
+    switch (a) {
+      CalibrationAuditAction.created => l.calSafeAuditCreated,
+      CalibrationAuditAction.edited => l.calSafeAuditEdited,
+      CalibrationAuditAction.deleted => l.calSafeAuditDeleted,
+    };
+
+/// Yozuv kartasidagi xavfsizlik teglari: o'quv / eski tekshirilmagan /
+/// QC o'tkazilmagan.
+class _SafetyTags extends StatelessWidget {
+  const _SafetyTags(this.r);
+
+  final CalibrationRecord r;
+
+  @override
+  Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context);
+    return Wrap(
+      spacing: 6,
+      runSpacing: 6,
+      children: [
+        if (r.kind == CalibrationKind.training)
+          LgTag(l.calSafeTrainingTag, tone: LgTone.neutral),
+        if (r.legacy && r.outcome == CalibrationOutcome.accepted)
+          LgTag(
+            l.calSafeLegacyTag,
+            tone: LgTone.warning,
+            icon: Icons.warning_amber_rounded,
+          ),
+        if (r.qcAfter == QcAfter.notRun)
+          LgTag(l.calSafeQcNotRunWarn, tone: LgTone.warning),
+        if (r.qcAfter == QcAfter.fail)
+          LgTag(l.calSafeQcFail, tone: LgTone.warning),
+      ],
+    );
+  }
+}
 
 LgTone _outcomeTone(CalibrationOutcome o) => switch (o) {
   CalibrationOutcome.accepted => LgTone.brand,
@@ -1047,11 +1217,14 @@ class CalibrationLogScreen extends StatelessWidget {
                           '${date.format(r.performedOn)}',
                       subtitle:
                           '${r.instrumentName} · ${l.calLot} ${r.calibratorLot} · '
-                          '${outcomeLabel(r.outcome, l)}',
+                          '${outcomeLabel(r.outcome, l)}'
+                          '${r.kind == CalibrationKind.training ? ' · ${l.calSafeTrainingTag}' : ''}'
+                          '${r.legacy && r.outcome == CalibrationOutcome.accepted ? ' · ${l.calSafeLegacyTag}' : ''}',
                       icon: Icons.fact_check_outlined,
                       divider: i < records.length - 1,
                       onTap: () => context.push('/lab/calibration/log/${r.id}'),
                     ),
+                  _HistorySection(instruments.audit, null),
                 ],
               );
             },
@@ -1067,7 +1240,12 @@ class CalibrationRecordScreen extends StatelessWidget {
 
   final String recordId;
 
-  Future<void> _delete(BuildContext context) async {
+  Future<void> _delete(BuildContext context) => SingleFlight.run((
+    #calibrationDelete,
+    recordId,
+  ), () => _deleteOnce(context));
+
+  Future<void> _deleteOnce(BuildContext context) async {
     final l = AppLocalizations.of(context);
     final instruments = context.services.instruments;
     final ok = await showDialog<bool>(
@@ -1120,10 +1298,27 @@ class CalibrationRecordScreen extends StatelessWidget {
             tone: _outcomeTone(r.outcome),
           ),
         ),
+        const SizedBox(height: 6),
+        _SafetyTags(r),
+        if (r.kind == CalibrationKind.training)
+          Padding(
+            padding: const EdgeInsets.only(top: 6),
+            child: Text(l.calSafeTrainingNote, style: text.bodySmall),
+          ),
         const SizedBox(height: 8),
         LgPanel(
           child: Column(
             children: [
+              LgMetric(label: l.calSafeQcAfter, value: qcLabel(r.qcAfter, l)),
+              if (r.approvedBy != null)
+                LgMetric(label: l.calSafeApprovedBy, value: r.approvedBy!),
+              if (r.approvedAt != null)
+                LgMetric(
+                  label: l.calSafeApprovedAt,
+                  value: date.format(r.approvedAt!),
+                ),
+              if (r.sopRef != null)
+                LgMetric(label: l.calSafeSopRef, value: r.sopRef!),
               LgMetric(label: l.calDetailInstrument, value: r.instrumentName),
               if (r.manualVersion != null)
                 LgMetric(label: l.calDetailManual, value: r.manualVersion!),
@@ -1164,6 +1359,7 @@ class CalibrationRecordScreen extends StatelessWidget {
           LgSectionTitle(l.calNote),
           Text(r.note!, style: text.bodyLarge),
         ],
+        _HistorySection(context.services.instruments.auditFor(r.id), r.id),
         const SizedBox(height: 18),
         LgButton.secondary(
           label: l.calDeleteRecord,
@@ -1171,6 +1367,44 @@ class CalibrationRecordScreen extends StatelessWidget {
           onPressed: () => _delete(context),
         ),
         SizedBox(height: LgSpace.md),
+      ],
+    );
+  }
+}
+
+/// Qo'shiladigan tarix ro'yxati (yozuv o'chirilgan bo'lsa ham ko'rinadi).
+class _HistorySection extends StatelessWidget {
+  const _HistorySection(this.entries, this.recordId);
+
+  final List<CalibrationAuditEntry> entries;
+
+  /// null — butun jurnal tarixi.
+  final String? recordId;
+
+  @override
+  Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context);
+    final text = Theme.of(context).textTheme;
+    final locale = Localizations.localeOf(context).toLanguageTag();
+    final stamp = DateFormat.yMd(locale).add_Hm();
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        LgSectionTitle(l.calSafeHistory),
+        if (entries.isEmpty)
+          Text(l.calSafeHistoryEmpty, style: text.bodySmall)
+        else
+          for (final e in entries.reversed)
+            Padding(
+              padding: const EdgeInsets.only(bottom: 4),
+              child: Text(
+                '${stamp.format(e.at)} · ${auditActionLabel(e.action, l)} · '
+                '${e.summary}',
+                key: ValueKey('audit-${e.recordId}-${e.action.name}'),
+                style: text.bodySmall,
+              ),
+            ),
+        Text(l.calSafeHistoryNote, style: text.bodySmall),
       ],
     );
   }
