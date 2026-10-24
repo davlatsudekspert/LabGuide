@@ -5879,6 +5879,22 @@ class AppLocalizationsUz extends AppLocalizations {
   String get profileUnitsConventional => 'An’anaviy (mg/dL)';
 
   @override
+  String get profileAttestation => 'Malaka toifasi (attestatsiya)';
+
+  @override
+  String get profileAttestationAuto => 'Avtomatik';
+
+  @override
+  String get profileAttestationUz => 'O‘zbekiston';
+
+  @override
+  String get profileAttestationNone => 'Yashirish';
+
+  @override
+  String get profileAttestationNote =>
+      'Malaka toifasi imtihoniga tayyorgarlik bo‘limini interfeys tilidan qat’i nazar ko‘rsatadi. Avtomatik: til o‘zbekcha yoki qurilma mintaqasi O‘zbekiston bo‘lsa ko‘rinadi.';
+
+  @override
   String get profileAppearance => 'Tashqi ko‘rinish';
 
   @override

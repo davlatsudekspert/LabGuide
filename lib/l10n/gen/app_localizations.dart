@@ -10258,6 +10258,36 @@ abstract class AppLocalizations {
   /// **'Conventional (mg/dL)'**
   String get profileUnitsConventional;
 
+  /// No description provided for @profileAttestation.
+  ///
+  /// In en, this message translates to:
+  /// **'Qualification category (attestation)'**
+  String get profileAttestation;
+
+  /// No description provided for @profileAttestationAuto.
+  ///
+  /// In en, this message translates to:
+  /// **'Automatic'**
+  String get profileAttestationAuto;
+
+  /// No description provided for @profileAttestationUz.
+  ///
+  /// In en, this message translates to:
+  /// **'Uzbekistan'**
+  String get profileAttestationUz;
+
+  /// No description provided for @profileAttestationNone.
+  ///
+  /// In en, this message translates to:
+  /// **'Hide'**
+  String get profileAttestationNone;
+
+  /// No description provided for @profileAttestationNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Shows the Uzbekistan qualification-category exam prep section in any interface language. Automatic: shown when the language is Uzbek or the device region is Uzbekistan.'**
+  String get profileAttestationNote;
+
   /// No description provided for @profileAppearance.
   ///
   /// In en, this message translates to:

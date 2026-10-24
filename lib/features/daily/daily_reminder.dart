@@ -458,6 +458,7 @@ class ReminderController extends ChangeNotifier {
     settings.language,
     PlatformDispatcher.instance.locales,
     role: settings.role,
+    region: settings.attestationRegion,
   );
 
   /// Toifa eslatmasi rejasi: bugungi maqsad bajarilgan bo'lsa — ertadan.

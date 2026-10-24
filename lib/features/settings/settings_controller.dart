@@ -36,6 +36,28 @@ enum AppLanguage {
   }
 }
 
+/// Malaka toifasi (KDL attestatsiyasi) bo'limi qaysi mintaqa uchun
+/// ko'rsatilishi — ilova TILIDAN mustaqil foydalanuvchi sozlamasi
+/// (egasi talabi, 2026-10-24: Uzbekistondagi rus tilli foydalanuvchi ham
+/// barcha materialni ruscha ko'radi, toifa esa alohida boshqariladi).
+///
+/// * [auto] — avvalgi xatti-harakat: ilova tili o'zbekcha YOKI qurilma
+///   mintaqasi UZ bo'lsa ko'rinadi (mavjud foydalanuvchilar uchun o'zgarmaydi);
+/// * [uz] — til va mintaqadan qat'i nazar ko'rinadi;
+/// * [none] — hech qachon ko'rinmaydi.
+enum AttestationRegion {
+  auto,
+  uz,
+  none;
+
+  static AttestationRegion? tryParse(String? code) {
+    for (final r in values) {
+      if (r.name == code) return r;
+    }
+    return null;
+  }
+}
+
 /// Laboratoriya birliklari tizimi: SI (mmol/L, µmol/L, g/L) yoki
 /// konvensional (mg/dL, g/dL). Faqat ko'rsatish va kalkulyatorlarning
 /// boshlang'ich birligiga ta'sir qiladi; manbadagi raqamlar o'zgarmaydi.
@@ -68,6 +90,11 @@ class SettingsController extends ChangeNotifier {
       _unitSystem =
           UnitSystem.tryParse(_store.getString(StoreKeys.unitSystem)) ??
           UnitSystem.fromSystem(systemLocales),
+      _attestationRegion =
+          AttestationRegion.tryParse(
+            _store.getString(StoreKeys.attestationRegion),
+          ) ??
+          AttestationRegion.auto,
       _themeMode = _parseTheme(_store.getString(StoreKeys.themeMode)),
       _appTheme =
           LgThemeId.tryParse(_store.getString(StoreKeys.appTheme)) ??
@@ -84,6 +111,7 @@ class SettingsController extends ChangeNotifier {
 
   AppLanguage _language;
   UnitSystem _unitSystem;
+  AttestationRegion _attestationRegion;
   ThemeMode _themeMode;
   LgThemeId _appTheme;
   AppRole? _role;
@@ -92,6 +120,9 @@ class SettingsController extends ChangeNotifier {
 
   AppLanguage get language => _language;
   UnitSystem get unitSystem => _unitSystem;
+
+  /// Toifa (KDL attestatsiya) bo'limi sozlamasi; standart — [AttestationRegion.auto].
+  AttestationRegion get attestationRegion => _attestationRegion;
   ThemeMode get themeMode => _themeMode;
 
   /// Tanlangan mavzu (Klassik / Ivory) — D-64. Kunduzgi/tungi rejim
@@ -135,6 +166,13 @@ class SettingsController extends ChangeNotifier {
     await _store.setString(StoreKeys.unitSystem, value.name);
   }
 
+  Future<void> setAttestationRegion(AttestationRegion value) async {
+    if (_attestationRegion == value) return;
+    _attestationRegion = value;
+    notifyListeners();
+    await _store.setString(StoreKeys.attestationRegion, value.name);
+  }
+
   Future<void> setThemeMode(ThemeMode value) async {
     if (_themeMode == value) return;
     _themeMode = value;
@@ -175,6 +213,7 @@ class SettingsController extends ChangeNotifier {
   void resetToDefaults(Iterable<Locale> systemLocales) {
     _language = AppLanguage.fromSystem(systemLocales);
     _unitSystem = UnitSystem.fromSystem(systemLocales);
+    _attestationRegion = AttestationRegion.auto;
     _themeMode = ThemeMode.system;
     _appTheme = LgThemeId.classic;
     _role = null;

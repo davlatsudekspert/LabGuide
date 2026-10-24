@@ -6002,6 +6002,22 @@ class AppLocalizationsRu extends AppLocalizations {
   String get profileUnitsConventional => 'Обычные (мг/дл)';
 
   @override
+  String get profileAttestation => 'Квалификационная категория (аттестация)';
+
+  @override
+  String get profileAttestationAuto => 'Автоматически';
+
+  @override
+  String get profileAttestationUz => 'Узбекистан';
+
+  @override
+  String get profileAttestationNone => 'Скрыть';
+
+  @override
+  String get profileAttestationNote =>
+      'Показывает раздел подготовки к экзамену на квалификационную категорию (Узбекистан) на любом языке интерфейса. Автоматически: раздел виден, если язык узбекский или регион устройства — Узбекистан.';
+
+  @override
   String get profileAppearance => 'Оформление';
 
   @override

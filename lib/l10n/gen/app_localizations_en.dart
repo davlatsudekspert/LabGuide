@@ -5979,6 +5979,22 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profileUnitsConventional => 'Conventional (mg/dL)';
 
   @override
+  String get profileAttestation => 'Qualification category (attestation)';
+
+  @override
+  String get profileAttestationAuto => 'Automatic';
+
+  @override
+  String get profileAttestationUz => 'Uzbekistan';
+
+  @override
+  String get profileAttestationNone => 'Hide';
+
+  @override
+  String get profileAttestationNote =>
+      'Shows the Uzbekistan qualification-category exam prep section in any interface language. Automatic: shown when the language is Uzbek or the device region is Uzbekistan.';
+
+  @override
   String get profileAppearance => 'Appearance';
 
   @override
