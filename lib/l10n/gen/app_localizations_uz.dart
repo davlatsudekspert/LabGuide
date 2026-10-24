@@ -10469,4 +10469,8 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get proSubTrialGuest => 'Bepul sinov uchun hisobga kiring.';
+
+  @override
+  String get proPrivacyTrialNote =>
+      'Pro (faqat Pro yoqilganda, hozir faol emas): 30 kunlik bepul sinov bir telefonga bir marta beriladi. Buning uchun serverda sinov sanalari, reja, platforma va emailingiz (kanonik ko‘rinishda) hamda qurilma belgisining faqat kalitli, qaytarib bo‘lmaydigan xeshi saqlanadi — xom email, qurilma identifikatori yoki attestatsiya tokeni saqlanmaydi. Hisob o‘chirilganda yozuv hisobdan uziladi, lekin sinov qayta berilmasligi uchun 24 oy saqlanadi, so‘ng avtomatik o‘chiriladi.';
 }

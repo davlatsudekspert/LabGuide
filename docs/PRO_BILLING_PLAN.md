@@ -319,3 +319,15 @@ qo‘shiladi: `source: admin_grant`, `platform: admin_grant`, `product_id: admin
 granted`; javob ildizida `resolved: {source, plan, expires_at}` — hal qilingan (yuqori daraja, teng bo‘lsa uzoqroq muddat,
 to‘liq tenglikda do‘kon). Do‘kon obunasi hech qachon bosib o‘tilmaydi. Berish/bekor qilish yo‘llari, xavfsizlik va jurnal:
 D-73 §3 va `docs/ADMIN_PANEL_GUIDE.md` §8. Migratsiya `0014_pro_grants.sql` — hali qo‘llanmagan.
+
+## 12. Reja ↔ panel ajratish va bepul sinov (D-74) — HAMMASI O‘CHIQ
+- Daraja × imkoniyat matritsasi: `cloudflare/src/tiers.ts` (`TIER_CAPABILITIES`, `requireTier`), ilova nusxasi
+  `lib/core/entitlements/plan_matrix.dart`. Talaba — `learner`; Ustoz — `learner`, `teacher_panel`; Mutaxassis — uchalasi.
+  Qaror faqat serverdagi huquqdan (rol emas). Inert yo‘llar: `GET /v1/pro/access`, `GET /v1/pro/check/:capability`.
+- Bepul sinov (bir telefonga bir marta): `POST /v1/billing/trial/challenge`, `POST /v1/billing/trial/start`;
+  `entitlements` javobida `source: trial`, `platform: trial`, `product_id: trial.<daraja>`, ildizda `trial_used`.
+  Attestatsiya sozlanmaguncha 503. Jadval `0015_pro_trials.sql` (qo‘llanmagan). Tafsilot va xavflar:
+  `docs/PRO_TRIAL_ABUSE_NOTES.md`, D-74.
+- Ilova: Profil → **Obuna** (`/profile/subscription`, faqat `BuildFlags.proEnabled`): rejalar, USD narxlar (katalog),
+  holat, sinov qoidasi, tiklash; to‘lov oynasi (`/profile/purchase`) shu ekrandan.
+- Eslatma: 9-bo‘limdagi 7/14 kunlik do‘kon sinovi ESKIRGAN (D-71/D-73); 30 kun mexanizmi — D-74 ochiq qaror #1.

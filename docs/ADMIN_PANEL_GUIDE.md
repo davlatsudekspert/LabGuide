@@ -150,6 +150,9 @@ yoki bekor qilinguncha; ixtiyoriy izoh). Ilovada: Admin panel → **Pro berish**
 - **Do‘kon obunasi bilan:** grant uni bosib o‘tmaydi — ikkalasidan yuqori daraja (teng bo‘lsa uzoqroq muddat) amal qiladi;
   grant qaytarib olinsa do‘kon obunasi saqlanadi.
 - **Qaytarib olish:** ro‘yxatdagi tugma, tasdiq bilan; huquq darhol yo‘qoladi.
+- **Daraja chegarasi (D-74):** grant faqat o‘z darajasi ochadigan imkoniyatlarni beradi — Talaba granti ustoz paneli Pro
+  imkoniyatlarini OCHMAYDI (serverda `requireTier`), Ustoz/Mutaxassis — ochadi. Bugungi bepul guruhlar bunga bog‘liq emas.
+  Grant bepul sinovni (bir telefonga bir marta) ishlatmaydi va unga ta’sir qilmaydi.
 - **Xavfsizlik:** email serverda saqlanmaydi (HMAC + niqob), ro‘yxatda faqat niqoblangan; har berish/almashtirish/uzaytirish/
   qaytarib olish “Amallar tarixi”ga yoziladi (kim, kimga — niqob, daraja, muddat); limit: soatiga 30 ta berish.
 - **Hali qaror qilinmagan:** kim bera olishi (hozir har TOTP’li admin), kutilayotgan grantning amal qilish muddati,

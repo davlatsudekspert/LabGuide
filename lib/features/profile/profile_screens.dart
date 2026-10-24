@@ -426,6 +426,15 @@ class PrivacyScreen extends StatelessWidget {
           services.backend.isConfigured ? l.privacyBody : l.privacyBodyLocal,
           style: text.bodyLarge,
         ),
+        // Pro bepul sinovi (D-74): faqat Pro bayrog'i yoqilgan buildda.
+        if (BuildFlags.proEnabled) ...[
+          const SizedBox(height: 8),
+          Text(
+            l.proPrivacyTrialNote,
+            key: const ValueKey('privacy-pro-trial'),
+            style: text.bodyMedium,
+          ),
+        ],
         const SizedBox(height: 12),
         LgRow(
           title: l.privacyTerms,

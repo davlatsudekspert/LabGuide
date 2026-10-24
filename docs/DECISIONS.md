@@ -1371,3 +1371,101 @@ unda yo'q; bayroq o'chiq — paywall/obuna qatori/admin “Pro berish” yo'q (`
 9. Admin grant siyosati: kim bera oladi (hozir har aal2 admin), maksimal muddat/ro'yxat hajmi, kutilayotgan grantning
    amal qilish muddati (hozir cheksiz), grant haqida foydalanuvchiga xabar (hozir yo'q).
 10. `pro-next` → `main` qoidasi va `pro-later` arxiv tegi (D-71 #7).
+
+## D-74. Pro: reja ↔ panel ajratish (server), 30 kunlik sinov — bir telefonga bir marta, “Obuna” ekrani (2026-10-24; Pro YOQILMAGAN)
+`pro-next` tarmog'ida. **Hech narsa deploy qilinmadi, yoqilmadi, do'konga yuborilmadi; production D1 ga migratsiya
+qo'llanmadi** (`0015_pro_trials.sql` — faqat fayl). `BuildFlags.proEnabled` standart `false`; server yo'llari
+(`/v1/billing/trial/*`, `/v1/pro/*`) `LG_BILLING_ENABLED=true` bo'lmasa 404; qurilma attestatsiyasi tekshiruvchisi
+production'da ULANMAGAN — sinov `503 device_attestation_not_configured`. `ProGatePolicy.gated` BO'SH (bugun bepul
+hech narsa pullik bo'lmadi), mavjud bepul foydalanuvchilar va bepul ustoz paneli (guruhlar, topshiriqlar) o'zgarmadi.
+Egasi qoidalari (topshiriq 2026-10-24): (1) Talaba rejasi ustoz panelini ochmasin, qaror serverda; (2) 30 kunlik
+bepul sinov bir telefonga bir marta; (3) ilovada aniq “Obuna” ekrani.
+
+**1. Daraja × imkoniyat matritsasi (MA'LUMOT, `cloudflare/src/tiers.ts` `TIER_CAPABILITIES`; ilova nusxasi
+`lib/core/entitlements/plan_matrix.dart`, test solishtiradi).** Imkoniyat — funksiya emas, TOIFA; yangi funksiya
+o'ylab topilmadi. Kelajakda `gated` ga qo'shiladigan har funksiya toifaga tegishli (`Feature.tier`: pro → `learner`,
+teacher → `teacher_panel`) va daraja faqat o'z to'plamidagini ochadi.
+| Daraja | `learner` (talaba tomoni Pro) | `teacher_panel` (ustoz paneli Pro) | `specialist` (mutaxassis Pro) |
+|---|---|---|---|
+| Talaba | ha | **yo'q** | yo'q |
+| Ustoz | ha | ha | yo'q |
+| Mutaxassis | ha | ha (D-73: “eng qimmat reja kamroq bermasin”) | ha |
+Mutaxassis → Ustoz paneli huquqi D-73 moslashidan; qat'iy variant (`learner + specialist`) — ochiq qaror #2.
+
+**2. Serverda tekshiruv — `requireTier(ctx, capability)`.** Qaror faqat serverda saqlangan huquqdan (`loadAccess`:
+do'kon obunasi, admin grant, sinov → `resolveAccess`); `users.role` (ilovada tanlanadigan rol, `PUT /v1/me/profile`)
+va lokal sozlamalar hech narsa ochmaydi. Bayroq o'chiq → 404; sessiyasiz → 401; huquq yo'q → 403 `plan_required`;
+daraja ochmaydi → 403 `tier_insufficient`. Inert yo'llar: `GET /v1/pro/access` (daraja + imkoniyatlar),
+`GET /v1/pro/check/:capability` (Pro-only yo'llar namunasi; `teacher_panel` uchun qo'shimcha `teacher_accounts` —
+bepul ustoz paneli qoidasi bilan bir xil, aks holda 403 `teacher_role_required`). Bepul ustoz paneli `requireTier`
+ga ulanMAGAN. Admin grant ham darajaga bo'ysunadi (Talaba grant → ustoz paneli yo'q). Testlar:
+`cloudflare/test/tiers.test.ts`.
+
+**3. Bepul sinov — bir telefonga bir marta (server mexanizmi, o'chiq).** `POST /v1/billing/trial/challenge` (5 daqiqalik
+bir martalik nonce, faqat SHA-256 saqlanadi) → ilova `DeviceAttestor` bilan attestatsiya → `POST /v1/billing/trial/start
+{tier, email, attestation:{platform, token, nonce, key_id?}}` → 201 + huquqlar surati (`source: trial`). Qoidalar:
+- Hisob: sessiya shart (mehmonning server hisobi yo'q → 401). Email: so'rovdagi email `users.email_hash` bilan mos
+  bo'lishi kerak (hisob faqat OTP yoki provayder `email_verified` bilan yaratiladi) — aks holda 403 `email_not_verified`.
+- (a) Kanonik email (`canonicalEmail`): trim + kichik harf; Gmail/Googlemail — nuqtalar va `+teg` olib tashlanadi;
+  Microsoft (`outlook/hotmail/live/msn`) va Yandex (`yandex.*`, `ya.ru` → `yandex.ru`) — `+teg`. Faqat sinov kaliti;
+  kirish identifikatori o'zgarmaydi. Boshqa provayder aliaslari (bir martalik domenlar va h.k.) — qo'shilmadi.
+- (b) Qurilma: server `DeviceAttestationVerifier` interfeysi (`verify` → barqaror `subject` + platforma bayrog'i
+  `alreadyUsed`, ixtiyoriy `markUsed`); standart `UnconfiguredVerifier` → 503. Haqiqiy Apple/Google tekshiruvchi YO'Q;
+  testlarda `cloudflare/test/fake_attestation.ts`. Ilova: `DeviceAttestor` + `UnconfiguredDeviceAttestor` (standart).
+- Saqlash: faqat HMAC (server kaliti `keys.trial`, `LG_SERVER_SECRET` dan) — `email_key`, `device_key`
+  (platforma + subyekt). Xom email, qurilma id si, attestatsiya tokeni yozilmaydi; jurnalda faqat hisob id, daraja,
+  muddat, platforma. **Saqlash muddati: sinov boshlanganidan 730 kun (24 oy)**, keyin kunlik tozalash o'chiradi
+  (`TRIAL_RETENTION_DAYS`). `LG_SERVER_SECRET` almashtirilsa eski yozuvlar mos kelmaydi (sinov qayta ochiladi).
+- (c) Bitta sinov: hisobga (`user_id`), kanonik emailga, qurilmaga (unikal indekslar, parallel so'rov ham) → 409
+  `trial_already_used` (sababi ataylab aytilmaydi).
+- (d) Hisob o'chirilganda yozuv O'CHMAYDI: `user_id = NULL`, `account_deleted_at` — qayta ro'yxatdan o'tish sinovni
+  qaytarmaydi. Maxfiylik asosi: suiiste'molning oldini olishdagi qonuniy manfaat, minimal ma'lumot (kalitli xesh),
+  cheklangan muddat; matn loyihasi `site/privacy` §10a (uz/ru/en) va ARB `proPrivacyTrialNote` (ilovada faqat
+  bayroq bilan) — FAQAT `pro-next` da, Pro yoqilmaguncha nashr qilinmaydi. Yurist/egasi tasdig'i kerak.
+- (e) Limitlar: start — hisobga 5/soat, IP ga 30/soat; challenge — hisobga 20/soat.
+- (f) Daraja ruxsati (serverdagi yozuvlardan): Talaba — har hisob; Ustoz — `teacher_accounts` (serverda ustoz
+  sifatida ro'yxatdan o'tgan; profil roli “teacher” yetmaydi); Mutaxassis — hamjamiyatda hujjat bilan tasdiqlangan
+  (`community_members.status='verified'`). Aks holda 403 `plan_not_allowed`. Eslatma: `teacher_accounts` o'zi
+  o'z-o'zini ro'yxatdan o'tkazish (D-42) — tasdiq emas (ochiq qaror #4).
+- (g) Muddat (30 kun) `resolveAccess` da hisobga olinadi; muddat o'tgach huquq yo'q (`expired`). Sinov pullik do'kon
+  obunasini hech qachon bosib o'tmaydi (amaldagi obuna bo'lsa sinov qatori e'tiborsiz; tenglikda do'kon > admin >
+  sinov); amaldagi obunada sinov boshlanmaydi (409 `already_subscribed`).
+- Testlar: `cloudflare/test/trial.test.ts` (bir telefonda ikkinchi hisob, gmail nuqta/+teg, mehmon, tasdiqlanmagan
+  email, o'chirib qayta ro'yxat, boshqa qurilma, soxta tekshiruvchi rad, nonce, platforma bayrog'i, sozlanmagan → 503,
+  bayroq o'chiq → 404, muddat, saqlash muddati, limit), `guards.test.ts`.
+
+**4. Halol cheklovlar.** Hech bir usul qat'iyatli buzg'unchini to'liq to'xtatmaydi: yangi telefon, emulyator/root
+(attestatsiya qisman ushlaydi), App Attest kalitini qayta o'rnatishda yangilash, zavod sozlamasiga qaytarish
+(platforma bayrog'i saqlanishi kerak — rasmiy hujjat bilan tekshirilmagan), ko'p email, `LG_SERVER_SECRET` almashishi.
+Batafsil va do'kon-native taklif farqi: `docs/PRO_TRIAL_ABUSE_NOTES.md`. Do'kon kirish taklifi (Apple Introductory
+Offer / Play free trial) — Apple ID / Google hisobiga bir marta (qurilmaga emas), karta kerak, avtomatik pullikka
+o'tadi; iOS'da server bergan kartasiz sinov App Review 3.1.1 bilan ziddiyatga uchrashi mumkin (ochiq qaror #1).
+
+**5. Ilova (“Obuna” ekrani, `lib/features/profile/subscription_screen.dart`).** Profil → “Obuna” (yagona qator, faqat
+`BuildFlags.proEnabled`; eski “Obuna va tiklash” qatori olib tashlandi, to'lov oynasi `/profile/purchase` shu ekrandan
+— to'lov yoqilganda). Uch reja, oylik/yillik USD narx (`ProPricing` katalogidan; do'konda mahalliy valyuta), har reja
+nima uchun (matritsadan), “Hozircha hamma imkoniyat bepul. Rejalar hali faol emas”, holat (bepul / sinov — qolgan
+kunlar / reja / admin bergan), sinov qoidasi (“bir telefonga bir marta”), “Xaridni tiklash”. Sinov tugmasi yo'q
+(attestatsiya yo'q) — “hali yoqilmagan”. ARB `proSub*` (uz/ru/en). Bayroq o'chiq — Profil va yo'llar avvalgidek.
+Testlar: `test/widget/subscription_screen_test.dart` (bayroq on/off, 320px/1.3 uch tilda, holatlar, maxfiylik izohi),
+`test/unit/plan_matrix_test.dart`, `test/unit/trial_entitlement_test.dart`.
+
+**6. Egasi nima sozlashi kerak (sinovni yoqish uchun; hech biri qilinmagan).**
+1. Apple: App ID'da App Attest (va/yoki DeviceCheck) imkoniyati; Developer → Keys → DeviceCheck kaliti (.p8, Key ID,
+   Team ID) — Worker secretlari; App Attest attestatsiyasini Apple App Attest Root CA bilan tekshiruvchi server kodi;
+   iOS native plagin (DCAppAttestService / DCDevice).
+2. Google: Play Console → App integrity → Play Integrity API (Google Cloud loyihasini bog'lash), tokenni
+   `decodeIntegrityToken` bilan ochish uchun service account (secret), kerak bo'lsa “device recall” (beta); Android
+   native plagin (Integrity API, nonce = server challenge).
+3. Server: haqiqiy `DeviceAttestationVerifier` ni yozish va `index.ts` da ulash; `0013`/`0014`/`0015` migratsiyalarini
+   qo'llash; `LG_BILLING_ENABLED=true`; `deploy_api`.
+4. Do'kon mahsulotlari (D-73 id'lari) va kalitlar (`APPLE_IAP_*`, `GOOGLE_PLAY_SERVICE_ACCOUNT`).
+5. Maxfiylik siyosati (§10a ni nashr qilish), App Privacy (Device ID — firibgarlikka qarshi), Play Data safety
+   (“Device or other IDs”, xeshlangan), Foydalanish shartlari (sinov qoidasi).
+6. `ProTrialConfig.freeTrialDays`/`mechanism` hali `null`/`undecided` — server sinovi tanlansa yangilanadi.
+
+**7. Ochiq qarorlar.** (1) Sinov mexanizmi: server (bu D-74) yoki do'kon kirish taklifi yoki ikkalasi (iOS 3.1.1
+xavfi); (2) Mutaxassis ustoz panelini olsinmi (hozir ha); (3) saqlash muddati 24 oy to'g'rimi; (4) Ustoz/Mutaxassis
+sinovi uchun qanday tasdiq (hozir `teacher_accounts` / hamjamiyat tasdig'i); (5) qo'shimcha email aliaslari va bir
+martalik domenlar ro'yxati; (6) attestatsiya yo'q qurilmalar (Huawei/AOSP, web) — sinov yo'q (hozir) yoki boshqa yo'l;
+(7) D-73 §5 dagi qolgan qarorlar.

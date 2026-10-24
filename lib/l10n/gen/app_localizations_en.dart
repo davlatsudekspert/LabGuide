@@ -10630,4 +10630,8 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get proSubTrialGuest => 'Sign in to use the free trial.';
+
+  @override
+  String get proPrivacyTrialNote =>
+      'Pro (only when Pro is enabled; not active now): the 30-day free trial is given once per phone. To enforce this the server keeps the dates, plan, platform and only one-way keyed hashes of your email (in canonical form) and of a device identifier — the email itself, any device identifier and the attestation token are not stored. When you delete your account the record is unlinked from it but kept for 24 months so the trial is not given again, then deleted automatically.';
 }

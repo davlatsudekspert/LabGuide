@@ -6336,5 +6336,6 @@
   "proSubTrialOncePerPhone": "Given only once per phone: not again for another account, nor after deleting and re-creating your account. You need to be signed in with a verified email.",
   "proSubTrialUsed": "This account has already used its free trial.",
   "proSubTrialNotActive": "The free trial is not switched on yet.",
-  "proSubTrialGuest": "Sign in to use the free trial."
+  "proSubTrialGuest": "Sign in to use the free trial.",
+  "proPrivacyTrialNote": "Pro (only when Pro is enabled; not active now): the 30-day free trial is given once per phone. To enforce this the server keeps the dates, plan, platform and only one-way keyed hashes of your email (in canonical form) and of a device identifier — the email itself, any device identifier and the attestation token are not stored. When you delete your account the record is unlinked from it but kept for 24 months so the trial is not given again, then deleted automatically."
 }

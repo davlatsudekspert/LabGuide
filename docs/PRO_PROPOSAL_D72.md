@@ -3,6 +3,10 @@
 > belgiladi (OWNER-DECIDED, lekin ENABLED EMAS) — Talaba 1.49/9.99, Ustoz 2.49/24.99, Mutaxassis 3.49/34.99 (USD,
 > oylik/yillik). Admin tomonidan Pro berish ham D-73 da. Qolgan bo'limlar (A, B, D, E, F, H, I, J) hali kuchda va ochiq
 > qarorlar ro'yxati D-73 §5 da. Hech narsa deploy qilinmagan yoki yoqilmagan.
+> **D-74 (2026-10-24) qo'shimchasi:** D bo'limidagi 2-variant (server 30 kun) uchun mexanizm yozildi, lekin O'CHIQ:
+> bir telefonga bir marta (qurilma attestatsiyasi — sozlanmagan, 503), kanonik email, o'chirishdan keyin ham saqlanadigan
+> xesh yozuv (24 oy). B bo'limidagi darajalar uchun daraja × imkoniyat matritsasi va server `requireTier` (Talaba ustoz
+> panelini ochmaydi). Ilovada “Obuna” ekrani (bayroq ortida). Tafsilot: D-74, `docs/PRO_TRIAL_ABUSE_NOTES.md`.
 Mavjud holat: `pro-next` (pushed, main'dan alohida), `proEnabled=false`, narxlar ma'lumot sifatida taklif, `freeTrialDays=null`, hech nima gate qilinmagan, D-71 da 10 ta ochiq qaror. Eski D-49 (7/14 kun), D-48/D-57 narxlari ESKIRGAN.
 
 ## A. Bepul foydalanuvchi huquqlari (bugungi main = «bepul kafolat»)

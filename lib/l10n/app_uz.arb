@@ -3018,5 +3018,6 @@
   "proSubTrialOncePerPhone": "Bitta telefonga faqat bir marta beriladi: boshqa hisob bilan ham, hisobni o‘chirib qayta ochganda ham qayta berilmaydi. Hisobga kirish va tasdiqlangan email kerak.",
   "proSubTrialUsed": "Bu hisob bepul sinovdan foydalangan.",
   "proSubTrialNotActive": "Bepul sinov hali yoqilmagan.",
-  "proSubTrialGuest": "Bepul sinov uchun hisobga kiring."
+  "proSubTrialGuest": "Bepul sinov uchun hisobga kiring.",
+  "proPrivacyTrialNote": "Pro (faqat Pro yoqilganda, hozir faol emas): 30 kunlik bepul sinov bir telefonga bir marta beriladi. Buning uchun serverda sinov sanalari, reja, platforma va emailingiz (kanonik ko‘rinishda) hamda qurilma belgisining faqat kalitli, qaytarib bo‘lmaydigan xeshi saqlanadi — xom email, qurilma identifikatori yoki attestatsiya tokeni saqlanmaydi. Hisob o‘chirilganda yozuv hisobdan uziladi, lekin sinov qayta berilmasligi uchun 24 oy saqlanadi, so‘ng avtomatik o‘chiriladi."
 }

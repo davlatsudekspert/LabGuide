@@ -160,6 +160,20 @@ void main() {
     expect(find.text(uz.proSubTrialUsed), findsOneWidget);
   });
 
+  testWidgets('Maxfiylik: Pro sinov izohi faqat bayroq yoqilganda', (
+    tester,
+  ) async {
+    final off = await _svc(tester, proEnabled: null);
+    await pumpApp(tester, off, size: const Size(390, 2400));
+    await goTo(tester, '/profile/privacy');
+    expect(find.byKey(const ValueKey('privacy-pro-trial')), findsNothing);
+
+    final on = await _svc(tester);
+    await pumpApp(tester, on, size: const Size(390, 2400));
+    await goTo(tester, '/profile/privacy');
+    expect(find.text(_l(AppLanguage.uz).proPrivacyTrialNote), findsOneWidget);
+  });
+
   for (final lang in AppLanguage.values) {
     testWidgets('320px, matn 1.3 — ${lang.name}: toshish yo‘q', (tester) async {
       final s = await _svc(tester, language: lang);
