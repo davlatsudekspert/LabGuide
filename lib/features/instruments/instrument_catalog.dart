@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 
 import '../content/content_model.dart';
+import 'lab_direction_card.dart';
 
 /// Apparat yo'nalishi (laboratoriya bo'limi).
 enum InstrumentCategory {
@@ -531,6 +532,7 @@ class InstrumentCatalog {
     required this.makers,
     required this.sources,
     required this.models,
+    this.labCards = const [],
   });
 
   factory InstrumentCatalog.fromJson(
@@ -551,6 +553,10 @@ class InstrumentCatalog {
         for (final s in list('sources').map(CatalogSource.fromJson)) s.id: s,
       },
       models: list('models').map(InstrumentModel.fromJson).toList(),
+      // Ixtiyoriy kalit: eski fayllarda yo'q (orqaga mos).
+      labCards: json['lab_cards'] == null
+          ? const []
+          : list('lab_cards').map(LabDirectionCard.fromJson).toList(),
     );
     catalog._validate(knownAnalytes);
     return catalog;
@@ -562,8 +568,27 @@ class InstrumentCatalog {
   final Map<String, CatalogSource> sources;
   final List<InstrumentModel> models;
 
+  /// TB/OIV yo'nalish kartalari (platforma va test alohida).
+  final List<LabDirectionCard> labCards;
+
   void _validate(Set<String> knownAnalytes) {
     final makerIds = {for (final m in makers) m.id};
+    final cardIds = <String>{};
+    for (final c in labCards) {
+      if (!cardIds.add(c.id)) throw FormatException('duplicate card: ${c.id}');
+    }
+    for (final c in labCards) {
+      for (final s in c.allSourceIds) {
+        if (!sources.containsKey(s)) {
+          throw FormatException('${c.id}: unknown source $s');
+        }
+      }
+      for (final l in c.linked) {
+        if (!cardIds.contains(l) || l == c.id) {
+          throw FormatException('${c.id}: bad link $l');
+        }
+      }
+    }
     final ids = <String>{};
     for (final m in models) {
       if (!ids.add(m.id)) throw FormatException('duplicate model: ${m.id}');
@@ -610,6 +635,14 @@ class InstrumentCatalog {
     (m) => m.id == id,
     orElse: () => throw StateError('maker $id'),
   );
+
+  LabDirectionCard? labCard(String id) =>
+      labCards.where((c) => c.id == id).firstOrNull;
+
+  List<LabDirectionCard> labCardsIn(LabDirection d) => [
+    for (final c in labCards)
+      if (c.direction == d) c,
+  ];
 
   InstrumentModel? model(String id) =>
       models.where((m) => m.id == id).firstOrNull;

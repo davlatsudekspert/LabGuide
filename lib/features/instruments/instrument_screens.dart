@@ -13,6 +13,7 @@ import '../partners/partner_widgets.dart';
 import 'instrument_catalog.dart';
 import 'instrument_image.dart';
 import 'instruments_controller.dart';
+import 'lab_direction_screens.dart' show LabDirectionRows;
 
 IconData categoryIcon(InstrumentCategory c) => switch (c) {
   InstrumentCategory.chemistry => Icons.science_outlined,
@@ -158,6 +159,7 @@ class _InstrumentsScreenState extends State<InstrumentsScreen> {
                       onTap: () =>
                           context.push('/lab/instruments/c/${c.category.name}'),
                     ),
+                  LabDirectionRows(catalog: catalog),
                   const SizedBox(height: 6),
                   _AddCustomRow(divider: true),
                   LgRow(

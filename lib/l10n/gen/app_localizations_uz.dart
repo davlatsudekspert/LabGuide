@@ -10088,4 +10088,74 @@ class AppLocalizationsUz extends AppLocalizations {
   @override
   String get calSafeHistoryNote =>
       'Yozuv o\'chirilsa ham tarix qoladi. Uni faqat «lokal ma\'lumotni o\'chirish» tozalaydi.';
+
+  @override
+  String get labDirSection => 'TB va OIV yo‘nalishlari (ma’lumotnoma)';
+
+  @override
+  String get labDirSectionSub => 'Platforma va test alohida kartalarda';
+
+  @override
+  String get labDirTb => 'Sil (TB) diagnostikasi';
+
+  @override
+  String get labDirHiv => 'OIV laboratoriya diagnostikasi';
+
+  @override
+  String get labDirTag => 'Ma’lumotnoma';
+
+  @override
+  String get labDirNotVerified => 'Hali kiritilmagan';
+
+  @override
+  String get labDirKindPlatform => 'Platforma (apparat)';
+
+  @override
+  String get labDirKindTest => 'Test';
+
+  @override
+  String get labDirKindMethod => 'Usul';
+
+  @override
+  String get labDirVsTest => 'Platforma va test';
+
+  @override
+  String get labDirTechnology => 'Texnologiya';
+
+  @override
+  String get labDirSpecimens => 'Namunalar';
+
+  @override
+  String get labDirTasks => 'Vazifalari';
+
+  @override
+  String get labDirPrinciple => 'Ishlash tamoyili';
+
+  @override
+  String get labDirLimitations => 'Cheklovlar';
+
+  @override
+  String get labDirQc => 'Sifat nazorati va kalibrlash';
+
+  @override
+  String get labDirErrors => 'Preanalitik va analitik xatolar';
+
+  @override
+  String get labDirBiosafety => 'Biologik xavfsizlik';
+
+  @override
+  String get labDirModels => 'Rasmiy manbada tasdiqlangan modellar';
+
+  @override
+  String get labDirLinked => 'Bog‘langan kartalar';
+
+  @override
+  String get labDirStatusLine => 'Tekshiruv holati: NEEDS_REVIEW';
+
+  @override
+  String get labDirDisclaimer =>
+      'Faqat o‘quv ma’lumotnomasi. Ilova tashxis qo‘ymaydi va amaliy protokol emas; qaror — vakolatli laboratoriya va shifokorniki.';
+
+  @override
+  String get labDirEmpty => 'Bu yo‘nalishda kartalar yo‘q.';
 }
