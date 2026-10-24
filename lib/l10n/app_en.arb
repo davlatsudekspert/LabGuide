@@ -2606,6 +2606,7 @@
   "toifaScoredByOfficial": "Scoring follows the official key — that answer is what the exam expects.",
   "toifaNoOfficialKey": "No key is marked in the list — this question is not scored.",
   "toifaNoteNoSource": "No source is given for this note.",
+  "toifaNoGuaranteeNote": "Questions are based on official preparation materials. There is no guarantee that these exact questions will appear in the exam; the app is not affiliated with the examination body.",
   "toifaRelatedCards": "Related cards",
   "toifaOralSubtitle": "{count} questions · prepare and self-assess",
   "@toifaOralSubtitle": {

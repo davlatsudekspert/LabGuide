@@ -4602,6 +4602,10 @@ class AppLocalizationsUz extends AppLocalizations {
   String get toifaNoteNoSource => 'Izoh uchun manba ko‘rsatilmagan.';
 
   @override
+  String get toifaNoGuaranteeNote =>
+      'Savollar rasmiy tayyorgarlik materiallari asosida. Imtihonda aynan shu savollar tushishiga kafolat berilmaydi; ilova rasmiy imtihon organi bilan bog‘liq emas.';
+
+  @override
   String get toifaRelatedCards => 'Bog‘liq kartalar';
 
   @override

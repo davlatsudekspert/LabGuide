@@ -8104,6 +8104,12 @@ abstract class AppLocalizations {
   /// **'No source is given for this note.'**
   String get toifaNoteNoSource;
 
+  /// No description provided for @toifaNoGuaranteeNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Questions are based on official preparation materials. There is no guarantee that these exact questions will appear in the exam; the app is not affiliated with the examination body.'**
+  String get toifaNoGuaranteeNote;
+
   /// No description provided for @toifaRelatedCards.
   ///
   /// In en, this message translates to:
