@@ -7,7 +7,7 @@ import '../../../design/tokens.dart';
 import '../../../design/widgets/lg_widgets.dart';
 import '../../../l10n/gen/app_localizations.dart';
 
-const kHeroImage = AssetImage('assets/images/molecular_hero.webp');
+const kHeroImage = AssetImage('assets/images/hero_schematic.webp');
 
 /// Kirish va welcome ekranlaridagi katta brend belgisi (yozuvsiz — yozuv
 /// sahifada matn sifatida; `tool/icons/make_icons.py`). Shaffof yumaloq
