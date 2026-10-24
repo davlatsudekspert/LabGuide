@@ -1,5 +1,9 @@
 # Pro tayyorlik auditi — 2026-10-24 (D-75)
 
+> **D-76 (keyinroq, 2026-10-24, egasi qarori):** quyidagi jadvaldagi “30 kunlik sinov” endi **7 kun** (hamma reja);
+> reja soni 3 → 4 (Premium); matritsa `learner`/`teacher_panel`/`lab` (Mutaxassis ustoz panelisiz); yangi migratsiya
+> `0018_premium_tier.sql` (faqat fayl). Bu audit — D-75 holatining surati; amaldagi qoidalar: `docs/DECISIONS.md` D-76.
+
 Tarmoq: `pro-next`. Boshlang'ich holat: `b532f04` (D-74). Bu ish: D-75 commitlari (server `8630092`,
 ilova `0105528`, hujjatlar — keyingi commit). **Production to'lov YOQILMAGAN:** `BuildFlags.proEnabled`
 standart `false`, server `LG_BILLING_ENABLED` o'chiq (billing yo'llari 404), `ProGatePolicy.gated` BO'SH,

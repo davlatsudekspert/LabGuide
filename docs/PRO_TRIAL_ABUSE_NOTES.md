@@ -4,7 +4,8 @@
 > tekshiruvchisi ulanmagan (503 `device_attestation_not_configured`), `0016_pro_trials.sql` — faqat fayl.
 
 ## 1. Maqsad
-30 kunlik bepul sinov **bir telefonga bir marta** (hisobga emas). Shu bilan birga bitta hisobga va bitta kanonik
+7 kunlik bepul sinov (D-76; avval 30 kun — D-74/D-75, bekor) **bir telefonga bir marta** (hisobga emas), hamma
+reja uchun (Talaba, Ustoz, Mutaxassis, Premium). Shu bilan birga bitta hisobga va bitta kanonik
 emailga ham bir marta. Pullik obunani hech qachon bosib o'tmaydi.
 
 ## 2. Oqim
@@ -30,7 +31,7 @@ emailga ham bir marta. Pullik obunani hech qachon bosib o'tmaydi.
 | Attestatsiya halolligi (App Attest / Play Integrity verdict) | oddiy emulyator, soxta so'rov skripti | root/jailbreak ostidagi ilg'or chetlab o'tish, ruxsat berilgan sertifikatlangan qurilmalar fermasi |
 | O'chirishdan keyin yozuv qoladi (24 oy) | “hisobni o'chir — qayta ro'yxat — yana sinov” | 24 oydan keyin (ataylab) |
 | Limitlar (hisob 5/soat, IP 30/soat) | ommaviy urinish | ko'p IP / ko'p hisob |
-| Daraja ruxsati (Ustoz — `teacher_accounts`, Mutaxassis — tasdiqlangan) | Talabaning Ustoz sinovini olishi | `teacher_accounts` o'z-o'zini ro'yxatdan o'tkazish (D-42) — tasdiq emas |
+| Daraja ruxsati (Ustoz — `teacher_accounts`, Mutaxassis — tasdiqlangan, Premium — ikkalasi; D-76) | Talabaning Ustoz sinovini olishi | `teacher_accounts` o'z-o'zini ro'yxatdan o'tkazish (D-42) — tasdiq emas |
 
 ## 4. Qolgan xavflar (halol)
 - **Hech bir usul qat'iyatli buzg'unchini to'liq to'xtatmaydi.** Yangi telefon = yangi sinov. Qurilma fermalari,

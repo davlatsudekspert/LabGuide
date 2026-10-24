@@ -13,9 +13,10 @@ Faqat debug/profile build. Release buildda bu rejim IMKONSIZ (`BuildFlags.fakePu
 ```
 flutter run --dart-define=LG_PRO_ENABLED=true --dart-define=LG_FAKE_PURCHASES=true
 ```
-- Profil → “Obuna”: narxlar katalogdan (Talaba 1.49/9.99, Ustoz 2.49/24.99, Mutaxassis 3.49/34.99 USD).
+- Profil → “Obuna”: narxlar katalogdan (Talaba 1.49/9.99, Ustoz 2.49/24.99, Mutaxassis 3.49/34.99, Premium 4.99/49.99 USD; D-76).
 - Hisobga kiring (email kodi) → “Bepul sinovni boshlash” tugmasi chiqadi (soxta attestatsiya) → tasdiq oynasi →
-  30 kunlik sinov. Sinov hech qanday xarid boshlamaydi.
+  7 kunlik sinov (D-76, hamma reja). Sinov hech qanday xarid boshlamaydi. Mehmon xarid qilmaydi va sinov olmaydi —
+  avval hisobga kiring (D-76).
 - “Obuna bo‘lish” → soxta do‘kon → Pro (`environment: sandbox`). Ilova qayta ochilsa holat yo‘qoladi.
 - Pul, haqiqiy do‘kon yoki server ishtirok etmaydi.
 
@@ -44,7 +45,7 @@ Faqat ALOHIDA test Worker va test D1 bazasida (production emas).
 1. App Store Connect → Users and Access → Sandbox → Testers: sinov Apple ID yarating (haqiqiy Apple ID emas).
 2. iPhone: Settings → App Store → Sandbox Account → shu hisob bilan kiring.
 3. TestFlight buildni (Pro bayrog‘i bilan yig‘ilgan alohida test build) o‘rnating.
-4. Har 6 mahsulotni sotib oling (`uz.labguide.student|teacher|specialist.monthly|yearly`), tiklang
+4. Har 8 mahsulotni sotib oling (`uz.labguide.student|teacher|specialist|premium.monthly|yearly`), tiklang
    (o‘chirib qayta o‘rnatish, boshqa qurilma), boshqa LabGuide hisobida `owned_by_other` ni tekshiring.
 5. Sandbox’da bekor qilish → davr oxirigacha Pro → EXPIRED; refund (sandbox) → ASSN V2 REFUND → Pro darhol yo‘q.
 6. App Store Connect → App Store Server Notifications: Sandbox URL = test Worker
@@ -54,8 +55,8 @@ Faqat ALOHIDA test Worker va test D1 bazasida (production emas).
 ## 4. Google — Play litsenziya testerlari
 1. Play Console → Setup → License testing: tester Google hisoblarini qo‘shing.
 2. Ichki test treki (internal testing) — Pro bayrog‘i bilan yig‘ilgan test build.
-3. Obunalar: `uz.labguide.student`, `uz.labguide.teacher`, `uz.labguide.specialist`; har birida base
-   plan `monthly` (P1M) va `yearly` (P1Y). **Free-trial offer yaratmang** (30 kun — server sinovi).
+3. Obunalar: `uz.labguide.student`, `uz.labguide.teacher`, `uz.labguide.specialist`, `uz.labguide.premium`; har birida base
+   plan `monthly` (P1M) va `yearly` (P1Y). **Free-trial offer yaratmang** (7 kun — server sinovi, D-76).
 4. Test kartalari: “Always approves” → xarid; “Always declines” → IN_GRACE_PERIOD (Pro bor) → ON_HOLD
    (Pro yo‘q); “Approves then charges back” → voided/REVOKED (Pro darhol yo‘q); oylik rejani pauza → PAUSED
    (Pro yo‘q) → RECOVERED.

@@ -1,7 +1,9 @@
 > **FUTURE — not in the free app (D-58).** Kod `pro-next` tarmog'ida, bayroq ortida
 > (`LG_PRO_ENABLED`, server `LG_BILLING_ENABLED`; D-71). `pro-later` — eski surat.
 > **Narxlar va sinov muddatlari bu hujjatning eski qismlarida ESKIRGAN** (29 000 so'm/$4.99, Ustoz $6.99, 7/14 kun).
-> Amaldagi narxlar (EGASI QARORI 2026-10-24, lekin YOQILMAGAN), uch daraja, yangi mahsulot id'lari va admin
+> **D-76 (2026-10-24, egasi):** to'rt reja (Premium qo'shildi), imkoniyatlar `learner`/`teacher_panel`/`lab`, Lab — Pro
+> (REJA, faol emas), sinov 7 kun, mehmon xarid qilmaydi — `docs/DECISIONS.md` D-76.
+> Amaldagi narxlar (EGASI QARORI 2026-10-24, lekin YOQILMAGAN), to'rt daraja (D-76), yangi mahsulot id'lari va admin
 > tomonidan Pro berish — **D-73** (§2 pastda yangilangan); ochiq qarorlar — D-73 §5. Bu hujjatdagi yopish ro'yxati (§1) `main` dagi
 > bepul imkoniyatlar bilan ziddiyatda: hech narsa yopilmaydi.
 
@@ -74,6 +76,8 @@ ikkalasini solishtiradi). Eski taklif `labguide.pro.*` ishlatilmaydi.
 | `uz.labguide.teacher.yearly` | Ustoz | 1 yil | 24.99 | `uz.labguide.teacherpro.yearly` |
 | `uz.labguide.specialist.monthly` | Mutaxassis | 1 oy | 3.49 | `uz.labguide.pro.monthly` |
 | `uz.labguide.specialist.yearly` | Mutaxassis | 1 yil | 34.99 | `uz.labguide.pro.yearly` |
+| `uz.labguide.premium.monthly` | Premium (D-76) | 1 oy | 4.99 | — |
+| `uz.labguide.premium.yearly` | Premium (D-76) | 1 yil | 49.99 | — |
 
 Do‘konlarda hali HECH QANDAY mahsulot yaratilmagan: avval yaratishda faqat yuqoridagi yangi id’lar ishlatiladi; eski
 id’lar faqat serverda/keshda alias. UZS narxlari (Play) va bepul sinov — ochiq qaror (D-73 §5); jadvalda sinov
@@ -81,7 +85,7 @@ ustuni yo‘q: `freeTrialDays = null`.
 
 **Narx pog‘onalari:** Apple va Google narxni o‘z ro‘yxatidagi pog‘onalardan tanlatadi,
 shuning uchun yuqoridagi dollar raqamlari yaxlitlanishi mumkin (ayniqsa UZS).
-Do‘konda eng yaqin pog‘onani tanlang (Talaba < Ustoz < Mutaxassis tartibi saqlansin) va yakuniy
+Do‘konda eng yaqin pog‘onani tanlang (Talaba < Ustoz < Mutaxassis < Premium tartibi saqlansin) va yakuniy
 raqamni `DECISIONS.md` ga yozing. Ilova narxni kodda saqlamaydi — do‘kondan oladi.
 
 **Talaba mahsulotlari** ilovada hozircha **ko‘rsatilmaydi**: talaba holatini
@@ -322,7 +326,8 @@ D-73 §3 va `docs/ADMIN_PANEL_GUIDE.md` §8. Migratsiya `0015_pro_grants.sql` �
 
 ## 12. Reja ↔ panel ajratish va bepul sinov (D-74) — HAMMASI O‘CHIQ
 - Daraja × imkoniyat matritsasi: `cloudflare/src/tiers.ts` (`TIER_CAPABILITIES`, `requireTier`), ilova nusxasi
-  `lib/core/entitlements/plan_matrix.dart`. Talaba — `learner`; Ustoz — `learner`, `teacher_panel`; Mutaxassis — uchalasi.
+  `lib/core/entitlements/plan_matrix.dart`. **D-76:** Talaba — `learner`; Ustoz — `learner`, `teacher_panel`; Mutaxassis —
+  `learner`, `lab` (ustoz panelisiz); Premium — uchalasi. (D-74 dagi “Mutaxassis — uchalasi” bekor.)
   Qaror faqat serverdagi huquqdan (rol emas). Inert yo‘llar: `GET /v1/pro/access`, `GET /v1/pro/check/:capability`.
 - Bepul sinov (bir telefonga bir marta): `POST /v1/billing/trial/challenge`, `POST /v1/billing/trial/start`;
   `entitlements` javobida `source: trial`, `platform: trial`, `product_id: trial.<daraja>`, ildizda `trial_used`.
@@ -330,9 +335,16 @@ D-73 §3 va `docs/ADMIN_PANEL_GUIDE.md` §8. Migratsiya `0015_pro_grants.sql` �
   `docs/PRO_TRIAL_ABUSE_NOTES.md`, D-74.
 - Ilova: Profil → **Obuna** (`/profile/subscription`, faqat `BuildFlags.proEnabled`): rejalar, USD narxlar (katalog),
   holat, sinov qoidasi, tiklash; to‘lov oynasi (`/profile/purchase`) shu ekrandan.
-- Eslatma: 9-bo‘limdagi 7/14 kunlik do‘kon sinovi ESKIRGAN (D-71/D-73); 30 kun mexanizmi — D-74 ochiq qaror #1.
+- Eslatma: 9-bo‘limdagi 7/14 kunlik do‘kon sinovi ESKIRGAN (D-71/D-73). Server sinovi muddati — **7 kun, hamma reja
+  uchun (D-76)**; D-74/D-75 dagi 30 kun bekor.
 
 ## D-75 yangilanishi
 Do'kon tekshiruvchilari injeksiya qilinadi, Apple JWS imzosi tekshiriladi, sandbox faqat `LG_BILLING_SANDBOX=true`, Play'da
 obuna + base plan (`monthly`/`yearly`) kanonik id'ga moslanadi, sinov `TRIAL_PLATFORMS` (standart `android`).
 Batafsil: `docs/DECISIONS.md` D-75, `docs/PRO_READINESS_2026-10-24.md`, `docs/PRO_TEST_ENVIRONMENT.md`.
+
+## D-76 yangilanishi
+To'rt reja (Talaba 1.49/9.99, Ustoz 2.49/24.99, Mutaxassis 3.49/34.99, Premium 4.99/49.99 USD — egasi narxlari, yagona
+manba `pro_catalog.dart`), `lab` imkoniyati (Mutaxassis va Premium), Lab funksiyalari `ProGatePolicy.plannedLabGate` da
+(faol EMAS; `gated` bo'sh), server sinovi 7 kun, mehmon xarid/tiklash/sinov olmaydi (avval hisobga kirish), migratsiya
+`0018_premium_tier.sql` (faqat fayl). App Store: 8 mahsulot; Play: 4 obuna × 2 base plan. Batafsil: `docs/DECISIONS.md` D-76.

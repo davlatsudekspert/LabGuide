@@ -165,7 +165,7 @@ skrinshot biriktirish ham hozircha yo‘q (tugma ko‘rinmaydi).
 > serverda `LG_BILLING_ENABLED=true` bo‘lganda mavjud; migratsiya `0015_pro_grants.sql` hali production’ga qo‘llanmagan.
 > Bayroq o‘chiq (standart) bo‘lsa bu bo‘lim ilovada ham, serverda ham (404) yo‘q — panel yuqoridagidek ishlaydi.
 
-Nima qiladi: admin istalgan email manziliga Pro huquqini beradi (Talaba, Ustoz yoki Mutaxassis darajasi; 30/90/365 kun
+Nima qiladi: admin istalgan email manziliga Pro huquqini beradi (Talaba, Ustoz, Mutaxassis yoki Premium darajasi — D-76; 30/90/365 kun
 yoki bekor qilinguncha; ixtiyoriy izoh). Ilovada: Admin panel → **Pro berish**.
 - **Kim:** admin roli (serverda berilgan) VA ikki bosqichli himoya (TOTP) — “Adminlar boshqaruvi” bilan bir xil. Egasi
   panelining TOTP siz kirishi bu amalga yetmaydi: avval bo‘limda TOTP’ni tasdiqlang.
@@ -176,8 +176,10 @@ yoki bekor qilinguncha; ixtiyoriy izoh). Ilovada: Admin panel → **Pro berish**
 - **Do‘kon obunasi bilan:** grant uni bosib o‘tmaydi — ikkalasidan yuqori daraja (teng bo‘lsa uzoqroq muddat) amal qiladi;
   grant qaytarib olinsa do‘kon obunasi saqlanadi.
 - **Qaytarib olish:** ro‘yxatdagi tugma, tasdiq bilan; huquq darhol yo‘qoladi.
-- **Daraja chegarasi (D-74):** grant faqat o‘z darajasi ochadigan imkoniyatlarni beradi — Talaba granti ustoz paneli Pro
-  imkoniyatlarini OCHMAYDI (serverda `requireTier`), Ustoz/Mutaxassis — ochadi. Bugungi bepul guruhlar bunga bog‘liq emas.
+- **Daraja chegarasi (D-74, D-76):** grant faqat o‘z darajasi ochadigan imkoniyatlarni beradi — ustoz paneli Pro
+  imkoniyatlari faqat Ustoz va Premium da, Laboratoriya bo‘limi (`lab`) faqat Mutaxassis va Premium da (serverda
+  `requireTier`); Talaba granti ikkalasini ham OCHMAYDI. “Uzaytirish” Ustoz ↔ Mutaxassis kabi bir-birini qamramaydigan
+  daraja bilan rad etiladi (`tier_not_comparable`) — “almashtirish” bilan aniq tanlang. Bugungi bepul guruhlar bunga bog‘liq emas.
   Grant bepul sinovni (bir telefonga bir marta) ishlatmaydi va unga ta’sir qilmaydi.
 - **Xavfsizlik:** email serverda saqlanmaydi (HMAC + niqob), ro‘yxatda faqat niqoblangan; har berish/almashtirish/uzaytirish/
   qaytarib olish “Amallar tarixi”ga yoziladi (kim, kimga — niqob, daraja, muddat); limit: soatiga 30 ta berish.
