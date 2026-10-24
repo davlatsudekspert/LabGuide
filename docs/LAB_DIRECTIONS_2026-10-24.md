@@ -82,3 +82,16 @@ or instrument model data.
   biosafety, models).
 * Uz/ru translations of every card (machine-free, but not reviewed by a
   clinical-laboratory linguist).
+
+## Update (audit-safety branch): schema v1.1 and corrections
+
+* `LabDirection` now has 22 values (tb, hiv, virology, ... general); the app lists only directions with at least one
+  PUBLIC card. ARB keys `labDir<Direction>` exist in uz/ru/en.
+* `audit_status: "NEEDS_SOURCE"` cards are stubs (id, lab_direction, card_kind, name, `needs_source_reason`, optional
+  `priority` P1|P2|P3, no content fields). They stay in `catalog.json` but are never shown (lists, deep links, counts).
+* `sources[].type`: `official_agency | journal | manufacturer_ifu | manufacturer_marketing`. Official/journal sources must be on
+  official hosts (guard); manufacturer hosts only for manufacturer types; a card needs at least one official/journal source;
+  marketing sources show a "manufacturer page" note on the card.
+* Status line: localized `labDirStatusNeedsReview` chosen by `auditStatus` (no raw enum token in the UI).
+* TB/HIV corrections and removed statements: see `docs/LAB_CARDS_UNVERIFIED.md`. `hiv-rna-viral-load` is now a NEEDS_SOURCE stub.
+* Expert sign-off items: `docs/EXPERT_SIGNOFF_REGISTRY.md`.
