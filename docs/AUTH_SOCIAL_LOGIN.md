@@ -14,8 +14,13 @@ Android’da Google va Apple bir-biriga bog‘liq emas.
 > Apple yo‘q bo‘lsa (`LG_APPLE_SIGNIN` false, entitlement IPA’da yo‘q yoki server `apple: false`), iPhone’da
 > Google ham **yashiriladi**, faqat email-kod kirishi qoladi; ilova konsolga ogohlantirish yozadi
 > (`social: iOS — Sign in with Apple yo'q, shuning uchun Google tugmasi ham yashirildi`).
-> Demak, CI’dagi “profilda Sign in with Apple imkoniyati yo‘q → `LG_APPLE_SIGNIN=false`” qadami endi
-> iPhone’da Google’ni ham o‘chiradi. TestFlight’da Google kerak bo‘lsa, avval 1-bo‘limni bajaring.
+> **CI (2026-10-24 dan):** `testflight` rejimida Google (iOS) sozlangan bo‘lsa (`LG_GOOGLE_IOS_CLIENT_ID`
+> yoki `LG_GOOGLE_CLIENT_ID` bo‘sh emas), lekin Apple o‘chiq bo‘lib qolsa (`LG_APPLE_SIGNIN` `true` emas yoki
+> qo‘lda imzo profilida `com.apple.developer.applesignin` yo‘q) — “Sign in with Apple — entitlement qarori”
+> qadami **xato bilan to‘xtaydi** (`::error::`, sababi job summary’da): Google’siz-Apple’siz noto‘g‘ri build
+> “yashil” bo‘lib chiqmaydi. Tuzatish: App ID’da Sign In with Apple’ni yoqing → profilni qayta yarating →
+> `LG_APPLE_SIGNIN=true`; yoki iOS’da Google’ni o‘chiring (ikkala Google variable’ini bo‘shating). Google
+> sozlanmagan bo‘lsa — avvalgidek: Apple o‘chiriladi, build davom etadi.
 
 ## 0. Qisqacha: qaysi nomlarni qayerga qo‘yasiz
 
@@ -55,9 +60,9 @@ bilan beriladi, logga chiqmaydi (bo‘sh bo‘lganlari o‘tkazib yuboriladi —
 6. **Tartib (TestFlight buzilmasligi uchun):** avval 2-qadam (imkoniyat) va profil yangilanishi,
    **keyin** `LG_APPLE_SIGNIN` variable’ini `true` qiling. Shundan so‘ng `testflight` rejimi
    `ios/Runner/Runner.entitlements` ni IPA’ga qo‘shadi va tugma ilovada paydo bo‘ladi. Agar variable
-   `true` bo‘lib, profilda imkoniyat bo‘lmasa (qo‘lda imzo) — job **xato bermaydi**: ogohlantirish chiqaradi,
-   entitlement’ni qo‘shmaydi va Apple tugmasi yashirin qoladi — **iPhone’da Google tugmasi ham** (4.8 qoidasi,
-   yuqoridagi ogohlantirish). Job summary’dagi “Sign in with Apple: entitlement IPA'ga qo'shiladi” qatorini
+   `true` bo‘lib, profilda imkoniyat bo‘lmasa (qo‘lda imzo): Google variable’lari **bo‘sh** bo‘lsa — job
+   ogohlantirish chiqaradi, entitlement’ni qo‘shmaydi va davom etadi (Apple tugmasi yashirin); Google
+   variable’laridan biri **to‘ldirilgan** bo‘lsa — job **xato bilan to‘xtaydi** (4.8, yuqoridagi izoh). Job summary’dagi “Sign in with Apple: entitlement IPA'ga qo'shiladi” qatorini
    tekshiring. Cloud imzoda entitlement IPA’da bo‘lmasa,
    “IPA tekshiruvi” qadami aniq xabar bilan to‘xtaydi — shunda `LG_APPLE_SIGNIN` ni `false` qiling.
 7. Mac’da qo‘lda ishlasangiz: Xcode → Runner → *Signing & Capabilities* → **+ Capability → Sign in with Apple**.
