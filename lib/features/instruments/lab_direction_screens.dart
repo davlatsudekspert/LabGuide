@@ -22,6 +22,33 @@ String _tag(AppLocalizations l) =>
 String _directionLabel(AppLocalizations l, LabDirection d) => switch (d) {
   LabDirection.tb => l.labDirTb,
   LabDirection.hiv => l.labDirHiv,
+  LabDirection.virology => l.labDirVirology,
+  LabDirection.bacteriology => l.labDirBacteriology,
+  LabDirection.mycology => l.labDirMycology,
+  LabDirection.parasitology => l.labDirParasitology,
+  LabDirection.hematology => l.labDirHematology,
+  LabDirection.coagulation => l.labDirCoagulation,
+  LabDirection.transfusion => l.labDirTransfusion,
+  LabDirection.biochemistry => l.labDirBiochemistry,
+  LabDirection.immunology => l.labDirImmunology,
+  LabDirection.urinalysis => l.labDirUrinalysis,
+  LabDirection.cytology => l.labDirCytology,
+  LabDirection.histology => l.labDirHistology,
+  LabDirection.oncology => l.labDirOncology,
+  LabDirection.genetics => l.labDirGenetics,
+  LabDirection.molecular => l.labDirMolecular,
+  LabDirection.toxicology => l.labDirToxicology,
+  LabDirection.reproductive => l.labDirReproductive,
+  LabDirection.neonatal => l.labDirNeonatal,
+  LabDirection.transplant => l.labDirTransplant,
+  LabDirection.general => l.labDirGeneral,
+};
+
+/// Holat qatori: enum tokeni emas, foydalanuvchiga tushunarli matn.
+String _statusLine(AppLocalizations l, LabAuditStatus s) => switch (s) {
+  LabAuditStatus.needsReview => l.labDirStatusNeedsReview,
+  // NEEDS_SOURCE kartalar ommaga ko'rsatilmaydi; bu yerga yetib kelmaydi.
+  LabAuditStatus.needsSource => l.labDirStatusNeedsReview,
 };
 
 /// Bosh ekrandagi “TB va OIV” bo'limi (kartalar bo'lsa).
@@ -33,10 +60,7 @@ class LabDirectionRows extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context);
-    final dirs = [
-      for (final d in LabDirection.values)
-        if (catalog.labCardsIn(d).isNotEmpty) d,
-    ];
+    final dirs = catalog.publicLabDirections;
     if (dirs.isEmpty) return const SizedBox.shrink();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -155,7 +179,7 @@ class _LabCard extends StatelessWidget {
       children: [
         LgTag(_tag(l), tone: LgTone.warning),
         const SizedBox(height: 8),
-        Text(l.labDirStatusLine, style: text.bodySmall),
+        Text(_statusLine(l, card.auditStatus), style: text.bodySmall),
         const SizedBox(height: 8),
         LgNotice(l.labDirDisclaimer),
         if (card.instrumentVsTestNote case final n?) ...[
@@ -192,7 +216,12 @@ class _LabCard extends StatelessWidget {
           if (catalog.sources[id] case final src?)
             LgRow(
               title: src.title,
-              subtitle: [?src.docRef, l.instAccessed(src.accessed)].join(' · '),
+              subtitle: [
+                ?src.docRef,
+                l.instAccessed(src.accessed),
+                if (src.type == SourceType.manufacturerMarketing)
+                  l.labDirManufacturerNote,
+              ].join(' · '),
               icon: Icons.open_in_new_rounded,
               divider: i < card.allSourceIds.toSet().length - 1,
               onTap: () => openExternalLink(context, src.url),

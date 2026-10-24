@@ -458,35 +458,40 @@
    "title": "WHO TB Knowledge Sharing Platform - Operational Handbook, Module 3: Diagnosis, 6.3 Algorithm 1 (WRDs as initial diagnostic tests)",
    "url": "https://tbksp.who.int/en/node/3147",
    "doc_ref": "page shows no date or version",
-   "accessed": "2026-10-24"
+   "accessed": "2026-10-24",
+   "type": "official_agency"
   },
   {
    "id": "cdc-xpert-mtb-rif",
    "title": "CDC - Xpert MTB/RIF Assay (Tuberculosis)",
    "url": "https://www.cdc.gov/tb/php/laboratory-information/xpert-mtb-rif-assay.html",
    "doc_ref": "page dated 2024-04-22",
-   "accessed": "2026-10-24"
+   "accessed": "2026-10-24",
+   "type": "official_agency"
   },
   {
    "id": "cdc-hiv-test-types",
    "title": "CDC - HIV diagnosis and testing (HIV Nexus, clinicians)",
    "url": "https://www.cdc.gov/hivnexus/hcp/diagnosis-testing/index.html",
    "doc_ref": "last updated 2026-08-17",
-   "accessed": "2026-10-24"
+   "accessed": "2026-10-24",
+   "type": "official_agency"
   },
   {
    "id": "cdc-hiv-lab-algorithm-2014",
    "title": "CDC/APHL - Laboratory Testing for the Diagnosis of HIV Infection: Updated Recommendations",
    "url": "https://stacks.cdc.gov/view/cdc/23447",
    "doc_ref": "2014-06-27",
-   "accessed": "2026-10-24"
+   "accessed": "2026-10-24",
+   "type": "official_agency"
   },
   {
    "id": "who-hiv-factsheet",
    "title": "WHO - HIV and AIDS fact sheet",
    "url": "https://www.who.int/news-room/fact-sheets/detail/hiv-aids",
    "doc_ref": "updated 2026-07-27",
-   "accessed": "2026-10-24"
+   "accessed": "2026-10-24",
+   "type": "official_agency"
   }
  ],
  "models": [
@@ -3009,9 +3014,9 @@
     ]
    },
    "instrument_vs_test_note": {
-    "uz": "Bu apparat (platforma) kartasi. Xpert MTB/RIF va Ultra — platformada ishlaydigan alohida testlar, ularning kartasi alohida.",
-    "ru": "Это карточка прибора (платформы). Xpert MTB/RIF и Ultra — отдельные тесты, работающие на платформе; у них своя карточка.",
-    "en": "This is the instrument (platform) card. Xpert MTB/RIF and Ultra are separate tests that run on the platform and have their own card."
+    "uz": "Bu apparat (platforma) kartasi. Unda ishlaydigan Xpert MTB/RIF testining kartasi alohida.",
+    "ru": "Это карточка прибора (платформы). У теста Xpert MTB/RIF, который на нём выполняется, своя карточка.",
+    "en": "This is the instrument (platform) card. The Xpert MTB/RIF test that runs on it has its own card."
    },
    "specimens": [],
    "tasks": [
@@ -3080,22 +3085,12 @@
    "tasks": [
     {
      "text": {
-      "uz": "M. tuberculosis kompleksini (MTBC) va rifampitsinga (RIF) chidamlilikni bitta ishga tushirishda aniqlaydi; natija 2 soatdan kam vaqtda.",
-      "ru": "Выявляет комплекс M. tuberculosis (MTBC) и устойчивость к рифампицину (RIF) за один запуск; результат менее чем за 2 часа.",
-      "en": "Detects M. tuberculosis complex (MTBC) and rifampin (RIF) resistance in one run, with results in under 2 hours."
+      "uz": "Xpert MTB/RIF (CDC): M. tuberculosis kompleksini (MTBC) va rifampitsinga (RIF) chidamlilikni bitta ishga tushirishda aniqlaydi; natija 2 soatdan kam vaqtda.",
+      "ru": "Xpert MTB/RIF (CDC): выявляет комплекс M. tuberculosis (MTBC) и устойчивость к рифампицину (RIF) за один запуск; результат менее чем за 2 часа.",
+      "en": "Xpert MTB/RIF (CDC): detects M. tuberculosis complex (MTBC) and rifampin (RIF) resistance in one run, with results in under 2 hours."
      },
      "sources": [
       "cdc-xpert-mtb-rif"
-     ]
-    },
-    {
-     "text": {
-      "uz": "Ultra testida bo'lgan alohida natija toifasi — “MTBC detected trace” — standart testda yo'q.",
-      "ru": "Категория результата «MTBC detected trace» относится только к Ultra, у стандартного теста её нет.",
-      "en": "The result category “MTBC detected trace” applies to Ultra only, not the standard test."
-     },
-     "sources": [
-      "who-tbksp-alg1"
      ]
     }
    ],
@@ -3123,9 +3118,9 @@
     },
     {
      "text": {
-      "uz": "WHO qo'llanmasi: yaqinda davolangan odamlarda “trace” natija hayotga layoqatsiz basillalarni aks ettirishi mumkin; talqin klinik mulohazani talab qiladi.",
-      "ru": "Руководство ВОЗ: у недавно лечившихся «trace» может отражать нежизнеспособные бациллы; интерпретация требует клинического суждения.",
-      "en": "WHO handbook: in people with recent TB treatment a trace result may reflect non-viable bacilli; interpretation needs clinical judgement."
+      "uz": "WHO qo‘llanmasi (Xpert Ultra, “MTBC detected trace”): OIV-salbiy, simptomli kattalarda yaqinda sil davosi tugagan bo‘lsa (5 yildan kam), “trace” natija hayotga layoqatsiz basillalar tufayli bo‘lishi mumkin. OIV bilan yashovchilar va bolalarda (o‘pka sili) “trace” bakteriologik tasdiq hisoblanadi; o‘pkadan tashqari namunada ham haqiqiy musbat hisoblanadi.",
+      "ru": "Руководство ВОЗ (Xpert Ultra, «MTBC detected trace»): у ВИЧ-отрицательных симптомных взрослых с недавним лечением ТБ (завершено менее 5 лет назад) результат «trace» может быть обусловлен нежизнеспособными бациллами. У людей с ВИЧ и у детей (лёгочный ТБ) «trace» считается бактериологическим подтверждением; во внелёгочном образце также считается истинно положительным.",
+      "en": "WHO handbook (Xpert Ultra, “MTBC detected trace”): in HIV-negative symptomatic adults with recent TB treatment (completed <5 years ago) a trace result may be due to non-viable bacilli. In people with HIV and in children (pulmonary TB) trace is considered bacteriological confirmation; in an extrapulmonary sample it is also considered a true positive."
      },
      "sources": [
       "who-tbksp-alg1"
@@ -3157,22 +3152,11 @@
    },
    "technology": null,
    "instrument_vs_test_note": {
-    "uz": "Platforma (apparat) va test (reagent kartrij) alohida tushunchalar: bu karta faqat testning o'zi haqida, apparat kartasi alohida.",
-    "ru": "Платформа (прибор) и тест (реагентный картридж) — разные понятия: эта карточка только о тесте, карточка прибора отдельная.",
-    "en": "The platform (instrument) and the test (reagent cartridge) are different things: this card covers the test only; the instrument has its own card."
+    "uz": "Bu karta faqat testning o‘zi haqida.",
+    "ru": "Эта карточка только о самом тесте.",
+    "en": "This card covers the test only."
    },
-   "specimens": [
-    {
-     "text": {
-      "uz": "Yangi namuna kerak (WHO qo'llanmasi).",
-      "ru": "Требуется свежий образец (руководство ВОЗ).",
-      "en": "A fresh specimen is needed (WHO handbook)."
-     },
-     "sources": [
-      "who-tbksp-alg1"
-     ]
-    }
-   ],
+   "specimens": [],
    "tasks": [
     {
      "text": {
@@ -3220,9 +3204,9 @@
    },
    "technology": null,
    "instrument_vs_test_note": {
-    "uz": "Platforma (apparat) va test (reagent kartrij) alohida tushunchalar: bu karta faqat testning o'zi haqida, apparat kartasi alohida.",
-    "ru": "Платформа (прибор) и тест (реагентный картридж) — разные понятия: эта карточка только о тесте, карточка прибора отдельная.",
-    "en": "The platform (instrument) and the test (reagent cartridge) are different things: this card covers the test only; the instrument has its own card."
+    "uz": "Bu karta faqat testning o‘zi haqida.",
+    "ru": "Эта карточка только о самом тесте.",
+    "en": "This card covers the test only."
    },
    "specimens": [],
    "tasks": [
@@ -3282,9 +3266,9 @@
    },
    "technology": {
     "text": {
-     "uz": "Kombinatsiyalangan immunoanaliz: OIV-1 p24 antigeni va antitanalarni aniqlaydi. “4-avlod” atamasi olingan sahifalarda ishlatilmagan — tekshirilmagan.",
-     "ru": "Комбинированный иммуноанализ: выявляет антиген p24 ВИЧ-1 и антитела. Термин «4-е поколение» на изученных страницах не использован — не проверено.",
-     "en": "Combination immunoassay: detects HIV-1 p24 antigen and antibodies. The term “4th generation” is not used on the pages read — not verified."
+     "uz": "Kombinatsiyalangan immunoanaliz: OIV-1 p24 antigeni va antitanalarni aniqlaydi.",
+     "ru": "Комбинированный иммуноанализ: выявляет антиген p24 ВИЧ-1 и антитела.",
+     "en": "Combination immunoassay: detects HIV-1 p24 antigen and antibodies."
     },
     "sources": [
      "cdc-hiv-test-types",
@@ -3311,9 +3295,9 @@
    "tasks": [
     {
      "text": {
-      "uz": "CDC/APHL algoritmi: avval kombinatsiyalangan immunoanaliz (OIV-1/2 antitanalari va OIV-1 p24); reaktiv namuna antitana differensiatsiya testiga o'tadi; nereaktiv yoki noaniq natijalar OIV-1 nuklein kislota testiga yuboriladi.",
-      "ru": "Алгоритм CDC/APHL: сначала комбинированный иммуноанализ (антитела к ВИЧ-1/2 и p24 ВИЧ-1); реактивные образцы идут на дифференцирующий тест антител; нереактивные или неопределённые — на тест нуклеиновых кислот ВИЧ-1.",
-      "en": "CDC/APHL algorithm: a combination immunoassay (HIV-1/2 antibodies and HIV-1 p24) comes first; reactive specimens go to an antibody differentiation assay; nonreactive or indeterminate ones proceed to HIV-1 nucleic acid testing."
+      "uz": "CDC/APHL algoritmi: avval kombinatsiyalangan immunoanaliz (OIV-1/2 antitanalari va OIV-1 p24); reaktiv namuna antitana differensiatsiya testiga o‘tadi; boshlang‘ich testda reaktiv, lekin differensiatsiya testida nereaktiv yoki noaniq namunalar OIV-1 nuklein kislota testiga yuboriladi.",
+      "ru": "Алгоритм CDC/APHL: сначала комбинированный иммуноанализ (антитела к ВИЧ-1/2 и p24 ВИЧ-1); реактивные образцы идут на дифференцирующий тест антител; образцы, реактивные в первичном тесте, но нереактивные или неопределённые в дифференцирующем, направляются на тест нуклеиновых кислот ВИЧ-1.",
+      "en": "CDC/APHL algorithm: a combination immunoassay (HIV-1/2 antibodies and HIV-1 p24) comes first; reactive specimens go to an antibody differentiation assay; specimens reactive on the initial assay but nonreactive or indeterminate on the differentiation assay proceed to HIV-1 nucleic acid testing."
      },
      "sources": [
       "cdc-hiv-lab-algorithm-2014"
@@ -3334,9 +3318,9 @@
    "limitations": [
     {
      "text": {
-      "uz": "Ilova tashxis qo'ymaydi: bu o'quv ma'lumotnoma; tashxis faqat vakolatli laboratoriya va shifokor tomonidan qo'yiladi. Algoritm 2014 yilgi AQSH tavsiyasi.",
-      "ru": "Приложение не ставит диагноз: это учебный справочник; диагноз устанавливают только уполномоченная лаборатория и врач. Алгоритм — рекомендация США 2014 г.",
-      "en": "The app does not diagnose: this is an educational reference; diagnosis rests with an authorised laboratory and clinician. The algorithm is a 2014 US recommendation."
+      "uz": "Algoritm 2014 yilgi AQSH tavsiyasi.",
+      "ru": "Алгоритм — рекомендация США 2014 г.",
+      "en": "The algorithm is a 2014 US recommendation."
      },
      "sources": [
       "cdc-hiv-lab-algorithm-2014"
@@ -3357,9 +3341,7 @@
    "preanalytic_analytic_errors": [],
    "biosafety": null,
    "models": [],
-   "linked": [
-    "hiv-rna-viral-load"
-   ],
+   "linked": [],
    "sources": [
     "cdc-hiv-lab-algorithm-2014",
     "cdc-hiv-test-types",
@@ -3377,50 +3359,9 @@
     "ru": "РНК ВИЧ-1 (тест нуклеиновых кислот, вирусная нагрузка)",
     "en": "HIV-1 RNA (nucleic acid test, viral load)"
    },
-   "technology": null,
-   "instrument_vs_test_note": {
-    "uz": "Bu test/usul kartasi; qaysi apparatda bajarilishi (platforma) bu yerda tekshirilmagan va alohida kartada bo'ladi.",
-    "ru": "Это карточка теста/метода; на каком приборе (платформе) он выполняется — здесь не проверено, будет отдельной карточкой.",
-    "en": "This is a test/method card; which instrument (platform) runs it is not verified here and belongs on a separate card."
-   },
-   "specimens": [],
-   "tasks": [
-    {
-     "text": {
-      "uz": "CDC: nuklein kislota testlari (NAT) OIV RNKsini aniqlaydi va uchala test turi ichida eng erta aniqlaydi.",
-      "ru": "CDC: тесты нуклеиновых кислот (NAT) выявляют РНК ВИЧ и обнаруживают ВИЧ раньше всех трёх типов тестов.",
-      "en": "CDC: nucleic acid tests (NATs) detect HIV RNA and detect HIV earliest of the three test types."
-     },
-     "sources": [
-      "cdc-hiv-test-types"
-     ]
-    },
-    {
-     "text": {
-      "uz": "CDC/APHL algoritmida OIV-1 NAT antitana differensiatsiya testi nereaktiv yoki noaniq bo'lganda ishlatiladi.",
-      "ru": "В алгоритме CDC/APHL NAT ВИЧ-1 применяется, когда дифференцирующий тест антител нереактивен или неопределён.",
-      "en": "In the CDC/APHL algorithm HIV-1 NAT follows a nonreactive or indeterminate antibody differentiation result."
-     },
-     "sources": [
-      "cdc-hiv-lab-algorithm-2014"
-     ]
-    }
-   ],
-   "principle": null,
-   "limitations": [],
-   "qc_calibration_note": null,
-   "preanalytic_analytic_errors": [],
-   "biosafety": null,
-   "models": [],
-   "linked": [
-    "hiv-agab-immunoassay-algorithm"
-   ],
-   "sources": [
-    "cdc-hiv-test-types",
-    "cdc-hiv-lab-algorithm-2014"
-   ],
-   "audit_status": "NEEDS_REVIEW",
-   "expert_reviewed": false
+   "audit_status": "NEEDS_SOURCE",
+   "needs_source_reason": "No fetched official source covers quantitative HIV-1 RNA (viral load) technology, specimens or QC; the only NAT in the cited CDC/APHL 2014 document is a qualitative diagnostic assay. See docs/LAB_CARDS_UNVERIFIED.md.",
+   "priority": "P1"
   }
  ]
 }

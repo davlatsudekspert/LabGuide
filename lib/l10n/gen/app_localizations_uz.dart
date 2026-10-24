@@ -10090,7 +10090,7 @@ class AppLocalizationsUz extends AppLocalizations {
       'Yozuv o\'chirilsa ham tarix qoladi. Uni faqat «lokal ma\'lumotni o\'chirish» tozalaydi.';
 
   @override
-  String get labDirSection => 'TB va OIV yo‘nalishlari (ma’lumotnoma)';
+  String get labDirSection => 'Laboratoriya yo‘nalishlari (ma’lumotnoma)';
 
   @override
   String get labDirSectionSub => 'Platforma va test alohida kartalarda';
@@ -10150,7 +10150,72 @@ class AppLocalizationsUz extends AppLocalizations {
   String get labDirLinked => 'Bog‘langan kartalar';
 
   @override
-  String get labDirStatusLine => 'Tekshiruv holati: NEEDS_REVIEW';
+  String get labDirStatusNeedsReview =>
+      'Tekshiruv holati: manbalar quyida keltirilgan; mutaxassis xulosasi hali kiritilmagan';
+
+  @override
+  String get labDirManufacturerNote =>
+      'Ishlab chiqaruvchi sahifasi (reklama materiali), yo‘riqnoma emas';
+
+  @override
+  String get labDirVirology => 'Virusologiya';
+
+  @override
+  String get labDirBacteriology => 'Bakteriologiya';
+
+  @override
+  String get labDirMycology => 'Mikologiya';
+
+  @override
+  String get labDirParasitology => 'Parazitologiya';
+
+  @override
+  String get labDirHematology => 'Gematologiya';
+
+  @override
+  String get labDirCoagulation => 'Koagulologiya (gemostaz)';
+
+  @override
+  String get labDirTransfusion => 'Transfuziologiya';
+
+  @override
+  String get labDirBiochemistry => 'Klinik biokimyo';
+
+  @override
+  String get labDirImmunology => 'Immunologiya';
+
+  @override
+  String get labDirUrinalysis => 'Siydik tahlili';
+
+  @override
+  String get labDirCytology => 'Sitologiya';
+
+  @override
+  String get labDirHistology => 'Gistologiya';
+
+  @override
+  String get labDirOncology => 'Onkologiya';
+
+  @override
+  String get labDirGenetics => 'Genetika';
+
+  @override
+  String get labDirMolecular => 'Molekulyar diagnostika';
+
+  @override
+  String get labDirToxicology => 'Toksikologiya';
+
+  @override
+  String get labDirReproductive => 'Reproduktiv tibbiyot';
+
+  @override
+  String get labDirNeonatal => 'Neonatal laboratoriya diagnostikasi';
+
+  @override
+  String get labDirTransplant => 'Transplantologiya';
+
+  @override
+  String get labDirGeneral => 'Umumiy laboratoriya';
 
   @override
   String get labDirDisclaimer =>

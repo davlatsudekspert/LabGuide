@@ -10227,7 +10227,7 @@ class AppLocalizationsEn extends AppLocalizations {
       'History stays even after a record is deleted. It is removed only by \"delete local data\".';
 
   @override
-  String get labDirSection => 'TB and HIV directions (reference)';
+  String get labDirSection => 'Laboratory directions (reference)';
 
   @override
   String get labDirSectionSub => 'Platform and test on separate cards';
@@ -10287,7 +10287,72 @@ class AppLocalizationsEn extends AppLocalizations {
   String get labDirLinked => 'Linked cards';
 
   @override
-  String get labDirStatusLine => 'Audit status: NEEDS_REVIEW';
+  String get labDirStatusNeedsReview =>
+      'Check status: sources are listed below; specialist sign-off not yet recorded';
+
+  @override
+  String get labDirManufacturerNote =>
+      'Manufacturer page (marketing material), not an instruction';
+
+  @override
+  String get labDirVirology => 'Virology';
+
+  @override
+  String get labDirBacteriology => 'Bacteriology';
+
+  @override
+  String get labDirMycology => 'Mycology';
+
+  @override
+  String get labDirParasitology => 'Parasitology';
+
+  @override
+  String get labDirHematology => 'Haematology';
+
+  @override
+  String get labDirCoagulation => 'Coagulation (haemostasis)';
+
+  @override
+  String get labDirTransfusion => 'Transfusion medicine';
+
+  @override
+  String get labDirBiochemistry => 'Clinical biochemistry';
+
+  @override
+  String get labDirImmunology => 'Immunology';
+
+  @override
+  String get labDirUrinalysis => 'Urinalysis';
+
+  @override
+  String get labDirCytology => 'Cytology';
+
+  @override
+  String get labDirHistology => 'Histology';
+
+  @override
+  String get labDirOncology => 'Oncology';
+
+  @override
+  String get labDirGenetics => 'Genetics';
+
+  @override
+  String get labDirMolecular => 'Molecular diagnostics';
+
+  @override
+  String get labDirToxicology => 'Toxicology';
+
+  @override
+  String get labDirReproductive => 'Reproductive medicine';
+
+  @override
+  String get labDirNeonatal => 'Neonatal laboratory diagnostics';
+
+  @override
+  String get labDirTransplant => 'Transplantation';
+
+  @override
+  String get labDirGeneral => 'General laboratory';
 
   @override
   String get labDirDisclaimer =>

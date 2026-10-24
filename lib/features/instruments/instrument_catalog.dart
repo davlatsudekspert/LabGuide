@@ -112,6 +112,26 @@ enum ManualAccess {
   };
 }
 
+/// Manba turi. Ma'lumotnoma kartalari uchun majburiy; eski model manbalarida
+/// ko'rsatilmagan (`null`).
+enum SourceType {
+  officialAgency,
+  journal,
+  manufacturerIfu,
+  manufacturerMarketing;
+
+  static SourceType parse(String raw) => switch (raw) {
+    'official_agency' => officialAgency,
+    'journal' => journal,
+    'manufacturer_ifu' => manufacturerIfu,
+    'manufacturer_marketing' => manufacturerMarketing,
+    _ => throw FormatException('unknown source type: $raw'),
+  };
+
+  /// Kartani yolg'iz o'zi asoslay oladigan tur (marketing — yo'q).
+  bool get isAuthoritative => this == officialAgency || this == journal;
+}
+
 @immutable
 class CatalogSource {
   const CatalogSource({
@@ -120,6 +140,7 @@ class CatalogSource {
     required this.url,
     required this.accessed,
     this.docRef,
+    this.type,
   });
 
   factory CatalogSource.fromJson(Map<String, Object?> j) {
@@ -133,12 +154,16 @@ class CatalogSource {
       url: url,
       accessed: j['accessed']! as String,
       docRef: j['doc_ref'] as String?,
+      type: j['type'] == null ? null : SourceType.parse(j['type']! as String),
     );
   }
 
   final String id;
   final String title;
   final String url;
+
+  /// official_agency | journal | manufacturer_ifu | manufacturer_marketing.
+  final SourceType? type;
   final String accessed;
 
   /// Hujjat raqami/versiyasi (masalan, “981015/2021-11”, “P/N …”).
@@ -583,6 +608,13 @@ class InstrumentCatalog {
           throw FormatException('${c.id}: unknown source $s');
         }
       }
+      // Marketing manba yolg'iz o'zi kartani asoslay olmaydi.
+      if (c.isPublic &&
+          !c.allSourceIds.any(
+            (s) => sources[s]!.type?.isAuthoritative ?? false,
+          )) {
+        throw FormatException('${c.id}: needs an official or journal source');
+      }
       for (final l in c.linked) {
         if (!cardIds.contains(l) || l == c.id) {
           throw FormatException('${c.id}: bad link $l');
@@ -636,11 +668,24 @@ class InstrumentCatalog {
     orElse: () => throw StateError('maker $id'),
   );
 
+  /// Ommaga ko'rinadigan kartalar (NEEDS_SOURCE stublar chiqarib tashlangan).
+  List<LabDirectionCard> get publicLabCards => [
+    for (final c in labCards)
+      if (c.isPublic) c,
+  ];
+
+  /// Ommaviy karta; stub yoki noma'lum id uchun `null` (chuqur havola xavfsiz).
   LabDirectionCard? labCard(String id) =>
-      labCards.where((c) => c.id == id).firstOrNull;
+      publicLabCards.where((c) => c.id == id).firstOrNull;
+
+  /// Hech bo'lmaganda bitta ommaviy kartasi bor yo'nalishlar (enum tartibida).
+  List<LabDirection> get publicLabDirections => [
+    for (final d in LabDirection.values)
+      if (publicLabCards.any((c) => c.direction == d)) d,
+  ];
 
   List<LabDirectionCard> labCardsIn(LabDirection d) => [
-    for (final c in labCards)
+    for (final c in publicLabCards)
       if (c.direction == d) c,
   ];
 

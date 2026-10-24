@@ -10267,7 +10267,7 @@ class AppLocalizationsRu extends AppLocalizations {
       'История сохраняется и после удаления записи. Её стирает только «удалить локальные данные».';
 
   @override
-  String get labDirSection => 'Направления ТБ и ВИЧ (справочник)';
+  String get labDirSection => 'Направления лаборатории (справочник)';
 
   @override
   String get labDirSectionSub => 'Платформа и тест — в отдельных карточках';
@@ -10327,7 +10327,72 @@ class AppLocalizationsRu extends AppLocalizations {
   String get labDirLinked => 'Связанные карточки';
 
   @override
-  String get labDirStatusLine => 'Статус аудита: NEEDS_REVIEW';
+  String get labDirStatusNeedsReview =>
+      'Статус проверки: источники указаны ниже; заключение специалиста пока не внесено';
+
+  @override
+  String get labDirManufacturerNote =>
+      'Страница производителя (рекламный материал), не инструкция';
+
+  @override
+  String get labDirVirology => 'Вирусология';
+
+  @override
+  String get labDirBacteriology => 'Бактериология';
+
+  @override
+  String get labDirMycology => 'Микология';
+
+  @override
+  String get labDirParasitology => 'Паразитология';
+
+  @override
+  String get labDirHematology => 'Гематология';
+
+  @override
+  String get labDirCoagulation => 'Коагулология (гемостаз)';
+
+  @override
+  String get labDirTransfusion => 'Трансфузиология';
+
+  @override
+  String get labDirBiochemistry => 'Клиническая биохимия';
+
+  @override
+  String get labDirImmunology => 'Иммунология';
+
+  @override
+  String get labDirUrinalysis => 'Анализ мочи';
+
+  @override
+  String get labDirCytology => 'Цитология';
+
+  @override
+  String get labDirHistology => 'Гистология';
+
+  @override
+  String get labDirOncology => 'Онкология';
+
+  @override
+  String get labDirGenetics => 'Генетика';
+
+  @override
+  String get labDirMolecular => 'Молекулярная диагностика';
+
+  @override
+  String get labDirToxicology => 'Токсикология';
+
+  @override
+  String get labDirReproductive => 'Репродуктивная медицина';
+
+  @override
+  String get labDirNeonatal => 'Неонатальная лабораторная диагностика';
+
+  @override
+  String get labDirTransplant => 'Трансплантология';
+
+  @override
+  String get labDirGeneral => 'Общая лаборатория';
 
   @override
   String get labDirDisclaimer =>

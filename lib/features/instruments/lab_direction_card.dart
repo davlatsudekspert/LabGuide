@@ -5,7 +5,27 @@ import '../content/content_model.dart';
 /// Laboratoriya yo'nalishi (apparat kategoriyasidan alohida: TB, OIV...).
 enum LabDirection {
   tb,
-  hiv;
+  hiv,
+  virology,
+  bacteriology,
+  mycology,
+  parasitology,
+  hematology,
+  coagulation,
+  transfusion,
+  biochemistry,
+  immunology,
+  urinalysis,
+  cytology,
+  histology,
+  oncology,
+  genetics,
+  molecular,
+  toxicology,
+  reproductive,
+  neonatal,
+  transplant,
+  general;
 
   static LabDirection parse(String raw) => values.firstWhere(
     (d) => d.name == raw,
@@ -27,11 +47,28 @@ enum LabCardKind {
 
 /// Tekshiruv holati. Standart — [needsReview]; boshqa qiymat dalilsiz qo'yilmaydi.
 enum LabAuditStatus {
-  needsReview;
+  needsReview,
+
+  /// Manbasi hali yo'q: karta faqat bo'sh qoldiq (stub); ommaga ko'rsatilmaydi.
+  needsSource;
 
   static LabAuditStatus parse(String raw) => switch (raw) {
     'NEEDS_REVIEW' => needsReview,
+    'NEEDS_SOURCE' => needsSource,
     _ => throw FormatException('unknown audit status: $raw'),
+  };
+}
+
+enum LabCardPriority {
+  p1,
+  p2,
+  p3;
+
+  static LabCardPriority parse(String raw) => switch (raw) {
+    'P1' => p1,
+    'P2' => p2,
+    'P3' => p3,
+    _ => throw FormatException('unknown priority: $raw'),
   };
 }
 
@@ -77,9 +114,12 @@ class LabDirectionCard {
     required this.sourceIds,
     required this.auditStatus,
     required this.expertReviewed,
+    this.needsSourceReason,
+    this.priority,
   });
 
   factory LabDirectionCard.fromJson(Map<String, Object?> j) {
+    if (j['audit_status'] == 'NEEDS_SOURCE') return LabDirectionCard._stub(j);
     SourcedText? one(String k) =>
         j[k] == null ? null : SourcedText.fromJson(j[k]);
     List<SourcedText> many(String k) => [
@@ -120,6 +160,61 @@ class LabDirectionCard {
     );
   }
 
+  /// NEEDS_SOURCE stub: faqat id, yo'nalish, tur, nom, sabab, ixtiyoriy
+  /// ustuvorlik. Boshqa kontent maydonlari bo'sh bo'lishi shart.
+  factory LabDirectionCard._stub(Map<String, Object?> j) {
+    const allowed = {
+      'id',
+      'lab_direction',
+      'card_kind',
+      'name',
+      'audit_status',
+      'needs_source_reason',
+      'priority',
+      'expert_reviewed',
+    };
+    for (final e in j.entries) {
+      if (allowed.contains(e.key)) continue;
+      final v = e.value;
+      final empty =
+          v == null || (v is List && v.isEmpty) || (v is String && v.isEmpty);
+      if (!empty) {
+        throw FormatException('${j['id']}: stub has content field ${e.key}');
+      }
+    }
+    if (j['expert_reviewed'] == true) {
+      throw FormatException('${j['id']}: expert_reviewed needs evidence');
+    }
+    final reason = j['needs_source_reason'];
+    if (reason is! String || reason.trim().isEmpty) {
+      throw FormatException('${j['id']}: needs_source_reason missing');
+    }
+    return LabDirectionCard(
+      id: j['id']! as String,
+      direction: LabDirection.parse(j['lab_direction']! as String),
+      kind: LabCardKind.parse(j['card_kind']! as String),
+      name: LocalizedText.fromJson(j['name']),
+      instrumentVsTestNote: null,
+      technology: null,
+      specimens: const [],
+      tasks: const [],
+      principle: null,
+      limitations: const [],
+      qcCalibrationNote: null,
+      preanalyticAnalyticErrors: const [],
+      biosafety: null,
+      models: const [],
+      linked: const [],
+      sourceIds: const [],
+      auditStatus: LabAuditStatus.needsSource,
+      expertReviewed: false,
+      needsSourceReason: reason,
+      priority: j['priority'] == null
+          ? null
+          : LabCardPriority.parse(j['priority']! as String),
+    );
+  }
+
   final String id;
   final LabDirection direction;
   final LabCardKind kind;
@@ -144,6 +239,13 @@ class LabDirectionCard {
   final List<String> sourceIds;
   final LabAuditStatus auditStatus;
   final bool expertReviewed;
+
+  /// Faqat NEEDS_SOURCE uchun: nega manba yo'q (ichki, UI'da ko'rsatilmaydi).
+  final String? needsSourceReason;
+  final LabCardPriority? priority;
+
+  /// NEEDS_SOURCE kartalar hech qachon ommaga ko'rsatilmaydi.
+  bool get isPublic => auditStatus != LabAuditStatus.needsSource;
 
   Iterable<String> get allSourceIds => {
     ...sourceIds,

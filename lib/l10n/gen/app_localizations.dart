@@ -17581,7 +17581,7 @@ abstract class AppLocalizations {
   /// No description provided for @labDirSection.
   ///
   /// In en, this message translates to:
-  /// **'TB and HIV directions (reference)'**
+  /// **'Laboratory directions (reference)'**
   String get labDirSection;
 
   /// No description provided for @labDirSectionSub.
@@ -17698,11 +17698,137 @@ abstract class AppLocalizations {
   /// **'Linked cards'**
   String get labDirLinked;
 
-  /// No description provided for @labDirStatusLine.
+  /// No description provided for @labDirStatusNeedsReview.
   ///
   /// In en, this message translates to:
-  /// **'Audit status: NEEDS_REVIEW'**
-  String get labDirStatusLine;
+  /// **'Check status: sources are listed below; specialist sign-off not yet recorded'**
+  String get labDirStatusNeedsReview;
+
+  /// No description provided for @labDirManufacturerNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Manufacturer page (marketing material), not an instruction'**
+  String get labDirManufacturerNote;
+
+  /// No description provided for @labDirVirology.
+  ///
+  /// In en, this message translates to:
+  /// **'Virology'**
+  String get labDirVirology;
+
+  /// No description provided for @labDirBacteriology.
+  ///
+  /// In en, this message translates to:
+  /// **'Bacteriology'**
+  String get labDirBacteriology;
+
+  /// No description provided for @labDirMycology.
+  ///
+  /// In en, this message translates to:
+  /// **'Mycology'**
+  String get labDirMycology;
+
+  /// No description provided for @labDirParasitology.
+  ///
+  /// In en, this message translates to:
+  /// **'Parasitology'**
+  String get labDirParasitology;
+
+  /// No description provided for @labDirHematology.
+  ///
+  /// In en, this message translates to:
+  /// **'Haematology'**
+  String get labDirHematology;
+
+  /// No description provided for @labDirCoagulation.
+  ///
+  /// In en, this message translates to:
+  /// **'Coagulation (haemostasis)'**
+  String get labDirCoagulation;
+
+  /// No description provided for @labDirTransfusion.
+  ///
+  /// In en, this message translates to:
+  /// **'Transfusion medicine'**
+  String get labDirTransfusion;
+
+  /// No description provided for @labDirBiochemistry.
+  ///
+  /// In en, this message translates to:
+  /// **'Clinical biochemistry'**
+  String get labDirBiochemistry;
+
+  /// No description provided for @labDirImmunology.
+  ///
+  /// In en, this message translates to:
+  /// **'Immunology'**
+  String get labDirImmunology;
+
+  /// No description provided for @labDirUrinalysis.
+  ///
+  /// In en, this message translates to:
+  /// **'Urinalysis'**
+  String get labDirUrinalysis;
+
+  /// No description provided for @labDirCytology.
+  ///
+  /// In en, this message translates to:
+  /// **'Cytology'**
+  String get labDirCytology;
+
+  /// No description provided for @labDirHistology.
+  ///
+  /// In en, this message translates to:
+  /// **'Histology'**
+  String get labDirHistology;
+
+  /// No description provided for @labDirOncology.
+  ///
+  /// In en, this message translates to:
+  /// **'Oncology'**
+  String get labDirOncology;
+
+  /// No description provided for @labDirGenetics.
+  ///
+  /// In en, this message translates to:
+  /// **'Genetics'**
+  String get labDirGenetics;
+
+  /// No description provided for @labDirMolecular.
+  ///
+  /// In en, this message translates to:
+  /// **'Molecular diagnostics'**
+  String get labDirMolecular;
+
+  /// No description provided for @labDirToxicology.
+  ///
+  /// In en, this message translates to:
+  /// **'Toxicology'**
+  String get labDirToxicology;
+
+  /// No description provided for @labDirReproductive.
+  ///
+  /// In en, this message translates to:
+  /// **'Reproductive medicine'**
+  String get labDirReproductive;
+
+  /// No description provided for @labDirNeonatal.
+  ///
+  /// In en, this message translates to:
+  /// **'Neonatal laboratory diagnostics'**
+  String get labDirNeonatal;
+
+  /// No description provided for @labDirTransplant.
+  ///
+  /// In en, this message translates to:
+  /// **'Transplantation'**
+  String get labDirTransplant;
+
+  /// No description provided for @labDirGeneral.
+  ///
+  /// In en, this message translates to:
+  /// **'General laboratory'**
+  String get labDirGeneral;
 
   /// No description provided for @labDirDisclaimer.
   ///
