@@ -114,6 +114,12 @@ abstract final class StoreKeys {
   /// yoki bo'lim (`kind:id`) — faqat shu qurilmada (D-69 Q3).
   static const homeResume = 'home.resume';
 
+  /// Kirish/onboarding'dan oldin ochilgan guruh taklifi (`/j?c=..`):
+  /// `{"loc": "/learn/classes/join?..", "at": <ms>}`. Ilova fonda yopilsa
+  /// ham (email ilovasiga o'tilganda) yo'qolmasin; 24 soatdan keyin eskiradi,
+  /// ishlatilgach yoki chiqishda o'chiriladi.
+  static const pendingInvite = 'onboarding.pendingInvite';
+
   static const all = <String>{
     language,
     themeMode,
@@ -161,6 +167,7 @@ abstract final class StoreKeys {
     topicTests,
     lectureOrientation,
     homeResume,
+    pendingInvite,
     communityRulesOpen,
     communityBlocked,
   };

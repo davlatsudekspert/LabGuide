@@ -87,7 +87,11 @@ AppServices createServices({
 }) {
   const config = AppConfig(appVersion: _appVersion, showDebugBadge: kDebugMode);
   final server = backend ?? _defaultBackend();
-  final settings = SettingsController(store, systemLocales: systemLocales);
+  final settings = SettingsController(
+    store,
+    systemLocales: systemLocales,
+    clock: clock,
+  );
   final daily = DailyController(store, clock: clock);
   final toifa = ToifaController(store, bundle: bundle, clock: clock);
   return AppServices(

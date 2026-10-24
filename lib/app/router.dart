@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:go_router/go_router.dart';
@@ -87,10 +89,6 @@ GoRouter buildRouter(
   final rootKey = GlobalKey<NavigatorState>(debugLabel: 'root');
   final tabMemory = TabMemory();
 
-  /// Onboarding paytida ochilgan taklif havolasi (`/j?c=..`): onboarding
-  /// tugagach qo'shilish ekrani ochiladi.
-  String? pendingInvite;
-
   List<RouteBase> analyteRoutes() => [
     GoRoute(
       path: 'analyte/:id',
@@ -152,8 +150,9 @@ GoRouter buildRouter(
         if (settings.onboarded) return join;
         // Yangi o'rnatilgan ilova (ikkinchi telefon/hisob): taklif
         // onboarding tugaguncha eslab qolinadi — avval kod yo'qolib,
-        // talaba bosh sahifaga tushib qolardi.
-        pendingInvite = join;
+        // talaba bosh sahifaga tushib qolardi. Omborda saqlanadi (24 soat):
+        // email ilovasiga o'tganda OS ilovani yopsa ham yo'qolmaydi.
+        unawaited(settings.setPendingInvite(join));
       }
       final loc = state.matchedLocation;
       final inOnboarding = loc.startsWith('/welcome') || loc == '/terms';
@@ -163,9 +162,7 @@ GoRouter buildRouter(
       }
       if (!settings.onboarded && !inOnboarding) return '/welcome';
       if (settings.onboarded && loc.startsWith('/welcome')) {
-        final invite = pendingInvite;
-        pendingInvite = null;
-        return invite ?? '/home';
+        return settings.takePendingInvite() ?? '/home';
       }
       return null;
     },
