@@ -10113,6 +10113,11 @@ class AppLocalizationsUz extends AppLocalizations {
   String get labDirSectionSub => 'Platforma va test alohida kartalarda';
 
   @override
+  String labDirRowTitle(String name) {
+    return '$name — ma’lumotnoma kartalari';
+  }
+
+  @override
   String get labDirTb => 'Sil (TB) diagnostikasi';
 
   @override

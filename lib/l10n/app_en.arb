@@ -6013,6 +6013,8 @@
   "calSafeHistoryNote": "History stays even after a record is deleted. It is removed only by “delete local data”.",
   "labDirSection": "Laboratory directions (reference)",
   "labDirSectionSub": "Platform and test on separate cards",
+  "labDirRowTitle": "{name} — reference cards",
+  "@labDirRowTitle": {"placeholders": {"name": {"type": "String"}}},
   "labDirTb": "Tuberculosis (TB) diagnostics",
   "labDirHiv": "HIV laboratory diagnostics",
   "labDirTag": "Reference",

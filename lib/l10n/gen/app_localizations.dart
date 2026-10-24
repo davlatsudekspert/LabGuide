@@ -17620,6 +17620,12 @@ abstract class AppLocalizations {
   /// **'Platform and test on separate cards'**
   String get labDirSectionSub;
 
+  /// No description provided for @labDirRowTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} — reference cards'**
+  String labDirRowTitle(String name);
+
   /// No description provided for @labDirTb.
   ///
   /// In en, this message translates to:

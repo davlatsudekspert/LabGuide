@@ -68,7 +68,7 @@ class LabDirectionRows extends StatelessWidget {
         LgSectionTitle(l.labDirSection),
         for (final (i, d) in dirs.indexed)
           LgRow(
-            title: _directionLabel(l, d),
+            title: l.labDirRowTitle(_directionLabel(l, d)),
             subtitle: l.labDirSectionSub,
             icon: Icons.biotech_outlined,
             divider: i < dirs.length - 1,
