@@ -7127,7 +7127,7 @@
       }
      ],
      "text": {
-      "uz": "Past lipaza lipaza ishlab chiqaruvchi oshqozonosti bezi hujayralarining doimiy shikastlanishi belgisi bo‘lishi mumkin; bu kistoz fibroz va surunkali pankreatit kabi surunkali kasalliklarda yuz berishi mumkin.",
+      "uz": "Past lipaza ishlab chiqaruvchi oshqozonosti bezi hujayralarining doimiy shikastlanishi belgisi bo‘lishi mumkin; bu kistoz fibroz va surunkali pankreatit kabi surunkali kasalliklarda yuz berishi mumkin.",
       "ru": "Низкая липаза может быть признаком необратимого повреждения клеток поджелудочной железы, вырабатывающих липазу; это может происходить при хронических заболеваниях, например муковисцидозе и хроническом панкреатите.",
       "en": "Low lipase may be a sign of permanent damage to the pancreatic cells that make lipase, which may happen in chronic diseases such as cystic fibrosis and chronic pancreatitis."
      }
@@ -26650,7 +26650,7 @@
      ],
      "text": {
       "uz": "Musbat natija — namunada parazitlar va/yoki ularning tuxumlari topilgan, ya’ni ichak parazitlari bor. Natijada parazit turi va miqdori ham ko‘rsatiladi. Davolash parazit turiga va umumiy holatga bog‘liq; ich ketishi va qusishda suvsizlanishning oldini olish uchun ko‘p suyuqlik ichish kerak.",
-      "ru": "Положительный результат — в образце найдены паразиты и/или их яйца, то есть есть кишечные паразиты. В результате указывают также вид и количество паразитов. Лечение зависит от вида паразита и общего состояния; при диарее и рвоте важно много пить, чтобы избежать обезвоживания.",
+      "ru": "Положительный результат — в образце найдены паразиты и/или их яйца, то есть кишечные паразиты. В результате указывают также вид и количество паразитов. Лечение зависит от вида паразита и общего состояния; при диарее и рвоте важно много пить, чтобы избежать обезвоживания.",
       "en": "A positive result means parasites and/or eggs were found — there are intestinal parasites. The report also gives the type and how many were seen. Treatment depends on the parasite and general health; plenty of fluids help prevent dehydration from diarrhea and vomiting."
      }
     },
@@ -37339,7 +37339,7 @@
     "en": "What may a low lipase level indicate?"
    },
    "basis": {
-    "uz": "MedlinePlus: past lipaza lipaza ishlab chiqaruvchi oshqozonosti bezi hujayralarining doimiy shikastlanishi belgisi bo‘lishi mumkin.",
+    "uz": "MedlinePlus: past lipaza ishlab chiqaruvchi oshqozonosti bezi hujayralarining doimiy shikastlanishi belgisi bo‘lishi mumkin.",
     "ru": "MedlinePlus: низкая липаза может быть признаком необратимого повреждения клеток поджелудочной железы, вырабатывающих липазу.",
     "en": "MedlinePlus: low lipase may be a sign of permanent damage to pancreatic cells that make lipase."
    },
@@ -52487,9 +52487,9 @@
     "slide": "Namuna olish va ekssudat mikroskopiyasi",
     "source_label": "Manba: Kurbonova, 2023, «Klinik laboratoriya tashxisi» (3-bob, 51–54-b. (3.2-bo‘lim))",
     "fact": {
-     "uz": "EDTA li probirka (suyuqlik ivib qolmasligi uchun",
-     "ru": "пробирку с ЭДТА (чтобы пункционная жидкость не свернулась",
-     "en": "an EDTA tube (so the puncture fluid does not clot"
+     "uz": "EDTA li probirka (suyuqlik ivib qolmasligi uchun)",
+     "ru": "пробирку с ЭДТА (чтобы пункционная жидкость не свернулась)",
+     "en": "an EDTA tube (so the puncture fluid does not clot)"
     },
     "also_decks": []
    },
@@ -57119,7 +57119,7 @@
    },
    "basis": {
     "uz": "Renin–angiotenzin–aldosteron tizimida aldosteron distal nefronda Na qayta so‘rilishi va K ajralishini oshiradi; sekretsiyasini K⁺ darajasi va RAAS boshqaradi.",
-    "ru": "В системе ренин–ангиотензин–альдостерон альдостерон усиливает реабсорбцию Na и выведение K в дистальном нефроне; секрецию регулируют K⁺ и РААС.",
+    "ru": "В ренин–ангиотензин–альдостероновой системе альдостерон усиливает реабсорбцию Na и выведение K в дистальном нефроне; секрецию регулируют K⁺ и РААС.",
     "en": "In the renin–angiotensin–aldosterone system, aldosterone increases Na reabsorption and K excretion in the distal nephron; its secretion is driven by K⁺ and the RAAS."
    },
    "options": [
@@ -57131,7 +57131,7 @@
      },
      "explanation": {
       "uz": "To‘g‘ri. Renin–angiotenzin–aldosteron tizimida aldosteron distal nefronda Na qayta so‘rilishi va K ajralishini oshiradi; sekretsiyasini K⁺ darajasi va RAAS boshqaradi.",
-      "ru": "Верно. В системе ренин–ангиотензин–альдостерон альдостерон усиливает реабсорбцию Na и выведение K в дистальном нефроне; секрецию регулируют K⁺ и РААС.",
+      "ru": "Верно. В ренин–ангиотензин–альдостероновой системе альдостерон усиливает реабсорбцию Na и выведение K в дистальном нефроне; секрецию регулируют K⁺ и РААС.",
       "en": "Correct. In the renin–angiotensin–aldosterone system, aldosterone increases Na reabsorption and K excretion in the distal nephron; its secretion is driven by K⁺ and the RAAS."
      }
     },
@@ -57143,7 +57143,7 @@
      },
      "explanation": {
       "uz": "Noto‘g‘ri. Renin–angiotenzin–aldosteron tizimida aldosteron distal nefronda Na qayta so‘rilishi va K ajralishini oshiradi; sekretsiyasini K⁺ darajasi va RAAS boshqaradi.",
-      "ru": "Неверно. В системе ренин–ангиотензин–альдостерон альдостерон усиливает реабсорбцию Na и выведение K в дистальном нефроне; секрецию регулируют K⁺ и РААС.",
+      "ru": "Неверно. В ренин–ангиотензин–альдостероновой системе альдостерон усиливает реабсорбцию Na и выведение K в дистальном нефроне; секрецию регулируют K⁺ и РААС.",
       "en": "Incorrect. In the renin–angiotensin–aldosterone system, aldosterone increases Na reabsorption and K excretion in the distal nephron; its secretion is driven by K⁺ and the RAAS."
      }
     },
@@ -57155,7 +57155,7 @@
      },
      "explanation": {
       "uz": "Noto‘g‘ri. Renin–angiotenzin–aldosteron tizimida aldosteron distal nefronda Na qayta so‘rilishi va K ajralishini oshiradi; sekretsiyasini K⁺ darajasi va RAAS boshqaradi.",
-      "ru": "Неверно. В системе ренин–ангиотензин–альдостерон альдостерон усиливает реабсорбцию Na и выведение K в дистальном нефроне; секрецию регулируют K⁺ и РААС.",
+      "ru": "Неверно. В ренин–ангиотензин–альдостероновой системе альдостерон усиливает реабсорбцию Na и выведение K в дистальном нефроне; секрецию регулируют K⁺ и РААС.",
       "en": "Incorrect. In the renin–angiotensin–aldosterone system, aldosterone increases Na reabsorption and K excretion in the distal nephron; its secretion is driven by K⁺ and the RAAS."
      }
     },
@@ -57167,7 +57167,7 @@
      },
      "explanation": {
       "uz": "Noto‘g‘ri. Renin–angiotenzin–aldosteron tizimida aldosteron distal nefronda Na qayta so‘rilishi va K ajralishini oshiradi; sekretsiyasini K⁺ darajasi va RAAS boshqaradi.",
-      "ru": "Неверно. В системе ренин–ангиотензин–альдостерон альдостерон усиливает реабсорбцию Na и выведение K в дистальном нефроне; секрецию регулируют K⁺ и РААС.",
+      "ru": "Неверно. В ренин–ангиотензин–альдостероновой системе альдостерон усиливает реабсорбцию Na и выведение K в дистальном нефроне; секрецию регулируют K⁺ и РААС.",
       "en": "Incorrect. In the renin–angiotensin–aldosterone system, aldosterone increases Na reabsorption and K excretion in the distal nephron; its secretion is driven by K⁺ and the RAAS."
      }
     }
@@ -71980,7 +71980,7 @@
     "Н.М. Юлдашев"
    ],
    "year": 2020,
-   "publisher": "O'zkitobsavdonashriyoti",
+   "publisher": "O‘zkitobsavdonashriyoti",
    "language": "ru",
    "categories": [
     "biochemistry"
@@ -72094,7 +72094,7 @@
   {
    "id": "lib-sammu-biokimyo-baykulov",
    "kind": "book",
-   "title": "Biokimyo fanidan o'quv qo'llanma",
+   "title": "Biokimyo fanidan o‘quv qo‘llanma",
    "authors": [
     "A.K. Baykulov"
    ],
@@ -77872,7 +77872,7 @@
       "en": "Serum iron"
      },
      "why": {
-      "uz": "Past temir temir tanqisligi anemiyasi, boshqa anemiya turi yoki talassemiyada uchrashi mumkin.",
+      "uz": "Past temir tanqisligi anemiyasi, boshqa anemiya turi yoki talassemiyada uchrashi mumkin.",
       "ru": "Низкое железо бывает при железодефицитной анемии, другом типе анемии или талассемии.",
       "en": "Low iron may occur with iron-deficiency anemia, another type of anemia, or thalassemia."
      },
