@@ -67,8 +67,10 @@ void main() {
     }
   });
 
-  testWidgets('Lab tabi: avval ish vositalari, so‘ng bo‘limlar va atlaslar '
-      '(D-69 Q2)', (tester) async {
+  testWidgets('Lab tabi: avval bo‘limlar kartalari (leykoformula, sitologiya, '
+      'gistologiya...), eng pastda ish vositalari (D-69 Q2, 2026-10-24)', (
+    tester,
+  ) async {
     final s = await makeServices(tester);
     await pumpApp(tester, s, size: const Size(390, 4000));
     await goTo(tester, '/lab');
@@ -78,11 +80,17 @@ void main() {
     final tools = find.text(l.labToolsTitle);
     expect(sections, findsOneWidget);
     expect(tools, findsOneWidget);
-    // Vositalar guruhi birinchi; ichida Leykoformula birinchi, so'ng
-    // kalibrlash, QC, preanalitika, kalkulyatorlar.
-    expect(y(tools), lessThan(y(sections)));
+    // Bo'limlar guruhi birinchi; ichida Leykoformula birinchi, so'ng
+    // sitologiya va boshqa rasmli kartalar, so'ng mikroskopiya atlasi.
+    expect(y(sections), lessThan(y(tools)));
     final diff = y(find.text(l.diffTitle));
-    expect(y(tools), lessThan(diff));
+    expect(y(sections), lessThan(diff));
+    final atlas = find.byKey(const ValueKey('lab-microscopy'));
+    expect(diff, lessThan(y(find.text(l.cytoTitle))));
+    expect(y(find.text(l.cytoTitle)), lessThan(y(atlas)));
+    expect(y(atlas), lessThan(y(tools)));
+    // Eng pastda — vositalar: kalibrlash, QC, preanalitika, kalkulyatorlar,
+    // apparatlar (hammasi sarlavhadan keyin).
     for (final t in [
       l.labHeroTitle,
       l.featureQc,
@@ -90,13 +98,8 @@ void main() {
       l.featureCalculators,
       l.labInstruments,
     ]) {
-      expect(diff, lessThan(y(find.text(t))), reason: t);
-      expect(y(find.text(t)), lessThan(y(sections)), reason: t);
+      expect(y(tools), lessThan(y(find.text(t))), reason: t);
     }
-    // Rasmli bo'limlar va atlas — ikkinchi guruhda.
-    final atlas = find.byKey(const ValueKey('lab-microscopy'));
-    expect(y(sections), lessThan(y(find.text(l.cytoTitle))));
-    expect(y(sections), lessThan(y(atlas)));
     await _tapKey(tester, 'lab-microscopy');
     expect(_location(tester), '/lab/microscopy');
   });

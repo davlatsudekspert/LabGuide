@@ -32,48 +32,14 @@ class LabScreen extends StatelessWidget {
       subtitle: l.labSubtitle,
       showBrand: true,
       children: [
-        // Ikki guruh (sarlavha bilan, D-69 Q2): avval kundalik ish vositalari
-        // (leykoformula, kalibrlash, QC, preanalitika, kalkulyator,
-        // apparatlar), so'ng rasmli bo'limlar va atlaslar.
-        LgSectionTitle(l.labToolsTitle),
-        // Leykoformula (hisoblagich) — kundalik ishning eng ko'p
-        // ishlatiladigan vositasi, shuning uchun birinchi.
-        const DifferentialEntryCard(),
-        // Kalibrlash — boshqa vositalar kabi bir xil qator (katta kartochka
-        // rasmli bo'limlar tartibini buzayotgan edi).
-        LgRow(
-          key: const ValueKey('lab-calibration'),
-          title: l.labHeroTitle,
-          subtitle: l.labHeroBody,
-          icon: Icons.tune_rounded,
-          onTap: () => context.push('/lab/calibration'),
-        ),
-        LgRow(
-          title: l.featureQc,
-          subtitle: l.labQcSub,
-          icon: Icons.show_chart_rounded,
-          onTap: () => context.push('/lab/qc'),
-        ),
-        LgRow(
-          title: l.labPreanalytics,
-          subtitle: l.labPreanalyticsSub,
-          icon: Icons.science_outlined,
-          onTap: () => context.push('/lab/preanalytics'),
-        ),
-        LgRow(
-          title: l.featureCalculators,
-          subtitle: l.labCalculatorsSub,
-          icon: Icons.calculate_outlined,
-          onTap: () => context.push('/lab/calculators'),
-        ),
-        LgRow(
-          title: l.labInstruments,
-          subtitle: l.labInstrumentsSub,
-          icon: Icons.precision_manufacturing_outlined,
-          onTap: () => context.push('/lab/instruments'),
-          divider: false,
-        ),
+        // Ikki guruh (D-69 Q2, 2026-10-24 egasi): avval rasmli bo'limlar
+        // yonma-yon bir xil kartalarda (leykoformula, sitologiya, gistologiya
+        // va boshqalar), eng pastda — ish vositalari (kalibrlash, QC,
+        // preanalitika, kalkulyator, apparatlar).
         LgSectionTitle(l.labSectionsTitle),
+        // Leykoformula (hisoblagich) — kundalik ishning eng ko'p
+        // ishlatiladigan vositasi, shuning uchun guruhda birinchi.
+        const DifferentialEntryCard(),
         // Rasmli bo'limlar: sitologiya, spermogramma, qon guruhi,
         // gistologiya, siydik tahlili, qon morfologiyasi, koagulogramma,
         // koprologiya; so'ng mikroskopiya atlasi.
@@ -131,6 +97,41 @@ class LabScreen extends StatelessWidget {
           subtitle: l.labMicroscopySub,
           icon: Icons.biotech_outlined,
           onTap: () => context.push('/lab/microscopy'),
+          divider: false,
+        ),
+        LgSectionTitle(l.labToolsTitle),
+        // Kalibrlash — boshqa vositalar kabi bir xil qator (katta kartochka
+        // rasmli bo'limlar tartibini buzayotgan edi).
+        LgRow(
+          key: const ValueKey('lab-calibration'),
+          title: l.labHeroTitle,
+          subtitle: l.labHeroBody,
+          icon: Icons.tune_rounded,
+          onTap: () => context.push('/lab/calibration'),
+        ),
+        LgRow(
+          title: l.featureQc,
+          subtitle: l.labQcSub,
+          icon: Icons.show_chart_rounded,
+          onTap: () => context.push('/lab/qc'),
+        ),
+        LgRow(
+          title: l.labPreanalytics,
+          subtitle: l.labPreanalyticsSub,
+          icon: Icons.science_outlined,
+          onTap: () => context.push('/lab/preanalytics'),
+        ),
+        LgRow(
+          title: l.featureCalculators,
+          subtitle: l.labCalculatorsSub,
+          icon: Icons.calculate_outlined,
+          onTap: () => context.push('/lab/calculators'),
+        ),
+        LgRow(
+          title: l.labInstruments,
+          subtitle: l.labInstrumentsSub,
+          icon: Icons.precision_manufacturing_outlined,
+          onTap: () => context.push('/lab/instruments'),
           divider: false,
         ),
         // Faqat hamkor UI yoqilgan buildda va haqiqiy faol hamkor bo'lsa —
