@@ -1279,3 +1279,10 @@ kalitlari, sandbox matritsasi (xarid/tiklash/bekor/grace/refund/boshqa hisob).
 (3) Play UZS narx pog'onalari, Apple UZ = USD qabul; (4) 30 kun: (a)/(b)/(c); (5) talaba — tasdiqdan keyin yoki
 ochiq; (6) qaysi imkoniyatlar yopiladi, mavjud foydalanuvchilar (grandfathering); (7) `pro-next` → `main` qoidasi,
 `pro-later` ni arxiv tegi qilish; (8) do'kon kalitlari kimda va `deploy_api` qachon; (9) maxfiylik/shartlar matni; (10) mehmon xarid qila olsinmi yoki avval hisob shartmi.
+
+## D-72. Pro taklifi: yillik tarif, 30 kunlik davr, pullik funksiyalar, bepul huquqlar (2026-10-24, TAKLIF)
+Egasi 2026-10-24 topshirig'i: Pro `pro-next` da tayyorlanadi, `proEnabled=false` saqlanadi; taklif narxlar Talaba $1.49, Oddiy $3.99,
+Ustoz $5.99 (oylik); yillik, 30 kunlik bepul davr va pullik funksiyalar — ALOHIDA TAKLIF sifatida; mavjud bepul foydalanuvchilar
+huquqi egasi qarorisiz cheklanmaydi; billing/paywall/server faollashtirilmaydi. To'liq matn: `docs/PRO_PROPOSAL_D72.md`.
+Kodga o'zgarish kiritilmadi (D-71 holati o'zgarmaydi).
+
