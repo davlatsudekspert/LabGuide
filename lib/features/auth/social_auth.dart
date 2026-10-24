@@ -146,6 +146,38 @@ abstract interface class SocialLoginBackend {
   Future<void> deleteAccountWithApple(String? appleAuthorizationCode);
 }
 
+/// Qaysi tugmalar ko'rinadi — **yagona qoida** (App Store 4.8). Har bir
+/// kirish ekrani shu ro'yxatni ishlatadi ([SocialAuthService.available] va
+/// [SocialSignInButtons] ham shu funksiyadan o'tadi).
+///
+/// iOS'da Google tugmasi faqat maxfiylikni saqlovchi "Sign in with Apple"
+/// ham ko'rinsa chiqadi: `googleVisible = googleAvailable &&
+/// (platform != iOS || appleVisible)`. Apple bo'lmasa iOS'da Google ham
+/// yashiriladi — email-kod kirishi qoladi (u 4.8 dagi "emailni yashirish"
+/// shartiga javob bermaydi, shuning uchun Apple o'rnini bosmaydi).
+/// Android o'zgarmaydi: Google mustaqil, Apple — faqat sozlangan bo'lsa.
+/// Tartib: Apple birinchi.
+List<SocialProvider> visibleSocialProviders({
+  required TargetPlatform platform,
+  required bool appleAvailable,
+  required bool googleAvailable,
+}) {
+  final appleVisible = appleAvailable;
+  final googleVisible =
+      googleAvailable && (platform != TargetPlatform.iOS || appleVisible);
+  if (googleAvailable && !googleVisible) {
+    debugPrint(
+      'social: iOS — Sign in with Apple yo\'q, shuning uchun Google tugmasi '
+      'ham yashirildi (App Store 4.8). LG_APPLE_SIGNIN va entitlement\'ni '
+      'tekshiring.',
+    );
+  }
+  return [
+    if (appleVisible) SocialProvider.apple,
+    if (googleVisible) SocialProvider.google,
+  ];
+}
+
 /// Ilovadagi yagona kirish nuqtasi: qaysi tugmalar ko'rinadi va kirish.
 class SocialAuthService {
   SocialAuthService({
@@ -203,14 +235,16 @@ class SocialAuthService {
     }
     if (status == null) return const [];
     final android = defaultTargetPlatform == TargetPlatform.android;
-    final out = <SocialProvider>[
-      for (final p in local)
-        if (switch (p.provider) {
-          SocialProvider.google => status.google,
-          SocialProvider.apple => status.apple && (!android || status.appleWeb),
-        })
-          p.provider,
-    ];
+    final out = visibleSocialProviders(
+      platform: defaultTargetPlatform,
+      appleAvailable:
+          local.any((p) => p.provider == SocialProvider.apple) &&
+          status.apple &&
+          (!android || status.appleWeb),
+      googleAvailable:
+          local.any((p) => p.provider == SocialProvider.google) &&
+          status.google,
+    );
     return _available = out;
   }
 
