@@ -10032,7 +10032,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get proPayTierTeacherSub =>
-      'Guruh bilan ishlaydigan ustoz uchun. Pro tarifidagi hamma imkoniyat ham kiradi.';
+      'Guruh bilan ishlaydigan ustoz uchun: Talaba imkoniyatlari va ustoz paneli. Laboratoriya bo‘limi kirmaydi.';
 
   @override
   String get proPayFree =>
@@ -10071,6 +10071,37 @@ class AppLocalizationsUz extends AppLocalizations {
   @override
   String get proPayFeatLecture =>
       'Ma’ruza rejimi: mavzu bo‘yicha avtomatik taqdimot';
+
+  @override
+  String get proPayFeatLabCount => 'Leykoformula: sanash va natijani saqlash';
+
+  @override
+  String get proPayFeatLabAbsolute => 'Leykoformula: foiz va mutlaq sonlar';
+
+  @override
+  String get proPayFeatLabEvaluate => 'Leykoformula: natijani baholash';
+
+  @override
+  String get proPayFeatLabSections =>
+      'Laboratoriya bo‘limlari: sitologiya, spermogramma, qon guruhi, gistologiya, siydik tahlili, qon morfologiyasi, koprologiya';
+
+  @override
+  String get proPayFeatLabCoag => 'Koagulogramma';
+
+  @override
+  String get proPayFeatLabInstruments => 'Apparatlar katalogi';
+
+  @override
+  String get proPayFeatLabDirections => 'Laboratoriya yo‘nalishlari kartalari';
+
+  @override
+  String get proPayFeatLabCalibration => 'Kalibrlash va kalibrlash jurnali';
+
+  @override
+  String get proPayFeatLabQc => 'Sifat nazorati (QC)';
+
+  @override
+  String get proPayFeatLabCalculators => 'Laboratoriya kalkulyatorlari';
 
   @override
   String get proPayPlanMonthly => 'Oylik';
@@ -10148,13 +10179,21 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get proPayGuestNote =>
-      'Xarid uchun hisob shart emas. Hisobga kirsangiz, obuna boshqa qurilmalaringizda ham ishlaydi.';
+      'Obuna, xaridni tiklash va bepul sinov uchun hisobga kirish kerak. Ilovaning bepul qismidan hisobsiz foydalanish mumkin.';
+
+  @override
+  String get proPaySignInRequired =>
+      'Obuna bo‘lish va xaridni tiklash uchun avval hisobga kiring.';
 
   @override
   String get proPayLockedPro => 'Bu imkoniyat Pro obunasida.';
 
   @override
-  String get proPayLockedTeacher => 'Bu imkoniyat Ustoz Pro obunasida.';
+  String get proPayLockedTeacher => 'Bu imkoniyat Ustoz yoki Premium rejasida.';
+
+  @override
+  String get proPayLockedLab =>
+      'Bu imkoniyat Mutaxassis yoki Premium rejasida.';
 
   @override
   String get proPayAllOpen => 'Hozir barcha imkoniyatlar ochiq.';
@@ -10254,6 +10293,9 @@ class AppLocalizationsUz extends AppLocalizations {
   String get proPlanSpecialist => 'Mutaxassis';
 
   @override
+  String get proPlanPremium => 'Premium';
+
+  @override
   String get proPayTierStudent => 'Talaba';
 
   @override
@@ -10265,7 +10307,14 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get proPayTierSpecialistSub =>
-      'Laborant va shifokor uchun. Ustoz imkoniyatlari ham kiradi.';
+      'Laborant va shifokor uchun: Talaba imkoniyatlari va butun Laboratoriya bo‘limi. Ustoz paneli kirmaydi.';
+
+  @override
+  String get proPayTierPremium => 'Premium';
+
+  @override
+  String get proPayTierPremiumSub =>
+      'Hamma imkoniyat: Talaba imkoniyatlari, ustoz paneli va butun Laboratoriya bo‘limi.';
 
   @override
   String get proPayStatusAdminGrant => 'Pro administrator tomonidan berilgan';
@@ -10386,6 +10435,10 @@ class AppLocalizationsUz extends AppLocalizations {
       'Faol grantlar chegarasiga yetildi. Avval keraksizini bekor qiling.';
 
   @override
+  String get proGrantErrTierMix =>
+      'Bu darajalar bir-birini qamramaydi, shuning uchun uzaytirib bo‘lmaydi. Kerakli darajani tanlab, mavjud grantni almashtiring.';
+
+  @override
   String get proSubTitle => 'Obuna';
 
   @override
@@ -10445,7 +10498,8 @@ class AppLocalizationsUz extends AppLocalizations {
   String get proSubCapTeacherPanel => 'ustoz paneli Pro imkoniyatlari';
 
   @override
-  String get proSubCapSpecialist => 'mutaxassis Pro imkoniyatlari';
+  String get proSubCapLab =>
+      'butun Laboratoriya bo‘limi (apparatlar, kalibrlash, QC, kalkulyatorlar, leykoformula sanash va boshqalar)';
 
   @override
   String get proSubNothingGated =>
@@ -10453,10 +10507,12 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get proSubTeacherNote =>
-      'Ustoz paneli Pro imkoniyatlari faqat Ustoz yoki Mutaxassis rejasida bo‘ladi. Ilovada rolni o‘zgartirish ularni ochmaydi. Bugungi bepul guruhlar bepul qoladi.';
+      'Ustoz paneli Pro imkoniyatlari faqat Ustoz yoki Premium rejasida, Laboratoriya bo‘limi esa faqat Mutaxassis yoki Premium rejasida bo‘ladi. Ilovada rolni o‘zgartirish ularni ochmaydi. Bugungi bepul guruhlar bepul qoladi.';
 
   @override
-  String get proSubTrialTitle => '30 kunlik bepul sinov';
+  String proSubTrialTitle(int days) {
+    return '$days kunlik bepul sinov';
+  }
 
   @override
   String get proSubTrialOncePerPhone =>
@@ -10473,7 +10529,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get proPrivacyTrialNote =>
-      'Pro (faqat Pro yoqilganda, hozir faol emas): 30 kunlik bepul sinov bir telefonga bir marta beriladi. Buning uchun serverda sinov sanalari, reja, platforma va emailingiz (kanonik ko‘rinishda) hamda qurilma belgisining faqat kalitli, qaytarib bo‘lmaydigan xeshi saqlanadi — xom email, qurilma identifikatori yoki attestatsiya tokeni saqlanmaydi. Hisob o‘chirilganda yozuv hisobdan uziladi, lekin sinov qayta berilmasligi uchun 24 oy saqlanadi, so‘ng avtomatik o‘chiriladi.';
+      'Pro (faqat Pro yoqilganda, hozir faol emas): 7 kunlik bepul sinov bir telefonga bir marta beriladi. Buning uchun serverda sinov sanalari, reja, platforma va emailingiz (kanonik ko‘rinishda) hamda qurilma belgisining faqat kalitli, qaytarib bo‘lmaydigan xeshi saqlanadi — xom email, qurilma identifikatori yoki attestatsiya tokeni saqlanmaydi. Hisob o‘chirilganda yozuv hisobdan uziladi, lekin sinov qayta berilmasligi uchun 24 oy saqlanadi, so‘ng avtomatik o‘chiriladi.';
 
   @override
   String proSubTrialBody(int days) {
@@ -10514,7 +10570,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get proSubTrialPlanNotAllowed =>
-      'Bu reja sinovi faqat ustozlar va tasdiqlangan mutaxassislar uchun. Talaba rejasini sinab ko‘ring.';
+      'Ustoz sinovi — serverda ustoz sifatida ro‘yxatdan o‘tganlar uchun, Mutaxassis sinovi — tasdiqlangan mutaxassislar uchun, Premium sinovi — ikkalasi ham bo‘lganlar uchun. Talaba rejasini sinab ko‘ring.';
 
   @override
   String get proSubTrialEmail =>

@@ -13,6 +13,7 @@ import 'package:labguide/core/entitlements/entitlement_models.dart';
 import 'package:labguide/core/entitlements/entitlement_service.dart';
 import 'package:labguide/core/entitlements/entitlement_source.dart';
 import 'package:labguide/core/entitlements/feature.dart';
+import 'package:labguide/core/entitlements/pro_catalog.dart';
 import 'package:labguide/core/entitlements/purchase_adapter.dart';
 import 'package:labguide/core/storage/kv_store.dart';
 
@@ -94,7 +95,7 @@ void main() {
       source.user = null;
       final s = make(open: true);
       expect(s.proSource, ProSource.buildOpen);
-      expect(s.tier, ProTier.teacher);
+      expect(s.tier, ProTier.all);
       for (final f in Feature.values) {
         expect(s.can(f), isTrue, reason: f.name);
       }
@@ -162,13 +163,11 @@ void main() {
   });
 
   group('bepul rejim (to‘lov yoqilgan)', () {
-    test('D-53: bepul imkoniyatlar ochiq, Pro va Ustoz Pro yopiq', () {
+    test('D-53: bepul imkoniyatlar ochiq; Pro, ustoz paneli va Lab yopiq', () {
       final s = make();
       expect(s.gatingActive, isTrue);
       expect(s.isPro, isFalse);
       for (final f in [
-        Feature.leukocyteCounter,
-        Feature.absoluteCounts,
         Feature.basicGuides,
         Feature.dailyQuestions,
         Feature.mistakeReview,
@@ -212,30 +211,89 @@ void main() {
         final s = make();
         await s.refresh();
         expect(s.proSource, ProSource.server);
-        expect(s.tier, ProTier.pro);
+        expect(s.tier, ProPlan.student.tier);
         expect(s.can(Feature.examSimulation), isTrue);
         expect(s.can(Feature.fullToifaBank), isTrue);
         expect(s.can(Feature.groups), isFalse);
+        expect(s.can(Feature.leukocyteCounter), isFalse, reason: 'Lab yo‘q');
         expect(s.historyVisibleLimit(), isNull);
         expect(store.getString(StoreKeys.entitlementsCache), isNotNull);
       },
     );
 
-    test('Ustoz Pro hammasini ochadi', () async {
-      source.snapshot = _snap([_sub(product: BillingCatalog.teacherYearly)]);
+    // D-76 matritsasi: har reja faqat o'z to'plamini ochadi.
+    for (final (plan, product) in [
+      (ProPlan.teacher, BillingCatalog.teacherYearly),
+      (ProPlan.specialist, BillingCatalog.specialistMonthly),
+      (ProPlan.premium, BillingCatalog.premiumYearly),
+    ]) {
+      test('${plan.name} rejasi: faqat o‘z imkoniyatlari (D-76)', () async {
+        source.snapshot = _snap([_sub(product: product)]);
+        final s = make();
+        await s.refresh();
+        expect(s.plan, plan);
+        expect(s.tier, plan.tier);
+        for (final f in Feature.values) {
+          expect(
+            s.can(f),
+            f.capability == null || plan.tier.allows(f.capability),
+            reason: '${plan.name} × ${f.name}',
+          );
+        }
+      });
+    }
+
+    test(
+      'Ustoz: Lab yopiq; Mutaxassis: ustoz paneli yopiq; Premium: hammasi',
+      () async {
+        source.snapshot = _snap([_sub(product: BillingCatalog.teacherMonthly)]);
+        final s = make();
+        await s.refresh();
+        expect(s.can(Feature.groups), isTrue);
+        expect(s.can(Feature.leukocyteCounter), isFalse);
+        expect(s.can(Feature.calibration), isFalse);
+        source.snapshot = _snap([
+          _sub(product: BillingCatalog.specialistMonthly),
+        ]);
+        await s.refresh();
+        expect(s.can(Feature.leukocyteCounter), isTrue);
+        expect(s.can(Feature.qualityControl), isTrue);
+        expect(s.can(Feature.groups), isFalse);
+        expect(s.can(Feature.assignments), isFalse);
+        source.snapshot = _snap([_sub(product: BillingCatalog.premiumMonthly)]);
+        await s.refresh();
+        for (final f in Feature.values) {
+          expect(s.can(f), isTrue, reason: f.name);
+        }
+      },
+    );
+
+    test('Ustoz obunasi + Mutaxassis admin granti — birlashma (server bilan bir xil)', () async {
+      source.snapshot = _snap([
+        _sub(product: BillingCatalog.teacherMonthly),
+        ServerEntitlement(
+          productId: 'admin_grant.specialist',
+          platform: 'admin_grant',
+          status: EntitlementStatus.active,
+          startedAt: _t0.subtract(const Duration(days: 1)),
+          expiresAt: _t0.add(const Duration(days: 10)),
+          source: ServerEntitlement.adminGrantSource,
+          plan: ProPlan.specialist,
+        ),
+      ]);
       final s = make();
       await s.refresh();
-      expect(s.tier, ProTier.teacher);
-      for (final f in Feature.values) {
-        expect(s.can(f), isTrue, reason: f.name);
-      }
+      expect(s.tier, ProPlan.premium.tier);
+      expect(s.can(Feature.groups), isTrue);
+      expect(s.can(Feature.leukocyteCounter), isTrue);
     });
 
-    test('katalogda yo‘q mahsulot — faqat Pro (Ustoz Pro emas)', () async {
+    test('katalogda yo‘q mahsulot — faqat Talaba to‘plami (ustoz paneli va Lab emas)', () async {
       source.snapshot = _snap([_sub(product: 'labguide.pro.monthly')]);
       final s = make();
       await s.refresh();
-      expect(s.tier, ProTier.pro);
+      expect(s.tier, ProPlan.student.tier);
+      expect(s.can(Feature.labInstruments), isFalse);
     });
 
     test('imtiyoz davri (grace) Pro beradi, billing retry bermaydi', () async {
@@ -497,54 +555,43 @@ void main() {
       expect(await make().restore(), BillingOutcome.unavailable);
     });
 
+    // D-76 (egasi qarori): mehmon xarid qilmaydi va sinov olmaydi — avval
+    // hisobga kirish. Mehmon rejimining bepul qismi o'zgarmaydi.
     test(
-      'mehmon: hisobsiz xarid qurilmada ishlaydi (App Store 5.1.1)',
+      'mehmon: xarid va tiklash — signInRequired, do‘kon oynasi ochilmaydi',
       () async {
         source.user = null;
-        shop.proofs = [
-          PurchaseProof(
-            platform: 'app_store',
-            productId: BillingCatalog.teacherMonthly,
-            token: '2000000999',
-            purchasedAt: _t0,
-            expiresAt: _t0.add(const Duration(days: 14)),
-          ),
-        ];
+        shop.proofs = const [_proof];
         final s = make();
         expect(
           await s.purchase(BillingCatalog.teacherMonthly),
-          BillingOutcome.success,
+          BillingOutcome.signInRequired,
         );
-        expect(shop.bought.single.$2, isNull, reason: 'hisob belgisi yo‘q');
-        expect(source.verified, isNull, reason: 'serverga yuborilmadi');
-        expect(shop.finished, hasLength(1));
-        expect(s.proSource, ProSource.store);
-        expect(s.tier, ProTier.teacher);
-        now = _t0.add(const Duration(days: 15));
-        expect(s.isPro, isFalse, reason: 'StoreKit muddati tugadi');
+        expect(await s.restore(), BillingOutcome.signInRequired);
+        expect(shop.bought, isEmpty, reason: 'do‘kon chaqirilmadi');
+        expect(source.verified, isNull);
+        expect(s.isPro, isFalse);
+        expect(s.trialAvailable, isFalse);
+        expect(s.trialBlock, TrialBlock.guest);
       },
     );
 
-    test('mehmon xaridi hisobga kirilganda serverga bog‘lanadi', () async {
-      source.user = null;
+    test('mehmon: qurilmadagi do‘kon obunasi huquq bermaydi; hisobga '
+        'kirilganda serverga bog‘lanadi', () async {
+      source
+        ..user = null
+        ..snapshot = _snap([]);
       shop.proofs = const [_proof];
       final s = make();
-      expect(
-        await s.purchase(BillingCatalog.specialistMonthly),
-        BillingOutcome.success,
-      );
-      // Server hali bu xaridni bilmaydi — refresh uni tiklash sifatida yuboradi.
-      source
-        ..user = 'user-a'
-        ..snapshot = _snap([]);
+      await s.start();
+      expect(s.isPro, isFalse, reason: 'mehmon Pro olmaydi');
+      expect(s.proSource, ProSource.none);
+      expect(source.verified, isNull);
+      // Hisobga kirildi — server hali bilmaydi, refresh tiklash sifatida yuboradi.
+      source.user = 'user-a';
       await s.refresh();
       expect(source.verified?.single.token, _proof.token);
       expect(source.verifiedRestore, isTrue);
-      expect(
-        s.proSource,
-        ProSource.none,
-        reason: 'hisobda faqat server holati',
-      );
     });
 
     test('ilova ochilganda: probe → do‘kon → server → jim tiklash', () async {
@@ -584,6 +631,8 @@ void main() {
         'uz.labguide.teacher.yearly',
         'uz.labguide.specialist.monthly',
         'uz.labguide.specialist.yearly',
+        'uz.labguide.premium.monthly',
+        'uz.labguide.premium.yearly',
       });
       final server = File('cloudflare/src/billing.ts').readAsStringSync();
       final ids = RegExp(r"'(uz\.labguide\.[a-z.]+)': \{ plan: '(\w+)' \}")

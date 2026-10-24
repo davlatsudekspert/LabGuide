@@ -230,7 +230,8 @@ void main() {
       );
       // `EntitlementService` hech qanday rol qabul qilmaydi — rolni
       // almashtirish uchun API yo'q; daraja faqat server qatoridan.
-      expect(ent.tier.covers(ProTier.teacher), isFalse);
+      expect(ent.tier.allows(ProCapability.teacherPanel), isFalse);
+      expect(ent.tier.allows(ProCapability.lab), isFalse);
     });
   });
 
@@ -262,6 +263,8 @@ void main() {
             r'$24.99',
             r'$3.49',
             r'$34.99',
+            r'$4.99',
+            r'$49.99',
           ]),
         );
         expect(ent.trialAvailable, isTrue);

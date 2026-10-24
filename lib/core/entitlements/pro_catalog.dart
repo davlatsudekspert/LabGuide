@@ -2,28 +2,25 @@ import 'package:flutter/foundation.dart';
 
 import 'billing_catalog.dart';
 import 'feature.dart';
+import 'plan_matrix.dart';
 
-/// Pullik daraja (D-73): Talaba, Ustoz, Mutaxassis. Tartib = narx tartibi:
-/// admin grant va server huquqni hal qilishda yuqori daraja yutadi.
+/// Pullik reja (D-73, D-76): Talaba, Ustoz, Mutaxassis, Premium. Tartib =
+/// narx tartibi (admin grant / server huquqni hal qilishda TENG holatda
+/// ko'rsatish uchun). Qaysi imkoniyat ochilishi tartibdan EMAS —
+/// [PlanMatrix] to'plamidan ([tier]).
 enum ProPlan {
   student,
   teacher,
-  specialist;
+  specialist,
+  premium;
 
-  /// Server bilan umumiy nom (`student` / `teacher` / `specialist`).
+  /// Server bilan umumiy nom (`student` / `teacher` / `specialist` / `premium`).
   String get wire => name;
 
-  /// Shu daraja ilovada ochadigan imkoniyatlar darajasi. Talaba — Pro;
-  /// Ustoz — Ustoz Pro (guruhlar); Mutaxassis — Ustoz Pro darajasi (eng
-  /// qimmat reja kamroq bermasin).
-  // TODO(owner): qaysi daraja nimani ochishi (D-73, ochiq qaror) — hozir
-  // hech narsa yopilmaydi ([ProGatePolicy.gated] bo'sh), shuning uchun bu
-  // moslik faqat tayyorgarlik.
-  ProTier get tier => switch (this) {
-    student => ProTier.pro,
-    teacher => ProTier.teacher,
-    specialist => ProTier.teacher,
-  };
+  /// Shu reja ochadigan imkoniyatlar to'plami (D-76 matritsasi). Hozir hech
+  /// narsa yopilmaydi ([ProGatePolicy.gated] bo'sh), shuning uchun bu faqat
+  /// tayyorgarlik.
+  ProTier get tier => ProTier(PlanMatrix.capabilities[this]!);
 
   static ProPlan? parse(Object? raw) {
     for (final p in values) {
@@ -38,7 +35,7 @@ enum ProPlan {
 /// valyutada) keladi. Bu katalog — do'konlarda mahsulot narxini qo'yish
 /// uchun egasiga ko'rsatma va testlar uchun yagona manba.
 ///
-/// Narxlar — EGASI QARORI (2026-10-24, D-73), lekin Pro o'chiq: to'lov hech
+/// Narxlar — EGASI QARORI (2026-10-24, D-73; Premium — D-76), lekin Pro o'chiq: to'lov hech
 /// qayerda yoqilmagan. Oldingi narxlar va tariflar (D-48/D-50/D-57/D-71/D-72)
 /// hamda eski 7/14 kunlik sinov (D-49) hech qayerda faol emas; ro'yxati
 /// docs/DECISIONS.md D-73 da.
@@ -67,7 +64,8 @@ class ProPlanSpec {
 }
 
 abstract final class ProPricing {
-  /// Egasi tasdiqlagan bazaviy narxlar (D-73, 2026-10-24). Mahalliy
+  /// Egasi tasdiqlagan bazaviy narxlar (D-73, D-76; 2026-10-24) — YAGONA
+  /// narx manbai (docs va testlar shu ro'yxatdan). Mahalliy
   /// valyuta narxlari (UZS va h.k.) — do'kon narx nuqtalari, ochiq qaror.
   static const plans = <ProPlanSpec>[
     ProPlanSpec(
@@ -91,6 +89,13 @@ abstract final class ProPricing {
       monthlyUsd: 3.49,
       yearlyUsd: 34.99,
     ),
+    ProPlanSpec(
+      plan: ProPlan.premium,
+      monthlyProductId: BillingCatalog.premiumMonthly,
+      yearlyProductId: BillingCatalog.premiumYearly,
+      monthlyUsd: 4.99,
+      yearlyUsd: 49.99,
+    ),
   ];
 
   /// Yillik mahsulot to'lov oynasida ko'rsatilsinmi (faqat narxi belgilangan
@@ -103,10 +108,10 @@ abstract final class ProPricing {
   }
 }
 
-/// Bepul foydalanish davri sozlamasi (D-71/D-73 → D-75).
+/// Bepul foydalanish davri sozlamasi (D-71/D-73 → D-75 → D-76).
 ///
-/// D-75: 30 kunlik sinov — SERVER beradigan, kartasiz sinov (M1,
-/// [ProTrialMechanism.serverGranted]). Server qoidasi: `cloudflare/src/trial.ts`
+/// D-76: 7 kunlik sinov (HAMMA reja uchun; D-75 dagi 30 kun bekor) — SERVER
+/// beradigan, kartasiz sinov (M1, [ProTrialMechanism.serverGranted]). Server qoidasi: `cloudflare/src/trial.ts`
 /// (`TRIAL_DAYS`, `TRIAL_PLATFORMS` — standart faqat Android; iOS Apple
 /// yozma javobidan keyin). Ilova sinov tugmasini faqat server imkoniyat
 /// so'rovi (`GET /v1/billing/status` → `trial.<platforma>`) `true` desa va
@@ -122,8 +127,8 @@ abstract final class ProTrialConfig {
   static const int? freeTrialDays = null;
   static const ProTrialMechanism mechanism = ProTrialMechanism.serverGranted;
 
-  /// Server sinovi (D-74/D-75) — `cloudflare/src/trial.ts` `TRIAL_DAYS` bilan bir xil.
-  static const int serverTrialDays = 30;
+  /// Server sinovi (D-74/D-76) — `cloudflare/src/trial.ts` `TRIAL_DAYS` bilan bir xil.
+  static const int serverTrialDays = 7;
 
   /// Do'kon kirish taklifi (bepul sinov) ko'rsatilsinmi/tanlansinmi: YO'Q.
   static const bool storeIntroOffersAllowed = false;
@@ -143,4 +148,24 @@ enum ProTrialMechanism { undecided, storeIntroOffer, serverGranted }
 /// Egasi qaror qilgach faqat shu ro'yxat to'ldiriladi.
 abstract final class ProGatePolicy {
   static const Set<Feature> gated = {};
+
+  /// REJALASHTIRILGAN Lab yopilishi (D-76, egasi qarori) — FAOL EMAS.
+  /// [gated] ga qo'shilmaguncha (va Pro yoqilmaguncha) hech narsa
+  /// yopilmaydi; testlar `EntitlementService(gated: plannedLabGate)` bilan
+  /// yopish ishlashini va standart buildda hech narsa yopilmasligini
+  /// tekshiradi. Ekran (kirish sahifasi) ochiladi; amal/vosita boshlanishida
+  /// `requireFeature` to'lov oynasini ko'rsatadi; boshlangan sanash
+  /// to'xtatilmaydi.
+  static const Set<Feature> plannedLabGate = {
+    Feature.leukocyteCounter,
+    Feature.absoluteCounts,
+    Feature.leukocyteEvaluation,
+    Feature.labSections,
+    Feature.coagulogram,
+    Feature.labInstruments,
+    Feature.labDirections,
+    Feature.calibration,
+    Feature.qualityControl,
+    Feature.labCalculators,
+  };
 }

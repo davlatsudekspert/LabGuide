@@ -65,7 +65,7 @@ void main() {
     tester,
   ) async {
     final s = await _svc(tester, proEnabled: null);
-    await pumpApp(tester, s, size: const Size(390, 2400));
+    await pumpApp(tester, s, size: const Size(390, 3400));
     final uz = _l(AppLanguage.uz);
     await goTo(tester, '/profile');
     expect(find.byKey(const ValueKey('profile-subscription')), findsNothing);
@@ -79,7 +79,7 @@ void main() {
       'holat, sinov qoidasi, tiklash', (tester) async {
     final s = await _svc(tester);
     await s.entitlements.start();
-    await pumpApp(tester, s, size: const Size(390, 2600));
+    await pumpApp(tester, s, size: const Size(390, 3600));
     final uz = _l(AppLanguage.uz);
     await goTo(tester, '/profile');
     final row = find.byKey(const ValueKey('profile-subscription'));
@@ -136,6 +136,29 @@ void main() {
       ),
       findsOneWidget,
     );
+    // D-76 matritsasi: Mutaxassis — Talaba + Lab (ustoz panelisiz);
+    // Premium — hammasi; Ustoz — Talaba + ustoz paneli (Lab'siz).
+    String unlocks(List<String> caps) => uz.proSubUnlocks(caps.join(', '));
+    for (final (plan, caps) in [
+      ('teacher', [uz.proSubCapLearner, uz.proSubCapTeacherPanel]),
+      ('specialist', [uz.proSubCapLearner, uz.proSubCapLab]),
+      (
+        'premium',
+        [uz.proSubCapLearner, uz.proSubCapTeacherPanel, uz.proSubCapLab],
+      ),
+    ]) {
+      expect(
+        find.descendant(
+          of: find.byKey(ValueKey('sub-plan-$plan')),
+          matching: find.text(unlocks(caps)),
+        ),
+        findsOneWidget,
+        reason: plan,
+      );
+    }
+    expect(find.textContaining(r'$4.99'), findsOneWidget);
+    expect(find.textContaining(r'$49.99'), findsOneWidget);
+    expect(find.text(uz.proSubTrialTitle(7)), findsOneWidget);
     // Server bu platformada sinov taklif qilmaydi (standart): qoida va sinov
     // matni ko'rsatilmaydi, faqat oddiy izoh (mehmon).
     expect(find.text(uz.proSubTrialOncePerPhone), findsNothing);
@@ -159,7 +182,7 @@ void main() {
       });
     final s = await _svc(tester, source: src);
     await s.entitlements.start();
-    await pumpApp(tester, s, size: const Size(390, 2400));
+    await pumpApp(tester, s, size: const Size(390, 3400));
     final uz = _l(AppLanguage.uz);
     await goTo(tester, '/profile/subscription');
     expect(
@@ -185,12 +208,12 @@ void main() {
     tester,
   ) async {
     final off = await _svc(tester, proEnabled: null);
-    await pumpApp(tester, off, size: const Size(390, 2400));
+    await pumpApp(tester, off, size: const Size(390, 3400));
     await goTo(tester, '/profile/privacy');
     expect(find.byKey(const ValueKey('privacy-pro-trial')), findsNothing);
 
     final on = await _svc(tester);
-    await pumpApp(tester, on, size: const Size(390, 2400));
+    await pumpApp(tester, on, size: const Size(390, 3400));
     await goTo(tester, '/profile/privacy');
     expect(find.text(_l(AppLanguage.uz).proPrivacyTrialNote), findsOneWidget);
   });
@@ -220,7 +243,7 @@ void main() {
       final src = FakeEntitlementSource(trialOffered: false);
       final s = await _svc(tester, source: src, attest: true);
       await s.entitlements.start();
-      await pumpApp(tester, s, size: const Size(390, 2600));
+      await pumpApp(tester, s, size: const Size(390, 3600));
       await _signIn(tester, s);
       await goTo(tester, '/profile/subscription');
       final uz = _l(AppLanguage.uz);
@@ -237,7 +260,7 @@ void main() {
       final src = FakeEntitlementSource(trialOffered: true);
       final s = await _svc(tester, source: src);
       await s.entitlements.start();
-      await pumpApp(tester, s, size: const Size(390, 2600));
+      await pumpApp(tester, s, size: const Size(390, 3600));
       await goTo(tester, '/profile/subscription');
       final uz = _l(AppLanguage.uz);
       expect(find.text(uz.proSubTrialNotActive), findsOneWidget);
@@ -256,7 +279,7 @@ void main() {
       final shop = FakePurchaseAdapter();
       final s = await _svc(tester, source: src, purchases: shop, attest: true);
       await s.entitlements.start();
-      await pumpApp(tester, s, size: const Size(390, 2800));
+      await pumpApp(tester, s, size: const Size(390, 3800));
       await _signIn(tester, s);
       await goTo(tester, '/profile/subscription');
       final uz = _l(AppLanguage.uz);
@@ -265,6 +288,15 @@ void main() {
         findsOneWidget,
       );
       expect(find.text(uz.proSubTrialOncePerPhone), findsOneWidget);
+      expect(ProTrialConfig.serverTrialDays, 7);
+      // To'rt reja uchun ham sinov tugmasi (D-76: Premium qo'shildi).
+      for (final p in ProPlan.values) {
+        expect(
+          find.byKey(ValueKey('sub-trial-start-${p.name}')),
+          findsOneWidget,
+          reason: p.name,
+        );
+      }
       final start = find.byKey(const ValueKey('sub-trial-start-student'));
       await tester.ensureVisible(start);
       await tester.pumpAndSettle();
@@ -307,7 +339,7 @@ void main() {
       });
     final s = await _svc(tester, source: src);
     await s.entitlements.start();
-    await pumpApp(tester, s, size: const Size(390, 2400));
+    await pumpApp(tester, s, size: const Size(390, 3400));
     await goTo(tester, '/profile/subscription');
     final uz = _l(AppLanguage.uz);
     expect(find.text(uz.proSubStatusFree), findsOneWidget);

@@ -14,7 +14,7 @@ import '../helpers/billing_fakes.dart';
 
 final _t0 = DateTime.utc(2026, 10, 24, 12);
 
-Map<String, Object?> _trial({String plan = 'student', int days = 30}) => {
+Map<String, Object?> _trial({String plan = 'student', int days = 7}) => {
   'product_id': 'trial.$plan',
   'platform': 'trial',
   'source': 'trial',
@@ -106,14 +106,15 @@ void main() {
     expect(ent.activeEntitlement!.isTrial, isTrue);
     expect(ent.proSource, ProSource.trial);
     expect(ent.plan, ProPlan.student);
-    expect(ent.trialDaysLeft, 30);
+    expect(ent.trialDaysLeft, 7, reason: 'D-76: 7 kunlik sinov');
+    expect(ProTrialConfig.serverTrialDays, 7);
     expect(ent.trialUsed, isTrue);
     // Server bilan qayta sinxronlangach (oflayn kesh 7 kun).
-    now = _t0.add(const Duration(days: 29, hours: 1));
+    now = _t0.add(const Duration(days: 6, hours: 1));
     src.snapshot = _snap([_trial()], at: now);
     await ent.refresh(reprobe: false);
     expect(ent.trialDaysLeft, 1);
-    now = _t0.add(const Duration(days: 31));
+    now = _t0.add(const Duration(days: 8));
     src.snapshot = _snap([_trial()], at: now);
     await ent.refresh(reprobe: false);
     expect(ent.activeEntitlement, isNull);
@@ -195,13 +196,39 @@ void main() {
     }
   });
 
-  test('mehmon (sessiyasiz) — sinov yo‘q', () async {
-    final src = _TrialServer()..user = null;
-    final ent = make(src, attestor: _FakeAttestor());
-    expect(ent.trialAvailable, isFalse);
-    expect(
-      await ent.startTrial(plan: ProPlan.student, email: 'a@b.uz'),
-      TrialOutcome.unavailable,
-    );
-  });
+  test(
+    'mehmon (sessiyasiz) — hech bir reja sinovi yo‘q, server chaqirilmaydi',
+    () async {
+      final src = _TrialServer()..user = null;
+      final ent = make(src, attestor: _FakeAttestor());
+      expect(ent.trialAvailable, isFalse);
+      expect(ent.trialBlock, TrialBlock.guest);
+      for (final plan in ProPlan.values) {
+        expect(
+          await ent.startTrial(plan: plan, email: 'a@b.uz'),
+          TrialOutcome.unavailable,
+          reason: plan.name,
+        );
+      }
+      expect(src.last, isNull);
+      expect(ent.isPro, isFalse);
+    },
+  );
+
+  test(
+    'Premium sinovi (D-76): reja serverga yuboriladi, 7 kun, hamma imkoniyat',
+    () async {
+      final src = _TrialServer();
+      final ent = make(src, attestor: _FakeAttestor());
+      await ent.refresh(reprobe: false);
+      expect(
+        await ent.startTrial(plan: ProPlan.premium, email: 'a@b.uz'),
+        TrialOutcome.success,
+      );
+      expect(src.last!['plan'], 'premium');
+      expect(ent.plan, ProPlan.premium);
+      expect(ent.trialDaysLeft, 7);
+      expect(ent.tier, ProPlan.premium.tier);
+    },
+  );
 }

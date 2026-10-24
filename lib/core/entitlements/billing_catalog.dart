@@ -36,6 +36,10 @@ abstract final class BillingCatalog {
   static const specialistMonthly = 'uz.labguide.specialist.monthly';
   static const specialistYearly = 'uz.labguide.specialist.yearly';
 
+  /// Premium (D-76): hamma imkoniyat (Talaba + ustoz paneli + Lab).
+  static const premiumMonthly = 'uz.labguide.premium.monthly';
+  static const premiumYearly = 'uz.labguide.premium.yearly';
+
   /// Eski (D-46…D-72) id → yangi id. Do'konda hech qachon mahsulot
   /// yaratilmagan (D-73), shuning uchun faqat server qatori / eski kesh
   /// bo'lsa o'qiladi; yangi mahsulot YARATILMAYDI.
@@ -79,6 +83,16 @@ abstract final class BillingCatalog {
       plan: ProPlan.specialist,
       period: BillingPeriod.year,
     ),
+    BillingProduct(
+      premiumMonthly,
+      plan: ProPlan.premium,
+      period: BillingPeriod.month,
+    ),
+    BillingProduct(
+      premiumYearly,
+      plan: ProPlan.premium,
+      period: BillingPeriod.year,
+    ),
   ];
 
   static final ids = {for (final p in all) p.id};
@@ -91,6 +105,7 @@ abstract final class BillingCatalog {
     'uz.labguide.student': ProPlan.student,
     'uz.labguide.teacher': ProPlan.teacher,
     'uz.labguide.specialist': ProPlan.specialist,
+    'uz.labguide.premium': ProPlan.premium,
   };
 
   static const playBasePlans = <String, BillingPeriod>{
@@ -98,7 +113,7 @@ abstract final class BillingCatalog {
     'yearly': BillingPeriod.year,
   };
 
-  /// Do'konga so'raladigan id'lar: App Store — 6 mahsulot; Play — 3 obuna
+  /// Do'konga so'raladigan id'lar: App Store — 8 mahsulot; Play — 4 obuna
   /// (base plan'lar ichida). Ikkalasi ham bir to'plamda (do'kon tanimaganini
   /// shunchaki qaytarmaydi).
   static final storeQueryIds = {...ids, ...playSubscriptions.keys};
@@ -126,10 +141,11 @@ abstract final class BillingCatalog {
     return null;
   }
 
-  /// Xarid qaysi darajani ochadi. Katalogda yo'q (sinov) mahsulot — Pro
-  /// (hech qachon Ustoz darajasi emas).
+  /// Xarid qaysi imkoniyatlarni ochadi. Katalogda yo'q (sinov) mahsulot —
+  /// faqat Talaba to'plami (hech qachon ustoz paneli yoki Lab emas; server
+  /// `loadAccess` bilan bir xil).
   static ProTier tierOf(String productId) =>
-      byId(productId)?.tier ?? ProTier.pro;
+      byId(productId)?.tier ?? ProPlan.student.tier;
 
   /// Xarid qaysi pullik daraja (`null` — katalogda yo'q).
   static ProPlan? planOf(String productId) => byId(productId)?.plan;

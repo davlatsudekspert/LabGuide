@@ -16,7 +16,7 @@ import '../support/support_screens.dart' show formatWhen;
 
 /// “Obuna” ekrani (D-74). FAQAT `BuildFlags.proEnabled` buildda (Profil
 /// qatori va `/profile/subscription` yo'li bayroq ortida). Oddiy tilda:
-/// uch reja va ularning oylik/yillik narxi (katalog MA'LUMOTIDAN, USD),
+/// to'rt reja (D-76: Talaba, Ustoz, Mutaxassis, Premium) va ularning oylik/yillik narxi (katalog MA'LUMOTIDAN, USD),
 /// har reja nimani ochishi (matritsadan; hech narsa yopilmagan bo'lsa —
 /// “hozircha hamma imkoniyat bepul”), joriy holat (bepul / sinov / reja /
 /// admin bergan), bepul sinov qoidasi (bir telefonga bir marta) va
@@ -53,18 +53,20 @@ class _SubscriptionBody extends StatelessWidget {
     ProPlan.student => l.proPayTierStudent,
     ProPlan.teacher => l.proPayTierTeacher,
     ProPlan.specialist => l.proPayTierSpecialist,
+    ProPlan.premium => l.proPayTierPremium,
   };
 
   static String _planSub(AppLocalizations l, ProPlan plan) => switch (plan) {
     ProPlan.student => l.proPayTierStudentSub,
     ProPlan.teacher => l.proPayTierTeacherSub,
     ProPlan.specialist => l.proPayTierSpecialistSub,
+    ProPlan.premium => l.proPayTierPremiumSub,
   };
 
   static String _cap(AppLocalizations l, ProCapability c) => switch (c) {
     ProCapability.learner => l.proSubCapLearner,
     ProCapability.teacherPanel => l.proSubCapTeacherPanel,
-    ProCapability.specialist => l.proSubCapSpecialist,
+    ProCapability.lab => l.proSubCapLab,
   };
 
   static String _usd(double v) => '\$${v.toStringAsFixed(2)}';
@@ -168,7 +170,7 @@ class _SubscriptionBody extends StatelessWidget {
     final text = Theme.of(context).textTheme;
     final line = _trialLine(l);
     return [
-      LgSectionTitle(l.proSubTrialTitle),
+      LgSectionTitle(l.proSubTrialTitle(ProTrialConfig.serverTrialDays)),
       if (_trialOnPlatform) ...[
         Text(
           l.proSubTrialBody(ProTrialConfig.serverTrialDays),
@@ -218,6 +220,7 @@ class _SubscriptionBody extends StatelessWidget {
       BillingOutcome.pending => l.proPayPending,
       BillingOutcome.nothingFound => l.proPayNothingFound,
       BillingOutcome.ownedByOther => l.proPayOwnedByOther,
+      BillingOutcome.signInRequired => l.proPaySignInRequired,
       BillingOutcome.unavailable => l.proPayUnavailable,
       BillingOutcome.failed => l.proPayFailed,
     };

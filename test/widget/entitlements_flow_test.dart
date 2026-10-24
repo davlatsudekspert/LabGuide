@@ -3,8 +3,11 @@ import 'package:labguide/app/app_scope.dart';
 import 'package:labguide/core/entitlements/billing_catalog.dart';
 import 'package:labguide/core/entitlements/entitlement_source.dart';
 import 'package:labguide/core/entitlements/feature.dart';
+import 'package:labguide/core/entitlements/entitlement_models.dart';
 import 'package:labguide/core/entitlements/entitlement_service.dart';
+import 'package:labguide/core/entitlements/pro_catalog.dart';
 import 'package:labguide/core/entitlements/purchase_adapter.dart';
+import 'package:labguide/design/widgets/lg_widgets.dart';
 import 'package:labguide/features/settings/settings_controller.dart';
 import 'package:labguide/l10n/gen/app_localizations.dart';
 import 'package:material_ui/material_ui.dart';
@@ -63,6 +66,7 @@ Future<(AppServices, FakePurchaseAdapter)> _storeBuild(
   bool available = true,
   AppLanguage language = AppLanguage.uz,
   List<PurchaseProof> proofs = const [],
+  FakeEntitlementSource? source,
 }) async {
   final shop = FakePurchaseAdapter(available: available, proofs: proofs);
   final s = await _svc(
@@ -70,8 +74,8 @@ Future<(AppServices, FakePurchaseAdapter)> _storeBuild(
     language: language,
     allFeaturesOpen: false,
     purchases: shop,
-    // Mehmon (hisobsiz) — xarid uchun hisob talab qilinmaydi.
-    entitlementSource: FakeEntitlementSource(user: null),
+    // Standart: hisobga kirgan foydalanuvchi (D-76: mehmon xarid qilmaydi).
+    entitlementSource: source ?? FakeEntitlementSource(),
   );
   return (s, shop);
 }
@@ -167,10 +171,12 @@ void main() {
 
   testWidgets(
     'to‘lov oynasi (3.1.2): do‘kon narxi, davr, sinov, shartlar, tiklash; '
-    'mehmon xarid qiladi',
+    'hisob bilan xarid (to‘rt reja)',
     (tester) async {
+      final server = FakeEntitlementSource();
       final (s, shop) = await _storeBuild(
         tester,
+        source: server,
         proofs: const [
           PurchaseProof(
             platform: 'app_store',
@@ -187,38 +193,41 @@ void main() {
       );
       await goTo(tester, '/profile/purchase');
 
+      // Ro'yxat dangasa quriladi: har element sahifa tartibida surib ko'riladi
+      // (Ustoz → Mutaxassis → Premium; Talaba yashirin).
+      Future<void> seen(String text) async {
+        await _scrollTo(tester, find.text(text));
+        expect(find.text(text), findsOneWidget, reason: text);
+      }
+
+      expect(find.text(uz.proPayStartTrial), findsNothing);
+      await seen(uz.proPayTierTeacher);
+      expect(find.text(uz.proPayFeatExam), findsWidgets);
+      await seen(uz.proPayPricePer(r'$2.49', uz.proPayUnitMonth));
+      await seen(uz.proPayPricePer(r'$24.99', uz.proPayUnitYear));
+      await seen(uz.proPayTierSpecialist);
       final monthly = uz.proPayPricePer(r'$3.49', uz.proPayUnitMonth);
-      expect(find.text(monthly), findsOneWidget);
+      await seen(monthly);
       // D-75: do'kon sinov taklifi (avtomatik pullik) ko'rsatilmaydi, hatto
-      // do'kon qaytarsa ham — 30 kunlik sinov faqat server sinovi.
+      // do'kon qaytarsa ham — 7 kunlik sinov (D-76) faqat server sinovi.
       expect(
         find.text(uz.proPayTrial(uz.proPayDays(30), monthly)),
         findsNothing,
       );
-      expect(find.text(uz.proPayStartTrial), findsNothing);
-      // Yillik narxlar belgilangan (D-73): Ustoz va Mutaxassis uchun yillik reja.
-      expect(find.text(uz.proPayPlanYearly), findsNWidgets(2));
-      expect(
-        find.text(uz.proPayPricePer(r'$34.99', uz.proPayUnitYear)),
-        findsOneWidget,
-      );
-      expect(
-        find.text(uz.proPayPricePer(r'$24.99', uz.proPayUnitYear)),
-        findsOneWidget,
-      );
+      await seen(uz.proPayPricePer(r'$34.99', uz.proPayUnitYear));
+      // Premium (D-76): hamma imkoniyat, yillik narx bor.
+      await seen(uz.proPayTierPremium);
+      await seen(uz.proPayPricePer(r'$4.99', uz.proPayUnitMonth));
+      await seen(uz.proPayPricePer(r'$49.99', uz.proPayUnitYear));
+      expect(find.text(uz.proPayFeatLecture), findsWidgets);
+      expect(find.text(uz.proPayFeatLabCount), findsWidgets);
       expect(find.textContaining('(test)'), findsNothing);
-      final teacher = uz.proPayPricePer(r'$2.49', uz.proPayUnitMonth);
-      expect(find.text(teacher), findsOneWidget);
       // Talaba narxi — faqat tasdiqlangan talabaga (hozir tasdiq yo'q).
       expect(find.textContaining(r'$1.49'), findsNothing);
       expect(find.textContaining(r'$9.99'), findsNothing);
       expect(find.text(uz.proPayTierStudent), findsNothing);
-      expect(find.text(uz.proPayTierSpecialist), findsOneWidget);
-      expect(find.text(uz.proPayTierTeacher), findsOneWidget);
-      expect(find.text(uz.proPayFeatExam), findsWidgets);
-      expect(find.text(uz.proPayFeatLecture), findsWidgets);
       expect(find.textContaining('PDF'), findsNothing);
-      // Pastki qism (ro'yxat dangasa quriladi — surib ko'riladi).
+      // Pastki qism.
       for (final t in [
         uz.proPayDisclosure('App Store'),
         uz.proPayRestore,
@@ -226,26 +235,46 @@ void main() {
         uz.proPayTerms,
         uz.proPayPrivacy,
       ]) {
-        await _scrollTo(tester, find.text(t));
-        expect(find.text(t), findsOneWidget);
+        await seen(t);
       }
       expect(find.textContaining(uz.notAvailableYet), findsNothing);
+      // Hisobga kirgan: mehmon izohi va "Hisobga kirish" tugmasi yo'q.
+      expect(find.byKey(const ValueKey('pay-guest-note')), findsNothing);
 
-      // Oylik Pro (birinchi reja) — yuqoriga qaytib bosiladi.
+      // Mutaxassis oylik — yuqoriga qaytib, o'sha panelning tugmasi bosiladi.
       await tester.scrollUntilVisible(
         find.text(monthly),
         -300,
         scrollable: find.byType(Scrollable).hitTestable().first,
       );
-      // Tartib: Ustoz oylik, Ustoz yillik, Mutaxassis oylik (Talaba yashirin).
-      final specialistBuy = find.text(uz.proPaySubscribe).at(2);
+      final specialistBuy = find.descendant(
+        of: find.ancestor(
+          of: find.text(monthly),
+          matching: find.byType(LgPanel),
+        ),
+        matching: find.text(uz.proPaySubscribe),
+      );
       await tester.ensureVisible(specialistBuy);
       await tester.pumpAndSettle();
+      // Server xaridni tasdiqlaydi (soxta javob).
+      server.snapshot = EntitlementSnapshot(
+        serverTime: DateTime.now().toUtc(),
+        items: [
+          ServerEntitlement(
+            productId: BillingCatalog.specialistMonthly,
+            platform: 'app_store',
+            status: EntitlementStatus.active,
+            startedAt: DateTime.now().toUtc(),
+            expiresAt: DateTime.now().toUtc().add(const Duration(days: 30)),
+          ),
+        ],
+      );
       await tester.tap(specialistBuy);
       await tester.pumpAndSettle();
       expect(shop.bought.single.$1, BillingCatalog.specialistMonthly);
       expect(find.text(uz.proPaySuccess), findsOneWidget);
-      expect(s.entitlements.proSource, ProSource.store);
+      expect(s.entitlements.proSource, ProSource.server);
+      expect(s.entitlements.plan, ProPlan.specialist);
       expect(shop.finished, hasLength(1));
       await _scrollTo(tester, find.text(uz.proPayCurrent));
       expect(find.text(uz.proPayCurrent), findsOneWidget);
@@ -261,6 +290,41 @@ void main() {
     await tapScroll(tester, ru.proPayRestore);
     expect(find.text(ru.proPayNothingFound), findsOneWidget);
     expect(tester.takeException(), isNull);
+  });
+
+  testWidgets('mehmon (D-76): obuna tugmasi yo‘q, “Hisobga kirish”; tiklash — '
+      'avval kirish', (tester) async {
+    final (s, shop) = await _storeBuild(
+      tester,
+      source: FakeEntitlementSource(user: null),
+      proofs: const [
+        PurchaseProof(
+          platform: 'app_store',
+          productId: BillingCatalog.specialistMonthly,
+          token: '2000000888',
+        ),
+      ],
+    );
+    await pumpApp(tester, s, size: _tall);
+    await goTo(tester, '/profile/purchase');
+    // Narxlar ko'rinadi (ma'lumot), lekin xarid tugmasi yo'q.
+    expect(
+      find.text(uz.proPayPricePer(r'$3.49', uz.proPayUnitMonth)),
+      findsOneWidget,
+    );
+    expect(find.text(uz.proPaySubscribe), findsNothing);
+    await _scrollTo(tester, find.byKey(const ValueKey('pay-guest-note')));
+    expect(find.text(uz.proPayGuestNote), findsOneWidget);
+    expect(find.byKey(const ValueKey('pay-sign-in')), findsOneWidget);
+    await tapScroll(tester, uz.proPayRestore);
+    expect(find.text(uz.proPaySignInRequired), findsOneWidget);
+    expect(shop.bought, isEmpty);
+    expect(s.entitlements.isPro, isFalse);
+    expect(
+      await s.entitlements.purchase(BillingCatalog.specialistMonthly),
+      BillingOutcome.signInRequired,
+    );
+    expect(shop.bought, isEmpty);
   });
 
   testWidgets('TestFlight: hammasi ochiq, Obuna qatori yo‘q', (tester) async {

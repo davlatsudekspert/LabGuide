@@ -10208,7 +10208,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get proPayTierTeacherSub =>
-      'Для преподавателя, который работает с группой. Включает всё из Pro.';
+      'Для преподавателя, который работает с группой: возможности плана «Студент» и панель преподавателя. Раздел «Лаборатория» не входит.';
 
   @override
   String get proPayFree =>
@@ -10247,6 +10247,39 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get proPayFeatLecture =>
       'Режим лекции: автоматическая презентация по теме';
+
+  @override
+  String get proPayFeatLabCount =>
+      'Лейкоформула: подсчёт и сохранение результата';
+
+  @override
+  String get proPayFeatLabAbsolute =>
+      'Лейкоформула: проценты и абсолютные числа';
+
+  @override
+  String get proPayFeatLabEvaluate => 'Лейкоформула: оценка результата';
+
+  @override
+  String get proPayFeatLabSections =>
+      'Разделы лаборатории: цитология, спермограмма, группа крови, гистология, анализ мочи, морфология крови, копрология';
+
+  @override
+  String get proPayFeatLabCoag => 'Коагулограмма';
+
+  @override
+  String get proPayFeatLabInstruments => 'Каталог приборов';
+
+  @override
+  String get proPayFeatLabDirections => 'Карточки по направлениям лаборатории';
+
+  @override
+  String get proPayFeatLabCalibration => 'Калибровка и журнал калибровок';
+
+  @override
+  String get proPayFeatLabQc => 'Контроль качества (QC)';
+
+  @override
+  String get proPayFeatLabCalculators => 'Лабораторные калькуляторы';
 
   @override
   String get proPayPlanMonthly => 'Ежемесячно';
@@ -10356,14 +10389,22 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get proPayGuestNote =>
-      'Для покупки аккаунт не нужен. Если войти в аккаунт, подписка будет работать и на других ваших устройствах.';
+      'Для подписки, восстановления покупки и бесплатного пробного периода нужно войти в аккаунт. Бесплатной частью приложения можно пользоваться без аккаунта.';
+
+  @override
+  String get proPaySignInRequired =>
+      'Чтобы оформить подписку или восстановить покупку, сначала войдите в аккаунт.';
 
   @override
   String get proPayLockedPro => 'Эта возможность входит в подписку Pro.';
 
   @override
   String get proPayLockedTeacher =>
-      'Эта возможность входит в подписку «Pro для преподавателя».';
+      'Эта возможность входит в планы «Преподаватель» и «Премиум».';
+
+  @override
+  String get proPayLockedLab =>
+      'Эта возможность входит в планы «Специалист» и «Премиум».';
 
   @override
   String get proPayAllOpen => 'Сейчас все возможности открыты.';
@@ -10466,6 +10507,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String get proPlanSpecialist => 'Специалист';
 
   @override
+  String get proPlanPremium => 'Премиум';
+
+  @override
   String get proPayTierStudent => 'Студент';
 
   @override
@@ -10477,7 +10521,14 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get proPayTierSpecialistSub =>
-      'Для лаборанта и врача. Возможности преподавателя тоже входят.';
+      'Для лаборанта и врача: возможности плана «Студент» и весь раздел «Лаборатория». Панель преподавателя не входит.';
+
+  @override
+  String get proPayTierPremium => 'Премиум';
+
+  @override
+  String get proPayTierPremiumSub =>
+      'Все возможности: план «Студент», панель преподавателя и весь раздел «Лаборатория».';
 
   @override
   String get proPayStatusAdminGrant => 'Pro предоставлен администратором';
@@ -10597,6 +10648,10 @@ class AppLocalizationsRu extends AppLocalizations {
       'Достигнут лимит активных выдач. Сначала отзовите ненужные.';
 
   @override
+  String get proGrantErrTierMix =>
+      'Эти планы не включают друг друга, поэтому продлить нельзя. Выберите нужный план и замените выдачу.';
+
+  @override
   String get proSubTitle => 'Подписка';
 
   @override
@@ -10656,7 +10711,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get proSubCapTeacherPanel => 'Pro-возможности панели преподавателя';
 
   @override
-  String get proSubCapSpecialist => 'Pro-возможности специалиста';
+  String get proSubCapLab =>
+      'весь раздел «Лаборатория» (приборы, калибровка, QC, калькуляторы, подсчёт лейкоформулы и другое)';
 
   @override
   String get proSubNothingGated =>
@@ -10664,10 +10720,12 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get proSubTeacherNote =>
-      'Pro-возможности панели преподавателя есть только в планах «Преподаватель» и «Специалист». Смена роли в приложении их не открывает. Нынешние бесплатные группы остаются бесплатными.';
+      'Pro-возможности панели преподавателя есть только в планах «Преподаватель» и «Премиум», а раздел «Лаборатория» — только в планах «Специалист» и «Премиум». Смена роли в приложении их не открывает. Нынешние бесплатные группы остаются бесплатными.';
 
   @override
-  String get proSubTrialTitle => 'Пробный период на 30 дней';
+  String proSubTrialTitle(int days) {
+    return 'Бесплатный пробный период на $days дней';
+  }
 
   @override
   String get proSubTrialOncePerPhone =>
@@ -10685,7 +10743,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get proPrivacyTrialNote =>
-      'Pro (только когда Pro включён, сейчас не активен): бесплатный пробный период на 30 дней даётся один раз на один телефон. Для этого на сервере хранятся даты, план, платформа и только необратимые хеши с ключом от вашего email (в канонической форме) и идентификатора устройства — сам email, идентификатор устройства и токен аттестации не хранятся. При удалении аккаунта запись отвязывается от него, но хранится 24 месяца, чтобы пробный период не выдавался повторно, затем удаляется автоматически.';
+      'Pro (только когда Pro включён, сейчас не активен): бесплатный пробный период на 7 дней даётся один раз на один телефон. Для этого на сервере хранятся даты, план, платформа и только необратимые хеши с ключом от вашего email (в канонической форме) и идентификатора устройства — сам email, идентификатор устройства и токен аттестации не хранятся. При удалении аккаунта запись отвязывается от него, но хранится 24 месяца, чтобы пробный период не выдавался повторно, затем удаляется автоматически.';
 
   @override
   String proSubTrialBody(int days) {
@@ -10726,7 +10784,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get proSubTrialPlanNotAllowed =>
-      'Пробный период этого плана — только для преподавателей и подтверждённых специалистов. Попробуйте план «Студент».';
+      'Пробный период плана «Преподаватель» — для зарегистрированных на сервере преподавателей, «Специалист» — для подтверждённых специалистов, «Премиум» — для тех, у кого есть и то и другое. Попробуйте план «Студент».';
 
   @override
   String get proSubTrialEmail =>

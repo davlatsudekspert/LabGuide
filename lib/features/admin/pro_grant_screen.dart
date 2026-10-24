@@ -16,6 +16,7 @@ String proPlanLabel(AppLocalizations l, ProPlan plan) => switch (plan) {
   ProPlan.student => l.proPlanStudent,
   ProPlan.teacher => l.proPlanTeacher,
   ProPlan.specialist => l.proPlanSpecialist,
+  ProPlan.premium => l.proPlanPremium,
 };
 
 String _durationLabel(AppLocalizations l, int? days) =>
@@ -75,6 +76,7 @@ class _AdminProGrantScreenState extends State<AdminProGrantScreen> {
     ProGrantException(code: 'pending_cannot_extend') => l.proGrantErrPending,
     ProGrantException(code: 'duration_required') => l.proGrantErrDuration,
     ProGrantException(code: 'too_many_grants') => l.proGrantErrMany,
+    ProGrantException(code: 'tier_not_comparable') => l.proGrantErrTierMix,
     _ => backendErrorText(e, l),
   };
 

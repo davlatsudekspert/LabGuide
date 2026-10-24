@@ -17467,7 +17467,7 @@ abstract class AppLocalizations {
   /// No description provided for @proPayTierTeacherSub.
   ///
   /// In en, this message translates to:
-  /// **'For teachers working with a group. Includes everything in Pro.'**
+  /// **'For teachers working with a group: Student plan features plus the teacher panel. The Laboratory section is not included.'**
   String get proPayTierTeacherSub;
 
   /// No description provided for @proPayFree.
@@ -17535,6 +17535,66 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Lecture mode: automatic presentation for a topic'**
   String get proPayFeatLecture;
+
+  /// No description provided for @proPayFeatLabCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Differential count: counting and saving the result'**
+  String get proPayFeatLabCount;
+
+  /// No description provided for @proPayFeatLabAbsolute.
+  ///
+  /// In en, this message translates to:
+  /// **'Differential count: percentages and absolute counts'**
+  String get proPayFeatLabAbsolute;
+
+  /// No description provided for @proPayFeatLabEvaluate.
+  ///
+  /// In en, this message translates to:
+  /// **'Differential count: result evaluation'**
+  String get proPayFeatLabEvaluate;
+
+  /// No description provided for @proPayFeatLabSections.
+  ///
+  /// In en, this message translates to:
+  /// **'Laboratory sections: cytology, semen analysis, blood group, histology, urinalysis, blood morphology, coprology'**
+  String get proPayFeatLabSections;
+
+  /// No description provided for @proPayFeatLabCoag.
+  ///
+  /// In en, this message translates to:
+  /// **'Coagulogram'**
+  String get proPayFeatLabCoag;
+
+  /// No description provided for @proPayFeatLabInstruments.
+  ///
+  /// In en, this message translates to:
+  /// **'Instrument catalogue'**
+  String get proPayFeatLabInstruments;
+
+  /// No description provided for @proPayFeatLabDirections.
+  ///
+  /// In en, this message translates to:
+  /// **'Laboratory direction cards'**
+  String get proPayFeatLabDirections;
+
+  /// No description provided for @proPayFeatLabCalibration.
+  ///
+  /// In en, this message translates to:
+  /// **'Calibration and calibration log'**
+  String get proPayFeatLabCalibration;
+
+  /// No description provided for @proPayFeatLabQc.
+  ///
+  /// In en, this message translates to:
+  /// **'Quality control (QC)'**
+  String get proPayFeatLabQc;
+
+  /// No description provided for @proPayFeatLabCalculators.
+  ///
+  /// In en, this message translates to:
+  /// **'Laboratory calculators'**
+  String get proPayFeatLabCalculators;
 
   /// No description provided for @proPayPlanMonthly.
   ///
@@ -17659,8 +17719,14 @@ abstract class AppLocalizations {
   /// No description provided for @proPayGuestNote.
   ///
   /// In en, this message translates to:
-  /// **'You don’t need an account to buy. Sign in to use the subscription on your other devices too.'**
+  /// **'You need to sign in to subscribe, restore a purchase or start the free trial. The free part of the app works without an account.'**
   String get proPayGuestNote;
+
+  /// No description provided for @proPaySignInRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Please sign in first to subscribe or restore a purchase.'**
+  String get proPaySignInRequired;
 
   /// No description provided for @proPayLockedPro.
   ///
@@ -17671,8 +17737,14 @@ abstract class AppLocalizations {
   /// No description provided for @proPayLockedTeacher.
   ///
   /// In en, this message translates to:
-  /// **'This feature is part of Teacher Pro.'**
+  /// **'This feature is part of the Teacher and Premium plans.'**
   String get proPayLockedTeacher;
+
+  /// No description provided for @proPayLockedLab.
+  ///
+  /// In en, this message translates to:
+  /// **'This feature is part of the Specialist and Premium plans.'**
+  String get proPayLockedLab;
 
   /// No description provided for @proPayAllOpen.
   ///
@@ -17824,6 +17896,12 @@ abstract class AppLocalizations {
   /// **'Specialist'**
   String get proPlanSpecialist;
 
+  /// No description provided for @proPlanPremium.
+  ///
+  /// In en, this message translates to:
+  /// **'Premium'**
+  String get proPlanPremium;
+
   /// No description provided for @proPayTierStudent.
   ///
   /// In en, this message translates to:
@@ -17845,8 +17923,20 @@ abstract class AppLocalizations {
   /// No description provided for @proPayTierSpecialistSub.
   ///
   /// In en, this message translates to:
-  /// **'For lab specialists and doctors. Teacher features are included too.'**
+  /// **'For lab specialists and doctors: Student plan features plus the whole Laboratory section. The teacher panel is not included.'**
   String get proPayTierSpecialistSub;
+
+  /// No description provided for @proPayTierPremium.
+  ///
+  /// In en, this message translates to:
+  /// **'Premium'**
+  String get proPayTierPremium;
+
+  /// No description provided for @proPayTierPremiumSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Everything: Student plan features, the teacher panel and the whole Laboratory section.'**
+  String get proPayTierPremiumSub;
 
   /// No description provided for @proPayStatusAdminGrant.
   ///
@@ -18034,6 +18124,12 @@ abstract class AppLocalizations {
   /// **'The active grant limit is reached. Revoke unused ones first.'**
   String get proGrantErrMany;
 
+  /// No description provided for @proGrantErrTierMix.
+  ///
+  /// In en, this message translates to:
+  /// **'These plans do not include each other, so the grant cannot be extended. Choose the plan you need and replace the grant.'**
+  String get proGrantErrTierMix;
+
   /// No description provided for @proSubTitle.
   ///
   /// In en, this message translates to:
@@ -18124,11 +18220,11 @@ abstract class AppLocalizations {
   /// **'teacher-panel Pro features'**
   String get proSubCapTeacherPanel;
 
-  /// No description provided for @proSubCapSpecialist.
+  /// No description provided for @proSubCapLab.
   ///
   /// In en, this message translates to:
-  /// **'specialist Pro features'**
-  String get proSubCapSpecialist;
+  /// **'the whole Laboratory section (instruments, calibration, QC, calculators, differential counting and more)'**
+  String get proSubCapLab;
 
   /// No description provided for @proSubNothingGated.
   ///
@@ -18139,14 +18235,14 @@ abstract class AppLocalizations {
   /// No description provided for @proSubTeacherNote.
   ///
   /// In en, this message translates to:
-  /// **'Teacher-panel Pro features come only with the Teacher or Specialist plan. Changing your role in the app does not unlock them. Today\'s free groups stay free.'**
+  /// **'Teacher-panel Pro features come only with the Teacher or Premium plan, and the Laboratory section only with the Specialist or Premium plan. Changing your role in the app does not unlock them. Today\'s free groups stay free.'**
   String get proSubTeacherNote;
 
   /// No description provided for @proSubTrialTitle.
   ///
   /// In en, this message translates to:
-  /// **'30-day free trial'**
-  String get proSubTrialTitle;
+  /// **'{days}-day free trial'**
+  String proSubTrialTitle(int days);
 
   /// No description provided for @proSubTrialOncePerPhone.
   ///
@@ -18175,7 +18271,7 @@ abstract class AppLocalizations {
   /// No description provided for @proPrivacyTrialNote.
   ///
   /// In en, this message translates to:
-  /// **'Pro (only when Pro is enabled; not active now): the 30-day free trial is given once per phone. To enforce this the server keeps the dates, plan, platform and only one-way keyed hashes of your email (in canonical form) and of a device identifier — the email itself, any device identifier and the attestation token are not stored. When you delete your account the record is unlinked from it but kept for 24 months so the trial is not given again, then deleted automatically.'**
+  /// **'Pro (only when Pro is enabled; not active now): the 7-day free trial is given once per phone. To enforce this the server keeps the dates, plan, platform and only one-way keyed hashes of your email (in canonical form) and of a device identifier — the email itself, any device identifier and the attestation token are not stored. When you delete your account the record is unlinked from it but kept for 24 months so the trial is not given again, then deleted automatically.'**
   String get proPrivacyTrialNote;
 
   /// No description provided for @proSubTrialBody.
@@ -18235,7 +18331,7 @@ abstract class AppLocalizations {
   /// No description provided for @proSubTrialPlanNotAllowed.
   ///
   /// In en, this message translates to:
-  /// **'This plan\'s trial is only for teachers and verified specialists. Try the Student plan.'**
+  /// **'The Teacher trial is for teachers registered on the server, the Specialist trial for verified specialists, and the Premium trial for people who are both. Try the Student plan.'**
   String get proSubTrialPlanNotAllowed;
 
   /// No description provided for @proSubTrialEmail.

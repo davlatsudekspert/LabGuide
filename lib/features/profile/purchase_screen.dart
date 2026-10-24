@@ -61,25 +61,20 @@ class _PurchaseBody extends StatelessWidget {
         ? (end == null
               ? l.proPayStatusAdminGrant
               : l.proPayStatusAdminGrantUntil(formatWhen(end, context)))
-        : switch ((ent.tier == ProTier.teacher, end)) {
-            (true, null) => l.proPayStatusTeacherNoEnd,
-            (true, final DateTime e) => l.proPayStatusTeacher(
+        : switch ((plan, end)) {
+            (final ProPlan p, null) => l.proSubStatusPlan(_planTitle(l, p)),
+            (final ProPlan p, final DateTime e) => l.proSubStatusPlanUntil(
+              _planTitle(l, p),
               formatWhen(e, context),
             ),
-            (false, null) => l.proStatusProNoEnd,
-            (false, final DateTime e) => l.proStatusPro(formatWhen(e, context)),
+            (null, null) => l.proStatusProNoEnd,
+            (null, final DateTime e) => l.proStatusPro(formatWhen(e, context)),
           };
     return [
       LgSectionTitle(l.proStatusTitle),
       Align(
         alignment: AlignmentDirectional.centerStart,
-        child: LgTag(
-          plan == null
-              ? (ent.tier == ProTier.teacher
-                    ? l.proPayTierTeacher
-                    : l.proPayTierPro)
-              : _planTitle(l, plan),
-        ),
+        child: LgTag(plan == null ? l.proPayTierPro : _planTitle(l, plan)),
       ),
       const SizedBox(height: 8),
       Text(line, style: text.bodyLarge),
@@ -90,10 +85,6 @@ class _PurchaseBody extends StatelessWidget {
           style: text.bodySmall,
         ),
       ],
-      if (ent.proSource == ProSource.store) ...[
-        const SizedBox(height: 4),
-        Text(l.proPayStatusDevice, style: text.bodySmall),
-      ],
       const SizedBox(height: 10),
     ];
   }
@@ -102,12 +93,14 @@ class _PurchaseBody extends StatelessWidget {
     ProPlan.student => l.proPayTierStudent,
     ProPlan.teacher => l.proPayTierTeacher,
     ProPlan.specialist => l.proPayTierSpecialist,
+    ProPlan.premium => l.proPayTierPremium,
   };
 
   static String _planSub(AppLocalizations l, ProPlan plan) => switch (plan) {
     ProPlan.student => l.proPayTierStudentSub,
     ProPlan.teacher => l.proPayTierTeacherSub,
     ProPlan.specialist => l.proPayTierSpecialistSub,
+    ProPlan.premium => l.proPayTierPremiumSub,
   };
 
   static String _period(AppLocalizations l, StorePeriod p) => p.count == 1
@@ -140,6 +133,7 @@ class _PurchaseBody extends StatelessWidget {
       BillingOutcome.pending => l.proPayPending,
       BillingOutcome.nothingFound => l.proPayNothingFound,
       BillingOutcome.ownedByOther => l.proPayOwnedByOther,
+      BillingOutcome.signInRequired => l.proPaySignInRequired,
       BillingOutcome.unavailable => l.proPayUnavailable,
       BillingOutcome.failed => l.proPayFailed,
     };
@@ -203,7 +197,8 @@ class _PurchaseBody extends StatelessWidget {
               style: text.bodyMedium,
             ),
           ],
-          if (!mine) ...[
+          // Mehmon xarid qilmaydi (D-76): tugma o'rniga pastda "Hisobga kirish".
+          if (!mine && ent.source.hasSession) ...[
             const SizedBox(height: 12),
             LgButton(
               label: trial != null ? l.proPayStartTrial : l.proPaySubscribe,
@@ -229,7 +224,19 @@ class _PurchaseBody extends StatelessWidget {
     Feature.groups => l.proPayFeatGroups,
     Feature.assignments => l.proPayFeatAssignments,
     Feature.autoPresentation => l.proPayFeatLecture,
-    _ => null,
+    Feature.leukocyteCounter => l.proPayFeatLabCount,
+    Feature.absoluteCounts => l.proPayFeatLabAbsolute,
+    Feature.leukocyteEvaluation => l.proPayFeatLabEvaluate,
+    Feature.labSections => l.proPayFeatLabSections,
+    Feature.coagulogram => l.proPayFeatLabCoag,
+    Feature.labInstruments => l.proPayFeatLabInstruments,
+    Feature.labDirections => l.proPayFeatLabDirections,
+    Feature.calibration => l.proPayFeatLabCalibration,
+    Feature.qualityControl => l.proPayFeatLabQc,
+    Feature.labCalculators => l.proPayFeatLabCalculators,
+    Feature.basicGuides ||
+    Feature.dailyQuestions ||
+    Feature.mistakeReview => null,
   };
 
   Widget _bullet(BuildContext context, String s) => Padding(
@@ -264,8 +271,7 @@ class _PurchaseBody extends StatelessWidget {
     // ro'yxat bo'sh, shuning uchun hech narsa va'da qilinmaydi.
     final included = <String>[
       for (final f in Feature.values)
-        if (ent.gated.contains(f) && plan.tier.covers(f.tier))
-          ?_featureLabel(l, f),
+        if (ent.gated.contains(f) && plan.tier.covers(f)) ?_featureLabel(l, f),
     ];
     return [
       LgSectionTitle(_planTitle(l, plan)),
@@ -281,7 +287,6 @@ class _PurchaseBody extends StatelessWidget {
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context);
     final text = Theme.of(context).textTheme;
-    final services = context.services;
     if (!ent.purchasesEnabled) {
       // To'lov yoqilmagan: hech qanday xarid elementi yo'q.
       return LgPage(
@@ -310,9 +315,12 @@ class _PurchaseBody extends StatelessWidget {
           LgNotice(l.proPayTestBuildOpen, kind: NoticeKind.info),
         if (locked != null && !ent.can(locked))
           LgNotice(
-            locked.tier == ProTier.teacher
-                ? l.proPayLockedTeacher
-                : l.proPayLockedPro,
+            switch (locked.capability) {
+              ProCapability.teacherPanel => l.proPayLockedTeacher,
+              ProCapability.lab => l.proPayLockedLab,
+              _ => l.proPayLockedPro,
+            },
+            key: const ValueKey('pay-locked'),
             kind: NoticeKind.info,
           ),
         if (ent.gated.isEmpty)
@@ -333,9 +341,21 @@ class _PurchaseBody extends StatelessWidget {
         Text(l.proPayFree, style: text.bodySmall),
         const SizedBox(height: 10),
         Text(l.proPayDisclosure(_store), style: text.bodySmall),
-        if (!services.backend.hasSession) ...[
+        // Mehmon (D-76): obuna, tiklash va sinov — faqat hisob bilan.
+        if (!ent.source.hasSession) ...[
           const SizedBox(height: 8),
-          Text(l.proPayGuestNote, style: text.bodySmall),
+          Text(
+            l.proPayGuestNote,
+            key: const ValueKey('pay-guest-note'),
+            style: text.bodySmall,
+          ),
+          const SizedBox(height: 8),
+          LgButton(
+            key: const ValueKey('pay-sign-in'),
+            label: l.profileSignIn,
+            icon: Icons.mail_outline_rounded,
+            onPressed: () => context.push('/profile/auth'),
+          ),
         ],
         const SizedBox(height: 14),
         LgButton.secondary(

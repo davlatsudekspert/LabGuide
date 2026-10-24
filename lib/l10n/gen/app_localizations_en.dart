@@ -10168,7 +10168,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get proPayTierTeacherSub =>
-      'For teachers working with a group. Includes everything in Pro.';
+      'For teachers working with a group: Student plan features plus the teacher panel. The Laboratory section is not included.';
 
   @override
   String get proPayFree => 'Features not marked as paid stay free.';
@@ -10206,6 +10206,39 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get proPayFeatLecture =>
       'Lecture mode: automatic presentation for a topic';
+
+  @override
+  String get proPayFeatLabCount =>
+      'Differential count: counting and saving the result';
+
+  @override
+  String get proPayFeatLabAbsolute =>
+      'Differential count: percentages and absolute counts';
+
+  @override
+  String get proPayFeatLabEvaluate => 'Differential count: result evaluation';
+
+  @override
+  String get proPayFeatLabSections =>
+      'Laboratory sections: cytology, semen analysis, blood group, histology, urinalysis, blood morphology, coprology';
+
+  @override
+  String get proPayFeatLabCoag => 'Coagulogram';
+
+  @override
+  String get proPayFeatLabInstruments => 'Instrument catalogue';
+
+  @override
+  String get proPayFeatLabDirections => 'Laboratory direction cards';
+
+  @override
+  String get proPayFeatLabCalibration => 'Calibration and calibration log';
+
+  @override
+  String get proPayFeatLabQc => 'Quality control (QC)';
+
+  @override
+  String get proPayFeatLabCalculators => 'Laboratory calculators';
 
   @override
   String get proPayPlanMonthly => 'Monthly';
@@ -10307,13 +10340,22 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get proPayGuestNote =>
-      'You don’t need an account to buy. Sign in to use the subscription on your other devices too.';
+      'You need to sign in to subscribe, restore a purchase or start the free trial. The free part of the app works without an account.';
+
+  @override
+  String get proPaySignInRequired =>
+      'Please sign in first to subscribe or restore a purchase.';
 
   @override
   String get proPayLockedPro => 'This feature is part of Pro.';
 
   @override
-  String get proPayLockedTeacher => 'This feature is part of Teacher Pro.';
+  String get proPayLockedTeacher =>
+      'This feature is part of the Teacher and Premium plans.';
+
+  @override
+  String get proPayLockedLab =>
+      'This feature is part of the Specialist and Premium plans.';
 
   @override
   String get proPayAllOpen => 'All features are open right now.';
@@ -10414,6 +10456,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get proPlanSpecialist => 'Specialist';
 
   @override
+  String get proPlanPremium => 'Premium';
+
+  @override
   String get proPayTierStudent => 'Student';
 
   @override
@@ -10425,7 +10470,14 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get proPayTierSpecialistSub =>
-      'For lab specialists and doctors. Teacher features are included too.';
+      'For lab specialists and doctors: Student plan features plus the whole Laboratory section. The teacher panel is not included.';
+
+  @override
+  String get proPayTierPremium => 'Premium';
+
+  @override
+  String get proPayTierPremiumSub =>
+      'Everything: Student plan features, the teacher panel and the whole Laboratory section.';
 
   @override
   String get proPayStatusAdminGrant => 'Pro granted by an administrator';
@@ -10546,6 +10598,10 @@ class AppLocalizationsEn extends AppLocalizations {
       'The active grant limit is reached. Revoke unused ones first.';
 
   @override
+  String get proGrantErrTierMix =>
+      'These plans do not include each other, so the grant cannot be extended. Choose the plan you need and replace the grant.';
+
+  @override
   String get proSubTitle => 'Subscription';
 
   @override
@@ -10605,7 +10661,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get proSubCapTeacherPanel => 'teacher-panel Pro features';
 
   @override
-  String get proSubCapSpecialist => 'specialist Pro features';
+  String get proSubCapLab =>
+      'the whole Laboratory section (instruments, calibration, QC, calculators, differential counting and more)';
 
   @override
   String get proSubNothingGated =>
@@ -10613,10 +10670,12 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get proSubTeacherNote =>
-      'Teacher-panel Pro features come only with the Teacher or Specialist plan. Changing your role in the app does not unlock them. Today\'s free groups stay free.';
+      'Teacher-panel Pro features come only with the Teacher or Premium plan, and the Laboratory section only with the Specialist or Premium plan. Changing your role in the app does not unlock them. Today\'s free groups stay free.';
 
   @override
-  String get proSubTrialTitle => '30-day free trial';
+  String proSubTrialTitle(int days) {
+    return '$days-day free trial';
+  }
 
   @override
   String get proSubTrialOncePerPhone =>
@@ -10633,7 +10692,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get proPrivacyTrialNote =>
-      'Pro (only when Pro is enabled; not active now): the 30-day free trial is given once per phone. To enforce this the server keeps the dates, plan, platform and only one-way keyed hashes of your email (in canonical form) and of a device identifier — the email itself, any device identifier and the attestation token are not stored. When you delete your account the record is unlinked from it but kept for 24 months so the trial is not given again, then deleted automatically.';
+      'Pro (only when Pro is enabled; not active now): the 7-day free trial is given once per phone. To enforce this the server keeps the dates, plan, platform and only one-way keyed hashes of your email (in canonical form) and of a device identifier — the email itself, any device identifier and the attestation token are not stored. When you delete your account the record is unlinked from it but kept for 24 months so the trial is not given again, then deleted automatically.';
 
   @override
   String proSubTrialBody(int days) {
@@ -10674,7 +10733,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get proSubTrialPlanNotAllowed =>
-      'This plan\'s trial is only for teachers and verified specialists. Try the Student plan.';
+      'The Teacher trial is for teachers registered on the server, the Specialist trial for verified specialists, and the Premium trial for people who are both. Try the Student plan.';
 
   @override
   String get proSubTrialEmail =>

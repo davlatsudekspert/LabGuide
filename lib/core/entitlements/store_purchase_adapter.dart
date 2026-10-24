@@ -177,8 +177,8 @@ class StorePurchaseAdapter extends ChangeNotifier implements PurchaseAdapter {
   // ------------------------------------------------------------ Android
   /// Play har taklif (base plan / offer) uchun alohida yozuv beradi.
   /// D-75: faqat ASOSIY REJA (base plan, `offerId == null`) olinadi — bepul
-  /// sinov va chegirmali takliflar ko'rsatilmaydi va tanlanmaydi (30 kunlik
-  /// sinov server beradi; Play sinovi bilan ikki marta sinov bo'lmasin).
+  /// sinov va chegirmali takliflar ko'rsatilmaydi va tanlanmaydi (7 kunlik
+  /// sinov server beradi, D-76; Play sinovi bilan ikki marta sinov bo'lmasin).
   /// Mahsulot id si kanonik: `uz.labguide.student` + base plan `yearly` →
   /// `uz.labguide.student.yearly` ([BillingCatalog.canonical]).
   List<StoreProduct> _androidProducts(List<ProductDetails> list) {

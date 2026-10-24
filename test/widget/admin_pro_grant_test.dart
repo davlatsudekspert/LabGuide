@@ -128,7 +128,10 @@ void main() {
 
       // Tasdiqni bekor qilish — hech narsa yozilmaydi.
       await _fill(tester, _newcomer, note: 'konferensiya');
-      await _tap(tester, find.byKey(const ValueKey('pro-grant-plan-specialist')));
+      await _tap(
+        tester,
+        find.byKey(const ValueKey('pro-grant-plan-specialist')),
+      );
       await _tap(tester, find.byKey(const ValueKey('pro-grant-days-90')));
       await _submit(tester, l, confirm: false);
       expect(find.text(l.proGrantConfirmTitle), findsOneWidget);
@@ -169,7 +172,10 @@ void main() {
       await _fill(tester, _existing);
       await _tap(tester, find.byKey(const ValueKey('pro-grant-plan-teacher')));
       await _submit(tester, l);
-      expect(find.text(l.proGrantReplaced('ex***@example.com')), findsOneWidget);
+      expect(
+        find.text(l.proGrantReplaced('ex***@example.com')),
+        findsOneWidget,
+      );
       expect(find.text(l.proGrantListTitle(2)), findsOneWidget);
 
       // Uzaytirish rejimi: muddatsiz tanlansa xato; 90 kun bilan uzayadi.
@@ -180,7 +186,10 @@ void main() {
       expect(find.text(l.proGrantErrDuration), findsOneWidget);
       await _tap(tester, find.byKey(const ValueKey('pro-grant-days-90')));
       await _submit(tester, l);
-      expect(find.text(l.proGrantExtended('ex***@example.com')), findsOneWidget);
+      expect(
+        find.text(l.proGrantExtended('ex***@example.com')),
+        findsOneWidget,
+      );
 
       // Kutilayotgan grantni uzaytirib bo'lmaydi — server xatosi tushunarli.
       await _fill(tester, _newcomer);
@@ -268,4 +277,28 @@ void main() {
       expect(lab.grantCalls, isEmpty);
     });
   }
+
+  testWidgets('to‘rt reja (D-76): Premium tanlanadi va serverga yuboriladi', (
+    tester,
+  ) async {
+    final l = _l(AppLanguage.uz);
+    final lab = await _lab();
+    final s = await _setup(tester, lab, proEnabled: true);
+    await _signIn(tester, s, _owner);
+    await _openGrants(tester, l);
+    for (final p in ProPlan.values) {
+      expect(
+        find.byKey(ValueKey('pro-grant-plan-${p.name}')),
+        findsOneWidget,
+        reason: p.name,
+      );
+    }
+    expect(find.text(l.proPlanPremium), findsOneWidget);
+    await _fill(tester, _newcomer);
+    await _tap(tester, find.byKey(const ValueKey('pro-grant-plan-premium')));
+    await _tap(tester, find.byKey(const ValueKey('pro-grant-days-30')));
+    await _submit(tester, l);
+    expect(lab.grantCalls.single['plan'], ProPlan.premium);
+    expect(lab.grantCalls.single['days'], 30);
+  });
 }

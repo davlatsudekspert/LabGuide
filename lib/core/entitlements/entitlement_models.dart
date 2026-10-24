@@ -75,7 +75,7 @@ class ServerEntitlement {
   /// Manba: admin bergan Pro (D-73; `platform == 'admin_grant'`).
   static const adminGrantSource = 'admin_grant';
 
-  /// Manba: 30 kunlik bepul sinov (D-74; `platform == 'trial'`).
+  /// Manba: 7 kunlik bepul sinov (D-74/D-76; `platform == 'trial'`).
   static const trialSource = 'trial';
 
   factory ServerEntitlement.fromJson(Map<String, Object?> j) {
@@ -125,8 +125,9 @@ class ServerEntitlement {
   /// Pullik daraja: grantda — serverdan, xaridda — mahsulot id'sidan.
   ProPlan? get effectivePlan => plan ?? BillingCatalog.planOf(productId);
 
-  /// Ilova darajasi (katalogda yo'q mahsulot — Pro).
-  ProTier get tier => effectivePlan?.tier ?? ProTier.pro;
+  /// Ochadigan imkoniyatlar (katalogda yo'q mahsulot — faqat Talaba
+  /// to'plami, server bilan bir xil).
+  ProTier get tier => (effectivePlan ?? ProPlan.student).tier;
 
   /// Faqat qurilmadagi (mehmon) xarid uchun: do'kon tokeni — hisobga
   /// kirilganda serverga yuboriladi. Keshga yozilmaydi.

@@ -187,6 +187,8 @@ List<StoreProduct> storeProducts() {
     BillingCatalog.studentYearly,
     BillingCatalog.teacherMonthly,
     BillingCatalog.teacherYearly,
+    BillingCatalog.premiumMonthly,
+    BillingCatalog.premiumYearly,
   ]) {
     final spec = ProPricing.plans.firstWhere(
       (p) => p.monthlyProductId == id || p.yearlyProductId == id,

@@ -60,33 +60,39 @@ void main() {
         expect(ProTrialConfig.freeTrialDays, isNull);
         expect(ProTrialConfig.enabled, isFalse);
         expect(ProTrialConfig.storeIntroOffersAllowed, isFalse);
-        // 30 kunlik sinov — faqat server beradigan, kartasiz (D-75).
+        // 7 kunlik sinov (D-76; D-75 dagi 30 kun bekor) — faqat server
+        // beradigan, kartasiz, hamma reja uchun.
         expect(ProTrialConfig.mechanism, ProTrialMechanism.serverGranted);
-        expect(ProTrialConfig.serverTrialDays, 30);
+        expect(ProTrialConfig.serverTrialDays, 7);
         expect(
           _read('cloudflare/src/trial.ts'),
-          contains('export const TRIAL_DAYS = 30;'),
+          contains('export const TRIAL_DAYS = 7;'),
         );
       },
     );
 
-    test('narx katalogi: egasi narxlari (D-73), uch daraja, yillik bor', () {
-      final byPlan = {for (final p in ProPricing.plans) p.plan: p};
-      expect(byPlan.keys.toSet(), ProPlan.values.toSet());
-      expect(ProPricing.plans, hasLength(3));
-      expect(byPlan[ProPlan.student]!.monthlyUsd, 1.49);
-      expect(byPlan[ProPlan.student]!.yearlyUsd, 9.99);
-      expect(byPlan[ProPlan.teacher]!.monthlyUsd, 2.49);
-      expect(byPlan[ProPlan.teacher]!.yearlyUsd, 24.99);
-      expect(byPlan[ProPlan.specialist]!.monthlyUsd, 3.49);
-      expect(byPlan[ProPlan.specialist]!.yearlyUsd, 34.99);
-      for (final p in ProPricing.plans) {
-        expect(p.annualOffered, isTrue, reason: p.yearlyProductId);
-        expect(ProPricing.yearlyOffered(p.yearlyProductId), isTrue);
-        // Yillik oylikdan arzon (yillik taklif mantiqi).
-        expect(p.yearlyUsd!, lessThan(p.monthlyUsd * 12));
-      }
-    });
+    test(
+      'narx katalogi: egasi narxlari (D-73, D-76), to‘rt reja, yillik bor',
+      () {
+        final byPlan = {for (final p in ProPricing.plans) p.plan: p};
+        expect(byPlan.keys.toSet(), ProPlan.values.toSet());
+        expect(ProPricing.plans, hasLength(4));
+        expect(byPlan[ProPlan.premium]!.monthlyUsd, 4.99);
+        expect(byPlan[ProPlan.premium]!.yearlyUsd, 49.99);
+        expect(byPlan[ProPlan.student]!.monthlyUsd, 1.49);
+        expect(byPlan[ProPlan.student]!.yearlyUsd, 9.99);
+        expect(byPlan[ProPlan.teacher]!.monthlyUsd, 2.49);
+        expect(byPlan[ProPlan.teacher]!.yearlyUsd, 24.99);
+        expect(byPlan[ProPlan.specialist]!.monthlyUsd, 3.49);
+        expect(byPlan[ProPlan.specialist]!.yearlyUsd, 34.99);
+        for (final p in ProPricing.plans) {
+          expect(p.annualOffered, isTrue, reason: p.yearlyProductId);
+          expect(ProPricing.yearlyOffered(p.yearlyProductId), isTrue);
+          // Yillik oylikdan arzon (yillik taklif mantiqi).
+          expect(p.yearlyUsd!, lessThan(p.monthlyUsd * 12));
+        }
+      },
+    );
 
     test(
       'hech qaysi bepul imkoniyat yopilmaydi (gated faqat pullik daraja)',
@@ -95,6 +101,34 @@ void main() {
           expect(ProGatePolicy.gated.contains(f), isFalse, reason: f.name);
         }
         expect(ProGatePolicy.gated, isEmpty);
+      },
+    );
+
+    test(
+      'Lab yopilishi (D-76) faqat REJA: plannedLabGate faol ro‘yxatda emas',
+      () {
+        expect(ProGatePolicy.plannedLabGate, isNotEmpty);
+        expect(
+          ProGatePolicy.gated.intersection(ProGatePolicy.plannedLabGate),
+          isEmpty,
+        );
+        for (final f in ProGatePolicy.plannedLabGate) {
+          expect(f.capability, ProCapability.lab, reason: f.name);
+        }
+        // Ekranlarda "tez orada" / yopiq belgisi yo'q: Lab kodi faqat
+        // `requireFeature` / `pushGated` / `allowOrOffer` / `labGate` orqali.
+        for (final f
+            in Directory('lib/features')
+                .listSync(recursive: true)
+                .whereType<File>()
+                .where((f) => f.path.endsWith('.dart'))) {
+          final text = f.readAsStringSync();
+          expect(
+            text.contains('plannedLabGate'),
+            isFalse,
+            reason: '${f.path}: reja ro‘yxati UI da ishlatilmaydi',
+          );
+        }
       },
     );
 
@@ -291,7 +325,7 @@ void main() {
           'cloudflare/src/tiers.ts',
         ]) {
           expect(
-            RegExp(r'\b(1\.49|9\.99|2\.49|24\.99|3\.49|34\.99)\b')
+            RegExp(r'\b(1\.49|9\.99|2\.49|24\.99|3\.49|34\.99|4\.99|49\.99)\b')
                 .hasMatch(_read(path)),
             isFalse,
             reason: path,

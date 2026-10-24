@@ -25,15 +25,11 @@ enum ProSource {
   /// Admin bergan Pro (D-73), shu sessiyada serverdan tasdiqlangan.
   adminGrant,
 
-  /// 30 kunlik bepul sinov (D-74), shu sessiyada serverdan tasdiqlangan.
+  /// 7 kunlik bepul sinov (D-74/D-76), shu sessiyada serverdan tasdiqlangan.
   trial,
 
   /// Imzolangan oflayn kesh (muddati tugamagan).
   offlineCache,
-
-  /// Hisobsiz (mehmon) xarid: qurilmadagi do'kon tasdiqlagan tranzaksiya
-  /// (StoreKit 2 / Play). Hisobga kirilganda serverga bog'lanadi.
-  store,
 
   /// Pro yo'q.
   none,
@@ -54,6 +50,10 @@ enum BillingOutcome {
 
   /// Xarid boshqa LabGuide hisobiga bog'langan.
   ownedByOther,
+
+  /// Mehmon (hisobsiz): xarid va tiklash uchun avval hisobga kirish kerak
+  /// (D-76, egasi qarori). Do'kon oynasi ochilmaydi.
+  signInRequired,
 
   /// Internet, do'kon yoki server xatosi — holat o'zgarmadi.
   failed,
@@ -116,14 +116,19 @@ class HistoryView<T> {
   final int hiddenCount;
 }
 
-/// Pro huquqlari: bitta joyda, to'rt manbadan.
+/// Pro huquqlari: bitta joyda, uch manbadan.
 ///
 /// 1. Build rejimi — [allFeaturesOpen] (`--dart-define=LG_ALL_FEATURES_OPEN=true`
 ///    TestFlight/CI buildlarda; debug buildda ham ochiq).
-/// 2. Server tasdiqlagan obuna (`entitlements` jadvali, faqat server yozadi).
+/// 2. Server tasdiqlagan huquq (do'kon obunasi, admin grant, bepul sinov —
+///    faqat server yozadi).
 /// 3. Imzolangan, hisobga bog'langan, muddatli kesh — oflaynda muddati
 ///    tugaguncha ishlaydi.
-/// 4. Hisobsiz xarid — qurilmadagi do'kon tranzaksiyasi (shu sessiya).
+///
+/// Mehmon (hisobsiz) Pro OLMAYDI (D-76, egasi qarori): xarid, tiklash va
+/// sinov uchun hisobga kirish shart. Qurilmadagi do'kon tranzaksiyalari
+/// faqat eslab qolinadi va hisobga kirilganda serverga bog'lanadi. Mehmon
+/// rejimining o'zi (bepul qism) o'zgarmaydi (Apple 5.1.1).
 ///
 /// **To'lov yoqilmagan bo'lsa** ([purchasesEnabled] = false: do'kon
 /// mahsulotlari yuklanmagan yoki server sozlanmagan) hech narsa yopilmaydi:
@@ -189,7 +194,8 @@ class EntitlementService extends ChangeNotifier {
   EntitlementCache? _cache;
   bool _fresh = false;
 
-  /// Hisobsiz xaridlar (qurilmadagi do'kon tranzaksiyalari, shu sessiya).
+  /// Mehmon paytida qurilmada ko'rilgan do'kon tranzaksiyalari (shu sessiya).
+  /// Huquq BERMAYDI (D-76) — faqat hisobga kirilganda serverga bog'lanadi.
   var _device = const <ServerEntitlement>[];
   StreamSubscription<PurchaseProof>? _updates;
   bool _busy = false;
@@ -213,7 +219,7 @@ class EntitlementService extends ChangeNotifier {
 
   /// To'lov oynasida ko'rsatiladigan mahsulotlar (narx do'kondan).
   /// D-75: do'kon kirish taklifi (bepul sinov — avtomatik pullikka o'tadi)
-  /// ko'rsatilmaydi; 30 kunlik sinov faqat server sinovi (ikki marta sinov yo'q).
+  /// ko'rsatilmaydi; 7 kunlik sinov faqat server sinovi (ikki marta sinov yo'q).
   List<StoreProduct> get offeredProducts => [
     for (final p in purchases.loaded)
       if (p.catalog case final c?)
@@ -251,14 +257,6 @@ class EntitlementService extends ChangeNotifier {
     return live;
   }
 
-  Iterable<ServerEntitlement> _deviceGranting() sync* {
-    if (source.hasSession) return;
-    final t = now().toUtc();
-    for (final e in _device) {
-      if (e.grantsAt(t)) yield e;
-    }
-  }
-
   /// Eng yaxshi qator (D-73): yuqori daraja yutadi; teng darajada eng uzoq
   /// muddat (`null` — muddatsiz, eng uzoq); to'liq tenglikda do'kon xaridi
   /// (admin grant do'kon obunasini hech qachon bosib o'tmaydi). Server
@@ -287,9 +285,8 @@ class EntitlementService extends ChangeNotifier {
     return prio(a) > prio(b);
   }
 
-  /// Amaldagi xarid (eng yaxshisi): server/kesh, mehmonda — qurilma.
-  ServerEntitlement? get activeEntitlement =>
-      _best(_serverGranting()) ?? _best(_deviceGranting());
+  /// Amaldagi huquq (eng yaxshisi): server/kesh. Mehmonda — yo'q (D-76).
+  ServerEntitlement? get activeEntitlement => _best(_serverGranting());
 
   /// Serverda do'kon xaridi bormi (admin grant sanalmaydi: qurilmadagi xarid
   /// admin grant bo'lsa ham hisobga bog'lanadi).
@@ -305,21 +302,22 @@ class EntitlementService extends ChangeNotifier {
       if (e.isTrial) return ProSource.trial;
       return e.isAdminGrant ? ProSource.adminGrant : ProSource.server;
     }
-    if (_best(_deviceGranting()) != null) return ProSource.store;
     return ProSource.none;
   }
 
   bool get isPro => proSource != ProSource.none;
 
-  /// Amaldagi obuna darajasi (Ustoz Pro Pro'ni ham o'z ichiga oladi).
+  /// Amaldagi imkoniyatlar to'plami: hozir amal qilayotgan BARCHA huquq
+  /// qatorlari birlashmasi (D-76: matritsa zinapoya emas — Ustoz obunasi va
+  /// Mutaxassis granti birga ustoz paneli + Lab beradi). Server
+  /// `tiers.ts` `accessCapabilities` bilan bir xil.
   ProTier get tier {
-    if (allFeaturesOpen) return ProTier.teacher;
-    var best = ProTier.free;
-    for (final e in [..._serverGranting(), ..._deviceGranting()]) {
-      final t = e.tier;
-      if (t.index > best.index) best = t;
+    if (allFeaturesOpen) return ProTier.all;
+    var have = ProTier.free;
+    for (final e in _serverGranting()) {
+      have = have | e.tier;
     }
-    return best;
+    return have;
   }
 
   /// Amaldagi bepul sinovda qolgan to'liq kunlar (`null` — sinov yo'q).
@@ -430,7 +428,7 @@ class EntitlementService extends ChangeNotifier {
       !feature.pro ||
       !gated.contains(feature) ||
       !gatingActive ||
-      tier.covers(feature.tier);
+      tier.covers(feature);
 
   /// Tarixda ko'rinadigan oxirgi natijalar soni; `null` — cheksiz.
   int? historyVisibleLimit() =>
@@ -546,8 +544,9 @@ class EntitlementService extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// Do'kondagi joriy obunalar (jim, oyna yo'q): mehmonda — qurilma
-  /// huquqi; hisobda — server bilmagan xarid bo'lsa bog'lanadi.
+  /// Do'kondagi joriy obunalar (jim, oyna yo'q): mehmonda — faqat eslab
+  /// qolinadi (huquq bermaydi, D-76); hisobda — server bilmagan xarid bo'lsa
+  /// bog'lanadi.
   Future<void> _syncDevice() async {
     List<PurchaseProof> proofs;
     try {
@@ -593,6 +592,8 @@ class EntitlementService extends ChangeNotifier {
   Future<void> _onUpdate(PurchaseProof proof) async {
     final user = source.userId;
     if (!source.hasSession || user == null) {
+      // Mehmon: huquq bermaydi (D-76), hisobga kirilganda serverga bog'lanadi.
+      // Yakunlanadi — Play tasdiqlanmagan xaridni 3 kundan keyin qaytaradi.
       _setDevice([
         ..._device.where((e) => e.token != proof.token).map(_proofOf),
         proof,
@@ -632,14 +633,14 @@ class EntitlementService extends ChangeNotifier {
     return uuid.hasMatch(lower) ? lower : null;
   }
 
-  /// Xarid. Mehmon ham sotib oladi (hisob talab qilinmaydi — App Store
-  /// 5.1.1); hisobga kirganda xarid serverga bog'lanadi.
+  /// Xarid. Mehmon — [BillingOutcome.signInRequired] (D-76: avval hisobga
+  /// kirish; do'kon oynasi ochilmaydi).
   Future<BillingOutcome> purchase(String productId) => _billing(() async {
     final proof = await purchases.buy(productId, accountToken: _accountToken());
     return proof == null ? null : [proof];
   }, restore: false);
 
-  /// "Xaridni tiklash" (App Store talabi).
+  /// "Xaridni tiklash" (App Store talabi). Mehmon — avval hisobga kirish.
   Future<BillingOutcome> restore() =>
       _billing(() => purchases.restore(userInitiated: true), restore: true);
 
@@ -648,6 +649,11 @@ class EntitlementService extends ChangeNotifier {
     required bool restore,
   }) async {
     if (!purchasesEnabled) return BillingOutcome.unavailable;
+    final user = source.userId;
+    // Mehmon xarid qilmaydi va tiklamaydi (D-76): do'kon chaqirilmaydi.
+    if (!source.hasSession || user == null) {
+      return BillingOutcome.signInRequired;
+    }
     if (_busy) return BillingOutcome.failed;
     _busy = true;
     notifyListeners();
@@ -655,17 +661,6 @@ class EntitlementService extends ChangeNotifier {
       final proofs = await run();
       if (proofs == null) return BillingOutcome.cancelled;
       if (proofs.isEmpty) return BillingOutcome.nothingFound;
-      final user = source.userId;
-      if (!source.hasSession || user == null) {
-        // Mehmon: do'kon (StoreKit 2 / Play) tasdiqlagan tranzaksiya.
-        _setDevice(restore ? proofs : [..._device.map(_proofOf), ...proofs]);
-        for (final p in proofs) {
-          await purchases.finish(p);
-        }
-        return activeEntitlement != null
-            ? BillingOutcome.success
-            : BillingOutcome.nothingFound;
-      }
       final snap = await source.verify(proofs, restore: restore);
       await _accept(user, snap);
       // Server qabul qildi — tranzaksiya yakunlanadi (aks holda do'kon qayta beradi).

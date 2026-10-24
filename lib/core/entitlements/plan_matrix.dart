@@ -1,50 +1,30 @@
 import 'feature.dart';
 import 'pro_catalog.dart';
 
-/// Pro imkoniyat TOIFASI (D-74) — funksiya emas. Kelajakda yopiladigan har
-/// funksiya ([ProGatePolicy.gated]) shu toifalardan biriga tegishli va
-/// daraja faqat o'z to'plamidagini ocha oladi.
-///
-/// QAROR SERVERDA: `cloudflare/src/tiers.ts` (`requireTier`) — serverda
-/// saqlangan huquqdan (do'kon / admin grant / sinov), ilovadagi roldan
-/// emas. Bu nusxa faqat UI ko'rsatmalari uchun (test ikkalasini
-/// solishtiradi).
-enum ProCapability {
-  /// Talaba tomonidagi Pro imkoniyatlari.
-  learner('learner'),
+export 'feature.dart' show ProCapability, ProTier;
 
-  /// Ustoz paneli Pro imkoniyatlari (bugungi bepul guruhlar EMAS).
-  teacherPanel('teacher_panel'),
-
-  /// Mutaxassis (laborant/shifokor) Pro imkoniyatlari.
-  specialist('specialist');
-
-  const ProCapability(this.wire);
-
-  /// Server bilan umumiy nom.
-  final String wire;
-
-  /// [feature] qaysi toifaga tegishli (`null` — bepul funksiya).
-  static ProCapability? of(Feature feature) => switch (feature.tier) {
-    ProTier.free => null,
-    ProTier.pro => learner,
-    ProTier.teacher => teacherPanel,
-  };
-}
-
-/// Daraja × imkoniyat matritsasi (D-74, MA'LUMOT; server bilan bir xil).
+/// Daraja × imkoniyat matritsasi (D-76, egasi qarori; MA'LUMOT, server
+/// `cloudflare/src/tiers.ts` `TIER_CAPABILITIES` bilan bir xil — test
+/// solishtiradi). Bu ZINAPOYA EMAS, to'plam:
+/// * Talaba — o'qish (learner);
+/// * Ustoz — Talaba + ustoz paneli (Lab YO'Q);
+/// * Mutaxassis — Talaba + butun Lab (ustoz paneli YO'Q; D-73/D-74 dagi
+///   "Mutaxassis Ustozni ham qamraydi" qoidasi BEKOR);
+/// * Premium — hammasi.
 abstract final class PlanMatrix {
-  /// Mutaxassis Ustoz imkoniyatlarini ham oladi — D-73 qoidasi ("eng qimmat
-  /// reja kamroq bermasin"); bu ochiq qaror.
   static const capabilities = <ProPlan, Set<ProCapability>>{
     ProPlan.student: {ProCapability.learner},
     ProPlan.teacher: {ProCapability.learner, ProCapability.teacherPanel},
-    ProPlan.specialist: {
+    ProPlan.specialist: {ProCapability.learner, ProCapability.lab},
+    ProPlan.premium: {
       ProCapability.learner,
       ProCapability.teacherPanel,
-      ProCapability.specialist,
+      ProCapability.lab,
     },
   };
+
+  /// [feature] qaysi toifaga tegishli (`null` — bepul funksiya).
+  static ProCapability? of(Feature feature) => feature.capability;
 
   static bool allows(ProPlan? plan, ProCapability? capability) =>
       plan != null &&
@@ -59,6 +39,6 @@ abstract final class PlanMatrix {
     Set<Feature> gated = ProGatePolicy.gated,
   }) => [
     for (final f in Feature.values)
-      if (gated.contains(f) && allows(plan, ProCapability.of(f))) f,
+      if (gated.contains(f) && allows(plan, f.capability)) f,
   ];
 }

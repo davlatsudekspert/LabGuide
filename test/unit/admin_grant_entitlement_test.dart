@@ -80,7 +80,7 @@ void main() {
       expect(e.source, 'admin_grant');
       expect(e.plan, ProPlan.teacher);
       expect(e.effectivePlan, ProPlan.teacher);
-      expect(e.tier, ProTier.teacher);
+      expect(e.tier, ProPlan.teacher.tier);
       expect(e.grantsAt(_t0), isTrue);
       expect(e.grantsAt(_t0.add(const Duration(days: 31))), isFalse);
     });
@@ -109,27 +109,36 @@ void main() {
     });
 
     test('eski mahsulot id lari yangi darajaga o‘giriladi', () {
-      expect(BillingCatalog.planOf('uz.labguide.pro.monthly'),
-          ProPlan.specialist);
-      expect(BillingCatalog.planOf('uz.labguide.pro.student.yearly'),
-          ProPlan.student);
-      expect(BillingCatalog.planOf('uz.labguide.teacherpro.monthly'),
-          ProPlan.teacher);
+      expect(
+        BillingCatalog.planOf('uz.labguide.pro.monthly'),
+        ProPlan.specialist,
+      );
+      expect(
+        BillingCatalog.planOf('uz.labguide.pro.student.yearly'),
+        ProPlan.student,
+      );
+      expect(
+        BillingCatalog.planOf('uz.labguide.teacherpro.monthly'),
+        ProPlan.teacher,
+      );
       expect(BillingCatalog.planOf('yo‘q.mahsulot'), isNull);
     });
   });
 
   group('xizmat (EntitlementService)', () {
-    test('faqat admin grant: Pro faol, manba adminGrant, daraja bo‘yicha', () async {
-      source.snapshot = _snap([_grantJson(plan: 'student')]);
-      final s = make();
-      await s.refresh();
-      expect(s.isPro, isTrue);
-      expect(s.proSource, ProSource.adminGrant);
-      expect(s.plan, ProPlan.student);
-      expect(s.tier, ProTier.pro);
-      expect(s.activeEntitlement!.isAdminGrant, isTrue);
-    });
+    test(
+      'faqat admin grant: Pro faol, manba adminGrant, daraja bo‘yicha',
+      () async {
+        source.snapshot = _snap([_grantJson(plan: 'student')]);
+        final s = make();
+        await s.refresh();
+        expect(s.isPro, isTrue);
+        expect(s.proSource, ProSource.adminGrant);
+        expect(s.plan, ProPlan.student);
+        expect(s.tier, ProPlan.student.tier);
+        expect(s.activeEntitlement!.isAdminGrant, isTrue);
+      },
+    );
 
     test('muddati tugagan grant huquq bermaydi', () async {
       source.snapshot = _snap([
