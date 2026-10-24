@@ -3396,7 +3396,13 @@
   "classesLeaveAction": "Leave",
   "classesDeleteGroup": "Delete class",
   "classesDeleteGroupTitle": "Delete the class “{name}”?",
-  "@classesDeleteGroupTitle": {"placeholders": {"name": {"type": "String"}}},
+  "@classesDeleteGroupTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "classesDeleteGroupBody": "The class, its assignments and student results will be deleted permanently.",
   "classesDeleteGroupAction": "Delete",
   "classesInviteTitle": "Invite code",
@@ -5657,7 +5663,13 @@
   "topicTestHistory": "Result history",
   "topicTestAssign": "Assign to a group",
   "topicTestLimitBody": "Each student gets {minutes} min from the moment they start. When time runs out, answers are submitted automatically.",
-  "@topicTestLimitBody": {"placeholders": {"minutes": {"type": "int"}}},
+  "@topicTestLimitBody": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
   "topicTestLimitNoneBody": "No time limit — students can take the test any time before the deadline.",
   "topicTestOpenFor": "How long the test stays open",
   "topicTestAssignSub": "Students join by QR or code; you see the results",
@@ -6250,5 +6262,79 @@
   "proGrantErrNote": "The note must be at most 200 characters, without control characters.",
   "proGrantErrPending": "A pending grant cannot be extended: replace it instead.",
   "proGrantErrDuration": "Choose a duration to extend.",
-  "proGrantErrMany": "The active grant limit is reached. Revoke unused ones first."
+  "proGrantErrMany": "The active grant limit is reached. Revoke unused ones first.",
+  "proSubTitle": "Subscription",
+  "proSubRowSub": "Plans, your status and restore purchases",
+  "proSubAllFree": "Right now every feature is free. Plans are not active yet — nothing is on sale.",
+  "proSubStatusTitle": "Your status",
+  "proSubStatusFree": "Free",
+  "proSubStatusTrial": "{plan} · free trial: {days} left",
+  "@proSubStatusTrial": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      },
+      "days": {
+        "type": "String"
+      }
+    }
+  },
+  "proSubStatusPlan": "{plan} plan active",
+  "@proSubStatusPlan": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "proSubStatusPlanUntil": "{plan} plan active · until {date}",
+  "@proSubStatusPlanUntil": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "proSubStatusAdmin": "{plan} — granted by an administrator",
+  "@proSubStatusAdmin": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "proSubStatusAdminUntil": "{plan} — granted by an administrator · until {date}",
+  "@proSubStatusAdminUntil": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "proSubPlansTitle": "Plans",
+  "proSubPriceNote": "Prices are in US dollars. The store shows them in your local currency.",
+  "proSubUnlocks": "Covers: {list}",
+  "@proSubUnlocks": {
+    "placeholders": {
+      "list": {
+        "type": "String"
+      }
+    }
+  },
+  "proSubCapLearner": "student-side Pro features",
+  "proSubCapTeacherPanel": "teacher-panel Pro features",
+  "proSubCapSpecialist": "specialist Pro features",
+  "proSubNothingGated": "Right now this plan unlocks nothing extra: everything is free.",
+  "proSubTeacherNote": "Teacher-panel Pro features come only with the Teacher or Specialist plan. Changing your role in the app does not unlock them. Today's free groups stay free.",
+  "proSubTrialTitle": "30-day free trial",
+  "proSubTrialOncePerPhone": "Given only once per phone: not again for another account, nor after deleting and re-creating your account. You need to be signed in with a verified email.",
+  "proSubTrialUsed": "This account has already used its free trial.",
+  "proSubTrialNotActive": "The free trial is not switched on yet.",
+  "proSubTrialGuest": "Sign in to use the free trial."
 }

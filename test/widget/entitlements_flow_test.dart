@@ -90,8 +90,11 @@ void main() {
     expect(find.text('0%'), findsNWidgets(4), reason: 'tarix cheklanmagan');
     expect(find.textContaining('eski natija'), findsNothing);
 
+    // D-74: Pro yoqilgan buildda Profil'da faqat “Obuna” (ma'lumot) qatori;
+    // eski “Obuna va tiklash” xarid qatori yo'q.
     await goTo(tester, '/profile');
     expect(find.text(uz.proRowTitle), findsNothing);
+    expect(find.byKey(const ValueKey('profile-subscription')), findsOneWidget);
 
     // To'g'ridan-to'g'ri manzil bilan ham — hech qanday xarid elementi yo'q.
     await goTo(tester, '/profile/purchase');
@@ -178,7 +181,10 @@ void main() {
       );
       await pumpApp(tester, s, size: _tall);
       await goTo(tester, '/profile');
-      expect(find.text(uz.proRowTitle), findsOneWidget);
+      expect(
+        find.byKey(const ValueKey('profile-subscription')),
+        findsOneWidget,
+      );
       await goTo(tester, '/profile/purchase');
 
       final monthly = uz.proPayPricePer(r'$3.49', uz.proPayUnitMonth);
@@ -264,6 +270,7 @@ void main() {
     expect(find.text('0%'), findsNWidgets(4));
     await goTo(tester, '/profile');
     expect(find.text(uz.proRowTitle), findsNothing);
+    expect(find.byKey(const ValueKey('profile-subscription')), findsOneWidget);
     await goTo(tester, '/profile/purchase');
     expect(find.text(uz.proPayTestBuildOpen), findsOneWidget);
     expect(find.textContaining(uz.notAvailableYet), findsNothing);

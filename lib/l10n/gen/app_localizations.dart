@@ -18033,6 +18033,144 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'The active grant limit is reached. Revoke unused ones first.'**
   String get proGrantErrMany;
+
+  /// No description provided for @proSubTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Subscription'**
+  String get proSubTitle;
+
+  /// No description provided for @proSubRowSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Plans, your status and restore purchases'**
+  String get proSubRowSub;
+
+  /// No description provided for @proSubAllFree.
+  ///
+  /// In en, this message translates to:
+  /// **'Right now every feature is free. Plans are not active yet — nothing is on sale.'**
+  String get proSubAllFree;
+
+  /// No description provided for @proSubStatusTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your status'**
+  String get proSubStatusTitle;
+
+  /// No description provided for @proSubStatusFree.
+  ///
+  /// In en, this message translates to:
+  /// **'Free'**
+  String get proSubStatusFree;
+
+  /// No description provided for @proSubStatusTrial.
+  ///
+  /// In en, this message translates to:
+  /// **'{plan} · free trial: {days} left'**
+  String proSubStatusTrial(String plan, String days);
+
+  /// No description provided for @proSubStatusPlan.
+  ///
+  /// In en, this message translates to:
+  /// **'{plan} plan active'**
+  String proSubStatusPlan(String plan);
+
+  /// No description provided for @proSubStatusPlanUntil.
+  ///
+  /// In en, this message translates to:
+  /// **'{plan} plan active · until {date}'**
+  String proSubStatusPlanUntil(String plan, String date);
+
+  /// No description provided for @proSubStatusAdmin.
+  ///
+  /// In en, this message translates to:
+  /// **'{plan} — granted by an administrator'**
+  String proSubStatusAdmin(String plan);
+
+  /// No description provided for @proSubStatusAdminUntil.
+  ///
+  /// In en, this message translates to:
+  /// **'{plan} — granted by an administrator · until {date}'**
+  String proSubStatusAdminUntil(String plan, String date);
+
+  /// No description provided for @proSubPlansTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Plans'**
+  String get proSubPlansTitle;
+
+  /// No description provided for @proSubPriceNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Prices are in US dollars. The store shows them in your local currency.'**
+  String get proSubPriceNote;
+
+  /// No description provided for @proSubUnlocks.
+  ///
+  /// In en, this message translates to:
+  /// **'Covers: {list}'**
+  String proSubUnlocks(String list);
+
+  /// No description provided for @proSubCapLearner.
+  ///
+  /// In en, this message translates to:
+  /// **'student-side Pro features'**
+  String get proSubCapLearner;
+
+  /// No description provided for @proSubCapTeacherPanel.
+  ///
+  /// In en, this message translates to:
+  /// **'teacher-panel Pro features'**
+  String get proSubCapTeacherPanel;
+
+  /// No description provided for @proSubCapSpecialist.
+  ///
+  /// In en, this message translates to:
+  /// **'specialist Pro features'**
+  String get proSubCapSpecialist;
+
+  /// No description provided for @proSubNothingGated.
+  ///
+  /// In en, this message translates to:
+  /// **'Right now this plan unlocks nothing extra: everything is free.'**
+  String get proSubNothingGated;
+
+  /// No description provided for @proSubTeacherNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Teacher-panel Pro features come only with the Teacher or Specialist plan. Changing your role in the app does not unlock them. Today\'s free groups stay free.'**
+  String get proSubTeacherNote;
+
+  /// No description provided for @proSubTrialTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'30-day free trial'**
+  String get proSubTrialTitle;
+
+  /// No description provided for @proSubTrialOncePerPhone.
+  ///
+  /// In en, this message translates to:
+  /// **'Given only once per phone: not again for another account, nor after deleting and re-creating your account. You need to be signed in with a verified email.'**
+  String get proSubTrialOncePerPhone;
+
+  /// No description provided for @proSubTrialUsed.
+  ///
+  /// In en, this message translates to:
+  /// **'This account has already used its free trial.'**
+  String get proSubTrialUsed;
+
+  /// No description provided for @proSubTrialNotActive.
+  ///
+  /// In en, this message translates to:
+  /// **'The free trial is not switched on yet.'**
+  String get proSubTrialNotActive;
+
+  /// No description provided for @proSubTrialGuest.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in to use the free trial.'**
+  String get proSubTrialGuest;
 }
 
 class _AppLocalizationsDelegate

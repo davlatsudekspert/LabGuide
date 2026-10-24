@@ -10383,4 +10383,90 @@ class AppLocalizationsUz extends AppLocalizations {
   @override
   String get proGrantErrMany =>
       'Faol grantlar chegarasiga yetildi. Avval keraksizini bekor qiling.';
+
+  @override
+  String get proSubTitle => 'Obuna';
+
+  @override
+  String get proSubRowSub => 'Rejalar, holatingiz va xaridni tiklash';
+
+  @override
+  String get proSubAllFree =>
+      'Hozircha hamma imkoniyat bepul. Rejalar hali faol emas — hech narsa sotilmayapti.';
+
+  @override
+  String get proSubStatusTitle => 'Holatingiz';
+
+  @override
+  String get proSubStatusFree => 'Bepul';
+
+  @override
+  String proSubStatusTrial(String plan, String days) {
+    return '$plan · bepul sinov: $days qoldi';
+  }
+
+  @override
+  String proSubStatusPlan(String plan) {
+    return '$plan rejasi faol';
+  }
+
+  @override
+  String proSubStatusPlanUntil(String plan, String date) {
+    return '$plan rejasi faol · $date gacha';
+  }
+
+  @override
+  String proSubStatusAdmin(String plan) {
+    return '$plan — administrator bergan';
+  }
+
+  @override
+  String proSubStatusAdminUntil(String plan, String date) {
+    return '$plan — administrator bergan · $date gacha';
+  }
+
+  @override
+  String get proSubPlansTitle => 'Rejalar';
+
+  @override
+  String get proSubPriceNote =>
+      'Narxlar AQSh dollarida. Do‘konda mahalliy valyutada ko‘rsatiladi.';
+
+  @override
+  String proSubUnlocks(String list) {
+    return 'Kimga: $list';
+  }
+
+  @override
+  String get proSubCapLearner => 'o‘qish (talaba) tomonidagi Pro imkoniyatlari';
+
+  @override
+  String get proSubCapTeacherPanel => 'ustoz paneli Pro imkoniyatlari';
+
+  @override
+  String get proSubCapSpecialist => 'mutaxassis Pro imkoniyatlari';
+
+  @override
+  String get proSubNothingGated =>
+      'Hozir bu reja qo‘shimcha hech narsa ochmaydi: hammasi bepul.';
+
+  @override
+  String get proSubTeacherNote =>
+      'Ustoz paneli Pro imkoniyatlari faqat Ustoz yoki Mutaxassis rejasida bo‘ladi. Ilovada rolni o‘zgartirish ularni ochmaydi. Bugungi bepul guruhlar bepul qoladi.';
+
+  @override
+  String get proSubTrialTitle => '30 kunlik bepul sinov';
+
+  @override
+  String get proSubTrialOncePerPhone =>
+      'Bitta telefonga faqat bir marta beriladi: boshqa hisob bilan ham, hisobni o‘chirib qayta ochganda ham qayta berilmaydi. Hisobga kirish va tasdiqlangan email kerak.';
+
+  @override
+  String get proSubTrialUsed => 'Bu hisob bepul sinovdan foydalangan.';
+
+  @override
+  String get proSubTrialNotActive => 'Bepul sinov hali yoqilmagan.';
+
+  @override
+  String get proSubTrialGuest => 'Bepul sinov uchun hisobga kiring.';
 }

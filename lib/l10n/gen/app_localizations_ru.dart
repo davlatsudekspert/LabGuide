@@ -10595,4 +10595,91 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get proGrantErrMany =>
       'Достигнут лимит активных выдач. Сначала отзовите ненужные.';
+
+  @override
+  String get proSubTitle => 'Подписка';
+
+  @override
+  String get proSubRowSub => 'Планы, ваш статус и восстановление покупок';
+
+  @override
+  String get proSubAllFree =>
+      'Сейчас все возможности бесплатны. Планы пока не активны — ничего не продаётся.';
+
+  @override
+  String get proSubStatusTitle => 'Ваш статус';
+
+  @override
+  String get proSubStatusFree => 'Бесплатно';
+
+  @override
+  String proSubStatusTrial(String plan, String days) {
+    return '$plan · пробный период: осталось $days';
+  }
+
+  @override
+  String proSubStatusPlan(String plan) {
+    return 'План «$plan» активен';
+  }
+
+  @override
+  String proSubStatusPlanUntil(String plan, String date) {
+    return 'План «$plan» активен · до $date';
+  }
+
+  @override
+  String proSubStatusAdmin(String plan) {
+    return '$plan — выдан администратором';
+  }
+
+  @override
+  String proSubStatusAdminUntil(String plan, String date) {
+    return '$plan — выдан администратором · до $date';
+  }
+
+  @override
+  String get proSubPlansTitle => 'Планы';
+
+  @override
+  String get proSubPriceNote =>
+      'Цены указаны в долларах США. В магазине они показываются в местной валюте.';
+
+  @override
+  String proSubUnlocks(String list) {
+    return 'Для чего: $list';
+  }
+
+  @override
+  String get proSubCapLearner => 'Pro-возможности для учёбы (студент)';
+
+  @override
+  String get proSubCapTeacherPanel => 'Pro-возможности панели преподавателя';
+
+  @override
+  String get proSubCapSpecialist => 'Pro-возможности специалиста';
+
+  @override
+  String get proSubNothingGated =>
+      'Сейчас этот план ничего дополнительно не открывает: всё бесплатно.';
+
+  @override
+  String get proSubTeacherNote =>
+      'Pro-возможности панели преподавателя есть только в планах «Преподаватель» и «Специалист». Смена роли в приложении их не открывает. Нынешние бесплатные группы остаются бесплатными.';
+
+  @override
+  String get proSubTrialTitle => 'Пробный период на 30 дней';
+
+  @override
+  String get proSubTrialOncePerPhone =>
+      'Даётся только один раз на один телефон: повторно не даётся ни другому аккаунту, ни после удаления и повторного создания аккаунта. Нужны вход в аккаунт и подтверждённый email.';
+
+  @override
+  String get proSubTrialUsed => 'Этот аккаунт уже использовал пробный период.';
+
+  @override
+  String get proSubTrialNotActive => 'Пробный период пока не включён.';
+
+  @override
+  String get proSubTrialGuest =>
+      'Чтобы получить пробный период, войдите в аккаунт.';
 }

@@ -10544,4 +10544,90 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get proGrantErrMany =>
       'The active grant limit is reached. Revoke unused ones first.';
+
+  @override
+  String get proSubTitle => 'Subscription';
+
+  @override
+  String get proSubRowSub => 'Plans, your status and restore purchases';
+
+  @override
+  String get proSubAllFree =>
+      'Right now every feature is free. Plans are not active yet — nothing is on sale.';
+
+  @override
+  String get proSubStatusTitle => 'Your status';
+
+  @override
+  String get proSubStatusFree => 'Free';
+
+  @override
+  String proSubStatusTrial(String plan, String days) {
+    return '$plan · free trial: $days left';
+  }
+
+  @override
+  String proSubStatusPlan(String plan) {
+    return '$plan plan active';
+  }
+
+  @override
+  String proSubStatusPlanUntil(String plan, String date) {
+    return '$plan plan active · until $date';
+  }
+
+  @override
+  String proSubStatusAdmin(String plan) {
+    return '$plan — granted by an administrator';
+  }
+
+  @override
+  String proSubStatusAdminUntil(String plan, String date) {
+    return '$plan — granted by an administrator · until $date';
+  }
+
+  @override
+  String get proSubPlansTitle => 'Plans';
+
+  @override
+  String get proSubPriceNote =>
+      'Prices are in US dollars. The store shows them in your local currency.';
+
+  @override
+  String proSubUnlocks(String list) {
+    return 'Covers: $list';
+  }
+
+  @override
+  String get proSubCapLearner => 'student-side Pro features';
+
+  @override
+  String get proSubCapTeacherPanel => 'teacher-panel Pro features';
+
+  @override
+  String get proSubCapSpecialist => 'specialist Pro features';
+
+  @override
+  String get proSubNothingGated =>
+      'Right now this plan unlocks nothing extra: everything is free.';
+
+  @override
+  String get proSubTeacherNote =>
+      'Teacher-panel Pro features come only with the Teacher or Specialist plan. Changing your role in the app does not unlock them. Today\'s free groups stay free.';
+
+  @override
+  String get proSubTrialTitle => '30-day free trial';
+
+  @override
+  String get proSubTrialOncePerPhone =>
+      'Given only once per phone: not again for another account, nor after deleting and re-creating your account. You need to be signed in with a verified email.';
+
+  @override
+  String get proSubTrialUsed => 'This account has already used its free trial.';
+
+  @override
+  String get proSubTrialNotActive => 'The free trial is not switched on yet.';
+
+  @override
+  String get proSubTrialGuest => 'Sign in to use the free trial.';
 }

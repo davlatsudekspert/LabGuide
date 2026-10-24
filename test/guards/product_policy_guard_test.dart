@@ -111,6 +111,8 @@ void main() {
         const allowed = [
           'lib/core/entitlements/',
           'lib/features/profile/purchase_screen.dart',
+          // “Obuna” ekrani (D-74): faqat bayroq ortidagi yo'ldan.
+          'lib/features/profile/subscription_screen.dart',
           'lib/features/profile/pro_gate.dart',
           // Admin Pro berish (D-73): faqat bayroq + admin ortida (alohida
           // qorovullar: pro_flag_default_guard_test, admin_pro_grant_test).
@@ -178,13 +180,18 @@ void main() {
             isTrue,
           );
           expect(RegExp(r"path: 'purchase'").allMatches(router), hasLength(1));
-          for (final p in [
-            "path: 'pro'",
-            "'/pro'",
-            'paywall',
-            'subscription',
-            'billing',
-          ]) {
+          // D-74: “Obuna” ekrani ham faqat bayroq ichida.
+          expect(
+            RegExp(
+              r"if \(BuildFlags\.proEnabled\)\s+GoRoute\(\s+path: 'subscription'",
+            ).hasMatch(router),
+            isTrue,
+          );
+          expect(
+            RegExp(r"path: 'subscription'").allMatches(router),
+            hasLength(1),
+          );
+          for (final p in ["path: 'pro'", "'/pro'", 'paywall', 'billing']) {
             expect(router.contains(p), isFalse, reason: p);
           }
         },
@@ -192,11 +199,15 @@ void main() {
 
       test('Profil: obuna qatori `BuildFlags.proEnabled` ortida', () {
         final profile = _read('lib/features/profile/profile_screens.dart');
+        // D-74: yagona “Obuna” qatori, faqat bayroq ortida.
         expect(
-          RegExp(r'if \(BuildFlags\.proEnabled &&\s+\(ent\.purchasesEnabled')
-              .hasMatch(profile),
+          RegExp(
+            r"if \(BuildFlags\.proEnabled\)\s+LgRow\(\s+key: const ValueKey\('profile-subscription'\)",
+          ).hasMatch(profile),
           isTrue,
         );
+        expect(profile.contains("'/profile/subscription'"), isTrue);
+        expect(profile.contains("'/profile/purchase'"), isFalse);
       });
 
       test('iOS: In-App Purchase imkoniyati yoqilmagan', () {

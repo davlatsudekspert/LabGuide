@@ -45,6 +45,8 @@ void main() {
 
       await goTo(tester, '/profile');
       expect(find.text(uz.proRowTitle), findsNothing);
+      expect(find.text(uz.proSubRowSub), findsNothing);
+      expect(find.byKey(const ValueKey('profile-subscription')), findsNothing);
       expect(find.byIcon(Icons.workspace_premium_outlined), findsNothing);
 
       // To'lov oynasi yo'li ro'yxatda yo'q.
@@ -79,7 +81,11 @@ void main() {
       }
       expect(shop.inits, 1);
       await goTo(tester, '/profile');
-      expect(find.text(uz.proRowTitle), findsOneWidget);
+      // D-74: “Obuna” qatori (rejalar, holat, tiklash) — bayroq yoqilgan buildda.
+      expect(
+        find.byKey(const ValueKey('profile-subscription')),
+        findsOneWidget,
+      );
     },
   );
 }

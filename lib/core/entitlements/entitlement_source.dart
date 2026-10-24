@@ -8,7 +8,9 @@ import 'package:supabase/supabase.dart';
 import '../backend/backend_models.dart';
 import '../backend/cloudflare_backend.dart';
 import '../backend/supabase_backend.dart';
+import 'device_attestor.dart';
 import 'entitlement_models.dart';
+import 'pro_catalog.dart';
 import 'purchase_adapter.dart';
 
 /// Shu qurilmaning do'koni: `app_store` (iOS) yoki `play_store` (Android).
@@ -43,6 +45,23 @@ abstract interface class EntitlementSource {
   Future<EntitlementSnapshot> verify(
     List<PurchaseProof> proofs, {
     required bool restore,
+  });
+}
+
+/// Bepul sinov (D-74): server bilan ishlaydigan manba. Server faqat
+/// `LG_BILLING_ENABLED=true` va qurilma attestatsiyasi sozlanganda javob
+/// beradi (aks holda 404/503 → [EntitlementFailure.notConfigured]).
+abstract interface class TrialSource {
+  /// `POST /v1/billing/trial/challenge` — bir martalik nonce.
+  Future<String> trialChallenge();
+
+  /// `POST /v1/billing/trial/start`. Xatoda [EntitlementException]
+  /// (`detail` — server kodi, masalan `trial_already_used`).
+  Future<EntitlementSnapshot> startTrial({
+    required ProPlan plan,
+    required String email,
+    required String nonce,
+    required DeviceAttestation attestation,
   });
 }
 
@@ -164,7 +183,7 @@ class SupabaseEntitlementSource implements EntitlementSource {
 
 /// Cloudflare Worker (`cloudflare/src/billing.ts`): `GET /v1/billing/status`,
 /// `GET /v1/billing/entitlements`, `POST /v1/billing/verify`.
-class CloudflareEntitlementSource implements EntitlementSource {
+class CloudflareEntitlementSource implements EntitlementSource, TrialSource {
   CloudflareEntitlementSource(this.backend, {String? platform})
     : platform = platform ?? storePlatform();
 
@@ -222,6 +241,49 @@ class CloudflareEntitlementSource implements EntitlementSource {
     );
   }
 
+  @override
+  Future<String> trialChallenge() async {
+    final ({int status, Map<String, Object?> data}) r;
+    try {
+      r = await backend.billing('POST', '/v1/billing/trial/challenge');
+    } on BackendException catch (e) {
+      throw EntitlementException(_failure(e), e.detail);
+    }
+    final nonce = r.data['nonce'];
+    if (r.status == 200 && nonce is String) return nonce;
+    throw EntitlementException(
+      r.status == 503 || r.status == 404
+          ? EntitlementFailure.notConfigured
+          : EntitlementFailure.unknown,
+      r.data['error'] as String? ?? '${r.status}',
+    );
+  }
+
+  @override
+  Future<EntitlementSnapshot> startTrial({
+    required ProPlan plan,
+    required String email,
+    required String nonce,
+    required DeviceAttestation attestation,
+  }) => _snapshot(
+    () => backend.billing(
+      'POST',
+      '/v1/billing/trial/start',
+      body: {
+        'tier': plan.wire,
+        'email': email,
+        'attestation': attestation.toJson(nonce),
+      },
+    ),
+  );
+
+  static EntitlementFailure _failure(BackendException e) => switch (e.failure) {
+    BackendFailure.network => EntitlementFailure.network,
+    BackendFailure.unauthorized => EntitlementFailure.unauthorized,
+    BackendFailure.unavailable => EntitlementFailure.notConfigured,
+    _ => EntitlementFailure.unknown,
+  };
+
   static Future<EntitlementSnapshot> _snapshot(
     Future<({int status, Map<String, Object?> data})> Function() run,
   ) async {
@@ -229,12 +291,7 @@ class CloudflareEntitlementSource implements EntitlementSource {
     try {
       r = await run();
     } on BackendException catch (e) {
-      throw EntitlementException(switch (e.failure) {
-        BackendFailure.network => EntitlementFailure.network,
-        BackendFailure.unauthorized => EntitlementFailure.unauthorized,
-        BackendFailure.unavailable => EntitlementFailure.notConfigured,
-        _ => EntitlementFailure.unknown,
-      }, e.detail);
+      throw EntitlementException(_failure(e), e.detail);
     }
     if (r.status >= 200 && r.status < 300) {
       try {
@@ -250,6 +307,6 @@ class CloudflareEntitlementSource implements EntitlementSource {
       409 when code == 'purchase_pending' => EntitlementFailure.pending,
       502 || 504 => EntitlementFailure.network,
       _ => EntitlementFailure.unknown,
-    }, '${r.status} $code');
+    }, code ?? '${r.status}');
   }
 }

@@ -6,6 +6,7 @@ import 'package:flutter/foundation.dart';
 
 import '../storage/kv_store.dart';
 import 'billing_catalog.dart';
+import 'device_attestor.dart';
 import 'entitlement_cache.dart';
 import 'entitlement_models.dart';
 import 'entitlement_source.dart';
@@ -23,6 +24,9 @@ enum ProSource {
 
   /// Admin bergan Pro (D-73), shu sessiyada serverdan tasdiqlangan.
   adminGrant,
+
+  /// 30 kunlik bepul sinov (D-74), shu sessiyada serverdan tasdiqlangan.
+  trial,
 
   /// Imzolangan oflayn kesh (muddati tugamagan).
   offlineCache,
@@ -52,6 +56,30 @@ enum BillingOutcome {
   ownedByOther,
 
   /// Internet, do'kon yoki server xatosi — holat o'zgarmadi.
+  failed,
+}
+
+/// Bepul sinovni boshlash natijasi (D-74).
+enum TrialOutcome {
+  /// Sinov yoqilmagan: server bayrog'i o'chiq, attestatsiya sozlanmagan yoki
+  /// mehmon (hisob yo'q).
+  unavailable,
+  success,
+
+  /// Shu telefon, email yoki hisob sinovdan foydalangan.
+  alreadyUsed,
+
+  /// Bu reja hisob uchun ruxsat etilmagan (masalan, serverda ustoz emas).
+  planNotAllowed,
+
+  /// Email hisobning tasdiqlangan emaili emas.
+  emailNotVerified,
+
+  /// Qurilma attestatsiyasi rad etildi.
+  attestationFailed,
+
+  /// Amaldagi pullik obuna bor.
+  alreadySubscribed,
   failed,
 }
 
@@ -94,6 +122,7 @@ class EntitlementService extends ChangeNotifier {
     this.freeHistoryLimit = 3,
     this.studentVerified = false,
     this.gated = ProGatePolicy.gated,
+    this.attestor = const UnconfiguredDeviceAttestor(),
   }) : purchases = purchases ?? UnavailablePurchaseAdapter(),
        _cacheStore = cache,
        now = clock ?? DateTime.now {
@@ -123,6 +152,10 @@ class EntitlementService extends ChangeNotifier {
 
   /// Haqiqatan yopiladigan imkoniyatlar (standart: bo'sh, D-71).
   final Set<Feature> gated;
+
+  /// Bepul sinov uchun qurilma attestatsiyasi (D-74). Standart —
+  /// sozlanmagan: sinov taklif qilinmaydi.
+  final DeviceAttestor attestor;
   final Duration offlineTtl;
   final int freeHistoryLimit;
 
@@ -171,14 +204,20 @@ class EntitlementService extends ChangeNotifier {
     return t.isBefore(c.validUntil);
   }
 
-  Iterable<ServerEntitlement> _serverGranting() sync* {
+  /// Server qatorlaridan amaldagilari. Bepul sinov (D-74) pullik do'kon
+  /// obunasini hech qachon bosib o'tmaydi: amaldagi obuna bo'lsa sinov
+  /// qatori hisobga olinmaydi (server `resolveAccess` bilan bir xil).
+  Iterable<ServerEntitlement> _serverGranting() {
     final c = _cache;
     final t = now();
-    if (c == null || !_cacheValid(t)) return;
+    if (c == null || !_cacheValid(t)) return const [];
     final serverNow = t.add(c.clockOffset);
-    for (final e in c.items) {
-      if (e.grantsAt(serverNow)) yield e;
-    }
+    final live = [
+      for (final e in c.items)
+        if (e.grantsAt(serverNow)) e,
+    ];
+    if (live.any((e) => e.isStore)) return live.where((e) => !e.isTrial);
+    return live;
   }
 
   Iterable<ServerEntitlement> _deviceGranting() sync* {
@@ -212,7 +251,9 @@ class EntitlementService extends ChangeNotifier {
       if (eb == null) return false;
       return ea.isAfter(eb);
     }
-    return !a.isAdminGrant && b.isAdminGrant;
+    // Tenglikda: do'kon > admin grant > sinov.
+    int prio(ServerEntitlement e) => e.isStore ? 2 : (e.isAdminGrant ? 1 : 0);
+    return prio(a) > prio(b);
   }
 
   /// Amaldagi xarid (eng yaxshisi): server/kesh, mehmonda — qurilma.
@@ -221,7 +262,7 @@ class EntitlementService extends ChangeNotifier {
 
   /// Serverda do'kon xaridi bormi (admin grant sanalmaydi: qurilmadagi xarid
   /// admin grant bo'lsa ham hisobga bog'lanadi).
-  bool get _hasStoreOnServer => _serverGranting().any((e) => !e.isAdminGrant);
+  bool get _hasStoreOnServer => _serverGranting().any((e) => e.isStore);
 
   /// Amaldagi pullik daraja (`null` — yo'q yoki katalogda yo'q).
   ProPlan? get plan => activeEntitlement?.effectivePlan;
@@ -230,6 +271,7 @@ class EntitlementService extends ChangeNotifier {
     if (allFeaturesOpen) return ProSource.buildOpen;
     if (_best(_serverGranting()) case final e?) {
       if (!_fresh) return ProSource.offlineCache;
+      if (e.isTrial) return ProSource.trial;
       return e.isAdminGrant ? ProSource.adminGrant : ProSource.server;
     }
     if (_best(_deviceGranting()) != null) return ProSource.store;
@@ -247,6 +289,86 @@ class EntitlementService extends ChangeNotifier {
       if (t.index > best.index) best = t;
     }
     return best;
+  }
+
+  /// Amaldagi bepul sinovda qolgan to'liq kunlar (`null` — sinov yo'q).
+  int? get trialDaysLeft {
+    final e = activeEntitlement;
+    final end = e?.expiresAt;
+    if (e == null || !e.isTrial || end == null) return null;
+    final left = end.difference(now().toUtc().add(_cache!.clockOffset));
+    if (left.isNegative) return 0;
+    return (left.inHours / 24).ceil();
+  }
+
+  /// Shu hisob bepul sinovdan foydalanganmi (server qatori yoki belgisi).
+  /// Telefon bo'yicha holat faqat serverda tekshiriladi.
+  bool get trialUsed =>
+      _trialUsed || (_cache?.items.any((e) => e.isTrial) ?? false);
+  bool _trialUsed = false;
+
+  /// Bepul sinovni boshlash mumkinmi: hisob, server sinov manbai va qurilma
+  /// attestatsiyasi (D-74). Bugun hech bir buildda attestatsiya yo'q →
+  /// `false`.
+  bool get trialAvailable =>
+      attestor.available &&
+      source is TrialSource &&
+      source.hasSession &&
+      !trialUsed &&
+      activeEntitlement == null;
+
+  /// Bepul sinovni boshlash: nonce → qurilma attestatsiyasi → server.
+  /// [email] — hisobning tasdiqlangan emaili (server tekshiradi).
+  Future<TrialOutcome> startTrial({
+    required ProPlan plan,
+    required String email,
+  }) async {
+    final user = source.userId;
+    final src = switch (source) {
+      final TrialSource t => t,
+      _ => null,
+    };
+    if (!attestor.available || src == null || user == null) {
+      return TrialOutcome.unavailable;
+    }
+    if (_busy) return TrialOutcome.failed;
+    _busy = true;
+    notifyListeners();
+    try {
+      final nonce = await src.trialChallenge();
+      final attestation = await attestor.attest(nonce);
+      await _accept(
+        user,
+        await src.startTrial(
+          plan: plan,
+          email: email,
+          nonce: nonce,
+          attestation: attestation,
+        ),
+      );
+      return TrialOutcome.success;
+    } on EntitlementException catch (e) {
+      if (e.detail == 'trial_already_used') _trialUsed = true;
+      return switch (e.detail) {
+        'trial_already_used' => TrialOutcome.alreadyUsed,
+        'plan_not_allowed' => TrialOutcome.planNotAllowed,
+        'email_not_verified' => TrialOutcome.emailNotVerified,
+        'device_attestation_failed' => TrialOutcome.attestationFailed,
+        'already_subscribed' => TrialOutcome.alreadySubscribed,
+        'device_attestation_not_configured' ||
+        'not_found' => TrialOutcome.unavailable,
+        _ =>
+          e.failure == EntitlementFailure.notConfigured
+              ? TrialOutcome.unavailable
+              : TrialOutcome.failed,
+      };
+    } on Object catch (e) {
+      debugPrint('trial: $e');
+      return TrialOutcome.failed;
+    } finally {
+      _busy = false;
+      notifyListeners();
+    }
   }
 
   /// Imkoniyat ochiqmi. Faqat amal boshlanishidan oldin yoki natijadan
@@ -294,6 +416,7 @@ class EntitlementService extends ChangeNotifier {
     final user = source.userId;
     _cache = user == null ? null : await _cacheStore.read(user);
     _fresh = false;
+    _trialUsed = false;
     notifyListeners();
   }
 
@@ -357,6 +480,7 @@ class EntitlementService extends ChangeNotifier {
       validUntil: t.add(offlineTtl),
       items: snap.items,
     );
+    if (snap.trialUsed) _trialUsed = true;
     _fresh = true;
     await _cacheStore.write(_cache!);
     notifyListeners();
@@ -517,6 +641,7 @@ class EntitlementService extends ChangeNotifier {
 
   /// "Lokal ma'lumotlarni o'chirish" dan keyin.
   void resetInMemory() {
+    _trialUsed = false;
     _cache = null;
     _fresh = false;
     _device = const [];

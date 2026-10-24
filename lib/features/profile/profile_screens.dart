@@ -8,7 +8,6 @@ import '../../app/widgets/lg_page.dart';
 import '../../app/widgets/links.dart';
 import '../../core/build_flags.dart';
 import '../../core/contact.dart';
-import '../../core/entitlements/entitlement_service.dart' show ProSource;
 import '../../design/widgets/lg_widgets.dart';
 import '../learn/exam_question.dart' show keepUnitsTogether;
 import '../../l10n/gen/app_localizations.dart';
@@ -194,18 +193,16 @@ class ProfileScreen extends StatelessWidget {
               icon: Icons.download_for_offline_outlined,
               onTap: () => context.push('/profile/packs'),
             ),
-            // Obuna (D-71) — faqat Pro bayrog'i yoqilgan buildda va to'lov
-            // haqiqatan ishlaganda (do'kon mahsulotlari yuklangan, server
-            // sozlangan) yoki amaldagi obuna bo'lsa. Bayroq o'chiq — qator yo'q.
-            if (BuildFlags.proEnabled &&
-                (ent.purchasesEnabled ||
-                    (ent.activeEntitlement != null &&
-                        ent.proSource != ProSource.buildOpen)))
+            // “Obuna” (D-74) — faqat Pro bayrog'i yoqilgan buildda: rejalar,
+            // narxlar, holat, sinov qoidasi, tiklash (to'lov oynasi shu
+            // ekrandan). Bayroq o'chiq — qator yo'q, Profil `main` bilan bir xil.
+            if (BuildFlags.proEnabled)
               LgRow(
-                title: l.proRowTitle,
-                subtitle: l.proRowSub,
+                key: const ValueKey('profile-subscription'),
+                title: l.proSubTitle,
+                subtitle: l.proSubRowSub,
                 icon: Icons.workspace_premium_outlined,
-                onTap: () => context.push('/profile/purchase'),
+                onTap: () => context.push('/profile/subscription'),
               ),
             // Yagona “Yordam va aloqa” (D-69 Q6): ichida ilova ichidagi
             // yozishma va email/shikoyat. Serverga bog'liq emas — doim

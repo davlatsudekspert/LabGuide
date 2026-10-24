@@ -75,6 +75,9 @@ class ServerEntitlement {
   /// Manba: admin bergan Pro (D-73; `platform == 'admin_grant'`).
   static const adminGrantSource = 'admin_grant';
 
+  /// Manba: 30 kunlik bepul sinov (D-74; `platform == 'trial'`).
+  static const trialSource = 'trial';
+
   factory ServerEntitlement.fromJson(Map<String, Object?> j) {
     DateTime? date(String k) =>
         j[k] == null ? null : DateTime.parse(j[k]! as String).toUtc();
@@ -88,7 +91,11 @@ class ServerEntitlement {
       environment: (j['environment'] as String?) ?? 'production',
       source:
           (j['source'] as String?) ??
-          (j['platform'] == adminGrantSource ? adminGrantSource : storeSource),
+          switch (j['platform']) {
+            adminGrantSource => adminGrantSource,
+            trialSource => trialSource,
+            _ => storeSource,
+          },
       plan: ProPlan.parse(j['plan']),
     );
   }
@@ -101,13 +108,19 @@ class ServerEntitlement {
   final String ownership;
   final String environment;
 
-  /// `store` yoki `admin_grant` (server `source`).
+  /// `store`, `admin_grant` yoki `trial` (server `source`).
   final String source;
 
   /// Admin grant darajasi (do'kon xaridida `null` — mahsulotdan olinadi).
   final ProPlan? plan;
 
   bool get isAdminGrant => source == adminGrantSource;
+
+  /// Bepul sinov qatori (pullik obunani hech qachon bosib o'tmaydi).
+  bool get isTrial => source == trialSource;
+
+  /// Do'kon xaridi (pullik obuna).
+  bool get isStore => !isAdminGrant && !isTrial;
 
   /// Pullik daraja: grantda — serverdan, xaridda — mahsulot id'sidan.
   ProPlan? get effectivePlan => plan ?? BillingCatalog.planOf(productId);
@@ -151,6 +164,7 @@ class EntitlementSnapshot {
     required this.serverTime,
     required this.items,
     this.ownedByOther = false,
+    this.trialUsed = false,
   });
 
   factory EntitlementSnapshot.fromJson(Map<String, Object?> j) =>
@@ -161,6 +175,7 @@ class EntitlementSnapshot {
             ServerEntitlement.fromJson((e as Map).cast<String, Object?>()),
         ],
         ownedByOther: j['owned_by_other'] == true,
+        trialUsed: j['trial_used'] == true,
       );
 
   final DateTime serverTime;
@@ -168,6 +183,9 @@ class EntitlementSnapshot {
 
   /// Tiklashda topilgan xarid boshqa hisobga bog'langan.
   final bool ownedByOther;
+
+  /// Shu hisob bepul sinovdan foydalangan (D-74).
+  final bool trialUsed;
 }
 
 enum EntitlementFailure {

@@ -58,6 +58,7 @@ import '../features/profile/contact_screen.dart';
 import '../features/profile/help_screen.dart';
 import '../features/profile/profile_screens.dart';
 import '../features/profile/purchase_screen.dart';
+import '../features/profile/subscription_screen.dart';
 import '../features/settings/theme_screen.dart';
 import '../features/qc/qc_guides.dart';
 import '../features/qc/qc_guides_info.dart';
@@ -212,6 +213,12 @@ GoRouter buildRouter(
             path: 'packs',
             builder: (context, state) => const PacksScreen(),
           ),
+          // “Obuna” ekrani (D-74): faqat Pro bayrog'i yoqilgan buildda.
+          if (BuildFlags.proEnabled)
+            GoRoute(
+              path: 'subscription',
+              builder: (context, state) => const SubscriptionScreen(),
+            ),
           // Obuna oynasi (D-71): faqat Pro bayrog'i yoqilgan buildda.
           if (BuildFlags.proEnabled)
             GoRoute(
