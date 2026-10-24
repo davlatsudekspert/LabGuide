@@ -16,6 +16,7 @@ import {
 import { userHash } from './community';
 import { badRequest, conflict, forbidden, json, noContent, notFound, readJson } from './http';
 import { hit } from './ratelimit';
+import { requireStepUp } from './stepup';
 
 /** Bir vaqtda faol qo'shilgan adminlar chegarasi (super adminlardan tashqari). */
 export const MAX_ACTIVE_GRANTS = 20;
@@ -104,6 +105,7 @@ export async function addAdmin(ctx: Ctx): Promise<Response> {
     .first<{ n: number; mine: number | null }>();
   if ((active?.mine ?? 0) > 0) throw conflict('already_admin');
   if ((active?.n ?? 0) >= MAX_ACTIVE_GRANTS) throw conflict('too_many_admins');
+  await requireStepUp(ctx, s, 'admins');
 
   const id = crypto.randomUUID();
   const masked = maskEmail(email);
@@ -158,6 +160,7 @@ export async function removeAdmin(ctx: Ctx, id: string): Promise<Response> {
     .bind(id)
     .first<{ email_hmac: string }>();
   if (!g) throw notFound();
+  await requireStepUp(ctx, s, 'admins');
   const user = await ctx.db
     .prepare('SELECT id FROM users WHERE email_hash = ?1')
     .bind(g.email_hmac)

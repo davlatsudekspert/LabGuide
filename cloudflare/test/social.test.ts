@@ -6,7 +6,10 @@
 import { beforeEach, describe, expect, it } from 'vitest';
 import { base64url, sha256Hex } from '../src/crypto';
 import { resetSocialCaches } from '../src/social';
-import { makeServer, uniqueEmail } from './helpers';
+import { makeServer, uniqueEmail, setAutoStepUp } from './helpers';
+
+// Eski testlar: step-up so'ralsa ilovadagidek bir marta tasdiqlab qaytaradi (stepup.test.ts — alohida).
+beforeEach(() => setAutoStepUp(true));
 
 const GOOGLE_AUD = 'test-web-client.apps.googleusercontent.com';
 const BUNDLE = 'uz.labguide.app';

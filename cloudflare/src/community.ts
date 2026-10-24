@@ -12,6 +12,7 @@
 //   uchun admin amali (`seed-owner-verification`) orqali.
 
 import { adminAllowlist, audit, emailHash, isAdminSession, normalizeEmail, requireAdmin, requireSession } from './auth';
+import { requireStepUp } from './stepup';
 import type { Ctx, Session } from './context';
 import { iso } from './context';
 import { hex, hmac } from './crypto';
@@ -679,6 +680,7 @@ export async function pinQuestion(ctx: Ctx, qid: string): Promise<Response> {
 export async function deleteQuestion(ctx: Ctx, qid: string): Promise<Response> {
   const s = await requireAdmin(ctx);
   const id = seg(qid);
+  await requireStepUp(ctx, s, 'moderation');
   const answers = `SELECT id FROM community_answers WHERE question_id = ?1`;
   const res = await ctx.db.batch([
     ctx.db.prepare(`DELETE FROM community_votes WHERE answer_id IN (${answers})`).bind(id),
@@ -704,6 +706,7 @@ export async function deleteAnswer(ctx: Ctx, aid: string): Promise<Response> {
     .bind(id)
     .first<{ question_id: string }>();
   if (!a) throw notFound();
+  await requireStepUp(ctx, s, 'moderation');
   await ctx.db.batch([
     ctx.db.prepare('DELETE FROM community_votes WHERE answer_id = ?1').bind(id),
     ctx.db.prepare(`DELETE FROM community_translations WHERE post_kind = 'answer' AND post_id = ?1`).bind(id),
@@ -962,6 +965,7 @@ export async function adminRestore(ctx: Ctx, h: string): Promise<Response> {
   const s = await requireAdmin(ctx);
   const m = await adminTarget(ctx, h);
   if (m.status !== 'suspended') throw conflict('not_suspended');
+  await requireStepUp(ctx, s, 'community_status');
   const back = m.prev_status ?? 'none';
   await ctx.db
     .prepare(
@@ -979,6 +983,7 @@ export async function adminRevoke(ctx: Ctx, h: string): Promise<Response> {
   const s = await requireAdmin(ctx);
   const m = await adminTarget(ctx, h);
   if (m.is_owner === 1) throw forbidden('owner');
+  await requireStepUp(ctx, s, 'community_status');
   await ctx.db
     .prepare(
       // To'xtatilgan a'zoda to'xtatish saqlanadi: tiklanganda 'rejected' ga qaytadi.
@@ -997,6 +1002,7 @@ export async function adminSuspend(ctx: Ctx, h: string): Promise<Response> {
   const s = await requireAdmin(ctx);
   const m = await adminTarget(ctx, h);
   if (m.status === 'suspended') return json({ status: 'suspended' });
+  await requireStepUp(ctx, s, 'community_status');
   await ctx.db
     .prepare(
       `UPDATE community_members SET prev_status = status, status = 'suspended', suspended_at = ?2, updated_at = ?2
@@ -1024,6 +1030,7 @@ export async function adminSeedOwnerVerification(ctx: Ctx): Promise<Response> {
     .bind(await emailHash(ctx, email))
     .first<{ id: string }>();
   if (!user) throw new ApiError(404, 'user_not_found');
+  await requireStepUp(ctx, s, 'content');
   await markOwnerVerified(ctx, s.userId, user.id);
   return json({ status: 'verified', method: OWNER_VERIFICATION.method, is_owner: true });
 }
@@ -1062,6 +1069,7 @@ export async function adminSeed(ctx: Ctx): Promise<Response> {
     .prepare(`SELECT user_hash FROM community_members WHERE is_owner = 1 AND status = 'verified'`)
     .first<{ user_hash: string }>();
   if (!owner) throw conflict('owner_not_verified');
+  await requireStepUp(ctx, s, 'content');
   // Bo'sh tana — serverga biriktirilgan seed (egasi bir tugma bilan ishga tushiradi).
   const empty = (await ctx.req.clone().arrayBuffer()).byteLength === 0;
   const body = empty ? (BUNDLED_SEED as Record<string, unknown>) : await readJson(ctx.req, 256 * 1024);
@@ -1084,6 +1092,7 @@ export async function adminCommunityLaunch(ctx: Ctx): Promise<Response> {
     }
   }
   if (!mine) throw forbidden('not_allowlisted');
+  await requireStepUp(ctx, s, 'content');
   await markOwnerVerified(ctx, s.userId, s.userId);
   const r = await applySeed(ctx, s.userId, await userHash(ctx, s.userId), BUNDLED_SEED as Record<string, unknown>);
   return json({ owner_verified: true, questions_added: r.created, answers_added: r.answers });

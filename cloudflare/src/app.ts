@@ -9,6 +9,7 @@ import type { Ctx, Deps } from './context';
 import { deriveKeys, hex, hmac } from './crypto';
 import * as groups from './groups';
 import * as social from './social';
+import * as stepUp from './stepup';
 import * as support from './support';
 import {
   ApiError,
@@ -66,6 +67,8 @@ const routes: Route[] = [
   r('GET', '/v1/auth/mfa', auth.mfaStatus),
   r('POST', '/v1/auth/mfa/enroll', auth.mfaEnroll),
   r('POST', '/v1/auth/mfa/verify', auth.mfaVerify),
+  // Admin step-up (xavfli amaldan oldin yangi tasdiq): stepup.ts.
+  ...stepUp.ROUTES.map(([m, p, h]) => r(m, p, h)),
 
   // Hisob
   r('GET', '/v1/me', auth.me),
@@ -199,6 +202,7 @@ export function createApp(deps: Deps) {
         env.DB.prepare('DELETE FROM otp_challenges WHERE expires_at < ?1').bind(now),
         env.DB.prepare('DELETE FROM sessions WHERE expires_at < ?1').bind(now),
         env.DB.prepare('DELETE FROM auth_replay WHERE expires_at < ?1').bind(now),
+        env.DB.prepare('DELETE FROM step_up_challenges WHERE expires_at < ?1').bind(now),
         env.DB.prepare('DELETE FROM rate_limits WHERE window_start < ?1').bind(now - 86400_000),
       ]);
     },
