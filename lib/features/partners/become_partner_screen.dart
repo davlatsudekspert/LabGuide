@@ -85,6 +85,7 @@ class _BecomePartnerScreenState extends State<BecomePartnerScreen> {
       setState(() => _error = l.partnerFormInvalid);
       return;
     }
+    if (_busy) return;
     setState(() {
       _busy = true;
       _error = null;

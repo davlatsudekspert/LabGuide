@@ -15,6 +15,8 @@ import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
 
 String backendErrorText(Object e, AppLocalizations l) => switch (e) {
+  // Admin step-up oynasi yopildi (kod kiritilmadi) — amal bajarilmagan.
+  BackendException(code: 'step_up_required') => l.stepUpCancelled,
   BackendException(failure: BackendFailure.network) => l.errNetwork,
   BackendException(failure: BackendFailure.rateLimited) => l.errRateLimited,
   BackendException(failure: BackendFailure.invalid) => l.errInvalidSupport,
@@ -325,6 +327,8 @@ class _NewSupportThreadScreenState extends State<NewSupportThreadScreen> {
   }
 
   Future<void> _send() async {
+    // Ikki marta bosish — bitta murojaat.
+    if (_busy) return;
     FocusScope.of(context).unfocus();
     if (_subject.text.trim().length < 3 || _body.text.trim().isEmpty) {
       setState(() => _error = const BackendException(BackendFailure.invalid));
@@ -571,7 +575,8 @@ class _SupportThreadScreenState extends State<SupportThreadScreen> {
   }
 
   Future<void> _send() async {
-    if (_reply.text.trim().isEmpty) return;
+    // Ikki marta bosish — bitta xabar.
+    if (_busy || _reply.text.trim().isEmpty) return;
     setState(() {
       _busy = true;
       _error = null;

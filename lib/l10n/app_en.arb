@@ -6055,5 +6055,31 @@
   "labDirGeneral": "General laboratory",
   "labDirDisclaimer": "Educational reference only. The app does not diagnose and is not an operating protocol; decisions rest with an authorised laboratory and clinician.",
   "labDirEmpty": "No cards in this direction.",
-  "labDirPlatformClassNote": "Class/technology reference — not verified for a specific model"
+  "labDirPlatformClassNote": "Class/technology reference — not verified for a specific model",
+  "stepUpTitle": "Confirm it's you",
+  "stepUpBodyEmail": "This action needs a fresh confirmation. Enter the 6-digit code sent to {email}.",
+  "@stepUpBodyEmail": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "stepUpBodyEmailNoAddress": "This action needs a fresh confirmation. Enter the 6-digit code sent to your email.",
+  "stepUpBodyTotp": "This action needs a fresh confirmation. Enter the 6-digit code from your authenticator app.",
+  "stepUpConfirm": "Confirm",
+  "stepUpCancelled": "Not done: this action needs a fresh confirmation code.",
+  "admRevokeSessions": "Sign out of all devices",
+  "admRevokeSessionsBody": "The user is signed out on every device. The account stays active and they can sign in again.",
+  "admRevokeSessionsDone": "Sessions ended: {count}.",
+  "@admRevokeSessionsDone": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "profileSignOutAll": "Sign out of all devices",
+  "profileSignOutAllBody": "You will be signed out on this phone and on every other device where you signed in. Data on this device is kept.",
+  "profileSignOutAllDone": "Signed out on all devices."
 }

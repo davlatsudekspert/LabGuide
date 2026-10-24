@@ -12,6 +12,7 @@ import '../../core/backend/admin_console.dart';
 import '../../core/backend/admin_team.dart';
 import '../../core/backend/backend_models.dart';
 import '../../core/build_flags.dart';
+import '../../core/single_flight.dart';
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
@@ -916,6 +917,8 @@ class _AdminThreadScreenState extends State<AdminThreadScreen> {
   }
 
   Future<void> _run(Future<void> Function() action) async {
+    // Ikki marta bosish (javob yuborish) — ikkita javob emas.
+    if (_busy) return;
     setState(() {
       _busy = true;
       _error = null;
@@ -1413,7 +1416,9 @@ class _AdminTeamScreenState extends State<AdminTeamScreen> {
     _ => backendErrorText(e, l),
   };
 
-  Future<void> _add() async {
+  Future<void> _add() => SingleFlight.run((#adminTeamAdd, this), _addOnce);
+
+  Future<void> _addOnce() async {
     final l = AppLocalizations.of(context);
     final api = context.services.adminTeam;
     final email = _email.text.trim();
@@ -1444,7 +1449,10 @@ class _AdminTeamScreenState extends State<AdminTeamScreen> {
     }
   }
 
-  Future<void> _remove(AdminEntry a) async {
+  Future<void> _remove(AdminEntry a) =>
+      SingleFlight.run((#adminTeamRemove, this), () => _removeOnce(a));
+
+  Future<void> _removeOnce(AdminEntry a) async {
     final l = AppLocalizations.of(context);
     final api = context.services.adminTeam;
     final id = a.id;

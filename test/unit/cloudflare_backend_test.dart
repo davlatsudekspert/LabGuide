@@ -8,6 +8,7 @@ import 'package:labguide/core/backend/admin_team.dart';
 import 'package:labguide/core/backend/backend_models.dart';
 import 'package:labguide/core/backend/cloudflare_backend.dart';
 import 'package:labguide/core/backend/community_backend.dart';
+import 'package:labguide/core/backend/step_up.dart';
 
 import 'dart:typed_data';
 
@@ -1260,6 +1261,108 @@ void main() {
           api.requests.last.url.path,
           '/v1/admin/reports/question/q1/dismiss',
         );
+      },
+    );
+  });
+
+  group('admin step-up (403 step_up_required)', () {
+    const path = '/v1/admin/users/00000000-0000-0000-0000-000000000001/suspend';
+    const uid = '00000000-0000-0000-0000-000000000001';
+
+    test('so‘rovchi tasdiqlasa — so‘rov BIR marta qaytariladi', () async {
+      await signIn();
+      api.on('POST', path, 403, {
+        'error': 'step_up_required',
+        'action': 'account_status',
+      });
+      final actions = <String?>[];
+      backend.stepUpPrompt = (action) async {
+        actions.add(action);
+        api.on('POST', path, 200, {'user_id': uid});
+        return true;
+      };
+      await backend.adminSuspendAccount(uid);
+      expect(actions, ['account_status']);
+      expect(api.requests.where((r) => r.url.path == path), hasLength(2));
+    });
+
+    test('bekor qilinsa yoki qayta step_up_required — qaytarilmaydi, aniq kod', () async {
+      await signIn();
+      api.on('POST', path, 403, {'error': 'step_up_required'});
+      backend.stepUpPrompt = (_) async => false;
+      await expectLater(
+        backend.adminSuspendAccount(uid),
+        throwsA(
+          isA<AdminConsoleException>().having(
+            (e) => e.code,
+            'code',
+            'step_up_required',
+          ),
+        ),
+      );
+      expect(api.requests.where((r) => r.url.path == path), hasLength(1));
+      // Tasdiqlandi, lekin server yana so'radi — ikkinchi marta qaytarilmaydi.
+      var prompts = 0;
+      backend.stepUpPrompt = (_) async {
+        prompts++;
+        return true;
+      };
+      await expectLater(
+        backend.adminSuspendAccount(uid),
+        throwsA(isA<AdminConsoleException>()),
+      );
+      expect(prompts, 1);
+      expect(api.requests.where((r) => r.url.path == path), hasLength(3));
+      expect(backend.hasSession, isTrue);
+    });
+
+    test('kod so‘rash va tasdiqlash: javob va xato kodlari', () async {
+      await signIn();
+      api.on('POST', '/v1/auth/step-up', 200, {
+        'method': 'email',
+        'email_masked': 'ow***@example.com',
+        'retry_after': 60,
+        'valid_for': 600,
+      });
+      final c = await backend.requestStepUp();
+      expect(c.method, StepUpMethod.email);
+      expect(c.emailMasked, 'ow***@example.com');
+      expect(c.retryAfter, const Duration(seconds: 60));
+      api.on('POST', '/v1/auth/step-up/verify', 400, {
+        'error': 'invalid_code',
+        'attempts_left': 3,
+      });
+      await expectLater(
+        backend.verifyStepUp('000000'),
+        throwsA(
+          isA<StepUpException>()
+              .having((e) => e.code, 'code', 'invalid_code')
+              .having((e) => e.attemptsLeft, 'left', 3),
+        ),
+      );
+      api.on('POST', '/v1/auth/step-up/verify', 200, {'ok': true});
+      await backend.verifyStepUp(' 123456 ');
+      expect(jsonDecode(api.last('/v1/auth/step-up/verify').body), {
+        'code': '123456',
+      });
+    });
+
+    test(
+      'hamma qurilmalardan chiqish: logout-all; internet yo‘q — sessiya qoladi',
+      () async {
+        await signIn();
+        api.offline = true;
+        await expectLater(
+          backend.signOutEverywhere(),
+          throwsA(isA<BackendException>()),
+        );
+        expect(backend.hasSession, isTrue);
+        api.offline = false;
+        api.on('POST', '/v1/auth/logout-all', 204);
+        await backend.signOutEverywhere();
+        expect(api.last('/v1/auth/logout-all').method, 'POST');
+        expect(backend.hasSession, isFalse);
+        expect(store.value, isNull);
       },
     );
   });

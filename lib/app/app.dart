@@ -1,7 +1,9 @@
 import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
+import '../core/backend/step_up.dart';
 import '../design/theme.dart';
+import '../features/admin/step_up_dialog.dart';
 import '../features/daily/daily_screens.dart';
 import '../features/home/resume_history.dart';
 import '../features/settings/settings_controller.dart';
@@ -40,6 +42,20 @@ class _LabGuideAppState extends State<LabGuideApp> {
     _settings.addListener(_onSettings);
     widget.services.reminders.addListener(_onReminder);
     WidgetsBinding.instance.addPostFrameCallback((_) => _onReminder());
+    if (widget.services.backend case final StepUpBackend b) {
+      b.stepUpPrompt = _stepUpPrompt;
+    }
+  }
+
+  /// Admin step-up (server `403 step_up_required`): kod oynasi ildiz
+  /// navigatorda; tasdiqlansa backend so'rovni bir marta qaytaradi.
+  Future<bool> _stepUpPrompt(String? action) async {
+    final ctx = _router.routerDelegate.navigatorKey.currentContext;
+    if (widget.services.backend case final StepUpBackend b
+        when ctx != null && ctx.mounted) {
+      return showStepUpDialog(ctx, b);
+    }
+    return false;
   }
 
   /// Eslatma bildirishnomasi bosilgan — kunlik savol ochiladi.
@@ -83,6 +99,10 @@ class _LabGuideAppState extends State<LabGuideApp> {
 
   @override
   void dispose() {
+    if (widget.services.backend case final StepUpBackend b
+        when b.stepUpPrompt == _stepUpPrompt) {
+      b.stepUpPrompt = null;
+    }
     _router.routeInformationProvider.removeListener(_onRoute);
     _settings.removeListener(_onSettings);
     widget.services.reminders.removeListener(_onReminder);

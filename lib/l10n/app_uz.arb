@@ -2969,5 +2969,17 @@
   "labDirGeneral": "Umumiy laboratoriya",
   "labDirDisclaimer": "Faqat o‘quv ma’lumotnomasi. Ilova tashxis qo‘ymaydi va amaliy protokol emas; qaror — vakolatli laboratoriya va shifokorniki.",
   "labDirEmpty": "Bu yo‘nalishda kartalar yo‘q.",
-  "labDirPlatformClassNote": "Sinf/texnologiya bo‘yicha ma’lumot — aniq model uchun tasdiqlanmagan"
+  "labDirPlatformClassNote": "Sinf/texnologiya bo‘yicha ma’lumot — aniq model uchun tasdiqlanmagan",
+  "stepUpTitle": "Shaxsingizni tasdiqlang",
+  "stepUpBodyEmail": "Bu amal uchun yangi tasdiq kerak. {email} manziliga yuborilgan 6 xonali kodni kiriting.",
+  "stepUpBodyEmailNoAddress": "Bu amal uchun yangi tasdiq kerak. Emailingizga yuborilgan 6 xonali kodni kiriting.",
+  "stepUpBodyTotp": "Bu amal uchun yangi tasdiq kerak. Autentifikator ilovasidagi 6 xonali kodni kiriting.",
+  "stepUpConfirm": "Tasdiqlash",
+  "stepUpCancelled": "Bajarilmadi: bu amal uchun yangi tasdiq kodi kerak.",
+  "admRevokeSessions": "Barcha qurilmalardan chiqarish",
+  "admRevokeSessionsBody": "Foydalanuvchi barcha qurilmalardan chiqariladi. Hisob faol qoladi — u qayta kira oladi.",
+  "admRevokeSessionsDone": "Tugatilgan sessiyalar: {count}.",
+  "profileSignOutAll": "Barcha qurilmalardan chiqish",
+  "profileSignOutAllBody": "Shu telefonda va hisobingizga kirilgan boshqa barcha qurilmalarda chiqasiz. Shu qurilmadagi ma’lumotlar saqlanadi.",
+  "profileSignOutAllDone": "Barcha qurilmalardan chiqildi."
 }

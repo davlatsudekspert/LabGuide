@@ -72,7 +72,9 @@ borligi ham bildirilmaydi), 409 holatga zid (masalan, ikkinchi topshirish),
 | `DELETE /v1/me` `{apple_authorization_code?}` | sessiya | hisob va unga bog‘liq hamma narsa o‘chadi. Apple bilan bog‘langan va `APPLE_SIGNIN_*` sozlangan bo‘lsa — kod almashtirilib Apple tokeni bekor qilinadi (saqlanmaydi); kod/sozlama yo‘q bo‘lsa ham hisob o‘chadi, natija `audit_log` da |
 | `GET /v1/auth/mfa` | admin hisobi | TOTP holati |
 | `POST /v1/auth/mfa/enroll` | admin hisobi, faktor hali yo‘q | TOTP kalit va `otpauth://` URI |
-| `POST /v1/auth/mfa/verify` `{code}` | admin hisobi | sessiya `aal2` bo‘ladi |
+| `POST /v1/auth/mfa/verify` `{code}` | admin hisobi | sessiya `aal2` bo‘ladi (admin oynasi shu paytdan: 12 soat / 30 daqiqa) |
+| `POST /v1/auth/step-up` | admin hisobi yoki panel admin | step-up kodi: TOTP faktori tasdiqlangan bo‘lsa `{method:'totp'}` (email yuborilmaydi); aks holda egasi emailiga 6 xonali kod `{method:'email', email_masked, retry_after:60, valid_for:600}`; qayta yuborish 60 s, soatiga 5 ta; audit `step_up_requested` |
+| `POST /v1/auth/step-up/verify` `{code}` | xuddi shu | kod shu **sessiyaga** va hisobga bog‘langan, 10 daqiqa, 5 urinish, bir martalik; soatiga 20 tekshiruv. Muvaffaqiyat: 10 daqiqalik step-up + admin oynasi yangilanadi (`{ok, method, valid_for}`); xato — `400 invalid_code{attempts_left}` / `expired` / `no_active_code`, `429 too_many_attempts` / `rate_limited`; audit `step_up_verified` / `step_up_failed{reason}` |
 
 ### Google / Apple bilan kirish (D-56) — `cloudflare/src/social.ts`
 
@@ -273,6 +275,7 @@ hisob to‘xtatilmaganmi — tekshiradi. Secret o‘zgarsa vakolat **darhol** yo
 | `POST /v1/admin/users/:id/role` `{role}` | panel admin | `student/teacher/doctor/lab`; o‘ziniki — `403 self`; audit `role_changed` |
 | `POST /v1/admin/users/:id/suspend` | panel admin | hisobni to‘xtatish: hamma sessiyalari o‘chadi; email kodi, Google, Apple bilan kirish — `403 account_suspended`; admin (`ADMIN_EMAILS` yoki `admins`) — `403 admin`, o‘zi — `403 self`; audit `account_suspended` |
 | `POST /v1/admin/users/:id/reactivate` | panel admin | qayta kira oladi; audit `account_reactivated` |
+| `POST /v1/admin/users/:id/sessions/revoke` | panel admin + step-up (bir martalik) | foydalanuvchining hamma qurilmalardagi sessiyalari o‘chadi (hisob to‘xtatilmaydi); o‘ziniki — `403 self`; `{revoked}`; audit `sessions_revoked{sessions}` |
 | `POST /v1/admin/accounts/delete` `{email, confirm_user_id}` | panel admin | hisobni aniq email (HMAC) bo‘yicha o‘chirish (D-63): `confirm_user_id` mos kelishi shart (`409 confirmation_mismatch`), o‘zini/adminni emas; `DELETE /v1/me` bilan bir xil yo‘l (`deleteUserData`); audit `account_deleted_by_admin` |
 | `POST /v1/admin/users/:id/community/suspend` · `/restore` | panel admin | faqat hamjamiyatda yozishni to‘xtatish/tiklash (audit) |
 | `POST /v1/complaints` `{kind, body, target_ref?, lang?}` | **hamma** (mehmon ham; token bo‘lsa — hisob bilan, yaroqsiz token — 401) | `kind`: `complaint/inappropriate/bug/ad/other`; matn 5–2000; `target_ref` — `[A-Za-z0-9_.:/-]{1,200}`; **soatiga 5 ta** (hisob; mehmon — IP HMAC bo‘yicha), oshsa `429` + `Retry-After`. `201 {id, status}` |
@@ -330,7 +333,23 @@ Eslatma: to‘liq emailni “ochish” (`adminRevealEmail`) bu serverda **bo‘l
   soatiga 60 so‘rov va 10 daqiqada 100 tekshiruv (sinf bitta NAT ortida
   bo‘lishi mumkin). IP saqlanmaydi — limit kalitida faqat HMAC.
 - **Sessiya:** 32 baytli tasodifiy opaque token; D1 da faqat SHA-256; 60 kun;
-  chiqish/hamma qurilmadan chiqish; muddati o‘tgani cron bilan o‘chadi.
+  chiqish/hamma qurilmadan chiqish (ilovada: Profil → “Barcha qurilmalardan
+  chiqish”; audit `sessions_revoked_self`); muddati o‘tgani cron bilan o‘chadi.
+- **Admin oynasi va step-up (2026-10-24, migratsiya `0013_admin_step_up`):**
+  oddiy sessiya 60 kun qoladi, lekin uning ichidagi **admin vakolati** qisqa —
+  oxirgi yangi tasdiqdan (email kodi bilan kirish, admin TOTP yoki step-up)
+  **12 soat** va **30 daqiqa harakatsizlik**. Oyna yopilsa panel yo‘llari
+  `403 step_up_required {reason:'admin_session_expired'}`, TOTP sessiyasi esa
+  `aal1` ga tushadi (`/v1/me`: `aal`, `admin`, `admin_fresh`). Xavfli amallar
+  (rol, hisobni to‘xtatish/qayta faollashtirish/o‘chirish, hamjamiyat holati,
+  post o‘chirish, egasi kontentini e’lon qilish, adminlar, sessiyalarni bekor
+  qilish) oxirgi **10 daqiqadagi step-up**ni talab qiladi — aks holda
+  `403 step_up_required {action, reason: missing|expired|used}` va audit
+  `step_up_required`. Hisobni o‘chirish va sessiyalarni bekor qilish — har
+  step-up ga **bittadan**. Yangi omil yo‘q: TOTP faktori bo‘lsa — faqat TOTP
+  (email bilan pasaytirib bo‘lmaydi), bo‘lmasa — egasi emailiga kod. Ilova kod
+  oynasini ko‘rsatadi va so‘rovni bir marta qaytaradi; eski ilova “ruxsat yo‘q”
+  xatosini ko‘radi (yangilash kerak).
 - **Rollar:** profil roli (`student` standart, `teacher` …) faqat ko‘rinish
   uchun. Guruh ochish huquqi — `POST /v1/me/teacher` bilan ro‘yxatdan o‘tgan
   ustoz hisobi (`teacher_accounts`; hisob faqat email kodi tasdiqlangach

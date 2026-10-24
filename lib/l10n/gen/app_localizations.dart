@@ -17877,6 +17877,78 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Class/technology reference — not verified for a specific model'**
   String get labDirPlatformClassNote;
+
+  /// No description provided for @stepUpTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm it\'s you'**
+  String get stepUpTitle;
+
+  /// No description provided for @stepUpBodyEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'This action needs a fresh confirmation. Enter the 6-digit code sent to {email}.'**
+  String stepUpBodyEmail(String email);
+
+  /// No description provided for @stepUpBodyEmailNoAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'This action needs a fresh confirmation. Enter the 6-digit code sent to your email.'**
+  String get stepUpBodyEmailNoAddress;
+
+  /// No description provided for @stepUpBodyTotp.
+  ///
+  /// In en, this message translates to:
+  /// **'This action needs a fresh confirmation. Enter the 6-digit code from your authenticator app.'**
+  String get stepUpBodyTotp;
+
+  /// No description provided for @stepUpConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm'**
+  String get stepUpConfirm;
+
+  /// No description provided for @stepUpCancelled.
+  ///
+  /// In en, this message translates to:
+  /// **'Not done: this action needs a fresh confirmation code.'**
+  String get stepUpCancelled;
+
+  /// No description provided for @admRevokeSessions.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign out of all devices'**
+  String get admRevokeSessions;
+
+  /// No description provided for @admRevokeSessionsBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The user is signed out on every device. The account stays active and they can sign in again.'**
+  String get admRevokeSessionsBody;
+
+  /// No description provided for @admRevokeSessionsDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Sessions ended: {count}.'**
+  String admRevokeSessionsDone(int count);
+
+  /// No description provided for @profileSignOutAll.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign out of all devices'**
+  String get profileSignOutAll;
+
+  /// No description provided for @profileSignOutAllBody.
+  ///
+  /// In en, this message translates to:
+  /// **'You will be signed out on this phone and on every other device where you signed in. Data on this device is kept.'**
+  String get profileSignOutAllBody;
+
+  /// No description provided for @profileSignOutAllDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Signed out on all devices.'**
+  String get profileSignOutAllDone;
 }
 
 class _AppLocalizationsDelegate

@@ -10244,4 +10244,49 @@ class AppLocalizationsUz extends AppLocalizations {
   @override
   String get labDirPlatformClassNote =>
       'Sinf/texnologiya bo‘yicha ma’lumot — aniq model uchun tasdiqlanmagan';
+
+  @override
+  String get stepUpTitle => 'Shaxsingizni tasdiqlang';
+
+  @override
+  String stepUpBodyEmail(String email) {
+    return 'Bu amal uchun yangi tasdiq kerak. $email manziliga yuborilgan 6 xonali kodni kiriting.';
+  }
+
+  @override
+  String get stepUpBodyEmailNoAddress =>
+      'Bu amal uchun yangi tasdiq kerak. Emailingizga yuborilgan 6 xonali kodni kiriting.';
+
+  @override
+  String get stepUpBodyTotp =>
+      'Bu amal uchun yangi tasdiq kerak. Autentifikator ilovasidagi 6 xonali kodni kiriting.';
+
+  @override
+  String get stepUpConfirm => 'Tasdiqlash';
+
+  @override
+  String get stepUpCancelled =>
+      'Bajarilmadi: bu amal uchun yangi tasdiq kodi kerak.';
+
+  @override
+  String get admRevokeSessions => 'Barcha qurilmalardan chiqarish';
+
+  @override
+  String get admRevokeSessionsBody =>
+      'Foydalanuvchi barcha qurilmalardan chiqariladi. Hisob faol qoladi — u qayta kira oladi.';
+
+  @override
+  String admRevokeSessionsDone(int count) {
+    return 'Tugatilgan sessiyalar: $count.';
+  }
+
+  @override
+  String get profileSignOutAll => 'Barcha qurilmalardan chiqish';
+
+  @override
+  String get profileSignOutAllBody =>
+      'Shu telefonda va hisobingizga kirilgan boshqa barcha qurilmalarda chiqasiz. Shu qurilmadagi ma’lumotlar saqlanadi.';
+
+  @override
+  String get profileSignOutAllDone => 'Barcha qurilmalardan chiqildi.';
 }

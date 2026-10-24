@@ -8,6 +8,7 @@ import '../../app/widgets/links.dart';
 import '../../core/backend/admin_console.dart';
 import '../../core/backend/backend_models.dart';
 import '../../core/contact.dart';
+import '../../core/single_flight.dart';
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
@@ -731,7 +732,8 @@ class AdminReportsScreen extends StatefulWidget {
   State<AdminReportsScreen> createState() => _AdminReportsScreenState();
 }
 
-class _AdminReportsScreenState extends State<AdminReportsScreen> {
+class _AdminReportsScreenState extends State<AdminReportsScreen>
+    with BusyGuard {
   ReportStatus _status = ReportStatus.open;
   List<ReportItem>? _items;
   Object? _error;
@@ -757,7 +759,7 @@ class _AdminReportsScreenState extends State<AdminReportsScreen> {
     required String body,
     required String action,
     required Future<void> Function() run,
-  }) async {
+  }) => guard(() async {
     final l = AppLocalizations.of(context);
     final ok = await confirmDialog(
       context,
@@ -774,7 +776,7 @@ class _AdminReportsScreenState extends State<AdminReportsScreen> {
     } on Object catch (e) {
       if (mounted) _snack(context, adminConsoleErrorText(e, l));
     }
-  }
+  });
 
   String _statusLabel(ReportStatus s, AppLocalizations l) => switch (s) {
     ReportStatus.open => l.admReportOpen,
@@ -1206,6 +1208,8 @@ class AdminUserScreen extends StatefulWidget {
 class _AdminUserScreenState extends State<AdminUserScreen> {
   AdminUserDetail? _u;
   Object? _error;
+
+  /// Tasdiqlangan amal serverda ketyapti (tugmalar "band").
   bool _busy = false;
 
   /// Hisob shu sahifadan o'chirildi (D-63): ma'lumot endi yo'q.
@@ -1233,13 +1237,17 @@ class _AdminUserScreenState extends State<AdminUserScreen> {
     }
   }
 
+  /// Qulf tasdiq oynasidan OLDIN sinxron qo'yiladi: tez ikki bosish ikkita
+  /// oyna/amal ochmaydi. Step-up so'ralsa — backend kodni so'rab, so'rovni
+  /// bir marta qaytaradi (lib/app/app.dart).
   Future<void> _run(
     Future<void> Function() action, {
     String? title,
     String? body,
     String? confirm,
-    required String done,
-  }) async {
+    String? done,
+    String Function()? doneText,
+  }) => SingleFlight.run((#adminUserAction, this), () async {
     final l = AppLocalizations.of(context);
     if (_busy) return;
     if (title != null) {
@@ -1255,14 +1263,14 @@ class _AdminUserScreenState extends State<AdminUserScreen> {
     try {
       await action();
       if (!mounted) return;
-      _snack(context, done);
+      _snack(context, doneText?.call() ?? done ?? '');
       await _load();
     } on Object catch (e) {
       if (mounted) _snack(context, adminConsoleErrorText(e, l));
     } finally {
       if (mounted) setState(() => _busy = false);
     }
-  }
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -1413,6 +1421,25 @@ class _AdminUserScreenState extends State<AdminUserScreen> {
               done: l.cmAdminDone,
             ),
           ),
+        if (!u.you) ...[
+          const SizedBox(height: 8),
+          LgButton.secondary(
+            key: const ValueKey('admin-revoke-sessions'),
+            label: l.admRevokeSessions,
+            icon: Icons.devices_other_outlined,
+            busy: _busy,
+            onPressed: () {
+              var n = 0;
+              _run(
+                () async => n = await api.adminRevokeSessions(a.userId),
+                title: l.admRevokeSessions,
+                body: l.admRevokeSessionsBody,
+                confirm: l.admRevokeSessions,
+                doneText: () => l.admRevokeSessionsDone(n),
+              );
+            },
+          ),
+        ],
         if (!locked) ...[
           LgSectionTitle(l.admDeleteTitle),
           AdminDeleteAccountPanel(
@@ -1489,8 +1516,8 @@ class AdminDeleteAccountPanel extends StatefulWidget {
 
 class _AdminDeleteAccountPanelState extends State<AdminDeleteAccountPanel> {
   final _email = TextEditingController();
-  bool _busy = false;
   String? _error;
+  bool _busy = false;
 
   @override
   void dispose() {
@@ -1499,29 +1526,32 @@ class _AdminDeleteAccountPanelState extends State<AdminDeleteAccountPanel> {
   }
 
   Future<void> _delete() async {
-    final l = AppLocalizations.of(context);
     final email = _email.text.trim();
-    if (_busy || email.isEmpty) return;
-    final ok = await confirmDialog(
-      context,
-      title: l.admDeleteConfirmTitle,
-      body: l.admDeleteConfirmBody(widget.account.emailMasked),
-      action: l.admDeleteButton,
-    );
-    if (!ok || !mounted) return;
-    setState(() => _busy = true);
-    try {
-      await widget.api.adminDeleteAccount(
-        email: email,
-        confirmUserId: widget.account.userId,
+    if (email.isEmpty) return;
+    // Qulf tasdiq oynasidan OLDIN: tez ikki bosish — bitta oyna, bitta so'rov.
+    await SingleFlight.run((#adminDeleteAccount, this), () async {
+      final l = AppLocalizations.of(context);
+      final ok = await confirmDialog(
+        context,
+        title: l.admDeleteConfirmTitle,
+        body: l.admDeleteConfirmBody(widget.account.emailMasked),
+        action: l.admDeleteButton,
       );
-      if (mounted) _snack(context, l.admDeleteDone);
-      widget.onDeleted();
-    } on Object catch (e) {
-      if (mounted) setState(() => _error = adminConsoleErrorText(e, l));
-    } finally {
-      if (mounted) setState(() => _busy = false);
-    }
+      if (!ok || !mounted) return;
+      setState(() => _busy = true);
+      try {
+        await widget.api.adminDeleteAccount(
+          email: email,
+          confirmUserId: widget.account.userId,
+        );
+        if (mounted) _snack(context, l.admDeleteDone);
+        widget.onDeleted();
+      } on Object catch (e) {
+        if (mounted) setState(() => _error = adminConsoleErrorText(e, l));
+      } finally {
+        if (mounted) setState(() => _busy = false);
+      }
+    });
   }
 
   @override

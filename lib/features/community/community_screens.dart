@@ -11,6 +11,7 @@ import '../../app/app_scope.dart';
 import '../../app/widgets/lg_page.dart';
 import '../../core/backend/backend_models.dart';
 import '../../core/backend/community_backend.dart';
+import '../../core/single_flight.dart';
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
@@ -203,6 +204,7 @@ class _TranslatablePostState extends State<TranslatablePost> {
   String? _error;
 
   Future<void> _translate() async {
+    if (_busy) return;
     final l = AppLocalizations.of(context);
     final api = context.services.community.api;
     if (api == null) return;
@@ -716,6 +718,8 @@ class _AskQuestionScreenState extends State<AskQuestionScreen> {
   }
 
   Future<void> _send() async {
+    // Ikki marta bosish — ikkita savol emas (qulf sinxron, quyidagi setState).
+    if (_busy) return;
     final l = AppLocalizations.of(context);
     final api = context.services.community.api;
     if (api == null) return;
@@ -862,17 +866,21 @@ class _QuestionScreenState extends State<QuestionScreen> {
     final l = AppLocalizations.of(context);
     final api = _api;
     if (api == null) return;
-    try {
-      await f(api);
-      if (!mounted) return;
-      if (done != null) _snack(context, done);
-      await _load();
-    } on Object catch (e) {
-      if (mounted) _snack(context, communityErrorText(e, l));
-    }
+    // Ikki marta bosish: bitta amal tugamaguncha keyingisi tashlanadi.
+    await SingleFlight.run((#cmQuestionAct, this), () async {
+      try {
+        await f(api);
+        if (!mounted) return;
+        if (done != null) _snack(context, done);
+        await _load();
+      } on Object catch (e) {
+        if (mounted) _snack(context, communityErrorText(e, l));
+      }
+    });
   }
 
   Future<void> _sendAnswer() async {
+    if (_sending) return;
     final l = AppLocalizations.of(context);
     final api = _api;
     final b = _answer.text.trim();
@@ -1080,22 +1088,25 @@ class _QuestionScreenState extends State<QuestionScreen> {
                           label: l.cmDelete,
                           icon: Icons.delete_outline_rounded,
                           expand: false,
-                          onPressed: () async {
-                            if (!await _confirmDelete() || !context.mounted) {
-                              return;
-                            }
-                            try {
-                              await _api!.deleteQuestion(q.id);
-                              if (!context.mounted) return;
-                              context.services.community.invalidate();
-                              _snack(context, l.cmDeleted);
-                              context.pop();
-                            } on Object catch (e) {
-                              if (context.mounted) {
-                                _snack(context, communityErrorText(e, l));
+                          onPressed: () => SingleFlight.run(
+                            (#cmDeleteQuestion, q.id),
+                            () async {
+                              if (!await _confirmDelete() || !context.mounted) {
+                                return;
                               }
-                            }
-                          },
+                              try {
+                                await _api!.deleteQuestion(q.id);
+                                if (!context.mounted) return;
+                                context.services.community.invalidate();
+                                _snack(context, l.cmDeleted);
+                                context.pop();
+                              } on Object catch (e) {
+                                if (context.mounted) {
+                                  _snack(context, communityErrorText(e, l));
+                                }
+                              }
+                            },
+                          ),
                         ),
                       ],
                     ],
@@ -1376,6 +1387,7 @@ class _VerifySpecialistScreenState extends State<VerifySpecialistScreen> {
       setState(() => _error = l.cmVerifyCountryError);
       return;
     }
+    if (_busy) return;
     setState(() {
       _busy = true;
       _error = null;
@@ -1628,7 +1640,7 @@ class _AdminCommunityScreenState extends State<AdminCommunityScreen> {
     required String confirmTitle,
     required String confirmBody,
     required String action,
-  }) async {
+  }) => SingleFlight.run((#cmAdminAct, this), () async {
     final l = AppLocalizations.of(context);
     final ok = await confirmDialog(
       context,
@@ -1645,7 +1657,7 @@ class _AdminCommunityScreenState extends State<AdminCommunityScreen> {
     } on Object catch (e) {
       if (mounted) _snack(context, communityErrorText(e, l));
     }
-  }
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -1796,6 +1808,7 @@ class _LaunchCardState extends State<_LaunchCard> {
   String? _error;
 
   Future<void> _run() async {
+    if (_busy) return;
     final api = context.services.community.api;
     if (api == null) return;
     final l = AppLocalizations.of(context);

@@ -3,6 +3,7 @@ import 'package:material_ui/material_ui.dart';
 
 import '../../../app/app_scope.dart';
 import '../../../app/widgets/lg_page.dart';
+import '../../../core/single_flight.dart';
 import '../../../design/tokens.dart';
 import '../../../design/widgets/lg_widgets.dart';
 import '../../../l10n/gen/app_localizations.dart';
@@ -227,10 +228,11 @@ class WelcomeScreen extends StatelessWidget {
               const SizedBox(height: 10),
               LgButton.secondary(
                 label: l.welcomeGuest,
-                onPressed: () async {
+                // Ikki marta bosish — rol ekrani ikki marta ochilmaydi.
+                onPressed: () => SingleFlight.run(#welcomeGuest, () async {
                   await services.auth.continueAsGuest();
                   if (context.mounted) await context.push('/welcome/role');
-                },
+                }),
               ),
               const SizedBox(height: 4),
               LgButton.link(

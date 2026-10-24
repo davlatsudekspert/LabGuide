@@ -32,6 +32,11 @@ abstract interface class AdminConsoleBackend {
   Future<void> adminSuspendAccount(String userId);
   Future<void> adminReactivateAccount(String userId);
 
+  /// Foydalanuvchining hamma qurilmalardagi sessiyalarini bekor qilish (hisob
+  /// to'xtatilmaydi, qayta kira oladi). Step-up (bir martalik). O'zini emas
+  /// (`self`). Natija — bekor qilingan sessiyalar soni.
+  Future<int> adminRevokeSessions(String userId);
+
   /// Hisobni butunlay o'chirish (D-63): [email] — foydalanuvchining to'liq
   /// emaili (server HMAC bilan aniq solishtiradi), [confirmUserId] — panel
   /// ko'rsatgan hisob id si (boshqa hisob o'chirilmaydi). O'zi o'chirgandagi
