@@ -866,7 +866,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get calStep4 => 'Калибровка по инструкции';
 
   @override
-  String get calStep5 => 'QC после калибровки';
+  String get calStep5 => 'КК после калибровки';
 
   @override
   String get calStep6 => 'Записи и поиск неисправностей';
@@ -3748,11 +3748,11 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get calGuide4 =>
-      'Когда нужна повторная калибровка (смена лота, отказ QC, срок) — в IFU.';
+      'Когда нужна повторная калибровка (смена лота, КК не пройден, срок) — в IFU.';
 
   @override
   String get calGuide5 =>
-      'После калибровки проведите QC и внесите результат в запись.';
+      'После калибровки проведите КК и внесите результат в запись.';
 
   @override
   String get calDocsWhere => 'Где найти документы';
@@ -6407,7 +6407,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get privacyBodyLocal =>
-      'В этой сборке сервер не подключён: приложение ничего не отправляет на сервер. Настройки, закладки, записи QC, ваши приборы и результаты тренировок хранятся на этом устройстве (могут попадать в системную резервную копию). Без рекламы и отслеживания.';
+      'В этой сборке сервер не подключён: приложение ничего не отправляет на сервер. Настройки, закладки, записи КК, ваши приборы и результаты тренировок хранятся на этом устройстве (могут попадать в системную резервную копию). Без рекламы и отслеживания.';
 
   @override
   String get privacyTerms => 'Условия использования';
@@ -8371,7 +8371,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get diffAssessNote =>
-      'Это не диагноз: результат сопоставлен с нормой бланка и показано, на что он может указывать. Заключение даёт врач.';
+      'Это не диагноз: результат сопоставлен с референтным интервалом бланка и показано, на что он может указывать. Заключение даёт врач.';
 
   @override
   String get diffAssessNeedWbc =>
@@ -8430,7 +8430,7 @@ class AppLocalizationsRu extends AppLocalizations {
       'Бласты или неопознанные клетки, тяжёлая нейтропения (< 0,5 ×10⁹/л) или выраженная эозинофилия (> 1,5 ×10⁹/л): срочно покажите результат и мазок врачу или гематологу.';
 
   @override
-  String get diffLimitsTitle => 'Нормы бланка';
+  String get diffLimitsTitle => 'Референтные интервалы бланка';
 
   @override
   String get diffLimitsSub =>
@@ -10220,7 +10220,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get calSafeApproverRequired =>
-      'Для «Принято» укажите имя или должность уполномоченного лица.';
+      'Для «Принята» укажите имя или должность уполномоченного лица.';
 
   @override
   String get calSafeQcAfter => 'КК после калибровки';
@@ -10239,7 +10239,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get calSafeQcPassRequired =>
-      '«Принято» возможно только при пройденном КК после калибровки.';
+      '«Принята» возможна только при пройденном КК после калибровки.';
 
   @override
   String get calSafeSopRef => 'Ссылка на СОП (необязательно)';
