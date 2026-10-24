@@ -95,3 +95,39 @@ or instrument model data.
 * Status line: localized `labDirStatusNeedsReview` chosen by `auditStatus` (no raw enum token in the UI).
 * TB/HIV corrections and removed statements: see `docs/LAB_CARDS_UNVERIFIED.md`. `hiv-rna-viral-load` is now a NEEDS_SOURCE stub.
 * Expert sign-off items: `docs/EXPERT_SIGNOFF_REGISTRY.md`.
+
+## Update (audit-cards branch, 2026-10-24): 22-direction catalogue
+
+Counts (from `docs/lab_cards_status.json`): **45 public cards** (all NEEDS_REVIEW, expert_reviewed=false), **19 hidden NEEDS_SOURCE stubs**,
+**14 of 22 directions** have at least one public card (only those appear in the app). Total entries in `lab_cards`: 64.
+
+* Integrated from the A1/A2/A3 card fragments; duplicates and conflicts: `docs/LAB_CARDS_CONFLICTS.md`. Source licences and Pro (paid) reuse rule: `docs/LAB_CARDS_SOURCE_LICENSES.md`.
+* `hiv-rna-viral-load` is a public card again (merged from the A3 viral-load fragment). The earlier statement "hiv-rna-viral-load is now a NEEDS_SOURCE stub" is superseded.
+* New optional card field `source_caveat` (uz/ru/en): a visible line on cards with a dated or narrow source ("expert review is pending"). Platform cards with empty `models` show
+  "Class/technology reference - not verified for a specific model" (ARB `labDirPlatformClassNote`).
+* Expert registry: every public card has a `LABCARD-*` entry (AWAITING_EXPERT), plus `LABCARD-CONFLICT-C0x`.
+
+Per direction:
+
+* `tb`: 8 public (`tb-genexpert-platform`, `tb-xpert-mtb-rif-tests`, `tb-lamp-test`, `tb-truenat-test`, `a2-platform-led-fluorescence-microscope`, `a2-method-auramine-smear-microscopy-tb`, `a3-tb-bactec-mgit960-platform`, `a3-tb-mgit-culture-dst-method`); 2 hidden stub(s)
+* `hiv`: 4 public (`hiv-agab-immunoassay-algorithm`, `hiv-rna-viral-load`, `a1-geenius-hiv-confirm-test`, `a3-hiv-cd4-flow-method`); 2 hidden stub(s)
+* `virology`: no cards
+* `bacteriology`: 4 public (`a1-blood-culture-platform`, `a3-bac-vitek2-platform`, `a3-bac-ast-method`, `a3-bac-maldi-tof-platform`); 1 hidden stub(s)
+* `mycology`: no cards
+* `parasitology`: no cards
+* `hematology`: 1 public (`a3-hem-esr-analyzer`); 0 hidden stub(s)
+* `coagulation`: 3 public (`a1-coagulation-analyzer-platform`, `a1-pt-inr-test`, `a3-coag-platelet-aggregometry-tem`); 0 hidden stub(s)
+* `transfusion`: 1 public (`a3-trf-gel-card-system`); 0 hidden stub(s)
+* `biochemistry`: 6 public (`a2-platform-blood-gas-ise-analyzer`, `a2-test-arterial-blood-gas-panel`, `a2-test-hba1c`, `a2-platform-hba1c-analyzer`, `a3-bio-electrophoresis`, `a3-bio-osmometer`); 1 hidden stub(s)
+* `immunology`: 3 public (`a1-elisa-method`, `a1-elisa-reader-platform`, `a3-imm-flow-cytometer-platform`); 1 hidden stub(s)
+* `urinalysis`: no cards
+* `cytology`: 0 public; 1 hidden stub(s)
+* `histology`: 0 public; 2 hidden stub(s)
+* `oncology`: no cards
+* `genetics`: 1 public (`a3-gen-fish-molecular-genetics`); 1 hidden stub(s)
+* `molecular`: 2 public (`a1-realtime-pcr-method`, `a3-mol-realtime-pcr-platform`); 1 hidden stub(s)
+* `toxicology`: 4 public (`a2-test-urine-drug-immunoassay-screen`, `a3-tox-gc-ms`, `a3-tox-lc-ms`, `a3-tox-tlc`); 1 hidden stub(s)
+* `reproductive`: 2 public (`a2-test-semen-analysis-who6`, `a2-platform-casa`); 1 hidden stub(s)
+* `neonatal`: 1 public (`a2-method-newborn-screening-dbs-qa`); 0 hidden stub(s)
+* `transplant`: 0 public; 1 hidden stub(s)
+* `general`: 5 public (`a1-autoclave-platform`, `a1-bsc-class2-platform`, `a2-method-calibrators-control-materials`, `a2-platform-lab-fridge-freezer-monitoring`, `a3-gen-gravimetric-pipette-calibration`); 4 hidden stub(s)

@@ -20,3 +20,9 @@ Each item needs an official/journal source (or an expert) before it may return.
 | hiv-rna-viral-load | whole card (now NEEDS_SOURCE stub, P1) | name "HIV-1 RNA (NAT, viral load)"; tasks: NATs detect HIV RNA earliest of three test types (CDC HIV Nexus); NAT follows nonreactive/indeterminate differentiation result (CDC/APHL 2014) | Sourced sentences concern the qualitative diagnostic NAT, not quantitative viral load. No fetched source covers viral-load technology, specimens or QC (clinicalinfo.hiv.gov 403, NCBI NBK602012 bot-check, WHO 9789240089495 404). WHO 2023 brief (9789240055179) gives thresholds only and was not re-fetched. |
 
 Open questions for experts remain in EXPERT_REVIEW_PACKET_TB_HIV.* (kept outside the repo).
+
+## Update (audit-cards branch)
+
+`hiv-rna-viral-load` is a public NEEDS_REVIEW card again, rebuilt only from FDA 510(k) summaries (cobas HIV-1, Alinity m HIV-1) and the WHO 2023 viral-suppression brief
+(see `docs/LAB_CARDS_CONFLICTS.md`). The two statements removed above (NAT detects HIV RNA earliest of three test types; NAT after a nonreactive/indeterminate differentiation result)
+were NOT restored: they describe the qualitative diagnostic NAT. Open conflicts C-01 and C-02 are recorded in the conflicts document.
