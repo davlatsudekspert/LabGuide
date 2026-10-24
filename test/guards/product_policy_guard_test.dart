@@ -112,6 +112,11 @@ void main() {
           'lib/core/entitlements/',
           'lib/features/profile/purchase_screen.dart',
           'lib/features/profile/pro_gate.dart',
+          // Admin Pro berish (D-73): faqat bayroq + admin ortida (alohida
+          // qorovullar: pro_flag_default_guard_test, admin_pro_grant_test).
+          'lib/features/admin/pro_grant_screen.dart',
+          'lib/core/backend/pro_grants.dart',
+          'lib/core/backend/cloudflare_backend.dart',
         ];
         final code = RegExp(
           r'in_app_purchase|purchases_flutter|InAppPurchase|SKPayment|'

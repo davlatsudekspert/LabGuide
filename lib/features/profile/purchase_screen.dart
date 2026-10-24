@@ -7,6 +7,7 @@ import '../../app/widgets/links.dart';
 import '../../core/entitlements/billing_catalog.dart';
 import '../../core/entitlements/entitlement_service.dart';
 import '../../core/entitlements/feature.dart';
+import '../../core/entitlements/pro_catalog.dart';
 import '../../core/entitlements/purchase_adapter.dart';
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
@@ -53,19 +54,32 @@ class _PurchaseBody extends StatelessWidget {
     final active = ent.activeEntitlement;
     final cache = ent.cached;
     if (!ent.isPro || ent.proSource == ProSource.buildOpen) return const [];
-    final teacher = ent.tier == ProTier.teacher;
+    final plan = ent.plan;
     final end = active?.expiresAt;
-    final line = switch ((teacher, end)) {
-      (true, null) => l.proPayStatusTeacherNoEnd,
-      (true, final DateTime e) => l.proPayStatusTeacher(formatWhen(e, context)),
-      (false, null) => l.proStatusProNoEnd,
-      (false, final DateTime e) => l.proStatusPro(formatWhen(e, context)),
-    };
+    final grant = active?.isAdminGrant ?? false;
+    final line = grant
+        ? (end == null
+              ? l.proPayStatusAdminGrant
+              : l.proPayStatusAdminGrantUntil(formatWhen(end, context)))
+        : switch ((ent.tier == ProTier.teacher, end)) {
+            (true, null) => l.proPayStatusTeacherNoEnd,
+            (true, final DateTime e) => l.proPayStatusTeacher(
+              formatWhen(e, context),
+            ),
+            (false, null) => l.proStatusProNoEnd,
+            (false, final DateTime e) => l.proStatusPro(formatWhen(e, context)),
+          };
     return [
       LgSectionTitle(l.proStatusTitle),
       Align(
         alignment: AlignmentDirectional.centerStart,
-        child: LgTag(teacher ? l.proPayTierTeacher : l.proPayTierPro),
+        child: LgTag(
+          plan == null
+              ? (ent.tier == ProTier.teacher
+                    ? l.proPayTierTeacher
+                    : l.proPayTierPro)
+              : _planTitle(l, plan),
+        ),
       ),
       const SizedBox(height: 8),
       Text(line, style: text.bodyLarge),
@@ -83,6 +97,18 @@ class _PurchaseBody extends StatelessWidget {
       const SizedBox(height: 10),
     ];
   }
+
+  static String _planTitle(AppLocalizations l, ProPlan plan) => switch (plan) {
+    ProPlan.student => l.proPayTierStudent,
+    ProPlan.teacher => l.proPayTierTeacher,
+    ProPlan.specialist => l.proPayTierSpecialist,
+  };
+
+  static String _planSub(AppLocalizations l, ProPlan plan) => switch (plan) {
+    ProPlan.student => l.proPayTierStudentSub,
+    ProPlan.teacher => l.proPayTierTeacherSub,
+    ProPlan.specialist => l.proPayTierSpecialistSub,
+  };
 
   static String _period(AppLocalizations l, StorePeriod p) => p.count == 1
       ? switch (p.unit) {
@@ -228,7 +254,7 @@ class _PurchaseBody extends StatelessWidget {
   List<Widget> _tier(
     BuildContext context,
     AppLocalizations l, {
-    required ProTier tier,
+    required ProPlan plan,
     required List<StoreProduct> plans,
     required Set<String> owned,
   }) {
@@ -238,16 +264,12 @@ class _PurchaseBody extends StatelessWidget {
     // ro'yxat bo'sh, shuning uchun hech narsa va'da qilinmaydi.
     final included = <String>[
       for (final f in Feature.values)
-        if (ent.gated.contains(f) && f.tier == tier) ?_featureLabel(l, f),
+        if (ent.gated.contains(f) && plan.tier.covers(f.tier))
+          ?_featureLabel(l, f),
     ];
     return [
-      LgSectionTitle(
-        tier == ProTier.teacher ? l.proPayTierTeacher : l.proPayTierPro,
-      ),
-      Text(
-        tier == ProTier.teacher ? l.proPayTierTeacherSub : l.proPayTierProSub,
-        style: text.bodyMedium,
-      ),
+      LgSectionTitle(_planTitle(l, plan)),
+      Text(_planSub(l, plan), style: text.bodyMedium),
       const SizedBox(height: 6),
       for (final s in included) _bullet(context, s),
       const SizedBox(height: 4),
@@ -296,27 +318,17 @@ class _PurchaseBody extends StatelessWidget {
         if (ent.gated.isEmpty)
           LgNotice(l.proNothingGated, kind: NoticeKind.info),
         ..._status(context, l),
-        if (ent.tier != ProTier.teacher || ent.proSource == ProSource.buildOpen)
+        for (final plan in ProPlan.values)
           ..._tier(
             context,
             l,
-            tier: ProTier.pro,
+            plan: plan,
             plans: [
               for (final p in products)
-                if (p.catalog!.tier == ProTier.pro) p,
+                if (p.catalog!.plan == plan) p,
             ],
             owned: owned,
           ),
-        ..._tier(
-          context,
-          l,
-          tier: ProTier.teacher,
-          plans: [
-            for (final p in products)
-              if (p.catalog!.tier == ProTier.teacher) p,
-          ],
-          owned: owned,
-        ),
         const SizedBox(height: 8),
         Text(l.proPayFree, style: text.bodySmall),
         const SizedBox(height: 10),

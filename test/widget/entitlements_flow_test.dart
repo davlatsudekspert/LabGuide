@@ -171,7 +171,7 @@ void main() {
         proofs: const [
           PurchaseProof(
             platform: 'app_store',
-            productId: BillingCatalog.proMonthly,
+            productId: BillingCatalog.specialistMonthly,
             token: '2000000777',
           ),
         ],
@@ -181,23 +181,33 @@ void main() {
       expect(find.text(uz.proRowTitle), findsOneWidget);
       await goTo(tester, '/profile/purchase');
 
-      final monthly = uz.proPayPricePer(r'$3.99', uz.proPayUnitMonth);
+      final monthly = uz.proPayPricePer(r'$3.49', uz.proPayUnitMonth);
       expect(find.text(monthly), findsOneWidget);
       expect(
         find.text(uz.proPayTrial(uz.proPayDays(30), monthly)),
         findsOneWidget,
       );
-      // Yillik narx belgilanmagan (D-71) — yillik reja ko'rsatilmaydi.
+      // Yillik narxlar belgilangan (D-73): Ustoz va Mutaxassis uchun yillik reja.
+      expect(find.text(uz.proPayPlanYearly), findsNWidgets(2));
+      expect(
+        find.text(uz.proPayPricePer(r'$34.99', uz.proPayUnitYear)),
+        findsOneWidget,
+      );
+      expect(
+        find.text(uz.proPayPricePer(r'$24.99', uz.proPayUnitYear)),
+        findsOneWidget,
+      );
       expect(find.textContaining('(test)'), findsNothing);
-      expect(find.text(uz.proPayPlanYearly), findsNothing);
-      final teacher = uz.proPayPricePer(r'$5.99', uz.proPayUnitMonth);
+      final teacher = uz.proPayPricePer(r'$2.49', uz.proPayUnitMonth);
       expect(find.text(teacher), findsOneWidget);
       // Talaba narxi — faqat tasdiqlangan talabaga (hozir tasdiq yo'q).
       expect(find.textContaining(r'$1.49'), findsNothing);
-      expect(find.text(uz.proPayTierPro), findsWidgets);
+      expect(find.textContaining(r'$9.99'), findsNothing);
+      expect(find.text(uz.proPayTierStudent), findsNothing);
+      expect(find.text(uz.proPayTierSpecialist), findsOneWidget);
       expect(find.text(uz.proPayTierTeacher), findsOneWidget);
-      expect(find.text(uz.proPayFeatExam), findsOneWidget);
-      expect(find.text(uz.proPayFeatLecture), findsOneWidget);
+      expect(find.text(uz.proPayFeatExam), findsWidgets);
+      expect(find.text(uz.proPayFeatLecture), findsWidgets);
       expect(find.textContaining('PDF'), findsNothing);
       // Pastki qism (ro'yxat dangasa quriladi — surib ko'riladi).
       for (final t in [
@@ -222,7 +232,7 @@ void main() {
       await tester.pumpAndSettle();
       await tester.tap(find.text(uz.proPayStartTrial).first);
       await tester.pumpAndSettle();
-      expect(shop.bought.single.$1, BillingCatalog.proMonthly);
+      expect(shop.bought.single.$1, BillingCatalog.specialistMonthly);
       expect(find.text(uz.proPaySuccess), findsOneWidget);
       expect(s.entitlements.proSource, ProSource.store);
       expect(shop.finished, hasLength(1));

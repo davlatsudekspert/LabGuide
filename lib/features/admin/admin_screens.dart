@@ -459,6 +459,15 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
             onTap: () => _open('/profile/admin/admins'),
           ),
         ],
+        if (services.proGrants != null)
+          LgRow(
+            key: const ValueKey('admin-row-pro-grants'),
+            title: l.proGrantRow,
+            subtitle: l.proGrantRowSub,
+            icon: Icons.workspace_premium_outlined,
+            divider: false,
+            onTap: () => _open('/profile/admin/pro-grants'),
+          ),
         if (stats != null) ..._legacy(context, l, stats),
         if (_stats.unavailable) ...[
           const SizedBox(height: 16),
@@ -599,6 +608,15 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
             onTap: () => _open('/profile/admin/admins'),
           ),
         ],
+        if (services.proGrants != null)
+          LgRow(
+            key: const ValueKey('admin-row-pro-grants'),
+            title: l.proGrantRow,
+            subtitle: l.proGrantRowSub,
+            icon: Icons.workspace_premium_outlined,
+            divider: false,
+            onTap: () => _open('/profile/admin/pro-grants'),
+          ),
         LgSectionTitle(l.admOther),
         // Hamkorlar (reklama) bu serverga hali ko'chirilmagan — bosilmaydi.
         LgRow(

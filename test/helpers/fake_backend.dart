@@ -6,6 +6,8 @@ import 'package:labguide/core/backend/admin_team.dart';
 import 'package:labguide/core/backend/backend_models.dart';
 import 'package:labguide/core/backend/lab_backend.dart';
 import 'package:labguide/core/backend/partner_models.dart';
+import 'package:labguide/core/backend/pro_grants.dart';
+import 'package:labguide/core/entitlements/pro_catalog.dart';
 import 'package:labguide/features/auth/otp_auth.dart';
 import 'package:labguide/features/classroom/invite_link.dart'
     show nicknameAllowed, normalizeNickname;
@@ -1534,7 +1536,8 @@ class _Assignment {
 /// Qoidalar serverdagidek: faqat super admin (+aal2) qo'shadi/oladi; email
 /// faqat niqoblangan holda qaytadi; olib tashlangan admin darhol vakolatini
 /// yo'qotadi.
-class FakeAdminTeamBackend extends FakeLabBackend implements AdminTeamBackend {
+class FakeAdminTeamBackend extends FakeLabBackend
+    implements AdminTeamBackend, ProGrantBackend {
   FakeAdminTeamBackend({super.adminEmails, this.legacyAdminApi = false});
 
   final bool legacyAdminApi;
@@ -1653,6 +1656,129 @@ class FakeAdminTeamBackend extends FakeLabBackend implements AdminTeamBackend {
         details: const {},
       ),
     );
+  }
+
+  // ------------------------------------------- admin Pro berish (D-73)
+  /// Serverdagi `pro_grants` o'rnida: email → qator. Qoidalar serverdagidek:
+  /// admin roli + TOTP (aal2) shart, email normallashtiriladi, hisob bo'lmasa
+  /// kutilmoqda, qayta berish almashtiradi yoki uzaytiradi, ro'yxatda faqat
+  /// faol va kutilayotganlar.
+  final Map<String, _FakeProGrant> _proGrants = {};
+
+  /// Ilova yuborgan so'rovlar (faqat test).
+  final List<Map<String, Object?>> grantCalls = [];
+
+  void _requireProAdmin() {
+    if (!(_isAdminAccount && _aal2)) {
+      throw const ProGrantException(BackendFailure.forbidden, 'forbidden');
+    }
+  }
+
+  ProGrant _view(String email, _FakeProGrant g) => ProGrant(
+    id: g.id,
+    emailMasked: FakeAdminTeamBackend.mask(email),
+    plan: g.plan,
+    status: g.startsAt == null ? ProGrantStatus.pending : ProGrantStatus.active,
+    durationDays: g.days,
+    startsAt: g.startsAt,
+    expiresAt: g.expiresAt,
+    note: g.note,
+    createdAt: g.createdAt,
+  );
+
+  @override
+  Future<List<ProGrant>> proGrants() async {
+    _requireProAdmin();
+    return [
+      for (final e in _proGrants.entries) _view(e.key, e.value),
+    ];
+  }
+
+  @override
+  Future<ProGrantResult> grantPro({
+    required String email,
+    required ProPlan plan,
+    int? durationDays,
+    String? note,
+    bool extend = false,
+  }) async {
+    _requireProAdmin();
+    grantCalls.add({
+      'email': email,
+      'plan': plan,
+      'days': durationDays,
+      'note': note,
+      'extend': extend,
+    });
+    if (!isValidEmail(email)) {
+      throw const ProGrantException(BackendFailure.invalid, 'invalid_email');
+    }
+    if (!proGrantDurations.contains(durationDays)) {
+      throw const ProGrantException(BackendFailure.invalid, 'invalid_duration');
+    }
+    final n = (note ?? '').trim();
+    if (n.length > proGrantNoteMax) {
+      throw const ProGrantException(BackendFailure.invalid, 'invalid_note');
+    }
+    final e = normalizeEmail(email);
+    final now = _now();
+    final account = _users.containsKey(e);
+    final cur = _proGrants[e];
+    DateTime? until(DateTime from) =>
+        durationDays == null ? null : from.add(Duration(days: durationDays));
+    if (cur == null) {
+      final g = _FakeProGrant(
+        id: _id('pg'),
+        plan: plan,
+        days: durationDays,
+        note: n.isEmpty ? null : n,
+        createdAt: now,
+        startsAt: account ? now : null,
+        expiresAt: account ? until(now) : null,
+      );
+      _proGrants[e] = g;
+      return ProGrantResult(grant: _view(e, g));
+    }
+    if (extend) {
+      if (cur.startsAt == null) {
+        throw const ProGrantException(
+          BackendFailure.invalid,
+          'pending_cannot_extend',
+        );
+      }
+      if (durationDays == null) {
+        throw const ProGrantException(
+          BackendFailure.invalid,
+          'duration_required',
+        );
+      }
+      final base = cur.expiresAt;
+      if (base != null) {
+        cur.expiresAt = (base.isAfter(now) ? base : now).add(
+          Duration(days: durationDays),
+        );
+      }
+      if (plan.index > cur.plan.index) cur.plan = plan;
+      return ProGrantResult(grant: _view(e, cur), extended: true);
+    }
+    cur
+      ..plan = plan
+      ..days = durationDays
+      ..note = n.isEmpty ? null : n
+      ..startsAt = account ? now : null
+      ..expiresAt = account ? until(now) : null;
+    return ProGrantResult(grant: _view(e, cur), replaced: true);
+  }
+
+  @override
+  Future<void> revokePro(String id) async {
+    _requireProAdmin();
+    final key = _proGrants.entries
+        .where((g) => g.value.id == id)
+        .map((g) => g.key)
+        .firstOrNull;
+    if (key == null) throw const BackendException(BackendFailure.notFound);
+    _proGrants.remove(key);
   }
 
   /// Boshqa qurilmadagi super admin olib tashladi (test: mavjud sessiya).
@@ -2135,4 +2261,24 @@ class FakeAdminConsoleBackend extends FakeAdminTeamBackend
     _panel();
     return audit.reversed.take(limit).toList();
   }
+}
+
+class _FakeProGrant {
+  _FakeProGrant({
+    required this.id,
+    required this.plan,
+    required this.createdAt,
+    this.days,
+    this.note,
+    this.startsAt,
+    this.expiresAt,
+  });
+
+  final String id;
+  ProPlan plan;
+  int? days;
+  String? note;
+  final DateTime createdAt;
+  DateTime? startsAt;
+  DateTime? expiresAt;
 }

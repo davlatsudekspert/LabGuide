@@ -10,75 +10,95 @@ enum BillingPeriod { month, year }
 /// (mahalliy valyutada) keladi.
 @immutable
 class BillingProduct {
-  const BillingProduct(
-    this.id, {
-    required this.tier,
-    required this.period,
-    this.student = false,
-  });
+  const BillingProduct(this.id, {required this.plan, required this.period});
 
   final String id;
-  final ProTier tier;
+  final ProPlan plan;
   final BillingPeriod period;
 
+  ProTier get tier => plan.tier;
+
   /// Talaba chegirmasi (D-50): faqat talaba holati tasdiqlangan hisobga.
-  final bool student;
+  bool get student => plan == ProPlan.student;
 }
 
 /// Mahsulot id'lari — YAGONA joy. Server ham shu ro'yxatni biladi
 /// (`cloudflare/src/billing.ts` → `BILLING_PRODUCTS`); App Store Connect va
 /// Play Console'da aynan shu id'lar bilan yaratiladi (docs/PRO_BILLING_PLAN.md).
 /// Narxlar va bepul sinov do'konda sozlanadi; ilova ularni do'kondan o'qiydi.
-/// TAKLIF qilingan narxlar va sinov sozlamasi — `pro_catalog.dart` (D-71);
-/// eski D-48/D-49/D-50/D-57 narxlari va 7/14 kunlik sinov ESKIRGAN.
+/// Egasi narxlari (D-73) — `pro_catalog.dart`; eski D-48/D-49/D-50/D-57/D-71/
+/// D-72 narxlari va 7/14 kunlik sinov ESKIRGAN.
 abstract final class BillingCatalog {
-  static const proMonthly = 'uz.labguide.pro.monthly';
-  static const proYearly = 'uz.labguide.pro.yearly';
-  static const studentMonthly = 'uz.labguide.pro.student.monthly';
-  static const studentYearly = 'uz.labguide.pro.student.yearly';
-  static const teacherMonthly = 'uz.labguide.teacherpro.monthly';
-  static const teacherYearly = 'uz.labguide.teacherpro.yearly';
+  static const studentMonthly = 'uz.labguide.student.monthly';
+  static const studentYearly = 'uz.labguide.student.yearly';
+  static const teacherMonthly = 'uz.labguide.teacher.monthly';
+  static const teacherYearly = 'uz.labguide.teacher.yearly';
+  static const specialistMonthly = 'uz.labguide.specialist.monthly';
+  static const specialistYearly = 'uz.labguide.specialist.yearly';
+
+  /// Eski (D-46…D-72) id → yangi id. Do'konda hech qachon mahsulot
+  /// yaratilmagan (D-73), shuning uchun faqat server qatori / eski kesh
+  /// bo'lsa o'qiladi; yangi mahsulot YARATILMAYDI.
+  static const legacyAliases = <String, String>{
+    'uz.labguide.pro.monthly': specialistMonthly,
+    'uz.labguide.pro.yearly': specialistYearly,
+    'uz.labguide.pro.student.monthly': studentMonthly,
+    'uz.labguide.pro.student.yearly': studentYearly,
+    'uz.labguide.teacherpro.monthly': teacherMonthly,
+    'uz.labguide.teacherpro.yearly': teacherYearly,
+  };
 
   static const all = <BillingProduct>[
-    BillingProduct(proMonthly, tier: ProTier.pro, period: BillingPeriod.month),
-    BillingProduct(proYearly, tier: ProTier.pro, period: BillingPeriod.year),
     BillingProduct(
       studentMonthly,
-      tier: ProTier.pro,
+      plan: ProPlan.student,
       period: BillingPeriod.month,
-      student: true,
     ),
     BillingProduct(
       studentYearly,
-      tier: ProTier.pro,
+      plan: ProPlan.student,
       period: BillingPeriod.year,
-      student: true,
     ),
     BillingProduct(
       teacherMonthly,
-      tier: ProTier.teacher,
+      plan: ProPlan.teacher,
       period: BillingPeriod.month,
     ),
     BillingProduct(
       teacherYearly,
-      tier: ProTier.teacher,
+      plan: ProPlan.teacher,
+      period: BillingPeriod.year,
+    ),
+    BillingProduct(
+      specialistMonthly,
+      plan: ProPlan.specialist,
+      period: BillingPeriod.month,
+    ),
+    BillingProduct(
+      specialistYearly,
+      plan: ProPlan.specialist,
       period: BillingPeriod.year,
     ),
   ];
 
   static final ids = {for (final p in all) p.id};
 
+  /// Eski id ham yangisiga o'giriladi ([legacyAliases]).
   static BillingProduct? byId(String id) {
+    final key = legacyAliases[id] ?? id;
     for (final p in all) {
-      if (p.id == id) return p;
+      if (p.id == key) return p;
     }
     return null;
   }
 
-  /// Xarid qaysi darajani ochadi. Katalogda yo'q (eski/sinov) mahsulot —
-  /// Pro (hech qachon Ustoz Pro emas).
+  /// Xarid qaysi darajani ochadi. Katalogda yo'q (sinov) mahsulot — Pro
+  /// (hech qachon Ustoz darajasi emas).
   static ProTier tierOf(String productId) =>
       byId(productId)?.tier ?? ProTier.pro;
+
+  /// Xarid qaysi pullik daraja (`null` — katalogda yo'q).
+  static ProPlan? planOf(String productId) => byId(productId)?.plan;
 
   /// Talaba holati tasdiqlangan hisob. Hozir ilovada bunday tasdiq YO'Q
   /// (D-49: talaba bileti bilan tasdiqlash — keyin), shuning uchun talaba

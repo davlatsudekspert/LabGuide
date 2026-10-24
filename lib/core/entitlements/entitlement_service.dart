@@ -21,6 +21,9 @@ enum ProSource {
   /// Shu sessiyada serverdan tasdiqlangan.
   server,
 
+  /// Admin bergan Pro (D-73), shu sessiyada serverdan tasdiqlangan.
+  adminGrant,
+
   /// Imzolangan oflayn kesh (muddati tugamagan).
   offlineCache,
 
@@ -186,28 +189,50 @@ class EntitlementService extends ChangeNotifier {
     }
   }
 
-  static ServerEntitlement? _longest(Iterable<ServerEntitlement> items) {
+  /// Eng yaxshi qator (D-73): yuqori daraja yutadi; teng darajada eng uzoq
+  /// muddat (`null` — muddatsiz, eng uzoq); to'liq tenglikda do'kon xaridi
+  /// (admin grant do'kon obunasini hech qachon bosib o'tmaydi). Server
+  /// `resolved` bilan bir xil qoida.
+  static ServerEntitlement? _best(Iterable<ServerEntitlement> items) {
     ServerEntitlement? best;
     for (final e in items) {
-      if (best == null ||
-          e.expiresAt == null ||
-          (best.expiresAt != null && e.expiresAt!.isAfter(best.expiresAt!))) {
-        best = e;
-      }
+      if (best == null || _beats(e, best)) best = e;
     }
     return best;
   }
 
-  /// Amaldagi xarid (eng uzoq muddatlisi): server/kesh, mehmonda — qurilma.
+  static bool _beats(ServerEntitlement a, ServerEntitlement b) {
+    final ra = a.effectivePlan?.index ?? -1;
+    final rb = b.effectivePlan?.index ?? -1;
+    if (ra != rb) return ra > rb;
+    final ea = a.expiresAt;
+    final eb = b.expiresAt;
+    if (ea != eb) {
+      if (ea == null) return true;
+      if (eb == null) return false;
+      return ea.isAfter(eb);
+    }
+    return !a.isAdminGrant && b.isAdminGrant;
+  }
+
+  /// Amaldagi xarid (eng yaxshisi): server/kesh, mehmonda — qurilma.
   ServerEntitlement? get activeEntitlement =>
-      _longest(_serverGranting()) ?? _longest(_deviceGranting());
+      _best(_serverGranting()) ?? _best(_deviceGranting());
+
+  /// Serverda do'kon xaridi bormi (admin grant sanalmaydi: qurilmadagi xarid
+  /// admin grant bo'lsa ham hisobga bog'lanadi).
+  bool get _hasStoreOnServer => _serverGranting().any((e) => !e.isAdminGrant);
+
+  /// Amaldagi pullik daraja (`null` — yo'q yoki katalogda yo'q).
+  ProPlan? get plan => activeEntitlement?.effectivePlan;
 
   ProSource get proSource {
     if (allFeaturesOpen) return ProSource.buildOpen;
-    if (_longest(_serverGranting()) != null) {
-      return _fresh ? ProSource.server : ProSource.offlineCache;
+    if (_best(_serverGranting()) case final e?) {
+      if (!_fresh) return ProSource.offlineCache;
+      return e.isAdminGrant ? ProSource.adminGrant : ProSource.server;
     }
-    if (_longest(_deviceGranting()) != null) return ProSource.store;
+    if (_best(_deviceGranting()) != null) return ProSource.store;
     return ProSource.none;
   }
 
@@ -218,7 +243,7 @@ class EntitlementService extends ChangeNotifier {
     if (allFeaturesOpen) return ProTier.teacher;
     var best = ProTier.free;
     for (final e in [..._serverGranting(), ..._deviceGranting()]) {
-      final t = BillingCatalog.tierOf(e.productId);
+      final t = e.tier;
       if (t.index > best.index) best = t;
     }
     return best;
@@ -310,7 +335,7 @@ class EntitlementService extends ChangeNotifier {
       return;
     }
     // Mehmon paytida qilingan xarid — endi hisobga bog'lanadi.
-    if (_device.isNotEmpty && _longest(_serverGranting()) == null) {
+    if (_device.isNotEmpty && !_hasStoreOnServer) {
       await _bind([
         for (final e in _device)
           if (e.grantsAt(now().toUtc()) && e.token != null)
@@ -348,7 +373,7 @@ class EntitlementService extends ChangeNotifier {
       return;
     }
     _setDevice(proofs);
-    if (source.hasSession && _longest(_serverGranting()) == null) {
+    if (source.hasSession && !_hasStoreOnServer) {
       await _bind(proofs);
     }
   }

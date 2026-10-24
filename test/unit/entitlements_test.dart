@@ -24,7 +24,7 @@ ServerEntitlement _sub({
   EntitlementStatus status = EntitlementStatus.active,
   DateTime? start,
   DateTime? end,
-  String product = BillingCatalog.proMonthly,
+  String product = BillingCatalog.specialistMonthly,
 }) => ServerEntitlement(
   productId: product,
   platform: 'app_store',
@@ -38,7 +38,7 @@ EntitlementSnapshot _snap(List<ServerEntitlement> items, [DateTime? at]) =>
 
 const _proof = PurchaseProof(
   platform: 'app_store',
-  productId: BillingCatalog.proMonthly,
+  productId: BillingCatalog.specialistMonthly,
   token: '2000000123',
 );
 
@@ -153,7 +153,7 @@ void main() {
       source.billing = false;
       final s = make();
       expect(
-        await s.purchase(BillingCatalog.proMonthly),
+        await s.purchase(BillingCatalog.specialistMonthly),
         BillingOutcome.unavailable,
       );
       expect(await s.restore(), BillingOutcome.unavailable);
@@ -199,7 +199,7 @@ void main() {
     test('to‘lov oynasida talaba mahsuloti ko‘rsatilmaydi (tasdiq yo‘q)', () {
       final ids = make().offeredProducts.map((p) => p.id);
       expect(ids, isNot(contains(BillingCatalog.studentMonthly)));
-      expect(ids, contains(BillingCatalog.proMonthly));
+      expect(ids, contains(BillingCatalog.specialistMonthly));
       expect(ids, contains(BillingCatalog.teacherMonthly));
     });
   });
@@ -208,7 +208,7 @@ void main() {
     test(
       'faol Pro: Pro ochiq, Ustoz Pro yopiq; imzolangan keshga yoziladi',
       () async {
-        source.snapshot = _snap([_sub()]);
+        source.snapshot = _snap([_sub(product: BillingCatalog.studentMonthly)]);
         final s = make();
         await s.refresh();
         expect(s.proSource, ProSource.server);
@@ -394,7 +394,7 @@ void main() {
       source.snapshot = _snap([_sub()]);
       final s = make();
       expect(
-        await s.purchase(BillingCatalog.proMonthly),
+        await s.purchase(BillingCatalog.specialistMonthly),
         BillingOutcome.success,
       );
       expect(source.verified, [_proof]);
@@ -402,7 +402,7 @@ void main() {
       expect(shop.finished, [_proof]);
       // App Store appAccountToken — hisob UUID'i (kichik harf).
       expect(shop.bought.single, (
-        BillingCatalog.proMonthly,
+        BillingCatalog.specialistMonthly,
         '0f8fad5b-d9cb-469f-a165-70867728950e',
       ));
       expect(s.isPro, isTrue);
@@ -412,7 +412,7 @@ void main() {
       source = FakeEntitlementSource(platform: 'play_store');
       shop.proofs = const [_proof];
       source.snapshot = _snap([_sub()]);
-      await make().purchase(BillingCatalog.proMonthly);
+      await make().purchase(BillingCatalog.specialistMonthly);
       expect(
         shop.bought.single.$2,
         sha256.convert(utf8.encode('user-a')).toString(),
@@ -426,7 +426,7 @@ void main() {
         source.error = const EntitlementException(EntitlementFailure.network);
         final s = make();
         expect(
-          await s.purchase(BillingCatalog.proMonthly),
+          await s.purchase(BillingCatalog.specialistMonthly),
           BillingOutcome.failed,
         );
         expect(shop.finished, isEmpty);
@@ -438,26 +438,26 @@ void main() {
       final s = make();
       shop.cancel = true;
       expect(
-        await s.purchase(BillingCatalog.proMonthly),
+        await s.purchase(BillingCatalog.specialistMonthly),
         BillingOutcome.cancelled,
       );
       shop
         ..cancel = false
         ..buyError = const PurchasePendingException();
       expect(
-        await s.purchase(BillingCatalog.proMonthly),
+        await s.purchase(BillingCatalog.specialistMonthly),
         BillingOutcome.pending,
       );
       shop.buyError = const PurchaseFailedException('declined');
       expect(
-        await s.purchase(BillingCatalog.proMonthly),
+        await s.purchase(BillingCatalog.specialistMonthly),
         BillingOutcome.failed,
       );
       shop.buyError = null;
       shop.proofs = const [_proof];
       source.error = const EntitlementException(EntitlementFailure.pending);
       expect(
-        await s.purchase(BillingCatalog.proMonthly),
+        await s.purchase(BillingCatalog.specialistMonthly),
         BillingOutcome.pending,
       );
       expect(s.isPro, isFalse);
@@ -530,7 +530,7 @@ void main() {
       shop.proofs = const [_proof];
       final s = make();
       expect(
-        await s.purchase(BillingCatalog.proMonthly),
+        await s.purchase(BillingCatalog.specialistMonthly),
         BillingOutcome.success,
       );
       // Server hali bu xaridni bilmaydi — refresh uni tiklash sifatida yuboradi.
@@ -578,21 +578,23 @@ void main() {
   group('katalog', () {
     test('id lar egasi tasdiqlagan ro‘yxat va server bilan bir xil', () {
       expect(BillingCatalog.ids, {
-        'uz.labguide.pro.monthly',
-        'uz.labguide.pro.yearly',
-        'uz.labguide.pro.student.monthly',
-        'uz.labguide.pro.student.yearly',
-        'uz.labguide.teacherpro.monthly',
-        'uz.labguide.teacherpro.yearly',
+        'uz.labguide.student.monthly',
+        'uz.labguide.student.yearly',
+        'uz.labguide.teacher.monthly',
+        'uz.labguide.teacher.yearly',
+        'uz.labguide.specialist.monthly',
+        'uz.labguide.specialist.yearly',
       });
       final server = File('cloudflare/src/billing.ts').readAsStringSync();
-      final ids = RegExp(r"'(uz\.labguide\.[a-z.]+)': \{ tier: '(\w+)'")
+      final ids = RegExp(r"'(uz\.labguide\.[a-z.]+)': \{ plan: '(\w+)' \}")
           .allMatches(server)
           .map((m) => (m[1]!, m[2]!))
           .toSet();
       expect(ids, {
-        for (final p in BillingCatalog.all)
-          (p.id, p.tier == ProTier.teacher ? 'teacher' : 'pro'),
+        for (final p in BillingCatalog.all) (p.id, p.plan.wire),
+        // Eski id'lar serverda ALIAS (D-73).
+        for (final e in BillingCatalog.legacyAliases.entries)
+          (e.key, BillingCatalog.byId(e.value)!.plan.wire),
       });
     });
 
@@ -702,7 +704,7 @@ void main() {
           'server_time': '2026-10-09T12:00:00.000Z',
           'items': [
             {
-              'product_id': BillingCatalog.proYearly,
+              'product_id': BillingCatalog.specialistYearly,
               'platform': 'app_store',
               'status': 'active',
               'started_at': '2026-10-01T00:00:00.000Z',
@@ -715,7 +717,7 @@ void main() {
         }),
       );
       final snap = await src.verify(const [_proof], restore: false);
-      expect(snap.items.single.productId, BillingCatalog.proYearly);
+      expect(snap.items.single.productId, BillingCatalog.specialistYearly);
       expect(snap.ownedByOther, isTrue);
       final req = calls.single;
       expect(req.url.path, '/v1/billing/verify');
@@ -723,7 +725,7 @@ void main() {
       expect(jsonDecode(req.body), {
         'platform': 'app_store',
         'restore': false,
-        'product_id': BillingCatalog.proMonthly,
+        'product_id': BillingCatalog.specialistMonthly,
         'token': '2000000123',
       });
 
@@ -771,7 +773,7 @@ void main() {
       'server_time': '2026-10-09T12:00:00+00:00',
       'items': [
         {
-          'product_id': BillingCatalog.proYearly,
+          'product_id': BillingCatalog.specialistYearly,
           'platform': 'play_store',
           'status': 'grace_period',
           'started_at': '2026-01-01T00:00:00+00:00',

@@ -17805,6 +17805,234 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No feature is marked as paid yet: everything is open.'**
   String get proNothingGated;
+
+  /// No description provided for @proPlanStudent.
+  ///
+  /// In en, this message translates to:
+  /// **'Student'**
+  String get proPlanStudent;
+
+  /// No description provided for @proPlanTeacher.
+  ///
+  /// In en, this message translates to:
+  /// **'Teacher'**
+  String get proPlanTeacher;
+
+  /// No description provided for @proPlanSpecialist.
+  ///
+  /// In en, this message translates to:
+  /// **'Specialist'**
+  String get proPlanSpecialist;
+
+  /// No description provided for @proPayTierStudent.
+  ///
+  /// In en, this message translates to:
+  /// **'Student'**
+  String get proPayTierStudent;
+
+  /// No description provided for @proPayTierStudentSub.
+  ///
+  /// In en, this message translates to:
+  /// **'For accounts with verified student status'**
+  String get proPayTierStudentSub;
+
+  /// No description provided for @proPayTierSpecialist.
+  ///
+  /// In en, this message translates to:
+  /// **'Specialist'**
+  String get proPayTierSpecialist;
+
+  /// No description provided for @proPayTierSpecialistSub.
+  ///
+  /// In en, this message translates to:
+  /// **'For lab specialists and doctors. Teacher features are included too.'**
+  String get proPayTierSpecialistSub;
+
+  /// No description provided for @proPayStatusAdminGrant.
+  ///
+  /// In en, this message translates to:
+  /// **'Pro granted by an administrator'**
+  String get proPayStatusAdminGrant;
+
+  /// No description provided for @proPayStatusAdminGrantUntil.
+  ///
+  /// In en, this message translates to:
+  /// **'Pro granted by an administrator · until {date}'**
+  String proPayStatusAdminGrantUntil(String date);
+
+  /// No description provided for @proGrantRow.
+  ///
+  /// In en, this message translates to:
+  /// **'Grant Pro'**
+  String get proGrantRow;
+
+  /// No description provided for @proGrantRowSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Give Pro to an email address or revoke it'**
+  String get proGrantRowSub;
+
+  /// No description provided for @proGrantTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Grant Pro'**
+  String get proGrantTitle;
+
+  /// No description provided for @proGrantIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Give Pro to an email address. If there is no account yet, it takes effect when the account is created or first signs in. A store subscription is not changed: the higher of the two applies.'**
+  String get proGrantIntro;
+
+  /// No description provided for @proGrantEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Email'**
+  String get proGrantEmail;
+
+  /// No description provided for @proGrantTier.
+  ///
+  /// In en, this message translates to:
+  /// **'Plan'**
+  String get proGrantTier;
+
+  /// No description provided for @proGrantDuration.
+  ///
+  /// In en, this message translates to:
+  /// **'Duration'**
+  String get proGrantDuration;
+
+  /// No description provided for @proGrantNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Note (optional)'**
+  String get proGrantNote;
+
+  /// No description provided for @proGrantDays.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} days'**
+  String proGrantDays(int count);
+
+  /// No description provided for @proGrantUntilRevoked.
+  ///
+  /// In en, this message translates to:
+  /// **'Until revoked'**
+  String get proGrantUntilRevoked;
+
+  /// No description provided for @proGrantExtend.
+  ///
+  /// In en, this message translates to:
+  /// **'Extend the existing grant (do not replace)'**
+  String get proGrantExtend;
+
+  /// No description provided for @proGrantSubmit.
+  ///
+  /// In en, this message translates to:
+  /// **'Grant Pro'**
+  String get proGrantSubmit;
+
+  /// No description provided for @proGrantConfirmTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Grant Pro?'**
+  String get proGrantConfirmTitle;
+
+  /// No description provided for @proGrantConfirmBody.
+  ///
+  /// In en, this message translates to:
+  /// **'{email} will get “{plan}” Pro. Duration: {duration}.'**
+  String proGrantConfirmBody(String email, String plan, String duration);
+
+  /// No description provided for @proGrantDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Pro granted: {email}'**
+  String proGrantDone(String email);
+
+  /// No description provided for @proGrantReplaced.
+  ///
+  /// In en, this message translates to:
+  /// **'Existing grant replaced: {email}'**
+  String proGrantReplaced(String email);
+
+  /// No description provided for @proGrantExtended.
+  ///
+  /// In en, this message translates to:
+  /// **'Grant extended: {email}'**
+  String proGrantExtended(String email);
+
+  /// No description provided for @proGrantListTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Active and pending ({count})'**
+  String proGrantListTitle(int count);
+
+  /// No description provided for @proGrantEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No grants yet.'**
+  String get proGrantEmpty;
+
+  /// No description provided for @proGrantPending.
+  ///
+  /// In en, this message translates to:
+  /// **'Waiting for an account: starts at first sign-in'**
+  String get proGrantPending;
+
+  /// No description provided for @proGrantUntil.
+  ///
+  /// In en, this message translates to:
+  /// **'until {date}'**
+  String proGrantUntil(String date);
+
+  /// No description provided for @proGrantRevoke.
+  ///
+  /// In en, this message translates to:
+  /// **'Revoke'**
+  String get proGrantRevoke;
+
+  /// No description provided for @proGrantRevokeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Revoke this grant?'**
+  String get proGrantRevokeTitle;
+
+  /// No description provided for @proGrantRevokeBody.
+  ///
+  /// In en, this message translates to:
+  /// **'{email} loses Pro immediately. A store subscription (if any) stays.'**
+  String proGrantRevokeBody(String email);
+
+  /// No description provided for @proGrantRevoked.
+  ///
+  /// In en, this message translates to:
+  /// **'Revoked: {email}'**
+  String proGrantRevoked(String email);
+
+  /// No description provided for @proGrantErrNote.
+  ///
+  /// In en, this message translates to:
+  /// **'The note must be at most 200 characters, without control characters.'**
+  String get proGrantErrNote;
+
+  /// No description provided for @proGrantErrPending.
+  ///
+  /// In en, this message translates to:
+  /// **'A pending grant cannot be extended: replace it instead.'**
+  String get proGrantErrPending;
+
+  /// No description provided for @proGrantErrDuration.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a duration to extend.'**
+  String get proGrantErrDuration;
+
+  /// No description provided for @proGrantErrMany.
+  ///
+  /// In en, this message translates to:
+  /// **'The active grant limit is reached. Revoke unused ones first.'**
+  String get proGrantErrMany;
 }
 
 class _AppLocalizationsDelegate

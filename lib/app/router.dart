@@ -7,6 +7,7 @@ import '../core/build_flags.dart';
 import '../core/entitlements/feature.dart';
 import '../features/admin/admin_console_screens.dart';
 import '../features/admin/admin_screens.dart';
+import '../features/admin/pro_grant_screen.dart';
 import '../features/auth/ui/auth_screens.dart';
 import '../features/auth/ui/role_screen.dart';
 import '../features/auth/ui/language_picker_screen.dart';
@@ -311,6 +312,13 @@ GoRouter buildRouter(
                 path: 'admins',
                 builder: (context, state) => const AdminTeamScreen(),
               ),
+              // Admin Pro berish (D-73): yo'l faqat Pro bayrog'i yoqilgan
+              // buildda mavjud (o'chiq bo'lsa umuman ro'yxatga olinmaydi).
+              if (BuildFlags.proEnabled)
+                GoRoute(
+                  path: 'pro-grants',
+                  builder: (context, state) => const AdminProGrantScreen(),
+                ),
               // Admin paneldan tekshiruv navbati — profil ichida qoladi
               // (boshqa tabga o'tib ketmaydi). Kirish ReviewerGate ichida.
               GoRoute(

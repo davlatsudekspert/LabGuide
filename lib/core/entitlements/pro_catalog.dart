@@ -3,64 +3,93 @@ import 'package:flutter/foundation.dart';
 import 'billing_catalog.dart';
 import 'feature.dart';
 
-/// Pro narx va sinov KATALOGI — faqat MA'LUMOT (D-71). Ekranlar bu yerdan
-/// narx o'qimaydi: foydalanuvchi ko'radigan narx har doim do'kondan
-/// (mahalliy valyutada) keladi. Bu katalog — do'konlarda mahsulot narxini
-/// qo'yish uchun egasiga ko'rsatma va testlar uchun yagona manba.
+/// Pullik daraja (D-73): Talaba, Ustoz, Mutaxassis. Tartib = narx tartibi:
+/// admin grant va server huquqni hal qilishda yuqori daraja yutadi.
+enum ProPlan {
+  student,
+  teacher,
+  specialist;
+
+  /// Server bilan umumiy nom (`student` / `teacher` / `specialist`).
+  String get wire => name;
+
+  /// Shu daraja ilovada ochadigan imkoniyatlar darajasi. Talaba — Pro;
+  /// Ustoz — Ustoz Pro (guruhlar); Mutaxassis — Ustoz Pro darajasi (eng
+  /// qimmat reja kamroq bermasin).
+  // TODO(owner): qaysi daraja nimani ochishi (D-73, ochiq qaror) — hozir
+  // hech narsa yopilmaydi ([ProGatePolicy.gated] bo'sh), shuning uchun bu
+  // moslik faqat tayyorgarlik.
+  ProTier get tier => switch (this) {
+    student => ProTier.pro,
+    teacher => ProTier.teacher,
+    specialist => ProTier.teacher,
+  };
+
+  static ProPlan? parse(Object? raw) {
+    for (final p in values) {
+      if (p.name == raw) return p;
+    }
+    return null;
+  }
+}
+
+/// Pro narx va sinov KATALOGI — faqat MA'LUMOT. Ekranlar bu yerdan narx
+/// o'qimaydi: foydalanuvchi ko'radigan narx har doim do'kondan (mahalliy
+/// valyutada) keladi. Bu katalog — do'konlarda mahsulot narxini qo'yish
+/// uchun egasiga ko'rsatma va testlar uchun yagona manba.
 ///
-/// DIQQAT: hamma narx TAKLIF (PROPOSED) — egasi tasdiqlamagan. Eski narxlar
-/// (D-48/D-50/D-57) va eski 7/14 kunlik sinov (D-49) hech qayerda faol emas.
+/// Narxlar — EGASI QARORI (2026-10-24, D-73), lekin Pro o'chiq: to'lov hech
+/// qayerda yoqilmagan. Oldingi narxlar va tariflar (D-48/D-50/D-57/D-71/D-72)
+/// hamda eski 7/14 kunlik sinov (D-49) hech qayerda faol emas; ro'yxati
+/// docs/DECISIONS.md D-73 da.
 @immutable
 class ProPlanSpec {
   const ProPlanSpec({
+    required this.plan,
     required this.monthlyProductId,
     required this.yearlyProductId,
-    required this.tier,
-    required this.student,
     required this.monthlyUsd,
-    this.yearlyUsd,
+    required this.yearlyUsd,
   });
 
+  final ProPlan plan;
   final String monthlyProductId;
   final String yearlyProductId;
-  final ProTier tier;
-  final bool student;
 
-  /// TAKLIF qilingan bazaviy oylik narx (AQSh dollari). Tasdiqlanmagan.
+  /// Oylik narx (AQSh dollari) — egasi qarori, D-73.
   final double monthlyUsd;
 
-  /// Yillik narx. `null` — belgilanmagan va yillik mahsulot taklif
-  /// QILINMAYDI.
-  // TODO(owner): yillik narxlar (yoki yillik umuman yo'qligi) — D-71, ochiq
-  // qaror #2. Belgilanmaguncha null.
+  /// Yillik narx (AQSh dollari) — egasi qarori, D-73. `null` bo'lsa yillik
+  /// mahsulot taklif QILINMAYDI.
   final double? yearlyUsd;
 
   bool get annualOffered => yearlyUsd != null;
 }
 
 abstract final class ProPricing {
-  /// TAKLIF (PROPOSED, tasdiqlanmagan) bazaviy oylik narxlar.
+  /// Egasi tasdiqlagan bazaviy narxlar (D-73, 2026-10-24). Mahalliy
+  /// valyuta narxlari (UZS va h.k.) — do'kon narx nuqtalari, ochiq qaror.
   static const plans = <ProPlanSpec>[
     ProPlanSpec(
+      plan: ProPlan.student,
       monthlyProductId: BillingCatalog.studentMonthly,
       yearlyProductId: BillingCatalog.studentYearly,
-      tier: ProTier.pro,
-      student: true,
       monthlyUsd: 1.49,
+      yearlyUsd: 9.99,
     ),
     ProPlanSpec(
-      monthlyProductId: BillingCatalog.proMonthly,
-      yearlyProductId: BillingCatalog.proYearly,
-      tier: ProTier.pro,
-      student: false,
-      monthlyUsd: 3.99,
-    ),
-    ProPlanSpec(
+      plan: ProPlan.teacher,
       monthlyProductId: BillingCatalog.teacherMonthly,
       yearlyProductId: BillingCatalog.teacherYearly,
-      tier: ProTier.teacher,
-      student: false,
-      monthlyUsd: 5.99,
+      monthlyUsd: 2.49,
+      yearlyUsd: 24.99,
+    ),
+    ProPlanSpec(
+      plan: ProPlan.specialist,
+      monthlyProductId: BillingCatalog.specialistMonthly,
+      yearlyProductId: BillingCatalog.specialistYearly,
+      monthlyUsd: 3.49,
+      yearlyUsd: 34.99,
     ),
   ];
 
@@ -74,7 +103,7 @@ abstract final class ProPricing {
   }
 }
 
-/// Bepul foydalanish davri sozlamasi (D-71, ochiq qaror #4).
+/// Bepul foydalanish davri sozlamasi (D-71/D-73, ochiq qaror).
 ///
 /// [freeTrialDays] semantikasi:
 /// * `null` (standart) — **o'chiq**: hech qanday bepul davr taklif qilinmaydi

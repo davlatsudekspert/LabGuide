@@ -1,5 +1,9 @@
 import 'package:flutter/foundation.dart';
 
+import 'billing_catalog.dart';
+import 'feature.dart';
+import 'pro_catalog.dart';
+
 /// Server (do'kon tekshirgan) obuna holati — `entitlements.status`.
 enum EntitlementStatus {
   active,
@@ -61,7 +65,15 @@ class ServerEntitlement {
     this.ownership = 'purchased',
     this.environment = 'production',
     this.token,
+    this.source = storeSource,
+    this.plan,
   });
+
+  /// Manba: do'kon obunasi.
+  static const storeSource = 'store';
+
+  /// Manba: admin bergan Pro (D-73; `platform == 'admin_grant'`).
+  static const adminGrantSource = 'admin_grant';
 
   factory ServerEntitlement.fromJson(Map<String, Object?> j) {
     DateTime? date(String k) =>
@@ -74,6 +86,10 @@ class ServerEntitlement {
       expiresAt: date('expires_at'),
       ownership: (j['ownership'] as String?) ?? 'purchased',
       environment: (j['environment'] as String?) ?? 'production',
+      source:
+          (j['source'] as String?) ??
+          (j['platform'] == adminGrantSource ? adminGrantSource : storeSource),
+      plan: ProPlan.parse(j['plan']),
     );
   }
 
@@ -84,6 +100,20 @@ class ServerEntitlement {
   final DateTime? expiresAt;
   final String ownership;
   final String environment;
+
+  /// `store` yoki `admin_grant` (server `source`).
+  final String source;
+
+  /// Admin grant darajasi (do'kon xaridida `null` — mahsulotdan olinadi).
+  final ProPlan? plan;
+
+  bool get isAdminGrant => source == adminGrantSource;
+
+  /// Pullik daraja: grantda — serverdan, xaridda — mahsulot id'sidan.
+  ProPlan? get effectivePlan => plan ?? BillingCatalog.planOf(productId);
+
+  /// Ilova darajasi (katalogda yo'q mahsulot — Pro).
+  ProTier get tier => effectivePlan?.tier ?? ProTier.pro;
 
   /// Faqat qurilmadagi (mehmon) xarid uchun: do'kon tokeni — hisobga
   /// kirilganda serverga yuboriladi. Keshga yozilmaydi.
@@ -109,6 +139,8 @@ class ServerEntitlement {
     'expires_at': expiresAt?.toIso8601String(),
     'ownership': ownership,
     'environment': environment,
+    'source': source,
+    if (plan != null) 'plan': plan!.wire,
   };
 }
 

@@ -8,12 +8,14 @@ import 'package:http/http.dart' as http;
 
 import '../../features/auth/otp_auth.dart';
 import '../../features/auth/social_auth.dart';
+import '../entitlements/pro_catalog.dart' show ProPlan;
 import 'admin_console.dart';
 import 'admin_team.dart';
 import 'backend_models.dart';
 import 'community_backend.dart';
 import 'lab_backend.dart';
 import 'partner_models.dart';
+import 'pro_grants.dart';
 import 'supabase_backend.dart' show SessionStore;
 
 /// Cloudflare Worker API manzili (build vaqtida, repoda yo'q):
@@ -114,6 +116,7 @@ class CloudflareLabBackend
         LabBackend,
         CommunityBackend,
         AdminTeamBackend,
+        ProGrantBackend,
         SocialLoginBackend,
         AdminConsoleBackend,
         ComplaintsBackend,
@@ -1159,6 +1162,50 @@ class CloudflareLabBackend
   @override
   Future<void> removeAdmin(String id) =>
       _team('DELETE', '/v1/admin/admins/${_seg(id)}');
+
+  // ------------------------------------------- admin Pro berish (D-73)
+  Future<_ApiResponse> _grants(String method, String path, {Object? body}) async {
+    final r = await _send(method, path, body: body);
+    if (r.ok) return r;
+    throw ProGrantException(
+      _failure(r.status),
+      r.error,
+      '$method $path ${r.status} ${r.error}',
+    );
+  }
+
+  @override
+  Future<List<ProGrant>> proGrants() async => [
+    for (final g in ((await _grants('GET', '/v1/admin/pro-grants')).map['grants']
+            as List?) ??
+        const [])
+      ProGrant.fromJson((g as Map).cast<String, Object?>()),
+  ];
+
+  @override
+  Future<ProGrantResult> grantPro({
+    required String email,
+    required ProPlan plan,
+    int? durationDays,
+    String? note,
+    bool extend = false,
+  }) async => ProGrantResult.fromJson(
+    (await _grants(
+      'POST',
+      '/v1/admin/pro-grants',
+      body: {
+        'email': email.trim(),
+        'tier': plan.wire,
+        'durationDays': durationDays,
+        if (note != null && note.trim().isNotEmpty) 'note': note.trim(),
+        if (extend) 'mode': 'extend',
+      },
+    )).map,
+  );
+
+  @override
+  Future<void> revokePro(String id) =>
+      _grants('DELETE', '/v1/admin/pro-grants/${_seg(id)}');
 
   // ------------------------------------------------------------------
   /// Hali ko'chirilmagan amal (docs/BACKEND_CLOUDFLARE.md, “Reja”).

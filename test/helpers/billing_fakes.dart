@@ -118,34 +118,46 @@ class FakePurchaseAdapter extends ChangeNotifier implements PurchaseAdapter {
 }
 
 /// Do'kondagi kabi mahsulotlar (narx — do'kon formatida, ilovada qotirilmagan).
-/// Qiymatlar — D-71 TAKLIF narxlari (tasdiqlanmagan); `freeTrial` esa faqat
-/// "do'kon kirish taklifi qaytardi" holatini sinash uchun fixture (30 kun —
-/// ilova uni do'kondan o'qiydi, o'zi hech narsa belgilamaydi). Yillik narx
-/// belgilanmagan (`ProPricing`), shuning uchun yillik mahsulot ko'rsatilmaydi.
+/// Qiymatlar — egasi narxlari (D-73, 2026-10-24; Pro hali YOQILMAGAN);
+/// `freeTrial` esa faqat "do'kon kirish taklifi qaytardi" holatini sinash
+/// uchun fixture (30 kun — ilova uni do'kondan o'qiydi, o'zi hech narsa
+/// belgilamaydi).
 List<StoreProduct> storeProducts() => const [
   StoreProduct(
-    id: BillingCatalog.proMonthly,
-    title: 'LabGuide Pro',
-    displayPrice: r'$3.99',
+    id: BillingCatalog.specialistMonthly,
+    title: 'LabGuide Mutaxassis',
+    displayPrice: r'$3.49',
     period: StorePeriod(1, StorePeriodUnit.month),
     freeTrial: StorePeriod(30, StorePeriodUnit.day),
   ),
   StoreProduct(
-    id: BillingCatalog.proYearly,
-    title: 'LabGuide Pro',
-    displayPrice: r'$0.00 (test)',
+    id: BillingCatalog.specialistYearly,
+    title: 'LabGuide Mutaxassis',
+    displayPrice: r'$34.99',
     period: StorePeriod(1, StorePeriodUnit.year),
   ),
   StoreProduct(
     id: BillingCatalog.studentMonthly,
-    title: 'LabGuide Pro (student)',
+    title: 'LabGuide Talaba',
     displayPrice: r'$1.49',
     period: StorePeriod(1, StorePeriodUnit.month),
   ),
   StoreProduct(
+    id: BillingCatalog.studentYearly,
+    title: 'LabGuide Talaba',
+    displayPrice: r'$9.99',
+    period: StorePeriod(1, StorePeriodUnit.year),
+  ),
+  StoreProduct(
     id: BillingCatalog.teacherMonthly,
-    title: 'Ustoz Pro',
-    displayPrice: r'$5.99',
+    title: 'LabGuide Ustoz',
+    displayPrice: r'$2.49',
     period: StorePeriod(1, StorePeriodUnit.month),
+  ),
+  StoreProduct(
+    id: BillingCatalog.teacherYearly,
+    title: 'LabGuide Ustoz',
+    displayPrice: r'$24.99',
+    period: StorePeriod(1, StorePeriodUnit.year),
   ),
 ];

@@ -6136,5 +6136,119 @@
       }
     }
   },
-  "proNothingGated": "No feature is marked as paid yet: everything is open."
+  "proNothingGated": "No feature is marked as paid yet: everything is open.",
+  "proPlanStudent": "Student",
+  "proPlanTeacher": "Teacher",
+  "proPlanSpecialist": "Specialist",
+  "proPayTierStudent": "Student",
+  "proPayTierStudentSub": "For accounts with verified student status",
+  "proPayTierSpecialist": "Specialist",
+  "proPayTierSpecialistSub": "For lab specialists and doctors. Teacher features are included too.",
+  "proPayStatusAdminGrant": "Pro granted by an administrator",
+  "proPayStatusAdminGrantUntil": "Pro granted by an administrator · until {date}",
+  "@proPayStatusAdminGrantUntil": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "proGrantRow": "Grant Pro",
+  "proGrantRowSub": "Give Pro to an email address or revoke it",
+  "proGrantTitle": "Grant Pro",
+  "proGrantIntro": "Give Pro to an email address. If there is no account yet, it takes effect when the account is created or first signs in. A store subscription is not changed: the higher of the two applies.",
+  "proGrantEmail": "Email",
+  "proGrantTier": "Plan",
+  "proGrantDuration": "Duration",
+  "proGrantNote": "Note (optional)",
+  "proGrantDays": "{count} days",
+  "@proGrantDays": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "proGrantUntilRevoked": "Until revoked",
+  "proGrantExtend": "Extend the existing grant (do not replace)",
+  "proGrantSubmit": "Grant Pro",
+  "proGrantConfirmTitle": "Grant Pro?",
+  "proGrantConfirmBody": "{email} will get “{plan}” Pro. Duration: {duration}.",
+  "@proGrantConfirmBody": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      },
+      "plan": {
+        "type": "String"
+      },
+      "duration": {
+        "type": "String"
+      }
+    }
+  },
+  "proGrantDone": "Pro granted: {email}",
+  "@proGrantDone": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "proGrantReplaced": "Existing grant replaced: {email}",
+  "@proGrantReplaced": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "proGrantExtended": "Grant extended: {email}",
+  "@proGrantExtended": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "proGrantListTitle": "Active and pending ({count})",
+  "@proGrantListTitle": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "proGrantEmpty": "No grants yet.",
+  "proGrantPending": "Waiting for an account: starts at first sign-in",
+  "proGrantUntil": "until {date}",
+  "@proGrantUntil": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "proGrantRevoke": "Revoke",
+  "proGrantRevokeTitle": "Revoke this grant?",
+  "proGrantRevokeBody": "{email} loses Pro immediately. A store subscription (if any) stays.",
+  "@proGrantRevokeBody": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "proGrantRevoked": "Revoked: {email}",
+  "@proGrantRevoked": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "proGrantErrNote": "The note must be at most 200 characters, without control characters.",
+  "proGrantErrPending": "A pending grant cannot be extended: replace it instead.",
+  "proGrantErrDuration": "Choose a duration to extend.",
+  "proGrantErrMany": "The active grant limit is reached. Revoke unused ones first."
 }

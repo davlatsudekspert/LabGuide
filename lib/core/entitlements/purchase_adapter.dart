@@ -60,7 +60,7 @@ class StoreProduct {
   final String id;
   final String title;
 
-  /// Bir davr narxi (do'kon formatlagan, masalan "$3.99").
+  /// Bir davr narxi (do'kon formatlagan, masalan "$2.49").
   final String displayPrice;
 
   /// Obuna davri (do'kon bermasa — katalogdagi davr ishlatiladi).

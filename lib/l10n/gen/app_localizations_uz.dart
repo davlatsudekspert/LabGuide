@@ -10242,4 +10242,145 @@ class AppLocalizationsUz extends AppLocalizations {
   @override
   String get proNothingGated =>
       'Hozircha pullik deb belgilangan imkoniyat yo‘q: hamma narsa ochiq.';
+
+  @override
+  String get proPlanStudent => 'Talaba';
+
+  @override
+  String get proPlanTeacher => 'Ustoz';
+
+  @override
+  String get proPlanSpecialist => 'Mutaxassis';
+
+  @override
+  String get proPayTierStudent => 'Talaba';
+
+  @override
+  String get proPayTierStudentSub =>
+      'Talabalik holati tasdiqlangan hisob uchun';
+
+  @override
+  String get proPayTierSpecialist => 'Mutaxassis';
+
+  @override
+  String get proPayTierSpecialistSub =>
+      'Laborant va shifokor uchun. Ustoz imkoniyatlari ham kiradi.';
+
+  @override
+  String get proPayStatusAdminGrant => 'Pro administrator tomonidan berilgan';
+
+  @override
+  String proPayStatusAdminGrantUntil(String date) {
+    return 'Pro administrator tomonidan berilgan · $date gacha';
+  }
+
+  @override
+  String get proGrantRow => 'Pro berish';
+
+  @override
+  String get proGrantRowSub =>
+      'Email manziliga Pro huquqini berish yoki bekor qilish';
+
+  @override
+  String get proGrantTitle => 'Pro berish';
+
+  @override
+  String get proGrantIntro =>
+      'Email manziliga Pro huquqini bering. Hisob hali bo‘lmasa, hisob ochilganda yoki birinchi kirishda amalga oshadi. Do‘kon obunasi o‘zgarmaydi: ikkalasidan yuqorisi amal qiladi.';
+
+  @override
+  String get proGrantEmail => 'Email';
+
+  @override
+  String get proGrantTier => 'Daraja';
+
+  @override
+  String get proGrantDuration => 'Muddat';
+
+  @override
+  String get proGrantNote => 'Izoh (ixtiyoriy)';
+
+  @override
+  String proGrantDays(int count) {
+    return '$count kun';
+  }
+
+  @override
+  String get proGrantUntilRevoked => 'Bekor qilinguncha';
+
+  @override
+  String get proGrantExtend => 'Mavjud grantni uzaytirish (almashtirmasdan)';
+
+  @override
+  String get proGrantSubmit => 'Pro berish';
+
+  @override
+  String get proGrantConfirmTitle => 'Pro berilsinmi?';
+
+  @override
+  String proGrantConfirmBody(String email, String plan, String duration) {
+    return '$email manziliga «$plan» Pro beriladi. Muddat: $duration.';
+  }
+
+  @override
+  String proGrantDone(String email) {
+    return 'Pro berildi: $email';
+  }
+
+  @override
+  String proGrantReplaced(String email) {
+    return 'Mavjud grant almashtirildi: $email';
+  }
+
+  @override
+  String proGrantExtended(String email) {
+    return 'Grant uzaytirildi: $email';
+  }
+
+  @override
+  String proGrantListTitle(int count) {
+    return 'Faol va kutilayotgan ($count)';
+  }
+
+  @override
+  String get proGrantEmpty => 'Hozircha grant yo‘q.';
+
+  @override
+  String get proGrantPending => 'Hisob kutilmoqda: kirgach boshlanadi';
+
+  @override
+  String proGrantUntil(String date) {
+    return '$date gacha';
+  }
+
+  @override
+  String get proGrantRevoke => 'Qaytarib olish';
+
+  @override
+  String get proGrantRevokeTitle => 'Grant qaytarib olinsinmi?';
+
+  @override
+  String proGrantRevokeBody(String email) {
+    return '$email Pro huquqini darhol yo‘qotadi. Do‘kon obunasi (bo‘lsa) saqlanadi.';
+  }
+
+  @override
+  String proGrantRevoked(String email) {
+    return 'Qaytarib olindi: $email';
+  }
+
+  @override
+  String get proGrantErrNote =>
+      'Izoh 200 belgidan oshmasin va maxsus belgilarsiz bo‘lsin.';
+
+  @override
+  String get proGrantErrPending =>
+      'Kutilayotgan grantni uzaytirib bo‘lmaydi: uni almashtiring.';
+
+  @override
+  String get proGrantErrDuration => 'Uzaytirish uchun muddat tanlang.';
+
+  @override
+  String get proGrantErrMany =>
+      'Faol grantlar chegarasiga yetildi. Avval keraksizini bekor qiling.';
 }

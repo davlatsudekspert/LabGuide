@@ -10455,4 +10455,144 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get proNothingGated =>
       'Пока ни одна функция не отмечена как платная: всё открыто.';
+
+  @override
+  String get proPlanStudent => 'Студент';
+
+  @override
+  String get proPlanTeacher => 'Преподаватель';
+
+  @override
+  String get proPlanSpecialist => 'Специалист';
+
+  @override
+  String get proPayTierStudent => 'Студент';
+
+  @override
+  String get proPayTierStudentSub =>
+      'Для аккаунта с подтверждённым статусом студента';
+
+  @override
+  String get proPayTierSpecialist => 'Специалист';
+
+  @override
+  String get proPayTierSpecialistSub =>
+      'Для лаборанта и врача. Возможности преподавателя тоже входят.';
+
+  @override
+  String get proPayStatusAdminGrant => 'Pro предоставлен администратором';
+
+  @override
+  String proPayStatusAdminGrantUntil(String date) {
+    return 'Pro предоставлен администратором · до $date';
+  }
+
+  @override
+  String get proGrantRow => 'Выдать Pro';
+
+  @override
+  String get proGrantRowSub => 'Выдать Pro по email или отозвать';
+
+  @override
+  String get proGrantTitle => 'Выдать Pro';
+
+  @override
+  String get proGrantIntro =>
+      'Выдайте Pro на адрес email. Если аккаунта ещё нет, право начнёт действовать при создании аккаунта или первом входе. Подписка из магазина не меняется: действует более высокое из двух.';
+
+  @override
+  String get proGrantEmail => 'Email';
+
+  @override
+  String get proGrantTier => 'Уровень';
+
+  @override
+  String get proGrantDuration => 'Срок';
+
+  @override
+  String get proGrantNote => 'Заметка (необязательно)';
+
+  @override
+  String proGrantDays(int count) {
+    return '$count дн.';
+  }
+
+  @override
+  String get proGrantUntilRevoked => 'До отзыва';
+
+  @override
+  String get proGrantExtend => 'Продлить существующую выдачу (не заменять)';
+
+  @override
+  String get proGrantSubmit => 'Выдать Pro';
+
+  @override
+  String get proGrantConfirmTitle => 'Выдать Pro?';
+
+  @override
+  String proGrantConfirmBody(String email, String plan, String duration) {
+    return 'Адрес $email получит Pro «$plan». Срок: $duration.';
+  }
+
+  @override
+  String proGrantDone(String email) {
+    return 'Pro выдан: $email';
+  }
+
+  @override
+  String proGrantReplaced(String email) {
+    return 'Существующая выдача заменена: $email';
+  }
+
+  @override
+  String proGrantExtended(String email) {
+    return 'Выдача продлена: $email';
+  }
+
+  @override
+  String proGrantListTitle(int count) {
+    return 'Активные и ожидающие ($count)';
+  }
+
+  @override
+  String get proGrantEmpty => 'Пока нет выданных прав.';
+
+  @override
+  String get proGrantPending => 'Ждём аккаунт: начнётся после входа';
+
+  @override
+  String proGrantUntil(String date) {
+    return 'до $date';
+  }
+
+  @override
+  String get proGrantRevoke => 'Отозвать';
+
+  @override
+  String get proGrantRevokeTitle => 'Отозвать выдачу?';
+
+  @override
+  String proGrantRevokeBody(String email) {
+    return '$email сразу потеряет Pro. Подписка из магазина (если есть) сохранится.';
+  }
+
+  @override
+  String proGrantRevoked(String email) {
+    return 'Отозвано: $email';
+  }
+
+  @override
+  String get proGrantErrNote =>
+      'Заметка — не более 200 символов, без служебных знаков.';
+
+  @override
+  String get proGrantErrPending =>
+      'Ожидающую выдачу нельзя продлить: замените её.';
+
+  @override
+  String get proGrantErrDuration => 'Для продления выберите срок.';
+
+  @override
+  String get proGrantErrMany =>
+      'Достигнут лимит активных выдач. Сначала отзовите ненужные.';
 }

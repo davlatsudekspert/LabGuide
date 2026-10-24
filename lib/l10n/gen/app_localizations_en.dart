@@ -10403,4 +10403,145 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get proNothingGated =>
       'No feature is marked as paid yet: everything is open.';
+
+  @override
+  String get proPlanStudent => 'Student';
+
+  @override
+  String get proPlanTeacher => 'Teacher';
+
+  @override
+  String get proPlanSpecialist => 'Specialist';
+
+  @override
+  String get proPayTierStudent => 'Student';
+
+  @override
+  String get proPayTierStudentSub =>
+      'For accounts with verified student status';
+
+  @override
+  String get proPayTierSpecialist => 'Specialist';
+
+  @override
+  String get proPayTierSpecialistSub =>
+      'For lab specialists and doctors. Teacher features are included too.';
+
+  @override
+  String get proPayStatusAdminGrant => 'Pro granted by an administrator';
+
+  @override
+  String proPayStatusAdminGrantUntil(String date) {
+    return 'Pro granted by an administrator · until $date';
+  }
+
+  @override
+  String get proGrantRow => 'Grant Pro';
+
+  @override
+  String get proGrantRowSub => 'Give Pro to an email address or revoke it';
+
+  @override
+  String get proGrantTitle => 'Grant Pro';
+
+  @override
+  String get proGrantIntro =>
+      'Give Pro to an email address. If there is no account yet, it takes effect when the account is created or first signs in. A store subscription is not changed: the higher of the two applies.';
+
+  @override
+  String get proGrantEmail => 'Email';
+
+  @override
+  String get proGrantTier => 'Plan';
+
+  @override
+  String get proGrantDuration => 'Duration';
+
+  @override
+  String get proGrantNote => 'Note (optional)';
+
+  @override
+  String proGrantDays(int count) {
+    return '$count days';
+  }
+
+  @override
+  String get proGrantUntilRevoked => 'Until revoked';
+
+  @override
+  String get proGrantExtend => 'Extend the existing grant (do not replace)';
+
+  @override
+  String get proGrantSubmit => 'Grant Pro';
+
+  @override
+  String get proGrantConfirmTitle => 'Grant Pro?';
+
+  @override
+  String proGrantConfirmBody(String email, String plan, String duration) {
+    return '$email will get “$plan” Pro. Duration: $duration.';
+  }
+
+  @override
+  String proGrantDone(String email) {
+    return 'Pro granted: $email';
+  }
+
+  @override
+  String proGrantReplaced(String email) {
+    return 'Existing grant replaced: $email';
+  }
+
+  @override
+  String proGrantExtended(String email) {
+    return 'Grant extended: $email';
+  }
+
+  @override
+  String proGrantListTitle(int count) {
+    return 'Active and pending ($count)';
+  }
+
+  @override
+  String get proGrantEmpty => 'No grants yet.';
+
+  @override
+  String get proGrantPending =>
+      'Waiting for an account: starts at first sign-in';
+
+  @override
+  String proGrantUntil(String date) {
+    return 'until $date';
+  }
+
+  @override
+  String get proGrantRevoke => 'Revoke';
+
+  @override
+  String get proGrantRevokeTitle => 'Revoke this grant?';
+
+  @override
+  String proGrantRevokeBody(String email) {
+    return '$email loses Pro immediately. A store subscription (if any) stays.';
+  }
+
+  @override
+  String proGrantRevoked(String email) {
+    return 'Revoked: $email';
+  }
+
+  @override
+  String get proGrantErrNote =>
+      'The note must be at most 200 characters, without control characters.';
+
+  @override
+  String get proGrantErrPending =>
+      'A pending grant cannot be extended: replace it instead.';
+
+  @override
+  String get proGrantErrDuration => 'Choose a duration to extend.';
+
+  @override
+  String get proGrantErrMany =>
+      'The active grant limit is reached. Revoke unused ones first.';
 }

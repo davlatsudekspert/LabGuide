@@ -6,6 +6,7 @@ import '../core/backend/access_controller.dart';
 import '../core/backend/admin_console.dart';
 import '../core/backend/admin_team.dart';
 import '../core/backend/lab_backend.dart';
+import '../core/backend/pro_grants.dart';
 import '../core/build_flags.dart';
 import '../core/entitlements/entitlement_service.dart';
 import '../core/storage/kv_store.dart';
@@ -160,6 +161,14 @@ class AppServices {
   /// (hozircha faqat Cloudflare). Aks holda bo'lim ko'rinmaydi.
   AdminTeamBackend? get adminTeam =>
       backend is AdminTeamBackend ? backend as AdminTeamBackend : null;
+
+  /// Admin tomonidan Pro berish (D-73): faqat Pro bayrog'i yoqilgan buildda
+  /// VA server bu imkoniyatga ega bo'lsa. Bayroq o'chiq — doim `null`
+  /// (bo'lim umuman ko'rinmaydi, admin panel o'zgarmaydi).
+  ProGrantBackend? get proGrants =>
+      BuildFlags.proEnabled && backend is ProGrantBackend
+      ? backend as ProGrantBackend
+      : null;
 
   /// Egasi admin paneli (foydalanuvchilar, shikoyatlar) — faqat Cloudflare.
   AdminConsoleBackend? get adminConsole =>
