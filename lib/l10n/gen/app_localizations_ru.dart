@@ -10844,6 +10844,11 @@ class AppLocalizationsRu extends AppLocalizations {
   String get labDirSectionSub => 'Платформа и тест — в отдельных карточках';
 
   @override
+  String labDirRowTitle(String name) {
+    return '$name — справочные карточки';
+  }
+
+  @override
   String get labDirTb => 'Диагностика туберкулёза (ТБ)';
 
   @override

@@ -10793,6 +10793,11 @@ class AppLocalizationsEn extends AppLocalizations {
   String get labDirSectionSub => 'Platform and test on separate cards';
 
   @override
+  String labDirRowTitle(String name) {
+    return '$name — reference cards';
+  }
+
+  @override
   String get labDirTb => 'Tuberculosis (TB) diagnostics';
 
   @override

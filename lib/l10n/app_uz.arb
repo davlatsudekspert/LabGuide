@@ -3065,6 +3065,8 @@
   "calSafeHistoryNote": "Yozuv o‘chirilsa ham tarix qoladi. Uni faqat «Lokal ma’lumotlarni o‘chirish» tozalaydi.",
   "labDirSection": "Laboratoriya yo‘nalishlari (ma’lumotnoma)",
   "labDirSectionSub": "Platforma va test alohida kartalarda",
+  "labDirRowTitle": "{name} — ma’lumotnoma kartalari",
+  "@labDirRowTitle": {"placeholders": {"name": {"type": "String"}}},
   "labDirTb": "Sil (TB) diagnostikasi",
   "labDirHiv": "OIV laboratoriya diagnostikasi",
   "labDirTag": "Ma’lumotnoma",
