@@ -18,6 +18,7 @@ import {
 import {
   ApiError,
   badRequest,
+  billingEnabled,
   forbidden,
   json,
   noContent,
@@ -26,6 +27,7 @@ import {
 } from './http';
 import { communityDeleteStatements, userHash } from './community';
 import { hit } from './ratelimit';
+import { applyPendingGrants } from './progrants';
 import { revokeAppleOnDelete } from './social';
 
 export const OTP_TTL_SEC = 600;
@@ -180,6 +182,8 @@ export async function findOrCreateUser(
       .first<{ id: string }>();
     if (!user) throw new Error('user insert failed');
   }
+  // Admin grant (D-73): kutilayotgan Pro hisob ochilganda / birinchi kirishda qo'llanadi.
+  if (billingEnabled(ctx.env)) await applyPendingGrants(ctx, eh, user.id);
   return { id: user.id, created };
 }
 
@@ -496,6 +500,9 @@ export async function deleteUserData(ctx: Ctx, u: string, adminActor?: string): 
     `UPDATE partner_requests SET user_id = NULL WHERE user_id = ?1`,
     `UPDATE content_reviews SET reviewer_id = NULL WHERE reviewer_id = ?1`,
     `DELETE FROM entitlements WHERE user_id = ?1`,
+    ...(billingEnabled(ctx.env)
+      ? [`DELETE FROM pro_grants WHERE email_hmac = (SELECT email_hash FROM users WHERE id = ?1)`]
+      : []),
     `DELETE FROM totp_factors WHERE user_id = ?1`,
     `DELETE FROM reviewers WHERE user_id = ?1`,
     `DELETE FROM teacher_accounts WHERE user_id = ?1`,

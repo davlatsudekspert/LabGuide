@@ -4,6 +4,7 @@ import * as admins from './admins';
 import * as adminConsole from './adminconsole';
 import * as auth from './auth';
 import * as billing from './billing';
+import * as proGrants from './progrants';
 import * as community from './community';
 import * as complaints from './complaints';
 import type { Ctx, Deps } from './context';
@@ -13,6 +14,7 @@ import * as social from './social';
 import * as support from './support';
 import {
   ApiError,
+  billingEnabled,
   corsHeaders,
   type Env,
   errorResponse,
@@ -156,9 +158,13 @@ const billingRoutes: Route[] = [
   r('POST', '/v1/billing/verify', billing.verify),
   r('POST', '/v1/billing/apple/notifications', billing.appleNotification),
   r('POST', '/v1/billing/google/rtdn', billing.googleNotification),
+  // Admin grant (D-73): `/v1/admin(/.*)?` (plannedAdmin) dan OLDIN turadi.
+  r('GET', '/v1/admin/pro-grants', proGrants.listGrants),
+  r('POST', '/v1/admin/pro-grants', proGrants.createGrant),
+  r('DELETE', '/v1/admin/pro-grants/:id', proGrants.revokeGrant),
 ];
 
-export const billingEnabled = (env: Env) => env.LG_BILLING_ENABLED === 'true';
+export { billingEnabled };
 
 const MIN_SECRET = 32;
 
@@ -174,6 +180,10 @@ export function createApp(deps: Deps) {
         const url = new URL(req.url);
         let match: { route: Route; params: string[] } | null = null;
         let pathKnown = false;
+        // Bayroq o'chiq: admin grant yo'llari umuman yo'q (plannedAdmin 403/501 bermaydi).
+        if (!billingEnabled(env) && /^\/v1\/admin\/pro-grants(\/|$)/.test(url.pathname)) {
+          throw new ApiError(404, 'not_found');
+        }
         for (const route of billingEnabled(env) ? [...billingRoutes, ...routes] : routes) {
           const m = route.pattern.exec(url.pathname);
           if (!m) continue;

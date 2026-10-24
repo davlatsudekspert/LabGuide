@@ -162,3 +162,9 @@ export function withCors(res: Response, cors: Record<string, string> | null): Re
   for (const [k, v] of Object.entries(cors)) out.headers.set(k, v);
   return out;
 }
+
+/**
+ * Pro (obuna va admin grant) asosiy o'chirgich: faqat `LG_BILLING_ENABLED=true`
+ * bo'lsa `/v1/billing/*`, `/v1/entitlements` va `/v1/admin/pro-grants*` mavjud.
+ */
+export const billingEnabled = (env: Env) => env.LG_BILLING_ENABLED === 'true';

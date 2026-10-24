@@ -21,17 +21,32 @@ import { hit } from './ratelimit';
 export type Platform = 'app_store' | 'play_store';
 export type Status = 'active' | 'grace_period' | 'billing_retry' | 'paused' | 'expired' | 'revoked';
 
+/** Pullik daraja (D-73): Talaba, Ustoz, Mutaxassis. Tartib = narx tartibi. */
+export type Plan = 'student' | 'teacher' | 'specialist';
+export const PLAN_RANK: Record<Plan, number> = { student: 1, teacher: 2, specialist: 3 };
+export const PLANS = Object.keys(PLAN_RANK) as Plan[];
+
 /**
  * Do'kon mahsulotlari — ilovadagi `BillingCatalog` bilan bir xil
- * (lib/core/entitlements/billing_catalog.dart). `teacher` — Ustoz Pro.
+ * (lib/core/entitlements/billing_catalog.dart). Do'konda hali HECH QANDAY
+ * mahsulot yaratilmagan (D-73); eski (D-46) id'lar mos yangi darajaga
+ * ALIAS sifatida qoldi: pro → specialist, pro.student → student,
+ * teacherpro → teacher.
  */
-export const BILLING_PRODUCTS: Record<string, { tier: 'pro' | 'teacher'; student: boolean }> = {
-  'uz.labguide.pro.monthly': { tier: 'pro', student: false },
-  'uz.labguide.pro.yearly': { tier: 'pro', student: false },
-  'uz.labguide.pro.student.monthly': { tier: 'pro', student: true },
-  'uz.labguide.pro.student.yearly': { tier: 'pro', student: true },
-  'uz.labguide.teacherpro.monthly': { tier: 'teacher', student: false },
-  'uz.labguide.teacherpro.yearly': { tier: 'teacher', student: false },
+export const BILLING_PRODUCTS: Record<string, { plan: Plan }> = {
+  'uz.labguide.student.monthly': { plan: 'student' },
+  'uz.labguide.student.yearly': { plan: 'student' },
+  'uz.labguide.teacher.monthly': { plan: 'teacher' },
+  'uz.labguide.teacher.yearly': { plan: 'teacher' },
+  'uz.labguide.specialist.monthly': { plan: 'specialist' },
+  'uz.labguide.specialist.yearly': { plan: 'specialist' },
+  // Eski id'lar (D-46…D-72) — alias.
+  'uz.labguide.pro.monthly': { plan: 'specialist' },
+  'uz.labguide.pro.yearly': { plan: 'specialist' },
+  'uz.labguide.pro.student.monthly': { plan: 'student' },
+  'uz.labguide.pro.student.yearly': { plan: 'student' },
+  'uz.labguide.teacherpro.monthly': { plan: 'teacher' },
+  'uz.labguide.teacherpro.yearly': { plan: 'teacher' },
 };
 
 const DEFAULT_BUNDLE = 'uz.labguide.app';
@@ -457,6 +472,40 @@ async function applyUpdate(ctx: Ctx, v: Verified): Promise<boolean> {
   return (r.meta.changes ?? 0) > 0;
 }
 
+/** Huquq manbai: do'kon obunasi yoki admin grant (D-73). */
+export type AccessSource = 'store' | 'admin_grant';
+
+export interface AccessItem {
+  source: AccessSource;
+  plan: Plan;
+  /** Huquq beradigan holatdami (do'kon: active/grace_period; grant: bekor qilinmagan). */
+  granting: boolean;
+  expiresAt: number | null;
+}
+
+/**
+ * Huquqni hal qilish: faqat HOZIR amal qilayotganlar orasidan eng yuqori
+ * daraja, tenglikda eng uzoq muddat (`null` = muddatsiz eng uzoq), to'liq
+ * tenglikda DO'KON. Admin grant do'kon obunasini hech qachon bosib o'tmaydi
+ * va uning o'rnini egallamaydi (obuna alohida qator bo'lib qoladi).
+ */
+export function resolveAccess(items: AccessItem[], now: number): { source: AccessSource; plan: Plan; expiresAt: number | null } | null {
+  const live = items.filter((i) => i.granting && (i.expiresAt == null || i.expiresAt > now));
+  const end = (i: AccessItem) => i.expiresAt ?? Number.POSITIVE_INFINITY;
+  let best: AccessItem | null = null;
+  for (const i of live) {
+    if (
+      !best ||
+      PLAN_RANK[i.plan] > PLAN_RANK[best.plan] ||
+      (PLAN_RANK[i.plan] === PLAN_RANK[best.plan] &&
+        (end(i) > end(best) || (end(i) === end(best) && i.source === 'store' && best.source !== 'store')))
+    ) {
+      best = i;
+    }
+  }
+  return best && { source: best.source, plan: best.plan, expiresAt: best.expiresAt };
+}
+
 async function snapshot(ctx: Ctx, userId: string, ownedByOther = false): Promise<Response> {
   const rows = await ctx.db
     .prepare(
@@ -474,18 +523,60 @@ async function snapshot(ctx: Ctx, userId: string, ownedByOther = false): Promise
       environment: string;
       updated_at: number;
     }>();
+  // Admin grant (D-73): faqat qo'llangan (hisob bor), bekor qilinmagan qatorlar.
+  const grants = await ctx.db
+    .prepare(
+      `SELECT g.tier, g.starts_at, g.expires_at, g.updated_at
+       FROM pro_grants g JOIN users u ON u.email_hash = g.email_hmac
+       WHERE u.id = ?1 AND g.revoked_at IS NULL AND g.starts_at IS NOT NULL
+       ORDER BY COALESCE(g.expires_at, 9007199254740991) DESC`,
+    )
+    .bind(userId)
+    .all<{ tier: Plan; starts_at: number; expires_at: number | null; updated_at: number }>();
+
+  const access: AccessItem[] = [
+    ...rows.results.map((r) => ({
+      source: 'store' as const,
+      plan: BILLING_PRODUCTS[r.product_id]?.plan ?? ('specialist' as Plan),
+      granting: r.status === 'active' || r.status === 'grace_period',
+      expiresAt: r.expires_at,
+    })),
+    ...grants.results.map((g) => ({
+      source: 'admin_grant' as const,
+      plan: g.tier,
+      granting: true,
+      expiresAt: g.expires_at,
+    })),
+  ];
+  const resolved = resolveAccess(access, ctx.now);
   return json({
     server_time: iso(ctx.now),
-    items: rows.results.map((r) => ({
-      product_id: r.product_id,
-      platform: r.platform,
-      status: r.status,
-      started_at: iso(r.started_at),
-      expires_at: iso(r.expires_at),
-      ownership: r.ownership,
-      environment: r.environment,
-      updated_at: iso(r.updated_at),
-    })),
+    items: [
+      ...rows.results.map((r) => ({
+        product_id: r.product_id,
+        platform: r.platform,
+        source: 'store',
+        status: r.status,
+        started_at: iso(r.started_at),
+        expires_at: iso(r.expires_at),
+        ownership: r.ownership,
+        environment: r.environment,
+        updated_at: iso(r.updated_at),
+      })),
+      ...grants.results.map((g) => ({
+        product_id: `admin_grant.${g.tier}`,
+        platform: 'admin_grant',
+        source: 'admin_grant',
+        plan: g.tier,
+        status: g.expires_at != null && g.expires_at <= ctx.now ? 'expired' : 'active',
+        started_at: iso(g.starts_at),
+        expires_at: iso(g.expires_at),
+        ownership: 'granted',
+        environment: 'production',
+        updated_at: iso(g.updated_at),
+      })),
+    ],
+    resolved: resolved && { source: resolved.source, plan: resolved.plan, expires_at: iso(resolved.expiresAt) },
     owned_by_other: ownedByOther,
   });
 }

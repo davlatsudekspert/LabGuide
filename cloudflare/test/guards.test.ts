@@ -118,6 +118,27 @@ describe('qorovul: billing inert (D-71, pro-next)', () => {
     }
   });
 
+  it('LG_BILLING_ENABLED bo‘lmasa admin grant yo‘llari 404 (D-73), hatto admin tokeni bilan ham', async () => {
+    const owner = uniqueEmail('guard-owner');
+    const s = makeServer({ LG_ADMIN_EMAILS: owner });
+    const boss = await s.signInAdmin(owner);
+    const id = '00000000-0000-4000-8000-000000000000';
+    for (const token of [undefined, boss.token]) {
+      expect((await s.call('GET', '/v1/admin/pro-grants', { token })).status).toBe(404);
+      expect((await s.call('POST', '/v1/admin/pro-grants', { token, body: { email: 'a@b.co', tier: 'student' } })).status).toBe(404);
+      expect((await s.call('DELETE', `/v1/admin/pro-grants/${id}`, { token })).status).toBe(404);
+    }
+    const flagOff = makeServer({ LG_BILLING_ENABLED: 'false' } as never);
+    expect((await flagOff.call('GET', '/v1/admin/pro-grants', {})).status).toBe(404);
+  });
+
+  it('LG_BILLING_ENABLED bo‘lmasa /v1/me da Pro / grant izi yo‘q', async () => {
+    const s = makeServer();
+    const u = await s.signIn(uniqueEmail('guard-me'));
+    const me = await s.call('GET', '/v1/me', { token: u.token });
+    expect(me.text).not.toMatch(/pro_grant|admin_grant|entitlement/);
+  });
+
   it('LG_BILLING_ENABLED=true bo‘lsa yo‘l bor (kalitlar yo‘q — 503 yoki 401)', async () => {
     const s = makeServer({ LG_BILLING_ENABLED: 'true' } as never);
     const r = await s.call('GET', '/v1/billing/status', {});
