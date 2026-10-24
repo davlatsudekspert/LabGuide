@@ -65,6 +65,29 @@ void main() {
     expect(find.byType(GroupScreen), findsOneWidget);
   });
 
+  testWidgets('3c: ustoz guruhni o‘chiradi — tasdiq, ro‘yxatdan yo‘qoladi', (
+    tester,
+  ) async {
+    installDiffFakes();
+    final b = FakeLabBackend();
+    final s = await makeServices(tester, backend: b, role: AppRole.teacher);
+    await pumpApp(tester, s, size: _tall);
+    await _signIn(tester, s, 'teacher@example.com');
+    await b.registerTeacher();
+    final g = await b.createGroup('Zzzz');
+    await goTo(tester, '/learn/classes/g/${g.id}');
+    await tester.ensureVisible(find.byKey(const ValueKey('group-delete')));
+    await tester.tap(find.byKey(const ValueKey('group-delete')));
+    await tester.pumpAndSettle();
+    expect(find.text(uz.classesDeleteGroupTitle('Zzzz')), findsOneWidget);
+    await tester.tap(find.text(uz.classesDeleteGroupAction));
+    await tester.pumpAndSettle();
+    expect(tester.takeException(), isNull);
+    expect(find.byType(GroupScreen), findsNothing);
+    expect(await b.myGroups(), isEmpty);
+    expect(find.text('Zzzz'), findsNothing);
+  });
+
   testWidgets('3b: guruhsiz ustoz «Guruh yaratish» — assertion yo‘q', (
     tester,
   ) async {

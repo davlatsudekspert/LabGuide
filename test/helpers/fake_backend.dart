@@ -760,6 +760,23 @@ class FakeLabBackend implements LabBackend {
   }
 
   @override
+  Future<void> deleteGroup(String groupId) async {
+    _require();
+    if (!_isTeacher(groupId)) {
+      throw const BackendException(BackendFailure.forbidden);
+    }
+    final ids = {
+      for (final a in _assignments)
+        if (a.info.groupId == groupId) a.info.id,
+    };
+    _submissions.removeWhere((s) => ids.contains(s.assignmentId));
+    _attempts.removeWhere((k, _) => ids.contains(k.$1));
+    _assignments.removeWhere((a) => a.info.groupId == groupId);
+    _members.removeWhere((m) => m.groupId == groupId);
+    _groups.removeWhere((g) => g.id == groupId);
+  }
+
+  @override
   Future<void> removeMember(String groupId, String userId) async {
     _require();
     if (!_isTeacher(groupId)) {

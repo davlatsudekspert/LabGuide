@@ -9856,6 +9856,30 @@ abstract class AppLocalizations {
   /// **'Leave'**
   String get classesLeaveAction;
 
+  /// No description provided for @classesDeleteGroup.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete class'**
+  String get classesDeleteGroup;
+
+  /// No description provided for @classesDeleteGroupTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete the class “{name}”?'**
+  String classesDeleteGroupTitle(String name);
+
+  /// No description provided for @classesDeleteGroupBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The class, its assignments and student results will be deleted permanently.'**
+  String get classesDeleteGroupBody;
+
+  /// No description provided for @classesDeleteGroupAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get classesDeleteGroupAction;
+
   /// No description provided for @classesInviteTitle.
   ///
   /// In en, this message translates to:

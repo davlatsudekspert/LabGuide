@@ -5764,6 +5764,21 @@ class AppLocalizationsRu extends AppLocalizations {
   String get classesLeaveAction => 'Выйти';
 
   @override
+  String get classesDeleteGroup => 'Удалить группу';
+
+  @override
+  String classesDeleteGroupTitle(String name) {
+    return 'Удалить группу «$name»?';
+  }
+
+  @override
+  String get classesDeleteGroupBody =>
+      'Группа, её задания и результаты студентов будут удалены безвозвратно.';
+
+  @override
+  String get classesDeleteGroupAction => 'Удалить';
+
+  @override
   String get classesInviteTitle => 'Код приглашения';
 
   @override

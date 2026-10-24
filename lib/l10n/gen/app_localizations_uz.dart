@@ -5648,6 +5648,21 @@ class AppLocalizationsUz extends AppLocalizations {
   String get classesLeaveAction => 'Chiqish';
 
   @override
+  String get classesDeleteGroup => 'Guruhni o‘chirish';
+
+  @override
+  String classesDeleteGroupTitle(String name) {
+    return '«$name» guruhi o‘chirilsinmi?';
+  }
+
+  @override
+  String get classesDeleteGroupBody =>
+      'Guruh, undagi topshiriqlar va talabalar natijalari butunlay o‘chadi. Qaytarib bo‘lmaydi.';
+
+  @override
+  String get classesDeleteGroupAction => 'O‘chirish';
+
+  @override
   String get classesInviteTitle => 'Taklif kodi';
 
   @override

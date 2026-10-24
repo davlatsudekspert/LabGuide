@@ -642,7 +642,8 @@ class CloudflareLabBackend
     codes: const {'member_not_found': null},
   );
 
-  /// Ustoz guruhni butunlay o'chiradi (ilova hozircha chaqirmaydi).
+  /// Ustoz guruhni butunlay o'chiradi (topshiriqlar va natijalar bilan).
+  @override
   Future<void> deleteGroup(String groupId) => _call(
     'DELETE',
     '/v1/groups/${_seg(groupId)}',

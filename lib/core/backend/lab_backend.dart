@@ -126,6 +126,9 @@ abstract interface class LabBackend implements OtpAuthAdapter {
   Future<void> setMyAlias(String groupId, String? alias);
   Future<void> leaveGroup(String groupId);
 
+  /// Ustoz guruhni butunlay o'chiradi (topshiriqlar va natijalar bilan).
+  Future<void> deleteGroup(String groupId);
+
   /// Guruh a'zolari (faqat a'zo ko'radi).
   Future<List<GroupMember>> groupMembers(String groupId);
 
@@ -353,6 +356,8 @@ class UnconfiguredBackend implements LabBackend {
   Future<void> setMyAlias(String groupId, String? alias) async => _no();
   @override
   Future<void> leaveGroup(String groupId) async => _no();
+  @override
+  Future<void> deleteGroup(String groupId) async => _no();
   @override
   Future<List<GroupMember>> groupMembers(String groupId) async => _no();
   @override

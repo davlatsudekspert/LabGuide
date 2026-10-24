@@ -5734,6 +5734,21 @@ class AppLocalizationsEn extends AppLocalizations {
   String get classesLeaveAction => 'Leave';
 
   @override
+  String get classesDeleteGroup => 'Delete class';
+
+  @override
+  String classesDeleteGroupTitle(String name) {
+    return 'Delete the class “$name”?';
+  }
+
+  @override
+  String get classesDeleteGroupBody =>
+      'The class, its assignments and student results will be deleted permanently.';
+
+  @override
+  String get classesDeleteGroupAction => 'Delete';
+
+  @override
   String get classesInviteTitle => 'Invite code';
 
   @override

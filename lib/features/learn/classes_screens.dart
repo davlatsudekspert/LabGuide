@@ -1268,8 +1268,34 @@ class _GroupScreenState extends State<GroupScreen> with _AccountReload {
           LgSectionTitle(l.classesInviteMore),
           _InviteCard(group: d.group),
         ],
+        const SizedBox(height: 24),
+        LgButton.link(
+          key: const ValueKey('group-delete'),
+          label: l.classesDeleteGroup,
+          icon: Icons.delete_outline_rounded,
+          onPressed: () => _deleteGroup(d.group),
+        ),
       ],
     );
+  }
+
+  /// Ustoz guruhni o'chiradi: topshiriqlar va natijalar ham o'chadi,
+  /// shuning uchun tasdiq so'raladi.
+  Future<void> _deleteGroup(StudyGroup g) async {
+    final l = AppLocalizations.of(context);
+    final ok = await confirmDialog(
+      context,
+      title: l.classesDeleteGroupTitle(g.name),
+      body: l.classesDeleteGroupBody,
+      action: l.classesDeleteGroupAction,
+    );
+    if (!ok || !mounted) return;
+    try {
+      await context.services.backend.deleteGroup(g.id);
+      if (mounted) context.pop();
+    } on Object catch (e) {
+      if (mounted) showSnack(context, classesErrorText(e, l));
+    }
   }
 
   /// Ustoz o'zi uchun belgi yozadi (masalan, real ism) — faqat shu

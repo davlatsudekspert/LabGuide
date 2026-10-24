@@ -716,6 +716,11 @@ class SupabaseLabBackend implements LabBackend {
   );
 
   @override
+  Future<void> deleteGroup(String groupId) => _guard(
+    () => client.from('study_groups').delete().eq('id', groupId),
+  );
+
+  @override
   Future<List<GroupMember>> groupMembers(String groupId) async {
     final data = await _guard(
       () => client
