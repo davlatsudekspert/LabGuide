@@ -172,7 +172,7 @@ describe('step-up: xavfli amallar', () => {
   it('qayta ishlatish (replay): kod bir martalik; o‘chirish — har tasdiqqa bitta', async () => {
     const { s, owner, boss } = await setup();
     const victims = [uniqueEmail('v1'), uniqueEmail('v2')];
-    const ids = [];
+    const ids: string[] = [];
     for (const e of victims) ids.push((await s.signIn(e)).userId);
     await s.call('POST', '/v1/auth/step-up', { token: boss.token });
     const code = lastCode(s, owner);
@@ -294,5 +294,27 @@ describe('sessiyalarni bekor qilish', () => {
     expect((await s.call('GET', '/v1/me', { token: other.token })).status).toBe(200);
     expect((await s.call('GET', '/v1/me', { token: user.token })).status).toBe(200);
     expect((await auditRows(s, a.userId)).map((l) => l.action)).toContain('sessions_revoked_self');
+  });
+});
+
+describe('hisobni o‘chirgandan keyin qayta kirish (auth oqimlari auditi)', () => {
+  it('o‘chirilgan email bilan qayta kirish — yangi id; sessiya va step-up kodlari ham o‘chgan', async () => {
+    const { s } = await setup();
+    const email = uniqueEmail('again');
+    const first = await s.signIn(email);
+    await s.env.DB.prepare(
+      `INSERT INTO step_up_challenges (token_hash, user_id, code_hash, created_at, expires_at) VALUES ('t', ?1, 'h', 0, ?2)`,
+    )
+      .bind(first.userId, s.clock.now + 600_000)
+      .run();
+    expect((await s.call('DELETE', '/v1/me', { token: first.token })).status).toBe(204);
+    expect((await s.call('GET', '/v1/me', { token: first.token })).status).toBe(401);
+    const left = await s.env.DB.prepare('SELECT COUNT(*) AS n FROM step_up_challenges WHERE user_id = ?1')
+      .bind(first.userId)
+      .first<{ n: number }>();
+    expect(left!.n).toBe(0);
+    const second = await s.signIn(email);
+    expect(second.userId).not.toBe(first.userId);
+    expect((await s.call('GET', '/v1/me', { token: second.token })).data).toMatchObject({ role: 'student', admin: false });
   });
 });
