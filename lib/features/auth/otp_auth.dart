@@ -13,7 +13,9 @@ abstract interface class OtpAuthAdapter {
   /// "hali ulanmagan" holatini ko'rsatadi.
   bool get isAvailable;
 
-  Future<OtpRequestResult> requestCode(String email);
+  /// [language] — ilova tili (`uz` | `ru` | `en`): server kod xatini shu
+  /// tilda yuboradi. Berilmasa server `uz` ni oladi (eski klientlar).
+  Future<OtpRequestResult> requestCode(String email, {String? language});
 
   Future<OtpVerifyResult> verifyCode(String email, String code);
 }
@@ -84,8 +86,10 @@ class UnconfiguredOtpAdapter implements OtpAuthAdapter {
   bool get isAvailable => false;
 
   @override
-  Future<OtpRequestResult> requestCode(String email) async =>
-      const OtpRequestResult(OtpRequestStatus.unavailable);
+  Future<OtpRequestResult> requestCode(
+    String email, {
+    String? language,
+  }) async => const OtpRequestResult(OtpRequestStatus.unavailable);
 
   @override
   Future<OtpVerifyResult> verifyCode(String email, String code) async =>
@@ -125,7 +129,7 @@ class DemoOtpAdapter implements OtpAuthAdapter {
   bool get isAvailable => true;
 
   @override
-  Future<OtpRequestResult> requestCode(String email) async {
+  Future<OtpRequestResult> requestCode(String email, {String? language}) async {
     if (!isValidEmail(email)) {
       return const OtpRequestResult(OtpRequestStatus.invalidEmail);
     }

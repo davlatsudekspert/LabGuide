@@ -17,7 +17,7 @@ const SUBJECT: Record<string, string> = {
 };
 
 const LINES: Record<string, (code: string) => [string, string, string]> = {
-  uz: (c) => [`Kirish kodingiz: ${c}`, 'Kod 10 daqiqa amal qiladi.', "Agar siz so'ramagan bo'lsangiz, e'tibor bermang."],
+  uz: (c) => [`Kirish kodingiz: ${c}`, 'Kod 10 daqiqa amal qiladi.', 'Agar siz so‘ramagan bo‘lsangiz, bu xatga e’tibor bermang.'],
   ru: (c) => [`Ваш код для входа: ${c}`, 'Код действует 10 минут.', 'Если вы не запрашивали код, проигнорируйте это письмо.'],
   en: (c) => [`Your sign-in code: ${c}`, 'The code is valid for 10 minutes.', 'If you did not request it, please ignore this email.'],
 };

@@ -28,7 +28,7 @@ describe('Resend va provayder tanlash', () => {
     await resendSender(env, 'a@b.uz', '654321', 'xx');
     expect(bodyOf(spy).subject).toBe('LabGuide: kirish kodi');
     expect(bodyOf(spy).text).toContain('10 daqiqa');
-    expect(bodyOf(spy).text).toContain("e'tibor bermang");
+    expect(bodyOf(spy).text).toContain('xatga e’tibor bermang');
     await resendSender(env, 'a@b.uz', '654321', 'en');
     expect(bodyOf(spy, 1).subject).toBe('LabGuide: sign-in code');
   });

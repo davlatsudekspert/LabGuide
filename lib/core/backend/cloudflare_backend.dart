@@ -307,7 +307,7 @@ class CloudflareLabBackend
   }
 
   @override
-  Future<OtpRequestResult> requestCode(String email) async {
+  Future<OtpRequestResult> requestCode(String email, {String? language}) async {
     if (!isValidEmail(email)) {
       return const OtpRequestResult(OtpRequestStatus.invalidEmail);
     }
@@ -315,7 +315,11 @@ class CloudflareLabBackend
       final r = await _send(
         'POST',
         '/v1/auth/otp/request',
-        body: {'email': normalizeEmail(email)},
+        // Kod xati ilova tilida (server uz|ru|en ni tekshiradi, aks holda uz).
+        body: {
+          'email': normalizeEmail(email),
+          if (language != null && language.isNotEmpty) 'language': language,
+        },
         auth: false,
       );
       return switch (r.status) {

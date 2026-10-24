@@ -27,6 +27,8 @@ export type AiFn = (model: string, input: Record<string, unknown>) => Promise<un
 export interface Sent {
   to: string;
   code: string;
+  /** Xat tili (`sendCode` ga berilgan). */
+  lang?: string;
 }
 
 let serverSeq = 0;
@@ -39,9 +41,9 @@ export function makeServer(overrides: Partial<Env> = {}) {
   // Har server soati oldingisidan 2 soat keyin boshlanadi: testlar bir-birining
   // kodlari va limitlariga (umumiy D1) ta'sir qilmaydi.
   const clock = { now: Date.UTC(2026, 9, 10, 9, 0, 0) + ++serverSeq * 2 * 3600_000 };
-  const sender: CodeSender = async (_env, to, code) => {
+  const sender: CodeSender = async (_env, to, code, lang) => {
     if (mailMode !== 'sent') return mailMode;
-    outbox.push({ to, code });
+    outbox.push({ to, code, lang });
     return 'sent';
   };
   // Workers AI soxtasi: haqiqiy AI hech qachon chaqirilmaydi.

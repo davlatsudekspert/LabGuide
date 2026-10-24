@@ -151,7 +151,7 @@ class SupabaseLabBackend implements LabBackend {
 
   // ------------------------------------------------------------------ OTP
   @override
-  Future<OtpRequestResult> requestCode(String email) async {
+  Future<OtpRequestResult> requestCode(String email, {String? language}) async {
     if (!isValidEmail(email)) {
       return const OtpRequestResult(OtpRequestStatus.invalidEmail);
     }
@@ -716,9 +716,8 @@ class SupabaseLabBackend implements LabBackend {
   );
 
   @override
-  Future<void> deleteGroup(String groupId) => _guard(
-    () => client.from('study_groups').delete().eq('id', groupId),
-  );
+  Future<void> deleteGroup(String groupId) =>
+      _guard(() => client.from('study_groups').delete().eq('id', groupId));
 
   @override
   Future<List<GroupMember>> groupMembers(String groupId) async {

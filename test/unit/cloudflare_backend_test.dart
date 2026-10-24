@@ -101,6 +101,24 @@ void main() {
       expect(req.headers.containsKey('authorization'), isFalse);
     });
 
+    test(
+      'kod so‘rovi ilova tilini yuboradi (uz/ru/en) — xat shu tilda',
+      () async {
+        api.on('POST', '/v1/auth/otp/request', 200, {
+          'status': 'sent',
+          'retry_after': 60,
+          'valid_for': 600,
+        });
+        for (final lang in ['uz', 'ru', 'en']) {
+          await backend.requestCode('lab@example.com', language: lang);
+          expect(jsonDecode(api.last('/v1/auth/otp/request').body), {
+            'email': 'lab@example.com',
+            'language': lang,
+          });
+        }
+      },
+    );
+
     test("noto'g'ri email tarmoqqa chiqmaydi", () async {
       expect(
         (await backend.requestCode('nope')).status,

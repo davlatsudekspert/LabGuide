@@ -76,8 +76,12 @@ class FakeLabBackend implements LabBackend {
     _lost.add(null);
   }
 
+  /// Oxirgi OTP so'rovidagi til (testlar uchun).
+  String? lastOtpLanguage;
+
   @override
-  Future<OtpRequestResult> requestCode(String email) async {
+  Future<OtpRequestResult> requestCode(String email, {String? language}) async {
+    lastOtpLanguage = language;
     if (!isValidEmail(email)) {
       return const OtpRequestResult(OtpRequestStatus.invalidEmail);
     }

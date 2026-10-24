@@ -59,11 +59,21 @@ async function codeHash(ctx: Ctx, eh: string, code: string): Promise<string> {
 const tag = (h: string) => h.slice(0, 32);
 
 // ------------------------------------------------------------------ OTP
+/**
+ * Kod xati tili: ilova `language` (uz|ru|en) yuboradi. Yo'q yoki noto'g'ri
+ * bo'lsa — `uz` (eski klientlar bilan moslik).
+ */
+export function otpLanguage(raw: unknown): 'uz' | 'ru' | 'en' {
+  if (typeof raw !== 'string') return 'uz';
+  const v = raw.trim().toLowerCase();
+  return LANGS.has(v) ? (v as 'uz' | 'ru' | 'en') : 'uz';
+}
+
 export async function requestCode(ctx: Ctx): Promise<Response> {
   const body = await readJson(ctx.req);
   const email = normalizeEmail(body.email);
   if (!email) throw badRequest('invalid_email');
-  const lang = typeof body.language === 'string' && LANGS.has(body.language) ? body.language : 'uz';
+  const lang = otpLanguage(body.language);
   const eh = await emailHash(ctx, email);
 
   const prev = await ctx.db

@@ -123,7 +123,10 @@ class _EmailScreenState extends State<EmailScreen> {
 
     setState(() => _busy = true);
     final base = GoRouterState.of(context).matchedLocation;
-    final result = await context.services.auth.requestCode(_email.text);
+    final result = await context.services.auth.requestCode(
+      _email.text,
+      language: context.services.settings.language.name,
+    );
     if (!mounted) return;
     setState(() => _busy = false);
     switch (result.status) {
@@ -360,7 +363,10 @@ class _OtpScreenState extends State<OtpScreen> {
     final auth = context.services.auth;
     final email = _email;
     if (email == null) return;
-    final result = await auth.requestCode(email);
+    final result = await auth.requestCode(
+      email,
+      language: context.services.settings.language.name,
+    );
     if (!mounted) return;
     switch (result.status) {
       case OtpRequestStatus.sent:

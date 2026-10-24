@@ -257,8 +257,10 @@ class UnconfiguredBackend implements LabBackend {
   Stream<void> get sessionLost => const Stream.empty();
 
   @override
-  Future<OtpRequestResult> requestCode(String email) async =>
-      const OtpRequestResult(OtpRequestStatus.unavailable);
+  Future<OtpRequestResult> requestCode(
+    String email, {
+    String? language,
+  }) async => const OtpRequestResult(OtpRequestStatus.unavailable);
   @override
   Future<OtpVerifyResult> verifyCode(String email, String code) async =>
       const OtpVerifyResult(OtpVerifyStatus.unavailable);
