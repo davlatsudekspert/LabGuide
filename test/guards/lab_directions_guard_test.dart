@@ -40,12 +40,12 @@ void main() {
         expect(s.type, isNotNull, reason: '${c.id} $id: manba turi yo‘q');
         switch (s.type!) {
           case SourceType.officialAgency:
-            expect(officialHosts.hasMatch(s.url), isTrue, reason: '$id');
+            expect(officialHosts.hasMatch(s.url), isTrue, reason: id);
           case SourceType.journal:
             expect(
               officialHosts.hasMatch(s.url) || journalHosts.hasMatch(s.url),
               isTrue,
-              reason: '$id',
+              reason: id,
             );
           case SourceType.manufacturerIfu:
           case SourceType.manufacturerMarketing:
