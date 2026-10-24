@@ -52487,9 +52487,9 @@
     "slide": "Namuna olish va ekssudat mikroskopiyasi",
     "source_label": "Manba: Kurbonova, 2023, «Klinik laboratoriya tashxisi» (3-bob, 51–54-b. (3.2-bo‘lim))",
     "fact": {
-     "uz": "EDTA li probirka (suyuqlik ivib qolmasligi uchun)",
-     "ru": "пробирку с ЭДТА (чтобы пункционная жидкость не свернулась)",
-     "en": "an EDTA tube (so the puncture fluid does not clot)"
+     "uz": "EDTA li probirka (suyuqlik ivib qolmasligi uchun",
+     "ru": "пробирку с ЭДТА (чтобы пункционная жидкость не свернулась",
+     "en": "an EDTA tube (so the puncture fluid does not clot"
     },
     "also_decks": []
    },
