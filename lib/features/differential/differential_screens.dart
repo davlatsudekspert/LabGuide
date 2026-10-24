@@ -7,11 +7,13 @@ import 'package:material_ui/material_ui.dart';
 import '../../app/app_scope.dart';
 import '../../app/widgets/lg_page.dart';
 import '../../app/widgets/diagram_figure.dart';
+import '../../core/entitlements/feature.dart';
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
 import '../content/ui/content_widgets.dart';
 import '../microscopy/microscopy_widgets.dart';
+import '../profile/pro_gate.dart';
 import '../tools/calc_info.dart';
 import '../tools/clinical_calc_screens.dart';
 import '../tools/tool_screens.dart';
@@ -177,7 +179,12 @@ class DifferentialScreen extends StatelessWidget {
             title: l.mcDiff,
             subtitle: l.mcDiffSub,
             icon: Icons.donut_small_outlined,
-            onTap: () => context.push(diffAbsoluteCalcRoute),
+            // Vosita — [Feature.absoluteCounts] (D-76; standart: yopilmagan).
+            onTap: () => pushGated(
+              context,
+              Feature.absoluteCounts,
+              diffAbsoluteCalcRoute,
+            ),
           ),
           LgRow(
             title: l.diffHistoryTitle,
@@ -189,7 +196,12 @@ class DifferentialScreen extends StatelessWidget {
             title: l.diffInterpretTitle,
             subtitle: l.diffInterpretSub,
             icon: Icons.insights_outlined,
-            onTap: () => context.push('$_base/interpret'),
+            // Baholash — [Feature.leukocyteEvaluation] (D-76).
+            onTap: () => pushGated(
+              context,
+              Feature.leukocyteEvaluation,
+              '$_base/interpret',
+            ),
           ),
           LgRow(
             title: l.diffTechniqueTitle,
@@ -814,6 +826,16 @@ class _DiffCounterScreenState extends State<DiffCounterScreen> {
   void _tap(DiffCell c) {
     final l = AppLocalizations.of(context);
     final diff = context.services.differential;
+    // Ekran ochiq va ko'rinadi; YANGI sanashni boshlash — Lab imkoniyati
+    // ([Feature.leukocyteCounter], D-76; standart: yopilmagan). Boshlangan
+    // sanash hech qachon to'xtatilmaydi (obuna o'rtada tugasa ham).
+    if (!allowOrOffer(
+      context,
+      Feature.leukocyteCounter,
+      inProgress: !diff.isEmpty,
+    )) {
+      return;
+    }
     final sound = diff.counterSound;
     final haptics = diff.counterHaptics;
     switch (diff.tap(c)) {

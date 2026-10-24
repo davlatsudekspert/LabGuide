@@ -2,9 +2,11 @@ import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
 import '../../app/widgets/lg_page.dart';
+import '../../core/entitlements/feature.dart';
 import '../../app/widgets/links.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
+import '../profile/pro_gate.dart';
 import 'instrument_catalog.dart';
 import 'instrument_screens.dart' show CatalogGate;
 import 'lab_direction_card.dart';
@@ -72,7 +74,12 @@ class LabDirectionRows extends StatelessWidget {
             subtitle: l.labDirSectionSub,
             icon: Icons.biotech_outlined,
             divider: i < dirs.length - 1,
-            onTap: () => context.push('/lab/instruments/d/${d.name}'),
+            // Yo'nalish kartalari — [Feature.labDirections] (D-76).
+            onTap: () => pushGated(
+              context,
+              Feature.labDirections,
+              '/lab/instruments/d/${d.name}',
+            ),
           ),
       ],
     );

@@ -4,9 +4,11 @@ import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
 import '../../app/widgets/lg_page.dart';
+import '../../core/entitlements/feature.dart';
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
+import '../profile/pro_gate.dart';
 import '../content/content_model.dart';
 import '../learn/quiz_session.dart';
 import '../tools/calc_info.dart';
@@ -26,6 +28,7 @@ class CytologyScreen extends StatelessWidget {
     return LgPage(
       title: l.cytoTitle,
       subtitle: l.cytoSubtitle,
+      // Bo'lim ochiq; ichidagi sahifalar — [Feature.labSections] (D-76).
       children: [
         LgHeroCard(
           image: const AssetImage('assets/cytology/hero.png'),
@@ -34,7 +37,8 @@ class CytologyScreen extends StatelessWidget {
           action: LgButton(
             label: l.cytoHeroCta,
             icon: Icons.biotech_outlined,
-            onPressed: () => context.push('$cytoBase/cells'),
+            onPressed: () =>
+                pushGated(context, Feature.labSections, '$cytoBase/cells'),
           ),
         ),
         Text(
@@ -46,55 +50,64 @@ class CytologyScreen extends StatelessWidget {
           title: l.cytoCellsTitle,
           subtitle: l.cytoCellsSub(cytoCells.length),
           icon: Icons.biotech_outlined,
-          onTap: () => context.push('$cytoBase/cells'),
+          onTap: () =>
+              pushGated(context, Feature.labSections, '$cytoBase/cells'),
         ),
         LgRow(
           title: l.cytoDegreeTitle,
           subtitle: l.cytoDegreeSub,
           icon: Icons.tune_rounded,
-          onTap: () => context.push('$cytoBase/degree'),
+          onTap: () =>
+              pushGated(context, Feature.labSections, '$cytoBase/degree'),
         ),
         LgRow(
           title: l.cytoBethesdaTitle,
           subtitle: l.cytoBethesdaSub,
           icon: Icons.fact_check_outlined,
-          onTap: () => context.push('$cytoBase/bethesda'),
+          onTap: () =>
+              pushGated(context, Feature.labSections, '$cytoBase/bethesda'),
         ),
         LgRow(
           title: l.cytoTechniqueTitle,
           subtitle: l.cytoTechniqueSub,
           icon: Icons.water_drop_outlined,
-          onTap: () => context.push('$cytoBase/technique'),
+          onTap: () =>
+              pushGated(context, Feature.labSections, '$cytoBase/technique'),
         ),
         LgRow(
           title: l.cytoAdequacyTitle,
           subtitle: l.cytoAdequacySub,
           icon: Icons.rule_rounded,
-          onTap: () => context.push('$cytoBase/adequacy'),
+          onTap: () =>
+              pushGated(context, Feature.labSections, '$cytoBase/adequacy'),
         ),
         LgRow(
           title: l.cytoReactiveTitle,
           subtitle: l.cytoReactiveSub,
           icon: Icons.compare_arrows_rounded,
-          onTap: () => context.push('$cytoBase/reactive'),
+          onTap: () =>
+              pushGated(context, Feature.labSections, '$cytoBase/reactive'),
         ),
         LgRow(
           title: l.cytoMaturationTitle,
           subtitle: l.cytoMaturationSub,
           icon: Icons.calculate_outlined,
-          onTap: () => context.push('$cytoBase/maturation'),
+          onTap: () =>
+              pushGated(context, Feature.labSections, '$cytoBase/maturation'),
         ),
         LgRow(
           title: l.cytoOtherTitle,
           subtitle: l.cytoOtherSub,
           icon: Icons.science_outlined,
-          onTap: () => context.push('$cytoBase/other'),
+          onTap: () =>
+              pushGated(context, Feature.labSections, '$cytoBase/other'),
         ),
         LgRow(
           title: l.cytoQuizTitle,
           subtitle: l.cytoQuizSub(cytoQuizSize),
           icon: Icons.quiz_outlined,
-          onTap: () => context.push('$cytoBase/quiz'),
+          onTap: () =>
+              pushGated(context, Feature.labSections, '$cytoBase/quiz'),
           divider: false,
         ),
         LgNotice(l.sourcesDisclaimer, kind: NoticeKind.info),

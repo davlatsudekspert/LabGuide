@@ -3,12 +3,14 @@ import 'package:material_ui/material_ui.dart';
 
 import '../../app/app_scope.dart';
 import '../../app/widgets/lg_page.dart';
+import '../../core/entitlements/feature.dart';
 import '../../app/widgets/diagram_figure.dart';
 import '../../app/widgets/links.dart';
 import '../../core/build_flags.dart';
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
+import '../profile/pro_gate.dart';
 import '../content/ui/tests_screen.dart' show SearchBox;
 import '../partners/partner_widgets.dart';
 import 'instrument_catalog.dart';
@@ -157,8 +159,12 @@ class _InstrumentsScreenState extends State<InstrumentsScreen> {
                           '${l.instModelsCount(catalog.inCategory(c.category).length)}',
                       icon: categoryIcon(c.category),
                       divider: i < catalog.categories.length - 1,
-                      onTap: () =>
-                          context.push('/lab/instruments/c/${c.category.name}'),
+                      // Katalog — [Feature.labInstruments] (D-76).
+                      onTap: () => pushGated(
+                        context,
+                        Feature.labInstruments,
+                        '/lab/instruments/c/${c.category.name}',
+                      ),
                     ),
                   LabDirectionRows(catalog: catalog),
                   const SizedBox(height: 6),
@@ -168,7 +174,11 @@ class _InstrumentsScreenState extends State<InstrumentsScreen> {
                     subtitle: l.calLogSub,
                     icon: Icons.fact_check_outlined,
                     divider: false,
-                    onTap: () => context.push('/lab/calibration/log'),
+                    onTap: () => pushGated(
+                      context,
+                      Feature.calibration,
+                      '/lab/calibration/log',
+                    ),
                   ),
                   if (planned.isNotEmpty)
                     LgNotice(
@@ -218,7 +228,13 @@ class ModelRow extends StatelessWidget {
       subtitle: model.kind.of(lang),
       icon: categoryIcon(model.category),
       divider: divider,
-      onTap: onTap ?? () => context.push('/lab/instruments/m/${model.id}'),
+      onTap:
+          onTap ??
+          () => pushGated(
+            context,
+            Feature.labInstruments,
+            '/lab/instruments/m/${model.id}',
+          ),
     );
   }
 }
@@ -257,7 +273,11 @@ class _MyInstrumentRow extends StatelessWidget {
           : categoryIcon(category),
       divider: divider,
       onTap: () => model != null
-          ? context.push('/lab/instruments/m/${model.id}')
+          ? pushGated(
+              context,
+              Feature.labInstruments,
+              '/lab/instruments/m/${model.id}',
+            )
           : showMyInstrumentActions(context, instrument),
     );
   }

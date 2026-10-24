@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
@@ -31,4 +33,21 @@ Future<void> pushGated(
   if (await requireFeature(context, feature) && context.mounted) {
     await context.push(path);
   }
+}
+
+/// Sinxron tekshiruv — sanash tugmasi kabi darhol bajariladigan amallar
+/// uchun (D-76). Ochiq bo'lsa `true` va amal shu zahoti bajariladi (to'lov
+/// yoqilmagan buildda doim shunday). Yopiq bo'lsa to'lov oynasi ochiladi va
+/// `false` — bosish bajarilmaydi.
+///
+/// [inProgress] — boshlangan sessiya (masalan, sanash o'rtasida): hech
+/// qachon tekshirilmaydi va to'xtatilmaydi (obuna o'rtada tugasa ham).
+bool allowOrOffer(
+  BuildContext context,
+  Feature feature, {
+  bool inProgress = false,
+}) {
+  if (inProgress || context.services.entitlements.can(feature)) return true;
+  unawaited(context.push(purchaseRoute(feature)));
+  return false;
 }
