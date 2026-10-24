@@ -7,6 +7,7 @@ import 'package:material_ui/material_ui.dart';
 import '../../app/app_scope.dart';
 import '../../app/shell.dart';
 import '../../app/widgets/lg_page.dart';
+import '../../core/entitlements/feature.dart';
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../design/widgets/reveal_on_mount.dart';
@@ -16,6 +17,7 @@ import '../learn/exam_question.dart';
 import '../learn/exam_screens.dart';
 import '../learn/exam_session.dart';
 import '../learn/exam_widgets.dart';
+import '../profile/pro_gate.dart';
 import '../share/result_share.dart';
 import 'toifa_bank.dart';
 import 'toifa_controller.dart';
@@ -539,6 +541,10 @@ class _ToifaTestScreenState extends State<ToifaTestScreen> {
     if ((!practice && _minutesError(l) != null) || _passError(l) != null) {
       return;
     }
+    // Toifa banki — [Feature.fullToifaBank] (D-71: hozir yopilmagan);
+    // tekshiruv faqat boshlashdan oldin.
+    if (!await requireFeature(context, Feature.fullToifaBank)) return;
+    if (!mounted) return;
     if (practice) return _startDrill(bank);
     final services = context.services;
     final exams = services.exams;

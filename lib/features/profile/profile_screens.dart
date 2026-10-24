@@ -8,6 +8,7 @@ import '../../app/widgets/lg_page.dart';
 import '../../app/widgets/links.dart';
 import '../../core/build_flags.dart';
 import '../../core/contact.dart';
+import '../../core/entitlements/entitlement_service.dart' show ProSource;
 import '../../design/widgets/lg_widgets.dart';
 import '../learn/exam_question.dart' show keepUnitsTogether;
 import '../../l10n/gen/app_localizations.dart';
@@ -76,8 +77,9 @@ class ProfileScreen extends StatelessWidget {
     final settings = services.settings;
     final auth = services.auth;
     final access = services.access;
+    final ent = services.entitlements;
     return ListenableBuilder(
-      listenable: Listenable.merge([settings, auth, access]),
+      listenable: Listenable.merge([settings, auth, access, ent]),
       builder: (context, _) {
         final l = AppLocalizations.of(context);
         final text = Theme.of(context).textTheme;
@@ -192,6 +194,19 @@ class ProfileScreen extends StatelessWidget {
               icon: Icons.download_for_offline_outlined,
               onTap: () => context.push('/profile/packs'),
             ),
+            // Obuna (D-71) — faqat Pro bayrog'i yoqilgan buildda va to'lov
+            // haqiqatan ishlaganda (do'kon mahsulotlari yuklangan, server
+            // sozlangan) yoki amaldagi obuna bo'lsa. Bayroq o'chiq — qator yo'q.
+            if (BuildFlags.proEnabled &&
+                (ent.purchasesEnabled ||
+                    (ent.activeEntitlement != null &&
+                        ent.proSource != ProSource.buildOpen)))
+              LgRow(
+                title: l.proRowTitle,
+                subtitle: l.proRowSub,
+                icon: Icons.workspace_premium_outlined,
+                onTap: () => context.push('/profile/purchase'),
+              ),
             // Yagona “Yordam va aloqa” (D-69 Q6): ichida ilova ichidagi
             // yozishma va email/shikoyat. Serverga bog'liq emas — doim
             // ko'rinadi (email yo'li doim ishlaydi).
@@ -341,6 +356,16 @@ class PrivacyScreen extends StatelessWidget {
           [
             l.accountDeleteBody,
             if (appleLinked) l.accountDeleteAppleNote,
+            // Obuna hisob bilan bekor bo'lmaydi (5.1.1(v)) — faqat Pro yoqilgan
+            // buildda va to'lov ishlayotganda.
+            if (BuildFlags.proEnabled &&
+                (services.entitlements.purchasesEnabled ||
+                    services.entitlements.activeEntitlement != null))
+              l.proPayDeleteAccountNote(
+                services.entitlements.source.platform == 'app_store'
+                    ? 'App Store'
+                    : 'Google Play',
+              ),
           ].join('\n\n'),
         ),
         actions: [

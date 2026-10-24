@@ -17445,6 +17445,366 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'E.g. Midterm 1'**
   String get generalTestNameHint;
+
+  /// No description provided for @proPayTierPro.
+  ///
+  /// In en, this message translates to:
+  /// **'Pro'**
+  String get proPayTierPro;
+
+  /// No description provided for @proPayTierProSub.
+  ///
+  /// In en, this message translates to:
+  /// **'For lab staff, doctors, students and anyone preparing for the qualification exam'**
+  String get proPayTierProSub;
+
+  /// No description provided for @proPayTierTeacher.
+  ///
+  /// In en, this message translates to:
+  /// **'Teacher Pro'**
+  String get proPayTierTeacher;
+
+  /// No description provided for @proPayTierTeacherSub.
+  ///
+  /// In en, this message translates to:
+  /// **'For teachers working with a group. Includes everything in Pro.'**
+  String get proPayTierTeacherSub;
+
+  /// No description provided for @proPayFree.
+  ///
+  /// In en, this message translates to:
+  /// **'Features not marked as paid stay free.'**
+  String get proPayFree;
+
+  /// No description provided for @proPayFeatQuestions.
+  ///
+  /// In en, this message translates to:
+  /// **'Unlimited questions: practice by topic and card mini-tests'**
+  String get proPayFeatQuestions;
+
+  /// No description provided for @proPayFeatExam.
+  ///
+  /// In en, this message translates to:
+  /// **'Exam simulation (timed test)'**
+  String get proPayFeatExam;
+
+  /// No description provided for @proPayFeatToifa.
+  ///
+  /// In en, this message translates to:
+  /// **'The full qualification exam bank: official test and practice by topic'**
+  String get proPayFeatToifa;
+
+  /// No description provided for @proPayFeatWeak.
+  ///
+  /// In en, this message translates to:
+  /// **'Weak-topic analysis in your results'**
+  String get proPayFeatWeak;
+
+  /// No description provided for @proPayFeatAtlas.
+  ///
+  /// In en, this message translates to:
+  /// **'Microscopy atlas practice'**
+  String get proPayFeatAtlas;
+
+  /// No description provided for @proPayFeatHistory.
+  ///
+  /// In en, this message translates to:
+  /// **'Full results history'**
+  String get proPayFeatHistory;
+
+  /// No description provided for @proPayFeatAllPro.
+  ///
+  /// In en, this message translates to:
+  /// **'Everything in Pro'**
+  String get proPayFeatAllPro;
+
+  /// No description provided for @proPayFeatGroups.
+  ///
+  /// In en, this message translates to:
+  /// **'Groups: add students, grades and results reports'**
+  String get proPayFeatGroups;
+
+  /// No description provided for @proPayFeatAssignments.
+  ///
+  /// In en, this message translates to:
+  /// **'Group assignments (timed tests)'**
+  String get proPayFeatAssignments;
+
+  /// No description provided for @proPayFeatLecture.
+  ///
+  /// In en, this message translates to:
+  /// **'Lecture mode: automatic presentation for a topic'**
+  String get proPayFeatLecture;
+
+  /// No description provided for @proPayPlanMonthly.
+  ///
+  /// In en, this message translates to:
+  /// **'Monthly'**
+  String get proPayPlanMonthly;
+
+  /// No description provided for @proPayPlanYearly.
+  ///
+  /// In en, this message translates to:
+  /// **'Yearly'**
+  String get proPayPlanYearly;
+
+  /// No description provided for @proPayUnitDay.
+  ///
+  /// In en, this message translates to:
+  /// **'day'**
+  String get proPayUnitDay;
+
+  /// No description provided for @proPayUnitWeek.
+  ///
+  /// In en, this message translates to:
+  /// **'week'**
+  String get proPayUnitWeek;
+
+  /// No description provided for @proPayUnitMonth.
+  ///
+  /// In en, this message translates to:
+  /// **'month'**
+  String get proPayUnitMonth;
+
+  /// No description provided for @proPayUnitYear.
+  ///
+  /// In en, this message translates to:
+  /// **'year'**
+  String get proPayUnitYear;
+
+  /// No description provided for @proPayDays.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 day} other{{count} days}}'**
+  String proPayDays(int count);
+
+  /// No description provided for @proPayWeeks.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 week} other{{count} weeks}}'**
+  String proPayWeeks(int count);
+
+  /// No description provided for @proPayMonths.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 month} other{{count} months}}'**
+  String proPayMonths(int count);
+
+  /// No description provided for @proPayYears.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 year} other{{count} years}}'**
+  String proPayYears(int count);
+
+  /// No description provided for @proPayPricePer.
+  ///
+  /// In en, this message translates to:
+  /// **'{price} / {period}'**
+  String proPayPricePer(String price, String period);
+
+  /// No description provided for @proPayTrial.
+  ///
+  /// In en, this message translates to:
+  /// **'{trial} free, then {price}'**
+  String proPayTrial(String trial, String price);
+
+  /// No description provided for @proPayStartTrial.
+  ///
+  /// In en, this message translates to:
+  /// **'Start free trial'**
+  String get proPayStartTrial;
+
+  /// No description provided for @proPaySubscribe.
+  ///
+  /// In en, this message translates to:
+  /// **'Subscribe'**
+  String get proPaySubscribe;
+
+  /// No description provided for @proPayCurrent.
+  ///
+  /// In en, this message translates to:
+  /// **'Active subscription'**
+  String get proPayCurrent;
+
+  /// No description provided for @proPayRestore.
+  ///
+  /// In en, this message translates to:
+  /// **'Restore purchases'**
+  String get proPayRestore;
+
+  /// No description provided for @proPayManage.
+  ///
+  /// In en, this message translates to:
+  /// **'Manage or cancel subscription'**
+  String get proPayManage;
+
+  /// No description provided for @proPayTerms.
+  ///
+  /// In en, this message translates to:
+  /// **'Terms of Use (EULA)'**
+  String get proPayTerms;
+
+  /// No description provided for @proPayPrivacy.
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy Policy'**
+  String get proPayPrivacy;
+
+  /// No description provided for @proPayDisclosure.
+  ///
+  /// In en, this message translates to:
+  /// **'Subscriptions renew automatically. Payment is charged to your {store} account when you confirm the purchase (after the free trial ends, if there is one). Unless cancelled at least 24 hours before the end of the current period, the subscription renews for the same period and price, and your account is charged within 24 hours before the period ends. You can manage and cancel the subscription in your {store} account settings. Any unused part of a free trial is forfeited when you buy a subscription.'**
+  String proPayDisclosure(String store);
+
+  /// No description provided for @proPayGuestNote.
+  ///
+  /// In en, this message translates to:
+  /// **'You don’t need an account to buy. Sign in to use the subscription on your other devices too.'**
+  String get proPayGuestNote;
+
+  /// No description provided for @proPayLockedPro.
+  ///
+  /// In en, this message translates to:
+  /// **'This feature is part of Pro.'**
+  String get proPayLockedPro;
+
+  /// No description provided for @proPayLockedTeacher.
+  ///
+  /// In en, this message translates to:
+  /// **'This feature is part of Teacher Pro.'**
+  String get proPayLockedTeacher;
+
+  /// No description provided for @proPayAllOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'All features are open right now.'**
+  String get proPayAllOpen;
+
+  /// No description provided for @proPayTestBuildOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'Test build: all features are open.'**
+  String get proPayTestBuildOpen;
+
+  /// No description provided for @proPayStatusTeacher.
+  ///
+  /// In en, this message translates to:
+  /// **'Teacher Pro is active · until {date}'**
+  String proPayStatusTeacher(String date);
+
+  /// No description provided for @proPayStatusTeacherNoEnd.
+  ///
+  /// In en, this message translates to:
+  /// **'Teacher Pro is active'**
+  String get proPayStatusTeacherNoEnd;
+
+  /// No description provided for @proPayStatusDevice.
+  ///
+  /// In en, this message translates to:
+  /// **'The subscription is active on this device. Sign in to use it on your other devices too.'**
+  String get proPayStatusDevice;
+
+  /// No description provided for @proPaySuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Your subscription is active. Thank you!'**
+  String get proPaySuccess;
+
+  /// No description provided for @proPayRestored.
+  ///
+  /// In en, this message translates to:
+  /// **'Purchase restored.'**
+  String get proPayRestored;
+
+  /// No description provided for @proPayPending.
+  ///
+  /// In en, this message translates to:
+  /// **'Waiting for the payment to be approved. The subscription will unlock automatically once it is.'**
+  String get proPayPending;
+
+  /// No description provided for @proPayNothingFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No active subscription was found to restore.'**
+  String get proPayNothingFound;
+
+  /// No description provided for @proPayOwnedByOther.
+  ///
+  /// In en, this message translates to:
+  /// **'This purchase is linked to another LabGuide account. Sign in to that account.'**
+  String get proPayOwnedByOther;
+
+  /// No description provided for @proPayFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'The purchase didn’t complete. Check your connection and try again. If you were charged, tap “Restore purchases”.'**
+  String get proPayFailed;
+
+  /// No description provided for @proPayUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'The store isn’t responding right now. Please try again later.'**
+  String get proPayUnavailable;
+
+  /// No description provided for @proPayDeleteAccountNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Deleting your account doesn’t cancel your subscription: cancel it in your {store} settings.'**
+  String proPayDeleteAccountNote(String store);
+
+  /// No description provided for @proRowTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Subscription and restore'**
+  String get proRowTitle;
+
+  /// No description provided for @proRowSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Free · Pro'**
+  String get proRowSub;
+
+  /// No description provided for @proPurchaseTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'LabGuide Pro'**
+  String get proPurchaseTitle;
+
+  /// No description provided for @proStatusTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Status'**
+  String get proStatusTitle;
+
+  /// No description provided for @proStatusPro.
+  ///
+  /// In en, this message translates to:
+  /// **'Pro is active · until {date}'**
+  String proStatusPro(String date);
+
+  /// No description provided for @proStatusProNoEnd.
+  ///
+  /// In en, this message translates to:
+  /// **'Pro is active'**
+  String get proStatusProNoEnd;
+
+  /// No description provided for @proStatusOffline.
+  ///
+  /// In en, this message translates to:
+  /// **'Offline: last checked {date}'**
+  String proStatusOffline(String date);
+
+  /// No description provided for @proHistoryHidden.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 older result is saved} other{{count} older results are saved}} — the free plan shows the last {limit}. Nothing has been deleted.'**
+  String proHistoryHidden(int count, int limit);
+
+  /// No description provided for @proNothingGated.
+  ///
+  /// In en, this message translates to:
+  /// **'No feature is marked as paid yet: everything is open.'**
+  String get proNothingGated;
 }
 
 class _AppLocalizationsDelegate

@@ -10155,4 +10155,252 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get generalTestNameHint => 'E.g. Midterm 1';
+
+  @override
+  String get proPayTierPro => 'Pro';
+
+  @override
+  String get proPayTierProSub =>
+      'For lab staff, doctors, students and anyone preparing for the qualification exam';
+
+  @override
+  String get proPayTierTeacher => 'Teacher Pro';
+
+  @override
+  String get proPayTierTeacherSub =>
+      'For teachers working with a group. Includes everything in Pro.';
+
+  @override
+  String get proPayFree => 'Features not marked as paid stay free.';
+
+  @override
+  String get proPayFeatQuestions =>
+      'Unlimited questions: practice by topic and card mini-tests';
+
+  @override
+  String get proPayFeatExam => 'Exam simulation (timed test)';
+
+  @override
+  String get proPayFeatToifa =>
+      'The full qualification exam bank: official test and practice by topic';
+
+  @override
+  String get proPayFeatWeak => 'Weak-topic analysis in your results';
+
+  @override
+  String get proPayFeatAtlas => 'Microscopy atlas practice';
+
+  @override
+  String get proPayFeatHistory => 'Full results history';
+
+  @override
+  String get proPayFeatAllPro => 'Everything in Pro';
+
+  @override
+  String get proPayFeatGroups =>
+      'Groups: add students, grades and results reports';
+
+  @override
+  String get proPayFeatAssignments => 'Group assignments (timed tests)';
+
+  @override
+  String get proPayFeatLecture =>
+      'Lecture mode: automatic presentation for a topic';
+
+  @override
+  String get proPayPlanMonthly => 'Monthly';
+
+  @override
+  String get proPayPlanYearly => 'Yearly';
+
+  @override
+  String get proPayUnitDay => 'day';
+
+  @override
+  String get proPayUnitWeek => 'week';
+
+  @override
+  String get proPayUnitMonth => 'month';
+
+  @override
+  String get proPayUnitYear => 'year';
+
+  @override
+  String proPayDays(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count days',
+      one: '1 day',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String proPayWeeks(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count weeks',
+      one: '1 week',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String proPayMonths(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count months',
+      one: '1 month',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String proPayYears(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count years',
+      one: '1 year',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String proPayPricePer(String price, String period) {
+    return '$price / $period';
+  }
+
+  @override
+  String proPayTrial(String trial, String price) {
+    return '$trial free, then $price';
+  }
+
+  @override
+  String get proPayStartTrial => 'Start free trial';
+
+  @override
+  String get proPaySubscribe => 'Subscribe';
+
+  @override
+  String get proPayCurrent => 'Active subscription';
+
+  @override
+  String get proPayRestore => 'Restore purchases';
+
+  @override
+  String get proPayManage => 'Manage or cancel subscription';
+
+  @override
+  String get proPayTerms => 'Terms of Use (EULA)';
+
+  @override
+  String get proPayPrivacy => 'Privacy Policy';
+
+  @override
+  String proPayDisclosure(String store) {
+    return 'Subscriptions renew automatically. Payment is charged to your $store account when you confirm the purchase (after the free trial ends, if there is one). Unless cancelled at least 24 hours before the end of the current period, the subscription renews for the same period and price, and your account is charged within 24 hours before the period ends. You can manage and cancel the subscription in your $store account settings. Any unused part of a free trial is forfeited when you buy a subscription.';
+  }
+
+  @override
+  String get proPayGuestNote =>
+      'You don’t need an account to buy. Sign in to use the subscription on your other devices too.';
+
+  @override
+  String get proPayLockedPro => 'This feature is part of Pro.';
+
+  @override
+  String get proPayLockedTeacher => 'This feature is part of Teacher Pro.';
+
+  @override
+  String get proPayAllOpen => 'All features are open right now.';
+
+  @override
+  String get proPayTestBuildOpen => 'Test build: all features are open.';
+
+  @override
+  String proPayStatusTeacher(String date) {
+    return 'Teacher Pro is active · until $date';
+  }
+
+  @override
+  String get proPayStatusTeacherNoEnd => 'Teacher Pro is active';
+
+  @override
+  String get proPayStatusDevice =>
+      'The subscription is active on this device. Sign in to use it on your other devices too.';
+
+  @override
+  String get proPaySuccess => 'Your subscription is active. Thank you!';
+
+  @override
+  String get proPayRestored => 'Purchase restored.';
+
+  @override
+  String get proPayPending =>
+      'Waiting for the payment to be approved. The subscription will unlock automatically once it is.';
+
+  @override
+  String get proPayNothingFound =>
+      'No active subscription was found to restore.';
+
+  @override
+  String get proPayOwnedByOther =>
+      'This purchase is linked to another LabGuide account. Sign in to that account.';
+
+  @override
+  String get proPayFailed =>
+      'The purchase didn’t complete. Check your connection and try again. If you were charged, tap “Restore purchases”.';
+
+  @override
+  String get proPayUnavailable =>
+      'The store isn’t responding right now. Please try again later.';
+
+  @override
+  String proPayDeleteAccountNote(String store) {
+    return 'Deleting your account doesn’t cancel your subscription: cancel it in your $store settings.';
+  }
+
+  @override
+  String get proRowTitle => 'Subscription and restore';
+
+  @override
+  String get proRowSub => 'Free · Pro';
+
+  @override
+  String get proPurchaseTitle => 'LabGuide Pro';
+
+  @override
+  String get proStatusTitle => 'Status';
+
+  @override
+  String proStatusPro(String date) {
+    return 'Pro is active · until $date';
+  }
+
+  @override
+  String get proStatusProNoEnd => 'Pro is active';
+
+  @override
+  String proStatusOffline(String date) {
+    return 'Offline: last checked $date';
+  }
+
+  @override
+  String proHistoryHidden(int count, int limit) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count older results are saved',
+      one: '1 older result is saved',
+    );
+    return '$_temp0 — the free plan shows the last $limit. Nothing has been deleted.';
+  }
+
+  @override
+  String get proNothingGated =>
+      'No feature is marked as paid yet: everything is open.';
 }

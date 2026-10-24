@@ -10018,4 +10018,228 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get generalTestNameHint => 'Masalan, 1-oraliq nazorat';
+
+  @override
+  String get proPayTierPro => 'Pro';
+
+  @override
+  String get proPayTierProSub =>
+      'Laborant, shifokor, talaba va toifaga tayyorlanuvchi uchun';
+
+  @override
+  String get proPayTierTeacher => 'Ustoz Pro';
+
+  @override
+  String get proPayTierTeacherSub =>
+      'Guruh bilan ishlaydigan ustoz uchun. Pro’dagi hamma imkoniyat ham kiradi.';
+
+  @override
+  String get proPayFree =>
+      'Pullik deb belgilanmagan imkoniyatlar bepul qoladi.';
+
+  @override
+  String get proPayFeatQuestions =>
+      'Cheksiz savollar: mavzular bo‘yicha mashq va kartadan mini-test';
+
+  @override
+  String get proPayFeatExam => 'Imtihon simulyatsiyasi (vaqtli test)';
+
+  @override
+  String get proPayFeatToifa =>
+      'To‘liq toifa banki: rasmiy test va mavzular bo‘yicha mashq';
+
+  @override
+  String get proPayFeatWeak => 'Zaif mavzular tahlili natijada';
+
+  @override
+  String get proPayFeatAtlas => 'Mikroskopiya atlasi mashqlari';
+
+  @override
+  String get proPayFeatHistory => 'Natijalarning to‘liq tarixi';
+
+  @override
+  String get proPayFeatAllPro => 'Pro’dagi hamma imkoniyat';
+
+  @override
+  String get proPayFeatGroups =>
+      'Guruhlar: talabalarni qo‘shish, baholar va natijalar hisoboti';
+
+  @override
+  String get proPayFeatAssignments => 'Guruh topshiriqlari (vaqtli testlar)';
+
+  @override
+  String get proPayFeatLecture =>
+      'Ma’ruza rejimi: mavzu bo‘yicha avtomatik taqdimot';
+
+  @override
+  String get proPayPlanMonthly => 'Oylik';
+
+  @override
+  String get proPayPlanYearly => 'Yillik';
+
+  @override
+  String get proPayUnitDay => 'kun';
+
+  @override
+  String get proPayUnitWeek => 'hafta';
+
+  @override
+  String get proPayUnitMonth => 'oy';
+
+  @override
+  String get proPayUnitYear => 'yil';
+
+  @override
+  String proPayDays(int count) {
+    return '$count kun';
+  }
+
+  @override
+  String proPayWeeks(int count) {
+    return '$count hafta';
+  }
+
+  @override
+  String proPayMonths(int count) {
+    return '$count oy';
+  }
+
+  @override
+  String proPayYears(int count) {
+    return '$count yil';
+  }
+
+  @override
+  String proPayPricePer(String price, String period) {
+    return '$price / $period';
+  }
+
+  @override
+  String proPayTrial(String trial, String price) {
+    return '$trial bepul, keyin $price';
+  }
+
+  @override
+  String get proPayStartTrial => 'Bepul sinovni boshlash';
+
+  @override
+  String get proPaySubscribe => 'Obuna bo‘lish';
+
+  @override
+  String get proPayCurrent => 'Faol obuna';
+
+  @override
+  String get proPayRestore => 'Xaridni tiklash';
+
+  @override
+  String get proPayManage => 'Obunani boshqarish yoki bekor qilish';
+
+  @override
+  String get proPayTerms => 'Foydalanish shartlari (EULA)';
+
+  @override
+  String get proPayPrivacy => 'Maxfiylik siyosati';
+
+  @override
+  String proPayDisclosure(String store) {
+    return 'Obuna avtomatik yangilanadi. To‘lov xarid tasdiqlanganda $store hisobingizdan olinadi (bepul sinov bo‘lsa — sinov tugagach). Joriy davr tugashidan kamida 24 soat oldin bekor qilinmasa, obuna xuddi shu davr va narxda yangilanadi va to‘lov davr tugashidan oldingi 24 soat ichida olinadi. Obunani $store hisob sozlamalarida boshqarish va bekor qilish mumkin. Bepul sinovning foydalanilmagan qismi obuna sotib olinganda bekor bo‘ladi.';
+  }
+
+  @override
+  String get proPayGuestNote =>
+      'Xarid uchun hisob shart emas. Hisobga kirsangiz, obuna boshqa qurilmalaringizda ham ishlaydi.';
+
+  @override
+  String get proPayLockedPro => 'Bu imkoniyat Pro obunasida.';
+
+  @override
+  String get proPayLockedTeacher => 'Bu imkoniyat Ustoz Pro obunasida.';
+
+  @override
+  String get proPayAllOpen => 'Hozir barcha imkoniyatlar ochiq.';
+
+  @override
+  String get proPayTestBuildOpen =>
+      'Sinov versiyasi: barcha imkoniyatlar ochiq.';
+
+  @override
+  String proPayStatusTeacher(String date) {
+    return 'Ustoz Pro faol · $date gacha';
+  }
+
+  @override
+  String get proPayStatusTeacherNoEnd => 'Ustoz Pro faol';
+
+  @override
+  String get proPayStatusDevice =>
+      'Obuna shu qurilmada faol. Boshqa qurilmalarda ham ishlashi uchun hisobga kiring.';
+
+  @override
+  String get proPaySuccess => 'Obuna faollashdi. Rahmat!';
+
+  @override
+  String get proPayRestored => 'Xarid tiklandi.';
+
+  @override
+  String get proPayPending =>
+      'To‘lov tasdiqlanishi kutilmoqda. Tasdiqlangach obuna avtomatik ochiladi.';
+
+  @override
+  String get proPayNothingFound => 'Tiklanadigan faol obuna topilmadi.';
+
+  @override
+  String get proPayOwnedByOther =>
+      'Bu xarid boshqa LabGuide hisobiga bog‘langan. O‘sha hisob bilan kiring.';
+
+  @override
+  String get proPayFailed =>
+      'Xarid yakunlanmadi. Internetni tekshirib, qayta urinib ko‘ring. Pul yechilgan bo‘lsa, «Xaridni tiklash» ni bosing.';
+
+  @override
+  String get proPayUnavailable =>
+      'Do‘kon hozir javob bermayapti. Keyinroq urinib ko‘ring.';
+
+  @override
+  String proPayDeleteAccountNote(String store) {
+    return 'Obuna hisob bilan birga bekor bo‘lmaydi: uni $store sozlamalarida bekor qiling.';
+  }
+
+  @override
+  String get proRowTitle => 'Obuna va tiklash';
+
+  @override
+  String get proRowSub => 'Free · Pro';
+
+  @override
+  String get proPurchaseTitle => 'LabGuide Pro';
+
+  @override
+  String get proStatusTitle => 'Holat';
+
+  @override
+  String proStatusPro(String date) {
+    return 'Pro faol · $date gacha';
+  }
+
+  @override
+  String get proStatusProNoEnd => 'Pro faol';
+
+  @override
+  String proStatusOffline(String date) {
+    return 'Internetsiz: oxirgi tekshiruv $date';
+  }
+
+  @override
+  String proHistoryHidden(int count, int limit) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Yana $count ta eski natija saqlangan',
+    );
+    return '$_temp0 — bepul rejimda oxirgi $limit tasi ko‘rinadi. Hech narsa o‘chirilmagan.';
+  }
+
+  @override
+  String get proNothingGated =>
+      'Hozircha pullik deb belgilangan imkoniyat yo‘q: hamma narsa ochiq.';
 }

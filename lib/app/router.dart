@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
 import '../core/build_flags.dart';
+import '../core/entitlements/feature.dart';
 import '../features/admin/admin_console_screens.dart';
 import '../features/admin/admin_screens.dart';
 import '../features/auth/ui/auth_screens.dart';
@@ -55,6 +56,7 @@ import '../features/library/pdf_reader_screen.dart';
 import '../features/profile/contact_screen.dart';
 import '../features/profile/help_screen.dart';
 import '../features/profile/profile_screens.dart';
+import '../features/profile/purchase_screen.dart';
 import '../features/settings/theme_screen.dart';
 import '../features/qc/qc_guides.dart';
 import '../features/qc/qc_guides_info.dart';
@@ -209,6 +211,16 @@ GoRouter buildRouter(
             path: 'packs',
             builder: (context, state) => const PacksScreen(),
           ),
+          // Obuna oynasi (D-71): faqat Pro bayrog'i yoqilgan buildda.
+          if (BuildFlags.proEnabled)
+            GoRoute(
+              path: 'purchase',
+              // `?feature=` — boshlash tugmasidan (qaysi imkoniyat uchun).
+              builder: (context, state) => PurchaseScreen(
+                feature: Feature.values
+                    .asNameMap()[state.uri.queryParameters['feature']],
+              ),
+            ),
           // Mavzu tanlash (D-64).
           GoRoute(
             path: 'theme',

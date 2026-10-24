@@ -5,6 +5,7 @@ import 'package:material_ui/material_ui.dart';
 
 import '../../app/app_scope.dart';
 import '../../app/widgets/lg_page.dart';
+import '../../core/entitlements/feature.dart';
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
@@ -12,13 +13,14 @@ import '../content/analyte_search.dart';
 import '../content/content_model.dart';
 import '../content/ui/content_widgets.dart';
 import '../microscopy/microscopy_atlas.dart';
+import '../profile/pro_gate.dart';
 import '../reference/reference_content.dart';
 import 'auto_deck.dart';
 import 'classroom_screens.dart';
 import 'curriculum.dart';
 import 'lecture_slide.dart';
 
-// Avtomatik taqdimot (D-47): tanlash → ko'rish (tartib, olib
+// Avtomatik taqdimot (Ustoz Pro, D-47): tanlash → ko'rish (tartib, olib
 // tashlash) → "Boshlash" mavjud Ma'ruza pleyerida ochadi. Slaydlar faqat
 // manbali mazmundan yig'iladi (auto_deck.dart), tashqi chaqiruvsiz.
 
@@ -387,6 +389,9 @@ class _AutoPresentationPreviewScreenState
   });
 
   Future<void> _start(AppLocalizations l) async {
+    // Boshlashdan oldin tekshiruv (chuqur havola bilan kelinganda ham).
+    if (!await requireFeature(context, Feature.autoPresentation)) return;
+    if (!mounted) return;
     final slides = assembleAutoDeck(l, _deck!, _order);
     unawaited(context.push('$_routeBase/play', extra: slides));
   }

@@ -5983,5 +5983,158 @@
       }
     }
   },
-  "generalTestNameHint": "E.g. Midterm 1"
+  "generalTestNameHint": "E.g. Midterm 1",
+  "proPayTierPro": "Pro",
+  "proPayTierProSub": "For lab staff, doctors, students and anyone preparing for the qualification exam",
+  "proPayTierTeacher": "Teacher Pro",
+  "proPayTierTeacherSub": "For teachers working with a group. Includes everything in Pro.",
+  "proPayFree": "Features not marked as paid stay free.",
+  "proPayFeatQuestions": "Unlimited questions: practice by topic and card mini-tests",
+  "proPayFeatExam": "Exam simulation (timed test)",
+  "proPayFeatToifa": "The full qualification exam bank: official test and practice by topic",
+  "proPayFeatWeak": "Weak-topic analysis in your results",
+  "proPayFeatAtlas": "Microscopy atlas practice",
+  "proPayFeatHistory": "Full results history",
+  "proPayFeatAllPro": "Everything in Pro",
+  "proPayFeatGroups": "Groups: add students, grades and results reports",
+  "proPayFeatAssignments": "Group assignments (timed tests)",
+  "proPayFeatLecture": "Lecture mode: automatic presentation for a topic",
+  "proPayPlanMonthly": "Monthly",
+  "proPayPlanYearly": "Yearly",
+  "proPayUnitDay": "day",
+  "proPayUnitWeek": "week",
+  "proPayUnitMonth": "month",
+  "proPayUnitYear": "year",
+  "proPayDays": "{count, plural, =1{1 day} other{{count} days}}",
+  "@proPayDays": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "proPayWeeks": "{count, plural, =1{1 week} other{{count} weeks}}",
+  "@proPayWeeks": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "proPayMonths": "{count, plural, =1{1 month} other{{count} months}}",
+  "@proPayMonths": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "proPayYears": "{count, plural, =1{1 year} other{{count} years}}",
+  "@proPayYears": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "proPayPricePer": "{price} / {period}",
+  "@proPayPricePer": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      },
+      "period": {
+        "type": "String"
+      }
+    }
+  },
+  "proPayTrial": "{trial} free, then {price}",
+  "@proPayTrial": {
+    "placeholders": {
+      "trial": {
+        "type": "String"
+      },
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "proPayStartTrial": "Start free trial",
+  "proPaySubscribe": "Subscribe",
+  "proPayCurrent": "Active subscription",
+  "proPayRestore": "Restore purchases",
+  "proPayManage": "Manage or cancel subscription",
+  "proPayTerms": "Terms of Use (EULA)",
+  "proPayPrivacy": "Privacy Policy",
+  "proPayDisclosure": "Subscriptions renew automatically. Payment is charged to your {store} account when you confirm the purchase (after the free trial ends, if there is one). Unless cancelled at least 24 hours before the end of the current period, the subscription renews for the same period and price, and your account is charged within 24 hours before the period ends. You can manage and cancel the subscription in your {store} account settings. Any unused part of a free trial is forfeited when you buy a subscription.",
+  "@proPayDisclosure": {
+    "placeholders": {
+      "store": {
+        "type": "String"
+      }
+    }
+  },
+  "proPayGuestNote": "You don’t need an account to buy. Sign in to use the subscription on your other devices too.",
+  "proPayLockedPro": "This feature is part of Pro.",
+  "proPayLockedTeacher": "This feature is part of Teacher Pro.",
+  "proPayAllOpen": "All features are open right now.",
+  "proPayTestBuildOpen": "Test build: all features are open.",
+  "proPayStatusTeacher": "Teacher Pro is active · until {date}",
+  "@proPayStatusTeacher": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "proPayStatusTeacherNoEnd": "Teacher Pro is active",
+  "proPayStatusDevice": "The subscription is active on this device. Sign in to use it on your other devices too.",
+  "proPaySuccess": "Your subscription is active. Thank you!",
+  "proPayRestored": "Purchase restored.",
+  "proPayPending": "Waiting for the payment to be approved. The subscription will unlock automatically once it is.",
+  "proPayNothingFound": "No active subscription was found to restore.",
+  "proPayOwnedByOther": "This purchase is linked to another LabGuide account. Sign in to that account.",
+  "proPayFailed": "The purchase didn’t complete. Check your connection and try again. If you were charged, tap “Restore purchases”.",
+  "proPayUnavailable": "The store isn’t responding right now. Please try again later.",
+  "proPayDeleteAccountNote": "Deleting your account doesn’t cancel your subscription: cancel it in your {store} settings.",
+  "@proPayDeleteAccountNote": {
+    "placeholders": {
+      "store": {
+        "type": "String"
+      }
+    }
+  },
+  "proRowTitle": "Subscription and restore",
+  "proRowSub": "Free · Pro",
+  "proPurchaseTitle": "LabGuide Pro",
+  "proStatusTitle": "Status",
+  "proStatusPro": "Pro is active · until {date}",
+  "@proStatusPro": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "proStatusProNoEnd": "Pro is active",
+  "proStatusOffline": "Offline: last checked {date}",
+  "@proStatusOffline": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "proHistoryHidden": "{count, plural, =1{1 older result is saved} other{{count} older results are saved}} — the free plan shows the last {limit}. Nothing has been deleted.",
+  "@proHistoryHidden": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "limit": {
+        "type": "int"
+      }
+    }
+  },
+  "proNothingGated": "No feature is marked as paid yet: everything is open."
 }
