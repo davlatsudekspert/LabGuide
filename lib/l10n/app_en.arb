@@ -6054,5 +6054,6 @@
   "labDirTransplant": "Transplantation",
   "labDirGeneral": "General laboratory",
   "labDirDisclaimer": "Educational reference only. The app does not diagnose and is not an operating protocol; decisions rest with an authorised laboratory and clinician.",
-  "labDirEmpty": "No cards in this direction."
+  "labDirEmpty": "No cards in this direction.",
+  "labDirPlatformClassNote": "Class/technology reference — not verified for a specific model"
 }

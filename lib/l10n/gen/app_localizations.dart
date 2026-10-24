@@ -17871,6 +17871,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No cards in this direction.'**
   String get labDirEmpty;
+
+  /// No description provided for @labDirPlatformClassNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Class/technology reference — not verified for a specific model'**
+  String get labDirPlatformClassNote;
 }
 
 class _AppLocalizationsDelegate

@@ -10416,4 +10416,8 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get labDirEmpty => 'В этом направлении нет карточек.';
+
+  @override
+  String get labDirPlatformClassNote =>
+      'Справка по классу/технологии — для конкретной модели не подтверждено';
 }

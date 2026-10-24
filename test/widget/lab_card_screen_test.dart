@@ -44,7 +44,7 @@ class _CatalogBundle extends CachingAssetBundle {
       })
       ..add({
         'id': 'gen-stub',
-        'lab_direction': 'genetics',
+        'lab_direction': 'oncology',
         'card_kind': 'method',
         'name': t('Genetics stub'),
         'audit_status': 'NEEDS_SOURCE',
@@ -101,10 +101,10 @@ void main() {
     await goTo(tester, '/lab/instruments/lc/gen-stub');
     expect(find.text('Genetics stub'), findsNothing);
     expect(find.text(l.instNoResultsTitle), findsOneWidget);
-    await goTo(tester, '/lab/instruments/lc/hiv-rna-viral-load');
+    await goTo(tester, '/lab/instruments/lc/a1-na-extraction-method');
     expect(find.text(l.instNoResultsTitle), findsOneWidget);
     // Yo‘nalish ekrani: faqat stubli yo‘nalish bo‘sh.
-    await goTo(tester, '/lab/instruments/d/genetics');
+    await goTo(tester, '/lab/instruments/d/oncology');
     expect(find.text('Genetics stub'), findsNothing);
     expect(find.text(l.labDirEmpty), findsOneWidget);
     // Ommaviy kartali yangi yo‘nalish ko‘rinadi.

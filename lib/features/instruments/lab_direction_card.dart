@@ -116,6 +116,7 @@ class LabDirectionCard {
     required this.expertReviewed,
     this.needsSourceReason,
     this.priority,
+    this.sourceCaveat,
   });
 
   factory LabDirectionCard.fromJson(Map<String, Object?> j) {
@@ -157,6 +158,9 @@ class LabDirectionCard {
       sourceIds: sources,
       auditStatus: status,
       expertReviewed: expert,
+      sourceCaveat: j['source_caveat'] == null
+          ? null
+          : LocalizedText.fromJson(j['source_caveat']),
     );
   }
 
@@ -243,6 +247,10 @@ class LabDirectionCard {
   /// Faqat NEEDS_SOURCE uchun: nega manba yo'q (ichki, UI'da ko'rsatilmaydi).
   final String? needsSourceReason;
   final LabCardPriority? priority;
+
+  /// Ixtiyoriy: manba eskirgan/tor bo'lsa kartada ko'rinadigan uch tilli
+  /// ogohlantirish (ilovaning o'z izohi, manbaga bog'lanmagan).
+  final LocalizedText? sourceCaveat;
 
   /// NEEDS_SOURCE kartalar hech qachon ommaga ko'rsatilmaydi.
   bool get isPublic => auditStatus != LabAuditStatus.needsSource;

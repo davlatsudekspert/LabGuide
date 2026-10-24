@@ -2968,5 +2968,6 @@
   "labDirTransplant": "Transplantologiya",
   "labDirGeneral": "Umumiy laboratoriya",
   "labDirDisclaimer": "Faqat o‘quv ma’lumotnomasi. Ilova tashxis qo‘ymaydi va amaliy protokol emas; qaror — vakolatli laboratoriya va shifokorniki.",
-  "labDirEmpty": "Bu yo‘nalishda kartalar yo‘q."
+  "labDirEmpty": "Bu yo‘nalishda kartalar yo‘q.",
+  "labDirPlatformClassNote": "Sinf/texnologiya bo‘yicha ma’lumot — aniq model uchun tasdiqlanmagan"
 }

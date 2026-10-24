@@ -10376,4 +10376,8 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get labDirEmpty => 'No cards in this direction.';
+
+  @override
+  String get labDirPlatformClassNote =>
+      'Class/technology reference — not verified for a specific model';
 }

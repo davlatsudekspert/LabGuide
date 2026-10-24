@@ -10239,4 +10239,8 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get labDirEmpty => 'Bu yo‘nalishda kartalar yo‘q.';
+
+  @override
+  String get labDirPlatformClassNote =>
+      'Sinf/texnologiya bo‘yicha ma’lumot — aniq model uchun tasdiqlanmagan';
 }

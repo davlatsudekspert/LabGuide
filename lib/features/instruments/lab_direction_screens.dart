@@ -181,6 +181,9 @@ class _LabCard extends StatelessWidget {
         const SizedBox(height: 8),
         Text(_statusLine(l, card.auditStatus), style: text.bodySmall),
         const SizedBox(height: 8),
+        if (card.kind == LabCardKind.platform && card.models.isEmpty)
+          LgNotice(l.labDirPlatformClassNote),
+        if (card.sourceCaveat case final c?) LgNotice(c.of(lang)),
         LgNotice(l.labDirDisclaimer),
         if (card.instrumentVsTestNote case final n?) ...[
           LgSectionTitle(l.labDirVsTest),

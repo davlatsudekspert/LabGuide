@@ -93,13 +93,14 @@ void main() {
     }
   });
 
-  test('platforma va test — alohida id, o‘zaro bog‘langan', () {
+  test('platforma va test — alohida id; havolalar ikki tomonlama', () {
     final platforms = catalog.publicLabCards
         .where((c) => c.kind == LabCardKind.platform)
         .toList();
     expect(platforms, isNotEmpty);
+    // Hech bo‘lmaganda bitta platforma-test juftligi bor (TB asosiy misol).
+    expect(platforms.where((p) => p.linked.isNotEmpty), isNotEmpty);
     for (final p in platforms) {
-      expect(p.linked, isNotEmpty);
       for (final id in p.linked) {
         final t = catalog.labCard(id)!;
         expect(t.id, isNot(p.id));
