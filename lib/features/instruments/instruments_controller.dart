@@ -125,6 +125,64 @@ class ReagentChoice {
 
 enum CalibrationOutcome { accepted, rejected, pending }
 
+/// Yozuv turi: o'quv mashqi yoki haqiqiy laboratoriya yozuvi. Standart —
+/// o'quv (laboratoriya dalili emas).
+enum CalibrationKind { training, lab }
+
+/// Kalibrlashdan keyingi QC natijasi. Standart — o'tkazilmagan.
+enum QcAfter { pass, fail, notRun }
+
+/// «Qabul qilindi» uchun yetishmayotgan shart.
+enum CalibrationIssue { approverRequired, qcPassRequired }
+
+/// «Qabul qilindi» faqat vakolatli shaxs nomi kiritilgan va kalibrlashdan
+/// keyingi QC o'tgan bo'lsa mumkin (audit 2026-10-24 P0). Aks holatda null.
+CalibrationIssue? validateCalibrationAcceptance({
+  required CalibrationOutcome outcome,
+  required String? approvedBy,
+  required QcAfter qcAfter,
+}) {
+  if (outcome != CalibrationOutcome.accepted) return null;
+  if (approvedBy == null || approvedBy.trim().isEmpty) {
+    return CalibrationIssue.approverRequired;
+  }
+  if (qcAfter != QcAfter.pass) return CalibrationIssue.qcPassRequired;
+  return null;
+}
+
+enum CalibrationAuditAction { created, edited, deleted }
+
+/// Faqat qo'shiladigan tarix yozuvi: yozuv o'chirilsa ham izi qoladi.
+@immutable
+class CalibrationAuditEntry {
+  const CalibrationAuditEntry({
+    required this.recordId,
+    required this.action,
+    required this.at,
+    required this.summary,
+  });
+
+  factory CalibrationAuditEntry.fromJson(Map<String, Object?> j) =>
+      CalibrationAuditEntry(
+        recordId: j['record_id']! as String,
+        action: CalibrationAuditAction.values.byName(j['action']! as String),
+        at: DateTime.parse(j['at']! as String),
+        summary: j['summary'] as String? ?? '',
+      );
+
+  final String recordId;
+  final CalibrationAuditAction action;
+  final DateTime at;
+  final String summary;
+
+  Map<String, Object?> toJson() => {
+    'record_id': recordId,
+    'action': action.name,
+    'at': at.toIso8601String(),
+    'summary': summary,
+  };
+}
+
 @immutable
 class CalibratorLevel {
   const CalibratorLevel({
@@ -167,6 +225,12 @@ class CalibrationRecord {
     this.lotExpiry,
     this.manualVersion,
     this.note,
+    this.kind = CalibrationKind.training,
+    this.qcAfter = QcAfter.notRun,
+    this.approvedBy,
+    this.approvedAt,
+    this.sopRef,
+    this.legacy = false,
   });
 
   factory CalibrationRecord.fromJson(Map<String, Object?> j) =>
@@ -192,7 +256,28 @@ class CalibrationRecord {
         manualVersion: j['manual_version'] as String?,
         note: j['note'] as String?,
         createdAt: DateTime.parse(j['created_at']! as String),
+        // Eski yozuvlarda yangi maydonlar yo'q: jimgina «yangilanmaydi» —
+        // o'quv / QC o'tkazilmagan / tasdiqlovchisiz, natija saqlanganidek.
+        kind: _byNameOr(
+          CalibrationKind.values,
+          j['kind'],
+          CalibrationKind.training,
+        ),
+        qcAfter: _byNameOr(QcAfter.values, j['qc_after'], QcAfter.notRun),
+        approvedBy: (j['approved_by'] as String?)?.trim().isEmpty ?? true
+            ? null
+            : (j['approved_by']! as String).trim(),
+        approvedAt: j['approved_at'] == null
+            ? null
+            : DateTime.parse(j['approved_at']! as String),
+        sopRef: j['sop_ref'] as String?,
+        legacy: !j.containsKey('kind'),
       );
+
+  static T _byNameOr<T extends Enum>(List<T> values, Object? name, T orElse) {
+    if (name is! String) return orElse;
+    return values.where((v) => v.name == name).firstOrNull ?? orElse;
+  }
 
   final String id;
   final String instrumentId;
@@ -210,6 +295,49 @@ class CalibrationRecord {
   final String? manualVersion;
   final String? note;
   final DateTime createdAt;
+  final CalibrationKind kind;
+  final QcAfter qcAfter;
+
+  /// Vakolatli shaxs (ism / lavozim) — erkin matn.
+  final String? approvedBy;
+  final DateTime? approvedAt;
+
+  /// Laboratoriya SOP havolasi (ixtiyoriy).
+  final String? sopRef;
+
+  /// Yangi maydonlar joriy etilishidan oldingi yozuv: tekshirilmagan.
+  final bool legacy;
+
+  CalibrationRecord copyWith({
+    CalibrationOutcome? outcome,
+    String? approvedBy,
+    DateTime? approvedAt,
+    QcAfter? qcAfter,
+    String? sopRef,
+    String? note,
+  }) => CalibrationRecord(
+    id: id,
+    instrumentId: instrumentId,
+    instrumentName: instrumentName,
+    analyteId: analyteId,
+    reagent: reagent,
+    calibratorLot: calibratorLot,
+    levels: levels,
+    performedOn: performedOn,
+    outcome: outcome ?? this.outcome,
+    createdAt: createdAt,
+    calibratorName: calibratorName,
+    lotExpiry: lotExpiry,
+    manualVersion: manualVersion,
+    note: note ?? this.note,
+    kind: kind,
+    qcAfter: qcAfter ?? this.qcAfter,
+    approvedBy: approvedBy ?? this.approvedBy,
+    approvedAt: approvedAt ?? this.approvedAt,
+    sopRef: sopRef ?? this.sopRef,
+    // Tahrirlangan yozuv endi eski emas.
+    legacy: false,
+  );
 
   Map<String, Object?> toJson() => {
     'id': id,
@@ -226,6 +354,14 @@ class CalibrationRecord {
     'manual_version': ?manualVersion,
     'note': ?note,
     'created_at': createdAt.toIso8601String(),
+    // Eski yozuv qayta yozilganda ham yangi maydonlarsiz qoladi.
+    if (!legacy) ...{
+      'kind': kind.name,
+      'qc_after': qcAfter.name,
+      'approved_by': ?approvedBy,
+      'approved_at': ?approvedAt?.toIso8601String(),
+      'sop_ref': ?sopRef,
+    },
   };
 }
 
@@ -243,6 +379,7 @@ class InstrumentsController extends ChangeNotifier {
        _random = random ?? math.Random() {
     _mine = _read(StoreKeys.myInstruments, MyInstrument.fromJson);
     _records = _read(StoreKeys.calibrationLog, CalibrationRecord.fromJson);
+    _audit = _read(StoreKeys.calibrationAudit, CalibrationAuditEntry.fromJson);
   }
 
   static const catalogAsset = 'assets/instruments/catalog.json';
@@ -257,12 +394,21 @@ class InstrumentsController extends ChangeNotifier {
   Future<void>? _loading;
   List<MyInstrument> _mine = const [];
   List<CalibrationRecord> _records = const [];
+  List<CalibrationAuditEntry> _audit = const [];
   Object? _storeError;
 
   CatalogLoadState get state => _state;
   InstrumentCatalog? get catalog => _catalog;
   List<MyInstrument> get mine => _mine;
   List<CalibrationRecord> get records => _records;
+
+  /// Faqat qo'shiladigan tarix (eskisi birinchi).
+  List<CalibrationAuditEntry> get audit => _audit;
+
+  List<CalibrationAuditEntry> auditFor(String recordId) => [
+    for (final e in _audit)
+      if (e.recordId == recordId) e,
+  ];
 
   /// Saqlangan ma'lumotni o'qib bo'lmadi — ustiga yozilmaydi.
   Object? get storeError => _storeError;
@@ -331,6 +477,19 @@ class InstrumentsController extends ChangeNotifier {
     _records = List.unmodifiable(next);
     notifyListeners();
   }
+
+  Future<void> _appendAudit(CalibrationAuditEntry e) async {
+    final next = [..._audit, e];
+    await _store.setString(
+      StoreKeys.calibrationAudit,
+      jsonEncode([for (final a in next) a.toJson()]),
+    );
+    _audit = List.unmodifiable(next);
+  }
+
+  static String _summary(CalibrationRecord r) =>
+      '${r.analyteId} · ${r.calibratorLot} · ${r.outcome.name} · '
+      '${r.kind.name} · QC ${r.qcAfter.name}';
 
   MyInstrument? myInstrument(String id) =>
       _mine.where((m) => m.id == id).firstOrNull;
@@ -413,10 +572,23 @@ class InstrumentsController extends ChangeNotifier {
     String? calibratorName,
     DateTime? lotExpiry,
     String? note,
+    CalibrationKind kind = CalibrationKind.training,
+    QcAfter qcAfter = QcAfter.notRun,
+    String? approvedBy,
+    String? sopRef,
   }) async {
     if (calibratorLot.trim().isEmpty || levels.isEmpty) {
       throw ArgumentError('lot and at least one level are required');
     }
+    if (validateCalibrationAcceptance(
+          outcome: outcome,
+          approvedBy: approvedBy,
+          qcAfter: qcAfter,
+        ) !=
+        null) {
+      throw ArgumentError('accepted needs approver and passing QC');
+    }
+    final approver = _clean(approvedBy);
     final r = CalibrationRecord(
       id: _newId(),
       instrumentId: instrument.id,
@@ -432,21 +604,74 @@ class InstrumentsController extends ChangeNotifier {
       manualVersion: instrument.manualVersion,
       note: _clean(note),
       createdAt: _clock(),
+      kind: kind,
+      qcAfter: qcAfter,
+      approvedBy: approver,
+      approvedAt: approver == null ? null : _clock(),
+      sopRef: _clean(sopRef),
     );
     await _saveRecords([r, ..._records]);
+    await _appendAudit(
+      CalibrationAuditEntry(
+        recordId: r.id,
+        action: CalibrationAuditAction.created,
+        at: _clock(),
+        summary: _summary(r),
+      ),
+    );
     await rememberReagent(instrument.id, analyteId, reagent);
     return r;
   }
 
-  Future<void> removeRecord(String id) => _saveRecords([
-    for (final r in _records)
-      if (r.id != id) r,
-  ]);
+  /// Yozuvni tahrirlash (natija / tasdiqlovchi / QC / SOP / izoh). Tarixga
+  /// «edited» yoziladi; «qabul qilindi» qoidalari saqlanadi.
+  Future<void> updateRecord(CalibrationRecord next) async {
+    final old = _records.where((r) => r.id == next.id).firstOrNull;
+    if (old == null) return;
+    if (validateCalibrationAcceptance(
+          outcome: next.outcome,
+          approvedBy: next.approvedBy,
+          qcAfter: next.qcAfter,
+        ) !=
+        null) {
+      throw ArgumentError('accepted needs approver and passing QC');
+    }
+    if (_storeError != null) throw StateError('instrument data unreadable');
+    await _appendAudit(
+      CalibrationAuditEntry(
+        recordId: old.id,
+        action: CalibrationAuditAction.edited,
+        at: _clock(),
+        summary: '${_summary(old)} -> ${_summary(next)}',
+      ),
+    );
+    await _saveRecords([for (final r in _records) r.id == next.id ? next : r]);
+  }
+
+  /// Yozuvni o'chirish tarixda iz qoldiradi (avval tarix, so'ng o'chirish).
+  Future<void> removeRecord(String id) async {
+    final old = _records.where((r) => r.id == id).firstOrNull;
+    if (old == null) return;
+    if (_storeError != null) throw StateError('instrument data unreadable');
+    await _appendAudit(
+      CalibrationAuditEntry(
+        recordId: id,
+        action: CalibrationAuditAction.deleted,
+        at: _clock(),
+        summary: _summary(old),
+      ),
+    );
+    await _saveRecords([
+      for (final r in _records)
+        if (r.id != id) r,
+    ]);
+  }
 
   /// “Lokal ma'lumotlarni o'chirish” dan keyin (ombor allaqachon tozalangan).
   void resetInMemory() {
     _mine = const [];
     _records = const [];
+    _audit = const [];
     _storeError = null;
     notifyListeners();
   }

@@ -42,6 +42,10 @@ abstract final class StoreKeys {
   static const packsCatalog = 'packs.catalog';
   static const myInstruments = 'instruments.mine';
   static const calibrationLog = 'instruments.calibrations';
+
+  /// Kalibrlash jurnalining faqat qo'shiladigan tarixi (yaratildi / tahrir /
+  /// o'chirildi). «Lokal ma'lumotni o'chirish» uni ham tozalaydi.
+  static const calibrationAudit = 'instruments.calibrationAudit';
   static const microscopyQuiz = 'microscopy.quiz';
 
   /// Hamkorlar ro'yxati keshi (internetsiz ham oxirgisi ko'rinadi).
@@ -129,6 +133,7 @@ abstract final class StoreKeys {
     packsCatalog,
     myInstruments,
     calibrationLog,
+    calibrationAudit,
     microscopyQuiz,
     partnersCache,
     libraryReading,
