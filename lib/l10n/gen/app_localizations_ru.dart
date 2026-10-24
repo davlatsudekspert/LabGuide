@@ -10195,4 +10195,75 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get generalTestNameHint => 'Например, 1-й рубежный контроль';
+
+  @override
+  String get labDirSection => 'Направления ТБ и ВИЧ (справочник)';
+
+  @override
+  String get labDirSectionSub => 'Платформа и тест — в отдельных карточках';
+
+  @override
+  String get labDirTb => 'Диагностика туберкулёза (ТБ)';
+
+  @override
+  String get labDirHiv => 'Лабораторная диагностика ВИЧ';
+
+  @override
+  String get labDirTag => 'Справочно — ожидает проверки специалистом';
+
+  @override
+  String get labDirNotVerified => 'Не проверено';
+
+  @override
+  String get labDirKindPlatform => 'Платформа (прибор)';
+
+  @override
+  String get labDirKindTest => 'Тест';
+
+  @override
+  String get labDirKindMethod => 'Метод';
+
+  @override
+  String get labDirVsTest => 'Платформа и тест';
+
+  @override
+  String get labDirTechnology => 'Технология';
+
+  @override
+  String get labDirSpecimens => 'Образцы';
+
+  @override
+  String get labDirTasks => 'Задачи';
+
+  @override
+  String get labDirPrinciple => 'Принцип';
+
+  @override
+  String get labDirLimitations => 'Ограничения';
+
+  @override
+  String get labDirQc => 'Контроль качества и калибровка';
+
+  @override
+  String get labDirErrors => 'Преаналитические и аналитические ошибки';
+
+  @override
+  String get labDirBiosafety => 'Биобезопасность';
+
+  @override
+  String get labDirModels => 'Модели, подтверждённые официальным источником';
+
+  @override
+  String get labDirLinked => 'Связанные карточки';
+
+  @override
+  String get labDirStatusLine =>
+      'Статус проверки: NEEDS_REVIEW · специалист не рассматривал';
+
+  @override
+  String get labDirDisclaimer =>
+      'Только учебный справочник. Приложение не ставит диагноз и не является рабочим протоколом; решение за уполномоченной лабораторией и врачом.';
+
+  @override
+  String get labDirEmpty => 'В этом направлении нет карточек.';
 }

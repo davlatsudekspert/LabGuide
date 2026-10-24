@@ -31,6 +31,7 @@ import '../features/home/global_search.dart';
 import '../features/home/home_screen.dart';
 import '../features/instruments/calibration_screens.dart';
 import '../features/instruments/instrument_screens.dart';
+import '../features/instruments/lab_direction_screens.dart';
 import '../features/lab/lab_screens.dart';
 import '../features/classroom/board_screen.dart';
 import '../features/classroom/classroom_screens.dart';
@@ -922,6 +923,17 @@ GoRouter buildRouter(
                             ),
                           ),
                         ],
+                      ),
+                      GoRoute(
+                        path: 'd/:direction',
+                        builder: (context, state) => LabDirectionScreen(
+                          direction: state.pathParameters['direction']!,
+                        ),
+                      ),
+                      GoRoute(
+                        path: 'lc/:id',
+                        builder: (context, state) =>
+                            LabCardScreen(cardId: state.pathParameters['id']!),
                       ),
                       GoRoute(
                         path: 'm/:id',

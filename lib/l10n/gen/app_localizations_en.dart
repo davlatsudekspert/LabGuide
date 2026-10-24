@@ -10155,4 +10155,75 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get generalTestNameHint => 'E.g. Midterm 1';
+
+  @override
+  String get labDirSection => 'TB and HIV directions (reference)';
+
+  @override
+  String get labDirSectionSub => 'Platform and test on separate cards';
+
+  @override
+  String get labDirTb => 'Tuberculosis (TB) diagnostics';
+
+  @override
+  String get labDirHiv => 'HIV laboratory diagnostics';
+
+  @override
+  String get labDirTag => 'Reference — pending expert review';
+
+  @override
+  String get labDirNotVerified => 'Not verified';
+
+  @override
+  String get labDirKindPlatform => 'Platform (instrument)';
+
+  @override
+  String get labDirKindTest => 'Test';
+
+  @override
+  String get labDirKindMethod => 'Method';
+
+  @override
+  String get labDirVsTest => 'Platform vs test';
+
+  @override
+  String get labDirTechnology => 'Technology';
+
+  @override
+  String get labDirSpecimens => 'Specimens';
+
+  @override
+  String get labDirTasks => 'Tasks';
+
+  @override
+  String get labDirPrinciple => 'Principle';
+
+  @override
+  String get labDirLimitations => 'Limitations';
+
+  @override
+  String get labDirQc => 'QC and calibration';
+
+  @override
+  String get labDirErrors => 'Preanalytic and analytic errors';
+
+  @override
+  String get labDirBiosafety => 'Biosafety';
+
+  @override
+  String get labDirModels => 'Models confirmed by an official source';
+
+  @override
+  String get labDirLinked => 'Linked cards';
+
+  @override
+  String get labDirStatusLine =>
+      'Audit status: NEEDS_REVIEW · not reviewed by an expert';
+
+  @override
+  String get labDirDisclaimer =>
+      'Educational reference only. The app does not diagnose and is not an operating protocol; decisions rest with an authorised laboratory and clinician.';
+
+  @override
+  String get labDirEmpty => 'No cards in this direction.';
 }

@@ -5983,5 +5983,28 @@
       }
     }
   },
-  "generalTestNameHint": "E.g. Midterm 1"
+  "generalTestNameHint": "E.g. Midterm 1",
+  "labDirSection": "TB and HIV directions (reference)",
+  "labDirSectionSub": "Platform and test on separate cards",
+  "labDirTb": "Tuberculosis (TB) diagnostics",
+  "labDirHiv": "HIV laboratory diagnostics",
+  "labDirTag": "Reference — pending expert review",
+  "labDirNotVerified": "Not verified",
+  "labDirKindPlatform": "Platform (instrument)",
+  "labDirKindTest": "Test",
+  "labDirKindMethod": "Method",
+  "labDirVsTest": "Platform vs test",
+  "labDirTechnology": "Technology",
+  "labDirSpecimens": "Specimens",
+  "labDirTasks": "Tasks",
+  "labDirPrinciple": "Principle",
+  "labDirLimitations": "Limitations",
+  "labDirQc": "QC and calibration",
+  "labDirErrors": "Preanalytic and analytic errors",
+  "labDirBiosafety": "Biosafety",
+  "labDirModels": "Models confirmed by an official source",
+  "labDirLinked": "Linked cards",
+  "labDirStatusLine": "Audit status: NEEDS_REVIEW · not reviewed by an expert",
+  "labDirDisclaimer": "Educational reference only. The app does not diagnose and is not an operating protocol; decisions rest with an authorised laboratory and clinician.",
+  "labDirEmpty": "No cards in this direction."
 }

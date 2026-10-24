@@ -17445,6 +17445,144 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'E.g. Midterm 1'**
   String get generalTestNameHint;
+
+  /// No description provided for @labDirSection.
+  ///
+  /// In en, this message translates to:
+  /// **'TB and HIV directions (reference)'**
+  String get labDirSection;
+
+  /// No description provided for @labDirSectionSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Platform and test on separate cards'**
+  String get labDirSectionSub;
+
+  /// No description provided for @labDirTb.
+  ///
+  /// In en, this message translates to:
+  /// **'Tuberculosis (TB) diagnostics'**
+  String get labDirTb;
+
+  /// No description provided for @labDirHiv.
+  ///
+  /// In en, this message translates to:
+  /// **'HIV laboratory diagnostics'**
+  String get labDirHiv;
+
+  /// No description provided for @labDirTag.
+  ///
+  /// In en, this message translates to:
+  /// **'Reference — pending expert review'**
+  String get labDirTag;
+
+  /// No description provided for @labDirNotVerified.
+  ///
+  /// In en, this message translates to:
+  /// **'Not verified'**
+  String get labDirNotVerified;
+
+  /// No description provided for @labDirKindPlatform.
+  ///
+  /// In en, this message translates to:
+  /// **'Platform (instrument)'**
+  String get labDirKindPlatform;
+
+  /// No description provided for @labDirKindTest.
+  ///
+  /// In en, this message translates to:
+  /// **'Test'**
+  String get labDirKindTest;
+
+  /// No description provided for @labDirKindMethod.
+  ///
+  /// In en, this message translates to:
+  /// **'Method'**
+  String get labDirKindMethod;
+
+  /// No description provided for @labDirVsTest.
+  ///
+  /// In en, this message translates to:
+  /// **'Platform vs test'**
+  String get labDirVsTest;
+
+  /// No description provided for @labDirTechnology.
+  ///
+  /// In en, this message translates to:
+  /// **'Technology'**
+  String get labDirTechnology;
+
+  /// No description provided for @labDirSpecimens.
+  ///
+  /// In en, this message translates to:
+  /// **'Specimens'**
+  String get labDirSpecimens;
+
+  /// No description provided for @labDirTasks.
+  ///
+  /// In en, this message translates to:
+  /// **'Tasks'**
+  String get labDirTasks;
+
+  /// No description provided for @labDirPrinciple.
+  ///
+  /// In en, this message translates to:
+  /// **'Principle'**
+  String get labDirPrinciple;
+
+  /// No description provided for @labDirLimitations.
+  ///
+  /// In en, this message translates to:
+  /// **'Limitations'**
+  String get labDirLimitations;
+
+  /// No description provided for @labDirQc.
+  ///
+  /// In en, this message translates to:
+  /// **'QC and calibration'**
+  String get labDirQc;
+
+  /// No description provided for @labDirErrors.
+  ///
+  /// In en, this message translates to:
+  /// **'Preanalytic and analytic errors'**
+  String get labDirErrors;
+
+  /// No description provided for @labDirBiosafety.
+  ///
+  /// In en, this message translates to:
+  /// **'Biosafety'**
+  String get labDirBiosafety;
+
+  /// No description provided for @labDirModels.
+  ///
+  /// In en, this message translates to:
+  /// **'Models confirmed by an official source'**
+  String get labDirModels;
+
+  /// No description provided for @labDirLinked.
+  ///
+  /// In en, this message translates to:
+  /// **'Linked cards'**
+  String get labDirLinked;
+
+  /// No description provided for @labDirStatusLine.
+  ///
+  /// In en, this message translates to:
+  /// **'Audit status: NEEDS_REVIEW · not reviewed by an expert'**
+  String get labDirStatusLine;
+
+  /// No description provided for @labDirDisclaimer.
+  ///
+  /// In en, this message translates to:
+  /// **'Educational reference only. The app does not diagnose and is not an operating protocol; decisions rest with an authorised laboratory and clinician.'**
+  String get labDirDisclaimer;
+
+  /// No description provided for @labDirEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No cards in this direction.'**
+  String get labDirEmpty;
 }
 
 class _AppLocalizationsDelegate
