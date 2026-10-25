@@ -3158,7 +3158,7 @@
   "schemPartsMassSpecGcDetectorName": "Detektor (elektron ko‘paytirgich)",
   "schemPartsMassSpecGcDetectorFn": "Kelgan ionlarni kuchaytirilgan elektr signaliga aylantiradi.",
   "schemPartsMassSpecGcVacuumName": "Vakuum nasoslari",
-  "schemPartsMassSpecGcVacuumFn": "Turbomolekulyar va forvakuum nasoslari yuqori vakuum hosil qiladi — ionlar havo molekulalariga urilmaydi.",
+  "schemPartsMassSpecGcVacuumFn": "Turbomolekulyar va forvakuum nasoslari yuqori vakuum hosil qiladi — ionlarning havo molekulalari bilan to‘qnashuvi kamayadi.",
   "schemPartsMassSpecGcDataName": "Ma’lumotlar tizimi",
   "schemPartsMassSpecGcDataFn": "Xromatogramma va spektrlarni yozadi, kutubxona bilan solishtiradi.",
   "schemPartsMassSpecGcPrinciple": "Namuna injektorda bug‘lanadi, tashuvchi gaz (odatda geliy) uni termostatdagi kapillyar kolonkaga olib kiradi. Moddalar uchuvchanligi va kolonka bilan o‘zaro ta’siriga ko‘ra turli vaqtda chiqadi (ushlanish vaqti). Mass-spektrometrda ular ionlanadi, ionlar massa/zaryad nisbati (m/z) bo‘yicha ajratiladi va detektor qayd etadi.",

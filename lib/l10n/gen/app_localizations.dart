@@ -18967,7 +18967,7 @@ abstract class AppLocalizations {
   /// No description provided for @schemPartsMassSpecGcVacuumFn.
   ///
   /// In en, this message translates to:
-  /// **'Turbomolecular and roughing pumps keep a high vacuum so ions do not collide with air molecules.'**
+  /// **'Turbomolecular and roughing pumps keep a high vacuum so ions collide with air molecules less often.'**
   String get schemPartsMassSpecGcVacuumFn;
 
   /// No description provided for @schemPartsMassSpecGcDataName.

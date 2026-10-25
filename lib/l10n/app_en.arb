@@ -6270,7 +6270,7 @@
   "schemPartsMassSpecGcDetectorName": "Detector (electron multiplier)",
   "schemPartsMassSpecGcDetectorFn": "Turns arriving ions into an amplified electrical signal.",
   "schemPartsMassSpecGcVacuumName": "Vacuum pumps",
-  "schemPartsMassSpecGcVacuumFn": "Turbomolecular and roughing pumps keep a high vacuum so ions do not collide with air molecules.",
+  "schemPartsMassSpecGcVacuumFn": "Turbomolecular and roughing pumps keep a high vacuum so ions collide with air molecules less often.",
   "schemPartsMassSpecGcDataName": "Data system",
   "schemPartsMassSpecGcDataFn": "Records chromatograms and spectra and compares them with a library.",
   "schemPartsMassSpecGcPrinciple": "The sample is vaporised in the injector and a carrier gas (usually helium) carries it into a capillary column in the oven. Compounds leave the column at different times according to volatility and interaction with the column (retention time). In the mass spectrometer they are ionised, the ions are sorted by mass-to-charge ratio (m/z) and recorded by the detector.",

@@ -11040,7 +11040,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get schemPartsMassSpecGcVacuumFn =>
-      'Turbomolecular and roughing pumps keep a high vacuum so ions do not collide with air molecules.';
+      'Turbomolecular and roughing pumps keep a high vacuum so ions collide with air molecules less often.';
 
   @override
   String get schemPartsMassSpecGcDataName => 'Data system';

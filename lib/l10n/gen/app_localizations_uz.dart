@@ -10916,7 +10916,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get schemPartsMassSpecGcVacuumFn =>
-      'Turbomolekulyar va forvakuum nasoslari yuqori vakuum hosil qiladi — ionlar havo molekulalariga urilmaydi.';
+      'Turbomolekulyar va forvakuum nasoslari yuqori vakuum hosil qiladi — ionlarning havo molekulalari bilan to‘qnashuvi kamayadi.';
 
   @override
   String get schemPartsMassSpecGcDataName => 'Ma’lumotlar tizimi';

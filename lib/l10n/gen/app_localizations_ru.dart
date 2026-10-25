@@ -11089,7 +11089,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get schemPartsMassSpecGcVacuumFn =>
-      'Турбомолекулярный и форвакуумный насосы создают высокий вакуум, чтобы ионы не сталкивались с молекулами воздуха.';
+      'Турбомолекулярный и форвакуумный насосы создают высокий вакуум, чтобы ионы реже сталкивались с молекулами воздуха.';
 
   @override
   String get schemPartsMassSpecGcDataName => 'Система обработки данных';
