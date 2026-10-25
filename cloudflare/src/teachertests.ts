@@ -3,7 +3,7 @@
 // natijalar jamlanmasi va CSV; talaba tomoni (Talaba Pro `learner`).
 //
 // INERT: yo'llar faqat LG_BILLING_ENABLED=true da (app.ts `billingRoutes`),
-// aks holda 404 — bepul reliz bilan bir xil. Jadvallar: 0030_teacher_tests.sql.
+// aks holda 404 — bepul reliz bilan bir xil. Jadvallar: 0020_teacher_tests.sql.
 //
 // Vakolat (har so'rovda serverda; ilovadagi gate faqat UX):
 // * YANGI pullik amal (test yaratish/tahrirlash, topshirish, taklifnoma, CSV)

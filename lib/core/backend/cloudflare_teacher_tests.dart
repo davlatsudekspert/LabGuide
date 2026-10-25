@@ -2,13 +2,12 @@ import 'teacher_tests.dart';
 
 /// HTTP chaqiruv: JSON javob (`data`); xato statusda [BackendException]
 /// (server `error` kodi bilan) tashlaydi.
-typedef TtCall =
-    Future<Object?> Function(
-      String method,
-      String path, {
-      Object? body,
-      Map<String, String>? query,
-    });
+typedef TtCall = Future<Object?> Function(
+  String method,
+  String path, {
+  Object? body,
+  Map<String, String>? query,
+});
 
 /// Cloudflare Worker (`cloudflare/src/teachertests.ts`) mijozi.
 class CloudflareTeacherTests implements TeacherTestBackend {
@@ -22,7 +21,8 @@ class CloudflareTeacherTests implements TeacherTestBackend {
       (d is Map) ? d.cast<String, Object?>() : const {};
 
   static List<Map<String, Object?>> _rows(Object? d) => [
-    for (final r in (d as List? ?? const [])) (r as Map).cast<String, Object?>(),
+    for (final r in (d as List? ?? const []))
+      (r as Map).cast<String, Object?>(),
   ];
 
   @override
@@ -32,8 +32,9 @@ class CloudflareTeacherTests implements TeacherTestBackend {
   ];
 
   @override
-  Future<TeacherTest> teacherTest(String id) async =>
-      TeacherTest.fromJson(_map(await _call('GET', '/v1/teacher/tests/${_seg(id)}')));
+  Future<TeacherTest> teacherTest(String id) async => TeacherTest.fromJson(
+    _map(await _call('GET', '/v1/teacher/tests/${_seg(id)}')),
+  );
 
   @override
   Future<TeacherTest> createTeacherTest(TeacherTestInput input) async =>

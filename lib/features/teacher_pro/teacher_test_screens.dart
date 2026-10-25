@@ -113,13 +113,17 @@ class _TeacherTestsScreenState extends State<TeacherTestsScreen> {
     );
   }
 
-  Widget _body(BuildContext context, AppLocalizations l, TeacherTestBackend api) {
+  Widget _body(
+    BuildContext context,
+    AppLocalizations l,
+    TeacherTestBackend api,
+  ) {
     final ent = context.services.entitlements;
     final locked = !ent.can(Feature.teacherTestBuilder);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        if (locked) LgNotice(l.ttLockedNote, title: l.proLockedTeacher),
+        if (locked) LgNotice(l.proTtLockedNote, title: l.proLockedTeacher),
         LgButton(
           key: const ValueKey('tt-new'),
           label: l.ttNewTest,
@@ -152,9 +156,7 @@ class _TeacherTestsScreenState extends State<TeacherTestsScreen> {
                     key: ValueKey('tt-test-${t.id}'),
                     title: t.title,
                     subtitle: [
-                      t.published
-                          ? l.ttStatusPublished
-                          : l.ttStatusUnpublished,
+                      t.published ? l.ttStatusPublished : l.ttStatusUnpublished,
                       l.ttQuestionsCount(t.questionCount),
                       if (t.assignmentCount > 0)
                         l.ttAssignedCount(t.assignmentCount),
@@ -231,11 +233,7 @@ class _TeacherTestDetailScreenState extends State<TeacherTestDetailScreen> {
     }
   }
 
-  Future<void> _go(
-    TeacherTestBackend api,
-    Feature feature,
-    String path,
-  ) async {
+  Future<void> _go(TeacherTestBackend api, Feature feature, String path) async {
     await pushGated(context, feature, path);
     if (mounted) await _load(api);
   }
@@ -663,7 +661,11 @@ class _TeacherTestEditScreenState extends State<TeacherTestEditScreen> {
     );
   }
 
-  Widget _form(BuildContext context, AppLocalizations l, TeacherTestBackend api) {
+  Widget _form(
+    BuildContext context,
+    AppLocalizations l,
+    TeacherTestBackend api,
+  ) {
     final full = _questions.length >= TeacherTestLimits.questions;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -938,7 +940,8 @@ class _QuestionDialogState extends State<_QuestionDialog> {
 // ----------------------------------------------- ilova banki (nusxa)
 
 /// Ilovadagi savollar (mashq savollari va toifa banki) — faqat bitta
-/// to'g'ri javobli, 2–6 variantli va kaliti bahsli bo'lmaganlari. Tanlanganlari
+/// to'g'ri javobli, 2–6 variantli va kaliti bahsli bo'lmaganlari (ilovadagi
+/// testlarda ko'rsatiladigan savollar). Tanlanganlari
 /// ustoz testiga NUSXA sifatida (manbasi bilan) qo'shiladi.
 class TtBankPickerScreen extends StatefulWidget {
   const TtBankPickerScreen({super.key});
@@ -970,17 +973,23 @@ class _TtBankPickerScreenState extends State<TtBankPickerScreen> {
       q.correct.length == 1 &&
       q.optionCount >= TeacherTestLimits.optionsMin &&
       q.optionCount <= TeacherTestLimits.optionsMax &&
-      !q.isDraft &&
       !(q.officialKeyCheck?.flagged ?? false);
 
-  List<_BankItem> _items(BuildContext context, PackQuestionSource pack) {
+  /// Faqat nusxasi server qoidalaridan o'tadigan savollar (joriy til).
+  List<_BankItem> _items(
+    BuildContext context,
+    PackQuestionSource pack,
+    String lang,
+  ) {
     final toifa = context.services.toifa.bank;
     return [
       for (final q in pack.questions)
-        if (_usable(q)) _BankItem(TtBank.quiz, q),
+        if (_usable(q) && copyOf(_BankItem(TtBank.quiz, q), lang) != null)
+          _BankItem(TtBank.quiz, q),
       if (toifa != null)
         for (final q in toifa.scorable)
-          if (_usable(q)) _BankItem(TtBank.toifa, q),
+          if (_usable(q) && copyOf(_BankItem(TtBank.toifa, q), lang) != null)
+            _BankItem(TtBank.toifa, q),
     ];
   }
 
@@ -997,9 +1006,7 @@ class _TtBankPickerScreenState extends State<TtBankPickerScreen> {
       correct: correct,
       explanation: switch (q.explanation(correct, lang) ?? q.basis(lang)) {
         final String e when e.trim().isNotEmpty =>
-          e.trim().length > TeacherTestLimits.explanation
-              ? null
-              : e.trim(),
+          e.trim().length > TeacherTestLimits.explanation ? null : e.trim(),
         _ => null,
       },
       source: TtSource(item.bank, q.id),
@@ -1017,7 +1024,7 @@ class _TtBankPickerScreenState extends State<TtBankPickerScreen> {
       children: [
         ContentGate(
           builder: (context, pack) {
-            final all = _items(context, PackQuestionSource.of(pack));
+            final all = _items(context, PackQuestionSource.of(pack), lang);
             final q = _query.text.trim().toLowerCase();
             final filtered = [
               for (final it in all)
@@ -1069,7 +1076,9 @@ class _TtBankPickerScreenState extends State<TtBankPickerScreen> {
                       : () {
                           final out = <TtQuestion>[
                             for (final it in all)
-                              if (_picked.contains('${it.bank.name}:${it.question.id}'))
+                              if (_picked.contains(
+                                '${it.bank.name}:${it.question.id}',
+                              ))
                                 ?copyOf(it, lang),
                           ];
                           context.pop(out);

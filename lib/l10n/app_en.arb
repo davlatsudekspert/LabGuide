@@ -7209,7 +7209,7 @@
   },
   "ttEntrySection": "Teacher tests",
   "ttEntryTeacher": "My tests",
-  "ttEntryTeacherSub": "Teacher Pro: your own tests, assignments and results",
+  "proTtEntryTeacherSub": "Teacher Pro: your own tests, assignments and results",
   "ttEntryStudent": "Tests from my teacher",
   "ttEntryStudentSub": "Special tests your teacher assigned to you",
   "ttEntryInvite": "Invitation code",
@@ -7236,7 +7236,7 @@
       }
     }
   },
-  "ttLockedNote": "Creating, editing and assigning tests is part of Teacher Pro. Tests and results you already created stay visible.",
+  "proTtLockedNote": "Creating, editing and assigning tests is part of Teacher Pro. Tests and results you already created stay visible.",
   "ttOfflineCached": "No internet — showing the last saved copy.",
   "ttEdit": "Edit",
   "ttAssign": "Assign",
@@ -7527,7 +7527,7 @@
   },
   "ttVisibleNoticeTitle": "Your result is visible to your teacher",
   "ttVisibleNotice": "Your teacher will see your alias (or seat number), answers, score and time for this test. Your email is not shown.",
-  "ttStudentLocked": "Starting a teacher test is part of Student Pro. Your results stay visible.",
+  "proTtStudentLocked": "Starting a teacher test is part of Student Pro. Your results stay visible.",
   "ttLatePolicyAccept": "Accepted after the deadline too (marked as late).",
   "ttLatePolicyReject": "Cannot be started after the deadline.",
   "ttCantClosed": "The teacher has closed this assignment.",

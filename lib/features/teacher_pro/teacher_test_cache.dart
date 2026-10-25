@@ -4,23 +4,34 @@ import '../../core/backend/teacher_tests.dart';
 import '../../core/storage/kv_store.dart';
 
 /// Ustoz testlari keshi (qurilmada; "Lokal ma'lumotni o'chirish" tozalaydi).
-/// Ustoz ro'yxati internetsiz ham ko'rinadi; talabaning boshlangan
-/// urinishidagi javoblar ilova yopilsa ham yo'qolmaydi.
+/// Ustoz ro'yxati internetsiz ham ko'rinadi (faqat oxirgi hisobniki — boshqa
+/// hisob bilan kirilsa ko'rsatilmaydi); talabaning boshlangan urinishidagi
+/// javoblar ilova yopilsa ham yo'qolmaydi.
 class TeacherTestCache {
   TeacherTestCache(this._store);
 
   final KeyValueStore _store;
 
-  static String _testsKey(String uid) => 'teacherPro.tests.$uid';
-  static String _answersKey(String attemptId) => 'teacherPro.answers.$attemptId';
+  /// Saqlanadigan ochiq urinishlar soni (eskisi o'chadi).
+  static const maxAnswerSets = 20;
+
+  Map<String, Object?> _read(String key) {
+    final raw = _store.getString(key);
+    if (raw == null) return {};
+    try {
+      return (jsonDecode(raw) as Map).cast<String, Object?>();
+    } on Object {
+      return {};
+    }
+  }
 
   List<TeacherTest>? tests(String? uid) {
     if (uid == null) return null;
-    final raw = _store.getString(_testsKey(uid));
-    if (raw == null) return null;
+    final m = _read(StoreKeys.teacherTestsCache);
+    if (m['uid'] != uid) return null;
     try {
       return [
-        for (final j in jsonDecode(raw) as List)
+        for (final j in m['tests']! as List)
           TeacherTest.fromJson((j as Map).cast()),
       ];
     } on Object {
@@ -31,8 +42,11 @@ class TeacherTestCache {
   Future<void> saveTests(String? uid, List<TeacherTest> tests) async {
     if (uid == null) return;
     await _store.setString(
-      _testsKey(uid),
-      jsonEncode([for (final t in tests) t.toJson()]),
+      StoreKeys.teacherTestsCache,
+      jsonEncode({
+        'uid': uid,
+        'tests': [for (final t in tests) t.toJson()],
+      }),
     );
   }
 
@@ -65,16 +79,24 @@ class TeacherTestCache {
   }
 
   List<int>? answers(String attemptId, int length) {
-    final raw = _store.getStringList(_answersKey(attemptId));
-    if (raw == null || raw.length != length) return null;
-    return [for (final v in raw) int.tryParse(v) ?? -1];
+    final v = _read(StoreKeys.teacherTestAnswers)[attemptId];
+    if (v is! List || v.length != length) return null;
+    return [for (final a in v) a is int ? a : -1];
   }
 
-  Future<void> saveAnswers(String attemptId, List<int> answers) =>
-      _store.setStringList(_answersKey(attemptId), [
-        for (final a in answers) '$a',
-      ]);
+  Future<void> saveAnswers(String attemptId, List<int> answers) async {
+    final m = _read(StoreKeys.teacherTestAnswers)
+      ..remove(attemptId)
+      ..[attemptId] = answers;
+    while (m.length > maxAnswerSets) {
+      m.remove(m.keys.first);
+    }
+    await _store.setString(StoreKeys.teacherTestAnswers, jsonEncode(m));
+  }
 
-  Future<void> clearAnswers(String attemptId) =>
-      _store.remove(_answersKey(attemptId));
+  Future<void> clearAnswers(String attemptId) async {
+    final m = _read(StoreKeys.teacherTestAnswers);
+    if (m.remove(attemptId) == null) return;
+    await _store.setString(StoreKeys.teacherTestAnswers, jsonEncode(m));
+  }
 }

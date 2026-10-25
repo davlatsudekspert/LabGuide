@@ -99,13 +99,17 @@ class _TtAssignScreenState extends State<TtAssignScreen> {
     try {
       final m = await context.services.backend.groupMembers(id);
       if (mounted && _groupId == id) {
-        setState(() => _members = [
-          for (final x in m)
-            if (!x.isTeacher) x,
-        ]);
+        setState(
+          () => _members = [
+            for (final x in m)
+              if (!x.isTeacher) x,
+          ],
+        );
       }
     } on Object catch (e) {
-      if (mounted) setState(() => _error = ttErrorText(e, AppLocalizations.of(context)));
+      if (mounted) {
+        setState(() => _error = ttErrorText(e, AppLocalizations.of(context)));
+      }
     }
   }
 
@@ -126,8 +130,7 @@ class _TtAssignScreenState extends State<TtAssignScreen> {
     if (gid == null) return;
     // Topshirish — yangi pullik amal (obuna shu orada tugagan bo'lsa ham
     // tanlovlar yo'qolmaydi).
-    if (!await requireFeature(context, Feature.teacherTestAssign) ||
-        !mounted) {
+    if (!await requireFeature(context, Feature.teacherTestAssign) || !mounted) {
       return;
     }
     final due = assignDueAt(_due, _custom, context.services.exams.now());
@@ -149,7 +152,8 @@ class _TtAssignScreenState extends State<TtAssignScreen> {
       showSnack(context, l.ttAssigned);
       context.pop(true);
     } on Object catch (e) {
-      if (mounted && !ttOfferIfPlanError(context, e, Feature.teacherTestAssign)) {
+      if (mounted &&
+          !ttOfferIfPlanError(context, e, Feature.teacherTestAssign)) {
         setState(() => _error = ttErrorText(e, l));
       }
     } finally {
@@ -278,7 +282,10 @@ class _TtAssignScreenState extends State<TtAssignScreen> {
         ),
         if (due != null) ...[
           const SizedBox(height: 8),
-          Text(l.classesDueAt(formatWhen(due, context)), style: text.bodyMedium),
+          Text(
+            l.classesDueAt(formatWhen(due, context)),
+            style: text.bodyMedium,
+          ),
         ],
         LgSectionTitle(l.ttAssignAttempts),
         Wrap(
@@ -381,7 +388,8 @@ class _TtInvitesScreenState extends State<TtInvitesScreen> {
       await api.createInvite(gid, maxUses: _uses, days: _days);
       if (mounted) await _pick(api, gid);
     } on Object catch (e) {
-      if (mounted && !ttOfferIfPlanError(context, e, Feature.teacherTestAssign)) {
+      if (mounted &&
+          !ttOfferIfPlanError(context, e, Feature.teacherTestAssign)) {
         showSnack(context, ttErrorText(e, l));
       }
     } finally {

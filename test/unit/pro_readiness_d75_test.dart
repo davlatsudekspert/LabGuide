@@ -72,9 +72,11 @@ void main() {
       await ent.refresh(reprobe: false);
       expect(ent.activeEntitlement, isNull);
       expect(ent.proSource, ProSource.none);
-      // Bepul imkoniyatlar hech qachon yopilmaydi (gated bo'sh).
+      // Kesh tugagach faqat QURILGAN pullik funksiyalar yopiladi (D-78:
+      // `gated` — Ustoz Pro va talaba tomoni); katalogdagi qolganlari ochiq,
+      // bugungi bepul funksiyalar katalogda umuman yo'q (hech qachon yopilmaydi).
       for (final f in Feature.values) {
-        expect(ent.can(f), isTrue, reason: f.name);
+        expect(ent.can(f), !ProGatePolicy.gated.contains(f), reason: f.name);
       }
     });
 

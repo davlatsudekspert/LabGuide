@@ -3,8 +3,9 @@
 -- (teacherResults), talaba tomoni (teacherTests, `learner`).
 --
 -- FAQAT MIGRATSIYA FAYLI: production D1 ga qo'llanmagan; yo'llar
--- LG_BILLING_ENABLED=true bo'lmaguncha 404 (src/teachertests.ts). Raqam 0030 —
--- parallel tarmoqlardagi 0019+ migratsiyalari bilan to'qnashmasligi uchun.
+-- LG_BILLING_ENABLED=true bo'lmaguncha 404 (src/teachertests.ts). Raqam 0020:
+-- 0019 parallel `paid/srv` tarmog'ida band (`0019_trial_attest_guest.sql`) —
+-- birlashtirilgach raqamlar uzilishsiz bo'ladi (repo_registry_guard).
 --
 -- Bugungi BEPUL guruhlar (0002/0004/0010/0012: study_groups, group_members,
 -- assignments, submissions) O'ZGARMAYDI — bu jadvallar faqat ularga havola

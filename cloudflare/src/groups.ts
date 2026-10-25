@@ -308,7 +308,7 @@ export async function leaveGroup(ctx: Ctx, gid: string): Promise<Response> {
   const m = await requireMember(ctx, s, gid);
   if (m.role === 'teacher') throw badRequest('teacher_cannot_leave');
   await ctx.db.batch([
-    // Ustoz Pro (0030, faqat bayroq bilan): shu guruhdagi Ustoz testi urinishlari.
+    // Ustoz Pro (0020, faqat bayroq bilan): shu guruhdagi Ustoz testi urinishlari.
     ...(billingEnabled(ctx.env) ? teacherLeaveStatements(ctx.db, gid, s.userId) : []),
     ctx.db
       .prepare(`DELETE FROM group_members WHERE group_id = ?1 AND user_id = ?2 AND member_role = 'student'`)
@@ -395,7 +395,7 @@ export async function removeMember(ctx: Ctx, gid: string, uid: string): Promise<
     ctx.db
       .prepare(`DELETE FROM group_members WHERE group_id = ?1 AND user_id = ?2 AND member_role = 'student'`)
       .bind(gid, target),
-    // Ustoz Pro (0030, faqat bayroq bilan): chiqarilgan talabaning urinishlari.
+    // Ustoz Pro (0020, faqat bayroq bilan): chiqarilgan talabaning urinishlari.
     ...(billingEnabled(ctx.env) ? teacherLeaveStatements(ctx.db, gid, target) : []),
   ]);
   // Alohida kod: ilova buni "allaqachon chiqarilgan" deb tushunadi.

@@ -1,4 +1,4 @@
-// Ustoz Pro (D-78, src/teachertests.ts, 0030_teacher_tests.sql): vakolat
+// Ustoz Pro (D-78, src/teachertests.ts, 0020_teacher_tests.sql): vakolat
 // (sessiya, reja, ustoz hisobi), egalik, tekshiruv, topshiriq hayot sikli
 // (assigned → started → submitted → expired), muddat va vaqt, maxfiylik
 // (ustoz faqat rozilik bergan a'zolarni ko'radi), taklifnoma, natijalar va

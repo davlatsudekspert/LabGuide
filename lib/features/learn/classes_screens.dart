@@ -373,7 +373,7 @@ class _TeacherProEntries extends StatelessWidget {
         (
           'classes-tt-teacher',
           l.ttEntryTeacher,
-          l.ttEntryTeacherSub,
+          l.proTtEntryTeacherSub,
           Icons.edit_document,
           TtRoutes.tests,
         ),

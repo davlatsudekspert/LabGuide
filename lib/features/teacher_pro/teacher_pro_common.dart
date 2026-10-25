@@ -35,8 +35,7 @@ abstract final class TtRoutes {
 
 /// Server xato kodi → foydalanuvchi matni (qolgani — guruhlar xatolari).
 String ttErrorText(Object e, AppLocalizations l) => switch (e) {
-  BackendException(code: 'plan_required' || 'tier_insufficient') =>
-    l.ttErrPlan,
+  BackendException(code: 'plan_required' || 'tier_insufficient') => l.ttErrPlan,
   BackendException(code: 'teacher_role_required') => l.ttErrTeacherRole,
   BackendException(code: 'version_conflict') => l.ttVersionConflict,
   BackendException(code: 'not_published') => l.ttMustPublish,
@@ -59,15 +58,14 @@ String ttErrorText(Object e, AppLocalizations l) => switch (e) {
   BackendException(code: 'consent_required') => l.ttInviteConsentBody,
   BackendException(code: 'abusive_language') => l.ttErrAbusive,
   BackendException(
-    code:
-      'invalid_question' ||
-          'invalid_question_text' ||
-          'invalid_options' ||
-          'duplicate_options' ||
-          'invalid_correct' ||
-          'invalid_explanation' ||
-          'invalid_source' ||
-          'invalid_questions',
+    code: 'invalid_question' ||
+        'invalid_question_text' ||
+        'invalid_options' ||
+        'duplicate_options' ||
+        'invalid_correct' ||
+        'invalid_explanation' ||
+        'invalid_source' ||
+        'invalid_questions',
   ) =>
     l.ttErrQuestionGeneric,
   _ => classesErrorText(e, l),
@@ -115,7 +113,15 @@ class TeacherProGate extends StatelessWidget {
         message: l.classesUnavailableBody,
       );
     }
-    return ClassesGate(child: Builder(builder: (context) => builder(context, api)));
+    // O'z tinglovchisi: hisob almashsa (chiqib, boshqasi bilan kirilsa)
+    // [builder] har safar qayta chaqiriladi — oldingi hisob ma'lumoti
+    // ko'rinib qolmaydi.
+    return ClassesGate(
+      child: ListenableBuilder(
+        listenable: context.services.auth,
+        builder: (context, _) => builder(context, api),
+      ),
+    );
   }
 }
 

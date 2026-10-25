@@ -1,4 +1,4 @@
-// Ustoz Pro yozuvlarini o'chirish (0030_teacher_tests.sql). Alohida modul —
+// Ustoz Pro yozuvlarini o'chirish (0020_teacher_tests.sql). Alohida modul —
 // groups.ts va auth.ts uni teachertests.ts bilan aylana importsiz chaqiradi.
 // Jadvallar faqat Pro migratsiyasi qo'llangan bazada bor, shuning uchun
 // chaqiruvchi har doim `billingEnabled(env)` bilan tekshiradi.

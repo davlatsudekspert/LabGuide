@@ -164,10 +164,7 @@ class _TtResultsScreenState extends State<TtResultsScreen> {
         ),
         LgSectionTitle(l.ttSummaryTitle),
         LgMetric(label: l.ttSumTargets, value: '${r.targets}'),
-        LgMetric(
-          label: l.ttSumSubmitted,
-          value: '${r.submitted}/${r.targets}',
-        ),
+        LgMetric(label: l.ttSumSubmitted, value: '${r.submitted}/${r.targets}'),
         LgMetric(label: l.ttSumAverage, value: pct(r.averagePercent)),
         if (a.passPercent != null)
           LgMetric(label: l.ttSumPassRate, value: pct(r.passRate)),

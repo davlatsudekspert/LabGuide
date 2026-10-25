@@ -151,7 +151,11 @@ class _StudentTeacherTestScreenState extends State<StudentTeacherTestScreen> {
   /// Boshlash: YANGI urinish — gate; boshlangan urinish — tekshiruvsiz.
   void _onStart(TeacherTestBackend api, StudentTeacherTest t) {
     if (_starting) return;
-    if (!allowOrOffer(context, Feature.teacherTests, inProgress: t.inProgress)) {
+    if (!allowOrOffer(
+      context,
+      Feature.teacherTests,
+      inProgress: t.inProgress,
+    )) {
       return;
     }
     unawaited(_start(api, t));
@@ -220,7 +224,8 @@ class _StudentTeacherTestScreenState extends State<StudentTeacherTestScreen> {
   ) {
     final text = Theme.of(context).textTheme;
     final locked =
-        !t.inProgress && !context.services.entitlements.can(Feature.teacherTests);
+        !t.inProgress &&
+        !context.services.entitlements.can(Feature.teacherTests);
     final reason = t.canStart || t.inProgress
         ? null
         : t.closed
@@ -248,10 +253,7 @@ class _StudentTeacherTestScreenState extends State<StudentTeacherTestScreen> {
           ],
         ),
         const SizedBox(height: 10),
-        LgMetric(
-          label: l.ttAssignDue,
-          value: formatWhen(t.dueAt, context),
-        ),
+        LgMetric(label: l.ttAssignDue, value: formatWhen(t.dueAt, context)),
         LgMetric(
           label: l.ttAssignAttempts,
           value: '${t.attemptsUsed}/${t.maxAttempts}',
@@ -270,7 +272,7 @@ class _StudentTeacherTestScreenState extends State<StudentTeacherTestScreen> {
             title: l.ttVisibleNoticeTitle,
             kind: NoticeKind.info,
           ),
-        if (locked) LgNotice(l.ttStudentLocked, title: l.proLockedLearner),
+        if (locked) LgNotice(l.proTtStudentLocked, title: l.proLockedLearner),
         if (reason != null) LgNotice(reason),
         if (t.canStart || t.inProgress) ...[
           const SizedBox(height: 8),
@@ -491,11 +493,7 @@ class _TtRunScreenState extends State<TtRunScreen> {
       if (!mounted) return;
       final terminal =
           e is BackendException &&
-          const {
-            'time_over',
-            'already_submitted',
-            'closed',
-          }.contains(e.code);
+          const {'time_over', 'already_submitted', 'closed'}.contains(e.code);
       if (terminal) {
         await services.teacherTestCache.clearAnswers(run.attemptId);
         if (!mounted) return;
@@ -530,7 +528,11 @@ class _TtRunScreenState extends State<TtRunScreen> {
     final last = _index == run.questions.length - 1;
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.args!.test.title, maxLines: 1, overflow: TextOverflow.ellipsis),
+        title: Text(
+          widget.args!.test.title,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+        ),
       ),
       body: SafeArea(
         top: false,
@@ -544,7 +546,9 @@ class _TtRunScreenState extends State<TtRunScreen> {
                     runSpacing: 6,
                     crossAxisAlignment: WrapCrossAlignment.center,
                     children: [
-                      LgEyebrow(l.quizProgress(_index + 1, run.questions.length)),
+                      LgEyebrow(
+                        l.quizProgress(_index + 1, run.questions.length),
+                      ),
                       if (left != null)
                         LgTag(
                           l.ttTimeLeft(
@@ -564,35 +568,29 @@ class _TtRunScreenState extends State<TtRunScreen> {
                   for (final (i, o) in q.options.indexed)
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 4),
-                      child: Semantics(
+                      child: LgPressable(
+                        key: ValueKey('tt-run-option-$i'),
+                        onTap: () => _choose(i),
                         selected: _answers[_index] == i,
-                        button: true,
-                        child: LgPressable(
-                          key: ValueKey('tt-run-option-$i'),
-                          onTap: () => _choose(i),
-                          selected: _answers[_index] == i,
-                          color: _answers[_index] == i ? p.soft : p.paper,
-                          borderRadius: BorderRadius.circular(14),
-                          border: Border.all(
-                            color: _answers[_index] == i ? p.brand : p.outline,
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(14),
-                            child: Row(
-                              children: [
-                                Icon(
-                                  _answers[_index] == i
-                                      ? Icons.radio_button_checked_rounded
-                                      : Icons.radio_button_unchecked_rounded,
-                                  color: _answers[_index] == i
-                                      ? p.brand
-                                      : p.sub,
-                                  size: 20,
-                                ),
-                                const SizedBox(width: 10),
-                                Expanded(child: Text(o, style: text.bodyLarge)),
-                              ],
-                            ),
+                        color: _answers[_index] == i ? p.soft : p.paper,
+                        borderRadius: BorderRadius.circular(14),
+                        border: Border.all(
+                          color: _answers[_index] == i ? p.brand : p.outline,
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(14),
+                          child: Row(
+                            children: [
+                              Icon(
+                                _answers[_index] == i
+                                    ? Icons.radio_button_checked_rounded
+                                    : Icons.radio_button_unchecked_rounded,
+                                color: _answers[_index] == i ? p.brand : p.sub,
+                                size: 20,
+                              ),
+                              const SizedBox(width: 10),
+                              Expanded(child: Text(o, style: text.bodyLarge)),
+                            ],
                           ),
                         ),
                       ),
@@ -734,8 +732,11 @@ class _TtInviteAcceptScreenState extends State<TtInviteAcceptScreen> {
         displayName: nick.isEmpty ? null : nick,
       );
       if (!mounted) return;
-      showSnack(context, l.ttInviteJoined);
+      final messenger = ScaffoldMessenger.of(context);
       context.go('/learn/classes/g/$gid');
+      messenger
+        ..hideCurrentSnackBar()
+        ..showSnackBar(SnackBar(content: Text(l.ttInviteJoined)));
     } on Object catch (e) {
       if (mounted) setState(() => _error = ttErrorText(e, l));
     } finally {
@@ -762,7 +763,11 @@ class _TtInviteAcceptScreenState extends State<TtInviteAcceptScreen> {
     );
   }
 
-  Widget _body(BuildContext context, AppLocalizations l, TeacherTestBackend api) {
+  Widget _body(
+    BuildContext context,
+    AppLocalizations l,
+    TeacherTestBackend api,
+  ) {
     final text = Theme.of(context).textTheme;
     final p = _preview;
     return Column(

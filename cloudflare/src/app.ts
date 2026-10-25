@@ -266,7 +266,7 @@ export function createApp(deps: Deps) {
         ...(billingEnabled(env) ? trial.trialCleanupStatements(env.DB, now) : []),
         // Do'kon bildirishnomalari jurnali (0017) — ham faqat bayroq bilan.
         ...(billingEnabled(env) ? billing.notificationCleanupStatements(env.DB, now) : []),
-        // Ustoz Pro (0030): vaqti tugagan ochiq urinishlar — `expired`.
+        // Ustoz Pro (0020): vaqti tugagan ochiq urinishlar — `expired`.
         ...(billingEnabled(env) ? teacherCleanupStatements(env.DB, now, teacherTests.TT_GRACE_MS) : []),
       ]);
     },

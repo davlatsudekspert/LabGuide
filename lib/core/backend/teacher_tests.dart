@@ -193,7 +193,8 @@ class TeacherTest {
     'question_count': questionCount,
     'status': published ? 'published' : 'unpublished',
     'version': version,
-    if (questions != null) 'questions': [for (final q in questions!) q.toJson()],
+    if (questions != null)
+      'questions': [for (final q in questions!) q.toJson()],
     'time_limit_minutes': timeLimitMinutes,
     'pass_percent': passPercent,
     'updated_at': updatedAt?.toUtc().toIso8601String(),
@@ -532,10 +533,12 @@ abstract final class TtInviteCode {
       : token;
 
   /// Ilova havolasi (ilova o'rnatilgan telefonda to'g'ridan-to'g'ri ochiladi).
-  static String appLink(String token) =>
-      Uri(scheme: 'labguide', host: 'app', path: '/ti', queryParameters: {
-        't': token,
-      }).toString();
+  static String appLink(String token) => Uri(
+    scheme: 'labguide',
+    host: 'app',
+    path: '/ti',
+    queryParameters: {'t': token},
+  ).toString();
 }
 
 @immutable
@@ -672,33 +675,32 @@ class StudentTeacherTest {
     this.attempts = const [],
   });
 
-  factory StudentTeacherTest.fromJson(
-    Map<String, Object?> j,
-  ) => StudentTeacherTest(
-    id: j['id']! as String,
-    title: j['title']! as String,
-    groupId: j['group_id']! as String,
-    groupName: j['group_name'] as String? ?? '',
-    teacherAlias: j['teacher_alias'] as String?,
-    questionCount: (j['question_count'] as num?)?.toInt() ?? 0,
-    timeLimitMinutes: (j['time_limit_minutes'] as num?)?.toInt(),
-    passPercent: (j['pass_percent'] as num?)?.toInt(),
-    maxAttempts: (j['max_attempts'] as num?)?.toInt() ?? 1,
-    attemptsUsed: (j['attempts_used'] as num?)?.toInt() ?? 0,
-    dueAt: DateTime.parse(j['due_at']! as String),
-    acceptLate: j['late_policy'] == 'accept',
-    closed: j['status'] == 'closed',
-    state: TtState.parse(j['state']),
-    canStart: j['can_start'] == true,
-    openAttemptId: j['open_attempt_id'] as String?,
-    bestPercent: (j['best_percent'] as num?)?.toInt(),
-    passed: j['passed'] as bool?,
-    late: j['late'] == true,
-    attempts: [
-      for (final a in (j['attempts'] as List? ?? const []))
-        TtAttempt.fromJson((a as Map).cast()),
-    ],
-  );
+  factory StudentTeacherTest.fromJson(Map<String, Object?> j) =>
+      StudentTeacherTest(
+        id: j['id']! as String,
+        title: j['title']! as String,
+        groupId: j['group_id']! as String,
+        groupName: j['group_name'] as String? ?? '',
+        teacherAlias: j['teacher_alias'] as String?,
+        questionCount: (j['question_count'] as num?)?.toInt() ?? 0,
+        timeLimitMinutes: (j['time_limit_minutes'] as num?)?.toInt(),
+        passPercent: (j['pass_percent'] as num?)?.toInt(),
+        maxAttempts: (j['max_attempts'] as num?)?.toInt() ?? 1,
+        attemptsUsed: (j['attempts_used'] as num?)?.toInt() ?? 0,
+        dueAt: DateTime.parse(j['due_at']! as String),
+        acceptLate: j['late_policy'] == 'accept',
+        closed: j['status'] == 'closed',
+        state: TtState.parse(j['state']),
+        canStart: j['can_start'] == true,
+        openAttemptId: j['open_attempt_id'] as String?,
+        bestPercent: (j['best_percent'] as num?)?.toInt(),
+        passed: j['passed'] as bool?,
+        late: j['late'] == true,
+        attempts: [
+          for (final a in (j['attempts'] as List? ?? const []))
+            TtAttempt.fromJson((a as Map).cast()),
+        ],
+      );
 
   final String id;
   final String title;
@@ -800,7 +802,11 @@ abstract interface class TeacherTestBackend {
   Future<void> closeTeacherAssignment(String id);
   Future<void> deleteTeacherAssignment(String id);
   Future<List<TtInvite>> groupInvites(String groupId);
-  Future<TtInvite> createInvite(String groupId, {int maxUses = 50, int days = 7});
+  Future<TtInvite> createInvite(
+    String groupId, {
+    int maxUses = 50,
+    int days = 7,
+  });
   Future<void> revokeInvite(String id);
 
   // --- ustoz: natijalar (teacherResults)
@@ -830,6 +836,5 @@ abstract interface class TeacherTestHost {
 /// Server xato kodi bo'yicha (masalan, `tier_insufficient`).
 extension TtErrorX on BackendException {
   /// Serverdagi reja bu amalni ochmaydi (client gate'dan o'tib ketgan holat).
-  bool get planNeeded =>
-      code == 'plan_required' || code == 'tier_insufficient';
+  bool get planNeeded => code == 'plan_required' || code == 'tier_insufficient';
 }
