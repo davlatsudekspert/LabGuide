@@ -10426,4 +10426,410 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get profileSignOutAllDone => 'Barcha qurilmalardan chiqildi.';
+
+  @override
+  String get howToButton => 'Qanday foydalaniladi?';
+
+  @override
+  String get howToStepsTitle => 'Qadamlar';
+
+  @override
+  String get howToResultTitle => 'Natijada nima olasiz';
+
+  @override
+  String get howToWatchVideo => 'Videoni ko‘rish';
+
+  @override
+  String get howToCalibrationStep1 =>
+      '«1. Apparat»: katalogdan modelni tanlang yoki ro‘yxatda yo‘q apparatni qo‘shing.';
+
+  @override
+  String get howToCalibrationStep2 =>
+      '«2. Analit»: tahlil nomini yozing (masalan, glyukoza) va ro‘yxatdan tanlang.';
+
+  @override
+  String get howToCalibrationStep3 =>
+      '«3. Reagent»: ishlab chiqaruvchi, REF raqami va IFU versiyasini kiriting.';
+
+  @override
+  String get howToCalibrationStep4 =>
+      '«Yo‘riqnomani ko‘rsatish» ni bosing — ilova moslikni tekshiradi va mos yo‘riqnomani ko‘rsatadi.';
+
+  @override
+  String get howToCalibrationStep5 =>
+      '«Kalibrlash yozuvini yaratish»: lot, qiymatlar va natijani kiritib, yozuvni saqlang.';
+
+  @override
+  String get howToCalibrationStep6 =>
+      'Barcha yozuvlar «Kalibrlash jurnali» da — faqat shu qurilmada saqlanadi.';
+
+  @override
+  String get howToCalibrationResult =>
+      'Apparat, analit va reagentga mos kalibrlash yo‘riqnomasi hamda qurilmadagi kalibrlash jurnali.';
+
+  @override
+  String get howToQcStep1 =>
+      '«Test qo‘shish»: test nomi, birlik va nazorat darajalarini kiriting.';
+
+  @override
+  String get howToQcStep2 =>
+      'Har daraja uchun maqsadli o‘rtacha va SD ni kiriting — ilova ularni o‘zi to‘qimaydi.';
+
+  @override
+  String get howToQcStep3 =>
+      'Har seriyadan keyin nazorat natijalarini yozing va «Seriyani saqlash» ni bosing.';
+
+  @override
+  String get howToQcStep4 =>
+      'Levey–Jennings grafigi va Westgard qoidalari xulosasini ko‘ring: nazoratda, ogohlantirish yoki rad etilgan.';
+
+  @override
+  String get howToQcStep5 =>
+      '«Yo‘riqnomalar»: QC rad etilganda nima qilish, tashqi sifat nazorati (EQA) va kritik qiymatlar.';
+
+  @override
+  String get howToQcStep6 =>
+      'Zaxira: ma’lumotlarni matn sifatida nusxalab, keyin tiklash mumkin.';
+
+  @override
+  String get howToQcResult =>
+      'Har daraja bo‘yicha Levey–Jennings grafigi va har seriya uchun Westgard xulosasi — shu qurilmada.';
+
+  @override
+  String get howToPreanalyticsStep1 =>
+      'Tepada — 5 bosqich: tahlilga tayyorlashdan tashish va qabul qilishgacha.';
+
+  @override
+  String get howToPreanalyticsStep2 =>
+      'Bemor tayyorgarligi: och qoringa, dorilar, jismoniy zo‘riqish — har band manbasi bilan.';
+
+  @override
+  String get howToPreanalyticsStep3 =>
+      'Probirkalar tartibi: venepunksiyada qaysi probirka qachon to‘ldiriladi (qopqoq rangi bilan).';
+
+  @override
+  String get howToPreanalyticsStep4 =>
+      'Pastroqda: ajratish, saqlash, tashish va qabul qilish shartlari.';
+
+  @override
+  String get howToPreanalyticsStep5 =>
+      'Har bandni laboratoriyangiz SOP i bilan solishtiring.';
+
+  @override
+  String get howToPreanalyticsResult =>
+      'Namuna olishdan oldin va keyin tekshiriladigan qoidalar — manbalari bilan, bir sahifada.';
+
+  @override
+  String get howToCalculatorsStep1 =>
+      'Kalkulyatorni tanlang: klinik formulalar, qo‘lda usullar yoki laboratoriya.';
+
+  @override
+  String get howToCalculatorsStep2 =>
+      'Qiymatlarni kiriting va birliklarni tekshiring.';
+
+  @override
+  String get howToCalculatorsStep3 =>
+      'Kerak bo‘lsa, parametrni (masalan, jins) tanlang va «Hisoblash» ni bosing.';
+
+  @override
+  String get howToCalculatorsStep4 =>
+      'Natija ostidagi izoh va manbalarni o‘qing: formula cheklovlari shu yerda.';
+
+  @override
+  String get howToCalculatorsResult =>
+      'Faqat siz kiritgan qiymatlardan hisoblangan natija — formula va manbasi bilan.';
+
+  @override
+  String get howToInstrumentsStep1 =>
+      'Yo‘nalishni tanlang: biokimyo, gematologiya, immunokimyo yoki siydik tahlili.';
+
+  @override
+  String get howToInstrumentsStep2 =>
+      'Ishlab chiqaruvchi va modelni tanlang yoki qidiruvga model nomini yozing.';
+
+  @override
+  String get howToInstrumentsStep3 =>
+      'Model kartasi: «Mening apparatim sifatida saqlash», so‘ng kalibrlash yoki QC ga o‘tish.';
+
+  @override
+  String get howToInstrumentsStep4 =>
+      '«Laboratoriya yo‘nalishlari (ma’lumotnoma)»: sil, OIV, bakteriologiya va boshqa yo‘nalishlar kartalari.';
+
+  @override
+  String get howToInstrumentsStep5 =>
+      'Kartadagi sxema — apparat sinfining umumiy tasviri, aniq model emas.';
+
+  @override
+  String get howToInstrumentsResult =>
+      'Apparat va yo‘nalish bo‘yicha ma’lumotnoma kartalari, sxemalar va kalibrlash/QC ga tez o‘tish.';
+
+  @override
+  String get howToMicroscopyStep1 =>
+      'Bo‘limni tanlang: siydik cho‘kmasi, periferik qon surtmasi yoki qon parazitlari (bezgak).';
+
+  @override
+  String get howToMicroscopyStep2 =>
+      'Rasmni bosing: kartada belgilar, muallif va litsenziya.';
+
+  @override
+  String get howToMicroscopyStep3 =>
+      'Qidiruvga nom yozing (masalan, oksalat yoki neytrofil).';
+
+  @override
+  String get howToMicroscopyStep4 =>
+      '«Mashqni boshlash»: rasmga qarab 4 variantdan to‘g‘ri nomni tanlang — javob darhol ko‘rinadi.';
+
+  @override
+  String get howToMicroscopyStep5 =>
+      'Raund oxirida natija; xatolarni qayta ishlash mumkin.';
+
+  @override
+  String get howToMicroscopyResult =>
+      'Litsenziyali mikrofotolar atlasi va o‘zingizni tekshirish uchun rasmli mashq.';
+
+  @override
+  String get howToCoprologyStep1 =>
+      '«Namuna yig‘ish»: idish, muddat, bir nechta namuna, konservant.';
+
+  @override
+  String get howToCoprologyStep2 =>
+      '«Makroskopik tekshiruv»: shakl, rang, reaksiya, aralashmalar.';
+
+  @override
+  String get howToCoprologyStep3 =>
+      '«Koprogramma mikroskopiyasi»: har element kartasi (mushak tolasi, yog‘, kraxmal va boshqalar).';
+
+  @override
+  String get howToCoprologyStep4 =>
+      '«Yashirin qon»: FIT va gvayak testi, tayyorgarlik, natija.';
+
+  @override
+  String get howToCoprologyStep5 =>
+      '«Ichak parazitlari»: boyitish usullari, tuxum va sistalar kaliti (sxema).';
+
+  @override
+  String get howToCoprologyStep6 =>
+      'Pastda — amaliy protokollar (taqdimot) va tahlil kartalari.';
+
+  @override
+  String get howToCoprologyResult =>
+      'Namuna olishdan natijagacha koprologiya ma’lumotnomasi — manbalari bilan; bu tashxis emas.';
+
+  @override
+  String get howToAssessmentStep1 =>
+      'Toifangizni tanlang (3–2, 1 yoki oliy) va kunlik maqsadni belgilang.';
+
+  @override
+  String get howToAssessmentStep2 =>
+      '«Bilim testi»: rasmiy ro‘yxatdan tasodifiy savollar bilan test.';
+
+  @override
+  String get howToAssessmentStep3 =>
+      '«Mavzu bo‘yicha mashq»: javobdan keyin darhol kalit va izoh.';
+
+  @override
+  String get howToAssessmentStep4 =>
+      '«Og‘zaki bilet»: bilet oling, tayyorlaning, javob rejasini ko‘rib, o‘zingizni baholang.';
+
+  @override
+  String get howToAssessmentStep5 =>
+      '«Xatolar ustida ishlash» va «Rivojlanish»: xatolarni qayta ishlang, mavzular bo‘yicha natijani kuzating.';
+
+  @override
+  String get howToAssessmentStep6 =>
+      'Bo‘lim O‘zbekiston uchun: o‘zbek tilida yoki Profil → «Bilim va malakani baholash» → «O‘zbekiston».';
+
+  @override
+  String get howToAssessmentResult =>
+      'Rasmiy ro‘yxat savollari bo‘yicha mashq, natijalaringiz va xatolar tahlili — bilimingizni o‘zingiz tekshirish uchun.';
+
+  @override
+  String get howToDifferentialStep1 =>
+      '«Hujayralarni tanish»: har hujayraning o‘lchami, yadrosi, sitoplazmasi va donachalari.';
+
+  @override
+  String get howToDifferentialStep2 =>
+      '«Sanashni boshlash»: bosish +1, uzoq bosish −1; 100 yoki 200 hujayra.';
+
+  @override
+  String get howToDifferentialStep3 =>
+      'Sanash tugagach natijani tarixga saqlang — «Saqlangan natijalar», faqat shu qurilmada.';
+
+  @override
+  String get howToDifferentialStep4 =>
+      '«Leykoformula: mutlaq sonlar»: WBC va foizlardan mutlaq sonlar.';
+
+  @override
+  String get howToDifferentialStep5 =>
+      '«Talqin» va «“Bu qaysi hujayra?” mashqi» bilan bilimingizni mustahkamlang.';
+
+  @override
+  String get howToDifferentialResult =>
+      'Foizli leykoformula, qurilmada saqlangan natijalar, talqin bo‘yicha ma’lumot va mashq.';
+
+  @override
+  String get howToCytologyStep1 =>
+      '«Hujayralarni tanish»: har elementning rasmi va asosiy belgisi.';
+
+  @override
+  String get howToCytologyStep2 =>
+      '«Qin surtmasining tozalik darajasi»: ko‘rganingizni belgilang — ilova darajani ko‘rsatadi.';
+
+  @override
+  String get howToCytologyStep3 =>
+      '«Bethesda tasnifi»: PAP-test xulosasi nimani anglatadi.';
+
+  @override
+  String get howToCytologyStep4 =>
+      'Namuna sifati, reaktiv o‘zgarishlar va yetilish indeksi — alohida sahifalarda.';
+
+  @override
+  String get howToCytologyStep5 => '«Bu qaysi hujayra?»: rasm bo‘yicha mashq.';
+
+  @override
+  String get howToCytologyResult =>
+      'Ginekologik surtma bo‘yicha o‘quv ma’lumotnomasi, tozalik darajasi va mashq; tashxis emas.';
+
+  @override
+  String get howToSpermogramStep1 =>
+      '«Asosiy ko‘rsatkichlar»: JSST 2021 pastki referens chegaralari.';
+
+  @override
+  String get howToSpermogramStep2 =>
+      '«Sanash hisoblagichi»: harakatchanlik va morfologiyani sanash.';
+
+  @override
+  String get howToSpermogramStep3 =>
+      '«Natijani baholash»: qiymatlarni kiriting — ular JSST chegaralari bilan solishtiriladi.';
+
+  @override
+  String get howToSpermogramStep4 =>
+      '«Atamalar» va «Preanalitika»: oligo-, asteno-, terato-; tiyilish, namuna olish, yetkazish.';
+
+  @override
+  String get howToSpermogramStep5 =>
+      '«Mashq»: savollar bilan bilimingizni tekshiring.';
+
+  @override
+  String get howToSpermogramResult =>
+      'JSST 2021 chegaralari bilan solishtirilgan natija, atamalar va mashq — o‘quv ma’lumotnomasi.';
+
+  @override
+  String get howToBloodGroupStep1 =>
+      '«ABO va RhD asoslari»: antigenlar, antitelalar, to‘g‘ri va teskari usul.';
+
+  @override
+  String get howToBloodGroupStep2 =>
+      '«Usullar» va «Moslik»: plastinka, probirka, gel-karta; moslik sinamalari.';
+
+  @override
+  String get howToBloodGroupStep3 =>
+      '«Nomuvofiqlik va xatolar»: to‘g‘ri va teskari natija farqi, kuchsiz D.';
+
+  @override
+  String get howToBloodGroupStep4 =>
+      '«Reaksiya naqshini o‘qish»: natijalarni belgilang — ilova o‘quv talqinini ko‘rsatadi.';
+
+  @override
+  String get howToBloodGroupStep5 =>
+      '«Mashq»; transfuziya bo‘yicha qaror — faqat mahalliy protokol asosida.';
+
+  @override
+  String get howToBloodGroupResult =>
+      'ABO va RhD bo‘yicha o‘quv ma’lumotnomasi va reaksiya naqshining o‘quv talqini.';
+
+  @override
+  String get howToHistologyStep1 =>
+      '«To‘qimalar va a’zolar»: epiteliy, biriktiruvchi, muskul, nerv; jigar, buyrak.';
+
+  @override
+  String get howToHistologyStep2 =>
+      'Rasmni oching: haqiqiy mikrofoto, asosiy belgi va nimaga qarash.';
+
+  @override
+  String get howToHistologyStep3 =>
+      '«Bo‘yash usullari»: H&E, Masson, elastik, kumush, PAS, LFB.';
+
+  @override
+  String get howToHistologyStep4 => '«Bu qaysi to‘qima?»: rasm bo‘yicha mashq.';
+
+  @override
+  String get howToHistologyStep5 =>
+      '«Rasmlar mualliflari»: har rasmning muallifi va litsenziyasi.';
+
+  @override
+  String get howToHistologyResult =>
+      'Litsenziyali mikrofotolar bilan to‘qimalar atlasi, bo‘yash usullari va mashq.';
+
+  @override
+  String get howToUrinalysisStep1 =>
+      '«Namuna yig‘ish va saqlash»: ertalabki, o‘rta porsiya, vaqt, sovutish.';
+
+  @override
+  String get howToUrinalysisStep2 =>
+      '«Fizik xossalar»: rangi, tiniqligi, hidi, nisbiy zichligi.';
+
+  @override
+  String get howToUrinalysisStep3 =>
+      '«Test-chiziq (kimyoviy tekshiruv)»: 10 maydoncha — ma’nosi, xalaqitlar, tasdiqlash.';
+
+  @override
+  String get howToUrinalysisStep4 =>
+      '«Cho‘kma mikroskopiyasi»: hujayralar, silindrlar, kristallar, mikroorganizmlar.';
+
+  @override
+  String get howToUrinalysisStep5 =>
+      '«Natijani o‘qish» va «Mashq: bu nima?» — bilimingizni tekshiring.';
+
+  @override
+  String get howToUrinalysisResult =>
+      'Siydik tahlili bo‘yicha bosqichma-bosqich ma’lumotnoma, natijani o‘qish yordamchisi va mashq.';
+
+  @override
+  String get howToBloodMorphStep1 =>
+      '«Normal eritrotsit va nimaga qarash»: o‘lcham, rang, shakl, kiritmalar.';
+
+  @override
+  String get howToBloodMorphStep2 =>
+      '«Eritrotsit o‘zgarishlari»: rasmli kartalar — nimani ko‘rasiz, nimaga ishora qiladi.';
+
+  @override
+  String get howToBloodMorphStep3 =>
+      '«Trombotsitlar» va «Retikulotsitlar»: sanash tamoyili va artefaktlar.';
+
+  @override
+  String get howToBloodMorphStep4 =>
+      '«Anemiya tasnifi yordamchisi»: Hb, MCV, RDW → morfologik guruh.';
+
+  @override
+  String get howToBloodMorphStep5 =>
+      '«Mashq: bu qaysi o‘zgarish?» — rasm va bilim savollari.';
+
+  @override
+  String get howToBloodMorphResult =>
+      'Periferik qon surtmasi bo‘yicha rasmli ma’lumotnoma, anemiya tasnifi yordamchisi va mashq.';
+
+  @override
+  String get howToCoagulogramStep1 =>
+      '«Testlar nimani o‘lchaydi»: PT/INR, APTT, trombin vaqti, fibrinogen, D-dimer.';
+
+  @override
+  String get howToCoagulogramStep2 =>
+      '«Namuna talablari»: 3,2 % sitrat, 9:1 nisbat, vaqt, preanalitik xatolar.';
+
+  @override
+  String get howToCoagulogramStep3 =>
+      '«Natijani o‘qish yordamchisi»: PT, APTT va trombotsitlar → manbadagi ehtimoliy sabablar.';
+
+  @override
+  String get howToCoagulogramStep4 =>
+      '«ISTH ochiq DIC bali»: qiymatlarni kiriting — bal hisoblanadi.';
+
+  @override
+  String get howToCoagulogramStep5 =>
+      '«Antikoagulyant monitoringi»: varfarin — INR, geparin — APTT/anti-Xa.';
+
+  @override
+  String get howToCoagulogramResult =>
+      'Gemostaz testlari bo‘yicha ma’lumotnoma, natijani o‘qish yordamchisi va DIC bali — manbalari bilan.';
 }

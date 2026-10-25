@@ -14,6 +14,8 @@ import '../tools/clinical_calc_screens.dart' show CalcSourceTile;
 import '../tools/sources_panel.dart';
 import 'bloodgroup_content.dart';
 import 'bloodgroup_logic.dart';
+import '../howto/howto_registry.dart';
+import '../howto/howto_widgets.dart';
 
 const bloodGroupBase = '/lab/bloodgroup';
 const bloodGroupCardImage = 'assets/bloodgroup/card.png';
@@ -169,6 +171,7 @@ class BloodGroupScreen extends StatelessWidget {
       title: l.bloodGroupTitle,
       subtitle: context.tr(BgL.subtitle),
       children: [
+        const HowToButton(HowToSection.bloodGroup),
         Center(
           child: ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 220),

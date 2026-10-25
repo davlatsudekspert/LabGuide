@@ -21,6 +21,8 @@ import 'toifa_bank.dart';
 import 'toifa_controller.dart';
 import 'toifa_daily.dart';
 import 'toifa_today.dart';
+import '../howto/howto_registry.dart';
+import '../howto/howto_widgets.dart';
 
 export 'toifa_today.dart' show toifaBase;
 
@@ -320,6 +322,7 @@ class _ToifaHubScreenState extends State<ToifaHubScreen> {
     final oralUnknown = toifa.oralWith(OralRating.unknown).length;
     final ticket = toifa.ticket;
     return [
+      const HowToButton(HowToSection.assessment),
       if (_lang(context) != 'uz')
         LgNotice(
           l.toifaUzbekNotice,

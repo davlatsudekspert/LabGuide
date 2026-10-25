@@ -15,6 +15,8 @@ import 'instrument_catalog.dart';
 import 'instrument_image.dart';
 import 'instruments_controller.dart';
 import 'lab_direction_screens.dart' show LabDirectionRows;
+import '../howto/howto_registry.dart';
+import '../howto/howto_widgets.dart';
 
 IconData categoryIcon(InstrumentCategory c) => switch (c) {
   InstrumentCategory.chemistry => Icons.science_outlined,
@@ -102,6 +104,7 @@ class _InstrumentsScreenState extends State<InstrumentsScreen> {
       title: l.insTitle,
       subtitle: l.labInstrumentsSub,
       children: [
+        const HowToButton(HowToSection.instruments),
         SearchBox(
           controller: _query,
           label: l.instSearchLabel,

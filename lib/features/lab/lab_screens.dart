@@ -21,6 +21,8 @@ import '../coprology/copro_screens.dart';
 import '../tools/calc_info.dart';
 import '../tools/clinical_calc_screens.dart';
 import 'preanalytics_info.dart';
+import '../howto/howto_registry.dart';
+import '../howto/howto_widgets.dart';
 
 class LabScreen extends StatelessWidget {
   const LabScreen({super.key});
@@ -166,6 +168,7 @@ class PreanalyticsScreen extends StatelessWidget {
     return LgPage(
       title: l.preTitle,
       children: [
+        const HowToButton(HowToSection.preanalytics),
         LgSteps([l.preStep1, l.preStep2, l.preStep3, l.preStep4, l.preStep5]),
         const SizedBox(height: 12),
         const DiagramFigure(topic: DiagramTopic.preanalytics),

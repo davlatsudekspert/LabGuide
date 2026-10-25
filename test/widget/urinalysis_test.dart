@@ -467,7 +467,9 @@ void main() {
     tester,
   ) async {
     final s = await makeServices(tester);
-    await pumpApp(tester, s, size: const Size(390, 1800));
+    await pumpApp(tester, s, size: const Size(390, 2000));
+    // Bo‘lim sahifasi tepasida “Qanday foydalaniladi?” qatori bor — oxirgi
+    // kartalar ham quriladigan bo‘lishi uchun ekran balandroq.
     final l = lookupAppLocalizations(const Locale('uz'));
     await goTo(tester, '/lab');
     expect(find.text(l.urinTitle), findsOne);

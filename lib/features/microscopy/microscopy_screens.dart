@@ -14,6 +14,8 @@ import '../lab/lab_links.dart';
 import 'microscopy_atlas.dart';
 import 'microscopy_controller.dart';
 import 'microscopy_widgets.dart';
+import '../howto/howto_registry.dart';
+import '../howto/howto_widgets.dart';
 
 /// Bo'lim kartasi muqovasi (bo'lsa) — aks holda bo'limning birinchi rasmi.
 const _sectionCovers = {
@@ -61,6 +63,7 @@ class _MicroscopyScreenState extends State<MicroscopyScreen> {
           title: l.micTitle,
           subtitle: l.micSubtitle,
           children: [
+            const HowToButton(HowToSection.microscopy),
             SearchBox(
               controller: _query,
               label: l.micSearchLabel,

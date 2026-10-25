@@ -19,6 +19,8 @@ import '../tools/tool_screens.dart' show formatResult, parseFieldNumber;
 import 'instrument_catalog.dart';
 import 'instrument_screens.dart';
 import 'instruments_controller.dart';
+import '../howto/howto_registry.dart';
+import '../howto/howto_widgets.dart';
 
 const _decimalKeyboard = TextInputType.numberWithOptions(decimal: true);
 
@@ -250,6 +252,7 @@ class _CalibrationScreenState extends State<CalibrationScreen> {
       title: l.calTitle,
       subtitle: l.calSubtitle,
       children: [
+        const HowToButton(HowToSection.calibration),
         const DiagramFigure(topic: DiagramTopic.calibrationOverview),
         const SizedBox(height: 12),
         CatalogGate(

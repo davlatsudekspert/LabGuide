@@ -13,6 +13,8 @@ import '../tools/sources_panel.dart';
 import '../lab/lab_links.dart';
 import 'coag_content.dart';
 import 'coag_logic.dart';
+import '../howto/howto_registry.dart';
+import '../howto/howto_widgets.dart';
 
 const coagBase = '/lab/coagulogram';
 const coagCardImage = 'assets/coagulogram/card.png';
@@ -124,6 +126,7 @@ class CoagulogramScreen extends StatelessWidget {
       title: l.coagTitle,
       subtitle: context.tr(CgL.subtitle),
       children: [
+        const HowToButton(HowToSection.coagulogram),
         Center(
           child: ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 220),

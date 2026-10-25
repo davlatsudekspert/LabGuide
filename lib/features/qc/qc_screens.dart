@@ -18,6 +18,8 @@ import 'qc_guides_info.dart';
 import 'qc_export.dart';
 import 'qc_model.dart';
 import 'qc_rules.dart';
+import '../howto/howto_registry.dart';
+import '../howto/howto_widgets.dart';
 
 const _decimalKeyboard = TextInputType.numberWithOptions(
   decimal: true,
@@ -167,6 +169,7 @@ class QcScreen extends StatelessWidget {
         return LgPage(
           title: l.qcTitle,
           children: [
+            const HowToButton(HowToSection.qc),
             LgPanel(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

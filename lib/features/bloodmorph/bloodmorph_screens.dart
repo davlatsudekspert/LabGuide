@@ -20,6 +20,8 @@ import '../tools/tool_screens.dart' show formatResult, parseFieldNumber;
 import '../lab/lab_links.dart';
 import 'bloodmorph_content.dart';
 import 'bloodmorph_logic.dart';
+import '../howto/howto_registry.dart';
+import '../howto/howto_widgets.dart';
 
 const bmBase = '/lab/bloodmorph';
 const bmCardImage = 'assets/bloodmorph/card.png';
@@ -301,6 +303,7 @@ class BloodMorphScreen extends StatelessWidget {
       title: l.bloodMorphTitle,
       subtitle: context.tr(BmL.subtitle),
       children: [
+        const HowToButton(HowToSection.bloodMorph),
         Center(
           child: ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 220),
