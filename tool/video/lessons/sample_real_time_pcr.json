@@ -97,7 +97,9 @@
     4,
     5,
     6,
-    7
+    7,
+    8,
+    9
    ],
    "ids": [
     "C1",
@@ -106,13 +108,15 @@
     "C4",
     "C5",
     "C6",
-    "C7"
+    "C7",
+    "C8",
+    "C9"
    ],
    "captions": [
     {
-     "uz": "Umumiy tamoyil: 1 probirkalar, 2 isitiladigan qopqoq, 3 termoblok, 4 nur manbai, 5 filtr g‘ildiragi, 6 detektor, 7 dastur.",
-     "ru": "Общий принцип: 1 пробирки, 2 нагреваемая крышка, 3 термоблок, 4 источник света, 5 колесо фильтров, 6 детектор, 7 программа.",
-     "en": "General principle: 1 tubes, 2 heated lid, 3 thermal block, 4 light source, 5 filter wheel, 6 detector, 7 software."
+     "uz": "Umumiy tamoyil: 1 probirkalar, 2 isitiladigan qopqoq, 3 termoblok, 4 nur manbai, 5 qo‘zg‘atish filtri, 6 blokdagi probirka, 7 nurlanish filtri, 8 detektor, 9 dastur.",
+     "ru": "Общий принцип: 1 пробирки, 2 нагреваемая крышка, 3 термоблок, 4 источник света, 5 фильтр возбуждения, 6 пробирка в блоке, 7 эмиссионный фильтр, 8 детектор, 9 программа.",
+     "en": "General principle: 1 tubes, 2 heated lid, 3 thermal block, 4 light source, 5 excitation filter, 6 tube in the block, 7 emission filter, 8 detector, 9 software."
     }
    ]
   },
@@ -203,33 +207,39 @@
    "cycle": [
     4,
     5,
-    6
+    6,
+    7,
+    8
    ],
    "ring": false,
    "ids": [
     "L4",
-    "C6",
+    "C8",
     "C4",
-    "C5"
+    "C5",
+    "C6",
+    "C7"
    ],
    "captions": [
     {
-     "uz": "Manbaga ko‘ra: detektor har siklda fluoressensiyani o‘lchaydi; signal amplikon to‘planishiga mutanosib.",
-     "ru": "По источнику: детектор измеряет флуоресценцию в каждом цикле; сигнал пропорционален накоплению ампликона.",
-     "en": "Per the source: the detector measures fluorescence every cycle; the signal is proportional to amplicon build-up.",
+     "uz": "Manbaga ko‘ra: detektor har siklda probirkalardagi fluoressensiyani o‘lchaydi; signal amplikon to‘planishiga mutanosib.",
+     "ru": "По источнику: детектор измеряет флуоресценцию пробирок в каждом цикле; сигнал пропорционален накоплению ампликона.",
+     "en": "Per the source: the detector measures fluorescence from the tubes every cycle; the signal is proportional to amplicon build-up.",
      "ids": [
       "L4",
-      "C6"
+      "C8"
      ]
     },
     {
      "at": 6,
-     "uz": "Umumiy tamoyil: nur manbai bo‘yoqni qo‘zg‘atadi, filtrlar kerakli rang kanalini tanlaydi.",
-     "ru": "Общий принцип: источник света возбуждает краситель, фильтры выбирают нужный цветовой канал.",
-     "en": "General principle: the light source excites the dye and the filters select the colour channel.",
+     "uz": "Umumiy tamoyil: qo‘zg‘atuvchi nur filtr orqali probirkaga tushadi; bo‘yoq fluoressensiyasi nurlanish filtridan detektorga o‘tadi.",
+     "ru": "Общий принцип: возбуждающий свет через фильтр попадает в пробирку; флуоресценция красителя через эмиссионный фильтр идёт к детектору.",
+     "en": "General principle: excitation light passes a filter into the tube; the dye’s fluorescence passes the emission filter to the detector.",
      "ids": [
       "C4",
-      "C5"
+      "C5",
+      "C6",
+      "C7"
      ]
     }
    ]
@@ -247,7 +257,7 @@
    ],
    "ids": [
     "L5",
-    "C7"
+    "C9"
    ],
    "captions": [
     {

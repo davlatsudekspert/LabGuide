@@ -13,7 +13,7 @@ topilgan raqam va klinik tashxis yo‘q. Manba ustuni: catalog.json `sources[].i
 (URL bilan) yoki `STANDARD_TEXTBOOK (NEEDS_EXPERT)` — darslik darajasidagi umumiy
 ma’lumot, mutaxassis tasdig‘ini kutadi.
 
-Jami: 32 chizma, 221 qism; 123 tasida (to‘liq yoki qisman) `STANDARD_TEXTBOOK (NEEDS_EXPERT)`.
+Jami: 32 chizma, 223 qism; 125 tasida (to‘liq yoki qisman) `STANDARD_TEXTBOOK (NEEDS_EXPERT)`.
 
 ## `chemistry` — model turi (InstrumentSchematic)
 
@@ -252,9 +252,11 @@ Kartalar: `hiv-rna-viral-load`, `a1-realtime-pcr-method`, `a3-mol-realtime-pcr-p
 | 2 | Heated lid | `STANDARD_TEXTBOOK (NEEDS_EXPERT)` |
 | 3 | Thermal block (Peltier) | `a1-sp-pcr` <https://www.ncbi.nlm.nih.gov/sites/books/NBK589663/>; `STANDARD_TEXTBOOK (NEEDS_EXPERT)` |
 | 4 | Excitation light source | `STANDARD_TEXTBOOK (NEEDS_EXPERT)` |
-| 5 | Filter wheel | `STANDARD_TEXTBOOK (NEEDS_EXPERT)` |
-| 6 | Detector | `a1-sp-pcr` <https://www.ncbi.nlm.nih.gov/sites/books/NBK589663/> |
-| 7 | Software (amplification curves) | `a1-sp-pcr` <https://www.ncbi.nlm.nih.gov/sites/books/NBK589663/> |
+| 5 | Excitation filter (channel selection) | `STANDARD_TEXTBOOK (NEEDS_EXPERT)` |
+| 6 | Reaction tube in the block | `a1-sp-pcr` <https://www.ncbi.nlm.nih.gov/sites/books/NBK589663/>; `STANDARD_TEXTBOOK (NEEDS_EXPERT)` |
+| 7 | Emission filter | `STANDARD_TEXTBOOK (NEEDS_EXPERT)` |
+| 8 | Detector | `a1-sp-pcr` <https://www.ncbi.nlm.nih.gov/sites/books/NBK589663/> |
+| 9 | Software (amplification curves) | `a1-sp-pcr` <https://www.ncbi.nlm.nih.gov/sites/books/NBK589663/> |
 | P | Principle | `a1-sp-pcr` <https://www.ncbi.nlm.nih.gov/sites/books/NBK589663/> |
 | R | Result | `a1-sp-pcr` <https://www.ncbi.nlm.nih.gov/sites/books/NBK589663/>; `a3-fda-cobas-hiv1` <https://www.fda.gov/media/187859/download> |
 

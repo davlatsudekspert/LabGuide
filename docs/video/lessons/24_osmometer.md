@@ -77,8 +77,8 @@ harorati muzlash nuqtasi sifatida olinadi [PR].
 
 ### 5.6 Natija qanday olinadi
 
-Manbaga ko‘ra, erigan zarrachalar muzlash nuqtasini pasaytiradi va shundan osmolyallik (mOsm/kg) hisoblanadi
-[L2, RS].
+Manbaga ko‘ra, erigan zarrachalar muzlash nuqtasini pasaytiradi va shundan osmolyallik hisoblanadi; natija —
+mOsm/kg, ya’ni suv kilogrammiga, osmolyarlik esa eritma litriga beriladi [L2, RS].
 
 ## 6. Keng tarqalgan xatolar, xavfsizlik va QC
 
@@ -101,8 +101,9 @@ Qoida (to‘liq — [README](README.md#epistemik-qoida)): SOURCED — catalog.js
 STANDARD_TEXTBOOK — darslik darajasidagi umumiy tamoyil; NEEDS_EXPERT — aniqlik yoki raqam mutaxassis
 tasdig‘ini kutadi. STANDARD_TEXTBOOK va NEEDS_EXPERT bayonotlar diktor matnida faqat “umumiy tamoyil bo‘yicha”
 darajasida aytiladi, aniq model xususiyati sifatida emas. Mutaxassis ko‘rigi: EXPERT_REVIEW_PENDING.
-Ataylab aytilmaydi: krioskopik doimiy raqami — manbadagi ibora (“1 mol erigan modda”) aniqlashtirishni talab qiladi
-([README → Topilmalar](README.md#topilmalar)); referens qiymatlar; namuna hajmi.
+Ataylab aytilmaydi: krioskopik doimiy raqami — manba “1 mol erigan modda” deydi; ilova matnlarida u “1 kg suvdagi
+1 mol erigan zarracha (1 osmol)” deb aniqlashtirilgan, bu aniqlashtirish darslik darajasida va mutaxassis tasdig‘ini
+kutadi ([README → Topilmalar](README.md#topilmalar) F5); referens qiymatlar; namuna hajmi.
 
 ### 8.1 Sxema qismlari (avtomatik, `parts_src.py` dan)
 
@@ -114,8 +115,8 @@ Ataylab aytilmaydi: krioskopik doimiy raqami — manbadagi ibora (“1 mol eriga
 | C3 | Sovutish bloki (vanna) — Namunani muzlash nuqtasidan pastgacha sovutadi. | SOURCED | `a3-statpearls-osmometer`; `schematic_parts.json` → `osmometer` #3 |
 | C4 | Aralashtirgich sim — Tebranib, o‘ta sovigan namunada muzlashni boshlaydi. | STANDARD_TEXTBOOK | parts_src: TB (darslik, mutaxassis tasdig‘isiz); `schematic_parts.json` → `osmometer` #4 |
 | C5 | Displey (muzlash egri chizig‘i) — Harorat egri chizig‘i va osmolyallik natijasi. | STANDARD_TEXTBOOK | parts_src: TB (darslik, mutaxassis tasdig‘isiz); `schematic_parts.json` → `osmometer` #5 |
-| PR | Namuna sovutish blokida muzlash nuqtasidan pastgacha o‘ta sovutiladi, so‘ng aralashtirgich sim tebranishi muzlashni boshlaydi. Ajralgan yashirin issiqlik haroratni muzlash nuqtasigacha ko‘taradi va plato hosil bo‘ladi; uni Uitston ko‘prigi sxemasidagi termistor o‘lchaydi. Erigan zarrachalar muzlash nuqtasini pasaytiradi: 1 mol erigan modda suvnikini taxminan 1,86 °C ga tushiradi — shundan osmolyallik hisoblanadi. | NEEDS_EXPERT | parts_src: TB (darslik, mutaxassis tasdig‘isiz); qisman manba: `a3-statpearls-osmometer`; raqam darslik manbasiz; `schematic_parts.json` → `osmometer`.principle |
-| RS | Siydik yoki zardob osmolyalligi, mOsm/kg (mmol/kg). | SOURCED | `a3-statpearls-osmometer`; `schematic_parts.json` → `osmometer`.result |
+| PR | Namuna sovutish blokida muzlash nuqtasidan pastgacha o‘ta sovutiladi, so‘ng aralashtirgich sim tebranishi muzlashni boshlaydi. Ajralgan yashirin issiqlik haroratni muzlash nuqtasigacha ko‘taradi va plato hosil bo‘ladi; uni Uitston ko‘prigi sxemasidagi termistor o‘lchaydi. Erigan zarrachalar muzlash nuqtasini pasaytiradi: 1 kg suvdagi 1 mol erigan zarracha (1 osmol) uni taxminan 1,86 °C ga tushiradi; elektrolitlarda zarrachalar soni dissotsiatsiyaga bog‘liq. O‘lchangan pasayishdan osmolyallik hisoblanadi. | NEEDS_EXPERT | parts_src: TB (darslik, mutaxassis tasdig‘isiz); qisman manba: `a3-statpearls-osmometer`; raqam darslik manbasiz; `schematic_parts.json` → `osmometer`.principle |
+| RS | Siydik yoki zardob osmolyalligi, mOsm/kg — suv kilogrammidagi zarrachalar miqdori (osmolyarlik esa eritma litriga, mOsm/l). | SOURCED | `a3-statpearls-osmometer`; `schematic_parts.json` → `osmometer`.result |
 <!-- /auto:epistemic-parts -->
 
 ### 8.2 Dars bayonotlari
@@ -123,7 +124,7 @@ Ataylab aytilmaydi: krioskopik doimiy raqami — manbadagi ibora (“1 mol eriga
 | ID | Bayonot (uz) | Teg | Manba va joyi |
 |---|---|---|---|
 | L1 | Klinik laboratoriyalarda asosan muzlash nuqtasining pasayishi usuli (harorat vannasi, termistor zondi, Uitston ko‘prigi); bug‘ bosimi va membranali osmometrlar ham mavjud. | SOURCED | `a3-statpearls-osmometer`; catalog.json lab_cards[a3-bio-osmometer].technology |
-| L2 | Erigan zarrachalar soni muzlash nuqtasini pasaytiradi, shu orqali osmolyallik (mmol/kg) aniqlanadi. | SOURCED | `a3-statpearls-osmometer`; catalog.json lab_cards[a3-bio-osmometer].principle |
+| L2 | Erigan zarrachalar muzlash nuqtasini pasaytiradi; pasayish bo‘yicha osmolyallik (mOsm/kg, suv kilogrammiga) aniqlanadi. | SOURCED | `a3-statpearls-osmometer`; catalog.json lab_cards[a3-bio-osmometer].principle |
 | L3 | Zardob, geparinli plazma, ko‘z yoshi, ter va siydik; zarrachalarni yo‘qotish uchun sentrifugalash tavsiya etiladi. | SOURCED | `a3-statpearls-osmometer`; catalog.json lab_cards[a3-bio-osmometer].specimens |
 | L4 | Klinik laboratoriyalar odatda osmolyallikni o‘lchaydi (osmolyarlikdan aniqroq, chunki massa haroratga bog‘liq emas). | SOURCED | `a3-statpearls-osmometer`; catalog.json lab_cards[a3-bio-osmometer].tasks |
 | L5 | Muzlash nuqtasi osmometrlari zarrachalar, havo pufakchalari, bug‘lanib ketgan yoki yopishqoq namunalar va yuqori etanol, metanol, aseton kabi moddalar bilan buziladi. | SOURCED | `a3-statpearls-osmometer`; catalog.json lab_cards[a3-bio-osmometer].limitations |

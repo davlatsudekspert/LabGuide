@@ -22,20 +22,20 @@ teglar — 8-bo‘limdagi barcha qatorlar (8.1 sxema qismlari avtomatik + 8.2 da
 | 1 | [01 — Gaz xromatografi–mass-spektrometr (GC-MS)](01_gc_ms.md) | `mass_spec_gc` | 13 | 4:04 | 8 | 9 | 1 |
 | 2 | [02 — Suyuqlik xromatografi–mass-spektrometr (LC-MS; LC-MS/MS haqida eslatma)](02_lc_ms.md) | `mass_spec_lc` | 13 | 3:52 | 10 | 7 | 2 |
 | 3 | [03 — MALDI-TOF mass-spektrometr (mikroorganizmlarni identifikatsiya qilish)](03_maldi_tof.md) | `maldi_tof` | 13 | 3:40 | 12 | 4 | 0 |
-| 4 | [04 — Real vaqt PCR (termosiklator va fluoressent detektsiya)](04_real_time_pcr.md) | `real_time_pcr` | 13 | 3:50 | 14 | 3 | 2 |
+| 4 | [04 — Real vaqt PCR (termosiklator va fluoressent detektsiya)](04_real_time_pcr.md) | `real_time_pcr` | 13 | 3:54 | 14 | 6 | 1 |
 | 5 | [05 — Kartrijli yopiq molekulyar platforma (Xpert turidagi NAAT)](05_cartridge_molecular.md) | `cartridge_molecular` | 12 | 3:22 | 9 | 4 | 1 |
 | 6 | [06 — ELISA planshet o‘quvchisi va yuvish qurilmasi](06_elisa_reader.md) | `elisa_reader` | 12 | 3:28 | 13 | 5 | 0 |
 | 7 | [07 — Avtomatik biokimyoviy analizator va yarim avtomat fotometr](07_chemistry_photometer.md) | `chemistry`, `photometer` | 14 | 4:10 | 9 | 11 | 0 |
 | 8 | [08 — Gematologik analizatorlar: 5 qismli va 3 qismli](08_hematology.md) | `hematology5`, `hematology3` | 14 | 4:06 | 7 | 10 | 1 |
 | 9 | [09 — Immunokimyoviy (xemilyuminessent) analizator](09_immunoassay.md) | `immunoassay` | 12 | 3:26 | 6 | 5 | 0 |
-| 10 | [10 — Siydik test-chizig‘i o‘quvchisi va avtomatik siydik tahlili tizimi](10_urine.md) | `urine_strip`, `urine_system` | 14 | 3:54 | 8 | 9 | 0 |
-| 11 | [11 — Koagulometr (koagulyatsiya analizatori)](11_coag_analyzer.md) | `coag_analyzer` | 13 | 3:56 | 11 | 4 | 2 |
-| 12 | [12 — Oqim sitometri](12_flow_cytometer.md) | `flow_cytometer` | 13 | 3:54 | 14 | 4 | 0 |
+| 10 | [10 — Siydik test-chizig‘i o‘quvchisi va avtomatik siydik tahlili tizimi](10_urine.md) | `urine_strip`, `urine_system` | 14 | 3:54 | 7 | 10 | 0 |
+| 11 | [11 — Koagulometr (koagulyatsiya analizatori)](11_coag_analyzer.md) | `coag_analyzer` | 13 | 3:56 | 11 | 6 | 0 |
+| 12 | [12 — Oqim sitometri](12_flow_cytometer.md) | `flow_cytometer` | 13 | 3:54 | 13 | 5 | 0 |
 | 13 | [13 — Avtomatik mikrobiologik identifikatsiya va antibiotiklarga sezgirlik (ID/AST) tizimi](13_microbial_id_ast.md) | `microbial_id_ast` | 12 | 3:22 | 8 | 2 | 3 |
 | 14 | [14 — Avtomatik qon ekmasi (gemokultura) tizimi](14_blood_culture.md) | `blood_culture` | 13 | 3:46 | 9 | 6 | 0 |
 | 15 | [15 — Avtomatlashtirilgan mikobakteriya kultura tizimi (MGIT turidagi)](15_mycobacterial_culture.md) | `mycobacterial_culture` | 13 | 3:50 | 13 | 3 | 0 |
 | 16 | [16 — Qon gazlari va elektrolit (ISE) analizatori](16_blood_gas_ise.md) | `blood_gas_ise` | 12 | 3:32 | 10 | 7 | 0 |
-| 17 | [17 — HbA1c analizatori (ion almashinuv xromatografiyasi)](17_hba1c_analyzer.md) | `hba1c_analyzer` | 12 | 3:36 | 7 | 6 | 2 |
+| 17 | [17 — HbA1c analizatori (usul jihatdan neytral sxema)](17_hba1c_analyzer.md) | `hba1c_analyzer` | 11 | 3:12 | 7 | 5 | 2 |
 | 18 | [18 — LED floressent mikroskop (auramin bilan bo‘yalgan surtma)](18_fluorescence_microscope.md) | `fluorescence_microscope` | 13 | 3:36 | 9 | 7 | 0 |
 | 19 | [19 — II sinf biologik xavfsizlik shkafi](19_bsc_class2.md) | `bsc_class2` | 12 | 3:30 | 11 | 5 | 0 |
 | 20 | [20 — Avtoklav (bug‘ sterilizatori)](20_autoclave.md) | `autoclave` | 12 | 3:28 | 9 | 5 | 0 |
@@ -48,7 +48,7 @@ teglar — 8-bo‘limdagi barcha qatorlar (8.1 sxema qismlari avtomatik + 8.2 da
 | 27 | [27 — Laboratoriya sovutkichi/muzlatkichi va harorat monitoringi](27_lab_fridge.md) | `lab_fridge` | 13 | 3:24 | 10 | 3 | 0 |
 | 28 | [28 — Kompyuterli sperma tahlili tizimi (CASA)](28_casa.md) | `casa` | 14 | 3:44 | 8 | 5 | 1 |
 | 29 | [29 — Yupqa qatlamli xromatografiya (TSX / TLC)](29_tlc.md) | `tlc` | 13 | 3:38 | 11 | 3 | 1 |
-| | **Jami: 29 dars, 32 kalit** | | **376** | **107:10** | **295** | **143** | **19** |
+| | **Jami: 29 dars, 32 kalit** | | **375** | **106:50** | **293** | **149** | **16** |
 <!-- /auto:index -->
 
 ## Har dars faylining tuzilmasi
@@ -126,14 +126,14 @@ matnida aytilmaydi yoki “umumiy tamoyil bo‘yicha” darajasida yumshatilgan.
 | # | Joy | Topilma | Nega muhim | Taklif | Darsda qanday hal qilindi |
 |---|---|---|---|---|---|
 | F1 | `mass_spec_lc` (sxema, `a3-tox-lc-ms` karta) | Topshiriqda “LC-MS/MS”, lekin karta va uning yagona manbasi (`a3-statpearls-ms`) faqat umumiy LC-MS ni yoritadi; kartaning o‘zi “tandem (MS/MS) tafsilotlari manbada yo‘q” deydi; sxemada bitta kvadrupol | “LC-MS/MS” nomi manbasiz tafsilotni (ikkinchi analizator, to‘qnashuv bo‘linmasi) taxmin qilishga undaydi | Nomni LC-MS da qoldirish yoki MS/MS uchun alohida manba qo‘shib, sxemani mutaxassis bilan yangilash | 02-dars “LC-MS; LC-MS/MS haqida eslatma”; MS/MS — `N1` (NEEDS_EXPERT), chizilmaydi |
-| F2 | `real_time_pcr` sxemasi (optik modul kesigi) | Nur yo‘li: nur manbai (4) → filtr g‘ildiragi (5) → detektor (6); probirkalar/termoblok bu yo‘lda ko‘rsatilmagan | O‘quvchi fluoressensiya probirkada emas, modul ichida paydo bo‘ladi deb tushunishi mumkin | Qo‘zg‘atuvchi nur va nurlanish uyachalarga yetishini sxematik ko‘rsatish yoki “soddalashtirilgan” izoh (mutaxassis bilan) | Animatsiya nurni probirkaga “chizmaydi”; 04-dars 8-bo‘limida eslatma |
-| F3 | `coag_analyzer` #4 nomi “O‘lchash kyuvetalari (37 °C)” va prinsip matni | Harorat qism nomida, lekin qism manbasi `STANDARD_TEXTBOOK (NEEDS_EXPERT)`; prinsip ham qisman TB | Ilovada raqam manbasiz fakt sifatida ko‘rinadi | `a1-sp-pt` da tasdiqlansa — manba id sini qo‘shish; aks holda raqamni olib tashlash | `C4`, `PR` — NEEDS_EXPERT (avtomatik); diktor harorat aytmaydi |
+| F2 | `real_time_pcr` sxemasi (optik modul kesigi) | Nur yo‘li: nur manbai (4) → filtr g‘ildiragi (5) → detektor (6); probirkalar/termoblok bu yo‘lda ko‘rsatilmagan | O‘quvchi fluoressensiya probirkada emas, modul ichida paydo bo‘ladi deb tushunishi mumkin | Qo‘zg‘atuvchi nur va nurlanish uyachalarga yetishini sxematik ko‘rsatish yoki “soddalashtirilgan” izoh (mutaxassis bilan) | Animatsiya nurni probirkaga “chizmaydi”; 04-dars 8-bo‘limida eslatma TUZATILDI (2026-10-25): sxema va animatsiyada nur yo‘li manba → qo‘zg‘atish filtri → termoblokdagi probirka → nurlanish filtri → detektor (belgilar 4–8); manba turi va o‘qish yo‘nalishi ko‘rsatilmaydi. |
+| F3 | `coag_analyzer` #4 nomi “O‘lchash kyuvetalari (37 °C)” va prinsip matni | Harorat qism nomida, lekin qism manbasi `STANDARD_TEXTBOOK (NEEDS_EXPERT)`; prinsip ham qisman TB | Ilovada raqam manbasiz fakt sifatida ko‘rinadi | `a1-sp-pt` da tasdiqlansa — manba id sini qo‘shish; aks holda raqamni olib tashlash | `C4`, `PR` — NEEDS_EXPERT (avtomatik); diktor harorat aytmaydi TUZATILDI (2026-10-25): qism nomi va prinsipdan “37 °C” olib tashlandi. |
 | F4 | `mass_spec_gc` #9 “Vakuum nasoslari” | “…ionlar havo molekulalariga urilmaydi” — mutlaq ibora; nasos turlari manbasiz | To‘qnashuvlar kamayadi, yo‘qolmaydi | “…havo molekulalari bilan kam to‘qnashadi” | `C9` — NEEDS_EXPERT (qo‘lda); diktor “kam to‘qnashadi”, hedge bilan | — **TUZATILDI (2026-10-25, parts_src.py): «…ionlarning havo molekulalari bilan to‘qnashuvi kamayadi»; nasos turlari hali NEEDS_EXPERT**
-| F5 | `osmometer` prinsipi (parts_src) va `a3-bio-osmometer` karta prinsipi | “1 mol erigan modda suvning muzlash nuqtasini taxminan 1,86 °C ga pasaytiradi” | Krioskopik doimiy 1 kg suvdagi 1 mol erigan **zarracha** (1 osmol/kg) uchun; dissotsilanuvchi moddada (masalan, NaCl) pasayish taxminan ikki barobar | “1 kg suvda 1 mol erigan zarracha (1 osmol/kg) …” — manba matni bilan solishtirib | `PR` — NEEDS_EXPERT; diktor raqamni aytmaydi |
+| F5 | `osmometer` prinsipi (parts_src) va `a3-bio-osmometer` karta prinsipi | “1 mol erigan modda suvning muzlash nuqtasini taxminan 1,86 °C ga pasaytiradi” | Krioskopik doimiy 1 kg suvdagi 1 mol erigan **zarracha** (1 osmol/kg) uchun; dissotsilanuvchi moddada (masalan, NaCl) pasayish taxminan ikki barobar | “1 kg suvda 1 mol erigan zarracha (1 osmol/kg) …” — manba matni bilan solishtirib | `PR` — NEEDS_EXPERT; diktor raqamni aytmaydi TUZATILDI (2026-10-25): sxema prinsipi va karta prinsipi “1 kg suvdagi 1 mol erigan zarracha (1 osmol)”, elektrolitlarda dissotsiatsiya, natija mOsm/kg (osmolyarlik — mOsm/l); “1 kg suvga” qismi darslik darajasi (NEEDS_EXPERT). |
 | F6 | `tlc` #8 “UB nuridagi dog‘lar” | “Moddalar fluoressensiyani so‘ndiradi…” | Faqat 254 nm da nur yutadigan moddalar so‘ndiradi; shuning uchun reagent purkash ham bor | “UB nurini yutadigan moddalar…” | Diktor shunday aytadi, hedge bilan |
 | F7 | `microbial_id_ast` #3 va prinsip | “Vakuum suspenziyani somon orqali karta quduqchalariga tortadi” — muayyan dizayn, manbasiz | Model xususiyati sinf tamoyili sifatida ko‘rinadi | Manba qo‘shish yoki umumlashtirish | `C3` — NEEDS_EXPERT; diktor “aniq mexanizm manbada yo‘q” deydi |
 | F8 | `cartridge_molecular` #2 “Reaksiya naychasi” | Kartrij ichki tuzilmasi manbasiz | Muayyan dizayn sinf tamoyili sifatida | Manba yoki umumlashtirish | `C2` — NEEDS_EXPERT |
-| F9 | `real_time_pcr` #5 “Filtr g‘ildiragi” | Optik dizaynlardan biri, sinf uchun yagona emas, manbasiz | Hamma apparatda g‘ildirak bor degan taassurot | “filtrlar (masalan, filtr g‘ildiragi)” | `C5` — NEEDS_EXPERT, hedge bilan |
+| F9 | `real_time_pcr` #5 “Filtr g‘ildiragi” | Optik dizaynlardan biri, sinf uchun yagona emas, manbasiz | Hamma apparatda g‘ildirak bor degan taassurot | “filtrlar (masalan, filtr g‘ildiragi)” | `C5` — NEEDS_EXPERT, hedge bilan TUZATILDI (2026-10-25): filtr g‘ildiragi o‘rniga umumiy qo‘zg‘atish va nurlanish filtrlari (tuzilishi ko‘rsatilmaydi). |
 | F10 | Teg nomuvofiqligi: `blood_culture` #4 (“har o‘n daqiqada”), `esr_analyzer` prinsipi (2,5 mm), `casa` prinsipi (kamida 200 ta iz) | parts_src da qisman TB, lekin xuddi shu fakt lab kartasida manbali (`a1-fda-k173873`, `a3-statpearls-esr`, `a2-who-semen6`) | Avtomatik teglash ularni ortiqcha ehtiyotkor sanaydi | parts_src manbalarini kartadagi manba bilan moslash (egasi qarori) | Darslarda shu faktlar lab karta qatori (`L…`, SOURCED) orqali keltirilgan |
 | F11 | `gel_card_system` sxemasi | Uchinchi mikronaychada hujayralar ustun bo‘ylab tarqoq (oraliq/aralash ko‘rinish), qismlar ro‘yxatida izohsiz | Talaba savol beradi; talqin manbada yo‘q | Izoh qo‘shish yoki chizmani ikki holat bilan cheklash (mutaxassis) | Darsda bu naycha tilga olinmaydi |
 | F12 | `mass_spec_gc` #1, `mass_spec_lc` #8 | “odatda geliy”, “turbomolekulyar va forvakuum” — TB, aniqlik mutaxassisni kutadi | Kichik | Mutaxassis tasdig‘i | Hedge bilan yoki aytilmaydi |

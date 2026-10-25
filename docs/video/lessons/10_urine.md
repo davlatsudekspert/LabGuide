@@ -29,12 +29,12 @@ Taxminan 4 daqiqa (storyboard bo‘yicha 3:54).
 | # | Ekranda (SVG / qatlam / belgilar) | Animatsiya g‘oyasi | Diktor matni (uz) | EN / RU atamalar | Bayonotlar | s |
 |---|---|---|---|---|---|---|
 | 1 | Kirish kartochkasi; ikki sxema xira | Sarlavha va “Sxematik animatsiya — aniq model emas” | Bu darsda siydik test-chizig‘i o‘quvchisi va avtomatik siydik tahlili tizimini ilovadagi sxematik chizmalar asosida ko‘ramiz. | urinalysis / анализ мочи | — | 10 |
-| 2 | `urine_strip.svg` to‘liq; `urine_strip`: 1–6-belgi xira | Kamera chiziqdan o‘quvchi kallagiga suriladi | Manbaga ko‘ra, test-chiziq siydikka botiriladi va har maydonchadagi reagent o‘z moddasi bilan rang beradi; apparat chiziqni o‘qish kallagi ostidan o‘tkazadi. | test strip / тест-полоска; reagent pad / реагентная зона | US-PR | 18 |
+| 2 | `urine_strip.svg` to‘liq; `urine_strip`: 1–6-belgi xira | Kamera chiziqdan o‘quvchi kallagiga suriladi | Umumiy tamoyil bo‘yicha, test-chiziq siydikka botiriladi va har maydonchadagi reagent o‘z moddasi bilan rang beradi; apparat chiziqni o‘qish kallagi ostidan o‘tkazadi. | test strip / тест-полоска; reagent pad / реагентная зона | US-PR | 18 |
 | 3 | `urine_strip`: 1, 3-belgi | Halqa va nom chipi | Manbaga ko‘ra: 1-belgi — siydik namunasi va test-chiziq, 3-belgi — LED va fotosensorli o‘qish kallagi. | reading head / считывающая головка; photosensor / фотосенсор | US-C1, US-C3 | 16 |
 | 4 | `urine_strip`: 2, 4, 5, 6-belgi | Halqa va nom chipi | Umumiy tamoyil bo‘yicha: 2-belgi — chiziq lotogi, 4-belgi — displey, 5-belgi — printer, 6-belgi — ishlatilgan chiziqlar qutisi. | strip tray / лоток; display / дисплей; printer / принтер | US-C2, US-C4, US-C5, US-C6 | 18 |
 | 5 | `urine_strip`: 1, 2-belgi | Chiziq siydikka botiriladi, lotokka qo‘yiladi va suriladi | Manbaga ko‘ra, chiziq siydikka qisqa botiriladi. Umumiy tamoyil bo‘yicha, u lotokka qo‘yiladi va o‘qish kallagi ostiga suriladi. | dipping / погружение | US-C1, US-C2 | 16 |
-| 6 | `urine_strip`: 3-belgi kesigi | Turli rangli LED nurlari maydonchaga tushadi, qaytgan nur sensorga | Manbaga ko‘ra, turli to‘lqin uzunlikdagi LEDlar maydonchalarni yoritadi va fotosensor qaytgan nurni o‘lchaydi — bu reflektometriya. | reflectometry / рефлектометрия; LED / светодиод | US-C3, US-PR | 20 |
-| 7 | `urine_strip`: 4-belgi displeyi | Maydonchalar ro‘yxati darajalar bilan (raqamsiz) | Manbaga ko‘ra, rang intensivligi yarim miqdoriy darajaga aylantiriladi. Umumiy tamoyil bo‘yicha, natija har maydoncha bo‘yicha beriladi — masalan, glyukoza, oqsil, qon, nitrit. | semi-quantitative / полуколичественный | US-PR, US-RS | 18 |
+| 6 | `urine_strip`: 3-belgi kesigi | Turli rangli LED nurlari maydonchaga tushadi, qaytgan nur sensorga | Manbaga ko‘ra, o‘qish kallagi maydonchalarni bir necha to‘lqin uzunlikdagi nur bilan yoritadi va qaytgan nurni o‘lchaydi. Umumiy tamoyil bo‘yicha, bu reflektometriya deyiladi. | reflectometry / рефлектометрия; LED / светодиод | US-C3, US-PR | 20 |
+| 7 | `urine_strip`: 4-belgi displeyi | Maydonchalar ro‘yxati darajalar bilan (raqamsiz) | Umumiy tamoyil bo‘yicha, rang intensivligi yarim miqdoriy darajaga aylantiriladi va natija har maydoncha bo‘yicha beriladi — masalan, glyukoza, oqsil, qon, nitrit. | semi-quantitative / полуколичественный | US-PR, US-RS | 18 |
 | 8 | `urine_system.svg` to‘liq; `urine_system`: 1–7-belgi xira | Rakalar transport yo‘li bo‘ylab chapdan o‘ngga yuradi | Endi avtomatik tizim. Manbaga ko‘ra, namuna rakalari transport yo‘li bo‘ylab ikki modulga boradi: kimyoviy modul va cho‘kma moduli. | transport line / транспортная линия; module / модуль | UA-PR | 18 |
 | 9 | `urine_system`: 1, 2, 4, 5-belgi | Halqa va nom chipi | Manbaga ko‘ra: 1-belgi — transport yo‘li, 2-belgi — test-chiziq kimyoviy moduli, 4-belgi — mikroskop va kamerali cho‘kma moduli, 5-belgi — zarracha tasvirlari displeyi. | chemistry module / химический модуль; sediment module / модуль осадка | UA-C1, UA-C2, UA-C4, UA-C5 | 20 |
 | 10 | `urine_system`: 3, 6, 7-belgi | Halqa va nom chipi | Umumiy tamoyil bo‘yicha: 3-belgi — namuna ignalari, 6-belgi — reagent va yuvish eritmasi, 7-belgi — chiqindi idishi. | sampling needles / иглы пробоотбора | UA-C3, UA-C6, UA-C7 | 14 |
@@ -88,20 +88,20 @@ modullarga boradi [UA-C1, UA-PR]. Umumiy tamoyil bo‘yicha, har modul probirkad
 
 ### 5.4 Ichkarida nima bo‘ladi
 
-Manbaga ko‘ra, maydonchalardagi reagentlar o‘z moddasi bilan rang beradi; cho‘kma moduli siydikni mikroskop orqali
-raqamli suratga oladi [US-PR, UA-PR].
+Umumiy tamoyil bo‘yicha, maydonchalardagi reagentlar o‘z moddasi bilan rang beradi [US-PR]. Manbaga ko‘ra, cho‘kma
+moduli siydikni mikroskop orqali raqamli suratga oladi [UA-PR].
 
 ### 5.5 Signal qanday o‘lchanadi
 
-Manbaga ko‘ra, LEDlar maydonchalarni turli to‘lqin uzunligida yoritadi va fotosensor qaytgan nurni o‘lchaydi
-(reflektometriya); cho‘kma modulida kamera tasvir oladi va dastur zarrachalarni tasniflaydi [US-C3, US-PR, UA-C4,
-UA-PR].
+Manbaga ko‘ra, o‘qish kallagi maydonchalarni bir necha to‘lqin uzunlikdagi nur bilan yoritadi va qaytgan nurni
+o‘lchaydi; cho‘kma modulida kamera tasvir oladi va dastur zarrachalarni tasniflaydi [US-C3, UA-C4, UA-PR]. Umumiy
+tamoyil bo‘yicha, chiziqni o‘qish usuli reflektometriya deyiladi [US-PR].
 
 ### 5.6 Natija qanday olinadi
 
-Manbaga ko‘ra, rang intensivligi yarim miqdoriy darajaga aylantiriladi; cho‘kma tasvirlari ekranda ko‘rib chiqiladi
-[US-PR, UA-C5]. Umumiy tamoyil bo‘yicha, hisobotda har maydoncha natijasi va cho‘kma elementlari soni yoki toifasi
-bo‘ladi [US-RS, UA-RS].
+Umumiy tamoyil bo‘yicha, rang intensivligi yarim miqdoriy darajaga aylantiriladi; hisobotda har maydoncha natijasi va
+cho‘kma elementlari soni yoki toifasi bo‘ladi [US-PR, US-RS, UA-RS]. Manbaga ko‘ra, cho‘kma tasvirlari ekranda ko‘rib
+chiqiladi [UA-C5].
 
 ## 6. Keng tarqalgan xatolar, xavfsizlik va QC
 
@@ -113,8 +113,8 @@ bo‘ladi [US-RS, UA-RS].
 
 ## 7. O‘z-o‘zini tekshirish savollari
 
-1. O‘qish kallagi nimani o‘lchaydi? Javob: maydonchalardan qaytgan nurni (reflektometriya) [US-C3, US-PR].
-2. Rang intensivligi qanday natijaga aylanadi? Javob: yarim miqdoriy darajaga [US-PR].
+1. O‘qish kallagi nimani o‘lchaydi? Javob: maydonchalardan qaytgan nurni [US-C3].
+2. Umumiy tamoyil bo‘yicha, rang intensivligi qanday natijaga aylanadi? Javob: yarim miqdoriy darajaga [US-PR].
 3. Avtomatik tizimda qaysi ikki modul bor? Javob: kimyoviy (test-chiziq) va cho‘kma modullari [UA-PR].
 4. Cho‘kma moduli qanday ishlaydi? Javob: siydikni mikroskop orqali raqamli suratga oladi, dastur zarrachalarni
    tasniflaydi [UA-PR].
@@ -141,7 +141,7 @@ Test-chiziq o‘quvchisi:
 | US-C4 | Displey — Natijalar va apparat holatini ko‘rsatadi. | STANDARD_TEXTBOOK | parts_src: TB (darslik, mutaxassis tasdig‘isiz); `schematic_parts.json` → `urine_strip` #4 |
 | US-C5 | Printer — Natijalarni chop etadi. | STANDARD_TEXTBOOK | parts_src: TB (darslik, mutaxassis tasdig‘isiz); `schematic_parts.json` → `urine_strip` #5 |
 | US-C6 | Ishlatilgan chiziqlar qutisi — O‘qilgan chiziqlar shu yerga tushadi. | STANDARD_TEXTBOOK | parts_src: TB (darslik, mutaxassis tasdig‘isiz); `schematic_parts.json` → `urine_strip` #6 |
-| US-PR | Test-chiziq siydikka botiriladi; har maydonchadagi reagent o‘z moddasi bilan rang beradi. Apparat chiziqni o‘qish kallagi ostidan o‘tkazadi: turli to‘lqin uzunlikdagi LEDlar maydonchalarni yoritadi, fotosensor qaytgan nurni o‘lchaydi (reflektometriya). Rang intensivligi yarim miqdoriy darajaga aylantiriladi. | SOURCED | `ro-u411`, `ro-6500`; `schematic_parts.json` → `urine_strip`.principle |
+| US-PR | Test-chiziq siydikka botiriladi; har maydonchadagi reagent o‘z moddasi bilan rang beradi. Apparat chiziqni o‘qish kallagi ostidan o‘tkazadi: turli to‘lqin uzunlikdagi LEDlar maydonchalarni yoritadi, fotosensor qaytgan nurni o‘lchaydi (reflektometriya). Rang intensivligi yarim miqdoriy darajaga aylantiriladi. | STANDARD_TEXTBOOK | parts_src: TB (darslik, mutaxassis tasdig‘isiz); qisman manba: `ro-u411`; `schematic_parts.json` → `urine_strip`.principle |
 | US-RS | Har maydoncha bo‘yicha sifatiy yoki yarim miqdoriy natija (masalan, glyukoza, oqsil, qon, leykotsitlar, nitrit, pH, nisbiy zichlik) va bosma hisobot. | STANDARD_TEXTBOOK | parts_src: TB (darslik, mutaxassis tasdig‘isiz); qisman manba: `ro-u411`; `schematic_parts.json` → `urine_strip`.result |
 <!-- /auto:epistemic-parts -->
 

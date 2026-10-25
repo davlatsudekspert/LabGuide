@@ -6,6 +6,9 @@
  * fluoressensiyani o'lchash, kuchayish egri chiziqlari, chegara va Cq.
  * Harorat, vaqt, sikl soni va Cq qiymatlari KO'RSATILMAYDI; egri chiziqlar —
  * shartli rasm. Koordinatalar — gen.py `real_time_pcr()` sahnasi.
+ * Signal yo'li (ilmiy ko'rik F2, 2026-10-25): manba -> qo'zg'atish filtri ->
+ * termoblokdagi probirka -> nurlanish filtri -> detektor; manba turi, filtr
+ * tuzilishi va o'qish yo'nalishi ko'rsatilmaydi (sxematik).
  */
 window.LESSON = (() => {
   const CYC = 3.2, PH = [1.0, 1.0, 1.2];            // bitta sikl va bosqichlari (animatsiya vaqti, s)
@@ -43,18 +46,14 @@ window.LESSON = (() => {
       }
       S.wellX0 = x0 + 10 + (x1 - x0 - 20) * 2 / 11; S.wellY = yy;
       S.tint = el('path', { d: 'M418 420 L436 368 H774 L792 420 Z', fill: PHC[0], opacity: 0 }, o);
-      // optika
+      // optika: manba -> qo'zg'atish filtri -> probirka -> nurlanish filtri -> detektor
       S.glow = el('circle', { cx: 446, cy: 600, r: 18, fill: '#9CC3EC', opacity: 0 }, o);
-      S.beam = el('line', { x1: 464, y1: 600, x2: 500, y2: 600, 'stroke-width': 5, 'stroke-dasharray': '6 6', opacity: 0 }, o);
-      S.wheel = el('g', { opacity: 0 }, o);
-      el('circle', { cx: 0, cy: 0, r: 40, fill: '#3E4A45', stroke: '#8E9B94', 'stroke-width': 2 }, S.wheel);
-      CH.forEach((c, k) => {
-        const a = (-90 + k * 90) * Math.PI / 180;
-        el('circle', { cx: Math.cos(a) * 22, cy: Math.sin(a) * 22, r: 9, fill: c }, S.wheel);
-      });
-      el('circle', { cx: 0, cy: -22, r: 13, fill: 'none', stroke: '#FFFFFF', 'stroke-width': 2.5 }, o).setAttribute('transform', 'translate(540,600)');
-      S.emit = el('path', { d: 'M540 560 V 500 L 590 497', fill: 'none', 'stroke-width': 5, 'stroke-dasharray': '6 6', opacity: 0 }, o);
-      S.flash = el('circle', { cx: 610, cy: 497, r: 12, fill: '#FFF2B0', opacity: 0 }, o);
+      S.beam = el('line', { x1: 452, y1: 600, x2: 525, y2: 602, 'stroke-width': 5, 'stroke-dasharray': '6 6', opacity: 0 }, o);
+      S.exf = el('rect', { x: 461, y: 582, width: 9, height: 36, rx: 2, opacity: 0 }, o);
+      S.tube = el('circle', { cx: 532, cy: 604, r: 11, opacity: 0 }, o);
+      S.emit = el('path', { d: 'M540 588 L 610 520', fill: 'none', 'stroke-width': 5, 'stroke-dasharray': '6 6', opacity: 0 }, o);
+      S.emf = el('rect', { x: 565, y: 544, width: 9, height: 34, rx: 2, transform: 'rotate(45 569.5 561)', opacity: 0 }, o);
+      S.flash = el('circle', { cx: 612, cy: 503, r: 12, fill: '#FFF2B0', opacity: 0 }, o);
 
       // pastki panel: (a) sikl profili va nusxalar, (b) kuchayish egri chiziqlari
       S.prof = el('g', {}, g);
@@ -146,9 +145,13 @@ window.LESSON = (() => {
       const opt = i === 4;
       const read = ph === 2 && pf > 0.55 ? Math.sin(Math.PI * (pf - 0.55) / 0.45) : 0;
       const ch = ncyc % 4;
-      show(S.wheel, opt ? 1 : 0);
-      const rot = -90 * (ncyc + (ph === 0 ? ease(pf) : 1)) + 90;
-      S.wheel.setAttribute('transform', `translate(540,600) rotate(${rot.toFixed(1)})`);
+      // qo'zg'atish filtri har siklda keyingi rang kanaliga o'tadi (tuzilishi ko'rsatilmaydi)
+      show(S.exf, opt ? 0.45 + 0.55 * read : 0);
+      S.exf.setAttribute('fill', CH[ch]);
+      show(S.tube, opt ? read * 0.85 : 0);
+      S.tube.setAttribute('fill', CH[ch]);
+      show(S.emf, opt ? 0.35 + 0.65 * read : 0);
+      S.emf.setAttribute('fill', CH[ch]);
       show(S.glow, opt ? 0.25 + 0.6 * read : 0);
       S.glow.setAttribute('r', (16 + 8 * read).toFixed(1));
       show(S.beam, opt ? read : 0);

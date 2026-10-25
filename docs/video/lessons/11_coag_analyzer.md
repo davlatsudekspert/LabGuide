@@ -59,7 +59,7 @@ C4, C5]. Manbaga ko‘ra, aniqlash optik yoki mexanik usulda bo‘ladi [L1].
 | 1 | Sitratli probirkalar rakasi | Штатив с цитратными пробирками | Citrate tube rack | C1 |
 | 2 | Sovutilgan reagent bloki | Охлаждаемый блок реагентов | Cooled reagent block | C2 |
 | 3 | Pipetkalovchi qo‘l | Пипетирующая рука | Pipetting arm | C3 |
-| 4 | O‘lchash kyuvetalari (37 °C) | Измерительные кюветы (37 °C) | Measuring cuvettes (37 °C) | C4 |
+| 4 | O‘lchash kyuvetalari | Измерительные кюветы | Measuring cuvettes | C4 |
 | 5 | Yorug‘lik manbai | Источник света | Light source | C5 |
 | 6 | Fotodetektor | Фотодетектор | Photodetector | C6 |
 | 7 | Displey (ivish egri chizig‘i) | Дисплей (кривая свёртывания) | Display (clotting curve) | C7 |
@@ -112,8 +112,8 @@ Qoida (to‘liq — [README](README.md#epistemik-qoida)): SOURCED — catalog.js
 STANDARD_TEXTBOOK — darslik darajasidagi umumiy tamoyil; NEEDS_EXPERT — aniqlik yoki raqam mutaxassis
 tasdig‘ini kutadi. STANDARD_TEXTBOOK va NEEDS_EXPERT bayonotlar diktor matnida faqat “umumiy tamoyil bo‘yicha”
 darajasida aytiladi, aniq model xususiyati sifatida emas. Mutaxassis ko‘rigi: EXPERT_REVIEW_PENDING.
-Diqqat: sxema qismi 4 nomidagi “37 °C” parts_src.py da TB bilan belgilangan — diktor matnida harorat aytilmaydi
-([README → Topilmalar](README.md#topilmalar)). Ataylab aytilmaydi: harorat, INR formulasi, referens intervallar, terapevtik oraliqlar.
+Diqqat: sxema qismi 4 nomi va prinsip matnidan manbasiz harorat olib tashlangan (2026-10-25,
+ilmiy ko‘rik; [README → Topilmalar](README.md#topilmalar) F3) — diktor matnida harorat aytilmaydi. Ataylab aytilmaydi: harorat, INR formulasi, referens intervallar, terapevtik oraliqlar.
 
 ### 8.1 Sxema qismlari (avtomatik, `parts_src.py` dan)
 
@@ -123,11 +123,11 @@ Diqqat: sxema qismi 4 nomidagi “37 °C” parts_src.py da TB bilan belgilangan
 | C1 | Sitratli probirkalar rakasi — Havorang qopqoqli natriy sitratli probirkalar; plazma shu yerdan olinadi. | STANDARD_TEXTBOOK | parts_src: TB (darslik, mutaxassis tasdig‘isiz); `schematic_parts.json` → `coag_analyzer` #1 |
 | C2 | Sovutilgan reagent bloki — Tromboplastin va boshqa reagentlar sovuqda saqlanadi. | STANDARD_TEXTBOOK | parts_src: TB (darslik, mutaxassis tasdig‘isiz); `schematic_parts.json` → `coag_analyzer` #2 |
 | C3 | Pipetkalovchi qo‘l — Plazma va reagentni kyuvetaga aniq hajmda quyadi. | STANDARD_TEXTBOOK | parts_src: TB (darslik, mutaxassis tasdig‘isiz); `schematic_parts.json` → `coag_analyzer` #3 |
-| C4 | O‘lchash kyuvetalari (37 °C) — Plazma isitiladi; reagent qo‘shilgach laxta hosil bo‘lishi kuzatiladi. | NEEDS_EXPERT | parts_src: TB (darslik, mutaxassis tasdig‘isiz); raqam darslik manbasiz; `schematic_parts.json` → `coag_analyzer` #4 |
+| C4 | O‘lchash kyuvetalari — Plazma isitiladi; reagent qo‘shilgach laxta hosil bo‘lishi kuzatiladi. | STANDARD_TEXTBOOK | parts_src: TB (darslik, mutaxassis tasdig‘isiz); `schematic_parts.json` → `coag_analyzer` #4 |
 | C5 | Yorug‘lik manbai — Kyuvetadan o‘tadigan nur beradi. | STANDARD_TEXTBOOK | parts_src: TB (darslik, mutaxassis tasdig‘isiz); qisman manba: `a1-sp-pt`; `schematic_parts.json` → `coag_analyzer` #5 |
 | C6 | Fotodetektor — Laxta hosil bo‘lganda o‘tgan nur o‘zgarishini qayd etadi. | SOURCED | `a1-sp-pt`; `schematic_parts.json` → `coag_analyzer` #6 |
 | C7 | Displey (ivish egri chizig‘i) — Ivish egri chizig‘i, vaqt va hisoblangan INR. | SOURCED | `a1-sp-pt`; `schematic_parts.json` → `coag_analyzer` #7 |
-| PR | Zond sitratli plazmani kyuvetaga quyadi va 37 °C gacha isitadi, so‘ng reagent qo‘shiladi (PT uchun tromboplastin: to‘qima omili, kalsiy va fosfolipidlar). Fibrin laxtasi hosil bo‘lganda aralashma loyqalanadi: optik usulda o‘tgan nur o‘zgarishi, mexanik usulda esa harakatning to‘xtashi qayd etiladi. Shu paytgacha o‘tgan vaqt — ivish vaqti. | NEEDS_EXPERT | parts_src: TB (darslik, mutaxassis tasdig‘isiz); qisman manba: `a1-sp-pt`; raqam darslik manbasiz; `schematic_parts.json` → `coag_analyzer`.principle |
+| PR | Zond sitratli plazmani kyuvetaga quyadi va isitadi, so‘ng reagent qo‘shiladi (PT uchun tromboplastin: to‘qima omili, kalsiy va fosfolipidlar). Fibrin laxtasi hosil bo‘lganda aralashma loyqalanadi: optik usulda o‘tgan nur o‘zgarishi, mexanik usulda esa harakatning to‘xtashi qayd etiladi. Shu paytgacha o‘tgan vaqt — ivish vaqti. | STANDARD_TEXTBOOK | parts_src: TB (darslik, mutaxassis tasdig‘isiz); qisman manba: `a1-sp-pt`; `schematic_parts.json` → `coag_analyzer`.principle |
 | RS | Ivish vaqti soniyalarda va ivish egri chizig‘i; PT uchun INR bemor PT, o‘rtacha normal PT va reagentning ISI qiymati bo‘yicha hisoblanadi. | SOURCED | `a1-sp-pt`; `schematic_parts.json` → `coag_analyzer`.result |
 <!-- /auto:epistemic-parts -->
 

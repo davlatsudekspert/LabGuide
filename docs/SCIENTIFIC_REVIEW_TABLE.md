@@ -2,7 +2,7 @@
 
 Bu hujjat **LabGuide laboratoriya ta’limi ilovasi** kontentining ilmiy tekshiruvi uchun (boshqa hech qaysi ilovaga aloqasi yo‘q). Egasi topshirig‘i (4-band): 18 ta sxema (`assets/diagrams/`, 6 mavzu × uz/ru/en) va 32 ta apparat sxematik chizmasi (`assets/instruments/schematic/`) dagi **mutaxassis tekshiruvini talab qiladigan har bir da’vo** — alohida jadvalda.
 
-- To‘liq jadval: [`docs/SCIENTIFIC_REVIEW_TABLE.csv`](SCIENTIFIC_REVIEW_TABLE.csv) (UTF-8 BOM, 595 qator, bitta qator — bitta tekshiriladigan da’vo).
+- To‘liq jadval: [`docs/SCIENTIFIC_REVIEW_TABLE.csv`](SCIENTIFIC_REVIEW_TABLE.csv) (UTF-8 BOM, 597 qator, bitta qator — bitta tekshiriladigan da’vo).
 - Mutaxassislarga paketlar: [`docs/review_packets_tech/`](review_packets_tech/) — har profilga bitta CSV, xavf bo‘yicha tartiblangan.
 - Generator: `python3 tool/review/make_scientific_review_tables.py` (faqat stdlib, deterministik; `--check` — fayllar eskirgan bo‘lsa xato). Qorovul: `test/guards/scientific_review_table_guard_test.dart`.
 
@@ -13,9 +13,9 @@ Bu hujjat **LabGuide laboratoriya ta’limi ilovasi** kontentining ilmiy tekshir
 | kod | ma’nosi | qatorlar |
 |---|---|---|
 | `SOURCED` | katalog manbasi (catalog.json `sources[].id`), ARB kaliti yoki ilovadagi aniq fayl:qator bor; mazmun mutaxassis tomonidan hali tekshirilmagan | 154 |
-| `STANDARD_TEXTBOOK` | darslik darajasidagi umumiy ma’lumot, repoda alohida iqtibos yo‘q (hujjatlarda “STANDARD_TEXTBOOK (NEEDS_EXPERT)”) | 109 |
+| `STANDARD_TEXTBOOK` | darslik darajasidagi umumiy ma’lumot, repoda alohida iqtibos yo‘q (hujjatlarda “STANDARD_TEXTBOOK (NEEDS_EXPERT)”) | 110 |
 | `NEEDS_SOURCE` | manbasiz aniq raqam/tafsilot (masalan, harorat, son, vaqt) — avval manba topilishi kerak | 0 |
-| `NEEDS_EXPERT` | manba to‘liq qamramaydi (qisman manbali), hujjatlar kelishmaydi, tarjima yoki chizma — mutaxassis ko‘rigi kerak | 313 |
+| `NEEDS_EXPERT` | manba to‘liq qamramaydi (qisman manbali), hujjatlar kelishmaydi, tarjima yoki chizma — mutaxassis ko‘rigi kerak | 314 |
 | `APP_RULE_AWAITING_EXPERT` | ilovaning o‘z qoidasi/ish tartibi (registr `AWAITING_EXPERT` yoki DECISIONS.md qarori) — tashqi manba emas | 19 |
 
 Holat qanday aniqlandi (hech bir holat o‘z hisobimdan **ko‘tarilmadi**, faqat ehtiyotkor tomonga tushirildi):
@@ -31,12 +31,12 @@ Holat qanday aniqlandi (hech bir holat o‘z hisobimdan **ko‘tarilmadi**, faqa
 | kind | qator | SOURCED | STANDARD_TEXTBOOK | NEEDS_SOURCE | NEEDS_EXPERT | APP_RULE_AWAITING_EXPERT | high | medium | low |
 |---|---|---|---|---|---|---|---|---|---|
 | `diagram` | 44 | 28 | 2 | 0 | 4 | 10 | 9 | 25 | 10 |
-| `schematic-part` | 221 | 98 | 106 | 0 | 17 | 0 | 3 | 173 | 45 |
+| `schematic-part` | 223 | 98 | 107 | 0 | 18 | 0 | 3 | 175 | 45 |
 | `schematic-principle` | 32 | 13 | 0 | 0 | 19 | 0 | 2 | 30 | 0 |
 | `schematic-result` | 32 | 15 | 1 | 0 | 16 | 0 | 10 | 22 | 0 |
-| `schematic-drawing` | 72 | 0 | 0 | 0 | 72 | 0 | 0 | 11 | 61 |
+| `schematic-drawing` | 72 | 0 | 0 | 0 | 72 | 0 | 0 | 12 | 60 |
 | `text-translation` | 194 | 0 | 0 | 0 | 185 | 9 | 0 | 62 | 132 |
-| **jami** | 595 | 154 | 109 | 0 | 313 | 19 | 24 | 323 | 248 |
+| **jami** | 597 | 154 | 110 | 0 | 314 | 19 | 24 | 326 | 247 |
 
 ## Eng yuqori xavfli 30 qator (avval shular)
 
@@ -93,10 +93,10 @@ Tartib: xavf (high > medium > low), so‘ng holat (NEEDS_SOURCE > APP_RULE/NEEDS
 | 1 | `bsc_class2` | 14 | 5 | 3 | 0 | 6 | 0 | 3 | 10 | biologik xavfsizlik mutaxassisi | `SCHEM-bsc_class2-part-02` |
 | 2 | `gel_card_system` | 13 | 5 | 2 | 0 | 6 | 0 | 3 | 9 | transfuziolog (immunogematolog) | `SCHEM-gel_card_system-result` |
 | 3 | `autoclave` | 14 | 4 | 4 | 0 | 6 | 0 | 2 | 9 | biologik xavfsizlik mutaxassisi | `SCHEM-autoclave-result` |
-| 4 | `fluorescence_microscope` | 14 | 2 | 4 | 0 | 8 | 0 | 1 | 9 | sil (TB) laboratoriyasi mutaxassisi | `SCHEM-fluorescence_microscope-result` |
-| 5 | `flow_cytometer` | 14 | 5 | 2 | 0 | 7 | 0 | 1 | 9 | immunolog | `SCHEM-flow_cytometer-result` |
-| 6 | `coag_analyzer` | 13 | 3 | 4 | 0 | 6 | 0 | 1 | 9 | gematolog | `SCHEM-coag_analyzer-result` |
-| 7 | `real_time_pcr` | 13 | 4 | 4 | 0 | 5 | 0 | 1 | 9 | molekulyar diagnost | `SCHEM-real_time_pcr-result` |
+| 4 | `real_time_pcr` | 15 | 4 | 5 | 0 | 6 | 0 | 1 | 12 | molekulyar diagnost | `SCHEM-real_time_pcr-result` |
+| 5 | `fluorescence_microscope` | 14 | 2 | 4 | 0 | 8 | 0 | 1 | 9 | sil (TB) laboratoriyasi mutaxassisi | `SCHEM-fluorescence_microscope-result` |
+| 6 | `flow_cytometer` | 14 | 5 | 2 | 0 | 7 | 0 | 1 | 9 | immunolog | `SCHEM-flow_cytometer-result` |
+| 7 | `coag_analyzer` | 13 | 3 | 4 | 0 | 6 | 0 | 1 | 9 | gematolog | `SCHEM-coag_analyzer-result` |
 | 8 | `microbial_id_ast` | 12 | 3 | 2 | 0 | 7 | 0 | 1 | 8 | mikrobiolog | `SCHEM-microbial_id_ast-result` |
 | 9 | `cartridge_molecular` | 11 | 2 | 3 | 0 | 6 | 0 | 1 | 7 | sil (TB) laboratoriyasi mutaxassisi | `SCHEM-cartridge_molecular-result` |
 | 10 | `mycobacterial_culture` | 13 | 5 | 2 | 0 | 6 | 0 | 1 | 7 | sil (TB) laboratoriyasi mutaxassisi | `SCHEM-mycobacterial_culture-result` |
@@ -138,7 +138,7 @@ Egasi har bir mutaxassisga bitta CSV beradi; mutaxassis faqat `specialist_decisi
 | immunolog | [`immunolog.csv`](review_packets_tech/immunolog.csv) | 24 | 1 | 16 | 7 | 0 | 8 | 6 | 10 |
 | klinik laboratoriya shifokori (umumiy klinik tahlillar) | [`klinik_laboratoriya_shifokori.csv`](review_packets_tech/klinik_laboratoriya_shifokori.csv) | 27 | 1 | 17 | 9 | 0 | 7 | 7 | 13 |
 | mikrobiolog | [`mikrobiolog.csv`](review_packets_tech/mikrobiolog.csv) | 32 | 1 | 22 | 9 | 0 | 15 | 7 | 10 |
-| molekulyar diagnost | [`molekulyar_diagnost.csv`](review_packets_tech/molekulyar_diagnost.csv) | 11 | 1 | 7 | 3 | 0 | 3 | 4 | 4 |
+| molekulyar diagnost | [`molekulyar_diagnost.csv`](review_packets_tech/molekulyar_diagnost.csv) | 13 | 1 | 10 | 2 | 0 | 4 | 5 | 4 |
 | reproduktiv laboratoriya mutaxassisi (androlog) | [`reproduktiv_laboratoriya_mutaxassisi.csv`](review_packets_tech/reproduktiv_laboratoriya_mutaxassisi.csv) | 9 | 0 | 6 | 3 | 0 | 5 | 3 | 1 |
 | tibbiy pedagog | [`tibbiy_pedagog.csv`](review_packets_tech/tibbiy_pedagog.csv) | 6 | 0 | 0 | 6 | 0 | 6 | 0 | 0 |
 | tibbiy tilshunos (ru) | [`tibbiy_tilshunos_ru.csv`](review_packets_tech/tibbiy_tilshunos_ru.csv) | 92 | 0 | 31 | 61 | 0 | 92 | 0 | 0 |
@@ -160,8 +160,10 @@ Tuzatilmadi (lib/, ARB, katalog, assets o‘zgartirilmaydi) — faqat ro‘yxat;
 2. **DRAW-HBA1C** — TUZATILDI (2026-10-25, img/fix-drawings): `hba1c_analyzer` usul jihatdan neytral — ion almashinuv kolonkasi, detektor kesigi va xromatogramma olib tashlandi; qismlar/prinsip/natija matnlari usulni da’vo qilmaydi (kartadagi usullar ro‘yxati keltirilgan), LAB_CARD_IMAGE_COVERAGE.md bilan mos (SCHEM-hba1c_analyzer-drawing-01).
 3. **DRAW-TUBES** — TUZATILDI (2026-10-25, img/fix-drawings): `hematology5` avtoyuklagichida faqat binafsha (EDTA turi) qopqoqli butun qon probirkalari; `chemistry` va `immunoassay` rakalarida (va biokimyo namuna diskida) neytral qopqoqli, och somon rangli zardob/plazma probirkalari; panel matnida qopqoq rangi da’vo qilinmaydi.
 4. **DRAW-HEM3** — TUZATILDI (2026-10-25, img/fix-drawings): `hematology3` displeyida uch xil sxematik gistogramma (WBC — uch subpopulyatsiya, RBC, o‘ngga cho‘zilgan PLT); panel matnida shakllar sxematik ekani aytilgan (SCHEM-hematology3-drawing-02).
-5. **L10N-REFERENS** — ARB `diffInterpretIntro`/`diffRangesBody` (uz) “referens oraliq” deydi; docs/L10N_TERMINOLOGY_DECISIONS.md uz uchun yagona atama “referens interval” (NEEDS_NATIVE_REVIEW). `differential_count.uz.png` va uning alt-matni 2026-10-25 da “referens interval” ga o‘tkazildi; ARB qatorlari tuzatilmagan.
-6. **TERM-ABS** — `photometry`: en “Absorbance”; ilova ARB’ida absorbance — ru “поглощение”, uz “yutilish”, ma’ruzada — “оптическая плотность”/“optik zichlik”. 2026-10-25 da sxema ilovaning o‘z iborasiga (“Поглощение (оптическая плотность)”, “Yutilish (optik zichlik)”) moslandi; IUPAC farqi (absorbance ≠ optical density) bo‘yicha atama qarori hali mutaxassisniki.
+5. **DRAW-PCR-PATH** — TUZATILDI (2026-10-25, img/fix-drawings; video-dars topilmasi F2): `real_time_pcr` optik kesigida nur avval filtr g‘ildiragidan to‘g‘ri detektorga borardi va probirkadan o‘tmasdi; endi manba → qo‘zg‘atish filtri → termoblokdagi probirka → nurlanish filtri → detektor (belgilar 4–8), filtr g‘ildiragi olib tashlandi; animatsiya va dars matni shu yo‘lga moslandi. Mutaxassis ko‘rigi kerak (SCHEM-real_time_pcr-drawing-01).
+6. **CARD-OSMO** — `a3-bio-osmometer` karta prinsipi (LabGuide parafrazasi, manba `a3-statpearls-osmometer`) aniqlashtirildi: “1 mol erigan modda suvning muzlash nuqtasini ~1,86 °C pasaytiradi … (mmol/kg)” → “1 kg suvdagi 1 mol erigan zarracha (1 osmol) … ~1,86 °C; elektrolitlarda zarrachalar soni dissotsiatsiyaga bog‘liq; osmolyallik (mOsm/kg)” (uz/ru/en; uz atamasi ‘osmolallik’ → ilova bilan bir xil ‘osmolyallik’). Manba matni faqat “1 mole of a dissolved solute … approximately 1.86 °C” deydi — “1 kg suvga” qismi darslik darajasidagi (krioskopik doimiy) aniqlashtirish, mutaxassis tasdig‘ini kutadi.
+7. **L10N-REFERENS** — ARB `diffInterpretIntro`/`diffRangesBody` (uz) “referens oraliq” deydi; docs/L10N_TERMINOLOGY_DECISIONS.md uz uchun yagona atama “referens interval” (NEEDS_NATIVE_REVIEW). `differential_count.uz.png` va uning alt-matni 2026-10-25 da “referens interval” ga o‘tkazildi; ARB qatorlari tuzatilmagan.
+8. **TERM-ABS** — `photometry`: en “Absorbance”; ilova ARB’ida absorbance — ru “поглощение”, uz “yutilish”, ma’ruzada — “оптическая плотность”/“optik zichlik”. 2026-10-25 da sxema ilovaning o‘z iborasiga (“Поглощение (оптическая плотность)”, “Yutilish (optik zichlik)”) moslandi; IUPAC farqi (absorbance ≠ optical density) bo‘yicha atama qarori hali mutaxassisniki.
 
 ## Qayta yaratish
 

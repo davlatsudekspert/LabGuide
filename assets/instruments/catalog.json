@@ -6843,7 +6843,7 @@
    "lab_direction": "biochemistry",
    "card_kind": "platform",
    "name": {
-    "uz": "Osmometr (siydik / zardob osmolalligi)",
+    "uz": "Osmometr (siydik / zardob osmolyalligi)",
     "ru": "Осмометр (осмоляльность мочи / сыворотки)",
     "en": "Osmometer (urine / serum osmolality)"
    },
@@ -6864,9 +6864,9 @@
    },
    "principle": {
     "text": {
-     "uz": "Erigan zarrachalar soni muzlash nuqtasini pasaytiradi: 1 mol erigan modda suvning muzlash nuqtasini taxminan 1,86 °C ga pasaytiradi, shu orqali osmolallik (mmol/kg) aniqlanadi.",
-     "ru": "Число растворённых частиц снижает температуру замерзания: 1 моль вещества понижает её у воды примерно на 1,86 °C, по чему определяют осмоляльность (ммоль/кг).",
-     "en": "Dissolved particles lower the freezing point: one mole of solute lowers that of water by about 1.86 °C, which gives osmolality (mmol/kg)."
+     "uz": "Erigan zarrachalar muzlash nuqtasini pasaytiradi: 1 kg suvdagi 1 mol erigan zarracha (1 osmol) uni taxminan 1,86 °C ga tushiradi; elektrolitlarda zarrachalar soni dissotsiatsiyaga bog‘liq. Pasayish bo‘yicha osmolyallik (mOsm/kg) aniqlanadi.",
+     "ru": "Растворённые частицы понижают температуру замерзания: 1 моль растворённых частиц (1 осмоль) на килограмм воды понижает её примерно на 1,86 °C; у электролитов число частиц зависит от диссоциации. По понижению определяют осмоляльность (мОсм/кг).",
+     "en": "Dissolved particles lower the freezing point: 1 mole of dissolved particles (1 osmol) per kilogram of water lowers it by about 1.86 °C; for electrolytes the particle count depends on dissociation. The depression gives osmolality (mOsm/kg)."
     },
     "sources": [
      "a3-statpearls-osmometer"
@@ -6887,7 +6887,7 @@
    "tasks": [
     {
      "text": {
-      "uz": "Klinik laboratoriyalar odatda osmolallikni o‘lchaydi (osmolyarlikdan aniqroq, chunki massa haroratga bog‘liq emas).",
+      "uz": "Klinik laboratoriyalar odatda osmolyallikni o‘lchaydi (osmolyarlikdan aniqroq, chunki massa haroratga bog‘liq emas).",
       "ru": "Клинические лаборатории обычно измеряют осмоляльность (она точнее осмолярности, так как масса не зависит от температуры).",
       "en": "Clinical laboratories typically measure osmolality, which is more precise than osmolarity because mass is temperature-independent."
      },
@@ -6910,7 +6910,7 @@
    ],
    "qc_calibration_note": {
     "text": {
-     "uz": "Past, normal va yuqori osmolallikli tijoriy nazorat eritmalari har kuni (yoki seriya bilan) sinaladi, odatda ±2 SD chegarasida; ishlab chiqaruvchi eritmalari bilan muntazam kalibrlash va profilaktik xizmat zarur.",
+     "uz": "Past, normal va yuqori osmolyallikli tijoriy nazorat eritmalari har kuni (yoki seriya bilan) sinaladi, odatda ±2 SD chegarasida; ishlab chiqaruvchi eritmalari bilan muntazam kalibrlash va profilaktik xizmat zarur.",
      "ru": "Ежедневно (или с каждой серией) исследуют коммерческие контрольные растворы с низкой, нормальной и высокой осмоляльностью, обычно в пределах ±2 SD; нужны регулярная калибровка растворами производителя и профилактическое обслуживание.",
      "en": "Commercial controls at low, normal and high osmolality are run daily or per batch, usually within ±2 SD; regular calibration with manufacturer solutions and preventive maintenance are required."
     },

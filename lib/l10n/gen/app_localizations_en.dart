@@ -10416,7 +10416,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get labSchemRealTimePcr =>
-      'Real-time PCR instrument class — thermal block with wells, heated lid, optical module with light source, filter wheel and detector, tube strip and amplification-curve display';
+      'Real-time PCR instrument class — thermal block with wells, heated lid, cut-away of the fluorescence path (excitation source and filter → reaction tube in the block → emission filter → detector), tube strip and amplification-curve display';
 
   @override
   String get labSchemCartridgeMolecular =>
@@ -11434,18 +11434,33 @@ class AppLocalizationsEn extends AppLocalizations {
       'Provides light that excites the dye or probe.';
 
   @override
-  String get schemPartsRealTimePcrFiltersName => 'Filter wheel';
+  String get schemPartsRealTimePcrExfilterName =>
+      'Excitation filter (channel selection)';
 
   @override
-  String get schemPartsRealTimePcrFiltersFn =>
-      'Selects excitation and emission filters for each dye (channel).';
+  String get schemPartsRealTimePcrExfilterFn =>
+      'Selects the excitation light needed for each dye channel.';
+
+  @override
+  String get schemPartsRealTimePcrTubeName => 'Reaction tube in the block';
+
+  @override
+  String get schemPartsRealTimePcrTubeFn =>
+      'Excitation light reaches the dye or probe in the tube, which emits fluorescence proportional to the amount of amplicon.';
+
+  @override
+  String get schemPartsRealTimePcrEmfilterName => 'Emission filter';
+
+  @override
+  String get schemPartsRealTimePcrEmfilterFn =>
+      'Passes only the dye’s fluorescence and blocks the excitation light.';
 
   @override
   String get schemPartsRealTimePcrDetectorName => 'Detector';
 
   @override
   String get schemPartsRealTimePcrDetectorFn =>
-      'Measures fluorescence in every cycle.';
+      'Measures the fluorescence from the tubes in every cycle.';
 
   @override
   String get schemPartsRealTimePcrSoftwareName =>
@@ -12258,11 +12273,11 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get schemPartsOsmometerPrinciple =>
-      'The sample is supercooled below its freezing point in the cooling block, then vibration of the stirring wire starts freezing. Released latent heat raises the temperature to the freezing point, giving a plateau that the thermistor in a Wheatstone bridge circuit measures. Dissolved particles lower the freezing point: one mole of solute lowers that of water by about 1.86 °C, and osmolality is calculated from this.';
+      'The sample is supercooled below its freezing point in the cooling block, then vibration of the stirring wire starts freezing. Released latent heat raises the temperature to the freezing point, giving a plateau that the thermistor in a Wheatstone bridge circuit measures. Dissolved particles lower the freezing point: 1 mole of dissolved particles (1 osmol) per kilogram of water lowers it by about 1.86 °C; for electrolytes the particle count depends on dissociation. Osmolality is calculated from the measured depression.';
 
   @override
   String get schemPartsOsmometerResult =>
-      'Urine or serum osmolality in mOsm/kg (mmol/kg).';
+      'Urine or serum osmolality in mOsm/kg: particles per kilogram of water (osmolarity, by contrast, is per litre of solution, mOsm/L).';
 
   @override
   String get schemPartsTlcTankName => 'Developing tank (with lid)';

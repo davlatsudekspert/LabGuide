@@ -511,14 +511,22 @@
         },
         {
           "n": 5,
-          "id": "schemPartsRealTimePcrFilters"
+          "id": "schemPartsRealTimePcrExfilter"
         },
         {
           "n": 6,
-          "id": "schemPartsRealTimePcrDetector"
+          "id": "schemPartsRealTimePcrTube"
         },
         {
           "n": 7,
+          "id": "schemPartsRealTimePcrEmfilter"
+        },
+        {
+          "n": 8,
+          "id": "schemPartsRealTimePcrDetector"
+        },
+        {
+          "n": 9,
           "id": "schemPartsRealTimePcrSoftware"
         }
       ],

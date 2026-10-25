@@ -39,6 +39,10 @@ rakalarida faqat binafsha (EDTA turi) qopqoqli probirkalar, biokimyo va
 immunoanaliz rakalarida neytral qopqoqli zardob/plazma probirkalari; panel
 matnlaridan manbasiz raqamlar olib tashlandi (PCR probirkalar soni,
 koagulometrda 37 °C, oqim sitometrida 90°).
+Real vaqt PCR (2026-10-25, ilmiy ko‘rik F2): fluoressent signal yo‘li darslik darajasida qayta chizildi — qo‘zg‘atuvchi
+nur manbai → qo‘zg‘atish filtri → termoblokdagi reaksiya probirkasi → nurlanish filtri → detektor (belgilar 4–8);
+filtr g‘ildiragi va manba turi/o‘qish yo‘nalishi ko‘rsatilmaydi. Osmometr kartasi prinsipi aniqlashtirildi: 1 kg suvdagi
+1 mol erigan zarracha (1 osmol), natija mOsm/kg.
 
 Jami: 45 ta ommaviy karta — 35 tasida sxematik chizma, 10 tasi istisno;
 25 ta yangi sinf chizmasi.

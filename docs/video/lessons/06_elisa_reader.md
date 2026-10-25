@@ -29,13 +29,13 @@ Taxminan 3,5 daqiqa (storyboard bo‘yicha 3:28).
 |---|---|---|---|---|---|---|
 | 1 | Kirish kartochkasi; fon — `elisa_reader.svg` xira | Sarlavha va “Sxematik animatsiya — aniq model emas” | Bu darsda ELISA planshet o‘quvchisi va yuvish qurilmasini ilovadagi sxematik chizma asosida ko‘ramiz. | ELISA reader / ИФА-ридер | — | 10 |
 | 2 | `elisa_reader.svg` to‘liq, 1–8-belgilar xira | Kamera chapdagi o‘quvchidan o‘ngdagi yuvish qurilmasi va idishlarga suriladi | Manbaga ko‘ra, rang rivojlangandan keyin planshet quduqchalarining optik zichligi o‘lchanadi, bosqichlar orasida esa bog‘lanmagan material yuvib tashlanadi. Chapda o‘quvchi, o‘ngda yuvish qurilmasi. | microplate reader / ридер; washer / промыватель | L1 | 20 |
-| 3 | 1, 3, 5-belgilar | Halqa va nom chipi | Manbaga ko‘ra: 1-belgi — 96 quduqchali mikroplanshet, 3-belgi — o‘lchanayotgan quduqcha, 5-belgi — o‘tgan nurni o‘lchaydigan fotodetektor. | 96-well plate / 96-луночный планшет; photodetector / фотодетектор | C1, C3, C5 | 18 |
-| 4 | 2, 4-belgilar | Halqa va nom chipi | Umumiy tamoyil bo‘yicha: 2-belgi — lampa, 4-belgi — faqat kerakli to‘lqin uzunligini o‘tkazadigan optik filtr. | lamp / лампа; optical filter / оптический фильтр | C2, C4 | 14 |
+| 3 | 1, 4, 5-belgilar | Halqa va nom chipi | Manbaga ko‘ra: 1-belgi — 96 quduqchali mikroplanshet, 4-belgi — o‘lchanayotgan quduqcha, 5-belgi — o‘tgan nurni o‘lchaydigan fotodetektor. | 96-well plate / 96-луночный планшет; photodetector / фотодетектор | C1, C4, C5 | 18 |
+| 4 | 2, 3-belgilar | Halqa va nom chipi | Umumiy tamoyil bo‘yicha: 2-belgi — lampa, 3-belgi — faqat kerakli to‘lqin uzunligini o‘tkazadigan optik filtr. | lamp / лампа; optical filter / оптический фильтр | C2, C3 | 14 |
 | 5 | 6–8-belgilar | Halqa va nom chipi | Manbaga ko‘ra, 6-belgi — quduqchalarga yuvish eritmasini quyib, so‘rib oladigan ignalar. Umumiy tamoyil bo‘yicha: 7-belgi — yuvish eritmasi idishi, 8-belgi — chiqindi idishi. | wash manifold / промывочная гребёнка; wash buffer / промывочный буфер; waste / отходы | C6, C7, C8 | 18 |
 | 6 | 1-belgi yaqin plan | Quduqchalarga namuna tomchilari tushadi | Manbaga ko‘ra, qon, zardob, so‘lak, siydik, orqa miya va bo‘g‘im suyuqligi kabi namunalar tilga olingan. Planshetga asoslangan immunoanalizda bir reaktant qattiq yuzaga biriktiriladi. | solid phase / твёрдая фаза; specimen / образец | L2, L3 | 20 |
 | 7 | 6-belgi | Ignalar tushib eritma quyadi va so‘radi; quduqchalar “tozalanadi” | Manbaga ko‘ra, bosqichlar orasida yuvish qurilmasi bog‘lanmagan moddalarni yuvib tashlaydi. | wash step / отмывка; unbound material / несвязанные компоненты | PR | 16 |
-| 8 | 1 va 3-belgilar | Substrat qo‘shilgach quduqchalar sariq rangga kiradi (intensivligi har xil) | Manbaga ko‘ra, oxirida substrat qo‘shiladi va ferment rang hosil qiladi; ferment signali analit miqdorini aks ettiradi. | substrate / субстрат; colour development / развитие окраски | PR, L2 | 18 |
-| 9 | 2–5-belgilar (optik yo‘l) | Lampa → filtr → quduqcha → detektor bo‘ylab nur; rangli quduqcha nurning bir qismini yutadi | Manbaga ko‘ra, o‘quvchi har quduqchadan tanlangan to‘lqin uzunligidagi nurni o‘tkazib, yutilishni, ya’ni optik zichlikni o‘lchaydi. Umumiy tamoyil bo‘yicha, nurni lampa beradi va filtr to‘lqin uzunligini tanlaydi. | absorbance / поглощение; optical density / оптическая плотность | PR, C3, C5, C2, C4 | 22 |
+| 8 | 1 va 4-belgilar | Substrat qo‘shilgach quduqchalar sariq rangga kiradi (intensivligi har xil) | Manbaga ko‘ra, oxirida substrat qo‘shiladi va ferment rang hosil qiladi; ferment signali analit miqdorini aks ettiradi. | substrate / субстрат; colour development / развитие окраски | PR, L2 | 18 |
+| 9 | 2–5-belgilar (optik yo‘l) | Lampa → filtr → quduqcha → detektor bo‘ylab nur; rangli quduqcha nurning bir qismini yutadi | Manbaga ko‘ra, o‘quvchi har quduqchadan tanlangan to‘lqin uzunligidagi nurni o‘tkazib, yutilishni, ya’ni optik zichlikni o‘lchaydi. Umumiy tamoyil bo‘yicha, nurni lampa beradi va filtr to‘lqin uzunligini tanlaydi. | absorbance / поглощение; optical density / оптическая плотность | PR, C4, C5, C2, C3 | 22 |
 | 10 | Monitor/pastki panel: standart egri chiziq (raqamsiz) | Standart nuqtalar va egri chiziq; noma’lum namuna egri chiziqdan o‘qiladi | Manbaga ko‘ra, o‘lchangan optik zichlik ma’lum konsentratsiyali standartlar egri chizig‘iga qo‘yiladi; natija miqdoriy, sifat yoki yarim miqdoriy bo‘ladi. | standard curve / калибровочная кривая; qualitative / качественный | L4 | 20 |
 | 11 | Butun sxema; nazorat quduqchalari belgilanadi | Musbat va manfiy nazorat quduqchalari ramkada | Manbaga ko‘ra, har testda musbat va manfiy nazoratlar bemor namunasidek ishlanadi; musbat nazorat chegara qiymatga yaqin tanlanadi. ELISA skrining vositasi, o‘zi diagnostik emas. | positive/negative control / положительный/отрицательный контроль; screening / скрининг | L5, L6 | 22 |
 | 12 | Savollar ekrani | Savollar birin-ketin | Batafsil ma’lumot ilovadagi ELISA kartalarida. Endi o‘zingizni tekshiring. | — | — | 10 |
@@ -46,7 +46,7 @@ Taxminan 3,5 daqiqa (storyboard bo‘yicha 3:28).
 
 Manbaga ko‘ra, optik zichlik o‘lchanadi va bosqichlar orasida yuvish bajariladi [L1]. Umumiy tamoyil bo‘yicha,
 sxemada chapda planshet tashuvchisi va optik yo‘l kesigi bo‘lgan o‘quvchi, o‘ngda ignalar qatori bo‘lgan yuvish
-qurilmasi hamda yuvish eritmasi va chiqindi idishlari ko‘rinadi [C2, C4, C7, C8].
+qurilmasi hamda yuvish eritmasi va chiqindi idishlari ko‘rinadi [C2, C3, C7, C8].
 
 ### 5.2 Asosiy qismlar (raqamli belgilar)
 
@@ -55,8 +55,8 @@ qurilmasi hamda yuvish eritmasi va chiqindi idishlari ko‘rinadi [C2, C4, C7, C
 |---|---|---|---|---|
 | 1 | 96 quduqchali mikroplanshet | 96-луночный микропланшет | 96-well microplate | C1 |
 | 2 | Yorug‘lik manbai (lampa) | Источник света (лампа) | Light source (lamp) | C2 |
-| 3 | O‘lchanayotgan quduqcha | Измеряемая лунка | Well being read | C3 |
-| 4 | Optik filtr | Оптический фильтр | Optical filter | C4 |
+| 3 | Optik filtr | Оптический фильтр | Optical filter | C3 |
+| 4 | O‘lchanayotgan quduqcha | Измеряемая лунка | Well being read | C4 |
 | 5 | Fotodetektor | Фотодетектор | Photodetector | C5 |
 | 6 | Yuvish qurilmasi ignalari | Гребёнка игл вошера | Washer needle manifold | C6 |
 | 7 | Yuvish eritmasi idishi | Ёмкость промывочного буфера | Wash buffer container | C7 |
@@ -76,8 +76,8 @@ qurilmasi bog‘lanmagan moddalarni yuvib tashlaydi, oxirida substrat qo‘shili
 ### 5.5 Signal qanday o‘lchanadi
 
 Manbaga ko‘ra, o‘quvchi har quduqchadan tanlangan to‘lqin uzunligidagi nurni o‘tkazib, yutilishni (optik zichlik)
-o‘lchaydi, fotodetektor o‘tgan nurni qayd etadi [PR, C3, C5]. Umumiy tamoyil bo‘yicha, nurni lampa beradi, filtr
-to‘lqin uzunligini tanlaydi [C2, C4].
+o‘lchaydi, fotodetektor o‘tgan nurni qayd etadi [PR, C4, C5]. Umumiy tamoyil bo‘yicha, nurni lampa beradi, filtr
+to‘lqin uzunligini tanlaydi [C2, C3].
 
 ### 5.6 Natija qanday olinadi
 
@@ -117,8 +117,8 @@ Ataylab aytilmaydi: to‘lqin uzunligi qiymatlari, inkubatsiya vaqti va harorati
 |---|---|---|---|
 | C1 | 96 quduqchali mikroplanshet — Reaksiya va rang quduqchalarda; tashuvchi planshetni o‘quvchiga olib kiradi. | SOURCED | `a1-sp-elisa`; `schematic_parts.json` → `elisa_reader` #1 |
 | C2 | Yorug‘lik manbai (lampa) — Quduqchadan o‘tadigan nurni beradi. | STANDARD_TEXTBOOK | parts_src: TB (darslik, mutaxassis tasdig‘isiz); `schematic_parts.json` → `elisa_reader` #2 |
-| C3 | O‘lchanayotgan quduqcha — Rangli eritma nurning bir qismini yutadi. | SOURCED | `a1-sp-elisa`; `schematic_parts.json` → `elisa_reader` #3 |
-| C4 | Optik filtr — Faqat kerakli to‘lqin uzunligini o‘tkazadi. | STANDARD_TEXTBOOK | parts_src: TB (darslik, mutaxassis tasdig‘isiz); `schematic_parts.json` → `elisa_reader` #4 |
+| C3 | Optik filtr — Faqat kerakli to‘lqin uzunligini o‘tkazadi. | STANDARD_TEXTBOOK | parts_src: TB (darslik, mutaxassis tasdig‘isiz); `schematic_parts.json` → `elisa_reader` #3 |
+| C4 | O‘lchanayotgan quduqcha — Rangli eritma nurning bir qismini yutadi. | SOURCED | `a1-sp-elisa`; `schematic_parts.json` → `elisa_reader` #4 |
 | C5 | Fotodetektor — O‘tgan nurni o‘lchaydi; undan yutilish hisoblanadi. | SOURCED | `a1-sp-elisa`; `schematic_parts.json` → `elisa_reader` #5 |
 | C6 | Yuvish qurilmasi ignalari — Quduqchalarga yuvish eritmasini quyadi va so‘rib oladi. | SOURCED | `a1-sp-elisa`; `schematic_parts.json` → `elisa_reader` #6 |
 | C7 | Yuvish eritmasi idishi — Yuvish qurilmasiga bufer beradi. | STANDARD_TEXTBOOK | parts_src: TB (darslik, mutaxassis tasdig‘isiz); `schematic_parts.json` → `elisa_reader` #7 |
