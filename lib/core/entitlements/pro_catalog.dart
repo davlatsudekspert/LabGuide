@@ -67,6 +67,11 @@ abstract final class ProPricing {
   /// Egasi tasdiqlagan bazaviy narxlar (D-73, D-76; 2026-10-24) — YAGONA
   /// narx manbai (docs va testlar shu ro'yxatdan). Mahalliy
   /// valyuta narxlari (UZS va h.k.) — do'kon narx nuqtalari, ochiq qaror.
+  ///
+  /// D-77: UNCONFIRMED-until-created-in-store — bu narxlar va mahsulot
+  /// id'lari App Store Connect / Play Console'da HALI YARATILMAGAN; do'konda
+  /// yaratilgach qayta tekshiriladi. Ilova va server boshqa joyda narx
+  /// qotirmaydi (`test/guards/paid_policy_d77_guard_test.dart`).
   static const plans = <ProPlanSpec>[
     ProPlanSpec(
       plan: ProPlan.student,

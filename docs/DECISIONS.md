@@ -1200,6 +1200,9 @@ Manba: `docs/APP_MAP_2026-10-18.md` §4. Har qaror minimal o'zgarish bilan; eski
   yo'naltirish va zaxira), `global_search_test.dart` (Q4), `tab_memory_test.dart` (Q3 hero).
 
 ## D-70. Audit 2026-10-24 bo'yicha P0 tuzatishlar va Pro narxlari (TAKLIF — egasi tasdig'ini kutadi)
+> **QISMAN SUPERSEDED (D-73/D-76/D-77, 2026-10-25):** quyidagi “Pro narxlari — TAKLIF” bandi (Oddiy $3.99, Ustoz $5.99,
+> “30 kunlik bepul foydalanish”) — tarix. Amaldagi: narxlar D-73/D-76 (`ProPricing`), sinov **7 kun** (D-76, D-77).
+> P0 tuzatishlar va qolgan bandlar o'zgarmagan.
 - **ANC / eozinofil yo'llash chegarasi** endi YAXLITLANMAGAN qiymat bo'yicha (0,497 ekranda "0,50" bo'lsa ham
   `< 0,5` — yo'llanadi). D-audit #13 dagi "ekrandagi qiymat" qarori bekor qilindi (xavfsizlik tomoniga).
   Test: `test/unit/diff_assessment_test.dart`. Shifokor/mutaxassis siyosatini tasdiqlashi kerak.
@@ -1217,6 +1220,9 @@ Manba: `docs/APP_MAP_2026-10-18.md` §4. Har qaror minimal o'zgarish bilan; eski
 
 
 ## D-71. Pro tarmog'i (`pro-next`): haqiqiy holat, bayroqlar, TAKLIF narxlar (2026-10-24, TASDIQLANMAGAN)
+> **QISMAN SUPERSEDED (D-73/D-76/D-77, 2026-10-25):** TAKLIF narxlar (3.99/5.99) va “30 kunlik bepul foydalanish —
+> mexanizm OCHIQ qaror” yopildi: narxlar D-73/D-76, sinov — server beradigan **7 kun** (D-76, D-77). Bayroqlar
+> (`proEnabled` standart `false`, `gated` bo'sh) qoidasi amalda. Quyidagi matn — tarix.
 Bu yozuv faqat `pro-next` tarmog'ida. Bepul reliz (`main`) o'zgarmaydi: D-58 u yerda kuchda.
 
 **Tarmoq haqiqati.** `pro-later` — jonli tarmoq emas, `7141aff` (D-58 olib tashlash) dan bir commit oldingi
@@ -1291,6 +1297,8 @@ ochiq; (6) qaysi imkoniyatlar yopiladi, mavjud foydalanuvchilar (grandfathering)
 `pro-later` ni arxiv tegi qilish; (8) do'kon kalitlari kimda va `deploy_api` qachon; (9) maxfiylik/shartlar matni; (10) mehmon xarid qila olsinmi yoki avval hisob shartmi.
 
 ## D-72. Pro taklifi: yillik tarif, 30 kunlik davr, pullik funksiyalar, bepul huquqlar (2026-10-24, TAKLIF)
+> **SUPERSEDED (D-73/D-76/D-77, 2026-10-25):** 30 kunlik davr → 7 kunlik server sinovi (D-76); narxlar → D-73/D-76.
+> Quyidagi matn — tarix.
 Egasi 2026-10-24 topshirig'i: Pro `pro-next` da tayyorlanadi, `proEnabled=false` saqlanadi; taklif narxlar Talaba $1.49, Oddiy $3.99,
 Ustoz $5.99 (oylik); yillik, 30 kunlik bepul davr va pullik funksiyalar — ALOHIDA TAKLIF sifatida; mavjud bepul foydalanuvchilar
 huquqi egasi qarorisiz cheklanmaydi; billing/paywall/server faollashtirilmaydi. To'liq matn: `docs/PRO_PROPOSAL_D72.md`.
@@ -1621,3 +1629,37 @@ ustiga: qatorlar saqlanadi, premium ochiladi, unikal indekslar qayta quriladi).
    kutishi mumkin); kerak bo'lsa Apple'ga savolga qo'shish.
 5. Do'kon mahsulotlari: App Store — 8 mahsulot (bitta guruh), Play — 4 obuna × 2 base plan; narx pog'onalari va UZS.
 
+
+
+## D-77. Pullik tizim: Free + Pro + Premium, faqat 7 kunlik sinov, keyingi yangilanishda (2026-10-25, egasi qarori)
+**Egasi qarori (2026-10-25):** keyingi yangilanishda **Free + Pro + Premium** chiqadi, bepul sinov **faqat 7 kun**
+(30 kunlik variant YO'Q). Do'konlarda (App Store / Google Play) tekshiruvda turgan bepul versiya (`main` `4b0f057`)
+**o'zgarmaydi**; pullik tizim alohida tarmoqda — `paid/pro-premium` (`fix/images-apparatus` + `pro/tiers-premium`
+birlashmasi) — tugatiladi. **Egasining aniq ruxsatisiz hech narsa nashr qilinmaydi** (push, merge `main` ga, PR,
+build, deploy, do'konga yuborish, do'kon/billing API chaqiruvi — yo'q).
+
+**Doirasi.** Bu qaror **faqat `paid/pro-premium` tarmog'i** uchun D-58 ni almashtiradi (D-58 “ilovada Pro/to'lov
+yo'q” `main` va bepul reliz tarmog'ida kuchda qoladi). D-70/D-71/D-72/D-74/D-75 dagi “30 kun” matni SUPERSEDED
+bo'lib qoladi (tarix); D-73/D-76 narxlari va mahsulot id'lari — UNCONFIRMED-until-created-in-store (do'konlarda
+hali yaratilmagan).
+
+**Bu bosqichda hamma o'chirgich O'CHIQ** (yoqish — keyingi bosqichda, rahbar tomonidan): `BuildFlags.proEnabled`
+standart `false` (`LG_PRO_ENABLED` berilmaydi), `ProGatePolicy.gated` bo'sh, `LG_FAKE_PURCHASES` / `LG_PARTNER_ADS`
+standart `false`, server `LG_BILLING_ENABLED` o'rnatilmagan (billing/sinov/admin-grant yo'llari 404), do'kon
+kirish taklifi yo'q (`storeIntroOffersAllowed = false`).
+
+**Yangi qorovullar (D-58 qorovuli o'rniga, shu tarmoqda):** `test/guards/paid_policy_d77_guard_test.dart`
+- (a) build bayroqlarining standart holati aniq yozilgan va tekshiriladi (ilova + server);
+- (b) ARB va `lib/` da narx literali yo'q — narx do'kondan keladi; yagona narx ma'lumoti `ProPricing`
+  (`lib/core/entitlements/pro_catalog.dart`, D-76);
+- (c) sinov uzunligi hamma joyda 7: Dart `ProTrialConfig.serverTrialDays`, TypeScript `TRIAL_DAYS`, ARB
+  `proPrivacyTrialNote`, shu qaror; “30 kun / 30 days / 30 дней” sinov matni faqat SUPERSEDED tarixda;
+- (d) do'kon talablari asoslari: “Xaridlarni tiklash” to'lov oynasi va “Obuna” ekranida bor, narx va davr xarid
+  tugmasidan oldin (bir kartada) ko'rsatiladi, tashqi to'lov havolasi yo'q (faqat do'kon obuna sahifasi, EULA,
+  maxfiylik siyosati sayti).
+`tool/site/check_site.py`: umumiy “Pro/obuna/subscription” taqig'i o'rniga — narx literali va 7 dan boshqa sinov
+muddati (shu jumladan SUPERSEDED 30 kunlik) taqiqlanadi; obuna so'zlari faqat `privacy/` sahifasida (manba `docs/store/PRIVACY_POLICY.md`,
+qo'lda tahrir “eskirgan” xatosi bilan ushlanadi). Maxfiylik/shartlar matni (Pro §10a) — alohida ish (matnlar agenti).
+
+**Tekshirilmagan (NOT VERIFIED):** haqiqiy App Store / Google Play sandbox xaridi bir marta ham qilinmagan; barcha
+Pro testlari soxta do'kon / soxta server / soxta attestatsiya bilan. Holat: `docs/PAID_BRANCH_STATUS.md`.

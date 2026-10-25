@@ -1,4 +1,6 @@
 # D-72. Pro — taklif (FAQAT TAKLIF; hech narsa yoqilmaydi, billing/paywall/server faol emas)
+> **SUPERSEDED (D-77, 2026-10-25):** D bo'limidagi “30 kunlik bepul foydalanish” → server beradigan **7 kunlik**
+> sinov (D-76, D-77); narxlar — D-73/D-76. Bu hujjat — tarix.
 > **D-73 (2026-10-24) bilan YANGILANDI.** C va G bo'limlardagi narxlar/tariflar ESKIRDI: egasi uch darajani va narxlarni
 > belgiladi (OWNER-DECIDED, lekin ENABLED EMAS) — Talaba 1.49/9.99, Ustoz 2.49/24.99, Mutaxassis 3.49/34.99 (USD,
 > oylik/yillik). Admin tomonidan Pro berish ham D-73 da. Qolgan bo'limlar (A, B, D, E, F, H, I, J) hali kuchda va ochiq

@@ -1,6 +1,8 @@
 // Qorovul (guard) testlari: egasining mahsulot qarorlari.
 //
-// D-58 (Pro/to'lov yo'q), hamkor reklamasi o'chiq, maxfiylik havolasi,
+// D-58 → D-77 (`paid/pro-premium`: Pro bor, lekin standart buildda o'chiq;
+// yangi siyosat — test/guards/paid_policy_d77_guard_test.dart), hamkor
+// reklamasi o'chiq, maxfiylik havolasi,
 // hamjamiyat qoidalari (NCII, so'z filtri xabari), hisobni o'chirish,
 // mavzu (Klassik standart + Ivory). Jadval: docs/GUARDS.md.
 import 'dart:convert';
@@ -48,7 +50,8 @@ void main() {
   // (standart) bo'lganda ilova D-58 bilan bir xil — paywall yo'q. `main` dagi
   // qat'iy D-58 qorovuli bu yerda "bayroq ortidagi Pro" qorovuliga aylandi.
   group(
-    'D-58/D-71: proEnabled=false bo‘lsa ilovada Pro / to‘lov / obuna yo‘q',
+    'D-77 (D-58 o‘rniga): proEnabled=false (standart) bo‘lsa ilovada Pro / '
+    'to‘lov / obuna yo‘q',
     () {
       test('standart: Pro bayrog‘i o‘chiq', () {
         BuildFlags.debugProEnabledOverride = null;

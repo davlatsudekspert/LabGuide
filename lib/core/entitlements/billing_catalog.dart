@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 
+import '../contact.dart';
 import 'feature.dart';
 import 'pro_catalog.dart';
 
@@ -28,6 +29,9 @@ class BillingProduct {
 /// Narxlar va bepul sinov do'konda sozlanadi; ilova ularni do'kondan o'qiydi.
 /// Egasi narxlari (D-73) — `pro_catalog.dart`; eski D-48/D-49/D-50/D-57/D-71/
 /// D-72 narxlari va 7/14 kunlik sinov ESKIRGAN.
+///
+/// D-77: UNCONFIRMED-until-created-in-store — id'lar do'konlarda hali
+/// yaratilmagan (D-73); yaratilgach aynan shu satrlar bilan solishtiriladi.
 abstract final class BillingCatalog {
   static const studentMonthly = 'uz.labguide.student.monthly';
   static const studentYearly = 'uz.labguide.student.yearly';
@@ -164,10 +168,9 @@ abstract final class BillingLinks {
   static const termsOfUse =
       'https://www.apple.com/legal/internet-services/itunes/dev/stdeula/';
 
-  /// Maxfiylik siyosati (docs/store/PRIVACY_POLICY.md; App Store Connect'dagi
-  /// havola bilan bir xil bo'lsin — docs/store/APP_STORE.md 14-bo'lim).
-  static const privacyPolicy =
-      'https://github.com/davlatsudekspert/LabGuide/blob/main/docs/store/PRIVACY_POLICY.md';
+  /// Maxfiylik siyosati — nashr qilingan sayt (ilovaning boshqa joylari va
+  /// App Store Connect / Play Console'dagi havola bilan bir xil; D-77).
+  static const privacyPolicy = Contact.privacyPolicyUrl;
 
   /// Obunani boshqarish (bekor qilish) sahifasi.
   static String manageSubscriptions({

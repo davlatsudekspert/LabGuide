@@ -1,5 +1,9 @@
 # Obuna rejalari auditi (Free / Pro / Premium) — 2026-10-25
 
+> **Tarix (SUPERSEDED qismlari) — D-77 (2026-10-25, egasi qarori):** bu hujjat birlashtirishdan oldingi audit surati.
+> Egasi qarori: Free + Pro + Premium, bepul sinov faqat **7 kun** (“30 kun” varianti yopildi). Birlashma holati:
+> `docs/PAID_BRANCH_STATUS.md`.
+
 Faqat o‘qish auditi. Kod o‘zgartirilmadi, hech narsa birlashtirilmadi, push/deploy/do‘kon API chaqiruvi yo‘q.
 Tekshirilgan tarmoqlar (SHA):
 

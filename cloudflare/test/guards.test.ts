@@ -57,7 +57,7 @@ describe('qorovul: marshrutlar', () => {
     }
   });
 
-  it('D-58: Pro / to‘lov / obuna yo‘llari yo‘q', async () => {
+  it('D-58/D-77: LG_BILLING_ENABLED o‘rnatilmagan (standart) — Pro / to‘lov / obuna yo‘llari yo‘q', async () => {
     const s = makeServer();
     for (const p of [
       '/v1/billing',
@@ -77,7 +77,7 @@ describe('qorovul: marshrutlar', () => {
     }
   });
 
-  it('D-58: /v1/me tarifni (`plan`) bermaydi', async () => {
+  it('D-58/D-77: /v1/me tarifni (`plan`) bermaydi', async () => {
     const s = makeServer();
     const u = await s.signIn(uniqueEmail('guard'));
     const me = await s.call('GET', '/v1/me', { token: u.token });

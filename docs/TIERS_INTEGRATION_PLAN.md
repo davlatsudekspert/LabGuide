@@ -1,5 +1,9 @@
 # Pro/Premium’ni reliz tarmog‘iga birlashtirish rejasi (avto-merge’siz)
 
+> **Tarix (SUPERSEDED qismlari) — D-77 (2026-10-25, egasi qarori):** bu hujjat birlashtirishdan oldingi audit surati.
+> Egasi qarori: Free + Pro + Premium, bepul sinov faqat **7 kun** (“30 kun” varianti yopildi). Birlashma holati:
+> `docs/PAID_BRANCH_STATUS.md`.
+
 2026-10-25. Manba: `pro/tiers-premium@531ba02` → maqsad: `fix/images-apparatus@2e787e4` (reliz). Umumiy ajdod:
 `main@4b0f057`. Audit: `docs/TIERS_AUDIT_2026-10-25.md`, matritsa: `docs/TIERS_MATRIX.csv`.
 Bu hujjat — reja. Hech narsa birlashtirilmagan, push/deploy qilinmagan.

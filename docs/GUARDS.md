@@ -53,16 +53,20 @@ qatlamlarini ishga tushiradi» — Python qadamlari yoki worker testlari olib ta
 
 | Qaror / ish | Qorovul |
 |---|---|
-| D-58: Pro/to‘lov/obuna ilovada yo‘q — ARB matnlari | `test/guards/product_policy_guard_test.dart :: D-58 … ARB matnlarida to‘lov so‘zlari yo‘q (uz/ru/en)` (istisno: hamkor narxi, admin «Sotuvlar: 0») |
-| D-58/D-71 (pro-next): proEnabled=false bo‘lsa paywall yo‘q; Pro kodi ruxsat etilgan fayllarda; marshrut va Profil qatori bayroq ortida; iOS IAP yo‘q | `product_policy_guard_test.dart :: D-58/D-71 …` (standart bayroq, Pro kodi oqib chiqmaydi, marshrut/Profil bayroq ortida, iOS) |
+| **D-77 (faqat `paid/pro-premium`; D-58 o‘rniga):** (a) bayroqlar standart holati aniq (ilova: `LG_PRO_ENABLED`, `LG_FAKE_PURCHASES`, `LG_PARTNER_ADS`, `LG_ALL_FEATURES_OPEN` — `false`, `gated` bo‘sh; server: `LG_BILLING_ENABLED`/`LG_BILLING_SANDBOX`/`TRIAL_PLATFORMS` o‘rnatilmagan) | `test/guards/paid_policy_d77_guard_test.dart :: D-77 (a) …` |
+| D-77 (b): ARB / `lib/` / server manbasida narx literali yo‘q; narx ma’lumoti faqat `ProPricing` (D-76), id/narx UNCONFIRMED-until-created-in-store | `paid_policy_d77_guard_test.dart :: D-77 (b) …` |
+| D-77 (c): sinov 7 kun — Dart `serverTrialDays`, TS `TRIAL_DAYS`, server testi, ARB; eski 30 kunlik sinov matni faqat SUPERSEDED tarixda | `paid_policy_d77_guard_test.dart :: D-77 (c) …` |
+| D-77 (d): tiklash tugmasi (to‘lov oynasi + “Obuna”), narx va davr xarid tugmasidan oldin, tashqi to‘lov havolasi yo‘q | `paid_policy_d77_guard_test.dart :: D-77 (d) …` (widget testi soxta do‘kon bilan — haqiqiy do‘kon NOT VERIFIED) |
+| D-58 → D-77: Pro/to‘lov/obuna so‘zlari ARB da faqat `pro*` kalitlarida | `test/guards/product_policy_guard_test.dart :: D-77 (D-58 o‘rniga) … ARB: pro* kalitlaridan tashqari …` (istisno: hamkor narxi, admin «Sotuvlar: 0») |
+| D-77/D-71: proEnabled=false bo‘lsa paywall yo‘q; Pro kodi ruxsat etilgan fayllarda; marshrut va Profil qatori bayroq ortida; iOS IAP yo‘q | `product_policy_guard_test.dart :: D-77 (D-58 o‘rniga) …` (standart bayroq, Pro kodi oqib chiqmaydi, marshrut/Profil bayroq ortida, iOS) |
 | D-71: Pro standart O‘CHIQ; yopish ro‘yxati bo‘sh; bepul davr o‘chiq; narxlar TAKLIF; eski narx/sinov yo‘q | `test/guards/pro_flag_default_guard_test.dart`; `test/widget/pro_flag_off_test.dart` |
 | D-71: billing yo‘llari LG_BILLING_ENABLED bo‘lmasa 404 | `cloudflare/test/guards.test.ts :: qorovul: billing inert` |
 | D-75: sandbox xaridi bayroqsiz rad; iOS sinovi standart yopiq; kalitsiz 503 store_verifier_not_configured | `cloudflare/test/guards.test.ts :: qorovul: Pro to‘lov standartlari (D-75)` |
 | D-75: soxta (debug) xarid release’da imkonsiz; narx yagona manbada; do‘kon sinov taklifi yo‘q | `test/guards/pro_flag_default_guard_test.dart :: D-75 …` |
 | D-74: sinov va `/v1/pro/*` yo‘llari bayroqsiz 404; bayroq bilan attestatsiyasiz 503; Talaba rejasi ustoz panelini ochmaydi; sinov bir telefonga bir marta | `cloudflare/test/guards.test.ts`, `cloudflare/test/trial.test.ts`, `cloudflare/test/tiers.test.ts` |
 | D-74: “Obuna” qatori va `/profile/subscription` faqat `BuildFlags.proEnabled`; matritsa server bilan bir xil | `product_policy_guard_test.dart`, `test/widget/subscription_screen_test.dart`, `test/unit/plan_matrix_test.dart` |
-| D-58: serverda billing yo‘llari yo‘q, `/v1/me` `plan` bermaydi | `cloudflare/test/guards.test.ts :: D-58: Pro / to‘lov / obuna yo‘llari yo‘q`, `D-58: /v1/me tarifni (plan) bermaydi` |
-| D-58: saytda to‘lov so‘zlari yo‘q | `tool/site/check_site.py` (BANNED), `tool/site/test_guards.py :: test_no_payment_words_on_site` |
+| D-58/D-77: `LG_BILLING_ENABLED` o‘rnatilmagan — serverda billing yo‘llari yo‘q (404), `/v1/me` `plan` bermaydi | `cloudflare/test/guards.test.ts :: D-58/D-77: LG_BILLING_ENABLED o‘rnatilmagan …`, `D-58/D-77: /v1/me tarifni (plan) bermaydi` |
+| D-77 (sayt): narx literali va 7 dan boshqa sinov muddati hech bir sahifada yo‘q; to‘lov/obuna so‘zlari faqat `privacy/` da (manba `docs/store/PRIVACY_POLICY.md`, qo‘lda tahrir — “eskirgan”) | `tool/site/check_site.py` (BANNED, `SUBSCRIPTION_TEXT_PAGES`, self-test), `tool/site/test_guards.py :: test_no_payment_words_on_site` |
 | Hamkor reklamasi o‘chiq (LG_PARTNER_ADS): kod standarti | `product_policy_guard_test.dart :: standart build: bayroq o‘chiq, release buildda o‘zgarmas`; `test/widget/partner_ads_flag_test.dart :: do‘kon build: hech qayerda reklama/hamkor UI yo‘q` |
 | Hamkor reklamasi o‘chiq: har CI buildida `LG_PARTNER_ADS='false'` | `test/guards/repo_registry_guard_test.dart :: hamkor reklamasi har bir CI buildida o‘chiq (LG_PARTNER_ADS)` (apk, aab, ios, ipa, config-only) |
 | «Qoralama / tekshirilmagan» yozuvlari yo‘q (D-65) | `test/unit/no_draft_wording_test.dart` (o‘zgarmagan); `learning_guard_test.dart :: har deck fayli status: sourced`; `tool/slides/test_guards.py :: test_export_writes_sourced_status`, `test_deck_files_sourced` |

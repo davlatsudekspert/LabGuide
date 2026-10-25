@@ -7,8 +7,13 @@
 Xato topilsa, nol bo'lmagan kod bilan tugaydi. Tekshiriladi:
 * ko'rinadigan matnda ichki izoh (katta harfli "Eslatma" so'zi — kichik harfli
   "eslatma" oddiy so'z; "e'lon qilishdan oldin"),
-  TODO, to'lov/obuna so'zlari (Pro, obuna, subscription, payment va h.k.),
-  repo ichki yo'llari (docs/, lib/, cloudflare/) va qaror raqamlari (D-41);
+  TODO, repo ichki yo'llari (docs/, lib/, cloudflare/) va qaror raqamlari (D-41);
+* D-77 (`paid/pro-premium` tarmog'i; D-58 o'rniga): narx literali ($4.99,
+  12 000 so'm, …) hech bir sahifada yo'q — narx faqat do'kondan; "30 kunlik
+  sinov" va 7 dan boshqa sinov muddati yo'q; to'lov/obuna so'zlari (Pro, obuna,
+  subscription, payment va h.k.) faqat `privacy/` sahifasida (u
+  `docs/store/PRIVACY_POLICY.md` dan yasaladi — qo'lda qo'shilgan bo'lim
+  "eskirgan" xatosi bilan ushlanadi), boshqa sahifalarda taqiqlangan;
 * nisbiy havolalar: fayl mavjudligi va `#id` mavjudligi; tashqi resurslar
   (CSS, rasm, skript, shrift) taqiqlangan; `/` bilan boshlanuvchi havola
   taqiqlangan (sayt `/labguide/` ostida ishlashi kerak);
@@ -49,7 +54,21 @@ BANNED: list[tuple[str, re.Pattern[str]]] = [
     ('оплата/подписка', re.compile(r'(оплат|подписк|платёж|платеж|премиум)', re.IGNORECASE)),
     ('repo yo‘li', re.compile(r'(?<![\w.])(docs|lib|cloudflare|tool)/[\w./-]+')),
     ('qaror raqami', re.compile(r'\bD-\d{2}\b')),
+    # D-77: narx faqat do'kondan (ilovada ham, saytda ham qotirilmaydi).
+    ('narx literali', re.compile(
+        r'[$€£]\s?\d|\d\s?(usd|uzs|сум)\b|\b(usd|uzs)\s?\d|\d\s?so[’\'‘`ʻ]m\b', re.IGNORECASE)),
+    # D-77: sinov faqat 7 kun; "30 kunlik sinov" — SUPERSEDED (D-74/D-75).
+    ('sinov 7 kun emas', re.compile(
+        r'\b(?!7\b)\d+[\s\u00a0-]*(kun(lik)?\s+(bepul\s+)?sinov|days?\s+(free\s+)?trial|'
+        r'дн\w*\s+(бесплатн\w*\s+)?(пробн|доступ))|'
+        r'(sinov|trial|пробн\w*\s+период\w*)\s+(на\s+|of\s+)?(?!7\b)\d+[\s\u00a0-]*(kun|days?|дн)',
+        re.IGNORECASE)),
 ]
+
+# D-77: to'lov/obuna so'zlari faqat shu sahifalarda (manbasi nazoratda:
+# privacy — docs/store/PRIVACY_POLICY.md, "eskirgan" tekshiruvi bilan).
+SUBSCRIPTION_WORDS = {'Pro', 'obuna', 'subscription', 'payment', 'to‘lov', 'оплата/подписка'}
+SUBSCRIPTION_TEXT_PAGES = {'privacy/index.html'}
 
 # Ichki (inline) skriptga ruxsat etilgan sahifalar.
 SCRIPT_PAGES = {'j/index.html'}
@@ -130,6 +149,8 @@ def check_site(site: Path, check_fresh: bool = True) -> list[str]:
             errors.append(f'{rel}: <script> taqiqlangan (faqat {", ".join(sorted(SCRIPT_PAGES))})')
         text = ' '.join(' '.join(page.text).split())
         for name, rx in BANNED:
+            if name in SUBSCRIPTION_WORDS and rel.as_posix() in SUBSCRIPTION_TEXT_PAGES:
+                continue
             for m in rx.finditer(text):
                 ctx = text[max(0, m.start() - 40): m.end() + 40]
                 errors.append(f'{rel}: taqiqlangan ({name}): …{ctx}…')
@@ -214,6 +235,13 @@ Profil sahifasi. Provider.</p><a href="#a">x</a><a href="mailto:a@b.uz">m</a>
         'tashqi CSS': (good.replace('href="style.css"', 'href="https://cdn.example.com/x.css"'), 'tashqi resurs'),
         'ildiz havola': (good.replace('sub/index.html#b', '/privacy/'), 'ildizdan'),
         'skript': (good.replace('</body>', '<script>var x = 1;</script></body>'), '<script> taqiqlangan'),
+        # D-77: narx va sinov muddati.
+        'narx $': (good.replace('Provider.', 'Only $4.99 a month.'), 'narx literali'),
+        'narx so‘m': (good.replace('Profil sahifasi.', 'Oyiga 12 000 so‘m.'), 'narx literali'),
+        '30 kunlik sinov': (good.replace('Profil sahifasi.', '30 kunlik bepul sinov.'), 'sinov 7 kun emas'),
+        '30-day trial': (good.replace('Provider.', 'A 30-day free trial.'), 'sinov 7 kun emas'),
+        '14 дней': (good.replace('Provider.', 'Пробный период 14 дней.'), 'sinov 7 kun emas'),
+        '7 kunlik sinov ruxsat': (good.replace('Profil sahifasi.', '7 kunlik bepul sinov. 30 kun ichida o‘chiriladi.'), None),
     }
     for name, (html_text, expect) in cases.items():
         with tempfile.TemporaryDirectory() as d:
@@ -230,6 +258,25 @@ Profil sahifasi. Provider.</p><a href="#a">x</a><a href="mailto:a@b.uz">m</a>
             ok = (not errs) if expect is None else any(expect in e for e in errs)
             print(f'  {"ok  " if ok else "XATO"} {name}' + ('' if ok else f' -> {errs}'))
             failures += 0 if ok else 1
+
+    # D-77: obuna so'zlari privacy/ da ruxsat, boshqa sahifada — xato; narx esa privacy/ da ham xato.
+    with tempfile.TemporaryDirectory() as d:
+        site = Path(d)
+        page = ('<html lang="en"><head><meta name="viewport" content="x"><title>P</title></head>'
+                '<body><p>{}</p></body></html>')
+        (site / 'privacy').mkdir()
+        (site / 'privacy' / 'index.html').write_text(page.format('Pro subscription, obuna, подписка.'), encoding='utf-8')
+        (site / 'index.html').write_text(page.format('Hello.'), encoding='utf-8')
+        (site / 'style.css').write_text('@media (prefers-color-scheme: dark) {}', encoding='utf-8')
+        (site / 'logo.png').write_bytes(b'')
+        (site / 'robots.txt').write_text('User-agent: *\n', encoding='utf-8')
+        ok = check_site(site, check_fresh=False) == []
+        print(f'  {"ok  " if ok else "XATO"} privacy/: obuna so‘zlari ruxsat')
+        failures += 0 if ok else 1
+        (site / 'privacy' / 'index.html').write_text(page.format('Pro subscription: $4.99.'), encoding='utf-8')
+        ok = any('narx literali' in e for e in check_site(site, check_fresh=False))
+        print(f'  {"ok  " if ok else "XATO"} privacy/: narx literali baribir taqiqlangan')
+        failures += 0 if ok else 1
 
     # build_site: ichki blok va HTML izohi chiqmaydi, oddiy iqtibos qoladi.
     md = ('# T\n\nSana: **1**\\\nAloqa: x@y.uz\n\n> Eslatma (e’lon qilishdan oldin o‘chiriladi):\n'

@@ -61,10 +61,17 @@ class SiteGuards(unittest.TestCase):
         self.assertIn("'labguide://app/j?c='", page)
 
     def test_no_payment_words_on_site(self):
-        # check_site.BANNED ichida to'lov/obuna so'zlari bo'lishi shart (D-58).
+        # D-77 (D-58 o'rniga, faqat paid/pro-premium): to'lov/obuna so'zlari
+        # faqat privacy/ sahifasida; narx literali va 7 dan boshqa sinov
+        # muddati hech bir sahifada yo'q.
         names = {n for n, _ in check_site.BANNED}
-        for n in ('Pro', 'obuna', 'subscription', 'payment', 'to‘lov', 'оплата/подписка'):
+        for n in ('Pro', 'obuna', 'subscription', 'payment', 'to‘lov', 'оплата/подписка',
+                  'narx literali', 'sinov 7 kun emas'):
             self.assertIn(n, names)
+        self.assertEqual(check_site.SUBSCRIPTION_TEXT_PAGES, {'privacy/index.html'})
+        self.assertTrue(check_site.SUBSCRIPTION_WORDS <= names)
+        self.assertNotIn('narx literali', check_site.SUBSCRIPTION_WORDS)
+        self.assertNotIn('sinov 7 kun emas', check_site.SUBSCRIPTION_WORDS)
 
 
 if __name__ == '__main__':
