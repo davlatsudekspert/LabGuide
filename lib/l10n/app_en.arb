@@ -7206,5 +7206,379 @@
         "type": "String"
       }
     }
-  }
+  },
+  "ttEntrySection": "Teacher tests",
+  "ttEntryTeacher": "My tests",
+  "ttEntryTeacherSub": "Teacher Pro: your own tests, assignments and results",
+  "ttEntryStudent": "Tests from my teacher",
+  "ttEntryStudentSub": "Special tests your teacher assigned to you",
+  "ttEntryInvite": "Invitation code",
+  "ttEntryInviteSub": "Join a group with the 12-character code from your teacher",
+  "ttTestsTitle": "My tests",
+  "ttNewTest": "New test",
+  "ttTestsEmpty": "No tests yet",
+  "ttTestsEmptyBody": "Build a test from your own questions or from copies of the questions in the app.",
+  "ttStatusPublished": "Published",
+  "ttStatusUnpublished": "Not published",
+  "ttQuestionsCount": "{count, plural, =1{1 question} other{{count} questions}}",
+  "@ttQuestionsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "ttAssignedCount": "{count, plural, =1{1 assignment} other{{count} assignments}}",
+  "@ttAssignedCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "ttLockedNote": "Creating, editing and assigning tests is part of Teacher Pro. Tests and results you already created stay visible.",
+  "ttOfflineCached": "No internet — showing the last saved copy.",
+  "ttEdit": "Edit",
+  "ttAssign": "Assign",
+  "ttDeleteTest": "Delete test",
+  "ttDeleteTestBody": "The test, its assignments and results will be deleted. This cannot be undone.",
+  "ttAssignmentsTitle": "Assignments",
+  "ttNoAssignments": "This test has not been assigned yet.",
+  "ttDueOn": "due {date}",
+  "@ttDueOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "ttSubmittedOf": "{done}/{total} submitted",
+  "@ttSubmittedOf": {
+    "placeholders": {
+      "done": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "ttClosed": "Closed",
+  "ttTimeLimit": "Time: {minutes} min",
+  "@ttTimeLimit": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "ttNoTimeLimit": "No time limit",
+  "ttPassMark": "Pass mark: {percent}%",
+  "@ttPassMark": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "ttMustPublish": "Publish the test to assign it to students.",
+  "ttQuestionsTitle": "Questions",
+  "ttQuestionNumber": "Question {n}",
+  "@ttQuestionNumber": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "ttCorrectAnswer": "Correct answer",
+  "ttFromBank": "Copy from the app: {bank}",
+  "@ttFromBank": {
+    "placeholders": {
+      "bank": {
+        "type": "String"
+      }
+    }
+  },
+  "ttSourceQuiz": "Practice questions",
+  "ttSourceToifa": "Category exam bank",
+  "ttSourceDeck": "Topic test",
+  "ttEditTitleNew": "New test",
+  "ttEditTitle": "Edit test",
+  "ttFieldTitle": "Test title",
+  "ttFieldDescription": "Description (optional)",
+  "ttFieldTimeLimit": "Time limit, minutes (optional, 1–180)",
+  "ttFieldPassPercent": "Pass mark, % (optional, 1–100)",
+  "ttPublishToggle": "Published",
+  "ttPublishNote": "Only a published test can be assigned. Assignments already given keep their own copy of the questions.",
+  "ttNoQuestionsYet": "No questions yet. Add your own or copy questions from the app.",
+  "ttAddQuestion": "Add question",
+  "ttAddFromBank": "From the app questions",
+  "ttMoveUp": "Move up",
+  "ttMoveDown": "Move down",
+  "ttRemoveQuestion": "Remove question",
+  "ttSave": "Save",
+  "ttSaved": "Saved",
+  "ttVersionConflict": "This test was changed on another device. Open it again and repeat your edits.",
+  "ttErrTitle": "The title must be 3–120 characters.",
+  "ttErrDescription": "The description is too long (up to 1000 characters).",
+  "ttErrNoQuestions": "A published test needs at least one question.",
+  "ttErrTimeLimit": "Time limit: 1–180 minutes.",
+  "ttErrPassPercent": "Pass mark: 1–100%.",
+  "ttErrQuestionText": "Write the question text (up to 1000 characters).",
+  "ttErrOptions": "Fill in 2–6 options (each up to 300 characters).",
+  "ttErrDuplicateOptions": "Options must not repeat.",
+  "ttErrCorrect": "Mark the correct option.",
+  "ttErrQuestionGeneric": "Check the questions: text, 2–6 different options and one correct answer.",
+  "ttErrQuestionAt": "Question {n}: {error}",
+  "@ttErrQuestionAt": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      },
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "ttErrAbusive": "The text contains offensive words — please rephrase.",
+  "ttErrLimitTests": "You have reached the limit of 200 tests. Delete old ones to create new tests.",
+  "ttErrPlan": "This action needs a plan with this feature.",
+  "ttErrTeacherRole": "Register as a teacher first: create a group in “Groups”.",
+  "ttFieldQuestion": "Question text",
+  "ttOptionsHint": "Tap the circle next to the correct option.",
+  "ttFieldOption": "Option {n}",
+  "@ttFieldOption": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "ttMarkCorrect": "Mark as the correct answer",
+  "ttRemoveOption": "Remove option",
+  "ttAddOption": "Add option",
+  "ttFieldExplanation": "Explanation (optional, shown with the result)",
+  "ttDone": "Done",
+  "ttBankTitle": "Questions from the app",
+  "ttBankSubtitle": "Selected questions are added to your test as copies; the source is kept.",
+  "ttBankSearch": "Search",
+  "ttBankAll": "All",
+  "ttBankAdd": "{count, plural, =0{Select questions} =1{Add 1 question} other{Add {count} questions}}",
+  "@ttBankAdd": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "ttBankEmpty": "No questions found",
+  "ttBankRefine": "Showing the first 100 of {count}. Narrow the search.",
+  "@ttBankRefine": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "ttAssignTitle": "Assign the test",
+  "ttAssignGroup": "Group",
+  "ttAssignWho": "To whom",
+  "ttAssignWholeGroup": "Whole group",
+  "ttAssignNoGroups": "Create a group first — students join it with a code or an invitation.",
+  "ttAssignNoStudents": "No students in this group yet. Students who join later will also see the test.",
+  "ttAssignDue": "Deadline",
+  "ttAssignAttempts": "Attempts",
+  "ttAssignLate": "Accept after the deadline (marked as late)",
+  "ttAssignPrivacy": "You will see results only of students who joined the group themselves. Students see a notice that their result is visible to you.",
+  "ttAssignSubmit": "Assign",
+  "ttAssigned": "The test has been assigned",
+  "ttErrDue": "Choose a deadline in the future (up to one year).",
+  "ttErrMemberGone": "This student is no longer in the group.",
+  "ttErrLimitAssignments": "Too many active assignments. Close old ones first.",
+  "ttInvitesTitle": "Invitations",
+  "ttInvitesSubtitle": "The student enters the code, reads what you will see and agrees.",
+  "ttInviteDays": "Valid for",
+  "ttInviteMaxUses": "How many students can join",
+  "ttInviteCreate": "Create invitation",
+  "ttInviteHowTo": "Send the code to students. In the app: Groups → Invitation code. Joining happens only after the student agrees.",
+  "ttInvitesActive": "Active invitations",
+  "ttInvitesEmpty": "No active invitations",
+  "ttInviteUses": "used {uses}/{max}",
+  "@ttInviteUses": {
+    "placeholders": {
+      "uses": {
+        "type": "int"
+      },
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "ttInviteUntil": "until {date}",
+  "@ttInviteUntil": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "ttInviteCopy": "Copy invitation",
+  "ttInviteCopied": "Invitation copied",
+  "ttInviteShareText": "LabGuide: invitation to the group “{group}”. In the app open Groups → Invitation code and enter {code} ({link})",
+  "@ttInviteShareText": {
+    "placeholders": {
+      "group": {
+        "type": "String"
+      },
+      "code": {
+        "type": "String"
+      },
+      "link": {
+        "type": "String"
+      }
+    }
+  },
+  "ttInviteRevoke": "Revoke",
+  "ttInviteRevokeBody": "The code will stop working right away. Students who already joined stay in the group.",
+  "ttErrLimitInvites": "Too many active invitations for this group. Revoke unused ones.",
+  "ttInviteAcceptTitle": "Invitation to a group",
+  "ttInviteCodeField": "Invitation code (12 characters)",
+  "ttInviteCheck": "Check",
+  "ttInviteGroupTitle": "Group",
+  "ttInviteConsentTitle": "What the teacher will see",
+  "ttInviteConsentBody": "If you join, the teacher sees your alias (or seat number) in the member list and your results in teacher tests: answers, score and time. Your email is not shown. You can leave the group at any time — your teacher-test results are then deleted.",
+  "ttInviteConsentCheck": "I agree",
+  "ttInviteNickname": "Alias (optional)",
+  "ttInviteAccept": "Join",
+  "ttInviteDecline": "Decline",
+  "ttInviteJoined": "You joined the group",
+  "ttInviteAlready": "You are already in this group",
+  "ttInviteOpenGroup": "Open the group",
+  "ttInviteOwn": "This is your own group",
+  "ttInviteExpired": "The invitation has expired or was revoked. Ask your teacher for a new code.",
+  "ttInviteNotFound": "Code not found — check it and try again.",
+  "ttResultsTitle": "Results",
+  "ttSummaryTitle": "Summary",
+  "ttSumTargets": "Students",
+  "ttSumSubmitted": "Submitted",
+  "ttSumAverage": "Average",
+  "ttSumPassRate": "Passed",
+  "ttSumAvgTime": "Average time",
+  "ttPrivacyTeacher": "Only results of students who joined the group themselves are shown. When a student leaves the group, their results are deleted.",
+  "ttStudentsTitle": "By student",
+  "ttNoStudentsYet": "No students in the group yet.",
+  "ttMostMissed": "Most missed questions",
+  "ttNoResultsYet": "Nobody has submitted yet.",
+  "ttQuestionsStatTitle": "By question",
+  "ttNoAnswersYet": "no answers yet",
+  "ttCorrectPercent": "{percent}% correct",
+  "@ttCorrectPercent": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "ttStateAssigned": "Not started",
+  "ttStateStarted": "In progress",
+  "ttStateSubmitted": "Submitted",
+  "ttStateExpired": "Missed",
+  "ttPassed": "passed",
+  "ttNotPassed": "not passed",
+  "ttLate": "late",
+  "ttLateAccepted": "Late work accepted",
+  "ttAttemptsN": "{count, plural, =1{1 attempt} other{{count} attempts}}",
+  "@ttAttemptsN": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "ttMinSec": "{m} min {s} s",
+  "@ttMinSec": {
+    "placeholders": {
+      "m": {
+        "type": "int"
+      },
+      "s": {
+        "type": "int"
+      }
+    }
+  },
+  "ttExportCsv": "Copy as CSV",
+  "ttExportCopied": "CSV copied — paste it into a spreadsheet",
+  "ttCloseAssignment": "Close assignment",
+  "ttCloseAssignmentBody": "No new attempts can start; students who are already solving have 2 minutes to submit.",
+  "ttDeleteAssignment": "Delete assignment",
+  "ttDeleteAssignmentBody": "The assignment and its results will be deleted.",
+  "ttMyTitle": "Teacher tests",
+  "ttMySubtitle": "Special tests from your teacher",
+  "ttMyEmpty": "No tests yet",
+  "ttMyEmptyBody": "When your teacher assigns a test, it appears here.",
+  "ttBest": "best {percent}%",
+  "@ttBest": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "ttVisibleNoticeTitle": "Your result is visible to your teacher",
+  "ttVisibleNotice": "Your teacher will see your alias (or seat number), answers, score and time for this test. Your email is not shown.",
+  "ttStudentLocked": "Starting a teacher test is part of Student Pro. Your results stay visible.",
+  "ttLatePolicyAccept": "Accepted after the deadline too (marked as late).",
+  "ttLatePolicyReject": "Cannot be started after the deadline.",
+  "ttCantClosed": "The teacher has closed this assignment.",
+  "ttCantPastDue": "The deadline has passed.",
+  "ttCantNoAttempts": "No attempts left.",
+  "ttStart": "Start the test",
+  "ttContinue": "Continue",
+  "ttYourAttempts": "Your attempts",
+  "ttAttemptN": "Attempt {n}",
+  "@ttAttemptN": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "ttReviewHidden": "Correct answers are shown when your attempts are used up, after the deadline or when the teacher closes the assignment.",
+  "ttYourAnswer": "Your answer",
+  "ttNoAnswer": "no answer",
+  "ttSubmittedSnack": "Submitted: {score}/{total}",
+  "@ttSubmittedSnack": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "ttErrTimeOver": "Time is over — this attempt was not accepted.",
+  "ttErrAlreadySubmitted": "This attempt has already been submitted.",
+  "ttTimeLeft": "Time left: {time}",
+  "@ttTimeLeft": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "ttSubmit": "Submit",
+  "ttSubmitConfirmTitle": "Submit your answers?",
+  "ttSubmitUnanswered": "{count, plural, =1{1 question is unanswered.} other{{count} questions are unanswered.}}",
+  "@ttSubmitUnanswered": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "ttSubmitFinal": "After submitting you cannot change the answers.",
+  "ttSubmitVisible": "The result will be visible to your teacher.",
+  "ttSubmitFailedSaved": "Could not submit. Your answers are saved on this device — try again."
 }

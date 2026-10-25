@@ -63,8 +63,7 @@ import 'app_localizations_uz.dart';
 /// be consistent with the languages listed in the AppLocalizations.supportedLocales
 /// property.
 abstract class AppLocalizations {
-  AppLocalizations(String locale)
-    : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+  AppLocalizations(String locale) : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
@@ -72,8 +71,7 @@ abstract class AppLocalizations {
     return Localizations.of<AppLocalizations>(context, AppLocalizations)!;
   }
 
-  static const LocalizationsDelegate<AppLocalizations> delegate =
-      _AppLocalizationsDelegate();
+  static const LocalizationsDelegate<AppLocalizations> delegate = _AppLocalizationsDelegate();
 
   /// A list of this localizations delegate along with the default localizations
   /// delegates.
@@ -85,19 +83,18 @@ abstract class AppLocalizations {
   /// Additional delegates can be added by appending to this list in
   /// MaterialApp. This list does not have to be used at all if a custom list
   /// of delegates is preferred or required.
-  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
-      <LocalizationsDelegate<dynamic>>[
-        delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-      ];
+  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates = <LocalizationsDelegate<dynamic>>[
+    delegate,
+    GlobalMaterialLocalizations.delegate,
+    GlobalCupertinoLocalizations.delegate,
+    GlobalWidgetsLocalizations.delegate,
+  ];
 
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
     Locale('en'),
     Locale('ru'),
-    Locale('uz'),
+    Locale('uz')
   ];
 
   /// No description provided for @appTagline.
@@ -22959,10 +22956,1161 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{plan} is free until {date}. No payment method, nothing is charged, and it does not turn into a paid subscription. When it ends only the paid features close; free features and all your data stay.'**
   String proTrialConfirmBody(String plan, String date);
+
+  /// No description provided for @ttEntrySection.
+  ///
+  /// In en, this message translates to:
+  /// **'Teacher tests'**
+  String get ttEntrySection;
+
+  /// No description provided for @ttEntryTeacher.
+  ///
+  /// In en, this message translates to:
+  /// **'My tests'**
+  String get ttEntryTeacher;
+
+  /// No description provided for @ttEntryTeacherSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Teacher Pro: your own tests, assignments and results'**
+  String get ttEntryTeacherSub;
+
+  /// No description provided for @ttEntryStudent.
+  ///
+  /// In en, this message translates to:
+  /// **'Tests from my teacher'**
+  String get ttEntryStudent;
+
+  /// No description provided for @ttEntryStudentSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Special tests your teacher assigned to you'**
+  String get ttEntryStudentSub;
+
+  /// No description provided for @ttEntryInvite.
+  ///
+  /// In en, this message translates to:
+  /// **'Invitation code'**
+  String get ttEntryInvite;
+
+  /// No description provided for @ttEntryInviteSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Join a group with the 12-character code from your teacher'**
+  String get ttEntryInviteSub;
+
+  /// No description provided for @ttTestsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'My tests'**
+  String get ttTestsTitle;
+
+  /// No description provided for @ttNewTest.
+  ///
+  /// In en, this message translates to:
+  /// **'New test'**
+  String get ttNewTest;
+
+  /// No description provided for @ttTestsEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No tests yet'**
+  String get ttTestsEmpty;
+
+  /// No description provided for @ttTestsEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Build a test from your own questions or from copies of the questions in the app.'**
+  String get ttTestsEmptyBody;
+
+  /// No description provided for @ttStatusPublished.
+  ///
+  /// In en, this message translates to:
+  /// **'Published'**
+  String get ttStatusPublished;
+
+  /// No description provided for @ttStatusUnpublished.
+  ///
+  /// In en, this message translates to:
+  /// **'Not published'**
+  String get ttStatusUnpublished;
+
+  /// No description provided for @ttQuestionsCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 question} other{{count} questions}}'**
+  String ttQuestionsCount(int count);
+
+  /// No description provided for @ttAssignedCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 assignment} other{{count} assignments}}'**
+  String ttAssignedCount(int count);
+
+  /// No description provided for @ttLockedNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Creating, editing and assigning tests is part of Teacher Pro. Tests and results you already created stay visible.'**
+  String get ttLockedNote;
+
+  /// No description provided for @ttOfflineCached.
+  ///
+  /// In en, this message translates to:
+  /// **'No internet — showing the last saved copy.'**
+  String get ttOfflineCached;
+
+  /// No description provided for @ttEdit.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit'**
+  String get ttEdit;
+
+  /// No description provided for @ttAssign.
+  ///
+  /// In en, this message translates to:
+  /// **'Assign'**
+  String get ttAssign;
+
+  /// No description provided for @ttDeleteTest.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete test'**
+  String get ttDeleteTest;
+
+  /// No description provided for @ttDeleteTestBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The test, its assignments and results will be deleted. This cannot be undone.'**
+  String get ttDeleteTestBody;
+
+  /// No description provided for @ttAssignmentsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Assignments'**
+  String get ttAssignmentsTitle;
+
+  /// No description provided for @ttNoAssignments.
+  ///
+  /// In en, this message translates to:
+  /// **'This test has not been assigned yet.'**
+  String get ttNoAssignments;
+
+  /// No description provided for @ttDueOn.
+  ///
+  /// In en, this message translates to:
+  /// **'due {date}'**
+  String ttDueOn(String date);
+
+  /// No description provided for @ttSubmittedOf.
+  ///
+  /// In en, this message translates to:
+  /// **'{done}/{total} submitted'**
+  String ttSubmittedOf(int done, int total);
+
+  /// No description provided for @ttClosed.
+  ///
+  /// In en, this message translates to:
+  /// **'Closed'**
+  String get ttClosed;
+
+  /// No description provided for @ttTimeLimit.
+  ///
+  /// In en, this message translates to:
+  /// **'Time: {minutes} min'**
+  String ttTimeLimit(int minutes);
+
+  /// No description provided for @ttNoTimeLimit.
+  ///
+  /// In en, this message translates to:
+  /// **'No time limit'**
+  String get ttNoTimeLimit;
+
+  /// No description provided for @ttPassMark.
+  ///
+  /// In en, this message translates to:
+  /// **'Pass mark: {percent}%'**
+  String ttPassMark(int percent);
+
+  /// No description provided for @ttMustPublish.
+  ///
+  /// In en, this message translates to:
+  /// **'Publish the test to assign it to students.'**
+  String get ttMustPublish;
+
+  /// No description provided for @ttQuestionsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Questions'**
+  String get ttQuestionsTitle;
+
+  /// No description provided for @ttQuestionNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Question {n}'**
+  String ttQuestionNumber(int n);
+
+  /// No description provided for @ttCorrectAnswer.
+  ///
+  /// In en, this message translates to:
+  /// **'Correct answer'**
+  String get ttCorrectAnswer;
+
+  /// No description provided for @ttFromBank.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy from the app: {bank}'**
+  String ttFromBank(String bank);
+
+  /// No description provided for @ttSourceQuiz.
+  ///
+  /// In en, this message translates to:
+  /// **'Practice questions'**
+  String get ttSourceQuiz;
+
+  /// No description provided for @ttSourceToifa.
+  ///
+  /// In en, this message translates to:
+  /// **'Category exam bank'**
+  String get ttSourceToifa;
+
+  /// No description provided for @ttSourceDeck.
+  ///
+  /// In en, this message translates to:
+  /// **'Topic test'**
+  String get ttSourceDeck;
+
+  /// No description provided for @ttEditTitleNew.
+  ///
+  /// In en, this message translates to:
+  /// **'New test'**
+  String get ttEditTitleNew;
+
+  /// No description provided for @ttEditTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit test'**
+  String get ttEditTitle;
+
+  /// No description provided for @ttFieldTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Test title'**
+  String get ttFieldTitle;
+
+  /// No description provided for @ttFieldDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Description (optional)'**
+  String get ttFieldDescription;
+
+  /// No description provided for @ttFieldTimeLimit.
+  ///
+  /// In en, this message translates to:
+  /// **'Time limit, minutes (optional, 1–180)'**
+  String get ttFieldTimeLimit;
+
+  /// No description provided for @ttFieldPassPercent.
+  ///
+  /// In en, this message translates to:
+  /// **'Pass mark, % (optional, 1–100)'**
+  String get ttFieldPassPercent;
+
+  /// No description provided for @ttPublishToggle.
+  ///
+  /// In en, this message translates to:
+  /// **'Published'**
+  String get ttPublishToggle;
+
+  /// No description provided for @ttPublishNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Only a published test can be assigned. Assignments already given keep their own copy of the questions.'**
+  String get ttPublishNote;
+
+  /// No description provided for @ttNoQuestionsYet.
+  ///
+  /// In en, this message translates to:
+  /// **'No questions yet. Add your own or copy questions from the app.'**
+  String get ttNoQuestionsYet;
+
+  /// No description provided for @ttAddQuestion.
+  ///
+  /// In en, this message translates to:
+  /// **'Add question'**
+  String get ttAddQuestion;
+
+  /// No description provided for @ttAddFromBank.
+  ///
+  /// In en, this message translates to:
+  /// **'From the app questions'**
+  String get ttAddFromBank;
+
+  /// No description provided for @ttMoveUp.
+  ///
+  /// In en, this message translates to:
+  /// **'Move up'**
+  String get ttMoveUp;
+
+  /// No description provided for @ttMoveDown.
+  ///
+  /// In en, this message translates to:
+  /// **'Move down'**
+  String get ttMoveDown;
+
+  /// No description provided for @ttRemoveQuestion.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove question'**
+  String get ttRemoveQuestion;
+
+  /// No description provided for @ttSave.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get ttSave;
+
+  /// No description provided for @ttSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Saved'**
+  String get ttSaved;
+
+  /// No description provided for @ttVersionConflict.
+  ///
+  /// In en, this message translates to:
+  /// **'This test was changed on another device. Open it again and repeat your edits.'**
+  String get ttVersionConflict;
+
+  /// No description provided for @ttErrTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'The title must be 3–120 characters.'**
+  String get ttErrTitle;
+
+  /// No description provided for @ttErrDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'The description is too long (up to 1000 characters).'**
+  String get ttErrDescription;
+
+  /// No description provided for @ttErrNoQuestions.
+  ///
+  /// In en, this message translates to:
+  /// **'A published test needs at least one question.'**
+  String get ttErrNoQuestions;
+
+  /// No description provided for @ttErrTimeLimit.
+  ///
+  /// In en, this message translates to:
+  /// **'Time limit: 1–180 minutes.'**
+  String get ttErrTimeLimit;
+
+  /// No description provided for @ttErrPassPercent.
+  ///
+  /// In en, this message translates to:
+  /// **'Pass mark: 1–100%.'**
+  String get ttErrPassPercent;
+
+  /// No description provided for @ttErrQuestionText.
+  ///
+  /// In en, this message translates to:
+  /// **'Write the question text (up to 1000 characters).'**
+  String get ttErrQuestionText;
+
+  /// No description provided for @ttErrOptions.
+  ///
+  /// In en, this message translates to:
+  /// **'Fill in 2–6 options (each up to 300 characters).'**
+  String get ttErrOptions;
+
+  /// No description provided for @ttErrDuplicateOptions.
+  ///
+  /// In en, this message translates to:
+  /// **'Options must not repeat.'**
+  String get ttErrDuplicateOptions;
+
+  /// No description provided for @ttErrCorrect.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark the correct option.'**
+  String get ttErrCorrect;
+
+  /// No description provided for @ttErrQuestionGeneric.
+  ///
+  /// In en, this message translates to:
+  /// **'Check the questions: text, 2–6 different options and one correct answer.'**
+  String get ttErrQuestionGeneric;
+
+  /// No description provided for @ttErrQuestionAt.
+  ///
+  /// In en, this message translates to:
+  /// **'Question {n}: {error}'**
+  String ttErrQuestionAt(int n, String error);
+
+  /// No description provided for @ttErrAbusive.
+  ///
+  /// In en, this message translates to:
+  /// **'The text contains offensive words — please rephrase.'**
+  String get ttErrAbusive;
+
+  /// No description provided for @ttErrLimitTests.
+  ///
+  /// In en, this message translates to:
+  /// **'You have reached the limit of 200 tests. Delete old ones to create new tests.'**
+  String get ttErrLimitTests;
+
+  /// No description provided for @ttErrPlan.
+  ///
+  /// In en, this message translates to:
+  /// **'This action needs a plan with this feature.'**
+  String get ttErrPlan;
+
+  /// No description provided for @ttErrTeacherRole.
+  ///
+  /// In en, this message translates to:
+  /// **'Register as a teacher first: create a group in “Groups”.'**
+  String get ttErrTeacherRole;
+
+  /// No description provided for @ttFieldQuestion.
+  ///
+  /// In en, this message translates to:
+  /// **'Question text'**
+  String get ttFieldQuestion;
+
+  /// No description provided for @ttOptionsHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap the circle next to the correct option.'**
+  String get ttOptionsHint;
+
+  /// No description provided for @ttFieldOption.
+  ///
+  /// In en, this message translates to:
+  /// **'Option {n}'**
+  String ttFieldOption(int n);
+
+  /// No description provided for @ttMarkCorrect.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark as the correct answer'**
+  String get ttMarkCorrect;
+
+  /// No description provided for @ttRemoveOption.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove option'**
+  String get ttRemoveOption;
+
+  /// No description provided for @ttAddOption.
+  ///
+  /// In en, this message translates to:
+  /// **'Add option'**
+  String get ttAddOption;
+
+  /// No description provided for @ttFieldExplanation.
+  ///
+  /// In en, this message translates to:
+  /// **'Explanation (optional, shown with the result)'**
+  String get ttFieldExplanation;
+
+  /// No description provided for @ttDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Done'**
+  String get ttDone;
+
+  /// No description provided for @ttBankTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Questions from the app'**
+  String get ttBankTitle;
+
+  /// No description provided for @ttBankSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Selected questions are added to your test as copies; the source is kept.'**
+  String get ttBankSubtitle;
+
+  /// No description provided for @ttBankSearch.
+  ///
+  /// In en, this message translates to:
+  /// **'Search'**
+  String get ttBankSearch;
+
+  /// No description provided for @ttBankAll.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get ttBankAll;
+
+  /// No description provided for @ttBankAdd.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{Select questions} =1{Add 1 question} other{Add {count} questions}}'**
+  String ttBankAdd(int count);
+
+  /// No description provided for @ttBankEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No questions found'**
+  String get ttBankEmpty;
+
+  /// No description provided for @ttBankRefine.
+  ///
+  /// In en, this message translates to:
+  /// **'Showing the first 100 of {count}. Narrow the search.'**
+  String ttBankRefine(int count);
+
+  /// No description provided for @ttAssignTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Assign the test'**
+  String get ttAssignTitle;
+
+  /// No description provided for @ttAssignGroup.
+  ///
+  /// In en, this message translates to:
+  /// **'Group'**
+  String get ttAssignGroup;
+
+  /// No description provided for @ttAssignWho.
+  ///
+  /// In en, this message translates to:
+  /// **'To whom'**
+  String get ttAssignWho;
+
+  /// No description provided for @ttAssignWholeGroup.
+  ///
+  /// In en, this message translates to:
+  /// **'Whole group'**
+  String get ttAssignWholeGroup;
+
+  /// No description provided for @ttAssignNoGroups.
+  ///
+  /// In en, this message translates to:
+  /// **'Create a group first — students join it with a code or an invitation.'**
+  String get ttAssignNoGroups;
+
+  /// No description provided for @ttAssignNoStudents.
+  ///
+  /// In en, this message translates to:
+  /// **'No students in this group yet. Students who join later will also see the test.'**
+  String get ttAssignNoStudents;
+
+  /// No description provided for @ttAssignDue.
+  ///
+  /// In en, this message translates to:
+  /// **'Deadline'**
+  String get ttAssignDue;
+
+  /// No description provided for @ttAssignAttempts.
+  ///
+  /// In en, this message translates to:
+  /// **'Attempts'**
+  String get ttAssignAttempts;
+
+  /// No description provided for @ttAssignLate.
+  ///
+  /// In en, this message translates to:
+  /// **'Accept after the deadline (marked as late)'**
+  String get ttAssignLate;
+
+  /// No description provided for @ttAssignPrivacy.
+  ///
+  /// In en, this message translates to:
+  /// **'You will see results only of students who joined the group themselves. Students see a notice that their result is visible to you.'**
+  String get ttAssignPrivacy;
+
+  /// No description provided for @ttAssignSubmit.
+  ///
+  /// In en, this message translates to:
+  /// **'Assign'**
+  String get ttAssignSubmit;
+
+  /// No description provided for @ttAssigned.
+  ///
+  /// In en, this message translates to:
+  /// **'The test has been assigned'**
+  String get ttAssigned;
+
+  /// No description provided for @ttErrDue.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a deadline in the future (up to one year).'**
+  String get ttErrDue;
+
+  /// No description provided for @ttErrMemberGone.
+  ///
+  /// In en, this message translates to:
+  /// **'This student is no longer in the group.'**
+  String get ttErrMemberGone;
+
+  /// No description provided for @ttErrLimitAssignments.
+  ///
+  /// In en, this message translates to:
+  /// **'Too many active assignments. Close old ones first.'**
+  String get ttErrLimitAssignments;
+
+  /// No description provided for @ttInvitesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Invitations'**
+  String get ttInvitesTitle;
+
+  /// No description provided for @ttInvitesSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'The student enters the code, reads what you will see and agrees.'**
+  String get ttInvitesSubtitle;
+
+  /// No description provided for @ttInviteDays.
+  ///
+  /// In en, this message translates to:
+  /// **'Valid for'**
+  String get ttInviteDays;
+
+  /// No description provided for @ttInviteMaxUses.
+  ///
+  /// In en, this message translates to:
+  /// **'How many students can join'**
+  String get ttInviteMaxUses;
+
+  /// No description provided for @ttInviteCreate.
+  ///
+  /// In en, this message translates to:
+  /// **'Create invitation'**
+  String get ttInviteCreate;
+
+  /// No description provided for @ttInviteHowTo.
+  ///
+  /// In en, this message translates to:
+  /// **'Send the code to students. In the app: Groups → Invitation code. Joining happens only after the student agrees.'**
+  String get ttInviteHowTo;
+
+  /// No description provided for @ttInvitesActive.
+  ///
+  /// In en, this message translates to:
+  /// **'Active invitations'**
+  String get ttInvitesActive;
+
+  /// No description provided for @ttInvitesEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No active invitations'**
+  String get ttInvitesEmpty;
+
+  /// No description provided for @ttInviteUses.
+  ///
+  /// In en, this message translates to:
+  /// **'used {uses}/{max}'**
+  String ttInviteUses(int uses, int max);
+
+  /// No description provided for @ttInviteUntil.
+  ///
+  /// In en, this message translates to:
+  /// **'until {date}'**
+  String ttInviteUntil(String date);
+
+  /// No description provided for @ttInviteCopy.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy invitation'**
+  String get ttInviteCopy;
+
+  /// No description provided for @ttInviteCopied.
+  ///
+  /// In en, this message translates to:
+  /// **'Invitation copied'**
+  String get ttInviteCopied;
+
+  /// No description provided for @ttInviteShareText.
+  ///
+  /// In en, this message translates to:
+  /// **'LabGuide: invitation to the group “{group}”. In the app open Groups → Invitation code and enter {code} ({link})'**
+  String ttInviteShareText(String group, String code, String link);
+
+  /// No description provided for @ttInviteRevoke.
+  ///
+  /// In en, this message translates to:
+  /// **'Revoke'**
+  String get ttInviteRevoke;
+
+  /// No description provided for @ttInviteRevokeBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The code will stop working right away. Students who already joined stay in the group.'**
+  String get ttInviteRevokeBody;
+
+  /// No description provided for @ttErrLimitInvites.
+  ///
+  /// In en, this message translates to:
+  /// **'Too many active invitations for this group. Revoke unused ones.'**
+  String get ttErrLimitInvites;
+
+  /// No description provided for @ttInviteAcceptTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Invitation to a group'**
+  String get ttInviteAcceptTitle;
+
+  /// No description provided for @ttInviteCodeField.
+  ///
+  /// In en, this message translates to:
+  /// **'Invitation code (12 characters)'**
+  String get ttInviteCodeField;
+
+  /// No description provided for @ttInviteCheck.
+  ///
+  /// In en, this message translates to:
+  /// **'Check'**
+  String get ttInviteCheck;
+
+  /// No description provided for @ttInviteGroupTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Group'**
+  String get ttInviteGroupTitle;
+
+  /// No description provided for @ttInviteConsentTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'What the teacher will see'**
+  String get ttInviteConsentTitle;
+
+  /// No description provided for @ttInviteConsentBody.
+  ///
+  /// In en, this message translates to:
+  /// **'If you join, the teacher sees your alias (or seat number) in the member list and your results in teacher tests: answers, score and time. Your email is not shown. You can leave the group at any time — your teacher-test results are then deleted.'**
+  String get ttInviteConsentBody;
+
+  /// No description provided for @ttInviteConsentCheck.
+  ///
+  /// In en, this message translates to:
+  /// **'I agree'**
+  String get ttInviteConsentCheck;
+
+  /// No description provided for @ttInviteNickname.
+  ///
+  /// In en, this message translates to:
+  /// **'Alias (optional)'**
+  String get ttInviteNickname;
+
+  /// No description provided for @ttInviteAccept.
+  ///
+  /// In en, this message translates to:
+  /// **'Join'**
+  String get ttInviteAccept;
+
+  /// No description provided for @ttInviteDecline.
+  ///
+  /// In en, this message translates to:
+  /// **'Decline'**
+  String get ttInviteDecline;
+
+  /// No description provided for @ttInviteJoined.
+  ///
+  /// In en, this message translates to:
+  /// **'You joined the group'**
+  String get ttInviteJoined;
+
+  /// No description provided for @ttInviteAlready.
+  ///
+  /// In en, this message translates to:
+  /// **'You are already in this group'**
+  String get ttInviteAlready;
+
+  /// No description provided for @ttInviteOpenGroup.
+  ///
+  /// In en, this message translates to:
+  /// **'Open the group'**
+  String get ttInviteOpenGroup;
+
+  /// No description provided for @ttInviteOwn.
+  ///
+  /// In en, this message translates to:
+  /// **'This is your own group'**
+  String get ttInviteOwn;
+
+  /// No description provided for @ttInviteExpired.
+  ///
+  /// In en, this message translates to:
+  /// **'The invitation has expired or was revoked. Ask your teacher for a new code.'**
+  String get ttInviteExpired;
+
+  /// No description provided for @ttInviteNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'Code not found — check it and try again.'**
+  String get ttInviteNotFound;
+
+  /// No description provided for @ttResultsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Results'**
+  String get ttResultsTitle;
+
+  /// No description provided for @ttSummaryTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Summary'**
+  String get ttSummaryTitle;
+
+  /// No description provided for @ttSumTargets.
+  ///
+  /// In en, this message translates to:
+  /// **'Students'**
+  String get ttSumTargets;
+
+  /// No description provided for @ttSumSubmitted.
+  ///
+  /// In en, this message translates to:
+  /// **'Submitted'**
+  String get ttSumSubmitted;
+
+  /// No description provided for @ttSumAverage.
+  ///
+  /// In en, this message translates to:
+  /// **'Average'**
+  String get ttSumAverage;
+
+  /// No description provided for @ttSumPassRate.
+  ///
+  /// In en, this message translates to:
+  /// **'Passed'**
+  String get ttSumPassRate;
+
+  /// No description provided for @ttSumAvgTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Average time'**
+  String get ttSumAvgTime;
+
+  /// No description provided for @ttPrivacyTeacher.
+  ///
+  /// In en, this message translates to:
+  /// **'Only results of students who joined the group themselves are shown. When a student leaves the group, their results are deleted.'**
+  String get ttPrivacyTeacher;
+
+  /// No description provided for @ttStudentsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'By student'**
+  String get ttStudentsTitle;
+
+  /// No description provided for @ttNoStudentsYet.
+  ///
+  /// In en, this message translates to:
+  /// **'No students in the group yet.'**
+  String get ttNoStudentsYet;
+
+  /// No description provided for @ttMostMissed.
+  ///
+  /// In en, this message translates to:
+  /// **'Most missed questions'**
+  String get ttMostMissed;
+
+  /// No description provided for @ttNoResultsYet.
+  ///
+  /// In en, this message translates to:
+  /// **'Nobody has submitted yet.'**
+  String get ttNoResultsYet;
+
+  /// No description provided for @ttQuestionsStatTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'By question'**
+  String get ttQuestionsStatTitle;
+
+  /// No description provided for @ttNoAnswersYet.
+  ///
+  /// In en, this message translates to:
+  /// **'no answers yet'**
+  String get ttNoAnswersYet;
+
+  /// No description provided for @ttCorrectPercent.
+  ///
+  /// In en, this message translates to:
+  /// **'{percent}% correct'**
+  String ttCorrectPercent(int percent);
+
+  /// No description provided for @ttStateAssigned.
+  ///
+  /// In en, this message translates to:
+  /// **'Not started'**
+  String get ttStateAssigned;
+
+  /// No description provided for @ttStateStarted.
+  ///
+  /// In en, this message translates to:
+  /// **'In progress'**
+  String get ttStateStarted;
+
+  /// No description provided for @ttStateSubmitted.
+  ///
+  /// In en, this message translates to:
+  /// **'Submitted'**
+  String get ttStateSubmitted;
+
+  /// No description provided for @ttStateExpired.
+  ///
+  /// In en, this message translates to:
+  /// **'Missed'**
+  String get ttStateExpired;
+
+  /// No description provided for @ttPassed.
+  ///
+  /// In en, this message translates to:
+  /// **'passed'**
+  String get ttPassed;
+
+  /// No description provided for @ttNotPassed.
+  ///
+  /// In en, this message translates to:
+  /// **'not passed'**
+  String get ttNotPassed;
+
+  /// No description provided for @ttLate.
+  ///
+  /// In en, this message translates to:
+  /// **'late'**
+  String get ttLate;
+
+  /// No description provided for @ttLateAccepted.
+  ///
+  /// In en, this message translates to:
+  /// **'Late work accepted'**
+  String get ttLateAccepted;
+
+  /// No description provided for @ttAttemptsN.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 attempt} other{{count} attempts}}'**
+  String ttAttemptsN(int count);
+
+  /// No description provided for @ttMinSec.
+  ///
+  /// In en, this message translates to:
+  /// **'{m} min {s} s'**
+  String ttMinSec(int m, int s);
+
+  /// No description provided for @ttExportCsv.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy as CSV'**
+  String get ttExportCsv;
+
+  /// No description provided for @ttExportCopied.
+  ///
+  /// In en, this message translates to:
+  /// **'CSV copied — paste it into a spreadsheet'**
+  String get ttExportCopied;
+
+  /// No description provided for @ttCloseAssignment.
+  ///
+  /// In en, this message translates to:
+  /// **'Close assignment'**
+  String get ttCloseAssignment;
+
+  /// No description provided for @ttCloseAssignmentBody.
+  ///
+  /// In en, this message translates to:
+  /// **'No new attempts can start; students who are already solving have 2 minutes to submit.'**
+  String get ttCloseAssignmentBody;
+
+  /// No description provided for @ttDeleteAssignment.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete assignment'**
+  String get ttDeleteAssignment;
+
+  /// No description provided for @ttDeleteAssignmentBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The assignment and its results will be deleted.'**
+  String get ttDeleteAssignmentBody;
+
+  /// No description provided for @ttMyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Teacher tests'**
+  String get ttMyTitle;
+
+  /// No description provided for @ttMySubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Special tests from your teacher'**
+  String get ttMySubtitle;
+
+  /// No description provided for @ttMyEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No tests yet'**
+  String get ttMyEmpty;
+
+  /// No description provided for @ttMyEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'When your teacher assigns a test, it appears here.'**
+  String get ttMyEmptyBody;
+
+  /// No description provided for @ttBest.
+  ///
+  /// In en, this message translates to:
+  /// **'best {percent}%'**
+  String ttBest(int percent);
+
+  /// No description provided for @ttVisibleNoticeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your result is visible to your teacher'**
+  String get ttVisibleNoticeTitle;
+
+  /// No description provided for @ttVisibleNotice.
+  ///
+  /// In en, this message translates to:
+  /// **'Your teacher will see your alias (or seat number), answers, score and time for this test. Your email is not shown.'**
+  String get ttVisibleNotice;
+
+  /// No description provided for @ttStudentLocked.
+  ///
+  /// In en, this message translates to:
+  /// **'Starting a teacher test is part of Student Pro. Your results stay visible.'**
+  String get ttStudentLocked;
+
+  /// No description provided for @ttLatePolicyAccept.
+  ///
+  /// In en, this message translates to:
+  /// **'Accepted after the deadline too (marked as late).'**
+  String get ttLatePolicyAccept;
+
+  /// No description provided for @ttLatePolicyReject.
+  ///
+  /// In en, this message translates to:
+  /// **'Cannot be started after the deadline.'**
+  String get ttLatePolicyReject;
+
+  /// No description provided for @ttCantClosed.
+  ///
+  /// In en, this message translates to:
+  /// **'The teacher has closed this assignment.'**
+  String get ttCantClosed;
+
+  /// No description provided for @ttCantPastDue.
+  ///
+  /// In en, this message translates to:
+  /// **'The deadline has passed.'**
+  String get ttCantPastDue;
+
+  /// No description provided for @ttCantNoAttempts.
+  ///
+  /// In en, this message translates to:
+  /// **'No attempts left.'**
+  String get ttCantNoAttempts;
+
+  /// No description provided for @ttStart.
+  ///
+  /// In en, this message translates to:
+  /// **'Start the test'**
+  String get ttStart;
+
+  /// No description provided for @ttContinue.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get ttContinue;
+
+  /// No description provided for @ttYourAttempts.
+  ///
+  /// In en, this message translates to:
+  /// **'Your attempts'**
+  String get ttYourAttempts;
+
+  /// No description provided for @ttAttemptN.
+  ///
+  /// In en, this message translates to:
+  /// **'Attempt {n}'**
+  String ttAttemptN(int n);
+
+  /// No description provided for @ttReviewHidden.
+  ///
+  /// In en, this message translates to:
+  /// **'Correct answers are shown when your attempts are used up, after the deadline or when the teacher closes the assignment.'**
+  String get ttReviewHidden;
+
+  /// No description provided for @ttYourAnswer.
+  ///
+  /// In en, this message translates to:
+  /// **'Your answer'**
+  String get ttYourAnswer;
+
+  /// No description provided for @ttNoAnswer.
+  ///
+  /// In en, this message translates to:
+  /// **'no answer'**
+  String get ttNoAnswer;
+
+  /// No description provided for @ttSubmittedSnack.
+  ///
+  /// In en, this message translates to:
+  /// **'Submitted: {score}/{total}'**
+  String ttSubmittedSnack(int score, int total);
+
+  /// No description provided for @ttErrTimeOver.
+  ///
+  /// In en, this message translates to:
+  /// **'Time is over — this attempt was not accepted.'**
+  String get ttErrTimeOver;
+
+  /// No description provided for @ttErrAlreadySubmitted.
+  ///
+  /// In en, this message translates to:
+  /// **'This attempt has already been submitted.'**
+  String get ttErrAlreadySubmitted;
+
+  /// No description provided for @ttTimeLeft.
+  ///
+  /// In en, this message translates to:
+  /// **'Time left: {time}'**
+  String ttTimeLeft(String time);
+
+  /// No description provided for @ttSubmit.
+  ///
+  /// In en, this message translates to:
+  /// **'Submit'**
+  String get ttSubmit;
+
+  /// No description provided for @ttSubmitConfirmTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Submit your answers?'**
+  String get ttSubmitConfirmTitle;
+
+  /// No description provided for @ttSubmitUnanswered.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 question is unanswered.} other{{count} questions are unanswered.}}'**
+  String ttSubmitUnanswered(int count);
+
+  /// No description provided for @ttSubmitFinal.
+  ///
+  /// In en, this message translates to:
+  /// **'After submitting you cannot change the answers.'**
+  String get ttSubmitFinal;
+
+  /// No description provided for @ttSubmitVisible.
+  ///
+  /// In en, this message translates to:
+  /// **'The result will be visible to your teacher.'**
+  String get ttSubmitVisible;
+
+  /// No description provided for @ttSubmitFailedSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not submit. Your answers are saved on this device — try again.'**
+  String get ttSubmitFailedSaved;
 }
 
-class _AppLocalizationsDelegate
-    extends LocalizationsDelegate<AppLocalizations> {
+class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
   const _AppLocalizationsDelegate();
 
   @override
@@ -22971,28 +24119,26 @@ class _AppLocalizationsDelegate
   }
 
   @override
-  bool isSupported(Locale locale) =>
-      <String>['en', 'ru', 'uz'].contains(locale.languageCode);
+  bool isSupported(Locale locale) => <String>['en', 'ru', 'uz'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
 }
 
 AppLocalizations lookupAppLocalizations(Locale locale) {
+
+
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
-    case 'en':
-      return AppLocalizationsEn();
-    case 'ru':
-      return AppLocalizationsRu();
-    case 'uz':
-      return AppLocalizationsUz();
+    case 'en': return AppLocalizationsEn();
+    case 'ru': return AppLocalizationsRu();
+    case 'uz': return AppLocalizationsUz();
   }
 
   throw FlutterError(
     'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
     'an issue with the localizations generation tool. Please file an issue '
     'on GitHub with a reproducible sample app and the gen-l10n configuration '
-    'that was used.',
+    'that was used.'
   );
 }

@@ -7,6 +7,7 @@ import '../core/backend/admin_console.dart';
 import '../core/backend/admin_team.dart';
 import '../core/backend/lab_backend.dart';
 import '../core/backend/pro_grants.dart';
+import '../core/backend/teacher_tests.dart';
 import '../core/build_flags.dart';
 import '../core/entitlements/entitlement_service.dart';
 import '../core/storage/kv_store.dart';
@@ -32,6 +33,7 @@ import '../features/packs/packs_controller.dart';
 import '../features/qc/qc_controller.dart';
 import '../features/settings/settings_controller.dart';
 import '../features/share/result_share.dart';
+import '../features/teacher_pro/teacher_test_cache.dart';
 import '../features/toifa/toifa_controller.dart';
 
 /// Build va siyosat sozlamalari. Biznes qarorlari (masalan, qurilmalar
@@ -175,6 +177,18 @@ class AppServices {
       BuildFlags.proEnabled && backend is ProGrantBackend
       ? backend as ProGrantBackend
       : null;
+
+  /// Ustoz Pro (D-78): o'z testlari, topshirish, taklifnoma, natijalar va
+  /// talaba tomoni — faqat Pro bayrog'i yoqilgan buildda VA server bu
+  /// imkoniyatga ega bo'lsa. Bayroq o'chiq — doim `null`: bo'limlar, kirish
+  /// qatorlari va yo'llar umuman yo'q (bepul guruhlar o'zgarmaydi).
+  TeacherTestBackend? get teacherTests =>
+      BuildFlags.proEnabled && backend is TeacherTestHost
+      ? (backend as TeacherTestHost).teacherTestApi
+      : null;
+
+  /// Ustoz testlari lokal keshi (oflayn ro'yxat, boshlangan urinish javoblari).
+  late final TeacherTestCache teacherTestCache = TeacherTestCache(store);
 
   /// Egasi admin paneli (foydalanuvchilar, shikoyatlar) — faqat Cloudflare.
   AdminConsoleBackend? get adminConsole =>

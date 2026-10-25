@@ -63,6 +63,7 @@ import '../features/profile/profile_screens.dart';
 import '../features/profile/purchase_screen.dart';
 import '../features/profile/subscription_screen.dart';
 import '../features/settings/theme_screen.dart';
+import '../features/teacher_pro/teacher_pro_routes.dart';
 import '../features/qc/qc_guides.dart';
 import '../features/qc/qc_guides_info.dart';
 import '../features/qc/qc_screens.dart';
@@ -157,6 +158,15 @@ GoRouter buildRouter(
         // talaba bosh sahifaga tushib qolardi. Omborda saqlanadi (24 soat):
         // email ilovasiga o'tganda OS ilovani yopsa ham yo'qolmaydi.
         unawaited(settings.setPendingInvite(join));
+      }
+      // Ustoz Pro taklifnomasi (labguide://app/ti?t=..): rozilik ekrani.
+      if (BuildFlags.proEnabled &&
+          (path == '/ti' || path == '/ti/') &&
+          settings.onboarded) {
+        return Uri(
+          path: '/learn/classes/invite',
+          queryParameters: {'t': ?state.uri.queryParameters['t']},
+        ).toString();
       }
       final loc = state.matchedLocation;
       final inOnboarding = loc.startsWith('/welcome') || loc == '/terms';
@@ -1258,6 +1268,9 @@ GoRouter buildRouter(
                               state.extra == JoinGroupScreen.autoJoinExtra,
                         ),
                       ),
+                      // Ustoz Pro (D-78): o'z testlari, topshirish, taklifnoma,
+                      // natijalar, talaba tomoni — faqat Pro bayrog'i bilan.
+                      if (BuildFlags.proEnabled) ...teacherProRoutes(rootKey),
                       GoRoute(
                         path: 'g/:gid',
                         builder: (context, state) =>

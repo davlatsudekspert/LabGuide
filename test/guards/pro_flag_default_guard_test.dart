@@ -10,7 +10,21 @@ String _read(String path) => File(path).readAsStringSync();
 
 /// D-78: pullik amal tekshiruvi (`requireFeature` / `pushGated` /
 /// `allowOrOffer`) chaqiriladigan joylar — fayl → funksiyalar.
-const kGateCallSites = <String, Set<String>>{};
+const kGateCallSites = <String, Set<String>>{
+  // Ustoz Pro (yangi ekranlar): test yaratish/tahrir/saqlash, topshirish.
+  'lib/features/teacher_pro/teacher_test_screens.dart': {
+    'teacherTestBuilder',
+    'teacherTestAssign',
+  },
+  // Topshirish va taklifnoma yaratish.
+  'lib/features/teacher_pro/teacher_assign_screens.dart': {'teacherTestAssign'},
+  // Natijalar CSV eksporti.
+  'lib/features/teacher_pro/teacher_results_screens.dart': {'teacherResults'},
+  // Talaba: Ustoz testini BOSHLASH (boshlangan urinish — tekshiruvsiz).
+  'lib/features/teacher_pro/student_teacher_tests_screens.dart': {
+    'teacherTests',
+  },
+};
 
 void main() {
   group('D-71: Pro standart holda o‘chiq', () {
