@@ -27,6 +27,9 @@ Future<void> _tap(WidgetTester tester, Finder f) async {
     scrollable: find.byType(Scrollable).first,
   );
   await tester.pumpAndSettle();
+  // Pastki navigatsiya tugmani to'smasligi uchun ekran o'rtasiga olib kelamiz.
+  await Scrollable.ensureVisible(tester.element(f.first), alignment: 0.4);
+  await tester.pumpAndSettle();
   await tester.tap(f);
   await tester.pumpAndSettle();
 }
@@ -96,6 +99,56 @@ Future<void> _submit(
 
 void main() {
   setUpAll(loadAppFonts);
+
+  for (final lang in AppLanguage.values) {
+    testWidgets('admin muddatni o‘zi kiritadi: kun, oy (30 kun), chegara '
+        '(${lang.name})', (tester) async {
+      final l = _l(lang);
+      final lab = await _lab();
+      final s = await _setup(tester, lab, language: lang, proEnabled: true);
+      await _signIn(tester, s, _owner);
+      await _openGrants(tester, l);
+
+      Future<void> custom(String n, {bool months = false}) async {
+        await tester.ensureVisible(
+          find.byKey(const ValueKey('pro-grant-custom')),
+        );
+        await tester.enterText(
+          find.descendant(
+            of: find.byKey(const ValueKey('pro-grant-custom')),
+            matching: find.byType(TextField),
+          ),
+          n,
+        );
+        await _tap(
+          tester,
+          find.byKey(
+            ValueKey(months ? 'pro-grant-unit-months' : 'pro-grant-unit-days'),
+          ),
+        );
+      }
+
+      // 45 kun.
+      await _fill(tester, _newcomer);
+      await custom('45');
+      await _submit(tester, l);
+      expect(lab.grantCalls.last['days'], 45);
+
+      // 2 oy = 60 kun.
+      await _fill(tester, 'two.months@example.com');
+      await custom('2', months: true);
+      await _submit(tester, l);
+      expect(lab.grantCalls.last['days'], 60);
+
+      // Chegaradan oshgan muddat — serverga yuborilmaydi.
+      final before = lab.grantCalls.length;
+      await _fill(tester, 'too.long@example.com');
+      await custom('4000');
+      await _submit(tester, l, confirm: false);
+      expect(find.text(l.proGrantErrRange(proGrantMaxDays)), findsOneWidget);
+      expect(lab.grantCalls.length, before);
+    });
+  }
 
   for (final lang in AppLanguage.values) {
     testWidgets('bayroq YOQIQ + admin: berish, tekshiruv, almashtirish, '

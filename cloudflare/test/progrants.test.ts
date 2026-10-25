@@ -81,7 +81,9 @@ describe('admin grant: tekshiruv', () => {
       { ...ok, email: undefined },
       { ...ok, tier: 'pro' },
       { ...ok, tier: undefined },
-      { ...ok, durationDays: 7 },
+      { ...ok, durationDays: 3651 },
+      { ...ok, durationDays: 1.5 },
+      { ...ok, durationDays: -1 },
       { ...ok, durationDays: '30' },
       { ...ok, durationDays: 0 },
       { ...ok, note: 'x'.repeat(201) },
@@ -93,7 +95,7 @@ describe('admin grant: tekshiruv', () => {
       const r = await grant(s, boss.token, b);
       expect(r.status, JSON.stringify(b)).toBe(400);
     }
-    for (const days of [30, 90, 365, null]) {
+    for (const days of [1, 7, 30, 45, 90, 365, 3650, null]) {
       expect((await grant(s, boss.token, { email: uniqueEmail('d'), tier: 'student', durationDays: days })).status).toBe(201);
     }
   });

@@ -25,9 +25,13 @@ abstract interface class ProGrantBackend {
   Future<void> revokePro(String id);
 }
 
-/// Berish muddatlari (kun); `null` — bekor qilinguncha. Server ham shularni
-/// qabul qiladi.
-const proGrantDurations = <int?>[30, 90, 365, null];
+/// Tez tanlash muddatlari (kun); `null` — bekor qilinguncha. Admin shu bilan
+/// birga o'zi kun yoki oy kiritadi (server: butun kun, 1…[proGrantMaxDays]).
+const proGrantDurations = <int?>[7, 30, 90, 365, null];
+
+/// Eng uzun muddat (kun) — server bilan bir xil. 1 oy = 30 kun.
+const proGrantMaxDays = 3650;
+const proGrantDaysPerMonth = 30;
 
 /// Izohning eng uzun hajmi (server bilan bir xil).
 const proGrantNoteMax = 200;

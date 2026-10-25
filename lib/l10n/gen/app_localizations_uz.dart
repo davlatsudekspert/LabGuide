@@ -13287,4 +13287,18 @@ class AppLocalizationsUz extends AppLocalizations {
   @override
   String get proSubWithoutSubscription =>
       'Ilovadan obunasiz foydalanish mumkin: bepul imkoniyatlar bepul qoladi.';
+
+  @override
+  String get proGrantCustom => 'Boshqa muddat (son)';
+
+  @override
+  String get proGrantUnitDays => 'kun';
+
+  @override
+  String get proGrantUnitMonths => 'oy (30 kun)';
+
+  @override
+  String proGrantErrRange(int max) {
+    return 'Muddat 1 dan $max kungacha bo‘lishi kerak (1 oy = 30 kun).';
+  }
 }

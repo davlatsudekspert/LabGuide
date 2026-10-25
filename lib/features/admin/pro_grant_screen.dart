@@ -37,6 +37,8 @@ class _AdminProGrantScreenState extends State<AdminProGrantScreen> {
   final _note = TextEditingController();
   ProPlan _plan = ProPlan.student;
   int? _days = 30;
+  bool _months = false;
+  final _custom = TextEditingController();
   bool _extend = false;
   List<ProGrant>? _grants;
   Object? _error;
@@ -47,6 +49,7 @@ class _AdminProGrantScreenState extends State<AdminProGrantScreen> {
   void dispose() {
     _email.dispose();
     _note.dispose();
+    _custom.dispose();
     super.dispose();
   }
 
@@ -80,6 +83,16 @@ class _AdminProGrantScreenState extends State<AdminProGrantScreen> {
     _ => backendErrorText(e, l),
   };
 
+  /// Qo'lda kiritilgan son (kun yoki oy) → `_days`. Noto'g'ri bo'lsa `false`.
+  bool _applyCustom() {
+    final n = int.tryParse(_custom.text.trim());
+    if (n == null || n < 1) return false;
+    final days = _months ? n * proGrantDaysPerMonth : n;
+    if (days > proGrantMaxDays) return false;
+    _days = days;
+    return true;
+  }
+
   Future<void> _submit() async {
     final l = AppLocalizations.of(context);
     final api = context.services.proGrants;
@@ -91,6 +104,10 @@ class _AdminProGrantScreenState extends State<AdminProGrantScreen> {
     }
     if (_note.text.trim().length > proGrantNoteMax) {
       setState(() => _formError = l.proGrantErrNote);
+      return;
+    }
+    if (_custom.text.trim().isNotEmpty && !_applyCustom()) {
+      setState(() => _formError = l.proGrantErrRange(proGrantMaxDays));
       return;
     }
     if (_extend && _days == null) {
@@ -234,8 +251,46 @@ class _AdminProGrantScreenState extends State<AdminProGrantScreen> {
                   key: ValueKey('pro-grant-days-${d ?? 'forever'}'),
                   label: _durationLabel(l, d),
                   selected: _days == d,
-                  onTap: () => setState(() => _days = d),
+                  onTap: () => setState(() {
+                    _days = d;
+                    _custom.clear();
+                  }),
                 ),
+            ],
+          ),
+          const SizedBox(height: 10),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Expanded(
+                child: LgField(
+                  key: const ValueKey('pro-grant-custom'),
+                  label: l.proGrantCustom,
+                  controller: _custom,
+                  keyboardType: TextInputType.number,
+                  onChanged: (_) => setState(_applyCustom),
+                ),
+              ),
+              const SizedBox(width: 8),
+              LgChoiceChip(
+                key: const ValueKey('pro-grant-unit-days'),
+                label: l.proGrantUnitDays,
+                selected: !_months,
+                onTap: () => setState(() {
+                  _months = false;
+                  _applyCustom();
+                }),
+              ),
+              const SizedBox(width: 6),
+              LgChoiceChip(
+                key: const ValueKey('pro-grant-unit-months'),
+                label: l.proGrantUnitMonths,
+                selected: _months,
+                onTap: () => setState(() {
+                  _months = true;
+                  _applyCustom();
+                }),
+              ),
             ],
           ),
           const SizedBox(height: 12),

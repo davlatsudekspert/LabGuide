@@ -3800,5 +3800,10 @@
   "proSubTrialSubscribed": "У вас уже есть действующая подписка.",
   "proSubEnded": "Pro закончился. Все бесплатные функции работают, ваши данные сохранены.",
   "proSubPriceYearlyNote": "Годовой план оплачивается раз в год по указанной цене.",
-  "proSubWithoutSubscription": "Приложением можно пользоваться без подписки: бесплатные функции остаются бесплатными."
+  "proSubWithoutSubscription": "Приложением можно пользоваться без подписки: бесплатные функции остаются бесплатными.",
+  "proGrantCustom": "Другой срок (число)",
+  "proGrantUnitDays": "дн.",
+  "proGrantUnitMonths": "мес. (30 дн.)",
+  "proGrantErrRange": "Срок — от 1 до {max} дней (1 месяц = 30 дней).",
+  "@proGrantErrRange": {"placeholders": {"max": {"type": "int"}}}
 }

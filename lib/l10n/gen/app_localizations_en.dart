@@ -13431,4 +13431,18 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get proSubWithoutSubscription =>
       'You can use the app without a subscription: free features stay free.';
+
+  @override
+  String get proGrantCustom => 'Other duration (number)';
+
+  @override
+  String get proGrantUnitDays => 'days';
+
+  @override
+  String get proGrantUnitMonths => 'months (30 days)';
+
+  @override
+  String proGrantErrRange(int max) {
+    return 'Duration must be 1 to $max days (1 month = 30 days).';
+  }
 }

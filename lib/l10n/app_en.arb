@@ -7173,5 +7173,10 @@
   "proSubTrialSubscribed": "You already have an active subscription.",
   "proSubEnded": "Pro has ended. Every free feature keeps working and your data stays.",
   "proSubPriceYearlyNote": "The yearly plan is billed once a year at the price shown.",
-  "proSubWithoutSubscription": "You can use the app without a subscription: free features stay free."
+  "proSubWithoutSubscription": "You can use the app without a subscription: free features stay free.",
+  "proGrantCustom": "Other duration (number)",
+  "proGrantUnitDays": "days",
+  "proGrantUnitMonths": "months (30 days)",
+  "proGrantErrRange": "Duration must be 1 to {max} days (1 month = 30 days).",
+  "@proGrantErrRange": {"placeholders": {"max": {"type": "int"}}}
 }

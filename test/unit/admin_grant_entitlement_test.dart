@@ -256,8 +256,10 @@ void main() {
       expect(r.grant.plan, ProPlan.teacher);
     });
 
-    test('muddatlar server bilan bir xil: 30/90/365/bekor qilinguncha', () {
-      expect(proGrantDurations, [30, 90, 365, null]);
+    test('tez tanlash muddatlari: 7/30/90/365/bekor qilinguncha; chegara 1…3650 kun', () {
+      expect(proGrantDurations, [7, 30, 90, 365, null]);
+      expect(proGrantMaxDays, 3650);
+      expect(proGrantDaysPerMonth, 30);
     });
   });
 }

@@ -22821,6 +22821,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'You can use the app without a subscription: free features stay free.'**
   String get proSubWithoutSubscription;
+
+  /// No description provided for @proGrantCustom.
+  ///
+  /// In en, this message translates to:
+  /// **'Other duration (number)'**
+  String get proGrantCustom;
+
+  /// No description provided for @proGrantUnitDays.
+  ///
+  /// In en, this message translates to:
+  /// **'days'**
+  String get proGrantUnitDays;
+
+  /// No description provided for @proGrantUnitMonths.
+  ///
+  /// In en, this message translates to:
+  /// **'months (30 days)'**
+  String get proGrantUnitMonths;
+
+  /// No description provided for @proGrantErrRange.
+  ///
+  /// In en, this message translates to:
+  /// **'Duration must be 1 to {max} days (1 month = 30 days).'**
+  String proGrantErrRange(int max);
 }
 
 class _AppLocalizationsDelegate

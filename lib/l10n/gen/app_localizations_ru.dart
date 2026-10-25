@@ -13504,4 +13504,18 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get proSubWithoutSubscription =>
       'Приложением можно пользоваться без подписки: бесплатные функции остаются бесплатными.';
+
+  @override
+  String get proGrantCustom => 'Другой срок (число)';
+
+  @override
+  String get proGrantUnitDays => 'дн.';
+
+  @override
+  String get proGrantUnitMonths => 'мес. (30 дн.)';
+
+  @override
+  String proGrantErrRange(int max) {
+    return 'Срок — от 1 до $max дней (1 месяц = 30 дней).';
+  }
 }

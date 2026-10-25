@@ -3800,5 +3800,10 @@
   "proSubTrialSubscribed": "Sizda amaldagi obuna bor.",
   "proSubEnded": "Pro muddati tugadi. Barcha bepul imkoniyatlar ishlaydi, ma’lumotlaringiz saqlanadi.",
   "proSubPriceYearlyNote": "Yillik reja narxi yiliga bir marta, ko‘rsatilgan summada olinadi.",
-  "proSubWithoutSubscription": "Ilovadan obunasiz foydalanish mumkin: bepul imkoniyatlar bepul qoladi."
+  "proSubWithoutSubscription": "Ilovadan obunasiz foydalanish mumkin: bepul imkoniyatlar bepul qoladi.",
+  "proGrantCustom": "Boshqa muddat (son)",
+  "proGrantUnitDays": "kun",
+  "proGrantUnitMonths": "oy (30 kun)",
+  "proGrantErrRange": "Muddat 1 dan {max} kungacha bo‘lishi kerak (1 oy = 30 kun).",
+  "@proGrantErrRange": {"placeholders": {"max": {"type": "int"}}}
 }

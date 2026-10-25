@@ -26,7 +26,9 @@ export const GRANT_PER_HOUR = 30;
 export const REVOKE_PER_HOUR = 60;
 export const LIST_PER_10_MIN = 60;
 export const MAX_ACTIVE_PRO_GRANTS = 2000;
-export const DURATIONS = [30, 90, 365] as const;
+/** Admin muddatni o'zi belgilaydi: butun kun, 1…3650 (≈10 yil). `null` — bekor qilinguncha. */
+export const MIN_DAYS = 1;
+export const MAX_DAYS = 3650;
 export const MAX_NOTE = 200;
 const DAY = 86400_000;
 const ID_RE = /^[0-9a-f-]{36}$/;
@@ -65,7 +67,7 @@ function parseTier(raw: unknown): Plan {
 
 function parseDuration(raw: unknown): number | null {
   if (raw === undefined || raw === null) return null; // bekor qilinguncha
-  if (typeof raw !== 'number' || !(DURATIONS as readonly number[]).includes(raw)) throw badRequest('invalid_duration');
+  if (typeof raw !== 'number' || !Number.isInteger(raw) || raw < MIN_DAYS || raw > MAX_DAYS) throw badRequest('invalid_duration');
   return raw;
 }
 
