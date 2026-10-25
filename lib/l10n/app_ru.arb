@@ -2493,6 +2493,7 @@
   "autoPresTplQa": "Вопрос",
   "instSchematicCaption": "Схематичное изображение — не фото конкретной модели",
   "instSchematicTapToZoom": "Нажмите на изображение, чтобы увеличить",
+  "instSchematicNotPhoto": "Оригинальная схема класса приборов, нарисованная в LabGuide. Это не реальная фотография прибора производителя; узлы показаны на уровне принципа и не отражают особенностей конкретной модели.",
   "instSchematicSemantics": "Схематичное изображение: {kind}",
   "@instSchematicSemantics": {
     "placeholders": {

@@ -8725,6 +8725,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get instSchematicTapToZoom => 'Tap the illustration to enlarge';
 
   @override
+  String get instSchematicNotPhoto =>
+      'An original generic class schematic drawn by LabGuide. It is not a real photograph of the manufacturer’s instrument; parts are shown at principle level and do not represent model-specific features.';
+
+  @override
   String instSchematicSemantics(String kind) {
     return 'Schematic illustration: $kind';
   }

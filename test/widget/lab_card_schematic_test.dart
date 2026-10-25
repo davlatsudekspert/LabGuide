@@ -108,6 +108,15 @@ void main() {
         matching: find.text(l.instSchematicCaption),
       );
       expect(cap, findsOneWidget, reason: id);
+      // Foto emasligi (uz): matn ekranda va sig‘adi.
+      final note = find.byKey(const ValueKey('schematic-not-photo'));
+      expect(note, findsOneWidget, reason: id);
+      expect(
+        tester.widget<Text>(note).data,
+        l.instSchematicNotPhoto,
+        reason: id,
+      );
+      expect(tester.getRect(note).right, lessThanOrEqualTo(320), reason: id);
       final r = tester.getRect(cap);
       expect(r.left, greaterThanOrEqualTo(0), reason: id);
       expect(r.right, lessThanOrEqualTo(320), reason: id);
@@ -137,7 +146,11 @@ void main() {
         AssetImage('assets/instruments/schematic/${key}_1200.png'),
         reason: id,
       );
-      expect(find.text(l.instSchematicCaption), findsOneWidget, reason: id);
+      expect(
+        find.text('${l.instSchematicCaption}\n${l.instSchematicNotPhoto}'),
+        findsOneWidget,
+        reason: id,
+      );
       await tester.tap(find.byTooltip(l.micClose));
       await tester.pumpAndSettle();
       expect(find.byType(InstrumentSchematicViewer), findsNothing, reason: id);
@@ -180,4 +193,17 @@ void main() {
       expect(find.text(l.instSchematicCaption), findsOneWidget);
     });
   }
+
+  test('"foto emas, modelga xos emas" izohi uz/ru/en da bor va aniq', () {
+    final uz = lookupAppLocalizations(const Locale('uz')).instSchematicNotPhoto;
+    final ru = lookupAppLocalizations(const Locale('ru')).instSchematicNotPhoto;
+    final en = lookupAppLocalizations(const Locale('en')).instSchematicNotPhoto;
+    expect(uz, contains('fotosurati emas'));
+    expect(uz, contains('aniq modelning'));
+    expect(ru, contains('не реальная фотография'));
+    expect(ru, contains('конкретной модели'));
+    expect(en, contains('not a real photograph'));
+    expect(en, contains('model-specific'));
+    expect({uz, ru, en}.length, 3);
+  });
 }

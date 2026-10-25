@@ -48,10 +48,10 @@ void main() {
       // Boshqa har qanday holat — faqat to'liq imzo bilan.
       expect(
         sign,
-        isA<Map>(),
+        isA<Map<String, Object?>>(),
         reason: '$id: $status uchun expert_signoff kerak',
       );
-      final m = (sign! as Map).cast<String, Object?>();
+      final m = sign! as Map<String, Object?>;
       for (final k in ['name', 'specialty', 'date']) {
         expect((m[k] as String?)?.trim(), isNotEmpty, reason: '$id signoff.$k');
       }

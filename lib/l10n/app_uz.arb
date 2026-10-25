@@ -2493,6 +2493,7 @@
   "autoPresTplQa": "Savol",
   "instSchematicCaption": "Sxematik tasvir — aniq model emas",
   "instSchematicTapToZoom": "Kattalashtirish uchun tasvirni bosing",
+  "instSchematicNotPhoto": "LabGuide chizgan original umumiy sinf sxemasi. Ishlab chiqaruvchining haqiqiy apparat fotosurati emas; ko‘rsatilgan qismlar tamoyil darajasida va aniq modelning o‘ziga xos xususiyatlarini bildirmaydi.",
   "instSchematicSemantics": "Sxematik tasvir: {kind}",
   "@instSchematicSemantics": {
     "placeholders": {

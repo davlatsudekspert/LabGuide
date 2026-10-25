@@ -8612,6 +8612,10 @@ class AppLocalizationsUz extends AppLocalizations {
   String get instSchematicTapToZoom => 'Kattalashtirish uchun tasvirni bosing';
 
   @override
+  String get instSchematicNotPhoto =>
+      'LabGuide chizgan original umumiy sinf sxemasi. Ishlab chiqaruvchining haqiqiy apparat fotosurati emas; ko‘rsatilgan qismlar tamoyil darajasida va aniq modelning o‘ziga xos xususiyatlarini bildirmaydi.';
+
+  @override
   String instSchematicSemantics(String kind) {
     return 'Sxematik tasvir: $kind';
   }

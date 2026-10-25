@@ -200,7 +200,10 @@ void main() {
       big.image,
       const AssetImage('assets/instruments/schematic/hematology3_1200.png'),
     );
-    expect(find.text(l.instSchematicCaption), findsOneWidget);
+    expect(
+      find.text('${l.instSchematicCaption}\n${l.instSchematicNotPhoto}'),
+      findsOneWidget,
+    );
     await tester.tap(find.byTooltip(l.micClose));
     await tester.pumpAndSettle();
     expect(find.byType(InstrumentSchematicViewer), findsNothing);

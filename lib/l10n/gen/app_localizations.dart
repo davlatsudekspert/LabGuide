@@ -15058,6 +15058,12 @@ abstract class AppLocalizations {
   /// **'Tap the illustration to enlarge'**
   String get instSchematicTapToZoom;
 
+  /// No description provided for @instSchematicNotPhoto.
+  ///
+  /// In en, this message translates to:
+  /// **'An original generic class schematic drawn by LabGuide. It is not a real photograph of the manufacturer’s instrument; parts are shown at principle level and do not represent model-specific features.'**
+  String get instSchematicNotPhoto;
+
   /// No description provided for @instSchematicSemantics.
   ///
   /// In en, this message translates to:

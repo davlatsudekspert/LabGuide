@@ -233,6 +233,13 @@ class SchematicFigure extends StatelessWidget {
             ),
           ],
         ),
+        const SizedBox(height: 2),
+        // Foto emasligi va modelga xos xususiyat taxmin qilinmasligi (EN/RU/UZ).
+        Text(
+          l.instSchematicNotPhoto,
+          key: const ValueKey('schematic-not-photo'),
+          style: text.bodySmall!.copyWith(color: p.sub),
+        ),
         Text(
           l.instSchematicTapToZoom,
           style: text.bodySmall!.copyWith(color: p.sub),
@@ -357,7 +364,7 @@ class InstrumentSchematicViewer extends StatelessWidget {
       title: title,
       asset: asset,
       semanticLabel: semanticLabel ?? l.instSchematicCaption,
-      footer: l.instSchematicCaption,
+      footer: '${l.instSchematicCaption}\n${l.instSchematicNotPhoto}',
     );
   }
 }

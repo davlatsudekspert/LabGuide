@@ -8752,6 +8752,10 @@ class AppLocalizationsRu extends AppLocalizations {
       'Нажмите на изображение, чтобы увеличить';
 
   @override
+  String get instSchematicNotPhoto =>
+      'Оригинальная схема класса приборов, нарисованная в LabGuide. Это не реальная фотография прибора производителя; узлы показаны на уровне принципа и не отражают особенностей конкретной модели.';
+
+  @override
   String instSchematicSemantics(String kind) {
     return 'Схематичное изображение: $kind';
   }
