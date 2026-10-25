@@ -1,0 +1,132 @@
+{
+  "videoId": "calibration",
+  "lang": "en",
+  "source": "synthetic narration: tool/tts/synth.py backend=kokoro",
+  "totalSec": 91.6,
+  "lines": [
+    {
+      "id": "L01",
+      "start": 0.25,
+      "end": 4.325
+    },
+    {
+      "id": "L02",
+      "start": 4.525,
+      "end": 6.85
+    },
+    {
+      "id": "L03",
+      "start": 7.45,
+      "end": 12.954
+    },
+    {
+      "id": "L04",
+      "start": 13.154,
+      "end": 16.503
+    },
+    {
+      "id": "L05",
+      "start": 17.103,
+      "end": 21.626
+    },
+    {
+      "id": "L06",
+      "start": 22.226,
+      "end": 25.959
+    },
+    {
+      "id": "L07",
+      "start": 27.726,
+      "end": 30.947
+    },
+    {
+      "id": "L08",
+      "start": 32.226,
+      "end": 35.575
+    },
+    {
+      "id": "L09",
+      "start": 35.775,
+      "end": 39.252
+    },
+    {
+      "id": "L10",
+      "start": 39.852,
+      "end": 42.732
+    },
+    {
+      "id": "L11",
+      "start": 44.852,
+      "end": 49.204
+    },
+    {
+      "id": "L12",
+      "start": 49.404,
+      "end": 52.668
+    },
+    {
+      "id": "L13",
+      "start": 53.268,
+      "end": 58.111
+    },
+    {
+      "id": "L14",
+      "start": 58.311,
+      "end": 63.09
+    },
+    {
+      "id": "L15",
+      "start": 63.69,
+      "end": 68.063
+    },
+    {
+      "id": "L16",
+      "start": 68.69,
+      "end": 72.765
+    },
+    {
+      "id": "L17",
+      "start": 72.965,
+      "end": 75.248
+    },
+    {
+      "id": "L18",
+      "start": 75.848,
+      "end": 79.261
+    },
+    {
+      "id": "L19",
+      "start": 79.461,
+      "end": 83.834
+    },
+    {
+      "id": "L20",
+      "start": 84.434,
+      "end": 88.615
+    },
+    {
+      "id": "L21",
+      "start": 88.815,
+      "end": 91.247
+    }
+  ],
+  "loudness": {
+    "target": {
+      "I": -16,
+      "TP": -1.5,
+      "LRA": 11
+    },
+    "before": {
+      "I": -22.77,
+      "TP": -2.56,
+      "LRA": 2.5
+    },
+    "after": {
+      "I": -16.07,
+      "TP": -1.5,
+      "LRA": 2.2
+    }
+  },
+  "voice": "Kokoro-82M v1.0 int8 ONNX, voice af_heart (Apache-2.0)",
+  "listeningReview": "PENDING — nobody has listened to this voice yet"
+}

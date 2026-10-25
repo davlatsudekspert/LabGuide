@@ -1,0 +1,331 @@
+{
+  "id": "calibration",
+  "version": 1,
+  "status": "EXPERT_REVIEW_PENDING",
+  "title": {
+    "en": "Calibration",
+    "ru": "Калибровка",
+    "uz": "Kalibrlash"
+  },
+  "fps": 30,
+  "formats": {
+    "vertical": {
+      "width": 1080,
+      "height": 1920
+    },
+    "horizontal": {
+      "width": 1920,
+      "height": 1080
+    }
+  },
+  "timing": {
+    "_doc": "Placeholder (silent) timing: each line lasts max(minLineSec, characters / cps[lang]); lines inside a scene are separated by gapSec; a scene starts leadSec before its first line and lasts at least minSec. With a real voice the timing manifest public/audio/<lang>/<id>.timing.json replaces the estimate and the scenes stretch to it.",
+    "leadSec": 0.25,
+    "tailSec": 0.35,
+    "gapSec": 0.2,
+    "minLineSec": 1.6,
+    "cps": {
+      "en": 16,
+      "ru": 15,
+      "uz": 14
+    }
+  },
+  "data": {
+    "_doc": "ILLUSTRATIVE DATA - not a patient result, not a real method. Generic photometric example: absorbance (A, dimensionless) vs concentration in arbitrary units. Every statistic shown in the video (slope, intercept, R2, residuals, back-calculated control values, % of target) is computed in code from these numbers (video_studio/src/lib/regression.js); none is typed in.",
+    "unitKey": "unit",
+    "calibrators": [
+      {
+        "id": "C0",
+        "conc": 0.0,
+        "abs": 0.012
+      },
+      {
+        "id": "C1",
+        "conc": 2.5,
+        "abs": 0.213
+      },
+      {
+        "id": "C2",
+        "conc": 5.0,
+        "abs": 0.405
+      },
+      {
+        "id": "C3",
+        "conc": 7.5,
+        "abs": 0.606
+      },
+      {
+        "id": "C4",
+        "conc": 10.0,
+        "abs": 0.81
+      }
+    ],
+    "controls": [
+      {
+        "id": "QC-L",
+        "target": 3.0,
+        "abs": 0.252
+      },
+      {
+        "id": "QC-H",
+        "target": 6.0,
+        "abs": 0.486
+      }
+    ],
+    "hookControl": "QC-H"
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "layer": "hook",
+      "lines": [
+        "L01",
+        "L02"
+      ],
+      "minSec": 4.0
+    },
+    {
+      "id": "analyzer",
+      "layer": "schematic",
+      "lines": [
+        "L03",
+        "L04"
+      ],
+      "minSec": 6.5,
+      "props": {
+        "schematic": "chemistry",
+        "parts": [
+          4,
+          5
+        ],
+        "beamFrom": 4,
+        "beamTo": 5
+      }
+    },
+    {
+      "id": "lightpath",
+      "layer": "lightpath",
+      "lines": [
+        "L05"
+      ],
+      "minSec": 5.0
+    },
+    {
+      "id": "calibrators",
+      "layer": "calibrators",
+      "lines": [
+        "L06"
+      ],
+      "minSec": 5.5
+    },
+    {
+      "id": "points",
+      "layer": "chart",
+      "lines": [
+        "L07"
+      ],
+      "minSec": 4.5,
+      "props": {
+        "phase": "points"
+      }
+    },
+    {
+      "id": "fit",
+      "layer": "chart",
+      "lines": [
+        "L08",
+        "L09"
+      ],
+      "minSec": 6.5,
+      "props": {
+        "phase": "fit"
+      }
+    },
+    {
+      "id": "controls",
+      "layer": "chart",
+      "lines": [
+        "L10"
+      ],
+      "minSec": 5.0,
+      "props": {
+        "phase": "controls"
+      }
+    },
+    {
+      "id": "residuals",
+      "layer": "chart",
+      "lines": [
+        "L11",
+        "L12"
+      ],
+      "minSec": 6.5,
+      "props": {
+        "phase": "residuals"
+      }
+    },
+    {
+      "id": "app_intro",
+      "layer": "phone",
+      "lines": [
+        "L13",
+        "L14"
+      ],
+      "minSec": 8,
+      "props": {
+        "shots": [
+          {
+            "frame": "cal_path",
+            "w": 1,
+            "mark": "analyte",
+            "callout": "coPath",
+            "cue": 0
+          },
+          {
+            "frame": "cal_reagent",
+            "w": 1,
+            "mark": "ifu",
+            "callout": "coReagent",
+            "cue": 1
+          },
+          {
+            "frame": "cal_guide",
+            "w": 1.3,
+            "mark": "notice",
+            "callout": "coGuide",
+            "cue": 1
+          }
+        ],
+        "subZone": "left"
+      }
+    },
+    {
+      "id": "app_record",
+      "layer": "phone",
+      "lines": [
+        "L15"
+      ],
+      "minSec": 5,
+      "props": {
+        "shots": [
+          {
+            "frame": "cal_record",
+            "w": 1,
+            "mark": "levels",
+            "callout": "coRecord"
+          }
+        ],
+        "subZone": "left"
+      }
+    },
+    {
+      "id": "app_rules",
+      "layer": "phone",
+      "lines": [
+        "L16",
+        "L17"
+      ],
+      "minSec": 7.0,
+      "props": {
+        "shots": [
+          {
+            "frame": "cal_rule_qc",
+            "w": 1,
+            "mark": "accepted",
+            "callout": "coRuleQc",
+            "tone": "warn",
+            "cue": 0
+          },
+          {
+            "frame": "cal_rule_qc_err",
+            "w": 1,
+            "mark": "error",
+            "callout": "coRuleQcErr",
+            "tone": "warn",
+            "cue": 0
+          },
+          {
+            "frame": "cal_rule_approver",
+            "w": 1,
+            "mark": "error",
+            "callout": "coRuleApprover",
+            "tone": "warn",
+            "cue": 1
+          },
+          {
+            "frame": "cal_ready",
+            "w": 1.1,
+            "mark": "approver",
+            "tap": true,
+            "callout": "coReady",
+            "tone": "ok",
+            "cue": 1
+          }
+        ],
+        "subZone": "left"
+      }
+    },
+    {
+      "id": "app_log",
+      "layer": "phone",
+      "lines": [
+        "L18",
+        "L19"
+      ],
+      "minSec": 8,
+      "props": {
+        "shots": [
+          {
+            "frame": "cal_saved",
+            "w": 0.8,
+            "mark": "snack",
+            "callout": "coSaved",
+            "crop": [
+              0,
+              560,
+              390,
+              170
+            ],
+            "tone": "ok",
+            "cue": 0
+          },
+          {
+            "frame": "cal_log",
+            "w": 1,
+            "mark": "history",
+            "callout": "coLog",
+            "cue": 0
+          },
+          {
+            "frame": "cal_detail",
+            "w": 1,
+            "mark": "approver",
+            "callout": "coDetail",
+            "cue": 1
+          },
+          {
+            "frame": "cal_history",
+            "w": 1.1,
+            "mark": "note",
+            "callout": "coHistory",
+            "cue": 1
+          }
+        ],
+        "subZone": "left"
+      }
+    },
+    {
+      "id": "end",
+      "layer": "cta",
+      "lines": [
+        "L20",
+        "L21"
+      ],
+      "minSec": 6.5
+    }
+  ],
+  "thumbnail": {
+    "headlineKey": "thumbHeadline",
+    "subKey": "thumbSub"
+  }
+}
