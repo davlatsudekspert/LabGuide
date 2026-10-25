@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 
 import '../../core/storage/kv_store.dart';
 import 'instrument_catalog.dart';
+import 'schematic_parts.dart';
 
 /// Laboratoriyadagi aniq apparat (“Mening apparatim”). Katalogdagi model
 /// yoki katalogda yo'q (qo'lda kiritilgan) apparat bo'lishi mumkin.
@@ -391,6 +392,7 @@ class InstrumentsController extends ChangeNotifier {
 
   CatalogLoadState _state = CatalogLoadState.loading;
   InstrumentCatalog? _catalog;
+  SchematicPartsIndex? _schematicParts;
   Future<void>? _loading;
   List<MyInstrument> _mine = const [];
   List<CalibrationRecord> _records = const [];
@@ -399,6 +401,10 @@ class InstrumentsController extends ChangeNotifier {
 
   CatalogLoadState get state => _state;
   InstrumentCatalog? get catalog => _catalog;
+
+  /// Sxematik chizmalar qismlari (raqamli belgilar, prinsip, natija); yuklab
+  /// bo'lmasa null — panel ko'rsatilmaydi, katalog ishlayveradi.
+  SchematicPartsIndex? get schematicParts => _schematicParts;
   List<MyInstrument> get mine => _mine;
   List<CalibrationRecord> get records => _records;
 
@@ -439,6 +445,11 @@ class InstrumentsController extends ChangeNotifier {
         knownAnalytes: knownAnalytes,
       );
       _state = CatalogLoadState.ready;
+      try {
+        _schematicParts = await SchematicPartsIndex.load(bundle);
+      } on Object catch (e) {
+        debugPrint('schematic parts rejected: $e');
+      }
     } on Object catch (e) {
       debugPrint('instrument catalog rejected: $e');
       _state = CatalogLoadState.failed;

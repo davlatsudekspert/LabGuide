@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
+import '../../app/app_scope.dart';
 import '../../app/widgets/lg_page.dart';
 import '../../app/widgets/links.dart';
 import '../../design/widgets/lg_widgets.dart';
@@ -226,6 +227,7 @@ class _LabCard extends StatelessWidget {
             viewerTitle: card.name.of(lang),
             figureKey: const ValueKey('lab-card-schematic'),
             captionKey: const ValueKey('lab-card-schematic-caption'),
+            parts: context.services.instruments.schematicParts?.of(sch.key),
           ),
         ],
         if (card.instrumentVsTestNote case final n?) ...[
