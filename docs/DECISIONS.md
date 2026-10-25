@@ -1664,7 +1664,6 @@ qo'lda tahrir “eskirgan” xatosi bilan ushlanadi). Maxfiylik/shartlar matni (
 **Tekshirilmagan (NOT VERIFIED):** haqiqiy App Store / Google Play sandbox xaridi bir marta ham qilinmagan; barcha
 Pro testlari soxta do'kon / soxta server / soxta attestatsiya bilan. Holat: `docs/PAID_BRANCH_STATUS.md`.
 
-<<<<<<< HEAD
 ### D-77 addendum (2026-10-25, `paid/srv`): sinov attestatsiyasi, mehmon xaridi, billing to‘liqligi
 Faqat lokal tarmoq `paid/srv` (`paid/pro-premium@21b5a24` dan). **Push, merge, PR, build, deploy, migratsiya
 (remote), do‘kon/Apple/Google/Cloudflare API chaqiruvi — QILINMAGAN.** Haqiqiy do‘kon xaridi va qurilmada attestatsiya
@@ -1711,7 +1710,6 @@ Faqat lokal tarmoq `paid/srv` (`paid/pro-premium@21b5a24` dan). **Push, merge, P
 7. **Tekshiruv (2026-10-25, lokal):** server `tsc --noEmit` — xato yo‘q, `vitest run` — 28 fayl / 399 test PASS
    (oldin 24 / 332); `flutter analyze` — xato yo‘q; Pro/billing/sinov/l10n to‘plami + `test/guards/` (17 yo‘l) —
    360 test PASS. To‘liq `flutter test`, Gradle/Xcode build, `wrangler dev` — NOT RUN.
-=======
 
 ## D-78. Pullik katalog: faqat YANGI Pro funksiyalar; bugun bepul hamma narsa bepul qoladi (2026-10-25, egasi qarori)
 **Egasining yakuniy tarif qarori (2026-10-25)** — `paid/feat` tarmog'ida amalga oshirildi (faqat lokal; push, merge,
@@ -1758,4 +1756,3 @@ mehmon va muddati o'tgan holatda to'lov oynasiga olib bormaydi (yo'l darajasidag
 haqiqatan yiqildi). `pro_flag_default_guard_test`: eski yopish kodlari (`plannedLabGate`, `labGate(`, `historyView(`)
 yo'q, gate chaqiruvlari faqat ro'yxatdagi Pro kirish nuqtalarida, har `gated` funksiyaning kirish nuqtasi bor.
 D-77 qorovuli: `gated` bo'sh bo'lishi shart emas (D-78) — faqat katalogdan; bayroq o'chiq buildda hamma ochiq.
->>>>>>> paid/feat

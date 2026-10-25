@@ -67,10 +67,7 @@ void main() {
       tester,
       proEnabled: true,
       allFeaturesOpen: false,
-      gatedFeatures: {
-        for (final f in Feature.values)
-          if (f.pro) f,
-      },
+      gatedFeatures: {...Feature.values},
       purchases: shop,
       entitlementSource: src,
     );

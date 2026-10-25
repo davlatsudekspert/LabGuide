@@ -237,7 +237,6 @@ class _PurchaseBody extends StatelessWidget {
                 style: text.bodySmall,
               ),
           ],
-<<<<<<< HEAD
           // Mehmon (D-77 addendum): faqat server ruxsat bergan (hisobga bog'liq
           // bo'lmagan) rejalar; ustoz paneli bor reja — hisob bilan.
           if (!mine && !canBuy && ent.guestRestoreAvailable) ...[
@@ -249,15 +248,6 @@ class _PurchaseBody extends StatelessWidget {
             ),
           ],
           if (!mine && canBuy) ...[
-=======
-          // Mehmon xarid qilmaydi (D-76): tugma o'rniga pastda "Hisobga kirish".
-          // TODO(billing-agent, D-78): Apple 5.1.1(v) — hisobsiz capability
-          // (learner, lab) xaridi kerak bo'lsa, EntitlementService mehmon
-          // xaridi/tiklashini beradi (masalan, `ent.canPurchaseAsGuest(plan)`);
-          // shu shart o'sha API ga almashtiriladi. Mijoz boshqa joyda faqat
-          // `requireFeature` / `EntitlementService.can` ga tayanadi.
-          if (!mine && ent.source.hasSession) ...[
->>>>>>> paid/feat
             const SizedBox(height: 12),
             LgButton(
               key: ValueKey('pay-buy-${p.id}'),

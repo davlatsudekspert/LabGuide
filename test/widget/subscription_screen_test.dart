@@ -133,9 +133,13 @@ void main() {
         ),
         findsOneWidget,
       );
-      final lab = spec.plan == ProPlan.specialist || spec.plan == ProPlan.premium;
+      final lab =
+          spec.plan == ProPlan.specialist || spec.plan == ProPlan.premium;
       expect(
-        find.descendant(of: panel, matching: find.text('• ${uz.proFeatQcReport}')),
+        find.descendant(
+          of: panel,
+          matching: find.text('• ${uz.proFeatQcReport}'),
+        ),
         lab ? findsOneWidget : findsNothing,
         reason: spec.plan.name,
       );
@@ -322,11 +326,7 @@ void main() {
       final body = tester.widget<Text>(
         find.byKey(const ValueKey('sub-trial-confirm-body')),
       );
-<<<<<<< HEAD
-      expect(body.data, startsWith('${uz.proPayTierStudent}: '));
-=======
       expect(body.data, startsWith('${uz.proTierNameStudent} '));
->>>>>>> paid/feat
       expect(body.data, contains('pul yechilmaydi'));
       await tester.tap(find.byKey(const ValueKey('sub-trial-confirm')));
       await tester.pumpAndSettle();
