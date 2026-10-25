@@ -23,9 +23,10 @@ import { ApiError, billingEnabled, json } from './http';
  * to'plamidagini ocha oladi.
  * - `learner`  — talaba tomonidagi Pro (mashq, tarix va h.k.).
  * - `teacher_panel` — ustoz paneli Pro qismi (guruh/topshiriq kengaytmalari).
- * - `lab` — butun Lab bo'limi (apparatlar, yo'nalish kartalari,
- *   koagulogramma, kalibrlash, QC, kalkulyatorlar, leykoformula sanash va
- *   baholash va h.k. — D-76). Ilovada: `ProGatePolicy.plannedLabGate`.
+ * - `lab` — professional laboratoriya funksiyalari (kalibrlash jurnali va QC
+ *   eksporti, QC xulosa hisoboti — D-78). Bugungi bepul Lab bo'limi (apparatlar,
+ *   kalibrlash, QC, kalkulyatorlar, leykoformula va h.k.) bepul qoladi; D-76
+ *   dagi "butun Lab — Pro" rejasi BEKOR.
  */
 export type Capability = 'learner' | 'teacher_panel' | 'lab';
 export const CAPABILITIES: readonly Capability[] = ['learner', 'teacher_panel', 'lab'];
@@ -35,7 +36,7 @@ export const CAPABILITIES: readonly Capability[] = ['learner', 'teacher_panel', 
  * nusxasi: lib/core/entitlements/plan_matrix.dart (test ikkalasini
  * solishtiradi). Bu ZINAPOYA EMAS — to'plam:
  * - Ustoz = Talaba + ustoz paneli (Lab YO'Q);
- * - Mutaxassis = Talaba + butun Lab (ustoz paneli YO'Q; D-73/D-74 dagi
+ * - Mutaxassis = Talaba + professional Lab funksiyalari (ustoz paneli YO'Q; D-73/D-74 dagi
  *   "Mutaxassis Ustozni ham qamraydi" qoidasi BEKOR);
  * - Premium = hammasi.
  */
@@ -44,6 +45,24 @@ export const TIER_CAPABILITIES: Record<Plan, readonly Capability[]> = {
   teacher: ['learner', 'teacher_panel'],
   specialist: ['learner', 'lab'],
   premium: ['learner', 'teacher_panel', 'lab'],
+};
+
+/**
+ * Pullik funksiyalar katalogi (D-78, egasi qarori 2026-10-25) — ilova
+ * `lib/core/entitlements/feature.dart` `Feature` (`wire` → toifa) nusxasi
+ * (test `test/unit/plan_matrix_test.dart` solishtiradi). Faqat YANGI Pro
+ * funksiyalar: bugun bepul bo'lgan hech narsa bu ro'yxatda yo'q.
+ */
+export const FEATURE_CAPABILITIES: Readonly<Record<string, Capability>> = {
+  results_analytics: 'learner',
+  exam_simulation: 'learner',
+  results_export: 'learner',
+  teacher_tests: 'learner',
+  teacher_test_builder: 'teacher_panel',
+  teacher_test_assign: 'teacher_panel',
+  teacher_results: 'teacher_panel',
+  calibration_export: 'lab',
+  qc_report: 'lab',
 };
 
 export const tierAllows = (plan: Plan | null | undefined, cap: Capability): boolean =>

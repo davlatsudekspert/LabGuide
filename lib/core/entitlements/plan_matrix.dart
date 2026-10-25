@@ -8,8 +8,8 @@ export 'feature.dart' show ProCapability, ProTier;
 /// solishtiradi). Bu ZINAPOYA EMAS, to'plam:
 /// * Talaba — o'qish (learner);
 /// * Ustoz — Talaba + ustoz paneli (Lab YO'Q);
-/// * Mutaxassis — Talaba + butun Lab (ustoz paneli YO'Q; D-73/D-74 dagi
-///   "Mutaxassis Ustozni ham qamraydi" qoidasi BEKOR);
+/// * Mutaxassis — Talaba + professional Lab funksiyalari (ustoz paneli
+///   YO'Q; D-73/D-74 dagi "Mutaxassis Ustozni ham qamraydi" qoidasi BEKOR);
 /// * Premium — hammasi.
 abstract final class PlanMatrix {
   static const capabilities = <ProPlan, Set<ProCapability>>{
@@ -23,8 +23,8 @@ abstract final class PlanMatrix {
     },
   };
 
-  /// [feature] qaysi toifaga tegishli (`null` — bepul funksiya).
-  static ProCapability? of(Feature feature) => feature.capability;
+  /// [feature] qaysi toifaga tegishli (katalogda faqat pullik funksiyalar).
+  static ProCapability of(Feature feature) => feature.capability;
 
   static bool allows(ProPlan? plan, ProCapability? capability) =>
       plan != null &&

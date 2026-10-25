@@ -1,6 +1,7 @@
-// Pro rejalari foydalanuvchi sifatida (D-76): bepul / Talaba / Mutaxassis /
-// Premium. Pro yoqilgan SINOV buildi va REJALASHTIRILGAN Lab yopilishi
-// (`plannedLabGate`, faqat override) — do'kon buildida hech narsa yopilmaydi.
+// Pro rejalari foydalanuvchi sifatida (D-76, D-78): bepul / Talaba /
+// Mutaxassis / Premium. Pro yoqilgan SINOV buildi va butun pullik katalog
+// yopilgan (`ProGatePolicy.catalog`, faqat override). D-78: Lab bo'limi
+// bepul — bepul hisobda ham sanash va QC ochiq.
 //
 //   flutter test tool/screenshots/walk_pro_test.dart --update-goldens
 import 'package:flutter_test/flutter_test.dart';
@@ -45,7 +46,7 @@ Future<AppServices> _pro(
     allFeaturesOpen: false,
     purchases: FakePurchaseAdapter(),
     entitlementSource: server,
-    gatedFeatures: ProGatePolicy.plannedLabGate,
+    gatedFeatures: ProGatePolicy.catalog,
   );
   await s.entitlements.refresh(reprobe: false);
   return s;
@@ -60,7 +61,7 @@ Future<void> _warm(WidgetTester tester) async {
 void main() {
   setUpAll(loadAppFonts);
 
-  testWidgets('bepul hisob: Lab yopiq (sinov)', (tester) async {
+  testWidgets('bepul hisob: Lab ochiq (D-78)', (tester) async {
     await _warm(tester);
     final s = await _pro(tester);
     await pumpApp(tester, s, size: const Size(390, 844));
@@ -70,22 +71,22 @@ void main() {
     await goTo(tester, '/lab/differential/count');
     await w.snap('leykoformula_ochiq');
     await w.tap(find.byKey(ValueKey('diff-count-${DiffCell.segmented.name}')));
-    await w.snap('sanash_tolov_oynasi');
+    await w.snap('sanash_ishlaydi');
     await goTo(tester, '/lab/qc/new');
-    await w.snap('qc_tolov_oynasi');
+    await w.snap('qc_ochiq');
     await goTo(tester, '/profile/subscription');
     await w.snap('obuna');
     await w.scroll(600);
     await w.snap('obuna_past');
   });
 
-  testWidgets('Talaba: Lab yopiq, Mutaxassis: ochiq', (tester) async {
+  testWidgets('Talaba: Lab ochiq (bepul)', (tester) async {
     await _warm(tester);
     final student = await _pro(tester, product: BillingCatalog.studentMonthly);
     await pumpApp(tester, student, size: const Size(390, 844));
     final w = Walk(tester, 'pro_student');
     await goTo(tester, '/lab/qc/new');
-    await w.snap('talaba_qc_yopiq');
+    await w.snap('talaba_qc_ochiq');
     await goTo(tester, '/profile/subscription');
     await w.snap('talaba_obuna');
   });

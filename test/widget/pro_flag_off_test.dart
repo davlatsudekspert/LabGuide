@@ -38,7 +38,6 @@ void main() {
       for (final f in Feature.values) {
         expect(ent.can(f), isTrue, reason: f.name);
       }
-      expect(ent.historyVisibleLimit(), isNull);
       // Do'kon ishga tushmagan, serverga so'rov ketmagan.
       expect(shop.inits, 0);
       expect(server.probes, 0);

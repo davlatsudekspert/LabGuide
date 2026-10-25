@@ -5,11 +5,9 @@ import 'package:material_ui/material_ui.dart';
 
 import '../../app/app_scope.dart';
 import '../../app/widgets/lg_page.dart';
-import '../../core/entitlements/feature.dart';
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
-import '../profile/pro_gate.dart';
 import '../share/result_share.dart';
 import '../support/support_screens.dart' show formatWhen;
 import '../toifa/toifa_bank.dart';
@@ -95,9 +93,6 @@ class _ExamSetupScreenState extends State<ExamSetupScreen> {
     setState(() => _tried = true);
     if (pool.isEmpty || _countError(pool.length) != null) return;
     if (_minutesError() != null) return;
-    // Imtihon simulyatsiyasi — Pro (D-53); tekshiruv faqat boshlashdan oldin.
-    if (!await requireFeature(context, Feature.examSimulation)) return;
-    if (!mounted) return;
     final exams = context.services.exams;
     if (exams.active != null) {
       final ok = await confirmDialog(
@@ -140,7 +135,7 @@ class _ExamSetupScreenState extends State<ExamSetupScreen> {
         // imtihoni) shu ekranga manba sifatida beriladi.
         ExamSourceGate(sourceId: widget.sourceId, builder: _setup),
         ListenableBuilder(
-          listenable: Listenable.merge([exams, context.services.entitlements]),
+          listenable: exams,
           builder: (context, _) =>
               ExamHistory(exams: exams, sourceId: widget.sourceId),
         ),
@@ -285,15 +280,7 @@ class ExamHistory extends StatelessWidget {
       for (final s in exams.history)
         if (s.sourceId == sourceId) s,
     ];
-    // Pro namunasi: bepul rejimda oxirgi 3 ta + Pro davrida saqlanganlar
-    // ko'rinadi; eskilari O'CHIRILMAYDI, faqat soni aytiladi. Toifa banki
-    // uchun ham shu yagona entitlement qatlami ishlatiladi.
-    final entitlements = context.services.entitlements;
-    final view = entitlements.historyView(
-      all,
-      (s) => s.finishedAt ?? s.startedAt,
-    );
-    final history = view.visible;
+    final history = all;
     final recent = history.take(10).toList();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -342,16 +329,6 @@ class ExamHistory extends StatelessWidget {
               onTap: () =>
                   context.push('${examBase(s.sourceId)}/result/${s.id}'),
             ),
-          if (view.hiddenCount > 0) ...[
-            const SizedBox(height: 8),
-            Text(
-              l.proHistoryHidden(
-                view.hiddenCount,
-                entitlements.historyVisibleLimit() ?? 0,
-              ),
-              style: text.bodySmall,
-            ),
-          ],
           const SizedBox(height: 8),
           LgButton.link(
             label: l.examHistoryClear,
@@ -681,18 +658,8 @@ class _ExamResultScreenState extends State<ExamResultScreen> {
                 : null,
           ),
         ),
-        // Zaif mavzular tahlili — Pro (natijadan keyin; to'lov yoqilmagan
-        // buildda doim ko'rinadi).
-        if (context.services.entitlements.can(Feature.weakTopics))
-          TopicBreakdown(session: s, source: source)
-        else if (s.topicBreakdown().length > 1)
-          LgRow(
-            title: l.proPayFeatWeak,
-            subtitle: l.proPayLockedPro,
-            icon: Icons.insights_outlined,
-            onTap: () => context.push(purchaseRoute(Feature.weakTopics)),
-            divider: false,
-          ),
+        // Zaif mavzular tahlili (natijadan keyin).
+        TopicBreakdown(session: s, source: source),
         LgSectionTitle(l.examAnalysis),
         Wrap(
           spacing: 8,

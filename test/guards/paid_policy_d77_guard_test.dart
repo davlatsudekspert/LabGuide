@@ -145,7 +145,14 @@ void main() {
         'storeTrialEnabled': ProTrialConfig.enabled,
       };
       expect(defaults.values.where((v) => v), isEmpty, reason: '$defaults');
-      expect(ProGatePolicy.gated, isEmpty, reason: 'hech narsa yopilmaydi');
+      // D-78 (2026-10-25): `gated` endi faqat QURILGAN yangi Pro funksiyalar
+      // (bo'sh bo'lishi shart emas); bayroq o'chiq buildda ta'sirsiz —
+      // pastdagi "standart servislar" testi hammasi ochiqligini tekshiradi.
+      expect(
+        ProGatePolicy.catalog.containsAll(ProGatePolicy.gated),
+        isTrue,
+        reason: 'gated faqat pullik katalogdan',
+      );
       expect(ProTrialConfig.freeTrialDays, isNull);
     });
 
@@ -218,8 +225,10 @@ void main() {
       for (final f in Feature.values) {
         expect(s.entitlements.can(f), isTrue, reason: f.name);
       }
-      // O'chirilgan servis: do'kon ham, server ham yo'q, yopish ro'yxati bo'sh.
-      expect(s.entitlements.gated, isEmpty);
+      // O'chirilgan servis: do'kon ham, server ham yo'q (D-78: `gated`
+      // to'ldirilgan bo'lsa ham `allFeaturesOpen` — hech narsa yopilmaydi).
+      expect(s.entitlements.gated, ProGatePolicy.gated);
+      expect(s.entitlements.gatingActive, isFalse);
       expect(s.entitlements.purchasesEnabled, isFalse);
       expect(s.entitlements.offeredProducts, isEmpty);
       expect(s.proGrants, isNull);

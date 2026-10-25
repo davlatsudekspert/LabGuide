@@ -6,7 +6,6 @@ import 'package:labguide/core/entitlements/billing_catalog.dart';
 import 'package:labguide/core/entitlements/entitlement_cache.dart';
 import 'package:labguide/core/entitlements/entitlement_models.dart';
 import 'package:labguide/core/entitlements/entitlement_service.dart';
-import 'package:labguide/core/entitlements/feature.dart';
 import 'package:labguide/core/entitlements/pro_catalog.dart';
 import 'package:labguide/core/storage/kv_store.dart';
 
@@ -58,10 +57,7 @@ void main() {
       MemoryEntitlementKeyStore(),
     ),
     allFeaturesOpen: false,
-    gated: {
-      for (final f in Feature.values)
-        if (f.pro) f,
-    },
+    gated: ProGatePolicy.catalog,
     purchases: FakePurchaseAdapter(),
     clock: () => now,
   );

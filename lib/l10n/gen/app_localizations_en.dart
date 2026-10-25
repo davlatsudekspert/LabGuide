@@ -13431,4 +13431,88 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get proSubWithoutSubscription =>
       'You can use the app without a subscription: free features stay free.';
+
+  @override
+  String get proTierNameStudent => 'Student Pro';
+
+  @override
+  String get proTierNameTeacher => 'Teacher Pro';
+
+  @override
+  String get proTierNameSpecialist => 'Specialist Pro';
+
+  @override
+  String get proTierNamePremium => 'Premium';
+
+  @override
+  String get proTierSubStudent =>
+      'Extra Pro features for studying. Everything that is free today stays free.';
+
+  @override
+  String get proTierSubTeacher =>
+      'For teachers: Student Pro features plus the Pro features of the teacher panel. Today’s free groups stay free.';
+
+  @override
+  String get proTierSubSpecialist =>
+      'For lab staff and doctors: Student Pro features plus professional laboratory functions. The Laboratory section stays free.';
+
+  @override
+  String get proTierSubPremium =>
+      'All Pro features together: Student Pro, Teacher Pro and Specialist Pro.';
+
+  @override
+  String get proCapLabPro =>
+      'professional laboratory functions (calibration log and QC export, QC summary report)';
+
+  @override
+  String get proTierNote =>
+      'Teacher panel Pro features are only in Teacher Pro or Premium, and professional laboratory functions only in Specialist Pro or Premium. Changing your role in the app does not unlock them. Everything that is free today — the Laboratory section, atlas, tests, category exam, groups and assignments — stays free.';
+
+  @override
+  String get proLockedLearner =>
+      'This feature is in Student Pro, Teacher Pro, Specialist Pro and Premium.';
+
+  @override
+  String get proLockedTeacher => 'This feature is in Teacher Pro or Premium.';
+
+  @override
+  String get proLockedLab => 'This feature is in Specialist Pro or Premium.';
+
+  @override
+  String get proFeatResultsAnalytics =>
+      'Results analysis: full history, topic trends and weak topics';
+
+  @override
+  String get proFeatExamSimulation =>
+      'Exam simulation: a test under exam conditions with a detailed report';
+
+  @override
+  String get proFeatResultsExport => 'Export results as PDF and CSV files';
+
+  @override
+  String get proFeatTeacherTests => 'Special tests created by your teacher';
+
+  @override
+  String get proFeatTeacherTestBuilder => 'Create and edit your own tests';
+
+  @override
+  String get proFeatTeacherTestAssign =>
+      'Assign your tests to students and groups';
+
+  @override
+  String get proFeatTeacherResults =>
+      'Manage results: per-student and per-question summary, export';
+
+  @override
+  String get proFeatCalibrationExport =>
+      'Export the calibration log to CSV and PDF';
+
+  @override
+  String get proFeatQcReport =>
+      'QC summary report and QC data export as CSV/PDF files';
+
+  @override
+  String proTrialConfirmBody(String plan, String date) {
+    return '$plan is free until $date. No payment method, nothing is charged, and it does not turn into a paid subscription. When it ends only the paid features close; free features and all your data stay.';
+  }
 }

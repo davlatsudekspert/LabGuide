@@ -13287,4 +13287,92 @@ class AppLocalizationsUz extends AppLocalizations {
   @override
   String get proSubWithoutSubscription =>
       'Ilovadan obunasiz foydalanish mumkin: bepul imkoniyatlar bepul qoladi.';
+
+  @override
+  String get proTierNameStudent => 'Talaba Pro';
+
+  @override
+  String get proTierNameTeacher => 'Ustoz Pro';
+
+  @override
+  String get proTierNameSpecialist => 'Mutaxassis Pro';
+
+  @override
+  String get proTierNamePremium => 'Premium';
+
+  @override
+  String get proTierSubStudent =>
+      'O‘qish uchun qo‘shimcha Pro imkoniyatlari. Bugun bepul bo‘lgan hamma narsa bepul qoladi.';
+
+  @override
+  String get proTierSubTeacher =>
+      'Ustoz uchun: Talaba Pro imkoniyatlari va ustoz panelining Pro imkoniyatlari. Bugungi bepul guruhlar bepul qoladi.';
+
+  @override
+  String get proTierSubSpecialist =>
+      'Laborant va shifokor uchun: Talaba Pro imkoniyatlari va professional laboratoriya funksiyalari. Laboratoriya bo‘limi bepul qoladi.';
+
+  @override
+  String get proTierSubPremium =>
+      'Hamma Pro imkoniyat birga: Talaba Pro, Ustoz Pro va Mutaxassis Pro.';
+
+  @override
+  String get proCapLabPro =>
+      'professional laboratoriya funksiyalari (kalibrlash jurnali va QC eksporti, QC xulosa hisoboti)';
+
+  @override
+  String get proTierNote =>
+      'Ustoz panelining Pro imkoniyatlari faqat Ustoz Pro yoki Premium rejasida, professional laboratoriya funksiyalari esa faqat Mutaxassis Pro yoki Premium rejasida bo‘ladi. Ilovada rolni o‘zgartirish ularni ochmaydi. Bugun bepul bo‘lgan hamma narsa — Laboratoriya bo‘limi, atlas, testlar, toifa, guruhlar va topshiriqlar — bepul qoladi.';
+
+  @override
+  String get proLockedLearner =>
+      'Bu imkoniyat Talaba Pro, Ustoz Pro, Mutaxassis Pro va Premium rejalarida.';
+
+  @override
+  String get proLockedTeacher =>
+      'Bu imkoniyat Ustoz Pro yoki Premium rejasida.';
+
+  @override
+  String get proLockedLab =>
+      'Bu imkoniyat Mutaxassis Pro yoki Premium rejasida.';
+
+  @override
+  String get proFeatResultsAnalytics =>
+      'Natijalar tahlili: to‘liq tarix, mavzular bo‘yicha trend va zaif mavzular';
+
+  @override
+  String get proFeatExamSimulation =>
+      'Imtihon simulyatsiyasi: imtihon sharoitida test va batafsil hisobot';
+
+  @override
+  String get proFeatResultsExport =>
+      'Natijalarni PDF va CSV fayl sifatida eksport qilish';
+
+  @override
+  String get proFeatTeacherTests => 'Ustoz yaratgan maxsus testlarni yechish';
+
+  @override
+  String get proFeatTeacherTestBuilder =>
+      'O‘z testingizni yaratish va tahrirlash';
+
+  @override
+  String get proFeatTeacherTestAssign =>
+      'Testga talabalar va guruhlarni biriktirish';
+
+  @override
+  String get proFeatTeacherResults =>
+      'Natijalarni boshqarish: talaba va savol kesimida jamlanma, eksport';
+
+  @override
+  String get proFeatCalibrationExport =>
+      'Kalibrlash jurnalini CSV va PDF ga eksport qilish';
+
+  @override
+  String get proFeatQcReport =>
+      'QC xulosa hisoboti va QC ma’lumotini CSV/PDF fayl sifatida eksport qilish';
+
+  @override
+  String proTrialConfirmBody(String plan, String date) {
+    return '$plan $date gacha bepul. To‘lov usuli yo‘q, pul yechilmaydi va sinov pullik obunaga aylanmaydi. Sinov tugagach faqat pullik imkoniyatlar yopiladi; bepul imkoniyatlar va barcha ma’lumotlaringiz saqlanadi.';
+  }
 }

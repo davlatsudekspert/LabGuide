@@ -5,12 +5,10 @@ import 'package:material_ui/material_ui.dart';
 
 import '../../app/app_scope.dart';
 import '../../app/widgets/lg_page.dart';
-import '../../core/entitlements/feature.dart';
 import '../../app/widgets/diagram_figure.dart';
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
-import '../profile/pro_gate.dart';
 import '../tools/clinical_calculators.dart';
 import '../tools/tool_screens.dart';
 import 'levey_jennings_chart.dart';
@@ -238,9 +236,7 @@ class QcScreen extends StatelessWidget {
               LgButton(
                 label: l.qcAddSet,
                 icon: Icons.add_rounded,
-                // Vosita — [Feature.qualityControl] (D-76; standart: yopilmagan).
-                onPressed: () =>
-                    pushGated(context, Feature.qualityControl, '/lab/qc/new'),
+                onPressed: () => context.push('/lab/qc/new'),
               ),
               LgSectionTitle(l.qcBackupTitle),
               Text(l.qcBackupBody, style: text.bodySmall),
@@ -311,8 +307,7 @@ class _SetRow extends StatelessWidget {
         QcVerdict.warning => Icons.warning_amber_rounded,
         _ => Icons.show_chart_rounded,
       },
-      onTap: () =>
-          pushGated(context, Feature.qualityControl, '/lab/qc/set/${set.id}'),
+      onTap: () => context.push('/lab/qc/set/${set.id}'),
       divider: divider,
     );
   }

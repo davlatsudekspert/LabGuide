@@ -6,7 +6,6 @@ import '../../app/shell.dart';
 import '../../app/widgets/lg_page.dart';
 import '../../app/widgets/diagram_figure.dart';
 import '../../app/widgets/links.dart';
-import '../../core/entitlements/feature.dart';
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../design/widgets/reveal_on_mount.dart';
@@ -17,7 +16,6 @@ import '../classroom/topic_test_screens.dart' show AssignedTestsCard;
 import '../content/content_model.dart';
 import '../content/ui/content_widgets.dart';
 import '../daily/daily_screens.dart';
-import '../profile/pro_gate.dart';
 import '../reference/reference_screens.dart';
 import '../settings/settings_controller.dart';
 import '../toifa/toifa_screens.dart';
@@ -328,14 +326,6 @@ class _QuizScreenState extends State<QuizScreen> {
     _session = QuizSession(scope.questions);
   });
 
-  /// Yangi raund — [Feature.unlimitedQuestions] (D-71: hozir hech narsa
-  /// yopilmagan, `ProGatePolicy.gated` bo'sh). Xatolar ustida ishlash
-  /// ([_start] to'g'ridan-to'g'ri) hech qachon cheklanmaydi.
-  Future<void> _startGated(QuizScope scope) async {
-    if (!await requireFeature(context, Feature.unlimitedQuestions)) return;
-    if (mounted) _start(scope);
-  }
-
   @override
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context);
@@ -378,7 +368,7 @@ class _QuizScreenState extends State<QuizScreen> {
             if (session == null) {
               return _TopicPicker(
                 pack: pack,
-                onPick: _startGated,
+                onPick: _start,
                 onPickMistakes: _start,
               );
             }
@@ -388,8 +378,7 @@ class _QuizScreenState extends State<QuizScreen> {
             return session.finished
                 ? _QuizResult(
                     session: session,
-                    onRestart: () =>
-                        _startGated(_scope!.redraw?.call() ?? _scope!),
+                    onRestart: () => _start(_scope!.redraw?.call() ?? _scope!),
                     onRetryMistakes: () => _start(
                       QuizScope((l, _) => l.quizTopicMistakes, [
                         for (final (QuizQuestion q, _) in session.mistakes) q,

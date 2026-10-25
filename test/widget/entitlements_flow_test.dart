@@ -2,7 +2,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:labguide/app/app_scope.dart';
 import 'package:labguide/core/entitlements/billing_catalog.dart';
 import 'package:labguide/core/entitlements/entitlement_source.dart';
-import 'package:labguide/core/entitlements/feature.dart';
 import 'package:labguide/core/entitlements/entitlement_models.dart';
 import 'package:labguide/core/entitlements/entitlement_service.dart';
 import 'package:labguide/core/entitlements/pro_catalog.dart';
@@ -21,8 +20,8 @@ final ru = lookupAppLocalizations(const Locale('ru'));
 
 const _tall = Size(390, 2400);
 
-/// Pro YOQILGAN build + eski reja (hamma Pro imkoniyat yopiladi): faqat
-/// mexanizmni sinash uchun. Haqiqiy standart — bayroq o'chiq va ro'yxat bo'sh.
+/// Pro YOQILGAN build + butun pullik katalog yopilgan (D-78: katalogda faqat
+/// YANGI Pro funksiyalar). Haqiqiy standart — bayroq o'chiq.
 Future<AppServices> _svc(
   WidgetTester tester, {
   AppLanguage language = AppLanguage.uz,
@@ -33,10 +32,7 @@ Future<AppServices> _svc(
   tester,
   language: language,
   proEnabled: true,
-  gatedFeatures: {
-    for (final f in Feature.values)
-      if (f.pro) f,
-  },
+  gatedFeatures: ProGatePolicy.catalog,
   allFeaturesOpen: allFeaturesOpen,
   purchases: purchases,
   entitlementSource: entitlementSource,
@@ -109,64 +105,52 @@ void main() {
     expect(find.textContaining('bosqich'), findsNothing);
   });
 
-  testWidgets('to‘lov yoqilgach: tarixda oxirgi 3 ta, eskilari saqlangan', (
-    tester,
-  ) async {
+  testWidgets('D-78: to‘lov yoqilgach ham imtihon tarixi cheklanmaydi va '
+      'yashirilmaydi (obunasiz)', (tester) async {
     final (s, shop) = await _storeBuild(tester, available: false);
     await pumpApp(tester, s, size: _tall);
-    // Mahsulotlar hali yuklanmagan — imtihon ochiq.
     for (var i = 0; i < 5; i++) {
       await _quickExam(tester, uz);
     }
     shop.setAvailable(true);
     await tester.pumpAndSettle();
     expect(s.entitlements.gatingActive, isTrue);
-    expect(s.exams.history, hasLength(5), reason: 'hech narsa o‘chmagan');
+    expect(s.entitlements.isPro, isFalse);
+    expect(s.exams.history, hasLength(5));
     await goTo(tester, '/learn/exam');
-    await _scrollTo(tester, find.text(uz.proHistoryHidden(2, 3)));
-    expect(find.text(uz.proHistoryHidden(2, 3)), findsOneWidget);
-    expect(find.text('0%'), findsNWidgets(3));
+    await _scrollTo(tester, find.text(uz.examHistoryClear));
+    expect(find.text('0%'), findsNWidgets(5), reason: 'hammasi ko‘rinadi');
+    expect(find.textContaining('eski natija'), findsNothing);
   });
 
-  testWidgets(
-    'Pro imkoniyat: boshlashdan OLDIN to‘lov oynasi, test boshlanmaydi',
-    (tester) async {
-      final (s, _) = await _storeBuild(tester);
-      await pumpApp(tester, s, size: _tall);
-      await goTo(tester, '/learn/exam');
-      await enterField(tester, uz.examCount, '3');
-      await enterField(tester, uz.examTime, '10');
-      await tapScroll(tester, uz.examStart);
-      expect(find.text(uz.proPayLockedPro), findsOneWidget);
-      expect(s.exams.active, isNull);
-    },
-  );
-
-  testWidgets('mashq va atlas: yangi raund Pro, to‘lov yoqilmasa ochiq', (
-    tester,
-  ) async {
-    final (s, shop) = await _storeBuild(tester, available: false);
+  testWidgets('D-78: obunasiz ham bepul imtihon, mashq va atlas darhol '
+      'boshlanadi (to‘lov oynasi yo‘q)', (tester) async {
+    final (s, _) = await _storeBuild(tester);
     await pumpApp(tester, s, size: _tall);
+    expect(s.entitlements.gatingActive, isTrue);
+    expect(s.entitlements.isPro, isFalse);
+    await goTo(tester, '/learn/exam');
+    await enterField(tester, uz.examCount, '3');
+    await enterField(tester, uz.examTime, '10');
+    await tapScroll(tester, uz.examStart);
+    expect(find.byKey(const ValueKey('pay-locked')), findsNothing);
+    expect(s.exams.active, isNotNull, reason: 'bepul imtihon boshlandi');
+
     final mixed = uz.quizTopicMixed(
       s.content.pack!.quiz.length < 10 ? s.content.pack!.quiz.length : 10,
     );
-    // To'lov yoqilmagan — mashq darhol boshlanadi.
-    await goTo(tester, '/learn/quiz');
-    await tapScroll(tester, mixed);
-    expect(find.text(uz.quizChooseTopic), findsNothing);
-    expect(find.text(uz.proPayLockedPro), findsNothing);
-
-    shop.setAvailable(true);
     await goTo(tester, '/learn/quiz?fresh=1');
     await tapScroll(tester, mixed);
-    expect(find.text(uz.proPayLockedPro), findsOneWidget);
+    expect(find.text(uz.quizChooseTopic), findsNothing);
+    expect(find.byKey(const ValueKey('pay-locked')), findsNothing);
 
     await goTo(tester, '/lab/microscopy/quiz');
     final start = find.byIcon(Icons.play_arrow_rounded).hitTestable();
     await tester.ensureVisible(start.first);
     await tester.tap(start.first);
     await tester.pumpAndSettle();
-    expect(find.text(uz.proPayLockedPro), findsOneWidget);
+    expect(find.byKey(const ValueKey('pay-locked')), findsNothing);
+    expect(find.text(uz.proPurchaseTitle), findsNothing);
   });
 
   testWidgets(
@@ -201,11 +185,11 @@ void main() {
       }
 
       expect(find.text(uz.proPayStartTrial), findsNothing);
-      await seen(uz.proPayTierTeacher);
-      expect(find.text(uz.proPayFeatExam), findsWidgets);
+      await seen(uz.proTierNameTeacher);
+      expect(find.text(uz.proFeatExamSimulation), findsWidgets);
       await seen(uz.proPayPricePer(r'$2.49', uz.proPayUnitMonth));
       await seen(uz.proPayPricePer(r'$24.99', uz.proPayUnitYear));
-      await seen(uz.proPayTierSpecialist);
+      await seen(uz.proTierNameSpecialist);
       final monthly = uz.proPayPricePer(r'$3.49', uz.proPayUnitMonth);
       await seen(monthly);
       // D-75: do'kon sinov taklifi (avtomatik pullik) ko'rsatilmaydi, hatto
@@ -216,17 +200,27 @@ void main() {
       );
       await seen(uz.proPayPricePer(r'$34.99', uz.proPayUnitYear));
       // Premium (D-76): hamma imkoniyat, yillik narx bor.
-      await seen(uz.proPayTierPremium);
+      await seen(uz.proTierNamePremium);
       await seen(uz.proPayPricePer(r'$4.99', uz.proPayUnitMonth));
       await seen(uz.proPayPricePer(r'$49.99', uz.proPayUnitYear));
-      expect(find.text(uz.proPayFeatLecture), findsWidgets);
-      expect(find.text(uz.proPayFeatLabCount), findsWidgets);
+      expect(find.text(uz.proFeatTeacherTestBuilder), findsWidgets);
+      expect(find.text(uz.proFeatQcReport), findsWidgets);
+      // D-78: bugungi bepul funksiyalar (Lab, atlas, mashq) va'da qilinmaydi.
+      for (final old in [
+        uz.proPayFeatLabCount,
+        uz.proPayFeatAtlas,
+        uz.proPayFeatQuestions,
+        uz.proPayFeatHistory,
+        uz.proPayFeatToifa,
+        uz.proPayFeatGroups,
+      ]) {
+        expect(find.text(old), findsNothing, reason: old);
+      }
       expect(find.textContaining('(test)'), findsNothing);
       // Talaba narxi — faqat tasdiqlangan talabaga (hozir tasdiq yo'q).
       expect(find.textContaining(r'$1.49'), findsNothing);
       expect(find.textContaining(r'$9.99'), findsNothing);
-      expect(find.text(uz.proPayTierStudent), findsNothing);
-      expect(find.textContaining('PDF'), findsNothing);
+      expect(find.text(uz.proTierNameStudent), findsNothing);
       // Pastki qism.
       for (final t in [
         uz.proPayDisclosure('App Store'),
@@ -285,8 +279,8 @@ void main() {
     final (s, _) = await _storeBuild(tester, language: AppLanguage.ru);
     await pumpApp(tester, s);
     await goTo(tester, '/profile/purchase');
-    await _scrollTo(tester, find.text(ru.proPayTierTeacher));
-    expect(find.text(ru.proPayTierTeacher), findsOneWidget);
+    await _scrollTo(tester, find.text(ru.proTierNameTeacher));
+    expect(find.text(ru.proTierNameTeacher), findsOneWidget);
     await tapScroll(tester, ru.proPayRestore);
     expect(find.text(ru.proPayNothingFound), findsOneWidget);
     expect(tester.takeException(), isNull);

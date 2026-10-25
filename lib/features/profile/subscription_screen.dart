@@ -50,23 +50,23 @@ class _SubscriptionBody extends StatelessWidget {
   final EntitlementService ent;
 
   static String planTitle(AppLocalizations l, ProPlan plan) => switch (plan) {
-    ProPlan.student => l.proPayTierStudent,
-    ProPlan.teacher => l.proPayTierTeacher,
-    ProPlan.specialist => l.proPayTierSpecialist,
-    ProPlan.premium => l.proPayTierPremium,
+    ProPlan.student => l.proTierNameStudent,
+    ProPlan.teacher => l.proTierNameTeacher,
+    ProPlan.specialist => l.proTierNameSpecialist,
+    ProPlan.premium => l.proTierNamePremium,
   };
 
   static String _planSub(AppLocalizations l, ProPlan plan) => switch (plan) {
-    ProPlan.student => l.proPayTierStudentSub,
-    ProPlan.teacher => l.proPayTierTeacherSub,
-    ProPlan.specialist => l.proPayTierSpecialistSub,
-    ProPlan.premium => l.proPayTierPremiumSub,
+    ProPlan.student => l.proTierSubStudent,
+    ProPlan.teacher => l.proTierSubTeacher,
+    ProPlan.specialist => l.proTierSubSpecialist,
+    ProPlan.premium => l.proTierSubPremium,
   };
 
   static String _cap(AppLocalizations l, ProCapability c) => switch (c) {
     ProCapability.learner => l.proSubCapLearner,
     ProCapability.teacherPanel => l.proSubCapTeacherPanel,
-    ProCapability.lab => l.proSubCapLab,
+    ProCapability.lab => l.proCapLabPro,
   };
 
   static String _usd(double v) => '\$${v.toStringAsFixed(2)}';
@@ -129,7 +129,7 @@ class _SubscriptionBody extends StatelessWidget {
       builder: (ctx) => AlertDialog(
         title: Text(l.proSubTrialConfirmTitle),
         content: Text(
-          l.proSubTrialConfirmBody(name, formatWhen(until, ctx)),
+          l.proTrialConfirmBody(name, formatWhen(until, ctx)),
           key: const ValueKey('sub-trial-confirm-body'),
         ),
         actions: [
@@ -313,7 +313,7 @@ class _SubscriptionBody extends StatelessWidget {
           style: text.bodySmall,
         ),
         const SizedBox(height: 6),
-        Text(l.proSubTeacherNote, style: text.bodySmall),
+        Text(l.proTierNote, style: text.bodySmall),
         const SizedBox(height: 6),
         ..._trialSection(context, l),
         const SizedBox(height: 14),

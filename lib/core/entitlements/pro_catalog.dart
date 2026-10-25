@@ -146,31 +146,22 @@ abstract final class ProTrialConfig {
 /// Bepul davr mexanizmi (D-75: server bergan sinov).
 enum ProTrialMechanism { undecided, storeIntroOffer, serverGranted }
 
-/// Qaysi pullik imkoniyatlar HAQIQATAN yopiladi (D-71). Standart: **bo'sh** —
-/// bugungi `main` da bepul bo'lgan hech narsa yopilmaydi. Eski reja
-/// (PRO_BILLING_PLAN §1) hamma `Feature.pro` ni yopardi; bu `main` dagi
-/// bepul funksiyalarni olib qo'yish bo'lardi (D-71 ziddiyat ro'yxati).
-/// Egasi qaror qilgach faqat shu ro'yxat to'ldiriladi.
+/// Qaysi pullik imkoniyatlar HAQIQATAN yopiladi (D-71 → D-78).
+///
+/// D-78 (egasi qarori, 2026-10-25): [Feature] katalogida faqat YANGI Pro
+/// funksiyalar bor — bugun `main` da bepul bo'lgan hech narsa yopilmaydi
+/// (D-76 dagi Lab yopilishi rejasi, kunlik limit, "oxirgi 3 natija" tarixi, atlas /
+/// toifa / mashq yopilishi BEKOR). [gated] ga faqat QURILGAN funksiya
+/// (ekran + test) qo'shiladi; qurilmagan katalog qatori to'lov oynasida
+/// va'da qilinmaydi.
+///
+/// Pro bayrog'i (`LG_PRO_ENABLED`) o'chiq buildda bu ro'yxat ta'sir
+/// qilmaydi: `EntitlementService.disabled()` hamma narsani ochadi va Pro
+/// kirish nuqtalari ko'rsatilmaydi.
 abstract final class ProGatePolicy {
   static const Set<Feature> gated = {};
 
-  /// REJALASHTIRILGAN Lab yopilishi (D-76, egasi qarori) — FAOL EMAS.
-  /// [gated] ga qo'shilmaguncha (va Pro yoqilmaguncha) hech narsa
-  /// yopilmaydi; testlar `EntitlementService(gated: plannedLabGate)` bilan
-  /// yopish ishlashini va standart buildda hech narsa yopilmasligini
-  /// tekshiradi. Ekran (kirish sahifasi) ochiladi; amal/vosita boshlanishida
-  /// `requireFeature` to'lov oynasini ko'rsatadi; boshlangan sanash
-  /// to'xtatilmaydi.
-  static const Set<Feature> plannedLabGate = {
-    Feature.leukocyteCounter,
-    Feature.absoluteCounts,
-    Feature.leukocyteEvaluation,
-    Feature.labSections,
-    Feature.coagulogram,
-    Feature.labInstruments,
-    Feature.labDirections,
-    Feature.calibration,
-    Feature.qualityControl,
-    Feature.labCalculators,
-  };
+  /// Butun pullik katalog (regressiya testi: hammasi yopilganda ham bugungi
+  /// bepul funksiyalar ochiq qoladi).
+  static final Set<Feature> catalog = Set.unmodifiable(Feature.values);
 }

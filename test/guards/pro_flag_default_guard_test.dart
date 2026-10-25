@@ -4,10 +4,13 @@ import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:labguide/core/build_flags.dart';
-import 'package:labguide/core/entitlements/feature.dart';
 import 'package:labguide/core/entitlements/pro_catalog.dart';
 
 String _read(String path) => File(path).readAsStringSync();
+
+/// D-78: pullik amal tekshiruvi (`requireFeature` / `pushGated` /
+/// `allowOrOffer`) chaqiriladigan joylar — fayl → funksiyalar.
+const kGateCallSites = <String, Set<String>>{};
 
 void main() {
   group('D-71: Pro standart holda o‘chiq', () {
@@ -53,9 +56,9 @@ void main() {
     });
 
     test(
-      'hech qaysi imkoniyat yopilmaydi; do‘kon sinov taklifi yo‘q (D-75)',
+      'gated faqat pullik katalogdan (D-78); do‘kon sinov taklifi yo‘q (D-75)',
       () {
-        expect(ProGatePolicy.gated, isEmpty);
+        expect(ProGatePolicy.catalog.containsAll(ProGatePolicy.gated), isTrue);
         // Do'kon kirish taklifi (avtomatik pullikka o'tadi) — yo'q.
         expect(ProTrialConfig.freeTrialDays, isNull);
         expect(ProTrialConfig.enabled, isFalse);
@@ -95,39 +98,44 @@ void main() {
     );
 
     test(
-      'hech qaysi bepul imkoniyat yopilmaydi (gated faqat pullik daraja)',
+      'D-78: bugungi bepul funksiya yopilmaydi — eski Lab/atlas/tarix '
+      'yopilishi kodda yo‘q; gate faqat ruxsat etilgan Pro kirish nuqtalarida',
       () {
-        for (final f in Feature.values.where((f) => !f.pro)) {
-          expect(ProGatePolicy.gated.contains(f), isFalse, reason: f.name);
-        }
-        expect(ProGatePolicy.gated, isEmpty);
-      },
-    );
-
-    test(
-      'Lab yopilishi (D-76) faqat REJA: plannedLabGate faol ro‘yxatda emas',
-      () {
-        expect(ProGatePolicy.plannedLabGate, isNotEmpty);
-        expect(
-          ProGatePolicy.gated.intersection(ProGatePolicy.plannedLabGate),
-          isEmpty,
+        final gateCall = RegExp(
+          r'\b(requireFeature|pushGated|allowOrOffer)\(\s*context,\s*'
+          r'Feature\.(\w+)',
         );
-        for (final f in ProGatePolicy.plannedLabGate) {
-          expect(f.capability, ProCapability.lab, reason: f.name);
-        }
-        // Ekranlarda "tez orada" / yopiq belgisi yo'q: Lab kodi faqat
-        // `requireFeature` / `pushGated` / `allowOrOffer` / `labGate` orqali.
+        final calls = <String, Set<String>>{};
         for (final f
-            in Directory('lib/features')
+            in Directory('lib')
                 .listSync(recursive: true)
                 .whereType<File>()
                 .where((f) => f.path.endsWith('.dart'))) {
+          final path = f.path.replaceAll(r'\', '/');
+          if (path.startsWith('lib/l10n/gen/')) continue;
           final text = f.readAsStringSync();
-          expect(
-            text.contains('plannedLabGate'),
-            isFalse,
-            reason: '${f.path}: reja ro‘yxati UI da ishlatilmaydi',
-          );
+          for (final old in [
+            'plannedLabGate',
+            'labGate(',
+            'historyView(',
+            'historyVisibleLimit',
+            'freeHistoryLimit',
+          ]) {
+            expect(text.contains(old), isFalse, reason: '$path: $old');
+          }
+          for (final m in gateCall.allMatches(text)) {
+            (calls[path] ??= {}).add(m[2]!);
+          }
+        }
+        // Har gate chaqiruvi — katalogdagi funksiya va ruxsat etilgan faylda
+        // (yangi Pro ekran yoki bepul ekrandagi YANGI Pro tugma). Yangi joy
+        // qo'shilsa — shu ro'yxat ongli ravishda yangilanadi (D-78).
+        expect(calls, kGateCallSites);
+        // Qurilgan (gated) har funksiyaning kamida bitta boshlash nuqtasi
+        // bor — bo'sh pullik va'da yo'q.
+        final used = {for (final v in calls.values) ...v};
+        for (final f in ProGatePolicy.gated) {
+          expect(used, contains(f.name), reason: '${f.name}: kirish nuqtasi');
         }
       },
     );

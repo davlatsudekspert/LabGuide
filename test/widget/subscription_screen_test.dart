@@ -141,10 +141,10 @@ void main() {
     String unlocks(List<String> caps) => uz.proSubUnlocks(caps.join(', '));
     for (final (plan, caps) in [
       ('teacher', [uz.proSubCapLearner, uz.proSubCapTeacherPanel]),
-      ('specialist', [uz.proSubCapLearner, uz.proSubCapLab]),
+      ('specialist', [uz.proSubCapLearner, uz.proCapLabPro]),
       (
         'premium',
-        [uz.proSubCapLearner, uz.proSubCapTeacherPanel, uz.proSubCapLab],
+        [uz.proSubCapLearner, uz.proSubCapTeacherPanel, uz.proCapLabPro],
       ),
     ]) {
       expect(
@@ -186,7 +186,7 @@ void main() {
     final uz = _l(AppLanguage.uz);
     await goTo(tester, '/profile/subscription');
     expect(
-      find.text(uz.proSubStatusTrial(uz.proPayTierTeacher, uz.proPayDays(12))),
+      find.text(uz.proSubStatusTrial(uz.proTierNameTeacher, uz.proPayDays(12))),
       findsOneWidget,
     );
 
@@ -199,7 +199,7 @@ void main() {
     final status = tester.widget<Text>(
       find.byKey(const ValueKey('sub-status')),
     );
-    expect(status.data, startsWith('${uz.proPayTierSpecialist} — '));
+    expect(status.data, startsWith('${uz.proTierNameSpecialist} — '));
     expect(find.text(uz.proSubTrialGuest), findsNothing);
     expect(find.text(uz.proSubTrialUsed), findsOneWidget);
   });
@@ -306,7 +306,7 @@ void main() {
       final body = tester.widget<Text>(
         find.byKey(const ValueKey('sub-trial-confirm-body')),
       );
-      expect(body.data, startsWith('${uz.proPayTierStudent} Pro '));
+      expect(body.data, startsWith('${uz.proTierNameStudent} '));
       expect(body.data, contains('pul yechilmaydi'));
       await tester.tap(find.byKey(const ValueKey('sub-trial-confirm')));
       await tester.pumpAndSettle();

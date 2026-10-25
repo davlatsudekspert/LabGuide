@@ -22821,6 +22821,144 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'You can use the app without a subscription: free features stay free.'**
   String get proSubWithoutSubscription;
+
+  /// No description provided for @proTierNameStudent.
+  ///
+  /// In en, this message translates to:
+  /// **'Student Pro'**
+  String get proTierNameStudent;
+
+  /// No description provided for @proTierNameTeacher.
+  ///
+  /// In en, this message translates to:
+  /// **'Teacher Pro'**
+  String get proTierNameTeacher;
+
+  /// No description provided for @proTierNameSpecialist.
+  ///
+  /// In en, this message translates to:
+  /// **'Specialist Pro'**
+  String get proTierNameSpecialist;
+
+  /// No description provided for @proTierNamePremium.
+  ///
+  /// In en, this message translates to:
+  /// **'Premium'**
+  String get proTierNamePremium;
+
+  /// No description provided for @proTierSubStudent.
+  ///
+  /// In en, this message translates to:
+  /// **'Extra Pro features for studying. Everything that is free today stays free.'**
+  String get proTierSubStudent;
+
+  /// No description provided for @proTierSubTeacher.
+  ///
+  /// In en, this message translates to:
+  /// **'For teachers: Student Pro features plus the Pro features of the teacher panel. Today’s free groups stay free.'**
+  String get proTierSubTeacher;
+
+  /// No description provided for @proTierSubSpecialist.
+  ///
+  /// In en, this message translates to:
+  /// **'For lab staff and doctors: Student Pro features plus professional laboratory functions. The Laboratory section stays free.'**
+  String get proTierSubSpecialist;
+
+  /// No description provided for @proTierSubPremium.
+  ///
+  /// In en, this message translates to:
+  /// **'All Pro features together: Student Pro, Teacher Pro and Specialist Pro.'**
+  String get proTierSubPremium;
+
+  /// No description provided for @proCapLabPro.
+  ///
+  /// In en, this message translates to:
+  /// **'professional laboratory functions (calibration log and QC export, QC summary report)'**
+  String get proCapLabPro;
+
+  /// No description provided for @proTierNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Teacher panel Pro features are only in Teacher Pro or Premium, and professional laboratory functions only in Specialist Pro or Premium. Changing your role in the app does not unlock them. Everything that is free today — the Laboratory section, atlas, tests, category exam, groups and assignments — stays free.'**
+  String get proTierNote;
+
+  /// No description provided for @proLockedLearner.
+  ///
+  /// In en, this message translates to:
+  /// **'This feature is in Student Pro, Teacher Pro, Specialist Pro and Premium.'**
+  String get proLockedLearner;
+
+  /// No description provided for @proLockedTeacher.
+  ///
+  /// In en, this message translates to:
+  /// **'This feature is in Teacher Pro or Premium.'**
+  String get proLockedTeacher;
+
+  /// No description provided for @proLockedLab.
+  ///
+  /// In en, this message translates to:
+  /// **'This feature is in Specialist Pro or Premium.'**
+  String get proLockedLab;
+
+  /// No description provided for @proFeatResultsAnalytics.
+  ///
+  /// In en, this message translates to:
+  /// **'Results analysis: full history, topic trends and weak topics'**
+  String get proFeatResultsAnalytics;
+
+  /// No description provided for @proFeatExamSimulation.
+  ///
+  /// In en, this message translates to:
+  /// **'Exam simulation: a test under exam conditions with a detailed report'**
+  String get proFeatExamSimulation;
+
+  /// No description provided for @proFeatResultsExport.
+  ///
+  /// In en, this message translates to:
+  /// **'Export results as PDF and CSV files'**
+  String get proFeatResultsExport;
+
+  /// No description provided for @proFeatTeacherTests.
+  ///
+  /// In en, this message translates to:
+  /// **'Special tests created by your teacher'**
+  String get proFeatTeacherTests;
+
+  /// No description provided for @proFeatTeacherTestBuilder.
+  ///
+  /// In en, this message translates to:
+  /// **'Create and edit your own tests'**
+  String get proFeatTeacherTestBuilder;
+
+  /// No description provided for @proFeatTeacherTestAssign.
+  ///
+  /// In en, this message translates to:
+  /// **'Assign your tests to students and groups'**
+  String get proFeatTeacherTestAssign;
+
+  /// No description provided for @proFeatTeacherResults.
+  ///
+  /// In en, this message translates to:
+  /// **'Manage results: per-student and per-question summary, export'**
+  String get proFeatTeacherResults;
+
+  /// No description provided for @proFeatCalibrationExport.
+  ///
+  /// In en, this message translates to:
+  /// **'Export the calibration log to CSV and PDF'**
+  String get proFeatCalibrationExport;
+
+  /// No description provided for @proFeatQcReport.
+  ///
+  /// In en, this message translates to:
+  /// **'QC summary report and QC data export as CSV/PDF files'**
+  String get proFeatQcReport;
+
+  /// No description provided for @proTrialConfirmBody.
+  ///
+  /// In en, this message translates to:
+  /// **'{plan} is free until {date}. No payment method, nothing is charged, and it does not turn into a paid subscription. When it ends only the paid features close; free features and all your data stay.'**
+  String proTrialConfirmBody(String plan, String date);
 }
 
 class _AppLocalizationsDelegate

@@ -13504,4 +13504,91 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get proSubWithoutSubscription =>
       'Приложением можно пользоваться без подписки: бесплатные функции остаются бесплатными.';
+
+  @override
+  String get proTierNameStudent => 'Студент Pro';
+
+  @override
+  String get proTierNameTeacher => 'Преподаватель Pro';
+
+  @override
+  String get proTierNameSpecialist => 'Специалист Pro';
+
+  @override
+  String get proTierNamePremium => 'Premium';
+
+  @override
+  String get proTierSubStudent =>
+      'Дополнительные Pro-возможности для учёбы. Всё, что бесплатно сегодня, остаётся бесплатным.';
+
+  @override
+  String get proTierSubTeacher =>
+      'Для преподавателя: возможности Студент Pro и Pro-возможности панели преподавателя. Сегодняшние бесплатные группы остаются бесплатными.';
+
+  @override
+  String get proTierSubSpecialist =>
+      'Для лаборанта и врача: возможности Студент Pro и профессиональные лабораторные функции. Раздел «Лаборатория» остаётся бесплатным.';
+
+  @override
+  String get proTierSubPremium =>
+      'Все Pro-возможности вместе: Студент Pro, Преподаватель Pro и Специалист Pro.';
+
+  @override
+  String get proCapLabPro =>
+      'профессиональные лабораторные функции (экспорт журнала калибровки и данных КК, сводный отчёт КК)';
+
+  @override
+  String get proTierNote =>
+      'Pro-возможности панели преподавателя есть только в планах Преподаватель Pro и Premium, профессиональные лабораторные функции — только в Специалист Pro и Premium. Смена роли в приложении их не открывает. Всё, что бесплатно сегодня — раздел «Лаборатория», атлас, тесты, категория, группы и задания, — остаётся бесплатным.';
+
+  @override
+  String get proLockedLearner =>
+      'Эта возможность есть в планах Студент Pro, Преподаватель Pro, Специалист Pro и Premium.';
+
+  @override
+  String get proLockedTeacher =>
+      'Эта возможность есть в планах Преподаватель Pro и Premium.';
+
+  @override
+  String get proLockedLab =>
+      'Эта возможность есть в планах Специалист Pro и Premium.';
+
+  @override
+  String get proFeatResultsAnalytics =>
+      'Анализ результатов: полная история, динамика по темам и слабые темы';
+
+  @override
+  String get proFeatExamSimulation =>
+      'Симуляция экзамена: тест в условиях экзамена и подробный отчёт';
+
+  @override
+  String get proFeatResultsExport => 'Экспорт результатов в файлы PDF и CSV';
+
+  @override
+  String get proFeatTeacherTests =>
+      'Специальные тесты, созданные преподавателем';
+
+  @override
+  String get proFeatTeacherTestBuilder =>
+      'Создание и редактирование своих тестов';
+
+  @override
+  String get proFeatTeacherTestAssign => 'Назначение теста студентам и группам';
+
+  @override
+  String get proFeatTeacherResults =>
+      'Управление результатами: сводка по студентам и вопросам, экспорт';
+
+  @override
+  String get proFeatCalibrationExport =>
+      'Экспорт журнала калибровки в CSV и PDF';
+
+  @override
+  String get proFeatQcReport =>
+      'Сводный отчёт КК и экспорт данных КК в файлы CSV/PDF';
+
+  @override
+  String proTrialConfirmBody(String plan, String date) {
+    return '$plan бесплатно до $date. Без способа оплаты, ничего не списывается, и пробный период не превращается в платную подписку. После окончания закрываются только платные возможности; бесплатные функции и все ваши данные сохраняются.';
+  }
 }

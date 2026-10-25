@@ -8,7 +8,6 @@ import '../../app/app_scope.dart';
 import '../../app/widgets/lg_page.dart';
 import '../../core/backend/backend_models.dart';
 import '../../core/backend/lab_backend.dart' show LabBackend;
-import '../../core/entitlements/feature.dart';
 import '../../core/single_flight.dart';
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
@@ -22,7 +21,6 @@ import '../classroom/topic_questions.dart';
 import '../classroom/topic_test_screens.dart' show SlideLink, deckOfAssignment;
 import '../content/content_model.dart';
 import '../content/ui/content_widgets.dart';
-import '../profile/pro_gate.dart';
 import '../settings/settings_controller.dart';
 import '../support/support_screens.dart' show formatWhen;
 import 'exam_question.dart';
@@ -274,13 +272,7 @@ class _ClassesScreenState extends State<ClassesScreen> {
       caption: l.classesCreateSub,
       icon: Icons.school_outlined,
       highlighted: teacherFirst,
-      // Guruh ochish — [Feature.groups] (D-71: hozir yopilmagan); guruhga
-      // qo'shilish hech qachon cheklanmaydi.
-      onTap: () async {
-        if (await requireFeature(context, Feature.groups)) {
-          await _open('/learn/classes/new');
-        }
-      },
+      onTap: () => _open('/learn/classes/new'),
     );
     final join = LgTile(
       title: l.classesJoin,

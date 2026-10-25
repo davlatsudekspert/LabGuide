@@ -212,7 +212,7 @@ void main() {
   group('daraja huquqi (D-74/D-75)', () {
     test('Talaba rejasi ustoz paneli toifasini ochmaydi; lokal rol hech '
         'narsa o‘zgartirmaydi (qaror faqat server qatoridan)', () async {
-      final ent = make(gated: {Feature.groups, Feature.examSimulation});
+      final ent = make(gated: {Feature.teacherTestBuilder, Feature.examSimulation});
       src.snapshot = EntitlementSnapshot(
         serverTime: _t0,
         items: [

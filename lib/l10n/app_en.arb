@@ -7173,5 +7173,38 @@
   "proSubTrialSubscribed": "You already have an active subscription.",
   "proSubEnded": "Pro has ended. Every free feature keeps working and your data stays.",
   "proSubPriceYearlyNote": "The yearly plan is billed once a year at the price shown.",
-  "proSubWithoutSubscription": "You can use the app without a subscription: free features stay free."
+  "proSubWithoutSubscription": "You can use the app without a subscription: free features stay free.",
+  "proTierNameStudent": "Student Pro",
+  "proTierNameTeacher": "Teacher Pro",
+  "proTierNameSpecialist": "Specialist Pro",
+  "proTierNamePremium": "Premium",
+  "proTierSubStudent": "Extra Pro features for studying. Everything that is free today stays free.",
+  "proTierSubTeacher": "For teachers: Student Pro features plus the Pro features of the teacher panel. Today’s free groups stay free.",
+  "proTierSubSpecialist": "For lab staff and doctors: Student Pro features plus professional laboratory functions. The Laboratory section stays free.",
+  "proTierSubPremium": "All Pro features together: Student Pro, Teacher Pro and Specialist Pro.",
+  "proCapLabPro": "professional laboratory functions (calibration log and QC export, QC summary report)",
+  "proTierNote": "Teacher panel Pro features are only in Teacher Pro or Premium, and professional laboratory functions only in Specialist Pro or Premium. Changing your role in the app does not unlock them. Everything that is free today — the Laboratory section, atlas, tests, category exam, groups and assignments — stays free.",
+  "proLockedLearner": "This feature is in Student Pro, Teacher Pro, Specialist Pro and Premium.",
+  "proLockedTeacher": "This feature is in Teacher Pro or Premium.",
+  "proLockedLab": "This feature is in Specialist Pro or Premium.",
+  "proFeatResultsAnalytics": "Results analysis: full history, topic trends and weak topics",
+  "proFeatExamSimulation": "Exam simulation: a test under exam conditions with a detailed report",
+  "proFeatResultsExport": "Export results as PDF and CSV files",
+  "proFeatTeacherTests": "Special tests created by your teacher",
+  "proFeatTeacherTestBuilder": "Create and edit your own tests",
+  "proFeatTeacherTestAssign": "Assign your tests to students and groups",
+  "proFeatTeacherResults": "Manage results: per-student and per-question summary, export",
+  "proFeatCalibrationExport": "Export the calibration log to CSV and PDF",
+  "proFeatQcReport": "QC summary report and QC data export as CSV/PDF files",
+  "proTrialConfirmBody": "{plan} is free until {date}. No payment method, nothing is charged, and it does not turn into a paid subscription. When it ends only the paid features close; free features and all your data stay.",
+  "@proTrialConfirmBody": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  }
 }

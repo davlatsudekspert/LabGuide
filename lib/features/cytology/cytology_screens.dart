@@ -4,11 +4,9 @@ import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
 import '../../app/widgets/lg_page.dart';
-import '../../core/entitlements/feature.dart';
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
-import '../profile/pro_gate.dart';
 import '../content/content_model.dart';
 import '../learn/quiz_session.dart';
 import '../tools/calc_info.dart';
@@ -30,7 +28,6 @@ class CytologyScreen extends StatelessWidget {
     return LgPage(
       title: l.cytoTitle,
       subtitle: l.cytoSubtitle,
-      // Bo'lim ochiq; ichidagi sahifalar — [Feature.labSections] (D-76).
       children: [
         const HowToButton(HowToSection.cytology),
         LgHeroCard(
@@ -40,8 +37,7 @@ class CytologyScreen extends StatelessWidget {
           action: LgButton(
             label: l.cytoHeroCta,
             icon: Icons.biotech_outlined,
-            onPressed: () =>
-                pushGated(context, Feature.labSections, '$cytoBase/cells'),
+            onPressed: () => context.push('$cytoBase/cells'),
           ),
         ),
         Text(
@@ -53,64 +49,55 @@ class CytologyScreen extends StatelessWidget {
           title: l.cytoCellsTitle,
           subtitle: l.cytoCellsSub(cytoCells.length),
           icon: Icons.biotech_outlined,
-          onTap: () =>
-              pushGated(context, Feature.labSections, '$cytoBase/cells'),
+          onTap: () => context.push('$cytoBase/cells'),
         ),
         LgRow(
           title: l.cytoDegreeTitle,
           subtitle: l.cytoDegreeSub,
           icon: Icons.tune_rounded,
-          onTap: () =>
-              pushGated(context, Feature.labSections, '$cytoBase/degree'),
+          onTap: () => context.push('$cytoBase/degree'),
         ),
         LgRow(
           title: l.cytoBethesdaTitle,
           subtitle: l.cytoBethesdaSub,
           icon: Icons.fact_check_outlined,
-          onTap: () =>
-              pushGated(context, Feature.labSections, '$cytoBase/bethesda'),
+          onTap: () => context.push('$cytoBase/bethesda'),
         ),
         LgRow(
           title: l.cytoTechniqueTitle,
           subtitle: l.cytoTechniqueSub,
           icon: Icons.water_drop_outlined,
-          onTap: () =>
-              pushGated(context, Feature.labSections, '$cytoBase/technique'),
+          onTap: () => context.push('$cytoBase/technique'),
         ),
         LgRow(
           title: l.cytoAdequacyTitle,
           subtitle: l.cytoAdequacySub,
           icon: Icons.rule_rounded,
-          onTap: () =>
-              pushGated(context, Feature.labSections, '$cytoBase/adequacy'),
+          onTap: () => context.push('$cytoBase/adequacy'),
         ),
         LgRow(
           title: l.cytoReactiveTitle,
           subtitle: l.cytoReactiveSub,
           icon: Icons.compare_arrows_rounded,
-          onTap: () =>
-              pushGated(context, Feature.labSections, '$cytoBase/reactive'),
+          onTap: () => context.push('$cytoBase/reactive'),
         ),
         LgRow(
           title: l.cytoMaturationTitle,
           subtitle: l.cytoMaturationSub,
           icon: Icons.calculate_outlined,
-          onTap: () =>
-              pushGated(context, Feature.labSections, '$cytoBase/maturation'),
+          onTap: () => context.push('$cytoBase/maturation'),
         ),
         LgRow(
           title: l.cytoOtherTitle,
           subtitle: l.cytoOtherSub,
           icon: Icons.science_outlined,
-          onTap: () =>
-              pushGated(context, Feature.labSections, '$cytoBase/other'),
+          onTap: () => context.push('$cytoBase/other'),
         ),
         LgRow(
           title: l.cytoQuizTitle,
           subtitle: l.cytoQuizSub(cytoQuizSize),
           icon: Icons.quiz_outlined,
-          onTap: () =>
-              pushGated(context, Feature.labSections, '$cytoBase/quiz'),
+          onTap: () => context.push('$cytoBase/quiz'),
           divider: false,
         ),
         LgNotice(l.sourcesDisclaimer, kind: NoticeKind.info),
