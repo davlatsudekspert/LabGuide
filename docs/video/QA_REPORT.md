@@ -52,7 +52,7 @@ Daraja: **O‘rta** — tomoshabin noto‘g‘ri tushunishi yoki kadr subtitrga 
 | 7 | 10_boshqa_funksiyalar | uz, ru, en | 00:49–00:53 / 14 `profile` | Subtitr «mavzu (theme)» ni aytadi, kadrda mavzu bo‘limi ko‘rinmaydi | Past | **FIXED** — «Profil: til, birliklar va bo‘lim ko‘rinishi» (kadrda bor narsa) |
 | 8 | 06_mikroskopiya; 09_testlar_natijalar | uz/ru/en | 06: 00:31–00:35 (9); 09: 00:12–00:17 (4) | Mashq savoli tasodifiy: bir tilda javob to‘g‘ri, boshqasida noto‘g‘ri (har tilda boshqa savol). Subtitr ikkala holatni ham to‘g‘ri tasvirlaydi («to‘g‘ri yoki to‘g‘ri javob ko‘rsatiladi») | Ma’lumot | **NOT FIXED** — ilovaning haqiqiy xatti-harakati; `MicroQuizScreen.random` marshrut orqali berilmaydi, ilova kodini video uchun o‘zgartirmadik |
 | 9 | 05_apparatlar | ru | 00:19–00:23 / 6 | Subtitrda „Мой прибор“ (ichki qo‘shtirnoq), tugmada «Мой прибор» | Ma’lumot | NOT FIXED — tipografik variant (ichma-ich «» o‘rniga „“), ma’no bir xil |
-| 10 | 01_kalibrlash | uz, ru, en | 00:33–00:38 / 9 `cal_log` | **Ilova kamchiligi:** jurnalning «Tarix» qatorida xom enum nomlari ko‘rinadi — `pending · training · QC notRun` (uz/ru da ham inglizcha). Manba: `InstrumentsController._summary` (`lib/features/instruments/instruments_controller.dart`) audit yozuviga `outcome.name`, `kind.name`, `qcAfter.name` ni yozadi | Past (ilova) | **NOT FIXED — xabar qilindi.** Audit jurnali append-only va matn yozish paytida saqlanadi; tuzatish (ko‘rsatishda tarjima yoki yangi format) xatti-harakatni o‘zgartiradi — egasi/ishlab chiquvchi qarori kerak. Video kadri ilovani halol ko‘rsatadi |
+| 10 | 01_kalibrlash | uz, ru, en | 00:33–00:38 / 9 `cal_log` | (c8fd248 da ilovada tuzatildi — pastda R1) **Ilova kamchiligi:** jurnalning «Tarix» qatorida xom enum nomlari ko‘rinadi — `pending · training · QC notRun` (uz/ru da ham inglizcha). Manba: `InstrumentsController._summary` (`lib/features/instruments/instruments_controller.dart`) audit yozuviga `outcome.name`, `kind.name`, `qcAfter.name` ni yozadi | Past (ilova) | **NOT FIXED — xabar qilindi.** Audit jurnali append-only va matn yozish paytida saqlanadi; tuzatish (ko‘rsatishda tarjima yoki yangi format) xatti-harakatni o‘zgartiradi — egasi/ishlab chiquvchi qarori kerak. Video kadri ilovani halol ko‘rsatadi |
 
 Jami: 10 topilma — O‘rta 3, Past 5 (shundan 1 — ilova kamchiligi), Ma’lumot 2. Tuzatildi: 7.
 Tuzatilmadi: 3 (#8, #9 — kamchilik emas; #10 — ilova, xabar qilindi).
@@ -75,3 +75,33 @@ Tuzatilmadi: 3 (#8, #9 — kamchilik emas; #10 — ilova, xabar qilindi).
 python3 tool/video/qa_extract.py        # kadrlar + kontakt varaqlari + captions.tsv → build/video_qa/
 python3 tool/video/report.py            # storyboard jadvallari + OUTPUTS.md
 ```
+
+## Qayta qurish (c8fd248)
+
+Ilova `fix/images-apparatus` c8fd248 holatida qayta yig‘ildi: walk test (30/30 PASS) → 30 MP4 + SRT/VTT
+(`compose.py`) → `qa_extract.py` (har qadamdan kadr, 59 kontakt varaq). Storyboard matnlari
+o‘zgartirilmadi — quyidagi tekshiruvda subtitr va ekran mos qoldi.
+
+**Nima ko‘rildi.** Avval eski (QA-dan keyingi) va yangi kontakt varaqlari piksel bo‘yicha solishtirildi
+(har katak, telefon qismi va subtitr qismi alohida). Farq chiqqan kadrlar: 01 (uz/ru/en, 9-qadam —
+jurnal), 02 (uz/ru/en, 2-qadam — QC sxemasi; 5–6 — sana/vaqt), 06 (uz/ru/en, 8–9 — mashq savoli),
+09 (uz/ru/en, 3–4 — izohli test savoli; 9 — sana). Ular va topshiriqda aytilgan mavzular Read bilan
+ko‘rildi: 01 uz (varaq 2) + ru/en jurnal qatori (kattalashtirilgan), 02 ru (varaq 1), 05 uz (model
+kartasi va VITEK 2 sxemasi, kattalashtirilgan), 06 ru (varaq 2), 08 en (varaq 2), 09 uz (varaq 1),
+10 en (varaq 1).
+
+| # | Video | Til | Qadam | O‘zgarish | Subtitrga ta’siri | Holat |
+|---|---|---|---|---|---|---|
+| R1 | 01_kalibrlash | uz, ru, en | 9 `cal_log` | Tarix qatori endi lokallashtirilgan: «Yaratildi · … · Kutilmoqda · O‘quv · QC o‘tkazilmagan» / «Создано · … · Ожидается · Учебная · КК не проводился» / «Created · … · Pending · Training · QC not run». Analit id (`glucose-plasma-fasting`) audit matnida xom qoladi | Subtitr («yozuv va tarix — faqat shu qurilmada») mos | Avvalgi **#10 — ilovada tuzatildi** (`localizedAuditSummary`); analit id — Ma’lumot, egasiga qayd |
+| R2 | 02_sifat_nazorati | uz, ru, en | 2 `qc_empty` | «Серия КК: принять или отклонить» sxemasi qayta chizilgan | Subtitr sxemani tilga olmaydi — mos | PASS |
+| R3 | 05_apparatlar | uz, ru, en | 5, 10 | Sxemalarda raqamli belgilar (callout) va «Qismlari va ishlash prinsipi» paneli; BC-5390 sxemasi — bitta qopqoq rangi (EDTA). Subtitr «sxematik tasvir — aniq model emas» ekrandagi yozuv bilan mos | mos | PASS |
+| R4 | 06_mikroskopiya, 09_testlar_natijalar | uz, ru, en | 06: 8–9; 09: 3–4 | Mashq savoli tasodifiy — boshqa savol chiqdi (06 ru: noto‘g‘ri javob, to‘g‘risi ko‘rsatilgan) | Subtitr ikkala holatni tasvirlaydi | PASS (avvalgi #8 kabi) |
+| R5 | barcha how-to kadrlari | uz, ru, en | `howto`, `diff_howto` | Video tugmasi kodi qo‘shilgan, lekin `assets/howto/videos.json` bo‘sh — ko‘rilgan barcha how-to kadrlarida video tugmasi **yo‘q** | — | PASS |
+| R6 | 08_bilim_baholash | — | — | Ulashish izohi («LabGuide mashq natijasi») — videoda natija/ulashish ekrani yo‘q | — | Ta’sir yo‘q |
+
+Subtitr o‘lchami (308 ta): 40 px — 293, 37 px — 12, 34 px — 3; hammasi ≤ 3 qator. ffprobe: 30/30 —
+720×1280, h264, 24 fps, audio oqimi 0. `OUTPUTS.md` qayta yozildi (jami 40,8 MB).
+`docs/video/videos.sample.json` va `SHA256SUMS.sample` (boshqa ish, `make_manifest.py`) yangilanmadi —
+`DELIVERY_PLAN.md` ga ko‘ra joylashdan oldin qayta yasaladi.
+
+Cheklovlar o‘sha: ovoz yo‘q; haqiqiy telefonda ko‘rilmadi; har qadamdan bitta kadr.
