@@ -1,0 +1,325 @@
+{
+ "id": "gc_ms",
+ "key": "mass_spec_gc",
+ "lesson": "docs/video/lessons/01_gc_ms.md",
+ "title": {
+  "uz": "GC-MS: gaz xromatografi–mass-spektrometr",
+  "ru": "ГХ-МС: газовый хромато-масс-спектрометр",
+  "en": "GC-MS: gas chromatograph–mass spectrometer"
+ },
+ "subtitle": {
+  "uz": "Video-dars namunasi: ilovaning original sxemasi asosida",
+  "ru": "Образец видеоурока на основе оригинальной схемы приложения",
+  "en": "Video-lesson sample built on the app’s original schematic"
+ },
+ "intro": 3.5,
+ "outro": 3.5,
+ "inset": {
+  "chrom": {
+   "uz": "Xromatogramma — namuna chizma, haqiqiy natija emas",
+   "ru": "Хроматограмма — условный рисунок, не реальный результат",
+   "en": "Chromatogram — illustrative drawing, not a real result"
+  },
+  "time": {
+   "uz": "ushlanish vaqti →",
+   "ru": "время удерживания →",
+   "en": "retention time →"
+  },
+  "signal": {
+   "uz": "signal",
+   "ru": "сигнал",
+   "en": "signal"
+  },
+  "spec": {
+   "uz": "Mass-spektr (tanlangan cho‘qqi)",
+   "ru": "Масс-спектр (выбранный пик)",
+   "en": "Mass spectrum (selected peak)"
+  },
+  "mz": {
+   "uz": "m/z →",
+   "ru": "m/z →",
+   "en": "m/z →"
+  },
+  "int": {
+   "uz": "nisbiy intensivlik",
+   "ru": "отн. интенсивность",
+   "en": "relative intensity"
+  },
+  "pass": {
+   "uz": "o‘tayotgan m/z",
+   "ru": "проходящий m/z",
+   "en": "m/z passing"
+  },
+  "lib": {
+   "uz": "kutubxona / standart (umumiy tamoyil)",
+   "ru": "библиотека / стандарт (общий принцип)",
+   "en": "library / standard (general principle)"
+  },
+  "chromShort": {
+   "uz": "Xromatogramma (namuna chizma)",
+   "ru": "Хроматограмма (условно)",
+   "en": "Chromatogram (illustrative)"
+  }
+ },
+ "scenes": [
+  {
+   "stage": 1,
+   "dur": 7,
+   "cam": [
+    600,
+    400,
+    1.0
+   ],
+   "all": true,
+   "ids": [
+    "L1"
+   ],
+   "captions": [
+    {
+     "uz": "Tashqi ko‘rinish: chapda gaz xromatografi, o‘ngda mass-spektrometr — ion manbai, massa analizatori, detektor.",
+     "ru": "Внешний вид: слева газовый хроматограф, справа масс-спектрометр — ионный источник, масс-анализатор, детектор.",
+     "en": "Overview: gas chromatograph on the left, mass spectrometer on the right — ion source, mass analyser, detector."
+    }
+   ]
+  },
+  {
+   "stage": 2,
+   "dur": 10,
+   "cam": [
+    330,
+    400,
+    1.55
+   ],
+   "cycle": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "ids": [
+    "C1",
+    "C2",
+    "C3",
+    "C4",
+    "C5"
+   ],
+   "captions": [
+    {
+     "uz": "Umumiy tamoyil: 1 gaz ballon, 2 avtonamunaoluvchi, 3 injektor, 4 kolonka, 5 uzatish liniyasi.",
+     "ru": "Общий принцип: 1 баллон с газом, 2 автосамплер, 3 инжектор, 4 колонка, 5 линия переноса.",
+     "en": "General principle: 1 gas cylinder, 2 autosampler, 3 injector, 4 column, 5 transfer line."
+    }
+   ]
+  },
+  {
+   "stage": 2,
+   "dur": 10,
+   "cam": [
+    860,
+    400,
+    1.5
+   ],
+   "cycle": [
+    6,
+    7,
+    8,
+    9,
+    10
+   ],
+   "ids": [
+    "C6",
+    "C7",
+    "C8",
+    "C9",
+    "C10"
+   ],
+   "captions": [
+    {
+     "uz": "Umumiy tamoyil: 6 ion manbai, 7 kvadrupol, 8 detektor, 9 vakuum nasoslari, 10 ma’lumotlar tizimi.",
+     "ru": "Общий принцип: 6 ионный источник, 7 квадруполь, 8 детектор, 9 вакуумные насосы, 10 система данных.",
+     "en": "General principle: 6 ion source, 7 quadrupole, 8 detector, 9 vacuum pumps, 10 data system."
+    }
+   ]
+  },
+  {
+   "stage": 3,
+   "dur": 9,
+   "cam": [
+    262,
+    300,
+    1.9
+   ],
+   "cycle": [
+    2,
+    3
+   ],
+   "ids": [
+    "L3",
+    "C1",
+    "C2",
+    "C3"
+   ],
+   "captions": [
+    {
+     "uz": "Manbaga ko‘ra: namuna uchuvchan bo‘lishi — parchalanmasdan gaz fazasiga o‘ta olishi kerak.",
+     "ru": "По источнику: образец должен быть летучим — переходить в газовую фазу без разложения.",
+     "en": "Per the source: the sample must be volatile — able to enter the gas phase without decomposing.",
+     "ids": [
+      "L3"
+     ]
+    },
+    {
+     "at": 4.5,
+     "uz": "Umumiy tamoyil: namuna qizdirilgan injektorda bug‘lanadi va tashuvchi gaz oqimiga qo‘shiladi.",
+     "ru": "Общий принцип: образец испаряется в нагретом инжекторе и подхватывается потоком газа-носителя.",
+     "en": "General principle: the sample vaporises in the heated injector and joins the carrier-gas flow.",
+     "ids": [
+      "C1",
+      "C2",
+      "C3"
+     ]
+    }
+   ]
+  },
+  {
+   "stage": 4,
+   "dur": 13,
+   "cam": [
+    345,
+    450,
+    1.8
+   ],
+   "focus": [
+    4
+   ],
+   "ids": [
+    "C4",
+    "PR"
+   ],
+   "captions": [
+    {
+     "uz": "Umumiy tamoyil: moddalar kolonkada ajraladi va turli vaqtda chiqadi — bu ushlanish vaqti.",
+     "ru": "Общий принцип: вещества разделяются в колонке и выходят в разное время — это время удерживания.",
+     "en": "General principle: compounds separate in the column and leave at different times — the retention time."
+    },
+    {
+     "at": 7,
+     "uz": "Umumiy tamoyil: pastdagi xromatogrammada har ajralgan modda alohida cho‘qqi beradi.",
+     "ru": "Общий принцип: на хроматограмме внизу каждое разделённое вещество даёт свой пик.",
+     "en": "General principle: in the chromatogram below, each separated compound gives its own peak."
+    }
+   ],
+   "ring": false
+  },
+  {
+   "stage": 4,
+   "dur": 9,
+   "cam": [
+    640,
+    430,
+    2.6
+   ],
+   "cycle": [
+    5,
+    6
+   ],
+   "ids": [
+    "C5",
+    "C6"
+   ],
+   "captions": [
+    {
+     "uz": "Umumiy tamoyil: moddalar uzatish liniyasidan ion manbaiga o‘tadi; GC-MS da ko‘pincha elektron zarbasi ularni ionlab, bo‘laklaydi.",
+     "ru": "Общий принцип: вещества по линии переноса попадают в ионный источник; в ГХ-МС их часто ионизирует и дробит электронный удар.",
+     "en": "General principle: compounds pass the transfer line into the ion source; in GC-MS electron impact often ionises and fragments them."
+    }
+   ],
+   "ring": false
+  },
+  {
+   "stage": 5,
+   "dur": 12,
+   "cam": [
+    790,
+    440,
+    2.5
+   ],
+   "focus": [
+    7
+   ],
+   "ids": [
+    "L2",
+    "C7"
+   ],
+   "captions": [
+    {
+     "uz": "Manbaga ko‘ra: ionlar m/z (massa/zaryad) bo‘yicha ajratiladi; kvadrupol ularni navbat bilan detektorga o‘tkazadi.",
+     "ru": "По источнику: ионы разделяются по m/z (масса/заряд); квадруполь по очереди пропускает их к детектору.",
+     "en": "Per the source: ions are separated by m/z (mass-to-charge); the quadrupole passes them to the detector in turn."
+    }
+   ],
+   "ring": false
+  },
+  {
+   "stage": 5,
+   "dur": 7,
+   "cam": [
+    930,
+    372,
+    1.8
+   ],
+   "focus": [
+    8
+   ],
+   "ids": [
+    "C8"
+   ],
+   "captions": [
+    {
+     "uz": "Manbaga ko‘ra: detektor kelgan ionlarni kuchaytirilgan elektr signaliga aylantiradi.",
+     "ru": "По источнику: детектор превращает пришедшие ионы в усиленный электрический сигнал.",
+     "en": "Per the source: the detector turns arriving ions into an amplified electrical signal."
+    }
+   ],
+   "ring": false
+  },
+  {
+   "stage": 6,
+   "dur": 12,
+   "cam": [
+    1050,
+    262,
+    2.2
+   ],
+   "focus": [
+    10
+   ],
+   "ids": [
+    "L2",
+    "RS",
+    "C10"
+   ],
+   "captions": [
+    {
+     "uz": "Manbaga ko‘ra: natija m/z va nisbiy intensivlik spektri sifatida ko‘rsatiladi.",
+     "ru": "По источнику: результат показывается как спектр m/z и относительной интенсивности.",
+     "en": "Per the source: the result is shown as a spectrum of m/z and relative intensity.",
+     "ids": [
+      "L2"
+     ]
+    },
+    {
+     "at": 6,
+     "uz": "Umumiy tamoyil: modda spektrlar kutubxonasi yoki standartlar bilan solishtirib aniqlanadi.",
+     "ru": "Общий принцип: вещество определяют, сравнивая спектр с библиотекой спектров или стандартами.",
+     "en": "General principle: the compound is identified by comparing with a spectral library or standards.",
+     "ids": [
+      "RS",
+      "C10"
+     ]
+    }
+   ]
+  }
+ ]
+}

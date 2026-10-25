@@ -1,0 +1,273 @@
+{
+ "id": "real_time_pcr",
+ "key": "real_time_pcr",
+ "lesson": "docs/video/lessons/04_real_time_pcr.md",
+ "title": {
+  "uz": "Real vaqt PCR: termosiklator va fluoressent detektsiya",
+  "ru": "ПЦР в реальном времени: термоциклер и флуоресцентная детекция",
+  "en": "Real-time PCR: thermal cycler and fluorescence detection"
+ },
+ "subtitle": {
+  "uz": "Video-dars namunasi: ilovaning original sxemasi asosida",
+  "ru": "Образец видеоурока на основе оригинальной схемы приложения",
+  "en": "Video-lesson sample built on the app’s original schematic"
+ },
+ "intro": 3.5,
+ "outro": 3.5,
+ "inset": {
+  "profile": {
+   "uz": "Sikl: harorat bosqichlari (shartli, raqamsiz)",
+   "ru": "Цикл: температурные этапы (условно, без чисел)",
+   "en": "Cycle: temperature steps (illustrative, no values)"
+  },
+  "den": {
+   "uz": "denaturatsiya",
+   "ru": "денатурация",
+   "en": "denaturation"
+  },
+  "ann": {
+   "uz": "praymer birikishi",
+   "ru": "отжиг праймеров",
+   "en": "primer annealing"
+  },
+  "ext": {
+   "uz": "sintez",
+   "ru": "синтез",
+   "en": "extension"
+  },
+  "copies": {
+   "uz": "nishon nusxalari har siklda ~2 barobar",
+   "ru": "копии мишени ~×2 за цикл",
+   "en": "target copies ~×2 per cycle"
+  },
+  "amp": {
+   "uz": "Kuchayish egri chiziqlari — namuna chizma, haqiqiy natija emas",
+   "ru": "Кривые амплификации — условный рисунок, не реальный результат",
+   "en": "Amplification curves — illustrative drawing, not a real result"
+  },
+  "cycle": {
+   "uz": "sikl →",
+   "ru": "цикл →",
+   "en": "cycle →"
+  },
+  "fluo": {
+   "uz": "fluoressensiya",
+   "ru": "флуоресценция",
+   "en": "fluorescence"
+  },
+  "thr": {
+   "uz": "chegara",
+   "ru": "порог",
+   "en": "threshold"
+  }
+ },
+ "scenes": [
+  {
+   "stage": 1,
+   "dur": 7,
+   "cam": [
+    600,
+    400,
+    1.0
+   ],
+   "all": true,
+   "ids": [
+    "L1"
+   ],
+   "captions": [
+    {
+     "uz": "Tashqi ko‘rinish: termosiklator va har siklda fluoressensiyani o‘lchaydigan optik detektor; natija — dastur ekranida.",
+     "ru": "Внешний вид: термоциклер и оптический детектор, измеряющий флуоресценцию в каждом цикле; результат — на экране программы.",
+     "en": "Overview: a thermal cycler with an optical detector that measures fluorescence every cycle; the result is on the software screen."
+    }
+   ]
+  },
+  {
+   "stage": 2,
+   "dur": 12,
+   "cam": [
+    560,
+    400,
+    1.15
+   ],
+   "cycle": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "ids": [
+    "C1",
+    "C2",
+    "C3",
+    "C4",
+    "C5",
+    "C6",
+    "C7"
+   ],
+   "captions": [
+    {
+     "uz": "Umumiy tamoyil: 1 probirkalar, 2 isitiladigan qopqoq, 3 termoblok, 4 nur manbai, 5 filtr g‘ildiragi, 6 detektor, 7 dastur.",
+     "ru": "Общий принцип: 1 пробирки, 2 нагреваемая крышка, 3 термоблок, 4 источник света, 5 колесо фильтров, 6 детектор, 7 программа.",
+     "en": "General principle: 1 tubes, 2 heated lid, 3 thermal block, 4 light source, 5 filter wheel, 6 detector, 7 software."
+    }
+   ]
+  },
+  {
+   "stage": 3,
+   "dur": 9,
+   "cam": [
+    420,
+    430,
+    1.55
+   ],
+   "cycle": [
+    1,
+    3
+   ],
+   "ids": [
+    "L3",
+    "L2",
+    "C1",
+    "C3"
+   ],
+   "captions": [
+    {
+     "uz": "Manbaga ko‘ra: namunadan avval nuklein kislota ajratib olinadi; RNK avval teskari transkriptaza bilan kDNKga aylantiriladi.",
+     "ru": "По источнику: из образца сначала выделяют нуклеиновую кислоту; РНК сначала переводят в кДНК обратной транскриптазой.",
+     "en": "Per the source: nucleic acid is first extracted from the sample; RNA is first converted to cDNA by reverse transcriptase.",
+     "ids": [
+      "L3",
+      "L2"
+     ]
+    },
+    {
+     "at": 4.5,
+     "uz": "Umumiy tamoyil: reaksiya aralashmasi solingan probirkalar termoblokka qo‘yiladi.",
+     "ru": "Общий принцип: пробирки с реакционной смесью ставят в термоблок.",
+     "en": "General principle: tubes with the reaction mix are placed in the thermal block.",
+     "ids": [
+      "C1",
+      "C3"
+     ]
+    }
+   ]
+  },
+  {
+   "stage": 4,
+   "dur": 16,
+   "cam": [
+    605,
+    345,
+    1.75
+   ],
+   "focus": [
+    3
+   ],
+   "ring": false,
+   "ids": [
+    "L2",
+    "C3"
+   ],
+   "captions": [
+    {
+     "uz": "Manbaga ko‘ra: qizdirish DNK zanjirlarini ajratadi, sovutishda praymerlar birikadi, issiqqa chidamli polimeraza yangi zanjir quradi.",
+     "ru": "По источнику: нагрев разделяет цепи ДНК, при охлаждении присоединяются праймеры, термостабильная полимераза строит новую цепь.",
+     "en": "Per the source: heating separates the DNA strands, primers bind on cooling, and a heat-stable polymerase builds the new strand.",
+     "ids": [
+      "L2"
+     ]
+    },
+    {
+     "at": 8.5,
+     "uz": "Manbaga ko‘ra: har siklda nishon taxminan ikki barobar ko‘payadi.",
+     "ru": "По источнику: в каждом цикле мишень примерно удваивается.",
+     "en": "Per the source: the target roughly doubles in every cycle.",
+     "ids": [
+      "L2"
+     ]
+    }
+   ]
+  },
+  {
+   "stage": 5,
+   "dur": 12,
+   "cam": [
+    521,
+    509,
+    2.1
+   ],
+   "cycle": [
+    4,
+    5,
+    6
+   ],
+   "ring": false,
+   "ids": [
+    "L4",
+    "C6",
+    "C4",
+    "C5"
+   ],
+   "captions": [
+    {
+     "uz": "Manbaga ko‘ra: detektor har siklda fluoressensiyani o‘lchaydi; signal amplikon to‘planishiga mutanosib.",
+     "ru": "По источнику: детектор измеряет флуоресценцию в каждом цикле; сигнал пропорционален накоплению ампликона.",
+     "en": "Per the source: the detector measures fluorescence every cycle; the signal is proportional to amplicon build-up.",
+     "ids": [
+      "L4",
+      "C6"
+     ]
+    },
+    {
+     "at": 6,
+     "uz": "Umumiy tamoyil: nur manbai bo‘yoqni qo‘zg‘atadi, filtrlar kerakli rang kanalini tanlaydi.",
+     "ru": "Общий принцип: источник света возбуждает краситель, фильтры выбирают нужный цветовой канал.",
+     "en": "General principle: the light source excites the dye and the filters select the colour channel.",
+     "ids": [
+      "C4",
+      "C5"
+     ]
+    }
+   ]
+  },
+  {
+   "stage": 6,
+   "dur": 14,
+   "cam": [
+    990,
+    280,
+    2.1
+   ],
+   "focus": [
+    7
+   ],
+   "ids": [
+    "L5",
+    "C7"
+   ],
+   "captions": [
+    {
+     "uz": "Manbaga ko‘ra: natija — kuchayish egri chiziqlari va Cq, ya’ni fluoressensiya chegarani kesib o‘tgan sikl.",
+     "ru": "По источнику: результат — кривые амплификации и Cq, то есть цикл, на котором флуоресценция пересекает порог.",
+     "en": "Per the source: the result is the amplification curves and Cq — the cycle at which fluorescence crosses the threshold.",
+     "ids": [
+      "L5"
+     ]
+    },
+    {
+     "at": 7,
+     "uz": "Manbaga ko‘ra: Cq qancha kichik bo‘lsa, boshlang‘ich nishon shuncha ko‘p.",
+     "ru": "По источнику: чем меньше Cq, тем больше исходной мишени.",
+     "en": "Per the source: the lower the Cq, the more starting target.",
+     "ids": [
+      "L5"
+     ]
+    }
+   ]
+  }
+ ]
+}
