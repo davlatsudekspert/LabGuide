@@ -21,6 +21,19 @@ izoh — ARB kalitlari `imgDiagram*` (uz/ru/en).
   tasvirlari/jadvallari ko‘chirilmagan.
 - Uchinchi tomon kontenti topildimi: **yo‘q** (hamma qatorda).
 
+## Haqiqiy kelib chiqish dalillari (hujjatlashtirildi 2026-10-25; faqat tekshirilgan faktlar)
+
+| Savol | Dalil | Holat |
+|---|---|---|
+| Qayerdan keldi | Egasi yuklagan `LabGuide_GLOBAL_MASTER_2026-10-24.zip` → `LabGuide_TARTIBLANGAN_2026-10-24/03_TAYYOR_DIAGRAMMALAR/{svg,png_preview}` (18 SVG + 18 PNG preview) | tasdiqlangan (fayl o‘qildi) |
+| Yaratilgan sana | Arxivdagi fayl vaqti: **2026-10-24 03:42:38 UTC** (barcha 18 SVG va PNG shu vaqtda). Bu arxivga yozilgan sana — **haqiqiy yaratilgan sana emas** (fayl metama’lumotida yaratilish sanasi yo‘q). Eng erta ma’lum sana: 2026-10-24 | qisman |
+| Kim yaratgan | **Paketda muallif ko‘rsatilmagan**: SVG’larda `<metadata>`, `<title>`, `<desc>`, `dc:creator`, dastur belgisi yo‘q (18/18); `README_BOSHLASH.md` va audit hujjatlarida muallif yoki litsenziya bayoni yo‘q (faqat "tayyor diagrammalar", "saqlash kerak"). Texnik ko‘rinish: bir xil shrift (DejaVu Sans) va koordinatalar, ya’ni dasturiy yaratilgan ko‘rinadi — bu **taxmin**, dalil emas | **noma’lum** |
+| Mualliflik asosi | Hujjatda yo‘q. Egasining **og‘zaki** bayoni (suhbat): paketdagi rasmlarni ishlatishga ruxsat bor. Bu yozma litsenziya yoki mualliflik hujjati emas | **tasdiqlanmagan** |
+| Uchinchi tomon kontenti | Barcha 18 SVG matni o‘qildi va PNG’lar ko‘zdan kechirildi: logotip, foto, OEM tasviri yo‘q; faqat LabGuide nomi va umumiy shakllar; pastki yozuvdagi ISO/WHO/Westgard — faqat havola matni | topilmadi |
+| Ilovadagi nusxa | SVG’dan 2026-10-25 da 2× PNG qilib chiqarilgan (mazmun o‘zgartirilmagan), sha256 pastdagi jadvalda | tasdiqlangan |
+
+**Xulosa:** diagrammalar uchinchi tomon materiali emasligi tekshirilgan, lekin **mualliflik va huquq egasi hujjatda tasdiqlanmagan**. Egasi nomidan tasdiq **yozilmaydi**. Holat o‘zgarmaydi: `OWNER_CONFIRMATION_PENDING`. Yozma tasdiq uchun tayyor matn: `docs/DIAGRAMS_OWNER_DECLARATION_DRAFT.md` (egasi o‘zi o‘qib, imzolaydi/yuboradi; tasdiqdan keyingina jadvaldagi holat `APPROVED` ga o‘zgaradi).
+
 ## Fayllar
 
 | Fayl | Mavzu | Tillar | Ko‘rsatiladi | Manba paketi | sha256 | Uchinchi tomon kontenti | Holat |
