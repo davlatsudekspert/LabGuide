@@ -26,12 +26,16 @@ class HowToButton extends StatelessWidget {
       alignment: AlignmentDirectional.centerStart,
       child: Padding(
         padding: const EdgeInsets.only(bottom: 6),
-        child: LgButton.link(
-          key: ValueKey('howto-${section.id}'),
-          label: l.howToButton,
-          icon: Icons.help_outline_rounded,
-          expand: false,
-          onPressed: () => showHowTo(context, HowToRegistry.of(section)),
+        // LgButton ichidagi Center butun kenglikni egallaydi — tugma matn
+        // kengligida, chap tomonda tursin.
+        child: IntrinsicWidth(
+          child: LgButton.link(
+            key: ValueKey('howto-${section.id}'),
+            label: l.howToButton,
+            icon: Icons.help_outline_rounded,
+            expand: false,
+            onPressed: () => showHowTo(context, HowToRegistry.of(section)),
+          ),
         ),
       ),
     );
