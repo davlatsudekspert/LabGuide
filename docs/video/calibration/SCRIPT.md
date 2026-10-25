@@ -90,6 +90,7 @@ Timing source: voice manifest `video_studio/public/audio/en/calibration.timing.j
 | `ofTarget` | {pct} % of target | {pct} % от цели | maqsadning {pct} % |
 | `kickerResiduals` | Fit assessment | Оценка подгонки | Moslikni baholash |
 | `residualsTitle` | Residuals: measured − fitted A | Остатки: измеренное − расчётное A | Qoldiqlar: o‘lchangan − hisoblangan A |
+| `lookFor` | Look for | Проверьте | Tekshiring |
 | `check1` | small | малы | kichik |
 | `check2` | random sign | знак случаен | ishorasi tasodifiy |
 | `check3` | no trend | без тренда | tendensiya yo‘q |

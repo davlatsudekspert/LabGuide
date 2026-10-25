@@ -11,7 +11,8 @@
 // 2. The storyboard layout rules place each clip (scene lead/tail/min length),
 //    so animation and voice share one timeline.
 // 3. ffmpeg: clips mixed at their start times, padded to the video length,
-//    two-pass loudnorm to -16 LUFS integrated, true peak <= -1.5 dBTP, 48 kHz.
+//    two-pass loudnorm to -16 LUFS integrated, true peak -2 dBTP in the WAV
+//    (AAC adds ~0.5 dB of inter-sample peak, so the MP4 stays <= -1.5 dBTP), 48 kHz.
 // Output: public/audio/en/<id>.wav + <id>.timing.json (gitignored WAV; the
 // timing JSON is small and is committed as the voice manifest of record).
 import {execFileSync, spawnSync} from 'node:child_process';
@@ -75,14 +76,14 @@ if (manifest.estimated) {
   const raw = path.join(work, 'mix_raw.wav');
   execFileSync('ffmpeg', ['-y', '-loglevel', 'error', ...inputs, '-filter_complex', `${mix}[m]`, '-map', '[m]', '-ac', '1', '-ar', '48000', raw]);
   // Two-pass EBU R128 loudness normalisation.
-  const p1 = spawnSync('ffmpeg', ['-hide_banner', '-i', raw, '-af', 'loudnorm=I=-16:TP=-1.5:LRA=11:print_format=json', '-f', 'null', '-'], {encoding: 'utf8'});
+  const p1 = spawnSync('ffmpeg', ['-hide_banner', '-i', raw, '-af', 'loudnorm=I=-16:TP=-2:LRA=11:print_format=json', '-f', 'null', '-'], {encoding: 'utf8'});
   const meas = JSON.parse(p1.stderr.slice(p1.stderr.lastIndexOf('{'), p1.stderr.lastIndexOf('}') + 1));
-  const ln = `loudnorm=I=-16:TP=-1.5:LRA=11:measured_I=${meas.input_i}:measured_TP=${meas.input_tp}:measured_LRA=${meas.input_lra}:measured_thresh=${meas.input_thresh}:offset=${meas.target_offset}:linear=true:print_format=json`;
+  const ln = `loudnorm=I=-16:TP=-2:LRA=11:measured_I=${meas.input_i}:measured_TP=${meas.input_tp}:measured_LRA=${meas.input_lra}:measured_thresh=${meas.input_thresh}:offset=${meas.target_offset}:linear=true:print_format=json`;
   const p2 = spawnSync('ffmpeg', ['-y', '-hide_banner', '-i', raw, '-af', ln, '-ar', '48000', '-ac', '1', '-c:a', 'pcm_s16le', wavOut], {encoding: 'utf8'});
   const after = JSON.parse(p2.stderr.slice(p2.stderr.lastIndexOf('{'), p2.stderr.lastIndexOf('}') + 1));
   fs.rmSync(raw);
   sched.loudness = {
-    target: {I: -16, TP: -1.5, LRA: 11},
+    target: {I: -16, TP: -2, LRA: 11},
     before: {I: +meas.input_i, TP: +meas.input_tp, LRA: +meas.input_lra},
     after: {I: +after.output_i, TP: +after.output_tp, LRA: +after.output_lra},
   };

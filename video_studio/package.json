@@ -10,7 +10,8 @@
     "render": "node scripts/render.mjs",
     "typecheck": "tsc --noEmit",
     "voice": "node scripts/voice.mjs",
-    "docs": "node scripts/docs.mjs"
+    "docs": "node scripts/docs.mjs",
+    "remux": "node scripts/remux.mjs"
   },
   "dependencies": {
     "@remotion/cli": "4.0.534",

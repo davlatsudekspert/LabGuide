@@ -18,6 +18,8 @@ haqiqatan ishlaydigan, serversiz ekranlar ko‘rsatiladi (`docs/VIDEO_FEATURE_IN
 Kadrlar ichidagi namuna qiymatlar (Glucose 5,0 ± 0,2; REF 10121; kreatinin 88 µmol/L va h.k.) — faqat
 ko‘rsatish uchun, haqiqiy bemor yoki laboratoriya ma’lumoti emas.
 
+**Flagman reklama videosi (Remotion studiyasi):** `docs/video/calibration/` (kalibrlash, en/ru/uz × 9:16/16:9, inglizcha sintetik diktor) — qanday qilinadi: `docs/video/STUDIO_README.md`.
+
 ## Mavzular
 
 | # | Mavzu | Hujjat (storyboard) | How-to bo‘limi | Video |

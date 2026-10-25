@@ -13,6 +13,7 @@ listening review pending** · RU/UZ editions = burned-in + SRT/VTT subtitles and
 | `CLAIMS_AND_EVIDENCE.md` | Every on-screen claim → code / test / doc evidence; epistemic table (SOURCED / STANDARD_TEXTBOOK / NEEDS_EXPERT) |
 | `OUTPUTS.md` | Generated after rendering: ffprobe facts and sha256 of every MP4 / JPG / SRT / VTT |
 | `QA.md` | Quality self-check: frames viewed, problems found and fixed, open items |
+| `DESCRIPTION.md` | Draft description texts (EN/RU/UZ) with the synthetic-voice disclosure and Kokoro credit |
 
 Sources of the visuals: the app's original schematic (`tool/illustrations/schematic/chemistry.svg`), an original
 optical-bench cut-away and chart drawn in code, and **real app screens** rendered from the app with

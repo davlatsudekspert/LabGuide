@@ -113,7 +113,7 @@
   "loudness": {
     "target": {
       "I": -16,
-      "TP": -1.5,
+      "TP": -2,
       "LRA": 11
     },
     "before": {
@@ -122,9 +122,9 @@
       "LRA": 2.5
     },
     "after": {
-      "I": -16.07,
-      "TP": -1.5,
-      "LRA": 2.2
+      "I": -16.12,
+      "TP": -2,
+      "LRA": 2.4
     }
   },
   "voice": "Kokoro-82M v1.0 int8 ONNX, voice af_heart (Apache-2.0)",

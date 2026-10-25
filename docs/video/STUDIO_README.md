@@ -70,12 +70,14 @@ video_studio/
    npm run voice -- --id <id> --python /tmp/kv/bin/python --model …/kokoro-v1.0.int8.onnx --voices …/voices-v1.0.bin --voice af_heart
    ```
    `tool/tts/synth.py` (o‘zgartirmasdan) har qatorni sintez qiladi; skript qatorlarni sahna qoidalari bo‘yicha
-   joylaydi, ffmpeg bilan aralashtiradi va **ikki o‘tishli loudnorm** (−16 LUFS, true peak ≤ −1,5 dBTP) qiladi →
+   joylaydi, ffmpeg bilan aralashtiradi va **ikki o‘tishli loudnorm** (−16 LUFS; WAV da true peak −2 dBTP, AAC dan keyin MP4 da ≤ −1,5 dBTP — o‘lchangan: −2,0) qiladi →
    `public/audio/en/<id>.wav` + `<id>.timing.json`. Ovoz yo‘q bo‘lsa bu qadam tashlab ketiladi — render sukutda.
    Ovoz haqida: "English synthetic narration (Kokoro), listening review pending" — "tabiiy/professional" demang.
 7. **Render.** `npm run render -- --id <id> --lang all --format all` (yoki `--lang en --format vertical`;
    tez tekshiruv: `--frames 0-149`). H.264 High, yuv420p, 30 fps, +faststart, ovoz bo‘lsa AAC 48 kHz.
    Chiqish: `out/<id>/<lang>/<id>_<lang>_<format>.mp4`, `<id>_<lang>.srt/.vtt`, thumbnail va cover JPG.
+   Ovoz vaqti o‘zgarmay faqat WAV yangilansa (masalan, loudness): `npm run remux -- --id <id>` — video
+   qayta render qilinmaydi (stream copy), faqat audio almashadi.
 8. **Hujjatlar.** `npm run docs -- --id <id>` → SCRIPT.md, MATH_APPENDIX.md, OUTPUTS.md (ffprobe + sha256).
    CLAIMS_AND_EVIDENCE.md ni qo‘lda yozing: ekrandagi har da’vo → kod/test/hujjat.
 9. **Paket.** MP4 + SRT/VTT + JPG lar `out/` da qoladi; hech qayerga yuklanmaydi. Tavsifga: "Narration generated
@@ -90,6 +92,7 @@ video_studio/
   `npm install` qayta tiklasa — `@remotion/compositor-linux-x64-musl` va `@rspack/binding-linux-x64-musl` ni
   o‘chirib tashlash mumkin). Har MP4 ≈ 20–40 MB. Remotion o‘z Chromium’ini yuklamaydi:
   `/opt/pw-browsers/chromium_headless_shell-1194/…/headless_shell` (`REMOTION_BROWSER` bilan almashtiriladi).
+* Sparse checkout: `video_studio` va `tool/tts` ikkalasi ham ro‘yxatda bo‘lsin (`git sparse-checkout add video_studio tool/tts`) — aks holda `sparse-checkout add` boshqa papkani ishchi daraxtdan olib tashlaydi.
 * Render oldidan `df -h /home`; skript 400 MB dan kam joy bo‘lsa to‘xtaydi.
 
 ## 5. Litsenziyalar
