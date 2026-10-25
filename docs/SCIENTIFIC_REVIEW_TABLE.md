@@ -160,19 +160,12 @@ Tuzatilmadi (lib/, ARB, katalog, assets o‘zgartirilmaydi) — faqat ro‘yxat;
 2. **DRAW-HBA1C** — `hba1c_analyzer`: docs/LAB_CARD_IMAGE_COVERAGE.md (a2-test-hba1c, a2-platform-hba1c-analyzer) “ichki usul ataylab ko‘rsatilmagan” deydi, lekin 2026-10-25 yangilangan chizma (SCHEMATICS_PROVENANCE.md) ion almashinuv kolonkasi, fotometrik detektor va xromatogrammani ko‘rsatadi; `labSchemHba1cAnalyzer` alt-matnida esa kolonka/detektor yo‘q. Karta bir nechta usulni (ion almashinish, borat affinligi, immunoanaliz, ferment) qamraydi (SCHEM-hba1c_analyzer-drawing-01).
 3. **DRAW-TUBES** — `hematology5` avtoyuklagichi (`rack(..., caps=TUBE_CAPS)`), `chemistry` va `immunoassay` namuna rakalari turli rangli qopqoqli (binafsha, qizil, sariq, ko‘k, yashil) to‘liq qon probirkalari bilan chizilgan. Umumiy qon tahlili — EDTA (binafsha), biokimyo/immunoanaliz — zardob/plazma. `coag_analyzer` (havorang) va `hba1c_analyzer` (binafsha) to‘g‘ri chizilgani uchun bu nomuvofiqlik ko‘zga tashlanadi.
 4. **DRAW-HEM3** — `hematology3` displeyida uchta bir xil Gauss shaklidagi gistogramma; haqiqiy 3 qismli WBC gistogrammasida uchta subpopulyatsiya, PLT gistogrammasi o‘ngga cho‘zilgan — soddalashtirish o‘quvchini chalg‘itishi mumkin (SCHEM-hematology3-drawing-02).
-5. **L10N-REFERENS** — `differential_count.uz.png` va ARB `diffInterpretIntro`/`diffRangesBody` “referens oraliq” deydi; docs/L10N_TERMINOLOGY_DECISIONS.md uz uchun yagona atama “referens interval” (NEEDS_NATIVE_REVIEW) deb qayd etgan.
-6. **L10N-DIF-OIL** — `differential_count` 2-qadam: en “×100 oil”, ru/uz faqat “×100” — immersion moyi haqidagi ma’lumot tushib qolgan.
-7. **L10N-QC-STOP** — `qc_decision`: en “Reject: stop, do not report results”; ru “Отклонить: результаты пациентов не выдавать”, uz “Rad: bemor natijalarini bermang” — “stop/to‘xtating” yo‘q. uz 4-qadam “QC va namunalarni” — en “patient samples” (‘bemor’ yo‘q).
-8. **CIT-WHO2003** — `differential_count` pastki iqtibosi “WHO basic laboratory manual 2003” — WHO 2003 hujjatining rasmiy nomi “Manual of basic techniques for a health laboratory, 2nd ed.”; ru/uz da “Руководство ВОЗ 2003” / “JSST qo‘llanmasi 2003” (nom qisqartirilgan).
-9. **TERM-ABS** — `photometry`: en “Absorbance” → ru “Оптическая плотность”, uz “Optik zichlik” (IUPAC bo‘yicha absorbance va optical density farqlanadi; ilova ma’ruzasi atamasi bilan bir xil — atama qarori kerak, DIAGRAMS_CONTENT_SOURCES.md da allaqachon NEEDS_EXPERT).
-10. **DOC-DISAGREE** — docs/DIAGRAMS_CONTENT_SOURCES.md: QC-4 jadvalda `SOURCED`, lekin shu bo‘limning NEEDS_EXPERT izohida (qator 34) mutaxassis tasdig‘i talab qilingan — jadvalda ehtiyotkor holat olindi.
-11. **DOC-DISAGREE** — CAL-5: DIAGRAMS_CONTENT_SOURCES.md da `SOURCED`, lekin registr `CALIB-ACCEPTANCE-RULES` (AWAITING_EXPERT) qabul shartini ilova qoidasi deb belgilaydi — ehtiyotkorrog‘i olindi.
-12. **DOC-GAP** — `differential_count` sxemasining pastki iqtibosi (“WHO basic laboratory manual 2003 · lab SOP prevails”) docs/DIAGRAMS_CONTENT_SOURCES.md jadvalida ID siz — jadvalga DIAG-differential_count-08 sifatida qo‘shildi.
-13. **DOC-DISAGREE** — PHO-1 (fotometriya optik yo‘li): DIAGRAMS_CONTENT_SOURCES.md da `SOURCED`, DIAGRAMS_PROVENANCE.md:96 da NEEDS_EXPERT (filtr o‘rniga monoxromator) — ehtiyotkorrog‘i olindi.
-14. **SRC-SCOPE** — SCHEM-urine_strip-principle: manba `ro-6500` shu chizmani ishlatuvchi karta/modellarda keltirilmagan.
-15. **NUM-UNVERIFIED** — SCHEM-flow_cytometer-part-06: “90 °” keltirilgan manba (a3-statpearls-flow) bo‘yicha katalog matnida yo‘q.
-16. **NUM-NO-SOURCE** — SCHEM-real_time_pcr-part-01: “8 tube” — manbasiz aniq raqam (STANDARD_TEXTBOOK).
-17. **NUM-NO-SOURCE** — SCHEM-coag_analyzer-part-04: “37 °C” — manbasiz aniq raqam (STANDARD_TEXTBOOK).
+5. **L10N-REFERENS** — ARB `diffInterpretIntro`/`diffRangesBody` (uz) “referens oraliq” deydi; docs/L10N_TERMINOLOGY_DECISIONS.md uz uchun yagona atama “referens interval” (NEEDS_NATIVE_REVIEW). `differential_count.uz.png` va uning alt-matni 2026-10-25 da “referens interval” ga o‘tkazildi; ARB qatorlari tuzatilmagan.
+6. **TERM-ABS** — `photometry`: en “Absorbance”; ilova ARB’ida absorbance — ru “поглощение”, uz “yutilish”, ma’ruzada — “оптическая плотность”/“optik zichlik”. 2026-10-25 da sxema ilovaning o‘z iborasiga (“Поглощение (оптическая плотность)”, “Yutilish (optik zichlik)”) moslandi; IUPAC farqi (absorbance ≠ optical density) bo‘yicha atama qarori hali mutaxassisniki.
+7. **SRC-SCOPE** — SCHEM-urine_strip-principle: manba `ro-6500` shu chizmani ishlatuvchi karta/modellarda keltirilmagan.
+8. **NUM-UNVERIFIED** — SCHEM-flow_cytometer-part-06: “90 °” keltirilgan manba (a3-statpearls-flow) bo‘yicha katalog matnida yo‘q.
+9. **NUM-NO-SOURCE** — SCHEM-real_time_pcr-part-01: “8 tube” — manbasiz aniq raqam (STANDARD_TEXTBOOK).
+10. **NUM-NO-SOURCE** — SCHEM-coag_analyzer-part-04: “37 °C” — manbasiz aniq raqam (STANDARD_TEXTBOOK).
 
 ## Qayta yaratish
 

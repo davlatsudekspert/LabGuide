@@ -345,9 +345,9 @@ CHECK_DIAG = {
     "QC-2": "Maqsadli o‘rtacha va SD manbasi (laboratoriyaning o‘z ma’lumoti); Levey–Jennings grafigi atamasi uz/ru da.",
     "QC-3": "Rad qoidalari ro‘yxati (1-3s, 2-2s, R-4s, 4-1s, 10x) Westgard 1981 ga mosmi; ru/uz ‘Rad qoidasi’ atamasi.",
     "QC-4": "Ilova qarori D-20: 1-2s har seriyada faqat ogohlantirish, barcha rad qoidalari tekshiriladi (1981 dagi ‘1-2s eshik’ tartibidan qattiqroq) — klinik biokimyogar tasdiqlashi kerak.",
-    "QC-5": "‘Rad: to‘xtating, bemor natijalarini bermang’ — ru/uz matnida ‘stop/to‘xtating’ tushib qolgan; ma’no yetarlimi.",
+    "QC-5": "‘Rad: to‘xtating, bemor natijalarini bermang’ — WHO LQMS 7-6 ga mosmi (ru/uz ‘остановить/to‘xtating’ 2026-10-25 da qaytarildi).",
     "QC-6": "‘QC ni shunchaki takrorlamang’ — WHO LQMS 7-6 ga mosmi.",
-    "QC-7": "‘QC va bemor namunalarini qayta tekshiring’ — uz matnda ‘bemor’ so‘zi yo‘q (‘namunalarni’).",
+    "QC-7": "‘QC va bemor namunalarini qayta tekshiring’ — WHO LQMS 7-6 ga mosmi (uz ‘bemor’ 2026-10-25 da qaytarildi).",
     "QC-8": "‘Nazorat tiklangach natija bering; choralarni yozing’ — ru ‘Выдача — после восстановления КК’ iborasi tushunarlimi.",
     "QC-9": "Iqtiboslar: Westgard 1981, WHO LQMS 2011; ‘SOP ustun’ izohi.",
     "CAL-1": "Kalibrlashdan oldin model, reagent va IFU versiyasini moslash talabi.",
@@ -360,14 +360,14 @@ CHECK_DIAG = {
     "CAL-8": "‘Parametrlar faqat mos IFU dan’ izohi.",
     "DIF-1": "Surtma sifati mezonlari (tekis, chiziq va teshiksiz) — WHO 2003 §9.10.3.",
     "DIF-2": "‘Yomon surtma — yangisini tayyorlang’ — WHO 2003 dan amaliy xulosa (to‘g‘ridan-to‘g‘ri iqtibos emas).",
-    "DIF-3": "Bir qavatli zona, ×100 immersion, bir yo‘nalish — ru/uz matnida ‘immersion/oil’ so‘zi tushib qolgan.",
+    "DIF-3": "Bir qavatli zona, ×100 immersion, bir yo‘nalish — WHO 2003 §9.10.4 ga mosmi (ru/uz ‘иммерсия/immersiya’ 2026-10-25 da qaytarildi).",
     "DIF-4": "‘Odatda 100 hujayra’ — WHO 2003 §9.13 (100) va Lyubina 1984 (200) farqi; SOP maqsadi.",
     "DIF-5": "Mutlaq son = ulush × WBC formulasi.",
     "DIF-6": "Blast/aniqlanmagan hujayrada yo‘llash matni — registry DIFF-REFER-BODY-WORDING (AWAITING_EXPERT).",
-    "DIF-7": "Referens oraliq laboratoriya blankasidan — uz atamasi ‘referens oraliq’ (terminologiya qarori: ‘referens interval’).",
-    "DIF-8": "Pastki iqtibos ‘WHO basic laboratory manual 2003’ — DIAGRAMS_CONTENT_SOURCES.md da ID siz; asl nom: WHO ‘Manual of basic techniques for a health laboratory’, 2nd ed., 2003.",
+    "DIF-7": "Referens interval laboratoriya blankasidan — uz atamasi ‘referens interval’ (L10N_TERMINOLOGY_DECISIONS.md, NEEDS_NATIVE_REVIEW).",
+    "DIF-8": "Pastki iqtibos ‘WHO 2003’ (ilova ARB `diffRangesWho` qisqa shakli); to‘liq nom: WHO ‘Manual of basic techniques for a health laboratory’, 2nd ed., 2003 (differential_sources.dart).",
     "PHO-1": "Optik yo‘l: manba → filtr → kyuveta → detektor; avtomatik analizatorlarda filtr o‘rniga monoxromator/panjara bo‘lishi mumkin (DIAGRAMS_PROVENANCE.md NEEDS_EXPERT 4-band).",
-    "PHO-2": "A = log₁₀(I₀/I) ta’rifi; ‘Absorbance’ → uz ‘Optik zichlik’, ru ‘Оптическая плотность’ atamasi (IUPAC farqi).",
+    "PHO-2": "A = log₁₀(I₀/I) ta’rifi; ‘Absorbance’ → ru ‘Поглощение (оптическая плотность)’, uz ‘Yutilish (optik zichlik)’ (ilova ARB iborasi; IUPAC farqi — atama qarori kerak).",
     "PHO-3": "Ber–Lambert qonuni A = ε·ℓ·c; ru/uz ‘Bugera–Lambert–Ber’ nomlanishi.",
     "PHO-4": "Blank → standart → namuna o‘lchash tartibi.",
     "PHO-5": "C = (A namuna ÷ A standart) × C standart — bir nuqtali kalibrlash formulasi.",
@@ -387,7 +387,7 @@ CHECK_DIAG = {
     "EDU-5": "Izoh: ‘LabGuide mashqi tartibi — laboratoriya jarayoni emas’.",
 }
 # DIAGRAMS_CONTENT_SOURCES.md jadvalida yo‘q, lekin chizmada bor (o‘zimiz qo‘shgan qator)
-EXTRA_CLAIMS = {"DIF-8": ("WHO basic laboratory manual 2003 · lab SOP prevails", "—", "NEEDS_EXPERT")}
+EXTRA_CLAIMS = {"DIF-8": ("WHO 2003 · your lab SOP prevails", "—", "NEEDS_EXPERT")}
 # Registr / qaror bog‘lanishlari (hujjat izohlaridan; skript mavjudligini tekshiradi)
 REG_LINK = {"CAL-6": "CALIB-ACCEPTANCE-RULES", "CAL-7": "CALIB-ACCEPTANCE-RULES", "CAL-5": "CALIB-ACCEPTANCE-RULES",
             "DIF-6": "DIFF-REFER-BODY-WORDING"}
@@ -397,18 +397,18 @@ FOOTER_IDS = {"QC-9", "CAL-8", "DIF-8", "PHO-7", "PRE-7", "EDU-5"}
 PROVENANCE_EXTRA = {"PHO-1": "monoxromator"}  # DIAGRAMS_PROVENANCE.md NEEDS_EXPERT ro‘yxati qamragan
 DIAG_TR_MED = {"d", "d2", "ok", "no", "r1", "r2", "r3", "r4", "refer", "report"}
 DIAG_TR_NOTE = {
-    ("qc_decision", "r1", "ru"): "en ‘stop’ tushib qolgan.",
-    ("qc_decision", "r1", "uz"): "en ‘stop’ tushib qolgan.",
-    ("qc_decision", "r3", "uz"): "‘patient samples’ → ‘namunalarni’ (‘bemor’ yo‘q).",
+    ("qc_decision", "r1", "ru"): "‘stop’ → ‘остановить’ (2026-10-25 da qaytarildi; ilova qc_guides_info.dart:76 dagi kabi).",
+    ("qc_decision", "r1", "uz"): "‘stop’ → ‘to‘xtating’ (2026-10-25 da qaytarildi; ilova qc_guides_info.dart:76 dagi kabi).",
+    ("qc_decision", "r3", "uz"): "‘patient samples’ → ‘bemor namunalarini’ (2026-10-25 da tuzatildi).",
     ("qc_decision", "r4", "ru"): "‘Выдача — после восстановления КК’ — qisqartirilgan ibora (DIAGRAMS_CONTENT_SOURCES ‘Til’ bo‘limi).",
     ("qc_decision", "r4", "uz"): "‘QC tiklangach natija bering’ — qisqartirilgan ibora (DIAGRAMS_CONTENT_SOURCES ‘Til’ bo‘limi).",
-    ("differential_count", "s2", "ru"): "en ‘×100 oil’ → ‘×100’ (immersion tushib qolgan).",
-    ("differential_count", "s2", "uz"): "en ‘×100 oil’ → ‘×100’ (immersion tushib qolgan).",
-    ("differential_count", "report", "uz"): "‘Referens oraliq’ — L10N_TERMINOLOGY_DECISIONS.md: uz yagona atama ‘referens interval’ (NEEDS_NATIVE_REVIEW).",
-    ("differential_count", "footer", "ru"): "‘Руководство ВОЗ 2003’ — hujjat nomi qisqartirilgan.",
-    ("differential_count", "footer", "uz"): "‘JSST qo‘llanmasi 2003’ — hujjat nomi qisqartirilgan.",
-    ("photometry", "f1", "ru"): "‘Absorbance’ → ‘Оптическая плотность’ (IUPAC: absorbance ≠ optical density).",
-    ("photometry", "f1", "uz"): "‘Absorbance’ → ‘Optik zichlik’ (IUPAC farqi; ma’ruza atamasiga mos).",
+    ("differential_count", "s2", "ru"): "en ‘×100 oil’ → ‘иммерсия ×100’ (2026-10-25 da tuzatildi).",
+    ("differential_count", "s2", "uz"): "en ‘×100 oil’ → ‘×100 immersiya’ (2026-10-25 da tuzatildi).",
+    ("differential_count", "report", "uz"): "‘Referens interval’ — L10N_TERMINOLOGY_DECISIONS.md uz yagona atamasi (NEEDS_NATIVE_REVIEW); 2026-10-25 da ‘referens oraliq’ dan tuzatildi.",
+    ("differential_count", "footer", "ru"): "‘ВОЗ 2003’ — ilova ARB `diffRangesWho` qisqa iqtibos shakli.",
+    ("differential_count", "footer", "uz"): "‘JSST 2003’ — ilova ARB `diffRangesWho` qisqa iqtibos shakli.",
+    ("photometry", "f1", "ru"): "‘Absorbance’ → ‘Поглощение (оптическая плотность)’ — ilova ARB iborasi (schemParts*); IUPAC: absorbance ≠ optical density — atama qarori kerak.",
+    ("photometry", "f1", "uz"): "‘Absorbance’ → ‘Yutilish (optik zichlik)’ — ilova ARB iborasi (schemParts*); atama qarori kerak.",
     ("photometry", "f2", "ru"): "‘Beer–Lambert’ → ‘Бугера–Ламберта–Бера’ (rus an’anasi).",
     ("photometry", "f2", "uz"): "‘Beer–Lambert’ → ‘Buger–Lambert–Ber’.",
 }
@@ -1035,11 +1035,8 @@ MANUAL_FINDINGS = [
     ("DRAW-HBA1C", "`hba1c_analyzer`: docs/LAB_CARD_IMAGE_COVERAGE.md (a2-test-hba1c, a2-platform-hba1c-analyzer) “ichki usul ataylab ko‘rsatilmagan” deydi, lekin 2026-10-25 yangilangan chizma (SCHEMATICS_PROVENANCE.md) ion almashinuv kolonkasi, fotometrik detektor va xromatogrammani ko‘rsatadi; `labSchemHba1cAnalyzer` alt-matnida esa kolonka/detektor yo‘q. Karta bir nechta usulni (ion almashinish, borat affinligi, immunoanaliz, ferment) qamraydi (SCHEM-hba1c_analyzer-drawing-01)."),
     ("DRAW-TUBES", "`hematology5` avtoyuklagichi (`rack(..., caps=TUBE_CAPS)`), `chemistry` va `immunoassay` namuna rakalari turli rangli qopqoqli (binafsha, qizil, sariq, ko‘k, yashil) to‘liq qon probirkalari bilan chizilgan. Umumiy qon tahlili — EDTA (binafsha), biokimyo/immunoanaliz — zardob/plazma. `coag_analyzer` (havorang) va `hba1c_analyzer` (binafsha) to‘g‘ri chizilgani uchun bu nomuvofiqlik ko‘zga tashlanadi."),
     ("DRAW-HEM3", "`hematology3` displeyida uchta bir xil Gauss shaklidagi gistogramma; haqiqiy 3 qismli WBC gistogrammasida uchta subpopulyatsiya, PLT gistogrammasi o‘ngga cho‘zilgan — soddalashtirish o‘quvchini chalg‘itishi mumkin (SCHEM-hematology3-drawing-02)."),
-    ("L10N-REFERENS", "`differential_count.uz.png` va ARB `diffInterpretIntro`/`diffRangesBody` “referens oraliq” deydi; docs/L10N_TERMINOLOGY_DECISIONS.md uz uchun yagona atama “referens interval” (NEEDS_NATIVE_REVIEW) deb qayd etgan."),
-    ("L10N-DIF-OIL", "`differential_count` 2-qadam: en “×100 oil”, ru/uz faqat “×100” — immersion moyi haqidagi ma’lumot tushib qolgan."),
-    ("L10N-QC-STOP", "`qc_decision`: en “Reject: stop, do not report results”; ru “Отклонить: результаты пациентов не выдавать”, uz “Rad: bemor natijalarini bermang” — “stop/to‘xtating” yo‘q. uz 4-qadam “QC va namunalarni” — en “patient samples” (‘bemor’ yo‘q)."),
-    ("CIT-WHO2003", "`differential_count` pastki iqtibosi “WHO basic laboratory manual 2003” — WHO 2003 hujjatining rasmiy nomi “Manual of basic techniques for a health laboratory, 2nd ed.”; ru/uz da “Руководство ВОЗ 2003” / “JSST qo‘llanmasi 2003” (nom qisqartirilgan)."),
-    ("TERM-ABS", "`photometry`: en “Absorbance” → ru “Оптическая плотность”, uz “Optik zichlik” (IUPAC bo‘yicha absorbance va optical density farqlanadi; ilova ma’ruzasi atamasi bilan bir xil — atama qarori kerak, DIAGRAMS_CONTENT_SOURCES.md da allaqachon NEEDS_EXPERT)."),
+    ("L10N-REFERENS", "ARB `diffInterpretIntro`/`diffRangesBody` (uz) “referens oraliq” deydi; docs/L10N_TERMINOLOGY_DECISIONS.md uz uchun yagona atama “referens interval” (NEEDS_NATIVE_REVIEW). `differential_count.uz.png` va uning alt-matni 2026-10-25 da “referens interval” ga o‘tkazildi; ARB qatorlari tuzatilmagan."),
+    ("TERM-ABS", "`photometry`: en “Absorbance”; ilova ARB’ida absorbance — ru “поглощение”, uz “yutilish”, ma’ruzada — “оптическая плотность”/“optik zichlik”. 2026-10-25 da sxema ilovaning o‘z iborasiga (“Поглощение (оптическая плотность)”, “Yutilish (optik zichlik)”) moslandi; IUPAC farqi (absorbance ≠ optical density) bo‘yicha atama qarori hali mutaxassisniki."),
 ]
 
 

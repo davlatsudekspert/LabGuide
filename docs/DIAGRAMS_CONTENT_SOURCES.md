@@ -24,7 +24,7 @@ ilovadagi `imgDiagramCaption` ham buni takrorlaydi.
 | QC-1 | Measure the control materials | `lib/features/qc/qc_guides_info.dart:45` (QcGuide.rejected, WHO LQMS 2011 §7-6); ARB `qcIntro` | SOURCED |
 | QC-2 | Levey–Jennings chart, target mean ± SD | ARB `qcChartTitle`, `qcIntro`, `qcTargetNote` (Westgard JO et al., Clin Chem 1981; doi:10.1093/clinchem/27.3.493) | SOURCED |
 | QC-3 | Rejection rule violated? 1-3s, 2-2s, R-4s, 4-1s, 10x | `lib/features/qc/qc_rules.dart:1-31` (Westgard 1981; `docs/DECISIONS.md` D-20) | SOURCED |
-| QC-4 | No → accept the run; 1-2s alone is a warning only | `qc_rules.dart:30` (“1-2s — ogohlantirish”), `qc_rules.dart:275`; ARB `qcAccept`, `qcWarning` | SOURCED |
+| QC-4 | No → accept the run; 1-2s alone is a warning only | `qc_rules.dart:30` (“1-2s — ogohlantirish”), `qc_rules.dart:275`; ARB `qcAccept`, `qcWarning`; ilova qarori D-20 | NEEDS_EXPERT |
 | QC-5 | Yes → reject: stop, do not report (patient) results | `qc_guides_info.dart:76` (WHO LQMS 2011 §7-6) | SOURCED |
 | QC-6 | Find the cause; do not just repeat QC | `qc_guides_info.dart:100` | SOURCED |
 | QC-7 | Fix it; recheck QC and patient samples | `qc_guides_info.dart:109`, `:119` | SOURCED |
@@ -43,12 +43,12 @@ aks ettiradi; klinik-kimyo mutaxassisi tasdiqlashi kerak.
 | CAL-2 | Calibrator lot; values from this lot’s value sheet | ARB `calStep2`, `calValuesFromSheet`, `calGuide3` | SOURCED |
 | CAL-3 | Method-specific preparation | ARB `calStep3` | SOURCED |
 | CAL-4 | Calibration according to the instructions | ARB `calStep4` | SOURCED |
-| CAL-5 | Post-calibration QC passed? | ARB `calStep5`, `calGuide5` | SOURCED |
+| CAL-5 | Post-calibration QC passed? | ARB `calStep5`, `calGuide5`; qabul sharti — registry `CALIB-ACCEPTANCE-RULES` | NEEDS_EXPERT |
 | CAL-6 | Yes → accepted by an authorized person | ARB `calSafeQcPassRequired`, `calSafeApproverRequired` | NEEDS_EXPERT |
 | CAL-7 | No → not accepted; troubleshoot per IFU and SOP | ARB `calStep6` (“Records and troubleshooting”), `calGuide4` (recalibration triggers in the IFU) | NEEDS_EXPERT |
 | CAL-8 | Footer: parameters only from the matching IFU · lab SOP prevails | ARB `calNoMatchBody` | SOURCED |
 
-NEEDS_EXPERT: CAL-6/CAL-7 — “qabul” sharti ilova qoidasi (registry `CALIB-ACCEPTANCE-RULES`,
+NEEDS_EXPERT: CAL-5/CAL-6/CAL-7 — “qabul” sharti ilova qoidasi (registry `CALIB-ACCEPTANCE-RULES`,
 AWAITING_EXPERT), ishlab chiqaruvchi chegarasi emas. Laboratoriya sifat menejeri / metrolog ko‘rsin.
 
 ## differential_count — Leykoformulani qo‘lda sanash (DifferentialScreen)
@@ -62,9 +62,12 @@ AWAITING_EXPERT), ishlab chiqaruvchi chegarasi emas. Laboratoriya sifat menejeri
 | DIF-5 | % of each cell type; absolute = fraction × WBC | `differential_content.dart:1360`; ARB `diffAbsNote` | SOURCED |
 | DIF-6 | Blasts or unidentified cells? → do not interpret yourself; a hematologist or physician reviews the smear | ARB `diffReferBody`, `diffOtherWarning` | NEEDS_EXPERT |
 | DIF-7 | No → compare with the reference interval on your lab’s report form | ARB `diffInterpretIntro`, `diffRangesBody` | SOURCED |
+| DIF-8 | Footer: WHO 2003 · your lab SOP prevails | ARB `diffRangesWho` (ilovadagi qisqa iqtibos: “WHO 2003” / “ВОЗ 2003” / “JSST 2003”); to‘liq nom `lib/features/differential/differential_sources.dart` (`DiffSources.who2003`: WHO. Manual of basic techniques for a health laboratory, 2nd ed., 2003) | NEEDS_EXPERT |
 
 NEEDS_EXPERT: DIF-2 (yangi surtma — amaliy xulosa), DIF-6 (registry `DIFF-REFER-BODY-WORDING`,
-AWAITING_EXPERT). ICSH iqtibosi ishlatilmadi — ilovaning leykoformula ekranlarida ICSH keltirilmagan.
+AWAITING_EXPERT). DIF-8: pastki iqtibos ilovaning o‘z qisqa shakli (`diffRangesWho`); bibliografik tafsilot
+qo‘shilmagan. uz atama: “referens interval” (docs/L10N_TERMINOLOGY_DECISIONS.md, NEEDS_NATIVE_REVIEW);
+ru “референтный интервал”, en “reference interval” — 6 sxemadan faqat shu yerda uchraydi. ICSH iqtibosi ishlatilmadi — ilovaning leykoformula ekranlarida ICSH keltirilmagan.
 
 ## photometry — Absorbsion fotometriya (fotometrik / biokimyo apparat kartasi)
 
@@ -73,7 +76,7 @@ Asosiy manba — ilovadagi ma’ruza `assets/lectures/decks/fotometriya-asoslari
 
 | ID | Sxemadagi gap (en) | Manba (repo) | Holat |
 |---|---|---|---|
-| PHO-1 | Light source → filter (λ) → cuvette → detector → result | deck, “Principle” 1/2: source → slit → filter → cuvette → photodetector → microprocessor | SOURCED |
+| PHO-1 | Light source → filter (λ) → cuvette → detector → result | deck, “Principle” 1/2: source → slit → filter → cuvette → photodetector → microprocessor; filtr o‘rniga monoxromator bo‘lishi mumkin (DIAGRAMS_PROVENANCE.md NEEDS_EXPERT 4) | NEEDS_EXPERT |
 | PHO-2 | Absorbance A = log₁₀(I₀ / I) | deck “About absorbance” (A = 1 → 10 % o‘tadi — shu ta’rifga mos); ta’rifning o‘zi | STANDARD_TEXTBOOK |
 | PHO-3 | Beer–Lambert law A = ε · ℓ · c (ℓ — kyuvetadagi optik yo‘l) | umumiy optika qonuni; deck: optik yo‘l 1 sm | STANDARD_TEXTBOOK |
 | PHO-4 | Measure blank → standard → sample | deck “Manual determination” 2 va 4 | SOURCED |
@@ -81,9 +84,12 @@ Asosiy manba — ilovadagi ma’ruza `assets/lectures/decks/fotometriya-asoslari
 | PHO-6 | Above the linearity limit? → dilute, repeat, multiply by the dilution factor | deck “Manual determination” 6; “About absorbance” 2/2 | SOURCED |
 | PHO-7 | Footer: wavelength, blank and limits per the reagent IFU | deck 4 (“as in the instructions”) | SOURCED |
 
-NEEDS_EXPERT: atamalar — uz “optik zichlik”, “Buger–Lambert–Ber qonuni”, ru “оптическая плотность”,
-“закон Бугера–Ламберта–Бера” (ilova ma’ruzasidagi atamalar bilan bir xil); avtomatik analizatorlarda
-filtr o‘rniga monoxromator/panjara bo‘lishi mumkin — sxema umumiy tamoyil.
+NEEDS_EXPERT: PHO-1 — avtomatik analizatorlarda filtr o‘rniga monoxromator/panjara bo‘lishi mumkin
+(sxema umumiy tamoyil). Atamalar: en “absorbance” uchun ilova ARB’ida ru “поглощение”, uz “yutilish”
+(`schemParts*`), ma’ruzada ru “оптическая плотность”, uz “optik zichlik”; sxema ilovaning o‘z iborasini oladi —
+ru “Поглощение (оптическая плотность)”, uz “Yutilish (optik zichlik)” (`schemPartsElisaReaderPrinciple` dagi kabi).
+Atama qarori (IUPAC: absorbance ≠ optical density) mutaxassisniki — o‘zimiz “tuzatmadik”. Qonun nomi: uz
+“Buger–Lambert–Ber qonuni”, ru “закон Бугера–Ламберта–Бера” (ma’ruza atamasi).
 
 ## preanalytics — Preanalitik bosqich (PreanalyticsScreen)
 
@@ -108,6 +114,12 @@ filtr o‘rniga monoxromator/panjara bo‘lishi mumkin — sxema umumiy tamoyil.
 | EDU-5 | Footer: how LabGuide practice works — not a lab procedure | — | APP_UI |
 
 ## Til (uz/ru/en)
+
+Tuzatildi (2026-10-25, ilmiy ko‘rik jadvali `docs/SCIENTIFIC_REVIEW_TABLE.md` topilmalari asosida):
+differential 2-qadam ru/uz — “иммерсия ×100” / “×100 immersiya” (en “×100 oil” bilan teng); QC rad bloki ru/uz —
+“остановить” / “to‘xtating” qaytarildi (ilova `qc_guides_info.dart:76` dagi kabi); uz QC 4-qadam — “bemor
+namunalarini”; uz “Referens oraliq” → “Referens interval”; differential pastki iqtibosi — ilovaning
+`diffRangesWho` shakli. Holatlar ko‘tarilmadi — QC-4, CAL-5, PHO-1 ehtiyotkor `NEEDS_EXPERT` ga tushirildi.
 
 Matnlar ilova ARB atamalariga moslandi (`calStep*`, `preStep*`, `quiz*`, `qc*`, `diff*`). Uzbek: o‘ g‘ —
 U+2018, tutuq ’ — U+2019 (`tool/l10n/normalize_uz_apostrophes.py --check` toza). Tibbiy tilshunos ko‘rigi
