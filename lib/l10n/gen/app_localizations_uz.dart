@@ -13287,4 +13287,39 @@ class AppLocalizationsUz extends AppLocalizations {
   @override
   String get proSubWithoutSubscription =>
       'Ilovadan obunasiz foydalanish mumkin: bepul imkoniyatlar bepul qoladi.';
+
+  @override
+  String get proPayGuestBuyNote =>
+      'Talaba va Mutaxassis rejalarini hisobsiz sotib olish va tiklash mumkin. Ustoz Pro va Premium ustoz panelini o‘z ichiga oladi — ular uchun hisobga kirish kerak. Keyinroq hisobga kirsangiz, xarid hisobingizga o‘tadi.';
+
+  @override
+  String get proPayGuestAccountOnly =>
+      'Bu reja ustoz panelini o‘z ichiga oladi — obuna uchun hisobga kiring.';
+
+  @override
+  String get proPayGuestLinked =>
+      'Bu xarid LabGuide hisobiga bog‘langan. Undan foydalanish uchun o‘sha hisobga kiring.';
+
+  @override
+  String proPayIntroPrice(String intro, String length, String price) {
+    return '$length — $intro, keyin $price';
+  }
+
+  @override
+  String get proPayStoreOfferNote =>
+      'Bu App Store / Google Play taklifi — LabGuide bepul sinovidan alohida. Taklifga kim haqli ekanini do‘kon hal qiladi; bekor qilinmasa obuna avtomatik yangilanadi.';
+
+  @override
+  String proSubWillNotRenew(String date) {
+    return 'Avtomatik yangilash o‘chirilgan: $date gacha amal qiladi, keyin reja tugaydi.';
+  }
+
+  @override
+  String get proSubStoreTrial =>
+      'Do‘kon sinov davri — bekor qilinmasa, obuna do‘kon narxida avtomatik yangilanadi.';
+
+  @override
+  String proSubWillChange(String plan) {
+    return 'Keyingi yangilanishdan: $plan rejasi.';
+  }
 }

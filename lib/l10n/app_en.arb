@@ -7173,5 +7173,40 @@
   "proSubTrialSubscribed": "You already have an active subscription.",
   "proSubEnded": "Pro has ended. Every free feature keeps working and your data stays.",
   "proSubPriceYearlyNote": "The yearly plan is billed once a year at the price shown.",
-  "proSubWithoutSubscription": "You can use the app without a subscription: free features stay free."
+  "proSubWithoutSubscription": "You can use the app without a subscription: free features stay free.",
+  "proPayGuestBuyNote": "You can buy and restore the Student and Specialist plans without an account. Teacher Pro and Premium include the teacher panel and need an account. If you sign in later, the purchase moves to your account.",
+  "proPayGuestAccountOnly": "This plan includes the teacher panel — sign in to subscribe.",
+  "proPayGuestLinked": "This purchase is linked to a LabGuide account. Sign in to that account to use it.",
+  "proPayIntroPrice": "{intro} for {length}, then {price}",
+  "@proPayIntroPrice": {
+    "placeholders": {
+      "intro": {
+        "type": "String"
+      },
+      "length": {
+        "type": "String"
+      },
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "proPayStoreOfferNote": "This is an App Store / Google Play offer, separate from the LabGuide free trial. The store decides who is eligible; the subscription renews automatically unless you cancel.",
+  "proSubWillNotRenew": "Auto-renewal is off: access stays until {date}, then the plan ends.",
+  "@proSubWillNotRenew": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "proSubStoreTrial": "Store trial period — unless you cancel, the subscription renews automatically at the store price.",
+  "proSubWillChange": "From the next renewal: {plan} plan.",
+  "@proSubWillChange": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  }
 }

@@ -97,5 +97,8 @@
         <intent>
             <action android:name="android.speech.RecognitionService" />
         </intent>
+        <!-- 7 kunlik sinov (Play Integrity): Google Play xizmatlari bormi —
+             MainActivity.hasPlayServices (Android 11+ paket ko'rinishi). -->
+        <package android:name="com.google.android.gms" />
     </queries>
 </manifest>

@@ -11,8 +11,10 @@ import 'entitlement_cache.dart';
 import 'entitlement_models.dart';
 import 'entitlement_source.dart';
 import 'feature.dart';
+import 'guest_entitlements.dart';
 import 'pro_catalog.dart';
 import 'purchase_adapter.dart';
+import 'trial_policy.dart';
 
 /// Pro qayerdan keldi.
 enum ProSource {
@@ -125,10 +127,14 @@ class HistoryView<T> {
 /// 3. Imzolangan, hisobga bog'langan, muddatli kesh — oflaynda muddati
 ///    tugaguncha ishlaydi.
 ///
-/// Mehmon (hisobsiz) Pro OLMAYDI (D-76, egasi qarori): xarid, tiklash va
-/// sinov uchun hisobga kirish shart. Qurilmadagi do'kon tranzaksiyalari
-/// faqat eslab qolinadi va hisobga kirilganda serverga bog'lanadi. Mehmon
-/// rejimining o'zi (bepul qism) o'zgarmaydi (Apple 5.1.1).
+/// Mehmon (hisobsiz) — D-77 addendum (Apple 5.1.1(v), D-76 §5 ni
+/// almashtiradi): server mehmon siyosatini bersa ([GuestPolicy]) va
+/// [guestStore] ulangan bo'lsa, mehmon hisobga bog'liq bo'lmagan rejalarni
+/// (learner, lab) sotib oladi va TIKLAYDI; server do'kon tranzaksiyasi +
+/// qurilmaga bog'langan imzolangan token beradi, hisobga kirilganda xarid
+/// hisobga o'tadi (ikki marta berilmaydi). `teacher_panel` — faqat hisob bilan.
+/// Server mehmon siyosatini bermasa — eski qoida: xarid/tiklash uchun hisobga
+/// kirish ([BillingOutcome.signInRequired]). Sinov — faqat hisob bilan.
 ///
 /// **To'lov yoqilmagan bo'lsa** ([purchasesEnabled] = false: do'kon
 /// mahsulotlari yuklanmagan yoki server sozlanmagan) hech narsa yopilmaydi:
@@ -149,6 +155,8 @@ class EntitlementService extends ChangeNotifier {
     this.studentVerified = false,
     this.gated = ProGatePolicy.gated,
     this.attestor = const UnconfiguredDeviceAttestor(),
+    this.guestStore,
+    this.storeOffersAllowed = ProTrialConfig.storeIntroOffersAllowed,
   }) : purchases = purchases ?? UnavailablePurchaseAdapter(),
        _cacheStore = cache,
        now = clock ?? DateTime.now {
@@ -182,6 +190,16 @@ class EntitlementService extends ChangeNotifier {
   /// Bepul sinov uchun qurilma attestatsiyasi (D-74). Standart —
   /// sozlanmagan: sinov taklif qilinmaydi.
   final DeviceAttestor attestor;
+
+  /// Mehmon qurilma belgisi va tokenlari (D-77 addendum). `null` — mehmon
+  /// xaridi o'chiq (D-76 xatti-harakati).
+  final GuestDeviceStore? guestStore;
+
+  /// Play'da do'kon kirish taklifini tanlash/ko'rsatish (egasi qarori;
+  /// standart `ProTrialConfig.storeIntroOffersAllowed` = false). App Store'da
+  /// haqli foydalanuvchiga taklifni Apple o'zi qo'llaydi — shartlar baribir
+  /// ko'rsatiladi (trial_policy.dart).
+  final bool storeOffersAllowed;
   final Duration offlineTtl;
   final int freeHistoryLimit;
 
@@ -218,28 +236,82 @@ class EntitlementService extends ChangeNotifier {
   bool get busy => _busy;
 
   /// To'lov oynasida ko'rsatiladigan mahsulotlar (narx do'kondan).
-  /// D-75: do'kon kirish taklifi (bepul sinov — avtomatik pullikka o'tadi)
-  /// ko'rsatilmaydi; 7 kunlik sinov faqat server sinovi (ikki marta sinov yo'q).
+  /// Do'kon kirish taklifi — [StoreOfferPolicy] (D-77 addendum): shartlar
+  /// faqat do'kondan va faqat do'kon haqli desa; Play'da taklif faqat egasi
+  /// yoqsa ([storeOffersAllowed]); App Store'da Apple o'zi qo'llaydigan
+  /// taklif yashirilmaydi.
   List<StoreProduct> get offeredProducts => [
     for (final p in purchases.loaded)
       if (p.catalog case final c?)
         if (BillingCatalog.offered(c, studentVerified: studentVerified))
-          ProTrialConfig.storeIntroOffersAllowed || p.freeTrial == null
-              ? p
-              : StoreProduct(
-                  id: p.id,
-                  title: p.title,
-                  displayPrice: p.displayPrice,
-                  period: p.period,
-                ),
+          StoreOfferPolicy.apply(
+            p,
+            ios: source.platform == 'app_store',
+            storeOffersAllowed: storeOffersAllowed,
+          ),
   ];
 
+  /// Ko'rsatilgan do'kon taklifi LabGuide server sinovidan keyin
+  /// (foydalanuvchi sinovdan foydalangan) — UI "bu do'kon taklifi, 7 kunlik
+  /// LabGuide sinovidan alohida" deb aniq yozadi.
+  bool get storeOfferAfterServerTrial => trialUsed;
+
+  /// Kesh huquq beradimi. Soat orqaga surilgan bo'lsa (javob olingan
+  /// paytdan yoki kuzatilgan eng katta vaqtdan [_clockSkew] dan ko'p) —
+  /// yo'q; yangi server javobi kerak.
   bool _cacheValid(DateTime t) {
     final c = _cache;
     if (c == null) return false;
     if (t.isBefore(c.receivedAt.subtract(_clockSkew))) return false;
+    final seen = _seen != null && _seen!.isAfter(c.lastSeen) ? _seen! : c.lastSeen;
+    if (t.isBefore(seen.subtract(_clockSkew))) return false;
     return t.isBefore(c.validUntil);
   }
+
+  /// Shu sessiyada kuzatilgan eng katta qurilma vaqti.
+  DateTime? _seen;
+
+  /// Soatni kuzatish (ishga tushish / oldingi planga qaytish): yuqori suv
+  /// belgisi oshsa keshga yoziladi (orqaga surilgan soat uni kamaytirmaydi).
+  Future<void> _touchClock() async {
+    final t = now();
+    if (_seen == null || t.isAfter(_seen!)) _seen = t;
+    final c = _cache;
+    if (c == null || !t.isAfter(c.lastSeen.add(const Duration(minutes: 1)))) {
+      return;
+    }
+    _cache = c.withLastSeen(t);
+    await _cacheStore.write(_cache!);
+  }
+
+  /// Mehmon keshi uchun hisob o'rniga belgi (kesh faqat shu qurilmada).
+  static const guestCacheUser = '~guest';
+
+  /// Kesh egasi: hisob yoki (mehmon xaridi yoqilgan bo'lsa) mehmon.
+  String? get _cacheUser =>
+      source.userId ?? (guestStore != null ? guestCacheUser : null);
+
+  GuestBillingSource? get _guestSource => switch (source) {
+    final GuestBillingSource g when g.guestPolicy != null && guestStore != null => g,
+    _ => null,
+  };
+
+  /// Mehmon shu mahsulotni sotib olishi mumkinmi (server siyosati).
+  bool guestCanPurchase(String productId) =>
+      _guestSource?.guestPolicy?.allows(BillingCatalog.planOf(productId)) ??
+      false;
+
+  /// Xarid tugmasi ko'rsatilsinmi: hisob bilan — hamma reja; mehmon —
+  /// faqat server ruxsat bergan (hisobga bog'liq bo'lmagan) rejalar.
+  bool canPurchase(String productId) =>
+      source.hasSession || guestCanPurchase(productId);
+
+  /// Mehmon "Xaridlarni tiklash" ni ishlata oladimi.
+  bool get guestRestoreAvailable => _guestSource != null;
+
+  /// Mehmon xaridi bog'langan hisob bor — huquq uchun hisobga kirish kerak.
+  bool get guestSignInRequired => _guestSignIn;
+  bool _guestSignIn = false;
 
   /// Server qatorlaridan amaldagilari. Bepul sinov (D-74) pullik do'kon
   /// obunasini hech qachon bosib o'tmaydi: amaldagi obuna bo'lsa sinov
@@ -463,7 +535,7 @@ class EntitlementService extends ChangeNotifier {
 
   /// Ilova ochilganda: shu hisobning imzolangan keshi (bo'lsa).
   Future<void> load() async {
-    final user = source.userId;
+    final user = _cacheUser;
     _cache = user == null ? null : await _cacheStore.read(user);
     _fresh = false;
     _trialUsed = false;
@@ -474,6 +546,8 @@ class EntitlementService extends ChangeNotifier {
   /// mahsulotlari → serverdan holat → do'kondagi joriy obunalar (jim).
   Future<void> start() async {
     await load();
+    await _touchClock();
+    if (attestor case final PreparableAttestor a) await a.prepare();
     await source.probe();
     await purchases.init();
     _updates ??= purchases.updates.listen((p) => unawaited(_onUpdate(p)));
@@ -492,6 +566,10 @@ class EntitlementService extends ChangeNotifier {
       notifyListeners();
     }
     final user = source.userId;
+    if (source.isConfigured && !source.hasSession && guestStore != null) {
+      await _refreshGuest();
+      return;
+    }
     if (!source.isConfigured || !source.hasSession || user == null) {
       if (_cache != null || _fresh) {
         _cache = null;
@@ -507,6 +585,8 @@ class EntitlementService extends ChangeNotifier {
       debugPrint('entitlements refresh: $e');
       return;
     }
+    // Mehmon paytidagi xaridlar (tokenlar) — endi hisobga o'tadi (bir marta).
+    await _linkGuest(user);
     // Mehmon paytida qilingan xarid — endi hisobga bog'lanadi.
     if (_device.isNotEmpty && !_hasStoreOnServer) {
       await _bind([
@@ -518,6 +598,64 @@ class EntitlementService extends ChangeNotifier {
               token: e.token!,
             ),
       ]);
+    }
+  }
+
+  /// Mehmon: saqlangan tokenlar bo'yicha serverdan holat (yo'q bo'lsa —
+  /// mehmon keshi qoladi yoki tozalanadi).
+  Future<void> _refreshGuest() async {
+    final store = guestStore!;
+    if (_cache != null && _cache!.userId != guestCacheUser) {
+      _cache = null;
+      _fresh = false;
+    }
+    _cache ??= await _cacheStore.read(guestCacheUser);
+    final g = _guestSource;
+    final tokens = await store.tokens();
+    if (g == null || tokens.isEmpty) {
+      notifyListeners();
+      return;
+    }
+    try {
+      final snap = await g.guestRefresh(
+        deviceId: await store.deviceId(),
+        tokens: tokens,
+      );
+      await _acceptGuest(snap, merge: false);
+    } on Object catch (e) {
+      debugPrint('guest refresh: $e');
+    }
+  }
+
+  Future<void> _acceptGuest(EntitlementSnapshot snap, {required bool merge}) async {
+    final store = guestStore!;
+    final previous = merge ? await store.tokens() : const <String>[];
+    await store.saveTokens({...previous, ...snap.guestTokens}.toList());
+    _guestSignIn = snap.signInRequired;
+    await _accept(guestCacheUser, snap);
+  }
+
+  /// Hisobga kirilganda mehmon tokenlarini hisobga bog'laydi.
+  Future<void> _linkGuest(String user) async {
+    final store = guestStore;
+    final g = switch (source) {
+      final GuestBillingSource s => s,
+      _ => null,
+    };
+    if (store == null || g == null) return;
+    final tokens = await store.tokens();
+    if (tokens.isEmpty) return;
+    try {
+      final snap = await g.guestLink(
+        deviceId: await store.deviceId(),
+        tokens: tokens,
+      );
+      await store.saveTokens(const []);
+      _guestSignIn = false;
+      await _accept(user, snap);
+    } on Object catch (e) {
+      // Tokenlar qoladi — keyingi refresh'da yana urinadi.
+      debugPrint('guest link: $e');
     }
   }
 
@@ -539,6 +677,8 @@ class EntitlementService extends ChangeNotifier {
       items: snap.items,
     );
     if (snap.trialUsed) _trialUsed = true;
+    // Yangi server javobi — soat kuzatuvi shu paytdan qayta boshlanadi.
+    _seen = t;
     _fresh = true;
     await _cacheStore.write(_cache!);
     notifyListeners();
@@ -591,8 +731,27 @@ class EntitlementService extends ChangeNotifier {
   /// do'kon keyingi ochilishda qayta beradi.
   Future<void> _onUpdate(PurchaseProof proof) async {
     final user = source.userId;
+    final g = _guestSource;
+    if ((!source.hasSession || user == null) && g != null) {
+      // Mehmon xaridi (yangilanish, Ask to Buy tasdig'i): server tekshiradi.
+      try {
+        await _acceptGuest(
+          await g.guestVerify(
+            [proof],
+            deviceId: await guestStore!.deviceId(),
+            restore: false,
+          ),
+          merge: true,
+        );
+        await purchases.finish(proof);
+      } on Object catch (e) {
+        debugPrint('guest update: $e');
+      }
+      return;
+    }
     if (!source.hasSession || user == null) {
-      // Mehmon: huquq bermaydi (D-76), hisobga kirilganda serverga bog'lanadi.
+      // Mehmon (server mehmon xaridini qo'llamaydi): huquq bermaydi, hisobga
+      // kirilganda serverga bog'lanadi.
       // Yakunlanadi — Play tasdiqlanmagan xaridni 3 kundan keyin qaytaradi.
       _setDevice([
         ..._device.where((e) => e.token != proof.token).map(_proofOf),
@@ -633,25 +792,40 @@ class EntitlementService extends ChangeNotifier {
     return uuid.hasMatch(lower) ? lower : null;
   }
 
-  /// Xarid. Mehmon — [BillingOutcome.signInRequired] (D-76: avval hisobga
-  /// kirish; do'kon oynasi ochilmaydi).
-  Future<BillingOutcome> purchase(String productId) => _billing(() async {
-    final proof = await purchases.buy(productId, accountToken: _accountToken());
-    return proof == null ? null : [proof];
-  }, restore: false);
+  /// Xarid — faqat foydalanuvchi bosganda; to'lov do'konning o'z tasdiq
+  /// oynasida. Mehmon: server ruxsat bergan rejani sotib oladi (D-77
+  /// addendum), aks holda [BillingOutcome.signInRequired] (do'kon oynasi
+  /// ochilmaydi).
+  Future<BillingOutcome> purchase(String productId) => _billing(
+    () async {
+      final proof = await purchases.buy(
+        productId,
+        accountToken: _accountToken(),
+      );
+      return proof == null ? null : [proof];
+    },
+    restore: false,
+    guestAllowed: guestCanPurchase(productId),
+  );
 
-  /// "Xaridni tiklash" (App Store talabi). Mehmon — avval hisobga kirish.
-  Future<BillingOutcome> restore() =>
-      _billing(() => purchases.restore(userInitiated: true), restore: true);
+  /// "Xaridni tiklash" (App Store talabi) — hisob bilan ham, mehmon uchun
+  /// ham (server mehmon xaridini qo'llasa).
+  Future<BillingOutcome> restore() => _billing(
+    () => purchases.restore(userInitiated: true),
+    restore: true,
+    guestAllowed: guestRestoreAvailable,
+  );
 
   Future<BillingOutcome> _billing(
     Future<List<PurchaseProof>?> Function() run, {
     required bool restore,
+    bool guestAllowed = false,
   }) async {
     if (!purchasesEnabled) return BillingOutcome.unavailable;
     final user = source.userId;
-    // Mehmon xarid qilmaydi va tiklamaydi (D-76): do'kon chaqirilmaydi.
-    if (!source.hasSession || user == null) {
+    final guest = !source.hasSession || user == null;
+    // Mehmon: faqat server ruxsat bergan holat; aks holda do'kon chaqirilmaydi.
+    if (guest && (!guestAllowed || _guestSource == null)) {
       return BillingOutcome.signInRequired;
     }
     if (_busy) return BillingOutcome.failed;
@@ -661,6 +835,7 @@ class EntitlementService extends ChangeNotifier {
       final proofs = await run();
       if (proofs == null) return BillingOutcome.cancelled;
       if (proofs.isEmpty) return BillingOutcome.nothingFound;
+      if (guest) return await _guestBilling(proofs, restore: restore);
       final snap = await source.verify(proofs, restore: restore);
       await _accept(user, snap);
       // Server qabul qildi — tranzaksiya yakunlanadi (aks holda do'kon qayta beradi).
@@ -694,13 +869,35 @@ class EntitlementService extends ChangeNotifier {
     }
   }
 
+  /// Mehmon xaridi/tiklashi: server tekshiradi, token saqlanadi.
+  Future<BillingOutcome> _guestBilling(
+    List<PurchaseProof> proofs, {
+    required bool restore,
+  }) async {
+    final snap = await _guestSource!.guestVerify(
+      proofs,
+      deviceId: await guestStore!.deviceId(),
+      restore: restore,
+    );
+    await _acceptGuest(snap, merge: true);
+    for (final p in proofs) {
+      await purchases.finish(p);
+    }
+    if (activeEntitlement != null) return BillingOutcome.success;
+    if (snap.signInRequired) return BillingOutcome.signInRequired;
+    return restore ? BillingOutcome.nothingFound : BillingOutcome.failed;
+  }
+
   /// Ilova oldingi planga qaytganda (D-75): serverdan yangilash, lekin
   /// [resumeThrottle] dan tez-tez emas. Boshqa qurilmadagi xarid/bekor qilish
   /// shu yerda ko'rinadi. Xato bo'lsa kesh qoladi (huquq UZAYTIRILMAYDI).
   Future<void> onResume() async {
     final t = now();
     final last = _lastResume;
-    if (last != null && t.difference(last) < resumeThrottle) return;
+    await _touchClock();
+    if (last != null && t.difference(last) < resumeThrottle && !t.isBefore(last)) {
+      return;
+    }
     _lastResume = t;
     await refresh();
   }
@@ -713,6 +910,8 @@ class EntitlementService extends ChangeNotifier {
   /// "Lokal ma'lumotlarni o'chirish" dan keyin.
   void resetInMemory() {
     _trialUsed = false;
+    _guestSignIn = false;
+    _seen = null;
     _cache = null;
     _fresh = false;
     _device = const [];

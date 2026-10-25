@@ -1663,3 +1663,50 @@ qo'lda tahrir “eskirgan” xatosi bilan ushlanadi). Maxfiylik/shartlar matni (
 
 **Tekshirilmagan (NOT VERIFIED):** haqiqiy App Store / Google Play sandbox xaridi bir marta ham qilinmagan; barcha
 Pro testlari soxta do'kon / soxta server / soxta attestatsiya bilan. Holat: `docs/PAID_BRANCH_STATUS.md`.
+
+### D-77 addendum (2026-10-25, `paid/srv`): sinov attestatsiyasi, mehmon xaridi, billing to‘liqligi
+Faqat lokal tarmoq `paid/srv` (`paid/pro-premium@21b5a24` dan). **Push, merge, PR, build, deploy, migratsiya
+(remote), do‘kon/Apple/Google/Cloudflare API chaqiruvi — QILINMAGAN.** Haqiqiy do‘kon xaridi va qurilmada attestatsiya
+— NOT VERIFIED (faqat soxta fetch, sintetik token/zanjir, soxta platforma kanali). Hamma o‘chirgich avvalgidek O‘CHIQ
+(`LG_PRO_ENABLED`, `LG_BILLING_ENABLED`, `gated` bo‘sh, `storeIntroOffersAllowed = false`); narx/id — UNCONFIRMED.
+1. **Sinov — faqat server, 7 kun, bir marta.** Haqiqiy tekshiruvchilar `cloudflare/src/attestation.ts`: Android —
+   Play Integrity classic (service account JWT WebCrypto’da, `decodeIntegrityToken`, paket / nonce = H(server nonce,
+   ANDROID_ID) / imzo sertifikati / `MEETS_DEVICE_INTEGRITY` / `LICENSED` / vaqt); iOS — DeviceCheck ikki bit
+   (ES256 JWT, query/update, bit0 = sinov ishlatilgan). App Attest — **NOT DONE** (doimiy belgi bermaydi; to‘liq
+   tekshiruvi yozilmadi). `index.ts` da `platformVerifier()` ulandi; secretlarsiz — **503 `trial_unavailable`**
+   (`reason: device_attestation_not_configured`; avvalgi kod `device_attestation_not_configured` o‘rniga —
+   ataylab, ilova ikkalasini ham “mavjud emas” deb tushunadi). Holat mashinasi `GET /v1/billing/trial`
+   (`not_started` → `active` → `expired`, server soati; mijoz vaqti o‘qilmaydi). Bitta sinov = foydalanuvchi
+   tanlagan bitta reja. Attestatsiya tokeni bir martalik (SHA-256, `0019`). IP tarmog‘i (/24, /48) limitlari: yangi
+   (< 24 soat) hisoblar sutkasiga 3, jami 20 muvaffaqiyatli sinov; ASN cheklovi ataylab yo‘q (CGNAT). Bir martalik
+   domenlar — faqat ixtiyoriy `TRIAL_BLOCKED_EMAIL_DOMAINS` (repoda tekshirilgan ro‘yxat yo‘q). Qolgan xavflar:
+   `docs/PRO_TRIAL_ABUSE_NOTES.md` §6 (factory reset Android’da yangi sinov beradi).
+2. **Mehmon xaridi — D-76 §5 ni almashtiradi (Apple 5.1.1(v)).** Hisobga bog‘liq bo‘lmagan imkoniyatlar (`learner`,
+   `lab`) uchun hisob majburiy emas: server `GET /v1/billing/status` → `guest.purchase_plans` (TIER_CAPABILITIES dan
+   — `teacher_panel` siz rejalar: Talaba, Mutaxassis) beradi; mehmon sotib oladi va TIKLAYDI (`/v1/billing/guest/
+   verify|entitlements`), server do‘kon tranzaksiyasi + qurilmaga (HMAC) bog‘langan imzolangan token beradi (≤ 5
+   qurilma). Hisobga kirilganda `/v1/billing/guest/link` xaridni hisobga o‘tkazadi va mehmon qatori
+   `linked_user_id` oladi — mehmon tokeni boshqa huquq bermaydi (ikki marta berilmaydi). Hisobda sotib olingan
+   xarid mehmonga berilmaydi. `teacher_panel` — faqat hisob (mehmon Premium tiklasa ham faqat learner + lab).
+   Ustoz / Premium kartasida mehmonga xarid tugmasi yo‘q, izoh. Server siyosat bermasa — eski D-76 xulqi.
+   Sinov — avvalgidek faqat hisob bilan.
+3. **Billing to‘liqligi.** Server: do‘kon davri `period_type` (`trial`/`intro`/`normal`: Apple `offerType`/
+   `offerDiscountType`, Play `offerPhase` / v1 `paymentState` — Play maydon nomlari NOT VERIFIED), `auto_renew`
+   (Apple `signedRenewalInfo.autoRenewStatus` — imzosi tekshiriladi; Play `autoRenewingPlan` / CANCELED),
+   `pending_product_id` (pastga o‘tish), Apple grace — huquq `gracePeriodExpiresDate` gacha (oldin tranzaksiya
+   `expiresDate` o‘tgani uchun grace huquq bermasdi — tuzatildi). Webhooklar mehmon qatorini ham yangilaydi. Ilova:
+   bekor qilingan (“avtomatik yangilash o‘chirilgan: sana gacha”), do‘kon sinov davri, keyingi reja satrlari;
+   oflayn kesh — monoton yuqori belgi (`last_seen`): oyna ichida soatni orqaga surib oflayn Pro cho‘zilmaydi.
+4. **Ikki sinov siyosati** (`lib/core/entitlements/trial_policy.dart`): do‘kon taklifi shartlari faqat do‘kon
+   ma’lumotidan va faqat do‘kon haqli desa; App Store’da Apple o‘zi qo‘llaydigan taklif yashirilmaydi (oldin
+   `storeIntroOffersAllowed=false` uni yashirardi — to‘lov oynasi do‘kon oynasiga zid bo‘lmasin); Play’da taklif
+   faqat egasi yoqsa. Server sinovi ishlatilgan bo‘lsa — “bu do‘kon taklifi, LabGuide sinovidan alohida” izohi.
+5. **Ilova attestatsiyasi**: `PlatformDeviceAttestor` (kanal `uz.labguide.app/attestation`), Android
+   `MainActivity.kt` + `com.google.android.play:integrity:1.4.0`, iOS `AppDelegate.swift` (DeviceCheck + Keychain
+   UUID). Gradle/Xcode kompilyatsiyasi — **NOT RUN**; qurilmada — NOT VERIFIED.
+6. **D-77 qorovullari** o‘zgartirilmadi va yashil (`paid_policy_d77_guard_test.dart`); server qorovuliga D-77
+   addendum testi qo‘shildi. Hujjatlar: `docs/PAID_SANDBOX_RUNBOOK.md`, `docs/PAID_BACKEND_DEPLOY_CHECKLIST.md`,
+   `docs/PRO_TRIAL_ABUSE_NOTES.md` (yangilandi). Migratsiya `0019_trial_attest_guest.sql` — faqat fayl.
+7. **Tekshiruv (2026-10-25, lokal):** server `tsc --noEmit` — xato yo‘q, `vitest run` — 28 fayl / 399 test PASS
+   (oldin 24 / 332); `flutter analyze` — xato yo‘q; Pro/billing/sinov/l10n to‘plami + `test/guards/` (17 yo‘l) —
+   360 test PASS. To‘liq `flutter test`, Gradle/Xcode build, `wrangler dev` — NOT RUN.

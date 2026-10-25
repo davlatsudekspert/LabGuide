@@ -55,6 +55,7 @@ class StoreProduct {
     required this.displayPrice,
     this.period,
     this.freeTrial,
+    this.introOffer,
   });
 
   final String id;
@@ -70,7 +71,44 @@ class StoreProduct {
   /// bo'lsa). `null` — sinov yo'q.
   final StorePeriod? freeTrial;
 
+  /// Do'kon kirish taklifi to'liq shartlari (bepul sinov yoki chegirmali
+  /// narx) — FAQAT do'kon javobidan (StoreKit `introductoryOffer` +
+  /// muvofiqlik; Play offer `pricingPhases`). `null` — taklif yo'q yoki
+  /// foydalanuvchi haqli emas. Ko'rsatish qoidasi: trial_policy.dart.
+  final StoreIntroOffer? introOffer;
+
   BillingProduct? get catalog => BillingCatalog.byId(id);
+
+  /// Taklifsiz nusxa (taklif ko'rsatilmaydigan holat).
+  StoreProduct withoutOffer() =>
+      StoreProduct(id: id, title: title, displayPrice: displayPrice, period: period);
+}
+
+/// Do'kon kirish taklifi (D-77 addendum): faqat do'kon bergan ma'lumot.
+@immutable
+class StoreIntroOffer {
+  const StoreIntroOffer({
+    required this.period,
+    this.introPrice,
+    this.cycles = 1,
+    this.eligible = true,
+  });
+
+  /// Bitta taklif davri (masalan, 1 hafta) — [cycles] marta.
+  final StorePeriod period;
+
+  /// Chegirmali narx (do'kon formatlagan); `null` — bepul sinov.
+  final String? introPrice;
+  final int cycles;
+
+  /// Do'kon foydalanuvchini taklifga haqli deydimi (Apple
+  /// `isEligibleForIntroOffer`; Play faqat haqli takliflarni qaytaradi).
+  final bool eligible;
+
+  bool get isFreeTrial => introPrice == null;
+
+  /// Taklifning umumiy uzunligi.
+  StorePeriod get total => StorePeriod(period.count * cycles, period.unit);
 }
 
 /// Xarid dalili: serverga tekshirish uchun yuboriladigan identifikator.

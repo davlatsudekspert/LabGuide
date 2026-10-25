@@ -11,6 +11,7 @@ import '../backend/supabase_backend.dart';
 import 'billing_catalog.dart';
 import 'device_attestor.dart';
 import 'entitlement_models.dart';
+import 'guest_entitlements.dart';
 import 'pro_catalog.dart';
 import 'purchase_adapter.dart';
 
@@ -190,7 +191,8 @@ class SupabaseEntitlementSource implements EntitlementSource {
 
 /// Cloudflare Worker (`cloudflare/src/billing.ts`): `GET /v1/billing/status`,
 /// `GET /v1/billing/entitlements`, `POST /v1/billing/verify`.
-class CloudflareEntitlementSource implements EntitlementSource, TrialSource {
+class CloudflareEntitlementSource
+    implements EntitlementSource, TrialSource, GuestBillingSource {
   CloudflareEntitlementSource(this.backend, {String? platform})
     : platform = platform ?? storePlatform();
 
@@ -201,6 +203,10 @@ class CloudflareEntitlementSource implements EntitlementSource, TrialSource {
 
   bool _billing = false;
   bool _trial = false;
+  GuestPolicy? _guest;
+
+  @override
+  GuestPolicy? get guestPolicy => _guest;
 
   @override
   bool get trialOffered => _trial;
@@ -224,11 +230,13 @@ class CloudflareEntitlementSource implements EntitlementSource, TrialSource {
       _billing = r.status == 200 && r.data[platform] == true;
       final trial = r.data['trial'];
       _trial = r.status == 200 && trial is Map && trial[_trialKey] == true;
+      _guest = r.status == 200 ? GuestPolicy.parse(r.data['guest']) : null;
     } on Object catch (e) {
       // Internet yo'q — to'lov yoqilmaydi (hamma imkoniyat ochiq qoladi).
       debugPrint('billing status: $e');
       _billing = false;
       _trial = false;
+      _guest = null;
     }
   }
 
@@ -260,6 +268,55 @@ class CloudflareEntitlementSource implements EntitlementSource, TrialSource {
       () => backend.billing('POST', '/v1/billing/verify', body: body),
     );
   }
+
+  static List<Map<String, Object?>> _purchases(List<PurchaseProof> proofs) => [
+    for (final p in proofs)
+      {'product_id': ?_canonical(p.productId), 'token': p.token},
+  ];
+
+  @override
+  Future<EntitlementSnapshot> guestVerify(
+    List<PurchaseProof> proofs, {
+    required String deviceId,
+    required bool restore,
+  }) => _snapshot(
+    () => backend.billing(
+      'POST',
+      '/v1/billing/guest/verify',
+      auth: false,
+      body: {
+        'platform': proofs.first.platform,
+        'device_id': deviceId,
+        'restore': restore,
+        'purchases': _purchases(proofs),
+      },
+    ),
+  );
+
+  @override
+  Future<EntitlementSnapshot> guestRefresh({
+    required String deviceId,
+    required List<String> tokens,
+  }) => _snapshot(
+    () => backend.billing(
+      'POST',
+      '/v1/billing/guest/entitlements',
+      auth: false,
+      body: {'device_id': deviceId, 'guest_tokens': tokens},
+    ),
+  );
+
+  @override
+  Future<EntitlementSnapshot> guestLink({
+    required String deviceId,
+    required List<String> tokens,
+  }) => _snapshot(
+    () => backend.billing(
+      'POST',
+      '/v1/billing/guest/link',
+      body: {'device_id': deviceId, 'guest_tokens': tokens},
+    ),
+  );
 
   @override
   Future<String> trialChallenge() async {

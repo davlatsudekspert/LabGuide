@@ -60,6 +60,10 @@ abstract final class StoreKeys {
   /// Pro huquqlari: server javobining imzolangan, muddatli nusxasi.
   static const entitlementsCache = 'entitlements.cache';
 
+  /// Mehmon (hisobsiz) do'kon xaridlari: server bergan imzolangan tokenlar
+  /// (D-77 addendum). Hisobga kirilganda bog'lanadi va tozalanadi.
+  static const guestEntitlements = 'entitlements.guest';
+
   /// Toifa imtihoniga tayyorgarlik: toifa, og'zaki baholar, bilet, test
   /// sozlamalari.
   static const toifaCategory = 'toifa.category';
@@ -151,6 +155,7 @@ abstract final class StoreKeys {
     partnersCache,
     libraryReading,
     entitlementsCache,
+    guestEntitlements,
     toifaCategory,
     toifaOral,
     toifaTicket,

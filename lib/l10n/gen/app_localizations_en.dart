@@ -13431,4 +13431,39 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get proSubWithoutSubscription =>
       'You can use the app without a subscription: free features stay free.';
+
+  @override
+  String get proPayGuestBuyNote =>
+      'You can buy and restore the Student and Specialist plans without an account. Teacher Pro and Premium include the teacher panel and need an account. If you sign in later, the purchase moves to your account.';
+
+  @override
+  String get proPayGuestAccountOnly =>
+      'This plan includes the teacher panel — sign in to subscribe.';
+
+  @override
+  String get proPayGuestLinked =>
+      'This purchase is linked to a LabGuide account. Sign in to that account to use it.';
+
+  @override
+  String proPayIntroPrice(String intro, String length, String price) {
+    return '$intro for $length, then $price';
+  }
+
+  @override
+  String get proPayStoreOfferNote =>
+      'This is an App Store / Google Play offer, separate from the LabGuide free trial. The store decides who is eligible; the subscription renews automatically unless you cancel.';
+
+  @override
+  String proSubWillNotRenew(String date) {
+    return 'Auto-renewal is off: access stays until $date, then the plan ends.';
+  }
+
+  @override
+  String get proSubStoreTrial =>
+      'Store trial period — unless you cancel, the subscription renews automatically at the store price.';
+
+  @override
+  String proSubWillChange(String plan) {
+    return 'From the next renewal: $plan plan.';
+  }
 }

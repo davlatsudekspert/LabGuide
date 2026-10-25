@@ -3800,5 +3800,13 @@
   "proSubTrialSubscribed": "Sizda amaldagi obuna bor.",
   "proSubEnded": "Pro muddati tugadi. Barcha bepul imkoniyatlar ishlaydi, ma’lumotlaringiz saqlanadi.",
   "proSubPriceYearlyNote": "Yillik reja narxi yiliga bir marta, ko‘rsatilgan summada olinadi.",
-  "proSubWithoutSubscription": "Ilovadan obunasiz foydalanish mumkin: bepul imkoniyatlar bepul qoladi."
+  "proSubWithoutSubscription": "Ilovadan obunasiz foydalanish mumkin: bepul imkoniyatlar bepul qoladi.",
+  "proPayGuestBuyNote": "Talaba va Mutaxassis rejalarini hisobsiz sotib olish va tiklash mumkin. Ustoz Pro va Premium ustoz panelini o‘z ichiga oladi — ular uchun hisobga kirish kerak. Keyinroq hisobga kirsangiz, xarid hisobingizga o‘tadi.",
+  "proPayGuestAccountOnly": "Bu reja ustoz panelini o‘z ichiga oladi — obuna uchun hisobga kiring.",
+  "proPayGuestLinked": "Bu xarid LabGuide hisobiga bog‘langan. Undan foydalanish uchun o‘sha hisobga kiring.",
+  "proPayIntroPrice": "{length} — {intro}, keyin {price}",
+  "proPayStoreOfferNote": "Bu App Store / Google Play taklifi — LabGuide bepul sinovidan alohida. Taklifga kim haqli ekanini do‘kon hal qiladi; bekor qilinmasa obuna avtomatik yangilanadi.",
+  "proSubWillNotRenew": "Avtomatik yangilash o‘chirilgan: {date} gacha amal qiladi, keyin reja tugaydi.",
+  "proSubStoreTrial": "Do‘kon sinov davri — bekor qilinmasa, obuna do‘kon narxida avtomatik yangilanadi.",
+  "proSubWillChange": "Keyingi yangilanishdan: {plan} rejasi."
 }

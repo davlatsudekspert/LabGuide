@@ -23,9 +23,18 @@ import 'purchase_adapter.dart';
 /// * Tranzaksiya [finish] chaqirilguncha yakunlanmaydi (server tekshirgandan
 ///   keyin); yakunlanmagani do'kon tomonidan qayta beriladi.
 class StorePurchaseAdapter extends ChangeNotifier implements PurchaseAdapter {
-  StorePurchaseAdapter({InAppPurchase? iap, Set<String>? productIds})
-    : _iapOverride = iap,
-      _ids = productIds ?? BillingCatalog.storeQueryIds;
+  StorePurchaseAdapter({
+    InAppPurchase? iap,
+    Set<String>? productIds,
+    this.allowStoreOffers = ProTrialConfig.storeIntroOffersAllowed,
+  }) : _iapOverride = iap,
+       _ids = productIds ?? BillingCatalog.storeQueryIds;
+
+  /// Google Play: do'kon kirish takliflari (free trial / chegirma offer)
+  /// tanlansinmi (egasi qarori; standart `false` — faqat asosiy reja).
+  /// App Store'da Apple haqli foydalanuvchiga taklifni o'zi qo'llaydi —
+  /// shuning uchun iOS'da shartlar har doim do'kondan o'qiladi.
+  final bool allowStoreOffers;
 
   final InAppPurchase? _iapOverride;
   final Set<String> _ids;
@@ -131,33 +140,36 @@ class StorePurchaseAdapter extends ChangeNotifier implements PurchaseAdapter {
           title: d.title,
           displayPrice: d.price,
           period: period,
-          // D-75: do'kon kirish taklifi (avtomatik pullikka o'tadi) ko'rsatilmaydi.
-          freeTrial: ProTrialConfig.storeIntroOffersAllowed
-              ? await _iosTrial(d.id, legacy)
-              : null,
+          // D-77 addendum: Apple haqli foydalanuvchiga kirish taklifini o'zi
+          // qo'llaydi — shartlar (uzunlik, narx) do'kondan o'qiladi va
+          // ko'rsatiladi (trial_policy.dart); haqli emas — taklif yo'q.
+          introOffer: await _iosIntro(d.id, legacy),
         ),
       );
     }
     return out;
   }
 
-  Future<StorePeriod?> _iosTrial(String id, SKProductWrapper? p) async {
+  Future<StoreIntroOffer?> _iosIntro(String id, SKProductWrapper? p) async {
     final intro = p?.introductoryPrice;
-    if (intro == null ||
-        intro.paymentMode != SKProductDiscountPaymentMode.freeTrail) {
-      return null;
-    }
+    if (intro == null) return null;
+    var eligible = false;
     try {
-      // Sinovdan foydalangan foydalanuvchiga "bepul sinov" ko'rsatilmaydi.
-      if (!await SK2Product.isIntroductoryOfferEligible(id)) return null;
+      // Sinovdan/taklifdan foydalangan Apple ID ga taklif ko'rsatilmaydi.
+      eligible = await SK2Product.isIntroductoryOfferEligible(id);
     } on Object catch (e) {
+      // Noma'lum — "haqli" deb va'da qilinmaydi (do'kon oynasi baribir
+      // haqiqiy shartni ko'rsatadi).
       debugPrint('iap eligibility: $e');
     }
     final s = intro.subscriptionPeriod;
-    final n =
-        s.numberOfUnits *
-        (intro.numberOfPeriods < 1 ? 1 : intro.numberOfPeriods);
-    return StorePeriod(n, _sk1Unit(s.unit));
+    final free = intro.paymentMode == SKProductDiscountPaymentMode.freeTrail;
+    return StoreIntroOffer(
+      period: StorePeriod(s.numberOfUnits, _sk1Unit(s.unit)),
+      cycles: intro.numberOfPeriods < 1 ? 1 : intro.numberOfPeriods,
+      introPrice: free ? null : '${p!.priceLocale.currencySymbol}${intro.price}',
+      eligible: eligible,
+    );
   }
 
   static StorePeriodUnit _sk2Unit(SK2SubscriptionPeriodUnit u) => switch (u) {
@@ -176,41 +188,79 @@ class StorePurchaseAdapter extends ChangeNotifier implements PurchaseAdapter {
 
   // ------------------------------------------------------------ Android
   /// Play har taklif (base plan / offer) uchun alohida yozuv beradi.
-  /// D-75: faqat ASOSIY REJA (base plan, `offerId == null`) olinadi — bepul
-  /// sinov va chegirmali takliflar ko'rsatilmaydi va tanlanmaydi (7 kunlik
-  /// sinov server beradi, D-76; Play sinovi bilan ikki marta sinov bo'lmasin).
+  /// Standart ([allowStoreOffers] = false): faqat ASOSIY REJA (base plan,
+  /// `offerId == null`) — bepul sinov va chegirmali takliflar ko'rsatilmaydi
+  /// va tanlanmaydi (7 kunlik sinov server beradi; ikki sinov bo'lmasin).
+  /// [allowStoreOffers] = true (egasi qarori): Play qaytargan (ya'ni
+  /// foydalanuvchi HAQLI bo'lgan) birinchi taklif tanlanadi, shartlari
+  /// `pricingPhases` dan [StoreIntroOffer] ga yoziladi va xarid o'sha offer
+  /// tokeni bilan boshlanadi.
   /// Mahsulot id si kanonik: `uz.labguide.student` + base plan `yearly` →
   /// `uz.labguide.student.yearly` ([BillingCatalog.canonical]).
   List<StoreProduct> _androidProducts(List<ProductDetails> list) {
-    final out = <StoreProduct>[];
+    final base = <String, StoreProduct>{};
+    final offered = <String, StoreProduct>{};
     for (final d in list) {
       if (d is! GooglePlayProductDetails || !_ids.contains(d.id)) continue;
       final i = d.subscriptionIndex;
       final offers = d.productDetails.subscriptionOfferDetails;
       if (i == null || offers == null || i >= offers.length) continue;
       final offer = offers[i];
-      if (offer.offerId != null) continue;
       final id = BillingCatalog.canonical(d.id, basePlanId: offer.basePlanId);
-      if (id == null || _details.containsKey(id)) continue;
+      if (id == null) continue;
       final phases = offer.pricingPhases;
       if (phases.isEmpty) continue;
-      // Asosiy rejada faqat cheksiz takrorlanuvchi to'liq narx bo'ladi.
+      // To'liq narx — cheksiz takrorlanuvchi (oxirgi) bosqich.
       final recurring = phases.lastWhere(
         (p) => p.recurrenceMode == RecurrenceMode.infiniteRecurring,
         orElse: () => phases.last,
       );
       if (recurring.priceAmountMicros <= 0) continue;
-      _details[id] = d;
-      out.add(
-        StoreProduct(
-          id: id,
-          title: d.title,
-          displayPrice: recurring.formattedPrice,
-          period: StorePeriod.parseIso(recurring.billingPeriod),
-        ),
+      final product = StoreProduct(
+        id: id,
+        title: d.title,
+        displayPrice: recurring.formattedPrice,
+        period: StorePeriod.parseIso(recurring.billingPeriod),
+        introOffer: offer.offerId == null ? null : _playIntro(phases),
       );
+      if (offer.offerId == null) {
+        if (!base.containsKey(id)) {
+          base[id] = product;
+          _details.putIfAbsent(id, () => d);
+        }
+      } else if (allowStoreOffers &&
+          product.introOffer != null &&
+          !offered.containsKey(id)) {
+        offered[id] = product;
+        _details['$id#offer'] = d;
+      }
     }
+    final out = <StoreProduct>[];
+    for (final e in base.entries) {
+      final o = offered[e.key];
+      if (o != null) {
+        // Xarid taklif (offer token) bilan — foydalanuvchi ko'rgan shart bilan bir xil.
+        _details[e.key] = _details['${e.key}#offer']!;
+        out.add(o);
+      } else {
+        out.add(e.value);
+      }
+    }
+    _details.removeWhere((k, _) => k.endsWith('#offer'));
     return out;
+  }
+
+  /// Play taklifining birinchi (chegirmali/bepul) bosqichi.
+  static StoreIntroOffer? _playIntro(List<PricingPhaseWrapper> phases) {
+    if (phases.length < 2) return null;
+    final first = phases.first;
+    final period = StorePeriod.parseIso(first.billingPeriod);
+    if (period == null) return null;
+    return StoreIntroOffer(
+      period: period,
+      cycles: first.billingCycleCount < 1 ? 1 : first.billingCycleCount,
+      introPrice: first.priceAmountMicros == 0 ? null : first.formattedPrice,
+    );
   }
 
   /// Do'kon `productID` (Play'da obuna id si) [_buyingId] (kanonik) ga mosmi.
