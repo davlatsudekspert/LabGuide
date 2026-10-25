@@ -58,39 +58,30 @@ void main() {
     },
   );
 
-  testWidgets(
-    'proEnabled=true, standart `gated` (D-78: faqat qurilgan YANGI Pro '
-    'funksiyalar): obunasiz faqat ular yopiq, qolgani ochiq',
-    (tester) async {
-      final shop = FakePurchaseAdapter();
-      final s = await makeServices(
-        tester,
-        proEnabled: true,
-        purchases: shop,
-        entitlementSource: FakeEntitlementSource(user: null),
-        allFeaturesOpen: false,
-        // D-78: standart `gated` endi qurilgan Ustoz Pro funksiyalarini
-        // o'z ichiga oladi (test/widget/teacher_pro_test.dart); bu yerda —
-        // bo'sh ro'yxat holati (hech narsa yopilmaydi).
-        gatedFeatures: const {},
-      );
-      await s.entitlements.start();
-      await pumpApp(tester, s, size: const Size(390, 2400));
-      final ent = s.entitlements;
-      expect(ent.purchasesEnabled, isTrue);
-      expect(ent.gatingActive, isTrue);
-      // D-78: `gated` endi bo'sh emas — lekin faqat yangi Pro funksiyalar.
-      expect(ent.gated, ProGatePolicy.gated);
-      for (final f in Feature.values) {
-        expect(ent.can(f), !ProGatePolicy.gated.contains(f), reason: f.name);
-      }
-      expect(shop.inits, 1);
-      await goTo(tester, '/profile');
-      // D-74: “Obuna” qatori (rejalar, holat, tiklash) — bayroq yoqilgan buildda.
-      expect(
-        find.byKey(const ValueKey('profile-subscription')),
-        findsOneWidget,
-      );
-    },
-  );
+  testWidgets('proEnabled=true, standart `gated` (D-78: faqat qurilgan YANGI Pro '
+      'funksiyalar): obunasiz faqat ular yopiq, qolgani ochiq', (tester) async {
+    final shop = FakePurchaseAdapter();
+    final s = await makeServices(
+      tester,
+      proEnabled: true,
+      purchases: shop,
+      entitlementSource: FakeEntitlementSource(user: null),
+      allFeaturesOpen: false,
+      // D-78: standart `gated` (qurilgan Pro funksiyalar) ishlatiladi.
+    );
+    await s.entitlements.start();
+    await pumpApp(tester, s, size: const Size(390, 2400));
+    final ent = s.entitlements;
+    expect(ent.purchasesEnabled, isTrue);
+    expect(ent.gatingActive, isTrue);
+    // D-78: `gated` endi bo'sh emas — lekin faqat yangi Pro funksiyalar.
+    expect(ent.gated, ProGatePolicy.gated);
+    for (final f in Feature.values) {
+      expect(ent.can(f), !ProGatePolicy.gated.contains(f), reason: f.name);
+    }
+    expect(shop.inits, 1);
+    await goTo(tester, '/profile');
+    // D-74: “Obuna” qatori (rejalar, holat, tiklash) — bayroq yoqilgan buildda.
+    expect(find.byKey(const ValueKey('profile-subscription')), findsOneWidget);
+  });
 }
