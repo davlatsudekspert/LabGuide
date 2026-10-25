@@ -90,12 +90,15 @@ def caption(canvas, num, text):
     """Kadrga yozilgan subtitr: tepada oq kartochka, chapda qadam raqami."""
     d = ImageDraw.Draw(canvas)
     tx, tw = 130, W - 24 - 130 - 26
-    for size in (40, 37, 34, 31, 28):
+    # Telefon ekranida o‘qilsin: kamida 34 px (720 px kenglikda), 3 qatorgacha.
+    for size in (40, 37, 34):
         tf = font(700, size)
         lines = wrap(d, text, tf, tw)
         lh = round(size * 1.22)
         if len(lines) <= 3:
             break
+    else:
+        sys.exit(f'subtitr juda uzun (34 px da 3 qatordan oshadi): {text}')
     th = len(lines) * lh
     top, bottom = 30, 30 + max(132, th + 52)
     shadow(canvas, (24, top, W - 24, bottom), 26, blur=12, alpha=34, dy=5)

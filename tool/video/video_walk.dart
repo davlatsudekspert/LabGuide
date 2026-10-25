@@ -96,7 +96,10 @@ class VideoWalk {
 
   /// [f] ko‘rinmasa — topilguncha suradi (pastga, so‘ng tepaga).
   Future<void> show(Finder f, {double step = 250}) async {
-    if (f.hitTestable().evaluate().isNotEmpty) return;
+    if (f.hitTestable().evaluate().isNotEmpty) {
+      await center(f);
+      return;
+    }
     final above = f.evaluate().isNotEmpty && tester.getTopLeft(f.first).dy < 120;
     try {
       await tester.scrollUntilVisible(
@@ -114,11 +117,26 @@ class VideoWalk {
       );
     }
     await tester.pumpAndSettle();
-    // Pastki menyu ostida qolmasin: ekran o‘rtasiga yaqinlashtiriladi.
+    // Pastki menyu ostida yoki tepadagi sarlavha ostida qolmasin (QA:
+    // “Yozuvni saqlash” tugmasi sarlavha ostida kesilgan edi) — ekran
+    // o‘rtasiga yaqinlashtiriladi.
+    _moved = true;
+    await center(f);
+  }
+
+  /// [f] ekranning chetida (pastki menyu yoki sarlavha ostida) bo‘lsa —
+  /// o‘rtaga suradi.
+  Future<void> center(Finder f) async {
     final y = tester.getCenter(f.hitTestable().first).dy;
     final h = tester.view.physicalSize.height / tester.view.devicePixelRatio;
-    if (y > h - 150) await scroll(y - h / 2);
-    _moved = true;
+    if (y > h - 150 || y < 150) {
+      await tester.drag(_scrollable, Offset(0, -(y - h / 2)));
+      await tester.pumpAndSettle();
+      // Haqiqatan surilgan bo‘lsagina oldingi kadrga tap belgisi qo‘yilmaydi
+      // (masalan, oxirigacha surilgan oynadagi “Yopish” joyida qoladi).
+      final after = tester.getCenter(f.hitTestable().first).dy;
+      if ((after - y).abs() > 4) _moved = true;
+    }
   }
 
   /// Bosadi; oxirgi kadrdan beri ekran surilmagan bo‘lsa — kadrga tap
@@ -135,6 +153,14 @@ class VideoWalk {
       await tester.pump(const Duration(milliseconds: 300));
     }
     _moved = true;
+  }
+
+  /// [f] ni (masalan, bo‘lim sarlavhasini) ekran tepasiga — sarlavha
+  /// panelidan pastroqqa — keltiradi (QA: tillar orasida surish masofasi
+  /// farq qilib, ru/en kadrlarda sarlavha va birinchi qatorlar chiqmay qolgan).
+  Future<void> top(Finder f, {double at = 160}) async {
+    await show(f);
+    await scroll(tester.getTopLeft(f.first).dy - at);
   }
 
   Future<void> pressText(String text) => press(find.text(text));

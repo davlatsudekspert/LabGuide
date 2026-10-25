@@ -173,12 +173,11 @@ Future<void> _preanalytics(
   await w.snap('lab_tools');
   await w.pressText(l.labPreanalytics);
   await w.snap('pre_top');
-  await w.show(find.text(l.prePatientTitle));
-  await w.scroll(tester.getTopLeft(find.text(l.prePatientTitle)).dy - 140);
+  await w.top(find.text(l.prePatientTitle));
   await w.snap('pre_patient');
-  await w.scroll(900);
+  await w.top(find.text(l.preOrderTitle));
   await w.snap('pre_tubes');
-  await w.scroll(1100);
+  await w.top(find.text(l.preTubeForTestTitle));
   await w.snap('pre_more');
   await _howto(w, '/lab/preanalytics', 'preanalytics');
 }
@@ -449,9 +448,9 @@ Future<void> _other(
     of: find.byType(HowToSheet),
     matching: find.text(l.actionClose),
   );
-  await w.show(close);
-  await tester.tap(close);
-  await tester.pumpAndSettle();
+  // QA: tap belgisi oynadagi “Yopish” da bo‘lsin (avval hub tugmasining
+  // joyiga — oyna ustiga — tushib qolgan edi).
+  await w.press(close);
   await w.pressText(l.diffStartCount);
   await w.snap('diff_count');
   await w.go('/lab/cytology');

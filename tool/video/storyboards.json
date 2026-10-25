@@ -368,7 +368,7 @@
      "sec": 4.0,
      "text": {
       "uz": "17 ta kalkulyator: klinik formulalar, qo‘lda usullar, laboratoriya",
-      "ru": "17 калькуляторов: клинические формулы, ручные методы, лабораторные",
+      "ru": "17 калькуляторов: клинические, ручные, лабораторные",
       "en": "17 calculators: clinical formulas, manual methods, laboratory"
      }
     },
@@ -379,7 +379,7 @@
      "sec": 3.5,
      "text": {
       "uz": "eGFR (CKD-EPI 2021): maydonlar bo‘sh — qiymatni o‘zingiz kiritasiz",
-      "ru": "eGFR (CKD-EPI 2021): поля пустые — значения вводите вы",
+      "ru": "рСКФ (eGFR, CKD-EPI 2021): поля пустые — значения вводите вы",
       "en": "eGFR (CKD-EPI 2021): fields start empty — you enter the values"
      }
     },
@@ -828,8 +828,8 @@
      "sec": 5.0,
      "text": {
       "uz": "",
-      "ru": "Раздел для Узбекистана: Профиль → «Проверка знаний и компетенций» → «Узбекистан»",
-      "en": "For Uzbekistan: Profile → “Knowledge & Skills Assessment” → “Uzbekistan”"
+      "ru": "Для Узбекистана: Профиль → «Проверка знаний…» → «Узбекистан»",
+      "en": "For Uzbekistan: Profile → “Knowledge & Skills…” → “Uzbekistan”"
      },
      "langs": [
       "ru",
@@ -897,9 +897,9 @@
      "action": "Savol",
      "sec": 4.0,
      "text": {
-      "uz": "Rasmiy ro‘yxatdan tasodifiy savollar; savollar xaritasi",
-      "ru": "Случайные вопросы официального списка; официальный текст — на узбекском",
-      "en": "Random questions from the official list; the official text is Uzbek"
+      "uz": "Rasmiy ro‘yxatdan tasodifiy savollar; pastda — savollar xaritasi",
+      "ru": "Случайные вопросы официального списка; внизу — карта вопросов",
+      "en": "Random questions from the official list; the question map is below"
      }
     },
     {
@@ -1292,9 +1292,9 @@
      "action": "Profil",
      "sec": 4.0,
      "text": {
-      "uz": "Profil: til, birliklar, mavzu va bo‘lim ko‘rinishi",
-      "ru": "Профиль: язык, единицы, оформление и видимость раздела",
-      "en": "Profile: language, units, theme and section visibility"
+      "uz": "Profil: til, birliklar va bo‘lim ko‘rinishi",
+      "ru": "Профиль: язык, единицы и видимость раздела",
+      "en": "Profile: language, units and section visibility"
      }
     }
    ]
