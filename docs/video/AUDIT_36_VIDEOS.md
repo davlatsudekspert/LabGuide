@@ -38,9 +38,9 @@
 | `gc_ms_en.mp4` | 96.0 s · 1.96 MB | Laplasian min 635 (keskin) | yo‘q | mos | **NEEDS_EXPERT** | Yorliq: «Ovozsiz namuna (diktorsiz)» — ekran yozuvi emas, animatsiya (to‘g‘ri) |
 | `gc_ms_ru.mp4` | 96.0 s · 2.01 MB | Laplasian min 696 (keskin) | yo‘q | mos | **NEEDS_EXPERT** | Yorliq: «Ovozsiz namuna (diktorsiz)» — ekran yozuvi emas, animatsiya (to‘g‘ri) |
 | `gc_ms_uz.mp4` | 96.0 s · 1.99 MB | Laplasian min 625 (keskin) | yo‘q | mos | **NEEDS_EXPERT** | Yorliq: «Ovozsiz namuna (diktorsiz)» — ekran yozuvi emas, animatsiya (to‘g‘ri) |
-| `real_time_pcr_en.mp4` | 77.0 s · 1.35 MB | Laplasian min 651 (keskin) | yo‘q | mos | **NEEDS_EXPERT** | F4 TUZATILDI (qayta render); ilmiy ko‘rik kutadi |
-| `real_time_pcr_ru.mp4` | 77.0 s · 1.39 MB | Laplasian min 761 (keskin) | yo‘q | mos | **NEEDS_EXPERT** | F4 TUZATILDI (qayta render); ilmiy ko‘rik kutadi |
-| `real_time_pcr_uz.mp4` | 77.0 s · 1.35 MB | Laplasian min 646 (keskin) | yo‘q | mos | **NEEDS_EXPERT** | F4 TUZATILDI (qayta render); ilmiy ko‘rik kutadi |
+| `real_time_pcr_en.mp4` | 77.0 s · 1.47 MB | Laplasian min 651 (keskin) | yo‘q | mos | **NEEDS_EXPERT** | F4 TUZATILDI (qayta render); ilmiy ko‘rik kutadi |
+| `real_time_pcr_ru.mp4` | 77.0 s · 1.51 MB | Laplasian min 761 (keskin) | yo‘q | mos | **NEEDS_EXPERT** | F4 TUZATILDI (qayta render); ilmiy ko‘rik kutadi |
+| `real_time_pcr_uz.mp4` | 77.0 s · 1.47 MB | Laplasian min 646 (keskin) | yo‘q | mos | **NEEDS_EXPERT** | F4 TUZATILDI (qayta render); ilmiy ko‘rik kutadi |
 <!-- audit:end -->
 
 To‘liq jadval (har video bo‘yicha barcha 13 ustun) — `docs/video/AUDIT_36_VIDEOS.csv`.
