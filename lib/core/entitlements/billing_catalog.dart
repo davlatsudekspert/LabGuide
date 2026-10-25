@@ -164,9 +164,9 @@ abstract final class BillingCatalog {
 
 /// To'lov oynasidagi majburiy havolalar (App Store 3.1.2).
 abstract final class BillingLinks {
-  /// Foydalanish shartlari: Apple'ning standart EULA'si.
-  static const termsOfUse =
-      'https://www.apple.com/legal/internet-services/itunes/dev/stdeula/';
+  /// Foydalanish shartlari — nashr qilingan sayt (docs/store/TERMS_OF_USE.md;
+  /// App Store Connect / Play Console maydonlaridagi havola bilan bir xil).
+  static const termsOfUse = Contact.termsOfUseUrl;
 
   /// Maxfiylik siyosati — nashr qilingan sayt (ilovaning boshqa joylari va
   /// App Store Connect / Play Console'dagi havola bilan bir xil; D-77).

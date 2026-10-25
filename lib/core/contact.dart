@@ -17,6 +17,11 @@ abstract final class Contact {
   static const privacyPolicyUrl =
       'https://labguide.nfcstore.uz/privacy/';
 
+  /// Foydalanish shartlari (docs/store/TERMS_OF_USE.md; sayt `/terms/`).
+  /// To'lov oynasi va "Obuna" ekranidagi havola, App Store Connect / Play
+  /// Console maydonlari bilan bir xil bo'lsin (docs/store/APP_STORE.md).
+  static const termsOfUseUrl = 'https://labguide.nfcstore.uz/terms/';
+
   /// `mailto:` havolasi. Mavzu va matn foiz bilan kodlanadi (bo'sh joy
   /// `%20`, qator `%0A`): ba'zi pochta ilovalari `+` ni bo'sh joy deb
   /// tushunmaydi, shuning uchun `Uri(queryParameters:)` ishlatilmaydi.

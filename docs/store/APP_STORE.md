@@ -7,8 +7,9 @@ qo‘ymaydi, kontent ilmiy adabiyotga asoslangan o‘quv ma’lumotnomasi (D-65)
 
 **Va’da qilinmaydigan narsalar:** hamkor reklamasi va hamkor statistikasi (do‘kon buildida
 kompilyatsiyadan chiqarilgan, `LG_PARTNER_ADS`), murojaatga skrinshot biriktirish (serverda
-yo‘q), pullik obuna/to‘lov (bu versiyada to‘lov yo‘q, D-58).
-Tavsiflarda ular tilga olinmaydi. D-65 (2026-10-18, egasi qarori): kontent “qoralama” deb
+yo‘q). **Pullik obuna/to‘lov:** bepul versiyada (`main`, D-58) yo‘q; **bu tarmoqda (`paid/pro-premium`, D-77) bor** —
+unga 16-bo‘lim va `TERMS_OF_USE.md` tegishli, 1–15-bo‘limlardagi bepul versiya matnlari o‘zgartirilmagan.
+Bepul versiya tavsiflarida hamkor reklamasi va murojaat skrinshoti tilga olinmaydi. D-65 (2026-10-18, egasi qarori): kontent “qoralama” deb
 yozilmaydi — tavsifda manbalarga asoslangani va tibbiy eslatma (tashxis emas, natijani shifokor
 baholaydi, referens oraliqlar laboratoriyaga bog‘liq) yoziladi; eslatmani olib tashlamang. Rus/ingliz tavsifida O‘zbekistonga xos
 bo‘limlar (bilim va malakani baholash) yo‘q: ular faqat o‘zbek tili yoki UZ mintaqasida ko‘rinadi.
@@ -471,12 +472,13 @@ istalgan statik hosting, taklif: `https://labguide.nfcstore.uz/`) — `site/READ
 | Privacy policy (App Store, Play, Google OAuth) | `https://labguide.nfcstore.uz/privacy/` |
 | Homepage / Support URL (Google OAuth, App Store) | `https://labguide.nfcstore.uz/` |
 | Delete account URL (Play Data safety) | `https://labguide.nfcstore.uz/delete-account/` |
+| Foydalanish shartlari / Terms of Use (pullik versiya: tavsif, ilovadagi to‘lov oynasi) | `https://labguide.nfcstore.uz/terms/` |
 
 Sayt joylanmaguncha zaxira: `https://github.com/davlatsudekspert/LabGuide/blob/main/docs/store/PRIVACY_POLICY.md`
 (ichki izohsiz). Google OAuth “In production” uchun domen (`nfcstore.uz`) Google Search Console’da
 tasdiqlangan bo‘lishi kerak. Ochiq savollar: [PRIVACY_OPEN_QUESTIONS.md](PRIVACY_OPEN_QUESTIONS.md).
 
-## 15. Keyingi reliz (Pro bilan) uchun do'kon qidiruvi rejasi — 2026-10-18
+## 15. Keyingi reliz (Pro bilan) uchun do'kon qidiruvi rejasi — 2026-10-18 (pullik tafsilotlar: 16-bo‘lim)
 
 Muammo: App Store Connect'da faqat English (US) sahifa bor (Apple o'zbek tilini do'kon
 tili sifatida qo'llamaydi), ruscha sahifa ochilmagan. Shu sabab "laborant", "КДЛ",
@@ -492,3 +494,156 @@ tegilmadi — Pro relizi bilan birga qilinadi:
 3. Google Play: to'liq tavsifda "laborant / лаборант / KDL / КДЛ" so'zlari tabiiy
    matnda 2–3 martadan.
 4. iPad uchun moslashtirilgan (ikki ustunli) ko'rinish va yangi iPad skrinshotlari.
+
+## 16. Pullik versiya (`paid/pro-premium`, D-77): obunalar, review, App Privacy
+
+> **Holat (2026-10-25).** Bu bo‘lim FAQAT `paid/txt` / `paid/pro-premium` tarmog‘iga tegishli. 1–15-bo‘limlardagi
+> bepul versiya matnlari (nom, subtitle, promo, tavsif 4, kalit so‘zlar) **o‘zgartirilmagan** — ular `main`dagi
+> tekshiruvdagi bepul versiya uchun. Pullik versiya chiqarilganda 4-bo‘lim tavsifiga 16.3-bandagi blok
+> qo‘shiladi. Hech narsa yuborilmagan: do‘kon/billing API chaqirilmagan, mahsulotlar do‘konda **yaratilmagan**
+> (id’lar va narx pog‘onalari UNCONFIRMED-until-created-in-store). Haqiqiy sandbox xaridi bir marta ham sinalmagan
+> (NOT VERIFIED). **Matnlarda narx yo‘q** (narx do‘kondan); egasi bergan narxlar faqat D-76 / `ProPricing` da.
+> Apple qoidalari (3.1.1, 3.1.2, 5.1.1) va maydon uzunliklari o‘zgarib turadi — **NEEDS_OWNER_CHECK**:
+> nashrdan oldin joriy App Review Guidelines va App Store Connect yordamini qayta o‘qing.
+
+### 16.1 Obuna guruhi va mahsulotlar (App Store Connect → Monetization → Subscriptions)
+
+Bitta **Subscription Group**; unga 8 ta auto-renewable mahsulot (4 reja × oylik/yillik). Mahsulot id’lari
+`lib/core/entitlements/billing_catalog.dart` dan olingan (**yangi id o‘ylab topilmadi**):
+`uz.labguide.student|teacher|specialist|premium` + `.monthly` / `.yearly` — do‘konda yaratilmaguncha UNCONFIRMED.
+Narx pog‘onalarini egasi App Store Connect’da tanlaydi (hujjatda yozilmaydi). **Introductory Offer / Free Trial
+YARATILMAYDI** (bepul sinov — ilova ichidagi 7 kunlik server sinovi, 16.2). `PRO_BILLING_PLAN.md` 9.1-bo‘limdagi
+“6 mahsulot”, “Introductory Offer → Free Trial 7/14 kun” va “Pro ↔ Ustoz Pro” darajalari **eskirgan** (D-76/D-77
+bilan almashtirilgan).
+
+| Maydon | uz (agar ASC uzbek tilini qabul qilsa) | ru | en (US) |
+|---|---|---|---|
+| Subscription Group — Display Name | LabGuide rejalari | Планы LabGuide | LabGuide plans |
+| Talaba — Display Name (≤ 30) | Talaba Pro | Студент Pro | Student Pro |
+| Talaba — Description (≤ 45) | Ustoz testlari, tarix, imtihon simulyatsiyasi | Тесты, история, симуляция экзамена | Assigned tests, history, exam simulation |
+| Ustoz — Display Name | Ustoz Pro | Преподаватель Pro | Teacher Pro |
+| Ustoz — Description | Test yaratish, guruhlar, natijalar | Создание тестов, группы, результаты | Create tests, groups, manage results |
+| Mutaxassis — Display Name | Mutaxassis Pro | Специалист Pro | Specialist Pro |
+| Mutaxassis — Description | Professional laboratoriya funksiyalari | Профессиональные функции лаборатории | Professional laboratory functions |
+| Premium — Display Name | Premium | Premium | Premium |
+| Premium — Description | Talaba, Ustoz va Mutaxassis imkoniyatlari | Все возможности Студент, Преп., Специалист | Student, Teacher and Specialist features |
+
+Level (guruh ichidagi daraja) tartibini egasi tanlaydi — NEEDS_OWNER_CHECK (matritsa: Talaba — o‘qish; Ustoz —
+o‘qish + ustoz paneli; Mutaxassis — o‘qish + professional laboratoriya funksiyalari; Premium — hammasi;
+`lib/core/entitlements/plan_matrix.dart`). Reference name’lar (ichki): “Student Pro Monthly” va h.k. Review
+screenshot: to‘lov oynasi (Profil → Obuna → Obuna bo‘lish) — narx va davr xarid tugmasidan yuqorida ko‘rinadi.
+ASC o‘zbek tilini do‘kon tili sifatida qo‘llamaydi (15-bo‘lim) — uz ustuni Play uchun; ASC’da en va ru.
+
+### 16.2 Bepul sinov va “Restore” joyi
+
+- **Bepul sinov = ilova ichidagi 7 kun, bir marta, karta yo‘q** (server beradi; Apple “Introductory Offer” emas).
+  Profil → Obuna → “Bepul sinovni boshlash: <reja>”. Tugagach **faqat pullik imkoniyatlar yopiladi**; bepul qism va
+  ma’lumotlar qoladi. Sinov tugmasi faqat qurilma tekshiruvi (Apple App Attest/DeviceCheck) sozlangan platformada
+  chiqadi — hozir iOS’da server sinovi o‘chiq (`TRIAL_PLATFORMS`, attestatsiya yo‘q): **NEEDS_OWNER_CHECK** —
+  topshiriladigan buildda iOS’da sinov bormi, review izohiga shuni aniq yozing. Apple 3.1.1/3.1.2 nuqtai nazaridan
+  kartasiz, server beradigan sinov savol tug‘dirishi mumkin (`PAID_TRIAL_MODELS` Model A) — NEEDS_OWNER_CHECK.
+- Agar kelajakda do‘kon “Introductory Offer” yoqilsa: ilova matnlari (`proPayTrial`, `proPayStoreTrialNote`)
+  narx va yangilanish shartlari **do‘kon oynasidagidek** ekanini aytadi; ikkala sinovni birga qo‘llamang (7 + 7 kun
+  chalkashligi).
+- **Xaridni tiklash:** Profil → Obuna → “Xaridni tiklash” va to‘lov oynasi (Obuna bo‘lish) pastida. Obunani boshqarish:
+  “Obunani boshqarish yoki bekor qilish” (Apple obuna sahifasi). Mehmon rejimida xarid, tiklash va sinov yo‘q
+  (hisobga kirish tugmasi chiqadi) — **NEEDS_OWNER_CHECK:** Apple 5.1.1 hisobsiz xaridni kutishi mumkin.
+
+### 16.3 Tavsifga qo‘shiladigan obuna bloki (narxsiz) — 4-bo‘lim tavsifi oxiriga
+
+Apple 3.1.2: obuna nomi, davri, narxi (do‘kon ko‘rsatadi), avtomatik yangilanish, bekor qilish yo‘li, Foydalanish
+shartlari va Maxfiylik havolalari metadatada bo‘lishi kerak.
+
+**uz**
+Pullik rejalar (ixtiyoriy): Talaba Pro, Ustoz Pro, Mutaxassis Pro va Premium. Bugun bepul imkoniyatlar bepul
+qoladi. 7 kunlik bepul sinov bir marta beriladi va karta talab qilmaydi; sinov yoki obuna tugasa, faqat pullik
+imkoniyatlar yopiladi. Obuna avtomatik yangilanadi: narx va davr xariddan oldin App Store oynasida ko‘rsatiladi,
+to‘lov xaridni tasdiqlaganingizda Apple hisobingizdan olinadi. Joriy davr tugashidan kamida 24 soat oldin bekor
+qilinmasa, obuna yangilanadi. Obunani Sozlamalar → ismingiz → Obunalar bo‘limida boshqarish va bekor qilish mumkin.
+Foydalanish shartlari: https://labguide.nfcstore.uz/terms/ · Maxfiylik siyosati: https://labguide.nfcstore.uz/privacy/
+
+**ru**
+Платные планы (по желанию): Студент Pro, Преподаватель Pro, Специалист Pro и Premium. Функции, бесплатные сегодня,
+остаются бесплатными. Бесплатный пробный период на 7 дней даётся один раз, карта не нужна; когда пробный период или
+подписка заканчиваются, закрываются только платные функции. Подписка продлевается автоматически: цена и период
+показываются в окне App Store до покупки, оплата списывается с вашей учётной записи Apple при подтверждении покупки.
+Если не отменить подписку как минимум за 24 часа до конца текущего периода, она продлится. Управлять подпиской и
+отменить её можно в Настройки → ваше имя → Подписки.
+Условия использования: https://labguide.nfcstore.uz/terms/ · Политика конфиденциальности: https://labguide.nfcstore.uz/privacy/
+
+**en**
+Paid plans (optional): Student Pro, Teacher Pro, Specialist Pro and Premium. Features that are free today stay free. The
+7-day free trial is given once and needs no card; when a trial or subscription ends, only the paid features close.
+Subscriptions renew automatically: the price and period are shown in the App Store sheet before you buy, and payment is
+charged to your Apple Account when you confirm the purchase. Unless cancelled at least 24 hours before the end of the
+current period, the subscription renews. You can manage and cancel it in Settings → your name → Subscriptions.
+Terms of Use: https://labguide.nfcstore.uz/terms/ · Privacy Policy: https://labguide.nfcstore.uz/privacy/
+
+**What’s New (paid versiya, narxsiz)**
+- uz: Yangi: ixtiyoriy pullik rejalar (Talaba Pro, Ustoz Pro, Mutaxassis Pro, Premium). Bepul imkoniyatlar bepul qoladi.
+- ru: Новое: необязательные платные планы (Студент Pro, Преподаватель Pro, Специалист Pro, Premium). Бесплатные функции остаются бесплатными.
+- en: New: optional paid plans (Student Pro, Teacher Pro, Specialist Pro, Premium). Free features stay free.
+
+**License Agreement / Terms of Use havolasi.** Foydalanish shartlari: `https://labguide.nfcstore.uz/terms/`
+(`TERMS_OF_USE.md`, uch tilda; ilovadagi to‘lov oynasi shu manzilni ochadi — `Contact.termsOfUseUrl`). Variantlar:
+(a) App Store Connect → App Information → License Agreement: *Standard Apple EULA* (ilova tavsifida Foydalanish
+shartlari havolasi baribir turadi) yoki (b) *Custom* — Apple’ning minimal EULA bandlari (tomon nomi/manzili, Apple
+uchinchi tomon manfaatdor ekani va h.k.) hozirgi matnda YO‘Q → yurist qo‘shishi yoki (a) tanlanishi kerak.
+**NEEDS_OWNER_CHECK / NEEDS_LAWYER_REVIEW.**
+
+### 16.4 App Review Information → Notes (ingliz tilida; placeholderlarni egasi to‘ldiradi)
+
+```text
+LabGuide is an educational reference app for clinical laboratory professionals and students. It does not diagnose or
+interpret patient results.
+
+FREE vs PAID: every feature that was free in the previous version stays free (no daily limits). Optional auto-renewing
+subscriptions (Student Pro, Teacher Pro, Specialist Pro, Premium) add extra features. Subscriptions are sold only with
+In-App Purchase. When a trial or subscription ends, only the paid features close; free features and the user's data stay.
+
+WHERE TO FIND IT: Profile tab -> "Subscription and restore" -> plans -> "Subscribe". The purchase screen shows each plan's
+name, the price and period from the App Store (above the buy button), the auto-renewal terms, "Restore purchases",
+"Manage or cancel subscription", and links to the Terms of Use (https://labguide.nfcstore.uz/terms/) and the Privacy
+Policy (https://labguide.nfcstore.uz/privacy/).
+
+SIGN-IN: buying, restoring and the free trial need an account (email code, Google or Apple). Guest mode keeps all free
+features and shows a "Sign in" button instead of the buy button.
+Review account: <REVIEW_ACCOUNT - NEEDS_OWNER_CHECK: owner decides how the reviewer signs in, e.g. Sign in with Apple, or a
+monitored mailbox for the email code>.
+
+FREE TRIAL: a 7-day in-app trial (given once per phone/account/email, no card, never converts to a paid plan by itself).
+It is not an App Store introductory offer. <TRIAL_ON_IOS - NEEDS_OWNER_CHECK: state whether the trial button is available
+on iOS in this build; if the device check is not enabled on iOS, say so.>
+
+SANDBOX TEST STEPS:
+1. Sign in with the review account above (Profile -> Sign in).
+2. Profile -> Subscription and restore -> choose a plan -> Subscribe -> confirm in the App Store sheet (sandbox:
+   <SANDBOX_TESTER - NEEDS_OWNER_CHECK: Apple sandbox account details if the reviewer needs one>).
+3. The paid features of the plan unlock (e.g. Teacher Pro: teacher panel).
+4. Delete and reinstall (or use another device) -> sign in -> "Restore purchases" restores the plan.
+5. "Manage or cancel subscription" opens the App Store subscriptions page.
+6. After the sandbox subscription expires, only the paid features close; free features and data remain.
+
+Contact: labguide@nfcstore.uz
+```
+
+**Sandbox hisoblari / test bosqichi (egasi, ichki):** `PRO_TEST_ENVIRONMENT.md` 3-bo‘lim (Sandbox tester → Settings → App Store →
+Sandbox Account → TestFlight build). Xarid, tiklash, boshqa hisob (`owned_by_other`), bekor qilish, grace, refund va oflayn
+holatlar — QILINMAGAN (NOT VERIFIED). Production serverda sandbox xaridini qabul qilish siyosati (`LG_BILLING_SANDBOX`) —
+NEEDS_OWNER_CHECK: o‘chiq bo‘lsa App Review sandbox xaridi rad etiladi.
+
+### 16.5 App Privacy (Ma’lumotlar) — pullik build uchun o‘zgarishlar (**NEEDS_OWNER_CHECK**: aniq toifa va maqsadlar)
+
+Pullik build doim serverga ulanadi (`LG_API_URL` berilgan): 6-bo‘limdagi “Data Not Collected” (server ulanmagan build)
+javobi **yaroqsiz**; “server ulangan” jadvalga quyidagilar qo‘shiladi. Tracking: No (o‘zgarmaydi).
+
+| App Store toifasi | Nima (kodda / matnda) | Maqsad | Eslatma |
+|---|---|---|---|
+| Purchases → Purchase History | do‘kon tranzaksiya identifikatori, sotib olingan mahsulot (reja), holat, boshlanish/tugash vaqti (`entitlements`); hisob o‘chirilganda o‘chadi | App Functionality | Linked to user. Maxfiylik siyosati 16-bo‘lim |
+| Identifiers → Device ID | bepul sinov uchun: kanonik email va qurilma belgisining faqat kalitli xeshlari (xom qiymat saqlanmaydi); hisob o‘chirilganda hisobdan uziladi, 24 oy saqlanadi | App Functionality (suiiste’molga qarshi — Apple ro‘yxatida alohida maqsad bo‘lmasa *Other Purposes*) | Linked/Not linked va maqsad — egasi hal qiladi; 24 oy — **NEEDS_LAWYER_REVIEW** |
+| Contact Info → Email Address | o‘zgarmaydi (sinov xeshi uchun ham ishlatiladi) | App Functionality | — |
+
+Karta ma’lumoti LabGuide’da yo‘q (to‘lovni Apple qayta ishlaydi) — *Financial Info* qo‘shilmaydi. `PrivacyInfo.xcprivacy`
+(`ios/Runner/`) ni ham shu jadvalga solishtiring (Apple 2.3.1; `in_app_purchase` iOS’da StoreKit’ni ishlatadi).
+Age rating: In-App Purchases savollari bor bo‘lsa, “obuna bor” deb belgilang; Medical bandi o‘zgarmaydi
+([APPLE_2026_REQUIREMENTS.md](../APPLE_2026_REQUIREMENTS.md) 6-bo‘lim).

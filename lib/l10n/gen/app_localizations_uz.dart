@@ -12718,22 +12718,22 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get proPayTierProSub =>
-      'Laborant, shifokor, talaba va toifaga tayyorlanuvchi uchun';
+      'Pullik rejalar: Talaba Pro, Ustoz Pro, Mutaxassis Pro va Premium';
 
   @override
   String get proPayTierTeacher => 'Ustoz Pro';
 
   @override
   String get proPayTierTeacherSub =>
-      'Guruh bilan ishlaydigan ustoz uchun: Talaba imkoniyatlari va ustoz paneli. Laboratoriya bo‘limi kirmaydi.';
+      'Ustoz uchun (ustoz paneli): test yaratish, talabalarni biriktirish, guruhlar va natijalarni boshqarish.';
 
   @override
   String get proPayFree =>
-      'Pullik deb belgilanmagan imkoniyatlar bepul qoladi.';
+      'Bepul imkoniyatlar bepul qoladi va kunlik cheklovsiz ishlaydi. Sinov yoki obuna tugasa, faqat pullik imkoniyatlar yopiladi.';
 
   @override
   String get proPayFeatQuestions =>
-      'Cheksiz savollar: mavzular bo‘yicha mashq va kartadan mini-test';
+      'Mavzular bo‘yicha mashq va kartadan mini-test';
 
   @override
   String get proPayFeatExam => 'Imtihon simulyatsiyasi (vaqtli test)';
@@ -12752,7 +12752,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get proPayFeatHistory => 'Natijalarning to‘liq tarixi';
 
   @override
-  String get proPayFeatAllPro => 'Pro tarifidagi hamma imkoniyat';
+  String get proPayFeatAllPro => 'Talaba Pro rejasidagi hamma imkoniyat';
 
   @override
   String get proPayFeatGroups =>
@@ -12841,7 +12841,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String proPayTrial(String trial, String price) {
-    return '$trial bepul, keyin $price';
+    return '$trial bepul, keyin $price. Narx va yangilanish shartlari do‘kon oynasida ko‘rsatilganidek.';
   }
 
   @override
@@ -12867,26 +12867,28 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String proPayDisclosure(String store) {
-    return 'Obuna avtomatik yangilanadi. To‘lov xarid tasdiqlanganda $store hisobingizdan olinadi (bepul sinov bo‘lsa — sinov tugagach). Joriy davr tugashidan kamida 24 soat oldin bekor qilinmasa, obuna xuddi shu davr va narxda yangilanadi va to‘lov davr tugashidan oldingi 24 soat ichida olinadi. Obunani $store hisob sozlamalarida boshqarish va bekor qilish mumkin. Bepul sinovning foydalanilmagan qismi obuna sotib olinganda bekor bo‘ladi.';
+    return 'Obuna avtomatik yangilanadi. Narx va davr xariddan oldin $store oynasida ko‘rsatiladi; pul faqat siz shu oynada o‘zingiz tasdiqlaganingizdan keyin yechiladi (do‘kon bepul sinov yoki boshlang‘ich taklif ko‘rsatsa — u tugagach, narx va yangilanish shartlari do‘kon oynasidagidek). To‘lov $store hisobingizdan olinadi. Joriy davr tugashidan kamida 24 soat oldin bekor qilinmasa, obuna xuddi shu davr va narxda yangilanadi va to‘lov davr tugashidan oldingi 24 soat ichida olinadi. Obunani $store hisob sozlamalarida boshqarish va bekor qilish mumkin; LabGuide hisobini o‘chirish obunani bekor qilmaydi. Qaytarish so‘rovlarini $store ko‘rib chiqadi.';
   }
 
   @override
   String get proPayGuestNote =>
-      'Obuna, xaridni tiklash va bepul sinov uchun hisobga kirish kerak. Ilovaning bepul qismidan hisobsiz foydalanish mumkin.';
+      'Obuna, xaridni tiklash va bepul sinov uchun hisobga kiring. Ilovaning bepul qismi hisobsiz ham ishlayveradi.';
 
   @override
   String get proPaySignInRequired =>
       'Obuna bo‘lish va xaridni tiklash uchun avval hisobga kiring.';
 
   @override
-  String get proPayLockedPro => 'Bu imkoniyat Pro obunasida.';
+  String get proPayLockedPro =>
+      'Bu imkoniyat pullik rejalarda: Talaba Pro, Ustoz Pro, Mutaxassis Pro yoki Premium.';
 
   @override
-  String get proPayLockedTeacher => 'Bu imkoniyat Ustoz yoki Premium rejasida.';
+  String get proPayLockedTeacher =>
+      'Bu imkoniyat Ustoz Pro yoki Premium rejasida.';
 
   @override
   String get proPayLockedLab =>
-      'Bu imkoniyat Mutaxassis yoki Premium rejasida.';
+      'Bu imkoniyat Mutaxassis Pro yoki Premium rejasida.';
 
   @override
   String get proPayAllOpen => 'Hozir barcha imkoniyatlar ochiq.';
@@ -12941,10 +12943,10 @@ class AppLocalizationsUz extends AppLocalizations {
   String get proRowTitle => 'Obuna va tiklash';
 
   @override
-  String get proRowSub => 'Free · Pro';
+  String get proRowSub => 'Free · Pro · Premium';
 
   @override
-  String get proPurchaseTitle => 'LabGuide Pro';
+  String get proPurchaseTitle => 'Pro va Premium rejalari';
 
   @override
   String get proStatusTitle => 'Holat';
@@ -12977,37 +12979,37 @@ class AppLocalizationsUz extends AppLocalizations {
       'Hozircha pullik deb belgilangan imkoniyat yo‘q: hamma narsa ochiq.';
 
   @override
-  String get proPlanStudent => 'Talaba';
+  String get proPlanStudent => 'Talaba Pro';
 
   @override
-  String get proPlanTeacher => 'Ustoz';
+  String get proPlanTeacher => 'Ustoz Pro';
 
   @override
-  String get proPlanSpecialist => 'Mutaxassis';
+  String get proPlanSpecialist => 'Mutaxassis Pro';
 
   @override
   String get proPlanPremium => 'Premium';
 
   @override
-  String get proPayTierStudent => 'Talaba';
+  String get proPayTierStudent => 'Talaba Pro';
 
   @override
   String get proPayTierStudentSub =>
-      'Talabalik holati tasdiqlangan hisob uchun';
+      'O‘qish uchun: ustoz bergan testlar, natijalar tarixi, imtihon simulyatsiyasi, PDF/CSV eksport va qo‘shimcha materiallar.';
 
   @override
-  String get proPayTierSpecialist => 'Mutaxassis';
+  String get proPayTierSpecialist => 'Mutaxassis Pro';
 
   @override
   String get proPayTierSpecialistSub =>
-      'Laborant va shifokor uchun: Talaba imkoniyatlari va butun Laboratoriya bo‘limi. Ustoz paneli kirmaydi.';
+      'Laboratoriya mutaxassisi uchun: professional laboratoriya funksiyalari.';
 
   @override
   String get proPayTierPremium => 'Premium';
 
   @override
   String get proPayTierPremiumSub =>
-      'Hamma imkoniyat: Talaba imkoniyatlari, ustoz paneli va butun Laboratoriya bo‘limi.';
+      'Hammasi birga: Talaba Pro, Ustoz Pro va Mutaxassis Pro imkoniyatlari.';
 
   @override
   String get proPayStatusAdminGrant => 'Pro administrator tomonidan berilgan';
@@ -13062,7 +13064,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String proGrantConfirmBody(String email, String plan, String duration) {
-    return '$email manziliga «$plan» Pro beriladi. Muddat: $duration.';
+    return '$email manziliga «$plan» rejasi beriladi. Muddat: $duration.';
   }
 
   @override
@@ -13177,30 +13179,29 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get proSubPriceNote =>
-      'Narxlar AQSh dollarida. Do‘konda mahalliy valyutada ko‘rsatiladi.';
+      'Narxlar do‘kondan olinadi va mahalliy valyutada ko‘rsatiladi. Aniq narx va davr xariddan oldin do‘kon oynasida ko‘rinadi.';
 
   @override
   String proSubUnlocks(String list) {
-    return 'Kimga: $list';
+    return 'Kiradi: $list';
   }
 
   @override
-  String get proSubCapLearner => 'o‘qish (talaba) tomonidagi Pro imkoniyatlari';
+  String get proSubCapLearner => 'Talaba Pro';
 
   @override
-  String get proSubCapTeacherPanel => 'ustoz paneli Pro imkoniyatlari';
+  String get proSubCapTeacherPanel => 'Ustoz Pro';
 
   @override
-  String get proSubCapLab =>
-      'butun Laboratoriya bo‘limi (apparatlar, kalibrlash, QC, kalkulyatorlar, leykoformula sanash va boshqalar)';
+  String get proSubCapLab => 'Mutaxassis Pro';
 
   @override
   String get proSubNothingGated =>
-      'Hozir bu reja qo‘shimcha hech narsa ochmaydi: hammasi bepul.';
+      'Hozir bu reja hech narsani yopmaydi: hammasi bepul.';
 
   @override
   String get proSubTeacherNote =>
-      'Ustoz paneli Pro imkoniyatlari faqat Ustoz yoki Premium rejasida, Laboratoriya bo‘limi esa faqat Mutaxassis yoki Premium rejasida bo‘ladi. Ilovada rolni o‘zgartirish ularni ochmaydi. Bugungi bepul guruhlar bepul qoladi.';
+      'Ustoz paneli faqat Ustoz Pro yoki Premium rejasida, professional laboratoriya funksiyalari esa faqat Mutaxassis Pro yoki Premium rejasida bo‘ladi. Rolni o‘zgartirish ularni ochmaydi. Bugungi bepul imkoniyatlar bepul qoladi.';
 
   @override
   String proSubTrialTitle(int days) {
@@ -13209,7 +13210,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get proSubTrialOncePerPhone =>
-      'Bitta telefonga faqat bir marta beriladi: boshqa hisob bilan ham, hisobni o‘chirib qayta ochganda ham qayta berilmaydi. Hisobga kirish va tasdiqlangan email kerak.';
+      'Bir marta beriladi: bitta telefonga, hisobga va emailga bitta sinov. Boshqa hisob bilan ham, hisobni o‘chirib qayta ochganda ham qayta berilmaydi. Hisobga kirish va tasdiqlangan email kerak.';
 
   @override
   String get proSubTrialUsed => 'Bu hisob bepul sinovdan foydalangan.';
@@ -13222,11 +13223,11 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get proPrivacyTrialNote =>
-      'Pro (faqat Pro yoqilganda, hozir faol emas): 7 kunlik bepul sinov bir telefonga bir marta beriladi. Buning uchun serverda sinov sanalari, reja, platforma va emailingiz (kanonik ko‘rinishda) hamda qurilma belgisining faqat kalitli, qaytarib bo‘lmaydigan xeshi saqlanadi — xom email, qurilma identifikatori yoki attestatsiya tokeni saqlanmaydi. Hisob o‘chirilganda yozuv hisobdan uziladi, lekin sinov qayta berilmasligi uchun 24 oy saqlanadi, so‘ng avtomatik o‘chiriladi.';
+      'Bepul sinov: 7 kunlik bepul sinov bir telefonga bir marta beriladi. Buning uchun serverda sinov sanalari, reja, platforma va emailingiz (kanonik ko‘rinishda) hamda qurilma belgisining faqat kalitli, qaytarib bo‘lmaydigan xeshi saqlanadi — xom email, qurilma identifikatori yoki attestatsiya tokeni saqlanmaydi. Hisob o‘chirilganda yozuv hisobdan uziladi, lekin sinov qayta berilmasligi uchun 24 oy saqlanadi, so‘ng avtomatik o‘chiriladi. Batafsil — Maxfiylik siyosatida.';
 
   @override
   String proSubTrialBody(int days) {
-    return '$days kun Pro — bepul. To‘lov usuli kerak emas va hech qanday pul yechilmaydi. Sinov tugagach barcha bepul imkoniyatlar ishlashda davom etadi; Pro tarifini saqlash uchun alohida obuna bo‘lishingiz mumkin.';
+    return 'Tanlangan rejaning pullik imkoniyatlarini $days kun bepul sinab ko‘rasiz. Bir marta beriladi; karta yoki to‘lov usuli kerak emas, pul yechilmaydi, o‘zi pullik obunaga aylanmaydi. Tugagach faqat pullik imkoniyatlar yopiladi; bepul imkoniyatlar va ma’lumotlaringiz qoladi.';
   }
 
   @override
@@ -13239,7 +13240,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String proSubTrialConfirmBody(String plan, String date) {
-    return '$plan Pro $date gacha bepul. To‘lov usuli yo‘q, pul yechilmaydi va sinov pullik obunaga aylanmaydi. Shu sanadan keyin bepul imkoniyatlar davom etadi.';
+    return '$plan: pullik imkoniyatlar $date gacha bepul. Bir marta beriladi, to‘lov usuli yo‘q, pul yechilmaydi va sinov pullik obunaga aylanmaydi. Shu sanadan keyin faqat pullik imkoniyatlar yopiladi; bepul imkoniyatlar va ma’lumotlaringiz qoladi.';
   }
 
   @override
@@ -13250,7 +13251,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String proSubTrialStarted(String date) {
-    return 'Bepul sinov boshlandi — Pro $date gacha.';
+    return 'Bepul sinov boshlandi — pullik imkoniyatlar $date gacha ochiq.';
   }
 
   @override
@@ -13259,11 +13260,11 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get proSubTrialHasAccess =>
-      'Sizda Pro allaqachon bor, sinov kerak emas.';
+      'Sizda pullik reja allaqachon bor, sinov kerak emas.';
 
   @override
   String get proSubTrialPlanNotAllowed =>
-      'Ustoz sinovi — serverda ustoz sifatida ro‘yxatdan o‘tganlar uchun, Mutaxassis sinovi — tasdiqlangan mutaxassislar uchun, Premium sinovi — ikkalasi ham bo‘lganlar uchun. Talaba rejasini sinab ko‘ring.';
+      'Ustoz Pro sinovi — serverda ustoz sifatida ro‘yxatdan o‘tganlar uchun, Mutaxassis Pro sinovi — tasdiqlangan mutaxassislar uchun, Premium sinovi — ikkalasi ham bo‘lganlar uchun. Talaba Pro sinovini sinab ko‘ring.';
 
   @override
   String get proSubTrialEmail =>
@@ -13278,7 +13279,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get proSubEnded =>
-      'Pro muddati tugadi. Barcha bepul imkoniyatlar ishlaydi, ma’lumotlaringiz saqlanadi.';
+      'Pullik reja muddati tugadi: faqat pullik imkoniyatlar yopildi. Bepul imkoniyatlar ishlashda davom etadi va ma’lumotlaringiz saqlanadi.';
 
   @override
   String get proSubPriceYearlyNote =>
@@ -13287,4 +13288,83 @@ class AppLocalizationsUz extends AppLocalizations {
   @override
   String get proSubWithoutSubscription =>
       'Ilovadan obunasiz foydalanish mumkin: bepul imkoniyatlar bepul qoladi.';
+
+  @override
+  String get proPayCancelPathApple =>
+      'iPhone va iPad’da: Sozlamalar → ismingiz → Obunalar → LabGuide → Obunani bekor qilish.';
+
+  @override
+  String get proPayCancelPathGoogle =>
+      'Android’da: Google Play → profil belgisi → To‘lovlar va obunalar → Obunalar → LabGuide → Obunani bekor qilish.';
+
+  @override
+  String proPayStoreTrialNote(String store) {
+    return 'Do‘konda bepul sinov yoki boshlang‘ich taklif ko‘rsatilsa, uning muddati, keyingi narx va yangilanish shartlari $store oynasida ko‘rsatilganidek bo‘ladi: tasdiqlashdan oldin o‘qing. Bu ilovadagi bepul sinovdan alohida.';
+  }
+
+  @override
+  String proPayRefundNote(String store) {
+    return 'To‘lovni qaytarish so‘rovlarini $store o‘z qoidalariga ko‘ra ko‘rib chiqadi: so‘rovni $store hisobingiz orqali yuboring. LabGuide bank kartangiz ma’lumotini ko‘rmaydi.';
+  }
+
+  @override
+  String proPayRefundedStatus(String store) {
+    return 'Xarid $store tomonidan qaytarilgan yoki bekor qilingan: pullik imkoniyatlar yopildi. Bepul imkoniyatlar va ma’lumotlaringiz saqlanadi.';
+  }
+
+  @override
+  String proPayCancelledUntil(String date) {
+    return 'Obuna bekor qilingan: pullik imkoniyatlar $date gacha ishlaydi, shundan keyin faqat pullik qism yopiladi.';
+  }
+
+  @override
+  String proPayGraceNote(String store) {
+    return 'To‘lovda muammo bor. Pullik imkoniyatlar hozircha saqlanmoqda: $store da to‘lov usulini yangilang.';
+  }
+
+  @override
+  String get proPayOfflineNote =>
+      'Internet yo‘q: oxirgi tekshirilgan holat ko‘rsatilmoqda. Pullik imkoniyatlar cheklangan muddat ishlaydi va ulanishdan keyin yangilanadi; bepul qism odatdagidek ishlaydi.';
+
+  @override
+  String get proPayOfflineAction =>
+      'Internet yo‘q. Xarid yoki tiklash uchun ulanishni tekshirib, qayta urinib ko‘ring.';
+
+  @override
+  String get proPayAgreeNote =>
+      'Obuna bo‘lish yoki sinovni boshlash orqali Foydalanish shartlari va Maxfiylik siyosatini qabul qilasiz (havolalar quyida).';
+
+  @override
+  String get proPayFeatAssignedTests => 'Ustoz bergan testlar';
+
+  @override
+  String get proPayFeatExport =>
+      'Natijalarni PDF va CSV ko‘rinishida yuklab olish';
+
+  @override
+  String get proPayFeatMaterials => 'Qo‘shimcha materiallar';
+
+  @override
+  String get proPayFeatCreateTests => 'Test yaratish va talabalarga berish';
+
+  @override
+  String get proPayFeatAttachStudents => 'Talabalarni biriktirish';
+
+  @override
+  String get proPayFeatManageResults => 'Natijalarni boshqarish';
+
+  @override
+  String get proPayFeatProLab => 'Professional laboratoriya funksiyalari';
+
+  @override
+  String get proTermsBody =>
+      'LabGuide — klinik laboratoriya bo‘yicha ma’lumotnoma va o‘quv ilovasi. Asosiy imkoniyatlar bepul; pullik rejalar (Talaba Pro, Ustoz Pro, Mutaxassis Pro, Premium) qo‘shimcha imkoniyatlar beradi. Ilovadan foydalanib, siz quyidagi shartlarga rozilik bildirasiz.\n\n1. Tibbiy cheklov. LabGuide tashxis qo‘ymaydi, davolash yoki dori buyurmaydi va laboratoriyangizning tasdiqlangan tartiblari, reagent va analizator yo‘riqnomalari (IFU) hamda shifokor xulosasini almashtirmaydi. Har bir ma’lumot ostida manbasi ko‘rsatilgan; qaror qabul qilishda asl manba va o‘z muassasangiz qoidalariga tayaning.\n\n2. Hisob. Ba’zi imkoniyatlar (guruhlar, testlar, hamjamiyat, murojaatlar, pullik rejalar va bepul sinov) uchun email orqali ro‘yxatdan o‘tish kerak. Hisobingiz xavfsizligi va u orqali qilingan harakatlar uchun o‘zingiz javobgarsiz. Hisobni istalgan vaqtda Profil → Hisobni o‘chirish orqali o‘chirishingiz mumkin; bu do‘kon obunasini bekor qilmaydi.\n\n3. Ustoz va talaba guruhlari. Talaba guruhga qo‘shilganda ustoz uning taxallusi (yoki tartib raqami) va test natijalarini ko‘radi. Ustoz guruhni faqat o‘quv maqsadida boshqaradi.\n\n4. Foydalanuvchi kontenti. Hamjamiyatda va murojaatlarda yozganlaringiz uchun o‘zingiz javobgarsiz. Haqoratli, noqonuniy, reklama, boshqa shaxsning shaxsiy ma’lumoti yoki roziligisiz intim tasvirlar joylash qat’iyan taqiqlanadi. Bunday kontent o‘chiriladi, qoidabuzar hisobi cheklanishi yoki o‘chirilishi mumkin. Har bir xabarni “Shikoyat” orqali bildirishingiz mumkin.\n\n5. Pullik rejalar va bepul sinov. Pullik rejalar Apple App Store yoki Google Play orqali avtomatik yangilanuvchi obuna sifatida sotiladi. Narx va davr xariddan oldin do‘kon oynasida ko‘rsatiladi; pul faqat siz shu oynada tasdiqlaganingizdan keyin yechiladi. Obunani do‘kon sozlamalarida istalgan vaqtda bekor qilish mumkin; qaytarish so‘rovlarini do‘kon ko‘rib chiqadi. 7 kunlik bepul sinov bir marta beriladi va karta talab qilmaydi. Sinov yoki obuna tugagach faqat pullik imkoniyatlar yopiladi; bepul imkoniyatlar va ma’lumotlaringiz qoladi.\n\n6. Mualliflik huquqi. Ilova matnlari, slaydlari, testlari va dizayni LabGuide mualliflariga tegishli; tashqi manbalar o‘z litsenziyasi bilan ko‘rsatilgan. Ularni tijorat maqsadida nusxalash va tarqatish mumkin emas.\n\n7. Xizmat. Ilova “boricha” taqdim etiladi; uzilishlar va xatolar bo‘lishi mumkin, biz ularni imkon qadar tez tuzatamiz. Shartlar o‘zgarsa, ilovada xabar beramiz.\n\n8. Maxfiylik. Ma’lumotlaringiz qanday ishlatilishi maxfiylik siyosatida yozilgan: labguide.nfcstore.uz/privacy. Shartlarning to‘liq matni: labguide.nfcstore.uz/terms\n\n9. Aloqa: labguide@nfcstore.uz';
+
+  @override
+  String get proPrivacyBody =>
+      'Asosiy bo‘limlar hisobsiz (mehmon rejimida) ishlaydi: sozlamalar, xatcho‘plar, QC qaydlari, apparatlaringiz va mashq natijalari shu qurilmada saqlanadi. Hisob ixtiyoriy (email kodi, Google yoki Apple bilan) — guruhlar, hamjamiyat, “Taklif va yordam”, pullik rejalar va bepul sinov uchun kerak. Bunda ma’lumotlar Cloudflare serverida (Sharqiy Yevropa, O‘zbekistondan tashqarida) saqlanadi: email faqat hash va niqoblangan ko‘rinishda, kirish usuli, rol, til, oxirgi faollik vaqti (daqiqagacha); guruhda — taxallus yoki tartib raqami, test javoblari va ballar; murojaat va shikoyat matnlari. Google/Apple’dan faqat hisob identifikatori va email olinadi, token saqlanmaydi. Ustoz faqat o‘z guruhini ko‘radi. Obuna to‘lovini Apple yoki Google qayta oladi: bank kartangiz ma’lumotini LabGuide ko‘rmaydi; serverimiz do‘kon tranzaksiya identifikatorlarini tekshiradi. Bepul sinov uchun sanalar va faqat kalitli xeshlar (email va qurilma belgisidan) saqlanadi. Reklama, analitika va kuzatuv yo‘q. To‘liq matn — “Maxfiylik siyosati” havolasida.';
+
+  @override
+  String get proAccountDeleteBody =>
+      'Hisobingiz, kirish usullari (Google/Apple bog‘lanishi), guruhlardagi a’zolik va natijalaringiz, “Taklif va yordam” murojaatlari, hamjamiyatdagi savol-javoblaringiz va xaridlarga bog‘langan yozuvlar serverdan butunlay o‘chiriladi. Ustoz bo‘lsangiz, yaratgan guruhlaringiz ham o‘chadi. Buni qaytarib bo‘lmaydi. Do‘kon obunasi bekor bo‘lmaydi: uni App Store yoki Google Play sozlamalarida bekor qiling. Bepul sinovni qayta olishning oldini olish uchun sinov yozuvi hisobdan uzilgan holda cheklangan muddat saqlanadi. Ilova ichida yuborgan shikoyatlar matni hisobga bog‘lanmagan holda qoladi. Qurilmadagi ma’lumotlar ham tozalanadi.';
 }

@@ -11,15 +11,18 @@ Xato topilsa, nol bo'lmagan kod bilan tugaydi. Tekshiriladi:
 * D-77 (`paid/pro-premium` tarmog'i; D-58 o'rniga): narx literali ($4.99,
   12 000 so'm, …) hech bir sahifada yo'q — narx faqat do'kondan; "30 kunlik
   sinov" va 7 dan boshqa sinov muddati yo'q; to'lov/obuna so'zlari (Pro, obuna,
-  subscription, payment va h.k.) faqat `privacy/` sahifasida (u
-  `docs/store/PRIVACY_POLICY.md` dan yasaladi — qo'lda qo'shilgan bo'lim
-  "eskirgan" xatosi bilan ushlanadi), boshqa sahifalarda taqiqlangan;
+  subscription, payment va h.k.) faqat `privacy/` va `terms/` sahifalarida (ular
+  `docs/store/PRIVACY_POLICY.md` va `docs/store/TERMS_OF_USE.md` dan yasaladi —
+  qo'lda qo'shilgan bo'lim "eskirgan" xatosi bilan ushlanadi), boshqa
+  sahifalarda taqiqlangan;
 * nisbiy havolalar: fayl mavjudligi va `#id` mavjudligi; tashqi resurslar
   (CSS, rasm, skript, shrift) taqiqlangan; `/` bilan boshlanuvchi havola
   taqiqlangan (sayt `/labguide/` ostida ishlashi kerak);
 * har sahifada `<html lang>`, `<title>`, viewport;
-* `site/privacy/index.html` `docs/store/PRIVACY_POLICY.md` bilan mos
-  (eskirgan bo'lsa — `python3 tool/site/build_site.py`).
+* `site/privacy/index.html` va `site/terms/index.html` ularning manbasi
+  (`docs/store/PRIVACY_POLICY.md`, `docs/store/TERMS_OF_USE.md`) bilan mos
+  (eskirgan bo'lsa — `python3 tool/site/build_site.py`); ikkalasida uch til
+  bo'limi bor.
 """
 
 from __future__ import annotations
@@ -66,9 +69,16 @@ BANNED: list[tuple[str, re.Pattern[str]]] = [
 ]
 
 # D-77: to'lov/obuna so'zlari faqat shu sahifalarda (manbasi nazoratda:
-# privacy — docs/store/PRIVACY_POLICY.md, "eskirgan" tekshiruvi bilan).
+# privacy — docs/store/PRIVACY_POLICY.md, terms — docs/store/TERMS_OF_USE.md,
+# "eskirgan" tekshiruvi bilan).
 SUBSCRIPTION_WORDS = {'Pro', 'obuna', 'subscription', 'payment', 'to‘lov', 'оплата/подписка'}
-SUBSCRIPTION_TEXT_PAGES = {'privacy/index.html'}
+SUBSCRIPTION_TEXT_PAGES = {'privacy/index.html', 'terms/index.html'}
+
+# Generatsiya qilinadigan sahifalar: (sayt yo'li, builder, manba).
+GENERATED_PAGES = (
+    ('privacy', 'build_privacy', 'SOURCE'),
+    ('terms', 'build_terms', 'TERMS_SOURCE'),
+)
 
 # Ichki (inline) skriptga ruxsat etilgan sahifalar.
 SCRIPT_PAGES = {'j/index.html'}
@@ -169,19 +179,21 @@ def check_site(site: Path, check_fresh: bool = True) -> list[str]:
             errors.append('style.css: qorong‘i mavzu (prefers-color-scheme) yo‘q')
 
     if check_fresh:
-        out = site / 'privacy' / 'index.html'
-        fresh = build_site.build_privacy()
-        if not out.is_file():
-            errors.append('privacy/index.html yo‘q: python3 tool/site/build_site.py ni ishga tushiring')
-        elif out.read_text(encoding='utf-8') != fresh:
-            errors.append('privacy/index.html eskirgan: python3 tool/site/build_site.py ni ishga tushiring')
-        src = build_site.SOURCE.read_text(encoding='utf-8')
-        for lang in ('uz', 'ru', 'en'):
-            if f'<section id="{lang}" lang="{lang}">' not in fresh:
-                errors.append(f'privacy: “{lang}” bo‘limi yo‘q')
-        if re.search(r'^>\s*\**eslatma', src, re.IGNORECASE | re.MULTILINE):
-            errors.append('PRIVACY_POLICY.md: ichki “Eslatma” bloki bor (GitHub’da ham ommaviy) — '
-                          'PRIVACY_OPEN_QUESTIONS.md ga ko‘chiring')
+        for name, builder, source in GENERATED_PAGES:
+            out = site / name / 'index.html'
+            fresh = getattr(build_site, builder)()
+            if not out.is_file():
+                errors.append(f'{name}/index.html yo‘q: python3 tool/site/build_site.py ni ishga tushiring')
+            elif out.read_text(encoding='utf-8') != fresh:
+                errors.append(f'{name}/index.html eskirgan: python3 tool/site/build_site.py ni ishga tushiring')
+            src_path: Path = getattr(build_site, source)
+            src = src_path.read_text(encoding='utf-8')
+            for lang in ('uz', 'ru', 'en'):
+                if f'<section id="{lang}" lang="{lang}">' not in fresh:
+                    errors.append(f'{name}: “{lang}” bo‘limi yo‘q')
+            if re.search(r'^>\s*\**eslatma', src, re.IGNORECASE | re.MULTILINE):
+                errors.append(f'{src_path.name}: ichki “Eslatma” bloki bor (GitHub’da ham ommaviy) — '
+                              'PRIVACY_OPEN_QUESTIONS.md ga ko‘chiring')
     return errors
 
 
@@ -276,6 +288,27 @@ Profil sahifasi. Provider.</p><a href="#a">x</a><a href="mailto:a@b.uz">m</a>
         (site / 'privacy' / 'index.html').write_text(page.format('Pro subscription: $4.99.'), encoding='utf-8')
         ok = any('narx literali' in e for e in check_site(site, check_fresh=False))
         print(f'  {"ok  " if ok else "XATO"} privacy/: narx literali baribir taqiqlangan')
+        failures += 0 if ok else 1
+        # terms/ ham obuna so'zlariga ruxsat oladi, lekin narx va 30 kunlik sinov — yo'q.
+        (site / 'privacy' / 'index.html').write_text(page.format('Hello.'), encoding='utf-8')
+        (site / 'terms').mkdir()
+        (site / 'terms' / 'index.html').write_text(
+            page.format('Pro subscription, obuna, подписка, payment, to‘lov. 7 kunlik bepul sinov.'), encoding='utf-8')
+        ok = check_site(site, check_fresh=False) == []
+        print(f'  {"ok  " if ok else "XATO"} terms/: obuna so‘zlari va 7 kunlik sinov ruxsat')
+        failures += 0 if ok else 1
+        (site / 'terms' / 'index.html').write_text(page.format('Pro: $4.99 oyiga.'), encoding='utf-8')
+        ok = any('narx literali' in e for e in check_site(site, check_fresh=False))
+        print(f'  {"ok  " if ok else "XATO"} terms/: narx literali taqiqlangan')
+        failures += 0 if ok else 1
+        (site / 'terms' / 'index.html').write_text(page.format('30 kunlik bepul sinov.'), encoding='utf-8')
+        ok = any('sinov 7 kun emas' in e for e in check_site(site, check_fresh=False))
+        print(f'  {"ok  " if ok else "XATO"} terms/: 30 kunlik sinov taqiqlangan')
+        failures += 0 if ok else 1
+        (site / 'terms' / 'index.html').write_text(page.format('Hello.'), encoding='utf-8')
+        (site / 'index.html').write_text(page.format('Oylik obuna.'), encoding='utf-8')
+        ok = any('obuna' in e for e in check_site(site, check_fresh=False))
+        print(f'  {"ok  " if ok else "XATO"} bosh sahifada obuna so‘zi taqiqlangan')
         failures += 0 if ok else 1
 
     # build_site: ichki blok va HTML izohi chiqmaydi, oddiy iqtibos qoladi.

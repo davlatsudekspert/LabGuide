@@ -306,7 +306,7 @@ void main() {
       final body = tester.widget<Text>(
         find.byKey(const ValueKey('sub-trial-confirm-body')),
       );
-      expect(body.data, startsWith('${uz.proPayTierStudent} Pro '));
+      expect(body.data, startsWith('${uz.proPayTierStudent}: '));
       expect(body.data, contains('pul yechilmaydi'));
       await tester.tap(find.byKey(const ValueKey('sub-trial-confirm')));
       await tester.pumpAndSettle();

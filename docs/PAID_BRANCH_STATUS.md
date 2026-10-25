@@ -115,3 +115,24 @@ Har Flutter ishga tushirish `flock /tmp/flutter_test.lock` ostida, ketma-ket.
 7. HowTo videolari va sxema paneli Lab sahifalari ichida: `gated` to‘ldirilsa, ular ham yopiq sahifa ichida qoladi —
    bepul qolishi kerakmi, qaror va `lab_gate_test` holati kerak.
 8. Haqiqiy do‘kon sandbox matritsasi (xarid, tiklash, bekor, grace, refund, boshqa hisob, oflayn) — QILINMAGAN.
+
+## 7. Matnlar va huquqiy (`paid/txt`, 2026-10-25) — matnlar agenti
+
+Mahalliy tarmoq `paid/txt` (`paid/pro-premium@21b5a24` dan). Push/PR/build/deploy/do‘kon API — QILINMAGAN.
+- **ARB `pro*`** (uz/ru/en): reja nomlari yakuniy — uz Talaba Pro / Ustoz Pro / Mutaxassis Pro / Premium; ru Студент Pro /
+  Преподаватель Pro / Специалист Pro / Premium; en Student Pro / Teacher Pro / Specialist Pro / Premium (“Ustoz” ↔ “Ustoz Pro”
+  nomuvofiqligi tuzatildi). To‘lov oynasi, “Obuna” ekrani, sinov (7 kun, bir marta, kartasiz; do‘kon taklifi ko‘rsatilsa narx va
+  yangilanish shartlari do‘kon oynasidagidek), muddat tugash (“faqat pullik imkoniyatlar yopiladi; bepul va ma’lumot qoladi”),
+  bekor qilish/qaytarish/oflayn/mehmon/xato matnlari. 20 yangi kalit (`proPayCancelPath*`, `proPayStoreTrialNote`,
+  `proPayRefund*`, `proPayCancelledUntil`, `proPayGraceNote`, `proPayOffline*`, `proPayAgreeNote`, `proPayFeat*` yangilari,
+  `proTermsBody`, `proPrivacyBody`, `proAccountDeleteBody`) — ularning bir qismi Dart’ga ULANMAGAN (quyida).
+- **Huquqiy:** `PRIVACY_POLICY.md` ga 16-bo‘lim (obuna, sinov, to‘lov; 17-bo‘lim — o‘zgarishlar), `TERMS_OF_USE.md` (yangi,
+  uz/ru/en) → `site/terms/` (generatsiya). `Contact.termsOfUseUrl`; `BillingLinks.termsOfUse` endi Apple standart EULA emas,
+  shu manzil. Sayt qoidalari: obuna so‘zlari `privacy/` va `terms/` da.
+- **Do‘kon hujjatlari:** `APP_STORE.md` 16-bo‘lim, `PLAY_CONSOLE_UPLOAD.md` 7-bo‘lim (obuna nomlari/tavsiflari narxsiz,
+  review izohi, sandbox qadamlari placeholder, App Privacy / Data safety — NEEDS_OWNER_CHECK).
+- **Izchillik testi:** `test/unit/paid_texts_consistency_test.dart`.
+- **Ochiq (egasi/yurist):** `PRIVACY_OPEN_QUESTIONS.md` E-bo‘lim (24 oy — NEEDS_LAWYER_REVIEW; shartlar tomoni va Apple
+  “custom EULA” bandlari; qurilma tekshiruvi; kuchga kirish sanasi; ilova ichidagi `termsBody/privacyBody/accountDeleteBody`
+  hali “bepul ilova” deydi — `pro*` almashtiruvchilari tayyor, Dart’da kalitni almashtirish kerak).
+

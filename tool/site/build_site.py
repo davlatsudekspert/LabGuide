@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-"""LabGuide statik sayti: maxfiylik siyosati sahifasini Markdown'dan yasaydi.
+"""LabGuide statik sayti: maxfiylik siyosati va foydalanish shartlari sahifalarini
+Markdown'dan yasaydi.
 
-    python3 tool/site/build_site.py          # site/privacy/index.html
+    python3 tool/site/build_site.py          # site/privacy/index.html, site/terms/index.html
     python3 tool/site/build_site.py --logo   # + site/logo.png (Pillow kerak)
 
-Manba: docs/store/PRIVACY_POLICY.md (uz/ru/en). Faqat standart kutubxona
+Manba: docs/store/PRIVACY_POLICY.md va docs/store/TERMS_OF_USE.md (uz/ru/en). Faqat standart kutubxona
 (logo uchun ixtiyoriy Pillow). Qayta ishga tushirish xavfsiz: natija faqat
 manbaga bog'liq (vaqt yoki tasodif yo'q), shuning uchun tool/site/check_site.py
 sahifa eskirganini aniqlay oladi.
@@ -30,8 +31,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 SOURCE = ROOT / 'docs' / 'store' / 'PRIVACY_POLICY.md'
+TERMS_SOURCE = ROOT / 'docs' / 'store' / 'TERMS_OF_USE.md'
 SITE = ROOT / 'site'
 OUT = SITE / 'privacy' / 'index.html'
+TERMS_OUT = SITE / 'terms' / 'index.html'
 LOGO_SRC = ROOT / 'tool' / 'icons' / 'icon_1024.png'
 LOGO_OUT = SITE / 'logo.png'
 
@@ -222,13 +225,13 @@ PAGE = """<!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title_short}</title>
-<meta name="description" content="LabGuide maxfiylik siyosati — Политика конфиденциальности — Privacy Policy.">
+<meta name="description" content="{description}">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" href="../logo.png">
 <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-<!-- Bu fayl avtomatik yasalgan: python3 tool/site/build_site.py (manba: docs/store/PRIVACY_POLICY.md). Qo'lda tahrirlamang. -->
+<!-- Bu fayl avtomatik yasalgan: python3 tool/site/build_site.py (manba: {source}). Qo'lda tahrirlamang. -->
 <a class="skip" href="#main">Asosiy matnga o‘tish</a>
 <header class="top">
 <div class="wrap">
@@ -247,7 +250,8 @@ PAGE = """<!doctype html>
 <div class="wrap">
 <nav aria-label="Sayt">
 <a href="../index.html">LabGuide</a>
-<a href="index.html">Maxfiylik · Конфиденциальность · Privacy</a>
+<a href="../privacy/index.html">Maxfiylik · Конфиденциальность · Privacy</a>
+<a href="../terms/index.html">Shartlar · Условия · Terms</a>
 <a href="../delete-account/index.html">Hisobni o‘chirish · Удаление аккаунта · Delete account</a>
 </nav>
 <p>Aloqa · Контакт · Contact: <a href="mailto:{contact}">{contact}</a></p>
@@ -258,14 +262,28 @@ PAGE = """<!doctype html>
 """
 
 
-def build_privacy(source: Path = SOURCE) -> str:
+def _page(source: Path, title_short: str, description: str, label: str) -> str:
     title, body = render(source.read_text(encoding='utf-8'))
     return PAGE.format(
         title=inline(title),
-        title_short='LabGuide — Privacy Policy',
+        title_short=title_short,
+        description=description,
+        source=label,
         body=body,
         contact=CONTACT,
     )
+
+
+def build_privacy(source: Path = SOURCE) -> str:
+    return _page(source, 'LabGuide — Privacy Policy',
+                 'LabGuide maxfiylik siyosati — Политика конфиденциальности — Privacy Policy.',
+                 'docs/store/PRIVACY_POLICY.md')
+
+
+def build_terms(source: Path = TERMS_SOURCE) -> str:
+    return _page(source, 'LabGuide — Terms of Use',
+                 'LabGuide foydalanish shartlari — Условия использования — Terms of Use.',
+                 'docs/store/TERMS_OF_USE.md')
 
 
 def build_logo() -> None:
@@ -283,9 +301,10 @@ def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__.split('\n')[0])
     ap.add_argument('--logo', action='store_true', help='site/logo.png ni ham qayta yasash (Pillow)')
     args = ap.parse_args()
-    OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_text(build_privacy(), encoding='utf-8')
-    print(f'yozildi: {OUT.relative_to(ROOT)}')
+    for out, build in ((OUT, build_privacy), (TERMS_OUT, build_terms)):
+        out.parent.mkdir(parents=True, exist_ok=True)
+        out.write_text(build(), encoding='utf-8')
+        print(f'yozildi: {out.relative_to(ROOT)}')
     if args.logo:
         build_logo()
 

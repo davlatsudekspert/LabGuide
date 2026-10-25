@@ -15,7 +15,7 @@ trekiga qo'lda yuklash. **Production'ga yubormang.** Ommaviy reliz bu hujjatda y
 | minSdk / targetSdk | 24 / 36 (Play talabi: targetSdk >= 35 — bajarilgan) |
 | Imzo | upload kaliti (CN=LabGuide), `jarsigner -verify`: "jar verified" (debug kalit emas) |
 | Upload sertifikati SHA-256 | `19:29:AB:51:9C:FE:61:D5:48:15:93:64:0C:54:C5:B4:B6:C5:A3:C4:38:37:35:3C:9D:B2:57:76:56:E8:FA:24` |
-| Build | server ulanmagan (`LG_API_URL` bo'sh; Supabase endi ishlatilmaydi), `LG_ALL_FEATURES_OPEN=true` (eski bayroq; D-58 dan keyin yo'q — bu versiyada to'lov yo'q) |
+| Build | server ulanmagan (`LG_API_URL` bo'sh; Supabase endi ishlatilmaydi), `LG_ALL_FEATURES_OPEN=true` (eski bayroq; D-58 dan keyin yo'q — bu AAB bepul versiya, to'lov yo'q; pullik build uchun 7-bo'lim) |
 
 Faylni tekshirish: `sha256sum LabGuide-0.1.0-20.aab` (yuqoridagi qiymat bilan bir xil bo'lsin).
 
@@ -37,7 +37,7 @@ tiklash (reset) mumkin, lekin vaqt oladi.
 2. App name: **LabGuide** (band bo'lsa "LabGuide UZ").
 3. Default language: **O'zbekcha (uz)**; ro'yxatda bo'lmasa — Russian yoki English tanlab, keyin
    Store listing'da uz tarjimasini qo'shing.
-4. App or game: **App**. Free or paid: **Free** (keyin pullikka o'zgartirib bo'lmaydi).
+4. App or game: **App**. Free or paid: **Free** (keyin pullikka o'zgartirib bo'lmaydi). Pullik versiya ham **Free** qoladi: pullik imkoniyatlar ilova ichidagi obuna (Play Billing) sifatida sotiladi — 7-bo'lim.
 5. Deklaratsiyalar: Developer Program Policies va US export laws'ni tasdiqlang (egasi o'zi
    belgilaydi). **Create app**.
 6. **Play App Signing:** Google imzo kalitini boshqaradi (tavsiya, majburiy). Bizning kalit —
@@ -49,7 +49,7 @@ Dashboard'dagi "Set up your app" ro'yxatidagi bo'limlar:
 
 | Bo'lim | Javob |
 |---|---|
-| Privacy policy | `https://labguide.nfcstore.uz/privacy/` (`site/privacy/index.html`, joylash — `site/README.md`; sayt joylanmaguncha zaxira: `https://github.com/davlatsudekspert/LabGuide/blob/main/docs/store/PRIVACY_POLICY.md`). Matnda sana (2026-10-17) va aloqa (labguide@nfcstore.uz) taklif qilingan — egasi tasdiqlasin; ochiq savollar `docs/store/PRIVACY_OPEN_QUESTIONS.md` (APP_STORE.md 14-bo'lim). |
+| Privacy policy | `https://labguide.nfcstore.uz/privacy/` (Foydalanish shartlari: `https://labguide.nfcstore.uz/terms/` — pullik versiya, 7-bo'lim; `site/privacy/index.html`, joylash — `site/README.md`; sayt joylanmaguncha zaxira: `https://github.com/davlatsudekspert/LabGuide/blob/main/docs/store/PRIVACY_POLICY.md`). Matnda sana (2026-10-17) va aloqa (labguide@nfcstore.uz) taklif qilingan — egasi tasdiqlasin; ochiq savollar `docs/store/PRIVACY_OPEN_QUESTIONS.md` (APP_STORE.md 14-bo'lim). |
 | Contact details (Store listing) | Email: **labguide@nfcstore.uz** (ilovadagi Profil → Aloqa va shikoyat bilan bir xil; kodda `lib/core/contact.dart`). Egasi alias ishlashini sinov xati bilan tasdiqlasin. Telefon/sayt — ixtiyoriy. |
 | App access | "All functionality is available without special access" — hammasi login'siz ochiq (mehmon rejimi). |
 | Ads | **No, my app does not contain ads** (do'kon buildida hamkor reklamasi kompilyatsiyadan chiqarilgan — `LG_PARTNER_ADS=false`, `lib/core/build_flags.dart`). |
@@ -114,6 +114,82 @@ Service account: Google Cloud'da Google Play Android Developer API'ni yoqing →
 JSON kalit → Play Console → Users and permissions → Invite new user (service account emaili) →
 LabGuide uchun "Release to testing tracks" va "View app information". CI versionCode'lari 21+
 bo'ladi (bu AAB 20), shuning uchun mos keladi.
+
+## 7. Pullik versiya (`paid/pro-premium`, D-77): obunalar, Data safety, review
+
+> **Holat (2026-10-25).** Bu bo‘lim FAQAT `paid/txt` / `paid/pro-premium` tarmog‘i uchun. 0–6-bo‘limlar va pastdagi
+> Claude yordamchisi prompti **bepul ichki test AAB si** (0.1.0 (20), to‘lov yo‘q, D-58) uchun — ular o‘zgartirilmagan.
+> Hech narsa yuborilmagan: Play Console/Billing API chaqirilmagan, obunalar **yaratilmagan** (id’lar va narxlar
+> UNCONFIRMED-until-created-in-store), haqiqiy litsenziya-tester xaridi sinalmagan (NOT VERIFIED). **Matnlarda narx
+> yo‘q** (narx Play’dan). Play siyosatlari va maydon uzunliklari o‘zgaradi — **NEEDS_OWNER_CHECK:** nashrdan oldin
+> Play Payments / Subscriptions siyosati va Console yordamini qayta o‘qing.
+
+### 7.1 Ilova turi va ruxsat
+
+- Create app → **Free or paid: Free** (ilova ichidagi obuna — Play Billing; “Contains in-app purchases” deb ko‘rinadi).
+- Manifestga `com.android.vending.BILLING` (oddiy ruxsat) `in_app_purchase` bilan qo‘shiladi — 0-bo‘limdagi ruxsatlar
+  ro‘yxati pullik build uchun yangilanadi. Pullik build **faqat shu tarmoqdan** yig‘iladi (bepul build — `main`dan).
+- Ads: **No** (o‘zgarmaydi). Financial features: **No** (to‘lovni Google Play qayta ishlaydi; LabGuide moliyaviy ilova emas).
+
+### 7.2 Monetize → Products → Subscriptions
+
+4 ta obuna × 2 ta base plan (`monthly` — P1M, `yearly` — P1Y). Id’lar kodda (`billing_catalog.dart`; **yangi id
+o‘ylab topilmadi**): subscription id `uz.labguide.student`, `uz.labguide.teacher`, `uz.labguide.specialist`,
+`uz.labguide.premium`; base plan id `monthly` / `yearly`. Narxni egasi tanlaydi (hujjatda yozilmaydi). **Free-trial
+offer YARATILMAYDI** va boshqa chegirmali offer ham yo‘q (bepul sinov — ilova ichidagi 7 kunlik server sinovi;
+ilova do‘kon takliflarini yoqmagan). `PRO_BILLING_PLAN.md` 9.2-bo‘limdagi “6 subscription” va “Free trial 7/14 kun
+offer” **eskirgan** (D-76/D-77).
+
+| Maydon | uz | ru | en |
+|---|---|---|---|
+| Name — Talaba | Talaba Pro | Студент Pro | Student Pro |
+| Benefits (har biri ≤ 40, ko‘pi bilan 4 ta) | Ustoz bergan testlar · Natijalar tarixi · Imtihon simulyatsiyasi · PDF/CSV eksport, qo‘shimcha materiallar | Тесты от преподавателя · История результатов · Симуляция экзамена · Экспорт PDF/CSV и материалы | Teacher-assigned tests · Results history · Exam simulation · PDF/CSV export and extra materials |
+| Name — Ustoz | Ustoz Pro | Преподаватель Pro | Teacher Pro |
+| Benefits | Test yaratish · Talabalarni biriktirish, guruhlar · Natijalarni boshqarish | Создание тестов · Студенты и группы · Управление результатами | Create tests · Attach students and groups · Manage results |
+| Name — Mutaxassis | Mutaxassis Pro | Специалист Pro | Specialist Pro |
+| Benefits | Professional laboratoriya funksiyalari | Профессиональные функции лаборатории | Professional laboratory functions |
+| Name — Premium | Premium | Premium | Premium |
+| Benefits | Talaba Pro imkoniyatlari · Ustoz Pro imkoniyatlari · Mutaxassis Pro imkoniyatlari | Возможности Студент Pro · Возможности Преподаватель Pro · Возможности Специалист Pro | Student Pro features · Teacher Pro features · Specialist Pro features |
+
+Description (≤ 80, har reja uchun bir xil naqsh): uz “Ixtiyoriy pullik reja. Bepul imkoniyatlar bepul qoladi.” · ru “Необязательный платный план. Бесплатные
+функции остаются бесплатными.” · en “Optional paid plan. Free features stay free.” Qo‘shimcha: **Setup → License testing**, **Payments profile**,
+RTDN, service account — `PRO_BILLING_PLAN.md` 9.2 (3–5-bandlar o‘zgarmagan) va `PRO_TEST_ENVIRONMENT.md` 4-bo‘lim.
+
+### 7.3 Store listing — to‘liq tavsif oxiriga obuna bloki (narxsiz)
+
+Play subscriptions siyosati: narx, davr, avtomatik yangilanish, bekor qilish yo‘li va shartlar havolasi ochiq bo‘lishi
+kerak (narxni Play ko‘rsatadi). APP_STORE.md 4-bo‘lim tavsifiga **16.3-banddagi** blok qo‘yiladi, faqat “Apple hisobingiz” /
+“Settings → your name → Subscriptions” o‘rniga Play varianti:
+
+- **uz:** … to‘lov xaridni tasdiqlaganingizda Google Play hisobingizdan olinadi … Obunani Google Play → profil belgisi → To‘lovlar va
+  obunalar → Obunalar bo‘limida boshqarish va bekor qilish mumkin.
+- **ru:** … оплата списывается с вашей учётной записи Google Play при подтверждении покупки … Управлять подпиской и отменить её
+  можно в Google Play → значок профиля → Платежи и подписки → Подписки.
+- **en:** … payment is charged to your Google Play account when you confirm the purchase … You can manage and cancel it in Google Play →
+  profile icon → Payments & subscriptions → Subscriptions.
+
+Hamma tilda oxirida: Foydalanish shartlari `https://labguide.nfcstore.uz/terms/` · Maxfiylik siyosati
+`https://labguide.nfcstore.uz/privacy/`. Qisqa tavsifga (≤ 80) obuna qo‘shilmaydi. Tibbiy eslatma va D-65 qoidalari o‘zgarmaydi.
+
+### 7.4 App content — pullik versiyada o‘zgaradigan javoblar (**NEEDS_OWNER_CHECK**: aniq so‘zlar)
+
+| Bo‘lim | Pullik build uchun |
+|---|---|
+| App access | “All functionality is available without special access” **endi to‘g‘ri emas**: xarid, tiklash va bepul sinov hisob talab qiladi. “Some functionality is restricted” → review uchun kirish yo‘riqnomasi: `<REVIEW_ACCOUNT>` (egasi to‘ldiradi: email kodi qanday olinadi) + sinov xaridi uchun **License testing** hisobi `<LICENSE_TESTER>`; bepul qism hisobsiz ochiq. |
+| Privacy policy | `https://labguide.nfcstore.uz/privacy/` (16-bo‘lim — obuna/sinov/to‘lov; sana 2026-10-25, nashr kuniga almashtiring). Terms: `https://labguide.nfcstore.uz/terms/`. |
+| Data safety — qo‘shiladi | **Financial info → Purchase history:** to‘planadi (do‘kon tranzaksiya/xarid tokeni, reja, holat, vaqt), ulashilmaydi (Google Play — to‘lov provayderi), maqsad *App functionality*; hisob o‘chirilganda o‘chadi. **Device or other IDs:** bepul sinov uchun qurilma belgisining kalitli xeshi (xom ID saqlanmaydi) — *Fraud prevention, security, and compliance*; to‘planadi, ulashilmaydi; “ixtiyoriy” (sinov tugmasi bosilganda). Qurilma xeshi hisob o‘chirilgandan keyin ham 24 oy saqlanadi — **NEEDS_LAWYER_REVIEW** va Data deletion savoliga javobda “ba’zi ma’lumot xavfsizlik/firibgarlikka qarshi saqlanadi” deb ko‘rsatish (aniq so‘z — egasi). Email, User IDs, UGC, Messages, Photos qatorlari o‘zgarmaydi (APP_STORE.md 12-bo‘lim). |
+| Data safety — o‘zgarmaydi | Encrypted in transit: Yes; Delete account URL: `https://labguide.nfcstore.uz/delete-account/` (sahifada obuna so‘zlari yo‘q — D-77; “do‘kon obunasi bekor bo‘lmaydi” — maxfiylik siyosati 10 va 16-bo‘limlarida). |
+| Content rating / Target audience | o‘zgarmaydi (18+); obunalar kattalarga mo‘ljallangan emas, balki ilova bolalarga mo‘ljallanmagan (siyosat 15-bo‘lim). |
+
+### 7.5 Tekshiruv uchun test qadamlari (ichki test, **QILINMAGAN — NOT VERIFIED**)
+
+1. **Setup → License testing** ga tester Google hisoblarini qo‘shing (`<LICENSE_TESTER>`); ichki test trekiga pullik build (billing yoqilgan) yuklang
+   (egasi; bu tarmoqda build qilinmagan).
+2. Ilovada tester hisobi bilan kiring → Profil → Obuna → reja → “Obuna bo‘lish” → Play oynasida tasdiqlang (test kartasi: “Always approves”).
+3. Pullik imkoniyatlar ochiladi → Profil → Obuna → **“Xaridni tiklash”** (shu ekran va to‘lov oynasi pastida) → boshqa qurilmada tiklash.
+4. “Obunani boshqarish yoki bekor qilish” Play obuna sahifasini ochadi; bekor qilingach to‘langan davr oxirigacha ishlaydi, keyin faqat pullik qism yopiladi.
+5. Sinov (7 kun): Android’da tugma faqat Play Integrity sozlangan serverda chiqadi (hozir sozlanmagan — tugma yashirin; `PRO_TEST_ENVIRONMENT.md` 4-bo‘lim 6-band).
+6. Oflayn, “Always declines” (grace/hold), “Approves then charges back” (refund) holatlari — `PRO_TEST_ENVIRONMENT.md` 4-bo‘lim.
 
 ---
 
