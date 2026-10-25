@@ -13,6 +13,10 @@ export interface FakePurchase {
   accountHint?: string | null;
   eventAt?: number;
   needsAck?: boolean;
+  periodType?: 'normal' | 'trial' | 'intro';
+  autoRenew?: boolean | null;
+  pendingProductId?: string | null;
+  linkedToken?: string | null;
 }
 
 export class FakeStoreVerifier implements StoreVerifier {
@@ -55,6 +59,10 @@ export class FakeStoreVerifier implements StoreVerifier {
       latestToken: token,
       accountHint: p.accountHint ?? null,
       needsAck: p.needsAck,
+      periodType: p.periodType,
+      autoRenew: p.autoRenew,
+      pendingProductId: p.pendingProductId,
+      linkedToken: p.linkedToken,
     };
   }
 

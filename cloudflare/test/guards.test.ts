@@ -197,4 +197,25 @@ describe('qorovul: Pro to‘lov standartlari (D-75)', () => {
     }
     expect(s.fetchCalls).toEqual([]);
   });
+
+  it('D-77 addendum: production attestatsiyasi — haqiqiy tekshiruvchi ulangan, secretlarsiz fail closed; repoda kalit yo‘q', async () => {
+    const { platformVerifier } = await import('../src/attestation');
+    const index = (await import('../src/index.ts?raw')).default as string;
+    expect(index).toMatch(/attestation:\s*platformVerifier\(\)/);
+    const v = platformVerifier();
+    expect(v.configured({} as never)).toBe(false);
+    expect(v.configuredFor!({} as never, 'android')).toBe(false);
+    expect(v.configuredFor!({} as never, 'ios')).toBe(false);
+    const s = makeServer({ LG_BILLING_ENABLED: 'true' } as never);
+    s.setAttestation(v);
+    const { token } = await s.signIn(uniqueEmail('g77-att'));
+    const r = await s.call('POST', '/v1/billing/trial/challenge', { token });
+    expect([r.status, r.data.error]).toEqual([503, 'trial_unavailable']);
+    expect((await s.call('GET', '/v1/billing/status')).data.trial).toMatchObject({ android: false, ios: false });
+    const toml = (await import('../wrangler.toml?raw')).default as string;
+    for (const k of ['PLAY_INTEGRITY_SERVICE_ACCOUNT', 'PLAY_INTEGRITY_CERT_SHA256', 'APPLE_DEVICECHECK_PRIVATE_KEY', 'APPLE_DEVICECHECK_KEY_ID', 'APPLE_DEVICECHECK_TEAM_ID']) {
+      expect(toml).not.toContain(k);
+    }
+    expect(s.fetchCalls).toEqual([]);
+  });
 });

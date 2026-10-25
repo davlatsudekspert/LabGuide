@@ -4,6 +4,7 @@ import * as admins from './admins';
 import * as adminConsole from './adminconsole';
 import * as auth from './auth';
 import * as billing from './billing';
+import * as guest from './guest';
 import * as proGrants from './progrants';
 import * as community from './community';
 import * as complaints from './complaints';
@@ -163,6 +164,10 @@ const billingRoutes: Route[] = [
   r('POST', '/v1/billing/verify', billing.verify),
   r('POST', '/v1/billing/apple/notifications', billing.appleNotification),
   r('POST', '/v1/billing/google/rtdn', billing.googleNotification),
+  // Mehmon (hisobsiz) xarid / tiklash / hisobga bog'lash — Apple 5.1.1(v) (D-77 addendum).
+  r('POST', '/v1/billing/guest/verify', guest.verify),
+  r('POST', '/v1/billing/guest/entitlements', guest.entitlements),
+  r('POST', '/v1/billing/guest/link', guest.link),
   // Admin grant (D-73): `/v1/admin(/.*)?` (plannedAdmin) dan OLDIN turadi.
   r('GET', '/v1/admin/pro-grants', proGrants.listGrants),
   r('POST', '/v1/admin/pro-grants', proGrants.createGrant),
