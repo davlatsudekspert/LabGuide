@@ -61,7 +61,11 @@ export const StoryboardVideo: React.FC<{def: VideoDef; format: Format} & VideoPr
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [def, format, props.lang, props.timing, props.appFrames],
   );
-  const cues = useMemo(() => buildCues(timing.lines, ctx.lines), [timing, ctx.lines]);
+  const cues = useMemo(
+    () => buildCues(timing.lines, ctx.lines, (def.storyboard.timing as {cueMax?: Record<string, Record<string, number>>}).cueMax?.[props.lang] ?? null),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [timing, ctx.lines],
+  );
   const scenes = layout.scenes as LaidScene[];
   return (
     <AbsoluteFill style={{backgroundColor: '#05110E'}}>
@@ -92,6 +96,7 @@ export const StoryboardVideo: React.FC<{def: VideoDef; format: Format} & VideoPr
         <SubtitleTrack
           cues={cues}
           format={format}
+          fontScale={(def.storyboard.timing as {cueFont?: Record<string, Record<string, number>>}).cueFont?.[props.lang] ?? null}
           zones={scenes.map((sc) => ({
             start: sc.startSec,
             end: sc.endSec,

@@ -25,7 +25,7 @@
     "illustrative": "Примерные данные контроля — не реальный лот",
     "kickerChart": "Карта Леви–Дженнингса",
     "kickerZ": "z-оценка",
-    "kickerWarn": "Правило 1-2s",
+    "kickerWarn": "Одно значение за 2 SD",
     "kickerRandom": "Случайная ошибка",
     "kickerSys": "Систематическая ошибка",
     "kickerShift": "Сдвиг",

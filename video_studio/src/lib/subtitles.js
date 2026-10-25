@@ -50,13 +50,16 @@ export function wrapRows(text, maxRow = MAX_ROW_CHARS) {
 /**
  * @param {{id:string,start:number,end:number}[]} timingLines
  * @param {Record<string,string>} resolvedLines
+ * @param {Record<string, number> | null | undefined} [cueMax]
  */
-export function buildCues(timingLines, resolvedLines) {
+export function buildCues(timingLines, resolvedLines, cueMax = null) {
+  // cueMax: optional {lineId: maxChars} (storyboard.timing.cueMax[lang]) —
+  // forces a line into shorter cues when the real font needs > 2 rows.
   const cues = [];
   for (const l of timingLines) {
     const text = resolvedLines[l.id];
     if (text == null) continue;
-    const parts = splitLine(text);
+    const parts = splitLine(text, cueMax?.[l.id] ?? MAX_CUE_CHARS);
     const total = parts.reduce((a, p) => a + [...p].length, 0);
     let t = l.start;
     parts.forEach((p, i) => {

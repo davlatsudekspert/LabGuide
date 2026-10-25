@@ -22,12 +22,12 @@ function greedyRows(text, cap) {
   }
   return rows;
 }
-const {lines} = videoData(id);
+const {lines, storyboard} = videoData(id);
 const {timing, voiced} = effectiveTiming(id);
 let bad = 0;
 console.log(`${id}: timing from ${voiced ? 'voice manifest' : 'placeholder'}; limit ${maxCps} chars/s`);
 for (const lang of LANGS) {
-  const cues = buildCues(normalizeTiming(timing), lines[lang]);
+  const cues = buildCues(normalizeTiming(timing), lines[lang], storyboard.timing.cueMax?.[lang]);
   let worst = 0;
   for (const c of cues) {
     const n = [...c.text].length;

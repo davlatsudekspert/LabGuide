@@ -127,13 +127,12 @@ export const HookLayer: Layer = ({scene, ctx}) => {
     return (
       <AbsoluteFill>
         <div style={{position: 'absolute', left: 70, top: 220}}>{plot}</div>
+        <div style={{position: 'absolute', left: m.gutter, top: 150, opacity: ease(frame, 20, 12)}}>{badge}</div>
         <div style={{position: 'absolute', left: m.gutter, right: m.gutter, top: 930, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 22, textAlign: 'center'}}>
           {big}
           {level}
           <div style={{height: 10}} />
           {question}
-          <div style={{height: 18}} />
-          <div style={{opacity: ease(frame, 20, 12)}}>{badge}</div>
         </div>
       </AbsoluteFill>
     );
@@ -209,7 +208,7 @@ export const LjLayer: Layer = ({scene, ctx}) => {
         </div>
         {phase !== 'build' ? <VerdictPill ctx={ctx} r={latest} size={m.body} t={vT} /> : null}
         <div style={{opacity: note.t, transform: `translateY(${(1 - note.t) * 12}px)`}}>
-          <Badge text={note.text} tone={note.tone} size={m.small * 0.82} />
+          <Badge text={note.text} tone={note.tone} size={m.small * 0.82} maxWidth={vertical ? 900 : 580} />
         </div>
         <div style={{...txt(m.small * 0.78, 500, color.inkFaint), opacity: phase === 'build' ? 0 : 1}}>{ui.computedRules}</div>
       </div>

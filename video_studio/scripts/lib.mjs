@@ -85,9 +85,9 @@ export function appFrames(id, lang) {
 }
 
 export function writeSubs(id, lang, outDir) {
-  const {lines} = videoData(id);
+  const {lines, storyboard} = videoData(id);
   const {timing} = effectiveTiming(id);
-  const cues = buildCues(normalizeTiming(timing), lines[lang]);
+  const cues = buildCues(normalizeTiming(timing), lines[lang], storyboard.timing.cueMax?.[lang]);
   fs.mkdirSync(outDir, {recursive: true});
   const srt = path.join(outDir, `${id}_${lang}.srt`);
   const vtt = path.join(outDir, `${id}_${lang}.vtt`);

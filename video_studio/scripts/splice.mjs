@@ -4,6 +4,8 @@
 // into the existing MP4 (one ffmpeg pass: video re-encoded with the standard
 // settings, narration WAV muxed again). The scene layout/timing must be
 // unchanged — the script refuses if the MP4 length differs from the timing.
+// NOTE: never pass --no-subs here — in render.mjs it also switches the
+// burned-in subtitle plate off (the segment would lose its subtitles).
 //   node scripts/splice.mjs --id photometry --lang all --format all --frames 630-1223
 import {execFileSync, spawnSync} from 'node:child_process';
 import fs from 'node:fs';
@@ -18,7 +20,7 @@ const [a, b] = String(args.frames).split('-').map(Number);
 const {layout, wav} = effectiveTiming(id);
 const total = layout.durationInFrames;
 for (const lang of langs) {
-  const r = spawnSync(process.execPath, [path.join(studio, 'scripts/render.mjs'), '--id', id, '--lang', lang, '--format', formats.join(','), '--frames', `${a}-${b}`, '--crf', '10', '--no-subs', '--bundle-name', 'bundle-splice'], {stdio: 'inherit'});
+  const r = spawnSync(process.execPath, [path.join(studio, 'scripts/render.mjs'), '--id', id, '--lang', lang, '--format', formats.join(','), '--frames', `${a}-${b}`, '--crf', '10', '--bundle-name', 'bundle-splice'], {stdio: 'inherit'});
   if (r.status !== 0) process.exit(r.status ?? 1);
   for (const format of formats) {
     const dir = path.join(studio, 'out', id, lang);

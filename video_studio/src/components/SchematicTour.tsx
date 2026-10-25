@@ -149,7 +149,7 @@ export const SchematicTourLayer: Layer = ({scene, ctx}) => {
       <div
         style={{
           position: 'absolute',
-          left: vertical ? m.gutter : 1150,
+          left: vertical ? m.gutter : ((pr.hLegendLeft as number) ?? 1150),
           right: m.gutter,
           top: vertical ? ((pr.legendTop as number) ?? 1060) : ((pr.hLegendTop as number) ?? 300),
         }}

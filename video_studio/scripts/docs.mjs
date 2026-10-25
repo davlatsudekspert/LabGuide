@@ -39,7 +39,7 @@ const esc = (s) => String(s).replace(/\|/g, '\\|');
   for (const [k, v] of Object.entries(spoken)) if (!k.startsWith('_')) md += `| ${k} | ${esc(v)} |\n`;
   md += `\n## Subtitle cues per language\n\n| Lang | Cues | Max chars / cue |\n|---|---|---|\n`;
   for (const lang of LANGS) {
-    const cues = buildCues(normalizeTiming(timing), lines[lang]);
+    const cues = buildCues(normalizeTiming(timing), lines[lang], storyboard.timing.cueMax?.[lang]);
     md += `| ${lang} | ${cues.length} | ${Math.max(...cues.map((c) => [...c.text].length))} |\n`;
   }
   md += `\n## On-screen text (per language)\n\n| Key | EN | RU | UZ |\n|---|---|---|---|\n`;

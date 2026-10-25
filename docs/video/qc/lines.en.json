@@ -39,7 +39,7 @@
     "illustrative": "Illustrative control data — not a real lot",
     "kickerChart": "Levey–Jennings chart",
     "kickerZ": "z-score",
-    "kickerWarn": "The 1-2s rule",
+    "kickerWarn": "One value beyond 2 SD",
     "kickerRandom": "Random error",
     "kickerSys": "Systematic error",
     "kickerShift": "A shift",

@@ -98,6 +98,29 @@ video_studio/
 * Walk testi storyboard’dagi ketma-ketlikni (`data.sequence`) ilovaga bosadi — video va ilova raqamlari bitta
   manbadan; ko‘rinadigan matnda brend so‘zi bo‘lsa test yiqiladi (`_Walk.brandCheck`).
 
+
+### 3b. Ikkinchi to‘plam (mavzu videolari) — umumiy qismlar
+
+Fotometriya, QC, GC-MS, real vaqt PCR (`docs/video/<id>/`) shu karkasda, har biri faqat storyboard + til
+paketlari + kichik `layers.tsx` bilan:
+
+* `src/components/Plot.tsx` — umumiy SVG grafik (chiziq, nuqta ●▲■, stick-spektr, gorizontal/vertikal chiziq,
+  zona); Beer–Lambert, Levey–Jennings, xromatogramma, spektr, kuchayish egri chiziqlari shu bitta komponentda.
+* `src/components/SchematicTour.tsx` — `SchematicTourLayer`: ilovaning original sxemasi bo‘ylab raqamli
+  qismlar narration bilan navbat bilan yonadi, `paths` (yoki `ref` → `data.paths`) bilan nur/oqim yo‘li
+  chiziladi; `SchematicStage` endi `paths` va `overlay` (zoom bilan birga siljiydigan SVG) qabul qiladi.
+* `PhoneShotsLayer` — landshaft kadrlar (masalan, ma’ruza slaydi “To‘liq ekran”da: telefon buriladi) va
+  `crop: "<mark nomi>"` (walk o‘lchagan maydon; tashqarisi deyarli to‘liq yopiladi — manba qatorlaridagi
+  nashriyot nomlari kadrga tushmaydi).
+* Walk: `flutter_walk/walk_kit.dart` (umumiy `Walk`, brend-deny ro‘yxati, ko‘rinadigan matnlar),
+  `flutter_walk/labcard_kit.dart` (apparat sinfi kartasi: yo‘nalish → karta → raqamlangan qismlar → maydonlar).
+* Skriptlar: `scripts/qa_frames.mjs` (yakuniy MP4 dan har sahna kadri + kontakt varaqlari),
+  `scripts/splice.mjs` (kichik tuzatish: faqat kadrlar oralig‘i qayta render qilinib MP4 ga ulanadi —
+  to‘liq render shart emas), `render.mjs --bundle-name`, `still.mjs` alohida bundle papkasida (ishlayotgan
+  render bundle’ini buzmaydi). Bundle har biri ≈ 110 MB (public/ nusxasi) — diskni tejash uchun ishdan keyin
+  `out/bundle-still`, `out/bundle-splice` o‘chiriladi.
+* Subtitr plitasida qoida kodlari (“1-2s”, “R-4s”) bo‘linmaydigan defis bilan chiziladi (SRT/VTT o‘zgarmaydi).
+
 ## 4. Render vaqti va disk
 
 * 4 yadroli mashina, boshqa agentlar Flutter testlarini yurgizayotgan paytda: **~5,5 kadr/s** (concurrency 3) →

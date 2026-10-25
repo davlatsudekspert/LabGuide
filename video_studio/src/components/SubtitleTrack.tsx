@@ -5,11 +5,15 @@ import React from 'react';
 import {interpolate, useCurrentFrame, useVideoConfig} from 'remotion';
 import {color, font, Format, metrics} from '../design/theme';
 
-export type Cue = {start: number; end: number; text: string};
+export type Cue = {start: number; end: number; text: string; lineId?: string};
+
+/** Rule codes like "1-2s", "R-4s", "4-1s" must not wrap at the hyphen
+ * (burned-in plate only; the .srt/.vtt keep the plain hyphen). */
+const nobreak = (t: string) => t.replace(/([0-9A-Z])-([0-9])/g, '$1\u2011$2');
 
 export type SubZone = {start: number; end: number; zone: 'center' | 'left'};
 
-export const SubtitleTrack: React.FC<{cues: Cue[]; format: Format; zones?: SubZone[]}> = ({cues, format, zones = []}) => {
+export const SubtitleTrack: React.FC<{cues: Cue[]; format: Format; zones?: SubZone[]; fontScale?: Record<string, number> | null}> = ({cues, format, zones = [], fontScale = null}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const t = frame / fps;
@@ -48,7 +52,7 @@ export const SubtitleTrack: React.FC<{cues: Cue[]; format: Format; zones?: SubZo
           color: color.white,
           fontFamily: font.sans,
           fontWeight: 600,
-          fontSize: m.subSize,
+          fontSize: m.subSize * ((cue.lineId && fontScale?.[cue.lineId]) || 1),
           lineHeight: 1.24,
           textAlign: 'center',
           letterSpacing: -0.2,
@@ -56,7 +60,7 @@ export const SubtitleTrack: React.FC<{cues: Cue[]; format: Format; zones?: SubZo
           boxShadow: '0 12px 40px rgba(0,0,0,0.45)',
         }}
       >
-        {cue.text}
+        {nobreak(cue.text)}
       </div>
     </div>
   );

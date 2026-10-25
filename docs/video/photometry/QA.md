@@ -22,6 +22,7 @@ splice. App frames viewed as contact sheets (portrait + full-screen landscape sl
 | P-Q8 | bss (RU/UZ) | "known: 10.0 a.u." wrapped to 2–3 lines ("sh.\nb.") | wider reading column, no wrap |
 | P-Q9 | ladder | "10^−A" written with a caret | real superscript |
 | P-Q10 | CTA | Long menu path wrapped inside the pill | pill text size scales down for long paths (short flagship paths unchanged) |
+| P-Q11 | splice (all six MP4s) | Found during the QC check: the first splice passed `--no-subs` to the renderer, which also switches the **burned-in subtitle plate off**, so frames 630–1223 (≈ 21–41 s) had no subtitles in the committed photometry MP4s | `splice.mjs` no longer passes `--no-subs`; frames 630–1223 re-spliced into all six MP4s; subtitles checked in the final MP4s (EN vertical, UZ horizontal, RU vertical) |
 
 P-Q7/P-Q8 were found in the final MP4s and fixed **without a full re-render**: `scripts/splice.mjs`
 re-rendered only frames 630–1223 (beer + bss) and spliced them into all six MP4s (frame count verified equal,

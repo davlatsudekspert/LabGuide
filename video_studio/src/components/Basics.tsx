@@ -45,10 +45,11 @@ export const Background: React.FC<{format: Format; glow?: [number, number]; tint
   );
 };
 
-export const Badge: React.FC<{text: string; tone?: 'neutral' | 'amber' | 'mint'; size: number}> = ({
+export const Badge: React.FC<{text: string; tone?: 'neutral' | 'amber' | 'mint'; size: number; maxWidth?: number}> = ({
   text,
   tone = 'neutral',
   size,
+  maxWidth,
 }) => {
   const c = tone === 'amber' ? color.amber : tone === 'mint' ? color.mint : color.inkDim;
   const bg = tone === 'amber' ? color.amberSoft : tone === 'mint' ? color.mintSoft : color.panelStrong;
@@ -68,7 +69,9 @@ export const Badge: React.FC<{text: string; tone?: 'neutral' | 'amber' | 'mint';
         fontSize: size,
         letterSpacing: 0.2,
         lineHeight: 1.15,
-        whiteSpace: 'nowrap',
+        // A maxWidth lets long badges wrap (default: one line, as before).
+        whiteSpace: maxWidth ? 'normal' : 'nowrap',
+        maxWidth,
       }}
     >
       <span
