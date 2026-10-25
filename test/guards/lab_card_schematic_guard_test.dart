@@ -12,6 +12,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:labguide/features/instruments/instrument_catalog.dart';
 import 'package:labguide/features/instruments/lab_direction_card.dart';
 
+import '../helpers/schematic_svg.dart';
+
 typedef _Row = ({String kind, String? key, String reason});
 
 Map<String, Object?> _raw() => (jsonDecode(
@@ -122,10 +124,11 @@ void main() {
         expect(gen, contains('"${s.key}": ('), reason: '${s.key}: gen.py');
         final svg = File('tool/illustrations/schematic/${s.key}.svg');
         expect(svg.existsSync(), isTrue, reason: svg.path);
-        // Rasmda matn yo‘q (D-36a / egasi talabi).
+        // Rasmda matn yo‘q (D-36a / egasi talabi) — faqat qism belgilari
+        // guruhidagi raqamlar (1..n) ruxsat etiladi (egasi talabi 2026-10-25).
         expect(
-          svg.readAsStringSync().contains('<text'),
-          isFalse,
+          calloutNumbers(svg.readAsStringSync()),
+          isNotEmpty,
           reason: svg.path,
         );
         for (final path in [s.asset, s.assetLarge]) {

@@ -59,11 +59,15 @@ const browser = await chromium.launch({ executablePath: '/opt/pw-browsers/chromi
 const page = await browser.newPage({ viewport: { width: 1200, height: 900 }, deviceScaleFactor: 1 });
 if (schematic) {
   // Shaffof fon: kartaning neytral foni (kunduzgi/tungi) ko'rinib turadi.
+  // Qism belgilaridagi raqamlar (callouts) — ilova shrifti Inter 700.
+  const inter = readFileSync(join(here, '../../assets/fonts/Inter-700.ttf')).toString('base64');
+  const head = `<style>@font-face{font-family:Inter;font-weight:700;src:url(data:font/ttf;base64,${inter})}</style>`;
   for (const [suffix, scale] of [['1200', 1], ['480', 0.4]]) {
     const pg = await browser.newPage({ viewport: { width: 1200, height: 800 }, deviceScaleFactor: scale });
     for (const n of names) {
       const svg = readFileSync(join(srcDir, `${n}.svg`), 'utf8');
-      await pg.setContent(`<html><body style="margin:0;background:transparent">${svg}</body></html>`);
+      await pg.setContent(`<html><head>${head}</head><body style="margin:0;background:transparent">${svg}</body></html>`);
+      await pg.evaluate(() => document.fonts.ready);
       const file = join(out, `${n}_${suffix}.png`);
       await pg.screenshot({ path: file, omitBackground: true, clip: { x: 0, y: 0, width: 1200, height: 800 } });
       if (quant) {

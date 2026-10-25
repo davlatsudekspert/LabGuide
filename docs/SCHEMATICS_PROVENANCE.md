@@ -1,5 +1,8 @@
-# Apparat sinfi sxematik chizmalari — kelib chiqishi (2026-10-25)
+# Apparat sinfi sxematik chizmalari — kelib chiqishi (2026-10-25, yangilangan 2026-10-25)
 
+32 ta chizma: 7 ta model kartasi turi (`InstrumentSchematic`: `chemistry`,
+`photometer`, `hematology5`, `hematology3`, `immunoassay`, `urine_strip`,
+`urine_system`) va 25 ta yo‘nalish kartasi sinfi (`LabSchematic`, L1–L25).
 Fayllar: `assets/instruments/schematic/<kalit>_480.png` (karta) va
 `<kalit>_1200.png` (to‘liq ekran), shaffof fon. Ilovada: yo‘nalish (lab)
 kartasi ekrani (`lib/features/instruments/lab_direction_screens.dart`,
@@ -10,14 +13,18 @@ chizmani oladi — `docs/LAB_CARD_IMAGE_COVERAGE.md`.
 ## Kelib chiqishi va huquq holati
 
 - **LabGuide’ning o‘z original ishi.** Har bir chizma `tool/illustrations/schematic/gen.py`
-  (funksiyalar L1–L25) tomonidan oddiy geometrik shakllardan SVG sifatida
+  (7 model turi va L1–L25 funksiyalari) tomonidan oddiy geometrik shakllardan SVG sifatida
   dasturiy yaratilgan va `tool/illustrations/render.cjs --schematic --quant`
   (Playwright Chromium + pngquant) bilan PNG ga aylantirilgan.
 - **Uchinchi tomon materiali yo‘q:** fotosurat, skan, kuzatib chizish (trace),
   boshqa rasm yoki AI-generatsiya ishlatilmagan; tarmoqdan rasm yuklab
   olinmagan.
 - **Ishlab chiqaruvchi dizayni yo‘q:** brend, logotip, yozuv, model shakli
-  yoki o‘ziga xos korpus dizayni takrorlanmagan; rasmda matn yo‘q. Faqat
+  yoki o‘ziga xos korpus dizayni takrorlanmagan. Rasmdagi yagona matn —
+  asosiy qismlarni ko‘rsatuvchi raqamli belgilar (1..n, SVG `<g id="callouts">`;
+  qorovul test faqat shu guruhdagi raqamlarga ruxsat beradi); qism nomi,
+  vazifasi, ishlash prinsipi va natija ilovada (ARB `schemParts*`, manbalari —
+  `docs/SCHEMATIC_PARTS_SOURCES.md`). Faqat
   apparat **sinfining** tamoyil darajasidagi umumiy qismlari (masalan,
   GC-MS: termostatdagi kolonka → ion manbai → kvadrupol → detektor, vakuum
   nasoslari, ma’lumot tizimi).
@@ -25,61 +32,86 @@ chizmani oladi — `docs/LAB_CARD_IMAGE_COVERAGE.md`.
   ruxsat olinmagan va ular ishlatilmaydi (`docs/INSTRUMENT_IMAGES.md`).
 - Palitra va uslub — mavjud model chizmalari (`chemistry`, `hematology5`,
   `immunoassay` ...) bilan bir xil.
+- 2026-10-25 yangilanishi: raqamli qism belgilari qo‘shildi; anatomiya
+  aniqlashtirildi (biokimyo: reaksiya halqasidagi fotometr nuri va detektori;
+  gematologiya 5/3: impedans kamerasi va lazerli oqim kyuvetasi kesigi; siydik
+  test-chizig‘i: LED va fotosensorli o‘qish kallagi; siydik tizimi: cho‘kma
+  modulida raqamli mikroskopik tasvirlar; HbA1c: ion almashinuv kolonkasi va
+  fotometrik detektor kesigi, xromatogramma; MGIT: nazorat va dorili probirka
+  o‘sish egri chiziqlari). Barcha 32 PNG `--quant` bilan qayta yaratildi.
 - Har bir PNG ko‘zdan kechirildi (1200 px, 480 px, ~160 px eskiz, kunduzgi va
   tungi fon); anatomiya xatolari tuzatildi (masalan, MALDI-TOF da yengil ionlar
   detektorga yaqinroq, elektroforezda anod — qizil sim, albumin anod tomonda).
 
 ## Fayllar (sha256)
 
+Yaratilgan/yangilangan: 2026-10-25 (raqamli qism belgilari qo‘shildi). Vosita:
+`tool/illustrations/schematic/gen.py` → `render.cjs --schematic --quant`.
+LabGuide’ning o‘z original ishi; ishlab chiqaruvchi dizayni yo‘q.
+
 | Fayl | Chizma | O‘lcham | Hajm | sha256 |
 |---|---|---|---|---|
-| `mass_spec_gc_480.png` | L1 `mass_spec_gc` | 480×320 | 15 KB | `85c7457547ea0108d9868f603d581c6819c89c2aa81ad2477dc2dfb17b6ddbe3` |
-| `mass_spec_gc_1200.png` | L1 `mass_spec_gc` | 1200×800 | 42 KB | `b3bbb97d44a40641923fa0d940315c7d0121dad048df3f5cb5741195cac06b0b` |
-| `mass_spec_lc_480.png` | L2 `mass_spec_lc` | 480×320 | 14 KB | `4a506a0c7e91fa402214f1cc43e85fecfffc86c6f95e6c483ff54b40c3eef95a` |
-| `mass_spec_lc_1200.png` | L2 `mass_spec_lc` | 1200×800 | 42 KB | `87f55f5c14a44c35bd1b85effafddca79c2dbf6637a7450f27b7721cdce39d23` |
-| `maldi_tof_480.png` | L3 `maldi_tof` | 480×320 | 11 KB | `35793dc1e447b8d642c53383faead579de6e6436a60855e042e06a7ef257bbef` |
-| `maldi_tof_1200.png` | L3 `maldi_tof` | 1200×800 | 30 KB | `630143c840833bd93d3261c5cfcc10dcad3addc91adc927a4850621afefab095` |
-| `microbial_id_ast_480.png` | L4 `microbial_id_ast` | 480×320 | 12 KB | `f2b053bacf0b495265f5b2397cb5d195574e9ae0c67ec5fe8e82d021c3b7ab34` |
-| `microbial_id_ast_1200.png` | L4 `microbial_id_ast` | 1200×800 | 27 KB | `057b928f5b55bc50d5d50c3ed434aeed1bf9d7c1c8bdd2a4623afcc5e7915339` |
-| `blood_culture_480.png` | L5 `blood_culture` | 480×320 | 13 KB | `ba35aa98eaa426f11e676a97b624306b6fab03ae49997e6336abd555aa20a785` |
-| `blood_culture_1200.png` | L5 `blood_culture` | 1200×800 | 27 KB | `3e43db88f255c36b30754905dfe5dea67dd3710b5c4eb04717f1feabfd9e9fc7` |
-| `mycobacterial_culture_480.png` | L6 `mycobacterial_culture` | 480×320 | 10 KB | `0b3ee61e349a59945ce341bca84c1a2148109b294a39c0b385410ad2112e8d38` |
-| `mycobacterial_culture_1200.png` | L6 `mycobacterial_culture` | 1200×800 | 29 KB | `baf85ad2c6fe8952f7c924a1cf9ef774f329f1404c01506c3d7fbdbf83de5d88` |
-| `flow_cytometer_480.png` | L7 `flow_cytometer` | 480×320 | 10 KB | `18674370ae6d5f9549614ad33c167b04ce7d867f07a1076cddb49c722a409aa9` |
-| `flow_cytometer_1200.png` | L7 `flow_cytometer` | 1200×800 | 31 KB | `1c2668c68ee1ccf0f7b0645f3219580738e57cfbbf817aacff5b2a660fdf48bc` |
-| `real_time_pcr_480.png` | L8 `real_time_pcr` | 480×320 | 12 KB | `049f832308304a8653a41530e97af61e311bdf10e5031efbe281e7e396b438e3` |
-| `real_time_pcr_1200.png` | L8 `real_time_pcr` | 1200×800 | 31 KB | `82b8a9ecae7a4450bf86360676d786ceb77b5b4a6639d05b9fc48cd63b67a2b9` |
-| `cartridge_molecular_480.png` | L9 `cartridge_molecular` | 480×320 | 9 KB | `1cf746824f6a4ba562d052f816213affae6474dfde071eebccda6f34a194ccbd` |
-| `cartridge_molecular_1200.png` | L9 `cartridge_molecular` | 1200×800 | 22 KB | `afb377473fd083998a2d8ea7ed1da199097013bd7d9dd67bec0e63157eb25993` |
-| `coag_analyzer_480.png` | L10 `coag_analyzer` | 480×320 | 12 KB | `98301f632644922eabc6d89cdfd83505a325b6bdfa6f5070c15880e33bd166b3` |
-| `coag_analyzer_1200.png` | L10 `coag_analyzer` | 1200×800 | 34 KB | `291603039245d52c1cb74fa83830d05111199ba778d1f630109078eecf0152a4` |
-| `elisa_reader_480.png` | L11 `elisa_reader` | 480×320 | 11 KB | `202ec7d0896e89142f8fc507857e8878d7cac4fbcdbb7abf75fcadf28089583f` |
-| `elisa_reader_1200.png` | L11 `elisa_reader` | 1200×800 | 31 KB | `2a0ed8ac2b79ee44ce2e6f75fb2f6b61e15676e90fd7e10392411a13a1cefc9c` |
-| `bsc_class2_480.png` | L12 `bsc_class2` | 480×320 | 9 KB | `91209a83ebc1d61c58538ec947f3a1729b46160b42b2a1b9f931cce7980d4eff` |
-| `bsc_class2_1200.png` | L12 `bsc_class2` | 1200×800 | 23 KB | `0697a916b3cd0c25c9f2a44f0d542fd79b392b68e781b56d93942a36ef61d440` |
-| `autoclave_480.png` | L13 `autoclave` | 480×320 | 14 KB | `2d2725e8d3c629c98da8717aebf1dcd9f0acf3199eea78e60ff60b7c5054922f` |
-| `autoclave_1200.png` | L13 `autoclave` | 1200×800 | 38 KB | `1c7202ef1fff854dd9bc892d2f5f5aff730c389769e1155fe9be9cf7d7d2191a` |
-| `blood_gas_ise_480.png` | L14 `blood_gas_ise` | 480×320 | 10 KB | `01ae4028f28ba3222f74db6b321d046ba1c23f2eb6d6b2c41835518f31a97fe3` |
-| `blood_gas_ise_1200.png` | L14 `blood_gas_ise` | 1200×800 | 30 KB | `544391a5bebb64f1842b862fc15daa871037a80ec20466b769f6930479b7ab97` |
-| `hba1c_analyzer_480.png` | L15 `hba1c_analyzer` | 480×320 | 11 KB | `c35234e7988af0d7bd13e7d2f56c60cc7697140cb5f002cc3442183e48c10e96` |
-| `hba1c_analyzer_1200.png` | L15 `hba1c_analyzer` | 1200×800 | 34 KB | `f290a29bd4a83799f17e30be2af93930203a466f75ddfe28eabf83c607781a7c` |
-| `lab_fridge_480.png` | L16 `lab_fridge` | 480×320 | 9 KB | `ea50de61546bd9ae48f5dbc6c76bf7efed8fa57f52edf34ec6d1c7e38d27b38b` |
-| `lab_fridge_1200.png` | L16 `lab_fridge` | 1200×800 | 29 KB | `4e089a230cd579d5dfd2e3027ba32c4e66927ae9cae6d757faf34b44072eede1` |
-| `fluorescence_microscope_480.png` | L17 `fluorescence_microscope` | 480×320 | 10 KB | `c883c0668223fbcdb0e647f3be459fa1d8cb04bacad569059ca25f687a8c551d` |
-| `fluorescence_microscope_1200.png` | L17 `fluorescence_microscope` | 1200×800 | 30 KB | `29e287448cc12dcf8a7a0c733050e0843c5d8a23e231abd38909bdbd026b34dd` |
-| `casa_480.png` | L18 `casa` | 480×320 | 10 KB | `da34a6b4bf9569ff04084d26eb981eb7ad07bfef59ca49ab3a9543db81444b1d` |
-| `casa_1200.png` | L18 `casa` | 1200×800 | 29 KB | `32e7e108a6eda35ab2b0667b05494560c2b6d8e30aa255bd0630edd17203a8c9` |
-| `gel_card_system_480.png` | L19 `gel_card_system` | 480×320 | 8 KB | `639bbf22c4e08772bd30b62f9e7c79776bbd3ef95c851532dd120494479f0ec0` |
-| `gel_card_system_1200.png` | L19 `gel_card_system` | 1200×800 | 19 KB | `7c9951153f5969462d78295b357995322e6a1592e15b724be5737d8c452f4bd7` |
-| `esr_analyzer_480.png` | L20 `esr_analyzer` | 480×320 | 7 KB | `c2b728c2684063780f894c5d210c15bb1f82593f4bcffe4f593a8b41f6b87933` |
-| `esr_analyzer_1200.png` | L20 `esr_analyzer` | 1200×800 | 21 KB | `bb437a88b8056cbd13822f98823e83a70f56b104a5df9bf7724a96ea5ca2c955` |
-| `aggregometer_480.png` | L21 `aggregometer` | 480×320 | 11 KB | `9c97c54fee3428478cae3204b3728959a9514300dee53c6c4584663b6b55f925` |
-| `aggregometer_1200.png` | L21 `aggregometer` | 1200×800 | 30 KB | `e69535e7a9d80f5f563096c84e8c2e226e5c0ad1f15e35ef44ffa1f49fe352ee` |
-| `electrophoresis_480.png` | L22 `electrophoresis` | 480×320 | 8 KB | `6430e63099b6ae954e54f20caf43c8cbc2ff96469ad5c729ecd0aaa8ac528b03` |
-| `electrophoresis_1200.png` | L22 `electrophoresis` | 1200×800 | 27 KB | `bf9e2d7769cfb483661076e5b6beca3a1459dc3476f738ac4305881604a38806` |
-| `osmometer_480.png` | L23 `osmometer` | 480×320 | 9 KB | `b4673c89a0e326df65333a35956dda6d0157978b03eb39f2309eb5ee22663602` |
-| `osmometer_1200.png` | L23 `osmometer` | 1200×800 | 29 KB | `cb1be611bdb40d874d30e1734628dd0ed98a69eb8a2054c3c100d10909f0e909` |
-| `tlc_480.png` | L24 `tlc` | 480×320 | 9 KB | `9e83e1ad700b72af7e46497a811f742f6a071d24c29115e6c2dfb983ef79492e` |
-| `tlc_1200.png` | L24 `tlc` | 1200×800 | 31 KB | `ba63bfecb46f8f8a67ae5b6910d4c70225b770a6d3fc6f8d86c2bf2aa7a11846` |
-| `analytical_balance_480.png` | L25 `analytical_balance` | 480×320 | 10 KB | `cada8dbb81731f60a9974f7923e0951e7f0046067ec032aff5c8f8f7cba3d548` |
-| `analytical_balance_1200.png` | L25 `analytical_balance` | 1200×800 | 32 KB | `71bacbea7b198d1499df5d036c3f3c4bf0bf280124cb19ccf422e627c37807f1` |
+| `chemistry_480.png` | M `chemistry` | 480×320 | 17 KB | `d579cefff7e72200eda70c6395faa1e9d7f2d0ca24cb781300f5eaa658801023` |
+| `chemistry_1200.png` | M `chemistry` | 1200×800 | 48 KB | `30039aad32cb30d6aa0db42c4f5223ca22f008b6a4547ef5781906886e66dae6` |
+| `photometer_480.png` | M `photometer` | 480×320 | 15 KB | `555aafdc5b409d3764f669f8d83d4405635d178264f2255e38fe2350240c040e` |
+| `photometer_1200.png` | M `photometer` | 1200×800 | 41 KB | `ca2f4ea7b1611ad63fd56969ebdb9745ba4f0258197433bb7055364d1b127aa6` |
+| `hematology5_480.png` | M `hematology5` | 480×320 | 16 KB | `d02a64645b79d808bffeb6006a97bbfbbd5f1ae3c5e44195058c7ac1a52ef433` |
+| `hematology5_1200.png` | M `hematology5` | 1200×800 | 51 KB | `0d13843c366d241ec33dabf9f8fa1a6f3e01562980f6bdd46b7483d49c9c9091` |
+| `hematology3_480.png` | M `hematology3` | 480×320 | 14 KB | `5cc2f3001b51a528cda99bbe1257347ce5f8adff47687045d69f76c4a8c1e027` |
+| `hematology3_1200.png` | M `hematology3` | 1200×800 | 43 KB | `695409d88d50910256bd0db123e69eb3b5ec6efd233330dcabde86980fff899d` |
+| `immunoassay_480.png` | M `immunoassay` | 480×320 | 16 KB | `0333d1e5f22ecb9819476203c0ca07793c34713f6b6e77bfb17f4700d248599e` |
+| `immunoassay_1200.png` | M `immunoassay` | 1200×800 | 48 KB | `9981fb0ae95922ee945af62844b8ff0cc35c67fcac9a053cf14f358331d3b3fd` |
+| `urine_strip_480.png` | M `urine_strip` | 480×320 | 12 KB | `0042a87ae7ce4797b6332af1fc5d3fbd6eca6b3afcea4154fe769de2b066e0bb` |
+| `urine_strip_1200.png` | M `urine_strip` | 1200×800 | 36 KB | `544ca4345e47061da63944514c7591fe92142f8e1e5479a4235188c5b8dcadbb` |
+| `urine_system_480.png` | M `urine_system` | 480×320 | 16 KB | `4151cdbf2559fcdd886f3b25dd9347fec5ea33defb031125e66d830d04cdd601` |
+| `urine_system_1200.png` | M `urine_system` | 1200×800 | 41 KB | `845ab767586b132bcf66ac04bef396ee567b4e8aa7681aebfba5d6cc92d7bf5f` |
+| `mass_spec_gc_480.png` | L1 `mass_spec_gc` | 480×320 | 18 KB | `461c2aec24053f3c3cc24b954696124c2e802006d6af737e231c29ef63d39102` |
+| `mass_spec_gc_1200.png` | L1 `mass_spec_gc` | 1200×800 | 50 KB | `d03a2586aac8dad6527e1522400e39f01370a6e2ba799750dd4bac996882880f` |
+| `mass_spec_lc_480.png` | L2 `mass_spec_lc` | 480×320 | 17 KB | `681d78cdbbd87ee1c491ad2a443ba1bd94f602f336a8651ff09df9fd7035d04c` |
+| `mass_spec_lc_1200.png` | L2 `mass_spec_lc` | 1200×800 | 49 KB | `3f26edad37e105f6b1c7bf8b9068adde88e43d7cae3fadbbc0269b2ead9ea822` |
+| `maldi_tof_480.png` | L3 `maldi_tof` | 480×320 | 13 KB | `fe67080fc82140b279e1962abb0f7aa76b8164df07a7cdb8057304f6883c2557` |
+| `maldi_tof_1200.png` | L3 `maldi_tof` | 1200×800 | 36 KB | `a743d2cb52a668b14de6a043a641b405883ff8a568a3282f7c67e448603b0156` |
+| `microbial_id_ast_480.png` | L4 `microbial_id_ast` | 480×320 | 14 KB | `e087f792dcca4af34ff8022be556da96ecf8a7947d69b9af7e7e66f7f9be37b7` |
+| `microbial_id_ast_1200.png` | L4 `microbial_id_ast` | 1200×800 | 33 KB | `7312156c2c93fd627b5668dbc9a9dbec474dffc3d9306409cff669d55bc911a0` |
+| `blood_culture_480.png` | L5 `blood_culture` | 480×320 | 15 KB | `dee63c44dccb9f06a62b80d127b928d7d14ca194dc096ed09fe3e065e4d26142` |
+| `blood_culture_1200.png` | L5 `blood_culture` | 1200×800 | 35 KB | `623987f929a009bfbb72a5d3557a564e5e3195a4899fb412980dd9698749541a` |
+| `mycobacterial_culture_480.png` | L6 `mycobacterial_culture` | 480×320 | 13 KB | `5568c76b82226a1b6f4f3573b798273c44a2394625ddbd0a46041b45686ae612` |
+| `mycobacterial_culture_1200.png` | L6 `mycobacterial_culture` | 1200×800 | 35 KB | `689730df64ee6c384b4768f917bc0eb51f48587812dee08eaca78144410e71fd` |
+| `flow_cytometer_480.png` | L7 `flow_cytometer` | 480×320 | 13 KB | `6ae2709779f4bf4f7cae472555d4341f241d68c646d7a0ed48311e2d7ac1b477` |
+| `flow_cytometer_1200.png` | L7 `flow_cytometer` | 1200×800 | 38 KB | `bc440fc6f2eca7977bf73f0ab7cc901dbe2736ed524a2d407e3542fb94598dbb` |
+| `real_time_pcr_480.png` | L8 `real_time_pcr` | 480×320 | 14 KB | `7660d3c126df9260c02ddf8b75739cc4f7dd1cf984ceab5a732642437caa8b06` |
+| `real_time_pcr_1200.png` | L8 `real_time_pcr` | 1200×800 | 38 KB | `54883a825c235a9c634bece81b26477bbab413ea985c732b5bfbc22d191889f8` |
+| `cartridge_molecular_480.png` | L9 `cartridge_molecular` | 480×320 | 11 KB | `befcda350705b5432095a417a49cd4d0a46a826dd40befdc94483d94e780f943` |
+| `cartridge_molecular_1200.png` | L9 `cartridge_molecular` | 1200×800 | 31 KB | `76567414d0357c4b7656238c150cc9ccebbd2f9da1e07706cec19b58db27174e` |
+| `coag_analyzer_480.png` | L10 `coag_analyzer` | 480×320 | 14 KB | `5d125d95a6a64195da5ed85bf73a2b5cc93579eb6caca1496fbc38324bc40c3e` |
+| `coag_analyzer_1200.png` | L10 `coag_analyzer` | 1200×800 | 40 KB | `3d03603bfd9d69087115c693590b557f0207b68b1b26c290185d73f7b271907f` |
+| `elisa_reader_480.png` | L11 `elisa_reader` | 480×320 | 14 KB | `5af6c2c651a2a6d93dbcae8e8a59eb92898fba15f8b431977d9ca8b9f78fbbb3` |
+| `elisa_reader_1200.png` | L11 `elisa_reader` | 1200×800 | 40 KB | `a48133b08cffcdc6a90177a671251e377337b75764370d94e5e29d4fd8709dfd` |
+| `bsc_class2_480.png` | L12 `bsc_class2` | 480×320 | 12 KB | `5b67611ad5d4ced8e4f0fb4e868452385b5f37d055977ff6aadaa1f67ea7b695` |
+| `bsc_class2_1200.png` | L12 `bsc_class2` | 1200×800 | 32 KB | `3d0731ffd008679d0d07985f616fe1cfb97f10319a14094aacaf69f5b9620110` |
+| `autoclave_480.png` | L13 `autoclave` | 480×320 | 17 KB | `1f8c5567b862f89d87dc7211c8c6e355ff7ad1f30759ced9f3a8735811ca3165` |
+| `autoclave_1200.png` | L13 `autoclave` | 1200×800 | 50 KB | `004305bc40d9a61c3874728f7ce33e351c3846a0aa5b4f4d5b066fdfa143598d` |
+| `blood_gas_ise_480.png` | L14 `blood_gas_ise` | 480×320 | 13 KB | `57ee5ee67067ac6dcd7351676265ff77daccb4b8081292588221826123d468d1` |
+| `blood_gas_ise_1200.png` | L14 `blood_gas_ise` | 1200×800 | 38 KB | `128511d2561ea97efb71140a1458670aaca0edf2e66c669733f7f87ac6fc161e` |
+| `hba1c_analyzer_480.png` | L15 `hba1c_analyzer` | 480×320 | 15 KB | `c0569b497df6ed147538226070dc963f9e74be0f51c9f57782b3e81abb23fe26` |
+| `hba1c_analyzer_1200.png` | L15 `hba1c_analyzer` | 1200×800 | 44 KB | `3806b195d1db2ec9b7bba11e9a17d9db1456a83bec44f2b9e58bff8fd89c3be7` |
+| `lab_fridge_480.png` | L16 `lab_fridge` | 480×320 | 11 KB | `6aff4ca4f3efe925be40a56febd64a27d33227a041ff6d5ee9cb3bda45ac62c6` |
+| `lab_fridge_1200.png` | L16 `lab_fridge` | 1200×800 | 35 KB | `58e88b9298336309f15d6d94b81aa2cfd385c462f81c8db41211fda3836e2413` |
+| `fluorescence_microscope_480.png` | L17 `fluorescence_microscope` | 480×320 | 13 KB | `a6f60b48979dd1a33b55b7378912d29c197aba84cab73c1da7ce25b2790320b7` |
+| `fluorescence_microscope_1200.png` | L17 `fluorescence_microscope` | 1200×800 | 38 KB | `b350a3b67431ecd4f6d463dd32fa74e0a0076a85f624dab77113d0939af6fec8` |
+| `casa_480.png` | L18 `casa` | 480×320 | 12 KB | `bc9273474e61113fe19f82570bcbd182fa7f453b6e3bbf4f1a29ef827f722d26` |
+| `casa_1200.png` | L18 `casa` | 1200×800 | 35 KB | `eb43989dcc1718770aefd901786707224b731e76153bb476bc6f77b3ccf14c1f` |
+| `gel_card_system_480.png` | L19 `gel_card_system` | 480×320 | 11 KB | `24b358a8811c7e1b4047a2fe38cea298808c47bd981c19fb39b65abf45159ffe` |
+| `gel_card_system_1200.png` | L19 `gel_card_system` | 1200×800 | 27 KB | `fcfcb1b4431c980ba6f93cee50280db436e8ae902e66c607545a85aa70367441` |
+| `esr_analyzer_480.png` | L20 `esr_analyzer` | 480×320 | 10 KB | `02ccc2ae8b4f17e4d3301386f8b5a577c976e5f7b7de54ece544be04605f46f6` |
+| `esr_analyzer_1200.png` | L20 `esr_analyzer` | 1200×800 | 28 KB | `af7193cf187a01fa3bd379c07dbe773c3cec3a5f609ca1b69b5aae82a9682e3b` |
+| `aggregometer_480.png` | L21 `aggregometer` | 480×320 | 15 KB | `da763917032d7a0e1b36152177a67d8bb7795589a51843c5fd1d44df4e2d5019` |
+| `aggregometer_1200.png` | L21 `aggregometer` | 1200×800 | 38 KB | `d8b39ccdb9cf56e13f83fbbf693a4887eea20bb190a9c5c4042a30709b0c6728` |
+| `electrophoresis_480.png` | L22 `electrophoresis` | 480×320 | 11 KB | `d9b1f9591ebd479d90b0e6a456f3a9a2671a2d4f1be0c14a9621f819628553d3` |
+| `electrophoresis_1200.png` | L22 `electrophoresis` | 1200×800 | 34 KB | `55665124c29dbfa1fc03216d3323babc5b079857c981545f6bf32bf5de706274` |
+| `osmometer_480.png` | L23 `osmometer` | 480×320 | 11 KB | `b9284a5160290fb0e330c91b027ec46a55b09ed1309c3f68b7192b556f8e629c` |
+| `osmometer_1200.png` | L23 `osmometer` | 1200×800 | 32 KB | `896f908c12e2202eefe2a04da609952beb3872d9c960c895fd3f204d1c5cccca` |
+| `tlc_480.png` | L24 `tlc` | 480×320 | 13 KB | `a8bfb355964c00881c0d0a9fbdfd91882ec5e3e965906b5034df34fe0efa93e3` |
+| `tlc_1200.png` | L24 `tlc` | 1200×800 | 40 KB | `18653d049e0e24b5861c6cbf4efe876c5790380364bb1ae37bdac3eb9d9d39ef` |
+| `analytical_balance_480.png` | L25 `analytical_balance` | 480×320 | 12 KB | `2630ef45c41a31d2dae38316f59dc0e277ce4bbfc36186445d9063dc97c7c093` |
+| `analytical_balance_1200.png` | L25 `analytical_balance` | 1200×800 | 36 KB | `45bb0fb455ae738f46dce1ac055a43f11c734c2ccb43ac7b85c8f479518af3ee` |

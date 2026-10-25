@@ -3,7 +3,10 @@
 
 Har bir chizma — shu turdagi apparatning umumiy, original tasviri: namuna
 rakasi, reagent joyi, zond/igna, displey, chiqindi. Hech bir ishlab chiqaruvchi
-dizayniga, logotipiga yoki yozuviga o'xshatilmagan; rasmda matn yo'q.
+dizayniga, logotipiga yoki yozuviga o'xshatilmagan. Rasmdagi yagona matn —
+asosiy qismlarni ko'rsatuvchi raqamli belgilar (1..n, `<g id="callouts">`);
+qismlar nomi, vazifasi, ishlash prinsipi va natija — ilovada, ARB da
+(manba: parts_src.py, generator: parts_l10n.py).
 
     python3 tool/illustrations/schematic/gen.py            # SVG larni yozadi
     NODE_PATH=$(npm root -g) node tool/illustrations/render.cjs --schematic
@@ -19,6 +22,10 @@ Yangi chizmalar PNG hajmini kamaytirish uchun `--quant` (pngquant) bilan:
 import math
 import pathlib
 import random
+import sys
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from parts_src import PARTS  # noqa: E402
 
 HERE = pathlib.Path(__file__).resolve().parent
 W, H = 1200, 800
@@ -343,8 +350,12 @@ def chemistry():
     s += probe_arm(852, 262, [(790, 292), (730, 316)], 26)
     s += probe_arm(404, 262, [(440, 290)], 14, "#9FB3AA")
     s += ell(640, 366, 14, 5, "#8FA0A0", "#FFFFFF", 1.5)
+    # fotometr: halqa markazidagi lampa -> kyuvetalar -> tashqi detektor bloki
+    s += ell(744, 318, 13, 6, "#F6E7A8", None, extra='opacity="0.55"') + ell(744, 318, 6, 3, "#FFF6C8")
+    s += line(752, 318, 846, 318, "#F2D46B", 3, extra='opacity="0.9"')
     s += "</g>"
     s += '<path d="M312 388 L346 238 H700 L610 388 Z" fill="url(#glass)"/>'
+    s += rect(842, 302, 34, 32, 7, "url(#dark)", "#0F1412", 2) + ell(852, 318, 4, 4, "#F2D46B")
     s += rect(296, 380, 608, 22, 9, "#DCE4DF", LINE, 3)
     # namuna rakasi uyasi
     s += rect(338, 436, 292, 226, 16, "url(#niche)", "#232B28", 2)
@@ -430,11 +441,19 @@ def hematology5():
     s += rect(500, 600, 6, 40, 3, "#7B8781", None)
     s += rect(566, 566, 62, 62, 12, "#F4F7F5", LINE, 3)
     s += ell(597, 597, 17, 17, "#6FCF7F", "#FFFFFF", 3)
-    # o'ng panel
-    s += rect(676, 540, 150, 130, 14, "#F4F7F5", LINE, 3)
-    s += vents(700, 582, 102, 5)
-    s += led(702, 560)
-    s += rect(804, 580, 10, 58, 5, "#5F6B65", None)
+    # o'lchash bloki kesigi: impedans kamerasi (teshik + elektrodlar) va
+    # lazer -> oqim kyuvetasi -> detektor
+    s += rect(676, 540, 150, 130, 14, "url(#niche)", "#232B28", 2)
+    s += rect(688, 590, 60, 66, 6, "#CFE3EC", "#9FB8C4", 1.5)
+    s += line(718, 592, 718, 616, "#4C5853", 4) + line(718, 626, 718, 654, "#4C5853", 4)
+    s += rect(692, 602, 6, 40, 2, "#E3B93C", None) + rect(738, 602, 6, 40, 2, "#E3B93C", None)
+    for cx, cy in [(707, 612), (710, 630), (704, 644), (713, 621)]:
+        s += ell(cx, cy, 4, 3, "#B6403A")
+    s += rect(754, 600, 22, 16, 3, "#5F6B65", None) + rect(757, 603, 8, 10, 2, "#5B8FD0", None)
+    s += line(776, 608, 794, 608, "#5B8FD0", 3)
+    s += rect(794, 590, 10, 40, 3, "url(#glass)", "#CFE3EC", 1.5) + ell(799, 608, 3, 3, "#FFFFFF")
+    s += line(799, 590, 799, 630, "#D98BA6", 2, extra='opacity="0.8"')
+    s += rect(808, 600, 12, 16, 3, "url(#metal)", "#7C8C84", 1.5)
     return s
 
 
@@ -463,9 +482,13 @@ def hematology3():
     s += rect(462, 592, 8, 40, 3, "#7B8781", None)
     s += rect(528, 546, 56, 56, 12, "#F4F7F5", LINE, 3)
     s += ell(556, 574, 15, 15, "#6FCF7F", "#FFFFFF", 3)
-    s += rect(620, 540, 90, 110, 12, "#F4F7F5", LINE, 3)
-    s += vents(638, 574, 54, 4)
-    s += led(642, 556, "#6FCF7F", 6)
+    # impedans kamerasi kesigi: teshikli to'siq va ikki elektrod
+    s += rect(620, 540, 90, 110, 12, "url(#niche)", "#232B28", 2)
+    s += rect(632, 566, 66, 72, 6, "#CFE3EC", "#9FB8C4", 1.5)
+    s += line(665, 568, 665, 596, "#4C5853", 4) + line(665, 606, 665, 636, "#4C5853", 4)
+    s += rect(637, 580, 5, 40, 2, "#E3B93C", None) + rect(688, 580, 5, 40, 2, "#E3B93C", None)
+    for cx, cy in [(652, 592), (655, 610), (650, 624), (658, 600)]:
+        s += ell(cx, cy, 4, 3, "#B6403A")
     return s
 
 
@@ -538,6 +561,12 @@ def urine_strip():
     s += rect(404, 556, 376, 42, 6, "#E3E9E5", None)
     s += strip_pads(430, 566, 10, 30, 22, 22)
     s += rect(782, 556, 56, 42, 8, "#FFFFFF", "#C3CCC6", 2)
+    # o'qish kallagi: LEDlar (uch to'lqin uzunligi) va fotosensor maydoncha ustida
+    s += path("M578 548 L572 566 H628 L622 548 Z", "#F6E7A8", None, 0, extra='opacity="0.35"')
+    s += rect(564, 524, 72, 26, 6, "url(#dark)", "#0F1412", 1.5)
+    for x, c in [(580, "#5B8FD0"), (600, "#6FCF7F"), (620, "#D9604F")]:
+        s += ell(x, 546, 4, 4, c)
+    s += rect(594, 530, 12, 8, 2, "#8E9B94", None)
     # siydik idishi va chiziq
     s += rect(86, 600, 120, 102, 18, "#F2F5F3", "#C3CCC6", 3)
     s += rect(98, 640, 96, 52, 10, "url(#liquid)", None, extra='opacity="0.9"')
@@ -569,9 +598,9 @@ def urine_system():
     s += strip_pads(178, 352, 8, 32, 22, 22)
     s += led(136, 438, "#6FCF7F", 6)
     s += rect(142, 456, 316, 70, 12, "#F4F7F5", LINE, 3) + vents(166, 474, 200, 4, 11)
-    # o'ng modul: cho'kma (oqim sitometriya)
+    # o'ng modul: cho'kma (raqamli mikroskopik tasvirlash)
     s += rect(520, 210, 400, 492, 24, "url(#bodyH)")
-    s += monitor(552, 236, 336, 200, ui_scatter(316, 180))
+    s += monitor(552, 236, 336, 200, ui_gallery(316, 180))
     s += rect(552, 460, 336, 66, 14, "#F4F7F5", LINE, 3)
     s += ell(610, 493, 22, 22, "url(#dark)", "#9FB3AA", 3) + ell(610, 493, 9, 9, "#EAF6FA")
     s += rect(660, 478, 200, 10, 5, "#DDE5DF", None) + rect(660, 498, 140, 10, 5, "#DDE5DF", None)
@@ -785,6 +814,55 @@ def ui_tracks(w, h):
         s += ell(pts[-1][0], pts[-1][1], 4.5, 3.2, "#FFFFFF")
     for _ in range(6):
         s += ell(rnd.uniform(20, w - 20), rnd.uniform(20, h - 20), 4, 3, "#9FB3AA")
+    return s
+
+
+def ui_gallery(w, h):
+    """Siydik cho'kmasi: tasniflangan zarracha tasvirlari to'ri (yorug' maydon)."""
+    s = rect(10, 8, w * 0.38, 8, 4, "#8FC9A0", None)
+    cols, rows = 4, 3
+    tw, th = (w - 20 - (cols - 1) * 6) / cols, (h - 30 - (rows - 1) * 6) / rows
+    for r in range(rows):
+        for c in range(cols):
+            x, y = 10 + c * (tw + 6), 24 + r * (th + 6)
+            s += rect(x, y, tw, th, 4, "#E6EEEA", None)
+            cx, cy = x + tw / 2, y + th / 2
+            k = (r * cols + c) % 6
+            if k == 0:  # eritrotsit: rangpar markazli disk
+                s += ell(cx, cy, 11, 11, "#D98B86") + ell(cx, cy, 5, 5, "#EDC2BE")
+            elif k == 1:  # leykotsit: donador hujayra
+                s += ell(cx, cy, 13, 13, "#C9C4D8", "#9A93B5", 1.5)
+                s += ell(cx - 4, cy - 2, 4, 3, "#8E86AE") + ell(cx + 4, cy + 3, 4, 3, "#8E86AE")
+            elif k == 2:  # gialin silindr
+                s += rect(cx - 22, cy - 7, 44, 14, 7, "#D7E3E0", "#9FB3AA", 1.5)
+            elif k == 3:  # kristall (konvert shakli)
+                s += path(f"M{cx:g} {cy - 11:g} L{cx + 11:g} {cy:g} L{cx:g} {cy + 11:g} L{cx - 11:g} {cy:g} Z",
+                          "#F4F7F5", "#7C8C84", 1.5)
+                s += line(cx - 11, cy, cx + 11, cy, "#9FB3AA", 1) + line(cx, cy - 11, cx, cy + 11, "#9FB3AA", 1)
+            elif k == 4:  # yassi epiteliy
+                s += path(f"M{cx - 18:g} {cy - 8:g} L{cx + 6:g} {cy - 13:g} L{cx + 19:g} {cy + 2:g} "
+                          f"L{cx + 4:g} {cy + 13:g} L{cx - 16:g} {cy + 9:g} Z", "#E9DCCB", "#B9A78E", 1.5)
+                s += ell(cx, cy, 4, 3, "#8E7A60")
+            else:  # bakteriyalar (tayoqchalar)
+                for dx, dy, a in [(-9, -5, 20), (6, -7, -30), (-3, 6, 60), (10, 6, 10)]:
+                    s += f'<rect x="{cx + dx - 5:g}" y="{cy + dy - 1.8:g}" width="10" height="3.6" rx="1.8" fill="#6E7B74" transform="rotate({a} {cx + dx:g} {cy + dy:g})"/>'
+    return s
+
+
+def ui_hba1c(w, h):
+    """HbA1c ion almashinuv xromatogrammasi: kichik erta cho'qqilar, HbA1c, HbA0."""
+    s = ui_frame(w, h)
+    s += ui_peaks(w, h, [(0.12, 0.12, 0.015), (0.2, 0.18, 0.015), (0.36, 0.34, 0.02), (0.68, 0.95, 0.045)])
+    return s
+
+
+def ui_growth(w, h):
+    """Suyuq kultura: nazorat probirkasi o'sish egri chizig'i ko'tariladi, dorili tekis qoladi."""
+    s = ui_frame(w, h)
+    up = lambda t: (h - 18) - (h - 48) / (1 + math.exp(-(t - 0.5) * 12))
+    flat = lambda t: (h - 18) - (h - 48) * 0.06 * t
+    s += path(curve_path(up, 16, w - 14), stroke="#C5E8A1", sw=3.5)
+    s += path(curve_path(flat, 16, w - 14), stroke="#E3B93C", sw=3)
     return s
 
 
@@ -1083,7 +1161,7 @@ def blood_culture():
             x = 404 + i * 57
             s += culture_bottle(x, yy, 44, 92, ["#7FB3C8", "#9AA6A0"][(i + r) % 2],
                                 "#9E4A3F" if (i * 5 + r * 3) % 7 < 5 else "#E8D9A8")
-            s += led(x + 22, yy + 102, "#E3B93C" if (r, i) == (1, 4) else "#6FCF7F", 4)
+            s += led(x + 22, yy + 102, "#E3B93C" if (r, i) == (2, 4) else "#6FCF7F", 4)
     # pastki panel
     s += rect(386, 612, 428, 66, 14, "#F4F7F5", LINE, 3)
     s += vents(410, 630, 260, 3) + rect(700, 628, 90, 30, 6, "url(#dark)", None)
@@ -1102,7 +1180,7 @@ def mycobacterial_culture():
     for i in range(4):
         x = 112 + i * 48
         s += tube(x, 494, "#9AA6A0", "#F1E6C2", h=150, w=26, level=0.82)
-        pos = i == 1
+        pos = i == 0
         if pos:
             s += ell(x + 13, 650, 26, 16, "#F0A040", None, extra='opacity="0.55" filter="url(#soft)"')
         s += rect(x + 4, 640, 18, 12, 4, "#F0A040" if pos else "#C9B48A", None)
@@ -1133,7 +1211,7 @@ def mycobacterial_culture():
         s += rect(368, yy, 464, 96, 12, "#F4F7F5", LINE, 3)
         s += rect(560, yy + 40, 80, 12, 6, "#8E9B94", None)
         s += led(392, yy + 46, "#6FCF7F", 6)
-    s += monitor(900, 250, 200, 146, ui_bars(180, 126, 5), arm=[(860, 470), (1000, 470), (1000, 396)])
+    s += monitor(900, 250, 200, 146, ui_growth(180, 126), arm=[(860, 470), (1000, 470), (1000, 396)])
     return s
 
 
@@ -1522,10 +1600,18 @@ def hba1c_analyzer():
     s += waste_can(186, 610, 90, 92)
     s += rect(360, 280, 480, 422, 24, "url(#bodyH)")
     s += path("M384 280 L404 228 Q408 218 420 218 H780 Q792 218 796 228 L816 280 Z", "url(#topP)", LINE, 3)
+    # kesik oyna: ion almashinuv kolonkasi -> fotometrik detektor (oqim kyuvetasi)
+    s += rect(404, 228, 180, 44, 8, "url(#niche)", "#232B28", 2)
+    s += rect(418, 242, 96, 16, 7, "url(#metal)", "#7C8C84", 1.5)
+    s += rect(412, 244, 8, 12, 2, "#8E9B94", None) + rect(512, 244, 8, 12, 2, "#8E9B94", None)
+    s += line(520, 250, 540, 250, "#C9A15A", 3)
+    s += rect(540, 238, 10, 24, 2, "url(#glass)", "#CFE3EC", 1.5)
+    s += line(546, 250, 556, 250, "#F2D46B", 2)
+    s += rect(556, 238, 18, 24, 3, "url(#metal)", "#7C8C84", 1.5)
     s += rect(600, 246, 160, 18, 7, "url(#dark)", None)
     s += rect(614, 214, 132, 42, 3, "#FFFFFF", "#D2DAD5", 2, extra='transform="rotate(-1.5 680 235)"')
     s += line(628, 226, 716, 225, "#BFC9C2", 3)
-    s += monitor(386, 302, 270, 168, ui_bars(250, 148, 5))
+    s += monitor(386, 302, 270, 168, ui_hba1c(250, 148))
     for r in range(3):
         for c in range(3):
             s += rect(680 + c * 46, 312 + r * 42, 36, 32, 8, "#FFFFFF", "#C3CCC6", 2)
@@ -2000,7 +2086,47 @@ def framed(fn, top, k):
     ty = 395 - k * (top + GROUND) / 2
     return f'<g transform="translate({600 * (1 - k):g},{ty:g}) scale({k:g})">{fn()}</g>'
 
+
+# Raqamli belgilar (egasi talabi 2026-10-25): sahnadagi qism joyida doiracha
+# va raqam; ilovadagi “Qismlari va ishlash prinsipi” ro'yxati shu tartibda.
+# O'lcham masshtabdan mustaqil (1200 px kanvasda): 390 px telefonda doiracha
+# ~16 px, raqam ~10 px. Rasmdagi yagona matn — shu guruhdagi raqamlar
+# (test/guards/lab_card_schematic_guard_test.dart tekshiradi).
+CALLOUT_R = 28
+CALLOUT_FS = 34
+CALLOUT_FILL = "#1B5E50"
+
+
+def callouts(name, top, k):
+    ty = 395 - k * (top + GROUND) / 2
+    tx = 600 * (1 - k)
+
+    def at(pt):
+        return tx + k * pt[0], ty + k * pt[1]
+
+    s = ('<g id="callouts" font-family="Inter, Arial, sans-serif" font-weight="700" '
+         'text-anchor="middle">')
+    for n, part in enumerate(PARTS[name]["parts"], 1):
+        mx, my = at(part["m"])
+        s += f'<g class="callout" data-n="{n}">'
+        if part["a"] is not None:
+            ax, ay = at(part["a"])
+            d = math.hypot(ax - mx, ay - my)
+            if d > CALLOUT_R:
+                ex, ey = mx + (ax - mx) * CALLOUT_R / d, my + (ay - my) * CALLOUT_R / d
+                s += line(ex, ey, ax, ay, "#FFFFFF", 8)
+                s += line(ex, ey, ax, ay, CALLOUT_FILL, 3.5)
+            s += ell(ax, ay, 6.5, 6.5, CALLOUT_FILL, "#FFFFFF", 2.5)
+        s += ell(mx, my, CALLOUT_R, CALLOUT_R, CALLOUT_FILL, "#FFFFFF", 4)
+        s += (f'<text x="{mx:.1f}" y="{my + CALLOUT_FS * 0.36:.1f}" font-size="{CALLOUT_FS}" '
+              f'fill="#FFFFFF">{n}</text>')
+        s += "</g>"
+    return s + "</g>"
+
+
 if __name__ == "__main__":
+    assert set(PARTS) == set(SCENES), set(PARTS) ^ set(SCENES)
     for name, (fn, top, k) in SCENES.items():
-        (HERE / f"{name}.svg").write_text(svg(framed(fn, top, k)), encoding="utf-8")
-        print("svg", name)
+        body = framed(fn, top, k) + callouts(name, top, k)
+        (HERE / f"{name}.svg").write_text(svg(body), encoding="utf-8")
+        print("svg", name, len(PARTS[name]["parts"]))
