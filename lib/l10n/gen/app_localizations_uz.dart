@@ -13305,7 +13305,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get proPayGuestBuyNote =>
-      'Talaba va Mutaxassis rejalarini hisobsiz sotib olish va tiklash mumkin. Ustoz Pro va Premium ustoz panelini o‘z ichiga oladi — ular uchun hisobga kirish kerak. Keyinroq hisobga kirsangiz, xarid hisobingizga o‘tadi.';
+      'Talaba Pro va Mutaxassis Pro rejalarini hisobsiz sotib olish va tiklash mumkin. Ustoz Pro va Premium ustoz panelini o‘z ichiga oladi — ular uchun hisobga kirish kerak. Keyinroq hisobga kirsangiz, xarid hisobingizga o‘tadi.';
 
   @override
   String get proPayGuestAccountOnly =>

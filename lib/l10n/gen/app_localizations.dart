@@ -22849,7 +22849,7 @@ abstract class AppLocalizations {
   /// No description provided for @proPayGuestBuyNote.
   ///
   /// In en, this message translates to:
-  /// **'You can buy and restore the Student and Specialist plans without an account. Teacher Pro and Premium include the teacher panel and need an account. If you sign in later, the purchase moves to your account.'**
+  /// **'You can buy and restore the Student Pro and Specialist Pro plans without an account. Teacher Pro and Premium include the teacher panel and need an account. If you sign in later, the purchase moves to your account.'**
   String get proPayGuestBuyNote;
 
   /// No description provided for @proPayGuestAccountOnly.

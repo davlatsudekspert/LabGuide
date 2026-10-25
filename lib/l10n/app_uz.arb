@@ -3812,7 +3812,7 @@
       }
     }
   },
-  "proPayGuestBuyNote": "Talaba va Mutaxassis rejalarini hisobsiz sotib olish va tiklash mumkin. Ustoz Pro va Premium ustoz panelini o‘z ichiga oladi — ular uchun hisobga kirish kerak. Keyinroq hisobga kirsangiz, xarid hisobingizga o‘tadi.",
+  "proPayGuestBuyNote": "Talaba Pro va Mutaxassis Pro rejalarini hisobsiz sotib olish va tiklash mumkin. Ustoz Pro va Premium ustoz panelini o‘z ichiga oladi — ular uchun hisobga kirish kerak. Keyinroq hisobga kirsangiz, xarid hisobingizga o‘tadi.",
   "proPayGuestAccountOnly": "Bu reja ustoz panelini o‘z ichiga oladi — obuna uchun hisobga kiring.",
   "proPayGuestLinked": "Bu xarid LabGuide hisobiga bog‘langan. Undan foydalanish uchun o‘sha hisobga kiring.",
   "proPayIntroPrice": "{length} — {intro}, keyin {price}",
