@@ -4190,17 +4190,17 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get toifaTitle => 'Qualification category exam prep';
+  String get toifaTitle => 'Knowledge & Skills Assessment';
 
   @override
   String get toifaSubtitle => 'Clinical laboratory diagnostics (CLD)';
 
   @override
-  String get toifaEyebrow => 'CLD · category';
+  String get toifaEyebrow => 'CLD · knowledge and skills';
 
   @override
   String get toifaEntryBody =>
-      'Questions from the official certification list: a 50-question test, topic practice, oral ticket and mistake review.';
+      'Questions from the official list: a 50-question test, topic practice, oral ticket and mistake review.';
 
   @override
   String get toifaEntryBodyShort =>
@@ -4223,7 +4223,7 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get toifaOpen => 'Start preparing';
+  String get toifaOpen => 'Start';
 
   @override
   String get toifaContinue => 'Continue';
@@ -4274,10 +4274,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get toifaReadyOral => 'Oral';
 
   @override
-  String get toifaPrepare => 'Preparation';
+  String get toifaPrepare => 'Assessment';
 
   @override
-  String get toifaTestTitle => 'Category test';
+  String get toifaTestTitle => 'Knowledge test';
 
   @override
   String toifaTestRowSub(int count, int bank) {
@@ -4460,15 +4460,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get toifaGoalHint => 'Or 1 oral ticket — whichever comes first.';
 
   @override
-  String get toifaReminderTitle => 'LabGuide · Qualification';
+  String get toifaReminderTitle => 'LabGuide · Knowledge & Skills';
 
   @override
   String toifaReminderBody(int count) {
-    return 'Today’s qualification practice is waiting — $count questions or 1 ticket';
+    return 'Today’s practice is waiting — $count questions or 1 ticket';
   }
 
   @override
-  String get toifaReminderChannel => 'Qualification reminder';
+  String get toifaReminderChannel => 'Knowledge & Skills reminder';
 
   @override
   String get toifaOfferTitle => 'Continue tomorrow?';
@@ -4645,10 +4645,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get toifaNoteNoSource => 'No source is given for this note.';
 
   @override
-  String get toifaNoGuaranteeNote =>
-      'Questions are based on official preparation materials. There is no guarantee that these exact questions will appear in the exam; the app is not affiliated with the examination body.';
-
-  @override
   String get toifaRelatedCards => 'Related cards';
 
   @override
@@ -4676,10 +4672,6 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get toifaOralStep3 =>
       'Check the answer plan and rate yourself: knew, partly or didn’t know.';
-
-  @override
-  String get toifaPlanDisclaimer =>
-      'Answer plans are a study aid prepared by LabGuide. They are not official answers.';
 
   @override
   String get toifaPickCategoryFirst => 'Choose a category first';
@@ -5064,7 +5056,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get dailySourceToifa =>
-      'Questions come from the official certification list — only those whose key passed the LabGuide check.';
+      'Questions come from the official list — only those whose key passed the LabGuide check.';
 
   @override
   String get dailyReminderTitle => 'LabGuide: daily questions';
@@ -5139,7 +5131,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get shareKindExam => 'Practice exam';
 
   @override
-  String get shareKindToifa => 'Category test practice';
+  String get shareKindToifa => 'Knowledge test practice';
 
   @override
   String get shareCorrectCaption => 'correct answers';
@@ -5983,7 +5975,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profileUnitsConventional => 'Conventional (mg/dL)';
 
   @override
-  String get profileAttestation => 'Qualification category (attestation)';
+  String get profileAttestation => 'Knowledge & Skills Assessment';
 
   @override
   String get profileAttestationAuto => 'Automatic';
@@ -5996,7 +5988,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get profileAttestationNote =>
-      'Shows the Uzbekistan qualification-category exam prep section in any interface language. Automatic: shown when the language is Uzbek or the device region is Uzbekistan.';
+      'Shows the Knowledge & Skills Assessment section (Uzbekistan) in any interface language. Automatic: shown when the language is Uzbek or the device region is Uzbekistan.';
 
   @override
   String get profileAppearance => 'Appearance';
@@ -7887,7 +7879,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get cmRulesA6 =>
-      'questions about the qualification exam (toifa) and study';
+      'questions about knowledge and skills assessment and study';
 
   @override
   String get cmRulesH2 => 'How to write';
@@ -9636,7 +9628,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get topicTestSourcesNote =>
-      'Questions come only from verified sources: official certification questions with a confirmed key and practice questions with a cited source.';
+      'Questions come only from verified sources: official questions with a confirmed key and practice questions with a cited source.';
 
   @override
   String get topicTestStart => 'Start the test';
@@ -10004,7 +9996,7 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get homeHeroLabToifaCta => 'Today’s category practice';
+  String get homeHeroLabToifaCta => 'Today’s assessment practice';
 
   @override
   String get helpTitle => 'Help & contact';
@@ -10127,7 +10119,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get generalTestSearchHint => 'Search topics (e.g. anemia)';
 
   @override
-  String get generalSourceToifa => 'Category exam questions';
+  String get generalSourceToifa => 'Knowledge & Skills Assessment questions';
 
   @override
   String get generalSourceToifaSub => 'Official CLD list, keys checked';
@@ -10145,7 +10137,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get generalSourcePackSub => 'Questions from test cards';
 
   @override
-  String get generalSourceToifaShort => 'Category';
+  String get generalSourceToifaShort => 'Assessment';
 
   @override
   String get generalSourceLectureShort => 'Lectures';

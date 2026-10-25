@@ -327,11 +327,6 @@ class _ToifaHubScreenState extends State<ToifaHubScreen> {
           kind: NoticeKind.info,
         ),
       const ToifaTodayCard(),
-      Text(
-        l.toifaNoGuaranteeNote,
-        key: const ValueKey('toifa-hub-no-guarantee'),
-        style: text.bodySmall,
-      ),
       LgSectionTitle(l.toifaYourCategory),
       const ToifaCategoryPicker(),
       const SizedBox(height: 8),
@@ -698,12 +693,6 @@ class _ToifaTestScreenState extends State<ToifaTestScreen> {
         label: practice ? l.toifaDrillStart : l.toifaTestStart,
         icon: Icons.play_arrow_rounded,
         onPressed: () => _start(bank),
-      ),
-      const SizedBox(height: 8),
-      Text(
-        l.toifaNoGuaranteeNote,
-        key: const ValueKey('toifa-no-guarantee'),
-        style: Theme.of(context).textTheme.bodySmall,
       ),
       ExamHistory(exams: exams, sourceId: ToifaQuestionSource.sourceId),
     ];
@@ -1521,8 +1510,6 @@ class ToifaOralScreen extends StatelessWidget {
         l.toifaOralStep2,
         l.toifaOralStep3,
       ]),
-      const SizedBox(height: 8),
-      LgNotice(l.toifaPlanDisclaimer),
       const SizedBox(height: 8),
       LgButton(
         label: cat == null ? l.toifaPickCategoryFirst : l.toifaDrawTicket,

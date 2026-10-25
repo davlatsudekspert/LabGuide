@@ -4144,17 +4144,17 @@ class AppLocalizationsUz extends AppLocalizations {
   }
 
   @override
-  String get toifaTitle => 'Toifa imtihoniga tayyorgarlik';
+  String get toifaTitle => 'Bilim va malakani baholash';
 
   @override
   String get toifaSubtitle => 'Klinik laboratoriya diagnostikasi (KDL)';
 
   @override
-  String get toifaEyebrow => 'KDL · malaka toifasi';
+  String get toifaEyebrow => 'KDL · bilim va malaka';
 
   @override
   String get toifaEntryBody =>
-      'Rasmiy attestatsiya ro‘yxatidagi savollar: 50 savollik test, mavzu bo‘yicha mashq, og‘zaki bilet va xatolar ustida ishlash.';
+      'Rasmiy ro‘yxatdagi savollar: 50 savollik test, mavzu bo‘yicha mashq, og‘zaki bilet va xatolar ustida ishlash.';
 
   @override
   String get toifaEntryBodyShort =>
@@ -4177,7 +4177,7 @@ class AppLocalizationsUz extends AppLocalizations {
   }
 
   @override
-  String get toifaOpen => 'Tayyorgarlikni boshlash';
+  String get toifaOpen => 'Boshlash';
 
   @override
   String get toifaContinue => 'Davom ettirish';
@@ -4228,10 +4228,10 @@ class AppLocalizationsUz extends AppLocalizations {
   String get toifaReadyOral => 'Og‘zaki';
 
   @override
-  String get toifaPrepare => 'Tayyorgarlik';
+  String get toifaPrepare => 'Baholash';
 
   @override
-  String get toifaTestTitle => 'Toifa testi';
+  String get toifaTestTitle => 'Bilim testi';
 
   @override
   String toifaTestRowSub(int count, int bank) {
@@ -4417,15 +4417,15 @@ class AppLocalizationsUz extends AppLocalizations {
       'Yoki 1 ta og‘zaki bilet — qaysi biri oldin bajarilsa.';
 
   @override
-  String get toifaReminderTitle => 'LabGuide · Toifa';
+  String get toifaReminderTitle => 'LabGuide · Bilim va malaka';
 
   @override
   String toifaReminderBody(int count) {
-    return 'Bugungi toifa mashg‘uloti sizni kutmoqda — $count ta savol yoki 1 bilet';
+    return 'Bugungi mashg‘ulot sizni kutmoqda — $count ta savol yoki 1 bilet';
   }
 
   @override
-  String get toifaReminderChannel => 'Toifa eslatmasi';
+  String get toifaReminderChannel => 'Bilim va malaka eslatmasi';
 
   @override
   String get toifaOfferTitle => 'Ertaga davom etamizmi?';
@@ -4602,10 +4602,6 @@ class AppLocalizationsUz extends AppLocalizations {
   String get toifaNoteNoSource => 'Izoh uchun manba ko‘rsatilmagan.';
 
   @override
-  String get toifaNoGuaranteeNote =>
-      'Savollar rasmiy tayyorgarlik materiallari asosida. Imtihonda aynan shu savollar tushishiga kafolat berilmaydi; ilova rasmiy imtihon organi bilan bog‘liq emas.';
-
-  @override
   String get toifaRelatedCards => 'Bog‘liq kartalar';
 
   @override
@@ -4632,10 +4628,6 @@ class AppLocalizationsUz extends AppLocalizations {
   @override
   String get toifaOralStep3 =>
       'Javob rejasini ko‘rib, o‘zingizni baholang: bildim, qisman yoki bilmadim.';
-
-  @override
-  String get toifaPlanDisclaimer =>
-      'Javob rejalari — LabGuide tayyorlagan o‘quv yordami. Ular rasmiy javob emas.';
 
   @override
   String get toifaPickCategoryFirst => 'Avval toifani tanlang';
@@ -4998,7 +4990,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get dailySourceToifa =>
-      'Savollar toifa imtihonining rasmiy ro‘yxatidan olinadi — faqat kaliti LabGuide tekshiruvidan o‘tganlari.';
+      'Savollar rasmiy ro‘yxatdan olinadi — faqat kaliti LabGuide tekshiruvidan o‘tganlari.';
 
   @override
   String get dailyReminderTitle => 'LabGuide: kunlik savol';
@@ -5074,7 +5066,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get shareKindExam => 'Mashq imtihoni';
 
   @override
-  String get shareKindToifa => 'Toifa testi mashqi';
+  String get shareKindToifa => 'Bilim testi mashqi';
 
   @override
   String get shareCorrectCaption => 'to‘g‘ri javob';
@@ -5883,7 +5875,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get profileUnitsConventional => 'An’anaviy (mg/dL)';
 
   @override
-  String get profileAttestation => 'Malaka toifasi (attestatsiya)';
+  String get profileAttestation => 'Bilim va malakani baholash';
 
   @override
   String get profileAttestationAuto => 'Avtomatik';
@@ -5896,7 +5888,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get profileAttestationNote =>
-      'Malaka toifasi imtihoniga tayyorgarlik bo‘limini interfeys tilidan qat’i nazar ko‘rsatadi. Avtomatik: til o‘zbekcha yoki qurilma mintaqasi O‘zbekiston bo‘lsa ko‘rinadi.';
+      'Bilim va malakani baholash bo‘limini interfeys tilidan qat’i nazar ko‘rsatadi. Avtomatik: til o‘zbekcha yoki qurilma mintaqasi O‘zbekiston bo‘lsa ko‘rinadi.';
 
   @override
   String get profileAppearance => 'Tashqi ko‘rinish';
@@ -7780,7 +7772,8 @@ class AppLocalizationsUz extends AppLocalizations {
       'gematologiya, mikroskopiya, biokimyo, immunologiya, siydik tahlili';
 
   @override
-  String get cmRulesA6 => 'toifa imtihoni va o‘qish bo‘yicha savollar';
+  String get cmRulesA6 =>
+      'bilim va malakani baholash hamda o‘qish bo‘yicha savollar';
 
   @override
   String get cmRulesH2 => 'Qanday yozish kerak';
@@ -9501,7 +9494,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get topicTestSourcesNote =>
-      'Savollar faqat tekshirilgan manbalardan: kaliti tasdiqlangan rasmiy toifa savollari va manbasi ko‘rsatilgan mashq savollari.';
+      'Savollar faqat tekshirilgan manbalardan: kaliti tasdiqlangan rasmiy savollar va manbasi ko‘rsatilgan mashq savollari.';
 
   @override
   String get topicTestStart => 'Testni boshlash';
@@ -9868,7 +9861,7 @@ class AppLocalizationsUz extends AppLocalizations {
   }
 
   @override
-  String get homeHeroLabToifaCta => 'Bugungi toifa mashg‘uloti';
+  String get homeHeroLabToifaCta => 'Bugungi baholash mashg‘uloti';
 
   @override
   String get helpTitle => 'Yordam va aloqa';
@@ -9990,7 +9983,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get generalTestSearchHint => 'Mavzuni qidiring (masalan, anemiya)';
 
   @override
-  String get generalSourceToifa => 'Toifa savollari';
+  String get generalSourceToifa => 'Bilim va malaka savollari';
 
   @override
   String get generalSourceToifaSub =>
@@ -10009,7 +10002,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get generalSourcePackSub => 'Analiz kartalari savollari';
 
   @override
-  String get generalSourceToifaShort => 'Toifa';
+  String get generalSourceToifaShort => 'Bilim va malaka';
 
   @override
   String get generalSourceLectureShort => 'Ma’ruza';

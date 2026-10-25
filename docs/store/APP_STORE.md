@@ -11,7 +11,7 @@ yo‘q), pullik obuna/to‘lov (bu versiyada to‘lov yo‘q, D-58).
 Tavsiflarda ular tilga olinmaydi. D-65 (2026-10-18, egasi qarori): kontent “qoralama” deb
 yozilmaydi — tavsifda manbalarga asoslangani va tibbiy eslatma (tashxis emas, natijani shifokor
 baholaydi, referens oraliqlar laboratoriyaga bog‘liq) yoziladi; eslatmani olib tashlamang. Rus/ingliz tavsifida O‘zbekistonga xos
-bo‘limlar (malaka toifasi) yo‘q: ular faqat o‘zbek tili yoki UZ mintaqasida ko‘rinadi.
+bo‘limlar (bilim va malakani baholash) yo‘q: ular faqat o‘zbek tili yoki UZ mintaqasida ko‘rinadi.
 Tavsiflar 2026-10-10 holatiga yangilangan (119 karta, 43 holat).
 
 ## 1. Ilova yozuvi (New App)
@@ -70,7 +70,7 @@ hisobi va ixtiyoriy mahalliy eslatma.
 • Ichki sifat nazorati: Levey–Jennings grafigi, Westgard qoidalari (1-2s, 1-3s, 2-2s, R-4s,
 4-1s, 10x), lot va maqsad tarixi, CSV eksport va zaxira nusxa.
 • Preanalitika, analizator katalogi, izohli testlar, kutubxona (ochiq va rasmiy manbalar).
-• Malaka toifasi imtihoniga tayyorgarlik (o‘zbek tilidagi savollar; mashq natijasi rasmiy baho emas).
+• Bilim va malakani baholash (o‘zbek tilidagi savollar; mashq natijasi rasmiy baho emas).
 
 Uch tilda: o‘zbek, rus, ingliz. Internet shart emas. Hisobsiz (mehmon) ishlaydi — bu rejimda
 ilova serverga ma’lumot yubormaydi.

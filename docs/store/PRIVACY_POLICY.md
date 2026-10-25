@@ -21,7 +21,7 @@ Quyidagilar faqat qurilmangizda saqlanadi va serverga yuborilmaydi: sozlamalar (
 o‘lchov birliklari, rol), xatcho‘plar, qaydlar va qoralamalar, QC (sifat nazorati) qaydlari,
 apparatlaringiz va kalibrlash jurnali, PDF o‘qish holati, mashq va imtihon natijalari (guruhdagi
 testlar bundan mustasno — 5-bo‘lim), kunlik savol holati va eslatma sozlamasi, leykoformula
-natijalari, toifa imtihoniga tayyorgarlik belgilari va kunlik mashg‘ulot hisobi, hamjamiyatda o‘zingiz bloklagan mualliflar ro‘yxati. Ustozning guruh a’zosiga qo‘ygan
+natijalari, bilim va malakani baholash belgilari va kunlik mashg‘ulot hisobi, hamjamiyatda o‘zingiz bloklagan mualliflar ro‘yxati. Ustozning guruh a’zosiga qo‘ygan
 real ism belgisi va og‘zaki savol-javob baholari ham faqat ustoz qurilmasida qoladi.
 
 Hisob bilan kirsangiz, email manzilingiz ilovada ko‘rsatish uchun qurilmada saqlanadi, sessiya
@@ -272,7 +272,7 @@ sanaladi. Ovoz bilan bemor ismini aytmang.
 
 ### 14. Eslatmalar, ulashish va rasm
 
-Kunlik savol va toifa mashg‘uloti eslatmalari standart o‘chiq; yoqsangiz, ular qurilmada
+Kunlik savol va bilim va malakani baholash mashg‘uloti eslatmalari standart o‘chiq; yoqsangiz, ular qurilmada
 rejalashtiriladigan lokal bildirishnomalar (push server yo‘q). Natija kartochkasi tizimning ulashish oynasi orqali faqat siz
 tanlagan joyga yuboriladi; rasmda shaxsiy ma’lumot yo‘q. “Rasmni saqlash” tanlansa, foto
 kutubxonasiga faqat shu rasm qo‘shiladi. Mutaxassis hujjati uchun kamera yoki galereyadan rasm faqat

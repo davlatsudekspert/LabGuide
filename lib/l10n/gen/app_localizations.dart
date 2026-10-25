@@ -7369,7 +7369,7 @@ abstract class AppLocalizations {
   /// No description provided for @toifaTitle.
   ///
   /// In en, this message translates to:
-  /// **'Qualification category exam prep'**
+  /// **'Knowledge & Skills Assessment'**
   String get toifaTitle;
 
   /// No description provided for @toifaSubtitle.
@@ -7381,13 +7381,13 @@ abstract class AppLocalizations {
   /// No description provided for @toifaEyebrow.
   ///
   /// In en, this message translates to:
-  /// **'CLD · category'**
+  /// **'CLD · knowledge and skills'**
   String get toifaEyebrow;
 
   /// No description provided for @toifaEntryBody.
   ///
   /// In en, this message translates to:
-  /// **'Questions from the official certification list: a 50-question test, topic practice, oral ticket and mistake review.'**
+  /// **'Questions from the official list: a 50-question test, topic practice, oral ticket and mistake review.'**
   String get toifaEntryBody;
 
   /// No description provided for @toifaEntryBodyShort.
@@ -7423,7 +7423,7 @@ abstract class AppLocalizations {
   /// No description provided for @toifaOpen.
   ///
   /// In en, this message translates to:
-  /// **'Start preparing'**
+  /// **'Start'**
   String get toifaOpen;
 
   /// No description provided for @toifaContinue.
@@ -7519,13 +7519,13 @@ abstract class AppLocalizations {
   /// No description provided for @toifaPrepare.
   ///
   /// In en, this message translates to:
-  /// **'Preparation'**
+  /// **'Assessment'**
   String get toifaPrepare;
 
   /// No description provided for @toifaTestTitle.
   ///
   /// In en, this message translates to:
-  /// **'Category test'**
+  /// **'Knowledge test'**
   String get toifaTestTitle;
 
   /// No description provided for @toifaTestRowSub.
@@ -7807,19 +7807,19 @@ abstract class AppLocalizations {
   /// No description provided for @toifaReminderTitle.
   ///
   /// In en, this message translates to:
-  /// **'LabGuide · Qualification'**
+  /// **'LabGuide · Knowledge & Skills'**
   String get toifaReminderTitle;
 
   /// No description provided for @toifaReminderBody.
   ///
   /// In en, this message translates to:
-  /// **'Today’s qualification practice is waiting — {count} questions or 1 ticket'**
+  /// **'Today’s practice is waiting — {count} questions or 1 ticket'**
   String toifaReminderBody(int count);
 
   /// No description provided for @toifaReminderChannel.
   ///
   /// In en, this message translates to:
-  /// **'Qualification reminder'**
+  /// **'Knowledge & Skills reminder'**
   String get toifaReminderChannel;
 
   /// No description provided for @toifaOfferTitle.
@@ -8104,12 +8104,6 @@ abstract class AppLocalizations {
   /// **'No source is given for this note.'**
   String get toifaNoteNoSource;
 
-  /// No description provided for @toifaNoGuaranteeNote.
-  ///
-  /// In en, this message translates to:
-  /// **'Questions are based on official preparation materials. There is no guarantee that these exact questions will appear in the exam; the app is not affiliated with the examination body.'**
-  String get toifaNoGuaranteeNote;
-
   /// No description provided for @toifaRelatedCards.
   ///
   /// In en, this message translates to:
@@ -8151,12 +8145,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Check the answer plan and rate yourself: knew, partly or didn’t know.'**
   String get toifaOralStep3;
-
-  /// No description provided for @toifaPlanDisclaimer.
-  ///
-  /// In en, this message translates to:
-  /// **'Answer plans are a study aid prepared by LabGuide. They are not official answers.'**
-  String get toifaPlanDisclaimer;
 
   /// No description provided for @toifaPickCategoryFirst.
   ///
@@ -8755,7 +8743,7 @@ abstract class AppLocalizations {
   /// No description provided for @dailySourceToifa.
   ///
   /// In en, this message translates to:
-  /// **'Questions come from the official certification list — only those whose key passed the LabGuide check.'**
+  /// **'Questions come from the official list — only those whose key passed the LabGuide check.'**
   String get dailySourceToifa;
 
   /// No description provided for @dailyReminderTitle.
@@ -8887,7 +8875,7 @@ abstract class AppLocalizations {
   /// No description provided for @shareKindToifa.
   ///
   /// In en, this message translates to:
-  /// **'Category test practice'**
+  /// **'Knowledge test practice'**
   String get shareKindToifa;
 
   /// No description provided for @shareCorrectCaption.
@@ -10267,7 +10255,7 @@ abstract class AppLocalizations {
   /// No description provided for @profileAttestation.
   ///
   /// In en, this message translates to:
-  /// **'Qualification category (attestation)'**
+  /// **'Knowledge & Skills Assessment'**
   String get profileAttestation;
 
   /// No description provided for @profileAttestationAuto.
@@ -10291,7 +10279,7 @@ abstract class AppLocalizations {
   /// No description provided for @profileAttestationNote.
   ///
   /// In en, this message translates to:
-  /// **'Shows the Uzbekistan qualification-category exam prep section in any interface language. Automatic: shown when the language is Uzbek or the device region is Uzbekistan.'**
+  /// **'Shows the Knowledge & Skills Assessment section (Uzbekistan) in any interface language. Automatic: shown when the language is Uzbek or the device region is Uzbekistan.'**
   String get profileAttestationNote;
 
   /// No description provided for @profileAppearance.
@@ -13627,7 +13615,7 @@ abstract class AppLocalizations {
   /// No description provided for @cmRulesA6.
   ///
   /// In en, this message translates to:
-  /// **'questions about the qualification exam (toifa) and study'**
+  /// **'questions about knowledge and skills assessment and study'**
   String get cmRulesA6;
 
   /// No description provided for @cmRulesH2.
@@ -16585,7 +16573,7 @@ abstract class AppLocalizations {
   /// No description provided for @topicTestSourcesNote.
   ///
   /// In en, this message translates to:
-  /// **'Questions come only from verified sources: official certification questions with a confirmed key and practice questions with a cited source.'**
+  /// **'Questions come only from verified sources: official questions with a confirmed key and practice questions with a cited source.'**
   String get topicTestSourcesNote;
 
   /// No description provided for @topicTestStart.
@@ -17191,7 +17179,7 @@ abstract class AppLocalizations {
   /// No description provided for @homeHeroLabToifaCta.
   ///
   /// In en, this message translates to:
-  /// **'Today’s category practice'**
+  /// **'Today’s assessment practice'**
   String get homeHeroLabToifaCta;
 
   /// No description provided for @helpTitle.
@@ -17395,7 +17383,7 @@ abstract class AppLocalizations {
   /// No description provided for @generalSourceToifa.
   ///
   /// In en, this message translates to:
-  /// **'Category exam questions'**
+  /// **'Knowledge & Skills Assessment questions'**
   String get generalSourceToifa;
 
   /// No description provided for @generalSourceToifaSub.
@@ -17431,7 +17419,7 @@ abstract class AppLocalizations {
   /// No description provided for @generalSourceToifaShort.
   ///
   /// In en, this message translates to:
-  /// **'Category'**
+  /// **'Assessment'**
   String get generalSourceToifaShort;
 
   /// No description provided for @generalSourceLectureShort.

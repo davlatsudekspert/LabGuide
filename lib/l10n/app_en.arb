@@ -2224,10 +2224,10 @@
       }
     }
   },
-  "toifaTitle": "Qualification category exam prep",
+  "toifaTitle": "Knowledge & Skills Assessment",
   "toifaSubtitle": "Clinical laboratory diagnostics (CLD)",
-  "toifaEyebrow": "CLD · category",
-  "toifaEntryBody": "Questions from the official certification list: a 50-question test, topic practice, oral ticket and mistake review.",
+  "toifaEyebrow": "CLD · knowledge and skills",
+  "toifaEntryBody": "Questions from the official list: a 50-question test, topic practice, oral ticket and mistake review.",
   "toifaEntryBodyShort": "Test, oral ticket and mistake review — based on the official list.",
   "toifaEntryTagTest": "Test · 50 questions",
   "toifaEntryTagOral": "Oral · 5 questions",
@@ -2253,7 +2253,7 @@
       }
     }
   },
-  "toifaOpen": "Start preparing",
+  "toifaOpen": "Start",
   "toifaContinue": "Continue",
   "toifaUzbekOnly": "Official text — Uzbek",
   "toifaUzbekNotice": "The official text of the certification questions is Uzbek. With a Russian or English interface an auxiliary translation is shown; the original can be opened at any time. Scoring follows the official Uzbek text and key.",
@@ -2269,8 +2269,8 @@
   "toifaCategoryHint": "The oral ticket is drawn from this category’s list. Test questions are shared by all categories.",
   "toifaReadyTest": "Test",
   "toifaReadyOral": "Oral",
-  "toifaPrepare": "Preparation",
-  "toifaTestTitle": "Category test",
+  "toifaPrepare": "Assessment",
+  "toifaTestTitle": "Knowledge test",
   "toifaTestRowSub": "{count} random questions · {bank} in the bank",
   "@toifaTestRowSub": {
     "placeholders": {
@@ -2470,8 +2470,8 @@
     }
   },
   "toifaGoalHint": "Or 1 oral ticket — whichever comes first.",
-  "toifaReminderTitle": "LabGuide · Qualification",
-  "toifaReminderBody": "Today’s qualification practice is waiting — {count} questions or 1 ticket",
+  "toifaReminderTitle": "LabGuide · Knowledge & Skills",
+  "toifaReminderBody": "Today’s practice is waiting — {count} questions or 1 ticket",
   "@toifaReminderBody": {
     "placeholders": {
       "count": {
@@ -2479,7 +2479,7 @@
       }
     }
   },
-  "toifaReminderChannel": "Qualification reminder",
+  "toifaReminderChannel": "Knowledge & Skills reminder",
   "toifaOfferTitle": "Continue tomorrow?",
   "toifaOfferBody": "Pick a reminder time. There’s no reminder on days you’ve met the goal.",
   "toifaOfferOn": "We’ll remind you tomorrow at {time}.",
@@ -2606,7 +2606,6 @@
   "toifaScoredByOfficial": "Scoring follows the official key — that answer is what the exam expects.",
   "toifaNoOfficialKey": "No key is marked in the list — this question is not scored.",
   "toifaNoteNoSource": "No source is given for this note.",
-  "toifaNoGuaranteeNote": "Questions are based on official preparation materials. There is no guarantee that these exact questions will appear in the exam; the app is not affiliated with the examination body.",
   "toifaRelatedCards": "Related cards",
   "toifaOralSubtitle": "{count} questions · prepare and self-assess",
   "@toifaOralSubtitle": {
@@ -2638,7 +2637,6 @@
   },
   "toifaOralStep2": "Prepare your answers — in your head or on paper.",
   "toifaOralStep3": "Check the answer plan and rate yourself: knew, partly or didn’t know.",
-  "toifaPlanDisclaimer": "Answer plans are a study aid prepared by LabGuide. They are not official answers.",
   "toifaPickCategoryFirst": "Choose a category first",
   "toifaDrawTicket": "Draw a ticket",
   "toifaTicketTitle": "Your ticket",
@@ -2922,7 +2920,7 @@
   "dailyKeepStreak": "Answer today’s questions to keep your streak.",
   "dailyEmpty": "No questions for today",
   "dailyReviewTitle": "Today’s questions",
-  "dailySourceToifa": "Questions come from the official certification list — only those whose key passed the LabGuide check.",
+  "dailySourceToifa": "Questions come from the official list — only those whose key passed the LabGuide check.",
   "dailyReminderTitle": "LabGuide: daily questions",
   "dailyReminderBody": "Today’s 5 questions are ready — 2–3 minutes.",
   "dailyReminderChannel": "Daily reminder",
@@ -2958,7 +2956,7 @@
   "shareFailed": "Couldn’t open the share sheet. Please try again.",
   "shareKindDaily": "Daily questions",
   "shareKindExam": "Practice exam",
-  "shareKindToifa": "Category test practice",
+  "shareKindToifa": "Knowledge test practice",
   "shareCorrectCaption": "correct answers",
   "shareFooter": "Lab reference and practice",
   "shareToifaNote": "Not official — LabGuide practice result",
@@ -3542,11 +3540,11 @@
   "profileUnits": "Units",
   "profileUnitsSi": "SI (mmol/L, µmol/L)",
   "profileUnitsConventional": "Conventional (mg/dL)",
-  "profileAttestation": "Qualification category (attestation)",
+  "profileAttestation": "Knowledge & Skills Assessment",
   "profileAttestationAuto": "Automatic",
   "profileAttestationUz": "Uzbekistan",
   "profileAttestationNone": "Hide",
-  "profileAttestationNote": "Shows the Uzbekistan qualification-category exam prep section in any interface language. Automatic: shown when the language is Uzbek or the device region is Uzbekistan.",
+  "profileAttestationNote": "Shows the Knowledge & Skills Assessment section (Uzbekistan) in any interface language. Automatic: shown when the language is Uzbek or the device region is Uzbekistan.",
   "profileAppearance": "Appearance",
   "themeSystem": "System",
   "themeLight": "Light",
@@ -4542,7 +4540,7 @@
   "cmRulesA3": "quality control (QC, Westgard rules), calibration",
   "cmRulesA4": "experience working with analyzers and reagents",
   "cmRulesA5": "hematology, microscopy, biochemistry, immunology, urinalysis",
-  "cmRulesA6": "questions about the qualification exam (toifa) and study",
+  "cmRulesA6": "questions about knowledge and skills assessment and study",
   "cmRulesH2": "How to write",
   "cmRulesB1": "put the essence of the question in the title (for example: “Potassium high, no hemolysis — what is the cause?”)",
   "cmRulesB2": "in the details: which test, the result and its unit, the method or analyzer, what you have already tried",
@@ -5622,7 +5620,7 @@
     }
   },
   "topicTestSavedNote": "If you leave, your answers are kept — you will continue from the same place.",
-  "topicTestSourcesNote": "Questions come only from verified sources: official certification questions with a confirmed key and practice questions with a cited source.",
+  "topicTestSourcesNote": "Questions come only from verified sources: official questions with a confirmed key and practice questions with a cited source.",
   "topicTestStart": "Start the test",
   "topicTestResume": "Continue · {answered}/{total}",
   "@topicTestResume": {
@@ -5886,7 +5884,7 @@
       }
     }
   },
-  "homeHeroLabToifaCta": "Today’s category practice",
+  "homeHeroLabToifaCta": "Today’s assessment practice",
   "helpTitle": "Help & contact",
   "helpSub": "In the app or by email — question, suggestion, complaint",
   "helpIntro": "Choose what suits you: an in-app message thread (the reply arrives here) or email (complaint, privacy request).",
@@ -5951,13 +5949,13 @@
   "generalTestIntro": "Pick topics — questions are spread evenly across them. Students take the test on their phones; the server scores it.",
   "generalTestSources": "Where questions come from",
   "generalTestSearchHint": "Search topics (e.g. anemia)",
-  "generalSourceToifa": "Category exam questions",
+  "generalSourceToifa": "Knowledge & Skills Assessment questions",
   "generalSourceToifaSub": "Official CLD list, keys checked",
   "generalSourceLecture": "Lecture topics",
   "generalSourceLectureSub": "A whole module or single days",
   "generalSourcePack": "By lab tests",
   "generalSourcePackSub": "Questions from test cards",
-  "generalSourceToifaShort": "Category",
+  "generalSourceToifaShort": "Assessment",
   "generalSourceLectureShort": "Lectures",
   "generalSourcePackShort": "Lab tests",
   "generalSelectAll": "Select all",

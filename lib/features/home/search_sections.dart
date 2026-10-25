@@ -440,6 +440,15 @@ const kSearchSections = <SearchSection>[
       'квалификационная категория',
       'аттестация',
       'экзамен на категорию',
+      // Yangi nom (2026-10-25): bilim va malakani baholash.
+      'bilim va malakani baholash',
+      'bilim testi',
+      'malaka',
+      'проверка знаний и компетенций',
+      'тест знаний',
+      'knowledge & skills assessment',
+      'knowledge and skills',
+      'knowledge test',
     ],
   ),
   SearchSection(
