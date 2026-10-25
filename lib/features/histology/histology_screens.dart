@@ -14,6 +14,8 @@ import '../tools/calc_info.dart';
 import '../tools/clinical_calc_screens.dart' show CalcSourceTile;
 import '../tools/sources_panel.dart';
 import 'histology_content.dart';
+import '../howto/howto_registry.dart';
+import '../howto/howto_widgets.dart';
 
 const histoBase = '/lab/histology';
 const histoCardImage = 'assets/histology/card.png';
@@ -200,6 +202,7 @@ class HistologyScreen extends StatelessWidget {
       title: l.histoTitle,
       subtitle: context.tr(HisL.subtitle),
       children: [
+        const HowToButton(HowToSection.histology),
         Center(
           child: ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 220),

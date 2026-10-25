@@ -20,6 +20,8 @@ import '../tools/sources_panel.dart';
 import '../lab/lab_links.dart';
 import 'urinalysis_content.dart';
 import 'urinalysis_logic.dart';
+import '../howto/howto_registry.dart';
+import '../howto/howto_widgets.dart';
 
 const urinBase = '/lab/urinalysis';
 const urinCardImage = 'assets/urinalysis/card.png';
@@ -199,6 +201,7 @@ class UrinalysisScreen extends StatelessWidget {
       title: l.urinTitle,
       subtitle: context.tr(UrL.subtitle),
       children: [
+        const HowToButton(HowToSection.urinalysis),
         Center(
           child: ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 220),

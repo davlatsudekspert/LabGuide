@@ -21249,6 +21249,624 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'The calculated volume of each delivery; comparison with the nominal volume gives the accuracy (systematic error) and repeatability.'**
   String get schemPartsAnalyticalBalanceResult;
+
+  /// No description provided for @howToButton.
+  ///
+  /// In en, this message translates to:
+  /// **'How to use?'**
+  String get howToButton;
+
+  /// No description provided for @howToStepsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Steps'**
+  String get howToStepsTitle;
+
+  /// No description provided for @howToResultTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'What you get'**
+  String get howToResultTitle;
+
+  /// No description provided for @howToWatchVideo.
+  ///
+  /// In en, this message translates to:
+  /// **'Watch the video'**
+  String get howToWatchVideo;
+
+  /// No description provided for @howToCalibrationStep1.
+  ///
+  /// In en, this message translates to:
+  /// **'“1. Instrument”: choose the model from the catalog or add an instrument that isn’t listed.'**
+  String get howToCalibrationStep1;
+
+  /// No description provided for @howToCalibrationStep2.
+  ///
+  /// In en, this message translates to:
+  /// **'“2. Analyte”: type the test name (e.g. glucose) and pick it from the list.'**
+  String get howToCalibrationStep2;
+
+  /// No description provided for @howToCalibrationStep3.
+  ///
+  /// In en, this message translates to:
+  /// **'“3. Reagent”: enter the manufacturer, REF number and IFU revision.'**
+  String get howToCalibrationStep3;
+
+  /// No description provided for @howToCalibrationStep4.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap “Show guide” — the app checks the match and shows the matching guidance.'**
+  String get howToCalibrationStep4;
+
+  /// No description provided for @howToCalibrationStep5.
+  ///
+  /// In en, this message translates to:
+  /// **'“Create a calibration record”: enter the lot, values and outcome, then save the record.'**
+  String get howToCalibrationStep5;
+
+  /// No description provided for @howToCalibrationStep6.
+  ///
+  /// In en, this message translates to:
+  /// **'All records are in the “Calibration log” and stay on this device only.'**
+  String get howToCalibrationStep6;
+
+  /// No description provided for @howToCalibrationResult.
+  ///
+  /// In en, this message translates to:
+  /// **'Calibration guidance matched to your instrument, analyte and reagent, plus an on-device calibration log.'**
+  String get howToCalibrationResult;
+
+  /// No description provided for @howToQcStep1.
+  ///
+  /// In en, this message translates to:
+  /// **'“Add test”: enter the test name, unit and control levels.'**
+  String get howToQcStep1;
+
+  /// No description provided for @howToQcStep2.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the target mean and SD for each level — the app never makes them up.'**
+  String get howToQcStep2;
+
+  /// No description provided for @howToQcStep3.
+  ///
+  /// In en, this message translates to:
+  /// **'After each run, enter the control results and tap “Save run”.'**
+  String get howToQcStep3;
+
+  /// No description provided for @howToQcStep4.
+  ///
+  /// In en, this message translates to:
+  /// **'Check the Levey–Jennings chart and the Westgard verdict: in control, warning or rejected.'**
+  String get howToQcStep4;
+
+  /// No description provided for @howToQcStep5.
+  ///
+  /// In en, this message translates to:
+  /// **'“Guides”: what to do when QC is rejected, external quality assessment (EQA) and critical values.'**
+  String get howToQcStep5;
+
+  /// No description provided for @howToQcStep6.
+  ///
+  /// In en, this message translates to:
+  /// **'Backup: copy your data as text and restore it later.'**
+  String get howToQcStep6;
+
+  /// No description provided for @howToQcResult.
+  ///
+  /// In en, this message translates to:
+  /// **'A Levey–Jennings chart per level and a Westgard verdict for every run — on this device.'**
+  String get howToQcResult;
+
+  /// No description provided for @howToPreanalyticsStep1.
+  ///
+  /// In en, this message translates to:
+  /// **'At the top — 5 stages: from preparing for the test to transport and receipt.'**
+  String get howToPreanalyticsStep1;
+
+  /// No description provided for @howToPreanalyticsStep2.
+  ///
+  /// In en, this message translates to:
+  /// **'Patient preparation: fasting, medicines, exercise — every point with its source.'**
+  String get howToPreanalyticsStep2;
+
+  /// No description provided for @howToPreanalyticsStep3.
+  ///
+  /// In en, this message translates to:
+  /// **'Order of draw: which tube is filled when during venipuncture (with cap colours).'**
+  String get howToPreanalyticsStep3;
+
+  /// No description provided for @howToPreanalyticsStep4.
+  ///
+  /// In en, this message translates to:
+  /// **'Further down: separation, storage, transport and receipt conditions.'**
+  String get howToPreanalyticsStep4;
+
+  /// No description provided for @howToPreanalyticsStep5.
+  ///
+  /// In en, this message translates to:
+  /// **'Check each point against your laboratory’s SOP.'**
+  String get howToPreanalyticsStep5;
+
+  /// No description provided for @howToPreanalyticsResult.
+  ///
+  /// In en, this message translates to:
+  /// **'Rules to check before and after sample collection — with sources, on one page.'**
+  String get howToPreanalyticsResult;
+
+  /// No description provided for @howToCalculatorsStep1.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick a calculator: clinical formulas, manual methods or laboratory.'**
+  String get howToCalculatorsStep1;
+
+  /// No description provided for @howToCalculatorsStep2.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the values and check the units.'**
+  String get howToCalculatorsStep2;
+
+  /// No description provided for @howToCalculatorsStep3.
+  ///
+  /// In en, this message translates to:
+  /// **'If needed, choose a parameter (e.g. sex) and tap “Calculate”.'**
+  String get howToCalculatorsStep3;
+
+  /// No description provided for @howToCalculatorsStep4.
+  ///
+  /// In en, this message translates to:
+  /// **'Read the note and sources under the result: the formula’s limits are there.'**
+  String get howToCalculatorsStep4;
+
+  /// No description provided for @howToCalculatorsResult.
+  ///
+  /// In en, this message translates to:
+  /// **'A result computed only from the values you enter — with its formula and source.'**
+  String get howToCalculatorsResult;
+
+  /// No description provided for @howToInstrumentsStep1.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a direction: chemistry, hematology, immunochemistry or urine.'**
+  String get howToInstrumentsStep1;
+
+  /// No description provided for @howToInstrumentsStep2.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick the manufacturer and model, or type the model name into search.'**
+  String get howToInstrumentsStep2;
+
+  /// No description provided for @howToInstrumentsStep3.
+  ///
+  /// In en, this message translates to:
+  /// **'Model card: “Save as ‘My instrument’”, then go to calibration or QC.'**
+  String get howToInstrumentsStep3;
+
+  /// No description provided for @howToInstrumentsStep4.
+  ///
+  /// In en, this message translates to:
+  /// **'“Laboratory directions (reference)”: cards for TB, HIV, bacteriology and other directions.'**
+  String get howToInstrumentsStep4;
+
+  /// No description provided for @howToInstrumentsStep5.
+  ///
+  /// In en, this message translates to:
+  /// **'The schematic on a card shows the instrument class in general, not an exact model.'**
+  String get howToInstrumentsStep5;
+
+  /// No description provided for @howToInstrumentsResult.
+  ///
+  /// In en, this message translates to:
+  /// **'Reference cards by instrument and direction, schematics and quick access to calibration/QC.'**
+  String get howToInstrumentsResult;
+
+  /// No description provided for @howToMicroscopyStep1.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a section: urine sediment, peripheral blood film or blood parasites (malaria).'**
+  String get howToMicroscopyStep1;
+
+  /// No description provided for @howToMicroscopyStep2.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap an image: the card shows key features, author and license.'**
+  String get howToMicroscopyStep2;
+
+  /// No description provided for @howToMicroscopyStep3.
+  ///
+  /// In en, this message translates to:
+  /// **'Type a name into search (e.g. oxalate or neutrophil).'**
+  String get howToMicroscopyStep3;
+
+  /// No description provided for @howToMicroscopyStep4.
+  ///
+  /// In en, this message translates to:
+  /// **'“Start practice”: pick the right name out of 4 options — the answer shows at once.'**
+  String get howToMicroscopyStep4;
+
+  /// No description provided for @howToMicroscopyStep5.
+  ///
+  /// In en, this message translates to:
+  /// **'At the end of a round you see your score and can retry mistakes.'**
+  String get howToMicroscopyStep5;
+
+  /// No description provided for @howToMicroscopyResult.
+  ///
+  /// In en, this message translates to:
+  /// **'An atlas of licensed micrographs and a picture practice to check yourself.'**
+  String get howToMicroscopyResult;
+
+  /// No description provided for @howToCoprologyStep1.
+  ///
+  /// In en, this message translates to:
+  /// **'“Specimen collection”: container, timing, multiple samples, preservative.'**
+  String get howToCoprologyStep1;
+
+  /// No description provided for @howToCoprologyStep2.
+  ///
+  /// In en, this message translates to:
+  /// **'“Macroscopic examination”: form, colour, reaction, admixtures.'**
+  String get howToCoprologyStep2;
+
+  /// No description provided for @howToCoprologyStep3.
+  ///
+  /// In en, this message translates to:
+  /// **'“Coprogram microscopy”: a card for each element (muscle fibres, fat, starch and more).'**
+  String get howToCoprologyStep3;
+
+  /// No description provided for @howToCoprologyStep4.
+  ///
+  /// In en, this message translates to:
+  /// **'“Occult blood”: FIT and guaiac test, preparation, result.'**
+  String get howToCoprologyStep4;
+
+  /// No description provided for @howToCoprologyStep5.
+  ///
+  /// In en, this message translates to:
+  /// **'“Intestinal parasites”: concentration methods, a key to eggs and cysts (schematic).'**
+  String get howToCoprologyStep5;
+
+  /// No description provided for @howToCoprologyStep6.
+  ///
+  /// In en, this message translates to:
+  /// **'Below — practical protocols (slides) and test cards.'**
+  String get howToCoprologyStep6;
+
+  /// No description provided for @howToCoprologyResult.
+  ///
+  /// In en, this message translates to:
+  /// **'A coprology reference from collection to result — with sources; it is not a diagnosis.'**
+  String get howToCoprologyResult;
+
+  /// No description provided for @howToAssessmentStep1.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose your category (3–2, first or highest) and set a daily goal.'**
+  String get howToAssessmentStep1;
+
+  /// No description provided for @howToAssessmentStep2.
+  ///
+  /// In en, this message translates to:
+  /// **'“Knowledge test”: a test of random questions from the official list.'**
+  String get howToAssessmentStep2;
+
+  /// No description provided for @howToAssessmentStep3.
+  ///
+  /// In en, this message translates to:
+  /// **'“Topic practice”: the key and an explanation right after each answer.'**
+  String get howToAssessmentStep3;
+
+  /// No description provided for @howToAssessmentStep4.
+  ///
+  /// In en, this message translates to:
+  /// **'“Oral ticket”: draw a ticket, prepare, view the answer plan and rate yourself.'**
+  String get howToAssessmentStep4;
+
+  /// No description provided for @howToAssessmentStep5.
+  ///
+  /// In en, this message translates to:
+  /// **'“Mistake review” and “Progress”: rework mistakes and follow your results by topic.'**
+  String get howToAssessmentStep5;
+
+  /// No description provided for @howToAssessmentStep6.
+  ///
+  /// In en, this message translates to:
+  /// **'The section is for Uzbekistan: in Uzbek, or Profile → “Knowledge & Skills Assessment” → “Uzbekistan”.'**
+  String get howToAssessmentStep6;
+
+  /// No description provided for @howToAssessmentResult.
+  ///
+  /// In en, this message translates to:
+  /// **'Practice on the official question list, your results and a review of mistakes — to check your own knowledge.'**
+  String get howToAssessmentResult;
+
+  /// No description provided for @howToDifferentialStep1.
+  ///
+  /// In en, this message translates to:
+  /// **'“Cell identification”: size, nucleus, cytoplasm and granules of each cell.'**
+  String get howToDifferentialStep1;
+
+  /// No description provided for @howToDifferentialStep2.
+  ///
+  /// In en, this message translates to:
+  /// **'“Start counting”: tap +1, long-press −1; 100 or 200 cells.'**
+  String get howToDifferentialStep2;
+
+  /// No description provided for @howToDifferentialStep3.
+  ///
+  /// In en, this message translates to:
+  /// **'When done, save the result to history — “Saved results”, on this device only.'**
+  String get howToDifferentialStep3;
+
+  /// No description provided for @howToDifferentialStep4.
+  ///
+  /// In en, this message translates to:
+  /// **'“Differential: absolute counts”: absolute numbers from WBC and percentages.'**
+  String get howToDifferentialStep4;
+
+  /// No description provided for @howToDifferentialStep5.
+  ///
+  /// In en, this message translates to:
+  /// **'Build your skills with “Interpretation” and the “Which cell is this?” practice.'**
+  String get howToDifferentialStep5;
+
+  /// No description provided for @howToDifferentialResult.
+  ///
+  /// In en, this message translates to:
+  /// **'A percentage differential, results saved on the device, interpretation notes and practice.'**
+  String get howToDifferentialResult;
+
+  /// No description provided for @howToCytologyStep1.
+  ///
+  /// In en, this message translates to:
+  /// **'“Cells and organisms”: a drawing and the key feature of each item.'**
+  String get howToCytologyStep1;
+
+  /// No description provided for @howToCytologyStep2.
+  ///
+  /// In en, this message translates to:
+  /// **'“Vaginal smear cleanliness grade”: mark what you see — the app shows the grade.'**
+  String get howToCytologyStep2;
+
+  /// No description provided for @howToCytologyStep3.
+  ///
+  /// In en, this message translates to:
+  /// **'“The Bethesda system”: what a Pap report means.'**
+  String get howToCytologyStep3;
+
+  /// No description provided for @howToCytologyStep4.
+  ///
+  /// In en, this message translates to:
+  /// **'Sample adequacy, reactive changes and the maturation index — on separate pages.'**
+  String get howToCytologyStep4;
+
+  /// No description provided for @howToCytologyStep5.
+  ///
+  /// In en, this message translates to:
+  /// **'“Which cell is this?”: a picture practice.'**
+  String get howToCytologyStep5;
+
+  /// No description provided for @howToCytologyResult.
+  ///
+  /// In en, this message translates to:
+  /// **'A learning reference for the gynaecological smear, the cleanliness grade and practice; not a diagnosis.'**
+  String get howToCytologyResult;
+
+  /// No description provided for @howToSpermogramStep1.
+  ///
+  /// In en, this message translates to:
+  /// **'“Key parameters”: the WHO 2021 lower reference limits.'**
+  String get howToSpermogramStep1;
+
+  /// No description provided for @howToSpermogramStep2.
+  ///
+  /// In en, this message translates to:
+  /// **'“Counter”: count motility and morphology.'**
+  String get howToSpermogramStep2;
+
+  /// No description provided for @howToSpermogramStep3.
+  ///
+  /// In en, this message translates to:
+  /// **'“Assess a result”: enter the values — they are compared with the WHO limits.'**
+  String get howToSpermogramStep3;
+
+  /// No description provided for @howToSpermogramStep4.
+  ///
+  /// In en, this message translates to:
+  /// **'“Terms” and “Pre-analytics”: oligo-, astheno-, terato-; abstinence, collection, delivery.'**
+  String get howToSpermogramStep4;
+
+  /// No description provided for @howToSpermogramStep5.
+  ///
+  /// In en, this message translates to:
+  /// **'“Practice”: check your knowledge with questions.'**
+  String get howToSpermogramStep5;
+
+  /// No description provided for @howToSpermogramResult.
+  ///
+  /// In en, this message translates to:
+  /// **'A result compared with the WHO 2021 limits, terms and practice — a learning reference.'**
+  String get howToSpermogramResult;
+
+  /// No description provided for @howToBloodGroupStep1.
+  ///
+  /// In en, this message translates to:
+  /// **'“ABO and RhD basics”: antigens, antibodies, forward and reverse grouping.'**
+  String get howToBloodGroupStep1;
+
+  /// No description provided for @howToBloodGroupStep2.
+  ///
+  /// In en, this message translates to:
+  /// **'“Methods” and “Compatibility”: slide, tube, gel card; compatibility testing.'**
+  String get howToBloodGroupStep2;
+
+  /// No description provided for @howToBloodGroupStep3.
+  ///
+  /// In en, this message translates to:
+  /// **'“Discrepancies and errors”: forward/reverse mismatch, weak D.'**
+  String get howToBloodGroupStep3;
+
+  /// No description provided for @howToBloodGroupStep4.
+  ///
+  /// In en, this message translates to:
+  /// **'“Reaction pattern reader”: mark the results — the app shows a learning interpretation.'**
+  String get howToBloodGroupStep4;
+
+  /// No description provided for @howToBloodGroupStep5.
+  ///
+  /// In en, this message translates to:
+  /// **'“Practice”; transfusion decisions follow your local protocol only.'**
+  String get howToBloodGroupStep5;
+
+  /// No description provided for @howToBloodGroupResult.
+  ///
+  /// In en, this message translates to:
+  /// **'A learning reference on ABO and RhD and a learning interpretation of reaction patterns.'**
+  String get howToBloodGroupResult;
+
+  /// No description provided for @howToHistologyStep1.
+  ///
+  /// In en, this message translates to:
+  /// **'“Tissues and organs”: epithelium, connective, muscle, nerve; liver, kidney.'**
+  String get howToHistologyStep1;
+
+  /// No description provided for @howToHistologyStep2.
+  ///
+  /// In en, this message translates to:
+  /// **'Open an image: a real micrograph, the key feature and what to look at.'**
+  String get howToHistologyStep2;
+
+  /// No description provided for @howToHistologyStep3.
+  ///
+  /// In en, this message translates to:
+  /// **'“Staining methods”: H&E, Masson, elastic, silver, PAS, LFB.'**
+  String get howToHistologyStep3;
+
+  /// No description provided for @howToHistologyStep4.
+  ///
+  /// In en, this message translates to:
+  /// **'“Which tissue is this?”: a picture practice.'**
+  String get howToHistologyStep4;
+
+  /// No description provided for @howToHistologyStep5.
+  ///
+  /// In en, this message translates to:
+  /// **'“Picture credits”: the author and license of every image.'**
+  String get howToHistologyStep5;
+
+  /// No description provided for @howToHistologyResult.
+  ///
+  /// In en, this message translates to:
+  /// **'A tissue atlas with licensed micrographs, staining methods and practice.'**
+  String get howToHistologyResult;
+
+  /// No description provided for @howToUrinalysisStep1.
+  ///
+  /// In en, this message translates to:
+  /// **'“Collection and preservation”: morning sample, midstream, timing, refrigeration.'**
+  String get howToUrinalysisStep1;
+
+  /// No description provided for @howToUrinalysisStep2.
+  ///
+  /// In en, this message translates to:
+  /// **'“Physical properties”: colour, clarity, odour, specific gravity.'**
+  String get howToUrinalysisStep2;
+
+  /// No description provided for @howToUrinalysisStep3.
+  ///
+  /// In en, this message translates to:
+  /// **'“Strip test (chemical examination)”: 10 pads — meaning, interferences, confirmation.'**
+  String get howToUrinalysisStep3;
+
+  /// No description provided for @howToUrinalysisStep4.
+  ///
+  /// In en, this message translates to:
+  /// **'“Sediment microscopy”: cells, casts, crystals, organisms.'**
+  String get howToUrinalysisStep4;
+
+  /// No description provided for @howToUrinalysisStep5.
+  ///
+  /// In en, this message translates to:
+  /// **'“Result reader” and “Practice: what is this?” — check yourself.'**
+  String get howToUrinalysisStep5;
+
+  /// No description provided for @howToUrinalysisResult.
+  ///
+  /// In en, this message translates to:
+  /// **'A step-by-step urinalysis reference, a result reader and practice.'**
+  String get howToUrinalysisResult;
+
+  /// No description provided for @howToBloodMorphStep1.
+  ///
+  /// In en, this message translates to:
+  /// **'“The normal red cell and what to look at”: size, colour, shape, inclusions.'**
+  String get howToBloodMorphStep1;
+
+  /// No description provided for @howToBloodMorphStep2.
+  ///
+  /// In en, this message translates to:
+  /// **'“Red cell changes”: picture cards — what you see and what it may point to.'**
+  String get howToBloodMorphStep2;
+
+  /// No description provided for @howToBloodMorphStep3.
+  ///
+  /// In en, this message translates to:
+  /// **'“Platelets” and “Reticulocytes”: counting principles and artefacts.'**
+  String get howToBloodMorphStep3;
+
+  /// No description provided for @howToBloodMorphStep4.
+  ///
+  /// In en, this message translates to:
+  /// **'“Anaemia classification helper”: Hb, MCV, RDW → morphological group.'**
+  String get howToBloodMorphStep4;
+
+  /// No description provided for @howToBloodMorphStep5.
+  ///
+  /// In en, this message translates to:
+  /// **'“Practice: which change is this?” — picture and knowledge questions.'**
+  String get howToBloodMorphStep5;
+
+  /// No description provided for @howToBloodMorphResult.
+  ///
+  /// In en, this message translates to:
+  /// **'A picture reference for the peripheral blood film, an anaemia helper and practice.'**
+  String get howToBloodMorphResult;
+
+  /// No description provided for @howToCoagulogramStep1.
+  ///
+  /// In en, this message translates to:
+  /// **'“What each test measures”: PT/INR, APTT, thrombin time, fibrinogen, D-dimer.'**
+  String get howToCoagulogramStep1;
+
+  /// No description provided for @howToCoagulogramStep2.
+  ///
+  /// In en, this message translates to:
+  /// **'“Sample requirements”: 3.2% citrate, 9:1 ratio, timing, pre-analytical errors.'**
+  String get howToCoagulogramStep2;
+
+  /// No description provided for @howToCoagulogramStep3.
+  ///
+  /// In en, this message translates to:
+  /// **'“Result reading helper”: PT, APTT and platelets → possible causes from the source.'**
+  String get howToCoagulogramStep3;
+
+  /// No description provided for @howToCoagulogramStep4.
+  ///
+  /// In en, this message translates to:
+  /// **'“ISTH overt DIC score”: enter the values — the score is calculated.'**
+  String get howToCoagulogramStep4;
+
+  /// No description provided for @howToCoagulogramStep5.
+  ///
+  /// In en, this message translates to:
+  /// **'“Anticoagulant monitoring”: warfarin — INR, heparin — APTT/anti-Xa.'**
+  String get howToCoagulogramStep5;
+
+  /// No description provided for @howToCoagulogramResult.
+  ///
+  /// In en, this message translates to:
+  /// **'A hemostasis test reference, a result reading helper and the DIC score — with sources.'**
+  String get howToCoagulogramResult;
 }
 
 class _AppLocalizationsDelegate

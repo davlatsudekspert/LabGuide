@@ -1,0 +1,1303 @@
+{
+ "created": "2026-10-25",
+ "note": "Ovozsiz, subtitrli ekran yozuvi — diktorsiz. Kadrlar: tool/video/howto_walk_test.dart (haqiqiy ekranlar).",
+ "topics": [
+  {
+   "id": "01_kalibrlash",
+   "section": "calibration",
+   "title": {
+    "uz": "Kalibrlash: yo‘riqnoma va jurnal",
+    "ru": "Калибровка: руководство и журнал",
+    "en": "Calibration: guide and log"
+   },
+   "subtitle": {
+    "uz": "Apparat → analit → reagent → yo‘riqnoma → jurnal",
+    "ru": "Прибор → аналит → реагент → руководство → журнал",
+    "en": "Instrument → analyte → reagent → guide → log"
+   },
+   "frames": [
+    {
+     "id": "lab_tools",
+     "route": "/lab",
+     "action": "«Kalibrlash» qatorini bosish",
+     "sec": 3.5,
+     "text": {
+      "uz": "Lab → «Ish vositalari» → «Kalibrlash»",
+      "ru": "Лаб. → «Рабочие инструменты» → «Калибровка»",
+      "en": "Lab → “Work tools” → “Calibration”"
+     }
+    },
+    {
+     "id": "cal_top",
+     "route": "/lab/calibration",
+     "action": "«Katalogdan tanlash» ni bosish",
+     "sec": 3.5,
+     "text": {
+      "uz": "1-qadam — apparat: «Katalogdan tanlash»",
+      "ru": "Шаг 1 — прибор: «Выбрать из каталога»",
+      "en": "Step 1 — instrument: “Choose from catalog”"
+     }
+    },
+    {
+     "id": "cal_catalog",
+     "route": "/lab/calibration (katalog oynasi)",
+     "action": "Model nomini yozish, qatorni bosish",
+     "sec": 3.5,
+     "text": {
+      "uz": "Model nomini yozing va ro‘yxatdan tanlang",
+      "ru": "Введите модель и выберите её в списке",
+      "en": "Type the model and pick it from the list"
+     }
+    },
+    {
+     "id": "cal_analyte",
+     "route": "/lab/calibration",
+     "action": "Analitni qidirish va tanlash",
+     "sec": 3.5,
+     "text": {
+      "uz": "2-qadam — analit: masalan, glyukoza",
+      "ru": "Шаг 2 — аналит: например, глюкоза",
+      "en": "Step 2 — analyte: e.g. glucose"
+     }
+    },
+    {
+     "id": "cal_reagent",
+     "route": "/lab/calibration",
+     "action": "REF va IFU kiritish, «Yo‘riqnomani ko‘rsatish»",
+     "sec": 4.5,
+     "text": {
+      "uz": "3-qadam — reagent REF va IFU versiyasi → «Yo‘riqnomani ko‘rsatish»",
+      "ru": "Шаг 3 — REF реагента и версия IFU → «Показать руководство»",
+      "en": "Step 3 — reagent REF and IFU revision → “Show guide”"
+     }
+    },
+    {
+     "id": "cal_guide",
+     "route": "/lab/calibration",
+     "action": "Natija; «Kalibrlash yozuvini yaratish»",
+     "sec": 4.5,
+     "text": {
+      "uz": "Mos yo‘riqnoma: ish ketma-ketligi va hujjatlar manbasi",
+      "ru": "Подходящее руководство: порядок работы и где найти документы",
+      "en": "Matching guidance: the workflow and where to find the documents"
+     }
+    },
+    {
+     "id": "cal_record",
+     "route": "/lab/calibration",
+     "action": "Lot, birlik, qiymat → «Yozuvni saqlash»",
+     "sec": 4.5,
+     "text": {
+      "uz": "Yozuv: kalibrator loti, birlik va qiymat → «Yozuvni saqlash»",
+      "ru": "Запись: лот калибратора, единицы и значение → «Сохранить запись»",
+      "en": "Record: calibrator lot, unit and value → “Save record”"
+     }
+    },
+    {
+     "id": "cal_saved",
+     "route": "/lab/calibration",
+     "action": "Saqlandi xabari",
+     "sec": 3.0,
+     "text": {
+      "uz": "Kalibrlash yozuvi saqlandi",
+      "ru": "Запись калибровки сохранена",
+      "en": "Calibration record saved"
+     }
+    },
+    {
+     "id": "cal_log",
+     "route": "/lab/calibration/log",
+     "action": "Jurnal ekrani",
+     "sec": 4.5,
+     "text": {
+      "uz": "«Kalibrlash jurnali»: yozuv va tarix — faqat shu qurilmada",
+      "ru": "«Журнал калибровок»: запись и история — только на этом устройстве",
+      "en": "“Calibration log”: the record and its history — on this device only"
+     }
+    },
+    {
+     "id": "howto",
+     "route": "/lab/calibration",
+     "action": "«Qanday foydalaniladi?» oynasi ochiq",
+     "sec": 4.5,
+     "text": {
+      "uz": "«Qanday foydalaniladi?» — shu qadamlar ilovaning o‘zida",
+      "ru": "«Как пользоваться?» — эти шаги есть в самом приложении",
+      "en": "“How to use?” — the same steps inside the app"
+     }
+    }
+   ]
+  },
+  {
+   "id": "02_sifat_nazorati",
+   "section": "qc",
+   "title": {
+    "uz": "Sifat nazorati: Levey–Jennings va Westgard",
+    "ru": "Контроль качества: Леви–Дженнингс и Вестгард",
+    "en": "Quality control: Levey–Jennings and Westgard"
+   },
+   "subtitle": {
+    "uz": "To‘plam → seriya → grafik → Westgard",
+    "ru": "Набор → серия → график → Вестгард",
+    "en": "Set → run → chart → Westgard"
+   },
+   "frames": [
+    {
+     "id": "lab_tools",
+     "route": "/lab",
+     "action": "«Sifat nazorati (QC)» ni bosish",
+     "sec": 3.0,
+     "text": {
+      "uz": "Lab → «Sifat nazorati (QC)»",
+      "ru": "Лаб. → «Контроль качества (QC)»",
+      "en": "Lab → “Quality control (QC)”"
+     }
+    },
+    {
+     "id": "qc_empty",
+     "route": "/lab/qc",
+     "action": "Bo‘sh holat",
+     "sec": 3.5,
+     "text": {
+      "uz": "Avval nazorat to‘plamini yarating: «Test qo‘shish»",
+      "ru": "Сначала создайте набор: «Добавить тест»",
+      "en": "First create a control set: “Add test”"
+     }
+    },
+    {
+     "id": "qc_form",
+     "route": "/lab/qc/new",
+     "action": "Forma to‘ldirilgan",
+     "sec": 4.5,
+     "text": {
+      "uz": "Test, birlik, maqsad manbai; har daraja uchun o‘rtacha va SD",
+      "ru": "Тест, единицы, источник целей; среднее и SD для каждого уровня",
+      "en": "Test, unit, target source; mean and SD for each level"
+     }
+    },
+    {
+     "id": "qc_set_empty",
+     "route": "/lab/qc/set/:id",
+     "action": "To‘plam yaratildi",
+     "sec": 3.5,
+     "text": {
+      "uz": "To‘plam tayyor: har daraja uchun Levey–Jennings grafigi",
+      "ru": "Набор готов: график Леви–Дженнингса для каждого уровня",
+      "en": "Set ready: a Levey–Jennings chart for each level"
+     }
+    },
+    {
+     "id": "qc_run_warning",
+     "route": "/lab/qc/set/:id",
+     "action": "2 seriya saqlandi",
+     "sec": 4.0,
+     "text": {
+      "uz": "Seriya natijasini kiriting: 1-2s — ogohlantirish",
+      "ru": "Введите результат серии: 1-2s — предупреждение",
+      "en": "Enter the run result: 1-2s — warning"
+     }
+    },
+    {
+     "id": "qc_run_reject",
+     "route": "/lab/qc/set/:id",
+     "action": "3-seriya saqlandi",
+     "sec": 4.5,
+     "text": {
+      "uz": "1-3s va 2-2s — seriya rad etildi",
+      "ru": "1-3s и 2-2s — серия отклонена",
+      "en": "1-3s and 2-2s — run rejected"
+     }
+    },
+    {
+     "id": "qc_chart",
+     "route": "/lab/qc/set/:id",
+     "action": "Grafikka surish",
+     "sec": 4.0,
+     "text": {
+      "uz": "Grafikda: ● nazoratda ▲ ogohlantirish ■ rad etilgan",
+      "ru": "На графике: ● в пределах ▲ предупреждение ■ отклонено",
+      "en": "On the chart: ● in control ▲ warning ■ rejected"
+     }
+    },
+    {
+     "id": "qc_guides",
+     "route": "/lab/qc",
+     "action": "«Tashqi sifat nazorati (EQA)» ni bosish",
+     "sec": 4.0,
+     "text": {
+      "uz": "«Yo‘riqnomalar»: QC rad etilsa, EQA, kritik qiymatlar",
+      "ru": "«Памятки»: отклонение QC, EQA, критические значения",
+      "en": "“Guides”: rejected QC, EQA, critical values"
+     }
+    },
+    {
+     "id": "qc_eqa",
+     "route": "/lab/qc/eqa",
+     "action": "EQA yo‘riqnomasi",
+     "sec": 4.5,
+     "text": {
+      "uz": "EQA — faqat tushuntirish; ilova EQA dasturiga ulanmaydi",
+      "ru": "EQA — только пояснение; приложение не подключается к программам EQA",
+      "en": "EQA is an explainer only; the app does not connect to EQA schemes"
+     }
+    },
+    {
+     "id": "howto",
+     "route": "/lab/qc",
+     "action": "«Qanday foydalaniladi?» oynasi ochiq",
+     "sec": 4.5,
+     "text": {
+      "uz": "«Qanday foydalaniladi?» — shu qadamlar ilovaning o‘zida",
+      "ru": "«Как пользоваться?» — эти шаги есть в самом приложении",
+      "en": "“How to use?” — the same steps inside the app"
+     }
+    }
+   ]
+  },
+  {
+   "id": "03_preanalitika",
+   "section": "preanalytics",
+   "title": {
+    "uz": "Preanalitika: namuna yo‘li",
+    "ru": "Преаналитика: путь образца",
+    "en": "Preanalytics: the sample’s path"
+   },
+   "subtitle": {
+    "uz": "Tayyorlash → probirka → saqlash → tashish",
+    "ru": "Подготовка → пробирка → хранение → доставка",
+    "en": "Preparation → tube → storage → transport"
+   },
+   "frames": [
+    {
+     "id": "lab_tools",
+     "route": "/lab",
+     "action": "«Preanalitika» ni bosish",
+     "sec": 3.0,
+     "text": {
+      "uz": "Lab → «Preanalitika»",
+      "ru": "Лаб. → «Преаналитика»",
+      "en": "Lab → “Preanalytics”"
+     }
+    },
+    {
+     "id": "pre_top",
+     "route": "/lab/preanalytics",
+     "action": "Sahifa tepasi",
+     "sec": 4.0,
+     "text": {
+      "uz": "5 bosqich: tahlilga tayyorlashdan qabul qilishgacha",
+      "ru": "5 этапов: от подготовки к анализу до приёма",
+      "en": "5 stages: from preparing for the test to receipt"
+     }
+    },
+    {
+     "id": "pre_patient",
+     "route": "/lab/preanalytics",
+     "action": "Bemor tayyorgarligiga surish",
+     "sec": 4.5,
+     "text": {
+      "uz": "Bemor tayyorgarligi — har band manbasi bilan",
+      "ru": "Подготовка пациента — у каждого пункта источник",
+      "en": "Patient preparation — every point with its source"
+     }
+    },
+    {
+     "id": "pre_tubes",
+     "route": "/lab/preanalytics",
+     "action": "Probirkalar tartibiga surish",
+     "sec": 4.5,
+     "text": {
+      "uz": "Probirkalar tartibi (JSST 2010) va qopqoq ranglari",
+      "ru": "Порядок пробирок (ВОЗ 2010) и цвета крышек",
+      "en": "Order of draw (WHO 2010) and cap colours"
+     }
+    },
+    {
+     "id": "pre_more",
+     "route": "/lab/preanalytics",
+     "action": "Pastroqqa surish",
+     "sec": 4.5,
+     "text": {
+      "uz": "Qaysi tahlilga qaysi probirka — laboratoriyangiz SOP i bilan solishtiring",
+      "ru": "Какая пробирка для какого анализа — сверяйте с СОП вашей лаборатории",
+      "en": "Which tube for which test — check against your lab’s SOP"
+     }
+    },
+    {
+     "id": "howto",
+     "route": "/lab/preanalytics",
+     "action": "«Qanday foydalaniladi?» oynasi ochiq",
+     "sec": 4.5,
+     "text": {
+      "uz": "«Qanday foydalaniladi?» — shu qadamlar ilovaning o‘zida",
+      "ru": "«Как пользоваться?» — эти шаги есть в самом приложении",
+      "en": "“How to use?” — the same steps inside the app"
+     }
+    }
+   ]
+  },
+  {
+   "id": "04_kalkulyatorlar",
+   "section": "calculators",
+   "title": {
+    "uz": "Kalkulyatorlar",
+    "ru": "Калькуляторы",
+    "en": "Calculators"
+   },
+   "subtitle": {
+    "uz": "Tanlash → kiritish → natija → manba",
+    "ru": "Выбор → ввод → результат → источник",
+    "en": "Pick → enter → result → source"
+   },
+   "frames": [
+    {
+     "id": "lab_tools",
+     "route": "/lab",
+     "action": "«Kalkulyatorlar» ni bosish",
+     "sec": 3.0,
+     "text": {
+      "uz": "Lab → «Kalkulyatorlar»",
+      "ru": "Лаб. → «Калькуляторы»",
+      "en": "Lab → “Calculators”"
+     }
+    },
+    {
+     "id": "calc_list",
+     "route": "/lab/calculators",
+     "action": "eGFR qatorini bosish",
+     "sec": 4.0,
+     "text": {
+      "uz": "17 ta kalkulyator: klinik formulalar, qo‘lda usullar, laboratoriya",
+      "ru": "17 калькуляторов: клинические формулы, ручные методы, лабораторные",
+      "en": "17 calculators: clinical formulas, manual methods, laboratory"
+     }
+    },
+    {
+     "id": "calc_egfr",
+     "route": "/lab/calculators/egfr",
+     "action": "Bo‘sh forma",
+     "sec": 3.5,
+     "text": {
+      "uz": "eGFR (CKD-EPI 2021): maydonlar bo‘sh — qiymatni o‘zingiz kiritasiz",
+      "ru": "eGFR (CKD-EPI 2021): поля пустые — значения вводите вы",
+      "en": "eGFR (CKD-EPI 2021): fields start empty — you enter the values"
+     }
+    },
+    {
+     "id": "calc_egfr_input",
+     "route": "/lab/calculators/egfr",
+     "action": "Kreatinin 88, yosh 45; «Erkak» ni bosish",
+     "sec": 4.0,
+     "text": {
+      "uz": "Kreatinin va yosh → jinsni tanlang → «Hisoblash»",
+      "ru": "Креатинин и возраст → пол → «Рассчитать»",
+      "en": "Creatinine and age → sex → “Calculate”"
+     }
+    },
+    {
+     "id": "calc_egfr_result",
+     "route": "/lab/calculators/egfr",
+     "action": "Natija",
+     "sec": 4.0,
+     "text": {
+      "uz": "Natija va KDIGO toifasi; kiritilgan qiymatlar ham ko‘rsatiladi",
+      "ru": "Результат и категория KDIGO; введённые значения тоже видны",
+      "en": "Result and KDIGO category; your inputs are shown too"
+     }
+    },
+    {
+     "id": "calc_egfr_sources",
+     "route": "/lab/calculators/egfr",
+     "action": "Formula va cheklovlarga surish",
+     "sec": 4.0,
+     "text": {
+      "uz": "Formula va cheklovlar — manbalari bilan",
+      "ru": "Формула и ограничения — с источниками",
+      "en": "Formula and limitations — with sources"
+     }
+    },
+    {
+     "id": "howto",
+     "route": "/lab/calculators",
+     "action": "«Qanday foydalaniladi?» oynasi ochiq",
+     "sec": 4.5,
+     "text": {
+      "uz": "«Qanday foydalaniladi?» — shu qadamlar ilovaning o‘zida",
+      "ru": "«Как пользоваться?» — эти шаги есть в самом приложении",
+      "en": "“How to use?” — the same steps inside the app"
+     }
+    }
+   ]
+  },
+  {
+   "id": "05_apparatlar",
+   "section": "instruments",
+   "title": {
+    "uz": "Apparatlar va metodikalar",
+    "ru": "Приборы и методики",
+    "en": "Instruments and methods"
+   },
+   "subtitle": {
+    "uz": "Katalog → model → yo‘nalish kartalari → sxema",
+    "ru": "Каталог → модель → карточки направлений → схема",
+    "en": "Catalog → model → direction cards → schematic"
+   },
+   "frames": [
+    {
+     "id": "lab_tools",
+     "route": "/lab",
+     "action": "«Apparatlar va metodikalar» ni bosish",
+     "sec": 3.0,
+     "text": {
+      "uz": "Lab → «Apparatlar va metodikalar»",
+      "ru": "Лаб. → «Приборы и методики»",
+      "en": "Lab → “Instruments and methods”"
+     }
+    },
+    {
+     "id": "ins_top",
+     "route": "/lab/instruments",
+     "action": "«Gematologiya» ni bosish",
+     "sec": 3.5,
+     "text": {
+      "uz": "Yo‘nalishni tanlang (masalan, gematologiya) yoki qidiring",
+      "ru": "Выберите направление (например, гематология) или найдите модель",
+      "en": "Choose a direction (e.g. hematology) or search"
+     }
+    },
+    {
+     "id": "ins_makers",
+     "route": "/lab/instruments/c/hematology",
+     "action": "Ishlab chiqaruvchini bosish",
+     "sec": 3.0,
+     "text": {
+      "uz": "Ishlab chiqaruvchini tanlang",
+      "ru": "Выберите производителя",
+      "en": "Choose the manufacturer"
+     }
+    },
+    {
+     "id": "ins_models",
+     "route": "/lab/instruments/c/hematology/:maker",
+     "action": "Modelni bosish",
+     "sec": 3.0,
+     "text": {
+      "uz": "Modelni tanlang",
+      "ru": "Выберите модель",
+      "en": "Choose the model"
+     }
+    },
+    {
+     "id": "ins_model",
+     "route": "/lab/instruments/m/:id",
+     "action": "Model kartasi",
+     "sec": 4.0,
+     "text": {
+      "uz": "Model kartasi: sxematik tasvir — aniq model emas",
+      "ru": "Карточка модели: схема, а не точная модель",
+      "en": "Model card: a schematic, not the exact model"
+     }
+    },
+    {
+     "id": "ins_model_actions",
+     "route": "/lab/instruments/m/:id",
+     "action": "Tugmalarga surish",
+     "sec": 4.0,
+     "text": {
+      "uz": "«Mening apparatim sifatida saqlash», so‘ng kalibrlash yoki QC",
+      "ru": "«Сохранить как „Мой прибор“», затем калибровка или QC",
+      "en": "“Save as ‘My instrument’”, then calibration or QC"
+     }
+    },
+    {
+     "id": "ins_directions",
+     "route": "/lab/instruments",
+     "action": "«Bakteriologiya — ma’lumotnoma kartalari» ni bosish",
+     "sec": 4.0,
+     "text": {
+      "uz": "«Laboratoriya yo‘nalishlari (ma’lumotnoma)», masalan, bakteriologiya",
+      "ru": "«Направления лаборатории (справочник)», например, бактериология",
+      "en": "“Laboratory directions (reference)”, e.g. bacteriology"
+     }
+    },
+    {
+     "id": "ins_dir_cards",
+     "route": "/lab/instruments/d/bacteriology",
+     "action": "Kartani bosish",
+     "sec": 3.5,
+     "text": {
+      "uz": "Yo‘nalish kartalari: platforma, test va usul alohida",
+      "ru": "Карточки направления: платформа, тест и метод отдельно",
+      "en": "Direction cards: platform, test and method separately"
+     }
+    },
+    {
+     "id": "ins_card",
+     "route": "/lab/instruments/lc/a3-bac-vitek2-platform",
+     "action": "Karta tepasi",
+     "sec": 4.5,
+     "text": {
+      "uz": "Kartada holati va ogohlantirishlar ochiq yozilgan — o‘quv ma’lumotnomasi",
+      "ru": "В карточке открыто указаны статус и предупреждения — учебный справочник",
+      "en": "The card openly shows its status and notices — a learning reference"
+     }
+    },
+    {
+     "id": "ins_schematic",
+     "route": "/lab/instruments/lc/a3-bac-vitek2-platform",
+     "action": "Sxemaga surish",
+     "sec": 4.0,
+     "text": {
+      "uz": "Apparat sinfi sxemasi — umumiy tasvir, aniq model emas",
+      "ru": "Схема класса приборов — общее изображение, не точная модель",
+      "en": "Instrument-class schematic — a general drawing, not an exact model"
+     }
+    },
+    {
+     "id": "howto",
+     "route": "/lab/instruments",
+     "action": "«Qanday foydalaniladi?» oynasi ochiq",
+     "sec": 4.5,
+     "text": {
+      "uz": "«Qanday foydalaniladi?» — shu qadamlar ilovaning o‘zida",
+      "ru": "«Как пользоваться?» — эти шаги есть в самом приложении",
+      "en": "“How to use?” — the same steps inside the app"
+     }
+    }
+   ]
+  },
+  {
+   "id": "06_mikroskopiya",
+   "section": "microscopy",
+   "title": {
+    "uz": "Mikroskopiya atlasi va mashq",
+    "ru": "Атлас микроскопии и тренировка",
+    "en": "Microscopy atlas and practice"
+   },
+   "subtitle": {
+    "uz": "Bo‘lim → rasm → qidiruv → mashq",
+    "ru": "Раздел → снимок → поиск → тренировка",
+    "en": "Section → image → search → practice"
+   },
+   "frames": [
+    {
+     "id": "lab_sections",
+     "route": "/lab",
+     "action": "«Mikroskopiya atlasi» ni bosish",
+     "sec": 3.0,
+     "text": {
+      "uz": "Lab → «Mikroskopiya atlasi»",
+      "ru": "Лаб. → «Атлас микроскопии»",
+      "en": "Lab → “Microscopy atlas”"
+     }
+    },
+    {
+     "id": "mic_top",
+     "route": "/lab/microscopy",
+     "action": "Atlas tepasi",
+     "sec": 3.5,
+     "text": {
+      "uz": "Qidiruv, «Bu nima?» mashqi va bo‘limlar",
+      "ru": "Поиск, тренировка «Что это?» и разделы",
+      "en": "Search, the “What is it?” practice and sections"
+     }
+    },
+    {
+     "id": "mic_sections",
+     "route": "/lab/microscopy",
+     "action": "«Siydik cho‘kmasi» ni bosish",
+     "sec": 4.0,
+     "text": {
+      "uz": "Bo‘limlar: siydik cho‘kmasi, qon surtmasi, qon parazitlari (bezgak)",
+      "ru": "Разделы: осадок мочи, мазок крови, паразиты крови (малярия)",
+      "en": "Sections: urine sediment, blood film, blood parasites (malaria)"
+     }
+    },
+    {
+     "id": "mic_section",
+     "route": "/lab/microscopy/s/urine",
+     "action": "Rasmni bosish",
+     "sec": 4.0,
+     "text": {
+      "uz": "Litsenziyali mikrofotolar; rasmi hali yo‘q elementlar ham ochiq ko‘rsatilgan",
+      "ru": "Лицензированные снимки; элементы без снимка тоже честно показаны",
+      "en": "Licensed micrographs; items without a picture yet are shown openly"
+     }
+    },
+    {
+     "id": "mic_image",
+     "route": "/lab/microscopy/i/:id",
+     "action": "Rasm kartasi",
+     "sec": 4.0,
+     "text": {
+      "uz": "Rasm kartasi: nomi 3 tilda, litsenziya, asl izoh",
+      "ru": "Карточка снимка: название на 3 языках, лицензия, исходная подпись",
+      "en": "Image card: the name in 3 languages, license, original caption"
+     }
+    },
+    {
+     "id": "mic_search",
+     "route": "/lab/microscopy",
+     "action": "Qidiruvga yozish",
+     "sec": 3.0,
+     "text": {
+      "uz": "Qidiruv: masalan, «oksalat»",
+      "ru": "Поиск: например, «оксалат»",
+      "en": "Search: e.g. “oxalate”"
+     }
+    },
+    {
+     "id": "mic_quiz_setup",
+     "route": "/lab/microscopy/quiz",
+     "action": "«Boshlash» ni bosish",
+     "sec": 3.5,
+     "text": {
+      "uz": "Mashq: bo‘limni tanlang → «Boshlash»",
+      "ru": "Тренировка: выберите раздел → «Начать»",
+      "en": "Practice: choose a section → “Start”"
+     }
+    },
+    {
+     "id": "mic_quiz_q",
+     "route": "/lab/microscopy/quiz",
+     "action": "A variantni bosish",
+     "sec": 3.5,
+     "text": {
+      "uz": "Rasmga qarang va 4 variantdan birini tanlang",
+      "ru": "Посмотрите на снимок и выберите 1 из 4 вариантов",
+      "en": "Look at the image and pick 1 of 4 options"
+     }
+    },
+    {
+     "id": "mic_quiz_answer",
+     "route": "/lab/microscopy/quiz",
+     "action": "Javob",
+     "sec": 4.0,
+     "text": {
+      "uz": "Javob darhol: to‘g‘ri yoki to‘g‘ri javob ko‘rsatiladi",
+      "ru": "Ответ сразу: «верно» или показан правильный ответ",
+      "en": "Instant answer: correct, or the right answer is shown"
+     }
+    },
+    {
+     "id": "howto",
+     "route": "/lab/microscopy",
+     "action": "«Qanday foydalaniladi?» oynasi ochiq",
+     "sec": 4.5,
+     "text": {
+      "uz": "«Qanday foydalaniladi?» — shu qadamlar ilovaning o‘zida",
+      "ru": "«Как пользоваться?» — эти шаги есть в самом приложении",
+      "en": "“How to use?” — the same steps inside the app"
+     }
+    }
+   ]
+  },
+  {
+   "id": "07_najas_parazitologiya",
+   "section": "coprology",
+   "title": {
+    "uz": "Najas tahlili va parazitologiya",
+    "ru": "Копрология и паразитология",
+    "en": "Stool analysis and parasitology"
+   },
+   "subtitle": {
+    "uz": "Namuna → makro → mikro → yashirin qon → parazitlar",
+    "ru": "Проба → макро → микро → скрытая кровь → паразиты",
+    "en": "Sample → macro → micro → occult blood → parasites"
+   },
+   "frames": [
+    {
+     "id": "lab_sections",
+     "route": "/lab",
+     "action": "«Najas tahlili va parazitlar» kartasini bosish",
+     "sec": 3.5,
+     "text": {
+      "uz": "Lab → «Najas tahlili va parazitlar»",
+      "ru": "Лаб. → «Копрология и паразиты»",
+      "en": "Lab → “Stool analysis and parasites”"
+     }
+    },
+    {
+     "id": "copro_top",
+     "route": "/lab/coprology",
+     "action": "Bo‘lim tepasi",
+     "sec": 4.0,
+     "text": {
+      "uz": "Manbalar tepada; bu o‘quv ma’lumotnomasi, tashxis emas",
+      "ru": "Источники — вверху; это учебный справочник, не диагноз",
+      "en": "Sources at the top; a learning reference, not a diagnosis"
+     }
+    },
+    {
+     "id": "copro_rows",
+     "route": "/lab/coprology",
+     "action": "«Namuna yig‘ish» ni bosish",
+     "sec": 4.0,
+     "text": {
+      "uz": "Namuna yig‘ish, makroskopiya, mikroskopiya, yashirin qon, parazitlar",
+      "ru": "Сбор пробы, макроскопия, микроскопия, скрытая кровь, паразиты",
+      "en": "Collection, macroscopy, microscopy, occult blood, parasites"
+     }
+    },
+    {
+     "id": "copro_collect",
+     "route": "/lab/coprology/collect",
+     "action": "Sahifa",
+     "sec": 4.0,
+     "text": {
+      "uz": "«Namuna yig‘ish»: idish va yetkazish — manbali bandlar",
+      "ru": "«Сбор пробы»: контейнер и доставка — пункты с источниками",
+      "en": "“Specimen collection”: container and delivery — referenced points"
+     }
+    },
+    {
+     "id": "copro_micro",
+     "route": "/lab/coprology/micro",
+     "action": "Sahifa",
+     "sec": 3.5,
+     "text": {
+      "uz": "«Koprogramma mikroskopiyasi»: nimani ko‘rasiz",
+      "ru": "«Микроскопия копрограммы»: что видно",
+      "en": "“Coprogram microscopy”: what you see"
+     }
+    },
+    {
+     "id": "copro_micro_more",
+     "route": "/lab/coprology/micro",
+     "action": "Pastga surish",
+     "sec": 4.0,
+     "text": {
+      "uz": "Har element — alohida karta; amaliy protokol (taqdimot)",
+      "ru": "Каждый элемент — отдельная карточка; практический протокол (презентация)",
+      "en": "Each element has its own card; a practical protocol (slides)"
+     }
+    },
+    {
+     "id": "copro_parasites",
+     "route": "/lab/coprology/parasites",
+     "action": "Sahifa",
+     "sec": 3.5,
+     "text": {
+      "uz": "«Ichak parazitlari»: boyitish usullari",
+      "ru": "«Кишечные паразиты»: методы обогащения",
+      "en": "“Intestinal parasites”: concentration methods"
+     }
+    },
+    {
+     "id": "copro_parasites_key",
+     "route": "/lab/coprology/parasites",
+     "action": "Kalitga surish",
+     "sec": 4.0,
+     "text": {
+      "uz": "Tuxum va sistalar kaliti — sxematik rasmlar",
+      "ru": "Ключ яиц и цист — схематические рисунки",
+      "en": "Key to eggs and cysts — schematic drawings"
+     }
+    },
+    {
+     "id": "howto",
+     "route": "/lab/coprology",
+     "action": "«Qanday foydalaniladi?» oynasi ochiq",
+     "sec": 4.5,
+     "text": {
+      "uz": "«Qanday foydalaniladi?» — shu qadamlar ilovaning o‘zida",
+      "ru": "«Как пользоваться?» — эти шаги есть в самом приложении",
+      "en": "“How to use?” — the same steps inside the app"
+     }
+    }
+   ]
+  },
+  {
+   "id": "08_bilim_baholash",
+   "section": "assessment",
+   "title": {
+    "uz": "Bilim va malakani baholash",
+    "ru": "Проверка знаний и компетенций",
+    "en": "Knowledge & Skills Assessment"
+   },
+   "subtitle": {
+    "uz": "Test → mashq → og‘zaki bilet → rivojlanish",
+    "ru": "Тест → практика → устный билет → прогресс",
+    "en": "Test → practice → oral ticket → progress"
+   },
+   "frames": [
+    {
+     "id": "as_profile",
+     "route": "/profile",
+     "action": "«O‘zbekiston» ni bosish",
+     "sec": 5.0,
+     "text": {
+      "uz": "",
+      "ru": "Раздел для Узбекистана: Профиль → «Проверка знаний и компетенций» → «Узбекистан»",
+      "en": "For Uzbekistan: Profile → “Knowledge & Skills Assessment” → “Uzbekistan”"
+     },
+     "langs": [
+      "ru",
+      "en"
+     ]
+    },
+    {
+     "id": "as_learn",
+     "route": "/learn",
+     "action": "Bo‘lim kartasi",
+     "sec": 3.5,
+     "text": {
+      "uz": "O‘rganish → «Bilim va malakani baholash»",
+      "ru": "Обучение → «Проверка знаний и компетенций»",
+      "en": "Learn → “Knowledge & Skills Assessment”"
+     }
+    },
+    {
+     "id": "as_hub",
+     "route": "/learn/toifa",
+     "action": "Bo‘lim tepasi",
+     "sec": 3.5,
+     "text": {
+      "uz": "Kunlik maqsad: savollar yoki bitta bilet; eslatma",
+      "ru": "Цель на день: вопросы или один билет; напоминание",
+      "en": "Daily goal: questions or one ticket; reminder"
+     }
+    },
+    {
+     "id": "as_category",
+     "route": "/learn/toifa",
+     "action": "«1-toifa» ni bosish",
+     "sec": 3.5,
+     "text": {
+      "uz": "Toifangizni tanlang — og‘zaki bilet shu ro‘yxatdan",
+      "ru": "Выберите категорию — устный билет из её списка",
+      "en": "Choose your category — oral tickets come from its list"
+     }
+    },
+    {
+     "id": "as_rows",
+     "route": "/learn/toifa",
+     "action": "«Bilim testi» ni bosish",
+     "sec": 4.0,
+     "text": {
+      "uz": "Bilim testi, mavzu bo‘yicha mashq, og‘zaki bilet, xatolar, rivojlanish",
+      "ru": "Тест знаний, практика по темам, устный билет, ошибки, прогресс",
+      "en": "Knowledge test, topic practice, oral ticket, mistakes, progress"
+     }
+    },
+    {
+     "id": "as_test_setup",
+     "route": "/learn/toifa/test",
+     "action": "Rejim va format",
+     "sec": 3.5,
+     "text": {
+      "uz": "Bilim testi: imtihon yoki mashq rejimi",
+      "ru": "Тест знаний: режим экзамена или практики",
+      "en": "Knowledge test: exam or practice mode"
+     }
+    },
+    {
+     "id": "as_test_q",
+     "route": "/learn/toifa/test/run",
+     "action": "Savol",
+     "sec": 4.0,
+     "text": {
+      "uz": "Rasmiy ro‘yxatdan tasodifiy savollar; savollar xaritasi",
+      "ru": "Случайные вопросы официального списка; официальный текст — на узбекском",
+      "en": "Random questions from the official list; the official text is Uzbek"
+     }
+    },
+    {
+     "id": "as_practice",
+     "route": "/learn/toifa/practice",
+     "action": "«Gemostaz» ni bosish",
+     "sec": 3.5,
+     "text": {
+      "uz": "Mavzu bo‘yicha mashq: mavzuni tanlang",
+      "ru": "Практика по темам: выберите тему",
+      "en": "Topic practice: choose a topic"
+     }
+    },
+    {
+     "id": "as_practice_q",
+     "route": "/learn/toifa/practice/:scope",
+     "action": "B variantni bosish",
+     "sec": 3.0,
+     "text": {
+      "uz": "Javobni tanlang",
+      "ru": "Выберите ответ",
+      "en": "Pick an answer"
+     }
+    },
+    {
+     "id": "as_practice_key",
+     "route": "/learn/toifa/practice/:scope",
+     "action": "Kalit",
+     "sec": 4.0,
+     "text": {
+      "uz": "Darhol: rasmiy kalit va manba",
+      "ru": "Сразу: официальный ключ и источник",
+      "en": "At once: the official key and its source"
+     }
+    },
+    {
+     "id": "as_oral",
+     "route": "/learn/toifa/oral",
+     "action": "«Bilet olish» ni bosish",
+     "sec": 4.0,
+     "text": {
+      "uz": "Og‘zaki bilet: toifangizdan 5 ta savol → «Bilet olish»",
+      "ru": "Устный билет: 5 вопросов вашей категории → «Взять билет»",
+      "en": "Oral ticket: 5 questions from your category → “Draw a ticket”"
+     }
+    },
+    {
+     "id": "as_ticket",
+     "route": "/learn/toifa/oral",
+     "action": "«Javob rejasini ko‘rish» ni bosish",
+     "sec": 4.0,
+     "text": {
+      "uz": "Javobni o‘ylab ko‘ring, so‘ng «Javob rejasini ko‘rish»",
+      "ru": "Обдумайте ответ, затем «Посмотреть план ответа»",
+      "en": "Think your answer through, then “View answer plan”"
+     }
+    },
+    {
+     "id": "as_plan",
+     "route": "/learn/toifa/oral",
+     "action": "Javob rejasi",
+     "sec": 4.0,
+     "text": {
+      "uz": "Javob rejasi (LabGuide tayyorlagan) — o‘zingizni baholang",
+      "ru": "План ответа (подготовлен LabGuide) — оцените себя",
+      "en": "Answer plan (prepared by LabGuide) — rate yourself"
+     }
+    },
+    {
+     "id": "as_progress",
+     "route": "/learn/toifa/progress",
+     "action": "Rivojlanish",
+     "sec": 4.0,
+     "text": {
+      "uz": "Rivojlanish: taxminiy tayyorlik — rasmiy baho emas",
+      "ru": "Прогресс: примерная готовность — не официальная оценка",
+      "en": "Progress: approximate readiness — not an official grade"
+     }
+    },
+    {
+     "id": "howto",
+     "route": "/learn/toifa",
+     "action": "«Qanday foydalaniladi?» oynasi ochiq",
+     "sec": 4.5,
+     "text": {
+      "uz": "«Qanday foydalaniladi?» — shu qadamlar ilovaning o‘zida",
+      "ru": "«Как пользоваться?» — эти шаги есть в самом приложении",
+      "en": "“How to use?” — the same steps inside the app"
+     }
+    }
+   ]
+  },
+  {
+   "id": "09_testlar_natijalar",
+   "section": null,
+   "title": {
+    "uz": "Testlar va natijalar",
+    "ru": "Тесты и результаты",
+    "en": "Tests and results"
+   },
+   "subtitle": {
+    "uz": "Izohli test → imtihon → natija → kunlik savol",
+    "ru": "Тест с объяснениями → экзамен → результат → вопросы дня",
+    "en": "Explained quiz → exam → result → daily questions"
+   },
+   "frames": [
+    {
+     "id": "learn_rows",
+     "route": "/learn",
+     "action": "«Izohli test» ni bosish",
+     "sec": 3.0,
+     "text": {
+      "uz": "O‘rganish → «Izohli test»",
+      "ru": "Обучение → «Тест с объяснениями»",
+      "en": "Learn → “Explained quiz”"
+     }
+    },
+    {
+     "id": "quiz_topics",
+     "route": "/learn/quiz",
+     "action": "«Aralash: 10 ta» ni bosish",
+     "sec": 3.5,
+     "text": {
+      "uz": "Mavzuni tanlang yoki «Aralash: 10 ta tasodifiy savol»",
+      "ru": "Выберите тему или «Вперемешку: 10 случайных вопросов»",
+      "en": "Choose a topic or “Mixed: 10 random questions”"
+     }
+    },
+    {
+     "id": "quiz_q",
+     "route": "/learn/quiz",
+     "action": "Variantni bosish",
+     "sec": 3.0,
+     "text": {
+      "uz": "Javobni tanlang",
+      "ru": "Выберите ответ",
+      "en": "Pick an answer"
+     }
+    },
+    {
+     "id": "quiz_feedback",
+     "route": "/learn/quiz",
+     "action": "Izoh",
+     "sec": 4.5,
+     "text": {
+      "uz": "Darhol izoh: nega to‘g‘ri yoki noto‘g‘ri — manbasi bilan",
+      "ru": "Сразу пояснение: почему верно или неверно — с источником",
+      "en": "Instant explanation: why it is right or wrong — with a source"
+     }
+    },
+    {
+     "id": "exam_setup",
+     "route": "/learn/exam",
+     "action": "Imtihon sozlamalari",
+     "sec": 3.5,
+     "text": {
+      "uz": "Imtihon rejimi: mavzular, savollar soni, vaqt",
+      "ru": "Режим экзамена: темы, число вопросов, время",
+      "en": "Exam mode: topics, number of questions, time"
+     }
+    },
+    {
+     "id": "exam_ready",
+     "route": "/learn/exam",
+     "action": "«Imtihonni boshlash» ni bosish",
+     "sec": 4.0,
+     "text": {
+      "uz": "Savollar va variantlar tasodifiy tartibda → «Imtihonni boshlash»",
+      "ru": "Вопросы и варианты — в случайном порядке → «Начать экзамен»",
+      "en": "Questions and options are shuffled → “Start exam”"
+     }
+    },
+    {
+     "id": "exam_q",
+     "route": "/learn/exam/run",
+     "action": "Savol",
+     "sec": 3.5,
+     "text": {
+      "uz": "Taymer, «Belgilash», «Oldingi» / «Keyingi»",
+      "ru": "Таймер, «Отметить», «Назад» / «Далее»",
+      "en": "Timer, “Bookmark”, “Previous” / “Next”"
+     }
+    },
+    {
+     "id": "exam_finish",
+     "route": "/learn/exam/run",
+     "action": "«Yakunlash» ni tasdiqlash",
+     "sec": 3.0,
+     "text": {
+      "uz": "«Yakunlash» — tasdiqlang",
+      "ru": "«Завершить» — подтвердите",
+      "en": "“Finish” — confirm"
+     }
+    },
+    {
+     "id": "exam_result",
+     "route": "/learn/exam/result/:id",
+     "action": "Natija",
+     "sec": 4.0,
+     "text": {
+      "uz": "Natija: foiz, to‘g‘ri va xato, vaqt",
+      "ru": "Результат: процент, верные и ошибки, время",
+      "en": "Result: percentage, right and wrong, time"
+     }
+    },
+    {
+     "id": "exam_mistakes",
+     "route": "/learn/exam/result/:id",
+     "action": "Xatolar tahliliga surish",
+     "sec": 4.0,
+     "text": {
+      "uz": "Mavzular bo‘yicha natija va xatolar tahlili",
+      "ru": "Результат по темам и разбор ошибок",
+      "en": "Results by topic and a review of mistakes"
+     }
+    },
+    {
+     "id": "daily",
+     "route": "/learn/daily",
+     "action": "Kunlik savol",
+     "sec": 4.0,
+     "text": {
+      "uz": "Kunlik savol: har kuni 5 ta savol",
+      "ru": "Вопросы дня: 5 вопросов каждый день",
+      "en": "Daily questions: 5 questions every day"
+     }
+    }
+   ]
+  },
+  {
+   "id": "10_boshqa_funksiyalar",
+   "section": "differential",
+   "title": {
+    "uz": "Boshqa asosiy bo‘limlar",
+    "ru": "Другие основные разделы",
+    "en": "Other main sections"
+   },
+   "subtitle": {
+    "uz": "Leykoformula · sitologiya · spermogramma · qon guruhi · …",
+    "ru": "Лейкоформула · цитология · спермограмма · группа крови · …",
+    "en": "Differential · cytology · semen · blood group · …"
+   },
+   "frames": [
+    {
+     "id": "lab_top",
+     "route": "/lab",
+     "action": "Lab tabi",
+     "sec": 3.0,
+     "text": {
+      "uz": "Lab: rasmli bo‘limlar va atlaslar",
+      "ru": "Лаб.: разделы и атласы",
+      "en": "Lab: sections and atlases"
+     }
+    },
+    {
+     "id": "diff_hub",
+     "route": "/lab/differential",
+     "action": "«Qanday foydalaniladi?» ni bosish",
+     "sec": 3.5,
+     "text": {
+      "uz": "Har bo‘lim tepasida — «Qanday foydalaniladi?»",
+      "ru": "Вверху каждого раздела — «Как пользоваться?»",
+      "en": "At the top of every section — “How to use?”"
+     }
+    },
+    {
+     "id": "diff_howto",
+     "route": "/lab/differential",
+     "action": "How-to oynasi",
+     "sec": 4.5,
+     "text": {
+      "uz": "Qadamlar va natija — sizning tilingizda, internetsiz",
+      "ru": "Шаги и результат — на вашем языке, без интернета",
+      "en": "Steps and the result — in your language, offline"
+     }
+    },
+    {
+     "id": "diff_count",
+     "route": "/lab/differential/count",
+     "action": "Hisoblagich",
+     "sec": 4.0,
+     "text": {
+      "uz": "Leykoformula: hisoblagich — bosish +1, uzoq bosish −1",
+      "ru": "Лейкоформула: счётчик — нажатие +1, долгое нажатие −1",
+      "en": "Differential: counter — tap +1, long-press −1"
+     }
+    },
+    {
+     "id": "cyto_hub",
+     "route": "/lab/cytology",
+     "action": "Bo‘lim",
+     "sec": 3.5,
+     "text": {
+      "uz": "Sitologiya: hujayralar, tozalik darajasi, Bethesda, mashq",
+      "ru": "Цитология: клетки, степень чистоты, Bethesda, тренировка",
+      "en": "Cytology: cells, cleanliness grade, Bethesda, practice"
+     }
+    },
+    {
+     "id": "cyto_degree",
+     "route": "/lab/cytology/degree",
+     "action": "Tozalik darajasi",
+     "sec": 3.5,
+     "text": {
+      "uz": "Ko‘rganingizni belgilang — ilova darajani ko‘rsatadi",
+      "ru": "Отметьте увиденное — приложение покажет степень",
+      "en": "Mark what you see — the app shows the grade"
+     }
+    },
+    {
+     "id": "sperm_hub",
+     "route": "/lab/spermogram",
+     "action": "Bo‘lim",
+     "sec": 3.5,
+     "text": {
+      "uz": "Spermogramma: JSST 2021 chegaralari, hisoblagich, baholash",
+      "ru": "Спермограмма: пределы ВОЗ 2021, счётчик, оценка",
+      "en": "Semen analysis: WHO 2021 limits, counter, assessment"
+     }
+    },
+    {
+     "id": "bg_hub",
+     "route": "/lab/bloodgroup",
+     "action": "Bo‘lim",
+     "sec": 3.5,
+     "text": {
+      "uz": "Qon guruhi: ABO va RhD, usullar, moslik, xatolar",
+      "ru": "Группа крови: AB0 и RhD, методы, совместимость, ошибки",
+      "en": "Blood grouping: ABO and RhD, methods, compatibility, errors"
+     }
+    },
+    {
+     "id": "histo_hub",
+     "route": "/lab/histology",
+     "action": "Bo‘lim",
+     "sec": 3.0,
+     "text": {
+      "uz": "Gistologiya: to‘qimalar, bo‘yash usullari, mashq",
+      "ru": "Гистология: ткани, методы окраски, тренировка",
+      "en": "Histology: tissues, staining methods, practice"
+     }
+    },
+    {
+     "id": "histo_items",
+     "route": "/lab/histology/items",
+     "action": "To‘qimalar ro‘yxati",
+     "sec": 3.5,
+     "text": {
+      "uz": "Haqiqiy mikrofotolar, har biri asosiy belgi bilan",
+      "ru": "Настоящие микрофотографии с главным признаком",
+      "en": "Real micrographs, each with its key feature"
+     }
+    },
+    {
+     "id": "urin_hub",
+     "route": "/lab/urinalysis",
+     "action": "Bo‘lim",
+     "sec": 3.5,
+     "text": {
+      "uz": "Siydik tahlili: yig‘ish, test-chiziq, cho‘kma, natijani o‘qish",
+      "ru": "Анализ мочи: сбор, тест-полоска, осадок, чтение результата",
+      "en": "Urinalysis: collection, strip, sediment, result reader"
+     }
+    },
+    {
+     "id": "bm_hub",
+     "route": "/lab/bloodmorph",
+     "action": "Bo‘lim",
+     "sec": 3.5,
+     "text": {
+      "uz": "Qon morfologiyasi: eritrotsitlar, trombotsitlar, anemiya",
+      "ru": "Морфология крови: эритроциты, тромбоциты, анемия",
+      "en": "Blood morphology: red cells, platelets, anaemia"
+     }
+    },
+    {
+     "id": "coag_hub",
+     "route": "/lab/coagulogram",
+     "action": "Bo‘lim",
+     "sec": 3.5,
+     "text": {
+      "uz": "Koagulogramma: testlar, namuna, natijani o‘qish, DIC bali",
+      "ru": "Коагулограмма: тесты, проба, чтение результата, балл ДВС",
+      "en": "Coagulogram: tests, sample, result reading, DIC score"
+     }
+    },
+    {
+     "id": "profile",
+     "route": "/profile",
+     "action": "Profil",
+     "sec": 4.0,
+     "text": {
+      "uz": "Profil: til, birliklar, mavzu va bo‘lim ko‘rinishi",
+      "ru": "Профиль: язык, единицы, оформление и видимость раздела",
+      "en": "Profile: language, units, theme and section visibility"
+     }
+    }
+   ]
+  }
+ ]
+}

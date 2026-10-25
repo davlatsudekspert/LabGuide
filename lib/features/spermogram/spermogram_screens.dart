@@ -17,6 +17,8 @@ import '../tools/sources_panel.dart';
 import '../tools/tool_screens.dart' show formatResult, parseFieldNumber;
 import 'spermogram_content.dart';
 import 'spermogram_logic.dart';
+import '../howto/howto_registry.dart';
+import '../howto/howto_widgets.dart';
 
 const spermBase = '/lab/spermogram';
 const spermCardImage = 'assets/spermogram/card.png';
@@ -94,6 +96,7 @@ class SpermogramScreen extends StatelessWidget {
       title: l.spermTitle,
       subtitle: context.tr(SpermL.subtitle),
       children: [
+        const HowToButton(HowToSection.spermogram),
         Center(
           child: ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 220),

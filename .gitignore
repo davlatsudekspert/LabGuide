@@ -58,3 +58,6 @@ app.*.map.json
 
 # Generated slide decks (tool/slides/make_topic_decks.py) are not committed
 *.pptx
+
+# Video qo‘llanma kadrlari (tool/video/howto_walk_test.dart)
+/tool/video/out/

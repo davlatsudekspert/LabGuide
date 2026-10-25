@@ -13,6 +13,8 @@ import '../tools/calc_info.dart';
 import '../tools/clinical_calc_screens.dart';
 import '../tools/sources_panel.dart';
 import 'cytology_content.dart';
+import '../howto/howto_registry.dart';
+import '../howto/howto_widgets.dart';
 
 const cytoBase = '/lab/cytology';
 
@@ -27,6 +29,7 @@ class CytologyScreen extends StatelessWidget {
       title: l.cytoTitle,
       subtitle: l.cytoSubtitle,
       children: [
+        const HowToButton(HowToSection.cytology),
         LgHeroCard(
           image: const AssetImage('assets/cytology/hero.png'),
           title: l.cytoHeroTitle,

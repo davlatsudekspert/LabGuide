@@ -12398,4 +12398,410 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get schemPartsAnalyticalBalanceResult =>
       'The calculated volume of each delivery; comparison with the nominal volume gives the accuracy (systematic error) and repeatability.';
+
+  @override
+  String get howToButton => 'How to use?';
+
+  @override
+  String get howToStepsTitle => 'Steps';
+
+  @override
+  String get howToResultTitle => 'What you get';
+
+  @override
+  String get howToWatchVideo => 'Watch the video';
+
+  @override
+  String get howToCalibrationStep1 =>
+      '“1. Instrument”: choose the model from the catalog or add an instrument that isn’t listed.';
+
+  @override
+  String get howToCalibrationStep2 =>
+      '“2. Analyte”: type the test name (e.g. glucose) and pick it from the list.';
+
+  @override
+  String get howToCalibrationStep3 =>
+      '“3. Reagent”: enter the manufacturer, REF number and IFU revision.';
+
+  @override
+  String get howToCalibrationStep4 =>
+      'Tap “Show guide” — the app checks the match and shows the matching guidance.';
+
+  @override
+  String get howToCalibrationStep5 =>
+      '“Create a calibration record”: enter the lot, values and outcome, then save the record.';
+
+  @override
+  String get howToCalibrationStep6 =>
+      'All records are in the “Calibration log” and stay on this device only.';
+
+  @override
+  String get howToCalibrationResult =>
+      'Calibration guidance matched to your instrument, analyte and reagent, plus an on-device calibration log.';
+
+  @override
+  String get howToQcStep1 =>
+      '“Add test”: enter the test name, unit and control levels.';
+
+  @override
+  String get howToQcStep2 =>
+      'Enter the target mean and SD for each level — the app never makes them up.';
+
+  @override
+  String get howToQcStep3 =>
+      'After each run, enter the control results and tap “Save run”.';
+
+  @override
+  String get howToQcStep4 =>
+      'Check the Levey–Jennings chart and the Westgard verdict: in control, warning or rejected.';
+
+  @override
+  String get howToQcStep5 =>
+      '“Guides”: what to do when QC is rejected, external quality assessment (EQA) and critical values.';
+
+  @override
+  String get howToQcStep6 =>
+      'Backup: copy your data as text and restore it later.';
+
+  @override
+  String get howToQcResult =>
+      'A Levey–Jennings chart per level and a Westgard verdict for every run — on this device.';
+
+  @override
+  String get howToPreanalyticsStep1 =>
+      'At the top — 5 stages: from preparing for the test to transport and receipt.';
+
+  @override
+  String get howToPreanalyticsStep2 =>
+      'Patient preparation: fasting, medicines, exercise — every point with its source.';
+
+  @override
+  String get howToPreanalyticsStep3 =>
+      'Order of draw: which tube is filled when during venipuncture (with cap colours).';
+
+  @override
+  String get howToPreanalyticsStep4 =>
+      'Further down: separation, storage, transport and receipt conditions.';
+
+  @override
+  String get howToPreanalyticsStep5 =>
+      'Check each point against your laboratory’s SOP.';
+
+  @override
+  String get howToPreanalyticsResult =>
+      'Rules to check before and after sample collection — with sources, on one page.';
+
+  @override
+  String get howToCalculatorsStep1 =>
+      'Pick a calculator: clinical formulas, manual methods or laboratory.';
+
+  @override
+  String get howToCalculatorsStep2 => 'Enter the values and check the units.';
+
+  @override
+  String get howToCalculatorsStep3 =>
+      'If needed, choose a parameter (e.g. sex) and tap “Calculate”.';
+
+  @override
+  String get howToCalculatorsStep4 =>
+      'Read the note and sources under the result: the formula’s limits are there.';
+
+  @override
+  String get howToCalculatorsResult =>
+      'A result computed only from the values you enter — with its formula and source.';
+
+  @override
+  String get howToInstrumentsStep1 =>
+      'Choose a direction: chemistry, hematology, immunochemistry or urine.';
+
+  @override
+  String get howToInstrumentsStep2 =>
+      'Pick the manufacturer and model, or type the model name into search.';
+
+  @override
+  String get howToInstrumentsStep3 =>
+      'Model card: “Save as ‘My instrument’”, then go to calibration or QC.';
+
+  @override
+  String get howToInstrumentsStep4 =>
+      '“Laboratory directions (reference)”: cards for TB, HIV, bacteriology and other directions.';
+
+  @override
+  String get howToInstrumentsStep5 =>
+      'The schematic on a card shows the instrument class in general, not an exact model.';
+
+  @override
+  String get howToInstrumentsResult =>
+      'Reference cards by instrument and direction, schematics and quick access to calibration/QC.';
+
+  @override
+  String get howToMicroscopyStep1 =>
+      'Choose a section: urine sediment, peripheral blood film or blood parasites (malaria).';
+
+  @override
+  String get howToMicroscopyStep2 =>
+      'Tap an image: the card shows key features, author and license.';
+
+  @override
+  String get howToMicroscopyStep3 =>
+      'Type a name into search (e.g. oxalate or neutrophil).';
+
+  @override
+  String get howToMicroscopyStep4 =>
+      '“Start practice”: pick the right name out of 4 options — the answer shows at once.';
+
+  @override
+  String get howToMicroscopyStep5 =>
+      'At the end of a round you see your score and can retry mistakes.';
+
+  @override
+  String get howToMicroscopyResult =>
+      'An atlas of licensed micrographs and a picture practice to check yourself.';
+
+  @override
+  String get howToCoprologyStep1 =>
+      '“Specimen collection”: container, timing, multiple samples, preservative.';
+
+  @override
+  String get howToCoprologyStep2 =>
+      '“Macroscopic examination”: form, colour, reaction, admixtures.';
+
+  @override
+  String get howToCoprologyStep3 =>
+      '“Coprogram microscopy”: a card for each element (muscle fibres, fat, starch and more).';
+
+  @override
+  String get howToCoprologyStep4 =>
+      '“Occult blood”: FIT and guaiac test, preparation, result.';
+
+  @override
+  String get howToCoprologyStep5 =>
+      '“Intestinal parasites”: concentration methods, a key to eggs and cysts (schematic).';
+
+  @override
+  String get howToCoprologyStep6 =>
+      'Below — practical protocols (slides) and test cards.';
+
+  @override
+  String get howToCoprologyResult =>
+      'A coprology reference from collection to result — with sources; it is not a diagnosis.';
+
+  @override
+  String get howToAssessmentStep1 =>
+      'Choose your category (3–2, first or highest) and set a daily goal.';
+
+  @override
+  String get howToAssessmentStep2 =>
+      '“Knowledge test”: a test of random questions from the official list.';
+
+  @override
+  String get howToAssessmentStep3 =>
+      '“Topic practice”: the key and an explanation right after each answer.';
+
+  @override
+  String get howToAssessmentStep4 =>
+      '“Oral ticket”: draw a ticket, prepare, view the answer plan and rate yourself.';
+
+  @override
+  String get howToAssessmentStep5 =>
+      '“Mistake review” and “Progress”: rework mistakes and follow your results by topic.';
+
+  @override
+  String get howToAssessmentStep6 =>
+      'The section is for Uzbekistan: in Uzbek, or Profile → “Knowledge & Skills Assessment” → “Uzbekistan”.';
+
+  @override
+  String get howToAssessmentResult =>
+      'Practice on the official question list, your results and a review of mistakes — to check your own knowledge.';
+
+  @override
+  String get howToDifferentialStep1 =>
+      '“Cell identification”: size, nucleus, cytoplasm and granules of each cell.';
+
+  @override
+  String get howToDifferentialStep2 =>
+      '“Start counting”: tap +1, long-press −1; 100 or 200 cells.';
+
+  @override
+  String get howToDifferentialStep3 =>
+      'When done, save the result to history — “Saved results”, on this device only.';
+
+  @override
+  String get howToDifferentialStep4 =>
+      '“Differential: absolute counts”: absolute numbers from WBC and percentages.';
+
+  @override
+  String get howToDifferentialStep5 =>
+      'Build your skills with “Interpretation” and the “Which cell is this?” practice.';
+
+  @override
+  String get howToDifferentialResult =>
+      'A percentage differential, results saved on the device, interpretation notes and practice.';
+
+  @override
+  String get howToCytologyStep1 =>
+      '“Cells and organisms”: a drawing and the key feature of each item.';
+
+  @override
+  String get howToCytologyStep2 =>
+      '“Vaginal smear cleanliness grade”: mark what you see — the app shows the grade.';
+
+  @override
+  String get howToCytologyStep3 =>
+      '“The Bethesda system”: what a Pap report means.';
+
+  @override
+  String get howToCytologyStep4 =>
+      'Sample adequacy, reactive changes and the maturation index — on separate pages.';
+
+  @override
+  String get howToCytologyStep5 => '“Which cell is this?”: a picture practice.';
+
+  @override
+  String get howToCytologyResult =>
+      'A learning reference for the gynaecological smear, the cleanliness grade and practice; not a diagnosis.';
+
+  @override
+  String get howToSpermogramStep1 =>
+      '“Key parameters”: the WHO 2021 lower reference limits.';
+
+  @override
+  String get howToSpermogramStep2 =>
+      '“Counter”: count motility and morphology.';
+
+  @override
+  String get howToSpermogramStep3 =>
+      '“Assess a result”: enter the values — they are compared with the WHO limits.';
+
+  @override
+  String get howToSpermogramStep4 =>
+      '“Terms” and “Pre-analytics”: oligo-, astheno-, terato-; abstinence, collection, delivery.';
+
+  @override
+  String get howToSpermogramStep5 =>
+      '“Practice”: check your knowledge with questions.';
+
+  @override
+  String get howToSpermogramResult =>
+      'A result compared with the WHO 2021 limits, terms and practice — a learning reference.';
+
+  @override
+  String get howToBloodGroupStep1 =>
+      '“ABO and RhD basics”: antigens, antibodies, forward and reverse grouping.';
+
+  @override
+  String get howToBloodGroupStep2 =>
+      '“Methods” and “Compatibility”: slide, tube, gel card; compatibility testing.';
+
+  @override
+  String get howToBloodGroupStep3 =>
+      '“Discrepancies and errors”: forward/reverse mismatch, weak D.';
+
+  @override
+  String get howToBloodGroupStep4 =>
+      '“Reaction pattern reader”: mark the results — the app shows a learning interpretation.';
+
+  @override
+  String get howToBloodGroupStep5 =>
+      '“Practice”; transfusion decisions follow your local protocol only.';
+
+  @override
+  String get howToBloodGroupResult =>
+      'A learning reference on ABO and RhD and a learning interpretation of reaction patterns.';
+
+  @override
+  String get howToHistologyStep1 =>
+      '“Tissues and organs”: epithelium, connective, muscle, nerve; liver, kidney.';
+
+  @override
+  String get howToHistologyStep2 =>
+      'Open an image: a real micrograph, the key feature and what to look at.';
+
+  @override
+  String get howToHistologyStep3 =>
+      '“Staining methods”: H&E, Masson, elastic, silver, PAS, LFB.';
+
+  @override
+  String get howToHistologyStep4 =>
+      '“Which tissue is this?”: a picture practice.';
+
+  @override
+  String get howToHistologyStep5 =>
+      '“Picture credits”: the author and license of every image.';
+
+  @override
+  String get howToHistologyResult =>
+      'A tissue atlas with licensed micrographs, staining methods and practice.';
+
+  @override
+  String get howToUrinalysisStep1 =>
+      '“Collection and preservation”: morning sample, midstream, timing, refrigeration.';
+
+  @override
+  String get howToUrinalysisStep2 =>
+      '“Physical properties”: colour, clarity, odour, specific gravity.';
+
+  @override
+  String get howToUrinalysisStep3 =>
+      '“Strip test (chemical examination)”: 10 pads — meaning, interferences, confirmation.';
+
+  @override
+  String get howToUrinalysisStep4 =>
+      '“Sediment microscopy”: cells, casts, crystals, organisms.';
+
+  @override
+  String get howToUrinalysisStep5 =>
+      '“Result reader” and “Practice: what is this?” — check yourself.';
+
+  @override
+  String get howToUrinalysisResult =>
+      'A step-by-step urinalysis reference, a result reader and practice.';
+
+  @override
+  String get howToBloodMorphStep1 =>
+      '“The normal red cell and what to look at”: size, colour, shape, inclusions.';
+
+  @override
+  String get howToBloodMorphStep2 =>
+      '“Red cell changes”: picture cards — what you see and what it may point to.';
+
+  @override
+  String get howToBloodMorphStep3 =>
+      '“Platelets” and “Reticulocytes”: counting principles and artefacts.';
+
+  @override
+  String get howToBloodMorphStep4 =>
+      '“Anaemia classification helper”: Hb, MCV, RDW → morphological group.';
+
+  @override
+  String get howToBloodMorphStep5 =>
+      '“Practice: which change is this?” — picture and knowledge questions.';
+
+  @override
+  String get howToBloodMorphResult =>
+      'A picture reference for the peripheral blood film, an anaemia helper and practice.';
+
+  @override
+  String get howToCoagulogramStep1 =>
+      '“What each test measures”: PT/INR, APTT, thrombin time, fibrinogen, D-dimer.';
+
+  @override
+  String get howToCoagulogramStep2 =>
+      '“Sample requirements”: 3.2% citrate, 9:1 ratio, timing, pre-analytical errors.';
+
+  @override
+  String get howToCoagulogramStep3 =>
+      '“Result reading helper”: PT, APTT and platelets → possible causes from the source.';
+
+  @override
+  String get howToCoagulogramStep4 =>
+      '“ISTH overt DIC score”: enter the values — the score is calculated.';
+
+  @override
+  String get howToCoagulogramStep5 =>
+      '“Anticoagulant monitoring”: warfarin — INR, heparin — APTT/anti-Xa.';
+
+  @override
+  String get howToCoagulogramResult =>
+      'A hemostasis test reference, a result reading helper and the DIC score — with sources.';
 }

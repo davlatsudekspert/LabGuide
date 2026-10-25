@@ -14,6 +14,8 @@ import '../tools/sources_panel.dart';
 import '../lab/lab_links.dart';
 import 'copro_content.dart';
 import 'copro_scheme.dart';
+import '../howto/howto_registry.dart';
+import '../howto/howto_widgets.dart';
 
 const coproBase = '/lab/coprology';
 const coproCardImage = 'assets/coprology/card.png';
@@ -167,6 +169,7 @@ class CoprologyScreen extends StatelessWidget {
       title: l.coproTitle,
       subtitle: context.tr(CpL.subtitle),
       children: [
+        const HowToButton(HowToSection.coprology),
         Center(
           child: ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 220),

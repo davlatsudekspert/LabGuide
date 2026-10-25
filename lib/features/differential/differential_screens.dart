@@ -22,6 +22,8 @@ import 'differential_content.dart';
 import 'differential_controller.dart';
 import 'differential_quiz.dart';
 import 'differential_sources.dart';
+import '../howto/howto_registry.dart';
+import '../howto/howto_widgets.dart';
 
 /// Leykoformula: mutlaq sonlar kalkulyatori (foizlar + WBC → ×10⁹/L).
 const diffAbsoluteCalcRoute = '/lab/calculators/differential';
@@ -126,6 +128,7 @@ class DifferentialScreen extends StatelessWidget {
         title: l.diffTitle,
         subtitle: l.diffSubtitle,
         children: [
+          const HowToButton(HowToSection.differential),
           LgHeroCard(
             image: AssetImage(cellImage('hero')),
             title: l.diffHeroTitle,

@@ -14,6 +14,8 @@ import 'calculators.dart';
 import 'clinical_calc_screens.dart';
 import 'manual_calc_info.dart';
 import 'manual_calc_screens.dart';
+import '../howto/howto_registry.dart';
+import '../howto/howto_widgets.dart';
 
 /// Natijani lokal formatda ko'rsatish; juda kichik/katta qiymatlar
 /// eksponensial ko'rinishda (0 ga yaxlitlanib "yo'qolmasligi" uchun).
@@ -45,6 +47,7 @@ class CalculatorsScreen extends StatelessWidget {
     return LgPage(
       title: l.calcTitle,
       children: [
+        const HowToButton(HowToSection.calculators),
         LgSectionTitle(l.calcSectionClinical),
         for (final (i, c) in ClinicalCalc.values.indexed)
           LgRow(

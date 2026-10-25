@@ -12461,4 +12461,411 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get schemPartsAnalyticalBalanceResult =>
       'Рассчитанный объём каждой дозы; сравнение с номинальным объёмом даёт оценку точности (систематической погрешности) и воспроизводимости.';
+
+  @override
+  String get howToButton => 'Как пользоваться?';
+
+  @override
+  String get howToStepsTitle => 'Шаги';
+
+  @override
+  String get howToResultTitle => 'Что вы получите';
+
+  @override
+  String get howToWatchVideo => 'Смотреть видео';
+
+  @override
+  String get howToCalibrationStep1 =>
+      '«1. Прибор»: выберите модель из каталога или добавьте прибор, которого нет в списке.';
+
+  @override
+  String get howToCalibrationStep2 =>
+      '«2. Аналит»: введите название анализа (например, глюкоза) и выберите его в списке.';
+
+  @override
+  String get howToCalibrationStep3 =>
+      '«3. Реагент»: укажите производителя, номер REF и версию IFU.';
+
+  @override
+  String get howToCalibrationStep4 =>
+      'Нажмите «Показать руководство» — приложение проверит соответствие и покажет подходящее руководство.';
+
+  @override
+  String get howToCalibrationStep5 =>
+      '«Создать запись калибровки»: введите лот, значения и результат, затем сохраните запись.';
+
+  @override
+  String get howToCalibrationStep6 =>
+      'Все записи — в «Журнале калибровок», хранятся только на этом устройстве.';
+
+  @override
+  String get howToCalibrationResult =>
+      'Руководство по калибровке под ваш прибор, аналит и реагент и журнал калибровок на устройстве.';
+
+  @override
+  String get howToQcStep1 =>
+      '«Добавить тест»: введите название теста, единицы и уровни контроля.';
+
+  @override
+  String get howToQcStep2 =>
+      'Для каждого уровня введите целевое среднее и SD — приложение не придумывает их само.';
+
+  @override
+  String get howToQcStep3 =>
+      'После каждой серии введите результаты контроля и нажмите «Сохранить серию».';
+
+  @override
+  String get howToQcStep4 =>
+      'Смотрите график Леви–Дженнингса и вывод по правилам Вестгарда: в пределах, предупреждение или отклонено.';
+
+  @override
+  String get howToQcStep5 =>
+      '«Памятки»: что делать при отклонении QC, внешний контроль качества (EQA) и критические значения.';
+
+  @override
+  String get howToQcStep6 =>
+      'Резервная копия: данные можно скопировать текстом и затем восстановить.';
+
+  @override
+  String get howToQcResult =>
+      'График Леви–Дженнингса по каждому уровню и вывод по Вестгарду для каждой серии — на этом устройстве.';
+
+  @override
+  String get howToPreanalyticsStep1 =>
+      'Вверху — 5 этапов: от подготовки к анализу до транспортировки и приёма.';
+
+  @override
+  String get howToPreanalyticsStep2 =>
+      'Подготовка пациента: натощак, лекарства, нагрузка — каждый пункт со ссылкой на источник.';
+
+  @override
+  String get howToPreanalyticsStep3 =>
+      'Порядок пробирок: какую пробирку заполнять за какой при венепункции (с цветом крышки).';
+
+  @override
+  String get howToPreanalyticsStep4 =>
+      'Ниже: условия разделения, хранения, транспортировки и приёма.';
+
+  @override
+  String get howToPreanalyticsStep5 =>
+      'Сверяйте каждый пункт с СОП вашей лаборатории.';
+
+  @override
+  String get howToPreanalyticsResult =>
+      'Правила до и после взятия образца — с источниками, на одной странице.';
+
+  @override
+  String get howToCalculatorsStep1 =>
+      'Выберите калькулятор: клинические формулы, ручные методы или лабораторные.';
+
+  @override
+  String get howToCalculatorsStep2 => 'Введите значения и проверьте единицы.';
+
+  @override
+  String get howToCalculatorsStep3 =>
+      'При необходимости выберите параметр (например, пол) и нажмите «Рассчитать».';
+
+  @override
+  String get howToCalculatorsStep4 =>
+      'Прочитайте пояснение и источники под результатом: ограничения формулы — там.';
+
+  @override
+  String get howToCalculatorsResult =>
+      'Результат, рассчитанный только по введённым вами значениям, — с формулой и источником.';
+
+  @override
+  String get howToInstrumentsStep1 =>
+      'Выберите направление: биохимия, гематология, иммунохимия или анализ мочи.';
+
+  @override
+  String get howToInstrumentsStep2 =>
+      'Выберите производителя и модель или введите название модели в поиск.';
+
+  @override
+  String get howToInstrumentsStep3 =>
+      'Карточка модели: «Сохранить как „Мой прибор“», затем переход к калибровке или QC.';
+
+  @override
+  String get howToInstrumentsStep4 =>
+      '«Направления лаборатории (справочник)»: карточки по туберкулёзу, ВИЧ, бактериологии и другим направлениям.';
+
+  @override
+  String get howToInstrumentsStep5 =>
+      'Схема в карточке — общее изображение класса приборов, а не конкретная модель.';
+
+  @override
+  String get howToInstrumentsResult =>
+      'Справочные карточки по приборам и направлениям, схемы и быстрый переход к калибровке/QC.';
+
+  @override
+  String get howToMicroscopyStep1 =>
+      'Выберите раздел: осадок мочи, мазок периферической крови или паразиты крови (малярия).';
+
+  @override
+  String get howToMicroscopyStep2 =>
+      'Нажмите на снимок: в карточке — признаки, автор и лицензия.';
+
+  @override
+  String get howToMicroscopyStep3 =>
+      'Введите название в поиск (например, оксалат или нейтрофил).';
+
+  @override
+  String get howToMicroscopyStep4 =>
+      '«Начать тренировку»: выберите верное название из 4 вариантов — ответ виден сразу.';
+
+  @override
+  String get howToMicroscopyStep5 =>
+      'В конце раунда — результат; ошибки можно повторить.';
+
+  @override
+  String get howToMicroscopyResult =>
+      'Атлас лицензированных микрофотографий и тренировка по снимкам для самопроверки.';
+
+  @override
+  String get howToCoprologyStep1 =>
+      '«Сбор пробы»: контейнер, сроки, несколько проб, консервант.';
+
+  @override
+  String get howToCoprologyStep2 =>
+      '«Макроскопическое исследование»: форма, цвет, реакция, примеси.';
+
+  @override
+  String get howToCoprologyStep3 =>
+      '«Микроскопия копрограммы»: карточка каждого элемента (мышечные волокна, жир, крахмал и др.).';
+
+  @override
+  String get howToCoprologyStep4 =>
+      '«Скрытая кровь»: FIT и гваяковый тест, подготовка, результат.';
+
+  @override
+  String get howToCoprologyStep5 =>
+      '«Кишечные паразиты»: методы обогащения, ключ яиц и цист (схема).';
+
+  @override
+  String get howToCoprologyStep6 =>
+      'Ниже — практические протоколы (презентации) и карточки анализов.';
+
+  @override
+  String get howToCoprologyResult =>
+      'Справочник по копрологии от сбора пробы до результата — с источниками; это не диагноз.';
+
+  @override
+  String get howToAssessmentStep1 =>
+      'Выберите свою категорию (3–2, первая или высшая) и задайте дневную цель.';
+
+  @override
+  String get howToAssessmentStep2 =>
+      '«Тест знаний»: тест из случайных вопросов официального перечня.';
+
+  @override
+  String get howToAssessmentStep3 =>
+      '«Практика по темам»: ключ и пояснение сразу после ответа.';
+
+  @override
+  String get howToAssessmentStep4 =>
+      '«Устный билет»: возьмите билет, подготовьтесь, посмотрите план ответа и оцените себя.';
+
+  @override
+  String get howToAssessmentStep5 =>
+      '«Работа над ошибками» и «Прогресс»: повторяйте ошибки и следите за результатами по темам.';
+
+  @override
+  String get howToAssessmentStep6 =>
+      'Раздел для Узбекистана: на узбекском языке или Профиль → «Проверка знаний и компетенций» → «Узбекистан».';
+
+  @override
+  String get howToAssessmentResult =>
+      'Практика по вопросам официального перечня, ваши результаты и разбор ошибок — для самопроверки знаний.';
+
+  @override
+  String get howToDifferentialStep1 =>
+      '«Как узнать клетку»: размер, ядро, цитоплазма и гранулы каждой клетки.';
+
+  @override
+  String get howToDifferentialStep2 =>
+      '«Начать подсчёт»: нажатие +1, долгое нажатие −1; 100 или 200 клеток.';
+
+  @override
+  String get howToDifferentialStep3 =>
+      'После подсчёта сохраните результат в историю — «Сохранённые результаты», только на этом устройстве.';
+
+  @override
+  String get howToDifferentialStep4 =>
+      '«Лейкоформула: абсолютные числа»: абсолютные значения из WBC и процентов.';
+
+  @override
+  String get howToDifferentialStep5 =>
+      'Закрепите знания: «Интерпретация» и «Тренажёр «Что это за клетка?»».';
+
+  @override
+  String get howToDifferentialResult =>
+      'Лейкоформула в процентах, результаты на устройстве, справка по интерпретации и тренировка.';
+
+  @override
+  String get howToCytologyStep1 =>
+      '«Знакомство с клетками»: рисунок и главный признак каждого элемента.';
+
+  @override
+  String get howToCytologyStep2 =>
+      '«Степень чистоты влагалищного мазка»: отметьте увиденное — приложение покажет степень.';
+
+  @override
+  String get howToCytologyStep3 =>
+      '«Классификация Bethesda»: что означает заключение ПАП-теста.';
+
+  @override
+  String get howToCytologyStep4 =>
+      'Качество образца, реактивные изменения и индекс созревания — на отдельных страницах.';
+
+  @override
+  String get howToCytologyStep5 =>
+      '«Что это за клетка?»: тренировка по рисункам.';
+
+  @override
+  String get howToCytologyResult =>
+      'Учебный справочник по гинекологическому мазку, степень чистоты и тренировка; не диагноз.';
+
+  @override
+  String get howToSpermogramStep1 =>
+      '«Основные показатели»: нижние референсные пределы ВОЗ 2021.';
+
+  @override
+  String get howToSpermogramStep2 =>
+      '«Счётчик»: подсчёт подвижности и морфологии.';
+
+  @override
+  String get howToSpermogramStep3 =>
+      '«Оценка результата»: введите значения — они сравниваются с пределами ВОЗ.';
+
+  @override
+  String get howToSpermogramStep4 =>
+      '«Термины» и «Преаналитика»: олиго-, астено-, терато-; воздержание, сбор, доставка.';
+
+  @override
+  String get howToSpermogramStep5 =>
+      '«Тренировка»: проверьте знания на вопросах.';
+
+  @override
+  String get howToSpermogramResult =>
+      'Результат в сравнении с пределами ВОЗ 2021, термины и тренировка — учебный справочник.';
+
+  @override
+  String get howToBloodGroupStep1 =>
+      '«Основы AB0 и RhD»: антигены, антитела, прямой и обратный метод.';
+
+  @override
+  String get howToBloodGroupStep2 =>
+      '«Методы» и «Совместимость»: плоскость, пробирка, гелевая карта; пробы на совместимость.';
+
+  @override
+  String get howToBloodGroupStep3 =>
+      '«Расхождения и ошибки»: расхождение прямой и обратной реакции, слабый D.';
+
+  @override
+  String get howToBloodGroupStep4 =>
+      '«Чтение картины реакций»: отметьте результаты — приложение покажет учебную интерпретацию.';
+
+  @override
+  String get howToBloodGroupStep5 =>
+      '«Тренировка»; решения по трансфузии — только по местному протоколу.';
+
+  @override
+  String get howToBloodGroupResult =>
+      'Учебный справочник по AB0 и RhD и учебная интерпретация картины реакций.';
+
+  @override
+  String get howToHistologyStep1 =>
+      '«Ткани и органы»: эпителий, соединительная, мышечная, нервная; печень, почка.';
+
+  @override
+  String get howToHistologyStep2 =>
+      'Откройте снимок: настоящая микрофотография, главный признак и на что смотреть.';
+
+  @override
+  String get howToHistologyStep3 =>
+      '«Методы окраски»: H&E, Массон, эластик, серебро, PAS, LFB.';
+
+  @override
+  String get howToHistologyStep4 =>
+      '«Какая это ткань?»: тренировка по снимкам.';
+
+  @override
+  String get howToHistologyStep5 =>
+      '«Авторы снимков»: автор и лицензия каждого снимка.';
+
+  @override
+  String get howToHistologyResult =>
+      'Атлас тканей с лицензированными микрофотографиями, методы окраски и тренировка.';
+
+  @override
+  String get howToUrinalysisStep1 =>
+      '«Сбор и хранение пробы»: утренняя, средняя порция, сроки, охлаждение.';
+
+  @override
+  String get howToUrinalysisStep2 =>
+      '«Физические свойства»: цвет, прозрачность, запах, плотность.';
+
+  @override
+  String get howToUrinalysisStep3 =>
+      '«Тест-полоска (химическое исследование)»: 10 зон — значение, помехи, подтверждение.';
+
+  @override
+  String get howToUrinalysisStep4 =>
+      '«Микроскопия осадка»: клетки, цилиндры, кристаллы, микроорганизмы.';
+
+  @override
+  String get howToUrinalysisStep5 =>
+      '«Чтение результата» и «Тренировка: что это?» — проверьте себя.';
+
+  @override
+  String get howToUrinalysisResult =>
+      'Пошаговый справочник по анализу мочи, помощник чтения результата и тренировка.';
+
+  @override
+  String get howToBloodMorphStep1 =>
+      '«Нормальный эритроцит и на что смотреть»: размер, цвет, форма, включения.';
+
+  @override
+  String get howToBloodMorphStep2 =>
+      '«Изменения эритроцитов»: карточки со снимками — что видно и на что указывает.';
+
+  @override
+  String get howToBloodMorphStep3 =>
+      '«Тромбоциты» и «Ретикулоциты»: принцип подсчёта и артефакты.';
+
+  @override
+  String get howToBloodMorphStep4 =>
+      '«Помощник классификации анемии»: Hb, MCV, RDW → морфологическая группа.';
+
+  @override
+  String get howToBloodMorphStep5 =>
+      '«Тренировка: что это за изменение?» — вопросы по снимкам и знаниям.';
+
+  @override
+  String get howToBloodMorphResult =>
+      'Справочник по мазку периферической крови со снимками, помощник по анемии и тренировка.';
+
+  @override
+  String get howToCoagulogramStep1 =>
+      '«Что измеряет каждый тест»: ПВ/МНО, АЧТВ, тромбиновое время, фибриноген, D-димер.';
+
+  @override
+  String get howToCoagulogramStep2 =>
+      '«Требования к пробе»: цитрат 3,2 %, соотношение 9:1, время, преаналитические ошибки.';
+
+  @override
+  String get howToCoagulogramStep3 =>
+      '«Помощник чтения результата»: ПВ, АЧТВ и тромбоциты → вероятные причины по источнику.';
+
+  @override
+  String get howToCoagulogramStep4 =>
+      '«Балл явного ДВС ISTH»: введите значения — балл будет рассчитан.';
+
+  @override
+  String get howToCoagulogramStep5 =>
+      '«Мониторинг антикоагулянтов»: варфарин — МНО, гепарин — АЧТВ/анти-Xa.';
+
+  @override
+  String get howToCoagulogramResult =>
+      'Справочник по тестам гемостаза, помощник чтения результата и балл ДВС — с источниками.';
 }
