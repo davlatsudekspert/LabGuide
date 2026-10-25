@@ -74,22 +74,22 @@ yo‘l soddalashtirilgan va animatsiya uni “to‘g‘irlamaydi” (nur probirk
 <!-- samples:begin -->
 | Fayl | Davomiylik | O‘lcham, fps | Kodek | Audio | Hajm | sha256 |
 |---|---|---|---|---|---|---|
-| `gc_ms_en.mp4` | 96.00 s | 720×1280, 24 | h264 | 0 | 1.87 MB | `0653bb8af05bf2a3b597564810f8dbe956c2081d73277981122dc0b32e737f8e` |
+| `gc_ms_en.mp4` | 96.00 s | 720×1280, 24 | h264 | 0 | 1.87 MB | `7bea57f2cd232d4bb202db54c56ab29325b2c470cba9b3ce8b32c57fc9ab84c7` |
 | `gc_ms_en.srt` | — | — | srt | — | 1830 B | `04a1ff57e9d2325dad5737dcf4b7c8ea83e433ccd33b89d03bccd9cd9496475a` |
 | `gc_ms_en.vtt` | — | — | vtt | — | 1838 B | `9f3b588e519e26d2d9860296cfefdf08dd725dac776060f09eeb0403f5d01e84` |
-| `gc_ms_ru.mp4` | 96.00 s | 720×1280, 24 | h264 | 0 | 1.92 MB | `89d3ddef63b19cf7ba03cba86a2b19c4ca3acc1082a432fdcaec782b5472bbc3` |
+| `gc_ms_ru.mp4` | 96.00 s | 720×1280, 24 | h264 | 0 | 1.92 MB | `639d6e9c0879db2b8f8ff7a2429bc4dd71b74779a1274f4d12836d2930c289d6` |
 | `gc_ms_ru.srt` | — | — | srt | — | 2847 B | `be2a34cb69afe3b3f04cf559811ddcd33f77f070b6b2e99504973c479d703aea` |
 | `gc_ms_ru.vtt` | — | — | vtt | — | 2855 B | `5cc157a6714fa49890e3e3a0eab7824641d77c155cb1a604e1da67b4dcfb700d` |
-| `gc_ms_uz.mp4` | 96.00 s | 720×1280, 24 | h264 | 0 | 1.90 MB | `a5021f9f7b7acd6f8b93ca10e583e2f74a5b4003a65a40562c5c4517fcdc59d7` |
+| `gc_ms_uz.mp4` | 96.00 s | 720×1280, 24 | h264 | 0 | 1.90 MB | `17fd1262b8a9a5a8cd383c805666c033811d68408f46dfeb589d2d8ee07e9433` |
 | `gc_ms_uz.srt` | — | — | srt | — | 1832 B | `59add21a5c4fa19450bdbd1ead4cfbaa2359670e14ff02f27be69333a9ae40a3` |
 | `gc_ms_uz.vtt` | — | — | vtt | — | 1840 B | `5b593be74b42de5f0f19a7fc9d4ad6e723ee95d3d3519e6ece1b7c52797b5a20` |
-| `real_time_pcr_en.mp4` | 77.00 s | 720×1280, 24 | h264 | 0 | 1.37 MB | `2b53ef0acae490237a4625a9cada4fb3bea78b49ae351a3a23becc5ca7d57f3e` |
+| `real_time_pcr_en.mp4` | 77.00 s | 720×1280, 24 | h264 | 0 | 1.37 MB | `f38a67d1bc8391e56e87d7d9343a16be70f9713d43046bcc56e1f29fd91f522d` |
 | `real_time_pcr_en.srt` | — | — | srt | — | 1609 B | `b44709ba5131250f668755536c0f35bb30ebe9356106c91e6a34618d6972e75f` |
 | `real_time_pcr_en.vtt` | — | — | vtt | — | 1617 B | `d30a62b687a8907bfc975e6d87acf013a4464168cbd336606512df8f5c841bfd` |
-| `real_time_pcr_ru.mp4` | 77.00 s | 720×1280, 24 | h264 | 0 | 1.41 MB | `f7fda3f7014be6b8e9b6ce18237ed871a3c1124c4928fa8ef2d0fa34130abd4a` |
+| `real_time_pcr_ru.mp4` | 77.00 s | 720×1280, 24 | h264 | 0 | 1.40 MB | `161cf1dcc589eaadf5ecd63e2ec5ba66eddc487ca154ffa0ec843a54db3b88b7` |
 | `real_time_pcr_ru.srt` | — | — | srt | — | 2531 B | `1b667d8fad1a29691d484caa2a64eca603cc6cb51244e2ebff4001668620c415` |
 | `real_time_pcr_ru.vtt` | — | — | vtt | — | 2539 B | `bbdd09a9ffd2608baef6e1d858ca8fb4ea902a6bb98311ef2b0459b5e0f2dde4` |
-| `real_time_pcr_uz.mp4` | 77.00 s | 720×1280, 24 | h264 | 0 | 1.38 MB | `a92a0f7908174192e05d8633b5edfb7b76c9edee6fd62e8df57ef0f38e45ce89` |
+| `real_time_pcr_uz.mp4` | 77.00 s | 720×1280, 24 | h264 | 0 | 1.38 MB | `0136f9054e4c2c910d958fe8b3e422ae58edc6c4a81681e81eec6a2266a281be` |
 | `real_time_pcr_uz.srt` | — | — | srt | — | 1640 B | `ec7fab60fdb4045f42c0419a0943063af14d040ac47a5fc84e53e0bc248a35e0` |
 | `real_time_pcr_uz.vtt` | — | — | vtt | — | 1648 B | `060788bc0c5501d7cd556f6b590462c0e391191b0307613610f6965567e2e358` |
 <!-- samples:end -->
