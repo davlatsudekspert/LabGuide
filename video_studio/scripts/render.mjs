@@ -5,7 +5,7 @@
 //   npm run render -- --id calibration --lang en --format vertical
 //   npm run render -- --id calibration --lang all --format all
 //   npm run render -- --id calibration --lang uz --format horizontal --frames 0-89   (quick check)
-//   options: --crf 19  --concurrency 3  --reuse-bundle  --no-subs  --no-thumbs
+//   options: --crf 19  --concurrency 3  --reuse-bundle  --no-subs  --no-thumbs  --thumbs-only
 //
 // Audio: if public/audio/en/<id>.wav + <id>.timing.json exist (English narration
 // for ALL editions), the WAV is muxed as AAC 48 kHz; otherwise the MP4 is silent
@@ -72,7 +72,7 @@ for (const lang of langs) {
     console.log(`[${lang}] subtitles: ${s.cues.length} cues -> ${path.relative(studio, s.srt)}, .vtt`);
   }
   const props = inputProps(id, lang, !args['no-subs']);
-  for (const format of formats) {
+  for (const format of args['thumbs-only'] ? [] : formats) {
     const composition = await selectComposition({serveUrl, id: `${id}-${format}`, inputProps: props, browserExecutable: BROWSER});
     const frameRange = range ?? [0, composition.durationInFrames - 1];
     const n = frameRange[1] - frameRange[0] + 1;

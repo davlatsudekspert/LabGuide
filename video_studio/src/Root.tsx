@@ -7,8 +7,9 @@ import {buildContext, StoryboardVideo} from './framework/StoryboardVideo';
 import type {VideoDef, VideoProps} from './framework/types';
 import {useFonts} from './design/fonts';
 import {calibrationVideo} from './videos/calibration';
+import {leukocyteVideo} from './videos/leukocyte';
 
-export const videos: VideoDef[] = [calibrationVideo];
+export const videos: VideoDef[] = [calibrationVideo, leukocyteVideo];
 
 const defaults: VideoProps = {lang: 'en', timing: null, appFrames: null, subtitles: true};
 

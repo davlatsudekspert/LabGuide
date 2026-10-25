@@ -1,0 +1,103 @@
+{
+  "id": "leukocyte",
+  "version": 1,
+  "status": "EXPERT_REVIEW_PENDING",
+  "title": {
+    "en": "Leukocyte differential count",
+    "ru": "Подсчёт лейкоформулы",
+    "uz": "Leykoformulani sanash"
+  },
+  "fps": 30,
+  "formats": {
+    "vertical": {"width": 1080, "height": 1920},
+    "horizontal": {"width": 1920, "height": 1080}
+  },
+  "timing": {
+    "_doc": "Same rules as the calibration flagship: placeholder (silent) timing = max(minLineSec, chars / cps); with the English voice the timing manifest public/audio/en/leukocyte.timing.json replaces the estimate for EVERY language edition.",
+    "leadSec": 0.25,
+    "tailSec": 0.35,
+    "gapSec": 0.2,
+    "minLineSec": 1.6,
+    "cps": {"en": 16, "ru": 15, "uz": 14}
+  },
+  "data": {
+    "_doc": "ILLUSTRATIVE COUNT - not a patient result. One 100-cell tally invented for teaching: `sequence` is the order in which cells are met and tapped; every number in the video (class counts, running totals, percentages, absolute counts) is computed in code from `sequence` and `wbc` (video_studio/src/lib/differential.js, cross-checked in Python: video_studio/scripts/crosscheck_leukocyte.py). The real app frames are produced by tapping exactly this sequence in the app (video_studio/flutter_walk/leukocyte_walk_test.dart), so the app computes the same numbers itself. `counts` is a declared check value: the code refuses to run if it does not match `sequence`.",
+    "target": 100,
+    "wbc": 8.0,
+    "wbcUnit": "×10⁹/L",
+    "label": "Demo 1",
+    "classes": ["segmented", "band", "lymphocyte", "monocyte", "eosinophil", "basophil", "other"],
+    "counts": {"segmented": 56, "band": 3, "lymphocyte": 30, "monocyte": 6, "eosinophil": 4, "basophil": 1, "other": 0},
+    "firstTaps": 6,
+    "midAt": 50,
+    "sequence": [
+      "segmented", "lymphocyte", "segmented", "monocyte", "eosinophil", "segmented", "segmented", "segmented", "lymphocyte", "segmented",
+      "lymphocyte", "segmented", "lymphocyte", "segmented", "lymphocyte", "lymphocyte", "segmented", "segmented", "eosinophil", "lymphocyte",
+      "monocyte", "segmented", "segmented", "lymphocyte", "segmented", "segmented", "segmented", "segmented", "lymphocyte", "segmented",
+      "lymphocyte", "basophil", "lymphocyte", "lymphocyte", "segmented", "segmented", "segmented", "segmented", "segmented", "segmented",
+      "band", "lymphocyte", "eosinophil", "segmented", "lymphocyte", "eosinophil", "lymphocyte", "lymphocyte", "lymphocyte", "segmented",
+      "monocyte", "lymphocyte", "segmented", "segmented", "segmented", "segmented", "lymphocyte", "segmented", "lymphocyte", "lymphocyte",
+      "segmented", "lymphocyte", "segmented", "segmented", "segmented", "segmented", "segmented", "lymphocyte", "segmented", "lymphocyte",
+      "lymphocyte", "segmented", "lymphocyte", "band", "segmented", "segmented", "segmented", "segmented", "segmented", "lymphocyte",
+      "segmented", "lymphocyte", "segmented", "monocyte", "segmented", "monocyte", "segmented", "segmented", "segmented", "segmented",
+      "segmented", "segmented", "segmented", "lymphocyte", "lymphocyte", "monocyte", "segmented", "segmented", "segmented", "band"
+    ],
+    "hook": {"_doc": "Hook only: two pencil tallies that disagree (illustrative). No result is derived from them.", "a": 87, "b": 97}
+  },
+  "scenes": [
+    {"id": "hook", "layer": "hook", "lines": ["L01", "L02"], "minSec": 4.2},
+    {"id": "field", "layer": "field", "lines": ["L03", "L04"], "minSec": 7.0},
+    {"id": "cells_gran", "layer": "cells", "lines": ["L05", "L06", "L07", "L08"], "minSec": 14.0,
+      "props": {"focus": ["segmented", "band", "eosinophil", "basophil"], "step": "02"}},
+    {"id": "cells_mono", "layer": "cells", "lines": ["L09", "L10"], "minSec": 7.0,
+      "props": {"focus": ["lymphocyte", "monocyte"], "step": "02"}},
+    {"id": "track", "layer": "track", "lines": ["L11", "L12"], "minSec": 9.0},
+    {"id": "app_tap", "layer": "tapsync", "lines": ["L13", "L14", "L15"], "minSec": 10.0,
+      "props": {"frames": ["d_count0", "d_tap1", "d_tap2", "d_tap3", "d_tap4", "d_tap5", "d_tap6"], "subZone": "left", "step": "04"}},
+    {"id": "app_target", "layer": "phone", "lines": ["L16", "L17"], "minSec": 6.5,
+      "props": {
+        "step": "05",
+        "shots": [
+          {"frame": "d_half", "w": 1, "mark": "target", "callout": "coHalf", "cue": 0},
+          {"frame": "d_done", "w": 1.2, "mark": "notice", "callout": "coDone", "tone": "ok", "cue": 0},
+          {"frame": "d_blocked", "w": 1, "mark": "snack", "callout": "coBlocked", "tone": "warn", "cue": 1}
+        ],
+        "subZone": "left"
+      }},
+    {"id": "eyes_free", "layer": "phone", "lines": ["L18", "L19"], "minSec": 7.5,
+      "props": {
+        "step": "06",
+        "shots": [
+          {"frame": "ef_settings", "w": 1, "mark": "how", "callout": "coEfHow", "cue": 0},
+          {"frame": "ef_run", "w": 1.2, "mark": "zones", "callout": "coEfZones", "cue": 0},
+          {"frame": "ef_tap", "w": 1, "mark": "zone", "tap": true, "callout": "coEfTap", "tone": "ok", "cue": 1},
+          {"frame": "ef_patterns", "w": 1, "mark": "patterns", "callout": "coEfPatterns", "cue": 1}
+        ],
+        "subZone": "left"
+      }},
+    {"id": "formula", "layer": "percent", "lines": ["L20"], "minSec": 7.0, "props": {"step": "07"}},
+    {"id": "app_result", "layer": "phone", "lines": ["L21", "L22"], "minSec": 9.0,
+      "props": {
+        "step": "08",
+        "shots": [
+          {"frame": "d_result", "w": 1, "mark": "need", "callout": "coResult", "cue": 0},
+          {"frame": "d_wbc", "w": 1.3, "mark": "table", "callout": "coAbs", "tone": "ok", "cue": 0},
+          {"frame": "d_assess", "w": 1, "mark": "note", "callout": "coAssess", "cue": 1},
+          {"frame": "d_limits", "w": 1, "mark": "sub", "callout": "coLimits", "cue": 1}
+        ],
+        "subZone": "left"
+      }},
+    {"id": "app_save", "layer": "phone", "lines": ["L23"], "minSec": 6.5,
+      "props": {
+        "step": "09",
+        "shots": [
+          {"frame": "d_saved", "w": 1, "mark": "snack", "callout": "coSaved", "tone": "ok"},
+          {"frame": "d_copied", "w": 1, "mark": "snack", "callout": "coCopied", "tone": "ok"},
+          {"frame": "d_history", "w": 1.2, "mark": "row", "callout": "coHistory"}
+        ],
+        "subZone": "left"
+      }},
+    {"id": "end", "layer": "cta", "lines": ["L24", "L25"], "minSec": 6.5}
+  ],
+  "thumbnail": {"headlineKey": "thumbHeadline", "subKey": "thumbSub"}
+}

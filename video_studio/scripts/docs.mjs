@@ -48,7 +48,10 @@ const esc = (s) => String(s).replace(/\|/g, '\\|');
 }
 
 // ----------------------------------------------------------------- MATH
-{
+if (id === 'leukocyte') {
+  const {leukocyteAppendix} = await import('./appendix_leukocyte.mjs');
+  fs.writeFileSync(path.join(dir, 'MATH_APPENDIX.md'), leukocyteAppendix({dir, storyboard, math, lines, studio}));
+} else {
   const f = math.fit;
   const r = (v, d = 6) => (Math.abs(v) < 1e-12 ? '0' : v.toFixed(d));
   let md = `# ${storyboard.title.en} — math appendix\n\n`;

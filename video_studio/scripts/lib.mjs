@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {calibrationMath} from '../src/lib/regression.js';
+import {differentialMath, differentialVars} from '../src/lib/differential.js';
 import {buildCues, toSrt, toVtt} from '../src/lib/subtitles.js';
 import {calibrationVars, resolveLines} from '../src/lib/text.js';
 import {layoutScenes, normalizeTiming, placeholderTiming} from '../src/lib/timing.js';
@@ -20,6 +21,7 @@ export const NARRATION_LANG = 'en';
 /** Per-video adapters (math + template vars). Add new videos here. */
 const VIDEO_MATH = {
   calibration: {compute: (sb) => calibrationMath(sb.data), vars: calibrationVars},
+  leukocyte: {compute: (sb) => differentialMath(sb.data), vars: differentialVars},
 };
 
 export function parseArgs(argv) {

@@ -83,6 +83,21 @@ video_studio/
 9. **Paket.** MP4 + SRT/VTT + JPG lar `out/` da qoladi; hech qayerga yuklanmaydi. Tavsifga: "Narration generated
    with AI text-to-speech (Kokoro-82M, Apache-2.0)." (Piper ljspeech ishlatilsa: ovoz ma’lumoti public domain).
 
+### 3a. Ikkinchi flagman: Leykoformula (`docs/video/leukocyte/`) — qayta ishlatiladigan yangi qismlar
+
+* `src/components/Cells.tsx` — leykotsitlar (segment/tayoqcha yadroli neytrofil, eozinofil, bazofil, limfotsit,
+  monotsit) va eritrotsit/trombotsitning **original sxematik** rasmlari, bitta µm masshtabida (`k` px/µm),
+  `CellPortrait` (galereya/thumbnail).
+* `src/components/MicroscopeField.tsx` — okulyar ko‘rish maydoni: protsedural monoqatlam surtma, retikul,
+  stolni siljitish (`center`), halqa bilan ajratish, `trackWorld` (battlement yo‘li bo‘ylab hujayralar).
+* `src/components/PhoneShots.tsx` — umumlashtirilgan “haqiqiy ilova ekranlari” qatlami (`props.step`, `shots`
+  — kalibrlashdagi phone qatlami bilan bir xil xatti-harakat); `layerKit.ts` (`useT`, `txt`, `isV`).
+* `scripts/subcheck.mjs --id <id>` — subtitr tezligi (≤ 17 belgi/s) va qatorlar sonini haqiqiy ovoz vaqti
+  bo‘yicha tekshiradi. `scripts/docs.mjs` video uchun alohida matematika ilovasini chaqiradi
+  (`scripts/appendix_<id>.mjs`), Python tekshiruvi — `scripts/crosscheck_<id>.py`.
+* Walk testi storyboard’dagi ketma-ketlikni (`data.sequence`) ilovaga bosadi — video va ilova raqamlari bitta
+  manbadan; ko‘rinadigan matnda brend so‘zi bo‘lsa test yiqiladi (`_Walk.brandCheck`).
+
 ## 4. Render vaqti va disk
 
 * 4 yadroli mashina, boshqa agentlar Flutter testlarini yurgizayotgan paytda: **~5,5 kadr/s** (concurrency 3) →

@@ -1,0 +1,152 @@
+{
+  "videoId": "leukocyte",
+  "lang": "en",
+  "source": "synthetic narration: tool/tts/synth.py backend=kokoro",
+  "totalSec": 112.633,
+  "lines": [
+    {
+      "id": "L01",
+      "start": 0.25,
+      "end": 2.49
+    },
+    {
+      "id": "L02",
+      "start": 2.69,
+      "end": 6.039
+    },
+    {
+      "id": "L03",
+      "start": 6.639,
+      "end": 11.716
+    },
+    {
+      "id": "L04",
+      "start": 11.916,
+      "end": 14.455
+    },
+    {
+      "id": "L05",
+      "start": 15.055,
+      "end": 20.858
+    },
+    {
+      "id": "L06",
+      "start": 21.058,
+      "end": 25.069
+    },
+    {
+      "id": "L07",
+      "start": 25.269,
+      "end": 29.898
+    },
+    {
+      "id": "L08",
+      "start": 30.098,
+      "end": 33.938
+    },
+    {
+      "id": "L09",
+      "start": 34.538,
+      "end": 38.079
+    },
+    {
+      "id": "L10",
+      "start": 38.279,
+      "end": 43.719
+    },
+    {
+      "id": "L11",
+      "start": 44.319,
+      "end": 49.162
+    },
+    {
+      "id": "L12",
+      "start": 49.362,
+      "end": 53.287
+    },
+    {
+      "id": "L13",
+      "start": 53.887,
+      "end": 57.172
+    },
+    {
+      "id": "L14",
+      "start": 57.372,
+      "end": 60.935
+    },
+    {
+      "id": "L15",
+      "start": 61.135,
+      "end": 64.036
+    },
+    {
+      "id": "L16",
+      "start": 64.636,
+      "end": 69.052
+    },
+    {
+      "id": "L17",
+      "start": 69.252,
+      "end": 71.151
+    },
+    {
+      "id": "L18",
+      "start": 71.751,
+      "end": 75.89
+    },
+    {
+      "id": "L19",
+      "start": 76.09,
+      "end": 81.018
+    },
+    {
+      "id": "L20",
+      "start": 81.618,
+      "end": 88.381
+    },
+    {
+      "id": "L21",
+      "start": 88.981,
+      "end": 93.397
+    },
+    {
+      "id": "L22",
+      "start": 93.597,
+      "end": 99.25
+    },
+    {
+      "id": "L23",
+      "start": 99.85,
+      "end": 102.922
+    },
+    {
+      "id": "L24",
+      "start": 106.35,
+      "end": 109.507
+    },
+    {
+      "id": "L25",
+      "start": 109.707,
+      "end": 112.267
+    }
+  ],
+  "loudness": {
+    "target": {
+      "I": -16,
+      "TP": -2.4,
+      "LRA": 11
+    },
+    "before": {
+      "I": -22.71,
+      "TP": -0.62,
+      "LRA": 1.6
+    },
+    "after": {
+      "I": -16.22,
+      "TP": -2.4,
+      "LRA": 1.8
+    }
+  },
+  "voice": "Kokoro-82M v1.0 int8 ONNX, voice af_heart (Apache-2.0)",
+  "listeningReview": "PENDING — nobody has listened to this voice yet"
+}
