@@ -5,6 +5,7 @@
 //
 //   flutter test tool/screenshots/walk_apparatus_cards_test.dart --update-goldens
 import 'package:flutter_test/flutter_test.dart';
+import 'package:labguide/features/instruments/instrument_catalog.dart';
 import 'package:labguide/features/instruments/lab_direction_card.dart';
 import 'package:labguide/features/settings/settings_controller.dart';
 import 'package:labguide/l10n/gen/app_localizations.dart';
@@ -24,6 +25,9 @@ Future<void> _precacheSchematics(WidgetTester tester) => tester.runAsync(
     final ctx = tester.element(find.byType(Scaffold).first);
     for (final s in LabSchematic.values) {
       await precacheImage(AssetImage(s.asset), ctx);
+      await precacheImage(AssetImage(s.assetLarge), ctx);
+    }
+    for (final s in InstrumentSchematic.values) {
       await precacheImage(AssetImage(s.assetLarge), ctx);
     }
   },
@@ -50,8 +54,82 @@ Future<void> _openCard(WidgetTester tester, String id) async {
   await tester.pumpAndSettle();
 }
 
+/// “Qismlari va ishlash prinsipi” panelini ochib, uch qadamda suratga oladi:
+/// chizma + ochilgan ro‘yxat boshi, ro‘yxat oxiri, prinsip va natija.
+Future<void> _snapPanel(
+  WidgetTester tester,
+  Walk w,
+  String route,
+  String key,
+  String title,
+  String name,
+) async {
+  await goTo(tester, '/lab/instruments');
+  await goTo(tester, route);
+  final panel = find.byKey(ValueKey('schematic-parts-$key'));
+  for (var i = 0; i < 40 && panel.evaluate().isEmpty; i++) {
+    await w.scroll(300);
+  }
+  await tester.ensureVisible(panel);
+  await tester.pumpAndSettle();
+  await w.tap(find.descendant(of: panel, matching: find.text(title)));
+  expect(tester.takeException(), isNull, reason: name);
+  // Chizma (raqamli belgilar) va ro‘yxatning boshi bir ekranda.
+  final fig = find.byWidgetPredicate(
+    (wd) =>
+        wd.key == const ValueKey('lab-card-schematic') ||
+        wd.key == const ValueKey('instrument-schematic'),
+  );
+  await tester.runAsync(() async {});
+  await Scrollable.ensureVisible(tester.element(fig), alignment: 0.02);
+  await tester.pumpAndSettle();
+  await w.snap('${name}_1_rasm_va_qismlar');
+  await tester.ensureVisible(find.byKey(const ValueKey('schematic-part-1')));
+  await w.scroll(220);
+  await w.snap('${name}_2_qismlar');
+  await tester.ensureVisible(
+    find.byKey(const ValueKey('schematic-parts-result')),
+  );
+  await tester.pumpAndSettle();
+  await w.snap('${name}_3_prinsip_natija');
+  expect(tester.takeException(), isNull, reason: name);
+}
+
+const _panelCards = [
+  ('/lab/instruments/lc/a3-tox-gc-ms', 'mass_spec_gc', 'gc_ms'),
+  ('/lab/instruments/lc/a3-bac-vitek2-platform', 'microbial_id_ast', 'vitek2'),
+  ('/lab/instruments/lc/a3-bac-maldi-tof-platform', 'maldi_tof', 'maldi'),
+  ('/lab/instruments/lc/tb-genexpert-platform', 'cartridge_molecular', 'xpert'),
+  ('/lab/instruments/lc/a3-mol-realtime-pcr-platform', 'real_time_pcr', 'pcr'),
+  ('/lab/instruments/m/roche-cobas-c-311', 'chemistry', 'biokimyo_model'),
+];
+
 void main() {
   setUpAll(loadAppFonts);
+
+  // Qismlar paneli (egasi talabi 2026-10-25): uz yorug‘ 390 px va
+  // ru qorong‘i 320 px.
+  for (final (name, lang, code, theme, size) in [
+    (
+      'uz_light_390',
+      AppLanguage.uz,
+      'uz',
+      ThemeMode.light,
+      const Size(390, 844),
+    ),
+    ('ru_dark_320', AppLanguage.ru, 'ru', ThemeMode.dark, const Size(320, 640)),
+  ]) {
+    testWidgets('qismlar paneli — $name', (tester) async {
+      final s = await start(tester, lang: lang, theme: theme, size: size);
+      await tester.runAsync(s.instruments.ensureCatalog);
+      await _precacheSchematics(tester);
+      final l = lookupAppLocalizations(Locale(code));
+      final w = Walk(tester, 'apparatus_parts_$name');
+      for (final (route, key, short) in _panelCards) {
+        await _snapPanel(tester, w, route, key, l.schemPartsPanelTitle, short);
+      }
+    });
+  }
 
   testWidgets('chizmali har karta — uz, yorug‘, 390 px', (tester) async {
     final s = await start(tester);

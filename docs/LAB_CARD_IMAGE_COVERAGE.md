@@ -24,6 +24,13 @@ chizmalar — `tool/illustrations/schematic/gen.py` (L1–L25), fayllar
 `docs/SCHEMATICS_PROVENANCE.md`. Qorovul: `test/guards/lab_card_schematic_guard_test.dart`
 (yangi ommaviy karta shu jadvalda bo‘lmasa yoki rasmi/istisno sababi bo‘lmasa — xato).
 
+Qism belgilari (2026-10-25): har bir chizmada asosiy qismlar raqamlangan
+(1..n); chizma ostida yig‘ilgan “Qismlari va ishlash prinsipi” paneli
+(`SchematicPartsPanel`) — qism nomi va vazifasi, ishlash prinsipi, natija.
+Ma’lumot: `assets/instruments/schematic_parts.json` + ARB `schemParts*`;
+manbalar — `docs/SCHEMATIC_PARTS_SOURCES.md`; qorovul —
+`test/guards/schematic_parts_guard_test.dart`.
+
 Jami: 45 ta ommaviy karta — 35 tasida sxematik chizma, 10 tasi istisno;
 25 ta yangi sinf chizmasi.
 
