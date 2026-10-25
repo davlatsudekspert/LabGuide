@@ -9,12 +9,12 @@ Bu jadval `python3 tool/video/report.py` bilan ffprobe va sha256 orqali o‘lcha
 
 | Fayl | Til | Davomiylik | O‘lcham | Kodek, fps | Audio | Hajm | sha256 |
 |---|---|---|---|---|---|---|---|
-| `01_kalibrlash_uz.mp4` | uz | 45.5 s | 720×1280 | h264, 24 | yo‘q (0 oqim) | 1.30 MB | `4a3b91c806a57dbc602925e5e33f5d30abf2805f639ed754310dc113355e0dd4` |
-| `01_kalibrlash_ru.mp4` | ru | 45.5 s | 720×1280 | h264, 24 | yo‘q (0 oqim) | 1.34 MB | `484e4a25dfc6549f9c906d50757ca1d5743e1d174d7106a0b257dcf94dcd8525` |
-| `01_kalibrlash_en.mp4` | en | 45.5 s | 720×1280 | h264, 24 | yo‘q (0 oqim) | 1.23 MB | `81c2a817519580aba8ee32fae96bd8da967c064bfec1499a4e833c01a4613639` |
-| `02_sifat_nazorati_uz.mp4` | uz | 46.0 s | 720×1280 | h264, 24 | yo‘q (0 oqim) | 1.28 MB | `55c01847c66d112b9d65b62915aa73429016ad5ce9149fdaffa9fad33a4f373d` |
-| `02_sifat_nazorati_ru.mp4` | ru | 46.0 s | 720×1280 | h264, 24 | yo‘q (0 oqim) | 1.32 MB | `831502aaae90c75dfadae76700e80c9968a333e552f5870d4086bf42e8079e2c` |
-| `02_sifat_nazorati_en.mp4` | en | 46.0 s | 720×1280 | h264, 24 | yo‘q (0 oqim) | 1.21 MB | `136663858e2135648c8084ba132bc658b09b3e0aa3e697856f99ac65a64b4401` |
+| `01_kalibrlash_uz.mp4` | uz | 45.5 s | 720×1280 | h264, 24 | yo‘q (0 oqim) | 1.31 MB | `6146fd8794d4d3afef269a91901fa174cbe9f62b562b24336044354ebcd2fda7` |
+| `01_kalibrlash_ru.mp4` | ru | 45.5 s | 720×1280 | h264, 24 | yo‘q (0 oqim) | 1.34 MB | `95c731cd1bff319a1158a6d72a025a1a43e70b7164a55818ea518ab97568a372` |
+| `01_kalibrlash_en.mp4` | en | 45.5 s | 720×1280 | h264, 24 | yo‘q (0 oqim) | 1.23 MB | `89afa9c4e4950ce9b761b43d26c4028e477bce96f1f52b403e95f741757de7a8` |
+| `02_sifat_nazorati_uz.mp4` | uz | 46.0 s | 720×1280 | h264, 24 | yo‘q (0 oqim) | 1.28 MB | `0584f01843fe7ee8e88cbdbfddaa480c14bc67e0bdc81cc628c6da292f7d4edd` |
+| `02_sifat_nazorati_ru.mp4` | ru | 46.0 s | 720×1280 | h264, 24 | yo‘q (0 oqim) | 1.32 MB | `c70389d7b13ffdeb17b306cd24f9d441c9ba0dbb0f6077e7a4041166407942e6` |
+| `02_sifat_nazorati_en.mp4` | en | 46.0 s | 720×1280 | h264, 24 | yo‘q (0 oqim) | 1.21 MB | `060353c9d0240a67cbbb2077dfdabca94b22c8ed26a6c6ff566115dad174712e` |
 | `03_preanalitika_uz.mp4` | uz | 31.0 s | 720×1280 | h264, 24 | yo‘q (0 oqim) | 0.97 MB | `cbefd28a146393386a7e9a90a2b3f8c3468c7f7cd254cd58d0bfceba82e2ad88` |
 | `03_preanalitika_ru.mp4` | ru | 31.0 s | 720×1280 | h264, 24 | yo‘q (0 oqim) | 1.03 MB | `121b6ca0fc9caf2dc2466d71ce684f632bedea2ae08c61b1233939ea7e66bc1a` |
 | `03_preanalitika_en.mp4` | en | 31.0 s | 720×1280 | h264, 24 | yo‘q (0 oqim) | 0.95 MB | `9230042fed41dab22d4f5f4063965c92d050b734191d2beb52c2556139671b2b` |
@@ -24,25 +24,27 @@ Bu jadval `python3 tool/video/report.py` bilan ffprobe va sha256 orqali o‘lcha
 | `05_apparatlar_uz.mp4` | uz | 47.0 s | 720×1280 | h264, 24 | yo‘q (0 oqim) | 1.48 MB | `7a44a8a6562575f9fb4f738b8f79db3d6b47ecc4eaa25627c6c35d52b994861f` |
 | `05_apparatlar_ru.mp4` | ru | 47.0 s | 720×1280 | h264, 24 | yo‘q (0 oqim) | 1.53 MB | `9f84449ee03ac50885b043ce31ca1197527bd8044936ec58e73a425d9be89d7e` |
 | `05_apparatlar_en.mp4` | en | 47.0 s | 720×1280 | h264, 24 | yo‘q (0 oqim) | 1.42 MB | `a4296f233564b55aa527c966ca220a4f86d0436d099e1866f2eb2db4192fdc3f` |
-| `06_mikroskopiya_uz.mp4` | uz | 43.0 s | 720×1280 | h264, 24 | yo‘q (0 oqim) | 1.25 MB | `2a181ac935955c28e1190d3d23d9db1a40aef14a2970fdfd84f8bf5d84d3b31d` |
-| `06_mikroskopiya_ru.mp4` | ru | 43.0 s | 720×1280 | h264, 24 | yo‘q (0 oqim) | 1.31 MB | `8342b263c25c9205cc11e3d067801ab0b5cf1d0a5162d02059977972e5303761` |
-| `06_mikroskopiya_en.mp4` | en | 43.0 s | 720×1280 | h264, 24 | yo‘q (0 oqim) | 1.31 MB | `34932338e22b2f245e8c2f6c62670c69b108552ae60c089b5f35f090f0523b5f` |
+| `06_mikroskopiya_uz.mp4` | uz | 50.0 s | 720×1280 | h264, 24 | yo‘q (0 oqim) | 1.49 MB | `dcb72bdf89c8387ebfc1791def4496cd459897833c0a34d204a09a1c58ff5286` |
+| `06_mikroskopiya_ru.mp4` | ru | 50.0 s | 720×1280 | h264, 24 | yo‘q (0 oqim) | 1.48 MB | `76c26c413138b9a2111087e2bdfcf8da9d7d6a439f9bdc0d619e1614bff3e316` |
+| `06_mikroskopiya_en.mp4` | en | 50.0 s | 720×1280 | h264, 24 | yo‘q (0 oqim) | 1.44 MB | `b532cdc3622625fdd8701df818f43d70968ad950dd810393a5551201b928c431` |
 | `07_najas_parazitologiya_uz.mp4` | uz | 41.0 s | 720×1280 | h264, 24 | yo‘q (0 oqim) | 1.39 MB | `418ce51262a4640a97b217d0c336503bd84eeaa2adaeca40f13db9a581edb2f3` |
 | `07_najas_parazitologiya_ru.mp4` | ru | 41.0 s | 720×1280 | h264, 24 | yo‘q (0 oqim) | 1.43 MB | `e850ada13914539f14baf8a08e98ea35aa0d70ffc0a37286231de6bb6f2e5dce` |
 | `07_najas_parazitologiya_en.mp4` | en | 41.0 s | 720×1280 | h264, 24 | yo‘q (0 oqim) | 1.42 MB | `4a860bf77f2e44c96d319d780b4f5250c4a0f6806ebba041bbdcd8f7e969dba7` |
 | `08_bilim_baholash_uz.mp4` | uz | 59.0 s | 720×1280 | h264, 24 | yo‘q (0 oqim) | 1.54 MB | `bc36f70168e060110e5433a26dda04ec3f264c2d1308baec58a56216ff4c6c0b` |
 | `08_bilim_baholash_ru.mp4` | ru | 64.0 s | 720×1280 | h264, 24 | yo‘q (0 oqim) | 1.86 MB | `994744768278698482c2f241c0ce4d14f6a40eb301bc189777a2794e615ae984` |
 | `08_bilim_baholash_en.mp4` | en | 64.0 s | 720×1280 | h264, 24 | yo‘q (0 oqim) | 1.80 MB | `357c20429349d65d37ba44b97b6093857ceecec7e03684302658d82acf11bce3` |
-| `09_testlar_natijalar_uz.mp4` | uz | 46.0 s | 720×1280 | h264, 24 | yo‘q (0 oqim) | 1.40 MB | `3654837ff0ff94f7d7c13bb956fd2d98f7a69ca31d35cccbdab8e02114bafc0e` |
-| `09_testlar_natijalar_ru.mp4` | ru | 46.0 s | 720×1280 | h264, 24 | yo‘q (0 oqim) | 1.41 MB | `0a34d32e6775c1c1d97edcea879e6f6562aa454bdd28548f9bbb6d081bade5e6` |
-| `09_testlar_natijalar_en.mp4` | en | 46.0 s | 720×1280 | h264, 24 | yo‘q (0 oqim) | 1.29 MB | `98ab87ead1dbacd95065b8d813a7f28d6154f41bbac15b978c65484b3cb5e747` |
-| `10_boshqa_funksiyalar_uz.mp4` | uz | 56.0 s | 720×1280 | h264, 24 | yo‘q (0 oqim) | 1.82 MB | `ecc22bce0ef5966a28252a524f0e0b645501c787eae54486b0e037b88de4c63a` |
-| `10_boshqa_funksiyalar_ru.mp4` | ru | 56.0 s | 720×1280 | h264, 24 | yo‘q (0 oqim) | 1.81 MB | `6adbda76f85616be0c45809c77949af8ddfefe13c77b2ac74b5bd22236712ddd` |
-| `10_boshqa_funksiyalar_en.mp4` | en | 56.0 s | 720×1280 | h264, 24 | yo‘q (0 oqim) | 1.78 MB | `a3fee6b34a7e8b49270affdb3f562d8227252cd99ee6786448353bdd0a256ef6` |
+| `09_testlar_natijalar_uz.mp4` | uz | 46.0 s | 720×1280 | h264, 24 | yo‘q (0 oqim) | 1.36 MB | `89fc47474fe9fd388190c550e63ae072ecb8185ca845fb8cb8146bb037f64330` |
+| `09_testlar_natijalar_ru.mp4` | ru | 46.0 s | 720×1280 | h264, 24 | yo‘q (0 oqim) | 1.39 MB | `98c7fd6e1a46f5bc2f0fbfa7b889fbd284d4aaad1926239258ff6346896676cc` |
+| `09_testlar_natijalar_en.mp4` | en | 46.0 s | 720×1280 | h264, 24 | yo‘q (0 oqim) | 1.30 MB | `85413b5847471edde9c632bbd7d334453eeb499d1290c30063b9c5ca60a4acfc` |
+| `10_boshqa_funksiyalar_uz.mp4` | uz | 63.0 s | 720×1280 | h264, 24 | yo‘q (0 oqim) | 1.97 MB | `38e002a38b1020b6d02a4a934599ebacece07221ccc4ceb87951cc575cb3f395` |
+| `10_boshqa_funksiyalar_ru.mp4` | ru | 63.0 s | 720×1280 | h264, 24 | yo‘q (0 oqim) | 1.95 MB | `e4b607ebe7b0d94e699b72319dc818850d5277467efbdec2ceb0932766996533` |
+| `10_boshqa_funksiyalar_en.mp4` | en | 63.0 s | 720×1280 | h264, 24 | yo‘q (0 oqim) | 1.93 MB | `8a3b24f22254279eda599010856f526e179fd4ce387ff20a5b5feb729b83433a` |
 
-Jami: 30 ta MP4, 40.8 MB.
+Jami: 30 ta MP4, 41.8 MB.
 
-## Subtitr fayllari (SRT / VTT)
+## Subtitr va mualliflik fayllari (SRT / VTT / credits.txt)
+
+credits.txt — videoda ko‘rinadigan uchinchi tomon rasmlarining muallifi, litsenziyasi va manba havolasi; video e’lon qilinsa, tavsifga shu matn qo‘shiladi.
 
 | Fayl | Til | Hajm | sha256 |
 |---|---|---|---|
@@ -76,12 +78,15 @@ Jami: 30 ta MP4, 40.8 MB.
 | `05_apparatlar_ru.vtt` | ru | 1658 B | `a120b37f1ab07cddf01f6e40e474ae2fc95cc515484fbb7bd0361a865c80b8b6` |
 | `05_apparatlar_en.srt` | en | 1103 B | `fce560a1d2b31684e40f764bc0b9d6b83ab544a05d6f8a91963be10e49a825d7` |
 | `05_apparatlar_en.vtt` | en | 1111 B | `23f3e1573876c4a7ade822962ff8f258e4bc3715b0f8f1dcb9f4ab282ec535db` |
-| `06_mikroskopiya_uz.srt` | uz | 1048 B | `f9c330254a38c52b8a36933e2ce425299e2f9d753f9d6836d1ba3f76502f49f5` |
-| `06_mikroskopiya_uz.vtt` | uz | 1056 B | `d39f5dab0725d0c2d78315316774e84959de3ee6a02a6a07dd48769ac85a5cc8` |
-| `06_mikroskopiya_ru.srt` | ru | 1522 B | `b39eac3cae8376152e4940b76c555b875362642db0eec7244a229dd1d6f83060` |
-| `06_mikroskopiya_ru.vtt` | ru | 1530 B | `1d6a89ee584e2fa46f7080f37525b045c8d6e8c8b478a7d2dfbe7df70afe3262` |
-| `06_mikroskopiya_en.srt` | en | 1037 B | `4d7fe6b1db49cb8b761ece9effaefb1a76d04046dfb90e22db0ad15a9ff94464` |
-| `06_mikroskopiya_en.vtt` | en | 1045 B | `5d10f9a3a8075604161b986fa1722a1ae24d6e2bbe3fb2e473c1680507bff273` |
+| `06_mikroskopiya_uz.srt` | uz | 1155 B | `a461cbee4609495075b5311a086412b58adf9e455775a6eb86d3f55da1ba9cd9` |
+| `06_mikroskopiya_uz.vtt` | uz | 1163 B | `4f4bb301d532204b51bee843145e12798eafc054a08208901d0c1ee72e2da80f` |
+| `06_mikroskopiya_uz_credits.txt` | uz | 4363 B | `30191891ca73c8f1397bc24feeb08fead03d9276586ce9b3a13ce574605fa921` |
+| `06_mikroskopiya_ru.srt` | ru | 1639 B | `2c51daf1e9d8ea40259e3d727166f01ddc1d0581df681369242ad8ef29121336` |
+| `06_mikroskopiya_ru.vtt` | ru | 1647 B | `cad57bdcff73be90619483ebf118194ace5e4d99a4d5ee058edb44aa61ba8cdd` |
+| `06_mikroskopiya_ru_credits.txt` | ru | 4798 B | `8df3575f57b2bdb82bdda13d79611774f1ff4a298207241d2dca53d21c512bd4` |
+| `06_mikroskopiya_en.srt` | en | 1133 B | `e5434a50ea685a8003d37e0ffb447036c0f99bb0f2fc38600d42e49b75dc4f17` |
+| `06_mikroskopiya_en.vtt` | en | 1141 B | `bca751e428edb2a2f0b32eac31eb270ae72d8d767160e5787c248d4552218e5b` |
+| `06_mikroskopiya_en_credits.txt` | en | 4662 B | `72be7c5cb428998e12ba8eb2ac41ce70169429333153dd2ca9f3396f2504bbbd` |
 | `07_najas_parazitologiya_uz.srt` | uz | 983 B | `3873af1da457e23b2a154217821bf7acc8dfc630e0a7b2c771328efa208af306` |
 | `07_najas_parazitologiya_uz.vtt` | uz | 991 B | `2843673a6f9f58c0e87bc4bb1e12d2a70daa1f2123d076a4bceef42e7f08c17f` |
 | `07_najas_parazitologiya_ru.srt` | ru | 1443 B | `5c4a55ad19f4cf126247962d3925549e11878aa6379f4a8f802aabcbccd291b8` |
@@ -100,9 +105,12 @@ Jami: 30 ta MP4, 40.8 MB.
 | `09_testlar_natijalar_ru.vtt` | ru | 1479 B | `231520f2bcf4fb1fd3106d1bfc8f1cb320bf4918294969044fc5d76f980ad667` |
 | `09_testlar_natijalar_en.srt` | en | 1025 B | `71714da2c9c95281cfdab8cdfee0fcdacc8983613b11b14b81f05b7cb3183da1` |
 | `09_testlar_natijalar_en.vtt` | en | 1033 B | `060fe98479fa5dfa60e33a2c7a0124c7ca00535b07960512f275b8157763f64d` |
-| `10_boshqa_funksiyalar_uz.srt` | uz | 1422 B | `d2fb6b2fde6341900332790095a6673ced23674899e022d7b4be8c5158c85eac` |
-| `10_boshqa_funksiyalar_uz.vtt` | uz | 1430 B | `fa3005d99790237ccf0714f7882a7939f22ebe0908220f7f87dca40f6876a254` |
-| `10_boshqa_funksiyalar_ru.srt` | ru | 1996 B | `7a0aab5bb9d3d9055d7a26aa65a4b3d721aad6dc9e434369892c916d1957cd11` |
-| `10_boshqa_funksiyalar_ru.vtt` | ru | 2004 B | `c255ff44b26374dc2535361ab679f3697c684f99ef053da20e79e93a93ced658` |
-| `10_boshqa_funksiyalar_en.srt` | en | 1355 B | `8a23b4eab3d8de061e8446169e4efe6c20fb82b16be9e48e5003f0a8e2e3eaa5` |
-| `10_boshqa_funksiyalar_en.vtt` | en | 1363 B | `ac7190955772d9e2493fb76fe37afc1d0f31108b3fede01c24b01a76aecb3a10` |
+| `10_boshqa_funksiyalar_uz.srt` | uz | 1535 B | `03e14ea69e0f5f0ea6951010b40479729600865bf981f2fa45fd6a26b157786d` |
+| `10_boshqa_funksiyalar_uz.vtt` | uz | 1543 B | `469b0954f03603ecab34dde862f524a47f9c2b82215b6fb059175a28efc40f37` |
+| `10_boshqa_funksiyalar_uz_credits.txt` | uz | 2918 B | `0cdf0345898abd6f634e873ebe2929e2c29c1c76c71240f6166f6d57c5013e80` |
+| `10_boshqa_funksiyalar_ru.srt` | ru | 2119 B | `5b25a935cfda9316919ac83c313840885e53d14272ab4c47be168fbc4a75973a` |
+| `10_boshqa_funksiyalar_ru.vtt` | ru | 2127 B | `fda20cbeb41a2b5b1030e3ef040186bf35c552c6155d2b1c1b1951718e08b83e` |
+| `10_boshqa_funksiyalar_ru_credits.txt` | ru | 2626 B | `0c6ca8dac35fa6641bf3e6d0db4c023f28fdf878ddcc45725f5839f90de61b2f` |
+| `10_boshqa_funksiyalar_en.srt` | en | 1457 B | `8820ec0555075826555987f782173d1562174db51714fffaea913b63df11579e` |
+| `10_boshqa_funksiyalar_en.vtt` | en | 1465 B | `024d503cdeca1009849e81f9fcec37ddb202a8927b56a2d516c56c1f2deed658` |
+| `10_boshqa_funksiyalar_en_credits.txt` | en | 2896 B | `028331dbd997d1fe6d4e552ddd1f3816578a17903d1bdac946ab48b81dc33649` |

@@ -19,6 +19,7 @@ Faqat ilova kadrlari va PIL bilan chizilgan belgilar ishlatiladi; ovoz yo‘q
 (matnni o‘qiydigan diktor/TTS vositasi yo‘q).
 """
 import argparse
+import csv
 import json
 import os
 import subprocess
@@ -42,6 +43,30 @@ BRAND_SOFT = (207, 231, 218)
 INK = (25, 38, 34)
 MUTED = (86, 104, 97)
 ACCENT = (232, 140, 48)
+
+CREDITS_SEC = 7.0
+PHOTOS_CSV = os.path.join(ROOT, 'docs', 'image_staging', 'IN_APP_PHOTOS_65_2026-10-25.csv')
+LICENSE_URLS = {
+    'CC BY-SA 4.0': 'https://creativecommons.org/licenses/by-sa/4.0/',
+    'CC BY-SA 3.0': 'https://creativecommons.org/licenses/by-sa/3.0/',
+    'CC BY-SA 2.0': 'https://creativecommons.org/licenses/by-sa/2.0/',
+    'CC BY 4.0': 'https://creativecommons.org/licenses/by/4.0/',
+    'CC BY 3.0': 'https://creativecommons.org/licenses/by/3.0/',
+    'CC BY 2.0': 'https://creativecommons.org/licenses/by/2.0/',
+    'CC0 1.0': 'https://creativecommons.org/publicdomain/zero/1.0/',
+    'CDC PHIL': 'terms on the CDC PHIL source page (credit to CDC requested)',
+}
+CREDIT_TEXT = {
+    'uz': ('Rasmlar: mualliflar va litsenziyalar',
+           'Ilova ekranida kichraytirilgan va kesilgan. Manba havolalari: {file} va ilovadagi bo‘lim mualliflari sahifasi.',
+           'Rasmlar mualliflari va litsenziyalari — {file}'),
+    'ru': ('Снимки: авторы и лицензии',
+           'Уменьшены и обрезаны на экране приложения. Ссылки на источники: {file} и страница авторов раздела в приложении.',
+           'Авторы и лицензии снимков — {file}'),
+    'en': ('Images: authors and licenses',
+           'Resized and cropped on the app screen. Source links: {file} and the section’s credits page in the app.',
+           'Image authors and licenses — {file}'),
+}
 
 LABELS = {
     'uz': ('Ovozsiz, subtitrli ekran yozuvi — diktorsiz',
@@ -184,6 +209,9 @@ def card(title, subtitle, label, end=False):
     # Halol yorliq: ovozsiz, diktorsiz.
     lf = font(600, 24)
     tw = d.textlength(label, font=lf)
+    # QA: yorliq va matnlar kadrdan chiqmasin (ru yorlig‘i eng uzun).
+    if tw + 36 > W - 24:
+        sys.exit(f'yorliq kadrga sig‘maydi: {label}')
     d.rounded_rectangle((W / 2 - tw / 2 - 18, 1150, W / 2 + tw / 2 + 18, 1196), 23,
                         outline=BRAND_SOFT, width=2)
     d.text((W // 2, 1173), label, font=lf, fill=BRAND_SOFT, anchor='mm')
@@ -194,6 +222,85 @@ def frames_for(topic, lang):
     return [f for f in topic['frames'] if lang in f.get('langs', ['uz', 'ru', 'en'])]
 
 
+def _photos():
+    with open(PHOTOS_CSV, encoding='utf-8-sig') as f:
+        return {r['fayl']: r for r in csv.DictReader(f)}
+
+
+def credits_for(topic, lang):
+    """Videoda ko‘rinadigan uchinchi tomon rasmlari (IN_APP_PHOTOS ro‘yxatidan),
+    frames.json dagi `assets` bo‘yicha. Kadrlar bo‘lmasa — bo‘sh."""
+    path = os.path.join(FRAMES, lang, topic['id'], 'frames.json')
+    if not os.path.exists(path):
+        return []
+    wanted = {f['id'] for f in frames_for(topic, lang)}
+    used = set()
+    for m in json.load(open(path, encoding='utf-8'))['frames']:
+        if m['id'] in wanted:
+            used.update(m.get('assets', []))
+    photos = _photos()
+    return [photos[a] for a in sorted(used) if a in photos]
+
+
+def credits_file(topic, lang):
+    return f"{topic['id']}_{lang}_credits.txt"
+
+
+def write_credits(topic, lang, out_dir):
+    rows = credits_for(topic, lang)
+    path = os.path.join(out_dir, credits_file(topic, lang))
+    if not rows:
+        if os.path.exists(path):
+            os.remove(path)
+        return None
+    head, note, _ = CREDIT_TEXT[lang]
+    lines = [f"LabGuide — {topic['title'][lang]} ({lang})", head, '',
+             note.format(file=credits_file(topic, lang)), '']
+    for i, r in enumerate(rows, 1):
+        lines += [f"{i}. {r['manba_fayl']}",
+                  f"   Author / Muallif: {r['muallif']}",
+                  f"   Licence: {r['litsenziya']} — {LICENSE_URLS.get(r['litsenziya'], '?')}",
+                  f"   Source: {r['manba']}",
+                  f"   In app: {r['fayl']} (resized/cropped in the screenshot; no other changes)", '']
+    lines.append('The video itself is a screen recording of the LabGuide app; it does not relicense these images.')
+    open(path, 'w', encoding='utf-8').write('\n'.join(lines) + '\n')
+    return path
+
+
+def credits_card(topic, lang, rows):
+    head, note, _ = CREDIT_TEXT[lang]
+    canvas = Image.new('RGBA', (W, H), BRAND + (255,))
+    d = ImageDraw.Draw(canvas)
+    y = 90
+    for ln in wrap(d, head, font(700, 40), W - 80):
+        d.text((40, y), ln, font=font(700, 40), fill=(255, 255, 255))
+        y += 52
+    y += 18
+    for size in (22, 20, 18):
+        f, lh = font(500, size), round(size * 1.3)
+        entries = []
+        for i, r in enumerate(rows, 1):
+            title = r['manba_fayl'].replace('File:', '')
+            if len(title) > 48:
+                title = title[:46] + '…'
+            entries.append(wrap(d, f"{i}. {r['muallif']} — {r['litsenziya']} · {title}", f, W - 80))
+        total = sum(len(e) for e in entries) * lh + len(entries) * 8
+        if y + total < H - 260:
+            break
+    else:
+        sys.exit(f"mualliflar ro‘yxati kartochkaga sig‘maydi: {topic['id']} {lang}")
+    for e in entries:
+        for ln in e:
+            d.text((40, y), ln, font=f, fill=BRAND_SOFT)
+            y += lh
+        y += 8
+    y = max(y + 20, H - 230)
+    for ln in wrap(d, note.format(file=credits_file(topic, lang)), font(500, 22), W - 80):
+        d.text((40, y), ln, font=font(500, 22), fill=(255, 255, 255))
+        y += 30
+    return canvas
+
+
 def timeline(topic, lang):
     """(boshlanish, tugash, matn) — SRT/VTT uchun; video bilan bir xil."""
     cues, t = [], 0.0
@@ -202,6 +309,10 @@ def timeline(topic, lang):
     for f in frames_for(topic, lang):
         cues.append((t, t + f['sec'], f['text'][lang]))
         t += f['sec']
+    if credits_for(topic, lang):
+        cues.append((t, t + CREDITS_SEC,
+                     CREDIT_TEXT[lang][2].format(file=credits_file(topic, lang))))
+        t += CREDITS_SEC
     cues.append((t, t + END, LABELS[lang][1]))
     return cues
 
@@ -247,6 +358,9 @@ def build(topic, lang, out_dir, preview):
         base, (x, y, s) = step_canvas(os.path.join(src_dir, m['file']), m, str(i), f['text'][lang])
         at = None if not m['tap'] else (x + m['tap'][0] * s, y + m['tap'][1] * s)
         segs.append((base, at, f['sec']))
+    rows = credits_for(topic, lang)
+    if rows:
+        segs.append((credits_card(topic, lang, rows), None, CREDITS_SEC))
     segs.append((card(topic['title'][lang], LABELS[lang][1], LABELS[lang][0], end=True), None, END))
 
     if preview:
@@ -302,6 +416,7 @@ def main():
             continue
         for lang in a.lang or ['uz', 'ru', 'en']:
             write_subs(topic, lang, a.out)
+            write_credits(topic, lang, a.out)
             if not a.subs_only:
                 print(build(topic, lang, a.out, a.preview) or f"preview {topic['id']} {lang}", flush=True)
 
