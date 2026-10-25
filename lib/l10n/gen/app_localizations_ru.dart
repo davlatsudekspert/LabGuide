@@ -12891,4 +12891,617 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get howToCoagulogramResult =>
       'Справочник по тестам гемостаза, помощник чтения результата и балл ДВС — с источниками.';
+
+  @override
+  String get proPayTierPro => 'Pro';
+
+  @override
+  String get proPayTierProSub =>
+      'Для лаборантов, врачей, студентов и тех, кто готовится к аттестации';
+
+  @override
+  String get proPayTierTeacher => 'Pro для преподавателя';
+
+  @override
+  String get proPayTierTeacherSub =>
+      'Для преподавателя, который работает с группой: возможности плана «Студент» и панель преподавателя. Раздел «Лаборатория» не входит.';
+
+  @override
+  String get proPayFree =>
+      'Функции, не отмеченные как платные, остаются бесплатными.';
+
+  @override
+  String get proPayFeatQuestions =>
+      'Неограниченные вопросы: практика по темам и мини-тест по карточке';
+
+  @override
+  String get proPayFeatExam => 'Симуляция экзамена (тест на время)';
+
+  @override
+  String get proPayFeatToifa =>
+      'Полный банк аттестационных вопросов: официальный тест и практика по темам';
+
+  @override
+  String get proPayFeatWeak => 'Разбор слабых тем в результатах';
+
+  @override
+  String get proPayFeatAtlas => 'Практика по атласу микроскопии';
+
+  @override
+  String get proPayFeatHistory => 'Полная история результатов';
+
+  @override
+  String get proPayFeatAllPro => 'Всё, что входит в Pro';
+
+  @override
+  String get proPayFeatGroups =>
+      'Группы: добавление студентов, оценки и отчёты по результатам';
+
+  @override
+  String get proPayFeatAssignments => 'Задания для группы (тесты на время)';
+
+  @override
+  String get proPayFeatLecture =>
+      'Режим лекции: автоматическая презентация по теме';
+
+  @override
+  String get proPayFeatLabCount =>
+      'Лейкоформула: подсчёт и сохранение результата';
+
+  @override
+  String get proPayFeatLabAbsolute =>
+      'Лейкоформула: проценты и абсолютные числа';
+
+  @override
+  String get proPayFeatLabEvaluate => 'Лейкоформула: оценка результата';
+
+  @override
+  String get proPayFeatLabSections =>
+      'Разделы лаборатории: цитология, спермограмма, группа крови, гистология, анализ мочи, морфология крови, копрология';
+
+  @override
+  String get proPayFeatLabCoag => 'Коагулограмма';
+
+  @override
+  String get proPayFeatLabInstruments => 'Каталог приборов';
+
+  @override
+  String get proPayFeatLabDirections => 'Карточки по направлениям лаборатории';
+
+  @override
+  String get proPayFeatLabCalibration => 'Калибровка и журнал калибровок';
+
+  @override
+  String get proPayFeatLabQc => 'Контроль качества (QC)';
+
+  @override
+  String get proPayFeatLabCalculators => 'Лабораторные калькуляторы';
+
+  @override
+  String get proPayPlanMonthly => 'Ежемесячно';
+
+  @override
+  String get proPayPlanYearly => 'Ежегодно';
+
+  @override
+  String get proPayUnitDay => 'день';
+
+  @override
+  String get proPayUnitWeek => 'неделя';
+
+  @override
+  String get proPayUnitMonth => 'месяц';
+
+  @override
+  String get proPayUnitYear => 'год';
+
+  @override
+  String proPayDays(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count дня',
+      many: '$count дней',
+      few: '$count дня',
+      one: '$count день',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String proPayWeeks(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count недели',
+      many: '$count недель',
+      few: '$count недели',
+      one: '$count неделя',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String proPayMonths(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count месяца',
+      many: '$count месяцев',
+      few: '$count месяца',
+      one: '$count месяц',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String proPayYears(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count года',
+      many: '$count лет',
+      few: '$count года',
+      one: '$count год',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String proPayPricePer(String price, String period) {
+    return '$price / $period';
+  }
+
+  @override
+  String proPayTrial(String trial, String price) {
+    return '$trial бесплатно, затем $price';
+  }
+
+  @override
+  String get proPayStartTrial => 'Начать бесплатный период';
+
+  @override
+  String get proPaySubscribe => 'Оформить подписку';
+
+  @override
+  String get proPayCurrent => 'Активная подписка';
+
+  @override
+  String get proPayRestore => 'Восстановить покупки';
+
+  @override
+  String get proPayManage => 'Управлять подпиской или отменить её';
+
+  @override
+  String get proPayTerms => 'Условия использования (EULA)';
+
+  @override
+  String get proPayPrivacy => 'Политика конфиденциальности';
+
+  @override
+  String proPayDisclosure(String store) {
+    return 'Подписка продлевается автоматически. Оплата списывается с вашей учётной записи $store при подтверждении покупки (если есть бесплатный период — после его окончания). Если не отменить подписку как минимум за 24 часа до конца текущего периода, она продлится на тот же срок и по той же цене, а оплата будет списана в течение 24 часов до окончания периода. Управлять подпиской и отменить её можно в настройках учётной записи $store. Неиспользованная часть бесплатного периода сгорает при покупке подписки.';
+  }
+
+  @override
+  String get proPayGuestNote =>
+      'Для подписки, восстановления покупки и бесплатного пробного периода нужно войти в аккаунт. Бесплатной частью приложения можно пользоваться без аккаунта.';
+
+  @override
+  String get proPaySignInRequired =>
+      'Чтобы оформить подписку или восстановить покупку, сначала войдите в аккаунт.';
+
+  @override
+  String get proPayLockedPro => 'Эта возможность входит в подписку Pro.';
+
+  @override
+  String get proPayLockedTeacher =>
+      'Эта возможность входит в планы «Преподаватель» и «Премиум».';
+
+  @override
+  String get proPayLockedLab =>
+      'Эта возможность входит в планы «Специалист» и «Премиум».';
+
+  @override
+  String get proPayAllOpen => 'Сейчас все возможности открыты.';
+
+  @override
+  String get proPayTestBuildOpen => 'Тестовая версия: все возможности открыты.';
+
+  @override
+  String proPayStatusTeacher(String date) {
+    return '«Pro для преподавателя» активна · до $date';
+  }
+
+  @override
+  String get proPayStatusTeacherNoEnd => '«Pro для преподавателя» активна';
+
+  @override
+  String get proPayStatusDevice =>
+      'Подписка активна на этом устройстве. Войдите в аккаунт, чтобы она работала и на других устройствах.';
+
+  @override
+  String get proPaySuccess => 'Подписка активирована. Спасибо!';
+
+  @override
+  String get proPayRestored => 'Покупка восстановлена.';
+
+  @override
+  String get proPayPending =>
+      'Ожидается подтверждение оплаты. После подтверждения подписка откроется автоматически.';
+
+  @override
+  String get proPayNothingFound =>
+      'Активная подписка для восстановления не найдена.';
+
+  @override
+  String get proPayOwnedByOther =>
+      'Эта покупка привязана к другому аккаунту LabGuide. Войдите в тот аккаунт.';
+
+  @override
+  String get proPayFailed =>
+      'Покупка не завершена. Проверьте интернет и попробуйте ещё раз. Если деньги списаны, нажмите «Восстановить покупки».';
+
+  @override
+  String get proPayUnavailable =>
+      'Магазин сейчас не отвечает. Попробуйте позже.';
+
+  @override
+  String proPayDeleteAccountNote(String store) {
+    return 'Подписка не отменяется вместе с аккаунтом: отмените её в настройках $store.';
+  }
+
+  @override
+  String get proRowTitle => 'Подписка и восстановление';
+
+  @override
+  String get proRowSub => 'Free · Pro';
+
+  @override
+  String get proPurchaseTitle => 'LabGuide Pro';
+
+  @override
+  String get proStatusTitle => 'Статус';
+
+  @override
+  String proStatusPro(String date) {
+    return 'Pro активна · до $date';
+  }
+
+  @override
+  String get proStatusProNoEnd => 'Pro активна';
+
+  @override
+  String proStatusOffline(String date) {
+    return 'Без интернета: последняя проверка $date';
+  }
+
+  @override
+  String proHistoryHidden(int count, int limit) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Ещё $count более старого результата сохранены',
+      many: 'Ещё $count более старых результатов сохранены',
+      few: 'Ещё $count более старых результата сохранены',
+      one: 'Ещё $count более старый результат сохранён',
+    );
+    return '$_temp0 — в бесплатном режиме видны последние $limit. Ничего не удалено.';
+  }
+
+  @override
+  String get proNothingGated =>
+      'Пока ни одна функция не отмечена как платная: всё открыто.';
+
+  @override
+  String get proPlanStudent => 'Студент';
+
+  @override
+  String get proPlanTeacher => 'Преподаватель';
+
+  @override
+  String get proPlanSpecialist => 'Специалист';
+
+  @override
+  String get proPlanPremium => 'Премиум';
+
+  @override
+  String get proPayTierStudent => 'Студент';
+
+  @override
+  String get proPayTierStudentSub =>
+      'Для аккаунта с подтверждённым статусом студента';
+
+  @override
+  String get proPayTierSpecialist => 'Специалист';
+
+  @override
+  String get proPayTierSpecialistSub =>
+      'Для лаборанта и врача: возможности плана «Студент» и весь раздел «Лаборатория». Панель преподавателя не входит.';
+
+  @override
+  String get proPayTierPremium => 'Премиум';
+
+  @override
+  String get proPayTierPremiumSub =>
+      'Все возможности: план «Студент», панель преподавателя и весь раздел «Лаборатория».';
+
+  @override
+  String get proPayStatusAdminGrant => 'Pro предоставлен администратором';
+
+  @override
+  String proPayStatusAdminGrantUntil(String date) {
+    return 'Pro предоставлен администратором · до $date';
+  }
+
+  @override
+  String get proGrantRow => 'Выдать Pro';
+
+  @override
+  String get proGrantRowSub => 'Выдать Pro по email или отозвать';
+
+  @override
+  String get proGrantTitle => 'Выдать Pro';
+
+  @override
+  String get proGrantIntro =>
+      'Выдайте Pro на адрес email. Если аккаунта ещё нет, право начнёт действовать при создании аккаунта или первом входе. Подписка из магазина не меняется: действует более высокое из двух.';
+
+  @override
+  String get proGrantEmail => 'Email';
+
+  @override
+  String get proGrantTier => 'Уровень';
+
+  @override
+  String get proGrantDuration => 'Срок';
+
+  @override
+  String get proGrantNote => 'Заметка (необязательно)';
+
+  @override
+  String proGrantDays(int count) {
+    return '$count дн.';
+  }
+
+  @override
+  String get proGrantUntilRevoked => 'До отзыва';
+
+  @override
+  String get proGrantExtend => 'Продлить существующую выдачу (не заменять)';
+
+  @override
+  String get proGrantSubmit => 'Выдать Pro';
+
+  @override
+  String get proGrantConfirmTitle => 'Выдать Pro?';
+
+  @override
+  String proGrantConfirmBody(String email, String plan, String duration) {
+    return 'Адрес $email получит Pro «$plan». Срок: $duration.';
+  }
+
+  @override
+  String proGrantDone(String email) {
+    return 'Pro выдан: $email';
+  }
+
+  @override
+  String proGrantReplaced(String email) {
+    return 'Существующая выдача заменена: $email';
+  }
+
+  @override
+  String proGrantExtended(String email) {
+    return 'Выдача продлена: $email';
+  }
+
+  @override
+  String proGrantListTitle(int count) {
+    return 'Активные и ожидающие ($count)';
+  }
+
+  @override
+  String get proGrantEmpty => 'Пока нет выданных прав.';
+
+  @override
+  String get proGrantPending => 'Ждём аккаунт: начнётся после входа';
+
+  @override
+  String proGrantUntil(String date) {
+    return 'до $date';
+  }
+
+  @override
+  String get proGrantRevoke => 'Отозвать';
+
+  @override
+  String get proGrantRevokeTitle => 'Отозвать выдачу?';
+
+  @override
+  String proGrantRevokeBody(String email) {
+    return '$email сразу потеряет Pro. Подписка из магазина (если есть) сохранится.';
+  }
+
+  @override
+  String proGrantRevoked(String email) {
+    return 'Отозвано: $email';
+  }
+
+  @override
+  String get proGrantErrNote =>
+      'Заметка — не более 200 символов, без служебных знаков.';
+
+  @override
+  String get proGrantErrPending =>
+      'Ожидающую выдачу нельзя продлить: замените её.';
+
+  @override
+  String get proGrantErrDuration => 'Для продления выберите срок.';
+
+  @override
+  String get proGrantErrMany =>
+      'Достигнут лимит активных выдач. Сначала отзовите ненужные.';
+
+  @override
+  String get proGrantErrTierMix =>
+      'Эти планы не включают друг друга, поэтому продлить нельзя. Выберите нужный план и замените выдачу.';
+
+  @override
+  String get proSubTitle => 'Подписка';
+
+  @override
+  String get proSubRowSub => 'Планы, ваш статус и восстановление покупок';
+
+  @override
+  String get proSubAllFree =>
+      'Сейчас все возможности бесплатны. Планы пока не активны — ничего не продаётся.';
+
+  @override
+  String get proSubStatusTitle => 'Ваш статус';
+
+  @override
+  String get proSubStatusFree => 'Бесплатно';
+
+  @override
+  String proSubStatusTrial(String plan, String days) {
+    return '$plan · пробный период: осталось $days';
+  }
+
+  @override
+  String proSubStatusPlan(String plan) {
+    return 'План «$plan» активен';
+  }
+
+  @override
+  String proSubStatusPlanUntil(String plan, String date) {
+    return 'План «$plan» активен · до $date';
+  }
+
+  @override
+  String proSubStatusAdmin(String plan) {
+    return '$plan — выдан администратором';
+  }
+
+  @override
+  String proSubStatusAdminUntil(String plan, String date) {
+    return '$plan — выдан администратором · до $date';
+  }
+
+  @override
+  String get proSubPlansTitle => 'Планы';
+
+  @override
+  String get proSubPriceNote =>
+      'Цены указаны в долларах США. В магазине они показываются в местной валюте.';
+
+  @override
+  String proSubUnlocks(String list) {
+    return 'Для чего: $list';
+  }
+
+  @override
+  String get proSubCapLearner => 'Pro-возможности для учёбы (студент)';
+
+  @override
+  String get proSubCapTeacherPanel => 'Pro-возможности панели преподавателя';
+
+  @override
+  String get proSubCapLab =>
+      'весь раздел «Лаборатория» (приборы, калибровка, QC, калькуляторы, подсчёт лейкоформулы и другое)';
+
+  @override
+  String get proSubNothingGated =>
+      'Сейчас этот план ничего дополнительно не открывает: всё бесплатно.';
+
+  @override
+  String get proSubTeacherNote =>
+      'Pro-возможности панели преподавателя есть только в планах «Преподаватель» и «Премиум», а раздел «Лаборатория» — только в планах «Специалист» и «Премиум». Смена роли в приложении их не открывает. Нынешние бесплатные группы остаются бесплатными.';
+
+  @override
+  String proSubTrialTitle(int days) {
+    return 'Бесплатный пробный период на $days дней';
+  }
+
+  @override
+  String get proSubTrialOncePerPhone =>
+      'Даётся только один раз на один телефон: повторно не даётся ни другому аккаунту, ни после удаления и повторного создания аккаунта. Нужны вход в аккаунт и подтверждённый email.';
+
+  @override
+  String get proSubTrialUsed => 'Этот аккаунт уже использовал пробный период.';
+
+  @override
+  String get proSubTrialNotActive => 'Пробный период пока не включён.';
+
+  @override
+  String get proSubTrialGuest =>
+      'Чтобы получить пробный период, войдите в аккаунт.';
+
+  @override
+  String get proPrivacyTrialNote =>
+      'Pro (только когда Pro включён, сейчас не активен): бесплатный пробный период на 7 дней даётся один раз на один телефон. Для этого на сервере хранятся даты, план, платформа и только необратимые хеши с ключом от вашего email (в канонической форме) и идентификатора устройства — сам email, идентификатор устройства и токен аттестации не хранятся. При удалении аккаунта запись отвязывается от него, но хранится 24 месяца, чтобы пробный период не выдавался повторно, затем удаляется автоматически.';
+
+  @override
+  String proSubTrialBody(int days) {
+    return '$days дней Pro бесплатно. Способ оплаты не нужен, деньги не списываются. После окончания все бесплатные функции продолжают работать; чтобы сохранить Pro, можно отдельно оформить подписку.';
+  }
+
+  @override
+  String proSubTrialStart(String plan) {
+    return 'Начать пробный период: $plan';
+  }
+
+  @override
+  String get proSubTrialConfirmTitle => 'Начать пробный период?';
+
+  @override
+  String proSubTrialConfirmBody(String plan, String date) {
+    return '$plan Pro бесплатно до $date. Без способа оплаты, ничего не списывается, и пробный период не превращается в платную подписку. После этой даты бесплатные функции продолжают работать.';
+  }
+
+  @override
+  String get proSubTrialConfirm => 'Начать';
+
+  @override
+  String get proSubTrialCancel => 'Не сейчас';
+
+  @override
+  String proSubTrialStarted(String date) {
+    return 'Пробный период начат — Pro до $date.';
+  }
+
+  @override
+  String get proSubTrialNotOnPlatform =>
+      'На этом устройстве пробный период пока недоступен. Все бесплатные функции работают как обычно.';
+
+  @override
+  String get proSubTrialHasAccess =>
+      'У вас уже есть Pro, пробный период не нужен.';
+
+  @override
+  String get proSubTrialPlanNotAllowed =>
+      'Пробный период плана «Преподаватель» — для зарегистрированных на сервере преподавателей, «Специалист» — для подтверждённых специалистов, «Премиум» — для тех, у кого есть и то и другое. Попробуйте план «Студент».';
+
+  @override
+  String get proSubTrialEmail =>
+      'Для пробного периода нужен подтверждённый email вашего аккаунта.';
+
+  @override
+  String get proSubTrialDevice =>
+      'Не удалось проверить это устройство, поэтому пробный период здесь не начнётся.';
+
+  @override
+  String get proSubTrialSubscribed => 'У вас уже есть действующая подписка.';
+
+  @override
+  String get proSubEnded =>
+      'Pro закончился. Все бесплатные функции работают, ваши данные сохранены.';
+
+  @override
+  String get proSubPriceYearlyNote =>
+      'Годовой план оплачивается раз в год по указанной цене.';
+
+  @override
+  String get proSubWithoutSubscription =>
+      'Приложением можно пользоваться без подписки: бесплатные функции остаются бесплатными.';
 }

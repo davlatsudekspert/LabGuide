@@ -57,6 +57,9 @@ abstract final class StoreKeys {
   /// Kutubxona PDF lari: oxirgi sahifa va xatcho'plar.
   static const libraryReading = 'library.reading';
 
+  /// Pro huquqlari: server javobining imzolangan, muddatli nusxasi.
+  static const entitlementsCache = 'entitlements.cache';
+
   /// Toifa imtihoniga tayyorgarlik: toifa, og'zaki baholar, bilet, test
   /// sozlamalari.
   static const toifaCategory = 'toifa.category';
@@ -147,6 +150,7 @@ abstract final class StoreKeys {
     microscopyQuiz,
     partnersCache,
     libraryReading,
+    entitlementsCache,
     toifaCategory,
     toifaOral,
     toifaTicket,

@@ -161,6 +161,59 @@ async function signingKey(ctx: Ctx, url: string, kid: string): Promise<CryptoKey
   return entry?.keys.get(kid) ?? null;
 }
 
+/**
+ * Google imzolagan OIDC JWT (Pub/Sub push, D-75) — imzo Google JWKS bilan,
+ * `iss`, `aud`, `exp`/`iat`, `email` va `email_verified`. Manba:
+ * https://docs.cloud.google.com/pubsub/docs/authenticate-push-subscriptions
+ * (token bir soatgacha eski bo'lishi mumkin). Xato — `false`.
+ */
+export async function verifyGooglePushJwt(
+  ctx: Ctx,
+  jwt: string,
+  audience: string,
+  email: string | null,
+): Promise<boolean> {
+  const parts = jwt.split('.');
+  if (parts.length !== 3) return false;
+  let header: Record<string, unknown>;
+  let c: Record<string, unknown>;
+  try {
+    header = JSON.parse(b64urlDecode(parts[0]));
+    c = JSON.parse(b64urlDecode(parts[1]));
+  } catch {
+    return false;
+  }
+  if (header.alg !== 'RS256' || typeof header.kid !== 'string') return false;
+  let key: CryptoKey | null;
+  try {
+    key = await signingKey(ctx, GOOGLE_JWKS, header.kid);
+  } catch {
+    return false;
+  }
+  if (!key) return false;
+  let ok = false;
+  try {
+    ok = await crypto.subtle.verify(
+      'RSASSA-PKCS1-v1_5',
+      key,
+      b64urlBytes(parts[2]),
+      new TextEncoder().encode(`${parts[0]}.${parts[1]}`),
+    );
+  } catch {
+    return false;
+  }
+  if (!ok) return false;
+  const nowSec = Math.floor(ctx.now / 1000);
+  if (typeof c.iss !== 'string' || !GOOGLE_ISSUERS.includes(c.iss)) return false;
+  const auds = typeof c.aud === 'string' ? [c.aud] : Array.isArray(c.aud) ? c.aud : [];
+  if (!auds.includes(audience)) return false;
+  if (typeof c.exp !== 'number' || c.exp + LEEWAY_SEC <= nowSec) return false;
+  if (typeof c.iat === 'number' && c.iat > nowSec + LEEWAY_SEC) return false;
+  if (c.email_verified !== true && c.email_verified !== 'true') return false;
+  if (email && (typeof c.email !== 'string' || c.email.toLowerCase() !== email.toLowerCase())) return false;
+  return true;
+}
+
 // ------------------------------------------------------------ ID token
 export interface Claims {
   iss: string;

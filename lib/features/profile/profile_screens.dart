@@ -124,8 +124,9 @@ class ProfileScreen extends StatelessWidget {
     final settings = services.settings;
     final auth = services.auth;
     final access = services.access;
+    final ent = services.entitlements;
     return ListenableBuilder(
-      listenable: Listenable.merge([settings, auth, access]),
+      listenable: Listenable.merge([settings, auth, access, ent]),
       builder: (context, _) {
         final l = AppLocalizations.of(context);
         final text = Theme.of(context).textTheme;
@@ -266,6 +267,17 @@ class ProfileScreen extends StatelessWidget {
               icon: Icons.download_for_offline_outlined,
               onTap: () => context.push('/profile/packs'),
             ),
+            // “Obuna” (D-74) — faqat Pro bayrog'i yoqilgan buildda: rejalar,
+            // narxlar, holat, sinov qoidasi, tiklash (to'lov oynasi shu
+            // ekrandan). Bayroq o'chiq — qator yo'q, Profil `main` bilan bir xil.
+            if (BuildFlags.proEnabled)
+              LgRow(
+                key: const ValueKey('profile-subscription'),
+                title: l.proSubTitle,
+                subtitle: l.proSubRowSub,
+                icon: Icons.workspace_premium_outlined,
+                onTap: () => context.push('/profile/subscription'),
+              ),
             // Yagona “Yordam va aloqa” (D-69 Q6): ichida ilova ichidagi
             // yozishma va email/shikoyat. Serverga bog'liq emas — doim
             // ko'rinadi (email yo'li doim ishlaydi).
@@ -431,6 +443,16 @@ class PrivacyScreen extends StatelessWidget {
           [
             l.accountDeleteBody,
             if (appleLinked) l.accountDeleteAppleNote,
+            // Obuna hisob bilan bekor bo'lmaydi (5.1.1(v)) — faqat Pro yoqilgan
+            // buildda va to'lov ishlayotganda.
+            if (BuildFlags.proEnabled &&
+                (services.entitlements.purchasesEnabled ||
+                    services.entitlements.activeEntitlement != null))
+              l.proPayDeleteAccountNote(
+                services.entitlements.source.platform == 'app_store'
+                    ? 'App Store'
+                    : 'Google Play',
+              ),
           ].join('\n\n'),
         ),
         actions: [
@@ -494,6 +516,15 @@ class PrivacyScreen extends StatelessWidget {
           services.backend.isConfigured ? l.privacyBody : l.privacyBodyLocal,
           style: text.bodyLarge,
         ),
+        // Pro bepul sinovi (D-74): faqat Pro bayrog'i yoqilgan buildda.
+        if (BuildFlags.proEnabled) ...[
+          const SizedBox(height: 8),
+          Text(
+            l.proPrivacyTrialNote,
+            key: const ValueKey('privacy-pro-trial'),
+            style: text.bodyMedium,
+          ),
+        ],
         const SizedBox(height: 12),
         LgRow(
           title: l.privacyTerms,

@@ -12828,4 +12828,607 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get howToCoagulogramResult =>
       'A hemostasis test reference, a result reading helper and the DIC score — with sources.';
+
+  @override
+  String get proPayTierPro => 'Pro';
+
+  @override
+  String get proPayTierProSub =>
+      'For lab staff, doctors, students and anyone preparing for the qualification exam';
+
+  @override
+  String get proPayTierTeacher => 'Teacher Pro';
+
+  @override
+  String get proPayTierTeacherSub =>
+      'For teachers working with a group: Student plan features plus the teacher panel. The Laboratory section is not included.';
+
+  @override
+  String get proPayFree => 'Features not marked as paid stay free.';
+
+  @override
+  String get proPayFeatQuestions =>
+      'Unlimited questions: practice by topic and card mini-tests';
+
+  @override
+  String get proPayFeatExam => 'Exam simulation (timed test)';
+
+  @override
+  String get proPayFeatToifa =>
+      'The full qualification exam bank: official test and practice by topic';
+
+  @override
+  String get proPayFeatWeak => 'Weak-topic analysis in your results';
+
+  @override
+  String get proPayFeatAtlas => 'Microscopy atlas practice';
+
+  @override
+  String get proPayFeatHistory => 'Full results history';
+
+  @override
+  String get proPayFeatAllPro => 'Everything in Pro';
+
+  @override
+  String get proPayFeatGroups =>
+      'Groups: add students, grades and results reports';
+
+  @override
+  String get proPayFeatAssignments => 'Group assignments (timed tests)';
+
+  @override
+  String get proPayFeatLecture =>
+      'Lecture mode: automatic presentation for a topic';
+
+  @override
+  String get proPayFeatLabCount =>
+      'Differential count: counting and saving the result';
+
+  @override
+  String get proPayFeatLabAbsolute =>
+      'Differential count: percentages and absolute counts';
+
+  @override
+  String get proPayFeatLabEvaluate => 'Differential count: result evaluation';
+
+  @override
+  String get proPayFeatLabSections =>
+      'Laboratory sections: cytology, semen analysis, blood group, histology, urinalysis, blood morphology, coprology';
+
+  @override
+  String get proPayFeatLabCoag => 'Coagulogram';
+
+  @override
+  String get proPayFeatLabInstruments => 'Instrument catalogue';
+
+  @override
+  String get proPayFeatLabDirections => 'Laboratory direction cards';
+
+  @override
+  String get proPayFeatLabCalibration => 'Calibration and calibration log';
+
+  @override
+  String get proPayFeatLabQc => 'Quality control (QC)';
+
+  @override
+  String get proPayFeatLabCalculators => 'Laboratory calculators';
+
+  @override
+  String get proPayPlanMonthly => 'Monthly';
+
+  @override
+  String get proPayPlanYearly => 'Yearly';
+
+  @override
+  String get proPayUnitDay => 'day';
+
+  @override
+  String get proPayUnitWeek => 'week';
+
+  @override
+  String get proPayUnitMonth => 'month';
+
+  @override
+  String get proPayUnitYear => 'year';
+
+  @override
+  String proPayDays(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count days',
+      one: '1 day',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String proPayWeeks(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count weeks',
+      one: '1 week',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String proPayMonths(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count months',
+      one: '1 month',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String proPayYears(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count years',
+      one: '1 year',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String proPayPricePer(String price, String period) {
+    return '$price / $period';
+  }
+
+  @override
+  String proPayTrial(String trial, String price) {
+    return '$trial free, then $price';
+  }
+
+  @override
+  String get proPayStartTrial => 'Start free trial';
+
+  @override
+  String get proPaySubscribe => 'Subscribe';
+
+  @override
+  String get proPayCurrent => 'Active subscription';
+
+  @override
+  String get proPayRestore => 'Restore purchases';
+
+  @override
+  String get proPayManage => 'Manage or cancel subscription';
+
+  @override
+  String get proPayTerms => 'Terms of Use (EULA)';
+
+  @override
+  String get proPayPrivacy => 'Privacy Policy';
+
+  @override
+  String proPayDisclosure(String store) {
+    return 'Subscriptions renew automatically. Payment is charged to your $store account when you confirm the purchase (after the free trial ends, if there is one). Unless cancelled at least 24 hours before the end of the current period, the subscription renews for the same period and price, and your account is charged within 24 hours before the period ends. You can manage and cancel the subscription in your $store account settings. Any unused part of a free trial is forfeited when you buy a subscription.';
+  }
+
+  @override
+  String get proPayGuestNote =>
+      'You need to sign in to subscribe, restore a purchase or start the free trial. The free part of the app works without an account.';
+
+  @override
+  String get proPaySignInRequired =>
+      'Please sign in first to subscribe or restore a purchase.';
+
+  @override
+  String get proPayLockedPro => 'This feature is part of Pro.';
+
+  @override
+  String get proPayLockedTeacher =>
+      'This feature is part of the Teacher and Premium plans.';
+
+  @override
+  String get proPayLockedLab =>
+      'This feature is part of the Specialist and Premium plans.';
+
+  @override
+  String get proPayAllOpen => 'All features are open right now.';
+
+  @override
+  String get proPayTestBuildOpen => 'Test build: all features are open.';
+
+  @override
+  String proPayStatusTeacher(String date) {
+    return 'Teacher Pro is active · until $date';
+  }
+
+  @override
+  String get proPayStatusTeacherNoEnd => 'Teacher Pro is active';
+
+  @override
+  String get proPayStatusDevice =>
+      'The subscription is active on this device. Sign in to use it on your other devices too.';
+
+  @override
+  String get proPaySuccess => 'Your subscription is active. Thank you!';
+
+  @override
+  String get proPayRestored => 'Purchase restored.';
+
+  @override
+  String get proPayPending =>
+      'Waiting for the payment to be approved. The subscription will unlock automatically once it is.';
+
+  @override
+  String get proPayNothingFound =>
+      'No active subscription was found to restore.';
+
+  @override
+  String get proPayOwnedByOther =>
+      'This purchase is linked to another LabGuide account. Sign in to that account.';
+
+  @override
+  String get proPayFailed =>
+      'The purchase didn’t complete. Check your connection and try again. If you were charged, tap “Restore purchases”.';
+
+  @override
+  String get proPayUnavailable =>
+      'The store isn’t responding right now. Please try again later.';
+
+  @override
+  String proPayDeleteAccountNote(String store) {
+    return 'Deleting your account doesn’t cancel your subscription: cancel it in your $store settings.';
+  }
+
+  @override
+  String get proRowTitle => 'Subscription and restore';
+
+  @override
+  String get proRowSub => 'Free · Pro';
+
+  @override
+  String get proPurchaseTitle => 'LabGuide Pro';
+
+  @override
+  String get proStatusTitle => 'Status';
+
+  @override
+  String proStatusPro(String date) {
+    return 'Pro is active · until $date';
+  }
+
+  @override
+  String get proStatusProNoEnd => 'Pro is active';
+
+  @override
+  String proStatusOffline(String date) {
+    return 'Offline: last checked $date';
+  }
+
+  @override
+  String proHistoryHidden(int count, int limit) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count older results are saved',
+      one: '1 older result is saved',
+    );
+    return '$_temp0 — the free plan shows the last $limit. Nothing has been deleted.';
+  }
+
+  @override
+  String get proNothingGated =>
+      'No feature is marked as paid yet: everything is open.';
+
+  @override
+  String get proPlanStudent => 'Student';
+
+  @override
+  String get proPlanTeacher => 'Teacher';
+
+  @override
+  String get proPlanSpecialist => 'Specialist';
+
+  @override
+  String get proPlanPremium => 'Premium';
+
+  @override
+  String get proPayTierStudent => 'Student';
+
+  @override
+  String get proPayTierStudentSub =>
+      'For accounts with verified student status';
+
+  @override
+  String get proPayTierSpecialist => 'Specialist';
+
+  @override
+  String get proPayTierSpecialistSub =>
+      'For lab specialists and doctors: Student plan features plus the whole Laboratory section. The teacher panel is not included.';
+
+  @override
+  String get proPayTierPremium => 'Premium';
+
+  @override
+  String get proPayTierPremiumSub =>
+      'Everything: Student plan features, the teacher panel and the whole Laboratory section.';
+
+  @override
+  String get proPayStatusAdminGrant => 'Pro granted by an administrator';
+
+  @override
+  String proPayStatusAdminGrantUntil(String date) {
+    return 'Pro granted by an administrator · until $date';
+  }
+
+  @override
+  String get proGrantRow => 'Grant Pro';
+
+  @override
+  String get proGrantRowSub => 'Give Pro to an email address or revoke it';
+
+  @override
+  String get proGrantTitle => 'Grant Pro';
+
+  @override
+  String get proGrantIntro =>
+      'Give Pro to an email address. If there is no account yet, it takes effect when the account is created or first signs in. A store subscription is not changed: the higher of the two applies.';
+
+  @override
+  String get proGrantEmail => 'Email';
+
+  @override
+  String get proGrantTier => 'Plan';
+
+  @override
+  String get proGrantDuration => 'Duration';
+
+  @override
+  String get proGrantNote => 'Note (optional)';
+
+  @override
+  String proGrantDays(int count) {
+    return '$count days';
+  }
+
+  @override
+  String get proGrantUntilRevoked => 'Until revoked';
+
+  @override
+  String get proGrantExtend => 'Extend the existing grant (do not replace)';
+
+  @override
+  String get proGrantSubmit => 'Grant Pro';
+
+  @override
+  String get proGrantConfirmTitle => 'Grant Pro?';
+
+  @override
+  String proGrantConfirmBody(String email, String plan, String duration) {
+    return '$email will get “$plan” Pro. Duration: $duration.';
+  }
+
+  @override
+  String proGrantDone(String email) {
+    return 'Pro granted: $email';
+  }
+
+  @override
+  String proGrantReplaced(String email) {
+    return 'Existing grant replaced: $email';
+  }
+
+  @override
+  String proGrantExtended(String email) {
+    return 'Grant extended: $email';
+  }
+
+  @override
+  String proGrantListTitle(int count) {
+    return 'Active and pending ($count)';
+  }
+
+  @override
+  String get proGrantEmpty => 'No grants yet.';
+
+  @override
+  String get proGrantPending =>
+      'Waiting for an account: starts at first sign-in';
+
+  @override
+  String proGrantUntil(String date) {
+    return 'until $date';
+  }
+
+  @override
+  String get proGrantRevoke => 'Revoke';
+
+  @override
+  String get proGrantRevokeTitle => 'Revoke this grant?';
+
+  @override
+  String proGrantRevokeBody(String email) {
+    return '$email loses Pro immediately. A store subscription (if any) stays.';
+  }
+
+  @override
+  String proGrantRevoked(String email) {
+    return 'Revoked: $email';
+  }
+
+  @override
+  String get proGrantErrNote =>
+      'The note must be at most 200 characters, without control characters.';
+
+  @override
+  String get proGrantErrPending =>
+      'A pending grant cannot be extended: replace it instead.';
+
+  @override
+  String get proGrantErrDuration => 'Choose a duration to extend.';
+
+  @override
+  String get proGrantErrMany =>
+      'The active grant limit is reached. Revoke unused ones first.';
+
+  @override
+  String get proGrantErrTierMix =>
+      'These plans do not include each other, so the grant cannot be extended. Choose the plan you need and replace the grant.';
+
+  @override
+  String get proSubTitle => 'Subscription';
+
+  @override
+  String get proSubRowSub => 'Plans, your status and restore purchases';
+
+  @override
+  String get proSubAllFree =>
+      'Right now every feature is free. Plans are not active yet — nothing is on sale.';
+
+  @override
+  String get proSubStatusTitle => 'Your status';
+
+  @override
+  String get proSubStatusFree => 'Free';
+
+  @override
+  String proSubStatusTrial(String plan, String days) {
+    return '$plan · free trial: $days left';
+  }
+
+  @override
+  String proSubStatusPlan(String plan) {
+    return '$plan plan active';
+  }
+
+  @override
+  String proSubStatusPlanUntil(String plan, String date) {
+    return '$plan plan active · until $date';
+  }
+
+  @override
+  String proSubStatusAdmin(String plan) {
+    return '$plan — granted by an administrator';
+  }
+
+  @override
+  String proSubStatusAdminUntil(String plan, String date) {
+    return '$plan — granted by an administrator · until $date';
+  }
+
+  @override
+  String get proSubPlansTitle => 'Plans';
+
+  @override
+  String get proSubPriceNote =>
+      'Prices are in US dollars. The store shows them in your local currency.';
+
+  @override
+  String proSubUnlocks(String list) {
+    return 'Covers: $list';
+  }
+
+  @override
+  String get proSubCapLearner => 'student-side Pro features';
+
+  @override
+  String get proSubCapTeacherPanel => 'teacher-panel Pro features';
+
+  @override
+  String get proSubCapLab =>
+      'the whole Laboratory section (instruments, calibration, QC, calculators, differential counting and more)';
+
+  @override
+  String get proSubNothingGated =>
+      'Right now this plan unlocks nothing extra: everything is free.';
+
+  @override
+  String get proSubTeacherNote =>
+      'Teacher-panel Pro features come only with the Teacher or Premium plan, and the Laboratory section only with the Specialist or Premium plan. Changing your role in the app does not unlock them. Today\'s free groups stay free.';
+
+  @override
+  String proSubTrialTitle(int days) {
+    return '$days-day free trial';
+  }
+
+  @override
+  String get proSubTrialOncePerPhone =>
+      'Given only once per phone: not again for another account, nor after deleting and re-creating your account. You need to be signed in with a verified email.';
+
+  @override
+  String get proSubTrialUsed => 'This account has already used its free trial.';
+
+  @override
+  String get proSubTrialNotActive => 'The free trial is not switched on yet.';
+
+  @override
+  String get proSubTrialGuest => 'Sign in to use the free trial.';
+
+  @override
+  String get proPrivacyTrialNote =>
+      'Pro (only when Pro is enabled; not active now): the 7-day free trial is given once per phone. To enforce this the server keeps the dates, plan, platform and only one-way keyed hashes of your email (in canonical form) and of a device identifier — the email itself, any device identifier and the attestation token are not stored. When you delete your account the record is unlinked from it but kept for 24 months so the trial is not given again, then deleted automatically.';
+
+  @override
+  String proSubTrialBody(int days) {
+    return '$days days of Pro, free. No payment method is needed and nothing is charged. When it ends, every free feature keeps working; to keep Pro you can subscribe separately.';
+  }
+
+  @override
+  String proSubTrialStart(String plan) {
+    return 'Start free trial: $plan';
+  }
+
+  @override
+  String get proSubTrialConfirmTitle => 'Start the free trial?';
+
+  @override
+  String proSubTrialConfirmBody(String plan, String date) {
+    return '$plan Pro is free until $date. No payment method, nothing is charged, and it does not turn into a paid subscription. After that date the free features continue.';
+  }
+
+  @override
+  String get proSubTrialConfirm => 'Start trial';
+
+  @override
+  String get proSubTrialCancel => 'Not now';
+
+  @override
+  String proSubTrialStarted(String date) {
+    return 'Free trial started — Pro until $date.';
+  }
+
+  @override
+  String get proSubTrialNotOnPlatform =>
+      'The free trial is not available on this device yet. All free features work as usual.';
+
+  @override
+  String get proSubTrialHasAccess =>
+      'You already have Pro, so a trial is not needed.';
+
+  @override
+  String get proSubTrialPlanNotAllowed =>
+      'The Teacher trial is for teachers registered on the server, the Specialist trial for verified specialists, and the Premium trial for people who are both. Try the Student plan.';
+
+  @override
+  String get proSubTrialEmail =>
+      'The trial needs the verified email of your account.';
+
+  @override
+  String get proSubTrialDevice =>
+      'This device could not be verified, so the trial cannot start here.';
+
+  @override
+  String get proSubTrialSubscribed =>
+      'You already have an active subscription.';
+
+  @override
+  String get proSubEnded =>
+      'Pro has ended. Every free feature keeps working and your data stays.';
+
+  @override
+  String get proSubPriceYearlyNote =>
+      'The yearly plan is billed once a year at the price shown.';
+
+  @override
+  String get proSubWithoutSubscription =>
+      'You can use the app without a subscription: free features stay free.';
 }

@@ -12712,4 +12712,579 @@ class AppLocalizationsUz extends AppLocalizations {
   @override
   String get howToCoagulogramResult =>
       'Gemostaz testlari bo‘yicha ma’lumotnoma, natijani o‘qish yordamchisi va DIC bali — manbalari bilan.';
+
+  @override
+  String get proPayTierPro => 'Pro';
+
+  @override
+  String get proPayTierProSub =>
+      'Laborant, shifokor, talaba va toifaga tayyorlanuvchi uchun';
+
+  @override
+  String get proPayTierTeacher => 'Ustoz Pro';
+
+  @override
+  String get proPayTierTeacherSub =>
+      'Guruh bilan ishlaydigan ustoz uchun: Talaba imkoniyatlari va ustoz paneli. Laboratoriya bo‘limi kirmaydi.';
+
+  @override
+  String get proPayFree =>
+      'Pullik deb belgilanmagan imkoniyatlar bepul qoladi.';
+
+  @override
+  String get proPayFeatQuestions =>
+      'Cheksiz savollar: mavzular bo‘yicha mashq va kartadan mini-test';
+
+  @override
+  String get proPayFeatExam => 'Imtihon simulyatsiyasi (vaqtli test)';
+
+  @override
+  String get proPayFeatToifa =>
+      'To‘liq toifa banki: rasmiy test va mavzular bo‘yicha mashq';
+
+  @override
+  String get proPayFeatWeak => 'Zaif mavzular tahlili natijada';
+
+  @override
+  String get proPayFeatAtlas => 'Mikroskopiya atlasi mashqlari';
+
+  @override
+  String get proPayFeatHistory => 'Natijalarning to‘liq tarixi';
+
+  @override
+  String get proPayFeatAllPro => 'Pro tarifidagi hamma imkoniyat';
+
+  @override
+  String get proPayFeatGroups =>
+      'Guruhlar: talabalarni qo‘shish, baholar va natijalar hisoboti';
+
+  @override
+  String get proPayFeatAssignments => 'Guruh topshiriqlari (vaqtli testlar)';
+
+  @override
+  String get proPayFeatLecture =>
+      'Ma’ruza rejimi: mavzu bo‘yicha avtomatik taqdimot';
+
+  @override
+  String get proPayFeatLabCount => 'Leykoformula: sanash va natijani saqlash';
+
+  @override
+  String get proPayFeatLabAbsolute => 'Leykoformula: foiz va mutlaq sonlar';
+
+  @override
+  String get proPayFeatLabEvaluate => 'Leykoformula: natijani baholash';
+
+  @override
+  String get proPayFeatLabSections =>
+      'Laboratoriya bo‘limlari: sitologiya, spermogramma, qon guruhi, gistologiya, siydik tahlili, qon morfologiyasi, koprologiya';
+
+  @override
+  String get proPayFeatLabCoag => 'Koagulogramma';
+
+  @override
+  String get proPayFeatLabInstruments => 'Apparatlar katalogi';
+
+  @override
+  String get proPayFeatLabDirections => 'Laboratoriya yo‘nalishlari kartalari';
+
+  @override
+  String get proPayFeatLabCalibration => 'Kalibrlash va kalibrlash jurnali';
+
+  @override
+  String get proPayFeatLabQc => 'Sifat nazorati (QC)';
+
+  @override
+  String get proPayFeatLabCalculators => 'Laboratoriya kalkulyatorlari';
+
+  @override
+  String get proPayPlanMonthly => 'Oylik';
+
+  @override
+  String get proPayPlanYearly => 'Yillik';
+
+  @override
+  String get proPayUnitDay => 'kun';
+
+  @override
+  String get proPayUnitWeek => 'hafta';
+
+  @override
+  String get proPayUnitMonth => 'oy';
+
+  @override
+  String get proPayUnitYear => 'yil';
+
+  @override
+  String proPayDays(int count) {
+    return '$count kun';
+  }
+
+  @override
+  String proPayWeeks(int count) {
+    return '$count hafta';
+  }
+
+  @override
+  String proPayMonths(int count) {
+    return '$count oy';
+  }
+
+  @override
+  String proPayYears(int count) {
+    return '$count yil';
+  }
+
+  @override
+  String proPayPricePer(String price, String period) {
+    return '$price / $period';
+  }
+
+  @override
+  String proPayTrial(String trial, String price) {
+    return '$trial bepul, keyin $price';
+  }
+
+  @override
+  String get proPayStartTrial => 'Bepul sinovni boshlash';
+
+  @override
+  String get proPaySubscribe => 'Obuna bo‘lish';
+
+  @override
+  String get proPayCurrent => 'Faol obuna';
+
+  @override
+  String get proPayRestore => 'Xaridni tiklash';
+
+  @override
+  String get proPayManage => 'Obunani boshqarish yoki bekor qilish';
+
+  @override
+  String get proPayTerms => 'Foydalanish shartlari (EULA)';
+
+  @override
+  String get proPayPrivacy => 'Maxfiylik siyosati';
+
+  @override
+  String proPayDisclosure(String store) {
+    return 'Obuna avtomatik yangilanadi. To‘lov xarid tasdiqlanganda $store hisobingizdan olinadi (bepul sinov bo‘lsa — sinov tugagach). Joriy davr tugashidan kamida 24 soat oldin bekor qilinmasa, obuna xuddi shu davr va narxda yangilanadi va to‘lov davr tugashidan oldingi 24 soat ichida olinadi. Obunani $store hisob sozlamalarida boshqarish va bekor qilish mumkin. Bepul sinovning foydalanilmagan qismi obuna sotib olinganda bekor bo‘ladi.';
+  }
+
+  @override
+  String get proPayGuestNote =>
+      'Obuna, xaridni tiklash va bepul sinov uchun hisobga kirish kerak. Ilovaning bepul qismidan hisobsiz foydalanish mumkin.';
+
+  @override
+  String get proPaySignInRequired =>
+      'Obuna bo‘lish va xaridni tiklash uchun avval hisobga kiring.';
+
+  @override
+  String get proPayLockedPro => 'Bu imkoniyat Pro obunasida.';
+
+  @override
+  String get proPayLockedTeacher => 'Bu imkoniyat Ustoz yoki Premium rejasida.';
+
+  @override
+  String get proPayLockedLab =>
+      'Bu imkoniyat Mutaxassis yoki Premium rejasida.';
+
+  @override
+  String get proPayAllOpen => 'Hozir barcha imkoniyatlar ochiq.';
+
+  @override
+  String get proPayTestBuildOpen =>
+      'Sinov versiyasi: barcha imkoniyatlar ochiq.';
+
+  @override
+  String proPayStatusTeacher(String date) {
+    return 'Ustoz Pro faol · $date gacha';
+  }
+
+  @override
+  String get proPayStatusTeacherNoEnd => 'Ustoz Pro faol';
+
+  @override
+  String get proPayStatusDevice =>
+      'Obuna shu qurilmada faol. Boshqa qurilmalarda ham ishlashi uchun hisobga kiring.';
+
+  @override
+  String get proPaySuccess => 'Obuna faollashdi. Rahmat!';
+
+  @override
+  String get proPayRestored => 'Xarid tiklandi.';
+
+  @override
+  String get proPayPending =>
+      'To‘lov tasdiqlanishi kutilmoqda. Tasdiqlangach obuna avtomatik ochiladi.';
+
+  @override
+  String get proPayNothingFound => 'Tiklanadigan faol obuna topilmadi.';
+
+  @override
+  String get proPayOwnedByOther =>
+      'Bu xarid boshqa LabGuide hisobiga bog‘langan. O‘sha hisob bilan kiring.';
+
+  @override
+  String get proPayFailed =>
+      'Xarid yakunlanmadi. Internetni tekshirib, qayta urinib ko‘ring. Pul yechilgan bo‘lsa, «Xaridni tiklash» ni bosing.';
+
+  @override
+  String get proPayUnavailable =>
+      'Do‘kon hozir javob bermayapti. Keyinroq urinib ko‘ring.';
+
+  @override
+  String proPayDeleteAccountNote(String store) {
+    return 'Obuna hisob bilan birga bekor bo‘lmaydi: uni $store sozlamalarida bekor qiling.';
+  }
+
+  @override
+  String get proRowTitle => 'Obuna va tiklash';
+
+  @override
+  String get proRowSub => 'Free · Pro';
+
+  @override
+  String get proPurchaseTitle => 'LabGuide Pro';
+
+  @override
+  String get proStatusTitle => 'Holat';
+
+  @override
+  String proStatusPro(String date) {
+    return 'Pro faol · $date gacha';
+  }
+
+  @override
+  String get proStatusProNoEnd => 'Pro faol';
+
+  @override
+  String proStatusOffline(String date) {
+    return 'Internetsiz: oxirgi tekshiruv $date';
+  }
+
+  @override
+  String proHistoryHidden(int count, int limit) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Yana $count ta eski natija saqlangan',
+    );
+    return '$_temp0 — bepul rejimda oxirgi $limit tasi ko‘rinadi. Hech narsa o‘chirilmagan.';
+  }
+
+  @override
+  String get proNothingGated =>
+      'Hozircha pullik deb belgilangan imkoniyat yo‘q: hamma narsa ochiq.';
+
+  @override
+  String get proPlanStudent => 'Talaba';
+
+  @override
+  String get proPlanTeacher => 'Ustoz';
+
+  @override
+  String get proPlanSpecialist => 'Mutaxassis';
+
+  @override
+  String get proPlanPremium => 'Premium';
+
+  @override
+  String get proPayTierStudent => 'Talaba';
+
+  @override
+  String get proPayTierStudentSub =>
+      'Talabalik holati tasdiqlangan hisob uchun';
+
+  @override
+  String get proPayTierSpecialist => 'Mutaxassis';
+
+  @override
+  String get proPayTierSpecialistSub =>
+      'Laborant va shifokor uchun: Talaba imkoniyatlari va butun Laboratoriya bo‘limi. Ustoz paneli kirmaydi.';
+
+  @override
+  String get proPayTierPremium => 'Premium';
+
+  @override
+  String get proPayTierPremiumSub =>
+      'Hamma imkoniyat: Talaba imkoniyatlari, ustoz paneli va butun Laboratoriya bo‘limi.';
+
+  @override
+  String get proPayStatusAdminGrant => 'Pro administrator tomonidan berilgan';
+
+  @override
+  String proPayStatusAdminGrantUntil(String date) {
+    return 'Pro administrator tomonidan berilgan · $date gacha';
+  }
+
+  @override
+  String get proGrantRow => 'Pro berish';
+
+  @override
+  String get proGrantRowSub =>
+      'Email manziliga Pro huquqini berish yoki bekor qilish';
+
+  @override
+  String get proGrantTitle => 'Pro berish';
+
+  @override
+  String get proGrantIntro =>
+      'Email manziliga Pro huquqini bering. Hisob hali bo‘lmasa, hisob ochilganda yoki birinchi kirishda amalga oshadi. Do‘kon obunasi o‘zgarmaydi: ikkalasidan yuqorisi amal qiladi.';
+
+  @override
+  String get proGrantEmail => 'Email';
+
+  @override
+  String get proGrantTier => 'Daraja';
+
+  @override
+  String get proGrantDuration => 'Muddat';
+
+  @override
+  String get proGrantNote => 'Izoh (ixtiyoriy)';
+
+  @override
+  String proGrantDays(int count) {
+    return '$count kun';
+  }
+
+  @override
+  String get proGrantUntilRevoked => 'Bekor qilinguncha';
+
+  @override
+  String get proGrantExtend => 'Mavjud grantni uzaytirish (almashtirmasdan)';
+
+  @override
+  String get proGrantSubmit => 'Pro berish';
+
+  @override
+  String get proGrantConfirmTitle => 'Pro berilsinmi?';
+
+  @override
+  String proGrantConfirmBody(String email, String plan, String duration) {
+    return '$email manziliga «$plan» Pro beriladi. Muddat: $duration.';
+  }
+
+  @override
+  String proGrantDone(String email) {
+    return 'Pro berildi: $email';
+  }
+
+  @override
+  String proGrantReplaced(String email) {
+    return 'Mavjud grant almashtirildi: $email';
+  }
+
+  @override
+  String proGrantExtended(String email) {
+    return 'Grant uzaytirildi: $email';
+  }
+
+  @override
+  String proGrantListTitle(int count) {
+    return 'Faol va kutilayotgan ($count)';
+  }
+
+  @override
+  String get proGrantEmpty => 'Hozircha grant yo‘q.';
+
+  @override
+  String get proGrantPending => 'Hisob kutilmoqda: kirgach boshlanadi';
+
+  @override
+  String proGrantUntil(String date) {
+    return '$date gacha';
+  }
+
+  @override
+  String get proGrantRevoke => 'Qaytarib olish';
+
+  @override
+  String get proGrantRevokeTitle => 'Grant qaytarib olinsinmi?';
+
+  @override
+  String proGrantRevokeBody(String email) {
+    return '$email Pro huquqini darhol yo‘qotadi. Do‘kon obunasi (bo‘lsa) saqlanadi.';
+  }
+
+  @override
+  String proGrantRevoked(String email) {
+    return 'Qaytarib olindi: $email';
+  }
+
+  @override
+  String get proGrantErrNote =>
+      'Izoh 200 belgidan oshmasin va maxsus belgilarsiz bo‘lsin.';
+
+  @override
+  String get proGrantErrPending =>
+      'Kutilayotgan grantni uzaytirib bo‘lmaydi: uni almashtiring.';
+
+  @override
+  String get proGrantErrDuration => 'Uzaytirish uchun muddat tanlang.';
+
+  @override
+  String get proGrantErrMany =>
+      'Faol grantlar chegarasiga yetildi. Avval keraksizini bekor qiling.';
+
+  @override
+  String get proGrantErrTierMix =>
+      'Bu darajalar bir-birini qamramaydi, shuning uchun uzaytirib bo‘lmaydi. Kerakli darajani tanlab, mavjud grantni almashtiring.';
+
+  @override
+  String get proSubTitle => 'Obuna';
+
+  @override
+  String get proSubRowSub => 'Rejalar, holatingiz va xaridni tiklash';
+
+  @override
+  String get proSubAllFree =>
+      'Hozircha hamma imkoniyat bepul. Rejalar hali faol emas — hech narsa sotilmayapti.';
+
+  @override
+  String get proSubStatusTitle => 'Holatingiz';
+
+  @override
+  String get proSubStatusFree => 'Bepul';
+
+  @override
+  String proSubStatusTrial(String plan, String days) {
+    return '$plan · bepul sinov: $days qoldi';
+  }
+
+  @override
+  String proSubStatusPlan(String plan) {
+    return '$plan rejasi faol';
+  }
+
+  @override
+  String proSubStatusPlanUntil(String plan, String date) {
+    return '$plan rejasi faol · $date gacha';
+  }
+
+  @override
+  String proSubStatusAdmin(String plan) {
+    return '$plan — administrator bergan';
+  }
+
+  @override
+  String proSubStatusAdminUntil(String plan, String date) {
+    return '$plan — administrator bergan · $date gacha';
+  }
+
+  @override
+  String get proSubPlansTitle => 'Rejalar';
+
+  @override
+  String get proSubPriceNote =>
+      'Narxlar AQSh dollarida. Do‘konda mahalliy valyutada ko‘rsatiladi.';
+
+  @override
+  String proSubUnlocks(String list) {
+    return 'Kimga: $list';
+  }
+
+  @override
+  String get proSubCapLearner => 'o‘qish (talaba) tomonidagi Pro imkoniyatlari';
+
+  @override
+  String get proSubCapTeacherPanel => 'ustoz paneli Pro imkoniyatlari';
+
+  @override
+  String get proSubCapLab =>
+      'butun Laboratoriya bo‘limi (apparatlar, kalibrlash, QC, kalkulyatorlar, leykoformula sanash va boshqalar)';
+
+  @override
+  String get proSubNothingGated =>
+      'Hozir bu reja qo‘shimcha hech narsa ochmaydi: hammasi bepul.';
+
+  @override
+  String get proSubTeacherNote =>
+      'Ustoz paneli Pro imkoniyatlari faqat Ustoz yoki Premium rejasida, Laboratoriya bo‘limi esa faqat Mutaxassis yoki Premium rejasida bo‘ladi. Ilovada rolni o‘zgartirish ularni ochmaydi. Bugungi bepul guruhlar bepul qoladi.';
+
+  @override
+  String proSubTrialTitle(int days) {
+    return '$days kunlik bepul sinov';
+  }
+
+  @override
+  String get proSubTrialOncePerPhone =>
+      'Bitta telefonga faqat bir marta beriladi: boshqa hisob bilan ham, hisobni o‘chirib qayta ochganda ham qayta berilmaydi. Hisobga kirish va tasdiqlangan email kerak.';
+
+  @override
+  String get proSubTrialUsed => 'Bu hisob bepul sinovdan foydalangan.';
+
+  @override
+  String get proSubTrialNotActive => 'Bepul sinov hali yoqilmagan.';
+
+  @override
+  String get proSubTrialGuest => 'Bepul sinov uchun hisobga kiring.';
+
+  @override
+  String get proPrivacyTrialNote =>
+      'Pro (faqat Pro yoqilganda, hozir faol emas): 7 kunlik bepul sinov bir telefonga bir marta beriladi. Buning uchun serverda sinov sanalari, reja, platforma va emailingiz (kanonik ko‘rinishda) hamda qurilma belgisining faqat kalitli, qaytarib bo‘lmaydigan xeshi saqlanadi — xom email, qurilma identifikatori yoki attestatsiya tokeni saqlanmaydi. Hisob o‘chirilganda yozuv hisobdan uziladi, lekin sinov qayta berilmasligi uchun 24 oy saqlanadi, so‘ng avtomatik o‘chiriladi.';
+
+  @override
+  String proSubTrialBody(int days) {
+    return '$days kun Pro — bepul. To‘lov usuli kerak emas va hech qanday pul yechilmaydi. Sinov tugagach barcha bepul imkoniyatlar ishlashda davom etadi; Pro tarifini saqlash uchun alohida obuna bo‘lishingiz mumkin.';
+  }
+
+  @override
+  String proSubTrialStart(String plan) {
+    return 'Bepul sinovni boshlash: $plan';
+  }
+
+  @override
+  String get proSubTrialConfirmTitle => 'Bepul sinov boshlansinmi?';
+
+  @override
+  String proSubTrialConfirmBody(String plan, String date) {
+    return '$plan Pro $date gacha bepul. To‘lov usuli yo‘q, pul yechilmaydi va sinov pullik obunaga aylanmaydi. Shu sanadan keyin bepul imkoniyatlar davom etadi.';
+  }
+
+  @override
+  String get proSubTrialConfirm => 'Sinovni boshlash';
+
+  @override
+  String get proSubTrialCancel => 'Hozir emas';
+
+  @override
+  String proSubTrialStarted(String date) {
+    return 'Bepul sinov boshlandi — Pro $date gacha.';
+  }
+
+  @override
+  String get proSubTrialNotOnPlatform =>
+      'Bu qurilmada bepul sinov hozircha mavjud emas. Barcha bepul imkoniyatlar odatdagidek ishlaydi.';
+
+  @override
+  String get proSubTrialHasAccess =>
+      'Sizda Pro allaqachon bor, sinov kerak emas.';
+
+  @override
+  String get proSubTrialPlanNotAllowed =>
+      'Ustoz sinovi — serverda ustoz sifatida ro‘yxatdan o‘tganlar uchun, Mutaxassis sinovi — tasdiqlangan mutaxassislar uchun, Premium sinovi — ikkalasi ham bo‘lganlar uchun. Talaba rejasini sinab ko‘ring.';
+
+  @override
+  String get proSubTrialEmail =>
+      'Sinov uchun hisobingizning tasdiqlangan emaili kerak.';
+
+  @override
+  String get proSubTrialDevice =>
+      'Bu qurilmani tasdiqlab bo‘lmadi, shuning uchun sinov bu yerda boshlanmaydi.';
+
+  @override
+  String get proSubTrialSubscribed => 'Sizda amaldagi obuna bor.';
+
+  @override
+  String get proSubEnded =>
+      'Pro muddati tugadi. Barcha bepul imkoniyatlar ishlaydi, ma’lumotlaringiz saqlanadi.';
+
+  @override
+  String get proSubPriceYearlyNote =>
+      'Yillik reja narxi yiliga bir marta, ko‘rsatilgan summada olinadi.';
+
+  @override
+  String get proSubWithoutSubscription =>
+      'Ilovadan obunasiz foydalanish mumkin: bepul imkoniyatlar bepul qoladi.';
 }

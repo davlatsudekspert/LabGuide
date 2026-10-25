@@ -15,6 +15,16 @@ import 'core/backend/cloudflare_backend.dart';
 import 'core/backend/community_backend.dart';
 import 'core/backend/lab_backend.dart';
 import 'core/backend/supabase_backend.dart';
+import 'core/build_flags.dart';
+import 'core/entitlements/debug_fake_purchases.dart';
+import 'core/entitlements/device_attestor.dart';
+import 'core/entitlements/entitlement_cache.dart';
+import 'core/entitlements/entitlement_service.dart';
+import 'core/entitlements/entitlement_source.dart';
+import 'core/entitlements/feature.dart';
+import 'core/entitlements/pro_catalog.dart';
+import 'core/entitlements/purchase_adapter.dart';
+import 'core/entitlements/store_purchase_adapter.dart';
 import 'core/storage/kv_store.dart';
 import 'features/auth/auth_controller.dart';
 import 'features/auth/otp_auth.dart';
@@ -58,6 +68,16 @@ Future<void> main() async {
   );
   await services.auth.reconcileWithBackend();
   unawaited(services.refreshAccess());
+  // Pro (D-71): faqat LG_PRO_ENABLED=true buildda. Standart (bepul reliz) da
+  // bu qator umuman bajarilmaydi — do'kon plagini ishga tushmaydi.
+  if (BuildFlags.proEnabled) {
+    unawaited(services.entitlements.start());
+    // D-75: ilova qayta ochilganda huquqlar serverdan yangilanadi (boshqa
+    // qurilmadagi xarid / bekor qilish), 5 daqiqada bir martadan ko'p emas.
+    AppLifecycleListener(
+      onResume: () => unawaited(services.entitlements.onResume()),
+    );
+  }
   // Kontent fonda yuklanadi; ekranlar loading/error holatini ko'rsatadi.
   unawaited(services.content.load());
   // O'quv dasturi (asset bo'lmasa — “qo'shilmagan”, ma'ruza qatori yo'q).
@@ -88,6 +108,12 @@ AppServices createServices({
   CommunityBackend? community,
   SocialAuthService? socialAuth,
   QrScanner? qrScanner,
+  EntitlementKeyStore? entitlementKeys,
+  bool? allFeaturesOpen,
+  PurchaseAdapter? purchases,
+  EntitlementSource? entitlementSource,
+  Set<Feature>? gatedFeatures,
+  DeviceAttestor? attestor,
   Random? dailyRandom,
 }) {
   const config = AppConfig(appVersion: _appVersion, showDebugBadge: kDebugMode);
@@ -137,6 +163,21 @@ AppServices createServices({
     backend: server,
     access: AccessController(server),
     partners: PartnersController(store, server),
+    // Pro (D-71): bayroq o'chiq bo'lsa — o'chirilgan servis (do'kon ham,
+    // server ham yo'q, hamma imkoniyat ochiq). Yoqilgan bo'lsa — do'kon
+    // (StoreKit 2 / Play Billing) + server tekshiruvi (`/v1/billing/*`).
+    entitlements: BuildFlags.proEnabled
+        ? _entitlements(
+            server: server,
+            store: store,
+            entitlementSource: entitlementSource,
+            purchases: purchases,
+            entitlementKeys: entitlementKeys,
+            gatedFeatures: gatedFeatures,
+            allFeaturesOpen: allFeaturesOpen,
+            attestor: attestor,
+          )
+        : EntitlementService.disabled(),
     toifa: toifa,
     differential: DifferentialController(store),
     daily: daily,
@@ -182,4 +223,49 @@ LabBackend _defaultBackend() {
   return config.isConfigured
       ? SupabaseLabBackend(config)
       : const UnconfiguredBackend();
+}
+
+/// Pro yoqilgan build uchun huquqlar servisi (D-71/D-75). Do'kon (StoreKit 2 /
+/// Play Billing) + server tekshiruvi (`/v1/billing/*`). Debug buildda
+/// `LG_FAKE_PURCHASES=true` bo'lsa — soxta do'kon/server/attestatsiya
+/// (release'da [BuildFlags.fakePurchases] doimiy `false`).
+EntitlementService _entitlements({
+  required LabBackend server,
+  required KeyValueStore store,
+  EntitlementSource? entitlementSource,
+  PurchaseAdapter? purchases,
+  EntitlementKeyStore? entitlementKeys,
+  Set<Feature>? gatedFeatures,
+  bool? allFeaturesOpen,
+  DeviceAttestor? attestor,
+}) {
+  final EntitlementSource realSource =
+      entitlementSource ??
+      switch (server) {
+        CloudflareLabBackend() => CloudflareEntitlementSource(server),
+        SupabaseLabBackend() => SupabaseEntitlementSource(server),
+        _ => const UnavailableEntitlementSource(),
+      };
+  final fake = BuildFlags.fakePurchases;
+  return EntitlementService(
+    source: fake ? DebugFakeEntitlementSource(realSource) : realSource,
+    purchases:
+        purchases ??
+        (fake
+            ? DebugFakePurchaseAdapter()
+            : StorePurchaseAdapter.supported
+            ? StorePurchaseAdapter()
+            : UnavailablePurchaseAdapter()),
+    attestor:
+        attestor ??
+        (fake ? DebugFakeDeviceAttestor() : const UnconfiguredDeviceAttestor()),
+    cache: EntitlementCacheStore(
+      store,
+      entitlementKeys ?? const SecureEntitlementKeyStore(),
+    ),
+    gated: gatedFeatures ?? ProGatePolicy.gated,
+    allFeaturesOpen:
+        allFeaturesOpen ??
+        ((kDebugMode && !fake) || EntitlementService.buildAllFeaturesOpen),
+  );
 }

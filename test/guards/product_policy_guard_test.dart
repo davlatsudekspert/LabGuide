@@ -44,74 +44,183 @@ final _payWords = RegExp(
 const _payAllow = {'partnerPriceTitle', 'partnerPriceBody', 'admSales'};
 
 void main() {
-  group('D-58: ilovada Pro / to‘lov / obuna yo‘q', () {
-    test('ARB matnlarida to‘lov so‘zlari yo‘q (uz/ru/en)', () {
-      for (final lang in ['uz', 'ru', 'en']) {
-        final bad = [
-          for (final e in _arb(lang).entries)
-            if (!_payAllow.contains(e.key) && _payWords.hasMatch(e.value))
-              '${e.key}: ${e.value}',
-        ];
-        expect(bad, isEmpty, reason: lang);
-      }
-    });
+  // pro-next (D-71): Pro kodi mavjud, lekin `BuildFlags.proEnabled == false`
+  // (standart) bo'lganda ilova D-58 bilan bir xil — paywall yo'q. `main` dagi
+  // qat'iy D-58 qorovuli bu yerda "bayroq ortidagi Pro" qorovuliga aylandi.
+  group(
+    'D-58/D-71: proEnabled=false bo‘lsa ilovada Pro / to‘lov / obuna yo‘q',
+    () {
+      test('standart: Pro bayrog‘i o‘chiq', () {
+        BuildFlags.debugProEnabledOverride = null;
+        expect(BuildFlags.proEnabled, isFalse);
+      });
 
-    test(
-      'ruxsat ro‘yxatidagi kalitlar hali mavjud (eskirgan istisno yo‘q)',
-      () {
-        final uz = _arb('uz');
-        for (final k in _payAllow) {
-          expect(uz.containsKey(k), isTrue, reason: k);
-        }
-      },
-    );
-
-    test('xarid plaginlari va Pro kodi yo‘q (pubspec, lib/)', () {
-      final pubspec = _read('pubspec.yaml');
-      for (final p in [
-        'in_app_purchase',
-        'purchases_flutter',
-        'revenuecat',
-        'flutter_inapp_purchase',
-        'pay:',
-      ]) {
-        expect(pubspec.contains(p), isFalse, reason: p);
-      }
-      final code = RegExp(
-        r'in_app_purchase|purchases_flutter|InAppPurchase|SKPayment|'
-        r'Paywall|ProScreen|ProPlan|isPro\b|proUnlocked|subscriptionStatus',
+      test(
+        'ARB: `pro*` kalitlaridan tashqari matnlarda to‘lov so‘zlari yo‘q',
+        () {
+          for (final lang in ['uz', 'ru', 'en']) {
+            final bad = [
+              for (final e in _arb(lang).entries)
+                if (!e.key.startsWith('pro') &&
+                    !_payAllow.contains(e.key) &&
+                    _payWords.hasMatch(e.value))
+                  '${e.key}: ${e.value}',
+            ];
+            expect(bad, isEmpty, reason: lang);
+          }
+        },
       );
-      for (final f in _libDart()) {
-        final m = code.firstMatch(f.readAsStringSync());
-        expect(m, isNull, reason: '${f.path}: ${m?[0]}');
-      }
-    });
 
-    test('marshrutlarda Pro/xarid sahifasi yo‘q', () {
-      final router = _read('lib/app/router.dart');
-      for (final p in [
-        "path: 'pro'",
-        "'/pro'",
-        'paywall',
-        'subscription',
-        'purchase',
-        'billing',
-      ]) {
-        expect(router.contains(p), isFalse, reason: p);
-      }
-    });
+      test('`pro*` kalitlari uch tilda bir xil; ichida narx raqami yo‘q', () {
+        final keys = {
+          for (final lang in ['uz', 'ru', 'en'])
+            lang: _arb(lang).keys.where((k) => k.startsWith('pro')).toSet(),
+        };
+        expect(keys['uz'], isNotEmpty);
+        expect(keys['ru'], keys['uz']);
+        expect(keys['en'], keys['uz']);
+        for (final lang in ['uz', 'ru', 'en']) {
+          for (final e in _arb(
+            lang,
+          ).entries.where((e) => e.key.startsWith('pro'))) {
+            expect(
+              RegExp(
+                r"\$\s?\d|\d\s?(usd|so['‘ʼ’]m|сум)\b",
+                caseSensitive: false,
+              ).hasMatch(e.value),
+              isFalse,
+              reason: '$lang ${e.key}: narx ilovada qotirilmaydi',
+            );
+          }
+        }
+      });
 
-    test('iOS: In-App Purchase imkoniyati yoqilmagan', () {
-      for (final path in [
-        'ios/Runner/Runner.entitlements',
-        'ios/Runner/Info.plist',
-      ]) {
-        final f = File(path);
-        if (!f.existsSync()) continue;
-        expect(f.readAsStringSync(), isNot(contains('in-app-payments')));
-      }
-    });
-  });
+      test(
+        'ruxsat ro‘yxatidagi kalitlar hali mavjud (eskirgan istisno yo‘q)',
+        () {
+          final uz = _arb('uz');
+          for (final k in _payAllow) {
+            expect(uz.containsKey(k), isTrue, reason: k);
+          }
+        },
+      );
+
+      test('Pro kodi faqat ruxsat etilgan fayllarda (oqib chiqmasin)', () {
+        // Pro qatlami shu fayllarda; boshqa hech qaysi lib/ fayli xarid
+        // plaginiga, paywall/ProScreen/isPro ga tegmaydi.
+        const allowed = [
+          'lib/core/entitlements/',
+          'lib/features/profile/purchase_screen.dart',
+          // “Obuna” ekrani (D-74): faqat bayroq ortidagi yo'ldan.
+          'lib/features/profile/subscription_screen.dart',
+          'lib/features/profile/pro_gate.dart',
+          // Admin Pro berish (D-73): faqat bayroq + admin ortida (alohida
+          // qorovullar: pro_flag_default_guard_test, admin_pro_grant_test).
+          'lib/features/admin/pro_grant_screen.dart',
+          'lib/core/backend/pro_grants.dart',
+          'lib/core/backend/cloudflare_backend.dart',
+        ];
+        final code = RegExp(
+          r'in_app_purchase|purchases_flutter|InAppPurchase|SKPayment|'
+          r'Paywall|ProScreen|ProPlan|isPro\b|proUnlocked|subscriptionStatus',
+        );
+        for (final f in _libDart()) {
+          final path = f.path.replaceAll(r'\', '/');
+          if (allowed.any(path.contains)) continue;
+          final m = code.firstMatch(f.readAsStringSync());
+          expect(m, isNull, reason: '${f.path}: ${m?[0]}');
+        }
+      });
+
+      test('xarid plaginlari faqat in_app_purchase* (boshqa SDK yo‘q)', () {
+        final pubspec = _read('pubspec.yaml');
+        for (final p in [
+          'purchases_flutter',
+          'revenuecat',
+          'flutter_inapp_purchase',
+          'pay:',
+        ]) {
+          expect(pubspec.contains(p), isFalse, reason: p);
+        }
+      });
+
+      test('plagin faqat entitlements/ da import qilinadi va main.dart faqat '
+          'bayroq ortida ishga tushiradi', () {
+        for (final f in _libDart()) {
+          final path = f.path.replaceAll(r'\', '/');
+          if (path.startsWith('lib/core/entitlements/')) continue;
+          expect(
+            f.readAsStringSync().contains('package:in_app_purchase'),
+            isFalse,
+            reason: path,
+          );
+        }
+        final main = _read('lib/main.dart');
+        // D-75: start() va ilova qaytishidagi yangilash bitta bayroq blokida.
+        expect(
+          RegExp(
+            r'if \(BuildFlags\.proEnabled\) \{\s*unawaited\(services\.entitlements\.start\(\)\);\s*'
+            r'// [^\n]*\n\s*// [^\n]*\n\s*AppLifecycleListener\(',
+          ).hasMatch(main),
+          isTrue,
+        );
+        expect(main, contains('BuildFlags.proEnabled\n        ? _entitlements('));
+        expect(main, contains(': EntitlementService.disabled()'));
+      });
+
+      test(
+        'marshrut: /profile/purchase faqat `if (BuildFlags.proEnabled)` ichida',
+        () {
+          final router = _read('lib/app/router.dart');
+          expect(
+            RegExp(
+              r"if \(BuildFlags\.proEnabled\)\s+GoRoute\(\s+path: 'purchase'",
+            ).hasMatch(router),
+            isTrue,
+          );
+          expect(RegExp(r"path: 'purchase'").allMatches(router), hasLength(1));
+          // D-74: “Obuna” ekrani ham faqat bayroq ichida.
+          expect(
+            RegExp(
+              r"if \(BuildFlags\.proEnabled\)\s+GoRoute\(\s+path: 'subscription'",
+            ).hasMatch(router),
+            isTrue,
+          );
+          expect(
+            RegExp(r"path: 'subscription'").allMatches(router),
+            hasLength(1),
+          );
+          for (final p in ["path: 'pro'", "'/pro'", 'paywall', 'billing']) {
+            expect(router.contains(p), isFalse, reason: p);
+          }
+        },
+      );
+
+      test('Profil: obuna qatori `BuildFlags.proEnabled` ortida', () {
+        final profile = _read('lib/features/profile/profile_screens.dart');
+        // D-74: yagona “Obuna” qatori, faqat bayroq ortida.
+        expect(
+          RegExp(
+            r"if \(BuildFlags\.proEnabled\)\s+LgRow\(\s+key: const ValueKey\('profile-subscription'\)",
+          ).hasMatch(profile),
+          isTrue,
+        );
+        expect(profile.contains("'/profile/subscription'"), isTrue);
+        expect(profile.contains("'/profile/purchase'"), isFalse);
+      });
+
+      test('iOS: In-App Purchase imkoniyati yoqilmagan', () {
+        for (final path in [
+          'ios/Runner/Runner.entitlements',
+          'ios/Runner/Info.plist',
+        ]) {
+          final f = File(path);
+          if (!f.existsSync()) continue;
+          expect(f.readAsStringSync(), isNot(contains('in-app-payments')));
+        }
+      });
+    },
+  );
 
   group('hamkor reklamasi (LG_PARTNER_ADS)', () {
     test('standart build: bayroq o‘chiq, release buildda o‘zgarmas', () {

@@ -6761,5 +6761,417 @@
   "howToCoagulogramStep3": "“Result reading helper”: PT, APTT and platelets → possible causes from the source.",
   "howToCoagulogramStep4": "“ISTH overt DIC score”: enter the values — the score is calculated.",
   "howToCoagulogramStep5": "“Anticoagulant monitoring”: warfarin — INR, heparin — APTT/anti-Xa.",
-  "howToCoagulogramResult": "A hemostasis test reference, a result reading helper and the DIC score — with sources."
+  "howToCoagulogramResult": "A hemostasis test reference, a result reading helper and the DIC score — with sources.",
+  "proPayTierPro": "Pro",
+  "proPayTierProSub": "For lab staff, doctors, students and anyone preparing for the qualification exam",
+  "proPayTierTeacher": "Teacher Pro",
+  "proPayTierTeacherSub": "For teachers working with a group: Student plan features plus the teacher panel. The Laboratory section is not included.",
+  "proPayFree": "Features not marked as paid stay free.",
+  "proPayFeatQuestions": "Unlimited questions: practice by topic and card mini-tests",
+  "proPayFeatExam": "Exam simulation (timed test)",
+  "proPayFeatToifa": "The full qualification exam bank: official test and practice by topic",
+  "proPayFeatWeak": "Weak-topic analysis in your results",
+  "proPayFeatAtlas": "Microscopy atlas practice",
+  "proPayFeatHistory": "Full results history",
+  "proPayFeatAllPro": "Everything in Pro",
+  "proPayFeatGroups": "Groups: add students, grades and results reports",
+  "proPayFeatAssignments": "Group assignments (timed tests)",
+  "proPayFeatLecture": "Lecture mode: automatic presentation for a topic",
+  "proPayFeatLabCount": "Differential count: counting and saving the result",
+  "proPayFeatLabAbsolute": "Differential count: percentages and absolute counts",
+  "proPayFeatLabEvaluate": "Differential count: result evaluation",
+  "proPayFeatLabSections": "Laboratory sections: cytology, semen analysis, blood group, histology, urinalysis, blood morphology, coprology",
+  "proPayFeatLabCoag": "Coagulogram",
+  "proPayFeatLabInstruments": "Instrument catalogue",
+  "proPayFeatLabDirections": "Laboratory direction cards",
+  "proPayFeatLabCalibration": "Calibration and calibration log",
+  "proPayFeatLabQc": "Quality control (QC)",
+  "proPayFeatLabCalculators": "Laboratory calculators",
+  "proPayPlanMonthly": "Monthly",
+  "proPayPlanYearly": "Yearly",
+  "proPayUnitDay": "day",
+  "proPayUnitWeek": "week",
+  "proPayUnitMonth": "month",
+  "proPayUnitYear": "year",
+  "proPayDays": "{count, plural, =1{1 day} other{{count} days}}",
+  "@proPayDays": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "proPayWeeks": "{count, plural, =1{1 week} other{{count} weeks}}",
+  "@proPayWeeks": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "proPayMonths": "{count, plural, =1{1 month} other{{count} months}}",
+  "@proPayMonths": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "proPayYears": "{count, plural, =1{1 year} other{{count} years}}",
+  "@proPayYears": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "proPayPricePer": "{price} / {period}",
+  "@proPayPricePer": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      },
+      "period": {
+        "type": "String"
+      }
+    }
+  },
+  "proPayTrial": "{trial} free, then {price}",
+  "@proPayTrial": {
+    "placeholders": {
+      "trial": {
+        "type": "String"
+      },
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "proPayStartTrial": "Start free trial",
+  "proPaySubscribe": "Subscribe",
+  "proPayCurrent": "Active subscription",
+  "proPayRestore": "Restore purchases",
+  "proPayManage": "Manage or cancel subscription",
+  "proPayTerms": "Terms of Use (EULA)",
+  "proPayPrivacy": "Privacy Policy",
+  "proPayDisclosure": "Subscriptions renew automatically. Payment is charged to your {store} account when you confirm the purchase (after the free trial ends, if there is one). Unless cancelled at least 24 hours before the end of the current period, the subscription renews for the same period and price, and your account is charged within 24 hours before the period ends. You can manage and cancel the subscription in your {store} account settings. Any unused part of a free trial is forfeited when you buy a subscription.",
+  "@proPayDisclosure": {
+    "placeholders": {
+      "store": {
+        "type": "String"
+      }
+    }
+  },
+  "proPayGuestNote": "You need to sign in to subscribe, restore a purchase or start the free trial. The free part of the app works without an account.",
+  "proPaySignInRequired": "Please sign in first to subscribe or restore a purchase.",
+  "proPayLockedPro": "This feature is part of Pro.",
+  "proPayLockedTeacher": "This feature is part of the Teacher and Premium plans.",
+  "proPayLockedLab": "This feature is part of the Specialist and Premium plans.",
+  "proPayAllOpen": "All features are open right now.",
+  "proPayTestBuildOpen": "Test build: all features are open.",
+  "proPayStatusTeacher": "Teacher Pro is active · until {date}",
+  "@proPayStatusTeacher": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "proPayStatusTeacherNoEnd": "Teacher Pro is active",
+  "proPayStatusDevice": "The subscription is active on this device. Sign in to use it on your other devices too.",
+  "proPaySuccess": "Your subscription is active. Thank you!",
+  "proPayRestored": "Purchase restored.",
+  "proPayPending": "Waiting for the payment to be approved. The subscription will unlock automatically once it is.",
+  "proPayNothingFound": "No active subscription was found to restore.",
+  "proPayOwnedByOther": "This purchase is linked to another LabGuide account. Sign in to that account.",
+  "proPayFailed": "The purchase didn’t complete. Check your connection and try again. If you were charged, tap “Restore purchases”.",
+  "proPayUnavailable": "The store isn’t responding right now. Please try again later.",
+  "proPayDeleteAccountNote": "Deleting your account doesn’t cancel your subscription: cancel it in your {store} settings.",
+  "@proPayDeleteAccountNote": {
+    "placeholders": {
+      "store": {
+        "type": "String"
+      }
+    }
+  },
+  "proRowTitle": "Subscription and restore",
+  "proRowSub": "Free · Pro",
+  "proPurchaseTitle": "LabGuide Pro",
+  "proStatusTitle": "Status",
+  "proStatusPro": "Pro is active · until {date}",
+  "@proStatusPro": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "proStatusProNoEnd": "Pro is active",
+  "proStatusOffline": "Offline: last checked {date}",
+  "@proStatusOffline": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "proHistoryHidden": "{count, plural, =1{1 older result is saved} other{{count} older results are saved}} — the free plan shows the last {limit}. Nothing has been deleted.",
+  "@proHistoryHidden": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "limit": {
+        "type": "int"
+      }
+    }
+  },
+  "proNothingGated": "No feature is marked as paid yet: everything is open.",
+  "proPlanStudent": "Student",
+  "proPlanTeacher": "Teacher",
+  "proPlanSpecialist": "Specialist",
+  "proPlanPremium": "Premium",
+  "proPayTierStudent": "Student",
+  "proPayTierStudentSub": "For accounts with verified student status",
+  "proPayTierSpecialist": "Specialist",
+  "proPayTierSpecialistSub": "For lab specialists and doctors: Student plan features plus the whole Laboratory section. The teacher panel is not included.",
+  "proPayTierPremium": "Premium",
+  "proPayTierPremiumSub": "Everything: Student plan features, the teacher panel and the whole Laboratory section.",
+  "proPayStatusAdminGrant": "Pro granted by an administrator",
+  "proPayStatusAdminGrantUntil": "Pro granted by an administrator · until {date}",
+  "@proPayStatusAdminGrantUntil": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "proGrantRow": "Grant Pro",
+  "proGrantRowSub": "Give Pro to an email address or revoke it",
+  "proGrantTitle": "Grant Pro",
+  "proGrantIntro": "Give Pro to an email address. If there is no account yet, it takes effect when the account is created or first signs in. A store subscription is not changed: the higher of the two applies.",
+  "proGrantEmail": "Email",
+  "proGrantTier": "Plan",
+  "proGrantDuration": "Duration",
+  "proGrantNote": "Note (optional)",
+  "proGrantDays": "{count} days",
+  "@proGrantDays": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "proGrantUntilRevoked": "Until revoked",
+  "proGrantExtend": "Extend the existing grant (do not replace)",
+  "proGrantSubmit": "Grant Pro",
+  "proGrantConfirmTitle": "Grant Pro?",
+  "proGrantConfirmBody": "{email} will get “{plan}” Pro. Duration: {duration}.",
+  "@proGrantConfirmBody": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      },
+      "plan": {
+        "type": "String"
+      },
+      "duration": {
+        "type": "String"
+      }
+    }
+  },
+  "proGrantDone": "Pro granted: {email}",
+  "@proGrantDone": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "proGrantReplaced": "Existing grant replaced: {email}",
+  "@proGrantReplaced": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "proGrantExtended": "Grant extended: {email}",
+  "@proGrantExtended": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "proGrantListTitle": "Active and pending ({count})",
+  "@proGrantListTitle": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "proGrantEmpty": "No grants yet.",
+  "proGrantPending": "Waiting for an account: starts at first sign-in",
+  "proGrantUntil": "until {date}",
+  "@proGrantUntil": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "proGrantRevoke": "Revoke",
+  "proGrantRevokeTitle": "Revoke this grant?",
+  "proGrantRevokeBody": "{email} loses Pro immediately. A store subscription (if any) stays.",
+  "@proGrantRevokeBody": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "proGrantRevoked": "Revoked: {email}",
+  "@proGrantRevoked": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "proGrantErrNote": "The note must be at most 200 characters, without control characters.",
+  "proGrantErrPending": "A pending grant cannot be extended: replace it instead.",
+  "proGrantErrDuration": "Choose a duration to extend.",
+  "proGrantErrMany": "The active grant limit is reached. Revoke unused ones first.",
+  "proGrantErrTierMix": "These plans do not include each other, so the grant cannot be extended. Choose the plan you need and replace the grant.",
+  "proSubTitle": "Subscription",
+  "proSubRowSub": "Plans, your status and restore purchases",
+  "proSubAllFree": "Right now every feature is free. Plans are not active yet — nothing is on sale.",
+  "proSubStatusTitle": "Your status",
+  "proSubStatusFree": "Free",
+  "proSubStatusTrial": "{plan} · free trial: {days} left",
+  "@proSubStatusTrial": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      },
+      "days": {
+        "type": "String"
+      }
+    }
+  },
+  "proSubStatusPlan": "{plan} plan active",
+  "@proSubStatusPlan": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "proSubStatusPlanUntil": "{plan} plan active · until {date}",
+  "@proSubStatusPlanUntil": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "proSubStatusAdmin": "{plan} — granted by an administrator",
+  "@proSubStatusAdmin": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "proSubStatusAdminUntil": "{plan} — granted by an administrator · until {date}",
+  "@proSubStatusAdminUntil": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "proSubPlansTitle": "Plans",
+  "proSubPriceNote": "Prices are in US dollars. The store shows them in your local currency.",
+  "proSubUnlocks": "Covers: {list}",
+  "@proSubUnlocks": {
+    "placeholders": {
+      "list": {
+        "type": "String"
+      }
+    }
+  },
+  "proSubCapLearner": "student-side Pro features",
+  "proSubCapTeacherPanel": "teacher-panel Pro features",
+  "proSubCapLab": "the whole Laboratory section (instruments, calibration, QC, calculators, differential counting and more)",
+  "proSubNothingGated": "Right now this plan unlocks nothing extra: everything is free.",
+  "proSubTeacherNote": "Teacher-panel Pro features come only with the Teacher or Premium plan, and the Laboratory section only with the Specialist or Premium plan. Changing your role in the app does not unlock them. Today's free groups stay free.",
+  "proSubTrialTitle": "{days}-day free trial",
+  "@proSubTrialTitle": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "proSubTrialOncePerPhone": "Given only once per phone: not again for another account, nor after deleting and re-creating your account. You need to be signed in with a verified email.",
+  "proSubTrialUsed": "This account has already used its free trial.",
+  "proSubTrialNotActive": "The free trial is not switched on yet.",
+  "proSubTrialGuest": "Sign in to use the free trial.",
+  "proPrivacyTrialNote": "Pro (only when Pro is enabled; not active now): the 7-day free trial is given once per phone. To enforce this the server keeps the dates, plan, platform and only one-way keyed hashes of your email (in canonical form) and of a device identifier — the email itself, any device identifier and the attestation token are not stored. When you delete your account the record is unlinked from it but kept for 24 months so the trial is not given again, then deleted automatically.",
+  "proSubTrialBody": "{days} days of Pro, free. No payment method is needed and nothing is charged. When it ends, every free feature keeps working; to keep Pro you can subscribe separately.",
+  "@proSubTrialBody": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "proSubTrialStart": "Start free trial: {plan}",
+  "@proSubTrialStart": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "proSubTrialConfirmTitle": "Start the free trial?",
+  "proSubTrialConfirmBody": "{plan} Pro is free until {date}. No payment method, nothing is charged, and it does not turn into a paid subscription. After that date the free features continue.",
+  "@proSubTrialConfirmBody": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "proSubTrialConfirm": "Start trial",
+  "proSubTrialCancel": "Not now",
+  "proSubTrialStarted": "Free trial started — Pro until {date}.",
+  "@proSubTrialStarted": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "proSubTrialNotOnPlatform": "The free trial is not available on this device yet. All free features work as usual.",
+  "proSubTrialHasAccess": "You already have Pro, so a trial is not needed.",
+  "proSubTrialPlanNotAllowed": "The Teacher trial is for teachers registered on the server, the Specialist trial for verified specialists, and the Premium trial for people who are both. Try the Student plan.",
+  "proSubTrialEmail": "The trial needs the verified email of your account.",
+  "proSubTrialDevice": "This device could not be verified, so the trial cannot start here.",
+  "proSubTrialSubscribed": "You already have an active subscription.",
+  "proSubEnded": "Pro has ended. Every free feature keeps working and your data stays.",
+  "proSubPriceYearlyNote": "The yearly plan is billed once a year at the price shown.",
+  "proSubWithoutSubscription": "You can use the app without a subscription: free features stay free."
 }

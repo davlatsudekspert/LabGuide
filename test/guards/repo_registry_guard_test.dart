@@ -129,6 +129,18 @@ void main() {
         contains('0007'),
         reason: 'band raqam izohi o‘chmasin',
       );
+      // 0013 — asosiy liniya (`0013_admin_step_up`, avval qo'llanishi
+      // mumkin); Pro migratsiyalari undan keyin 0014–0017 (audit birlashmasi).
+      // Qo'llangan raqam boshqa faylga berilmasin.
+      for (final n in const [
+        '0013_admin_step_up.sql',
+        '0014_billing.sql',
+        '0015_pro_grants.sql',
+        '0016_pro_trials.sql',
+        '0017_billing_notifications.sql',
+      ]) {
+        expect(names, contains(n), reason: 'migratsiya raqami o‘zgarmasin: $n');
+      }
     });
 
     test('Supabase: 14 xonali vaqt belgisi, takrorsiz', () {

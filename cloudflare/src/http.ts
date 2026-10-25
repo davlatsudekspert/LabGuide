@@ -26,6 +26,58 @@ export interface Env {
   /** Hamjamiyatda egasi hisobining ko'rinadigan nomi. */
   LG_OWNER_DISPLAY_NAME?: string;
   /**
+   * Pro obunalari (src/billing.ts) asosiy o'chirgich. Faqat `'true'` bo'lsa
+   * `/v1/billing/*` va `/v1/entitlements` yo'llari mavjud; aks holda 404.
+   */
+  LG_BILLING_ENABLED?: string;
+  /**
+   * Maxfiy: App Store Server API kaliti (App Store Connect → Users and
+   * Access → Integrations → In-App Purchase). Uchalasi bo'lmasa — App Store
+   * tekshiruvi `503 not_configured`.
+   */
+  APPLE_IAP_KEY_ID?: string;
+  APPLE_IAP_ISSUER_ID?: string;
+  /** `.p8` fayl matni (PEM). */
+  APPLE_IAP_PRIVATE_KEY?: string;
+  /** Standart: uz.labguide.app. */
+  APPLE_BUNDLE_ID?: string;
+  /** Maxfiy: Play Developer API uchun service account JSON. */
+  GOOGLE_PLAY_SERVICE_ACCOUNT?: string;
+  /** Standart: uz.labguide.app. */
+  GOOGLE_PLAY_PACKAGE?: string;
+  /** Maxfiy (ixtiyoriy): RTDN push URL'idagi `?token=` qiymati. */
+  PLAY_RTDN_TOKEN?: string;
+  /**
+   * RTDN (Pub/Sub push) OIDC tekshiruvi (D-75, tavsiya etiladi): push
+   * subscription'dagi "audience" qiymati. Berilsa `Authorization: Bearer`
+   * JWT (Google imzosi, iss accounts.google.com, aud, email_verified) majburiy.
+   * Na shu, na `PLAY_RTDN_TOKEN` bo'lsa — RTDN `503 rtdn_auth_not_configured`.
+   */
+  PLAY_RTDN_AUDIENCE?: string;
+  /** Push subscription'ning service account emaili (JWT `email` bilan solishtiriladi). */
+  PLAY_RTDN_SERVICE_ACCOUNT?: string;
+  /**
+   * Sandbox / test xaridlari (D-75): faqat `'true'` bo'lsa Apple Sandbox va
+   * Play litsenziya testeri xaridlari qabul qilinadi (muhit `sandbox` deb
+   * yoziladi). Aks holda (production) sandbox xaridi `403 sandbox_not_allowed`,
+   * sandbox bildirishnomasi e'tiborsiz.
+   */
+  LG_BILLING_SANDBOX?: string;
+  /**
+   * Apple Root CA barmoq izi (SHA-256, hex) — JWS zanjiri shu root'ga pin
+   * qilinadi. Standart: Apple Root CA - G3 (src/x509.ts). Maxfiy emas;
+   * faqat testlar va Apple root almashtirsa o'zgartiriladi.
+   */
+  APPLE_ROOT_CA_SHA256?: string;
+  /** Ixtiyoriy: App Store obuna guruhi id si — berilsa tranzaksiya guruhi tekshiriladi. */
+  APPLE_SUBSCRIPTION_GROUP_ID?: string;
+  /**
+   * Bepul sinov ruxsat etilgan platformalar (D-75), vergul bilan: `android`,
+   * `ios`. Standart — faqat `android`. iOS faqat Apple yozma javobidan keyin
+   * egasi tomonidan qo'shiladi (docs/APPLE_REVIEW_QUESTION_DRAFT.md).
+   */
+  TRIAL_PLATFORMS?: string;
+  /**
    * Google bilan kirish (src/social.ts): ruxsat etilgan OAuth client ID lar
    * (ID tokendagi `aud`), vergul/bo'shliq bilan. Bo'sh — Google kirishi
    * `503 not_configured`, ilova tugmani ko'rsatmaydi.
@@ -140,3 +192,9 @@ export function withCors(res: Response, cors: Record<string, string> | null): Re
   for (const [k, v] of Object.entries(cors)) out.headers.set(k, v);
   return out;
 }
+
+/**
+ * Pro (obuna va admin grant) asosiy o'chirgich: faqat `LG_BILLING_ENABLED=true`
+ * bo'lsa `/v1/billing/*`, `/v1/entitlements` va `/v1/admin/pro-grants*` mavjud.
+ */
+export const billingEnabled = (env: Env) => env.LG_BILLING_ENABLED === 'true';

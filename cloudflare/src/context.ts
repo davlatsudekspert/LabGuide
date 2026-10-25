@@ -1,6 +1,8 @@
 import type { Keys } from './crypto';
 import type { CodeSender } from './email';
 import type { Env } from './http';
+import type { Platform, StoreVerifier } from './billing';
+import type { DeviceAttestationVerifier } from './trial';
 
 export interface Deps {
   sendCode: CodeSender;
@@ -16,6 +18,18 @@ export interface Deps {
    * testlarda soxta — haqiqiy do'konga hech qachon murojaat qilinmaydi.
    */
   fetch?: typeof fetch;
+  /**
+   * Bepul sinov uchun qurilma attestatsiyasi tekshiruvchisi (D-74). Standart:
+   * YO'Q → `503 device_attestation_not_configured`. Production (index.ts) da
+   * hech narsa ulanmagan; testlarda — soxta (test/fake_attestation.ts).
+   */
+  attestation?: DeviceAttestationVerifier;
+  /**
+   * Do'kon xaridi tekshiruvchilari (D-75). Standart: haqiqiy App Store Server
+   * API / Play Developer API tekshiruvchilari (kalitsiz — 503
+   * `store_verifier_not_configured`); testlarda soxta (test/fake_store.ts).
+   */
+  storeVerifiers?: Partial<Record<Platform, StoreVerifier>>;
 }
 
 export interface Ctx {

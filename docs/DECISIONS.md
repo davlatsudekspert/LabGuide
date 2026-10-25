@@ -662,6 +662,8 @@ Egasi so‘rovi: boshqa odamlarni Gmail/email bo‘yicha admin qilish va olib ta
 - Qolgan mavzular va PPTX yuklash (Ustoz Pro) — 17-oktabr rejasi.
 
 ## D-46. Pro yo'nalishi: Ustoz Pro + Talaba Pro, butun dunyo (2026-10-12, egasi tasdiqladi)
+> **SUPERSEDED (D-73/D-74, 2026-10-24):** narxlar, tariflar, sinov va Pro tafsilotlari D-73/D-74 (va D-75) bilan almashtirilgan. Quyidagi matn — tarix sifatida saqlangan.
+
 - Maqsad: ilova butun dunyoda foydalanilsin va sotib olinsin (uz/ru/en, keyin boshqa tillar).
 - **Bepul:** barcha kartalar, kalkulyatorlar, preanalitika, sanagich, ochiq manbalar, kuniga
   10–20 savol, toifa namunalari, hamjamiyatni o'qish/savol berish.
@@ -697,6 +699,8 @@ Egasi so‘rovi: boshqa odamlarni Gmail/email bo‘yicha admin qilish va olib ta
 rejim → offline tushuntirishlar/og'zaki mashq → online AI Ustoz → telefon ichidagi model.
 
 ## D-48. Narxlar (2026-10-12, egasi tasdiqladi: "narxlar maqul")
+> **SUPERSEDED (D-73/D-74, 2026-10-24):** narxlar, tariflar, sinov va Pro tafsilotlari D-73/D-74 (va D-75) bilan almashtirilgan. Quyidagi matn — tarix sifatida saqlangan.
+
 D-46 dagi paketlar aniqlashtirildi: shaxsiy **Pro** (laborant, shifokor, toifaga tayyorlanuvchi)
 + talabaga chegirma; **Ustoz Pro**; **Muassasa** (shartnoma).
 
@@ -713,6 +717,8 @@ D-46 dagi paketlar aniqlashtirildi: shaxsiy **Pro** (laborant, shifokor, toifaga
   ("To'lov hali yoqilmagan" yozuvi yashiriladi) — Apple 3.1.1/2.1.
 
 ## D-49. Pro tafsilotlari (2026-10-12, egasi javoblari)
+> **SUPERSEDED (D-73/D-74, 2026-10-24):** narxlar, tariflar, sinov va Pro tafsilotlari D-73/D-74 (va D-75) bilan almashtirilgan. Quyidagi matn — tarix sifatida saqlangan.
+
 - Bepul sinov: Pro — 7 kun, Ustoz Pro — 14 kun (egasi rozi, 2026-10-12). 1 oy emas.
 - Bepul foydalanuvchi: kuniga 2 ta savol (egasi qarori). Tavsiya: xatolarni qayta ishlash cheklanmasin.
 - Ilk foydalanuvchilarga chegirma: yo'q.
@@ -724,6 +730,8 @@ D-46 dagi paketlar aniqlashtirildi: shaxsiy **Pro** (laborant, shifokor, toifaga
   faqat slaydni chiqaradi (ikki ekranli rejim). Chromecast uchun alohida Cast qabul qiluvchi — keyin.
 
 ## D-50. Talaba narxi (A varianti), reklama roliklari, ustoz-elchi (2026-10-12)
+> **SUPERSEDED (D-73/D-74, 2026-10-24):** narxlar, tariflar, sinov va Pro tafsilotlari D-73/D-74 (va D-75) bilan almashtirilgan. Quyidagi matn — tarix sifatida saqlangan.
+
 - Talaba chegirmasi (D-48 ni almashtiradi): **9 000 so'm/oy · 49 000 so'm/yil**; xalqaro **$1.49/oy · $9.99/yil**.
   3–4 oydan keyin natijaga qarab ko'riladi (Play narx tajribasi).
 - Reklama roliklari **uz/ru/en**: maqsad — talaba (kelajakdagi shifokor, laborant, biokimyogar) ilova
@@ -805,6 +813,8 @@ D-46 dagi paketlar aniqlashtirildi: shaxsiy **Pro** (laborant, shifokor, toifaga
   Claude'ni ilova ichida (Pro, D-54) ishlatish alohida qaror bo'lib qoladi.
 
 ## D-57. Ustoz Pro narxi: Pro'dan qimmat, lekin D-48 dagidan arzon (2026-10-17, egasi qarori)
+> **SUPERSEDED (D-73/D-74, 2026-10-24):** narxlar, tariflar, sinov va Pro tafsilotlari D-73/D-74 (va D-75) bilan almashtirilgan. Quyidagi matn — tarix sifatida saqlangan.
+
 D-48 dagi **Ustoz Pro** qatorini (69 000 so'm/oy · 490 000 so'm/yil · $9.99/oy · $69.99/yil) almashtiradi.
 (D-56 raqami boshqa ish uchun band qilingan, shuning uchun D-57.)
 
@@ -1204,4 +1214,410 @@ Manba: `docs/APP_MAP_2026-10-18.md` §4. Har qaror minimal o'zgarish bilan; eski
 - **Ochiq (egasi qarori):** Toifa bo'limi hozir til UZ yoki qurilma mintaqasi UZ bo'lsa ko'rinadi (D-40). Master
   rejadagi "til mamlakatga bog'lanmasin" bilan ziddiyat: ruscha tilli va rus mintaqali foydalanuvchi ko'rmaydi.
   Variant: sozlamalarda ochiq tanlov.
+
+
+## D-71. Pro tarmog'i (`pro-next`): haqiqiy holat, bayroqlar, TAKLIF narxlar (2026-10-24, TASDIQLANMAGAN)
+Bu yozuv faqat `pro-next` tarmog'ida. Bepul reliz (`main`) o'zgarmaydi: D-58 u yerda kuchda.
+
+**Tarmoq haqiqati.** `pro-later` — jonli tarmoq emas, `7141aff` (D-58 olib tashlash) dan bir commit oldingi
+`main` surati; `main` ning ajdodi, hech narsa birlashtirmaydi. Shuning uchun Pro kodi `7141aff^` dan
+(`git show 7141aff^:<yo'l>`) qo'lda qayta tiklandi va joriy `main` (router, learn/exam/toifa/classes, profil, ARB)
+bilan solishtirib moslandi. `pro-next` = `origin/main c8c9430` + shu ish. `pro-later` arxiv bo'lib qoladi.
+
+**Bayroqlar (hammasi standart O'CHIQ).**
+- Ilova: `BuildFlags.proEnabled` (`--dart-define=LG_PRO_ENABLED=true`, standart `false`, release'da doimiy).
+  O'chiq bo'lsa: `EntitlementService.disabled()` (do'kon yo'q, server yo'q, `can()` doim `true`), `start()`
+  chaqirilmaydi, `in_app_purchase` ishga tushmaydi, `/profile/purchase` yo'li ro'yxatda yo'q, Profil'da obuna
+  qatori yo'q, billing so'rovi ketmaydi. Testlar: `test/widget/pro_flag_off_test.dart`,
+  `test/guards/pro_flag_default_guard_test.dart`, `product_policy_guard_test.dart`.
+- Server: `LG_BILLING_ENABLED=true` (Worker env). Bo'lmasa `/v1/billing/*`, `/v1/entitlements` — 404
+  (`cloudflare/test/guards.test.ts`). Do'kon kalitlari (`APPLE_IAP_*`, `GOOGLE_PLAY_SERVICE_ACCOUNT`) ham kerak.
+  Migratsiya 0007 → `0014_billing.sql` (dastlab `0013_billing.sql`; audit birlashmasida 0014 ga ko'chirildi, 0013 — `0013_admin_step_up`) (0007 raqami D-58 da band deb belgilangan; eski 0003 `entitlements` jadvalini
+  almashtiradi — hech qachon yozilmagan). CI (`ci.yml`) tegilmagan: `deploy_api` billing secretlarini o'rnatmaydi.
+- Yopiladigan imkoniyatlar: `ProGatePolicy.gated` — BO'SH. Boshlash nuqtalari ulangan (`requireFeature`), lekin
+  hech narsa yopilmaydi.
+- Bepul davr: `ProTrialConfig.freeTrialDays` = `null` (o'chiq).
+
+**TAKLIF narxlar (egasi tasdiqlamagan; `lib/core/entitlements/pro_catalog.dart`, MA'LUMOT — UI'da qotirilmagan).**
+| Reja | Oylik (USD) | Yillik |
+|---|---|---|
+| Talaba (`...pro.student.monthly`) | 1.49 | belgilanmagan (null) |
+| Oddiy / Pro (`...pro.monthly`) | 3.99 | belgilanmagan (null) |
+| Ustoz Pro (`...teacherpro.monthly`) | 5.99 | belgilanmagan (null) |
+Foydalanuvchi ko'radigan narx doim do'kondan (mahalliy valyuta). Yillik narx `null` bo'lsa yillik mahsulot to'lov
+oynasida ko'rsatilmaydi. TODO(owner): yillik narxlar. ESKIRGAN va hech qayerda faol emas: 29 000 so'm/$4.99,
+Ustoz $6.99, talaba 9 000 so'm, yillik 199 000/269 000 so'm, 7/14 kunlik sinov (D-48, D-49, D-50, D-57). Tekshiruv:
+`pro_flag_default_guard_test.dart :: eski narxlar …`.
+
+**30 kunlik bepul foydalanish — mexanizm OCHIQ qaror.** Faqat `freeTrialDays` (nullable; `null` = o'chiq; `> 0` =
+kunlar) va `ProTrialMechanism` ilgagi bor. Variantlar: (a) do'kon-native kirish taklifi (Apple Introductory Offer /
+Google Play free-trial offer): kunlar do'konda sozlanadi, ilova `StoreProduct.freeTrial` ni do'kondan o'qiydi,
+karta/Apple ID olinadi, 3.1.2 matni do'konnikidan — shu ilova kodida allaqachon ishlaydi; (b) server beradigan
+sinov huquqi (kartasiz): serverda `trial_until` kerak — HALI YO'Q, 3.1.2 matni va suiiste'mol cheklovi alohida
+loyihalanadi; (c) yo'q. Tanlov bo'lmaguncha `freeTrialDays` ni yoqmang.
+
+**Rejadagi yopish ro'yxati bilan ZIDDIYAT (hech narsa yopilmadi).** `docs/PRO_BILLING_PLAN.md` §1 (D-46/D-53) bugun
+`main` da BEPUL bo'lgan imkoniyatlarni yopardi: cheksiz savollar (mavzu mashqi, kartadan mini-test), imtihon
+simulyatsiyasi, to'liq toifa banki, zaif mavzular tahlili, atlas mashqi, to'liq tarix (`unlimitedHistory`),
+guruh ochish, topshiriqlar, ma'ruza/avto-taqdimot. D-53 "bepul — kunlik 5 savol" `main` da yo'q. Yopish =
+bor imkoniyatni olib qo'yish (foydalanuvchi e'tirozi, mavjud ustozlar). Qaror: standart — hech narsa yopilmaydi;
+egasi ro'yxatni (va mavjud foydalanuvchilarni saqlab qolishni) belgilaguncha `ProGatePolicy.gated` bo'sh.
+Ulangan boshlash nuqtalari: imtihon boshlash, toifa test/mashq boshlash, mavzu mashqi raundi, atlas mashqi raundi,
+guruh ochish, avto-taqdimot boshlash, tarix ko'rinishi (`historyView`), zaif mavzular. UlanMAGAN (eski reja
+ularga ega edi, qayta ulash kerak bo'lsa): topshiriq yaratish (endi `topic_test_screens`/`general_test_screen`),
+ma'ruza ro'yxati qatorlari (`lecture_screens`, `classroom_screens`), toifa mashq qatorlari, kartadan mini-test
+"yopiq" holati, `toifaAllows`.
+
+**Saqlangan ilgaklar (hammasi o'chiq).** StoreKit 2/Play Billing (`in_app_purchase` 3.3), xaridni tiklash,
+yangilash/bekor/grace/billing retry/refund holatlari, mehmon xaridi: eski kod hisobsiz xaridga RUXSAT bergan (qurilmada
+ishlaydi, hisobga kirilganda bog'lanadi; App Store 5.1.1) — "mehmon xarid qila olmaydi" qoidasi kodda YO'Q (egasi
+xohlasa — ochiq qaror #10), HMAC imzolangan 7 kunlik oflayn kesh, "bitta xarid —
+bitta hisob" (`owned_by_other`), ASSN v2/RTDN.
+
+**HALI YO'Q:** talaba tasdig'i (`studentVerified=false`, talaba mahsulotlari ko'rinmaydi), referral/ustoz-elchi
+(D-50 g'oya), mintaqaviy narx (faqat do'kon narxlari; Apple UZ — USD, Play UZS tasdiqlanmagan), maxfiylik
+siyosati/foydalanish shartlarida obuna bo'limi (`PRIVACY_POLICY.md`, `site/privacy`), Data safety/App Privacy
+(xarid tarixi) yangilanishi, x5c zanjirini Apple Root CA bilan tekshirish (eski cheklov), do'kon mahsulotlari va
+kalitlari, sandbox matritsasi (xarid/tiklash/bekor/grace/refund/boshqa hisob).
+
+**Ogohlantirish.** `pubspec.yaml` da `in_app_purchase` bor: bu tarmoqdan yig'ilgan Android build manifestga
+`com.android.vending.BILLING` ruxsatini qo'shadi (plagin birlashtiradi) — bepul reliz FAQAT `main` dan yig'iladi.
+`pro-next` ni `main` ga qo'shish: do'konlarda bepul reliz tasdiqlangandan keyin, egasi roziligi bilan, 
+`product_policy_guard_test` (D-58 qatiy variantiga qaytarilgan nusxa bilan) qayta ko'rib chiqilgach.
+
+**Egasi qarorlari (ochiq):** (1) narxlar USD 1.49/3.99/5.99 — ha/yo'q/tahrir; (2) yillik narxlar yoki yillik yo'q;
+(3) Play UZS narx pog'onalari, Apple UZ = USD qabul; (4) 30 kun: (a)/(b)/(c); (5) talaba — tasdiqdan keyin yoki
+ochiq; (6) qaysi imkoniyatlar yopiladi, mavjud foydalanuvchilar (grandfathering); (7) `pro-next` → `main` qoidasi,
+`pro-later` ni arxiv tegi qilish; (8) do'kon kalitlari kimda va `deploy_api` qachon; (9) maxfiylik/shartlar matni; (10) mehmon xarid qila olsinmi yoki avval hisob shartmi.
+
+## D-72. Pro taklifi: yillik tarif, 30 kunlik davr, pullik funksiyalar, bepul huquqlar (2026-10-24, TAKLIF)
+Egasi 2026-10-24 topshirig'i: Pro `pro-next` da tayyorlanadi, `proEnabled=false` saqlanadi; taklif narxlar Talaba $1.49, Oddiy $3.99,
+Ustoz $5.99 (oylik); yillik, 30 kunlik bepul davr va pullik funksiyalar — ALOHIDA TAKLIF sifatida; mavjud bepul foydalanuvchilar
+huquqi egasi qarorisiz cheklanmaydi; billing/paywall/server faollashtirilmaydi. To'liq matn: `docs/PRO_PROPOSAL_D72.md`.
+Kodga o'zgarish kiritilmadi (D-71 holati o'zgarmaydi).
+
+
+## D-73. Pro: egasi narxlari (3 daraja), admin tomonidan Pro berish (2026-10-24; narxlar EGASI QARORI, Pro YOQILMAGAN)
+`pro-next` tarmog'ida. `main` va bepul reliz o'zgarmaydi. **Hech narsa deploy qilinmadi, yoqilmadi, do'konga yuborilmadi;
+production D1 ga migratsiya qo'llanmadi** (0015 — faqat fayl). `BuildFlags.proEnabled` standart `false`,
+server `LG_BILLING_ENABLED` o'chiq (billing va admin grant yo'llari 404), `ProGatePolicy.gated` BO'SH,
+`ProTrialConfig.freeTrialDays = null` — mavjud bepul foydalanuvchilar huquqi o'zgarmaydi.
+
+**1. Narxlar — OWNER-DECIDED 2026-10-24 (lekin ENABLED EMAS).** D-71/D-72 dagi taklif narxlar va tariflar ularni
+almashtirib bekor qiladi (Standart 3.99, eski Ustoz 5.99, yillik `null`). Narx kodda MA'LUMOT
+(`lib/core/entitlements/pro_catalog.dart`, `ProPricing`); ekran narxni do'kondan oladi.
+| Daraja | Oylik (USD) | Yillik (USD) |
+|---|---|---|
+| Talaba (Student) | 1.49 | 9.99 |
+| Ustoz (Teacher) | 2.49 | 24.99 |
+| Mutaxassis (Specialist) | 3.49 | 34.99 |
+Yillik narx belgilangani uchun yillik mahsulot ro'yxatda (`annualOffered`), lekin hammasi baribir bayroq ortida.
+Eski-narx qorovuli o'z kuchida: 29 000 so'm, $4.99, $6.99, 7/14 kunlik sinov — endi 3.99 va 5.99 ham taqiqlangan
+(`pro_flag_default_guard_test`). Hozirgi 9.99 va 34.99 yangi yillik narxlar bo'lgani uchun taqiqdan olindi.
+
+**Daraja → ilova darajasi (`ProTier`) moslashi** (tayyorgarlik; hech narsa yopilmagani uchun amalda ta'sirsiz):
+Talaba → Pro; Ustoz → Ustoz Pro; Mutaxassis → Ustoz Pro darajasi (eng qimmat reja kamroq bermasin). Server
+huquqni hal qilishda tartib: Talaba < Ustoz < Mutaxassis (narx tartibi). Bu moslash — ochiq qaror.
+
+**Mahsulot id'lari** (do'konlarda HECH QANDAY mahsulot hali yaratilmagan, shuning uchun nomlarni almashtirish bepul):
+| Yangi id | Daraja | Eski id (alias sifatida qoldi) |
+|---|---|---|
+| `uz.labguide.student.monthly` / `.yearly` | Talaba | `uz.labguide.pro.student.monthly` / `.yearly` |
+| `uz.labguide.teacher.monthly` / `.yearly` | Ustoz | `uz.labguide.teacherpro.monthly` / `.yearly` |
+| `uz.labguide.specialist.monthly` / `.yearly` | Mutaxassis | `uz.labguide.pro.monthly` / `.yearly` (eski «Oddiy/Pro» → Mutaxassis) |
+Eski id'lar `BillingCatalog.legacyAliases` va serverdagi `BILLING_PRODUCTS` da faqat o'qish uchun alias (eski server
+qatori / kesh buzilmasin); yangi do'kon mahsuloti ularda YARATILMAYDI. Unit test ilova va server ro'yxatini solishtiradi.
+
+**2. Bepul sinov.** `freeTrialDays` = `null`, mexanizm (`undecided`) o'zgarmadi: 30 kunlik davr hali qaror qilinmagan,
+hech narsa yozilmadi.
+
+**3. Admin tomonidan Pro berish** (faqat `LG_BILLING_ENABLED=true` bo'lganda mavjud; bo'lmasa 404, hatto admin
+tokeni bilan ham).
+- Yo'llar: `POST /v1/admin/pro-grants {email, tier: student|teacher|specialist, durationDays?: 30|90|365|null,
+  note?, mode?: replace|extend}`, `DELETE /v1/admin/pro-grants/:id`, `GET /v1/admin/pro-grants` (faol va kutilayotgan).
+- Vakolat: serverda berilgan admin roli (`admins`) VA TOTP (aal2) — mavjud `requireAdmin` modeli. Oddiy foydalanuvchi
+  403, TOTP siz admin 403, tokensiz 401. Egasi paneli (TOTP siz, `ADMIN_EMAILS`) bu amalga YETMAYDI: Pro berish —
+  “Adminlar boshqaruvi” kabi 2FA talab qiladi.
+- Email: trim + kichik harf (`normalizeEmail`), yaroqsiz email 400; saqlashda faqat HMAC + niqob (`ab***@…`), javob va
+  jurnalda to'liq email yo'q. Daraja/muddat/izoh tekshiriladi (izoh ≤ 200 belgi, boshqaruv belgilarisiz).
+- Hisob yo'q bo'lsa grant KUTILMOQDA (`starts_at IS NULL`); hisob ochilganda yoki birinchi kirishda
+  (`findOrCreateUser`, email kodi ham Google/Apple ham) qo'llanadi — muddat shu paytdan; jurnal `pro_grant_applied`.
+  Hisob bor bo'lsa — darhol. Kirish hech qachon grant xatosi tufayli to'xtamaydi.
+- Qayta berish aniq: `replace` (standart; daraja/muddat/izoh yangilanadi, muddat hozirdan, bitta faol qator) yoki
+  `extend` (mavjud tugashidan uzaytiradi, yuqori daraja qoladi; kutilayotganga 409 `pending_cannot_extend`,
+  muddatsiz so'rovga `duration_required`). Bir emailga bitta faol grant (unique indeks).
+- Huquqni hal qilish (`resolveAccess`, `GET /v1/billing/entitlements` da `resolved`): faqat hozir amaldagilar;
+  YUQORI daraja yutadi, teng darajada UZOQROQ muddat (muddatsiz — eng uzoq), to'liq tenglikda DO'KON. Admin grant
+  do'kon obunasini hech qachon bosib o'tmaydi va uni o'chirmaydi; grant qatori `source: admin_grant`,
+  `platform: admin_grant`, `ownership: granted`. Muddat tugasa `expired` (huquq yo'q); bekor qilinsa qator darhol yo'qoladi.
+- Audit (`audit_log`): `pro_grant_created|replaced|extended|revoked|applied` — kim (actor), nishon grant id, ichida
+  niqoblangan email, daraja, `until`, hisob id si. Izoh jurnalga yozilmaydi.
+- Limit: berish soatiga 30, bekor soatiga 60, ro'yxat 10 daqiqada 60 (har admin uchun); faol grantlar ≤ 2000.
+- Hisob o'chirilsa shu emailning grantlari ham o'chadi (`deleteUserData`).
+- Ilova: Admin panelda “Pro berish” qatori → ekran (email, daraja, muddat, izoh, uzaytirish tanlovi, tasdiq oynasi;
+  faol/kutilayotgan ro'yxat; qaytarib olish — tasdiq bilan). FAQAT `BuildFlags.proEnabled` VA admin (AdminGate: admin
+  roli + TOTP) bo'lganda; bayroq o'chiq bo'lsa `services.proGrants == null`, qator ham yo'l ham yo'q — panel avvalgidek.
+  Klient `admin_grant` qatorini taniydi (`ServerEntitlement.isAdminGrant`, `ProSource.adminGrant`), eng yaxshisini
+  serverdagi qoida bilan tanlaydi.
+- Migratsiya `cloudflare/migrations/0015_pro_grants.sql` — FAYL. Qo'llash egasi `deploy_api` ni ishga tushirganda
+  (CI bu ishda ishga tushirilmadi). 0007 raqami band bo'lib qoladi.
+
+**4. Regressiya qorovullari.** `proEnabled` standart false; `ProGatePolicy.gated` bo'sh va hech bir bepul imkoniyat
+unda yo'q; bayroq o'chiq — paywall/obuna qatori/admin “Pro berish” yo'q (`admin_pro_grant_test`,
+`pro_flag_default_guard_test`, `product_policy_guard_test`); admin grant yo'llari bayroqsiz 404
+(`cloudflare/test/progrants.test.ts`, `guards.test.ts`); billing va grant kodi `app.ts` da faqat `billingRoutes` ichida.
+
+**5. HALI OCHIQ (egasi qarori kerak).**
+1. 30 kunlik bepul davr mexanizmi: do'kon kirish taklifi (a) yoki server `trial_until` (b) yoki yo'q (c).
+2. Nima pullik bo'ladi (`ProGatePolicy.gated`), va har daraja nimani ochadi (Talaba/Ustoz/Mutaxassis farqi, yuqoridagi
+   moslash to'g'rimi).
+3. Mavjud bepul foydalanuvchilar (grandfathering): hozirgi huquq saqlanishi — tavsiya HA, qaror emas.
+4. Mehmon xaridi qoidasi: hisobsiz sotib olish mumkinmi (eski kod ruxsat bergan).
+5. UZS narx pog'onalari (Play UZS; Apple UZ — USD qabul) va yillik narxning mahalliy yaxlitlanishi.
+6. Do'kon mahsulotlari va kalitlari (yuqoridagi yangi id'lar bilan App Store Connect / Play Console), `deploy_api`
+   qachon va kim; `APPLE_IAP_*`, `GOOGLE_PLAY_SERVICE_ACCOUNT`.
+7. Maxfiylik siyosati / Foydalanish shartlari matni (obuna va admin bergan Pro), Play Data safety / App Privacy yangilanishi.
+8. Talaba tasdig'i (usuli; hozir `studentVerified=false`, talaba mahsulotlari ko'rinmaydi).
+9. Admin grant siyosati: kim bera oladi (hozir har aal2 admin), maksimal muddat/ro'yxat hajmi, kutilayotgan grantning
+   amal qilish muddati (hozir cheksiz), grant haqida foydalanuvchiga xabar (hozir yo'q).
+10. `pro-next` → `main` qoidasi va `pro-later` arxiv tegi (D-71 #7).
+
+## D-74. Pro: reja ↔ panel ajratish (server), 30 kunlik sinov — bir telefonga bir marta, “Obuna” ekrani (2026-10-24; Pro YOQILMAGAN)
+> **QISMAN SUPERSEDED (D-76, 2026-10-24, egasi qarori):** matritsa (§1: Mutaxassis → ustoz paneli, `specialist`
+> imkoniyati) va sinov muddati (30 kun) D-76 bilan almashtirilgan; qolgan qoidalar amalda. Quyidagi matn — tarix.
+`pro-next` tarmog'ida. **Hech narsa deploy qilinmadi, yoqilmadi, do'konga yuborilmadi; production D1 ga migratsiya
+qo'llanmadi** (`0016_pro_trials.sql` — faqat fayl). `BuildFlags.proEnabled` standart `false`; server yo'llari
+(`/v1/billing/trial/*`, `/v1/pro/*`) `LG_BILLING_ENABLED=true` bo'lmasa 404; qurilma attestatsiyasi tekshiruvchisi
+production'da ULANMAGAN — sinov `503 device_attestation_not_configured`. `ProGatePolicy.gated` BO'SH (bugun bepul
+hech narsa pullik bo'lmadi), mavjud bepul foydalanuvchilar va bepul ustoz paneli (guruhlar, topshiriqlar) o'zgarmadi.
+Egasi qoidalari (topshiriq 2026-10-24): (1) Talaba rejasi ustoz panelini ochmasin, qaror serverda; (2) 30 kunlik
+bepul sinov bir telefonga bir marta; (3) ilovada aniq “Obuna” ekrani.
+
+**1. Daraja × imkoniyat matritsasi (MA'LUMOT, `cloudflare/src/tiers.ts` `TIER_CAPABILITIES`; ilova nusxasi
+`lib/core/entitlements/plan_matrix.dart`, test solishtiradi).** Imkoniyat — funksiya emas, TOIFA; yangi funksiya
+o'ylab topilmadi. Kelajakda `gated` ga qo'shiladigan har funksiya toifaga tegishli (`Feature.tier`: pro → `learner`,
+teacher → `teacher_panel`) va daraja faqat o'z to'plamidagini ochadi.
+| Daraja | `learner` (talaba tomoni Pro) | `teacher_panel` (ustoz paneli Pro) | `specialist` (mutaxassis Pro) |
+|---|---|---|---|
+| Talaba | ha | **yo'q** | yo'q |
+| Ustoz | ha | ha | yo'q |
+| Mutaxassis | ha | ha (D-73: “eng qimmat reja kamroq bermasin”) | ha |
+Mutaxassis → Ustoz paneli huquqi D-73 moslashidan; qat'iy variant (`learner + specialist`) — ochiq qaror #2.
+
+**2. Serverda tekshiruv — `requireTier(ctx, capability)`.** Qaror faqat serverda saqlangan huquqdan (`loadAccess`:
+do'kon obunasi, admin grant, sinov → `resolveAccess`); `users.role` (ilovada tanlanadigan rol, `PUT /v1/me/profile`)
+va lokal sozlamalar hech narsa ochmaydi. Bayroq o'chiq → 404; sessiyasiz → 401; huquq yo'q → 403 `plan_required`;
+daraja ochmaydi → 403 `tier_insufficient`. Inert yo'llar: `GET /v1/pro/access` (daraja + imkoniyatlar),
+`GET /v1/pro/check/:capability` (Pro-only yo'llar namunasi; `teacher_panel` uchun qo'shimcha `teacher_accounts` —
+bepul ustoz paneli qoidasi bilan bir xil, aks holda 403 `teacher_role_required`). Bepul ustoz paneli `requireTier`
+ga ulanMAGAN. Admin grant ham darajaga bo'ysunadi (Talaba grant → ustoz paneli yo'q). Testlar:
+`cloudflare/test/tiers.test.ts`.
+
+**3. Bepul sinov — bir telefonga bir marta (server mexanizmi, o'chiq).** `POST /v1/billing/trial/challenge` (5 daqiqalik
+bir martalik nonce, faqat SHA-256 saqlanadi) → ilova `DeviceAttestor` bilan attestatsiya → `POST /v1/billing/trial/start
+{tier, email, attestation:{platform, token, nonce, key_id?}}` → 201 + huquqlar surati (`source: trial`). Qoidalar:
+- Hisob: sessiya shart (mehmonning server hisobi yo'q → 401). Email: so'rovdagi email `users.email_hash` bilan mos
+  bo'lishi kerak (hisob faqat OTP yoki provayder `email_verified` bilan yaratiladi) — aks holda 403 `email_not_verified`.
+- (a) Kanonik email (`canonicalEmail`): trim + kichik harf; Gmail/Googlemail — nuqtalar va `+teg` olib tashlanadi;
+  Microsoft (`outlook/hotmail/live/msn`) va Yandex (`yandex.*`, `ya.ru` → `yandex.ru`) — `+teg`. Faqat sinov kaliti;
+  kirish identifikatori o'zgarmaydi. Boshqa provayder aliaslari (bir martalik domenlar va h.k.) — qo'shilmadi.
+- (b) Qurilma: server `DeviceAttestationVerifier` interfeysi (`verify` → barqaror `subject` + platforma bayrog'i
+  `alreadyUsed`, ixtiyoriy `markUsed`); standart `UnconfiguredVerifier` → 503. Haqiqiy Apple/Google tekshiruvchi YO'Q;
+  testlarda `cloudflare/test/fake_attestation.ts`. Ilova: `DeviceAttestor` + `UnconfiguredDeviceAttestor` (standart).
+- Saqlash: faqat HMAC (server kaliti `keys.trial`, `LG_SERVER_SECRET` dan) — `email_key`, `device_key`
+  (platforma + subyekt). Xom email, qurilma id si, attestatsiya tokeni yozilmaydi; jurnalda faqat hisob id, daraja,
+  muddat, platforma. **Saqlash muddati: sinov boshlanganidan 730 kun (24 oy)**, keyin kunlik tozalash o'chiradi
+  (`TRIAL_RETENTION_DAYS`). `LG_SERVER_SECRET` almashtirilsa eski yozuvlar mos kelmaydi (sinov qayta ochiladi).
+- (c) Bitta sinov: hisobga (`user_id`), kanonik emailga, qurilmaga (unikal indekslar, parallel so'rov ham) → 409
+  `trial_already_used` (sababi ataylab aytilmaydi).
+- (d) Hisob o'chirilganda yozuv O'CHMAYDI: `user_id = NULL`, `account_deleted_at` — qayta ro'yxatdan o'tish sinovni
+  qaytarmaydi. Maxfiylik asosi: suiiste'molning oldini olishdagi qonuniy manfaat, minimal ma'lumot (kalitli xesh),
+  cheklangan muddat; matn loyihasi `site/privacy` §10a (uz/ru/en) va ARB `proPrivacyTrialNote` (ilovada faqat
+  bayroq bilan) — FAQAT `pro-next` da, Pro yoqilmaguncha nashr qilinmaydi. Yurist/egasi tasdig'i kerak.
+- (e) Limitlar: start — hisobga 5/soat, IP ga 30/soat; challenge — hisobga 20/soat.
+- (f) Daraja ruxsati (serverdagi yozuvlardan): Talaba — har hisob; Ustoz — `teacher_accounts` (serverda ustoz
+  sifatida ro'yxatdan o'tgan; profil roli “teacher” yetmaydi); Mutaxassis — hamjamiyatda hujjat bilan tasdiqlangan
+  (`community_members.status='verified'`). Aks holda 403 `plan_not_allowed`. Eslatma: `teacher_accounts` o'zi
+  o'z-o'zini ro'yxatdan o'tkazish (D-42) — tasdiq emas (ochiq qaror #4).
+- (g) Muddat (30 kun) `resolveAccess` da hisobga olinadi; muddat o'tgach huquq yo'q (`expired`). Sinov pullik do'kon
+  obunasini hech qachon bosib o'tmaydi (amaldagi obuna bo'lsa sinov qatori e'tiborsiz; tenglikda do'kon > admin >
+  sinov); amaldagi obunada sinov boshlanmaydi (409 `already_subscribed`).
+- Testlar: `cloudflare/test/trial.test.ts` (bir telefonda ikkinchi hisob, gmail nuqta/+teg, mehmon, tasdiqlanmagan
+  email, o'chirib qayta ro'yxat, boshqa qurilma, soxta tekshiruvchi rad, nonce, platforma bayrog'i, sozlanmagan → 503,
+  bayroq o'chiq → 404, muddat, saqlash muddati, limit), `guards.test.ts`.
+
+**4. Halol cheklovlar.** Hech bir usul qat'iyatli buzg'unchini to'liq to'xtatmaydi: yangi telefon, emulyator/root
+(attestatsiya qisman ushlaydi), App Attest kalitini qayta o'rnatishda yangilash, zavod sozlamasiga qaytarish
+(platforma bayrog'i saqlanishi kerak — rasmiy hujjat bilan tekshirilmagan), ko'p email, `LG_SERVER_SECRET` almashishi.
+Batafsil va do'kon-native taklif farqi: `docs/PRO_TRIAL_ABUSE_NOTES.md`. Do'kon kirish taklifi (Apple Introductory
+Offer / Play free trial) — Apple ID / Google hisobiga bir marta (qurilmaga emas), karta kerak, avtomatik pullikka
+o'tadi; iOS'da server bergan kartasiz sinov App Review 3.1.1 bilan ziddiyatga uchrashi mumkin (ochiq qaror #1).
+
+**5. Ilova (“Obuna” ekrani, `lib/features/profile/subscription_screen.dart`).** Profil → “Obuna” (yagona qator, faqat
+`BuildFlags.proEnabled`; eski “Obuna va tiklash” qatori olib tashlandi, to'lov oynasi `/profile/purchase` shu ekrandan
+— to'lov yoqilganda). Uch reja, oylik/yillik USD narx (`ProPricing` katalogidan; do'konda mahalliy valyuta), har reja
+nima uchun (matritsadan), “Hozircha hamma imkoniyat bepul. Rejalar hali faol emas”, holat (bepul / sinov — qolgan
+kunlar / reja / admin bergan), sinov qoidasi (“bir telefonga bir marta”), “Xaridni tiklash”. Sinov tugmasi yo'q
+(attestatsiya yo'q) — “hali yoqilmagan”. ARB `proSub*` (uz/ru/en). Bayroq o'chiq — Profil va yo'llar avvalgidek.
+Testlar: `test/widget/subscription_screen_test.dart` (bayroq on/off, 320px/1.3 uch tilda, holatlar, maxfiylik izohi),
+`test/unit/plan_matrix_test.dart`, `test/unit/trial_entitlement_test.dart`.
+
+**6. Egasi nima sozlashi kerak (sinovni yoqish uchun; hech biri qilinmagan).**
+1. Apple: App ID'da App Attest (va/yoki DeviceCheck) imkoniyati; Developer → Keys → DeviceCheck kaliti (.p8, Key ID,
+   Team ID) — Worker secretlari; App Attest attestatsiyasini Apple App Attest Root CA bilan tekshiruvchi server kodi;
+   iOS native plagin (DCAppAttestService / DCDevice).
+2. Google: Play Console → App integrity → Play Integrity API (Google Cloud loyihasini bog'lash), tokenni
+   `decodeIntegrityToken` bilan ochish uchun service account (secret), kerak bo'lsa “device recall” (beta); Android
+   native plagin (Integrity API, nonce = server challenge).
+3. Server: haqiqiy `DeviceAttestationVerifier` ni yozish va `index.ts` da ulash; `0014`/`0015`/`0016` migratsiyalarini
+   qo'llash; `LG_BILLING_ENABLED=true`; `deploy_api`.
+4. Do'kon mahsulotlari (D-73 id'lari) va kalitlar (`APPLE_IAP_*`, `GOOGLE_PLAY_SERVICE_ACCOUNT`).
+5. Maxfiylik siyosati (§10a ni nashr qilish), App Privacy (Device ID — firibgarlikka qarshi), Play Data safety
+   (“Device or other IDs”, xeshlangan), Foydalanish shartlari (sinov qoidasi).
+6. `ProTrialConfig.freeTrialDays`/`mechanism` hali `null`/`undecided` — server sinovi tanlansa yangilanadi.
+
+**7. Ochiq qarorlar.** (1) Sinov mexanizmi: server (bu D-74) yoki do'kon kirish taklifi yoki ikkalasi (iOS 3.1.1
+xavfi); (2) Mutaxassis ustoz panelini olsinmi (hozir ha); (3) saqlash muddati 24 oy to'g'rimi; (4) Ustoz/Mutaxassis
+sinovi uchun qanday tasdiq (hozir `teacher_accounts` / hamjamiyat tasdig'i); (5) qo'shimcha email aliaslari va bir
+martalik domenlar ro'yxati; (6) attestatsiya yo'q qurilmalar (Huawei/AOSP, web) — sinov yo'q (hozir) yoki boshqa yo'l;
+(7) D-73 §5 dagi qolgan qarorlar.
+
+## D-75. Pro tayyorligi: do'kon tekshiruvi, bildirishnomalar, sandbox, oflayn, sinov platformasi (2026-10-24; Pro YOQILMAGAN)
+> **QISMAN SUPERSEDED (D-76, 2026-10-24, egasi qarori):** 30 kunlik sinov → 7 kun (hamma reja); 3 reja → 4 reja
+> (Premium); “Mutaxassis → ustoz paneli” bekor. Do'kon tekshiruvi, bildirishnomalar, sandbox, oflayn, platforma
+> qoidalari o'zgarmagan.
+`pro-next` tarmog'ida. **Hech narsa deploy qilinmadi, yoqilmadi, do'konga yuborilmadi, push qilinmadi; production D1 ga
+migratsiya qo'llanmadi** (`0017_billing_notifications.sql` — faqat fayl). `BuildFlags.proEnabled` standart `false`,
+`LG_BILLING_ENABLED` o'chiq (yo'llar 404), `ProGatePolicy.gated` BO'SH, `LG_BILLING_SANDBOX` o'chiq,
+`TRIAL_PLATFORMS` standart `android`. Mavjud bepul foydalanuvchilar huquqi o'zgarmadi. Narxlar — D-73 (yagona manba
+`pro_catalog.dart`). To'liq audit: `docs/PRO_READINESS_2026-10-24.md`; test muhiti: `docs/PRO_TEST_ENVIRONMENT.md`;
+Apple'ga savol loyihasi: `docs/APPLE_REVIEW_QUESTION_DRAFT.md` (yuborilmagan).
+
+**Server.** Injeksiya qilinadigan `StoreVerifier` (`deps.storeVerifiers`; haqiqiy App Store Server API / Play
+Developer API, kalitsiz `503 store_verifier_not_configured`). Apple JWS — x5c zanjiri Apple Root CA - G3 ga pin
+(SHA-256 `63343abf…3e9179`, `src/x509.ts`), Apple OID, muddat, ES256; tranzaksiya muhiti host bilan mos. ASSN V2 va
+RTDN: imzo / Pub/Sub OIDC (yoki URL token; hech biri bo'lmasa 503), `notificationUUID`/`messageId` bo'yicha takror
+tashlanadi, `audit_log` ga `billing_notification`; REFUND/REVOKE/REVOKED/voided — darhol `revoked`; grace — Pro bor;
+billing retry/hold/pause/expired — yo'q; holat har doim do'kon API'sidan qayta o'qiladi. `LG_BILLING_SANDBOX=true`
+bo'lmasa sandbox/test xaridi `403 sandbox_not_allowed`, sandbox bildirishnomasi e'tiborsiz. Play: obuna
+(`uz.labguide.<daraja>`) + base plan (`monthly`/`yearly`) → kanonik id `uz.labguide.<daraja>.<davr>` (App Store id
+bilan bir xil); eski D-46 id'lari alias. `restore: true` — hisobning qatorlari do'kondan qayta o'qiladi. Javobda
+`offline_until` = min(hozir + 7 kun, huquq tugashi). Sinov: `TRIAL_PLATFORMS` (standart `android`) — iOS
+`403 trial_not_available_on_platform`; `GET /v1/billing/status` → `trial: {android, ios, platforms}` (platforma ×
+attestatsiya) va `sandbox`.
+
+**Ilova.** Play'da faqat asosiy reja (sinov/chegirma takliflari tanlanmaydi), do'kon kirish taklifi ko'rsatilmaydi
+(`ProTrialConfig.storeIntroOffersAllowed = false`, mexanizm `serverGranted`, 30 kun). Oflayn: kesh chegarasi min(7 kun,
+`offline_until`), qurilma kaliti bilan HMAC; uzaytirilmaydi; bepul imkoniyatlar hech qachon yopilmaydi. Ilova qayta
+ochilganda yangilash (5 daqiqalik throttle) + kirish/ishga tushishda. Sinov tugmasi faqat server imkoniyat so'rovi
+VA attestatsiya bo'lsa; aks holda oddiy izoh; sinov kodi xarid boshlamaydi. “Obuna” ekrani POLICY_REVIEW bo'yicha
+(do'kon narxi eng ko'zga tashlanadi, yillik — yillik, boshqarish/bekor, tiklash, shartlar, maxfiylik, sinov matni
+“to'lov usuli yo'q, pul yechilmaydi, bepul imkoniyatlar davom etadi”, “Pro tugadi”). Debug soxta xarid
+(`LG_FAKE_PURCHASES`, release'da imkonsiz). Admin grantlar hisobga bog'langan (platformaga emas) — shuning uchun
+`ADMIN_GRANTS_PLATFORMS` qo'shilmadi; iOS'dagi xavf Apple savolida (2-savol).
+
+**Testlar.** `cloudflare/test/billing.test.ts`, `billing_lifecycle.test.ts`, `x509.test.ts`, `trial.test.ts`,
+`guards.test.ts`; ilova `test/unit/pro_readiness_d75_test.dart`, `test/widget/subscription_screen_test.dart`,
+`test/guards/pro_flag_default_guard_test.dart` (D-75 guruhi), `entitlements_flow_test.dart`.
+
+**Egasi qarorlari (OCHIQ).**
+1. iOS sinovi: Apple'ga savol yuborish; javobga qarab variant A (iOS'da vaqtli sinov yo'q) yoki B (1 oylik App Store
+   kirish taklifi — avtomatik pullik, egasi qoidasiga zid); ijobiy bo'lsa `TRIAL_PLATFORMS=android,ios` + DeviceCheck.
+2. Family Sharing — ishga tushirishda O'CHIQ (yoqilsa qaytarib bo'lmaydi).
+3. Sinov xeshlarini hisob o'chirilgandan keyin 24 oy saqlash — yurist tekshiruvi (Apple 5.1.1(v) bo'yicha NOANIQ).
+4. Play Integrity “device recall” beta'ga yozilish; haqiqiy Play Integrity / DeviceCheck tekshiruvchilari (kalitlar,
+   native plaginlar) — hozir YO'Q.
+5. Do'kon mahsulotlari: App Store — bitta guruh, 6 mahsulot; Play — 3 obuna × 2 base plan, sinov offer'isiz.
+6. Kalitlar (Worker secretlari): `APPLE_IAP_*`, `GOOGLE_PLAY_SERVICE_ACCOUNT`, `PLAY_RTDN_AUDIENCE`/
+   `PLAY_RTDN_SERVICE_ACCOUNT` (yoki `PLAY_RTDN_TOKEN`), ixtiyoriy `APPLE_SUBSCRIPTION_GROUP_ID`.
+7. Migratsiyalar 0014–0017 ni qo'llash (avval test D1, keyin production — egasi `deploy_api` bilan).
+8. `LG_BILLING_ENABLED` ni qachon yoqish; App Review sandbox xaridlari uchun `LG_BILLING_SANDBOX` siyosati
+   (production'da o'chiq bo'lsa review xaridi rad etiladi).
+9. Play Data safety (“Device or other IDs”, “Purchase history”, firibgarlikka qarshi) va App Privacy (“Device ID”,
+   “Purchase History”) deklaratsiyalari, maxfiylik siyosati §10a nashri.
+10. D-73/D-74 dagi boshqa ochiq qarorlar (nima pullik bo'ladi — hozir hech narsa; Mutaxassis → ustoz paneli va h.k.).
+
+## D-76. Pro: to'rt reja (Premium), `lab` imkoniyati, Lab — Pro (REJA, faol emas), 7 kunlik sinov, mehmon xarid qilmaydi (2026-10-24, egasi qarori; Pro YOQILMAGAN)
+`pro-next` qatoridagi `pro/tiers-premium` tarmog'ida (lokal). **Hech narsa deploy qilinmadi, push qilinmadi, yoqilmadi,
+do'konga yuborilmadi; production D1 ga migratsiya qo'llanmadi** (`0018_premium_tier.sql` — faqat fayl).
+`BuildFlags.proEnabled` standart `false`; `ProGatePolicy.gated` BO'SH (bugun bepul hech narsa yopilmadi); server
+`LG_BILLING_ENABLED` o'chiq. D-74 matritsasi va D-74/D-75 dagi 30 kunlik sinov shu qaror bilan almashtirildi.
+
+**1. To'rt pullik reja, narxlar — EGASI bergan (USD; yagona manba `lib/core/entitlements/pro_catalog.dart` `ProPricing`).**
+| Reja | Oylik | Yillik | Mahsulot id (App Store = kanonik) | Play obuna (+ base plan `monthly`/`yearly`) |
+|---|---|---|---|---|
+| Talaba | 1.49 | 9.99 | `uz.labguide.student.monthly/.yearly` | `uz.labguide.student` |
+| Ustoz | 2.49 | 24.99 | `uz.labguide.teacher.monthly/.yearly` | `uz.labguide.teacher` |
+| Mutaxassis | 3.49 | 34.99 | `uz.labguide.specialist.monthly/.yearly` | `uz.labguide.specialist` |
+| **Premium** (yangi) | 4.99 | 49.99 | `uz.labguide.premium.monthly/.yearly` | `uz.labguide.premium` |
+Kodda: `ProPlan.premium`, `BillingCatalog.premium*`, server `Plan`/`PLAN_RANK`/`BILLING_PRODUCTS`/`PLAY_SUBSCRIPTIONS`
+(`cloudflare/src/billing.ts`). Katalogda yo'q (eski/sinov) mahsulot qatori endi eng past daraja (`student`) — Lab yoki
+ustoz panelini hech qachon ochmaydi (ilova `BillingCatalog.tierOf` bilan bir xil).
+
+**2. Imkoniyat matritsasi (MA'LUMOT; server `cloudflare/src/tiers.ts` `TIER_CAPABILITIES` ↔ ilova
+`lib/core/entitlements/plan_matrix.dart`, test `test/unit/plan_matrix_test.dart` solishtiradi).** Imkoniyatlar:
+`learner`, `teacher_panel`, `lab` (D-74 dagi `specialist` imkoniyati o'rniga `lab`).
+| Reja | `learner` | `teacher_panel` | `lab` |
+|---|---|---|---|
+| Talaba | ha | yo'q | yo'q |
+| Ustoz | ha | ha | **yo'q** |
+| Mutaxassis | ha | **yo'q** | ha |
+| Premium | ha | ha | ha |
+“Mutaxassis Ustozni ham qamraydi” (D-73/D-74) qoidasi BEKOR. Ilovadagi `ProTier` endi chiziqli zinapoya emas —
+imkoniyatlar TO'PLAMI (`ProTier.covers(feature)`); bir nechta amaldagi huquq birlashtiriladi (masalan, Ustoz obunasi +
+Mutaxassis admin granti = ustoz paneli + Lab) — server `accessCapabilities` (`requireTier`) va ilova
+`EntitlementService.tier` bir xil. Qaror faqat serverda saqlangan rejadan (do'kon / admin grant / sinov), lokal roldan
+emas; Talaba yoki Mutaxassis rejasi ustoz panelini hech qachon ochmaydi (`403 tier_insufficient`); `teacher_panel`
+uchun qo'shimcha `teacher_accounts` (aks holda `403 teacher_role_required`). Admin grantni `extend` rejimida
+solishtirib bo'lmaydigan daraja (Ustoz ↔ Mutaxassis) bilan uzaytirish — `409 tier_not_comparable` (jim tanlov yo'q;
+admin `replace` bilan aniq tanlaydi).
+
+**3. Lab — Pro (`lab` imkoniyati) — REJA, FAOL EMAS.** `Feature` ga Lab funksiyalari qo'shildi: `leukocyteCounter`
+(sanashni boshlash va natijani saqlash), `absoluteCounts`, `leukocyteEvaluation`, `labSections` (sitologiya,
+spermogramma, qon guruhi, gistologiya, siydik tahlili, qon morfologiyasi, koprologiya), `coagulogram`,
+`labInstruments`, `labDirections`, `calibration`, `qualityControl`, `labCalculators`. Ular
+`ProGatePolicy.plannedLabGate` da (const, FAOL EMAS); `gated` bo'sh qoladi. Qoida: **kirish sahifasi ochiladi va
+ko'rinadi, vosita/amal boshlanishida tekshiriladi** — leykoformula hisoblagichi ekrani ochiladi, YANGI sanashni
+boshlash (birinchi bosish, “ko'rmasdan” rejim) `allowOrOffer` orqali to'lov oynasini ochadi; **boshlangan sanash
+hech qachon to'xtatilmaydi**; Lab bo'limlari ichidagi sahifalar va vositalar yo'l darajasida (`router.dart`
+`labGate`) — Lab tabi, Bosh sahifa, qidiruv yoki analit kartasidan kelinsa ham. Rasm mualliflari (litsenziya) sahifalari
+va preanalitika (bitta ma'lumot sahifasi) ochiq; mikroskopiya atlasi — avvalgidek `atlasPractice` (`learner`).
+Standart buildda hech narsa yopilmaydi, “tez orada” yoki yopiq tugma yo'q (App Store 2.1 / 3.1.1). Sinov:
+`test/widget/lab_gate_test.dart` (`EntitlementService(gated: plannedLabGate)` override bilan).
+
+**4. Bepul sinov — 7 kun, HAMMA reja uchun** (Talaba, Ustoz, Mutaxassis, Premium): `cloudflare/src/trial.ts`
+`TRIAL_DAYS = 7`, `ProTrialConfig.serverTrialDays = 7`, ARB uz/ru/en (`proSubTrialTitle({days})`,
+`proPrivacyTrialNote`), `site/privacy`. Bir telefonga bir marta, karta yo'q, avtomatik pullik yo'q; suiiste'molga
+qarshi qoidalar o'zgarmadi (hisob/email/telefonga bitta, Gmail kanonik, kalitli xesh, standart faqat Android, iOS
+`403` Apple javobigacha, do'kon kirish takliflari o'chiq). Sinov foydalanuvchi tanlagan rejani beradi; reja ruxsati
+reja imkoniyatlaridan: ustoz paneli bor reja — `teacher_accounts`, Lab bor reja — tasdiqlangan mutaxassis; shuning
+uchun **Premium sinovi ikkala shartni ham** talab qiladi (ochiq qaror #2).
+
+**5. Mehmon rejimi qoladi (Apple 5.1.1); mehmon sinov ham, xarid ham olmaydi.** D-73 ochiq qarori (10) shu bilan
+yopildi: `EntitlementService.purchase/restore` mehmonga `BillingOutcome.signInRequired` (do'kon oynasi ochilmaydi),
+to'lov oynasida obuna tugmasi o'rniga izoh va “Hisobga kirish”; qurilmadagi do'kon tranzaksiyasi mehmonga huquq
+BERMAYDI (eslab qolinadi, hisobga kirilganda serverga bog'lanadi); sinov — avvalgidek `TrialBlock.guest`, server 401.
+
+**6. Admin Pro berish** — to'rt reja (`/profile/admin/pro-grants`, `ProPlan.values`), server `0018` dan keyin
+`premium` ni yozadi.
+
+**7. Migratsiya `0018_premium_tier.sql`.** `pro_grants.tier` va `pro_trials.tier` CHECK cheklovi `premium` bilan
+kengaytirildi (SQLite: jadval qayta quriladi — yangi jadval, ma'lumot nusxasi, eskisini o'chirish, nom, indekslar;
+0004 dagidek). 0014–0017 tahrirlanmadi. Test: `cloudflare/test/migration_0018.test.ts` (eski 0015/0016 jadvali
+ustiga: qatorlar saqlanadi, premium ochiladi, unikal indekslar qayta quriladi).
+
+**Testlar.** Server: `tiers.test.ts` (matritsa jadvali, har reja × imkoniyat, `403 tier_insufficient`, birlashma),
+`trial.test.ts` (7 kun, Mutaxassis/Premium sinovi), `progrants.test.ts` (to'rt reja, premium mahsulot/grant,
+`tier_not_comparable`), `migration_0018.test.ts`. Ilova: `plan_matrix_test.dart` (server paritet),
+`entitlements_test.dart`, `trial_entitlement_test.dart`, `pro_flag_default_guard_test.dart`, `lab_gate_test.dart`,
+`entitlements_flow_test.dart`, `subscription_screen_test.dart`, `admin_pro_grant_test.dart`.
+
+**Ochiq qarorlar (egasi).**
+1. Lab yopilishini qachon faollashtirish (`plannedLabGate` → `gated`) — Pro yoqilganda alohida qaror.
+2. Premium sinovi uchun shart: hozir ustoz (`teacher_accounts`) VA tasdiqlangan mutaxassis — yumshatilsinmi.
+3. Lab ichidagi mashq/test sahifalari (masalan, bo'lim testlari) ham `labSections` ostida — Talaba rejasiga
+   qoldirilsinmi; leykoformula bo'limidagi hujayralar, tarix, mashq — hozir ochiq (ko'rish).
+4. Mehmon xarid qila olmasligi (D-76 §5) — App Store 5.1.1 bo'yicha review xavfi (Apple obunani hisobsiz sotishni
+   kutishi mumkin); kerak bo'lsa Apple'ga savolga qo'shish.
+5. Do'kon mahsulotlari: App Store — 8 mahsulot (bitta guruh), Play — 4 obuna × 2 base plan; narx pog'onalari va UZS.
 

@@ -6,6 +6,9 @@ import '../core/backend/access_controller.dart';
 import '../core/backend/admin_console.dart';
 import '../core/backend/admin_team.dart';
 import '../core/backend/lab_backend.dart';
+import '../core/backend/pro_grants.dart';
+import '../core/build_flags.dart';
+import '../core/entitlements/entitlement_service.dart';
 import '../core/storage/kv_store.dart';
 import '../features/auth/auth_controller.dart';
 import '../features/classroom/classroom_local.dart';
@@ -77,6 +80,7 @@ class AppServices {
     required this.backend,
     required this.access,
     required this.partners,
+    required this.entitlements,
     required this.toifa,
     required this.differential,
     required this.daily,
@@ -119,6 +123,11 @@ class AppServices {
   /// Hamkorlar (reklama) — faqat server ulangan buildda.
   final PartnersController partners;
 
+  /// Pro huquqlari. `BuildFlags.proEnabled == false` bo'lsa — o'chirilgan
+  /// (`EntitlementService.disabled()`): `can()` doim `true`, hech narsa
+  /// ishga tushmaydi (D-71).
+  final EntitlementService entitlements;
+
   /// Toifa imtihoniga tayyorgarlik (faqat O'zbekiston foydalanuvchilariga).
   final ToifaController toifa;
 
@@ -159,6 +168,14 @@ class AppServices {
   AdminTeamBackend? get adminTeam =>
       backend is AdminTeamBackend ? backend as AdminTeamBackend : null;
 
+  /// Admin tomonidan Pro berish (D-73): faqat Pro bayrog'i yoqilgan buildda
+  /// VA server bu imkoniyatga ega bo'lsa. Bayroq o'chiq — doim `null`
+  /// (bo'lim umuman ko'rinmaydi, admin panel o'zgarmaydi).
+  ProGrantBackend? get proGrants =>
+      BuildFlags.proEnabled && backend is ProGrantBackend
+      ? backend as ProGrantBackend
+      : null;
+
   /// Egasi admin paneli (foydalanuvchilar, shikoyatlar) — faqat Cloudflare.
   AdminConsoleBackend? get adminConsole =>
       backend is AdminConsoleBackend ? backend as AdminConsoleBackend : null;
@@ -188,6 +205,7 @@ class AppServices {
         access.clear();
       }
       community.reset();
+      if (BuildFlags.proEnabled) unawaited(entitlements.refresh());
     });
     settings.addListener(() {
       if (settings.role == role && settings.language == language) return;
@@ -211,6 +229,7 @@ class AppServices {
     instruments.resetInMemory();
     microscopy.resetInMemory();
     partners.resetInMemory();
+    entitlements.resetInMemory();
     reading.resetInMemory();
     toifa.resetInMemory();
     differential.resetInMemory();

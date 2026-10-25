@@ -4,12 +4,14 @@ import 'package:material_ui/material_ui.dart';
 
 import '../../app/app_scope.dart';
 import '../../app/widgets/lg_page.dart';
+import '../../core/entitlements/feature.dart';
 import '../../app/widgets/diagram_figure.dart';
 import '../../app/widgets/links.dart';
 import '../../core/single_flight.dart';
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
+import '../profile/pro_gate.dart';
 import '../content/analyte_search.dart';
 import '../content/content_model.dart';
 import '../content/ui/content_widgets.dart';
@@ -409,7 +411,12 @@ class _CalibrationScreenState extends State<CalibrationScreen> {
                   LgButton(
                     label: l.calShowGuide,
                     icon: Icons.menu_book_outlined,
-                    onPressed: () => _showGuide(pack),
+                    // Amal — [Feature.calibration] (D-76; standart: yopilmagan).
+                    onPressed: () {
+                      if (allowOrOffer(context, Feature.calibration)) {
+                        _showGuide(pack);
+                      }
+                    },
                   ),
                   if (_guide case final g?)
                     _GuideResult(
@@ -425,7 +432,11 @@ class _CalibrationScreenState extends State<CalibrationScreen> {
                       LgButton.secondary(
                         label: l.calRecordCreate,
                         icon: Icons.edit_note_rounded,
-                        onPressed: () => setState(() => _recordOpen = true),
+                        onPressed: () {
+                          if (allowOrOffer(context, Feature.calibration)) {
+                            setState(() => _recordOpen = true);
+                          }
+                        },
                       )
                     else
                       _RecordForm(
@@ -488,7 +499,11 @@ class _CalibrationScreenState extends State<CalibrationScreen> {
                     subtitle: l.calLogSub,
                     icon: Icons.fact_check_outlined,
                     divider: false,
-                    onTap: () => context.push('/lab/calibration/log'),
+                    onTap: () => pushGated(
+                      context,
+                      Feature.calibration,
+                      '/lab/calibration/log',
+                    ),
                   ),
                 ],
               ),

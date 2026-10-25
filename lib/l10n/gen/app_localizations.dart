@@ -21897,6 +21897,930 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'A hemostasis test reference, a result reading helper and the DIC score — with sources.'**
   String get howToCoagulogramResult;
+
+  /// No description provided for @proPayTierPro.
+  ///
+  /// In en, this message translates to:
+  /// **'Pro'**
+  String get proPayTierPro;
+
+  /// No description provided for @proPayTierProSub.
+  ///
+  /// In en, this message translates to:
+  /// **'For lab staff, doctors, students and anyone preparing for the qualification exam'**
+  String get proPayTierProSub;
+
+  /// No description provided for @proPayTierTeacher.
+  ///
+  /// In en, this message translates to:
+  /// **'Teacher Pro'**
+  String get proPayTierTeacher;
+
+  /// No description provided for @proPayTierTeacherSub.
+  ///
+  /// In en, this message translates to:
+  /// **'For teachers working with a group: Student plan features plus the teacher panel. The Laboratory section is not included.'**
+  String get proPayTierTeacherSub;
+
+  /// No description provided for @proPayFree.
+  ///
+  /// In en, this message translates to:
+  /// **'Features not marked as paid stay free.'**
+  String get proPayFree;
+
+  /// No description provided for @proPayFeatQuestions.
+  ///
+  /// In en, this message translates to:
+  /// **'Unlimited questions: practice by topic and card mini-tests'**
+  String get proPayFeatQuestions;
+
+  /// No description provided for @proPayFeatExam.
+  ///
+  /// In en, this message translates to:
+  /// **'Exam simulation (timed test)'**
+  String get proPayFeatExam;
+
+  /// No description provided for @proPayFeatToifa.
+  ///
+  /// In en, this message translates to:
+  /// **'The full qualification exam bank: official test and practice by topic'**
+  String get proPayFeatToifa;
+
+  /// No description provided for @proPayFeatWeak.
+  ///
+  /// In en, this message translates to:
+  /// **'Weak-topic analysis in your results'**
+  String get proPayFeatWeak;
+
+  /// No description provided for @proPayFeatAtlas.
+  ///
+  /// In en, this message translates to:
+  /// **'Microscopy atlas practice'**
+  String get proPayFeatAtlas;
+
+  /// No description provided for @proPayFeatHistory.
+  ///
+  /// In en, this message translates to:
+  /// **'Full results history'**
+  String get proPayFeatHistory;
+
+  /// No description provided for @proPayFeatAllPro.
+  ///
+  /// In en, this message translates to:
+  /// **'Everything in Pro'**
+  String get proPayFeatAllPro;
+
+  /// No description provided for @proPayFeatGroups.
+  ///
+  /// In en, this message translates to:
+  /// **'Groups: add students, grades and results reports'**
+  String get proPayFeatGroups;
+
+  /// No description provided for @proPayFeatAssignments.
+  ///
+  /// In en, this message translates to:
+  /// **'Group assignments (timed tests)'**
+  String get proPayFeatAssignments;
+
+  /// No description provided for @proPayFeatLecture.
+  ///
+  /// In en, this message translates to:
+  /// **'Lecture mode: automatic presentation for a topic'**
+  String get proPayFeatLecture;
+
+  /// No description provided for @proPayFeatLabCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Differential count: counting and saving the result'**
+  String get proPayFeatLabCount;
+
+  /// No description provided for @proPayFeatLabAbsolute.
+  ///
+  /// In en, this message translates to:
+  /// **'Differential count: percentages and absolute counts'**
+  String get proPayFeatLabAbsolute;
+
+  /// No description provided for @proPayFeatLabEvaluate.
+  ///
+  /// In en, this message translates to:
+  /// **'Differential count: result evaluation'**
+  String get proPayFeatLabEvaluate;
+
+  /// No description provided for @proPayFeatLabSections.
+  ///
+  /// In en, this message translates to:
+  /// **'Laboratory sections: cytology, semen analysis, blood group, histology, urinalysis, blood morphology, coprology'**
+  String get proPayFeatLabSections;
+
+  /// No description provided for @proPayFeatLabCoag.
+  ///
+  /// In en, this message translates to:
+  /// **'Coagulogram'**
+  String get proPayFeatLabCoag;
+
+  /// No description provided for @proPayFeatLabInstruments.
+  ///
+  /// In en, this message translates to:
+  /// **'Instrument catalogue'**
+  String get proPayFeatLabInstruments;
+
+  /// No description provided for @proPayFeatLabDirections.
+  ///
+  /// In en, this message translates to:
+  /// **'Laboratory direction cards'**
+  String get proPayFeatLabDirections;
+
+  /// No description provided for @proPayFeatLabCalibration.
+  ///
+  /// In en, this message translates to:
+  /// **'Calibration and calibration log'**
+  String get proPayFeatLabCalibration;
+
+  /// No description provided for @proPayFeatLabQc.
+  ///
+  /// In en, this message translates to:
+  /// **'Quality control (QC)'**
+  String get proPayFeatLabQc;
+
+  /// No description provided for @proPayFeatLabCalculators.
+  ///
+  /// In en, this message translates to:
+  /// **'Laboratory calculators'**
+  String get proPayFeatLabCalculators;
+
+  /// No description provided for @proPayPlanMonthly.
+  ///
+  /// In en, this message translates to:
+  /// **'Monthly'**
+  String get proPayPlanMonthly;
+
+  /// No description provided for @proPayPlanYearly.
+  ///
+  /// In en, this message translates to:
+  /// **'Yearly'**
+  String get proPayPlanYearly;
+
+  /// No description provided for @proPayUnitDay.
+  ///
+  /// In en, this message translates to:
+  /// **'day'**
+  String get proPayUnitDay;
+
+  /// No description provided for @proPayUnitWeek.
+  ///
+  /// In en, this message translates to:
+  /// **'week'**
+  String get proPayUnitWeek;
+
+  /// No description provided for @proPayUnitMonth.
+  ///
+  /// In en, this message translates to:
+  /// **'month'**
+  String get proPayUnitMonth;
+
+  /// No description provided for @proPayUnitYear.
+  ///
+  /// In en, this message translates to:
+  /// **'year'**
+  String get proPayUnitYear;
+
+  /// No description provided for @proPayDays.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 day} other{{count} days}}'**
+  String proPayDays(int count);
+
+  /// No description provided for @proPayWeeks.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 week} other{{count} weeks}}'**
+  String proPayWeeks(int count);
+
+  /// No description provided for @proPayMonths.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 month} other{{count} months}}'**
+  String proPayMonths(int count);
+
+  /// No description provided for @proPayYears.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 year} other{{count} years}}'**
+  String proPayYears(int count);
+
+  /// No description provided for @proPayPricePer.
+  ///
+  /// In en, this message translates to:
+  /// **'{price} / {period}'**
+  String proPayPricePer(String price, String period);
+
+  /// No description provided for @proPayTrial.
+  ///
+  /// In en, this message translates to:
+  /// **'{trial} free, then {price}'**
+  String proPayTrial(String trial, String price);
+
+  /// No description provided for @proPayStartTrial.
+  ///
+  /// In en, this message translates to:
+  /// **'Start free trial'**
+  String get proPayStartTrial;
+
+  /// No description provided for @proPaySubscribe.
+  ///
+  /// In en, this message translates to:
+  /// **'Subscribe'**
+  String get proPaySubscribe;
+
+  /// No description provided for @proPayCurrent.
+  ///
+  /// In en, this message translates to:
+  /// **'Active subscription'**
+  String get proPayCurrent;
+
+  /// No description provided for @proPayRestore.
+  ///
+  /// In en, this message translates to:
+  /// **'Restore purchases'**
+  String get proPayRestore;
+
+  /// No description provided for @proPayManage.
+  ///
+  /// In en, this message translates to:
+  /// **'Manage or cancel subscription'**
+  String get proPayManage;
+
+  /// No description provided for @proPayTerms.
+  ///
+  /// In en, this message translates to:
+  /// **'Terms of Use (EULA)'**
+  String get proPayTerms;
+
+  /// No description provided for @proPayPrivacy.
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy Policy'**
+  String get proPayPrivacy;
+
+  /// No description provided for @proPayDisclosure.
+  ///
+  /// In en, this message translates to:
+  /// **'Subscriptions renew automatically. Payment is charged to your {store} account when you confirm the purchase (after the free trial ends, if there is one). Unless cancelled at least 24 hours before the end of the current period, the subscription renews for the same period and price, and your account is charged within 24 hours before the period ends. You can manage and cancel the subscription in your {store} account settings. Any unused part of a free trial is forfeited when you buy a subscription.'**
+  String proPayDisclosure(String store);
+
+  /// No description provided for @proPayGuestNote.
+  ///
+  /// In en, this message translates to:
+  /// **'You need to sign in to subscribe, restore a purchase or start the free trial. The free part of the app works without an account.'**
+  String get proPayGuestNote;
+
+  /// No description provided for @proPaySignInRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Please sign in first to subscribe or restore a purchase.'**
+  String get proPaySignInRequired;
+
+  /// No description provided for @proPayLockedPro.
+  ///
+  /// In en, this message translates to:
+  /// **'This feature is part of Pro.'**
+  String get proPayLockedPro;
+
+  /// No description provided for @proPayLockedTeacher.
+  ///
+  /// In en, this message translates to:
+  /// **'This feature is part of the Teacher and Premium plans.'**
+  String get proPayLockedTeacher;
+
+  /// No description provided for @proPayLockedLab.
+  ///
+  /// In en, this message translates to:
+  /// **'This feature is part of the Specialist and Premium plans.'**
+  String get proPayLockedLab;
+
+  /// No description provided for @proPayAllOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'All features are open right now.'**
+  String get proPayAllOpen;
+
+  /// No description provided for @proPayTestBuildOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'Test build: all features are open.'**
+  String get proPayTestBuildOpen;
+
+  /// No description provided for @proPayStatusTeacher.
+  ///
+  /// In en, this message translates to:
+  /// **'Teacher Pro is active · until {date}'**
+  String proPayStatusTeacher(String date);
+
+  /// No description provided for @proPayStatusTeacherNoEnd.
+  ///
+  /// In en, this message translates to:
+  /// **'Teacher Pro is active'**
+  String get proPayStatusTeacherNoEnd;
+
+  /// No description provided for @proPayStatusDevice.
+  ///
+  /// In en, this message translates to:
+  /// **'The subscription is active on this device. Sign in to use it on your other devices too.'**
+  String get proPayStatusDevice;
+
+  /// No description provided for @proPaySuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Your subscription is active. Thank you!'**
+  String get proPaySuccess;
+
+  /// No description provided for @proPayRestored.
+  ///
+  /// In en, this message translates to:
+  /// **'Purchase restored.'**
+  String get proPayRestored;
+
+  /// No description provided for @proPayPending.
+  ///
+  /// In en, this message translates to:
+  /// **'Waiting for the payment to be approved. The subscription will unlock automatically once it is.'**
+  String get proPayPending;
+
+  /// No description provided for @proPayNothingFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No active subscription was found to restore.'**
+  String get proPayNothingFound;
+
+  /// No description provided for @proPayOwnedByOther.
+  ///
+  /// In en, this message translates to:
+  /// **'This purchase is linked to another LabGuide account. Sign in to that account.'**
+  String get proPayOwnedByOther;
+
+  /// No description provided for @proPayFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'The purchase didn’t complete. Check your connection and try again. If you were charged, tap “Restore purchases”.'**
+  String get proPayFailed;
+
+  /// No description provided for @proPayUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'The store isn’t responding right now. Please try again later.'**
+  String get proPayUnavailable;
+
+  /// No description provided for @proPayDeleteAccountNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Deleting your account doesn’t cancel your subscription: cancel it in your {store} settings.'**
+  String proPayDeleteAccountNote(String store);
+
+  /// No description provided for @proRowTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Subscription and restore'**
+  String get proRowTitle;
+
+  /// No description provided for @proRowSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Free · Pro'**
+  String get proRowSub;
+
+  /// No description provided for @proPurchaseTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'LabGuide Pro'**
+  String get proPurchaseTitle;
+
+  /// No description provided for @proStatusTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Status'**
+  String get proStatusTitle;
+
+  /// No description provided for @proStatusPro.
+  ///
+  /// In en, this message translates to:
+  /// **'Pro is active · until {date}'**
+  String proStatusPro(String date);
+
+  /// No description provided for @proStatusProNoEnd.
+  ///
+  /// In en, this message translates to:
+  /// **'Pro is active'**
+  String get proStatusProNoEnd;
+
+  /// No description provided for @proStatusOffline.
+  ///
+  /// In en, this message translates to:
+  /// **'Offline: last checked {date}'**
+  String proStatusOffline(String date);
+
+  /// No description provided for @proHistoryHidden.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 older result is saved} other{{count} older results are saved}} — the free plan shows the last {limit}. Nothing has been deleted.'**
+  String proHistoryHidden(int count, int limit);
+
+  /// No description provided for @proNothingGated.
+  ///
+  /// In en, this message translates to:
+  /// **'No feature is marked as paid yet: everything is open.'**
+  String get proNothingGated;
+
+  /// No description provided for @proPlanStudent.
+  ///
+  /// In en, this message translates to:
+  /// **'Student'**
+  String get proPlanStudent;
+
+  /// No description provided for @proPlanTeacher.
+  ///
+  /// In en, this message translates to:
+  /// **'Teacher'**
+  String get proPlanTeacher;
+
+  /// No description provided for @proPlanSpecialist.
+  ///
+  /// In en, this message translates to:
+  /// **'Specialist'**
+  String get proPlanSpecialist;
+
+  /// No description provided for @proPlanPremium.
+  ///
+  /// In en, this message translates to:
+  /// **'Premium'**
+  String get proPlanPremium;
+
+  /// No description provided for @proPayTierStudent.
+  ///
+  /// In en, this message translates to:
+  /// **'Student'**
+  String get proPayTierStudent;
+
+  /// No description provided for @proPayTierStudentSub.
+  ///
+  /// In en, this message translates to:
+  /// **'For accounts with verified student status'**
+  String get proPayTierStudentSub;
+
+  /// No description provided for @proPayTierSpecialist.
+  ///
+  /// In en, this message translates to:
+  /// **'Specialist'**
+  String get proPayTierSpecialist;
+
+  /// No description provided for @proPayTierSpecialistSub.
+  ///
+  /// In en, this message translates to:
+  /// **'For lab specialists and doctors: Student plan features plus the whole Laboratory section. The teacher panel is not included.'**
+  String get proPayTierSpecialistSub;
+
+  /// No description provided for @proPayTierPremium.
+  ///
+  /// In en, this message translates to:
+  /// **'Premium'**
+  String get proPayTierPremium;
+
+  /// No description provided for @proPayTierPremiumSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Everything: Student plan features, the teacher panel and the whole Laboratory section.'**
+  String get proPayTierPremiumSub;
+
+  /// No description provided for @proPayStatusAdminGrant.
+  ///
+  /// In en, this message translates to:
+  /// **'Pro granted by an administrator'**
+  String get proPayStatusAdminGrant;
+
+  /// No description provided for @proPayStatusAdminGrantUntil.
+  ///
+  /// In en, this message translates to:
+  /// **'Pro granted by an administrator · until {date}'**
+  String proPayStatusAdminGrantUntil(String date);
+
+  /// No description provided for @proGrantRow.
+  ///
+  /// In en, this message translates to:
+  /// **'Grant Pro'**
+  String get proGrantRow;
+
+  /// No description provided for @proGrantRowSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Give Pro to an email address or revoke it'**
+  String get proGrantRowSub;
+
+  /// No description provided for @proGrantTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Grant Pro'**
+  String get proGrantTitle;
+
+  /// No description provided for @proGrantIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Give Pro to an email address. If there is no account yet, it takes effect when the account is created or first signs in. A store subscription is not changed: the higher of the two applies.'**
+  String get proGrantIntro;
+
+  /// No description provided for @proGrantEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Email'**
+  String get proGrantEmail;
+
+  /// No description provided for @proGrantTier.
+  ///
+  /// In en, this message translates to:
+  /// **'Plan'**
+  String get proGrantTier;
+
+  /// No description provided for @proGrantDuration.
+  ///
+  /// In en, this message translates to:
+  /// **'Duration'**
+  String get proGrantDuration;
+
+  /// No description provided for @proGrantNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Note (optional)'**
+  String get proGrantNote;
+
+  /// No description provided for @proGrantDays.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} days'**
+  String proGrantDays(int count);
+
+  /// No description provided for @proGrantUntilRevoked.
+  ///
+  /// In en, this message translates to:
+  /// **'Until revoked'**
+  String get proGrantUntilRevoked;
+
+  /// No description provided for @proGrantExtend.
+  ///
+  /// In en, this message translates to:
+  /// **'Extend the existing grant (do not replace)'**
+  String get proGrantExtend;
+
+  /// No description provided for @proGrantSubmit.
+  ///
+  /// In en, this message translates to:
+  /// **'Grant Pro'**
+  String get proGrantSubmit;
+
+  /// No description provided for @proGrantConfirmTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Grant Pro?'**
+  String get proGrantConfirmTitle;
+
+  /// No description provided for @proGrantConfirmBody.
+  ///
+  /// In en, this message translates to:
+  /// **'{email} will get “{plan}” Pro. Duration: {duration}.'**
+  String proGrantConfirmBody(String email, String plan, String duration);
+
+  /// No description provided for @proGrantDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Pro granted: {email}'**
+  String proGrantDone(String email);
+
+  /// No description provided for @proGrantReplaced.
+  ///
+  /// In en, this message translates to:
+  /// **'Existing grant replaced: {email}'**
+  String proGrantReplaced(String email);
+
+  /// No description provided for @proGrantExtended.
+  ///
+  /// In en, this message translates to:
+  /// **'Grant extended: {email}'**
+  String proGrantExtended(String email);
+
+  /// No description provided for @proGrantListTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Active and pending ({count})'**
+  String proGrantListTitle(int count);
+
+  /// No description provided for @proGrantEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No grants yet.'**
+  String get proGrantEmpty;
+
+  /// No description provided for @proGrantPending.
+  ///
+  /// In en, this message translates to:
+  /// **'Waiting for an account: starts at first sign-in'**
+  String get proGrantPending;
+
+  /// No description provided for @proGrantUntil.
+  ///
+  /// In en, this message translates to:
+  /// **'until {date}'**
+  String proGrantUntil(String date);
+
+  /// No description provided for @proGrantRevoke.
+  ///
+  /// In en, this message translates to:
+  /// **'Revoke'**
+  String get proGrantRevoke;
+
+  /// No description provided for @proGrantRevokeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Revoke this grant?'**
+  String get proGrantRevokeTitle;
+
+  /// No description provided for @proGrantRevokeBody.
+  ///
+  /// In en, this message translates to:
+  /// **'{email} loses Pro immediately. A store subscription (if any) stays.'**
+  String proGrantRevokeBody(String email);
+
+  /// No description provided for @proGrantRevoked.
+  ///
+  /// In en, this message translates to:
+  /// **'Revoked: {email}'**
+  String proGrantRevoked(String email);
+
+  /// No description provided for @proGrantErrNote.
+  ///
+  /// In en, this message translates to:
+  /// **'The note must be at most 200 characters, without control characters.'**
+  String get proGrantErrNote;
+
+  /// No description provided for @proGrantErrPending.
+  ///
+  /// In en, this message translates to:
+  /// **'A pending grant cannot be extended: replace it instead.'**
+  String get proGrantErrPending;
+
+  /// No description provided for @proGrantErrDuration.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a duration to extend.'**
+  String get proGrantErrDuration;
+
+  /// No description provided for @proGrantErrMany.
+  ///
+  /// In en, this message translates to:
+  /// **'The active grant limit is reached. Revoke unused ones first.'**
+  String get proGrantErrMany;
+
+  /// No description provided for @proGrantErrTierMix.
+  ///
+  /// In en, this message translates to:
+  /// **'These plans do not include each other, so the grant cannot be extended. Choose the plan you need and replace the grant.'**
+  String get proGrantErrTierMix;
+
+  /// No description provided for @proSubTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Subscription'**
+  String get proSubTitle;
+
+  /// No description provided for @proSubRowSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Plans, your status and restore purchases'**
+  String get proSubRowSub;
+
+  /// No description provided for @proSubAllFree.
+  ///
+  /// In en, this message translates to:
+  /// **'Right now every feature is free. Plans are not active yet — nothing is on sale.'**
+  String get proSubAllFree;
+
+  /// No description provided for @proSubStatusTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your status'**
+  String get proSubStatusTitle;
+
+  /// No description provided for @proSubStatusFree.
+  ///
+  /// In en, this message translates to:
+  /// **'Free'**
+  String get proSubStatusFree;
+
+  /// No description provided for @proSubStatusTrial.
+  ///
+  /// In en, this message translates to:
+  /// **'{plan} · free trial: {days} left'**
+  String proSubStatusTrial(String plan, String days);
+
+  /// No description provided for @proSubStatusPlan.
+  ///
+  /// In en, this message translates to:
+  /// **'{plan} plan active'**
+  String proSubStatusPlan(String plan);
+
+  /// No description provided for @proSubStatusPlanUntil.
+  ///
+  /// In en, this message translates to:
+  /// **'{plan} plan active · until {date}'**
+  String proSubStatusPlanUntil(String plan, String date);
+
+  /// No description provided for @proSubStatusAdmin.
+  ///
+  /// In en, this message translates to:
+  /// **'{plan} — granted by an administrator'**
+  String proSubStatusAdmin(String plan);
+
+  /// No description provided for @proSubStatusAdminUntil.
+  ///
+  /// In en, this message translates to:
+  /// **'{plan} — granted by an administrator · until {date}'**
+  String proSubStatusAdminUntil(String plan, String date);
+
+  /// No description provided for @proSubPlansTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Plans'**
+  String get proSubPlansTitle;
+
+  /// No description provided for @proSubPriceNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Prices are in US dollars. The store shows them in your local currency.'**
+  String get proSubPriceNote;
+
+  /// No description provided for @proSubUnlocks.
+  ///
+  /// In en, this message translates to:
+  /// **'Covers: {list}'**
+  String proSubUnlocks(String list);
+
+  /// No description provided for @proSubCapLearner.
+  ///
+  /// In en, this message translates to:
+  /// **'student-side Pro features'**
+  String get proSubCapLearner;
+
+  /// No description provided for @proSubCapTeacherPanel.
+  ///
+  /// In en, this message translates to:
+  /// **'teacher-panel Pro features'**
+  String get proSubCapTeacherPanel;
+
+  /// No description provided for @proSubCapLab.
+  ///
+  /// In en, this message translates to:
+  /// **'the whole Laboratory section (instruments, calibration, QC, calculators, differential counting and more)'**
+  String get proSubCapLab;
+
+  /// No description provided for @proSubNothingGated.
+  ///
+  /// In en, this message translates to:
+  /// **'Right now this plan unlocks nothing extra: everything is free.'**
+  String get proSubNothingGated;
+
+  /// No description provided for @proSubTeacherNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Teacher-panel Pro features come only with the Teacher or Premium plan, and the Laboratory section only with the Specialist or Premium plan. Changing your role in the app does not unlock them. Today\'s free groups stay free.'**
+  String get proSubTeacherNote;
+
+  /// No description provided for @proSubTrialTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'{days}-day free trial'**
+  String proSubTrialTitle(int days);
+
+  /// No description provided for @proSubTrialOncePerPhone.
+  ///
+  /// In en, this message translates to:
+  /// **'Given only once per phone: not again for another account, nor after deleting and re-creating your account. You need to be signed in with a verified email.'**
+  String get proSubTrialOncePerPhone;
+
+  /// No description provided for @proSubTrialUsed.
+  ///
+  /// In en, this message translates to:
+  /// **'This account has already used its free trial.'**
+  String get proSubTrialUsed;
+
+  /// No description provided for @proSubTrialNotActive.
+  ///
+  /// In en, this message translates to:
+  /// **'The free trial is not switched on yet.'**
+  String get proSubTrialNotActive;
+
+  /// No description provided for @proSubTrialGuest.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in to use the free trial.'**
+  String get proSubTrialGuest;
+
+  /// No description provided for @proPrivacyTrialNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Pro (only when Pro is enabled; not active now): the 7-day free trial is given once per phone. To enforce this the server keeps the dates, plan, platform and only one-way keyed hashes of your email (in canonical form) and of a device identifier — the email itself, any device identifier and the attestation token are not stored. When you delete your account the record is unlinked from it but kept for 24 months so the trial is not given again, then deleted automatically.'**
+  String get proPrivacyTrialNote;
+
+  /// No description provided for @proSubTrialBody.
+  ///
+  /// In en, this message translates to:
+  /// **'{days} days of Pro, free. No payment method is needed and nothing is charged. When it ends, every free feature keeps working; to keep Pro you can subscribe separately.'**
+  String proSubTrialBody(int days);
+
+  /// No description provided for @proSubTrialStart.
+  ///
+  /// In en, this message translates to:
+  /// **'Start free trial: {plan}'**
+  String proSubTrialStart(String plan);
+
+  /// No description provided for @proSubTrialConfirmTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Start the free trial?'**
+  String get proSubTrialConfirmTitle;
+
+  /// No description provided for @proSubTrialConfirmBody.
+  ///
+  /// In en, this message translates to:
+  /// **'{plan} Pro is free until {date}. No payment method, nothing is charged, and it does not turn into a paid subscription. After that date the free features continue.'**
+  String proSubTrialConfirmBody(String plan, String date);
+
+  /// No description provided for @proSubTrialConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Start trial'**
+  String get proSubTrialConfirm;
+
+  /// No description provided for @proSubTrialCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Not now'**
+  String get proSubTrialCancel;
+
+  /// No description provided for @proSubTrialStarted.
+  ///
+  /// In en, this message translates to:
+  /// **'Free trial started — Pro until {date}.'**
+  String proSubTrialStarted(String date);
+
+  /// No description provided for @proSubTrialNotOnPlatform.
+  ///
+  /// In en, this message translates to:
+  /// **'The free trial is not available on this device yet. All free features work as usual.'**
+  String get proSubTrialNotOnPlatform;
+
+  /// No description provided for @proSubTrialHasAccess.
+  ///
+  /// In en, this message translates to:
+  /// **'You already have Pro, so a trial is not needed.'**
+  String get proSubTrialHasAccess;
+
+  /// No description provided for @proSubTrialPlanNotAllowed.
+  ///
+  /// In en, this message translates to:
+  /// **'The Teacher trial is for teachers registered on the server, the Specialist trial for verified specialists, and the Premium trial for people who are both. Try the Student plan.'**
+  String get proSubTrialPlanNotAllowed;
+
+  /// No description provided for @proSubTrialEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'The trial needs the verified email of your account.'**
+  String get proSubTrialEmail;
+
+  /// No description provided for @proSubTrialDevice.
+  ///
+  /// In en, this message translates to:
+  /// **'This device could not be verified, so the trial cannot start here.'**
+  String get proSubTrialDevice;
+
+  /// No description provided for @proSubTrialSubscribed.
+  ///
+  /// In en, this message translates to:
+  /// **'You already have an active subscription.'**
+  String get proSubTrialSubscribed;
+
+  /// No description provided for @proSubEnded.
+  ///
+  /// In en, this message translates to:
+  /// **'Pro has ended. Every free feature keeps working and your data stays.'**
+  String get proSubEnded;
+
+  /// No description provided for @proSubPriceYearlyNote.
+  ///
+  /// In en, this message translates to:
+  /// **'The yearly plan is billed once a year at the price shown.'**
+  String get proSubPriceYearlyNote;
+
+  /// No description provided for @proSubWithoutSubscription.
+  ///
+  /// In en, this message translates to:
+  /// **'You can use the app without a subscription: free features stay free.'**
+  String get proSubWithoutSubscription;
 }
 
 class _AppLocalizationsDelegate

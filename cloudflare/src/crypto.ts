@@ -77,6 +77,11 @@ export interface Keys {
   totp: CryptoKey; // AES-GCM
   /** Hamjamiyat jadvallaridagi `user_hash` (HMAC(user_id)). */
   community: CryptoKey;
+  /**
+   * Pro bepul sinovi (D-74): kanonik email va qurilma belgisi faqat shu kalit
+   * bilan HMAC qilinib saqlanadi (xom qiymat hech qachon yozilmaydi).
+   */
+  trial: CryptoKey;
 }
 
 const keyCache = new Map<string, Promise<Keys>>();
@@ -93,6 +98,7 @@ export function deriveKeys(secret: string): Promise<Keys> {
         ip: await hmacKey(await sub('ip')),
         otp: await hmacKey(await sub('otp')),
         community: await hmacKey(await sub('community')),
+        trial: await hmacKey(await sub('trial')),
         totp: await crypto.subtle.importKey('raw', await sub('totp'), 'AES-GCM', false, [
           'encrypt',
           'decrypt',

@@ -8,12 +8,14 @@ import 'package:http/http.dart' as http;
 
 import '../../features/auth/otp_auth.dart';
 import '../../features/auth/social_auth.dart';
+import '../entitlements/pro_catalog.dart' show ProPlan;
 import 'admin_console.dart';
 import 'admin_team.dart';
 import 'backend_models.dart';
 import 'community_backend.dart';
 import 'lab_backend.dart';
 import 'partner_models.dart';
+import 'pro_grants.dart';
 import 'step_up.dart';
 import 'supabase_backend.dart' show SessionStore;
 
@@ -115,6 +117,7 @@ class CloudflareLabBackend
         LabBackend,
         CommunityBackend,
         AdminTeamBackend,
+        ProGrantBackend,
         SocialLoginBackend,
         AdminConsoleBackend,
         ComplaintsBackend,
@@ -283,6 +286,20 @@ class CloudflareLabBackend
     501 || 503 => BackendFailure.unavailable,
     _ => BackendFailure.unknown,
   };
+
+  /// Pro obunalari (`/v1/billing/*`, D-71): holat kodi va JSON. Xato statusda
+  /// istisno tashlamaydi — `CloudflareEntitlementSource` o'zi talqin qiladi
+  /// (masalan, `503 not_configured` — to'lov yoqilmagan). Faqat
+  /// `BuildFlags.proEnabled` da chaqiriladi.
+  Future<({int status, Map<String, Object?> data})> billing(
+    String method,
+    String path, {
+    Object? body,
+    bool auth = true,
+  }) async {
+    final r = await _send(method, path, body: body, auth: auth);
+    return (status: r.status, data: r.map);
+  }
 
   /// Ro'yxat o'qish: a'zo bo'lmagan guruh (404) — bo'sh ro'yxat, xuddi
   /// Supabase RLS dagi kabi (begona ustoz va admin ham hech narsa ko'rmaydi).
@@ -1220,6 +1237,50 @@ class CloudflareLabBackend
   @override
   Future<void> removeAdmin(String id) =>
       _team('DELETE', '/v1/admin/admins/${_seg(id)}');
+
+  // ------------------------------------------- admin Pro berish (D-73)
+  Future<_ApiResponse> _grants(String method, String path, {Object? body}) async {
+    final r = await _send(method, path, body: body);
+    if (r.ok) return r;
+    throw ProGrantException(
+      _failure(r.status),
+      r.error,
+      '$method $path ${r.status} ${r.error}',
+    );
+  }
+
+  @override
+  Future<List<ProGrant>> proGrants() async => [
+    for (final g in ((await _grants('GET', '/v1/admin/pro-grants')).map['grants']
+            as List?) ??
+        const [])
+      ProGrant.fromJson((g as Map).cast<String, Object?>()),
+  ];
+
+  @override
+  Future<ProGrantResult> grantPro({
+    required String email,
+    required ProPlan plan,
+    int? durationDays,
+    String? note,
+    bool extend = false,
+  }) async => ProGrantResult.fromJson(
+    (await _grants(
+      'POST',
+      '/v1/admin/pro-grants',
+      body: {
+        'email': email.trim(),
+        'tier': plan.wire,
+        'durationDays': durationDays,
+        if (note != null && note.trim().isNotEmpty) 'note': note.trim(),
+        if (extend) 'mode': 'extend',
+      },
+    )).map,
+  );
+
+  @override
+  Future<void> revokePro(String id) =>
+      _grants('DELETE', '/v1/admin/pro-grants/${_seg(id)}');
 
   // ------------------------------------------------------------------
   /// Hali ko'chirilmagan amal (docs/BACKEND_CLOUDFLARE.md, “Reja”).

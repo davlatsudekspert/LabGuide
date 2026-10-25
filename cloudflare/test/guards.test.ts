@@ -107,3 +107,93 @@ describe('qorovul: hamjamiyat so‘z filtri (D-62)', () => {
     expect(r.text).not.toContain('сука');
   });
 });
+
+describe('qorovul: billing inert (D-71, pro-next)', () => {
+  it('LG_BILLING_ENABLED bo‘lmasa billing yo‘llari 404', async () => {
+    const s = makeServer();
+    for (const p of [
+      '/v1/billing/status',
+      '/v1/billing/entitlements',
+      '/v1/entitlements',
+      '/v1/billing/verify',
+      // D-74: bepul sinov va reja ↔ panel tekshiruvi.
+      '/v1/billing/trial/challenge',
+      '/v1/billing/trial/start',
+      '/v1/pro/access',
+      '/v1/pro/check/teacher_panel',
+    ]) {
+      for (const m of ['GET', 'POST']) {
+        expect((await s.call(m, p, m === 'GET' ? {} : { body: {} })).status, `${m} ${p}`).toBe(404);
+      }
+    }
+  });
+
+  it('LG_BILLING_ENABLED bo‘lmasa admin grant yo‘llari 404 (D-73), hatto admin tokeni bilan ham', async () => {
+    const owner = uniqueEmail('guard-owner');
+    const s = makeServer({ LG_ADMIN_EMAILS: owner });
+    const boss = await s.signInAdmin(owner);
+    const id = '00000000-0000-4000-8000-000000000000';
+    for (const token of [undefined, boss.token]) {
+      expect((await s.call('GET', '/v1/admin/pro-grants', { token })).status).toBe(404);
+      expect((await s.call('POST', '/v1/admin/pro-grants', { token, body: { email: 'a@b.co', tier: 'student' } })).status).toBe(404);
+      expect((await s.call('DELETE', `/v1/admin/pro-grants/${id}`, { token })).status).toBe(404);
+    }
+    const flagOff = makeServer({ LG_BILLING_ENABLED: 'false' } as never);
+    expect((await flagOff.call('GET', '/v1/admin/pro-grants', {})).status).toBe(404);
+  });
+
+  it('LG_BILLING_ENABLED bo‘lmasa /v1/me da Pro / grant izi yo‘q', async () => {
+    const s = makeServer();
+    const u = await s.signIn(uniqueEmail('guard-me'));
+    const me = await s.call('GET', '/v1/me', { token: u.token });
+    expect(me.text).not.toMatch(/pro_grant|admin_grant|entitlement/);
+  });
+
+  it('LG_BILLING_ENABLED bo‘lmasa hisobni o‘chirish va kunlik tozalash sinov jadvaliga tegmaydi (D-74)', async () => {
+    const s = makeServer();
+    const u = await s.signIn(uniqueEmail('guard-del'));
+    expect((await s.call('DELETE', '/v1/me', { token: u.token })).status).toBe(204);
+    await s.app.scheduled(s.env);
+  });
+
+  it('bayroq yoqilgan, lekin attestatsiya sozlanmagan — sinov 503 (production holati, D-74)', async () => {
+    const s = makeServer({ LG_BILLING_ENABLED: 'true' } as never);
+    const u = await s.signIn(uniqueEmail('guard-trial'));
+    const r = await s.call('POST', '/v1/billing/trial/challenge', { token: u.token });
+    expect(r.status).toBe(503);
+    expect(r.data.error).toBe('device_attestation_not_configured');
+  });
+
+  it('LG_BILLING_ENABLED=true bo‘lsa yo‘l bor (kalitlar yo‘q — 503 yoki 401)', async () => {
+    const s = makeServer({ LG_BILLING_ENABLED: 'true' } as never);
+    const r = await s.call('GET', '/v1/billing/status', {});
+    expect(r.status).not.toBe(404);
+  });
+});
+
+describe('qorovul: Pro to‘lov standartlari (D-75)', () => {
+  it('sandbox xaridi bayroqsiz qabul qilinmaydi; iOS sinovi standart yopiq; wrangler.toml ularni yoqmaydi', async () => {
+    const { sandboxAllowed } = await import('../src/billing');
+    const { trialPlatforms, trialPlatformAllowed } = await import('../src/trial');
+    expect(sandboxAllowed({} as never)).toBe(false);
+    expect(sandboxAllowed({ LG_BILLING_SANDBOX: 'false' } as never)).toBe(false);
+    expect(trialPlatforms({} as never)).toEqual(['android']);
+    expect(trialPlatformAllowed({} as never, 'ios')).toBe(false);
+    // Repo konfiguratsiyasi production o'zgaruvchilarini yoqmaydi.
+    const toml = (await import('../wrangler.toml?raw')).default as string;
+    expect(toml).not.toMatch(/LG_BILLING_ENABLED\s*=\s*"true"/);
+    expect(toml).not.toMatch(/LG_BILLING_SANDBOX\s*=\s*"true"/);
+    expect(toml).not.toMatch(/TRIAL_PLATFORMS\s*=.*ios/);
+  });
+
+  it('kalitsiz do‘kon tekshiruvchisi — 503 store_verifier_not_configured (bayroq yoqilgan bo‘lsa ham)', async () => {
+    const s = makeServer({ LG_BILLING_ENABLED: 'true' } as never);
+    const { token } = await s.signIn(uniqueEmail('g75'));
+    for (const platform of ['app_store', 'play_store']) {
+      const r = await s.call('POST', '/v1/billing/verify', { token, body: { platform, token: '2000000001' } });
+      expect(r.status).toBe(503);
+      expect(r.data.error).toBe('store_verifier_not_configured');
+    }
+    expect(s.fetchCalls).toEqual([]);
+  });
+});
