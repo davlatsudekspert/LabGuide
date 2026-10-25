@@ -375,6 +375,14 @@ void main() {
     await _signOut(tester, s);
     await _signIn(tester, s, _user);
     await goTo(tester, '/lab/instruments/m/mindray-bc-30s');
+    // Karta endi sxema va qismlar paneli bilan uzunroq: hamkor bloki ekran
+    // ostida, sahifa dangasa quriladi — ko'rinadigan joyga aylantiramiz.
+    await tester.scrollUntilVisible(
+      find.text('Admin Test MChJ'),
+      300,
+      scrollable: find.byType(Scrollable).first,
+    );
+    await tester.pump(const Duration(milliseconds: 300));
     expect(find.text('Admin Test MChJ'), findsOneWidget);
     await _tapText(tester, _l.partnerTelegram);
     expect(backend.partnerTotals(saved.id), (impressions: 1, contacts: 1));
