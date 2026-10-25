@@ -13,6 +13,8 @@ import * as groups from './groups';
 import * as social from './social';
 import * as stepUp from './stepup';
 import * as support from './support';
+import * as teacherTests from './teachertests';
+import { teacherCleanupStatements } from './teacherdata';
 import * as tiers from './tiers';
 import * as trial from './trial';
 import {
@@ -173,6 +175,28 @@ const billingRoutes: Route[] = [
   // Reja ↔ panel ajratish (D-74): serverdagi daraja va `requireTier` tekshiruvi.
   r('GET', '/v1/pro/access', tiers.access),
   r('GET', '/v1/pro/check/:capability', tiers.check),
+  // Ustoz Pro (D-78): o'z testlari, topshirish, taklifnoma, natijalar; talaba
+  // tomoni (Talaba Pro). Vakolat — teachertests.ts (`requireTier`).
+  r('GET', '/v1/teacher/tests', teacherTests.listTests),
+  r('POST', '/v1/teacher/tests', teacherTests.createTest),
+  r('GET', '/v1/teacher/tests/:t', teacherTests.getTest),
+  r('PUT', '/v1/teacher/tests/:t', teacherTests.updateTest),
+  r('DELETE', '/v1/teacher/tests/:t', teacherTests.deleteTest),
+  r('POST', '/v1/teacher/tests/:t/assignments', teacherTests.createAssignment),
+  r('GET', '/v1/teacher/assignments', teacherTests.listAssignments),
+  r('POST', '/v1/teacher/assignments/:a/close', teacherTests.closeAssignment),
+  r('DELETE', '/v1/teacher/assignments/:a', teacherTests.deleteAssignment),
+  r('GET', '/v1/teacher/assignments/:a/results', teacherTests.results),
+  r('GET', '/v1/teacher/assignments/:a/export', teacherTests.exportResults),
+  r('GET', '/v1/teacher/groups/:g/invites', teacherTests.listInvites),
+  r('POST', '/v1/teacher/groups/:g/invites', teacherTests.createInvite),
+  r('DELETE', '/v1/teacher/invites/:i', teacherTests.revokeInvite),
+  r('GET', '/v1/teacher-invites/:t', teacherTests.previewInvite),
+  r('POST', '/v1/teacher-invites/:t/accept', teacherTests.acceptInvite),
+  r('GET', '/v1/me/teacher-tests', teacherTests.listMine),
+  r('GET', '/v1/me/teacher-tests/:a', teacherTests.getMine),
+  r('POST', '/v1/me/teacher-tests/:a/start', teacherTests.startMine),
+  r('POST', '/v1/me/teacher-tests/:a/submit', teacherTests.submitMine),
 ];
 
 export { billingEnabled };
@@ -242,6 +266,8 @@ export function createApp(deps: Deps) {
         ...(billingEnabled(env) ? trial.trialCleanupStatements(env.DB, now) : []),
         // Do'kon bildirishnomalari jurnali (0017) — ham faqat bayroq bilan.
         ...(billingEnabled(env) ? billing.notificationCleanupStatements(env.DB, now) : []),
+        // Ustoz Pro (0030): vaqti tugagan ochiq urinishlar — `expired`.
+        ...(billingEnabled(env) ? teacherCleanupStatements(env.DB, now, teacherTests.TT_GRACE_MS) : []),
       ]);
     },
   };
