@@ -746,8 +746,8 @@ DRAW = {
          "Optik sxema to‘g‘rimi (FSC nur o‘qida, SSC/FL 90° da).", "low", [3, 4, 5, 6]),
     ],
     "real_time_pcr": [
-        ("oldingi kesik: optik modul", "Optik modul kesigi: yorug‘lik manbai → to‘rt rangli filtr g‘ildiragi → detektor; monitorda chegara chizig‘i bilan amplifikatsiya egri chiziqlari.",
-         "Optik yo‘l va Cq chegara chizig‘i tasviri to‘g‘rimi.", "low", [4, 5, 6, 7]),
+        ("oldingi kesik: fluoressent signal yo'li", "Signal yo‘li kesigi: qo‘zg‘atuvchi nur manbai → qo‘zg‘atish filtri → termoblok kesigidagi reaksiya probirkasi (fluoressensiya) → nurlanish filtri → detektor; kesikdan blokdagi uyachaga uzuq chiziq; monitorda chegara chizig‘i bilan amplifikatsiya egri chiziqlari.",
+         "Darslik darajasidagi signal yo‘li to‘g‘ri ko‘rsatilganmi (nur probirkadan o‘tadi; manba turi va o‘qish yo‘nalishi ataylab ko‘rsatilmagan); Cq chegara chizig‘i tasviri.", "medium", [4, 5, 6, 7, 8, 9]),
     ],
     "cartridge_molecular": [
         ("korpus: to'rtta modul eshigi", "To‘rt moduldan biri ochiq, ichida kartrij, sariq chiroq (ish jarayonida).",
@@ -1035,6 +1035,8 @@ MANUAL_FINDINGS = [
     ("DRAW-HBA1C", "TUZATILDI (2026-10-25, img/fix-drawings): `hba1c_analyzer` usul jihatdan neytral — ion almashinuv kolonkasi, detektor kesigi va xromatogramma olib tashlandi; qismlar/prinsip/natija matnlari usulni da’vo qilmaydi (kartadagi usullar ro‘yxati keltirilgan), LAB_CARD_IMAGE_COVERAGE.md bilan mos (SCHEM-hba1c_analyzer-drawing-01)."),
     ("DRAW-TUBES", "TUZATILDI (2026-10-25, img/fix-drawings): `hematology5` avtoyuklagichida faqat binafsha (EDTA turi) qopqoqli butun qon probirkalari; `chemistry` va `immunoassay` rakalarida (va biokimyo namuna diskida) neytral qopqoqli, och somon rangli zardob/plazma probirkalari; panel matnida qopqoq rangi da’vo qilinmaydi."),
     ("DRAW-HEM3", "TUZATILDI (2026-10-25, img/fix-drawings): `hematology3` displeyida uch xil sxematik gistogramma (WBC — uch subpopulyatsiya, RBC, o‘ngga cho‘zilgan PLT); panel matnida shakllar sxematik ekani aytilgan (SCHEM-hematology3-drawing-02)."),
+    ("DRAW-PCR-PATH", "TUZATILDI (2026-10-25, img/fix-drawings; video-dars topilmasi F2): `real_time_pcr` optik kesigida nur avval filtr g‘ildiragidan to‘g‘ri detektorga borardi va probirkadan o‘tmasdi; endi manba → qo‘zg‘atish filtri → termoblokdagi probirka → nurlanish filtri → detektor (belgilar 4–8), filtr g‘ildiragi olib tashlandi; animatsiya va dars matni shu yo‘lga moslandi. Mutaxassis ko‘rigi kerak (SCHEM-real_time_pcr-drawing-01)."),
+    ("CARD-OSMO", "`a3-bio-osmometer` karta prinsipi (LabGuide parafrazasi, manba `a3-statpearls-osmometer`) aniqlashtirildi: “1 mol erigan modda suvning muzlash nuqtasini ~1,86 °C pasaytiradi … (mmol/kg)” → “1 kg suvdagi 1 mol erigan zarracha (1 osmol) … ~1,86 °C; elektrolitlarda zarrachalar soni dissotsiatsiyaga bog‘liq; osmolyallik (mOsm/kg)” (uz/ru/en; uz atamasi ‘osmolallik’ → ilova bilan bir xil ‘osmolyallik’). Manba matni faqat “1 mole of a dissolved solute … approximately 1.86 °C” deydi — “1 kg suvga” qismi darslik darajasidagi (krioskopik doimiy) aniqlashtirish, mutaxassis tasdig‘ini kutadi."),
     ("L10N-REFERENS", "ARB `diffInterpretIntro`/`diffRangesBody` (uz) “referens oraliq” deydi; docs/L10N_TERMINOLOGY_DECISIONS.md uz uchun yagona atama “referens interval” (NEEDS_NATIVE_REVIEW). `differential_count.uz.png` va uning alt-matni 2026-10-25 da “referens interval” ga o‘tkazildi; ARB qatorlari tuzatilmagan."),
     ("TERM-ABS", "`photometry`: en “Absorbance”; ilova ARB’ida absorbance — ru “поглощение”, uz “yutilish”, ma’ruzada — “оптическая плотность”/“optik zichlik”. 2026-10-25 da sxema ilovaning o‘z iborasiga (“Поглощение (оптическая плотность)”, “Yutilish (optik zichlik)”) moslandi; IUPAC farqi (absorbance ≠ optical density) bo‘yicha atama qarori hali mutaxassisniki."),
 ]
