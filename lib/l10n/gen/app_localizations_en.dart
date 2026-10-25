@@ -5140,7 +5140,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get shareFooter => 'Lab reference and practice';
 
   @override
-  String get shareToifaNote => 'Not official — LabGuide practice result';
+  String get shareToifaNote => 'LabGuide practice result';
 
   @override
   String shareText(String kind, int correct, int total, int percent) {

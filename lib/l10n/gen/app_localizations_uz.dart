@@ -5075,7 +5075,7 @@ class AppLocalizationsUz extends AppLocalizations {
   String get shareFooter => 'Laboratoriya bo‘yicha qo‘llanma va mashqlar';
 
   @override
-  String get shareToifaNote => 'Rasmiy emas, LabGuide mashq natijasi';
+  String get shareToifaNote => 'LabGuide mashq natijasi';
 
   @override
   String shareText(String kind, int correct, int total, int percent) {

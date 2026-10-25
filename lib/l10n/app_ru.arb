@@ -1465,7 +1465,7 @@
   "shareKindToifa": "Тренировка теста знаний",
   "shareCorrectCaption": "верных ответов",
   "shareFooter": "Справочник и тренировки по лабораторной диагностике",
-  "shareToifaNote": "Не официально — результат тренировки в LabGuide",
+  "shareToifaNote": "Результат тренировки LabGuide",
   "shareText": "LabGuide · {kind}: {correct}/{total} ({percent}%)",
   "quizTopicMistakes": "Работа над ошибками",
   "quizMastered": "верно в прошлый раз: {correct} из {total}",

@@ -8893,7 +8893,7 @@ abstract class AppLocalizations {
   /// No description provided for @shareToifaNote.
   ///
   /// In en, this message translates to:
-  /// **'Not official — LabGuide practice result'**
+  /// **'LabGuide practice result'**
   String get shareToifaNote;
 
   /// No description provided for @shareText.

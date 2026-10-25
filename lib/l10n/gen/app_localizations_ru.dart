@@ -5173,8 +5173,7 @@ class AppLocalizationsRu extends AppLocalizations {
       'Справочник и тренировки по лабораторной диагностике';
 
   @override
-  String get shareToifaNote =>
-      'Не официально — результат тренировки в LabGuide';
+  String get shareToifaNote => 'Результат тренировки LabGuide';
 
   @override
   String shareText(String kind, int correct, int total, int percent) {

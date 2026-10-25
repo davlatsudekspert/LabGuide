@@ -2959,7 +2959,7 @@
   "shareKindToifa": "Knowledge test practice",
   "shareCorrectCaption": "correct answers",
   "shareFooter": "Lab reference and practice",
-  "shareToifaNote": "Not official — LabGuide practice result",
+  "shareToifaNote": "LabGuide practice result",
   "shareText": "LabGuide · {kind}: {correct}/{total} ({percent}%)",
   "@shareText": {
     "placeholders": {

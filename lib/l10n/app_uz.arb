@@ -1465,7 +1465,7 @@
   "shareKindToifa": "Bilim testi mashqi",
   "shareCorrectCaption": "to‘g‘ri javob",
   "shareFooter": "Laboratoriya bo‘yicha qo‘llanma va mashqlar",
-  "shareToifaNote": "Rasmiy emas, LabGuide mashq natijasi",
+  "shareToifaNote": "LabGuide mashq natijasi",
   "shareText": "LabGuide · {kind}: {correct}/{total} ({percent}%)",
   "quizTopicMistakes": "Xatolarim ustida ishlash",
   "quizMastered": "{total} tadan {correct} tasi oxirgi safar to‘g‘ri",
