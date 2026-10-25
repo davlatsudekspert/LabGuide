@@ -4,11 +4,9 @@ import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
 import '../../app/widgets/lg_page.dart';
-import '../../core/entitlements/feature.dart';
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
-import '../profile/pro_gate.dart';
 import '../content/content_model.dart';
 import '../content/ui/content_widgets.dart';
 import '../learn/quiz_session.dart';
@@ -154,12 +152,7 @@ class _CalcRow extends StatelessWidget {
       title: manualCalcTitle(calc, l),
       subtitle: manualCalcSubtitle(calc, l),
       icon: manualCalcIcon(calc),
-      // Kalkulyator — [Feature.labCalculators] (D-76).
-      onTap: () => pushGated(
-        context,
-        Feature.labCalculators,
-        '/lab/calculators/${manualCalcRoute(calc)}',
-      ),
+      onTap: () => context.push('/lab/calculators/${manualCalcRoute(calc)}'),
       divider: divider,
     );
   }
@@ -179,8 +172,7 @@ class _AcrRow extends StatelessWidget {
       title: l.calcAcr,
       subtitle: l.calcAcrSub,
       icon: Icons.opacity_rounded,
-      onTap: () =>
-          pushGated(context, Feature.labCalculators, '/lab/calculators/acr'),
+      onTap: () => context.push('/lab/calculators/acr'),
       divider: divider,
     );
   }
@@ -236,9 +228,7 @@ class UrinalysisScreen extends StatelessWidget {
             title: context.tr(title),
             subtitle: context.tr(sub),
             icon: icon,
-            // Bo'lim ochiq; ichidagi sahifa/vosita — [Feature.labSections] (D-76).
-            onTap: () =>
-                pushGated(context, Feature.labSections, '$urinBase/$path'),
+            onTap: () => context.push('$urinBase/$path'),
             divider: i < rows.length - 1,
           ),
         LgSectionTitle(context.tr(UrL.relatedTitle)),

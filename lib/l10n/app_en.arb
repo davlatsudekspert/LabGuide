@@ -7292,5 +7292,171 @@
   "proPayFeatProLab": "Professional laboratory functions",
   "proTermsBody": "LabGuide is a clinical laboratory reference and learning app. The core features are free; paid plans (Student Pro, Teacher Pro, Specialist Pro, Premium) add extra features. By using the app you agree to these terms.\n\n1. Medical limitation. LabGuide does not diagnose, prescribe treatment or medicines, and does not replace your laboratory’s approved procedures, reagent and analyzer instructions (IFU) or a physician’s judgment. Every item shows its source; when making decisions, rely on the original source and your institution’s rules.\n\n2. Account. Some features (groups, tests, community, support requests, paid plans and the free trial) require signing up with email. You are responsible for your account’s security and for actions taken through it. You can delete your account at any time: Profile → Delete account; this does not cancel a store subscription.\n\n3. Teacher and student groups. When a student joins a group, the teacher sees their nickname (or seat number) and test results. Teachers use groups for educational purposes only.\n\n4. User content. You are responsible for what you post in the community and in support requests. Abuse, illegal content, advertising, other people’s personal data and non-consensual intimate images are strictly prohibited. Such content is removed, and the offending account may be restricted or deleted. You can report any message with “Report”.\n\n5. Paid plans and the free trial. Paid plans are sold through the Apple App Store or Google Play as auto-renewing subscriptions. The price and period are shown in the store sheet before you buy; you are charged only after you confirm the purchase in that sheet. You can cancel in your store settings at any time; refund requests are handled by the store. The 7-day free trial is given once and needs no card. When a trial or subscription ends, only the paid features close; free features and your data stay.\n\n6. Copyright. The app’s texts, slides, tests and design belong to the LabGuide authors; external sources are shown with their own licenses. They may not be copied or distributed for commercial purposes.\n\n7. Service. The app is provided “as is”; outages and errors may occur, and we fix them as quickly as we can. We will notify you in the app if these terms change.\n\n8. Privacy. How your data is used is described in the privacy policy: labguide.nfcstore.uz/privacy. The full terms: labguide.nfcstore.uz/terms\n\n9. Contact: labguide@nfcstore.uz",
   "proPrivacyBody": "The core sections work without an account (guest mode): settings, bookmarks, QC records, your instruments and practice results stay on this device. An account is optional (email code, Google or Apple) — it is needed for groups, the community, “Suggestions and help”, paid plans and the free trial. Then data is stored on a Cloudflare server (Eastern Europe, outside Uzbekistan): email only as a hash and a masked form, sign-in method, role, language, last activity time (to the minute); in a group — a nickname or seat number, test answers and scores; support and report texts. From Google/Apple only the account identifier and email are taken, and the token is not stored. A teacher sees only their own group. Subscription payments are taken by Apple or Google: LabGuide does not see your bank card details; our server verifies the store’s transaction identifiers. For the free trial only the dates and keyed hashes (of your email and a device marker) are kept. No ads, analytics or tracking. The full text is behind the “Privacy Policy” link.",
-  "proAccountDeleteBody": "Your account, sign-in methods (Google/Apple link), group memberships and results, “Suggestions and help” requests, your community questions and answers, and records tied to purchases are deleted from the server for good. If you are a teacher, the groups you created are deleted too. This cannot be undone. A store subscription is not cancelled: cancel it in your App Store or Google Play settings. So that the trial is not given again, the trial record is kept for a limited time, unlinked from your account. The text of reports you sent from the app stays, not linked to your account. Data on the device is cleared too."
+  "proAccountDeleteBody": "Your account, sign-in methods (Google/Apple link), group memberships and results, “Suggestions and help” requests, your community questions and answers, and records tied to purchases are deleted from the server for good. If you are a teacher, the groups you created are deleted too. This cannot be undone. A store subscription is not cancelled: cancel it in your App Store or Google Play settings. So that the trial is not given again, the trial record is kept for a limited time, unlinked from your account. The text of reports you sent from the app stays, not linked to your account. Data on the device is cleared too.",
+  "proTierNameStudent": "Student Pro",
+  "proTierNameTeacher": "Teacher Pro",
+  "proTierNameSpecialist": "Specialist Pro",
+  "proTierNamePremium": "Premium",
+  "proTierSubStudent": "Extra Pro features for studying. Everything that is free today stays free.",
+  "proTierSubTeacher": "For teachers: Student Pro features plus the Pro features of the teacher panel. Today’s free groups stay free.",
+  "proTierSubSpecialist": "For lab staff and doctors: Student Pro features plus professional laboratory functions. The Laboratory section stays free.",
+  "proTierSubPremium": "All Pro features together: Student Pro, Teacher Pro and Specialist Pro.",
+  "proCapLabPro": "professional laboratory functions (calibration log and QC export, QC summary report)",
+  "proTierNote": "Teacher panel Pro features are only in Teacher Pro or Premium, and professional laboratory functions only in Specialist Pro or Premium. Changing your role in the app does not unlock them. Everything that is free today — the Laboratory section, atlas, tests, category exam, groups and assignments — stays free.",
+  "proLockedLearner": "This feature is in Student Pro, Teacher Pro, Specialist Pro and Premium.",
+  "proLockedTeacher": "This feature is in Teacher Pro or Premium.",
+  "proLockedLab": "This feature is in Specialist Pro or Premium.",
+  "proFeatResultsAnalytics": "Results analysis: full history, topic trends and weak topics",
+  "proFeatExamSimulation": "Exam simulation: a test under exam conditions with a detailed report",
+  "proFeatResultsExport": "Export results as PDF and CSV files",
+  "proFeatTeacherTests": "Special tests created by your teacher",
+  "proFeatTeacherTestBuilder": "Create and edit your own tests",
+  "proFeatTeacherTestAssign": "Assign your tests to students and groups",
+  "proFeatTeacherResults": "Manage results: per-student and per-question summary, export",
+  "proFeatCalibrationExport": "Export the calibration log to CSV and PDF",
+  "proFeatQcReport": "QC summary report and QC data export as CSV/PDF files",
+  "proTrialConfirmBody": "{plan} is free until {date}. No payment method, nothing is charged, and it does not turn into a paid subscription. When it ends only the paid features close; free features and all your data stay.",
+  "@proTrialConfirmBody": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "proGateClosedTitle": "This is a Pro feature",
+  "proGateClosedBody": "To open it you need a subscription or the 7-day free trial. Free features and your data stay.",
+  "proGateOpenPlans": "See plans",
+  "proExportAction": "Export: PDF or CSV",
+  "proExportTitle": "Export to a file",
+  "proExportPdf": "PDF document",
+  "proExportPdfSub": "For viewing, printing and archiving",
+  "proExportCsv": "CSV table",
+  "proExportCsvSub": "For Excel or Google Sheets",
+  "proExportBusy": "Preparing the file…",
+  "proExportShared": "File ready — the share sheet is open.",
+  "proExportFailed": "Could not share the file. Please try again.",
+  "proExportNotClinical": "Built only from the data you entered. Not a clinical decision and not a replacement for your laboratory’s official records.",
+  "proExportCreated": "Created: {date}",
+  "@proExportCreated": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "proExportPage": "{page} / {total}",
+  "@proExportPage": {
+    "placeholders": {
+      "page": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "proCalExportCount": "Records: {count}",
+  "@proCalExportCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "proCalExportEntry": "Export the log",
+  "proCalExportEntrySub": "PDF or CSV: instrument, reagent, lot, levels, outcome, approver and history",
+  "proColDate": "Date",
+  "proColAction": "Action",
+  "proColDetail": "Details",
+  "proColStatus": "Status",
+  "proQcReportTitle": "QC summary report",
+  "proQcReportEntrySub": "Per level and lot: x̄, SD, CV, bias from target and rules fired; PDF / CSV",
+  "proQcSummary": "Overview",
+  "proQcPeriodLabel": "Period",
+  "proQcVerdictsLabel": "Accepted / warning / rejected",
+  "proQcVerdictsHint": "Level card counts use the rules that involve that level; the overview counts whole runs.",
+  "proQcRulesFired": "Rules fired",
+  "proQcNoRules": "No rule violations",
+  "proQcByLevel": "By level and lot",
+  "proQcColLevel": "Level",
+  "proQcColTarget": "Target (x̄ ± SD)",
+  "proQcColObserved": "Observed (n, x̄ ± SD)",
+  "proQcColBias": "Bias from target",
+  "proQcNoRuns": "No runs entered yet — there is no data for a report.",
+  "proSimTitle": "Exam simulation",
+  "proSimSubtitle": "A test under exam conditions: time limit, pass mark and a detailed report",
+  "proSimEntrySub": "Required time limit and pass mark, questions in order, time per question in the report",
+  "proSimConditions": "Exam conditions",
+  "proSimRule1": "A time limit is required: when time runs out the test finishes by itself.",
+  "proSimRule2": "Questions are drawn from every topic in proportion to its size.",
+  "proSimRule3": "Questions come in order: no going back and no flags.",
+  "proSimRule4": "The result is graded against the pass mark; the report shows time per question and a topic breakdown.",
+  "proSimBank": "Question bank",
+  "proSimBankPack": "Topic questions",
+  "proSimPool": "{count} questions in {topics} topics",
+  "@proSimPool": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "topics": {
+        "type": "int"
+      }
+    }
+  },
+  "proSimTimeHelper": "1–240 minutes, required",
+  "proSimPassHelper": "1–100 %, required",
+  "proSimStart": "Start the simulation",
+  "proSimHistory": "Previous simulations",
+  "proSimReportTitle": "Simulation report",
+  "proSimPace": "Time",
+  "proSimAvgPerQuestion": "Average per question",
+  "proSimSlowest": "Questions that took the longest",
+  "proSimReview": "Review answers",
+  "proSimTag": "simulation",
+  "proResultsTitle": "Results analysis",
+  "proResultsSubtitle": "Full history across all tests, trend and weak topics",
+  "proResultsEntrySub": "Trend across all banks, topics and weak spots; PDF / CSV export",
+  "proResultsEmpty": "No results yet — take your first test.",
+  "proResultsBankOther": "Other tests",
+  "proResultsSessions": "Tests",
+  "proResultsAverage": "Average",
+  "proResultsBest": "Best",
+  "proResultsLast": "Latest",
+  "proResultsTrend": "Change",
+  "proResultsAnswered": "Correct answers",
+  "proResultsChart": "Last 20 results",
+  "proResultsWeak": "Weak topics",
+  "proResultsNoWeak": "No weak topics found.",
+  "proResultsWeakRule": "Weak topic: at least 5 questions and accuracy below 60 %. Change compares the newer half of the tests with that topic to the older half.",
+  "proResultsTopics": "By topic",
+  "proResultsNoTopics": "These tests have no topic tags.",
+  "proResultsTopicRow": "{correct}/{total} correct · in {sessions} tests",
+  "@proResultsTopicRow": {
+    "placeholders": {
+      "correct": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      },
+      "sessions": {
+        "type": "int"
+      }
+    }
+  },
+  "proResultsHistory": "Full history",
+  "proResultsQuestions": "Questions",
+  "proResultsSession": "Test",
+  "proPoints": "{value} pp",
+  "@proPoints": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  }
 }

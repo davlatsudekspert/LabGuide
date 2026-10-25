@@ -5,6 +5,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:labguide/core/build_flags.dart';
 import 'package:labguide/core/entitlements/feature.dart';
+import 'package:labguide/core/entitlements/pro_catalog.dart';
 import 'package:labguide/features/profile/purchase_screen.dart';
 import 'package:labguide/l10n/gen/app_localizations.dart';
 import 'package:material_ui/material_ui.dart';
@@ -38,7 +39,6 @@ void main() {
       for (final f in Feature.values) {
         expect(ent.can(f), isTrue, reason: f.name);
       }
-      expect(ent.historyVisibleLimit(), isNull);
       // Do'kon ishga tushmagan, serverga so'rov ketmagan.
       expect(shop.inits, 0);
       expect(server.probes, 0);
@@ -59,8 +59,8 @@ void main() {
   );
 
   testWidgets(
-    'proEnabled=true, lekin yopiladigan imkoniyat ro‘yxati bo‘sh (standart): '
-    'to‘lov ishlasa ham hech narsa yopilmaydi',
+    'proEnabled=true, standart `gated` (D-78: faqat qurilgan YANGI Pro '
+    'funksiyalar): obunasiz faqat ular yopiq, qolgani ochiq',
     (tester) async {
       final shop = FakePurchaseAdapter();
       final s = await makeServices(
@@ -75,9 +75,10 @@ void main() {
       final ent = s.entitlements;
       expect(ent.purchasesEnabled, isTrue);
       expect(ent.gatingActive, isTrue);
-      expect(ent.gated, isEmpty);
+      // D-78: `gated` endi bo'sh emas — lekin faqat yangi Pro funksiyalar.
+      expect(ent.gated, ProGatePolicy.gated);
       for (final f in Feature.values) {
-        expect(ent.can(f), isTrue, reason: f.name);
+        expect(ent.can(f), !ProGatePolicy.gated.contains(f), reason: f.name);
       }
       expect(shop.inits, 1);
       await goTo(tester, '/profile');

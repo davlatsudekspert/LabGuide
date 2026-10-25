@@ -22822,6 +22822,7 @@ abstract class AppLocalizations {
   /// **'You can use the app without a subscription: free features stay free.'**
   String get proSubWithoutSubscription;
 
+<<<<<<< HEAD
   /// No description provided for @proGrantCustom.
   ///
   /// In en, this message translates to:
@@ -23013,6 +23014,619 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Your account, sign-in methods (Google/Apple link), group memberships and results, “Suggestions and help” requests, your community questions and answers, and records tied to purchases are deleted from the server for good. If you are a teacher, the groups you created are deleted too. This cannot be undone. A store subscription is not cancelled: cancel it in your App Store or Google Play settings. So that the trial is not given again, the trial record is kept for a limited time, unlinked from your account. The text of reports you sent from the app stays, not linked to your account. Data on the device is cleared too.'**
   String get proAccountDeleteBody;
+=======
+  /// No description provided for @proTierNameStudent.
+  ///
+  /// In en, this message translates to:
+  /// **'Student Pro'**
+  String get proTierNameStudent;
+
+  /// No description provided for @proTierNameTeacher.
+  ///
+  /// In en, this message translates to:
+  /// **'Teacher Pro'**
+  String get proTierNameTeacher;
+
+  /// No description provided for @proTierNameSpecialist.
+  ///
+  /// In en, this message translates to:
+  /// **'Specialist Pro'**
+  String get proTierNameSpecialist;
+
+  /// No description provided for @proTierNamePremium.
+  ///
+  /// In en, this message translates to:
+  /// **'Premium'**
+  String get proTierNamePremium;
+
+  /// No description provided for @proTierSubStudent.
+  ///
+  /// In en, this message translates to:
+  /// **'Extra Pro features for studying. Everything that is free today stays free.'**
+  String get proTierSubStudent;
+
+  /// No description provided for @proTierSubTeacher.
+  ///
+  /// In en, this message translates to:
+  /// **'For teachers: Student Pro features plus the Pro features of the teacher panel. Today’s free groups stay free.'**
+  String get proTierSubTeacher;
+
+  /// No description provided for @proTierSubSpecialist.
+  ///
+  /// In en, this message translates to:
+  /// **'For lab staff and doctors: Student Pro features plus professional laboratory functions. The Laboratory section stays free.'**
+  String get proTierSubSpecialist;
+
+  /// No description provided for @proTierSubPremium.
+  ///
+  /// In en, this message translates to:
+  /// **'All Pro features together: Student Pro, Teacher Pro and Specialist Pro.'**
+  String get proTierSubPremium;
+
+  /// No description provided for @proCapLabPro.
+  ///
+  /// In en, this message translates to:
+  /// **'professional laboratory functions (calibration log and QC export, QC summary report)'**
+  String get proCapLabPro;
+
+  /// No description provided for @proTierNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Teacher panel Pro features are only in Teacher Pro or Premium, and professional laboratory functions only in Specialist Pro or Premium. Changing your role in the app does not unlock them. Everything that is free today — the Laboratory section, atlas, tests, category exam, groups and assignments — stays free.'**
+  String get proTierNote;
+
+  /// No description provided for @proLockedLearner.
+  ///
+  /// In en, this message translates to:
+  /// **'This feature is in Student Pro, Teacher Pro, Specialist Pro and Premium.'**
+  String get proLockedLearner;
+
+  /// No description provided for @proLockedTeacher.
+  ///
+  /// In en, this message translates to:
+  /// **'This feature is in Teacher Pro or Premium.'**
+  String get proLockedTeacher;
+
+  /// No description provided for @proLockedLab.
+  ///
+  /// In en, this message translates to:
+  /// **'This feature is in Specialist Pro or Premium.'**
+  String get proLockedLab;
+
+  /// No description provided for @proFeatResultsAnalytics.
+  ///
+  /// In en, this message translates to:
+  /// **'Results analysis: full history, topic trends and weak topics'**
+  String get proFeatResultsAnalytics;
+
+  /// No description provided for @proFeatExamSimulation.
+  ///
+  /// In en, this message translates to:
+  /// **'Exam simulation: a test under exam conditions with a detailed report'**
+  String get proFeatExamSimulation;
+
+  /// No description provided for @proFeatResultsExport.
+  ///
+  /// In en, this message translates to:
+  /// **'Export results as PDF and CSV files'**
+  String get proFeatResultsExport;
+
+  /// No description provided for @proFeatTeacherTests.
+  ///
+  /// In en, this message translates to:
+  /// **'Special tests created by your teacher'**
+  String get proFeatTeacherTests;
+
+  /// No description provided for @proFeatTeacherTestBuilder.
+  ///
+  /// In en, this message translates to:
+  /// **'Create and edit your own tests'**
+  String get proFeatTeacherTestBuilder;
+
+  /// No description provided for @proFeatTeacherTestAssign.
+  ///
+  /// In en, this message translates to:
+  /// **'Assign your tests to students and groups'**
+  String get proFeatTeacherTestAssign;
+
+  /// No description provided for @proFeatTeacherResults.
+  ///
+  /// In en, this message translates to:
+  /// **'Manage results: per-student and per-question summary, export'**
+  String get proFeatTeacherResults;
+
+  /// No description provided for @proFeatCalibrationExport.
+  ///
+  /// In en, this message translates to:
+  /// **'Export the calibration log to CSV and PDF'**
+  String get proFeatCalibrationExport;
+
+  /// No description provided for @proFeatQcReport.
+  ///
+  /// In en, this message translates to:
+  /// **'QC summary report and QC data export as CSV/PDF files'**
+  String get proFeatQcReport;
+
+  /// No description provided for @proTrialConfirmBody.
+  ///
+  /// In en, this message translates to:
+  /// **'{plan} is free until {date}. No payment method, nothing is charged, and it does not turn into a paid subscription. When it ends only the paid features close; free features and all your data stay.'**
+  String proTrialConfirmBody(String plan, String date);
+
+  /// No description provided for @proGateClosedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'This is a Pro feature'**
+  String get proGateClosedTitle;
+
+  /// No description provided for @proGateClosedBody.
+  ///
+  /// In en, this message translates to:
+  /// **'To open it you need a subscription or the 7-day free trial. Free features and your data stay.'**
+  String get proGateClosedBody;
+
+  /// No description provided for @proGateOpenPlans.
+  ///
+  /// In en, this message translates to:
+  /// **'See plans'**
+  String get proGateOpenPlans;
+
+  /// No description provided for @proExportAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Export: PDF or CSV'**
+  String get proExportAction;
+
+  /// No description provided for @proExportTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Export to a file'**
+  String get proExportTitle;
+
+  /// No description provided for @proExportPdf.
+  ///
+  /// In en, this message translates to:
+  /// **'PDF document'**
+  String get proExportPdf;
+
+  /// No description provided for @proExportPdfSub.
+  ///
+  /// In en, this message translates to:
+  /// **'For viewing, printing and archiving'**
+  String get proExportPdfSub;
+
+  /// No description provided for @proExportCsv.
+  ///
+  /// In en, this message translates to:
+  /// **'CSV table'**
+  String get proExportCsv;
+
+  /// No description provided for @proExportCsvSub.
+  ///
+  /// In en, this message translates to:
+  /// **'For Excel or Google Sheets'**
+  String get proExportCsvSub;
+
+  /// No description provided for @proExportBusy.
+  ///
+  /// In en, this message translates to:
+  /// **'Preparing the file…'**
+  String get proExportBusy;
+
+  /// No description provided for @proExportShared.
+  ///
+  /// In en, this message translates to:
+  /// **'File ready — the share sheet is open.'**
+  String get proExportShared;
+
+  /// No description provided for @proExportFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not share the file. Please try again.'**
+  String get proExportFailed;
+
+  /// No description provided for @proExportNotClinical.
+  ///
+  /// In en, this message translates to:
+  /// **'Built only from the data you entered. Not a clinical decision and not a replacement for your laboratory’s official records.'**
+  String get proExportNotClinical;
+
+  /// No description provided for @proExportCreated.
+  ///
+  /// In en, this message translates to:
+  /// **'Created: {date}'**
+  String proExportCreated(String date);
+
+  /// No description provided for @proExportPage.
+  ///
+  /// In en, this message translates to:
+  /// **'{page} / {total}'**
+  String proExportPage(int page, int total);
+
+  /// No description provided for @proCalExportCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Records: {count}'**
+  String proCalExportCount(int count);
+
+  /// No description provided for @proCalExportEntry.
+  ///
+  /// In en, this message translates to:
+  /// **'Export the log'**
+  String get proCalExportEntry;
+
+  /// No description provided for @proCalExportEntrySub.
+  ///
+  /// In en, this message translates to:
+  /// **'PDF or CSV: instrument, reagent, lot, levels, outcome, approver and history'**
+  String get proCalExportEntrySub;
+
+  /// No description provided for @proColDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Date'**
+  String get proColDate;
+
+  /// No description provided for @proColAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Action'**
+  String get proColAction;
+
+  /// No description provided for @proColDetail.
+  ///
+  /// In en, this message translates to:
+  /// **'Details'**
+  String get proColDetail;
+
+  /// No description provided for @proColStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Status'**
+  String get proColStatus;
+
+  /// No description provided for @proQcReportTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'QC summary report'**
+  String get proQcReportTitle;
+
+  /// No description provided for @proQcReportEntrySub.
+  ///
+  /// In en, this message translates to:
+  /// **'Per level and lot: x̄, SD, CV, bias from target and rules fired; PDF / CSV'**
+  String get proQcReportEntrySub;
+
+  /// No description provided for @proQcSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Overview'**
+  String get proQcSummary;
+
+  /// No description provided for @proQcPeriodLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Period'**
+  String get proQcPeriodLabel;
+
+  /// No description provided for @proQcVerdictsLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Accepted / warning / rejected'**
+  String get proQcVerdictsLabel;
+
+  /// No description provided for @proQcVerdictsHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Level card counts use the rules that involve that level; the overview counts whole runs.'**
+  String get proQcVerdictsHint;
+
+  /// No description provided for @proQcRulesFired.
+  ///
+  /// In en, this message translates to:
+  /// **'Rules fired'**
+  String get proQcRulesFired;
+
+  /// No description provided for @proQcNoRules.
+  ///
+  /// In en, this message translates to:
+  /// **'No rule violations'**
+  String get proQcNoRules;
+
+  /// No description provided for @proQcByLevel.
+  ///
+  /// In en, this message translates to:
+  /// **'By level and lot'**
+  String get proQcByLevel;
+
+  /// No description provided for @proQcColLevel.
+  ///
+  /// In en, this message translates to:
+  /// **'Level'**
+  String get proQcColLevel;
+
+  /// No description provided for @proQcColTarget.
+  ///
+  /// In en, this message translates to:
+  /// **'Target (x̄ ± SD)'**
+  String get proQcColTarget;
+
+  /// No description provided for @proQcColObserved.
+  ///
+  /// In en, this message translates to:
+  /// **'Observed (n, x̄ ± SD)'**
+  String get proQcColObserved;
+
+  /// No description provided for @proQcColBias.
+  ///
+  /// In en, this message translates to:
+  /// **'Bias from target'**
+  String get proQcColBias;
+
+  /// No description provided for @proQcNoRuns.
+  ///
+  /// In en, this message translates to:
+  /// **'No runs entered yet — there is no data for a report.'**
+  String get proQcNoRuns;
+
+  /// No description provided for @proSimTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Exam simulation'**
+  String get proSimTitle;
+
+  /// No description provided for @proSimSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'A test under exam conditions: time limit, pass mark and a detailed report'**
+  String get proSimSubtitle;
+
+  /// No description provided for @proSimEntrySub.
+  ///
+  /// In en, this message translates to:
+  /// **'Required time limit and pass mark, questions in order, time per question in the report'**
+  String get proSimEntrySub;
+
+  /// No description provided for @proSimConditions.
+  ///
+  /// In en, this message translates to:
+  /// **'Exam conditions'**
+  String get proSimConditions;
+
+  /// No description provided for @proSimRule1.
+  ///
+  /// In en, this message translates to:
+  /// **'A time limit is required: when time runs out the test finishes by itself.'**
+  String get proSimRule1;
+
+  /// No description provided for @proSimRule2.
+  ///
+  /// In en, this message translates to:
+  /// **'Questions are drawn from every topic in proportion to its size.'**
+  String get proSimRule2;
+
+  /// No description provided for @proSimRule3.
+  ///
+  /// In en, this message translates to:
+  /// **'Questions come in order: no going back and no flags.'**
+  String get proSimRule3;
+
+  /// No description provided for @proSimRule4.
+  ///
+  /// In en, this message translates to:
+  /// **'The result is graded against the pass mark; the report shows time per question and a topic breakdown.'**
+  String get proSimRule4;
+
+  /// No description provided for @proSimBank.
+  ///
+  /// In en, this message translates to:
+  /// **'Question bank'**
+  String get proSimBank;
+
+  /// No description provided for @proSimBankPack.
+  ///
+  /// In en, this message translates to:
+  /// **'Topic questions'**
+  String get proSimBankPack;
+
+  /// No description provided for @proSimPool.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} questions in {topics} topics'**
+  String proSimPool(int count, int topics);
+
+  /// No description provided for @proSimTimeHelper.
+  ///
+  /// In en, this message translates to:
+  /// **'1–240 minutes, required'**
+  String get proSimTimeHelper;
+
+  /// No description provided for @proSimPassHelper.
+  ///
+  /// In en, this message translates to:
+  /// **'1–100 %, required'**
+  String get proSimPassHelper;
+
+  /// No description provided for @proSimStart.
+  ///
+  /// In en, this message translates to:
+  /// **'Start the simulation'**
+  String get proSimStart;
+
+  /// No description provided for @proSimHistory.
+  ///
+  /// In en, this message translates to:
+  /// **'Previous simulations'**
+  String get proSimHistory;
+
+  /// No description provided for @proSimReportTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Simulation report'**
+  String get proSimReportTitle;
+
+  /// No description provided for @proSimPace.
+  ///
+  /// In en, this message translates to:
+  /// **'Time'**
+  String get proSimPace;
+
+  /// No description provided for @proSimAvgPerQuestion.
+  ///
+  /// In en, this message translates to:
+  /// **'Average per question'**
+  String get proSimAvgPerQuestion;
+
+  /// No description provided for @proSimSlowest.
+  ///
+  /// In en, this message translates to:
+  /// **'Questions that took the longest'**
+  String get proSimSlowest;
+
+  /// No description provided for @proSimReview.
+  ///
+  /// In en, this message translates to:
+  /// **'Review answers'**
+  String get proSimReview;
+
+  /// No description provided for @proSimTag.
+  ///
+  /// In en, this message translates to:
+  /// **'simulation'**
+  String get proSimTag;
+
+  /// No description provided for @proResultsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Results analysis'**
+  String get proResultsTitle;
+
+  /// No description provided for @proResultsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Full history across all tests, trend and weak topics'**
+  String get proResultsSubtitle;
+
+  /// No description provided for @proResultsEntrySub.
+  ///
+  /// In en, this message translates to:
+  /// **'Trend across all banks, topics and weak spots; PDF / CSV export'**
+  String get proResultsEntrySub;
+
+  /// No description provided for @proResultsEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No results yet — take your first test.'**
+  String get proResultsEmpty;
+
+  /// No description provided for @proResultsBankOther.
+  ///
+  /// In en, this message translates to:
+  /// **'Other tests'**
+  String get proResultsBankOther;
+
+  /// No description provided for @proResultsSessions.
+  ///
+  /// In en, this message translates to:
+  /// **'Tests'**
+  String get proResultsSessions;
+
+  /// No description provided for @proResultsAverage.
+  ///
+  /// In en, this message translates to:
+  /// **'Average'**
+  String get proResultsAverage;
+
+  /// No description provided for @proResultsBest.
+  ///
+  /// In en, this message translates to:
+  /// **'Best'**
+  String get proResultsBest;
+
+  /// No description provided for @proResultsLast.
+  ///
+  /// In en, this message translates to:
+  /// **'Latest'**
+  String get proResultsLast;
+
+  /// No description provided for @proResultsTrend.
+  ///
+  /// In en, this message translates to:
+  /// **'Change'**
+  String get proResultsTrend;
+
+  /// No description provided for @proResultsAnswered.
+  ///
+  /// In en, this message translates to:
+  /// **'Correct answers'**
+  String get proResultsAnswered;
+
+  /// No description provided for @proResultsChart.
+  ///
+  /// In en, this message translates to:
+  /// **'Last 20 results'**
+  String get proResultsChart;
+
+  /// No description provided for @proResultsWeak.
+  ///
+  /// In en, this message translates to:
+  /// **'Weak topics'**
+  String get proResultsWeak;
+
+  /// No description provided for @proResultsNoWeak.
+  ///
+  /// In en, this message translates to:
+  /// **'No weak topics found.'**
+  String get proResultsNoWeak;
+
+  /// No description provided for @proResultsWeakRule.
+  ///
+  /// In en, this message translates to:
+  /// **'Weak topic: at least 5 questions and accuracy below 60 %. Change compares the newer half of the tests with that topic to the older half.'**
+  String get proResultsWeakRule;
+
+  /// No description provided for @proResultsTopics.
+  ///
+  /// In en, this message translates to:
+  /// **'By topic'**
+  String get proResultsTopics;
+
+  /// No description provided for @proResultsNoTopics.
+  ///
+  /// In en, this message translates to:
+  /// **'These tests have no topic tags.'**
+  String get proResultsNoTopics;
+
+  /// No description provided for @proResultsTopicRow.
+  ///
+  /// In en, this message translates to:
+  /// **'{correct}/{total} correct · in {sessions} tests'**
+  String proResultsTopicRow(int correct, int total, int sessions);
+
+  /// No description provided for @proResultsHistory.
+  ///
+  /// In en, this message translates to:
+  /// **'Full history'**
+  String get proResultsHistory;
+
+  /// No description provided for @proResultsQuestions.
+  ///
+  /// In en, this message translates to:
+  /// **'Questions'**
+  String get proResultsQuestions;
+
+  /// No description provided for @proResultsSession.
+  ///
+  /// In en, this message translates to:
+  /// **'Test'**
+  String get proResultsSession;
+
+  /// No description provided for @proPoints.
+  ///
+  /// In en, this message translates to:
+  /// **'{value} pp'**
+  String proPoints(String value);
+>>>>>>> paid/feat
 }
 
 class _AppLocalizationsDelegate

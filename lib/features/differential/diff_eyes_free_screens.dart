@@ -7,11 +7,9 @@ import 'package:material_ui/material_ui.dart';
 
 import '../../app/app_scope.dart';
 import '../../app/widgets/lg_page.dart';
-import '../../core/entitlements/feature.dart';
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
-import '../profile/pro_gate.dart';
 import 'diff_eyes_free.dart';
 import 'diff_eyes_free_settings.dart';
 import 'diff_voice.dart';
@@ -153,17 +151,7 @@ class _DiffEyesFreeSettingsScreenState
                     key: const ValueKey('eyes-free-start'),
                     label: l.diffEfStart,
                     icon: Icons.touch_app_rounded,
-                    // Sanashni boshlash — [Feature.leukocyteCounter] (D-76;
-                    // standart: yopilmagan); boshlangan sanash davom etadi.
-                    onPressed: () {
-                      if (allowOrOffer(
-                        context,
-                        Feature.leukocyteCounter,
-                        inProgress: !diff.isEmpty,
-                      )) {
-                        context.push(eyesFreeRunRoute);
-                      }
-                    },
+                    onPressed: () => context.push(eyesFreeRunRoute),
                   ),
                 ],
               ),

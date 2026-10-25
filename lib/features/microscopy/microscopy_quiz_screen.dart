@@ -6,11 +6,9 @@ import 'package:material_ui/material_ui.dart';
 
 import '../../app/app_scope.dart';
 import '../../app/widgets/lg_page.dart';
-import '../../core/entitlements/feature.dart';
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
-import '../profile/pro_gate.dart';
 import 'microscopy_atlas.dart';
 import 'microscopy_controller.dart';
 import 'microscopy_quiz.dart';
@@ -54,13 +52,6 @@ class _MicroQuizScreenState extends State<MicroQuizScreen> {
       _newRecord = false;
     });
     _scrollToTop();
-  }
-
-  /// Yangi raund — atlas mashqlari Pro (D-53). Xatolarni qayta ishlash
-  /// ([_start] `only` bilan) cheklanmaydi.
-  Future<void> _startGated(MicroAtlas atlas) async {
-    if (!await requireFeature(context, Feature.atlasPractice)) return;
-    if (mounted) _start(atlas);
   }
 
   void _scrollToTop() {
@@ -123,7 +114,7 @@ class _MicroQuizScreenState extends State<MicroQuizScreen> {
                 atlas: atlas,
                 scope: _scope,
                 onScope: (v) => setState(() => _scope = v),
-                onStart: () => _startGated(atlas),
+                onStart: () => _start(atlas),
               )
             else if (s.finished)
               _QuizResult(
@@ -134,7 +125,7 @@ class _MicroQuizScreenState extends State<MicroQuizScreen> {
                   atlas,
                   only: [for (final (q, _) in s.mistakes) q.image.id],
                 ),
-                onNewRound: () => _startGated(atlas),
+                onNewRound: () => _start(atlas),
                 onChangeScope: () => setState(() => _session = null),
               )
             else

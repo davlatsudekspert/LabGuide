@@ -60,10 +60,12 @@ import '../features/library/pdf_reader_screen.dart';
 import '../features/profile/contact_screen.dart';
 import '../features/profile/help_screen.dart';
 import '../features/profile/profile_screens.dart';
-import '../features/profile/pro_gate.dart';
 import '../features/profile/purchase_screen.dart';
 import '../features/profile/subscription_screen.dart';
 import '../features/settings/theme_screen.dart';
+import '../features/pro/qc_report_screen.dart';
+import '../features/pro/results_screens.dart';
+import '../features/pro/simulation_screens.dart';
 import '../features/qc/qc_guides.dart';
 import '../features/qc/qc_guides_info.dart';
 import '../features/qc/qc_screens.dart';
@@ -80,18 +82,6 @@ import '../features/tools/manual_calc_screens.dart';
 import '../features/tools/tool_screens.dart';
 import 'app_scope.dart';
 import 'shell.dart';
-
-/// Lab vositasi yo'li (D-76): bo'limning kirish sahifasi ochiladi va
-/// ko'rinadi; ichidagi vosita yoki sahifa — faqat [feature] ochiq bo'lsa, aks
-/// holda to'lov oynasi (qaysi kirish nuqtasidan kelinmasin: Lab tabi, Bosh
-/// sahifa, qidiruv, analit kartasi). To'lov yoqilmagan buildda va standart
-/// `ProGatePolicy.gated` (bo'sh) bilan `can` doim `true` — hech qachon
-/// yo'naltirmaydi. Boshlangan sanash bu yerda tekshirilmaydi (hisoblagich
-/// ekrani ochiq; birinchi bosish — `allowOrOffer`).
-GoRouterRedirect labGate(Feature feature) =>
-    (context, state) => context.services.entitlements.can(feature)
-    ? null
-    : purchaseRoute(feature);
 
 /// Yo'llar xaritasi.
 ///
@@ -499,7 +489,6 @@ GoRouter buildRouter(
                     routes: [
                       GoRoute(
                         path: 'log',
-                        redirect: labGate(Feature.calibration),
                         builder: (context, state) =>
                             const CalibrationLogScreen(),
                         routes: [
@@ -522,32 +511,26 @@ GoRouter buildRouter(
                     routes: [
                       GoRoute(
                         path: 'limits',
-                        redirect: labGate(Feature.labSections),
                         builder: (context, state) => const SpermLimitsScreen(),
                       ),
                       GoRoute(
                         path: 'count',
-                        redirect: labGate(Feature.labSections),
                         builder: (context, state) => const SpermCounterScreen(),
                       ),
                       GoRoute(
                         path: 'assess',
-                        redirect: labGate(Feature.labSections),
                         builder: (context, state) => const SpermAssessScreen(),
                       ),
                       GoRoute(
                         path: 'terms',
-                        redirect: labGate(Feature.labSections),
                         builder: (context, state) => const SpermTermsScreen(),
                       ),
                       GoRoute(
                         path: 'preanalytics',
-                        redirect: labGate(Feature.labSections),
                         builder: (context, state) => const SpermPreScreen(),
                       ),
                       GoRoute(
                         path: 'quiz',
-                        redirect: labGate(Feature.labSections),
                         builder: (context, state) => const SpermQuizScreen(),
                       ),
                     ],
@@ -560,37 +543,30 @@ GoRouter buildRouter(
                     routes: [
                       GoRoute(
                         path: 'basics',
-                        redirect: labGate(Feature.labSections),
                         builder: (context, state) => const BgBasicsScreen(),
                       ),
                       GoRoute(
                         path: 'methods',
-                        redirect: labGate(Feature.labSections),
                         builder: (context, state) => const BgMethodsScreen(),
                       ),
                       GoRoute(
                         path: 'compat',
-                        redirect: labGate(Feature.labSections),
                         builder: (context, state) => const BgCompatScreen(),
                       ),
                       GoRoute(
                         path: 'errors',
-                        redirect: labGate(Feature.labSections),
                         builder: (context, state) => const BgErrorsScreen(),
                       ),
                       GoRoute(
                         path: 'quality',
-                        redirect: labGate(Feature.labSections),
                         builder: (context, state) => const BgQualityScreen(),
                       ),
                       GoRoute(
                         path: 'reader',
-                        redirect: labGate(Feature.labSections),
                         builder: (context, state) => const BgReaderScreen(),
                       ),
                       GoRoute(
                         path: 'quiz',
-                        redirect: labGate(Feature.labSections),
                         builder: (context, state) => const BgQuizScreen(),
                       ),
                     ],
@@ -603,7 +579,6 @@ GoRouter buildRouter(
                     routes: [
                       GoRoute(
                         path: 'items',
-                        redirect: labGate(Feature.labSections),
                         builder: (context, state) => const HistoItemsScreen(),
                         routes: [
                           GoRoute(
@@ -616,12 +591,10 @@ GoRouter buildRouter(
                       ),
                       GoRoute(
                         path: 'stains',
-                        redirect: labGate(Feature.labSections),
                         builder: (context, state) => const HistoStainsScreen(),
                       ),
                       GoRoute(
                         path: 'quiz',
-                        redirect: labGate(Feature.labSections),
                         builder: (context, state) => const HistoQuizScreen(),
                       ),
                       GoRoute(
@@ -639,12 +612,10 @@ GoRouter buildRouter(
                     routes: [
                       GoRoute(
                         path: 'normal',
-                        redirect: labGate(Feature.labSections),
                         builder: (context, state) => const BmNormalScreen(),
                       ),
                       GoRoute(
                         path: 'rbc',
-                        redirect: labGate(Feature.labSections),
                         builder: (context, state) => const BmFindingsScreen(),
                         routes: [
                           GoRoute(
@@ -657,27 +628,22 @@ GoRouter buildRouter(
                       ),
                       GoRoute(
                         path: 'platelets',
-                        redirect: labGate(Feature.labSections),
                         builder: (context, state) => const BmPlateletsScreen(),
                       ),
                       GoRoute(
                         path: 'retic',
-                        redirect: labGate(Feature.labSections),
                         builder: (context, state) => const BmReticScreen(),
                       ),
                       GoRoute(
                         path: 'anemia',
-                        redirect: labGate(Feature.labSections),
                         builder: (context, state) => const BmAnemiaScreen(),
                       ),
                       GoRoute(
                         path: 'quality',
-                        redirect: labGate(Feature.labSections),
                         builder: (context, state) => const BmQualityScreen(),
                       ),
                       GoRoute(
                         path: 'quiz',
-                        redirect: labGate(Feature.labSections),
                         builder: (context, state) => const BmQuizScreen(),
                       ),
                       GoRoute(
@@ -695,22 +661,18 @@ GoRouter buildRouter(
                     routes: [
                       GoRoute(
                         path: 'collect',
-                        redirect: labGate(Feature.labSections),
                         builder: (context, state) => const UrCollectScreen(),
                       ),
                       GoRoute(
                         path: 'physical',
-                        redirect: labGate(Feature.labSections),
                         builder: (context, state) => const UrPhysicalScreen(),
                       ),
                       GoRoute(
                         path: 'strip',
-                        redirect: labGate(Feature.labSections),
                         builder: (context, state) => const UrStripScreen(),
                       ),
                       GoRoute(
                         path: 'sediment',
-                        redirect: labGate(Feature.labSections),
                         builder: (context, state) => const UrSedimentScreen(),
                         routes: [
                           GoRoute(
@@ -723,12 +685,10 @@ GoRouter buildRouter(
                       ),
                       GoRoute(
                         path: 'reader',
-                        redirect: labGate(Feature.labSections),
                         builder: (context, state) => const UrReaderScreen(),
                       ),
                       GoRoute(
                         path: 'quiz',
-                        redirect: labGate(Feature.labSections),
                         builder: (context, state) => const UrQuizScreen(),
                       ),
                     ],
@@ -742,27 +702,22 @@ GoRouter buildRouter(
                     routes: [
                       GoRoute(
                         path: 'tests',
-                        redirect: labGate(Feature.coagulogram),
                         builder: (context, state) => const CgTestsScreen(),
                       ),
                       GoRoute(
                         path: 'sample',
-                        redirect: labGate(Feature.coagulogram),
                         builder: (context, state) => const CgSampleScreen(),
                       ),
                       GoRoute(
                         path: 'reader',
-                        redirect: labGate(Feature.coagulogram),
                         builder: (context, state) => const CgReaderScreen(),
                       ),
                       GoRoute(
                         path: 'dic',
-                        redirect: labGate(Feature.coagulogram),
                         builder: (context, state) => const CgDicScreen(),
                       ),
                       GoRoute(
                         path: 'monitoring',
-                        redirect: labGate(Feature.coagulogram),
                         builder: (context, state) => const CgMonitoringScreen(),
                       ),
                     ],
@@ -775,17 +730,14 @@ GoRouter buildRouter(
                     routes: [
                       GoRoute(
                         path: 'collect',
-                        redirect: labGate(Feature.labSections),
                         builder: (context, state) => const CpCollectScreen(),
                       ),
                       GoRoute(
                         path: 'macro',
-                        redirect: labGate(Feature.labSections),
                         builder: (context, state) => const CpMacroScreen(),
                       ),
                       GoRoute(
                         path: 'micro',
-                        redirect: labGate(Feature.labSections),
                         builder: (context, state) => const CpMicroScreen(),
                         routes: [
                           GoRoute(
@@ -798,12 +750,10 @@ GoRouter buildRouter(
                       ),
                       GoRoute(
                         path: 'occult',
-                        redirect: labGate(Feature.labSections),
                         builder: (context, state) => const CpOccultScreen(),
                       ),
                       GoRoute(
                         path: 'parasites',
-                        redirect: labGate(Feature.labSections),
                         builder: (context, state) => const CpParasitesScreen(),
                         routes: [
                           GoRoute(
@@ -824,7 +774,6 @@ GoRouter buildRouter(
                     routes: [
                       GoRoute(
                         path: 'cells',
-                        redirect: labGate(Feature.labSections),
                         builder: (context, state) => const CytoCellsScreen(),
                         routes: [
                           GoRoute(
@@ -837,44 +786,36 @@ GoRouter buildRouter(
                       ),
                       GoRoute(
                         path: 'degree',
-                        redirect: labGate(Feature.labSections),
                         builder: (context, state) => const CytoDegreeScreen(),
                       ),
                       GoRoute(
                         path: 'bethesda',
-                        redirect: labGate(Feature.labSections),
                         builder: (context, state) => const CytoBethesdaScreen(),
                       ),
                       GoRoute(
                         path: 'technique',
-                        redirect: labGate(Feature.labSections),
                         builder: (context, state) =>
                             const CytoTechniqueScreen(),
                       ),
                       GoRoute(
                         path: 'quiz',
-                        redirect: labGate(Feature.labSections),
                         builder: (context, state) => const CytoQuizScreen(),
                       ),
                       GoRoute(
                         path: 'adequacy',
-                        redirect: labGate(Feature.labSections),
                         builder: (context, state) => const CytoAdequacyScreen(),
                       ),
                       GoRoute(
                         path: 'reactive',
-                        redirect: labGate(Feature.labSections),
                         builder: (context, state) => const CytoReactiveScreen(),
                       ),
                       GoRoute(
                         path: 'maturation',
-                        redirect: labGate(Feature.labSections),
                         builder: (context, state) =>
                             const CytoMaturationScreen(),
                       ),
                       GoRoute(
                         path: 'other',
-                        redirect: labGate(Feature.labSections),
                         builder: (context, state) => const CytoOtherScreen(),
                       ),
                     ],
@@ -936,7 +877,6 @@ GoRouter buildRouter(
                       ),
                       GoRoute(
                         path: 'interpret',
-                        redirect: labGate(Feature.leukocyteEvaluation),
                         builder: (context, state) => DiffInterpretScreen(
                           focusFinding: state.uri.queryParameters['finding'],
                         ),
@@ -965,7 +905,6 @@ GoRouter buildRouter(
                     routes: [
                       GoRoute(
                         path: 'new',
-                        redirect: labGate(Feature.qualityControl),
                         builder: (context, state) => const QcNewSetScreen(),
                       ),
                       for (final g in QcGuide.values)
@@ -975,7 +914,6 @@ GoRouter buildRouter(
                         ),
                       GoRoute(
                         path: 'set/:id',
-                        redirect: labGate(Feature.qualityControl),
                         builder: (context, state) =>
                             QcSetScreen(setId: state.pathParameters['id']!),
                         routes: [
@@ -986,6 +924,15 @@ GoRouter buildRouter(
                               levelId: state.pathParameters['level']!,
                             ),
                           ),
+                          // QC xulosa hisoboti — Mutaxassis Pro (D-78), faqat
+                          // Pro bayrog'i yoqilgan buildda.
+                          if (BuildFlags.proEnabled)
+                            GoRoute(
+                              path: 'report',
+                              builder: (context, state) => QcReportScreen(
+                                setId: state.pathParameters['id']!,
+                              ),
+                            ),
                         ],
                       ),
                     ],
@@ -1000,7 +947,6 @@ GoRouter buildRouter(
                     routes: [
                       GoRoute(
                         path: 'c/:category',
-                        redirect: labGate(Feature.labInstruments),
                         builder: (context, state) => InstrumentMakersScreen(
                           category: state.pathParameters['category']!,
                         ),
@@ -1016,20 +962,17 @@ GoRouter buildRouter(
                       ),
                       GoRoute(
                         path: 'd/:direction',
-                        redirect: labGate(Feature.labDirections),
                         builder: (context, state) => LabDirectionScreen(
                           direction: state.pathParameters['direction']!,
                         ),
                       ),
                       GoRoute(
                         path: 'lc/:id',
-                        redirect: labGate(Feature.labDirections),
                         builder: (context, state) =>
                             LabCardScreen(cardId: state.pathParameters['id']!),
                       ),
                       GoRoute(
                         path: 'm/:id',
-                        redirect: labGate(Feature.labInstruments),
                         builder: (context, state) => InstrumentCardScreen(
                           modelId: state.pathParameters['id']!,
                         ),
@@ -1078,26 +1021,22 @@ GoRouter buildRouter(
                     routes: [
                       GoRoute(
                         path: 'dilution',
-                        redirect: labGate(Feature.labCalculators),
                         builder: (context, state) => const DilutionScreen(),
                       ),
                       GoRoute(
                         path: 'units',
-                        redirect: labGate(Feature.labCalculators),
                         builder: (context, state) =>
                             const UnitConverterScreen(),
                       ),
                       for (final c in ClinicalCalc.values)
                         GoRoute(
                           path: calcRoute(c),
-                          redirect: labGate(Feature.labCalculators),
                           builder: (context, state) =>
                               ClinicalCalcScreen(calc: c),
                         ),
                       for (final c in ManualCalc.values)
                         GoRoute(
                           path: manualCalcRoute(c),
-                          redirect: labGate(Feature.labCalculators),
                           builder: (context, state) => manualCalcScreen(c),
                         ),
                     ],
@@ -1227,6 +1166,28 @@ GoRouter buildRouter(
                       ),
                     ],
                   ),
+                  // Talaba Pro (D-78): imtihon simulyatsiyasi va natijalar
+                  // tahlili — faqat Pro bayrog'i yoqilgan buildda.
+                  if (BuildFlags.proEnabled)
+                    GoRoute(
+                      path: 'simulation',
+                      builder: (context, state) =>
+                          const SimulationSetupScreen(),
+                      routes: [
+                        GoRoute(
+                          path: 'result/:id',
+                          builder: (context, state) => SimulationReportScreen(
+                            resultId: state.pathParameters['id']!,
+                          ),
+                        ),
+                      ],
+                    ),
+                  if (BuildFlags.proEnabled)
+                    GoRoute(
+                      path: 'results',
+                      builder: (context, state) =>
+                          const ResultsAnalyticsScreen(),
+                    ),
                   // Toifa imtihoniga tayyorgarlik — faqat O'zbekiston
                   // foydalanuvchilariga (til uz yoki mintaqa UZ), shifokor va
                   // talaba rolidan tashqari (D-40, D-60); boshqalar

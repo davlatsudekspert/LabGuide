@@ -9,15 +9,17 @@ import 'package:flutter/foundation.dart';
 /// emas. Ilova nusxasi ([PlanMatrix]) faqat UI ko'rsatmalari va
 /// [EntitlementService.can] uchun (test ikkalasini solishtiradi).
 enum ProCapability {
-  /// Talaba tomonidagi Pro imkoniyatlari.
+  /// Talaba Pro: natijalar tahlili, imtihon simulyatsiyasi, eksport,
+  /// ustoz bilan ishlanadigan maxsus testlar (talaba tomoni).
   learner('learner'),
 
-  /// Ustoz paneli Pro imkoniyatlari (bugungi bepul guruhlar EMAS).
+  /// Ustoz Pro: test yaratish, talabalarni biriktirish, natijalarni
+  /// boshqarish (bugungi bepul guruhlar va topshiriqlar EMAS).
   teacherPanel('teacher_panel'),
 
-  /// Butun Lab bo'limi (D-76): apparatlar katalogi, yo'nalish kartalari,
-  /// koagulogramma, kalibrlash, QC, kalkulyatorlar, leykoformula sanash va
-  /// baholash, rasmli Lab bo'limlari.
+  /// Mutaxassis Pro: professional laboratoriya funksiyalari — kalibrlash
+  /// jurnali va QC eksporti, QC xulosa hisoboti (bugungi bepul Lab bo'limi
+  /// EMAS — u to'liq bepul qoladi, egasi qarori 2026-10-25).
   lab('lab');
 
   const ProCapability(this.wire);
@@ -28,9 +30,10 @@ enum ProCapability {
 
 /// Obuna darajasi = ochilgan imkoniyatlar TO'PLAMI (D-76). Avvalgi chiziqli
 /// zinapoya (free < pro < teacher) BEKOR: Mutaxassis ustoz panelini, Ustoz
-/// esa Lab'ni ochmaydi, shuning uchun "yuqori daraja pastkisini qamraydi"
-/// degan qoida yo'q. Bir nechta amaldagi huquq (masalan, Ustoz obunasi va
-/// Mutaxassis admin granti) birlashtiriladi ([operator |]).
+/// esa Mutaxassis funksiyalarini ochmaydi, shuning uchun "yuqori daraja
+/// pastkisini qamraydi" degan qoida yo'q. Bir nechta amaldagi huquq
+/// (masalan, Ustoz obunasi va Mutaxassis admin granti) birlashtiriladi
+/// ([operator |]).
 @immutable
 class ProTier {
   const ProTier(this.capabilities);
@@ -49,7 +52,7 @@ class ProTier {
 
   bool get isFree => capabilities.isEmpty;
 
-  /// [capability] ochiqmi (`null` — bepul funksiya, doim ochiq).
+  /// [capability] ochiqmi (`null` — bepul, doim ochiq).
   bool allows(ProCapability? capability) =>
       capability == null || capabilities.contains(capability);
 
@@ -73,101 +76,78 @@ class ProTier {
       'ProTier(${[for (final c in capabilities) c.wire].join(', ')})';
 }
 
-/// Ilova imkoniyatlari: qaysi biri bepul, qaysi biri qaysi Pro toifasida
-/// (D-46, D-53, D-76; docs/PRO_BILLING_PLAN.md). Yangi pullik imkoniyat faqat
-/// shu yerga qo'shiladi — ekranlar `EntitlementService.can(...)` ni
-/// (yoki `requireFeature`) so'raydi.
+/// PULLIK imkoniyatlar katalogi — egasi qarori (2026-10-25, D-78).
 ///
-/// Muhim: tekshiruv faqat amal BOSHLANISHIDAN oldin yoki NATIJADAN keyin
-/// qilinadi. Boshlangan sanash yoki imtihon hech qachon to'lov oynasi bilan
-/// to'xtatilmaydi (obuna o'rtada tugasa ham oxirigacha ishlaydi).
+/// Asosiy qoida: **bugun `main` da (do'kondagi bepul versiya) bor bo'lgan
+/// HECH NARSA bu ro'yxatda emas** — Lab bo'limi, atlas, toifa / Bilim va
+/// ko'nikmalarni baholash, testlar, kunlik savollar, mashq, natijalar
+/// tarixi (bepul ko'rinishi), guruhlar, topshiriqlar, ma'ruza rejimi,
+/// kalkulyatorlar, QC (shu jumladan CSV nusxasi), kalibrlash — hammasi
+/// bepul va cheklovsiz (kunlik limit yo'q). Ro'yxatda faqat YANGI yoki
+/// KENGAYTIRILGAN imkoniyatlar (Pro delta). Bepul qism hech qachon
+/// tekshirilmaydi, shuning uchun bepul funksiya uchun [Feature] yo'q.
 ///
-/// Haqiqatan yopilishi esa [ProGatePolicy.gated] ga bog'liq (standart —
-/// HECH NARSA). Lab funksiyalari [ProGatePolicy.plannedLabGate] da
-/// REJALASHTIRILGAN, lekin FAOL EMAS. To'lov yoqilmagan buildda hamma
-/// imkoniyat ochiq — yopiq tugma yoki "tez orada" yozuvi ko'rsatilmaydi
-/// (App Store 2.1 / 3.1.1).
+/// Tekshiruv faqat amal BOSHLANISHIDAN oldin (`allowOrOffer` /
+/// `requireFeature`): boshlangan amal hech qachon to'xtatilmaydi, obuna
+/// tugasa foydalanuvchi ma'lumoti O'CHIRILMAYDI va yashirilmaydi — faqat
+/// yangi pullik amalni boshlash yopiladi.
+///
+/// Haqiqatan yopilishi [ProGatePolicy.gated] ga bog'liq: unga faqat
+/// QURILGAN (ekrani va testi bor) funksiya qo'shiladi — bo'sh pullik va'da
+/// yo'q. To'lov yoqilmagan buildda hamma imkoniyat ochiq.
+///
+/// Server nusxasi: `cloudflare/src/tiers.ts` `FEATURE_CAPABILITIES` (test
+/// `test/unit/plan_matrix_test.dart` solishtiradi).
 enum Feature {
-  /// Asosiy qo'llanmalar.
-  basicGuides(null),
+  // ------------------------------------------------- Talaba Pro (learner)
 
-  /// Kunlik 5 ta savol (D-53).
-  dailyQuestions(null),
+  /// Natijalar tahlili: barcha banklar bo'yicha to'liq tarix, mavzular
+  /// bo'yicha aniqlik va trend, zaif mavzular (bepul imtihon tarixi va har
+  /// natijadagi mavzular tahlili o'zgarmaydi).
+  resultsAnalytics('results_analytics', ProCapability.learner),
 
-  /// Xatolarni qayta ishlash — cheklanmaydi (D-53).
-  mistakeReview(null),
+  /// Imtihon simulyatsiyasi: imtihon sharoiti (majburiy vaqt va o'tish
+  /// chegarasi, mavzular bo'yicha muvozanatli tanlov, ketma-ket — orqaga
+  /// qaytish va belgilash yo'q), har savolga sarflangan vaqt bilan hisobot,
+  /// tarixga saqlanadi. Bepul imtihon rejimi va toifa testi o'zgarmaydi.
+  examSimulation('exam_simulation', ProCapability.learner),
 
-  /// Cheksiz natijalar tarixi (bepulda oxirgi 3 tasi ko'rinadi).
-  unlimitedHistory(ProCapability.learner),
+  /// Natijalarni PDF va CSV fayl sifatida eksport qilish (ulashish oynasi).
+  resultsExport('results_export', ProCapability.learner),
 
-  /// Cheksiz savollar: mavzu bo'yicha mashq va kartadan mini-test
-  /// (bepulda — kunlik 5 ta savol).
-  unlimitedQuestions(ProCapability.learner),
+  /// Ustoz Pro'da yaratilgan maxsus testlarni yechish (talaba tomoni).
+  /// Bugungi bepul guruh topshiriqlari (slayd/mavzu testlari) bunga
+  /// KIRMAYDI. Ustoz tomoni qurilgach ulanadi.
+  teacherTests('teacher_tests', ProCapability.learner),
 
-  /// Imtihon simulyatsiyasi (vaqtli test).
-  examSimulation(ProCapability.learner),
+  // -------------------------------------------- Ustoz Pro (teacherPanel)
 
-  /// To'liq toifa banki: rasmiy test va mavzu bo'yicha mashq.
-  fullToifaBank(ProCapability.learner),
+  /// O'z testini yaratish va tahrirlash (savollar, variantlar, kalit).
+  teacherTestBuilder('teacher_test_builder', ProCapability.teacherPanel),
 
-  /// Zaif mavzular tahlili (natijada mavzular bo'yicha).
-  weakTopics(ProCapability.learner),
+  /// Yaratilgan testga talabalar / guruhni biriktirish (muddat bilan).
+  teacherTestAssign('teacher_test_assign', ProCapability.teacherPanel),
 
-  /// Mikroskopiya atlasi mashqlari.
-  atlasPractice(ProCapability.learner),
+  /// Natijalarni boshqarish: o'z testlari bo'yicha talaba va savol
+  /// kesimidagi jamlanma, eksport.
+  teacherResults('teacher_results', ProCapability.teacherPanel),
 
-  /// Ustoz paneli: guruh ochish (a'zolar, baholar, hisobotlar).
-  groups(ProCapability.teacherPanel),
+  // -------------------------------------------------- Mutaxassis Pro (lab)
 
-  /// Ustoz paneli: guruh topshiriqlari.
-  assignments(ProCapability.teacherPanel),
+  /// Kalibrlash jurnalini CSV va PDF ga eksport qilish (apparat, analit,
+  /// reagent, kalibrator loti, darajalar, natija, tasdiqlagan, audit).
+  calibrationExport('calibration_export', ProCapability.lab),
 
-  /// Ustoz paneli: ma'ruza rejimi (avtomatik taqdimot).
-  autoPresentation(ProCapability.teacherPanel),
+  /// QC xulosa hisoboti (saqlangan ma'lumotdan: har daraja bo'yicha n, x̄,
+  /// SD, CV, maqsaddan farq, ishlagan Westgard qoidalari) va QC ma'lumotini
+  /// CSV/PDF fayl sifatida eksport (bepul CSV nusxasi o'zgarmaydi).
+  qcReport('qc_report', ProCapability.lab);
 
-  // ---------------------------------------------------------------- Lab (D-76)
-  // Ekran (kirish sahifasi) OCHILADI va ko'rinadi; quyidagi AMAL yoki
-  // vosita boshlanishidan oldin tekshiriladi.
+  const Feature(this.wire, this.capability);
 
-  /// Leykoformula: sanashni boshlash (hisoblagich, "ko'rmasdan" rejim) va
-  /// natijani saqlash (sanash sessiyasi ichida).
-  leukocyteCounter(ProCapability.lab),
+  /// Server bilan umumiy nom (`tiers.ts` `FEATURE_CAPABILITIES`).
+  final String wire;
 
-  /// Leykoformula: foiz va mutlaq sonlar kalkulyatori.
-  absoluteCounts(ProCapability.lab),
-
-  /// Leykoformula: natijani baholash (izohlash).
-  leukocyteEvaluation(ProCapability.lab),
-
-  /// Rasmli Lab bo'limlari ichidagi sahifalar va vositalar: sitologiya,
-  /// spermogramma, qon guruhi, gistologiya, siydik tahlili, qon
-  /// morfologiyasi, koprologiya.
-  labSections(ProCapability.lab),
-
-  /// Koagulogramma bo'limi ichidagi sahifalar va vositalar.
-  coagulogram(ProCapability.lab),
-
-  /// Apparatlar katalogi: toifa / ishlab chiqaruvchi / apparat kartasi.
-  labInstruments(ProCapability.lab),
-
-  /// Lab yo'nalishlari bo'yicha ma'lumotnoma kartalari.
-  labDirections(ProCapability.lab),
-
-  /// Kalibrlash: hisoblash va yozuvni saqlash, kalibrlash jurnali.
-  calibration(ProCapability.lab),
-
-  /// Sifat nazorati (QC): yangi to'plam, to'plamni ochish va natija kiritish.
-  qualityControl(ProCapability.lab),
-
-  /// Lab kalkulyatorlari (har bir kalkulyatorni ochish).
-  labCalculators(ProCapability.lab);
-
-  const Feature(this.capability);
-
-  /// Qaysi Pro toifasiga tegishli (`null` — bepul funksiya).
-  final ProCapability? capability;
-
-  /// Obunani talab qiladigan funksiya (TOIFA bo'yicha). Haqiqatan yopilishi
-  /// esa [ProGatePolicy.gated] ga bog'liq (D-71: standart — hech narsa).
-  bool get pro => capability != null;
+  /// Qaysi Pro toifasiga tegishli.
+  final ProCapability capability;
 }

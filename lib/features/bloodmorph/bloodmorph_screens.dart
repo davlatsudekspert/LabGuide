@@ -5,12 +5,10 @@ import 'package:material_ui/material_ui.dart';
 
 import '../../app/shell.dart';
 import '../../app/widgets/lg_page.dart';
-import '../../core/entitlements/feature.dart';
 import '../../app/widgets/links.dart';
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
-import '../profile/pro_gate.dart';
 import '../content/content_model.dart';
 import '../content/ui/content_widgets.dart';
 import '../learn/quiz_session.dart';
@@ -335,11 +333,7 @@ class BloodMorphScreen extends StatelessWidget {
             title: context.tr(title),
             subtitle: context.tr(sub),
             icon: icon,
-            // Bo'lim ochiq; ichidagi sahifa/vosita — [Feature.labSections] (D-76).
-            // Rasm mualliflari (litsenziya) har doim ochiq.
-            onTap: () => path == 'credits'
-                ? context.push('$bmBase/$path')
-                : pushGated(context, Feature.labSections, '$bmBase/$path'),
+            onTap: () => context.push('$bmBase/$path'),
             divider: i < rows.length - 1,
           ),
         LgSectionTitle(l.diffSourcesTitle),

@@ -2,10 +2,8 @@ import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
 import '../../app/widgets/lg_page.dart';
-import '../../core/entitlements/feature.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
-import '../profile/pro_gate.dart';
 import '../classroom/lecture_library.dart' show openDeck;
 import '../content/content_model.dart';
 import '../content/ui/content_widgets.dart';
@@ -154,12 +152,7 @@ class CoagulogramScreen extends StatelessWidget {
             title: context.tr(title),
             subtitle: context.tr(sub),
             icon: icon,
-            // Bo'lim ochiq; ichidagi sahifa/vosita — [Feature.coagulogram] (D-76).
-            onTap: () => pushGated(
-              context,
-              Feature.coagulogram,
-              '$coagBase/${coagRoutes[i]}',
-            ),
+            onTap: () => context.push('$coagBase/${coagRoutes[i]}'),
             divider: i < rows.length - 1,
           ),
         LgSectionTitle(context.tr(CgL.relatedTitle)),

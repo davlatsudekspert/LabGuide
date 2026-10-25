@@ -4,14 +4,13 @@ import 'package:material_ui/material_ui.dart';
 
 import '../../app/app_scope.dart';
 import '../../app/widgets/lg_page.dart';
-import '../../core/entitlements/feature.dart';
 import '../../app/widgets/diagram_figure.dart';
 import '../../app/widgets/links.dart';
+import '../../core/build_flags.dart';
 import '../../core/single_flight.dart';
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
-import '../profile/pro_gate.dart';
 import '../content/analyte_search.dart';
 import '../content/content_model.dart';
 import '../content/ui/content_widgets.dart';
@@ -22,6 +21,8 @@ import 'instrument_catalog.dart';
 import 'instrument_screens.dart';
 import 'instruments_controller.dart';
 import '../howto/howto_registry.dart';
+import '../pro/calibration_export.dart' show exportCalibrationLog;
+import '../pro/pro_widgets.dart';
 import '../howto/howto_widgets.dart';
 
 const _decimalKeyboard = TextInputType.numberWithOptions(decimal: true);
@@ -411,12 +412,7 @@ class _CalibrationScreenState extends State<CalibrationScreen> {
                   LgButton(
                     label: l.calShowGuide,
                     icon: Icons.menu_book_outlined,
-                    // Amal — [Feature.calibration] (D-76; standart: yopilmagan).
-                    onPressed: () {
-                      if (allowOrOffer(context, Feature.calibration)) {
-                        _showGuide(pack);
-                      }
-                    },
+                    onPressed: () => _showGuide(pack),
                   ),
                   if (_guide case final g?)
                     _GuideResult(
@@ -432,11 +428,7 @@ class _CalibrationScreenState extends State<CalibrationScreen> {
                       LgButton.secondary(
                         label: l.calRecordCreate,
                         icon: Icons.edit_note_rounded,
-                        onPressed: () {
-                          if (allowOrOffer(context, Feature.calibration)) {
-                            setState(() => _recordOpen = true);
-                          }
-                        },
+                        onPressed: () => setState(() => _recordOpen = true),
                       )
                     else
                       _RecordForm(
@@ -499,11 +491,7 @@ class _CalibrationScreenState extends State<CalibrationScreen> {
                     subtitle: l.calLogSub,
                     icon: Icons.fact_check_outlined,
                     divider: false,
-                    onTap: () => pushGated(
-                      context,
-                      Feature.calibration,
-                      '/lab/calibration/log',
-                    ),
+                    onTap: () => context.push('/lab/calibration/log'),
                   ),
                 ],
               ),
@@ -1287,6 +1275,22 @@ class CalibrationLogScreen extends StatelessWidget {
                       onTap: () => context.push('/lab/calibration/log/${r.id}'),
                     ),
                   _HistorySection(instruments.audit, null),
+                  // Jurnal eksporti (PDF / CSV) — Mutaxassis Pro (D-78; faqat
+                  // Pro bayrog'i bilan ko'rinadi).
+                  if (BuildFlags.proEnabled) ...[
+                    const SizedBox(height: 12),
+                    ProEntryRow(
+                      key: const ValueKey('cal-export-entry'),
+                      title: l.proCalExportEntry,
+                      subtitle: l.proCalExportEntrySub,
+                      icon: Icons.ios_share_rounded,
+                      onTap: () => exportCalibrationLog(
+                        context,
+                        analyteName: (id) =>
+                            pack.analyte(id)?.names.of(lang) ?? id,
+                      ),
+                    ),
+                  ],
                 ],
               );
             },

@@ -5,12 +5,12 @@ import 'package:material_ui/material_ui.dart';
 
 import '../../app/app_scope.dart';
 import '../../app/widgets/lg_page.dart';
-import '../../core/entitlements/feature.dart';
 import '../../app/widgets/diagram_figure.dart';
+import '../../core/build_flags.dart';
+import '../../core/entitlements/feature.dart';
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
-import '../profile/pro_gate.dart';
 import '../tools/clinical_calculators.dart';
 import '../tools/tool_screens.dart';
 import 'levey_jennings_chart.dart';
@@ -21,6 +21,8 @@ import 'qc_export.dart';
 import 'qc_model.dart';
 import 'qc_rules.dart';
 import '../howto/howto_registry.dart';
+import '../pro/pro_widgets.dart';
+import '../profile/pro_gate.dart';
 import '../howto/howto_widgets.dart';
 
 const _decimalKeyboard = TextInputType.numberWithOptions(
@@ -238,9 +240,7 @@ class QcScreen extends StatelessWidget {
               LgButton(
                 label: l.qcAddSet,
                 icon: Icons.add_rounded,
-                // Vosita — [Feature.qualityControl] (D-76; standart: yopilmagan).
-                onPressed: () =>
-                    pushGated(context, Feature.qualityControl, '/lab/qc/new'),
+                onPressed: () => context.push('/lab/qc/new'),
               ),
               LgSectionTitle(l.qcBackupTitle),
               Text(l.qcBackupBody, style: text.bodySmall),
@@ -311,8 +311,7 @@ class _SetRow extends StatelessWidget {
         QcVerdict.warning => Icons.warning_amber_rounded,
         _ => Icons.show_chart_rounded,
       },
-      onTap: () =>
-          pushGated(context, Feature.qualityControl, '/lab/qc/set/${set.id}'),
+      onTap: () => context.push('/lab/qc/set/${set.id}'),
       divider: divider,
     );
   }
@@ -961,6 +960,22 @@ class _QcSetScreenState extends State<QcSetScreen> {
             }
           },
         ),
+        // QC xulosa hisoboti va fayl eksporti — Mutaxassis Pro (D-78; faqat
+        // Pro bayrog'i bilan ko'rinadi). Yuqoridagi CSV nusxasi bepul qoladi.
+        if (BuildFlags.proEnabled) ...[
+          const SizedBox(height: 8),
+          ProEntryRow(
+            key: const ValueKey('qc-report-entry'),
+            title: l.proQcReportTitle,
+            subtitle: l.proQcReportEntrySub,
+            icon: Icons.summarize_outlined,
+            onTap: () => pushGated(
+              context,
+              Feature.qcReport,
+              '/lab/qc/set/${set.id}/report',
+            ),
+          ),
+        ],
       ],
       const SizedBox(height: 18),
       LgButton.secondary(

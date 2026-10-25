@@ -3,11 +3,9 @@ import 'package:material_ui/material_ui.dart';
 
 import '../../app/app_scope.dart';
 import '../../app/widgets/lg_page.dart';
-import '../../core/entitlements/feature.dart';
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
-import '../profile/pro_gate.dart';
 import '../tools/clinical_calc_screens.dart';
 import '../tools/tool_screens.dart';
 import 'diff_assessment.dart';
@@ -149,12 +147,8 @@ class DiffAssessmentPanel extends StatelessWidget {
                         alignment: AlignmentDirectional.centerStart,
                         child: TextButton.icon(
                           key: ValueKey('diff-finding-link-${f.id}'),
-                          // Baholash — [Feature.leukocyteEvaluation] (D-76).
-                          onPressed: () => pushGated(
-                            context,
-                            Feature.leukocyteEvaluation,
-                            '$base/interpret?finding=${f.id}',
-                          ),
+                          onPressed: () =>
+                              context.push('$base/interpret?finding=${f.id}'),
                           icon: const Icon(Icons.menu_book_outlined),
                           label: Text(l.diffAssessAboutFinding),
                         ),
@@ -179,11 +173,7 @@ class DiffAssessmentPanel extends StatelessWidget {
           spacing: 8,
           children: [
             TextButton.icon(
-              onPressed: () => pushGated(
-                context,
-                Feature.leukocyteEvaluation,
-                '$base/interpret',
-              ),
+              onPressed: () => context.push('$base/interpret'),
               icon: const Icon(Icons.menu_book_outlined),
               label: Text(l.diffInterpretTitle),
             ),

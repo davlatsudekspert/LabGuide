@@ -1664,6 +1664,7 @@ qo'lda tahrir “eskirgan” xatosi bilan ushlanadi). Maxfiylik/shartlar matni (
 **Tekshirilmagan (NOT VERIFIED):** haqiqiy App Store / Google Play sandbox xaridi bir marta ham qilinmagan; barcha
 Pro testlari soxta do'kon / soxta server / soxta attestatsiya bilan. Holat: `docs/PAID_BRANCH_STATUS.md`.
 
+<<<<<<< HEAD
 ### D-77 addendum (2026-10-25, `paid/srv`): sinov attestatsiyasi, mehmon xaridi, billing to‘liqligi
 Faqat lokal tarmoq `paid/srv` (`paid/pro-premium@21b5a24` dan). **Push, merge, PR, build, deploy, migratsiya
 (remote), do‘kon/Apple/Google/Cloudflare API chaqiruvi — QILINMAGAN.** Haqiqiy do‘kon xaridi va qurilmada attestatsiya
@@ -1710,3 +1711,51 @@ Faqat lokal tarmoq `paid/srv` (`paid/pro-premium@21b5a24` dan). **Push, merge, P
 7. **Tekshiruv (2026-10-25, lokal):** server `tsc --noEmit` — xato yo‘q, `vitest run` — 28 fayl / 399 test PASS
    (oldin 24 / 332); `flutter analyze` — xato yo‘q; Pro/billing/sinov/l10n to‘plami + `test/guards/` (17 yo‘l) —
    360 test PASS. To‘liq `flutter test`, Gradle/Xcode build, `wrangler dev` — NOT RUN.
+=======
+
+## D-78. Pullik katalog: faqat YANGI Pro funksiyalar; bugun bepul hamma narsa bepul qoladi (2026-10-25, egasi qarori)
+**Egasining yakuniy tarif qarori (2026-10-25)** — `paid/feat` tarmog'ida amalga oshirildi (faqat lokal; push, merge,
+PR, build, deploy yo'q; `LG_PRO_ENABLED` standart `false`).
+1. **Free:** bugun `main` (`4b0f057`, do'kon tekshiruvida) da bor HAMMA funksiya bepul va to'liq ishlaydi — Lab bo'limi
+   (leykoformula, bo'limlar, koagulogramma, apparatlar, yo'nalishlar, kalibrlash, QC, kalkulyatorlar), atlas va atlas
+   mashqi, toifa / Bilim va ko'nikmalarni baholash, testlar va mashq, natijalar tarixi, guruhlar, topshiriqlar, ma'ruza
+   rejimi. **Kunlik limit yo'q.** D-53/D-71/D-76 dagi “kunlik 5 savol”, “oxirgi 3 natija”, `fullToifaBank`,
+   `atlasPractice`, `weakTopics`, `plannedLabGate` / `labGate` (D-76 §3 “Lab — Pro”) — **BEKOR** (kod va testlardan
+   olib tashlandi).
+2. **Talaba Pro** (`learner`): ustoz bilan ishlanadigan maxsus testlar (talaba tomoni), natijalar tarixi (kengaytirilgan
+   tahlil), imtihon simulyatsiyasi, PDF/CSV eksport, qo'shimcha materiallar.
+3. **Ustoz Pro** (`teacher_panel`): test yaratish, talabalarni biriktirish, guruhlar, natijalarni boshqarish.
+4. **Mutaxassis Pro** (`lab`): professional laboratoriya funksiyalari.
+5. **Premium** = hammasi birga. Matritsa D-76 dagidek: Talaba = learner; Ustoz = learner + teacher_panel; Mutaxassis =
+   learner + lab; Premium = uchalasi.
+6. Har foydalanuvchi tegishli pullik funksiyalarni **7 kun** bepul sinaydi (D-76/D-77, o'zgarmadi).
+7. 7 kundan keyin obunasiz — faqat PULLIK funksiyalar yopiladi; bepul funksiyalar va foydalanuvchining BARCHA
+   ma'lumotlari qoladi (o'chirilmaydi, yashirilmaydi; avval yaratilgan Pro natijalari ko'rinadi — faqat yangi pullik
+   amalni boshlash yopiladi).
+
+**Katalog (`lib/core/entitlements/feature.dart` `Feature`; server nusxasi `cloudflare/src/tiers.ts`
+`FEATURE_CAPABILITIES`; test `test/unit/plan_matrix_test.dart`).** Egasi ro'yxati — mahsulot NOMLARI; kodda faqat bugun
+yo'q (yangi yoki kengaytirilgan) qism pullik:
+| Feature (`wire`) | Toifa | Nima |
+|---|---|---|
+| `resultsAnalytics` (`results_analytics`) | learner | barcha banklar bo'yicha to'liq tarix, mavzular trendi, zaif mavzular (bepul tarix ro'yxati o'zgarmaydi) |
+| `examSimulation` (`exam_simulation`) | learner | imtihon sharoiti: majburiy vaqt va o'tish chegarasi, mavzular bo'yicha muvozanatli tanlov, ketma-ket (orqaga qaytish/belgilash yo'q), savol bo'yicha vaqt hisoboti (bepul imtihon va toifa testi o'zgarmaydi) |
+| `resultsExport` (`results_export`) | learner | natijalarni PDF va CSV faylga eksport |
+| `teacherTests` (`teacher_tests`) | learner | Ustoz Pro'da yaratilgan maxsus testlarni yechish (bugungi bepul topshiriqlar KIRMAYDI) |
+| `teacherTestBuilder` (`teacher_test_builder`) | teacher_panel | o'z testini yaratish/tahrirlash |
+| `teacherTestAssign` (`teacher_test_assign`) | teacher_panel | o'z testiga talaba/guruh biriktirish |
+| `teacherResults` (`teacher_results`) | teacher_panel | o'z testlari natijalarini boshqarish, jamlanma, eksport |
+| `calibrationExport` (`calibration_export`) | lab | kalibrlash jurnalini CSV/PDF ga eksport |
+| `qcReport` (`qc_report`) | lab | QC xulosa hisoboti va QC ma'lumotini CSV/PDF faylga eksport (bepul CSV nusxasi o'zgarmaydi) |
+
+`ProGatePolicy.gated` = faqat QURILGAN (ekran + test) funksiyalar — qurilmagan qator to'lov oynasida va'da qilinmaydi;
+`ProGatePolicy.catalog` = hammasi. “Qo'shimcha materiallar” — dasturiy ta'rifi va mazmuni yo'q → katalogga
+QO'SHILMADI (bo'sh pullik bo'lim yo'q). Holat jadvali: `docs/TIERS_FEATURE_MAP.md`.
+
+**Qorovullar / testlar.** `test/widget/free_features_open_test.dart` (`lab_gate_test.dart` o'rniga): main router'idagi
+har bir yo'l (`test/fixtures/main_routes_4b0f057.txt`, 210 ta + sikl yo'llari) butun katalog yopilgan, obunasiz,
+mehmon va muddati o'tgan holatda to'lov oynasiga olib bormaydi (yo'l darajasidagi gate qo'shib ko'rilganda test
+haqiqatan yiqildi). `pro_flag_default_guard_test`: eski yopish kodlari (`plannedLabGate`, `labGate(`, `historyView(`)
+yo'q, gate chaqiruvlari faqat ro'yxatdagi Pro kirish nuqtalarida, har `gated` funksiyaning kirish nuqtasi bor.
+D-77 qorovuli: `gated` bo'sh bo'lishi shart emas (D-78) — faqat katalogdan; bayroq o'chiq buildda hamma ochiq.
+>>>>>>> paid/feat

@@ -1,11 +1,10 @@
+import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 import 'package:material_ui/material_ui.dart';
 
 import '../../app/widgets/lg_page.dart';
-import '../../core/entitlements/feature.dart';
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
-import '../profile/pro_gate.dart';
 import '../learn/exam_question.dart' show keepUnitsTogether;
 import '../../l10n/gen/app_localizations.dart';
 import '../content/content_model.dart';
@@ -55,12 +54,7 @@ class CalculatorsScreen extends StatelessWidget {
             title: calcTitle(c, l),
             subtitle: calcSubtitle(c, l),
             icon: calcIcon(c),
-            // Kalkulyator — [Feature.labCalculators] (D-76).
-            onTap: () => pushGated(
-              context,
-              Feature.labCalculators,
-              '/lab/calculators/${calcRoute(c)}',
-            ),
+            onTap: () => context.push('/lab/calculators/${calcRoute(c)}'),
             divider: i < ClinicalCalc.values.length - 1,
           ),
         LgSectionTitle(l.calcSectionManual),
@@ -69,11 +63,7 @@ class CalculatorsScreen extends StatelessWidget {
             title: manualCalcTitle(c, l),
             subtitle: manualCalcSubtitle(c, l),
             icon: manualCalcIcon(c),
-            onTap: () => pushGated(
-              context,
-              Feature.labCalculators,
-              '/lab/calculators/${manualCalcRoute(c)}',
-            ),
+            onTap: () => context.push('/lab/calculators/${manualCalcRoute(c)}'),
             divider: i < ManualCalc.values.length - 1,
           ),
         LgSectionTitle(l.calcSectionLab),
@@ -81,21 +71,13 @@ class CalculatorsScreen extends StatelessWidget {
           title: l.calcDilution,
           subtitle: l.calcDilutionSub,
           icon: Icons.water_drop_outlined,
-          onTap: () => pushGated(
-            context,
-            Feature.labCalculators,
-            '/lab/calculators/dilution',
-          ),
+          onTap: () => context.push('/lab/calculators/dilution'),
         ),
         LgRow(
           title: l.calcUnits,
           subtitle: l.calcUnitsSub,
           icon: Icons.swap_vert_rounded,
-          onTap: () => pushGated(
-            context,
-            Feature.labCalculators,
-            '/lab/calculators/units',
-          ),
+          onTap: () => context.push('/lab/calculators/units'),
           divider: false,
         ),
       ],

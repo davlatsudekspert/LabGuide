@@ -106,18 +106,6 @@ enum TrialOutcome {
   failed,
 }
 
-/// Tarixdan ko'rinadigan qism: eskilari o'chirilmaydi, faqat yashiriladi.
-@immutable
-class HistoryView<T> {
-  const HistoryView(this.visible, this.hiddenCount);
-
-  final List<T> visible;
-
-  /// Saqlangan, lekin bepul rejimda ko'rinmaydigan natijalar soni
-  /// ("N ta eski natija saqlangan").
-  final int hiddenCount;
-}
-
 /// Pro huquqlari: bitta joyda, uch manbadan.
 ///
 /// 1. Build rejimi — [allFeaturesOpen] (`--dart-define=LG_ALL_FEATURES_OPEN=true`
@@ -151,7 +139,6 @@ class EntitlementService extends ChangeNotifier {
     PurchaseAdapter? purchases,
     DateTime Function()? clock,
     this.offlineTtl = const Duration(days: 7),
-    this.freeHistoryLimit = 3,
     this.studentVerified = false,
     this.gated = ProGatePolicy.gated,
     this.attestor = const UnconfiguredDeviceAttestor(),
@@ -201,7 +188,6 @@ class EntitlementService extends ChangeNotifier {
   /// ko'rsatiladi (trial_policy.dart).
   final bool storeOffersAllowed;
   final Duration offlineTtl;
-  final int freeHistoryLimit;
 
   /// Talaba holati tasdiqlangan hisob (D-49). Ilovada hali bunday tasdiq
   /// yo'q — talaba mahsulotlari ko'rsatilmaydi.
@@ -494,44 +480,19 @@ class EntitlementService extends ChangeNotifier {
   }
 
   /// Imkoniyat ochiqmi. Faqat amal boshlanishidan oldin yoki natijadan
-  /// keyin chaqiriladi — boshlangan sanash/imtihon o'rtada to'xtatilmaydi.
-  /// To'lov yoqilmagan bo'lsa — doim `true`.
+  /// keyin chaqiriladi — boshlangan amal o'rtada to'xtatilmaydi.
+  /// To'lov yoqilmagan bo'lsa — doim `true`. Katalogda faqat pullik
+  /// funksiyalar bor (D-78): bugungi bepul funksiyalar bu yerdan umuman
+  /// so'ralmaydi va hech qachon yopilmaydi; foydalanuvchi ma'lumoti va
+  /// tarix hech qachon cheklanmaydi yoki yashirilmaydi.
   bool can(Feature feature) =>
-      !feature.pro ||
-      !gated.contains(feature) ||
-      !gatingActive ||
-      tier.covers(feature);
-
-  /// Tarixda ko'rinadigan oxirgi natijalar soni; `null` — cheksiz.
-  int? historyVisibleLimit() =>
-      can(Feature.unlimitedHistory) ? null : freeHistoryLimit;
+      !gated.contains(feature) || !gatingActive || tier.covers(feature);
 
   /// Pro amalda bo'lgan davrlar (qaytarilgan xaridsiz). Kesh oflayn
   /// muddati o'tgan bo'lsa ham davrlar saqlanadi — bu huquq emas, tarix.
   List<ProPeriod> get proPeriods => [
     for (final e in _cache?.items ?? const <ServerEntitlement>[]) ?e.period,
   ];
-
-  /// Tarix ro'yxatidan ko'rinadigan qism ([newestFirst] — eng yangisi
-  /// birinchi). Bepul rejimda oxirgi [freeHistoryLimit] ta + Pro davrida
-  /// saqlanganlar ko'rinadi; qolganlari O'CHIRILMAYDI, faqat sanaladi.
-  HistoryView<T> historyView<T>(
-    List<T> newestFirst,
-    DateTime Function(T item) savedAt,
-  ) {
-    final limit = historyVisibleLimit();
-    if (limit == null) return HistoryView(List.unmodifiable(newestFirst), 0);
-    final periods = proPeriods;
-    final visible = <T>[
-      for (final (i, item) in newestFirst.indexed)
-        if (i < limit || periods.any((p) => p.contains(savedAt(item).toUtc())))
-          item,
-    ];
-    return HistoryView(
-      List.unmodifiable(visible),
-      newestFirst.length - visible.length,
-    );
-  }
 
   /// Ilova ochilganda: shu hisobning imzolangan keshi (bo'lsa).
   Future<void> load() async {

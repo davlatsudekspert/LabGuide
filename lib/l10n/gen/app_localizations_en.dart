@@ -13433,6 +13433,7 @@ class AppLocalizationsEn extends AppLocalizations {
       'You can use the app without a subscription: free features stay free.';
 
   @override
+<<<<<<< HEAD
   String get proGrantCustom => 'Other duration (number)';
 
   @override
@@ -13558,4 +13559,352 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get proAccountDeleteBody =>
       'Your account, sign-in methods (Google/Apple link), group memberships and results, “Suggestions and help” requests, your community questions and answers, and records tied to purchases are deleted from the server for good. If you are a teacher, the groups you created are deleted too. This cannot be undone. A store subscription is not cancelled: cancel it in your App Store or Google Play settings. So that the trial is not given again, the trial record is kept for a limited time, unlinked from your account. The text of reports you sent from the app stays, not linked to your account. Data on the device is cleared too.';
+=======
+  String get proTierNameStudent => 'Student Pro';
+
+  @override
+  String get proTierNameTeacher => 'Teacher Pro';
+
+  @override
+  String get proTierNameSpecialist => 'Specialist Pro';
+
+  @override
+  String get proTierNamePremium => 'Premium';
+
+  @override
+  String get proTierSubStudent =>
+      'Extra Pro features for studying. Everything that is free today stays free.';
+
+  @override
+  String get proTierSubTeacher =>
+      'For teachers: Student Pro features plus the Pro features of the teacher panel. Today’s free groups stay free.';
+
+  @override
+  String get proTierSubSpecialist =>
+      'For lab staff and doctors: Student Pro features plus professional laboratory functions. The Laboratory section stays free.';
+
+  @override
+  String get proTierSubPremium =>
+      'All Pro features together: Student Pro, Teacher Pro and Specialist Pro.';
+
+  @override
+  String get proCapLabPro =>
+      'professional laboratory functions (calibration log and QC export, QC summary report)';
+
+  @override
+  String get proTierNote =>
+      'Teacher panel Pro features are only in Teacher Pro or Premium, and professional laboratory functions only in Specialist Pro or Premium. Changing your role in the app does not unlock them. Everything that is free today — the Laboratory section, atlas, tests, category exam, groups and assignments — stays free.';
+
+  @override
+  String get proLockedLearner =>
+      'This feature is in Student Pro, Teacher Pro, Specialist Pro and Premium.';
+
+  @override
+  String get proLockedTeacher => 'This feature is in Teacher Pro or Premium.';
+
+  @override
+  String get proLockedLab => 'This feature is in Specialist Pro or Premium.';
+
+  @override
+  String get proFeatResultsAnalytics =>
+      'Results analysis: full history, topic trends and weak topics';
+
+  @override
+  String get proFeatExamSimulation =>
+      'Exam simulation: a test under exam conditions with a detailed report';
+
+  @override
+  String get proFeatResultsExport => 'Export results as PDF and CSV files';
+
+  @override
+  String get proFeatTeacherTests => 'Special tests created by your teacher';
+
+  @override
+  String get proFeatTeacherTestBuilder => 'Create and edit your own tests';
+
+  @override
+  String get proFeatTeacherTestAssign =>
+      'Assign your tests to students and groups';
+
+  @override
+  String get proFeatTeacherResults =>
+      'Manage results: per-student and per-question summary, export';
+
+  @override
+  String get proFeatCalibrationExport =>
+      'Export the calibration log to CSV and PDF';
+
+  @override
+  String get proFeatQcReport =>
+      'QC summary report and QC data export as CSV/PDF files';
+
+  @override
+  String proTrialConfirmBody(String plan, String date) {
+    return '$plan is free until $date. No payment method, nothing is charged, and it does not turn into a paid subscription. When it ends only the paid features close; free features and all your data stay.';
+  }
+
+  @override
+  String get proGateClosedTitle => 'This is a Pro feature';
+
+  @override
+  String get proGateClosedBody =>
+      'To open it you need a subscription or the 7-day free trial. Free features and your data stay.';
+
+  @override
+  String get proGateOpenPlans => 'See plans';
+
+  @override
+  String get proExportAction => 'Export: PDF or CSV';
+
+  @override
+  String get proExportTitle => 'Export to a file';
+
+  @override
+  String get proExportPdf => 'PDF document';
+
+  @override
+  String get proExportPdfSub => 'For viewing, printing and archiving';
+
+  @override
+  String get proExportCsv => 'CSV table';
+
+  @override
+  String get proExportCsvSub => 'For Excel or Google Sheets';
+
+  @override
+  String get proExportBusy => 'Preparing the file…';
+
+  @override
+  String get proExportShared => 'File ready — the share sheet is open.';
+
+  @override
+  String get proExportFailed => 'Could not share the file. Please try again.';
+
+  @override
+  String get proExportNotClinical =>
+      'Built only from the data you entered. Not a clinical decision and not a replacement for your laboratory’s official records.';
+
+  @override
+  String proExportCreated(String date) {
+    return 'Created: $date';
+  }
+
+  @override
+  String proExportPage(int page, int total) {
+    return '$page / $total';
+  }
+
+  @override
+  String proCalExportCount(int count) {
+    return 'Records: $count';
+  }
+
+  @override
+  String get proCalExportEntry => 'Export the log';
+
+  @override
+  String get proCalExportEntrySub =>
+      'PDF or CSV: instrument, reagent, lot, levels, outcome, approver and history';
+
+  @override
+  String get proColDate => 'Date';
+
+  @override
+  String get proColAction => 'Action';
+
+  @override
+  String get proColDetail => 'Details';
+
+  @override
+  String get proColStatus => 'Status';
+
+  @override
+  String get proQcReportTitle => 'QC summary report';
+
+  @override
+  String get proQcReportEntrySub =>
+      'Per level and lot: x̄, SD, CV, bias from target and rules fired; PDF / CSV';
+
+  @override
+  String get proQcSummary => 'Overview';
+
+  @override
+  String get proQcPeriodLabel => 'Period';
+
+  @override
+  String get proQcVerdictsLabel => 'Accepted / warning / rejected';
+
+  @override
+  String get proQcVerdictsHint =>
+      'Level card counts use the rules that involve that level; the overview counts whole runs.';
+
+  @override
+  String get proQcRulesFired => 'Rules fired';
+
+  @override
+  String get proQcNoRules => 'No rule violations';
+
+  @override
+  String get proQcByLevel => 'By level and lot';
+
+  @override
+  String get proQcColLevel => 'Level';
+
+  @override
+  String get proQcColTarget => 'Target (x̄ ± SD)';
+
+  @override
+  String get proQcColObserved => 'Observed (n, x̄ ± SD)';
+
+  @override
+  String get proQcColBias => 'Bias from target';
+
+  @override
+  String get proQcNoRuns =>
+      'No runs entered yet — there is no data for a report.';
+
+  @override
+  String get proSimTitle => 'Exam simulation';
+
+  @override
+  String get proSimSubtitle =>
+      'A test under exam conditions: time limit, pass mark and a detailed report';
+
+  @override
+  String get proSimEntrySub =>
+      'Required time limit and pass mark, questions in order, time per question in the report';
+
+  @override
+  String get proSimConditions => 'Exam conditions';
+
+  @override
+  String get proSimRule1 =>
+      'A time limit is required: when time runs out the test finishes by itself.';
+
+  @override
+  String get proSimRule2 =>
+      'Questions are drawn from every topic in proportion to its size.';
+
+  @override
+  String get proSimRule3 =>
+      'Questions come in order: no going back and no flags.';
+
+  @override
+  String get proSimRule4 =>
+      'The result is graded against the pass mark; the report shows time per question and a topic breakdown.';
+
+  @override
+  String get proSimBank => 'Question bank';
+
+  @override
+  String get proSimBankPack => 'Topic questions';
+
+  @override
+  String proSimPool(int count, int topics) {
+    return '$count questions in $topics topics';
+  }
+
+  @override
+  String get proSimTimeHelper => '1–240 minutes, required';
+
+  @override
+  String get proSimPassHelper => '1–100 %, required';
+
+  @override
+  String get proSimStart => 'Start the simulation';
+
+  @override
+  String get proSimHistory => 'Previous simulations';
+
+  @override
+  String get proSimReportTitle => 'Simulation report';
+
+  @override
+  String get proSimPace => 'Time';
+
+  @override
+  String get proSimAvgPerQuestion => 'Average per question';
+
+  @override
+  String get proSimSlowest => 'Questions that took the longest';
+
+  @override
+  String get proSimReview => 'Review answers';
+
+  @override
+  String get proSimTag => 'simulation';
+
+  @override
+  String get proResultsTitle => 'Results analysis';
+
+  @override
+  String get proResultsSubtitle =>
+      'Full history across all tests, trend and weak topics';
+
+  @override
+  String get proResultsEntrySub =>
+      'Trend across all banks, topics and weak spots; PDF / CSV export';
+
+  @override
+  String get proResultsEmpty => 'No results yet — take your first test.';
+
+  @override
+  String get proResultsBankOther => 'Other tests';
+
+  @override
+  String get proResultsSessions => 'Tests';
+
+  @override
+  String get proResultsAverage => 'Average';
+
+  @override
+  String get proResultsBest => 'Best';
+
+  @override
+  String get proResultsLast => 'Latest';
+
+  @override
+  String get proResultsTrend => 'Change';
+
+  @override
+  String get proResultsAnswered => 'Correct answers';
+
+  @override
+  String get proResultsChart => 'Last 20 results';
+
+  @override
+  String get proResultsWeak => 'Weak topics';
+
+  @override
+  String get proResultsNoWeak => 'No weak topics found.';
+
+  @override
+  String get proResultsWeakRule =>
+      'Weak topic: at least 5 questions and accuracy below 60 %. Change compares the newer half of the tests with that topic to the older half.';
+
+  @override
+  String get proResultsTopics => 'By topic';
+
+  @override
+  String get proResultsNoTopics => 'These tests have no topic tags.';
+
+  @override
+  String proResultsTopicRow(int correct, int total, int sessions) {
+    return '$correct/$total correct · in $sessions tests';
+  }
+
+  @override
+  String get proResultsHistory => 'Full history';
+
+  @override
+  String get proResultsQuestions => 'Questions';
+
+  @override
+  String get proResultsSession => 'Test';
+
+  @override
+  String proPoints(String value) {
+    return '$value pp';
+  }
+>>>>>>> paid/feat
 }

@@ -1,7 +1,8 @@
-// Reja ↔ imkoniyat matritsasi (D-74 → D-76, egasi qarori): ilova nusxasi
-// server ma'lumoti (cloudflare/src/tiers.ts `TIER_CAPABILITIES`) bilan bir
-// xil; matritsa zinapoya emas (Mutaxassis ustoz panelini, Ustoz Lab'ni
-// ochmaydi; Premium — hammasi); hozir hech narsa yopilmagan.
+// Reja ↔ imkoniyat matritsasi (D-74 → D-76, egasi qarori) va pullik
+// funksiyalar katalogi (D-78): ilova nusxasi server ma'lumoti
+// (cloudflare/src/tiers.ts `TIER_CAPABILITIES`, `FEATURE_CAPABILITIES`) bilan
+// bir xil; matritsa zinapoya emas (Mutaxassis ustoz panelini, Ustoz Lab Pro'ni
+// ochmaydi; Premium — hammasi).
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
@@ -23,7 +24,30 @@ Map<String, Set<String>> _serverMatrix() {
   };
 }
 
+/// Server `FEATURE_CAPABILITIES` (tiers.ts) — fayldan o'qiladi.
+Map<String, String> _serverFeatures() {
+  final src = File('cloudflare/src/tiers.ts').readAsStringSync();
+  final block = RegExp(r'FEATURE_CAPABILITIES[^=]*=\s*\{([^}]*)\}')
+      .firstMatch(src)!
+      .group(1)!;
+  return {
+    for (final m in RegExp(r"(\w+):\s*'(\w+)'").allMatches(block))
+      m.group(1)!: m.group(2)!,
+  };
+}
+
 void main() {
+  test('server FEATURE_CAPABILITIES bilan bir xil (D-78 katalog paritet)', () {
+    expect(_serverFeatures(), {
+      for (final f in Feature.values) f.wire: f.capability.wire,
+    });
+    // Nomlar takrorlanmaydi.
+    expect(
+      {for (final f in Feature.values) f.wire},
+      hasLength(Feature.values.length),
+    );
+  });
+
   test('server TIER_CAPABILITIES bilan bir xil (paritet)', () {
     expect(_serverMatrix(), {
       for (final e in PlanMatrix.capabilities.entries)
@@ -95,17 +119,22 @@ void main() {
       expect(PlanMatrix.allows(ProPlan.premium, c), isTrue);
     }
     // Funksiya darajasida ham.
-    expect(ProPlan.specialist.tier.covers(Feature.groups), isFalse);
-    expect(ProPlan.specialist.tier.covers(Feature.leukocyteCounter), isTrue);
-    expect(ProPlan.teacher.tier.covers(Feature.leukocyteCounter), isFalse);
-    expect(ProPlan.student.tier.covers(Feature.calibration), isFalse);
-    expect(ProPlan.premium.tier.covers(Feature.assignments), isTrue);
+    expect(ProPlan.specialist.tier.covers(Feature.teacherTestBuilder), isFalse);
+    expect(ProPlan.specialist.tier.covers(Feature.qcReport), isTrue);
+    expect(ProPlan.specialist.tier.covers(Feature.examSimulation), isTrue);
+    expect(ProPlan.teacher.tier.covers(Feature.qcReport), isFalse);
+    expect(ProPlan.teacher.tier.covers(Feature.resultsAnalytics), isTrue);
+    expect(ProPlan.student.tier.covers(Feature.calibrationExport), isFalse);
+    expect(ProPlan.student.tier.covers(Feature.teacherResults), isFalse);
+    expect(ProPlan.premium.tier.covers(Feature.teacherTestAssign), isTrue);
   });
 
   test('ProTier — to‘plam (zinapoya emas), birlashma', () {
     expect(ProTier.free.isFree, isTrue);
-    expect(ProTier.free.covers(Feature.basicGuides), isTrue);
-    expect(ProTier.free.covers(Feature.examSimulation), isFalse);
+    expect(ProTier.free.allows(null), isTrue);
+    for (final f in Feature.values) {
+      expect(ProTier.free.covers(f), isFalse, reason: f.name);
+    }
     final both = ProPlan.teacher.tier | ProPlan.specialist.tier;
     expect(both, ProPlan.premium.tier);
     expect(ProTier.all, ProPlan.premium.tier);
@@ -124,52 +153,76 @@ void main() {
     );
   });
 
-  test('har pullik funksiya bitta toifada; Lab funksiyalari — lab', () {
+  test('D-78 katalog: egasi ro‘yxati bo‘yicha toifalar', () {
+    const want = {
+      Feature.resultsAnalytics: ProCapability.learner,
+      Feature.examSimulation: ProCapability.learner,
+      Feature.resultsExport: ProCapability.learner,
+      Feature.teacherTests: ProCapability.learner,
+      Feature.teacherTestBuilder: ProCapability.teacherPanel,
+      Feature.teacherTestAssign: ProCapability.teacherPanel,
+      Feature.teacherResults: ProCapability.teacherPanel,
+      Feature.calibrationExport: ProCapability.lab,
+      Feature.qcReport: ProCapability.lab,
+    };
+    expect({for (final f in Feature.values) f: f.capability}, want);
     for (final f in Feature.values) {
       expect(PlanMatrix.of(f), f.capability);
-      expect(f.pro, f.capability != null, reason: f.name);
     }
-    for (final f in ProGatePolicy.plannedLabGate) {
-      expect(f.capability, ProCapability.lab, reason: f.name);
-    }
-    expect(Feature.leukocyteCounter.capability, ProCapability.lab);
-    expect(Feature.basicGuides.capability, isNull);
-    expect(Feature.groups.capability, ProCapability.teacherPanel);
-    expect(Feature.examSimulation.capability, ProCapability.learner);
+    expect(ProGatePolicy.catalog, Feature.values.toSet());
+    expect(ProGatePolicy.gated.difference(ProGatePolicy.catalog), isEmpty);
   });
 
-  test('hozir hech narsa yopilmagan: hech bir reja hech narsa “ochmaydi”', () {
-    expect(ProGatePolicy.gated, isEmpty);
-    expect(
-      ProGatePolicy.gated.intersection(ProGatePolicy.plannedLabGate),
-      isEmpty,
-      reason: 'Lab yopilishi faqat REJA (faol emas)',
-    );
-    for (final plan in ProPlan.values) {
-      expect(PlanMatrix.unlockedBy(plan), isEmpty);
+  test('D-78: bugungi bepul funksiyalar katalogda YO‘Q (eski nomlar)', () {
+    final names = {for (final f in Feature.values) f.name};
+    for (final old in [
+      'basicGuides',
+      'dailyQuestions',
+      'mistakeReview',
+      'unlimitedHistory',
+      'unlimitedQuestions',
+      'fullToifaBank',
+      'weakTopics',
+      'atlasPractice',
+      'groups',
+      'assignments',
+      'autoPresentation',
+      'leukocyteCounter',
+      'absoluteCounts',
+      'leukocyteEvaluation',
+      'labSections',
+      'coagulogram',
+      'labInstruments',
+      'labDirections',
+      'calibration',
+      'qualityControl',
+      'labCalculators',
+    ]) {
+      expect(names, isNot(contains(old)), reason: old);
     }
   });
 
-  test('kelajakda yopilsa: reja faqat o‘z to‘plamidagini ochadi', () {
+  test('reja faqat o‘z to‘plamidagi QURILGAN (gated) funksiyani ochadi', () {
     const gated = {
       Feature.examSimulation,
-      Feature.assignments,
-      Feature.leukocyteCounter,
+      Feature.teacherTestAssign,
+      Feature.qcReport,
     };
     expect(PlanMatrix.unlockedBy(ProPlan.student, gated: gated), [
       Feature.examSimulation,
     ]);
     expect(PlanMatrix.unlockedBy(ProPlan.teacher, gated: gated), [
       Feature.examSimulation,
-      Feature.assignments,
+      Feature.teacherTestAssign,
     ]);
     expect(PlanMatrix.unlockedBy(ProPlan.specialist, gated: gated), [
       Feature.examSimulation,
-      Feature.leukocyteCounter,
+      Feature.qcReport,
     ]);
     expect(
       PlanMatrix.unlockedBy(ProPlan.premium, gated: gated),
       containsAll(gated),
     );
+    expect(PlanMatrix.unlockedBy(ProPlan.premium, gated: const {}), isEmpty);
   });
 }

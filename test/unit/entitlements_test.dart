@@ -67,12 +67,9 @@ void main() {
         source: source,
         cache: EntitlementCacheStore(store, keys),
         allFeaturesOpen: open,
-        // Eski reja: hamma Pro imkoniyat yopiladi (mexanizm sinovi). Haqiqiy
-        // standart ro'yxat bo'sh (D-71) — pastdagi alohida testlarda.
-        gated: {
-          for (final f in Feature.values)
-            if (f.pro) f,
-        },
+        // Butun pullik katalog yopiladi (D-78: katalogda faqat YANGI Pro
+        // funksiyalar; bugungi bepul funksiyalar umuman so'ralmaydi).
+        gated: ProGatePolicy.catalog,
         purchases: purchases ?? shop,
         clock: () => now,
       );
@@ -85,11 +82,6 @@ void main() {
     now = _t0;
   });
 
-  // Tarix: n natija, eng yangisi birinchi, har biri bir kun oldin.
-  List<DateTime> history(int n, {DateTime? from}) => [
-    for (var i = 0; i < n; i++) (from ?? _t0).subtract(Duration(days: i)),
-  ];
-
   group('build rejimi (TestFlight/debug)', () {
     test('hamma imkoniyat ochiq, server bo‘lmasa ham', () {
       source.user = null;
@@ -99,10 +91,6 @@ void main() {
       for (final f in Feature.values) {
         expect(s.can(f), isTrue, reason: f.name);
       }
-      expect(s.historyVisibleLimit(), isNull);
-      final v = s.historyView(history(10), (d) => d);
-      expect(v.visible, hasLength(10));
-      expect(v.hiddenCount, 0);
       expect(s.gatingActive, isFalse);
     });
 
@@ -118,10 +106,6 @@ void main() {
       for (final f in Feature.values) {
         expect(s.can(f), isTrue, reason: f.name);
       }
-      expect(s.historyVisibleLimit(), isNull);
-      final v = s.historyView(history(9), (d) => d);
-      expect(v.visible, hasLength(9));
-      expect(v.hiddenCount, 0);
     }
 
     test('do‘kon ulanmagan (UnavailablePurchaseAdapter)', () {
@@ -163,36 +147,29 @@ void main() {
   });
 
   group('bepul rejim (to‘lov yoqilgan)', () {
-    test('D-53: bepul imkoniyatlar ochiq; Pro, ustoz paneli va Lab yopiq', () {
+    test('D-78: obunasiz — faqat YANGI pullik funksiyalar yopiq', () {
       final s = make();
       expect(s.gatingActive, isTrue);
       expect(s.isPro, isFalse);
-      for (final f in [
-        Feature.basicGuides,
-        Feature.dailyQuestions,
-        Feature.mistakeReview,
-      ]) {
-        expect(s.can(f), isTrue, reason: f.name);
-      }
-      for (final f in Feature.values.where((f) => f.pro)) {
+      for (final f in Feature.values) {
         expect(s.can(f), isFalse, reason: f.name);
       }
     });
 
-    test('tarixda oxirgi 3 natija; eskilari o‘chmaydi, soni aytiladi', () {
-      final s = make();
-      expect(s.historyVisibleLimit(), 3);
-      final all = history(7);
-      final v = s.historyView(all, (d) => d);
-      expect(v.visible, all.take(3).toList());
-      expect(v.hiddenCount, 4);
-      expect(all, hasLength(7));
-    });
-
-    test('3 tadan kam bo‘lsa hammasi ko‘rinadi', () {
-      final v = make().historyView(history(2), (d) => d);
-      expect(v.visible, hasLength(2));
-      expect(v.hiddenCount, 0);
+    test('D-78: katalogda yopilmagan funksiya hech qachon yopilmaydi', () {
+      final s = EntitlementService(
+        source: source,
+        cache: EntitlementCacheStore(store, keys),
+        allFeaturesOpen: false,
+        gated: {Feature.qcReport},
+        purchases: shop,
+        clock: () => now,
+      );
+      expect(s.gatingActive, isTrue);
+      expect(s.can(Feature.qcReport), isFalse);
+      for (final f in Feature.values.where((f) => f != Feature.qcReport)) {
+        expect(s.can(f), isTrue, reason: f.name);
+      }
     });
 
     test('to‘lov oynasida talaba mahsuloti ko‘rsatilmaydi (tasdiq yo‘q)', () {
@@ -213,10 +190,9 @@ void main() {
         expect(s.proSource, ProSource.server);
         expect(s.tier, ProPlan.student.tier);
         expect(s.can(Feature.examSimulation), isTrue);
-        expect(s.can(Feature.fullToifaBank), isTrue);
-        expect(s.can(Feature.groups), isFalse);
-        expect(s.can(Feature.leukocyteCounter), isFalse, reason: 'Lab yo‘q');
-        expect(s.historyVisibleLimit(), isNull);
+        expect(s.can(Feature.resultsAnalytics), isTrue);
+        expect(s.can(Feature.teacherTestBuilder), isFalse);
+        expect(s.can(Feature.qcReport), isFalse, reason: 'Lab Pro yo‘q');
         expect(store.getString(StoreKeys.entitlementsCache), isNotNull);
       },
     );
@@ -236,7 +212,7 @@ void main() {
         for (final f in Feature.values) {
           expect(
             s.can(f),
-            f.capability == null || plan.tier.allows(f.capability),
+            plan.tier.allows(f.capability),
             reason: '${plan.name} × ${f.name}',
           );
         }
@@ -249,17 +225,17 @@ void main() {
         source.snapshot = _snap([_sub(product: BillingCatalog.teacherMonthly)]);
         final s = make();
         await s.refresh();
-        expect(s.can(Feature.groups), isTrue);
-        expect(s.can(Feature.leukocyteCounter), isFalse);
-        expect(s.can(Feature.calibration), isFalse);
+        expect(s.can(Feature.teacherTestBuilder), isTrue);
+        expect(s.can(Feature.qcReport), isFalse);
+        expect(s.can(Feature.calibrationExport), isFalse);
         source.snapshot = _snap([
           _sub(product: BillingCatalog.specialistMonthly),
         ]);
         await s.refresh();
-        expect(s.can(Feature.leukocyteCounter), isTrue);
-        expect(s.can(Feature.qualityControl), isTrue);
-        expect(s.can(Feature.groups), isFalse);
-        expect(s.can(Feature.assignments), isFalse);
+        expect(s.can(Feature.qcReport), isTrue);
+        expect(s.can(Feature.calibrationExport), isTrue);
+        expect(s.can(Feature.teacherTestBuilder), isFalse);
+        expect(s.can(Feature.teacherResults), isFalse);
         source.snapshot = _snap([_sub(product: BillingCatalog.premiumMonthly)]);
         await s.refresh();
         for (final f in Feature.values) {
@@ -284,8 +260,8 @@ void main() {
       final s = make();
       await s.refresh();
       expect(s.tier, ProPlan.premium.tier);
-      expect(s.can(Feature.groups), isTrue);
-      expect(s.can(Feature.leukocyteCounter), isTrue);
+      expect(s.can(Feature.teacherTestAssign), isTrue);
+      expect(s.can(Feature.qcReport), isTrue);
     });
 
     test('katalogda yo‘q mahsulot — faqat Talaba to‘plami (ustoz paneli va Lab emas)', () async {
@@ -293,7 +269,7 @@ void main() {
       final s = make();
       await s.refresh();
       expect(s.tier, ProPlan.student.tier);
-      expect(s.can(Feature.labInstruments), isFalse);
+      expect(s.can(Feature.calibrationExport), isFalse);
     });
 
     test('imtiyoz davri (grace) Pro beradi, billing retry bermaydi', () async {
@@ -314,7 +290,8 @@ void main() {
       expect(s.proPeriods, isEmpty);
     });
 
-    test('obuna tugagach Pro davrida saqlangan natijalar ko‘rinadi', () async {
+    test('obuna tugagach: yangi Pro amal yopiq, Pro davrlari tarix sifatida '
+        'qoladi (D-78: tarix hech qachon yashirilmaydi)', () async {
       final start = _t0.subtract(const Duration(days: 30));
       final end = _t0.subtract(const Duration(days: 10));
       source.snapshot = _snap([
@@ -328,15 +305,7 @@ void main() {
         isFalse,
         reason: 'yangi Pro amal yopiq',
       );
-
-      final all = history(41);
-      final v = s.historyView(all, (d) => d);
-      final inPro = all.where((d) => !d.isBefore(start) && !d.isAfter(end));
-      expect(inPro, hasLength(21));
-      expect(v.visible, containsAll(all.take(3)));
-      expect(v.visible, containsAll(inPro));
-      expect(v.visible, hasLength(3 + 21));
-      expect(v.hiddenCount, all.length - 24);
+      expect(s.proPeriods, hasLength(1));
     });
 
     test('server Pro bermasa — keshdagi eski Pro ham yo‘qoladi', () async {
@@ -373,7 +342,7 @@ void main() {
       await s.load();
       await s.refresh();
       expect(s.proSource, ProSource.offlineCache);
-      expect(s.can(Feature.unlimitedHistory), isTrue);
+      expect(s.can(Feature.resultsAnalytics), isTrue);
 
       now = _t0.add(const Duration(days: 7, minutes: 1));
       expect(s.isPro, isFalse, reason: 'oflayn muddat tugadi');

@@ -114,17 +114,17 @@ class _PurchaseBody extends StatelessWidget {
   }
 
   static String _planTitle(AppLocalizations l, ProPlan plan) => switch (plan) {
-    ProPlan.student => l.proPayTierStudent,
-    ProPlan.teacher => l.proPayTierTeacher,
-    ProPlan.specialist => l.proPayTierSpecialist,
-    ProPlan.premium => l.proPayTierPremium,
+    ProPlan.student => l.proTierNameStudent,
+    ProPlan.teacher => l.proTierNameTeacher,
+    ProPlan.specialist => l.proTierNameSpecialist,
+    ProPlan.premium => l.proTierNamePremium,
   };
 
   static String _planSub(AppLocalizations l, ProPlan plan) => switch (plan) {
-    ProPlan.student => l.proPayTierStudentSub,
-    ProPlan.teacher => l.proPayTierTeacherSub,
-    ProPlan.specialist => l.proPayTierSpecialistSub,
-    ProPlan.premium => l.proPayTierPremiumSub,
+    ProPlan.student => l.proTierSubStudent,
+    ProPlan.teacher => l.proTierSubTeacher,
+    ProPlan.specialist => l.proTierSubSpecialist,
+    ProPlan.premium => l.proTierSubPremium,
   };
 
   static String _period(AppLocalizations l, StorePeriod p) => p.count == 1
@@ -237,6 +237,7 @@ class _PurchaseBody extends StatelessWidget {
                 style: text.bodySmall,
               ),
           ],
+<<<<<<< HEAD
           // Mehmon (D-77 addendum): faqat server ruxsat bergan (hisobga bog'liq
           // bo'lmagan) rejalar; ustoz paneli bor reja — hisob bilan.
           if (!mine && !canBuy && ent.guestRestoreAvailable) ...[
@@ -248,6 +249,15 @@ class _PurchaseBody extends StatelessWidget {
             ),
           ],
           if (!mine && canBuy) ...[
+=======
+          // Mehmon xarid qilmaydi (D-76): tugma o'rniga pastda "Hisobga kirish".
+          // TODO(billing-agent, D-78): Apple 5.1.1(v) — hisobsiz capability
+          // (learner, lab) xaridi kerak bo'lsa, EntitlementService mehmon
+          // xaridi/tiklashini beradi (masalan, `ent.canPurchaseAsGuest(plan)`);
+          // shu shart o'sha API ga almashtiriladi. Mijoz boshqa joyda faqat
+          // `requireFeature` / `EntitlementService.can` ga tayanadi.
+          if (!mine && ent.source.hasSession) ...[
+>>>>>>> paid/feat
             const SizedBox(height: 12),
             LgButton(
               key: ValueKey('pay-buy-${p.id}'),
@@ -264,30 +274,6 @@ class _PurchaseBody extends StatelessWidget {
     );
   }
 
-  static String? _featureLabel(AppLocalizations l, Feature f) => switch (f) {
-    Feature.unlimitedQuestions => l.proPayFeatQuestions,
-    Feature.examSimulation => l.proPayFeatExam,
-    Feature.fullToifaBank => l.proPayFeatToifa,
-    Feature.weakTopics => l.proPayFeatWeak,
-    Feature.atlasPractice => l.proPayFeatAtlas,
-    Feature.unlimitedHistory => l.proPayFeatHistory,
-    Feature.groups => l.proPayFeatGroups,
-    Feature.assignments => l.proPayFeatAssignments,
-    Feature.autoPresentation => l.proPayFeatLecture,
-    Feature.leukocyteCounter => l.proPayFeatLabCount,
-    Feature.absoluteCounts => l.proPayFeatLabAbsolute,
-    Feature.leukocyteEvaluation => l.proPayFeatLabEvaluate,
-    Feature.labSections => l.proPayFeatLabSections,
-    Feature.coagulogram => l.proPayFeatLabCoag,
-    Feature.labInstruments => l.proPayFeatLabInstruments,
-    Feature.labDirections => l.proPayFeatLabDirections,
-    Feature.calibration => l.proPayFeatLabCalibration,
-    Feature.qualityControl => l.proPayFeatLabQc,
-    Feature.labCalculators => l.proPayFeatLabCalculators,
-    Feature.basicGuides ||
-    Feature.dailyQuestions ||
-    Feature.mistakeReview => null,
-  };
 
   Widget _bullet(BuildContext context, String s) => Padding(
     padding: const EdgeInsets.symmetric(vertical: 3),
@@ -321,7 +307,7 @@ class _PurchaseBody extends StatelessWidget {
     // ro'yxat bo'sh, shuning uchun hech narsa va'da qilinmaydi.
     final included = <String>[
       for (final f in Feature.values)
-        if (ent.gated.contains(f) && plan.tier.covers(f)) ?_featureLabel(l, f),
+        if (ent.gated.contains(f) && plan.tier.covers(f)) proFeatureLabel(l, f),
     ];
     return [
       LgSectionTitle(_planTitle(l, plan)),
@@ -366,9 +352,9 @@ class _PurchaseBody extends StatelessWidget {
         if (locked != null && !ent.can(locked))
           LgNotice(
             switch (locked.capability) {
-              ProCapability.teacherPanel => l.proPayLockedTeacher,
-              ProCapability.lab => l.proPayLockedLab,
-              _ => l.proPayLockedPro,
+              ProCapability.learner => l.proLockedLearner,
+              ProCapability.teacherPanel => l.proLockedTeacher,
+              ProCapability.lab => l.proLockedLab,
             },
             key: const ValueKey('pay-locked'),
             kind: NoticeKind.info,
@@ -452,3 +438,16 @@ class _PurchaseBody extends StatelessWidget {
     );
   }
 }
+
+/// Pullik funksiya nomi (to'lov oynasi va "Obuna" ekrani ro'yxatlari).
+String proFeatureLabel(AppLocalizations l, Feature f) => switch (f) {
+  Feature.resultsAnalytics => l.proFeatResultsAnalytics,
+  Feature.examSimulation => l.proFeatExamSimulation,
+  Feature.resultsExport => l.proFeatResultsExport,
+  Feature.teacherTests => l.proFeatTeacherTests,
+  Feature.teacherTestBuilder => l.proFeatTeacherTestBuilder,
+  Feature.teacherTestAssign => l.proFeatTeacherTestAssign,
+  Feature.teacherResults => l.proFeatTeacherResults,
+  Feature.calibrationExport => l.proFeatCalibrationExport,
+  Feature.qcReport => l.proFeatQcReport,
+};
