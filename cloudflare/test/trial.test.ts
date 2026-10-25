@@ -19,6 +19,9 @@ function makeServer(
 }
 
 const challenge = (s: Srv, token: string) => s.call('POST', '/v1/billing/trial/challenge', { token });
+/** Har sinov — alohida /24 tarmoq (IP tarmog'i limitlari boshqa testlarga ta'sir qilmasin). */
+let netSeq = 0;
+export const freshIp = () => `10.${(++netSeq >> 8) & 255}.${netSeq & 255}.${1 + Math.floor(Math.random() * 250)}`;
 
 async function startTrial(
   s: Srv,
@@ -32,7 +35,7 @@ async function startTrial(
   const nonce = ch.data.nonce as string;
   return s.call('POST', '/v1/billing/trial/start', {
     token,
-    ip: opts.ip,
+    ip: opts.ip ?? freshIp(),
     body: {
       tier: opts.tier ?? 'student',
       email,
@@ -91,19 +94,19 @@ describe('trial: bayroq va sozlama', () => {
     }
   });
 
-  it('attestatsiya sozlanmagan: 503 device_attestation_not_configured', async () => {
+  it('attestatsiya sozlanmagan: 503 trial_unavailable (fail closed; sabab — device_attestation_not_configured)', async () => {
     const s = makeServer(null);
     const email = uniqueEmail('nocfg');
     const u = await s.signIn(email);
     const ch = await challenge(s, u.token);
     expect(ch.status).toBe(503);
-    expect(ch.data.error).toBe('device_attestation_not_configured');
+    expect(ch.data).toEqual({ error: 'trial_unavailable', reason: 'device_attestation_not_configured' });
     const st = await s.call('POST', '/v1/billing/trial/start', {
       token: u.token,
       body: { tier: 'student', email, attestation: { platform: 'ios', token: 'x', nonce: 'a'.repeat(43) } },
     });
     expect(st.status).toBe(503);
-    expect(st.data.error).toBe('device_attestation_not_configured');
+    expect(st.data).toEqual({ error: 'trial_unavailable', reason: 'device_attestation_not_configured' });
   });
 
   it('mehmon (sessiyasiz) — 401', async () => {
@@ -458,13 +461,13 @@ describe('trial: platforma (D-75, TRIAL_PLATFORMS standart android)', () => {
 
   it('imkoniyat so‘rovi: status.trial — platforma × attestatsiya', async () => {
     const off = makeServer(null);
-    expect((await off.call('GET', '/v1/billing/status')).data.trial).toEqual({ android: false, ios: false, platforms: ['android'] });
+    expect((await off.call('GET', '/v1/billing/status')).data.trial).toEqual({ android: false, ios: false, platforms: ['android'], days: 7 });
     const on = makeServer();
-    expect((await on.call('GET', '/v1/billing/status')).data.trial).toEqual({ android: true, ios: false, platforms: ['android'] });
+    expect((await on.call('GET', '/v1/billing/status')).data.trial).toEqual({ android: true, ios: false, platforms: ['android'], days: 7 });
     const both = makeServer(new FakeDeviceAttestationVerifier(), { TRIAL_PLATFORMS: 'android, ios' });
-    expect((await both.call('GET', '/v1/billing/status')).data.trial).toEqual({ android: true, ios: true, platforms: ['android', 'ios'] });
+    expect((await both.call('GET', '/v1/billing/status')).data.trial).toEqual({ android: true, ios: true, platforms: ['android', 'ios'], days: 7 });
     const none = makeServer(new FakeDeviceAttestationVerifier(), { TRIAL_PLATFORMS: 'web' });
-    expect((await none.call('GET', '/v1/billing/status')).data.trial).toEqual({ android: false, ios: false, platforms: [] });
+    expect((await none.call('GET', '/v1/billing/status')).data.trial).toEqual({ android: false, ios: false, platforms: [], days: 7 });
   });
 
   it('egasi Apple roziligidan keyin TRIAL_PLATFORMS=android,ios — iOS sinovi ishlaydi', async () => {

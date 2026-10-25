@@ -170,6 +170,7 @@ const billingRoutes: Route[] = [
   // Bepul sinov — bir telefonga bir marta (D-74); attestatsiya sozlanmagan — 503.
   r('POST', '/v1/billing/trial/challenge', trial.challenge),
   r('POST', '/v1/billing/trial/start', trial.start),
+  r('GET', '/v1/billing/trial', trial.state),
   // Reja ↔ panel ajratish (D-74): serverdagi daraja va `requireTier` tekshiruvi.
   r('GET', '/v1/pro/access', tiers.access),
   r('GET', '/v1/pro/check/:capability', tiers.check),

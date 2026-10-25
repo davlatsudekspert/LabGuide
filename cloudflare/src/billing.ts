@@ -30,11 +30,12 @@
 import { audit, requireSession } from './auth';
 import type { Ctx } from './context';
 import { iso } from './context';
-import { base64url, safeEqual, sha256Hex } from './crypto';
+import { safeEqual, sha256Hex } from './crypto';
 import { ApiError, badRequest, type Env, json, readJson } from './http';
 import { hit } from './ratelimit';
 import { verifyGooglePushJwt } from './social';
 import { trialStatus } from './trial';
+import { b64urlDecode, googleServiceToken, parseServiceAccount, signJwt } from './jwtsign';
 import { JwsError, verifyAppleJws } from './x509';
 
 export type Platform = 'app_store' | 'play_store';
@@ -172,29 +173,6 @@ function acceptEnvironment(ctx: Ctx, v: Verified): Verified {
 const storeUnavailable = () => new ApiError(502, 'store_unavailable');
 
 // ------------------------------------------------------------ JWT/JWS
-const enc = new TextEncoder();
-const b64json = (v: unknown) => base64url(enc.encode(JSON.stringify(v)));
-
-function pemToDer(pem: string): ArrayBuffer {
-  // Secret'da `\n` ketma-ketligi bilan saqlangan bo'lishi ham mumkin.
-  const body = pem
-    .replace(/\\n/g, '\n')
-    .replace(/-----(BEGIN|END)[^-]+-----/g, '')
-    .replace(/\s+/g, '');
-  const bin = atob(body);
-  const out = new Uint8Array(bin.length);
-  for (let i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
-  return out.buffer;
-}
-
-function b64urlDecode(s: string): string {
-  const pad = s.replace(/-/g, '+').replace(/_/g, '/');
-  const bin = atob(pad + '='.repeat((4 - (pad.length % 4)) % 4));
-  const bytes = new Uint8Array(bin.length);
-  for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
-  return new TextDecoder().decode(bytes);
-}
-
 /**
  * JWS (do'kon imzolagan) yuklamasini o'qiydi. Imzo zanjiri bu yerda
  * tekshirilmaydi: yuklama do'kon API'sidan TLS orqali, bizning kalit bilan
@@ -219,30 +197,6 @@ async function appleJws<T>(ctx: Ctx, jws: unknown): Promise<T> {
     if (e instanceof JwsError) throw new ApiError(401, 'invalid_signature');
     throw e;
   }
-}
-
-async function signJwt(
-  alg: 'ES256' | 'RS256',
-  pem: string,
-  header: Record<string, unknown>,
-  payload: Record<string, unknown>,
-): Promise<string> {
-  const data = `${b64json({ ...header, alg, typ: 'JWT' })}.${b64json(payload)}`;
-  let sig: ArrayBuffer;
-  try {
-    if (alg === 'ES256') {
-      const key = await crypto.subtle.importKey('pkcs8', pemToDer(pem), { name: 'ECDSA', namedCurve: 'P-256' }, false, ['sign']);
-      // WebCrypto ECDSA imzosi — IEEE P1363 (r||s), JWS ham shuni talab qiladi.
-      sig = await crypto.subtle.sign({ name: 'ECDSA', hash: 'SHA-256' }, key, enc.encode(data));
-    } else {
-      const key = await crypto.subtle.importKey('pkcs8', pemToDer(pem), { name: 'RSASSA-PKCS1-v1_5', hash: 'SHA-256' }, false, ['sign']);
-      sig = await crypto.subtle.sign('RSASSA-PKCS1-v1_5', key, enc.encode(data));
-    }
-  } catch {
-    // Kalit noto'g'ri formatda — tafsilot javobga chiqmaydi.
-    throw new ApiError(503, 'store_key_invalid');
-  }
-  return `${data}.${base64url(new Uint8Array(sig))}`;
 }
 
 // ------------------------------------------------------------ App Store
@@ -383,53 +337,12 @@ export const AppStoreServerApiVerifier: StoreVerifier = {
 };
 
 // ------------------------------------------------------------ Google Play
-interface ServiceAccount {
-  client_email: string;
-  private_key: string;
-  token_uri?: string;
-}
+const ANDROIDPUBLISHER_SCOPE = 'https://www.googleapis.com/auth/androidpublisher';
 
-let googleToken: { key: string; token: string; exp: number } | null = null;
-
-function serviceAccount(env: Env): ServiceAccount {
-  try {
-    const sa = JSON.parse(env.GOOGLE_PLAY_SERVICE_ACCOUNT!) as ServiceAccount;
-    if (!sa.client_email || !sa.private_key) throw new Error('fields');
-    return sa;
-  } catch {
-    throw new ApiError(503, 'store_key_invalid');
-  }
-}
-
+/** Play Developer API OAuth tokeni (service account JWT → oauth2, src/jwtsign.ts). */
 async function googleAccessToken(ctx: Ctx): Promise<string> {
-  const sa = serviceAccount(ctx.env);
-  if (googleToken && googleToken.key === sa.client_email && googleToken.exp > ctx.now + 60_000) {
-    return googleToken.token;
-  }
-  const aud = sa.token_uri || 'https://oauth2.googleapis.com/token';
-  const now = Math.floor(ctx.now / 1000);
-  const assertion = await signJwt('RS256', sa.private_key, {}, {
-    iss: sa.client_email,
-    scope: 'https://www.googleapis.com/auth/androidpublisher',
-    aud,
-    iat: now,
-    exp: now + 3600,
-  });
-  let res: Response;
-  try {
-    res = await doFetch(ctx)(aud, {
-      method: 'POST',
-      headers: { 'content-type': 'application/x-www-form-urlencoded' },
-      body: `grant_type=${encodeURIComponent('urn:ietf:params:oauth:grant-type:jwt-bearer')}&assertion=${assertion}`,
-    });
-  } catch {
-    throw storeUnavailable();
-  }
-  if (!res.ok) throw new ApiError(503, 'store_auth_failed');
-  const body = (await res.json()) as { access_token?: string; expires_in?: number };
-  if (!body.access_token) throw new ApiError(503, 'store_auth_failed');
-  googleToken = { key: sa.client_email, token: body.access_token, exp: ctx.now + (body.expires_in ?? 3600) * 1000 };
-  return body.access_token;
+  const sa = parseServiceAccount(ctx.env.GOOGLE_PLAY_SERVICE_ACCOUNT, 'store_key_invalid');
+  return googleServiceToken(ctx, sa, ANDROIDPUBLISHER_SCOPE, { keyInvalid: 'store_key_invalid', authFailed: 'store_auth_failed', unavailable: 'store_unavailable' });
 }
 
 const playBase = (env: Env) =>

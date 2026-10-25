@@ -161,7 +161,8 @@ describe('qorovul: billing inert (D-71, pro-next)', () => {
     const u = await s.signIn(uniqueEmail('guard-trial'));
     const r = await s.call('POST', '/v1/billing/trial/challenge', { token: u.token });
     expect(r.status).toBe(503);
-    expect(r.data.error).toBe('device_attestation_not_configured');
+    expect(r.data.error).toBe('trial_unavailable');
+    expect(r.data.reason).toBe('device_attestation_not_configured');
   });
 
   it('LG_BILLING_ENABLED=true bo‘lsa yo‘l bor (kalitlar yo‘q — 503 yoki 401)', async () => {

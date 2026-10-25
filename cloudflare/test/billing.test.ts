@@ -129,7 +129,7 @@ describe('billing: sozlanmagan server', () => {
       app_store: false,
       play_store: false,
       sandbox: false,
-      trial: { android: false, ios: false, platforms: ['android'] },
+      trial: { android: false, ios: false, platforms: ['android'], days: 7 },
     });
 
     expect((await s.call('GET', '/v1/billing/entitlements')).status).toBe(401);
