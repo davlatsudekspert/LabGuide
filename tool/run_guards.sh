@@ -33,6 +33,9 @@ step "Python: tool/site (check_site + self-test + qorovullar)"
 "$PY" tool/site/check_site.py --self-test
 "$PY" -m unittest discover -s tool/site -p 'test_*.py'
 
+step "Python: tool/video (make_manifest)"
+"$PY" -m unittest discover -s tool/video -p 'test_*.py'
+
 step "Python: tool/ai (oflayn testlar)"
 "$PY" -m unittest discover -s tool/ai/tests
 

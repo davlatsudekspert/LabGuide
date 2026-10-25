@@ -84,7 +84,8 @@ void main() {
         expect(find.text(c.steps.first(l)), findsOneWidget);
         expect(find.text(c.result(l)), findsOneWidget);
         // Video ro‘yxatga olinmagan — video haqida hech narsa yo‘q.
-        expect(find.text(l.howToWatchVideo), findsNothing);
+        expect(find.byKey(ValueKey('howto-video-${sec.id}')), findsNothing);
+        expect(find.textContaining(l.howToWatchVideo), findsNothing);
         await _close(tester, l);
         expect(find.byType(HowToSheet), findsNothing);
       }
@@ -139,19 +140,20 @@ void main() {
     final s = await makeServices(tester, language: AppLanguage.uz);
     await pumpApp(tester, s);
     final base = HowToRegistry.of(HowToSection.qc);
-    final withVideo = HowToContent(
-      section: base.section,
-      title: base.title,
-      steps: base.steps,
-      result: base.result,
-      videoUrl: 'https://example.org/qc.mp4',
-    );
+    final withVideo = base.withVideos({
+      'uz': HowToVideo(
+        url: Uri.parse('https://videos.labguide-test.uz/qc_uz.mp4'),
+        bytes: 1256116,
+        seconds: 46,
+        sha256: 'a' * 64,
+      ),
+    });
     final ctx = tester.element(find.byType(Scaffold).first);
     unawaited(showHowTo(ctx, withVideo));
     await tester.pumpAndSettle();
     final l = lookupAppLocalizations(const Locale('uz'));
     expect(find.byKey(const ValueKey('howto-video-qc')), findsOneWidget);
-    expect(find.text(l.howToWatchVideo), findsOneWidget);
+    expect(find.text('${l.howToWatchVideo} (1,3 MB)'), findsOneWidget);
     // Bir xil oyna, video yo‘q — tugma ham yo‘q.
     await _close(tester, l);
     final ctx2 = tester.element(find.byType(Scaffold).first);

@@ -12474,6 +12474,29 @@ class AppLocalizationsRu extends AppLocalizations {
   String get howToWatchVideo => 'Смотреть видео';
 
   @override
+  String howToVideoMb(String mb) {
+    return '$mb МБ';
+  }
+
+  @override
+  String howToVideoNote(String duration) {
+    return 'Запись экрана без звука, с субтитрами · $duration · откроется в браузере или видеоплеере';
+  }
+
+  @override
+  String howToVideoStartsAt(String time) {
+    return 'В видео этот раздел начинается с $time.';
+  }
+
+  @override
+  String get howToVideoOffline =>
+      'Для видео нужен интернет. Текстовая инструкция — здесь, она работает без интернета.';
+
+  @override
+  String get howToVideoUnavailable =>
+      'Видео сейчас не открывается. Попробуйте позже — текстовая инструкция здесь.';
+
+  @override
   String get howToCalibrationStep1 =>
       '«1. Прибор»: выберите модель из каталога или добавьте прибор, которого нет в списке.';
 

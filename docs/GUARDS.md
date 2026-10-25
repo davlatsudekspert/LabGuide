@@ -203,6 +203,17 @@ fayllarni o‘qiydi (`pack.json`, `curriculum.json`, `assets/toifa/*.json`, `ind
 | D-55: AI vazifalari faqat qo‘lda, standart `dry_run`, byudjet chegarasi, natija main’ga emas | `tool/ai/tests/test_guards.py :: test_only_manual_trigger`, `test_dry_run_default_true`, `test_budget_caps`, `test_main_branch_only_and_reports_not_to_main` |
 | CI barcha qorovul qatlamlarini ishga tushiradi | `repo_registry_guard_test.dart :: tests job barcha qorovul qatlamlarini ishga tushiradi` |
 
+### “Qanday foydalaniladi?” videolari (2026-10-25, `docs/video/DELIVERY_PLAN.md`)
+
+| Qaror / ish | Qorovul |
+|---|---|
+| Ilova bilan keladigan `assets/howto/videos.json` da egasi qarorisiz (`owner_approval` = mavjud `D-NN`, sarlavhasida «video») manzil yo‘q; e’lon qilinsa — hosting maxfiylik siyosatida | `test/guards/howto_videos_guard_test.dart :: egasi qarorisiz manzil yo‘q`, `videolar e’lon qilinsa — …` |
+| Video pleyer bog‘liqligi yo‘q, MP4 repoga/ilovaga qo‘shilmagan | `howto_videos_guard_test.dart :: video pleyer bog‘liqligi yo‘q …`, `MP4 fayllar repoga / ilovaga qo‘shilmagan` |
+| Tekshiruvchi: noma’lum bo‘lim, https emas, joy egallovchi domen, hajm/sha256 yo‘q, takror — rad | `test/unit/howto_videos_test.dart :: tekshiruvchi rad etadi …` |
+| Faqat ilova tilidagi video (boshqa tilga jim o‘tilmaydi); internet yo‘q / fayl yo‘q — halol xabar | `howto_videos_test.dart :: til bo‘yicha tanlash …`, `HowToVideoService probe …`; `test/widget/howto_video_test.dart` |
+| Bo‘sh ro‘yxat — 16 bo‘limda tugma yo‘q; 320 px ×2.0 yorug‘/tungi toshmaydi | `howto_video_test.dart :: ilova bilan keladigan ro‘yxat bo‘sh …`, `320 px, shrift ×2.0 …` |
+| `tool/video/make_manifest.py`: 16 bo‘lim × uz/ru/en, umumiy videoda boshlanish, `.invalid` joy egallovchi | `python3 -m unittest discover -s tool/video -p 'test_*.py'`; `howto_videos_test.dart :: tool/video/make_manifest.py namunasi …` |
+
 ## Yangi ish qo‘shilganda
 
 1. Ish uchun test yozing (bo‘lim testi yoki `test/guards/` dagi tegishli faylga).

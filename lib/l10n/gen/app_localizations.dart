@@ -21274,6 +21274,36 @@ abstract class AppLocalizations {
   /// **'Watch the video'**
   String get howToWatchVideo;
 
+  /// No description provided for @howToVideoMb.
+  ///
+  /// In en, this message translates to:
+  /// **'{mb} MB'**
+  String howToVideoMb(String mb);
+
+  /// No description provided for @howToVideoNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Silent screen recording with subtitles · {duration} · opens in your browser or video player'**
+  String howToVideoNote(String duration);
+
+  /// No description provided for @howToVideoStartsAt.
+  ///
+  /// In en, this message translates to:
+  /// **'In the video, this section starts at {time}.'**
+  String howToVideoStartsAt(String time);
+
+  /// No description provided for @howToVideoOffline.
+  ///
+  /// In en, this message translates to:
+  /// **'The video needs an internet connection. The text guide is right here and works offline.'**
+  String get howToVideoOffline;
+
+  /// No description provided for @howToVideoUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'The video can’t be opened right now. Try again later — the text guide is right here.'**
+  String get howToVideoUnavailable;
+
   /// No description provided for @howToCalibrationStep1.
   ///
   /// In en, this message translates to:

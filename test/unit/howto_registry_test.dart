@@ -70,9 +70,12 @@ void main() {
     }
   });
 
-  test('hozir hech bir bo‘limga video qo‘shilmagan (joy egallovchi yo‘q)', () {
+  test('registrda video yo‘q — faqat assets/howto/videos.json dan keladi', () {
     for (final c in HowToRegistry.all.values) {
-      expect(c.videoUrl, isNull, reason: c.id);
+      expect(c.videos, isEmpty, reason: c.id);
+      for (final lang in ['uz', 'ru', 'en']) {
+        expect(c.videoFor(lang), isNull, reason: '${c.id} $lang');
+      }
     }
   });
 

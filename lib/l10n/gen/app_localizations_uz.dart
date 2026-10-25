@@ -12297,6 +12297,29 @@ class AppLocalizationsUz extends AppLocalizations {
   String get howToWatchVideo => 'Videoni ko‘rish';
 
   @override
+  String howToVideoMb(String mb) {
+    return '$mb MB';
+  }
+
+  @override
+  String howToVideoNote(String duration) {
+    return 'Ovozsiz, subtitrli ekran yozuvi · $duration · brauzer yoki video pleyerda ochiladi';
+  }
+
+  @override
+  String howToVideoStartsAt(String time) {
+    return 'Videoda bu bo‘lim $time dan boshlanadi.';
+  }
+
+  @override
+  String get howToVideoOffline =>
+      'Video uchun internet kerak. Matnli qo‘llanma shu yerda — u internetsiz ishlaydi.';
+
+  @override
+  String get howToVideoUnavailable =>
+      'Video hozir ochilmadi. Keyinroq urinib ko‘ring — matnli qo‘llanma shu yerda.';
+
+  @override
   String get howToCalibrationStep1 =>
       '«1. Apparat»: katalogdan modelni tanlang yoki ro‘yxatda yo‘q apparatni qo‘shing.';
 
