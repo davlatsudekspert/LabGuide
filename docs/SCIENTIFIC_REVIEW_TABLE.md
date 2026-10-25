@@ -2,7 +2,7 @@
 
 Bu hujjat **LabGuide laboratoriya ta’limi ilovasi** kontentining ilmiy tekshiruvi uchun (boshqa hech qaysi ilovaga aloqasi yo‘q). Egasi topshirig‘i (4-band): 18 ta sxema (`assets/diagrams/`, 6 mavzu × uz/ru/en) va 32 ta apparat sxematik chizmasi (`assets/instruments/schematic/`) dagi **mutaxassis tekshiruvini talab qiladigan har bir da’vo** — alohida jadvalda.
 
-- To‘liq jadval: [`docs/SCIENTIFIC_REVIEW_TABLE.csv`](SCIENTIFIC_REVIEW_TABLE.csv) (UTF-8 BOM, 597 qator, bitta qator — bitta tekshiriladigan da’vo).
+- To‘liq jadval: [`docs/SCIENTIFIC_REVIEW_TABLE.csv`](SCIENTIFIC_REVIEW_TABLE.csv) (UTF-8 BOM, 595 qator, bitta qator — bitta tekshiriladigan da’vo).
 - Mutaxassislarga paketlar: [`docs/review_packets_tech/`](review_packets_tech/) — har profilga bitta CSV, xavf bo‘yicha tartiblangan.
 - Generator: `python3 tool/review/make_scientific_review_tables.py` (faqat stdlib, deterministik; `--check` — fayllar eskirgan bo‘lsa xato). Qorovul: `test/guards/scientific_review_table_guard_test.dart`.
 
@@ -12,9 +12,9 @@ Bu hujjat **LabGuide laboratoriya ta’limi ilovasi** kontentining ilmiy tekshir
 
 | kod | ma’nosi | qatorlar |
 |---|---|---|
-| `SOURCED` | katalog manbasi (catalog.json `sources[].id`), ARB kaliti yoki ilovadagi aniq fayl:qator bor; mazmun mutaxassis tomonidan hali tekshirilmagan | 155 |
-| `STANDARD_TEXTBOOK` | darslik darajasidagi umumiy ma’lumot, repoda alohida iqtibos yo‘q (hujjatlarda “STANDARD_TEXTBOOK (NEEDS_EXPERT)”) | 108 |
-| `NEEDS_SOURCE` | manbasiz aniq raqam/tafsilot (masalan, harorat, son, vaqt) — avval manba topilishi kerak | 2 |
+| `SOURCED` | katalog manbasi (catalog.json `sources[].id`), ARB kaliti yoki ilovadagi aniq fayl:qator bor; mazmun mutaxassis tomonidan hali tekshirilmagan | 154 |
+| `STANDARD_TEXTBOOK` | darslik darajasidagi umumiy ma’lumot, repoda alohida iqtibos yo‘q (hujjatlarda “STANDARD_TEXTBOOK (NEEDS_EXPERT)”) | 109 |
+| `NEEDS_SOURCE` | manbasiz aniq raqam/tafsilot (masalan, harorat, son, vaqt) — avval manba topilishi kerak | 0 |
 | `NEEDS_EXPERT` | manba to‘liq qamramaydi (qisman manbali), hujjatlar kelishmaydi, tarjima yoki chizma — mutaxassis ko‘rigi kerak | 313 |
 | `APP_RULE_AWAITING_EXPERT` | ilovaning o‘z qoidasi/ish tartibi (registr `AWAITING_EXPERT` yoki DECISIONS.md qarori) — tashqi manba emas | 19 |
 
@@ -31,12 +31,12 @@ Holat qanday aniqlandi (hech bir holat o‘z hisobimdan **ko‘tarilmadi**, faqa
 | kind | qator | SOURCED | STANDARD_TEXTBOOK | NEEDS_SOURCE | NEEDS_EXPERT | APP_RULE_AWAITING_EXPERT | high | medium | low |
 |---|---|---|---|---|---|---|---|---|---|
 | `diagram` | 44 | 28 | 2 | 0 | 4 | 10 | 9 | 25 | 10 |
-| `schematic-part` | 223 | 99 | 105 | 2 | 17 | 0 | 3 | 175 | 45 |
+| `schematic-part` | 221 | 98 | 106 | 0 | 17 | 0 | 3 | 173 | 45 |
 | `schematic-principle` | 32 | 13 | 0 | 0 | 19 | 0 | 2 | 30 | 0 |
 | `schematic-result` | 32 | 15 | 1 | 0 | 16 | 0 | 10 | 22 | 0 |
 | `schematic-drawing` | 72 | 0 | 0 | 0 | 72 | 0 | 0 | 11 | 61 |
 | `text-translation` | 194 | 0 | 0 | 0 | 185 | 9 | 0 | 62 | 132 |
-| **jami** | 597 | 155 | 108 | 2 | 313 | 19 | 24 | 325 | 248 |
+| **jami** | 595 | 154 | 109 | 0 | 313 | 19 | 24 | 323 | 248 |
 
 ## Eng yuqori xavfli 30 qator (avval shular)
 
@@ -68,12 +68,12 @@ Tartib: xavf (high > medium > low), so‘ng holat (NEEDS_SOURCE > APP_RULE/NEEDS
 | 22 | `SCHEM-gel_card_system-part-07` | SOURCED | transfuziolog (immunogematolog) | high — manfiy reaksiya ko‘rinishi xato bo‘lsa — qon guruhi xato aniqlanadi |
 | 23 | `SCHEM-mycobacterial_culture-result` | SOURCED | sil (TB) laboratoriyasi mutaxassisi | high — DST talqini (1/2-qator) xato bo‘lsa — sil davolash rejimi noto‘g‘ri |
 | 24 | `SCHEM-real_time_pcr-result` | SOURCED | molekulyar diagnost | high — Cq/virus yuki talqini xato bo‘lsa — OIV davolash monitoringida xato |
-| 25 | `SCHEM-coag_analyzer-part-04` | NEEDS_SOURCE | gematolog | medium — qism vazifasi xato bo‘lsa, talaba apparat ishlashini noto‘g‘ri tushunadi (bemor natijasiga bevosita ta’sir yo‘q) |
-| 26 | `SCHEM-real_time_pcr-part-01` | NEEDS_SOURCE | molekulyar diagnost | medium — qism vazifasi xato bo‘lsa, talaba apparat ishlashini noto‘g‘ri tushunadi (bemor natijasiga bevosita ta’sir yo‘q) |
-| 27 | `DIAG-calibration_overview-05` | APP_RULE_AWAITING_EXPERT | laboratoriya sifat menejeri / metrolog | medium — jarayon qadami xato bo‘lsa, talaba noto‘g‘ri tartibni o‘rganadi |
-| 28 | `DIAG-calibration_overview-l10n-ru-d` | NEEDS_EXPERT | tibbiy tilshunos (ru) | medium — qaror/harakat qatori; noto‘g‘ri tarjima noto‘g‘ri harakatga olib kelishi mumkin |
-| 29 | `DIAG-calibration_overview-l10n-ru-no` | NEEDS_EXPERT | tibbiy tilshunos (ru) | medium — qaror/harakat qatori; noto‘g‘ri tarjima noto‘g‘ri harakatga olib kelishi mumkin |
-| 30 | `DIAG-calibration_overview-l10n-ru-ok` | NEEDS_EXPERT | tibbiy tilshunos (ru) | medium — qaror/harakat qatori; noto‘g‘ri tarjima noto‘g‘ri harakatga olib kelishi mumkin |
+| 25 | `DIAG-calibration_overview-05` | APP_RULE_AWAITING_EXPERT | laboratoriya sifat menejeri / metrolog | medium — jarayon qadami xato bo‘lsa, talaba noto‘g‘ri tartibni o‘rganadi |
+| 26 | `DIAG-calibration_overview-l10n-ru-d` | NEEDS_EXPERT | tibbiy tilshunos (ru) | medium — qaror/harakat qatori; noto‘g‘ri tarjima noto‘g‘ri harakatga olib kelishi mumkin |
+| 27 | `DIAG-calibration_overview-l10n-ru-no` | NEEDS_EXPERT | tibbiy tilshunos (ru) | medium — qaror/harakat qatori; noto‘g‘ri tarjima noto‘g‘ri harakatga olib kelishi mumkin |
+| 28 | `DIAG-calibration_overview-l10n-ru-ok` | NEEDS_EXPERT | tibbiy tilshunos (ru) | medium — qaror/harakat qatori; noto‘g‘ri tarjima noto‘g‘ri harakatga olib kelishi mumkin |
+| 29 | `DIAG-calibration_overview-l10n-uz-d` | NEEDS_EXPERT | tibbiy tilshunos (uz) | medium — qaror/harakat qatori; noto‘g‘ri tarjima noto‘g‘ri harakatga olib kelishi mumkin |
+| 30 | `DIAG-calibration_overview-l10n-uz-no` | NEEDS_EXPERT | tibbiy tilshunos (uz) | medium — qaror/harakat qatori; noto‘g‘ri tarjima noto‘g‘ri harakatga olib kelishi mumkin |
 
 ## Har bir sxema (diagramma) bo‘yicha
 
@@ -94,9 +94,9 @@ Tartib: xavf (high > medium > low), so‘ng holat (NEEDS_SOURCE > APP_RULE/NEEDS
 | 2 | `gel_card_system` | 13 | 5 | 2 | 0 | 6 | 0 | 3 | 9 | transfuziolog (immunogematolog) | `SCHEM-gel_card_system-result` |
 | 3 | `autoclave` | 14 | 4 | 4 | 0 | 6 | 0 | 2 | 9 | biologik xavfsizlik mutaxassisi | `SCHEM-autoclave-result` |
 | 4 | `fluorescence_microscope` | 14 | 2 | 4 | 0 | 8 | 0 | 1 | 9 | sil (TB) laboratoriyasi mutaxassisi | `SCHEM-fluorescence_microscope-result` |
-| 5 | `coag_analyzer` | 13 | 3 | 3 | 1 | 6 | 0 | 1 | 9 | gematolog | `SCHEM-coag_analyzer-result` |
-| 6 | `flow_cytometer` | 14 | 5 | 2 | 0 | 7 | 0 | 1 | 9 | immunolog | `SCHEM-flow_cytometer-result` |
-| 7 | `real_time_pcr` | 13 | 4 | 3 | 1 | 5 | 0 | 1 | 9 | molekulyar diagnost | `SCHEM-real_time_pcr-result` |
+| 5 | `flow_cytometer` | 14 | 5 | 2 | 0 | 7 | 0 | 1 | 9 | immunolog | `SCHEM-flow_cytometer-result` |
+| 6 | `coag_analyzer` | 13 | 3 | 4 | 0 | 6 | 0 | 1 | 9 | gematolog | `SCHEM-coag_analyzer-result` |
+| 7 | `real_time_pcr` | 13 | 4 | 4 | 0 | 5 | 0 | 1 | 9 | molekulyar diagnost | `SCHEM-real_time_pcr-result` |
 | 8 | `microbial_id_ast` | 12 | 3 | 2 | 0 | 7 | 0 | 1 | 8 | mikrobiolog | `SCHEM-microbial_id_ast-result` |
 | 9 | `cartridge_molecular` | 11 | 2 | 3 | 0 | 6 | 0 | 1 | 7 | sil (TB) laboratoriyasi mutaxassisi | `SCHEM-cartridge_molecular-result` |
 | 10 | `mycobacterial_culture` | 13 | 5 | 2 | 0 | 6 | 0 | 1 | 7 | sil (TB) laboratoriyasi mutaxassisi | `SCHEM-mycobacterial_culture-result` |
@@ -110,13 +110,13 @@ Tartib: xavf (high > medium > low), so‘ng holat (NEEDS_SOURCE > APP_RULE/NEEDS
 | 18 | `maldi_tof` | 14 | 5 | 3 | 0 | 6 | 0 | 0 | 9 | mikrobiolog | `SCHEM-maldi_tof-principle` |
 | 19 | `elisa_reader` | 14 | 5 | 4 | 0 | 5 | 0 | 0 | 9 | immunolog | `SCHEM-elisa_reader-drawing-01` |
 | 20 | `immunoassay` | 15 | 6 | 5 | 0 | 4 | 0 | 0 | 9 | klinik biokimyogar | `SCHEM-immunoassay-part-03` |
-| 21 | `hba1c_analyzer` | 15 | 2 | 7 | 0 | 6 | 0 | 0 | 8 | klinik biokimyogar | `SCHEM-hba1c_analyzer-drawing-01` |
-| 22 | `esr_analyzer` | 13 | 6 | 2 | 0 | 5 | 0 | 0 | 8 | gematolog | `SCHEM-esr_analyzer-principle` |
-| 23 | `blood_culture` | 12 | 2 | 2 | 0 | 8 | 0 | 0 | 7 | mikrobiolog | `SCHEM-blood_culture-part-01` |
-| 24 | `blood_gas_ise` | 13 | 2 | 6 | 0 | 5 | 0 | 0 | 7 | klinik biokimyogar | `SCHEM-blood_gas_ise-principle` |
-| 25 | `urine_system` | 12 | 5 | 3 | 0 | 4 | 0 | 0 | 7 | klinik laboratoriya shifokori (umumiy klinik tahlillar) | `SCHEM-urine_system-result` |
-| 26 | `casa` | 11 | 1 | 3 | 0 | 7 | 0 | 0 | 6 | reproduktiv laboratoriya mutaxassisi (androlog) | `SCHEM-casa-part-01` |
-| 27 | `analytical_balance` | 13 | 4 | 3 | 0 | 6 | 0 | 0 | 6 | laboratoriya sifat menejeri / metrolog | `SCHEM-analytical_balance-part-06` |
+| 21 | `esr_analyzer` | 13 | 6 | 2 | 0 | 5 | 0 | 0 | 8 | gematolog | `SCHEM-esr_analyzer-principle` |
+| 22 | `blood_culture` | 12 | 2 | 2 | 0 | 8 | 0 | 0 | 7 | mikrobiolog | `SCHEM-blood_culture-part-01` |
+| 23 | `blood_gas_ise` | 13 | 2 | 6 | 0 | 5 | 0 | 0 | 7 | klinik biokimyogar | `SCHEM-blood_gas_ise-principle` |
+| 24 | `urine_system` | 12 | 5 | 3 | 0 | 4 | 0 | 0 | 7 | klinik laboratoriya shifokori (umumiy klinik tahlillar) | `SCHEM-urine_system-result` |
+| 25 | `casa` | 11 | 1 | 3 | 0 | 7 | 0 | 0 | 6 | reproduktiv laboratoriya mutaxassisi (androlog) | `SCHEM-casa-part-01` |
+| 26 | `analytical_balance` | 13 | 4 | 3 | 0 | 6 | 0 | 0 | 6 | laboratoriya sifat menejeri / metrolog | `SCHEM-analytical_balance-part-06` |
+| 27 | `hba1c_analyzer` | 13 | 1 | 6 | 0 | 6 | 0 | 0 | 6 | klinik biokimyogar | `SCHEM-hba1c_analyzer-drawing-01` |
 | 28 | `lab_fridge` | 11 | 4 | 2 | 0 | 5 | 0 | 0 | 6 | laboratoriya sifat menejeri / metrolog | `SCHEM-lab_fridge-principle` |
 | 29 | `osmometer` | 11 | 3 | 3 | 0 | 5 | 0 | 0 | 6 | klinik biokimyogar | `SCHEM-osmometer-principle` |
 | 30 | `hematology3` | 12 | 3 | 3 | 0 | 6 | 0 | 0 | 5 | gematolog | `SCHEM-hematology3-principle` |
@@ -130,15 +130,15 @@ Egasi har bir mutaxassisga bitta CSV beradi; mutaxassis faqat `specialist_decisi
 | mutaxassis profili | paket | qator | high | medium | low | NEEDS_SOURCE | NEEDS_EXPERT + APP_RULE | STANDARD_TEXTBOOK | SOURCED |
 |---|---|---|---|---|---|---|---|---|---|
 | biologik xavfsizlik mutaxassisi | [`biologik_xavfsizlik_mutaxassisi.csv`](review_packets_tech/biologik_xavfsizlik_mutaxassisi.csv) | 24 | 5 | 15 | 4 | 0 | 8 | 7 | 9 |
-| klinik biokimyogar | [`klinik_biokimyogar.csv`](review_packets_tech/klinik_biokimyogar.csv) | 97 | 5 | 62 | 30 | 0 | 27 | 30 | 40 |
+| klinik biokimyogar | [`klinik_biokimyogar.csv`](review_packets_tech/klinik_biokimyogar.csv) | 95 | 5 | 60 | 30 | 0 | 27 | 29 | 39 |
 | sil (TB) laboratoriyasi mutaxassisi | [`sil_laboratoriyasi_mutaxassisi.csv`](review_packets_tech/sil_laboratoriyasi_mutaxassisi.csv) | 32 | 3 | 17 | 12 | 0 | 14 | 9 | 9 |
 | transfuziolog (immunogematolog) | [`transfuziolog.csv`](review_packets_tech/transfuziolog.csv) | 11 | 3 | 7 | 1 | 0 | 4 | 2 | 5 |
-| gematolog | [`gematolog.csv`](review_packets_tech/gematolog.csv) | 65 | 2 | 45 | 18 | 1 | 21 | 13 | 30 |
+| gematolog | [`gematolog.csv`](review_packets_tech/gematolog.csv) | 65 | 2 | 45 | 18 | 0 | 21 | 14 | 30 |
 | laboratoriya sifat menejeri / metrolog | [`sifat_menejeri_metrolog.csv`](review_packets_tech/sifat_menejeri_metrolog.csv) | 29 | 2 | 17 | 10 | 0 | 11 | 5 | 13 |
 | immunolog | [`immunolog.csv`](review_packets_tech/immunolog.csv) | 24 | 1 | 16 | 7 | 0 | 8 | 6 | 10 |
 | klinik laboratoriya shifokori (umumiy klinik tahlillar) | [`klinik_laboratoriya_shifokori.csv`](review_packets_tech/klinik_laboratoriya_shifokori.csv) | 27 | 1 | 17 | 9 | 0 | 7 | 7 | 13 |
 | mikrobiolog | [`mikrobiolog.csv`](review_packets_tech/mikrobiolog.csv) | 32 | 1 | 22 | 9 | 0 | 15 | 7 | 10 |
-| molekulyar diagnost | [`molekulyar_diagnost.csv`](review_packets_tech/molekulyar_diagnost.csv) | 11 | 1 | 7 | 3 | 1 | 3 | 3 | 4 |
+| molekulyar diagnost | [`molekulyar_diagnost.csv`](review_packets_tech/molekulyar_diagnost.csv) | 11 | 1 | 7 | 3 | 0 | 3 | 4 | 4 |
 | reproduktiv laboratoriya mutaxassisi (androlog) | [`reproduktiv_laboratoriya_mutaxassisi.csv`](review_packets_tech/reproduktiv_laboratoriya_mutaxassisi.csv) | 9 | 0 | 6 | 3 | 0 | 5 | 3 | 1 |
 | tibbiy pedagog | [`tibbiy_pedagog.csv`](review_packets_tech/tibbiy_pedagog.csv) | 6 | 0 | 0 | 6 | 0 | 6 | 0 | 0 |
 | tibbiy tilshunos (ru) | [`tibbiy_tilshunos_ru.csv`](review_packets_tech/tibbiy_tilshunos_ru.csv) | 92 | 0 | 31 | 61 | 0 | 92 | 0 | 0 |
@@ -156,16 +156,12 @@ Egasi har bir mutaxassisga bitta CSV beradi; mutaxassis faqat `specialist_decisi
 
 Tuzatilmadi (lib/, ARB, katalog, assets o‘zgartirilmaydi) — faqat ro‘yxat; har biri jadvalda tegishli qatorda ham bor.
 
-1. **DRAW-ELISA** — `elisa_reader` chizmasi: `gen.py` izohi “lampa → filtr → quduqcha → detektor”, lekin chizilgan tartib lampa (2) → quduqcha (3) → filtr (4) → detektor (5). Prinsip matni “tanlangan to‘lqin uzunligidagi nur quduqchadan o‘tadi” deydi. Qaysi tartib ko‘zda tutilgani mutaxassis bilan aniqlansin (SCHEM-elisa_reader-drawing-01).
-2. **DRAW-HBA1C** — `hba1c_analyzer`: docs/LAB_CARD_IMAGE_COVERAGE.md (a2-test-hba1c, a2-platform-hba1c-analyzer) “ichki usul ataylab ko‘rsatilmagan” deydi, lekin 2026-10-25 yangilangan chizma (SCHEMATICS_PROVENANCE.md) ion almashinuv kolonkasi, fotometrik detektor va xromatogrammani ko‘rsatadi; `labSchemHba1cAnalyzer` alt-matnida esa kolonka/detektor yo‘q. Karta bir nechta usulni (ion almashinish, borat affinligi, immunoanaliz, ferment) qamraydi (SCHEM-hba1c_analyzer-drawing-01).
-3. **DRAW-TUBES** — `hematology5` avtoyuklagichi (`rack(..., caps=TUBE_CAPS)`), `chemistry` va `immunoassay` namuna rakalari turli rangli qopqoqli (binafsha, qizil, sariq, ko‘k, yashil) to‘liq qon probirkalari bilan chizilgan. Umumiy qon tahlili — EDTA (binafsha), biokimyo/immunoanaliz — zardob/plazma. `coag_analyzer` (havorang) va `hba1c_analyzer` (binafsha) to‘g‘ri chizilgani uchun bu nomuvofiqlik ko‘zga tashlanadi.
-4. **DRAW-HEM3** — `hematology3` displeyida uchta bir xil Gauss shaklidagi gistogramma; haqiqiy 3 qismli WBC gistogrammasida uchta subpopulyatsiya, PLT gistogrammasi o‘ngga cho‘zilgan — soddalashtirish o‘quvchini chalg‘itishi mumkin (SCHEM-hematology3-drawing-02).
+1. **DRAW-ELISA** — TUZATILDI (2026-10-25, img/fix-drawings): chizma, kod izohi va belgilar tartibi lampa (2) → filtr (3) → quduqcha (4) → detektor (5); mutaxassis ko‘rigi baribir kerak (SCHEM-elisa_reader-drawing-01).
+2. **DRAW-HBA1C** — TUZATILDI (2026-10-25, img/fix-drawings): `hba1c_analyzer` usul jihatdan neytral — ion almashinuv kolonkasi, detektor kesigi va xromatogramma olib tashlandi; qismlar/prinsip/natija matnlari usulni da’vo qilmaydi (kartadagi usullar ro‘yxati keltirilgan), LAB_CARD_IMAGE_COVERAGE.md bilan mos (SCHEM-hba1c_analyzer-drawing-01).
+3. **DRAW-TUBES** — TUZATILDI (2026-10-25, img/fix-drawings): `hematology5` avtoyuklagichida faqat binafsha (EDTA turi) qopqoqli butun qon probirkalari; `chemistry` va `immunoassay` rakalarida (va biokimyo namuna diskida) neytral qopqoqli, och somon rangli zardob/plazma probirkalari; panel matnida qopqoq rangi da’vo qilinmaydi.
+4. **DRAW-HEM3** — TUZATILDI (2026-10-25, img/fix-drawings): `hematology3` displeyida uch xil sxematik gistogramma (WBC — uch subpopulyatsiya, RBC, o‘ngga cho‘zilgan PLT); panel matnida shakllar sxematik ekani aytilgan (SCHEM-hematology3-drawing-02).
 5. **L10N-REFERENS** — ARB `diffInterpretIntro`/`diffRangesBody` (uz) “referens oraliq” deydi; docs/L10N_TERMINOLOGY_DECISIONS.md uz uchun yagona atama “referens interval” (NEEDS_NATIVE_REVIEW). `differential_count.uz.png` va uning alt-matni 2026-10-25 da “referens interval” ga o‘tkazildi; ARB qatorlari tuzatilmagan.
 6. **TERM-ABS** — `photometry`: en “Absorbance”; ilova ARB’ida absorbance — ru “поглощение”, uz “yutilish”, ma’ruzada — “оптическая плотность”/“optik zichlik”. 2026-10-25 da sxema ilovaning o‘z iborasiga (“Поглощение (оптическая плотность)”, “Yutilish (optik zichlik)”) moslandi; IUPAC farqi (absorbance ≠ optical density) bo‘yicha atama qarori hali mutaxassisniki.
-7. **SRC-SCOPE** — SCHEM-urine_strip-principle: manba `ro-6500` shu chizmani ishlatuvchi karta/modellarda keltirilmagan.
-8. **NUM-UNVERIFIED** — SCHEM-flow_cytometer-part-06: “90 °” keltirilgan manba (a3-statpearls-flow) bo‘yicha katalog matnida yo‘q.
-9. **NUM-NO-SOURCE** — SCHEM-real_time_pcr-part-01: “8 tube” — manbasiz aniq raqam (STANDARD_TEXTBOOK).
-10. **NUM-NO-SOURCE** — SCHEM-coag_analyzer-part-04: “37 °C” — manbasiz aniq raqam (STANDARD_TEXTBOOK).
 
 ## Qayta yaratish
 

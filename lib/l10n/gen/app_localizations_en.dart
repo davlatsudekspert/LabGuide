@@ -10416,7 +10416,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get labSchemRealTimePcr =>
-      'Real-time PCR instrument class — thermal block with wells, heated lid, optical module with light source, filter wheel and detector, 8-tube strip and amplification-curve display';
+      'Real-time PCR instrument class — thermal block with wells, heated lid, optical module with light source, filter wheel and detector, tube strip and amplification-curve display';
 
   @override
   String get labSchemCartridgeMolecular =>
@@ -10763,7 +10763,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get schemPartsHematology3DisplayFn =>
-      'Shows results and WBC, RBC and PLT histograms.';
+      'Shows results and WBC, RBC and PLT histograms (shapes in the picture are schematic).';
 
   @override
   String get schemPartsHematology3ProbeName => 'Sample probe';
@@ -11381,7 +11381,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get schemPartsFlowCytometerSscFn =>
-      'Light at 90° is split by colour with dichroic mirrors and filters onto separate detectors.';
+      'Light collected to the side of the beam is split by colour with dichroic mirrors and filters onto separate detectors.';
 
   @override
   String get schemPartsFlowCytometerWasteName => 'Waste container';
@@ -11406,7 +11406,7 @@ class AppLocalizationsEn extends AppLocalizations {
       'Dot plots and histograms; the proportion and number of cell populations (e.g. the absolute CD4+ T-cell count using calibrator beads).';
 
   @override
-  String get schemPartsRealTimePcrTubesName => 'PCR tubes (8-tube strip)';
+  String get schemPartsRealTimePcrTubesName => 'PCR tubes (strip)';
 
   @override
   String get schemPartsRealTimePcrTubesFn =>
@@ -11530,7 +11530,7 @@ class AppLocalizationsEn extends AppLocalizations {
       'Dispenses plasma and reagent into the cuvette in exact volumes.';
 
   @override
-  String get schemPartsCoagAnalyzerCuvettesName => 'Measuring cuvettes (37 °C)';
+  String get schemPartsCoagAnalyzerCuvettesName => 'Measuring cuvettes';
 
   @override
   String get schemPartsCoagAnalyzerCuvettesFn =>
@@ -11559,7 +11559,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get schemPartsCoagAnalyzerPrinciple =>
-      'The probe dispenses citrated plasma into a cuvette and warms it to 37 °C, then reagent is added (for PT, thromboplastin: tissue factor, calcium and phospholipids). As a fibrin clot forms the mixture becomes turbid: optical detection records the change in transmitted light, mechanical detection the stopping of movement. The time to this point is the clotting time.';
+      'The probe dispenses citrated plasma into a cuvette and warms it, then reagent is added (for PT, thromboplastin: tissue factor, calcium and phospholipids). As a fibrin clot forms the mixture becomes turbid: optical detection records the change in transmitted light, mechanical detection the stopping of movement. The time to this point is the clotting time.';
 
   @override
   String get schemPartsCoagAnalyzerResult =>
@@ -11580,18 +11580,18 @@ class AppLocalizationsEn extends AppLocalizations {
       'Provides the light that passes through the well.';
 
   @override
-  String get schemPartsElisaReaderWellName => 'Well being read';
-
-  @override
-  String get schemPartsElisaReaderWellFn =>
-      'The coloured solution absorbs part of the light.';
-
-  @override
   String get schemPartsElisaReaderFilterName => 'Optical filter';
 
   @override
   String get schemPartsElisaReaderFilterFn =>
       'Passes only the required wavelength.';
+
+  @override
+  String get schemPartsElisaReaderWellName => 'Well being read';
+
+  @override
+  String get schemPartsElisaReaderWellFn =>
+      'The coloured solution absorbs part of the light.';
 
   @override
   String get schemPartsElisaReaderDetectorName => 'Photodetector';
@@ -11814,35 +11814,21 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get schemPartsHba1cAnalyzerArmFn =>
-      'Takes blood from the tube, haemolyses it and injects it into the system.';
+      'Automatically takes blood from the tube and passes it to the measuring system.';
 
   @override
-  String get schemPartsHba1cAnalyzerEluentsName => 'Buffer (eluent) bottles';
+  String get schemPartsHba1cAnalyzerReagentsName => 'Reagent bottles';
 
   @override
-  String get schemPartsHba1cAnalyzerEluentsFn =>
-      'Buffers of different strength wash the fractions off the column in turn.';
+  String get schemPartsHba1cAnalyzerReagentsFn =>
+      'Reagent or buffer solutions for the analyzer’s method.';
 
   @override
-  String get schemPartsHba1cAnalyzerColumnName => 'Ion-exchange column';
-
-  @override
-  String get schemPartsHba1cAnalyzerColumnFn =>
-      'Separates haemoglobin fractions by charge.';
-
-  @override
-  String get schemPartsHba1cAnalyzerDetectorName => 'Photometric detector';
-
-  @override
-  String get schemPartsHba1cAnalyzerDetectorFn =>
-      'Measures absorbance of the haemoglobin leaving the column.';
-
-  @override
-  String get schemPartsHba1cAnalyzerDisplayName => 'Display (chromatogram)';
+  String get schemPartsHba1cAnalyzerDisplayName => 'Display';
 
   @override
   String get schemPartsHba1cAnalyzerDisplayFn =>
-      'Shows the chromatogram and the HbA1c result.';
+      'Shows the HbA1c result and run status.';
 
   @override
   String get schemPartsHba1cAnalyzerPrinterName => 'Printer';
@@ -11855,15 +11841,15 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get schemPartsHba1cAnalyzerWasteFn =>
-      'Collects used buffer and sample.';
+      'Collects used solutions and sample.';
 
   @override
   String get schemPartsHba1cAnalyzerPrinciple =>
-      'EDTA whole blood is sampled automatically and haemolysed. In ion-exchange chromatography the haemoglobin fractions leave the column at different times under a buffer gradient and are recorded by a photometric detector; the HbA1c fraction is calculated from peak area in the chromatogram. Other analyzers use boronate affinity chromatography, immunoassay or an enzymatic method.';
+      'The analyzer samples EDTA whole blood automatically and measures the HbA1c fraction. The measuring method depends on the analyzer: ion-exchange chromatography, boronate affinity chromatography, immunoassay, an enzymatic method or capillary electrophoresis; the drawing does not show the method. HbA1c forms by non-enzymatic binding of glucose to the N-terminal valine of the haemoglobin beta chain.';
 
   @override
   String get schemPartsHba1cAnalyzerResult =>
-      'A chromatogram of haemoglobin fractions and HbA1c in NGSP (%) and IFCC (mmol/mol) units; the ion-exchange method can also reveal variants such as HbS, C and D.';
+      'The HbA1c result in NGSP (%) and IFCC (mmol/mol) units; it reflects glycaemic control over roughly 2–3 months.';
 
   @override
   String get schemPartsLabFridgeControllerName => 'Control panel (thermostat)';

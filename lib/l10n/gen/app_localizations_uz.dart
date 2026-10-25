@@ -10281,7 +10281,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get labSchemRealTimePcr =>
-      'Real vaqt PCR amplifikatori sinfi — quduqchali termoblok, isitiladigan qopqoq, yorug‘lik manbai, filtr g‘ildiragi va detektorli optik modul, 8 probirkali qator va kuchayish egri chiziqlari ekrani';
+      'Real vaqt PCR amplifikatori sinfi — quduqchali termoblok, isitiladigan qopqoq, yorug‘lik manbai, filtr g‘ildiragi va detektorli optik modul, probirkalar qatori va kuchayish egri chiziqlari ekrani';
 
   @override
   String get labSchemCartridgeMolecular =>
@@ -10633,7 +10633,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get schemPartsHematology3DisplayFn =>
-      'Natijalar hamda WBC, RBC va PLT gistogrammalarini ko‘rsatadi.';
+      'Natijalar hamda WBC, RBC va PLT gistogrammalarini ko‘rsatadi (rasmdagi shakllar sxematik).';
 
   @override
   String get schemPartsHematology3ProbeName => 'Namuna zondi';
@@ -11259,7 +11259,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get schemPartsFlowCytometerSscFn =>
-      '90° dagi nur dixroik ko‘zgu va filtrlar bilan ranglarga ajratilib, alohida detektorlarga tushadi.';
+      'Nurga yon tomondan yig‘ilgan yorug‘lik dixroik ko‘zgu va filtrlar bilan ranglarga ajratilib, alohida detektorlarga tushadi.';
 
   @override
   String get schemPartsFlowCytometerWasteName => 'Chiqindi idishi';
@@ -11285,8 +11285,7 @@ class AppLocalizationsUz extends AppLocalizations {
       'Nuqtali diagramma va gistogrammalar; hujayra populyatsiyalarining ulushi va soni (masalan, kalibrlovchi zarrachalar yordamida CD4+ T-hujayralarning absolyut soni).';
 
   @override
-  String get schemPartsRealTimePcrTubesName =>
-      'PCR probirkalari (8 talik qator)';
+  String get schemPartsRealTimePcrTubesName => 'PCR probirkalari (qator)';
 
   @override
   String get schemPartsRealTimePcrTubesFn =>
@@ -11409,8 +11408,7 @@ class AppLocalizationsUz extends AppLocalizations {
       'Plazma va reagentni kyuvetaga aniq hajmda quyadi.';
 
   @override
-  String get schemPartsCoagAnalyzerCuvettesName =>
-      'O‘lchash kyuvetalari (37 °C)';
+  String get schemPartsCoagAnalyzerCuvettesName => 'O‘lchash kyuvetalari';
 
   @override
   String get schemPartsCoagAnalyzerCuvettesFn =>
@@ -11440,7 +11438,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get schemPartsCoagAnalyzerPrinciple =>
-      'Zond sitratli plazmani kyuvetaga quyadi va 37 °C gacha isitadi, so‘ng reagent qo‘shiladi (PT uchun tromboplastin: to‘qima omili, kalsiy va fosfolipidlar). Fibrin laxtasi hosil bo‘lganda aralashma loyqalanadi: optik usulda o‘tgan nur o‘zgarishi, mexanik usulda esa harakatning to‘xtashi qayd etiladi. Shu paytgacha o‘tgan vaqt — ivish vaqti.';
+      'Zond sitratli plazmani kyuvetaga quyadi va isitadi, so‘ng reagent qo‘shiladi (PT uchun tromboplastin: to‘qima omili, kalsiy va fosfolipidlar). Fibrin laxtasi hosil bo‘lganda aralashma loyqalanadi: optik usulda o‘tgan nur o‘zgarishi, mexanik usulda esa harakatning to‘xtashi qayd etiladi. Shu paytgacha o‘tgan vaqt — ivish vaqti.';
 
   @override
   String get schemPartsCoagAnalyzerResult =>
@@ -11461,18 +11459,18 @@ class AppLocalizationsUz extends AppLocalizations {
       'Quduqchadan o‘tadigan nurni beradi.';
 
   @override
-  String get schemPartsElisaReaderWellName => 'O‘lchanayotgan quduqcha';
-
-  @override
-  String get schemPartsElisaReaderWellFn =>
-      'Rangli eritma nurning bir qismini yutadi.';
-
-  @override
   String get schemPartsElisaReaderFilterName => 'Optik filtr';
 
   @override
   String get schemPartsElisaReaderFilterFn =>
       'Faqat kerakli to‘lqin uzunligini o‘tkazadi.';
+
+  @override
+  String get schemPartsElisaReaderWellName => 'O‘lchanayotgan quduqcha';
+
+  @override
+  String get schemPartsElisaReaderWellFn =>
+      'Rangli eritma nurning bir qismini yutadi.';
 
   @override
   String get schemPartsElisaReaderDetectorName => 'Fotodetektor';
@@ -11695,35 +11693,21 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get schemPartsHba1cAnalyzerArmFn =>
-      'Qonni probirkadan olib, gemolizlab tizimga kiritadi.';
+      'Qonni probirkadan avtomatik olib, o‘lchash tizimiga uzatadi.';
 
   @override
-  String get schemPartsHba1cAnalyzerEluentsName => 'Bufer (eluent) idishlari';
+  String get schemPartsHba1cAnalyzerReagentsName => 'Reagent idishlari';
 
   @override
-  String get schemPartsHba1cAnalyzerEluentsFn =>
-      'Turli kuchdagi buferlar fraksiyalarni kolonkadan navbat bilan yuvib chiqaradi.';
+  String get schemPartsHba1cAnalyzerReagentsFn =>
+      'Analizator usuliga mos reagent yoki bufer eritmalari.';
 
   @override
-  String get schemPartsHba1cAnalyzerColumnName => 'Ion almashinuv kolonkasi';
-
-  @override
-  String get schemPartsHba1cAnalyzerColumnFn =>
-      'Gemoglobin fraksiyalarini zaryadiga ko‘ra ajratadi.';
-
-  @override
-  String get schemPartsHba1cAnalyzerDetectorName => 'Fotometrik detektor';
-
-  @override
-  String get schemPartsHba1cAnalyzerDetectorFn =>
-      'Kolonkadan chiqqan gemoglobinning yutilishini o‘lchaydi.';
-
-  @override
-  String get schemPartsHba1cAnalyzerDisplayName => 'Displey (xromatogramma)';
+  String get schemPartsHba1cAnalyzerDisplayName => 'Displey';
 
   @override
   String get schemPartsHba1cAnalyzerDisplayFn =>
-      'Xromatogramma va HbA1c natijasini ko‘rsatadi.';
+      'HbA1c natijasi va ish holatini ko‘rsatadi.';
 
   @override
   String get schemPartsHba1cAnalyzerPrinterName => 'Printer';
@@ -11736,15 +11720,15 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get schemPartsHba1cAnalyzerWasteFn =>
-      'Ishlatilgan bufer va namuna to‘planadi.';
+      'Ishlatilgan eritmalar va namuna to‘planadi.';
 
   @override
   String get schemPartsHba1cAnalyzerPrinciple =>
-      'EDTA li butun qon avtomatik olinadi va gemolizlanadi. Ion almashinuv xromatografiyasida gemoglobin fraksiyalari buferlar gradienti bilan kolonkadan turli vaqtda chiqadi va fotometrik detektorda qayd etiladi; HbA1c ulushi xromatogrammadagi cho‘qqi maydonidan hisoblanadi. Boshqa analizatorlar boronat-affin xromatografiya, immunoanaliz yoki fermentativ usulda ishlaydi.';
+      'Analizator EDTA li butun qon namunasini avtomatik oladi va HbA1c ulushini o‘lchaydi. O‘lchash usuli analizatorga bog‘liq: ion almashinuv xromatografiyasi, boronat-affin xromatografiya, immunoanaliz, fermentativ usul yoki kapillyar elektroforez — chizma usulni ko‘rsatmaydi. HbA1c glyukozaning gemoglobin beta-zanjiri N-uchidagi valinga fermentsiz birikishidan hosil bo‘ladi.';
 
   @override
   String get schemPartsHba1cAnalyzerResult =>
-      'Gemoglobin fraksiyalari xromatogrammasi va HbA1c NGSP (%) hamda IFCC (mmol/mol) birliklarida; ion almashinuv usuli HbS, C, D kabi variantlarni ham ko‘rsatishi mumkin.';
+      'HbA1c natijasi NGSP (%) va IFCC (mmol/mol) birliklarida; u taxminan 2–3 oylik glikemiya nazoratini aks ettiradi.';
 
   @override
   String get schemPartsLabFridgeControllerName =>

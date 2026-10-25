@@ -17929,7 +17929,7 @@ abstract class AppLocalizations {
   /// No description provided for @labSchemRealTimePcr.
   ///
   /// In en, this message translates to:
-  /// **'Real-time PCR instrument class — thermal block with wells, heated lid, optical module with light source, filter wheel and detector, 8-tube strip and amplification-curve display'**
+  /// **'Real-time PCR instrument class — thermal block with wells, heated lid, optical module with light source, filter wheel and detector, tube strip and amplification-curve display'**
   String get labSchemRealTimePcr;
 
   /// No description provided for @labSchemCartridgeMolecular.
@@ -18499,7 +18499,7 @@ abstract class AppLocalizations {
   /// No description provided for @schemPartsHematology3DisplayFn.
   ///
   /// In en, this message translates to:
-  /// **'Shows results and WBC, RBC and PLT histograms.'**
+  /// **'Shows results and WBC, RBC and PLT histograms (shapes in the picture are schematic).'**
   String get schemPartsHematology3DisplayFn;
 
   /// No description provided for @schemPartsHematology3ProbeName.
@@ -19531,7 +19531,7 @@ abstract class AppLocalizations {
   /// No description provided for @schemPartsFlowCytometerSscFn.
   ///
   /// In en, this message translates to:
-  /// **'Light at 90° is split by colour with dichroic mirrors and filters onto separate detectors.'**
+  /// **'Light collected to the side of the beam is split by colour with dichroic mirrors and filters onto separate detectors.'**
   String get schemPartsFlowCytometerSscFn;
 
   /// No description provided for @schemPartsFlowCytometerWasteName.
@@ -19573,7 +19573,7 @@ abstract class AppLocalizations {
   /// No description provided for @schemPartsRealTimePcrTubesName.
   ///
   /// In en, this message translates to:
-  /// **'PCR tubes (8-tube strip)'**
+  /// **'PCR tubes (strip)'**
   String get schemPartsRealTimePcrTubesName;
 
   /// No description provided for @schemPartsRealTimePcrTubesFn.
@@ -19777,7 +19777,7 @@ abstract class AppLocalizations {
   /// No description provided for @schemPartsCoagAnalyzerCuvettesName.
   ///
   /// In en, this message translates to:
-  /// **'Measuring cuvettes (37 °C)'**
+  /// **'Measuring cuvettes'**
   String get schemPartsCoagAnalyzerCuvettesName;
 
   /// No description provided for @schemPartsCoagAnalyzerCuvettesFn.
@@ -19825,7 +19825,7 @@ abstract class AppLocalizations {
   /// No description provided for @schemPartsCoagAnalyzerPrinciple.
   ///
   /// In en, this message translates to:
-  /// **'The probe dispenses citrated plasma into a cuvette and warms it to 37 °C, then reagent is added (for PT, thromboplastin: tissue factor, calcium and phospholipids). As a fibrin clot forms the mixture becomes turbid: optical detection records the change in transmitted light, mechanical detection the stopping of movement. The time to this point is the clotting time.'**
+  /// **'The probe dispenses citrated plasma into a cuvette and warms it, then reagent is added (for PT, thromboplastin: tissue factor, calcium and phospholipids). As a fibrin clot forms the mixture becomes turbid: optical detection records the change in transmitted light, mechanical detection the stopping of movement. The time to this point is the clotting time.'**
   String get schemPartsCoagAnalyzerPrinciple;
 
   /// No description provided for @schemPartsCoagAnalyzerResult.
@@ -19858,18 +19858,6 @@ abstract class AppLocalizations {
   /// **'Provides the light that passes through the well.'**
   String get schemPartsElisaReaderLampFn;
 
-  /// No description provided for @schemPartsElisaReaderWellName.
-  ///
-  /// In en, this message translates to:
-  /// **'Well being read'**
-  String get schemPartsElisaReaderWellName;
-
-  /// No description provided for @schemPartsElisaReaderWellFn.
-  ///
-  /// In en, this message translates to:
-  /// **'The coloured solution absorbs part of the light.'**
-  String get schemPartsElisaReaderWellFn;
-
   /// No description provided for @schemPartsElisaReaderFilterName.
   ///
   /// In en, this message translates to:
@@ -19881,6 +19869,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Passes only the required wavelength.'**
   String get schemPartsElisaReaderFilterFn;
+
+  /// No description provided for @schemPartsElisaReaderWellName.
+  ///
+  /// In en, this message translates to:
+  /// **'Well being read'**
+  String get schemPartsElisaReaderWellName;
+
+  /// No description provided for @schemPartsElisaReaderWellFn.
+  ///
+  /// In en, this message translates to:
+  /// **'The coloured solution absorbs part of the light.'**
+  String get schemPartsElisaReaderWellFn;
 
   /// No description provided for @schemPartsElisaReaderDetectorName.
   ///
@@ -20263,55 +20263,31 @@ abstract class AppLocalizations {
   /// No description provided for @schemPartsHba1cAnalyzerArmFn.
   ///
   /// In en, this message translates to:
-  /// **'Takes blood from the tube, haemolyses it and injects it into the system.'**
+  /// **'Automatically takes blood from the tube and passes it to the measuring system.'**
   String get schemPartsHba1cAnalyzerArmFn;
 
-  /// No description provided for @schemPartsHba1cAnalyzerEluentsName.
+  /// No description provided for @schemPartsHba1cAnalyzerReagentsName.
   ///
   /// In en, this message translates to:
-  /// **'Buffer (eluent) bottles'**
-  String get schemPartsHba1cAnalyzerEluentsName;
+  /// **'Reagent bottles'**
+  String get schemPartsHba1cAnalyzerReagentsName;
 
-  /// No description provided for @schemPartsHba1cAnalyzerEluentsFn.
+  /// No description provided for @schemPartsHba1cAnalyzerReagentsFn.
   ///
   /// In en, this message translates to:
-  /// **'Buffers of different strength wash the fractions off the column in turn.'**
-  String get schemPartsHba1cAnalyzerEluentsFn;
-
-  /// No description provided for @schemPartsHba1cAnalyzerColumnName.
-  ///
-  /// In en, this message translates to:
-  /// **'Ion-exchange column'**
-  String get schemPartsHba1cAnalyzerColumnName;
-
-  /// No description provided for @schemPartsHba1cAnalyzerColumnFn.
-  ///
-  /// In en, this message translates to:
-  /// **'Separates haemoglobin fractions by charge.'**
-  String get schemPartsHba1cAnalyzerColumnFn;
-
-  /// No description provided for @schemPartsHba1cAnalyzerDetectorName.
-  ///
-  /// In en, this message translates to:
-  /// **'Photometric detector'**
-  String get schemPartsHba1cAnalyzerDetectorName;
-
-  /// No description provided for @schemPartsHba1cAnalyzerDetectorFn.
-  ///
-  /// In en, this message translates to:
-  /// **'Measures absorbance of the haemoglobin leaving the column.'**
-  String get schemPartsHba1cAnalyzerDetectorFn;
+  /// **'Reagent or buffer solutions for the analyzer’s method.'**
+  String get schemPartsHba1cAnalyzerReagentsFn;
 
   /// No description provided for @schemPartsHba1cAnalyzerDisplayName.
   ///
   /// In en, this message translates to:
-  /// **'Display (chromatogram)'**
+  /// **'Display'**
   String get schemPartsHba1cAnalyzerDisplayName;
 
   /// No description provided for @schemPartsHba1cAnalyzerDisplayFn.
   ///
   /// In en, this message translates to:
-  /// **'Shows the chromatogram and the HbA1c result.'**
+  /// **'Shows the HbA1c result and run status.'**
   String get schemPartsHba1cAnalyzerDisplayFn;
 
   /// No description provided for @schemPartsHba1cAnalyzerPrinterName.
@@ -20335,19 +20311,19 @@ abstract class AppLocalizations {
   /// No description provided for @schemPartsHba1cAnalyzerWasteFn.
   ///
   /// In en, this message translates to:
-  /// **'Collects used buffer and sample.'**
+  /// **'Collects used solutions and sample.'**
   String get schemPartsHba1cAnalyzerWasteFn;
 
   /// No description provided for @schemPartsHba1cAnalyzerPrinciple.
   ///
   /// In en, this message translates to:
-  /// **'EDTA whole blood is sampled automatically and haemolysed. In ion-exchange chromatography the haemoglobin fractions leave the column at different times under a buffer gradient and are recorded by a photometric detector; the HbA1c fraction is calculated from peak area in the chromatogram. Other analyzers use boronate affinity chromatography, immunoassay or an enzymatic method.'**
+  /// **'The analyzer samples EDTA whole blood automatically and measures the HbA1c fraction. The measuring method depends on the analyzer: ion-exchange chromatography, boronate affinity chromatography, immunoassay, an enzymatic method or capillary electrophoresis; the drawing does not show the method. HbA1c forms by non-enzymatic binding of glucose to the N-terminal valine of the haemoglobin beta chain.'**
   String get schemPartsHba1cAnalyzerPrinciple;
 
   /// No description provided for @schemPartsHba1cAnalyzerResult.
   ///
   /// In en, this message translates to:
-  /// **'A chromatogram of haemoglobin fractions and HbA1c in NGSP (%) and IFCC (mmol/mol) units; the ion-exchange method can also reveal variants such as HbS, C and D.'**
+  /// **'The HbA1c result in NGSP (%) and IFCC (mmol/mol) units; it reflects glycaemic control over roughly 2–3 months.'**
   String get schemPartsHba1cAnalyzerResult;
 
   /// No description provided for @schemPartsLabFridgeControllerName.

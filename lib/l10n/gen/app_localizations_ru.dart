@@ -10454,7 +10454,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get labSchemRealTimePcr =>
-      'Класс амплификаторов для ПЦР в реальном времени — термоблок с лунками, нагреваемая крышка, оптический модуль с источником света, колесом фильтров и детектором, стрип из 8 пробирок и экран кривых амплификации';
+      'Класс амплификаторов для ПЦР в реальном времени — термоблок с лунками, нагреваемая крышка, оптический модуль с источником света, колесом фильтров и детектором, стрип пробирок и экран кривых амплификации';
 
   @override
   String get labSchemCartridgeMolecular =>
@@ -10804,7 +10804,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get schemPartsHematology3DisplayFn =>
-      'Показывает результаты и гистограммы WBC, RBC и PLT.';
+      'Показывает результаты и гистограммы WBC, RBC и PLT (формы на рисунке схематичны).';
 
   @override
   String get schemPartsHematology3ProbeName => 'Пробоотборник';
@@ -11432,7 +11432,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get schemPartsFlowCytometerSscFn =>
-      'Свет под 90° разделяется по цвету дихроичными зеркалами и фильтрами на отдельные детекторы.';
+      'Свет, собранный сбоку от луча, разделяется по цвету дихроичными зеркалами и фильтрами на отдельные детекторы.';
 
   @override
   String get schemPartsFlowCytometerWasteName => 'Ёмкость для отходов';
@@ -11458,7 +11458,7 @@ class AppLocalizationsRu extends AppLocalizations {
       'Точечные диаграммы и гистограммы; доля и число клеточных популяций (например, абсолютное число CD4+ T-клеток с калибровочными частицами).';
 
   @override
-  String get schemPartsRealTimePcrTubesName => 'ПЦР-пробирки (стрип из 8)';
+  String get schemPartsRealTimePcrTubesName => 'ПЦР-пробирки (стрип)';
 
   @override
   String get schemPartsRealTimePcrTubesFn =>
@@ -11584,8 +11584,7 @@ class AppLocalizationsRu extends AppLocalizations {
       'Вносит плазму и реагент в кювету в точных объёмах.';
 
   @override
-  String get schemPartsCoagAnalyzerCuvettesName =>
-      'Измерительные кюветы (37 °C)';
+  String get schemPartsCoagAnalyzerCuvettesName => 'Измерительные кюветы';
 
   @override
   String get schemPartsCoagAnalyzerCuvettesFn =>
@@ -11615,7 +11614,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get schemPartsCoagAnalyzerPrinciple =>
-      'Зонд вносит цитратную плазму в кювету и прогревает её до 37 °C, затем добавляется реагент (для ПВ — тромбопластин: тканевый фактор, кальций и фосфолипиды). При образовании фибринового сгустка смесь мутнеет: оптический метод регистрирует изменение прошедшего света, механический — остановку движения. Время до этого момента — время свёртывания.';
+      'Зонд вносит цитратную плазму в кювету и прогревает её, затем добавляется реагент (для ПВ — тромбопластин: тканевый фактор, кальций и фосфолипиды). При образовании фибринового сгустка смесь мутнеет: оптический метод регистрирует изменение прошедшего света, механический — остановку движения. Время до этого момента — время свёртывания.';
 
   @override
   String get schemPartsCoagAnalyzerResult =>
@@ -11636,18 +11635,18 @@ class AppLocalizationsRu extends AppLocalizations {
       'Даёт свет, проходящий через лунку.';
 
   @override
-  String get schemPartsElisaReaderWellName => 'Измеряемая лунка';
-
-  @override
-  String get schemPartsElisaReaderWellFn =>
-      'Окрашенный раствор поглощает часть света.';
-
-  @override
   String get schemPartsElisaReaderFilterName => 'Оптический фильтр';
 
   @override
   String get schemPartsElisaReaderFilterFn =>
       'Пропускает только нужную длину волны.';
+
+  @override
+  String get schemPartsElisaReaderWellName => 'Измеряемая лунка';
+
+  @override
+  String get schemPartsElisaReaderWellFn =>
+      'Окрашенный раствор поглощает часть света.';
 
   @override
   String get schemPartsElisaReaderDetectorName => 'Фотодетектор';
@@ -11873,35 +11872,21 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get schemPartsHba1cAnalyzerArmFn =>
-      'Забирает кровь из пробирки, гемолизирует и вводит в систему.';
+      'Автоматически забирает кровь из пробирки и подаёт в измерительную систему.';
 
   @override
-  String get schemPartsHba1cAnalyzerEluentsName => 'Флаконы буферов (элюентов)';
+  String get schemPartsHba1cAnalyzerReagentsName => 'Флаконы реагентов';
 
   @override
-  String get schemPartsHba1cAnalyzerEluentsFn =>
-      'Буферы разной силы поочерёдно вымывают фракции из колонки.';
+  String get schemPartsHba1cAnalyzerReagentsFn =>
+      'Реагенты или буферные растворы для метода анализатора.';
 
   @override
-  String get schemPartsHba1cAnalyzerColumnName => 'Ионообменная колонка';
-
-  @override
-  String get schemPartsHba1cAnalyzerColumnFn =>
-      'Разделяет фракции гемоглобина по заряду.';
-
-  @override
-  String get schemPartsHba1cAnalyzerDetectorName => 'Фотометрический детектор';
-
-  @override
-  String get schemPartsHba1cAnalyzerDetectorFn =>
-      'Измеряет поглощение гемоглобина на выходе колонки.';
-
-  @override
-  String get schemPartsHba1cAnalyzerDisplayName => 'Дисплей (хроматограмма)';
+  String get schemPartsHba1cAnalyzerDisplayName => 'Дисплей';
 
   @override
   String get schemPartsHba1cAnalyzerDisplayFn =>
-      'Показывает хроматограмму и результат HbA1c.';
+      'Показывает результат HbA1c и состояние работы.';
 
   @override
   String get schemPartsHba1cAnalyzerPrinterName => 'Принтер';
@@ -11914,15 +11899,15 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get schemPartsHba1cAnalyzerWasteFn =>
-      'Собирает отработанные буфер и пробу.';
+      'Собирает отработанные растворы и пробу.';
 
   @override
   String get schemPartsHba1cAnalyzerPrinciple =>
-      'Цельная кровь с ЭДТА отбирается автоматически и гемолизируется. При ионообменной хроматографии фракции гемоглобина под действием градиента буферов выходят из колонки в разное время и регистрируются фотометрическим детектором; доля HbA1c рассчитывается по площади пика хроматограммы. Другие анализаторы используют боронат-аффинную хроматографию, иммуноанализ или ферментативный метод.';
+      'Анализатор автоматически отбирает цельную кровь с ЭДТА и измеряет долю HbA1c. Метод измерения зависит от анализатора: ионообменная хроматография, боронат-аффинная хроматография, иммуноанализ, ферментативный метод или капиллярный электрофорез — рисунок метод не показывает. HbA1c образуется при неферментативном присоединении глюкозы к N-концевому валину бета-цепи гемоглобина.';
 
   @override
   String get schemPartsHba1cAnalyzerResult =>
-      'Хроматограмма фракций гемоглобина и HbA1c в единицах NGSP (%) и IFCC (ммоль/моль); ионообменный метод может выявлять и варианты HbS, C, D.';
+      'Результат HbA1c в единицах NGSP (%) и IFCC (ммоль/моль); он отражает контроль гликемии примерно за 2–3 месяца.';
 
   @override
   String get schemPartsLabFridgeControllerName =>

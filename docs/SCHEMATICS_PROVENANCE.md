@@ -36,9 +36,19 @@ chizmani oladi — `docs/LAB_CARD_IMAGE_COVERAGE.md`.
   aniqlashtirildi (biokimyo: reaksiya halqasidagi fotometr nuri va detektori;
   gematologiya 5/3: impedans kamerasi va lazerli oqim kyuvetasi kesigi; siydik
   test-chizig‘i: LED va fotosensorli o‘qish kallagi; siydik tizimi: cho‘kma
-  modulida raqamli mikroskopik tasvirlar; HbA1c: ion almashinuv kolonkasi va
-  fotometrik detektor kesigi, xromatogramma; MGIT: nazorat va dorili probirka
+  modulida raqamli mikroskopik tasvirlar; MGIT: nazorat va dorili probirka
   o‘sish egri chiziqlari). Barcha 32 PNG `--quant` bilan qayta yaratildi.
+- 2026-10-25, ilmiy ko‘rik jadvali (docs/SCIENTIFIC_REVIEW_TABLE.md,
+  “Topilgan nomuvofiqliklar”) bo‘yicha tuzatishlar: ELISA o‘quvchisida optik
+  yo‘l darslik tartibida (lampa → filtr → quduqcha → detektor; belgilar
+  2–5 shu tartibda); HbA1c usul jihatdan neytral — kolonka/detektor kesigi va
+  xromatogramma olib tashlandi (kartada bir nechta usul bor); namuna
+  probirkalari: gematologiya — bir xil binafsha (EDTA turi) qopqoqli butun
+  qon, biokimyo/immunoanaliz — neytral qopqoqli och somon rang (zardob/plazma);
+  3 qismli gematologiya displeyida uch xil sxematik gistogramma (WBC uch
+  subpopulyatsiya, RBC, o‘ngga cho‘zilgan PLT). Qayta yaratilgan PNG lar:
+  `elisa_reader`, `hba1c_analyzer`, `hematology5`, `hematology3`,
+  `chemistry`, `immunoassay` (sha256 quyida).
 - Har bir PNG ko‘zdan kechirildi (1200 px, 480 px, ~160 px eskiz, kunduzgi va
   tungi fon); anatomiya xatolari tuzatildi (masalan, MALDI-TOF da yengil ionlar
   detektorga yaqinroq, elektroforezda anod — qizil sim, albumin anod tomonda).
@@ -51,16 +61,16 @@ LabGuide’ning o‘z original ishi; ishlab chiqaruvchi dizayni yo‘q.
 
 | Fayl | Chizma | O‘lcham | Hajm | sha256 |
 |---|---|---|---|---|
-| `chemistry_480.png` | M `chemistry` | 480×320 | 17 KB | `d579cefff7e72200eda70c6395faa1e9d7f2d0ca24cb781300f5eaa658801023` |
-| `chemistry_1200.png` | M `chemistry` | 1200×800 | 48 KB | `30039aad32cb30d6aa0db42c4f5223ca22f008b6a4547ef5781906886e66dae6` |
+| `chemistry_480.png` | M `chemistry` | 480×320 | 16 KB | `dd09cbcccfa11058fe965fc76ccbb586d9b28d351764a4e59c585cafd8b89f35` |
+| `chemistry_1200.png` | M `chemistry` | 1200×800 | 49 KB | `f98f7929159b74b8029e81fe45c4878a3a77b66d1984ea902ac2be91e926cf97` |
 | `photometer_480.png` | M `photometer` | 480×320 | 15 KB | `555aafdc5b409d3764f669f8d83d4405635d178264f2255e38fe2350240c040e` |
 | `photometer_1200.png` | M `photometer` | 1200×800 | 41 KB | `ca2f4ea7b1611ad63fd56969ebdb9745ba4f0258197433bb7055364d1b127aa6` |
-| `hematology5_480.png` | M `hematology5` | 480×320 | 16 KB | `d02a64645b79d808bffeb6006a97bbfbbd5f1ae3c5e44195058c7ac1a52ef433` |
-| `hematology5_1200.png` | M `hematology5` | 1200×800 | 51 KB | `0d13843c366d241ec33dabf9f8fa1a6f3e01562980f6bdd46b7483d49c9c9091` |
-| `hematology3_480.png` | M `hematology3` | 480×320 | 14 KB | `5cc2f3001b51a528cda99bbe1257347ce5f8adff47687045d69f76c4a8c1e027` |
-| `hematology3_1200.png` | M `hematology3` | 1200×800 | 43 KB | `695409d88d50910256bd0db123e69eb3b5ec6efd233330dcabde86980fff899d` |
-| `immunoassay_480.png` | M `immunoassay` | 480×320 | 16 KB | `0333d1e5f22ecb9819476203c0ca07793c34713f6b6e77bfb17f4700d248599e` |
-| `immunoassay_1200.png` | M `immunoassay` | 1200×800 | 48 KB | `9981fb0ae95922ee945af62844b8ff0cc35c67fcac9a053cf14f358331d3b3fd` |
+| `hematology5_480.png` | M `hematology5` | 480×320 | 17 KB | `f2be51b9c7c9103906ecb10b71eee5a44738a1cb99836c850dce653f1beac844` |
+| `hematology5_1200.png` | M `hematology5` | 1200×800 | 51 KB | `b5a1d17ab146456e25c27ddcb2eaa0cdc1a6344a1b0c528bbec1c128e42e4997` |
+| `hematology3_480.png` | M `hematology3` | 480×320 | 14 KB | `b1d7445769cb770dded1615c908abc6a15ed2c5165851d5e43bf561b30364a6f` |
+| `hematology3_1200.png` | M `hematology3` | 1200×800 | 44 KB | `6d416171c03998be1a1d51e26ae9a1e097cf94e7779c991071f3e95d8ddd79fa` |
+| `immunoassay_480.png` | M `immunoassay` | 480×320 | 17 KB | `287188337d504cc0086daf2df7e0434e432f0e346ec8262bcefa8ec63864475d` |
+| `immunoassay_1200.png` | M `immunoassay` | 1200×800 | 48 KB | `7fc7668ef41ef31a37a3f43dc38d1139e7f4eadd1cdbdaae8c58ed631646f2d0` |
 | `urine_strip_480.png` | M `urine_strip` | 480×320 | 12 KB | `0042a87ae7ce4797b6332af1fc5d3fbd6eca6b3afcea4154fe769de2b066e0bb` |
 | `urine_strip_1200.png` | M `urine_strip` | 1200×800 | 36 KB | `544ca4345e47061da63944514c7591fe92142f8e1e5479a4235188c5b8dcadbb` |
 | `urine_system_480.png` | M `urine_system` | 480×320 | 16 KB | `4151cdbf2559fcdd886f3b25dd9347fec5ea33defb031125e66d830d04cdd601` |
@@ -85,16 +95,16 @@ LabGuide’ning o‘z original ishi; ishlab chiqaruvchi dizayni yo‘q.
 | `cartridge_molecular_1200.png` | L9 `cartridge_molecular` | 1200×800 | 31 KB | `76567414d0357c4b7656238c150cc9ccebbd2f9da1e07706cec19b58db27174e` |
 | `coag_analyzer_480.png` | L10 `coag_analyzer` | 480×320 | 14 KB | `5d125d95a6a64195da5ed85bf73a2b5cc93579eb6caca1496fbc38324bc40c3e` |
 | `coag_analyzer_1200.png` | L10 `coag_analyzer` | 1200×800 | 40 KB | `3d03603bfd9d69087115c693590b557f0207b68b1b26c290185d73f7b271907f` |
-| `elisa_reader_480.png` | L11 `elisa_reader` | 480×320 | 14 KB | `5af6c2c651a2a6d93dbcae8e8a59eb92898fba15f8b431977d9ca8b9f78fbbb3` |
-| `elisa_reader_1200.png` | L11 `elisa_reader` | 1200×800 | 40 KB | `a48133b08cffcdc6a90177a671251e377337b75764370d94e5e29d4fd8709dfd` |
+| `elisa_reader_480.png` | L11 `elisa_reader` | 480×320 | 14 KB | `d0d52a7730afca36597b49741d7286a9e2f50741a931c177f391baeefc4bfa60` |
+| `elisa_reader_1200.png` | L11 `elisa_reader` | 1200×800 | 41 KB | `0dd20df3e221074bd3c57dae484a2458944caaeec08b2b5fcfefef7a3822f5bb` |
 | `bsc_class2_480.png` | L12 `bsc_class2` | 480×320 | 12 KB | `5b67611ad5d4ced8e4f0fb4e868452385b5f37d055977ff6aadaa1f67ea7b695` |
 | `bsc_class2_1200.png` | L12 `bsc_class2` | 1200×800 | 32 KB | `3d0731ffd008679d0d07985f616fe1cfb97f10319a14094aacaf69f5b9620110` |
 | `autoclave_480.png` | L13 `autoclave` | 480×320 | 17 KB | `1f8c5567b862f89d87dc7211c8c6e355ff7ad1f30759ced9f3a8735811ca3165` |
 | `autoclave_1200.png` | L13 `autoclave` | 1200×800 | 50 KB | `004305bc40d9a61c3874728f7ce33e351c3846a0aa5b4f4d5b066fdfa143598d` |
 | `blood_gas_ise_480.png` | L14 `blood_gas_ise` | 480×320 | 13 KB | `57ee5ee67067ac6dcd7351676265ff77daccb4b8081292588221826123d468d1` |
 | `blood_gas_ise_1200.png` | L14 `blood_gas_ise` | 1200×800 | 38 KB | `128511d2561ea97efb71140a1458670aaca0edf2e66c669733f7f87ac6fc161e` |
-| `hba1c_analyzer_480.png` | L15 `hba1c_analyzer` | 480×320 | 15 KB | `c0569b497df6ed147538226070dc963f9e74be0f51c9f57782b3e81abb23fe26` |
-| `hba1c_analyzer_1200.png` | L15 `hba1c_analyzer` | 1200×800 | 44 KB | `3806b195d1db2ec9b7bba11e9a17d9db1456a83bec44f2b9e58bff8fd89c3be7` |
+| `hba1c_analyzer_480.png` | L15 `hba1c_analyzer` | 480×320 | 13 KB | `4e0c862416f93a48a2c7a3945575320bc2aa7bfbd040dfeaba296bd5abbd950e` |
+| `hba1c_analyzer_1200.png` | L15 `hba1c_analyzer` | 1200×800 | 39 KB | `89f7bb1412f0a3d27a3cbffe2a632cff3f21997e3580796909e600a7737755bd` |
 | `lab_fridge_480.png` | L16 `lab_fridge` | 480×320 | 11 KB | `6aff4ca4f3efe925be40a56febd64a27d33227a041ff6d5ee9cb3bda45ac62c6` |
 | `lab_fridge_1200.png` | L16 `lab_fridge` | 1200×800 | 35 KB | `58e88b9298336309f15d6d94b81aa2cfd385c462f81c8db41211fda3836e2413` |
 | `fluorescence_microscope_480.png` | L17 `fluorescence_microscope` | 480×320 | 13 KB | `a6f60b48979dd1a33b55b7378912d29c197aba84cab73c1da7ce25b2790320b7` |

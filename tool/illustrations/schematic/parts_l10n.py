@@ -103,11 +103,20 @@ def write_arb(lang, entries):
     raw = path.read_text(encoding="utf-8")
     lines = raw.split("\n")
     mine = re.compile(r'^\s*"@?' + PREFIX + r'[A-Za-z0-9]*":')
+    first = next((i for i, ln in enumerate(lines) if mine.match(ln)), None)
     kept = [ln for ln in lines if not mine.match(ln)]
-    anchor = [i for i, ln in enumerate(kept) if ln.startswith('  "labSchemAnalyticalBalance": ')]
-    assert len(anchor) == 1 and kept[anchor[0]].endswith(","), (lang, "anchor")
+    if first is not None:
+        # Blok o'z joyida yangilanadi (boshqa kalitlar surilmaydi).
+        at = first
+        assert all(mine.match(ln) for ln in lines[first:first + (len(lines) - len(kept))]), \
+            (lang, "schemParts block must be contiguous")
+    else:
+        anchor = [i for i, ln in enumerate(kept) if ln.startswith('  "labSchemAnalyticalBalance": ')]
+        assert len(anchor) == 1, (lang, "anchor")
+        at = anchor[0] + 1
+    assert kept[at - 1].rstrip().endswith(","), (lang, "previous line needs a comma")
     block = [f"  {json.dumps(k)}: {json.dumps(v, ensure_ascii=False)}," for k, v in entries]
-    out = "\n".join(kept[: anchor[0] + 1] + block + kept[anchor[0] + 1:])
+    out = "\n".join(kept[:at] + block + kept[at:])
     data = json.loads(out)
     before = json.loads(raw)
     for k, v in before.items():
