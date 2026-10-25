@@ -673,6 +673,7 @@ class _InstrumentCard extends StatelessWidget {
           officialPage: model.officialPage == null
               ? null
               : catalog.sources[model.officialPage!],
+          parts: instruments.schematicParts?.of(model.schematic.key),
         ),
         // Fotometrik (yutilish o'lchaydigan) apparatlar — fotometriya
         // tamoyili sxemasi (umumiy; modelga xos emas).

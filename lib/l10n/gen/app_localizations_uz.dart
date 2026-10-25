@@ -10426,4 +10426,1861 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get profileSignOutAllDone => 'Barcha qurilmalardan chiqildi.';
+
+  @override
+  String get schemPartsPanelTitle => 'Qismlari va ishlash prinsipi';
+
+  @override
+  String get schemPartsPanelHint =>
+      'Rasmdagi raqamlar bo‘yicha qismlar, prinsip va natija';
+
+  @override
+  String get schemPartsPartsTitle => 'Asosiy qismlar';
+
+  @override
+  String get schemPartsPrincipleTitle => 'Ishlash prinsipi';
+
+  @override
+  String get schemPartsResultTitle => 'Natija';
+
+  @override
+  String get schemPartsClassNote =>
+      'Qismlar apparat sinfi uchun umumiy, tamoyil darajasida ko‘rsatilgan; aniq modelda joylashuvi va tuzilishi boshqacha bo‘lishi mumkin.';
+
+  @override
+  String get schemPartsChemistrySamplesName => 'Namuna joyi';
+
+  @override
+  String get schemPartsChemistrySamplesFn =>
+      'Probirkalar rakada turadi; zond namunani shu yerdan oladi.';
+
+  @override
+  String get schemPartsChemistryReagentsName =>
+      'Sovutiladigan reagent karuseli';
+
+  @override
+  String get schemPartsChemistryReagentsFn =>
+      'Reagent idishlari sovuqda saqlanadi; kerakli reagent zond tagiga buriladi.';
+
+  @override
+  String get schemPartsChemistryProbesName => 'Namuna va reagent zondlari';
+
+  @override
+  String get schemPartsChemistryProbesFn =>
+      'Aniq hajmda namuna va reagentni olib, reaksiya kyuvetasiga quyadi.';
+
+  @override
+  String get schemPartsChemistryReactionName =>
+      'Reaksiya karuseli (kyuvetalar)';
+
+  @override
+  String get schemPartsChemistryReactionFn =>
+      'Kyuvetalardagi aralashma 37 °C da ushlanadi; karusel ularni fotometr oldidan o‘tkazadi.';
+
+  @override
+  String get schemPartsChemistryPhotometerName => 'Fotometr';
+
+  @override
+  String get schemPartsChemistryPhotometerFn =>
+      'Lampa nuri kyuvetadan o‘tadi; panjarali yoki filtrli optika tanlangan to‘lqin uzunligida yutilishni o‘lchaydi.';
+
+  @override
+  String get schemPartsChemistryWaterName => 'Tozalangan suv idishi';
+
+  @override
+  String get schemPartsChemistryWaterFn =>
+      'Zond va kyuvetalarni yuvish hamda suyultirish uchun suv beradi.';
+
+  @override
+  String get schemPartsChemistryWasteName => 'Suyuq chiqindi idishi';
+
+  @override
+  String get schemPartsChemistryWasteFn =>
+      'Yuvish suvi va ishlatilgan reaksiya aralashmalari shu yerga to‘planadi.';
+
+  @override
+  String get schemPartsChemistryComputerName => 'Kompyuter va dastur';
+
+  @override
+  String get schemPartsChemistryComputerFn =>
+      'Testlarni buyuradi, kalibrlashni yuritadi, natijani hisoblab hisobot beradi.';
+
+  @override
+  String get schemPartsChemistryPrinciple =>
+      'Zondlar namuna va reagentni reaksiya kyuvetasiga quyadi, aralashma 37 °C da inkubatsiya qilinadi. Fotometr kyuvetadan o‘tgan nurning tanlangan to‘lqin uzunligidagi yutilishini o‘lchaydi. Konsentratsiya kalibrlash bo‘yicha hisoblanadi; ko‘p modellarda Na, K, Cl ionselektiv elektrod (ISE) bilan o‘lchanadi.';
+
+  @override
+  String get schemPartsChemistryResult =>
+      'Har bir test bo‘yicha analit konsentratsiyasi (masalan, glyukoza, ferment faolligi, elektrolitlar): yutilish o‘zgarishidan kalibrlash bo‘yicha hisoblangan qiymat va hisobot.';
+
+  @override
+  String get schemPartsPhotometerDisplayName => 'Displey va klaviatura';
+
+  @override
+  String get schemPartsPhotometerDisplayFn =>
+      'Usul, to‘lqin uzunligi va standart tanlanadi; natija va egri chiziq shu yerda ko‘rinadi.';
+
+  @override
+  String get schemPartsPhotometerNeedleName => 'So‘rish ignasi';
+
+  @override
+  String get schemPartsPhotometerNeedleFn =>
+      'Tayyor aralashmani probirkadan o‘lchash kyuvetasiga so‘rib oladi.';
+
+  @override
+  String get schemPartsPhotometerCellName =>
+      'O‘lchash kamerasi (oqim kyuvetasi)';
+
+  @override
+  String get schemPartsPhotometerCellFn =>
+      'Lampa → interferension filtr → kyuveta → fotodetektor: yutilish shu yerda o‘lchanadi.';
+
+  @override
+  String get schemPartsPhotometerPrinterName => 'Termoprinter';
+
+  @override
+  String get schemPartsPhotometerPrinterFn =>
+      'Natijalarni qog‘ozga chop etadi.';
+
+  @override
+  String get schemPartsPhotometerWasteName => 'Chiqindi idishi';
+
+  @override
+  String get schemPartsPhotometerWasteFn =>
+      'O‘lchangan aralashma va yuvish suyuqligi shu yerga oqadi.';
+
+  @override
+  String get schemPartsPhotometerReagentsName => 'Reagent idishlari';
+
+  @override
+  String get schemPartsPhotometerReagentsFn =>
+      'Reagentlar apparatdan tashqarida; operator ularni namunaga qo‘lda qo‘shadi.';
+
+  @override
+  String get schemPartsPhotometerPrinciple =>
+      'Operator namuna va reagentni qo‘lda pipetkalaydi va inkubatsiya qiladi. Apparat aralashmani igna bilan oqim kyuvetasiga so‘radi (yoki kvadrat kyuveta qo‘yiladi); lampa nuri tanlangan interferension filtrdan o‘tadi va fotodetektor yutilishni o‘lchaydi. Konsentratsiya standart yoki omil bo‘yicha hisoblanadi.';
+
+  @override
+  String get schemPartsPhotometerResult =>
+      'Yutilish qiymati va undan hisoblangan konsentratsiya; natija displeyda ko‘rinadi va chop etiladi.';
+
+  @override
+  String get schemPartsHematology5AutoloaderName => 'Avtoyuklagich va raka';
+
+  @override
+  String get schemPartsHematology5AutoloaderFn =>
+      'Yopiq probirkalarni aralashtirib, navbat bilan namuna olish joyiga uzatadi.';
+
+  @override
+  String get schemPartsHematology5ProbeName => 'Namuna zondi (ochiq rejim)';
+
+  @override
+  String get schemPartsHematology5ProbeFn =>
+      'Qo‘lda tutilgan ochiq probirkadan belgilangan hajmdagi qonni so‘radi.';
+
+  @override
+  String get schemPartsHematology5ImpedanceName => 'Impedans kamerasi';
+
+  @override
+  String get schemPartsHematology5ImpedanceFn =>
+      'Tor teshikdan o‘tgan har bir eritrotsit va trombotsit elektr impulsini beradi: sanash va hajm.';
+
+  @override
+  String get schemPartsHematology5LaserName => 'Lazerli oqim kyuvetasi';
+
+  @override
+  String get schemPartsHematology5LaserFn =>
+      'Leykotsitlar birma-bir lazer nuridan o‘tadi va sochilish (hamda fluoressensiya) bo‘yicha turlarga ajratiladi.';
+
+  @override
+  String get schemPartsHematology5DisplayName => 'Displey (skatterogramma)';
+
+  @override
+  String get schemPartsHematology5DisplayFn =>
+      'Natijalar, skatterogramma va gistogrammalarni ko‘rsatadi.';
+
+  @override
+  String get schemPartsHematology5ReagentsName => 'Reagentlar';
+
+  @override
+  String get schemPartsHematology5ReagentsFn =>
+      'Suyultiruvchi, lizislovchi va bo‘yovchi eritmalar shlanglar orqali beriladi.';
+
+  @override
+  String get schemPartsHematology5WasteName => 'Chiqindi idishi';
+
+  @override
+  String get schemPartsHematology5WasteFn =>
+      'Ishlatilgan suyultirmalar va yuvish eritmalari to‘planadi.';
+
+  @override
+  String get schemPartsHematology5Principle =>
+      'Qon so‘riladi, suyultiriladi va bir nechta kanalga bo‘linadi. Eritrotsit va trombotsitlar impedans usulida sanaladi: hujayra tor teshikdan o‘tganda qarshilik impulsi hosil bo‘ladi, uning kattaligi hujayra hajmini bildiradi. Leykotsitlar differensiali oqim sitometriyasida lazer nurining sochilishi (ba’zi modellarda bo‘yoq fluoressensiyasi bilan) bo‘yicha aniqlanadi; gemoglobin eritrotsitlar lizisidan keyin fotometrik o‘lchanadi.';
+
+  @override
+  String get schemPartsHematology5Result =>
+      'Umumiy qon tahlili (CBC) parametrlari: hujayralar soni va eritrotsit indekslari, leykotsitlarning 5 qismli differensiali, skatterogramma va gistogrammalar.';
+
+  @override
+  String get schemPartsHematology3PrinterName => 'Termoprinter';
+
+  @override
+  String get schemPartsHematology3PrinterFn =>
+      'Natijalar va gistogrammalarni chop etadi.';
+
+  @override
+  String get schemPartsHematology3DisplayName => 'Displey (3 ta gistogramma)';
+
+  @override
+  String get schemPartsHematology3DisplayFn =>
+      'Natijalar hamda WBC, RBC va PLT gistogrammalarini ko‘rsatadi.';
+
+  @override
+  String get schemPartsHematology3ProbeName => 'Namuna zondi';
+
+  @override
+  String get schemPartsHematology3ProbeFn =>
+      'Ochiq probirkadan oz hajmdagi qonni so‘radi.';
+
+  @override
+  String get schemPartsHematology3ImpedanceName => 'Impedans kamerasi';
+
+  @override
+  String get schemPartsHematology3ImpedanceFn =>
+      'Hujayra teshikdan o‘tganda impuls hosil bo‘ladi: impulslar soni — hujayralar soni, kattaligi — hajmi.';
+
+  @override
+  String get schemPartsHematology3ReagentsName =>
+      'Suyultiruvchi va lizislovchi eritma';
+
+  @override
+  String get schemPartsHematology3ReagentsFn =>
+      'Qonni suyultirish va eritrotsitlarni eritish (lizis) uchun.';
+
+  @override
+  String get schemPartsHematology3WasteName => 'Chiqindi idishi';
+
+  @override
+  String get schemPartsHematology3WasteFn =>
+      'Ishlatilgan suyuqliklar shu yerga to‘planadi.';
+
+  @override
+  String get schemPartsHematology3Principle =>
+      'Qon suyultiriladi; eritrotsit va trombotsitlar impedans (Kulter) usulida sanaladi va hajm bo‘yicha gistogramma tuziladi. Leykotsitlar lizisdan keyin hajmi bo‘yicha uch guruhga ajratiladi; gemoglobin fotometrik o‘lchanadi.';
+
+  @override
+  String get schemPartsHematology3Result =>
+      'CBC va leykotsitlarning 3 qismli differensiali (limfotsitlar, o‘rta hujayralar, granulotsitlar), uchta gistogramma (WBC, RBC, PLT).';
+
+  @override
+  String get schemPartsImmunoassaySamplesName => 'Namuna rakasi';
+
+  @override
+  String get schemPartsImmunoassaySamplesFn =>
+      'Probirkalar shu yerga qo‘yiladi; zond namunani oladi.';
+
+  @override
+  String get schemPartsImmunoassayReagentsName =>
+      'Sovutilgan reagent paketlari';
+
+  @override
+  String get schemPartsImmunoassayReagentsFn =>
+      'Mikrozarrachalar, belgili konjugat va boshqa reagentlar sovuqda saqlanadi.';
+
+  @override
+  String get schemPartsImmunoassayProbesName => 'Pipetkalovchi zondlar';
+
+  @override
+  String get schemPartsImmunoassayProbesFn =>
+      'Namuna va reagentlarni reaksiya kyuvetasiga quyadi.';
+
+  @override
+  String get schemPartsImmunoassayCuvettesName => 'Kyuveta bunkeri';
+
+  @override
+  String get schemPartsImmunoassayCuvettesFn =>
+      'Bir martalik reaksiya kyuvetalarini inkubatorga uzatadi.';
+
+  @override
+  String get schemPartsImmunoassayIncubatorName => 'Inkubator halqasi';
+
+  @override
+  String get schemPartsImmunoassayIncubatorFn =>
+      'Kyuvetalar doimiy haroratda ushlanadi, antigen–antitana reaksiyasi boradi.';
+
+  @override
+  String get schemPartsImmunoassayWashName =>
+      'Yuvish stansiyasi (magnit ajratish)';
+
+  @override
+  String get schemPartsImmunoassayWashFn =>
+      'Magnit mikrozarrachalarni ushlab turadi, bog‘lanmagan moddalar yuvib tashlanadi.';
+
+  @override
+  String get schemPartsImmunoassayLuminometerName => 'Luminometr (detektor)';
+
+  @override
+  String get schemPartsImmunoassayLuminometerFn =>
+      'Belgi chiqargan yorug‘likni fotonlarni sanash orqali o‘lchaydi.';
+
+  @override
+  String get schemPartsImmunoassaySolidwasteName => 'Qattiq chiqindi tortmasi';
+
+  @override
+  String get schemPartsImmunoassaySolidwasteFn =>
+      'Ishlatilgan kyuvetalar va uchliklar yig‘iladi.';
+
+  @override
+  String get schemPartsImmunoassayLiquidsName => 'Tizim eritmalari';
+
+  @override
+  String get schemPartsImmunoassayLiquidsFn =>
+      'Yuvish va tizim eritmalari idishlari.';
+
+  @override
+  String get schemPartsImmunoassayPrinciple =>
+      'Namuna reagent bilan kyuvetada inkubatsiya qilinadi: analit magnit mikrozarrachalardagi antitana yoki antigen bilan bog‘lanadi. Magnit zarrachalarni ushlab turganda bog‘lanmagan moddalar yuviladi; so‘ng belgi (ferment, akridiniy efiri yoki ECL belgisi) yorug‘lik chiqaradi. Luminometr fotonlarni sanaydi, signal kalibrlash egri chizig‘i bo‘yicha konsentratsiyaga aylantiriladi.';
+
+  @override
+  String get schemPartsImmunoassayResult =>
+      'Gormonlar, o‘sma va yurak markerlari kabi analitlar konsentratsiyasi yoki sifatiy natija (musbat/manfiy), yorug‘lik signalidan kalibrlash bo‘yicha hisoblangan.';
+
+  @override
+  String get schemPartsUrineStripSampleName => 'Siydik namunasi va test-chiziq';
+
+  @override
+  String get schemPartsUrineStripSampleFn =>
+      'Chiziq siydikka qisqa botiriladi; maydonchalar reaksiyaga kirishadi.';
+
+  @override
+  String get schemPartsUrineStripTrayName => 'Chiziq lotogi (uzatgich)';
+
+  @override
+  String get schemPartsUrineStripTrayFn =>
+      'Chiziq shu yerga qo‘yiladi va o‘qish kallagi ostiga suriladi.';
+
+  @override
+  String get schemPartsUrineStripHeadName =>
+      'O‘qish kallagi (LED va fotosensor)';
+
+  @override
+  String get schemPartsUrineStripHeadFn =>
+      'Maydonchalarni bir necha to‘lqin uzunlikdagi nur bilan yoritadi va qaytgan nurni o‘lchaydi.';
+
+  @override
+  String get schemPartsUrineStripDisplayName => 'Displey';
+
+  @override
+  String get schemPartsUrineStripDisplayFn =>
+      'Natijalar va apparat holatini ko‘rsatadi.';
+
+  @override
+  String get schemPartsUrineStripPrinterName => 'Printer';
+
+  @override
+  String get schemPartsUrineStripPrinterFn => 'Natijalarni chop etadi.';
+
+  @override
+  String get schemPartsUrineStripBinName => 'Ishlatilgan chiziqlar qutisi';
+
+  @override
+  String get schemPartsUrineStripBinFn =>
+      'O‘qilgan chiziqlar shu yerga tushadi.';
+
+  @override
+  String get schemPartsUrineStripPrinciple =>
+      'Test-chiziq siydikka botiriladi; har maydonchadagi reagent o‘z moddasi bilan rang beradi. Apparat chiziqni o‘qish kallagi ostidan o‘tkazadi: turli to‘lqin uzunlikdagi LEDlar maydonchalarni yoritadi, fotosensor qaytgan nurni o‘lchaydi (reflektometriya). Rang intensivligi yarim miqdoriy darajaga aylantiriladi.';
+
+  @override
+  String get schemPartsUrineStripResult =>
+      'Har maydoncha bo‘yicha sifatiy yoki yarim miqdoriy natija (masalan, glyukoza, oqsil, qon, leykotsitlar, nitrit, pH, nisbiy zichlik) va bosma hisobot.';
+
+  @override
+  String get schemPartsUrineSystemTransportName => 'Namuna transport yo‘li';
+
+  @override
+  String get schemPartsUrineSystemTransportFn =>
+      'Probirkali rakalarni modullar oldidan navbat bilan o‘tkazadi.';
+
+  @override
+  String get schemPartsUrineSystemStripName => 'Kimyoviy modul (test-chiziq)';
+
+  @override
+  String get schemPartsUrineSystemStripFn =>
+      'Chiziq maydonchalarini reflektometriya va tasvir orqali o‘qiydi.';
+
+  @override
+  String get schemPartsUrineSystemNeedlesName => 'Namuna ignalari';
+
+  @override
+  String get schemPartsUrineSystemNeedlesFn =>
+      'Har modul probirkadan o‘z ignasi bilan namuna oladi.';
+
+  @override
+  String get schemPartsUrineSystemCameraName =>
+      'Cho‘kma moduli (mikroskop va kamera)';
+
+  @override
+  String get schemPartsUrineSystemCameraFn =>
+      'Siydik zarrachalarining raqamli mikroskopik tasvirlarini oladi.';
+
+  @override
+  String get schemPartsUrineSystemDisplayName =>
+      'Displey (zarracha tasvirlari)';
+
+  @override
+  String get schemPartsUrineSystemDisplayFn =>
+      'Tasniflangan zarracha tasvirlari va natijalar ko‘rib chiqiladi.';
+
+  @override
+  String get schemPartsUrineSystemReagentsName => 'Reagent va yuvish eritmasi';
+
+  @override
+  String get schemPartsUrineSystemReagentsFn =>
+      'Modullarni yuvish va o‘lchash uchun eritmalar.';
+
+  @override
+  String get schemPartsUrineSystemWasteName => 'Chiqindi idishi';
+
+  @override
+  String get schemPartsUrineSystemWasteFn =>
+      'Ishlatilgan suyuqliklar to‘planadi.';
+
+  @override
+  String get schemPartsUrineSystemPrinciple =>
+      'Namuna rakalari transport yo‘li bo‘ylab ikki modulga boradi. Kimyoviy modul test-chiziq maydonchalarini reflektometriya bilan o‘qiydi. Cho‘kma moduli siydikni mikroskop orqali raqamli suratga oladi; dastur zarrachalarni (eritrotsit, leykotsit, silindr, kristall va boshqalar) tasniflaydi, tasvirlarni ekranda ko‘rib chiqish mumkin.';
+
+  @override
+  String get schemPartsUrineSystemResult =>
+      'Chiziq kimyosi natijalari va cho‘kma elementlari (eritrotsit, leykotsit, silindr, kristall, bakteriya va boshq.) soni yoki toifasi, ko‘rib chiqish uchun tasvirlar bilan.';
+
+  @override
+  String get schemPartsMassSpecGcGasName => 'Tashuvchi gaz ballon';
+
+  @override
+  String get schemPartsMassSpecGcGasFn =>
+      'Inert gaz (odatda geliy) namunani kolonka bo‘ylab olib yuradi.';
+
+  @override
+  String get schemPartsMassSpecGcAutosamplerName => 'Avtonamunaoluvchi';
+
+  @override
+  String get schemPartsMassSpecGcAutosamplerFn =>
+      'Flakondan namunani shpris bilan olib, injektorga kiritadi.';
+
+  @override
+  String get schemPartsMassSpecGcInjectorName => 'Injektor (bug‘lantirgich)';
+
+  @override
+  String get schemPartsMassSpecGcInjectorFn =>
+      'Qizdirilgan kirish joyi: suyuq namuna bug‘lanib, gaz oqimiga qo‘shiladi.';
+
+  @override
+  String get schemPartsMassSpecGcColumnName => 'Termostat va kapillyar kolonka';
+
+  @override
+  String get schemPartsMassSpecGcColumnFn =>
+      'Harorat dasturi bo‘yicha qizdiriladi; moddalar kolonkada ajraladi.';
+
+  @override
+  String get schemPartsMassSpecGcTransferName => 'Issiq uzatish liniyasi';
+
+  @override
+  String get schemPartsMassSpecGcTransferFn =>
+      'Ajralgan moddalarni kondensatsiyasiz mass-spektrometrga o‘tkazadi.';
+
+  @override
+  String get schemPartsMassSpecGcSourceName => 'Ion manbai';
+
+  @override
+  String get schemPartsMassSpecGcSourceFn =>
+      'Molekulalarni ionlaydi (GC-MS da ko‘pincha elektron zarbasi bilan), ionlar bo‘laklarga ajraladi.';
+
+  @override
+  String get schemPartsMassSpecGcAnalyserName => 'Mass-analizator (kvadrupol)';
+
+  @override
+  String get schemPartsMassSpecGcAnalyserFn =>
+      'Elektr maydoni ionlarni m/z bo‘yicha ajratadi va navbat bilan o‘tkazadi.';
+
+  @override
+  String get schemPartsMassSpecGcDetectorName =>
+      'Detektor (elektron ko‘paytirgich)';
+
+  @override
+  String get schemPartsMassSpecGcDetectorFn =>
+      'Kelgan ionlarni kuchaytirilgan elektr signaliga aylantiradi.';
+
+  @override
+  String get schemPartsMassSpecGcVacuumName => 'Vakuum nasoslari';
+
+  @override
+  String get schemPartsMassSpecGcVacuumFn =>
+      'Turbomolekulyar va forvakuum nasoslari yuqori vakuum hosil qiladi — ionlar havo molekulalariga urilmaydi.';
+
+  @override
+  String get schemPartsMassSpecGcDataName => 'Ma’lumotlar tizimi';
+
+  @override
+  String get schemPartsMassSpecGcDataFn =>
+      'Xromatogramma va spektrlarni yozadi, kutubxona bilan solishtiradi.';
+
+  @override
+  String get schemPartsMassSpecGcPrinciple =>
+      'Namuna injektorda bug‘lanadi, tashuvchi gaz (odatda geliy) uni termostatdagi kapillyar kolonkaga olib kiradi. Moddalar uchuvchanligi va kolonka bilan o‘zaro ta’siriga ko‘ra turli vaqtda chiqadi (ushlanish vaqti). Mass-spektrometrda ular ionlanadi, ionlar massa/zaryad nisbati (m/z) bo‘yicha ajratiladi va detektor qayd etadi.';
+
+  @override
+  String get schemPartsMassSpecGcResult =>
+      'Xromatogramma (signal — ushlanish vaqti bo‘yicha) va har cho‘qqining mass-spektri (m/z — nisbiy intensivlik); moddalar spektrlar kutubxonasi yoki standartlar bilan solishtirib aniqlanadi.';
+
+  @override
+  String get schemPartsMassSpecLcSolventsName =>
+      'Harakatlanuvchi faza idishlari';
+
+  @override
+  String get schemPartsMassSpecLcSolventsFn =>
+      'Erituvchilar (masalan, suv va organik erituvchi) nasosga beriladi.';
+
+  @override
+  String get schemPartsMassSpecLcPumpName => 'Yuqori bosimli nasos';
+
+  @override
+  String get schemPartsMassSpecLcPumpFn =>
+      'Erituvchilarni barqaror oqim bilan kolonka orqali haydaydi.';
+
+  @override
+  String get schemPartsMassSpecLcAutosamplerName => 'Avtonamunaoluvchi';
+
+  @override
+  String get schemPartsMassSpecLcAutosamplerFn =>
+      'Flakondan namunani olib, oqimga kiritadi.';
+
+  @override
+  String get schemPartsMassSpecLcColumnName => 'Kolonka (termostatda)';
+
+  @override
+  String get schemPartsMassSpecLcColumnFn =>
+      'Moddalar kolonka fazasi bilan o‘zaro ta’siriga ko‘ra ajraladi.';
+
+  @override
+  String get schemPartsMassSpecLcEsiName => 'Elektropurkash ion manbai (ESI)';
+
+  @override
+  String get schemPartsMassSpecLcEsiFn =>
+      'Kolonkadan chiqqan suyuqlikni zaryadlangan tomchilarga purkab, ionlar hosil qiladi.';
+
+  @override
+  String get schemPartsMassSpecLcAnalyserName => 'Mass-analizator (kvadrupol)';
+
+  @override
+  String get schemPartsMassSpecLcAnalyserFn =>
+      'Elektr maydoni ionlarni m/z bo‘yicha ajratadi va navbat bilan o‘tkazadi.';
+
+  @override
+  String get schemPartsMassSpecLcDetectorName =>
+      'Detektor (elektron ko‘paytirgich)';
+
+  @override
+  String get schemPartsMassSpecLcDetectorFn =>
+      'Kelgan ionlarni kuchaytirilgan elektr signaliga aylantiradi.';
+
+  @override
+  String get schemPartsMassSpecLcVacuumName => 'Vakuum nasoslari';
+
+  @override
+  String get schemPartsMassSpecLcVacuumFn =>
+      'Mass-analizator ichida yuqori vakuumni saqlaydi.';
+
+  @override
+  String get schemPartsMassSpecLcDataName => 'Ma’lumotlar tizimi';
+
+  @override
+  String get schemPartsMassSpecLcDataFn =>
+      'Xromatogramma va spektrlarni yozadi, miqdorni hisoblaydi.';
+
+  @override
+  String get schemPartsMassSpecLcPrinciple =>
+      'Nasos suyuq harakatlanuvchi fazani yuqori bosimda kolonka orqali haydaydi, avtonamunaoluvchi namunani oqimga kiritadi. Moddalar kolonkada ajralib, turli vaqtda chiqadi. Elektropurkash (ESI) manbaida suyuqlik zaryadlangan tomchilarga purkaladi va moddalar gaz fazasidagi ionlarga aylanadi; ionlar m/z bo‘yicha ajratiladi va detektor qayd etadi.';
+
+  @override
+  String get schemPartsMassSpecLcResult =>
+      'Xromatogramma va mass-spektrlar; maqsadli moddalar (dori vositalari, metabolitlar, biomarkerlar) aniqlanadi va kalibratorlar bo‘yicha konsentratsiyasi hisoblanadi.';
+
+  @override
+  String get schemPartsMaldiTofTargetName => 'Nishon plastina';
+
+  @override
+  String get schemPartsMaldiTofTargetFn =>
+      'Namuna va matritsa dog‘lari shu yerda; plastina vakuum kamerasiga kiritiladi.';
+
+  @override
+  String get schemPartsMaldiTofLaserName => 'Lazer';
+
+  @override
+  String get schemPartsMaldiTofLaserFn =>
+      'Qisqa impuls matritsa bilan birga oqsillarni bug‘latadi va ionlaydi.';
+
+  @override
+  String get schemPartsMaldiTofGridsName => 'Tezlatuvchi elektrodlar';
+
+  @override
+  String get schemPartsMaldiTofGridsFn =>
+      'Yuqori kuchlanish ionlarni tezlatib, uchish trubasiga yo‘naltiradi.';
+
+  @override
+  String get schemPartsMaldiTofTubeName => 'Uchish trubasi (TOF)';
+
+  @override
+  String get schemPartsMaldiTofTubeFn =>
+      'Vakuumdagi truba: ionlar m/z ga ko‘ra turli tezlikda uchadi.';
+
+  @override
+  String get schemPartsMaldiTofDetectorName => 'Detektor';
+
+  @override
+  String get schemPartsMaldiTofDetectorFn =>
+      'Har ionning yetib kelish vaqtini qayd etadi.';
+
+  @override
+  String get schemPartsMaldiTofVacuumName => 'Vakuum nasosi';
+
+  @override
+  String get schemPartsMaldiTofVacuumFn =>
+      'Ion manbai va trubada vakuum hosil qiladi.';
+
+  @override
+  String get schemPartsMaldiTofDatabaseName => 'Kompyuter va spektrlar bazasi';
+
+  @override
+  String get schemPartsMaldiTofDatabaseFn =>
+      'Spektrni etalon spektrlar bilan solishtirib, ehtimollik bahosini beradi.';
+
+  @override
+  String get schemPartsMaldiTofPrinciple =>
+      'Koloniya plastinaga surtiladi va matritsa bilan qoplanib kristallanadi. Lazer impulsi oqsillarni (asosan ribosomal) bug‘latadi va ionlaydi. Elektr maydoni ionlarni tezlatadi; uchish trubasida yengil ionlar og‘irlaridan oldin detektorga yetadi — uchish vaqti m/z ni bildiradi. Spektr ma’lumotlar bazasidagi etalon spektrlar bilan solishtiriladi.';
+
+  @override
+  String get schemPartsMaldiTofResult =>
+      'Mass-spektr (oqsil «barmoq izi») va mikroorganizm nomi ehtimollik bahosi (log-ball) bilan; natija boshqa klinik va laboratoriya ma’lumotlari bilan birga talqin qilinadi.';
+
+  @override
+  String get schemPartsMicrobialIdAstCardName => 'Test kartasi (64 quduqcha)';
+
+  @override
+  String get schemPartsMicrobialIdAstCardFn =>
+      'Quduqchalarda antibiotiklar suyultirmalari (AST) yoki biokimyoviy substratlar (ID) bor.';
+
+  @override
+  String get schemPartsMicrobialIdAstSuspensionName => 'Suspenziya probirkasi';
+
+  @override
+  String get schemPartsMicrobialIdAstSuspensionFn =>
+      'Standart zichlikdagi bakterial suspenziya; karta somoni shu probirkaga botiriladi.';
+
+  @override
+  String get schemPartsMicrobialIdAstFillingName => 'To‘ldirish kamerasi';
+
+  @override
+  String get schemPartsMicrobialIdAstFillingFn =>
+      'Vakuum suspenziyani somon orqali karta quduqchalariga tortadi.';
+
+  @override
+  String get schemPartsMicrobialIdAstIncubatorName => 'Inkubator';
+
+  @override
+  String get schemPartsMicrobialIdAstIncubatorFn =>
+      'Kartalar o‘qishlar orasida doimiy haroratda saqlanadi.';
+
+  @override
+  String get schemPartsMicrobialIdAstScannerName => 'Optik skaner';
+
+  @override
+  String get schemPartsMicrobialIdAstScannerFn =>
+      'Har 15 daqiqada har quduqchadan o‘tgan nurni o‘lchaydi.';
+
+  @override
+  String get schemPartsMicrobialIdAstSoftwareName => 'Kompyuter va dastur';
+
+  @override
+  String get schemPartsMicrobialIdAstSoftwareFn =>
+      'O‘sish egri chiziqlaridan MIK va talqin toifasini hisoblab, hisobot beradi.';
+
+  @override
+  String get schemPartsMicrobialIdAstPrinciple =>
+      'Toza kulturadan standart zichlikdagi suspenziya tayyorlanadi va karta somoni orqali vakuumda kartaga to‘ldiriladi. AST kartasi quduqchalarida antibiotiklar turli suyultirmalarda bo‘ladi (MIK usulining kichiklashtirilgan avtomatik shakli). Optik skaner har 15 daqiqada quduqchalardan o‘tgan nurni o‘lchaydi: o‘sish nurni susaytiradi; dastur o‘sish dinamikasidan MIKni hisoblaydi.';
+
+  @override
+  String get schemPartsMicrobialIdAstResult =>
+      'Har antibiotik uchun MIK qiymati va talqin toifasi (masalan, sezuvchan yoki chidamli); identifikatsiya kartasida — mikroorganizm turi.';
+
+  @override
+  String get schemPartsBloodCultureVialsName => 'Gemokultura flakonlari';
+
+  @override
+  String get schemPartsBloodCultureVialsFn =>
+      'Aerob va anaerob ozuqa muhitli flakonlar; ichiga bemor qoni solinadi.';
+
+  @override
+  String get schemPartsBloodCultureSensorName => 'CO₂ sensori (flakon tubida)';
+
+  @override
+  String get schemPartsBloodCultureSensorFn =>
+      'Bo‘yoq CO₂ bilan reaksiyaga kirib, fluoressensiyasini o‘zgartiradi.';
+
+  @override
+  String get schemPartsBloodCultureIncubatorName => 'Inkubator shkafi';
+
+  @override
+  String get schemPartsBloodCultureIncubatorFn =>
+      'Flakonlar uyachalarda doimiy haroratda saqlanadi.';
+
+  @override
+  String get schemPartsBloodCultureReaderName => 'O‘qish tizimi';
+
+  @override
+  String get schemPartsBloodCultureReaderFn =>
+      'Har uyacha ostidagi nur manbai va detektor sensorni har o‘n daqiqada o‘lchaydi.';
+
+  @override
+  String get schemPartsBloodCulturePositiveName => 'Musbat flakon chirog‘i';
+
+  @override
+  String get schemPartsBloodCulturePositiveFn =>
+      'O‘sish aniqlangan flakonni ko‘rsatadi.';
+
+  @override
+  String get schemPartsBloodCultureSoftwareName => 'Kompyuter va dastur';
+
+  @override
+  String get schemPartsBloodCultureSoftwareFn =>
+      'Har flakonning o‘sish egri chizig‘i va holatini ko‘rsatadi.';
+
+  @override
+  String get schemPartsBloodCulturePrinciple =>
+      'Qon solingan flakonlar inkubatorga qo‘yiladi. Mikroorganizmlar o‘sganda CO₂ ajraladi; flakon tubidagi sensor bo‘yog‘i CO₂ bilan reaksiyaga kirib, fluoressensiyani oshiradi. Apparat sensorni har o‘n daqiqada o‘qiydi; algoritm CO₂ hosil bo‘lish tezligi va umumiy ortishiga qarab flakonni musbat deb belgilaydi.';
+
+  @override
+  String get schemPartsBloodCultureResult =>
+      'Har flakon holati: musbat (o‘sish aniqlandi) yoki protokol oxirida manfiy, musbatlikkacha vaqt va o‘sish egri chizig‘i. Musbat flakon keyingi mikrobiologik tekshiruvga yuboriladi.';
+
+  @override
+  String get schemPartsMycobacterialCultureTubeName => 'MGIT probirkasi';
+
+  @override
+  String get schemPartsMycobacterialCultureTubeFn =>
+      'Suyuq 7H9 muhiti va o‘sish qo‘shimchasi (OADC) bilan; namuna shu yerga ekiladi.';
+
+  @override
+  String get schemPartsMycobacterialCultureSensorName =>
+      'Fluoressent kislorod sensori';
+
+  @override
+  String get schemPartsMycobacterialCultureSensorFn =>
+      'Kislorod kamayganda UB nurida yorqin fluoressensiya beradi.';
+
+  @override
+  String get schemPartsMycobacterialCultureDrawerName =>
+      'Probirka tortmasi (inkubatsiya va o‘qish)';
+
+  @override
+  String get schemPartsMycobacterialCultureDrawerFn =>
+      'Har uyachada probirka inkubatsiya qilinadi va fluoressensiyasi muntazam o‘lchanadi.';
+
+  @override
+  String get schemPartsMycobacterialCultureLightsName => 'Holat chiroqlari';
+
+  @override
+  String get schemPartsMycobacterialCultureLightsFn =>
+      'Musbat yoki tugallangan probirkalarni ko‘rsatadi.';
+
+  @override
+  String get schemPartsMycobacterialCulturePanelName => 'Apparat displeyi';
+
+  @override
+  String get schemPartsMycobacterialCulturePanelFn =>
+      'Tortmalar holati va ogohlantirishlarni ko‘rsatadi.';
+
+  @override
+  String get schemPartsMycobacterialCultureSoftwareName =>
+      'Kompyuter (GU egri chiziqlari)';
+
+  @override
+  String get schemPartsMycobacterialCultureSoftwareFn =>
+      'O‘sish va DST natijalarini yozadi; nazorat va dorili probirkalar egri chiziqlari solishtiriladi.';
+
+  @override
+  String get schemPartsMycobacterialCulturePrinciple =>
+      'MGIT probirkasida o‘zgartirilgan Middlebrook 7H9 suyuq muhiti va tubida kislorodga sezgir fluoressent sensor bor. Mikobakteriyalar o‘sganda erigan kislorod sarflanadi va sensor UB nurida yorqinroq fluoressensiya beradi. Apparat har probirkani avtomatik o‘qiydi va intensivlikni o‘sish birliklari (GU) sifatida yozadi. DSTda dorili probirka GU qiymati nazorat probirkasiniki bilan solishtiriladi.';
+
+  @override
+  String get schemPartsMycobacterialCultureResult =>
+      'Musbat yoki manfiy kultura va GU egri chizig‘i; DSTda birinchi qator preparatlari uchun apparat sezuvchan/chidamli talqinini beradi, ikkinchi qator uchun GU qiymatlarini foydalanuvchi talqin qiladi.';
+
+  @override
+  String get schemPartsFlowCytometerSheathName => 'Qobiq suyuqligi idishi';
+
+  @override
+  String get schemPartsFlowCytometerSheathFn =>
+      'Namuna oqimini o‘rab, uni ingichka markaziy oqimga siqadi.';
+
+  @override
+  String get schemPartsFlowCytometerSampleName => 'Namuna probirkasi va zond';
+
+  @override
+  String get schemPartsFlowCytometerSampleFn =>
+      'Bo‘yalgan hujayra suspenziyasi shu yerdan so‘riladi.';
+
+  @override
+  String get schemPartsFlowCytometerFlowcellName =>
+      'Oqim kyuvetasi (gidrodinamik fokuslash)';
+
+  @override
+  String get schemPartsFlowCytometerFlowcellFn =>
+      'Hujayralar birma-bir lazer nuri kesib o‘tgan nuqtadan o‘tadi.';
+
+  @override
+  String get schemPartsFlowCytometerLaserName => 'Lazer';
+
+  @override
+  String get schemPartsFlowCytometerLaserFn =>
+      'Hujayralarni yoritadi va floroxromlarni qo‘zg‘atadi.';
+
+  @override
+  String get schemPartsFlowCytometerFscName =>
+      'To‘g‘ri sochilish (FSC) detektori';
+
+  @override
+  String get schemPartsFlowCytometerFscFn =>
+      'Nur yo‘nalishidagi sochilishni o‘lchaydi — u hujayra o‘lchamiga bog‘liq.';
+
+  @override
+  String get schemPartsFlowCytometerSscName =>
+      'Yon sochilish va fluoressensiya detektorlari';
+
+  @override
+  String get schemPartsFlowCytometerSscFn =>
+      '90° dagi nur dixroik ko‘zgu va filtrlar bilan ranglarga ajratilib, alohida detektorlarga tushadi.';
+
+  @override
+  String get schemPartsFlowCytometerWasteName => 'Chiqindi idishi';
+
+  @override
+  String get schemPartsFlowCytometerWasteFn =>
+      'O‘lchangan namuna va qobiq suyuqligi to‘planadi.';
+
+  @override
+  String get schemPartsFlowCytometerComputerName =>
+      'Kompyuter (nuqtali diagrammalar)';
+
+  @override
+  String get schemPartsFlowCytometerComputerFn =>
+      'Signallardan nuqtali diagramma tuzadi; populyatsiyalar darvoza (gating) bilan ajratiladi.';
+
+  @override
+  String get schemPartsFlowCytometerPrinciple =>
+      'Hujayralar odatda floroxrom bilan belgilangan antitanalar bilan bo‘yaladi. Qobiq suyuqligi namuna oqimini gidrodinamik fokuslab, hujayralarni bir qatorga tizadi; har hujayra lazer nuridan o‘tadi. To‘g‘ri sochilish (FSC) hujayra o‘lchamini, yon sochilish (SSC) ichki tuzilishini, fluoressensiya esa belgilarni bildiradi; elektronika signallarni raqamlashtiradi.';
+
+  @override
+  String get schemPartsFlowCytometerResult =>
+      'Nuqtali diagramma va gistogrammalar; hujayra populyatsiyalarining ulushi va soni (masalan, kalibrlovchi zarrachalar yordamida CD4+ T-hujayralarning absolyut soni).';
+
+  @override
+  String get schemPartsRealTimePcrTubesName =>
+      'PCR probirkalari (8 talik qator)';
+
+  @override
+  String get schemPartsRealTimePcrTubesFn =>
+      'Reaksiya aralashmasi va namuna; shaffof qopqoq orqali o‘qiladi.';
+
+  @override
+  String get schemPartsRealTimePcrLidName => 'Isitiladigan qopqoq';
+
+  @override
+  String get schemPartsRealTimePcrLidFn =>
+      'Probirka qopqoqlarida bug\' to‘planishining oldini oladi.';
+
+  @override
+  String get schemPartsRealTimePcrBlockName => 'Termoblok (Peltye)';
+
+  @override
+  String get schemPartsRealTimePcrBlockFn =>
+      'Denaturatsiya, praymer birikishi va sintez haroratlarini tez almashtiradi.';
+
+  @override
+  String get schemPartsRealTimePcrSourceName => 'Qo‘zg‘atuvchi nur manbai';
+
+  @override
+  String get schemPartsRealTimePcrSourceFn =>
+      'Bo‘yoq yoki zondni qo‘zg‘atadigan yorug‘lik beradi.';
+
+  @override
+  String get schemPartsRealTimePcrFiltersName => 'Filtr g‘ildiragi';
+
+  @override
+  String get schemPartsRealTimePcrFiltersFn =>
+      'Har bo‘yoq (kanal) uchun qo‘zg‘atish va nurlanish filtrini tanlaydi.';
+
+  @override
+  String get schemPartsRealTimePcrDetectorName => 'Detektor';
+
+  @override
+  String get schemPartsRealTimePcrDetectorFn =>
+      'Har siklda fluoressensiyani o‘lchaydi.';
+
+  @override
+  String get schemPartsRealTimePcrSoftwareName =>
+      'Dastur (kuchayish egri chiziqlari)';
+
+  @override
+  String get schemPartsRealTimePcrSoftwareFn =>
+      'Egri chiziqlar, chegara chizig‘i va Cq qiymatlarini hisoblaydi.';
+
+  @override
+  String get schemPartsRealTimePcrPrinciple =>
+      'Termoblok har siklda haroratni almashtiradi: qizdirish DNK zanjirlarini ajratadi, sovutishda praymerlar birikadi, issiqqa chidamli polimeraza yangi zanjir quradi — nishon har siklda taxminan ikki barobar ko‘payadi (RNK avval teskari transkriptaza bilan kDNK ga aylantiriladi). Optik modul har siklda interkalyatsiyalanuvchi bo‘yoq yoki zond fluoressensiyasini o‘lchaydi; signal amplikon to‘planishiga mutanosib.';
+
+  @override
+  String get schemPartsRealTimePcrResult =>
+      'Kuchayish egri chiziqlari va har namuna uchun Cq (Ct) — fluoressensiya chegarani kesib o‘tgan sikl; Cq qancha past bo‘lsa, boshlang‘ich nishon shuncha ko‘p. Miqdoriy testlarda konsentratsiya standartlar bo‘yicha hisoblanadi (masalan, OIV-1 virus yuklamasi, nusxa/ml).';
+
+  @override
+  String get schemPartsCartridgeMolecularCartridgeName =>
+      'Bir martalik kartrij';
+
+  @override
+  String get schemPartsCartridgeMolecularCartridgeFn =>
+      'Namuna va reagent kameralari bor yopiq kartrij; barcha bosqichlar ichida bajariladi.';
+
+  @override
+  String get schemPartsCartridgeMolecularTubeName => 'Reaksiya naychasi';
+
+  @override
+  String get schemPartsCartridgeMolecularTubeFn =>
+      'Kartrijning shu qismida amplifikatsiya va fluoressent detektsiya bo‘ladi.';
+
+  @override
+  String get schemPartsCartridgeMolecularSpecimenName => 'Namuna idishi';
+
+  @override
+  String get schemPartsCartridgeMolecularSpecimenFn =>
+      'Balg‘am kabi namuna yig‘iladi va reagent bilan aralashtiriladi.';
+
+  @override
+  String get schemPartsCartridgeMolecularModuleName => 'Apparat moduli';
+
+  @override
+  String get schemPartsCartridgeMolecularModuleFn =>
+      'Kartrij shu yerga qo‘yiladi va avtomatik ishlanadi; modullar bir-biridan mustaqil.';
+
+  @override
+  String get schemPartsCartridgeMolecularSoftwareName => 'Kompyuter va dastur';
+
+  @override
+  String get schemPartsCartridgeMolecularSoftwareFn =>
+      'Jarayonni boshqaradi va talqin qilingan natijani beradi.';
+
+  @override
+  String get schemPartsCartridgeMolecularPrinciple =>
+      'Namuna reagent bilan aralashtirilib kartrijga quyiladi, kartrij modulga qo‘yiladi. Keyingi bosqichlar yopiq kartrij ichida avtomatik: namunani qayta ishlash, nuklein kislotani ajratish, amplifikatsiya (real vaqt PCR) va detektsiya. Operator kartrijni ochmaydi, bu amplikon bilan ifloslanish xavfini kamaytiradi.';
+
+  @override
+  String get schemPartsCartridgeMolecularResult =>
+      'Xpert MTB/RIF uchun: M. tuberculosis kompleksi aniqlandi yoki aniqlanmadi, rifampitsinga chidamlilik aniqlandi yoki aniqlanmadi — 2 soatdan kam vaqtda.';
+
+  @override
+  String get schemPartsCoagAnalyzerSamplesName => 'Sitratli probirkalar rakasi';
+
+  @override
+  String get schemPartsCoagAnalyzerSamplesFn =>
+      'Havorang qopqoqli natriy sitratli probirkalar; plazma shu yerdan olinadi.';
+
+  @override
+  String get schemPartsCoagAnalyzerReagentsName => 'Sovutilgan reagent bloki';
+
+  @override
+  String get schemPartsCoagAnalyzerReagentsFn =>
+      'Tromboplastin va boshqa reagentlar sovuqda saqlanadi.';
+
+  @override
+  String get schemPartsCoagAnalyzerArmName => 'Pipetkalovchi qo‘l';
+
+  @override
+  String get schemPartsCoagAnalyzerArmFn =>
+      'Plazma va reagentni kyuvetaga aniq hajmda quyadi.';
+
+  @override
+  String get schemPartsCoagAnalyzerCuvettesName =>
+      'O‘lchash kyuvetalari (37 °C)';
+
+  @override
+  String get schemPartsCoagAnalyzerCuvettesFn =>
+      'Plazma isitiladi; reagent qo‘shilgach laxta hosil bo‘lishi kuzatiladi.';
+
+  @override
+  String get schemPartsCoagAnalyzerLightName => 'Yorug‘lik manbai';
+
+  @override
+  String get schemPartsCoagAnalyzerLightFn =>
+      'Kyuvetadan o‘tadigan nur beradi.';
+
+  @override
+  String get schemPartsCoagAnalyzerDetectorName => 'Fotodetektor';
+
+  @override
+  String get schemPartsCoagAnalyzerDetectorFn =>
+      'Laxta hosil bo‘lganda o‘tgan nur o‘zgarishini qayd etadi.';
+
+  @override
+  String get schemPartsCoagAnalyzerDisplayName =>
+      'Displey (ivish egri chizig‘i)';
+
+  @override
+  String get schemPartsCoagAnalyzerDisplayFn =>
+      'Ivish egri chizig‘i, vaqt va hisoblangan INR.';
+
+  @override
+  String get schemPartsCoagAnalyzerPrinciple =>
+      'Zond sitratli plazmani kyuvetaga quyadi va 37 °C gacha isitadi, so‘ng reagent qo‘shiladi (PT uchun tromboplastin: to‘qima omili, kalsiy va fosfolipidlar). Fibrin laxtasi hosil bo‘lganda aralashma loyqalanadi: optik usulda o‘tgan nur o‘zgarishi, mexanik usulda esa harakatning to‘xtashi qayd etiladi. Shu paytgacha o‘tgan vaqt — ivish vaqti.';
+
+  @override
+  String get schemPartsCoagAnalyzerResult =>
+      'Ivish vaqti soniyalarda va ivish egri chizig‘i; PT uchun INR bemor PT, o‘rtacha normal PT va reagentning ISI qiymati bo‘yicha hisoblanadi.';
+
+  @override
+  String get schemPartsElisaReaderPlateName => '96 quduqchali mikroplanshet';
+
+  @override
+  String get schemPartsElisaReaderPlateFn =>
+      'Reaksiya va rang quduqchalarda; tashuvchi planshetni o‘quvchiga olib kiradi.';
+
+  @override
+  String get schemPartsElisaReaderLampName => 'Yorug‘lik manbai (lampa)';
+
+  @override
+  String get schemPartsElisaReaderLampFn =>
+      'Quduqchadan o‘tadigan nurni beradi.';
+
+  @override
+  String get schemPartsElisaReaderWellName => 'O‘lchanayotgan quduqcha';
+
+  @override
+  String get schemPartsElisaReaderWellFn =>
+      'Rangli eritma nurning bir qismini yutadi.';
+
+  @override
+  String get schemPartsElisaReaderFilterName => 'Optik filtr';
+
+  @override
+  String get schemPartsElisaReaderFilterFn =>
+      'Faqat kerakli to‘lqin uzunligini o‘tkazadi.';
+
+  @override
+  String get schemPartsElisaReaderDetectorName => 'Fotodetektor';
+
+  @override
+  String get schemPartsElisaReaderDetectorFn =>
+      'O‘tgan nurni o‘lchaydi; undan yutilish hisoblanadi.';
+
+  @override
+  String get schemPartsElisaReaderWasherName => 'Yuvish qurilmasi ignalari';
+
+  @override
+  String get schemPartsElisaReaderWasherFn =>
+      'Quduqchalarga yuvish eritmasini quyadi va so‘rib oladi.';
+
+  @override
+  String get schemPartsElisaReaderBufferName => 'Yuvish eritmasi idishi';
+
+  @override
+  String get schemPartsElisaReaderBufferFn =>
+      'Yuvish qurilmasiga bufer beradi.';
+
+  @override
+  String get schemPartsElisaReaderWasteName => 'Chiqindi idishi';
+
+  @override
+  String get schemPartsElisaReaderWasteFn => 'So‘rilgan suyuqlik to‘planadi.';
+
+  @override
+  String get schemPartsElisaReaderPrinciple =>
+      'Planshet quduqchalarida antigen–antitana reaksiyasi bosqichma-bosqich boradi; bosqichlar orasida yuvish qurilmasi bog‘lanmagan moddalarni yuvib tashlaydi. Oxirida substrat qo‘shiladi va ferment rang hosil qiladi. O‘quvchi har quduqchadan tanlangan to‘lqin uzunlikdagi nurni o‘tkazib, yutilishni (optik zichlik) o‘lchaydi; noma’lum namunalar standart egri chiziq bo‘yicha hisoblanadi.';
+
+  @override
+  String get schemPartsElisaReaderResult =>
+      'Har quduqcha uchun optik zichlik (OD) qiymatlari; standart egri chiziq bo‘yicha konsentratsiya yoki chegara qiymatga (cut-off) nisbatan sifatiy natija (musbat/manfiy).';
+
+  @override
+  String get schemPartsBscClass2OpeningName => 'Old ochiqlik (kiruvchi havo)';
+
+  @override
+  String get schemPartsBscClass2OpeningFn =>
+      'Xona havosi shu yerdan ichkariga so‘riladi — operator himoyalanadi.';
+
+  @override
+  String get schemPartsBscClass2GrilleName => 'Old panjara';
+
+  @override
+  String get schemPartsBscClass2GrilleFn =>
+      'Kiruvchi havo va ish zonasi old qismidagi havo shu yerga so‘riladi; uni to‘smaslik kerak.';
+
+  @override
+  String get schemPartsBscClass2WorkzoneName => 'Ish zonasi va ish yuzasi';
+
+  @override
+  String get schemPartsBscClass2WorkzoneFn =>
+      'Namunalar bilan shu yerda ishlanadi; ustidan toza havo pastga oqadi.';
+
+  @override
+  String get schemPartsBscClass2DownflowName => 'Tushuvchi oqim HEPA filtri';
+
+  @override
+  String get schemPartsBscClass2DownflowFn =>
+      'Ish zonasiga tushadigan havoni zarrachalardan tozalaydi.';
+
+  @override
+  String get schemPartsBscClass2FanName => 'Ventilyator';
+
+  @override
+  String get schemPartsBscClass2FanFn => 'Havoni kanallar orqali aylantiradi.';
+
+  @override
+  String get schemPartsBscClass2ExhaustName => 'Chiqish HEPA filtri';
+
+  @override
+  String get schemPartsBscClass2ExhaustFn =>
+      'Tashqariga chiqadigan havoni tozalaydi — atrof-muhit himoyalanadi.';
+
+  @override
+  String get schemPartsBscClass2PlenumName => 'Orqa havo kanali';
+
+  @override
+  String get schemPartsBscClass2PlenumFn =>
+      'Panjaradan so‘rilgan havoni ventilyatorga qaytaradi.';
+
+  @override
+  String get schemPartsBscClass2SashName => 'Old oyna';
+
+  @override
+  String get schemPartsBscClass2SashFn =>
+      'Operator yuzini himoyalaydi va old ochiqlik balandligini belgilaydi.';
+
+  @override
+  String get schemPartsBscClass2Principle =>
+      'Ventilyator havoni aylantiradi. Xona havosi old ochiqlikdan old panjaraga so‘riladi — operator himoyalanadi. HEPA filtrdan o‘tgan toza havo ish yuzasi ustidan pastga oqadi — material himoyalanadi. Ortiqcha havo chiqish HEPA filtri orqali tashqariga chiqariladi — atrof-muhit himoyalanadi.';
+
+  @override
+  String get schemPartsBscClass2Result =>
+      'Bu o‘lchov asbobi emas: natija — xavfsiz ish muhiti (operator, material va atrof-muhit himoyasi). Ish samaradorligi havo oqimi va filtrlarni muntazam sinash va sertifikatlash bilan tasdiqlanadi.';
+
+  @override
+  String get schemPartsAutoclaveChamberName => 'Bosimli kamera';
+
+  @override
+  String get schemPartsAutoclaveChamberFn =>
+      'Yuklama shu yerda bosim ostidagi to‘yingan bug‘da ushlanadi.';
+
+  @override
+  String get schemPartsAutoclaveDoorName => 'Zichlagichli eshik va qulf';
+
+  @override
+  String get schemPartsAutoclaveDoorFn =>
+      'Kamerani germetik yopadi; bosim bor paytda ochilmaydi.';
+
+  @override
+  String get schemPartsAutoclaveTrayName => 'Yuklama tagligi';
+
+  @override
+  String get schemPartsAutoclaveTrayFn =>
+      'Buyumlar bug\' erkin aylanadigan qilib joylanadi.';
+
+  @override
+  String get schemPartsAutoclavePressureName => 'Manometr';
+
+  @override
+  String get schemPartsAutoclavePressureFn => 'Kameradagi bosimni ko‘rsatadi.';
+
+  @override
+  String get schemPartsAutoclaveThermometerName => 'Termometr';
+
+  @override
+  String get schemPartsAutoclaveThermometerFn =>
+      'Kameradagi haroratni ko‘rsatadi.';
+
+  @override
+  String get schemPartsAutoclaveValveName => 'Xavfsizlik klapani';
+
+  @override
+  String get schemPartsAutoclaveValveFn =>
+      'Bosim haddan oshsa, bug‘ni chiqarib yuboradi.';
+
+  @override
+  String get schemPartsAutoclaveWaterName => 'Suv idishi';
+
+  @override
+  String get schemPartsAutoclaveWaterFn =>
+      'Bug\' hosil qilish uchun suv shu yerga quyiladi.';
+
+  @override
+  String get schemPartsAutoclavePrinciple =>
+      'Kameradagi havo chiqarilib, o‘rniga to‘yingan bug\' kiradi. Bosim suvning qaynash haroratini oshiradi, shuning uchun bug\' 121 °C yoki 132 °C kabi yuqori haroratga yetadi. Bug\' buyumlarga tegib, issiqlik bilan mikroorganizmlarni nobud qiladi; jarayonni bug\' sifati, bosim, harorat va vaqt belgilaydi. Qolgan havo bug‘ning yuklamaga tegishiga to‘sqinlik qiladi.';
+
+  @override
+  String get schemPartsAutoclaveResult =>
+      'Sterillangan yuklama va sikl parametrlari (vaqt, harorat, bosim) yozuvi; samaradorlik kimyoviy va biologik indikatorlar bilan tekshiriladi.';
+
+  @override
+  String get schemPartsBloodGasIseSyringeName => 'Geparinli shprisdagi namuna';
+
+  @override
+  String get schemPartsBloodGasIseSyringeFn =>
+      'Arterial yoki boshqa butun qon havo pufakchalarisiz keltiriladi.';
+
+  @override
+  String get schemPartsBloodGasIseProbeName => 'Namuna kiritish zondi';
+
+  @override
+  String get schemPartsBloodGasIseProbeFn =>
+      'Qonni shprisdan o‘lchash kanaliga so‘radi.';
+
+  @override
+  String get schemPartsBloodGasIseSensorsName => 'Sensorlar (elektrodlar)';
+
+  @override
+  String get schemPartsBloodGasIseSensorsFn =>
+      'pH, pCO₂, pO₂ va elektrolitlar uchun alohida elektrodlar.';
+
+  @override
+  String get schemPartsBloodGasIseChannelName => 'O‘lchash kanali';
+
+  @override
+  String get schemPartsBloodGasIseChannelFn =>
+      'Namuna barcha sensorlar ustidan o‘tadi; kanal haroratda ushlanadi.';
+
+  @override
+  String get schemPartsBloodGasIsePackName => 'Reagent paketi';
+
+  @override
+  String get schemPartsBloodGasIsePackFn => 'Kalibrlash va yuvish eritmalari.';
+
+  @override
+  String get schemPartsBloodGasIseDisplayName => 'Displey';
+
+  @override
+  String get schemPartsBloodGasIseDisplayFn =>
+      'O‘lchangan va hisoblangan qiymatlarni ko‘rsatadi.';
+
+  @override
+  String get schemPartsBloodGasIsePrinterName => 'Printer';
+
+  @override
+  String get schemPartsBloodGasIsePrinterFn => 'Natijalarni chop etadi.';
+
+  @override
+  String get schemPartsBloodGasIsePrinciple =>
+      'Geparinli shprisdagi butun qon zond orqali o‘lchash kanaliga so‘riladi va sensorlar ustidan o‘tadi. pH va pCO₂ potensiometriya, pO₂ amperometriya bilan o‘lchanadi; Na, K, Cl va ionlangan Ca ionselektiv elektrodlarda o‘lchanadi. sO₂ kooksimetriya bilan o‘lchanadi yoki hisoblanadi; umumiy CO₂, bikarbonat va asos ortiqchasi (BE) o‘lchangan qiymatlardan hisoblanadi.';
+
+  @override
+  String get schemPartsBloodGasIseResult =>
+      'pH, pCO₂, pO₂, sO₂, elektrolitlar va metabolitlar (glyukoza, laktat va boshq.) hamda hisoblangan bikarbonat va BE — kislota-asos holati va oksigenatsiya ko‘rsatkichlari.';
+
+  @override
+  String get schemPartsHba1cAnalyzerRackName => 'EDTA probirkalar rakasi';
+
+  @override
+  String get schemPartsHba1cAnalyzerRackFn =>
+      'Binafsha qopqoqli, butun qonli probirkalar.';
+
+  @override
+  String get schemPartsHba1cAnalyzerArmName => 'Namuna oluvchi qo‘l';
+
+  @override
+  String get schemPartsHba1cAnalyzerArmFn =>
+      'Qonni probirkadan olib, gemolizlab tizimga kiritadi.';
+
+  @override
+  String get schemPartsHba1cAnalyzerEluentsName => 'Bufer (eluent) idishlari';
+
+  @override
+  String get schemPartsHba1cAnalyzerEluentsFn =>
+      'Turli kuchdagi buferlar fraksiyalarni kolonkadan navbat bilan yuvib chiqaradi.';
+
+  @override
+  String get schemPartsHba1cAnalyzerColumnName => 'Ion almashinuv kolonkasi';
+
+  @override
+  String get schemPartsHba1cAnalyzerColumnFn =>
+      'Gemoglobin fraksiyalarini zaryadiga ko‘ra ajratadi.';
+
+  @override
+  String get schemPartsHba1cAnalyzerDetectorName => 'Fotometrik detektor';
+
+  @override
+  String get schemPartsHba1cAnalyzerDetectorFn =>
+      'Kolonkadan chiqqan gemoglobinning yutilishini o‘lchaydi.';
+
+  @override
+  String get schemPartsHba1cAnalyzerDisplayName => 'Displey (xromatogramma)';
+
+  @override
+  String get schemPartsHba1cAnalyzerDisplayFn =>
+      'Xromatogramma va HbA1c natijasini ko‘rsatadi.';
+
+  @override
+  String get schemPartsHba1cAnalyzerPrinterName => 'Printer';
+
+  @override
+  String get schemPartsHba1cAnalyzerPrinterFn => 'Natijalarni chop etadi.';
+
+  @override
+  String get schemPartsHba1cAnalyzerWasteName => 'Chiqindi idishi';
+
+  @override
+  String get schemPartsHba1cAnalyzerWasteFn =>
+      'Ishlatilgan bufer va namuna to‘planadi.';
+
+  @override
+  String get schemPartsHba1cAnalyzerPrinciple =>
+      'EDTA li butun qon avtomatik olinadi va gemolizlanadi. Ion almashinuv xromatografiyasida gemoglobin fraksiyalari buferlar gradienti bilan kolonkadan turli vaqtda chiqadi va fotometrik detektorda qayd etiladi; HbA1c ulushi xromatogrammadagi cho‘qqi maydonidan hisoblanadi. Boshqa analizatorlar boronat-affin xromatografiya, immunoanaliz yoki fermentativ usulda ishlaydi.';
+
+  @override
+  String get schemPartsHba1cAnalyzerResult =>
+      'Gemoglobin fraksiyalari xromatogrammasi va HbA1c NGSP (%) hamda IFCC (mmol/mol) birliklarida; ion almashinuv usuli HbS, C, D kabi variantlarni ham ko‘rsatishi mumkin.';
+
+  @override
+  String get schemPartsLabFridgeControllerName =>
+      'Boshqaruv paneli (termostat)';
+
+  @override
+  String get schemPartsLabFridgeControllerFn =>
+      'Belgilangan haroratni ushlab turadi va joriy haroratni ko‘rsatadi.';
+
+  @override
+  String get schemPartsLabFridgeFridgeName => 'Sovutgich bo‘limi';
+
+  @override
+  String get schemPartsLabFridgeFridgeFn =>
+      'Namunalar, reagentlar va nazorat materiallari javonlarda saqlanadi.';
+
+  @override
+  String get schemPartsLabFridgeProbeName => 'Buferli flakondagi datchik';
+
+  @override
+  String get schemPartsLabFridgeProbeFn =>
+      'Mahsulot haroratini o‘lchaydi, eshik ochilgandagi qisqa tebranishlarni yumshatadi.';
+
+  @override
+  String get schemPartsLabFridgeLoggerName => 'Raqamli ma’lumot yozgich (DDL)';
+
+  @override
+  String get schemPartsLabFridgeLoggerFn =>
+      'Haroratni muntazam yozadi va me’yordan chiqsa ogohlantiradi.';
+
+  @override
+  String get schemPartsLabFridgeFreezerName => 'Muzlatgich bo‘limi';
+
+  @override
+  String get schemPartsLabFridgeFreezerFn =>
+      'Muzlatilgan alikvotlar (masalan, nazorat materiali) saqlanadi.';
+
+  @override
+  String get schemPartsLabFridgePrinciple =>
+      'Sovutish agregati bo‘limni belgilangan oraliqda ushlab turadi, haroratni termostat boshqaradi. Buferli flakondagi datchik mahsulot haroratini aks ettiradi (havo haroratining qisqa tebranishlari yumshaydi). Raqamli ma’lumot yozgich (DDL) haroratni muntazam yozib boradi va me’yordan chiqsa ogohlantiradi; zaxira harorat nazorati qurilmasi ham tavsiya etiladi.';
+
+  @override
+  String get schemPartsLabFridgeResult =>
+      'Uzluksiz harorat yozuvi (min/maks, me’yordan chiqishlar va ogohlantirishlar) — namuna va reagentlar to‘g‘ri saqlanganini hujjatlashtirish uchun.';
+
+  @override
+  String get schemPartsFluorescenceMicroscopeEyepiecesName => 'Okulyarlar';
+
+  @override
+  String get schemPartsFluorescenceMicroscopeEyepiecesFn =>
+      'Tasvirni kuzatish uchun.';
+
+  @override
+  String get schemPartsFluorescenceMicroscopeLedName => 'LED yoritgich';
+
+  @override
+  String get schemPartsFluorescenceMicroscopeLedFn =>
+      'Simob lampasi o‘rniga qo‘zg‘atuvchi nur beradi.';
+
+  @override
+  String get schemPartsFluorescenceMicroscopeCubeName => 'Filtr kubigi';
+
+  @override
+  String get schemPartsFluorescenceMicroscopeCubeFn =>
+      'Qo‘zg‘atuvchi filtr, dixroik ko‘zgu va nurlanish filtri nurni ajratadi.';
+
+  @override
+  String get schemPartsFluorescenceMicroscopeObjectiveName => 'Obyektiv';
+
+  @override
+  String get schemPartsFluorescenceMicroscopeObjectiveFn =>
+      'Nurni preparatga yo‘naltiradi va tasvirni kattalashtiradi.';
+
+  @override
+  String get schemPartsFluorescenceMicroscopeStageName => 'Preparatli stolik';
+
+  @override
+  String get schemPartsFluorescenceMicroscopeStageFn =>
+      'Auramin bilan bo‘yalgan balg‘am surtmasi shu yerga qo‘yiladi.';
+
+  @override
+  String get schemPartsFluorescenceMicroscopeFocusName => 'Fokus vintlari';
+
+  @override
+  String get schemPartsFluorescenceMicroscopeFocusFn =>
+      'Tasvir aniqligini sozlaydi.';
+
+  @override
+  String get schemPartsFluorescenceMicroscopeFieldName => 'Ko‘rish maydoni';
+
+  @override
+  String get schemPartsFluorescenceMicroscopeFieldFn =>
+      'Qorong‘i fonda sarg‘ish-yashil yorqin tayoqchalar — bo‘yalgan batsillalar.';
+
+  @override
+  String get schemPartsFluorescenceMicroscopePrinciple =>
+      'Surtma auramin (floroxrom) bilan bo‘yaladi; mikobakteriya devori bo‘yoqni ushlab qoladi. LED yoritgich qo‘zg‘atuvchi ko‘k nurni filtr kubigi va obyektiv orqali preparatga yuboradi. Bo‘yalgan batsillalar uzunroq to‘lqinli (sarg‘ish-yashil) nur chiqaradi; nurlanish filtri qo‘zg‘atuvchi nurni to‘sadi, shuning uchun batsillalar qorong‘i fonda yorqin ko‘rinadi.';
+
+  @override
+  String get schemPartsFluorescenceMicroscopeResult =>
+      'Mikroskopiya xulosasi: kislotaga chidamli batsillalar (yorqin tayoqchalar) topildi yoki topilmadi, topilsa — miqdoriy darajasi.';
+
+  @override
+  String get schemPartsCasaCameraName => 'Raqamli kamera';
+
+  @override
+  String get schemPartsCasaCameraFn =>
+      'Mikroskop tasvirini kadrlar ketma-ketligi sifatida yozadi.';
+
+  @override
+  String get schemPartsCasaMicroscopeName => 'Mikroskop (obyektiv)';
+
+  @override
+  String get schemPartsCasaMicroscopeFn =>
+      'Spermatozoidlarni kattalashtiradi, odatda fazali kontrast bilan.';
+
+  @override
+  String get schemPartsCasaStageName => 'Isitiladigan stolik';
+
+  @override
+  String get schemPartsCasaStageFn =>
+      'Namuna haroratini barqaror ushlaydi — harakatchanlik haroratga bog‘liq.';
+
+  @override
+  String get schemPartsCasaChamberName => 'Hisoblash kamerasi';
+
+  @override
+  String get schemPartsCasaChamberFn =>
+      'Belgilangan chuqurlikdagi kamera namuna qatlamini bir xil qalinlikda beradi.';
+
+  @override
+  String get schemPartsCasaSoftwareName => 'Kompyuter va dastur';
+
+  @override
+  String get schemPartsCasaSoftwareFn =>
+      'Izlarni tiklaydi va kinematik ko‘rsatkichlarni hisoblaydi.';
+
+  @override
+  String get schemPartsCasaPrinciple =>
+      'Sperma namunasi hisoblash kamerasiga solinadi va isitiladigan stolikka qo‘yiladi. Kamera mikroskop orqali ketma-ket kadrlar oladi; dastur boshchalarni topib, har bir harakatchan spermatozoid izini tiklaydi va harakat kinematikasini hisoblaydi. Kamida 200 ta harakatchan hujayra izi tahlil qilinadi.';
+
+  @override
+  String get schemPartsCasaResult =>
+      'Kinematik ko‘rsatkichlar (masalan, egri chiziqli, to‘g‘ri chiziqli va o‘rtacha yo‘l tezligi) va harakat turlari; JSST qo‘llanmasiga ko‘ra harakatchanlik foizi ishonchsiz bo‘lishi mumkin — chiqindi zarrachalar harakatsiz hujayra deb olinishi mumkin.';
+
+  @override
+  String get schemPartsGelCardSystemCentrifugeName => 'Karta sentrifugasi';
+
+  @override
+  String get schemPartsGelCardSystemCentrifugeFn =>
+      'Kartalarni belgilangan tezlik va vaqtda aylantiradi.';
+
+  @override
+  String get schemPartsGelCardSystemIncubatorName => 'Inkubator';
+
+  @override
+  String get schemPartsGelCardSystemIncubatorFn =>
+      'Antiglobulin testi uchun kartalarni inkubatsiya qiladi.';
+
+  @override
+  String get schemPartsGelCardSystemCardName => 'Gel karta';
+
+  @override
+  String get schemPartsGelCardSystemCardFn =>
+      'Plastik karta: har mikronaychada gel yoki shisha munchoq matritsasi.';
+
+  @override
+  String get schemPartsGelCardSystemChamberName => 'Reaksiya kamerasi';
+
+  @override
+  String get schemPartsGelCardSystemChamberFn =>
+      'Eritrotsitlar va zardob (yoki reagent) shu yerda aralashadi.';
+
+  @override
+  String get schemPartsGelCardSystemGelName => 'Gel ustuni (matritsa)';
+
+  @override
+  String get schemPartsGelCardSystemGelFn =>
+      'Agglyutinatlarni ushlab qoladi, yakka eritrotsitlarni o‘tkazadi; antiglobulin yoki anti-A, anti-B saqlashi mumkin.';
+
+  @override
+  String get schemPartsGelCardSystemPositiveName => 'Musbat reaksiya';
+
+  @override
+  String get schemPartsGelCardSystemPositiveFn =>
+      'Eritrotsitlar gel ustida yoki ichida qoladi.';
+
+  @override
+  String get schemPartsGelCardSystemNegativeName => 'Manfiy reaksiya';
+
+  @override
+  String get schemPartsGelCardSystemNegativeFn =>
+      'Eritrotsitlar naycha tubida tugma hosil qiladi.';
+
+  @override
+  String get schemPartsGelCardSystemPrinciple =>
+      'Mikronaychaning yuqori reaksiya kamerasiga eritrotsit suspenziyasi va zardob (yoki reagent) solinadi va inkubatsiya qilinadi. Sentrifugalanganda eritrotsitlar gel yoki shisha munchoq matritsasiga haydaladi, zardob esa yuqorida qoladi. Agglyutinatlar (masalan, antitana qoplagan va antiglobulin bog‘lagan hujayralar) gelda tutiladi — musbat; agglyutinatsiyaga uchramagan hujayralar tubiga tushib tugma hosil qiladi — manfiy. Antiglobulin testi uchun yuvish kerak emas.';
+
+  @override
+  String get schemPartsGelCardSystemResult =>
+      'Har mikronaychadagi reaksiya: musbat (agglyutinatlar gel ustida yoki ichida, kuchi darajalanadi) yoki manfiy (tubida tugma); shundan qon guruhi yoki to‘g‘ri antiglobulin testi xulosasi chiqariladi.';
+
+  @override
+  String get schemPartsEsrAnalyzerStandName => 'Westergren shtativi';
+
+  @override
+  String get schemPartsEsrAnalyzerStandFn =>
+      'Naychalarni qat’iy tik holatda ushlab turadi.';
+
+  @override
+  String get schemPartsEsrAnalyzerTubeName => 'Westergren naychasi';
+
+  @override
+  String get schemPartsEsrAnalyzerTubeFn =>
+      'Darajalangan standart naycha, ichki diametri 2,5 mm.';
+
+  @override
+  String get schemPartsEsrAnalyzerBoundaryName => 'Plazma–eritrotsit chegarasi';
+
+  @override
+  String get schemPartsEsrAnalyzerBoundaryFn =>
+      'Bir soatdan keyin shu chegaragacha bo‘lgan masofa millimetrda o‘qiladi.';
+
+  @override
+  String get schemPartsEsrAnalyzerReaderName => 'Avtomatik o‘quvchi';
+
+  @override
+  String get schemPartsEsrAnalyzerReaderFn =>
+      'Yopiq probirkalarda cho‘kishni avtomatik o‘lchaydi.';
+
+  @override
+  String get schemPartsEsrAnalyzerTubesName => 'Yopiq probirkalar';
+
+  @override
+  String get schemPartsEsrAnalyzerTubesFn => 'Namuna probirkasi ochilmaydi.';
+
+  @override
+  String get schemPartsEsrAnalyzerSensorsName => 'Optik datchiklar';
+
+  @override
+  String get schemPartsEsrAnalyzerSensorsFn =>
+      'Plazma va eritrotsit ustuni chegarasini aniqlaydi.';
+
+  @override
+  String get schemPartsEsrAnalyzerDisplayName => 'Displey';
+
+  @override
+  String get schemPartsEsrAnalyzerDisplayFn => 'Natijalarni ko‘rsatadi.';
+
+  @override
+  String get schemPartsEsrAnalyzerPrinciple =>
+      'Antikoagulyantli qon standart tik naychada (Westergren, ichki diametri 2,5 mm) og‘irlik kuchi ta’sirida bir soat cho‘kadi; tiniq plazma ustunining balandligi millimetrda o‘qiladi. Yallig‘lanishda oqsillar ko‘payib, eritrotsitlarning tanga ustunlari (rouleaux) hosil bo‘lishini kuchaytiradi va cho‘kish tezlashadi. Avtomatik o‘quvchilar yopiq probirkalarda plazma–eritrotsit chegarasini optik datchiklar bilan kuzatadi.';
+
+  @override
+  String get schemPartsEsrAnalyzerResult =>
+      'EChT qiymati mm/soat da; nospetsifik ko‘rsatkich, boshqa tekshiruvlar bilan birga talqin qilinadi.';
+
+  @override
+  String get schemPartsAggregometerChannelsName => 'LTA o‘lchash kanallari';
+
+  @override
+  String get schemPartsAggregometerChannelsFn =>
+      'Kyuvetalar 37 °C da isitiladi va aralashtiriladi.';
+
+  @override
+  String get schemPartsAggregometerLightName => 'Yorug‘lik manbai';
+
+  @override
+  String get schemPartsAggregometerLightFn =>
+      'Kyuvetadan o‘tadigan nur beradi.';
+
+  @override
+  String get schemPartsAggregometerCuvetteName =>
+      'Kyuveta (plazma va magnit aralashtirgich)';
+
+  @override
+  String get schemPartsAggregometerCuvetteFn =>
+      'Trombotsitga boy plazma; agonist shu yerga qo‘shiladi.';
+
+  @override
+  String get schemPartsAggregometerPhotodetectorName => 'Fotodetektor';
+
+  @override
+  String get schemPartsAggregometerPhotodetectorFn =>
+      'Agregatsiyada ortgan nur o‘tkazuvchanligini o‘lchaydi.';
+
+  @override
+  String get schemPartsAggregometerCurvesName => 'Agregatsiya egri chiziqlari';
+
+  @override
+  String get schemPartsAggregometerCurvesFn =>
+      'Har kanal bo‘yicha o‘tkazuvchanlik vaqt bo‘yicha.';
+
+  @override
+  String get schemPartsAggregometerCupName => 'Qonli kosacha';
+
+  @override
+  String get schemPartsAggregometerCupFn =>
+      'Sitratli qon kalsiy va aktivator bilan shu yerda ivitiladi.';
+
+  @override
+  String get schemPartsAggregometerPinName => 'Pin va burilish datchigi';
+
+  @override
+  String get schemPartsAggregometerPinFn =>
+      'Fibrin pinni kosacha bilan bog‘laydi; uzatilgan moment qayd etiladi.';
+
+  @override
+  String get schemPartsAggregometerTraceName => 'Viskoelastik trassa';
+
+  @override
+  String get schemPartsAggregometerTraceFn =>
+      'Laxta hosil bo‘lishi, mustahkamligi va erishi grafigi.';
+
+  @override
+  String get schemPartsAggregometerPrinciple =>
+      'LTA: trombotsitga boy plazma kyuvetada 37 °C da aralashtirib turiladi. Agonist qo‘shilgach trombotsitlar agregatlarga birikadi, plazma tiniqlashadi va o‘tgan nur ortadi — fotodetektor buni egri chiziq sifatida yozadi. TEG/ROTEM: sitratli qon aylanuvchi kosachada kalsiy va aktivator bilan ivitiladi; fibrin pinni kosacha bilan bog‘laydi va uzatilgan burilish momenti trassa sifatida chiziladi.';
+
+  @override
+  String get schemPartsAggregometerResult =>
+      'LTA: har agonist uchun agregatsiya egri chizig‘i (nur o‘tkazuvchanligi vaqt bo‘yicha). TEG/ROTEM: laxta hosil bo‘lishi, mustahkamligi va fibrinolizni ko‘rsatuvchi viskoelastik trassa.';
+
+  @override
+  String get schemPartsElectrophoresisPowerName => 'Tok manbai';
+
+  @override
+  String get schemPartsElectrophoresisPowerFn =>
+      'Elektrodlarga doimiy kuchlanish beradi.';
+
+  @override
+  String get schemPartsElectrophoresisElectrodesName =>
+      'Bufer bo‘limlari va elektrodlar';
+
+  @override
+  String get schemPartsElectrophoresisElectrodesFn =>
+      'Bufer tok o‘tkazadi; katod (−) va anod (+) elektr maydon hosil qiladi.';
+
+  @override
+  String get schemPartsElectrophoresisWicksName => 'Pilikchalar';
+
+  @override
+  String get schemPartsElectrophoresisWicksFn =>
+      'Buferni tashuvchi muhitga yetkazib, elektr zanjirini tutashtiradi.';
+
+  @override
+  String get schemPartsElectrophoresisMediumName =>
+      'Tashuvchi muhit va fraksiyalar';
+
+  @override
+  String get schemPartsElectrophoresisMediumFn =>
+      'Agaroza yoki atsetatsellyulozada molekulalar zonalarga ajraladi.';
+
+  @override
+  String get schemPartsElectrophoresisCoverName => 'Qopqoq';
+
+  @override
+  String get schemPartsElectrophoresisCoverFn =>
+      'Bug‘lanishni kamaytiradi va tok urishidan himoyalaydi.';
+
+  @override
+  String get schemPartsElectrophoresisDensitometerName => 'Densitometr';
+
+  @override
+  String get schemPartsElectrophoresisDensitometerFn =>
+      'Bo‘yalgan zonalarning optik zichligini skanerlab, densitogramma chizadi.';
+
+  @override
+  String get schemPartsElectrophoresisPrinciple =>
+      'Namuna bufer bilan namlangan tashuvchi muhitga (agaroza, atsetatsellyuloza yoki poliakrilamid) qo‘yiladi. Tok manbai elektrodlar orqali elektr maydon hosil qiladi; zaryadlangan molekulalar zaryadi, o‘lchami va shakliga ko‘ra turli tezlikda siljib, zonalarga ajraladi. So‘ng zonalar bo‘yaladi va densitometrda optik zichlik bo‘yicha o‘lchanadi.';
+
+  @override
+  String get schemPartsElectrophoresisResult =>
+      'Bo‘yalgan fraksiyalar (masalan, zardob oqsillarida albumin, alfa-1, alfa-2, beta, gamma) va densitogramma — har fraksiyaning nisbiy ulushi; namuna nazorat namunalari bilan solishtiriladi.';
+
+  @override
+  String get schemPartsOsmometerTubesName => 'Namuna probirkalari';
+
+  @override
+  String get schemPartsOsmometerTubesFn =>
+      'Kichik hajmdagi siydik yoki zardob.';
+
+  @override
+  String get schemPartsOsmometerThermistorName => 'Termistor zondi';
+
+  @override
+  String get schemPartsOsmometerThermistorFn =>
+      'Namunaga botiriladi va haroratni aniq o‘lchaydi.';
+
+  @override
+  String get schemPartsOsmometerBathName => 'Sovutish bloki (vanna)';
+
+  @override
+  String get schemPartsOsmometerBathFn =>
+      'Namunani muzlash nuqtasidan pastgacha sovutadi.';
+
+  @override
+  String get schemPartsOsmometerWireName => 'Aralashtirgich sim';
+
+  @override
+  String get schemPartsOsmometerWireFn =>
+      'Tebranib, o‘ta sovigan namunada muzlashni boshlaydi.';
+
+  @override
+  String get schemPartsOsmometerDisplayName =>
+      'Displey (muzlash egri chizig‘i)';
+
+  @override
+  String get schemPartsOsmometerDisplayFn =>
+      'Harorat egri chizig‘i va osmolyallik natijasi.';
+
+  @override
+  String get schemPartsOsmometerPrinciple =>
+      'Namuna sovutish blokida muzlash nuqtasidan pastgacha o‘ta sovutiladi, so‘ng aralashtirgich sim tebranishi muzlashni boshlaydi. Ajralgan yashirin issiqlik haroratni muzlash nuqtasigacha ko‘taradi va plato hosil bo‘ladi; uni Uitston ko‘prigi sxemasidagi termistor o‘lchaydi. Erigan zarrachalar muzlash nuqtasini pasaytiradi: 1 mol erigan modda suvnikini taxminan 1,86 °C ga tushiradi — shundan osmolyallik hisoblanadi.';
+
+  @override
+  String get schemPartsOsmometerResult =>
+      'Siydik yoki zardob osmolyalligi, mOsm/kg (mmol/kg).';
+
+  @override
+  String get schemPartsTlcTankName => 'Rivojlantirish kamerasi (qopqoqli)';
+
+  @override
+  String get schemPartsTlcTankFn =>
+      'Erituvchi bug‘i bilan to‘yintirilgan yopiq shisha kamera.';
+
+  @override
+  String get schemPartsTlcSolventName => 'Harakatlanuvchi faza (erituvchi)';
+
+  @override
+  String get schemPartsTlcSolventFn =>
+      'Kapillyar kuch bilan plastina bo‘ylab yuqoriga ko‘tariladi.';
+
+  @override
+  String get schemPartsTlcPlateName => 'TSX plastinasi (silikagel GF254)';
+
+  @override
+  String get schemPartsTlcPlateFn =>
+      'Yupqa silikagel qatlami; fluoressent indikator UB nurida yashil yorqinlik beradi.';
+
+  @override
+  String get schemPartsTlcOriginName => 'Start chizig‘i';
+
+  @override
+  String get schemPartsTlcOriginFn =>
+      'Namuna va standart dog‘lari shu chiziqqa tomiziladi.';
+
+  @override
+  String get schemPartsTlcFrontName => 'Erituvchi fronti';
+
+  @override
+  String get schemPartsTlcFrontFn =>
+      'Erituvchi yetib borgan chiziq; Rf ni hisoblash uchun belgilanadi.';
+
+  @override
+  String get schemPartsTlcCapillariesName => 'Kapillyarlar';
+
+  @override
+  String get schemPartsTlcCapillariesFn =>
+      'Namunani kichik dog\' qilib tomizish uchun.';
+
+  @override
+  String get schemPartsTlcLampName => 'UB lampa (254 nm)';
+
+  @override
+  String get schemPartsTlcLampFn =>
+      'Plastinani yoritib, dog‘larni ko‘rinadigan qiladi.';
+
+  @override
+  String get schemPartsTlcSpotsName => 'UB nuridagi dog‘lar';
+
+  @override
+  String get schemPartsTlcSpotsFn =>
+      'Moddalar fluoressensiyani so‘ndiradi va yashil fonda qorong‘i dog\' bo‘lib ko‘rinadi.';
+
+  @override
+  String get schemPartsTlcPrinciple =>
+      'Namuna va standart dog‘lari start chizig‘iga tomiziladi, plastina pastki cheti erituvchiga tegadigan qilib to‘yintirilgan kameraga qo‘yiladi. Erituvchi ko‘tarilar ekan, moddalar silikagel (statsionar faza) va erituvchi (harakatlanuvchi faza) orasida taqsimlanib, turli masofaga siljiydi. Rivojlantirilgan plastina 254 nm UB nurida ko‘riladi yoki reagent purkab ochiladi.';
+
+  @override
+  String get schemPartsTlcResult =>
+      'Dog‘lar joylashuvi va Rf qiymatlari (dog\' masofasi / erituvchi fronti masofasi); moddani aniqlash uchun standart bilan solishtiriladi.';
+
+  @override
+  String get schemPartsAnalyticalBalancePipetteName =>
+      'Pipetka (havo siljitishli)';
+
+  @override
+  String get schemPartsAnalyticalBalancePipetteFn =>
+      'Kalibrlanayotgan asbob: belgilangan hajmni quyadi.';
+
+  @override
+  String get schemPartsAnalyticalBalanceVesselName => 'Tortish idishi';
+
+  @override
+  String get schemPartsAnalyticalBalanceVesselFn =>
+      'Quyilgan suv shu idishga tushadi va tortiladi.';
+
+  @override
+  String get schemPartsAnalyticalBalancePanName => 'Tarozi pallasi';
+
+  @override
+  String get schemPartsAnalyticalBalancePanFn => 'Massa shu yerda o‘lchanadi.';
+
+  @override
+  String get schemPartsAnalyticalBalanceEnclosureName => 'Shisha himoya qutisi';
+
+  @override
+  String get schemPartsAnalyticalBalanceEnclosureFn =>
+      'Havo oqimi va changning tortishga ta’sirini kamaytiradi.';
+
+  @override
+  String get schemPartsAnalyticalBalanceDisplayName => 'Displey va tugmalar';
+
+  @override
+  String get schemPartsAnalyticalBalanceDisplayFn =>
+      'Massa ko‘rsatiladi; tara tugmasi idish massasini nolga tushiradi.';
+
+  @override
+  String get schemPartsAnalyticalBalanceWaterName => 'Suv idishi';
+
+  @override
+  String get schemPartsAnalyticalBalanceWaterFn =>
+      'Toza (distillangan) suv, harorati xona haroratiga tenglashtirilgan.';
+
+  @override
+  String get schemPartsAnalyticalBalanceThermometerName => 'Termometr';
+
+  @override
+  String get schemPartsAnalyticalBalanceThermometerFn =>
+      'Suv haroratini o‘lchaydi — zichlik tuzatmasi uchun.';
+
+  @override
+  String get schemPartsAnalyticalBalancePrinciple =>
+      'Pipetka belgilangan hajmdagi suvni tarozidagi idishga quyadi va suv massasi tortiladi. Massa suv zichligi (harorat bo‘yicha) va havoning ko‘tarish kuchi tuzatmalari bilan hajmga aylantiriladi, shuning uchun suv va havo harorati qayd etiladi. Pipetka «quyish uchun» hajmga kalibrlanadi.';
+
+  @override
+  String get schemPartsAnalyticalBalanceResult =>
+      'Har quyishning hisoblangan hajmi; nominal hajm bilan solishtirib aniqlik (sistematik xato) va takrorlanuvchanlik baholanadi.';
 }

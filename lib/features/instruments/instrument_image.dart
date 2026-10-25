@@ -4,6 +4,8 @@ import '../../app/widgets/links.dart';
 import '../../design/tokens.dart';
 import '../../l10n/gen/app_localizations.dart';
 import 'instrument_catalog.dart';
+import 'schematic_parts.dart';
+import 'schematic_parts_l10n.dart';
 
 /// Rasm maydonining neytral foni (fotoning o'z rangiga aralashmaydi).
 Color _frameColor(BuildContext context) =>
@@ -21,12 +23,16 @@ class InstrumentImageBlock extends StatelessWidget {
     super.key,
     required this.model,
     required this.officialPage,
+    this.parts,
   });
 
   final InstrumentModel model;
 
   /// Ishlab chiqaruvchining rasmiy mahsulot sahifasi (bo'lsa).
   final CatalogSource? officialPage;
+
+  /// Sxematik chizma qismlari (foto yo'q bo'lganda chizma ostida panel).
+  final SchematicPartsEntry? parts;
 
   @override
   Widget build(BuildContext context) {
@@ -90,7 +96,7 @@ class InstrumentImageBlock extends StatelessWidget {
             style: text.bodySmall!.copyWith(color: p.sub),
           ),
         ] else ...[
-          _SchematicBlock(model: model, hasPage: page != null),
+          _SchematicBlock(model: model, hasPage: page != null, parts: parts),
         ],
         if (page != null) _Link(label: l.instMakerSource, url: page.url),
       ],
@@ -101,9 +107,14 @@ class InstrumentImageBlock extends StatelessWidget {
 /// Foto yo'q model: apparat turining sxematik chizmasi + majburiy izoh
 /// (uz/ru/en) — foydalanuvchi buni aniq model fotosi deb o'ylamasligi uchun.
 class _SchematicBlock extends StatelessWidget {
-  const _SchematicBlock({required this.model, required this.hasPage});
+  const _SchematicBlock({
+    required this.model,
+    required this.hasPage,
+    this.parts,
+  });
 
   final InstrumentModel model;
+  final SchematicPartsEntry? parts;
 
   /// Rasmiy sahifa havolasi bor — “aniq model rasmini u yerda ko'ring” izohi.
   final bool hasPage;
@@ -125,6 +136,7 @@ class _SchematicBlock extends StatelessWidget {
           viewerTitle: model.model,
           figureKey: const ValueKey('instrument-schematic'),
           captionKey: const ValueKey('instrument-schematic-caption'),
+          parts: parts,
         ),
         if (hasPage) ...[
           const SizedBox(height: 4),
@@ -151,6 +163,7 @@ class SchematicFigure extends StatelessWidget {
     required this.viewerTitle,
     this.figureKey,
     this.captionKey,
+    this.parts,
   });
 
   final String asset;
@@ -163,6 +176,10 @@ class SchematicFigure extends StatelessWidget {
   final String viewerTitle;
   final Key? figureKey;
   final Key? captionKey;
+
+  /// Rasmdagi raqamli belgilarga mos qismlar, prinsip va natija — chizma
+  /// ostida yig'ilgan holda ([SchematicPartsPanel]). null — panel yo'q.
+  final SchematicPartsEntry? parts;
 
   @override
   Widget build(BuildContext context) {
@@ -244,7 +261,145 @@ class SchematicFigure extends StatelessWidget {
           l.instSchematicTapToZoom,
           style: text.bodySmall!.copyWith(color: p.sub),
         ),
+        if (parts case final e?) ...[
+          const SizedBox(height: 8),
+          SchematicPartsPanel(entry: e),
+        ],
       ],
+    );
+  }
+}
+
+/// Rasmdagi belgilar bilan bir xil rang (gen.py `CALLOUT_FILL`).
+const _calloutFill = Color(0xFF1B5E50);
+
+/// “Qismlari va ishlash prinsipi” — chizma ostidagi yig'ilgan panel (egasi
+/// talabi 2026-10-25): ochilganda rasmdagi raqamlar tartibida qismlar (nomi
+/// va vazifasi), so'ng ishlash prinsipi va natija. Standart holatda yopiq —
+/// karta qisqa qoladi. Matnlar ARB da (`schemParts*`).
+class SchematicPartsPanel extends StatelessWidget {
+  const SchematicPartsPanel({super.key, required this.entry});
+
+  final SchematicPartsEntry entry;
+
+  @override
+  Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context);
+    final text = Theme.of(context).textTheme;
+    final p = LgPalette.of(context);
+    String t(String id) => schematicPartsText(l, id) ?? '';
+    Widget heading(String s) => Padding(
+      padding: const EdgeInsets.only(top: 12, bottom: 4),
+      child: Semantics(
+        header: true,
+        child: Text(s, style: text.titleSmall!.copyWith(color: p.ink)),
+      ),
+    );
+    return Material(
+      color: _frameColor(context),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(LgRadius.card),
+        side: BorderSide(color: p.line),
+      ),
+      clipBehavior: Clip.antiAlias,
+      child: Theme(
+        data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
+        child: ExpansionTile(
+          key: ValueKey('schematic-parts-${entry.key}'),
+          tilePadding: const EdgeInsets.symmetric(horizontal: 12),
+          childrenPadding: const EdgeInsets.fromLTRB(12, 0, 12, 14),
+          expandedCrossAxisAlignment: CrossAxisAlignment.stretch,
+          leading: Icon(Icons.format_list_numbered_rounded, color: p.brand),
+          title: Text(l.schemPartsPanelTitle, style: text.titleSmall),
+          subtitle: Text(
+            l.schemPartsPanelHint,
+            style: text.bodySmall!.copyWith(color: p.sub),
+          ),
+          children: [
+            heading(l.schemPartsPartsTitle),
+            for (final part in entry.parts)
+              _PartRow(n: part.n, name: t(part.nameId), fn: t(part.fnId)),
+            heading(l.schemPartsPrincipleTitle),
+            Text(
+              t(entry.principleId),
+              key: const ValueKey('schematic-parts-principle'),
+              style: text.bodyMedium,
+            ),
+            heading(l.schemPartsResultTitle),
+            Text(
+              t(entry.resultId),
+              key: const ValueKey('schematic-parts-result'),
+              style: text.bodyMedium,
+            ),
+            const SizedBox(height: 10),
+            Text(
+              l.schemPartsClassNote,
+              style: text.bodySmall!.copyWith(color: p.sub),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _PartRow extends StatelessWidget {
+  const _PartRow({required this.n, required this.name, required this.fn});
+
+  final int n;
+  final String name;
+  final String fn;
+
+  @override
+  Widget build(BuildContext context) {
+    final text = Theme.of(context).textTheme;
+    final p = LgPalette.of(context);
+    return Semantics(
+      container: true,
+      label: '$n. $name. $fn',
+      excludeSemantics: true,
+      child: Padding(
+        key: ValueKey('schematic-part-$n'),
+        padding: const EdgeInsets.symmetric(vertical: 5),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              constraints: const BoxConstraints(minWidth: 26, minHeight: 26),
+              padding: const EdgeInsets.symmetric(horizontal: 4),
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                color: _calloutFill,
+                borderRadius: BorderRadius.circular(13),
+                border: Border.all(color: Colors.white, width: 1.5),
+              ),
+              child: Text(
+                '$n',
+                style: text.labelMedium!.copyWith(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ),
+            const SizedBox(width: 10),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    name,
+                    style: text.bodyMedium!.copyWith(
+                      color: p.ink,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  Text(fn, style: text.bodySmall!.copyWith(color: p.sub)),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
