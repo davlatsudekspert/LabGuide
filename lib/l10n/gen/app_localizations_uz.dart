@@ -10357,11 +10357,11 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get imgDiagramDifferentialCountAlt =>
-      'Leykoformulani qo‘lda sanash sxemasi: 1 surtmani baholang (tekis, chiziq va teshiksiz; yomon bo‘lsa — yangisini tayyorlang); 2 ×100 immersiyada bir qavatli zonada, bir yo‘nalishda, maydonlarni takrorlamay sanang; 3 SOP bo‘yicha, odatda 100 hujayra sanang; 4 har bir tur ulushi %, mutlaq son = ulush × WBC. Qaror: blast yoki aniqlanmagan hujayra bormi? Ha — o‘zingiz talqin qilmang, surtmani gematolog yoki shifokor ko‘rsin; yo‘q — laboratoriya blankasidagi referens oraliq bilan solishtiring.';
+      'Leykoformulani qo‘lda sanash sxemasi: 1 surtmani baholang (tekis, chiziq va teshiksiz; yomon bo‘lsa — yangisini tayyorlang); 2 ×100 immersiyada bir qavatli zonada, bir yo‘nalishda, maydonlarni takrorlamay sanang; 3 SOP bo‘yicha, odatda 100 hujayra sanang; 4 har bir tur ulushi %, mutlaq son = ulush × WBC. Qaror: blast yoki aniqlanmagan hujayra bormi? Ha — o‘zingiz talqin qilmang, surtmani gematolog yoki shifokor ko‘rsin; yo‘q — laboratoriya blankasidagi referens interval bilan solishtiring.';
 
   @override
   String get imgDiagramQcDecisionAlt =>
-      'Sifat nazorati seriyasi bo‘yicha qaror sxemasi: 1 nazorat materiallarini o‘lchash; 2 qiymatlarni Levey–Jennings grafigiga maqsadli o‘rtacha ± SD bo‘yicha qo‘yish. Qaror: rad qoidasi buzildimi (1-3s, 2-2s, R-4s, 4-1s, 10x)? Yo‘q — seriya qabul qilinadi (faqat 1-2s — ogohlantirish). Ha — seriya rad etiladi: bemor natijalari berilmaydi; sabab izlanadi, nazorat shunchaki takrorlanmaydi; tuzatilib, QC va bemor namunalari qayta tekshiriladi; QC tiklangach natija beriladi, choralar yoziladi.';
+      'Sifat nazorati seriyasi bo‘yicha qaror sxemasi: 1 nazorat materiallarini o‘lchash; 2 qiymatlarni Levey–Jennings grafigiga maqsadli o‘rtacha ± SD bo‘yicha qo‘yish. Qaror: rad qoidasi buzildimi (1-3s, 2-2s, R-4s, 4-1s, 10x)? Yo‘q — seriya qabul qilinadi (faqat 1-2s — ogohlantirish). Ha — seriya rad etiladi: tekshiruv to‘xtatiladi, bemor natijalari berilmaydi; sabab izlanadi, nazorat shunchaki takrorlanmaydi; tuzatilib, QC va bemor namunalari qayta tekshiriladi; QC tiklangach natija beriladi, choralar yoziladi.';
 
   @override
   String get imgDiagramPreanalyticsAlt =>
@@ -10369,7 +10369,7 @@ class AppLocalizationsUz extends AppLocalizations {
 
   @override
   String get imgDiagramPhotometryAlt =>
-      'Absorbsion fotometriya sxemasi: nur manbai, filtr (to‘lqin uzunligi λ), optik yo‘li ℓ bo‘lgan kyuveta, detektor va natija. Tushayotgan nur I0, o‘tgan nur I; optik zichlik A = log10(I0/I); Buger–Lambert–Ber qonuni A = ε·ℓ·c. Blank, standart va namuna o‘lchanadi; C = (A namuna ÷ A standart) × C standart. Chiziqlilik chegarasidan oshsa — suyultirib takrorlanadi va natija suyultirish darajasiga ko‘paytiriladi. To‘lqin uzunligi, blank va chegaralar — reagent IFU’siga ko‘ra.';
+      'Absorbsion fotometriya sxemasi: nur manbai, filtr (to‘lqin uzunligi λ), optik yo‘li ℓ bo‘lgan kyuveta, detektor va natija. Tushayotgan nur I0, o‘tgan nur I; yutilish (optik zichlik) A = log10(I0/I); Buger–Lambert–Ber qonuni A = ε·ℓ·c. Blank, standart va namuna o‘lchanadi; C = (A namuna ÷ A standart) × C standart. Chiziqlilik chegarasidan oshsa — suyultirib takrorlanadi va natija suyultirish darajasiga ko‘paytiriladi. To‘lqin uzunligi, blank va chegaralar — reagent IFU’siga ko‘ra.';
 
   @override
   String get imgDiagramEducationalFeedbackAlt =>

@@ -375,8 +375,8 @@ T = {
         },
         "r1": {  # QC-5
             "en": "Reject: stop, do not report results",
-            "ru": "Отклонить: результаты пациентов не выдавать",
-            "uz": "Rad: bemor natijalarini bermang",
+            "ru": "Отклонить: остановить, результаты пациентов не выдавать",
+            "uz": "Rad: to‘xtating, bemor natijalarini bermang",
         },
         "r2": {  # QC-6
             "en": "Find the cause; do not just repeat QC",
@@ -386,7 +386,7 @@ T = {
         "r3": {  # QC-7
             "en": "Fix it; recheck QC and patient samples",
             "ru": "Устраните; повторите КК и пробы пациентов",
-            "uz": "Tuzatib, QC va namunalarni qayta tekshiring",
+            "uz": "Tuzatib, QC va bemor namunalarini qayta tekshiring",
         },
         "r4": {  # QC-8
             "en": "Report once in control; record the actions",
@@ -459,8 +459,8 @@ T = {
         },
         "s2": {  # DIF-3
             "en": ("Count in the monolayer", "×100 oil; one way, no repeats"),
-            "ru": ("Счёт в монослое", "×100; в одну сторону, без повторов"),
-            "uz": ("Bir qavatli zonada sanang", "×100; bir yo‘nalishda, takrorlamay"),
+            "ru": ("Счёт в монослое", "иммерсия ×100; в одну сторону, без повторов"),
+            "uz": ("Bir qavatli zonada sanang", "×100 immersiya; bir yo‘nalishda, takrorlamay"),
         },
         "s3": {  # DIF-4
             "en": ("Count to the SOP target", "usually 100 cells"),
@@ -485,12 +485,12 @@ T = {
         "report": {  # DIF-7
             "en": ("Compare with the reference interval", "from your lab’s report form"),
             "ru": ("Сравните с референтным интервалом", "с бланка лаборатории"),
-            "uz": ("Referens oraliq bilan solishtiring", "laboratoriya blankasidan"),
+            "uz": ("Referens interval bilan solishtiring", "laboratoriya blankasidan"),
         },
         "footer": {
-            "en": "WHO basic laboratory manual 2003 · lab SOP prevails",
-            "ru": "Руководство ВОЗ 2003 · приоритет — СОП лаборатории",
-            "uz": "JSST qo‘llanmasi 2003 · laboratoriya SOP’i ustun",
+            "en": "WHO 2003 · your lab SOP prevails",
+            "ru": "ВОЗ 2003 · приоритет — СОП лаборатории",
+            "uz": "JSST 2003 · laboratoriya SOP’i ustun",
         },
     },
     "photometry": {
@@ -506,8 +506,8 @@ T = {
         },
         "f1": {  # PHO-2
             "en": "Absorbance",
-            "ru": "Оптическая плотность",
-            "uz": "Optik zichlik",
+            "ru": "Поглощение (оптическая плотность)",
+            "uz": "Yutilish (optik zichlik)",
         },
         "f2": {  # PHO-3
             "en": "Beer–Lambert law",
@@ -757,23 +757,25 @@ def photometry(lang):
             raise SystemExit(f"photometry {lang}: yorliq keng: {lab}")
         b += text(x, cy + 92, lab, SIZE, 600, INK, "middle")
     # ---------------- formulalar (ikki karta)
-    fy, fh = cy + 110, 92
+    fy = cy + 108
     cards = (
         (t["f1"], [("A = log", False), ("10", True), ("(I", False), ("0", True), (" / I)", False)], 380),
         (t["f2"], [("A = ε · ℓ · c", False)], W - 48 - 24 - 380),
     )
+    caps = [wrap(cap, cw - 40, SIZE, 600) for cap, _, cw in cards]
+    nl = max(len(c) for c in caps)  # sarlavha 2 qatorga o'tishi mumkin (ru)
+    fh = 92 + (nl - 1) * LH
     x0 = 24
-    for cap, parts, cw in cards:
-        if M.width(cap, SIZE, 600) > cw - 40:
-            raise SystemExit(f"photometry {lang}: formula sarlavhasi keng: {cap}")
+    for (cap, parts, cw), lines in zip(cards, caps):
         b += f'<rect x="{x0:.1f}" y="{fy}" width="{cw:.1f}" height="{fh}" rx="16" fill="{SOFT}"/>'
-        b += text(x0 + 20, fy + 34, cap, SIZE, 600, SUB)
-        b += formula(x0 + 20, fy + 76, parts, 34)
+        for i, ln in enumerate(lines):
+            b += text(x0 + 20, fy + 34 + i * LH, ln, SIZE, 600, SUB)
+        b += formula(x0 + 20, fy + fh - 16, parts, 34)
         x0 += cw + 24
     # ---------------- tartib: 1 o'lchash va hisob -> qaror (chiziqlilik)
     n1 = Node("step", *pair(t["s1"]), w=W - 48)
     d = Node("decision", *pair(t["d"]), w=W - 48)
-    stack([n1, d], 24, fy + fh + 20, BOTTOM, min_gap=30, max_gap=40)
+    stack([n1, d], 24, fy + fh + 14, BOTTOM, min_gap=24, max_gap=40)
     b += n1.svg() + d.svg() + link_down(n1, d)
     return frame("photometry", t["title"], t["footer"], b)
 
