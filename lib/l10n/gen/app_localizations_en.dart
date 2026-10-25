@@ -12834,21 +12834,21 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get proPayTierProSub =>
-      'For lab staff, doctors, students and anyone preparing for the qualification exam';
+      'Paid plans: Student Pro, Teacher Pro, Specialist Pro and Premium';
 
   @override
   String get proPayTierTeacher => 'Teacher Pro';
 
   @override
   String get proPayTierTeacherSub =>
-      'For teachers working with a group: Student plan features plus the teacher panel. The Laboratory section is not included.';
+      'For teachers (teacher panel): create tests, attach students, groups and manage results.';
 
   @override
-  String get proPayFree => 'Features not marked as paid stay free.';
+  String get proPayFree =>
+      'Free features stay free and have no daily limits. When a trial or subscription ends, only the paid features close.';
 
   @override
-  String get proPayFeatQuestions =>
-      'Unlimited questions: practice by topic and card mini-tests';
+  String get proPayFeatQuestions => 'Practice by topic and card mini-tests';
 
   @override
   String get proPayFeatExam => 'Exam simulation (timed test)';
@@ -12867,7 +12867,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get proPayFeatHistory => 'Full results history';
 
   @override
-  String get proPayFeatAllPro => 'Everything in Pro';
+  String get proPayFeatAllPro => 'Everything in Student Pro';
 
   @override
   String get proPayFeatGroups =>
@@ -12982,7 +12982,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String proPayTrial(String trial, String price) {
-    return '$trial free, then $price';
+    return '$trial free, then $price. The price and renewal terms are those shown in the store sheet.';
   }
 
   @override
@@ -13008,27 +13008,28 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String proPayDisclosure(String store) {
-    return 'Subscriptions renew automatically. Payment is charged to your $store account when you confirm the purchase (after the free trial ends, if there is one). Unless cancelled at least 24 hours before the end of the current period, the subscription renews for the same period and price, and your account is charged within 24 hours before the period ends. You can manage and cancel the subscription in your $store account settings. Any unused part of a free trial is forfeited when you buy a subscription.';
+    return 'Subscriptions renew automatically. The price and period are shown in the $store sheet before you buy; you are charged only after you confirm the purchase yourself in that sheet (if the store shows a free trial or introductory offer, after it ends, at the price and renewal terms shown by the store). Payment is charged to your $store account. Unless cancelled at least 24 hours before the end of the current period, the subscription renews for the same period and price, and your account is charged within 24 hours before the period ends. You can manage and cancel the subscription in your $store account settings; deleting your LabGuide account does not cancel it. Refund requests are handled by $store.';
   }
 
   @override
   String get proPayGuestNote =>
-      'You need to sign in to subscribe, restore a purchase or start the free trial. The free part of the app works without an account.';
+      'Sign in to subscribe, restore a purchase or start the free trial. The free part of the app works without an account too.';
 
   @override
   String get proPaySignInRequired =>
       'Please sign in first to subscribe or restore a purchase.';
 
   @override
-  String get proPayLockedPro => 'This feature is part of Pro.';
+  String get proPayLockedPro =>
+      'This feature is part of the paid plans: Student Pro, Teacher Pro, Specialist Pro or Premium.';
 
   @override
   String get proPayLockedTeacher =>
-      'This feature is part of the Teacher and Premium plans.';
+      'This feature is part of the Teacher Pro and Premium plans.';
 
   @override
   String get proPayLockedLab =>
-      'This feature is part of the Specialist and Premium plans.';
+      'This feature is part of the Specialist Pro and Premium plans.';
 
   @override
   String get proPayAllOpen => 'All features are open right now.';
@@ -13083,10 +13084,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get proRowTitle => 'Subscription and restore';
 
   @override
-  String get proRowSub => 'Free · Pro';
+  String get proRowSub => 'Free · Pro · Premium';
 
   @override
-  String get proPurchaseTitle => 'LabGuide Pro';
+  String get proPurchaseTitle => 'Pro and Premium plans';
 
   @override
   String get proStatusTitle => 'Status';
@@ -13120,37 +13121,37 @@ class AppLocalizationsEn extends AppLocalizations {
       'No feature is marked as paid yet: everything is open.';
 
   @override
-  String get proPlanStudent => 'Student';
+  String get proPlanStudent => 'Student Pro';
 
   @override
-  String get proPlanTeacher => 'Teacher';
+  String get proPlanTeacher => 'Teacher Pro';
 
   @override
-  String get proPlanSpecialist => 'Specialist';
+  String get proPlanSpecialist => 'Specialist Pro';
 
   @override
   String get proPlanPremium => 'Premium';
 
   @override
-  String get proPayTierStudent => 'Student';
+  String get proPayTierStudent => 'Student Pro';
 
   @override
   String get proPayTierStudentSub =>
-      'For accounts with verified student status';
+      'For learning: teacher-assigned tests, results history, exam simulation, PDF/CSV export and extra materials.';
 
   @override
-  String get proPayTierSpecialist => 'Specialist';
+  String get proPayTierSpecialist => 'Specialist Pro';
 
   @override
   String get proPayTierSpecialistSub =>
-      'For lab specialists and doctors: Student plan features plus the whole Laboratory section. The teacher panel is not included.';
+      'For laboratory specialists: professional laboratory functions.';
 
   @override
   String get proPayTierPremium => 'Premium';
 
   @override
   String get proPayTierPremiumSub =>
-      'Everything: Student plan features, the teacher panel and the whole Laboratory section.';
+      'Everything together: Student Pro, Teacher Pro and Specialist Pro features.';
 
   @override
   String get proPayStatusAdminGrant => 'Pro granted by an administrator';
@@ -13204,7 +13205,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String proGrantConfirmBody(String email, String plan, String duration) {
-    return '$email will get “$plan” Pro. Duration: $duration.';
+    return '$email will get the “$plan” plan. Duration: $duration.';
   }
 
   @override
@@ -13320,30 +13321,29 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get proSubPriceNote =>
-      'Prices are in US dollars. The store shows them in your local currency.';
+      'Prices come from the store and are shown in your local currency. The exact price and period appear in the store sheet before you buy.';
 
   @override
   String proSubUnlocks(String list) {
-    return 'Covers: $list';
+    return 'Includes: $list';
   }
 
   @override
-  String get proSubCapLearner => 'student-side Pro features';
+  String get proSubCapLearner => 'Student Pro';
 
   @override
-  String get proSubCapTeacherPanel => 'teacher-panel Pro features';
+  String get proSubCapTeacherPanel => 'Teacher Pro';
 
   @override
-  String get proSubCapLab =>
-      'the whole Laboratory section (instruments, calibration, QC, calculators, differential counting and more)';
+  String get proSubCapLab => 'Specialist Pro';
 
   @override
   String get proSubNothingGated =>
-      'Right now this plan unlocks nothing extra: everything is free.';
+      'Right now this plan closes nothing: everything is free.';
 
   @override
   String get proSubTeacherNote =>
-      'Teacher-panel Pro features come only with the Teacher or Premium plan, and the Laboratory section only with the Specialist or Premium plan. Changing your role in the app does not unlock them. Today\'s free groups stay free.';
+      'The teacher panel comes only with Teacher Pro or Premium, and professional laboratory functions only with Specialist Pro or Premium. Changing your role does not unlock them. Today’s free features stay free.';
 
   @override
   String proSubTrialTitle(int days) {
@@ -13352,7 +13352,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get proSubTrialOncePerPhone =>
-      'Given only once per phone: not again for another account, nor after deleting and re-creating your account. You need to be signed in with a verified email.';
+      'Given only once: one trial per phone, account and email. Not given again to another account, nor after deleting and re-creating your account. You need to be signed in with a verified email.';
 
   @override
   String get proSubTrialUsed => 'This account has already used its free trial.';
@@ -13365,11 +13365,11 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get proPrivacyTrialNote =>
-      'Pro (only when Pro is enabled; not active now): the 7-day free trial is given once per phone. To enforce this the server keeps the dates, plan, platform and only one-way keyed hashes of your email (in canonical form) and of a device identifier — the email itself, any device identifier and the attestation token are not stored. When you delete your account the record is unlinked from it but kept for 24 months so the trial is not given again, then deleted automatically.';
+      'Free trial: the 7-day free trial is given once per phone. To enforce this the server keeps the dates, plan, platform and only one-way keyed hashes of your email (in canonical form) and of a device identifier — the email itself, any device identifier and the attestation token are not stored. When you delete your account the record is unlinked from it but kept for 24 months so the trial is not given again, then deleted automatically. Details are in the Privacy Policy.';
 
   @override
   String proSubTrialBody(int days) {
-    return '$days days of Pro, free. No payment method is needed and nothing is charged. When it ends, every free feature keeps working; to keep Pro you can subscribe separately.';
+    return 'You can try the paid features of the plan you choose, free, for $days days. Given once; no card or payment method is needed, nothing is charged, and it does not turn into a paid subscription by itself. When it ends, only the paid features close; free features and your data stay.';
   }
 
   @override
@@ -13382,7 +13382,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String proSubTrialConfirmBody(String plan, String date) {
-    return '$plan Pro is free until $date. No payment method, nothing is charged, and it does not turn into a paid subscription. After that date the free features continue.';
+    return '$plan: paid features are free until $date. Given once, no payment method, nothing is charged, and the trial does not turn into a paid subscription. After that date only the paid features close; free features and your data stay.';
   }
 
   @override
@@ -13393,7 +13393,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String proSubTrialStarted(String date) {
-    return 'Free trial started — Pro until $date.';
+    return 'Free trial started — paid features are open until $date.';
   }
 
   @override
@@ -13402,11 +13402,11 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get proSubTrialHasAccess =>
-      'You already have Pro, so a trial is not needed.';
+      'You already have a paid plan, so a trial is not needed.';
 
   @override
   String get proSubTrialPlanNotAllowed =>
-      'The Teacher trial is for teachers registered on the server, the Specialist trial for verified specialists, and the Premium trial for people who are both. Try the Student plan.';
+      'The Teacher Pro trial is for teachers registered on the server, the Specialist Pro trial for verified specialists, and the Premium trial for people who are both. Try Student Pro.';
 
   @override
   String get proSubTrialEmail =>
@@ -13422,7 +13422,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get proSubEnded =>
-      'Pro has ended. Every free feature keeps working and your data stays.';
+      'Your paid plan has ended: only the paid features are closed. Free features keep working and your data stays.';
 
   @override
   String get proSubPriceYearlyNote =>
@@ -13480,4 +13480,82 @@ class AppLocalizationsEn extends AppLocalizations {
   String proSubWillChange(String plan) {
     return 'From the next renewal: $plan plan.';
   }
+
+  @override
+  String get proPayCancelPathApple =>
+      'On iPhone and iPad: Settings → your name → Subscriptions → LabGuide → Cancel Subscription.';
+
+  @override
+  String get proPayCancelPathGoogle =>
+      'On Android: Google Play → profile icon → Payments & subscriptions → Subscriptions → LabGuide → Cancel subscription.';
+
+  @override
+  String proPayStoreTrialNote(String store) {
+    return 'If the store shows a free trial or introductory offer, its length, the later price and the renewal terms are those shown in the $store sheet: read them before you confirm. This is separate from the in-app free trial.';
+  }
+
+  @override
+  String proPayRefundNote(String store) {
+    return 'Refund requests are handled by $store under its own rules: send the request through your $store account. LabGuide does not see your bank card details.';
+  }
+
+  @override
+  String proPayRefundedStatus(String store) {
+    return 'The purchase was refunded or cancelled by $store: paid features are closed. Free features and your data stay.';
+  }
+
+  @override
+  String proPayCancelledUntil(String date) {
+    return 'The subscription is cancelled: paid features work until $date, then only the paid features close.';
+  }
+
+  @override
+  String proPayGraceNote(String store) {
+    return 'There is a problem with the payment. Paid features are kept for now: update your payment method in $store.';
+  }
+
+  @override
+  String get proPayOfflineNote =>
+      'No internet: the last checked status is shown. Paid features work for a limited time and refresh once you are online; the free part works as usual.';
+
+  @override
+  String get proPayOfflineAction =>
+      'No internet. To buy or restore, check your connection and try again.';
+
+  @override
+  String get proPayAgreeNote =>
+      'By subscribing or starting the trial you accept the Terms of Use and the Privacy Policy (links below).';
+
+  @override
+  String get proPayFeatAssignedTests => 'Teacher-assigned tests';
+
+  @override
+  String get proPayFeatExport => 'Download results as PDF and CSV';
+
+  @override
+  String get proPayFeatMaterials => 'Extra materials';
+
+  @override
+  String get proPayFeatCreateTests => 'Create tests and give them to students';
+
+  @override
+  String get proPayFeatAttachStudents => 'Attach students';
+
+  @override
+  String get proPayFeatManageResults => 'Manage results';
+
+  @override
+  String get proPayFeatProLab => 'Professional laboratory functions';
+
+  @override
+  String get proTermsBody =>
+      'LabGuide is a clinical laboratory reference and learning app. The core features are free; paid plans (Student Pro, Teacher Pro, Specialist Pro, Premium) add extra features. By using the app you agree to these terms.\n\n1. Medical limitation. LabGuide does not diagnose, prescribe treatment or medicines, and does not replace your laboratory’s approved procedures, reagent and analyzer instructions (IFU) or a physician’s judgment. Every item shows its source; when making decisions, rely on the original source and your institution’s rules.\n\n2. Account. Some features (groups, tests, community, support requests, paid plans and the free trial) require signing up with email. You are responsible for your account’s security and for actions taken through it. You can delete your account at any time: Profile → Delete account; this does not cancel a store subscription.\n\n3. Teacher and student groups. When a student joins a group, the teacher sees their nickname (or seat number) and test results. Teachers use groups for educational purposes only.\n\n4. User content. You are responsible for what you post in the community and in support requests. Abuse, illegal content, advertising, other people’s personal data and non-consensual intimate images are strictly prohibited. Such content is removed, and the offending account may be restricted or deleted. You can report any message with “Report”.\n\n5. Paid plans and the free trial. Paid plans are sold through the Apple App Store or Google Play as auto-renewing subscriptions. The price and period are shown in the store sheet before you buy; you are charged only after you confirm the purchase in that sheet. You can cancel in your store settings at any time; refund requests are handled by the store. The 7-day free trial is given once and needs no card. When a trial or subscription ends, only the paid features close; free features and your data stay.\n\n6. Copyright. The app’s texts, slides, tests and design belong to the LabGuide authors; external sources are shown with their own licenses. They may not be copied or distributed for commercial purposes.\n\n7. Service. The app is provided “as is”; outages and errors may occur, and we fix them as quickly as we can. We will notify you in the app if these terms change.\n\n8. Privacy. How your data is used is described in the privacy policy: labguide.nfcstore.uz/privacy. The full terms: labguide.nfcstore.uz/terms\n\n9. Contact: labguide@nfcstore.uz';
+
+  @override
+  String get proPrivacyBody =>
+      'The core sections work without an account (guest mode): settings, bookmarks, QC records, your instruments and practice results stay on this device. An account is optional (email code, Google or Apple) — it is needed for groups, the community, “Suggestions and help”, paid plans and the free trial. Then data is stored on a Cloudflare server (Eastern Europe, outside Uzbekistan): email only as a hash and a masked form, sign-in method, role, language, last activity time (to the minute); in a group — a nickname or seat number, test answers and scores; support and report texts. From Google/Apple only the account identifier and email are taken, and the token is not stored. A teacher sees only their own group. Subscription payments are taken by Apple or Google: LabGuide does not see your bank card details; our server verifies the store’s transaction identifiers. For the free trial only the dates and keyed hashes (of your email and a device marker) are kept. No ads, analytics or tracking. The full text is behind the “Privacy Policy” link.';
+
+  @override
+  String get proAccountDeleteBody =>
+      'Your account, sign-in methods (Google/Apple link), group memberships and results, “Suggestions and help” requests, your community questions and answers, and records tied to purchases are deleted from the server for good. If you are a teacher, the groups you created are deleted too. This cannot be undone. A store subscription is not cancelled: cancel it in your App Store or Google Play settings. So that the trial is not given again, the trial record is kept for a limited time, unlinked from your account. The text of reports you sent from the app stays, not linked to your account. Data on the device is cleared too.';
 }

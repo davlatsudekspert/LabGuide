@@ -6781,17 +6781,17 @@
   "howToCoagulogramStep5": "“Anticoagulant monitoring”: warfarin — INR, heparin — APTT/anti-Xa.",
   "howToCoagulogramResult": "A hemostasis test reference, a result reading helper and the DIC score — with sources.",
   "proPayTierPro": "Pro",
-  "proPayTierProSub": "For lab staff, doctors, students and anyone preparing for the qualification exam",
+  "proPayTierProSub": "Paid plans: Student Pro, Teacher Pro, Specialist Pro and Premium",
   "proPayTierTeacher": "Teacher Pro",
-  "proPayTierTeacherSub": "For teachers working with a group: Student plan features plus the teacher panel. The Laboratory section is not included.",
-  "proPayFree": "Features not marked as paid stay free.",
-  "proPayFeatQuestions": "Unlimited questions: practice by topic and card mini-tests",
+  "proPayTierTeacherSub": "For teachers (teacher panel): create tests, attach students, groups and manage results.",
+  "proPayFree": "Free features stay free and have no daily limits. When a trial or subscription ends, only the paid features close.",
+  "proPayFeatQuestions": "Practice by topic and card mini-tests",
   "proPayFeatExam": "Exam simulation (timed test)",
   "proPayFeatToifa": "The full qualification exam bank: official test and practice by topic",
   "proPayFeatWeak": "Weak-topic analysis in your results",
   "proPayFeatAtlas": "Microscopy atlas practice",
   "proPayFeatHistory": "Full results history",
-  "proPayFeatAllPro": "Everything in Pro",
+  "proPayFeatAllPro": "Everything in Student Pro",
   "proPayFeatGroups": "Groups: add students, grades and results reports",
   "proPayFeatAssignments": "Group assignments (timed tests)",
   "proPayFeatLecture": "Lecture mode: automatic presentation for a topic",
@@ -6854,7 +6854,7 @@
       }
     }
   },
-  "proPayTrial": "{trial} free, then {price}",
+  "proPayTrial": "{trial} free, then {price}. The price and renewal terms are those shown in the store sheet.",
   "@proPayTrial": {
     "placeholders": {
       "trial": {
@@ -6872,7 +6872,7 @@
   "proPayManage": "Manage or cancel subscription",
   "proPayTerms": "Terms of Use (EULA)",
   "proPayPrivacy": "Privacy Policy",
-  "proPayDisclosure": "Subscriptions renew automatically. Payment is charged to your {store} account when you confirm the purchase (after the free trial ends, if there is one). Unless cancelled at least 24 hours before the end of the current period, the subscription renews for the same period and price, and your account is charged within 24 hours before the period ends. You can manage and cancel the subscription in your {store} account settings. Any unused part of a free trial is forfeited when you buy a subscription.",
+  "proPayDisclosure": "Subscriptions renew automatically. The price and period are shown in the {store} sheet before you buy; you are charged only after you confirm the purchase yourself in that sheet (if the store shows a free trial or introductory offer, after it ends, at the price and renewal terms shown by the store). Payment is charged to your {store} account. Unless cancelled at least 24 hours before the end of the current period, the subscription renews for the same period and price, and your account is charged within 24 hours before the period ends. You can manage and cancel the subscription in your {store} account settings; deleting your LabGuide account does not cancel it. Refund requests are handled by {store}.",
   "@proPayDisclosure": {
     "placeholders": {
       "store": {
@@ -6880,11 +6880,11 @@
       }
     }
   },
-  "proPayGuestNote": "You need to sign in to subscribe, restore a purchase or start the free trial. The free part of the app works without an account.",
+  "proPayGuestNote": "Sign in to subscribe, restore a purchase or start the free trial. The free part of the app works without an account too.",
   "proPaySignInRequired": "Please sign in first to subscribe or restore a purchase.",
-  "proPayLockedPro": "This feature is part of Pro.",
-  "proPayLockedTeacher": "This feature is part of the Teacher and Premium plans.",
-  "proPayLockedLab": "This feature is part of the Specialist and Premium plans.",
+  "proPayLockedPro": "This feature is part of the paid plans: Student Pro, Teacher Pro, Specialist Pro or Premium.",
+  "proPayLockedTeacher": "This feature is part of the Teacher Pro and Premium plans.",
+  "proPayLockedLab": "This feature is part of the Specialist Pro and Premium plans.",
   "proPayAllOpen": "All features are open right now.",
   "proPayTestBuildOpen": "Test build: all features are open.",
   "proPayStatusTeacher": "Teacher Pro is active · until {date}",
@@ -6913,8 +6913,8 @@
     }
   },
   "proRowTitle": "Subscription and restore",
-  "proRowSub": "Free · Pro",
-  "proPurchaseTitle": "LabGuide Pro",
+  "proRowSub": "Free · Pro · Premium",
+  "proPurchaseTitle": "Pro and Premium plans",
   "proStatusTitle": "Status",
   "proStatusPro": "Pro is active · until {date}",
   "@proStatusPro": {
@@ -6945,16 +6945,16 @@
     }
   },
   "proNothingGated": "No feature is marked as paid yet: everything is open.",
-  "proPlanStudent": "Student",
-  "proPlanTeacher": "Teacher",
-  "proPlanSpecialist": "Specialist",
+  "proPlanStudent": "Student Pro",
+  "proPlanTeacher": "Teacher Pro",
+  "proPlanSpecialist": "Specialist Pro",
   "proPlanPremium": "Premium",
-  "proPayTierStudent": "Student",
-  "proPayTierStudentSub": "For accounts with verified student status",
-  "proPayTierSpecialist": "Specialist",
-  "proPayTierSpecialistSub": "For lab specialists and doctors: Student plan features plus the whole Laboratory section. The teacher panel is not included.",
+  "proPayTierStudent": "Student Pro",
+  "proPayTierStudentSub": "For learning: teacher-assigned tests, results history, exam simulation, PDF/CSV export and extra materials.",
+  "proPayTierSpecialist": "Specialist Pro",
+  "proPayTierSpecialistSub": "For laboratory specialists: professional laboratory functions.",
   "proPayTierPremium": "Premium",
-  "proPayTierPremiumSub": "Everything: Student plan features, the teacher panel and the whole Laboratory section.",
+  "proPayTierPremiumSub": "Everything together: Student Pro, Teacher Pro and Specialist Pro features.",
   "proPayStatusAdminGrant": "Pro granted by an administrator",
   "proPayStatusAdminGrantUntil": "Pro granted by an administrator · until {date}",
   "@proPayStatusAdminGrantUntil": {
@@ -6984,7 +6984,7 @@
   "proGrantExtend": "Extend the existing grant (do not replace)",
   "proGrantSubmit": "Grant Pro",
   "proGrantConfirmTitle": "Grant Pro?",
-  "proGrantConfirmBody": "{email} will get “{plan}” Pro. Duration: {duration}.",
+  "proGrantConfirmBody": "{email} will get the “{plan}” plan. Duration: {duration}.",
   "@proGrantConfirmBody": {
     "placeholders": {
       "email": {
@@ -7118,8 +7118,8 @@
     }
   },
   "proSubPlansTitle": "Plans",
-  "proSubPriceNote": "Prices are in US dollars. The store shows them in your local currency.",
-  "proSubUnlocks": "Covers: {list}",
+  "proSubPriceNote": "Prices come from the store and are shown in your local currency. The exact price and period appear in the store sheet before you buy.",
+  "proSubUnlocks": "Includes: {list}",
   "@proSubUnlocks": {
     "placeholders": {
       "list": {
@@ -7127,11 +7127,11 @@
       }
     }
   },
-  "proSubCapLearner": "student-side Pro features",
-  "proSubCapTeacherPanel": "teacher-panel Pro features",
-  "proSubCapLab": "the whole Laboratory section (instruments, calibration, QC, calculators, differential counting and more)",
-  "proSubNothingGated": "Right now this plan unlocks nothing extra: everything is free.",
-  "proSubTeacherNote": "Teacher-panel Pro features come only with the Teacher or Premium plan, and the Laboratory section only with the Specialist or Premium plan. Changing your role in the app does not unlock them. Today's free groups stay free.",
+  "proSubCapLearner": "Student Pro",
+  "proSubCapTeacherPanel": "Teacher Pro",
+  "proSubCapLab": "Specialist Pro",
+  "proSubNothingGated": "Right now this plan closes nothing: everything is free.",
+  "proSubTeacherNote": "The teacher panel comes only with Teacher Pro or Premium, and professional laboratory functions only with Specialist Pro or Premium. Changing your role does not unlock them. Today’s free features stay free.",
   "proSubTrialTitle": "{days}-day free trial",
   "@proSubTrialTitle": {
     "placeholders": {
@@ -7140,12 +7140,12 @@
       }
     }
   },
-  "proSubTrialOncePerPhone": "Given only once per phone: not again for another account, nor after deleting and re-creating your account. You need to be signed in with a verified email.",
+  "proSubTrialOncePerPhone": "Given only once: one trial per phone, account and email. Not given again to another account, nor after deleting and re-creating your account. You need to be signed in with a verified email.",
   "proSubTrialUsed": "This account has already used its free trial.",
   "proSubTrialNotActive": "The free trial is not switched on yet.",
   "proSubTrialGuest": "Sign in to use the free trial.",
-  "proPrivacyTrialNote": "Pro (only when Pro is enabled; not active now): the 7-day free trial is given once per phone. To enforce this the server keeps the dates, plan, platform and only one-way keyed hashes of your email (in canonical form) and of a device identifier — the email itself, any device identifier and the attestation token are not stored. When you delete your account the record is unlinked from it but kept for 24 months so the trial is not given again, then deleted automatically.",
-  "proSubTrialBody": "{days} days of Pro, free. No payment method is needed and nothing is charged. When it ends, every free feature keeps working; to keep Pro you can subscribe separately.",
+  "proPrivacyTrialNote": "Free trial: the 7-day free trial is given once per phone. To enforce this the server keeps the dates, plan, platform and only one-way keyed hashes of your email (in canonical form) and of a device identifier — the email itself, any device identifier and the attestation token are not stored. When you delete your account the record is unlinked from it but kept for 24 months so the trial is not given again, then deleted automatically. Details are in the Privacy Policy.",
+  "proSubTrialBody": "You can try the paid features of the plan you choose, free, for {days} days. Given once; no card or payment method is needed, nothing is charged, and it does not turn into a paid subscription by itself. When it ends, only the paid features close; free features and your data stay.",
   "@proSubTrialBody": {
     "placeholders": {
       "days": {
@@ -7162,7 +7162,7 @@
     }
   },
   "proSubTrialConfirmTitle": "Start the free trial?",
-  "proSubTrialConfirmBody": "{plan} Pro is free until {date}. No payment method, nothing is charged, and it does not turn into a paid subscription. After that date the free features continue.",
+  "proSubTrialConfirmBody": "{plan}: paid features are free until {date}. Given once, no payment method, nothing is charged, and the trial does not turn into a paid subscription. After that date only the paid features close; free features and your data stay.",
   "@proSubTrialConfirmBody": {
     "placeholders": {
       "plan": {
@@ -7175,7 +7175,7 @@
   },
   "proSubTrialConfirm": "Start trial",
   "proSubTrialCancel": "Not now",
-  "proSubTrialStarted": "Free trial started — Pro until {date}.",
+  "proSubTrialStarted": "Free trial started — paid features are open until {date}.",
   "@proSubTrialStarted": {
     "placeholders": {
       "date": {
@@ -7184,12 +7184,12 @@
     }
   },
   "proSubTrialNotOnPlatform": "The free trial is not available on this device yet. All free features work as usual.",
-  "proSubTrialHasAccess": "You already have Pro, so a trial is not needed.",
-  "proSubTrialPlanNotAllowed": "The Teacher trial is for teachers registered on the server, the Specialist trial for verified specialists, and the Premium trial for people who are both. Try the Student plan.",
+  "proSubTrialHasAccess": "You already have a paid plan, so a trial is not needed.",
+  "proSubTrialPlanNotAllowed": "The Teacher Pro trial is for teachers registered on the server, the Specialist Pro trial for verified specialists, and the Premium trial for people who are both. Try Student Pro.",
   "proSubTrialEmail": "The trial needs the verified email of your account.",
   "proSubTrialDevice": "This device could not be verified, so the trial cannot start here.",
   "proSubTrialSubscribed": "You already have an active subscription.",
-  "proSubEnded": "Pro has ended. Every free feature keeps working and your data stays.",
+  "proSubEnded": "Your paid plan has ended: only the paid features are closed. Free features keep working and your data stays.",
   "proSubPriceYearlyNote": "The yearly plan is billed once a year at the price shown.",
   "proSubWithoutSubscription": "You can use the app without a subscription: free features stay free.",
   "proGrantCustom": "Other duration (number)",
@@ -7237,5 +7237,60 @@
         "type": "String"
       }
     }
-  }
+  },
+  "proPayCancelPathApple": "On iPhone and iPad: Settings → your name → Subscriptions → LabGuide → Cancel Subscription.",
+  "proPayCancelPathGoogle": "On Android: Google Play → profile icon → Payments & subscriptions → Subscriptions → LabGuide → Cancel subscription.",
+  "proPayStoreTrialNote": "If the store shows a free trial or introductory offer, its length, the later price and the renewal terms are those shown in the {store} sheet: read them before you confirm. This is separate from the in-app free trial.",
+  "@proPayStoreTrialNote": {
+    "placeholders": {
+      "store": {
+        "type": "String"
+      }
+    }
+  },
+  "proPayRefundNote": "Refund requests are handled by {store} under its own rules: send the request through your {store} account. LabGuide does not see your bank card details.",
+  "@proPayRefundNote": {
+    "placeholders": {
+      "store": {
+        "type": "String"
+      }
+    }
+  },
+  "proPayRefundedStatus": "The purchase was refunded or cancelled by {store}: paid features are closed. Free features and your data stay.",
+  "@proPayRefundedStatus": {
+    "placeholders": {
+      "store": {
+        "type": "String"
+      }
+    }
+  },
+  "proPayCancelledUntil": "The subscription is cancelled: paid features work until {date}, then only the paid features close.",
+  "@proPayCancelledUntil": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "proPayGraceNote": "There is a problem with the payment. Paid features are kept for now: update your payment method in {store}.",
+  "@proPayGraceNote": {
+    "placeholders": {
+      "store": {
+        "type": "String"
+      }
+    }
+  },
+  "proPayOfflineNote": "No internet: the last checked status is shown. Paid features work for a limited time and refresh once you are online; the free part works as usual.",
+  "proPayOfflineAction": "No internet. To buy or restore, check your connection and try again.",
+  "proPayAgreeNote": "By subscribing or starting the trial you accept the Terms of Use and the Privacy Policy (links below).",
+  "proPayFeatAssignedTests": "Teacher-assigned tests",
+  "proPayFeatExport": "Download results as PDF and CSV",
+  "proPayFeatMaterials": "Extra materials",
+  "proPayFeatCreateTests": "Create tests and give them to students",
+  "proPayFeatAttachStudents": "Attach students",
+  "proPayFeatManageResults": "Manage results",
+  "proPayFeatProLab": "Professional laboratory functions",
+  "proTermsBody": "LabGuide is a clinical laboratory reference and learning app. The core features are free; paid plans (Student Pro, Teacher Pro, Specialist Pro, Premium) add extra features. By using the app you agree to these terms.\n\n1. Medical limitation. LabGuide does not diagnose, prescribe treatment or medicines, and does not replace your laboratory’s approved procedures, reagent and analyzer instructions (IFU) or a physician’s judgment. Every item shows its source; when making decisions, rely on the original source and your institution’s rules.\n\n2. Account. Some features (groups, tests, community, support requests, paid plans and the free trial) require signing up with email. You are responsible for your account’s security and for actions taken through it. You can delete your account at any time: Profile → Delete account; this does not cancel a store subscription.\n\n3. Teacher and student groups. When a student joins a group, the teacher sees their nickname (or seat number) and test results. Teachers use groups for educational purposes only.\n\n4. User content. You are responsible for what you post in the community and in support requests. Abuse, illegal content, advertising, other people’s personal data and non-consensual intimate images are strictly prohibited. Such content is removed, and the offending account may be restricted or deleted. You can report any message with “Report”.\n\n5. Paid plans and the free trial. Paid plans are sold through the Apple App Store or Google Play as auto-renewing subscriptions. The price and period are shown in the store sheet before you buy; you are charged only after you confirm the purchase in that sheet. You can cancel in your store settings at any time; refund requests are handled by the store. The 7-day free trial is given once and needs no card. When a trial or subscription ends, only the paid features close; free features and your data stay.\n\n6. Copyright. The app’s texts, slides, tests and design belong to the LabGuide authors; external sources are shown with their own licenses. They may not be copied or distributed for commercial purposes.\n\n7. Service. The app is provided “as is”; outages and errors may occur, and we fix them as quickly as we can. We will notify you in the app if these terms change.\n\n8. Privacy. How your data is used is described in the privacy policy: labguide.nfcstore.uz/privacy. The full terms: labguide.nfcstore.uz/terms\n\n9. Contact: labguide@nfcstore.uz",
+  "proPrivacyBody": "The core sections work without an account (guest mode): settings, bookmarks, QC records, your instruments and practice results stay on this device. An account is optional (email code, Google or Apple) — it is needed for groups, the community, “Suggestions and help”, paid plans and the free trial. Then data is stored on a Cloudflare server (Eastern Europe, outside Uzbekistan): email only as a hash and a masked form, sign-in method, role, language, last activity time (to the minute); in a group — a nickname or seat number, test answers and scores; support and report texts. From Google/Apple only the account identifier and email are taken, and the token is not stored. A teacher sees only their own group. Subscription payments are taken by Apple or Google: LabGuide does not see your bank card details; our server verifies the store’s transaction identifiers. For the free trial only the dates and keyed hashes (of your email and a device marker) are kept. No ads, analytics or tracking. The full text is behind the “Privacy Policy” link.",
+  "proAccountDeleteBody": "Your account, sign-in methods (Google/Apple link), group memberships and results, “Suggestions and help” requests, your community questions and answers, and records tied to purchases are deleted from the server for good. If you are a teacher, the groups you created are deleted too. This cannot be undone. A store subscription is not cancelled: cancel it in your App Store or Google Play settings. So that the trial is not given again, the trial record is kept for a limited time, unlinked from your account. The text of reports you sent from the app stays, not linked to your account. Data on the device is cleared too."
 }

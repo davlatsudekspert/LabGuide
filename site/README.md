@@ -9,6 +9,7 @@ qurilma sozlamasiga ko‘ra (`prefers-color-scheme`).
 |---|---|
 | `index.html` | Bosh sahifa (uz/ru/en): LabGuide nima, “tibbiy qurilma emas” ogohlantirishi, aloqa, havolalar |
 | `privacy/index.html` | Maxfiylik siyosati — **avtomatik yasaladi**, qo‘lda tahrirlamang |
+| `terms/index.html` | Foydalanish shartlari (obuna, bepul sinov, bekor qilish) — **avtomatik yasaladi** (`docs/store/TERMS_OF_USE.md`), qo‘lda tahrirlamang |
 | `delete-account/index.html` | Hisobni o‘chirish yo‘riqnomasi (ilovada va email orqali) |
 | `j/index.html` | Guruh taklifi QR havolasi (`j/?c=KOD&a=TEST`): kod katta harfda va “Ilovada ochish” (`labguide://app/j?...`). Kichik ichki skript faqat `?c=` ni o‘qiydi — tashqi so‘rov yo‘q, hech narsa saqlanmaydi (`check_site.py` skriptni faqat shu sahifaga ruxsat etadi) |
 | `style.css` | Umumiy uslub (ranglar ilova palitrasidan, `lib/design/tokens.dart`) |
@@ -17,10 +18,10 @@ qurilma sozlamasiga ko‘ra (`prefers-color-scheme`).
 
 ## Yangilash
 
-Siyosat matni bitta joyda — `docs/store/PRIVACY_POLICY.md`. Uni o‘zgartirgandan keyin:
+Siyosat matni bitta joyda — `docs/store/PRIVACY_POLICY.md`, foydalanish shartlari — `docs/store/TERMS_OF_USE.md`. Ularni o‘zgartirgandan keyin:
 
 ```sh
-python3 tool/site/build_site.py      # site/privacy/index.html ni qayta yasaydi
+python3 tool/site/build_site.py      # site/privacy/index.html va site/terms/index.html ni qayta yasaydi
 python3 tool/site/check_site.py      # tekshiruv: ichki izoh, taqiqlangan so‘zlar, havolalar
 ```
 
@@ -31,7 +32,9 @@ chiqmaydi. `check_site.py` xato topsa, nol bo‘lmagan kod bilan tugaydi — sah
 o‘zini sinaydi.
 
 Bosh sahifa va o‘chirish sahifasi qo‘lda yoziladi. Ulardagi da’volar siyosat bilan bir xil
-bo‘lsin (ilovada yo‘q narsani yozmang).
+bo‘lsin (ilovada yo‘q narsani yozmang). D-77: to‘lov/obuna so‘zlari, Pro va Premium nomlari faqat
+`privacy/` va `terms/` da bo‘lishi mumkin; narx (so‘m, USD, $) hech bir sahifada yozilmaydi — narx
+do‘kondan; sinov muddati faqat 7 kun (`check_site.py` shuni tekshiradi).
 
 ## Joylash
 
@@ -41,6 +44,7 @@ Taklif qilingan manzil — egasining domeni ostida: **`https://labguide.nfcstore
 |---|---|---|
 | Bosh sahifa | `https://labguide.nfcstore.uz/` | Google OAuth → Branding → *Application home page*; App Store → *Support URL* |
 | Maxfiylik siyosati | `https://labguide.nfcstore.uz/privacy/` | Google OAuth → *Privacy policy link*; App Store Connect → *Privacy Policy URL*; Play Console → *Privacy policy* |
+| Foydalanish shartlari | `https://labguide.nfcstore.uz/terms/` | App Store Connect → *License Agreement* / ilova tavsifi; Play Console → ilova tavsifi; ilovada to‘lov oynasidagi havola (`Contact.termsOfUseUrl`) |
 | Hisobni o‘chirish | `https://labguide.nfcstore.uz/delete-account/` | Play Console → Data safety → *Delete account URL* |
 
 Sahifalar bir-biriga nisbiy havola bilan ulangan (`../style.css`, `privacy/index.html`), shuning
@@ -61,7 +65,7 @@ Manzil oxiridagi `/` muhim: `…/privacy` (sleshsiz) ochilsa, ko‘pchilik hosti
    `lib/core/contact.dart`, QR/taklif havolasi `…/j/?c=KOD`) aynan shu manzilni ishlatadi, shuning
    uchun boshqa yo‘l (masalan, `nfcstore.uz/labguide/`) tanlanmasin — aks holda ilovadagi havolalar
    ishlamaydi (`tool/site/test_guards.py` tekshiradi). Manzillar: `https://labguide.nfcstore.uz/`,
-   `…/privacy/`, `…/delete-account/`, `…/j/`.
+   `…/privacy/`, `…/terms/`, `…/delete-account/`, `…/j/`.
 4. HTTPS Cloudflare tomonidan avtomatik.
 
 ### 2-variant: istalgan statik hosting

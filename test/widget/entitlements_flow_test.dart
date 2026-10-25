@@ -53,12 +53,17 @@ Future<void> _quickExam(WidgetTester tester, AppLocalizations l) async {
   await tester.pumpAndSettle();
 }
 
-Future<void> _scrollTo(WidgetTester tester, Finder f) =>
-    tester.scrollUntilVisible(
-      f,
-      300,
-      scrollable: find.byType(Scrollable).hitTestable().first,
-    );
+Future<void> _scrollTo(WidgetTester tester, Finder f) async {
+  await tester.scrollUntilVisible(
+    f,
+    300,
+    scrollable: find.byType(Scrollable).hitTestable().first,
+  );
+  // `ensureVisible` ro'yxatni sakratadi, lekin dangasa ro'yxat keyingi
+  // elementlarni faqat keyingi kadrda quradi: matn uzunligi biroz o'zgarsa
+  // ham keyingi `find` bo'sh qolmasin (matn uzunligiga bog'liq mo'rtlik).
+  await tester.pump();
+}
 
 /// Do'kon build (LG_ALL_FEATURES_OPEN=false) + soxta do'kon va server.
 Future<(AppServices, FakePurchaseAdapter)> _storeBuild(

@@ -1,7 +1,9 @@
 # LabGuide — maxfiylik siyosati / Политика конфиденциальности / Privacy Policy
 
-Kuchga kirgan sana / Дата вступления в силу / Effective date: **2026-10-18**\
+Kuchga kirgan sana / Дата вступления в силу / Effective date: **2026-10-25**\
 Aloqa / Контакт / Contact: **labguide@nfcstore.uz**
+
+<!-- NEEDS_OWNER_CHECK: kuchga kirish sanasi (2026-10-25) — matn tahrirlangan sana; pullik versiya nashr qilingan kunga almashtiring. -->
 
 ## O‘zbekcha
 
@@ -10,10 +12,10 @@ Aloqa / Контакт / Contact: **labguide@nfcstore.uz**
 LabGuide — klinik laboratoriya bo‘yicha o‘quv va ma’lumotnoma ilovasi (talabalar, o‘qituvchilar,
 shifokorlar va laboratoriya mutaxassislari uchun). Asosiy imkoniyatlar hisobsiz (mehmon rejimida)
 ishlaydi va ma’lumotlar qurilmangizda qoladi. Hisob ixtiyoriy: u ustoz guruhlari, hamjamiyat
-(savol-javob) va “Taklif va yordam” murojaatlari uchun kerak. Ilovada reklama yo‘q; analitika va
+(savol-javob), “Taklif va yordam” murojaatlari, pullik rejalar va bepul sinov uchun kerak (16-bo‘lim). Ilovada reklama yo‘q; analitika va
 kuzatuv (tracking) SDK lari, reklama identifikatori, joylashuv va kontaktlarga kirish yo‘q
 (Android’dagi QR skaner kutubxonasining texnik diagnostikasi — 14-bo‘lim). Kamera faqat siz
-ochgan QR skanerda va hujjat suratida ishlatiladi. Ma’lumotlaringiz sotilmaydi va reklama uchun boshqalarga berilmaydi.
+ochgan QR skanerda va hujjat suratida ishlatiladi. Ma’lumotlaringiz sotilmaydi va reklama uchun boshqalarga berilmaydi. Pullik rejalar to‘lovini Apple yoki Google qayta ishlaydi; bank kartangiz ma’lumotini LabGuide ko‘rmaydi.
 
 ### 1. Qurilmada saqlanadigan ma’lumotlar
 
@@ -52,6 +54,8 @@ email yozmasangiz). Ilova internetga faqat quyidagi hollarda murojaat qiladi:
 
 LabGuide serveriga yuborilgan har qanday so‘rovda IP manzil 6-bo‘limda yozilganidek ishlanadi.
 
+Mehmon rejimida pullik reja sotib olib bo‘lmaydi, xaridni tiklab bo‘lmaydi va bepul sinov berilmaydi: buning uchun hisob kerak (16-bo‘lim). Bepul imkoniyatlar hisobsiz ishlayveradi.
+
 ### 3. Hisob va kirish usullari (ixtiyoriy)
 
 Hisob uchun uch usuldan birini tanlaysiz; kirishdan oldin foydalanish shartlari va shu siyosatni
@@ -88,6 +92,9 @@ boshqalarga berilmaydi.
   identifikatsiya provayderi sifatida (3-bo‘lim). LabGuide ularga ma’lumotingizni yubormaydi:
   server tokenni tekshirish uchun faqat ularning ochiq kalitlarini o‘qiydi. Apple bilan bog‘langan
   hisobni o‘chirganingizda Apple’ga ruxsatni bekor qilish so‘rovi yuboriladi (10-bo‘lim).
+- **Apple Inc. (App Store)** va **Google LLC (Google Play)** — pullik reja obunasi to‘lovini o‘z hisobingiz orqali
+  qayta ishlaydi, xarid ma’lumotini beradi va bepul sinov uchun qurilma haqiqiyligini tekshirishda
+  qatnashadi (16-bo‘lim). Ularning o‘z maxfiylik siyosatlari amal qiladi.
 - **GitHub, Inc.** — qo‘shimcha kontent paketlari joylashgan ochiq ombor (2-bo‘lim).
 - **Google LLC (Gmail)** — labguide@nfcstore.uz manziliga yozilgan xatlar egasining shu pochta
   qutisiga yetkaziladi (2-bo‘lim).
@@ -139,6 +146,7 @@ ishlaydi; reklama uchun ishlatmaydi va sotmaydi.
   HMAC-hash va niqoblangan ko‘rinish, qo‘shilgan va olib tashlangan sana hamda kim qo‘shgani (ichki
   hash); yozuv tarix sifatida qoladi. Administratorning ikki bosqichli himoya (TOTP) kaliti
   shifrlangan holda saqlanadi.
+- **Xaridlar va bepul sinov yozuvlari:** 16-bo‘lim.
 
 ### 6. IP manzil, jurnallar va statistika
 
@@ -238,6 +246,10 @@ nusxalarida (Time Travel) cheklangan muddat qolishi mumkin, so‘ng o‘z-o‘zi
 - **Qoladi:** xavfsizlik jurnalidagi ichki identifikatorli yozuvlar (jumladan “hisob o‘chirildi”;
   email yo‘q), ilova ichidan yuborgan shikoyatlaringiz matni (hisobga bog‘lanmagan holda) va —
   agar sizni administrator qilib qo‘shilgan bo‘lsa — niqoblangan email bilan admin vakolati tarixi.
+- **Xaridlar va sinov:** serverdagi obuna (xarid) yozuvlaringiz va administrator bergan reja huquqi o‘chadi.
+  **Do‘kon obunasi bekor bo‘lmaydi** — uni App Store yoki Google Play sozlamalarida o‘zingiz bekor
+  qiling. Bepul sinov yozuvi hisobdan uziladi, lekin sinovni qayta olishning oldini olish uchun
+  cheklangan muddat saqlanadi (16-bo‘lim).
 - Guruhdan chiqish faqat a’zolikni o‘chiradi; natijalaringiz hisobingiz yoki guruh o‘chirilguncha
   ustozda qoladi.
 - **Email orqali so‘rov:** ilovaga kira olmasangiz (masalan, hisob to‘xtatilgan bo‘lsa yoki
@@ -253,8 +265,9 @@ nusxalarida (Time Travel) cheklangan muddat qolishi mumkin, so‘ng o‘z-o‘zi
 Kirish kodi — 10 daqiqa; Google/Apple token belgisi — token amal qilish muddatigacha (odatda bir
 soatgacha); sessiya — 60 kun; suiiste’molga qarshi hisoblagichlar — 1–2 sutka; ilova ichidagi
 shikoyatlar va xavfsizlik jurnali — muddatsiz (hisob o‘chirilganda shikoyat hisobdan uziladi);
-qolgan ma’lumotlar — hisob (yoki guruh) o‘chirilguncha. Faol bo‘lmagan hisoblar avtomatik
-o‘chirilmaydi.
+obuna (xarid) yozuvlari — hisob o‘chirilguncha; do‘kon bildirishnomalarining texnik jurnali — 90 kun;
+bepul sinov yozuvi — sinov boshlanganidan 24 oy (16-bo‘lim); qolgan ma’lumotlar — hisob (yoki guruh)
+o‘chirilguncha. Faol bo‘lmagan hisoblar avtomatik o‘chirilmaydi.
 
 ### 12. Bemor ma’lumotlari
 
@@ -293,9 +306,64 @@ ham ishlaydi.
 
 Ilova bolalarga mo‘ljallanmagan va ulardan ataylab ma’lumot to‘plamaydi.
 
-### 16. O‘zgarishlar va aloqa
+### 16. Pullik rejalar, bepul sinov va to‘lovlar
 
-Siyosat o‘zgarsa, yangi versiya shu sahifada sana bilan e’lon qilinadi. Savol va so‘rovlar uchun:
+LabGuide’ning bepul imkoniyatlari bepul qoladi. Qo‘shimcha pullik imkoniyatlar (Talaba Pro, Ustoz Pro,
+Mutaxassis Pro va Premium rejalari) faqat Apple App Store yoki Google Play orqali, avtomatik
+yangilanuvchi obuna sifatida sotiladi; bundan tashqari 7 kunlik bepul sinov bor. Narx va davr xariddan
+oldin do‘kon oynasida ko‘rsatiladi; obuna, sinov va bekor qilish qoidalari —
+[Foydalanish shartlari](https://labguide.nfcstore.uz/terms/) da. Pullik reja va bepul sinov uchun hisob
+kerak; mehmon rejimida ular mavjud emas (2-bo‘lim).
+
+- **To‘lovni kim qayta ishlaydi.** To‘lov va obuna Apple (App Store) yoki Google (Google Play) hisobingiz
+  orqali amalga oshadi: narxni, to‘lov usulini va tasdiqlash oynasini do‘kon boshqaradi. **LabGuide bank
+  kartangiz, to‘lov usuli yoki to‘lov ma’lumotini ko‘rmaydi va saqlamaydi.** Pul faqat siz do‘kon oynasida
+  o‘zingiz tasdiqlaganingizdan keyin yechiladi. Xarid ma’lumoti reklama yoki kuzatuv uchun ishlatilmaydi
+  va sotilmaydi.
+- **Xaridlar: serverda nima saqlanadi.** Xariddan keyin ilova do‘kon bergan xarid ma’lumotini
+  (tranzaksiya yoki xarid tokeni) serverimizga yuboradi, server uni Apple yoki Google bilan tekshiradi.
+  Saqlanadi: platforma (App Store yoki Google Play), do‘konning tranzaksiya (xarid tokeni) identifikatori,
+  sotib olingan mahsulot (reja), holat (faol, imtiyoz muddati, to‘lov qayta urinishi, to‘xtatilgan,
+  muddati tugagan, qaytarilgan), boshlanish va tugash vaqti, muhit (sinov yoki real), oilaviy ulashuv
+  belgisi va ichki hisob identifikatori. Maqsad — rejangizni ochish, boshqa qurilmada tiklash va muddati
+  tugaganda yopish. Bu yozuvlar hisob o‘chirilguncha saqlanadi. Apple va Google bildirishnomalarining
+  texnik jurnali (tur, holat, vaqt; hisob yoki tranzaksiya identifikatorisiz) 90 kungacha saqlanadi.
+- **Qurilmada.** Reja holatining so‘nggi tekshirilgan nusxasi internetsiz ishlash uchun qurilmada
+  saqlanadi va ma’lum muddatdan keyin qayta tekshiriladi.
+- **Tiklash va mehmon.** “Xaridni tiklash” do‘kondagi xaridingizni hisobingizga qayta bog‘laydi. Sotib
+  olingan obuna bitta LabGuide hisobiga bog‘lanadi. Mehmon rejimida xarid qilib yoki tiklab bo‘lmaydi;
+  qurilmadagi do‘kon xaridi hisobga kirmaguncha pullik imkoniyatlarni ochmaydi va hisobga kirganda
+  serverga bog‘lanadi.
+- **Bepul sinov (7 kun, bir marta).** Sinov karta yoki to‘lov usulini talab qilmaydi va o‘zi pullik obunaga
+  aylanmaydi. U bir telefonga, bir hisobga va bir emailga bir marta beriladi. Buning uchun server
+  saqlaydi: sinov boshlangan va tugaydigan sana, tanlangan reja, platforma (iOS yoki Android),
+  emailingizning kanonik ko‘rinishi (masalan Gmail’da nuqta va “+teg”siz) va qurilma belgisining faqat
+  server kaliti bilan olingan, qaytarib bo‘lmaydigan xeshlari hamda hisob identifikatori. **Xom email,
+  qurilma identifikatori yoki qurilma tekshiruvi tokeni saqlanmaydi.** Sinov berilayotganda qurilmaning
+  haqiqiyligi Apple yoki Google xizmati orqali tekshiriladi (token faqat tekshiruv vaqtida xotirada
+  ishlatiladi).
+- **Hisob o‘chirilganda sinov yozuvi.** Hisobni o‘chirsangiz, sinov yozuvi hisobdan uziladi, lekin
+  sinovni qayta olishning oldini olish uchun (suiiste’molga qarshi qonuniy manfaat) sinov boshlanganidan
+  **24 oy** saqlanadi, so‘ng avtomatik o‘chiriladi.
+- **Sinov yoki obuna tugagach.** Faqat pullik imkoniyatlar yopiladi. Bepul imkoniyatlar ishlashda davom
+  etadi, qurilmadagi va serverdagi ma’lumotlaringiz o‘chirilmaydi.
+- **Administrator bergan reja.** LabGuide egasi email manziliga pullik reja huquqini berishi mumkin;
+  bunday yozuv (reja, muddat, egasi yozgan izoh; email faqat hash ko‘rinishida) hisob o‘chirilganda
+  o‘chiriladi.
+- **Obunani bekor qilish va pulni qaytarish.** Bekor qilish do‘kon sozlamalarida amalga oshadi (iPhone va
+  iPad’da: Sozlamalar → ismingiz → Obunalar; Android’da: Google Play → profil → To‘lovlar va obunalar →
+  Obunalar). To‘lovni qaytarish so‘rovlarini do‘kon (Apple yoki Google) o‘z qoidalariga ko‘ra ko‘rib
+  chiqadi. LabGuide hisobini o‘chirish do‘kon obunasini bekor qilmaydi.
+- **Bolalar.** 15-bo‘limdagi bayonot pullik rejalarga ham tegishli: ilova bolalarga mo‘ljallanmagan.
+
+<!-- NEEDS_LAWYER_REVIEW: sinov yozuvini (xeshlar) 24 oy (730 kun) saqlash muddati — yurist tasdig‘i kerak (TRIAL_RETENTION_DAYS, docs/PRO_TRIAL_ABUSE_NOTES.md). Tasdiqlanmaguncha shu matnni o‘zgartirmang va nashr qilmang.
+     NEEDS_OWNER_CHECK: qurilma haqiqiyligini tekshirish mexanizmi (Apple App Attest/DeviceCheck, Google Play Integrity) hali ulanmagan — nashrdan oldin haqiqiy mexanizmga moslab yangilang.
+     NEEDS_OWNER_CHECK: do‘kon menyulari nomlari (Sozlamalar → Obunalar; Payments & subscriptions) o‘zgarishi mumkin — nashr oldidan tekshiring. -->
+
+### 17. O‘zgarishlar va aloqa
+
+Siyosat o‘zgarsa, yangi versiya shu sahifada sana bilan e’lon qilinadi. Foydalanish shartlari:
+[labguide.nfcstore.uz/terms](https://labguide.nfcstore.uz/terms/). Savol va so‘rovlar uchun:
 labguide@nfcstore.uz.
 
 ## Русский
@@ -305,10 +373,10 @@ labguide@nfcstore.uz.
 LabGuide — учебное и справочное приложение по клинической лабораторной диагностике (для студентов,
 преподавателей, врачей и специалистов лаборатории). Основные функции работают без аккаунта
 (гостевой режим), а данные остаются на устройстве. Аккаунт необязателен: он нужен для групп
-преподавателя, сообщества (вопросы и ответы) и обращений «Предложения и помощь». В приложении нет
+преподавателя, сообщества (вопросы и ответы), обращений «Предложения и помощь», платных планов и бесплатного пробного периода (раздел 16). В приложении нет
 рекламы; нет SDK аналитики и отслеживания (tracking), рекламного идентификатора, доступа к
 геолокации и контактам (о технической диагностике библиотеки QR-сканера на Android — раздел 14).
-Камера используется только в открытом вами QR-сканере и для фото документа. Данные не продаются и не передаются другим для рекламы.
+Камера используется только в открытом вами QR-сканере и для фото документа. Данные не продаются и не передаются другим для рекламы. Оплату платных планов принимает Apple или Google; данные вашей банковской карты LabGuide не видит.
 
 ### 1. Данные на устройстве
 
@@ -348,6 +416,8 @@ LabGuide — учебное и справочное приложение по к
 
 Для любого запроса к серверу LabGuide IP-адрес обрабатывается так, как описано в разделе 6.
 
+В гостевом режиме нельзя купить платный план, восстановить покупку и получить бесплатный пробный период: для этого нужен аккаунт (раздел 16). Бесплатные функции работают без аккаунта.
+
 ### 3. Аккаунт и способы входа (по желанию)
 
 Для аккаунта вы выбираете один из трёх способов; перед входом вы отмечаете согласие с условиями
@@ -382,6 +452,9 @@ LabGuide — учебное и справочное приложение по к
   идентификации (раздел 3). LabGuide не отправляет им ваши данные: сервер лишь читает их публичные
   ключи для проверки токена. При удалении аккаунта, связанного с Apple, в Apple отправляется запрос
   на отзыв доступа (раздел 10).
+- **Apple Inc. (App Store)** и **Google LLC (Google Play)** — принимают оплату подписки платного плана через
+  вашу учётную запись, выдают данные о покупке и участвуют в проверке подлинности устройства для
+  бесплатного пробного периода (раздел 16). Действуют их собственные политики конфиденциальности.
 - **GitHub, Inc.** — открытое хранилище дополнительных пакетов контента (раздел 2).
 - **Google LLC (Gmail)** — письма на адрес labguide@nfcstore.uz доставляются в этот почтовый ящик
   владельца (раздел 2).
@@ -433,6 +506,7 @@ Cloudflare, Resend и Brevo обрабатывают данные только �
   в открытом виде — только HMAC-хеш и маскированный вид, даты добавления и удаления и кто добавил
   (внутренний хеш); запись остаётся как история. Ключ двухфакторной защиты (TOTP) администратора
   хранится в зашифрованном виде.
+- **Покупки и записи о пробном периоде:** раздел 16.
 
 ### 6. IP-адрес, журналы и статистика
 
@@ -533,6 +607,10 @@ Cloudflare D1 (Time Travel), после чего исчезают сами.
 - **Остаётся:** записи журнала безопасности с внутренним идентификатором (в том числе «аккаунт
   удалён»; без email), текст отправленных вами из приложения жалоб (без связи с аккаунтом) и — если
   вас добавляли администратором — история прав администратора с маскированным email.
+- **Покупки и пробный период:** записи о подписке (покупках) на сервере и право на платный план, выданное
+  администратором, удаляются. **Подписка в магазине не отменяется** — отмените её сами в настройках
+  App Store или Google Play. Запись о пробном периоде отвязывается от аккаунта, но хранится
+  ограниченное время, чтобы пробный период не выдавался повторно (раздел 16).
 - Выход из группы удаляет только участие; ваши результаты остаются у преподавателя до удаления
   аккаунта или группы.
 - **Запрос по email:** если вы не можете войти в приложение (например, аккаунт приостановлен или
@@ -548,8 +626,9 @@ Cloudflare D1 (Time Travel), после чего исчезают сами.
 
 Код входа — 10 минут; метка токена Google/Apple — на срок действия токена (обычно до часа); сессия
 — 60 дней; счётчики защиты от злоупотреблений — 1–2 суток; жалобы из приложения и журнал
-безопасности — бессрочно (при удалении аккаунта жалоба отвязывается от него); остальные данные — до
-удаления аккаунта (или группы). Неактивные аккаунты автоматически не удаляются.
+безопасности — бессрочно (при удалении аккаунта жалоба отвязывается от него); записи о подписке (покупках) — до удаления аккаунта; технический журнал уведомлений магазинов — 90 дней;
+запись о пробном периоде — 24 месяца с его начала (раздел 16); остальные данные — до удаления аккаунта
+(или группы). Неактивные аккаунты автоматически не удаляются.
 
 ### 12. Данные пациентов
 
@@ -589,9 +668,63 @@ iPhone QR-код читается системным средством Apple. �
 
 Приложение не предназначено для детей и намеренно не собирает их данные.
 
-### 16. Изменения и контакт
+### 16. Платные планы, бесплатный пробный период и оплата
 
-При изменении политики новая версия публикуется на этой странице с датой. Вопросы и запросы:
+Бесплатные функции LabGuide остаются бесплатными. Дополнительные платные возможности (планы Студент Pro,
+Преподаватель Pro, Специалист Pro и Premium) продаются только через Apple App Store или Google Play как
+подписка с автоматическим продлением; кроме того, есть бесплатный пробный период на 7 дней. Цена и период
+показываются в окне магазина до покупки; правила подписки, пробного периода и отмены — в
+[Условиях использования](https://labguide.nfcstore.uz/terms/). Для платного плана и пробного периода
+нужен аккаунт; в гостевом режиме они недоступны (раздел 2).
+
+- **Кто принимает оплату.** Оплата и подписка проходят через вашу учётную запись Apple (App Store) или
+  Google (Google Play): цену, способ оплаты и окно подтверждения контролирует магазин. **LabGuide не видит и
+  не хранит данные вашей банковской карты, способа оплаты и платежа.** Деньги списываются только после
+  того, как вы сами подтвердите покупку в окне магазина. Данные о покупке не используются для рекламы или
+  отслеживания и не продаются.
+- **Покупки: что хранится на сервере.** После покупки приложение отправляет на наш сервер полученные от
+  магазина данные о покупке (идентификатор транзакции или токен покупки), а сервер проверяет их у Apple или
+  Google. Хранятся: платформа (App Store или Google Play), идентификатор транзакции (токен покупки)
+  магазина, купленный продукт (план), статус (активна, льготный период, повтор списания, приостановлена,
+  истекла, возвращена), время начала и окончания, среда (тестовая или рабочая), отметка семейного доступа
+  и внутренний идентификатор аккаунта. Цель — открыть ваш план, восстановить его на другом устройстве и
+  закрыть по окончании срока. Эти записи хранятся до удаления аккаунта. Технический журнал уведомлений
+  Apple и Google (тип, статус, время; без идентификаторов аккаунта и транзакции) хранится до 90 дней.
+- **На устройстве.** Последняя проверенная копия состояния плана хранится на устройстве для работы без
+  интернета и по истечении некоторого времени проверяется заново.
+- **Восстановление и гостевой режим.** «Восстановить покупки» заново привязывает покупку из магазина к
+  вашему аккаунту. Купленная подписка привязывается к одному аккаунту LabGuide. В гостевом режиме нельзя
+  купить или восстановить покупку; покупка на устройстве не открывает платные функции, пока вы не вошли в
+  аккаунт, и привязывается к серверу после входа.
+- **Бесплатный пробный период (7 дней, один раз).** Для него не нужны карта или способ оплаты, и он сам не
+  превращается в платную подписку. Он даётся один раз на телефон, аккаунт и email. Для этого сервер хранит:
+  даты начала и окончания, выбранный план, платформу (iOS или Android), каноническую форму вашего email
+  (например, для Gmail — без точек и «+тега») и идентификатора устройства только в виде необратимых хешей,
+  полученных с секретным ключом сервера, а также идентификатор аккаунта. **Сам email, идентификатор
+  устройства и токен проверки устройства не хранятся.** При выдаче пробного периода подлинность
+  устройства проверяется через сервис Apple или Google (токен используется в памяти только на время
+  проверки).
+- **Запись о пробном периоде при удалении аккаунта.** Если вы удалите аккаунт, запись о пробном периоде
+  отвязывается от него, но, чтобы пробный период не выдавался повторно (законный интерес в защите от
+  злоупотреблений), хранится **24 месяца** с начала пробного периода и затем удаляется автоматически.
+- **Когда пробный период или подписка заканчиваются.** Закрываются только платные функции. Бесплатные
+  функции продолжают работать, ваши данные на устройстве и на сервере не удаляются.
+- **План, выданный администратором.** Владелец LabGuide может выдать право на платный план на ваш email;
+  такая запись (план, срок, заметка владельца; email только в виде хеша) удаляется при удалении аккаунта.
+- **Отмена подписки и возврат средств.** Отмена выполняется в настройках магазина (iPhone и iPad:
+  Настройки → ваше имя → Подписки; Android: Google Play → профиль → Платежи и подписки → Подписки).
+  Запросы на возврат средств рассматривает магазин (Apple или Google) по своим правилам. Удаление
+  аккаунта LabGuide не отменяет подписку в магазине.
+- **Дети.** Заявление из раздела 15 относится и к платным планам: приложение не предназначено для детей.
+
+<!-- NEEDS_LAWYER_REVIEW: срок хранения записи пробного периода (хеши) 24 месяца (730 дней) — нужно подтверждение юриста (см. русскую/узбекскую версию; TRIAL_RETENTION_DAYS). Не менять и не публиковать до подтверждения.
+     NEEDS_OWNER_CHECK: механизм проверки устройства (Apple App Attest/DeviceCheck, Google Play Integrity) ещё не подключён — обновить под фактический механизм перед публикацией.
+     NEEDS_OWNER_CHECK: названия пунктов меню магазинов могут меняться — проверить перед публикацией. -->
+
+### 17. Изменения и контакт
+
+При изменении политики новая версия публикуется на этой странице с датой. Условия использования:
+[labguide.nfcstore.uz/terms](https://labguide.nfcstore.uz/terms/). Вопросы и запросы:
 labguide@nfcstore.uz.
 
 ## English
@@ -601,11 +734,10 @@ labguide@nfcstore.uz.
 LabGuide is a learning and reference app for clinical laboratory diagnostics (for students,
 teachers, physicians and laboratory specialists). The core features work without an account (guest
 mode) and your data stays on your device. An account is optional: it is needed for teacher groups,
-the community (Q&A) and “Feedback & help” requests. The app contains no ads, and has no analytics or
+the community (Q&A), “Feedback & help” requests, paid plans and the free trial (section 16). The app contains no ads, and has no analytics or
 tracking SDKs, no advertising identifier and no access to location or contacts (for the QR
 scanner library’s technical diagnostics on Android, see section 14). The camera is used only in the
-QR scanner you open and for a document photo. Your data is not
-sold or shared with others for advertising.
+QR scanner you open and for a document photo. Your data is not sold or shared with others for advertising. Payments for paid plans are processed by Apple or Google; LabGuide does not see your bank card details.
 
 ### 1. Data stored on your device
 
@@ -645,6 +777,8 @@ goes online only in these cases:
 
 For any request to the LabGuide server, the IP address is handled as described in section 6.
 
+In guest mode you cannot buy a paid plan, restore a purchase or get the free trial: an account is needed for that (section 16). The free features work without an account.
+
 ### 3. Account and sign-in methods (optional)
 
 You choose one of three methods for an account; before signing in you confirm that you accept the
@@ -682,6 +816,9 @@ shared with others.
   (section 3). LabGuide does not send them your data: the server only reads their public keys to
   verify the token. When you delete an account linked to Apple, a request to revoke access is sent
   to Apple (section 10).
+- **Apple Inc. (App Store)** and **Google LLC (Google Play)** — process the subscription payment for a paid
+  plan through your own account, provide purchase information and take part in checking that a device
+  is genuine for the free trial (section 16). Their own privacy policies apply.
 - **GitHub, Inc.** — the public repository that hosts additional content packs (section 2).
 - **Google LLC (Gmail)** — emails written to labguide@nfcstore.uz are delivered to the owner’s
   mailbox there (section 2).
@@ -732,6 +869,7 @@ not use it for advertising or sell it.
   clear either — only an HMAC hash and a masked form, the dates added and removed and who added it
   (internal hash); the record remains as history. An administrator’s two-factor (TOTP) key is
   stored encrypted.
+- **Purchases and free-trial records:** section 16.
 
 ### 6. IP address, logs and statistics
 
@@ -833,6 +971,10 @@ Travel) and then disappears on its own.
 - **What remains:** security-log entries with an internal identifier (including “account deleted”;
   no email), the text of complaints you sent in the app (no longer linked to the account) and — if
   you were added as an administrator — the administrator-rights history with a masked email.
+- **Purchases and the trial:** your subscription (purchase) records on the server and any plan granted by
+  the administrator are removed. **A store subscription is not cancelled** — cancel it yourself in your
+  App Store or Google Play settings. The free-trial record is unlinked from your account but kept for a
+  limited time so that the trial is not given again (section 16).
 - Leaving a group removes only your membership; your results stay with the teacher until your
   account or the group is deleted.
 - **Request by email:** if you cannot sign in to the app (for example, the account is suspended or
@@ -847,8 +989,9 @@ Travel) and then disappears on its own.
 
 Sign-in code — 10 minutes; Google/Apple token mark — while the token is valid (usually up to an
 hour); session — 60 days; abuse-protection counters — 1–2 days; in-app complaints and the security
-log — indefinitely (a complaint is unlinked from the account when the account is deleted); all other
-data — until the account (or group) is deleted. Inactive accounts are not deleted automatically.
+log — indefinitely (a complaint is unlinked from the account when the account is deleted); subscription (purchase) records — until the account is deleted; the technical log of store notifications — 90 days; the free-trial record —
+24 months from the start of the trial (section 16); all other data — until the account (or group) is deleted. Inactive accounts are
+not deleted automatically.
 
 ### 12. Patient data
 
@@ -886,7 +1029,62 @@ the code or pasting the link works without the scanner.
 
 The app is not directed to children and does not knowingly collect their data.
 
-### 16. Changes and contact
+### 16. Paid plans, free trial and payments
 
-If this policy changes, the new version is published on this page with its date. Questions and
+LabGuide’s free features stay free. Extra paid features (the Student Pro, Teacher Pro, Specialist Pro and
+Premium plans) are sold only through the Apple App Store or Google Play as auto-renewing subscriptions;
+there is also a 7-day free trial. The price and period are shown in the store sheet before you buy; the
+rules for subscriptions, the trial and cancelling are in the
+[Terms of Use](https://labguide.nfcstore.uz/terms/). A paid plan and the free trial need an account; they
+are not available in guest mode (section 2).
+
+- **Who processes the payment.** Payment and the subscription go through your own Apple (App Store) or
+  Google (Google Play) account: the store controls the price, the payment method and the confirmation
+  sheet. **LabGuide does not see or store your bank card, payment method or payment details.** You are
+  charged only after you confirm the purchase yourself in the store sheet. Purchase information is not
+  used for advertising or tracking and is not sold.
+- **Purchases: what the server stores.** After a purchase the app sends the purchase information it got
+  from the store (a transaction identifier or purchase token) to our server, and the server verifies it
+  with Apple or Google. Stored: the platform (App Store or Google Play), the store’s transaction identifier
+  (purchase token), the product bought (plan), the status (active, grace period, billing retry, paused,
+  expired, refunded), the start and end time, the environment (sandbox or production), a family-sharing
+  flag and the internal account identifier. The purpose is to unlock your plan, restore it on another
+  device and close it when it ends. These records are kept until you delete your account. A technical log
+  of Apple and Google notifications (type, status, time; no account or transaction identifier) is kept
+  for up to 90 days.
+- **On the device.** The last checked copy of your plan status is kept on the device so that it works
+  without internet, and is re-checked after a while.
+- **Restore and guest mode.** “Restore purchases” links a purchase from the store to your account again.
+  A purchased subscription is linked to one LabGuide account. In guest mode you cannot buy or restore;
+  a store purchase on the device does not unlock paid features until you sign in, and is linked to the
+  server when you do.
+- **Free trial (7 days, once).** It needs no card or payment method and does not turn into a paid
+  subscription by itself. It is given once per phone, account and email. To enforce this the server keeps:
+  the start and end dates, the plan chosen, the platform (iOS or Android), the canonical form of your
+  email (for Gmail, for example, without dots and “+tag”) and of a device marker only as one-way hashes made
+  with the server’s secret key, and the account identifier. **The email itself, any device identifier and
+  the device-check token are not stored.** When the trial is given, the device is checked as genuine
+  through an Apple or Google service (the token is used in memory only for the check).
+- **The trial record when you delete your account.** If you delete your account, the trial record is
+  unlinked from it but, so that the trial is not given again (a legitimate interest in preventing abuse),
+  it is kept for **24 months** from the start of the trial and then deleted automatically.
+- **When a trial or subscription ends.** Only the paid features close. Free features keep working, and
+  your data on the device and on the server is not deleted.
+- **A plan granted by the administrator.** The LabGuide owner can grant a paid plan to an email address;
+  such a record (plan, duration, the owner’s note; the email only as a hash) is deleted when you delete
+  your account.
+- **Cancelling and refunds.** Cancelling is done in your store settings (iPhone and iPad: Settings → your
+  name → Subscriptions; Android: Google Play → profile → Payments & subscriptions → Subscriptions). Refund
+  requests are handled by the store (Apple or Google) under its own rules. Deleting your LabGuide account
+  does not cancel the store subscription.
+- **Children.** The statement in section 15 also applies to paid plans: the app is not directed to children.
+
+<!-- NEEDS_LAWYER_REVIEW: retention of the trial record (hashes) for 24 months (730 days) needs lawyer confirmation (see the Uzbek/Russian versions; TRIAL_RETENTION_DAYS). Do not change or publish until confirmed.
+     NEEDS_OWNER_CHECK: the device-check mechanism (Apple App Attest/DeviceCheck, Google Play Integrity) is not connected yet — update to the real mechanism before publishing.
+     NEEDS_OWNER_CHECK: store menu names may change — verify before publishing. -->
+
+### 17. Changes and contact
+
+If this policy changes, the new version is published on this page with its date. Terms of Use:
+[labguide.nfcstore.uz/terms](https://labguide.nfcstore.uz/terms/). Questions and
 requests: labguide@nfcstore.uz.

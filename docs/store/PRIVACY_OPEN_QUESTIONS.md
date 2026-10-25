@@ -53,9 +53,30 @@ quyidagilar **egasi yoki yurist qarori** — taxmin bilan yozilmagan.
 9. **Yosh chegarasi.** Play “Target audience” 18+ deb belgilangan (PLAY_CONSOLE_UPLOAD.md), siyosat
    esa faqat “bolalarga mo‘ljallanmagan” deydi. Talabalar orasida 18 yoshgacha bo‘lishi mumkin —
    aniq minimal yoshni (13/16/18) egasi tanlaydi.
-10. **Foydalanish shartlari.** Ilovada “Foydalanish shartlari — yakuniy matn tayyorlanadi”. Google
-    OAuth branding sahifasi shartlar havolasini (ixtiyoriy) so‘raydi; `site/` da shartlar sahifasi
-    yo‘q.
+10. **Foydalanish shartlari.** ~~`site/` da shartlar sahifasi yo‘q~~ — pullik tarmoqda (`paid/txt`, 2026-10-25)
+    `docs/store/TERMS_OF_USE.md` (uz/ru/en) yozildi va `site/terms/` ga yasaladi. Hali egasi/yurist:
+    shartlar tomoni (egasi/tashkilot nomi va manzili — 2-band), javobgarlikni cheklash, amaldagi qonun, Apple
+    “custom EULA” minimal bandlari (yo shartlarga qo‘shiladi, yo ilovadagi havola Apple standart EULA siga
+    qaytariladi: `BillingLinks.termsOfUse`).
+
+## E. Pullik versiya (paid/txt, 2026-10-25) — egasi / yurist
+
+21. **Sinov xeshini 24 oy saqlash** (`TRIAL_RETENTION_DAYS = 730`): maxfiylik siyosati 16-bo‘lim va ilova
+    `proPrivacyTrialNote` da yozilgan; manbada `NEEDS_LAWYER_REVIEW` izohi (saytga chiqmaydi). Yurist
+    tasdiqlamaguncha nashr qilmang; muddat o‘zgarsa — `cloudflare/src/trial.ts`, ARB (3 til) va siyosatni
+    birga yangilang (`test/unit/paid_texts_consistency_test.dart` uchalasining mosligini tekshiradi).
+22. **Qurilma tekshiruvi (Apple App Attest/DeviceCheck, Google Play Integrity)** hali ulanmagan: siyosat 16-bo‘lim
+    “qurilma haqiqiyligi Apple yoki Google xizmati orqali tekshiriladi” deydi — haqiqiy mexanizmga moslab tasdiqlang.
+23. **Kuchga kirish sanasi** (2026-10-25 — matn tahrir sanasi): pullik versiya nashr kuniga almashtiring.
+24. **App Privacy / Data safety javoblari** (Purchase History, Device ID / Device or other IDs, sinov xeshlari
+    hisob o‘chirilgandan keyin saqlanishi): aniq toifa va maqsad — `APP_STORE.md` 16.5 va `PLAY_CONSOLE_UPLOAD.md` 7.4
+    (NEEDS_OWNER_CHECK).
+25. **Ilova ichidagi qisqa matnlar** (`termsBody`, `privacyBody`, `accountDeleteBody`) hali “bepul ilova”, obuna va sinovni
+    aytmaydi: yangi to‘liq variantlar ARB da tayyor (`proTermsBody`, `proPrivacyBody`, `proAccountDeleteBody`) — Dart tomonida
+    kalitni almashtirish kerak (matnlar agenti Dart’ga tegmadi).
+26. **`site/delete-account/`** hisobni o‘chirish yo‘riqnomasi D-77 qoidasi bo‘yicha obuna so‘zlarini ola olmaydi:
+    “do‘kon obunasi bekor bo‘lmaydi” haqida maxfiylik siyosati 10 va 16-bo‘limlarida yozilgan. Sahifaga ham kerak bo‘lsa —
+    `SUBSCRIPTION_TEXT_PAGES` ga qo‘shish (egasi qarori).
 
 ## C. Jarayon (kodda vosita yo‘q)
 
