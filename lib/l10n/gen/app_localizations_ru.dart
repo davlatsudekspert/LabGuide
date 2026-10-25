@@ -13505,7 +13505,6 @@ class AppLocalizationsRu extends AppLocalizations {
       'Приложением можно пользоваться без подписки: бесплатные функции остаются бесплатными.';
 
   @override
-<<<<<<< HEAD
   String get proGrantCustom => 'Другой срок (число)';
 
   @override
@@ -13631,7 +13630,8 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get proAccountDeleteBody =>
       'Аккаунт, способы входа (привязка Google/Apple), участие и результаты в группах, обращения в «Предложения и помощь», ваши вопросы и ответы в сообществе и записи, связанные с покупками, будут полностью удалены с сервера. Если вы преподаватель, созданные вами группы тоже удалятся. Отменить это нельзя. Подписка в магазине не отменяется: отмените её в настройках App Store или Google Play. Чтобы пробный период не выдавался повторно, запись о нём хранится ограниченное время без привязки к аккаунту. Тексты жалоб, отправленных в приложении, остаются без привязки к аккаунту. Данные на устройстве тоже очищаются.';
-=======
+
+  @override
   String get proTierNameStudent => 'Студент Pro';
 
   @override
@@ -13981,5 +13981,4 @@ class AppLocalizationsRu extends AppLocalizations {
   String proPoints(String value) {
     return '$value п. п.';
   }
->>>>>>> paid/feat
 }

@@ -13433,7 +13433,6 @@ class AppLocalizationsEn extends AppLocalizations {
       'You can use the app without a subscription: free features stay free.';
 
   @override
-<<<<<<< HEAD
   String get proGrantCustom => 'Other duration (number)';
 
   @override
@@ -13559,7 +13558,8 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get proAccountDeleteBody =>
       'Your account, sign-in methods (Google/Apple link), group memberships and results, “Suggestions and help” requests, your community questions and answers, and records tied to purchases are deleted from the server for good. If you are a teacher, the groups you created are deleted too. This cannot be undone. A store subscription is not cancelled: cancel it in your App Store or Google Play settings. So that the trial is not given again, the trial record is kept for a limited time, unlinked from your account. The text of reports you sent from the app stays, not linked to your account. Data on the device is cleared too.';
-=======
+
+  @override
   String get proTierNameStudent => 'Student Pro';
 
   @override
@@ -13906,5 +13906,4 @@ class AppLocalizationsEn extends AppLocalizations {
   String proPoints(String value) {
     return '$value pp';
   }
->>>>>>> paid/feat
 }

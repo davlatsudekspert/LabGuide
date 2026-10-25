@@ -13290,7 +13290,6 @@ class AppLocalizationsUz extends AppLocalizations {
       'Ilovadan obunasiz foydalanish mumkin: bepul imkoniyatlar bepul qoladi.';
 
   @override
-<<<<<<< HEAD
   String get proGrantCustom => 'Boshqa muddat (son)';
 
   @override
@@ -13417,7 +13416,8 @@ class AppLocalizationsUz extends AppLocalizations {
   @override
   String get proAccountDeleteBody =>
       'Hisobingiz, kirish usullari (Google/Apple bog‘lanishi), guruhlardagi a’zolik va natijalaringiz, “Taklif va yordam” murojaatlari, hamjamiyatdagi savol-javoblaringiz va xaridlarga bog‘langan yozuvlar serverdan butunlay o‘chiriladi. Ustoz bo‘lsangiz, yaratgan guruhlaringiz ham o‘chadi. Buni qaytarib bo‘lmaydi. Do‘kon obunasi bekor bo‘lmaydi: uni App Store yoki Google Play sozlamalarida bekor qiling. Bepul sinovni qayta olishning oldini olish uchun sinov yozuvi hisobdan uzilgan holda cheklangan muddat saqlanadi. Ilova ichida yuborgan shikoyatlar matni hisobga bog‘lanmagan holda qoladi. Qurilmadagi ma’lumotlar ham tozalanadi.';
-=======
+
+  @override
   String get proTierNameStudent => 'Talaba Pro';
 
   @override
@@ -13770,5 +13770,4 @@ class AppLocalizationsUz extends AppLocalizations {
   String proPoints(String value) {
     return '$value foiz punkti';
   }
->>>>>>> paid/feat
 }
