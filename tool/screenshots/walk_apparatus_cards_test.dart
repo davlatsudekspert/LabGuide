@@ -96,12 +96,24 @@ Future<void> _snapPanel(
 }
 
 const _panelCards = [
-  ('/lab/instruments/lc/a3-tox-gc-ms', 'mass_spec_gc', 'gc_ms'),
-  ('/lab/instruments/lc/a3-bac-vitek2-platform', 'microbial_id_ast', 'vitek2'),
-  ('/lab/instruments/lc/a3-bac-maldi-tof-platform', 'maldi_tof', 'maldi'),
-  ('/lab/instruments/lc/tb-genexpert-platform', 'cartridge_molecular', 'xpert'),
+  // Ilmiy ko‘rik tuzatishlari (2026-10-25) teggan kartalar.
+  ('/lab/instruments/lc/a1-elisa-reader-platform', 'elisa_reader', 'elisa'),
+  ('/lab/instruments/lc/a2-platform-hba1c-analyzer', 'hba1c_analyzer', 'hba1c'),
+  (
+    '/lab/instruments/lc/a1-coagulation-analyzer-platform',
+    'coag_analyzer',
+    'koag',
+  ),
+  (
+    '/lab/instruments/lc/a3-imm-flow-cytometer-platform',
+    'flow_cytometer',
+    'oqim',
+  ),
   ('/lab/instruments/lc/a3-mol-realtime-pcr-platform', 'real_time_pcr', 'pcr'),
   ('/lab/instruments/m/roche-cobas-c-311', 'chemistry', 'biokimyo_model'),
+  ('/lab/instruments/m/abbott-alinity-i', 'immunoassay', 'immuno_model'),
+  ('/lab/instruments/m/human-humacount-5d', 'hematology5', 'gem5_model'),
+  ('/lab/instruments/m/mindray-bc-30s', 'hematology3', 'gem3_model'),
 ];
 
 void main() {
