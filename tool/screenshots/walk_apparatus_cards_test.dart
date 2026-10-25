@@ -15,13 +15,19 @@ import 'walk_helper.dart';
 
 const _figure = ValueKey('lab-card-schematic');
 
-Future<void> _precacheSchematics(WidgetTester tester) =>
-    tester.runAsync(() async {
-      final ctx = tester.element(find.byType(Scaffold).first);
-      for (final s in LabSchematic.values) {
-        await precacheImage(AssetImage(s.asset), ctx);
-      }
-    });
+Future<void> _precacheSchematics(WidgetTester tester) => tester.runAsync(
+  () async {
+    // Standart kesh 100 MB: 1200 px nusxalar sig‘may, eskilari chiqib ketardi.
+    PaintingBinding.instance.imageCache
+      ..maximumSizeBytes = 1 << 30
+      ..maximumSize = 2000;
+    final ctx = tester.element(find.byType(Scaffold).first);
+    for (final s in LabSchematic.values) {
+      await precacheImage(AssetImage(s.asset), ctx);
+      await precacheImage(AssetImage(s.assetLarge), ctx);
+    }
+  },
+);
 
 /// Kartani ochib, chizmani ko‘rinadigan joyga suradi.
 Future<void> _openCard(WidgetTester tester, String id) async {
@@ -109,4 +115,72 @@ void main() {
       await w.snap(id);
     }
   });
+
+  // Turli ekran o‘lchamlari, til va rejimlar (egasi talabi 2026-10-25):
+  // telefon kichik/katta, planshet, yorug‘/qorong‘i, uch til, katta shrift.
+  final variants = <(String, AppLanguage, String, ThemeMode, Size, double)>[
+    (
+      'en_dark_360_x13',
+      AppLanguage.en,
+      'en',
+      ThemeMode.dark,
+      const Size(360, 780),
+      1.3,
+    ),
+    (
+      'uz_dark_430',
+      AppLanguage.uz,
+      'uz',
+      ThemeMode.dark,
+      const Size(430, 932),
+      1.0,
+    ),
+    (
+      'ru_light_820_tablet',
+      AppLanguage.ru,
+      'ru',
+      ThemeMode.light,
+      const Size(820, 1180),
+      1.0,
+    ),
+    (
+      'uz_light_320_x20',
+      AppLanguage.uz,
+      'uz',
+      ThemeMode.light,
+      const Size(320, 640),
+      2.0,
+    ),
+  ];
+  for (final (name, lang, code, theme, size, scale) in variants) {
+    testWidgets('sakkiz karta — $name', (tester) async {
+      final s = await start(
+        tester,
+        lang: lang,
+        theme: theme,
+        size: size,
+        textScale: scale,
+      );
+      await tester.runAsync(s.instruments.ensureCatalog);
+      await _precacheSchematics(tester);
+      final l = lookupAppLocalizations(Locale(code));
+      final w = Walk(tester, 'apparatus_cards_$name');
+      for (final id in [
+        'a3-tox-gc-ms',
+        'a3-bac-maldi-tof-platform',
+        'a3-bac-vitek2-platform',
+        'tb-genexpert-platform',
+        'a3-mol-realtime-pcr-platform',
+        'a3-imm-flow-cytometer-platform',
+        'a3-tb-bactec-mgit960-platform',
+        'a1-bsc-class2-platform',
+      ]) {
+        await _openCard(tester, id);
+        expect(tester.takeException(), isNull, reason: '$name $id');
+        expect(find.text(l.instSchematicCaption), findsOneWidget, reason: id);
+        expect(find.text(l.instSchematicNotPhoto), findsOneWidget, reason: id);
+        await w.snap(id);
+      }
+    });
+  }
 }
