@@ -9,10 +9,12 @@
 // --cyto: sitologiya sxemalari (tool/illustrations/cyto/*.svg) → assets/cytology/<nom>.png.
 // --schematic: apparat turi chizmalari (tool/illustrations/schematic/*.svg, gen.py bilan
 // yaratiladi) → assets/instruments/schematic/<nom>_1200.png va <nom>_480.png (shaffof fon).
+// --schematic --quant: PNG lar pngquant bilan siqiladi (o'rnatilgan bo'lsa; sifat 85-98).
 // --cells: leykoformula hujayra sxemalari (tool/illustrations/cells/*.svg,
 // o'lcham SVG dan) → assets/differential/<nom>.png.
 const { chromium } = require('playwright');
 const { readFileSync, readdirSync } = require('node:fs');
+const { spawnSync } = require('node:child_process');
 const { join } = require('node:path');
 
 const here = __dirname;
@@ -25,7 +27,8 @@ const histo = args[0] === '--histology';
 const urin = args[0] === '--urinalysis';
 const morph = args[0] === '--bloodmorph';
 const cells = args[0] === '--cells' || cyto || sperm || blood || histo || urin || morph;
-const rest = cells || schematic ? args.slice(1) : args;
+const quant = args.includes('--quant');
+const rest = (cells || schematic ? args.slice(1) : args).filter((a) => a !== '--quant');
 const srcDir = schematic ? join(here, 'schematic') : morph ? join(here, 'bloodmorph') : urin ? join(here, 'urinalysis') : histo ? join(here, 'histology') : blood ? join(here, 'bloodgroup') : sperm ? join(here, 'sperm') : cyto ? join(here, 'cyto') : cells ? join(here, 'cells') : here;
 const out = schematic
   ? join(here, '../../assets/instruments/schematic')
@@ -61,7 +64,12 @@ if (schematic) {
     for (const n of names) {
       const svg = readFileSync(join(srcDir, `${n}.svg`), 'utf8');
       await pg.setContent(`<html><body style="margin:0;background:transparent">${svg}</body></html>`);
-      await pg.screenshot({ path: join(out, `${n}_${suffix}.png`), omitBackground: true, clip: { x: 0, y: 0, width: 1200, height: 800 } });
+      const file = join(out, `${n}_${suffix}.png`);
+      await pg.screenshot({ path: file, omitBackground: true, clip: { x: 0, y: 0, width: 1200, height: 800 } });
+      if (quant) {
+        const r = spawnSync('pngquant', ['--quality=85-98', '--speed=1', '--force', '--skip-if-larger', '--output', file, file]);
+        if (r.error) throw r.error;
+      }
       console.log('ok', n, suffix);
     }
   }
