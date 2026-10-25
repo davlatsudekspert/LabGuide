@@ -5,6 +5,9 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {calibrationMath} from '../src/lib/regression.js';
 import {differentialMath, differentialVars} from '../src/lib/differential.js';
+import {photometryMath, photometryVars} from '../src/lib/photometry.js';
+import {qcMath, qcVars} from '../src/lib/qc.js';
+import {gcmsMath, gcmsVars} from '../src/lib/gcms.js';
 import {buildCues, toSrt, toVtt} from '../src/lib/subtitles.js';
 import {calibrationVars, resolveLines} from '../src/lib/text.js';
 import {layoutScenes, normalizeTiming, placeholderTiming} from '../src/lib/timing.js';
@@ -22,6 +25,9 @@ export const NARRATION_LANG = 'en';
 const VIDEO_MATH = {
   calibration: {compute: (sb) => calibrationMath(sb.data), vars: calibrationVars},
   leukocyte: {compute: (sb) => differentialMath(sb.data), vars: differentialVars},
+  photometry: {compute: (sb) => photometryMath(sb.data), vars: photometryVars},
+  qc: {compute: (sb) => qcMath(sb.data), vars: qcVars},
+  gcms: {compute: (sb) => gcmsMath(sb.data), vars: gcmsVars},
 };
 
 export function parseArgs(argv) {
@@ -94,8 +100,10 @@ export function runPrepare() {
   execFileSync(process.execPath, [path.join(studio, 'scripts/prepare.mjs')], {stdio: 'inherit'});
 }
 
-export async function makeBundle({reuse = false} = {}) {
-  const outDir = path.join(studio, 'out/bundle');
+export async function makeBundle({reuse = false, name = 'bundle'} = {}) {
+  // Stills use their own bundle dir so they never rewrite the bundle of a
+  // render that is still running.
+  const outDir = path.join(studio, 'out', name);
   if (reuse && fs.existsSync(path.join(outDir, 'index.html'))) return outDir;
   const {bundle} = await import('@remotion/bundler');
   console.log('bundling…');

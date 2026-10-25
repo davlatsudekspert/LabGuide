@@ -42,7 +42,7 @@ if (diskFreeMB() < 400) {
 }
 
 runPrepare();
-const serveUrl = await makeBundle({reuse: !!args['reuse-bundle']});
+const serveUrl = await makeBundle({reuse: !!args['reuse-bundle'], name: args['bundle-name'] ?? 'bundle'});
 const eff = effectiveTiming(id);
 console.log(
   eff.voiced

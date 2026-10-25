@@ -1,0 +1,508 @@
+{
+  "id": "gcms",
+  "version": 1,
+  "status": "EXPERT_REVIEW_PENDING",
+  "title": {
+    "en": "GC-MS: from peak to identity",
+    "ru": "ГХ-МС: от пика к веществу",
+    "uz": "GC-MS: cho‘qqidan moddagacha"
+  },
+  "fps": 30,
+  "formats": {
+    "vertical": {
+      "width": 1080,
+      "height": 1920
+    },
+    "horizontal": {
+      "width": 1920,
+      "height": 1080
+    }
+  },
+  "timing": {
+    "_doc": "Same rules as the flagships; with the English voice the timing manifest public/audio/en/gcms.timing.json replaces the estimate for EVERY language edition.",
+    "leadSec": 0.25,
+    "tailSec": 0.35,
+    "gapSec": 0.2,
+    "minLineSec": 1.6,
+    "cps": {
+      "en": 16,
+      "ru": 15,
+      "uz": 14
+    }
+  },
+  "data": {
+    "_doc": "ILLUSTRATIVE SCHEMATIC PANELS - three made-up compounds A, B, C: Gaussian chromatogram peaks at illustrative retention times (unitless 0..tMax) and one made-up stick spectrum per peak (illustrative m/z positions 0..mzMax, relative intensity normalised to 100 in code). No real substance, retention time or m/z is represented; axes carry no numbers on screen (lesson plan 01_gc_ms.md). Computed in video_studio/src/lib/gcms.js.",
+    "tMax": 12.0,
+    "mzMax": 100,
+    "selected": 1,
+    "peaks": [
+      {
+        "id": "A",
+        "rt": 3.6,
+        "h": 0.62,
+        "w": 0.18,
+        "color": "amber",
+        "spectrum": [
+          [
+            14,
+            18
+          ],
+          [
+            22,
+            100
+          ],
+          [
+            31,
+            42
+          ],
+          [
+            38,
+            12
+          ],
+          [
+            47,
+            64
+          ],
+          [
+            55,
+            8
+          ]
+        ]
+      },
+      {
+        "id": "B",
+        "rt": 6.4,
+        "h": 0.95,
+        "w": 0.22,
+        "color": "coral",
+        "spectrum": [
+          [
+            12,
+            10
+          ],
+          [
+            27,
+            35
+          ],
+          [
+            36,
+            100
+          ],
+          [
+            44,
+            28
+          ],
+          [
+            58,
+            72
+          ],
+          [
+            71,
+            22
+          ],
+          [
+            80,
+            15
+          ]
+        ]
+      },
+      {
+        "id": "C",
+        "rt": 9.1,
+        "h": 0.45,
+        "w": 0.26,
+        "color": "beam",
+        "spectrum": [
+          [
+            19,
+            30
+          ],
+          [
+            33,
+            55
+          ],
+          [
+            50,
+            100
+          ],
+          [
+            62,
+            18
+          ],
+          [
+            77,
+            40
+          ],
+          [
+            91,
+            12
+          ]
+        ]
+      }
+    ],
+    "paths": {
+      "_doc": "Schematic coordinates (viewBox of tool/illustrations/schematic/mass_spec_gc.svg) traced from the drawing, cf. tool/video/lessons/anim_gc_ms.js INLET/OUTLET/WIRE (shifted by the drawing's translate(0,-54)).",
+      "gas": [
+        [
+          140,
+          248
+        ],
+        [
+          205,
+          248
+        ],
+        [
+          205,
+          300
+        ],
+        [
+          269,
+          300
+        ],
+        [
+          269,
+          330
+        ],
+        [
+          267,
+          384
+        ],
+        [
+          290,
+          404
+        ],
+        [
+          330,
+          404
+        ],
+        [
+          390,
+          420
+        ],
+        [
+          400,
+          470
+        ],
+        [
+          345,
+          512
+        ],
+        [
+          290,
+          470
+        ],
+        [
+          300,
+          430
+        ],
+        [
+          345,
+          416
+        ],
+        [
+          409,
+          426
+        ],
+        [
+          424,
+          416
+        ],
+        [
+          458,
+          416
+        ],
+        [
+          482,
+          415
+        ],
+        [
+          600,
+          415
+        ]
+      ],
+      "ions": [
+        [
+          600,
+          415
+        ],
+        [
+          660,
+          415
+        ],
+        [
+          870,
+          415
+        ]
+      ],
+      "wire": [
+        [
+          908,
+          415
+        ],
+        [
+          948,
+          415
+        ],
+        [
+          960,
+          356
+        ],
+        [
+          1080,
+          356
+        ],
+        [
+          1080,
+          306
+        ]
+      ]
+    }
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "layer": "hook",
+      "lines": [
+        "L01",
+        "L02"
+      ],
+      "minSec": 4.2
+    },
+    {
+      "id": "gc",
+      "layer": "tour",
+      "lines": [
+        "L03"
+      ],
+      "minSec": 7.0,
+      "props": {
+        "schematic": "mass_spec_gc",
+        "step": "01",
+        "kicker": "kickerGc",
+        "badge": "schematicNote",
+        "parts": [
+          {
+            "n": 1,
+            "name": "p1"
+          },
+          {
+            "n": 2,
+            "name": "p2"
+          },
+          {
+            "n": 3,
+            "name": "p3"
+          },
+          {
+            "n": 4,
+            "name": "p4"
+          },
+          {
+            "n": 5,
+            "name": "p5"
+          }
+        ],
+        "paths": [
+          {
+            "ref": "gas",
+            "cue": 0,
+            "at": 0.3,
+            "dur": 3.2,
+            "color": "beam"
+          }
+        ],
+        "cols": 1,
+        "legendTop": 1000
+      }
+    },
+    {
+      "id": "separate",
+      "layer": "separate",
+      "lines": [
+        "L04",
+        "L05"
+      ],
+      "minSec": 9.0,
+      "props": {
+        "step": "02"
+      }
+    },
+    {
+      "id": "ms",
+      "layer": "tour",
+      "lines": [
+        "L06"
+      ],
+      "minSec": 7.0,
+      "props": {
+        "schematic": "mass_spec_gc",
+        "step": "03",
+        "kicker": "kickerMs",
+        "badge": "schematicNote",
+        "parts": [
+          {
+            "n": 6,
+            "name": "p6"
+          },
+          {
+            "n": 7,
+            "name": "p7"
+          },
+          {
+            "n": 8,
+            "name": "p8"
+          },
+          {
+            "n": 9,
+            "name": "p9"
+          },
+          {
+            "n": 10,
+            "name": "p10"
+          }
+        ],
+        "paths": [
+          {
+            "ref": "ions",
+            "cue": 0,
+            "at": 0.2,
+            "dur": 2.0,
+            "color": "amber"
+          },
+          {
+            "ref": "wire",
+            "cue": 0,
+            "at": 2.4,
+            "dur": 1.4,
+            "color": "mint"
+          }
+        ],
+        "cols": 1,
+        "legendTop": 1000
+      }
+    },
+    {
+      "id": "quad",
+      "layer": "quad",
+      "lines": [
+        "L07",
+        "L08"
+      ],
+      "minSec": 8.5,
+      "props": {
+        "step": "04"
+      }
+    },
+    {
+      "id": "result",
+      "layer": "result",
+      "lines": [
+        "L09",
+        "L10"
+      ],
+      "minSec": 9.0,
+      "props": {
+        "step": "05"
+      }
+    },
+    {
+      "id": "qc",
+      "layer": "qcnote",
+      "lines": [
+        "L11"
+      ],
+      "minSec": 5.0,
+      "props": {
+        "step": "06"
+      }
+    },
+    {
+      "id": "app_card",
+      "layer": "phone",
+      "lines": [
+        "L12",
+        "L13"
+      ],
+      "minSec": 9.0,
+      "props": {
+        "step": "07",
+        "subZone": "left",
+        "shots": [
+          {
+            "frame": "g_dir",
+            "w": 0.8,
+            "mark": "card",
+            "tap": true,
+            "callout": "coDir",
+            "cue": 0
+          },
+          {
+            "frame": "g_card",
+            "w": 1.1,
+            "mark": "schematic",
+            "callout": "coCard",
+            "cue": 0
+          },
+          {
+            "frame": "g_parts",
+            "w": 1.1,
+            "mark": "parts",
+            "callout": "coParts",
+            "cue": 1
+          },
+          {
+            "frame": "g_principle",
+            "w": 1,
+            "mark": "field",
+            "callout": "coPrinciple",
+            "cue": 1,
+            "crop": "field"
+          }
+        ]
+      }
+    },
+    {
+      "id": "app_safety",
+      "layer": "phone",
+      "lines": [
+        "L14"
+      ],
+      "minSec": 5.5,
+      "props": {
+        "step": "08",
+        "subZone": "left",
+        "shots": [
+          {
+            "frame": "g_qc",
+            "w": 1,
+            "mark": "field",
+            "callout": "coQc",
+            "tone": "warn",
+            "crop": "field"
+          },
+          {
+            "frame": "g_bio",
+            "w": 1,
+            "mark": "field",
+            "callout": "coBio",
+            "tone": "warn",
+            "crop": "field"
+          }
+        ]
+      }
+    },
+    {
+      "id": "end",
+      "layer": "cta",
+      "lines": [
+        "L15",
+        "L16"
+      ],
+      "minSec": 6.5
+    }
+  ],
+  "thumbnail": {
+    "headlineKey": "thumbHeadline",
+    "subKey": "thumbSub"
+  }
+}

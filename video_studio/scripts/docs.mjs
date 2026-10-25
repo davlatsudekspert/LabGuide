@@ -51,7 +51,11 @@ const esc = (s) => String(s).replace(/\|/g, '\\|');
 if (id === 'leukocyte') {
   const {leukocyteAppendix} = await import('./appendix_leukocyte.mjs');
   fs.writeFileSync(path.join(dir, 'MATH_APPENDIX.md'), leukocyteAppendix({dir, storyboard, math, lines, studio}));
-} else {
+} else if (fs.existsSync(path.join(studio, 'scripts', `appendix_${id}.mjs`))) {
+  // Topic videos: scripts/appendix_<id>.mjs exports appendix(ctx) -> markdown.
+  const mod = await import(`./appendix_${id}.mjs`);
+  fs.writeFileSync(path.join(dir, 'MATH_APPENDIX.md'), mod.appendix({dir, storyboard, math, lines, studio}));
+} else if (id === 'calibration') {
   const f = math.fit;
   const r = (v, d = 6) => (Math.abs(v) < 1e-12 ? '0' : v.toFixed(d));
   let md = `# ${storyboard.title.en} — math appendix\n\n`;

@@ -1,0 +1,235 @@
+{
+  "id": "photometry",
+  "version": 1,
+  "status": "EXPERT_REVIEW_PENDING",
+  "title": {
+    "en": "Spectrophotometry: blank, standard, sample",
+    "ru": "Фотометрия: бланк, стандарт, проба",
+    "uz": "Fotometriya: blank, standart, namuna"
+  },
+  "fps": 30,
+  "formats": {
+    "vertical": {
+      "width": 1080,
+      "height": 1920
+    },
+    "horizontal": {
+      "width": 1920,
+      "height": 1080
+    }
+  },
+  "timing": {
+    "_doc": "Same rules as the flagships: placeholder (silent) timing = max(minLineSec, chars / cps); with the English voice the timing manifest public/audio/en/photometry.timing.json replaces the estimate for EVERY language edition.",
+    "leadSec": 0.25,
+    "tailSec": 0.35,
+    "gapSec": 0.2,
+    "minLineSec": 1.6,
+    "cps": {
+      "en": 16,
+      "ru": 15,
+      "uz": 14
+    }
+  },
+  "data": {
+    "_doc": "ILLUSTRATIVE DATA - not a patient result, not a real method, arbitrary units (a.u.). Every number on screen (transmittance, the sample and high-sample concentrations, the direct read-off, the diluted result) is computed in code from these values (video_studio/src/lib/photometry.js; independent check video_studio/scripts/crosscheck_photometry.py). The bend above `linearity.limit` is an illustrative textbook shape (negative deviation from Beer-Lambert); a real linearity limit comes from the reagent IFU.",
+    "unit": "a.u.",
+    "standard": {
+      "conc": 10.0,
+      "abs": 0.412
+    },
+    "sample": {
+      "abs": 0.309
+    },
+    "high": {
+      "trueConc": 42.0,
+      "dilutionFactor": 5
+    },
+    "linearity": {
+      "limit": 20.0,
+      "bend": 40.0
+    },
+    "ladder": [
+      0,
+      0.3,
+      1,
+      2
+    ],
+    "chart": {
+      "xMax": 50,
+      "yMax": 2.0
+    }
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "layer": "hook",
+      "lines": [
+        "L01",
+        "L02"
+      ],
+      "minSec": 4.2
+    },
+    {
+      "id": "lightpath",
+      "layer": "lightpath",
+      "lines": [
+        "L03"
+      ],
+      "minSec": 3.4,
+      "props": {
+        "step": "01",
+        "phase": "beam"
+      }
+    },
+    {
+      "id": "absorbance",
+      "layer": "lightpath",
+      "lines": [
+        "L04"
+      ],
+      "minSec": 5.5,
+      "props": {
+        "step": "01",
+        "phase": "abs"
+      }
+    },
+    {
+      "id": "ladder",
+      "layer": "ladder",
+      "lines": [
+        "L05"
+      ],
+      "minSec": 5.0,
+      "props": {
+        "step": "02"
+      }
+    },
+    {
+      "id": "beer",
+      "layer": "beer",
+      "lines": [
+        "L06",
+        "L07"
+      ],
+      "minSec": 8.0,
+      "props": {
+        "step": "03"
+      }
+    },
+    {
+      "id": "bss",
+      "layer": "bss",
+      "lines": [
+        "L08",
+        "L09"
+      ],
+      "minSec": 10.0,
+      "props": {
+        "step": "04"
+      }
+    },
+    {
+      "id": "dilute",
+      "layer": "dilute",
+      "lines": [
+        "L10"
+      ],
+      "minSec": 6.0,
+      "props": {
+        "step": "05"
+      }
+    },
+    {
+      "id": "app_intro",
+      "layer": "phone",
+      "lines": [
+        "L11"
+      ],
+      "minSec": 6.0,
+      "props": {
+        "step": "06",
+        "shots": [
+          {
+            "frame": "learn",
+            "w": 0.8,
+            "mark": "row",
+            "tap": true,
+            "callout": "coLearn"
+          },
+          {
+            "frame": "list",
+            "w": 1,
+            "mark": "row",
+            "tap": true,
+            "callout": "coList"
+          },
+          {
+            "frame": "fs_principle",
+            "w": 1.1,
+            "mark": "title",
+            "callout": "coPrinciple"
+          }
+        ],
+        "subZone": "left"
+      }
+    },
+    {
+      "id": "app_steps",
+      "layer": "phone",
+      "lines": [
+        "L12",
+        "L13"
+      ],
+      "minSec": 8.0,
+      "props": {
+        "step": "07",
+        "shots": [
+          {
+            "frame": "fs_blank",
+            "w": 1,
+            "mark": "step2",
+            "callout": "coBlank",
+            "cue": 0
+          },
+          {
+            "frame": "fs_calc",
+            "w": 1,
+            "mark": "step5",
+            "callout": "coCalc",
+            "tone": "ok",
+            "cue": 0
+          },
+          {
+            "frame": "fs_lin",
+            "w": 1,
+            "mark": "step6",
+            "callout": "coLin",
+            "tone": "warn",
+            "cue": 1
+          },
+          {
+            "frame": "fs_abs",
+            "w": 1,
+            "mark": "ten",
+            "callout": "coAbs",
+            "cue": 1
+          }
+        ],
+        "subZone": "left"
+      }
+    },
+    {
+      "id": "end",
+      "layer": "cta",
+      "lines": [
+        "L14",
+        "L15"
+      ],
+      "minSec": 6.5
+    }
+  ],
+  "thumbnail": {
+    "headlineKey": "thumbHeadline",
+    "subKey": "thumbSub"
+  }
+}

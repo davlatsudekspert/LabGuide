@@ -734,7 +734,7 @@ export const CtaLayer: Layer = ({scene, ctx}) => {
       </div>
       <div style={{height: vertical ? 46 : 34}} />
       <div style={{opacity: c, transform: `scale(${0.92 + 0.08 * c})`, transformOrigin: vertical ? 'center' : 'left center'}}>
-        <Pill text={ui.ctaPath} size={vertical ? 46 : 40} tone="mint" />
+        <Pill text={ui.ctaPath} size={(vertical ? 46 : 40) * ([...ui.ctaPath].length > 28 ? (vertical ? 0.72 : 0.85) : 1)} tone="mint" />
       </div>
       <div style={{height: 22}} />
       <div style={{...text(m.small * 0.9, 500, color.inkDim), opacity: note, textWrap: 'balance' as never}}>{ui.ctaNote}</div>

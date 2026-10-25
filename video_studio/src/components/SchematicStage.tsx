@@ -28,7 +28,11 @@ export const SchematicStage: React.FC<{
   zoom?: number;
   focus?: [number, number];
   beam?: {from: [number, number]; to: [number, number]; t: number; pulse: number} | null;
-}> = ({name, width, emphasis, dim, zoom = 1, focus, beam}) => {
+  /** Polyline light / flow paths (schematic coordinates), revealed by t. */
+  paths?: {pts: [number, number][]; t: number; pulse: number; color?: string; width?: number}[];
+  /** Extra SVG drawn in schematic coordinates (moves with the zoom). */
+  overlay?: React.ReactNode;
+}> = ({name, width, emphasis, dim, zoom = 1, focus, beam, paths = [], overlay}) => {
   const s = schematic(name);
   const [, , vw, vh] = s.viewBox;
   const scale = width / vw;
@@ -83,6 +87,30 @@ export const SchematicStage: React.FC<{
               />
             );
           })}
+          {paths.map((pa, k) => {
+            if (pa.t <= 0) return null;
+            const segs = pa.pts.slice(1).map((q, i) => Math.hypot(q[0] - pa.pts[i][0], q[1] - pa.pts[i][1]));
+            const total = segs.reduce((a, b) => a + b, 0);
+            let left = total * Math.min(1, pa.t);
+            const out: [number, number][] = [pa.pts[0]];
+            for (let i = 0; i < segs.length && left > 0; i++) {
+              const f = Math.min(1, left / segs[i]);
+              const a = pa.pts[i];
+              const b = pa.pts[i + 1];
+              out.push([a[0] + (b[0] - a[0]) * f, a[1] + (b[1] - a[1]) * f]);
+              left -= segs[i];
+            }
+            const d = out.map((q, i) => `${i ? 'L' : 'M'} ${q[0]} ${q[1]}`).join(' ');
+            const c = pa.color ?? color.beam;
+            const w = pa.width ?? 4;
+            return (
+              <g key={`p${k}`}>
+                <path d={d} fill="none" stroke={c} strokeWidth={w * 3} strokeLinecap="round" strokeLinejoin="round" opacity={0.22 + 0.12 * pa.pulse} />
+                <path d={d} fill="none" stroke={c} strokeWidth={w} strokeLinecap="round" strokeLinejoin="round" />
+              </g>
+            );
+          })}
+          {overlay}
           {beam && beam.t > 0 ? (
             <g>
               <line

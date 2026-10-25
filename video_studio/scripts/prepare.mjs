@@ -47,7 +47,7 @@ if (fs.existsSync(logoAbs)) {
 }
 
 // Schematics: the app's ORIGINAL apparatus art (docs/SCHEMATICS_PROVENANCE.md).
-const keys = ['chemistry', 'photometer'];
+const keys = ['chemistry', 'photometer', 'mass_spec_gc', 'real_time_pcr', 'osmometer'];
 const out = {};
 for (const key of keys) {
   const file = path.join(repo, 'tool/illustrations/schematic', `${key}.svg`);

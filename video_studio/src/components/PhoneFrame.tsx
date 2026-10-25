@@ -26,8 +26,13 @@ export type PhoneProps = {
   tap?: {at: [number, number]; t: number} | null;
   /** Logical rect that stays bright; outside is dimmed (e.g. hides text). */
   crop?: Rect | null;
+  /** Opacity of the dimmer outside `crop` (default 0.9). */
+  cropShade?: number;
   tilt?: number;
   style?: React.CSSProperties;
+  /** Logical app size of the frame (portrait 390x844 default; landscape 844x390). */
+  appW?: number;
+  appH?: number;
 };
 
 const toneColor = {mint: color.mint, amber: color.amber, coral: color.coral};
@@ -42,18 +47,23 @@ export const PhoneFrame: React.FC<PhoneProps> = ({
   mark,
   tap,
   crop,
+  cropShade = 0.9,
   tilt = 0,
   style,
+  appW = APP_W,
+  appH = APP_H,
 }) => {
+  const APP_W_ = appW;
+  const APP_H_ = appH;
   const bezel = width * 0.035;
   const sw = width - bezel * 2;
-  const sh = (sw * APP_H) / APP_W;
+  const sh = (sw * APP_H_) / APP_W_;
   const height = sh + bezel * 2;
-  const k = (sw / APP_W) * zoom;
+  const k = (sw / APP_W_) * zoom;
   // Translate so `focus` sits in the centre, clamped to the frame edges.
-  const tx = Math.min(0, Math.max(sw - APP_W * k, sw / 2 - focus[0] * k));
-  const ty = Math.min(0, Math.max(sh - APP_H * k, sh / 2 - focus[1] * k));
-  const radius = width * 0.13;
+  const tx = Math.min(0, Math.max(sw - APP_W_ * k, sw / 2 - focus[0] * k));
+  const ty = Math.min(0, Math.max(sh - APP_H_ * k, sh / 2 - focus[1] * k));
+  const radius = Math.min(width, height) * 0.13 * (appW > appH ? 0.6 : 1);
   const content = (s: string, opacity: number) => (
     <Img
       src={staticFile(s)}
@@ -61,8 +71,8 @@ export const PhoneFrame: React.FC<PhoneProps> = ({
         position: 'absolute',
         left: 0,
         top: 0,
-        width: APP_W * k,
-        height: APP_H * k,
+        width: APP_W_ * k,
+        height: APP_H_ * k,
         opacity,
       }}
     />
@@ -114,16 +124,16 @@ export const PhoneFrame: React.FC<PhoneProps> = ({
   const dim = crop
     ? (() => {
         const [x, y, w, h] = crop;
-        const shade = 'rgba(4,14,11,0.9)';
+        const shade = `rgba(4,14,11,${cropShade})`;
         return (
           <>
-            <div style={{position: 'absolute', left: 0, top: 0, width: APP_W * k, height: y * k, background: shade}} />
+            <div style={{position: 'absolute', left: 0, top: 0, width: APP_W_ * k, height: y * k, background: shade}} />
             <div
-              style={{position: 'absolute', left: 0, top: (y + h) * k, width: APP_W * k, height: (APP_H - y - h) * k, background: shade}}
+              style={{position: 'absolute', left: 0, top: (y + h) * k, width: APP_W_ * k, height: (APP_H_ - y - h) * k, background: shade}}
             />
             <div style={{position: 'absolute', left: 0, top: y * k, width: x * k, height: h * k, background: shade}} />
             <div
-              style={{position: 'absolute', left: (x + w) * k, top: y * k, width: (APP_W - x - w) * k, height: h * k, background: shade}}
+              style={{position: 'absolute', left: (x + w) * k, top: y * k, width: (APP_W_ - x - w) * k, height: h * k, background: shade}}
             />
           </>
         );
@@ -154,7 +164,7 @@ export const PhoneFrame: React.FC<PhoneProps> = ({
           background: '#F3F2EC',
         }}
       >
-        <div style={{position: 'absolute', left: tx, top: ty, width: APP_W * k, height: APP_H * k}}>
+        <div style={{position: 'absolute', left: tx, top: ty, width: APP_W_ * k, height: APP_H_ * k}}>
           {prevSrc && mix < 1 ? content(prevSrc, 1) : null}
           {content(src, prevSrc ? mix : 1)}
           {dim}
@@ -165,10 +175,10 @@ export const PhoneFrame: React.FC<PhoneProps> = ({
         <div
           style={{
             position: 'absolute',
-            left: sw / 2 - sw * 0.022,
-            top: sw * 0.03,
-            width: sw * 0.044,
-            height: sw * 0.044,
+            left: appW > appH ? sh * 0.03 : sw / 2 - sw * 0.022,
+            top: appW > appH ? sh / 2 - sh * 0.022 : sw * 0.03,
+            width: Math.min(sw, sh) * 0.044,
+            height: Math.min(sw, sh) * 0.044,
             borderRadius: 99,
             background: '#0B0F0E',
             boxShadow: 'inset 0 0 0 2px #1d2523',

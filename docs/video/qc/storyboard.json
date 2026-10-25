@@ -1,0 +1,593 @@
+{
+  "id": "qc",
+  "version": 1,
+  "status": "EXPERT_REVIEW_PENDING",
+  "title": {
+    "en": "Quality control: Levey–Jennings and Westgard rules",
+    "ru": "Контроль качества: Леви–Дженнингс и правила Вестгарда",
+    "uz": "Sifat nazorati: Levey–Jennings va Westgard qoidalari"
+  },
+  "fps": 30,
+  "formats": {
+    "vertical": {
+      "width": 1080,
+      "height": 1920
+    },
+    "horizontal": {
+      "width": 1920,
+      "height": 1080
+    }
+  },
+  "timing": {
+    "_doc": "Same rules as the flagships; with the English voice the timing manifest public/audio/en/qc.timing.json replaces the estimate for EVERY language edition.",
+    "leadSec": 0.25,
+    "tailSec": 0.35,
+    "gapSec": 0.2,
+    "minLineSec": 1.6,
+    "cps": {
+      "en": 16,
+      "ru": 15,
+      "uz": 14
+    }
+  },
+  "data": {
+    "_doc": "ILLUSTRATIVE CONTROL DATA - invented for teaching, not a real control material, lot or method. Runs are designed by z-score; the value typed into the app is mean + z*SD. Every verdict in the video is computed by a port of the app's own rule engine (video_studio/src/lib/qc.js <- lib/features/qc/qc_rules.dart) and checked against `expect` (the code refuses to run otherwise); the walk test types the same runs into the app and records the app's own verdicts (frames.json -> record.verdicts), compared in MATH_APPENDIX.md; independent Python check video_studio/scripts/crosscheck_qc.py. Targets (mean, SD) are entered as 'Our laboratory's data'. No acceptance limit beyond the app's Westgard rules is stated.",
+    "setName": {
+      "en": "Demo test",
+      "ru": "Демо-тест",
+      "uz": "Demo test"
+    },
+    "unit": "mmol/L",
+    "levels": [
+      {
+        "id": "L1",
+        "label": {
+          "en": "Low",
+          "ru": "Низкий",
+          "uz": "Past"
+        },
+        "lot": "DEMO-1",
+        "mean": 5.0,
+        "sd": 0.2,
+        "decimals": 2
+      },
+      {
+        "id": "L2",
+        "label": {
+          "en": "High",
+          "ru": "Высокий",
+          "uz": "Yuqori"
+        },
+        "lot": "DEMO-2",
+        "mean": 15.0,
+        "sd": 0.5,
+        "decimals": 2
+      }
+    ],
+    "runs": [
+      {
+        "z": [
+          0.3,
+          -0.4
+        ]
+      },
+      {
+        "z": [
+          -0.8,
+          0.2
+        ]
+      },
+      {
+        "z": [
+          0.6,
+          0.9
+        ]
+      },
+      {
+        "z": [
+          -0.2,
+          -1.1
+        ]
+      },
+      {
+        "z": [
+          1.1,
+          0.4
+        ]
+      },
+      {
+        "z": [
+          2.3,
+          0.6
+        ]
+      },
+      {
+        "z": [
+          0.5,
+          -0.3
+        ]
+      },
+      {
+        "z": [
+          -1.2,
+          0.7
+        ]
+      },
+      {
+        "z": [
+          1.3,
+          1.2
+        ]
+      },
+      {
+        "z": [
+          1.6,
+          1.4
+        ]
+      },
+      {
+        "z": [
+          0.2,
+          -0.5
+        ]
+      },
+      {
+        "z": [
+          2.6,
+          -2.3
+        ]
+      }
+    ],
+    "expect": {
+      "1": {
+        "verdict": "accept",
+        "rules": []
+      },
+      "2": {
+        "verdict": "accept",
+        "rules": []
+      },
+      "3": {
+        "verdict": "accept",
+        "rules": []
+      },
+      "4": {
+        "verdict": "accept",
+        "rules": []
+      },
+      "5": {
+        "verdict": "accept",
+        "rules": []
+      },
+      "6": {
+        "verdict": "warning",
+        "rules": [
+          "1-2s"
+        ]
+      },
+      "7": {
+        "verdict": "accept",
+        "rules": []
+      },
+      "8": {
+        "verdict": "accept",
+        "rules": []
+      },
+      "9": {
+        "verdict": "accept",
+        "rules": []
+      },
+      "10": {
+        "verdict": "reject",
+        "rules": [
+          "4-1s"
+        ]
+      },
+      "11": {
+        "verdict": "accept",
+        "rules": []
+      },
+      "12": {
+        "verdict": "reject",
+        "rules": [
+          "1-2s",
+          "R-4s"
+        ]
+      }
+    },
+    "hookRun": 6,
+    "shiftRun": 10,
+    "uiRuns": [
+      6,
+      10,
+      12
+    ],
+    "cards": [
+      {
+        "rule": "1-2s",
+        "levels": [
+          "L1",
+          "L2"
+        ],
+        "runs": [
+          [
+            0.4,
+            -0.3
+          ],
+          [
+            -0.6,
+            0.5
+          ],
+          [
+            0.2,
+            0.8
+          ],
+          [
+            2.3,
+            0.6
+          ]
+        ],
+        "window": 1
+      },
+      {
+        "rule": "1-3s",
+        "levels": [
+          "L1",
+          "L2"
+        ],
+        "runs": [
+          [
+            0.4,
+            -0.3
+          ],
+          [
+            -0.6,
+            0.5
+          ],
+          [
+            0.2,
+            0.8
+          ],
+          [
+            3.3,
+            0.2
+          ]
+        ],
+        "window": 1
+      },
+      {
+        "rule": "R-4s",
+        "levels": [
+          "L1",
+          "L2"
+        ],
+        "runs": [
+          [
+            0.4,
+            -0.3
+          ],
+          [
+            -0.6,
+            0.5
+          ],
+          [
+            0.2,
+            0.8
+          ],
+          [
+            2.4,
+            -2.2
+          ]
+        ],
+        "window": 1
+      },
+      {
+        "rule": "2-2s",
+        "levels": [
+          "L1",
+          "L2"
+        ],
+        "runs": [
+          [
+            0.4,
+            -0.3
+          ],
+          [
+            -0.6,
+            0.5
+          ],
+          [
+            0.2,
+            0.8
+          ],
+          [
+            2.2,
+            2.3
+          ]
+        ],
+        "window": 1
+      },
+      {
+        "rule": "4-1s",
+        "levels": [
+          "L1",
+          "L2"
+        ],
+        "runs": [
+          [
+            0.4,
+            -0.3
+          ],
+          [
+            -0.6,
+            0.5
+          ],
+          [
+            1.2,
+            1.3
+          ],
+          [
+            1.4,
+            1.1
+          ]
+        ],
+        "window": 2
+      },
+      {
+        "rule": "10x",
+        "levels": [
+          "L1"
+        ],
+        "runs": [
+          [
+            -0.5
+          ],
+          [
+            0.4
+          ],
+          [
+            0.6
+          ],
+          [
+            0.3
+          ],
+          [
+            0.8
+          ],
+          [
+            0.5
+          ],
+          [
+            0.2
+          ],
+          [
+            0.7
+          ],
+          [
+            0.4
+          ],
+          [
+            0.6
+          ],
+          [
+            0.5
+          ]
+        ],
+        "window": 10
+      }
+    ],
+    "_cardsDoc": "Rule cards: each pattern (context runs + the violating run(s)) is evaluated with the same rule engine; the code refuses to run unless the LAST run triggers the card's rule. `window` = number of last runs highlighted."
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "layer": "hook",
+      "lines": [
+        "L01",
+        "L02"
+      ],
+      "minSec": 4.2
+    },
+    {
+      "id": "chart",
+      "layer": "lj",
+      "lines": [
+        "L03",
+        "L04"
+      ],
+      "minSec": 8.0,
+      "props": {
+        "step": "01",
+        "phase": "build",
+        "upto": 5
+      }
+    },
+    {
+      "id": "zscore",
+      "layer": "zscore",
+      "lines": [
+        "L05"
+      ],
+      "minSec": 5.5,
+      "props": {
+        "step": "02"
+      }
+    },
+    {
+      "id": "warn",
+      "layer": "lj",
+      "lines": [
+        "L06",
+        "L07"
+      ],
+      "minSec": 7.0,
+      "props": {
+        "step": "03",
+        "phase": "warn",
+        "upto": 6
+      }
+    },
+    {
+      "id": "random",
+      "layer": "rules",
+      "lines": [
+        "L08"
+      ],
+      "minSec": 6.0,
+      "props": {
+        "step": "04",
+        "cards": [
+          "1-3s",
+          "R-4s"
+        ],
+        "kind": "random"
+      }
+    },
+    {
+      "id": "systematic",
+      "layer": "rules",
+      "lines": [
+        "L09"
+      ],
+      "minSec": 6.5,
+      "props": {
+        "step": "05",
+        "cards": [
+          "2-2s",
+          "4-1s",
+          "10x"
+        ],
+        "kind": "systematic"
+      }
+    },
+    {
+      "id": "shift",
+      "layer": "lj",
+      "lines": [
+        "L10"
+      ],
+      "minSec": 6.0,
+      "props": {
+        "step": "06",
+        "phase": "shift",
+        "upto": 10
+      }
+    },
+    {
+      "id": "app_set",
+      "layer": "phone",
+      "lines": [
+        "L11",
+        "L12"
+      ],
+      "minSec": 8.0,
+      "props": {
+        "step": "07",
+        "shots": [
+          {
+            "frame": "qc_new",
+            "w": 1,
+            "mark": "source",
+            "callout": "coNew",
+            "cue": 0
+          },
+          {
+            "frame": "qc_chart",
+            "w": 1.3,
+            "mark": "chart",
+            "callout": "coChart",
+            "tone": "ok",
+            "cue": 1
+          }
+        ],
+        "subZone": "left"
+      }
+    },
+    {
+      "id": "app_rules",
+      "layer": "phone",
+      "lines": [
+        "L13",
+        "L14"
+      ],
+      "minSec": 9.0,
+      "props": {
+        "step": "08",
+        "shots": [
+          {
+            "frame": "qc_warn",
+            "w": 1,
+            "mark": "rule",
+            "callout": "coWarn",
+            "cue": 0
+          },
+          {
+            "frame": "qc_reject41",
+            "w": 1,
+            "mark": "rule",
+            "callout": "coReject41",
+            "tone": "warn",
+            "cue": 0
+          },
+          {
+            "frame": "qc_excluded",
+            "w": 1,
+            "mark": "excluded",
+            "callout": "coExcluded",
+            "tone": "warn",
+            "cue": 1
+          },
+          {
+            "frame": "qc_stats",
+            "w": 1,
+            "mark": "stats",
+            "callout": "coStats",
+            "cue": 1
+          }
+        ],
+        "subZone": "left"
+      }
+    },
+    {
+      "id": "app_more",
+      "layer": "phone",
+      "lines": [
+        "L15"
+      ],
+      "minSec": 5.5,
+      "props": {
+        "step": "09",
+        "shots": [
+          {
+            "frame": "qc_csv",
+            "w": 1,
+            "mark": "button",
+            "callout": "coCsv",
+            "tone": "ok",
+            "tap": true
+          },
+          {
+            "frame": "qc_guides",
+            "w": 1,
+            "mark": "guides",
+            "callout": "coGuides"
+          }
+        ],
+        "subZone": "left"
+      }
+    },
+    {
+      "id": "end",
+      "layer": "cta",
+      "lines": [
+        "L16",
+        "L17"
+      ],
+      "minSec": 6.5
+    }
+  ],
+  "thumbnail": {
+    "headlineKey": "thumbHeadline",
+    "subKey": "thumbSub"
+  }
+}

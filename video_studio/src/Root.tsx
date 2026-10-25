@@ -8,8 +8,11 @@ import type {VideoDef, VideoProps} from './framework/types';
 import {useFonts} from './design/fonts';
 import {calibrationVideo} from './videos/calibration';
 import {leukocyteVideo} from './videos/leukocyte';
+import {photometryVideo} from './videos/photometry';
+import {qcVideo} from './videos/qc';
+import {gcmsVideo} from './videos/gcms';
 
-export const videos: VideoDef[] = [calibrationVideo, leukocyteVideo];
+export const videos: VideoDef[] = [calibrationVideo, leukocyteVideo, photometryVideo, qcVideo, gcmsVideo];
 
 const defaults: VideoProps = {lang: 'en', timing: null, appFrames: null, subtitles: true};
 
