@@ -116,6 +116,38 @@ void main() {
     expect(r.qcAfter, QcAfter.pass);
   });
 
+  testWidgets(
+    'tarix qatorida xom tahlil kodi emas, ilova tilidagi nom turadi',
+    (tester) async {
+      final s = await makeServices(tester);
+      final m = await tester.runAsync(
+        () => s.instruments.addFromCatalog('human-humalyzer-4000'),
+      );
+      final rec = await tester.runAsync(
+        () => s.instruments.addRecord(
+          instrument: m!,
+          instrumentName: 'HUMAN',
+          analyteId: 'urea',
+          reagent: const ReagentChoice(maker: 'H', ref: 'R', ifuVersion: '1'),
+          calibratorLot: 'L-1',
+          levels: const [CalibratorLevel(name: '1', value: 1, unit: 'mmol/L')],
+          performedOn: DateTime(2026, 10, 9),
+          outcome: CalibrationOutcome.pending,
+        ),
+      );
+      await pumpApp(tester, s);
+      await goTo(tester, '/lab/calibration/log/${rec!.id}');
+      final line = find.byKey(ValueKey('audit-${rec.id}-created'));
+      await _seek(tester, line);
+      final shown = tester.widget<Text>(line).data!;
+      expect(shown, isNot(contains('urea')), reason: shown);
+      expect(shown, isNot(contains('pending')), reason: shown);
+      expect(shown, contains('L-1'));
+      // Bazadagi/saqlangan matn o'zgarmagan.
+      expect(s.instruments.audit.single.summary, startsWith('urea · L-1'));
+    },
+  );
+
   testWidgets('o‘chirish tarixga «o‘chirildi» yozadi', (tester) async {
     final s = await makeServices(tester);
     final m = await tester.runAsync(

@@ -1145,7 +1145,17 @@ String qcLabel(QcAfter q, AppLocalizations l) => switch (q) {
 /// training · QC notRun`, tahrirda `eski -> yangi`). Saqlangan matn o'zgarmaydi;
 /// ko'rsatishda enum nomlari ilova tiliga o'giriladi, qolgan qismlar (tahlil
 /// kodi, lot) o'z holicha qoladi.
-String localizedAuditSummary(String summary, AppLocalizations l) {
+///
+/// [analyteName] — tahlil kodini (`glucose-plasma-fasting`) ilova tilidagi
+/// nomga o'giradi (null yoki null qaytarsa kod o'z holicha); bazadagi kod va
+/// saqlangan matn o'zgarmaydi.
+String localizedAuditSummary(
+  String summary,
+  AppLocalizations l, {
+  String? Function(String id)? analyteName,
+}) {
+  String first(String t) => analyteName?.call(t) ?? t;
+
   String token(String t) {
     for (final o in CalibrationOutcome.values) {
       if (t == o.name) return outcomeLabel(o, l);
@@ -1164,7 +1174,13 @@ String localizedAuditSummary(String summary, AppLocalizations l) {
 
   return summary
       .split(' -> ')
-      .map((part) => part.split(' · ').map(token).join(' · '))
+      .map((part) {
+        final fields = part.split(' · ');
+        return [
+          if (fields.isNotEmpty) first(fields.first),
+          ...fields.skip(1).map(token),
+        ].join(' · ');
+      })
       .join(' → ');
 }
 
@@ -1418,6 +1434,8 @@ class _HistorySection extends StatelessWidget {
     final text = Theme.of(context).textTheme;
     final locale = Localizations.localeOf(context).toLanguageTag();
     final stamp = DateFormat.yMd(locale).add_Hm();
+    final pack = context.services.content.pack;
+    final lang = Localizations.localeOf(context).languageCode;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -1430,7 +1448,7 @@ class _HistorySection extends StatelessWidget {
               padding: const EdgeInsets.only(bottom: 4),
               child: Text(
                 '${stamp.format(e.at)} · ${auditActionLabel(e.action, l)} · '
-                '${localizedAuditSummary(e.summary, l)}',
+                '${localizedAuditSummary(e.summary, l, analyteName: (id) => pack?.analyte(id)?.names.of(lang))}',
                 key: ValueKey('audit-${e.recordId}-${e.action.name}'),
                 style: text.bodySmall,
               ),

@@ -35,6 +35,21 @@ void main() {
     });
   }
 
+  test('tahlil kodi nomga o‘tadi; noma’lum kod o‘z holicha qoladi', () {
+    final l = lookupAppLocalizations(const Locale('ru'));
+    String? names(String id) =>
+        id == 'glucose-plasma-fasting' ? 'Глюкоза' : null;
+    final a = localizedAuditSummary(
+      'glucose-plasma-fasting · LOT1 · pending · lab · QC pass -> '
+      'unknown-id · LOT1 · accepted · lab · QC pass',
+      l,
+      analyteName: names,
+    );
+    expect(a, startsWith('Глюкоза · LOT1 · '));
+    expect(a, contains('unknown-id · LOT1'));
+    expect(a, isNot(contains('glucose-plasma-fasting')));
+  });
+
   test('noma’lum matn o‘zgarishsiz qoladi', () {
     final l = lookupAppLocalizations(const Locale('uz'));
     expect(localizedAuditSummary('eski yozuv', l), 'eski yozuv');
