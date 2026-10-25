@@ -246,7 +246,9 @@ function guestSnapshot(ctx: Ctx, items: GuestItem[], status = 200): Response {
         source: 'store_guest',
         plan: BILLING_PRODUCTS[i.row?.product_id ?? i.productId]?.plan ?? 'student',
         guest_state: i.state,
-        status: i.state === 'active' ? (i.row?.status ?? 'expired') : 'account_linked',
+        // Faol bo'lmagan holat (hisobga bog'langan, qurilma limiti) — huquq
+        // bermaydigan status (ilova uni "noma'lum" deb o'qiydi).
+        status: i.state === 'active' ? (i.row?.status ?? 'expired') : i.state,
         period_type: i.row?.period_type ?? 'normal',
         auto_renew: i.row?.auto_renew == null ? null : i.row.auto_renew === 1,
         started_at: iso(i.row?.started_at),

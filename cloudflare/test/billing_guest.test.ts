@@ -123,6 +123,7 @@ describe('mehmon: xarid, tiklash, yangilash', () => {
     for (const d of devices) expect((await guestVerify(s, { platform: 'app_store', device_id: d, token: t })).data.capabilities).toEqual(['learner']);
     const extra = await guestVerify(s, { platform: 'app_store', device_id: deviceId(), token: t });
     expect(extra.data.items[0].guest_state).toBe('device_limit');
+    expect(extra.data.items[0].status).toBe('device_limit'); // huquq bermaydigan status
     expect(extra.data.capabilities).toEqual([]);
     expect((await guestVerify(s, { platform: 'app_store', device_id: devices[0], token: t })).data.capabilities).toEqual(['learner']);
   });

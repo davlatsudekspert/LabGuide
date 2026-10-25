@@ -280,6 +280,10 @@ describe('Play Integrity: server oqimi (soxta Google API)', () => {
 
 describe('Play Integrity: verdikt funksiyasi (sof)', () => {
   const base = { packageName: PKG, digests: [CERT_HEX], serverNonce: 'n'.repeat(43), deviceId: 'abcdef0123456789', now: Date.UTC(2026, 9, 25) };
+  it('integrityNonce: ilova (Dart) bilan bir xil test vektori', async () => {
+    // test/unit/platform_device_attestor_test.dart da xuddi shu qiymat.
+    expect(await integrityNonce('n'.repeat(43), 'abcdef0123456789')).toBe('61MO6Z5mYqT12cPPFzBUdWbBo8x-1wBxyZZ0L6HKnkI');
+  });
   it('to‘g‘ri yuklama — subject = aid:<device_id>', async () => {
     const p = await goodPayload(base.serverNonce, base.deviceId, base.now);
     expect(await checkIntegrityVerdict(p, base)).toEqual({ ok: true, subject: `aid:${base.deviceId}` });
