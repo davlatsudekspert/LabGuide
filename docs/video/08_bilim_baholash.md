@@ -43,13 +43,13 @@ tekshirish uchun. **Video ham, how-to ham imtihon natijasi haqida hech qanday da
 | # | Kadr (id) | Haqiqiy ekran (marshrut) | Ekrandagi amal | UZ | RU | EN | s |
 |---|---|---|---|---|---|---|---|
 | — | kartochka | — | Sarlavha | Bilim va malakani baholash | Проверка знаний и компетенций | Knowledge & Skills Assessment | 3 |
-| 1 | `as_profile` (faqat ru/en) | `/profile` | «O‘zbekiston» ni bosish | — | Раздел для Узбекистана: Профиль → «Проверка знаний и компетенций» → «Узбекистан» | For Uzbekistan: Profile → “Knowledge & Skills Assessment” → “Uzbekistan” | 5 |
+| 1 | `as_profile` (faqat ru/en) | `/profile` | «O‘zbekiston» ni bosish | — | Для Узбекистана: Профиль → «Проверка знаний…» → «Узбекистан» | For Uzbekistan: Profile → “Knowledge & Skills…” → “Uzbekistan” | 5 |
 | 2 | `as_learn` | `/learn` | Bo‘lim kartasi | O‘rganish → «Bilim va malakani baholash» | Обучение → «Проверка знаний и компетенций» | Learn → “Knowledge & Skills Assessment” | 3.5 |
 | 3 | `as_hub` | `/learn/toifa` | Bo‘lim tepasi | Kunlik maqsad: savollar yoki bitta bilet; eslatma | Цель на день: вопросы или один билет; напоминание | Daily goal: questions or one ticket; reminder | 3.5 |
 | 4 | `as_category` | `/learn/toifa` | «1-toifa» ni bosish | Toifangizni tanlang — og‘zaki bilet shu ro‘yxatdan | Выберите категорию — устный билет из её списка | Choose your category — oral tickets come from its list | 3.5 |
 | 5 | `as_rows` | `/learn/toifa` | «Bilim testi» ni bosish | Bilim testi, mavzu bo‘yicha mashq, og‘zaki bilet, xatolar, rivojlanish | Тест знаний, практика по темам, устный билет, ошибки, прогресс | Knowledge test, topic practice, oral ticket, mistakes, progress | 4 |
 | 6 | `as_test_setup` | `/learn/toifa/test` | Rejim va format | Bilim testi: imtihon yoki mashq rejimi | Тест знаний: режим экзамена или практики | Knowledge test: exam or practice mode | 3.5 |
-| 7 | `as_test_q` | `/learn/toifa/test/run` | Savol | Rasmiy ro‘yxatdan tasodifiy savollar; savollar xaritasi | Случайные вопросы официального списка; официальный текст — на узбекском | Random questions from the official list; the official text is Uzbek | 4 |
+| 7 | `as_test_q` | `/learn/toifa/test/run` | Savol | Rasmiy ro‘yxatdan tasodifiy savollar; pastda — savollar xaritasi | Случайные вопросы официального списка; внизу — карта вопросов | Random questions from the official list; the question map is below | 4 |
 | 8 | `as_practice` | `/learn/toifa/practice` | «Gemostaz» ni bosish | Mavzu bo‘yicha mashq: mavzuni tanlang | Практика по темам: выберите тему | Topic practice: choose a topic | 3.5 |
 | 9 | `as_practice_q` | `/learn/toifa/practice/:scope` | B variantni bosish | Javobni tanlang | Выберите ответ | Pick an answer | 3 |
 | 10 | `as_practice_key` | `/learn/toifa/practice/:scope` | Kalit | Darhol: rasmiy kalit va manba | Сразу: официальный ключ и источник | At once: the official key and its source | 4 |

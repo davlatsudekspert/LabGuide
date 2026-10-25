@@ -37,8 +37,8 @@ Faqat siz kiritgan qiymatlardan hisoblangan natija — formula va manbasi bilan.
 |---|---|---|---|---|---|---|---|
 | — | kartochka | — | Sarlavha | Kalkulyatorlar | Калькуляторы | Calculators | 3 |
 | 1 | `lab_tools` | `/lab` | «Kalkulyatorlar» ni bosish | Lab → «Kalkulyatorlar» | Лаб. → «Калькуляторы» | Lab → “Calculators” | 3 |
-| 2 | `calc_list` | `/lab/calculators` | eGFR qatorini bosish | 17 ta kalkulyator: klinik formulalar, qo‘lda usullar, laboratoriya | 17 калькуляторов: клинические формулы, ручные методы, лабораторные | 17 calculators: clinical formulas, manual methods, laboratory | 4 |
-| 3 | `calc_egfr` | `/lab/calculators/egfr` | Bo‘sh forma | eGFR (CKD-EPI 2021): maydonlar bo‘sh — qiymatni o‘zingiz kiritasiz | eGFR (CKD-EPI 2021): поля пустые — значения вводите вы | eGFR (CKD-EPI 2021): fields start empty — you enter the values | 3.5 |
+| 2 | `calc_list` | `/lab/calculators` | eGFR qatorini bosish | 17 ta kalkulyator: klinik formulalar, qo‘lda usullar, laboratoriya | 17 калькуляторов: клинические, ручные, лабораторные | 17 calculators: clinical formulas, manual methods, laboratory | 4 |
+| 3 | `calc_egfr` | `/lab/calculators/egfr` | Bo‘sh forma | eGFR (CKD-EPI 2021): maydonlar bo‘sh — qiymatni o‘zingiz kiritasiz | рСКФ (eGFR, CKD-EPI 2021): поля пустые — значения вводите вы | eGFR (CKD-EPI 2021): fields start empty — you enter the values | 3.5 |
 | 4 | `calc_egfr_input` | `/lab/calculators/egfr` | Kreatinin 88, yosh 45; «Erkak» ni bosish | Kreatinin va yosh → jinsni tanlang → «Hisoblash» | Креатинин и возраст → пол → «Рассчитать» | Creatinine and age → sex → “Calculate” | 4 |
 | 5 | `calc_egfr_result` | `/lab/calculators/egfr` | Natija | Natija va KDIGO toifasi; kiritilgan qiymatlar ham ko‘rsatiladi | Результат и категория KDIGO; введённые значения тоже видны | Result and KDIGO category; your inputs are shown too | 4 |
 | 6 | `calc_egfr_sources` | `/lab/calculators/egfr` | Formula va cheklovlarga surish | Formula va cheklovlar — manbalari bilan | Формула и ограничения — с источниками | Formula and limitations — with sources | 4 |
