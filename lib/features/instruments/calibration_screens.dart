@@ -1140,6 +1140,34 @@ String qcLabel(QcAfter q, AppLocalizations l) => switch (q) {
   QcAfter.notRun => l.calSafeQcNotRun,
 };
 
+/// Tarix yozuvi matni `InstrumentsController._summary` tomonidan saqlash
+/// paytida inglizcha enum nomlari bilan yoziladi (`tahlil · lot · pending ·
+/// training · QC notRun`, tahrirda `eski -> yangi`). Saqlangan matn o'zgarmaydi;
+/// ko'rsatishda enum nomlari ilova tiliga o'giriladi, qolgan qismlar (tahlil
+/// kodi, lot) o'z holicha qoladi.
+String localizedAuditSummary(String summary, AppLocalizations l) {
+  String token(String t) {
+    for (final o in CalibrationOutcome.values) {
+      if (t == o.name) return outcomeLabel(o, l);
+    }
+    for (final k in CalibrationKind.values) {
+      if (t == k.name) return kindLabel(k, l);
+    }
+    if (t.startsWith('QC ')) {
+      final rest = t.substring(3);
+      for (final q in QcAfter.values) {
+        if (rest == q.name) return qcLabel(q, l);
+      }
+    }
+    return t;
+  }
+
+  return summary
+      .split(' -> ')
+      .map((part) => part.split(' · ').map(token).join(' · '))
+      .join(' → ');
+}
+
 String auditActionLabel(CalibrationAuditAction a, AppLocalizations l) =>
     switch (a) {
       CalibrationAuditAction.created => l.calSafeAuditCreated,
@@ -1402,7 +1430,7 @@ class _HistorySection extends StatelessWidget {
               padding: const EdgeInsets.only(bottom: 4),
               child: Text(
                 '${stamp.format(e.at)} · ${auditActionLabel(e.action, l)} · '
-                '${e.summary}',
+                '${localizedAuditSummary(e.summary, l)}',
                 key: ValueKey('audit-${e.recordId}-${e.action.name}'),
                 style: text.bodySmall,
               ),
