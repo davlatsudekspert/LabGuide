@@ -5,9 +5,13 @@ import 'package:material_ui/material_ui.dart';
 
 import '../../app/app_scope.dart';
 import '../../app/widgets/lg_page.dart';
+import '../../core/build_flags.dart';
+import '../../core/entitlements/feature.dart';
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
+import '../pro/pro_widgets.dart';
+import '../profile/pro_gate.dart';
 import '../share/result_share.dart';
 import '../support/support_screens.dart' show formatWhen;
 import '../toifa/toifa_bank.dart';
@@ -131,6 +135,17 @@ class _ExamSetupScreenState extends State<ExamSetupScreen> {
               ? const SizedBox.shrink()
               : ActiveExamCard(session: exams.active!),
         ),
+        // Imtihon simulyatsiyasi — Talaba Pro (D-78; faqat Pro bayrog'i
+        // bilan ko'rinadi). Quyidagi bepul imtihon rejimi o'zgarmaydi.
+        if (BuildFlags.proEnabled)
+          ProEntryRow(
+            key: const ValueKey('exam-sim-entry'),
+            title: l.proSimTitle,
+            subtitle: l.proSimEntrySub,
+            icon: Icons.timer_outlined,
+            onTap: () =>
+                pushGated(context, Feature.examSimulation, simulationBase),
+          ),
         // Hozircha — kontent paketi savollari; boshqa bank (masalan, toifa
         // imtihoni) shu ekranga manba sifatida beriladi.
         ExamSourceGate(sourceId: widget.sourceId, builder: _setup),
@@ -289,6 +304,20 @@ class ExamHistory extends StatelessWidget {
         if (history.isEmpty)
           Text(l.examHistoryEmpty, style: text.bodyMedium)
         else ...[
+          // Natijalar tahlili — Talaba Pro (D-78; faqat Pro bayrog'i bilan).
+          // Bu bepul ro'yxat cheklanmaydi va o'zgarmaydi.
+          if (BuildFlags.proEnabled)
+            ProEntryRow(
+              key: const ValueKey('exam-results-entry'),
+              title: l.proResultsTitle,
+              subtitle: l.proResultsEntrySub,
+              icon: Icons.insights_outlined,
+              onTap: () => pushGated(
+                context,
+                Feature.resultsAnalytics,
+                '/learn/results',
+              ),
+            ),
           _ProgressStrip(sessions: recent.reversed.toList()),
           const SizedBox(height: 8),
           Text(
@@ -440,7 +469,13 @@ class _ExamRunScreenState extends State<ExamRunScreen> {
     final done = await services.exams.finishActive(timedOut: timedOut);
     if (done == null) return;
     await recordExamProgress(services, done);
-    if (mounted) context.go('${examBase(done.sourceId)}/result/${done.id}');
+    if (!mounted) return;
+    // Imtihon simulyatsiyasi (Talaba Pro, D-78) — o'z hisoboti.
+    context.go(
+      done.simulation
+          ? '$simulationBase/result/${done.id}'
+          : '${examBase(done.sourceId)}/result/${done.id}',
+    );
   }
 
   @override

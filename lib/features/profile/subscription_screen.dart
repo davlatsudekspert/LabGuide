@@ -12,6 +12,7 @@ import '../../core/entitlements/plan_matrix.dart';
 import '../../core/entitlements/pro_catalog.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
+import 'purchase_screen.dart' show proFeatureLabel;
 import '../support/support_screens.dart' show formatWhen;
 
 /// “Obuna” ekrani (D-74). FAQAT `BuildFlags.proEnabled` buildda (Profil
@@ -262,6 +263,12 @@ class _SubscriptionBody extends StatelessWidget {
               ),
             const SizedBox(height: 8),
             Text(l.proSubUnlocks(caps.join(', ')), style: text.bodyMedium),
+            // D-78: faqat QURILGAN pullik funksiyalar (`gated`) sanaladi.
+            for (final f in unlocked)
+              Padding(
+                padding: const EdgeInsets.only(top: 4),
+                child: Text('• ${proFeatureLabel(l, f)}', style: text.bodySmall),
+              ),
             if (unlocked.isEmpty) ...[
               const SizedBox(height: 4),
               Text(l.proSubNothingGated, style: text.bodySmall),

@@ -94,13 +94,17 @@ class ExamSession {
     this.groupId,
     this.userId,
     this.passPercent,
+    this.simulation = false,
     List<List<int>?>? answers,
     Set<int>? flags,
+    List<int>? times,
+    this._enteredAt,
     this._index = 0,
     this._finishedAt,
     this._timedOut = false,
   }) : _answers = answers ?? List<List<int>?>.filled(items.length, null),
-       flags = flags ?? <int>{};
+       flags = flags ?? <int>{},
+       _times = times ?? (simulation ? List<int>.filled(items.length, 0) : null);
 
   /// Yangi sessiya: savollar va har savol variantlari aralashtiriladi.
   factory ExamSession.build({
@@ -119,6 +123,7 @@ class ExamSession {
     String? userId,
     int? passPercent,
     bool shuffleOptions = true,
+    bool simulation = false,
   }) {
     final items = [
       for (final (i, q) in questions.indexed)
@@ -154,6 +159,7 @@ class ExamSession {
       groupId: groupId,
       userId: userId,
       passPercent: passPercent,
+      simulation: simulation,
     );
   }
 
@@ -192,6 +198,14 @@ class ExamSession {
       groupId: j['group'] as String?,
       userId: j['user'] as String?,
       passPercent: j['pass'] as int?,
+      simulation: j['sim'] as bool? ?? false,
+      times: switch (j['times']) {
+        final List<Object?> t when t.length == items.length => [
+          for (final v in t) (v as num?)?.toInt() ?? 0,
+        ],
+        _ => null,
+      },
+      enteredAt: date('entered'),
       answers: answers,
       flags: (j['flags'] as List? ?? const []).cast<int>().toSet(),
       index: (j['index'] as int? ?? 0).clamp(0, max(0, items.length - 1)),
@@ -227,6 +241,16 @@ class ExamSession {
 
   /// Foydalanuvchi tanlagan o'tish chegarasi, % (bo'lmasa — null).
   final int? passPercent;
+
+  /// Imtihon simulyatsiyasi (Talaba Pro, D-78): ketma-ket (orqaga qaytish
+  /// va belgilash yo'q), har savolga sarflangan vaqt yoziladi. Bepul
+  /// imtihonda `false` — xatti-harakat o'zgarmaydi.
+  final bool simulation;
+
+  /// Har savolda (ekrandagi tartib) o'tkazilgan soniyalar — faqat
+  /// simulyatsiyada.
+  final List<int>? _times;
+  DateTime? _enteredAt;
 
   /// Chegaraga yetdimi (chegara tanlanmagan bo'lsa — null).
   bool? get passed => passPercent == null ? null : percent >= passPercent!;
@@ -285,6 +309,31 @@ class ExamSession {
   }
 
   void next() => goTo(_index + 1);
+
+  /// Simulyatsiya: joriy savol ko'rsatila boshlagan vaqt (birinchi marta).
+  void markEntered(DateTime now) {
+    if (_times == null || finished) return;
+    _enteredAt ??= now;
+  }
+
+  /// Simulyatsiya: joriy savolda o'tgan vaqtni yozadi va hisobni [now]
+  /// dan qayta boshlaydi (savol almashishidan oldin chaqiriladi).
+  void recordDwell(DateTime now) {
+    final t = _times;
+    if (t == null || finished) return;
+    final from = _enteredAt;
+    if (from != null) {
+      final d = now.difference(from).inSeconds;
+      if (d > 0) t[_index] += d;
+    }
+    _enteredAt = now;
+  }
+
+  /// [i]-savolga sarflangan vaqt (simulyatsiyada; aks holda null).
+  Duration? timeAt(int i) {
+    final t = _times;
+    return t == null ? null : Duration(seconds: t[i]);
+  }
   void previous() => goTo(_index - 1);
 
   int get answeredCount => _answers.where((a) => a != null).length;
@@ -308,9 +357,12 @@ class ExamSession {
   void finish(DateTime now, {bool timedOut = false}) {
     if (finished) return;
     _timedOut = timedOut;
-    _finishedAt = timedOut && deadline != null && deadline!.isBefore(now)
-        ? deadline
+    final end = timedOut && deadline != null && deadline!.isBefore(now)
+        ? deadline!
         : now;
+    recordDwell(end);
+    _enteredAt = null;
+    _finishedAt = end;
   }
 
   Duration spent(DateTime now) {
@@ -398,6 +450,9 @@ class ExamSession {
     'group': groupId,
     'user': userId,
     'pass': passPercent,
+    if (simulation) 'sim': true,
+    'times': ?_times,
+    'entered': ?_enteredAt?.toUtc().toIso8601String(),
     'answers': _answers,
     'flags': flags.toList()..sort(),
     'index': _index,

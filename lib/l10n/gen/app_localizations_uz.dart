@@ -13375,4 +13375,270 @@ class AppLocalizationsUz extends AppLocalizations {
   String proTrialConfirmBody(String plan, String date) {
     return '$plan $date gacha bepul. To‘lov usuli yo‘q, pul yechilmaydi va sinov pullik obunaga aylanmaydi. Sinov tugagach faqat pullik imkoniyatlar yopiladi; bepul imkoniyatlar va barcha ma’lumotlaringiz saqlanadi.';
   }
+
+  @override
+  String get proGateClosedTitle => 'Bu Pro imkoniyat';
+
+  @override
+  String get proGateClosedBody =>
+      'Ochish uchun obuna yoki 7 kunlik bepul sinov kerak. Bepul imkoniyatlar va ma’lumotlaringiz saqlanadi.';
+
+  @override
+  String get proGateOpenPlans => 'Rejalarni ko‘rish';
+
+  @override
+  String get proExportAction => 'Eksport: PDF yoki CSV';
+
+  @override
+  String get proExportTitle => 'Faylga eksport';
+
+  @override
+  String get proExportPdf => 'PDF hujjat';
+
+  @override
+  String get proExportPdfSub => 'Ko‘rish, chop etish va arxiv uchun';
+
+  @override
+  String get proExportCsv => 'CSV jadval';
+
+  @override
+  String get proExportCsvSub => 'Excel yoki Google Sheets uchun';
+
+  @override
+  String get proExportBusy => 'Fayl tayyorlanmoqda…';
+
+  @override
+  String get proExportShared => 'Fayl tayyor — ulashish oynasi ochildi.';
+
+  @override
+  String get proExportFailed =>
+      'Faylni ulashib bo‘lmadi. Qayta urinib ko‘ring.';
+
+  @override
+  String get proExportNotClinical =>
+      'Faqat siz kiritgan ma’lumotlardan tuzilgan. Klinik qaror emas va laboratoriyaning rasmiy hujjati o‘rnini bosmaydi.';
+
+  @override
+  String proExportCreated(String date) {
+    return 'Yaratildi: $date';
+  }
+
+  @override
+  String proExportPage(int page, int total) {
+    return '$page / $total';
+  }
+
+  @override
+  String proCalExportCount(int count) {
+    return 'Yozuvlar: $count';
+  }
+
+  @override
+  String get proCalExportEntry => 'Jurnalni eksport qilish';
+
+  @override
+  String get proCalExportEntrySub =>
+      'PDF yoki CSV: apparat, reagent, lot, darajalar, natija, tasdiqlagan va tarix';
+
+  @override
+  String get proColDate => 'Sana';
+
+  @override
+  String get proColAction => 'Amal';
+
+  @override
+  String get proColDetail => 'Tafsilot';
+
+  @override
+  String get proColStatus => 'Holat';
+
+  @override
+  String get proQcReportTitle => 'QC xulosa hisoboti';
+
+  @override
+  String get proQcReportEntrySub =>
+      'Har daraja va lot bo‘yicha x̄, SD, CV, maqsaddan farq va ishlagan qoidalar; PDF / CSV';
+
+  @override
+  String get proQcSummary => 'Umumiy';
+
+  @override
+  String get proQcPeriodLabel => 'Davr';
+
+  @override
+  String get proQcVerdictsLabel => 'Qabul / ogohlantirish / rad';
+
+  @override
+  String get proQcVerdictsHint =>
+      'Daraja kartasidagi xulosalar — shu daraja ishtirok etgan qoidalar bo‘yicha; umumiy hisob — butun seriya bo‘yicha.';
+
+  @override
+  String get proQcRulesFired => 'Ishlagan qoidalar';
+
+  @override
+  String get proQcNoRules => 'Qoida buzilmagan';
+
+  @override
+  String get proQcByLevel => 'Darajalar va lotlar bo‘yicha';
+
+  @override
+  String get proQcColLevel => 'Daraja';
+
+  @override
+  String get proQcColTarget => 'Maqsad (x̄ ± SD)';
+
+  @override
+  String get proQcColObserved => 'Kuzatilgan (n, x̄ ± SD)';
+
+  @override
+  String get proQcColBias => 'Maqsaddan farq';
+
+  @override
+  String get proQcNoRuns =>
+      'Hali seriya kiritilmagan — hisobot uchun ma’lumot yo‘q.';
+
+  @override
+  String get proSimTitle => 'Imtihon simulyatsiyasi';
+
+  @override
+  String get proSimSubtitle =>
+      'Imtihon sharoitida test: vaqt va o‘tish chegarasi bilan, batafsil hisobot';
+
+  @override
+  String get proSimEntrySub =>
+      'Vaqt va o‘tish chegarasi majburiy, savollar ketma-ket, har savol vaqti hisobotda';
+
+  @override
+  String get proSimConditions => 'Imtihon sharoiti';
+
+  @override
+  String get proSimRule1 =>
+      'Vaqt chegarasi majburiy: vaqt tugasa test o‘zi yakunlanadi.';
+
+  @override
+  String get proSimRule2 =>
+      'Savollar barcha mavzulardan, mavzu hajmiga mutanosib tanlanadi.';
+
+  @override
+  String get proSimRule3 =>
+      'Savollar ketma-ket: oldingi savolga qaytish va belgilash yo‘q.';
+
+  @override
+  String get proSimRule4 =>
+      'Natija o‘tish chegarasi bilan baholanadi; hisobotda har savolga sarflangan vaqt va mavzular tahlili bor.';
+
+  @override
+  String get proSimBank => 'Savollar banki';
+
+  @override
+  String get proSimBankPack => 'Mavzular bo‘yicha savollar';
+
+  @override
+  String proSimPool(int count, int topics) {
+    return 'Bankda $count ta savol, $topics ta mavzu';
+  }
+
+  @override
+  String get proSimTimeHelper => '1–240 daqiqa, majburiy';
+
+  @override
+  String get proSimPassHelper => '1–100 %, majburiy';
+
+  @override
+  String get proSimStart => 'Simulyatsiyani boshlash';
+
+  @override
+  String get proSimHistory => 'Oldingi simulyatsiyalar';
+
+  @override
+  String get proSimReportTitle => 'Simulyatsiya hisoboti';
+
+  @override
+  String get proSimPace => 'Vaqt';
+
+  @override
+  String get proSimAvgPerQuestion => 'Bir savolga o‘rtacha';
+
+  @override
+  String get proSimSlowest => 'Eng ko‘p vaqt olgan savollar';
+
+  @override
+  String get proSimReview => 'Javoblarni ko‘rish';
+
+  @override
+  String get proSimTag => 'simulyatsiya';
+
+  @override
+  String get proResultsTitle => 'Natijalar tahlili';
+
+  @override
+  String get proResultsSubtitle =>
+      'Barcha testlar bo‘yicha to‘liq tarix, trend va zaif mavzular';
+
+  @override
+  String get proResultsEntrySub =>
+      'Barcha banklar bo‘yicha trend, mavzular va zaif joylar; PDF / CSV eksport';
+
+  @override
+  String get proResultsEmpty =>
+      'Hali natija yo‘q — birinchi testni topshiring.';
+
+  @override
+  String get proResultsBankOther => 'Boshqa testlar';
+
+  @override
+  String get proResultsSessions => 'Testlar';
+
+  @override
+  String get proResultsAverage => 'O‘rtacha';
+
+  @override
+  String get proResultsBest => 'Eng yaxshi';
+
+  @override
+  String get proResultsLast => 'Oxirgisi';
+
+  @override
+  String get proResultsTrend => 'O‘zgarish';
+
+  @override
+  String get proResultsAnswered => 'To‘g‘ri javoblar';
+
+  @override
+  String get proResultsChart => 'So‘nggi 20 ta natija';
+
+  @override
+  String get proResultsWeak => 'Zaif mavzular';
+
+  @override
+  String get proResultsNoWeak => 'Zaif mavzu topilmadi.';
+
+  @override
+  String get proResultsWeakRule =>
+      'Zaif mavzu: kamida 5 ta savol va 60 % dan past aniqlik. O‘zgarish — mavzu uchragan testlarning yangi yarmi eski yarmiga nisbatan.';
+
+  @override
+  String get proResultsTopics => 'Mavzular bo‘yicha';
+
+  @override
+  String get proResultsNoTopics => 'Bu testlarda mavzu belgisi yo‘q.';
+
+  @override
+  String proResultsTopicRow(int correct, int total, int sessions) {
+    return '$correct/$total to‘g‘ri · $sessions ta testda';
+  }
+
+  @override
+  String get proResultsHistory => 'To‘liq tarix';
+
+  @override
+  String get proResultsQuestions => 'Savollar';
+
+  @override
+  String get proResultsSession => 'Test';
+
+  @override
+  String proPoints(String value) {
+    return '$value foiz punkti';
+  }
 }

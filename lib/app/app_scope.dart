@@ -31,6 +31,7 @@ import '../features/library/reading_controller.dart';
 import '../features/packs/packs_controller.dart';
 import '../features/qc/qc_controller.dart';
 import '../features/settings/settings_controller.dart';
+import '../features/share/file_export.dart';
 import '../features/share/result_share.dart';
 import '../features/toifa/toifa_controller.dart';
 
@@ -92,6 +93,7 @@ class AppServices {
     required this.topicTests,
     required this.howToVideos,
     this.qrScanner = const MobileQrScanner(),
+    this.fileSharer = const SystemFileSharer(),
   });
 
   final AppConfig config;
@@ -142,6 +144,9 @@ class AppServices {
 
   /// Natija kartochkasini tizim oynasi orqali ulashish.
   final ResultSharer sharer;
+
+  /// Eksport fayllari (PDF / CSV) — tizim ulashish oynasi (D-78, Pro).
+  final FileSharer fileSharer;
 
   /// O'quv dasturi (`curriculum.json`; asset bo'lmasa — “qo'shilmagan”).
   final CurriculumController curriculum;

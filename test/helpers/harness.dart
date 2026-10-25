@@ -27,11 +27,13 @@ import 'package:labguide/features/classroom/lecture_decks.dart';
 import 'package:labguide/features/classroom/qr_scanner.dart';
 import 'package:labguide/features/daily/daily_reminder.dart';
 import 'package:labguide/features/settings/settings_controller.dart';
+import 'package:labguide/features/share/file_export.dart';
 import 'package:labguide/features/share/result_share.dart';
 import 'package:labguide/main.dart';
 import 'package:material_ui/material_ui.dart';
 
 import 'daily_fakes.dart';
+import 'export_fakes.dart';
 import 'fake_qr_scanner.dart';
 
 /// Haqiqiy Inter va Material Icons shriftlarini yuklaydi: overflow
@@ -88,6 +90,8 @@ Future<AppServices> makeServices(
   DeviceAttestor? attestor,
   ReminderScheduler? reminderScheduler,
   ResultSharer? sharer,
+  // Eksport fayllari (PDF/CSV): berilmasa — soxta (fayllar xotirada).
+  FileSharer? fileSharer,
   DateTime Function()? clock,
   CommunityBackend? community,
   // Google / Apple kirish tugmalari (soxta provayderlar; berilmasa — yo'q).
@@ -131,6 +135,7 @@ Future<AppServices> makeServices(
     // Haqiqiy bildirishnoma/ulashish plaginlari testda yo'q.
     reminderScheduler: reminderScheduler ?? FakeReminderScheduler(),
     sharer: sharer ?? FakeResultSharer(),
+    fileSharer: fileSharer ?? FakeFileSharer(),
     clock: clock,
     dailyRandom: Random(dailySeed),
     community: community,

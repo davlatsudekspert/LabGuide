@@ -159,7 +159,16 @@ enum ProTrialMechanism { undecided, storeIntroOffer, serverGranted }
 /// qilmaydi: `EntitlementService.disabled()` hamma narsani ochadi va Pro
 /// kirish nuqtalari ko'rsatilmaydi.
 abstract final class ProGatePolicy {
-  static const Set<Feature> gated = {};
+  static const Set<Feature> gated = {
+    // Talaba Pro — ekranlar: lib/features/pro/{results,simulation}_screens.dart.
+    Feature.resultsAnalytics,
+    Feature.examSimulation,
+    Feature.resultsExport,
+    // Mutaxassis Pro — lib/features/pro/{calibration_export,qc_report*}.dart.
+    Feature.calibrationExport,
+    Feature.qcReport,
+    // Ustoz Pro va `teacherTests` — ustoz paneli qurilgach qo'shiladi.
+  };
 
   /// Butun pullik katalog (regressiya testi: hammasi yopilganda ham bugungi
   /// bepul funksiyalar ochiq qoladi).

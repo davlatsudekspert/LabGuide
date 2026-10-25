@@ -6,6 +6,7 @@ import '../../app/app_scope.dart';
 import '../../app/widgets/lg_page.dart';
 import '../../app/widgets/diagram_figure.dart';
 import '../../app/widgets/links.dart';
+import '../../core/build_flags.dart';
 import '../../core/single_flight.dart';
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
@@ -20,6 +21,8 @@ import 'instrument_catalog.dart';
 import 'instrument_screens.dart';
 import 'instruments_controller.dart';
 import '../howto/howto_registry.dart';
+import '../pro/calibration_export.dart' show exportCalibrationLog;
+import '../pro/pro_widgets.dart';
 import '../howto/howto_widgets.dart';
 
 const _decimalKeyboard = TextInputType.numberWithOptions(decimal: true);
@@ -1272,6 +1275,22 @@ class CalibrationLogScreen extends StatelessWidget {
                       onTap: () => context.push('/lab/calibration/log/${r.id}'),
                     ),
                   _HistorySection(instruments.audit, null),
+                  // Jurnal eksporti (PDF / CSV) — Mutaxassis Pro (D-78; faqat
+                  // Pro bayrog'i bilan ko'rinadi).
+                  if (BuildFlags.proEnabled) ...[
+                    const SizedBox(height: 12),
+                    ProEntryRow(
+                      key: const ValueKey('cal-export-entry'),
+                      title: l.proCalExportEntry,
+                      subtitle: l.proCalExportEntrySub,
+                      icon: Icons.ios_share_rounded,
+                      onTap: () => exportCalibrationLog(
+                        context,
+                        analyteName: (id) =>
+                            pack.analyte(id)?.names.of(lang) ?? id,
+                      ),
+                    ),
+                  ],
                 ],
               );
             },

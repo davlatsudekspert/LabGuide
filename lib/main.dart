@@ -49,6 +49,7 @@ import 'features/packs/packs_controller.dart';
 import 'features/partners/partners_controller.dart';
 import 'features/qc/qc_controller.dart';
 import 'features/settings/settings_controller.dart';
+import 'features/share/file_export.dart';
 import 'features/share/result_share.dart';
 import 'features/toifa/toifa_controller.dart';
 
@@ -103,6 +104,7 @@ AppServices createServices({
   LabBackend? backend,
   ReminderScheduler? reminderScheduler,
   ResultSharer? sharer,
+  FileSharer? fileSharer,
   DateTime Function()? clock,
   Curriculum? curriculum,
   CommunityBackend? community,
@@ -189,6 +191,7 @@ AppServices createServices({
       toifa: toifa,
     ),
     sharer: sharer ?? const SystemResultSharer(),
+    fileSharer: fileSharer ?? const SystemFileSharer(),
     curriculum: CurriculumController(bundle: bundle, curriculum: curriculum),
     classroom: ClassroomLocal(store),
     topicTests: TopicTestController(store, clock: clock),

@@ -6,6 +6,8 @@ import 'package:material_ui/material_ui.dart';
 import '../../app/app_scope.dart';
 import '../../app/widgets/lg_page.dart';
 import '../../app/widgets/diagram_figure.dart';
+import '../../core/build_flags.dart';
+import '../../core/entitlements/feature.dart';
 import '../../design/tokens.dart';
 import '../../design/widgets/lg_widgets.dart';
 import '../../l10n/gen/app_localizations.dart';
@@ -19,6 +21,8 @@ import 'qc_export.dart';
 import 'qc_model.dart';
 import 'qc_rules.dart';
 import '../howto/howto_registry.dart';
+import '../pro/pro_widgets.dart';
+import '../profile/pro_gate.dart';
 import '../howto/howto_widgets.dart';
 
 const _decimalKeyboard = TextInputType.numberWithOptions(
@@ -956,6 +960,22 @@ class _QcSetScreenState extends State<QcSetScreen> {
             }
           },
         ),
+        // QC xulosa hisoboti va fayl eksporti — Mutaxassis Pro (D-78; faqat
+        // Pro bayrog'i bilan ko'rinadi). Yuqoridagi CSV nusxasi bepul qoladi.
+        if (BuildFlags.proEnabled) ...[
+          const SizedBox(height: 8),
+          ProEntryRow(
+            key: const ValueKey('qc-report-entry'),
+            title: l.proQcReportTitle,
+            subtitle: l.proQcReportEntrySub,
+            icon: Icons.summarize_outlined,
+            onTap: () => pushGated(
+              context,
+              Feature.qcReport,
+              '/lab/qc/set/${set.id}/report',
+            ),
+          ),
+        ],
       ],
       const SizedBox(height: 18),
       LgButton.secondary(

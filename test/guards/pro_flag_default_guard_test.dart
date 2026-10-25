@@ -10,7 +10,16 @@ String _read(String path) => File(path).readAsStringSync();
 
 /// D-78: pullik amal tekshiruvi (`requireFeature` / `pushGated` /
 /// `allowOrOffer`) chaqiriladigan joylar — fayl → funksiyalar.
-const kGateCallSites = <String, Set<String>>{};
+const kGateCallSites = <String, Set<String>>{
+  // Bepul ekranlardagi YANGI Pro kirish nuqtalari (faqat Pro bayrog'i bilan).
+  'lib/features/learn/exam_screens.dart': {'examSimulation', 'resultsAnalytics'},
+  'lib/features/qc/qc_screens.dart': {'qcReport'},
+  // Yangi Pro ekranlari / eksport oqimlari.
+  'lib/features/pro/simulation_screens.dart': {'examSimulation'},
+  'lib/features/pro/results_screens.dart': {'resultsExport'},
+  'lib/features/pro/calibration_export.dart': {'calibrationExport'},
+  'lib/features/pro/qc_report_screen.dart': {'qcReport'},
+};
 
 void main() {
   group('D-71: Pro standart holda o‘chiq', () {
@@ -105,6 +114,9 @@ void main() {
           r'\b(requireFeature|pushGated|allowOrOffer)\(\s*context,\s*'
           r'Feature\.(\w+)',
         );
+        final exportCall = RegExp(
+          r'runExport\(\s*context,\s*feature:\s*Feature\.(\w+)',
+        );
         final calls = <String, Set<String>>{};
         for (final f
             in Directory('lib')
@@ -125,6 +137,9 @@ void main() {
           }
           for (final m in gateCall.allMatches(text)) {
             (calls[path] ??= {}).add(m[2]!);
+          }
+          for (final m in exportCall.allMatches(text)) {
+            (calls[path] ??= {}).add(m[1]!);
           }
         }
         // Har gate chaqiruvi — katalogdagi funksiya va ruxsat etilgan faylda

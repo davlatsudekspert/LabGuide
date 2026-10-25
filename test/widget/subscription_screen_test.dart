@@ -65,7 +65,7 @@ void main() {
     tester,
   ) async {
     final s = await _svc(tester, proEnabled: null);
-    await pumpApp(tester, s, size: const Size(390, 3400));
+    await pumpApp(tester, s, size: const Size(390, 4800));
     final uz = _l(AppLanguage.uz);
     await goTo(tester, '/profile');
     expect(find.byKey(const ValueKey('profile-subscription')), findsNothing);
@@ -79,7 +79,7 @@ void main() {
       'holat, sinov qoidasi, tiklash', (tester) async {
     final s = await _svc(tester);
     await s.entitlements.start();
-    await pumpApp(tester, s, size: const Size(390, 3600));
+    await pumpApp(tester, s, size: const Size(390, 5000));
     final uz = _l(AppLanguage.uz);
     await goTo(tester, '/profile');
     final row = find.byKey(const ValueKey('profile-subscription'));
@@ -92,7 +92,8 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.byType(SubscriptionScreen), findsOneWidget);
 
-    expect(find.text(uz.proSubAllFree), findsOneWidget);
+    // D-78: qurilgan pullik funksiyalar bor — "hammasi bepul" izohi yo'q.
+    expect(find.text(uz.proSubAllFree), findsNothing);
     expect(find.text(uz.proSubStatusFree), findsOneWidget);
     for (final spec in ProPricing.plans) {
       final panel = find.byKey(ValueKey('sub-plan-${spec.plan.name}'));
@@ -119,9 +120,24 @@ void main() {
         ),
         findsOneWidget,
       );
+      // D-78: har reja learner funksiyalarini ochadi; Mutaxassis Pro faqat
+      // Mutaxassis va Premium'da.
       expect(
         find.descendant(of: panel, matching: find.text(uz.proSubNothingGated)),
+        findsNothing,
+      );
+      expect(
+        find.descendant(
+          of: panel,
+          matching: find.text('• ${uz.proFeatResultsAnalytics}'),
+        ),
         findsOneWidget,
+      );
+      final lab = spec.plan == ProPlan.specialist || spec.plan == ProPlan.premium;
+      expect(
+        find.descendant(of: panel, matching: find.text('• ${uz.proFeatQcReport}')),
+        lab ? findsOneWidget : findsNothing,
+        reason: spec.plan.name,
       );
     }
     // Narxlar katalogdan: 1.49 / 9.99, 2.49 / 24.99, 3.49 / 34.99.
@@ -182,7 +198,7 @@ void main() {
       });
     final s = await _svc(tester, source: src);
     await s.entitlements.start();
-    await pumpApp(tester, s, size: const Size(390, 3400));
+    await pumpApp(tester, s, size: const Size(390, 4800));
     final uz = _l(AppLanguage.uz);
     await goTo(tester, '/profile/subscription');
     expect(
@@ -208,12 +224,12 @@ void main() {
     tester,
   ) async {
     final off = await _svc(tester, proEnabled: null);
-    await pumpApp(tester, off, size: const Size(390, 3400));
+    await pumpApp(tester, off, size: const Size(390, 4800));
     await goTo(tester, '/profile/privacy');
     expect(find.byKey(const ValueKey('privacy-pro-trial')), findsNothing);
 
     final on = await _svc(tester);
-    await pumpApp(tester, on, size: const Size(390, 3400));
+    await pumpApp(tester, on, size: const Size(390, 4800));
     await goTo(tester, '/profile/privacy');
     expect(find.text(_l(AppLanguage.uz).proPrivacyTrialNote), findsOneWidget);
   });
@@ -243,7 +259,7 @@ void main() {
       final src = FakeEntitlementSource(trialOffered: false);
       final s = await _svc(tester, source: src, attest: true);
       await s.entitlements.start();
-      await pumpApp(tester, s, size: const Size(390, 3600));
+      await pumpApp(tester, s, size: const Size(390, 5000));
       await _signIn(tester, s);
       await goTo(tester, '/profile/subscription');
       final uz = _l(AppLanguage.uz);
@@ -260,7 +276,7 @@ void main() {
       final src = FakeEntitlementSource(trialOffered: true);
       final s = await _svc(tester, source: src);
       await s.entitlements.start();
-      await pumpApp(tester, s, size: const Size(390, 3600));
+      await pumpApp(tester, s, size: const Size(390, 5000));
       await goTo(tester, '/profile/subscription');
       final uz = _l(AppLanguage.uz);
       expect(find.text(uz.proSubTrialNotActive), findsOneWidget);
@@ -279,7 +295,7 @@ void main() {
       final shop = FakePurchaseAdapter();
       final s = await _svc(tester, source: src, purchases: shop, attest: true);
       await s.entitlements.start();
-      await pumpApp(tester, s, size: const Size(390, 3800));
+      await pumpApp(tester, s, size: const Size(390, 5200));
       await _signIn(tester, s);
       await goTo(tester, '/profile/subscription');
       final uz = _l(AppLanguage.uz);
@@ -323,7 +339,7 @@ void main() {
   });
 
   testWidgets('Pro tugadi: “Pro tugadi, bepul imkoniyatlar ishlaydi”; '
-      'barcha imkoniyatlar ochiq', (tester) async {
+      'faqat qurilgan pullik funksiyalar yopiq (D-78)', (tester) async {
     final past = DateTime.now().toUtc().subtract(const Duration(days: 1));
     final src = FakeEntitlementSource()
       ..snapshot = EntitlementSnapshot.fromJson({
@@ -339,13 +355,19 @@ void main() {
       });
     final s = await _svc(tester, source: src);
     await s.entitlements.start();
-    await pumpApp(tester, s, size: const Size(390, 3400));
+    await pumpApp(tester, s, size: const Size(390, 4800));
     await goTo(tester, '/profile/subscription');
     final uz = _l(AppLanguage.uz);
     expect(find.text(uz.proSubStatusFree), findsOneWidget);
     expect(find.byKey(const ValueKey('sub-ended')), findsOneWidget);
+    // D-78: muddati o'tgach faqat qurilgan (gated) pullik funksiyalar yopiq;
+    // qolgan hamma narsa (bugungi bepul funksiyalar katalogda ham yo'q) ochiq.
     for (final f in Feature.values) {
-      expect(s.entitlements.can(f), isTrue, reason: f.name);
+      expect(
+        s.entitlements.can(f),
+        !ProGatePolicy.gated.contains(f),
+        reason: f.name,
+      );
     }
   });
 }

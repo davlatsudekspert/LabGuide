@@ -63,6 +63,9 @@ import '../features/profile/profile_screens.dart';
 import '../features/profile/purchase_screen.dart';
 import '../features/profile/subscription_screen.dart';
 import '../features/settings/theme_screen.dart';
+import '../features/pro/qc_report_screen.dart';
+import '../features/pro/results_screens.dart';
+import '../features/pro/simulation_screens.dart';
 import '../features/qc/qc_guides.dart';
 import '../features/qc/qc_guides_info.dart';
 import '../features/qc/qc_screens.dart';
@@ -921,6 +924,15 @@ GoRouter buildRouter(
                               levelId: state.pathParameters['level']!,
                             ),
                           ),
+                          // QC xulosa hisoboti — Mutaxassis Pro (D-78), faqat
+                          // Pro bayrog'i yoqilgan buildda.
+                          if (BuildFlags.proEnabled)
+                            GoRoute(
+                              path: 'report',
+                              builder: (context, state) => QcReportScreen(
+                                setId: state.pathParameters['id']!,
+                              ),
+                            ),
                         ],
                       ),
                     ],
@@ -1154,6 +1166,28 @@ GoRouter buildRouter(
                       ),
                     ],
                   ),
+                  // Talaba Pro (D-78): imtihon simulyatsiyasi va natijalar
+                  // tahlili — faqat Pro bayrog'i yoqilgan buildda.
+                  if (BuildFlags.proEnabled)
+                    GoRoute(
+                      path: 'simulation',
+                      builder: (context, state) =>
+                          const SimulationSetupScreen(),
+                      routes: [
+                        GoRoute(
+                          path: 'result/:id',
+                          builder: (context, state) => SimulationReportScreen(
+                            resultId: state.pathParameters['id']!,
+                          ),
+                        ),
+                      ],
+                    ),
+                  if (BuildFlags.proEnabled)
+                    GoRoute(
+                      path: 'results',
+                      builder: (context, state) =>
+                          const ResultsAnalyticsScreen(),
+                    ),
                   // Toifa imtihoniga tayyorgarlik — faqat O'zbekiston
                   // foydalanuvchilariga (til uz yoki mintaqa UZ), shifokor va
                   // talaba rolidan tashqari (D-40, D-60); boshqalar

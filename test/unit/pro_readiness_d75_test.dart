@@ -72,9 +72,10 @@ void main() {
       await ent.refresh(reprobe: false);
       expect(ent.activeEntitlement, isNull);
       expect(ent.proSource, ProSource.none);
-      // Bepul imkoniyatlar hech qachon yopilmaydi (gated bo'sh).
+      // D-78: kesh tugagach faqat qurilgan pullik funksiyalar yopiq (bepul
+      // funksiyalar katalogda yo'q va hech qachon yopilmaydi).
       for (final f in Feature.values) {
-        expect(ent.can(f), isTrue, reason: f.name);
+        expect(ent.can(f), !ProGatePolicy.gated.contains(f), reason: f.name);
       }
     });
 

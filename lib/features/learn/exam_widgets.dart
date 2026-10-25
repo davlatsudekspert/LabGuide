@@ -125,6 +125,9 @@ ExamQuestionSource? examSourceOf(BuildContext context, String sourceId) {
   return pack == null ? null : PackQuestionSource.of(pack);
 }
 
+/// Imtihon simulyatsiyasi bo'limi (Talaba Pro, D-78).
+const simulationBase = '/learn/simulation';
+
 /// Imtihon bo'limi manzili: toifa testi o'z bo'limida ochiladi va yakunlanadi.
 String examBase(String sourceId) => sourceId == ToifaQuestionSource.sourceId
     ? '/learn/toifa/test'
@@ -351,7 +354,13 @@ class _ExamRunnerState extends State<ExamRunner> {
     _ticker = Timer.periodic(const Duration(seconds: 1), (_) => _tick());
     // Ilova fondan qaytdi — vaqt tugagan bo'lsa darhol yakun.
     _lifecycle = AppLifecycleListener(onResume: _tick);
-    WidgetsBinding.instance.addPostFrameCallback((_) => _tick());
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      // Simulyatsiya (D-78): birinchi savol vaqti shu paytdan.
+      if (mounted && widget.session.simulation) {
+        widget.session.markEntered(context.services.exams.now());
+      }
+      _tick();
+    });
   }
 
   @override
@@ -406,6 +415,9 @@ class _ExamRunnerState extends State<ExamRunner> {
   }
 
   void _go(int i) {
+    if (widget.session.simulation) {
+      widget.session.recordDwell(context.services.exams.now());
+    }
     widget.session.goTo(i);
     _changed();
     // Yangi savol tepadan boshlanadi.
@@ -482,10 +494,14 @@ class _ExamRunnerState extends State<ExamRunner> {
                             );
                           },
                         ),
-                        LgSectionTitle(l.examMap),
-                        _QuestionMap(session: s, onTap: _go),
-                        const SizedBox(height: 12),
-                        const _MapLegend(),
+                        // Simulyatsiyada (D-78) savollar ketma-ket: xarita,
+                        // orqaga qaytish va belgilash yo'q.
+                        if (!s.simulation) ...[
+                          LgSectionTitle(l.examMap),
+                          _QuestionMap(session: s, onTap: _go),
+                          const SizedBox(height: 12),
+                          const _MapLegend(),
+                        ],
                         const SizedBox(height: 18),
                         LgButton.secondary(
                           label: l.examFinish,
@@ -511,11 +527,15 @@ class _ExamRunnerState extends State<ExamRunner> {
                           session: s,
                           now: context.services.exams.now(),
                           busy: _finishing,
-                          onFlag: () {
-                            s.toggleFlag();
-                            _changed();
-                          },
-                          onPrev: s.isFirst ? null : () => _go(s.index - 1),
+                          onFlag: s.simulation
+                              ? null
+                              : () {
+                                  s.toggleFlag();
+                                  _changed();
+                                },
+                          onPrev: s.isFirst || s.simulation
+                              ? null
+                              : () => _go(s.index - 1),
                           onNext: s.isLast
                               ? _confirmFinish
                               : () => _go(s.index + 1),
@@ -863,7 +883,9 @@ class _BottomBar extends StatelessWidget {
   final ExamSession session;
   final DateTime now;
   final bool busy;
-  final VoidCallback onFlag;
+
+  /// `null` — belgilash yo'q (simulyatsiya).
+  final VoidCallback? onFlag;
   final VoidCallback? onPrev;
   final VoidCallback onNext;
 
@@ -889,11 +911,12 @@ class _BottomBar extends StatelessWidget {
                   ),
                 ),
                 const Spacer(),
-                _FlagButton(
-                  flagged: session.isFlagged(session.index),
-                  compact: c.maxWidth / scale < 230,
-                  onTap: onFlag,
-                ),
+                if (onFlag case final flag?)
+                  _FlagButton(
+                    flagged: session.isFlagged(session.index),
+                    compact: c.maxWidth / scale < 230,
+                    onTap: flag,
+                  ),
               ],
             );
           },

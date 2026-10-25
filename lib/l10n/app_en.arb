@@ -7206,5 +7206,138 @@
         "type": "String"
       }
     }
+  },
+  "proGateClosedTitle": "This is a Pro feature",
+  "proGateClosedBody": "To open it you need a subscription or the 7-day free trial. Free features and your data stay.",
+  "proGateOpenPlans": "See plans",
+  "proExportAction": "Export: PDF or CSV",
+  "proExportTitle": "Export to a file",
+  "proExportPdf": "PDF document",
+  "proExportPdfSub": "For viewing, printing and archiving",
+  "proExportCsv": "CSV table",
+  "proExportCsvSub": "For Excel or Google Sheets",
+  "proExportBusy": "Preparing the file…",
+  "proExportShared": "File ready — the share sheet is open.",
+  "proExportFailed": "Could not share the file. Please try again.",
+  "proExportNotClinical": "Built only from the data you entered. Not a clinical decision and not a replacement for your laboratory’s official records.",
+  "proExportCreated": "Created: {date}",
+  "@proExportCreated": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "proExportPage": "{page} / {total}",
+  "@proExportPage": {
+    "placeholders": {
+      "page": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "proCalExportCount": "Records: {count}",
+  "@proCalExportCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "proCalExportEntry": "Export the log",
+  "proCalExportEntrySub": "PDF or CSV: instrument, reagent, lot, levels, outcome, approver and history",
+  "proColDate": "Date",
+  "proColAction": "Action",
+  "proColDetail": "Details",
+  "proColStatus": "Status",
+  "proQcReportTitle": "QC summary report",
+  "proQcReportEntrySub": "Per level and lot: x̄, SD, CV, bias from target and rules fired; PDF / CSV",
+  "proQcSummary": "Overview",
+  "proQcPeriodLabel": "Period",
+  "proQcVerdictsLabel": "Accepted / warning / rejected",
+  "proQcVerdictsHint": "Level card counts use the rules that involve that level; the overview counts whole runs.",
+  "proQcRulesFired": "Rules fired",
+  "proQcNoRules": "No rule violations",
+  "proQcByLevel": "By level and lot",
+  "proQcColLevel": "Level",
+  "proQcColTarget": "Target (x̄ ± SD)",
+  "proQcColObserved": "Observed (n, x̄ ± SD)",
+  "proQcColBias": "Bias from target",
+  "proQcNoRuns": "No runs entered yet — there is no data for a report.",
+  "proSimTitle": "Exam simulation",
+  "proSimSubtitle": "A test under exam conditions: time limit, pass mark and a detailed report",
+  "proSimEntrySub": "Required time limit and pass mark, questions in order, time per question in the report",
+  "proSimConditions": "Exam conditions",
+  "proSimRule1": "A time limit is required: when time runs out the test finishes by itself.",
+  "proSimRule2": "Questions are drawn from every topic in proportion to its size.",
+  "proSimRule3": "Questions come in order: no going back and no flags.",
+  "proSimRule4": "The result is graded against the pass mark; the report shows time per question and a topic breakdown.",
+  "proSimBank": "Question bank",
+  "proSimBankPack": "Topic questions",
+  "proSimPool": "{count} questions in {topics} topics",
+  "@proSimPool": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "topics": {
+        "type": "int"
+      }
+    }
+  },
+  "proSimTimeHelper": "1–240 minutes, required",
+  "proSimPassHelper": "1–100 %, required",
+  "proSimStart": "Start the simulation",
+  "proSimHistory": "Previous simulations",
+  "proSimReportTitle": "Simulation report",
+  "proSimPace": "Time",
+  "proSimAvgPerQuestion": "Average per question",
+  "proSimSlowest": "Questions that took the longest",
+  "proSimReview": "Review answers",
+  "proSimTag": "simulation",
+  "proResultsTitle": "Results analysis",
+  "proResultsSubtitle": "Full history across all tests, trend and weak topics",
+  "proResultsEntrySub": "Trend across all banks, topics and weak spots; PDF / CSV export",
+  "proResultsEmpty": "No results yet — take your first test.",
+  "proResultsBankOther": "Other tests",
+  "proResultsSessions": "Tests",
+  "proResultsAverage": "Average",
+  "proResultsBest": "Best",
+  "proResultsLast": "Latest",
+  "proResultsTrend": "Change",
+  "proResultsAnswered": "Correct answers",
+  "proResultsChart": "Last 20 results",
+  "proResultsWeak": "Weak topics",
+  "proResultsNoWeak": "No weak topics found.",
+  "proResultsWeakRule": "Weak topic: at least 5 questions and accuracy below 60 %. Change compares the newer half of the tests with that topic to the older half.",
+  "proResultsTopics": "By topic",
+  "proResultsNoTopics": "These tests have no topic tags.",
+  "proResultsTopicRow": "{correct}/{total} correct · in {sessions} tests",
+  "@proResultsTopicRow": {
+    "placeholders": {
+      "correct": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      },
+      "sessions": {
+        "type": "int"
+      }
+    }
+  },
+  "proResultsHistory": "Full history",
+  "proResultsQuestions": "Questions",
+  "proResultsSession": "Test",
+  "proPoints": "{value} pp",
+  "@proPoints": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
   }
 }

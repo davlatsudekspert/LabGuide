@@ -13591,4 +13591,268 @@ class AppLocalizationsRu extends AppLocalizations {
   String proTrialConfirmBody(String plan, String date) {
     return '$plan бесплатно до $date. Без способа оплаты, ничего не списывается, и пробный период не превращается в платную подписку. После окончания закрываются только платные возможности; бесплатные функции и все ваши данные сохраняются.';
   }
+
+  @override
+  String get proGateClosedTitle => 'Это Pro-возможность';
+
+  @override
+  String get proGateClosedBody =>
+      'Чтобы открыть, нужна подписка или 7-дневный бесплатный пробный период. Бесплатные функции и ваши данные сохраняются.';
+
+  @override
+  String get proGateOpenPlans => 'Посмотреть планы';
+
+  @override
+  String get proExportAction => 'Экспорт: PDF или CSV';
+
+  @override
+  String get proExportTitle => 'Экспорт в файл';
+
+  @override
+  String get proExportPdf => 'Документ PDF';
+
+  @override
+  String get proExportPdfSub => 'Для просмотра, печати и архива';
+
+  @override
+  String get proExportCsv => 'Таблица CSV';
+
+  @override
+  String get proExportCsvSub => 'Для Excel или Google Таблиц';
+
+  @override
+  String get proExportBusy => 'Файл готовится…';
+
+  @override
+  String get proExportShared => 'Файл готов — открыто окно «Поделиться».';
+
+  @override
+  String get proExportFailed =>
+      'Не удалось поделиться файлом. Попробуйте ещё раз.';
+
+  @override
+  String get proExportNotClinical =>
+      'Составлено только из введённых вами данных. Не является клиническим решением и не заменяет официальный документ лаборатории.';
+
+  @override
+  String proExportCreated(String date) {
+    return 'Создано: $date';
+  }
+
+  @override
+  String proExportPage(int page, int total) {
+    return '$page / $total';
+  }
+
+  @override
+  String proCalExportCount(int count) {
+    return 'Записей: $count';
+  }
+
+  @override
+  String get proCalExportEntry => 'Экспорт журнала';
+
+  @override
+  String get proCalExportEntrySub =>
+      'PDF или CSV: прибор, реагент, лот, уровни, результат, кто утвердил и история';
+
+  @override
+  String get proColDate => 'Дата';
+
+  @override
+  String get proColAction => 'Действие';
+
+  @override
+  String get proColDetail => 'Подробности';
+
+  @override
+  String get proColStatus => 'Статус';
+
+  @override
+  String get proQcReportTitle => 'Сводный отчёт КК';
+
+  @override
+  String get proQcReportEntrySub =>
+      'По каждому уровню и лоту: x̄, SD, CV, отклонение от цели и сработавшие правила; PDF / CSV';
+
+  @override
+  String get proQcSummary => 'Общее';
+
+  @override
+  String get proQcPeriodLabel => 'Период';
+
+  @override
+  String get proQcVerdictsLabel => 'Принято / предупреждение / отклонено';
+
+  @override
+  String get proQcVerdictsHint =>
+      'Итоги в карточке уровня — по правилам с участием этого уровня; общий счёт — по всей серии.';
+
+  @override
+  String get proQcRulesFired => 'Сработавшие правила';
+
+  @override
+  String get proQcNoRules => 'Нарушений правил нет';
+
+  @override
+  String get proQcByLevel => 'По уровням и лотам';
+
+  @override
+  String get proQcColLevel => 'Уровень';
+
+  @override
+  String get proQcColTarget => 'Цель (x̄ ± SD)';
+
+  @override
+  String get proQcColObserved => 'Наблюдаемое (n, x̄ ± SD)';
+
+  @override
+  String get proQcColBias => 'Отклонение от цели';
+
+  @override
+  String get proQcNoRuns => 'Серии ещё не введены — данных для отчёта нет.';
+
+  @override
+  String get proSimTitle => 'Симуляция экзамена';
+
+  @override
+  String get proSimSubtitle =>
+      'Тест в условиях экзамена: с лимитом времени и проходным баллом, подробный отчёт';
+
+  @override
+  String get proSimEntrySub =>
+      'Обязательные лимит времени и проходной балл, вопросы по порядку, время по каждому вопросу в отчёте';
+
+  @override
+  String get proSimConditions => 'Условия экзамена';
+
+  @override
+  String get proSimRule1 =>
+      'Лимит времени обязателен: когда время выйдет, тест завершится сам.';
+
+  @override
+  String get proSimRule2 =>
+      'Вопросы выбираются из всех тем пропорционально их объёму.';
+
+  @override
+  String get proSimRule3 =>
+      'Вопросы идут по порядку: вернуться к предыдущему вопросу или отметить его нельзя.';
+
+  @override
+  String get proSimRule4 =>
+      'Результат оценивается по проходному баллу; в отчёте — время на каждый вопрос и разбор по темам.';
+
+  @override
+  String get proSimBank => 'Банк вопросов';
+
+  @override
+  String get proSimBankPack => 'Вопросы по темам';
+
+  @override
+  String proSimPool(int count, int topics) {
+    return 'В банке вопросов: $count, тем: $topics';
+  }
+
+  @override
+  String get proSimTimeHelper => '1–240 минут, обязательно';
+
+  @override
+  String get proSimPassHelper => '1–100 %, обязательно';
+
+  @override
+  String get proSimStart => 'Начать симуляцию';
+
+  @override
+  String get proSimHistory => 'Прошлые симуляции';
+
+  @override
+  String get proSimReportTitle => 'Отчёт о симуляции';
+
+  @override
+  String get proSimPace => 'Время';
+
+  @override
+  String get proSimAvgPerQuestion => 'В среднем на вопрос';
+
+  @override
+  String get proSimSlowest => 'Вопросы, занявшие больше всего времени';
+
+  @override
+  String get proSimReview => 'Посмотреть ответы';
+
+  @override
+  String get proSimTag => 'симуляция';
+
+  @override
+  String get proResultsTitle => 'Анализ результатов';
+
+  @override
+  String get proResultsSubtitle =>
+      'Полная история по всем тестам, динамика и слабые темы';
+
+  @override
+  String get proResultsEntrySub =>
+      'Динамика по всем банкам, темы и слабые места; экспорт в PDF / CSV';
+
+  @override
+  String get proResultsEmpty => 'Результатов пока нет — пройдите первый тест.';
+
+  @override
+  String get proResultsBankOther => 'Другие тесты';
+
+  @override
+  String get proResultsSessions => 'Тесты';
+
+  @override
+  String get proResultsAverage => 'В среднем';
+
+  @override
+  String get proResultsBest => 'Лучший';
+
+  @override
+  String get proResultsLast => 'Последний';
+
+  @override
+  String get proResultsTrend => 'Динамика';
+
+  @override
+  String get proResultsAnswered => 'Верные ответы';
+
+  @override
+  String get proResultsChart => 'Последние 20 результатов';
+
+  @override
+  String get proResultsWeak => 'Слабые темы';
+
+  @override
+  String get proResultsNoWeak => 'Слабых тем не найдено.';
+
+  @override
+  String get proResultsWeakRule =>
+      'Слабая тема: не менее 5 вопросов и точность ниже 60 %. Динамика — новая половина тестов с этой темой против старой.';
+
+  @override
+  String get proResultsTopics => 'По темам';
+
+  @override
+  String get proResultsNoTopics => 'В этих тестах нет отметок тем.';
+
+  @override
+  String proResultsTopicRow(int correct, int total, int sessions) {
+    return '$correct/$total верно · в тестах: $sessions';
+  }
+
+  @override
+  String get proResultsHistory => 'Полная история';
+
+  @override
+  String get proResultsQuestions => 'Вопросы';
+
+  @override
+  String get proResultsSession => 'Тест';
+
+  @override
+  String proPoints(String value) {
+    return '$value п. п.';
+  }
 }
