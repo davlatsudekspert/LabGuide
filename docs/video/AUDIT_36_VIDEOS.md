@@ -1,7 +1,7 @@
 # 36 ta video auditi — 30 ta “Qanday foydalaniladi?” + 6 ta ilmiy namuna (2026-10-25)
 
 <!-- audit:begin -->
-**Natija: PASS — 0, NEEDS_FIX — 3, NEEDS_EXPERT — 33 (jami 36).**
+**Natija: PASS — 0, NEEDS_FIX — 0, NEEDS_EXPERT — 36 (jami 36).** (PCR namunalarining F4 nuqsoni keyin tuzatildi va qayta render qilindi.)
 
 | Fayl | Davomiylik · hajm | Aniqlik | Toshish | Subtitr | Verdikt | Izoh |
 |---|---|---|---|---|---|---|
@@ -38,9 +38,9 @@
 | `gc_ms_en.mp4` | 96.0 s · 1.96 MB | Laplasian min 635 (keskin) | yo‘q | mos | **NEEDS_EXPERT** | Yorliq: «Ovozsiz namuna (diktorsiz)» — ekran yozuvi emas, animatsiya (to‘g‘ri) |
 | `gc_ms_ru.mp4` | 96.0 s · 2.01 MB | Laplasian min 696 (keskin) | yo‘q | mos | **NEEDS_EXPERT** | Yorliq: «Ovozsiz namuna (diktorsiz)» — ekran yozuvi emas, animatsiya (to‘g‘ri) |
 | `gc_ms_uz.mp4` | 96.0 s · 1.99 MB | Laplasian min 625 (keskin) | yo‘q | mos | **NEEDS_EXPERT** | Yorliq: «Ovozsiz namuna (diktorsiz)» — ekran yozuvi emas, animatsiya (to‘g‘ri) |
-| `real_time_pcr_en.mp4` | 77.0 s · 1.35 MB | Laplasian min 651 (keskin) | yo‘q | mos | **NEEDS_FIX** | OCHIQ NUQSON: 6-bosqich «Natija» (59,5–73,5 s): qism chipi «7 Emission filter / Emissiya filtri», kamera esa monitorni (9 — dasturiy ta’minot) ko‘rsatadi: sampl |
-| `real_time_pcr_ru.mp4` | 77.0 s · 1.39 MB | Laplasian min 761 (keskin) | yo‘q | mos | **NEEDS_FIX** | OCHIQ NUQSON: 6-bosqich «Natija» (59,5–73,5 s): qism chipi «7 Emission filter / Emissiya filtri», kamera esa monitorni (9 — dasturiy ta’minot) ko‘rsatadi: sampl |
-| `real_time_pcr_uz.mp4` | 77.0 s · 1.35 MB | Laplasian min 646 (keskin) | yo‘q | mos | **NEEDS_FIX** | OCHIQ NUQSON: 6-bosqich «Natija» (59,5–73,5 s): qism chipi «7 Emission filter / Emissiya filtri», kamera esa monitorni (9 — dasturiy ta’minot) ko‘rsatadi: sampl |
+| `real_time_pcr_en.mp4` | 77.0 s · 1.35 MB | Laplasian min 651 (keskin) | yo‘q | mos | **NEEDS_EXPERT** | F4 TUZATILDI (qayta render); ilmiy ko‘rik kutadi |
+| `real_time_pcr_ru.mp4` | 77.0 s · 1.39 MB | Laplasian min 761 (keskin) | yo‘q | mos | **NEEDS_EXPERT** | F4 TUZATILDI (qayta render); ilmiy ko‘rik kutadi |
+| `real_time_pcr_uz.mp4` | 77.0 s · 1.35 MB | Laplasian min 646 (keskin) | yo‘q | mos | **NEEDS_EXPERT** | F4 TUZATILDI (qayta render); ilmiy ko‘rik kutadi |
 <!-- audit:end -->
 
 To‘liq jadval (har video bo‘yicha barcha 13 ustun) — `docs/video/AUDIT_36_VIDEOS.csv`.
